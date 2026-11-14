@@ -1,0 +1,642 @@
+{
+ "bibcode": "2025A&A...704A..18O",
+ "title": "High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB>O, SO<SUB>2</SUB>, SO, HCN, AlO, AlOH, TiO, TiO<SUB>2</SUB>, and OH lines",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554900",
+ "arxiv_id": "2512.03156",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "What are the dynamics and chemistry in the atmosphere and inner wind (within a few stellar radii) of the asymptotic giant branch star W Hya, and how do molecular species relate to dust formation and shocks?",
+ "alma_project_codes": [
+  "2018.1.01239.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m array",
+  "angular_resolution": "16–20 mas",
+  "sensitivity": "~40 uJy/beam (continuum MFS); ~0.5-0.6 mJy/beam per 488 kHz channel (spectral line cubes), up to 2.7 mJy/beam in maser channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of W Hya of 98 pc",
+    "evidence": [
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "In the present work, we adopted the 98 pc from Vlemmings et al. ((cite: vlemmings03))"
+     }
+    ]
+   },
+   "citation": "Vlemmings et al. ((cite: vlemmings03))"
+  },
+  {
+   "what": {
+    "value": "Wind terminal velocity of 5 km s^-1 and turbulent velocity FWHM of 2 km s^-1",
+    "evidence": [
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "while Hoai et al. ((cite: hoai22)) obtained, based on the analysis of ALMA data, a lower value of 5 km s$^{-1}$"
+     },
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "In the present work, we adopted the wind terminal velocity of 5 km s$^{-1}$."
+     },
+     {
+      "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+      "quote": "We assumed a Gaussian line profile with a FWHM of a turbulent velocity of 2 km s$^{-1}$ (Hoai et al. (cite: hoai22))"
+     }
+    ]
+   },
+   "citation": "Hoai et al. ((cite: hoai22))"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity of 40.4 km s^-1 LSR and circumstellar envelope gas temperature profile T_gas(r) = 2500 (2.7x10^13 / r(cm))^0.65 K",
+    "evidence": [
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "As for the systemic velocity, Khouri et al. ((cite: khouri14b)) derived 40.4 km s$^{-1}$ in the local standard of rest (LSR)"
+     },
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "The systemic velocity of 40.4 km s$^{-1}$ was adopted in our analysis"
+     },
+     {
+      "loc": "HCN lines",
+      "quote": "On the other hand, Khouri et al. ((cite: khouri14b)) obtained $T_{\\rm gas} (r) \\, ({\\rm K})= 2500 \\, (2.7\\times10^{13}/r({\\rm cm}))^{0.65}$"
+     }
+    ]
+   },
+   "citation": "Khouri et al. ((cite: khouri14b))"
+  },
+  {
+   "what": {
+    "value": "Star's angular diameter of 41.4 mas (R_* = 20.7 mas), 268.2 GHz continuum angular diameter of 59.3 mas (R_cont = 29.6 mas), and 820 nm VLT/SPHERE-ZIMPOL polarized intensity map",
+    "evidence": [
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "We adopted 41.4 mas as the star’s angular diameter (i.e., 20.7 mas as the star’s angular radius $R_{\\star}$), as described in Paper I."
+     },
+     {
+      "loc": "Continuum",
+      "quote": "In the present work, we use the geometrical mean of the major and minor axis of 59.3 mas derived in Paper I as the millimeter continuum angular diameter (i.e., 29.6 mas as the continuum angular radius $R_{\\rm cont}$)."
+     },
+     {
+      "loc": "HCN lines",
+      "quote": "The contours in Fig. [16](#integmap_hcn_v2_1_265) show the polarized intensity map obtained at 820 nm contemporaneously with our ALMA data using VLT/SPHERE-ZIMPOL, as reported in Paper I."
+     }
+    ]
+   },
+   "citation": "Ohnaka et al. ((cite: ohnaka24); hereafter Paper I)"
+  },
+  {
+   "what": {
+    "value": "Bolometric flux of 1.69 x 10^-8 W m^-2 at phase 0.54 and dust optical depth of 0.8 at 0.55 um",
+    "evidence": [
+     {
+      "loc": "Basic properties of W Hya",
+      "quote": "Ohnaka et al. ((cite: ohnaka17)) derived the bolometric flux of $1.69 \\times 10^{-8}$ W m$^{-2}$ at approximately the same phase of 0.54"
+     },
+     {
+      "loc": "Continuum",
+      "quote": "Ohnaka et al. ((cite: ohnaka17)) derived a dust optical depth of 0.8 at 0.55 $\\mu$m from the visible polarimetric imaging of W Hya at minimum light."
+     }
+    ]
+   },
+   "citation": "Ohnaka et al. ((cite: ohnaka17))"
+  },
+  {
+   "what": {
+    "value": "Silicon isotope ratio 29Si/30Si = 1 (based on observed 0.99 +/- 0.05)",
+    "evidence": [
+     {
+      "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+      "quote": "adopting an isotope ratio of $^{29}$Si/$^{30}$Si = 1 based on the observed value of $0.99 \\pm 0.05$ (Peng et al. (cite: peng13))."
+     }
+    ]
+   },
+   "citation": "Peng et al. ((cite: peng13))"
+  },
+  {
+   "what": {
+    "value": "Optical constants of forsterite (Mg2SiO4)",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "if we adopt the optical constants of forsterite (Mg$_2$SiO$_4$) from Jäger et al. ((cite: jaeger03))"
+     }
+    ]
+   },
+   "citation": "Jäger et al. ((cite: jaeger03))"
+  },
+  {
+   "what": {
+    "value": "Empirical energy levels and rest frequencies for H2O v2=2, 9_{2,8}-8_{3,5} from W2020 database",
+    "evidence": [
+     {
+      "loc": "Tentative identification of the vibrationally excited H$_2$O line ($\\varv_2 = 2$, $9_{2,8}$ – $8_{3,5}$)",
+      "quote": "Recently, Furtenbacher et al. ((cite: furtenbacher20a), b) produced the W2020 database of validated experimental transitions and empirical energy levels of H$_2$O."
+     }
+    ]
+   },
+   "citation": "Furtenbacher et al. ((cite: furtenbacher20a), (cite: furtenbacher20b))"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Determine stellar continuum disk center, angular size, flux density spectrum, and brightness temperature",
+   "method": "Fit visibility data at line-free channels before self-calibration with a uniform elliptical disk using uvmultifit; measure integrated continuum flux densities across the 9 spectral windows and fit a frequency power law.",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "Uniform elliptical disk model"
+   ],
+   "assumptions": [
+    "Continuum is formed by optically thick free-free emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify spectral lines and characterize line emission/absorption morphology and kinematics",
+   "method": "Cross-match detected spectral features against Splatalogue, CDMS, JPL, and HITRAN spectroscopic databases; extract spatially resolved spectra on and off the stellar disk, difference maps, and position-velocity (p-V) diagrams.",
+   "software": [
+    "Splatalogue",
+    "CDMS",
+    "JPL catalog",
+    "HITRAN"
+   ],
+   "key_parameters": [
+    "Five disk positions: center (pos 0) and radial offset 15 mas (0.5 R_cont) at PA = -15, 75, 165, 255 deg; off-limb positions at radii 50 mas and 90 mas; p-V slit width 5 mas at PA = 45-225 deg"
+   ],
+   "assumptions": [
+    "Systemic velocity V_sys = 40.4 km s^-1 LSR; partial spherical shells for p-V kinematic curves"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model 30SiO v=1 and 29SiO v=3 line profiles to derive radial temperature, density, and velocity profiles",
+   "method": "Construct a 1D spherical LTE radiative transfer model solving the formal integral of monochromatic intensity along lines of sight on and off the stellar continuum disk to reproduce spatially resolved spectra at positions 2 and 6.",
+   "software": [],
+   "key_parameters": [
+    "Broken power-law T_gas profile (r^-3 for r <= 1.2 R_cont, r^-1 for r > 1.2 R_cont); power-law density profile r^-5 with a factor of 10 step-like drop at 1.6 R_cont; piecewise linear velocity profile from 1.0 to 2.5 R_cont"
+   ],
+   "assumptions": [
+    "Spherical symmetry and LTE; isotope ratio 29Si/30Si = 1; Gaussian microturbulent line profile with FWHM = 2 km s^-1; H2 density of 2.3x10^13 cm^-3 (from 3D model local density 10^-10 g cm^-3) for fractional abundance"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate SO2 and SO excitation temperatures, column densities, and fractional abundances",
+   "method": "Perform an LTE population diagram analysis on 6 thermal SO2 lines integrated in two annular regions (30–60 mas and 60–100 mas); derive SO column density from the 251.826 GHz SO line adopting the SO2 excitation temperatures.",
+   "software": [],
+   "key_parameters": [
+    "SO2 lines #8, #12, #13, #19, #22, #26; inner annulus 30–60 mas, intermediate annulus 60–100 mas; SO line #41"
+   ],
+   "assumptions": [
+    "LTE and optically thin emission; 10% absolute flux calibration uncertainty; H2 column densities of 2.8x10^25–2.8x10^26 cm^-2 (inner) and 1.6x10^25–1.6x10^26 cm^-2 (intermediate) from r^-2 density profile based on Bladh et al. (2019)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare spatial distributions of molecular line emission with contemporaneous visible dust-scattered polarized light",
+   "method": "Create integrated intensity maps (and stacked TiO2 map) of molecular lines and overlay with the 820 nm VLT/SPHERE-ZIMPOL polarized intensity map from Paper I.",
+   "software": [],
+   "key_parameters": [
+    "Lines compared with 820 nm polarized intensity: HCN v2=1^1e, AlO, TiO, 30SiO v=1, Si17O v=0, stacked TiO2 (lines #51-#55), SO (#41), and SO2 (lines #9, #20)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density at 250.727 GHz (spw 1)",
+   "value": "267.7",
+   "uncertainty": "1.3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 | 250.727 | 468.75 | 1.17 | $19.7\\times16.5$ | 0.57 | $267.7 \\pm 1.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 251.826 GHz (spw 2)",
+   "value": "270.0",
+   "uncertainty": "1.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 | 251.826 | 468.75 | 1.16 | $19.3\\times16.7$ | 0.52 | $270.0 \\pm 1.4$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 252.471 GHz (spw 3)",
+   "value": "271.8",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 3 | 252.471 | 468.75 | 1.16 | $19.3\\times16.7$ | 0.47 | $271.8 \\pm 1.0$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 253.703 GHz (spw 4)",
+   "value": "273.7",
+   "uncertainty": "1.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 4 | 253.703 | 468.75 | 1.15 | $19.1\\times16.5$ | 0.52 | $273.7 \\pm 1.4$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 265.886 GHz (spw 5)",
+   "value": "301.5",
+   "uncertainty": "1.6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 5 | 265.886 | 468.75 | 1.10 | $18.4\\times15.8$ | 0.59 | $301.5 \\pm 1.6$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 266.943 GHz (spw 6)",
+   "value": "305.6",
+   "uncertainty": "1.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 6 | 266.943 | 468.75 | 1.10 | $18.4\\times15.8$ | 0.55 | $305.6 \\pm 1.5$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 267.198 GHz (spw 7)",
+   "value": "306.0",
+   "uncertainty": "1.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 7 | 267.198 | 468.75 | 1.10 | $18.3\\times15.8$ | 0.60 | $306.0 \\pm 1.5$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 267.720 GHz (spw 8)",
+   "value": "306.2",
+   "uncertainty": "1.3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 8 | 267.720 | 937.50 | 1.09 | $18.2\\times15.8$ | 0.63 | $306.2 \\pm 1.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 268.168 GHz (spw 9)",
+   "value": "307.8",
+   "uncertainty": "1.3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 9 | 268.168 | 937.50 | 1.09 | $18.1\\times15.7$ | 0.65 | $307.8 \\pm 1.3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux frequency power-law spectral index",
+   "value": "2.08",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\\nu} \\propto \\nu^{2.08 \\pm 0.03}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Millimeter continuum brightness temperature across 9 spws",
+   "value": "2130–2170",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "The uniform elliptical disk fitting in nine spectral windows results in brightness temperatures of 2130–2170 K over the millimeter continuum stellar disk."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified molecular spectral lines",
+   "value": "57",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We identified 57 lines, which include SiO, H$_2$O, SO$_{2}$, SO, HCN, AlO, AlOH, TiO, TiO$_{2}$, OH, and some of their isotopologues"
+    },
+    {
+     "loc": "Observations and data reduction",
+     "quote": "Table [\\[linelist\\]](#linelist) lists the 57 molecular lines identified in the present work"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of detected lines showing nonthermal emission over the stellar disk",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "While 38 of the detected lines appear in absorption against the continuum stellar disk as expected, we detect nonthermal emission on top of the continuum over the stellar disk in 19 lines, including SiO, H$_2$O, SO$_{2}$, and AlO."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of 29SiO v=2 J=6-5 maser",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "$^{29}$SiO $\\varv = 2$, $J$ = 6 – 5 at 253.703 GHz",
+     "quote": "The channel maps of the continuum-subtracted images, shown in Fig. [10](#channelmap_29sio_253), reveal three major maser clouds in the east, NNW, and WSW, where the peak intensity reaches $\\sim$18 Jy/beam at $V_{\\rm rel}$ = $-1.5$ to 0 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature of 29SiO v=2 J=6-5 maser",
+   "value": "10^6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "$^{29}$SiO $\\varv = 2$, $J$ = 6 – 5 at 253.703 GHz",
+     "quote": "The peak intensity of 18 Jy/beam corresponds to a brightness temperature of $10^6$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Model maximum infall velocity (at 1.7 R_cont = 2.5 R_*)",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "The derived velocity profile (Fig. [8](#linemodelplot)e) shows an accelerating infall toward the star, starting from 0 km s$^{-1}$ at 2.5 $R_{\\rm cont}$ (3.6 $R_{\\star}$) and reaching $\\sim$11 km s$^{-1}$ at 1.7 $R_{\\rm cont}$ (2.5 $R_{\\star}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Model maximum outflow velocity at deepest layer (1 R_cont)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "The outflow motion becomes stronger at smaller radii and reaches $V = -10$ km s$^{-1}$ at the deepest layer."
+    }
+   ]
+  },
+  {
+   "quantity": "Model 29SiO and 30SiO number density at 1 R_cont",
+   "value": "5e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "A $^{29}$SiO (and $^{30}$SiO) number density of $\\sim 5\\times10^6$ cm$^{-3}$ at 1 $R_{\\rm cont}$ is needed so that the blue part of the lines becomes optically thick as explained above."
+    }
+   ]
+  },
+  {
+   "quantity": "Step-like decrease factor in SiO number density at 1.6 R_cont",
+   "value": "10",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "We found it necessary to introduce a step-like decrease in the SiO number density by a factor of 10 at 1.6 $R_{\\rm cont}$ to reproduce the observed $^{30}$SiO $\\varv=1$ line"
+    },
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "Our modeling suggests the change in the SiO number density by a factor of $10 \\pm 5$."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated total fractional SiO abundance at 1 R_cont",
+   "value": ">=2.2e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Modeling of the $^{30}$SiO $\\varv = 1$ and $^{29}$SiO $\\varv = 3$ lines",
+     "quote": "the (total) SiO abundance is expected to be $\\ensuremath{\\gtrsim} 2.2 \\times 10^{-6}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 excitation temperature in innermost region (30–60 mas)",
+   "value": "750",
+   "uncertainty": "100",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "Figure [13](#pop_diagram_so2) shows that the measurements are reasonably fit with an excitation temperature ($T_{\\rm ex}$) of 750 K and a column density ($N_{\\rm so_2}$) of $4.6 \\times 10^{18}$ cm$^{-2}$ in the innermost region"
+    },
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "The uncertainties in the $T_{\\rm ex}$ and $N_{\\rm so_2}$ are $\\pm$100 K and 46% in the inner region and $\\pm$90 K and 42% in the intermediate region, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density in innermost region (30–60 mas)",
+   "value": "4.6e18",
+   "uncertainty": "46%",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "Figure [13](#pop_diagram_so2) shows that the measurements are reasonably fit with an excitation temperature ($T_{\\rm ex}$) of 750 K and a column density ($N_{\\rm so_2}$) of $4.6 \\times 10^{18}$ cm$^{-2}$ in the innermost region"
+    },
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "The uncertainties in the $T_{\\rm ex}$ and $N_{\\rm so_2}$ are $\\pm$100 K and 46% in the inner region and $\\pm$90 K and 42% in the intermediate region, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 excitation temperature in intermediate region (60–100 mas)",
+   "value": "720",
+   "uncertainty": "90",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "while the data in the intermediate region result in $T_{\\rm ex}$ = 720 K and $N_{\\rm so_2}$ = $1.9 \\times 10^{18}$ cm$^{-2}$."
+    },
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "The uncertainties in the $T_{\\rm ex}$ and $N_{\\rm so_2}$ are $\\pm$100 K and 46% in the inner region and $\\pm$90 K and 42% in the intermediate region, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density in intermediate region (60–100 mas)",
+   "value": "1.9e18",
+   "uncertainty": "42%",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "while the data in the intermediate region result in $T_{\\rm ex}$ = 720 K and $N_{\\rm so_2}$ = $1.9 \\times 10^{18}$ cm$^{-2}$."
+    },
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "The uncertainties in the $T_{\\rm ex}$ and $N_{\\rm so_2}$ are $\\pm$100 K and 46% in the inner region and $\\pm$90 K and 42% in the intermediate region, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional SO2 abundance lower limit (innermost region, 30–60 mas)",
+   "value": ">=2e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "This sets lower limits of $\\sim \\! 2\\times10^{-8}$ (innermost region) and $\\sim \\! 1\\times10^{-8}$ (intermediate region) on the fractional SO$_{2}$ abundance with respect to H$_2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional SO2 abundance lower limit (intermediate region, 60–100 mas)",
+   "value": ">=1e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO$_{2}$ lines",
+     "quote": "This sets lower limits of $\\sim \\! 2\\times10^{-8}$ (innermost region) and $\\sim \\! 1\\times10^{-8}$ (intermediate region) on the fractional SO$_{2}$ abundance with respect to H$_2$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density in innermost region (30–60 mas)",
+   "value": "7.0e17",
+   "uncertainty": "factor of ~2",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO lines",
+     "quote": "The resulting area-averaged SO column densities are $7.0 \\times 10^{17}$ cm$^{-2}$ in the innermost region between 30 and 60 mas (between 1 and 2 $R_{\\rm cont}$ $\\approx$ 1.5–3 $R_{\\star}$) and $3.0 \\times 10^{17}$ cm$^{-2}$ in the intermediate region between 60 and 100 mas"
+    },
+    {
+     "loc": "SO lines",
+     "quote": "Adopting higher or lower excitation temperatures of 1000 K and 500 K leads to an uncertainty in the SO column density by a factor of $\\sim$2."
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density in intermediate region (60–100 mas)",
+   "value": "3.0e17",
+   "uncertainty": "factor of ~2",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO lines",
+     "quote": "and $3.0 \\times 10^{17}$ cm$^{-2}$ in the intermediate region between 60 and 100 mas (between 2 and 3.3 $R_{\\rm cont}$ $\\approx$ 3–5 $R_{\\star}$)."
+    },
+    {
+     "loc": "SO lines",
+     "quote": "Adopting higher or lower excitation temperatures of 1000 K and 500 K leads to an uncertainty in the SO column density by a factor of $\\sim$2."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional SO abundance lower limit (innermost region, 30–60 mas)",
+   "value": ">=3e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO lines",
+     "quote": "These column densities translate into fractional SO abundances of $\\ensuremath{\\gtrsim} 3 \\times 10^{-9}$ and $\\ensuremath{\\gtrsim} \\! 2 \\times 10^{-9}$ in the innermost and intermediate regions, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges or channel indices selected as line-free channels in each of the 9 spectral windows for continuum visibility extraction and uvcontsub",
+  "tclean image size (number of pixels), stopping threshold, niter, and masking strategy during self-calibration and final cube imaging",
+  "Exact beam/aperture size used when extracting spatially resolved single-position spectra (whether single pixel or integrated over a restoring beam)",
+  "Exact broken power-law normalization constants, radial grid resolution, and fitting algorithm/objective function used in the 1D spherical LTE radiative transfer model for 29SiO v=3 and 30SiO v=1",
+  "Velocity integration ranges used for each of the 6 SO2 lines in the population diagram analysis and for the stacked TiO2 image"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency masks used to define line-free continuum across the 9 spectral windows (given the high line density of 57+7 lines)",
+  "tclean stopping criteria (niter, threshold) and masking parameters for continuum and line cubes",
+  "Custom code and exact parameter values (reference density normalization, exact piecewise velocity knot radii/values) for the 1D spherical LTE radiative transfer model of 29SiO and 30SiO",
+  "Velocity integration windows used for measuring integrated fluxes of the 6 SO2 lines in the population diagram"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Calibration, self-calibration intervals, CASA version, imaging parameters (pixel size, robust, multiscale scales, small-scale bias), and spectral line lists are very thoroughly documented. Minor deductions for unstated line-free channel ranges, tclean thresholds, and custom 1D LTE radiative transfer code.",
+ "rediscovery_reason": "Public Cycle 6 ALMA dataset (2018.1.01239.S) with a well-specified self-calibration and imaging recipe and clear quantitative targets (continuum flux densities and spectral index across 9 spws, 57 line identifications, 29SiO maser peak flux, and SO2 rotational diagram parameters).",
+ "source_card": "cards/2025A%26A...704A..18O/sonnet/card.md"
+}

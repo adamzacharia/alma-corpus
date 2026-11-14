@@ -1,0 +1,292 @@
+{
+ "bibcode": "2020ApJ...895..142L",
+ "title": "Magnetic Fields in the Early Stages of Massive Star Formation as Revealed by ALMA",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab9087",
+ "arxiv_id": "2005.01705",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the role of magnetic fields in the early stages of massive star formation, and does massive star formation start in equilibrium?",
+ "alma_project_codes": [
+  "2016.1.00248.S",
+  "2017.1.00793.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm), full polarization",
+  "arrays": "not stated",
+  "angular_resolution": "0.8-0.9 x 0.6-0.7 arcsec (~0.02-0.015 pc)",
+  "sensitivity": "Stokes I rms ~300, 80, 60 uJy/beam (MM1, MM4, MM9); Q/U ~35 (MM1), ~15 uJy/beam (MM4, MM9)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NH3 velocity dispersions 1.4 km/s (MM1-Core1) and 0.47 km/s (MM4-Core4)",
+    "evidence": [
+     {
+      "loc": "3.5",
+      "quote": "are 1.4 km s$^{-1}$ (cite: 2008ApJ...672L..33W) and 0.47 km s$^{-1}$ (cite: 2012ApJ...745L..30W), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 2008ApJ...672L..33W); (cite: 2012ApJ...745L..30W)"
+  },
+  {
+   "what": {
+    "value": "Condensation temperatures from NH3 map",
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum",
+      "quote": "The gas temperature map of the entire IRDC G28.34 was derived by (cite: 2018RNAAS...2...52W)"
+     }
+    ]
+   },
+   "citation": "(cite: 2018RNAAS...2...52W)"
+  },
+  {
+   "what": {
+    "value": "Protostellar luminosity 2950 Lsun for Condensation 1",
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum",
+      "quote": "The luminosity of the embedded protostellar object in Condensation 1 is $L_{*} = 2950 L_{\\odot}$ (cite: 2012A&A...547A..49R)."
+     }
+    ]
+   },
+   "citation": "(cite: 2012A&A...547A..49R)"
+  },
+  {
+   "what": {
+    "value": "Outflow position angles in G28.34 (except MM1)",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "has determined the plane-of-sky position angle of the outflows ($\\theta_{\\mathrm{outflow}}$) in IRDC G28.34 (except those in MM1)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...874..104K)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and Stokes Q/U and derive polarization quantities",
+   "method": "tclean imaging; debiased PI, P and position angle computed from Q,U,I",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify condensations in MM1 and derive masses and densities",
+   "method": "astrodendro on continuum; optically thin dust mass with kappa from beta=1.5, gas-to-dust 100",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_value = 4 sigma, min_delta = 1 sigma, min_npix = half beam area"
+   ],
+   "assumptions": [
+    "optically thin, isothermal, gas-to-dust 100:1, beta~1.5 (kappa=0.11 m2/kg), mu_H2=2.86, 50% mass uncertainty",
+    "Condensation 1 temperature from power-law profile (T0=38 K, r0=100 AU, q=0.4, background 20 K); MM1-Core1 30 K; MM4-Core4 16 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "P-I relation",
+   "method": "chi2 minimization power-law fit P ∝ I^alpha where P/dP>3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Magnetic field strength via ADF",
+   "method": "Houde et al. 2016 ADF fit, chi2 minimization, segments with PI/sigma_PI>3, B0 from Houde 2009 relation with NH3 turbulent dispersion",
+   "software": [],
+   "key_parameters": [
+    "fit over l<2.6 arcsec (MM1-Core1) and l<3.4 arcsec (MM4-Core4)"
+   ],
+   "assumptions": [
+    "constant turbulent-to-ordered field ratio for partially covered MM4-Core4; B=4Bpos/pi"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Virial analysis",
+   "method": "kinetic and magnetic virial masses, total virial parameter alpha_k+B",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "density profile rho ∝ r^-a"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "PIL analysis of B, intensity gradient, local gravity",
+   "method": "pixel masses from I>3sigma; local gravity summed; angles psi, delta, omega, Sigma_B",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "hydrostatic gas pressure neglected"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Outflow vs field alignment and fragmentation",
+   "method": "B angle within one beam per condensation vs outflow PA; MST with MiSTree; Jeans length/mass comparison",
+   "software": [
+    "MiSTree"
+   ],
+   "key_parameters": [
+    "projection correction factor pi/2"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Bpos MM1-Core1",
+   "value": "1.6",
+   "uncertainty": "within factor ~3",
+   "units": "mG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "The $B_{\\mathrm{pos}}$ for MM1-Core1 and MM4-Core4 are calculated to be 1.6 mG and 0.32 mG, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Bpos MM4-Core4",
+   "value": "0.32",
+   "uncertainty": "within factor ~3",
+   "units": "mG",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "The $B_{\\mathrm{pos}}$ for MM1-Core1 and MM4-Core4 are calculated to be 1.6 mG and 0.32 mG, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Alfven Mach number MM1-Core1, MM4-Core4",
+   "value": "1.61, 1.57",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5",
+     "quote": "are estimated to be 1.61 and 1.57, respectively, which means that the two cores are in super-Alfvénic states"
+    }
+   ]
+  },
+  {
+   "quantity": "Modified total virial parameter MM1-Core1, MM4-Core4",
+   "value": "0.76, 0.37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| MM1-Core1 | 0.33 | 2.42 | 2.2 | 212.4 | 1.9 | 102.8 | 61.1 | 95.5 | 132.8 | 161.2 | 0.63 | 0.76 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1-Core1 mass",
+   "value": "212.4",
+   "uncertainty": "50%",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| MM1-Core1 | 18:42:52.06 | -3:59:54.04 | 745.4 | 2.8 $\\times$ 2.6 | -138.8 | 30.0 | 212.4 | 5.0 | 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "P-I slope alpha MM1, MM4",
+   "value": "-0.3, -0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Polarized emission of dust",
+     "quote": "the power-law slope index $\\alpha$ is estimated to be approximately -0.3 and -0.7 for MM1 and MM4, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median Sigma_B MM1, MM4",
+   "value": "0.47, 0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.6.3",
+     "quote": "The median values of $\\Sigma_{\\mathrm{B}}$ in MM1 and MM4 are 0.47 and 0.27 respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans length and mass MM1-Core1",
+   "value": "0.019 pc, 0.76 Msun",
+   "uncertainty": "not stated",
+   "units": "pc, Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "of MM1-Core1 are estimated to be 0.019 pc and 0.76 M$_{\\odot}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average condensation separation MM1-Core1 (corrected)",
+   "value": "0.069",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "the corrected average separation ($L_{av,MST,cor}$) is estimated to be 0.069 pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "tclean deconvolver, cell size, image size, masks, clean threshold",
+  "Self-calibration solution intervals and reference antenna",
+  "Line-free channels / continuum subtraction method for line cubes",
+  "Density profile index a values for virial analysis",
+  "Pixel/binning used for LIC and PIL maps",
+  "Exact selection of polarization segments used in ADF fit",
+  "Reduced data products not released"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact tclean/self-cal parameters",
+  "Line-free channels and continuum selection",
+  "Profile index a and per-pixel map details",
+  "Segment selection for ADF"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and key formulae/values given, but imaging details and several adopted inputs are missing.",
+ "rediscovery_reason": "Public data, numeric results (Bpos, virial parameters, masses) with stated formulae, though some settings are missing.",
+ "source_card": "cards/2020ApJ...895..142L/sonnet/card.md"
+}

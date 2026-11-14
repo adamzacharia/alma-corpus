@@ -1,0 +1,356 @@
+# High molecular gas content and star formation rates in local galaxies that host quasars, outflows, and jets
+
+`2020MNRAS.498.1560J` | Monthly Notices of the Royal Astronomical Society 2020 | first author: Jarvis, M. E. | arXiv: 2007.10351 | DOI: 10.1093/mnras/staa2196
+
+Card schema 1.0 | model claude-sonnet-5-5-claude-code | depth light | type multi_facility_alma_minor
+
+## Science
+
+- Fields: nearby_galaxies, agn_and_quasars
+- Question: Do powerful z~0.1 type 2 quasars with kpc-scale ionized outflows and jets show signatures of AGN feedback (depletion or excitation) in their total molecular gas reservoirs, measured from unresolved APEX CO(2-1) and CO(6-5)?  
+  > "to identify possible signatures of AGN feedback on the total molecular gas reservoirs of their host galaxies." (abstract); "Specifically, we present Atacama Pathfinder EXperiment (APEX) observations of the CO(2–1) transition for nine sources and the CO(6–5) for a subset of three." (abstract)
+- Target **J0945+1737**: coordinates RA 09:45:21.33, Dec +17:37:53.2 (J2000)  
+  > "J0945+1737 | 09:45:21.33 | +17:37:53.2 | 0.1281" (Table of target properties); z/distance z = 0.1281  
+  > "J0945+1737 | 09:45:21.33 | +17:37:53.2 | 0.1281" (Table of target properties); distance from redshift given in sample table; its source is not stated there (SDSS redshift is mentioned elsewhere); cosmology H0=70, OmegaM=0.3, OmegaLambda=0.7  
+  > "J0945+1737 | 09:45:21.33 | +17:37:53.2 | 0.1281" (Table of target properties)
+- Target **J0958+1439**: coordinates RA 09:58:16.88, Dec +14:39:23.7 (J2000)  
+  > "J0958+1439 | 09:58:16.88 | +14:39:23.7 | 0.1091" (Table of target properties); z/distance z = 0.1091  
+  > "J0958+1439 | 09:58:16.88 | +14:39:23.7 | 0.1091" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J0958+1439 | 09:58:16.88 | +14:39:23.7 | 0.1091" (Table of target properties)
+- Target **J1000+1242**: coordinates RA 10:00:13.14, Dec +12:42:26.2 (J2000)  
+  > "J1000+1242 | 10:00:13.14 | +12:42:26.2 | 0.1479" (Table of target properties); z/distance z = 0.1479  
+  > "J1000+1242 | 10:00:13.14 | +12:42:26.2 | 0.1479" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1000+1242 | 10:00:13.14 | +12:42:26.2 | 0.1479" (Table of target properties)
+- Target **J1010+1413**: coordinates RA 10:10:22.95, Dec +14:13:00.9 (J2000)  
+  > "J1010+1413 | 10:10:22.95 | +14:13:00.9 | 0.1992" (Table of target properties); z/distance z = 0.1992  
+  > "J1010+1413 | 10:10:22.95 | +14:13:00.9 | 0.1992" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1010+1413 | 10:10:22.95 | +14:13:00.9 | 0.1992" (Table of target properties)
+- Target **J1010+0612**: coordinates RA 10:10:43.36, Dec +06:12:01.4 (J2000)  
+  > "J1010+0612 | 10:10:43.36 | +06:12:01.4 | 0.0982" (Table of target properties); z/distance z = 0.0982  
+  > "J1010+0612 | 10:10:43.36 | +06:12:01.4 | 0.0982" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1010+0612 | 10:10:43.36 | +06:12:01.4 | 0.0982" (Table of target properties)
+- Target **J1100+0846**: coordinates RA 11:00:12.38, Dec +08:46:16.3 (J2000)  
+  > "J1100+0846 | 11:00:12.38 | +08:46:16.3 | 0.1004" (Table of target properties); z/distance z = 0.1004  
+  > "J1100+0846 | 11:00:12.38 | +08:46:16.3 | 0.1004" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1100+0846 | 11:00:12.38 | +08:46:16.3 | 0.1004" (Table of target properties)
+- Target **J1316+1753**: coordinates RA 13:16:42.90, Dec +17:53:32.5 (J2000)  
+  > "J1316+1753 | 13:16:42.90 | +17:53:32.5 | 0.1504" (Table of target properties); z/distance z = 0.1504  
+  > "J1316+1753 | 13:16:42.90 | +17:53:32.5 | 0.1504" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1316+1753 | 13:16:42.90 | +17:53:32.5 | 0.1504" (Table of target properties)
+- Target **J1356+1026**: coordinates RA 13:56:46.10, Dec +10:26:09.0 (J2000)  
+  > "J1356+1026 | 13:56:46.10 | +10:26:09.0 | 0.1233" (Table of target properties); z/distance z = 0.1233  
+  > "J1356+1026 | 13:56:46.10 | +10:26:09.0 | 0.1233" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1356+1026 | 13:56:46.10 | +10:26:09.0 | 0.1233" (Table of target properties)
+- Target **J1430+1339**: coordinates RA 14:30:29.88, Dec +13:39:12.0 (J2000)  
+  > "J1430+1339 | 14:30:29.88 | +13:39:12.0 | 0.0852" (Table of target properties); z/distance z = 0.0852  
+  > "J1430+1339 | 14:30:29.88 | +13:39:12.0 | 0.0852" (Table of target properties); distance from redshift given in sample table; its source is not stated there  
+  > "J1430+1339 | 14:30:29.88 | +13:39:12.0 | 0.0852" (Table of target properties)
+
+## Data provenance
+
+- ALMA projects: 2016.1.01535.S, 2018.1.01767.S
+- bands: APEX CO(6-5) with SEPIA660 band 9; band of the ALMA CO(3-2) data not stated  
+  > "and observed between 2019 August 31 and December 10 using the SEPIA660 band 9 instrument with PWVs between 0.4 and 0.6." (3.1 Data reduction)
+- frequencies and spectral setup: _not stated_
+- continuum bandwidth: _not stated_
+- arrays: APEX single dish with SEPIA180, PI230 and APEX-1 (CO(2-1)) and SEPIA660 (CO(6-5)); ALMA array not stated  
+  > "Three different instruments were used for these observations due to the redshift range of the targets and changes in the available instrumentation over the period of observation" (3.1 Data reduction)
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: APEX beams ~28 arcsec (CO(2-1)) and ~9 arcsec (CO(6-5)); ALMA CO(3-2) images ~0.3-0.5 arcsec  
+  > "The beams of the APEX observations discussed here are $\sim$28 arcsec" (3.3 Evaluating contamination from other sources and beam corrections); "for the CO(2–1) data and $\sim$9 arcsec ($\sim$17 kpc at $z$=0.1) for the CO(6–5) data." (3.3 Evaluating contamination from other sources and beam corrections); "which have spatial resolution of $\sim$0.3–0.5 arcsec and a maximum recoverable scale of $\sim$4 arcsec." (3.3 Evaluating contamination from other sources and beam corrections)
+- max recoverable scale: ALMA CO(3-2): ~4 arcsec; ~19 arcsec for J1430+1339  
+  > "which have spatial resolution of $\sim$0.3–0.5 arcsec and a maximum recoverable scale of $\sim$4 arcsec." (3.3 Evaluating contamination from other sources and beam corrections); "For J1430$+$1339, the ALMA data has a maximum recoverable scale of $\sim$19 arcsec." (footnote 9)
+- sensitivity: _not stated_
+- time on source: APEX on-source time per target given in Table 1 (CO(2-1): 28.5 to 261 min; CO(6-5): 118 to 220.6 min)  
+  > "(3) On source time of the final total spectrum" (Table 1)
+- observing dates: CO(2-1): 2017 July to 2018 December, PWV 0.6-4.7 mm; CO(6-5): 2019 August 31 to December 10, PWV 0.4-0.6 mm  
+  > "with the observations carried out between 2017 July 7 and 2018 December 29 with precipitable water vapours (PWV) between 0.6 and 4.7 mm." (3.1 Data reduction); "and observed between 2019 August 31 and December 10 using the SEPIA660 band 9 instrument with PWVs between 0.4 and 0.6." (3.1 Data reduction)
+- pi or archival as stated: APEX programmes E-0100.B-0166 (PI Jarvis) and E-0104.B-0292 (PI Harrison), data accessed from the ESO archive; ALMA CO(3-2) from 2016.1.01535.S (PI Lansbury) and 2018.1.01767.S (PI Thomson), used as preliminary images  
+  > "E-0100.B-0166 \[PI: Jarvis\]" (3.1 Data reduction); "The data underlying this article were accessed from the ESO Science Archive Facility" (Data Availability Statement); "Specifically, id. 2016.1.01535.S (PI. Lansbury), and id. 2018.1.01767.S (PI. Thomson)" (footnote 8)
+- Line: CO J=2-1 (230.538 GHz)
+- Line: CO J=6-5 (691.473 GHz)
+- Line: CO J=3-2 (ALMA, contamination check only) (not stated)
+- Other facility **APEX**: Primary data: unresolved CO(2-1) spectra for nine targets and CO(6-5) for three  
+  > "We observed CO(2–1) for the whole sample presented here and CO(6–5) for a representative sub-sample" (3.1 Data reduction)
+- Other facility **ALMA**: Higher-resolution preliminary CO(3-2) images (and published CO(1-0)/CO(3-2) for J1356+1026) used to check for contaminating CO sources within the APEX beam  
+  > "To check for this scenario, we used higher spatial resolution ALMA CO observations." (3.3 Evaluating contamination from other sources and beam corrections)
+- Other facility **GALEX, SDSS, 2MASS, WISE, IRAS, Herschel (archival)**: Photometry for the UV-IR SED fits (done in Jarvis et al. 2019) giving stellar masses and SFRs  
+  > "We used data from GALEX, SDSS, 2MASS, WISE, IRAS, and where available archival," (2.1 SED fitting)
+- External data: Published ALMA CO(1-0) and CO(3-2) images of J1356+1026  
+  > "Specifically, we use the CO(1–0) and CO(3–2) images published in (cite: Sun14) for J1356" (3.3 Evaluating contamination from other sources and beam corrections) [from (cite: Sun14)]
+- External data: Homogenised CO-based galaxy sample (xCOLD GASS, EGNOG, GOALS, Combes11) of gas fractions and depletion times used as comparison  
+  > "We compare our data to the homogenised sample of (cite: Tacconi18) limited to within" (5.1.2 Molecular gas comparisons) [from (cite: Tacconi18)]
+- External data: xCOLD GASS gas fractions versus [OIII]/Hbeta for AGN  
+  > "we build upon the work of (cite: Saintonge17) which found that the BPT selected AGN in the xCOLD GASS sample" (5.1.3 The impact of AGN on the molecular gas content) [from (cite: Saintonge17)]
+- External data: L'CO-LIR relation (130 galaxies) used as comparison  
+  > "Here we focus on the work of (cite: Sargent14) which used CO observations of 130" (5.1.1 L'CO / LIR relations) [from (cite: Sargent14)]
+- External data: Redshift-dependent star-forming main sequence  
+  > "we consider where our galaxies lie in comparison to the redshift dependent main sequence of (cite: Sargent14)" (2.2 Our targets in the context of the star-forming main sequence) [from (cite: Sargent14)]
+- External data: CO spectral line energy distribution model as a function of SFR surface density  
+  > "The CO spectral line energy distribution (SLED) modelled by (cite: Narayanan14), which depends solely on the star formation rate surface density" (5.2 CO excitation) [from (cite: Narayanan14)]
+- External data: SDSS star-forming comparison galaxies with MPA-JHU measurements  
+  > "all SDSS sources defined as star-forming based on BPT emission-line ratios (cite: Kauffmann03b; Brinchmann04; Tremonti04)" (2.2 Our targets in the context of the star-forming main sequence) [from (cite: Kauffmann03b; Brinchmann04; Tremonti04)]
+- External data: Mass-metallicity relation used to compute alpha_CO for the Tacconi comparison  
+  > "Also following (cite: Tacconi18) we use the following mass metallicity relation from (cite: Genzel15):" (Appendix B alpha_CO and molecular gas mass calculations) [from (cite: Genzel15)]
+- Simulation/model as data: CO SLED model of Narayanan14 giving predicted r62 as a function of SFR surface density  
+  > "The CO spectral line energy distribution (SLED) modelled by (cite: Narayanan14), which depends solely on the star formation rate surface density" (5.2 CO excitation)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: _not stated_
+- flux scale uncertainty: ~13 percent systematic uncertainty on APEX line flux from the K-to-Jy conversion factors  
+  > "We note there is an additional $\sim$13 percent systematic uncertainty on the line flux from the error on the temperature to flux density conversion factors" (4 Results)
+- self calibration: _not stated_
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: _not stated_
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: _not stated_
+- final rms: _not stated_
+
+### Inherited from earlier work
+
+- Stellar masses, SFRs, AGN properties from UV-IR SED fitting with CIGALE  
+  > "For further details of the SED fitting, derived quantities and uncertainties we refer the reader to (cite: Jarvis19)." (2.1 SED fitting) [from (cite: Jarvis19)]
+- Radio luminosity dominated by AGN and extended radio structures for the sample  
+  > "In (cite: Jarvis19) we established that the radio luminosity of these targets is dominated by emission from the AGN" (2 Sample selection and properties) [from (cite: Jarvis19)]
+- Gas-mass procedure (metallicity-dependent alpha_CO and mass-metallicity relation) copied from Tacconi et al.  
+  > "To ensure consistency with the comparison sample, we calculate the molecular gas masses of our samples using the same procedure as in (cite: Tacconi18)." (5.1.2 Molecular gas comparisons) [from (cite: Tacconi18)]
+- alpha_CO and metallicity for the xCOLD GASS comparison follow the xCOLD GASS method  
+  > "To keep consistent with the methods adopted in the comparison sample, we calculate the metallicity (12+log(O/H)) following the (cite: Pettini04)" (Appendix B alpha_CO and molecular gas mass calculations) [from (cite: Saintonge17); (cite: Accurso17); (cite: Kewley08)]
+- CO(2-1)/CO(1-0) ratio r21 = 0.8  
+  > "we have adopted the mean value of 0.8 throughout this work (cite: Braine93; Leroy09)" (5.1.2 Molecular gas comparisons) [from (cite: Braine93; Leroy09)]
+- Initial guess scaling of CO(6-5) flux (x1.4) in the Bayesian fits  
+  > "multiplying the fluxes by 1.4 to convert to the CO(6–5) transition (cite: Papadopoulos12)" (Appendix A Bayesian fitting) [from (cite: Papadopoulos12)]
+- Chabrier initial mass function  
+  > "and assume a (cite: Chabrier03) initial mass function (IMF)" (1 Introduction) [from (cite: Chabrier03)]
+
+### Not stated but needed to reproduce (our reading)
+
+- The stellar masses, SFRs, L_IR,SF values come from Jarvis et al. 2019 SED fits; the CIGALE module choices and parameter grids are not given here
+- Flagged channels and the by-eye spike flags per day are not listed
+- Exact line-free baseline windows per source (only ~500 km/s either side of the line is stated)
+- Per-source rms/rms_t cutoff within the 1.25-2 range
+- Private-communication K/Jy efficiency values beyond the Table 1 numbers
+- Initial-guess values for the seven detections come from chi-square fits in 100 km/s bins whose results are not tabulated
+- Details of the ALMA CO(3-2) data reduction and imaging (preliminary images; no processing described)
+- Redshift source and the exact luminosity distances used for L'CO
+- Random seed and emcee version
+
+## Analysis recipe
+
+1. **Flag, combine IFs and baseline-subtract APEX scans**: Flag spike channels by eye per day, flag leading 150 (80 for CO(6-5)) and trailing 10 channels, combine the two spectrometers per sideband and polarisation, subtract a linear baseline in CLASS  
+  > "flagged, by eye, any channels affected by spikes." (3.1 Data reduction); "We also flagged the leading 150 channels (80 for the CO(6–5) data) and trailing 10 (in the overlap region) of each individual spectra." (3.1 Data reduction); "we subtracted a linear baseline using the class base command" (3.1 Data reduction)
+   - software: CLASS (GILDAS), combineTwoIFsAPEX.class
+   - parameter: baseline excludes ~500 km/s either side of the line (or the expected line position from the SDSS redshift when no line is seen)  
+  > "excluding a velocity range $\sim$500 km s$^{-1}$ to either side of the observed line position" (3.1 Data reduction)
+   - fitting: _not stated_
+   - validation: _not stated_
+2. **Reject poor scans, convert K to Jy, co-add and resample**: Remove scans whose rms in 50 km/s bins exceeds a cutoff times the theoretical rms, scale each day to Jy with the APEX efficiency tool, combine spectra and resample to 1 km/s with a final linear baseline  
+  > "We then removed scans with poor baselines based on the ratio of their rms in 50 km s" (3.1 Data reduction); "For each time frame and instrument the K/Jy conversion was determined using the APEX telescope efficiencies tool" (3.1 Data reduction); "Finally, the spectra were combined into a single spectrum and re-sampled to 1 km s" (3.1 Data reduction)
+   - software: CLASS (GILDAS), APEX telescope efficiencies tool
+   - parameter: rms / rms_t cutoff 1.25-2, chosen by visual examination and by minimising the final rms in 100 km/s bins  
+  > "ranged from rms / rms$_{t}$=1.25–2." (3.1 Data reduction)
+   - fitting: _not stated_
+   - validation: _not stated_
+3. **Fit the line with a Gaussian by MCMC and derive upper limits**: Single Gaussian line with free flux, peak velocity, width and Gaussian noise; emcee posterior medians as values, 16th/84th percentiles as errors, 3 sigma upper limits from the 99.7th percentile  
+  > "We assume a single Gaussian profile for the line, and fit for the line flux (f; integral under the line), peak velocity" (3.2 Data analysis); "upper limits on the line flux from the 99.7th percentile on the posterior distribution" (4 Results)
+   - software: emcee
+   - parameter: 100 walkers, 500 steps, first 300 steps discarded as burn-in  
+  > "We use 100 walkers for the MCMC analysis and run it for 500 steps with the first 300 steps later cropped as burn in" (Appendix A Bayesian fitting)
+   - assumption: Gaussian noise; single Gaussian line profile  
+  > "We assume a single Gaussian profile for the line" (3.2 Data analysis)
+   - fitting: emcee MCMC with weak uniform priors (flux, noise, width greater than zero; velocity limited to the data coverage) and a Gaussian plus Poisson likelihood  
+  > "We adopted weak priors for our fitting procedure." (Appendix A Bayesian fitting); "Our priors are uniform distributions which drop to 0 outside of the bounds described above." (Appendix A Bayesian fitting); "our likelihood is composed of a single Gaussian with both Poisson and Gaussian noise considered." (Appendix A Bayesian fitting)
+   - validation: Varied initial guesses by an order of magnitude; checked trace plots for burn-in; compared with Gaussian fits to 100 km/s binned data  
+  > "By fitting sources multiple times with the initial guesses varied by approximately an order of magnitude, we confirmed that the results, within errors do not depend strongly on the initial guess used." (Appendix A Bayesian fitting); "The values derived from our Bayesian analysis are consistent within errors to those derived from fitting a Gaussian directly to the data in 100 km s" (4 Results)
+4. **Check for contamination in the APEX beam using ALMA CO images**: Compare higher-resolution ALMA CO(3-2) (and CO(1-0) for J1356+1026) images with the APEX beam to find bright companions; only J1010+0612 has one, ~82 per cent of flux in the primary  
+  > "To check for this scenario, we used higher spatial resolution ALMA CO observations." (3.3 Evaluating contamination from other sources and beam corrections); "$\sim$82 per cent of the total flux is in our primary target of J1010$+$0612" (3.3 Evaluating contamination from other sources and beam corrections)
+   - assumption: No CO flux falls outside the APEX beams, so no beam correction is applied  
+  > "we do not expect any CO flux to fall beyond our observed beams, making beam corrections unnecessary." (3.3 Evaluating contamination from other sources and beam corrections)
+   - fitting: _not stated_
+   - validation: 2MASS J, H, K fluxes give 87, 92 and 91 per cent of the combined flux in the primary, supporting the ALMA split  
+  > "This is supported by the percent of the total system flux in J1010$+$0612 from 2MASS" (footnote 10)
+5. **Compute CO line luminosities**: Solomon et al. 1997 formula L'CO = 3.25e7/nu_rest^2 * D_L^2/(1+z) * f  
+  > "We calculate the CO luminosities (cite: Solomon97) for each source using:" (4 Results); "and f is the flux of the CO line in Jy km s" (4 Results)
+   - parameter: rest frequencies 230.538 GHz (CO(2-1)) and 691.473 GHz (CO(6-5))  
+  > "(230.538 and 691.473 GHz for the CO(2–1) and CO(6–5) lines respectively)" (4 Results)
+   - assumption: Luminosity distances from the adopted flat LCDM cosmology (H0=70, OmegaM=0.3, OmegaLambda=0.7)  
+  > "We adopt $H_0$=70km s$^{-1}$Mpc$^{-1}$, $\Omega_M$=0.3, $\Omega_\Lambda$=0.7 throughout" (1 Introduction)
+   - fitting: _not stated_
+   - validation: _not stated_
+6. **Adopt SED-derived stellar mass and SFR and compute distance from the main sequence**: CIGALE UV-IR SED fits (from Jarvis et al. 2019); SFR from L_IR,SF with the Kennicutt & Evans relation scaled by 0.94 for Kroupa to Chabrier; Delta_MS as sSFR relative to the Sargent et al. 2014 main sequence, starburst if Delta_MS ~4 or more  
+  > "CIGALE simultaneously fits the attenuated stellar emission, star formation heated dust emission, AGN emission (from the accretion disc and dust heating) and nebular emission." (2.1 SED fitting); "converting from a Kroupa to a Chabrier IMF by multiplying by 0.94 (cite: Madau14)" (2.1 SED fitting); "for each source as the ratio of its specific star formation rate" (2.2 Our targets in the context of the star-forming main sequence); "In the rest of this paper we assume $\Delta_{\textrm{MS}}$$\sim$4 and consider it as a starburst." (footnote 5)
+   - software: CIGALE, AGNfitter
+   - assumption: 0.42 dex systematic uncertainty on SFR  
+  > "This results in a 0.42 dex systematic uncertainty for the star formation rate values" (2.1 SED fitting)
+   - fitting: _not stated_
+   - validation: Independent SED fits with AGNfitter; Herschel-based SFRs agree within 0.27 dex and the main conclusion is unchanged  
+  > "We note that using the AGNfitter stellar masses and SFRs would not change the main conclusion of this work." (2.1 SED fitting)
+7. **Derive molecular gas masses, gas fractions and depletion times**: Mgas = alpha_CO x L'CO(1-0), with L'CO(1-0) from L'CO(2-1) using r21=0.8; alpha_CO from the Tacconi-consistent recipe (Bolatto13/Genzel12 geometric mean with Genzel15 mass-metallicity relation) and, for xCOLD GASS comparison, from the Accurso17 relation with Kewley08 metallicity  
+  > "to calculate molecular gas masses following M$_\textrm{gas}$= $\alpha_\textrm{CO}$$\times$L$^\prime_\textrm{CO}$(1–0)." (5.1.2 Molecular gas comparisons); "We convert from L$^\prime_\textrm{CO}$(2–1) to L$^\prime_\textrm{CO}$(1–0) using r$_{21}$=0.8." (5.1.2 Molecular gas comparisons)
+   - parameter: alpha_CO 4.0-4.2 (Tacconi route); 3.3-6.0 (xCOLD GASS route)  
+  > "The resultant $\alpha_\textrm{CO}$ values for our sample range from 4.0 to 4.2." (5.1.2 Molecular gas comparisons); "which results in $\alpha_\textrm{CO}$ values between 3.3 and 6.0" (5.1.3 The impact of AGN on the molecular gas content)
+   - assumption: r21 = 0.8 (observed range 0.4 to 1.2 across AGN samples)  
+  > "we have adopted the mean value of 0.8 throughout this work (cite: Braine93; Leroy09)" (5.1.2 Molecular gas comparisons)
+   - fitting: _not stated_
+   - validation: Gas masses from the two alpha_CO routes are consistent within errors; using alpha_CO=1 for three strong starbursts does not change conclusions  
+  > "We note that the gas masses derived from both of the methods described above are consistent within errors." (Appendix B alpha_CO and molecular gas mass calculations); "for these sources does not change the conclusions of this work." (Appendix B alpha_CO and molecular gas mass calculations)
+8. **Compare L'CO, gas fractions and depletion times with literature samples**: Compare L'CO versus L_IR with Sargent14; fit log-linear relations to the Tacconi18 sample with AGN removed and measure median log vertical offsets of our sources; compare gas fraction against [OIII]/Hbeta with xCOLD GASS  
+  > "To quantify this comparison, we perform a simple log linear fit to the (cite: Tacconi18) sample with AGN removed" (5.1.2 Molecular gas comparisons); "we build upon the work of (cite: Saintonge17) which found that the BPT selected AGN in the xCOLD GASS sample" (5.1.3 The impact of AGN on the molecular gas content)
+   - parameter: Tacconi18 comparison limited to within +/-0.05 of the sample redshift range, CO-based measurements only  
+  > "We compare our data to the homogenised sample of (cite: Tacconi18) limited to within" (5.1.2 Molecular gas comparisons)
+   - fitting: Simple log-linear fit (method details not stated)  
+  > "we perform a simple log linear fit to the (cite: Tacconi18) sample with AGN removed" (5.1.2 Molecular gas comparisons)
+   - validation: Conclusions checked with sSFR instead of Delta_MS  
+  > "we obtain consistent conclusions if we just consider sSFR." (5.1.2 Molecular gas comparisons)
+9. **Constrain CO excitation from the CO(6-5)/CO(2-1) ratio**: Form r62 = L'CO(6-5)/L'CO(2-1) limits for three targets and compare with SLED predictions of Narayanan14 and with observed r62 distributions  
+  > "The CO spectral line energy distribution (SLED) modelled by (cite: Narayanan14), which depends solely on the star formation rate surface density" (5.2 CO excitation)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CLASS (GILDAS)** mar19a: Reducing and analysing the APEX single-dish spectra  
+  > "The data were reduced and analysed using the Continuum and Line Analysis Single-dish Software (class; version mar19a)." (3.1 Data reduction)
+- **combineTwoIFsAPEX.class** : Combining the two spectrometers in the same sideband and polarisation  
+  > "We combined the two spectrometers in the same sideband and polarisation using Zhiyu Zhang" (3.1 Data reduction)
+- **emcee** : MCMC fitting of the Gaussian line profile  
+  > "We fit each averaged spectrum using Bayesian fitting and MCMC implemented through emcee" (3.2 Data analysis)
+- **CIGALE** : UV-IR SED fitting for stellar mass, SFR and AGN properties (done in Jarvis et al. 2019)  
+  > "CIGALE simultaneously fits the attenuated stellar emission, star formation heated dust emission, AGN emission (from the accretion disc and dust heating) and nebular emission." (2.1 SED fitting)
+- **AGNfitter** : Independent SED fits to verify CIGALE stellar masses and SFRs  
+  > "We verified these values by performing independent SED fits using another code: AGNfitter" (2.1 SED fitting)
+- **APEX telescope efficiencies tool** : Determining the K/Jy conversion for each instrument and time frame  
+  > "For each time frame and instrument the K/Jy conversion was determined using the APEX telescope efficiencies tool" (3.1 Data reduction)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Number of CO(2-1) detections | 7 of 9 | not stated | dimensionless | 3 | Therefore we detect seven of our nine targets in CO(2–1). |
+| CO(2-1) line flux of detections | 7-23 | not stated | Jy km/s | 3 | Overall we detect the CO(2–1) line for seven of our nine targets with fluxes in the range 7–23 Jy km s |
+| CO(2-1) 3 sigma upper limits (J0958+1439, J1356+1026) | 21.5 and 33.1 | not stated | Jy km/s | 3 | The two non detected targets have upper limits of 21.5 and 33.1 Jy km s |
+| CO(6-5) 3 sigma upper limits (J1010+0612, J1100+0846, J1430+1339) | 110, 74 and 135 | not stated | Jy km/s | 3 | Our upper limits on the CO(6–5) fluxes are 110, 74 and 135 Jy km s |
+| CO(2-1) line widths (sigma) of detections | 150-200 | not stated | km/s | 3 | and line widths ($\sigma$) between 150 and 200 km s$^{-1}$ |
+| L'CO(2-1) of detected sources | (1.4-7)e9 | not stated | K km/s pc^2 | 5 | This results in L$^\prime_\textrm{CO}$(2–1) values of (1.4–7)$\times 10 ^9$ K km s$^{-1}$ pc$^2$ for the seven detected sources |
+| Number of targets classified as starbursts | 7 of 9 | not stated | dimensionless | 6 | all of our sources are on or above their local main sequence with seven classified as starbursts |
+| Average specific star formation rate | 1.7 | not stated | 1/Gyr | 6 | average specific star formation rates of 1.7 Gyr |
+| Average molecular gas mass of the seven CO-detected quasars | 1.3e10 | not stated | Msun | 7 | (average M$_\textrm{gas}$=1.3$\times$10$^{10}$ M$_\odot$) |
+| alpha_CO (Tacconi-consistent route) | 4.0-4.2 | not stated | Msun (K km/s pc^2)^-1 | 7 | The resultant $\alpha_\textrm{CO}$ values for our sample range from 4.0 to 4.2. |
+| log molecular gas mass of the seven detections | 9.9 to 10.5 | not stated | log(Msun) | 7 | the derived molecular gas masses fall in the range of 9.9$<$log(M$_\textrm{gas}$/M$_\odot$)$<$10.5 |
+| Gas fraction (Mgas/Mstar) and depletion time (Mgas/SFR) ranges | Mgas/Mstar = 0.1-1.2; Mgas/SFR = 0.16-0.95 | not stated | dimensionless; Gyr | 7 | with corresponding ranges of gas fractions and depletion times of M$_\textrm{gas}$/$M_{\star}$=0.1–1.2 and M$_\textrm{gas}$/SFR$=$0.16-0.95 Gyr, respectively. |
+| Median log vertical offsets from Tacconi18 non-AGN relation | +0.1 (gas fraction vs Delta_MS), +0.04 (depletion time vs Delta_MS) | not stated | dex | 8 | Our sample have a median log vertical offset of $+$0.1 in the gas fraction versus $\Delta_{\textrm{MS}}$ plane and $+$0.04 in the depletion time versus $\Delta_{\textrm{MS}}$ plane |
+| CO(6-5)/CO(2-1) luminosity ratio upper limits (J1010+0612, J1100+0846, J1430+1339) | <0.66, 0.35, 0.89 | not stated | dimensionless | 9 | Specifically, we find r$_{62}$$<$$0.66$, 0.35 and 0.89 for J1010$+$0612, J1100$+$0846 and J1430$+$1339 respectively |
+
+## Qualitative findings
+
+- The jets and outflows do not have an immediate appreciable impact on the global molecular gas reservoirs  
+  > "the jets and outflows do not have an immediate appreciable impact on the global molecular gas reservoirs." (abstract)
+- The quasar hosts lie preferentially in gas-rich starburst galaxies  
+  > "our results suggest that powerful type 2 AGN with signatures of ionized gas outflows and jets, reside preferentially in gas rich, starburst galaxies." (5.3 The role of AGN in galaxy evolution)
+- J1356+1026 may be exceptionally gas poor if the Sun14 CO(1-0) luminosity is used  
+  > "It is worth noting that one of our sources, which is undetected in our APEX data, may be exceptional in that it does have a low gas content." (5.3 The role of AGN in galaxy evolution)
+
+## Claim tuples
+
+- H: Powerful quasars with ionized outflows and jets have depleted molecular gas reservoirs compared with matched non-AGN galaxies | E: APEX CO(2-1) for nine type 2 quasars, converted to gas masses and compared with Sargent14 and Tacconi18 samples matched in redshift, stellar mass, sSFR and Delta_MS | R: Gas fractions 0.1-1.2 and depletion times 0.16-0.95 Gyr; median offsets +0.1 and +0.04 dex from the non-AGN relations | F: No immediate appreciable depletion of the global molecular gas by the jets and outflows | **supported**
+- H: The quasar hosts are gas-rich and starbursting despite no pre-selection on star formation or gas | E: SED-derived SFRs and masses plus APEX CO(2-1) detections | R: Seven of nine are starbursts; seven are CO-detected with large gas reservoirs | F: These systems represent a gas-rich phase with simultaneously high star formation and nuclear activity | **supported**
+- H: Higher AGN power (higher [OIII]/Hbeta) goes with higher gas fractions | E: Combine the sample with xCOLD GASS and plot gas fraction versus [OIII]/Hbeta, then repeat with offsets from Delta_MS-dependent relations | R: Raw gas fractions rise with [OIII]/Hbeta, but the trend disappears when offsets from the Tacconi18 relations are used | F: The higher gas fractions of the most extreme AGN track their higher star formation relative to the main sequence | **partially**
+- H: AGN and jets boost the CO excitation (high CO(6-5)/CO(2-1)) | E: APEX CO(6-5) for three targets and CO(2-1) ratios compared with the Narayanan14 SLED and observed ratios | R: Only upper limits on r62: <0.66, 0.35, 0.89 | F: For at least two of three targets the data are consistent with star formation dominating the excitation; J1430+1339 is unconstrained | **partially**
+
+## Reasoning
+
+- Why this data: CO(2-1) is the lowest transition observable at the targets' redshift with available APEX instruments; CO(6-5) was chosen as it can be boosted by AGN and jets and was the highest observable in reasonable time  
+  > "These specific transitions were selected based on a combination of scientific and observational constraints." (3.1 Data reduction)
+- Why this method: Bayesian MCMC fitting is less sensitive to binning, gives realistic uncertainties and needs few assumptions for upper limits  
+  > "This Bayesian method is preferred over frequentist fitting techniques for this analysis since it is less sensitive to binning, provides realistic uncertainties" (3.2 Data analysis)
+- Alternative: Other main-sequence parametrisations were checked; Sargent14 chosen as it visually fit SDSS best  
+  > "We chose this parametrization as it visually provided the best fit to galaxies selected from SDSS (the parent sample of our work)" (2.2 Our targets in the context of the star-forming main sequence)
+- Alternative: Using AGNfitter stellar masses and SFRs instead of CIGALE would not change the main conclusion  
+  > "We note that using the AGNfitter stellar masses and SFRs would not change the main conclusion of this work." (2.1 SED fitting)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Small sample and two CO(2-1) non-detections limit generalisation  
+  > "However, the small size of this sample and the two non-detections limit our ability to expand these findings to the quasar population in general." (5.3 The role of AGN in galaxy evolution)
+- Limitation (authors): Unresolved APEX data cannot rule out a localised impact  
+  > "These observations; however, are unable to rule out a more localised impact, which can sometimes be observed using spatially-resolved molecular gas measurements" (5.3 The role of AGN in galaxy evolution)
+- Limitation (authors): Possible systematic differences in alpha_CO for AGN could shift gas masses  
+  > "we can not rule out some level of systematic differences in" (5.1.2 Molecular gas comparisons)
+- Limitation (authors): Tacconi18 comparison provides no detection fractions or upper limits  
+  > "we note that a limitation of our comparison to the (cite: Tacconi18) catalogue is that it does not provide information on detection fractions or report upper limits." (5.1.2 Molecular gas comparisons)
+- Caveat (inferred, ours): ALMA enters only as preliminary images for a contamination check; the main numbers do not depend on ALMA processing
+- Caveat (inferred, ours): Stellar mass and SFR inputs come from earlier SED fits, so the gas-fraction and depletion-time answers depend on Jarvis et al. 2019
+- Caveat (inferred, ours): Only upper limits for CO(6-5), so the excitation conclusion rests on non-detections
+- Caveat (inferred, ours): Comparison with xCOLD GASS and Tacconi18 depends on alpha_CO and r21 choices that may differ for AGN
+
+## Reproducibility
+
+- Data public (paper): APEX data from the ESO archive under programmes E-0100.B-0166 and E-0104.B-0292; derived data on request  
+  > "The data underlying this article were accessed from the ESO Science Archive Facility" (Data Availability Statement); "The derived data generated in this research will be shared on reasonable request to the corresponding author." (Data Availability Statement)
+- Products in archive: _not stated_
+- Code: _not stated_
+- Missing: CIGALE settings and the SED-derived stellar masses and SFRs (in Jarvis et al. 2019)
+- Missing: Per-day channel and scan flags and the exact baseline windows
+- Missing: Exact luminosity distances and redshift source
+- Missing: ALMA CO(3-2) reduction details
+- Data volume (inferred): Small: APEX single-dish spectra from the ESO archive (well under 1 GB); the ALMA CO(3-2) data are not needed for the main results
+- Score (inferred): 6/5, APEX data are public and the CLASS reduction, scan-rejection rule and MCMC settings are described in useful detail, but flags, baseline windows and the SED inputs (earlier paper) are not given.
+- Rediscovery candidate: yes, APEX data are in the ESO archive, the line-fit and L'CO/Mgas recipe is largely specified, and the main results are numeric (fluxes, upper limits, L'CO, gas masses).
+
+## Links
+
+- Method: (cite: Jarvis19) (SED fitting with CIGALE, stellar masses, SFRs and sample properties)
+- Method: (cite: Tacconi18) (Gas mass and alpha_CO procedure and comparison sample)
+- Method: (cite: Foreman-Mackey13) (emcee MCMC sampler)
+- Companion: (cite: Harrison14) (Selection of the 16 type 2 AGN with luminous [OIII] outflows)
+- Companion: (cite: Sun14) (Published ALMA CO(1-0) and CO(3-2) images of J1356+1026)
+- Related: APEX E-0100.B-0166
+- Related: APEX E-0104.B-0292
+- Related: xCOLD GASS
+- Related: EGNOG
+- Related: GOALS
+- Related: SDSS MPA-JHU
+
+## Checks
+
+```json
+{
+ "quotes": 151,
+ "quotes_ok": 151,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 0,
+ "unsupported_facts": 0,
+ "project_codes": 2,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 14,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 140,
+  "stated": 100,
+  "rate": 0.714
+ },
+ "evidence_ok": true
+}
+```

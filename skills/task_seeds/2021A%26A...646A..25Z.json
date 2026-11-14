@@ -1,0 +1,432 @@
+{
+ "bibcode": "2021A&A...646A..25Z",
+ "title": "H II regions and high-mass starless clump candidates. II. Fragmentation and induced star formation at  0.025 pc scale: an ALMA continuum study",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202038421",
+ "arxiv_id": "2012.07738",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Whether the presence of H II regions modifies the core-scale (~0.025 pc) fragmentation and star formation in candidate high-mass starless clumps (HMSCs).",
+ "alma_project_codes": [
+  "2016.1.01346.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm, 225 GHz)",
+  "arrays": "12 m main array and 7 m ACA",
+  "angular_resolution": "12 m + 7 m combined: ~1.3\" (1.29\"x1.04\" to 1.98\"x0.98\"); 7 m ACA: ~5.5\" (6.19\"x4.55\" to 7.48\"x4.07\")",
+  "sensitivity": "12 m + 7 m combined: 0.15 to 0.55 mJy Beam^-1 (median 0.16 mJy Beam^-1); 7 m ACA: ~1.5 mJy Beam^-1 (1.0 to 2.0 mJy Beam^-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of 463 candidate HMSCs and single-dish SED-derived clump masses, column densities, and dust temperatures",
+    "evidence": [
+     {
+      "loc": "2.1. Sample selection",
+      "quote": "Yuan et al. (2017) identified 463 candidate HMSCs in the inner Galactic plane (| l | < 60 ◦, | b | < 1 ◦ ) with 870 µm images from the APEX Telescope Large Area Survey of the GALaxy (ATLASGAL, Schuller et al. 2009)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(c) Clump mass M clump, H 2 column density N H 2, and dust temperature T dust are derived by fitting SED pixel-by-pixel to Herschel 160, 250, 350, 500 µm, and ATLASGAL 870 µm by Yuan et al. (2017)"
+     }
+    ]
+   },
+   "citation": "Yuan et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Updated distances, cross-matching with H II regions, radial column density profile power-law indices, and single-dish properties of 58 candidate HMSCs",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(b) Distance is taken from Paper I."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(f) α is the power-law index of H 2 column density radial profile N H 2 ( r ) ∝ r α, see details in Paper I."
+     },
+     {
+      "loc": "4.4. Considering possible differences between AS and NA",
+      "quote": "Taking advantage of 58 candidate HMSCs located in the 3–5 kpc range given in Paper I, the expected M J th,clump and λ th J,clump for strongly impacted AS (S-type AS, 31 in total, see Paper I) and non-impacted NA HMSCs"
+     }
+    ]
+   },
+   "citation": "Paper I, Zhang et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "ATLASGAL 870 um clump FWHM measurements",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(a) FWHM is measured with ATLASGAL 870 µm continuum by Csengeri et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Csengeri et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Hi-GAL PPMAP H2 column density maps at verschillende dust temperatures",
+    "evidence": [
+     {
+      "loc": "5.1. Morphology of cores and clumps",
+      "quote": "The N H 2 is derived from SED fitting of Hi-GAL 70, 160, 250, 350, and 500 µm emission (Herschel Infrared Galactic Plane Survey, Molinari et al. 2010) with the techniques of point process mapping (PPMAP) by Marsh et al. (2016)"
+     }
+    ]
+   },
+   "citation": "Marsh et al. (2016), Marsh et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Core MST separations and probability density functions from ALMA Band 6 observations of candidate HMSCs for combined statistics",
+    "evidence": [
+     {
+      "loc": "Figure 5 caption",
+      "quote": "Black and red solid lines represent the distributions derived from Svoboda et al. (2019) by multiplying their probability density functions (PDFs) with the total number of cores in our cases."
+     },
+     {
+      "loc": "6.1. Fragmentation mechanism",
+      "quote": "We collect the information from previous 7 m + 12 m combined band 6 observations toward 31 high-mass clumps at 3–5 kpc (Contreras et al. 2018; Sanhueza et al. 2019; Svoboda et al. 2019)"
+     }
+    ]
+   },
+   "citation": "Contreras et al. (2018); Sanhueza et al. (2019); Svoboda et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "citation": "Gutermuth & Heyer (2015); Molinari et al. (2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine 12 m and 7 m visibilities and image 1.3 mm continuum",
+   "method": "Combine 12 m and 7 m datasets with CASA task CONCAT, regrid single polarization (XX) continuum to 9 MHz channels, and clean line-free channels with TCLEAN (both 12 m + 7 m combined and 7 m alone); estimate recovered flux fraction relative to ATLASGAL 870 um.",
+   "software": [
+    "CASA",
+    "CONCAT",
+    "TCLEAN",
+    "CASA Analysis Utilities"
+   ],
+   "key_parameters": [
+    "cell = 0.3\" (combined) and 1\" (7 m); robust = 0.5; clean threshold = 0.4 mJy Beam^-1 (combined) and 4 mJy Beam^-1 (7 m); field down to 20% primary beam power point"
+   ],
+   "assumptions": [
+    "Dust emissivity spectral index beta ~ 1.5 for extrapolating ATLASGAL 870 um flux to 1.3 mm"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract dense cores and 7 m ensembles using dendrograms",
+   "method": "Run Astrodendrograms on primary beam uncorrected 7 m + 12 m combined continuum images to extract leaves as cores, and on 7 m ACA continuum images to extract larger leaves and classify candidate ensembles (splitting elongated leaves with major/minor > 2.5 by contour peaks/subpeaks and adding weak structures hosting combined cores).",
+   "software": [
+    "Astrodendrograms"
+   ],
+   "key_parameters": [
+    "Combined images: min_value = 3 rms, min_delta (step) = 1 rms, min_npix = half of synthesized beam",
+    "7 m ACA images: min_value = 2.5 rms, min_delta (step) = 1 rms, min_npix = half of 7 m ACA synthesized beam"
+   ],
+   "assumptions": [
+    "Leaves in the dendrogram have no substructures and correspond to dense cores; prolonged 7 m leaves (major-to-minor ratio > 2.5) with multiple contour subpeaks represent multiple candidate ensembles sharing the leaf density."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive core and ensemble masses, surface densities, and volume/column densities",
+   "method": "Compute core and ensemble masses from primary beam corrected integrated 1.3 mm flux using optically thin isothermal dust emission equation (Eq. 1), and calculate surface density, H2 column density, and H2 number density assuming spherical geometry.",
+   "software": [],
+   "key_parameters": [
+    "Gas-to-dust ratio R_gd = 100; dust opacity kappa_nu = 0.9 cm^2 g^-1; molecular weight per H2 molecule mu_H2 = 2.8; T_dust = single-dish clump T_dust and T_dust +/- 3 K"
+   ],
+   "assumptions": [
+    "Optically thin dust continuum emission, spherical core geometry, thin ice mantle dust opacity at density ~10^6 cm^-3 (0.9 cm^2 g^-1), gas-to-dust mass ratio of 100, and combined R_gd/kappa_nu uncertainty of 30%."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze fragmentation scales using Jeans parameters, Minimum Spanning Tree (MST), and modality tests",
+   "method": "Calculate thermal, turbulent (total support), compressible flow, and cylindrical Jeans masses and lengths for clumps and ensembles; measure nearest neighbor separations among cores and ensembles using Minimum Spanning Tree (MST); test modality of scaled core separations combined with literature samples using Hartigan's Dip test and ACR test.",
+   "software": [
+    "R",
+    "multimode"
+   ],
+   "key_parameters": [
+    "Mean molecular weight per free particle mu = 2.37; molecular weight mu_mole = 29 for 13CO and 30 for C18O and H13CO+; histogram bin sizes = 0.075 and 0.15"
+   ],
+   "assumptions": [
+    "Average projection factor between projected and actual separation is 2/pi; for cylindrical fragmentation in AS3 and NA3, central density rho_c is assumed to be the minimum density of the cores embedded in the filament."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze H II region shaping, multi-wavelength profiles, and collect-and-collapse timescale",
+   "method": "Compare flux-weighted clump centers (ATLASGAL and Hi-GAL PPMAP) with mass-weighted ALMA core centers; extract intensity and multi-temperature column density profiles along interaction directions; subtract normalized combined 1.3 mm intensity from normalized 20 cm intensity for AS1; fit Gaussian to MALT90 H13CO+ spectrum; calculate collect-and-collapse fragmentation time t_frag for AS1.",
+   "software": [],
+   "key_parameters": [
+    "Sound speed inside shell for AS1 = 0.24 km s^-1 (C_0.2 = 1.2)"
+   ],
+   "assumptions": [
+    "20 cm radio continuum of H II region is optically thin free-free emission; warm dust at 20-30 K is located in the photodissociation region (PDR)."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of cores detected in 8 clumps",
+   "value": "51",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "A total of 51 cores were detected in eight clumps, with three to nine cores for each clump."
+    }
+   ]
+  },
+  {
+   "quantity": "Recovered single-dish flux fraction in 7 m + 12 m combined ALMA data",
+   "value": "10–20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2. ALMA data reduction",
+     "quote": "Our 7 m + 12 m combined ALMA data set recovers 10–20% of the single-dish integrated flux (minimum is 10% for NA2, NA3, and AS4, maximum is 19% for NA4)."
+    }
+   ]
+  },
+  {
+   "quantity": "AS1 core ALMA1 mass (M_core)",
+   "value": "14.1",
+   "uncertainty": "± 5.4",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA1 14.1 ± 5.4 18.6 ± 7.2 11.3 ± 4.3 3940 2.57 ± 0.92 5.47 ± 1.96 6.96 ± 2.54"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1 core ALMA2 mass (M_core)",
+   "value": "12.0",
+   "uncertainty": "± 4.5",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA2 12.0 ± 4.5 15.8 ± 6.0 9.6 ± 3.6 3700 2.51 ± 0.89 5.35 ± 1.89 7.30 ± 2.63"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1 core ALMA3 mass (M_core)",
+   "value": "10.9",
+   "uncertainty": "± 4.5",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA3 10.9 ± 4.5 14.4 ± 6.0 8.7 ± 3.6 4400 1.58 ± 0.63 3.38 ± 1.33 3.85 ± 1.54"
+    }
+   ]
+  },
+  {
+   "quantity": "AS3 core ALMA1 mass (M_core)",
+   "value": "17.9",
+   "uncertainty": "± 7.1",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA1 17.9 ± 7.1 27.7 ± 11 13.1 ± 5.2 3700 3.60 ± 1.17 7.67 ± 2.50 10.26 ± 3.54"
+    }
+   ]
+  },
+  {
+   "quantity": "NA3 core ALMA1 mass (M_core)",
+   "value": "10.3",
+   "uncertainty": "± 4.0",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA1 10.3 ± 4.0 16.1 ± 6.2 7.5 ± 2.9 5000 1.19 ± 0.43 2.53 ± 0.92 2.56 ± 0.94"
+    }
+   ]
+  },
+  {
+   "quantity": "NA4 core ALMA1 mass (M_core)",
+   "value": "13.1",
+   "uncertainty": "± 4.7",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA1 13.1 ± 4.7 19.8 ± 7.2 9.7 ± 3.5 3200 3.60 ± 1.21 7.67 ± 2.59 12.01 ± 4.13"
+    }
+   ]
+  },
+  {
+   "quantity": "NA4 core ALMA2 mass (M_core)",
+   "value": "9.8",
+   "uncertainty": "± 3.6",
+   "units": "M_⊙",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table A.2",
+     "quote": "ALMA2 9.8 ± 3.6 14.8 ± 5.4 7.2 ± 2.6 2900 3.24 ± 1.10 6.91 ± 2.34 11.87 ± 4.09"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1 clump thermal Jeans length (lambda_J,clump^th)",
+   "value": "0.034",
+   "uncertainty": "±0.007",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "AS1 0.034±0.007 6.8 0.58 0.8±0.3 311 26"
+    }
+   ]
+  },
+  {
+   "quantity": "AS1 clump thermal Jeans mass (M_J,clump^th)",
+   "value": "0.8",
+   "uncertainty": "±0.3",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "AS1 0.034±0.007 6.8 0.58 0.8±0.3 311 26"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical ensemble separation (S_ens)",
+   "value": "0.18",
+   "uncertainty": "0.1 to 0.3",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6.1. Fragmentation mechanism",
+     "quote": "The typical ensemble separation S ens is ∼ 0.18 pc within a range of about 0.1 to 0.3 pc meanwhile the typical core separation S core in the ensemble is ∼ 0.06 pc within a range about 0.04 to 0.08 pc, as shown in Fig. 7."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical core separation in ensembles (S_core)",
+   "value": "0.06",
+   "uncertainty": "0.04 to 0.08",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6.1. Fragmentation mechanism",
+     "quote": "The typical ensemble separation S ens is ∼ 0.18 pc within a range of about 0.1 to 0.3 pc meanwhile the typical core separation S core in the ensemble is ∼ 0.06 pc within a range about 0.04 to 0.08 pc, as shown in Fig. 7."
+    }
+   ]
+  },
+  {
+   "quantity": "Bimodal peaks of scaled MST core separation (S_core / lambda_J,clump^th) for 31 candidate HMSCs",
+   "value": "0.38 and 0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6.1. Fragmentation mechanism",
+     "quote": "The maximum and sub-maximum are peaked at around 0.38λ th J,clump and 0.9λ th J,clump, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated age of IR dust bubble N1 (near AS1)",
+   "value": "0.4",
+   "uncertainty": "± 0.2",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2. Single-dish derived properties and environment",
+     "quote": "With MAGPIS 20 cm continuum (Helfand et al. 2006) and H ii region expansion model of Tremblin et al. (2014), the estimated age of N1 is about 0.4 ± 0.2 Myr with a pressure of about (7 ± 2) × 10 −10 dyne cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated ionized gas pressure of IR dust bubble N1",
+   "value": "7e-10",
+   "uncertainty": "± 2e-10",
+   "units": "dyne cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2. Single-dish derived properties and environment",
+     "quote": "With MAGPIS 20 cm continuum (Helfand et al. 2006) and H ii region expansion model of Tremblin et al. (2014), the estimated age of N1 is about 0.4 ± 0.2 Myr with a pressure of about (7 ± 2) × 10 −10 dyne cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Collect-and-collapse shell fragmentation time for AS1 (t_frag)",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Shaping structures in candidate HMSCs at ~ 0.025 pc scale",
+     "quote": "Taking the same N 49 and n 3 as those used in the estimations of bubble age and pressure, t frag ≃ 0.9 Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated ionized gas pressure on AS2 filament",
+   "value": "4.5e-10",
+   "uncertainty": "± 0.5e-10",
+   "units": "dyne cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.2. Single-dish derived properties and environment",
+     "quote": "The pressure is ≲ (4.5 ± 0.5) × 10 −10 dyne cm −2 ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and pipeline version numbers used for each target's reduction",
+  "Exact frequency intervals or channel ranges selected as line-free for continuum imaging",
+  "Multiscale clean scale sizes and nterms value used in TCLEAN",
+  "Relative visibility weights applied when combining 12 m and 7 m data in CONCAT",
+  "Phase center coordinates for the ALMA pointings"
+ ],
+ "missing_for_reproduction": [
+  "Exact line-free channel selections used in TCLEAN after regridding XX visibilities to 9 MHz",
+  "Multiscale scale parameters and nterms in TCLEAN",
+  "Exact CASA pipeline versions for each MOUS",
+  "Exact rules/thresholds used to manually split elongated 7 m leaves into subpeaks (E_n-S_m) and to define weak ensembles (W1)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Archival ALMA project code, calibration strategy, imaging parameters (cell, robust, threshold, primary beam cutoff), Astrodendrogram parameters, physical equations, constants, and full core/leaf catalogs (Tables A.1-A.3) are explicitly provided; minor deductions for unstated line-free frequency ranges, multiscale parameters, and semi-manual 7 m ensemble subpeak splitting.",
+ "rediscovery_reason": "The ALMA data (2016.1.01346.S) are public, the continuum imaging and Astrodendrogram core extraction recipe is well-specified, and all 51 core fluxes, sizes, masses, and clump/ensemble Jeans parameters are tabulated as an exact numeric answer key.",
+ "source_card": "cards/2021A%26A...646A..25Z/sonnet/card.md"
+}

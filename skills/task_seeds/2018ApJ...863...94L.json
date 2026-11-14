@@ -1,0 +1,337 @@
+{
+ "bibcode": "2018ApJ...863...94L",
+ "title": "ALMA Observations of the Very Young Class 0 Protostellar System HH211-mms: A 30 au Dusty Disk with a Disk Wind Traced by SO?",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aad2da",
+ "arxiv_id": "1807.05336",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "How early and how small a disk can form around a very young Class 0 protostar (HH 211-mms), and does a rotating SO outflow trace a disk wind?",
+ "alma_project_codes": [
+  "2015.1.00024.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~350 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "continuum 0.047x0.031 arcsec (robust 0.5), 0.036x0.024 arcsec (robust -0.5); SO 0.064x0.046 arcsec",
+  "sensitivity": "continuum 0.11 and 0.154 mJy/beam; SO ~1.6 mJy/beam at 3 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA 36.9 GHz disk flux density ~0.855 mJy",
+    "evidence": [
+     {
+      "loc": "3.1 Disk in Continuum at 350 GHz",
+      "quote": "with a flux density of $\\sim$ 0.855 mJy (cite: Tobin2016; Segura-Cox2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2016; Segura-Cox2016)"
+  },
+  {
+   "what": {
+    "value": "Free-free-corrected dust flux ~0.57 mJy at ~33 GHz",
+    "evidence": [
+     {
+      "loc": "3.1 Disk in Continuum at 350 GHz",
+      "quote": "the flux density of the dust emission corrected for the free-free emission is $\\sim$ 0.57 mJy at $\\sim$ 33 GHz"
+     }
+    ]
+   },
+   "citation": "(cite: Tychoniec2018)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity from H13CO+ and jet PA/inclination",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "the jet has a position angle of 116.5$^\\circ$ and an inclination angle of $\\lesssim$ 6$^\\circ$ to the plane of the sky"
+     }
+    ]
+   },
+   "citation": "(cite: Gueth1999; Lee2009; Jhan2016)"
+  },
+  {
+   "what": {
+    "value": "SO abundance 2e-6 from jet",
+    "evidence": [
+     {
+      "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+      "quote": "Assuming an SO abundance of $2\\times10^{-6}$ as found in the jet (cite: Lee2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Lee2010)"
+  },
+  {
+   "what": {
+    "value": "Disk radius vs protostellar mass compilation",
+    "evidence": [
+     {
+      "loc": "4.1 Disk Growth and Magnetic Braking",
+      "quote": "The growth of Keplerian disk radius from Class 0 to I phase has been studied by (cite: Yen2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Yen2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image continuum and SO",
+   "method": "CASA calibration; continuum from line-free channels at robust 0.5/-0.5; SO at robust 2, binned to 3 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Robust 0.5, -0.5 (continuum); 2 (SO)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure disk geometry and flux in continuum",
+   "method": "Two-dimensional Gaussian fit and intensity cut along the major axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination <~6 deg from jet"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Spectral index and disk mass",
+   "method": "Spectral index between 33 GHz dust flux and 350 GHz flux; optically thin mass formula M = D^2 F / (B(T) kappa)",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 100 K, beta = 1"
+   ],
+   "assumptions": [
+    "Two mass opacities (Beckwith 1990; Ossenkopf & Henning 1994 via Tychoniec 2018); optically thin so lower limit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SO kinematics: protostellar mass and angular momentum",
+   "method": "Channel maps and PV diagrams across the jet axis; Keplerian curves outline the PV outer boundaries; linear/elliptical PV structures give specific angular momentum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination 6 deg"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "SO column density and mass of atmosphere plus outflow",
+   "method": "Optically thin LTE column density from mean intensity, converted to H2 using SO abundance",
+   "software": [],
+   "key_parameters": [
+    "Tex 100 K, X(SO)=2e-6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compare disk radius with protostellar mass growth models",
+   "method": "Add HH 211-mms to Yen et al. 2017 plot and compare to R_d ∝ M^3 (Terebey 1984) and R_d ∝ M (Basu 1998) tracks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk deconvolved FWHM, major axis",
+   "value": "0.127 arcsec (~30 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "deconvolved size (FWHM) of $0^{\\prime\\prime}_{^\\textrm{.}}127$ (or $\\sim$ 30 au) along the major axis"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk deconvolved FWHM, minor axis",
+   "value": "0.067 arcsec (~16 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "$0^{\\prime\\prime}_{^\\textrm{.}}067$ ($\\sim$ 16 au) along the minor axis"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk major axis position angle",
+   "value": "27.6",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "major axis at a position angle of 27.6$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk total flux density at 350 GHz",
+   "value": "83",
+   "uncertainty": "16",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "The disk has a total flux density of $\\sim$ 83$\\pm16$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope plus disk flux density",
+   "value": "192",
+   "uncertainty": "38",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "total flux density of $\\sim$ 192$\\pm38$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index",
+   "value": "2.11",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "we have $\\alpha \\sim$ 2.11$\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass from 350 GHz (two opacities)",
+   "value": "1.8 and 4.6",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "The resulting disk masses are $\\sim\n1.8$ $M_\\textrm{\\scriptsize Jup}$ and $\\sim 4.6$ $M_\\textrm{\\scriptsize Jup}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass from 33 GHz (two opacities)",
+   "value": "14 and 35",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Disk in Continuum at 350 GHz",
+     "quote": "the resulting disk masses are $\\sim$ 14 $M_\\textrm{\\scriptsize Jup}$ and 35 $M_\\textrm{\\scriptsize Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass",
+   "value": "<~50",
+   "uncertainty": "upper limit",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+     "quote": "suggesting that the central protostar has a mass of $\\lesssim$ 50 $M_\\textrm{\\scriptsize Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow specific angular momentum",
+   "value": "<~20",
+   "uncertainty": "upper limit",
+   "units": "au km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+     "quote": "The specific angular momentum of the outflow is estimated to be $\\lesssim$ 20 au km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SO column density",
+   "value": "4.4e15",
+   "uncertainty": "0.9e15",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+     "quote": "the mean SO column density is estimated to be $\\sim$ $4.4\\pm0.9\\times10^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of atmosphere plus rotating outflow",
+   "value": "1.3e-3",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+     "quote": "the total mass in the atmosphere and rotating outflow is $\\sim 1.3\\times10^{-3}$ $M_\\textrm{\\scriptsize Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk atmosphere radius in SO",
+   "value": "~0.05 arcsec (12 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Disk Atmosphere and Rotating Outflow in SO",
+     "quote": "with its radius estimated to be $\\sim$ $0^{\\prime\\prime}_{^\\textrm{.}}05$ or 12 au, using a 4$\\sigma$ detection level"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and whether pipeline or manual calibration",
+  "Line-free channel ranges for continuum",
+  "Clean parameters: deconvolver, threshold, masks, cell and image size, niter",
+  "Continuum self-calibration, if any",
+  "How the PV cuts (position angle, width, offsets) were made",
+  "Details of the SO column density calculation and partition function",
+  "Method for the Keplerian curves in PV diagrams (inclination, distance) and the emission outline criteria",
+  "How flux error values (e.g. 192±38 mJy) were derived"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and clean parameters",
+  "Line-free channel selection",
+  "PV cut definitions and Keplerian curve parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Archive data and key settings (robust, baselines, calibrators) are given, but CASA version, clean settings and kinematic analysis details are missing.",
+ "rediscovery_reason": "Data are from a public ALMA project, and the continuum size, flux and mass results are numeric and mostly reproducible; the SO kinematics are more qualitative.",
+ "source_card": "cards/2018ApJ...863...94L/sonnet/card.md"
+}

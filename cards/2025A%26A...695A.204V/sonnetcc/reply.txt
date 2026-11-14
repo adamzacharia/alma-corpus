@@ -1,0 +1,230 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "In this work, we present a straightforward and effective technique to quantify the detection level and underlying noise distribution in interferometric data sets."},
+{"loc": "Introduction", "quote": "In this work, we apply `jackknify` to three archival DDT observations targeting $z>10$ galaxy candidates."}
+],
+"fields": ["high_z_galaxies", "instrumentation"],
+"question": {
+"value": "How to quantify the detection likelihood of faint line peaks in interferometric data by jackknifing visibilities, tested on tentative [O III] 88 um detections toward three z>10 galaxy candidates",
+"evidence": [
+{"loc": "Introduction", "quote": "Then, by applying line-finding algorithms on both the real and source-free image cubes, we sample the likelihood of a marginal detection being real without needing to assume an underlying noise distribution."},
+{"loc": "Introduction", "quote": "In this work, we present a straightforward and effective technique to quantify the detection level and underlying noise distribution in interferometric data sets."}
+]
+},
+"targets": [
+{"name": "GLASS-z12", "details": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "(cite: Zavala2024) detected bright nebular emission lines of GLASS-z12 with JWST, constraining the redshift to be $z_{\\rm spec} = 12.33 \\pm 0.02$."}], "coordinates": "not stated", "redshift_or_distance": "z_spec = 12.33 +/- 0.02", "distance_source": "JWST/MRS spectrum (Zavala2024)"},
+{"name": "GLASS-z10", "details": [], "coordinates": "not stated", "redshift_or_distance": "not stated", "distance_source": "not stated"},
+{"name": "S5-z17-1", "details": [], "coordinates": "not stated", "redshift_or_distance": "not stated", "distance_source": "not stated"}
+],
+"alma_project_codes": [
+{"code": "2021.A.00020.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.A.00020.S, ADS/JAO.ALMA#2021.A.00023.S, and ADS/JAO.ALMA#2021.A.00031.S."}]},
+{"code": "2021.A.00023.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.A.00020.S, ADS/JAO.ALMA#2021.A.00023.S, and ADS/JAO.ALMA#2021.A.00031.S."}]},
+{"code": "2021.A.00031.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.A.00020.S, ADS/JAO.ALMA#2021.A.00023.S, and ADS/JAO.ALMA#2021.A.00031.S."}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "each spectral setup = four adjacent tunings covering ~30 GHz; targeting [O III] 88 um", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "To maximize the redshift coverage, each spectral setup consisted of four adjacent tunings, covering a large, $\\approx 30$ GHz bandwidth."}]},
+{"field": "pi_or_archival_as_stated", "value": "archival ALMA DDT observations (Bakx2023, Yoon2023, Fujimoto2023)", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "We test and validate our jackknifing tool, `jackknify`, on three sets of ALMA DDT observations targeting $z>10$ galaxy candidates pre-identified from photometry"}]}
+],
+"lines_targeted": [
+{"species": "[O III]", "transition": "88 um fine-structure line", "rest_frequency": "not stated", "evidence": [{"loc": "Introduction", "quote": "these DDT programs aimed to confirm the redshifts of the galaxy candidates by targeting the \\[O III\\] 88 μm line."}]}
+],
+"other_facilities": [
+{"name": "JWST/MRS", "provided": {"value": "spectroscopic redshift of GLASS-z12 (z = 12.33 +/- 0.02) used as a prior on the line frequency", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "(cite: Zavala2024) detected bright nebular emission lines of GLASS-z12 with JWST, constraining the redshift to be $z_{\\rm spec} = 12.33 \\pm 0.02$."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Reported 5.8 sigma [O III] peak for GLASS-z12", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "which differs from their reported $5.8\\sigma$ peak over 400 km s$^{-1}$"}]}, "citation": "(cite: Bakx2023)"},
+{"what": {"value": "Reported 5.1 sigma peak for S5-z17-1", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "We recover the peak reported in (cite: Fujimoto2023), albeit with a significance of $3.9\\sigma$ instead of the reported $5.1\\sigma$."}]}, "citation": "(cite: Fujimoto2023)"},
+{"what": {"value": "JWST/MRS redshift of GLASS-z12, z_spec = 12.33 +/- 0.02", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "(cite: Zavala2024) detected bright nebular emission lines of GLASS-z12 with JWST, constraining the redshift to be $z_{\\rm spec} = 12.33 \\pm 0.02$."}]}, "citation": "(cite: Zavala2024)"},
+{"what": {"value": "Deeper GLASS-z12 observations reporting a ~4.5-5.2 sigma [O III] detection (not used in this work)", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "That work showed a $\\approx 4.5-5.2\\sigma$ detection of the"}]}, "citation": "(cite: Zavala2024b)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Mock ALMA data from CASA simobserve: 1 h execution block, six channels at 279 GHz, 31 MHz channels, Cycle 7 configuration 4, sources with 3D Gaussian line (FWHM 80 km/s) and continuum", "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "To validate our method, we simulated mock ALMA data using `CASA`’s `simobserve` task."}, {"loc": "4 Application to simulated ALMA data", "quote": "The simulated data contained six channels centered at a frequency of $\\nu = 279$ GHz with a channel width of 31 MHz."}, {"loc": "4 Application to simulated ALMA data", "quote": "We created the simulated $uv$-coverage using configuration 4 from cycle 7"}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "calibrated measurement sets delivered by European ARC network via calMS service", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Calibrated measurement sets were provided by the European ALMA Regional Centre network (cite: Hatziminaoglou2015) through the calMS service (cite: Petry2020) using CASA v5.4.0."}]},
+{"field": "casa_version", "value": "CASA v5.4.0", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Calibrated measurement sets were provided by the European ALMA Regional Centre network (cite: Hatziminaoglou2015) through the calMS service (cite: Petry2020) using CASA v5.4.0."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Finally, we imaged all measurement sets using the TCLEAN task with natural weighting."}]},
+{"field": "weighting_robust", "value": "natural weighting", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Finally, we imaged all measurement sets using the TCLEAN task with natural weighting."}]},
+{"field": "continuum_subtraction", "value": "uvcontsub, first-order polynomial", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "We used `uvcontsub` to manually continuum subtract a first-order polynomial from the measurement sets to remove any potential continuum emitters."}]},
+{"field": "line_free_channels", "value": "channels with previously reported tentative features omitted from the fit; channel ranges not given", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "We omitted the frequency channels where tentative features might be present in the data based on the previously reported detections."}]},
+{"field": "primary_beam_correction", "value": "maps not primary-beam corrected", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "This is a reasonable assumption, as there should be no correlation between the $S/N$ of the line detection and these parameters for non-primary-beam-corrected maps."}]}
+],
+"inherited": [
+{"what": {"value": "Jackknifing approach of differencing visibilities to build noise realizations", "evidence": [{"loc": "Introduction", "quote": "We build upon the approach used in (cite: Kaasinen2023); by differencing the visibilities, we generate various noise realizations of the observation-specific ALMA measurement set."}]}, "from_reference": "(cite: Kaasinen2023)"},
+{"what": {"value": "FindClump line finder as implemented in interferopy", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "We use `FindClump` (cite: Walter2016), as implemented in the `interferopy` package (cite: interferopy), to sample the distribution of positive peak values from both the real and jackknifed data."}]}, "from_reference": "(cite: Walter2016); (cite: interferopy)"},
+{"what": {"value": "SExtractor default settings, modified (analysis and detection thresholds set to 2)", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "we have modified the default settings in `SExtractor` (cite: Bertin1996), specifically the analysis and detection thresholds which we both set to 2 to better detect low $S/N$ clumps."}]}, "from_reference": "(cite: Bertin1996)"},
+{"what": {"value": "Flat LCDM cosmology with H0 = 67.7 km/s/Mpc, Omega_m = 0.307", "evidence": [{"loc": "Introduction", "quote": "the assumed cosmology is based on (cite: Planck2014_XIII), a spatially flat, $\\Lambda$ cold dark matter ($\\Lambda$CDM) model with $H_0=67.7$  kms$^{-1}$ Mpc$^{-1}$ and $\\Omega_{\\rm m} = 0.307$."}]}, "from_reference": "(cite: Planck2014_XIII)"}
+],
+"unstated_but_needed": [
+"Exact line-free channel ranges excluded before uvcontsub for each of the three sources",
+"tclean parameters other than natural weighting: cell size, image size, deconvolver, niter, threshold, mask, channel width per source (only 46 km/s given for GLASS-z12)",
+"Optical/JWST centre coordinates used for the 0.6 arcsec mask for GLASS-z10 and S5-z17-1 (only a table, not text)",
+"Random seeds used for the 50 jackknife realizations",
+"Full FindClump/interferopy parameter settings beyond width range, S/N cut and duplicate-cropping radii",
+"How the peak PDFs are binned in S/N and how the L_FD integral and its uncertainty are computed",
+"Whether any bright sources were removed from the visibilities before jackknifing (S/N>50 advice)",
+"Flux calibrators and whether the archive calMS calibration was used unchanged for each project"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Prepare calibrated visibilities",
+"method": {"value": "Average calibrated visibilities in time and frequency, subtract a first-order continuum with uvcontsub, then image with tclean", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "we performed two additional operations on the calibrated data, applying a time averaging of 30 seconds and spectral averaging of the visibilities in $\\approx 30$ MHz bins."}, {"loc": "2 The archival ALMA observations", "quote": "We used `uvcontsub` to manually continuum subtract a first-order polynomial from the measurement sets to remove any potential continuum emitters."}]},
+"software": ["CASA", "uvcontsub", "tclean"],
+"key_parameters": [
+{"value": "time averaging 30 s; spectral averaging ~30 MHz bins without interpolation on the frequency axis", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "The frequency binning was conducted in a manner that avoided interpolation over the frequency axis."}]},
+{"value": "natural weighting", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Finally, we imaged all measurement sets using the TCLEAN task with natural weighting."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Generate jackknife noise realizations",
+"method": {"value": "Randomly flip the sign of half of the visibilities in the visibility plane with different random seeds, then re-image each realization with the same imaging as the real data", "evidence": [{"loc": "3.1 Jackknifing", "quote": "by randomly multiplying half of the real and imaginary amplitudes of the visibilities by -1 and then rebinning, thereby averaging out the signal"}, {"loc": "3.1 Jackknifing", "quote": "Resampling the noise distributions requires that the cubes are re-imaged at every iteration."}]},
+"software": ["jackknify", "CASA", "tclean"],
+"key_parameters": [
+{"value": "50 jackknife realizations per observation, ~9 min per iteration on a 2019 MacBook Pro", "evidence": [{"loc": "3.2.2 / 5.1", "quote": "from $\\approx$ 50 realizations onward we recover the high-$S/N$ tail of the distribution; we decided to use 50 jackknife realizations throughout this work"}, {"loc": "5.1 Specific experiment set up", "quote": "takes $\\approx 9$ minutes on a 2019 MacBook Pro with a 2.6 GHz 6-Core Intel Core i7 processor."}]}
+],
+"assumptions": [
+{"value": "Visibility noise is additive, Gaussian, uncorrelated and zero-mean for well-calibrated data", "evidence": [{"loc": "3.1 Jackknifing", "quote": "noise in the Fourier domain, unlike in the image plane, is additive and Gaussian"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Mock simobserve data show jackknife realizations match the noise structure and standard deviation of cleaned noise maps for source S/N below ~50", "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "The simulated noise map and jackknifed realization exhibit the same noise structure, validating our jackknifing approach."}, {"loc": "4 Application to simulated ALMA data", "quote": "We find that our jackknifing approach is perfectly reliable for $S/N \\lesssim 50$."}]}
+},
+{
+"order": 3,
+"goal": "Find peaks in real and jackknifed cubes",
+"method": {"value": "Run FindClump (interferopy, SExtractor-based) on the real cube and each jackknifed cube, keep positive peaks within 0.6 arcsec of the optical centre, to build P_D and P_FD", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "We use `FindClump` (cite: Walter2016), as implemented in the `interferopy` package (cite: interferopy), to sample the distribution of positive peak values from both the real and jackknifed data."}, {"loc": "5.1 Specific experiment set up", "quote": "We mask out features outside a $0.6\\ensuremath{''}$ radius of the optically derived center."}]},
+"software": ["FindClump", "interferopy", "SExtractor"],
+"key_parameters": [
+{"value": "line widths 100-500 km/s (3-11 channel widths)", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "we configure `FindClump` to search for emission lines with widths between $100 - 500$ km s$^{-1}$, corresponding to $3-11$ times the channel width."}]},
+{"value": "peaks above S/N of 0 retained; duplicates merged within 0.2 arcsec and 0.2 GHz", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "With `FindClump`, we identify peaks that exceed a signal-to-noise ratio ($S/N$) of 0"}, {"loc": "5.1 Specific experiment set up", "quote": "and within 0.2 GHz spectrally (roughly $4-5$ channels apart)."}]},
+{"value": "SExtractor analysis and detection thresholds both set to 2", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "specifically the analysis and detection thresholds which we both set to 2 to better detect low $S/N$ clumps."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "On simulated data FindClump on 50 jackknife realizations gave a smooth noise peak distribution and recovered the injected S/N = 4.9 sources", "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "By applying the line-finding algorithm to the real data (orange histogram), we recover the simulated continuum and lines sources, both with a $S/N = 4.9$."}]}
+},
+{
+"order": 4,
+"goal": "Likelihood ratio test for blind line detection",
+"method": {"value": "Compute false-detection likelihood L_FD(gamma) from jackknifed peak PDF, multiply by number of real peaks for expected noise count, and form Lambda = L_D/L_FD; significant if Lambda >= k = 3", "evidence": [{"loc": "3.2.2 Line detection inference through jackknifing", "quote": "Finally, an excess in the ratio is considered significant if the likelihood ratio exceeds a critical value $k$"}, {"loc": "5.1 Specific experiment set up", "quote": "We consider a detection to be significant if the excess of peaks in the real data with respect to the noise has at least a significance of $2\\sigma$ based on Poisson statistics."}]},
+"software": ["jackknify", "FindClump"],
+"key_parameters": [
+{"value": "detection threshold gamma = 4 sigma, critical value k = 3", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "This does not exceed our detection threshold of $k = 3$"}]}
+],
+"assumptions": [
+{"value": "Jackknifed peaks sample the false-detection distribution; peak distribution is a subset of the pixel-value distribution of a smoothed random Gaussian field", "evidence": [{"loc": "3.2.2 Line detection inference through jackknifing", "quote": "can be approximated as a smoothed random Gaussian field."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Jackknifed negative-peak PDF compared with the real data; scatter within the 95% interval is consistent with Poisson uncertainty", "evidence": [{"loc": "3.2.2 Line detection inference through jackknifing", "quote": "the scatter in the jackknife realizations within the 95% confidence interval is consistent with the Poisson uncertainty in the real data for each bin"}]}
+},
+{
+"order": 5,
+"goal": "Apply JWST redshift prior to GLASS-z12",
+"method": {"value": "Multiply the PDFs by Gaussian prior on redshift, uniform prior on radial distance and uniform prior on peak S/N in post-processing with Bayes theorem, then renormalise", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "we adopt a Gaussian prior on the redshift"}, {"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "and a uniform prior on the $S/N$ of the peak"}]},
+"software": ["jackknify", "FindClump"],
+"key_parameters": [
+{"value": "Gaussian redshift prior mu = 12.33, sigma = 0.02 (+/-0.4 GHz at 254.54 GHz); uniform radial prior 0 to 0.6 arcsec; uniform S/N prior from 2.5; only peaks with S/N > 2.5 counted", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "thereby only counting peaks with $S/N > 2.5$."}, {"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "The redshift uncertainty ($\\Delta z = \\pm 0.02$) derived from the JWST/MRS spectrum of GLASS-z12 translates to a frequency width of $\\Delta \\nu_{\\rm obs} = \\pm 0.4$ GHz"}]}
+],
+"assumptions": [
+{"value": "No correlation between peak S/N and its RA, Dec or frequency position for non-primary-beam-corrected maps", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "This approach assumes no correlation between the $S/N$ of a candidate (since the intrinsic flux of the source is unknown) and its location along the RA, Dec, and frequency axes."}]}
+],
+"fitting": {"value": "No MCMC; PDFs sampled first without priors, Bayes theorem applied afterwards", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "Unlike methods such as Markov Chain Monte Carlo, which directly sample the posterior distribution, we first sampled the PDFs using `FindClumps` without applying any priors."}]},
+"validation": {"value": "PDF of false detections is flat in frequency, supporting the independence assumption", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "The latter indicates that the PDF has a flat distribution with respect to frequency"}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "v5.4.0", "used_for": {"value": "Calibration of delivered measurement sets, uvcontsub, tclean imaging and simobserve simulations", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Calibrated measurement sets were provided by the European ALMA Regional Centre network (cite: Hatziminaoglou2015) through the calMS service (cite: Petry2020) using CASA v5.4.0."}]}},
+{"name": "jackknify", "version": "1.0.0", "used_for": {"value": "Public tool that jackknifes visibilities and re-images realizations via CASA tclean", "evidence": [{"loc": "Introduction", "quote": "We make our technique readily available to the community in the form of the public tool `jackknify`, along with clear, step-by-step tutorials."}]}},
+{"name": "jaxknify", "version": "not stated", "used_for": {"value": "jax-based iFFT implementation used only to compute the many realizations in Figure 5", "evidence": [{"loc": "Footnote 5", "quote": "`jaxknify` was only used to compute the many realizations which are visualized in Figure [5](#fig:test_simobs)"}]}},
+{"name": "FindClump", "version": "not stated", "used_for": {"value": "Line finding in real and jackknifed cubes, through interferopy", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "We use `FindClump` (cite: Walter2016), as implemented in the `interferopy` package (cite: interferopy), to sample the distribution of positive peak values from both the real and jackknifed data."}]}},
+{"name": "interferopy", "version": "not stated", "used_for": {"value": "Package providing the FindClump implementation", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "as implemented in the `interferopy` package (cite: interferopy)"}]}},
+{"name": "SExtractor", "version": "not stated", "used_for": {"value": "Peak detection with modified thresholds inside FindClump", "evidence": [{"loc": "5.1 Specific experiment set up", "quote": "we have modified the default settings in `SExtractor` (cite: Bertin1996)"}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Imaging of real and jackknifed measurement sets with natural weighting", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Finally, we imaged all measurement sets using the TCLEAN task with natural weighting."}]}},
+{"name": "uvcontsub", "version": "not stated", "used_for": {"value": "First-order polynomial continuum subtraction in the visibility plane", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "We used `uvcontsub` to manually continuum subtract a first-order polynomial from the measurement sets to remove any potential continuum emitters."}]}},
+{"name": "simobserve", "version": "not stated", "used_for": {"value": "Generating mock ALMA observations for validation", "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "To validate our method, we simulated mock ALMA data using `CASA`’s `simobserve` task."}]}}
+],
+"results_numeric": [
+{"quantity": "GLASS-z12 expected noise peaks above S/N 4 (L_FD x N_peaks, N_peaks = 1150)", "value": "1.3", "uncertainty": "1.1", "units": "peaks", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "= 0.0011 \\times 1150 = 1.3 \\pm 1.1"}]},
+{"quantity": "GLASS-z12 likelihood ratio Lambda(4 sigma)", "value": "0.80", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "which results in $\\Lambda(4\\sigma) = \\mathcal{L}_{\\rm D}(4\\sigma) / \\mathcal{L}_{\\rm FD}(4\\sigma) = 0.80$"}]},
+{"quantity": "GLASS-z12 reported 5.8 sigma peak recovered at lower significance", "value": "2.9 sigma, linewidth 280 km/s", "uncertainty": "not stated", "units": "sigma", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "We recover a peak at the same location but at a lower significance of $2.9\\sigma$ for a linewidth of 280 km s$^{-1}$"}]},
+{"quantity": "GLASS-z10 expected noise peaks at gamma > 4 sigma (N_peaks = 271)", "value": "1.5", "uncertainty": "1.2", "units": "peaks", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "we expect to find $1.5 \\pm 1.2$ peaks at $\\gamma > 4\\sigma$"}]},
+{"quantity": "GLASS-z10 likelihood ratio Lambda(4 sigma)", "value": "1.4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "The likelihood ratio resulted in $\\Lambda(\\gamma = 4\\sigma) = 1.4$."}]},
+{"quantity": "GLASS-z10 previously reported 2.7 sigma line: L_FD and Lambda", "value": "L_FD = 0.19, Lambda = 0.9", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "This line has a false detection likelihood of $\\mathcal{L}_{\\rm FD}(\\gamma=2.7\\sigma) = 0.19$ and a likelihood ratio test resulting in $\\Lambda(\\gamma = 2.7\\sigma) = 0.9$."}]},
+{"quantity": "S5-z17-1 expected noise peaks above S/N 4 (N_peaks = 221)", "value": "0.7", "uncertainty": "0.8", "units": "peaks", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "= 0.0032 \\times 221= 0.7 \\pm 0.8"}]},
+{"quantity": "S5-z17-1 likelihood ratio Lambda(4 sigma)", "value": "1.4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "since $\\Lambda(\\gamma=4\\sigma) = 1.4$"}]},
+{"quantity": "S5-z17-1 reported peak recovered: S/N and Lambda", "value": "3.9 sigma, L_FD = 0.0060, Lambda = 2.2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "This line has a false detection likelihood of $\\mathcal{L}_{\\rm FD}(\\gamma=3.9\\sigma) = 0.0060$ and a likelihood ratio test resulting in $\\Lambda(\\gamma = 3.9\\sigma) = 2.2$."}]},
+{"quantity": "GLASS-z12 Lambda with JWST redshift prior (gamma = 2.5 sigma)", "value": "1.64", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "the likelihood ratio test results in $\\Lambda(\\gamma=2.5\\sigma)= 1.64$."}]},
+{"quantity": "Simulated data Lambda(gamma = 4.0)", "value": "13", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "the likelihood ratio tests yield $\\Lambda(\\gamma = 4.0) = 13$."}]},
+{"quantity": "Expected spurious line features at S/N ~4-5 in broad ALMA line scans", "value": "~3", "uncertainty": "2", "units": "features", "from_step": 4, "evidence": [{"loc": "6 Summary & Implications", "quote": "we expect to find approximately $3 \\pm 2$ line features with $S/N \\sim 4-5$ in broad ALMA line scans"}]}
+],
+"findings_qualitative": [
+{"value": "The highest-significance peaks found in the three datasets differ from the previously reported peaks, and the difference in S/N and linewidth for GLASS-z12 is attributed to different imaging choices", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "The difference in S/N and linewidth is due to the difference in how the data were imaged."}]},
+{"value": "Because many peaks are searched, a 5 sigma fluke occurs within a few hundred to a thousand peaks", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "Given the number of peaks per data set, the detection significance does not follow a Gaussian distribution."}]}
+],
+"claims": [
+{"hypothesis": "Jackknifing visibilities reproduces the true interferometric noise distribution", "experiment": "Compared jackknife realizations with cleaned noise maps in simobserve mock data over many seeds and source S/N", "result": "Jackknife realizations match the noise structure and standard deviation for source S/N below ~50", "finding": "Jackknifing allows accurate estimation of the underlying noise distribution", "support": "supported", "evidence": [{"loc": "4 Application to simulated ALMA data", "quote": "The simulated noise map and jackknifed realization exhibit the same noise structure, validating our jackknifing approach."}, {"loc": "4 Application to simulated ALMA data", "quote": "We find that our jackknifing approach is perfectly reliable for $S/N \\lesssim 50$."}]},
+{"hypothesis": "Previously reported tentative [O III] 88 um detections toward GLASS-z12, GLASS-z10 and S5-z17-1 are real", "experiment": "Blind FindClump line search on real vs 50 jackknifed cubes, likelihood ratio test with k = 3", "result": "Lambda(4 sigma) = 0.80, 1.4, 1.4, all below k = 3", "finding": "No significant detection in any of the three datasets; peaks consistent with noise", "support": "refuted", "evidence": [{"loc": "5.2 Results on blind line searches", "quote": "In conclusion, our analysis of the GLASS-z12, GLASS-z10, and S5-z17-1 datasets reveals no significant detections of any of these (candidate) $z > 10$ galaxies in the ALMA data."}]},
+{"hypothesis": "A JWST redshift prior reveals a real [O III] line in the GLASS-z12 ALMA data", "experiment": "Applied Gaussian prior on redshift (12.33 +/- 0.02) and spatial/S/N priors to the peak PDFs", "result": "Lambda(2.5 sigma) = 1.64 for two peaks at S/N 2.7 and 2.6, below k = 3", "finding": "Even with the JWST prior the ALMA data are statistically consistent with noise", "support": "refuted", "evidence": [{"loc": "5.3 Quantifying detection significance with known redshifts", "quote": "Even including a prior from JWST, the ALMA data is statistically consistent with being noise."}]},
+{"hypothesis": "Jackknifing samples the false-positive distribution better than negative peaks in the real data", "experiment": "Compared the negative-peak PDF in real data with 50 jackknife realizations", "result": "Jackknifing gives better statistics, especially at high S/N", "finding": "More complete sampling of the noise distribution without complex noise models", "support": "supported", "evidence": [{"loc": "3.2.2 Line detection inference through jackknifing", "quote": "our method provides better sampling"}]},
+{"hypothesis": "Blind line scans of ~30 GHz need a high threshold for secure detection", "experiment": "Counted jackknife peaks across datasets with N_peaks of ~200-1000", "result": "About 3 +/- 2 spurious features at S/N ~4-5 expected per broad scan", "finding": "Blind single-line detections need more than 5 sigma", "support": "supported", "evidence": [{"loc": "6 Summary & Implications", "quote": "Ensuring a secure detection is therefore challenging, requiring $>5\\sigma$ detections when performing a blind line search in a cube probing 30 GHz of bandwidth and targeting a single line."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Test the tool in two scenarios: no redshift knowledge, and a JWST frequency prior", "evidence": [{"loc": "Introduction", "quote": "We will test two scenarios: one in which no prior knowledge regarding the source’s redshift is available and one in which we can use a prior from JWST on the frequency location of the line."}]},
+{"field": "why_this_method", "value": "Jackknifing in the visibility plane keeps correlated noise produced by the Fourier transform", "evidence": [{"loc": "3.1 Jackknifing", "quote": "Jackknifing in the visibility plane is thus essential, rather than splitting in the image plane, to avoid removing any correlated noise induced by the Fourier transform present in the data."}]},
+{"field": "how_they_decided_enough", "value": "50 realizations chosen as trade-off between tail sampling and computation time", "evidence": [{"loc": "3.2.2 Line detection inference through jackknifing", "quote": "from $\\approx$ 50 realizations onward we recover the high-$S/N$ tail of the distribution; we decided to use 50 jackknife realizations throughout this work"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "HD1 DDT observations excluded because it was spectroscopically shown to be a passive galaxy at z = 4.0 and had a similar analysis already", "evidence": [{"loc": "5 Application to z>10 galaxy candidates", "quote": "we exclude these observations here as more recent work by (cite: Harikane2024b) spectroscopically confirmed the object to be a passive galaxy at $z=4.0$"}]},
+{"value": "Empirical fidelity (negative-peak) method rejected because absorption or bright sources create negative signal that contaminates the noise statistics", "evidence": [{"loc": "3.2.1 Traditional empirical methods", "quote": "However, this does not hold when absorption with respect to the CMB or a bright background source leads to negative line fluxes, contaminating the noise statistics."}]},
+{"value": "jaxknify not used for the science analysis because its output is not compatible with existing line finders", "evidence": [{"loc": "3.1 Jackknifing", "quote": "The output of the Fourier Transform is, however, not compatible with existing line-find methods."}]}
+],
+"limitations_admitted": [
+{"value": "Not evaluated for large extended bright emission", "evidence": [{"loc": "Footnote 6", "quote": "We note that we did not evaluate the performance of jackknifing the visibilities in cases of large extended bright emission such as in molecular clouds within low-redshift galaxies."}]},
+{"value": "Validated only with the w-term neglected", "evidence": [{"loc": "Footnote 3", "quote": "However, we do note that our tools are validated only on data where the $w$-term was neglected."}]},
+{"value": "Computationally intensive for large data sets; bright sources (S/N > 50) must be removed first", "evidence": [{"loc": "3.1 Jackknifing", "quote": "Because of this, `jackknify` can become computationally intensive, particularly for large data sets."}, {"loc": "4 Application to simulated ALMA data", "quote": "one should remove extremely bright continuum and line-emitting sources (e.g., $S/N>50$) from the data set in the visibility plane"}]}
+],
+"referee_caveats_inferred": [
+"Result depends on line-finder choice and imaging (natural weighting, 46 km/s channels) that differ from the original papers' tapered, coarser imaging, so S/N is not directly comparable",
+"Detection threshold k = 3 and 4 sigma gamma are chosen thresholds; Poisson-limited peak counts of 1-2 give weak statistical power",
+"Only three sources and a single line finder; the 0.6 arcsec aperture and S/N prior choices shape the result",
+"Later, deeper GLASS-z12 data (Zavala2024b) show a detection, so the null result applies to the older data only"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Archival ALMA DDT data from three projects", "evidence": [{"loc": "Introduction", "quote": "In this work, we apply `jackknify` to three archival DDT observations targeting $z>10$ galaxy candidates."}]},
+{"field": "products_in_archive", "value": "Calibrated measurement sets obtained from calMS service of the European ARC network", "evidence": [{"loc": "2 The archival ALMA observations", "quote": "Calibrated measurement sets were provided by the European ALMA Regional Centre network (cite: Hatziminaoglou2015) through the calMS service (cite: Petry2020) using CASA v5.4.0."}]}
+],
+"code_released": [
+{"value": "jackknify public tool with tutorials, installable via pip", "evidence": [{"loc": "Introduction", "quote": "We make our technique readily available to the community in the form of the public tool `jackknify`, along with clear, step-by-step tutorials."}, {"loc": "6 Summary & Implications", "quote": "the tool, `jackknify`, is installable using pip"}]}
+],
+"missing_for_reproduction": [
+"Exact line-free channel selection, tclean cell/image size and channel widths per source",
+"Random seeds and FindClump parameter file",
+"Coordinates of the optical centres used for the 0.6 arcsec mask for two of the sources"
+],
+"estimated_data_volume_inferred": "Three DDT datasets with ~30 GHz spectral scans at 31 MHz channels after averaging; probably a few to tens of GB of calibrated visibilities, plus 50 re-imaged cubes per dataset (~9 min each)",
+"score_inferred": 4,
+"score_reason": "Public archival data, public code and a clear step-by-step recipe with numeric tables; some imaging and line-finder settings are unstated.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Data are archival and calibrated MS are available, the tool is public, and main results are numeric (Lambda, L_FD, expected peak counts).",
+"methods_papers": [
+{"citation": "(cite: Kaasinen2023)", "why": "Original jackknifing of ALMA visibilities that this work builds upon"},
+{"citation": "(cite: Walter2016)", "why": "FindClump line finder"},
+{"citation": "(cite: CASA2022)", "why": "CASA software used for imaging and simulation"}
+],
+"companion_papers": [
+{"citation": "(cite: Bakx2023)", "why": "GLASS-z12 ALMA DDT observations and original tentative detection"},
+{"citation": "(cite: Yoon2023)", "why": "GLASS-z10 ALMA DDT observations"},
+{"citation": "(cite: Fujimoto2023)", "why": "S5-z17-1 ALMA DDT observations"},
+{"citation": "(cite: Zavala2024)", "why": "JWST/MRS redshift of GLASS-z12 used as prior"},
+{"citation": "(cite: Zavala2024b)", "why": "Deeper ALMA observations of GLASS-z12, not included here"}
+],
+"related_projects_or_surveys": ["ALMA Director's Discretionary Time programs on z>10 candidates", "ASPECS"]
+}

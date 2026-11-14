@@ -1,0 +1,581 @@
+{
+ "bibcode": "2025ApJ...992...18P",
+ "title": "Early Planet Formation in Embedded Disks (eDisk). XXII. Keplerian Disk, Disk Structures, and Jets/Outflows in the Class 0 Protostar IRAS 04166+2706",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adfa92",
+ "arxiv_id": "2508.07212",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the dust disk structure, gas kinematics (Keplerian rotation and protostellar mass) and jet/outflow properties of the Class 0 protostar IRAS 04166+2706 at 1.3 mm with eDisk?",
+ "alma_project_codes": [
+  "2019.1.00261.L"
+ ],
+ "data": {
+  "bands": "1.3 mm",
+  "arrays": "12-m array, two configurations: C43-8 (long baseline) and C43-5 (short baseline)",
+  "angular_resolution": "~0.05\" (~8 au) for continuum; ~0.16\" (~25 au) for lines",
+  "sensitivity": "Continuum rms 23 uJy/beam; line rms 0.7-3.1 mJy/beam (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distance 156 pc (Gaia EDR3 based)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "More recently, (cite: Krolikowski+etal_2021) used the new data of Gaia EDR3 and calculated the distance of the region to be 155.94 pc."
+     }
+    ]
+   },
+   "citation": "(cite: Krolikowski+etal_2021)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity 0.41 Lsun and bolometric temperature 54 K (Class 0 classification)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "the eDisk collaboration estimated the bolometric luminosity and temperature of the source to be 0.41 L$_\\odot$ and 54 K respectively"
+     }
+    ]
+   },
+   "citation": "(cite: Ohashi+edisk_2023)"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity kappa(1.3 mm) = 2.3 cm^2 per g",
+    "evidence": [
+     {
+      "loc": "4.1 Disk mass",
+      "quote": "We adopt the dust opacity of $\\kappa_{1.3\\,mm}$=2.3 cm$^2$ g$^{-1}$ (cite: Beckwith+etal_1990)"
+     }
+    ]
+   },
+   "citation": "(cite: Beckwith+etal_1990)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature of 20 K, median of Taurus disks",
+    "evidence": [
+     {
+      "loc": "4.1 Disk mass",
+      "quote": "assume a dust temperature of 20 K which is the median value of dust temperatures of disks in the Taurus star-forming region as derived by (cite: Andrews+etal_2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews+etal_2005)"
+  },
+  {
+   "what": {
+    "value": "Luminosity-based dust temperature relation for Class 0/I disks (gives ~34 K here)",
+    "evidence": [
+     {
+      "loc": "4.1 Disk mass",
+      "quote": "(cite: Tobin+etal_2020) introduced a more realistic method to estimate the dust temperature of Class 0/I objects based on the source luminosity as"
+     }
+    ]
+   },
+   "citation": "(cite: Tobin+etal_2020)"
+  },
+  {
+   "what": {
+    "value": "IRAM PdBI 1.3 mm flux density of 59 +/- 2 mJy",
+    "evidence": [
+     {
+      "loc": "4.1 Dust emission",
+      "quote": "than the value of $59\\pm2$ mJy by IRAM PdBI observations at 1.3 mm (cite: Santiago+etal_2009)"
+     }
+    ]
+   },
+   "citation": "(cite: Santiago+etal_2009)"
+  },
+  {
+   "what": {
+    "value": "Disk mass 0.027 Msun from RADMC-3D modeling and MCMC SED fit",
+    "evidence": [
+     {
+      "loc": "4.1 Disk mass",
+      "quote": "(0.027 M$_\\odot$) from RADMC-3D modeling and MCMC fit using a wide range SED set data including CARMA mm data (cite: Sheehan+Eisner_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Sheehan+Eisner_2017)"
+  },
+  {
+   "what": {
+    "value": "Planet formation efficiency of order 15% for Class 0 disks",
+    "evidence": [
+     {
+      "loc": "5.1 Brightness asymmetry, dust mass in the disk, and disk stability",
+      "quote": "the planet formation efficiency is of the order of $15\\%$ assuming that the planet starts to form in the Class 0 disk"
+     }
+    ]
+   },
+   "citation": "(cite: Tychoniec+etal_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image the eDisk data",
+   "method": "Manual pipeline run for semi-pass EBs; per-EB imaging and shift to a common phase center from imfit; visibility-amplitude scale factors between EBs; two-pass phase and amplitude self-calibration on short baseline then combined data; imaging with tclean",
+   "software": [
+    "CASA",
+    "ALMA calibration pipeline",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "robust = 0.0 for continuum, robust = 2.0 for lines; robust = 2.0 plus 1000 klambda uv taper for extended dust emission"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit the continuum disk geometry and flux",
+   "method": "2D Gaussian fit with imfit to the robust = 0.0 image; inclination from cos^-1 of minor/major axis ratio",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Fit on robust = 0.0 image without uv tapering"
+   ],
+   "assumptions": [
+    "Vertically thin circular disk geometry"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive the dust (disk) mass",
+   "method": "Optically thin, isothermal dust mass equation M_d = S_nu d^2 / (kappa_nu B_nu(T_d)) with S_nu = 70.8 mJy, d = 156 pc, nu = 225 GHz; total mass with gas-to-dust ratio of 100",
+   "software": [],
+   "key_parameters": [
+    "kappa(1.3 mm) = 2.3 cm^2 per g; T_d = 20 K (Taurus median) or ~34 K from T_d = 43 (L_bol/Lsun)^0.25 with L_bol = 0.41 Lsun"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio of 100; optically thin emission (otherwise mass is a lower limit)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search the continuum disk for rings/gaps via radial profile",
+   "method": "Deproject the image, azimuthally average in 0.01\" annuli, fit two Gaussian functions to the radial profile, then fit Gaussian functions to the residual rings",
+   "software": [],
+   "key_parameters": [
+    "Deprojection with PA = 121.5 deg and inclination = 47 deg from the 2D Gaussian fit"
+   ],
+   "assumptions": [
+    "Flat, thin disk geometry"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit edge and ridge of 13CO and C18O PV diagrams",
+   "method": "PV diagrams along the disk major axis (PA 122 deg) within one beam width; edge and ridge extracted with pvanalysis of SLAM and fitted with a power law V_rot = v_b (r/r_b)^-p",
+   "software": [
+    "SLAM"
+   ],
+   "key_parameters": [
+    "Ridge threshold 6 sigma for 13CO and 3 sigma for C18O; edge threshold not stated"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive protostellar mass limits from Keplerian motion",
+   "method": "Keplerian rotation v = sqrt(G M / r) at inclination 47 deg applied to edge and ridge results; lowest and highest values adopted as lower and upper mass limits",
+   "software": [
+    "SLAM"
+   ],
+   "key_parameters": [
+    "Inclination i = 47 deg"
+   ],
+   "assumptions": [
+    "Gas in the small region is in Keplerian motion; ridge fitting underestimates and edge fitting overestimates the mass"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Map jets/outflows and date the ejection events",
+   "method": "Moment 0/1 maps of 12CO and SiO in velocity bins, PV diagrams along the jet axis (PA 32 deg), and knot-distance/velocity timescales",
+   "software": [],
+   "key_parameters": [
+    "SiO moments computed in -70 to 70 km/s with 3 sigma threshold",
+    "Average jet velocity 40 km/s within 11 arcsec radius; inclination 47 deg for the ejection period"
+   ],
+   "assumptions": [
+    "Distance 156 pc and i = 47 deg used to convert projected distance and velocity to the ejection period"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Measure continuum brightness asymmetry",
+   "method": "Integrated flux ratio between northeastern and southwestern hemispheres; intensity profiles along major and minor axes; compared qualitatively with RADMC-3D synthetic images of Takakuwa et al.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Assess disk gravitational stability with Toomre Q",
+   "method": "Q = c_s Omega / (pi G Sigma) = 2 (M_star / M_disk)(H/R) with R = 22 au, M_star = 0.15-0.39 Msun, M_disk = 0.015 and 0.008 Msun",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk is geometrically thin; instability for Q < 1-1.5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum 2D Gaussian deconvolved major axis",
+   "value": "137.9",
+   "uncertainty": "0.7",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$137.9\\pm0.7$ mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 2D Gaussian deconvolved minor axis",
+   "value": "93.7",
+   "uncertainty": "0.5",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$93.7\\pm0.5$ mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum disk position angle",
+   "value": "121.5",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$121.5^\\circ\\pm0.5^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination from minor/major axis ratio",
+   "value": "~47",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Dust emission",
+     "quote": "the inclination of the disk is $\\sim47^\\circ$ from $\\cos^{-1}(94/138)$ under the assumption of a vertically thin circular disk geometry"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density (2D Gaussian fit, robust 0.0)",
+   "value": "70.8",
+   "uncertainty": "0.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Dust emission",
+     "quote": "The flux density of the continuum emission is $70.8\\pm0.3$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux density (3 sigma emission, robust 2.0 with 1000 klambda taper)",
+   "value": "73.5",
+   "uncertainty": "0.15",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Dust emission",
+     "quote": "the total flux density increases to 73.5$\\pm$0.15 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk dust+gas mass, T_d = 20 K, kappa = 2.3 cm^2/g",
+   "value": "0.015",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Disk mass",
+     "quote": "Assuming a gas-to-dust ratio of 100, we obtained the disk mass of 0.015 M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature from L_bol relation",
+   "value": "~34",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Disk mass",
+     "quote": "we obtain the dust temperature of $\\sim$34 K in this disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass at T_d = 34 K",
+   "value": "0.008",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Disk mass",
+     "quote": "we obtain the total mass in the disk of 0.008 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass with kappa = 1.0 cm^2/g, T_d = 20 K",
+   "value": "0.028",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Disk mass",
+     "quote": "we obtained 0.028 M$_\\odot$ for the disk mass"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass in disk",
+   "value": "25 to 50",
+   "uncertainty": "not stated",
+   "units": "Mearth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness asymmetry, dust mass in the disk, and disk stability",
+     "quote": "our estimated dust mass in the disk of the order of 25 to 50 M$_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer ring amplitude, radius and width",
+   "value": "129 uJy at ~0.09\" (14 au), width 10.3 mas (1.6 au)",
+   "uncertainty": "40 uJy (~6 +/- 2 sigma)",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Identifying a possible substructure in the continuum disk",
+     "quote": "the outer ring has an amplitude of $129\\pm40\\,\\mu$Jy ($\\sim6\\pm2\\,\\sigma$) located at $\\sim0.09''$ (14 au) with a width of 10.3 mas (1.6 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner ring amplitude",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Identifying a possible substructure in the continuum disk",
+     "quote": "The inner ring has an amplitude at the level of 2.4 $\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO power-law index p (edge, ridge)",
+   "value": "0.66 (edge), 0.67 (ridge)",
+   "uncertainty": "0.13 (edge), 0.16 (ridge)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 An analysis of Position-Velocity diagrams of 13CO (2-1) and C18O (2-1)",
+     "quote": "The best-fit parameters are $p=0.66\\pm0.13$ and $p=0.67\\pm0.16$ in the edge and ridge for the $^{13}$CO (2–1) emission, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "C18O power-law index p (edge, ridge), as given in text",
+   "value": "0.58 (edge), 0.49 (ridge)",
+   "uncertainty": "0.20 (edge, text; 0.22 in Table 3), 0.22 (ridge)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 An analysis of Position-Velocity diagrams of 13CO (2-1) and C18O (2-1)",
+     "quote": "these parameters are $p=0.58\\pm0.20$, and $p=0.49\\pm0.22$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar mass, 13CO edge fit",
+   "value": "0.38",
+   "uncertainty": "0.01",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.38\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar mass, C18O edge fit",
+   "value": "0.39",
+   "uncertainty": "0.03",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.39\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar mass, 13CO ridge fit",
+   "value": "0.19",
+   "uncertainty": "0.01",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.19\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostar mass, C18O ridge fit",
+   "value": "0.15",
+   "uncertainty": "0.03",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.15\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted protostellar mass range",
+   "value": "0.15 < M_star < 0.39",
+   "uncertainty": "range from lowest ridge to highest edge value",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 An analysis of Position-Velocity diagrams of 13CO (2-1) and C18O (2-1)",
+     "quote": "we have simply adopted the lowest and highest of derived values as the lower and upper limits of our stellar mass estimate as $0.15\\,\\rm{M_\\odot} < \\rm{M_\\star} < 0.39 \\,M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average ejection period of knotty jets",
+   "value": "~73",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Wiggling motion in the jets and knotty jets",
+     "quote": "episodic mass ejections of a period of $\\sim73$ years"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of most recent ejection events (B0, R0 knots)",
+   "value": "20-25",
+   "uncertainty": "not stated",
+   "units": "years ago",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Jets and Outflows",
+     "quote": "we estimate that the most recent ejection events may have occurred only about 20–25 years ago."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity difference between jet head and tail",
+   "value": "15-20",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Jets and Outflows",
+     "quote": "The difference in the velocity between the “head” and the “tail” is about 15–20 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "NE/SW integrated flux ratio of the continuum disk",
+   "value": "1.17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness asymmetry, dust mass in the disk, and disk stability",
+     "quote": "We measured an integrated flux ratio of 1.17 between the northeastern (NE) and southwestern (SW) hemispheres"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q range for the disk",
+   "value": "~1.4 to 5.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.1 Brightness asymmetry, dust mass in the disk, and disk stability",
+     "quote": "we derive the Toomre number of $\\sim1.4$ to 5.6"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum and for continuum subtraction, and the spectral windows used",
+  "Self-calibration solution intervals, number of rounds, reference antenna and SNR thresholds; the numerical per-EB amplitude scale factors",
+  "tclean settings: cell size, image size, niter/threshold, masks, deconvolver and multiscale scales, spectral gridding for lines",
+  "Flux, bandpass and phase calibrator flux values and flux-scale uncertainty",
+  "Aperture/region used for the 2D Gaussian fit and the NE/SW hemisphere flux ratio",
+  "Initial guesses and fit procedure for the two-Gaussian radial profile fit and the ring Gaussian fits",
+  "Edge threshold, velocity and position ranges per quadrant and fitting weights in the SLAM pvanalysis edge/ridge fits",
+  "How scale height H/R and sound speed were set in the Toomre Q calculation",
+  "Which ALMA member OUS / execution block identifiers were downloaded"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges, spectral windows and tclean parameters (cell, image size, masks, niter, threshold)",
+  "Self-calibration solution intervals and numerical per-EB amplitude scale factors for the two-pass reduction",
+  "Edge threshold and fit ranges for the SLAM PV fits and the exact two-Gaussian radial-profile fit setup",
+  "Regions used for the NE/SW flux ratio and Toomre Q inputs (H/R)",
+  "Whether the archive holds the paper's final images is not stated"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Observations, software versions and key fit parameters are given and results are numeric, but most reduction details are deferred to the eDisk overview paper and self-calibration, imaging and fit settings are missing.",
+ "rediscovery_reason": "eDisk is an ALMA Large Program with a project code and the continuum Gaussian fit, dust mass and PV-fit stellar mass are numeric and redoable, though the two-pass self-calibration needs the eDisk scripts and the data archive status is not stated in the paper.",
+ "source_card": "cards/2025ApJ...992...18P/sonnet/card.md"
+}

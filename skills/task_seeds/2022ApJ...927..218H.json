@@ -1,0 +1,477 @@
+{
+ "bibcode": "2022ApJ...927..218H",
+ "title": "ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): A Hot Corino Survey toward Protostellar Cores in the Orion Cloud",
+ "year": 2022,
+ "doi": "10.3847/1538-4357/ac49e0",
+ "arxiv_id": "2201.02497",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What is the occurrence rate and possible origin of complex organic molecules (COMs) and hot corinos toward protostellar cores in the Orion cloud?",
+ "alma_project_codes": [
+  "2018.1.00302.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12-m array and 7-m array (ACA)",
+  "angular_resolution": "0.35 arcsec (~140 au)",
+  "sensitivity": "~2.8 mJy beam^-1 per 1.129 MHz channel (~0.5 K); ~12 uJy beam^-1 for continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric temperature, bolometric luminosity, YSO classification, archival SED flux data points from 3.6 um to 870 um, and outflow effective opening angles at 400 au",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$T_\\mathrm{bol}$ and $L_\\mathrm{bol}$are bolometric temperature and bolometric luminosity adapted from (cite: 2020Dutta_ALMASOP)."
+     },
+     {
+      "loc": "Data",
+      "quote": "The archival SED data of the 11 sources collected by (cite: 2020Dutta_ALMASOP) cover from 3.6 $\\mu$m to 870 $\\mu$m."
+     },
+     {
+      "loc": "Additional Constraint to the Cavity of YSO Model",
+      "quote": "From (cite: 2020Dutta_ALMASOP), we adopt the effective opening angle at 400 au ($\\Theta_\\mathrm{400}$)"
+     }
+    ]
+   },
+   "citation": "(cite: 2020Dutta_ALMASOP)"
+  },
+  {
+   "what": {
+    "value": "Distances to Orion A (398 pc), Orion B (404 pc), and lambda Orionis (404 pc) clouds",
+    "evidence": [
+     {
+      "loc": "Tools and Methods",
+      "quote": "the distance $D$ was fixed to be 398 pc, 404 pc, and 404 pc, respectively, for sources in the Orion A, Orion B, and $\\lambda$ Orionis clouds (cite: 2018Kounkel_Orion_distance)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018Kounkel_Orion_distance)"
+  },
+  {
+   "what": {
+    "value": "12C/13C isotope ratio of 50 in the Orion cloud",
+    "evidence": [
+     {
+      "loc": "Luminosity and Warm Region in Hot Corino",
+      "quote": "We use $^{13}$CH$_3$OH with $^{12}$C/$^{13}$C $=$ 50 (cite: 2018Kahane_13C12C_Orion) to derive the methanol column density"
+     }
+    ]
+   },
+   "citation": "(cite: 2018Kahane_13C12C_Orion)"
+  },
+  {
+   "what": {
+    "value": "PEACHES survey warm methanol detection rates and COM column densities in Perseus",
+    "evidence": [
+     {
+      "loc": "Comparisons between ALMASOP and PEACHES",
+      "quote": "We further compare the detection rate of warm methanol in ALMASOP with that found by PEACHES, which is a census of COMs conducted with ALMA toward embedded protostars in the Perseus cloud by (cite: 2021Yang_PEACHES)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021Yang_PEACHES)"
+  },
+  {
+   "what": {
+    "value": "Molecular spectroscopic parameters from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "List of Detected Molecules/Transitions",
+      "quote": "The data are exported from XCLASS and adapted from CDMS (cite: 2005CDMS) and JPL (cite: 1988JPL)."
+     }
+    ]
+   },
+   "citation": "(cite: 2005CDMS), (cite: 1988JPL)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Preliminary search for COMs and source selection",
+   "method": "Extract spectra at the 1.3 mm continuum peak pixel for all 56 Class 0/I protostellar cores and select sources with at least two CH3OH transitions detected at SNR > 5 (including at least one with E_up > 100 K).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Detection threshold SNR > 5",
+    "At least one transition with E_up > 100 K"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure source emission size and H2 column density, and extract source-averaged spectra",
+   "method": "Perform 2D Gaussian fitting on the CH3OH-46K (218440 MHz) moment-0 images in CASA to define the emission extent, extract full spectra within this extent, and compute H2 column density N(H2) from 1.3 mm continuum flux within the same extent.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Reference line: CH3OH J=4-3, Ka=2-1, Kc=3-2 at 218440 MHz (E_up = 46 K)"
+   ],
+   "assumptions": [
+    "Optically thin 1.3 mm continuum emission",
+    "Dust opacity law kappa_nu = 0.1 (nu / 1 THz)^beta cm^2 g^-1 with beta = 1.70",
+    "Dust temperature = 100 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify molecular transitions and fit LTE synthetic spectra",
+   "method": "Use XCLASS LineIdentification to identify molecular carriers and simulate 1D LTE synthetic spectra to fit T_ex, N, delta_v, and v_LSR for each species, first individually and then simultaneously for all species to account for line blending.",
+   "software": [
+    "XCLASS",
+    "MAGIX"
+   ],
+   "key_parameters": [
+    "T_ex range limited to (0, 400) K for initial fitting"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) for each gaseous molecular component",
+    "Emission size of all species equals the deconvolved 2D Gaussian extent of the CH3OH-46K transition",
+    "T_ex = 100 K fixed for molecules detected with only one transition"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit YSO spectral energy distributions (SEDs) and reconstruct thermal structure",
+   "method": "Combine archival 3.6-870 um photometry with 1.3 mm ALMASOP ACA and combined peak flux densities, fit against the Robitaille et al. (2006) YSO model grid using SED Fitter with observational constraints on disk outer radius and outflow cavity opening angle, and reconstruct the 2D thermal structure using HO-CHUNK (2008 version) to measure the >100 K warm region size.",
+   "software": [
+    "SED Fitter",
+    "HO–CHUNK"
+   ],
+   "key_parameters": [
+    "Foreground extinction A_V range [0, 250] mag",
+    "Fixed distances D = 398 pc (Orion A), 404 pc (Orion B), 404 pc (lambda Orionis)",
+    "Disk outer radius constraint < 140 au (except G192)",
+    "Outflow cavity effective opening angle constraint |Theta_400^Fitter - Theta_400^obs| < 1 deg",
+    "Magnetospheric truncation radius R_trunc = 5 R_* and hot spot fractional area f_spot = 0.007"
+   ],
+   "assumptions": [
+    "2D axisymmetric YSO geometry (central star, accretion disk, envelope, bipolar cavity) with solar metallicity PHOENIX stellar atmospheres",
+    "Cavity wall polynomial index b = 1.5"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Evaluate statistical correlations, detection rates, and chemical abundance ratios",
+   "method": "Calculate total gas-phase methanol molecule numbers from 13CH3OH (scaled by 12C/13C = 50), correlate with L_bol, compare hot corino detection rates with ACA-only data and the Perseus PEACHES survey under matched criteria, and fit linear proportional relations to COM column densities.",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [
+    "PEACHES-matched criteria: L_bol > 1 L_sun and 3 sigma methanol detection"
+   ],
+   "assumptions": [
+    "12C/13C = 50 in the Orion cloud to rescale 13CH3OH column density to main CH3OH"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of detected hot corino sources in ALMASOP combined data",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We report the detection of 11 hot corino sources, which exhibit compact emissions from warm and abundant COMs, among 56 Class 0/I protostellar cores."
+    }
+   ]
+  },
+  {
+   "quantity": "Hot corino detection rate in ALMASOP combined data",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Sensitivity and Hot Corino Detection",
+     "quote": "The combined effect results in an increased detection rate of warm methanol from 8% in (cite: Hsu2020_ALMASOP) to 20% in this work."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $P$(CH$_3$OH) | $8\\%$ | $20\\%$ ($41\\%$) | $56\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm methanol detection rate in Orion under PEACHES criteria (15/37)",
+   "value": "41",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the detection rates of the warm methanol in the Orion cloud (15/37) and the Perseus cloud (28/50) are statistically similar"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $P$(CH$_3$OH) | $8\\%$ | $20\\%$ ($41\\%$) | $56\\%$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of molecular species detected across the 11 hot corinos",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "We detect toward them in total 36 molecules, including simple diatomic species such as carbon monoxide isotopologues"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved CH3OH-46K source size of G192",
+   "value": "0.35",
+   "uncertainty": "+-0.03",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G192 | 0.41 | 0.35$\\pm$0.03 | 2.1 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N(H2) of G192",
+   "value": "2.1e24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G192 | 0.41 | 0.35$\\pm$0.03 | 2.1 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved CH3OH-46K source size of G208N1",
+   "value": "0.64",
+   "uncertainty": "+-0.03",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G208N1 | 0.41 | 0.64$\\pm$0.03 | 8.2 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N(H2) of G208N1",
+   "value": "8.2e24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G208N1 | 0.41 | 0.64$\\pm$0.03 | 8.2 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved CH3OH-46K source size of G211S",
+   "value": "0.64",
+   "uncertainty": "+-0.04",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G211S | 0.46 | 0.64$\\pm$0.04 | 3.5 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N(H2) of G211S",
+   "value": "3.5e24",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| G211S | 0.46 | 0.64$\\pm$0.04 | 3.5 $\\times$ 10$^{24}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperature T_ex in G192",
+   "value": "194",
+   "uncertainty": "+9/-8",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CH$_3$OH;v=0; | 194$^{+9}_{-8}$ | 17.10$^{+0.09}_{-0.11}$ | 8.9$^{+0.7}_{-0.6}$ | 10.2$^{+0.3}_{-0.4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density log10(N) in G192",
+   "value": "17.10",
+   "uncertainty": "+0.09/-0.11",
+   "units": "log10(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CH$_3$OH;v=0; | 194$^{+9}_{-8}$ | 17.10$^{+0.09}_{-0.11}$ | 8.9$^{+0.7}_{-0.6}$ | 10.2$^{+0.3}_{-0.4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperature T_ex in G208N1",
+   "value": "277",
+   "uncertainty": "+7/-5",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "| CH$_3$OH;v=0; | 277$^{+7}_{-5}$ | 16.83$^{+0.11}_{-0.11}$ | 3.7$^{+0.5}_{-0.4}$ | 11.3$^{+0.2}_{-0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density log10(N) in G208N1",
+   "value": "16.83",
+   "uncertainty": "+0.11/-0.11",
+   "units": "log10(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 11",
+     "quote": "| CH$_3$OH;v=0; | 277$^{+7}_{-5}$ | 16.83$^{+0.11}_{-0.11}$ | 3.7$^{+0.5}_{-0.4}$ | 11.3$^{+0.2}_{-0.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperature T_ex in G211S",
+   "value": "204",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 16",
+     "quote": "| CH$_3$OH;v=0; | 204$^{+4}_{-3}$ | 17.46$^{+0.03}_{-0.04}$ | 5.7$^{+0.3}_{-0.2}$ | 2.8$^{+0.1}_{-0.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density log10(N) in G211S",
+   "value": "17.46",
+   "uncertainty": "+0.03/-0.04",
+   "units": "log10(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 16",
+     "quote": "| CH$_3$OH;v=0; | 204$^{+4}_{-3}$ | 17.46$^{+0.03}_{-0.04}$ | 5.7$^{+0.3}_{-0.2}$ | 2.8$^{+0.1}_{-0.1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Apparent [CH3OH]/[13CH3OH] ratio from linear fit",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Isotope Ratios of Methanol: $^{12}$C/$^{13}$C, $^{16}$O/$^{18}$O, and D/H,",
+     "quote": "The isotope $^{12}$C/$^{13}$C ratio derived from fitting the observed positive correlation with a linear proportional function is 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Apparent [CH3OH]/[CH3_18OH] ratio in G208N1",
+   "value": "11.9",
+   "uncertainty": "+3.6/-3.5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Isotope Ratios of Methanol: $^{12}$C/$^{13}$C, $^{16}$O/$^{18}$O, and D/H,",
+     "quote": "A high optical depth of CH$_3$OH may have also led to the low [CH$_3$OH]/[CH$_3^{18}$OH] value of 11.9$^{+3.6}_{-3.5}$ seen in G208N1"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density ratio [CH3CHO]/[CH3OH] (rescaled with 12C/13C=50)",
+   "value": "0.20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Complex Organic Molecules (COMs)",
+     "quote": "Assuming $^{12}$C/$^{13}$C$=50$ (cite: 2018Kahane_13C12C_Orion), the column density ratios of CH$_3$CHO, HCOOCH$_3$, and C$_2$H$_5$OH with respect to that of (rescaled) CH$_3$OH in our study, which are respectively 0.20%, 1.9%, and 2.9%"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density ratio [HCOOCH3]/[CH3OH] (rescaled with 12C/13C=50)",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Complex Organic Molecules (COMs)",
+     "quote": "Assuming $^{12}$C/$^{13}$C$=50$ (cite: 2018Kahane_13C12C_Orion), the column density ratios of CH$_3$CHO, HCOOCH$_3$, and C$_2$H$_5$OH with respect to that of (rescaled) CH$_3$OH in our study, which are respectively 0.20%, 1.9%, and 2.9%"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density ratio [C2H5OH]/[CH3OH] (rescaled with 12C/13C=50)",
+   "value": "2.9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Complex Organic Molecules (COMs)",
+     "quote": "Assuming $^{12}$C/$^{13}$C$=50$ (cite: 2018Kahane_13C12C_Orion), the column density ratios of CH$_3$CHO, HCOOCH$_3$, and C$_2$H$_5$OH with respect to that of (rescaled) CH$_3$OH in our study, which are respectively 0.20%, 1.9%, and 2.9%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration method (pipeline vs manual) and calibrator sources",
+  "Continuum subtraction method (e.g., uvcontsub vs image-plane) and line-free channel selection",
+  "Exact frequencies and bandwidths of the individual ALMA spectral windows",
+  "tclean deconvolver, cell size, image size, and masking strategy",
+  "Relative visibility weighting or combination method when merging TM1, TM2, and ACA datasets",
+  "Gas-to-dust mass ratio assumed in the N(H2) calculation (inherited from Hsu et al. 2020)",
+  "Velocity integration ranges used to create the CH3OH-46K and other moment-0 images"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral window frequency ranges and channel averaging used during tclean",
+  "Calibration and continuum subtraction scripts/parameters (e.g. uvcontsub channel masks)",
+  "Velocity integration ranges used to generate the CH3OH-46K moment-0 maps for 2D Gaussian source size fitting",
+  "Gas-to-dust ratio value used in the N(H2) formula (deferred to Hsu et al. 2020)",
+  "Exact parameter bounds and MCMC settings used in XCLASS/MAGIX for each molecular species",
+  "Specific method for measuring the warm (>100 K) radius from the 2D axisymmetric HO-CHUNK temperature grid (e.g., midplane vs spherical average vs cavity-excluded)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The paper clearly states the ALMA project code, CASA version, tclean robust parameter, cleaning thresholds, and provides complete tables of fitted molecular parameters (Tables 6-16), source sizes (Table 4), and SED best-fit models (Table 20), plus a detailed appendix on HO-CHUNK parameters. However, calibration/continuum-subtraction details, moment-0 velocity integration ranges, and exact XCLASS fitting scripts/priors are omitted or deferred to companion papers.",
+ "rediscovery_reason": "Public ALMA Cycle 6 dataset (2018.1.00302.S) with well-defined quantitative outputs (11 hot corino detections, CH3OH source sizes, N(H2), and XCLASS LTE parameters T_ex, N, delta_v, v_LSR for 36 species) that can be directly compared against an independent spectral extraction and LTE fitting pipeline.",
+ "source_card": "cards/2022ApJ...927..218H/sonnet/card.md"
+}

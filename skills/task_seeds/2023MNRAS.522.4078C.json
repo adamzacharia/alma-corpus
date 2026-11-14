@@ -1,0 +1,697 @@
+{
+ "bibcode": "2023MNRAS.522.4078C",
+ "title": "WISDOM Project - XV. Giant molecular clouds in the central region of the barred spiral galaxy NGC 5806",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1211",
+ "arxiv_id": "2304.10471",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the physical properties, dynamics, scaling relations, and lifetimes of individual giant molecular clouds in the central region of the barred spiral galaxy NGC 5806, and how are they influenced by the bar?",
+ "alma_project_codes": [
+  "2016.1.00437.S",
+  "2016.2.00053.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m array (44 and 41 antennae) and 7-m ACA (10 antennae)",
+  "angular_resolution": "0.25'' x 0.22'' (25.7 x 22.6 pc^2) for line; 0.20'' x 0.18'' for continuum",
+  "sensitivity": "0.86 mJy beam^-1 (0.85 K) per 2 km s^-1 channel (cube); 25 uJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance D = 21.4 Mpc",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "Throughout this paper, we adopt a distance $D=21.4$ Mpc for NGC 5806 (cite: cappellari2011), whereby $1\\ensuremath{''}$ corresponds to $\\approx103$ pc."
+     }
+    ]
+   },
+   "citation": "(cite: cappellari2011)"
+  },
+  {
+   "what": {
+    "value": "Total stellar mass of 3.89 x 10^10 M_sun",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "NGC 5806 has a total stellar mass of $3.89\\times10^{10}$ M$_{\\odot}$ (cite: salo2017; morales2018)"
+     }
+    ]
+   },
+   "citation": "(cite: salo2017; morales2018)"
+  },
+  {
+   "what": {
+    "value": "Luminosity-weighted stellar velocity dispersion sigma_* = 120 km s^-1 within central 10'' and SMBH mass ~1.2 x 10^7 M_sun",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "a luminosity-weighted stellar velocity dispersion $\\sigma_*=120$ km s$^{-1}$ within the central $10\\ensuremath{''}$ (cite: dumas2007)"
+     },
+     {
+      "loc": "Target",
+      "quote": "(cite: dumas2007) estimated the mass of the central supermassive black hole to be $\\approx1.2\\times10^7$ M$_{\\odot}$ using the $M_{\\mathrm{BH}}$ – $\\sigma_\\star$ relation of (cite: tremaine2002)."
+     }
+    ]
+   },
+   "citation": "(cite: dumas2007)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass at central 27.4'' of ~10^9 M_sun",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "The mass of molecular gas at the centre region of NGC 5806 ($27.4\\ensuremath{''}$) is $\\approx10^9$ M$_{\\odot}$ (cite: davis2022_wisdom)"
+     }
+    ]
+   },
+   "citation": "(cite: davis2022_wisdom)"
+  },
+  {
+   "what": {
+    "value": "Total atomic hydrogen (HI) mass of 1.74 x 10^9 M_sun",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "and the total mass of atomic hydrogen (H I) is $1.74\\times10^9$ M$_{\\odot}$ (cite: haynes2018ALFALFA)."
+     }
+    ]
+   },
+   "citation": "(cite: haynes2018ALFALFA)"
+  },
+  {
+   "what": {
+    "value": "Total star formation rate of 3.6 M_sun yr^-1",
+    "evidence": [
+     {
+      "loc": "Target",
+      "quote": "Star formation is present only in the inner and nuclear rings, with a total star formation rate (SFR) of $3.6$ M$_{\\odot}$ yr$^{-1}$ derived using a spectral energy distribution fitting code (cite: errozferrer2019)."
+     }
+    ]
+   },
+   "citation": "(cite: errozferrer2019)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity V_sys = 1360 km s^-1 from HI line emission",
+    "evidence": [
+     {
+      "loc": "Moment maps",
+      "quote": "with respect to the systemic velocity $V_{\\mathrm{sys}}=1360$ km s$^{-1}$(as determined from H i line emission; (cite: springob2005_vsys_ref))."
+     }
+    ]
+   },
+   "citation": "(cite: springob2005_vsys_ref)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, combine, and image the ALMA 12CO(2-1) cube and continuum",
+   "method": "Calibrate raw data with ALMA pipeline; manually weight C40-3 (0.2) and C40-6 (1.0), combine with ACA using concat; subtract continuum with uvcontsub; interactively clean with tclean to dirty cube RMS depth.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5, pixel size = 0.05'', channel width = 2 km s^-1, C40-3 weight = 0.2, C40-6 weight = 1.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Generate moment maps and define galactic regions",
+   "method": "Smooth-moment masking method: convolve cube spatially with a Gaussian equal to synthesised beam width, Hanning-smooth spectrally, mask at 1.5x RMS of smoothed cube, apply to original cube; divide galaxy into four regions (nucleus, arcs, nodes, dust lanes).",
+   "software": [],
+   "key_parameters": [
+    "Mask threshold = 1.5 x RMS of smoothed cube; nucleus = inner 250 pc"
+   ],
+   "assumptions": [
+    "Systemic velocity V_sys = 1360 km s^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify giant molecular clouds (GMCs)",
+   "method": "Use modified CPROPSTOO algorithm: generate 3D mask of islands (2 adjacent channels > 2.5 sigma_rms expanded to > 1.5 sigma_rms, area >= 2 beams), find local maxima in running 3x3x3 pix^3 sub-cubes, decompose into clouds across a stepped range of minarea and minpix.",
+   "software": [
+    "CPROPSTOO"
+   ],
+   "key_parameters": [
+    "minvchan = 2, Delta T_max = 2 sigma_rms = 1.7 K, minarea = 96 to 24 spaxels (step 24), minpix = 96 to 24 pixels (step 24), convexity = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Calculate physical properties of identified GMCs and fit their distributions",
+   "method": "Compute cloud size R_c, observed velocity dispersion sigma_obs,los, gradient-subtracted velocity dispersion sigma_gs,los, CO(2-1) luminosity, gas mass M_gas, and surface density Sigma_gas; fit Gaussian curves to property distributions and estimate uncertainties with 500 bootstrap samples.",
+   "software": [
+    "CPROPSTOO"
+   ],
+   "key_parameters": [
+    "Bootstrap samples = 500, T_edge = 0 K extrapolation"
+   ],
+   "assumptions": [
+    "Distance D = 21.4 Mpc, geometric parameter eta = 1.91, line ratio R_21 = 1, X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO(2-1) = 4.4 M_sun (K km s^-1 pc^2)^-1), inclination i = 58 deg, PA = 166 deg"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit GMC cumulative mass functions",
+   "method": "Fit cumulative gas mass distributions above the mass completeness limit with power-law and truncated power-law functions using the 'error in variable' method and bootstrapping.",
+   "software": [],
+   "key_parameters": [
+    "M_comp = 2.4 x 10^5 M_sun, delta_M = 1.03 x 10^4 M_sun, RMS surface density sensitivity = 17.8 M_sun pc^-2, beam area = 565 pc^2; 5 most massive clouds excluded in nucleus and nodes regional fits"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Measure internal velocity gradients of individual clouds and compare with galaxy rotation and turbulence",
+   "method": "Fit a 2D plane v_bar(x,y) = ax + by + c to the intensity-weighted first moment map of each resolved cloud using MPFIT2DFUN to derive projected angular velocity omega_obs and rotation axis PA phi_rot; compare with low-resolution galaxy velocity map model (omega_model, phi_model), Burkert & Bodenheimer (2000) turbulence relation, and sigma_gs,los.",
+   "software": [
+    "IDL",
+    "MPFIT2DFUN"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Solid-body rotation plane approximation; turbulence relation omega = 1.6 (R_c / 0.1 pc)^(-1/2) km s^-1 pc^-1"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Assess dynamical states, scaling relations, virial parameter, and X_CO variations",
+   "method": "Fit power laws to size-linewidth (R_c vs sigma_obs,los), virial mass vs gas mass (M_obs,vir vs M_gas), and virial parameter vs velocity dispersion; analyze Sigma_gas vs sigma_obs,los R_c^(-1/2) pressure curves; infer X_CO distribution assuming virial equilibrium.",
+   "software": [],
+   "key_parameters": [
+    "Geometrical factor b_s = 1/5"
+   ],
+   "assumptions": [
+    "Homogeneous spherical cloud shapes (b_s = 1/5); alpha_obs,los = 1 for inferring X_CO variations"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate bar-driven gas inflow rate and compare inflow kinetic energy with turbulent dissipation in the nuclear ring",
+   "method": "Measure average velocity difference between double peaks in node LOSVDs to obtain V_in = V_in,obs / sin(i); compute mass inflow rate M_dot_in = 2 <Sigma_gas> W_in V_in and kinetic energy input rate E_dot_in = 0.5 M_dot_in V_in^2; compare with turbulent energy dissipation rate E_dot_diss = M_NR sigma_NR^3 / (2 h_NR).",
+   "software": [],
+   "key_parameters": [
+    "W_in = 100 pc, <Sigma_gas> = 200 M_sun pc^-2, i = 58 deg, M_NR = 2.2 x 10^8 M_sun, sigma_NR = 16 km s^-1, h_NR = 16 pc"
+   ],
+   "assumptions": [
+    "Inflow occurs in galaxy plane with inclination i = 58 deg; two dust lanes of width 100 pc"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Estimate GMC lifetimes and disruption timescales in the nuclear ring",
+   "method": "Calculate travel time between nodes t_travel = pi R_NR / (V_c,NR - Omega_p R_NR); count clouds in adjacent azimuthal zones (N_I, N_II) to find lost fraction F_lost = (N_I - N_II)/N_I and lifetime t_lifetime = (t_travel / 2) / F_lost; compare with collision (t_coll), shear (t_shear), and turbulent crossing (t_cross) timescales.",
+   "software": [],
+   "key_parameters": [
+    "R_NR = 320 pc, V_c,NR = 150 km s^-1, bar end = 3.5 kpc, corotation radius = 4.2 kpc, V_c(4.2 kpc) = 220 km s^-1, D_c = 78 pc, sigma_cc = 10 km s^-1, elliptical annulus (230 pc inner, 370 pc outer, ellipticity 0.3, 85 clouds), Oort's A = 0.15 km s^-1 pc^-1, R_c = 39 pc, sigma_obs,los = 7.4 km s^-1"
+   ],
+   "assumptions": [
+    "Pattern speed of nuclear ring equals large-scale bar pattern speed; corotation radius is 1.2 times bar length; cloud-cloud velocity dispersion sigma_cc = 10 km s^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of identified GMCs",
+   "value": "366",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Cloud identification",
+     "quote": "As a result, we identify $366$ GMCs, $170$ of which are both spatially and spectrally resolved, as shown in [3](#fig:cloudfinding_result)."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of spatially and spectrally resolved GMCs",
+   "value": "170",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Cloud identification",
+     "quote": "As a result, we identify $366$ GMCs, $170$ of which are both spatially and spectrally resolved, as shown in [3](#fig:cloudfinding_result)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total 12CO(2-1) flux in central 9'' x 9'' region",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Moment maps",
+     "quote": "The total $^{12}$CO(2-1) flux in that region is $\\approx300$ Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved cloud size (R_c) range",
+   "value": "15 to 85",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The sizes ($R_\\mathrm{c}$) of the resolved clouds of NGC 5806 range from $15$ to $85$ pc (top-left panel of [4](#fig:histogram))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of Gaussian fit to resolved cloud size (R_c)",
+   "value": "27.8",
+   "uncertainty": "0.7 (std dev 9.4)",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The mean of the Gaussian fit is $27.8\\pm0.7$ pc and the standard deviation $9.4$ pc, while the median radius is $30.2$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median resolved cloud size (R_c)",
+   "value": "30.2",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The mean of the Gaussian fit is $27.8\\pm0.7$ pc and the standard deviation $9.4$ pc, while the median radius is $30.2$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved cloud gas mass (M_gas) range",
+   "value": "1.18 x 10^5 to 3.64 x 10^7",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The resolved clouds have gas masses $M_{\\mathrm{gas}}$ ranging from $1.18\\times10^5$ to $3.64\\times10^7$ M$_{\\odot}$ (top-right panel of [4](#fig:histogram))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of Gaussian fit to log(M_gas / M_sun)",
+   "value": "5.66",
+   "uncertainty": "0.04 (std dev 0.4)",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The mean of the Gaussian fit to the $\\log(M_\\mathrm{gas}/\\mathrm{M_{\\odot}})$ distribution is $5.66\\pm0.04$ ($\\approx4.6\\times10^5$ M$_{\\odot}$) and the standard deviation $0.4$, while the median gas mass is $5.5\\times10^5$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median resolved cloud gas mass (M_gas)",
+   "value": "5.5 x 10^5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "while the median gas mass is $5.5\\times10^5$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved cloud observed velocity dispersion (sigma_obs,los) range",
+   "value": "1.6 to 35.9",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The observed velocity dispersions of the resolved clouds range from $1.6$ to $35.9$ km s$^{-1}$ (bottom-left panel of [4](#fig:histogram))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of Gaussian fit to observed velocity dispersion (sigma_obs,los)",
+   "value": "5.2",
+   "uncertainty": "0.23 (std dev 2.7)",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The mean of the Gaussian fit is $5.2\\pm0.23$ km s$^{-1}$ and the standard deviation $2.7$ km s$^{-1}$, while the median observed velocity dispersion is $5.63$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median observed velocity dispersion (sigma_obs,los)",
+   "value": "5.63",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "while the median observed velocity dispersion is $5.63$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Resolved cloud gas mass surface density (Sigma_gas) range",
+   "value": "81 to 1000",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The gas mass surface densities of the resolved clouds range from $81$ to $1000$ M$_{\\odot}$ pc$^{-2}$ (bottom-right panel of [4](#fig:histogram))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean of Gaussian fit to log(Sigma_gas / M_sun pc^-2)",
+   "value": "2.29",
+   "uncertainty": "0.02 (std dev 0.2)",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "GMC properties in different regions",
+     "quote": "The mean of the Gaussian fit to the $\\log(\\Sigma_{\\mathrm{gas}}/{\\mathrm{M_\\odot~pc^{-2}}})$ distribution is $2.29\\pm0.02$ ($\\approx195$ M$_{\\odot}$) and the standard deviation $0.2$, while the median gas mass surface density is $2.3$ ($\\approx200$ M$_{\\odot}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative mass function truncated power-law slope (gamma)",
+   "value": "-1.72",
+   "uncertainty": "0.12",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "GMC cumulative mass functions",
+     "quote": "The best-fitting slopes of the truncated and non-truncated power laws are $\\gamma=-1.72\\pm0.12$ and $\\gamma=-1.86\\pm0.06$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative mass function non-truncated power-law slope (gamma)",
+   "value": "-1.86",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "GMC cumulative mass functions",
+     "quote": "The best-fitting slopes of the truncated and non-truncated power laws are $\\gamma=-1.72\\pm0.12$ and $\\gamma=-1.86\\pm0.06$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected velocity gradient (omega_obs) range",
+   "value": "0.01 to 0.67",
+   "uncertainty": "not stated",
+   "units": "km s^-1 pc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Velocity Gradients of Individual Clouds",
+     "quote": "The projected velocity gradients $\\omega_{\\mathrm{obs}}$ of the $170$ resolved clouds of NGC 5806 range from $0.01$ to $0.67$ km s$^{-1}$ pc$^{-1}$, with an average and median gradient of $0.10$ and $0.08$ km s$^{-1}$ pc$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average projected velocity gradient (omega_obs)",
+   "value": "0.10",
+   "uncertainty": "not stated",
+   "units": "km s^-1 pc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Velocity Gradients of Individual Clouds",
+     "quote": "with an average and median gradient of $0.10$ and $0.08$ km s$^{-1}$ pc$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median projected velocity gradient (omega_obs)",
+   "value": "0.08",
+   "uncertainty": "not stated",
+   "units": "km s^-1 pc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Velocity Gradients of Individual Clouds",
+     "quote": "with an average and median gradient of $0.10$ and $0.08$ km s$^{-1}$ pc$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation power-law slope",
+   "value": "1.07",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dynamical states of clouds",
+     "quote": "$$\\begin{equation}\n    \\log\\left(\\frac{\\sigma_{\\mathrm{obs,los}}}{\\mathrm{km\\ s^{-1}}}\\right)=(0.15\\pm0.03)+(1.07\\pm0.06)\\log\\left(\\frac{R_\\mathrm{c}}{\\mathrm{pc}}\\right)\\,\\,\\,,\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation intercept",
+   "value": "0.15",
+   "uncertainty": "0.03",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dynamical states of clouds",
+     "quote": "$$\\begin{equation}\n    \\log\\left(\\frac{\\sigma_{\\mathrm{obs,los}}}{\\mathrm{km\\ s^{-1}}}\\right)=(0.15\\pm0.03)+(1.07\\pm0.06)\\log\\left(\\frac{R_\\mathrm{c}}{\\mathrm{pc}}\\right)\\,\\,\\,,\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass vs gas mass power-law slope",
+   "value": "1.11",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dynamical states of clouds",
+     "quote": "$$\\begin{equation}\n    \\log\\left(\\frac{M_{\\mathrm{obs,vir}}}{\\mathrm{M_{\\odot}}}\\right)=(-0.41\\pm0.02)+(1.11\\pm0.03)\\log\\left(\\frac{M_{\\mathrm{gas}}}{\\mathrm{M_{\\odot}}}\\right)\\,\\,\\,,\n\\end{equation}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter (alpha_vir)",
+   "value": "2.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dynamical states of clouds",
+     "quote": "The mean (median) of $\\alpha_{\\mathrm{vir}}$ is $2.07$ ($1.66$), indicating that on average the clouds are marginally virialised."
+    }
+   ]
+  },
+  {
+   "quantity": "Median virial parameter (alpha_vir)",
+   "value": "1.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dynamical states of clouds",
+     "quote": "The mean (median) of $\\alpha_{\\mathrm{vir}}$ is $2.07$ ($1.66$), indicating that on average the clouds are marginally virialised."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas inflow velocity (V_in)",
+   "value": "120",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Turbulence maintained by bar-driven gas inflow",
+     "quote": "The gas inflow velocity is then $V_{\\mathrm{in}}= V_{\\mathrm{in,obs}}/\\sin i\\approx120$ km s$^{-1}$(cite: sato2021)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass inflow rate (M_dot_in)",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Turbulence maintained by bar-driven gas inflow",
+     "quote": "Adopting this relative velocity, the total mass inflow rate along the two dust lanes is estimated to be $\\dot{M}_{\\mathrm{in}}=2\\langle\\Sigma_{\\mathrm{gas}}\\rangle W_{\\mathrm{in}}V_{\\mathrm{in}}\\approx5$ M$_{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinetic energy input rate by gas inflow (E_dot_in)",
+   "value": "3.5 x 10^4",
+   "uncertainty": "not stated",
+   "units": "M_sun km^2 s^-2 yr^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Turbulence maintained by bar-driven gas inflow",
+     "quote": "the kinetic energy per unit time input by gas inflow is $\\dot{E}_{\\rm in} \\approx 3.5\\times 10^4 {\\rm ~M_\\odot~ km^2~s^{-2}~yr^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulence energy dissipation rate in nuclear ring (E_dot_diss)",
+   "value": "2.8 x 10^4",
+   "uncertainty": "not stated",
+   "units": "M_sun km^2 s^-2 yr^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Turbulence maintained by bar-driven gas inflow",
+     "quote": "We then derive the turbulence energy dissipation per unit time in the nuclear ring $\\dot{E}_{\\rm diss} \\approx 2.8 \\times 10^4 {\\rm ~M_\\odot~ km^2~s^{-2}~yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Bar pattern speed (Omega_p)",
+   "value": "52",
+   "uncertainty": "not stated",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "The end of the bar has a $\\approx3.5$ kpc distance from the centre and a rotational velocity at the corotation radius of $V_{\\mathrm{c}}(4.2~\\mathrm{kpc})\\approx220$ km s$^{-1}$, yielding $\\Omega\\approx52$ km s$^{-1}$ kpc$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Travel time between nodes in nuclear ring (t_travel)",
+   "value": "7.8",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "We thus adopt this orbital angular velocity as the pattern speed of the bar $\\Omega_{\\mathrm{p}}$, yielding the travel time $t_{\\rm travel}$ of $\\approx7.8$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "GMC lifetime in the nuclear ring (t_lifetime)",
+   "value": "5.4 to 6.4",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "By adopting the travel time ($7.8$ Myr), the cloud lifetime $t_{\\mathrm{lifetime}}$ ranges $5.4$ – $6.4$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud-cloud collision timescale in nuclear ring (t_coll)",
+   "value": "3.1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "yielding $N_{\\mathrm{mc}}\\approx450$ kpc$^{-2}$ and in turn $t_{\\mathrm{coll}}\\approx3.1$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Shear timescale in nuclear ring (t_shear)",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "This thus yields a shear timescale of $t_{\\mathrm{shear}}\\approx3.2$ Myr, that is again approximately half the travel time and smaller than the cloud lifetime $t_{\\rm lifetime} \\approx 5.4$ – $6.4$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent crossing timescale in nuclear ring (t_cross)",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "GMC lifetime in the nuclear ring",
+     "quote": "yielding a typical turbulent crossing timescale $t_{\\rm cross} \\approx 11~$ Myr, that is much larger than the travel time and the cloud lifetime."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean inferred CO-to-H2 conversion factor (X_CO,20)",
+   "value": "4.05",
+   "uncertainty": "not stated",
+   "units": "10^20 cm^-2 (K km s^-1)^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO conversion factor",
+     "quote": "and show in [2](#fig:Xco_obs) the distribution of $X_{\\mathrm{CO,20}}$ of all resolved clouds of NGC 5806 (identical to [\\[fig:alpha_obs\\]](#fig:alpha_obs) within a scaling factor), with a logarithmic mean of $0.61$ ($X_{\\mathrm{CO,20}}\\approx4.05$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges or channel ranges used for uvcontsub continuum subtraction",
+  "Exact pixel size in pixels (e.g., imsize) and deconvolver setting used in CASA tclean",
+  "Exact spatial polygon coordinates defining the four galactic subregions (nucleus, arcs, nodes, dust lanes)",
+  "Smoothing kernel size used to generate the low-resolution coarse-grained 12CO(2-1) velocity map for omega_model",
+  "Details of how the rotation curve V_c(R_gal) was derived (mentioned as 'rotation curve that derived above' without an explicit derivation section in the text)"
+ ],
+ "missing_for_reproduction": [
+  "Source code or repository link for the authors' modified version of CPROPSTOO (from Liu et al. 2021)",
+  "Exact spatial coordinates/masks for the four galactic regions (nucleus, arcs, nodes, dust lanes)",
+  "Details and parameters of the rotation curve derivation V_c(R_gal)",
+  "Exact smoothing kernel size used to construct the coarse-grained velocity map for omega_model"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Raw ALMA project codes, CASA versions, visibility combination weights (0.2 and 1.0), imaging parameters (robust=0.5, pixel=0.05'', channel=2 km/s, RMS=0.86 mJy/beam), and CPROPSTOO parameters (SNR thresholds 2.5/1.5, minvchan=2, Delta T_max=1.7 K, minarea/minpix=96-24 step 24, convexity=0.5) are all explicitly specified. However, the modified CPROPSTOO code is not publicly linked, the region boundary coordinates are only shown graphically, and the rotation curve derivation is omitted.",
+ "rediscovery_reason": "All ALMA data are public under two stated project codes, the data reduction and cloud decomposition parameters are thoroughly documented, and the paper provides a rich set of quantitative answer keys (cloud catalog, property distributions, scaling relation slopes, mass function slopes, inflow rate, and cloud lifetimes).",
+ "source_card": "cards/2023MNRAS.522.4078C/sonnet/card.md"
+}

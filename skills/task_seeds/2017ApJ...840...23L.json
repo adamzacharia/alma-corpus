@@ -1,0 +1,211 @@
+{
+ "bibcode": "2017ApJ...840...23L",
+ "title": "A Multi-ringed, Modestly Inclined Protoplanetary Disk around AA Tau",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa6c63",
+ "arxiv_id": "1704.02006",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the dust and gas structure and inclination of the AA Tau disk, and how does it relate to the system's photometric variability?",
+ "alma_project_codes": [
+  "2013.1.01070.S",
+  "2015.1.01017.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm), Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.18''x0.12'' (robust 0); 0.15''x0.11'' (super-uniform)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inner disk PA 93 deg from observed jet",
+    "evidence": [
+     {
+      "loc": "3.2 Continuum modeling",
+      "quote": "we fix the PA to 93$^{\\degree}$, constrained by the PA of the observed jet (cite: Cox_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Cox_2013)"
+  },
+  {
+   "what": {
+    "value": "Inner disk inclination 75 deg from photopolarimetry modeling",
+    "evidence": [
+     {
+      "loc": "3.2 Continuum modeling",
+      "quote": "the inclination to 75$^{\\degree}$, constrained by photopolarimetry modeling (cite: OSullivan_2005)"
+     }
+    ]
+   },
+   "citation": "(cite: OSullivan_2005)"
+  },
+  {
+   "what": {
+    "value": "Scattered-light inclination 71±1 deg",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Observations",
+      "quote": "71$\\pm$1$\\degree$ previously fit to infrared scattered light emission (cite: Cox_2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Cox_2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "Concatenate Band 6 and 7, MFS CLEAN, robust 0 and super-uniform",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit parametric ring model to visibilities",
+   "method": "Three Gaussian rings plus Gaussian inner disk, 29 parameters, fit to visibilities",
+   "software": [
+    "emcee",
+    "vis_sample"
+   ],
+   "key_parameters": [
+    "inner disk PA fixed 93 deg, inclination fixed 75 deg"
+   ],
+   "assumptions": [
+    "distance 145 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Line moment and radial profile analysis",
+   "method": "HCO+ and 13CO imaged identically; deprojected azimuthal radial profiles using continuum PA and inclination; moment-1 map and PV diagram versus Keplerian curves for 59 and 40 deg",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "stellar mass 0.85 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Ring 1 radius",
+   "value": "48.7",
+   "uncertainty": "0.1",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum modeling",
+     "quote": "The retrieved ring radii are 48.7$\\pm$0.1, 94.9$\\pm$0.2, and 142.6$\\pm$0.6 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring 2 radius",
+   "value": "94.9",
+   "uncertainty": "0.2",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum modeling",
+     "quote": "The retrieved ring radii are 48.7$\\pm$0.1, 94.9$\\pm$0.2, and 142.6$\\pm$0.6 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring 3 radius",
+   "value": "142.6",
+   "uncertainty": "0.6",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum modeling",
+     "quote": "The retrieved ring radii are 48.7$\\pm$0.1, 94.9$\\pm$0.2, and 142.6$\\pm$0.6 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ring inclination",
+   "value": "59.1",
+   "uncertainty": "0.3",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum modeling",
+     "quote": "we constrain the ring inclinations to an average of 59.1$\\degree\\pm$0.3$\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring FWHM widths",
+   "value": "22.6, 28.7, 26.4",
+   "uncertainty": "0.2, 0.7, 1.5",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FHWM (AU) & 5.4$\\pm$1.1 & 22.6$\\pm$0.2 & 28.7$\\pm$0.7 & 26.4$\\pm$1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring Band 7 fluxes",
+   "value": "61.0, 34.4, 8.5",
+   "uncertainty": "0.2, 0.4, 0.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Flux Band 7 (mJy) & 2.2$\\pm$0.05 & 61.0$\\pm$0.2 & 34.4$\\pm$0.4 & 8.5$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak residual after model subtraction",
+   "value": "~12",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Continuum modeling",
+     "quote": "structured residuals with a peak of $\\sim$12 $\\sigma$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size and image size",
+  "Line-free channels for uvcontsub",
+  "Self-calibration solution intervals and reference antenna",
+  "MCMC walkers, steps, burn-in and priors",
+  "Exact Band 6 flux rescaling factor applied",
+  "Rest frequencies and weighting for 13CO imaging",
+  "Details of the dust streamer model",
+  "Parametric Gaussian ring functional form"
+ ],
+ "missing_for_reproduction": [
+  "Exact flux rescaling factor",
+  "MCMC setup and priors",
+  "Imaging cell and image sizes",
+  "Model code for ring parameterization"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and methods broadly described, but key imaging and MCMC settings and flux correction details are missing.",
+ "rediscovery_reason": "Data are ALMA archive projects, the recipe is moderately complete, and results are numeric ring parameters.",
+ "source_card": "cards/2017ApJ...840...23L/sonnet/card.md"
+}

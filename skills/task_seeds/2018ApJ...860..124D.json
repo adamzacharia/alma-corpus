@@ -1,0 +1,223 @@
+{
+ "bibcode": "2018ApJ...860..124D",
+ "title": "The Eccentric Cavity, Triple Rings, Two-armed Spirals, and Double Clumps of the MWC 758 Disk",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac6cb",
+ "arxiv_id": "1805.12141",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the high-resolution sub-mm dust structure of the MWC 758 disk (cavity, rings, spirals, clumps), and what does it imply about unseen companions?",
+ "alma_project_codes": [
+  "2017.1.00492.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "C43-8, 48-49 antennas, three EBs",
+  "angular_resolution": "43x39 mas, PA=-4.3 deg",
+  "sensitivity": "20 uJy/beam rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inclination 21 deg and PA 62 deg for deprojection",
+    "evidence": [
+     {
+      "loc": "3.2 The Cavity and the Outer Disk",
+      "quote": "assuming an inclination $i$=21$^\\circ$ and position angle PA=62$^\\circ$ (cite: isella10; boehler18)"
+     }
+    ]
+   },
+   "citation": "(cite: isella10; boehler18)"
+  },
+  {
+   "what": {
+    "value": "Stellar position from Gaia as phase center/origin; 160 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "located at a distance of 160$\\pm$2 pc (cite: gaia18)"
+     }
+    ]
+   },
+   "citation": "(cite: gaia18)"
+  },
+  {
+   "what": {
+    "value": "33 GHz VLA central source flux",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Combining with the total flux density of the central source measured at $\\nu$=33GHz by the VLA (cite: marino15mwc758)"
+     }
+    ]
+   },
+   "citation": "(cite: marino15mwc758)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "tclean Briggs 0.5 with uv taper from pipeline-calibrated data",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Deproject and fit inner ring ellipse",
+   "method": "Deproject with i=21, PA=62 around Gaia position; fit ellipse with one focus on star, compare with offset circle",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "mm dust settled to midplane so deprojection recovers face-on view"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Radial and azimuthal profiles of rings, arm, clumps",
+   "method": "Azimuthally averaged profiles in Ring East/West; FWHM, deconvolved by sqrt(FWHM^2-beam^2); peak-to-trough contrasts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate dust temperature",
+   "method": "HOCHUNK3D radiative transfer models varying scale height and flaring",
+   "software": [
+    "HOCHUNK3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "T*=7580 K, L*=9.7 Lsun, Sigma∝1/r"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Beam",
+   "value": "43x39 mas",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2",
+     "quote": "synthesized beam size of 43$\\times$39 mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux density (1.3\" circle)",
+   "value": "180",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Main Features",
+     "quote": "is 180 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner ring eccentricity",
+   "value": "0.10",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "eccentricity $e$=0.10$\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner ring semi-major axis",
+   "value": "0.319",
+   "uncertainty": "0.002",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "semi-major axis $a$=0.319$''$$\\pm$0.002"
+    }
+   ]
+  },
+  {
+   "quantity": "Central source spectral index 33-343.5 GHz",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "=0.4 between 343.5 and 33 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Arm 1 peak contrast",
+   "value": "3.6",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.6$\\pm$0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump azimuthal contrasts (south, north)",
+   "value": "4.4, 10",
+   "uncertainty": "0.3, 1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The azimuthal peak-to-trough contrasts of the south and north clumps are 4.4 and 10"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust T in clumps (south, north)",
+   "value": "20-32, 17-27",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "we obtain $T_{\\rm dust}$=20$-$32 K at the location of the south clump"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, niter, mask, cell and image size",
+  "Self-calibration use",
+  "CASA/pipeline version",
+  "Method and tools for ellipse fitting and its uncertainties",
+  "HOCHUNK3D dust/grain parameters and disk mass",
+  "Exact regions/annuli used for profiles"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and masks",
+  "ellipse fitting procedure",
+  "RT model details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Imaging parameters mostly given and data public, but fitting and profile procedures are vague.",
+ "rediscovery_reason": "Public data, stated imaging recipe, numeric feature measurements.",
+ "source_card": "cards/2018ApJ...860..124D/sonnet/card.md"
+}

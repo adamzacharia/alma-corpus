@@ -1,0 +1,518 @@
+{
+ "bibcode": "2023A&A...671A..69G",
+ "title": "The Sun at millimeter wavelengths. IV. Magnetohydrodynamic waves in small-scale bright features",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202244228",
+ "arxiv_id": "2212.11096",
+ "fields": [
+  "sun"
+ ],
+ "question": "Identify and study magnetohydrodynamic (MHD) waves and their energy flux in bright small-scale magnetic features in the solar chromosphere using ALMA Band 3 and Band 6 observations alongside Bifrost simulations.",
+ "alma_project_codes": [
+  "2016.1.00050.S"
+ ],
+ "data": {
+  "bands": "Band 3 (2.8-3.3 mm) and Band 6 (1.2-1.3 mm)",
+  "arrays": "Interferometric array and (single-dish) Total Power antennas",
+  "angular_resolution": "Band 3: ~2.2 arcsec x 1.7 arcsec (1600 km x 1235 km); Band 6: ~0.84 arcsec x 0.67 arcsec (610 km x 488 km)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3D RMHD Bifrost simulation of a magnetic enhanced network region surrounded by quiet Sun",
+    "evidence": [
+     {
+      "loc": "Simulation",
+      "quote": "The simulation used here was created with the 3D radiation magnetohydrodynamic (RMHD) code Bifrost (cite: 2011A&A...531A.154G) and represents a magnetic enhanced network region surrounded by quiet Sun (cite: 2016A&A...585A...4C)."
+     }
+    ]
+   },
+   "citation": "(cite: 2016A&A...585A...4C)"
+  },
+  {
+   "what": {
+    "value": "Reconstructed ALMA Band 3 and Band 6 time series (SALSA data sets D02 and D08) and magnetic topology characterization",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "These data products are presented in (cite: 2021RSPTA.37900174J) as data sets D2 and D8, where they showed that the magnetic topology at chromospheric heights represents vertical or near-vertical fields in a large portion of the FoVs with more inclined field towards the edges."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The specific time series used in this study can be downloaded from the Solar ALMA Science Archive (SALSA) as data sets D02 (Band 3) and D08 (Band 6) (cite: 2022A&A...659A..31H)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021RSPTA.37900174J); (cite: 2022A&A...659A..31H)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Synthesize and degrade simulation continuum brightness temperature maps to match ALMA observations",
+   "method": "Solve radiative transfer with ART on Bifrost simulation snapshots to get Band 3 and Band 6 brightness temperatures, subsample frames to 2 s cadence with scan gaps matching ALMA, convolve with the median ALMA synthetic elliptical beam, and rebin pixels to ALMA pixel sizes.",
+   "software": [
+    "Bifrost",
+    "ART"
+   ],
+   "key_parameters": [
+    "Band 3 simulation snapshots: [700-1288, 1428-2022, 2172-2764]; Band 6 simulation snapshots: [700-1182, 1294-1770, 1913-2389, 2499-2981, 3120-3354]",
+    "Degraded pixel sizes: 0.34 arcsec (Band 3) and 0.14 arcsec (Band 6)"
+   ],
+   "assumptions": [
+    "LTE radiative transfer using non-equilibrium electron densities from Bifrost; perfect spatial Fourier space sampling approximated by Gaussian beam convolution"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Automatically identify, segment, track, and classify oscillating small-scale bright features",
+   "method": "Apply a Difference of Gaussians (DoG) filter to each frame, find local maxima, segment features via Flood fill on normalized inverted images, filter out elongated/large masks, track overlapping masks frame-to-frame, and cluster extracted peak-temperature light curves using DBSCAN to select oscillating features.",
+   "software": [
+    "SALAT",
+    "Scikit-image",
+    "Scikit-learn"
+   ],
+   "key_parameters": [
+    "DoG filter Gaussian widths: 0.5 and 2.0 times the median major axis of the ALMA beam; local maxima minimum separation: 1.5 times the median major beam",
+    "Flood fill tolerance: ~2.4 standard deviations (FWHM halfway between seed peak temperature and FoV median temperature); max border distance filter: 4 times median beam major axis; frame-to-frame overlap: >= 2 pixels"
+   ],
+   "assumptions": [
+    "Merged features terminate the lifespan of the individual merging features at the previous frame"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract physical properties, sizes, and horizontal velocities of tracked features",
+   "method": "For each feature and frame, extract peak brightness temperature, compute equivalent circular diameter from mask area, track intensity-weighted centre of gravity to compute instantaneous horizontal velocities, and take the FFT of horizontal velocity oscillations to extract velocity amplitudes.",
+   "software": [],
+   "key_parameters": [
+    "FFT velocity amplitude threshold: > 2 standard deviations above the average"
+   ],
+   "assumptions": [
+    "1 arcsec ~ 727 km; features are approximately circular (blob-like) so diameter of a circle of equal area represents feature size"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Determine oscillation periods and temperature-size phase differences via wavelet analysis",
+   "method": "Detrend temperature, size, and horizontal velocity time series with a linear fit, apodize with a Tukey window, and compute Continuous Wavelet Transforms (CWT) and cross-wavelet transforms between temperature and size.",
+   "software": [],
+   "key_parameters": [
+    "Linear detrending; Tukey window length = 0.1; CWT significance threshold >= 95% confidence level outside the cone of influence"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate wave energy flux of sausage modes",
+   "method": "Compute filling factor f, radial velocity perturbation v_r from radius amplitude and size period, phase speed v_ph from temperature and area fractional perturbations, and combine with external mass density rho_e from the Bifrost simulation using Eq. 1.",
+   "software": [],
+   "key_parameters": [
+    "Observing frequencies: nu = 100 GHz (Band 3) and 240 GHz (Band 6); External mass density rho_e = 2.5e-8 kg m^-3 (Band 3) and 4.0e-7 kg m^-3 (Band 6)",
+    "Degraded simulation median formation heights: 1563 km (Band 3) and 1260 km (Band 6)"
+   ],
+   "assumptions": [
+    "External mass densities rho_e for ALMA observations are taken from the Bifrost simulation (within circles of 3x feature radius outside the feature); ALMA brightness temperature in Rayleigh-Jeans limit is a proxy for emission intensity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified oscillating bright features (ALMA Band 3)",
+   "value": "193",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We found 193 and 293 features in the Bands 3 and 6 observations, respectively."
+    },
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "In total, 193 features where identified in Band 3 and 293 in the Band 6 observations."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified oscillating bright features (ALMA Band 6)",
+   "value": "293",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We found 193 and 293 features in the Bands 3 and 6 observations, respectively."
+    },
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "In total, 193 features where identified in Band 3 and 293 in the Band 6 observations."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified oscillating bright features (Degraded simulation Band 3)",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the degraded simulation, the total number of features were 24 for Band 3 and 204 for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified oscillating bright features (Degraded simulation Band 6)",
+   "value": "204",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the degraded simulation, the total number of features were 24 for Band 3 and 204 for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified oscillating bright features (Original simulation Band 3)",
+   "value": "36",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the original simulation, the total number of features were 36 for Band 3 and 392 for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified oscillating bright features (Original simulation Band 6)",
+   "value": "392",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the original simulation, the total number of features were 36 for Band 3 and 392 for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean brightness temperature of full FoV (ALMA Band 3)",
+   "value": "9317",
+   "uncertainty": "1229",
+   "units": "K",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The absolute temperature ranges of the ALMA observations are [5106,15126] K with a mean of 9317 K and a standard deviation of 1229 K for Band 3 and [2090,12196] K with a mean of 7496 K and a standard deviation of 1014 K for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean brightness temperature of full FoV (ALMA Band 6)",
+   "value": "7496",
+   "uncertainty": "1014",
+   "units": "K",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The absolute temperature ranges of the ALMA observations are [5106,15126] K with a mean of 9317 K and a standard deviation of 1229 K for Band 3 and [2090,12196] K with a mean of 7496 K and a standard deviation of 1014 K for Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean temperature oscillation period (ALMA Band 3)",
+   "value": "72",
+   "uncertainty": "29",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B3** | 72 | 66 | 29 | 68 | 62 | 28 | 61 | 52 | 27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean size oscillation period (ALMA Band 3)",
+   "value": "68",
+   "uncertainty": "28",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B3** | 72 | 66 | 29 | 68 | 62 | 28 | 61 | 52 | 27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean horizontal velocity oscillation period (ALMA Band 3)",
+   "value": "61",
+   "uncertainty": "27",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B3** | 72 | 66 | 29 | 68 | 62 | 28 | 61 | 52 | 27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean temperature oscillation period (ALMA Band 6)",
+   "value": "52",
+   "uncertainty": "17",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B6** | 52 | 50 | 17 | 50 | 50 | 16 | 48 | 44 | 15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean size oscillation period (ALMA Band 6)",
+   "value": "50",
+   "uncertainty": "16",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B6** | 52 | 50 | 17 | 50 | 50 | 16 | 48 | 44 | 15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean horizontal velocity oscillation period (ALMA Band 6)",
+   "value": "48",
+   "uncertainty": "15",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Occurrence and general properties",
+     "quote": "| **ALMA B6** | 52 | 50 | 17 | 50 | 50 | 16 | 48 | 44 | 15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average horizontal velocity amplitude range",
+   "value": "2.1-5.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "There are indications for the possible presence of transverse (kink) waves with average amplitude velocities of 2.1-5.0 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Filling factor (ALMA Band 3)",
+   "value": "3.7",
+   "uncertainty": "0.8",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Filling factor [\\%] | 3.7 $\\pm$ 0.8 | 1.6 $\\pm$ 1.0 | 1.3 $\\pm$ 0.8 | 2.7 $\\pm$ 0.7 | 1.2 $\\pm$ 0.5 | 1.9 $\\pm$ 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Filling factor (ALMA Band 6)",
+   "value": "2.7",
+   "uncertainty": "0.7",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Filling factor [\\%] | 3.7 $\\pm$ 0.8 | 1.6 $\\pm$ 1.0 | 1.3 $\\pm$ 0.8 | 2.7 $\\pm$ 0.7 | 1.2 $\\pm$ 0.5 | 1.9 $\\pm$ 0.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Phase speed v_ph (ALMA Band 3)",
+   "value": "14.7",
+   "uncertainty": "0.9",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Phase speed $\\mathrm{v_{ph}}$ [ km s$^{-1}$] | 14.7 $\\pm$ 0.9 | 13.0 $\\pm$ 1.0 | 13.0 $\\pm$ 1.4 | 13.2$\\pm$ 0.9 | 11.6 $\\pm$ 1.0 | 11.6 $\\pm$ 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Phase speed v_ph (ALMA Band 6)",
+   "value": "13.2",
+   "uncertainty": "0.9",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Phase speed $\\mathrm{v_{ph}}$ [ km s$^{-1}$] | 14.7 $\\pm$ 0.9 | 13.0 $\\pm$ 1.0 | 13.0 $\\pm$ 1.4 | 13.2$\\pm$ 0.9 | 11.6 $\\pm$ 1.0 | 11.6 $\\pm$ 1.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-averaged radial velocity <v_r> (ALMA Band 3)",
+   "value": "11.3",
+   "uncertainty": "0.3",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Radial velocity $\\langle\\mathrm{v_r}\\rangle$ [ km s$^{-1}$] | 11.3 $\\pm$ 0.3 | 9.8 $\\pm$ 0.9 | 8.1 $\\pm$ 0.5 | 5.6 $\\pm$ 0.1 | 6.8 $\\pm$ 0.1 | 7.2 $\\pm$ 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Time-averaged radial velocity <v_r> (ALMA Band 6)",
+   "value": "5.6",
+   "uncertainty": "0.1",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Radial velocity $\\langle\\mathrm{v_r}\\rangle$ [ km s$^{-1}$] | 11.3 $\\pm$ 0.3 | 9.8 $\\pm$ 0.9 | 8.1 $\\pm$ 0.5 | 5.6 $\\pm$ 0.1 | 6.8 $\\pm$ 0.1 | 7.2 $\\pm$ 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (ALMA Band 3)",
+   "value": "1838",
+   "uncertainty": "429",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    },
+    {
+     "loc": "Discussion and Conclusions",
+     "quote": "the observations presented here imply an estimated energy flux of the fast-sausage mode of 1838$\\pm$429 W m$^{-2}$ and 5341$\\pm$1448 W m$^{-2}$ in bands 3 and 6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (ALMA Band 6)",
+   "value": "5341",
+   "uncertainty": "1448",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    },
+    {
+     "loc": "Discussion and Conclusions",
+     "quote": "the observations presented here imply an estimated energy flux of the fast-sausage mode of 1838$\\pm$429 W m$^{-2}$ and 5341$\\pm$1448 W m$^{-2}$ in bands 3 and 6, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (Degraded simulation Band 3)",
+   "value": "621",
+   "uncertainty": "407",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (Degraded simulation Band 6)",
+   "value": "3640",
+   "uncertainty": "1557",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (Original simulation Band 3)",
+   "value": "453",
+   "uncertainty": "289",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Fast-sausage wave energy flux (Original simulation Band 6)",
+   "value": "5485",
+   "uncertainty": "1587",
+   "units": "W m^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Wavelet analysis and periods",
+     "quote": "| Energy flux [ W m$^{-2}$] | 1838 $\\pm$ 429 | 621$\\pm$ 407 | 453$\\pm$ 289 | 5341 $\\pm$ 1448 | 3640 $\\pm$ 1557 | 5485 $\\pm$ 1587 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of observational wave energy flux between Band 6 and Band 3 formation heights",
+   "value": "12",
+   "uncertainty": "5",
+   "units": "W m^-2 km^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Energy flux estimation",
+     "quote": "of 1563 km for Band 3 and 1260 km for Band 6, the slope of the energy fluxes between the two heights in the observation is 12"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Hyperparameters (eps, min_samples, distance metric, and feature vector representation of light curves) used in the scikit-learn DBSCAN clustering to classify oscillating light curves",
+  "Mother wavelet function (e.g., Morlet) and wavenumber parameter used in the continuous wavelet transform (CWT)",
+  "Value of the adiabatic index gamma and mean molecular weight assumed when computing the sound speed c_s and phase speed v_ph in Eq. 3",
+  "Choice of sign (+A or -A) used in the phase speed equation (Eq. 3)"
+ ],
+ "missing_for_reproduction": [
+  "DBSCAN clustering parameters (eps, min_samples, and light-curve feature representation) used to filter for oscillating features",
+  "Custom Python scripts for the DoG + Flood-fill tracking algorithm and CWT/cross-wavelet analysis",
+  "Synthetic ART continuum brightness temperature cubes from the Bifrost simulation (unless regenerated from the Carlsson et al. 2016 Bifrost run)",
+  "Exact mother wavelet choice and adiabatic index / mean molecular weight values used in Eq. 3"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The science-ready ALMA data cubes (D02 and D08) and auxiliary reader (SALAT) are publicly downloadable from SALSA, and the image segmentation, tracking, wavelet, and wave energy flux equations are described in detail with explicit thresholds. However, the custom tracking/DBSCAN/wavelet scripts are not released and DBSCAN hyperparameters are not stated.",
+ "rediscovery_reason": "The exact calibrated and reconstructed ALMA solar cubes (D02 and D08) are publicly available on SALSA, the DoG + flood-fill + tracking + CWT + energy flux pipeline is well-specified, and the main results are concrete numeric values (feature counts, oscillation periods, phase speeds, radial velocities, and wave energy fluxes).",
+ "source_card": "cards/2023A%26A...671A..69G/sonnet/card.md"
+}

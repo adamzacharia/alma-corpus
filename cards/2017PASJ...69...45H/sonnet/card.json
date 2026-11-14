@@ -1,0 +1,790 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017PASJ...69...45H",
+  "title": "ALMA deep field in SSA22: Blindly detected CO emitters and [C II] emitter candidates",
+  "year": 2017,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Hayatsu, Natsuki H.",
+  "n_authors": 24,
+  "arxiv_id": "1702.07512",
+  "doi": "10.1093/pasj/psx018",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00162.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observation",
+    "quote": "We analyze data from the ALMA Deep Field survey of SSA22 (ADF22) observed in Band 6 in ALMA Cycle 2 in June 2014 and April 2015 (Proposal ID 2013.1.00162.S, PI: H. Umehata)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "ADF22 (SSA22 proto-cluster field)",
+     "coordinates": {
+      "value": "RA (J2000) = 22h17m34s, Dec (J2000) = +00d17'00''",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "ADF22 is a survey field with an area of $2' \\times 3'$ centered on a $z = 3.09$ proto-cluster"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "proto-cluster z = 3.09",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "ADF22 is a survey field with an area of $2' \\times 3'$ centered on a $z = 3.09$ proto-cluster"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can a blind line search in the ADF22 1.1 mm ALMA survey cube find CO and [CII] emitters, and what do they imply for the [CII] luminosity function and star formation rate density at z~6?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this paper, we present a blind search for [Cii] emitters using ALMA Cycle 2 data"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00162.S",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "Proposal ID 2013.1.00162.S, PI: H. Umehata"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.1 mm)",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "observed in Band 6 in ALMA Cycle 2"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four 1.875 GHz SPWs, central 263 GHz; searched 253.1–272.8 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "The field was observed using four 1.875 GHz spectral windows (SPW) with the central frequency of 263 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[CII]",
+     "transition": "158 um",
+     "rest_frequency": "1900.543 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "Line emission of [Cii] 1900.543 GHz, [Cii], CO(9-8) 1036.912 GHz and CO(4-3) 461.041 GHz"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=9-8",
+     "rest_frequency": "1036.912 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "CO(9-8) 1036.912 GHz"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=4-3",
+     "rest_frequency": "461.041 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "CO(4-3) 461.041 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.72'' x 0.62'' combined",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "The typical angular resolution of a combined data is $0''.72 \\times 0''.62$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.7–0.9 mJy/beam at 36 km/s",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "The four SPWs have root-mean-square (RMS) noise level of 0.7, 0.7, 0.8 or 0.9 mJy beam$^{-1}$ at a 36 km s$^{-1}$ velocity resolution."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "4.5 min per pointing",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "The on-source time per pointing in the fields is 4.5 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "June 2014 and April 2015",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "ALMA Cycle 2 in June 2014 and April 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI H. Umehata",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "Proposal ID 2013.1.00162.S, PI: H. Umehata"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Subaru, CFHT, Spitzer, Chandra",
+     "provided": {
+      "value": "optical/NIR/MIR/X-ray counterpart data",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "we search for their counterparts in $u^*$ band taken with the Canada France Hawaii Telescope/MegaCam"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SFR-L[CII] relation for low-metallicity dwarfs",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "SFR-[Cii] luminosity relation (cite: delooze2014)"
+       }
+      ]
+     },
+     "citation": "(cite: delooze2014)"
+    },
+    {
+     "what": {
+      "value": "SFR function at z = 6",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "SFR function at $z = 6$ (cite: smit2012)"
+       }
+      ]
+     },
+     "citation": "(cite: smit2012)"
+    },
+    {
+     "what": {
+      "value": "L_IR of ADF22.4 (LineC)",
+      "evidence": [
+       {
+        "loc": "5 Discussion",
+        "quote": "$L_{\\rm IR}$ of ADF22-LineC is referred to estimation of (cite: umehata2017)."
+       }
+      ]
+     },
+     "citation": "(cite: umehata2017)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.5.3",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "The data are analyzed with Common Astronomy Software Application (casa) ver. 4.5.3"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub and clean",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "We make continuum-subtracted datacube by using uvcontsub and clean."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "boxcar window 0,2,...,12,15,18,21 slices (~18 km/s each)",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "The top-hat spectral smoothing window is set to be 0, 2, 4, ..., 12, 15, 18, ..., 21 slices"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Observation details",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "The details of the observation are described in (cite: umehata2017)."
+       }
+      ]
+     },
+     "from_reference": "(cite: umehata2017)"
+    }
+   ],
+   "unstated_but_needed": [
+    "clean parameters (weighting, robust, cell size, image size, threshold)",
+    "line-free channels for uvcontsub",
+    "calibration/flux scale details",
+    "clumpfind other parameters and completeness",
+    "hyperz settings",
+    "spectral-line fitting details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build S/N cubes",
+    "method": {
+     "value": "Continuum-subtract, boxcar smooth spectra, normalize each slice by RMS",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "we normalise each slice by its RMS. We call a datacube thus-generated as “S/N cube”."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Blind source detection",
+    "method": {
+     "value": "clumpfind on S/N cubes, match across smoothings, select >6 sigma and above max negative in inverted cube",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "We select clumps that have the S/N ratio larger than $6.0 \\sigma$ and also larger than the maximum negative S/N ratio measured in the inverted S/N cube"
+      }
+     ]
+    },
+    "software": [
+     "clumpfind"
+    ],
+    "key_parameters": [
+     {
+      "value": "low threshold >= 4.5",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "threshold value “low” of clumpfind of $\\geq$ 4.5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared 2014 and 2015 epochs and inverted cube",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "We also check line spectral features of the detected clumps (sources) in the datacube separately for those observed in 2014 and 2015."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify counterparts and redshifts",
+    "method": {
+     "value": "Multiwavelength counterpart search and SED fitting with hyperz",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We fit the SED templates by (cite: bruzual1993) to the spectral coverage from UV to 8 $\\rm \\mu m$, assuming a Calzetti dust extinction law"
+      }
+     ]
+    },
+    "software": [
+     "hyperz"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "hyperz chi2 minimization",
+     "evidence": [
+      {
+       "loc": "Result, Line Identification",
+       "quote": "The result of SED fitting shows that reduced $\\chi^2$ values becomes minimum at $z \\sim 0.6-0.8$ (Figure B left)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive L[CII], SFR, LF and SFRD",
+    "method": {
+     "value": "L[CII] formula, De Looze SFR relation, divide mean SFR by survey volume",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "We calculate a conservative limit of [Cii] SFRD from the mean of the SFR$_{\\rm [CII]}$ of the two sources divided by the survey volume"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "LCDM Om=0.3, OL=0.7, h=0.7; Chabrier IMF",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We calculate SFR assuming Chabrier initial mass function (IMF)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with UV+IR SFR upper limit",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "The obtained SFR$_{\\rm UV + FIR}$ is $<$ 30 $\\rm M_\\odot yr^{-1}$, being consistent with the SFR-$L_{\\rm [CII]}$ relation of (cite: delooze2014)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.3",
+    "used_for": {
+     "value": "data analysis, uvcontsub, clean",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "The data are analyzed with Common Astronomy Software Application (casa) ver. 4.5.3"
+      }
+     ]
+    }
+   },
+   {
+    "name": "clumpfind",
+    "version": "not stated",
+    "used_for": {
+     "value": "line source search",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "We use clumpfind (cite: williams1994) to search emission line sources in the S/N cube."
+      }
+     ]
+    }
+   },
+   {
+    "name": "hyperz",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "SED fitting is calculated by using hyperz software"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Peak S/N of LineA",
+    "value": "6.5",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The peak S/N ratio are $6.5 \\sigma$, $6.2 \\sigma$, $7.7 \\sigma$ and $6.5 \\sigma$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR[CII] LineA",
+    "value": "13",
+    "uncertainty": "+4/-5",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "13$^{+4}_{-5}$ and 20$^{+9}_{-10}$ M$_\\odot$/yr for ADF22-LineA and LineB"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR[CII] LineB",
+    "value": "20",
+    "uncertainty": "+9/-10",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "13$^{+4}_{-5}$ and 20$^{+9}_{-10}$ M$_\\odot$/yr for ADF22-LineA and LineB"
+     }
+    ]
+   },
+   {
+    "quantity": "[CII] SFRD lower limit",
+    "value": "> 7.5e-3",
+    "uncertainty": "not stated",
+    "units": "Msun/yr/Mpc^3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "The derived [Cii] SFRD is $> 7.5 \\times 10^{-3} \\rm M_\\odot yr^{-1}  Mpc^{-3}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "LineC is CO(9-8) at z=3.091; LineD likely CO(4-3) at z=0.71; LineA/B likely [CII] at z=6.5/6.0",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "two CO emitters at $z = 0.7$ and $3.1$ and two [Cii] emitter candidates at $z = 6.0$ and $6.5$"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Blind line search finds [CII] emitters at z~6",
+    "experiment": "clumpfind search of ADF22 S/N cubes",
+    "result": "Four >6 sigma candidates; two without counterparts",
+    "finding": "Two [CII] candidates at z=6.0 and 6.5; one may be spurious",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We detect four line emitter candidates with significance levels above $6 \\sigma$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "[CII]-based SFRD compares with UV SFRD",
+    "experiment": "mean SFR divided by volume",
+    "result": "> 7.5e-3 Msun/yr/Mpc^3",
+    "finding": "Consistent with dust-uncorrected UV SFRD",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "Interestingly, this is close to the dust-uncorrected UV SFRD at $z = 6.2$."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "LineA/B as 12CO, H2O, [NII], [OI], [OIII] emitters considered, disfavored by equivalent widths",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "we argue that ADF22-LineA and B are more likely [Cii] emitters at $z = 6.5$ and $6.0$, rather than CO emitters at $z \\leq 3.1$"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "One candidate may be spurious; LF from one source",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "one of the two [Cii] candidates has a relatively low-$\\sigma$ and thus could possibly be a spurious source"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No spectroscopic confirmation of [CII] candidates",
+    "Completeness not quantified",
+    "Few sources, small volume"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "clean imaging parameters",
+    "clumpfind settings beyond threshold",
+    "completeness and SFRD calculation details"
+   ],
+   "estimated_data_volume_inferred": "~100s GB (80 pointings, 4 SPWs, 2 epochs)",
+   "score_inferred": 3,
+   "score_reason": "Public data and recipe outline, but imaging and detection parameters are incomplete.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging parameters are missing and the results are largely candidate lists."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "(cite: umehata2017)",
+     "why": "Source of the ADF22 data and observation details"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ADF22",
+    "ASPECS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-42e35616e4596705f7614385a1327a2b",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 21311,
+   "output_tokens": 5322,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.048528,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 44,
+  "quotes_ok": 44,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 33,
+   "rate": 0.485
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-8b4a62cc851744314a151ee29650a716",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "The result of SED fitting shows that reduced $\\chi^2$ values becomes minimum at $z \\sim 0.6-0.8$ (Figure B left)."
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "The obtained SFR$_{\\rm UV + FIR}$ is $<$ 30 $\\rm M_\\odot yr^{-1}$, being consistent with the SFR-$L_{\\rm [CII]}$ relation of (cite: delooze2014)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

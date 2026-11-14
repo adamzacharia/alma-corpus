@@ -1,0 +1,237 @@
+{
+ "bibcode": "2018ApJ...866..159V",
+ "title": "Dust Emission in an Accretion-rate-limited Sample of z ≳ 6 Quasars",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aadf35",
+ "arxiv_id": "1809.01662",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What are the FIR dust continuum properties of a UV luminosity-limited sample of z>6 quasar hosts, and does FIR luminosity (star formation) correlate with quasar UV luminosity (black hole growth)?",
+ "alma_project_codes": [
+  "2015.1.01115.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "typical beam ~1.0 arcsec",
+  "sensitivity": "typical rms 0.5 mJy/beam in 30 km/s bins"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Redshifts and M1450 of the sample quasars",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "References for the redshift and $M_{1450}$: (1) (cite: dec18), (2) (cite: ban16)"
+     }
+    ]
+   },
+   "citation": "(cite: dec18); (cite: ban16)"
+  },
+  {
+   "what": {
+    "value": "Literature 1 mm flux densities, redshifts and M1450 of z>5.7 quasars (Table 3)",
+    "evidence": [
+     {
+      "loc": "2.3 Literature Sample",
+      "quote": "From the literature we collected all available observations of high-redshift ($z>5.7$) quasars obtained in the 1 mm band."
+     }
+    ]
+   },
+   "citation": "(cite: wan08b); (cite: omo13); (cite: wan13); (cite: ven16) and others"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity kappa = 0.77 (nu/352 GHz)^beta cm2/g",
+    "evidence": [
+     {
+      "loc": "4.3 Dust Masses",
+      "quote": "$\\kappa_\\nu(\\beta)=0.77\\,(\\nu/352\\,\\mathrm{GHz})^\\beta$ cm$^2$ g$^{-1}$ (cite: dun00)"
+     }
+    ]
+   },
+   "citation": "(cite: dun00)"
+  },
+  {
+   "what": {
+    "value": "Arp 220 and M82 templates",
+    "evidence": [
+     {
+      "loc": "4.1 FIR Luminosity",
+      "quote": "we can fit templates of the local star-forming galaxies Arp 220 and M82 (cite: sil98)"
+     }
+    ]
+   },
+   "citation": "(cite: sil98)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "make continuum maps",
+   "method": "Average line-free channels in [C II] windows (1900 GHz rest) and all channels in lower sideband windows (1790 GHz rest); for four faint sources average all line-free channels of four windows",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure continuum flux densities and sizes",
+   "method": "Peak pixel within 0.5 arcsec of quasar position; imfit integrated flux if peak S/N>=7, else peak flux",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "search radius 0.5 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "derive FIR luminosity, SFR and dust mass",
+   "method": "Scale modified blackbody to measured flux; integrate 42.5–122.5 um for L_FIR and 3–1100 um for L_TIR; SFR from Murphy relation; dust mass from Eq. 2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust=47 K, beta=1.6, negligible dust optical depth, Kroupa IMF, all dust heated by star formation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "test L_FIR vs UV luminosity correlation",
+   "method": "Pearson correlation and straight-line fit of log L_FIR vs M1450 for all literature+new quasars and for the complete luminosity-limited sample",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rest-frame 1900 GHz flux density range",
+   "value": "0.12–5.9",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$0.12<S_\\mathrm{rest,\\,1900\\,GHz}<5.9$ mJy, with a median (mean) flux density of 0.88 mJy (1.59 mJy)"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR luminosity range",
+   "value": "(0.27–13)e12",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\mathrm{FIR}}$ $=(0.27-13)\\times10^{12}$ $L_\\ensuremath{\\odot}$, with 74% of our quasar hosts having $L_{\\mathrm{FIR}}$ $>10^{12}$ $L_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median L_FIR",
+   "value": "1.8e12",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 FIR Luminosity",
+     "quote": "with a median value of $L_{\\mathrm{FIR}}$ $=1.8\\times10^{12}$ $L_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR range",
+   "value": "50–2700",
+   "uncertainty": "factor ~2–3",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 SFRs",
+     "quote": "we derive SFRs of SFR $=50-2700$ $M_\\ensuremath{\\odot}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass range",
+   "value": "2e7–1e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Dust Masses",
+     "quote": "the estimated dust masses range from $M_\\mathrm{dust} \\approx 2\\times10^7$ $M_\\ensuremath{\\odot}$ for the faintest sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, L_FIR vs M1450 (all)",
+   "value": "-0.37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Correlation between the FIR and UV Luminosity",
+     "quote": "with a Pearson’s $r$ of $r=-0.37$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, complete sample",
+   "value": "-0.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Correlation between the FIR and UV Luminosity",
+     "quote": "the correlation is even weaker, with a Pearson’s $r=-0.22$"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear fit slope log L_FIR vs (M_UV+26)",
+   "value": "-0.18",
+   "uncertainty": "0.04",
+   "units": "dex per mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Correlation between the FIR and UV Luminosity",
+     "quote": "log($L_{\\mathrm{FIR}}$) = $(12.41\\pm0.05) - (0.18\\pm0.04) \\times (M_\\mathrm{UV} + 26)$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration pipeline, CASA version, calibrators and flux scale uncertainty (deferred to Decarli et al. 2018)",
+  "tclean parameters: weighting/robust, cell size, image size, masking, deconvolver",
+  "Line-free channel selection for each source",
+  "Exact flux conversion from 1900/1790 GHz rest-frame to observed 1 mm used in histograms and Table 3 comparison",
+  "Method for the linear fit and Pearson r (sample set, treatment of upper limits)",
+  "Rest frequency of [C II] and the continuum frequency values per source"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Calibration details (in Decarli et al. 2018)",
+  "Table 3 conversion details",
+  "Fit method details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple measurements and clear SED assumptions with tabulated results, but imaging and calibration settings are deferred to another paper.",
+ "rediscovery_reason": "Data from a single ALMA program, simple continuum flux measurement and analytic derived quantities with tabulated numeric answers.",
+ "source_card": "cards/2018ApJ...866..159V/sonnet/card.md"
+}

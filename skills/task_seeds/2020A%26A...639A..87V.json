@@ -1,0 +1,290 @@
+{
+ "bibcode": "2020A&A...639A..87V",
+ "title": "Complex organic molecules in low-mass protostars on Solar System scales. I. Oxygen-bearing species",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202037758",
+ "arxiv_id": "2005.06784",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "What are the abundance ratios of O-bearing COMs relative to CH3OH on ~100 AU scales in Class 0 protostars, and how do they compare to other low-mass protostars, cold vs hot components, and methanol D/H?",
+ "alma_project_codes": [
+  "2017.1.01174.S",
+  "2017.1.01350.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm) and Band 6 (1 mm)",
+  "arrays": "12m array",
+  "angular_resolution": "~1.5-2.5\" (Band 3), ~0.45\" (Band 6)",
+  "sensitivity": "line sensitivity ~0.1 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distances, Lbol, Tbol, Menv",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(1) Ortiz-León et al. (2018). (2) Enoch et al. (2009)."
+     }
+    ]
+   },
+   "citation": "Ortiz-León et al. 2017, 2018; Enoch et al. 2009, 2011; Karska et al. 2018; Hirano & Liu 2014"
+  },
+  {
+   "what": {
+    "value": "Local ISM isotope ratios 12C/13C~70, 16O/18O~560",
+    "evidence": [
+     {
+      "loc": "Table 2 notes",
+      "quote": "12 C/ 13 C = 70 and 16 O/ 18 O = 560, respectively."
+     }
+    ]
+   },
+   "citation": "Milam et al. 2005; Wilson & Rood 1994"
+  },
+  {
+   "what": {
+    "value": "Comparison abundances for IRAS 16293B, HH 212, IRAS 2A/4A, IRAS 16293A",
+    "evidence": [
+     {
+      "loc": "Figure 7 caption",
+      "quote": "The HH 212 abundances are from Lee et al. (2019a)."
+     }
+    ]
+   },
+   "citation": "Jørgensen et al. 2018; Lee et al. 2019a; Taquet et al. 2015, 2019; Manigand et al. 2020"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic line lists",
+    "evidence": [
+     {
+      "loc": "3.1 Methodology",
+      "quote": "The line lists of each molecule were taken from the CDMS"
+     }
+    ]
+   },
+   "citation": "CDMS (Müller et al. 2001, 2005; Endres et al. 2016); JPL (Pickett et al. 1998)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes",
+   "method": "Continuum from line-free channels, continuum subtraction, tclean line images with masks; spectra extracted from central beam",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit LTE models to get column densities and Tex",
+   "method": "Grid of N, Tex, FWHM per species; minimum reduced chi2; Band 3 and 6 modeled separately; optically thick and blended lines excluded",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "N grid 1e13-1e17 cm-2 (step 0.05 dex), Tex 50-550 K (10 K), FWHM 0.5-9.0 km/s (0.1)",
+    "Tex fixed to 200 K for species with few lines; Band 3 Tex set to Band 6; B1-bS FWHM fixed to 1 km/s"
+   ],
+   "assumptions": [
+    "Source size 0.45\" for all sources; single Tex; Gaussian line profiles; column densities are lower limits"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive CH3OH column density and abundance ratios",
+   "method": "CH3OH scaled from 13CH3OH (Band 3) and CH3 18OH (Band 6); abundances relative to CH3OH",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "12C/13C = 70, 16O/18O = 560"
+   ],
+   "assumptions": [
+    "CH3OH used as reference because CO traces more extended regions"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit cold extended component in Band 3",
+   "method": "Two-component model: Band 6 best fit kept fixed as warm/hot; cold component Tex=60 K, N fitted, source size 2.0\"",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Only B1-c and S68N"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Methanol D/H and formation temperature",
+   "method": "CH2DOH/CH3OH corrected by statistical weight factor 3, compared to GRAINOBLE model",
+   "software": [],
+   "key_parameters": [
+    "nH = 1e5-6 cm-3"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3OH column density B1-c, Band 6",
+   "value": "1.9e18",
+   "uncertainty": "±0.6e18",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.1",
+     "quote": "CH 3 OH CDMS – (1.8 ± 0.4) × 10 18 ≡ 100 – (1.9 ± 0.6) × 10 18 ≡ 100"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density S68N, Band 6",
+   "value": "1.4e18",
+   "uncertainty": "±0.6e18",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table B.1",
+     "quote": "CH 3 OH CDMS – (3.6 ± 0.8) × 10 17 ≡ 100 – (1.4 ± 0.6) × 10 18 ≡ 100"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO/CH3OH B1-c Band 6",
+   "value": "1.0",
+   "uncertainty": "±0.3",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 OCHO Methyl formate 2.3 ± 1.0 1.0 ± 0.3 0.29 ± 0.07 1.1 ± 0.5 6.1 ± 1.8 0.75 ± 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCH3/CH3OH B1-c Band 6",
+   "value": "1.3",
+   "uncertainty": "±0.4",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 OCH 3 Dimethyl ether 1.0 ± 0.2 1.3 ± 0.4 1.8 ± 0.4 0.9 ± 0.4 4.3 ± 1.2 1.3 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol D/H B1-c Band 6",
+   "value": "2.7",
+   "uncertainty": "±0.9",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6 Temperature dependence of deuterated methanol",
+     "quote": "In Band 6, this is 2.7 ± 0.9%, 1.4 ± 0.6%, and < 1.6%."
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol D/H B1-c Band 3",
+   "value": "1.9",
+   "uncertainty": "±0.7",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6 Temperature dependence of deuterated methanol",
+     "quote": "In Band 3, this gives a D/H ratio of 1.9±0.7%, < 4.3%, and < 3.3% for B1-c, S68N, and B1-bS respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Methanol formation temperature",
+   "value": "~15",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.6 Temperature dependence of deuterated methanol",
+     "quote": "These deuteration fractions correspond to a temperature during the formation of methanol of ∼ 15 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 minus Band 6 average Tex",
+   "value": "~-30",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Column densities and excitation temperatures",
+     "quote": "the average excitation temperature in Band 3 is ∼ 30 K lower than in Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Average FWHM B1-c Band 6",
+   "value": "3.3",
+   "uncertainty": "±0.2",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Column densities and excitation temperatures",
+     "quote": "The average FWHM for B1-c and S68N in Band 6 is 3.3±0.2 and 5.0±0.2 km s −1, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "R(T=100K) B1-c",
+   "value": "37.4",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Occurrence of COMs in young protostars",
+     "quote": "implies an R T =100K of 37.4 AU, 35.8 AU, and 11.6 AU for B1-c, S68N, and B1-bS, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for continuum",
+  "Image size and cell size",
+  "Mask details and clean threshold/iterations",
+  "Self-calibration usage",
+  "Flux calibrator and pipeline version",
+  "Which lines were excluded as blended per source",
+  "Exact CASSIS version and chi2 definition/noise estimate",
+  "Vlsr values per source",
+  "Spectral extraction aperture details"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels and imaging parameters",
+  "Which lines were excluded as blended",
+  "Vlsr values",
+  "CASSIS version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and CASSIS fitting grid are well described with line tables, but imaging details, calibration and exact line selections are missing.",
+ "rediscovery_reason": "Data public, LTE grid fitting recipe described with parameter ranges, and results are numeric tables.",
+ "source_card": "cards/2020A%26A...639A..87V/sonnet/card.md"
+}

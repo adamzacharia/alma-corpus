@@ -1,0 +1,225 @@
+{
+ "bibcode": "2016ApJ...831..161K",
+ "title": "Ocular Shock Front in the Colliding Galaxy IC 2163",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/831/2/161",
+ "arxiv_id": "1608.02130",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "Do the ALMA CO velocity fields show gas streaming into the eyelids of IC 2163 that drives the pileup of molecular gas and turbulence, as predicted by encounter simulations?",
+ "alma_project_codes": [
+  "2012.1.00357.S"
+ ],
+ "data": {
+  "bands": "12CO J=1-0 (central frequency 114.1973 GHz in cube)",
+  "arrays": "ALMA 12-m array, 34-pointing mosaic, 32 antennae (two flagged)",
+  "angular_resolution": "2.00'' x 1.52'', PA -68.5 deg",
+  "sensitivity": "3.7 mJy/beam per 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "X_CO = 1.8 ± 0.3 x 10^20 (H2 cm^-2)/(K km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "we take $X_{CO}$ = $1.8 \\pm 0.3 \\times 10^{20}$ (H$_2$ cm$^{-2}$)/(K km s$^{-1}$) from (cite: dame01)"
+     }
+    ]
+   },
+   "citation": "(cite: dame01)"
+  },
+  {
+   "what": {
+    "value": "IC 2163 projection parameters PA = 65 deg, inclination 40 deg",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "We adopted values of the projection parameters of IC 2163 from (cite: elmegreen95a; elmegreen95b)"
+     }
+    ]
+   },
+   "citation": "(cite: elmegreen95a; elmegreen95b)"
+  },
+  {
+   "what": {
+    "value": "VLA HI cubes and velocity field",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "We compare our CO images of IC 2163 with the VLA H I observations by (cite: elmegreen95a)."
+     }
+    ]
+   },
+   "citation": "(cite: elmegreen95a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and mask the CO cube",
+   "method": "CASA clean with natural weighting, then 6'' smoothed 2.5-sigma mask with two-channel continuity, primary-beam correction, subcube",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps and convert to column density",
+   "method": "Moment maps from subcube; blank where I(CO) <= 200 Jy/beam m/s; N(H2) from X_CO",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO = 1.8e20 (H2 cm^-2)/(K km/s)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure velocity differences across eyelids in face-on polar coordinates",
+   "method": "Deproject with PA = 65 deg, i = 40 deg, nucleus center; measure Δv between outer and inner edges at fixed θ, averaged over 4 pixels (9.3 deg); dv/dR = Δv/(sin i)/ΔR",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [
+    "eyelid edge at I(CO) = 200 Jy/beam m/s; minimum Δv uncertainty 7 km/s"
+   ],
+   "assumptions": [
+    "Δv_z negligible across the eyelid width (nearly in-plane perturbation)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Correlate N(H2) with |dv/dR|",
+   "method": "Linear regression of N(H2) on |dv/dR| for 25 azimuth points (and the northern eyelid alone)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure CO velocity dispersion",
+   "method": "Second-moment dispersion, corrected for mean velocity gradient across the PSF; compared with single-Gaussian fits to unmasked line profiles",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total integrated CO flux",
+   "value": "500",
+   "uncertainty": "±5",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Total integrated $S$(CO) | $500 \\pm 5$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Regression N(H2) vs |dv/dR|, all 25 points: slope",
+   "value": "0.45",
+   "uncertainty": "±0.06",
+   "units": "Msun pc^-2 per (km/s/kpc)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "N({\\rm H}_2) = 41 + (0.45 \\pm 0.06) \\vert\\frac{dv}{dR} \\vert"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficient, all points",
+   "value": "0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The correlation coefficient is 0.84 with 23 degrees of freedom"
+    }
+   ]
+  },
+  {
+   "quantity": "Northern eyelid regression slope",
+   "value": "0.52",
+   "uncertainty": "±0.08",
+   "units": "Msun pc^-2 per (km/s/kpc)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "N({\\rm H}_2) = 28 + (0.52 \\pm 0.08) \\vert\\frac{dv}{dR} \\vert"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial streaming at θ=270 on northern eyelid (in-plane)",
+   "value": "171",
+   "uncertainty": "±40",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "equivalent to $\\Delta v/\\sin i$ =$171 \\pm 40$ km s$^{-1}$ in the plane of the disk"
+    }
+   ]
+  },
+  {
+   "quantity": "Corrected CO velocity dispersion, northern eyelid",
+   "value": "37",
+   "uncertainty": "±20 (rms scatter)",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(W3) northern eyelid | $42 \\pm 21$ | $37 \\pm 20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Corrected CO velocity dispersion, NGC 2207 arms west of bar",
+   "value": "10",
+   "uncertainty": "±10 (rms scatter)",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 CO Velocity Dispersion",
+     "quote": "the mean $(\\sigma_v)_{\\rm corr}$ $\\pm$ rms scatter is $10 \\pm 10$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters: niter, threshold, clean masks, and the interactive vs automatic choice",
+  "Velocity grid and spectral line-free channels; continuum subtraction method not described",
+  "Exact rest frequency used for velocity conversion",
+  "AIPS tasks and parameters for moment maps and polar transformation",
+  "Procedure to compute the beam-gradient velocity dispersion correction",
+  "Whether the Hanning-smoothed channels were regridded to 10 km/s"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters (niter, threshold, masks)",
+  "AIPS procedures for polar transformation and dispersion correction",
+  "exact edge-definition pixel positions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data, with a clear measurement recipe and table of results, but imaging parameters and AIPS steps are underspecified.",
+ "rediscovery_reason": "Public data and numeric tables (Table 2, regression) allow redoing the analysis, though some steps are loosely described.",
+ "source_card": "cards/2016ApJ...831..161K/sonnet/card.md"
+}

@@ -1,0 +1,365 @@
+{
+ "bibcode": "2021MNRAS.505.1509S",
+ "title": "The nature of sub-millimetre galaxies I: a comparison of AGN and star-forming galaxy SED fits",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab1226",
+ "arxiv_id": "2010.07934",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "How well can a complete sample of 12 sub-millimetre galaxies in the William Herschel Deep Field be fitted with dust-obscured AGN template SEDs compared to similarly absorbed star-forming galaxy templates?",
+ "alma_project_codes": [
+  "2016.1.01523.S"
+ ],
+ "data": {
+  "bands": "870 um",
+  "arrays": "12m Array",
+  "angular_resolution": "0.095 arcsec",
+  "sensitivity": "65 uJy/beam rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Original 870 um LABOCA catalogue, error circle radii, and optical/X-ray quasar identifications",
+    "evidence": [
+     {
+      "loc": "FIR and sub-mm data",
+      "quote": "The observations were fully described by (cite: Bielby12) who compared eleven detected sub-mm sources in a central $16'$ diameter area of the WHDF to the Chandra X-ray sources, mainly identified as quasars (cite: mvm04)."
+     },
+     {
+      "loc": "Optical/NIR data",
+      "quote": "For these we take the error circle radii, $\\Delta\\theta$, listed individually in Table 1 of (cite: Bielby12)."
+     }
+    ]
+   },
+   "citation": "(cite: Bielby12)"
+  },
+  {
+   "what": {
+    "value": "Chandra 75 ksec X-ray observations and initial source catalogue",
+    "evidence": [
+     {
+      "loc": "Chandra X-ray data",
+      "quote": "These data and their reduction and analysis were presented by (cite: mvm04) and an initial comparison to the WHDF LABOCA sources was carried out by (cite: Bielby12)."
+     }
+    ]
+   },
+   "citation": "(cite: mvm04)"
+  },
+  {
+   "what": {
+    "value": "WHDF optical and NIR UBRIZHK photometry",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "The William Herschel Deep Field (WHDF) is a $7'\\times7'$ sky area (extended to $16'\\times16'$) at RA(J2000)=00h22m33.3s, Dec=+00d20m57s, initially observed in the optical at the William Herschel 4.2-m telescope (cite: NM01) and in the NIR at the Calar Alto 3.5-m telescope (cite: NM06) to provide UBRIZHK photometry to $B\\approx28$."
+     }
+    ]
+   },
+   "citation": "(cite: NM01), (cite: NM06)"
+  },
+  {
+   "what": {
+    "value": "HST ACS i-band imaging of the WHDF",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "Subsequently, it was observed with deep Chandra X-ray data, Hubble Space Telescope (HST) i-band imaging (cite: Bohm07; Ziegler09),"
+     }
+    ]
+   },
+   "citation": "(cite: Bohm07; Ziegler09)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRAC Equatorial Survey (SPIES) 3.6 and 4.5 um catalogues",
+    "evidence": [
+     {
+      "loc": "SPIES MIR data",
+      "quote": "Spitzer 3.6 and 4.5 $\\mu$m data from the Spitzer IRAC Equatorial Survey (SPIES (cite: Timlin16)) cover $\\approx115$ deg$^2$ of SDSS Stripe 82 and therefore contains the whole WHDF within this equatorial region."
+     }
+    ]
+   },
+   "citation": "(cite: Timlin16)"
+  },
+  {
+   "what": {
+    "value": "Herschel HeLMS survey 250, 350, and 500 um catalogues",
+    "evidence": [
+     {
+      "loc": "FIR and sub-mm data",
+      "quote": "The Herschel HeLMS survey (cite: Asboth16; Oliver12), covers the WHDF within its full 302 deg$^2$ area."
+     }
+    ]
+   },
+   "citation": "(cite: Asboth16; Oliver12)"
+  },
+  {
+   "what": {
+    "value": "VLA 8.4 GHz radio observations and source fluxes",
+    "evidence": [
+     {
+      "loc": "VLA radio data",
+      "quote": "VLA data for the central $7'\\times7'$ at 8.4 GHz (3.57cm) were reported by (cite: Heywood13)."
+     }
+    ]
+   },
+   "citation": "(cite: Heywood13)"
+  },
+  {
+   "what": {
+    "value": "Median AS2UDS star-forming galaxy SED template",
+    "evidence": [
+     {
+      "loc": "Star-forming Galaxy model SED’s",
+      "quote": "Our other star-forming galaxy model was made by taking the median star-forming galaxy fit from the $\\approx700$ sub-mm sources of (cite: Dud20) in the AS2UDS survey."
+     }
+    ]
+   },
+   "citation": "(cite: Dud20)"
+  },
+  {
+   "what": {
+    "value": "Average Milky Way dust reddening curve data (R_V = 3.1)",
+    "evidence": [
+     {
+      "loc": "Dust Reddening Law",
+      "quote": "The reddening law is a fit to the average Milky Way reddening curve data ($R_V=3.1$) taken from Fig. 10 of (cite: Gordon03), following (cite: Cardelli89) in the range $0.3<x<11.0$ where $x=1/\\lambda$ with wavelength, $\\lambda$, measured in microns."
+     }
+    ]
+   },
+   "citation": "(cite: Gordon03), (cite: Cardelli89)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce ALMA 870 um continuum images and measure source positions and fluxes",
+   "method": "Reduce ALMA data with the CASA imaging pipeline and fit sources for ellipticity, flux, and position using IMFIT",
+   "software": [
+    "CASA",
+    "IMFIT"
+   ],
+   "key_parameters": [
+    "870 um continuum at 0.095 arcsec resolution, rms 65 uJy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reanalyse Chandra X-ray data at ALMA and LABOCA positions",
+   "method": "Measure X-ray photon fluxes in three energy bands (0.5-1.2, 1.2-2.0, and 2-7 keV) at ALMA and optical counterpart positions to formal S/N > 1.43 (90% confidence) using CIAO srcflux",
+   "software": [
+    "CIAO",
+    "srcflux"
+   ],
+   "key_parameters": [
+    "Energy bands: 0.5-1.2, 1.2-2.0, and 2-7 keV; S/N > 1.43 (90% confidence)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Astrometrically correct optical/NIR catalogues and cross-match multi-wavelength counterparts",
+   "method": "Correct WHDF r and H band astrometry to the DECaLS frame and cross-match ALMA/LABOCA positions with WHDF optical/NIR, HST i, Spitzer SPIES, Herschel HeLMS, and VLA 8.4 GHz catalogues",
+   "software": [],
+   "key_parameters": [
+    "WHDF-ALMA matching radius < 1.3 arcsec; HST-ALMA radius = 0.65 arcsec; HeLMS matching radii = 20, 30, 40 arcsec at 250, 350, 500 um"
+   ],
+   "assumptions": [
+    "Expected false optical counterpart contamination is ~0.12 sources per 1.3 arcsec circle at r = 26.3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct empirical AGN and star-forming galaxy SED templates and dust reddening law",
+   "method": "Fit analytic power-law and quadratic functions to unabsorbed WHDF X-ray QSO SEDs (1PL and 1.4 um Dip), LAB-06 (SF6), and median AS2UDS SMG SED (AS2), and apply a polynomial Milky Way dust reddening curve",
+   "software": [],
+   "key_parameters": [
+    "4 templates: 1PL AGN, 1.4 um Dip AGN, SF6 (LAB-06 spiral), AS2UDS median SMG"
+   ],
+   "assumptions": [
+    "Fixed 25% flux transmission below 0.1216 um for Lyman-alpha forest absorption in AGN templates; Milky Way R_V = 3.1 reddening law extrapolated as 1/lambda for lambda > 3.33 um"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit optical-MIR and FIR-sub-mm SEDs to derive redshift, extinction, dust temperature, and dust mass",
+   "method": "Perform maximum likelihood SED fitting (including upper limits) on a grid of z, A_V, and gray-body temperature T in Fortran, combining optical-NIR and FIR-sub-mm likelihoods and computing dust mass M_d",
+   "software": [
+    "Custom Fortran SED fitting code"
+   ],
+   "key_parameters": [
+    "Grid ranges: 0 < z < 4.5 (step 0.1), 0 < A_V < 2.5 mag (step 0.25 mag), 10 < T < 50 K (step 1 K); 5 fitted parameters (z, A_V, T, S_Opt/IR, S_FIR) with Delta chi^2 = 5.89 for 1-sigma errors"
+   ],
+   "assumptions": [
+    "Dust mass opacity coefficient kappa = 0.077 * (nu / 352.0e9)^beta m^2 kg^-1 with emissivity index beta = 1.8; Cosmology: Omega_lambda = 0.7, Omega_m = 0.3, H_0 = 100 km s^-1 Mpc^-1; HeLMS upper limits = 20 mJy; SPIES upper limits = 2 uJy"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "850 um flux density of LAB-12",
+   "value": "1.68",
+   "uncertainty": "0.24",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SED fitting method",
+     "quote": "| 850 | 5.1 | 4.3 | 5.4 | 4.1 | 4.0 | 3.9 | 8.2 | 6.2 | 5.1 | 3.3 | 3.4 | 1.68 |  |"
+    },
+    {
+     "loc": "WHDF Flux Errors, Coordinates and Magnitudes",
+     "quote": "| 850 | 1.19 | 1.02 | 1.42 | 1.11 | 1.11 | 1.08 | 1.82 | 1.82 | 1.59 | 1.03 | 1.06 | 0.24 |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average AGN fitted redshift (11 SMGs excluding LAB-06)",
+   "value": "2.43",
+   "uncertainty": "0.31",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "The 11 AGN redshifts (excluding the star-forming galaxy LAB-06) range from $0<z<4.5$ with an average $z=2.43\\pm0.31$ and the absorptions range from $0<A_V<2.5$ mag with an average of $A_V=1.25\\pm0.25$ mag."
+    }
+   ]
+  },
+  {
+   "quantity": "Average AGN fitted visual absorption A_V (11 SMGs excluding LAB-06)",
+   "value": "1.25",
+   "uncertainty": "0.25",
+   "units": "mag",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "The 11 AGN redshifts (excluding the star-forming galaxy LAB-06) range from $0<z<4.5$ with an average $z=2.43\\pm0.31$ and the absorptions range from $0<A_V<2.5$ mag with an average of $A_V=1.25\\pm0.25$ mag."
+    }
+   ]
+  },
+  {
+   "quantity": "Average AGN fitted dust mass M_d (7 SMGs with >1 FIR point, excluding LAB-06)",
+   "value": "1.77e8",
+   "uncertainty": "0.46e8",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "For the AGN FIR fits that have more than one FIR data point and again excluding LAB-06 we find that the dust mass ranges between $1.1<M_d<4.9\\times10^8M_\\odot$ with an average of $M_d=1.77\\pm0.46\\times10^8M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average AGN fitted dust temperature T (7 SMGs with >1 FIR point, excluding LAB-06)",
+   "value": "39.3",
+   "uncertainty": "3.6",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "The dust temperatures for these 7 (including the LAB-08 lower limit of 50K) range from $21<T<50$K with an average $T=39.3\\pm3.6$K."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of SMGs fitted at least as well by AGN as SFG templates",
+   "value": "83",
+   "uncertainty": "26",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We conclude that AGN make at least as good fits to 10/12 or $83\\pm26$% of sub-mm sources with only 1 source ($\\approx8$%) where a star-forming galaxy was clearly the better fit, the $z=0.046$ spiral galaxy, LAB-06."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum AGN fraction among the 8 SMGs with ALMA positions (X-ray detected)",
+   "value": "62.5",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We again emphasise that the minimum AGN fraction of the 8 with ALMA positions comprises those with X-ray detections i.e. LAB-01, LAB-03, LAB-04, LAB-05, LAB-11 ie 5/8 or 62.5%."
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-01 AGN best-fit redshift, A_V, T, and M_d",
+   "value": "z=2.6, A_V=1.75, T=40, M_d=2.6e8",
+   "uncertainty": "z: +/-0.15, A_V: +/-0.25, T: +/-6",
+   "units": "z: dimensionless, A_V: mag, T: K, M_d: M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "| 1    | 15.04          | $40\\pm6$  | $1.75\\pm0.25$ | $2.6\\pm0.15$ | $2.6\\times10^8$ | Dip   | 24.58          | $28\\pm13$ | $1.25\\pm0.38$ | $1.5\\pm0.20$ | $3.0\\times10^8$ | SF6   | 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-02 AGN best-fit redshift, A_V, T, and M_d",
+   "value": "z=3.1, A_V=0.25, T=39, M_d=2.0e8",
+   "uncertainty": "z: +/-0.25, A_V: +/-0.38, T: +/-9",
+   "units": "z: dimensionless, A_V: mag, T: K, M_d: M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "| 2    | 2.56           | $39\\pm9$  | $0.25\\pm0.38$ | $3.1\\pm0.25$ | $2.0\\times10^8$ | 1PL   | 3.56           | $<$10     | $0.50\\pm0.75$ | $0.0\\pm0.15$ | $1.5\\times10^4$ | AS2   | 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-05 AGN best-fit redshift, A_V, T, and M_d",
+   "value": "z=2.3, A_V=1.00, T=36, M_d=3.4e8",
+   "uncertainty": "z: +/-0.15, A_V: +/-0.25, T: +/-5",
+   "units": "z: dimensionless, A_V: mag, T: K, M_d: M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "| 5    | 28.34          | $36\\pm5$  | $1.00\\pm0.25$ | $2.3\\pm0.15$ | $3.4\\times10^8$ | 1PL   | 182.80         | $26\\pm4$  | $0.00\\pm0.12$ | $1.4\\pm0.15$ | $6.5\\times10^8$ | AS2   | 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-11 AGN best-fit redshift, A_V, T, and M_d",
+   "value": "z=1.6, A_V=1.50, T=41, M_d=1.1e8",
+   "uncertainty": "z: +/-0.10, A_V: +/-0.25, T: +/-10",
+   "units": "z: dimensionless, A_V: mag, T: K, M_d: M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED fitting results summary",
+     "quote": "| 11   | 44.21          | $41\\pm10$ | $1.50\\pm0.25$ | $1.6\\pm0.10$ | $1.1\\times10^8$ | Dip   | 244.02         | $44\\pm8$  | $0.00\\pm0.12$ | $1.8\\pm0.15$ | $9.7\\times10^7$ | AS2   | 17 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and imaging pipeline versions used for ALMA reduction",
+  "Specific tclean imaging parameters (weighting/robust parameter, cell size, image size, masking, deconvolver) deferred to Paper II",
+  "Exact ALMA Band 7 tuning frequencies and continuum bandwidth",
+  "Individual ALMA 870 um IMFIT flux densities (Table 1 only lists 850 um fluxes from LABOCA, except for LAB-12)"
+ ],
+ "missing_for_reproduction": [
+  "The custom Fortran maximum-likelihood SED fitting code is not publicly released.",
+  "Exact normalization constants for the analytic AGN and SFG SED template equations (only proportionality relations are printed in Equations 1-8) and the exact wavelength grid used for filter integration or monochromatic evaluation.",
+  "Detailed ALMA imaging and IMFIT parameters (deferred to Paper II)."
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The complete multi-wavelength flux and error tables (Tables 1 and A1), source coordinates (Tables A2-A4), analytic SED template equations (Eqs. 1-8), dust reddening polynomials (Eqs. 9-11), and grid parameters are all explicitly provided in the text, making the SED fitting highly reproducible from the published tables, though the custom Fortran code, template normalizations, and detailed ALMA imaging settings (deferred to Paper II) are omitted.",
+ "rediscovery_reason": "The ALMA dataset (2016.1.01523.S) is public in the ALMA archive, the complete multi-wavelength flux and error tables are printed in full in the paper, and the main results (ALMA counterpart coordinates, redshifts, A_V, dust temperatures, dust masses, and delta-chi^2 values) are concrete numeric targets.",
+ "source_card": "cards/2021MNRAS.505.1509S/sonnet/card.md"
+}

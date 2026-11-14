@@ -1,0 +1,312 @@
+{
+ "bibcode": "2020ApJ...898..146M",
+ "title": "Dust Populations in the Iconic Vega Planetary System Resolved by ALMA",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba0a4",
+ "arxiv_id": "2006.16257",
+ "fields": [
+  "debris_disks",
+  "exoplanets"
+ ],
+ "question": "What is the mm-wavelength structure of Vega's outer dust belt, is there warm inner dust emission, and what planetary architecture explains it?",
+ "alma_project_codes": [
+  "2015.1.00182.S"
+ ],
+ "data": {
+  "bands": "Band 6, mean 225.2 GHz (1.34 mm)",
+  "arrays": "12m array (most compact configuration) and ACA",
+  "angular_resolution": "1.8'' x 0.9'' (natural, no taper); 8.5'' x 7.9'' (10'' taper)",
+  "sensitivity": "70 uJy/beam (10'' taper); 13 uJy/beam (natural, no taper); CO cube 1 mJy/beam per 0.64 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Warm dust asteroid belt model (170 K, 7e-6 fractional luminosity); predicted 240 uJy at 1.34 mm",
+    "evidence": [
+     {
+      "loc": "3.4 Searching for the inner belt",
+      "quote": "predicted flux density of 240 $\\mu$Jy at 1.34 mm extrapolated from the asteroid belt model of (cite: Su2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Su2013)"
+  },
+  {
+   "what": {
+    "value": "Galaxy number counts used to assess the background-source hypothesis",
+    "evidence": [
+     {
+      "loc": "3.3 Modelling results",
+      "quote": "Taking the galaxy number counts from (cite: Carniani2015), we expect 3.5 galaxies as bright or brighter than this source"
+     }
+    ]
+   },
+   "citation": "(cite: Carniani2015)"
+  },
+  {
+   "what": {
+    "value": "Vega equatorial spectrum used for CO fluorescence and photodissociation",
+    "evidence": [
+     {
+      "loc": "3.5 CO emission",
+      "quote": "we use the Vega spectrum provided by (cite: Aufdenberg2006) as would be seen along the star’s equatorial plane"
+     }
+    ]
+   },
+   "citation": "(cite: Aufdenberg2006)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and align 12m data",
+   "method": "Phase-only (3 rounds) and amplitude self-cal on stellar point-source model per execution; shift phase centre to fitted stellar position",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit stellar flux and offsets",
+   "method": "Point-source fit to 12m visibilities beyond 50 klambda per execution; mean flux adopted for rescaling",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "2000 steps, 40 walkers, uniform priors, likelihood exp(-chi2/2), free weight scaling"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit outer belt models to visibilities",
+   "method": "Gaussian, single power-law, double power-law radial models; RADMC-3D ray-trace, primary-beam multiply, GALARIO Fourier transform, star added, MCMC; ACA fit first for ACA stellar parameters, then joint ACA+12m",
+   "software": [
+    "RADMC-3D",
+    "GALARIO",
+    "emcee"
+   ],
+   "key_parameters": [
+    "aspect ratio h fixed to 0.03; walkers = 10 x free parameters; 2000 steps"
+   ],
+   "assumptions": [
+    "Optically thin; r^-0.5 temperature profile; constant dust opacity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Search for warm inner belt",
+   "method": "Inspect residual visibilities and residual radial profile; derive 3 sigma upper limits via annulus noise",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Narrow unresolved Gaussian belt at 14-40 au"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "CO gas mass upper limit",
+   "method": "Spectro-spatial filtering within 130 au; non-LTE excitation with UV fluorescence to convert flux limit to mass",
+   "software": [],
+   "key_parameters": [
+    "kinetic temperatures 10-250 K, full range of electron densities"
+   ],
+   "assumptions": [
+    "Optically thin, electron collisions dominate, little H2, CO co-located with dust at 118 au"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar peak flux density in tapered map",
+   "value": "2580",
+   "uncertainty": "SNR ~37",
+   "units": "uJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 Image analysis",
+     "quote": "The star itself is strongly detected with a peak flux density of 2580 $\\mu$Jy (SNR$\\sim$37) in the tapered map."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean stellar flux density at 1.34 mm (12m)",
+   "value": "2495",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Modelling the star",
+     "quote": "mean of the best-fit values obtained from the separate 12m datasets (2495 $\\mu$Jy)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian belt radius r_c",
+   "value": "118",
+   "uncertainty": "+4/-3",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$118^{+4}_{-3}$ ($15.3^{+0.5}_{-0.4}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian belt FWHM",
+   "value": "67",
+   "uncertainty": "+9/-7",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$67^{+9}_{-7}$ ($8.7^{+1.2}_{-0.9}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law inner edge r_in",
+   "value": "74",
+   "uncertainty": "+3/-3",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$74^{+3}_{-3}$ ($9.6^{+0.4}_{-0.4}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Double power-law inner slope gamma",
+   "value": "10",
+   "uncertainty": "+5/-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10^{+5}_{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Belt flux density (Gaussian)",
+   "value": "8.5",
+   "uncertainty": "+1.3/-1.1",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.5^{+1.3}_{-1.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm belt 3 sigma upper limit (narrow, 14-40 au)",
+   "value": "120-223",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Searching for the inner belt",
+     "quote": "this yields 3$\\sigma$ upper limits of $120-223$ $\\mu$Jy on the 1.34 mm flux density of a narrow warm belt"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm dust 3 sigma upper limit (broad, <40 au)",
+   "value": "<324",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Searching for the inner belt",
+     "quote": "we measure a 3$\\sigma$ upper limit of $<$324 $\\mu$Jy on the total residual 1.34 mm flux density interior to 40 au"
+    }
+   ]
+  },
+  {
+   "quantity": "CO integrated line flux 3 sigma upper limit",
+   "value": "250",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 CO emission",
+     "quote": "we obtain a 3$\\sigma$ upper limit on the integrated line flux of 250 mJy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limits",
+   "value": "3.4-19e-7",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 CO emission",
+     "quote": "obtaining mass upper limits in the range 3.4-19$\\times10^{-7}$ M$_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO photodissociation timescale at 118 au",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5 CO emission",
+     "quote": "we calculate a CO photodissociation timescale of 12 years"
+    }
+   ]
+  },
+  {
+   "quantity": "Total 1.34 mm flux density of Vega system",
+   "value": "9.9-16.9",
+   "uncertainty": "1 sigma range",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.2 Modelling results",
+     "quote": "ranging between $9.9-16.9$ mJy (1$\\sigma$ range, including the star)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN thresholds, masks, cell and image sizes",
+  "Priors ranges and starting positions of belt MCMC",
+  "Exact line-free channel selection beyond +-50 km/s and CO imaging details",
+  "Pipeline version and ALMA flagging details",
+  "Temperature grid details for RADMC-3D",
+  "Phase-center coordinates of Vega"
+ ],
+ "missing_for_reproduction": [
+  "Priors bounds and walker initialization",
+  "CLEAN parameters (threshold, mask, cell/image size)",
+  "RADMC-3D grid and temperature setup",
+  "Pipeline version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and modelling recipe described with software, but many numerical settings and priors are missing.",
+ "rediscovery_reason": "Data are archival ALMA project, recipe fairly complete, and main results (belt radius, width, upper limits) are numeric.",
+ "source_card": "cards/2020ApJ...898..146M/sonnet/card.md"
+}

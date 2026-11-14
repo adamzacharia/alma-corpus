@@ -1,0 +1,29 @@
+# Reconciliation: sed-fitting
+- SR-01 | FIXED | Pack line 157 and the 2020A&A...633A.160C excerpt confirm 100 x 2500 is the UV-slope fit; removed from the dust MCMC lists in SKILL.md and parameters.md, emcee row now names it as a non-dust use.
+- SR-02 | FIXED | 25% SCUBA share (pack line 181) moved to the deblending bullet as source allocation, noting the paper assumes star-formation heating (line 397); dropped from the AGN-removal bullet.
+- SR-03 | FIXED | Prior now reads "T<100 K observed-frame (multiply by (1+z) for a rest-frame prior)" per pack line 294.
+- SR-04 | FIXED | 2021A&A...648A..41V now described as a simple blackbody (not greybody), curve_fit, ALMA high-resolution fluxes excluded (lines 374, 1089).
+- SR-05 | FIXED | Sampler settings split by free parameters: T and beta free vs beta fixed (2017ApJ...839...58S, beta=1.8, line 508); 2019MNRAS.482.3135B marked as free set not stated.
+- SR-06 | FIXED | Recounted 47 K + 1.6 from parameter/assumption lines: 16 papers (was 17); context changed to quasar hosts mostly z > 5.7 plus z ~ 2-2.5 systems; parameters.md splits 2024ApJ...977..198L (z~2 Lya nebulae) and 2017MNRAS.465.4390B (z~2.5 reddened quasars) into own rows.
+- SR-07 | FIXED | 2015ApJ...811..124S and 2014MNRAS.438.1267S moved to separate 870 um rows (lines 655, 647); 0.077 at 850 um / 352 GHz recounted as 6.
+- SR-08 | FIXED | kappa range at 850 um now 0.0383-0.15 m2/kg (2017ApJ...851...98T, line 420); gas-to-dust range now about 30-200 with 2020A&A...641A.155V (~30, line 475).
+- SR-09 | FIXED | Counts from the current aggregate: hyperz 4, MCFOST 6, curve_fit 3, MPFIT 3; table now states these are mentions, not dust-fit counts, with MPFIT line fitting in 2024A&A...690A..55S as the example.
+- SR-10 | FIXED | Flux-calibrator variants recomputed as 12+9+4+4+2 = 31, stated as label mentions from a top-40 list, compared with "casa version" 33.
+- SR-11 | FIXED | Direction removed; now reports a ~0.1 dex spread against optically thin and Arp 220 models, quoting the paper's "can be higher than the blackbody fits".
+- SR-12 | FIXED | Error terms split into photometric calibration floors, deblending/model uncertainty (35% lens model) and output systematics (0.1 dex MAGPHYS); table row renamed and range narrowed to 5-15%.
+- SR-13 | FIXED | Removed "most ALMA papers have one to three far-IR points" and "most common at high z"; intro now uses the counted 16 fixed-T quasar papers as the example.
+- SR-14 | FIXED | Deblending-bias caution kept as general caution without 2014MNRAS.438.1267S; small-beam beta bias kept as general caution without 2016ApJ...833...68A; replaced with the supported 2018MNRAS.475..448T ALMA exclusion.
+- SR-15 | FIXED | Removed unsupported attributions (2014ApJ...785..149S and 2016ApJ...822...80S differential magnification, 2016MNRAS.463...10M warm-dust admission, 2014ApJ...791..108F factor-2 opacity, 2013ApJ...770...13W excluded T errors); also narrowed 2017A&A...597A...5M to what line 328 says. Kept the cautions as general practice.
+- SR-16 | FIXED | Dropped 2016MNRAS.461.2944A from the Bethermin template list; kept 2020A&A...643A...2B and 2024A&A...688A..55M (lines 525, 231).
+- SR-17 | FIXED | SFR constants now applied to L_IR,SF with units; 2024ApJ...962....1S written as L'_IR with the 1.40e-10 x 0.41 x 1.34e13 = 770 Msun/yr check (my arithmetic); 2019A&A...621A..27F marked L_IR_SF (line 459); 2018ApJ...853...24U notes its 20% AGN subtraction.
+- SR-18 | FIXED | Added a mass-basis column to the opacity table (gas+dust stated for 2018MNRAS.475..448T; inferred or "not stated" elsewhere, each labelled) and a step-6 rule not to apply gas-to-dust twice.
+- SR-19 | FIXED | Categorical "one or two points" replaced: one point is unconstrained (2015ApJ...807..180W); with two or more, identifiability depends on peak coverage, free parameters and degeneracy (2017ApJ...840..101C threshold cited).
+- SR-20 | FIXED | Defined T_CMB(z)=2.73(1+z), heated vs intrinsic T_d with the da Cunha heating formula (general practice), contrast-only vs heating+contrast papers, no double correction, T_d > T_CMB(z) with pack examples (14.7 K at z=4.43, 23.4 K at z=7.5).
+- SR-21 | FIXED | Dropping rest <50 um now described as protecting the cold fit only; total L_IR needs a warm component/power law/template or an extrapolation uncertainty, citing the ~20% underestimate (2017ApJ...844L..10S).
+- SR-22 | FIXED | Sensitivity grid now chosen by population and redshift with pack ranges (SMGs, quasar hosts 41-60 K, 50-100 K, 60-90 K prior, 80 K at z=8.3, z-dependent 30-65 K), labelled as conditional tests.
+- SR-23 | FIXED | Added a spatial-consistency bullet to step 2, a mismatched-aperture pitfall and a referee check (2017ApJ...840...72L, 2021A&A...648A..41V, 2015ApJ...801...82H, 2018MNRAS.475..448T).
+- SR-24 | FIXED | Added ALMA continuum hygiene (line-free channels, line contamination, primary-beam correction, local noise) with 2024ApJ...962....1S and summed not-stated counts (49 line-free, 13 primary-beam, label mentions).
+- SR-25 | FIXED | Old-star/cirrus heating added to step 3 and pitfalls (2019MNRAS.486..560S, line 639).
+- SR-26 | FIXED | AGN subtraction uncertainty (>=0.13 dex, 2017ApJ...844..123F) and buried-AGN risk (2018ApJ...859...35G, line 756) added to step 3, pitfalls and referee checks.
+- SR-27 | FIXED | Added convergence, effective-sample and prior-boundary checks as general practice in step 5, referee checks and the parameters.md MCMC note, without citing 2024ApJ...962..116E.
+- SR-28 | FIXED | Referee check now asks for separately named L_IR(8-1000 um) and L_FIR(42.5-122.5 um), noting 2016MNRAS.463...10M labels an 8-1000 um integral "LFIR" (line 282).

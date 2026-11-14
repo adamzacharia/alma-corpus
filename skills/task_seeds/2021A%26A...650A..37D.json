@@ -1,0 +1,381 @@
+{
+ "bibcode": "2021A&A...650A..37D",
+ "title": "A search for signatures of interactions of X-ray binary outflows with their environments with ALMA",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202040160",
+ "arxiv_id": "2104.05384",
+ "fields": [
+  "stellar_physics",
+  "milky_way_ism"
+ ],
+ "question": "Do five persistently accreting X-ray binaries (NS and BH, LMXB and HMXB) show atomic or molecular line emission from their accretion discs or from nearby sites of jet-ISM interaction, as seen with ALMA Band 3?",
+ "alma_project_codes": [
+  "2016.1.00496.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12 m array only",
+  "angular_resolution": "Cir X-1 synthesised beam 0.67 x 0.63 arcsec (other sources in Table obslog2)",
+  "sensitivity": "3 sigma line limits of 0.65-3.7 K km/s at the XRB positions"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galactic YSO catalogue used to cross-match the SiO line position (source J181430.35-170901.0)",
+    "evidence": [
+     {
+      "loc": "Line emission in the field of view of GX 13+1",
+      "quote": "We found a source coincident with the position of the line in the galactic young stellar object (YSO) catalogue of (cite: marton19cat)"
+     }
+    ]
+   },
+   "citation": "Marton et al. 2019 (cite: marton19cat)"
+  },
+  {
+   "what": {
+    "value": "Cir X-1 radio flare ephemeris used to derive the orbital phase of the ALMA observation",
+    "evidence": [
+     {
+      "loc": "Cir X-1",
+      "quote": "Using the ephemeris in (cite: cirx1:nicolson07atel) derived from the onset times of 21 well-observed radio flares"
+     }
+    ]
+   },
+   "citation": "Nicolson 2007 (cite: cirx1:nicolson07atel)"
+  },
+  {
+   "what": {
+    "value": "Distance to GRS 1915+105 of 8.6 kpc",
+    "evidence": [
+     {
+      "loc": "Characteristics of the sample",
+      "quote": "GRS 1915+105 is a low-mass XRB (LMXB) at a distance of 8.6 kpc (cite: 1915:reid14apj)"
+     }
+    ]
+   },
+   "citation": "Reid et al. 2014 (cite: 1915:reid14apj)"
+  },
+  {
+   "what": {
+    "value": "Mass loss rate of W Hya used for the evolved-star comparison",
+    "evidence": [
+     {
+      "loc": "Line emission in the field of view of GX 13+1",
+      "quote": "a mass loss rate of 4.9 $\\times$ 10$^{-7}~M_\\odot$ within a radius of about 70 AU has been derived (cite: vlemmings11apj)"
+     }
+    ]
+   },
+   "citation": "Vlemmings et al. 2011 (cite: vlemmings11apj)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "re-calibrate and image the data",
+   "method": "Re-calibration with CASA and the integrated ALMA pipeline, then images regenerated from calibrated products with natural weighting",
+   "software": [
+    "CASA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "phase-only self-calibration",
+   "method": "Phase-only self-calibration on the targets, except GX 13+1",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "solution intervals 15, 90, 90 and 45 s"
+   ],
+   "assumptions": [
+    "Phase decoherence attributed to poor phase rms conditions at low PWV"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "measure continuum flux density and spectral index at each XRB",
+   "method": "Peak flux of an elliptical Gaussian fitted in the image plane after primary beam correction; error is the image rms far from the source; spectral index between the two sidebands",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "spectral index between 85.764 and 97.878 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "search the data cubes for line emission at the XRB positions",
+   "method": "Data cubes extracted at the spectral resolution of the cubes and inspected for line emission; 3 sigma upper limits derived",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "characterise line detections in the GX 13+1 field of view",
+   "method": "Line emission found at three positions in the GX 13+1 field; peak intensities and frequencies tabulated",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "identify the lines and constrain distances",
+   "method": "Tentative SiO v=1 J=2-1 identification, with near and far kinematic distances computed from the velocity shift",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Line shift is due to position in the Galaxy, not intrinsic to the source"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "test YSO versus evolved-star origin of the SiO line",
+   "method": "Estimate expected continuum of a 1 solar-mass core and of an evolved star at 2.5 kpc and compare with ALMA limits; compare with YSO catalogue and archival surveys",
+   "software": [],
+   "key_parameters": [
+    "dust temperature ~20 K"
+   ],
+   "assumptions": [
+    "typically adopted dust opacity, gas-to-dust mass ratio of 100, optically thin emission at 90 GHz"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "determine the accretion state at the time of observation",
+   "method": "MAXI hardness-intensity and colour-colour diagrams classified following earlier work",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Cir X-1 peak continuum flux",
+   "value": "13.69",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Cir X-1",
+     "quote": "We detected significant continuum emission with a peak flux of 13.69 $\\pm$ 0.05 mJy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Cir X-1 spectral index (84-99 GHz)",
+   "value": "-0.09",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Cir X-1",
+     "quote": "a spectral index of – 0.09 $\\pm$ 0.01 between 84 and 99 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Sco X-1 peak continuum flux",
+   "value": "2.48",
+   "uncertainty": "0.03",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2.48 $\\pm$ 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "GRS 1915+105 peak continuum flux",
+   "value": "3.63",
+   "uncertainty": "0.04",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.63 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 13+1 peak continuum flux",
+   "value": "0.75",
+   "uncertainty": "0.02",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "GX 13+1",
+     "quote": "The ALMA observations indicate a flux of 0.75 $\\pm$ 0.02 mJy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Cyg X-1 peak continuum flux",
+   "value": "5.69",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "5.69 $\\pm$ 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma line intensity upper limits at XRB positions",
+   "value": "0.65 to 3.7",
+   "uncertainty": "not stated",
+   "units": "K km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we did not detect line emission at the position of any source down to 3 $\\sigma$ limits of 0.65 –3.7 K km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 13+1 field SiO candidate line peak intensity at 86.2362 GHz",
+   "value": "340.8",
+   "uncertainty": "1.5",
+   "units": "K km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table lineloggx",
+     "quote": "340.8 $\\pm$ 1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 13+1 field line peak intensity at 96.7329 GHz",
+   "value": "8.3",
+   "uncertainty": "1.0",
+   "units": "K km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table lineloggx",
+     "quote": "8.3 $\\pm$ 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 13+1 field line peak intensity at 99.2933 GHz (SE)",
+   "value": "10.4",
+   "uncertainty": "1.5",
+   "units": "K km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table lineloggx",
+     "quote": "10.4 $\\pm$ 1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "GX 13+1 field line peak intensity at 99.2938 GHz (SW)",
+   "value": "5.0",
+   "uncertainty": "0.7",
+   "units": "K km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table lineloggx",
+     "quote": "5.0 $\\pm$ 0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO line velocity redshift",
+   "value": "25",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Line emission in the field of view of GX 13+1",
+     "quote": "with a redshift of 25 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Near and far kinematic distances of the SiO source",
+   "value": "2.5 and 13.3",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Line emission in the field of view of GX 13+1",
+     "quote": "we obtain 2.5 and 13.3 kpc as near and far kinematic distances"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected flux of a one-solar-mass core at 2.5 kpc",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Line emission in the field of view of GX 13+1",
+     "quote": "a one-solar-mass core would have a flux of 0.3 mJy if placed at the near kinematic distance of 2.5 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux recovered by self-calibration",
+   "value": "~30-45",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data analysis",
+     "quote": "recovering $\\sim$ 30–45% of the flux at the source position"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA tasks and parameters (tclean deconvolver, cell size, image size, masking, niter/threshold) for continuum and cube imaging",
+  "Line-free channels and the continuum subtraction method used for the data cubes",
+  "Exact spectral resolution and channel width of the cubes and any velocity smoothing or rebinning",
+  "Reference antenna, uv range and combination of spectral windows used for the self-calibration, and which windows made the continuum",
+  "Method and parameters for the 3 sigma line upper limits (integration velocity width assumed, region used) and conversion from Jy/beam to K km/s",
+  "Flux calibrator models and flux scale uncertainty",
+  "How the kinematic distances of 2.5 and 13.3 kpc were computed (rotation curve and line-of-sight velocity)",
+  "Mosaic setup and weighting for the five-pointing Cir X-1 and Cyg X-1 fields",
+  "Exact dust opacity law used in the 1 solar-mass core flux estimate"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters, cell and image sizes, masks and thresholds",
+  "Line-free channels and continuum subtraction",
+  "Cube channel width and noise estimation for upper limits",
+  "Self-calibration reference antenna, spw selection and iteration count",
+  "Flux scale and flux model details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Project code, CASA version, weighting and self-calibration intervals are given and the headline numbers are simple, but cube imaging settings and line-limit methods are missing.",
+ "rediscovery_reason": "Data are from a 2016 ALMA project cited by code, the recipe (re-calibration, natural-weighted imaging, self-calibration solints, Gaussian peak fluxes) is mostly given, and results are numeric fluxes and limits.",
+ "source_card": "cards/2021A%26A...650A..37D/sonnet/card.md"
+}

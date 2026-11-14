@@ -1,0 +1,1791 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...698A.115R",
+  "title": "Radial variations in the nitrogen, carbon, and hydrogen fractionation in the PDS 70 planet-hosting disk",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Rampinelli, L.",
+  "n_authors": 11,
+  "arxiv_id": "2504.03833",
+  "doi": "10.1051/0004-6361/202554172",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.01619.S",
+   "2022.1.01695.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this work we present the radial profile of nitrogen, carbon, and hydrogen fractionation of the HCN molecule in the PDS 70 disk, where two protoplanets are accreting their atmospheres."
+   },
+   {
+    "loc": "Observations",
+    "quote": "In this work we used ALMA Band 6 and 7 line emission observations from projects #2019.1.01619.S (PI S. Facchini) and #2022.1.01695.S (PI M. Benisty)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "PDS 70",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "113 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "and a distance of $113$ pc (cite: brown2018gaia)"
+       },
+       {
+        "loc": "Observations",
+        "quote": "$M_\\ast = 0.875$ M$_\\odot$, $i = 51.7^\\circ$, PA$=160.4^\\circ$, and $v_\\mathrm{sys}=5.5$ km s$^{-1}$ (in LSRK frame), as they were obtained by (cite: keppler2019highly)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: brown2018gaia)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "and a distance of $113$ pc (cite: brown2018gaia)"
+       },
+       {
+        "loc": "Observations",
+        "quote": "$M_\\ast = 0.875$ M$_\\odot$, $i = 51.7^\\circ$, PA$=160.4^\\circ$, and $v_\\mathrm{sys}=5.5$ km s$^{-1}$ (in LSRK frame), as they were obtained by (cite: keppler2019highly)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the radial profiles of nitrogen, carbon and hydrogen fractionation of HCN in the planet-hosting PDS 70 disk, and what fractionation processes do they point to?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work we present the radial profile of nitrogen, carbon, and hydrogen fractionation of the HCN molecule in the PDS 70 disk, where two protoplanets are accreting their atmospheres."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.01619.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we used ALMA Band 6 and 7 line emission observations from projects #2019.1.01619.S (PI S. Facchini) and #2022.1.01695.S (PI M. Benisty)"
+      }
+     ]
+    },
+    {
+     "code": "2022.1.01695.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we used ALMA Band 6 and 7 line emission observations from projects #2019.1.01619.S (PI S. Facchini) and #2022.1.01695.S (PI M. Benisty)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (2019.1.01619.S) and Band 7 (2022.1.01695.S) line observations",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we used ALMA Band 6 and 7 line emission observations from projects #2019.1.01619.S (PI S. Facchini) and #2022.1.01695.S (PI M. Benisty)"
+     },
+     {
+      "loc": "Fluxes of Band 6 and 7 molecular lines",
+      "quote": "lists also detected lines in Band 6 data (#2019.1.01619.S, PI S. Facchini)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 7: four spws of 1.875 GHz, 1920 channels, 977 kHz resolution; 342.483-344.358, 344.379-346.254, 354.483-356.358, 356.441-358.316 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The spectral setup includes four spectral windows (spws) initially intended for continuum observations, each with a bandwidth of 1.875 GHz, 1920 channels, and a resolution of 977 kHz."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The spws cover the same frequency ranges across all EBs: 342.483-344.358 GHz for spw 0, 344.379-346.254 GHz for spw 1, 354.483-356.358 GHz for spw 2, and 356.441-358.316 GHz for spw 3."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H13CN",
+     "transition": "3-2",
+     "rest_frequency": "259.0117 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "H$^{13}$CN (3-2) | 259.0117"
+      }
+     ]
+    },
+    {
+     "species": "H13CN",
+     "transition": "4-3",
+     "rest_frequency": "345.3398 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "H$^{13}$CN (4-3) | 345.3398"
+      }
+     ]
+    },
+    {
+     "species": "HC15N",
+     "transition": "3-2",
+     "rest_frequency": "258.1571 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "HC$^{15}$N (3-2) | 258.1571"
+      }
+     ]
+    },
+    {
+     "species": "HC15N",
+     "transition": "4-3",
+     "rest_frequency": "344.2001 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "HC$^{15}$N (4-3) | 344.2001"
+      }
+     ]
+    },
+    {
+     "species": "DCN",
+     "transition": "3-2",
+     "rest_frequency": "217.2386 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "DCN (3-2) | 217.2386"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "4-3 (F=4-3 main hyperfine component)",
+     "rest_frequency": "354.50548 GHz",
+     "evidence": [
+      {
+       "loc": "Observations (line table)",
+       "quote": "HCN ($J$=4-3,$F$=4-3) | 354.50548"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Band 7: one SB execution block (C-4) and three LB execution blocks (C-7)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The Band 7 observations consist of four execution blocks (EBs): one short-baseline (SB, ALMA configuration C-4, max baseline 0.8 km) and three long-baseline (LB, configuration C-7, max baseline 3.6 km) configurations."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "Band 7: max baseline 0.8 km (SB), 3.6 km (LB)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The Band 7 observations consist of four execution blocks (EBs): one short-baseline (SB, ALMA configuration C-4, max baseline 0.8 km) and three long-baseline (LB, configuration C-7, max baseline 3.6 km) configurations."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.20'' (~23 au) and ~0.14'' (~15 au) beam major axes for the Band 6-optimised and Band 7-optimised cubes",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "In particular, cubes imaged to maximize Band 6 and Band 7 sensitivity correspond to beam major axes of $\\sim0.20\\ensuremath{''}$ ($\\sim$23 au) and $\\sim0.14\\ensuremath{''}$ ($\\sim$15 au), respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "cube RMS (mJy/beam) listed per cube in the imaging tables; evaluated from first and last 5 channels",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "RMS is evaluated as standard deviation in the first and last 5 channels of each cube."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 7: 35 min per EB, 2.33 hours total",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Each EB had 35 minutes of on-source time, for a total of 2.33 hours."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "2019.1.01619.S (PI S. Facchini); 2022.1.01695.S (PI M. Benisty)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "projects #2019.1.01619.S (PI S. Facchini) and #2022.1.01695.S (PI M. Benisty)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "distance of 113 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "and a distance of $113$ pc (cite: brown2018gaia)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar mass 0.875 Msun, inclination 51.7 deg, PA 160.4 deg, vsys 5.5 km/s (LSRK) adopted for the analysis",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "$M_\\ast = 0.875$ M$_\\odot$, $i = 51.7^\\circ$, PA$=160.4^\\circ$, and $v_\\mathrm{sys}=5.5$ km s$^{-1}$ (in LSRK frame), as they were obtained by (cite: keppler2019highly)"
+       }
+      ]
+     },
+     "citation": "(cite: keppler2019highly)"
+    },
+    {
+     "what": {
+      "value": "Distance 113 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "and a distance of $113$ pc (cite: brown2018gaia)"
+       }
+      ]
+     },
+     "citation": "(cite: brown2018gaia)"
+    },
+    {
+     "what": {
+      "value": "Radially constant 12C/13C = 69 used to convert H13CN to HCN column density",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios",
+        "quote": "assuming a radially constant $\\ce{^12C}/\\ce{^13C}=69$ ratio (cite: wilson1999isotopes)"
+       }
+      ]
+     },
+     "citation": "(cite: wilson1999isotopes)"
+    },
+    {
+     "what": {
+      "value": "ISM D/H value of ~1e-5 used as comparison",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios",
+        "quote": "significantly above the ISM D/H value of $\\sim10^{-5}$ (cite: linsky2006)"
+       }
+      ]
+     },
+     "citation": "(cite: linsky2006)"
+    },
+    {
+     "what": {
+      "value": "2D temperature structure of the PDS 70 disk used to attempt an HCN emitting-layer estimate",
+      "evidence": [
+       {
+        "loc": "HCN emitting layer from the excitation temperature",
+        "quote": "with the 2D temperature structure of the PDS 70 disk, extracted by (cite: law2024mapping)"
+       }
+      ]
+     },
+     "citation": "(cite: law2024mapping)"
+    },
+    {
+     "what": {
+      "value": "855 micron continuum integrated intensity profile overplotted for comparison",
+      "evidence": [
+       {
+        "loc": "Radial rotational diagram",
+        "quote": "The dashed black line shows the integrated intensity profile of the 855 $\\mu$m continuum observations (cite: isella2019detection; benisty2021circumplanetary)."
+       }
+      ]
+     },
+     "citation": "(cite: isella2019detection; benisty2021circumplanetary)"
+    },
+    {
+     "what": {
+      "value": "Band 6 line fluxes and imaging details taken from the earlier paper",
+      "evidence": [
+       {
+        "loc": "Fluxes of Band 6 and 7 molecular lines",
+        "quote": "the reader is referred to (cite: rampinelli2024) for more details on imaging strategies and line flux evaluation."
+       }
+      ]
+     },
+     "citation": "(cite: rampinelli2024)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline, then exoALMA-style self-calibration in CASA",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All the EBs were initially calibrated using the ALMA pipeline, followed by self-calibration based on the pipeline designed by the exoALMA Large Program (Loomis et al., subm.), using the software CASA (cite: CASA2022), version 6.2."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.2 (calibration/self-calibration); CASA v6.65 (imaging)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using the software CASA (cite: CASA2022), version 6.2"
+      },
+      {
+       "loc": "Observations",
+       "quote": "implemented in the `CASA` software (cite: CASA2022) `v6.65`"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% absolute flux calibration uncertainty included in the likelihood",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "a 10% absolute flux calibration uncertainty were considered (sum in quadrature) when generating the likelihood"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Band 7: phase-only rounds per EB (EB-long) then SB (EB-long,360,120,60,20 s), concat with LB, phase-only (EB-long,360,120,60,30,18 s), then 2 amplitude+phase rounds (EB-long, scan-long); Band 6 as in Law+2024 / Rampinelli+2024",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "A first round of phase-only self-calibration was performed on each EB separately, combining both scans and spws on time intervals over the full EB duration."
+      },
+      {
+       "loc": "Observations",
+       "quote": "Multiple rounds with progressively shorter solution intervals were used (EB-long, 360s, 120s, 60s, 20s), stopping when SNR and noise structure began to degrade."
+      },
+      {
+       "loc": "Observations",
+       "quote": "Similar to before, we cleaned down to $6\\sigma$ at each step, with progressively shorter solution intervals (EB-long, 360s, 120s, 60s, 30s, 18s)."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean in CASA v6.65",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We imaged the lines using the `tclean` task (cite: hogbom1974aperture; cornwell2008) implemented in the `CASA` software (cite: CASA2022) `v6.65`."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale, scales [0,5,10,20,30] pixels (pixel ~0.02''), threshold 3.5 sigma",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we used a `multiscale` deconvolver with scales \\[0,5,10,20,30\\] pixels, where the pixel size is $\\sim0.02\\ensuremath{''}$, and a flux threshold of 3.5$\\sigma$."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting for initial cubes; Briggs robust 0.67 for Band 6 H13CN/HC15N cubes re-imaged to Band 7 resolution; DCN robust 0.3; per-cube robust values in the imaging table",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We first imaged all lines with natural weighting."
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "We therefore imaged the Band 6 and cubes again with Briggs weighting and a robust parameter of 0.67 to match the spatial resolution of Band 7 observations."
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "Similarly, we re-imaged the DCN cube with a robust parameter of 0.3 to match the beam size of Band 7 observations, and extract the column density profile."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "uv-taper and/or robust tuned so cubes share the same spatial resolution (taper values in the imaging table)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Each time $uv$-taper and/or robust were chosen to obtain cubes with the same spatial resolution."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "first CLEAN unmasked; second CLEAN with mask from >7 sigma signal of the first",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We performed a first CLEANing without applying any mask, and a second CLEANing iteration using a mask built by selecting the signal $> 7\\sigma$ in the previous iteration (Loomis et al., subm.)."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub task on all datasets",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Finally, continuum subtraction was performed on all datasets using the `uvcontsub` task."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "range of -30 to +30 km/s around each line center flagged before continuum self-calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We flagged the range between -30 km/s to +30 km/s around each line center."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "line fluxes measured on images not primary beam corrected",
+     "evidence": [
+      {
+       "loc": "Fluxes of Band 6 and 7 molecular lines",
+       "quote": "used not primary beam corrected images, to ensure uniform noise"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "self-calibrated SB EB concatenated with the three LB EBs",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The self-calibrated SB EB was then concatenated with the three LB EBs, and phase-only self-calibration was repeated on the combined dataset."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.20'' (~23 au) and ~0.14'' (~15 au) beam major axes for the two cube sets",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "In particular, cubes imaged to maximize Band 6 and Band 7 sensitivity correspond to beam major axes of $\\sim0.20\\ensuremath{''}$ ($\\sim$23 au) and $\\sim0.14\\ensuremath{''}$ ($\\sim$15 au), respectively."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Self-calibration pipeline designed by the exoALMA Large Program",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "followed by self-calibration based on the pipeline designed by the exoALMA Large Program (Loomis et al., subm.)"
+       }
+      ]
+     },
+     "from_reference": "Loomis et al., subm."
+    },
+    {
+     "what": {
+      "value": "EB alignment with common uv-grid and phase shifts",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The EBs were then aligned by regridding them to a common uv-grid with natural weighting, retaining only overlapping grid cells, and applying phase shifts to minimize visibility differences (Loomis et al., subm.)."
+       }
+      ]
+     },
+     "from_reference": "Loomis et al., subm."
+    },
+    {
+     "what": {
+      "value": "Two-pass CLEAN masking strategy",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "a second CLEANing iteration using a mask built by selecting the signal $> 7\\sigma$ in the previous iteration (Loomis et al., subm.)"
+       }
+      ]
+     },
+     "from_reference": "Loomis et al., subm."
+    },
+    {
+     "what": {
+      "value": "Band 6 self-calibration",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Self-calibration of Band 6 data was performed as described in (cite: law2024mapping; rampinelli2024)."
+       }
+      ]
+     },
+     "from_reference": "(cite: law2024mapping; rampinelli2024)"
+    },
+    {
+     "what": {
+      "value": "JvM correction by rescaling the residual map",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We applied the so-called JvM correction (cite: jorsater1995high), following (cite: czekala2021molecules), by rescaling the residual map by the ratio between areas of the CLEAN and DIRTY beams"
+       }
+      ]
+     },
+     "from_reference": "(cite: czekala2021molecules)"
+    },
+    {
+     "what": {
+      "value": "Further CLEANing strategy details",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "More details on the CLEANing strategies can be found in (cite: rampinelli2024)."
+       }
+      ]
+     },
+     "from_reference": "(cite: rampinelli2024)"
+    },
+    {
+     "what": {
+      "value": "Band 6 imaging and line flux evaluation",
+      "evidence": [
+       {
+        "loc": "Fluxes of Band 6 and 7 molecular lines",
+        "quote": "the reader is referred to (cite: rampinelli2024) for more details on imaging strategies and line flux evaluation."
+       }
+      ]
+     },
+     "from_reference": "(cite: rampinelli2024)"
+    }
+   ],
+   "unstated_but_needed": [
+    "The exoALMA self-calibration pipeline (Loomis et al., subm.) is cited as submitted, so its exact scripts, SNR stop criteria and parameters are not available from this paper.",
+    "ALMA pipeline version, flux/bandpass/phase calibrators and observation dates for the Band 7 and Band 6 EBs are not given.",
+    "Band 6 calibration, self-calibration and imaging details are deferred to Rampinelli et al. 2024 and Law et al. 2024.",
+    "Number of CLEAN iterations, exact mask construction and how the 3.5 sigma / 6 sigma / 1 sigma thresholds were derived (sigma definition per cube) are not given.",
+    "Spectral channel setup for the final cubes (rest-frame regridding, channel width choices per cube beyond table values) and how HCN F-component rest frequencies were applied are not detailed.",
+    "Source of the partition functions Q(T) and Einstein A coefficients (database, version) is not stated in the text.",
+    "How the peak brightness temperature is computed from Jy/beam (Rayleigh-Jeans or full Planck) and how the emitting area Omega is defined in N_u are not stated.",
+    "Radial bin edges and centres for the rotational diagram and hyperfine spectra fits are not listed beyond the 0.1'' annulus width.",
+    "Which cubes are JvM-corrected for flux versus uncorrected for uncertainties in each step is only qualitatively described."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate and self-calibrate Band 7 data, continuum-subtract",
+    "method": {
+     "value": "ALMA pipeline then phase-only and amplitude+phase self-calibration on line-free continuum, EB alignment, application to full spectral data, uvcontsub",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All the EBs were initially calibrated using the ALMA pipeline, followed by self-calibration based on the pipeline designed by the exoALMA Large Program (Loomis et al., subm.), using the software CASA (cite: CASA2022), version 6.2."
+      },
+      {
+       "loc": "Observations",
+       "quote": "Finally, continuum subtraction was performed on all datasets using the `uvcontsub` task."
+      }
+     ]
+    },
+    "software": [
+     "ALMA pipeline",
+     "CASA",
+     "tclean",
+     "uvcontsub"
+    ],
+    "key_parameters": [
+     {
+      "value": "lines flagged over -30 to +30 km/s",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We flagged the range between -30 km/s to +30 km/s around each line center."
+       }
+      ]
+     },
+     {
+      "value": "unflagged data averaged to 250 MHz channels",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The remaining unflagged data were averaged into 250 MHz-wide channels."
+       }
+      ]
+     },
+     {
+      "value": "SB self-cal intervals EB-long,360,120,60,20 s; combined EB-long,360,120,60,30,18 s",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Multiple rounds with progressively shorter solution intervals were used (EB-long, 360s, 120s, 60s, 20s), stopping when SNR and noise structure began to degrade."
+       },
+       {
+        "loc": "Observations",
+        "quote": "Similar to before, we cleaned down to $6\\sigma$ at each step, with progressively shorter solution intervals (EB-long, 360s, 120s, 60s, 30s, 18s)."
+       }
+      ]
+     },
+     {
+      "value": "two amplitude+phase rounds (EB-long, scan-long) after cleaning to 1 sigma",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "After this, the data were cleaned down to $1\\sigma$, and two rounds of amplitude and phase self-calibration were performed, combining polarizations and spws."
+       },
+       {
+        "loc": "Observations",
+        "quote": "The first round used EB-long intervals, while the second used scan-long intervals."
+       }
+      ]
+     },
+     {
+      "value": "full spectral data binned into 30 s intervals",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "To reduce dataset size, the full spectral data were binned into 30s intervals."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "flux offsets between EBs minimal (<1%), no flux rescaling needed",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "No flux rescaling was necessary, as flux offsets between EBs were minimal ($<1\\%$)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "image line cubes at matched resolutions",
+    "method": {
+     "value": "tclean multiscale CLEAN, two passes (unmasked then 7 sigma mask), JvM correction; two imaging sets tuned to Band 6 and Band 7 sensitivity",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We imaged the lines using the `tclean` task (cite: hogbom1974aperture; cornwell2008) implemented in the `CASA` software (cite: CASA2022) `v6.65`."
+      },
+      {
+       "loc": "Observations",
+       "quote": "We performed a first CLEANing without applying any mask, and a second CLEANing iteration using a mask built by selecting the signal $> 7\\sigma$ in the previous iteration (Loomis et al., subm.)."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "multiscale scales [0,5,10,20,30] pixels, pixel ~0.02'', threshold 3.5 sigma",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "we used a `multiscale` deconvolver with scales \\[0,5,10,20,30\\] pixels, where the pixel size is $\\sim0.02\\ensuremath{''}$, and a flux threshold of 3.5$\\sigma$."
+       }
+      ]
+     },
+     {
+      "value": "uv-taper and/or robust chosen for equal resolution across cubes; Band 6 cubes re-imaged with robust 0.67 and DCN with robust 0.3 for the Band 7 resolution set",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Each time $uv$-taper and/or robust were chosen to obtain cubes with the same spatial resolution."
+       },
+       {
+        "loc": "12C/13C ratio from the HCN hyperfine component",
+        "quote": "We therefore imaged the Band 6 and cubes again with Briggs weighting and a robust parameter of 0.67 to match the spatial resolution of Band 7 observations."
+       }
+      ]
+     },
+     {
+      "value": "cube RMS from standard deviation in first and last 5 channels",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "RMS is evaluated as standard deviation in the first and last 5 channels of each cube."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "JvM correction applied, but not for uncertainty evaluation since it could be underestimated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "except for uncertainty evaluation, which could be underestimated by the JvM correction (cite: casassus2022variable)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "build integrated intensity maps",
+    "method": {
+     "value": "bettermoments zeroth moment over a velocity range chosen by eye per line",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We calculated integrated intensity maps of the imaged cubes using the `bettermoments` package (cite: teague2019bettermoments), integrating data cubes over a velocity range where each line shows emission in the channel maps."
+      }
+     ]
+    },
+    "software": [
+     "bettermoments"
+    ],
+    "key_parameters": [
+     {
+      "value": "velocity ranges chosen after visual inspection",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Velocity ranges over which data cubes where collapsed to extract integrated intensity, chosen after visual inspection of the data."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "measure line fluxes",
+    "method": {
+     "value": "spatially integrate moment-0 maps inside de-projected circles; uncertainty from the scatter of the flux in 26 emission-free circles",
+     "evidence": [
+      {
+       "loc": "Fluxes of Band 6 and 7 molecular lines",
+       "quote": "Line fluxes are obtained by spatially integrating the integrated intensity maps of each line inside a de-projected circle with radius 3$^{\\prime\\prime}$ for the most extended , and 2$^{\\prime\\prime}$ for the others."
+      },
+      {
+       "loc": "Fluxes of Band 6 and 7 molecular lines",
+       "quote": "The uncertainty is evaluated as the standard deviation of the flux measured in 26 de-projected circles, outside the emitting area of the integrated intensity maps, with the same radius used to extract the flux."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "circle radius 3'' for the most extended line, 2'' for the others; not primary-beam-corrected images",
+      "evidence": [
+       {
+        "loc": "Fluxes of Band 6 and 7 molecular lines",
+        "quote": "used not primary beam corrected images, to ensure uniform noise"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "extract radial integrated-intensity profiles",
+    "method": {
+     "value": "GoFish azimuthal average over 0.1'' wide annuli (full azimuth, because a +/-30 deg wedge had too low S/N)",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "we extracted the radial profiles of the integrated intensity of each line, using the `GoFish` package (cite: teague2019gofish)"
+      },
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "We therefore extracted the integrated intensity profiles by performing a complete azimuthal average over $0.1\\ensuremath{''}$ wide annuli."
+      }
+     ]
+    },
+    "software": [
+     "GoFish"
+    ],
+    "key_parameters": [
+     {
+      "value": "geometry Mstar=0.875 Msun, i=51.7 deg, PA=160.4 deg, vsys=5.5 km/s, d=113 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "$M_\\ast = 0.875$ M$_\\odot$, $i = 51.7^\\circ$, PA$=160.4^\\circ$, and $v_\\mathrm{sys}=5.5$ km s$^{-1}$ (in LSRK frame), as they were obtained by (cite: keppler2019highly)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "radial rotational diagram for H13CN and HC15N",
+    "method": {
+     "value": "radially resolved rotational diagram with optical-depth correction C_tau, on cubes with equal beams; single Tex fitted jointly for both isotopologues",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "we could apply the rotational diagram (cite: goldsmith1999population) analysis to extract their molecular column density $N_\\mathrm{t}$ and excitation temperature $T_\\mathrm{ex}$"
+      },
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "We computed the rotational diagram correcting for the optical depth factor $C_\\tau$."
+      },
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "we applied a final rotational diagram analysis fitting for a single excitation temperature for both and"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "optical depth from peak brightness temperature and Tex, tau = -ln(1 - Tb/Tex), Tb the azimuthal average of peak Tb in each annulus",
+      "evidence": [
+       {
+        "loc": "Radial rotational diagram",
+        "quote": "where $T_\\mathrm{b}(R)$ is the radial profile of the brightness temperature, taken as the azimuthal average of the peak brightness temperature over each annulus in which we applied the rotational diagram"
+       }
+      ]
+     },
+     {
+      "value": "cubes with smallest channel width allowed by the spectral resolution",
+      "evidence": [
+       {
+        "loc": "Radial rotational diagram",
+        "quote": "We therefore used cubes imaged with the smallest width of the velocity channel allowed by the spectral resolution of the observations."
+       }
+      ]
+     },
+     {
+      "value": "Band 6-optimised cubes (~0.20'') in the main result; Band 7-optimised (~0.15'') as a consistent alternative",
+      "evidence": [
+       {
+        "loc": "Radial rotational diagram",
+        "quote": "The two results are consistent, and were both used to extract the radial profiles of N, C, and H fractionation of HCN"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "optically thin N_u relation, corrected by C_tau",
+      "evidence": [
+       {
+        "loc": "Radial rotational diagram",
+        "quote": "In the optically thin assumption, $N_\\mathrm{u}$ depends on the integrated flux density"
+       }
+      ]
+     },
+     {
+      "value": "excitation temperature equals kinetic temperature (LTE)",
+      "evidence": [
+       {
+        "loc": "HCN emitting layer from the excitation temperature",
+        "quote": "The rotational diagram assumes that the excitation temperature $T_\\mathrm{ex}(r)$ is equal to the kinetic temperature $T(r,z)$ (LTE)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee, 128 walkers, 3000 burn-in, 500 steps; uniform priors Tex 10-100 K, Nt 1e10-1e16 cm-2; likelihood includes propagated uncertainties and 10% flux calibration in quadrature",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "through a Markov-Chain Monte Carlo (MCMC) method with the `emcee` package (cite: foreman2013emcee), with 128 walkers, 3000 burn-in steps, and 500 steps"
+      },
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "We considered a uniform prior with $T_\\mathrm{ex}\\in (10,100)$ K and $N_\\mathrm{t} \\in (10^{10}, 10^{16})$ cm$^{-2}$."
+      },
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "The propagated uncertainty on the integrated intensity, on the brightness temperature and a 10% absolute flux calibration uncertainty were considered (sum in quadrature) when generating the likelihood."
+      }
+     ]
+    },
+    "validation": {
+     "value": "spectral smearing tested with 0.4 vs 0.8 km/s channel cubes and found negligible",
+     "evidence": [
+      {
+       "loc": "Spectral smearing effect on brightness temperature",
+       "quote": "This effect is thus negligible in the rotational diagram analysis we performed in this work."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "N and H fractionation with fixed 12C/13C",
+    "method": {
+     "value": "build posteriors of 69 x N(H13CN)/N(HC15N) and N(DCN)/[69 x N(H13CN)] from column-density posteriors; DCN column density from the rotational-diagram equation with randomly sampled Tex",
+     "evidence": [
+      {
+       "loc": "Isotopologue ratios",
+       "quote": "ratios were built from the posterior distributions of the column density of , , and DCN."
+      },
+      {
+       "loc": "Isotopologue ratios",
+       "quote": "by randomly sampling the excitation temperature from the rotational diagram result, assuming DCN has the same excitation temperature as and"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "12C/13C = 69 (radially constant)",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios",
+        "quote": "assuming a radially constant $\\ce{^12C}/\\ce{^13C}=69$ ratio (cite: wilson1999isotopes)"
+       }
+      ]
+     },
+     {
+      "value": "DCN flux sampled from a normal distribution with its statistical uncertainty",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios",
+        "quote": "by randomly sampling the flux of the DCN (3-2) line from a normal distribution centered around the median value, with a standard deviation given by its statistical uncertainty"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "DCN has the same excitation temperature as H13CN and HC15N",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios",
+        "quote": "assuming DCN has the same excitation temperature as and"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "radially constant 12C/13C checked against the HCN-hyperfine carbon profile",
+     "evidence": [
+      {
+       "loc": "Isotopologue ratios using HCN column density",
+       "quote": "the carbon fractionation profile is consistent with the ISM value between $\\sim50$ and 100 au, within the errorbars"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "HCN column density from resolved hyperfine component",
+    "method": {
+     "value": "double-Gaussian fit to deprojected spectra in radial bins (hyperfine component at 3.8 km/s and main component at 5.5 km/s), flux posterior, optically thin N(HCN) with Tex from the rotational diagram",
+     "evidence": [
+      {
+       "loc": "Radial profile of HCN column density",
+       "quote": "To extract the radial profile of the flux of the hyperfine component, we applied a double-Gaussian fit to the spectrum in multiple radial bins."
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "we extracted the radial profile of the column density of HCN, assuming that the hyperfine component is optically thin, and the same excitation temperature inferred from the rotational diagram analysis of and"
+      }
+     ]
+    },
+    "software": [
+     "GoFish",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "centers fixed at 3.8 and 5.5 km/s; widths and peaks free; spectra shifted for Keplerian rotation with GoFish",
+      "evidence": [
+       {
+        "loc": "12C/13C ratio from the HCN hyperfine component",
+        "quote": "We fixed the center of the two Gaussian components to 3.8 km s$^{-1}$ for the hyperfine and to 5.5 km s$^{-1}$ for the main component respectively, and fit for the two widths and peaks."
+       }
+      ]
+     },
+     {
+      "value": "fit stopped at 5.5 km/s (only half of the main component covered by LB)",
+      "evidence": [
+       {
+        "loc": "12C/13C ratio from the HCN hyperfine component",
+        "quote": "We extracted the flux associated with the hyperfine component by fitting a double Gaussian to the spectrum, stopping at 5.5  km s$^{-1}$."
+       }
+      ]
+     },
+     {
+      "value": "Gaussians spectrally over-sampled and averaged in each spectral bin",
+      "evidence": [
+       {
+        "loc": "12C/13C ratio from the HCN hyperfine component",
+        "quote": "we spectrally over-sampled the Gaussian profiles and took the average value inside a spectral bin, to fit the observed spectrum"
+       }
+      ]
+     },
+     {
+      "value": "fiducial radial range ~50-120 au",
+      "evidence": [
+       {
+        "loc": "12C/13C ratio from the HCN hyperfine component",
+        "quote": "The fiducial radial range is between $\\sim50$ and 120 au, because for small radii the two components are blended, and the fit is poorly constrained"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "hyperfine component optically thin (tau <~ 0.02)",
+      "evidence": [
+       {
+        "loc": "Radial profile of HCN column density",
+        "quote": "by assuming it is optically thin, which is valid since $\\tau\\lesssim0.02$"
+       }
+      ]
+     },
+     {
+      "value": "same Tex as H13CN/HC15N from the Band 7 resolution rotational diagram",
+      "evidence": [
+       {
+        "loc": "Radial profile of HCN column density",
+        "quote": "We therefore computed the radial profile of the HCN column density, assuming the same excitation temperature obtained from the rotational diagram of and"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee per annulus, 128 walkers, 500 burn-in, 500 steps; uniform priors: widths (0,5) km/s, hyperfine peak (0,10) mJy/beam, main peak (0,30) mJy/beam; flux from 50th/16th/84th percentiles",
+     "evidence": [
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "We applied the MCMC sampling to each annulus in which we divided the disk, with 128 walkers, 500 burn-in steps, and 500 steps"
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "assuming a uniform prior of (0,5) km s$^{-1}$ for the two widths, of (0,10) mJy beam$^{-1}$ for the peak of the hyperfine component, and of (0,30) mJy beam$^{-1}$ for the peak of the main component"
+      }
+     ]
+    },
+    "validation": {
+     "value": "in the fiducial range the hyperfine Gaussian width is consistent with a radially constant line width",
+     "evidence": [
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "in the fiducial range the Gaussian fit to the hyperfine component is consistent with a radially constant line width"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "isotopologue ratios using the HCN column density",
+    "method": {
+     "value": "form HCN/H13CN, HCN/HC15N and DCN/HCN ratios from column-density posteriors using the Band 7 resolution cubes",
+     "evidence": [
+      {
+       "loc": "Isotopologue ratios using HCN column density",
+       "quote": "From the HCN column density retrieved from the hyperfine fitting procedure, we extracted the radial profiles of the isotopologue ratios"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "cubes imaged to maximize Band 7 sensitivity (~0.15'' resolution) because higher resolution is needed for the hyperfine fit",
+      "evidence": [
+       {
+        "loc": "Isotopologue ratios using HCN column density",
+        "quote": "as a higher angular resolution is needed to perform the hyperfine fitting procedure"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "ratios with fixed 12C/13C=69 and from the HCN column density are consistent within the errors",
+     "evidence": [
+      {
+       "loc": "Isotopologue ratios using HCN column density",
+       "quote": "are consistent within the errorbars"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.2 (calibration); v6.65 (imaging)",
+    "used_for": {
+     "value": "calibration, self-calibration and imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using the software CASA (cite: CASA2022), version 6.2"
+      },
+      {
+       "loc": "Observations",
+       "quote": "implemented in the `CASA` software (cite: CASA2022) `v6.65`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "initial calibration of the Band 7 EBs",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All the EBs were initially calibrated using the ALMA pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "multiscale CLEAN imaging of line cubes and self-calibration models",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We imaged the lines using the `tclean` task (cite: hogbom1974aperture; cornwell2008)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvcontsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "continuum subtraction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Finally, continuum subtraction was performed on all datasets using the `uvcontsub` task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "integrated intensity maps",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using the `bettermoments` package (cite: teague2019bettermoments)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "radial profiles and Keplerian-corrected spectra",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "using the `GoFish` package (cite: teague2019gofish)"
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "corrected for the Keplerian rotation of the disk using the `GoFish` package (cite: teague2019gofish)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC sampling of rotational diagram and hyperfine Gaussian fits",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "with the `emcee` package (cite: foreman2013emcee), with 128 walkers, 3000 burn-in steps, and 500 steps"
+      },
+      {
+       "loc": "12C/13C ratio from the HCN hyperfine component",
+       "quote": "We sampled the posterior distribution using an MCMC sampler through the `emcee` package (cite: foreman2013emcee)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Band 6 H13CN (3-2) line flux",
+    "value": "360",
+    "uncertainty": "8",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "360 $\\pm$ 8"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 6 HC15N (3-2) line flux",
+    "value": "176",
+    "uncertainty": "7",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "176 $\\pm$ 7"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 6 DCN (3-2) line flux",
+    "value": "230",
+    "uncertainty": "6",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "230 $\\pm$ 6"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 7 H13CN (4-3) line flux (345.3398 GHz row)",
+    "value": "530",
+    "uncertainty": "21",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "530 $\\pm$ 21"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 7 HC15N (4-3) line flux (344.2003 GHz row)",
+    "value": "234",
+    "uncertainty": "34",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "234 $\\pm$ 34"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 7 HCN (4-3) line flux, SB observations only (354.5055 GHz row)",
+    "value": "5902",
+    "uncertainty": "45",
+    "units": "mJy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of line fluxes",
+      "quote": "5902 $\\pm$ 45"
+     }
+    ]
+   },
+   {
+    "quantity": "Optical depth of HCN hyperfine component",
+    "value": "<~0.02",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Radial profile of HCN column density",
+      "quote": "by assuming it is optically thin, which is valid since $\\tau\\lesssim0.02$"
+     }
+    ]
+   },
+   {
+    "quantity": "DCN/HCN deuteration level between 40 and 100 au",
+    "value": "~0.02",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Hydrogen",
+      "quote": "The deuteration profile is almost flat (around $\\sim0.02$, for radii between 40 and 100 au."
+     }
+    ]
+   },
+   {
+    "quantity": "Radius of turnover in the HCN/HC15N ratio",
+    "value": "~60",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Nitrogen",
+      "quote": "ratio shows a turnover at $\\sim60$ au, and it decreases below the ISM value at larger radii"
+     }
+    ]
+   },
+   {
+    "quantity": "Fiducial radial range of the hyperfine-based HCN column density",
+    "value": "~50-120",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "12C/13C ratio from the HCN hyperfine component",
+      "quote": "The fiducial radial range is between $\\sim50$ and 120 au"
+     }
+    ]
+   },
+   {
+    "quantity": "Radius beyond which carbon fractionation may become relevant",
+    "value": "~90",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Carbon",
+      "quote": "our result for the PDS 70 disk shows that carbon fractionation may become relevant beyond $\\sim$90 au"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Nitrogen fractionation (14N/15N from fixed 12C/13C) is decreasing with radius and below the ISM value from ~40 to 100 au.",
+    "evidence": [
+     {
+      "loc": "Isotopologue ratios",
+      "quote": "The nitrogen fractionation profile is decreasing and below the ISM value from $\\sim40$ to 100 au"
+     }
+    ]
+   },
+   {
+    "value": "Deuteration is mostly constant between ~40 and 100 au and well above the ISM D/H.",
+    "evidence": [
+     {
+      "loc": "Isotopologue ratios",
+      "quote": "while the deuteration profile is mostly constant between $\\sim40$ au 100 au, and significantly above the ISM D/H value of $\\sim10^{-5}$ (cite: linsky2006)"
+     }
+    ]
+   },
+   {
+    "value": "Fractionation profiles show no clear correlation with the continuum profile.",
+    "evidence": [
+     {
+      "loc": "Isotopologue ratios",
+      "quote": "which do not show any clear correlation with the fractionation profiles"
+     }
+    ]
+   },
+   {
+    "value": "The decreasing HCN/HC15N trend is argued to be driven by isotope selective photodissociation of N2, in qualitative agreement with Visser et al. 2018 models.",
+    "evidence": [
+     {
+      "loc": "Nitrogen",
+      "quote": "This qualitative agreement between the result directly extracted from ALMA observations in this work, and the prediction from thermo-chemical models"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the nitrogen fractionation of HCN vary radially in the PDS 70 disk?",
+    "experiment": "Radial rotational diagram of H13CN and HC15N, with 12C/13C=69 to convert H13CN to HCN, giving HCN/HC15N versus radius",
+    "result": "The HCN/HC15N profile is decreasing and below the ISM value from ~40 to 100 au, with a turnover at ~60 au",
+    "finding": "A decreasing HCN/HC15N trend outside the cavity wall, suggested to link to isotope selective photodissociation of N2",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "We present a decreasing trend of the / isotopic ratio of HCN, outside the disk cavity wall"
+     },
+     {
+      "loc": "Isotopologue ratios",
+      "quote": "The nitrogen fractionation profile is decreasing and below the ISM value from $\\sim40$ to 100 au"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What is the radial deuteration profile of HCN in PDS 70?",
+    "experiment": "Rotational diagram column densities of DCN and H13CN (times 69), plus an HCN-column-density version from the hyperfine fit",
+    "result": "DCN/HCN is almost flat, ~0.02 between 40 and 100 au",
+    "finding": "HCN deuteration is far above the ISM D/H and uncorrelated with nitrogen fractionation, consistent with gas-phase isotope exchange",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Hydrogen",
+      "quote": "The deuteration profile is almost flat (around $\\sim0.02$, for radii between 40 and 100 au."
+     },
+     {
+      "loc": "Conclusion",
+      "quote": "The deuteration profile does not show any correlation with the nitrogen fractionation one"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the radially constant 12C/13C=69 assumption justified, and does carbon fractionation matter?",
+    "experiment": "HCN column density from the resolved hyperfine component at 354.5075 GHz via a double-Gaussian fit, then HCN/H13CN",
+    "result": "The carbon fractionation is consistent with the ISM value between ~50 and 100 au within errors, and may become relevant beyond ~90 au",
+    "finding": "The fixed-ratio assumption is justified inside ~100 au, but carbon fractionation in the outer disk remains uncertain with the large errors",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Isotopologue ratios using HCN column density",
+      "quote": "the carbon fractionation profile is consistent with the ISM value between $\\sim50$ and 100 au, within the errorbars"
+     },
+     {
+      "loc": "Carbon",
+      "quote": "On the other hand, our result for the PDS 70 disk shows that carbon fractionation may become relevant beyond $\\sim$90 au"
+     }
+    ]
+   },
+   {
+    "hypothesis": "How do the PDS 70 isotopologue ratios compare with other evolutionary stages and comets?",
+    "experiment": "Compiled literature isotopologue ratios of HCN for cores, YSOs, disks and comets and compared them with the PDS 70 radial profiles",
+    "result": "HCN/H13CN and HCN/HC15N comet values match the outer disk beyond ~70 au, while the Hale-Bopp DCN/HCN is about an order of magnitude below PDS 70",
+    "finding": "A possible link between cometary material and outer-disk gas for carbon and nitrogen, but not for deuterium, in a picture the authors call very uncertain",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Comparison with early and later stages",
+      "quote": "especially with the outer disk region outside $\\sim70$ au"
+     },
+     {
+      "loc": "Comparison with early and later stages",
+      "quote": "this picture is not consistent with the only measurement of DCN/HCN in the Hale-Bopp comet which is approximately one order of magnitude lower than the PDS 70 disk values"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "PDS 70 hosts two accreting protoplanets, and isotopic ratios of the disk gas can be compared with planet formation environments",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work we present the radial profile of nitrogen, carbon, and hydrogen fractionation of the HCN molecule in the PDS 70 disk, where two protoplanets are accreting their atmospheres."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "H13CN and HC15N have two lines each, enabling a rotational diagram; HCN itself is typically optically thick so isotopologues are used",
+    "evidence": [
+     {
+      "loc": "Radial rotational diagram",
+      "quote": "As two lines are detected for both and , with upper energies ranging from $\\sim25$ to 41 K, we could apply the rotational diagram (cite: goldsmith1999population) analysis"
+     },
+     {
+      "loc": "Isotopologue ratios",
+      "quote": "as the latter is typically optically thick (cite: guzman2017)"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Profiles from a +/-30 deg wedge along the major axis were tried but the S/N for DCN and especially HC15N was too low, so full azimuthal averages were used",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "However, the resulting signal-to-noise ratio for DCN and in particular was too low to allow for the analysis presented in this paper."
+      }
+     ]
+    },
+    {
+     "value": "HCN cube could not be smoothed to the lower resolution of the rotational diagram cubes because of hyperfine blending",
+     "evidence": [
+      {
+       "loc": "Radial profile of HCN column density",
+       "quote": "We were unable to smooth the HCN cube to match the spatial resolution of"
+      }
+     ]
+    },
+    {
+     "value": "Estimating the HCN emitting layer from the excitation temperature was inconclusive",
+     "evidence": [
+      {
+       "loc": "HCN emitting layer from the excitation temperature",
+       "quote": "but the large uncertainties make it inconclusive"
+      }
+     ]
+    },
+    {
+     "value": "Spectral smearing correction not applied because it is negligible",
+     "evidence": [
+      {
+       "loc": "Radial rotational diagram",
+       "quote": "which we evaluated to be negligible in our case, and thus did not include in the analysis"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Hyperfine fit limited by half-covered HCN (4-3), 0.9 km/s resolution and low S/N, giving large errors and no robust ratios inside ~40 au or beyond ~100 au",
+     "evidence": [
+      {
+       "loc": "Isotopologue ratios using HCN column density",
+       "quote": "is strongly limited by the fact that only half of the HCN (4-3) line is covered by LB observations, by the low spectral resolution of $\\sim0.9$ km s$^{-1}$, and the lower signal to noise ratio"
+      }
+     ]
+    },
+    {
+     "value": "Profiles inside ~25 au are highly uncertain",
+     "evidence": [
+      {
+       "loc": "Nitrogen",
+       "quote": "highly uncertain for radii $\\lesssim 25$ au, and therefore need to be interpreted with caution"
+      }
+     ]
+    },
+    {
+     "value": "Nitrogen and carbon fractionation cannot be robustly separated, making the interpretation speculative",
+     "evidence": [
+      {
+       "loc": "Carbon",
+       "quote": "which makes the above interpretation only speculative, as the role of nitrogen and carbon fractionation in determining the decreasing trend cannot be robustly distinguished with current observations"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Main nitrogen and deuteration profiles rely on a fixed 12C/13C=69, while the paper itself finds possible carbon fractionation beyond ~90 au.",
+    "A single Tex shared by H13CN, HC15N, DCN and HCN is assumed, despite different molecules tracing different layers.",
+    "No chemical or radiative-transfer modelling of PDS 70 supports the photodissociation interpretation.",
+    "Rotational diagram with only two lines per species and a 10% calibration term gives limited leverage on Tex and tau.",
+    "Analysis relies on unpublished exoALMA self-calibration and Band 6 processing from earlier papers."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "exoALMA self-calibration pipeline (Loomis et al., subm.) scripts and parameters",
+    "Calibrators, pipeline version, observation dates and any Band 6 processing (deferred to Rampinelli+2024 / Law+2024)",
+    "Per-annulus data products and the analysis code are not released or mentioned",
+    "Partition function and line-parameter catalogue versions and Tb computation details",
+    "Radial bin definitions for the hyperfine fits"
+   ],
+   "estimated_data_volume_inferred": "On the order of 100-300 GB raw for the two projects (Band 7 with 4 EBs, Band 6 multiple EBs); self-calibrated measurement sets are smaller after binning.",
+   "score_inferred": 3,
+   "score_reason": "Two project codes and a fairly detailed recipe (self-cal, tclean, rotational diagram priors, emcee settings, hyperfine fit priors) but key steps are inherited from unpublished or earlier papers, public availability is not stated, and no code is released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data public status is not stated and the self-calibration depends on an unpublished pipeline, although the downstream analysis is well specified and numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Rampinelli et al. 2024 (cite: rampinelli2024)",
+     "why": "Band 6 imaging, CLEAN strategy and line flux evaluation"
+    },
+    {
+     "citation": "Loomis et al., subm. (exoALMA)",
+     "why": "self-calibration pipeline, EB alignment and masking strategy"
+    },
+    {
+     "citation": "Czekala et al. 2021 (cite: czekala2021molecules)",
+     "why": "JvM correction implementation"
+    },
+    {
+     "citation": "Law et al. 2024 (cite: law2024mapping)",
+     "why": "Band 6 self-calibration and PDS 70 temperature structure"
+    },
+    {
+     "citation": "Teague 2019 (cite: teague2019gofish)",
+     "why": "GoFish radial profiles"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Facchini et al. 2021 (cite: bib:facchini2021chemical)",
+     "why": "first chemical inventory of the PDS 70 disk"
+    },
+    {
+     "citation": "Rampinelli et al. 2024 (cite: rampinelli2024)",
+     "why": "high-resolution line emission of PDS 70 molecular tracers"
+    },
+    {
+     "citation": "Cataldi et al. 2021 (cite: cataldi2021molecules)",
+     "why": "MAPS DCN/HCN profiles used for comparison"
+    },
+    {
+     "citation": "Visser et al. 2018 (cite: visser2018nitrogen)",
+     "why": "thermo-chemical nitrogen fractionation models used for interpretation"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "exoALMA Large Program",
+    "MAPS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025A%26A...698A.115R",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T16:53:28",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 159,
+  "quotes_ok": 159,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 129,
+   "stated": 103,
+   "rate": 0.798
+  },
+  "evidence_ok": true
+ }
+}

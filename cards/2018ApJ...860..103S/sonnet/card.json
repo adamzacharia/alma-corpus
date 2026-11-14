@@ -1,0 +1,1045 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...860..103S",
+  "title": "Molecular Gas Contents and Scaling Relations for Massive, Passive Galaxies at Intermediate Redshifts from the LEGA-C Survey",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Spilker, Justin",
+  "n_authors": 16,
+  "arxiv_id": "1805.02667",
+  "doi": "10.3847/1538-4357/aac438",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00790.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here we present deep Atacama Large Millimeter/submillimeter Array (ALMA) observations of CO(2–1) emission in 8 massive ($\\ensuremath{M_{\\rm{star}}}\\sim 10^{11}$ $\\rm{M}_\\odot$) galaxies at $z\\sim0.7$"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "8 LEGA-C passive galaxies (IDs 74512, 110509, 130284, 132776, 138718, 169076, 210210, 211409)",
+     "coordinates": {
+      "value": "COSMOS field, e.g. ID 74512 at 10h01m42.88s +02d01m21.9s (see Table 1)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 74512     | $10^\\mathrm{h}01^\\mathrm{m}42.88^\\mathrm{s}$ | $+02^\\circ01{}^\\prime21.9{}^{\\prime\\prime}$ | 0.7330            | 10.96"
+       },
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "Because the LEGA-C survey targets the COSMOS extragalactic survey field, full panchromatic spectral energy distribution (SED) information is available"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_spec = 0.60-0.75 (Table 1)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 74512     | $10^\\mathrm{h}01^\\mathrm{m}42.88^\\mathrm{s}$ | $+02^\\circ01{}^\\prime21.9{}^{\\prime\\prime}$ | 0.7330            | 10.96"
+       },
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "Because the LEGA-C survey targets the COSMOS extragalactic survey field, full panchromatic spectral energy distribution (SED) information is available"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "LEGA-C spectroscopic redshifts",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 74512     | $10^\\mathrm{h}01^\\mathrm{m}42.88^\\mathrm{s}$ | $+02^\\circ01{}^\\prime21.9{}^{\\prime\\prime}$ | 0.7330            | 10.96"
+       },
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "Because the LEGA-C survey targets the COSMOS extragalactic survey field, full panchromatic spectral energy distribution (SED) information is available"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do gas scaling relations derived from star-forming galaxies extend to passive galaxies at z~0.7, and what are their molecular gas contents and kinematics?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The main focus of our work here is to determine whether the scaling relations derived from observations of star-forming galaxies and cosmological simulations can accurately predict or be extrapolated down to passive galaxies at intermediate redshift."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00790.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "ALMA observations of our sample of 8 galaxies were carried out in project 2016.1.00790.S (PI: Spilker)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 4 (2 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "using the Band 4 (2 mm) receivers (cite: asayama14)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "One baseband with 7.812 MHz channels (~16 km/s) on CO(2-1); three further 1.875 GHz basebands for continuum",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "one baseband with 7.812 MHz channelization ($\\approx 16$ $\\rm{km\\,s}^{-1}$) after correlator pre-averaging by a factor of 8"
+     },
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "Three further basebands with 1.875 GHz usable bandwidth each were placed to higher frequencies for continuum observations."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Selection",
+       "quote": "for which the CO(2–1) line is observable with the ALMA Band 4 receivers"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "compact configuration, ~40 antennas, maximum baselines 272-330 m",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "with $\\sim$40 antennas separated by maximum baselines ranging from 272–330 m"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.9-2.4 arcsec (~13-17 kpc), natural weighting",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "The effective spatial resolution of the data imaged in this way ranges from 1.9–2.4$''$($\\approx$13–17 kpc)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 132-256 uJy/beam in 100 km/s channels (naturally weighted)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^{a}$ ALMA rms sensitivity in 100 $\\rm{km\\,s}^{-1}$ channels, naturally-weighted images"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "37-49 minutes on-source per target; sessions 57-80 min",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "Observing sessions varied between 57–80 minutes in duration, with 37–49 minutes spent on-source per target."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "17 January to 12 March 2017",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "in separate observing sessions from 17 January to 12 March 2017"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI program (PI: Spilker); archive checked, no other observations found",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "No other observations were found."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "LEGA-C (VLT/VIMOS)",
+     "provided": {
+      "value": "Spectroscopic redshifts, stellar rotation curves, D_n4000/Hdelta",
+      "evidence": [
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "20 hour integrations using the VIMOS spectrograph on the Very Large Telescope"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer/MIPS 24um, UltraVISTA, HST, COSMOS",
+     "provided": {
+      "value": "Photometry/SEDs for stellar masses and SFRs, morphologies",
+      "evidence": [
+       {
+        "loc": "2.1.1 SFR Estimation",
+        "quote": "SFRs include the unobscured and obscured components based on UV and IR (24 $\\mu\\rm{m}$) fluxes."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Comparison samples of gas masses: xCOLDGASS, PHIBSS, Papovich+16, Suess+17",
+      "evidence": [
+       {
+        "loc": "3.1 Basic Gas Properties",
+        "quote": "We include the xCOLDGASS sample (cite: saintonge17), a large sample of galaxies in the local universe"
+       }
+      ]
+     },
+     "citation": "(cite: saintonge17); (cite: tacconi13); (cite: papovich16); (cite: suess17)"
+    },
+    {
+     "what": {
+      "value": "Gas scaling relations",
+      "evidence": [
+       {
+        "loc": "4.1 Gas Scaling Relations",
+        "quote": "The relations derived by (cite: scoville17) are based on ALMA observations of long-wavelength dust continuum emission"
+       }
+      ]
+     },
+     "citation": "(cite: scoville17); (cite: tacconi18)"
+    },
+    {
+     "what": {
+      "value": "EAGLE molecular gas masses for galaxies",
+      "evidence": [
+       {
+        "loc": "4.2 Comparison to Cosmological Simulations",
+        "quote": "Molecular gas masses for galaxies in the Ref-L100N1504 EAGLE run were calculated by (cite: lagos15; lagos16)"
+       }
+      ]
+     },
+     "citation": "(cite: lagos15; lagos16)"
+    },
+    {
+     "what": {
+      "value": "Stellar masses, SFRs, environment overdensities, DR2 catalog values",
+      "evidence": [
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "the figures and table in this work use values from the updated DR2 catalog (1989 galaxies; Straatman et al., in prep.)"
+       }
+      ]
+     },
+     "citation": "(cite: vanderwel16); (cite: muzzin13a); (cite: darvish16)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "EAGLE Ref-L100N1504 z=0.6 snapshot, 91 massive passive galaxies selected",
+     "evidence": [
+      {
+       "loc": "4.2 Comparison to Cosmological Simulations",
+       "quote": "resulting in 91 simulated massive, passive galaxies"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard ALMA pipeline with manual inspection",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "All data were reduced using the standard ALMA pipeline, with manual inspection of the quality of the reduction."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ganymede or J0854+2006 / J1058+0133",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "The absolute flux scale was determined using observations of Ganymede or one of J0854+2006 or J1058+0133"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "All data were imaged with a natural weighting of the visibilities"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "LEGA-C survey description, sample and catalogs",
+      "evidence": [
+       {
+        "loc": "2.1 LEGA-C and Selection of Quiescent Galaxies",
+        "quote": "The survey is described in detail by (cite: vanderwel16)."
+       }
+      ]
+     },
+     "from_reference": "(cite: vanderwel16)"
+    },
+    {
+     "what": {
+      "value": "Star-forming sequence definition for selection",
+      "evidence": [
+       {
+        "loc": "2.3 ALMA Selection",
+        "quote": "SFR 3–10$\\times$ below the $z\\sim0.7$ star-forming sequence as defined by (cite: whitaker12)"
+       }
+      ]
+     },
+     "from_reference": "(cite: whitaker12)"
+    },
+    {
+     "what": {
+      "value": "alpha_CO = 4.4 and r21 = 0.8 conventions",
+      "evidence": [
+       {
+        "loc": "2.3 Molecular Gas Masses",
+        "quote": "we adopt a ‘Milky Way-like’ value, $\\ensuremath{\\alpha_{\\rm{CO}}}= 4.4$ $\\rm{M}_\\odot$ (K $\\rm{km\\,s}^{-1}$ pc$^2$)$^{-1}$ (cite: solomon87; bolatto13; sandstrom13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: solomon87; bolatto13; sandstrom13)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA/pipeline version",
+    "Line-free channels and continuum subtraction method",
+    "Image size, cell size, and clean parameters",
+    "Exact tool and procedure for point-source visibility fitting",
+    "Gaussian line-fit procedure details",
+    "Stacking weights and procedure",
+    "Per-target SFRs/stellar masses from DR2 catalog",
+    "Rest frequency of CO(2-1) used and flux scale uncertainty"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select sample",
+    "method": {
+     "value": "Select LEGA-C galaxies at z<0.84 with log Mstar>10.8, SFR 3-10x below star-forming sequence, SFR>2.5 Msun/yr; 8 of 65 observed",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Selection",
+       "quote": "This resulted in a sample of 65 galaxies, from which we selected 8 for observation with ALMA"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image and extract spectra",
+    "method": {
+     "value": "Naturally weighted continuum images and cubes; integrated spectra from point-source fits to visibilities, averaging 6 or 12 channels",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "We extract integrated spectra for all targets by fitting point source models to the visibility data directly, averaging 6 or 12 channels"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure CO fluxes and upper limits",
+    "method": {
+     "value": "Fit one or two Gaussians to line profiles; 3 sigma upper limits from noise in 800 km/s wide channels",
+     "evidence": [
+      {
+       "loc": "2.3 Molecular Gas Masses",
+       "quote": "Integrated line fluxes are determined by fitting either one or two Gaussian profiles"
+      },
+      {
+       "loc": "2.3 Molecular Gas Masses",
+       "quote": "we estimate upper limits on the CO emission by determining the noise in channels 800 $\\rm{km\\,s}^{-1}$ wide"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profile fits; no sampler stated",
+     "evidence": [
+      {
+       "loc": "Molecular Gas Masses",
+       "quote": "Integrated line fluxes are determined by fitting either one or two Gaussian profiles, also shown in Figure [4](#fig:spectra)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive molecular gas masses",
+    "method": {
+     "value": "Convert CO luminosity with r21 and alpha_CO; M_H2 scales as (0.8/r21)(alpha_CO/4.4)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "molecular gas masses can be rescaled under different assumptions as $\\ensuremath{M_{\\rm{H}_2}}(0.8/r_{21})(\\ensuremath{\\alpha_{\\rm{CO}}}/4.4)$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "r21 = 0.8; alpha_CO = 4.4",
+      "evidence": [
+       {
+        "loc": "2.3 Molecular Gas Masses",
+        "quote": "In this work, we assume $r_{21}=0.8$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Milky Way-like alpha_CO ~50% systematic uncertainty; flat LCDM Om=0.307, H0=67.7",
+      "evidence": [
+       {
+        "loc": "2.3 Molecular Gas Masses",
+        "quote": "it does still carry significant systematic uncertainty, likely of order 50%"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-checked with dust-based gas mass from continuum stack",
+     "evidence": [
+      {
+       "loc": "2.4.1 2 mm Continuum Stack",
+       "quote": "This independent check indicates that our assumptions about $\\alpha_{\\rm{CO}}$ are reasonable."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Stack continuum and CO",
+    "method": {
+     "value": "Average image-plane inverted images/cubes of targets (continuum and CO at known redshifts)",
+     "evidence": [
+      {
+       "loc": "2.4.1 2 mm Continuum Stack",
+       "quote": "we opt to simply average together inverted images of the targets rather than perform this analysis in the Fourier plane"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Dust-based M_H2: kappa_235GHz=0.42 cm2/g, Tdust=25 K, GDR=100",
+      "evidence": [
+       {
+        "loc": "2.4.1 2 mm Continuum Stack",
+        "quote": "a dust temperature $\\ensuremath{T_{\\rm{dust}}}= 25$ K, and a gas-to-dust ratio typical of solar metallicity systems, $\\ensuremath{\\delta_{\\rm{GDR}}}= 100$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Recovered sample-average line flux by stacking only CO-detected sources",
+     "evidence": [
+      {
+       "loc": "2.4.2 CO Spectral Stack",
+       "quote": "We have also verified that this procedure accurately recovers the sample-average line flux by stacking only the sources individually detected in CO."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare kinematics of CO and stars",
+    "method": {
+     "value": "Image red and blue velocity channels, fit point sources in visibility and image domain, project gradient onto N-S slit and compare with LEGA-C stellar rotation curves",
+     "evidence": [
+      {
+       "loc": "3.2 Molecular and Stellar Dynamics",
+       "quote": "We fit the red and blue channels of each source in both the visibility and image domains with point source models"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Verified gradients with narrower velocity channels",
+     "evidence": [
+      {
+       "loc": "3.2 Molecular and Stellar Dynamics",
+       "quote": "we have verified that the velocity gradients apparent in Figure [6](#fig:chanmaps) are consistent with imaging the data in narrower velocity channels"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare with scaling relations and EAGLE",
+    "method": {
+     "value": "Compare f_H2 and t_dep with Scoville+17 and Tacconi+18 relations and EAGLE galaxies",
+     "evidence": [
+      {
+       "loc": "4.1 Gas Scaling Relations",
+       "quote": "we compare the gas fractions and depletion times for our observed sample with two empirical scaling relations from the literature"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Closed-box evolution toy model",
+    "method": {
+     "value": "Gas fraction declines from z=0.7 to 0 with constant t_dep and 30% mass return",
+     "evidence": [
+      {
+       "loc": "5.2 Connection to Local Quiescent Galaxies",
+       "quote": "we construct a closed-box toy model, in which a galaxy at $z=0.75$ with $\\log \\ensuremath{M_{\\rm{star}}}/\\ensuremath{\\rm{M}_\\odot}=11$ continues to deplete its reservoir of molecular gas"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "f_H2 = 0.03-0.12 initial; t_dep = 0.7-1.3 Gyr",
+      "evidence": [
+       {
+        "loc": "5.2 Connection to Local Quiescent Galaxies",
+        "quote": "$\\ensuremath{t_{\\rm{dep}}}=0.7-1.3$ Gyr, that remain constant over time"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to ATLAS3D and MASSIVE local quiescent galaxies",
+     "evidence": [
+      {
+       "loc": "Connection to Local Quiescent Galaxies",
+       "quote": "we compare to nearby quiescent galaxies with $\\log \\ensuremath{M_{\\rm{star}}}/\\ensuremath{\\rm{M}_\\odot}> 10.7$ selected from the ATLAS$^{\\mathrm{3D}}$ and MASSIVE surveys"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [],
+  "results_numeric": [
+   {
+    "quantity": "CO-detected targets",
+    "value": "4 of 8",
+    "uncertainty": "not stated",
+    "units": "galaxies",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.3 Molecular Gas Masses",
+      "quote": "We clearly detect four of the eight targets in CO(2–1) emission."
+     }
+    ]
+   },
+   {
+    "quantity": "2 mm continuum stack (all)",
+    "value": "17",
+    "uncertainty": "5",
+    "units": "uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.1 2 mm Continuum Stack",
+      "quote": "a faint source with $\\ensuremath{S_\\mathrm{2mm}}= 17 \\pm 5$ $\\mu\\rm{Jy}$ is detected"
+     }
+    ]
+   },
+   {
+    "quantity": "2 mm stack of CO-detected",
+    "value": "23",
+    "uncertainty": "7",
+    "units": "uJy",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.1 2 mm Continuum Stack",
+      "quote": "The CO-detected sources are detected in the 2 mm continuum stack with $\\ensuremath{S_\\mathrm{2mm}}= 23 \\pm 7$ $\\mu\\rm{Jy}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-based mean M_H2 of CO-detected",
+    "value": "8.8e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.1 2 mm Continuum Stack",
+      "quote": "we find an average molecular gas mass for the CO-detected sources of $8.8 \\times 10^9$ $\\rm{M}_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO stack of non-detections L'CO(2-1) upper limit (3 sigma)",
+    "value": "<5.8e8",
+    "uncertainty": "not stated",
+    "units": "K km/s pc^2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.2 CO Spectral Stack",
+      "quote": "$\\ensuremath{\\rm{L}_{\\rm{CO(2-1)}}'}< 5.8 \\times 10^8$ K $\\rm{km\\,s}^{-1}$ pc$^2$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack of non-detections M_H2 limit",
+    "value": "<3.2e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.2 CO Spectral Stack",
+      "quote": "this is equivalent to $\\ensuremath{M_{\\rm{H}_2}}< 3.2 \\times 10^9$ $\\rm{M}_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack of non-detections f_H2 limit",
+    "value": "<0.016",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2.4.2 CO Spectral Stack",
+      "quote": "the resulting upper limit on the gas fraction of these passive sources is $\\ensuremath{f_{\\rm{H}_2}}=\\ensuremath{M_{\\rm{H}_2}}/\\ensuremath{M_{\\rm{star}}}<0.016$"
+     }
+    ]
+   },
+   {
+    "quantity": "log M_H2 of ID 130284",
+    "value": "10.00",
+    "uncertainty": "0.06",
+    "units": "log Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 130284    | $10^\\mathrm{h}00^\\mathrm{m}13.78^\\mathrm{s}$ | $+02^\\circ19{}^\\prime37.0{}^{\\prime\\prime}$ | 0.6017            | 10.96                                                        | 6.8               | 151                                              | 0.36 $\\pm$ 0.04                | 10.00 $\\pm$ 0.06"
+     }
+    ]
+   },
+   {
+    "quantity": "CO centroid precision of red/blue components",
+    "value": "~0.3",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2 Molecular and Stellar Dynamics",
+      "quote": "the centroids of each velocity component can be determined to $\\approx$0.3$''$, on average"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Detected galaxies have M_H2 ≲1e10 Msun, over an order of magnitude above local early types, with depletion times ≲1-2 Gyr.",
+    "evidence": [
+     {
+      "loc": "3.1 Basic Gas Properties",
+      "quote": "the $\\lesssim$1–2 Gyr depletion times are typical of, or even shorter than, galaxies near the star-forming sequence."
+     }
+    ]
+   },
+   {
+    "value": "CO and stellar rotation axes are consistent in at least three of four detections.",
+    "evidence": [
+     {
+      "loc": "3.2 Molecular and Stellar Dynamics",
+      "quote": "the rotational axes of the stellar and molecular components of the CO-detected objects are consistent in at least three of four cases."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas scaling relations from star-forming galaxies extrapolate to passive galaxies at z~0.7",
+    "experiment": "Compare f_H2 and t_dep with Scoville+17 and Tacconi+18 relations",
+    "result": "Relations over-predict f_H2 and t_dep, especially for non-detections (stack f_gas factor 5 lower, t_dep factor 4)",
+    "finding": "Break or increased scatter in scaling relations at low sSFR",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Gas Scaling Relations",
+      "quote": "It is apparent that the literature scaling relations cannot be extrapolated and lose predictive power at the low sSFRs probed by our sample."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Molecular gas was accreted externally after quenching",
+    "experiment": "Compare CO velocity gradients with LEGA-C stellar rotation",
+    "result": "Axes consistent in 3 of 4 detections",
+    "finding": "Gas not likely accreted after quenching",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.2 Molecular and Stellar Dynamics",
+      "quote": "This argues against an external origin for the molecular gas in $z\\sim0.7$ passive galaxies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "These galaxies evolve into local massive early types without further gas accretion",
+    "experiment": "Closed-box toy model with low-level star formation",
+    "result": "Reproduces range of f_H2 in nearby passive galaxies",
+    "finding": "No need for extra accretion or dynamical stabilization",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 Connection to Local Quiescent Galaxies",
+      "quote": "can very naturally reproduce the range of $f_{\\rm{H}_2}$ seen in nearby passive galaxies, with no need for further gas accretion or dramatic increase in $t_{\\rm{dep}}$."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Natural weighting maximizes sensitivity to faint emission",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "which maximizes sensitivity to faint emission in exchange for slightly lower spatial resolution"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Small sample of 8; alpha_CO systematic uncertainty ~50%; SFR from 24um may be overestimated up to ~2x",
+     "evidence": [
+      {
+       "loc": "3.1 Basic Gas Properties",
+       "quote": "With only 8 target galaxies in total, we cannot draw strong conclusions on this point."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single alpha_CO assumed for all galaxies despite no metallicity measurement",
+    "SFR uncertain due to 24um contamination",
+    "Stacking done in image plane without weights stated",
+    "Selection and non-detection interpretation limited by small N"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project 2016.1.00790.S acknowledged; archive checked",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00790.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, channel selection)",
+    "CASA version",
+    "Exact SFR and Mstar per galaxy from DR2 catalog and sSFR sequence formulation",
+    "Stacking details"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw for 8 short Band 4 compact-array observations",
+   "score_inferred": 3,
+   "score_reason": "Data public and recipe simple with tabulated results, but imaging and software details are unstated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Software and imaging parameters are not stated, and the comparisons depend on external catalogs and models."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: vanderwel16)",
+     "why": "LEGA-C survey description"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: suess17)",
+     "why": "ALMA observations of two post-starburst galaxies at z~0.7"
+    },
+    {
+     "citation": "(cite: wu18)",
+     "why": "LEGA-C stellar age distributions"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "LEGA-C",
+    "COSMOS",
+    "EAGLE",
+    "xCOLDGASS",
+    "PHIBSS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-3a28305adf7b75642f29c91923acfd61",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:59",
+  "usage": {
+   "input_tokens": 38828,
+   "output_tokens": 9570,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.087285,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 67,
+  "quotes_ok": 67,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 47,
+   "rate": 0.56
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-b5daf9a6f20e40ca7b2437c9ab1dcd91",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "Integrated line fluxes are determined by fitting either one or two Gaussian profiles, also shown in Figure [4](#fig:spectra)."
+   },
+   {
+    "path": "analysis_steps[7].validation.evidence[0]",
+    "old": null,
+    "new": "we compare to nearby quiescent galaxies with $\\log \\ensuremath{M_{\\rm{star}}}/\\ensuremath{\\rm{M}_\\odot}> 10.7$ selected from the ATLAS$^{\\mathrm{3D}}$ and MASSIVE surveys"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[7].fitting",
+    "old_value": "not applicable"
+   }
+  ],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,202 @@
+{
+ "bibcode": "2014Natur.510..247H",
+ "title": "Two γ-ray bursts from dusty regions with little molecular gas",
+ "year": 2014,
+ "doi": "10.1038/nature13325",
+ "arxiv_id": "1406.3071",
+ "fields": [
+  "star_formation",
+  "high_z_galaxies"
+ ],
+ "question": "Do GRB host galaxies with high SFR and metallicity contain molecular gas (CO) and dust at the burst sites, and what are the molecular gas-to-dust ratios?",
+ "alma_project_codes": [
+  "2011.0.00232.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm), Cycle 0",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel 100, 160, 250 um photometry used in SED fit",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "Herschel 100-μm, 160-μm, and 250-μm (ref. 9)"
+     }
+    ]
+   },
+   "citation": "Hunt et al. 2014 (ref 9)"
+  },
+  {
+   "what": {
+    "value": "Radio 3 cm and 6 cm upper limits",
+    "evidence": [
+     {
+      "loc": "Supplementary Information",
+      "quote": "the 3σ upper limits of S 3cm < 138 μJy and S 6cm < 33 μJy (ref. 45)"
+     }
+    ]
+   },
+   "citation": "Stanway et al. 2010 (ref 45)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO and continuum",
+   "method": "CASA reduction, CLEAN with Briggs weighting; continuum from line-free channels; CO velocity-integrated maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive molecular gas mass",
+   "method": "L'CO from S dv, nu_obs, D_L; convert to CO(1-0) with M82 ratios; Mgas = alpha_CO L'CO(1-0)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "CO(3-2)/CO(1-0)=0.93, CO(4-3)/CO(1-0)=0.85 (M82); alpha_CO=4.3 Msun (K km/s pc2)^-1; cosmology H0=71, OmegaM=0.27, OmegaL=0.73"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit dust SED",
+   "method": "Single-temperature modified blackbody fit to Herschel 100/160/250 um and ALMA 1.2 mm",
+   "software": [
+    "SExtractor"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust mass, LFIR, SFR, gas-to-dust ratio",
+   "method": "not stated",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa_d proportional to nu^beta, kappa_d(125 um)=26.4 cm2/g"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mgas nuclear GRB 020819B host",
+   "value": "2.4e9",
+   "uncertainty": "0.2e9",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "(2.4 ± 0.2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mgas GRB 051022 host",
+   "value": "2.1e9",
+   "uncertainty": "0.4e9",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods: Molecular Gas Mass",
+     "quote": "The derived molecular gas masses are M gas ="
+    }
+   ]
+  },
+  {
+   "quantity": "Tdust GRB 020819B host",
+   "value": "28",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "T dust = 28 ± 3 K and β = 1.9 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Tdust GRB 051022 host",
+   "value": "34",
+   "uncertainty": "6",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "T dust = 34 ± 6 K and β = 1.8 ± 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust GRB 020819B site",
+   "value": "4.8e7",
+   "uncertainty": "1.0e7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "The derived dust mass is (4.8 ± 1.0)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mgas/Mdust at GRB 020819B site",
+   "value": "<9-14",
+   "uncertainty": "3 sigma limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "M gas / M dust >51–60 <9–14 58–86"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR GRB 020819B site",
+   "value": "18",
+   "uncertainty": "4",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "calculated to be 18 ± 4"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Line-free channels and CLEAN masks, cell and image size, iteration threshold",
+  "Velocity range used to integrate CO",
+  "Flux calibration accuracy",
+  "Photometry apertures or fitting for ALMA sources",
+  "SED fitting method, priors and Herschel flux values",
+  "Whether archive-delivered calibration was used"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Herschel photometry values",
+  "Integration velocity ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and numeric results, but sparse imaging details and SED fitting specifics.",
+ "rediscovery_reason": "Public data, numeric results, formula-based derivations; some imaging details are missing.",
+ "source_card": "cards/2014Natur.510..247H/sonnet/card.md"
+}

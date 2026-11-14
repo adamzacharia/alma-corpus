@@ -1,0 +1,441 @@
+{
+ "bibcode": "2021Sci...371..713L",
+ "title": "A massive stellar bulge in a regularly rotating galaxy 1.2 billion years after the Big Bang",
+ "year": 2021,
+ "doi": "10.1126/science.abc1893",
+ "arxiv_id": "2102.05957",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Test galaxy formation and bulge assembly scenarios at $z\\simeq5$ by spatially resolving the cold gas distribution, kinematics, and mass components of the starburst AGN-host galaxy ALESS 073.1.",
+ "alma_project_codes": [
+  "2017.1.01471.S",
+  "2015.1.00456.S",
+  "2011.0.00124.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "47 working antennas (2018 observations)",
+  "angular_resolution": "~0.11'' (700 pc); continuum beam 0.123'' x 0.095''; [C II] beam 0.129'' x 0.105''",
+  "sensitivity": "18 uJy beam^-1 (continuum); 0.18 mJy beam^-1 per ~28 km s^-1 channel ([C II] cube)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Molecular gas mass of $(1.6 \\pm 0.3) \\times 10^{10}$ M$_\\odot$ from CO($J=2\\rightarrow1$) line detection",
+    "evidence": [
+     {
+      "loc": "MCMC fitting.",
+      "quote": "The galaxy has been detected in the CO($J=2\\rightarrow1$) line giving a molecular gas mass of $(1.6 \\pm 0.3) \\times 10^{10}$ M$_\\odot$ (cite: Coppin2010)."
+     }
+    ]
+   },
+   "citation": "(cite: Coppin2010)"
+  },
+  {
+   "what": {
+    "value": "Atomic gas mass of $(4.7 \\pm 0.5)\\times10^{9}$ M$_\\odot$ inferred from CO($J=2\\rightarrow1$) and [C II] fluxes using PDR models",
+    "evidence": [
+     {
+      "loc": "MCMC fitting.",
+      "quote": "The mass of atomic gas (hydrogen and helium) can be inferred from the CO($J=2\\rightarrow1$) and \\[C II\\] fluxes using models of photo-dissociation regions (PDR), giving a value of $(4.7 \\pm 0.5)\\times10^{9}$ M$_\\odot$ (cite: DeBreuck2011; DeBreuck2014)."
+     }
+    ]
+   },
+   "citation": "(cite: DeBreuck2011; DeBreuck2014)"
+  },
+  {
+   "what": {
+    "value": "Six independent SED-fitting estimates of total stellar mass ranging from 5 to $13\\times10^{10}$ M$_\\odot$ (average $10^{11}$ M$_\\odot$)",
+    "evidence": [
+     {
+      "loc": "MCMC fitting.",
+      "quote": "The total stellar mass ($M_\\star$) of ALESS 073.1 has been estimated by six different teams by fitting the spectral energy distribution (SED) with stellar population synthesis models (cite: Stark2007; Coppin2009; Wardlow2011; Gilli2014; Simpson2014; Wiklind2014)."
+     },
+     {
+      "loc": "MCMC fitting.",
+      "quote": "We adopt the arithmetic average of the six independent determinations ($10^{11}$ M$_\\odot$) as our initial guess."
+     }
+    ]
+   },
+   "citation": "(cite: Stark2007; Coppin2009; Wardlow2011; Gilli2014; Simpson2014; Wiklind2014)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass-halo mass relation at $z=4.5-5.5$ with 0.45 dex scatter",
+    "evidence": [
+     {
+      "loc": "MCMC fitting.",
+      "quote": "which we derive from data at $z=4.5-5.5$ (cite: Legrand2019)."
+     },
+     {
+      "loc": "MCMC fitting.",
+      "quote": "We assume a scatter of 0.45 dex in halo mass at fixed stellar mass (cite: Legrand2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Legrand2019)"
+  },
+  {
+   "what": {
+    "value": "Halo concentration prior at $z>3$ centered at $C_{200} = 3.4$ with standard deviation of 25%",
+    "evidence": [
+     {
+      "loc": "MCMC fitting.",
+      "quote": "The halo concentration ($C_{200}$) becomes nearly independent of halo mass at $z>3$, thus we assume a Gaussian prior centered at $C_{200} = 3.4$ with a standard deviation of 25$\\%$ (cite: Dutton2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Dutton2014)"
+  },
+  {
+   "what": {
+    "value": "Kinematic measurements at $z<3.5$ and semi-empirical model predictions based on Toomre's disk instability parameter for Fig. 3",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "The gas velocity dispersion of ALESS 073.1 is consistent with the extrapolations from data at $z<3.5$ (Fig. 3A) but lies at the low $\\sigma_{\\rm V}$ boundary of the prediction of a semi-empirical model based on Toomre's disk instability parameter (cite: Wisnioski2015), despite the galaxy hosts a starburst and a dust-obscured AGN."
+     },
+     {
+      "loc": "Acknowledgments",
+      "quote": "We thank L. Legrand and H. Übler for providing tabular data from their publications."
+     }
+    ]
+   },
+   "citation": "(cite: Wisnioski2015; Ubler2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, reweight, and image ALMA continuum and dirty [C II] data cube, then continuum-subtract and clean the cube in GIPSY",
+   "method": "Calibrate Fourier-plane data with standard CASA pipeline, harmonize visibility weights on line-free channels with oldstatwt, regrid line data to 15.626 MHz channels, image continuum and dirty line cube with Hogbom deconvolver and Briggs robust=0.5, subtract first-order polynomial continuum in image plane in GIPSY, clean within a 3 sigma smoothed Boolean mask down to 3 sigma_d, and apply Hanning spectral smoothing",
+   "software": [
+    "CASA",
+    "oldstatwt",
+    "GIPSY"
+   ],
+   "key_parameters": [
+    "102 channels of 15.626 MHz (~14 km s^-1) width; Hanning smoothed to ~28 km s^-1",
+    "Briggs robust = 0.5; Boolean mask smoothed to 0.4'' clipped at 3 sigma_s; cleaned to 3 sigma_d"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct moment maps and model 3D [C II] gas kinematics to derive surface brightness profile, rotation curve, and velocity dispersion profile",
+   "method": "Construct moment maps using smooth & search option in 3DBAROLO; fit 3D tilted-ring rotating disk model to the [C II] cube in three runs: (1) estimate center (x0, y0), PA, and V_sys as ring averages; (2) fix PA=40 deg and estimate average inclination i; (3) fit V_rot and sigma_V with geometric parameters fixed",
+   "software": [
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "threshVelocity = 1; 9 rings of width 0.06''",
+    "z_0 = 300 pc (fixed); V_rad = 0 (fixed); PA = 40 deg (fixed after run 1); i = 25 +/- 3 deg (from run 2)"
+   ],
+   "assumptions": [
+    "Planck 2018 LambdaCDM cosmology (Omega_m = 0.315, Omega_Lambda = 0.685, H_0 = 67.4 km s^-1 Mpc^-1, 0.1'' = 657.7 pc at z = 4.7555); fully axisymmetric disk model with azimuthal averages for surface density; negligible radial motions (V_rad = 0)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model 2D dust continuum morphology and HST rest-frame UV bulge size with GALFIT",
+   "method": "Fit 2D exponential disk (Sersic n=1) to ALMA dust continuum map in GALFIT with iterative 5 sigma residual masking; fit HST F160W image in GALFIT using a 7-star PSF to obtain upper limit on bulge effective radius R_e",
+   "software": [
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "Gaussian PSF = 0.123'' x 0.095'' at PA = -63.9 deg for ALMA continuum; Sersic index n = 1, projected axis ratio = 0.9, center fixed to [C II] disk; 5 iterations of >5 sigma residual masking"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compute gravitational circular velocity contributions of individual mass components and fit dynamical mass models to the rotation curve via MCMC",
+   "method": "Compute circular velocity profiles for cold gas disk, stellar disk, stellar bulge, and NFW DM halo using GIPSY task Rotmod; fit 4-component fiducial mass model (and 3-component alternatives) to the rotation curve using EMCEE MCMC sampler",
+   "software": [
+    "GIPSY",
+    "Rotmod",
+    "EMCEE",
+    "CORNER.PY"
+   ],
+   "key_parameters": [
+    "Gas and stellar disk exponential vertical scale height = 300 pc; stellar disk exponential radial scale length = 700 pc; bulge De Vaucouleurs R_e = 300 pc; component reference mass = 10^10 M_sun",
+    "EMCEE: 200 walkers, 1000 burn-in iterations, 2000 production iterations, stretch move parameter a = 2"
+   ],
+   "assumptions": [
+    "[C II] radial profile traces cold gas disk; dust continuum radial profile traces stellar disk; spherical De Vaucouleurs bulge includes central SMBH (<10% mass); spherical NFW DM halo; abundance-matching stellar-to-halo mass relation log(M_200) = 0.73 log(M_*) + 4.61; CO-to-H2 alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 and PDR atomic gas mass used for gas mass prior"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Kinematic position angle (PA)",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas distribution and kinematics.",
+     "quote": "The PA is then fixed to 40$^{\\circ}$ because the velocity field does not show any strong indication for a warped disk within $R\\simeq0.45''$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] disk inclination from 3DBAROLO",
+   "value": "25",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas distribution and kinematics.",
+     "quote": "A second run of $^{\\rm 3D}$BAROLO is used to estimate an average inclination of $25^{\\circ}\\pm3^{\\circ}$; the uncertainty is taken to be the standard deviation across the rings."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] disk rotation velocity (V_rot) at i = 22 deg",
+   "value": "300 to 400",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "For the best-fitting inclination of 22$^{\\circ}$, the \\[C II\\] disk rotates at velocities ($V_{\\rm rot}$) of 300 to 400 km s$^{-1}$ (Fig. 2A)."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion (sigma_V) at small radii",
+   "value": "50 to 60",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The intrinsic velocity dispersion ($\\sigma_{V}$) reaches 50 to 60 km s$^{-1}$ at small radii and decreases to $\\sim$10 km s$^{-1}$ in the outer parts (Fig. 2C)."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic velocity dispersion (sigma_V) in outer parts",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The intrinsic velocity dispersion ($\\sigma_{V}$) reaches 50 to 60 km s$^{-1}$ at small radii and decreases to $\\sim$10 km s$^{-1}$ in the outer parts (Fig. 2C)."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of rotation velocity to velocity dispersion (V_rot / sigma_V) within 2.5 kpc",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The ratio of rotation velocity to velocity dispersion (Fig. 2D) is $\\sim$10 within 2.5 kpc, similar to that of cold gas disks at $z=0$ (cite: Wisnioski2015)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on large-scale radial motions (V_rad)",
+   "value": "<30",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Gas distribution and kinematics.",
+     "quote": "If we leave $V_{\\rm rad}$ as a free parameter, we find values consistent with zero within the uncertainties, so we conclude that large-scale radial motions in the disk must be smaller than $\\sim$30 km s$^{-1}$ (approximately the velocity resolution)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk position angle (PA) from GALFIT (5th iteration)",
+   "value": "36",
+   "uncertainty": "6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust distribution.",
+     "quote": "GALFIT returns $\\rm{PA}=41^{\\circ}\\pm5^{\\circ}$ at the first iteration and $\\rm{PA}=36^{\\circ}\\pm6^{\\circ}$ at the fifth, final iteration (Fig. S4B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust radial exponential scale length",
+   "value": "700",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass Models.",
+     "quote": "The azimuthally-averaged radial density profile from the ALMA continuum map can be described by an exponential model with a scale length of 700 pc (Fig. 2B)."
+    }
+   ]
+  },
+  {
+   "quantity": "Bulge effective radius (R_e) upper limit from HST F160W",
+   "value": "<300",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass Models.",
+     "quote": "The galaxy is unresolved, but we obtain an upper limit on $R_{\\rm e}$ of about 300 pc (less than one HST pixel)."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fitting disk inclination (i) from MCMC",
+   "value": "22.0",
+   "uncertainty": "+2.9/-2.9",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $i$ ($^{\\circ}$) | 22.0$_{-2.9}^{+2.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cold gas mass (M_gas) from MCMC",
+   "value": "0.5",
+   "uncertainty": "+0.4/-0.4",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\rm{gas}}$ (10$^{10}$ M$_{\\odot}$) | 0.5$_{-0.4}^{+0.4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar disk mass (M_disk) from MCMC",
+   "value": "2.4",
+   "uncertainty": "+0.9/-1.0",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\rm{disk}}$ (10$^{10}$ M$_{\\odot}$) | 2.4$_{-1.0}^{+0.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar bulge mass (M_bul) from MCMC",
+   "value": "2.3",
+   "uncertainty": "+0.6/-0.6",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\rm{bul}}$ (10$^{10}$ M$_{\\odot}$) | 2.3$_{-0.6}^{+0.6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DM halo circular velocity (V_200) from MCMC",
+   "value": "263",
+   "uncertainty": "+81/-80",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $V_{200}$ (km s$^{-1}$) | 263$_{-80}^{+81}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DM halo concentration (C_200) from MCMC",
+   "value": "2.9",
+   "uncertainty": "+0.9/-0.9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $C_{200}$ | 2.9$_{-0.9}^{+0.9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DM halo mass (M_200) from MCMC",
+   "value": "8.1",
+   "uncertainty": "+2.7/-2.7",
+   "units": "10^11 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{200}$ (10$^{11}$ M$_{\\odot}$) | 8.1$_{-2.7}^{+2.7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total baryonic mass within 3.5 kpc (M_baryon) from MCMC",
+   "value": "5.2",
+   "uncertainty": "+1.2/-1.2",
+   "units": "10^10 M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\rm{baryon}}$ (10$^{10}$ M$_{\\odot}$) | 5.2$_{-1.2}^{+1.2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Bulge-to-total baryonic mass ratio (M_bul / M_baryon)",
+   "value": "0.44",
+   "uncertainty": "+0.11/-0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We obtain a bulge-to-total mass ratio $M_{\\rm bul}/M_{\\rm baryon} = 0.44$, where $M_{\\rm baryon}$ is given by the sum of all baryonic (non-DM) components within 3.5 kpc."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\rm{bul}}/M_{\\rm{baryon}}$ | 0.44$_{-0.12}^{+0.11}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for calibration and imaging",
+  "GIPSY version used for continuum subtraction, cleaning, and Rotmod",
+  "Exact frequency/channel ranges defined as line-free channels for oldstatwt, continuum imaging, and image-plane polynomial continuum subtraction",
+  "Image cell size (pixel scale) and image dimensions (in pixels) for continuum map and [C II] cube",
+  "Whether primary beam correction was applied to the continuum map and [C II] cube",
+  "Best-fitting kinematic center coordinates (x_0, y_0) and systemic velocity (V_sys) determined in the first 3DBAROLO run"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA and GIPSY software versions",
+  "Exact channel/frequency ranges used to define line-free channels for oldstatwt and image-plane continuum subtraction",
+  "Best-fitting kinematic center coordinates (x_0, y_0) and systemic velocity (V_sys) used in 3DBAROLO (though recoverable from supplementary FITS files Data S1-S6)",
+  "Custom Python script wrapping GIPSY Rotmod and EMCEE for the MCMC mass modeling"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "Exceptionally thorough methods description (imaging, 3DBAROLO ring setup, GALFIT parameters, Rotmod assumptions, and full MCMC likelihood/priors/sampler settings) combined with public raw data and complete supplementary FITS cubes, moment maps, and mass model tables (Data S1-S8).",
+ "rediscovery_reason": "All raw ALMA datasets and processed FITS cubes/maps are publicly available, the 3DBAROLO and MCMC mass-modeling recipes are explicitly parameterized, and the main claims rest on well-defined numeric outputs (rotation curve, V_rot/sigma_V, component masses, and M_bul/M_baryon).",
+ "source_card": "cards/2021Sci...371..713L/sonnet/card.md"
+}

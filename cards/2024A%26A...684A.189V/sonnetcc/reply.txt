@@ -1,0 +1,516 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We use data from the ALMA Large Program FAUST (Fifty AU STudy of the chemistry in the disk and envelope system of solar protostars) to study the compact line emission towards the"},
+{"loc": "Conclusions", "quote": "We presented the ALMA observations towards the protobinary system"}
+],
+"fields": ["star_formation", "astrochemistry"],
+"question": {
+"value": "Where do the compact complex organic molecule (iCOM) emissions towards the [BHB2007] 11 protobinary come from (hot-corino heating vs shocked streamer gas), and what are the abundances of CH3OCHO, CH3OCH3, t-HCOOH, H2CCO and upper limits for CH3CHO and N-bearing iCOMs relative to CH3OH",
+"evidence": [
+{"loc": "Introduction", "quote": "Our goal is to understand the origin of the detected iCOM emission by locating and comparing it with the most simple iCOM, methanol, which was previously studied by (cite: Vastel2022)."}
+]
+},
+"targets": [
+{
+"name": "[BHB2007] 11 (protobinary, sources 11A and 11B)",
+"details": [
+{"loc": "Observations", "quote": "The observations were centred at $\\alpha$ (2000) = 17h11m23.125s, $\\delta$ (2000) = -27$^{\\circ}$24$^{\\prime}$32.87$^{\\prime\\prime}$."},
+{"loc": "Observations", "quote": "Based on the high spatial resolution observations of the dust emission at 1.3 mm with ALMA by (cite: Alves2019), the coordinates for the two cores are"},
+{"loc": "Introduction", "quote": "This is a quiescent complex of interstellar clouds located at a distance of 163 $\\pm$ 5 pc (cite: Dzib2018) from the Sun."}
+],
+"coordinates": "Field centre 17h11m23.125s, -27d24m32.87s (J2000); 11A 17h11m23.1058s, -27d24m32.828s; 11B 17h11m23.1015s, -27d24m32.987s",
+"redshift_or_distance": "163 +/- 5 pc",
+"distance_source": "Dzib2018 (cite: Dzib2018)"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.01205.L", "evidence": [
+{"loc": "Introduction", "quote": "Fifty AU STudy of the chemistry in the disk and envelope system of Solar-like protostars: 2018.1.01205.L (FAUST)"}
+]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "Three frequency setups, 13 spectral windows; continuum windows at 233.796 GHz (setup 1) and 259.035 GHz (setup 2) used for most line detections; 59 MHz line spws", "evidence": [
+{"loc": "Observations", "quote": "They consisted of three frequency setups and 13 spectral windows"},
+{"loc": "Line identification", "quote": "The large bandwidth of the continuum window led to the detection of more than 45 transitions of methyl formate in setup 1 at 233.796 GHz and setup 2 at 259.035 GHz."}
+]},
+{"field": "continuum_bandwidth", "value": "1.875 GHz for the continuum window; 59 MHz for the other spws", "evidence": [
+{"loc": "Observations", "quote": "The bandwidth is 59 MHz for the 12m array, except for the continuum window, with a 1.875 GHz bandwidth."}
+]},
+{"field": "arrays", "value": "12m array (TM 1 and TM 2)", "evidence": [
+{"loc": "Observations", "quote": "We used the 12m array (TM 1 and TM 2) due to the compact emission of the iCOMs transitions."}
+]},
+{"field": "angular_resolution", "value": "~0.4'' beam for the dimethyl ether lines; original beams in Table 2 range 0.38x0.34 (PA 70) to 0.46x0.39 (PA -80)", "evidence": [
+{"loc": "Spatial distribution", "quote": "The spectra from both transitions were extracted from a $\\sim$ 0.4$^{\\prime\\prime}$ beam size, corresponding to the beam for both transitions"},
+{"loc": "Table 2", "quote": "0.46 $\\times$ 0.39, -80 | 0.0373 | 1.19"}
+]},
+{"field": "sensitivity", "value": "Per-channel rms 0.0373 to 0.1494 K (Table 2), e.g. 0.115 K at 0.63 km/s for the 233 GHz band", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "(0.15 K for this transition for a 0.115 K $rms$)"},
+{"loc": "Table 2", "quote": "0.0373"},
+{"loc": "Table 2", "quote": "0.1494"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA Large Program FAUST (2018.1.01205.L)", "evidence": [
+{"loc": "Introduction", "quote": "Fifty AU STudy of the chemistry in the disk and envelope system of Solar-like protostars: 2018.1.01205.L (FAUST)"}
+]}
+],
+"lines_targeted": [
+{"species": "CH3OCHO (methyl formate)", "transition": "more than 45 transitions in the continuum windows, e.g. 18(4,14)-17(4,13) at 233.754 GHz; plus 3 isolated lines imaged in moment 0", "rest_frequency": "233.796 GHz and 259.035 GHz continuum windows", "evidence": [
+{"loc": "Line identification", "quote": "The large bandwidth of the continuum window led to the detection of more than 45 transitions of methyl formate in setup 1 at 233.796 GHz and setup 2 at 259.035 GHz."}
+]},
+{"species": "CH3OCH3 (dimethyl ether)", "transition": "14(1,14)-13(0,13) at 258.549 GHz (Eup 93.33 K, unblended); 18(5,13)-18(4,14) at 257.911 GHz (Eup 190.97 K)", "rest_frequency": "258.549 GHz; 257.911 GHz", "evidence": [
+{"loc": "Line identification", "quote": "Two strong lines of dimethyl ether were detected at 257.9 GHz and 258.5 GHz"},
+{"loc": "Spatial distribution", "quote": "The 258.549 GHz transition of dimethyl ether is the strongest line of the detected iCOMs presented in this study that is not affected by blending from other transitions."}
+]},
+{"species": "H2CCO (ketene)", "transition": "13(1,13)-12(1,12)", "rest_frequency": "260.192 GHz", "evidence": [
+{"loc": "Line identification", "quote": "ketene (H$_{2}$CCO) seems the most likely candidate with its transition at 260.192 GHz"}
+]},
+{"species": "t-HCOOH (trans formic acid)", "transition": "four lines, three blended with CH3OCHO near 246.1 and 247.5 GHz", "rest_frequency": "246.106 and 247.514 GHz (blended lines)", "evidence": [
+{"loc": "Line identification", "quote": "However, only four detectable lines lie in our frequency coverage, three of which are blended with CH$_3$OCHO at 246.1 and 247.5 GHz."}
+]},
+{"species": "CH3CHO (acetaldehyde)", "transition": "20 candidate transitions in the continuum bands, none detected", "rest_frequency": "e.g. 234.486 GHz", "evidence": [
+{"loc": "Non-detected iCOMs", "quote": "Acetaldehyde (CH$_{3}$CHO) was not detected in our observations."}
+]},
+{"species": "C2H5CN and C2H3CN", "transition": "28(2,27)-26(2,26) (C2H5CN) and 26(3,24)-25(3,23) (C2H3CN) expected strongest; not detected", "rest_frequency": "246.2687 GHz (C2H5CN) and 247.0870 GHz (C2H3CN) quoted as brightest in text", "evidence": [
+{"loc": "Non-detected iCOMs", "quote": "Within the observed frequency range, the C$_2$H$_5$CN transition at 246.2687 GHz and the C$_2$H$_3$CN transition at 247.0870 GHz are expected to be brightest, but neither is detected"}
+]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Spectroscopic line parameters from the JPL and CDMS databases (accessed through CASSIS, with VAMDC)", "evidence": [
+{"loc": "Line identification", "quote": "which connects to the JPL (cite: Pickett1998) and CDMS (cite: Muller2005) databases"}
+]}, "citation": "Pickett1998 (JPL); Muller2005 (CDMS)"},
+{"what": {"value": "Methanol column density, kinetic temperature, H2 density and source size per velocity component (-2, 2.8, 9.9 km/s) from non-LTE modelling, used as input to the LTE fits", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "We then used the parameters (column density, source size, and kinetic temperatures) found from the non-LTE modelling of the methanol transitions (cite: Vastel2022) to compute the column densities of CH$_3$OCH$_3$ and CH$_3$OCHO using the CASSIS software."},
+{"loc": "Table (LTE results)", "quote": "The methanol non-LTE analysis and the three velocity components identifications are from (cite: Vastel2022)."}
+]}, "citation": "Vastel2022 (cite: Vastel2022)"},
+{"what": {"value": "12C/13C ratio of 68 used to scale CH3OCHO to CH3O13CHO", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "we used a $^{12}$C/$^{13}$C ratio of 68 (cite: Milam2005)"}
+]}, "citation": "Milam2005 (cite: Milam2005)"},
+{"what": {"value": "Source distance of 163 +/- 5 pc", "evidence": [
+{"loc": "Introduction", "quote": "located at a distance of 163 $\\pm$ 5 pc (cite: Dzib2018) from the Sun"}
+]}, "citation": "Dzib2018 (cite: Dzib2018)"},
+{"what": {"value": "Positions of the two cores 11A and 11B from 1.3 mm dust continuum", "evidence": [
+{"loc": "Observations", "quote": "Based on the high spatial resolution observations of the dust emission at 1.3 mm with ALMA by (cite: Alves2019), the coordinates for the two cores are"}
+]}, "citation": "Alves2019 (cite: Alves2019)"},
+{"what": {"value": "Systemic velocity of 3.6 km/s (LSR)", "evidence": [
+{"loc": "Observations", "quote": "is 3.6 km s$^{-1}$ with respect to the local standard of rest (cite: Onishi1999)"}
+]}, "citation": "Onishi1999 (cite: Onishi1999)"},
+{"what": {"value": "Abundance ratios relative to CH3OH for comparison sources IRAS 16293 A, SVS13A and L1157-B1", "evidence": [
+{"loc": "Discussion", "quote": "solar-like Class 0 and I hot corinos of IRAS 16293 A (cite: Manigand2020) and SVS13A (cite: Bianchi2019; Bianchi2022), respectively, along with the protostellar shock region L1157-B1 (cite: Lefloch2017)"}
+]}, "citation": "Manigand2020; Bianchi2019; Bianchi2022; Lefloch2017"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Modified version of the ALMA calibration pipeline plus additional in-house calibration routine (Chandler in prep.)", "evidence": [
+{"loc": "Observations", "quote": "with a modified version of the ALMA calibration pipeline and additional in-house calibration routine"}
+]},
+{"field": "casa_version", "value": "CASA 5.6.1-8", "evidence": [
+{"loc": "Observations", "quote": "Spectral line imaging was performed with the Common Astronomy Software Applications package (CASA) 5.6.1-8"}
+]}
+],
+"imaging": [
+{"field": "final_beam", "value": "~0.4'' (dimethyl ether lines, includes both 11A and 11B); Table 2 beams 0.38x0.34 to 0.46x0.39", "evidence": [
+{"loc": "Spatial distribution", "quote": "The spectra from both transitions were extracted from a $\\sim$ 0.4$^{\\prime\\prime}$ beam size, corresponding to the beam for both transitions"}
+]},
+{"field": "final_rms", "value": "0.0373 to 0.1494 K per channel depending on band (Table 2)", "evidence": [
+{"loc": "Table 2", "quote": "0.46 $\\times$ 0.39, -80 | 0.0373 | 1.19"},
+{"loc": "Table 2", "quote": "0.1494"}
+]}
+],
+"inherited": [
+{"what": {"value": "Observation set-up (three frequency setups, 13 spws) and data reduction described in earlier FAUST papers on this source", "evidence": [
+{"loc": "Observations", "quote": "as explained in previous FAUST papers on"}
+]}, "from_reference": "previous FAUST papers on [BHB2007] 11 (cite: Vastel2022; Evans2023)"},
+{"what": {"value": "Project description of FAUST", "evidence": [
+{"loc": "Introduction", "quote": "The description of the project is reported in (cite: Codella2021)."}
+]}, "from_reference": "(cite: Codella2021)"},
+{"what": {"value": "Methanol column density from non-LTE modelling of the 13C isotopologue", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The methanol column density was computed from non-LTE modelling using its $^{13}$C isotopologue (cite: Vastel2022)."}
+]}, "from_reference": "(cite: Vastel2022)"},
+{"what": {"value": "Three velocity components (-2, 2.8, 9.9 km/s) and the 2D centroid / high-velocity channel method", "evidence": [
+{"loc": "Spatial distribution", "quote": "However, we applied the same method as in (cite: Vastel2022)"},
+{"loc": "Table (LTE results)", "quote": "The methanol non-LTE analysis and the three velocity components identifications are from (cite: Vastel2022)."}
+]}, "from_reference": "(cite: Vastel2022)"},
+{"what": {"value": "Centroid position accuracy formula theta/(2 x S/N)", "evidence": [
+{"loc": "Spatial distribution", "quote": "where $\\theta$ is the synthesised beam size, and S/N is the signal-to-noise ratio of the peak with respect to the map noise (cite: Condon1997; Condon1998)"}
+]}, "from_reference": "(cite: Condon1997; Condon1998)"}
+],
+"unstated_but_needed": [
+"tclean (or equivalent) parameters: weighting and robust value, deconvolver, threshold, cell and image size, masking",
+"Continuum subtraction method and line-free channels (the continuum windows themselves contain the many lines)",
+"Details and outputs of the modified ALMA pipeline and in-house calibration routine (Chandler in prep.), including self-calibration and flux calibrator/flux scale uncertainty",
+"Execution blocks / member OUS used, array configurations, baselines, maximum recoverable scale, time on source, observing dates",
+"Spectral smoothing / regridding behind the per-band channel widths (0.14, 0.63, 1.19 km/s) and any primary-beam correction",
+"CASSIS fit set-up: line list per fit, which parameters were free, fit statistic, and how the quoted column-density ranges [min, max] were defined",
+"Exact extraction aperture shape for the 0.4'' spectra and the GILDAS Gaussian-fit procedure for the 2D centroid maps",
+"Methanol non-LTE column densities, temperatures and densities are only available through Vastel2022 beyond the values copied in the LTE table"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Identify molecular lines in the continuum-window spectra",
+"method": {"value": "Spectra extracted from the two continuum spw bands over a 0.82'' x 0.77'' region and lines identified in CASSIS against JPL, CDMS and VAMDC", "evidence": [
+{"loc": "Observations", "quote": "which extends within 0.82$^{\\prime\\prime}$ $\\times$ 0.77$^{\\prime\\prime}$ centred at $\\alpha$ (2000) = 17h11m23.107s"},
+{"loc": "Line identification", "quote": "The line identification was performed using the CASSIS"}
+]},
+"software": ["CASSIS", "JPL database", "CDMS database", "VAMDC"],
+"key_parameters": [
+{"value": "Extraction region 0.82'' x 0.77'' centred at 17h11m23.107s, -27d24m33.005s", "evidence": [
+{"loc": "Observations", "quote": "which extends within 0.82$^{\\prime\\prime}$ $\\times$ 0.77$^{\\prime\\prime}$ centred at $\\alpha$ (2000) = 17h11m23.107s"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Candidate detections checked against other transitions with similar Einstein coefficient, upper level energy and statistical weight (formamide candidate not confirmed)", "evidence": [
+{"loc": "Line identification", "quote": "To confirm the detection, we checked for additional transitions with similar spectroscopic parameters (Einstein coefficient, upper energy level, and statistical weight)."}
+]}
+},
+{
+"order": 2,
+"goal": "Make moment 0 and moment 1 maps and spectra of isolated lines",
+"method": {"value": "Moment 0 maps of CH3OCH3 and CH3OCHO lines, moment 1 map of the unblended CH3OCH3 258.549 GHz line, spectra from a ~0.4'' beam, all with GILDAS", "evidence": [
+{"loc": "Spatial distribution", "quote": "The maps presented in the following were obtained using the IRAM/GILDAS"},
+{"loc": "Spatial distribution", "quote": "we used the unblended 258.549 GHz transition of dimethyl ether to compute the velocity field (moment 1) around"}
+]},
+"software": ["GILDAS"],
+"key_parameters": [
+{"value": "GILDAS version dec22a", "evidence": [
+{"loc": "Spatial distribution", "quote": "package (version dec22a)"}
+]},
+{"value": "Spectra extracted from a ~0.4'' beam including both 11A and 11B", "evidence": [
+{"loc": "Spatial distribution", "quote": "The spectra from both transitions were extracted from a $\\sim$ 0.4$^{\\prime\\prime}$ beam size, corresponding to the beam for both transitions"}
+]}
+],
+"assumptions": [
+{"value": "Emission assumed compact when locating the three Gaussian components", "evidence": [
+{"loc": "Spatial distribution", "quote": "The profile is a simple three-fit Gaussian, and we used it to try to determine the exact location, assuming that the emission is compact."}
+]}
+],
+"fitting": {"value": "Three-Gaussian profile for the 258.549 GHz line (fit details not given)", "evidence": [
+{"loc": "Spatial distribution", "quote": "The profile is a simple three-fit Gaussian"}
+]},
+"validation": {"value": "Velocity field compared with the methanol velocity field of Vastel2022", "evidence": [
+{"loc": "Spatial distribution", "quote": "The same velocity field has been obtained for the methanol transition (cite: Vastel2022)."}
+]}
+},
+{
+"order": 3,
+"goal": "Construct position-velocity diagram of CH3OCH3",
+"method": {"value": "PV cut parallel to the velocity gradient seen in the moment 1 map of the 258.549 GHz line", "evidence": [
+{"loc": "Spatial distribution", "quote": "produced from a cut oriented parallel to the velocity gradient observed in the moment 1 map of the dimethyl ether emission at 258.549 GHz"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Cut PA = 140 deg east of north; cut width 0.5''", "evidence": [
+{"loc": "Spatial distribution", "quote": "whose PA is 140$^{\\circ}$ east of north"},
+{"loc": "Spatial distribution", "quote": "The cut width is 0.5$^{\\prime\\prime}$, comparable to the angular resolution of the FAUST data"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Three velocity structures compared with those identified in methanol", "evidence": [
+{"loc": "Spatial distribution", "quote": "This figure clearly shows the three velocity structures that were identified with methanol (cite: Vastel2022)"}
+]}
+},
+{
+"order": 4,
+"goal": "Locate emission peaks per velocity channel with 2D Gaussian fits",
+"method": {"value": "2D Gaussian fits per channel of the CH3OCH3 258.549 GHz line in velocity ranges [-5, 1], [1, 6] and [6, 13] km/s to obtain intensity-peak positions; also red/blue high-velocity channels with S/N > 5", "evidence": [
+{"loc": "Spatial distribution", "quote": "we performed 2D Gaussian fits on the CH$_3$OCH$_3$ transition at 258.549 GHz (the strongest unblended transition with a high S/N) in each channel"},
+{"loc": "Spatial distribution", "quote": "in the high-velocity channels where the S/N is higher than five"}
+]},
+"software": ["GILDAS"],
+"key_parameters": [
+{"value": "Only peaks brighter than 5 times the Gaussian fit error and S/N > 10 retained, giving position accuracy better than 0.02''", "evidence": [
+{"loc": "Spatial distribution", "quote": "we only considered intensity peaks brighter than five times its Gaussian fit error and a S/N higher than ten, corresponding to a position accuracy better than 0.02$^{\\prime\\prime}$"}
+]},
+{"value": "Position accuracy = theta/(2 x S/N), theta = synthesised beam", "evidence": [
+{"loc": "Spatial distribution", "quote": "where $\\theta$ is the synthesised beam size, and S/N is the signal-to-noise ratio of the peak with respect to the map noise (cite: Condon1997; Condon1998)"}
+]}
+],
+"assumptions": [
+{"value": "Emission in each velocity channel is compact and centrally peaked", "evidence": [
+{"loc": "Spatial distribution", "quote": "Since the iCOMs emission in each velocity channel is compact and centrally peaked"}
+]}
+],
+"fitting": {"value": "2D Gaussian centroid fit; no sampler or priors", "evidence": []},
+"validation": {"value": "Centroid distribution compared with the methanol analysis (similar except for the ~3 km/s component) and with CO high-velocity gas", "evidence": [
+{"loc": "Spatial distribution", "quote": "This 2D analysis is similar to our analysis of methanol, except for the middle component at $\\sim$ 3 km s$^{-1}$"}
+]}
+},
+{
+"order": 5,
+"goal": "LTE radiative transfer fit of CH3OCHO and CH3OCH3 to get abundance ratios",
+"method": {"value": "LTE fit in CASSIS of all CH3OCH3 and CH3OCHO transitions simultaneously (both continuum windows plus setup 2 spw 47 and 43), using methanol non-LTE parameters as input, with blended lines included", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "obtained by simultaneously fitting all lines of CH$_3$OCH$_3$ and CH$_3$OCHO"},
+{"loc": "Radiative transfer modelling", "quote": "We then used the parameters (column density, source size, and kinetic temperatures) found from the non-LTE modelling of the methanol transitions (cite: Vastel2022) to compute the column densities of CH$_3$OCH$_3$ and CH$_3$OCHO using the CASSIS software."}
+]},
+"software": ["CASSIS"],
+"key_parameters": [
+{"value": "Source sizes fixed first, then allowed to vary; V_LSR and line widths from Gaussian fits; Tex set to methanol kinetic temperatures of the three components", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "We fixed the source sizes and let the best-fit model converge around the $V_{LSR}$ line width for the Gaussian fits and the kinetic temperatures of methanol for the excitation temperatures of the three components."},
+{"loc": "Radiative transfer modelling", "quote": "We then let the source size vary."}
+]},
+{"value": "Fitted V_LSR -1.9, 3.0, 9.2 km/s and FWHM 2, 5, 4 km/s for the three components", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The corresponding $V_{LSR}$ for the three components are -1.9, 3.0, and 9.2 km s$^{-1}$, and the FWHM values are 2, 5, and 4 km s$^{-1}$ respectively."}
+]},
+{"value": "Spectra extracted from the same ~0.4'' region as the 257.911 GHz CH3OCH3 line", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "we extracted the spectra from the same region as for the CH$_3$OCH$_3$ transition at 257.911 GHz, corresponding to $\\sim$ 0.4$^{\\prime\\prime}$"}
+]}
+],
+"assumptions": [
+{"value": "Local thermodynamic equilibrium", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "We first performed a local thermodynamic equilibrium (LTE) analysis to estimate the CH$_3$OCH$_3$/CH$_3$OH and CH$_3$OCHO/CH$_3$OH abundance ratios."}
+]},
+{"value": "Excitation temperatures equal to methanol kinetic temperatures", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "and the kinetic temperatures of methanol for the excitation temperatures of the three components"}
+]},
+{"value": "CH3OH column density from non-LTE modelling of its 13C isotopologue", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The methanol column density was computed from non-LTE modelling using its $^{13}$C isotopologue (cite: Vastel2022)."}
+]}
+],
+"fitting": {"value": "CASSIS best-fit LTE model; fit statistic, priors and the definition of the quoted [min, max] ranges not stated", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "lists the results from the best fit obtained using all transitions in both continuum windows"}
+]},
+"validation": {"value": "Best-fit LTE model overplotted on observed CH3OCH3 and CH3OCHO spectra", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "show the best-fit LTE model (in red) obtained by simultaneously fitting all lines of CH$_3$OCH$_3$ and CH$_3$OCHO"}
+]}
+},
+{
+"order": 6,
+"goal": "Derive t-HCOOH, H2CCO and CH3O13CHO column densities and acetaldehyde upper limit",
+"method": {"value": "Same LTE model (beam size, Tex, V_LSR, FWHM, filling factor) from CH3OCHO and CH3OCH3 applied to t-HCOOH and H2CCO; 12C/13C = 68 for the methyl formate isotopologue", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "Taking the three components with the same beam size, excitation temperature, and $V_{LSR}$ as derived from the methyl formate and dimethyl ether into account, we obtained the column densities quoted in Table"},
+{"loc": "Radiative transfer modelling", "quote": "The column densities can be constrained from the LTE modelling, again using the excitation temperature, filling factor, and FWHM as for CH$_3$OCH$_3$ and CH$_3$OCHO."}
+]},
+"software": ["CASSIS"],
+"key_parameters": [
+{"value": "12C/13C = 68", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "we used a $^{12}$C/$^{13}$C ratio of 68 (cite: Milam2005)"}
+]}
+],
+"assumptions": [
+{"value": "Same source size, excitation temperature and V_LSR as the CH3OCHO/CH3OCH3 fit", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "With the same source size and excitation temperatures as for CH$_3$OCHO and CH$_3$OCH$_3$"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Blended 246.106 and 247.514 GHz lines better reproduced once t-HCOOH is added; modelled 13C lines compatible with noise but detection not firm", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The 246.106 and 247.514 GHz lines are now better reproduced by the LTE model."},
+{"loc": "Radiative transfer modelling", "quote": "we cannot conclude on a firm detection of the methyl formate isotopologue"}
+]}
+},
+{
+"order": 7,
+"goal": "Upper limits on N(C2H5CN) and N(C2H3CN)",
+"method": {"value": "LTE column-density formula with an upper limit on integrated intensity W_u = sigma x deltaV x sqrt(DeltaV/deltaV) applied to the strongest expected line of each species", "evidence": [
+{"loc": "Appendix: Upper limits", "quote": "For the derivation, we assumed an LTE condition and used the following equation:"},
+{"loc": "Appendix: Upper limits", "quote": "The upper limit of the integrated intensity (in K km s$^{-1}$) was calculated from the following equation:"}
+]},
+"software": ["CDMS database"],
+"key_parameters": [
+{"value": "Excitation temperature 80 K for all three components; source sizes 0.15, 0.13, 0.12''; DeltaV 2, 5, 4 km/s", "evidence": [
+{"loc": "Table 3", "quote": "Temperature (K) | 80 | 80 | 80"},
+{"loc": "Appendix: Upper limits", "quote": "For the calculations, we adopted the parameters from Table"}
+]},
+{"value": "Partition function fit Q(T) = a x T^b to CDMS values: C2H5CN (a, b) = (7.2158, 1.4995); C2H3CN (a, b) = (0.95923, 2.0865)", "evidence": [
+{"loc": "Appendix: Upper limits", "quote": "For C$_2$H$_5$CN, ($a$, $b$)=(7.2158, 1.4995). For C$_2$H$_3$CN, ($a$, $b$)=(0.95923, 2.0865)."}
+]}
+],
+"assumptions": [
+{"value": "LTE; T_BB = 2.73 K", "evidence": [
+{"loc": "Appendix: Upper limits", "quote": "For the derivation, we assumed an LTE condition and used the following equation:"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Observed spectra of three lines per species inspected; features present are offset from the three velocity components", "evidence": [
+{"loc": "Appendix: Upper limits", "quote": "Some features can be seen in Figure"}
+]}
+},
+{
+"order": 8,
+"goal": "Compare abundance ratios with other protostellar sources",
+"method": {"value": "Abundance ratios with respect to CH3OH for the detected iCOMs compared with IRAS 16293 A, SVS13A and L1157-B1 from the literature", "evidence": [
+{"loc": "Discussion", "quote": "the abundance ratios with respect to methanol of the iCOMs and some precursors detected in this work"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.6.1-8", "used_for": {"value": "Spectral line imaging", "evidence": [
+{"loc": "Observations", "quote": "Spectral line imaging was performed with the Common Astronomy Software Applications package (CASA) 5.6.1-8"}
+]}},
+{"name": "ALMA calibration pipeline (modified) with in-house calibration routine", "version": "not stated", "used_for": {"value": "Data calibration", "evidence": [
+{"loc": "Observations", "quote": "with a modified version of the ALMA calibration pipeline and additional in-house calibration routine"}
+]}},
+{"name": "CASSIS", "version": "not stated", "used_for": {"value": "Line identification and LTE radiative transfer modelling", "evidence": [
+{"loc": "Line identification", "quote": "The line identification was performed using the CASSIS"},
+{"loc": "Radiative transfer modelling", "quote": "to compute the column densities of CH$_3$OCH$_3$ and CH$_3$OCHO using the CASSIS software"}
+]}},
+{"name": "GILDAS", "version": "dec22a", "used_for": {"value": "Moment maps and spatial distribution analysis", "evidence": [
+{"loc": "Spatial distribution", "quote": "The maps presented in the following were obtained using the IRAM/GILDAS"},
+{"loc": "Spatial distribution", "quote": "package (version dec22a)"}
+]}},
+{"name": "JPL and CDMS spectroscopic databases (via VAMDC)", "version": "not stated", "used_for": {"value": "Spectroscopic parameters for line identification", "evidence": [
+{"loc": "Line identification", "quote": "which connects to the JPL (cite: Pickett1998) and CDMS (cite: Muller2005) databases"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Number of detected CH3OCHO lines", "value": ">45", "uncertainty": "not stated", "units": "lines", "from_step": 1, "evidence": [
+{"loc": "abstract", "quote": "More than 45 methyl formate (CH$_3$OCHO) lines are clearly detected"}
+]},
+{"quantity": "Fitted V_LSR of the three components", "value": "-1.9, 3.0, 9.2", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The corresponding $V_{LSR}$ for the three components are -1.9, 3.0, and 9.2 km s$^{-1}$, and the FWHM values are 2, 5, and 4 km s$^{-1}$ respectively."}
+]},
+{"quantity": "FWHM of the three components", "value": "2, 5, 4", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "The corresponding $V_{LSR}$ for the three components are -1.9, 3.0, and 9.2 km s$^{-1}$, and the FWHM values are 2, 5, and 4 km s$^{-1}$ respectively."}
+]},
+{"quantity": "N(CH3OCHO) at -2, 2.8, 9.9 km/s", "value": "[1.0, 3.4]e16; [2.2, 10.0]e16; [3.0, 13.0]e16", "uncertainty": "range as given", "units": "cm^-2", "from_step": 5, "evidence": [
+{"loc": "Table (LTE results)", "quote": "N(CH$_3$OCHO) (cm$^{-2}$) | \\[1.0, 3.4\\] $\\times 10^{16}$ | \\[2.2, 10.0\\] $\\times 10^{16}$ | \\[3.0, 13.0\\] $\\times 10^{16}$"}
+]},
+{"quantity": "N(CH3OCH3) at -2, 2.8, 9.9 km/s", "value": "[3.5, 11.0]e15; [6, 20]e15; [6, 25]e15", "uncertainty": "range as given", "units": "cm^-2", "from_step": 5, "evidence": [
+{"loc": "Table (LTE results)", "quote": "N(CH$_3$OCH$_3$) (cm$^{-2}$) | \\[3.5, 11.0\\] $\\times 10^{15}$ | \\[6, 20\\] $\\times 10^{15}$ | \\[6, 25\\] $\\times 10^{15}$"}
+]},
+{"quantity": "N(t-HCOOH) at -2, 2.8, 9.9 km/s", "value": "[0.6, 2.5]e15; [0.55, 1.5]e15; [1.0, 3.5]e15", "uncertainty": "range as given", "units": "cm^-2", "from_step": 6, "evidence": [
+{"loc": "Table (LTE results)", "quote": "N(t-HCOOH) (cm$^{-2}$) | \\[0.6, 2.5\\] $\\times 10^{15}$ | \\[0.55, 1.5\\] $\\times 10^{15}$ | \\[1.0, 3.5\\] $\\times 10^{15}$"}
+]},
+{"quantity": "N(H2CCO) at -2, 2.8, 9.9 km/s", "value": "[2.5, 20]e14; [6, 25]e14; [4, 20]e14", "uncertainty": "range as given", "units": "cm^-2", "from_step": 6, "evidence": [
+{"loc": "Table (LTE results)", "quote": "N(H$_{2}$CCO) (cm$^{-2}$) | \\[2.5, 20\\] $\\times 10^{14}$ | \\[6, 25\\] $\\times 10^{14}$ | \\[4, 20\\] $\\times 10^{14}$"}
+]},
+{"quantity": "CH3OCH3/CH3OH abundance ratio", "value": "[5, 8]e-3", "uncertainty": "range as given", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "With methanol as a reference, the CH$_3$OCH$_3$/CH$_3$OH ratio is \\[5, 8\\] $\\times$ 10$^{-3}$ and the CH$_3$OCHO/CH$_3$OH ratio is \\[2.5, 4.5\\] $\\times$ 10$^{-2}$ for the three components."}
+]},
+{"quantity": "CH3OCHO/CH3OH abundance ratio", "value": "[2.5, 4.5]e-2", "uncertainty": "range as given", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "With methanol as a reference, the CH$_3$OCH$_3$/CH$_3$OH ratio is \\[5, 8\\] $\\times$ 10$^{-3}$ and the CH$_3$OCHO/CH$_3$OH ratio is \\[2.5, 4.5\\] $\\times$ 10$^{-2}$ for the three components."}
+]},
+{"quantity": "t-HCOOH/CH3OH abundance ratio", "value": "[0.01, 0.5] %", "uncertainty": "range as given", "units": "percent", "from_step": 6, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "we obtain a t-HCOOH/CH$_3$OH ratio of \\[0.01, 0.5\\] $\\%$"}
+]},
+{"quantity": "H2CCO/CH3OH abundance ratio", "value": "[0.01, 0.1] %", "uncertainty": "range as given", "units": "percent", "from_step": 6, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "with a H$_2$CCO/CH$_3$OH ratio of \\[0.01, 0.1\\] $\\%$"}
+]},
+{"quantity": "CH3CHO upper limit relative to CH3OH", "value": "about 1/70 of N(CH3OH) (<= 1.5 % in the comparison table)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "An upper limit for acetaldehyde column density can be estimated at about 1/70th compared to the methanol column density."}
+]},
+{"quantity": "CH3O13CHO column densities (tentative)", "value": "[1.5, 5.0]e14; [3.2, 15]e14; [4.4, 19]e14", "uncertainty": "range as given", "units": "cm^-2", "from_step": 6, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "to compute a CH$_{3}$O$^{13}$CHO ratio of \\[1.5, 5.0\\] $\\times$ 10$^{14}$, \\[3.2, 15\\] $\\times$ 10$^{14}$ and \\[4.4, 19\\] $\\times$ 10$^{14}$ cm$^{-2}$"}
+]},
+{"quantity": "N(C2H5CN) upper limits at -2, 2.8, 9.9 km/s", "value": "<3.5e14; <1.9e15; <2.0e15", "uncertainty": "upper limits", "units": "cm^-2", "from_step": 7, "evidence": [
+{"loc": "Table 3", "quote": "$N$(C$_2$H$_5$CN) (cm$^{-2}$) | $<$3.5$\\times$10$^{14}$ | $<$1.9$\\times$10$^{15}$ | $<$2.0$\\times$10$^{15}$"}
+]},
+{"quantity": "N(C2H3CN) upper limits at -2, 2.8, 9.9 km/s", "value": "<2.4e14; <5.2e14; <5.4e14", "uncertainty": "upper limits", "units": "cm^-2", "from_step": 7, "evidence": [
+{"loc": "Table 3", "quote": "$N$(C$_2$H$_3$CN) (cm$^{-2}$) | $<$2.4$\\times$10$^{14}$ | $<$5.2$\\times$10$^{14}$ | $<$5.4$\\times$10$^{14}$"}
+]},
+{"quantity": "C2H5CN/CH3OH and C2H3CN/CH3OH upper limits", "value": "<0.066 % and <0.018 %", "uncertainty": "upper limits", "units": "percent", "from_step": 7, "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "We obtained C$_2$H$_5$CN/CH$_3$OH and C$_2$H$_3$CN/CH$_3$OH to be $<$0.066 % and $<$0.018 %, respectively."}
+]},
+{"quantity": "CH3OCH3/CH3OCHO abundance ratio", "value": "[0.1, 0.3]", "uncertainty": "range as given", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Conclusions", "quote": "Our CH$_3$OCH$_3$/CH$_3$OCHO ratio of \\[0.1, 0.3\\] is slightly lower (factor of 3 to 10) than the correlation found in low- and high-mass protostars."}
+]},
+{"quantity": "Source size of the emitting regions", "value": "~0.15", "uncertainty": "not stated", "units": "arcsec", "from_step": 5, "evidence": [
+{"loc": "Conclusions", "quote": "with a source size of $\\sim$ 0.15$^{\\prime\\prime}$, which is well below the $\\sim$ 0.4$^{\\prime\\prime}$ beam size"}
+]},
+{"quantity": "Centroid position accuracy", "value": "better than 0.02", "uncertainty": "not stated", "units": "arcsec", "from_step": 4, "evidence": [
+{"loc": "Spatial distribution", "quote": "corresponding to a position accuracy better than 0.02$^{\\prime\\prime}$"}
+]}
+],
+"findings_qualitative": [
+{"value": "iCOM and precursor emission is compact and encompasses both protostars, which are only 0.2'' (~28 au) apart", "evidence": [
+{"loc": "abstract", "quote": "The emission from the detected iCOMs and their precursors is compact and encompasses both protostars"}
+]},
+{"value": "PV and 2D analysis of CH3OCH3 show three spatial and velocity regions, two near 11B and one near 11A", "evidence": [
+{"loc": "abstract", "quote": "A Position-Velocity and 2D analysis are performed on the strongest and uncontaminated CH$_3$OCH$_3$ transition and show three different spatial and velocity regions"}
+]},
+{"value": "CH3OCH3 velocity field shows a northwest-southeast gradient centred between 11A and 11B at the systemic velocity", "evidence": [
+{"loc": "Spatial distribution", "quote": "shows a clear northwest-southeast gradient centred in between 11A and 11B at the systemic velocity of the source"}
+]},
+{"value": "Ketene emission is more extended than the other iCOMs and may trace warm gas streaming from the circumbinary disk", "evidence": [
+{"loc": "Discussion", "quote": "Therefore, ketene could be tracing a more extended region, likely the warm gas streaming in from the circumbinary disk, rather than the shocked regions at the end of the streamer."}
+]}
+],
+"claims": [
+{"hypothesis": "The iCOM emission in [BHB2007] 11 arises from shocked gas of incoming streamers rather than thermal desorption in hot corinos", "experiment": "Moment 0 maps, moment 1 and PV diagram, and per-channel 2D centroid fits of CH3OCH3 compared with methanol and the 1.3 mm dust filaments", "result": "Emission is compact, peaks south of 11B for CH3OCHO and CH3OCH3, shows three velocity components and centroids similar to methanol", "finding": "The iCOMs are likely released by shocks from streaming material onto 11A and 11B", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "All our observations suggest that the detected methanol, as well as the other iCOMs, are generated by the shocked gas from the incoming filaments streaming towards"},
+{"loc": "Discussion", "quote": "This supports the idea of the release into the gas phase of molecular species from shocks close to 11B rather than the emission from thermally desorbed species."}
+]},
+{"hypothesis": "Abundance ratios relative to CH3OH differ from hot corinos and shock regions", "experiment": "LTE modelling of CH3OCHO, CH3OCH3, t-HCOOH, H2CCO, CH3CHO upper limit compared with IRAS 16293 A, SVS13A and L1157-B1", "result": "CH3OCHO/CH3OH and CH3CHO/CH3OH are similar to other sources, while H2CCO/CH3OH and t-HCOOH/CH3OH are reported as much lower", "finding": "Ratios are broadly similar to hot corinos and L1157-B1 for most species, so abundances alone do not discriminate the origin", "support": "partially", "evidence": [
+{"loc": "Conclusions", "quote": "The CH$_3$OCHO/CH$_3$OH as well as CH$_{3}$CHO/CH$_3$OH ratios are similar in all sources, but H$_{2}$CCO/CH$_3$OH and t-HCOOH/CH$_3$OH are much lower."}
+]},
+{"hypothesis": "CH3OCH3/CH3OCHO follows the ~1 correlation seen in other protostars", "experiment": "LTE column densities of both species in three velocity components", "result": "CH3OCH3/CH3OCHO = [0.1, 0.3]", "finding": "The ratio is at the lower end of the correlation, a factor 3 to 10 lower", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "Our CH$_3$OCH$_3$/CH$_3$OCHO ratio of \\[0.1, 0.3\\] is slightly lower (factor of 3 to 10) than the correlation found in low- and high-mass protostars."}
+]},
+{"hypothesis": "Nitrogen-bearing iCOMs are present with abundances like those in the high-mass source G328.2551-0.5321", "experiment": "LTE upper limits on C2H5CN and C2H3CN from the strongest expected lines", "result": "Upper limits <0.07 % and <0.02 % relative to CH3OH", "finding": "Limits are much lower than in G328.2551-0.5321, so the comparison is inconclusive", "support": "partially", "evidence": [
+{"loc": "Discussion", "quote": "provides an upper limit to the C$_2$H$_5$CN/CH$_3$OH and C$_2$H$_3$CN/CH$_3$OH abundance ratios of $<$0.07 % and $<$0.02 %, respectively"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "12m array alone used because the iCOM emission is compact", "evidence": [
+{"loc": "Observations", "quote": "We used the 12m array (TM 1 and TM 2) due to the compact emission of the iCOMs transitions."}
+]},
+{"field": "why_this_method", "value": "Three-Gaussian fit and centroid analysis adopted assuming compact emission; centroid fitting gives astrometry better than the beam at high S/N", "evidence": [
+{"loc": "Spatial distribution", "quote": "In other words, a centroid fitting to the compact molecular emission yields astrometry with a precision better than that of the spatial resolution in the case of a high S/N."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Thermal desorption in a classical hot corino judged unlikely because emission does not peak on the protostars", "evidence": [
+{"loc": "Discussion", "quote": "The dust in between 11A and 11B could be warm enough for the methanol to sublimate, but the iCOM emission does not peak on the hot cores themselves, which seems to rule this hypothesis out."}
+]},
+{"value": "External irradiation ruled out by the embedded location and high gas temperature", "evidence": [
+{"loc": "Discussion", "quote": "Therefore, although external irradiation could produce shifted emission of molecular species from a protostellar core like this (cite: Lindberg2012; Lindberg2015)"}
+]},
+{"value": "Formamide candidate at 260.190 GHz not confirmed because companion transitions are not detected; ketene assigned instead", "evidence": [
+{"loc": "Line identification", "quote": "but it has not been detected at a 4$\\sigma$ level (0.07 K)"}
+]},
+{"value": "Dust opacity could affect the apparent spatial distribution of iCOMs", "evidence": [
+{"loc": "Discussion", "quote": "It is worth mentioning that the dust opacity could be a major actor in the observed apparent spatial distribution of iCOMs"}
+]}
+],
+"limitations_admitted": [
+{"value": "Angular resolution is insufficient to locate the iCOM emission within the binary", "evidence": [
+{"loc": "Spatial distribution", "quote": "Considering the angular resolution of the present observations, we cannot determine the exact location of the iCOMs emission within the binary system."}
+]},
+{"value": "CH3O13CHO not firmly detected, with an unexplained velocity shift", "evidence": [
+{"loc": "Radiative transfer modelling", "quote": "Considering the noise and the spectral resolution of our observations for this transition, we cannot conclude on a firm detection of the methyl formate isotopologue."}
+]},
+{"value": "rms too high to explain the CH3CHO non-detection", "evidence": [
+{"loc": "Discussion", "quote": "Our $rms$ is too high to be able to explain the non-detection of this species."}
+]}
+],
+"referee_caveats_inferred": [
+"Beam (~0.4'') is larger than the 0.2'' binary separation, so shock-versus-hot-corino conclusions rest on centroid offsets of ~20 au and on comparison with the methanol analysis",
+"Conclusions say H2CCO and t-HCOOH ratios are much lower than in other sources, while the Discussion says t-HCOOH is lower than L1157-B1 by ~3 and comparable to IRAS 16293 B",
+"LTE column-density ranges have no stated confidence definition and Tex is borrowed from methanol kinetic temperatures; the dust optical depth is not corrected for",
+"Several CH3OCH3, CH3OCHO and t-HCOOH lines are blended, so the fit depends on a joint model",
+"Ketene is detected in a single transition so its column density and extended-emission interpretation are weakly constrained"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Imaging recipe (tclean settings, continuum subtraction, line-free channels, weighting)",
+"Modified ALMA pipeline and in-house calibration routine (Chandler in prep.) and any self-calibration",
+"CASSIS fit configuration and definition of the column-density ranges",
+"Methanol non-LTE input values beyond the table copied from Vastel2022",
+"Which archive execution blocks and array configurations were used"
+],
+"estimated_data_volume_inferred": "Tens to hundreds of GB of calibrated measurement sets (three setups, 13 spws, 12m array only)",
+"score_inferred": 2,
+"score_reason": "Project code and software versions are given and results are numeric, but imaging parameters, calibration modifications, and the LTE fit configuration are not stated and the pipeline is unpublished",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the data are public, and the imaging and in-house calibration recipe is incomplete, so a faithful redo is not possible from the text",
+"methods_papers": [
+{"citation": "Codella2021 (cite: Codella2021)", "why": "Description of the FAUST Large Program"},
+{"citation": "Vastel2022 (cite: Vastel2022)", "why": "Earlier methanol analysis of the same FAUST data with non-LTE modelling and the three-component 2D method"},
+{"citation": "Condon1997; Condon1998 (cite: Condon1997; Condon1998)", "why": "Centroid position accuracy formula"}
+],
+"companion_papers": [
+{"citation": "Vastel2022 (cite: Vastel2022)", "why": "Methanol emission in the same FAUST dataset"},
+{"citation": "Evans2023 (cite: Evans2023)", "why": "HDCO and D2CO emission in the same FAUST dataset"},
+{"citation": "Alves2019 (cite: Alves2019)", "why": "High resolution 1.3 mm dust and CO study defining the filaments and core positions"}
+],
+"related_projects_or_surveys": ["ALMA Large Program FAUST (2018.1.01205.L)"]
+}

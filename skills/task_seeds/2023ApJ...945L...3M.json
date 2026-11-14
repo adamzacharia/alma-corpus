@@ -1,0 +1,295 @@
+{
+ "bibcode": "2023ApJ...945L...3M",
+ "title": "Resurrection of Type IIL Supernova 2018ivc: Implications for a Binary Evolution Sequence Connecting Hydrogen-rich and Hydrogen-poor Progenitors",
+ "year": 2023,
+ "doi": "10.3847/2041-8213/acb25e",
+ "arxiv_id": "2301.07357",
+ "fields": [
+  "transients",
+  "stellar_physics"
+ ],
+ "question": "What is the late-time (>1,000 days) millimeter synchrotron evolution of the peculiar Type IIL supernova SN 2018ivc, and what does the outer circumstellar matter (CSM) distribution reveal about the progenitor's mass-loss history in the final millennium before the explosion and its binary evolution pathway?",
+ "alma_project_codes": [
+  "2018.1.01193.T",
+  "2018.1.01506.S",
+  "2018.A.00038.S",
+  "2018.1.01135.S",
+  "2018.1.01684.S",
+  "2019.1.00026.S",
+  "2021.A.00026.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "DDT (2021.A.00026.S): 0.81'' x 0.71'' (avg 0.76'') in Band 3 and 0.33'' x 0.28'' (avg 0.30'') in Band 6; across all epochs: 0.05'' to 1.17'' in Band 3 and 0.03'' to 0.50'' in Band 6",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Early-phase ALMA Band 3 and Band 6 flux measurements and SED slope at days 4.1 to 198.6",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "In this paper, we report late-time observations of SN 2018ivc ($\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$>$}}1,000$ days) based on data taken through our ALMA Director’s Discretionary Time (DDT) program 2021.A.00026.S (PI: K. Maeda), complemented by the data at earlier epochs published in (cite: maeda_2018ivc) and archival data newly presented in this work."
+     },
+     {
+      "loc": "Results",
+      "quote": "Given the SED slope of $\\alpha = -1.12 \\pm  0.22$ on day 199 (cite: maeda_2018ivc), there is a hint of the spectral steepening"
+     }
+    ]
+   },
+   "citation": "(cite: maeda_2018ivc)"
+  },
+  {
+   "what": {
+    "value": "Centimeter flux measurements at 6.5 GHz (VLA) and 6.3 GHz (e-MERLIN) on day 1,217 (~1,000 days after the explosion)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Recently, its detection at $\\sim 1,000$ days after the explosion in the *cm* emission, at 6.5 GHz by the Karl G. Jansky Very Large Array (VLA) and at 6.3 GHz by the enhanced Multi-Element Radio Linked Interferometer Network (e-MERLIN), was reported (cite: mutie2022)."
+     },
+     {
+      "loc": "Results",
+      "quote": "Fig. [2](#fig:sed) compares the Spectral Energy Distribution (SED) on days 199 and 1,364 , with the addition of the *cm* flux on day 1,217 taken from (cite: mutie2022)."
+     }
+    ]
+   },
+   "citation": "(cite: mutie2022)"
+  },
+  {
+   "what": {
+    "value": "Upper limit on the main-sequence mass of a single star progenitor (<= 11 M_sun) from pre-SN Hubble Space Telescope images",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(cite: bostroem2020) placed an upper limit of the MS mass of a ‘single star’ being $\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$<$}}11 M_\\odot$ that existed at the SN location in pre-SN Hubble Space Telescope images."
+     }
+    ]
+   },
+   "citation": "(cite: bostroem2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, image, and select ALMA continuum observations",
+   "method": "Use standard ALMA pipeline calibrated data for DDT program; download processed continuum FITS images from JVO for archival Band 3 programs with SN S/N > 5; manually image 2018.1.01135.S and 2019.1.00026.S using CASA clean with primary beam correction (and self-calibration for 2018.1.01135.S).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "S/N > 5 selection threshold for archival Band 3 data"
+   ],
+   "assumptions": [
+    "SN is a point source"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities and spectral index",
+   "method": "Measure continuum flux densities associated with the SN on each image using the imfit task in CASA, and compute the spectral energy distribution slope assuming a power law.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Power-law spectral energy distribution f_nu proportional to nu^alpha",
+    "Putative explosion date is MJD 58445.0"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model synchrotron light curves and constrain CSM density distribution and mass-loss history",
+   "method": "Compute synchrotron emission models for SN-CSM interaction after ~500 days by varying the outer CSM power-law density slope s and density scale D, and compare the resulting radial CSM density and mass-loss history to binary evolution models.",
+   "software": [],
+   "key_parameters": [
+    "CSM density slopes tested: s = -2, 0, 1, 2",
+    "Outer CSM inner radius ~ 4 x 10^16 cm (interaction epoch >= 500 days)"
+   ],
+   "assumptions": [
+    "Distance to NGC 1068 = 10 (+1.8/-1.5) Mpc",
+    "Ejecta mass M_ej = 3 M_sun, kinetic energy E_K = 1.2 x 10^51 erg, outer ejecta density slope n = -10",
+    "CSM density profile rho_CSM proportional to D r^-s without an inner hole in the computation",
+    "SN shock velocity ~ 10,000 km s^-1 and CSM wind velocity v_w ~ 20 km s^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 3 continuum flux density at day 21.0 (MJD 58466.0, 93.5 GHz)",
+   "value": "7.41",
+   "uncertainty": "0.99",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 58466.0 | 21.0 | 93.5 | $7.41 \\pm 0.99$ | C43-4 | 1.14$''$ | 2018.1.01506.S | S. Viti |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 continuum flux density at day 213.5 (MJD 58658.5, 92.1 GHz)",
+   "value": "0.322",
+   "uncertainty": "0.036",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 58658.5 | 213.5 | 92.1 | $0.322 \\pm 0.036$ | C43-9 | 0.05$''$ | 2018.1.01135.S | J. Wang |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 continuum flux density at day 306.2 (MJD 58751.2, 103.0 GHz)",
+   "value": "0.264",
+   "uncertainty": "0.044",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 58751.2 | 306.2 | 103.0 | $0.264 \\pm 0.044$ | C43-6 | 0.33$''$ | 2018.1.01684.S | T. Tosaki |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 continuum flux density at day 1024.4 (MJD 59469.4, 92.1 GHz)",
+   "value": "1.128",
+   "uncertainty": "0.069",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 59469.4 | 1024.4 | 92.1 | $1.128 \\pm 0.069$ | C43-9 | 0.05$''$ | 2019.1.00026.S | M. Imanishi |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 continuum flux density at day 1364.4 (MJD 59809.4, 100.0 GHz)",
+   "value": "0.955",
+   "uncertainty": "0.093",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 59809.4 | 1364.4 | 100.0 | $0.955 \\pm 0.093$ | C-5 | 0.76$''$ | 2021.A.00026.S | K. Maeda |"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 continuum flux density at day 1364.4 (MJD 59809.4, 250.0 GHz)",
+   "value": "0.286",
+   "uncertainty": "0.067",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 59809.4 | 1364.4 | 250.0 | $0.286 \\pm 0.067$ | C-5 | 0.30$''$ | 2021.A.00026.S | K. Maeda |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index alpha on day 1,364",
+   "value": "-1.32",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Assuming $f_{\\nu} \\propto \\nu^{\\alpha}$, $\\alpha = -1.32 \\pm 0.15  (1\\sigma)$ is measured on day 1,364."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined spectral index alpha for days 199 and 1,364",
+   "value": "-1.22",
+   "uncertainty": "0.27",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Given the SED slope of $\\alpha = -1.12 \\pm  0.22$ on day 199 (cite: maeda_2018ivc), there is a hint of the spectral steepening but it is also consistent with no change within $1\\sigma$ (i.e., $\\alpha = -1.22 \\pm 0.27$ for the combined analysis of the data on days 199 and 1,364)."
+    }
+   ]
+  },
+  {
+   "quantity": "CSM density at ~ 10^17 cm",
+   "value": "~ 10^-18",
+   "uncertainty": "not stated",
+   "units": "g cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "While there is a degeneracy in the CSM slope given the limited temporal coverage, the CSM density at $\\sim 10^{17}$ cm is strongly constrained to be $\\sim 10^{-18}$ g cm$^{-3}$; this is where the data points exist."
+    }
+   ]
+  },
+  {
+   "quantity": "Progenitor mass-loss rate at ~ 1,500 years before explosion",
+   "value": ">= 10^-3",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that the progenitor of SN 2018ivc had experienced a very high mass-loss rate ($\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$>$}}10^{-3} M_\\odot$ yr$^{-1}$) $\\sim 1,500$ years before the explosion, which was followed by a moderately high mass-loss rate ($\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$>$}}10^{-4} M_\\odot$ yr$^{-1}$) up until the explosion."
+    }
+   ]
+  },
+  {
+   "quantity": "Progenitor mass-loss rate in remaining evolution up until explosion",
+   "value": ">= 10^-4",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that the progenitor of SN 2018ivc had experienced a very high mass-loss rate ($\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$>$}}10^{-3} M_\\odot$ yr$^{-1}$) $\\sim 1,500$ years before the explosion, which was followed by a moderately high mass-loss rate ($\\mathrel{\rlap{\\lower 4pt \\hbox{\\hskip 1pt $\\sim$}}\raise 1pt \\hbox {$>$}}10^{-4} M_\\odot$ yr$^{-1}$) up until the explosion."
+    }
+   ]
+  },
+  {
+   "quantity": "Swept-up CSM mass by day ~ 1,500",
+   "value": "~ 1",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Concluding Remarks",
+     "quote": "The models presented here suggest that $\\sim 1 M_\\odot$ of the CSM has been swept up by day $\\sim 1,500$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and ALMA pipeline version used for calibration and imaging",
+  "Weighting scheme (e.g., Briggs robust parameter), cell size, image size, and stopping threshold used in CASA clean for 2018.1.01135.S, 2019.1.00026.S, and 2021.A.00026.S",
+  "Self-calibration parameters (solution intervals, phase-only vs amplitude+phase, number of iterations) for 2018.1.01135.S",
+  "Which specific execution blocks/visits were selected from 2019.1.00026.S",
+  "Exact numerical values of microphysics parameters (e.g., epsilon_e, epsilon_B, electron power-law index p) inherited from Maeda et al. (2022)",
+  "Exact electron temperature values assumed for unshocked CSM when demonstrating free-free absorption"
+ ],
+ "missing_for_reproduction": [
+  "The custom synchrotron emission modeling code used to compute the light curves in Figure 3 is not publicly released.",
+  "Exact values of the microphysics parameters (epsilon_e, epsilon_B, electron index p) are not stated in this paper and must be looked up in Maeda et al. (2022).",
+  "Specific execution blocks/visits selected from program 2019.1.00026.S are not identified.",
+  "Detailed CASA clean and self-calibration parameters for the re-imaged archival datasets (2018.1.01135.S and 2019.1.00026.S) are not specified."
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "The ALMA observational measurements (point-source continuum flux densities via CASA imfit) are straightforward to reproduce from public archive/JVO data (+2 data, +2 reduction, +1 completeness), with main numeric flux and spectral index results clearly tabulated (+1), though the custom synchrotron light-curve code and some imaging/microphysics parameters are not self-contained in the text.",
+ "rediscovery_reason": "All seven ALMA datasets are public in the archive (and mostly available as processed continuum FITS images via JVO/ALMA archive), the point-source flux measurements with CASA imfit and power-law spectral index calculation are simple and unambiguous, and the main observational claims rely directly on the numeric flux densities in Table 1.",
+ "source_card": "cards/2023ApJ...945L...3M/sonnet/card.md"
+}

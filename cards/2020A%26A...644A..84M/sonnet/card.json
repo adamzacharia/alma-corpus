@@ -1,0 +1,1136 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...644A..84M",
+  "title": "The GUAPOS project: G31.41+0.31 Unbiased ALMA sPectral Observational Survey. I. Isomers of C<SUB>2</SUB>H<SUB>4</SUB>O<SUB>2</SUB>",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Mininni, C.",
+  "n_authors": 13,
+  "arxiv_id": "2009.13297",
+  "doi": "10.1051/0004-6361/202038966",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00501.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present an unbiased spectral survey of one of the most chemically rich hot molecular cores located outside the Galactic Center, in the high-mass star-forming region G31.41+0.31."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "G31.41+0.31 (G31) hot molecular core",
+     "coordinates": {
+      "value": "18 47 34, -01 12 45 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 18 47 34 | -01 12 45 | 96.5 | $3.75$ | $4.4\\times10^{4}$ | $70$ |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "a well-known and studied HMC located at a distance of 3.75 kpc (cite: immer2019)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "3.75 kpc; vLSR 96.5 km/s",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 18 47 34 | -01 12 45 | 96.5 | $3.75$ | $4.4\\times10^{4}$ | $70$ |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "a well-known and studied HMC located at a distance of 3.75 kpc (cite: immer2019)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Immer et al. 2019",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 18 47 34 | -01 12 45 | 96.5 | $3.75$ | $4.4\\times10^{4}$ | $70$ |"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "a well-known and studied HMC located at a distance of 3.75 kpc (cite: immer2019)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Which C2H4O2 isomers (methyl formate, glycolaldehyde, acetic acid) are detected in the hot core G31.41+0.31, with what abundances and emission sizes, and what do they imply for formation pathways?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this first paper, we present the survey and discuss the detection and relative abundances of the 3 isomers of $\\mathrm{C_{2}H_{4}O_{2}}$: methyl formate, glycolaldehyde and acetic acid."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00501.S",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "project 2017.1.00501.S, P.I.: M. T. Beltrán"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3, 84.05-115.91 GHz (~32 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The survey covered the complete spectral range of ALMA band 3, between 84.05 GHz and 115.91 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "9 correlator configurations, 4 contiguous basebands of ~937 MHz each; resolution ~0.488 MHz (~1.3-1.7 km/s); overlaps ~7.3-29 MHz",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "We used 9 correlator configurations (*spec*) and for each of them, 4 contiguous basebands of $\\sim937\\,\\mathrm{MHz}$ were observed simultaneously."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OCHO (methyl formate)",
+     "transition": "196 lines identified, 25 used in fit",
+     "rest_frequency": "e.g. 88.2207, 103.4787, 111.4084 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "The MF spectrum presents 196 identified lines"
+      }
+     ]
+    },
+    {
+     "species": "CH3COOH (acetic acid)",
+     "transition": "26 lines identified, 14 used in fit",
+     "rest_frequency": "e.g. 85.6331, 90.2462, 100.8554 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "Lastly, we identified 26 lines of AA"
+      }
+     ]
+    },
+    {
+     "species": "CH2OHCHO (glycolaldehyde)",
+     "transition": "20 lines detected, 12 used in fit",
+     "rest_frequency": "e.g. 88.5304, 93.0485, 95.7562 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "For GA we detected 20 lines"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "43 antennas",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "using 43 antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-1397 m (spec 1-2); 15-783 m (spec 3-9)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| spec 1 | BB 1     | 84520.801  |   0.48824   |     1.1      | 15 - 1397 |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.2'' x 1.2'' (~4400 au), all specs degraded to common beam",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "We decided to degrade the angular resolution of all the *specs* to the lowest one ($\\sim1.2\\ensuremath{''}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "map rms 0.5-1.9 mJy/beam; spectrum rms 7-27 mK, 27 mK adopted",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "$rms$ of the maps varies between 0.5 mJy/beam and 1.9 mJy/beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Cycle 5, 18 January - 7 September 2018",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "between the $18^{th}$ of January and the $7^{th}$ of September 2018"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "P.I. M. T. Beltrán",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "project 2017.1.00501.S, P.I.: M. T. Beltrán"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Distance to G31 of 3.75 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of 3.75 kpc (cite: immer2019)"
+       }
+      ]
+     },
+     "citation": "(cite: immer2019)"
+    },
+    {
+     "what": {
+      "value": "Luminosity 4.4e4 Lsun and mass ~70 Msun (rescaled)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "b) from (cite: oso2009), rescaled to a distance of 3.75 kpc; c) from (cite: cesa2019), after rescaling to a distance of 3.75 kpc."
+       }
+      ]
+     },
+     "citation": "(cite: oso2009); (cite: cesa2019)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic catalog entries (CDMS, JPL; acetic acid from Ilyushin et al. 2013)",
+      "evidence": [
+       {
+        "loc": "3.2 Spectral analysis",
+        "quote": "The spectroscopic data of acetic acid, from the work of (cite: ilyushin2013), were introduced in CDMS in May 2019"
+       }
+      ]
+     },
+     "citation": "(cite: cdms2005); (cite: jpl1998); (cite: ilyushin2013)"
+    },
+    {
+     "what": {
+      "value": "Isomer column density ratios, abundances and N(H2) for comparison sources (Table of literature)",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "References to the works on the 3 isormers: (1) (cite: xue2019); (2) (cite: el2019)"
+       }
+      ]
+     },
+     "citation": "xue2019; el2019; Jorge2016; manigand2020; taquet2015 and others"
+    },
+    {
+     "what": {
+      "value": "Dust opacity k0 = 0.8 cm2/g at 220 GHz",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum",
+        "quote": "a dust opacity coefficient $k_0 = 0.8\\,\\mathrm{cm^2/g}$ at 220 GHz (cite: ossenkopf1994)"
+       }
+      ]
+     },
+     "citation": "(cite: ossenkopf1994)"
+    },
+    {
+     "what": {
+      "value": "MF Tex gradient (497 K at 0.22'' to 110 K at 1.32'')",
+      "evidence": [
+       {
+        "loc": "3.2 Spectral analysis",
+        "quote": "(cite: beltran2018) found a decrease of $T_{\\rm{ex}}$ of methyl formate with distance from the core center"
+       }
+      ]
+     },
+     "citation": "(cite: beltran2018)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibrated and imaged with CASA (pipeline vs manual not specified)",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The data were calibrated and imaged with CASA"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1751+0939 (flux and bandpass); phase calibrator J1851+0035",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "For all the *specs* the source used as flux and bandpass calibrator is J1751+0939, while J1851+0035 is the phase calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5%",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The uncertainties in the flux calibration are $\\sim5\\%$ (from Quality Assesment 2 reports)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The maps were created using a robust parameter of (cite: briggs) set equal to 0"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "pixel 0.15''",
+     "evidence": [
+      {
+       "loc": "4.1 Methyl Formate",
+       "quote": "smaller than the pixel size ($0.15\\ensuremath{''}$)"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "No line-free channels; continuum from STATCONT on spec5 BB1; line fit done without subtraction, continuum modelled as power law",
+     "evidence": [
+      {
+       "loc": "2.2 Continuum determination",
+       "quote": "it was not possible to find a sufficient number of channels without line emission that could be used to obtain a map of the continuum emission"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.2'' x 1.2'' restoring beam",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "a restoring sinthesized beam of $1.2\\ensuremath{''}\\times1.2\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.5-1.9 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "$rms$ of the maps varies between 0.5 mJy/beam and 1.9 mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "STATCONT method for continuum determination",
+      "evidence": [
+       {
+        "loc": "2.2 Continuum determination",
+        "quote": "we used STATCONT (cite: alvaro2018), a python-based tool designed to determine the continuum emission level in spectral data"
+       }
+      ]
+     },
+     "from_reference": "(cite: alvaro2018)"
+    },
+    {
+     "what": {
+      "value": "XCLASS LTE modelling and optical-depth formula",
+      "evidence": [
+       {
+        "loc": "Appendix B",
+        "quote": "Eq. (B.28) of (cite: xclass) gives the optical depth of a line as a function of frequency"
+       }
+      ]
+     },
+     "from_reference": "(cite: xclass)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Whether the archive pipeline or manual calibration and CASA version were used",
+    "Exact tclean parameters (deconvolver, niter, threshold, masks, image size)",
+    "How the beam was matched to 1.2'' (imsmooth/restoringbeam details)",
+    "STATCONT parameters",
+    "XCLASS optimizer algorithm, start values, iterations and the preliminary-fit FWHM/vLSR procedure",
+    "Exact fit frequency ranges and line lists (only in appendix tables not reproduced)",
+    "Size of the spectral extraction area and how N(H2) was extracted from the same area"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Create continuum map and N(H2)",
+    "method": {
+     "value": "STATCONT continuum from spec5 BB1; 2D Gaussian fit with imfit; N(H2) from flux in the extraction area",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum",
+       "quote": "We have fitted a 2D gaussian to the continuum emission of the main core using the task *imfit* of CASA"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "STATCONT"
+    ],
+    "key_parameters": [
+     {
+      "value": "flux 0.1 Jy at 99.0 GHz",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum",
+        "quote": "The flux of the continuum inside the area from which we extracted the spectrum is of 0.1 Jy at the mean frequency of 99.0 GHz"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Td = 150 K, beta = 2.0, k0 = 0.8 cm2/g at 220 GHz, mu = 2.33, gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum",
+        "quote": "Assuming a dust temperature of $150\\,\\mathrm{K}$, $\\beta = 2.0$, a dust opacity coefficient $k_0 = 0.8\\,\\mathrm{cm^2/g}$ at 220 GHz"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent within a factor ~4 with Rivilla et al. 2017",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum",
+       "quote": "This value is consistent within a factor $\\sim4$ with the previous estimate by (cite: rivilla2017a)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract and merge spectra",
+    "method": {
+     "value": "Mean spectrum within one beam at continuum peak; convert to T_SB (Rayleigh-Jeans); remove baseband jumps by matching overlaps; convert to rest frequency and rebin with HIPE",
+     "evidence": [
+      {
+       "loc": "2.3 Combination of the spectral windows",
+       "quote": "we forced the channels of spec1 BB2 in the overlapping region to match those of spec1 BB1, by subtracting from spec1 BB2 the mean value of the difference"
+      }
+     ]
+    },
+    "software": [
+     "HIPE",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "vLSR 96.5 km/s; bin width 0.48840 MHz; conservative rms 27 mK",
+      "evidence": [
+       {
+        "loc": "2.3 Combination of the spectral windows",
+        "quote": "rebinned the spectra to a constant value of the bin width equal to 0.48840 MHz using HIPE"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Baseline rms 1.2 K (~12% of continuum) included as error",
+     "evidence": [
+      {
+       "loc": "2.3 Combination of the spectral windows",
+       "quote": "This 12% error on the continuum level is included as additional error on the parameters derived from the fit to the spectrum."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Line identification and selection",
+    "method": {
+     "value": "Preliminary line identification of whole spectrum, then selection of unblended transitions with 3 rules (>3 rms, blending criteria)",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "We followed three rules to identify a transition of one of the 3 $\\mathrm{C_2H_4O_2}$ isomers"
+      }
+     ]
+    },
+    "software": [
+     "XCLASS",
+     "CDMS",
+     "JPL"
+    ],
+    "key_parameters": [
+     {
+      "value": "Eu < 250 K for the main fit; 25 MF, 12 GA, 14 AA lines",
+      "evidence": [
+       {
+        "loc": "3.2 Spectral analysis",
+        "quote": "For MF we selected 25 lines, for GA 12 and for AA 14."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "All lines optically thin (tau0 << 1)",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "we find that all transitions are optically thin ($\\tau_{0}\\ll1$)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit LTE synthetic spectra for Tex and Ntot",
+    "method": {
+     "value": "XCLASS single-component LTE chi2 fit; continuum, FWHM, vLSR fixed from preliminary fit; Tex and Ntot free",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "the continuum, from Eq. ([\\[eqcontinuum\\]]), the FWHM and $V_{\\mathrm{LSR}}$ of the selected species were kept fixed to the values found by a preliminary fit"
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [
+     {
+      "value": "beam filling factor 1; single temperature component",
+      "evidence": [
+       {
+        "loc": "4 Results",
+        "quote": "The column densities of the 3 isomers have been derived assuming a beam filling factor of 1."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, justified by n ~ 1e8 cm-3",
+      "evidence": [
+       {
+        "loc": "3.2 Spectral analysis",
+        "quote": "a rough estimate of the volume density of the core is $n\\sim10^8\\,\\mathrm{cm^{-3}}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimisation of observed vs synthetic spectrum",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "The fitting procedure varies the free parameters to minimize the $\\chi^{2}$ between the observed spectrum and the synthetic one."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Fixed-Tex grids for AA (100-300 K) and GA (150-300 K); fit including Eu>250 K transitions for MF and AA",
+     "evidence": [
+      {
+       "loc": "4.2 Acetic Acid",
+       "quote": "we performed the fit to AA for a grid of fixed temperatures, ranging from $100\\,\\mathrm{K}$ to $300\\,\\mathrm{K}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Abundances and emission size",
+    "method": {
+     "value": "X = Ntot/N(H2) in the 1.2'' beam with 20% N(H2) uncertainty; moment-0 maps of 8 transitions per molecule normalised and averaged, 2D Gaussian with imfit",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "To obtain a mean value of diameter of the emitting region of each molecule, the 8 maps of a given molecule have been normalized with respect to the peak intensity, and averaged together."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian (imfit)",
+     "evidence": [
+      {
+       "loc": "4 Results",
+       "quote": "The task *imfit* of CASA has been used to fit a 2D gaussian to these maps"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare with literature sources and chemical models",
+    "method": {
+     "value": "Compare abundances and column density ratios with other sources and published chemical model predictions",
+     "evidence": [
+      {
+       "loc": "5.1 Comparison with other sources",
+       "quote": "Figure [9] shows the abundances with respect to H$_2$ (upper panel) and the column density ratios (lower panel)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration, imaging, imfit Gaussian fits",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The data were calibrated and imaged with CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "STATCONT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum determination in line-rich data",
+     "evidence": [
+      {
+       "loc": "2.2 Continuum determination",
+       "quote": "we used STATCONT (cite: alvaro2018)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "XCLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification and LTE spectral fitting",
+     "evidence": [
+      {
+       "loc": "3.2 Spectral analysis",
+       "quote": "The line identification and the fit to the $\\mathrm{C_{2}H_{4}O_{2}}$ isomers have been obtained with the software XCLASS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "HIPE",
+    "version": "not stated",
+    "used_for": {
+     "value": "Rebinning spectra to constant channel width",
+     "evidence": [
+      {
+       "loc": "2.3 Combination of the spectral windows",
+       "quote": "rebinned the spectra to a constant value of the bin width equal to 0.48840 MHz using HIPE"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Methyl formate Tex",
+    "value": "221",
+    "uncertainty": "±27",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| $\\mathrm{CH_{3}OCHO}$ | $6.8$ | $1.1$ | $221\\pm27$ | $20\\pm4$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Methyl formate Ntot",
+    "value": "2.0e18",
+    "uncertainty": "±0.4e18",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1 Methyl Formate",
+      "quote": "$N_{\\rm{tot}}=\\mathrm{(2.0\\pm0.4)\\times10^{18}\\,cm^{-2}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Methyl formate abundance",
+    "value": "2.0e-7",
+    "uncertainty": "±0.6e-7",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Methyl Formate",
+      "quote": "an abundance $X=(2.0\\pm0.6)\\times10^{-7}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Acetic acid Tex",
+    "value": "299",
+    "uncertainty": "±42",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Acetic Acid",
+      "quote": "$T_{\\rm{ex}}=299\\pm42\\,\\mathrm{K}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Acetic acid Ntot",
+    "value": "8.4e17",
+    "uncertainty": "±1.4e17",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Acetic Acid",
+      "quote": "$N_{\\rm{tot}}=(8.4\\pm1.4)\\mathrm{\\times10^{17}\\,cm^{-2}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Acetic acid abundance range",
+    "value": "4.3e-8 to 8e-8",
+    "uncertainty": "best fit 8±3e-8",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Acetic Acid",
+      "quote": "This implies a range in abundance $X$ between $4.3\\times10^{-8}$ and $8\\times10^{-8}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Glycolaldehyde Tex",
+    "value": "128",
+    "uncertainty": "±17",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Glycolaldehyde",
+      "quote": "$T_{\\rm{ex}}=128\\pm17\\,\\mathrm{K}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Glycolaldehyde Ntot",
+    "value": "5.0e16",
+    "uncertainty": "±0.7e16",
+    "units": "cm-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Glycolaldehyde",
+      "quote": "$N_{\\rm{tot}}=\\mathrm{(5.0\\pm0.7)\\times10^{16}\\,cm^{-2}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Glycolaldehyde abundance",
+    "value": "5.0e-9",
+    "uncertainty": "±1.4e-9",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Glycolaldehyde",
+      "quote": "an abundance $X=(5.0\\pm1.4)\\times10^{-9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(H2) in 1.2'' beam",
+    "value": "1.0e25",
+    "uncertainty": "±0.2e25",
+    "units": "cm-2",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$N_{\\rm{H_2}}=(1.0\\pm0.2)\\mathrm{\\times10^{25}\\,cm^{-2}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum deconvolved size of HMC",
+    "value": "1.41'' x 1.22''",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum",
+      "quote": "the deconvolved size of the continuum being $1.41\\ensuremath{''}\\times1.22\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust emissivity index beta of continuum power law",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2 (baseline fit)",
+      "quote": "|   84.079   |     |          10.4          |     |   0.4   |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "MF emission is most extended and AA most compact; all emission comes only from the HMC",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "the emission of MF is the most extended among the 3 isomers, while AA is the most compact"
+     }
+    ]
+   },
+   {
+    "value": "G31 has the highest MF and AA abundances among compared sources",
+    "evidence": [
+     {
+      "loc": "5.1 Comparison with other sources",
+      "quote": "G31 has the highest values of abundance of MF and AA among the 4 sources shown"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are all three C2H4O2 isomers detected in G31?",
+    "experiment": "XCLASS LTE fit of unblended transitions in Band 3 survey",
+    "result": "MF, AA and GA fit with Tex 128-299 K and abundances 5e-9 to 2e-7",
+    "finding": "All three isomers detected; MF and AA abundances highest in the literature sample",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We have detected for the first time all the 3 isomers of $\\mathrm{C_2H_4O_2}$ towards this HMC."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do the isomers have different emission extents?",
+    "experiment": "Averaged normalised moment-0 maps and radial profiles",
+    "result": "MF most extended, AA most compact",
+    "finding": "Emission size differs among isomers",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Comparison with other sources",
+      "quote": "confirming a difference in the extension and showing as AA and GA are more compact than MF"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which formation routes explain the abundances?",
+    "experiment": "Compare with published chemical models",
+    "result": "MF abundance not reproduced by gas-phase only; AA grain-surface route insufficient; GA ambiguous",
+    "finding": "Grain-surface needed for MF; GA both possible; AA gas-phase needs more testing",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The comparison with chemical models suggests that the MF abundance found in G31 seems not reproducible using only gas-phase routes, thus revealing the need for grain-surface reactions."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Single-temperature fit chosen to reduce free parameters despite known Tex gradient",
+    "evidence": [
+     {
+      "loc": "3.2 Spectral analysis",
+      "quote": "we decided to perform a single temperature component analysis, to reduce the number of free parameters as much as possible"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Two-temperature component fit for MF did not converge or improve the fit",
+     "evidence": [
+      {
+       "loc": "4.1 Methyl Formate",
+       "quote": "a two-temperature component fit does not properly converge and does not significantly improve the fit"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Tex-Ntot degeneracy for AA gives a factor ~2 uncertainty on Ntot",
+     "evidence": [
+      {
+       "loc": "4.2 Acetic Acid",
+       "quote": "with an uncertainty on $N_{\\rm{tot}}$ of a factor $\\sim2$"
+      }
+     ]
+    },
+    {
+     "value": "Some MF transitions under-reproduced; unidentified blends possible",
+     "evidence": [
+      {
+       "loc": "4.1 Methyl Formate",
+       "quote": "we cannot exclude that some of these transitions may also be blended with still unidentified molecular species"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Beam-filling factor of 1 with a barely resolved source may bias column densities",
+    "N(H2) from dust with assumed Td=150 K, beta=2 conflicts with fitted beta=0.4 and is uncertain beyond 20%",
+    "Single-Tex fit ignores the known temperature gradient",
+    "Continuum-level baseline from by-eye fit with spectral merging adds systematics"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data from ALMA project 2017.1.00501.S, acknowledged; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00501.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Tclean parameters and CASA version",
+    "Line lists in appendix tables (not provided in text)",
+    "XCLASS fit configuration details"
+   ],
+   "estimated_data_volume_inferred": "Large: 36 basebands over 9 setups, likely hundreds of GB raw; ~100s GB",
+   "score_inferred": 3,
+   "score_reason": "Data and spectral fitting recipe are largely described and results numeric, but imaging parameters, pipeline version and fit settings are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public status not stated explicitly and imaging/fit settings are incomplete, although results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Möller et al. 2017 (cite: xclass)",
+     "why": "XCLASS software"
+    },
+    {
+     "citation": "Sánchez-Monge et al. 2018 (cite: alvaro2018)",
+     "why": "STATCONT continuum determination"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Beltrán et al. 2018 (cite: beltran2018)",
+     "why": "High-resolution ALMA study of G31 providing MF Tex gradient"
+    },
+    {
+     "citation": "Rivilla et al. 2017a (cite: rivilla2017a)",
+     "why": "Previous IRAM 30m G31 COM column densities"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GUAPOS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ff8974fbc786608fc0aa8fdc45a44b78",
+  "batch_id": "msgbatch_01DqEanefrTucE7zraJQJSEw",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:15:37",
+  "usage": {
+   "input_tokens": 46800,
+   "output_tokens": 10369,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.099252,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 80,
+  "quotes_ok": 80,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 57,
+   "rate": 0.679
+  },
+  "evidence_ok": true
+ }
+}

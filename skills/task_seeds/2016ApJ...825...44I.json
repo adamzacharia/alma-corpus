@@ -1,0 +1,227 @@
+{
+ "bibcode": "2016ApJ...825...44I",
+ "title": "ALMA Investigation of Vibrationally Excited HCN/HCO<SUP>+</SUP>/HNC Emission Lines in the AGN-Hosting Ultraluminous Infrared Galaxy IRAS 20551-4250",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/825/1/44",
+ "arxiv_id": "1605.00644",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "agn_and_quasars"
+ ],
+ "question": "Do HCN, HCO+ and HNC show vibrationally excited (v2=1f) J=3-2 emission in the AGN-hosting ULIRG IRAS 20551-4250, and does infrared radiative pumping and abundance explain the enhanced HCN-to-HCO+ ratio?",
+ "alma_project_codes": [
+  "2013.1.00033.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211–275 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5 arcsec (~420 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCN/HCO+/HNC J=4-3 fluxes from ALMA Cycle 0",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "HCN J=4–3 fluxes at v$_{2}$=1f and v=0 are from (cite: ima13b)."
+     }
+    ]
+   },
+   "citation": "(cite: ima13b)"
+  },
+  {
+   "what": {
+    "value": "Molecular parameters (E_u, A_ul) from CDMS",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "Values in Cols. (3) and (4) are from the Cologne Database of Molecular Spectroscopy (CDMS) (cite: mul05) via Splatalogue"
+     }
+    ]
+   },
+   "citation": "(cite: mul05)"
+  },
+  {
+   "what": {
+    "value": "Vibrational A coefficients A(v2=1-0): HCN 1.7, HCO+ 3.0, HNC 5.2 s^-1",
+    "evidence": [
+     {
+      "loc": "4.3.1",
+      "quote": "$\\sim$1.7 s$^{-1}$ (HCN) (cite: deg86; aal07a), $\\sim$3.0 s$^{-1}$ (HCO$^{+}$) (cite: mau95), and $\\sim$5.2 s$^{-1}$ (HNC) (cite: aal07a)"
+     }
+    ]
+   },
+   "citation": "(cite: deg86; aal07a; mau95)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "CASA clean after continuum subtraction; moment 0/1/2 maps; imfit for sizes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "40-channel binning, 0.1 arcsec pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line fluxes",
+   "method": "Gaussian fits to spectra at continuum peak; upper limit from moment 0 for HCO+ v2=1f",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Predict infrared pumping and derive abundance ratios",
+   "method": "Compare observed v2=1f J=3 column density ratios with predicted pumping using B coefficients, Spitzer IR continuum at 12/14/21.5 micron",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Same emitting region and optically thin v2=1f; foreground screen dust; AGN-dominated mid-IR continuum"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate line opacity and excitation temperatures",
+   "method": "HCN/H13CN ratio with 12C/13C 50–100; clumpy flux attenuation tau/(1-exp(-tau)); T_ex from v2=1f/v=0; pumping condition test",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "12C/13C ~50 in starbursts, ~100 in ULIRGs"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN v2=1f J=3-2 flux",
+   "value": "0.25",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| HCN J=3–2, v$_{2}$=1f        | 267.20           | 0.22 (7.6$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC v2=1f J=3-2 flux",
+   "value": "0.20",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| HNC J=3–2, v$_{2}$=1f | 273.87 | 692.0 | 8.5 | 0.20$\\pm$0.07 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ v2=1f J=3-2 flux upper limit",
+   "value": "<0.088",
+   "uncertainty": "3 sigma",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| HCO$^{+}$ J=3–2, v$_{2}$=1f | 268.69 | 1217.4 | 13.1 | $<$0.088 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux at ~255 GHz",
+   "value": "3.6–3.8",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| a: 244.8–246.6, 247.1–249.0, 259.8–263.5 | 3.8 (59$\\sigma$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance ratio HCN:HCO+:HNC",
+   "value": "1:<0.4:<0.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "HCN:HCO^{+}:HNC (abundance) & = & 1:<0.4:<0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN v=0 J=3-2 flux attenuation",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.2",
+     "quote": "we adopt the flux attenuation of HCN J=3–2 emission to be 6"
+    }
+   ]
+  },
+  {
+   "quantity": "J=4-3 to J=3-2 flux ratio",
+   "value": "HCN 1.6, HCO+ 1.7, HNC 1.8",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "are 1.6$\\pm$0.2 for HCN, 1.7$\\pm$0.2 for HCO$^{+}$, and 1.8$\\pm$0.2 for HNC"
+    }
+   ]
+  },
+  {
+   "quantity": "tau(9.7um) silicate",
+   "value": "2.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "is estimated to be $\\tau_{9.7}$ $\\sim$ 2.7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean weighting/robust, deconvolver, threshold and masks",
+  "specific line-free channels and continuum fit order",
+  "CASA version",
+  "channel ranges for moment 0 maps",
+  "Gaussian fitting procedure details",
+  "Spitzer IRS spectrum data reduction and power-law fit wavelength ranges"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "CASA version",
+  "Spitzer spectrum processing and power-law fit ranges"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and results numeric, but imaging parameters and IR continuum fitting are sparsely specified.",
+ "rediscovery_reason": "Public ALMA data; line fluxes in tables are checkable via simple imaging and Gaussian fits.",
+ "source_card": "cards/2016ApJ...825...44I/sonnet/card.md"
+}

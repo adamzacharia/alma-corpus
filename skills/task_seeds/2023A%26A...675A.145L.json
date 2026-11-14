@@ -1,0 +1,314 @@
+{
+ "bibcode": "2023A&A...675A.145L",
+ "title": "The dark neutral medium is (mostly) molecular hydrogen",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346259",
+ "arxiv_id": "2306.09502",
+ "fields": [
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "Determine the atomic or molecular character of the dark neutral medium (DNM) along 33 Galactic anticenter sightlines (and 46 total including Chamaeleon) and evaluate how HI saturation and the CO-H2 conversion factor influence DNM determinations.",
+ "alma_project_codes": [
+  "2016.1.00714.S",
+  "2018.1.00115.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "rms optical depth integral error 0.003 to 1.138 km s^-1 over a 3 km s^-1 interval"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N(DNM), 21cm HI column densities N(HI) and N(HI)_cl, and prior J=1-0 CO emission W_CO",
+    "evidence": [
+     {
+      "loc": "2. Observations and data reduction",
+      "quote": "analyses of Planck Collaboration et al. (2015) and Remy et al. (2017, 2018) we take N(DNM) and Ł21 HI column densities N(HI) and N(HI) cl"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "3 Integrated J=1-0 CO emission used by Planck Collaboration et al. (2015) and Remy et al. (2017, 2018)"
+     }
+    ]
+   },
+   "citation": "Planck Collaboration et al. (2015); Remy et al. (2017, 2018)"
+  },
+  {
+   "what": {
+    "value": "6 arcmin resolution dust-emission maps scaled to optical reddening E_B-V",
+    "evidence": [
+     {
+      "loc": "2.4. Reddening and dust optical depth",
+      "quote": "The 6 [′] resolution dust-emission maps scaled to optical reddening E B−V by Schlegel et al. (1998) are cited here."
+     }
+    ]
+   },
+   "citation": "Schlegel et al. (1998)"
+  },
+  {
+   "what": {
+    "value": "Conversion between Planck 353 GHz dust optical depth and E_B-V",
+    "evidence": [
+     {
+      "loc": "2.4. Reddening and dust optical depth",
+      "quote": "Those reddening values can be converted to Planck 353 GHz dust optical depth using the relationship established by Planck Collaboration et al. (2014) between the 353 GHz dust optical depth and the E B−V values of Schlegel et al. (1998), E B−V /τ 353 = (1.49 ± 0.03) × 10 [4] mag."
+     }
+    ]
+   },
+   "citation": "Planck Collaboration et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "13 Chamaeleon sightlines with HCO+ absorption",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "In the outskirts of Chamaeleon, we used millimeter-wave HCO [+] absorption to show that the DNM was almost exclusively molecular, even while the gas as a whole was mostly atomic (Liszt et al. 2018)."
+     },
+     {
+      "loc": "5. Summary",
+      "quote": "Inferring N(H 2 ) from N(HCO [+] ) using the ratio N(HCO [+] )/N(H 2 ) = 3×10 [−][9], we combined these results with those from our earlier study of 13 directions where HCO [+] absorption was detected in the outskirts of Chamaeleon."
+     }
+    ]
+   },
+   "citation": "Liszt et al. (2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract ALMA 89.2 GHz continuum fluxes and HCO+ optical depth absorption profiles",
+   "method": "Acquire ALMA 89.2 GHz absorption profiles toward 33 compact extragalactic continuum sources and integrate optical depth (or compute 3-sigma upper limits over a 3 km s^-1 interval)",
+   "software": [],
+   "key_parameters": [
+    "Spectral resolution 0.205 km s^-1, channel spacing 0.102 km s^-1, 3 km s^-1 interval for 3-sigma upper limits"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure J=1-0 CO emission with IRAM 30m",
+   "method": "Average five-point frequency-switched CO J=1-0 maps (target plus four cardinal directions displaced by 2x22 arcsec) on the main beam antenna temperature scale and integrate emission",
+   "software": [],
+   "key_parameters": [
+    "Offset 2 HPBW (2x22 arcsec); 3 km s^-1 interval for 3-sigma upper limits"
+   ],
+   "assumptions": [
+    "Contamination by CO absorption is negligible given the strength of emission and/or continuum"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive H2 column densities and CO-H2 conversion factors",
+   "method": "Convert integrated HCO+ optical depth to N(HCO+) and then to N(H2), and compute molecular fraction f_H2, DNM fraction f_DNM, and X_CO = N(H2)/W_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "N(HCO+) = 1.10 x 10^12 * Y_HCO+ cm^-2 and N(HCO+)/N(H2) = 3 x 10^-9",
+    "Standard Galactic X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 for comparison"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare N(H2), N(DNM), N(HI), E_B-V, and W_CO across sightlines and regional hull",
+   "method": "Combine the 33 anticenter sightlines with 13 Chamaeleon sightlines, bin quantities in 0.05 mag intervals of E_B-V, fit power-law N(H2)-E_B-V relation, and compute pixel-by-pixel cumulative distributions inside a regional hull",
+   "software": [],
+   "key_parameters": [
+    "E_B-V bin width 0.05 mag"
+   ],
+   "assumptions": [
+    "Amount of material proportional to E_B-V and N(H2) = 10^21.0973 * E_B-V^1.335"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean E(B-V) (Galactic anticenter sample, 33 sightlines)",
+   "value": "0.362",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Galactic anticenter 0.362 1.324 1.119 0.798 5.185 0.268 0.38 0.13 1.93"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 2N(H2) (Galactic anticenter sample, 33 sightlines)",
+   "value": "0.798",
+   "uncertainty": "not stated",
+   "units": "10^21 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Galactic anticenter 0.362 1.324 1.119 0.798 5.185 0.268 0.38 0.13 1.93"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular fraction f_H2 (Galactic anticenter sample, 33 sightlines)",
+   "value": "0.38",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Galactic anticenter 0.362 1.324 1.119 0.798 5.185 0.268 0.38 0.13 1.93"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean DNM fraction f_DNM (All 46 sightlines)",
+   "value": "0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All LOS 0.336 1.312 0.977 0.684 4.906 0.250 0.34 0.13 1.95"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 2N(H2) (All 46 sightlines)",
+   "value": "0.684",
+   "uncertainty": "not stated",
+   "units": "10^21 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All LOS 0.336 1.312 0.977 0.684 4.906 0.250 0.34 0.13 1.95"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular fraction f_H2 (All 46 sightlines)",
+   "value": "0.34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All LOS 0.336 1.312 0.977 0.684 4.906 0.250 0.34 0.13 1.95"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X_CO (IRAM 30m CO detected, 18 sightlines)",
+   "value": "3.02",
+   "uncertainty": "not stated",
+   "units": "10^20 cm^-2 (K-km s^-1)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "30m CO detected 0.467 1.491 1.197 1.312 2.170 0.318 0.47 0.11 3.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X_CO (IRAM 30m W_CO > 1 K-km s^-1, 6 sightlines)",
+   "value": "2.56",
+   "uncertainty": "not stated",
+   "units": "10^20 cm^-2 (K-km s^-1)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "30m W CO >1K-km s [−][1] 0.685 1.690 1.082 2.824 5.522 0.291 0.63 0.06 2.56"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X_CO (IRAM 30m W_CO <= 1 K-km s^-1, 12 sightlines)",
+   "value": "5.62",
+   "uncertainty": "not stated",
+   "units": "10^20 cm^-2 (K-km s^-1)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "30m W CO ≤1K-km s [−][1] 0.358 1.391 1.255 0.555 0.494 0.332 0.29 0.17 5.62"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio <2N(H2)>/<N(DNM)> for sightlines lacking CO emission",
+   "value": "1.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. DNM, E B−V, and N(H 2 )",
+     "quote": "Overall <2N(H 2 )> = 1.3<N(DNM)> for sources lacking CO emission, so H 2 accounts for DNM without adding extra “dark” gas, and the DNM is mostly molecular."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of total H2 in sightlines with W_CO > 1 K-km s^-1",
+   "value": "0.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Achievable limits and detection thresholds for CO, DNM, and H 2",
+     "quote": "HCO [+] was detected along all of these sightlines, and the three subsamples respectively represent fractions 0.66, 0.26, and 0.08 of the total amount of H 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Highest integrated HCO+ optical depth (J0438+3004)",
+   "value": "6.25",
+   "uncertainty": "0.038",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "J0438+3004 4.38049 30.04455 170.4116 -11.2283 0.952 0.689 6.25 0.038 7.11 0.026"
+    }
+   ]
+  },
+  {
+   "quantity": "Highest IRAM 30m W_CO (J0437+2940)",
+   "value": "10.42",
+   "uncertainty": "0.027",
+   "units": "K-km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "J0437+2940 4.37044 29.40138 170.5818 -11.6609 0.979 0.059 5.92 1.138 10.42 0.027"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration procedure (pipeline vs. manual) used to reduce the ALMA data",
+  "How the absorption spectra and 89 GHz continuum fluxes were extracted from the ALMA visibilities or images",
+  "Exact velocity integration windows used for each sightline to compute integrated optical depth and W_CO",
+  "Observing dates, array configuration, and on-source integration time for the ALMA observations"
+ ],
+ "missing_for_reproduction": [
+  "ALMA calibration and spectral extraction details (deferred to Liszt et al. 2018)",
+  "Exact velocity intervals over which Υ_HCO+ and W_CO were integrated for each sightline",
+  "Digital pixel masks or vertex coordinates of the polygon hull shown in Figure C.1",
+  "Raw or reduced IRAM 30m CO spectral files (project 003-19)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Complete sightline-by-sightline intermediate and derived numbers are tabulated in Tables 1 and 2, and the analytic conversions are explicit; however, ALMA data reduction details are deferred to Liszt et al. (2018), velocity integration bounds per target are not tabulated, and the IRAM 30m data are not in the ALMA archive.",
+ "rediscovery_reason": "The ALMA project codes (2016.1.00714.S, 2018.1.00115.S) and all 33 target coordinates, 89 GHz fluxes, and integrated HCO+ optical depths are explicitly tabulated in Table 1, making the ALMA absorption measurements and resulting N(H2) values directly verifiable from public archival data.",
+ "source_card": "cards/2023A%26A...675A.145L/sonnet/card.md"
+}

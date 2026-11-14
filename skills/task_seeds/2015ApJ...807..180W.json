@@ -1,0 +1,296 @@
+{
+ "bibcode": "2015ApJ...807..180W",
+ "title": "Star Formation and the Interstellar Medium in z &gt; 6 UV-luminous Lyman-break Galaxies",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/807/2/180",
+ "arxiv_id": "1504.05875",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the [C II] and FIR dust properties (SFR, [CII]/FIR ratio, dynamics) of two UV-luminous z>6 LBGs, and what do systemic redshifts from [C II] imply for Lyα velocity shifts at z~6?",
+ "alma_project_codes": [
+  "2013.1.00815.S"
+ ],
+ "data": {
+  "bands": "Band 6, 4 sub-bands between 249 and 272 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "beam FWHM = 0.50\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lyα spectra of CLM 1 and WMH 5",
+    "evidence": [
+     {
+      "loc": "2.3 Lyman-$\\alpha$ spectroscopy",
+      "quote": "Optical spectroscopy, including the detection of asymmetric Ly$\\alpha$ emission lines and continuum breaks, of both galaxies were presented in their discovery papers"
+     }
+    ]
+   },
+   "citation": "(cite: Cuby:2003; Willott:2013a)"
+  },
+  {
+   "what": {
+    "value": "Lyα velocity shifts of A383-5.2 and GN-108036",
+    "evidence": [
+     {
+      "loc": "5 Lyα velocity shifts",
+      "quote": "The first measurement of Ly$\\alpha$ velocity shifts at redshifts relevant to the reionization epoch have recently been made by (cite: Stark:2014a)."
+     }
+    ]
+   },
+   "citation": "(cite: Stark:2014a)"
+  },
+  {
+   "what": {
+    "value": "Lyα shifts at 2<z<3.1 comparison sample",
+    "evidence": [
+     {
+      "loc": "5 Lyα velocity shifts",
+      "quote": "we show for comparison a sample selected at lower redshift ($2<z<3.1$) as LAEs and LBGs (cite: Erb:2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Erb:2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and extract [C II] line and continuum",
+   "method": "Re-image calibrated data with Briggs weighting, make cubes, subtract continuum in image plane, Gaussian fit spectra and maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 1; 15.625 MHz channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive FIR luminosity and SFRs",
+   "method": "Greybody from 1.2 mm continuum; SFR from L_FIR and L_[CII] calibrations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=30 K, beta=1.6; no CMB correction"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "SED fitting and photometry",
+   "method": "CIGALE fit to UV-optical-IR plus ALMA continuum filter; NIR/IRAC photometry via GALFIT and PyGFIT",
+   "software": [
+    "CIGALE",
+    "GALFIT",
+    "PyGFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Bruzual & Charlot SSP, constant SFR, Chabrier IMF, Z=0.008, Calzetti attenuation, Dale 2014 IR templates"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Lyα velocity shifts from systemic [C II]",
+   "method": "Convert spectra to LSR, compare Lyα centroid to [C II] redshift, compare with literature vs equivalent width",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "z_[CII] CLM 1",
+   "value": "6.1657",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 CLM 1",
+     "quote": "we determine the systemic redshift of the galaxy as $z=6.1657 \\pm 0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] FWHM CLM 1",
+   "value": "162",
+   "uncertainty": "23",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 CLM 1",
+     "quote": "The Gaussian FWHM is $162 \\pm 23$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] CLM 1",
+   "value": "2.40e8",
+   "uncertainty": "0.32e8",
+   "units": "Lsun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(2.40 \\pm 0.32) \\times 10^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] WMH 5",
+   "value": "6.60e8",
+   "uncertainty": "0.72e8",
+   "units": "Lsun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(6.60  \\pm 0.72) \\times 10^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "f_1.2mm CLM 1",
+   "value": "44",
+   "uncertainty": "26",
+   "units": "μJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$44 \\pm 26$"
+    }
+   ]
+  },
+  {
+   "quantity": "f_1.2mm WMH 5",
+   "value": "218",
+   "uncertainty": "41",
+   "units": "μJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$218 \\pm 41$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR WMH 5",
+   "value": "1.25e11",
+   "uncertainty": "0.24e11",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(1.25 \\pm 0.24) \\times 10^{11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]/L_FIR CLM 1",
+   "value": "9.5e-3",
+   "uncertainty": "5.7e-3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(9.5 \\pm 5.7) \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]/L_FIR WMH 5",
+   "value": "5.3e-3",
+   "uncertainty": "1.2e-3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(5.3 \\pm 1.2) \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lyα velocity shift CLM 1",
+   "value": "+430",
+   "uncertainty": "69",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Lyα velocity shifts",
+     "quote": "For CLM 1 the measured offset is $+430 \\pm 69$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lyα shift WMH 5 (A / B)",
+   "value": "+265 / +504",
+   "uncertainty": "52",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Lyα velocity shifts",
+     "quote": "then the offset is $+265 \\pm 52$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SED stellar mass CLM 1",
+   "value": "1.3e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 CLM 1",
+     "quote": "a stellar mass of $1.3 \\times\n10^{10} \\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "lensing magnification of CLM 1",
+   "value": "1.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 CLM 1",
+     "quote": "this lensing configuration provides a magnification factor of only 1.13"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "flux, bandpass and phase calibrators",
+  "line-free channels and channel ranges used for continuum subtraction",
+  "image size and cell size, clean threshold/masks",
+  "primary beam correction details",
+  "code for custom Gaussian fitting",
+  "CIGALE parameter grids and fitting details",
+  "dynamical mass formula and size/inclination assumptions",
+  "how the 42.5-122.5 micron greybody integration was done"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibrator details",
+  "CIGALE configuration",
+  "custom fitting software",
+  "dynamical mass formula details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Simple data and clear table of results, but imaging details, versions and SED fit configuration missing.",
+ "rediscovery_reason": "Cycle 2 data likely public, key results (line fluxes, redshifts, continuum) are numeric and recipe mostly sufficient.",
+ "source_card": "cards/2015ApJ...807..180W/sonnet/card.md"
+}

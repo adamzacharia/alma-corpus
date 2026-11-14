@@ -1,0 +1,914 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...808...36M",
+  "title": "New Measurements of the Radio Photosphere of Mira Based on Data from the JVLA and ALMA",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Matthews, L. D.",
+  "n_authors": 3,
+  "arxiv_id": "1506.03075",
+  "doi": "10.1088/0004-637X/808/1/36",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00014.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present new measurements of the millimeter wavelength continuum emission from the long period variable Mira ($o$ Ceti) at frequencies of 46 GHz, 96 GHz, and 229 GHz"
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "Mira AB (o Ceti)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "110±9 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction (footnote 1)",
+        "quote": "Throughout the paper we adopt a distance of 110$\\pm$9 pc (Haniff et al. 1995), based on the period-luminosity relation of Feast et al. 1989."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Haniff et al. 1995, from period-luminosity relation of Feast et al. 1989",
+      "evidence": [
+       {
+        "loc": "1 Introduction (footnote 1)",
+        "quote": "Throughout the paper we adopt a distance of 110$\\pm$9 pc (Haniff et al. 1995), based on the period-luminosity relation of Feast et al. 1989."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do JVLA and ALMA continuum data at 46, 96 and 229 GHz match the radio photosphere model of Mira A (size, shape, flux, brightness structure), and what are the properties of Mira B?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The measured millimeter flux densities are consistent with a radio photosphere model derived from previous observations, where flux density $S_{\\nu}\\propto\\nu^{1.86}$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00014.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2011.0.00014.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 3 (94 GHz) and Band 6 (229 GHz); JVLA Q band 46 GHz",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Data",
+      "quote": "ALMA observations of Mira were performed in Band 3 (94 GHz) on 2014 October 17 and 25 and in Band 6 (229 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 3: 87.3–89.0, 97.4–99.1, 99.3–101.0 GHz; Band 6: ~228.7–230.4 GHz; eight 250 MHz channels per spw",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA Data",
+      "quote": "The frequency ranges sampled were 87.3–89.0 GHz, 97.4–99.1 GHz, and 99.3–101.0 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SiO",
+     "transition": "v=1, J=1-0 maser (JVLA, used for phase self-calibration)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.1 JVLA Data",
+       "quote": "the spectral channel containing the brightest SiO $v$=1, $J$=1-0 maser emission was split from the main data set"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "ALMA baselines up to 15.2 km; JVLA A configuration (0.68 to 36.4 km)",
+    "evidence": [
+     {
+      "loc": "2.1 JVLA Data",
+      "quote": "in its most extended (A) configuration (0.68 km to 36.4 km baselines)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Dirty beams 79x58 mas (B3), 32x23 mas (B6)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 6 (229 GHz) | 32 | 23 | +19 | 27.3 | 34.8 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "JVLA ~1 h 51 min; ALMA ~1.6 h Band 3, ~1.1 h Band 6",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Data",
+      "quote": "The total on-source integration times for Mira were approximately 1.6 hours in Band 3 and 1.1 hours in Band 6."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "ALMA: 2014 Oct 17, 25 (Band 3), Oct 29, Nov 1 (Band 6); JVLA 2014 Feb 23",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Data",
+      "quote": "on 2014 October 17 and 25 and in Band 6 (229 GHz) on 2014 October 29 and 2014 November 1"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA science verification data, public since 2015 February; JVLA program 14A-026",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Data",
+      "quote": "The data were obtained by ALMA staff for science verification purposes (ALMA Partnership 2015) and were released to the public in 2015 February."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JVLA",
+     "provided": {
+      "value": "46 GHz continuum data",
+      "evidence": [
+       {
+        "loc": "2.1 JVLA Data",
+        "quote": "Observations of Mira at 46 GHz (7 mm) were carried out with the JVLA"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Radio photosphere model S=0.50(nu/10GHz)^1.86 (D/100pc)^-2 mJy",
+      "evidence": [
+       {
+        "loc": "4.1.1 Mira A",
+        "quote": "represents the flux density as a function of frequency predicted by the radio photosphere model of RM97"
+       }
+      ]
+     },
+     "citation": "Reid & Menten 1997 (RM97)"
+    },
+    {
+     "what": {
+      "value": "338 GHz ALMA flux points for Mira A and B",
+      "evidence": [
+       {
+        "loc": "4.1.1 Mira A",
+        "quote": "Additional data points at 338 GHz from Ramstedt et al. (2014) are also included."
+       }
+      ]
+     },
+     "citation": "Ramstedt et al. 2014"
+    },
+    {
+     "what": {
+      "value": "3C48 flux density scale",
+      "evidence": [
+       {
+        "loc": "3.1 JVLA Data",
+        "quote": "The absolute flux density scale was calculated using the latest time-dependent flux density values for 3C48 from Perley & Butler (2013)."
+       }
+      ]
+     },
+     "citation": "Perley & Butler (2013)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA: archive pipeline-calibrated uv data from Science Verification pages, plus self-calibration; JVLA: manual in AIPS",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "We retrieved the pipeline calibrated $u$-$v$ data in the form of CASA measurement sets for each of the two ALMA bands"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "JVLA 3C48; ALMA J0334-4008, J0238+1636, J2258-2758",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "For the Band 3 data from 25 October, J0238+1636 and J2258-2758 were used as flux density calibrators"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "20% absolute flux calibration assumed",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "absolute flux density calibration (assumed to contribute relative errors of 1% and 20%, respectively, at all three observed frequencies)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "ALMA: phase-only at record length (~6 s B3, ~3 s B6) then amp+phase 60 s, gains normalized; JVLA: SiO maser phase self-cal then amp+phase",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "additional iterations were performed, solving for both amplitude and phase with a solution interval of 60 seconds."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Imaging and deconvolution in AIPS",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "Imaging and deconvolution of the JVLA and the ALMA data were performed using in AIPS."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "we used a Briggs robust value of ${\\cal R}$=0, a cell size of 5 mas"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "5 mas",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "a cell size of 5 mas"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Frequency dependence of primary beam corrected using spectral index 1.86",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "Corrections were applied during imaging for the frequency dependence of the primary beam and the expected spectral index of Mira A within the JVLA band"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Circular restoring beams 39.7, 68.7, 27.3 mas",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "a circular restoring beam with a FWHM equal to the mean of the dimensions of the dirty beam at the appropriate frequency"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "29.0, 19.7, 34.8 uJy/beam (Q, B3, B6)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 3 (96 GHz) | 79 | 58 | +42 | 68.7 | 19.7 |"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Maser-based phase self-calibration method",
+      "evidence": [
+       {
+        "loc": "3.1 JVLA Data",
+        "quote": "We therefore employed the method developed by Reid & Menten (1990) to improve the phase calibration using the stellar maser signal."
+       }
+      ]
+     },
+     "from_reference": "Reid & Menten (1990)"
+    },
+    {
+     "what": {
+      "value": "Spectral index alpha=1.86 adopted from radio photosphere model",
+      "evidence": [
+       {
+        "loc": "3.3 Imaging the Data",
+        "quote": "the expected spectral index of Mira A within the JVLA band ($\\alpha$=1.86; RM97)"
+       }
+      ]
+     },
+     "from_reference": "RM97"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number of clean iterations, clean masks/thresholds in AIPS",
+    "Exact AIPS/CASA versions",
+    "Which flagged channels containing line emission in JVLA data",
+    "Data selection and weighting for uv fits (OMFIT settings)",
+    "Exact target coordinates",
+    "Whether ALMA self-cal reference antenna and models were specified"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate JVLA data",
+    "method": {
+     "value": "AIPS calibration with 3C48 flux scale, NRAO150 bandpass, J0215-0222 gains, SiO maser phase self-cal",
+     "evidence": [
+      {
+       "loc": "3.1 JVLA Data",
+       "quote": "Bandpass calibration was performed using NRAO150, assuming a spectral index $\\alpha$=0.4 (Trippe et al. 2010)."
+      }
+     ]
+    },
+    "software": [
+     "AIPS",
+     "Obit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "amplitude scale change from self-cal <0.5%",
+     "evidence": [
+      {
+       "loc": "3.1 JVLA Data",
+       "quote": "the resulting change in the amplitude scale was measured to be less than 0.5%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Self-calibrate ALMA pipeline data",
+    "method": {
+     "value": "Self-cal on Mira AB continuum, phase then amp+phase",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "Using the continuum emission from the Mira AB binary itself, we performed self-calibration on the pipeline data for both ALMA bands."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "amplitude change <0.7%",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "were measured to be $<$0.7%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image the data",
+    "method": {
+     "value": "AIPS imaging, robust 0, 5 mas cells, circular restoring beam",
+     "evidence": [
+      {
+       "loc": "3.3 Imaging the Data",
+       "quote": "we used a Briggs robust value of ${\\cal R}$=0, a cell size of 5 mas"
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit size, shape, flux of Mira A and B",
+    "method": {
+     "value": "Uniform elliptical disk fits to visibilities and elliptical Gaussian fits to images",
+     "evidence": [
+      {
+       "loc": "4.1.1 Mira A",
+       "quote": "The first was to fit a uniform elliptical disk model to the visibility data at each observed frequency"
+      }
+     ]
+    },
+    "software": [
+     "AIPS (OMFIT, JMFIT)"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "distance 110 pc; Tb=2Sc^2/(k nu^2 pi theta_maj theta_min)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "The brightness temperature was computed as $T_{b}=2S_{\\nu}c^2/(k\\nu^{2}\\pi\\theta_{\\rm maj}\\theta_{\\rm min})$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares fits; errors per Condon (1997)",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "compute uncertainties according to the formalism outlined by Condon (1997)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Monte Carlo and artificial source injection tests for systematic errors",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "we introduced into our actual visibility data at each frequency a series of artificial elliptical Gaussians and uniform elliptical disks"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test brightness non-uniformity",
+    "method": {
+     "value": "Compare multi-component visibility models (ring, point, Gaussian) and residual images for 229 GHz",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "for the 229 GHz data, two-component models produced a clear improvement in $\\chi^{2}$, with the elliptical disk+Gaussian fit providing the best match to the data"
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "chi-square comparison",
+     "evidence": [
+      {
+       "loc": "Results, Evidence for Non-uniformities on the Surface of Mira A",
+       "quote": "none of these three simple models produced a significant improvement in the fit (as assessed by visual inspection of the residuals and the improvement in the $\\chi^{2}$ statistic)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual image from visibility subtraction compared to image-plane differencing",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "the result is virtually indistinguishable, suggesting that the image residuals are not solely artifacts of the deconvolution process"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "JVLA calibration, imaging, and fitting of all data",
+     "evidence": [
+      {
+       "loc": "3.1 JVLA Data",
+       "quote": "Data processing for the JVLA data was performed using the Astronomical Image Processing System (AIPS; Greisen 2003)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Obit",
+    "version": "not stated",
+    "used_for": {
+     "value": "load ASDM data into AIPS",
+     "evidence": [
+      {
+       "loc": "3.1 JVLA Data",
+       "quote": "The data were loaded into AIPS directly from archival science data model (ASDM) format files using the Obit software package (Cotton 2008)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA pipeline measurement sets provided",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA Data",
+       "quote": "pipeline calibrated $u$-$v$ data in the form of CASA measurement sets"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mira A 229 GHz flux density (uniform disk)",
+    "value": "150",
+    "uncertainty": "±30",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 6 (229 GHz) | 0.51 | 46.2$\\pm$2.3 (0.03) | 41.5$\\pm$2.3 (0.02) | 144$\\pm$11 (0.1) | 0.90$\\pm$0.07 | 150$\\pm$30 (0.04) | 2620$\\pm$560 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mira A 46 GHz flux density",
+    "value": "7.4",
+    "uncertainty": "±1.5",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Q (46 GHz) | 0.76 | 60.0$\\pm$2.0 (0.7) | 49.3$\\pm$1.6 (0.5) | $156\\pm$4 (1) | 0.82$\\pm$0.04 | 7.4$\\pm$1.5 (0.04) | 2110$\\pm$440 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mira A photospheric radius at 46/96/229 GHz",
+    "value": "3.0 / 2.6 / 2.4 AU",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.1 Mira A",
+      "quote": "4.5$\\times10^{13}$ cm (3.0 AU) at 46 GHz, 3.9$\\times10^{13}$ cm (2.6 AU) at 96 GHz, and 3.6$\\times10^{13}$ cm (2.4 AU) at 229 GHz"
+     }
+    ]
+   },
+   {
+    "quantity": "Mira B radius from 229 GHz",
+    "value": "≈2.0e13",
+    "uncertainty": "not stated",
+    "units": "cm",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2 Mira B",
+      "quote": "we derive a radius for Mira B of $\\approx2.0\\times10^{13}$ cm"
+     }
+    ]
+   },
+   {
+    "quantity": "Mira B 229 GHz flux density",
+    "value": "11.5",
+    "uncertainty": "±2.3",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 6 (229 GHz) | 25.4$\\pm$0.6 (0.4) | 23.4$\\pm$0.6 (0.4) | 69$\\pm$7 (7) | 11.5$\\pm$2.3 (0.09) |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk+Gaussian model hot spot fraction at 229 GHz",
+    "value": "39% of 151 mJy in Gaussian FWHM 26 mas",
+    "uncertainty": "not stated",
+    "units": "mixed",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "The total flux density in this model was 151 mJy, with 39% in a Gaussian component with FWHM 26 mas"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Radio photosphere size decreases with increasing frequency, first observational confirmation for an AGB star",
+    "evidence": [
+     {
+      "loc": "4.1.1 Mira A",
+      "quote": "this is the first time that this has been confirmed observationally for an AGB star"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Mira A flux densities follow the RM97 radio photosphere model",
+    "experiment": "Measure fluxes at 46, 96, 229 GHz and compare to S∝nu^1.86 at 110 pc",
+    "result": "Excellent match",
+    "finding": "RM97 model supported and extended to higher frequencies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "We have found excellent agreement between the newly observed millimeter wavelength flux densities for Mira A and the radio photosphere model of RM97"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Mira A radio photosphere is resolved, with size decreasing at higher frequency and elongated",
+    "experiment": "Uniform elliptical disk fits",
+    "result": "Radii 3.0, 2.6, 2.4 AU; ellipticity 0.8-0.9",
+    "finding": "Resolved, frequency-dependent size, flattening 10-20%",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The shape of the radio photosphere is found to be slightly elongated, with a flattening of $\\sim$10-20%."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Mira A surface is uniformly bright",
+    "experiment": "Visibility fits and residual images",
+    "result": "Uniform disk inadequate; disk+Gaussian fits best at 229 GHz",
+    "finding": "Evidence for brightness non-uniformities",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the observed visibilities point to a nonuniform, asymmetric brightness distribution"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Mira B emission follows simple free-free spectrum",
+    "experiment": "Flux measurement at three frequencies",
+    "result": "Higher frequencies lie above prior relation",
+    "finding": "More complex model needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1.2 Mira B",
+      "quote": "imply that a more complex model is needed to fully describe the observed short-wavelength radio emission"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Tidal distortion by Mira B insufficient to explain ellipticity (~5e-6)",
+     "evidence": [
+      {
+       "loc": "5 Discussion",
+       "quote": "This implies an ellipticity $\\epsilon\\sim5\\times10^{-6}$, several orders of magnitude smaller than observed."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mira A size and PA uncertainties dominated by systematics; disagreements with Vlemmings et al. 2015 in Band 3",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "the uncertainties on the source size and position angle reported in this work are dominated by systematic uncertainties"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Band 3 size and PA conflict with an independent analysis, indicating sensitivity to calibration and phase noise",
+    "Stellar variability and non-simultaneous observations complicate the spectrum",
+    "Disk+Gaussian model is non-unique"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA SV data public",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Data",
+      "quote": "were released to the public in 2015 February"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "AIPS clean parameters",
+    "JVLA data in archive but program details limited",
+    "Uv-fit starting values"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB",
+   "score_inferred": 3,
+   "score_reason": "Public ALMA data and clear calibration, but AIPS imaging and fitting details are partial.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public SV data, numeric results in tables, fairly complete recipe for ALMA part."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Reid & Menten 1990",
+     "why": "maser-based phase self-calibration"
+    },
+    {
+     "citation": "Pearson 1999",
+     "why": "uniform disk visibility expressions"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Vlemmings et al. 2015",
+     "why": "independent analysis of the same ALMA data"
+    },
+    {
+     "citation": "Reid & Menten 2007",
+     "why": "earlier 43 GHz resolved images"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification",
+    "NRAO program 14A-026"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-0ac33fe5ecd1e92f58903c5a02eff2d7",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:20",
+  "usage": {
+   "input_tokens": 23446,
+   "output_tokens": 7981,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.063958,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 45,
+   "rate": 0.634
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:07",
+  "custom_id": "repair-sonnet-48276e97b9c6cc122245ea90dd32f353",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "none of these three simple models produced a significant improvement in the fit (as assessed by visual inspection of the residuals and the improvement in the $\\chi^{2}$ statistic)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

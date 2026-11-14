@@ -1,0 +1,232 @@
+{
+ "bibcode": "2019MNRAS.487L..81L",
+ "title": "The absence of [C II] 158 μm emission in spectroscopically confirmed galaxies at z &gt; 8",
+ "year": 2019,
+ "doi": "10.1093/mnrasl/slz094",
+ "arxiv_id": "1906.01937",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Do the two most distant spectroscopically-confirmed galaxies (z=8.38 and z=9.11), both bright in [OIII]88um, show [CII]158um emission, and what does this imply for the [CII] deficit at high redshift?",
+ "alma_project_codes": [
+  "2015.1.00463.S"
+ ],
+ "data": {
+  "bands": "Band 5 (new); Band 7 for YD4 re-reduced; Band 6 archival for YD4",
+  "arrays": "not stated",
+  "angular_resolution": "YD4 1.3\"x0.79\"; JD1 0.75\"x0.63\"",
+  "sensitivity": "3sigma continuum < 21 uJy/beam (YD4), < 15 uJy/beam (JD1), not corrected for magnification"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[OIII] luminosity, z, L_FIR, SFR, Mstar, 88um flux for A2744_YD4 and magnification mu=2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^a$ (cite: Laporte2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Laporte2017)"
+  },
+  {
+   "what": {
+    "value": "[OIII] luminosity, z, L_FIR, SFR, Mstar for MACS1149_JD1 and mu=10",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^b$ (cite: Hashimoto2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Hashimoto2018)"
+  },
+  {
+   "what": {
+    "value": "[CII] non-detection measurements of Lyman-alpha emitter at z=7.2",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "A similar non-detection of \\[Cii\\]158$\\mu$m was reported by (cite: Inoue2016) for a Lyman-$\\alpha$ emitter at $z$ = 7.2"
+     }
+    ]
+   },
+   "citation": "(cite: Inoue2016)"
+  },
+  {
+   "what": {
+    "value": "Local metal-poor dwarf [OIII]/[CII] ratios",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "lower redshift metal-poor dwarf galaxies (cite: Madden2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Madden2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce data and image",
+   "method": "CASA 5.4.0 pipeline and tclean with Briggs weighting; Band 7 data for YD4 re-reduced the same way",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum upper limits",
+   "method": "3sigma limits from several beam-size apertures at the field centre",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Search for [CII] line and derive luminosity limits",
+   "method": "Search in 1.5\" radius circle around UV position, velocity offset ±500 km/s relative to [OIII] z, rebin to FWHM=100 km/s (also 50 km/s); rms in beam-size apertures; 3sigma L_CII limits corrected for magnification",
+   "software": [],
+   "key_parameters": [
+    "mu=2 (YD4), mu=10 (JD1)"
+   ],
+   "assumptions": [
+    "Line FWHM=100 km/s"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare with relations and simulations",
+   "method": "Place sources on [CII]-SFR relation, compare [OIII]/[CII] with Katz2019 simulations and local dwarfs; select Lagache2018 analogues by SFR, L_CII and Mstar ranges",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Constrain dust temperature of YD4",
+   "method": "SED fit with MAGPHYS including Band 5 limit and Band 6 2sigma limit of 30 uJy/beam",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_CII upper limit A2744_YD4 (3sigma)",
+   "value": "<2.0e7 x (2/mu)",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "$L_{CII}^{YD4}$\\< 2.0$\\times$10$^7$$\\times$(2/$\\mu$)L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CII upper limit MACS1149_JD1 (3sigma)",
+   "value": "<3.98e6 x (10/mu)",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "$L_{CII}^{JD1}$\\< 3.98$\\times$10$^6$$\\times$(10/$\\mu$)L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum 3sigma limit YD4",
+   "value": "<21",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "$f_{\\nu}^{158\\mu m}$\\< 21 $\\mu$Jy/beam for A2744_YD4"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 5 continuum 3sigma limit JD1",
+   "value": "<15",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "$f_{\\nu}^{158\\mu m}$\\< 15 $\\mu$Jy/beam for MACS1149_JD1"
+    }
+   ]
+  },
+  {
+   "quantity": "YD4 dust temperature lower limit",
+   "value": ">55",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "$T_{dust}$ \\> 55 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated analogues of YD4",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "objects",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "we find 75 simulated objects that have extreme properties similar to A2744_YD4"
+    }
+   ]
+  },
+  {
+   "quantity": "Simulated analogues of JD1",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "objects",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Analysis",
+     "quote": "only 8 simulated sources have \\[C II\\]158$\\mu$m properties similar to MACS1149_JD1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value, cell size, image size, niter and threshold",
+  "Spectral window frequencies and channel widths",
+  "Continuum-subtraction approach and line-free channels",
+  "Flux calibrator and flux scale uncertainty",
+  "Exact positions for the apertures and the UV-rest-frame centres",
+  "MAGPHYS setup (priors, library, photometry used)",
+  "Selection details for the Lagache2018 comparison"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (robust, cell, image size)",
+  "Frequency setup and channelization",
+  "MAGPHYS configuration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple upper-limit procedure, but imaging and SED parameters are not given.",
+ "rediscovery_reason": "Public data, numeric upper limits; the recipe is simple though imaging details are missing.",
+ "source_card": "cards/2019MNRAS.487L..81L/sonnet/card.md"
+}

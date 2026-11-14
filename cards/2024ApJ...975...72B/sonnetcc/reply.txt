@@ -1,0 +1,371 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Using ALMA observations of the SO and isotopologues in the nearby, molecule-rich disk around the young star Oph-IRS 48 we present the first constraints on the combined / and / isotope ratios in a planet-forming disk."}
+],
+"fields": ["protoplanetary_disks", "astrochemistry"],
+"question": {
+"value": "What are the combined 34S and 33S isotope ratios of SO (and the 18O limit) in the Oph-IRS 48 planet-forming disk, and are they consistent with solar system values?",
+"evidence": [
+{"loc": "abstract", "quote": "Using ALMA observations of the SO and isotopologues in the nearby, molecule-rich disk around the young star Oph-IRS 48 we present the first constraints on the combined / and / isotope ratios in a planet-forming disk."},
+{"loc": "abstract", "quote": "Together these observations show that we should not assume solar isotopic values for disk sulfur reservoirs"}
+]
+},
+"targets": [
+{
+"name": "Oph-IRS 48",
+"details": [
+{"loc": "Introduction", "quote": "Oph-IRS 48 is a nearby (135 pc), young Herbig Ae star"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "135 pc",
+"distance_source": "cited alongside Brown et al. 2012 and Gaia Collaboration 2018 (Gaia2018)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.00834.S", "evidence": [{"loc": "Methods", "quote": "from the programs 2017.1.00834.S (PI: Adriana Pohl) and 2021.1.00738.S (PI: Alice S. Booth)"}]},
+{"code": "2021.1.00738.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: 2017.1.00834.S, 2021.1.00738.S."}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "Lines of SO and isotopologues spanning about 337.2 to 362.2 GHz (Table 1); 0.9 mm continuum also shown", "evidence": [
+{"loc": "Table 1", "quote": "337.1986199"},
+{"loc": "Table 1", "quote": "362.1582327"},
+{"loc": "Results", "quote": "the integrated intensity maps of sulfur isotopologues in the Oph IRS 48 disk and the 0.9 mm continuum emission"}
+]},
+{"field": "angular_resolution", "value": "about 0.45 arcsec beam (2017.1.00834.S data); about 0.3 arcsec beam (2021.1.00738.S data)", "evidence": [
+{"loc": "Methods", "quote": "and a Briggs robust weighting of 0.5 resulting in a $\\approx$0.45$\\ensuremath{''}$ beam"},
+{"loc": "Methods", "quote": "with a Briggs robust weighting of 0.5 resulting in a $\\approx$0.3$\\ensuremath{''}$ beam"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Programs 2017.1.00834.S (PI Adriana Pohl) and 2021.1.00738.S (PI Alice S. Booth); data first presented in earlier papers", "evidence": [
+{"loc": "Methods", "quote": "from the programs 2017.1.00834.S (PI: Adriana Pohl) and 2021.1.00738.S (PI: Alice S. Booth)"},
+{"loc": "Methods", "quote": "The former were first presented in"}
+]}
+],
+"lines_targeted": [
+{"species": "SO", "transition": "J=3_3-3_2 (optically thinnest detected transition, used for the SO column density)", "rest_frequency": "not stated", "evidence": [
+{"loc": "Methods", "quote": "In this work, we only use the optically thinnest transition detected ($J=3_3-3_2$) as a measure of the SO column density."}
+]},
+{"species": "SO isotopologues (species names missing in the converted text)", "transition": "see Table 1; two lines each for the isotopologues used, one line tentatively detected in one channel", "rest_frequency": "not stated", "evidence": [
+{"loc": "Methods", "quote": "For and two lines of each are detected and we take the average column density traced by these lines at each temperature."},
+{"loc": "Table 1", "quote": "Molecular line and image properties where molecular transition data are taken from CDMS"}
+]}
+],
+"other_facilities": [
+{"name": "Cologne Database for Molecular Spectroscopy (CDMS)", "provided": {"value": "Line properties and partition functions of each isotopologue", "evidence": [
+{"loc": "Methods", "quote": "The various line properties and partition functions of each isotopologue are taken from the Cologne Database for Molecular Spectroscopy"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "SO and isotopologue line properties and partition functions from CDMS", "evidence": [
+{"loc": "Methods", "quote": "The various line properties and partition functions of each isotopologue are taken from the Cologne Database for Molecular Spectroscopy"}
+]}, "citation": "CDMS: (cite: 2001A&A...370L..49M; 2005JMoSt.742..215M; 2016JMoSp.327...95E) with data from (cite: 1985JPCRD..14..395L; 1992ApJ...399..325L; 1996JMoSp.180..197K)"},
+{"what": {"value": "V-CDT standard isotope ratios (22.64, 126.9, 498.7) used for the delta values", "evidence": [
+{"loc": "Methods", "quote": "The standard ratios used are 22.64 for /, 126.9 for / and 498.7 for /"}
+]}, "citation": "(cite: 2001GeCoA..65.2433D; 2001RCMS...15..501W)"},
+{"what": {"value": "Local ISM ratio of 550 for one of the ratios", "evidence": [
+{"loc": "Methods", "quote": "These differ slightly from the local ISM ratios, where in particular, / is 550"}
+]}, "citation": "(cite: 1994ARA&A..32..191W)"},
+{"what": {"value": "Rotational temperature of about 60 K at the emission peak, from a rotation diagram of a companion molecule (species name missing in text); adopted as the fiducial temperature", "evidence": [
+{"loc": "Methods", "quote": "find that the rotational temperature for to be very well constrained to $\\approx$60 K at the emission peak."}
+]}, "citation": "Temmink et al. 2024 (in prep.)"},
+{"what": {"value": "Detections and integrated intensity maps of SO and isotopologues", "evidence": [
+{"loc": "Methods", "quote": "we use the integrated intensity maps from these works"}
+]}, "citation": "(cite: 2021A&A...651L...6B) and (cite: Booth2023_irs48)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "2017.1.00834.S pipeline calibrated by Ohashi et al. 2020; 2021.1.00738.S self-calibrated (phase and amplitude)", "evidence": [
+{"loc": "Methods", "quote": "The 2017.1.00834.S data were pipeline calibrated by"},
+{"loc": "Methods", "quote": "The 2021.1.00738.S data were self-calibrated (both phase and amplitude) and imaged with CASA task"}
+]},
+{"field": "self_calibration", "value": "2021.1.00738.S: phase and amplitude self-calibration (solints not stated)", "evidence": [
+{"loc": "Methods", "quote": "The 2021.1.00738.S data were self-calibrated (both phase and amplitude) and imaged with CASA task"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean", "evidence": [
+{"loc": "Methods", "quote": "imaged these data with CASA task"},
+{"loc": "Methods", "quote": "The 2021.1.00738.S data were self-calibrated (both phase and amplitude) and imaged with CASA task"}
+]},
+{"field": "weighting_robust", "value": "Briggs robust = 0.5 (both datasets)", "evidence": [
+{"loc": "Methods", "quote": "and a Briggs robust weighting of 0.5 resulting in a"},
+{"loc": "Methods", "quote": "with a Briggs robust weighting of 0.5 resulting in a"}
+]},
+{"field": "masking", "value": "Keplerian masks used for all integrated intensity maps", "evidence": [
+{"loc": "Methods", "quote": "All integrated intensity maps were generated using Keplerian masks"}
+]},
+{"field": "final_beam", "value": "about 0.45 arcsec (2017.1.00834.S); about 0.3 arcsec (2021.1.00738.S); Table 1 gives per-line beams, e.g. 0.34 x 0.28 arcsec", "evidence": [
+{"loc": "Methods", "quote": "and a Briggs robust weighting of 0.5 resulting in a $\\approx$0.45$\\ensuremath{''}$ beam"},
+{"loc": "Methods", "quote": "with a Briggs robust weighting of 0.5 resulting in a $\\approx$0.3$\\ensuremath{''}$ beam"}
+]}
+],
+"inherited": [
+{"what": {"value": "Data calibration, line identification and imaging steps are described in the earlier papers", "evidence": [
+{"loc": "Methods", "quote": "In the above referenced works, the data calibration, line identification and imaging steps are described in full detail."}
+]}, "from_reference": "(cite: 2021A&A...651L...5V), (cite: 2021A&A...651L...6B), (cite: Booth2023_irs48)"},
+{"what": {"value": "2017.1.00834.S pipeline calibration done by an earlier paper", "evidence": [
+{"loc": "Methods", "quote": "The 2017.1.00834.S data were pipeline calibrated by"}
+]}, "from_reference": "(cite: 2020ApJ...900...81O)"},
+{"what": {"value": "2017.1.00834.S imaging (velocity resolution 1.7 km/s, robust 0.5) done in an earlier paper", "evidence": [
+{"loc": "Methods", "quote": "imaged these data with CASA task"}
+]}, "from_reference": "(cite: 2021A&A...651L...6B)"},
+{"what": {"value": "2021.1.00738.S self-calibration and imaging (0.9 km/s, robust 0.5), cited to an earlier paper", "evidence": [
+{"loc": "Methods", "quote": "The 2021.1.00738.S data were self-calibrated (both phase and amplitude) and imaged with CASA task"}
+]}, "from_reference": "(cite: 2021A&A...651L...5V); (cite: Booth2023_irs48)"},
+{"what": {"value": "The tentatively detected line was imaged in the same manner as the other lines from the 2021.1.00738.S data set", "evidence": [
+{"loc": "Methods", "quote": "This line was imaged in the same manner as the other lines from"}
+]}, "from_reference": "(cite: Booth2023_irs48)"},
+{"what": {"value": "Integrated intensity maps of SO and isotopologues are taken from earlier papers", "evidence": [
+{"loc": "Methods", "quote": "we use the integrated intensity maps from these works"}
+]}, "from_reference": "(cite: 2021A&A...651L...6B) and (cite: Booth2023_irs48)"},
+{"what": {"value": "Optically thin LTE column density method", "evidence": [
+{"loc": "Methods", "quote": "Under the typical assumptions of optically thin line emission and local thermodynamic equilibrium"}
+]}, "from_reference": "(cite: 2018ApJ...859..131L)"}
+],
+"unstated_but_needed": [
+"CASA version used for tclean",
+"Line-free channels, continuum subtraction method and cell/image sizes for the cubes",
+"Keplerian mask parameters (stellar mass, inclination, position angle, mask width) and how channels were summed into integrated intensity maps",
+"Self-calibration solution intervals and reference antennas for 2021.1.00738.S, and flux/bandpass/phase calibrators for both datasets",
+"Which molecule each row of Tables 1 and 2 belongs to (species names are missing in the paper text provided), and the exact peak-pixel positions used",
+"How the Jy/beam km/s peak intensity was converted to column density (beam dilution, filling factor, line profile treatment) and the formula used",
+"How asymmetric uncertainties on delta and the limits (>500, upper limit from the one-channel S/N 4 line) were propagated",
+"Per-line rms values used for the limit, and the channel range for the tentatively detected line"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Obtain integrated intensity maps",
+"method": {"value": "Use calibrated and imaged cubes from two ALMA programs; integrated intensity maps built with Keplerian masks; peak integrated flux taken from each map", "evidence": [
+{"loc": "Methods", "quote": "All integrated intensity maps were generated using Keplerian masks"},
+{"loc": "Results", "quote": "From these integrated intensity maps, we take the peak integrated flux and use this to calculate the molecular column density traced by each of the isotopologues."}
+]},
+"software": ["CASA tclean", "keplerian_mask"],
+"key_parameters": [
+{"value": "Briggs robust 0.5; velocity resolution 1.7 km/s (2017.1.00834.S) and 0.9 km/s (2021.1.00738.S)", "evidence": [
+{"loc": "Methods", "quote": "at a velocity resolution of 1.7 km s"},
+{"loc": "Methods", "quote": "at a velocity resolution of 0.9 km s"}
+]},
+{"value": "Map errors are the rms of line-free regions of the images without Keplerian masking", "evidence": [
+{"loc": "Methods", "quote": "where these errors are a measure of the root mean square noise (rms) of the line-free regions of the images without Keplerian masking."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Derive peak column densities of SO and isotopologues vs excitation temperature",
+"method": {"value": "Optically thin LTE column density from peak integrated intensity, using CDMS line data and partition functions", "evidence": [
+{"loc": "Methods", "quote": "we estimate the peak column density traced by the SO and isotopologues detected in the Oph-IRS 48 disk."},
+{"loc": "Methods", "quote": "Under the typical assumptions of optically thin line emission and local thermodynamic equilibrium"}
+]},
+"software": ["CDMS"],
+"key_parameters": [
+{"value": "Excitation temperatures 30 to 150 K in steps of 10 K; fiducial 60 K", "evidence": [
+{"loc": "Methods", "quote": "We calculate these column densities at a range of excitation temperatures (30 to 150 K in steps of 10 K)"},
+{"loc": "Results", "quote": "When adopting our fiducial temperature of 60 K"}
+]},
+{"value": "SO column density from the J=3_3-3_2 line only; two-line average for the other isotopologues", "evidence": [
+{"loc": "Methods", "quote": "In this work, we only use the optically thinnest transition detected ($J=3_3-3_2$) as a measure of the SO column density."},
+{"loc": "Methods", "quote": "For and two lines of each are detected and we take the average column density traced by these lines at each temperature."}
+]},
+{"value": "Column density errors propagated from the integrated intensity map errors", "evidence": [
+{"loc": "Methods", "quote": "The errors in the peak column densities are propagated from the errors in the integrated intensity maps"}
+]}
+],
+"assumptions": [
+{"value": "Optically thin emission and LTE", "evidence": [
+{"loc": "Methods", "quote": "Under the typical assumptions of optically thin line emission and local thermodynamic equilibrium"}
+]},
+{"value": "SO traces the same warm gas as a companion molecule with rotational temperature about 60 K (no independent SO temperature)", "evidence": [
+{"loc": "Methods", "quote": "we expect them to trace the same gas temperature."},
+{"loc": "Methods", "quote": "we cannot make an independent temperature measurement to confirm this"}
+]},
+{"value": "Temperature range 30-150 K bounded below by the midplane mm dust brightness temperature (minimum 30 K) and above by the optically thick CO isotopologue brightness temperature (>=100 K)", "evidence": [
+{"loc": "Methods", "quote": "The lower limit of this range is informed by the brightness temperature of the midplane millimeter dust which is at a minimum of 30 K"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Peak column densities compared with averaged column densities over the whole emitting region; ratios agree within 1 sigma. SO J=3_3-3_2 optical depth about 0.1", "evidence": [
+{"loc": "Results", "quote": "find that the resulting isotope ratios, the key result of this paper, are within the quoted 1 $\\sigma$ errors."},
+{"loc": "Results", "quote": "The SO $J=3_3-3_2$ transition is optically thin with $\\tau \\approx 0.1$"}
+]}
+},
+{
+"order": 3,
+"goal": "Compute isotope ratios and deviations from V-CDT",
+"method": {"value": "Ratios of column densities at each temperature; delta values in per mille relative to V-CDT standard ratios", "evidence": [
+{"loc": "Methods", "quote": "we also calculate the deviation of our ratios relative to the Vienna Canyon Diablo Troilite (V-CDT)."},
+{"loc": "Methods", "quote": "The standard ratios used are 22.64 for /, 126.9 for / and 498.7 for /"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Tabulated at 30, 60 and 100 K and shown for the full temperature range", "evidence": [
+{"loc": "Results", "quote": "corresponding isotopic ratios, and deviations from V-CDT at 30, 60 and 100 K are listed in Table"}
+]}
+],
+"assumptions": [
+{"value": "V-CDT chosen as the standard because it is the most common one for comets and meteorites; local ISM ratio of 550 differs slightly", "evidence": [
+{"loc": "Methods", "quote": "This is the most common isotopic standard used in comet and meteorite studies."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Compare disk isotope ratios with solar system and other disk values",
+"method": {"value": "Compare ratios as a function of temperature with V-CDT, comets (67P/C-G), meteorite SiC grains and other disks", "evidence": [
+{"loc": "Discussion", "quote": "we show a comparison of the isotope ratios measured in comets to Class II disks for a variety of simple species."},
+{"loc": "Discussion", "quote": "The ratios we measure do vary as a function of the assumed gas temperature"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Imaging with the tclean task", "evidence": [
+{"loc": "Methods", "quote": "The 2021.1.00738.S data were self-calibrated (both phase and amplitude) and imaged with CASA task"}
+]}},
+{"name": "keplerian_mask", "version": "1.0", "used_for": {"value": "Keplerian masks for integrated intensity maps", "evidence": [
+{"loc": "Methods", "quote": "All integrated intensity maps were generated using Keplerian masks"}
+]}},
+{"name": "Astropy, IPython, Jupyter, Matplotlib, NumPy", "version": "not stated", "used_for": {"value": "Additional software packages, specific use not stated", "evidence": [
+{"loc": "Acknowledgements", "quote": "This work has used the following additional software packages that have not been referred to in the main text: Astropy, IPython, Jupyter, Matplotlib and NumPy"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Optical depth of SO J=3_3-3_2", "value": "0.1 (approx.)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "Results", "quote": "The SO $J=3_3-3_2$ transition is optically thin with $\\tau \\approx 0.1$"}
+]},
+{"quantity": "Isotope ratio traced in SO, Table 2 row 1 (V-CDT 22.64), 60 K", "value": "34", "uncertainty": "+/-4", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Results", "quote": "we find that traced in SO line emission, the Oph-IRS 48 disk is depleted in both and with /=$34\\pm4$ and /=$290\\pm60$."}
+]},
+{"quantity": "Isotope ratio traced in SO, Table 2 row 1 (V-CDT 22.64), 30 K", "value": "13", "uncertainty": "+/-1", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "$13\\pm1$"}
+]},
+{"quantity": "Isotope ratio traced in SO, Table 2 row 1 (V-CDT 22.64), 100 K", "value": "50", "uncertainty": "+/-6.0", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "$50\\pm6.0$"}
+]},
+{"quantity": "Isotope ratio traced in SO, Table 2 row 3 (V-CDT 126.9), 60 K", "value": "290", "uncertainty": "+/-60", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Results", "quote": "we find that traced in SO line emission, the Oph-IRS 48 disk is depleted in both and with /=$34\\pm4$ and /=$290\\pm60$."}
+]},
+{"quantity": "Isotope ratio traced in SO, Table 2 row 3 (V-CDT 126.9), 30 K", "value": "120", "uncertainty": "+/-25", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "$120\\pm25$"}
+]},
+{"quantity": "Lower limit on the isotope ratio from SO, Table 2 row 4 (V-CDT 498.7), 60 K", "value": ">500", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Results", "quote": "The / lower limit from SO of $>$500 is consistent with the V-CDT value."}
+]},
+{"quantity": "Isotope ratio in Table 2 row 2 (V-CDT 22.64), 60 K, enhanced", "value": "5.2", "uncertainty": "+/-0.6", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "$5.2\\pm0.6$"},
+{"loc": "Discussion", "quote": "The apparent factor $\\approx$4 enhancement of in is an extreme outlier in all cases, but this may be due to beam diluted and optically thick emission."}
+]},
+{"quantity": "Peak column density, Table 2 row 1, 60 K (molecule name missing in text)", "value": "3.6e15", "uncertainty": "+/-0.3e15", "units": "cm^-2", "from_step": 2, "evidence": [
+{"loc": "Table 2", "quote": "3.6$\\pm0.3\\times10^{15}$"}
+]},
+{"quantity": "Delta value, Table 2 row 1, 60 K", "value": "-340", "uncertainty": "+90/-70", "units": "per mille", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "-340$^{+90}_{-70}$"}
+]},
+{"quantity": "Delta value, Table 2 row 3, 60 K", "value": "-559", "uncertainty": "+120/-80", "units": "per mille", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "-559$^{+120}_{-80}$"}
+]},
+{"quantity": "Delta value, Table 2 row 2, 60 K", "value": "3350", "uncertainty": "+250/-170", "units": "per mille", "from_step": 3, "evidence": [
+{"loc": "Table 2", "quote": "3350$^{+250}_{-170}$"}
+]},
+{"quantity": "S/N of the tentatively detected line (one 0.9 km/s channel)", "value": "4", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [
+{"loc": "Methods", "quote": "we tentatively detect this line in one velocity channel (0.9 km $\\mathrm{s^{-1}}$) at a signal-to-noise ratio of 4."}
+]}
+],
+"findings_qualitative": [
+{"value": "At temperatures below about 50 K the ratios in SO are consistent with V-CDT; at 60 K and above they are anomalous relative to V-CDT and cometary values", "evidence": [
+{"loc": "Discussion", "quote": "At temperatures of 60 K and above the isotope ratios for sulfur are anomalous when compared to the V-CDT and cometary values."}
+]},
+{"value": "The sulfur reservoir currently observed in the disk is primarily in the form of SO", "evidence": [
+{"loc": "Discussion", "quote": "The currently observed volatile sulfur reservoir in the Oph-IRS 48 disk is primarily in the form of SO."}
+]}
+],
+"claims": [
+{"hypothesis": "Is volatile sulfur in the Oph-IRS 48 disk isotopically solar?", "experiment": "LTE column densities of SO and isotopologues from peak integrated intensity at 30-150 K, ratios compared with V-CDT", "result": "At 60 K two of the ratios are 34+/-4 and 290+/-60 against V-CDT values of 22.64 and 126.9", "finding": "Assuming warm (60 K or above) gas, SO is depleted in heavy sulfur isotopes relative to solar system values", "support": "supported", "evidence": [
+{"loc": "Results", "quote": "we find that traced in SO line emission, the Oph-IRS 48 disk is depleted in both and with /=$34\\pm4$ and /=$290\\pm60$."},
+{"loc": "Conclusion", "quote": "Assuming a kinetic temperature of 60 K (as measured for ) or above, both and are depleted relative to their Solar System standard values when traced in SO."}
+]},
+{"hypothesis": "Do the SO ratios depend on the assumed gas temperature?", "experiment": "Column densities computed for 30 to 150 K in 10 K steps", "result": "Ratios increase with temperature and match V-CDT below about 50 K", "finding": "Cool gas would make the ratios consistent with comets and solar system bodies, so an independent SO temperature is needed", "support": "supported", "evidence": [
+{"loc": "Results", "quote": "are consistent with the V-CDT values at temperatures lower than $\\approx$50 K."},
+{"loc": "Conclusion", "quote": "At cooler temperatures, the isotope ratios are consistent with the cometary values"}
+]},
+{"hypothesis": "Can the oxygen isotope ratio of SO be constrained and is it solar?", "experiment": "Tentative one-channel detection of the rarer isotopologue treated as an upper limit on its abundance", "result": "Lower limit on the ratio >500 at 60 K, consistent with V-CDT 498.7", "finding": "No sign of oxygen isotope fractionation for warm gas", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "We also constrain the /SO ratio and find the limit to be consistent with solar system values given a temperature of 60 K."},
+{"loc": "Methods", "quote": "We therefore consider this as an upper-limit on the abundance in this disk."}
+]},
+{"hypothesis": "Is the heavier isotopologue of a second sulfur molecule enhanced?", "experiment": "Ratio from the second molecule's lines (species name missing in text)", "result": "Ratio of 5.2+/-0.6 at 60 K against a standard of 22.64", "finding": "Tentative enhancement that requires optically thinner transitions to confirm", "support": "partially", "evidence": [
+{"loc": "Conclusion", "quote": "We also identify a tentative enhancement in the heavier isotopologue which requires observations of optically thinner transitions to confirm."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Oph-IRS 48 has the most observed volatile sulfur, so is the most promising disk for sulfur isotope ratios", "evidence": [
+{"loc": "Introduction", "quote": "The disk with the most observed volatile sulfur, and therefore the source with the most promise for measuring isotopic ratios of sulfur, is the Oph-IRS 48 disk."}
+]},
+{"field": "why_this_method", "value": "Temperature range chosen from dust brightness temperature, CO isotopologue brightness temperature and rotational temperatures of other molecules; fiducial 60 K from a companion molecule", "evidence": [
+{"loc": "Methods", "quote": "The lower limit of this range is informed by the brightness temperature of the midplane millimeter dust which is at a minimum of 30 K"},
+{"loc": "Methods", "quote": "we explore a range of higher and lower gas temperatures to see how sensitive the inferred isotopic ratios is to this assumption."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "A cooler gas reservoir cannot be ruled out; it would bring the SO sulfur ratios in line with comets and other solar system bodies", "evidence": [
+{"loc": "abstract", "quote": "However, we cannot completely rule out a cooler gas reservoir, which would put the SO sulfur ratios more in line with comets and other solar system bodies."}
+]},
+{"value": "Optical depth of SO J=3_3-3_2 rejected as the cause of the anomalous ratios", "evidence": [
+{"loc": "Results", "quote": "optical depth cannot explain the anomalous"}
+]}
+],
+"limitations_admitted": [
+{"value": "No independent SO temperature; only three SO lines and two are too optically thick for a rotation diagram", "evidence": [
+{"loc": "Methods", "quote": "we cannot make an independent temperature measurement to confirm this"},
+{"loc": "Methods", "quote": "do not allow for a rotation diagram analysis"}
+]},
+{"value": "The 18O-bearing line is only tentatively detected in one channel, so only an abundance upper limit is derived", "evidence": [
+{"loc": "Methods", "quote": "A robust detection would require 3$\\sigma$ emission over $>$3 channels to confirm."}
+]},
+{"value": "Dust optical depth may hide gas below the dust surface and bias column densities low", "evidence": [
+{"loc": "Conclusion", "quote": "There are also possible limitations in the current data due to dust optical depth that will require longer wavelength observations to assess."}
+]},
+{"value": "Ratios depend on assumed binding energies and the adopted gas temperature", "evidence": [
+{"loc": "Conclusion", "quote": "this relies heavily on the adopted gas temperature."}
+]}
+],
+"referee_caveats_inferred": [
+"Single-pixel peak column densities, optically thin LTE assumption and a single shared temperature for all isotopologues; no beam dilution or radiative transfer modelling.",
+"Species names are lost in the supplied text, so table rows cannot be mapped to molecules without the original paper.",
+"The key 60 K temperature comes from an unpublished companion paper (in prep.).",
+"Hyperfine-blended lines and optical depth of the main isotopologue are not modelled."
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Imaging cubes and integrated intensity maps are only described in earlier papers; the maps are not provided here",
+"Exact peak positions, column density formula details and uncertainty propagation for delta values",
+"Temmink et al. in prep. temperature analysis",
+"Species assignment of Table 1 and Table 2 rows"
+],
+"estimated_data_volume_inferred": "Roughly 10-50 GB of raw ALMA data for two Band 7 style programs (not stated in the paper); derived maps are small",
+"score_inferred": 3,
+"score_reason": "Two ALMA programs are named and the column density and ratio calculation is simple, but calibration and imaging are inherited from earlier papers, several settings are missing and the key temperature is from unpublished work.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Imaging and integrated-intensity maps depend on other papers, the data being public is not stated, and species names in the tables are not recoverable from the text.",
+"methods_papers": [
+{"citation": "(cite: 2021A&A...651L...6B) Booth et al. 2021", "why": "Imaging and detection of 2017.1.00834.S lines"},
+{"citation": "(cite: 2021A&A...651L...5V) van der Marel et al. 2021", "why": "First presentation of the data and 2021.1.00738.S imaging cited here"},
+{"citation": "(cite: Booth2023_irs48) Booth, Temmink et al. 2024", "why": "Presents the 2021.1.00738.S data and integrated intensity maps"},
+{"citation": "(cite: 2020ApJ...900...81O) Ohashi et al. 2020", "why": "Pipeline calibration of 2017.1.00834.S"}
+],
+"companion_papers": [
+{"citation": "Temmink et al. 2024 (in prep.)", "why": "Rotational temperature of about 60 K used as the fiducial temperature"}
+],
+"related_projects_or_surveys": ["2017.1.00834.S", "2021.1.00738.S"]
+}

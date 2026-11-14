@@ -1,0 +1,380 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Here we present the first ALMA Compact Array (ACA) survey of 13 pillars in Carina, observed in $^{12}$CO, $^{13}$CO and C$^{18}$O J=2-1, and the 230 GHz continuum."}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {
+"value": "Do the kinematics (velocity dispersions, internal motions, offsets from the parent cloud rim) of 13 Carina pillars discriminate between feedback simulations of pillar formation?",
+"evidence": [
+{"loc": "abstract", "quote": "However, these models predict measurably different kinematics which provides testable discriminants."},
+{"loc": "Introduction", "quote": "The overarching goal of this project is to quantify the kinematics of pillars in Carina, to determine whether the simulations are accurately predicting the effects of feedback on the local environment."}
+]
+},
+"targets": [
+{
+"name": "13 pillars in the Carina Nebula (Pillars 2, 3, 4, 5, 6, 8, 16, 17, 18, 20, 22, 44, 45)",
+"details": [
+{"loc": "Observations", "quote": "in the following we use their pillar numbering scheme to refer to the pillars observed in this work."},
+{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "We adopt the 2.5 kpc distance estimate of (cite: Povich19), because of their more robust outlier rejection algorithms."}
+],
+"coordinates": "not stated (map centres are in a table not reproduced in the text)",
+"redshift_or_distance": "2.5 kpc",
+"distance_source": "Povich19 (Gaia-based distance)"
+}
+],
+"alma_project_codes": [
+{"code": "2016.1.00101.S", "evidence": [{"loc": "Observations", "quote": "These data form ALMA project #2016.1.00101.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "230 GHz continuum plus CO J=2-1 lines (Band 6 not named in text)", "evidence": [{"loc": "abstract", "quote": "and the 230 GHz continuum"}]},
+{"field": "frequencies_and_spectral_setup", "value": "CO, 13CO, C18O J=2-1; additional spectral windows for 233 GHz continuum, 13CS (J=5-4) and SiO (J=5-4); channel widths 0.079-0.158 km/s, continuum 1.87 GHz", "evidence": [
+{"loc": "Observations", "quote": "we had additional spectral windows set to detect the 233 GHz continuum emission, as well as $^{13}$CS (J=5-4) and SiO (J=5-4)."},
+{"loc": "Table 1", "quote": "| CO (J=2-1) | 6.59 | 5.03 | 43 | 0.60 | 0.079 |"},
+{"loc": "Table 1", "quote": "| Continuum | 6.25 | 4.71 | 75.8 | 6$\\times 10^{-5}$ | 1.87 GHz |"}
+]},
+{"field": "continuum_bandwidth", "value": "1.87 GHz", "evidence": [{"loc": "Table 1", "quote": "| Continuum | 6.25 | 4.71 | 75.8 | 6$\\times 10^{-5}$ | 1.87 GHz |"}]},
+{"field": "arrays", "value": "ACA 7m (stand-alone) plus Total Power (TP)", "evidence": [
+{"loc": "Observations", "quote": "We present ALMA Compact Array (ACA) and Total Power (TP) observations of CO, $^{13}$CO and C$^{18}$O (J=2-1)"},
+{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "Despite using the ACA in stand alone mode, our interferometric data suffered from spatial filtering of the large scale emission."}
+]},
+{"field": "angular_resolution", "value": "Synthesised beam 6.59 x 5.03 arcsec, PA 43 deg (CO, feathered); 7.06 x 5.10 (13CO); 7.16 x 5.18 (C18O); 6.25 x 4.71 (continuum, ACA only)", "evidence": [
+{"loc": "Table 1", "quote": "| CO (J=2-1) | 6.59 | 5.03 | 43 | 0.60 | 0.079 |"},
+{"loc": "Table 1", "quote": "| $^{13}$CO (J=2-1) | 7.06 | 5.10 | 85.7 | 0.66 | 0.083 |"},
+{"loc": "Table 1", "quote": "| C$^{18}$O (J=2-1) | 7.16 | 5.18 | 83.3 | 0.49 | 0.083 |"}
+]},
+{"field": "sensitivity", "value": "Per-channel noise 0.60 (CO), 0.66 (13CO), 0.49 (C18O) Jy/beam; continuum 6e-5 Jy/beam (units as in Table 1)", "evidence": [
+{"loc": "Table 1", "quote": "| CO (J=2-1) | 6.59 | 5.03 | 43 | 0.60 | 0.079 |"},
+{"loc": "Table 1", "quote": "| Continuum | 6.25 | 4.71 | 75.8 | 6$\\times 10^{-5}$ | 1.87 GHz |"},
+{"loc": "Virial Stability", "quote": "Our sensitivity limits suggest we would be able to detect 30 K gas in our beam at levels below 0.001 M$_\\odot$ in CO if the emission fully filled the beam"}
+]},
+{"field": "observing_dates", "value": "ACA October and November 2016; TP mostly 19-21 October 2016 (Pillar 3 TP on 3 March 2017)", "evidence": [
+{"loc": "Observations", "quote": "taken in October and November 2016 (ACA) and with the TP data primarily taken between October 19 and 21"},
+{"loc": "Observations", "quote": "with the exception of the TP data for Pillar 3, which was taken on 3 March, 2017."}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [{"loc": "abstract", "quote": "observed in $^{12}$CO, $^{13}$CO and C$^{18}$O J=2-1, and the 230 GHz continuum"}]},
+{"species": "13CO", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [{"loc": "abstract", "quote": "observed in $^{12}$CO, $^{13}$CO and C$^{18}$O J=2-1, and the 230 GHz continuum"}]},
+{"species": "C18O", "transition": "J=2-1", "rest_frequency": "not stated", "evidence": [{"loc": "abstract", "quote": "observed in $^{12}$CO, $^{13}$CO and C$^{18}$O J=2-1, and the 230 GHz continuum"}]},
+{"species": "13CS", "transition": "J=5-4", "rest_frequency": "not stated", "evidence": [{"loc": "Observations", "quote": "Neither of these last two species were detected."}]},
+{"species": "SiO", "transition": "J=5-4", "rest_frequency": "not stated", "evidence": [{"loc": "Observations", "quote": "as well as $^{13}$CS (J=5-4) and SiO (J=5-4). Neither of these last two species were detected."}]}
+],
+"other_facilities": [
+{"name": "Herschel", "provided": {"value": "250, 160 and 70 micron context images used for pillar selection and figure backgrounds", "evidence": [{"loc": "Results", "quote": "250, 160 and 70 $\\mu$m emission, with the black boxes highlighting the regions mapped with the ACA in this study."}]}},
+{"name": "Spitzer (IRAC archive)", "provided": {"value": "8 micron images of each imaged region for comparison with the CO", "evidence": [{"loc": "Results", "quote": "archive 8 $\\mu$m emission from each imaged region in the upper left panel"}]}},
+{"name": "MUSE (VLT)", "provided": {"value": "H-alpha and [SII] images and ionisation-front velocity maps from McLeod16, compared with ALMA CO for Pillars 44 and 45", "evidence": [{"loc": "2.3 Supplementary MUSE data", "quote": "we compare out ALMA observations to those obtained with MUSE in the study of (cite: McLeod16)."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "O-star radial velocities used to colour stars in the context figure", "evidence": [{"loc": "Results", "quote": "the radial velocities of the surrounding O stars taken from the 2014 epoch measurements of (cite: Hanes18), and Table 2 of (cite: Kiminki18)"}]}, "citation": "(cite: Hanes18); (cite: Kiminki18)"},
+{"what": {"value": "Positions of Carina O stars without radial velocity measurements", "evidence": [{"loc": "Results", "quote": "The positions of the Carina O stars without radial velocity measurements, taken from (cite: Alexander16), are plotted as black stars for reference."}]}, "citation": "(cite: Alexander16)"},
+{"what": {"value": "Local standard of rest velocity of Carina (-20 km/s) and CO/13CO abundance ratio of 60", "evidence": [
+{"loc": "Pillar Velocities", "quote": "the local standard of rest velocity of -20 km s$^{-1}$ expected for Carina (cite: Rebolledo16)"},
+{"loc": "Pillar Column Density and Mass", "quote": "the abundance ratio expected at the distance of Carina (cite: Rebolledo16)"}
+]}, "citation": "(cite: Rebolledo16)"},
+{"what": {"value": "Distance to Carina of 2.5 kpc", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "We adopt the 2.5 kpc distance estimate of (cite: Povich19), because of their more robust outlier rejection algorithms."}]}, "citation": "(cite: Povich19)"},
+{"what": {"value": "Canonical CO abundance of 1e-4 with respect to H2", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "we use the canonical CO abundance of $10^{-4}$ presented in (cite: Frerking82)"}]}, "citation": "(cite: Frerking82)"},
+{"what": {"value": "Star-formation column density threshold (2e21 cm^-2) used for the integrated-intensity contour", "evidence": [{"loc": "Results", "quote": "This contour corresponds to an H$_2$ column density of $2\\times10^{21}$ cm$^{-2}$"}]}, "citation": "(cite: Clark14)"},
+{"what": {"value": "Herschel-derived mass of Pillar 8 for comparison", "evidence": [{"loc": "Pillar 8", "quote": "The mass we derive from our CO observations for this region is about twice that derived by (cite: Roccatagliata13)"}]}, "citation": "(cite: Roccatagliata13)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Predicted pillar velocity dispersions, internal flows and ordered motions from SPH simulations of Dale12II, Gritschneder09 and Gritschneder10 (Table 2) compared with the observations", "evidence": [
+{"loc": "Comparisons to Models", "quote": "The predictions of these models are summarised in Table 2."},
+{"loc": "Introduction", "quote": "Both use smooth particle hydrodynamics (SPH) codes with 1-2$\\times10^6$ particles"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Pipeline reduced", "evidence": [{"loc": "Observations", "quote": "All data were pipeline reduced in CASA 4.7"}]},
+{"field": "casa_version", "value": "CASA 4.7 (pipeline); CASA 5.4 (re-imaging of ACA 7m mosaics)", "evidence": [
+{"loc": "Observations", "quote": "All data were pipeline reduced in CASA 4.7"},
+{"loc": "Observations", "quote": "Because of the bug in CASA 4.7 with respect to creating mosaics, the ACA 7m data were re-mosaiced (re-imaged) in CASA 5.4."}
+]},
+{"field": "flux_scale_uncertainty", "value": "less than 6% (used as upper envelope in mass and column density)", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "in all cases the flux calibration uncertainty was less than 6%."}]},
+{"field": "self_calibration", "value": "None applied", "evidence": [{"loc": "Observations", "quote": "No further self-calibration was applied because the continuum emission was not well detected in all mosaics."}]}
+],
+"imaging": [
+{"field": "task", "value": "CASA feather for ACA+TP combination of CO and isotopologue windows", "evidence": [{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "To feather the data, both datasets were first imaged on the same velocity grid, and the TP data was spatially regridded using the ACA data as a template."}]},
+{"field": "array_combination", "value": "Feather of ACA 7m and TP; TP converted to the flux scale of the ACA data before feathering", "evidence": [{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "The TP data was then converted to the same flux scale as the ACA data, and the two data cubes were feathered together."}]},
+{"field": "final_beam", "value": "6.59 x 5.03 arcsec at PA 43 deg (CO, feathered)", "evidence": [{"loc": "Table 1", "quote": "| CO (J=2-1) | 6.59 | 5.03 | 43 | 0.60 | 0.079 |"}]},
+{"field": "final_rms", "value": "0.60 Jy/beam per channel (CO, feathered); 0.66 (13CO); 0.49 (C18O)", "evidence": [
+{"loc": "Table 1", "quote": "| CO (J=2-1) | 6.59 | 5.03 | 43 | 0.60 | 0.079 |"},
+{"loc": "Table 1", "quote": "| $^{13}$CO (J=2-1) | 7.06 | 5.10 | 85.7 | 0.66 | 0.083 |"}
+]}
+],
+"inherited": [
+{"what": {"value": "Pillar numbering scheme", "evidence": [{"loc": "Observations", "quote": "in the following we use their pillar numbering scheme to refer to the pillars observed in this work."}]}, "from_reference": "(cite: Hartigan15)"},
+{"what": {"value": "Optical depth of the CO emission computed with equation 1 of Choi93", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "This was done using equation 1 of (cite: Choi93)."}]}, "from_reference": "(cite: Choi93)"},
+{"what": {"value": "CO/C18O emission and abundance ratios used when 13CO is optically thick", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "the emission and abundance ratios between the CO and C$^{18}$O was used instead (cite: WR94)."}]}, "from_reference": "(cite: WR94)"},
+{"what": {"value": "Optical-depth correction in the column density equation", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "the final portion is the correction for optical depth (cite: Mangum15)"}]}, "from_reference": "(cite: Mangum15)"},
+{"what": {"value": "Mean molecular weight of 2.8 times the mass of a hydrogen atom", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "assuming a mean molecular weight of 2.8 times the mass of a hydrogen atom (cite: Kauffmann08)"}]}, "from_reference": "(cite: Kauffmann08)"},
+{"what": {"value": "Canonical CO abundance of 1e-4", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "we use the canonical CO abundance of $10^{-4}$ presented in (cite: Frerking82)"}]}, "from_reference": "(cite: Frerking82)"},
+{"what": {"value": "Clump identification with Fellwalker", "evidence": [{"loc": "Separations Between Intensity Peaks", "quote": "we determined the peak positions of each CO emission peak"}]}, "from_reference": "(cite: fellwalker)"}
+],
+"unstated_but_needed": [
+"Flux scale factor and procedure used to convert the TP data to the ACA flux scale, and feather parameters (e.g. sdfactor, uv cut)",
+"Imaging parameters for the ACA re-mosaic in CASA 5.4: weighting/robust, cell size, image size, deconvolver, clean threshold, masking, primary-beam correction",
+"Calibrator names, time on source and PWV (only in a table not reproduced in the text)",
+"Continuum imaging and which channels were line-free / how continuum was subtracted",
+"Fellwalker parameters (noise, thresholds) and the minimum-spanning-tree implementation",
+"How the velocity dispersion, FWHM, and mean velocities were computed (moment maps, fits, masks) and the virial mass formula, core radii and geometry",
+"Map centres and pointing coordinates of each pillar",
+"How the 30 K excitation temperature was chosen and the CO partition function treatment",
+"How the 10.4 Jy/beam km/s contour and 10 sigma limits were defined (rms of integrated maps)",
+"Uncertainty estimation for masses and column densities beyond the systematic terms"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and re-image ACA data",
+"method": {"value": "Pipeline calibration in CASA 4.7; ACA 7m mosaics re-imaged in CASA 5.4 because of a mosaicking bug; no self-calibration", "evidence": [
+{"loc": "Observations", "quote": "Because of the bug in CASA 4.7 with respect to creating mosaics, the ACA 7m data were re-mosaiced (re-imaged) in CASA 5.4."},
+{"loc": "Observations", "quote": "No further self-calibration was applied because the continuum emission was not well detected in all mosaics."}
+]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Combine ACA and Total Power data",
+"method": {"value": "Image both on the same velocity grid, regrid TP to the ACA template, scale TP to the ACA flux scale, feather the cubes (CO and isotopologues only)", "evidence": [
+{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "To feather the data, both datasets were first imaged on the same velocity grid, and the TP data was spatially regridded using the ACA data as a template."},
+{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "The TP data was then converted to the same flux scale as the ACA data, and the two data cubes were feathered together."}
+]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared ACA-only, feathered and TP-only cubes for Pillar 8 to show improved sensitivity to large-scale structure", "evidence": [{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "highlight how the combination of ACA and TP data improves the sensitivity to large scale structure in the CO emission."}]}
+},
+{
+"order": 3,
+"goal": "Clip velocity range and make moment maps",
+"method": {"value": "Clip cubes to -30 to +10 km/s to remove foreground/background components; make integrated intensity and intensity-weighted velocity (moment 1) maps", "evidence": [
+{"loc": "Results", "quote": "we clipped the velocity ranges of the cubes to contain only emission between -30 km s$^{-1}$ and + 10 km s$^{-1}$"},
+{"loc": "Results", "quote": "moment one (intensity weighted velocity) maps of the $^{12}$CO in each region"}
+]},
+"software": [],
+"key_parameters": [{"value": "velocity window -30 to +10 km/s", "evidence": [{"loc": "Results", "quote": "we clipped the velocity ranges of the cubes to contain only emission between -30 km s$^{-1}$ and + 10 km s$^{-1}$"}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Derive optical depth and CO column density",
+"method": {"value": "Per channel where 13CO exceeds 6 sigma, compute CO optical depth with 13CO (or C18O when tau>60), then compute column density with an optical-depth correction at fixed excitation temperature", "evidence": [
+{"loc": "Pillar Column Density and Mass", "quote": "For every channel in each map where the $^{13}$CO emission was above six sigma we calculated the optical depth of the CO"},
+{"loc": "Pillar Column Density and Mass", "quote": "When the calculated optical depth was greater than 60, generally C$^{18}$O was detected"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "13CO detection threshold of six sigma", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "A cutoff of six sigma was used in order to ensure a robust detection in all isotopologues used in the calculation."}]},
+{"value": "Excitation temperature 30 K", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "given an excitation temperature of 30 K"}]}
+],
+"assumptions": [
+{"value": "[CO]/[13CO] = 60 abundance ratio expected at the distance of Carina", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "the abundance ratio expected at the distance of Carina (cite: Rebolledo16)"}]},
+{"value": "CO abundance 1e-4 relative to H2", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "Using a CO abundance of 10$^{-4}$ with respect to H$_2$"}]},
+{"value": "Distance 2.5 kpc", "evidence": [{"loc": "Table 2", "quote": "under the assumption of T = 30 K, and d= 2.5 kpc."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Compute pillar gas masses",
+"method": {"value": "Convert column density per pixel to number of molecules and mass, sum over pixels above the six sigma threshold", "evidence": [
+{"loc": "Pillar Column Density and Mass", "quote": "assuming a mean molecular weight of 2.8 times the mass of a hydrogen atom (cite: Kauffmann08), we calculate the mass in each pixel"},
+{"loc": "Pillar Column Density and Mass", "quote": "which is then summed across each map (above the six $\\sigma$ threshold) to give the total gas mass in each pillar."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Mean molecular weight 2.8 m_H; T = 30 K; d = 2.5 kpc", "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "assuming a mean molecular weight of 2.8 times the mass of a hydrogen atom (cite: Kauffmann08)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared Pillar 8 mass with the Herschel-derived mass (factor of about two higher)", "evidence": [{"loc": "Pillar 8", "quote": "The mass we derive from our CO observations for this region is about twice that derived by (cite: Roccatagliata13)"}]}
+},
+{
+"order": 6,
+"goal": "Find CO peaks and measure their separations",
+"method": {"value": "Fellwalker on CO integrated intensity maps to locate peaks, then a minimum spanning tree of peak separations, compared with the Jeans length of 30 K gas and the beam", "evidence": [
+{"loc": "Separations Between Intensity Peaks", "quote": "we determined the peak positions of each CO emission peak, and, using a minimum spanning tree analysis, determined the separations of these peaks in all pillars."},
+{"loc": "Separations Between Intensity Peaks", "quote": "Also plotted here are, in red, the resolution of our observations, and in black, the Jeans length of 30 K gas."}
+]},
+"software": ["Fellwalker"],
+"key_parameters": [],
+"assumptions": [
+{"value": "CO emission used as a proxy for cores because the dust continuum was poorly detected (7 pillars)", "evidence": [{"loc": "Separations Between Intensity Peaks", "quote": "the dust continuum in the observed pillars was poorly detected, with faint detections in only 7 pillars."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "Measure pillar velocities and dispersions",
+"method": {"value": "Mean velocity of CO per pillar from moment 1 maps, comparison of mean CO and 13CO velocities (linear relation) to test internal vs surface motions, mean velocity dispersion of CO compared with the thermal line width at 30 K", "evidence": [
+{"loc": "Pillar Velocities", "quote": "comparing the mean velocity of the CO in each pillar to the $^{13}$CO shows no significant differences between the regions probed by these isotopologues"},
+{"loc": "Virial Stability", "quote": "In all cases, the CO emission has a low velocity dispersion, but remaining higher than what is expected for a thermally supported line at T = 30 K."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with MUSE ionisation-front velocities for Pillars 44 and 45", "evidence": [{"loc": "Comparisons to Models", "quote": "what appeared as a single pillar in the MUSE data appears as two components in the ALMA data"}]}
+},
+{
+"order": 8,
+"goal": "Virial analysis of C18O cores",
+"method": {"value": "Compare core mass from C18O emission to virial mass for each C18O-detected core", "evidence": [{"loc": "Virial Stability", "quote": "Where C$^{18}$O is detected, we performed a virial analysis of the emission, and find that most cores are unstable against virial collapse"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 9,
+"goal": "Compare kinematics with feedback simulations",
+"method": {"value": "Compare observed velocity dispersions, ordered flows and internal flows with predictions summarised from Dale12II, Gritschneder09 and Gritschneder10", "evidence": [
+{"loc": "Comparisons to Models", "quote": "There is evidence for some pillars having ordered flows, but the incidence rate is roughly 50%, and there is no evidence for internal flows"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "4.7 (pipeline), 5.4 (re-imaging); feather task", "used_for": {"value": "Pipeline calibration, re-mosaicking of ACA data, feathering ACA with TP", "evidence": [
+{"loc": "Observations", "quote": "All data were pipeline reduced in CASA 4.7"},
+{"loc": "Observations", "quote": "the ACA 7m data were re-mosaiced (re-imaged) in CASA 5.4."}
+]}},
+{"name": "Fellwalker", "version": "not stated", "used_for": {"value": "Identify peaks in CO integrated intensity maps", "evidence": [{"loc": "Separations Between Intensity Peaks", "quote": "we determined the peak positions of each CO emission peak"}]}},
+{"name": "spectralcube", "version": "not stated", "used_for": {"value": "Acknowledged as used in the research (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of spectralcube, a library for astronomical spectral data cubes"}]}},
+{"name": "pyspeckit", "version": "not stated", "used_for": {"value": "Acknowledged as used in the research (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of pyspeckit, an open-source spectral analysis and plotting package for Python"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Acknowledged as used in the research", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"}]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "Plotting", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of APLpy, an open-source plotting package for Python"}]}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "Acknowledged as used in the research", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of NumPy (cite: numpy)"}]}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "Plotting", "evidence": [{"loc": "Acknowledgements", "quote": "This research made use of matplotlib, a Python library for publication quality graphics"}]}},
+{"name": "IPython", "version": "not stated", "used_for": {"value": "Acknowledged as used in the work", "evidence": [{"loc": "Acknowledgements", "quote": "This work made use of the IPython package (cite: ipython)"}]}}
+],
+"results_numeric": [
+{"quantity": "Pillar 2 CO gas mass", "value": "501", "uncertainty": "30", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 2 | 501 | 30 | 8.3 | 0.7 | 51 | 3 | -18.83 |"}]},
+{"quantity": "Pillar 3 CO gas mass", "value": "187", "uncertainty": "11", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 3 | 187 | 11 | 6.5 | 0.5 | 45 | 3 | -1.04 |"}]},
+{"quantity": "Pillar 4 CO gas mass", "value": "203", "uncertainty": "12", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 4 | 203 | 12 | 2.8 | 0.3 | 50 | 3 | -26.02 |"}]},
+{"quantity": "Pillar 5 CO gas mass", "value": "22", "uncertainty": "1", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 5 | 22 | 1 | 2.2 | 0.2 | 42 | 3 | -22.38 |"}]},
+{"quantity": "Pillar 6 CO gas mass", "value": "48", "uncertainty": "3", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 6 | 48 | 3 | 6.1 | 0.4 | 46 | 3 | -9.61 |"}]},
+{"quantity": "Pillar 8 CO gas mass", "value": "1386", "uncertainty": "83", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 8 | 1386 | 83 | 12.4 | 1.2 | 57 | 3 | -14.77 |"}]},
+{"quantity": "Pillar 16 CO gas mass", "value": "124", "uncertainty": "8", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 16 | 124 | 8 | 2.9 | 0.3 | 49 | 3 | -19.53 |"}]},
+{"quantity": "Pillar 17 CO gas mass", "value": "56", "uncertainty": "3", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 17 | 56 | 3 | 1.3 | 0.1 | 35 | 2 | -20.12 |"}]},
+{"quantity": "Pillar 18 CO gas mass", "value": "124", "uncertainty": "7", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 18 | 124 | 7 | 4.0 | 0.4 | 63 | 4 | -19.71 |"}]},
+{"quantity": "Pillar 20 CO gas mass", "value": "449", "uncertainty": "27", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 20 | 449 | 27 | 12.9 | 1.0 | 88 | 5 | -13.41 |"}]},
+{"quantity": "Pillar 22 CO gas mass", "value": "89", "uncertainty": "5", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 22 | 89 | 5 | 1.8 | 0.2 | 39 | 2 | -7.51 |"}]},
+{"quantity": "Pillar 44 CO gas mass", "value": "101", "uncertainty": "6", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 44 | 101 | 6 | 4.3 | 0.4 | 86 | 5 | -8.91 |"}]},
+{"quantity": "Pillar 45 CO gas mass", "value": "25", "uncertainty": "1", "units": "Msun", "from_step": 5, "evidence": [{"loc": "Table 1", "quote": "| 45 | 25 | 1 | 1.0 | 0.1 | 21 | 1 | -5.48 |"}]},
+{"quantity": "Mean pillar column density (order of magnitude)", "value": "1e20", "uncertainty": "not stated", "units": "cm^-2", "from_step": 4, "evidence": [{"loc": "Pillar Column Density and Mass", "quote": "we find mean pillar column densities of order 1$\\times10^{20}$ cm$^{-2}$"}]},
+{"quantity": "Systematic offset between CO and 13CO mean velocities (y-intercept)", "value": "0.9", "uncertainty": "0.8", "units": "km/s", "from_step": 7, "evidence": [{"loc": "Pillar Velocities", "quote": "shows a minimal systematic velocity offset of 0.9$\\pm$0.8 km s$^{-1}$ between the CO and $^{13}$CO"}]},
+{"quantity": "Velocity difference between cloud rim and tip of main body of Pillar 5", "value": "11", "uncertainty": "not stated", "units": "km/s", "from_step": 7, "evidence": [{"loc": "Pillar Velocities", "quote": "That there is an $\\sim$ 11 km s$^{-1}$ velocity difference between the cloud rim and the tip of the main body of the pillar"}]},
+{"quantity": "Expansion time of the Trumpler 15 cloud rim (Pillars 20 and 22)", "value": "30000", "uncertainty": "not stated", "units": "yr", "from_step": 7, "evidence": [{"loc": "Comparisons between pillar structures", "quote": "the cloud has been expanding for roughly 30 000 years"}]},
+{"quantity": "Contour of CO integrated intensity corresponding to N(H2) = 2e21 cm^-2", "value": "10.4", "uncertainty": "not stated", "units": "Jy/beam km/s", "from_step": 4, "evidence": [{"loc": "Results", "quote": "This contour corresponds to an H$_2$ column density of $2\\times10^{21}$ cm$^{-2}$"}]}
+],
+"findings_qualitative": [
+{"value": "Pillar velocity dispersions are generally below 1 km/s and the CO and 13CO mean velocities show no significant offset, implying little bulk internal motion", "evidence": [{"loc": "abstract", "quote": "We generally find pillar velocity dispersions of $<$ 1 km s$^{-1}$ and that the outer few layers of molecular emission in these pillars show no significant offsets from each other"}]},
+{"value": "Some pillars are offset in velocity from their parent cloud rim and some are not, suggesting stochastic development", "evidence": [{"loc": "abstract", "quote": "There are instances where the pillars are offset in velocity from their parental cloud rim, and some with no offset, hinting at a stochastic development of these motions."}]},
+{"value": "Several apparent single pillars (e.g. 5 and 45) are chance alignments of distinct velocity components along the line of sight", "evidence": [{"loc": "Pillar Velocities", "quote": "It is only through analyses such as these, with the velocity information of the pillar structures, that we are able to distinguish these types of chance alignments."}]}
+],
+"claims": [
+{
+"hypothesis": "Pillar kinematics can discriminate between competing feedback simulations",
+"experiment": "ACA+TP CO, 13CO, C18O J=2-1 survey of 13 Carina pillars compared with predictions of Dale12II, Gritschneder09 and Gritschneder10",
+"result": "Velocity dispersions below 1 km/s, no internal flows, ordered flows in about 50% of pillars",
+"finding": "The observations are most consistent with the Dale12II models",
+"support": "supported",
+"evidence": [
+{"loc": "Comparisons to Models", "quote": "These properties are most aligned with the predictions of (cite: Dale12II)."},
+{"loc": "Comparisons to Models", "quote": "There is evidence for some pillars having ordered flows, but the incidence rate is roughly 50%, and there is no evidence for internal flows"}
+]
+},
+{
+"hypothesis": "Surface and interior gas of the pillars move differently",
+"experiment": "Compared mean CO and 13CO velocities for each pillar",
+"result": "No significant differences; systematic offset 0.9+/-0.8 km/s",
+"finding": "No significant internal motions in the pillars",
+"support": "supported",
+"evidence": [{"loc": "Pillar Velocities", "quote": "comparing the mean velocity of the CO in each pillar to the $^{13}$CO shows no significant differences between the regions probed by these isotopologues"}]
+},
+{
+"hypothesis": "Pillar cores seen in C18O are gravitationally bound and spaced by Jeans lengths",
+"experiment": "Virial analysis of C18O cores and minimum spanning tree separation of CO peaks versus the Jeans length",
+"result": "Most C18O cores are virially unstable; core separations are 1-2 Jeans lengths",
+"finding": "Embedded cores are likely to collapse",
+"support": "partially",
+"evidence": [
+{"loc": "Conclusions", "quote": "we have performed virial analyses and find that most embedded cores are virial unstable, an likely to collapse"},
+{"loc": "Conclusions", "quote": "most cores within these pillars are separated by 1-2 jeans lengths"}
+]
+},
+{
+"hypothesis": "Pillar masses and column densities span a range sufficient for star formation",
+"experiment": "Optical-depth corrected CO column density and mass for 13 pillars",
+"result": "Masses of order 30-2000 Msun; mean column densities of a few 1e20 cm^-2",
+"finding": "Pillars have a wide range of masses depending on size",
+"support": "supported",
+"evidence": [
+{"loc": "Conclusions", "quote": "We find pillar masses of order 30-2000 M$_\\odot$ depending on the size of the pillar"}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "A multi-pillar, spatially and spectrally resolved survey in a single environment is needed to constrain general ionised feedback processes", "evidence": [{"loc": "Introduction", "quote": "To do that, a moderately high resolution survey of multiple pillars in a single environment is required."}]},
+{"field": "why_this_method", "value": "TP added because ACA alone filters out large-scale emission; CO isotopologues used to correct for optical depth", "evidence": [
+{"loc": "3.1 Feathering the ACA and Total Power Data", "quote": "Despite using the ACA in stand alone mode, our interferometric data suffered from spatial filtering of the large scale emission."},
+{"loc": "Pillar Column Density and Mass", "quote": "Because we observed multiple CO isotopologues in the same transition, we are able to calculate the optical depth of the CO emission."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Canonical Carina distance of 2.3 kpc rejected in favour of Gaia-based 2.5 kpc", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "The canonical distance has generally been accepted as 2.3 kpc (cite: Smith06b)"}]},
+{"value": "Lower CO abundance of order 5e-6 (low extinction regions) not adopted; canonical 1e-4 used", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "we use the canonical CO abundance of $10^{-4}$ presented in (cite: Frerking82)"}]}
+],
+"limitations_admitted": [
+{"value": "Distance uncertainty scales masses and column densities as distance squared", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "vary with distance squared"}]},
+{"value": "CO abundance uncertainty up to a factor of 3 scales linearly into column densities and masses", "evidence": [{"loc": "2.2 Systematic Uncertainties in ALMA data", "quote": "point out that uncertainties in the CO abundance can be up to a factor of 3"}]},
+{"value": "Dust continuum poorly detected, so CO peaks serve as proxy for cores", "evidence": [{"loc": "Separations Between Intensity Peaks", "quote": "the dust continuum in the observed pillars was poorly detected, with faint detections in only 7 pillars."}]}
+],
+"referee_caveats_inferred": [
+"Fixed T_ex = 30 K and a single CO abundance applied to all pillars without per-pillar temperature estimates; masses depend strongly on these.",
+"No quantitative statistic (e.g. likelihood or chi-square) is used to discriminate between the three models; the comparison is qualitative against three coarse predictions.",
+"Imaging, feathering and virial analysis settings are largely unspecified, limiting reproduction of the cubes and core masses.",
+"Velocity dispersion is compared with a thermal width only; contributions from unresolved beam smoothing (about 6-7 arcsec, around 0.07 pc at 2.5 kpc) are not discussed."
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"TP-to-ACA flux scaling and feather settings",
+"CASA 5.4 imaging parameters (weighting, cell, size, cleaning)",
+"Fellwalker parameters and MST implementation",
+"Virial mass formula, core sizes and mask definitions",
+"Map centres, calibrator and time-on-source details (in tables not reproduced in the text)"
+],
+"estimated_data_volume_inferred": "ACA 7m plus TP cubes for 13 mosaics in three CO lines: tens of GB in the archive (rough guess).",
+"score_inferred": 2,
+"score_reason": "ALMA project code is given, but imaging, feathering, mask and virial recipes are largely unspecified; the main kinematic results are qualitative or tabulated only per pillar.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public status of data is not stated in the text and the recipe lacks key imaging/feather/virial parameters; main conclusions are qualitative.",
+"methods_papers": [
+{"citation": "(cite: Choi93)", "why": "Equation 1 used for CO optical depth"},
+{"citation": "(cite: Mangum15)", "why": "Optical-depth correction in the column density equation"},
+{"citation": "(cite: fellwalker)", "why": "Clump-finding algorithm for CO peaks"}
+],
+"companion_papers": [
+{"citation": "(cite: Klaassen14)", "why": "Earlier spatially and spectrally resolved study of a single large Carina pillar"},
+{"citation": "(cite: McLeod16)", "why": "MUSE observations of pillar ionisation fronts, compared with ALMA CO"},
+{"citation": "(cite: Rebolledo16)", "why": "Lower-resolution CO(J=1-0) study of Carina; source of LSR velocity and abundance ratio"}
+],
+"related_projects_or_surveys": ["Reiter et al. in prep (outflows and H-alpha of Carina pillars)"]
+}

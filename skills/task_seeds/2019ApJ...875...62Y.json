@@ -1,0 +1,247 @@
+{
+ "bibcode": "2019ApJ...875...62Y",
+ "title": "ALMA Observations of Layered Structures due to CO Selective Dissociation in the ρ Ophiuchi A Plane-parallel PDR",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab0d80",
+ "arxiv_id": "1903.02192",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Does the rho Oph A PDR show layered CO isotopologue structures from selective dissociation, indicating a plane-parallel rather than clumpy PDR, and how do 13CO/C18O abundance ratios vary?",
+ "alma_project_codes": [
+  "2013.1.00839.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 226 GHz), Cycle 2",
+  "arrays": "12-m Array and ACA 7-m Array",
+  "angular_resolution": "common beam 1.45\" x 0.94\"",
+  "sensitivity": "1σ: 45 (12CO), 45 (13CO), 33 (C18O) mJy/beam at 0.2 km/s; continuum 0.24 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "G0=(3–4)e3 FUV intensity at PDR shell",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The FUV intensity at the PDR shell was estimated to be $G_0$=(3–4)$\\times$10$^3$ ((cite: Shimajiri17))."
+     }
+    ]
+   },
+   "citation": "Shimajiri17"
+  },
+  {
+   "what": {
+    "value": "lower limit Tex 45 K from JCMT 12CO(3-2)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "we set the lower limit of the excitation temperature as 45 K, as previously estimated from the JCMT $^{12}$CO ($J$=3–2) data ((cite: White15))"
+     }
+    ]
+   },
+   "citation": "White15"
+  },
+  {
+   "what": {
+    "value": "solar system 13CO/C18O ratio 5.5",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "significantly larger than the 5.5 seen in the solar system ((cite: Anders89))"
+     }
+    ]
+   },
+   "citation": "Anders89"
+  },
+  {
+   "what": {
+    "value": "12CO/13CO ratio ~4 in HL Tau",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "measured toward another flat-spectrum YSO, HL Tau, is $\\sim$4 ((cite: Wu18))"
+     }
+    ]
+   },
+   "citation": "Wu18"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify CO layered structure in channel maps",
+   "method": "Inspect channel maps of 12CO, 13CO, C18O at 2.2–2.6 km/s relative to S1 and the 1.3 mm continuum",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive Tex, optical depths and column densities, then R13/18 maps",
+   "method": "Tex from peak 12CO brightness temperature; tau13, tau18 from that Tex; N under LTE via Nishimura15 eq. 11",
+   "software": [],
+   "key_parameters": [
+    "Tex lower limit 45 K"
+   ],
+   "assumptions": [
+    "common Tex among isotopologues; 12CO(2-1) heavily optically thick; LTE"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Radial profile of R13/18 and comparison with PDR models",
+   "method": "Profile versus projected distance from S1, error propagation formula, compare with van Dishoeck & Black 1988 scaled by density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "nH ~1e5 cm-3 from Loren83"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "GY-51 CO intensity ratio and disk dust mass",
+   "method": "Spectra from 3.6\"x2.4\" region of 12-m data; ratio lower limit; dust mass from 1.3 mm flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tdust=60 K, kappa1.3mm=2.3 cm2/g, gas-to-dust 100, CO/H2 6e-5, Tgas=60 K, disk radius 70 au, 12C/13C=62"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Layer separation",
+   "value": "10 arcsec = 6.6e-3 pc = 1400 au",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "10$\\ensuremath{''}$ = 6.6$\\times$10$^{-3}$ pc = 1400 au"
+    }
+   ]
+  },
+  {
+   "quantity": "R13/18 near emission front",
+   "value": "as high as 40",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$R_{13/18}$ is as high as 40 near the shell"
+    }
+   ]
+  },
+  {
+   "quantity": "Angular scale of R13/18 decline",
+   "value": "3\"–5\" = (2.0–3.4)e-3 pc",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "rapidly decreases from 20–40 to the standard value in a small angular scale of 3$\\ensuremath{''}$–5$\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak 12CO brightness",
+   "value": "3.8 Jy/beam, 69 K",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "is 3.8 Jy beam$^{-1}$ which corresponds to a brightness temperature of 69 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Tex range",
+   "value": "45–75",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "are 45–75 K, 0.03–4.4, 0.02–0.77"
+    }
+   ]
+  },
+  {
+   "quantity": "GY-51 12CO flux",
+   "value": "3.2",
+   "uncertainty": "0.1",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 GY-51",
+     "quote": "the $^{12}$CO emission is clearly detected (3.2$\\pm$0.1 Jy km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "GY-51 12CO/13CO ratio",
+   "value": ">21",
+   "uncertainty": "3σ lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 GY-51",
+     "quote": "The 3$\\sigma$ lower limit of the $I(^{12}{\\rm CO}(2-1))/I(^{13}{\\rm CO}(2-1))$ intensity ratio is $>21$."
+    }
+   ]
+  },
+  {
+   "quantity": "GY-51 1.3 mm flux density",
+   "value": "40.5",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 GY-51",
+     "quote": "total flux density of 40.5 mJy within a $3.6\\ensuremath{''}\\times2.4\\ensuremath{''}$ region"
+    }
+   ]
+  },
+  {
+   "quantity": "GY-51 dust mass",
+   "value": "1.6e-5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 GY-51",
+     "quote": "$M_\\mathrm{dust} = 1.6\\times 10^{-5}M_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration and imaging parameters (weighting, deconvolver, masks, continuum subtraction), since deferred to Kawabe18",
+  "Rest frequencies and spectral setup",
+  "Exact procedure and pixel selection for Tex/column density maps",
+  "Coordinates of targets"
+ ],
+ "missing_for_reproduction": [
+  "Imaging recipe (in Kawabe18)",
+  "Tex/column density map pipeline details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data and simple analysis, but imaging details deferred to Kawabe18 and no software named.",
+ "rediscovery_reason": "Public data, numeric results from simple LTE analysis, though imaging settings are inherited.",
+ "source_card": "cards/2019ApJ...875...62Y/sonnet/card.md"
+}

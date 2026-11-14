@@ -1,0 +1,507 @@
+{
+ "bibcode": "2024ApJ...964...12F",
+ "title": "ALMA-LEGUS. I. The Influence of Galaxy Morphology on Molecular Cloud Properties",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad1eec",
+ "arxiv_id": "2401.01450",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Which molecular cloud properties differ between barred spiral NGC 1313 and flocculent spiral NGC 7793 (similar mass, metallicity and SFR) and could explain NGC 1313 forming many more massive young star clusters",
+ "alma_project_codes": [
+  "2015.1.00782.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12m array only (no 7m or total power)",
+  "angular_resolution": "matched to 13 pc in both galaxies (after smoothing to a circular beam)",
+  "sensitivity": "~0.2 K surface brightness sensitivity, matched between galaxies"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "LEGUS star cluster catalogs (masses, ages, extinctions) for NGC 1313 and NGC 7793",
+    "evidence": [
+     {
+      "loc": "Cluster Catalogs",
+      "quote": "we use catalogs of star clusters and their SED-fitted properties from the LEGUS collaboration, which used the methodology described in (cite: Adamo17)"
+     }
+    ]
+   },
+   "citation": "(cite: Adamo17); (cite: Calzetti15)"
+  },
+  {
+   "what": {
+    "value": "Galaxy SFR (GALEX far-UV based), stellar mass and HI mass used in Table 1",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Calculated by (cite: Calzetti15) using GALEX far-UV images, dust corrected with methods of (cite: Lee09)"
+     }
+    ]
+   },
+   "citation": "(cite: Calzetti15)"
+  },
+  {
+   "what": {
+    "value": "NGC 1313 oxygen abundance 8.4+-0.1, no radial gradient",
+    "evidence": [
+     {
+      "loc": "5.1 Mass",
+      "quote": "For NGC 1313, we use an oxygen abundance of $12+\\log{\\text{(O/H)}}=8.4\\pm0.1$ with no radial gradient in the galaxy (cite: WalshRoy97)."
+     }
+    ]
+   },
+   "citation": "(cite: WalshRoy97)"
+  },
+  {
+   "what": {
+    "value": "NGC 7793 radial oxygen abundance gradient (8.572 - 0.054 dex/kpc x R_gal)",
+    "evidence": [
+     {
+      "loc": "5.1 Mass",
+      "quote": "NGC 7793 has a measured radial gradient of $12+\\log{\\text{(O/H)}}=8.572 - 0.054$ dex kpc$^{-1} \\times R_\\text{gal}$ (cite: Stanghellini15)."
+     }
+    ]
+   },
+   "citation": "(cite: Stanghellini15)"
+  },
+  {
+   "what": {
+    "value": "Solar oxygen abundance 8.69",
+    "evidence": [
+     {
+      "loc": "5.1 Mass",
+      "quote": "Using a solar oxygen abundance of $12+\\log{\\text{(O/H)}}=8.69$ (cite: Asplund09)"
+     }
+    ]
+   },
+   "citation": "(cite: Asplund09)"
+  },
+  {
+   "what": {
+    "value": "Alternative NGC 7793 metallicity gradient (8.945 - 0.083 dex/kpc x R_gal), tested but not adopted",
+    "evidence": [
+     {
+      "loc": "5.1 Mass",
+      "quote": "which instead finds $12+\\log{\\text{(O/H)}}=8.945 - 0.083$ dex kpc$^{-1} \\times R_\\text{gal}$"
+     }
+    ]
+   },
+   "citation": "(cite: Grasha22)"
+  },
+  {
+   "what": {
+    "value": "Line used to flag clusters with age-reddening degeneracy (E(B-V) versus log(Age))",
+    "evidence": [
+     {
+      "loc": "Cluster Catalogs",
+      "quote": "we remove the clusters that fall above the E(B-V)-log(Age) line from (cite: Whitmore23) only when comparing age measurements between the two galaxies"
+     }
+    ]
+   },
+   "citation": "(cite: Whitmore23)"
+  },
+  {
+   "what": {
+    "value": "Standard 10% ALMA flux calibration uncertainty",
+    "evidence": [
+     {
+      "loc": "5.1 Mass",
+      "quote": "the standard 10% ALMA flux calibration uncertainty (cite: Fomalont14)"
+     }
+    ]
+   },
+   "citation": "(cite: Fomalont14)"
+  },
+  {
+   "what": {
+    "value": "Milky Way size-linewidth reference a0 = 1.0+-0.1, a1 = 0.5+-0.05",
+    "evidence": [
+     {
+      "loc": "6 Size-Linewidth Relations",
+      "quote": "which found $a_0 = 1.0\\pm0.1$ and $a_1 = 0.5\\pm0.05$ for clouds mapped in CO(1-0) in the disk of the Milky Way"
+     }
+    ]
+   },
+   "citation": "(cite: Solomon87)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate, image and smooth the CO(2-1) cubes",
+   "method": "ALMA pipeline calibration, CASA imaging with Briggs weighting, then smoothing both cubes to a common circular 13 pc beam",
+   "software": [
+    "CASA",
+    "ALMA data pipeline"
+   ],
+   "key_parameters": [
+    "robust 0.5 (NGC 1313), 2.0 (NGC 7793)",
+    "channel width 1.33 km/s"
+   ],
+   "assumptions": [
+    "distances 4.6 Mpc (NGC 1313) and 3.7 Mpc (NGC 7793)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "assemble the LEGUS cluster sample",
+   "method": "Use LEGUS catalogs (Cardelli89 extinction law, averaged aperture correction, Padova tracks via Yggdrasil), keep all cluster candidates, merge east and west maps using the better-fit entry for duplicates, drop age-degenerate clusters only for age comparisons",
+   "software": [
+    "Yggdrasil"
+   ],
+   "key_parameters": [
+    "massive clusters M > 1e4 Msun; young clusters age < 10 Myr",
+    "67 overlapping clusters in NGC 1313, 47 in NGC 7793"
+   ],
+   "assumptions": [
+    "SFR fraction inside the LEGUS footprint from GALEX far-UV light used to scale cluster counts to the full galaxy"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "decompose the CO cube into dendrogram structures and clumps",
+   "method": "astrodendro hierarchical dendrograms (used for size-linewidth and virial analysis) and quickclump non-overlapping clumps (used for property distributions and counts)",
+   "software": [
+    "astrodendro",
+    "quickclump"
+   ],
+   "key_parameters": [
+    "astrodendro: min_value=3 sigma, min_delta=2.5 sigma, min_npix=2 beams",
+    "quickclump: Tcutoff=4 sigma, dTleaf=4 sigma, Npixmin=2 beams (65 voxels for NGC 1313, 70 for NGC 7793)"
+   ],
+   "assumptions": [
+    "Dendrograms count emission multiple times so are used only where multiple counting is allowed"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compute cloud masses with a metallicity-dependent X_CO",
+   "method": "X_CO(2-1) from Gong20 (function of T_peak, beam size 13 pc, metallicity), H2 column density summed over pixel area, times 1.4 for total gas mass",
+   "software": [],
+   "key_parameters": [
+    "Z = 0.51 Zsun (NGC 1313); Z = (0.56-0.76) Zsun (NGC 7793, Stanghellini15 gradient)",
+    "mass error = 10% flux calibration added in quadrature with rms noise error"
+   ],
+   "assumptions": [
+    "factor 1.4 (mean mass per hydrogen atom, all hydrogen molecular)",
+    "NGC 1313 metallicity with no radial gradient; solar 12+log(O/H) = 8.69"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "measure velocity dispersion and radius of each structure",
+   "method": "Gaussian fit to the intensity-weighted mean line profile, deconvolved with channel width; ellipse fit to half-power contours, converted to effective radius and deconvolved with the beam, geometric mean of axes",
+   "software": [],
+   "key_parameters": [
+    "channel width 1.33 km/s with FWHM = 2.35 sigma; beam radius 6.5 pc; effective radius factor 1.91",
+    "structures with deconvolved sigma_v < 0.1 x velocity resolution or R < 0.1 x beam size removed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "derive surface density, virial parameter, external pressure and free-fall time",
+   "method": "Sigma = M / area; alpha_vir = 5 sigma_v^2 R / (G M); P_e = 3 Pi M sigma_v^2 / (4 pi R^3); t_ff = sqrt(pi^2 R^3 / (8 G M))",
+   "software": [],
+   "key_parameters": [
+    "Pi = 0.5 for external pressure; collapse threshold alpha_vir < 1, unbound above 2"
+   ],
+   "assumptions": [
+    "cloud in pressure equilibrium with surrounding medium for P_e"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "fit the size-linewidth intercept",
+   "method": "Power-law sigma_v = a0 R^a1 fit to dendrogram structures with orthogonal distance regression, slope fixed at a1 = 0.5, intercept fitted per galaxy",
+   "software": [
+    "SciPy"
+   ],
+   "key_parameters": [
+    "2-D Gaussian KDE (scipy.stats, Scott's rule bandwidth) used only to display the point distribution"
+   ],
+   "assumptions": [
+    "fixed slope 0.5, chosen because fitted slopes in the literature vary widely with resolution, tracer and method"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "assess virial state of dendrogram structures",
+   "method": "Plot sigma_v^2/R against surface density for each dendrogram structure with the alpha_vir = 1 line and compare scatter between galaxies",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "only gravitational and kinetic energies considered; external pressure and magnetic fields neglected in the plot"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "compare cloud and cluster property distributions between galaxies",
+   "method": "Histograms, KDEs and CDFs of non-overlapping clumps; two-sample KS and AD tests on 1000 random subsamples, averaging p-values",
+   "software": [
+    "SciPy"
+   ],
+   "key_parameters": [
+    "KDE scalar bandwidth 0.5 dex"
+   ],
+   "assumptions": [
+    "full-sample KS/AD tests are overpowered at large N, so subsampling is used only to rank which properties differ most"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "test spatial correlation of bound clouds and cloud properties with young clusters",
+   "method": "Build gridded density maps of clouds, bound clouds and young clusters and compute correlation coefficients, repeated over cell sizes and alpha_vir thresholds; also nearest cloud distances for clusters",
+   "software": [],
+   "key_parameters": [
+    "cell sizes 50 to 200 pixels (110 to 450 pc); alpha_vir thresholds 1 to 3; main bound-cloud map uses alpha_vir < 1.5 and young clusters < 10 Myr"
+   ],
+   "assumptions": [
+    "clump (non-overlapping) definitions used for clouds"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Size-linewidth intercept a0, NGC 1313 (slope fixed at 0.5)",
+   "value": "0.41",
+   "uncertainty": "0.01",
+   "units": "km/s pc^-0.5 (reported without units)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6 Size-Linewidth Relations",
+     "quote": "For NGC 1313, we fit a value of $a_0=0.41\\pm0.01$, and for NGC 7793 we fit a value of $a_0=0.33\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth intercept a0, NGC 7793 (slope fixed at 0.5)",
+   "value": "0.33",
+   "uncertainty": "0.01",
+   "units": "km/s pc^-0.5 (reported without units)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6 Size-Linewidth Relations",
+     "quote": "For NGC 1313, we fit a value of $a_0=0.41\\pm0.01$, and for NGC 7793 we fit a value of $a_0=0.33\\pm0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Significance of intercept difference NGC 1313 vs NGC 7793",
+   "value": "more than 3 sigma",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6 Size-Linewidth Relations",
+     "quote": "The intercept of NGC 1313 is significantly higher than that of NGC 7793 by more than $3\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of LEGUS clusters, NGC 1313 / NGC 7793",
+   "value": "1201 / 467",
+   "uncertainty": "not stated",
+   "units": "clusters",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Cluster Counts",
+     "quote": "with a total of 1201 clusters compared to 467 for NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "Massive clusters (M > 1e4 Msun), NGC 1313 / NGC 7793",
+   "value": "333 / 53",
+   "uncertainty": "not stated",
+   "units": "clusters",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Cluster Counts",
+     "quote": "having 333 massive clusters identified by LEGUS where NGC 7793 has 53"
+    }
+   ]
+  },
+  {
+   "quantity": "Young massive clusters (< 10 Myr), NGC 1313 / NGC 7793",
+   "value": "37 / 3",
+   "uncertainty": "not stated",
+   "units": "clusters",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Cluster Counts",
+     "quote": "37 of those massive clusters are young"
+    },
+    {
+     "loc": "Cluster Counts",
+     "quote": "compared to only 3 in NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR ratio NGC 1313 / NGC 7793",
+   "value": "2.2",
+   "uncertainty": "0.8",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Cluster Counts",
+     "quote": "we get a ratio of 2.2$\\pm$0.8 in the SFR between the two galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of non-overlapping clumps, NGC 1313 / NGC 7793",
+   "value": "531 / 965",
+   "uncertainty": "not stated",
+   "units": "clumps",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (cluster counts and segmentation)",
+     "quote": "Clumps$^d$ | 531 | 965"
+    }
+   ]
+  },
+  {
+   "quantity": "X_CO(2-1) range, NGC 1313",
+   "value": "(0.69-2.56)e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2 / (K km s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Mass",
+     "quote": "results in values of $X_\\text{CO(2-1)}=(0.69-2.56)\\times10^{20}$ cm$^{-2}$/(K km s$^{-1}$) for NGC 1313 and $X_\\text{CO}$$=(0.64-2.65)\\times10^{20}$ cm$^{-2}$/(K km s$^{-1}$) for NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "X_CO(2-1) range, NGC 7793",
+   "value": "(0.64-2.65)e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2 / (K km s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Mass",
+     "quote": "results in values of $X_\\text{CO(2-1)}=(0.69-2.56)\\times10^{20}$ cm$^{-2}$/(K km s$^{-1}$) for NGC 1313 and $X_\\text{CO}$$=(0.64-2.65)\\times10^{20}$ cm$^{-2}$/(K km s$^{-1}$) for NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "Total observed molecular gas mass in footprint, NGC 1313 / NGC 7793",
+   "value": "7.6e6 / 1.4e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Mass",
+     "quote": "with measured totals of $7.6\\times10^6$ M$_\\odot$ in NGC 1313 and $1.4\\times10^7$ M$_\\odot$ in NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of CO mass in clump structures, NGC 1313 / NGC 7793",
+   "value": "82% / 95%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Mass",
+     "quote": "approximately 82% of the total observed CO mass in NGC 1313 and 95% in NGC 7793"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation of young clusters with bound clouds / all clouds, NGC 1313",
+   "value": "0.24 / 0.32",
+   "uncertainty": "0.06 / 0.05",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "9 Property Spatial Distributions",
+     "quote": "the correlation coefficient of the young clusters with the bound clouds is 0.24$\\pm$0.06 and with the general cloud population is 0.32$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation of young clusters with bound clouds / all clouds, NGC 7793",
+   "value": "0.36 / 0.44",
+   "uncertainty": "0.18 / 0.13",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "9 Property Spatial Distributions",
+     "quote": "In NGC 7793, the correlation coefficients are 0.36$\\pm$0.18 and 0.44$\\pm$0.13 for the bound clouds and all clouds, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Bootstrapped KS / AD p-value, cluster mass",
+   "value": "0.04 / 0.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Cluster Mass | 0.04 | 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Bootstrapped KS / AD p-value, young cluster mass",
+   "value": "0.02 / 0.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Young Cluster Mass | 0.02 | 0.01"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters: cell size, image size, deconvolver, niter/threshold, masks, primary-beam cutoff, mosaic gridder",
+  "spectral window selection and velocity range/starting channel of the CO(2-1) cubes; how the two NGC 1313 mosaics were combined",
+  "continuum subtraction method and line-free channels",
+  "how and with what tool the cubes were smoothed to the common 13 pc beam, and whether rms was re-measured after smoothing",
+  "how the noise sigma used for dendrogram and quickclump thresholds was measured",
+  "definition of T_peak used in the X_CO prescription (per voxel, per clump, after smoothing)",
+  "which map (moment-0 or cube) the half-power contour ellipses were fitted to, and how the intensity-weighted mean line profile was constructed",
+  "sample size and random seed for the bootstrapped KS/AD subsamples (text for the sample size is garbled)",
+  "definition of the area used for surface density and of the footprint used for cluster-to-cloud matching",
+  "ODR initial guesses and weighting for the size-linewidth fit; how the quoted a0 uncertainty was derived",
+  "which pipeline version actually calibrated NGC 1313 (Observations text and Software section disagree)",
+  "the LEGUS cluster catalog files used (version, filtering) and the final merged east/west catalogs"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters (cell, imsize, deconvolver, threshold, masks, mosaic settings) and cube velocity range",
+  "continuum subtraction and line-free channels",
+  "noise estimation used for sigma-based thresholds in astrodendro and quickclump",
+  "exact definition and measurement of T_peak for the X_CO prescription",
+  "bootstrap subsample size and random seed; ODR fit setup",
+  "the specific LEGUS catalog files and the merged east/west cluster tables"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Score on a 1-5 scale. Project code, calibrators, pipeline/CASA versions, robust values, decomposition parameters and all formulas are given, but the tclean setup, cube definition, noise estimation and bootstrap details are missing and the pipeline version is inconsistent.",
+ "rediscovery_reason": "ALMA project 2015.1.00782.S is given with archival-style acknowledgement, calibration and decomposition recipes are mostly specified, and main results (intercepts, cluster counts, masses, correlations) are numeric; imaging details must be chosen by the reproducer.",
+ "source_card": "cards/2024ApJ...964...12F/sonnet/card.md"
+}

@@ -1,0 +1,1208 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2022A&A...666A..39M",
+  "title": "A first search of transients in the Galactic center from 230 GHz ALMA observations",
+  "year": 2022,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Mus, A.",
+  "n_authors": 4,
+  "arxiv_id": "2208.08248",
+  "doi": "10.1051/0004-6361/202243335",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01154.V"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "We then apply this method to the ALMA observations of Sgr A$^*$ at 230 GHz taken during the EHT 2017 campaign (cite: EHT1; EHT2; EHT3; EHT4; EHT5; EHT6; CiriacoRef) (hereafter Paper I to Paper IV respectively) and perform a transient search in the GC region at parsec scales."
+   }
+  ],
+  "science": {
+   "fields": [
+    "transients",
+    "milky_way_ism",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "Sgr A*",
+     "coordinates": {
+      "value": "17:45:40.04 -29.00.28.17 (J2000)",
+      "evidence": [
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "Fig. [1](#fig:fitting_error) shows how optimal elevations present less offset on the relative right ascension (RA) and relative declination (DEC) with respect to Sgr A$^*$ correlation coordinates (17:45:40.04 -29.00.28.17(J2000)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can second-to-minute timescale millimeter-wave radio transients be detected in the Galactic Center at 230 GHz using a novel two-component self-calibration procedure on ALMA observations?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this work, we present a novel and nonstandard self-calibration procedure that overcomes most of the instrumental and atmospheric limitations of mm-wave transient studies."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The superb sensitivity of ALMA and the high time cadence of the ALMA-VLBI observations of the GC performed during the 2017 EHT campaign, allowed us to perform a search down to second/minute scale radio transients in the GC field at arc-second resolution."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 6 (230 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The campaign was divided in two parts, each one observing in a different frequency band: April 1 to April 3 in Band 3 (86 GHz) and April 5 to April 11 in Band 6 (230 GHz)."
+     },
+     {
+      "loc": "Observations",
+      "quote": "In this work, we focus on 230 GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two sidebands (LO and HI) with four spectral windows of 2 GHz bandwidth each (240 spectral channels), centered at 213.1, 215.1, 227.1, and 229.1 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "For the frequency set up there were two sidebands (called “lower sideband\" and “upper sideband\", or LO and HI) with four frequency spectral windows (two per sideband), with a bandwidth of 2 GHz each (divided in 240 spectral channels) two centered at 213.1 and 215.1 GHz (lower sideband), and two centered at 227.1 and 229.1 GHz (upper sideband)."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "8 GHz (four spectral windows of 2 GHz each)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with four frequency spectral windows (two per sideband), with a bandwidth of 2 GHz each (divided in 240 spectral channels)"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12 m array (median 37 antennas)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The GC was observed in three tracks, hereafter called Track B (April 6), Track C (April 7), and Track E (April 11) with a typical duration of 4-10 hours and a median number of 37 antennas of 12 m diameter giving a effective field of view of the GC field of $\\sim30$ arcsec."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C40-3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The VLBI observations of ALMA during year 2017 were part of its Cycle 4 campaign, which was carried out in compact configuration C40-3 (baseline lengths between 15 m and 460 m)."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15 m to 460 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The VLBI observations of ALMA during year 2017 were part of its Cycle 4 campaign, which was carried out in compact configuration C40-3 (baseline lengths between 15 m and 460 m)."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "arc-second resolution",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "allowed us to perform a search down to second/minute scale radio transients in the GC field at arc-second resolution."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.5 mJy/beam to 1.0 mJy/beam in 4 seconds (standard weather); instantaneous rms 2.138-7.210 mJy/beam (April 6), 0.287-16.602 mJy/beam (April 7), 2.522-15.661 mJy/beam (April 11)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The integration time of the ALMA correlator in VLBI mode is set to 4 seconds, which corresponds to the shortest cadence for our variability study, resulting in a sensitivity, in standard weather conditions, of 0.5 mJy/beam to 1.0 mJy/beam."
+     },
+     {
+      "loc": "Strategy for finding transients",
+      "quote": "the instantaneous root-mean-square (rms) of our ALMA observations, ranged between $2.138-7.210$ mJy/beam in April 6, $0.287-16.602$ mJy/beam in April 7 and $2.522-15.661$ mJy/beam in April 11"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "typical track duration of 4-10 hours",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The GC was observed in three tracks, hereafter called Track B (April 6), Track C (April 7), and Track E (April 11) with a typical duration of 4-10 hours"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 April 6 (Track B), April 7 (Track C), and April 11 (Track E)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The VLBI observations of ALMA during year 2017 were part of its Cycle 4 campaign"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The GC was observed in three tracks, hereafter called Track B (April 6), Track C (April 7), and Track E (April 11)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "EHT 2017 campaign intra-ALMA byproduct visibilities",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We then apply this method to the ALMA observations of Sgr A$^*$ at 230 GHz taken during the EHT 2017 campaign"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The intra-ALMA visibilities were a “byproduct\" of the VLBI observations."
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Sgr A* millimeter flux density variation range of 3.2 +/- 1.2 Jy and integrated mini-spiral flux density of ~1.1 Jy",
+      "evidence": [
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "The compact component has the property of being highly variable at millimeter wavelengths on short timescales, with flux density varying within $3.2 \\pm 1.2$ Jy (cite: Wielgus21)"
+       },
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "Wielgus et al. (2022) considered the integrated flux density of the mini-spiral to be $\\sim$ 1.1 Jy."
+       }
+      ]
+     },
+     "citation": "Wielgus et al. (2022) (cite: Wielgus21)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Simulated 230 GHz ALMA observations of Sgr A* for Track B (April 6) generated with CASA simalma, including a flat-spectrum compact source, the extended mini-spiral model, and a synthetic Gaussian-like transient of ~207 mJy peak and ~42 s duration",
+     "evidence": [
+      {
+       "loc": "Simulated data",
+       "quote": "We have simulated ALMA observations of Sgr A$^*$ corresponding to the array configuration, and exact observing times, of the true visibilities of Track B (April 6) in the 2017 EHT campaign by using the CASA task `simalma` with its default parameters for 230 GHz."
+      },
+      {
+       "loc": "Simulated data",
+       "quote": "In addition to this, we have inserted a short transient, with amplitude evolution Gaussian-like, with a duration of $\\sim42$ seconds and centered on 10:52:01 UT and located at 5 arcsec to the east of Sgr A$^*$ and 1 arcsec to the north. The peak flux density of the transient is $\\sim207$ mJy (see Fig. [3](#fig:trans_ampl))."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-VLBI QA2 calibration pipeline followed by custom nonstandard two-component self-calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "For this work, we have applied the visibility calibration following the procedure of (cite: CiriacoRefMini) plus subsequent calibration steps described in (cite: Wielgus21)."
+      },
+      {
+       "loc": "Two-components’ self-calibration",
+       "quote": "The QA2 calibration “pipeline\" (cite: APPRef; CiriacoRefb) is the procedure used to generate the intra-ALMA calibration tables and all the metadata needed for the correct polarimetry processing of the ALMA-VLBI observations."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "v5.7",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "no (QA2 calibration refined to remove constant flux density restriction)",
+     "evidence": [
+      {
+       "loc": "Two-components’ self-calibration",
+       "quote": "However, the high variability of Sgr A$^*$ makes it necessary to refine the QA2 calibration by removing such a restriction."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Two-component self-calibration at 4 s cadence scaling amplitudes via constant extended mini-spiral flux (gain Gt), followed by one standard amplitude and phase self-calibration iteration using the two-component model visibilities",
+     "evidence": [
+      {
+       "loc": "Two-components’ self-calibration algorithm",
+       "quote": "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."
+      },
+      {
+       "loc": "Two-components’ self-calibration algorithm",
+       "quote": "In addition to the use of $G_t$, we have also performed one standard self-calibration iteration(i.e., computed the antenna-wise time-dependent complex gains) correcting at the same time amplitudes and phases using the model visibilities from Eq. [\\[eq:model\\]](#eq:model)"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "CLEAN (Hogbom 1974)",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not applied",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "An important point to highlight is that, with this strategy, the primary-beam response is not corrected."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "Instantaneous rms: 2.138-7.210 mJy/beam (April 6), 0.287-16.602 mJy/beam (April 7), 2.522-15.661 mJy/beam (April 11); Mean rms: 2.628 mJy/beam (Track B), 2.490 mJy/beam (Track C), 3.096 mJy/beam (Track E)",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "the instantaneous root-mean-square (rms) of our ALMA observations, ranged between $2.138-7.210$ mJy/beam in April 6, $0.287-16.602$ mJy/beam in April 7 and $2.522-15.661$ mJy/beam in April 11"
+      },
+      {
+       "loc": "Real data",
+       "quote": "| 3.660 | 2.628 | 0.494 |"
+      },
+      {
+       "loc": "Real data",
+       "quote": "| 4.537 | 2.490 | 0.749 |"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Initial visibility calibration and intra-ALMA VLBI QA2 calibration procedure",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "For this work, we have applied the visibility calibration following the procedure of (cite: CiriacoRefMini) plus subsequent calibration steps described in (cite: Wielgus21)."
+       }
+      ]
+     },
+     "from_reference": "(cite: CiriacoRefMini); (cite: Wielgus21); (cite: APPRef); (cite: CiriacoRefb)"
+    },
+    {
+     "what": {
+      "value": "Two-component visibility modeling and self-calibration approach decomposing the field into Sgr A* and the extended mini-spiral",
+      "evidence": [
+       {
+        "loc": "Two-components’ self-calibration",
+        "quote": "In the following section, we present a nonstandard self-calibration procedure, similar to the one described in (cite: Wielgus21)"
+       },
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."
+       }
+      ]
+     },
+     "from_reference": "(cite: Wielgus21)"
+    },
+    {
+     "what": {
+      "value": "Flagging of beginning and end of Phasing System subscans",
+      "evidence": [
+       {
+        "loc": "Strategy for finding transients",
+        "quote": "Especially notorious are the beginning and end of the Phasing System subscans, when the ALMA phase corrections have not converged yet (cite: APPRef). We have flagged such points following (cite: CiriacoRefb)."
+       }
+      ]
+     },
+     "from_reference": "(cite: CiriacoRefb)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact tclean imaging parameters (weighting scheme, robust parameter, cell size, image pixel dimensions, niter, stopping threshold, and clean mask definition)",
+    "ALMA project code in the paper text (linked as 2016.1.01154.V only in archive metadata)",
+    "Quantitative threshold value used to flag visibilities with 'extremely high and nonrealistic rms'",
+    "Length (number of frames) of the running median window used to define the time-search intervals"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Initial calibration and flagging of ALMA phased-array visibilities",
+    "method": {
+     "value": "Apply ALMA-VLBI QA2 calibration pipeline and subsequent visibility calibration steps, flag the start and end of Phasing System subscans where phase corrections have not converged, and flag visibilities with nonrealistic high rms.",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "For this work, we have applied the visibility calibration following the procedure of (cite: CiriacoRefMini) plus subsequent calibration steps described in (cite: Wielgus21)."
+      },
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "Especially notorious are the beginning and end of the Phasing System subscans, when the ALMA phase corrections have not converged yet (cite: APPRef). We have flagged such points following (cite: CiriacoRefb)."
+      },
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "(visibilities with an extremely high and nonrealistic rms have been flagged)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "4 s integration time",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The integration time of the ALMA correlator in VLBI mode is set to 4 seconds, which corresponds to the shortest cadence for our variability study"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Two-component self-calibration and extended mini-spiral modeling",
+    "method": {
+     "value": "Decompose the GC field of view into a time-variable point source (Sgr A*) and a stable extended component (mini-spiral). Iteratively solve for the mini-spiral image model using CASA tclean, fit the 4-parameter visibility model at each 4 s integration time to derive amplitude scaling gains Gt, recalibrate visibilities, and perform one standard amplitude and phase self-calibration iteration.",
+     "evidence": [
+      {
+       "loc": "Two-components’ self-calibration algorithm",
+       "quote": "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."
+      },
+      {
+       "loc": "Two-components’ self-calibration algorithm",
+       "quote": "In addition to the use of $G_t$, we have also performed one standard self-calibration iteration(i.e., computed the antenna-wise time-dependent complex gains) correcting at the same time amplitudes and phases using the model visibilities from Eq. [\\[eq:model\\]](#eq:model)"
+      },
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task, iteratively minimizing the difference of the residuals and the model by recalibrating the data with $G_t$, and updating $\\mathcal{V}^{\\mathrm{obs}}_t$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "4 s cadence",
+      "evidence": [
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."
+       }
+      ]
+     },
+     {
+      "value": "4 fitted parameters per integration time: F_ext, F_SgrA*, delta_ra, delta_dec",
+      "evidence": [
+       {
+        "loc": "Mathematical details of the two-components’ self-calibration",
+        "quote": "Eq. [\\[eq:model\\]](#eq:model) can be seen as four-dimensional fitting whose variables are $F^{\\text{ext}}, F^{\\text{SgrA*}}, \\Delta \\text{ra}, \\Delta \\text{dec}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "The morphology and integrated flux density of the extended mini-spiral are constant within each observing track (varying only between tracks from 1.16 to 1.18 Jy)",
+      "evidence": [
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "The morphology of the large scale minispiral emission, on the other hand, is stable in time on relevant timescales of several days, hence we assume this in the presented analysis. Nevertheless we allow for the total flux density scale of the extended emission component to vary between the three observed tracks, finding values between 1.16 and 1.18 Jy."
+       },
+       {
+        "loc": "Two-components’ self-calibration algorithm",
+        "quote": "Since the integrated flux density of the mini-spiral is assumed to be constant, we can use the values of $G_t$ to remove the residual corruption effects in the Sgr A$^*$ flux density estimates $F^{\\text{SgrA*}}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Chi-square minimization at each integration time using a recursive Newton method with first-order Taylor expansion for position offsets",
+     "evidence": [
+      {
+       "loc": "Two-components’ self-calibration algorithm",
+       "quote": "The observed visibility vector at a time $t$ given a baseline $j$, denoted by $\\mathcal{V}_{j,t}^{\\text{obs}}$, can be model-fitted to $\\mathcal{V}_{j,t}^{\\text{mod}}$ by minimizing the chi-square distribution function"
+      },
+      {
+       "loc": "Mathematical details of the two-components’ self-calibration",
+       "quote": "Then, the fitting minimization problem can be solved applying a simple Newton method, whose recursive formulation reads"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Incremental antenna gains checked to be close to unity (amplitude ~1, phase ~0), and residual image rms compared against QA2 data showing a factor of ~5 improvement",
+     "evidence": [
+      {
+       "loc": "Calibration plots",
+       "quote": "In all cases, we see that the incremental gains are actually close to unity, as expected."
+      },
+      {
+       "loc": "Calibration plots",
+       "quote": "In addition, Fig. [9](#fig:rms_vs_time) right panel shows a comparison of the rms obtained by taking the QA2 data and cleaning with the same mask and `CLEAN` parameters used for the two-components’ self-calibration. We can see an improvement on the rms by a factor of $\\sim$5."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Validate transient detection pipeline on synthetic data",
+    "method": {
+     "value": "Simulate Track B (April 6) 230 GHz observations using CASA simalma with real Sgr A* light curves, the mini-spiral model, thermal noise, real antenna gains, and an injected Gaussian-like transient. Apply the two-component self-calibration, subtract the Sgr A* and mini-spiral models, image the residual visibilities at 4 s and 12 s cadences, and search for the transient.",
+     "evidence": [
+      {
+       "loc": "Simulated data",
+       "quote": "We have simulated ALMA observations of Sgr A$^*$ corresponding to the array configuration, and exact observing times, of the true visibilities of Track B (April 6) in the 2017 EHT campaign by using the CASA task `simalma` with its default parameters for 230 GHz."
+      },
+      {
+       "loc": "Simulated data",
+       "quote": "Once convergence of the self-calibration was achieved, we computed the residual visibilities (i.e., by subtracting the model of the minispiral and Sgr A$^*$) and generated the corresponding residual images for each integration time."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "simalma",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Synthetic transient: peak ~207 mJy, duration ~42 s, centered at 10:52:01 UT, offset 5 arcsec East and 1 arcsec North of Sgr A*",
+      "evidence": [
+       {
+        "loc": "Simulated data",
+        "quote": "In addition to this, we have inserted a short transient, with amplitude evolution Gaussian-like, with a duration of $\\sim42$ seconds and centered on 10:52:01 UT and located at 5 arcsec to the east of Sgr A$^*$ and 1 arcsec to the north. The peak flux density of the transient is $\\sim207$ mJy (see Fig. [3](#fig:trans_ampl))."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Same two-component chi-square self-calibration as step 2",
+     "evidence": [
+      {
+       "loc": "Simulated data",
+       "quote": "We have calibrated the synthetic observations using the two-components’ self-calibration explained in Sect [4](#sec:stgy)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Successful recovery of the injected synthetic transient in both 4 s and 12 s residual images with peak S/N of 15.194 and peak brightness ~200 mJy",
+     "evidence": [
+      {
+       "loc": "Simulated data",
+       "quote": "From time 10:51:27 UT (h) to 10:52:33 UT (h) we can see how a transient point source is appearing $\\sim5$ arcsec to the East of Sgr A$^*$. The brightness peak is notably increasing to reach a maximum of $\\sim$ 200 mJy, while the duration of the transient is approximately to 1 min."
+      },
+      {
+       "loc": "Some details on the synthetic transient",
+       "quote": "Now, we can easily follow the evolution of the S/N and rms. In both cases, they start with relative low (close to the mean) and they start to increase progressively while they are advancing in time, until their maximum (15.19 , 1.32 mJy/beam respectively) is reached."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Search for transients in real ALMA residual snapshot images",
+    "method": {
+     "value": "Subtract the converged Sgr A* and mini-spiral model visibilities from each track (April 6, 7, 11), generate residual snapshot images at 4 s and 12 s cadences, track peak dynamic range (S/N) and rms using a running median window, apply detection threshold and duration criteria, and manually inspect candidate residual frames.",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We have thus set the detection threshold of transients to peak excursion of 7 times the instantaneous rms between consecutive images, which also gives a very low probability of false detection from thermal noise."
+      },
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "In particular, the transient search has been performed considering two different time-search intervals, one defined by the observation cadence time (4 s) and the other one by three times the cadence time (12 s)."
+      },
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "The potential detections are then manually inspected in the residual images to ensure physical feasibility, (i.e. that they are not due to artifacts in the image plane)."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Detection threshold: peak excursion of 7 times the instantaneous rms between consecutive images; at least 3 standard deviations in maxima between two consecutive time-search intervals",
+      "evidence": [
+       {
+        "loc": "Strategy for finding transients",
+        "quote": "We have thus set the detection threshold of transients to peak excursion of 7 times the instantaneous rms between consecutive images, which also gives a very low probability of false detection from thermal noise."
+       },
+       {
+        "loc": "Strategy for finding transients",
+        "quote": "Excursions of at least three standard deviation in the maxima between two consecutive time-search intervals are considered as a potential transient."
+       }
+      ]
+     },
+     {
+      "value": "Minimum duration: 12 s (three 4 s integration times)",
+      "evidence": [
+       {
+        "loc": "Strategy for finding transients",
+        "quote": "Therefore, on the one hand the minimum duration of a transient would be three times the integration time."
+       },
+       {
+        "loc": "Summary and conclusions",
+        "quote": "by tracking events occurring for a duration of at least 12s (three times the ALMA integration time)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Noise is assumed to follow a Gaussian distribution across ~10^4 beams in the field of view to estimate false positive probability (~10^-8 at 7 sigma)",
+      "evidence": [
+       {
+        "loc": "Strategy for finding transients",
+        "quote": "Supposing that noise follows a normal distribution, we have computed the number of beams that form the image Fig. [2](#fig:minispirals) (which is $\\approx10^4$), and we have found that the probability of getting at least one false positive transient detection in the field of view with a confidence of 7$\\sigma$ is $\\approx 10^{4}\\times 10^{-12}= 10^{-8}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Running median window applied to dynamic range time series",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "Such time-search intervals are defined following running median window at each epoch."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Manual inspection of residual snapshot sequences and verification against antenna elevation (< 25 deg exhibits significant quality loss)",
+     "evidence": [
+      {
+       "loc": "Real data",
+       "quote": "It is important to note that data corresponding to source elevation below 25$^\\circ$ is exhibiting significant quality loss."
+      },
+      {
+       "loc": "Real data",
+       "quote": "In any case, in Appendix [11](#sec:appendix_plots), detailed sequences of snapshots of transient candidates are shown. The aim of these plots is to verify whether the higher dynamic range in a particular UT is related to a point source in the image plane, or if the image is contaminated by systematic artifacts"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v5.7",
+    "used_for": {
+     "value": "Visibility calibration, imaging via tclean, and synthetic data generation via simalma",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task"
+      },
+      {
+       "loc": "Simulated data",
+       "quote": "by using the CASA task `simalma` with its default parameters for 230 GHz."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "v5.7",
+    "used_for": {
+     "value": "Deconvolving the extended mini-spiral model and generating residual snapshot images",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "We use the CLEAN algorithm (cite: Hogbom1974) implemented in the Common Astronomy Software Applications (CASA) framework v5.7[^1] as the `tclean` task, iteratively minimizing the difference of the residuals and the model by recalibrating the data with $G_t$, and updating $\\mathcal{V}^{\\mathrm{obs}}_t$."
+      }
+     ]
+    }
+   },
+   {
+    "name": "simalma",
+    "version": "v5.7",
+    "used_for": {
+     "value": "Simulating 230 GHz ALMA observations of Sgr A*, the mini-spiral, and a synthetic transient for Track B",
+     "evidence": [
+      {
+       "loc": "Simulated data",
+       "quote": "We have simulated ALMA observations of Sgr A$^*$ corresponding to the array configuration, and exact observing times, of the true visibilities of Track B (April 6) in the 2017 EHT campaign by using the CASA task `simalma` with its default parameters for 230 GHz."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Extended mini-spiral integrated flux density across tracks",
+    "value": "1.16 to 1.18",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Two-components’ self-calibration algorithm",
+      "quote": "Nevertheless we allow for the total flux density scale of the extended emission component to vary between the three observed tracks, finding values between 1.16 and 1.18 Jy."
+     }
+    ]
+   },
+   {
+    "quantity": "Instantaneous rms range on April 6 (Track B)",
+    "value": "2.138-7.210",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Strategy for finding transients",
+      "quote": "the instantaneous root-mean-square (rms) of our ALMA observations, ranged between $2.138-7.210$ mJy/beam in April 6, $0.287-16.602$ mJy/beam in April 7 and $2.522-15.661$ mJy/beam in April 11"
+     }
+    ]
+   },
+   {
+    "quantity": "Instantaneous rms range on April 7 (Track C)",
+    "value": "0.287-16.602",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Strategy for finding transients",
+      "quote": "the instantaneous root-mean-square (rms) of our ALMA observations, ranged between $2.138-7.210$ mJy/beam in April 6, $0.287-16.602$ mJy/beam in April 7 and $2.522-15.661$ mJy/beam in April 11"
+     }
+    ]
+   },
+   {
+    "quantity": "Instantaneous rms range on April 11 (Track E)",
+    "value": "2.522-15.661",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Strategy for finding transients",
+      "quote": "the instantaneous root-mean-square (rms) of our ALMA observations, ranged between $2.138-7.210$ mJy/beam in April 6, $0.287-16.602$ mJy/beam in April 7 and $2.522-15.661$ mJy/beam in April 11"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean S/N for Track B (April 6)",
+    "value": "3.660",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 3.660 | 2.628 | 0.494 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean rms for Track B (April 6)",
+    "value": "2.628",
+    "uncertainty": "0.494",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 3.660 | 2.628 | 0.494 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean S/N for Track C (April 7)",
+    "value": "4.537",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 4.537 | 2.490 | 0.749 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean rms for Track C (April 7)",
+    "value": "2.490",
+    "uncertainty": "0.749",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 4.537 | 2.490 | 0.749 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean S/N for Track E (April 11)",
+    "value": "5.005",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 5.005 | 3.096 | 0.521 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Residual image mean rms for Track E (April 11)",
+    "value": "3.096",
+    "uncertainty": "0.521",
+    "units": "mJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "| 5.005 | 3.096 | 0.521 |"
+     }
+    ]
+   },
+   {
+    "quantity": "RMS improvement factor of two-component self-calibration over QA2 data",
+    "value": "~5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Calibration plots",
+      "quote": "We can see an improvement on the rms by a factor of $\\sim$5."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of reliable transient detections in 2017 EHT ALMA campaign",
+    "value": "0",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "Thus we can conclude that we have not found any reliable detection of transients in the ALMA observation during the 2017 EHT Campaign."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "Using the criteria defined in section [4](#sec:stgy), we have not observed any transient event with sufficient statistical significance."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No statistically significant millimeter transient events were detected in the Galactic Center field during the 2017 EHT ALMA 230 GHz observations.",
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "Thus we can conclude that we have not found any reliable detection of transients in the ALMA observation during the 2017 EHT Campaign."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "Using the criteria defined in section [4](#sec:stgy), we have not observed any transient event with sufficient statistical significance."
+     }
+    ]
+   },
+   {
+    "value": "Even at the 4-second correlator integration time, the ALMA 230 GHz snapshot images of the Galactic Center are limited by dynamic range rather than thermal noise due to the bright, variable Sgr A* emission and finite fidelity of the extended mini-spiral model.",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "Even with integration times as short as 4 s, the ALMA images still show clear signatures of dynamic-range limitation, which indicates that the thermal noise sensitivity level is not reached."
+     },
+     {
+      "loc": "Calibration plots",
+      "quote": "Our analysis is, thus, limited by the contrast with respect to the total flux density of the model (i.e., Sgr A$^*$ and minispiral), likely due to the finite fidelity of our model (in particular, the minispiral image)."
+     }
+    ]
+   },
+   {
+    "value": "The two-component self-calibration method successfully corrects instrumental and atmospheric amplitude variations using all baselines and improves the residual rms by a factor of ~5 compared to standard QA2 calibration.",
+    "evidence": [
+     {
+      "loc": "Two-components’ self-calibration",
+      "quote": "In the following section, we present a nonstandard self-calibration procedure, similar to the one described in (cite: Wielgus21) that allows us, on the one hand, to correct the instrumental and atmospheric effects in the ALMA observations of the GC and, on the other hand, to use the complete set of visibilities"
+     },
+     {
+      "loc": "Calibration plots",
+      "quote": "In addition, Fig. [9](#fig:rms_vs_time) right panel shows a comparison of the rms obtained by taking the QA2 data and cleaning with the same mask and `CLEAN` parameters used for the two-components’ self-calibration. We can see an improvement on the rms by a factor of $\\sim$5."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "A two-component self-calibration procedure tying visibility amplitudes to the extended mini-spiral can overcome atmospheric and instrumental limitations to enable sensitive short-timescale transient searches in the Galactic Center using all ALMA baselines.",
+    "experiment": "Applied the two-component self-calibration to both a CASA simalma synthetic dataset containing an injected ~207 mJy, ~42 s transient and to real 230 GHz ALMA observations, and compared residual rms with standard QA2 calibration.",
+    "result": "The synthetic transient was clearly recovered at 4 s and 12 s cadences (peak S/N = 15.194), and on real data the method reduced residual rms by a factor of ~5 relative to QA2 calibration.",
+    "finding": "The two-component self-calibration method is effective at mitigating atmospheric and instrumental corruptions and enables sensitive variability and transient analyses across the full ALMA baseline range.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Simulated data",
+      "quote": "From time 10:51:27 UT (h) to 10:52:33 UT (h) we can see how a transient point source is appearing $\\sim5$ arcsec to the East of Sgr A$^*$. The brightness peak is notably increasing to reach a maximum of $\\sim$ 200 mJy, while the duration of the transient is approximately to 1 min."
+     },
+     {
+      "loc": "Calibration plots",
+      "quote": "In addition, Fig. [9](#fig:rms_vs_time) right panel shows a comparison of the rms obtained by taking the QA2 data and cleaning with the same mask and `CLEAN` parameters used for the two-components’ self-calibration. We can see an improvement on the rms by a factor of $\\sim$5."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Short-timescale (seconds to minutes) 230 GHz radio transients are present and detectable in the inner parsec of the Galactic Center during the 2017 EHT ALMA campaign.",
+    "experiment": "Subtracted the Sgr A* and mini-spiral models from three tracks of 230 GHz ALMA data (April 6, 7, 11, 2017) and searched 4 s and 12 s residual snapshot images for excursions exceeding 7 times the instantaneous rms lasting at least 12 s.",
+    "result": "All candidate S/N excursions either appeared in only a single 4 s integration, failed the threshold criterion, or showed systematic non-point-like artifacts upon visual inspection.",
+    "finding": "No reliable transient events with sufficient statistical significance were detected in the 2017 EHT ALMA 230 GHz observations.",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Real data",
+      "quote": "All the transient candidates (seen as outliers in the S/N time evolution) are excluded as true transients, either because they are only seen in one correlator integration time (4 s), or because they fail the threshold criterion (see Sect. [4](#sec:stgy))."
+     },
+     {
+      "loc": "Real data",
+      "quote": "Thus we can conclude that we have not found any reliable detection of transients in the ALMA observation during the 2017 EHT Campaign."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The 4-second snapshot residual images of the Galactic Center at 230 GHz are limited by dynamic range rather than thermal noise.",
+    "experiment": "Measured the residual image rms on April 6 as a function of integration time and inspected residual snapshot frames during high S/N excursions.",
+    "result": "The residual rms remained almost flat with increasing integration time rather than decreasing as the square root of time, and candidate snapshot frames displayed systematic non-Gaussian spatial artifacts.",
+    "finding": "The ALMA 230 GHz transient search is limited by dynamic range (due to contrast with Sgr A* and finite fidelity of the mini-spiral model) even at a 4-second integration time.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Calibration plots",
+      "quote": "If the observations were limited by thermal noise, the rms should decrease as the square root of the integration time. However, the figure shows an almost flat rms, which is indicative of a limitation by dynamic range."
+     },
+     {
+      "loc": "Snapshots of the transient search",
+      "quote": "As we can observe, none of the frames shows a clear isolated point-like source (which would indicate a transient origin), but rather a systematic (i.e., non-Gaussian) noise distribution (which indicates a dynamic range limitation, likely due to a sub-optimal gain calibration)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA 230 GHz phased-array observations from the 2017 EHT campaign provide superb sensitivity and a short 4-second correlator integration time, allowing the most sensitive millimeter-wave search for second-to-minute transients in the Galactic Center.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Thanks to the superb sensitivity of ALMA, the transient search reported here is the most sensitive one (1.0 mJy/beam in terms of flux density per unit time) reported to date at mm wavelengths."
+     },
+     {
+      "loc": "Summary and conclusions",
+      "quote": "The superb sensitivity of ALMA and the high time cadence of the ALMA-VLBI observations of the GC performed during the 2017 EHT campaign, allowed us to perform a search down to second/minute scale radio transients in the GC field at arc-second resolution."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Standard QA2 calibration assumes constant flux density, and discarding short baselines to isolate Sgr A* sacrifices sensitivity; the two-component self-calibration ties amplitude gains to the stable extended mini-spiral, retaining all baselines while correcting atmospheric and instrumental effects. A running median window is used because the median is robust against large excursions in skewed distributions.",
+    "evidence": [
+     {
+      "loc": "Two-components’ self-calibration",
+      "quote": "This procedure, even though it can reduce the impact of the extended component in the analysis of the Sgr A$^*$ variability, involves the discarding of a large amount of data, which may considerably affect the sensitivity."
+     },
+     {
+      "loc": "Two-components’ self-calibration",
+      "quote": "In the following section, we present a nonstandard self-calibration procedure, similar to the one described in (cite: Wielgus21) that allows us, on the one hand, to correct the instrumental and atmospheric effects in the ALMA observations of the GC and, on the other hand, to use the complete set of visibilities"
+     },
+     {
+      "loc": "Strategy for finding transients",
+      "quote": "The choice of the median is not arbitrary: while the mean would bias the window containing a very large excursion, the median is better suited for skewed distributions."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Using only the longest available baselines to separate variable compact Sgr A* emission from the extended mini-spiral (rejected because discarding short baselines sacrifices a large amount of data and sensitivity)",
+     "evidence": [
+      {
+       "loc": "Two-components’ self-calibration",
+       "quote": "A typical strategy to deal with interferometric observations of a variable compact source is to use only a selection of the longest available baselines (cite: Brinkerink15; Iwata20; Wielgus21)."
+      },
+      {
+       "loc": "Two-components’ self-calibration",
+       "quote": "This procedure, even though it can reduce the impact of the extended component in the analysis of the Sgr A$^*$ variability, involves the discarding of a large amount of data, which may considerably affect the sensitivity."
+      }
+     ]
+    },
+    {
+     "value": "Using a running mean window instead of a running median window to define time-search intervals (rejected because the mean is biased by large excursions)",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "The choice of the median is not arbitrary: while the mean would bias the window containing a very large excursion, the median is better suited for skewed distributions."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "The observations and residual snapshot images are dynamic-range limited rather than thermal-noise limited, even at 4-second integration times, due to finite fidelity of the mini-spiral model and suboptimal calibration in bad weather.",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "Indeed, and as we discuss in Sect. [6](#sec:realdata), we are limited by dynamic range (rather than by sensitivity) even at the level of the integration time used in the ALMA correlator (four seconds)."
+      },
+      {
+       "loc": "Calibration plots",
+       "quote": "Our analysis is, thus, limited by the contrast with respect to the total flux density of the model (i.e., Sgr A$^*$ and minispiral), likely due to the finite fidelity of our model (in particular, the minispiral image)."
+      }
+     ]
+    },
+    {
+     "value": "The statistical false-positive calculation assumes a Gaussian noise distribution, which does not strictly hold because the snapshot residuals are dynamic-range limited and non-Gaussian.",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "In addition, one important assumption we have made is that we are working on a Gaussian distribution of the noise. This is not true, as as we are dynamic range limited in snapshots where potential excursions are seen."
+      }
+     ]
+    },
+    {
+     "value": "Primary-beam attenuation is not corrected during the search, which reduces sensitivity toward the edges of the field of view.",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "An important point to highlight is that, with this strategy, the primary-beam response is not corrected. In the case a transient would be found, the primary-beam correction should be applied."
+      }
+     ]
+    },
+    {
+     "value": "Data taken at low antenna elevations (< 25 degrees) suffer severe atmospheric opacity and turbulence, causing high rms and quality loss.",
+     "evidence": [
+      {
+       "loc": "Strategy for finding transients",
+       "quote": "Final parts of the experiments are also pathological, when the antenna elevations are low and, as a consequence, the limitations due to the atmospheric opacity and turbulence are more severe."
+      },
+      {
+       "loc": "Real data",
+       "quote": "It is important to note that data corresponding to source elevation below 25$^\\circ$ is exhibiting significant quality loss."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The injected synthetic transient (~207 mJy peak) is much brighter than the typical 7-sigma thermal/residual rms threshold (~18-25 mJy/beam); completeness and recovery efficiency for fainter transients near the detection threshold are not quantified.",
+    "Requiring transients to persist for at least three consecutive 4 s integrations (12 s) makes the search insensitive to fast sub-second or few-second bursts (such as individual pulsar giant pulses or fast radio bursts).",
+    "Because primary beam correction is omitted prior to detection, the effective flux density threshold is higher by up to a factor of 2 near the half-power radius of the 30 arcsec field of view."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Custom script/code implementing the Newton-method 4-parameter visibility fitting and two-component self-calibration loop",
+    "Exact CASA tclean imaging parameters (cell size, image size, weighting/robust, cleaning mask, stopping threshold)",
+    "Exact definition of the running median window size and flagging thresholds for high-rms visibilities"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB (three 4-10 hour tracks of 37-antenna 12m data with 4 spectral windows of 240 channels at 4-second integration time, plus thousands of snapshot images)",
+   "score_inferred": 55,
+   "score_reason": "The mathematical formulation of the two-component self-calibration and the transient selection criteria are thoroughly documented, including full Hessian expressions in the Appendix, and the ALMA data are public EHT 2017 campaign observations. However, the custom self-calibration code is not released, and key CASA tclean imaging parameters (pixel size, image dimensions, weighting, masks) and running-median window sizes are omitted.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Although the underlying 2017 EHT ALMA dataset is public and the mathematical recipe is well described, the primary scientific result is a non-detection relying on unshared custom calibration scripts and manual visual inspection of dynamic-range-limited snapshot residuals."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Wielgus21)",
+     "why": "Introduces the two-component (Sgr A* plus mini-spiral) visibility modeling and intra-source amplitude scaling methodology adapted in this work"
+    },
+    {
+     "citation": "(cite: CiriacoRefMini)",
+     "why": "Describes the initial visibility calibration and mini-spiral modeling for the 2017 ALMA-VLBI observations of Sgr A*"
+    },
+    {
+     "citation": "(cite: CiriacoRefb)",
+     "why": "Details the ALMA Phasing System QA2 calibration pipeline and subscan flagging procedures"
+    },
+    {
+     "citation": "(cite: APPRef)",
+     "why": "Describes the ALMA Phasing Project hardware and VLBI phased-array operational framework"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: EHT1; EHT2; EHT3; EHT4; EHT5; EHT6)",
+     "why": "Main Event Horizon Telescope Collaboration 2017 Sgr A* campaign papers from which the 230 GHz ALMA observations originate"
+    },
+    {
+     "citation": "(cite: Wielgus21)",
+     "why": "Companion EHT light-curve paper analyzing the 2017 ALMA millimeter variability of Sgr A* on the same tracks"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope (EHT) 2017 campaign",
+    "ALMA Phasing Project (APP)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2022A%26A...666A..39M",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-29T22:19:46",
+  "usage": {
+   "input": 21831,
+   "output": 10983,
+   "thoughts": 0
+  },
+  "usd": 0.153492,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 133.0,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 114,
+  "quotes_ok": 114,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 22,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2016.1.01154.V"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 58,
+   "rate": 0.725
+  },
+  "evidence_ok": true
+ }
+}

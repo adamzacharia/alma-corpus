@@ -1,0 +1,1310 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (core-extraction-cmf) ===
+---
+name: alma-core-extraction-cmf
+description: "Find compact cores in ALMA continuum (or dense-gas line) maps with astrodendro, clumpfind, getsources or gaussclumps, measure their fluxes and sizes, and build a completeness-corrected core mass function (CMF) with a defensible power-law fit. Use when extracting a core catalog from a protocluster, IRDC, hub-filament or CMZ map, when fitting or comparing a CMF slope with the IMF, when estimating core completeness, or when checking someone else's core catalog or CMF. Built from 67 ALMA papers (2014-2026)."
+---
+
+# Core extraction and core mass functions
+
+Turns a continuum image into a catalog of compact cores (position, flux, size, mass) and, when the sample is
+large enough, a core mass function. Two things decide whether the result means anything: (1) the
+extraction settings and algorithm, which change the number of cores and the CMF slope by a lot (the same
+G286 map gives 76 dendrogram cores and a true slope of 1.24 +/- 0.17, but 0.64 +/- 0.13 with clumpfind:
+2018ApJ...853..160C), and (2) the completeness and temperature corrections, which papers often apply
+loosely or not at all (2020A&A...635A...2S, 2019MNRAS.483.1624B).
+
+> Always report: algorithm and version, every threshold in units of the local rms, the image the finder
+> ran on (PB-corrected or not, 12m-only or combined), the mass formula inputs, the completeness limit and
+> how it was measured, the CMF convention (dN/dM, dN/dlogM or cumulative N(>M)), fit range and fit method.
+
+Related skills: mass from flux (opacity, temperature, gas-to-dust) is in `alma-dust-continuum-mass`;
+decomposing CO cubes into GMCs and virial analysis of clouds is in `alma-gmc-decomposition-virial`;
+blind source detection and number counts in extragalactic fields are in `alma-source-extraction-counts`.
+This skill only repeats what is specific to cores.
+
+## When to use
+
+- A continuum (1.3 mm, 3 mm, 0.87 mm) map of a clump, IRDC, protocluster or CMZ cloud and you need a core
+  catalog (2016ApJ...833..209O, 2020ApJ...894L..14L, 2025ApJ...994..233Y, 2020ApJS..251...14H).
+- Fitting a CMF and comparing it with the Salpeter IMF (2016ApJ...833..209O, 2018ApJ...853..160C,
+  2020ApJ...890...76N, 2020A&A...635A...2S, 2020ApJ...894L..14L).
+- Dense-gas cores in a line cube (H13CO+, C34S, N2H+) when the continuum is confused or absent
+  (2019ApJ...872..121U, 2023MNRAS.526.4402B).
+- Fragmentation statistics: core counts per clump, separations, core-to-clump mass fractions
+  (2020ApJ...890...76N, 2017A&A...600A.141K, 2026A&A...705A.100E).
+- Checking a published or tool-produced core catalog or CMF slope.
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| CO cube of a nearby galaxy or LMC cloud, structures of tens of pc | `alma-gmc-decomposition-virial` (CPROPS, astrodendro on CO: 2018ApJ...857...19F, 2024ApJ...964..166K, 2024ApJ...966...51G) |
+| Blind line or continuum source search in a deep field, number counts, purity from inverted maps | `alma-source-extraction-counts` (this pack's clumpfind hits in 2017PASJ...69...45H, 2018Natur.556..469M, 2021ApJ...908..163M are that use) |
+| Converting one core's flux to a mass | `alma-dust-continuum-mass` |
+| Clumps in a lensed or high-z galaxy | Source-plane or galaxy kinematics work; clumpfind there is a peak finder only (2017A&A...604A.117C, 2015ApJ...806L..17S) |
+| Peak finding for cloud-lifecycle (tuning-fork) statistics | HEISENBERG workflow, which uses clumpfind only to place apertures (2019Natur.569..519K, 2025A&A...698A.296R) |
+| Only a handful of cores | Report masses individually; authors say such samples are too small for a CMF or a trend (2017MNRAS.464L..31H, 2025ApJ...994..233Y) |
+| Emission optically thick (hot cores, very bright compact sources) | Treat masses as lower limits and do not build a CMF (2025ApJ...994..233Y, 2019A&A...621A.122B) |
+
+## Steps
+
+1. **Prepare the image the finder will run on.**
+   - Goal: flat, well-characterised noise and known spatial filtering.
+   - Run the finder on the non-primary-beam-corrected image (flat noise) and measure fluxes on the
+     PB-corrected image; drop sources below 30% PB response (2020ApJ...894L..14L; same split in
+     2019ApJ...871..185L). If you run on a PB-corrected mosaic, use a local rms map, not one global value
+     (2020ApJS..251...14H prunes leaves against the local RMS).
+   - Measure rms in an emission-free region of the final map (2017A&A...600A.141K) or with random beam
+     apertures (2021ApJ...908..163M, line cube).
+   - Know what the array filters out. 12m-only maps lose most extended flux: ALMA+ACA recovers 8.4 of ~29
+     Msun in TUKH122 (2.5 Msun for 12m only; 2018ApJ...856..147O); ~20% recovered in 2018A&A...616L..10F and
+     2017A&A...608A..98S. Combining with single-dish (Herschel 250 um feather) changed core masses by ~10%
+     except one core by ~60% (2018ApJ...856..147O). Cores are compact, so their fluxes are less affected
+     than the clump, but the background under them is not.
+2. **Extract cores.** Pick one algorithm as fiducial and run a second as a check (step 6).
+   - astrodendro (leaves = cores): set `min_value`, `min_delta`, `min_npix` in units of rms and beam
+     area. Typical: 3-4 sigma, 1 sigma, 1 beam (table below).
+   - clumpfind (Williams et al. 1994; IDL, Starlink CUPID): lowest contour and step, typically 2-3 sigma
+     and 2 sigma, then keep peaks above 5 sigma (2016ApJ...833..209O, 2020ApJ...890...76N,
+     2019MNRAS.483.1624B).
+   - getsources (+ getimages for background) is the multi-scale choice: v1.140127 with default parameters
+     in 2018A&A...616L..10F (getimages max structure size 2") and 2018A&A...618L...5N; getsources seeds a
+     CASA `imfit` 2D Gaussian, keeping converged fits only (2019ApJ...884...48C).
+   - gaussclumps (Starlink CUPID) after a median-filter background subtraction, threshold 3 rms, filter
+     width 10" (2017A&A...600A.141K). SExtractor appears in 2020A&A...635A...2S.
+   - Line cubes: 3D clumpfind at 2 sigma levels and steps, rejecting candidates with fewer than 3 pixels
+     at >= 3 sigma or fewer than 2 channels (2019ApJ...872..121U).
+   - Visual vetting is common and should be recorded: by three coauthors with a dendrogram confirmation
+     (2025ApJ...994..233Y), visual inspection of clumpfind regions (2019MNRAS.483.1624B); 2019ApJ...871..185L
+     admits its catalog edits are subjective.
+3. **Measure flux, size and position.**
+   - Flux: sum within the leaf/clump on the PB-corrected map (2020ApJ...894L..14L), or a 2D Gaussian
+     (`imfit`) seeded by the finder (2019ApJ...884...48C, 2020ApJ...896..110L).
+   - Size: geometric mean of the semi-axes (2020ApJ...890...76N) or R = 1.91 sqrt(sigma_maj sigma_min)
+     from second moments (2024ApJ...966...51G, a CO clump paper; the 1.91 factor is the usual
+     moment-to-radius conversion). Deconvolve only cores clearly larger than the beam: 2020ApJ...894...87C
+     drops cores with area < 1.5 beam areas (34 of 76) from the deconvolved analysis; 2024ApJ...966...51G
+     removes clumps with minor axis < sqrt(2) beam.
+4. **Convert to mass.** Optically thin modified blackbody; details and opacity choices in
+   `alma-dust-continuum-mass`. Values used by core papers in this pack:
+   - kappa_1.3mm = 0.01 cm2/g including gas-to-dust 100, mu = 2.33 (2019ApJ...884...48C,
+     2018A&A...618L...5N); kappa ~0.867 cm2/g (dust) at ~226 GHz with beta 1.75, gas-to-dust 100,
+     mu_H2 = 2.8 (2020ApJS..251...14H); 0.899 cm2/g at 1.3 mm with gas-to-dust 150 (2024A&A...690A.185W);
+     k_100GHz = 0.21 cm2/g with Rgd = 100 (2020ApJ...890...76N); 0.0755 cm2/g at 3 mm, beta = 2
+     (2018ApJ...856..147O).
+   - Temperature: a single 20 K is the most common default (2018ApJ...853..160C, 2020ApJS..251...14H,
+     2020ApJ...894...87C); alternatives are the parent-clump temperature (2020ApJ...890...76N,
+     2018A&A...616L..10F), line temperatures where available (rotational temperature in
+     2020ApJ...890...76N), PPMAP maps (2018A&A...618L...5N), and a temperature set by clump L/M
+     evolutionary stage (2024A&A...690A.185W, 2026A&A...705A.100E).
+   - Mass limit: convert the detection threshold flux (3 sigma) at the clump temperature
+     (2020ApJ...890...76N gives 0.7-1.4 Msun limits that way). This is a sensitivity limit, not a
+     completeness limit (step 5).
+5. **Measure completeness.** Inject synthetic sources into the real map, rerun the same finder with the
+   same parameters, and record the recovered fraction per flux or mass bin.
+   - 2D Gaussians injected and recovered by the same dendrogram (2025ApJ...994..233Y: 0.25 / 0.20 mJy
+     completeness limits at 3 mm); artificial cores placed at random positions and recovered by astrodendro
+     (2020ApJ...894L..14L: 90% completeness ~2 Msun); 600 beam-sized Gaussians per mass bin, logistic fit to
+     the completeness curve, N_corr = N / f (2019MNRAS.483.1624B); point sources passed through CASA
+     `simobserve` and `tclean` before extraction (2020ApJS..251...14H: 95% completeness at 80 Msun robust,
+     ~50 Msun high-completeness, Td = 20 K).
+   - Apply both a number correction and a flux correction (recovered flux vs injected) when building a
+     "true" CMF (2018ApJ...853..160C reports raw 1.11 +/- 0.20 and corrected 1.24 +/- 0.17).
+   - Inject sources with a realistic size range, not only beam-sized or point sources: both
+     2019MNRAS.483.1624B and 2020ApJS..251...14H say their point/beam-sized tests overestimate completeness
+     for extended cores.
+6. **Test robustness of the catalog.**
+   - Vary the finder parameters: min_value 3 sigma and min_delta 2 sigma left conclusions unchanged
+     (2020ApJ...894L..14L); dropping F_min from 4 to 3 sigma raised the count from 76 to 125 cores
+     (2018ApJ...853..160C). For clumpfind, cited tests show the power-law index unchanged for thresholds of
+     2-4 sigma and steps of 2-3.5 sigma in Orion A (quoted by 2016ApJ...833..209O).
+   - Run a second algorithm: fluxes and sizes similar between astrodendro and clumpfind
+     (2020ApJ...890...76N, 2024MNRAS.527.5895D), but CMF slopes can differ by 0.6 (2018ApJ...853..160C).
+   - Check resolution: 12m-only vs combined image (2018ApJ...853..160C); uv-tapers from 100 to 200 klambda
+     before a dendrogram (2021ApJ...907L..15S); compare predicted fragment counts with higher-resolution data
+     (2020A&A...635A...2S: 9 predicted vs 7 resolved fragments for one source).
+   - Keep two catalogs if needed: a robust one (leaf peak > 6 sigma local rms) and a high-completeness one
+     (> 4 sigma), each with its own completeness (2020ApJS..251...14H: 285 vs 816 leaves).
+7. **Build and fit the CMF.**
+   - Fit only above the completeness limit (2020A&A...635A...2S fits dN/dlnM above 2 Msun).
+   - Preferred: unbinned maximum likelihood. MLE on the eCDF with a 90% confidence interval
+     (2020ApJ...890...76N: -1.33 +/- 0.15, interval -1.58 to -1.08; the quote labels it dN/dM, but the value sits at the Salpeter dN/dlogM slope, so check the convention before comparing); MLE of Clauset et al. (2009) with the
+     lower bound chosen by minimising the KS distance, via `plfit` (2020ApJ...894L..14L: alpha 1.00-1.07,
+     lower bound ~5 Msun).
+   - Binned alternatives seen: chi2 in log space with 5 bins per dex, Poisson errors, empty bins as upper
+     limits (2018ApJ...853..160C); cumulative N(>M) = k M^-alpha + c with N^1/2 weights over 2.4-14 Msun
+     (2016ApJ...833..209O); single power law with chi2/dof (2019ApJ...872..121U).
+   - State the convention. General practice: Salpeter is dN/dM ~ M^-2.35, i.e. dN/dlogM ~ M^-1.35 and
+     N(>M) ~ M^-1.35. Papers compare against 1.35 (2016ApJ...833..209O, 2020A&A...635A...2S) and against
+     Orion A 2.3 +/- 0.1 in the dN/dM form (2019ApJ...872..121U).
+8. **Propagate the temperature and multiplicity bias into the slope.**
+   - Random temperatures 20-100 K over 100000 trials moved the NGC 6334 slope across -0.7 to -1.46
+     (2020A&A...635A...2S); a flux-dependent T_dust moved CMZ slopes to 1.40 +/- 0.10 with a fixed 1 Msun
+     lower bound (2020ApJ...894L..14L).
+   - Unresolved multiplicity flattens the high-mass end; 2020A&A...635A...2S models it with a Jeans
+     fragmentation recipe (epsilon0 = 0.4, p = 1.3 reproduce a -1.35 slope).
+9. **Optional: virial state and core-to-clump fractions.** alpha_vir = 5 sigma^2 R / (G M)
+   (2020ApJ...890...76N, 2020ApJ...894...87C) or M_vir = 210 r dv^2 for a uniform sphere
+   (2016ApJ...833..209O). See `alma-gmc-decomposition-virial` for line-width and geometry choices. Report
+   core-to-clump mass fractions with the flux-recovery caveat (2020ApJ...890...76N: 0.06 prestellar, 0.23
+   protostellar).
+
+## Parameter defaults and ranges
+
+Counts are my own count of the pack's parameter and excerpt lines, on-topic core papers only. A longer
+per-paper table is in `references/parameters.md`.
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| astrodendro `min_value` | 3 sigma | 2-5 sigma | 3 sigma: 7; 4 sigma: 3; 5 sigma: 2; 2 sigma: 1 | 2020ApJ...890...76N, 2020ApJ...896..110L, 2017MNRAS.464L..31H, 2020ApJ...894L..14L, 2024A&A...690A.185W, 2020ApJ...896...35J |
+| astrodendro `min_delta` | 1 sigma | 1-5 sigma | 1 sigma: 8; 1.5 sigma: 1; 2 sigma: 1; 3 sigma (30 mJy at 3 sigma noise): 1; 5 sigma: 1 | 2018ApJ...853..160C, 2018ApJ...856..147O, 2025ApJ...994..233Y, 2021ApJ...907L..15S, 2025ApJ...990...80K, 2024A&A...690A.185W |
+| astrodendro `min_npix` | 1 beam area | 0.5-3 beams, or fixed pixels | 1 beam: 4; 0.5 beam: 2; 2 beams: 1; "3 x theta_beam": 1; fixed 5-74 px: 4 | 2020ApJ...894L..14L, 2020ApJS..251...14H, 2024MNRAS.527.5895D, 2018ApJ...856..147O, 2023MNRAS.526.4402B |
+| Leaf pruning by local rms | peak > 4-6 sigma, mean > 2 sigma | 4-6 sigma | 1 | 2020ApJS..251...14H |
+| clumpfind lowest level / step | 2-3 sigma / 2 sigma | 2-8 sigma / 1-4 sigma | 2 sigma/2 sigma: 2; 3 sigma/2 sigma: 2 | 2016ApJ...833..209O, 2019ApJ...872..121U, 2020ApJ...890...76N, 2019MNRAS.483.1624B |
+| clumpfind peak cut | 5 sigma | 5 sigma | 1 | 2016ApJ...833..209O |
+| Minimum core size | >= 1 beam | 0.5 beam to sqrt(2) beam minor axis | several | 2018ApJ...853..160C, 2020ApJ...894...87C |
+| PB cut | 30% response | 30% | 1 | 2020ApJ...894L..14L |
+| Dust temperature | 20 K uniform | 12-54 K fixed, or clump/PPMAP/L-M scheme | 20 K: 3 | 2018ApJ...853..160C, 2018ApJ...856..147O (12 K), 2023MNRAS.526.4402B (54 K), 2018A&A...618L...5N |
+| Opacity at 1.3 mm | 0.01 cm2/g (gas) | 0.0060-0.01 (gas); 0.867-0.899 (dust) | see step 4 | 2019ApJ...884...48C, 2018ApJ...855L..25K, 2020ApJS..251...14H, 2024A&A...690A.185W |
+| Completeness injections | same finder, synthetic Gaussians | point to beam-sized; 600 per bin | 5 | 2019MNRAS.483.1624B, 2020ApJ...894L..14L, 2025ApJ...994..233Y, 2020ApJS..251...14H, 2018ApJ...853..160C |
+| CMF fit | MLE above completeness | MLE, binned chi2, cumulative LSQ | MLE: 2; binned/cumulative: 4 | 2020ApJ...890...76N, 2020ApJ...894L..14L, 2018ApJ...853..160C, 2016ApJ...833..209O |
+| Reported high-mass slope (dN/dlogM) | ~1.0-1.3 | 0.64-1.6 | 6 | 2018ApJ...853..160C, 2020ApJ...894L..14L, 2020A&A...635A...2S, 2016ApJ...833..209O (cumulative) |
+
+## Software
+
+Pack aggregates (software named in matched steps, all 67 papers, including off-topic ones): astrodendro 29,
+clumpfind 25 (plus Starlink/CUPID variants 2), casa 6, getsources 4, cprops 3, fellwalker 2, heisenberg 2,
+casa imfit 2, getimages 2, scimes 1, plfit 1, gaussclumps 1.
+
+Many of the clumpfind hits are not core extraction: blind line searches (2018PASJ...70...36I,
+2017PASJ...69...45H, 2018Natur.556..469M, 2021ApJ...908..163M), clumps in galaxies or lensed sources
+(2015ApJ...806L..17S, 2017A&A...604A.117C, 2016ApJ...820..118Z, 2018ApJ...866..117C), SN 1987A ejecta
+(2017ApJ...842L..24A), and HEISENBERG peak placement (2019Natur.569..519K, 2025A&A...698A.296R). Counting
+only on-topic core papers in the pack lines (my count): astrodendro about 15, clumpfind about 8, getsources 3,
+gaussclumps 1, SExtractor 1.
+
+| Tool | Used for | Notes |
+|---|---|---|
+| astrodendro | Hierarchical segmentation; leaves = cores | The modern default for continuum cores (2020ApJ...894L..14L, 2024A&A...690A.185W, 2025ApJ...994..233Y) |
+| clumpfind (IDL, Starlink CUPID) | Contour-based partition of all emission | Assigns all emission above the lowest level to clumps (general behaviour); found 83 cores vs 76 for the dendrogram and a much flatter slope in 2018ApJ...853..160C |
+| getsources / getimages | Multi-scale extraction with background removal | Default parameters in 2018A&A...616L..10F and 2018A&A...618L...5N; seed for imfit in 2019ApJ...884...48C |
+| gaussclumps (CUPID) | Gaussian decomposition with background filter | Misses low-contrast cores larger than the filter (2017A&A...600A.141K) |
+| CASA `imfit` | 2D Gaussian flux and size per core | Seeded by a finder (2019ApJ...884...48C, 2020ApJ...896..110L) |
+| CASA `simobserve` + `tclean` | Completeness simulations | 2020ApJS..251...14H |
+| plfit | Clauset MLE power-law with KS lower bound | 2020ApJ...894L..14L |
+| SCIMES, CPROPS | Cloud-scale clustering of dendrogram structures | GMC work: see `alma-gmc-decomposition-virial` |
+
+## Pitfalls
+
+- **Algorithm choice changes the CMF.** Dendrogram vs clumpfind slopes of 1.24 vs 0.64 on the same data
+  (2018ApJ...853..160C). Never compare a slope with another paper's without matching algorithm and
+  convention.
+- **Threshold changes the sample.** 4 sigma to 3 sigma gave 76 to 125 cores (2018ApJ...853..160C);
+  robust vs high-completeness pruning gave 285 vs 816 leaves (2020ApJS..251...14H).
+- **Temperature dominates the mass error.** Authors cite factor ~2 mass uncertainties (2018ApJ...853..160C,
+  2020ApJS..251...14H, 2018ApJ...855L..25K) and say T_dust at core scales is unknown (2020ApJ...894L..14L,
+  2019ApJ...884...48C). A temperature that varies with mass changes the slope (step 8). Temperatures
+  assigned from clump L/M can build in trends with L/M.
+- **Completeness tests that are too easy.** Point or beam-sized injections overestimate completeness for
+  extended cores (2019MNRAS.483.1624B, 2020ApJS..251...14H). Background filtering misses low-contrast cores
+  (2017A&A...600A.141K).
+- **Sensitivity limit is not completeness limit.** A 3 sigma mass limit (2020ApJ...890...76N) is lower than
+  the 90% completeness mass; fit above the latter.
+- **Missing flux and unresolved cores.** Interferometer maps resolve out the clump (2016ApJ...833..209O,
+  2018ApJ...856..147O); several cores have radii close to the beam, so sizes and densities are upper and
+  lower limits (2018ApJ...856..147O, 2020ApJ...894...87C).
+- **Multiplicity and resolution.** Unresolved multiplicity biases the CMF (2020A&A...635A...2S); cores may
+  fragment at higher resolution (2018ApJ...853..160C).
+- **Contamination of continuum flux.** Free-free at 1.2 mm not removed in 2020ApJ...896...35J; protostellar
+  mass is not in the core mass (2025ApJ...990...80K); prestellar vs protostellar status often unknown
+  (2020ApJ...894L..14L).
+- **Small samples.** Too few cores for a robust CMF (2017MNRAS.464L..31H); trends on N = 4 (2025ApJ...994..233Y).
+- **Settings the cards flag as not stated:** CMF fitting method, binning and range (2016ApJ...833..209O,
+  2019ApJ...872..121U, 2018ApJ...853..160C); clumpfind implementation and parameters beyond the thresholds
+  (2016ApJ...833..209O, 2020ApJ...890...76N, 2016PASJ...68L...7T); astrodendro call details
+  (2020ApJ...894L..14L); getsources parameters (2019ApJ...884...48C); size deconvolution procedure
+  (2016ApJ...833..209O); line-free channels for the continuum (many cards). Record all of these yourself.
+- **CASA < 5.0 7m mosaic flux scaling** overestimated Band 6 fluxes by ~8% and Band 3 by ~2%
+  (2019MNRAS.483.1624B); check the CASA version of archival products.
+
+## Verification checks
+
+What papers did:
+- Second algorithm on the same map, comparing fluxes and sizes (2020ApJ...890...76N, 2024MNRAS.527.5895D).
+- Parameter sweeps of the finder (2020ApJ...894L..14L, 2018ApJ...853..160C, 2020ApJS..251...14H appendix
+  study of delta and kernel; 2017A&A...600A.141K filter widths 7.5-15").
+- Injection-recovery completeness with the identical finder settings (2025ApJ...994..233Y,
+  2020ApJ...894L..14L, 2019MNRAS.483.1624B, 2020ApJS..251...14H).
+- Temperature Monte Carlo on the slope (2020A&A...635A...2S) and alternative temperature prescriptions
+  (2020ApJ...894L..14L; Hi-GAL temperatures changed results by ~5-10% in 2024A&A...690A.185W).
+- Excluding the most massive core and refitting over a different range (2018ApJ...853..160C).
+- Single-dish combination to test missing flux (2018ApJ...856..147O).
+- Uncertainty propagation on cores: bootstrap 100 iterations with a 5% floor (2024ApJ...966...51G);
+  mass ~40% and column density ~35% (2020ApJ...890...76N).
+
+What a careful referee adds:
+- Report the slope in the dN/dlogM convention with its fit range and lower bound, and the MLE result even if
+  a binned fit is shown.
+- Show the completeness curve itself and the injected size distribution.
+- Overlay the catalog on the map so spurious leaves along filaments and at mosaic edges are visible.
+- Run the finder on the sign-inverted map to estimate false positives (done in line-search papers such as
+  2017A&A...604A.117C; rarely for continuum cores).
+- Check that the slope survives a different temperature scheme and the second algorithm before comparing it
+  with the IMF.
+
+## Source cards
+
+Full list: `references/sources.md`. Most informative for this technique:
+
+- 2018ApJ...853..160C: dendrogram vs clumpfind, flux and number completeness, binned fit with upper limits
+- 2020ApJ...894L..14L: astrodendro on non-PB-corrected maps, plfit MLE with KS lower bound, injection completeness
+- 2020ApJ...890...76N: astrodendro and clumpfind side by side, eCDF MLE with confidence interval
+- 2020A&A...635A...2S: temperature Monte Carlo and multiplicity bias on the slope
+- 2020ApJS..251...14H: pruned dendrogram, simobserve completeness, robust vs complete catalogs
+- 2019MNRAS.483.1624B: CUPID clumpfind, logistic completeness correction
+- 2016ApJ...833..209O: clumpfind 2 sigma, cumulative CMF fit
+- 2025ApJ...994..233Y: visual + dendrogram vetting, Gaussian injection completeness
+- 2019ApJ...884...48C: getsources seeding imfit
+- 2018A&A...618L...5N: getsources and PPMAP temperatures
+- 2018A&A...616L..10F: getimages + getsources defaults
+- 2017A&A...600A.141K: gaussclumps with background filter
+- 2019ApJ...872..121U: 3D clumpfind cores in line cubes, CMF vs Orion A
+- 2018ApJ...856..147O: dendrogram on ALMA+ACA, Herschel feather test
+- 2024A&A...690A.185W: L/M-based temperatures, ALMAGAL cores
+- 2026A&A...705A.100E: core populations vs clump properties
+- 2020ApJ...894...87C: deconvolution cut and virial uncertainty budget
+- 2021ApJ...907L..15S: dendrogram on uv-tapered images
+- 2017MNRAS.464L..31H: small-sample caution
+
+=== references/parameters.md ===
+# Per-paper extraction settings (core-extraction-cmf)
+
+Taken from the evidence pack's "Key parameters" and excerpt lines (a few details from single cards, marked
+"card"). Thresholds are in units of the map rms unless a flux is given. Only papers that extract cores or
+dense-gas clumps are listed; CO cloud decomposition is in `alma-gmc-decomposition-virial`.
+
+## astrodendro
+
+| Bibcode | Map | min_value | min_delta | min_npix | Notes |
+|---|---|---|---|---|---|
+| 2020ApJ...890...76N | 3 mm continuum | 3 sigma | 1 sigma | 1 beam | Run alongside clumpfind; clumpfind kept as fiducial |
+| 2018ApJ...853..160C | 1.3 mm continuum | 4 sigma (fiducial) | 1 sigma | 0.5 beam | 3 sigma gives 125 cores instead of 76 |
+| 2020ApJ...894L..14L | 1.3 mm, CMZ clouds | 4 sigma | 1 sigma | 1 beam | Non-PB-corrected image for finding; 30% PB cut |
+| 2020ApJS..251...14H | 1.3 mm SMA (CMZoom) | 3 x global noise | global low noise | ~0.5 beam | Leaves pruned: peak > 6 sigma (robust) or > 4 sigma, mean > 2 sigma local rms |
+| 2025ApJ...994..233Y | 3 mm / 1.3 mm high-res | 3 sigma | 1.5 sigma | 15 px | Visual selection by three coauthors, then dendrogram |
+| 2020ApJ...896..110L | 3 mm continuum | 3 sigma | 1 sigma | 40 px (~beam) | Properties from CASA imfit; extra > 5 sigma sources added (card) |
+| 2017MNRAS.464L..31H | ALMA+ACA continuum | 3 sigma | 1 sigma | 60 px | Too few cores for a robust CMF |
+| 2018ApJ...856..147O | ALMA+ACA 3 mm | 3 sigma | 1 sigma steps | 3 x theta_beam | Leaves must also be > 3 sigma in 12m data |
+| 2024A&A...690A.185W | ALMAGAL 1.3 mm | 5 sigma | 5 sigma | beam area | kappa 0.899 cm2/g, gas-to-dust 150 (card) |
+| 2025ApJ...990...80K | JCMT 850 um (ALMA minor) | 50 mJy/beam (5 sigma) | 30 mJy/beam (3 sigma) | 5 px | 2D Gaussian to each leaf |
+| 2024MNRAS.527.5895D | 1.16 mm continuum | 0.5 mJy/beam | 0.2 mJy/beam | 2 beams | Check on a clumpfind decomposition |
+| 2023MNRAS.526.4402B | 865 um continuum; H13CO+ cube | 0.5 mJy/beam (cont.); 3 sigma (cube) | 0.2 mJy/beam; 1 sigma | 74 px (cube) | Mean gas temperature 54 K for masses |
+| 2020ApJ...896...35J | 1.2 mm | 2 sigma | 1 sigma | not stated | Free-free not removed |
+| 2021ApJ...907L..15S | combined ACA+12m, uv-tapered | 4 sigma (card) | 2 sigma (card) | not stated | Tapers 100-200 klambda (card) |
+
+## clumpfind and other finders
+
+| Bibcode | Tool | Settings | Notes |
+|---|---|---|---|
+| 2016ApJ...833..209O | Clumpfind | 2 sigma threshold and step; keep peaks > 5 sigma | 48 cores; cumulative CMF 1.6 +/- 0.7 |
+| 2020ApJ...890...76N | Clumpfind | Tlow 3 sigma, dT 2 sigma, Smin 1 beam | Radius = geometric mean of semi-axes |
+| 2018ApJ...853..160C | clumpfind | Delta 3 sigma, Smin 0.5 beam | 83 cores; true slope 0.64 +/- 0.13 |
+| 2019MNRAS.483.1624B | Starlink CUPID ClumpFind | lowest 3 rms, spacing 2 rms, fwhm = 0, minpix 56-61 | No background subtraction; visual check |
+| 2019ApJ...872..121U | clumpfind (3D, l-b-v) | 2 sigma level and step (0.32 K) | Reject < 3 px at >= 3 sigma, < 2 channels, R < 0.035 pc |
+| 2014A&A...569A..11S | 2D CLUMPFIND | not stated | Flux within 5 sigma; deconvolved diameter at 50% contour |
+| 2016PASJ...68L...7T | clumpfind | not stated | 18 clumps at 340 GHz |
+| 2019ApJ...884...48C | getsources + CASA imfit | parameters not stated | Keep converged Gaussian fits; 81 cores |
+| 2018A&A...616L..10F | getimages + getsources | defaults; max structure size 2" | getsources v1.140127 (card) |
+| 2018A&A...618L...5N | getsources v1.140127 (card) | not stated | PPMAP temperatures (card) |
+| 2017A&A...600A.141K | gaussclumps (CUPID 2.0) | threshold 3 rms; median filter 10" | Filter 7.5-15" tested |
+| 2020A&A...635A...2S | SExtractor | parameters beyond thresholds not stated | Completeness 2 Msun |
+
+## Completeness and CMF fits
+
+| Bibcode | Completeness method | Limit | CMF fit | Result |
+|---|---|---|---|---|
+| 2018ApJ...853..160C | flux and number corrections | fit above 0.8 Msun | chi2 in log space, 5 bins/dex, Poisson errors | alpha 1.24 +/- 0.17 (true), 1.11 +/- 0.20 (raw) |
+| 2020ApJ...894L..14L | artificial cores, astrodendro recovery | 90% at ~2 Msun (20 km/s cloud) | plfit MLE, KS lower bound | alpha 1.00-1.07, lower bound ~5 Msun |
+| 2020ApJ...890...76N | 3 sigma mass sensitivity only | 0.7-1.4 Msun | MLE on eCDF | -1.33 +/- 0.15 (90% CI -1.58 to -1.08) |
+| 2020A&A...635A...2S | Monte Carlo | 2 Msun | power law dN/dlnM | -1.1 +/- 0.02; -0.7 to -1.46 under random T |
+| 2019MNRAS.483.1624B | 600 beam-sized Gaussians per bin, logistic fit | per field | not in pack | N_corr = N / f |
+| 2020ApJS..251...14H | point sources via simobserve + tclean | 95% at 80 Msun (robust), ~50 Msun | none | Td = 20 K |
+| 2025ApJ...994..233Y | injected 2D Gaussians, same dendrogram | 0.25 / 0.20 mJy at 3 mm | none (masses are lower limits) | |
+| 2026A&A...705A.100E | catalog completeness | 90% flux 0.95 mJy (card) | not in pack | Ncore may be lower limits |
+| 2016ApJ...833..209O | not stated | | cumulative N(>M), Poisson weights, 2.4-14 Msun | 1.6 +/- 0.7 |
+| 2019ApJ...872..121U | not stated | > 450 Msun (H13CO+) | single power law, chi2/dof | 1.48 +/- 0.14 (dN/dM; Orion A 2.3) |
+
+=== EVIDENCE PACK (core-extraction-cmf) ===
+# Evidence pack: Core extraction and core mass functions (dendrograms, getsources) (`core-extraction-cmf`)
+
+Scope: finding cores in continuum maps, mass functions and completeness corrections
+
+Built from 67 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2014-2026.
+Matcher (regex over analysis steps): `dendrogram|astrodendro|getsources|clumpfind|core mass function|\bcmf\b|core extraction|extract\w* (?:the )?cores|core catalog|getsf|fellwalker|\bcores?\b.*identif|identif\w* (?:\w+ )?cores`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 55
+- milky_way_ism: 32
+- nearby_galaxies: 21
+- astrochemistry: 11
+- high_z_galaxies: 8
+- agn_and_quasars: 4
+- galaxy_clusters_and_sz: 2
+- stellar_physics: 1
+- protoplanetary_disks: 1
+
+### Software named in the matched steps
+- astrodendro: 29
+- clumpfind: 25
+- casa: 6
+- getsources: 4
+- cprops: 3
+- fellwalker: 2
+- heisenberg: 2
+- casa imfit: 2
+- getimages: 2
+- spectralcubetools: 1
+- maskmoment: 1
+- scimes: 1
+- aatm: 1
+- casa simobserve: 1
+- casa tclean: 1
+- starlink clumpfind: 1
+- starlink cupid clumpfind: 1
+- plfit: 1
+- aips serch: 1
+- gaussclumps (starlink/cupid 2.0): 1
+- astrodendro (not named): 1
+- dendrogram: 1
+- picard: 1
+
+### Fitting methods (most common phrasings)
+- 2D Gaussian: 2
+- hyperfine fitting of N2H+ spectra: 1
+- power-law fit with Poisson weights: 1
+- MLE of a power law dN/dM ∝ M^alpha: 1
+- single power law; chi2/dof in Table 2; sampler/priors not stated: 1
+- logistic function: 1
+- Power-law fit; no sampler stated: 1
+- Bayesian likelihood LVG modeling following Teng2022: 1
+- MLE of Clauset et al. 2009; lower bound by KS distance: 1
+- 2D Gaussian (imfit): 1
+- Gaussian line profile fits: 1
+- chi2 minimization in log space; Poisson errors: 1
+- Analytical function with three parameters (two timescales and separation length): 1
+- Gaussian profile fit; poorly fitted structures rejected: 1
+
+### Validation checks used
+- Cite tests of threshold dependence by Pineda et al. and Ikeda & Kitamura: 1
+- compared with Salpeter slope alpha=1.35: 1
+- Compared the two algorithms; fluxes and sizes similar: 1
+- Mass uncertainty ~40%, column density ~35%: 1
+- 90% confidence interval -1.58 to -1.08: 1
+- SIGDISCONT experiments (0,1,2,5,999), added-noise experiments, duplicate-cloud comparison: 1
+- Completeness test with injected 2D Gaussian sources: 1
+- Errors robust after ~100 realizations; noise-addition method consistent with bootstrapping: 1
+- Compared Td from Gordon 2014 and Utomo 2019 models; nearly linear: 1
+- Rejected candidates without S/N>=3 in adjacent channels: 1
+- Parameter study of delta and kernel in Appendix: 1
+- Completeness resilient to atmospheric variation: 1
+- PPMAP temperatures differ by only a few K; systematic mass uncertainty factor ~2: 1
+- compared with Orion A index 2.3±0.1: 1
+- Results robust to different thresholds and segmentation parameters: 1
+- Detections not common to both cubes and similar numbers in sign-inverted cubes, so judged artifacts: 1
+- Two components found in all runs: 1
+- Conclusions do not change if clump E is excluded: 1
+- visual inspection of clump regions: 1
+- Predicted fragments compared to higher-resolution observations (source 43: 2, source 44: 9 vs 7): 1
+- Clumpfind levels varied (1-2 dex range, 0.25-1 dex interval); results consistent within uncertainties or ~30%: 1
+- Inverted cube found no spurious clumps >4 sigma; compared with C17 image assignment: 1
+- Varied dendrogram parameters (3 sigma flux, 2 sigma significance) and found conclusions unchanged: 1
+- Completeness estimated by injecting artificial cores: 1
+- only cores with converged Gaussian fit kept: 1
+- Uncertainty budget: ~factor 2.5 absolute; T=15/30 K changes alpha by 0.6/1.9: 1
+- Total flux compared with SPIRE/FTS: 1
+- Parameters matter little as only two clumps split into substructure: 1
+- Negative peak counts: none above SNR 5.8, so SNR>6 candidates are 100% pure: 1
+- Parameter variations, resolution and 12m-only tests: 1
+- Excluding the ~100 Msun core, different mass ranges: 1
+- Compared ALMA CO luminosity with NANTEN: 58% recovered: 1
+- clumpfind and astrodendro results agree closely: 1
+- Slightly changing mask size gives similar results: 1
+- Compared 2014 and 2015 epochs and inverted cube: 1
+- Filter widths 7.5''-15'' tested; conclusions unchanged: 1
+- tested that excluding systems with separations <500 au does not change results: 1
+- Trunks align with SGMCs of Wilson et al. 2000: 1
+- Feathered with Herschel 250 um; masses change ~10% except MM5 (~60%): 1
+- Compared with Gaussian-fit fluxes of J15: 1
+
+### Key parameters and settings (bibcode: value)
+- 2020ApJ...890...76N: Astrodendro: Fmin=3 sigma, delta=1 sigma, Amin=1 beam
+- 2020ApJ...890...76N: Clumpfind: Tlow=3 sigma, dT=2 sigma, Smin=1 beam
+- 2020ApJ...890...76N: Core radius from geometric mean of Clumpfind semi-axes
+- 2020ApJ...890...76N: Mass limits 0.9, 0.7, 1.4 Msun (3 sigma flux at clump temperature)
+- 2018ApJ...857...19F: candidate clouds larger than one beam, peak >1 K above merge level
+- 2025ApJ...994..233Y: min_value=3sigma, min_delta=1.5sigma, min_npix=15
+- 2024ApJ...966...51G: min_value 3 sigma_MAD, min_npix two beams, min_delta 2.5 sigma_MAD
+- 2024ApJ...966...51G: R = 1.91 sqrt(sigma_maj sigma_min); bootstrapping 100 iterations; minimum 5% fractional uncertainty
+- 2024ApJ...966...51G: Remove clumps with minor axis < sqrt(2) beam width
+- 2024ApJ...966...51G: u_nu = 8.65e-13 (Td/18 K)^(4+beta) erg cm^-3, beta=1.8
+- 2018PASJ...70...36I: Delta S = 1 sigma, S_start = 3 sigma; 43 MHz binning
+- 2020ApJS..251...14H: min value = 3x global noise (3 MJy/sr); min pixels ~ half average beam; min significance = global low noise
+- 2020ApJS..251...14H: masses from flux assuming Td = 20 K
+- 2020ApJS..251...14H: kappa = 0.867 cm2/g at ~226 GHz; d = 8.178 kpc
+- 2019ApJ...872..121U: contour level and increment 2σ = 0.32 K; reject R<0.035 pc, <3 pixels at ≥3σ or <2 channels
+- 2019ApJ...872..121U: mass ranges >450 Msun (H13CO+ whole), >600 (CCC), >200 (non-CCC); C34S 600-2000 Msun
+- 2017ApJ...842L..24A: thresholds 50%-90% of peak emission
+- 2021ApJ...908..163M: VELORES=5, MINPIX=50, FWHMBEAM=3; RMS 45-130 uJy/beam/element
+- 2020A&A...635A...2S: Completeness 2 Msun; temperature test 20-100 K, 100000 trials; epsilon0 = 0.4, p = 1.3
+- 2019Natur.569..519K: apertures 20 to 2560 pc in steps of sqrt(2); flux range 2.0 dex below brightest peak, contour interval 0.5 dex
+- 2026ApJ..1003...68Y: min_value 2.5 K (5 sigma), min_pix 50, min_delta 2.5 K
+- 2026ApJ..1003..231W: structures no smaller than the beam; child brighter than parent by at least 2 rms
+- 2017A&A...604A.117C: steps of 2 sigma starting at 2 sigma; sigma=2 mJy from cube smoothed 3 pixels spatially and 5 spectrally; clumps >=5 sigma
+- 2020ApJ...894L..14L: min flux 4 sigma, min significance 1 sigma, min area = beam
+- 2019ApJ...884...48C: kappa_230GHz = 0.01 cm2/g (incl. gas-to-dust 100); mu=2.33
+- 2020ApJ...894...87C: Deconvolved analysis excludes cores with area <1.5 x A_beam (34 of 76)
+- 2024ApJ...969..143I: min_npix = 1 beam area = 14 square pixels
+- 2024MNRAS.534..683Z: min_npix = 1 beam area, no other parameters; 773 leaves
+- 2024MNRAS.534..683Z: min_value = min_delta = 3 sigma_rms, min_npix = 1 beam; retain peaks above median or contrast >1.5
+- 2018Natur.556..469M: 100 km/s channels, SNR>4 peaks; 14 candidates all with SNR>6.3
+- 2020MNRAS.499.2534K: mask above 4 sigma_rms, edge threshold 2.0–1.5 sigma
+- 2017PASJ...69...18T: threshold 8σ, increment 4σ; 265 clumps → 187 after excluding diameter < 1.4 arcsec
+- 2024MNRAS.527.5895D: astrodendro min_value = 0.5, min_delta = 0.2 mJy/beam, min_npix = 2 beams
+- 2025A&A...698A.296R: apertures up to ~3000 pc; filter at n_lambda >~ 10; iterate until lambda stable for four iterations; mask width >= 1 kpc
+- 2017PASJ...69...45H: low threshold >= 4.5
+- 2017A&A...600A.141K: Threshold 3 x rms = 0.23 mJy/beam rms; filter width 10''
+- 2023MNRAS.526.4402B: min_value = 3 sigma = 7 mJy/beam; min_delta = 1 sigma = 2.3 mJy/beam; min_npix = 74 pixels
+- 2025ApJ...990...80K: min threshold 50 mJy/beam, min significance 30 mJy/beam, min 5 pixels
+- 2024ApJ...964..166K: min_value=3σ, min_delta=1.5σ, min_peak=4.5σ, min_npix=2 beam areas
+- 2018ApJ...856..147O: Threshold 3 sigma, 1 sigma steps, min pixels 3 x theta_beam, must be >3 sigma in 12-m data
+- 2020ApJ...896...35J: 2 sigma flux limit; 1 sigma required difference between embedded structures
+- 2024A&A...690A.185W: min_value = 5 sigma_cont, min_delta = 5 sigma_cont, min_npix = beam area
+- 2024PASA...41...76Z: minimum area larger than 1 beam, no other parameters
+- 2019ApJ...871..185L: min area 25 pixel^2; initial 33 sources; final 28
+- 2026A&A...706A.186R: flux losses in compact regions < 10%
+- 2020ApJ...896..110L: min_value = 3 sigma, min_delta = 1 sigma, min_npix = 40
+- 2017ApJ...849...90S: min pixels = beam area; rms set to 23 mJy/beam
+- 2017MNRAS.464L..31H: min_value=3 sigma_rms; min_delta=1 sigma_rms; min_npix=60
+- 2018A&A...616L..10F: maximal structure size 2"; default parameters
+- 2017A&A...608A..98S: Keep sizes >= beam, v_cent between -350 and -100 km/s, sigma_v <~ 50 km/s
+- 2016ApJ...831...32N: inputs: minimum value, leaf threshold, minimum pixels (values not stated)
+
+
+### Assumptions (bibcode: value)
+- 2016ApJ...833..209O: uniform density sphere; magnetic fields neglected
+- 2020ApJ...890...76N: Rgd=100; k100GHz=0.21 cm2/g; mu_H2=2.8; virial equilibrium for 0.71<alpha<1.4
+- 2020ApJS..251...14H: Point-source-like emission model
+- 2020ApJS..251...14H: gas-to-dust 100; mu_H2 = 2.8; beta = 1.75
+- 2017ApJ...842L..24A: Excitation dominated by 44Ti decay; kinetic temperature ~50 K; LVG optical depth cutoffs
+- 2019MNRAS.483.1624B: Tested only beam-size sources, likely overestimating completeness
+- 2020A&A...635A...2S: IMF slope -1.35 (Salpeter/Kroupa) for comparison
+- 2026ApJ..1003...68Y: LTE; [H2]/[13CO] = 3.2e6
+- 2026ApJ..1003..231W: alpha_CO(3-2) 0.3-0.7 Msun pc^-2 (K km/s)^-1 from one-component LVG, median of probability distribution
+- 2019ApJ...884...48C: Td 23 K (MM2), 27 K (MM3), 28 K (MM4), 25 K (MM6-8); d=5.5 kpc; optically thin
+- 2020ApJ...894...87C: T=20 K masses; k_rho=1.5, a=5/4; alpha_cr = 2a
+- 2020MNRAS.499.2534K: Virial mass for spherical cloud with 1/r density profile; distance 59 kpc
+- 2023MNRAS.526.4402B: mean gas temperature 54 K
+- 2018ApJ...856..147O: kappa=0.0755 cm2/g at 3 mm, beta=2, Td=12 K
+- 2024PASA...41...76Z: alpha_CO(2-1) = 6.7 Msun pc^-2 (K km/s)^-1
+- 2020MNRAS.497.3504T: fiducial distance 8 kpc; sizes scale linearly with distance
+- 2026A&A...705A.100E: Clump kappa300=10 cm2/g, beta=2, gas-to-dust 100; non-deconvolved sizes for surface density
+- 2018ApJ...855L..25K: eps_core = 0.5; steady SFR; Salpeter CMF 1-240 Msun; mm continuum is complete protostellar core census
+- 2018ApJ...860L..14K: Spherical clouds with truncated rho ~ r^-1 profile
+- 2018ApJ...862....8T: N from X_CO = 2e20 with CO(3-2)/(1-0) ratio of 1
+
+
+### Limitations the authors admit
+- 2016ApJ...833..209O: Extended filament emission resolved out; cannot rule out deeply embedded low-mass protostars; core sizes assumed compact
+- 2020ApJ...890...76N: Simple infall models fail to reproduce the deep HCO+ absorption
+- 2018ApJ...857...19F: Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission
+- 2018ApJ...857...19F: Sampled range of environments limited to inner rising rotation curve
+- 2025ApJ...994..233Y: PPO masses are lower limits owing to optically thick emission; no PPO mass function attempted
+- 2025ApJ...994..233Y: Heating-suppression trend relies on tiny samples
+- 2024ApJ...966...51G: LTE assumptions, possibly optically thin 12CO; sensitivity limited to several Msun/pc^2
+- 2024ApJ...966...51G: 8um may trace gas column rather than star formation at these scales
+- 2018PASJ...70...36I: Mdyn has large unconstrained systematic uncertainty; sources only marginally resolved
+- 2020ApJS..251...14H: Completeness assumes point sources and does not capture extended emission; masses uncertain by factor ~2
+- 2019ApJ...872..121U: Abundance uncertainty up to a factor of 2 affects masses
+- 2014A&A...569A..11S: Extended emission resolved out; H13CO+ linewidths are lower limits; missing flux affects abundances.
+- 2017ApJ...842L..24A: Peak brightness cannot be converted to density without non-LTE excitation modelling, which needs more than one line.
+- 2017ApJ...842L..24A: Models are non-rotating and omit chemistry, so SASI signatures cannot be assessed.
+- 2021ApJ...908..163M: Q10 cannot be constrained without other line ratios; the tentative line is not confirmed in Data1.
+- 2025A&A...699A.256P: Extended fraction is an upper limit dependent on noise and segmentation thresholds
+- 2025A&A...699A.256P: Dust emission is low S/N so no radial dust profile
+- 2015ApJ...806L..17S: The pressure estimate has considerable uncertainty
+- 2019MNRAS.483.1624B: CASA <5.0 7m mosaic flux scaling issue: Band 6 overestimated ~8 per cent, Band 3 ~2 per cent, not corrected
+- 2019MNRAS.483.1624B: Completeness tested only for beam-sized sources
+- 2020A&A...635A...2S: Temperatures assumed rather than measured; unresolved multiplicity biases CMF
+- 2020A&A...635A...2S: Low number statistics limit Q-parameter conclusions
+- 2019Natur.569..519K: Extinction correction might underestimate attenuation toward GMC density peaks
+- 2019Natur.569..519K: eps_sf and eta_fb depend on CO-to-H2 and Halpha-to-SFR conversion factors
+- 2026ApJ..1003...68Y: H I column densities likely underestimated due to low resolution dilution
+- 2026ApJ..1003..231W: Low-resolution alpha_CO may bias small-structure masses
+- 2017A&A...604A.117C: alpha_CO and r43/10 make gas surface densities uncertain by a few tenths of a dex.
+- 2017A&A...604A.117C: 27% of expected continuum flux missed.
+- 2020ApJ...894L..14L: Dust temperature at 2000 AU unknown, strongly affects masses
+- 2020ApJ...894L..14L: Cannot tell whether cores are prestellar or protostellar
+- 2016PASJ...68L...7T: Eastern-arm correlation unclear due to FOV limit
+- 2014AJ....147..141H: Interferometer-only data resolves out structure larger than 9.1"
+- 2019ApJ...884...48C: Dust temperature poorly constrained; higher core temperatures would lower masses and raise alpha_total
+- 2019ApJ...884...48C: Velocity dispersion extrapolated via an assumed Kolmogorov law
+- 2020ApJ...894...87C: Large systematic uncertainties in virial parameters (temperature, mass, distance), so supervirial vs subvirial unclear
+- 2020ApJ...894...87C: Many cores are not well resolved
+- 2016ApJ...820..118Z: Extinction correction of Pa-alpha uncertain; radio image of limited quality
+- 2024ApJ...969..143I: Cosmic ray ionization estimate uncertain by order of magnitude; N(H2CO) poorly constrained
+- 2024MNRAS.534..683Z: Cluster age/mass estimate is rough; small sample for separations
+- 2024MNRAS.534..683Z: CO may be optically thick, underestimating column density
+- 2018Natur.556..469M: Dynamical mass is an upper limit if not virialized; line-of-sight projection cannot be completely ruled out
+- 2018ApJ...853..160C: Temperature assumed uniform at 20 K; masses uncertain by factor ~2; possible fragmentation at higher resolution
+- 2020MNRAS.499.2534K: Mid-IR resolution blends sources; ages and masses uncertain
+- 2017PASJ...69...18T: Abundance and Tex adopted from Galactic/other measurements; may vary cloud to cloud
+- 2024MNRAS.527.5895D: Sub-filaments and HFS candidates need higher-resolution observations to validate
+- 2025A&A...698A.296R: Upper limits for lambda and t_fb in many arms; alpha_CO and R21 may differ between environments; diffuse ionised gas leakage may bias inter-arm SFE
+- 2017PASJ...69...45H: One candidate may be spurious; LF from one source
+- 2017A&A...600A.141K: Starless core sample may be incomplete for low-contrast cores due to background filter and may include column density enhancements
+- 2023MNRAS.526.4402B: Mass uncertain by factor of few from dust emissivity; interferometric missing flux and gas-to-dust ratio may bias masses
+- 2018ApJ...866..117C: AGN continuum non-detection may reflect lack of sensitivity
+- 2025ApJ...990...80K: Protostellar mass not included in core mass, so gravity may be underestimated
+- 2024ApJ...964..166K: Comparison depends on assumed X_CO and R21 and on resolution differences; starburst differences are ambiguous
+- 2018ApJ...856..147O: Missing flux: ALMA-ACA recovers only 8.4 of ~29 Msun, so density profile of ALMA-ACA cannot be discussed.
+- 2018ApJ...856..147O: Several condensations not well resolved; radius close to beam size.
+- 2020ApJ...896...35J: Free-free contribution at 1.2 mm not removed; relative astrometry insufficient
+- 2018ApJ...856..118H: Gas mass may be overestimated by ~1.5 if cluster galaxies are more metal-rich
+- 2018ApJ...856..118H: Patchy Band 7 coverage so number density is a lower limit
+- 2024A&A...690A.185W: Missing flux: masses and column densities are lower limits
+- 2024PASA...41...76Z: Only line-of-sight velocity and CO traced mass are measured, so acceleration and central mass are underestimated
+- 2019ApJ...871..185L: Source catalogue edits are subjective
+- 2019ApJ...871..185L: Thickness H(r) cannot be measured; assumption oversimplified
+- 2018PASJ...70...73H: SFR may be underestimated by about a factor of 2; central region feedback uncertain
+- 2026A&A...705A.100E: Continuum data cannot quantify magnetic fields, turbulence or feedback; Ncore values may be lower limits due to sensitivity
+- 2026A&A...706A.186R: CO resolution only allows upper limits on t_fb and t_obscured in 25/37 galaxies
+- 2018ApJ...855L..25K: Dust temperature assumption is the largest uncertainty (up to factor ~2); MIREX has zero-point offsets, saturation and MIR-source contamination.
+- 2020ApJ...896..110L: Cannot discriminate causes of broad line widths in cores with the data at hand; filament pressure not computed
+- 2017ApJ...849...90S: X_CO analysis beyond scope; masses uncertain by factor of few
+- 2024A&A...692A..97M: N(H2) may be underestimated due to dust opacity
+- 2024A&A...692A..97M: Sample not uniform in evolutionary stage; chemical ages unknown
+- 2017MNRAS.464L..31H: Too few cores for a robust core mass function; sonic scale depends on the mosaic field of view.
+- 2020ApJ...898...54T: Low velocity resolution (3 km/s) hindered line identification and Gaussian fitting; CH3CN optical thickness cannot be ruled out
+- 2018A&A...616L..10F: Only 20% of emission recovered; extended emission filtered
+- 2020MNRAS.496.3128R: Cores lie at the edge of the ALMA primary beam, single band, limited resolution; physical parameters not derived
+- 2017A&A...608A..98S: ALMA 12 m data recover only ~20% of APEX mass due to spatial filtering; narrow radius range limits Larson-relation tests
+- 2016ApJ...831...32N: Low-mass YSO catalog incomplete due to Halpha duty cycle (~1/3) and embedded low-mass YSOs missed
+- 2016ApJ...831...32N: 13CO may not be thermalized, underestimating mass
+- 2021ApJ...907L..15S: Gas temperature on small scales unknown; velocity resolution insufficient to measure line data at substructure scales.
+- 2019A&A...621A.122B: Masses and column densities are lower limits because of high optical depth and missing flux; the distance is uncertain
+- 2020MNRAS.497.5454I: Radio components may be knots of a single jet so member count may be lower
+- 2018ApJ...862....8T: 12CO cannot trace total gas mass due to self-absorption; large missing flux in 13CO/C18O
+- 2018A&A...618L...5N: Higher sensitivity and resolution are needed to confirm the lack of outflow
+- 2019ApJ...871...72M: True flare timescale unknown; no simultaneous data at other wavelengths; no polarimetry
+
+### Settings cards flag as needed but not stated
+- flux calibrator and flux scale uncertainty: 6
+- continuum subtraction and line-free channels: 5
+- primary-beam correction details: 3
+- flux scale uncertainty: 3
+- casa version: 3
+- flux calibration uncertainty: 3
+- line-free channels and continuum subtraction method: 3
+- casa version and whether the pipeline or manual calibration was used: 2
+- primary beam correction details: 2
+- casa version and pipeline version: 2
+- clumpfind implementation and exact parameters/mask handling: 1
+- line-free channels and continuum bandwidth used for the 3 mm map: 1
+- clean threshold, iterations and masks: 1
+- n2h+ hyperfine fitting details (in chen et al. in prep): 1
+- procedure for the size deconvolution and fwhm radius: 1
+- fitting method for the cmf slope (binning, range choice): 1
+- which clumps' tmperature values were adopted per core: 1
+- line-free channels used for continuum subtraction: 1
+- cleaning thresholds and number of iterations: 1
+- continuum subtraction method for the cubes: 1
+- exact assignment of the 23 and 32 min between 12m and 7m: 1
+- which quasar calibrates which dataset: 1
+- astrodendro and clumpfind implementation details beyond the thresholds: 1
+- fit ranges for the rotational diagrams and for the cmf: 1
+- parameters of the hill5 fit: 1
+- how the sed flux apertures and backgrounds were handled: 1
+- exact casa version used for re-imaging (only calibration version 4.3.0 given): 1
+- hand-drawn clean polygons per region are not provided: 1
+- line-free channel ranges for noise estimation: 1
+- exact cprops modifications (elliptical beam) code not public (private communication): 1
+- per-region alpha_co values from f14 not tabulated here: 1
+- uv-taper/robust not needed (natural) but tclean parameters like gridder/niter limits per region uns…: 1
+- odr and bootstrap implementation details and random seeds: 1
+- exact tclean image size, cell size, deconvolver and niter for the self-calibrated images: 1
+- self-calibration solution intervals and gain types per stage: 1
+- which line-free channels were used for the high-resolution continuum: 1
+- flux calibration/scale adopted for the high-res datasets: 1
+- exact cutout size and fitting window used in tgif: 1
+- percentile/threshold definitions of the robust measurement criteria in the core catalog: 1
+- linmix setup (priors, chain length) beyond '100 mcmc': 1
+
+## Paper excerpts (40 of 67, chosen for detail and spread over fields/years)
+
+### 2016ApJ...833..209O: Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA (2016; star_formation, milky_way_ism; observational_alma_primary)
+- question: What are the properties (masses, virial state, mass function) of dense cores in the IRDC G14.225-0.506 hub-filament systems, and what do they imply for high-mass star formation?
+- step 2: Identify dense cores
+  - method: Clumpfind with 2 sigma threshold and 2 sigma steps; keep peaks above 5 sigma [Core properties: "Therefore, we choose the threshold and stepsize of 2$\sigma$. Furthermore, we only consider cores having peak intensities above the $5\sigma$ noise level as robust detections."]
+  - software: Clumpfind
+  - validation: Cite tests of threshold dependence by Pineda et al. and Ikeda & Kitamura [Core properties: "(cite: ike09) also showed that the power-law index remains unchanged for thresholds of $2-4$$\sigma$ and stepsizes of $2-3.5$$\sigma$ in the Orion A cloud."]
+- step 5: Virial analysis of cores, clumps, filaments
+  - method: Mvir=210 r dv^2 (uniform density); alpha=Mvir/Mcore; clumps from APEX 870um via Clumpfind with NH3 linewidths [Dynamical State of the Cores: "The virial parameter, $\alpha_{\rm virial}$, is derived by $\alpha_{\rm virial}=M_{\rm vir}/M_{\rm core}$."]
+  - software: Clumpfind
+  - assumption: uniform density sphere; magnetic fields neglected [Dynamical State of the Cores: "The virial analysis performed above neglects effects of magnetic fields, which can increase the virial mass."]
+  - fitting: hyperfine fitting of N2H+ spectra [Dynamical State of the Cores: "by performing hyperfine fitting to the N$_2$H$^+$ spectra"]
+- step 6: Fit cumulative CMF of prestellar candidates
+  - method: N(>M)=kM^-alpha+c fit with Poisson errors N^1/2, mass range 2.4-14 Msun [Core Mass Function: "The power-law index $\alpha$ of the CMF is derived to be $1.6\pm0.7$ using the mass range from 2.4 to 14 $M_\odot$"]
+  - fitting: power-law fit with Poisson weights [Core Mass Function: "taking into account the counting uncertainties (poisson noise) of $N^{1/2}$"]
+  - validation: compared with Salpeter slope alpha=1.35 [Core Mass Function: "The dashed lines represent the slope of the Salpeter IMF ($\alpha=1.35$)."]
+- result: Number of dense cores = 48 ± not stated dimensionless [Core properties: "We identify a total of 48 cores (29 in the northern part and 19 in the southern part)."]
+- result: Core virial parameters = 0.1-1.3 ± not stated dimensionless [Conclusions: "The virial parameters of the dense cores are between 0.1 and 1.3"]
+- result: CMF cumulative slope alpha = 1.6 ± 0.7 dimensionless [Core Mass Function: "derived to be $1.6\pm0.7$ using the mass range from 2.4 to 14 $M_\odot$"]
+- limitation (authors): Extended filament emission resolved out; cannot rule out deeply embedded low-mass protostars; core sizes assumed compact [Results: "This may be explained by the combined effect of resolving out extended emission from the filaments that have lengths longer than 1 pc ($\sim90\ensuremath{''}$) and insufficient sensitivity."]
+- not stated (card): Clumpfind implementation and exact parameters/mask handling; Line-free channels and continuum bandwidth used for the 3 mm map; CLEAN threshold, iterations and masks; N2H+ hyperfine fitting details (in Chen et al. in prep); Procedure for the size deconvolution and FWHM radius; Fitting method for the CMF slope (binning, range choice); Which clumps' tmperature values were adopted per core
+
+### 2020ApJ...890...76N: ALMA Observations of Two Massive and Dense MALT90 Clumps (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: How do massive and dense clumps in prestellar and protostellar phases fragment into cores, and what are the cores' physical and kinematic properties?
+- step 2: Identify cores in the 3 mm continuum
+  - method: Astrodendro and Clumpfind; Clumpfind parameters adopted [4.2 Continuum emission: "Given the similarities, in the remaining of this paper we will use the parameters of the cores determined from the Clumpfind method"]
+  - software: Astrodendro, Clumpfind
+  - parameter: Astrodendro: Fmin=3 sigma, delta=1 sigma, Amin=1 beam [Continuum emission: "we adopted F$_{min}$=3$\sigma$, $\delta$=1$\sigma$ and A$_{min}$ = 1 beam."]
+  - parameter: Clumpfind: Tlow=3 sigma, dT=2 sigma, Smin=1 beam [Continuum emission: "we adopted T$_{low}$=3$\sigma$, $\Delta$T=2$\sigma$ and S$_{min}$ = 1 beam."]
+  - validation: Compared the two algorithms; fluxes and sizes similar [Continuum emission: "We find that the flux densities and angular sizes of the structures (cores) obtained from both methods are similar."]
+- step 5: Compute core masses, column densities, virial parameters
+  - method: Optically thin dust mass from 3 mm flux with Trot (clump T otherwise); alpha_vir=Mvir/M with Mvir=5 sigma^2 R/G [4.1.3 Masses: "For cores in which no rotational temperature is available we adopted the temperature of the clump."]
+  - parameter: Core radius from geometric mean of Clumpfind semi-axes [4.1.1 Sizes: "The radius of the cores were computed from the geometric mean of the semi-major and minor axis determined from Clumpfind"]
+  - assumption: Rgd=100; k100GHz=0.21 cm2/g; mu_H2=2.8; virial equilibrium for 0.71<alpha<1.4 [4.1.3 Masses: "We assume $R_{gd}$=100 and $k_{100 GHz}$ = 0.21 cm$^{2}$ g$^{-1}$"]
+  - validation: Mass uncertainty ~40%, column density ~35% [4.1.3 Masses: "The uncertainties in the mass are estimated to be $\sim$40%"]
+- step 6: Fit the core mass function
+  - method: Maximum likelihood power-law fit to the eCDF of the combined core sample (AGAL329, AGAL333, AGAL305) [4.2 Mass distribution: "the value of the $\alpha$ index that best reproduces the eCDF, using the maximum likelihood estimator (MLE) method, is $-1.33\pm$0.15"]
+  - parameter: Mass limits 0.9, 0.7, 1.4 Msun (3 sigma flux at clump temperature) [4.2 Mass distribution: "The mass sensitivity limits are 0.9, 0.7 and 1.4 M$_{\odot}$ for AGAL329, AGAL333 and AGAL305, respectively."]
+  - fitting: MLE of a power law dN/dM ∝ M^alpha [Mass distribution: "Assuming that the core mass function (CMF) can be described by a power-law $dN/dM$ $\propto$ $M^{\alpha}$, the value of the $\alpha$ index that best reproduces the eCDF, using the maximum likelihood estimator (MLE) method"]
+  - validation: 90% confidence interval -1.58 to -1.08 [4.2 Mass distribution: "the 90% confidence interval is $-1.58$ to $-1.08$"]
+- result: Number of cores in AGAL333 (Clumpfind) = 10 ± not stated dimensionless [Table 1 (summary): "| Number of cores | 10 | 10 |"]
+- result: Mass of central core mm-6 in AGAL329 = 119 ± ~40% Msun [abstract: "we detected a massive (119 M$_\odot$) central core"]
+- result: Core-to-clump mass fraction, prestellar = 0.06 ± not stated dimensionless [Table 1 (summary): "| $f$($\Sigma$M$_{cores}$/M$_{clump}$) | 0.06 | 0.23 |"]
+- result: Core-to-clump mass fraction, protostellar = 0.23 ± not stated dimensionless [Table 1 (summary): "| $f$($\Sigma$M$_{cores}$/M$_{clump}$) | 0.06 | 0.23 |"]
+- result: CMF power-law index = -1.33 ± 0.15 dimensionless [4.2 Mass distribution: "is $-1.33\pm$0.15, and the 90% confidence interval is $-1.58$ to $-1.08$"]
+- limitation (authors): Simple infall models fail to reproduce the deep HCO+ absorption [4.5 The massive core: "To reproduce it requires a more sophisticated modeling, which is beyond the scope of this work."]
+- not stated (card): Line-free channels used for continuum subtraction; Cleaning thresholds and number of iterations; Continuum subtraction method for the cubes; Primary-beam correction details; Exact assignment of the 23 and 32 min between 12m and 7m; Flux scale uncertainty; Which quasar calibrates which dataset; Astrodendro and Clumpfind implementation details beyond the thresholds; Fit ranges for the rotational di…
+
+### 2018ApJ...857...19F: The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution (2018; nearby_galaxies, milky_way_ism, star_formation; observational_alma_primary)
+- question: Do GMCs in NGC 300, resolved at 10 pc and 1 km/s, follow the Milky Way scaling relations and mass spectrum, and what sets GMC properties (global vs local environment such as pressure)?
+- step 3: Identify and decompose GMCs
+  - method: Modified CPROPS: 4 sigma adjacent-voxel seeds, 2 sigma edge, local maxima in 15 pc x 15 pc x 2 km/s cube, SIGDISCONT=5, modified CLUMPFIND assignment; remove duplicates and clouds beyond 29 arcsec [3 Cloud identification and characteriza…: "For our final catalog presented here, we use `SIGDISCONT`=5"]
+  - software: CPROPS
+  - parameter: candidate clouds larger than one beam, peak >1 K above merge level [3 Cloud identification and characteriza…: "have a peak brightness temperature $>1~K$ ($\sim51$ mJy for the typical synthesized beam sizes in these observations) above the merge level"]
+  - validation: SIGDISCONT experiments (0,1,2,5,999), added-noise experiments, duplicate-cloud comparison [8 CPROPS parameter experiments: "We systematically tested `SIGDISCONT` values of 0, 1, 2, 5, and 999."]
+- result: Number of GMCs (full sample after cuts) = 253 ± not stated clouds [4 Results: "our sample consists of 253 clouds across these 46 regions after removing duplicates (32 GMCs)"]
+- limitation (authors): Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission [2.5 Comparison to APEX single dish obse…: "This means there may be low surface brightness CO emission we are unable to detect in the ALMA data."]
+- limitation (authors): Sampled range of environments limited to inner rising rotation curve [4.2 The GMC distribution across NGC 300: "so the range of environments sampled in this study is somewhat limited"]
+- not stated (card): Exact CASA version used for re-imaging (only calibration version 4.3.0 given); Hand-drawn CLEAN polygons per region are not provided; Line-free channel ranges for noise estimation; Exact CPROPS modifications (elliptical beam) code not public (private communication); Per-region alpha_CO values from F14 not tabulated here; uv-taper/robust not needed (natural) but tclean parameters like gridder/nite…
+
+### 2025ApJ...994..233Y: ALMA-IMF. XX. Core Fragmentation in the W51 High-mass Star-forming Region (2025; star_formation; archival_reuse)
+- question: How do ALMA-IMF cores in the W51-E and W51-IRS2 protoclusters fragment into compact sources, and how does fragmentation depend on core mass and compare with thermal Jeans fragmentation?
+- step 2: Identify compact high-res sources
+  - method: Visual selection by three coauthors (compact, centrally peaked, significant, independent) confirmed with dendrogram [3.1 High-res sources identification: "To minimize the ambiguity, only the sources identified by more than two of the three coauthors are included into the final catalog."]
+  - software: astrodendro
+  - parameter: min_value=3sigma, min_delta=1.5sigma, min_npix=15 [3.1 High-res sources identification: "*min_value*=$3\sigma$, *min_delta*=$1.5\sigma$, *min_npix*=15"]
+  - validation: Completeness test with injected 2D Gaussian sources [8 The completeness test: "The completeness level is defined as the fraction of synthetic sources identified in the `dendrogram` with the same parameters used in finding our PPO samples."]
+- result: Number of high-res sources in W51-E = 118 ± not stated sources [3.1 High-res sources identification: "As a result, we identified 118 high-res sources in W51-E"]
+- result: Number of high-res sources in W51-IRS2 = 93 ± not stated sources [3.1 High-res sources identification: "For W51-IRS2, out of 93 high-res sources, we have 23 matched sources"]
+- result: Completeness limits at 3 mm = 0.25 mJy (W51-E), 0.20 mJy (W51-IRS2) ± not stated mJy [8 The completeness test: "we obtain the completeness limits of W51-E and W51-IRS2, $0.25\,{\rm mJy}$ and $0.20\,{\rm mJy}$, respectively, in Band 3"]
+- limitation (authors): PPO masses are lower limits owing to optically thick emission; no PPO mass function attempted [3.6 Constraints to PPO masses: "Therefore, we will not attempt to build a PPO mass function in this paper."]
+- limitation (authors): Heating-suppression trend relies on tiny samples [4.3 Fragmentation efficiency and therma…: "we cannot rule out that this trend is due to the low number of samples ($N=4$)"]
+- not stated (card): Exact tclean image size, cell size, deconvolver and niter for the self-calibrated images; Self-calibration solution intervals and gain types per stage; Which line-free channels were used for the high-resolution continuum; Flux calibration/scale adopted for the high-res datasets; Exact cutout size and fitting window used in TGIF; Percentile/threshold definitions of the robust measurement criteria …
+
+### 2024ApJ...966...51G: The Size─Linewidth Relation and Signatures of Feedback from Quiescent to Active Star Forming Regions in the LMC (2024; nearby_galaxies, star_formation, milky_way_ism; archival_reuse)
+- question: How does stellar feedback affect the size-linewidth relation and virial state of CO clumps in nine LMC GMCs, compared with gravity-driven explanations?
+- step 2: Segment emission into dendrogram and clumps
+  - method: astrodendro on masked cubes, bootstrap errors, SCIMES clustering with isolated leaves, size cut [2.2 Segmenting CO Emission: "we use the Spectral Clustering for Molecular Emission Segmentation (*SCIMES*)[^4] algorithm to gather structures into “clumps,""]
+  - software: astrodendro, SCIMES, maskmoment, SpectralCubeTools
+  - parameter: min_value 3 sigma_MAD, min_npix two beams, min_delta 2.5 sigma_MAD [2.2 Segmenting CO Emission: "We require that two local emission peaks must have a difference of at least 2.5$\sigma_{\text{MAD}}$ to be considered independent leaves (`min_delta`)."]
+  - parameter: R = 1.91 sqrt(sigma_maj sigma_min); bootstrapping 100 iterations; minimum 5% fractional uncertainty [2.2 Segmenting CO Emission: "We use bootstrapping with 100 iterations."] [2.2 Segmenting CO Emission: "We impose a minimum fractional uncertainty of 5% on the measured properties of the dendrogram structures."]
+  - parameter: Remove clumps with minor axis < sqrt(2) beam width [2.2 Segmenting CO Emission: "We impose a cut that removes clumps with minor axis less than $\sqrt{2}$ times the beam width."]
+  - validation: Errors robust after ~100 realizations; noise-addition method consistent with bootstrapping [2.2 Segmenting CO Emission: "We find that errors are robust after $\sim100$ realizations of a structure."]
+- step 4: Measure clump-averaged star-formation tracers
+  - method: Project dendrogram masks to sky and average 8um, Halpha, and u_nu (from Td) maps; noise-addition uncertainties [2.4 Star-Formation Tracer-Based Clump P…: "we project the maximum extent of the dendrogram structure boundaries at any velocity channel onto the sky, and then calculate the average of each star-formation tracer map in this mask."]
+  - parameter: u_nu = 8.65e-13 (Td/18 K)^(4+beta) erg cm^-3, beta=1.8 [2.3 IR and Optical Star Formation Indic…: "is $$\begin{equation} \label{eq:u_nu} u_{\nu} = 8.65\times 10^{-13} \left(\frac{T_d}{18\text{K}}\right)^{4+\beta} \text{ erg cm}^{-3} \end{equation}$$"]
+  - validation: Compared Td from Gordon 2014 and Utomo 2019 models; nearly linear [2.3 IR and Optical Star Formation Indic…: "We find a nearly linear relationship between $T_d$ from the two models in our sample"]
+- result: Number of clumps (12CO / 13CO) = 117 / 50 ± not stated clumps [2.2 Segmenting CO Emission: "117 clumps among all of the GMCs in our sample in CO, 50 in $^{13}$CO"]
+- result: Fraction of total CO mass in clumps (12CO / 13CO) = 65% / 74% ± not stated percent [4.1 Discussion: "the $^{12}$CO clumps contain 65% of the total mass traced by $^{12}$CO and the $^{13}$CO clumps contain 74% of the total mass traced by $^{13}$CO"]
+- limitation (authors): LTE assumptions, possibly optically thin 12CO; sensitivity limited to several Msun/pc^2 [4.3 Caveats and future directions: "the effects of optically thin $^{12}$CO on our mass estimates remains uncertain."]
+- limitation (authors): 8um may trace gas column rather than star formation at these scales [2.3 IR and Optical Star Formation Indic…: "These results indicate that $8\ensuremath{\mu}m$ could be preferentially tracing molecular gas column densities over star formation"]
+- not stated (card): Exact native data products and which project code maps to which cloud; How the original cubes were calibrated/imaged (taken from earlier papers); SCIMES parameters other than save_isol_leaves (e.g. criterion, similarity kernel); Exact LTE equations, excitation temperature handling and opacity solution; Fiducial relation citation (reference elided in text); ODR weighting details and the confidence…
+
+### 2018PASJ...70...36I: Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with ALMA (2018; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the star formation properties, sizes, dynamical masses and black hole-host mass relation of low-luminosity (M1450 > -25) quasar hosts at z >~ 6, compared with optically luminous quasars?
+- step 6: Search for companion emitters
+  - method: CLUMPFIND on continuum-subtracted cubes, peak S/N>=5; continuum emitters at S/N>=5 [3.4.1: "We used the `CLUMPFIND` software (cite: 1994ApJ...428..693W) to search for line emitters other than the HSC quasars themselves with a peak $S/N \geq 5$."]
+  - software: CLUMPFIND
+  - parameter: Delta S = 1 sigma, S_start = 3 sigma; 43 MHz binning [3.4.1: "The relevant parameters were $\Delta~S = 1\sigma$ and $S_{\rm start} = 3\sigma$"]
+  - validation: Rejected candidates without S/N>=3 in adjacent channels [3.4.1: "we rejected candidates that do not show $S/N \geq 3$ emission in any of the channels adjacent to the peak ones"]
+- limitation (authors): Mdyn has large unconstrained systematic uncertainty; sources only marginally resolved [4.3: "Keeping the existence of such large *unconstrained* systematic uncertainty in mind"]
+- not stated (card): Line-free channel selection and velocity ranges for moment-0 maps; Clean mask, threshold and iteration settings; image size; CASA task parameters for imfit (regions, initial guesses); Dust-temperature SED details for the gray body integration and L_FIR band definition; Gas-to-dust ratio value used; Details of nu2GC selection and M_BH from Onoue et al.; Which archive products or scripts were used …
+
+### 2020ApJS..251...14H: CMZoom. II. Catalog of Compact Submillimeter Dust Continuum Sources in the Milky Way's Central Molecular Zone (2020; milky_way_ism, star_formation; multi_facility_alma_minor)
+- question: Which compact sources (<10'', ~0.4 pc) exist in the 1.3 mm SMA CMZoom continuum maps of the Central Molecular Zone, what are their properties and completeness, and what do they imply for CMZ star formation potential?
+- step 2: Run dendrogram and prune leaves by local noise
+  - method: Dendrogram on continuum map in MJy/sr, then keep leaves with peak >6 sigma (robust) or >4 sigma (high-completeness) and mean >2 sigma of local RMS [3.1 Pruned Dendrogram Algorithm: "the former prioritizing only the most robust leaves with a peak flux at least 6$\sigma$ above the local RMS estimate and the latter prioritizing a higher catalog completeness, which includes leaves with a peak flux at least 4$\sigma$ above the local RMS estimate."]
+  - software: astrodendro
+  - parameter: min value = 3x global noise (3 MJy/sr); min pixels ~ half average beam; min significance = global low noise [3.1 Pruned Dendrogram Algorithm: "The minimum pixel value is chosen to be a factor of three greater than this global noise estimate."]
+  - validation: Parameter study of delta and kernel in Appendix [8 Catalog Parameter Studies: "we find that the mass and radius distribution of leaf properties in the catalog is well preserved"]
+- step 3: Completeness and false-positive from simulated observations
+  - method: Inject 10 point sources, simobserve, tclean, make RMS map, dendrogram and prune, count recovered sources [3.2 Source Recovery and Simulated Obser…: "A given point-source is considered to be recovered if its coordinates are located anywhere within a pruned leaf."]
+  - software: CASA simobserve, CASA tclean, AATM
+  - parameter: masses from flux assuming Td = 20 K [3.2 Source Recovery and Simulated Obser…: "we assume a constant dust temperature of 20K"]
+  - assumption: Point-source-like emission model [3.2 Source Recovery and Simulated Obser…: "can be modeled by point-source-like emission for the purposes of this simplistic completeness estimate."]
+  - validation: Completeness resilient to atmospheric variation [3.2 Source Recovery and Simulated Obser…: "The completeness results for our catalogs constructed from the simulated observations is resilient to variations typical in atmospheric conditions"]
+- step 4: Derive leaf physical properties
+  - method: Reff, optically thin column density, isothermal mass, density and freefall time using Herschel Td [4.3 Physical properties: "Assuming optically thin dust continuum emission, the beam-averaged column density at the location of peak emission, $N_{\rm H_{2}}$ is estimated for each dendrogram leaf"]
+  - software: astrodendro
+  - parameter: kappa = 0.867 cm2/g at ~226 GHz; d = 8.178 kpc [4.3 Physical properties: "At a frequency of $\sim226$ GHz we adopt a value of $\kappa_{\nu}\approx0.867$ cm$^{2}$g$^{-1}$"]
+  - assumption: gas-to-dust 100; mu_H2 = 2.8; beta = 1.75 [4.3 Physical properties: "$R_{\rm gd}$ is the gas to dust mass ratio (for which we assume a value of 100"]
+  - validation: PPMAP temperatures differ by only a few K; systematic mass uncertainty factor ~2 [4.3 Physical properties: "subject to a systematic uncertainty of a factor of approximately two due to uncertainty in the dust opacity"]
+- result: Robust catalog leaves = 285 ± not stated leaves [4.1 Leaf Distribution in l-b Space: "The robust catalog contains 285 leaves"]
+- result: High-completeness catalog leaves = 816 ± not stated leaves [4.5 High-Completeness Catalog: "The change produces a catalog of 816 leaves as compared to the robust catalog with its 285 leaves."]
+- result: Median leaf mass (robust) = ~86 ± factor ~2 systematic Msun [4.3 Physical properties: "with a median value of $\sim 86 {\rm M_{\odot}}$"]
+- result: Median H2 column density = 1.2e23 ± not stated cm^-2 [4.3 Physical properties: "with a median value of $N_{\rm H_{2}}\sim 1.2\times10^{23}\,{\rm cm^{-2}}$"]
+- result: 95% completeness mass, robust = 80 ± not stated Msun [3.2 Source Recovery and Simulated Obser…: "point-sources above 80 solar masses, under the typical observational conditions for the *CMZoom* survey, are detected with more than 95% completeness"]
+- result: 95% completeness mass, high-completeness = ~50 ± not stated Msun [4.5 High-Completeness Catalog: "with a 95% completeness of $\sim 50$ M$_\odot$ (assuming T$_d$=20K)"]
+- limitation (authors): Completeness assumes point sources and does not capture extended emission; masses uncertain by factor ~2 [3.2 Source Recovery and Simulated Obser…: "These mass completeness estimates account only for the observational biases in observing point-source-like emission"]
+- not stated (card): Exact dendrogram parameter values in the appendix-referenced setup (min_value, min_npix, min_delta numeric values beyond 3 MJy/sr scaling); Access/processing of CMZoom SMA maps from Dataverse versus Paper I imaging details; Simulated observation antenna configuration, integration time and weather settings; Herschel temperature map not yet published (in prep.); Exact point-source flux values and m…
+
+### 2019ApJ...872..121U: Molecular Cloud Cores in the Galactic Center 50 km s<SUP>-1</SUP> Molecular Cloud (2019; milky_way_ism, star_formation; observational_alma_primary)
+- question: Does cloud-cloud collision in the Galactic Center 50 km/s molecular cloud compress gas and form massive bound cores, and how does the core mass function compare with Orion A?
+- step 2: Identify core candidates
+  - method: clumpfind in 3D l-b-v cube 0-100 km/s, maps resampled to 1.5 arcsec; reject small/unresolved candidates [4.1.: "Lowest contour level and Contour increment, were set to 2 σ and 2 σ corresponding to 0.32 K and 0.32 K, respectively."]
+  - software: clumpfind
+  - parameter: contour level and increment 2σ = 0.32 K; reject R<0.035 pc, <3 pixels at ≥3σ or <2 channels [4.1.: "we rejected the detected core candidates that do not have three or more pixels with intensities of ≥ 3 σ or the core candidates that do not have two or more velocity channels"]
+- step 5: Fit core mass function
+  - method: single power law dN/dM ∝ M^-alpha above mass thresholds, chi2 reported [5.3.: "by using a usual single power-law function given by"]
+  - parameter: mass ranges >450 Msun (H13CO+ whole), >600 (CCC), >200 (non-CCC); C34S 600-2000 Msun [5.3.: "We applied a single power-law function to the CMF of the bound C 34 S cores in the mass range from 600 M ⊙ to 2000 M ⊙ ."]
+  - fitting: single power law; chi2/dof in Table 2; sampler/priors not stated [Table 2: "The best-fit parameters of a single power-law for the CMFs."]
+  - validation: compared with Orion A index 2.3±0.1 [5.3.: "which is smaller than that of 2 . 3 ± 0 . 1 in the Orion A (Ikeda et al. 2007)"]
+- result: H13CO+ core candidates = 3293 ± not stated cores [4.1.: "Finally, we identified 3293 core candidates in the H 13 CO + data and 3192 core candidates in the C 34 S data"]
+- result: CMF index H13CO+ whole 50MC = 1.48 ± 0.14 dimensionless [5.3.: "The best-fit α cmf value is 1 . 48 ± 0 . 14"]
+- result: CMF index C34S = 1.15 ± 0.24 dimensionless [5.3.: "The best-fit α cmf value is 1 . 15 ± 0 . 24."]
+- result: CMF index H13CO+ CCC / non-CCC = 1.38 / 1.37 ± 0.20 / 0.13 dimensionless [5.4.3.: "The best-fit values of α cmf in the CCC and non-CCC regions are 1 . 38 ± 0 . 20 and 1 . 37 ± 0 . 13, respectively."]
+- limitation (authors): Abundance uncertainty up to a factor of 2 affects masses [4.2. Mass estimation: "Because the uncertainty of the abundance that is used to estimate the mass is up to a factor of 2"]
+- not stated (card): CASA version; clean mask, threshold, multiscale and cell/image size; line-free channels / continuum subtraction; Flux calibrator and flux scale uncertainty; Feathering scale factor / TP calibration; Clumpfind details such as how Tex per core was assigned from LVG grid; Fitting method and binning for CMF power law; Definition of CCC region mask beyond R_T>2.5
+
+### 2014A&A...569A..11S: A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations (2014; star_formation, astrochemistry; observational_alma_primary)
+- question: What is the fragmentation, kinematics, hot-core chemistry and outflow content of the elongated dense structure in the high-mass star forming region G35.20N, and is it a 1D filament or an edge-on disk-like 'pancake'?
+- step 2: Identify cores and measure fluxes/sizes
+  - method: 2D CLUMPFIND identifies six cores; flux within 5 sigma; deconvolved diameter at 50% contour [Continuum emission: "The 2D CLUMPFIND algorithm (cite: williams1994) identifies six of these, which we name cores A–F"]
+  - software: CLUMPFIND
+- result: Core A flux density = 0.692 ± 0.023 Jy [Table 2: "A | 18 58 12.945 | 01 40 37.36 | 0.208 | $0.692\pm0.023$"]
+- result: Core B flux density = 0.333 ± 0.008 Jy [Table 2: "$0.333\pm0.008$"]
+- result: Mean core spacing = 0.023 ± not stated pc [Continuum emission: "mean (projected) separation of $\sim$$2.1\ensuremath{''}$ or $\sim$0.023 pc"]
+- limitation (authors): Extended emission resolved out; H13CO+ linewidths are lower limits; missing flux affects abundances. [Dynamical status of the cores: "We note, however, that extended structures are heavily resolved out in our observations."]
+- not stated (card): CASA version and calibration (pipeline vs manual) details; line-free channel selection for continuum; clean threshold, mask, cell and image size, deconvolver; myXCLASS fit initial guesses, parameter bounds, and fitting algorithm settings; exact SiO outflow momentum computation inputs; line used for tapered maps' beam
+
+### 2017ApJ...842L..24A: Very Deep inside the SN 1987A Core Ejecta: Molecular Structures Seen in 3D (2017; stellar_physics, astrochemistry; observational_alma_primary)
+- question: What is the 3D morphology of CO and SiO emission in the inner ejecta of SN 1987A, and how do clump size scales compare with 3D neutrino-driven explosion models?
+- step 3: Compare with explosion models
+  - method: Compare observed cubes with sqrt(12C x 16O) and sqrt(28Si x 16O) model densities, with and without density ceilings. Measure clump sizes (cprops, clumpfind), the radially averaged 3D Fourier transform, and pair-distance distributions at 50… [Comparison with hydrodynamical models: "Segmenting the cube into clumps using *cprops* (cite: Rosolowsky06) and *clumpfind* (cite: Williams94) algorithms reveals the clump size distribution."]
+  - software: cprops, clumpfind
+  - parameter: thresholds 50%-90% of peak emission [Comparison with hydrodynamical models: "thresholds between $50\%$ and $90\%$ of peak of emission were considered"]
+  - assumption: Excitation dominated by 44Ti decay; kinetic temperature ~50 K; LVG optical depth cutoffs [Comparison with hydrodynamical models: "it is reasonable to assume that excitation and heating are predominantly due to $^{44}$Ti decay."]
+  - validation: Results robust to different thresholds and segmentation parameters [Comparison with hydrodynamical models: "The results obtained for the clump sizes and distributions are robust to the different approaches."]
+- result: CO clump separation peak = ~0.25 ± not stated arcsec [Comparison with hydrodynamical models: "The clump separation of CO shows a clear peak at $\sim0.25\ensuremath{''}$"]
+- result: SiO clump separation minor peak = ~0.30 ± not stated arcsec [Comparison with hydrodynamical models: "the distribution of SiO shows a minor peak at $\sim0.30\ensuremath{''}$"]
+- limitation (authors): Peak brightness cannot be converted to density without non-LTE excitation modelling, which needs more than one line. [Observational Results: "requires modeling the non-LTE excitation of each clump, which we cannot do with only one emission line"]
+- limitation (authors): Models are non-rotating and omit chemistry, so SASI signatures cannot be assessed. [Conclusions: "The models compared here are non-rotating, and thus we cannot say how different the signatures of SASI would be."]
+- not stated (card): tclean weighting and robust value; CASA version and whether the pipeline or manual calibration was used; continuum subtraction and line-free channels; masks, thresholds and iteration limits; cycle 2 and 3 combination method and flux scale checks; cprops/clumpfind parameters; model cube preparation, convolution and scaling details; final beam and rms
+
+### 2021ApJ...908..163M: Extremely Low Molecular Gas Content in the Vicinity of a Red Nugget Galaxy at z = 1.91 (2021; high_z_galaxies; observational_alma_primary)
+- question: Is there molecular gas (via [C I]) in or around the compact quiescent galaxy GDS24569 that could drive further size evolution or explain its quenching?
+- step 2: Blind clump search with Starlink clumpfind
+  - method: clumpfind on each cube with rms from 1000 random beam apertures in annuli; inverted-sign cubes as control [3.2.1 Starlink Clumpfind Algorithm: "we extract apertures of beam size in 1000 randomly selected positions in each cube, to measure RMSs in annuli at every 10 pixels from the center."]
+  - software: starlink clumpfind
+  - parameter: VELORES=5, MINPIX=50, FWHMBEAM=3; RMS 45-130 uJy/beam/element [3.2.1 Starlink Clumpfind Algorithm: "(VELORES=5, MINPIX=50, and FWHMBEAM=3)"]
+  - validation: Detections not common to both cubes and similar numbers in sign-inverted cubes, so judged artifacts [3.2.1 Starlink Clumpfind Algorithm: "We find a similar number of detections with a similar spatial distribution as for the real cubes."]
+- limitation (authors): Q10 cannot be constrained without other line ratios; the tentative line is not confirmed in Data1. [3.3 Upper limits in molecular gas mass: "none of these values can be constrained without line ratios to other excitation levels"]
+- not stated (card): CASA version and calibration (pipeline vs manual); tclean deconvolver, weighting/robust, masking, cleaning threshold, image size; continuum subtraction and line-free channels; how the two datasets were combined; primary beam correction details; SED fitting priors, sampler settings, and star-formation-history parametrization; exact conversion of rms to 3-sigma flux limit
+
+### 2025A&A...699A.256P: The ALMA-CRISTAL survey: Extended [CII] emission in an interacting galaxy system at z ∼ 5.5 (2025; high_z_galaxies; observational_alma_primary)
+- question: What are the morphology and kinematics of the cold gas, star-forming and stellar components of CRISTAL-05/HZ3 at z=5.54, and what is the origin of its extended [CII] emission?
+- step 5: Decompose system into clumps
+  - method: Fellwalker on non-JvM cubes; MINPIX=16, FLATSLOPE=2 rms, MINDIP in [1,2,3] sigma, MAXJUMP in [4,6,8] pixels [4.2 Clumpiness: "we performed several runs while varying the parameters: \[1, 2, 3\]-$\sigma_{rms}$ and \[4, 6, 8\] pixels, respectively."]
+  - software: Fellwalker
+  - validation: Two components found in all runs [4.2 Clumpiness: "For all runs, the algorithm found a total number of 2 components"]
+- result: Flux fraction C05-NW / C05-SE / extended = 46% / 13% / 41% ± extended is upper limit percent [4.2 Clumpiness: "46%, 13%, and 41% of the total emission of the system, respectively"]
+- limitation (authors): Extended fraction is an upper limit dependent on noise and segmentation thresholds [4.2 Clumpiness: "we define the fraction of \[C\]emission in the extended emission as an upper limit, meaning that it contributes no greater than 41%"]
+- limitation (authors): Dust emission is low S/N so no radial dust profile [4.1 Radial profiles: "Due to the moderate spatial S/N, we can not perform a direct comparison of the radial profile of the dust distribution."]
+- not stated (card): Line-free channels used for continuum subtraction and uv-range of continuum; Exact JvM epsilon per product and the channel used; Fellwalker NOISE and MINDIP-specific values for final clump definitions beyond ranges; MINDIP/MAXJUMP baseline; DYSMALpy settings: PA, kinematic centre values, spectral/instrumental line broadening, PSF; Moment map 0 integration limits (FW tenth max channels); Task cube…
+
+### 2015ApJ...806L..17S: ALMA Resolves the Properties of Star-forming Regions in a Dense Gas Disk at z ∼ 3 (2015; high_z_galaxies, star_formation; archival_reuse)
+- question: Do star-forming regions in the dense gas disk of lensed galaxy SDP 81 follow local GMC scaling relations (Larson's relations), and what ISM pressure explains any offsets?
+- step 2: Identify star-forming clumps
+  - method: Select regions 5-sigma above local background in the 1.0 mm image; cross-check with clumpfind [Analysis & Discussion: "we also use the clumpfind algorithm (cite: Williams94), which isolates clumps A–D, although misses clump E."]
+  - software: clumpfind
+  - validation: Conclusions do not change if clump E is excluded [Analysis & Discussion: "none of our conclusions significantly change if we include / exclude region E from the analysis below."]
+- limitation (authors): The pressure estimate has considerable uncertainty [Analysis & Discussion: "although we caution this value has considerable uncertainty"]
+- not stated (card): CASA version and calibration/imaging details (deferred to Vlahakis15); Source-plane reconstruction code and lens model parameters; Velocity dispersion map construction and clump sigma extraction details; Local background definition for the 5-sigma clump criterion; Gaussian fit procedure and PSF deconvolution for sizes; Sigma_gas and the gas mass used in the Q and pressure calculations
+
+### 2019MNRAS.483.1624B: An ALMA archival study of the clump mass function in the Large Magellanic Cloud (2019; star_formation, nearby_galaxies; archival_reuse)
+- question: What is the dust-derived clump mass function of star forming regions in the LMC, and how does it compare with Milky Way core/clump mass functions?
+- step 3: Identify clumps
+  - method: ClumpFind lowest contour 3 rms, spacing 2 rms, fwhm=0 with minpix 56 (dor, N159W) or 61 (N159E), no background subtraction [3.2 Clump finding: "The lowest contour was set to three times the map rms"] [3.2 Clump finding: "56 for dor and N159W and 61 for N159E."]
+  - software: Starlink Cupid ClumpFind
+  - validation: visual inspection of clump regions [3.2 Clump finding: "we inspected the clump regions identified with ClumpFind visually for each field."]
+- step 5: Completeness correction
+  - method: Inject 600 beam-sized Gaussian sources per mass bin, rerun ClumpFind, fit logistic function; N_corr=N/f using dor curve [3.4 Completeness corrections: "We inject 600 synthetic sources per mass bin."]
+  - software: ClumpFind
+  - assumption: Tested only beam-size sources, likely overestimating completeness [3.4 Completeness corrections: "our completeness estimates are likely overestimating the total fraction of clumps recovered for a given mass."]
+  - fitting: logistic function [3.4 Completeness corrections: "We fit each completeness curve with a standard logistic function"]
+- result: Number of clumps = 32 ± not stated clumps [3.2 Clump finding: "A total of 32 dust clumps were identified in three fields (dor, N159W and N159E)"]
+- limitation (authors): CASA <5.0 7m mosaic flux scaling issue: Band 6 overestimated ~8 per cent, Band 3 ~2 per cent, not corrected [footnote 3: "the Band 6 flux densities are overestimated by \sim 8 per cent and Band 3 by \sim 2 per cent."]
+- limitation (authors): Completeness tested only for beam-sized sources [3.4 Completeness corrections: "we only tested source recovery for sources that were the same size as the synthesized beam"]
+- not stated (card): Line-free channel/spw selections per field for continuum imaging; Exact uv-trim values for Band 3 and taper values per field (partly in table); Auto-masking code is only in a thesis appendix; Band 3 and Band 6 central frequencies used in the combination; Data weights/flux calibrator choices per project; Completeness fit parameters for dor are only in a figure
+
+### 2020A&A...635A...2S: Physical properties of the star-forming clusters in NGC 6334. A study of the continuum dust emission with ALMA (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: What are the core mass function, spatial distribution of cores and mass segregation in the star-forming clusters of NGC 6334, and how do they relate to cluster evolutionary stage and fragmentation physics?
+- step 5: CMF slope, completeness and bias tests
+  - method: Power-law fit of dN/dlnM above 2 Msun; Monte Carlo completeness; random-temperature test; Jeans-fragmentation resolution test [5.1 Core mass function: "We fitted a power-law function given by $dN/d\ln(M) \propto M^{\alpha}$ to the CMFs for the range of masses above the completenes level."]
+  - parameter: Completeness 2 Msun; temperature test 20-100 K, 100000 trials; epsilon0 = 0.4, p = 1.3 [5.1.2 Resolution bias in the determinat…: "We find that $\epsilon_0=0.4$ and $p=1.3$ reproduce a slope of $-1.35$ in the CMF"]
+  - assumption: IMF slope -1.35 (Salpeter/Kroupa) for comparison [5.1 Core mass function: "The measured slope for the high-mass end of CMF in NGC 6334 clusters is not consistent with the $-1.35$ value of the IMF"]
+  - fitting: Power-law fit; no sampler stated [5.1 Core mass function: "We fitted a power-law function given by $dN/d\ln(M) \propto M^{\alpha}$ to the CMFs for the range of masses above the completenes level."]
+  - validation: Predicted fragments compared to higher-resolution observations (source 43: 2, source 44: 9 vs 7) [5.1.2 Resolution bias in the determinat…: "For source 44 we estimate 9 fragments, in agreement with the 7 components that have been resolved with a resolution of $0.2\ensuremath{''}$."]
+- result: CMF slope alpha, whole sample = -1.1 ± 0.02 dimensionless [5.1 Core mass function: "We obtain a value of $\alpha=-1.1\pm0.02$ for the whole sample"]
+- result: Mass completeness limit = 2 ± not stated Msun [5.1 Core mass function: "In the following, we consider our mass completeness limit to be 2 $M_\odot$."]
+- result: CMF slope range under random temperatures = -0.7 to -1.46 ± std 0.10 dimensionless [5.1.1 Temperature bias in the determina…: "We find the slope $\alpha$ to be in the range $-0.7$–$-1.46$, with a standard deviation of 0.10."]
+- limitation (authors): Temperatures assumed rather than measured; unresolved multiplicity biases CMF [5.1 Core mass function: "the measured slope can be biased due to the uncertainty in temperature determination and the unresolved multiplicity in the massive cores."]
+- limitation (authors): Low number statistics limit Q-parameter conclusions [4.2 Spatial structure of the clusters i…: "the total number of sources in that cluster (10) limits the conclusions that can be derived from this analysis."]
+- not stated (card): Line-free channel ranges used for continuum; tclean multiscale scales, image size, masking and threshold; Self-calibration solution intervals; SExtractor parameters beyond thresholds (filter, mesh size); Hyperparameters of the seven scikit-learn clustering algorithms; How the SExtractor flux was corrected for ACA/combined images and which image (super-resolution vs combined) was used for the cata…
+
+### 2019Natur.569..519K: Fast and inefficient star formation due to short-lived molecular clouds and rapid feedback (2019; nearby_galaxies, star_formation, milky_way_ism; observational_alma_primary)
+- question: Why does the gas depletion time exceed the GMC dynamical time by two orders of magnitude: slow, efficient star formation over many dynamical times, or fast, inefficient star formation with rapid GMC dispersal?
+- step 2: Identify emission peaks and measure CO-to-Halpha ratio vs aperture size
+  - method: Clumpfind peaks in each map; top-hat apertures; relative CO/Halpha ratio bias vs aperture size with Monte Carlo sampling to avoid overlap [Methods: "overlapping apertures are avoided through Monte-Carlo sampling from the emission peak sample and taking the average over $10^3$ such samples"]
+  - software: Clumpfind, Heisenberg
+  - parameter: apertures 20 to 2560 pc in steps of sqrt(2); flux range 2.0 dex below brightest peak, contour interval 0.5 dex [Methods: "The aperture sizes range from a spatial resolution $l_{\rm ap}=20$ to $2560~{\rm pc}$ in steps of a factor of $\sqrt{2}$."]
+  - validation: Clumpfind levels varied (1-2 dex range, 0.25-1 dex interval); results consistent within uncertainties or ~30% [Methods: "these experiments give results that are consistent with the numbers in Table [\[tab:fit\]] to within the uncertainties, or ${\sim}30\%$, whichever is largest"]
+- limitation (authors): Extinction correction might underestimate attenuation toward GMC density peaks [Methods: "It might underestimate the attenuation towards the GMC density peaks, where the surface density is $>20~{\rm M}_\odot~{\rm pc}^{-2}$."]
+- limitation (authors): eps_sf and eta_fb depend on CO-to-H2 and Halpha-to-SFR conversion factors [Methods: "Due to their dependence on $t_{\rm dep}$, the quantities $\epsilon_{\rm sf}$ and $\eta_{\rm fb}$ are sensitive to absolute scaling factors"]
+- not stated (card): Which ALMA execution blocks/MOUS were used and the pipeline version used; CASA clean parameters: cell size, image size, masking, niter; Details of the modified total power pipeline and how feathering was done; Image-cube moment/masking used to make the CO map fed to Heisenberg; Heisenberg code is not public (available on request); Exact reference parameters in Kruijssen 2018 Tables 1-2 not reprod…
+
+### 2026ApJ..1003...68Y: A Multiscale Molecular and Atomic Gas View on the H II Region N113 in the Large Magellanic Cloud: Evidence for High-mass Star Formation Triggered by Supersonic… (2026; star_formation, nearby_galaxies, milky_way_ism; observational_alma_primary)
+- question: What triggered the formation of the N113 GMC and its high-mass stars in the LMC, and does a collision between H I flows (L- and D-components) explain it?
+- step 3: Identify 13CO clumps and test boundedness
+  - method: astrodendro on 13CO cube to extract leaves; LTE surface density; sigma_v^2/R versus surface density diagram [3.2 Physical parameters of molecular cl…: "We used the `astrodendro` package (cite: Rosolowsky2008) to hierarchically segment and identify the cloud sub-structures as trunk, branch and, leaf."]
+  - software: astrodendro
+  - parameter: min_value 2.5 K (5 sigma), min_pix 50, min_delta 2.5 K [3.2 Physical parameters of molecular cl…: "We adopt `min_value` of 2.5 K, corresponding to 5 times the rms noise level."]
+  - assumption: LTE; [H2]/[13CO] = 3.2e6 [3.2 Physical parameters of molecular cl…: "we assumed local thermodynamic equilibrium (LTE) to calculate the CO surface density"]
+- limitation (authors): H I column densities likely underestimated due to low resolution dilution [3.3 H I clouds toward N113: "the H I column densities given above are likely lower than those at smaller scales due to dilution by the low resolution"]
+- not stated (card): tclean/sdintimaging gridding: cell size, image size, weighting/robust, niter, scales; How APEX data were regridded/scaled and sdgain/ feathering parameters; Continuum subtraction and line-free channels; Primary-beam correction treatment; Excitation temperature and optical depth assumed for the LTE 13CO surface density; Velocity-integration/moment clipping thresholds for moments; Choice of 12CO/13…
+
+### 2026ApJ..1003..231W: Multiscale Gas Structure and Dynamics in an Extragalactic Central Molecular Zone (2026; nearby_galaxies, milky_way_ism; observational_alma_primary)
+- question: How do molecular gas structure, ordered versus random motions, and self-gravity vary with spatial scale in the CMZ of NGC 3351?
+- step 1: Build dendrogram
+  - method: astrodendro on PPV cube within strict signal mask over the outer ring [2 Data and Method: "we create a dendrogram from the CO PPV data cube with `astrodendro`"]
+  - software: astrodendro
+  - parameter: structures no smaller than the beam; child brighter than parent by at least 2 rms [2 Data and Method: "each “child” structure should be brighter than its “parent” structure by at least twice the rms noise."]
+- step 2: Structure size and gas mass
+  - method: radius from second moment converted with distance; M = alpha_CO(3-2) L_CO(3-2) with alpha from LVG map at ~100 pc [2.2 Gas Mass: "we derive a $\alpha_\mathrm{CO(3{-}2)}$ map at $\sim$100 pc resolution"]
+  - software: astrodendro
+  - assumption: alpha_CO(3-2) 0.3-0.7 Msun pc^-2 (K km/s)^-1 from one-component LVG, median of probability distribution [2.2 Gas Mass: "we extract the median value of each probability distribution to be our $\alpha_\mathrm{CO(3{-}2)}$ solutions."]
+  - fitting: Bayesian likelihood LVG modeling following Teng2022 [2.2 Gas Mass: "We then incorporate the convolved $\mathrm{CO}\,(3\text{--}2)$ data into their one-component LVG modeling and Bayesian likelihood analysis."]
+- result: Number of unique dendrogram structures = 398 ± not stated structures [2 Data and Method: "the dendrogram includes 398 unique gas structures"]
+- result: Number of trunks = 16 ± not stated trunks [2 Data and Method: "can be traced down to 16 unique “trunks”"]
+- limitation (authors): Low-resolution alpha_CO may bias small-structure masses [3.1 Larson's Relations: "our gas mass estimates for most structures smaller than $\sim50$ pc may not be totally accurate"]
+- not stated (card): astrodendro min_value, min_delta values in K and min_npix beyond 'beam size'; Adopted distance to NGC 3351; Exact pixel size and beam of the cube and details of outer-ring mask; Whether sigma_v and radius use astrodendro defaults (e.g. bijection/ scaling factors); Binning for running median; Fit weighting details for np.polyfit (log space, errors)
+
+### 2017A&A...604A.117C: Planck's dusty GEMS. IV. Star formation and feedback in a maximum starburst at z = 3 seen at 60-pc resolution (2017; high_z_galaxies; observational_alma_primary)
+- question: How intense can star formation be in a maximal starburst at z=3, and is it self-regulated by feedback (radiation pressure, supernovae and winds) as seen on ~60 pc scales?
+- step 3: Identify clumps and image systems
+  - method: Clumpfind in 3D cube; reassemble clumps into lens images [3.2: "we analyzed the CO(4–3) data cube with the Clumpfind algorithm (cite: williams94)"]
+  - software: Clumpfind
+  - parameter: steps of 2 sigma starting at 2 sigma; sigma=2 mJy from cube smoothed 3 pixels spatially and 5 spectrally; clumps >=5 sigma [3.2: "We ran Clumpfind in steps of $2\sigma$, starting at $2\sigma$"]
+  - validation: Inverted cube found no spurious clumps >4 sigma; compared with C17 image assignment [3.2: "We also inverted the cube, to provide another constraint on the potential number of spurious clumps, finding none with $>4\sigma$ significance."]
+- result: Clumps found by Clumpfind = 12 (11 real) ± not stated dimensionless [3.2: "With Clumpfind we identified a total of 12 clumps at $\ge 5 \sigma$."]
+- limitation (authors): alpha_CO and r43/10 make gas surface densities uncertain by a few tenths of a dex. [5.2: "make gas mass surface density estimates uncertain by a few tenths of a dex"]
+- limitation (authors): 27% of expected continuum flux missed. [3.1: "Most of the missing flux is likely to be in the extended diffuse regions"]
+- not stated (card): Line-free channels and continuum subtraction method for the cube; Image size, cell size and clean threshold; Flux calibrator and calibration pipeline/CASA version; Details of per-pixel Gaussian fitting (S/N cut, initial guesses); Lens model files and magnification maps; How pixel-by-pixel SFR and gas surface densities were mapped to source plane; Averaging/masking used for Clumpfind beyond thresh…
+
+### 2020ApJ...894L..14L: ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation (2020; milky_way_ism, star_formation; observational_alma_primary)
+- question: Do massive CMZ clouds contain hidden early-phase fragmentation into cores, and is it consistent with thermal Jeans fragmentation and with forming Arches/Quintuplet-like clusters?
+- step 2: Identify cores
+  - method: astrodendro dendrogram on non-PB-corrected images; leaves are cores; fluxes from PB-corrected images; drop leaves outside 30% PB response [3.1 Identification of Cores: "We set the minimum flux density to 4$\sigma$, the minimum significance for structures to 1$\sigma$, and the minimum area to the size of the synthesized beam."]
+  - software: astrodendro
+  - parameter: min flux 4 sigma, min significance 1 sigma, min area = beam [3.1 Identification of Cores: "We set the minimum flux density to 4$\sigma$, the minimum significance for structures to 1$\sigma$, and the minimum area to the size of the synthesized beam."]
+  - validation: Varied dendrogram parameters (3 sigma flux, 2 sigma significance) and found conclusions unchanged [3.1 Identification of Cores: "we explore the impact of varying the dendrogram parameters upon the following analyses (e.g., changing the minimum significance to 2$\sigma$) and find that it does not affect our conclusions."]
+- step 4: Fit CMF high-mass power law
+  - method: MLE power-law fit of dN/dlogM with simultaneous lower bound (KS minimisation), plfit [3.2 Physical Properties of the Cores: "using the maximum likelihood estimation (MLE) method in (cite: clauset2009) implemented with the *plfit* package"]
+  - software: plfit
+  - fitting: MLE of Clauset et al. 2009; lower bound by KS distance [Appendix: Lower Bound: "It is chosen by minimizing the distance (represented by a Kolmogorov–Smirnov statistic) between the probability distribution of the measured data and the best-fit power-law model"]
+  - validation: Completeness estimated by injecting artificial cores [Appendix: Lower Bound: "by generating artificial cores of certain masses, randomly putting them in the original image, and using *astrodendro* to check whether they can be picked out"]
+- result: Number of cores, 20 km/s cloud = 471 ± not stated cores [Table 1: "| 20 km s$^{-1}$ | 471 |"]
+- result: Number of cores, Sgr B1-off = 89 ± not stated cores [Table 1: "| Sgr B1-off | 89 |"]
+- result: Number of cores, Sgr C = 275 ± not stated cores [Table 1: "| Sgr C | 275 |"]
+- result: CMF power-law index alpha (three clouds) = 1.00–1.07 ± not stated dimensionless [3.2 Physical Properties of the Cores: "The other three fittings reach similar values of $\alpha$ in the range of 1.00–1.07."]
+- result: CMF lower bound = ~5 ± not stated Msun [3.2 Physical Properties of the Cores: "The lower bound of all fittings is found to be around 5 $M_\odot$"]
+- result: 90% completeness limit, 20 km/s cloud = ~2 (30% PB); ~5 (above 5 sigma) ± not stated Msun [Appendix: Lower Bound: "the 90% completeness limit is estimated to be $\sim$2 $M_\odot$ for the 20 km s$^{-1}$ cloud"]
+- result: CMF index, flux-dependent T_dust, fixed lower bound 1 Msun = 1.40 ± 0.10 dimensionless [Appendix: Impact of Varying Dust Temper…: "fit a power-law index of $1.40\pm0.10$"]
+- limitation (authors): Dust temperature at 2000 AU unknown, strongly affects masses [3.2 Physical Properties of the Cores: "$T_\text{dust}$ at 2000 AU scales is unclear."]
+- limitation (authors): Cannot tell whether cores are prestellar or protostellar [3.2 Physical Properties of the Cores: "with the current data we cannot determine whether the cores have collapsed and are mostly protostellar"]
+- not stated (card): Image size and phase centres per field; Line-free channel selection; Which execution blocks and calibrators were used; flux calibrator and flux uncertainty; Cleaning threshold, niter and masks; Exact astrodendro call details beyond min_value/min_delta/min_npix; Modifications made to FragMent; KDE settings for separation distributions; Primary beam correction details and mosaic pointing layout
+
+### 2016PASJ...68L...7T: Galactic center mini-spiral by ALMA: Possible origin of the central cluster (2016; milky_way_ism, star_formation; archival_reuse)
+- question: Does the dust continuum of the Galactic Center Mini-spiral trace star formation, and how did the Central cluster originate (in-situ vs infall of a star-forming cloud)?
+- step 3: Identify dust clumps at 340 GHz
+  - method: clumpfind algorithm on 340 GHz map [Discussion: "we search dust clumps in the 340 GHz continuum map using the *clumpfind* algorithm ((cite: Williams1994))"]
+  - software: clumpfind
+- result: Number of clumps at 340 GHz = 18 ± not stated dimensionless [Discussion: "We detected 18 clumps within the FOV at 340 GHz."]
+- limitation (authors): Eastern-arm correlation unclear due to FOV limit [Discussion: "is not clear because of the limitation of the FOV"]
+- not stated (card): Which scans/sources were used as self-cal models, solution intervals and number of iterations; Weighting/robust, cell size, image size, deconvolution settings; Whether ALMA data were converted to AIPS format and how; Clumpfind thresholds/levels and clump radius definition; Flux density scale values for Titan/Neptune; How the CMF was binned and fit
+
+### 2014AJ....147..141H: ALMA View of G0.253+0.016: Can Cloud-Cloud Collision form the Cloud? (2014; star_formation, milky_way_ism; archival_reuse)
+- question: What are the spatial and velocity structures of the dense, massive cloud G0.253+0.016 in SO emission, and can a cloud-cloud collision explain its formation?
+- step 2: Identify SO cores
+  - method: SO emission within 30 sigma contours of integrated intensity map defined as cores A-N [Spatial distributions of the SO emission: "We defined the SO emission enclosed in the 30$\,$$\sigma$ contours of the integrated intensity map as SO cores."]
+- result: Shell radius = 1.3 ± not stated pc [abstract: "shell structure of radius 1.3 pc"]
+- limitation (authors): Interferometer-only data resolves out structure larger than 9.1" [Spatial distributions of the SO emission: "All components above this scale were resolved out."]
+- not stated (card): CLEAN weighting/robust, threshold, masking, cell and image size; Continuum subtraction and line-free channels; Mosaic pointings and phase center; Integration velocity range and clipping for moment maps; How core boundaries (30 sigma contours) and the velocity gradient were measured; Temperature/mass inputs of the virial analysis beyond quoted values; Position-velocity slice definitions; Inconsist…
+
+### 2019ApJ...884...48C: The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields (2019; star_formation, milky_way_ism; observational_alma_primary)
+- question: How fragmented and magnetized are the most massive W43-Main clumps, and are their cores gravitationally bound once turbulence and magnetic fields are included?
+- step 2: Extract cores and derive masses
+  - method: getsources seeds a 2D Gaussian fit with imfit; keep converged fits; column density and mass from optically thin dust emission [3.1 DUST CONTINUUM EMISSION: "The extracted core position and size was used as a seed for a 2D Gaussian fitting by means of the CASA task *imfit*"]
+  - software: getsources, CASA imfit
+  - parameter: kappa_230GHz = 0.01 cm2/g (incl. gas-to-dust 100); mu=2.33 [3.1 DUST CONTINUUM EMISSION: "$\kappa_{\nu} = 0.01$ cm$^{2}$ gr$^{-1}$ is the emissivity of the dust grains at 230 GHz, which includes a gas to dust ratio of a 100"]
+  - assumption: Td 23 K (MM2), 27 K (MM3), 28 K (MM4), 25 K (MM6-8); d=5.5 kpc; optically thin [3.1 DUST CONTINUUM EMISSION: "we assumed T = 25 K which is the mean value between the temperatures determined by the SED fitting"]
+  - fitting: 2D Gaussian (imfit) [3.1 DUST CONTINUUM EMISSION: "The extracted core position and size was used as a seed for a 2D Gaussian fitting by means of the CASA task *imfit* used over the primary beam corrected maps."]
+  - validation: only cores with converged Gaussian fit kept [3.1 DUST CONTINUUM EMISSION: "only cores where the Gaussian fitting converged were considered here."]
+- result: Number of cores extracted = 81 (96 with MM1) ± not stated cores [abstract: "we extracted 81 cores (96 with the MM1 cores)"]
+- result: Mass sensitivity = 0.08 ± not stated Msun [abstract: "a mass sensitivity of 0.08 M$_{\odot}$"]
+- result: MM2-A mass = 425.7 ± not stated Msun [Table 3: "| 354.1 $\pm$ 17.8 | 879.8 | 0.79 | 0.63 | 149.80 | 283.7 | 425.7 |"]
+- limitation (authors): Dust temperature poorly constrained; higher core temperatures would lower masses and raise alpha_total [4.1.2 Caveats: "The mass estimates depends on the dust temperature, a proxy for the gas temperature, which is not well constrain for these clumps."]
+- limitation (authors): Velocity dispersion extrapolated via an assumed Kolmogorov law [4.1.2 Caveats: "We are deriving velocity dispersions by assuming a Kolmogorov-like power spectrum"]
+- not stated (card): Image sizes, cell sizes, clean thresholds, masks and number of iterations; CASA version; Line-free channels / whether any continuum subtraction was done; Polarization debiasing and exact EVPA/pseudo-vector sampling; getsources parameters and detection thresholds; Exact scale L and b for each DCF region and the Q factor value; Flux calibration uncertainty; Final beam for each clump
+
+### 2020ApJ...894...87C: Gas Kinematics of the Massive Protocluster G286.21+0.17 Revealed by ALMA (2020; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: What are the gas kinematics and dynamical (virial) state of the massive protocluster G286 from clump to dense-core scales, as traced by C18O, N2D+, DCO+ and DCN?
+- step 6: Core virial parameters
+  - method: alpha = 5 sigma_c^2 R_c/(G M_c) with thermal-corrected dispersion; two radius definitions (dendrogram and deconvolved) [5.5 Virial state of dense cores: "$$\begin{equation} \alpha \equiv 5\sigma_c^2R_c/(GM_{c}) = 2aE_K/|E_G|, \end{equation}$$"]
+  - parameter: Deconvolved analysis excludes cores with area <1.5 x A_beam (34 of 76) [5.5 Virial state of dense cores: "This criterion excludes 34 out of 76 cores."]
+  - assumption: T=20 K masses; k_rho=1.5, a=5/4; alpha_cr = 2a [5.5 Virial state of dense cores: "a virial parameter above a critical value $\alpha_{\rm cr}= 2a$ indicates that the core is unbound"]
+  - validation: Uncertainty budget: ~factor 2.5 absolute; T=15/30 K changes alpha by 0.6/1.9 [5.5 Virial state of dense cores: "we estimate the absolute virial parameter uncertainties to be about a factor of 2.5"]
+- result: Median virial parameter (deconvolved radius, averaged tracers) = 1.22 ± std 0.88; factor ~2.5 systematic dimensionless [5.5 Virial state of dense cores: "we obtain a median value of 1.22, and a standard deviation of 0.88"]
+- limitation (authors): Large systematic uncertainties in virial parameters (temperature, mass, distance), so supervirial vs subvirial unclear [5.5 Virial state of dense cores: "given the potentially large systematic uncertainties it is difficult to be more certain about whether the dense cores are actually closer to a supervirial or subvirial state"]
+- limitation (authors): Many cores are not well resolved [5.1 Review of the core sample: "indicating many cores are not well resolved"]
+- not stated (card): CLEAN threshold, niter, masking, cell and image size, multiscale settings; Line-free channels used for continuum; Flux calibrator and flux-scale uncertainty; Feathering procedure parameters; Velocity channel width of final cubes and spectral smoothing; Aperture/pixel selection used for core-averaged spectra; Initial guesses and bounds for Gaussian and hyperfine fits; Rest frequencies for DCO+ and…
+
+### 2016ApJ...820..118Z: ALMA Imaging of the CO (6-5) Line Emission in NGC 7130* (2016; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Where is the warm dense gas (CO 6-5) relative to dust continuum, AGN radio emission and star formation in the LIRG NGC 7130 at <100 pc scales, and how much does the AGN heat it?
+- step 2: Identify clumps and make moment maps/spectra
+  - method: Clumpfind (Williams et al. 1994) on integrated map; Gaussian fits to regional spectra [3.1 CO (6-5) Emission: "three clumps were found by the clump-finding algorithm of Williams et al. (1994)"]
+  - software: Clumpfind
+  - fitting: Gaussian line profile fits [3.1 CO (6-5) Emission: "together with the central velocity and FWHM from a Gaussian fit"]
+  - validation: Total flux compared with SPIRE/FTS [3.1 CO (6-5) Emission: "which agrees well with our SPIRE/FTS-measured flux"]
+- result: Total CO(6-5) flux = 1230 ± 74 Jy km/s [3.1 CO (6-5) Emission: "The total flux of CO (6$-$5) measured from the integrated image is $1230\pm74$ Jy km s$^{-1}$"]
+- result: CO-to-continuum ratio SW/NE/central = 2100 / 1700 / 1300 ± not stated dimensionless [3.2 Continuum Emission at 434 um: "The corresponding values of $R_{\rm CO/cont}$ are 2100 (SW), 1700 (NE) and 1300 (central)"]
+- result: CO-peak to continuum-peak offset = ~0.2 (~70 pc) ± not stated arcsec [3.2 Continuum Emission at 434 um: "have a small offset of $\sim$0$^{\prime\prime}$.2 (or $\sim$70 pc)"]
+- limitation (authors): Extinction correction of Pa-alpha uncertain; radio image of limited quality [3.3 Comparison with Other Observations: "the extinction correction for the Pa-$\alpha$ image may suffer from some uncertainties"]
+- not stated (card): Briggs robust value, clean threshold, mask and cell/image size; Calibrators for bandpass and flux; Line-free channels and continuum subtraction method; Integration velocity range definition and how moment maps were clipped; Clumpfind contour levels; Details of Pa-alpha extinction correction and HST/ALMA registration; SPIRE 350/500 um fluxes used
+
+### 2024ApJ...969..143I: A Radial Decrease in Kinetic Temperature Measured with H<SUB>2</SUB>CO in 30 Doradus (2024; star_formation, nearby_galaxies, astrochemistry; observational_alma_primary)
+- question: Does H2CO-derived gas kinetic temperature in 30 Doradus vary with distance from R136, and which heating mechanisms (mechanical, cosmic ray, X-ray, radiative/photoelectric) explain it?
+- step 2: Segment clumps
+  - method: astrodendro on 3_03-2_02; boundaries applied to the other two lines [2.2 Clump Segmentation: "the H$_2$CO 3$_{03}$-2$_{02}$ emission is segmented into clumps using `astrodendro`, min_value = 3$\sigma$ = 0.3K, min_delta = 2.5$\sigma$ = 0.25K"]
+  - software: astrodendro
+  - parameter: min_npix = 1 beam area = 14 square pixels [2.2 Clump Segmentation: "min_npix = 1$\;$beam area = 14 square pixels"]
+  - validation: Parameters matter little as only two clumps split into substructure [2.2 Clump Segmentation: "The parameters matter very little for subsequent analysis since only two of the clumps break into substructure"]
+- result: Number of H2CO clumps in 3_03-2_02 = 53 ± not stated dimensionless [2.2 Clump Segmentation: "Fifty-three structures are found in 3$_{03}$-2$_{02}$, and 29 have signal-to-noise greater than 3"]
+- limitation (authors): Cosmic ray ionization estimate uncertain by order of magnitude; N(H2CO) poorly constrained [5: "the conversion of $\gamma$-ray flux to ionization rate is uncertain by an order of magnitude"]
+- not stated (card): RADEX grid ranges and spacing for n, N, TK, filling factor; RADEX background and line width settings; Which filling-factor prior was adopted for final TK values; Line-free channels and continuum subtraction method for cubes; Distance to LMC/30 Dor and R136 position used for projected distances; Fitting range used in the radial trend and the fitted slope and R values; Stated auto-multithresh param…
+
+### 2024MNRAS.534..683Z: Molecular clouds as hubs in spiral galaxies: gas inflow and evolutionary sequence (2024; nearby_galaxies, star_formation, milky_way_ism; archival_reuse)
+- question: Can multi-scale hub-filament structures be recovered in the spiral galaxy NGC 628 from CO(2-1), and do they show gas inflow and an evolutionary sequence?
+- step 1: Identify CO structures
+  - method: Dendrogram decomposition of strictly masked Moment 0 map; leaves as potential hubs [3.1 Dendrogram: "we only require the smallest area of the identified structure be larger than 1 beam area."]
+  - software: astrodendro
+  - parameter: min_npix = 1 beam area, no other parameters; 773 leaves [3.1 Dendrogram: "Finally, we obtained 773 leaf structures."]
+- step 7: Associate 21 um and H-alpha structures
+  - method: Dendrogram of 21 um and H-alpha maps, filter faint ones, associate if peak separation < CO effective radius [3.5.2 Association: "If the separations are less than the effective radius of a CO structure, we consider the corresponding 21 $\mu$m or H$_{\alpha}$ structures are associated with the CO structure."]
+  - software: astrodendro
+  - parameter: min_value = min_delta = 3 sigma_rms, min_npix = 1 beam; retain peaks above median or contrast >1.5 [3.1 Dendrogram: "we also take the values of *min_value*= 3\*$\sigma_{\rm rms}$, *min_delta* = 3\*$\sigma_{\rm rms}$"]
+- result: Number of CO leaf structures = 773 ± not stated count [3.1 Dendrogram: "Finally, we obtained 773 leaf structures."]
+- result: Fraction associated with both 21 um and H-alpha (A, B, C) = 58% (95/163), 37% (44/119), 18% (46/251) ± not stated percent [3.5.2 Association: "58% (95/163), 37% (44/119) and 18% (46/251)"]
+- result: Associated 21 um and H-alpha structures = 313 (37%) and 324 (28%) ± not stated count [3.5.2 Association: "there are 313 21 $\mu$m structures (37%, 313/841) and 324 H$_{\alpha}$ structures (28%, 324/1142)"]
+- limitation (authors): Cluster age/mass estimate is rough; small sample for separations [3.6 Star formation: "However, the sample size here is very limited."]
+- limitation (authors): CO may be optically thick, underestimating column density [3.5.2 Association: "We note that CO could be optically thick, which may lead to an underestimation of the column density"]
+- not stated (card): FILFINDER parameters (smoothing, adaptive threshold, branch pruning); KinMS rotation model inputs (rotation curve, centre, PA); GAUSSPY+ parameters (SNR thresholds, alpha values); Velocity-gradient fitting details (aperture, fit method, mass estimation); Virial ratio and velocity dispersion definitions and formula; Dendrogram settings for the 21 um and H-alpha maps' sigma_rms values; Criteria for…
+
+### 2018Natur.556..469M: A massive core for a cluster of galaxies at a redshift of 4.3 (2018; high_z_galaxies, galaxy_clusters_and_sz; observational_alma_primary)
+- question: Is SPT2349-56 a dense, massive protocluster core of starbursting galaxies at z=4.3, and how does it compare with other protoclusters and models?
+- step 1: Blind [CII] line search
+  - method: AIPS SERCH on Band 7 cube with Gaussian kernels 200-600 km/s, peaks SNR>4, CLUMPFIND to isolate candidates, purity from negative peaks [Blind search for [CII]: "We used a set of different Gaussian kernels, from 200 to 600 km/s and searched for all line peaks with SNR$>$4.0."]
+  - software: AIPS SERCH, CLUMPFIND
+  - parameter: 100 km/s channels, SNR>4 peaks; 14 candidates all with SNR>6.3 [Blind search for [CII]: "Out of the 14 \[CII\] line candidates detected, all have SNR$>$6.3"]
+  - validation: Negative peak counts: none above SNR 5.8, so SNR>6 candidates are 100% pure [Blind search for [CII]: "all positive line candidates with SNR$>$6.0 are likely real (100% purity)"]
+- limitation (authors): Dynamical mass is an upper limit if not virialized; line-of-sight projection cannot be completely ruled out [main text: "which is an upper limit if the system has not yet virialized"]
+- not stated (card): Imaging cell size, image size, cleaning and masking parameters for ALMA cubes; CASA version used for reprocessing; Continuum-free channel selection; How positions and flux densities were measured for continuum sources (aperture/fit); Exact SERCH kernel and noise estimation settings; CIGALE module parameters and photometry; Frequency range used for 870-um and 1.1-mm continuum
+
+### 2018ApJ...853..160C: The Core Mass Function in the Massive Protocluster G286.21+0.17 Revealed by ALMA (2018; star_formation; observational_alma_primary)
+- question: What is the core mass function of the massive protocluster G286.21+0.17 from 1.3 mm ALMA continuum, and how does it compare with the Salpeter IMF and depend on core-finding method?
+- step 2: Identify cores
+  - method: Dendrogram (leaves) and clumpfind with fiducial Fmin=4σ, δ=1σ or Δ=3σ, Smin=0.5 beam; parameters varied [3.2 The Core Population and CMF: "The fiducial dendrogram method ($F_{\rm min}=4\sigma$, $\delta=1\sigma$, $S_{\rm min}=0.5S_{\rm beam}$) identifies 76 cores"]
+  - software: astrodendro, clumpfind
+  - validation: Parameter variations, resolution and 12m-only tests [3.2 The Core Population and CMF: "Our 12m only image has an rms noise level of 0.47 mJy beam$^{-1}$."]
+- step 5: Fit CMF power law
+  - method: Power law dN/dlogM ∝ M^-α fit to bins above 0.8 Msun, 5 bins per dex, chi2 in log space [3.2 The Core Population and CMF: "Our fitting method, which we note minimizes $\chi^2$ in log space, treats the empty bins as effective upper limits."]
+  - fitting: chi2 minimization in log space; Poisson errors [3.2 The Core Population and CMF: "Poisson counting errors are shown for each bin."]
+  - validation: Excluding the ~100 Msun core, different mass ranges [3.2 The Core Population and CMF: "if we were to exclude this source and fit the CMF only over the range from 0.8 to $\sim20\:M_\odot$"]
+- result: Fiducial dendrogram true CMF slope α (M>0.8 Msun) = 1.24 ± 0.17 dimensionless [3.2 The Core Population and CMF: "while that for the fully (flux and number) corrected, i.e., “true”, CMF yields $\alpha=1.24\pm0.17$"]
+- result: Fiducial clumpfind true CMF slope α = 0.64 ± 0.13 dimensionless [3.2 The Core Population and CMF: "then we find $\alpha=0.64\pm0.13$"]
+- result: Dendrogram raw CMF slope α = 1.11 ± 0.20 dimensionless [3.2 The Core Population and CMF: "We find $\alpha=1.11\pm0.20$."]
+- result: Number of cores, fiducial dendrogram = 76 ± not stated cores [3.2 The Core Population and CMF: "identifies 76 cores, while the fiducial clumpfind method"]
+- result: Number of cores, fiducial clumpfind = 83 ± not stated cores [3.2 The Core Population and CMF: "finds 83 cores"]
+- result: Dendrogram true CMF slope for M>0.3 Msun = 0.83 ± 0.11 dimensionless [3.2 The Core Population and CMF: "we derive a moderately shallower value of $\alpha=0.83\pm0.11$"]
+- result: Number of dendrogram cores for Fmin=3σ = 125 ± not stated cores [3.2 The Core Population and CMF: "125 cores are now found"]
+- limitation (authors): Temperature assumed uniform at 20 K; masses uncertain by factor ~2; possible fragmentation at higher resolution [2.3 Core Mass Estimation: "Overall, we estimate absolute mass uncertainties of about a factor of two"]
+- not stated (card): Line-free channel ranges for continuum; Taper value for the 1'' image; Image size, cell size, masking, clean threshold and deconvolver; Pixel/beam-size and primary-beam correction details; Power-law fit procedure details (bin edges, error weighting); Clumpfind implementation used; Exact flux and number correction functional forms; Which scheduling blocks/execution blocks were used
+
+### 2020MNRAS.499.2534K: Resolved star formation in the metal-poor star-forming region Magellanic Bridge C (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: How do molecular clumps, YSOs and PMS stars in the metal-poor Magellanic Bridge region MB-C compare with Galactic counterparts?
+- step 1: Identify CO clumps and measure properties
+  - method: CPROPS with modified CLUMPFIND (/ECLUMP) decomposition; moment method with sensitivity extrapolation and deconvolution [2.2 Clump identification and analysis: "we use the modified CLUMPFIND algorithm (setting the keyword /ECLUMP) to apply the decomposition process on the CO distribution."]
+  - software: CPROPS, CASA
+  - parameter: mask above 4 sigma_rms, edge threshold 2.0–1.5 sigma [2.2 Clump identification and analysis: "emission above 4$\sigma_{\rm rms}$ and edge threshold of about 2.0–1.5$\sigma$"]
+  - assumption: Virial mass for spherical cloud with 1/r density profile; distance 59 kpc [2.3 Clump parameters: "assuming a spherical cloud with a 1/$r$ density profile (MacLaren, Richardson & Wolfendale 1988)"]
+  - validation: Compared ALMA CO luminosity with NANTEN: 58% recovered [2.2: "Thus, 58 per cent of NANTEN observed luminosity is recovered by ALMA"]
+- result: Number of CO clumps = 12 ± not stated dimensionless [2.3: "Twelve clumps in MB-C having signal-to-noise greater than 13 at the peak are detected."]
+- result: Fraction of NANTEN luminosity recovered = 58 ± not stated per cent [2.2: "Thus, 58 per cent of NANTEN observed luminosity is recovered by ALMA"]
+- result: Clump surface density range = 12–200 ± not stated Msun pc^-2 [6 Summary: "The surface densities of these clumps range between 12–200 $M_{\odot}$pc$^{-2}$"]
+- limitation (authors): Mid-IR resolution blends sources; ages and masses uncertain [3.1: "we caution the reader that the final characterisation of the YSOs while accurate, might not provide a precise estimate of their properties"]
+- not stated (card): CASA version and calibration/imaging steps (weighting, cleaning, masks); Whether archive or reprocessed products were used; Exact CPROPS parameters beyond 4 sigma mask and edge threshold; Rest frequency and moment-map velocity limits details
+
+### 2017PASJ...69...18T: A statistical study of giant molecular clouds traced by <SUP>13</SUP>CO, C<SUP>18</SUP>O, CS, and CH<SUB>3</SUB>OH in the disk of NGC 1068 based on ALMA observ… (2017; nearby_galaxies, astrochemistry, star_formation; observational_alma_primary)
+- question: What are the physical and chemical properties of GMCs in the disk of NGC 1068, and are they linked to the larger-scale galactic environment?
+- step 3: Identify GMCs
+  - method: CLUMPFIND on 13CO cube; remove clumps smaller than beam [3.3: "We adopt a peak threshold of 8$\sigma$ (5.12 mJy beam$^{-1}$) and a contour increment of 4$\sigma$."]
+  - software: CLUMPFIND
+  - parameter: threshold 8σ, increment 4σ; 265 clumps → 187 after excluding diameter < 1.4 arcsec [3.3: "This resulted in the detection of 265 clumps."]
+- result: Number of GMCs identified = 187 ± not stated dimensionless [abstract: "we have identified 187 high-significance ($> 8\sigma$) GMCs"]
+- result: Mean GMC size and velocity width = 102 pc; 14.9 km/s ± not stated pc; km/s [3.4: "The averaged size and velocity width of the identified clouds are 102 pc and 14.9 km s$^{-1}$, respectively."]
+- limitation (authors): Abundance and Tex adopted from Galactic/other measurements; may vary cloud to cloud [3.4: "some cloud-to-cloud variation of $T_{\rm ex}$ may exist"]
+- not stated (card): Line-free channel ranges for uvcontsub; Clean threshold, masks and iteration count; CLUMPFIND implementation and exact parameters beyond threshold and increment (e.g. velocity handling, pixel-based area); Fitting method, binning and error estimation for the truncated power law; Calibration/flux-scaling details for datasets and which pipeline version per dataset; Primary-beam correction details; V…
+
+### 2024MNRAS.527.5895D: Galactic 'Snake' IRDC G11.11-0.12: a site of multiple hub-filament systems and colliding filamentary clouds (2024; star_formation, milky_way_ism; multi_facility_alma_minor)
+- question: What are the multi-scale structure, kinematics and star formation processes (hub-filament systems, cloud collision) in the IRDC G11.11-0.12, including the inner environment of G11P1 seen with ALMA?
+- step 1: identify continuum sources in ALMA 1.16 mm map
+  - method: clumpfind decomposition at contour levels 0.03 and 0.055 x 10.4 mJy/beam, giving sources A, B-D, b1-b3; astrodendro as independent check [3.4.2: "The *clumpfind* IDL program (cite: williams94) has been employed in the ALMA continuum map at 1.16 mm to depict continuum sources."]
+  - software: clumpfind, astrodendro
+  - parameter: astrodendro min_value = 0.5, min_delta = 0.2 mJy/beam, min_npix = 2 beams [3.4.2: "The input parameters, namely “min_value” and “min_delta”, were set to 0.5 and 0.2 mJy beam$^{-1}$, respectively."]
+  - validation: clumpfind and astrodendro results agree closely [3.4.2: "the results obtained from both the *clumpfind* algorithm and the *astrodendro* tool exhibit close agreement with each other"]
+- result: Dendrogram fluxes L1, I1, I2, I3, I4 = 154.55, 18.32, 13.34, 34.62, 8.83 ± not stated mJy [3.4.2: "The total fluxes of L1, I1, I2, I3, and I4 are 154.55, 18.32, 13.34, 34.62, and 8.83 mJy, respectively."]
+- limitation (authors): Sub-filaments and HFS candidates need higher-resolution observations to validate [3.2.1: "to validate the existence of sub-filaments and IR-dark HFS candidates, we require new continuum and line observations (resolution $<$ 2$''$)"]
+- not stated (card): ALMA array configuration, observing dates, central frequencies, and pipeline/CASA version; Imaging parameters (weighting, robust, cell, image size, CLEAN threshold) of the archive continuum and line cubes; Continuum-subtraction and line-free channels for H13CO+; clumpfind threshold and step settings, scousepy fitting parameters beyond SAA size; Gas-to-dust ratio value R_t used in mass formula
+
+### 2025A&A...698A.296R: The impact of spiral arms on the star formation life cycle (2025; nearby_galaxies, star_formation; archival_reuse)
+- question: Do spiral arms change cloud lifetimes, feedback timescales, region separation and integrated star formation efficiency compared with inter-arm regions?
+- step 2: Derive cloud lifecycle timescales
+  - method: Identify peaks, measure gas-to-SFR flux ratio in apertures, fit with HEISENBERG, iteratively filter diffuse emission [3 Method: "we first identified emission peaks in gas (here CO(2-1) emission) and SFR tracer (here H$\alpha$ emission) maps using the CLUMPFIND algorithm"]
+  - software: HEISENBERG, CLUMPFIND
+  - parameter: apertures up to ~3000 pc; filter at n_lambda >~ 10; iterate until lambda stable for four iterations; mask width >= 1 kpc [3 Method: "until the derived separation scale $\lambda$ did not vary for four successive iterations."]
+  - fitting: Analytical function with three parameters (two timescales and separation length) [3 Method: "fitted by an analytical function that depends on three independent parameters"]
+  - validation: Slightly changing mask size gives similar results [3 Method: "Slightly increasing or decreasing the size of the masks leads to similar measurements of the cloud lifetime, feedback timescale, and $\lambda$."]
+- result: Median lambda in spiral arms = ~175 ± not stated pc [4.3 Region separation length: "with a median of ${\sim} 175$ pc"]
+- result: Median lambda in inter-arms = ~250 ± not stated pc [4.3 Region separation length: "with a higher median (${\sim}250$ pc)"]
+- result: Cloud lifetime range = 5 to 40 ± not stated Myr [4.1 Cloud lifetime: "fall within the range 5 to 40 Myr"]
+- limitation (authors): Upper limits for lambda and t_fb in many arms; alpha_CO and R21 may differ between environments; diffuse ionised gas leakage may bias inter-arm SFE [4.4 Star formation efficiency: "systematic differences in the conversion factors $R_{21}$ or $\alpha_{\rm CO}$ between arms and inter-arm could affect this result"]
+- not stated (card): Galaxy distances and inclinations used; Exact Gaussian kernel radii for enlarged arm masks; Default HEISENBERG parameters not listed; Halpha maps are unpublished (Razza et al. in prep.); Pixel-level SFR map construction details
+
+### 2017PASJ...69...45H: ALMA deep field in SSA22: Blindly detected CO emitters and [C II] emitter candidates (2017; high_z_galaxies; archival_reuse)
+- question: Can a blind line search in the ADF22 1.1 mm ALMA survey cube find CO and [CII] emitters, and what do they imply for the [CII] luminosity function and star formation rate density at z~6?
+- step 2: Blind source detection
+  - method: clumpfind on S/N cubes, match across smoothings, select >6 sigma and above max negative in inverted cube [3 Method: "We select clumps that have the S/N ratio larger than $6.0 \sigma$ and also larger than the maximum negative S/N ratio measured in the inverted S/N cube"]
+  - software: clumpfind
+  - parameter: low threshold >= 4.5 [3 Method: "threshold value “low” of clumpfind of $\geq$ 4.5"]
+  - validation: Compared 2014 and 2015 epochs and inverted cube [3 Method: "We also check line spectral features of the detected clumps (sources) in the datacube separately for those observed in 2014 and 2015."]
+- result: Peak S/N of LineA = 6.5 ± not stated sigma [4.1: "The peak S/N ratio are $6.5 \sigma$, $6.2 \sigma$, $7.7 \sigma$ and $6.5 \sigma$"]
+- limitation (authors): One candidate may be spurious; LF from one source [5 Discussion: "one of the two [Cii] candidates has a relatively low-$\sigma$ and thus could possibly be a spurious source"]
+- not stated (card): clean parameters (weighting, robust, cell size, image size, threshold); line-free channels for uvcontsub; calibration/flux scale details; clumpfind other parameters and completeness; hyperz settings; spectral-line fitting details
+
+### 2017A&A...600A.141K: Resolving the fragmentation of high line-mass filaments with ALMA: the integral shaped filament in Orion A (2017; star_formation, milky_way_ism; observational_alma_primary)
+- question: What are the fragmentation length scales of the Orion A integral shaped filament, is there a preferred fragmentation scale or grouping of cores, and how do these relate to the young stellar population?
+- step 2: Identify dense cores
+  - method: 2D Gaussian fitting with gaussclumps after median-filter background subtraction [2.1 Identification of dense cores: "gaussclumps identifies cores by fitting 2-dimensional Gaussians at the locations defined by the highest pixel values in the map."]
+  - software: gaussclumps (starlink/cupid 2.0)
+  - parameter: Threshold 3 x rms = 0.23 mJy/beam rms; filter width 10'' [2.1 Identification of dense cores: "We chose to use the threshold three times the $rms$ noise calculated from an emission free region in the ALMA+ACA map"] [2.1 Identification of dense cores: "The filter width for the background subtraction was chosen to be 10$\ensuremath{''}$"]
+  - fitting: Gaussian profile fit; poorly fitted structures rejected [2.1 Identification of dense cores: "if the structure profile is not well fitted by a Gaussian, the core is rejected."]
+  - validation: Filter widths 7.5''-15'' tested; conclusions unchanged [2.1 Identification of dense cores: "between 7.5$\ensuremath{''}$-15$\ensuremath{''}$ the choice of the width does not change the conclusions based on the two-point correlation function"]
+- result: Number of dense cores = 43 ± not stated dimensionless [2.1 Identification of dense cores: "Running gaussclumps resulted in detection of 43 compact objects from the ALMA map."]
+- limitation (authors): Starless core sample may be incomplete for low-contrast cores due to background filter and may include column density enhancements [2.1 Identification of dense cores: "Because of the background filtering of gaussclumps, we may be insensitive to low-contrast cores that have sizes of 10$\ensuremath{''}$ (4 000 AU) or larger."]
+- not stated (card): Clean threshold, niter, cell size, image size and mosaic gridding; Exact channels excluded from continuum; Mask box coordinates; Exact gaussclumps parameter file beyond Thresh and filter width (e.g. other FWHMBeam, Rms, fit-failure settings); Whether primary-beam correction was applied; Exact HOPS catalog versions (Furlan 2016 was submitted); Area used for random placement and boundary treatment …
+
+### 2023MNRAS.526.4402B: Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME (2023; star_formation, milky_way_ism; archival_reuse)
+- question: How do dense gas structures around the MYSO W42-MME fragment and what are their dynamics (turbulence, virial state, infall) from core to sub-parsec scales?
+- step 1: Dendrogram structure identification
+  - method: astrodendro on H13CO+ (4-3) p-p-v cube [3.1.1 Structure Identification: "The algorithm ultimately identified 19 structures including 7 branches and 12 leaves."]
+  - software: astrodendro
+  - parameter: min_value = 3 sigma = 7 mJy/beam; min_delta = 1 sigma = 2.3 mJy/beam; min_npix = 74 pixels [3.1.1 Structure Identification: "“min_npix” was set to be 74 pixels (1 pixel= 0$''$.048)."]
+- step 6: Dust continuum cores
+  - method: Dendrogram on 865 um map, then masses and virial parameters [3.5: "the parameters “min_value” and “min_delta” were set to be 0.5 mJy beam$^{-1}$ and 0.2 mJy beam$^{-1}$, respectively."]
+  - software: astrodendro
+  - assumption: mean gas temperature 54 K [3.5: "we used a mean gas temperature of 54 K"]
+- result: Number of dendrogram structures = 19 (12 leaves, 7 branches) ± not stated dimensionless [abstract: "Our results reveal 19 dense gas structures, out of which 12 are leaves and 7 are branches"]
+- result: Number of 865 um dust cores = 14 ± not stated dimensionless [3.5: "The analysis resulted in the identification of 14 cores."]
+- limitation (authors): Mass uncertain by factor of few from dust emissivity; interferometric missing flux and gas-to-dust ratio may bias masses [3.5: "the interferometric observations are sensitive to strong and compact sources but miss more diffuse and extended emission"]
+- not stated (card): CASA version, calibration and imaging parameters (in Dewangan2022); Spectral channel width and cube velocity resolution used for dendrogram; Primary beam correction and continuum subtraction details; Fitting method for power laws and line profile Gaussians; Line-free channels and continuum bandwidth; Which dendrogram structures lacked temperatures and what T was adopted for them in mass
+
+### 2018ApJ...866..117C: ALMA Observation of NGC 5135: The Circumnuclear CO (6-5) and Dust Continuum Emission at 45 pc Resolution (2018; nearby_galaxies, agn_and_quasars, star_formation; observational_alma_primary)
+- question: What are the properties of the circumnuclear CO (6-5) and 435 um dust emission in NGC 5135, what is the AGN contribution, and what heats the CO (6-5) gas?
+- step 4: Clump parameters
+  - method: 2D Gaussian fit to clump maps; CLUMPFIND variant for blends; deconvolve beam; extract spectra in elliptical apertures [4.2 Properties of Molecular Gas Clumps: "These were derived from a 2d Gaussian fit to the clump intensity map."]
+  - software: CASA, CLUMPFIND
+  - fitting: 2D Gaussian [4.2 Properties of Molecular Gas Clumps: "These were derived from a 2d Gaussian fit to the clump intensity map."]
+- result: Clump radii range = 45-180 ± not stated pc [4.2 Properties of Molecular Gas Clumps: "the radii range from 45 to 180 pc for the clumps"]
+- result: Clump line widths = 60-88 ± not stated km/s [4.2 Properties of Molecular Gas Clumps: "The resulting $\Delta V_{\rm FWHM}$ ranges from 60 to 88 km s$^{-1}$."]
+- limitation (authors): AGN continuum non-detection may reflect lack of sensitivity [5 Summary: "the non-detection in continuum emission may simply reflect the lack of sensitivity in our observation."]
+- not stated (card): Calibrator names other than the phase calibrator (bandpass, flux) and flux scale; Whether the pipeline or manual calibration was used; Self-calibration, if any; Line-free channel selection and continuum subtraction method; Clean threshold, mask, niter, image size, cell size, deconvolver; Exact aperture definitions for clump spectra and total flux regions; CO(6-5)/CO(1-0) ratio basis and derivatio…
+
+### 2025ApJ...990...80K: Key Physical Parameters Influencing Fragmentation and Multiplicity in Dense Cores of Orion A (2025; star_formation; multi_facility_alma_minor)
+- question: Which physical parameters (density, turbulence, magnetic field) distinguish dense cores in Orion A hosting binary/multiple protostars from those hosting single protostars?
+- step 1: identify cores and associate with protostars
+  - method: astrodendro dendrogram on 850 um map, 2D Gaussian fit to leaves; protostars inside core ellipse counted [3.1 Core Identification: "We identified dense cores in the JCMT 850 $\mu$m map by applying the *astrodendro* package which builds dendrograms of observed data and fits a 2D Gaussian function to each leaf."]
+  - software: astrodendro
+  - parameter: min threshold 50 mJy/beam, min significance 30 mJy/beam, min 5 pixels [3.1 Core Identification: "we adopted the minimum threshold of 50 mJy/beam (5$\sigma$ noise level), minimum significance of 30 mJy/beam (3$\sigma$ noise level), and minimum number of pixels of 5"]
+  - validation: tested that excluding systems with separations <500 au does not change results [3.1 Core Identification: "We have tested it and confirmed that including or excluding these sources having multiples with small separations does not affect the results of our subsequent analysis and conclusions."]
+- result: dense cores with single protostars = 38 ± not stated cores [abstract: "we identified 38 dense cores hosting single protostars and 15 cores hosting binary or multiple systems"]
+- limitation (authors): Protostellar mass not included in core mass, so gravity may be underestimated [3.2 Core Mass and Density: "the mass calculated here does not include the protostellar mass, and thus the total mass within the core area may be underestimated"]
+- not stated (card): Exact JCMT pol2map parameters and the bootstrap/binning details; Exact astrodendro call and core-size cuts for excluding unresolved cores; Details of N2H+ hyperfine fitting code and BIC criterion; Debiasing method for polarized intensity; Treatment of cores without N2H+ coverage in the DCF calculation; Which of the 275 Orion A protostars lie in the JCMT map
+
+### 2024ApJ...964..166K: Physical Properties of Molecular Clouds in the Overlap Region of the Merging Antennae Galaxies (2024; nearby_galaxies, star_formation; observational_alma_primary)
+- question: What are the physical properties of GMCs in the Antennae overlap region, which can form super star clusters, and how do they compare with GMCs in other galaxy environments?
+- step 3: Dendrogram decomposition
+  - method: astrodendro on the 12CO(2-1) cube [3.2: "We used the package `astrodendro` (cite: Rosolowsky_2008) to decompose the emission into hierarchical structures"]
+  - software: astrodendro
+  - parameter: min_value=3σ, min_delta=1.5σ, min_peak=4.5σ, min_npix=2 beam areas [3.2: "`min_value`$=3\sigma$, `min_delta`$=1.5\sigma$, `min_peak`=$4.5\sigma$, and `min_npix`=2 beam areas"]
+  - validation: Trunks align with SGMCs of Wilson et al. 2000 [3.2: "These large structures generally align with the super giant molecular cloud (SGMC) classifications from (cite: 2000ApJ...542..120W)"]
+- result: Dendrogram structures = 206 (124 leaves, 72 branches, 10 trunks) ± not stated count [3.2: "This resulted in a total of 206 structures with 124 leaves, 72 branches (no correlation to the 72 identified clumps), and 10 trunks."]
+- limitation (authors): Comparison depends on assumed X_CO and R21 and on resolution differences; starburst differences are ambiguous [6.2: "any conclusions based on this category are heavily dependent on the assumption that these properties are not significantly affected by the resolution of the observations"]
+- not stated (card): Phase center/coordinates of the overlap field and exact observation dates, arrays and configurations; Spectral window setup and rest frequencies; Imaging parameters (tclean weighting, robust, cell size, image size, deconvolver) used for the cubes; Electron temperature Te used for the ionizing flux; Details of how the ellipse HWHM fit and the circularity-based radius error were done; Whether conti…
+
+### 2018ApJ...856..147O: Gravitationally Unstable Condensations Revealed by ALMA in the TUKH122 Prestellar Core in the Orion A Cloud (2018; star_formation, astrochemistry; observational_alma_primary)
+- question: Does the TUKH122 prestellar core in Orion A fragment into gravitationally bound condensations, and how do N2H+ and CH3OH trace its structure and chemistry?
+- step 3: Identify condensations and derive masses
+  - method: Dendrogram on combined continuum image; leaves = condensations; masses at Td=12 K [The 3 mm dust continuum emission seen b…: "We define “leaves” as “condensations” in this paper because the leaf is the smallest structure."]
+  - software: astrodendro (not named)
+  - parameter: Threshold 3 sigma, 1 sigma steps, min pixels 3 x theta_beam, must be >3 sigma in 12-m data [The 3 mm dust continuum emission seen b…: "We adopt a threshold of 3$\sigma$ and 1$\sigma$ interval steps."]
+  - assumption: kappa=0.0755 cm2/g at 3 mm, beta=2, Td=12 K [The 3 mm dust continuum emission seen b…: "We adopt a dust opacity of 0.0755 cm$^2$ g$^{-1}$, assuming a dust emissivity index of $\beta=2$ (cite: orm07)."]
+  - validation: Feathered with Herschel 250 um; masses change ~10% except MM5 (~60%) [The 3 mm dust continuum emission seen b…: "The MM1 to MM4 condensations increase in mass only $\sim10$% but the MM5 increases $\sim60$% in mass"]
+- result: Total mass recovered by ALMA-ACA = 8.4 (2.5 for 12-m only) ± not stated Msun [The 3 mm dust continuum emission seen b…: "The total mass of TUKH122 is derived to be 8.4 $M_\odot$ (2.5 $M_\odot$ for ALMA 12-m data)"]
+- result: Number of condensations = 6 ± not stated dimensionless [abstract: "identify 6 condensations with a mass range of $0.1-0.4$ $M_\odot$"]
+- result: Condensation mass range = 0.1-0.4 ± not stated Msun [abstract: "identify 6 condensations with a mass range of $0.1-0.4$ $M_\odot$ and a radius of $\lesssim0.01$ pc"]
+- limitation (authors): Missing flux: ALMA-ACA recovers only 8.4 of ~29 Msun, so density profile of ALMA-ACA cannot be discussed. [Analysis of the Herschel and ALMA conti…: "We cannot discuss the density profile or the power law of the ALMA-ACA observations."]
+- limitation (authors): Several condensations not well resolved; radius close to beam size. [The 3 mm dust continuum emission seen b…: "These results indicate that these three condensations (MM1,2 and 6) are not well resolved with our observations."]
+- not stated (card): Herschel map version and processing (HGBS products) and how flux was measured; Line-free channels and continuum subtraction method; CLEAN threshold, masks, iterations, mosaic/feather details; Relative weighting of 12-m and ACA data in combination; How the reference dendrogram parameters were applied (software package, min_delta); Uncertainty calculations for masses; Details of Herschel-ALMA feath…
+
+## All papers in this technique
+
+- 2014A&A...569A..11S (2014): A necklace of dense cores in the high-mass star forming region G35.20-0.74 N: ALMA observations
+- 2014AJ....147..141H (2014): ALMA View of G0.253+0.016: Can Cloud-Cloud Collision form the Cloud?
+- 2015ApJ...806L..17S (2015): ALMA Resolves the Properties of Star-forming Regions in a Dense Gas Disk at z ∼ 3
+- 2016ApJ...820..118Z (2016): ALMA Imaging of the CO (6-5) Line Emission in NGC 7130*
+- 2016ApJ...831...32N (2016): A Study of the Relation between Star Formation and Molecular Clumps on Subparsec Scales in 30 Doradus
+- 2016ApJ...833..209O (2016): Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2016PASJ...68L...7T (2016): Galactic center mini-spiral by ALMA: Possible origin of the central cluster
+- 2017A&A...600A.141K (2017): Resolving the fragmentation of high line-mass filaments with ALMA: the integral shaped filament in Orion A
+- 2017A&A...604A.117C (2017): Planck's dusty GEMS. IV. Star formation and feedback in a maximum starburst at z = 3 seen at 60-pc resolution
+- 2017A&A...608A..98S (2017): Inefficient jet-induced star formation in Centaurus A. High resolution ALMA observations of the northern filaments
+- 2017ApJ...842L..24A (2017): Very Deep inside the SN 1987A Core Ejecta: Molecular Structures Seen in 3D
+- 2017ApJ...849...90S (2017): Evolution of Molecular Clouds in the Superwind Galaxy NGC 1808 Probed by ALMA Observations
+- 2017MNRAS.464L..31H (2017): Unveiling the early-stage anatomy of a protocluster hub with ALMA
+- 2017PASJ...69...18T (2017): A statistical study of giant molecular clouds traced by <SUP>13</SUP>CO, C<SUP>18</SUP>O, CS, and CH<SUB>3</SUB>OH in the disk of NGC 1068 …
+- 2017PASJ...69...45H (2017): ALMA deep field in SSA22: Blindly detected CO emitters and [C II] emitter candidates
+- 2018A&A...616L..10F (2018): ALMA observations of RCW 120 Fragmentation at 0.01 pc scale&amp;star
+- 2018A&A...618L...5N (2018): Detection of a high-mass prestellar core candidate in W43-MM1
+- 2018ApJ...853..160C (2018): The Core Mass Function in the Massive Protocluster G286.21+0.17 Revealed by ALMA
+- 2018ApJ...855L..25K (2018): Core Emergence in a Massive Infrared Dark Cloud: A Comparison between Mid-IR Extinction and 1.3 mm Emission
+- 2018ApJ...856..118H (2018): Molecular Gas Reservoirs in Cluster Galaxies at z = 1.46
+- 2018ApJ...856..147O (2018): Gravitationally Unstable Condensations Revealed by ALMA in the TUKH122 Prestellar Core in the Orion A Cloud
+- 2018ApJ...857...19F (2018): The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution
+- 2018ApJ...860L..14K (2018): Discovery of a Molecular Collision Front in Interacting Galaxies NGC 4567/4568 with ALMA
+- 2018ApJ...862....8T (2018): Warm CO Gas Generated by Possible Turbulent Shocks in a Low-mass Star-forming Dense Core in Taurus
+- 2018ApJ...866..117C (2018): ALMA Observation of NGC 5135: The Circumnuclear CO (6-5) and Dust Continuum Emission at 45 pc Resolution
+- 2018Natur.556..469M (2018): A massive core for a cluster of galaxies at a redshift of 4.3
+- 2018PASJ...70...36I (2018): Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with AL…
+- 2018PASJ...70...73H (2018): ALMA <SUP>12</SUP>CO (J = 1-0) imaging of the nearby galaxy M 83: Variations in the efficiency of star formation in giant molecular clouds
+- 2019A&A...621A.122B (2019): High-mass star formation at sub-50 au scales
+- 2019ApJ...871...72M (2019): The JCMT Transient Survey: An Extraordinary Submillimeter Flare in the T Tauri Binary System JW 566
+- 2019ApJ...871..185L (2019): Investigating Fragmentation of Gas Structures in OB Cluster-forming Molecular Clump G33.92+0.11 with 1000 au Resolution Observations of ALMA
+- 2019ApJ...872..121U (2019): Molecular Cloud Cores in the Galactic Center 50 km s<SUP>-1</SUP> Molecular Cloud
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019MNRAS.483.1624B (2019): An ALMA archival study of the clump mass function in the Large Magellanic Cloud
+- 2019Natur.569..519K (2019): Fast and inefficient star formation due to short-lived molecular clouds and rapid feedback
+- 2020A&A...635A...2S (2020): Physical properties of the star-forming clusters in NGC 6334. A study of the continuum dust emission with ALMA
+- 2020ApJ...890...76N (2020): ALMA Observations of Two Massive and Dense MALT90 Clumps
+- 2020ApJ...894...87C (2020): Gas Kinematics of the Massive Protocluster G286.21+0.17 Revealed by ALMA
+- 2020ApJ...894L..14L (2020): ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation
+- 2020ApJ...896...35J (2020): A Detailed View of the Circumstellar Environment and Disk of the Forming O-star AFGL 4176
+- 2020ApJ...896..110L (2020): ALMA Observations of NGC 6334S. I. Forming Massive Stars and Clusters in Subsonic and Transonic Filamentary Clouds
+- 2020ApJ...898...54T (2020): Chemical Composition in the IRAS 16562-3959 High-mass Star-forming Region
+- 2020ApJS..251...14H (2020): CMZoom. II. Catalog of Compact Submillimeter Dust Continuum Sources in the Milky Way's Central Molecular Zone
+- 2020MNRAS.496.3128R (2020): Characterizing the radio continuum nature of sources in the massive star-forming region W75N (B)
+- 2020MNRAS.497.3504T (2020): Jet-ISM interactions near the microquasars GRS 1758-258 and 1E 1740.7-2942
+- 2020MNRAS.497.5454I (2020): Multiwavelength investigation of extended green object G19.88-0.53: revealing a protocluster
+- 2020MNRAS.499.2534K (2020): Resolved star formation in the metal-poor star-forming region Magellanic Bridge C
+- 2021ApJ...907L..15S (2021): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Detection of Extremely High-density Compact Structure of Prestellar Cores and M…
+- 2021ApJ...908..163M (2021): Extremely Low Molecular Gas Content in the Vicinity of a Red Nugget Galaxy at z = 1.91
+- 2023MNRAS.526.4402B (2023): Fragmentation and dynamics of dense gas structures in the proximity of massive young stellar object W42-MME
+- 2024A&A...690A.185W (2024): Dynamical accretion flows: ALMAGAL: Flows along filamentary structures in high-mass star-forming clusters
+- 2024A&A...692A..97M (2024): Sulfur-bearing molecules in a sample of early star-forming cores
+- 2024ApJ...964..166K (2024): Physical Properties of Molecular Clouds in the Overlap Region of the Merging Antennae Galaxies
+- 2024ApJ...966...51G (2024): The Size─Linewidth Relation and Signatures of Feedback from Quiescent to Active Star Forming Regions in the LMC
+- 2024ApJ...969..143I (2024): A Radial Decrease in Kinetic Temperature Measured with H<SUB>2</SUB>CO in 30 Doradus
+- 2024BSRSL..93..601H (2024): Influence of Mid-infrared Galactic Bubble on Surroundings: A Case Study on IRAS 16489-4431
+- 2024MNRAS.527.5895D (2024): Galactic 'Snake' IRDC G11.11-0.12: a site of multiple hub-filament systems and colliding filamentary clouds
+- 2024MNRAS.534..683Z (2024): Molecular clouds as hubs in spiral galaxies: gas inflow and evolutionary sequence
+- 2024PASA...41...76Z (2024): Hierarchical hub-filament structures and gas inflows on galaxy-cloud scales
+- 2025A&A...698A.296R (2025): The impact of spiral arms on the star formation life cycle
+- 2025A&A...699A.256P (2025): The ALMA-CRISTAL survey: Extended [CII] emission in an interacting galaxy system at z ∼ 5.5
+- 2025ApJ...990...80K (2025): Key Physical Parameters Influencing Fragmentation and Multiplicity in Dense Cores of Orion A
+- 2025ApJ...994..233Y (2025): ALMA-IMF. XX. Core Fragmentation in the W51 High-mass Star-forming Region
+- 2026A&A...705A.100E (2026): ALMAGAL: V. Relations between the core populations and the parent clump physical properties
+- 2026A&A...706A.186R (2026): Duration and properties of the embedded phase of star formation in 37 nearby galaxies from PHANGS-JWST
+- 2026ApJ..1003...68Y (2026): A Multiscale Molecular and Atomic Gas View on the H II Region N113 in the Large Magellanic Cloud: Evidence for High-mass Star Formation Tri…
+- 2026ApJ..1003..231W (2026): Multiscale Gas Structure and Dynamics in an Extragalactic Central Molecular Zone

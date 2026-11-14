@@ -1,0 +1,319 @@
+{
+ "bibcode": "2024ApJ...976..132H",
+ "title": "High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad84df",
+ "arxiv_id": "2410.03823",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do millimeter continuum substructures (gaps, rings) form and survive in disks exposed to intermediate external UV radiation in sigma Orionis, and how do disk sizes compare to nearby regions?",
+ "alma_project_codes": [
+  "2022.1.00728.S",
+  "2016.1.00447.S"
+ ],
+ "data": {
+  "bands": "1.3 mm continuum",
+  "arrays": "not stated",
+  "angular_resolution": "~0.02\" (~8 au); beams 22-24 x 19-21 mas",
+  "sensitivity": "image rms 9-12 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Host star spectral type, mass, luminosity and external FUV field values",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Spectral type, stellar mass, stellar luminosity, and external FUV radiation field values come from (cite: 2023AA...679A..82M)."
+     }
+    ]
+   },
+   "citation": "(cite: 2023AA...679A..82M)"
+  },
+  {
+   "what": {
+    "value": "Cluster median Gaia distance 402 pc",
+    "evidence": [
+     {
+      "loc": "Sample overview",
+      "quote": "the median *Gaia* distance to members of $\\sigma$ Orionis is 402 pc"
+     }
+    ]
+   },
+   "citation": "(cite: 2024AA...686A.161Z)"
+  },
+  {
+   "what": {
+    "value": "Planet-mass fitting relations and hydrodynamical grid",
+    "evidence": [
+     {
+      "loc": "Planet mass estimates",
+      "quote": "We use the fitting relations introduced in (cite: 2018ApJ...869L..47Z), which are implemented in code presented in (cite: 2022MNRAS.510.4473Z)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...869L..47Z); (cite: 2022MNRAS.510.4473Z)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine and image visibilities",
+   "method": "Flag CO channels in archival short-baseline data, self-calibrate, align EBs, combine with long-baseline data, image with multi-scale CLEAN and primary-beam correct",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit",
+    "phaseshift",
+    "fixplanets"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit parametric radial intensity profiles in uv plane",
+   "method": "Sum of central Gaussian plus N Gaussian rings, thin disk (flared surface for SO 897), model visibilities compared with weight-rescaled data",
+   "software": [
+    "mpol",
+    "eddy",
+    "visread",
+    "pyro",
+    "pytorch"
+   ],
+   "key_parameters": [
+    "Adam optimizer, learning rate 0.02, 15,000 iterations; 2000 posterior samples"
+   ],
+   "assumptions": [
+    "Geometrically thin disk (flared surface for SO 897); posterior approximated as multivariate normal"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify substructures and measure location, width, depth",
+   "method": "Rings = local maxima, gaps = local minima, shoulders = three consecutive inflection points, in model profiles from 2000 posterior samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate optical depths and dust temperature",
+   "method": "tau = -ln(1 - I/B(Td)) with irradiated-disk temperature Td",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Scattering neglected; flaring angle 0.02; stellar heating only"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure fluxes and effective radii",
+   "method": "Integrate model intensity profile with cos i / d^2; R68 and R90 enclosing 68% and 90% flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Fit size-luminosity relation",
+   "method": "linmix regression of log R68 vs log Lmm (flux scaled to 140 pc), with flux, 10% calibration, and distance uncertainties sampled",
+   "software": [
+    "linmix",
+    "Interactive Distance Estimation"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gaussian scatter in log R68"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Assess dust trapping via ring width to scale height",
+   "method": "Compute w_d/h_p for high-contrast rings (depth <0.5) with w_d = sigma_i",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "mu = 2.37; h_p uncertainty ~25%"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Estimate planet masses from gaps",
+   "method": "Zhang et al. 2018 scaling relations with gap width, Sigma_dust, St_max, h/r",
+   "software": [],
+   "key_parameters": [
+    "kappa_abs = 0.43 cm^2/g, amax=0.1 mm, n(a)∝a^-3.5, alpha = 1e-3"
+   ],
+   "assumptions": [
+    "One planet per gap; DSHARP dust composition"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SO 1274 disk flux",
+   "value": "15.5",
+   "uncertainty": "±0.2",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SO 1274 | $15.5\\pm0.2$ | $113.2\\substack{+0.7 \\\\ -0.8}$ | $126.7\\substack{+0.7 \\\\ -0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 1274 R90",
+   "value": "126.7",
+   "uncertainty": "+0.7/-0.6",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SO 1274 | $15.5\\pm0.2$ | $113.2\\substack{+0.7 \\\\ -0.8}$ | $126.7\\substack{+0.7 \\\\ -0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 662 R68",
+   "value": "14.2",
+   "uncertainty": "±0.2",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "SO 662 | $2.09\\pm0.03$ | $14.2\\pm0.2$ | $17.7\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-luminosity intercept alpha",
+   "value": "2.6",
+   "uncertainty": "±0.3",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$\\alpha$ | $2.6\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-luminosity slope beta",
+   "value": "0.8",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$\\beta$ | $0.8\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-luminosity correlation coefficient",
+   "value": "0.91",
+   "uncertainty": "+0.06/-0.15",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "$0.91\\substack{+0.06\\\\-0.15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 1274 gap D27 location",
+   "value": "26.9",
+   "uncertainty": "±0.2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "D27 | $26.9\\pm0.2$ | $9.1\\pm0.2$ | $0.21\\pm0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 1274 inner three gap period ratio",
+   "value": "3.08:1.95:1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Locations, widths, and depths",
+     "quote": "close to a 3:2:1 period ratio (more precisely, 3.08:1.95:1)"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 1274 ring B119 w_d/h_p",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "B119   |   10.3          |  2.3  | 10.4  |    0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 844 D10 planet mass",
+   "value": "7.9",
+   "uncertainty": "+0.13/-0.16 (log Mp)",
+   "units": "M_Jup",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "SO 844 | D10 | 0.74 | 0.53 | 0.06 | 736 | 0.3 | 7.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Weight rescaling factor f",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Parametric intensity profile modeling",
+     "quote": "The value of $f$ was typically $\\sim2$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free/flagged channel ranges in archival data",
+  "Self-calibration solution intervals and which EBs/ cleaning parameters (niter, thresholds, masks, scales, cell, image size) were used",
+  "Prior means and standard deviations for the parametric model",
+  "Initial guesses for N rings and hyperparameters of the pyro guide beyond learning rate",
+  "Zenodo products must be downloaded to reproduce; CLEAN model used for weight rescaling not given",
+  "Distance values adopted for each target in the modeling (Table 1 values assumed)"
+ ],
+ "missing_for_reproduction": [
+  "Priors, CLEAN masks/thresholds and cell/image sizes",
+  "Self-calibration details per disk",
+  "Analysis code not stated as released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and Zenodo products with clear model equations and tables, but priors, imaging parameters and code are not specified.",
+ "rediscovery_reason": "Data are public (and reduced visibilities are released), model form is explicit, results are numeric tables.",
+ "source_card": "cards/2024ApJ...976..132H/sonnet/card.md"
+}

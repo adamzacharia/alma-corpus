@@ -1,0 +1,315 @@
+{
+ "bibcode": "2017ApJ...835..213P",
+ "title": "The Dense Molecular Gas and Nuclear Activity in the ULIRG IRAS 13120-5453",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/835/2/213",
+ "arxiv_id": "1612.04401",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry",
+  "agn_and_quasars"
+ ],
+ "question": "What are the excitation, abundance and kinematics of dense gas tracers (HCN, HCO+, CS) in the ULIRG IRAS 13120-5453, and what do they imply for nuclear starburst/AGN activity and outflows?",
+ "alma_project_codes": [
+  "2012.1.00817.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~340 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.50\" x 0.28\" (~325x180 pc), PA -75 deg",
+  "sensitivity": "RMS 1.2 (units missing in text) at 20 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "APEX single-dish HCN and HCO+ fluxes",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "IRAS 13120–5453 was observed by (cite: Zhang2014) with the APEX 12m telescope."
+     }
+    ]
+   },
+   "citation": "Zhang2014"
+  },
+  {
+   "what": {
+    "value": "Spitzer mid-IR core size <=2.68 kpc and 80% of emission",
+    "evidence": [
+     {
+      "loc": "3.2.1",
+      "quote": "found IRAS 13120–5453 to have an unresolved core with a size of $\\leq2.68$ kpc (FWHM) at $13.2~\\mu m$"
+     }
+    ]
+   },
+   "citation": "Diaz-Santos2010"
+  },
+  {
+   "what": {
+    "value": "14 micron flux F14=0.5 Jy",
+    "evidence": [
+     {
+      "loc": "3.2.1",
+      "quote": "show a $14~\\mu m$ flux of $F_{14}=0.5$ Jy"
+     }
+    ]
+   },
+   "citation": "Inami2013"
+  },
+  {
+   "what": {
+    "value": "SFR ~170 per yr from NuSTAR",
+    "evidence": [
+     {
+      "loc": "1.3 Target",
+      "quote": "a star formation rate of $\\sim170$ yr$^{-1}$"
+     }
+    ]
+   },
+   "citation": "Teng2015"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure line and continuum fluxes",
+   "method": "integrated line fluxes and 333 GHz flux from continuum-subtracted cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "HCN/HCO+ ratio maps",
+   "method": "divide total intensity maps, masking where HCO+ not detected at >=3 sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Exploratory LVG modeling of HCN/HCO+ abundance",
+   "method": "grids of Radex and DESPOTIC models in density, column and relative abundance",
+   "software": [
+    "Radex",
+    "DESPOTIC"
+   ],
+   "key_parameters": [
+    "log n=2-7, log N_H2=21-25, abundance ratio 1e-3 to 1e3"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Outflow identification and rotation modeling",
+   "method": "kinematic modeling of cubes with GalPak3D; PV diagrams; wings outside virial range flagged as outflow",
+   "software": [
+    "GalPak3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "non-circular motion 50% of circular velocity"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model Herschel H2O lines for dust temperature",
+   "method": "compare observed H2O line ratios to grid of radiative transfer models",
+   "software": [],
+   "key_parameters": [
+    "Tgas=150 K, nH2=3e4 cm-3 fixed"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100 by mass"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical mass",
+   "method": "M~V_circ^2 R/G with V_circ=FWHM/(2 sqrt(ln2)) in 1 kpc diameter",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "intrinsically circular disk gives i~55 deg"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Continuum size, dust and ISM mass, Sigma_IR",
+   "method": "2D Gaussian fit to 333 GHz continuum; dust mass with kappa; Scoville2014 relation",
+   "software": [],
+   "key_parameters": [
+    "Tdust=40 K, kappa(333 GHz)=0.28 cm2/g"
+   ],
+   "assumptions": [
+    "gas-to-dust 100; 80% of L_IR in starburst following sub-mm distribution"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Modified blackbody SED fits to Herschel photometry",
+   "method": "single- and two-component modified blackbody, beta=1.8, errors by MCMC",
+   "software": [
+    "emcee",
+    "dust_emissivity"
+   ],
+   "key_parameters": [
+    "beta=1.8 fixed"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN integrated flux",
+   "value": "86.2",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$86.2 \\pm 0.4$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "333 GHz continuum flux",
+   "value": "89.8",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6",
+     "quote": "total flux of $89.8\\pm0.4$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/HCO+ ratio, integrated",
+   "value": "1.77",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We measure a spatial- and velocity-integrated / ratio of $1.77\\pm0.01$."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/HCO+ peak ratio over nucleus",
+   "value": "~2.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "We find the HCN/HCO$^+$ ratio peaks at $\\sim2.8$ over the nucleus"
+    }
+   ]
+  },
+  {
+   "quantity": "v2=1f 3 sigma upper limit",
+   "value": "0.81",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "with a $3\\sigma$ upper limit of $0.81$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "best-fit H2O model Tdust",
+   "value": "40",
+   "uncertainty": "range 40-60 K allowed",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4",
+     "quote": "The best fit, which is also included in Figure [7](#fig:herschel), is achieved with $\\tau_{100}=0.5$ $T_{\\mathrm{dust}}=40$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_IR,50",
+   "value": "4.7e12",
+   "uncertainty": "not stated",
+   "units": "Lsun kpc^-2 (as in table)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6",
+     "quote": "We find $\\Sigma_{IR,50}=4.7\\times10^{12}$ kpc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass from 333 GHz",
+   "value": "2.9e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6",
+     "quote": "this implies a dust mass of $2.9\\times10^{8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "single-component blackbody temperature",
+   "value": "33",
+   "uncertainty": "0.5",
+   "units": "K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.1",
+     "quote": "derive a best-fit temperature, $T_{BB}=33\\pm0.5$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "upper limit dense outflow mass rate",
+   "value": "<770",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "7.2",
+     "quote": "$\\dot{M}_{dense}<770$ yr$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value",
+  "line-free channels used for continuum subtraction",
+  "CASA version",
+  "clean threshold, cell and image size",
+  "how the 3D kinematic fit (GalPak3D) was parameterized",
+  "Herschel photometry values for the SED fits",
+  "velocity ranges defining outflow channels",
+  "region definitions for 1 kpc aperture spectra"
+ ],
+ "missing_for_reproduction": [
+  "Briggs robust, line-free channels, CASA version",
+  "Herschel photometry table (in prep paper)",
+  "outflow channel definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and flux/line measurements reproducible, but imaging parameters and modeling details are missing.",
+ "rediscovery_reason": "Public data, numeric line fluxes, ratios and continuum size can be redone with standard imaging.",
+ "source_card": "cards/2017ApJ...835..213P/sonnet/card.md"
+}

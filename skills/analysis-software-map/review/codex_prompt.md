@@ -1,0 +1,2116 @@
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+6. **Contamination and team lessons.** If a WRITER CONTEXT section is present: flag any mention of, or hint at,
+   the held-out evaluation targets it names (objects, papers, or their numbers). Team lessons may appear only as
+   labelled team experience in general form; flag any that is presented as literature practice or carries
+   numbers not in the context.
+
+Some skills are *workflow* skills (paper reproduction, claim verification, archival reuse, software map). Their
+packs aggregate card fields such as inherited conventions, missing-for-reproduction items, validation checks and
+software used. Lines marked "(card)" in the pack are the card author's inference; the skill should say so when it
+leans on one. Review them with the same rules.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (analysis-software-map) ===
+---
+name: alma-analysis-software-map
+description: "Router from an ALMA analysis job (imaging, self-calibration, array combination, continuum subtraction, moment maps, disk or galaxy cube kinematics, uv-plane fitting, radial profiles, source and line finding, dendrograms and cores, GMC decomposition, line identification, LTE and non-LTE modelling, radiative transfer, chemistry, SED fitting, lensing, stacking, MCMC and nested sampling, censored regression, astrometric alignment) to the established package ALMA papers use for it, with paper counts, the setting that matters, when to prefer an alternative, and the technique skill to read next. Use before writing any fitter, source finder, sampler or radiative-transfer code, when choosing a tool for a reproduction, or when checking which software a paper's result depends on. Built from 3422 ALMA papers (2012-2026)."
+---
+
+# Analysis software map (job to established package)
+
+ALMA papers almost never write their own fitter, finder or radiative-transfer code: they use a small set of
+community packages, and CASA alone is named in 2638 of the 3422 papers here (pack aggregate "Packages by number
+of papers"). Reimplementing a standard fitter is the wrong default. In CosmicCoder agent runs a naive home-made
+cube kinematics fitter gave a worse measurement than the paper's established package. The second mistake that
+matters: picking a package by name without the setting and input files that decide its answer.
+
+> **Count convention.** "P" = distinct papers naming the package in their software inventory (pack aggregate
+> "Packages by number of papers", all 3422 members). "S" = mentions in one technique's matched analysis steps
+> (pack aggregate "Software named in each technique's matched steps"; a paper can add more than one). Spellings
+> are counted separately (3dbarolo 65 P and 3d-barolo 18 P); I add them only where I say so. Both undercount
+> tools used without being named. The full per-package table is `references/packages.md`.
+
+## Agent checklist
+
+1. Before writing a fitter, finder, sampler or model code, look the job up in the router below and use the
+   established package. Write your own code only for glue (unit conversions, plotting, a closed-form formula).
+2. Reproducing a paper: use the software and version the paper names, even if it is old. If it names none,
+   use the most-named package for that job in the router, and write down that you assumed it.
+3. Imaging default: CASA `tclean` (380 P; 537 S in imaging-choices) with Briggs robust 0.5, the median robust
+   in every major field (stats README, 3498 cards). Masking: `auto-multithresh` (12 P) is the common automatic
+   choice. Record its thresholds even when you use the defaults (2024AJ....168..151J, 2024ApJ...966...32E).
+4. Sampler default: emcee (410 P, the most-named fitting package). Switch to nested sampling (dynesty 34 P;
+   MultiNest 22 P + PyMultiNest 9 P) when you need a Bayesian evidence for model selection (2013MNRAS.430.2454L,
+   2019A&A...628A.100D).
+5. Main fork: fit the model in the domain where the data live. For visibilities use uvmultifit (81 P), galario
+   (76 P) or vis_sample (30 P), not an image fit. For rotating gas in a cube use 3DBarolo (65 + 18 P) or KinMS
+   (31 P), not a fit to the moment-1 map. For disk velocity maps use eddy (30 P) on bettermoments (58 P) maps.
+6. Validate before you report. Run the package on synthetic data with known input. Papers use `simobserve`
+   (23 P), for example Gaussian-source recovery in 2016ApJ...833..238H and model measurement sets in
+   2020ApJ...904...77G. Then check residuals in the fitting domain and cross-check the headline number with a
+   second package (2018ApJ...859...32P, 2020ApJ...898...33C, 2022MNRAS.516.4066L).
+7. Write down the package, version, key settings, input data files (molecular data, opacities, templates) and
+   the script path. Cards show pipeline versions unstated in 96% of papers and the CASA version in 61% (stats
+   README). Recording them already beats most of the literature.
+8. Check availability first, and mark every install note "check before use". CASA and the heavy suites
+   (GILDAS, MIRIAD, AIPS, GALFIT, MAGPHYS, CIGALE) may not install in your environment (`tools_gap.md`). In
+   CosmicCoder agent runs CASA/`tclean` could not be installed on one HPC system. If the right tool is
+   missing, say so, use the archive products as delivered or the listed Python alternative, and flag the
+   difference.
+9. Write large outputs (tables, chains, catalogues) to files and summarise them. Do not print them into the
+   context.
+
+## When to use
+
+- You are about to write code for a standard job: imaging, continuum subtraction, moment maps, rotation-curve
+  or Keplerian fits, uv-plane fits, radial profiles, source or line finding, clump decomposition, line
+  identification, excitation or radiative-transfer modelling, SED fitting, lens modelling, stacking, sampling.
+- You are reproducing a paper and need to know which tool its numbers came from and what it implies. One
+  example: a dendrogram catalogue depends on `min_value` and `min_delta` (3 sigma, 1 sigma and min_npix 60 in
+  2017MNRAS.464L..31H).
+- You need a second, independent package to check a result (see Verification checks).
+- A reviewer asks "why this tool?" and you need the corpus practice behind the choice.
+
+## When not to use
+
+| Situation | Do instead |
+|---|---|
+| You need the method itself (which estimator, what thresholds, which priors) | Read the technique skill named in the router's last column; this skill only picks the tool |
+| You are deciding whether to recalibrate, which archive products to fetch, or how to merge projects | `alma-archival-data-reuse` |
+| You are reproducing a specific paper | `alma-paper-reproduction` first; use this map only to fill gaps the paper leaves |
+| You are deciding whether a result is real or how strongly to word it | `alma-claim-verification` |
+| The job is a closed-form formula (Toomre Q, a virial parameter, a unit conversion) | Write a small named function and keep every constant as an input; no package needed (general practice) |
+| The data are from another facility (Chandra, XMM, JWST, MUSE, Herschel, HST) | Use that facility's own pipeline (CIAO 60 P, XSPEC 62 P, JWST pipeline 34 + 28 + 9 P across spellings, MUSE pipeline 15 + 10 P, HIPE 54 P); see `references/packages.md` |
+
+## Steps
+
+1. **Name the job and the data domain.** Goal: one router row. Decide whether the measurement lives in
+   visibilities, a cube, an image, a spectrum or a catalogue, because the router splits on that. Closes when you
+   can state "job X on data Y gives quantity Z with uncertainty".
+2. **Find what the target or nearest papers used.** Read the methods, software section and acknowledgements.
+   Many packages appear only as acknowledgements with no role (numpy "listed in software section",
+   2017ApJ...848L..21A; astropy "acknowledged research tool", 2014ApJ...788L..34P), so tie each tool to a step.
+   Papers in a series inherit outputs from earlier software runs: photometric redshifts "by Simpson et al. 2013"
+   (2014MNRAS.442..577T), core extraction done "in Paper III" (2023A&A...674A..76P), a line search from an earlier
+   paper (2019ApJ...882..140B). Trace those to the paper that ran the tool. Closes with a list of
+   job, tool, version and source.
+3. **Pick the package** from the router, applying its "prefer the alternative when" column. Closes with one
+   primary tool and one cross-check tool.
+4. **Confirm availability, version and interface.** Check before use: task parameters change between CASA
+   releases, so run the task's own help rather than trusting remembered signatures (general practice). Versions
+   in use vary widely (CASA 4.7.2 in 68 P, 5.4.0 in 54, 5.1.1 in 53, 4.7.0 in 52). Note when a paper ran a
+   modified build: an in-house modified `simobserve` (2016A&A...593A..61M), "adapted" bettermoments, "modified"
+   CuTEx (versions in the pack aggregate). A stock install will not reproduce those exactly. Closes when a
+   trivial call runs.
+5. **Smoke-test on known input.** Inject a model with known parameters (simobserve 23 P; injection-null-tests S:
+   casa 24, sextractor 9, imfit 6, simobserve 5) and recover it within its errors. Closes when recovery is
+   within the quoted uncertainty, or you know the bias.
+6. **Run on the data, then inspect residuals** in the domain you fitted: residual visibilities, residual cube,
+   residual image. Closes when residuals look like noise or the leftover structure is explained.
+7. **Cross-check the headline number** with an independent package or domain (examples under Verification
+   checks). Closes when the two agree within errors or the difference is explained.
+8. **Record provenance**: package, version, settings, input files, the command or script path, run date.
+   Closes when someone else could rerun it.
+
+## Software router (job to package)
+
+Read across: the job, the packages papers use (counts), what they used them for and the setting that matters,
+when to prefer the alternative, and the technique skill with the detailed settings.
+
+| Job | Packages (counts) | Used for / setting that matters | Prefer the alternative when | Go deeper |
+|---|---|---|---|---|
+| Calibration, restoring delivered data | CASA 2638 P; ALMA pipeline 83 P (+ calibration pipeline 12, science pipeline 9); scriptForPI | Pipeline calibration (2015A&A...582L...4M); scriptForPI then imaging (2019ApJS..244...40L, 2025A&A...695A.163B) | Use delivered products when they serve the science; recalibrate only when the paper did | alma-archival-data-reuse |
+| Self-calibration | CASA `gaincal` 17 P, `applycal` 9 P (S: casa 597, tclean 128, gaincal 28, applycal 17) | Phase-only solutions (2019ApJ...879L..25I); continuum solutions applied to the full spectral data (2020ApJ...905...25G); combined-polarization "T" solutions (2016A&A...593A..61M) | Solution intervals and amplitude rounds: see the technique skill | alma-self-calibration |
+| Imaging and deconvolution | `tclean` 380 P (S 537 + casa tclean 60); `auto-multithresh` 12 P | Multiscale deconvolution for extended emission (2017ApJ...842L..24A); mtmfs for wide-band continuum (2026MNRAS.552g1573L); Hogbom for a continuum image (2024MNRAS.533.1143M); robust 0.5 median (stats README) | MEM: uvmem 10 P (2015ApJ...811...92C), which also tested JvM-restoration effects (2022MNRAS.513.5790C); VLBI/EHT RML: eht-imaging 13 P; GILDAS, MIRIAD, AIPS, difmap for their own arrays | alma-imaging-choices |
+| Array combination (12m, 7m, TP) | `concat` 19 P, `statwt` 14 P, `feather` 14 P (S 22 + casa feather 6), PHANGS-ALMA pipeline 15 P, tp2vis (S 3) | Recompute weights with statwt before combining (2017ApJ...835..174S, 2021A&A...649A.122P); uv-plane `concat` of 12m and 7m (2021ApJ...910..148M); `feather` with total power (2016ApJ...832..142Z, 2023ApJ...958...53S) | Full staging and short-spacing pipeline for nearby-galaxy CO: PHANGS-ALMA (2021ApJS..257...43L) | alma-array-combination |
+| Continuum subtraction | `uvcontsub` 94 P (S 132), `imcontsub` 11 P, `mstransform` 11 P, statcont 37 P (S 33), findContinuum | First-order fit in the uv plane (2020ApJ...904..131N); `fitorder=1` in mstransform (2017ApJ...850L...5T, 2020PASJ...72...36T); line-free channel finding (2026MNRAS.552g1573L) | Line-rich hot cores and line forests: statcont (2017A&A...604A...6S, 2018A&A...609A.101S); image plane on small subcubes (2021ApJ...909..181L) | alma-continuum-subtraction |
+| Beam matching, PB correction, regridding | `imsmooth` 15 P, `impbcor` 12 P, reproject 16 P | Common beam before ratios or modelling (2019PASJ...71..124S, 2021A&A...648A..33M, 2020ApJ...905..122H); resample ALMA onto another grid (2018ApJ...865...13T) | - | alma-moment-maps |
+| Cube handling and PV cuts in Python | spectral-cube 41 P, astropy 559 P, pvextractor 16 P (S 13 in envelope PV), CARTA 55 P (viewer) | Cube analysis (2018ApJ...860..119G); PV diagrams (2016ApJ...828..100F) | PV rotation-curve fitting: SLAM (S 4), impv (S 5) | alma-envelope-kinematics-pv |
+| Moment maps and velocity fields | `immoments` 34 P (S 38 + 30), bettermoments 58 P (S 66), keplerian_mask 21 P, SoFiA 18 P | bettermoments quadratic or parabola-fit line centres (2018ApJ...868..113T, 2019Natur.574..378T); Keplerian masks for lines at < 2 km/s resolution (2023A&A...678A.146B); SoFiA masks for moments (2019PASJ...71...85M) | Several components per sightline: per-pixel Gaussian fits with pyspeckit 44 P (2018ApJ...854...83T) | alma-moment-maps |
+| Protoplanetary disk kinematics | eddy 30 P (S 39), GoFish 55 P (S 32), DISCMINER 15 P, disksurf 12 P, pdspy 11 P, VISIBLE 15 P | eddy Keplerian fit to the v0 map (2019ApJ...884L..56T); GoFish Keplerian-shifted stacking and radial profiles (2020ApJ...899..157T, 2021AJ....162...99F); emission surfaces with disksurf (2024ApJ...964..190L) | Channel-map forward model with residuals: DISCMINER (2023A&A...674A.113I); weak-line detection: VISIBLE matched filter (2018ApJ...859..131L) | alma-keplerian-disk-kinematics |
+| Galaxy cube kinematics (rotation, dispersion, mass) | 3DBarolo 65 + 18 P (S 90 + 22 + 5), KinMS 31 P (S 56 + kinms_mcmc 13 + kinms_fitter 9), GalPak3D 19 P, kinemetry 23 P | 3DBarolo tilted rings on the cube (2018A&A...612A..29B, 2016ApJ...823...68S); KinMS forward models with beam smearing (2015ApJ...806...39O, 2017MNRAS.468.4675D) | Few beams across a source, few parameters: KinMS or GalPak3D with a sampler (recommendation in alma-galaxy-3d-kinematics; 2017ApJ...835..213P; source-plane cube, 2018ApJ...866L..12G); 2D harmonic decomposition: kinemetry (2014A&A...567A.125G) | alma-galaxy-3d-kinematics |
+| SMBH mass from gas | KinMS (S 20), SkySampler 10 P (S 10), MgeFit 9 P, JAMPy (S 6) | CLEAN components as the gas distribution (2019MNRAS.485.4359S); MGE of the stellar light for the potential (2022MNRAS.509.2920N) | Stellar kinematics from optical IFU: pPXF 45 P (2017A&A...600A..80K) | alma-smbh-gas-dynamics |
+| Simple uv-plane fits (point, Gaussian, disk) | CASA `uvmodelfit` 30 P (S 56 + 38), GILDAS `uv_fit`, uvmultifit 81 P (S 86) | uvmodelfit for one component (uniform disk, 2016ApJ...829....6W); uvmultifit for several components or per-channel spectra (2013A&A...558A.123M, 2014A&A...566A.112M) | Model images or many parameters: next row | alma-uv-plane-fitting |
+| uv-plane forward models of images | galario 76 P (S 86), vis_sample 30 P (S 37), plus emcee | FT a model image and sample it at the observed (u,v) (2018A&A...619A.161C, 2016ApJ...828..113M, 2017A&A...605A..21C) | Subtract fitted models from the visibilities: `uvsub` 10 P (2021A&A...654A..90L) | alma-uv-plane-fitting |
+| Disk radial profiles, rings, gaps | frank 16 P + frankenstein 9 P, galario (S 47), GoFish (S 45) | Non-parametric 1D visibility fits beyond the beam (2024A&A...682A..55M, 2020MNRAS.498.1319M) | Parametric ring models in emcee; papers compare both (2021A&A...649A.122P) | alma-disk-substructure-profiles |
+| Image-plane sizes, fluxes, photometry | CASA `imfit` 96 P, GALFIT 121 P, photutils 76 P | Gaussian flux, position and size (2017ApJ...844..123F); prior-based iterative fits in crowded maps (2019ApJS..244...40L); elliptical-annulus profiles (2019AJ....158...47M) | Clumpy sources: aperture photometry, not a single Gaussian | alma-source-extraction-counts |
+| Blind continuum source finding | SExtractor 113 + 12 P (S 101), PyBDSF 12 P (S 14), BLOBCAT 9 P, Aegean 9 P | Run on the S/N map; blind extraction plus Gaussian fits (2019ApJS..244...40L); source extraction (2015ApJ...815L...8U) | Any finder: run it unchanged on the inverted map and on injected sources | alma-source-extraction-counts |
+| Blind line search in cubes | LineSeeker 11 P, findclumps (interferopy 10 P; S 9 to 12), SoFiA 18 P | Fidelity and completeness with LineSeeker (2019ApJ...882..139G); findclumps (2023Natur.617..261K); SoFiA-2 with injection recovery and inverted-cube fidelity (2025A&A...695A.163B) | Spectral-line source finding with masks: SoFiA (2018ApJ...853..195W) | alma-redshift-line-search |
+| Cores, clumps, filaments | astrodendro 84 P (S 99), getsf 23 P (S 27), getsources 9 P, clumpfind 44 P (S 46), CuTEx 9 P, FilFinder 15 P | Dendrogram leaves as cores (2016ApJ...831...32N, 2017ApJ...842...92G); `min_value`/`min_delta` in rms units (2017MNRAS.464L..31H) | Multi-scale background and filament separation: getsf (2022A&A...662A...8M, completeness images in 2023A&A...674A..75N); compact-source photometry: CuTEx (2025A&A...696A.151C) | alma-core-extraction-cmf |
+| GMC decomposition and virial analysis | CPROPS 37 P (S 41), cpropstoo (S 8), pycprops (S 5), astrodendro (S 12), SCIMES (S 3) | Cloud properties on the cube (2015ApJ...806...35J, 2014ApJ...793...37A) | Hierarchical structure, not discrete clouds: astrodendro | alma-gmc-decomposition-virial |
+| Line identification | CDMS 57 P (S 65), Splatalogue 43 P (S 31), JPL (S 15 + 13), CASSIS 87 P, MADEX 18 P | Line ID and LTE synthetic spectra in CASSIS (2016A&A...590L...6C); check lines against CDMS and JPL (2017A&A...597A..53L); Splatalogue queries through astroquery (2018ApJ...860..119G) | New-molecule spectroscopy: SPFIT/SPCAT 9/11 P (2023MNRAS.523.2887M) | alma-line-identification |
+| LTE synthetic spectra, column densities | CASSIS (S 136), XCLASS 38 P + MAGIX 15 P, Weeds 34 P, MADCUBA 21 P (with SLIM) | LTE spectral modelling with automated MAGIX fits (2014ApJ...787..112C; 2016A&A...587A..91B Weeds; 2018ApJ...853L..19S MADCUBA) | Sub-thermal excitation: next row | alma-rotational-diagram-lte |
+| Non-LTE excitation | RADEX 212 P (S 231), SpectralRadex 11 P (S 17), pyradex (S 8), LAMDA 15 + 10 P, RATRAN 18 P, LIME 67 P | RADEX grids; Python interface with emcee or UltraNest (2022A&A...667A.131B, 2024A&A...686A..31B); LAMDA collision files (2014ApJ...785..149S) | Spatial structure or optically thick lines: RATRAN (2012ApJ...749..162O) or LIME (2013ApJ...774...16R) | alma-non-lte-excitation |
+| Line fitting (Gaussian, hyperfine) | lmfit 53 P, MPFIT 40 P, pyspeckit 44 P, SciPy curve_fit 11 + 10 + 9 P, GILDAS CLASS | Gaussian spectral fits (2016ApJ...832..148V); lmfit as pyspeckit's engine (2018ApJ...861...14C); N2H+ hyperfine in GILDAS (2013A&A...555A.112P) | - | alma-dense-gas-tracers |
+| Dust and line radiative transfer | RADMC-3D 168 + 13 P (S 220 + 16), MCFOST 52 P (S 78), LIME (S 83), DALI 44 P (S 80), Hyperion 10, TORUS 11, MCMax 10, DUSTY 13 P | Model images then sampled in uv (2016ApJ...832..110C, vis_sample); disk thermo-chemistry with DALI (2014A&A...562A..26B); continuum plus CO with MCFOST (2013A&A...557A.133D) | Spherical dust shells of evolved stars: DUSTY (2016A&A...596A..50G) | alma-radiative-transfer-modelling |
+| Dust opacities | optool 18 P (S 14), dsharp_opac 9 P | DSHARP or DIANA opacities fed to RADMC-3D (2024A&A...681A..82G, 2023A&A...675A.131T); kappa and beta (2019ApJ...881..159M) | - | alma-dust-continuum-mass |
+| Astrochemical models | NAUTILUS 17 P, MAGICKAL 14 P, UCLCHEM 11 P, Meudon PDR 11 P, PDR Toolbox 13 P, Cloudy 66 P | Gas-grain models (2016ApJ...825...79S, 2014Sci...345.1584B); UCLCHEM coupled to RADEX (2020MNRAS.496.5308S); PDR grids for G0 and density (2016A&A...595A..72M) | Ionised gas and [CII]/[NII]: Cloudy (2012A&A...542L..34N) | alma-chemical-modelling |
+| SED fitting | CIGALE 101 P, MAGPHYS 98 P, Bagpipes 34 P, Prospector 30 P; photo-z EAZY 60, LePhare 31, FAST 25 + 9, hyperz 19 | UV-to-mm/radio SED fits at fixed redshift (2019ApJS..244...40L, MAGPHYS); modified blackbody in emcee (2014A&A...568A..92M) or curve_fit (2018A&A...615L..14M) | Non-parametric star-formation histories: Prospector (2019ApJ...884..154W cross-check) | alma-sed-fitting |
+| Strong lensing | lenstool 25 P (S 28), PyAutoLens 13 P (S 20), glafic 16 P (S 18), visilens 15 P (S 16), uvmcmcfit (S 7) | Galaxy-scale lenses fitted on visibilities (2016ApJ...826..112S, 2022MNRAS.512.2426M, 2015ApJ...812...43B) | Cluster lenses and magnification maps: lenstool or glafic (2016A&A...593L...2N, 2016ApJS..222....1F) | alma-lens-modelling |
+| Stacking | stacker 11 P, linestacker (S 10), GoFish (S 25 in stacking) | uv-plane stacking of faint sources (2015ApJ...810..133I); shifting phase centres (2019ApJ...887..107F) | Disks: Keplerian-shifted stacking with GoFish | alma-stacking |
+| MCMC and nested sampling | emcee 410 P, dynesty 34 P, MultiNest 22 + 9 P, UltraNest (S 4), corner 19 + 9 P | emcee for posteriors; evidence for model choice with MultiNest (2013MNRAS.430.2454L) or dynesty (2019A&A...628A.100D); UltraNest orbit fit (2025A&A...699A..22M) | Plain least squares when the posterior is near Gaussian and you need speed: lmfit, MPFIT | technique skill of the model |
+| Regression with upper limits | linmix 50 + 9 P, lifelines 26 P, ASURV 11 P | Bayesian regression with censored points (2017ApJ...844...99L); Kaplan-Meier (2017ApJ...851...83C, 2014ApJ...784...62A) | - | alma-star-formation-laws |
+| Astrometric and position alignment | `fixvis` 10 P, `fixplanets` 8 P, scikit-image 21 P, reproject, astroquery 14 P | Phase-shift visibilities with Gaia positions and proper motions (2021A&A...648A..33M); align multi-epoch data (2018ApJ...869L..41A); cross-correlation image registration (2018ApJ...869L..14M) | Common phase centre in metadata across execution blocks: fixplanets (2023A&A...676A...4C) | alma-variability-time-domain |
+| Hydro and N-body comparisons | PHANTOM 31 P (S 32), FARGO3D 12 P, PLUTO 10, RAMSES 10, REBOUND 13, DustPy 9 | SPH with PHANTOM (2018ApJ...860L..13P) or grid hydro with FARGO3D (2018ApJ...860L..12T), then radiative transfer (S in hydro-simulation-comparison: mcfost 17, radmc-3d 13, fargo2radmc3d 3) | - | alma-hydro-simulation-comparison |
+| Polarization, planets, time domain | CASA (S 157 polarization), POLARIS (S 8); NEMESIS 13 P (S 29); CASA uvmodelfit light curves | Line-by-line retrievals for planetary atmospheres (2014ApJ...795L..30C) | - | alma-polarization-magnetic-fields, alma-solar-system-atmospheres |
+
+The router covers the main jobs. `references/packages.md` lists all 220 packages named in 8 or more papers,
+with fields, versions and uses.
+
+## Parameter defaults and ranges
+
+Defaults to use when the paper or data are silent. Each one needs a sentence in your write-up saying you assumed it.
+
+| Decision | Default | Range or alternative seen | Evidence |
+|---|---|---|---|
+| Briggs robust | 0.5 | -2 to 2 in most fields | stats README (median 0.5 in all major fields) |
+| tclean masking | auto-multithresh, record its values | stated settings `noisethreshold` 5, `sidelobethreshold` 1.25 | 2024ApJ...966...32E, 2024AJ....168..151J, 2024RAA....24f5011X |
+| Continuum fit order | 1 (linear) in the uv plane | 0 (constant) on small image subcubes | 2020ApJ...904..131N, 2017ApJ...850L...5T, 2021A&A...653A..77P; 2021ApJ...909..181L |
+| Visibility weights | `statwt` after concatenation or self-calibration | - | 2017ApJ...835..174S, 2021A&A...648A..33M, 2022MNRAS.513.5790C |
+| Self-cal solution intervals | phase-only, starting long (`inf`) and shortening | inf then int in two rounds | 2024A&A...686A.274V, 2019ApJ...879L..25I |
+| Keplerian mask | use for disk lines at fine velocity resolution | lines < 2 km/s resolution | 2023A&A...678A.146B, 2021A&A...648A..19W |
+| astrodendro thresholds | `min_value` 3 sigma, `min_delta` 1 sigma | `min_npix` 60 in one case; vary them and check conclusions | 2017MNRAS.464L..31H |
+| emcee walkers and steps | set per model, then check convergence | 48 walkers x 3500 steps (500 burn-in); 200 x 5000 + 5000; walkers = 8 x parameters | 2020ApJ...891...48H, 2021A&A...648A..19W, 2024A&A...688A.149D |
+| Sampler choice | emcee | nested sampling when the evidence is needed | 410 vs 34 + 22 + 9 P; 2013MNRAS.430.2454L |
+| Second package for the headline number | one independent tool or domain | galario cross-check fit; independent lens check; second lens code; second SED code; 3DBarolo vs KinMS | 2018ApJ...859...32P, 2020ApJ...898...33C, 2017ApJ...843L..35W, 2019ApJ...884..154W, 2022MNRAS.516.4066L |
+
+The cards rarely state MCMC convergence diagnostics or a finder's full parameter set, so treat chain lengths and
+thresholds above as examples, not defaults to copy. The technique skills hold the full ranges.
+
+## Pitfalls
+
+- **Reimplementing a standard tool.** A home-made fitter skips what the package handles: beam smearing in cube
+  kinematics (KinMS models it explicitly, 2015ApJ...806...39O), visibility sampling (galario, vis_sample), and
+  line opacity in LTE synthetic spectra (Weeds, 2016A&A...587A..91B). In CosmicCoder agent runs this cost accuracy against the published value.
+- **Fitting in the wrong domain.** A Gaussian on a CLEAN image is not a uv fit; a tilted-ring fit to a moment-1
+  map is not a cube fit. Papers that fit visibilities name uvmultifit, galario or vis_sample (router counts).
+- **Name in the paper does not mean used.** Clumpfind is named only as an algorithm that would struggle
+  (2012A&A...538L...9H). `fixplanets` is discussed and not used (2021A&A...648A..33M). Gravlens is named for
+  earlier work and replaced (2015ApJ...812...43B). Tie every tool to a step before you copy it.
+- **Spellings split the counts.** 3dbarolo / 3d-barolo, radmc-3d / radmc3d, sextractor / source extractor,
+  frank / frankenstein, linmix / linmix_err and five GILDAS spellings are separate rows. Add them before you
+  rank tools. Generic names collide: "clean" (the algorithm), "class" (GILDAS CLASS), "fast" (the SED code),
+  "shape" (SHAPE modelling), "visible" (the VISIBLE filter).
+- **Modified or adapted builds.** Some results come from in-house versions (simobserve in 2016A&A...593A..61M;
+  "adapted" bettermoments and "modified" CuTEx in the version lists). A stock install may not reproduce them.
+  Flag it and do not force agreement.
+- **Inherited software outputs.** Series papers reuse catalogues, masks and corrections made by earlier runs
+  (2014MNRAS.442..577T, 2023A&A...674A..76P, 2019ApJ...882..140B). In CosmicCoder agent runs, unstated inherited
+  corrections broke a reproduction. Find the paper that ran the tool and its settings.
+- **The input files decide the answer as much as the code.** RADEX results depend on the LAMDA file
+  (2014ApJ...785..149S). RT models depend on the opacity table (optool or dsharp_opac, 2024A&A...681A..82G).
+  LTE fits depend on the catalogue entry (CDMS predictions in 2023MNRAS.523.2887M). Record the file and its version.
+- **Defaults hide choices.** "Default parameters" for auto-multithresh (2024ApJ...966...32E) is only
+  reproducible with the CASA version. Pipeline versions are unstated in 96% of cards (stats README).
+- **Cross-facility tools are not ALMA tools.** XSPEC, CIAO, HIPE, the JWST and MUSE pipelines appear because
+  papers are multi-wavelength. Do not route ALMA jobs through them.
+- **Heavy installs and environment limits.** If CASA or a legacy suite will not install, do not quietly swap
+  in an untested reimplementation. Use the delivered archive products or the Python alternative the router
+  names, and state the difference.
+
+## Verification checks
+
+Before reporting a number that came out of a package:
+
+- The code ran and wrote its outputs, and they look sane (no NaN maps, chains not stuck, catalogue sizes
+  plausible). In CosmicCoder agent runs a judge passed tasks whose code was written but never run.
+- **Recovery test**: a synthetic input through the same tool and settings comes back within errors (simobserve
+  23 P; 2016ApJ...833..238H, 2020ApJ...904...77G). For finders, also check completeness and fidelity from
+  injected sources and the inverted map (2025A&A...695A.163B, 2019ApJ...882..139G, 2023A&A...674A..75N).
+- **Residuals** in the fitting domain show no structure above the noise, or the leftover structure is named.
+- **Independent cross-check** of the headline quantity: a second package (2018ApJ...859...32P galario
+  cross-check; 2020ApJ...898...33C PyAutoLens check; 2017ApJ...843L..35W glafic check; 2022MNRAS.516.4066L
+  3DBarolo vs KinMS) or a second domain (uv fit vs image fit; parametric vs frank profile, 2021A&A...649A.122P).
+- **Sampler health**: chains converged by the package's own diagnostic, priors stated, and posteriors not
+  piled against a prior edge (general practice).
+- **Provenance**: package, version, settings, input data files and script path are in the write-up.
+
+What an evaluator will look for: the quantity with its uncertainty, the package and settings that produced it,
+the recovery or cross-check that backs it, and code traceable to each experiment.
+
+## Source cards
+
+Full member list: `references/sources.md`. Per-package table: `references/packages.md`. Most informative for
+software choice:
+
+- 2019ApJS..244...40L (archive mining: astroquery, CASA, PyBDSF, GALFIT, GILDAS uv_fit, MAGPHYS in one chain)
+- 2022MNRAS.513.5790C (uvmem vs tclean, statwt, multi-epoch visibility alignment)
+- 2025A&A...695A.163B (SoFiA-2 line finding with injection and inverted-cube fidelity)
+- 2026MNRAS.552g1573L (pipeline, findContinuum, mtmfs, astrodendro and Hyper for 1.3 mm continuum sources)
+- 2017ApJ...842...92G (astrodendro, spectral-cube, pvextractor, pyspeckit stack)
+- 2016ApJ...828..113M (vis_sample as an open uvmodel implementation)
+- 2018A&A...619A.161C (galario sampling at observed uv points)
+- 2024A&A...682A..55M (frank super-resolution profiles)
+- 2018ApJ...868..113T (bettermoments plus eddy rotation curves)
+- 2023A&A...674A.113I (DISCMINER channel-map modelling)
+- 2015ApJ...806...39O (KinMS PV modelling with beam smearing)
+- 2018A&A...612A..29B (3DBarolo cube fits)
+- 2022MNRAS.516.4066L (3DBarolo vs KinMS cross-check)
+- 2017MNRAS.464L..31H (dendrogram thresholds stated)
+- 2022A&A...662A...8M (getsf cores and filaments)
+- 2014ApJ...787..112C (XCLASS with MAGIX, MADEX LVG)
+- 2024A&A...686A..31B (SpectralRadex with UltraNest)
+- 2014A&A...562A..26B (DALI thermo-chemical disk model)
+- 2024A&A...681A..82G (optool opacities into RADMC-3D)
+- 2015ApJ...812...43B (uvmcmcfit visibility lens modelling replacing Gravlens)
+- 2022MNRAS.512.2426M (PyAutoLens in the uv plane)
+- 2013MNRAS.430.2454L (MultiNest evidence for model selection)
+- 2017ApJ...844...99L (linmix regression with upper limits)
+- 2021A&A...648A..33M (fixvis with Gaia positions, imsmooth, statwt, dsharp_opac)
+- 2016ApJ...833..238H (simobserve recovery test)
+- 2016A&A...593A..61M (modified simobserve, T-type gaincal)
+
+=== references/packages.md ===
+# Package table (analysis-software-map)
+
+Generated from the pack aggregate "Packages by number of papers" (3422 non-held-out ALMA papers, 2012-2026):
+every package the aggregate lists (8 or more papers). "Papers" counts distinct papers naming the package in
+their software inventory. Spellings are separate rows (3dbarolo / 3d-barolo, radmc-3d / radmc3d, sextractor /
+source extractor, frank / frankenstein, linmix / linmix_err, corner / corner.py, the GILDAS and SciPy variants),
+so add them when you need a total, and expect undercounts for tools used without being named. "Used for"
+gives the first two pack lines for the package (card wording, with the paper). "Skill" is the technique skill
+to read for settings; a bracketed word means no technique skill covers it. Installation is not covered here:
+check each package's own documentation before use.
+
+| Package | Papers | Main fields (papers) | Versions seen (papers) | Used for (examples) | Skill |
+|---|---|---|---|---|---|
+| casa | 2638 | star_formation 571, high_z_galaxies 528, protoplanetary_disks 471 | 4.7.2 (68), 5.4.0 (54), 5.1.1 (53), 4.7.0 (52) | data processing and imaging (2012A&A...542L..34N); calibration and imaging (2012A&A...544L...7P) | alma-imaging-choices, alma-self-calibration |
+| astropy | 559 | star_formation 127, nearby_galaxies 113, high_z_galaxies 104 | v5 (2), 5.0 (2), 3.2.1 (1), v.5.3 (1) | acknowledged research tool (2014ApJ...788L..34P); general analysis (2014ApJ...791..108F) | (general) |
+| emcee | 410 | protoplanetary_disks 179, high_z_galaxies 75, debris_disks 51 | v3 (3), 2.2.0 (1), v3.0.1 (1), v2.2.1 (1) | modified blackbody fits (2014A&A...568A..92M); MCMC fitting of ring and vortex models (2014ApJ...783L..13P) | alma-uv-plane-fitting, alma-sed-fitting |
+| tclean | 380 | high_z_galaxies 98, star_formation 92, protoplanetary_disks 64 | CASA 5.6.1 (3), CASA 5.3 (3), CASA v5.6.0 (1), CA... | Imaging and multiscale deconvolution (2017ApJ...842L..24A); H30a cube imaging with auto-multithresh (2017ApJ...850L...5T) | alma-imaging-choices |
+| matplotlib | 212 | protoplanetary_disks 56, nearby_galaxies 40, star_formation 38 | 1.4.3 (1), v.3.7.1 (1), 3.6 (1) | plotting (2016A&A...590A.127W); acknowledged software (figures) (2016ApJ...820L..40A) | (plotting) |
+| radex | 212 | star_formation 63, nearby_galaxies 55, protoplanetary_disks 30 | online version (2), online (1) | Non-LTE excitation analysis (2013A&A...555A..73K); HCO+ abundance (2013A&A...555A.112P) | alma-non-lte-excitation |
+| scipy | 196 | protoplanetary_disks 45, nearby_galaxies 41, star_formation 29 | v0.17.0 (1), 1.8.1 (1), v.1.10.1 (1), 1.10.1 (fro... | griddata and gaussian_filter for running average (2015ApJ...812...43B); Levenberg-Marquardt fitting (2016A&A...590A..33P) | (general) |
+| gildas | 187 | star_formation 41, high_z_galaxies 39, evolved_stars 31 | apr14c (1), jul18a (1), oct18b (1), nov18a (1) | Reduction and imaging of PdBI and ALMA-SV data (2013A&A...554A..78P); Combining Mopra and ALMA; N2H+ hyperfine fits (2013A&A...555A.112P) | alma-imaging-choices, alma-uv-plane-fitting |
+| miriad | 183 | star_formation 60, nearby_galaxies 29, high_z_galaxies 22 | 4.3.8 (3), uvfit Revision 1.10, (1), 20120419 ATN... | SMA data reduction (2012A&A...538A..44D); SMA imaging (INVERT, robust=0) (2012ApJ...754L..17Z) | alma-imaging-choices |
+| numpy | 168 | nearby_galaxies 40, protoplanetary_disks 37, high_z_galaxies 24 | 1.19.2 (1), v.1.24.0 (1), 1.22 (1) | listed in software section (2017ApJ...848L..21A); Listed in software (2019ApJ...871..185L) | (general) |
+| radmc-3d | 168 | protoplanetary_disks 102, star_formation 37, debris_disks 23 | 0.41 (5), 0.39 (4), 2.0 (3), v0.30 (1) | scattered-light image of warp model (2012ApJ...757..129R); model disk radiative transfer (2014Natur.511..567J) | alma-radiative-transfer-modelling |
+| aplpy | 138 | star_formation 61, nearby_galaxies 31, high_z_galaxies 10 | 1.1.1 (3), v.2.1.0 (1), v2.0 (1) | Plotting (2013ApJ...777..126S); plotting (2014ApJ...788L..34P) | (plotting) |
+| galfit | 121 | high_z_galaxies 94, nearby_galaxies 16, agn_and_quasars 9 | 3 (2), 3.0.5 (2), v3.0.5 (2) | lens galaxy modelling (2013ApJ...779...67B); foreground/background flux separation (2014A&A...568A..92M) | alma-source-extraction-counts |
+| sextractor | 113 | high_z_galaxies 78, nearby_galaxies 10, star_formation 9 | 2.5.0 (6), v2.19.5 (4), v2.5.0 (3), v2.8.6 (2) | source extraction in CANDELS catalog (from Guo et al.) (2014ApJ...785..111W); source catalogs, astrometric alignment (2014ApJ...788..125S) | alma-source-extraction-counts |
+| aips | 110 | star_formation 22, agn_and_quasars 22, high_z_galaxies 19 | classic (1), 31DEC19 (1), 31DEC23 (1) | calibration (and presumably imaging) (2013ApJ...763..120C); Image analysis (2013ApJ...768L..38H) | alma-imaging-choices |
+| cigale | 101 | high_z_galaxies 75, nearby_galaxies 16, agn_and_quasars 7 | v2022.0 (2), 2022.1 (2), v0.11 (1), 0.11.0 (1) | SED fitting (2013ApJ...779...67B); SED fitting (2015ApJ...807..180W) | alma-sed-fitting |
+| magphys | 98 | high_z_galaxies 86, nearby_galaxies 11, galaxy_clusters_and_sz 1 | high-z extension (5), high-z version (3), high-re... | SED fitting (2014A&A...562A..70M); SED fitting (2014A&A...568A..92M) | alma-sed-fitting |
+| imfit | 96 | high_z_galaxies 38, star_formation 18, protoplanetary_disks 13 | v1.5 (1), 5.4.0-70 (1), CASA v4.7.2 (1), CASA 6.6... | elliptical Gaussian fits for source flux, position, size (2017ApJ...844..123F); Source positions and sizes (2017ApJ...850L...6A) | alma-imaging-choices, alma-source-extraction-counts |
+| uvcontsub | 94 | high_z_galaxies 26, protoplanetary_disks 18, agn_and_quasars 13 | CASA 5.1.1 (1), CASA 5.4.0 (1), CASA v5.6.1 (1),... | continuum subtraction (2018MNRAS.475.3004S); Continuum subtraction in calibrated uv-data (2020ApJ...904...77G) | alma-continuum-subtraction |
+| cassis | 87 | astrochemistry 42, star_formation 30, evolved_stars 5 | 5.0 (2), 5.1.1 (1) | LTE line modeling of CH3CN (2015ApJ...813L..19J); line identification and LTE synthetic spectra (2016A&A...590L...6C) | alma-rotational-diagram-lte, alma-line-identification |
+| astrodendro | 84 | star_formation 56, nearby_galaxies 24, milky_way_ism 3 | - | dendrograms to derive properties of HII regions and GMCs (2014MNRAS.445.1412Z); dendrogram clump identification (2016ApJ...831...32N) | alma-core-extraction-cmf, alma-gmc-decomposition-virial |
+| alma pipeline | 83 | high_z_galaxies 14, evolved_stars 13, agn_and_quasars 13 | 2020.1.0.40 (5), 2023.1.0.124 (5), r42866 (2), 20... | Standard calibration (2015A&A...582L...4M); data reduction (2017A&A...600A..48G) | alma-archival-data-reuse |
+| uvmultifit | 81 | high_z_galaxies 20, agn_and_quasars 14, evolved_stars 11 | 2.1.4-r3 (1), 2.2.0-r3 (1), 3.0.0 (1) | Visibility model-fitting of the two lensed images (2013A&A...558A.123M); Visibility model fitting (2014A&A...563A.136M) | alma-uv-plane-fitting |
+| galario | 76 | protoplanetary_disks 52, debris_disks 12, high_z_galaxies 5 | 1.2 (1) | synthetic visibilities (2018A&A...610A..24F); Fourier-transforming model and sampling at observed uv-locations (2018A&A...619A.161C) | alma-uv-plane-fitting, alma-disk-substructure-profiles |
+| photutils | 76 | high_z_galaxies 38, nearby_galaxies 19, agn_and_quasars 6 | 1.0.0 (2), 1.5.0 (2), 1.10.0 (2), 1.8.0 (2) | Aperture photometry of Herschel images (2019A&A...622A..89V); named in acknowledgements (likely aperture photometry) (2019AJ....157..131B) | alma-source-extraction-counts |
+| lime | 67 | protoplanetary_disks 39, star_formation 11, evolved_stars 9 | 1.9.5 (3), 1.5 (2), v1.6 (1), v. 1.5 (with custom... | 3D non-LTE radiative transfer for CO model cubes (2012ApJ...757..129R); 3D radiative transfer of the SPH model (2012Natur.490..232M) | alma-radiative-transfer-modelling, alma-non-lte-excitation |
+| cloudy | 66 | high_z_galaxies 47, agn_and_quasars 9, nearby_galaxies 8 | 17.01 (3), 13.03 (2), c13.03 (2), v17.00 (2) | photoionization models of [NII]/[CII] (2012A&A...542L..34N); FeII templates (2013A&A...559A..29C) | alma-chemical-modelling, alma-sed-fitting |
+| 3dbarolo | 65 | high_z_galaxies 29, nearby_galaxies 26, agn_and_quasars 8 | v1.3 (1), 1.6 (1), 1.6.1 (1), 1.6.9 (git commit 1... | tilted-ring modeling (2016ApJ...823...68S); tilted-ring fits to velocity and dispersion maps (2017ApJ...845L...5I) | alma-galaxy-3d-kinematics |
+| python | 65 | nearby_galaxies 16, high_z_galaxies 11, protoplanetary_disks 10 | 2.7 (3), 3 (3), 3.7 (2), 3.9 (2) | fit uncertainties (2016NatSR...626896A); Data analysis (2017A&A...605A..21C) | (general) |
+| xspec | 62 | nearby_galaxies 14, transients 10, high_z_galaxies 8 | 12.9.0 (3), 12.9.1 (2), 12.10.0c (2), 12.10.0e (2) | X-ray spectral fitting and simulations (2013ApJ...778..179W); X-ray spectral fit (2014A&A...562A..67G) | (X-ray, other facility) |
+| ciao | 60 | galaxy_clusters_and_sz 13, nearby_galaxies 13, agn_and_quasars 10 | 4.9 (7), 4.10 (4), 4.7 (3), v4.15 (3) | extracting and combining E-CDF-S-only spectra (specextract, combine_s... (2013ApJ...778..179W); Chandra data reprocessing (2016ApJ...829...53V) | (X-ray, other facility) |
+| eazy | 60 | high_z_galaxies 55, agn_and_quasars 3, star_formation 1 | EAZY_v1.0 templates (1), 2015-05-08 (1) | photometric redshifts (2014ApJ...782...19S); cross-check photometric redshifts and emission-line template test (2014ApJ...788..125S) | alma-sed-fitting |
+| iraf | 59 | high_z_galaxies 17, nearby_galaxies 11, protoplanetary_disks 8 | v2.16.1 (1), v.2.17 (1) | Gemini spectroscopy reduction (2014A&A...568A..92M); Astrometric fit of HST image to SDSS (2015PASJ...67...72T) | (optical, other facility) |
+| bettermoments | 58 | protoplanetary_disks 51, debris_disks 3, star_formation 2 | adapted (1) | line-of-sight velocity map via parabola fit (2018ApJ...868..113T); Rotation velocity map (2019A&A...625A.118K) | alma-moment-maps, alma-keplerian-disk-kinematics |
+| cdms | 57 | star_formation 18, astrochemistry 12, protoplanetary_disks 9 | - | Spectroscopic data of ArH+ (2015A&A...582L...4M); Spectroscopic catalog (2016A&A...587A..92M) | alma-line-identification |
+| carta | 55 | star_formation 17, nearby_galaxies 12, protoplanetary_disks 8 | 2.0.0 (5), 2.0.0 (per reference (1), 4.0 (1), 4.1... | Analysis of the spectra of the Venus images (2021ApJ...907L..27A); Fitting 2D Gaussians to OH emission and absorption regions using a 3... (2023A&A...674A.125B) | (viewer) |
+| gofish | 55 | protoplanetary_disks 52, debris_disks 2, astrochemistry 1 | 1.3.6 (1) | line shifting, stacking, radial profiles (2020ApJ...899..157T); Stacking Stokes parameters along the Keplerian rotation pattern (2020ApJ...901...71S) | alma-keplerian-disk-kinematics, alma-stacking |
+| hipe | 54 | high_z_galaxies 13, nearby_galaxies 12, star_formation 8 | v9.0 (5), 7.0 (3), 5.0 (2), v11 (2) | Herschel SPIRE map reduction (2013ApJ...767...88W); HIFI data processing and deconvolution (2013ApJ...770..142N) | (Herschel, other facility) |
+| lmfit | 53 | nearby_galaxies 14, agn_and_quasars 12, star_formation 7 | 1.0.3 (3), 1.0.1 (2), 1.3.2 (2), 0.9.13 (1) | Gaussian spectral fitting (2016ApJ...832..148V); continuum model fitting (2018ApJ...860..119G) | (line and profile fitting) |
+| mcfost | 52 | protoplanetary_disks 47, debris_disks 2, star_formation 2 | 4.1.08 (1), 4.1 (1) | 3D radiative transfer modelling of continuum and CO (2013A&A...557A.133D); radiative transfer for SAM test of binary model (2013Natur.493..191C) | alma-radiative-transfer-modelling |
+| linmix | 50 | protoplanetary_disks 25, nearby_galaxies 12, agn_and_quasars 5 | - | Bayesian linear regression (Kelly 2007) (2017A&A...606A..88T); Bayesian linear regression with upper limits (2017ApJ...844...99L) | alma-star-formation-laws |
+| ppxf | 45 | nearby_galaxies 38, agn_and_quasars 3, galaxy_clusters_and_sz 2 | 5.2.1 (1), latest version (1) | Stellar continuum subtraction in SINFONI K-band (2016A&A...594A..81P); stellar template fitting and stellar velocity dispersion (2017A&A...600A..80K) | alma-smbh-gas-dynamics |
+| clumpfind | 44 | nearby_galaxies 16, star_formation 16, high_z_galaxies 8 | IDL version (1), 2-D (1) | mentioned as an algorithm that would have difficulty isolating PCC; n... (2012A&A...538L...9H); core identification (2014A&A...569A..11S) | alma-core-extraction-cmf |
+| dali | 44 | protoplanetary_disks 43, debris_disks 1 | - | Physical-chemical disk modeling of dust, gas temperature, CO abundanc... (2014A&A...562A..26B); thermo-chemical physical disk model (2014A&A...563A.113V) | alma-radiative-transfer-modelling, alma-chemical-modelling |
+| pyspeckit | 44 | star_formation 26, nearby_galaxies 8, milky_way_ism 5 | 0.1.20 (1), V.1.0.1 (1) | listed software (spectral fitting) (2017ApJ...842...92G); cold-ammonia model for NH3 fitting (2017ApJ...849...68S) | alma-line-identification, alma-dense-gas-tracers |
+| splatalogue | 43 | star_formation 13, nearby_galaxies 7, astrochemistry 5 | - | Line identification (2012ApJ...757L...1H); Line identification of rest frequencies (2013AJ....146...91I) | alma-line-identification |
+| spectral-cube | 41 | star_formation 17, nearby_galaxies 14, high_z_galaxies 5 | v0.4.5 (4), v0.4.4 (2), v0.4.3 (1), v0.4.0 (1) | listed software for cubes (2017ApJ...842...92G); cube analysis (2018ApJ...853..171G) | alma-moment-maps |
+| starburst99 | 41 | nearby_galaxies 23, high_z_galaxies 9, star_formation 6 | 7.0.1 (3), v7.0.1 (2), v7.0.0 (1), 2014 update (1) | input ionizing continua (2012A&A...542L..34N); mass lost to winds and supernovae (2014ApJ...788..125S) | alma-free-free-synchrotron |
+| mpfit | 40 | nearby_galaxies 10, high_z_galaxies 7, galaxy_clusters_and_sz 6 | - | Levenberg-Marquardt minimization for fiducial model (2012ApJ...757..129R); Best-fit disk model (2013A&A...559A..29C) | (line and profile fitting) |
+| xclass | 38 | star_formation 31, astrochemistry 4, protoplanetary_disks 2 | 1.2.0 (1), 1.2 (1), not stated (with pri (1) | Line identification with CDMS and JPL catalogs (2013ApJ...770..142N); LTE modeling of methanol (2013ApJ...777...85N) | alma-rotational-diagram-lte |
+| cprops | 37 | nearby_galaxies 29, star_formation 7, stellar_physics 1 | updated version (cpr (1), modified (elliptical (1) | basis of clump identification criteria (2013ApJ...774...73I); Clump identification and properties (2014ApJ...793...37A) | alma-gmc-decomposition-virial |
+| statcont | 37 | star_formation 23, astrochemistry 7, nearby_galaxies 4 | - | continuum estimation and subtraction (2017A&A...602A..59C); continuum level determination in line-rich spectra (2017A&A...604A...6S) | alma-continuum-subtraction |
+| bagpipes | 34 | high_z_galaxies 30, agn_and_quasars 3, nearby_galaxies 1 | - | Bayesian SED fitting (2019ApJ...884..154W); SED modelling of the foreground galaxy to get stellar mass for the le... (2020ApJ...903...34A) | alma-sed-fitting |
+| dynesty | 34 | high_z_galaxies 16, agn_and_quasars 5, galaxy_clusters_and_sz 4 | v2.1.0 (1), v2.0.3 (cited Zenodo (1) | Dynamic nested sampling of posterior (2019A&A...628A.100D); nested sampling of xs-ring model (2019ApJ...875L...6E) | alma-uv-plane-fitting, alma-lens-modelling |
+| immoments | 34 | high_z_galaxies 13, agn_and_quasars 8, star_formation 4 | - | Collapsing channels into [CII] flux maps (2020A&A...643A...1L); SO2 moment 1 image (2020ApJ...904...77G) | alma-moment-maps |
+| jwst calibration pipeline | 34 | high_z_galaxies 14, star_formation 8, protoplanetary_disks 6 | 1.12.5 (3), 1.13.4 (3), 1.11.4 (2), 1.14.0 (2) | Processing NIRSpec IFU data (Detector1, Spec2, Spec3) (2024A&A...681A.117P); All three stages of MIRI-MRS calibration. (2024A&A...682A..78V) | (JWST, other facility) |
+| weeds | 34 | astrochemistry 21, star_formation 9, milky_way_ism 2 | April 2014 version (1) | Synthesized acetone spectra (2013A&A...554A..78P); LTE line identification and spectral modeling (2014Sci...345.1584B) | alma-rotational-diagram-lte |
+| scikit-learn | 33 | nearby_galaxies 14, high_z_galaxies 7, star_formation 3 | - | logistic regression (2015ApJ...812...43B); PCA for ADI (2016A&A...591A.108O) | (general) |
+| gildas/class | 32 | star_formation 12, nearby_galaxies 7, protoplanetary_disks 3 | - | APEX data reduction (2015ApJ...813L..19J); APEX spectra inspection, baseline subtraction, averaging (2016A&A...592A..83K) | (single-dish reduction) |
+| kinms | 31 | nearby_galaxies 23, high_z_galaxies 5, agn_and_quasars 3 | - | alternative kinematic disk model (2014A&A...565A..59D); PVD modelling with beam smearing (2015ApJ...806...39O) | alma-galaxy-3d-kinematics, alma-smbh-gas-dynamics |
+| lephare | 31 | high_z_galaxies 27, transients 2, nearby_galaxies 1 | - | Photometric redshifts and masses (catalog) (2016ApJ...833..112S); SED fitting for stellar masses (2018ApJ...856..121G) | alma-sed-fitting |
+| phantom | 31 | protoplanetary_disks 28, evolved_stars 2, star_formation 1 | 2022.0.1 (1) | SPH hydrodynamic simulation (2018A&A...619A.171B); SPH simulations (2018ApJ...860L..13P) | alma-hydro-simulation-comparison |
+| clean | 30 | star_formation 6, high_z_galaxies 6, agn_and_quasars 5 | - | multi-frequency synthesis deconvolution (2013ApJ...762L..21M); Deconvolution of ALMA images (2013ApJ...777...85N) | alma-imaging-choices |
+| eddy | 30 | protoplanetary_disks 28, debris_disks 2 | 1.0 (1) | rotation velocity measurement (2018ApJ...868..113T); Python implementation of the rotation profile method (2019A&A...625A.118K) | alma-keplerian-disk-kinematics |
+| idl | 30 | nearby_galaxies 11, star_formation 5, high_z_galaxies 3 | - | own routines for detector correction, OH, line maps, spectra (2014A&A...567A.119S); Line-fitting routine (2014A&A...572A..40E) | (general) |
+| prospector | 30 | high_z_galaxies 22, transients 5, nearby_galaxies 3 | 1.2.1 (1), v2 (1), 1.2.0 (1) | host galaxy SED modeling (2019ApJ...876L..10E); Non-parametric SFH cross-check (2019ApJ...884..154W) | alma-sed-fitting |
+| uvmodelfit | 30 | high_z_galaxies 10, protoplanetary_disks 6, agn_and_quasars 4 | - | fitting flux densities to visibilities (2014ApJ...787...42C); Fit uniform disk to continuum visibilities (2016ApJ...829....6W) | alma-uv-plane-fitting |
+| vis_sample | 30 | protoplanetary_disks 25, debris_disks 3, star_formation 1 | - | sampling model images at observed spatial frequencies (2016ApJ...823L..18H); Python implementation of Miriad uvmodel for model visibilities (open... (2016ApJ...828..113M) | alma-uv-plane-fitting |
+| jwst pipeline | 28 | high_z_galaxies 8, protoplanetary_disks 6, nearby_galaxies 6 | 1.11.1 (2), 1.9.4 (1), 1.8.2 (crds 11.16.15 (1),... | Processing JWST MIRI/MRS data (2023A&A...679A.117G); stage 1 and 2 calibration to calints (2024AJ....167..183M) | (JWST, other facility) |
+| class | 27 | star_formation 12, high_z_galaxies 5, evolved_stars 4 | Version 1.1 (1) | Gaussian fitting of HIFI lines (2013ApJ...770..142N); APEX baseline subtraction (2013ApJ...773L..34K) | (single-dish reduction) |
+| lifelines | 26 | protoplanetary_disks 14, star_formation 7, high_z_galaxies 2 | v0.11.1 (2), v0.21.1 (2), 0.11.1 (1), v0.24.15 (1) | Kaplan-Meier estimators (2017ApJ...851...83C); Kaplan-Meier estimator (2018ApJ...855...92C) | alma-dust-continuum-mass, alma-star-formation-laws |
+| mir | 26 | protoplanetary_disks 7, star_formation 7, nearby_galaxies 2 | - | SMA raw data calibration (2013A&A...549L...3P); SMA calibration (2013ApJ...776L..38F) | (SMA reduction) |
+| pandas | 26 | nearby_galaxies 12, star_formation 3, agn_and_quasars 3 | 1.3.4 (2), 1.4.2 (2) | General data analysis (2021A&A...655A..65T); Data analysis (listed in Software section) (2021ApJ...915...99I) | (general) |
+| topcat | 26 | high_z_galaxies 11, nearby_galaxies 6, agn_and_quasars 5 | - | table handling (2015A&A...574A..19S); table handling (2018A&A...610A..77H) | (tables) |
+| difmap | 25 | agn_and_quasars 19, protoplanetary_disks 4, nearby_galaxies 2 | - | residuals added to MEM images (2013Natur.493..191C); Self-calibration, imaging, Gaussian model fits (2016A&A...593L..19M) | (VLBI imaging) |
+| fast | 25 | high_z_galaxies 20, nearby_galaxies 2, transients 1 | - | SED fit of foreground elliptical for lensing estimate (2015ApJ...807..180W); Stellar mass SED fitting (2015ApJ...811L...3T) | alma-sed-fitting |
+| lenstool | 25 | high_z_galaxies 23, galaxy_clusters_and_sz 1, agn_and_quasars 1 | v6.8.1 (1), 7.0 (1) | lens model (2016A&A...593L...2N); Bayesian strong lens modelling (2017A&A...600L...3C) | alma-lens-modelling |
+| webbpsf | 25 | high_z_galaxies 11, nearby_galaxies 9, protoplanetary_disks 2 | 1.2.1 (2), v.1.4.0 (2), v1.1.1 (1), 1.0.1.dev126+... | PSFs to subtract the nuclear contribution from aperture spectra (2024A&A...681A.117P); Theoretical JWST PSF (2024A&A...684A..24P) | (JWST PSFs) |
+| pyneb | 24 | high_z_galaxies 10, nearby_galaxies 8, agn_and_quasars 2 | v1.1.16 (1), v1.1.18 (1), v1.1.17 (1) | Electron density from [SII] ratio (getTempDen) (2017ApJ...851..126V); Electron density from line ratio (2019ApJ...883L..29L) | (nebular diagnostics) |
+| getsf | 23 | star_formation 23 | v210414 (1), 230712 (for the new  (1), v231026 (1... | Multiscale, multiwavelength source and filament extraction to identif... (2022A&A...662A...8M); Source extraction and flux/size measurements on continuum maps and sy... (2023A&A...674A..75N) | alma-core-extraction-cmf |
+| kinemetry | 23 | nearby_galaxies 18, agn_and_quasars 4, high_z_galaxies 1 | - | Fourier decomposition of the velocity field (2014A&A...567A.125G); Fourier decomposition of moment maps (2015MNRAS.453L..26R) | alma-galaxy-3d-kinematics |
+| simobserve | 23 | high_z_galaxies 8, star_formation 5, solar_system 2 | CASA v4.2.1 (1), 6.5.4 (1), CASA v.6 (1) | synthetic blank-field observations (2015A&A...584A..78C); in-house modified version for full-polarization synthetic data (2016A&A...593A..61M) | alma-injection-null-tests, alma-radiative-transfer-modelling |
+| astrodrizzle | 22 | high_z_galaxies 13, nearby_galaxies 4, agn_and_quasars 3 | 2.1.3.dev (1) | HST pipeline drizzling (2015ApJ...799..194C); HST reprocessing (2015MNRAS.453L..26R) | (HST, other facility) |
+| multinest | 22 | high_z_galaxies 11, debris_disks 4, agn_and_quasars 3 | - | Bayesian evidence and model selection for shapelet fits (2013MNRAS.430.2454L); SED posterior sampling (2014ApJ...783...71W) | alma-lens-modelling, alma-sed-fitting |
+| keplerian_mask | 21 | protoplanetary_disks 20, debris_disks 1 | 1.0 (7), 1.0 (Zenodo release  (1) | Keplerian masks for cleaning and moment maps (2021A&A...648A..19W); Generating Keplerian masks for tCLEAN line imaging and integrated int... (2023A&A...669A..53B) | alma-moment-maps, alma-keplerian-disk-kinematics |
+| madcuba | 21 | star_formation 9, astrochemistry 7, nearby_galaxies 5 | 6.0 (07/05/2018) (1), 28/10/2022 (1) | LTE fits of CH3OCHO in annuli (2018A&A...615A.141B); CH3CN vibrational temperature fits (2018A&A...616A..66M) | alma-rotational-diagram-lte |
+| scikit-image | 21 | protoplanetary_disks 9, star_formation 4, nearby_galaxies 4 | - | Fit ellipses to 3 sigma continuum contours and measure centroid (2017ApJ...835..231H); register_translation cross-correlation for image alignment (2018ApJ...869L..14M) | (image utilities) |
+| concat | 19 | star_formation 6, protoplanetary_disks 5, high_z_galaxies 4 | CASA 6.5.1 (1) | Combining the two pointings' calibrated visibilities (2020MNRAS.493.5045M); Combine the three ALMA projects into one measurement set (2021A&A...646A..72H) | alma-array-combination |
+| corner | 19 | high_z_galaxies 7, nearby_galaxies 4, protoplanetary_disks 3 | triangle.py v0.1.1 (1) | Posterior distribution plots (2017ApJ...843..150F); Posterior plots (2018ApJ...863...56C) | (posterior plots) |
+| galpak3d | 19 | high_z_galaxies 14, nearby_galaxies 4, agn_and_quasars 1 | 1.8.8 (2), v1.9.1 (1) | rotation-curve modeling of cubes (2017ApJ...835..213P); 3D kinematic modelling of ALESS122.1 (2018ApJ...863...56C) | alma-galaxy-3d-kinematics |
+| heasoft | 19 | transients 6, agn_and_quasars 4, stellar_physics 4 | 6.25 (3), v6.19 (2), v6.27 (2), 6.15.1 (1) | Swift/XRT reduction (2016NatPh..12..807K); Swift/XRT analysis (2017A&A...600A...8D) | (X-ray, other facility) |
+| hyperz | 19 | high_z_galaxies 18, nearby_galaxies 1 | updated version (2), 12.2 (1), modified version w... | SED fitting for photometric redshifts and SFHs (2014ApJ...788..125S); photometric redshifts (by Simpson et al. 2013) (2014MNRAS.442..577T) | alma-sed-fitting |
+| 3d-barolo | 18 | nearby_galaxies 7, agn_and_quasars 6, high_z_galaxies 5 | 1.7 (1) | 3D tilted-ring fits of CO cube (2018A&A...612A..29B); tilted-ring fits to velocity fields (2019ApJ...870...80L) | alma-galaxy-3d-kinematics |
+| irdap | 18 | protoplanetary_disks 16, debris_disks 1, star_formation 1 | 1.3.2 (1), 1.3.3 (1), v1.3.4 (1) | SPHERE/IRDIS polarimetric data reduction (2020A&A...636L...4M); SPHERE polarimetric reduction (2020A&A...639L...1M) | (SPHERE, other facility) |
+| madex | 18 | evolved_stars 7, astrochemistry 7, star_formation 3 | 2012 version (1) | line identification and HNC frequencies/strengths (2013ApJ...778L..25C); HCO+ line frequencies and line catalog checks (2014A&A...569L...5M) | alma-line-identification, alma-non-lte-excitation |
+| optool | 18 | protoplanetary_disks 14, star_formation 2, solar_system 1 | - | Implementing standard DIANA dust opacities for the RADMC-3D model (2023A&A...675A.131T); Providing DSHARP dust opacities to RADMC-3D (2024A&A...681A..82G) | alma-radiative-transfer-modelling, alma-dust-continuum-mass |
+| ratran | 18 | protoplanetary_disks 9, star_formation 7, evolved_stars 2 | 1D version of 2013 M (1), modified (1) | Monte Carlo radiative transfer with DCN hyperfine structure to produc... (2012ApJ...749..162O); Infall velocity modelling (2013A&A...555A.112P) | alma-non-lte-excitation |
+| sofia | 18 | high_z_galaxies 7, nearby_galaxies 6, agn_and_quasars 4 | v2.0 (1) | Spectral line source finding in cubes (2018ApJ...853..195W); source finding in ALMA cubes (2018MNRAS.475..492K) | alma-redshift-line-search, alma-moment-maps |
+| difx | 17 | agn_and_quasars 12, instrumentation 4, milky_way_ism 1 | 2.7.1 (1) | VLBI correlation (2016NatPh..12..807K); Correlation (2019A&A...622A.196K) | (VLBI correlation) |
+| esorex | 17 | high_z_galaxies 10, nearby_galaxies 4, agn_and_quasars 2 | v1.0 (1), 2.8.19 (1), 3.12.3 (1), 2.8.4 (1) | VIMOS and XSHOOTER reduction (2017ApJ...840...78D); SINFONI data reduction (2017ApJ...846..108C) | (ESO, other facility) |
+| gaincal | 17 | protoplanetary_disks 7, star_formation 2, high_z_galaxies 2 | - | T-type gain solutions (2016A&A...593A..61M); Rescale outlier flux datasets (2018ApJ...869L..41A) | alma-self-calibration |
+| mopex | 17 | high_z_galaxies 8, nearby_galaxies 5, star_formation 2 | 18.5.0 (1) | processing of Spitzer 24 micron maps (as in cited work) (2012ApJ...760L..25E); mosaicking Spitzer MIPS images of I Zw 18 (2014A&A...561A..49H) | (Spitzer, other facility) |
+| nautilus | 17 | astrochemistry 7, protoplanetary_disks 4, star_formation 3 | v1.1 (1) | gas-grain chemical simulations (2016ApJ...825...79S); Gas-phase pseudo-time-dependent chemical simulations (2017A&A...608A..96L) | alma-chemical-modelling |
+| diskfit | 16 | protoplanetary_disks 10, nearby_galaxies 4, debris_disks 1 | - | dust disc modelling (2014Natur.514..600D); Keplerian disk model fits to CO spectra (2017A&A...600A..62P) | alma-uv-plane-fitting |
+| frank | 16 | protoplanetary_disks 11, debris_disks 4, star_formation 1 | - | Gaussian-process visibility modeller used for comparison with the par... (2021A&A...649A.122P); remove axisymmetric component from ALMA visibilities (2021A&A...654A..35B) | alma-disk-substructure-profiles |
+| glafic | 16 | high_z_galaxies 12, agn_and_quasars 3, galaxy_clusters_and_sz 1 | 3.0 (public models) (1), version 2 (stated fo (1) | Lens modeling (2015PASJ...67...72T); Parametric lens mass model of A1689 (2016ApJS..222....1F) | alma-lens-modelling |
+| grizli | 16 | high_z_galaxies 14, nearby_galaxies 1, agn_and_quasars 1 | 1.8.2 (1), 1.6.0.dev99 (1), 1.9.11 (1), 1.6.0 (1) | HST imaging processing and astrometry (2021ApJ...908...54W); Reduction and drizzling of NIRCam, MIRI and HST images (2024ApJ...964..146F) | (HST/JWST, other facility) |
+| ipython | 16 | high_z_galaxies 5, protoplanetary_disks 4, nearby_galaxies 3 | - | Acknowledged as used in the work (2020MNRAS.491..178K); general Python tool (specific use not stated) (2021A&A...654A..69S) | (general) |
+| pvextractor | 16 | star_formation 9, nearby_galaxies 4, milky_way_ism 2 | 0.3 (1) | PV diagrams (2016ApJ...828..100F); position-velocity diagrams (2017ApJ...842...92G) | alma-envelope-kinematics-pv |
+| reproject | 16 | nearby_galaxies 7, star_formation 3, high_z_galaxies 3 | 0.13.1 (1) | resampling ALMA onto MUSE grid (2018ApJ...865...13T); Combining exposure cubes into the final cube (script from Vayner et a... (2024A&A...683A.169W) | alma-array-combination |
+| seaborn | 16 | nearby_galaxies 7, star_formation 4, protoplanetary_disks 2 | v0.8.1 (1) | kernel density estimation of chain histograms (2017MNRAS.466..213A); Listed as software used in this work (KDE plots) (2021AJ....161..185W) | (plotting) |
+| tinytim | 16 | nearby_galaxies 7, high_z_galaxies 5, agn_and_quasars 3 | 7.5 (3), 6.3 (1), 7.5 (Footnote 6) (1) | Model PSFs for new WFC3 data (2015ApJ...799..194C); HST PSF (2015MNRAS.452.2258D) | (HST PSFs) |
+| discminer | 15 | protoplanetary_disks 15 | - | Channel-map modelling, extraction of line profile observables, deproj... (2023A&A...674A.113I); Extracting disc rotation curves and masking contamination from the lo... (2023MNRAS.518.4481L) | alma-keplerian-disk-kinematics |
+| filfinder | 15 | star_formation 9, nearby_galaxies 3, milky_way_ism 2 | - | filament spine identification (2019ApJ...875...24C); Filament identification (2020ApJ...888...56I) | alma-core-extraction-cmf |
+| imsmooth | 15 | star_formation 4, nearby_galaxies 4, protoplanetary_disks 3 | - | Smoothing images to common beam (2019PASJ...71..124S); Convolve SPARX image cubes to 0.14 arcsec observing resolution (2020ApJ...904..181L) | alma-moment-maps, alma-array-combination |
+| lamda | 15 | protoplanetary_disks 9, star_formation 3, nearby_galaxies 1 | - | Molecular data file (2013ApJ...765L..14Q); spectroscopic data and collisional rates (2013PASJ...65..100I) | alma-non-lte-excitation |
+| magix | 15 | star_formation 12, protoplanetary_disks 2, astrochemistry 1 | - | parameter fitting (2014A&A...569A..11S); automated fitting of XCLASS (2014ApJ...787..112C) | alma-rotational-diagram-lte |
+| muse pipeline | 15 | high_z_galaxies 7, nearby_galaxies 4, galaxy_clusters_and_sz 2 | 1.6.4 (2), v1.6 (2), 1.6.2 (2), 1.0 (1) | MUSE data reduction (2016A&A...586A.124G); MUSE reduction (2016ApJ...832...37G) | (MUSE, other facility) |
+| phangs-alma pipeline | 15 | nearby_galaxies 13, high_z_galaxies 1, star_formation 1 | public release v1.0 (1), v3.1 (1), 1.0 (1) | Staging, imaging, post-processing, short-spacing correction, and data... (2021ApJS..257...43L); Processing archival ALMA CO(2-1) data and generating moment maps (2022A&A...660A..77D) | alma-array-combination, alma-gmc-decomposition-virial |
+| starlink | 15 | star_formation 9, nearby_galaxies 4, agn_and_quasars 1 | 2018A (1), 2023A (1) | JCMT 12CO 2-1 cube (2013ApJ...777..126S); JCMT data reduction (2014ApJ...796L..15S) | (JCMT reduction) |
+| visible | 15 | protoplanetary_disks 15 | v0.1.0 (1) | matched filter line detection (2018ApJ...859..131L); matched filter analysis in uv plane (2019ApJ...875...96N) | alma-keplerian-disk-kinematics, alma-stacking |
+| visilens | 15 | high_z_galaxies 13, agn_and_quasars 2 | - | visibility-based lens modeling code (2016ApJ...826..112S); lens modelling in uv plane (2018NatAs...2...56Z) | alma-lens-modelling |
+| alma archive | 14 | star_formation 4, high_z_galaxies 3, nearby_galaxies 2 | - | Public access to the ALMA data (2020MNRAS.496.5308S); Public access to underlying ALMA data (2020MNRAS.498.4635D) | alma-archival-data-reuse |
+| astroquery | 14 | star_formation 5, high_z_galaxies 3, nearby_galaxies 3 | - | catalog queries (e.g., SIMBAD) (2018ApJ...853..171G); Splatalogue line searches (2018ApJ...860..119G) | alma-archival-data-reuse |
+| drizzlepac | 14 | high_z_galaxies 9, agn_and_quasars 2, star_formation 1 | 2 (1), v2.1.17 (1), 2.0 (1), 3.1.8 (1) | HST data reduction (2015ApJ...811..115W); STIS co-add (2016ApJ...832...37G) | (HST, other facility) |
+| feather | 14 | star_formation 7, nearby_galaxies 5, instrumentation 1 | - | combining interferometer cubes with total power (2016ApJ...832..142Z); Image-plane combination of ACA and 12 m data for continuum, C18O, N2D... (2021ApJ...910..148M) | alma-array-combination |
+| karma | 14 | star_formation 10, nearby_galaxies 2, high_z_galaxies 1 | - | data analysis/visualization (2012ApJ...754L..17Z); Data analysis/visualization (2013ApJ...764L..14Z) | (viewer) |
+| magickal | 14 | astrochemistry 14 | - | time-dependent gas-grain hot-core chemistry (2014Sci...345.1584B); Gas-grain chemical kinetics modeling (2016A&A...587A..92M) | alma-chemical-modelling |
+| statwt | 14 | protoplanetary_disks 7, high_z_galaxies 6, nearby_galaxies 1 | - | recalculate visibility weights before combining ACA and 12 m (2017ApJ...835..174S); Recomputing data weights before stacking (2020ApJ...904..131N) | alma-array-combination, alma-uv-plane-fitting |
+| analysisutils | 13 | protoplanetary_disks 6, instrumentation 3, star_formation 2 | - | Update flux density model of J0510+1800 (2017ApJ...835..231H); listed in software section (2018ApJ...852..122H) | alma-imaging-choices |
+| dusty | 13 | evolved_stars 8, star_formation 3, nearby_galaxies 1 | V2 (1) | spherical dust-shell radiative transfer SED model (2014A&A...561A..49H); continuum radiative transfer for the adopted density/temperature prof... (2015A&A...579A.114M) | alma-evolved-star-envelopes |
+| eht-imaging | 13 | agn_and_quasars 10, instrumentation 2, milky_way_ism 1 | v1.1.0 (2), v1.2.4 (1) | RML imaging and scattering mitigation (2019ApJ...871...30I); Network calibration (2019ApJ...875L...3E) | (VLBI imaging) |
+| nemesis | 13 | solar_system 13 | - | Retrieval of HNC and HC3N VMR profiles (2014ApJ...795L..30C); line-by-line radiative transfer retrieval (2015ApJ...800L..14C) | alma-solar-system-atmospheres |
+| pdr toolbox | 13 | high_z_galaxies 7, nearby_galaxies 5, agn_and_quasars 1 | wk2020 (1) | Density and G0 modelling (2016A&A...595A..72M); PDR model grids (2017A&A...602A..49H) | alma-chemical-modelling |
+| pyautolens | 13 | high_z_galaxies 11, cosmology 1, agn_and_quasars 1 | - | pixelized source reconstruction as a test (2019A&A...624A.138Y); independent lens modeling check on cleaned image (2020ApJ...898...33C) | alma-lens-modelling |
+| radmc3d | 13 | protoplanetary_disks 12, debris_disks 1 | 0.39 (2), 0.41 (1), 2.0 (1) | Radiative transfer of synthetic dust trap model (2015ApJ...812..126C); radiative transfer predictions (2018MNRAS.477.5104C) | alma-radiative-transfer-modelling |
+| rebound | 13 | protoplanetary_disks 5, debris_disks 4, star_formation 2 | - | N-body simulations (MERCURIUS integrator) (2018MNRAS.479.5423M); N-body gap-opening simulations (2019ApJ...877L..32M) | alma-hydro-simulation-comparison |
+| alma calibration pipeline | 12 | star_formation 3, nearby_galaxies 3, high_z_galaxies 2 | 42254 (1), 5.6.1 for ALPINE and (1), 2021.2.0.128... | calibration of the uv data (2020MNRAS.493.2872C); Calibrating the interferometric ALMA observations (2021ApJS..257...43L) | alma-archival-data-reuse |
+| auto-multithresh | 12 | star_formation 7, high_z_galaxies 3, nearby_galaxies 1 | - | automatic cleaning masks (2020MNRAS.497.3504T); Automatic emission-mask selection in tclean (2021ApJ...908L..43N) | alma-imaging-choices |
+| disksurf | 12 | protoplanetary_disks 12 | - | Extraction of the emission surface (vertical structure) (2024A&A...686A.120U); Extract vertical emission surfaces (2024ApJ...964..190L) | alma-keplerian-disk-kinematics |
+| fargo3d | 12 | protoplanetary_disks 12 | 2.01 (1) | 2D hydrodynamic simulations (2018ApJ...860L..12T); Hydrodynamical simulations (2018ApJ...866L...6C) | alma-hydro-simulation-comparison |
+| fsps | 12 | high_z_galaxies 6, nearby_galaxies 3, transients 2 | - | Stellar population modelling of HST colours (2017ApJ...851..126V); Generate SSP templates (2018ApJ...864L...1G) | alma-sed-fitting |
+| impbcor | 12 | astrochemistry 4, star_formation 4, high_z_galaxies 2 | - | primary beam correction (2017ApJ...844..123F); Primary beam pattern correction in the synthesised image (2023Ap&SS.368...44M) | alma-imaging-choices |
+| matlab | 12 | star_formation 3, protoplanetary_disks 2, agn_and_quasars 2 | 2018b (1), 2019a (1), 9.8.0.1451342 (R2020 (1), R... | Some analysis (2015ApJ...801...63M); analysis of maps (2016A&A...595A..39B) | (general) |
+| phoenix | 12 | debris_disks 5, evolved_stars 2, stellar_physics 2 | 18.05 (1), AMES-cond-v2.6 (1) | stellar model spectrum (2019A&A...627A.114K); Stellar photospheric model for CO excitation (2019AJ....157..117M) | (stellar models) |
+| pybdsf | 12 | high_z_galaxies 8, star_formation 2, transients 1 | v.1.8.15 (1) | ALMA continuum flux via 2D Gaussian fits (2018ApJ...856..121G); source extraction (2019ApJ...871..109P) | alma-source-extraction-counts |
+| simbad | 12 | nearby_galaxies 2, debris_disks 2, evolved_stars 2 | - | Identify the projected association with SDC G331.062-0.294 (2020MNRAS.492.4847L); Checking radio matches for mismatches (2020MNRAS.495.1760O) | (catalog lookup) |
+| source extractor | 12 | high_z_galaxies 8, star_formation 2, nearby_galaxies 1 | 2.5.0 (1), v2.25.0 (1) | aperture photometry (2014ApJ...791..108F); HST photometry (2017ApJ...845...41B) | alma-source-extraction-counts |
+| asurv | 11 | protoplanetary_disks 8, nearby_galaxies 2, agn_and_quasars 1 | Rev 1.2 (2) | Survival analysis with upper limits (2014ApJ...784...62A); censored-data correlation and two-sample tests (2014ApJ...787...42C) | alma-star-formation-laws |
+| gaussian 16 | 11 | astrochemistry 10, evolved_stars 1 | Revision B.01 (3), Revision C.01 (2), Revision A.... | B3LYP/6-311++G(d,p) calculations of vibrational modes and vibration-r... (2021A&A...647A..55A); G4 energetics (2021A&A...655A..80D) | (quantum chemistry) |
+| imcontsub | 11 | star_formation 6, high_z_galaxies 5 | - | Continuum map and continuum-subtracted cube (2020MNRAS.496..875R); Continuum subtraction from the line data with a first order polynomial (2021A&A...653A..77P) | alma-continuum-subtraction |
+| lineseeker | 11 | high_z_galaxies 11 | - | line search in the data cube (2019ApJ...882..136A); Emission line and continuum search, fidelity, completeness (2019ApJ...882..139G) | alma-redshift-line-search |
+| meudon pdr code | 11 | protoplanetary_disks 4, milky_way_ism 3, evolved_stars 2 | 1.5.2 (1), 1.4.4 (1), 1.5.4 (1), 1.7 (1) | photodissociation rates and dust shielding (2017A&A...601A...4A); PDR chemical models (2017A&A...601L...9G) | alma-chemical-modelling |
+| mstransform | 11 | astrochemistry 3, protoplanetary_disks 2, milky_way_ism 1 | - | Continuum subtraction (fitorder=1) (2017ApJ...850L...5T); continuum subtraction from the H30alpha data (fitorder=1) (2020PASJ...72...36T) | alma-continuum-subtraction |
+| nasa/ipac extragalactic database (ned) | 11 | nearby_galaxies 6, agn_and_quasars 3, star_formation 2 | - | Database used in the research (2020MNRAS.496.2155Z); Acknowledged research use (2021A&A...649A.105F) | (catalog lookup) |
+| pdspy | 11 | protoplanetary_disks 5, star_formation 5, stellar_physics 1 | - | Disk modeling and MCMC fitting (2019ApJ...874..136S); elliptical gaussian visibility fits (2020AJ....159..229W) | alma-keplerian-disk-kinematics, alma-uv-plane-fitting |
+| pipe3d | 11 | nearby_galaxies 11 | SDSS DR15 products (1), MaNGA DR15 value-add (1) | stellar population and emission line fitting of MaNGA cubes (2017ApJ...851...18L); MaNGA DR15 stellar mass and emission-line measurements (2019ApJ...884L..33L) | alma-star-formation-laws |
+| scipy curve_fit | 11 | star_formation 3, protoplanetary_disks 3, nearby_galaxies 2 | - | graybody SED fitting (2018A&A...615L..14M); Power-law fit of brightness temperature (2019ApJ...875...55W) | (line and profile fitting) |
+| spcat | 11 | astrochemistry 10, star_formation 1 | - | Spectral predictions (2016A&A...590A..93M); Predictions (2018A&A...610A..44M) | alma-line-identification |
+| spectralradex | 11 | protoplanetary_disks 3, nearby_galaxies 3, astrochemistry 2 | - | Non-LTE radiative transfer modelling of PN in GMC 6 (2022A&A...659A.158H); Python interface to run RADEX grids (2022A&A...667A.131B) | alma-non-lte-excitation |
+| stacker | 11 | high_z_galaxies 9, nearby_galaxies 2 | - | visibility stacking of faint sources (2015ApJ...810..133I); stacking model-subtracted visibilities (2017ApJ...834..135T) | alma-stacking |
+| torus | 11 | protoplanetary_disks 8, evolved_stars 1, milky_way_ism 1 | - | dust temperatures and SED (2015ApJ...799..204C); dust density and thermal structure, synthetic SED/images (2016ApJ...832..110C) | alma-radiative-transfer-modelling |
+| uclchem | 11 | nearby_galaxies 5, astrochemistry 3, star_formation 2 | - | gas-grain chemical modelling (2019MNRAS.484L..43Z); Chemical gas-history modelling coupled to RADEX (2020MNRAS.496.5308S) | alma-chemical-modelling |
+| caldb | 10 | nearby_galaxies 3, agn_and_quasars 3, high_z_galaxies 2 | v4.9.1 (2), 4.7.6 (1), 4.9.2.1 (1), 4.9.0 (1) | Chandra calibration database (2020ApJ...895..135K); Calibration database used with CIAO for Chandra reprocessing (2021A&A...650A.153D) | (X-ray, other facility) |
+| ds9 | 10 | nearby_galaxies 4, star_formation 4, agn_and_quasars 1 | - | visual cloud identification (2017ApJ...841...43E); by-eye source regions (2017ApJ...842...92G) | (viewer) |
+| eso muse pipeline | 10 | high_z_galaxies 5, nearby_galaxies 3, agn_and_quasars 2 | 1.6.2 (2), 1.6 (1), v1.6.1 (1), v2.4.1 (1) | MUSE data reduction in ESO Reflex (2017BAAA...59..124T); MUSE data reduction (2017MNRAS.465L..89P) | (MUSE, other facility) |
+| fixvis | 10 | protoplanetary_disks 6, agn_and_quasars 2, high_z_galaxies 1 | - | Phase shifts to align datasets (2018ApJ...869L..41A); Phase-shifting visibilities to the [C II] centroid (2020ApJ...904..131N) | alma-array-combination, alma-variability-time-domain |
+| gildas mapping | 10 | star_formation 4, evolved_stars 2, high_z_galaxies 2 | - | Analysis of final images (2016A&A...593L..14F); final cleaning of maps (2017A&A...597A.119T) | alma-imaging-choices |
+| gildas/mapping | 10 | milky_way_ism 4, nearby_galaxies 3, star_formation 2 | - | analysis of FITS cubes, moment maps (2016A&A...594A..70K); short-spacing visibilities, merging and imaging (2016Natur.537..207G) | alma-imaging-choices |
+| hiiphot | 10 | nearby_galaxies 10 | - | HII region catalog (2018ApJ...863L..21K); HII region identification (2018PASJ...70...73H) | alma-star-formation-laws |
+| hyperion | 10 | star_formation 3, protoplanetary_disks 3, debris_disks 2 | - | Dust continuum radiative transfer (2015ApJ...813L..19J); Monte Carlo radiative transfer models (2017ApJ...840L..12S) | alma-radiative-transfer-modelling |
+| interferopy | 10 | high_z_galaxies 9, agn_and_quasars 1 | - | Python package providing the findclumps algorithm for blind emission-... (2023Natur.617..261K); Public code package used in this work (specific task not stated) (2024A&A...684A..33K) | alma-redshift-line-search |
+| lamda database | 10 | protoplanetary_disks 3, star_formation 2, high_z_galaxies 1 | - | molecular data for CO (2013ApJ...774...16R); collisional rate coefficients (2014ApJ...785..149S) | alma-non-lte-excitation |
+| mcmax | 10 | protoplanetary_disks 4, evolved_stars 4, exoplanets 1 | 3D version (1) | radiative transfer disk modelling (2014ApJ...788L..34P); 2D temperature and density structure and SED (2016MNRAS.461..385B) | alma-radiative-transfer-modelling |
+| nasa’s astrophysics data system | 10 | agn_and_quasars 3, debris_disks 2, nearby_galaxies 2 | - | Used in the research; specific purpose not stated. (2020MNRAS.499.5915M); Acknowledged research use (2021A&A...649A.105F) | (literature) |
+| pluto | 10 | protoplanetary_disks 7, star_formation 3 | 4.1 (1), 4.3 (1), 4.2 (RHD simulation) (1), 4.4 (... | MHD code for the comparison collapse simulation (2020ApJ...904..168B); Solve gravito-radiation-hydrodynamics for the massive-protostar simul... (2020ApJ...904..181L) | alma-hydro-simulation-comparison |
+| ramses | 10 | star_formation 7, nearby_galaxies 2, high_z_galaxies 1 | - | Radiation-MHD simulations (2016A&A...593L..14F); MHD collapse simulation with ambipolar diffusion (code name inferred... (2017A&A...606A..35G) | alma-hydro-simulation-comparison |
+| scipy (curve_fit) | 10 | star_formation 4, agn_and_quasars 2, debris_disks 1 | - | Gaussian fit to line and uncertainties (2019AJ....157..117M); SED blackbody and Gaussian line fits (2021A&A...648A..41V) | (line and profile fitting) |
+| shape | 10 | evolved_stars 8, stellar_physics 1, solar_system 1 | X.alpha.619 (2018) (1) | Morpho-kinematical modelling (2015A&A...574A...5D); Interactive 3D spatio-kinematical modelling (2017A&A...597A..27S) | alma-evolved-star-envelopes |
+| skysampler | 10 | nearby_galaxies 8, high_z_galaxies 1, agn_and_quasars 1 | - | Sampling CLEAN-component gas distribution into particles (2019MNRAS.485.4359S); sampling CLEAN components into gas particles (2019MNRAS.490..319N) | alma-smbh-gas-dynamics |
+| splash | 10 | protoplanetary_disks 9, evolved_stars 1 | - | Visualisation of SPH output (listed in Software) (2018ApJ...860L..13P); visualisation of SPH output (2018MNRAS.475.5296D) | alma-hydro-simulation-comparison |
+| swarp | 10 | high_z_galaxies 6, transients 2, nearby_galaxies 2 | - | image co-addition (2017PASJ...69...20H); resampling to common grid (2018ApJ...856..121G) | (image co-addition) |
+| uvmem | 10 | protoplanetary_disks 9, debris_disks 1 | - | Maximum-entropy image synthesis of visibilities (2015ApJ...811...92C); Maximum-entropy image synthesis and deconvolved models (2015ApJ...812..126C) | alma-imaging-choices |
+| uvsub | 10 | high_z_galaxies 3, protoplanetary_disks 3, agn_and_quasars 1 | - | Subtracting 2D Gaussian models of secondary sources from the uv-data (2021A&A...654A..90L); Subtract tertiary model visibilities. (2021ApJ...907L..10R) | alma-uv-plane-fitting, alma-continuum-subtraction |
+| vip | 10 | protoplanetary_disks 7, star_formation 2, debris_disks 1 | - | AO image reduction, detection, PCA, contrast curves (2019ApJ...878...45B); PCA ADI reduction of NIRC2 data (2020AJ....159..118U) | (high-contrast imaging) |
+| aegean | 9 | high_z_galaxies 7, agn_and_quasars 1, nearby_galaxies 1 | v1.9.5-56 (2) | source extraction (2015ApJ...815L...8U); Source finding (2016PASJ...68...36H) | alma-source-extraction-counts |
+| alma science pipeline | 9 | high_z_galaxies 4, nearby_galaxies 3, protoplanetary_disks 1 | r40896 of Pipeline-C (1), Cycle 6 (version 5.4 (1... | 7M calibration (2019PASJ...71...85M); Calibration of all data sets (2020ApJ...902L..33G) | alma-archival-data-reuse |
+| alma sensitivity calculator | 9 | protoplanetary_disks 2, high_z_galaxies 2, solar_system 2 | - | Detection limits for predicted isotopologue lines (2014A&A...562A..26B); Comparison of predicted flux limits with ALMA sensitivity for future... (2015MNRAS.447.3936M) | (planning) |
+| applycal | 9 | high_z_galaxies 3, protoplanetary_disks 2, star_formation 1 | - | Apply continuum self-calibration solutions to full spectral dataset (2020ApJ...905...25G); Applying calibration tables in CASA self-calibration loops (2022MNRAS.513.5790C) | alma-self-calibration |
+| blobcat | 9 | high_z_galaxies 9 | - | 3 GHz catalogue at 2.5'' resolution (2017A&A...602A..54M); GMRT source catalogue (2017A&A...606A..17M) | alma-source-extraction-counts |
+| bpass | 9 | high_z_galaxies 7, star_formation 1, nearby_galaxies 1 | v2.1 (2), v2.0 (1), v2.2.1 (1), v2.0 / v2.2.1 (1) | input stellar spectra (2019ApJ...876....1T); Input stellar spectrum (2020ApJ...896...93H) | alma-chemical-modelling |
+| class/gildas | 9 | star_formation 3, astrochemistry 2, evolved_stars 2 | - | APEX baseline subtraction and gridding (2013ApJ...774...73I); host for Weeds (2014Sci...345.1584B) | (single-dish reduction) |
+| corner.py | 9 | protoplanetary_disks 2, debris_disks 2, high_z_galaxies 2 | - | Posterior corner plots (2017AJ....153..233F); Corner plots of MCMC output (2017ApJ...842....8M) | (posterior plots) |
+| cutex | 9 | star_formation 8, astrochemistry 1 | not stated (modified (1), modified version (1) | core-finding in the Pattle15 comparison catalogue (not run by authors) (2017ApJ...838..114K); Herschel source extraction (by Molinari et al.) (2017ApJ...849...25L) | alma-core-extraction-cmf |
+| dsharp_opac | 9 | protoplanetary_disks 9 | v1.1.0 (1), v1.1.0 (from referen (1) | Opacities and Python tools for kappa and beta (2019ApJ...881..159M); Dust opacities and beta (2020ApJ...891...48H) | alma-dust-continuum-mass, alma-radiative-transfer-modelling |
+| dustpy | 9 | protoplanetary_disks 9 | 1.0.5 (2), v1.0.3 (1), 0.5.6 (1) | Dust evolution simulations (growth, fragmentation, erosion) (2021A&A...649A.122P); 1D dust coagulation, fragmentation and transport simulations adapted... (2024MNRAS.527.9668H) | alma-hydro-simulation-comparison |
+| fast++ | 9 | high_z_galaxies 9 | v1.2 (1) | SED fitting with arbitrary SFH (2018A&A...611A..22S); SED fitting for stellar masses, SFRs, SFHs (2018A&A...618A..85S) | alma-sed-fitting |
+| frankenstein | 9 | protoplanetary_disks 8, debris_disks 1 | v1.1.0 (1) | Gaussian-process reconstruction of the radial intensity profile from... (2020MNRAS.498.1319M); Non-parametric visibility fitting (2024A&A...689A.104D) | alma-disk-substructure-profiles |
+| gaussian 09 | 9 | astrochemistry 8, evolved_stars 1 | Revision D.01 (4), Revision B.01 (2), 09 (1), Rev... | DFT of alumina clusters (2017A&A...608A..55D); Ab initio calculations (2017A&A...608A..96L) | (quantum chemistry) |
+| getsources | 9 | star_formation 8, agn_and_quasars 1 | v1.140127 (2), 1.140127 (1) | Source extraction (2016ApJ...825L..15C); source extraction and measurement (2018A&A...616L..10F) | alma-core-extraction-cmf |
+| ipole | 9 | agn_and_quasars 9 | - | General relativistic ray tracing of snapshots (2019ApJ...875L...5E); Ray tracing of GRMHD snapshots (2020ApJ...901...67W) | (GRMHD ray tracing) |
+| jupyter | 9 | protoplanetary_disks 4, nearby_galaxies 2, agn_and_quasars 1 | - | Interactive computing (listed in Software section) (2021ApJ...915...99I); General data analysis (listed in acknowledgements) (2023A&A...675A.131T) | (general) |
+| jwst science calibration pipeline | 9 | nearby_galaxies 4, agn_and_quasars 2, high_z_galaxies 2 | v1.9.4 (1), 1.8.2 (1), 1.10.1 (1), 1.11.4 (1) | Stages 1 and 2 processing of NIRSpec IFU raw data, CRDS context jwst_... (2024A&A...683A.169W); Reduction of NIRSpec data (2024A&A...684A..24P) | (JWST, other facility) |
+| linmix_err | 9 | nearby_galaxies 3, protoplanetary_disks 3, stellar_physics 2 | - | Bayesian linear regression (IDL Astronomy Library) (2016ApJ...827...81I); Bayesian regression with censoring (2016ApJ...831..125P) | alma-star-formation-laws |
+| mast | 9 | high_z_galaxies 4, nearby_galaxies 2, protoplanetary_disks 1 | - | Retrieve images and spectra (2021ApJ...909..204F); Access to TESS data (2024AJ....167..232T) | (archive) |
+| mgefit | 9 | nearby_galaxies 9 | 5.0 (1), 5.0 (Software sectio (1) | MGE of molecular gas surface density (2020MNRAS.496.4061D); Multi-Gaussian Expansion (MGE) fitting of stellar and ISM surface den... (2022MNRAS.509.2920N) | alma-smbh-gas-dynamics |
+| montage | 9 | nearby_galaxies 5, star_formation 3, high_z_galaxies 1 | - | mosaicking NIR images (2013ApJ...774...73I); re-creating the Herschel mosaic for astrometric check (2015ApJ...804...37L) | (mosaicking) |
+| mpdaf | 9 | high_z_galaxies 6, nearby_galaxies 2, cosmology 1 | 2.5 (1) | Extracting MUSE spectra (2019MNRAS.485.1595P); merging exposures (2021A&A...645A.120F) | alma-redshift-line-search |
+| polconvert | 9 | agn_and_quasars 6, instrumentation 2, milky_way_ism 1 | - | ALMA SEFDs (2019ApJ...871...30I); Linear-to-circular polarization conversion of ALMA data (2019ApJ...875L...2E) | (VLBI) |
+| pymultinest | 9 | high_z_galaxies 8, transients 1 | - | SGRB Eiso distribution median and dispersion (2017ApJ...850L..21K); python wrapper for MultiNest (2019A&A...632L...7J) | alma-lens-modelling |
+| scipy.optimize.curve_fit | 9 | protoplanetary_disks 4, high_z_galaxies 3, agn_and_quasars 2 | - | least-squares fitting (2019ApJ...887..235L); Gaussian fits to B84 profile (2020ApJ...891...48H) | (line and profile fitting) |
+| spfit | 9 | astrochemistry 8, evolved_stars 1 | - | Spectroscopic parameter fitting (2014A&A...569L...5M); Computational core of the global fit (2017ApJS..233...11B) | alma-line-identification |
+| starlight | 9 | nearby_galaxies 7, transients 1, agn_and_quasars 1 | latest version (Werl (1) | Stellar population synthesis (2019MNRAS.486..123R); Stellar continuum synthesis and subtraction in GMOS and SIFS cubes (2020MNRAS.492.5121D) | (stellar populations) |
+| tiny tim | 9 | nearby_galaxies 7, protoplanetary_disks 1, agn_and_quasars 1 | 6.3 (1) | check HST PSF (2015ApJ...806...39O); Synthetic WFPC2 PSF (2016ApJ...823...51B) | (HST PSFs) |
+| alma observing tool | 8 | high_z_galaxies 3, nearby_galaxies 2, agn_and_quasars 2 | - | Theoretical sensitivity (2014ApJ...796..117G); Scheduling block design with manually fixed SPWs (2017MNRAS.470.3775V) | (planning) |
+| cmasher | 8 | protoplanetary_disks 5, nearby_galaxies 1, cosmology 1 | - | Scientific colormaps for plotting (2023ApJ...945...42B); Scientific colormaps for plotting. (2023MNRAS.520.1613M) | (plotting) |
+| common astronomy software applications (casa) | 8 | star_formation 3, high_z_galaxies 3, nearby_galaxies 1 | 4.5.1 (1), v4.5 (Band 3); v4.7  (1), 5.6.2 (1), 5... | Data calibration and imaging (2020ApJ...905...25G); Data reduction, imaging, Gaussian fitting and primary-beam models (2020MNRAS.498.4635D) | alma-imaging-choices |
+| eso x-shooter pipeline | 8 | high_z_galaxies 3, protoplanetary_disks 2, stellar_physics 1 | 2.2 (1), 2.9.3 (1), 3.2.0 (1), V2.7.0 (1) | X-shooter reduction (2015Natur.519..327W); reduction of X-Shooter spectra (2017A&A...600L...3C) | (ESO, other facility) |
+| fixplanets | 8 | protoplanetary_disks 8 | - | Reconcile different pointing centers (2018ApJ...869L..41A); Discussed as an alternative for field-coordinate changes; not used be... (2021A&A...648A..33M) | alma-array-combination, alma-variability-time-domain |
+| hochunk3d | 8 | protoplanetary_disks 6, star_formation 2 | - | scattered light radiative transfer (2018ApJ...854..130W); Monte Carlo radiative transfer dust disk model (2018ApJ...858..112L) | alma-radiative-transfer-modelling |
+
+The aggregate lists 2551 further names with fewer papers. For counts inside one technique's analysis steps, see
+the router in `../SKILL.md` and the pack aggregate "Software named in each technique's matched steps".
+
+=== WRITER CONTEXT (readers, team lessons, contamination rule; not a literature source) ===
+# Who reads these skills, and what went wrong in their runs (CosmicCoder meeting notes, Oct-Nov 2026)
+
+Distilled from the CosmicCoder agent meeting notes (all pages) for skill writers. This file is for YOU, the writer.
+Do not quote it as a literature source. Lessons below may appear in a skill only as clearly labelled team experience
+("in CosmicCoder agent runs ...") and only in general form.
+
+## The readers
+
+The skills are read by research agents working on ALMA data: single Claude Code agents, research frameworks
+(Denario, AutoResearch) and teams of agents (questioner, worker, reviewer/validator, editor) that post findings to a
+shared forum and are graded against published papers or by astronomers. Tasks come in two shapes:
+
+- **Bottom-up / reproduction**: given an ALMA dataset (and maybe a literature summary), find what the paper found.
+- **Top-down / novel**: given a research question, pick the method and the data, then answer it.
+
+Evaluation decomposes a paper into (hypothesis, experiment, result, finding) tuples and asks: are the individual
+experiments correct, are the final conclusions correct, are the findings significant, are they novel. Experts want
+each experiment traceable to code.
+
+## Lessons from the runs (write skills that prevent these)
+
+1. **Agents reimplemented a naive version of a standard package** (a cube kinematics fitter) and got a worse
+   measurement than the paper. Agents need to know which established tool does the job and reach for it.
+2. **One dataset is rarely enough.** Good projects needed several datasets to clear up inconsistencies and to check
+   earlier literature claims, plus tables and numbers from other papers. One framework gave up when a table from
+   another paper was needed.
+3. **Downloading whole projects is a trap.** An agent tried to fetch about 4 TB of raw data by project code; the
+   analysis needed only specific products, which astroquery could fetch. Older-cycle data that needed
+   reprocessing could not be processed in that environment (CASA/tclean was not installable on one HPC system).
+   Archive image products were often usable as delivered.
+4. **Unstated and inherited conventions break reproductions.** A paper in a series reused corrections (for
+   example flux and number recovery from artificial source insertion) and design choices from its earlier
+   papers without restating them. Reproduced images were noisier than the paper's and nobody could tell what
+   extra preprocessing the authors had done.
+5. **"Done" must mean executed and checked.** A framework's judge approved tasks when code had been written but
+   not run. Stricter gates (the file ran, outputs exist and look sane) fixed it.
+6. **Context flooding.** Agents printed huge raw tables into their context, costing millions of input tokens.
+   Summarise; write tables to files.
+7. **Overconfident conclusions.** One system's conclusions were "more confident than its evidence supports".
+   Single agents stopped after minutes having characterised the obvious bright component and missed the faint
+   compact signal that was the real finding.
+8. **No stopping criterion.** Open-ended runs became a money pit, agents going back and forth verifying claims
+   they could only speculate about given the data. Agents need a rule for when the evidence is enough and when a
+   question cannot be settled with the data in hand (and should be written down as open).
+9. **Verifiers and editors help.** Adding a verifier/editor that asked "what is the most important question?"
+   raised scores; teams with worker and validate roles beat strict pipelines; adaptive iterative loops beat
+   heavy fixed pipelines. Staged work (each stage with tests and an answer key, stop or retry by stage) worked for
+   model reproductions; open items needing expert confirmation were recorded rather than forced.
+10. **Novelty is easy to fake.** Ideation agents treated unpublished data as proof of a novel question without
+    checking whether the same question had been answered with other datasets, and repackaged an observing
+    proposal into analysis tasks instead of distinct hypotheses.
+11. **Results need tolerances.** Reproductions reported agreement to stated precision (for example within 0.3% or
+    "within reading precision" of a figure) and explained each remaining mismatch (smoothing of a published
+    figure, a possible table typo) instead of declaring success or failure overall.
+
+## Contamination rule (critical)
+
+The team's evaluation tasks are held out of the corpus. Never name, describe or hint at their targets or results
+in a skill: no L1521F / L1521F-IRS, no "CMF across Galactic environments" protocluster series, no z~6 quasar-host
+[CII] kinematics sample results, no SZ quasar-feedback detection in HE 0515-4414, no specific numbers from those
+papers. Write general practice from the pack. If a lesson above came from one of those tasks, state it only in
+general form (as it is phrased above).
+
+=== EVIDENCE PACK (analysis-software-map) ===
+# Evidence pack (workflow): Choosing established analysis software instead of reimplementing it (`analysis-software-map`)
+
+Scope: which packages ALMA papers use for which job, by field and technique, with versions and what each was used for, so an agent reaches for the standard tool
+
+Built from 3422 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (quoted strings are verbatim from the paper). Years 2012-2026.
+Aggregates come from card fields the technique packs do not show. Lines marked (card) are the card author's inference about the paper, not the paper's own words.
+
+## Aggregates over all member papers
+
+### Science fields (first field per paper)
+- star_formation: 679
+- high_z_galaxies: 677
+- protoplanetary_disks: 603
+- nearby_galaxies: 524
+- agn_and_quasars: 226
+- evolved_stars: 147
+- astrochemistry: 144
+- debris_disks: 98
+- milky_way_ism: 69
+- solar_system: 61
+- stellar_physics: 56
+- transients: 41
+- galaxy_clusters_and_sz: 40
+- sun: 22
+- instrumentation: 19
+- cosmology: 9
+- exoplanets: 5
+- other: 2
+
+### Packages by number of papers (name: papers; main fields; versions seen; what it was used for)
+
+- **casa**: 2638 papers; fields: star_formation 571, high_z_galaxies 528, protoplanetary_disks 471; versions: 4.7.2 (68), 5.4.0 (54), 5.1.1 (53), 4.7.0 (52)
+  - used for: 2012A&A...542L..34N: data processing and imaging
+  - used for: 2012A&A...544L...7P: calibration and imaging
+  - used for: 2012A&A...548A..69N: imaging, uvcontsub, cleaning, self-calibration
+  - used for: 2012ApJ...750L..21B: Calibration and imaging
+- **astropy**: 559 papers; fields: star_formation 127, nearby_galaxies 113, high_z_galaxies 104; versions: v5 (2), 5.0 (2), 3.2.1 (1), v.5.3 (1)
+  - used for: 2014ApJ...788L..34P: acknowledged research tool
+  - used for: 2014ApJ...791..108F: general analysis
+  - used for: 2014ApJ...796..120W: Acknowledged as used in the work
+  - used for: 2014MNRAS.445.1412Z: general analysis
+- **emcee**: 410 papers; fields: protoplanetary_disks 179, high_z_galaxies 75, debris_disks 51; versions: v3 (3), 2.2.0 (1), v3.0.1 (1), v2.2.1 (1)
+  - used for: 2014A&A...568A..92M: modified blackbody fits
+  - used for: 2014ApJ...783L..13P: MCMC fitting of ring and vortex models
+  - used for: 2014Natur.511..567J: MCMC sampling
+  - used for: 2015ApJ...798..124R: MCMC fitting of visibility models
+- **tclean**: 380 papers; fields: high_z_galaxies 98, star_formation 92, protoplanetary_disks 64; versions: CASA 5.6.1 (3), CASA 5.3 (3), CASA v5.6.0 (1), CASA 5.4.0 (1)
+  - used for: 2017ApJ...842L..24A: Imaging and multiscale deconvolution
+  - used for: 2017ApJ...850L...5T: H30a cube imaging with auto-multithresh
+  - used for: 2018A&A...619A.161C: Fourier inversion and deconvolution
+  - used for: 2018ApJ...853...24U: CLEAN imaging
+- **matplotlib**: 212 papers; fields: protoplanetary_disks 56, nearby_galaxies 40, star_formation 38; versions: 1.4.3 (1), v.3.7.1 (1), 3.6 (1)
+  - used for: 2016A&A...590A.127W: plotting
+  - used for: 2016ApJ...820L..40A: acknowledged software (figures)
+  - used for: 2016ApJ...831L..12K: plotting
+  - used for: 2017A&A...606A..88T: figures
+- **radex**: 212 papers; fields: star_formation 63, nearby_galaxies 55, protoplanetary_disks 30; versions: online version (2), online (1)
+  - used for: 2013A&A...555A..73K: Non-LTE excitation analysis
+  - used for: 2013A&A...555A.112P: HCO+ abundance
+  - used for: 2013A&A...557A.132M: Initial column densities and column-density sensitivities
+  - used for: 2013ApJ...770..142N: Non-LTE radiative transfer models and correction factors
+- **scipy**: 196 papers; fields: protoplanetary_disks 45, nearby_galaxies 41, star_formation 29; versions: v0.17.0 (1), 1.8.1 (1), v.1.10.1 (1), 1.10.1 (from referen (1)
+  - used for: 2015ApJ...812...43B: griddata and gaussian_filter for running average
+  - used for: 2016A&A...590A..33P: Levenberg-Marquardt fitting
+  - used for: 2017ApJ...851..126V: Listed software
+  - used for: 2017MNRAS.471.2124L: Spearman rank correlation
+- **gildas**: 187 papers; fields: star_formation 41, high_z_galaxies 39, evolved_stars 31; versions: apr14c (1), jul18a (1), oct18b (1), nov18a (1)
+  - used for: 2013A&A...554A..78P: Reduction and imaging of PdBI and ALMA-SV data
+  - used for: 2013A&A...555A.112P: Combining Mopra and ALMA; N2H+ hyperfine fits
+  - used for: 2013A&A...557L..11B: Imaging and data analysis
+  - used for: 2013A&A...558A.124C: Final analysis
+- **miriad**: 183 papers; fields: star_formation 60, nearby_galaxies 29, high_z_galaxies 22; versions: 4.3.8 (3), uvfit Revision 1.10, (1), 20120419 ATNF versio (1), 1.0 (1)
+  - used for: 2012A&A...538A..44D: SMA data reduction
+  - used for: 2012ApJ...754L..17Z: SMA imaging (INVERT, robust=0)
+  - used for: 2013A&A...549L...3P: Continuum subtraction of SMA data
+  - used for: 2013ApJ...776L..38F: imaging and deconvolution of SMA data
+- **numpy**: 168 papers; fields: nearby_galaxies 40, protoplanetary_disks 37, high_z_galaxies 24; versions: 1.19.2 (1), v.1.24.0 (1), 1.22 (1)
+  - used for: 2017ApJ...848L..21A: listed in software section
+  - used for: 2019ApJ...871..185L: Listed in software
+  - used for: 2019ApJ...877L..22L: listed in software section
+  - used for: 2020ApJ...889..172K: Listed in software
+- **radmc-3d**: 168 papers; fields: protoplanetary_disks 102, star_formation 37, debris_disks 23; versions: 0.41 (5), 0.39 (4), 2.0 (3), v0.30 (1)
+  - used for: 2012ApJ...757..129R: scattered-light image of warp model
+  - used for: 2014Natur.511..567J: model disk radiative transfer
+  - used for: 2015ApJ...806..154C: radiative transfer and ray tracing of model disk
+  - used for: 2015ApJ...808..102K: Monte Carlo dust temperature
+- **aplpy**: 138 papers; fields: star_formation 61, nearby_galaxies 31, high_z_galaxies 10; versions: 1.1.1 (3), v.2.1.0 (1), v2.0 (1)
+  - used for: 2013ApJ...777..126S: Plotting
+  - used for: 2014ApJ...788L..34P: plotting
+  - used for: 2014ApJ...791..108F: plotting
+  - used for: 2014MNRAS.445.1412Z: plotting
+- **galfit**: 121 papers; fields: high_z_galaxies 94, nearby_galaxies 16, agn_and_quasars 9; versions: 3 (2), 3.0.5 (2), v3.0.5 (2)
+  - used for: 2013ApJ...779...67B: lens galaxy modelling
+  - used for: 2014A&A...568A..92M: foreground/background flux separation
+  - used for: 2014ApJ...792...94D: Two-component Sersic fit to HST image for dust map
+  - used for: 2015ApJ...799...81S: Sérsic fits to stacked and simulated sources
+- **sextractor**: 113 papers; fields: high_z_galaxies 78, nearby_galaxies 10, star_formation 9; versions: 2.5.0 (6), v2.19.5 (4), v2.5.0 (3), v2.8.6 (2)
+  - used for: 2014ApJ...785..111W: source extraction in CANDELS catalog (from Guo et al.)
+  - used for: 2014ApJ...788..125S: source catalogs, astrometric alignment
+  - used for: 2014ApJ...795....5O: Source extraction
+  - used for: 2014Natur.510..247H: Aperture photometry on Herschel 160 um image
+- **aips**: 110 papers; fields: star_formation 22, agn_and_quasars 22, high_z_galaxies 19; versions: classic (1), 31DEC19 (1), 31DEC23 (1)
+  - used for: 2013ApJ...763..120C: calibration (and presumably imaging)
+  - used for: 2013ApJ...768L..38H: Image analysis
+  - used for: 2014ApJ...796...84R: data reduction, FLATN mosaics
+  - used for: 2014MNRAS.442..577T: GMRT data reduction and BLSUM flux measurements
+- **cigale**: 101 papers; fields: high_z_galaxies 75, nearby_galaxies 16, agn_and_quasars 7; versions: v2022.0 (2), 2022.1 (2), v0.11 (1), 0.11.0 (1)
+  - used for: 2013ApJ...779...67B: SED fitting
+  - used for: 2015ApJ...807..180W: SED fitting
+  - used for: 2015ApJ...812...88M: SED fitting
+  - used for: 2016A&A...596A..75S: full-SED sanity-check fit
+- **magphys**: 98 papers; fields: high_z_galaxies 86, nearby_galaxies 11, galaxy_clusters_and_sz 1; versions: high-z extension (5), high-z version (3), high-redshift extens (2), latest version (2)
+  - used for: 2014A&A...562A..70M: SED fitting
+  - used for: 2014A&A...568A..92M: SED fitting
+  - used for: 2015ApJ...811..124S: dust SED fitting to derive dust masses
+  - used for: 2015Natur.519..327W: UV-FIR SED fit
+- **imfit**: 96 papers; fields: high_z_galaxies 38, star_formation 18, protoplanetary_disks 13; versions: v1.5 (1), 5.4.0-70 (1), CASA v4.7.2 (1), CASA 6.6.6 (1)
+  - used for: 2017ApJ...844..123F: elliptical Gaussian fits for source flux, position, size
+  - used for: 2017ApJ...850L...6A: Source positions and sizes
+  - used for: 2018A&A...611A..22S: continuum size/flux modeling
+  - used for: 2018A&A...616A.110E: Sersic modelling of neighbours for GS8 photometry
+- **uvcontsub**: 94 papers; fields: high_z_galaxies 26, protoplanetary_disks 18, agn_and_quasars 13; versions: CASA 5.1.1 (1), CASA 5.4.0 (1), CASA v5.6.1 (1), CASA v6.2.1-7 (1)
+  - used for: 2018MNRAS.475.3004S: continuum subtraction
+  - used for: 2020ApJ...904...77G: Continuum subtraction in calibrated uv-data
+  - used for: 2020ApJ...904..131N: Continuum subtraction in the uv-plane with a first-order fit
+  - used for: 2020ApJ...905..122H: Continuum subtraction
+- **cassis**: 87 papers; fields: astrochemistry 42, star_formation 30, evolved_stars 5; versions: 5.0 (2), 5.1.1 (1)
+  - used for: 2015ApJ...813L..19J: LTE line modeling of CH3CN
+  - used for: 2016A&A...590L...6C: line identification and LTE synthetic spectra
+  - used for: 2016A&A...592A..42K: chi2 model testing of AlO profile
+  - used for: 2017A&A...597A..53L: Checking lines against CDMS and JPL databases
+- **astrodendro**: 84 papers; fields: star_formation 56, nearby_galaxies 24, milky_way_ism 3
+  - used for: 2014MNRAS.445.1412Z: dendrograms to derive properties of HII regions and GMCs
+  - used for: 2016ApJ...831...32N: dendrogram clump identification
+  - used for: 2017ApJ...842...92G: continuum source identification
+  - used for: 2017ApJ...850..139W: dendrogram decomposition
+- **alma pipeline**: 83 papers; fields: high_z_galaxies 14, evolved_stars 13, agn_and_quasars 13; versions: 2020.1.0.40 (5), 2023.1.0.124 (5), r42866 (2), 2022.2.0.68 (2)
+  - used for: 2015A&A...582L...4M: Standard calibration
+  - used for: 2017A&A...600A..48G: data reduction
+  - used for: 2017ApJ...835L..13S: calibration
+  - used for: 2017ApJ...851...98T: Calibration
+- **uvmultifit**: 81 papers; fields: high_z_galaxies 20, agn_and_quasars 14, evolved_stars 11; versions: 2.1.4-r3 (1), 2.2.0-r3 (1), 3.0.0 (1)
+  - used for: 2013A&A...558A.123M: Visibility model-fitting of the two lensed images
+  - used for: 2014A&A...563A.136M: Visibility model fitting
+  - used for: 2014A&A...566A.112M: Spectra extraction from visibilities
+  - used for: 2014A&A...566L...6M: Extract absorption spectra toward each image via visibility modelling
+- **galario**: 76 papers; fields: protoplanetary_disks 52, debris_disks 12, high_z_galaxies 5; versions: 1.2 (1)
+  - used for: 2018A&A...610A..24F: synthetic visibilities
+  - used for: 2018A&A...619A.161C: Fourier-transforming model and sampling at observed uv-locations
+  - used for: 2018ApJ...859...32P: cross-check fits with free geometry
+  - used for: 2018ApJ...866L...6C: Visibility model computation
+- **photutils**: 76 papers; fields: high_z_galaxies 38, nearby_galaxies 19, agn_and_quasars 6; versions: 1.0.0 (2), 1.5.0 (2), 1.10.0 (2), 1.8.0 (2)
+  - used for: 2019A&A...622A..89V: Aperture photometry of Herschel images
+  - used for: 2019AJ....157..131B: named in acknowledgements (likely aperture photometry)
+  - used for: 2019AJ....158...47M: Elliptical annulus radial profiles
+  - used for: 2019ApJ...871..109P: sky RMS and background by sigma clipping
+- **lime**: 67 papers; fields: protoplanetary_disks 39, star_formation 11, evolved_stars 9; versions: 1.9.5 (3), 1.5 (2), v1.6 (1), v. 1.5 (with custom  (1)
+  - used for: 2012ApJ...757..129R: 3D non-LTE radiative transfer for CO model cubes
+  - used for: 2012Natur.490..232M: 3D radiative transfer of the SPH model
+  - used for: 2013A&A...557A.132M: Line radiative transfer of model emission
+  - used for: 2013ApJ...774...16R: non-LTE level populations and channel maps
+- **cloudy**: 66 papers; fields: high_z_galaxies 47, agn_and_quasars 9, nearby_galaxies 8; versions: 17.01 (3), 13.03 (2), c13.03 (2), v17.00 (2)
+  - used for: 2012A&A...542L..34N: photoionization models of [NII]/[CII]
+  - used for: 2013A&A...559A..29C: FeII templates
+  - used for: 2013ApJ...763..120C: photoionization models of Lya-1
+  - used for: 2014ApJ...795....5O: Line emissivity model of [OIII]88 (Inoue+2014)
+- **3dbarolo**: 65 papers; fields: high_z_galaxies 29, nearby_galaxies 26, agn_and_quasars 8; versions: v1.3 (1), 1.6 (1), 1.6.1 (1), 1.6.9 (git commit 17 (1)
+  - used for: 2016ApJ...823...68S: tilted-ring modeling
+  - used for: 2017ApJ...845L...5I: tilted-ring fits to velocity and dispersion maps
+  - used for: 2017PASJ...69...83M: tilted-ring kinematics fit
+  - used for: 2018ApJ...859..144A: Tilted-ring kinematic modelling
+- **python**: 65 papers; fields: nearby_galaxies 16, high_z_galaxies 11, protoplanetary_disks 10; versions: 2.7 (3), 3 (3), 3.7 (2), 3.9 (2)
+  - used for: 2016NatSR...626896A: fit uncertainties
+  - used for: 2017A&A...605A..21C: Data analysis
+  - used for: 2017A&A...608A..38O: self-made scripts
+  - used for: 2019A&A...623A.124C: data analysis
+- **xspec**: 62 papers; fields: nearby_galaxies 14, transients 10, high_z_galaxies 8; versions: 12.9.0 (3), 12.9.1 (2), 12.10.0c (2), 12.10.0e (2)
+  - used for: 2013ApJ...778..179W: X-ray spectral fitting and simulations
+  - used for: 2014A&A...562A..67G: X-ray spectral fit
+  - used for: 2014ApJ...781L..39T: X-ray spectral modeling
+  - used for: 2015ApJ...799..204C: X-ray template spectra
+- **ciao**: 60 papers; fields: galaxy_clusters_and_sz 13, nearby_galaxies 13, agn_and_quasars 10; versions: 4.9 (7), 4.10 (4), 4.7 (3), v4.15 (3)
+  - used for: 2013ApJ...778..179W: extracting and combining E-CDF-S-only spectra (specextract, combine_spectra, chandra_repro)
+  - used for: 2016ApJ...829...53V: Chandra data reprocessing
+  - used for: 2016ApJ...829L..23B: Chandra data reduction
+  - used for: 2016ApJ...832..114M: Chandra reprocessing and flux limits
+- **eazy**: 60 papers; fields: high_z_galaxies 55, agn_and_quasars 3, star_formation 1; versions: EAZY_v1.0 templates (1), 2015-05-08 (1)
+  - used for: 2014ApJ...782...19S: photometric redshifts
+  - used for: 2014ApJ...788..125S: cross-check photometric redshifts and emission-line template test
+  - used for: 2015ApJ...799...81S: photometric redshifts
+  - used for: 2015ApJ...811L...3T: Rest-frame UVJ colours
+- **iraf**: 59 papers; fields: high_z_galaxies 17, nearby_galaxies 11, protoplanetary_disks 8; versions: v2.16.1 (1), v.2.17 (1)
+  - used for: 2014A&A...568A..92M: Gemini spectroscopy reduction
+  - used for: 2015PASJ...67...72T: Astrometric fit of HST image to SDSS
+  - used for: 2016A&A...592A..42K: rv.fxcor cross-correlation and optical echelle reduction
+  - used for: 2016ApJ...823...51B: Richardson-Lucy deconvolution; STSDAS crrej
+- **bettermoments**: 58 papers; fields: protoplanetary_disks 51, debris_disks 3, star_formation 2; versions: adapted (1)
+  - used for: 2018ApJ...868..113T: line-of-sight velocity map via parabola fit
+  - used for: 2019A&A...625A.118K: Rotation velocity map
+  - used for: 2019ApJ...884L..56T: line centre and peak Tb maps
+  - used for: 2019Natur.574..378T: Line-centre maps
+- **cdms**: 57 papers; fields: star_formation 18, astrochemistry 12, protoplanetary_disks 9
+  - used for: 2015A&A...582L...4M: Spectroscopic data of ArH+
+  - used for: 2016A&A...587A..92M: Spectroscopic catalog
+  - used for: 2016ApJ...830L..37I: Line identification
+  - used for: 2017A&A...605L...6T: line identification
+- **carta**: 55 papers; fields: star_formation 17, nearby_galaxies 12, protoplanetary_disks 8; versions: 2.0.0 (5), 2.0.0 (per reference (1), 4.0 (1), 4.1.0 (1)
+  - used for: 2021ApJ...907L..27A: Analysis of the spectra of the Venus images
+  - used for: 2023A&A...674A.125B: Fitting 2D Gaussians to OH emission and absorption regions using a 3 sigma contour mask
+  - used for: 2023Ap&SS.368...33M: Creating and rendering the continuum emission image of G358.93–0.03.
+  - used for: 2023ApJ...958...98F: Cube analysis and rendering
+- **gofish**: 55 papers; fields: protoplanetary_disks 52, debris_disks 2, astrochemistry 1; versions: 1.3.6 (1)
+  - used for: 2020ApJ...899..157T: line shifting, stacking, radial profiles
+  - used for: 2020ApJ...901...71S: Stacking Stokes parameters along the Keplerian rotation pattern
+  - used for: 2021AJ....162...99F: deprojecting, velocity-shifting and azimuthally averaging spectra (stacking, annular spectra, radial profile …
+  - used for: 2021ApJ...906..111T: Keplerian-corrected integrated spectra for intrinsic linewidth estimation.
+- **hipe**: 54 papers; fields: high_z_galaxies 13, nearby_galaxies 12, star_formation 8; versions: v9.0 (5), 7.0 (3), 5.0 (2), v11 (2)
+  - used for: 2013ApJ...767...88W: Herschel SPIRE map reduction
+  - used for: 2013ApJ...770..142N: HIFI data processing and deconvolution
+  - used for: 2013ApJ...773L..34K: SPIRE data reduction
+  - used for: 2013ApJ...777...85N: HIFI data processing
+- **lmfit**: 53 papers; fields: nearby_galaxies 14, agn_and_quasars 12, star_formation 7; versions: 1.0.3 (3), 1.0.1 (2), 1.3.2 (2), 0.9.13 (1)
+  - used for: 2016ApJ...832..148V: Gaussian spectral fitting
+  - used for: 2018ApJ...860..119G: continuum model fitting
+  - used for: 2018ApJ...861...14C: Fitting engine in PySpecKit
+  - used for: 2018ApJ...863..193V: Gaussian spectral fitting
+- **mcfost**: 52 papers; fields: protoplanetary_disks 47, debris_disks 2, star_formation 2; versions: 4.1.08 (1), 4.1 (1)
+  - used for: 2013A&A...557A.133D: 3D radiative transfer modelling of continuum and CO
+  - used for: 2013Natur.493..191C: radiative transfer for SAM test of binary model
+  - used for: 2014ApJ...792L..25V: Radiative transfer test of shadowing by optically thick ring
+  - used for: 2015A&A...575L...5H: Radiative transfer modelling of SED, images and line emission
+- **linmix**: 50 papers; fields: protoplanetary_disks 25, nearby_galaxies 12, agn_and_quasars 5
+  - used for: 2017A&A...606A..88T: Bayesian linear regression (Kelly 2007)
+  - used for: 2017ApJ...844...99L: Bayesian linear regression with upper limits
+  - used for: 2018ApJ...863...61L: Bayesian linear regression of Fmm vs M*
+  - used for: 2018ApJ...863..193V: Bayesian linear regression of star formation law
+- **ppxf**: 45 papers; fields: nearby_galaxies 38, agn_and_quasars 3, galaxy_clusters_and_sz 2; versions: 5.2.1 (1), latest version (1)
+  - used for: 2016A&A...594A..81P: Stellar continuum subtraction in SINFONI K-band
+  - used for: 2017A&A...600A..80K: stellar template fitting and stellar velocity dispersion
+  - used for: 2018ApJ...854...83T: Stellar kinematics fitting
+  - used for: 2018ApJ...860L..18H: stellar kinematics
+- **clumpfind**: 44 papers; fields: nearby_galaxies 16, star_formation 16, high_z_galaxies 8; versions: IDL version (1), 2-D (1)
+  - used for: 2012A&A...538L...9H: mentioned as an algorithm that would have difficulty isolating PCC; not used
+  - used for: 2014A&A...569A..11S: core identification
+  - used for: 2015ApJ...806L..17S: Independent identification of clumps
+  - used for: 2016ApJ...820..118Z: identify clumps in CO map
+- **dali**: 44 papers; fields: protoplanetary_disks 43, debris_disks 1
+  - used for: 2014A&A...562A..26B: Physical-chemical disk modeling of dust, gas temperature, CO abundance and line emission
+  - used for: 2014A&A...563A.113V: thermo-chemical physical disk model
+  - used for: 2015A&A...579A.106V: Physical-chemical disk modeling of gas and dust
+  - used for: 2016A&A...585A..58V: physical-chemical modeling of gas and dust
+- **pyspeckit**: 44 papers; fields: star_formation 26, nearby_galaxies 8, milky_way_ism 5; versions: 0.1.20 (1), V.1.0.1 (1)
+  - used for: 2017ApJ...842...92G: listed software (spectral fitting)
+  - used for: 2017ApJ...849...68S: cold-ammonia model for NH3 fitting
+  - used for: 2018A&A...611A..99K: Gaussian component fitting
+  - used for: 2018ApJ...854...83T: Multi-component line fits
+- **splatalogue**: 43 papers; fields: star_formation 13, nearby_galaxies 7, astrochemistry 5
+  - used for: 2012ApJ...757L...1H: Line identification
+  - used for: 2013AJ....146...91I: Line identification of rest frequencies
+  - used for: 2014ApJ...796..117G: Line frequencies and energies (JPL, CDMS)
+  - used for: 2015ApJ...800L..14C: line assignment
+- **spectral-cube**: 41 papers; fields: star_formation 17, nearby_galaxies 14, high_z_galaxies 5; versions: v0.4.5 (4), v0.4.4 (2), v0.4.3 (1), v0.4.0 (1)
+  - used for: 2017ApJ...842...92G: listed software for cubes
+  - used for: 2018ApJ...853..171G: cube analysis
+  - used for: 2018ApJ...860..119G: cube analysis
+  - used for: 2019ApJ...871..170M: Cube handling in CubeLineMoment
+- **starburst99**: 41 papers; fields: nearby_galaxies 23, high_z_galaxies 9, star_formation 6; versions: 7.0.1 (3), v7.0.1 (2), v7.0.0 (1), 2014 update (1)
+  - used for: 2012A&A...542L..34N: input ionizing continua
+  - used for: 2014ApJ...788..125S: mass lost to winds and supernovae
+  - used for: 2015ApJ...799...11X: stellar population models for Pa-alpha extinction correction
+  - used for: 2015MNRAS.450L..80B: Q to SFR conversion
+- **mpfit**: 40 papers; fields: nearby_galaxies 10, high_z_galaxies 7, galaxy_clusters_and_sz 6
+  - used for: 2012ApJ...757..129R: Levenberg-Marquardt minimization for fiducial model
+  - used for: 2013A&A...559A..29C: Best-fit disk model
+  - used for: 2014A&A...572A..40E: chi2 minimization for Gaussian fits
+  - used for: 2014ApJ...784...78R: two-Gaussian fits to spectra
+- **xclass**: 38 papers; fields: star_formation 31, astrochemistry 4, protoplanetary_disks 2; versions: 1.2.0 (1), 1.2 (1), not stated (with pri (1)
+  - used for: 2013ApJ...770..142N: Line identification with CDMS and JPL catalogs
+  - used for: 2013ApJ...777...85N: LTE modeling of methanol
+  - used for: 2014ApJ...787..112C: LTE spectral modeling
+  - used for: 2014ApJS..215...25F: LTE modelling of MF isotopologue emission
+- **cprops**: 37 papers; fields: nearby_galaxies 29, star_formation 7, stellar_physics 1; versions: updated version (cpr (1), modified (elliptical (1)
+  - used for: 2013ApJ...774...73I: basis of clump identification criteria
+  - used for: 2014ApJ...793...37A: Clump identification and properties
+  - used for: 2014ApJ...795..156W: CO peak and velocity of knots
+  - used for: 2015ApJ...806...35J: Cloud property measurement on cube
+- **statcont**: 37 papers; fields: star_formation 23, astrochemistry 7, nearby_galaxies 4
+  - used for: 2017A&A...602A..59C: continuum estimation and subtraction
+  - used for: 2017A&A...604A...6S: continuum level determination in line-rich spectra
+  - used for: 2018A&A...609A.101S: Continuum level determination in spectra and datacubes
+  - used for: 2018A&A...612A.103C: continuum from line-free channels
+- **bagpipes**: 34 papers; fields: high_z_galaxies 30, agn_and_quasars 3, nearby_galaxies 1
+  - used for: 2019ApJ...884..154W: Bayesian SED fitting
+  - used for: 2020ApJ...903...34A: SED modelling of the foreground galaxy to get stellar mass for the lens test
+  - used for: 2020NatAs...4..670A: SED modelling
+  - used for: 2021A&A...652A.128J: SED fitting for stellar mass, age and SFR
+- **dynesty**: 34 papers; fields: high_z_galaxies 16, agn_and_quasars 5, galaxy_clusters_and_sz 4; versions: v2.1.0 (1), v2.0.3 (cited Zenodo (1)
+  - used for: 2019A&A...628A.100D: Dynamic nested sampling of posterior
+  - used for: 2019ApJ...875L...6E: nested sampling of xs-ring model
+  - used for: 2020ApJ...901...67W: Sampler used in earlier GC-model results listed for comparison in Table 3
+  - used for: 2020ApJ...902..141S: nested sampling of analytic models
+- **immoments**: 34 papers; fields: high_z_galaxies 13, agn_and_quasars 8, star_formation 4
+  - used for: 2020A&A...643A...1L: Collapsing channels into [CII] flux maps
+  - used for: 2020ApJ...904...77G: SO2 moment 1 image
+  - used for: 2020MNRAS.496..598C: Integrated intensity moment 0 images
+  - used for: 2020MNRAS.496..875R: Moment-0 map
+- **jwst calibration pipeline**: 34 papers; fields: high_z_galaxies 14, star_formation 8, protoplanetary_disks 6; versions: 1.12.5 (3), 1.13.4 (3), 1.11.4 (2), 1.14.0 (2)
+  - used for: 2024A&A...681A.117P: Processing NIRSpec IFU data (Detector1, Spec2, Spec3)
+  - used for: 2024A&A...682A..78V: All three stages of MIRI-MRS calibration.
+  - used for: 2024A&A...682A.182G: NIRSpec IFU reduction
+  - used for: 2024A&A...687A..36T: Reduction of MIRI-MRS data
+- **weeds**: 34 papers; fields: astrochemistry 21, star_formation 9, milky_way_ism 2; versions: April 2014 version (1)
+  - used for: 2013A&A...554A..78P: Synthesized acetone spectra
+  - used for: 2014Sci...345.1584B: LTE line identification and spectral modeling
+  - used for: 2016A&A...587A..91B: Synthetic LTE spectra and opacities
+  - used for: 2016A&A...595L...4L: Line identification and LTE synthetic spectra
+- **scikit-learn**: 33 papers; fields: nearby_galaxies 14, high_z_galaxies 7, star_formation 3
+  - used for: 2015ApJ...812...43B: logistic regression
+  - used for: 2016A&A...591A.108O: PCA for ADI
+  - used for: 2017A&A...601A...7F: PCA in forward modeling
+  - used for: 2018ApJ...869L..42H: Gaussian kernel density estimation
+- **gildas/class**: 32 papers; fields: star_formation 12, nearby_galaxies 7, protoplanetary_disks 3
+  - used for: 2015ApJ...813L..19J: APEX data reduction
+  - used for: 2016A&A...592A..83K: APEX spectra inspection, baseline subtraction, averaging
+  - used for: 2016A&A...595A..72M: APEX CO(2-1) reduction
+  - used for: 2017A&A...598A..53D: Reduction of IRAM and APEX data
+- **kinms**: 31 papers; fields: nearby_galaxies 23, high_z_galaxies 5, agn_and_quasars 3
+  - used for: 2014A&A...565A..59D: alternative kinematic disk model
+  - used for: 2015ApJ...806...39O: PVD modelling with beam smearing
+  - used for: 2016MNRAS.455.2745K: Kinematic model of inner ring
+  - used for: 2017MNRAS.468.4675D: Forward-model simulated cubes
+- **lephare**: 31 papers; fields: high_z_galaxies 27, transients 2, nearby_galaxies 1
+  - used for: 2016ApJ...833..112S: Photometric redshifts and masses (catalog)
+  - used for: 2018ApJ...856..121G: SED fitting for stellar masses
+  - used for: 2018ApJ...856L..23K: SED stellar masses
+  - used for: 2018MNRAS.481.1631B: SED fitting for photo-z and masses
+- **phantom**: 31 papers; fields: protoplanetary_disks 28, evolved_stars 2, star_formation 1; versions: 2022.0.1 (1)
+  - used for: 2018A&A...619A.171B: SPH hydrodynamic simulation
+  - used for: 2018ApJ...860L..13P: SPH simulations
+  - used for: 2018MNRAS.475.5296D: 3D SPH gas/dust simulations
+  - used for: 2019A&A...622A..75L: 3D SPH gas+dust planet-disk simulations
+- **clean**: 30 papers; fields: star_formation 6, high_z_galaxies 6, agn_and_quasars 5
+  - used for: 2013ApJ...762L..21M: multi-frequency synthesis deconvolution
+  - used for: 2013ApJ...777...85N: Deconvolution of ALMA images
+  - used for: 2017ApJ...844..123F: imaging of calibrated visibilities
+  - used for: 2017ApJ...851...98T: Imaging
+- **eddy**: 30 papers; fields: protoplanetary_disks 28, debris_disks 2; versions: 1.0 (1)
+  - used for: 2018ApJ...868..113T: rotation velocity measurement
+  - used for: 2019A&A...625A.118K: Python implementation of the rotation profile method
+  - used for: 2019ApJ...876L..13S: annulus deprojection and spectral stacking
+  - used for: 2019ApJ...884L..56T: Keplerian fit to v0 map
+- **idl**: 30 papers; fields: nearby_galaxies 11, star_formation 5, high_z_galaxies 3
+  - used for: 2014A&A...567A.119S: own routines for detector correction, OH, line maps, spectra
+  - used for: 2014A&A...572A..40E: Line-fitting routine
+  - used for: 2014MNRAS.439.2096W: self-written routines for reduction and sky subtraction, cosmic ray removal
+  - used for: 2015ApJ...800...70S: Custom image-plane continuum subtraction
+- **prospector**: 30 papers; fields: high_z_galaxies 22, transients 5, nearby_galaxies 3; versions: 1.2.1 (1), v2 (1), 1.2.0 (1)
+  - used for: 2019ApJ...876L..10E: host galaxy SED modeling
+  - used for: 2019ApJ...884..154W: Non-parametric SFH cross-check
+  - used for: 2019Natur.574..643R: stellar mass SED fitting
+  - used for: 2020ApJ...902..112B: Alternative stellar masses (Leja et al. 2019 published values) for the CANDELS beta-M relation and a systemat…
+- **uvmodelfit**: 30 papers; fields: high_z_galaxies 10, protoplanetary_disks 6, agn_and_quasars 4
+  - used for: 2014ApJ...787...42C: fitting flux densities to visibilities
+  - used for: 2016ApJ...829....6W: Fit uniform disk to continuum visibilities
+  - used for: 2018A&A...618A..85S: integrated flux of extended ALMA sources
+  - used for: 2019AJ....157..237R: visibility-domain Gaussian fit
+- **vis_sample**: 30 papers; fields: protoplanetary_disks 25, debris_disks 3, star_formation 1
+  - used for: 2016ApJ...823L..18H: sampling model images at observed spatial frequencies
+  - used for: 2016ApJ...828..113M: Python implementation of Miriad uvmodel for model visibilities (open source)
+  - used for: 2016ApJ...832..110C: sampling models at observed uv points
+  - used for: 2017A&A...605A..21C: Sampling model cubes in uv at observed coordinates; matched-filter template
+- **jwst pipeline**: 28 papers; fields: high_z_galaxies 8, protoplanetary_disks 6, nearby_galaxies 6; versions: 1.11.1 (2), 1.9.4 (1), 1.8.2 (crds 11.16.15 (1), 1.8.2 (NIRCam), 1.9. (1)
+  - used for: 2023A&A...679A.117G: Processing JWST MIRI/MRS data
+  - used for: 2024AJ....167..183M: stage 1 and 2 calibration to calints
+  - used for: 2024ApJ...967...11C: JWST image reduction
+  - used for: 2024ApJ...967..168N: Reprocessing MIRI MRS and NIRSpec IFU data (calwebb stages 1-3)
+- **class**: 27 papers; fields: star_formation 12, high_z_galaxies 5, evolved_stars 4; versions: Version 1.1 (1)
+  - used for: 2013ApJ...770..142N: Gaussian fitting of HIFI lines
+  - used for: 2013ApJ...773L..34K: APEX baseline subtraction
+  - used for: 2014A&A...562A..96I: HIFI data reduction
+  - used for: 2014A&A...565A..59D: APEX data reduction
+- **lifelines**: 26 papers; fields: protoplanetary_disks 14, star_formation 7, high_z_galaxies 2; versions: v0.11.1 (2), v0.21.1 (2), 0.11.1 (1), v0.24.15 (1)
+  - used for: 2017ApJ...851...83C: Kaplan-Meier estimators
+  - used for: 2018ApJ...855...92C: Kaplan-Meier estimator
+  - used for: 2019A&A...626A..11C: Kaplan-Meier estimation
+  - used for: 2020A&A...640A..19T: survival-analysis CDFs including upper limits
+- **mir**: 26 papers; fields: protoplanetary_disks 7, star_formation 7, nearby_galaxies 2
+  - used for: 2013A&A...549L...3P: SMA raw data calibration
+  - used for: 2013ApJ...776L..38F: SMA calibration
+  - used for: 2013Sci...341..630Q: SMA calibration
+  - used for: 2014ApJ...797...90S: SMA data reduction
+- **pandas**: 26 papers; fields: nearby_galaxies 12, star_formation 3, agn_and_quasars 3; versions: 1.3.4 (2), 1.4.2 (2)
+  - used for: 2021A&A...655A..65T: General data analysis
+  - used for: 2021ApJ...915...99I: Data analysis (listed in Software section)
+  - used for: 2022AJ....164...43S: Data table manipulation
+  - used for: 2022ApJ...930...32C: General research software acknowledged
+- **topcat**: 26 papers; fields: high_z_galaxies 11, nearby_galaxies 6, agn_and_quasars 5
+  - used for: 2015A&A...574A..19S: table handling
+  - used for: 2018A&A...610A..77H: table handling
+  - used for: 2018MNRAS.480.4974H: table processing
+  - used for: 2019ApJ...875...24C: listed in software section
+- **difmap**: 25 papers; fields: agn_and_quasars 19, protoplanetary_disks 4, nearby_galaxies 2
+  - used for: 2013Natur.493..191C: residuals added to MEM images
+  - used for: 2016A&A...593L..19M: Self-calibration, imaging, Gaussian model fits
+  - used for: 2019A&A...622A.196K: Imaging and MODELFIT
+  - used for: 2019A&A...632A..66O: VLBI imaging
+- **fast**: 25 papers; fields: high_z_galaxies 20, nearby_galaxies 2, transients 1
+  - used for: 2015ApJ...807..180W: SED fit of foreground elliptical for lensing estimate
+  - used for: 2015ApJ...811L...3T: Stellar mass SED fitting
+  - used for: 2016ApJ...827L..32B: optical/NIR SED fitting
+  - used for: 2016ApJ...828...56W: stellar mass SED fitting
+- **lenstool**: 25 papers; fields: high_z_galaxies 23, galaxy_clusters_and_sz 1, agn_and_quasars 1; versions: v6.8.1 (1), 7.0 (1)
+  - used for: 2016A&A...593L...2N: lens model
+  - used for: 2017A&A...600L...3C: Bayesian strong lens modelling
+  - used for: 2017A&A...604A.117C: lens model and source-plane reconstruction (CleanLens)
+  - used for: 2017A&A...604A.132L: Magnifications
+- **webbpsf**: 25 papers; fields: high_z_galaxies 11, nearby_galaxies 9, protoplanetary_disks 2; versions: 1.2.1 (2), v.1.4.0 (2), v1.1.1 (1), 1.0.1.dev126+g6d83a9 (1)
+  - used for: 2024A&A...681A.117P: PSFs to subtract the nuclear contribution from aperture spectra
+  - used for: 2024A&A...684A..24P: Theoretical JWST PSF
+  - used for: 2024AJ....167..183M: model PSF for centering
+  - used for: 2024ApJ...964..146F: NIRCam PSFs for galfit
+- **pyneb**: 24 papers; fields: high_z_galaxies 10, nearby_galaxies 8, agn_and_quasars 2; versions: v1.1.16 (1), v1.1.18 (1), v1.1.17 (1)
+  - used for: 2017ApJ...851..126V: Electron density from [SII] ratio (getTempDen)
+  - used for: 2019ApJ...883L..29L: Electron density from line ratio
+  - used for: 2019MNRAS.490.5860S: [SII] doublet density
+  - used for: 2021A&A...645A..21G: Electron-density diagnostics using temden.
+- **getsf**: 23 papers; fields: star_formation 23; versions: v210414 (1), 230712 (for the new  (1), v231026 (1), v240325 (1)
+  - used for: 2022A&A...662A...8M: Multiscale, multiwavelength source and filament extraction to identify compact continuum cores
+  - used for: 2023A&A...674A..75N: Source extraction and flux/size measurements on continuum maps and synthetic completeness images
+  - used for: 2023A&A...674A..76P: Core extraction (in Paper III) and providing the core-subtracted background image used for eta-PDF analysis
+  - used for: 2023MNRAS.523.5388M: Extract filaments and sources from Herschel images
+- **kinemetry**: 23 papers; fields: nearby_galaxies 18, agn_and_quasars 4, high_z_galaxies 1
+  - used for: 2014A&A...567A.125G: Fourier decomposition of the velocity field
+  - used for: 2015MNRAS.453L..26R: Fourier decomposition of moment maps
+  - used for: 2016ApJ...823...51B: Harmonic expansion of v_LOS
+  - used for: 2017ApJ...843..136E: Fitting CO(3-2) velocity field
+- **simobserve**: 23 papers; fields: high_z_galaxies 8, star_formation 5, solar_system 2; versions: CASA v4.2.1 (1), 6.5.4 (1), CASA v.6 (1)
+  - used for: 2015A&A...584A..78C: synthetic blank-field observations
+  - used for: 2016A&A...593A..61M: in-house modified version for full-polarization synthetic data
+  - used for: 2016ApJ...833..238H: Simulating observations of a Gaussian source to test recovery
+  - used for: 2020ApJ...904...77G: Simulated measurement sets from the theoretical brightness model
+- **astrodrizzle**: 22 papers; fields: high_z_galaxies 13, nearby_galaxies 4, agn_and_quasars 3; versions: 2.1.3.dev (1)
+  - used for: 2015ApJ...799..194C: HST pipeline drizzling
+  - used for: 2015MNRAS.453L..26R: HST reprocessing
+  - used for: 2017ApJ...845...41B: combining HST exposures
+  - used for: 2018ApJ...860....9M: Stacking HST images
+- **multinest**: 22 papers; fields: high_z_galaxies 11, debris_disks 4, agn_and_quasars 3
+  - used for: 2013MNRAS.430.2454L: Bayesian evidence and model selection for shapelet fits
+  - used for: 2014ApJ...783...71W: SED posterior sampling
+  - used for: 2017MNRAS.464.4624S: Bayesian parameter estimation
+  - used for: 2018A&A...610A..53M: Exploring lens model parameter space
+- **keplerian_mask**: 21 papers; fields: protoplanetary_disks 20, debris_disks 1; versions: 1.0 (7), 1.0 (Zenodo release  (1)
+  - used for: 2021A&A...648A..19W: Keplerian masks for cleaning and moment maps
+  - used for: 2023A&A...669A..53B: Generating Keplerian masks for tCLEAN line imaging and integrated intensity maps
+  - used for: 2023A&A...678A.146B: Generating Keplerian masks for tCLEAN imaging of lines with spectral resolution < 2 km s^-1
+  - used for: 2023PASJ...75..424O: Keplerian masks for moment maps
+- **madcuba**: 21 papers; fields: star_formation 9, astrochemistry 7, nearby_galaxies 5; versions: 6.0 (07/05/2018) (1), 28/10/2022 (1)
+  - used for: 2018A&A...615A.141B: LTE fits of CH3OCHO in annuli
+  - used for: 2018A&A...616A..66M: CH3CN vibrational temperature fits
+  - used for: 2018ApJ...853L..19S: Line identification and LTE spectral modeling
+  - used for: 2018ApJ...867L...6B: continuum subtraction and spectral analysis
+- **scikit-image**: 21 papers; fields: protoplanetary_disks 9, star_formation 4, nearby_galaxies 4
+  - used for: 2017ApJ...835..231H: Fit ellipses to 3 sigma continuum contours and measure centroid
+  - used for: 2018ApJ...869L..14M: register_translation cross-correlation for image alignment
+  - used for: 2018ApJ...869L..43H: Listed in software
+  - used for: 2019A&A...628A..85V: peak_local_max source finding
+- **concat**: 19 papers; fields: star_formation 6, protoplanetary_disks 5, high_z_galaxies 4; versions: CASA 6.5.1 (1)
+  - used for: 2020MNRAS.493.5045M: Combining the two pointings' calibrated visibilities
+  - used for: 2021A&A...646A..72H: Combine the three ALMA projects into one measurement set
+  - used for: 2021ApJ...909...11J: Combining the 2015 and 2016 visibility data
+  - used for: 2021ApJ...910..148M: uv-plane combination of ACA and 12 m data for CO
+- **corner**: 19 papers; fields: high_z_galaxies 7, nearby_galaxies 4, protoplanetary_disks 3; versions: triangle.py v0.1.1 (1)
+  - used for: 2017ApJ...843..150F: Posterior distribution plots
+  - used for: 2018ApJ...863...56C: Posterior plots
+  - used for: 2018ApJ...865..157A: Listed in software
+  - used for: 2018MNRAS.475.4924K: posterior plots (listed among packages used)
+- **galpak3d**: 19 papers; fields: high_z_galaxies 14, nearby_galaxies 4, agn_and_quasars 1; versions: 1.8.8 (2), v1.9.1 (1)
+  - used for: 2017ApJ...835..213P: rotation-curve modeling of cubes
+  - used for: 2018ApJ...863...56C: 3D kinematic modelling of ALESS122.1
+  - used for: 2018ApJ...866L..12G: rotating ring/disk fit to source-plane CO(4-3) cube
+  - used for: 2018MNRAS.475..492K: 3D morpho-kinematic fit of [OIII] cube
+- **heasoft**: 19 papers; fields: transients 6, agn_and_quasars 4, stellar_physics 4; versions: 6.25 (3), v6.19 (2), v6.27 (2), 6.15.1 (1)
+  - used for: 2016NatPh..12..807K: Swift/XRT reduction
+  - used for: 2017A&A...600A...8D: Swift/XRT analysis
+  - used for: 2017ApJ...843L...3C: Swift X-ray spectral fitting and uvotsource photometry
+  - used for: 2018ApJ...862...94L: XRT and UVOT analysis
+- **hyperz**: 19 papers; fields: high_z_galaxies 18, nearby_galaxies 1; versions: updated version (2), 12.2 (1), modified version wit (1), updated version (Sch (1)
+  - used for: 2014ApJ...788..125S: SED fitting for photometric redshifts and SFHs
+  - used for: 2014MNRAS.442..577T: photometric redshifts (by Simpson et al. 2013)
+  - used for: 2015ApJ...799..194C: Photometric redshifts of ALESS SMGs
+  - used for: 2015ApJ...812L..23S: SED fitting for stellar masses
+- **3d-barolo**: 18 papers; fields: nearby_galaxies 7, agn_and_quasars 6, high_z_galaxies 5; versions: 1.7 (1)
+  - used for: 2018A&A...612A..29B: 3D tilted-ring fits of CO cube
+  - used for: 2019ApJ...870...80L: tilted-ring fits to velocity fields
+  - used for: 2019ApJ...887...24T: 3D tilted-ring fitting of CO cubes
+  - used for: 2020MNRAS.496..875R: Dynamical mass from the continuum-subtracted cube
+- **irdap**: 18 papers; fields: protoplanetary_disks 16, debris_disks 1, star_formation 1; versions: 1.3.2 (1), 1.3.3 (1), v1.3.4 (1)
+  - used for: 2020A&A...636L...4M: SPHERE/IRDIS polarimetric data reduction
+  - used for: 2020A&A...639L...1M: SPHERE polarimetric reduction
+  - used for: 2021A&A...654A..35B: SPHERE data reduction
+  - used for: 2022A&A...668A..25V: Data reduction and polarimetric differential imaging of SPHERE/IRDIS H-band observations
+- **madex**: 18 papers; fields: evolved_stars 7, astrochemistry 7, star_formation 3; versions: 2012 version (1)
+  - used for: 2013ApJ...778L..25C: line identification and HNC frequencies/strengths
+  - used for: 2014A&A...569L...5M: HCO+ line frequencies and line catalog checks
+  - used for: 2014ApJ...787..112C: non-LTE LVG modeling
+  - used for: 2015A&A...582L...1T: LTE modelling of line emission
+- **optool**: 18 papers; fields: protoplanetary_disks 14, star_formation 2, solar_system 1
+  - used for: 2023A&A...675A.131T: Implementing standard DIANA dust opacities for the RADMC-3D model
+  - used for: 2024A&A...681A..82G: Providing DSHARP dust opacities to RADMC-3D
+  - used for: 2024A&A...685A..52G: Mie-theory grain optical properties
+  - used for: 2024A&A...686A.298G: Computing DSHARP dust opacities for the RADMC-3D models
+- **ratran**: 18 papers; fields: protoplanetary_disks 9, star_formation 7, evolved_stars 2; versions: 1D version of 2013 M (1), modified (1)
+  - used for: 2012ApJ...749..162O: Monte Carlo radiative transfer with DCN hyperfine structure to produce model visibilities
+  - used for: 2013A&A...555A.112P: Infall velocity modelling
+  - used for: 2013ApJ...765L..14Q: Radiative transfer and excitation for model
+  - used for: 2013ApJ...779L..22J: 1D line radiative transfer
+- **sofia**: 18 papers; fields: high_z_galaxies 7, nearby_galaxies 6, agn_and_quasars 4; versions: v2.0 (1)
+  - used for: 2018ApJ...853..195W: Spectral line source finding in cubes
+  - used for: 2018MNRAS.475..492K: source finding in ALMA cubes
+  - used for: 2019PASJ...71...85M: Source finding and masks for moment maps
+  - used for: 2020A&A...634A...9M: source finding for clean masks
+- **difx**: 17 papers; fields: agn_and_quasars 12, instrumentation 4, milky_way_ism 1; versions: 2.7.1 (1)
+  - used for: 2016NatPh..12..807K: VLBI correlation
+  - used for: 2019A&A...622A.196K: Correlation
+  - used for: 2019A&A...632A..66O: VLBI correlation
+  - used for: 2019ApJ...871...30I: correlation
+- **esorex**: 17 papers; fields: high_z_galaxies 10, nearby_galaxies 4, agn_and_quasars 2; versions: v1.0 (1), 2.8.19 (1), 3.12.3 (1), 2.8.4 (1)
+  - used for: 2017ApJ...840...78D: VIMOS and XSHOOTER reduction
+  - used for: 2017ApJ...846..108C: SINFONI data reduction
+  - used for: 2017MNRAS.466..861D: MUSE data reduction
+  - used for: 2018MNRAS.477..669M: MUSE reduction
+- **gaincal**: 17 papers; fields: protoplanetary_disks 7, star_formation 2, high_z_galaxies 2
+  - used for: 2016A&A...593A..61M: T-type gain solutions
+  - used for: 2018ApJ...869L..41A: Rescale outlier flux datasets
+  - used for: 2019ApJ...879L..25I: phase gain solutions
+  - used for: 2020ApJ...905...25G: Continuum phase self-calibration
+- **mopex**: 17 papers; fields: high_z_galaxies 8, nearby_galaxies 5, star_formation 2; versions: 18.5.0 (1)
+  - used for: 2012ApJ...760L..25E: processing of Spitzer 24 micron maps (as in cited work)
+  - used for: 2014A&A...561A..49H: mosaicking Spitzer MIPS images of I Zw 18
+  - used for: 2015ApJ...812...88M: IRAC mosaics
+  - used for: 2017ApJ...842...55L: Spitzer MIPS image processing
+- **nautilus**: 17 papers; fields: astrochemistry 7, protoplanetary_disks 4, star_formation 3; versions: v1.1 (1)
+  - used for: 2016ApJ...825...79S: gas-grain chemical simulations
+  - used for: 2017A&A...608A..96L: Gas-phase pseudo-time-dependent chemical simulations
+  - used for: 2019A&A...623L..13C: gas-grain chemical modeling
+  - used for: 2019ApJ...876...72L: Gas-grain astrochemical disk models
+- **diskfit**: 16 papers; fields: protoplanetary_disks 10, nearby_galaxies 4, debris_disks 1
+  - used for: 2014Natur.514..600D: dust disc modelling
+  - used for: 2017A&A...600A..62P: Keplerian disk model fits to CO spectra
+  - used for: 2017A&A...607A.130D: ray-tracing disk models of CS and CO
+  - used for: 2017ApJ...844..158S: Disk model fitting in uv plane
+- **frank**: 16 papers; fields: protoplanetary_disks 11, debris_disks 4, star_formation 1
+  - used for: 2021A&A...649A.122P: Gaussian-process visibility modeller used for comparison with the parametric fits
+  - used for: 2021A&A...654A..35B: remove axisymmetric component from ALMA visibilities
+  - used for: 2024A&A...682A..55M: Super-resolution non-parametric 1D visibility fitting of the dust continuum radial brightness profiles
+  - used for: 2024A&A...690A..46S: visibility-space radial brightness profile
+- **glafic**: 16 papers; fields: high_z_galaxies 12, agn_and_quasars 3, galaxy_clusters_and_sz 1; versions: 3.0 (public models) (1), version 2 (stated fo (1)
+  - used for: 2015PASJ...67...72T: Lens modeling
+  - used for: 2016ApJS..222....1F: Parametric lens mass model of A1689
+  - used for: 2017ApJ...843L..35W: cross-check lens modeling
+  - used for: 2017ApJ...845..108Y: Lens mass models and magnification/volume
+- **grizli**: 16 papers; fields: high_z_galaxies 14, nearby_galaxies 1, agn_and_quasars 1; versions: 1.8.2 (1), 1.6.0.dev99 (1), 1.9.11 (1), 1.6.0 (1)
+  - used for: 2021ApJ...908...54W: HST imaging processing and astrometry
+  - used for: 2024ApJ...964..146F: Reduction and drizzling of NIRCam, MIRI and HST images
+  - used for: 2024ApJ...968...15L: HST F606W reduction and HST grism data processing
+  - used for: 2024ApJ...969...27B: NIRCam imaging products from Image Release v7.0, July 2023
+- **ipython**: 16 papers; fields: high_z_galaxies 5, protoplanetary_disks 4, nearby_galaxies 3
+  - used for: 2020MNRAS.491..178K: Acknowledged as used in the work
+  - used for: 2021A&A...654A..69S: general Python tool (specific use not stated)
+  - used for: 2021MNRAS.508.5259M: General analysis
+  - used for: 2023A&A...675A.131T: General data analysis (listed in acknowledgements)
+- **pvextractor**: 16 papers; fields: star_formation 9, nearby_galaxies 4, milky_way_ism 2; versions: 0.3 (1)
+  - used for: 2016ApJ...828..100F: PV diagrams
+  - used for: 2017ApJ...842...92G: position-velocity diagrams
+  - used for: 2018ApJ...863..193V: Position-velocity diagram
+  - used for: 2019A&A...628A...6S: approach followed for PV cuts
+- **reproject**: 16 papers; fields: nearby_galaxies 7, star_formation 3, high_z_galaxies 3; versions: 0.13.1 (1)
+  - used for: 2018ApJ...865...13T: resampling ALMA onto MUSE grid
+  - used for: 2024A&A...683A.169W: Combining exposure cubes into the final cube (script from Vayner et al.)
+  - used for: 2024A&A...687A.217D: Adaptive and exact resampling of PPMAP products
+  - used for: 2024ApJ...964...18C: reprojecting to common grid
+- **seaborn**: 16 papers; fields: nearby_galaxies 7, star_formation 4, protoplanetary_disks 2; versions: v0.8.1 (1)
+  - used for: 2017MNRAS.466..213A: kernel density estimation of chain histograms
+  - used for: 2021AJ....161..185W: Listed as software used in this work (KDE plots)
+  - used for: 2022MNRAS.512..686E: Statistical plotting (acknowledged)
+  - used for: 2022MNRAS.512.1012C: Statistical visualization (acknowledged)
+- **tinytim**: 16 papers; fields: nearby_galaxies 7, high_z_galaxies 5, agn_and_quasars 3; versions: 7.5 (3), 6.3 (1), 7.5 (Footnote 6) (1)
+  - used for: 2015ApJ...799..194C: Model PSFs for new WFC3 data
+  - used for: 2015MNRAS.452.2258D: HST PSF
+  - used for: 2016ApJ...823..108B: HST model PSFs
+  - used for: 2016ApJ...827L..32B: HST PSFs
+- **discminer**: 15 papers; fields: protoplanetary_disks 15
+  - used for: 2023A&A...674A.113I: Channel-map modelling, extraction of line profile observables, deprojection, velocity decomposition, and clus…
+  - used for: 2023MNRAS.518.4481L: Extracting disc rotation curves and masking contamination from the lower emitting surface
+  - used for: 2024A&A...684A.174P: Parametric model fit to CN spectra to extract the linewidth
+  - used for: 2024A&A...686A...9M: Extracting 12CO and 13CO rotation curves and providing velocity priors for double-Bell decomposition
+- **filfinder**: 15 papers; fields: star_formation 9, nearby_galaxies 3, milky_way_ism 2
+  - used for: 2019ApJ...875...24C: filament spine identification
+  - used for: 2020ApJ...888...56I: Filament identification
+  - used for: 2020ApJ...890...44B: tracing filament skeletons
+  - used for: 2020ApJ...893...63T: Filament identification
+- **imsmooth**: 15 papers; fields: star_formation 4, nearby_galaxies 4, protoplanetary_disks 3
+  - used for: 2019PASJ...71..124S: Smoothing images to common beam
+  - used for: 2020ApJ...904..181L: Convolve SPARX image cubes to 0.14 arcsec observing resolution
+  - used for: 2020ApJ...905..122H: Adjust 49 Ceti 12 m beam to the ACA beam
+  - used for: 2021A&A...648A..33M: Convolve images to a common beam for modeling.
+- **lamda**: 15 papers; fields: protoplanetary_disks 9, star_formation 3, nearby_galaxies 1
+  - used for: 2013ApJ...765L..14Q: Molecular data file
+  - used for: 2013PASJ...65..100I: spectroscopic data and collisional rates
+  - used for: 2016ApJ...820L..34S: Einstein A and collisional data for critical density
+  - used for: 2017MNRAS.468..685Q: Database providing dust opacity and molecular collision files for LIME.
+- **magix**: 15 papers; fields: star_formation 12, protoplanetary_disks 2, astrochemistry 1
+  - used for: 2014A&A...569A..11S: parameter fitting
+  - used for: 2014ApJ...787..112C: automated fitting of XCLASS
+  - used for: 2017A&A...603A..10B: Model optimizer within XCLASS
+  - used for: 2019ApJ...871..251P: Optimising LTE fit and error estimates
+- **muse pipeline**: 15 papers; fields: high_z_galaxies 7, nearby_galaxies 4, galaxy_clusters_and_sz 2; versions: 1.6.4 (2), v1.6 (2), 1.6.2 (2), 1.0 (1)
+  - used for: 2016A&A...586A.124G: MUSE data reduction
+  - used for: 2016ApJ...832...37G: MUSE reduction
+  - used for: 2018ApJ...865...13T: MUSE data reduction
+  - used for: 2019A&A...621L...5K: MUSE data reduction under ESO REFLEX
+- **phangs-alma pipeline**: 15 papers; fields: nearby_galaxies 13, high_z_galaxies 1, star_formation 1; versions: public release v1.0 (1), v3.1 (1), 1.0 (1)
+  - used for: 2021ApJS..257...43L: Staging, imaging, post-processing, short-spacing correction, and data product creation for PHANGS-ALMA cubes
+  - used for: 2022A&A...660A..77D: Processing archival ALMA CO(2-1) data and generating moment maps
+  - used for: 2023A&A...676A..67W: Imaging, feathering 12m+7m+TP ALMA CO data cubes, 3D noise modelling, and generating broad and strict moment …
+  - used for: 2023MNRAS.521.3348N: Calibration and imaging of ALMOND and PHANGS-ALMA data
+- **starlink**: 15 papers; fields: star_formation 9, nearby_galaxies 4, agn_and_quasars 1; versions: 2018A (1), 2023A (1)
+  - used for: 2013ApJ...777..126S: JCMT 12CO 2-1 cube
+  - used for: 2014ApJ...796L..15S: JCMT data reduction
+  - used for: 2014ApJ...797...27F: JCMT data reduction
+  - used for: 2016ApJ...821...94K: JCMT cube construction
+- **visible**: 15 papers; fields: protoplanetary_disks 15; versions: v0.1.0 (1)
+  - used for: 2018ApJ...859..131L: matched filter line detection
+  - used for: 2019ApJ...875...96N: matched filter analysis in uv plane
+  - used for: 2019ApJ...882L..31B: Matched filter detection
+  - used for: 2020ApJ...893..101L: Matched filtering of visibilities
+- **visilens**: 15 papers; fields: high_z_galaxies 13, agn_and_quasars 2
+  - used for: 2016ApJ...826..112S: visibility-based lens modeling code
+  - used for: 2018NatAs...2...56Z: lens modelling in uv plane
+  - used for: 2018Natur.553...51M: Initial lens modelling of visibilities
+  - used for: 2019A&A...628A..23A: source-plane reconstruction
+- **alma archive**: 14 papers; fields: star_formation 4, high_z_galaxies 3, nearby_galaxies 2
+  - used for: 2020MNRAS.496.5308S: Public access to the ALMA data
+  - used for: 2020MNRAS.498.4635D: Public access to underlying ALMA data
+  - used for: 2020MNRAS.499.5136C: Retrieve observational data and delivered pipeline scripts
+  - used for: 2021A&A...653A..53A: Retrieval of TP data.
+- **astroquery**: 14 papers; fields: star_formation 5, high_z_galaxies 3, nearby_galaxies 3
+  - used for: 2018ApJ...853..171G: catalog queries (e.g., SIMBAD)
+  - used for: 2018ApJ...860..119G: Splatalogue line searches
+  - used for: 2019ApJS..244...40L: Querying the ALMA archive for publicly available projects in the COSMOS field
+  - used for: 2020MNRAS.491.2506D: Search SIMBAD for LVHIS galaxy positions
+- **drizzlepac**: 14 papers; fields: high_z_galaxies 9, agn_and_quasars 2, star_formation 1; versions: 2 (1), v2.1.17 (1), 2.0 (1), 3.1.8 (1)
+  - used for: 2015ApJ...811..115W: HST data reduction
+  - used for: 2016ApJ...832...37G: STIS co-add
+  - used for: 2017ApJ...843L..35W: HST reduction
+  - used for: 2019ApJ...873...15L: Combining HST/WFC3 images
+- **feather**: 14 papers; fields: star_formation 7, nearby_galaxies 5, instrumentation 1
+  - used for: 2016ApJ...832..142Z: combining interferometer cubes with total power
+  - used for: 2021ApJ...910..148M: Image-plane combination of ACA and 12 m data for continuum, C18O, N2D+, DCN
+  - used for: 2023ApJ...953..164M: Combining ACA 7 m-array 12CO(J=2-1) data with IRAM 30 m data
+  - used for: 2023ApJ...958...53S: Combining cleaned 7m and TP data for CO(3-2) and cleaned 12m and 7m data for CO(2-1)
+- **karma**: 14 papers; fields: star_formation 10, nearby_galaxies 2, high_z_galaxies 1
+  - used for: 2012ApJ...754L..17Z: data analysis/visualization
+  - used for: 2013ApJ...764L..14Z: Data analysis/visualization
+  - used for: 2013MNRAS.430L..10L: Analysis of ALMA data
+  - used for: 2013MNRAS.431L..88H: visualisation and analysis of ATCA data
+- **magickal**: 14 papers; fields: astrochemistry 14
+  - used for: 2014Sci...345.1584B: time-dependent gas-grain hot-core chemistry
+  - used for: 2016A&A...587A..92M: Gas-grain chemical kinetics modeling
+  - used for: 2017A&A...601A..48G: Coupled gas-phase/grain-surface/ice-mantle chemical kinetics simulations
+  - used for: 2017A&A...601A..49B: Gas-grain chemical kinetics modelling
+- **statwt**: 14 papers; fields: protoplanetary_disks 7, high_z_galaxies 6, nearby_galaxies 1
+  - used for: 2017ApJ...835..174S: recalculate visibility weights before combining ACA and 12 m
+  - used for: 2020ApJ...904..131N: Recomputing data weights before stacking
+  - used for: 2021A&A...648A..33M: Recompute measurement-set weights after final self-calibration and combination.
+  - used for: 2021A&A...649A.122P: Recalculate visibility weights from observed scatter
+- **analysisutils**: 13 papers; fields: protoplanetary_disks 6, instrumentation 3, star_formation 2
+  - used for: 2017ApJ...835..231H: Update flux density model of J0510+1800
+  - used for: 2018ApJ...852..122H: listed in software section
+  - used for: 2018ApJ...869L..43H: Listed in software
+  - used for: 2019ApJ...883..165H: extracting mean JD with lstrange
+- **dusty**: 13 papers; fields: evolved_stars 8, star_formation 3, nearby_galaxies 1; versions: V2 (1)
+  - used for: 2014A&A...561A..49H: spherical dust-shell radiative transfer SED model
+  - used for: 2015A&A...579A.114M: continuum radiative transfer for the adopted density/temperature profile (from Jørgensen et al. 2002)
+  - used for: 2015MNRAS.453.4324M: dust SED models (earlier work)
+  - used for: 2016A&A...596A..50G: Dust RT modelling with density type 3
+- **eht-imaging**: 13 papers; fields: agn_and_quasars 10, instrumentation 2, milky_way_ism 1; versions: v1.1.0 (2), v1.2.4 (1)
+  - used for: 2019ApJ...871...30I: RML imaging and scattering mitigation
+  - used for: 2019ApJ...875L...3E: Network calibration
+  - used for: 2019ApJ...875L...4E: RML imaging and synthetic data generation
+  - used for: 2019ApJ...875L...6E: synthetic data and RML imaging
+- **nemesis**: 13 papers; fields: solar_system 13
+  - used for: 2014ApJ...795L..30C: Retrieval of HNC and HC3N VMR profiles
+  - used for: 2015ApJ...800L..14C: line-by-line radiative transfer retrieval
+  - used for: 2016AJ....152...42M: Line-by-line radiative transfer and retrieval
+  - used for: 2016ApJ...821L...8S: Line-by-line radiative transfer retrieval
+- **pdr toolbox**: 13 papers; fields: high_z_galaxies 7, nearby_galaxies 5, agn_and_quasars 1; versions: wk2020 (1)
+  - used for: 2016A&A...595A..72M: Density and G0 modelling
+  - used for: 2017A&A...602A..49H: PDR model grids
+  - used for: 2017ApJ...835..174S: derive G0 and density
+  - used for: 2017ApJ...836..123L: PDR modeling of line ratios
+- **pyautolens**: 13 papers; fields: high_z_galaxies 11, cosmology 1, agn_and_quasars 1
+  - used for: 2019A&A...624A.138Y: pixelized source reconstruction as a test
+  - used for: 2020ApJ...898...33C: independent lens modeling check on cleaned image
+  - used for: 2022MNRAS.512.2426M: Semi-linear source inversion and strong gravitational lens modelling in the uv-plane
+  - used for: 2023MNRAS.520.1613M: Strong gravitational lens modelling, source reconstruction, and calculating the Einstein radius.
+- **radmc3d**: 13 papers; fields: protoplanetary_disks 12, debris_disks 1; versions: 0.39 (2), 0.41 (1), 2.0 (1)
+  - used for: 2015ApJ...812..126C: Radiative transfer of synthetic dust trap model
+  - used for: 2018MNRAS.477.5104C: radiative transfer predictions
+  - used for: 2019A&A...625A.118K: Thermal structure and 12CO image cubes
+  - used for: 2019ApJ...883...98Z: Dust thermal structure and model SEDs
+- **rebound**: 13 papers; fields: protoplanetary_disks 5, debris_disks 4, star_formation 2
+  - used for: 2018MNRAS.479.5423M: N-body simulations (MERCURIUS integrator)
+  - used for: 2019ApJ...877L..32M: N-body gap-opening simulations
+  - used for: 2019NatAs...3..230K: Gas-free n-body simulations
+  - used for: 2019NatAs...3..278K: gas-free n-body simulations
+- **alma calibration pipeline**: 12 papers; fields: star_formation 3, nearby_galaxies 3, high_z_galaxies 2; versions: 42254 (1), 5.6.1 for ALPINE and (1), 2021.2.0.128 (1), 6.2.1.7 (1)
+  - used for: 2020MNRAS.493.2872C: calibration of the uv data
+  - used for: 2021ApJS..257...43L: Calibrating the interferometric ALMA observations
+  - used for: 2022ApJ...929..100K: Initial calibration of ALMA visibility data
+  - used for: 2023A&A...674A..66Z: Calibration of ALMA Cycle 6 observations
+- **auto-multithresh**: 12 papers; fields: star_formation 7, high_z_galaxies 3, nearby_galaxies 1
+  - used for: 2020MNRAS.497.3504T: automatic cleaning masks
+  - used for: 2021ApJ...908L..43N: Automatic emission-mask selection in tclean
+  - used for: 2024AJ....168..151J: Automasking with standard parameters for 7 m data
+  - used for: 2024ApJ...966...32E: Automatic masking for line cubes with default parameters
+- **disksurf**: 12 papers; fields: protoplanetary_disks 12
+  - used for: 2024A&A...686A.120U: Extraction of the emission surface (vertical structure)
+  - used for: 2024ApJ...964..190L: Extract vertical emission surfaces
+  - used for: 2024ApJ...970..153A: emission surface extraction
+  - used for: 2024ApJ...974..102S: Extract CO emission surface from channels
+- **fargo3d**: 12 papers; fields: protoplanetary_disks 12; versions: 2.01 (1)
+  - used for: 2018ApJ...860L..12T: 2D hydrodynamic simulations
+  - used for: 2018ApJ...866L...6C: Hydrodynamical simulations
+  - used for: 2019A&A...625A.118K: 3D hydrodynamic simulations
+  - used for: 2019Natur.574..378T: Hydrodynamic simulations
+- **fsps**: 12 papers; fields: high_z_galaxies 6, nearby_galaxies 3, transients 2
+  - used for: 2017ApJ...851..126V: Stellar population modelling of HST colours
+  - used for: 2018ApJ...864L...1G: Generate SSP templates
+  - used for: 2021ApJ...908...54W: stellar population synthesis within Prospector
+  - used for: 2021ApJ...908..163M: SED templates
+- **impbcor**: 12 papers; fields: astrochemistry 4, star_formation 4, high_z_galaxies 2
+  - used for: 2017ApJ...844..123F: primary beam correction
+  - used for: 2023Ap&SS.368...44M: Primary beam pattern correction in the synthesised image
+  - used for: 2023ApJ...946L..41S: Primary beam pattern correction on synthesized images
+  - used for: 2023MNRAS.525.2229M: Primary-beam correction of continuum and spectral images
+- **matlab**: 12 papers; fields: star_formation 3, protoplanetary_disks 2, agn_and_quasars 2; versions: 2018b (1), 2019a (1), 9.8.0.1451342 (R2020 (1), R2020b (1)
+  - used for: 2015ApJ...801...63M: Some analysis
+  - used for: 2016A&A...595A..39B: analysis of maps
+  - used for: 2016ApJ...823..108B: Interpolation and convolution of model images
+  - used for: 2016Natur.540..406B: channel-by-channel analysis
+- **phoenix**: 12 papers; fields: debris_disks 5, evolved_stars 2, stellar_physics 2; versions: 18.05 (1), AMES-cond-v2.6 (1)
+  - used for: 2019A&A...627A.114K: stellar model spectrum
+  - used for: 2019AJ....157..117M: Stellar photospheric model for CO excitation
+  - used for: 2019ApJ...875...55W: Stellar atmosphere model
+  - used for: 2019MNRAS.482.3443B: Stellar atmosphere model for UV field
+- **pybdsf**: 12 papers; fields: high_z_galaxies 8, star_formation 2, transients 1; versions: v.1.8.15 (1)
+  - used for: 2018ApJ...856..121G: ALMA continuum flux via 2D Gaussian fits
+  - used for: 2019ApJ...871..109P: source extraction
+  - used for: 2019ApJS..244...40L: Blind source extraction and 2D Gaussian fitting on ALMA continuum images
+  - used for: 2019Natur.575..459M: MeerKAT flux estimation
+- **simbad**: 12 papers; fields: nearby_galaxies 2, debris_disks 2, evolved_stars 2
+  - used for: 2020MNRAS.492.4847L: Identify the projected association with SDC G331.062-0.294
+  - used for: 2020MNRAS.495.1760O: Checking radio matches for mismatches
+  - used for: 2020MNRAS.499.5915M: Database used in the research; specific purpose not stated.
+  - used for: 2021A&A...653A..53A: Coordinates used to perform observations.
+- **source extractor**: 12 papers; fields: high_z_galaxies 8, star_formation 2, nearby_galaxies 1; versions: 2.5.0 (1), v2.25.0 (1)
+  - used for: 2014ApJ...791..108F: aperture photometry
+  - used for: 2017ApJ...845...41B: HST photometry
+  - used for: 2018ApJ...861...43P: HST Kron fluxes
+  - used for: 2018MNRAS.475.1288S: extract peaks in maps
+- **asurv**: 11 papers; fields: protoplanetary_disks 8, nearby_galaxies 2, agn_and_quasars 1; versions: Rev 1.2 (2)
+  - used for: 2014ApJ...784...62A: Survival analysis with upper limits
+  - used for: 2014ApJ...787...42C: censored-data correlation and two-sample tests
+  - used for: 2016ApJ...828...46A: Kaplan-Meier estimator and two-sample tests with upper limits
+  - used for: 2017AJ....153..240A: Kaplan-Meier means and two-sample tests with upper limits
+- **gaussian 16**: 11 papers; fields: astrochemistry 10, evolved_stars 1; versions: Revision B.01 (3), Revision C.01 (2), Revision A.03 (1), Revision A.01 (1)
+  - used for: 2021A&A...647A..55A: B3LYP/6-311++G(d,p) calculations of vibrational modes and vibration-rotation constants
+  - used for: 2021A&A...655A..80D: G4 energetics
+  - used for: 2022A&A...658A..85R: Quantum chemical DFT and CCSD(T) calculations of gas-phase reaction energetics and transition state barriers …
+  - used for: 2022A&A...658A.150G: Geometry optimization and frequency calculations with the double-hybrid B2PLYP-D3(BJ) functional
+- **imcontsub**: 11 papers; fields: star_formation 6, high_z_galaxies 5
+  - used for: 2020MNRAS.496..875R: Continuum map and continuum-subtracted cube
+  - used for: 2021A&A...653A..77P: Continuum subtraction from the line data with a first order polynomial
+  - used for: 2021ApJ...909..181L: Image-domain continuum subtraction on 10'' x 10'' subcubes
+  - used for: 2021ApJ...910..141T: Creating continuum images from the data cubes
+- **lineseeker**: 11 papers; fields: high_z_galaxies 11
+  - used for: 2019ApJ...882..136A: line search in the data cube
+  - used for: 2019ApJ...882..139G: Emission line and continuum search, fidelity, completeness
+  - used for: 2019ApJ...882..140B: line search (in Gonzalez-Lopez et al.)
+  - used for: 2020ApJ...897...91G: source extraction and fidelity
+- **meudon pdr code**: 11 papers; fields: protoplanetary_disks 4, milky_way_ism 3, evolved_stars 2; versions: 1.5.2 (1), 1.4.4 (1), 1.5.4 (1), 1.7 (1)
+  - used for: 2017A&A...601A...4A: photodissociation rates and dust shielding
+  - used for: 2017A&A...601L...9G: PDR chemical models
+  - used for: 2017A&A...604A..69C: 1D PDR modelling of proplyd line emission
+  - used for: 2018ApJ...853..111J: check of beta scaling assumption in SMC PDR models
+- **mstransform**: 11 papers; fields: astrochemistry 3, protoplanetary_disks 2, milky_way_ism 1
+  - used for: 2017ApJ...850L...5T: Continuum subtraction (fitorder=1)
+  - used for: 2020PASJ...72...36T: continuum subtraction from the H30alpha data (fitorder=1)
+  - used for: 2023Ap&SS.368...44M: Splitting target data with all rest frequencies
+  - used for: 2023MNRAS.525.2229M: Separate target data with all available rest frequencies
+- **nasa/ipac extragalactic database (ned)**: 11 papers; fields: nearby_galaxies 6, agn_and_quasars 3, star_formation 2
+  - used for: 2020MNRAS.496.2155Z: Database used in the research
+  - used for: 2021A&A...649A.105F: Acknowledged research use
+  - used for: 2021A&A...652A..99A: Source of galaxy distances
+  - used for: 2021A&A...654A..37D: Research database; specific use not stated
+- **pdspy**: 11 papers; fields: protoplanetary_disks 5, star_formation 5, stellar_physics 1
+  - used for: 2019ApJ...874..136S: Disk modeling and MCMC fitting
+  - used for: 2020AJ....159..229W: elliptical gaussian visibility fits
+  - used for: 2020ApJ...894...74B: compiling evolutionary tracks
+  - used for: 2020ApJ...900....7H: Synthetic line channel maps and gas fit
+- **pipe3d**: 11 papers; fields: nearby_galaxies 11; versions: SDSS DR15 products (1), MaNGA DR15 value-add (1)
+  - used for: 2017ApJ...851...18L: stellar population and emission line fitting of MaNGA cubes
+  - used for: 2019ApJ...884L..33L: MaNGA DR15 stellar mass and emission-line measurements
+  - used for: 2020ApJ...903..145L: MaNGA stellar mass, SFR, emission-line measurements
+  - used for: 2020MNRAS.492.6027E: Public MaNGA data products: stellar mass surface densities and emission line fluxes
+- **scipy curve_fit**: 11 papers; fields: star_formation 3, protoplanetary_disks 3, nearby_galaxies 2
+  - used for: 2018A&A...615L..14M: graybody SED fitting
+  - used for: 2019ApJ...875...55W: Power-law fit of brightness temperature
+  - used for: 2019ApJ...883...71C: Non-linear least-squares SED fit
+  - used for: 2020A&A...634L..11J: Spiral fitting
+- **spcat**: 11 papers; fields: astrochemistry 10, star_formation 1
+  - used for: 2016A&A...590A..93M: Spectral predictions
+  - used for: 2018A&A...610A..44M: Predictions
+  - used for: 2021A&A...647A..55A: Rotational and vibrational-rotational partition function by summation over energy levels
+  - used for: 2021A&A...653A.129C: Numerical rotational partition function of CH3CH2NCO, checked against an analytic formula
+- **spectralradex**: 11 papers; fields: protoplanetary_disks 3, nearby_galaxies 3, astrochemistry 2
+  - used for: 2022A&A...659A.158H: Non-LTE radiative transfer modelling of PN in GMC 6
+  - used for: 2022A&A...667A.131B: Python interface to run RADEX grids
+  - used for: 2024A&A...686A..31B: Interface for RADEX combined with UltraNest
+  - used for: 2024A&A...688A.130H: Python interface used for RADEX analysis
+- **stacker**: 11 papers; fields: high_z_galaxies 9, nearby_galaxies 2
+  - used for: 2015ApJ...810..133I: visibility stacking of faint sources
+  - used for: 2017ApJ...834..135T: stacking model-subtracted visibilities
+  - used for: 2018ApJ...861....7F: uv visibility stacking
+  - used for: 2019ApJ...887..107F: Shifting visibility phase centers
+- **torus**: 11 papers; fields: protoplanetary_disks 8, evolved_stars 1, milky_way_ism 1
+  - used for: 2015ApJ...799..204C: dust temperatures and SED
+  - used for: 2016ApJ...832..110C: dust density and thermal structure, synthetic SED/images
+  - used for: 2016MNRAS.461..385B: Molecular line radiative transfer and synthetic C18O cubes
+  - used for: 2017ApJ...848L..11K: Monte-Carlo radiative transfer to create synthetic images
+- **uclchem**: 11 papers; fields: nearby_galaxies 5, astrochemistry 3, star_formation 2
+  - used for: 2019MNRAS.484L..43Z: gas-grain chemical modelling
+  - used for: 2020MNRAS.496.5308S: Chemical gas-history modelling coupled to RADEX
+  - used for: 2024A&A...686A..48N: Time-dependent gas-grain C-shock chemical modeling
+  - used for: 2024A&A...688A.130H: Published chemical models used to interpret shock and no-shock scenarios
+- **caldb**: 10 papers; fields: nearby_galaxies 3, agn_and_quasars 3, high_z_galaxies 2; versions: v4.9.1 (2), 4.7.6 (1), 4.9.2.1 (1), 4.9.0 (1)
+  - used for: 2020ApJ...895..135K: Chandra calibration database
+  - used for: 2021A&A...650A.153D: Calibration database used with CIAO for Chandra reprocessing
+  - used for: 2021ApJ...908...53W: Calibration database for Chandra reprocessing
+  - used for: 2021ApJ...909..204F: Chandra calibration
+- **ds9**: 10 papers; fields: nearby_galaxies 4, star_formation 4, agn_and_quasars 1
+  - used for: 2017ApJ...841...43E: visual cloud identification
+  - used for: 2017ApJ...842...92G: by-eye source regions
+  - used for: 2020ApJ...903..119L: Inspecting PPV data cubes of CO emission to identify outflows
+  - used for: 2023ApJ...949..108K: Listed in Software section
+- **eso muse pipeline**: 10 papers; fields: high_z_galaxies 5, nearby_galaxies 3, agn_and_quasars 2; versions: 1.6.2 (2), 1.6 (1), v1.6.1 (1), v2.4.1 (1)
+  - used for: 2017BAAA...59..124T: MUSE data reduction in ESO Reflex
+  - used for: 2017MNRAS.465L..89P: MUSE data reduction
+  - used for: 2018ApJ...854...83T: MUSE reduction
+  - used for: 2018MNRAS.475..492K: MUSE data reduction
+- **fixvis**: 10 papers; fields: protoplanetary_disks 6, agn_and_quasars 2, high_z_galaxies 1
+  - used for: 2018ApJ...869L..41A: Phase shifts to align datasets
+  - used for: 2020ApJ...904..131N: Phase-shifting visibilities to the [C II] centroid
+  - used for: 2020MNRAS.492.3194S: Phase-centring visibilities before the uv-amplitude fits
+  - used for: 2021A&A...648A..33M: Shift visibility phase centers using Gaia DR2 positions and proper motions.
+- **gildas mapping**: 10 papers; fields: star_formation 4, evolved_stars 2, high_z_galaxies 2
+  - used for: 2016A&A...593L..14F: Analysis of final images
+  - used for: 2017A&A...597A.119T: final cleaning of maps
+  - used for: 2018A&A...615A..94F: Analysis of final images
+  - used for: 2019A&A...629A.136S: Self-calibration, imaging, deconvolution, uv_model synthetic visibilities
+- **gildas/mapping**: 10 papers; fields: milky_way_ism 4, nearby_galaxies 3, star_formation 2
+  - used for: 2016A&A...594A..70K: analysis of FITS cubes, moment maps
+  - used for: 2016Natur.537..207G: short-spacing visibilities, merging and imaging
+  - used for: 2017A&A...601L...9G: Short-spacing visibilities and merging
+  - used for: 2017A&A...602A..42K: Further analysis of visibilities
+- **hiiphot**: 10 papers; fields: nearby_galaxies 10
+  - used for: 2018ApJ...863L..21K: HII region catalog
+  - used for: 2018PASJ...70...73H: HII region identification
+  - used for: 2019ApJ...887...49S: comparison HII region masks
+  - used for: 2019ApJ...887...80K: Identify HII regions
+- **hyperion**: 10 papers; fields: star_formation 3, protoplanetary_disks 3, debris_disks 2
+  - used for: 2015ApJ...813L..19J: Dust continuum radiative transfer
+  - used for: 2017ApJ...840L..12S: Monte Carlo radiative transfer models
+  - used for: 2018ApJ...857...18S: Monte Carlo radiative transfer
+  - used for: 2018ApJ...869...10M: 3-D radiative transfer for scattered light and SED
+- **interferopy**: 10 papers; fields: high_z_galaxies 9, agn_and_quasars 1
+  - used for: 2023Natur.617..261K: Python package providing the findclumps algorithm for blind emission-line search
+  - used for: 2024A&A...684A..33K: Public code package used in this work (specific task not stated)
+  - used for: 2024A&A...687A.288G: S/N spectrum extraction and FINDCLUMPS reliability
+  - used for: 2024ApJ...964..146F: Findclump blind line search
+- **lamda database**: 10 papers; fields: protoplanetary_disks 3, star_formation 2, high_z_galaxies 1
+  - used for: 2013ApJ...774...16R: molecular data for CO
+  - used for: 2014ApJ...785..149S: collisional rate coefficients
+  - used for: 2015MNRAS.447.3936M: CO-H2 collisional coefficients
+  - used for: 2017A&A...608A..55D: Collisional rate format
+- **mcmax**: 10 papers; fields: protoplanetary_disks 4, evolved_stars 4, exoplanets 1; versions: 3D version (1)
+  - used for: 2014ApJ...788L..34P: radiative transfer disk modelling
+  - used for: 2016MNRAS.461..385B: 2D temperature and density structure and SED
+  - used for: 2018A&A...614A..17B: Monte Carlo dust radiative transfer SED models
+  - used for: 2018A&A...620A..75K: scattered-light continuum radiative-transfer models
+- **nasa’s astrophysics data system**: 10 papers; fields: agn_and_quasars 3, debris_disks 2, nearby_galaxies 2
+  - used for: 2020MNRAS.499.5915M: Used in the research; specific purpose not stated.
+  - used for: 2021A&A...649A.105F: Acknowledged research use
+  - used for: 2024ApJ...962..166W: Research; specific task not stated
+  - used for: 2024ApJ...971...17F: Research use acknowledged; specific operation not stated.
+- **pluto**: 10 papers; fields: protoplanetary_disks 7, star_formation 3; versions: 4.1 (1), 4.3 (1), 4.2 (RHD simulation) (1), 4.4 (1)
+  - used for: 2020ApJ...904..168B: MHD code for the comparison collapse simulation
+  - used for: 2020ApJ...904..181L: Solve gravito-radiation-hydrodynamics for the massive-protostar simulation
+  - used for: 2021A&A...654A..35B: 3D gas hydrodynamics
+  - used for: 2025ApJ...984L..12B: Grid-based (finite-volume) hydrodynamic simulation
+- **ramses**: 10 papers; fields: star_formation 7, nearby_galaxies 2, high_z_galaxies 1
+  - used for: 2016A&A...593L..14F: Radiation-MHD simulations
+  - used for: 2017A&A...606A..35G: MHD collapse simulation with ambipolar diffusion (code name inferred from the teyssier:02 citation)
+  - used for: 2018A&A...615A..94F: 3D MHD collapse simulations
+  - used for: 2018MNRAS.473.1909G: Zoom-in hydrodynamic simulation of Dahlia
+- **scipy (curve_fit)**: 10 papers; fields: star_formation 4, agn_and_quasars 2, debris_disks 1
+  - used for: 2019AJ....157..117M: Gaussian fit to line and uncertainties
+  - used for: 2021A&A...648A..41V: SED blackbody and Gaussian line fits
+  - used for: 2021A&A...650A.172J: least-squares Gaussian fits of the line profiles
+  - used for: 2024A&A...690A.372L: Gaussian decomposition of 3C 111 absorption profiles
+- **shape**: 10 papers; fields: evolved_stars 8, stellar_physics 1, solar_system 1; versions: X.alpha.619 (2018) (1)
+  - used for: 2015A&A...574A...5D: Morpho-kinematical modelling
+  - used for: 2017A&A...597A..27S: Interactive 3D spatio-kinematical modelling
+  - used for: 2018A&A...617A.129K: 3D model of V4332 Sgr CO emission
+  - used for: 2019A&A...621A..50B: 3D geometric modelling and rendering of channel maps
+- **skysampler**: 10 papers; fields: nearby_galaxies 8, high_z_galaxies 1, agn_and_quasars 1
+  - used for: 2019MNRAS.485.4359S: Sampling CLEAN-component gas distribution into particles
+  - used for: 2019MNRAS.490..319N: sampling CLEAN components into gas particles
+  - used for: 2020MNRAS.496.4061D: sampling clean components as point sources
+  - used for: 2021Sci...372.1201T: Generating gas particles from deconvolved CLEAN components to approximate the [C II] intensity profile for Ki…
+- **splash**: 10 papers; fields: protoplanetary_disks 9, evolved_stars 1
+  - used for: 2018ApJ...860L..13P: Visualisation of SPH output (listed in Software)
+  - used for: 2018MNRAS.475.5296D: visualisation of SPH output
+  - used for: 2019NatAs...3..230K: Visualising SPH output
+  - used for: 2019NatAs...3..278K: SPH visualisation
+- **swarp**: 10 papers; fields: high_z_galaxies 6, transients 2, nearby_galaxies 2
+  - used for: 2017PASJ...69...20H: image co-addition
+  - used for: 2018ApJ...856..121G: resampling to common grid
+  - used for: 2019ApJ...881..124M: combine HST exposures
+  - used for: 2022MNRAS.511.1303V: Stacking final narrow-band images for each filter and chip
+- **uvmem**: 10 papers; fields: protoplanetary_disks 9, debris_disks 1
+  - used for: 2015ApJ...811...92C: Maximum-entropy image synthesis of visibilities
+  - used for: 2015ApJ...812..126C: Maximum-entropy image synthesis and deconvolved models
+  - used for: 2015ApJ...813...76M: MEM image synthesis of VLA and ALMA data
+  - used for: 2016MNRAS.460.2933M: MEM image synthesis
+- **uvsub**: 10 papers; fields: high_z_galaxies 3, protoplanetary_disks 3, agn_and_quasars 1
+  - used for: 2021A&A...654A..90L: Subtracting 2D Gaussian models of secondary sources from the uv-data
+  - used for: 2021ApJ...907L..10R: Subtract tertiary model visibilities.
+  - used for: 2022MNRAS.514.2346K: Subtracting continuum from calibrated spectral-line visibilities
+  - used for: 2022MNRAS.516.5618P: Subtracting the bright continuum source from the ALMA visibility data
+- **vip**: 10 papers; fields: protoplanetary_disks 7, star_formation 2, debris_disks 1
+  - used for: 2019ApJ...878...45B: AO image reduction, detection, PCA, contrast curves
+  - used for: 2020AJ....159..118U: PCA ADI reduction of NIRC2 data
+  - used for: 2020MNRAS.492.1531M: L' calibration and PCA-ADI post-processing
+  - used for: 2020MNRAS.496.5089Z: Reduction of NACO and NIRC2 NIR AO images
+- **aegean**: 9 papers; fields: high_z_galaxies 7, agn_and_quasars 1, nearby_galaxies 1; versions: v1.9.5-56 (2)
+  - used for: 2015ApJ...815L...8U: source extraction
+  - used for: 2016PASJ...68...36H: Source finding
+  - used for: 2017ApJ...835...98U: source extraction
+  - used for: 2017ApJ...849..154S: continuum and blind line source detection
+- **alma science pipeline**: 9 papers; fields: high_z_galaxies 4, nearby_galaxies 3, protoplanetary_disks 1; versions: r40896 of Pipeline-C (1), Cycle 6 (version 5.4 (1), 2022.2.0.64 (1)
+  - used for: 2019PASJ...71...85M: 7M calibration
+  - used for: 2020ApJ...902L..33G: Calibration of all data sets
+  - used for: 2020MNRAS.495L...1I: Calibration
+  - used for: 2020MNRAS.496.4358I: automatic calibration of the ALMA data
+- **alma sensitivity calculator**: 9 papers; fields: protoplanetary_disks 2, high_z_galaxies 2, solar_system 2
+  - used for: 2014A&A...562A..26B: Detection limits for predicted isotopologue lines
+  - used for: 2015MNRAS.447.3936M: Comparison of predicted flux limits with ALMA sensitivity for future observations
+  - used for: 2018Natur.558..260Z: theoretical noise estimate
+  - used for: 2020AJ....159..215L: Thermal noise estimate
+- **applycal**: 9 papers; fields: high_z_galaxies 3, protoplanetary_disks 2, star_formation 1
+  - used for: 2020ApJ...905...25G: Apply continuum self-calibration solutions to full spectral dataset
+  - used for: 2022MNRAS.513.5790C: Applying calibration tables in CASA self-calibration loops
+  - used for: 2022MNRAS.516.5618P: Applying self-calibration gain solutions to ALMA measurement sets
+  - used for: 2022PASJ...74..738T: Applying self-calibration gain tables to visibility data
+- **blobcat**: 9 papers; fields: high_z_galaxies 9
+  - used for: 2017A&A...602A..54M: 3 GHz catalogue at 2.5'' resolution
+  - used for: 2017A&A...606A..17M: GMRT source catalogue
+  - used for: 2018A&A...620A.152F: source extraction and peak fluxes
+  - used for: 2020A&A...642A.155Z: 1.1 mm peak fluxes
+- **bpass**: 9 papers; fields: high_z_galaxies 7, star_formation 1, nearby_galaxies 1; versions: v2.1 (2), v2.0 (1), v2.2.1 (1), v2.0 / v2.2.1 (1)
+  - used for: 2019ApJ...876....1T: input stellar spectra
+  - used for: 2020ApJ...896...93H: Input stellar spectrum
+  - used for: 2020ApJ...903...29M: Binary and single star model EUV spectra for comparison
+  - used for: 2022MNRAS.511.1303V: Binary population and spectral synthesis models for incident stellar spectra in CLOUDY
+- **class/gildas**: 9 papers; fields: star_formation 3, astrochemistry 2, evolved_stars 2
+  - used for: 2013ApJ...774...73I: APEX baseline subtraction and gridding
+  - used for: 2014Sci...345.1584B: host for Weeds
+  - used for: 2016A&A...596A..50G: Shell profile fitting
+  - used for: 2019ApJ...870...81T: NH3 and N2D+ hyperfine fitting
+- **corner.py**: 9 papers; fields: protoplanetary_disks 2, debris_disks 2, high_z_galaxies 2
+  - used for: 2017AJ....153..233F: Posterior corner plots
+  - used for: 2017ApJ...842....8M: Corner plots of MCMC output
+  - used for: 2020ApJ...892...99C: Posterior plots (listed in software section)
+  - used for: 2021Sci...371..713L: Plotting posterior probability distributions and calculating 1 sigma (68% confidence interval) uncertainties
+- **cutex**: 9 papers; fields: star_formation 8, astrochemistry 1; versions: not stated (modified (1), modified version (1)
+  - used for: 2017ApJ...838..114K: core-finding in the Pattle15 comparison catalogue (not run by authors)
+  - used for: 2017ApJ...849...25L: Herschel source extraction (by Molinari et al.)
+  - used for: 2025A&A...696A.151C: Compact source detection and photometry on the ALMAGAL continuum images
+  - used for: 2025A&A...699A..34M: Extraction of compact continuum sources used to build mask_com
+- **dsharp_opac**: 9 papers; fields: protoplanetary_disks 9; versions: v1.1.0 (1), v1.1.0 (from referen (1)
+  - used for: 2019ApJ...881..159M: Opacities and Python tools for kappa and beta
+  - used for: 2020ApJ...891...48H: Dust opacities and beta
+  - used for: 2020ApJ...898..140H: dust opacities
+  - used for: 2021A&A...648A..33M: Compute adopted DSHARP dust opacities.
+- **dustpy**: 9 papers; fields: protoplanetary_disks 9; versions: 1.0.5 (2), v1.0.3 (1), 0.5.6 (1)
+  - used for: 2021A&A...649A.122P: Dust evolution simulations (growth, fragmentation, erosion)
+  - used for: 2024MNRAS.527.9668H: 1D dust coagulation, fragmentation and transport simulations adapted to include an accretion outburst
+  - used for: 2024NatAs...8.1148U: dust evolution simulations
+  - used for: 2025ApJ...989....6K: gas and dust evolution
+- **fast++**: 9 papers; fields: high_z_galaxies 9; versions: v1.2 (1)
+  - used for: 2018A&A...611A..22S: SED fitting with arbitrary SFH
+  - used for: 2018A&A...618A..85S: SED fitting for stellar masses, SFRs, SFHs
+  - used for: 2020A&A...633A.160C: Photo-z, stellar mass, SFR
+  - used for: 2020A&A...642A.155Z: stellar mass SED fitting
+- **frankenstein**: 9 papers; fields: protoplanetary_disks 8, debris_disks 1; versions: v1.1.0 (1)
+  - used for: 2020MNRAS.498.1319M: Gaussian-process reconstruction of the radial intensity profile from visibilities
+  - used for: 2024A&A...689A.104D: Non-parametric visibility fitting
+  - used for: 2024ApJ...971..129C: Visibility-fit radial profiles
+  - used for: 2024ApJ...974..102S: Non-parametric radial brightness profile from visibilities
+- **gaussian 09**: 9 papers; fields: astrochemistry 8, evolved_stars 1; versions: Revision D.01 (4), Revision B.01 (2), 09 (1), Revision A.02 (1)
+  - used for: 2017A&A...608A..55D: DFT of alumina clusters
+  - used for: 2017A&A...608A..96L: Ab initio calculations
+  - used for: 2017ApJ...851L..46M: Vibrational frequencies for Qvib
+  - used for: 2018A&A...619A.140V: Conformer geometry optimization and frequencies
+- **getsources**: 9 papers; fields: star_formation 8, agn_and_quasars 1; versions: v1.140127 (2), 1.140127 (1)
+  - used for: 2016ApJ...825L..15C: Source extraction
+  - used for: 2018A&A...616L..10F: source extraction and measurement
+  - used for: 2018A&A...618L...5N: Core extraction
+  - used for: 2018NatAs...2..478M: core extraction
+- **ipole**: 9 papers; fields: agn_and_quasars 9
+  - used for: 2019ApJ...875L...5E: General relativistic ray tracing of snapshots
+  - used for: 2020ApJ...901...67W: Ray tracing of GRMHD snapshots
+  - used for: 2023ApJ...945...40C: Synchrotron radiative transfer for the kharma GRMHD models
+  - used for: 2024A&A...682A..97W: Ray tracing in curved Kerr spacetime
+- **jupyter**: 9 papers; fields: protoplanetary_disks 4, nearby_galaxies 2, agn_and_quasars 1
+  - used for: 2021ApJ...915...99I: Interactive computing (listed in Software section)
+  - used for: 2023A&A...675A.131T: General data analysis (listed in acknowledgements)
+  - used for: 2023A&A...678A.146B: General analysis (listed in Acknowledgements)
+  - used for: 2023MNRAS.520.1613M: Interactive computing environment.
+- **jwst science calibration pipeline**: 9 papers; fields: nearby_galaxies 4, agn_and_quasars 2, high_z_galaxies 2; versions: v1.9.4 (1), 1.8.2 (1), 1.10.1 (1), 1.11.4 (1)
+  - used for: 2024A&A...683A.169W: Stages 1 and 2 processing of NIRSpec IFU raw data, CRDS context jwst_1041.pmap
+  - used for: 2024A&A...684A..24P: Reduction of NIRSpec data
+  - used for: 2024ApJ...962...65L: calibration of the JWST NIRCam products used
+  - used for: 2025A&A...693A.174E: Reduction of MIRI MRS data, context 1130
+- **linmix_err**: 9 papers; fields: nearby_galaxies 3, protoplanetary_disks 3, stellar_physics 2
+  - used for: 2016ApJ...827...81I: Bayesian linear regression (IDL Astronomy Library)
+  - used for: 2016ApJ...831..125P: Bayesian regression with censoring
+  - used for: 2018A&A...616A.100Y: Bayesian linear fit of gas vs dust mass
+  - used for: 2020A&A...633A.134L: scaling relation fits
+- **mast**: 9 papers; fields: high_z_galaxies 4, nearby_galaxies 2, protoplanetary_disks 1
+  - used for: 2021ApJ...909..204F: Retrieve images and spectra
+  - used for: 2024AJ....167..232T: Access to TESS data
+  - used for: 2024ApJ...971...17F: Retrieve calibrated HST STIS data.
+  - used for: 2024ApJ...974..145S: Retrieval of Stage 2 spectroscopic data products
+- **mgefit**: 9 papers; fields: nearby_galaxies 9; versions: 5.0 (1), 5.0 (Software sectio (1)
+  - used for: 2020MNRAS.496.4061D: MGE of molecular gas surface density
+  - used for: 2022MNRAS.509.2920N: Multi-Gaussian Expansion (MGE) fitting of stellar and ISM surface density maps via mge_fit_sectors_regularized
+  - used for: 2022MNRAS.516.4066L: 2D and 1D Multi-Gaussian Expansion fitting of the HST surface brightness distribution to compute the stellar …
+  - used for: 2023MNRAS.518...13H: Deriving Multi-Gaussian Expansion (MGE) models from HSC r-band photometry.
+- **montage**: 9 papers; fields: nearby_galaxies 5, star_formation 3, high_z_galaxies 1
+  - used for: 2013ApJ...774...73I: mosaicking NIR images
+  - used for: 2015ApJ...804...37L: re-creating the Herschel mosaic for astrometric check
+  - used for: 2017ApJ...838..146L: acknowledged as used
+  - used for: 2018ApJ...867..166S: Acknowledged as used in the research
+- **mpdaf**: 9 papers; fields: high_z_galaxies 6, nearby_galaxies 2, cosmology 1; versions: 2.5 (1)
+  - used for: 2019MNRAS.485.1595P: Extracting MUSE spectra
+  - used for: 2021A&A...645A.120F: merging exposures
+  - used for: 2021ApJ...918...69U: Converting wavelengths from air to vacuum with airtovac
+  - used for: 2022MNRAS.516.5618P: Running MUSELET emission-line searches and creating white-light and synthetic Cousins V, Johnson R, and SDSS …
+- **polconvert**: 9 papers; fields: agn_and_quasars 6, instrumentation 2, milky_way_ism 1
+  - used for: 2019ApJ...871...30I: ALMA SEFDs
+  - used for: 2019ApJ...875L...2E: Linear-to-circular polarization conversion of ALMA data
+  - used for: 2019ApJ...875L...3E: Linear-to-circular conversion of ALMA data
+  - used for: 2019ApJ...875L...4E: Convert ALMA linear to circular basis
+- **pymultinest**: 9 papers; fields: high_z_galaxies 8, transients 1
+  - used for: 2017ApJ...850L..21K: SGRB Eiso distribution median and dispersion
+  - used for: 2019A&A...632L...7J: python wrapper for MultiNest
+  - used for: 2020ApJ...898...33C: nested sampling of lens parameters
+  - used for: 2020MNRAS.498.4109J: Python wrapper for MultiNest
+- **scipy.optimize.curve_fit**: 9 papers; fields: protoplanetary_disks 4, high_z_galaxies 3, agn_and_quasars 2
+  - used for: 2019ApJ...887..235L: least-squares fitting
+  - used for: 2020ApJ...891...48H: Gaussian fits to B84 profile
+  - used for: 2021A&A...645A..33B: Gaussian fits to CO/[CII] spectra
+  - used for: 2021A&A...654A..90L: Fitting 2D Gaussians to FIR, Halpha, and [O III] maps to measure sizes and centroid positions
+- **spfit**: 9 papers; fields: astrochemistry 8, evolved_stars 1
+  - used for: 2014A&A...569L...5M: Spectroscopic parameter fitting
+  - used for: 2017ApJS..233...11B: Computational core of the global fit
+  - used for: 2021A&A...645A..75C: Fitting rotational transitions of the trans isomer of CPCA
+  - used for: 2023A&A...674A.125B: Fitting OH spectroscopic parameters to laboratory and astronomical Lambda-doubling transition frequencies
+- **starlight**: 9 papers; fields: nearby_galaxies 7, transients 1, agn_and_quasars 1; versions: latest version (Werl (1)
+  - used for: 2019MNRAS.486..123R: Stellar population synthesis
+  - used for: 2020MNRAS.492.5121D: Stellar continuum synthesis and subtraction in GMOS and SIFS cubes
+  - used for: 2020MNRAS.496..943D: Spectral synthesis of GMOS and SIFS spectra for stellar archaeology and gas cube
+  - used for: 2021A&A...645A..21G: Model the MUSE stellar continuum.
+- **tiny tim**: 9 papers; fields: nearby_galaxies 7, protoplanetary_disks 1, agn_and_quasars 1; versions: 6.3 (1)
+  - used for: 2015ApJ...806...39O: check HST PSF
+  - used for: 2016ApJ...823...51B: Synthetic WFPC2 PSF
+  - used for: 2019ApJ...881...10B: HST PSF model for MGE fitting
+  - used for: 2020ApJ...892...68N: HST PSFs
+- **alma observing tool**: 8 papers; fields: high_z_galaxies 3, nearby_galaxies 2, agn_and_quasars 2
+  - used for: 2014ApJ...796..117G: Theoretical sensitivity
+  - used for: 2017MNRAS.470.3775V: Scheduling block design with manually fixed SPWs
+  - used for: 2021MNRAS.508.5259M: Observation preparation and FoV calculation
+  - used for: 2024MNRAS.527.9343L: Estimating required observing times
+- **cmasher**: 8 papers; fields: protoplanetary_disks 5, nearby_galaxies 1, cosmology 1
+  - used for: 2023ApJ...945...42B: Scientific colormaps for plotting
+  - used for: 2023MNRAS.520.1613M: Scientific colormaps for plotting.
+  - used for: 2024ApJ...973..135H: listed in the Software section; specific use not stated
+  - used for: 2026MNRAS.552g1573L: Python package used in the research; specific role not stated
+- **common astronomy software applications (casa)**: 8 papers; fields: star_formation 3, high_z_galaxies 3, nearby_galaxies 1; versions: 4.5.1 (1), v4.5 (Band 3); v4.7  (1), 5.6.2 (1), 5.6 (1)
+  - used for: 2020ApJ...905...25G: Data calibration and imaging
+  - used for: 2020MNRAS.498.4635D: Data reduction, imaging, Gaussian fitting and primary-beam models
+  - used for: 2020PASJ...72L...6H: Data reduction
+  - used for: 2021A&A...649A..31H: Data processing and imaging.
+- **eso x-shooter pipeline**: 8 papers; fields: high_z_galaxies 3, protoplanetary_disks 2, stellar_physics 1; versions: 2.2 (1), 2.9.3 (1), 3.2.0 (1), V2.7.0 (1)
+  - used for: 2015Natur.519..327W: X-shooter reduction
+  - used for: 2017A&A...600L...3C: reduction of X-Shooter spectra
+  - used for: 2018A&A...619A..39F: Reduction of X-SHOOTER spectra
+  - used for: 2019A&A...626A..11C: Reduction of X-Shooter spectra
+- **fixplanets**: 8 papers; fields: protoplanetary_disks 8
+  - used for: 2018ApJ...869L..41A: Reconcile different pointing centers
+  - used for: 2021A&A...648A..33M: Discussed as an alternative for field-coordinate changes; not used because the data were kept in ICRS.
+  - used for: 2023A&A...676A...4C: Setting the source sky position in the metadata to a common center across execution blocks
+  - used for: 2023Natur.623..705S: Align disk peaks between datasets
+- **hochunk3d**: 8 papers; fields: protoplanetary_disks 6, star_formation 2
+  - used for: 2018ApJ...854..130W: scattered light radiative transfer
+  - used for: 2018ApJ...858..112L: Monte Carlo radiative transfer dust disk model
+  - used for: 2018ApJ...860..124D: dust temperature estimates
+  - used for: 2019AJ....157..237R: Monte Carlo radiative transfer synthetic images
+- ... 2551 more names with fewer papers
+
+### Software named in each technique's matched steps (technique: package count)
+
+- self-calibration: casa 597, tclean 128, uvcontsub 34, gaincal 28, aips 26, miriad 19, applycal 17, gildas 14, imfit 10, fixplanets 10, difmap 9, alma pipeline 9, fixvis 9, clean 7, eht-imaging 6, concat 6, keplerian_mask 6, uvmultifit 5
+- array-combination: casa 186, tclean 52, feather 22, gildas 11, miriad 9, uvcontsub 9, casa feather 6, astropy 6, phangs-alma pipeline 6, concat 5, class 4, emcee 4, imsmooth 4, casa 5.4.1 4, astrodendro 4, uvmultifit 3, tp2vis 3, galario 3
+- continuum-subtraction: casa 831, tclean 211, uvcontsub 132, gildas 40, statcont 33, concat 20, miriad 17, casa tclean 17, casa 5.4.1 14, keplerian_mask 14, impbcor 14, mstransform 13, aips 11, clean 11, alma pipeline 11, imcontsub 10, uvmultifit 9, feather 9
+- imaging-choices: casa 1836, tclean 537, uvcontsub 125, gildas 66, imfit 61, casa tclean 60, miriad 54, aips 36, clean 32, concat 31, casa imfit 27, gaincal 24, feather 20, alma pipeline 20, impbcor 17, cprops 16, emcee 16, imsmooth 16
+- moment-maps: casa 470, bettermoments 66, tclean 41, immoments 38, casa immoments 30, gildas 27, imfit 27, casa imfit 25, astropy 23, gofish 20, emcee 17, miriad 17, spectral-cube 17, uvcontsub 15, 3dbarolo 14, carta 14, eddy 12, scipy 11
+- dust-continuum-mass: casa 37, radmc-3d 35, dali 23, mcfost 22, emcee 22, magphys 15, cigale 13, lime 9, gildas 7, lifelines 7, scipy 6, phantom 6, mcmax 5, casa imfit 5, miriad 5, linmix 5, astrodendro 5, dusty 4
+- sed-fitting: cigale 101, magphys 87, emcee 73, casa 42, bagpipes 33, eazy 24, galfit 23, radmc-3d 20, cloudy 19, prospector 18, lephare 17, mcfost 16, dali 15, sextractor 14, hyperz 13, fast 13, fsps 11, multinest 10
+- spectral-index: casa 94, emcee 27, tclean 16, cigale 13, radmc-3d 11, scipy 10, gildas 7, astropy 7, magphys 6, frankenstein 6, mcfost 5, aips 5, casa imfit 5, scipy curve_fit 4, miriad 4, astrodendro 4, dustpy 4, python 4
+- free-free-synchrotron: casa 29, emcee 12, hiiphot 7, getsf 6, gildas 4, starburst99 4, astropy 4, multinest 3, lzifu 3, casa imfit 3, cigale 3, cloudy 3, ppmap 3, tclean 3, miriad 2, pyspeckit 2, pymultinest 2, radex 2
+- disk-substructure-profiles: casa 129, emcee 116, galario 47, gofish 45, radmc-3d 41, dali 26, frank 18, tclean 17, scipy 15, vis_sample 14, mcfost 13, lime 13, frankenstein 13, bettermoments 12, miriad 9, python 8, imfit 8, casa simobserve 7
+- uv-plane-fitting: casa 285, emcee 141, uvmultifit 86, galario 86, gildas 78, casa uvmodelfit 56, radmc-3d 50, tclean 42, uvmodelfit 38, vis_sample 37, miriad 21, uvcontsub 20, imfit 18, lime 13, casa imfit 13, galfit 13, aips 9, visilens 9
+- keplerian-disk-kinematics: casa 101, eddy 39, emcee 38, gofish 32, radmc-3d 30, bettermoments 27, tclean 24, keplerian_mask 20, uvcontsub 13, lime 11, visible 9, casa tclean 7, discminer 7, python 6, galario 6, pdspy 6, scipy 6, mcfost 5
+- envelope-kinematics-pv: casa 61, radmc-3d 17, gildas 16, pvextractor 13, spectral-cube 9, 3dbarolo 9, emcee 8, miriad 6, astropy 6, shape 5, scipy 5, impv 5, carta 5, lime 4, casa simobserve 4, hyperion 4, slam 4, radex 3
+- galaxy-3d-kinematics: 3dbarolo 90, kinms 56, emcee 35, casa 26, 3d-barolo 22, kinemetry 21, galpak3d 17, kinms_mcmc 13, skysampler 13, kinms_fitter 9, gastimator 8, gipsy rotcur 6, idl 6, jampy 6, tirific 5, 3d barolo 5, kinmspy_mcmc 5, multinest 4
+- smbh-gas-dynamics: kinms 20, skysampler 10, emcee 7, jampy 6, kinms_mcmc 5, kinmspy_mcmc 4, kinms_fitter 4, gastimator 4, glee 3, idl amoeba 3, idl 3, astropy 3, iraf stsdas lucy 2, jam 2, mpfit 2, jam mge_vcirc 2, pypeit 2, mgefit 2
+- rotational-diagram-lte: cassis 136, radex 134, emcee 69, casa 58, weeds 58, madcuba 53, xclass 52, lime 48, cdms 48, radmc-3d 31, gildas 23, magix 17, class 15, slim 15, jpl 14, mcfost 12, madex 12, vis_sample 12
+- non-lte-excitation: radex 231, lime 33, ratran 22, emcee 20, spectralradex 17, casa 16, cassis 10, lamda 9, pyradex 8, lmfit 6, dali 5, radmc-3d 5, grelvg 5, lamda database 4, vis_sample 4, pyspeckit 4, ultranest 4, sublime 4
+- line-identification: cdms 65, cassis 55, splatalogue 31, casa 24, jpl 15, xclass 14, gildas 13, jpl catalog 13, weeds 12, madcuba 8, class 7, radex 5, slim 5, emcee 5, madex 4, spectral-cube 4, magix 4, autofit 4
+- isotopic-ratios: cassis 19, radex 16, casa 7, madcuba 7, lime 6, weeds 5, emcee 5, xclass 4, nemesis 4, radmc-3d 4, ratran 3, magix 3, dali 3, gildas 3, gofish 3, class 2, alchemic 2, rac2d 2
+- chemical-modelling: magickal 17, nautilus 16, uclchem 12, dali 10, casa 3, ucl_chem 3, lime 3, radex 3, fogel et al. 2011 chemical code 2, meudon pdr code 2, alchemic 2, ratran 2, dusty 2, gaussian 09 2, kida 2, tensorflow 2, spectralradex 2, monte carlo radiative transfer (dullemond et al. 2002) 1
+- radiative-transfer-modelling: radmc-3d 220, casa 108, lime 83, dali 80, mcfost 78, emcee 75, casa simobserve 43, radex 29, simobserve 23, vis_sample 20, galario 17, radmc3d 16, tclean 15, optool 14, miriad 10, hyperion 10, ratran 9, xclass 9
+- outflow-energetics: casa 7, 3dbarolo 4, emcee 3, pyneb 2, splatalogue 1, cdms 1, pymultinest 1, multinest 1, dysmalpy 1, radex 1, mappings (analytic abundance function) 1, iraf 1, temden 1, asurv 1, pystan 1, idl 1, kinms_mcmc 1, kinms 1
+- core-extraction-cmf: astrodendro 99, clumpfind 46, getsf 27, casa 20, getsources 10, cprops 7, dendrogram 4, fellwalker 4, scipy 4, xclass 4, casa imfit 3, heisenberg 3, filfinder 3, scimes 3, plfit 3, photutils 3, powerlaw 3, aips serch 2
+- gmc-decomposition-virial: cprops 41, casa 16, astrodendro 12, radex 10, clumpfind 9, cpropstoo 8, scipy 6, astropy 5, pycprops 5, magickal 4, radmc-3d 4, pyspeckit 4, casa imfit 3, cloudy 2, casa simulator 2, hiiphot 2, emcee 2, filfinder 2
+- gas-mass-co-conversion: casa 81, radex 26, emcee 23, cprops 15, tclean 12, linmix 11, scipy 9, gildas 8, astrodendro 8, cloudy 8, 3dbarolo 8, astropy 8, radmc-3d 7, dali 7, magphys 6, kinms 6, numpy 6, cigale 6
+- star-formation-laws: cigale 11, casa 9, magphys 9, emcee 8, pipe3d 7, scikit-learn 5, scipy 5, galfit 4, linmix 4, agnfitter 3, radmc-3d 3, numpy 3, astropy 3, mopex 2, starburst99 2, ramses 2, cmcirsed 2, hyperz 2
+- source-extraction-counts: sextractor 101, casa 31, galfit 22, pybdsf 14, lineseeker 11, findclumps 9, eazy 9, photutils 8, scikit-learn 7, blobcat 7, swarp 6, getsf 6, casa imfit 5, clumpfind 5, emcee 5, tclean 5, interferopy 5, tinytim 4
+- stacking: casa 45, gofish 25, galfit 12, stacker 11, gildas 11, linestacker 10, sextractor 9, photutils 9, tclean 7, visible 6, imfit 6, eddy 5, uvmultifit 4, python 4, emcee 4, linmix 4, casa imfit 3, xclass 3
+- lens-modelling: lenstool 28, pyautolens 20, glafic 18, visilens 16, casa 15, emcee 13, dynesty 9, galfit 7, magphys 7, uvmcmcfit 7, glee 5, cigale 5, gravlens 5, multinest 5, bagpipes 5, linestacker 5, scipy 4, lenstronomy 4
+- redshift-line-search: casa 159, tclean 35, cloudy 25, 3dbarolo 14, casa imfit 12, findclumps 12, pyneb 12, emcee 11, gildas 11, uvcontsub 11, magphys 7, galfit 7, sextractor 7, cigale 7, imfit 7, uvmultifit 6, bpass 6, dynesty 6
+- polarization-magnetic-fields: casa 157, tclean 32, radmc-3d 22, python 10, uvmultifit 9, gildas 8, polaris 8, miriad 7, irdap 7, emcee 7, gaincal 5, alma pipeline 5, casa imfit 4, mcfost 4, gofish 4, astrodendro 4, iraf 3, casa immath 3
+- sz-effect: dynesty 4, casa 3, galario 1, casa simalma 1, ciao 1, tclean 1, simobserve 1, emcee 1, colossus 1
+- absorption-lines: casa 15, uvmultifit 4, emcee 3, python 3, ppxf 3, xclass 2, aips 2, radex 2, aabs 2, spcat 2, xiam 2, scipy 2, pypeit 2, muse pipeline 1, zap 1, alma pipeline 1, fitlyman/midas 1, linetools 1
+- evolved-star-envelopes: casa imsmooth 2, mcp 2, phantom 2, ali 2, mesa 1, monte carlo radiative transfer code (schöier & olofsson 2001) 1, parsec 1, colibri 1, monte carlo cse code (bernes 1979; schoier & olofsson 2001) 1, schöier & olofsson 2001 monte carlo code 1, madex 1, ucl_chem-type cse chemical model (mcelroy13) 1, class (gildas) 1, code of agundez et al. 2012 1, scipy 1, xspec 1, one-dimensional accelerated lambda iteration model 1, flash 4.5 1
+- solar-system-atmospheres: nemesis 29, casa 19, tclean 3, mpfit 2, atmwindmapgaussfit 2, lime 2, gildas/mapping 1, radio-bear 1, photutils 1, emcee 1, pyastronomy 1, common astronomy software applications 1, clean 1, miriad 1, splat 1, smurf 1, casa uvmodelfit 1, neatm (model) 1
+- hydro-simulation-comparison: phantom 32, mcfost 17, radmc-3d 13, fargo3d 11, casa 7, dusty fargo-adsg 7, fargo 6, lime 4, gadget-2 3, sfumato 3, splash 3, rebound 3, pluto 3, fargo2radmc3d 3, gadget2 2, casa simanalyze 2, fargo-3d 2, radmc3d 2
+- variability-time-domain: casa 66, emcee 16, tclean 16, radmc-3d 10, ciao 10, python 7, aips 6, gildas 6, xspec 6, fixvis 6, statwt 6, imfit 6, uvmultifit 5, linmix 5, heasoft 5, casa uvmodelfit 4, scipy 4, eddy 4
+- toomre-stability: radmc-3d 4, cprops 2, dsharp_opac 2, 3dbarolo 2, scipy 2, dali 1, 3d-barolo 1, fragment 1, networkx 1, scikit-learn 1, python 1, heisenberg 1, vis_sample 1, kinms 1, casa 1, spextool 1, emcee 1, paraview 1
+- injection-null-tests: casa 24, sextractor 9, imfit 6, simobserve 5, python 5, tclean 5, uvmultifit 4, lineseeker 4, getsf 4, photutils 4, scipy 4, galfit 3, astrodendro 3, findclump 3, findclumps 2, starburst99 2, mpfit 2, iraf 2
+- dense-gas-tracers: casa 34, radex 33, pyspeckit 9, tclean 7, scipy 7, spectral-cube 6, astropy 5, linmix 5, pyradex 5, gildas 4, miriad 4, lmfit 4, madcuba 4, lamda 3, class 3, numpy 3, spectralradex 3, ultranest 3
+- transient-afterglows: casa 6, boxfit 3, emcee 3, afterglowpy 3, pymultinest 2, swift burst analyser 1, multinest 1, miriad 1, presto (rfifind, single_pulse_search.py) 1, boxfit v2 1, mosfit 1, alma science pipeline software 1, tclean 1, bateconvert 1, battblocks 1, heasoft 1, batmaskwtevt 1, uvotsource 1
+- solar-observations: casa 16, stic 5, idl 4, bifrost 4, art 4, soap 3, maria 3, mpfit 1, aips 1, emcee 1, rh 1, soap2 1, solarsoftware 1, enhance 1, sunpy 1, ebdetect 1, demreg 1, chianti v9 1
+
+## Paper excerpts (30 of 3422, chosen for detail and spread over fields/years)
+
+### 2019ApJS..244...40L: Automated Mining of the ALMA Archive in the COSMOS Field (A<SUP>3</SUP>COSMOS). I. Robust ALMA Continuum Photometry Catalogs and Stellar Mass and Star Formatio… (2019; high_z_galaxies, star_formation; data_release_or_catalog)
+- question: How to systematically mine inhomogeneous public ALMA archival data in the COSMOS field to produce robust continuum photometry catalogs and derive stellar mass and star formation properties for high-r…
+- astroquery not stated: Querying the ALMA archive for publicly available projects in the COSMOS field
+- CASA 4.7.2: Calibrating raw ALMA visibilities with scriptForPI.py, continuum imaging via the imaging pipeline and clean task, uvmodelfit testing, and uv-plane line searches
+- PyBDSF not stated: Blind source extraction and 2D Gaussian fitting on ALMA continuum images
+- AIPS not stated: Deconvolving Gaussian component sizes with the clean beam via the DECONV.FOR module in PyBDSF
+- getpix not stated: Aperture photometry and pre-selecting candidate prior sources for GALFIT fitting
+- GALFIT not stated: Iterative prior-based source fitting on ALMA continuum images
+- GILDAS not stated: uv-plane source fitting with uv_fit and uv-plane spectral line extraction
+- scikit-learn not stated: Gaussian Process supervised machine-learning classification of multi-wavelength counterpart associations
+- MAGPHYS not stated: Multi-wavelength UV-to-mm/radio SED fitting at fixed prior redshift to derive galaxy physical properties
+- MAGPHYS+photo-z not stated: Photometric redshift SED fitting to validate prior redshifts and estimate M_* and SFR uncertainties including redshift errors
+
+### 2017ApJ...842...92G: Thermal Feedback in the High-mass Star- and Cluster-forming Region W51 (2017; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: Do forming high-mass protostars heat large volumes of surrounding gas (inhibiting fragmentation) while the main-sequence stars that power compact H II regions do not, and are the protostars on the ma…
+- CASA 4.5.2-REL (r36115): data reduction and tclean imaging
+- astrodendro not stated: continuum source identification
+- ds9 not stated: by-eye source regions
+- pyspeckit not stated: listed software (spectral fitting)
+- spectral-cube not stated: listed software for cubes
+- pvextractor not stated: position-velocity diagrams
+- dust_emissivity not stated: listed software (dust mass)
+
+### 2017ApJ...851..132C: The Architecture of the GW Ori Young Triple-star System and Its Disk: Dynamical Masses, Mutual Inclinations, and Recurrent Eclipses (2017; protoplanetary_disks, star_formation, stellar_physics; observational_alma_primary)
+- question: What are the dynamical masses, orbital architecture and disk/orbit mutual inclinations of the GW Ori triple system, and what causes its recurrent eclipses?
+- CASA 4.4: calibration, self-calibration and imaging
+- DiskJockey not stated: forward modeling of disk line emission
+- RADMC-3D not stated: ray-tracing molecular line emission
+- emcee not stated: MCMC sampling
+- PSOAP not stated: spectroscopic disentangling
+- TODCOR not stated: two-dimensional cross-correlation RVs
+- IRAF XCSAO not stated: 1D cross-correlations
+- VARTOOLS not stated: Lomb-Scargle period search
+
+### 2026MNRAS.552g1573L: The ALMA EGO-10 survey of massive protoclusters: correlation of 1.3 mm continuum source clustering with evolutionary state (2026; star_formation, milky_way_ism; observational_alma_primary)
+- question: How does massive protocluster structure relate to evolutionary state?
+- CASA not stated: Calibration, imaging and image-noise measurement
+- ALMA calibration pipeline 6.2.1.7: Data calibration including spectral renormalization
+- findContinuum not stated: Identify line-free channels
+- tclean not stated: Interactive continuum imaging; uvrange selection
+- mtmfs not stated: Multi-term multi frequency synthesis imaging
+- CASA Analysis Utilities / au.estimateMRS not stated: Estimate maximum recoverable scale from fifth percentile shortest baseline
+- Astrodendro not stated: Dendrogram source identification
+- Hyper not stated: Source identification, deblending, Gaussian fitting and aperture photometry
+- MiSTree not stated: Compute minimum spanning trees
+- scipy.stats not stated: Rank correlations and Mann-Whitney U-test
+
+### 2019A&A...622A..89V: The Fornax 3D project: dust mix and gas properties in the centre of early-type galaxy FCC 167 (2019; nearby_galaxies; multi_facility_alma_minor)
+- question: Whether combining ISM geometry constraints (MUSE ionised gas, ALMA CO) with 3D radiative transfer modelling can reveal the kind of dust in the dust-lane early-type galaxy FCC 167 and the origin of it…
+- KinMS not stated: Kinematic models of ionised and molecular gas
+- adamet not stated: MCMC fitting of the CO model
+- FitSKIRT not stated: Optimising 3D dust ring radiative transfer models
+- SKIRT not stated: Radiative transfer and panchromatic SED
+- pPXF not stated: Stellar kinematics and population fits
+- photutils not stated: Aperture photometry of Herschel images
+- XSPEC not stated: X-ray spectral fit
+
+### 2022MNRAS.516.5618P: MUSE-ALMA haloes VII: survey science goals &amp; design, data processing and final catalogues (2022; high_z_galaxies, agn_and_quasars; data_release_or_catalog)
+- question: What are the physical properties of multi-phase circumgalactic medium (CGM) gas and associated galaxies in 19 quasar fields at z_abs < 0.85, and what are the magnitudes and spectroscopic redshifts of…
+- CASA not stated: ALMA data reduction, manual flagging, self-calibration, continuum subtraction, cube imaging, and primary beam correction
+- TCLEAN not stated: Imaging ALMA continuum maps and spectral cubes
+- GAINCAL not stated: Computing self-calibration gain solutions on ALMA measurement sets
+- APPLYCAL not stated: Applying self-calibration gain solutions to ALMA measurement sets
+- UVSUB not stated: Subtracting the bright continuum source from the ALMA visibility data
+- UVCONTSUB not stated: Removing residual continuum signatures around the imperfectly subtracted quasar in ALMA data
+- PBCOR not stated: Correcting ALMA cubes for the primary beam
+- ESO MUSE pipeline not stated: Reducing VLT/MUSE raw data cubes using recipes scibasic, scipost, exp_align, and exp_combine
+- PROFOUND not stated: Detecting continuum sources in VLT/MUSE white-light images, fixing segmentation maps (profoundSegimFix), and measuring multi-band (V, R, r, i) photometry
+- MPDAF not stated: Running MUSELET emission-line searches and creating white-light and synthetic Cousins V, Johnson R, and SDSS r and i band images from MUSE cubes
+
+### 2024AJ....167..232T: Sites of Planet Formation in Binary Systems. I. Evidence for Disk−Orbit Alignment in the Close Binary FO Tau (2024; protoplanetary_disks, stellar_physics; observational_alma_primary)
+- question: Link circumstellar disk properties and disk-orbit alignment to the precisely known binary orbit of FO Tau.
+- CASA v6.1.1.15; v6.5.1.23: Pipeline calibration and post-processing
+- tclean not stated: Imaging for astrometric alignment and flux-scaling checks
+- imfit not stated: Two-dimensional Gaussian fits to continuum components
+- REDSPEC not stated: NIRSPEC array rectification and spectral extraction
+- SPOC pipeline not stated: TESS photometric reduction
+- Spectroscopy Made Easy not stated: H-band spectral synthesis
+- emcee not stated: SED, continuum-visibility and CO-visibility MCMC fitting
+- scipy / griddata not stated: Interpolate stellar evolution isochrones
+- saphires not stated: Spectral broadening functions for relative RV
+- orvara not stated: Binary orbit fitting
+
+### 2025A&A...695A.163B: ALMACAL: XIII. Evolution of the CO luminosity function and the molecular gas mass density out to z ∼ 6 (2025; high_z_galaxies, nearby_galaxies, cosmology; archival_reuse)
+- question: Constrain the CO LF and molecular gas mass density evolution while alleviating cosmic variance.
+- ALMACAL pipeline not stated: Automated calibrator processing and imaging.
+- scriptForPI.py not stated: Calibration.
+- CASA not stated: Visibility reweighting and spectral-cube imaging.
+- statwt not stated: Re-calibrate concatenated uv weights.
+- tclean not stated: Imaging.
+- SoFiA2 / SoFiA-2 not stated: Emission-line finding, injection recovery and inverted-cube fidelity estimates.
+- SoFiA 1 not stated: Predecessor of SoFiA2, described for context.
+- EAZY not stated: SED fitting for photometric redshifts.
+- scipy.optimize.curve_fit not stated: Gaussian emission-line fitting.
+- NED not stated: Counterpart search and calibrator catalogue cross-matching.
+
+### 2020ApJ...904...77G: A Photoionized Accretion Disk around a Young High-mass Star (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: Can a photo-ionized disk survive around G345.49+1.47 and sustain continued accretion?
+- CASA 5.4: Calibration and reduction
+- uvcontsub not stated: Continuum subtraction in calibrated uv-data
+- tclean not stated: Continuum imaging and deconvolution of simulated cubes
+- imfit not stated: 2D Gaussian continuum fit
+- immoments not stated: SO2 moment 1 image
+- Minuit not stated: Disk-model minimization and error calculation
+- Perl Data Language (PDL) not stated: Analysis and implementation of Minuit fitting
+- simobserve not stated: Simulated measurement sets from the theoretical brightness model
+- CASA extensions not stated: Execution-block antenna configuration files
+- buildConfigurationFile not stated: Antenna configuration files for the two execution blocks
+
+### 2026ApJ..1000..144T: Active Galactic Nucleus Feedback and the Development of Dusty Multiphase Gas in X-Ray Emitting Elliptical Galaxies (2026; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Origin of dusty molecular clouds and their spatial, extinction, and kinematic relationships with Hα, X-ray gas, and AGN feedback.
+- CASA 6.5.1: ALMA calibration and imaging.
+- ELLIPSE not stated: Stellar-isophote modeling for dust absorption maps.
+- IRAF not stated: Environment containing the STSDAS ELLIPSE function.
+- STSDAS not stated: Library providing ELLIPSE.
+- Python not stated: photutils stellar modeling and dust_extinction extinction curves.
+- photutils not stated: Elliptical-isophote stellar-emission models.
+- ppxf latest version: MUSE stellar continuum, emission-line, and kinematic fitting.
+- CIAO not stated: Chandra data reduction.
+- chandra_repro not stated: Reprocess Chandra observations.
+- lc_clean not stated: Filter strong background flares.
+
+### 2022MNRAS.513.5790C: Variable structure in the PDS 70 disc and uncertainties in radio-interferometric image restoration (2022; protoplanetary_disks, exoplanets, instrumentation; archival_reuse)
+- question: What is the impact of the JvM correction on restored radio-interferometric image uncertainties, and what do alternative non-parametric imaging and multi-epoch visibility alignment reveal about the ci…
+- CASA not stated: Standard self-calibration, imaging with tclean, gaincal, applycal, and visibility weight calculation with statwt
+- tclean not stated: Standard CLEAN imaging in CASA for self-calibration comparison and unit spike dirty map verification
+- gaincal not stated: Antenna gain calibration in CASA self-calibration loops
+- applycal not stated: Applying calibration tables in CASA self-calibration loops
+- statwt not stated: Replacing visibility weights by those corresponding to the dispersion of each datum after concatenation
+- uvmem not stated: Non-parametric image synthesis and model generation in the self-calibration loop
+- OOselfcal not stated: Automated self-calibration framework wrapping CASA gaincal and applycal with uvmem
+- pyralysis not stated: Gridding visibility datasets to a common uv-grid in natural weights
+- VisAlign not stated: Aligning multi-epoch visibility datasets in the uv-plane in position and flux scale
+- MPolarMaps not stated: Estimating disc orientation (PA, inclination) and ring center by minimizing azimuthal dispersion of radial intensity profiles
+
+### 2021ApJ...909..204F: [C II] and CO Emission along the Bar and Counter-arms of NGC 7479 (2021; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Origin, distribution, and kinematics of CO and [C II] emission along the bar and counter-arms of NGC 7479.
+- FIFI-LS pipeline not stated: SOFIA data reduction
+- ATRAN not stated: Atmospheric-transmission correction
+- STinyTim not stated: Synthetic MIPS nuclear PSFs
+- MOPEX not stated: Mosaic corrected MIPS BCDs
+- Magphys not stated: Aperture SED fitting and infrared/stellar-property inference
+- CIAO 4.12.1: Chandra reprocessing
+- CALDB 4.9.3: Chandra calibration
+- dmimgadapt not stated: Adaptive Gaussian smoothing of X-ray image
+- specextract not stated: Nuclear and counter-arm X-ray spectral extraction
+- sherpa not stated: X-ray spectral modeling
+
+### 2024A&A...690A.232S: Joint ALMA/X-ray monitoring of the radio-quiet type 1 active galactic nucleus IC 4329A (2024; agn_and_quasars; observational_alma_primary)
+- question: Investigate the origin of compact mm emission and correlated daily X-ray/mm variability in IC 4329A.
+- CASA 6.1.1.15: ALMA data processing.
+- ALMA Pipeline 2020.1.0.40: ALMA data processing.
+- System Analysis Software (SAS) 18.0.0: XMM-Newton EPIC event-list extraction and processing.
+- EPPROC not stated: EPIC-pn event-list extraction.
+- EMPROC not stated: EPIC-MOS event-list extraction.
+- edetect-chain not stated: Identify point-like sources in 0.5–2 keV EPIC images for extraction-region selection.
+- RMFGEN not stated: Generate response matrices.
+- ARFGEN not stated: Generate auxiliary response files.
+- EPATPLOT not stated: Check EPIC pile-up.
+- XRTPIPELINE not stated: Swift/XRT data analysis.
+
+### 2016NatPh..12..807K: Coincidence of a high-fluence blazar outburst with a PeV-energy neutrino event (2016; agn_and_quasars; multi_facility_alma_minor)
+- question: Is a PeV neutrino event (IC 35) associated with a major outburst of the blazar PKS B1424-418, and can blazars explain the PeV neutrino flux?
+- ALMA data not stated: Contributed to the quasi-simultaneous broadband SED (no details)
+- ISIS 1.6.2: VLBI noise/images and X-ray spectral fitting
+- Fermi Science Tools v9r32p5: LAT gamma-ray analysis
+- HEASOFT 6.15.1: Swift/XRT reduction
+- DiFX not stated: VLBI correlation
+
+### 2016A&A...596A..50G: The ALMA detection of CO rotational line emission in AGB stars in the Large Magellanic Cloud (2016; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Can CO thermal line emission be spectrally resolved in AGB stars in the LMC, giving expansion velocities and mass-loss rates to compare with Galactic stars and wind theory?
+- CASA 4.2.2 (pipeline); 4.5.2 (manual): Calibration, imaging, line profile extraction
+- CLASS/GILDAS not stated: Shell profile fitting
+- DUSTY not stated: Dust RT modelling with density type 3
+- MoD not stated: Fitting SED and IRS spectra with DUSTY
+- COLIBRI not stated: TP-AGB evolutionary models and CO abundances
+- ÆSOPUS not stated: Molecular chemistry and opacities in models
+
+### 2023ApJ...942L..24K: UGC 4211: A Confirmed Dual Active Galactic Nucleus in the Local Universe at 230 pc Nuclear Separation (2023; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Whether the two close-separation (~230 pc) near-IR nuclei in the late-stage major galaxy merger UGC 4211 are both powered by accreting supermassive black holes (a confirmed dual AGN).
+- ALMA pipeline v2021.2.0.128: ALMA Band 6 data reduction
+- CASA not stated: ALMA data reduction, spatial Gaussian fitting of ALMA and JVLA continuum sources with imfit, and JVLA self-calibration (gaincal, applycal)
+- stistools 1.3: Removing cosmic rays, combining HST/STIS images, and extracting 1D spectra using x1d task
+- ESO Reflex / VLT MUSE pipeline not stated: Calibration and data reduction of VLT/MUSE observations
+- QFitsView not stated: Stacking sky-subtracted and aligned MUSE frames
+- MPDAF (MUSE python data analysis framework) not stated: Extracting MUSE cubes, performing 3 pixel median filter, and generating F814W-equivalent image for astrometric alignment
+- OSIRIS data reduction pipeline 4.2: Dark-frame subtraction, crosstalk removal, sky subtraction, rectification, and data cube assembly for Keck/OSIRIS data
+- xtellcor not stated: Telluric correction and flux calibration of Keck/OSIRIS spectra
+- PySpecKit not stated: Fitting optical and NIR emission lines with Gaussians using a Levenberg-Marquardt algorithm
+- pPXF not stated: Measuring stellar kinematics and central stellar velocity dispersion
+
+### 2013ApJ...770..142N: The Abundance of H<SUB>2</SUB>O and HDO in Orion Kl from Herschel/HIFI (2013; star_formation, astrochemistry, milky_way_ism; multi_facility_alma_minor)
+- question: What are the abundances of H2O and HDO (and HDO/H2O ratios) in the Hot Core, Compact Ridge and Plateau components of Orion KL, and where does the highly excited water component lie?
+- CASA not stated: Extract and CLEAN HDO images from ALMA SV data
+- HIPE 5.0: HIFI data processing and deconvolution
+- CLASS not stated: Gaussian fitting of HIFI lines
+- XCLASS not stated: Line identification with CDMS and JPL catalogs
+- RADEX not stated: Non-LTE radiative transfer models and correction factors
+
+### 2015ApJ...812...43B: HerMES: ALMA Imaging of Herschel-selected Dusty Star-forming Galaxies (2015; high_z_galaxies; observational_alma_primary)
+- question: How does gravitational lensing and multiplicity affect the properties of the brightest Herschel-selected DSFGs, and what do the lens models imply for the bright end of the intrinsic DSFG number count…
+- CASA 4.2.1: data re-reduction, selfcal, imaging
+- uvmcmcfit not stated: MCMC visibility-plane lens modeling
+- emcee not stated: posterior sampling
+- Gravlens not stated: used in earlier works for ray tracing; replaced here
+- MIRIAD not stated: uvmodel routine ported to Python
+- IRAF Gemini GMOS not stated: Gemini optical reduction
+- Scipy not stated: griddata and gaussian_filter for running average
+- scikit-learn not stated: logistic regression
+
+### 2015ApJ...799..204C: Constraining the X-Ray and Cosmic-Ray Ionization Chemistry of the TW Hya Protoplanetary Disk: Evidence for a Sub-interstellar Cosmic-Ray Rate (2015; protoplanetary_disks, astrochemistry; multi_facility_alma_minor)
+- question: What are the cosmic-ray and X-ray ionization rates in the TW Hya disk, constrained by molecular ion emission compared with a grid of disk chemistry models?
+- CASA not stated: simobserve and clean for synthetic observations
+- MIRIAD not stated: CLEAN imaging of SMA data
+- MIR not stated: SMA phase and amplitude calibration
+- LIME not stated: non-LTE line radiative transfer
+- XSPEC not stated: X-ray template spectra
+- TORUS not stated: dust temperatures and SED
+
+### 2023MNRAS.523.2887M: Rotation-tunnelling spectrum and astrochemical modelling of dimethylamine, CH<SUB>3</SUB>NHCH<SUB>3</SUB>, and searches for it in space (2023; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Improve DMA spectroscopic predictions, search for DMA toward Sgr B2(N) and G+0.693–0.027, and compare abundance limits with astrochemical models.
+- SPFIT not stated: Fit the DMA rotational spectrum
+- SPCAT not stated: Calculate the DMA rotational spectrum
+- Gaussian 09: Calculate harmonic and anharmonic DMA vibrational fundamentals
+- MADCUBA 28/10/2022: Implement DMA spectroscopy and model the G+0.693 spectrum
+- SLIM not stated: Generate synthetic LTE DMA spectra in MADCUBA
+- Weeds not stated: Synthetic LTE spectra for ReMoCA analysis
+- ImageJ not stated: Infrastructure on which MADCUBA is built
+- Cologne Database for Molecule Spectroscopy (CDMS) not stated: Dimethyl ether spectroscopic predictions and distribution of DMA spectroscopy files
+- Lille Spectroscopic Database 2021.08.hfs of entry 31802: Methylamine spectroscopic predictions
+- NASA’s Astrophysics Data System (ADS) not stated: Research support
+
+### 2017A&A...608A..96L: The ortho-to-para ratio of H<SUB>2</SUB>Cl<SUP>+</SUP>: Quasi-classical trajectory calculations and new simulations in light of new observations (2017; astrochemistry, milky_way_ism; multi_facility_alma_minor)
+- question: What is the ortho-to-para ratio of H2Cl+ in the z=0.89 absorber toward PKS 1830-211, and which formation mechanism (H-abstraction vs full scrambling) explains it?
+- CASA not stated: Calibration and self-calibration
+- UVMULTIFIT not stated: Spectra extraction by fitting point sources to visibilities
+- NAUTILUS not stated: Gas-phase pseudo-time-dependent chemical simulations
+- Gaussian 09 Revision B.01: Ab initio calculations
+- MOLPRO 2015.1: F12b coupled-cluster recalculation
+- VENUS not stated: QCT calculations
+
+### 2014A&A...561A..49H: ALMA observations of cool dust in a low-metallicity starburst, SBS 0335-052 (2014; nearby_galaxies, star_formation; observational_alma_primary)
+- question: How much cool dust and molecular gas does the extremely metal-poor starburst SBS 0335-052 contain, and how does it compare with I Zw 18?
+- CASA not stated: reduction, calibration and imaging of ALMA data
+- HIPE 10.0: Herschel PACS reduction
+- scanamorphos not stated: alternative PACS maps preserving extended emission
+- DUSTY not stated: spherical dust-shell radiative transfer SED model
+- PyMC not stated: basis of MCMC code
+- MOPEX not stated: mosaicking Spitzer MIPS images of I Zw 18
+
+### 2016A&A...591A.108O: Azimuthal asymmetries in the debris disk around HD 61005. A massive collision of planetesimals? (2016; debris_disks; multi_facility_alma_minor)
+- question: What are the radial and azimuthal dust distributions of the HD 61005 debris disk from SPHERE, ALMA and SED modeling, and what explains its morphology?
+- CASA not stated: ALMA data processing, ft and clean of models, weights
+- emcee not stated: MCMC fits of ALMA, SPHERE and SED
+- triangle v0.1.1: posterior plots
+- scikit-learn not stated: PCA for ADI
+- HIPE build 12.0.2083: Herschel data processing
+- PynPoint not stated: planet detection limits
+- DDiT not stated: disk SED and image model code
+
+### 2019MNRAS.485.2457H: `The Brick' is not a brick: a comprehensive study of the structure and dynamics of the central molecular zone cloud G0.253+0.016 (2019; milky_way_ism, star_formation; archival_reuse)
+- question: What are the internal structure and dynamics of the CMZ cloud G0.253+0.016, and is it a single coherent centrally-condensed cloud or a hierarchically structured complex of line-of-sight components?
+- scousepy not stated: spectral line decomposition
+- acorns not stated: hierarchical clustering of decomposed data
+- pyspeckit not stated: interactive fitting of SAA spectra
+- TORUS not stated: Monte Carlo NLTE/LTE radiative transfer
+- astrodendro not stated: comparison with acorns on test data
+- spectralcube not stated: listed as used software
+- scikit-learn not stated: listed as used; generated test data
+
+### 2020MNRAS.491.1174M: Circumstellar CO J = 3→2 detected around the evolving metal-poor ([Fe/H] ≈ -1.15 dex) AGB star RU Vulpeculae (2020; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Explore the properties of RU Vul and its wind in the context of other metal-poor stars.
+- CASA 4.7: Automated ALMA data reduction
+- moog not stated: Equivalent-width abundance analysis
+- abfind not stated: moog task for equivalent-width analysis
+- atlas9 not stated: α-element-enhanced stellar atmosphere models for abundance analysis
+- bt-settl not stated: Visual optical-spectrum comparison and input atmosphere for dusty
+- code of (cite: MvLD+09), with additions of (cite: MZB12) and (cite: MZW17) not stated: Stellar SED fitting
+- mesa not stated: Stellar evolution models for comparison with RU Vul
+- ESO reflex pipeline 4.3.1: VISIR spectrum extraction and wavelength calibration
+- dusty not stated: Radiative-transfer modelling of the dusty wind
+
+### 2024MNRAS.533.1143M: Detection of antifreeze molecule ethylene glycol in the hot molecular core G358.93-0.03 MM1 (2024; astrochemistry, star_formation; archival_reuse)
+- question: Detect EG towards G358.93–0.03 MM1 and investigate its formation pathways.
+- CASA 5.4.1: Data reduction and imaging
+- ALMA data analysis pipeline not stated: Data reduction and imaging
+- SETJY not stated: Flux calibration with the Perley-Butler 2017 model
+- hifa_bandpassflag not stated: Bandpass calibration and bad-antenna flagging, jointly with hifa_flagdata
+- hifa_flagdata not stated: Bandpass calibration and bad-antenna flagging, jointly with hifa_bandpassflag
+- MSTRANSFORM not stated: Separate target object G358.93–0.03
+- TCLEAN not stated: Continuum images and spectral cubes
+- HOGBOM not stated: Continuum-image deconvolver
+- UVCONTSUB not stated: Subtract continuum in the UV plane
+- GAINCAL not stated: Repeated self-calibration
+
+### 2025A&A...699A..22M: An accreting dwarf star orbiting the S-type giant star π<SUP>1</SUP> Gru (2025; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Characterize the inner companion (C) of the S-type AGB star pi1 Gru (orbit, mass, nature, accretion disk) and identify plausible future evolutionary scenarios for the triple system
+- UltraNest (MLFriends) not stated: nested-sampling Bayesian orbital fit
+- kepler.py (Kepler equation solver by Dan Foreman-Mackey) not stated: solving Kepler's equation in the orbit model
+- esoreflex/SPHERE pipeline 0.45.1: reduction of additional ZIMPOL datasets
+- PySSED not stated: retrieving photometry at 360, 450 and 550 nm
+- Astropy (LombScargle) not stated: periodogram of the AAVSO light curve
+- PyRAF not stated: Lucy-Richardson deconvolution of ZIMPOL intensity images, 10 iterations
+- MARCS not stated: model SED of the S-type primary
+- PHOENIX not stated: model spectra for B and C in the yellow dwarf scenario
+- Dexter not stated: recovering the 2014 orbital plot from the earlier paper
+
+### 2019AJ....158...47M: Thermal Emission from the Uranian Ring System (2019; solar_system; observational_alma_primary)
+- question: What are the thermal emission properties (particle temperature, filling factor, azimuthal structure) of the Uranian main rings, and is micron-sized dust present?
+- CASA 5.1.1: Pipeline calibration, self-cal, tclean imaging
+- photutils v0.6: Elliptical annulus radial profiles
+- PyAstronomy not stated: Projecting model rings onto 2-D grid
+- emcee not stated: MCMC for ring flux and thermal model fits
+- IDL not stated: VISIR flux calibration with standard stars
+
+### 2018ApJ...865...13T: A Galaxy-scale Fountain of Cold Molecular Gas Pumped by a Black Hole (2018; galaxy_clusters_and_sz, nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Are the warm ionized and cold molecular gas in the Abell 2597 BCG cospatial and comoving, and does their kinematics reflect inflow, jet-driven outflow and bubble uplift (a galaxy-scale fountain) as p…
+- CASA 4.2: calibration, uvcontsub, CLEAN imaging
+- PYPARADISE not stated: stellar and nebular fitting of MUSE cube
+- MUSE pipeline 1.6.4: MUSE data reduction
+- CIAO 4.9: Chandra reduction
+- reproject not stated: resampling ALMA onto MUSE grid
+- PySpecKit not stated: spectral fitting (listed in software)
+
+### 2024AJ....168..142L: Gemini Planet Imager Observations of a Resolved Low-inclination Debris Disk around HD 156623 (2024; debris_disks; multi_facility_alma_minor)
+- question: Constrain the presence and location of the hidden inner edge of HD 156623’s debris disk.
+- GPI Data Reduction Pipeline not stated: GPI data reduction.
+- pyKLIP not stated: Total-intensity stellar PSF subtraction.
+- MCFOST not stated: Scattered-light morphology and SED radiative transfer models.
+- diskmap not stated: Disk deprojection.
+- SciPy not stated: Levenberg-Marquardt least-squares SED fits.
+- emcee not stated: Affine invariant MCMC sampling of SED model parameters.
+- NumPy not stated: not stated
+- IPython not stated: not stated
+- Jupyter Notebooks not stated: not stated
+- Matplotlib not stated: not stated
+

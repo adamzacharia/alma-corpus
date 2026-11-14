@@ -1,0 +1,2689 @@
+# Evidence pack: Self-calibration strategy (`self-calibration`)
+
+Scope: phase/amplitude self-calibration of ALMA visibilities: rounds, solution intervals, when to stop
+
+Built from 906 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `self[- ]?cal`; processing fields: calibration.self_calibration
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- protoplanetary_disks: 376
+- star_formation: 346
+- astrochemistry: 268
+- agn_and_quasars: 123
+- milky_way_ism: 104
+- nearby_galaxies: 91
+- evolved_stars: 67
+- high_z_galaxies: 60
+- stellar_physics: 57
+- exoplanets: 31
+- solar_system: 27
+- galaxy_clusters_and_sz: 16
+- instrumentation: 14
+- transients: 12
+- sun: 10
+
+### Software named in the matched steps
+- casa: 597
+- tclean: 128
+- uvcontsub: 34
+- gaincal: 28
+- aips: 26
+- miriad: 19
+- applycal: 17
+- gildas: 14
+- imfit: 10
+- fixplanets: 10
+- fixvis: 9
+- difmap: 9
+- alma pipeline: 9
+- clean: 7
+- eht-imaging: 6
+- concat: 6
+- keplerian_mask: 6
+- uvmultifit: 5
+- obit: 5
+- statwt: 5
+- impbcor: 5
+- casa 5.6.2: 5
+- phaseshift: 5
+- casa tclean: 4
+- auto_selfcal: 4
+- visalign: 4
+- casa 5.4.1: 4
+- imsmooth: 4
+- uvsub: 3
+- snow: 3
+- uvmem: 3
+- scipy: 3
+- bettermoments: 3
+- gencal: 3
+- casa 6.2.1.7: 3
+- priism: 2
+- setjy: 2
+- gpuvmem: 2
+- ooselfcal: 2
+- statcont: 2
+
+### Fitting methods (most common phrasings)
+- Minimum of cross-validation error over the (Lambda_l, Lambda_tsv) grid: 1
+- Iterative convex optimization minimizing chi-squared + l1-norm + TSV cost function with NuFFT (N_iter = 1000); 2D Gauss…: 1
+- Nested sampling via dynesty; complex Gaussian likelihood; uniform priors: p_S ~ U(0, 10) Jy, p_x, p_y ~ U(-0.5, 0.5) ar…: 1
+- Visibility-plane uniform ellipse fit with uvmultifit; power-law fit to continuum flux densities vs frequency: 1
+- gradient descent regularized maximum likelihood: 1
+- Spectral-index fit with errors including rms and absolute flux scaling uncertainties: 1
+- Linear fit in UVCONTSUB: 1
+- 2D Gaussian fit to the continuum source using CASA imfit: 1
+- Linear fits to line-free channels in uvcontsub: 1
+- First-order polynomial fit to line-free channels in uvcontsub: 1
+- Gaussian model fitting to spectral line profiles (Table 2): 1
+- by-eye fit: 1
+- Minimize difference between limb-darkened model disk (Tb * cos^k(theta)) and observations at each wavelength: 1
+- MCMC with Metropolis-Hastings sampling, tempering (posterior^1/T); noise from differencing adjacent visibilities: 1
+- Gaussian component fitting to islands of contiguous emission in PYBDSF: 1
+- Chi-square minimization at each integration time using a recursive Newton method with first-order Taylor expansion for …: 1
+- Same two-component chi-square self-calibration as step 2: 1
+- Adjust the unresolved EMU source until no significant positive or negative residuals remain over the extended emission.: 1
+- Uncertainties from covariance matrix at chi2 minimum, scaled so reduced chi2 = 1: 1
+- Linear fits of coherence vs cycle time: 1
+- Maximum entropy deconvolution via gpuvmem and iterative gaincal/applycal keeping solution table with highest peak S/N: 1
+- Weighted least squares minimisation in the uv plane at fixed position x_0: 1
+- Pure least-squares (chi^2) optimization regularized by image positivity in uvmem: 1
+- Visibility gain solutions against successive cleaned source models: 1
+- Closure-only imaging and elliptical Gaussian model fitting to closure phases and log closure amplitudes: 1
+- Point-by-point time-varying amplitude self-calibration within 1 Glambda: 1
+- Compact component fitted individually in each sub-band; sampler, priors and likelihood not stated: 1
+- Visibility fitting of continuum spectral windows in AIPS: 1
+- Power law F_ν ∝ ν^α, using detections and an upper limit: 1
+- L-BFGS gradient descent minimizing RML objective function with l2 and total variation regularizers on spectral maps: 1
+- L-BFGS minimization fitting directly to complex visibilities with maximum entropy and total variation regularizers on r…: 1
+- Extended C-statistics in XSPEC and SPEX with 68% confidence errors (Delta C = 1): 1
+- UV-plane Bessel function fit to confirm total flux: 1
+- 2-D Gaussian fits in the image plane: 1
+- Point source model with imfit: 1
+- 2D Gaussian fit to emission > 3 sigma: 1
+- Limb-darkened disk model fitted to calibrated visibilities: 1
+- Peak intensity readout, beam fit (assuming unresolved source), and elliptical Gaussian fit: 1
+- Gaussian fit in image plane with imfit to locate emission peak in each execution block: 1
+- single Gaussian fit to line profiles; linear model for continuum subtraction: 1
+
+### Validation checks used
+- Continuum fluxes of self-calibrated images agree within 5% within each band; compared with published images: 1
+- Imaged without continuum subtraction; integration limits changed flux <0.1%: 1
+- Self-calibration improves SNR by a factor ~1.5 (max baseline ~10 Mlambda) to several (~2 Mlambda) and mitigates patchy …: 1
+- SpM total fluxes agree with CLEAN fluxes within 5-10%: 1
+- calibrator J1752-2956 spectral index -0.62±0.14 consistent with synchrotron: 1
+- SNR improved by a factor of 3.8; peak intensity and RMS noise compared and found in good agreement with Long et al. (20…: 1
+- 10-fold cross-validation error (CVE), comparison of total fluxes above I_DT with CLEAN (>5 sigma), and comparison of ra…: 1
+- Compared images from default automasking and user-mask pipelines; user masks gave better S/N and cleaner noise: 1
+- Recovery of all previously detected continuum sources: 1
+- Different clean masks compared on selfcal and non-selfcal images; no structural differences: 1
+- Super-resolved ALMA image compared with VLBI image: 1
+- Astrometric accuracy checked using phase-reference solutions and check sources; 17 mas adopted: 1
+- Compared with re-analysed archival VLA maps at matched resolution: 1
+- Empirically estimate flux density calibration reliability using historical ALMA monitoring epochs with a third intermed…: 1
+- Compare spatial distribution and velocity gradient against 22 GHz VLBI maps of Circinus.: 1
+- Compared continuum flux density with literature 250 GHz measurement by Dehaes et al. (2007) and spectral index with rad…: 1
+- Total CO 6-5 flux 3670 Jy km/s compared with Herschel 4070 +/- 80: 1
+- Robust 0.5 imaging compared; choice does not affect analysis: 1
+- Two methods gave comparable gains: 1
+- Synthetic data tests on four GRMHD snapshots: 1
+- further self-cal steps tested, no significant improvement: 1
+- Inter-spw continuum mismatches of 1-3% checked against expected relative flux calibration errors: 1
+- Amplitude self-calibration dropped where the MFS peak/rms dynamic range decreased relative to the phase-only product: 1
+- Index uncertainty calibrated with synthetic light curves; real 12-m uncertainty likely underestimated by a factor >=3: 1
+- Self-calibration stopped when no further improvement in image or image/visibility residuals: 1
+- Choice balances per-channel sensitivity, S/N and angular resolution (Table 1): 1
+- Tested imaging the continuum with robust = 0.5 to verify source remains unresolved; compared integrated flux density wi…: 1
+- Verified Jorsater & van Moorsel flux correction with additional tclean runs cleaned to 1 sigma_RMS and 0.7 sigma_RMS an…: 1
+- Line-cube sensitivity (~0.5 K per 0.5 km s^-1 channel) checked against expected thermal noise; continuum subtraction co…: 1
+- Compared integrated EVN OH line profiles with Arecibo single-dish observations and compared two epochs for variability: 1
+- Measure random noise RMS across four sky boxes equal to Neptune's diameter and compare with residual map RMS: 1
+- amplitude scale change from self-cal <0.5%: 1
+- amplitude change <0.7%: 1
+- Simulated observations recover input antenna phases; extended-array data compared with predictions: 1
+- Generated 20 independent images across individual spectral windows and observing blocks plus 5 continuum images; found …: 1
+- Visual inspection of all candidate faint detections: 1
+- Compared total flux with IRAM 30m; no resolved-out emission: 1
+- Incremental antenna gains checked to be close to unity (amplitude ~1, phase ~0), and residual image rms compared agains…: 1
+- Successful recovery of the injected synthetic transient in both 4 s and 12 s residual images with peak S/N of 15.194 an…: 1
+- stopped at 2 s because image SNR no longer improved: 1
+
+### Key parameters and settings (bibcode: value)
+- 2018ApJ...852..122H: robust=0.5; scales 0, 0.06, 0.15, 0.3, 0.6 arcsec
+- 2018ApJ...852..122H: integration -1.91 to 7.59 km/s; 3 sigma clip
+- 2018ApJ...852..122H: processing.calibration.self_calibration = Phase self-calibration of continuum per band; 12CO from 2015.1.00686.S used continuum solutions; 2016.1.00629.S self-calibrated on line-free channels
+- 2024PASJ...76..437Y: SNR > 100: 2 phase rounds (solint=inf, OST/5) + 1 amp+phase (OST/5); SNR < 100: 1 phase (inf) + 1 amp+phase (OST/5)
+- 2024PASJ...76..437Y: Multi-scale scales [0, 1, 3] x CLEAN beam for disks with substructures
+- 2024PASJ...76..437Y: PRIISM version 0.7.2
+- 2024PASJ...76..437Y: DM Tau, GO Tau, DS Tau, DN Tau, RW Aur: Lambda_tsv one order of magnitude larger than the CV minimum
+- 2024PASJ...76..437Y: Visual inspection within delta log Lambda <= 1 of the CV minimum when the minimum-CVE image is patchy
+- 2024PASJ...76..437Y: processing.calibration.self_calibration = Initial CLEAN SNR > 100: phase-only solint=inf, phase-only solint=OST/5, then amplitude+phase solint=OST/5. Initial SNR < 100: phase-only solint=inf, then ampl…
+- 2018ApJ...853..171G: robust 0.5, -1, and tapered robust 2 images
+- 2018ApJ...853..171G: processing.calibration.self_calibration = 3 iterations phase-only, then 2 iterations amplitude+phase (continuum only; none for cubes)
+- 2021ApJ...923..121Y: robust = 0.5
+- 2021ApJ...923..121Y: self-cal solution intervals: 98 s (1st phase), 49 s (2nd phase), 98 s (amp+phase)
+- 2021ApJ...923..121Y: Lambda_l = 10^5, Lambda_tsv = 10^9 (optimal from 5x5 grid)
+- 2021ApJ...923..121Y: N_iter = 1000, 10-fold CV
+- 2021ApJ...923..121Y: processing.calibration.self_calibration = Two rounds of phase (1st: 98 s, 2nd: 49 s, calmode = p) and one round of amplitude and phase (98 s, calmode = ap)
+- 2024ApJ...973..138H: Fall-back mode when solint=inf fails: combine all scans and spectral windows
+- 2024ApJ...973..138H: Mask version 2: all sources above 4 times the rms plus surrounding extended emission
+- 2024ApJ...973..138H: Self-cal weighting must match final imaging weighting (natural, briggs 0.5, uniform)
+- 2024ApJ...973..138H: Cleaned down to 2 sigma in both stages
+- 2024ApJ...973..138H: Multi-scale deconvolver used to recover 1-2 arcsec emission
+- 2024ApJ...973..138H: Each weighting imaged from visibilities self-calibrated with the same weighting
+- 2024ApJ...973..138H: processing.calibration.self_calibration = Modified auto_selfcal with manually drawn masks; phase self-cal with solint from inf down to int, accepted if S/N rises and beam area changes under 5%
+- 2021ApJ...907...94C: Rectangular mosaic; factor 2 over-sampling relative to Nyquist along both axes; factor 4 total beam overlap
+- 2021ApJ...907...94C: 3.1 mm: ~2.20 × 1.75 arcmin, 15 pointings; 1.3 mm: ~1.25 × 0.94 arcmin, 45 pointings
+- 2021ApJ...907...94C: Final phase-only self-calibration solution interval: 90 s
+- 2021ApJ...907...94C: processing.calibration.self_calibration = Phase-only; final solution interval 90 s
+- 2013Sci...340.1199V: natural weighting; beam 0.32" × 0.21"
+- 2013Sci...340.1199V: processing.calibration.self_calibration = Phase self-calibration on IRS 48 continuum using unselfcalibrated continuum as model; 40% S/N gain
+- 2019A&A...632A..66O: processing.calibration.self_calibration = Self-calibration in MIRIAD; time-variable bandpass from phase calibrator J1617-7717 for CO(1-0)
+- 2018A&A...615A..28D: robust 0.5
+- 2018A&A...615A..28D: processing.calibration.self_calibration = Self-calibration on line-free continuum channels, applied to all data
+- 2019MNRAS.484.4239R: nterms=1, natural weighting
+- 2019MNRAS.484.4239R: processing.calibration.self_calibration = multiple cycles of phase-only self-cal for all; amplitude+phase for brightest cores only
+- 2023ApJ...948..134P: Bandpass pre-gaincal averaging over ~5% of each spectral window per integration time
+- 2023ApJ...948..134P: Circinus phase self-calibration: 3 channels (~0.6 km s^-1) centered at 561.6 km s^-1, solint = 60 seconds
+- 2023ApJ...948..134P: Plot threshold: geometric mean positional uncertainty sqrt(sigma_x * sigma_y) < 20 mas; reference maser spot at v = 561.6 km s^-1
+- 2023ApJ...948..134P: processing.calibration.self_calibration = Phase self-calibration on Circinus using the strongest spectral line (3 channels / ~0.6 km s^-1 centered at 561.6 km s^-1) with a 60 s solution interval
+- 2025A&A...704A..18O: Uniform elliptical disk model
+- 2025A&A...704A..18O: processing.calibration.self_calibration = 2 iterations on line-free continuum: 1st phase-only with solint = scan length (<=54 s), 2nd amplitude and phase with solint = entire EB (~45 min)
+- 2015ApJ...806...17R: 10 km/s channels; beam 0.39"x0.22"
+- 2015ApJ...806...17R: processing.calibration.self_calibration = Two rounds of phase-only (natural weighting), then one amplitude+phase round; noise 36->16 mJy/beam (line-free), 100->18 mJy/beam (line channels)
+- 2019ApJ...882...10N: 16-channel averaging (~35 km/s)
+- 2019ApJ...882...10N: processing.calibration.self_calibration = Several rounds of phase-only self-calibration for PJ231-20 only
+- 2019ApJ...871...30I: J18 kernel 159.9 x 79.5 uas, PA 81.9 deg; alpha=1.38, r_in=800 km
+- 2019ApJ...871...30I: processing.calibration.self_calibration = Station gains from self-cal to closure-only calibrator images and to Gaussian (215x140 uas, PA 80 deg, 2.0 Jy) on <0.75 Glambda
+- 2021A&A...651A..35O: Bandpass: J1107-4449 (TA1-TA3), J1037-2934 and J0635-7516 (TA4); gain: J1131-5818 (TA1), J1132-5606 (TA2-TA4)
+- 2021A&A...651A..35O: Briggs robust 0.5 for final line images
+- 2021A&A...651A..35O: processing.calibration.self_calibration = self-calibration on the strong continuum, Band 6 data only
+- 2012A&A...548A..69N: robust=1, 0.3" pixels, 30" image
+- 2012A&A...548A..69N: processing.calibration.self_calibration = single step phase-only on strongest emission feature in each cube; more steps did not help
+- 2025ApJ...989...83B: setjy flux density rescaling of up to 2% for individual spws (2015.1.00030.S, 2016.1.00021.S)
+- 2025ApJ...989...83B: Additional manual flagging for high antenna temperature, amplitude disagreement and poor bandpass calibration near spw edges
+- 2025ApJ...989...83B: Final solution intervals per integration (per scan); resulting dynamic ranges from several hundred to ~9000
+- 2025ApJ...989...83B: Intrinsic alpha = -0.6 for the mock light curves; Band 6 light curve 2 yr with one-day cadence
+- 2025ApJ...989...83B: processing.calibration.self_calibration = Phase (and usually amplitude) self-calibration, final solint per integration (per scan); amplitude self-cal not used for X20d and X1b0 when DR decreased
+- 2024ApJ...971L..33K: Self-cal continuum imaging with Briggs weighting, robust = -0.5
+- 2024ApJ...971L..33K: Antenna-based gains measured with gaincalR
+- 2024ApJ...971L..33K: Clean threshold 0.5 sigma (per-channel RMS); square mask ~2.5'' x 2.5''
+- 2024ApJ...971L..33K: Final cube: robust +1, 35 km/s channels
+- 2024ApJ...971L..33K: processing.calibration.self_calibration = Three rounds of continuum imaging and phase-only self-cal, then one round of amplitude-and-phase self-cal; gains measured with gaincalR; self-cal continuum ima…
+- 2021ApJ...917...99Y: robust = 0.5
+- 2021ApJ...917...99Y: linear function for UVCONTSUB
+- 2021ApJ...917...99Y: processing.calibration.self_calibration = Phase self-calibration using continuum data, applied to line-only data
+- 2025MNRAS.537..520Z: Self-calibration solution intervals decreased from 5 to 1 min; Högbom deconvolver; pixel size 0.01 arcsec; image size 960 × 960 pixels; Briggs robust = 2
+- 2025MNRAS.537..520Z: Briggs robust = 0.5 (and robust = 2.0 for warp/non-circular motion analysis); channel width 20 km s^-1; rest frequency 230.538 GHz; clean threshold 1.5 sigma_R…
+- 2025MNRAS.537..520Z: processing.calibration.self_calibration = Two runs of phase-only self-calibration using CASA task gaincal, decreasing solution interval from 5 to 1 min, increasing continuum dynamic range from ~1000 to…
+- 2026A&A...709A..93D: solint = 'inf', '30.25s', 'int'
+- 2026A&A...709A..93D: MT-MFS with two Taylor terms; multiscale scales = 0, 5, 15, 50, 150 pixels (continuum) and 0, 5, 15, 50 pixels (line)
+- 2026A&A...709A..93D: Briggs weighting robust = 0.5
+- 2026A&A...709A..93D: processing.calibration.self_calibration = Three iterations of phase self-calibration with solution intervals 'inf', '30.25s', and 'int', applied to line data
+- 2022A&A...661A.125W: OH 1667 MHz averaged over 10750 to 10950 km s^-1; OH 1665 MHz averaged over 11080 to 11320 km s^-1
+- 2022A&A...661A.125W: processing.calibration.self_calibration = Phase-only self-calibration performed on EVN 2005Jun08 peak line channel; no self-calibration conducted for other continuum and line emission projects
+- 2020MNRAS.491..427B: 256x256 pixels, 0.05 arcsec cell
+- 2020MNRAS.491..427B: 1920 channels of 980 kHz (1.26 km/s)
+- 2020MNRAS.491..427B: Self-calibration applied to continuum and cube
+- 2020MNRAS.491..427B: processing.calibration.self_calibration = Self-calibration performed for the continuum band image and applied to the data cube (solint etc. not stated)
+- 2019AJ....158..139D: Disk best fit by eye so no planet remains in residual image
+- 2019AJ....158..139D: processing.calibration.self_calibration = Self-calibration as in earlier VLA Jupiter work
+- 2019A&A...628A..10B: Briggs robust 0.5
+- 2019A&A...628A..10B: processing.calibration.self_calibration = 3–4 iterations using a strong line toward Sgr B2(N1) in each setup
+- 2021PSJ.....2..105T: Seven latitude bins: 90S-66S, 66S-50S, 50S-36S, 36S-12S, 12S-4N, 4N-20N, 20N-50N
+- 2021PSJ.....2..105T: processing.calibration.self_calibration = Phase self-calibration using a limb-darkened disk model (VLA)
+- 2015ApJ...808...36M: processing.calibration.self_calibration = ALMA: phase-only at record length (~6 s B3, ~3 s B6) then amp+phase 60 s, gains normalized; JVLA: SiO maser phase self-cal then amp+phase
+- 2013ApJ...767..132H: Source: 4 params; SIE lens: 5 params
+- 2013ApJ...767..132H: processing.calibration.self_calibration = Antenna phases fit simultaneously with lens model in MCMC
+- 2026MNRAS.549g1100P: Briggs robust = 1.0 (Band 3) and 0.5 (Band 6); clean gain = 0.1 (Band 3) and 0.05 (Band 6); mosaicking for Band 6
+- 2026MNRAS.549g1100P: Pixel thresholds of 5, 4.5, and 4 sigma; island boundary threshold of 3 sigma; 3 sigma upper limits for non-detections; 0.5-2.0 arcsec (1 arcsec conservative u…
+- 2026MNRAS.549g1100P: processing.calibration.self_calibration = two iterations of phase-only self-calibration using one solution per scan
+- 2018ApJ...865...13T: natural weighting; 40 km/s channels (binned to 5, 10, 40 km/s as needed)
+- 2018ApJ...865...13T: processing.calibration.self_calibration = iterative phase-only self-cal on galaxy continuum; 14% RMS improvement
+- 2022A&A...666A..39M: 4 s cadence
+- 2022A&A...666A..39M: 4 fitted parameters per integration time: F_ext, F_SgrA*, delta_ra, delta_dec
+- 2022A&A...666A..39M: Synthetic transient: peak ~207 mJy, duration ~42 s, centered at 10:52:01 UT, offset 5 arcsec East and 1 arcsec North of Sgr A*
+- 2022A&A...666A..39M: processing.calibration.self_calibration = Two-component self-calibration at 4 s cadence scaling amplitudes via constant extended mini-spiral flux (gain Gt), followed by one standard amplitude and phase…
+- 2025PSJ.....6..183C: Briggs weighting, robust = 0.0, Clark deconvolver
+- 2025PSJ.....6..183C: signal integrated over the entire 8 GHz bandwidth, multi-frequency synthesis
+- 2025PSJ.....6..183C: gain solution interval from the full integration time down to 2 s
+- 2025PSJ.....6..183C: processing.calibration.self_calibration = phase-only, iterative with tclean, solint from full integration time down to 2 s
+- 2022PASJ...74..738T: solint='inf' (first 2 self-cal iterations, phase only), solint='int' (successive iterations, then phase+amplitude), 7-8 iterations
+- 2022PASJ...74..738T: natural weight and Briggs weight (robust parameter = 0.5)
+- 2022PASJ...74..738T: processing.calibration.self_calibration = Iterative self-calibration using gaincal, applycal, and tclean; first 2 iterations phase-only with solint='inf', successive iterations with solint='int', final…
+- 2017A&A...600A...8D: uniform weighting; 301.99 GHz; self-cal 1 h
+- 2017A&A...600A...8D: processing.calibration.self_calibration = self-calibrated on a timescale of 1 hour
+- 2017ApJ...841L...5S: processing.calibration.self_calibration = self-calibration using image from entire observing period as reference to remove jitter
+- 2025ApJ...995L..51G: processing.calibration.self_calibration = Sgr A* variability fit at uv-level with UVmultifit; time-dependent lightcurve used to self-calibrate; black hole continuum then removed at uv-level
+- 2020PASP..132i4501H: D-terms and XY-phase solved from on-axis data only, to mimic standard ALMA polarization calibration
+- 2020PASP..132i4501H: processing.calibration.self_calibration = 3C 279: one round of phase-only self-calibration on every pointing; Orion-KL: none
+- 2019ApJ...871...73H: processing.calibration.self_calibration = Phase-only self-cal on target for Bands 3-8; none for Band 9
+- 2020A&A...643A..41D: cell 0.3 arcsec, beam 1.2 arcsec, +7700 K
+- 2020A&A...643A..41D: processing.calibration.self_calibration = phase self-calibration with progressively smaller intervals
+- 2021A&A...650A.153D: ASKAP: two Taylor terms; convolve 36 single-beam images to 18″ FWHM; linear mosaic; spectral index T1/T0
+- 2021A&A...650A.153D: ATCA: eight spectral windows for calibration; primary calibrator 1934-638; interleaved calibrator amplitude/phase solutions
+- 2021A&A...650A.153D: ATCA 2.1 GHz: natural weighting and three phase self-calibration rounds; whole-band multifrequency synthesis
+- 2013A&A...558A.123M: Line-free channels remaining typically >2000
+- 2013A&A...558A.123M: processing.calibration.self_calibration = Phase self-cal using NE+SW point-source model, one complex gain solution every 30 s; fit repeated afterwards
+- 2020ApJ...894L..14L: robust 0.5; scales [0,5,15,50,150]; 0.04" pixel
+- 2020ApJ...894L..14L: processing.calibration.self_calibration = Sgr B1-off: 2 phase-only iterations; Sgr C: 2 phase-only + 1 phase&amplitude; solint 2.048 s
+- 2015ApJ...808L...2A: processing.calibration.self_calibration = Phase-only 300 s then 15 s; then amplitude 300 s; dynamic range 120 after
+- 2017PASP..129c5004M: Target time 3x calibrator time, 4 s slew
+- 2014Sci...345.1584B: processing.calibration.self_calibration = three or four iterations using a strong spectral line in each setup
+- 2015ApJ...802...69B: processing.calibration.self_calibration = Phase self-cal on 10 s integration; for Sgr A* only baselines >50 klambda
+- 2021AJ....162...14A: separation uncertainties 0.3 to 0.6 mas from positional fitting
+- 2021AJ....162...14A: processing.calibration.self_calibration = phase self-calibration on alpha Cen A and B (case 3), used only for the A-B separation, not for absolute positions
+- 2026A&A...706A.365M: Relative positions of the two point sources fixed at the known locations of the lensed images
+- 2026A&A...706A.365M: Visibilities self-calibrated before extraction
+- 2026A&A...706A.365M: processing.calibration.self_calibration = PKS 1830-211 visibilities self-calibrated; B 0218+357 followed the same procedure
+- 2015ApJ...808L...1A: Common beam 91x51 mas PA -13 deg; only Band 6 upper sideband used
+- 2015ApJ...808L...1A: processing.calibration.self_calibration = Self-calibration applied to 3C138 (rms down ~10x); limited for HL Tau, none for SDP.81
+- 2020ApJ...898..146M: processing.calibration.self_calibration = 12m only, per execution: 3 phase-only rounds (~370, 132, 99 s) then one amplitude round (~370 s), using stellar point-source model
+- 2025ApJ...988..109H: natural weighting; no uv-tapering
+- 2025ApJ...988..109H: processing.calibration.self_calibration = Phase-only self-calibration performed
+- 2018MNRAS.475.4924K: processing.calibration.self_calibration = one round of phase-only self-calibration using CLEAN model; peak S/N 28 to 37
+- 2016ApJ...829L..35T: robust 0.5/1.0; scales [0,100,300]/[0,50,150] mas
+- 2016ApJ...829L..35T: processing.calibration.self_calibration = iterative, solint 600 to 90 s (B4), 1200 to 240 s (B6)
+- 2025A&A...702A..18D: Briggs robustness parameter r = 2 during self-calibration; final images restored with r = 1.0 (Band 3), r = 1.0 (Band 4), r = 0.0 (Band 7), r = 2.0 (Band 9)
+- 2025A&A...702A..18D: Band 9 TM1 uvrange clipped to discard baselines shorter than 0.4 Mlambda; TM1 intensity scaled by 1/0.78 and TM2 shifted by dRA = 25.6 mas, dDec = 0.13 mas
+- 2025A&A...702A..18D: Reference epoch: 23 May 2023; channels collapsed in each of the 4 spectral windows
+- 2025A&A...702A..18D: processing.calibration.self_calibration = Automatic user-independent self-calibration using snow (replacing tclean with gpuvmem in iterative calls to gaincal and applycal); solint halved each iteration…
+- 2016ApJ...832..187B: robust -1.0; scales 0,5,15 pixels
+- 2016ApJ...832..187B: processing.calibration.self_calibration = Iterative self-calibration on bright continuum emission
+- 2022MNRAS.513.5790C: Initial solution interval = scan length (about 50s), halved each iteration
+- 2022MNRAS.513.5790C: Briggs weighting r = 2 for PSNR checks; elliptical mask enclosing the source
+- 2022MNRAS.513.5790C: Briggs robustness r = 2.0 (LB19), r = 1 (LB19+SB16, LB19+SB16+IB17, IB17), r = 0.3 (SB16+IB17)
+- 2022MNRAS.513.5790C: processing.calibration.self_calibration = Independent self-calibration of each dataset and joint self-calibration of concatenated datasets using OOselfcal (wrapping CASA gaincal and applycal with uvmem…
+- 2024RAA....24b5009L: Cleaning thresholds: 20, 5 and 1.5 mJy beam−1
+- 2024RAA....24b5009L: gaincal solint=20 s; two self-calibration rounds
+- 2024RAA....24b5009L: processing.calibration.self_calibration = Strong-continuum sources, peak ≳50 mJy beam−1; Sgr B2(M): phase-only then phase and amplitude; gaincal solint 20 s; two rounds
+- 2020ApJ...904..181L: Briggs robust 0.5; taper to 0.14 arcsec
+- 2020ApJ...904..181L: 0.42 km s^-1 spectral resolution
+- 2020ApJ...904..181L: processing.calibration.self_calibration = Separate epochs self-calibrated as in (cite: Zinchenko17); antenna gains applied to continuum and 349.0 GHz spectral window
+- 2015ApJ...808L...3A: robust=0.0, scales 0,5,15
+- 2015ApJ...808L...3A: processing.calibration.self_calibration = continuum iteratively self-calibrated; not applied to line data
+- 2017ApJ...851..126V: robust 0.5, 0.05'' pixel
+- 2017ApJ...851..126V: processing.calibration.self_calibration = Phase-only self-cal on synchrotron continuum with gaincal, iterated; rms improved 6-8x
+- 2018A&A...614A..58B: Channels degraded to 0.43 km/s
+- 2018A&A...614A..58B: processing.calibration.self_calibration = Additional phase self-calibration on compact continuum source (GILDAS)
+- 2018MNRAS.474.3640M: phase solution 60 s, bandpass over 30 channels, S/N threshold 1.5
+- 2018MNRAS.474.3640M: processing.calibration.self_calibration = Phase solint 600 s, then phase+amplitude 1200 s combining scans
+- 2021ApJ...915...99I: 4 elliptical Gaussian components for 14 April 2018; 3 elliptical Gaussian components for 17 April 2018
+- 2021ApJ...915...99I: Short-baseline cutoff < 1 Glambda; Gaussian model FWHM 215 x 140 uas, PA = 80 deg; 4 sigma upper limits on non-detected long baselines
+- 2021ApJ...915...99I: processing.calibration.self_calibration = Closure-only imaging/modeling self-calibration on J1924-2914; inner 1 Glambda self-calibration of Sgr A* to a 215 x 140 uas (PA 80 deg) elliptical Gaussian; re…
+- 2025MNRAS.538.2421S: Phase calibrator J1935+2031; polarisation calibrator J1924-2914
+- 2025MNRAS.538.2421S: 0.86 mm continuum map
+- 2025MNRAS.538.2421S: Synthesised beam 0.37″×0.32″; PA=18.92°
+- 2025MNRAS.538.2421S: processing.calibration.self_calibration = Three iterative rounds of phase-only self-calibration
+- 2015A&A...580A...1M: robust = 0; 20 km/s channels
+- 2015A&A...580A...1M: processing.calibration.self_calibration = Additional self-calibration in MIRIAD improved images significantly
+- 2017ApJ...837..182O: robust = 0.5
+- 2017ApJ...837..182O: processing.calibration.self_calibration = Self-calibration applied in the ultra-high-resolution data, same as mid-resolution; in-field calibrator
+- 2016A&A...593A..44L: selfcal solution interval 0.01 min; nominal ALMA primary beam
+- 2016A&A...593A..44L: processing.calibration.self_calibration = Miriad selfcal options=mosaic, 0.01 min solution interval, on central 7 fields with model from demos
+- 2023Natur.617..696V: Flux correction of 7-10 % for flux calibrator polarisation
+- 2023Natur.617..696V: Hogbom and SDI clean; SDI only for lines
+- 2023Natur.617..696V: processing.calibration.self_calibration = Phase self-calibration on the compact continuum emission of the source (done in GILDAS)
+- 2014ApJ...796..117G: processing.calibration.self_calibration = one additional phase self-calibration iteration
+- 2024A&A...682A..97W: Band 3: four 2 GHz sub-bands centered at 86.3, 88.3, 98.3, 100.3 GHz
+- 2024A&A...682A..97W: Full Stokes at 4 s cadence; data averaged within sub-bands
+- 2024A&A...682A..97W: 227.1 GHz scaled up by 4% for CN absorption
+- 2024A&A...682A..97W: processing.calibration.self_calibration = Self-calibrate to extended source structure; extract time-dependent point source, assuming negligible extended-emission variation
+- 2024ApJ...963...19N: Thermal noise determined from maps with large phase-center shifts relative to the source positions
+- 2024ApJ...963...19N: SPT2132-58 OH: all channels of both OH SPWs used for the continuum image
+- 2024ApJ...963...19N: Channel widths (km/s): SPT0202-61 50, SPT0418-47 70, SPT0441-46 75, SPT2132-58 150, SPT2319-55 75; same widths for [CII]
+- 2024ApJ...963...19N: CLEAN threshold 1.5x thermal noise measured in the channel map at the central velocity of the higher-frequency OH doublet component
+- 2024ApJ...963...19N: processing.calibration.self_calibration = Phase-only self-calibration on a continuum image CLEANed to 3x thermal noise; no amplitude self-calibration
+- 2020MNRAS.495L...1I: Briggs robust = −0.5
+- 2020MNRAS.495L...1I: Self-calibrate 2012.1.01029.S configurations separately, then combined datasets
+- 2020MNRAS.495L...1I: processing.calibration.self_calibration = Phase, then amplitude and phase; 2012.1.01029.S configurations separately; additional combined-dataset self-calibration for relative astrometry and flux-densit…
+- 2024A&A...687A..43B: Spatial resolution 1.6″; spectral resolution Δv∼10 km s−1
+- 2024A&A...687A..43B: Extract 1000 km s−1 around each transition
+- 2024A&A...687A..43B: CO/13CO ratio 15 defines the disk/outflow boundary; ratio 21 outlines higher-ratio outflow regions
+- 2024A&A...687A..43B: processing.calibration.self_calibration = Self-calibrated CO(1-0) and 13CO(1-0) cubes with a multi-scale deconvolver for integrated intensities in Figures 5(a) and 10(a)
+- 2026ApJ...999..194I: Briggs weighting with robust = 0.5
+- 2026ApJ...999..194I: Phase self-calibration solution interval = 60 seconds
+- 2026ApJ...999..194I: processing.calibration.self_calibration = One round of phase self-calibration using continuum with a solution interval of 60 seconds
+- 2022PASJ...74..407U: robust = 0.5, velocity resolution = 5 km s^-1, shortest uv distance = 26.9 klambda
+- 2022PASJ...74..407U: processing.calibration.self_calibration = Phase-only self-calibration using continuum map, applied to all data including line data
+- 2021A&A...652A...5M: v_Helio = v_LSRK - 12.4 km/s
+- 2021A&A...652A...5M: Phase-only gain corrections every 6 s
+- 2021A&A...652A...5M: processing.calibration.self_calibration = Phase-only self-calibration on the PKS 1830-211 continuum, per 6 s integration; gain calibrator J 1832-2039
+- 2019AJ....157..251T: Solution intervals: full observation, 350 s, 60 s
+- 2019AJ....157..251T: processing.calibration.self_calibration = Three iterations: first over entire observation, then 350 s and 60 s intervals
+- 2019A&A...631A..25J: robust = -0.5
+- 2022Icar..37214722L: Continuum flux density set to 17.5 mJy at CO(3-2), 18.3 mJy at HCN(4-3), and 11.1 mJy at HNC(3-2)
+- 2022Icar..37214722L: processing.calibration.self_calibration = Phase self-calibration on continuum spectral windows in AIPS, applied to spectral line windows
+- 2014A&A...570L..14R: ACA weight factor 0.3
+- 2014A&A...570L..14R: processing.calibration.self_calibration = Self-calibration using the continuum image
+- 2012ApJ...752L..30W: 3 min self-cal solution interval; 7 min calibration cycle
+- 2012ApJ...752L..30W: processing.calibration.self_calibration = Amplitude and phase self-cal with 3 min solution interval on line-free emission
+- 2025A&A...694L..15H: CASA 6.6 for imaging
+- 2025A&A...694L..15H: Phase self-calibration not used
+- 2025A&A...694L..15H: processing.calibration.self_calibration = Phase self-calibration attempted but not adopted (insufficient S/N in individual tracks)
+- 2018ApJ...863..193V: robust = 0.5; velocity bins 20 and 10 km/s
+- 2018ApJ...863..193V: processing.calibration.self_calibration = Phase self-cal on continuum: 50% S/N increase at CO(1-0), 30% at CO(3-2)
+- 2020MNRAS.492.4847L: 6 km configuration in both epochs
+- 2020MNRAS.492.4847L: 2019 self-calibration at 5.5 GHz using an adjacent source; not possible at 9 GHz
+- 2026A&A...707A.240C: multiscale scale 1" for limb spectral data
+- 2026A&A...707A.240C: processing.calibration.self_calibration = performed on continuum and spectral data; Jan 22 amplitudes rescaled to match Jan 14 total planet flux (978 Jy vs 951 Jy) after self-calibration
+- 2020PASJ...72...36T: robust = 0.2; beam 0.107 x 0.101 arcsec, PA=-78 deg; 1 sigma = 45 uJy/beam
+- 2020PASJ...72...36T: phase calibrator J1717-3342; flux scale from Titan and J1733-1304
+- 2020PASJ...72...36T: processing.calibration.self_calibration = self-calibration in CASA 5.4 to minimise complex gain errors (340 GHz continuum data)
+- 2017MNRAS.464L..75F: processing.calibration.self_calibration = self-calibration on bright (~150 mJy) compact Wd1-9 emission
+- 2019ApJ...877L..26L: 4 spws combined, 1.6'' beam, 0.3'' cells, 1090 images
+- 2019ApJ...877L..26L: processing.calibration.self_calibration = images mapped and self-calibrated
+- 2026ApJ..1003L..17Y: processing.calibration.self_calibration = iterative phase self-calibration on Sgr A*, following I20+ and Y25+
+- 2023PASP..135g4501H: processing.calibration.self_calibration = Not part of the 2022 release; optional self-calibration stage expected in the 2023 release
+- 2019ApJ...884L..58U: processing.calibration.self_calibration = amplitude and phase self-cal with infinite and then 30 s solution intervals
+- 2021A&A...652A..92N: processing.calibration.self_calibration = four rounds of phase and one round of amplitude self-calibration
+- 2021ApJ...910...53V: processing.calibration.self_calibration = Phase self-calibration attempted but gave no S/N improvement (continuum too faint)
+- 2015MNRAS.452...88K: robust=0.5
+- 2015MNRAS.452...88K: processing.calibration.self_calibration = single round of phase-only self-calibration using combined continuum and line data
+- 2020ApJ...889L...4L: processing.calibration.self_calibration = Self-calibration on 3C120, 3C454.3, 2148+0657, 2232+1143 to remove bandpass-calibrator contamination
+- 2014ApJ...795L..30C: processing.calibration.self_calibration = Phase self-calibration on Titan continuum
+- 2016A&A...593A..61M: processing.calibration.self_calibration = Two phase iterations and one amplitude iteration (T gain) on target
+- 2015ApJ...811L..23K: processing.calibration.self_calibration = A few rounds of phase-only, then one round of amplitude-and-phase self-cal in AIPS
+- 2014A&A...566A.112M: processing.calibration.self_calibration = Phase self-cal with two-point-source model, one solution per 30 s; S/N improved ~2
+- 2018ApJ...869L..41A: Combined data: SPWs combined; applymode='calonly' for antenna pairs with SNR ≤ 1.5
+- 2018ApJ...869L..41A: processing.calibration.self_calibration = Compact: phase-only 60, 30, 18, 6 s then one amplitude (scan interval); combined: phase 900, 360, 180, 60, 30 s, one amplitude iteration
+- 2025ApJ...989...30Z: Pseudo-continuum made by flagging +/-15 km/s around 12CO, 13CO, C18O, DCN, SO, H2CO lines
+- 2025ApJ...989...30Z: Imaging of pseudo-continuum: multiscale, briggs robust=0.5, smallscalebias=0.6, cycleniter=300, gain=0.3
+- 2025ApJ...989...30Z: First phase-only round: infinite solint, antennas with <3 baselines and SNR<4 rejected
+- 2025ApJ...989...30Z: Amplitude+phase cycles: infinite solint, SNR<5 solutions flagged, amplitude gains >20% flagged
+- 2025ApJ...989...30Z: robust=0.0 (CQ Tau), robust=1.0 (MWC 758)
+- 2025ApJ...989...30Z: gain=0.02
+- 2025ApJ...989...30Z: processing.calibration.self_calibration = Per-EB phase-only round, EB alignment, iterative phase-only self-cal (short baselines, then combined; solints down to 20 s / 18 s), amplitude rescaling, then t…
+- 2017MNRAS.468.3694C: robust = 0; ~2.4 GHz line-free bandwidth
+- 2017MNRAS.468.3694C: processing.calibration.self_calibration = continuum iteratively self-calibrated, solutions applied to line data
+- 2021AJ....162...99F: channels within +/-20 km/s of listed lines flagged before self-cal
+- 2021AJ....162...99F: continuum averaged with channels <500 MHz
+- 2021AJ....162...99F: model imaged down to 5 sigma of initial data, Briggs robust 0.5, elliptical mask; rms in annulus 2.55''-4.25''
+- 2021AJ....162...99F: flux density measured within the self-cal mask
+- 2021AJ....162...99F: processing.calibration.self_calibration = Three rounds of phase self-cal (first for polarization offsets at scan length; then 120 s and 60 s (low-frequency) or 120 s and 30 s (high-frequency), polariza…
+- 2025ApJ...992L..31C: Final phase self-calibration solution interval: 30 seconds
+- 2025ApJ...992L..31C: General spectral cubes: 1 km s−1 channel width
+- 2025ApJ...992L..31C: DCN follow-up spectral resolution ~0.1 km s−1
+- 2025ApJ...992L..31C: Bandpass: J0423-0120, J0510+1800, J0238+1636; gain: J0336+3218; instrumental polarization: J0522-3627
+- 2025ApJ...992L..31C: processing.calibration.self_calibration = Iterative continuum phase self-calibration; final solution interval 30 seconds; solutions applied to molecular lines
+- 2023MNRAS.525.6146W: minimum isocontour value 5 sigma_rms (sigma_rms = 0.25 mJy/beam)
+- 2023MNRAS.525.6146W: minimum isocontour spacing 1 sigma_rms
+- 2023MNRAS.525.6146W: processing.calibration.self_calibration = Continuum iteratively self-calibrated; solutions then applied to line data
+- 2015ApJ...810..112O: robust 0.5 continuum, 1.0 lines; 0.2 km/s channels
+- 2015ApJ...810..112O: processing.calibration.self_calibration = Phase and amplitude self-calibration on each SPW
+- 2016ApJ...824..132N: solint 30 s; Briggs robust 0.5
+- 2016ApJ...824..132N: processing.calibration.self_calibration = Phase then amp+phase self-cal, 30 s solint, using CLEAN models of I, Q, U
+- 2017A&A...602L..10O: robust 0, nterms=2, scales 0,1,3 beams, solint 15 s
+- 2017A&A...602L..10O: processing.calibration.self_calibration = Three phase-only iterations (15 s solint) then one amplitude+phase iteration
+- 2017ApJ...849...14S: flagged DA45, DA65, DV20; 37 antennas remain
+- 2017ApJ...849...14S: processing.calibration.self_calibration = phase-only, per tuning for visibility fitting; again after combining for images
+- 2023ApJ...945...40C: Curvature beta=0 for 230 GHz narrow-band ngEHT and MOJAVE reconstructions
+- 2023ApJ...945...40C: Time averaging window = 300 s; reference frequency = 287 GHz; spectral curvature beta = 0; fiducial spectral index alpha_0 = 0
+- 2023ApJ...945...40C: processing.calibration.self_calibration = Started with initial calibration in public ALMA data, self-calibrated all eight spectral window datasets three times to intermediate results during imaging, re…
+- 2024RAA....24c5009N: Channel widths: 0.95 km s^-1 for CO(2-1), 0.34 km s^-1 for SiO(5-4)
+- 2024RAA....24c5009N: Image size: 2000 x 2000 pixels covering ±4 arcsec; natural weighting
+- 2024RAA....24c5009N: Cleaning mask radius: 1 arcsec for CO(2-1), 2 arcsec for SiO(5-4)
+- 2014ApJ...795..156W: robust 0.5; 0.08'' pixels; 5 km/s channels; 10 min solint
+- 2014ApJ...795..156W: processing.calibration.self_calibration = CO averaged over 500 km/s into one plane, cleaned, model used with 10 min solution interval
+- 2019A&A...624A.138Y: robust −0.5 / −0.2 / 0.5; nterms=2
+- 2019A&A...624A.138Y: processing.calibration.self_calibration = Iterative phase-only self-calibration until S/N stopped improving; similar for Band 7
+- 2019ApJ...872....2R: 3 km/s channels, robust 0.5, PB cutoff 20%
+- 2019ApJ...872....2R: processing.calibration.self_calibration = Phase self-cal three times with shorter solution intervals, then final phase+amplitude per integration
+- 2023MNRAS.518.2034H: Phase centre origin: RA=09h47m33.492315s, Dec=11d25m42.9081536s
+- 2023MNRAS.518.2034H: processing.calibration.self_calibration = Phase self-calibration on Band 6 high-resolution continuum data, applied to line data
+- 2015ApJ...814...22E: Cell 0.1", 512x512, thresholds 0.5 mJy (continuum) and 60 mJy per channel
+- 2015ApJ...814...22E: processing.calibration.self_calibration = Phase at 600 s, phase at 60 s, then amplitude at 3600 s, on smoothed line-free channels; applied to unsmoothed data
+- 2024ApJ...960....1L: Data weights scaled so that reduced chi-square = 1
+- 2024ApJ...960....1L: processing.calibration.self_calibration = VLBA data only (Difmap): phase self-cal with 1.5 min solution interval, then amplitude+phase selfcal with 3 min interval
+- 2026A&A...708A.146P: quasar flux >= 4 mJy for phase self-cal; solint = 30 s to 4 min
+- 2026A&A...708A.146P: quasar flux > 20 mJy and 5 sigma threshold for amplitude self-cal
+- 2026A&A...708A.146P: processing.calibration.self_calibration = Performed in 6 fields with background quasar >= 4 mJy: phase-only (solint 30 s to 4 min) and amplitude if quasar > 20 mJy (signals down to 5 sigma) using gainc…
+- 2021A&A...652A..66P: cube channel width 40 km/s, LSB and USB cubes per setup
+- 2021A&A...652A..66P: pixel size 0.1 arcsec
+- 2021A&A...652A..66P: line-free width 300 km/s adopted where no line is detected
+- 2025A&A...699A.187G: Solution time averaging 40 s chosen from a range of intervals because it gave the lowest failure rate of gain solutions
+- 2025A&A...699A.187G: processing.calibration.self_calibration = 1 round of phase-only self-calibration on the continuum with 40 s solution interval (tclean model from line-free channels, then gaincal and applycal)
+- 2024PASJ...76...54L: CASA 4.7.0-1 / 4.7.2 for calibration, 5.6.1-8 for imaging
+- 2024PASJ...76...54L: imaging rms 0.4 ~ 1 mJy/beam
+- 2022ApJ...928..150T: X-ray spectral extraction SNR >= 18 (~320 counts per region), energy band 0.5-2.0 keV
+- 2022ApJ...928..150T: VLA imaging: Briggs robust = 0; self-calibration (3 phase cycles + 1 amplitude and phase cycle) when SNR reaches 100
+- 2022JApA...43...83M: First-order baseline fit in UVCONTSUB
+- 2017Icar..286..289L: Self-cal solution intervals 5, 2, 1 min
+- 2017Icar..286..289L: processing.calibration.self_calibration = Phase self-cal on continuum window with solution intervals of 5, 2, 1 min; solutions applied to line windows
+- 2016A&A...595A.117J: processing.calibration.self_calibration = phase-only self-cal on continuum, applied to cubes before 12m+ACA combination
+- 2021PSJ.....2....3M: Self-calibration solution intervals of 20, 10, 5, and 1 minutes
+- 2021PSJ.....2....3M: processing.calibration.self_calibration = Iterative phase-only self-calibration with solution intervals of 20, 10, 5, and 1 minutes
+- 2015A&A...574A...5D: processing.calibration.self_calibration = Self-cal on continuum model; residual scatter ~5 deg phase, 10% amplitude
+- 2013A&A...559A..29C: ROBUST=1.5; 0.15" pixel; 28 km/s channels
+- 2013A&A...559A..29C: processing.calibration.self_calibration = amplitude and phase self-cal with line-free channels, 3-min solution interval
+- 2025ApJ...991L..31B: Self-calibration: phase-only on 10 min intervals, then phase and amplitude on 20 min intervals
+- 2025ApJ...991L..31B: 2 Taylor terms in tclean
+- 2016Natur.534..218T: processing.calibration.self_calibration = Iterative self-calibration on galaxy continuum; ~14% RMS decrease
+- 2023ApJ...945L...3M: S/N > 5 selection threshold for archival Band 3 data
+- 2023ApJ...945L...3M: processing.calibration.self_calibration = Standard self-calibration conducted for 2018.1.01135.S to minimize sidelobes from bright nuclear emission
+- 2024PSJ.....5..125T: Hogbom, natural weighting, 0.01 arcsec pixels
+- 2024PSJ.....5..125T: processing.calibration.self_calibration = Phase-only self-cal on combined continuum image (CH3CN spw + ~712 GHz spw), successively smaller solution intervals until phase scatter ~±10%; applied to line …
+- 2021A&A...650A..37D: solution intervals 15, 90, 90 and 45 s
+- 2021A&A...650A..37D: processing.calibration.self_calibration = Phase-only self-calibration with solution intervals of 15, 90, 90 and 45 s for Cir X-1, Sco X-1, GRS 1915+105 and Cyg X-1; none for GX 13+1 (too faint)
+- 2016A&A...594A.109L: processing.calibration.self_calibration = one round of phase-only self-cal in Bands 4, 6, 8
+- 2018A&A...619L...6N: processing.calibration.self_calibration = four rounds of phase self-cal (20 min, 1 min, 2 s, 2 s) and one amplitude round (2 s)
+- 2025ApJ...994..256Y: processing.calibration.self_calibration = Iterative phase self-cal with gaincal/applycal; solint inf then int
+- 2023PASP..135b5002C: processing.calibration.self_calibration = amplitude scale from self-calibration on 3C454.3; opacity correction applied right after gain calibration
+- 2019ApJ...884..121L: processing.calibration.self_calibration = one round of phase-only self-cal in first two ALMA epochs
+- 2020ApJ...888L..28S: processing.calibration.self_calibration = 5 steps, solution intervals from 10 min to 2 s, phase only
+- 2020ApJ...894...72S: processing.calibration.self_calibration = Several phase self-cal steps; continuum noise improved by 2.7
+- 2015A&A...576A..41B: processing.calibration.self_calibration = Phase self-cal on Sgr A* using baselines >150 klambda
+- 2020ApJ...892L..30I: processing.calibration.self_calibration = iterative phase self-calibration
+- 2015A&A...581L...3V: processing.calibration.self_calibration = Self-calibrated images tested; gave no additional detail
+- 2019ApJ...875L...2E: processing.calibration.self_calibration = self-calibration used to correct telescope gain variations
+- 2017ApJ...848L..11K: briggs weighting; robust 0.6; threshold 0.06 mJy; 0.45'' mask
+- 2017ApJ...848L..11K: processing.calibration.self_calibration = Phase self-calibration
+- 2024A&A...692A.155K: Line channels within +/-25 km/s of VLSR (about 6 km/s) flagged
+- 2024A&A...692A.155K: Averaged to 125 MHz channels and 6 s bins
+- 2024A&A...692A.155K: Briggs robust 0.5 (LB1: 1.0) for self-cal images; observations not aligned to a common phase center before self-cal
+- 2024A&A...692A.155K: tclean gain 0.05, cyclefactor 1.5, clean to 4 sigma, JvM correction
+- 2024A&A...692A.155K: Channel width 1.3 km/s for LB 12CO, 0.5 km/s for SB 12CO
+- 2024A&A...692A.155K: Moment images clipped at 0 sigma with no mask; extra LB 12CO image clipped at 1.3 mJy/beam km/s
+- 2024A&A...692A.155K: processing.calibration.self_calibration = Each project self-calibrated separately on the pseudo-continuum; Briggs robust 0.5 (LB1: 1.0) for the self-cal images; all scans and spws combined per gaincal
+- 2018ApJ...869..115S: robust 0.5, taper 0.1'', multiscale 1, 2.5, 5 beams
+- 2018ApJ...869..115S: processing.calibration.self_calibration = Two rounds of phase-only self-cal (solint inf to 30 s), then one phase+amplitude round with infinite solint
+- 2021A&A...656A.150P: Line channels flagged at +/-25 km/s
+- 2021A&A...656A.150P: 125 MHz channel averaging before self-calibration
+- 2021A&A...656A.150P: SB second stage repeats the same solution intervals on SB joined with the October 2016 data
+- 2021A&A...656A.150P: Phase centres of all data shifted to the LB phase centre before combining
+- 2021A&A...656A.150P: epsilon_v = 0.69 for SB and LB images; 0.88 for SB+LB combined
+- 2021A&A...656A.150P: processing.calibration.self_calibration = SB: two stages (shortest-baseline April 2017 data first, then joined with October 2016 data); phase solints 360, 150, 60, 24 s and amplitude 150 s. LB independ…
+- 2026MNRAS.552g1573L: mtmfs; Brigg’s robust parameter 0
+- 2026MNRAS.552g1573L: 40 kλ images: uvrange >40 kλ
+- 2026MNRAS.552g1573L: 27-pointing mosaics; ~95 × 95 arcsec within 10% response
+- 2026MNRAS.552g1573L: processing.calibration.self_calibration = Iterative phase-only self-calibration of each continuum dataset
+- 2020ApJ...904...77G: Briggs robust = 0
+- 2020ApJ...904...77G: Final phase self-calibration gain sampling: 15 s
+- 2020ApJ...904...77G: processing.calibration.self_calibration = Several phase self-calibration iterations on continuum; final gain sampling 15 s; gains applied to continuum-subtracted uv-data
+- 2014ApJ...791L...6W: CO integrated between -12 and +12 km/s of source velocity 5.7 km/s
+- 2014ApJ...791L...6W: processing.calibration.self_calibration = Self-calibration with mask on strong continuum component only; peak S/N at 346 GHz 150 to 1320
+- 2018MNRAS.481L..40S: shortest solution interval 240 s
+- 2018MNRAS.481L..40S: processing.calibration.self_calibration = Phase-only, several timescales starting from scan length down to 240 s; applied to line channels
+- 2017A&A...603A..92V: line robust 0.5; continuum robust -0.5
+- 2017A&A...603A..92V: processing.calibration.self_calibration = four iterations on a strong SiO maser channel in spw 3, applied to all spws
+- 2019MNRAS.485.1595P: robust 0.5, 53 km/s channels, 0.2" pixels
+- 2019MNRAS.485.1595P: processing.calibration.self_calibration = One round phase, one round amplitude+phase, using gaincal and applycal
+- 2020MNRAS.493.5290S: Self-calibration on line-free SPWs down to a 60 s solution interval
+- 2020MNRAS.493.5290S: Frequency averaging by a factor of 16 giving 22.6 km/s channels
+- 2020MNRAS.493.5290S: processing.calibration.self_calibration = Self-calibration on the continuum SPWs to align the four epochs and correct residual phase and amplitude errors; solution intervals not stated for ALMA
+- 2024A&A...692A.151S: flux calibrator J 1751+0939 adopted at 1.95 Jy at 108.970 GHz
+- 2024A&A...692A.151S: processing.calibration.self_calibration = self-calibration with an initial source model from the standard calibration, done in GILDAS MAPPING
+- 2014ApJ...787...48X: processing.calibration.self_calibration = phase and amplitude self-calibration; parameters not given
+- 2017Natur.548..430F: robust 0.5
+- 2017Natur.548..430F: processing.calibration.self_calibration = one round phase-only and one round amplitude+phase
+- 2017A&A...603A..68M: processing.calibration.self_calibration = Phase, then amplitude, then amplitude-phase self-cal; DR improved 11.4, 31.9, 57.7x to 4500, 7600, 11200
+- 2021A&A...653A..53A: Two peak-emission channels for self-calibration.
+- 2021A&A...653A..53A: Högbom; Briggs robust = 0.5; 10 000 iterations.
+- 2021A&A...653A..53A: Interactive channel masks for sources brighter than 20 Jy.
+- 2014ApJ...796...82Z: robust = 0.5; 8 mas pixels
+- 2014ApJ...796...82Z: processing.calibration.self_calibration = Phase and amplitude in B3 (2-min interval); phase only in B6, B7; none in B9
+- 2024MNRAS.534.3237M: SOLINT = 0.15 min, SNR cutoff 3, REFANT ALMA
+- 2024MNRAS.534.3237M: processing.calibration.self_calibration = phase-only self-cal, six steps, SOLINT=0.15 min, point-source initial model; no amplitude self-cal
+- 2024A&A...690A.258B: Two self-calibration steps: phase-only, then amplitude and phase
+- 2024A&A...690A.258B: Solution interval equal to the integration time
+- 2024A&A...690A.258B: processing.calibration.self_calibration = Two steps on pseudo-continuum MS (phase only, then amplitude and phase); solution interval equal to the integration time; point-source model fitted to the uv d…
+- 2020Natur.584..201R: self-calibration solint 100 s; 28 channels of 25.7 km/s
+- 2020Natur.584..201R: processing.calibration.self_calibration = phase-only self-calibration on the continuum, solution interval 100 s; gains applied to the line spectral window
+- 2026ApJ...996L..27L: robust = 0.5 for continuum; natural weighting and 4-channel averaging (13.5 km/s) for CO(3-2)
+- 2024A&A...683A..62M: Self-calibration phase-only, solution interval = shortest integration time, 6 s
+- 2024A&A...683A..62M: processing.calibration.self_calibration = Phase-only self-calibration at 6 s (2022); self-calibration also applied to 2014 data (details not stated)
+- 2020ApJ...890..149T: baseline cuts 800, 2400, 4000, 8000 klambda; >1.5 sigma
+- 2020ApJ...890..149T: processing.calibration.self_calibration = Compact/intermediate: single phase-only step, solint inf. Long baseline: unfolding self-cal with baseline cuts 800, 2400, 4000, 8000 klambda, >=3 baselines, >1…
+- 2020MNRAS.498L..87B: processing.calibration.self_calibration = Self-calibrated on line-free continuum channels, including continuum spectral index corrections
+- 2016ApJ...821L...8S: clean threshold 2x expected RMS
+- 2016ApJ...821L...8S: processing.calibration.self_calibration = Phase self-calibration possible using Titan's continuum
+- 2019A&A...624A..82B: processing.calibration.self_calibration = Data interactively self-calibrated; continuum subtracted using most line-free channels
+- 2023PSJ.....4..206R: gaincal combine='scan,spw' fallback used for all observations
+- 2023PSJ.....4..206R: processing.calibration.self_calibration = Automated phase-only self-cal (inf_EB, then per-scan 'inf', shorter intervals where possible) then amplitude (inf_ap) where phase succeeded; combine='scan,spw'…
+- 2015A&A...577L...4V: Briggs 0.5
+- 2015A&A...577L...4V: processing.calibration.self_calibration = Self-calibration on continuum SPWs averaged from 128 to 8 channels
+- 2015ApJ...812...43B: robust = +0.5
+- 2015ApJ...812...43B: processing.calibration.self_calibration = phase selfcal for a handful of targets with peak S/N>20, ~10% S/N improvement
+- 2024Ap&SS.369...18M: robust = 0.5, Stokes I
+- 2024Ap&SS.369...18M: processing.calibration.self_calibration = Applied with gaincal and applycal; background RMS from 15–22 to 3.06–8.36 mJy/beam
+- 2016ApJ...832..148V: processing.calibration.self_calibration = phase self-cal on nuclear continuum improved CO(1-0) S/N by 1.2; not possible at CO(3-2)
+- 2020ApJ...895...64L: amp solint 20 min, 14 solutions per pol per antenna, cross-hand phase fixed
+- 2020ApJ...895...64L: processing.calibration.self_calibration = Phase-only 10 min then 2 min, then amp+phase 20 min, gain mode T, refant strict, per sideband
+- 2024PSJ.....5..230D: snapshot duration <5.5 min; pixel 3 mas
+- 2024PSJ.....5..230D: processing.calibration.self_calibration = One round per snapshot, applied from total intensity; improved SNR ~15%
+- 2023ApJ...953L...6P: processing.calibration.self_calibration = Continuum self-calibration with 30s time interval: 3 iterations in phase only, 4th iteration in phase and amplitude; solutions applied to corresponding H30alph…
+- 2018A&A...617A.129K: processing.calibration.self_calibration = V4332 Sgr: phase refinement on SiO 8–7 peak (S/N 157→200); V1309 Sco: not feasible/no improvement
+- 2018ApJ...863...96Y: processing.calibration.self_calibration = two-step phase self-cal: model from whole-period image, then 20-s images as models per slot
+- 2026A&A...707A.255C: processing.calibration.self_calibration = attempted (single iteration of phase-only gaincal/applycal on 60-channel averaged data per execution block) but not used in final dataset as S/N did not improv…
+- 2020A&A...636A...5R: processing.calibration.self_calibration = Amplitude then phase self-calibration to the reconstructed image within eht-imaging
+- 2020A&A...640A..57A: processing.calibration.self_calibration = Feathered HR images improved by self-calibration
+- 2018ApJ...869...17L: Briggs robust +0.5
+- 2018ApJ...869...17L: processing.calibration.self_calibration = S/N≳100: three phase rounds + one amplitude; S/N<100: one phase + one amplitude; S/N<30: none; stopped when no S/N improvement
+- 2024A&A...687A.311A: Solint reduced to the integration time: 6.05 s (SB), 2.02 s (LB)
+- 2024A&A...687A.311A: First round uses combined SPWs, combined polarisations and infinite solint; later rounds decombine SPWs and polarisations
+- 2024A&A...687A.311A: Datasets centred on the cavity centre with phaseshift; second-round gaincal solint two times the integration time, combined SPWs, independent polarisations
+- 2024A&A...687A.311A: Briggs robust 0.5, channel width 0.5 km/s
+- 2024A&A...687A.311A: processing.calibration.self_calibration = Phase-only self-cal on line-free continuum; solint reduced to integration time (6.05 s SB, 2.02 s LB; OLD down to 6.05 s); second round on a common model of th…
+- 2019ApJS..245....2S: self-cal for S/N>20, solints scan length, 30.25 s, 15 s
+- 2019ApJS..245....2S: processing.calibration.self_calibration = phase-only on Stokes I for S/N>20, 1-3 rounds (scan length, 30.25 s, 15 s); amp+phase for c2d_1008a/b
+- 2020ApJ...902L..33G: Briggs weighting, robust = 0.5
+- 2020ApJ...902L..33G: Final beam 0.02'' x 0.03'' centred at 225 GHz
+- 2020ApJ...902L..33G: Auto-masking for regions up to 3 x rms, 1.5 km/s channels
+- 2020ApJ...902L..33G: uvtaper uppertaper = 0.1arcsec
+- 2020ApJ...902L..33G: processing.calibration.self_calibration = Two iterations of phase-only self-calibration per epoch using a mask covering both sources; S/N improved by a factor of 1.7; the continuum solutions were appli…
+- 2024ApJ...961....4B: robust = 0.5
+- 2024ApJ...961....4B: Phase self-cal solint inf, then solint int, then phase+amp solint inf
+- 2024ApJ...961....4B: Sgr B2 N Band 6: cleaning threshold raised to 10 sigma until amplitude self-cal, then extra phase+amplitude step with solint 15 s
+- 2024ApJ...961....4B: processing.calibration.self_calibration = Multi-step phase then amplitude+phase self-calibration (solint inf, int, inf; extra 15 s step for Sgr B2 N Band 6; Sgr B2 N Band 3 used pre-amplitude image)
+- 2020ApJ...897...59M: robust 0.5; scales 0,8,24,72 pixels; pixel 6 mas
+- 2020ApJ...897...59M: processing.calibration.self_calibration = iterative phase-only (min solint 9 s), then two amplitude iterations (min solint 60 s); applied to line windows
+- 2013Natur.493..191C: self-cal solint 5 min
+- 2013Natur.493..191C: processing.calibration.self_calibration = Continuum: phase self-cal with 5 min solint, then amplitude+phase round; not applied to line channels
+- 2017ApJ...843..136E: processing.calibration.self_calibration = Phase and amplitude self-cal on the Cen A continuum using line-free channels
+- 2019A&A...623A.153O: processing.calibration.self_calibration = Self-calibration on strong continuum for each tuning
+- 2019ApJ...871..170M: phase-only self-cal, 60 s averaging, one iteration
+- 2019ApJ...871..170M: processing.calibration.self_calibration = One iteration of phase-only self-cal, 60 s averaging, on NGC 253 continuum
+- 2023ApJ...954..197I: robust = 0, 0.5, -1
+- 2023ApJ...954..197I: pixel size = 5 mas (0.005'')
+- 2023ApJ...954..197I: processing.calibration.self_calibration = phase-only self-calibration performed on both Cycle 2 and Cycle 4 data
+- 2026A&A...711A.159M: Frequency = 354 GHz; threshold > 3 sigma; natural weighting
+- 2026A&A...711A.159M: processing.calibration.self_calibration = Phase self-calibration on continuum (2 loops), improving continuum rms by factor of 3.5-4.0 (and molecular line rms by up to 30%)
+- 2014ApJ...796L..15S: processing.calibration.self_calibration = two rounds of phase-only self-calibration using 12CO line emission
+- 2019PASJ...71..105T: uvcontsub fitorder=1; natural weighting
+- 2019PASJ...71..105T: processing.calibration.self_calibration = complex gain errors minimized with self-calibration in CASA for the continuum map
+- 2020MNRAS.495.4297S: processing.calibration.self_calibration = two rounds of self calibration
+- 2015ApJ...801...82H: processing.calibration.self_calibration = Phase and amplitude self-calibration with continuum images (gaincal, applycal)
+- 2026A&A...712A.244H: Phase-only self-cal solint = int; phase and amplitude self-cal solint = 10 s (Bands 4 and 6) and 30 s (Band 7)
+- 2026A&A...712A.244H: processing.calibration.self_calibration = Yes: two iterations of one round of phase-only self-cal (solint=int) followed by one round of phase and amplitude self-cal (solint=10 s in bands 4 and 6, 30 s …
+- 2024A&A...689A.145S: Two phase-only self-calibration rounds per observation; 20 km/s channels; natural or Briggs robust = 0.5 weighting; cleaned down to 1 sigma
+- 2024A&A...689A.145S: processing.calibration.self_calibration = Two phase-only rounds per observation on ALPINE and CRISTAL continuum visibilities before combination: first combining spectral windows and scans, second only …
+- 2022MNRAS.511.1408G: robust = 0.5
+- 2022MNRAS.511.1408G: 5% calibration error added in quadrature to image noise
+- 2026ApJ..1005...94N: processing.calibration.self_calibration = self-calibrated (details not stated)
+- 2024ApJ...965L..23F: robust = 0.5; common beam 0.26 x 0.26 arcsec
+- 2024ApJ...965L..23F: processing.calibration.self_calibration = iterative self-calibration starting from the line-free continuum image; solutions applied to continuum-subtracted uv-data
+- 2021ApJ...908...19B: NGC 315 CO(2-1): 0.035" pixels, 7.81 MHz (10.3 km/s) channels; NGC 4261 CO(2-1): 0.05" pixels, 31.2 MHz (40.9 km/s) channels; CO(3-2): 0.035" pixels, 15.6 MHz …
+- 2021ApJ...908...19B: processing.calibration.self_calibration = Phase and amplitude self-calibration on the bright nuclear continuum (0.2-0.25 Jy at 230 GHz); same approach applied to the Band 7 data
+- 2023A&A...678A.137C: processing.calibration.self_calibration = Iterative self-calibration on continuum applied to continuum-subtracted line datasets
+- 2019AJ....158...47M: processing.calibration.self_calibration = Iterative phase-only, solution intervals 20, 10, 5, 1 min
+- 2017ApJ...851L..46M: processing.calibration.self_calibration = iterative self-cal using continuum model from line-free channels; solint not given
+- 2021ApJ...907L..27A: Phase-only self-calibration with 30 s solution interval
+- 2021ApJ...907L..27A: First-order continuum subtracted from one copy
+- 2021ApJ...907L..27A: processing.calibration.self_calibration = Phase-only self-calibration, solution interval 30 s, starting from a limb-darkened disk model fitted to the calibrated visibilities
+- 2013ApJ...778L..25C: processing.calibration.self_calibration = iterative self-cal on compact SiS v=1 J=15-14 source
+- 2015ApJ...808L...4A: robust=1; scales 0,5,15
+- 2025MNRAS.543..862V: processing.calibration.self_calibration = ALMA pipeline self-calibrated images used when target bright; VLA self-calibration attempted for 4U 1700-37 at 10 GHz without full success
+- 2016MNRAS.458.3134R: robust 0.5 (Band 3), 2 (Band 7); 10 km/s channels
+- 2023NatAs...7...80U: processing.calibration.self_calibration = Interactive CLEAN with self-calibration
+- 2025PSJ.....6..286M: processing.calibration.self_calibration = Phase self-calibration against Butler-JPL-Horizons 2012 Titan model; adjacent continuum windows centered at 649 and 666 GHz
+- 2020A&A...638A..65O: processing.calibration.self_calibration = Two to three rounds of phase and one round of amplitude self-calibration
+- 2019ApJ...881...99M: processing.calibration.self_calibration = per 10-minute interval, average clean image used to remove phase variations in individual images
+- 2024ApJ...969..102N: processing.calibration.self_calibration = Targets bright enough for self-calibration (no separate gain calibrator observed); parameters not given
+- 2019ApJ...880...69Y: channel width 0.1 km/s
+- 2019ApJ...880...69Y: processing.calibration.self_calibration = phase self-cal on continuum, applied to line data
+- 2026A&A...710L..10C: time averaging = 6.06 s, channel binning = 8 channels
+- 2026A&A...710L..10C: self-calibration solution interval = single scan (~50 s), 1 iteration of amplitude and phase
+- 2026A&A...710L..10C: 10 iterations truncation, no entropy regularization, Briggs robust r = 0.3
+- 2026A&A...710L..10C: processing.calibration.self_calibration = Automatic self-calibration with snow package: single iteration in amplitude and phase with solution interval limited to a single scan (~50 s), improving peak S…
+- 2016ApJ...833..219P: solint 6.05 s, two iterations
+- 2016ApJ...833..219P: processing.calibration.self_calibration = Two iterations phase-only, CLEAN components >3σ as model, solint 6.05 s; no amplitude self-cal
+- 2023A&A...676A...4C: Five final frequencies: 88, 100, 141, 249, and 348 GHz
+- 2023A&A...676A...4C: Shortest common baseline cut: 9.8 klambda
+- 2023A&A...676A...4C: Self-calibration solution intervals: inf (gaintype='G'), 60s (gaintype='T'), 10s (gaintype='T')
+- 2023A&A...676A...4C: processing.calibration.self_calibration = Archival synthesis: 3 rounds of phase-only self-calibration (round 1: solint='inf', combine scans, gaintype='G'; rounds 2 and 3: combine spws, solint=60s and 1…
+- 2025ApJS..280...33Y: briggs robust 0.5; pblimit 0.2; cell 0.15 arcsec (Group 1) or 0.2 arcsec (Groups 2-15)
+- 2025ApJS..280...33Y: cleaning threshold 25 mJy/beam (~0.4 K) for all fields
+- 2025ApJS..280...33Y: processing.calibration.self_calibration = three rounds of phase self-calibration on continuum (hogbom), calibration tables later applied to line data
+- 2020ApJ...898...10T: multiscale [0,4,20] continuum, [0,5,25] lines; cell 0.02''
+- 2020ApJ...898...10T: processing.calibration.self_calibration = Phase-only, solint 120 s, one iteration (~20% noise reduction); second iteration at 30 s and amp+phase did not help
+- 2013A&A...557A.132M: 0.4 km/s channels, 0.15'' pixels
+- 2013A&A...557A.132M: processing.calibration.self_calibration = Phase and amplitude self-calibration using line-free channels
+- 2016ApJ...827...68P: processing.calibration.self_calibration = Circinus: phase-only on line, 1 min solint; NGC 4945: phase-only on continuum, baselines >150 m, 30 s solint
+- 2019A&A...627A.114K: robust = 0.5
+- 2019A&A...627A.114K: processing.calibration.self_calibration = phase and amplitude, with extra flagging
+- 2017A&A...608A..38O: common resolution 0.62"; low-res 1.52", 100 km/s
+- 2017A&A...608A..38O: processing.calibration.self_calibration = phase only, on continuum images, applied to line data; offsets ~0.1 arcsec corrected using continuum
+- 2021MNRAS.500.3667S: self-calibration solution interval = scan length
+- 2021MNRAS.500.3667S: natural weighting
+- 2021MNRAS.500.3667S: processing.calibration.self_calibration = Applied to RX J0911+0551, PG 1115+080, H1413+117 and WFI J2026-4536 using line-free spectral windows with solution intervals of each scan length; attempted but…
+- 2024ApJ...966L..13D: Phase calibrator J0552+0313, cycled every 80-90 seconds; bandpass calibrator J0510+1800
+- 2024ApJ...966L..13D: Cube noise 0.9 mJy/beam per channel; beam (28.8x20.6) mas at PA 50 deg
+- 2024ApJ...966L..13D: processing.calibration.self_calibration = Phase self-calibration using a continuum model from the line-free channels; calibration applied to all channels
+- 2013Natur.499..450B: Briggs robust 0.5
+- 2013Natur.499..450B: processing.calibration.self_calibration = iterative self-calibration on the source continuum after phase calibrator solution
+- 2019ApJ...886L..35P: processing.calibration.self_calibration = a few rounds of phase-only, then a couple of amplitude-and-phase rounds until convergence; robust scheme with custom CASA routines; applied to line data; peak …
+- 2018ApJ...859...86T: processing.calibration.self_calibration = self-cal cycles using moment-0 CO and HCN images, per dataset
+- 2020A&A...644A..59K: robust = 0.5
+- 2020A&A...644A..59K: processing.calibration.self_calibration = Most ALMA data self-calibrated on continuum; SMA phase-only self-cal where S/N high
+- 2014ApJ...782L..28H: processing.calibration.self_calibration = Phase and amplitude self-cal on Orion KL continuum from line-free channels, applied to all channels
+- 2026A&A...706A..27S: Triangles: ALMA-PV-NOEMA and ALMA-SMT-KP; Date: April 18, 2021
+- 2026A&A...706A..27S: processing.calibration.self_calibration = Data analyzed for closure phase modeling were not self-calibrated; amplitude self-calibration evaluated for comparison on long baselines
+- 2025A&A...699A...5T: Natural weighting; beam 0.34'' × 0.27'', PA 54.9 degrees.
+- 2025A&A...699A...5T: processing.calibration.self_calibration = Two-stage continuum self-calibration, masking CRLE and HZ10; no line self-calibration because of insufficient signal-to-noise.
+- 2022MNRAS.516.5618P: Briggs robust = 0.5 or 1; central quasar flux >= 100 mJy for self-calibration
+- 2022MNRAS.516.5618P: processing.calibration.self_calibration = One round of phase self-calibration and one round of amplitude and phase self-calibration using GAINCAL and APPLYCAL on bright central quasars (>=100 mJy)
+- 2026A&A...706A.227G: processing.calibration.self_calibration = One round of phase self-calibration using the bright H2O 448 GHz line
+- 2024ApJ...965...14E: robust = 0.2 (lower tuning) and 0.5 (higher tuning); channel width 1.1 km/s
+- 2024ApJ...965...14E: processing.calibration.self_calibration = self-calibrated on the bright continuum; solutions also applied to continuum-subtracted line data
+- 2022A&A...668A..45L: processing.calibration.self_calibration = Applied to 13451+1232 (4C+12.50): five rounds of phase self-calibration and one round of amplitude self-calibration
+- 2022MNRAS.515..543C: processing.calibration.self_calibration = self-calibrated using line-free continuum channels, improving dynamic range of continuum images by factors between 3 to 10
+- 2018AJ....156..161T: processing.calibration.self_calibration = three iterations down to 8 s, initial limb-darkened model
+- 2017A&A...597A..53L: processing.calibration.self_calibration = phase-only self-calibration on continuum images, applied to full cubes
+- 2023PSJ.....4..142C: Briggs robust 0.0, Clark deconvolver, solint down to 2 s
+- 2023PSJ.....4..142C: processing.calibration.self_calibration = iterative phase-only self-cal, solints from full integration (>121 s) down to 2 s
+- 2013A&A...557L..11B: processing.calibration.self_calibration = Self-calibration using the continuum emission
+- 2013ApJ...763..120C: processing.calibration.self_calibration = Amplitude and phase self-cal, 3 min averaging
+- 2024ApJ...970...56P: processing.calibration.self_calibration = Phase-only self-cal at VLA L band using a model of a bright off-axis source
+- 2019MNRAS.490.3025R: processing.calibration.self_calibration = Self-calibration of continuum for targets with peaks > few mJy
+- 2019AJ....157..237R: 20 mas pixels, 256x256
+- 2019AJ....157..237R: processing.calibration.self_calibration = three rounds of phase calibration
+- 2026A&A...705A..96M: Extended phase: seven iterations, inf with combine=scan down to int; typically shortest successful solint=30s
+- 2026A&A...705A..96M: Extended amplitude trials: inf and 600s; accepted solutions used inf
+- 2026A&A...705A..96M: Combined phase: six steps, initial inf model from extended data, then 60s to 9s
+- 2026A&A...705A..96M: Combined amplitude: solint=inf; combined-SPW solnorm=True then False, then per-SPW solnorm=False
+- 2026A&A...705A..96M: processing.calibration.self_calibration = Extended-only phase then amplitude; combine with self-calibrated FAUST and repeat. Phase solutions retained for improved S/N and fidelity; amplitude solutions …
+- 2019A&A...622A.206M: robust = 0.5
+- 2019A&A...622A.206M: processing.calibration.self_calibration = Strongest line in each SPW self-calibrated (channel-averaged); phase solutions applied to all channels; S/N gain 1.1-1.5
+- 2021ApJ...906..111T: 2016.1.00311.S: spectral windows calibrated separately; minimum signal-to-noise 3; minimum 6 baselines per antenna.
+- 2021ApJ...906..111T: Multiscale scales: 0, 0.5, 1.0, 2.5, 5.0 arcsec.
+- 2021ApJ...906..111T: Briggs robust 0.5 for 3_03–2_02; 2.0 for all other transitions.
+- 2021ApJ...906..111T: CLEAN threshold three times line-free IMSTAT noise; cube channel width 0.25 km s−1.
+- 2021ApJ...906..111T: processing.calibration.self_calibration = 2013.1.00114.S: continuum phase and amplitude, 10–30 s. 2016.1.00311.S: phase on line-free continuum, 30 s, polarization averaged. 2016.1.00464.S: two phase ro…
+- 2024A&A...687A.308S: Solution intervals 3 min, 60.6 s, 30.3 s (phase-only); 3 min, 90.9 s (amp+phase); clean depths 0.92, 0.45, 0.20, 0.17, 0.13 mJy/beam
+- 2024A&A...687A.308S: Continuum robust = -0.5
+- 2024A&A...687A.308S: Channel widths 0.106-0.219 km/s; per-channel rms about 3 mJy/beam (Table of lines)
+- 2024A&A...687A.308S: processing.calibration.self_calibration = 3 rounds phase-only (3 min, 60.6 s, 30.3 s) then 2 rounds amplitude+phase (3 min, 90.9 s); clean depths 0.92, 0.45, 0.20, 0.17, 0.13 mJy/beam; applied to conti…
+- 2023ApJ...956L..45G: Flux and bandpass calibrator J0006-0623; gain calibrator J2007+4029
+- 2023ApJ...956L..45G: processing.calibration.self_calibration = continuum (line-free channels plus continuum window) self-calibrated; solutions applied to the line data
+- 2013Sci...341..630Q: processing.calibration.self_calibration = continuum self-cal per TW Hya SV Band 7 CASA Guide; upper-sideband solution applied to line data
+- 2016A&A...586A..70L: processing.calibration.self_calibration = Self-calibration of each dataset before combining within a band
+- 2019A&A...629A.136S: processing.calibration.self_calibration = Self-calibrated using initial source model from standard calibration, in GILDAS MAPPING
+- 2018MNRAS.475L..52S: processing.calibration.self_calibration = two rounds of phase self-calibration, model from bright compact source at CO peak (~7050 km/s)
+- 2020MNRAS.499.3909Y: H30a channel width 45 km s^-1 from -3770 to +700 km s^-1; H39a channel width 15.625 MHz; VLA H52a and H56a channel width 2 MHz
+- 2020MNRAS.499.3909Y: L-band imaged in 16 channels (1-2 GHz), split into low (1-1.4 GHz) and high (1.5-1.9 GHz) sub-bands; X-band split into 46 channels across 2 GHz; Ka-band split …
+- 2020MNRAS.499.3909Y: processing.calibration.self_calibration = Band 6: 3 rounds phase self-cal (combined spws, decreasing time intervals) + 1 round phase & amplitude; Band 3: 2 rounds phase self-cal (per spw, then combined…
+- 2024A&A...686A.274V: solint 'inf' then 'int'
+- 2024A&A...686A.274V: processing.calibration.self_calibration = Two rounds phase-only on continuum, solint 'inf' and 'int'
+- 2015ApJ...800...70S: processing.calibration.self_calibration = Modest self-calibration to improve dynamic range
+- 2016ApJ...822...36O: processing.calibration.self_calibration = Two rounds (phase, then amplitude+phase), solution interval = integration time, point-source model fitted in uv
+- 2017ApJ...850L..30Y: robust 0.5 and 2; channel widths 1.33 and 1 km/s
+- 2017ApJ...850L..30Y: processing.calibration.self_calibration = Phase self-cal with solints scan length, 30.25 s, integration time; then phase+amp at integration time; transferred to line spws
+- 2022PASJ...74..594D: robust weighting parameter of 0 for JVLA Set II
+- 2022PASJ...74..594D: processing.calibration.self_calibration = Phase self-calibration performed on JVLA data; not stated for ALMA
+- 2014ApJ...797...27F: processing.calibration.self_calibration = SM1 self-calibrated on initial source model; SM1N too faint
+- 2024PASJ...76..340K: 9-channel bandpass smoothing; flux 2.104 Jy J0423-0120, 1.304 Jy J0238+1636
+- 2024PASJ...76..340K: processing.calibration.self_calibration = target self-calibrated (phase); Difmap self-cal with CLEAN components
+- 2024A&A...688A.110S: Minimum solution interval giving S/N > 3 on >90 percent of antennas; phase+amplitude for SPT lenses, phase-only for SDP 81
+- 2024A&A...688A.110S: processing.calibration.self_calibration = Several rounds; SPT lenses: phase and amplitude gain solutions per observational epoch; SDP 81: phase-only per epoch (approx. 50 mins each); minimum solution i…
+- 2021MNRAS.503.1174K: JVLA A-config: Briggs robust = 2.0, nterms = 2, wprojplanes = 128, multiscale scales = [2, 5, 10] pixels; JVLA C-config and GMRT: Briggs robust = 0.5
+- 2025ApJ...992..211N: processing.calibration.self_calibration = continuum self-calibration applied to line SPW
+- 2024ESC.....8..665M: processing.calibration.self_calibration = Repeated self-calibration with gaincal and applycal
+- 2022MNRAS.510.4485R: processing.calibration.self_calibration = Multiple cycles of phase-only self-calibration and one cycle of amplitude and phase self-calibration at all frequencies, applied to line cubes
+- 2022A&A...659A.111K: processing.calibration.self_calibration = several iterations of self-calibration performed
+- 2017AJ....154..148T: processing.calibration.self_calibration = several iterations of self-calibration
+- 2016ApJ...822..115K: processing.calibration.self_calibration = gain solutions from self-calibration of PKS 1830-211 visibilities using two point sources
+- 2020AJ....159..215L: processing.calibration.self_calibration = phase self-calibration based on imaging results applied to 12-m data
+- 2014A&A...568A..92M: processing.calibration.self_calibration = One phase self-cal run on Band 6 using CO(4-3) map
+- 2018ApJ...864..133T: Beams ~0.57x0.5 arcsec; robust 0.5 for B6
+- 2018ApJ...864..133T: processing.calibration.self_calibration = Phase self-cal, gain tables from collapsed continuum images applied to line spws
+- 2025A&A...698A.115R: lines flagged over -30 to +30 km/s
+- 2025A&A...698A.115R: unflagged data averaged to 250 MHz channels
+- 2025A&A...698A.115R: SB self-cal intervals EB-long,360,120,60,20 s; combined EB-long,360,120,60,30,18 s
+- 2025A&A...698A.115R: two amplitude+phase rounds (EB-long, scan-long) after cleaning to 1 sigma
+- 2025A&A...698A.115R: full spectral data binned into 30 s intervals
+- 2025A&A...698A.115R: processing.calibration.self_calibration = Band 7: phase-only rounds per EB (EB-long) then SB (EB-long,360,120,60,20 s), concat with LB, phase-only (EB-long,360,120,60,30,18 s), then 2 amplitude+phase r…
+- 2018ApJ...867...43T: uv-distance >50 kλ
+- 2018ApJ...867...43T: processing.calibration.self_calibration = 2 rounds phase self-cal (scan-length, then 12.1 or 6.05 s) then amplitude self-cal with normalization; 16 of 17 fields; applied to line bands
+- 2021A&A...649A.122P: Continuum channels averaged to 125 MHz after flagging ±25 km/s around each line
+- 2021A&A...649A.122P: Visibilities averaged to 250 MHz channels and 30 s time bins for the visibility analysis
+- 2021A&A...649A.122P: Flux rescaling: 10% for 2015.1.00934.S in Band 7; 19% for the first extended execution in Band 4
+- 2021A&A...649A.122P: processing.calibration.self_calibration = Two stages: compact-configuration data first, then combined with extended data. Briggs robust 0.5 for self-cal imaging. Band 4 (peak S/N ~23 before self-cal): …
+- 2024ApJ...963L..31H: Briggs robust = 0.5
+- 2024ApJ...963L..31H: Solution intervals 600, 30, 10 s
+- 2024ApJ...963L..31H: processing.calibration.self_calibration = Three successive rounds of phase-only self-calibration per source, Stokes I image as model, solution intervals 600 s, 30 s, 10 s; 12CO (3-2) flagged before sel…
+- 2021ApJ...909...11J: robust = 2 (main maps) and 0.5 (high-resolution maps)
+- 2021ApJ...909...11J: self-calibration from continuum restricted to uv distance < 1000 m
+- 2021ApJ...909...11J: processing.calibration.self_calibration = Phase-only self-calibration from the continuum, derived and applied using only uv distance < 1000 m (long baselines have S/N < 3)
+- 2013PASJ...65L..14F: Briggs robust 0.5; final Uniform weighting
+- 2013PASJ...65L..14F: processing.calibration.self_calibration = Continuum self-cal: phase-only with six iterations, then one phase+amplitude; applied to 13CO and C18O
+- 2017ApJ...849...95B: robust=0.5, nterms=1
+- 2017ApJ...849...95B: processing.calibration.self_calibration = Several rounds of phase-only self-cal, then a final amplitude and phase round
+- 2017NatAs...1..848V: processing.calibration.self_calibration = two rounds of phase and one of phase+amplitude self-cal on stellar continuum; dynamic range ~380 to ~2860
+- 2018ApJ...867..111Z: robust 0.5; SD factor 1; 5 km/s channels
+- 2018ApJ...867..111Z: processing.calibration.self_calibration = one phase-only iteration then phase+amplitude for 12m; ACA same with 12m as model
+- 2023MNRAS.518.3222B: Briggs weighting robust = 0.5, MTMFS nterms = 2
+- 2023MNRAS.518.3222B: processing.calibration.self_calibration = Several rounds of phase-only self-calibration followed by a single round of amplitude and phase self-calibration
+- 2024A&A...681A..50W: channel spacing 0.9765625 MHz
+- 2024A&A...681A..50W: processing.calibration.self_calibration = Self-calibration on the line-free continuum, applied to all data
+- 2015ApJ...799...11X: processing.calibration.self_calibration = phase and amplitude self-cal done
+- 2016ApJ...826..112S: processing.calibration.self_calibration = antenna-based phase errors fit in the lens modeling following Hezaveh et al. 2013
+- 2016PASJ...68L...7T: processing.calibration.self_calibration = Self-calibration minimized residual complex gain errors in AIPS
+- 2021A&A...654A..18V: continuum S/N improved by a factor of three
+- 2021A&A...654A..18V: processing.calibration.self_calibration = two rounds of phase self-calibration on the stellar continuum; continuum S/N improved by a factor of three
+- 2015ApJ...804..141Z: processing.calibration.self_calibration = Continuum self-calibrated in CASA; solutions applied to line data; ~20% dynamic range improvement
+- 2024ApJ...971...52M: CASA 5.4.0-70, Pipeline-CASA54-P1-B r42254
+- 2024ApJ...971...52M: processing.calibration.self_calibration = Phase self-calibration of Sgr A* and J1700 assuming point sources; solution interval not stated
+- 2026ApJ..1000L..10C: Initial mask from shallow clean with Briggs robust -0.3; final image Briggs robust 0
+- 2026ApJ..1000L..10C: Self-cal in eight spectral bins with 64 s time intervals
+- 2023MNRAS.519...34H: processing.calibration.self_calibration = Self-calibrated on the bright central calibrator source in the shortest time intervals allowed by the data, followed by point source modelling and visibility s…
+- 2025ApJ...979..217S: processing.calibration.self_calibration = amplitude and phase self-calibration performed on VLA S-band; not stated for ALMA
+- 2024MNRAS.533.1143M: TCLEAN SPECMODE = CUBE
+- 2021A&A...656A..46M: processing.calibration.self_calibration = Not applied; flux self-calibration via overlapping channels used for amplitude scaling instead
+- 2020A&A...637A...7M: processing.calibration.self_calibration = one iteration of phase-only solutions per 6 sec integration on PKS 1830-211 continuum
+- 2019NatAs...3..614L: processing.calibration.self_calibration = Self-calibration performed to improve imaging
+- 2019A&A...629A.128W: processing.calibration.self_calibration = phase self-calibration with a model of two point sources (MA0.68); on the quasar for MA0.89
+- 2021A&A...647L...8C: processing.calibration.self_calibration = Self-calibrated to center Jupiter on the image
+- 2015A&A...576L..15O: processing.calibration.self_calibration = Self-calibration on strong continuum, per tuning
+- 2019ApJ...882..160Q: robust 0.5
+- 2019ApJ...882..160Q: processing.calibration.self_calibration = Phase self-calibration on continuum from line-free channels per sideband; tables applied to spectral windows
+- 2024ApJ...964..190L: Flag listed lines within ±15 km s−1; average into 250 MHz channels
+- 2024ApJ...964..190L: Elliptical 1.5 arcsec radius mask; tclean source models; deep 1 sigma threshold before amplitude calibration
+- 2024ApJ...964..190L: SB: four phase-only plus one amplitude rounds; LB: three phase-only plus one amplitude rounds
+- 2024ApJ...964..190L: 233 GHz continuum: robust=0.5; beam 0.15×0.12 arcsec, PA=−82.9 degrees
+- 2024ApJ...964..190L: processing.calibration.self_calibration = SB: four phase-only and one amplitude rounds; LB: three phase-only and one amplitude rounds. Band 7 uses gain solutions from Benisty2021 datasets.
+- 2018ApJ...861...91H: robust = -2 for high-resolution VLA 1623 image
+- 2018ApJ...861...91H: processing.calibration.self_calibration = Phase-only, antenna-based, solint ~6 s
+- 2023A&A...669A..53B: Briggs robust = +1.0, +0.5, 0.0, -0.5
+- 2023A&A...669A..53B: Velocity binning: 0.12 km s^-1 for SO, 0.25 km s^-1 (or 0.24 km s^-1) for SiO and SiS
+- 2023A&A...669A..53B: JvM epsilon ~ 0.50 for robust +0.5 line images (0.56 for robust 0.5 continuum)
+- 2023A&A...669A..53B: processing.calibration.self_calibration = Both phase and amplitude self-calibration applied to the combined dataset following Oberg et al. (2021)
+- 2024ApJ...972L...6S: Self-cal: three phase iterations, final solint 10 s; Briggs robust = 1
+- 2024ApJ...972L...6S: Polarized emission used within the inner one-third of the primary beam (24 arcsec)
+- 2024ApJ...972L...6S: processing.calibration.self_calibration = Stokes I, three phase iterations, final solution interval 10 s; solutions applied to the spectral cubes
+- 2020ApJ...890..130T: self-cal only when peak S/N>10; applymode=calonly
+- 2020ApJ...890..130T: processing.calibration.self_calibration = Up to three rounds phase-only if peak S/N>10; solints scan length, 12.08 s, 3.02 s
+- 2015ApJ...812..134H: natural weighting; beam 0.63"x0.51"
+- 2015ApJ...812..134H: processing.calibration.self_calibration = single iteration of phase-only self-calibration on continuum
+- 2018ApJ...860....9M: processing.calibration.self_calibration = Several rounds of self-calibration
+- 2018A&A...620A..75K: robust = 0.5
+- 2018A&A...620A..75K: processing.calibration.self_calibration = phase self-cal on line-free stellar continuum, applied to full dataset
+- 2016ApJ...832..142Z: robust = 0.5; 6 sigma mask, clean to 4 sigma for CO(1-0)
+- 2016ApJ...832..142Z: processing.calibration.self_calibration = one iteration of phase-only self-cal on 12-m data; amplitude self-cal not used
+- 2023ApJ...942L..24K: Chandra subpixel repositioning 0''.25 pix^-1; BAYMAX 20''x20'' box and 1''x1'' prior box; light curve 500s bins; JVLA gaincal solint 180 s
+- 2024A&A...689A.317G: processing.calibration.self_calibration = Continuum self-calibration in GILDAS; Band 6 SPW 31 self-calibrated on SiO v=1 J=5-4 maser
+- 2014A&A...567A.125G: processing.calibration.self_calibration = Band 9 self-calibrated on the strongest peak (eastern knot of CND)
+- 2019ApJ...871..109P: processing.calibration.self_calibration = One round of phase-only self-cal for maps with bright targets
+- 2019ApJS..244...25S: Spectral regions above 8x initial rms removed before robust rms
+- 2019ApJS..244...25S: processing.calibration.self_calibration = Phase-only self-cal on brightest line channel; applied to all four spws; fails for CS
+- 2020A&A...642A..93H: processing.calibration.self_calibration = Continuum phase then amplitude self-cal, applied also to line data
+- 2012A&A...544L...7P: processing.calibration.self_calibration = Self-cal on continuum (rms lowered by factor 3), applied to spectral data
+- 2024ApJ...969...56M: taper resolutions ~6 arcsec and ~3 arcsec
+- 2024ApJ...969...56M: processing.calibration.self_calibration = Phase-only self-calibration on the central source, solint = scan length, tried only for Q1228+3128 (insufficient, target excluded); not used for Q1416+2649
+- 2025A&A...696A..33P: Pixel scale 0.08" (band 6), 0.4" (tapered), 0.3" (band 3); taper FWHM 90 klambda; band 3 channel width 100 km/s
+- 2025A&A...696A..33P: Cleaning down to 2 sigma with 2.0" circular masks around S/N>5 sources
+- 2022MNRAS.514.2346K: processing.calibration.self_calibration = Iterative imaging and self-calibration performed on PKS B1228–113 using gaincalR
+- 2025MNRAS.540.2396S: 5.5 km/s channels; robust 1.0 / 1.5 / 0.0 and uv-taper on the 96 arcsec cube
+- 2026A&A...713A..67X: processing.calibration.self_calibration = Phase-only self-calibration using continuum data with shortest solution interval of 6 s, applied to spectral-line cubes
+- 2021ApJ...909...98Y: processing.calibration.self_calibration = Phase self-calibration tried and not used; no improvement because of modest S/N
+- 2020ApJ...901...37L: processing.calibration.self_calibration = Data self-calibrated following earlier procedures
+- 2018AJ....156..164B: processing.calibration.self_calibration = check-source self-calibration used to estimate decorrelation correction to flux densities
+- 2017A&A...608A..96L: processing.calibration.self_calibration = One run of self-calibration on the bright continuum of PKS 1830-211
+- 2019PASJ...71..124S: Briggs robust 0.5; 0.30 km/s channels
+- 2019PASJ...71..124S: processing.calibration.self_calibration = Phase self-cal with solints scan length (2-7 min), 240 s, 120 s, 60 s, then one amplitude self-cal at scan length
+- 2025A&A...698A.165A: Band 7: five phase-only steps, 60 s (x4) and 45 s (x1)
+- 2025A&A...698A.165A: Band 6: four phase-only steps, 35 s (x2) and 25 s (x2)
+- 2025A&A...698A.165A: robust = 0.5 (S/N and resolution compromise) and -0.5 (finer structure)
+- 2025A&A...698A.165A: processing.calibration.self_calibration = Phase-only on extended configs, line channels excluded, mtmfs/Briggs robust 0.5 and -0.5, nterms=2. Band 7: 5 steps (60 s for first four, 45 s for fifth). Band…
+- 2018AJ....156..239Z: robust = 0; 140 klambda taper for line
+- 2018AJ....156..239Z: processing.calibration.self_calibration = phase and amplitude, using the continuum image as model; applied to spectra
+- 2021ApJ...911...29C: source velocity = 2.84 km s^-1, inclination = 5 deg, PA = 152 deg, M_* = 0.8 M_sun, distance = 59.5 pc
+- 2021ApJ...911...29C: clean threshold = 3 sigma, final beam = 0.5'' round
+- 2021ApJ...911...29C: processing.calibration.self_calibration = Phase self-calibration on line-free continuum, solint=30s, averaging polarizations, spws independent, min SNR=3, min baselines per antenna=6
+- 2024ApJS..270....9X: hogbom; briggs; robust=0.5
+- 2024ApJS..270....9X: Reference antenna DA47; pblimit=0.2
+- 2024ApJS..270....9X: processing.calibration.self_calibration = Three phase rounds and one amplitude round; reference antenna DA47
+- 2021A&A...653A.166C: Briggs robust = 2 for C17O and C18O, robust = 1 for 12CO
+- 2021A&A...653A.166C: C17O/C18O maps from C40-2 only; 12CO from two configurations combined
+- 2021A&A...653A.166C: processing.calibration.self_calibration = Continuum self-calibrated with CASA; line data calibrated with the continuum self-cal model when possible
+- 2015ApJ...806L..22C: processing.calibration.self_calibration = one iteration of self-calibration for low-order phase errors
+- 2018ApJ...866L...3B: processing.calibration.self_calibration = phase-only and phase+amplitude self-calibration
+- 2019A&A...626A..81V: processing.calibration.self_calibration = Phase-only self-cal; SiO maser spw used for first two steps where present, then 1-2 continuum phase steps; no amplitude self-cal
+- 2017ApJ...835..265W: processing.calibration.self_calibration = Phase then amplitude self-calibration on the continuum
+- 2021MNRAS.505.4726K: Briggs weighting, robust = 0.5, nterms = 2
+- 2021MNRAS.505.4726K: processing.calibration.self_calibration = Several rounds of phase-only self-calibration and a single round of amplitude and phase self-calibration
+- 2025MNRAS.536..684D: Briggs weighting with robust = 0.5
+- 2025MNRAS.536..684D: Equal weighting of extended and compact Band 6 configurations
+- 2015ApJ...801...63M: processing.calibration.self_calibration = Self-calibration applied for residual phase and flux errors
+- 2017Sci...355.1285N: processing.calibration.self_calibration = Self-calibrated on quasar continuum for SDSS J120110.31+211758.5 only; ~25% rms improvement
+- 2017ApJ...850L...5T: processing.calibration.self_calibration = self-calibration in CASA applied to 340 GHz data
+- 2023A&A...674A.125B: processing.calibration.self_calibration = ACA: one round of phase-only self-calibration on continuum of R Aql and GY Aql using target scan length as solution interval
+- 2015ApJ...813L..19J: processing.calibration.self_calibration = Self-calibration of the continuum, solutions applied to line data
+- 2024A&A...682L...5G: Band 7 beam FWHM 0''.19 x 0''.16; Band 9 beam FWHM 0''.28 x 0''.24
+- ... 779 more
+
+### Assumptions (bibcode: value)
+- 2024PASJ...76..437Y: SpM image has only non-negative intensities
+- 2021ApJ...923..121Y: Non-negative brightness distribution constraint
+- 2019A&A...632A..66O: z = 0.1525 for de-redshifting
+- 2023ApJ...948..134P: Power-law spectral energy distribution S_nu = S_{nu,0} (nu / nu_0)^alpha for flux density calibrators
+- 2023ApJ...948..134P: Each maser spot in a spectral channel is a single point source; noise sigma is constant across visibilities within a single channel; brightest 183 GHz spot at …
+- 2025A&A...704A..18O: Continuum is formed by optically thick free-free emission
+- 2019ApJ...871...30I: Gaussian 215x140 uas, 2.0 Jy on baselines <0.75 Glambda
+- 2021A&A...651A..35O: absolute flux calibration accurate to within 5%
+- 2025ApJ...989...83B: APP-mode calibration adopted for the .V programs; no interferometric-mode phase self-calibration possible
+- 2024ApJ...971L..33K: The bright mm QSO PKS B1228-113 in the field allows self-calibration of the target field
+- 2025MNRAS.537..520Z: Linear frequency dependence for continuum subtraction in uvcontsub
+- 2022A&A...661A.125W: VLBI calibration error is ~10% of the measured flux
+- 2021PSJ.....2..105T: Equatorial and polar radii of 24,766 km and 24,323 km (Lindal 1992)
+- 2021PSJ.....2..105T: Flux density calibration uncertainty of 5% in each band
+- 2013ApJ...767..132H: WMAP7 cosmology h=0.71, Om=0.27, OL=0.73
+- 2026MNRAS.549g1100P: Relative positions are preserved after phase-only self-calibration despite a systematic offset of +0.9 arcsec in RA and -0.5 arcsec in Dec relative to Clark et…
+- 2022A&A...666A..39M: The morphology and integrated flux density of the extended mini-spiral are constant within each observing track (varying only between tracks from 1.16 to 1.18 …
+- 2025PSJ.....6..183C: Callisto modelled as a Lambertian disk for the first startmodel
+- 2022PASJ...74..738T: Sources in FOV are assumed non-variable during synthesis imaging
+- 2021A&A...650A.153D: EMU subtraction includes only the central radio source
+- 2013A&A...558A.123M: Pseudo-ring and components C, D negligible at ALMA frequencies
+- 2017PASP..129c5004M: Target and calibrator share identical atmospheric phase
+- 2021AJ....162...14A: atmospheric distortions act nearly identically on A and B
+- 2025A&A...702A..18D: Point source at Band 3 phase centre coincides with GAIA ICRS position of PDS 70 and is due to accretion free-free emission on the central star
+- 2022MNRAS.513.5790C: Image positivity (no entropy term)
+- 2024RAA....24b5009L: Use the cleaned source model to correct visibility phases and amplitudes
+- 2021ApJ...915...99I: J1924-2914 is point-like to connected-element ALMA with total flux density 4.6 +/- 0.5 Jy (14 April) and 4.5 +/- 0.5 Jy (17 April)
+- 2021ApJ...915...99I: Visibility amplitudes of Sgr A* within 1 Glambda are dominated by the image second moment following a 215 x 140 uas, PA 80 deg Gaussian
+- 2024A&A...682A..97W: Negligible variation of surrounding arc-minute-scale emission
+- 2024A&A...687A..43B: CO/13CO ratio approaches C/13C in the optically thin limit and decreases with increasing optical depth
+- 2024A&A...687A..43B: Literature C/13C∼21±6
+- 2024A&A...687A..43B: High kinetic temperature weakens fractionation; C and 13C can be well mixed in the outflow
+- 2026ApJ...999..194I: 10% systematic uncertainty on absolute flux scale
+- 2021A&A...652A...5M: Two point sources adequately describe the data; third image and weak extensions have negligible effect on the spectra
+- 2022Icar..37214722L: Pluto continuum brightness temperature is constant at 33 K
+- 2012ApJ...752L..30W: 3C279 flux 17 Jy with 15% uncertainty
+- 2020MNRAS.492.4847L: Nova shells fade after becoming optically thin; collision ejecta remain optically thick longer
+- 2021AJ....162...99F: 0.85 mm flux density of 177 mJy from Isella+2019 and 10% absolute flux uncertainty in all datasets
+- 2023ApJ...945...40C: Good independent measurements of total flux density are available to rescale closure-only images prior to self-calibration
+- 2023ApJ...945...40C: Total flux densities rescaled to Table 1 of ALMA Partnership et al. (2015)
+- 2024RAA....24c5009N: Systemic star velocity of -33.6 km s^-1
+- 2023MNRAS.518.2034H: Systemic velocity V_z = -0.5 km s^-1
+- 2024ApJ...960....1L: M60 and B1241+166 (4.8 deg apart, neighbouring scans) suffer consistent amplitude errors
+- 2024ApJ...960....1L: Circular Gaussian source model; elliptical Gaussian not adopted because parameters (position angle) were poorly constrained
+- 2026A&A...708A.146P: Point source assumption for the background quasar in the first round of interactive cleaning
+- 2021A&A...652A..66P: continuum constant with frequency within each ~4 GHz sideband (zeroth-order polynomial)
+- 2024PASJ...76...54L: Self-calibration would introduce artifacts for the complicated Sgr B2(N) substructure, so it was skipped
+- 2022ApJ...928..150T: 2D X-ray maps: N_H fixed to LAB survey values and metallicity fixed to 0.5 Solar; 3D velocity dispersion adds a factor of sqrt(3) for C-ratio
+- 2022JApA...43...83M: Perley-Butler 2017 flux calibrator scale with 5% accuracy
+- 2021PSJ.....2....3M: Flux calibration errors of ~5% for ALMA, 3% for longest four VLA wavelengths, and 7% at 0.9 cm
+- 2025ApJ...991L..31B: V404 Cyg is a point source in all images, so point source forced in imfit
+- 2023ApJ...945L...3M: SN is a point source
+- 2024PSJ.....5..125T: Flat or limb-darkened disk starting model at Titan's Band 9 brightness temperature
+- 2021A&A...650A..37D: Phase decoherence attributed to poor phase rms conditions at low PWV
+- 2024A&A...692A.155K: Each project treated as a single epoch
+- 2024A&A...692A.155K: Spatial movement negligible across epochs at gas resolution, so epochs can be combined
+- 2020MNRAS.493.5290S: Brightest radio sub-component (I) is at or near the radio core, matching the optical quasar position
+- 2024A&A...690A.258B: Calibrator is a point source, subtracted independently per observation to mitigate flux variability
+- 2026ApJ...996L..27L: 10% flux calibration uncertainty in Band 7
+- 2023PSJ.....4..206R: 10% absolute flux uncertainty
+- 2018ApJ...863...96Y: disk brightness 7000 K
+- 2023ApJ...954..197I: Systematic amplitude difference <= 10% between Cycle 2 and Cycle 4 in common uv-range (140-1400 m) is acceptable.
+- 2026A&A...711A.159M: Radio photosphere is originated by free-free radiation that becomes optically thick at R_mm = FWHM / 2
+- 2026A&A...712A.244H: Stokes V vanishes at 232.86 GHz for Band 6 self-bandpass model (I = 4.35 Jy, alpha = -0.85, Q = 0.0238 Jy, U = -0.1212 Jy); similar D-terms between Nov 15 and …
+- 2022MNRAS.511.1408G: Power-law radio spectrum S_nu = nu^alpha with alpha = -0.7 +/- 0.14
+- 2026A&A...710L..10C: Known source position from 6 December elliptical Gaussian fit used for forced photometry on non-detection dates
+- 2026A&A...706A..27S: Small-scale ring emission is fixed by long-baseline reconstructions and intermediate-scale jet base emission is derived from residuals between observed closure…
+- 2023MNRAS.518.3222B: 35% uncertainty on measured jet component flux densities (~20% absolute flux calibration, ~15% cross-frequency comparison)
+- 2024A&A...681A..50W: flux scale uncertainty 15%
+- 2024ApJ...971...52M: Sgr A* and J1700 each treated as a point source
+- 2026ApJ..1000L..10C: J 0408-6545 is a point source with Stokes I flux density 8.244 Jy/beam and alpha = -1.138 at 2406 MHz
+- 2024ApJ...972L...6S: Dust grains are aligned with respect to the magnetic field, so B_pos is inferred from the polarization direction
+- 2023ApJ...942L..24K: Uniform spatial priors on primary and secondary X-ray source positions in BAYMAX (full 20''x20'' FOV or 1''x1'' boxes around IR cores)
+- 2024A&A...689A.317G: Continuum centroid approximates the Mira position
+- 2021ApJ...911...29C: Keplerian rotation with inclination 5 deg, PA 152 deg, M_* = 0.8 M_sun at 59.5 pc; linear continuum shape
+- 2024NatAs...8..256O: 3C 84 is a point source at the phase centre for the model
+- 2024A&A...689L...5M: Primary beam response at SM1 is 0.35 because the field target was VLA 1623-2417
+- 2026A&A...713A.105M: Distance to W43-MM1 = 5.5 +/- 0.4 kpc; 3 mm emission is dominated by optically thin thermal dust emission
+- 2020ApJ...904..168B: Q and U continuum is not significantly line contaminated, so it represents the true polarized continuum
+- 2025MNRAS.538.2358S: Full Planck function (no Rayleigh-Jeans approximation) for brightness temperature
+- 2020ApJ...905...89Y: Missing flux is not an issue because maximum recoverable scales (3.4 to 18.7 arcsec) exceed the disk diameter
+- 2024ApJ...976..258K: Keplerian mask geometry M* = 1.37 Msun, i = 37 deg, PA = 278 deg rescaled to 150 pc
+- 2024A&A...681A..82G: Flux calibration errors set to nominal 5% at Bands 4 and 6
+- 2024ApJ...966...63Y: Keplerian mask geometry: i=5.8 deg, PA=151.6 deg, M*=0.81 Msun, vsys=2.84 km/s
+- 2025ApJ...993..166J: Missing primary-beam correction is negligible because disk emission is much smaller than the primary beam
+- 2024A&A...683A.141R: VLA executions aligned using Gaia DR3 proper motions of AB Aur
+- 2024ApJ...971L...7M: distance of 1.2 kpc
+- 2025A&A...695A.149K: 3C84 unpolarized for leakage; 3C286 PA 33 deg
+- 2020A&A...635L...9P: Proper motion and distance of GG Tau A are those of GG Tau Ba
+- 2026MNRAS.548ag641R: Absolute flux calibration uncertainty is 5% at ALMA 3 mm and VLA 3 cm, and 10% at VLA 6.8 mm
+- 2026A&A...705L..16C: Absolute flux calibration uncertainty about 10%
+- 2017A&A...607A..55V: Midplane emission constant over the 8 month period
+- 2024A&A...687A.299L: Keplerian mask with inclination 42, PA 140, distance 110 pc, stellar mass 2.13 Msun, systemic velocity 5.7 km/s
+
+
+### Limitations the authors admit
+- 2018ApJ...852..122H: Models are not optimal; dust modeling and multi-line fitting deferred; perturbed temperature model not physically self-consistent
+- 2018ApJ...852..122H: Absolute alpha uncertain by ~0.4 from flux calibration
+- 2024PASJ...76..437Y: SpM can create artificial clumps/speckles around bright inner disks
+- 2024PASJ...76..437Y: 40% of gaps (13/33) are not fully spatially resolved
+- 2024PASJ...76..437Y: Gaps in compact disks may be affected by insufficient resolution
+- 2024PASJ...76..437Y: Inner disks are likely optically thick and hard to probe; gap models need optical depth effects
+- 2024PASJ...76..437Y: Planet-disk model has large uncertainty for wide gaps opened by Jupiter-mass planets
+- 2018ApJ...853..171G: Catalog potentially incomplete; completeness cannot be quantified
+- 2018ApJ...853..171G: Column density maps not very accurate; SFR strongly dependent on assumed timescale
+- 2021ApJ...923..121Y: SpM image suffers from artificial positive emissions in off-source areas due to non-negative constraints and thermal/systematic noise.
+- 2021ApJ...923..121Y: T Tau Sa and Sb disk sizes (6x4 au and 7x3 au) are only slightly larger than the SpM effective resolution (5x4 au), so they are not sufficiently resolved and represent conservative upper limits.
+- 2021ApJ...923..121Y: The T Tau N disk is optically thick at 1.3 mm, so the brightness temperature traces the disk atmosphere rather than the midplane, making derived dust surface densities and dust masses lower limits.
+- 2021ApJ...923..121Y: There is no quantitative metric to distinguish the SpM image from the CLEAN model in reduced chi-squared, and potential bias in the SpM image remains an open question, requiring future ALMA observati…
+- 2024ApJ...973..138H: Sample is severely incomplete for Class II sources, so they are excluded from the analysis
+- 2024ApJ...973..138H: Sample is biased against the lowest-mass (luminosity) protostars
+- 2024ApJ...973..138H: Gaussian-fit radii may not reflect true disk radii and can include envelope emission
+- 2024ApJ...973..138H: Inclinations from axis ratios are lower limits, especially for edge-on disks
+- 2024ApJ...973..138H: Rgas/Rmm trend is not robust owing to mixed resolutions, tracers and methods in the literature
+- 2021ApJ...907...94C: DCF variants omit finite-resolution and line-of-sight smoothing; reported field strength is an upper limit
+- 2021ApJ...907...94C: Shock type cannot be determined from these data alone
+- 2021ApJ...907...94C: Available one-dimensional shock models do not provide a suitable comparison
+- 2021ApJ...907...94C: Electron fraction is most likely a lower limit because radiation may have increased electron density
+- 2021ApJ...907...94C: Proposed shock need not be spherically symmetric because propagation speed depends on ambient density
+- 2013Sci...340.1199V: Azimuthal gas density variations cannot be constrained by current data
+- 2019A&A...632A..66O: Outflow rate is quite uncertain: overlap with disc, conversion factor, velocity and size
+- 2019A&A...632A..66O: Narrow CO(3-2) bandwidth prevents detecting the broad component
+- 2018A&A...615A..28D: Dust masses and dust-to-gas ratios uncertain by about a factor of 5
+- 2018A&A...615A..28D: Extended emission may be resolved out
+- 2019MNRAS.484.4239R: Upper limits underestimated if CO is resolved; R21 and XCO uncertain
+- 2019MNRAS.484.4239R: Projection effects limit alignment analysis; 3D modelling needed
+- 2023ApJ...948..134P: Atmospheric 183 GHz water absorption creates a steep transmission gradient across the spectral windows for low-redshift targets (e.g., Circinus, NGC 1386), which is not compensated when computing the…
+- 2023ApJ...948..134P: Lack of absolute astrometric referencing between the 183 GHz ALMA map and the 22 GHz VLBI map of Circinus requires assuming that the brightest 183 GHz spot (561.6 km s^-1) and 22 GHz spot (566.3 km s…
+- 2023ApJ...948..134P: Large positional uncertainties in the C-4 configuration ALMA observations of Circinus prevent unambiguously distinguishing between a disk and outflow origin for the 183 GHz masers.
+- 2023ApJ...948..134P: Non-simultaneity between the 183 GHz ALMA observations and literature 22 GHz spectra, combined with maser time variability, prevents strict line-by-line comparisons.
+- 2025A&A...704A..18O: Missing short spacings (largest recoverable scale of 190 mas) cause smooth, extended emission on scales larger than ~190 mas (radius >95 mas) to be resolved out, preventing conclusions on large-scale…
+- 2025A&A...704A..18O: The 1D spherical LTE model of the SiO lines is simplified; full non-LTE radiative transfer modeling is beyond the scope of the paper, and the model cannot distinguish between a shock-induced density …
+- 2025A&A...704A..18O: Dynamic range limitations in channels containing strong 29SiO v=2 J=6-5 maser emission (~18 Jy/beam) increase the RMS noise up to 2.7 mJy/beam.
+- 2025A&A...704A..18O: Single-epoch observations at phase 0.53 cannot constrain variability-phase dependence of molecular abundances and line excitation.
+- 2015ApJ...806...17R: Warm-gas mass per nucleus uses global Herschel ratio
+- 2019ApJ...882...10N: Marginal resolution cannot rule out merging clumps; size estimates uncertain by factor 2
+- 2019ApJ...871...30I: Single epoch cannot separate refractive noise from intrinsic substructure; VLBA performance poor
+- 2021A&A...651A..35O: a non-LTE model with chemistry, ionisation, excitation and radiative transfer is beyond the scope
+- 2021A&A...651A..35O: the two lines were observed at different times so variability could affect the flux ratio
+- 2021A&A...651A..35O: continuum from the line-emitting source is contaminated by dust
+- 2021A&A...651A..35O: collisional broadening coefficients are uncertain
+- 2021A&A...651A..35O: distance is uncertain (Gaia parallax suspected unreliable)
+- 2012A&A...548A..69N: Vibrationally excited emission unresolved at ~1.7"x1.2"; maser nature needs confirmation
+- 2025ApJ...989...83B: Bandpass calibration effects on tau_0 and tau_CO are not quantified
+- 2025ApJ...989...83B: CO(3-2) and CO(2-1) opacities are less reliable than CO(1-0), so LTE reconciliation is not attempted
+- 2025ApJ...989...83B: Xa1 maximum recoverable scale cannot entirely rule out diffuse emission over larger regions
+- 2024ApJ...971L..33K: Intermediate angular resolution and sensitivity, only 2-3 beams across the CO region, so a merger can mimic a disk
+- 2024ApJ...971L..33K: Dynamical mass error includes only the fit error; spherical assumption dominates the uncertainty
+- 2021ApJ...917...99Y: The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed.
+- 2021ApJ...917...99Y: The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio.
+- 2021ApJ...917...99Y: The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include st…
+- 2021ApJ...917...99Y: Simple image-plane inverse ray-tracing fails for multiply-imaged pixels inside the caustics, producing a likely artificial low-velocity component in the PV diagram, and suffers from beam smearing.
+- 2025MNRAS.537..520Z: Low S/N (~3 per synthesised beam per 20 km s^-1 channel) in the high-resolution cube impairs the direct constraint on inclination and prevents breaking the degeneracy between a PA warp and radial/non…
+- 2025MNRAS.537..520Z: The relatively low inclination of the gas disc (38 deg) dominates the SMBH mass error budget (~55% of the uncertainty).
+- 2025MNRAS.537..520Z: The ~15% uncertainty on the adopted galaxy distance (66.6 ± 9.9 Mpc) is larger than all fitted uncertainties combined and is not included in the quoted SMBH mass uncertainty.
+- 2025MNRAS.537..520Z: Full pixel-to-pixel covariance matrix is ignored in the chi^2 calculation as it is computationally intractable.
+- 2026A&A...709A..93D: Limited bandwidth (~8 GHz), modest number of securely detected transitions (7 features), and high line density mean coincidental line blending cannot be excluded, making the GA detection tentative.
+- 2026A&A...709A..93D: Uncertainties are affected by line blending, baseline effects, and simplifying LTE assumptions.
+- 2026A&A...709A..93D: With only two GA detections to date, conclusions on formation mechanisms remain preliminary.
+- 2022A&A...661A.125W: Direct proof of a supermassive black hole requires very high angular resolution probing close to the Schwarzschild radius, which is difficult to establish.
+- 2022A&A...661A.125W: The high gas surface density in D1 leaves open the possibility of an obscured AGN, and a few scarce pixels in the 1" spectral index map have alpha > 1.1.
+- 2020MNRAS.491..427B: 13CH3CN temperature is only an estimate because few lines are available
+- 2020MNRAS.491..427B: Single-line OCS and 13CS in the tail give only rough column density and temperature
+- 2020MNRAS.491..427B: Possible line contamination in the core spectrum
+- 2020MNRAS.491..427B: H2 column density derived for the cold region only, so 13CH3CN abundance not estimated
+- 2019AJ....158..139D: Brightness temperatures only 60-70% of expected, attributed to Tsys calibration on blank sky; data scaled
+- 2019AJ....158..139D: Small features are unresolved so Tb are upper limits; missing short spacings
+- 2019A&A...628A..10B: Line-continuum splitting is preliminary with unexplained baseline artifacts
+- 2021PSJ.....2..105T: High degree of longitudinal smearing in the maps because Neptune was observed over nearly a full 16.11 hr rotation period.
+- 2021PSJ.....2..105T: Cloud opacity is ignored in the radiative transfer modeling.
+- 2021PSJ.....2..105T: Observations only extend to 9.7 cm, so NH3 below the NH4SH cloud (~50 bar) cannot be probed directly and is only weakly constrained via chemical coupling with H2S.
+- 2021PSJ.....2..105T: Deep CH4 abundance, PH3 abundance, and ortho/para H2 state cannot be strongly constrained due to calibration uncertainties and competing opacity effects in the millimeter.
+- 2021PSJ.....2..105T: Evidence for H2S supersaturation when allowing lapse rate to vary relies heavily on a single 0.9 cm data point.
+- 2015ApJ...808...36M: Mira A size and PA uncertainties dominated by systematics; disagreements with Vlemmings et al. 2015 in Band 3
+- 2013ApJ...767..132H: Only compact-configuration data used; SPT0529-54 posterior bimodal
+- 2026MNRAS.549g1100P: Phase-only self-calibration removes absolute astrometric information, introducing a systematic offset of +0.9 arcsec in RA and -0.5 arcsec in Dec relative to Clark et al. (2018).
+- 2026MNRAS.549g1100P: For sources with non-thermal synchrotron contributions, the clumping index zeta_bf is ambiguous and cannot be interpreted as a direct diagnostic of radial wind clumping.
+- 2026MNRAS.549g1100P: Observations are inherently biased toward stars with higher mass-loss rates and luminosities, and the O hypergiant sample is small.
+- 2026MNRAS.549g1100P: Several unclassified ALMA detections (P1-P14) lie close to the 4-4.5 sigma detection threshold and may be affected by local noise variations and incompleteness.
+- 2018ApJ...865...13T: X_CO uncertainty may overestimate mass by a factor of a few
+- 2018ApJ...865...13T: Projection effects: motions in plane of sky unknown
+- 2022A&A...666A..39M: The observations and residual snapshot images are dynamic-range limited rather than thermal-noise limited, even at 4-second integration times, due to finite fidelity of the mini-spiral model and subo…
+- 2022A&A...666A..39M: The statistical false-positive calculation assumes a Gaussian noise distribution, which does not strictly hold because the snapshot residuals are dynamic-range limited and non-Gaussian.
+- 2022A&A...666A..39M: Primary-beam attenuation is not corrected during the search, which reduces sensitivity toward the edges of the field of view.
+- 2022A&A...666A..39M: Data taken at low antenna elevations (< 25 degrees) suffer severe atmospheric opacity and turbulence, causing high rms and quality loss.
+- 2025PSJ.....6..183C: model cannot fit large-scale trailing hemisphere warm/cold structure; extra physics may be needed
+- 2025PSJ.....6..183C: self-consistent model could not fit the data, indicating missing physics
+- 2022PASJ...74..738T: Short-timescale intensity variations and flaring of Sgr A* violate the non-variability assumption of synthesis imaging, producing concentric circular artifacts that degrade SNR and can shift position…
+- 2022PASJ...74..738T: Reported positional and proper motion errors include only statistical 2-D Gaussian fitting errors and do not include calibration or systematic errors.
+- 2022PASJ...74..738T: Extended structures of the Galactic Center Mini-Spiral (GCMS) larger than the maximum recoverable scale (~0.4'') are resolved out, and complex extended emission in IRS13E and IRS13N can bias Gaussian…
+- 2022PASJ...74..738T: Faint patches (~0.2 mJy/beam) within <=0.25'' of Sgr A* are likely residual sidelobes rather than B-type S-stars, which are too faint to detect.
+- 2022PASJ...74..738T: Non-simultaneous observations (~2.8 yr apart) prevent disentangling intrinsic mm/submm spectral indices of WR stars from temporal flux variability.
+- 2017A&A...600A...8D: Observations not strictly simultaneous; 4U 1728-34 in transitional state
+- 2017ApJ...841L...5S: ALMA-XRT alignment uncertain by up to 5"
+- 2017ApJ...841L...5S: Three-dimensional path unknown
+- 2025ApJ...995L..51G: Uncertainties dominated by wide variation in the CND mass estimates
+- 2025ApJ...995L..51G: Area method ignores density variations
+- 2025ApJ...995L..51G: If the CND is optically thick (tau of a few), alpha_CO could be overestimated by a similar factor
+- 2025ApJ...995L..51G: Inner 0.5 arcsec around Sgr A* masked due to residual black hole emission
+- 2020PASP..132i4501H: 11x11 grid extent is too small to sample the full beam-squash pattern
+- 2020PASP..132i4501H: Orion-KL maps are dynamic-range limited, not thermal-noise limited
+- 2019ApJ...871...73H: Band 9 excess is only 2 sigma
+- 2020A&A...643A..41D: Simulation magnetic topology not comparable to the observed region; no IRIS data; DEM coronal estimates are lower limits
+- 2021A&A...650A.153D: Chandra source counts do not constrain the ICM temperature distribution.
+- 2021A&A...650A.153D: Most X-ray hardness structures have low significance.
+- 2021A&A...650A.153D: Radio resolution, sparse sampling, and weak high-frequency detections prevent a detailed spectral-index map.
+- 2021A&A...650A.153D: SZ masses may be biased by nonhydrostatic gas and mass–inner-slope degeneracy.
+- 2021A&A...650A.153D: Limited spectral coverage leaves thermal and kinetic SZ strongly degenerate.
+- 2021A&A...650A.153D: Interferometric filtering favors compact, low-mass pressure models and limits extrapolation to large scales.
+- 2021A&A...650A.153D: Weak-lensing positional precision limits confidence in the southern gas–mass offset.
+- 2021A&A...650A.153D: Dust mass and temperature require better high-frequency observations.
+- 2013A&A...558A.123M: Many parameters with few data points prevent a statistically robust constraint of parameter space
+- 2013A&A...558A.123M: Sparse, irregular time sampling
+- 2020ApJ...894L..14L: Dust temperature at 2000 AU unknown, strongly affects masses
+- 2020ApJ...894L..14L: Cannot tell whether cores are prestellar or protostellar
+- 2015ApJ...808L...2A: Uniform-brightness disk is unphysical; sizes about 2-4% smaller than physical
+
+### Settings cards flag as needed but not stated
+- self-calibration solution intervals: 92
+- casa version: 74
+- self-calibration solution intervals and number of iterations: 58
+- image size and cell size: 28
+- line-free channels and continuum subtraction method: 26
+- casa version and pipeline version: 20
+- self-calibration solution intervals and number of rounds: 19
+- self-calibration solution intervals and reference antenna: 18
+- flux scale uncertainty: 16
+- line-free channels used for continuum subtraction: 15
+- line-free channels for continuum subtraction: 14
+- flux calibrator and flux scale uncertainty: 12
+- self-calibration solution interval: 12
+- continuum subtraction and line-free channels: 12
+- primary beam correction details: 11
+- line-free channels used for continuum: 11
+- continuum subtraction method and line-free channels: 11
+- line-free channels for uvcontsub: 10
+- line-free channel ranges for continuum: 10
+- source coordinates: 10
+- line-free channel ranges: 10
+- cell size and image size: 8
+- line-free channel selection: 8
+- self-calibration solution interval and reference antenna: 7
+- line-free channels used for uvcontsub: 7
+- self-calibration solution intervals and reference: 7
+- line-free channel selection for continuum: 7
+- line-free channels and continuum subtraction details: 7
+- moment-map clipping thresholds: 6
+- image size, cell size, clean threshold and masks: 6
+- briggs robust value: 6
+- pipeline vs manual calibration: 6
+- line-free channel ranges for continuum subtraction: 6
+- clean mask, threshold, cell and image size: 6
+- target coordinates: 5
+- line-free channel ranges for uvcontsub: 5
+- clean threshold, masks, cell and image size: 5
+- flux calibrator and flux-scale uncertainty: 5
+- line-free channel ranges for continuum and uvcontsub: 4
+- self-cal solution intervals: 4
+
+## Paper excerpts (40 of 906, chosen for detail and spread over fields/years)
+
+### 2018ApJ...852..122H: CO and Dust Properties in the TW Hya Disk from High-resolution ALMA Observations (2018; protoplanetary_disks, astrochemistry; archival_reuse)
+- question: What are the CO and dust properties (CO column density structure, spectral index/grain sizes) in the TW Hya disk at high angular resolution?
+- processing.calibration.self_calibration: Phase self-calibration of continuum per band; 12CO from 2015.1.00686.S used continuum solutions; 2016.1.00629.S self-calibrated on line-free channels [$^{12}$CO $J=3-2$ Data Reduction: "The $^{12}$CO observations from 2016.1.00629.S were phase self-calibrated using a continuum model estimated from the line-free channels in the same spectral window."]
+- step 1: Reduce and combine archival continuum data
+  - method: Calibrate, flag line channels, average line-free channels, phase self-calibrate, align phase centers with fixvis/fixplanets, image Band 6 with MS-MFS [Continuum Reduction: "Because of the relatively large proper motion of TW Hya, the `fixvis` and `fixplanets` tasks in `CASA` were used to shift the datasets to a common phasecenter."]
+  - software: CASA
+  - parameter: robust=0.5; scales 0, 0.06, 0.15, 0.3, 0.6 arcsec [Continuum Reduction: "Briggs weighting (robust $=0.5$) and scales of $0''$, 0$\ensuremath{''}$06, 0$\ensuremath{''}$15, 0$\ensuremath{''}$3, and 0$\ensuremath{''}$6 were used."]
+  - validation: Continuum fluxes of self-calibrated images agree within 5% within each band; compared with published images [Continuum Reduction: "The continuum fluxes from the self-calibrated images were within 5% of one another within each band"]
+- step 3: Image 12CO J=3-2 cube and derive moment/peak Tb maps
+  - method: Self-calibrate, uvcontsub, mstransform to 0.25 km/s, multi-scale tclean, impbcor; integrated intensity above 3 sigma; peak Tb via Planck law, median of three offset cubes [12CO J=3-2 Peak Brightness Temperatures: "A peak brightness map is computed by taking the maximum value along the frequency axis for each pixel in the image cube and then converting to a brightness temperature using Planck’s law"]
+  - software: CASA
+  - parameter: integration -1.91 to 7.59 km/s; 3 sigma clip [$^{12}$CO $J=3-2$ Data Reduction: "An integrated intensity map was produced by summing emission above the $3\sigma$ level in the velocity range from $-1.91$ to 7.59 km s$^{-1}$."]
+  - validation: Imaged without continuum subtraction; integration limits changed flux <0.1% [$^{12}$CO $J=3-2$ Data Reduction: "truncating or extending the integration range by a few channels changed the integrated flux by less than $0.1\%$"]
+- result: 12CO integrated flux (r<4 arcsec) = 42.7 ± 0.2 Jy km/s [12CO J=3-2 Emission Morphology: "The integrated flux, measured inside a circular mask with a radius of $4''$, is 42.7$\pm0.2$ Jy km s$^{-1}$."]
+- result: 12CO emission extent (3 sigma) = 3.6 arcsec (215 AU) ± not stated arcsec [12CO J=3-2 Emission Morphology: "$^{12}$CO emission exceeding the $3\sigma$ level extends to a radius of $\approx 3.6\ensuremath{''}$ (215 AU)"]
+- result: 12CO/13CO flux ratio in outer annulus (101-214 AU) = ~20 ± not stated dimensionless [Comparison to other CO isotopologues: "Inside this annulus, the $^{12}$CO/$^{13}$CO flux ratio is $\approx20$"]
+- result: Peak 12CO brightness temperature 25-90 AU = ~70 to 35 ± not stated K [12CO J= 3-2 Peak Brightness Temperatures: "The peak brightness temperatures between radii of 25 and 90 AU range from $\sim$70 to 35 K"]
+- limitation (authors): Models are not optimal; dust modeling and multi-line fitting deferred; perturbed temperature model not physically self-consistent [A “Perturbed Temperature" Model: "this model is not physically self-consistent"]
+- limitation (authors): Absolute alpha uncertain by ~0.4 from flux calibration [The Spectral Index Between 1.3 mm and 8…: "A $\sim10\%$ flux uncertainty in each band would correspond to an uncertainty in the overall offset of $\Delta \alpha\sim0.4$"]
+- not stated (card): Self-calibration solution intervals and number of iterations; Line-free channel ranges for continuum and uvcontsub; Image size and cell size for clean/tclean; clean thresholds and number of iterations; Exact spectral windows used per program; Procedure for how model parameters were chosen beyond 'some experimentation' (no fit/goodness metric); Radial bin and deprojection details for profiles
+
+### 2024PASJ...76..437Y: ALMA 2D super-resolution imaging of Taurus-Auriga protoplanetary disks: Probing statistical properties of disk substructures (2024; protoplanetary_disks; archival_reuse)
+- question: What are the statistical properties of gaps and rings in the substructures of 43 Taurus-Auriga disks, as seen in 2D super-resolution (sparse modeling) images of archival ALMA Band 6 continuum data, and what do they imply for their origin (…
+- processing.calibration.self_calibration: Initial CLEAN SNR > 100: phase-only solint=inf, phase-only solint=OST/5, then amplitude+phase solint=OST/5. Initial SNR < 100: phase-only solint=inf, then amplitude+phase solint=OST/5. Final CLEAN image = best SNR among rounds [Data Reduction and CLEAN Imaging: "we conducted two rounds of phase calibration ($\tt calmode = p$) with different integration times: $\tt solint = inf$ and $\tt solint =$ OST/5, where OST indicates on-source time"] [Data Reduction and CLEAN Imaging: "We then performed one round of amplitude and phase calibration ($\tt calmode = ap$) with an integration time of $\tt solint$=OST/5."]
+- step 3: Self-calibrate and make CLEAN images
+  - method: Self-calibration using a tclean model; Briggs robust 0.5, nterm=1; Cotton-Schwab or multi-scale CLEAN depending on substructure; best-SNR image kept as final CLEAN image [Data Reduction and CLEAN Imaging: "We consistently employed multi-frequency synthesis ($\tt nterm = 1$; (cite: Rau2011)) and applied Briggs weighting with $\tt robust = 0.5$."] [Data Reduction and CLEAN Imaging: "We choose the image with the best SNR among those obtained in the course of self-calibration processes as the final CLEAN image."]
+  - software: CASA tclean
+  - parameter: SNR > 100: 2 phase rounds (solint=inf, OST/5) + 1 amp+phase (OST/5); SNR < 100: 1 phase (inf) + 1 amp+phase (OST/5) [Data Reduction and CLEAN Imaging: "we conducted two rounds of phase calibration ($\tt calmode = p$) with different integration times: $\tt solint = inf$ and $\tt solint =$ OST/5, where OST indicates on-source time"] [Data Reduction and CLEAN Imaging: "For data with initial SNR less than 100, we applied one round of phase calibration with an integration time of $\tt solint = inf$, followed by one round of amplitude and phase self-calibration"]
+  - parameter: Multi-scale scales [0, 1, 3] x CLEAN beam for disks with substructures [Data Reduction and CLEAN Imaging: "a multi-scale approach (cite: Cornwell2008) with scale parameters of $[0, 1, 3] \theta_{\rm cl}$ (where $\theta_{\rm cl}$ represents the CLEAN beam size) for disks with substructures"]
+  - validation: Self-calibration improves SNR by a factor ~1.5 (max baseline ~10 Mlambda) to several (~2 Mlambda) and mitigates patchy artifacts [Data Reduction and CLEAN Imaging: "We see that the self-calibration process mitigated patchy artifacts outside the region of source emission."]
+- step 4: Make sparse-modeling (SpM) images
+  - method: PRIISM l1+TSV regularized imaging of self-calibrated visibilities; hyper-parameters (Lambda_l, Lambda_tsv) chosen by 10-fold cross-validation, minimum CV error, with Lambda_tsv raised by one order of magnitude for five disks [Imaging with Sparse Modeling: "The image was reconstructed by minimizing a cost function, which is the weighted chi-square error between the visibility model derived by the model image and observed visibility"] [Imaging with Sparse Modeling: "To select a pair of $(\Lambda_{l}, \Lambda_{tsv})$ for the optimal image, we employ the 10-fold cross-validation (CV) approach"]
+  - software: PRIISM, CASA
+  - parameter: PRIISM version 0.7.2 [Imaging with Sparse Modeling: "ver. 0.7.2 (cite: Nakazato2020) in conjunction with $\tt CASA$ to perform"]
+  - parameter: DM Tau, GO Tau, DS Tau, DN Tau, RW Aur: Lambda_tsv one order of magnitude larger than the CV minimum [Imaging with Sparse Modeling: "For five objects (DM Tau, GO Tau, DS Tau, DN Tau, and RW Aur), we conservatively choose the image with $\Lambda_{tsv}$ one order of magnitude larger than $\Lambda_{tsv, \min}$ as optimal."]
+  - parameter: Visual inspection within delta log Lambda <= 1 of the CV minimum when the minimum-CVE image is patchy [Imaging with Sparse Modeling: "we visually inspect a set of images obtained by hyper-parameters with $\Delta \log \Lambda_{l}\leq 1$ and $\Delta \log \Lambda_{tsv}\leq 1$"]
+  - assumption: SpM image has only non-negative intensities [Evaluation of Noise Levels in Images: "The SpM image has only positive intensity in the off-source area"]
+  - fitting: Minimum of cross-validation error over the (Lambda_l, Lambda_tsv) grid [Imaging with Sparse Modeling: "We first find a set of hyper-parameters $(\Lambda_{l,\min}, \Lambda_{tsv,\min})$ which give the minimum cross-validation error (CVE)."]
+  - validation: SpM total fluxes agree with CLEAN fluxes within 5-10% [Imaging with Sparse Modeling: "The total fluxes of those SpM images are consistent with those of CLEAN images within $5-10\%$ errors."]
+- limitation (authors): SpM can create artificial clumps/speckles around bright inner disks [Image Fidelity: "However, we note that SpM imaging can introduce artificial clumped/speckled features, especially for disks with the brightest emission in the central part (i.e., an inner disk) surrounded by the faint emission area (i.e., a ring skirt)."]
+- limitation (authors): 40% of gaps (13/33) are not fully spatially resolved [Gap Width and Depth: "The remaining $40\%$ (13/33) of the gaps have not been fully spatially resolved."]
+- limitation (authors): Gaps in compact disks may be affected by insufficient resolution [Distribution of Gap Radii: "Therefore, again, the statistical properties of gaps in compact disks may be affected by insufficient spatial resolution."]
+- not stated (card): Which CASA pipeline version was used for each of the 25 projects, and which execution blocks were taken (including which compact-configuration data sets were combined for which targets).; tclean settings: cell size, image size, threshold/niter, CLEAN masks, spectral-window/continuum channel selection, and the per-target self-calibration rounds actually kept.; PRIISM settings: image grid (pixel si…
+
+### 2018ApJ...853..171G: Distributed Star Formation throughout the Galactic Center Cloud Sgr B2 (2018; star_formation, milky_way_ism; observational_alma_primary)
+- question: Is there extended, distributed star formation across the Sgr B2 cloud beyond the N, M, S protoclusters, and how do star formation thresholds and surface density relations compare with local clouds?
+- processing.calibration.self_calibration: 3 iterations phase-only, then 2 iterations amplitude+phase (continuum only; none for cubes) [2.1 ALMA data: "We therefore ran 3 iterations of phase-only self-calibration and two iterations of amplitude + phase self-calibration"]
+- step 1: Image continuum with self-calibration
+  - method: Joint 7m+12m tclean imaging of all basebands, self-cal, mtmfs [2.1 ALMA data: "We therefore ran 3 iterations of phase-only self-calibration and two iterations of amplitude + phase self-calibration"]
+  - software: CASA
+  - parameter: robust 0.5, -1, and tapered robust 2 images [2.1 ALMA data: "Using the same visibility data, we also produce an image with robust parameter -1"]
+  - validation: calibrator J1752-2956 spectral index -0.62±0.14 consistent with synchrotron [3.1: "we imaged one of our calibrators, J1752-2956, and obtained a spectral index $\alpha=-0.62\pm0.14$"]
+- result: Calibrator J1752-2956 spectral index = -0.62 ± 0.14 dimensionless [3.1: "obtained a spectral index $\alpha=-0.62\pm0.14$"]
+- result: Dynamic range in combined image = 18000 ± not stated dimensionless [2.1 ALMA data: "is 18000 (average RMS noise $0.09$ mJy/beam, 0.05 K)"]
+- limitation (authors): Catalog potentially incomplete; completeness cannot be quantified [3.1: "Our selection criteria result in a reliable but potentially incomplete catalog"]
+- limitation (authors): Column density maps not very accurate; SFR strongly dependent on assumed timescale [4.1.1: "our estimate of the star formation rate remains strongly dependent on the assumed star formation timescale"]
+- not stated (card): tclean image size, cell size, multiscale scales and primary-beam mask details; self-calibration solution intervals and per-iteration imaging parameters (only in script); exact by-eye source selection and per-source peak/photometry procedure; Herschel SED-fitting details (Battersby et al. in prep) and dust opacity for column density maps; uvcombine/feather weighting parameters; cluster radius defi…
+
+### 2021ApJ...923..121Y: ALMA Super-resolution Imaging of T Tau: r = 12 au Gap in the Compact Dust Disk around T Tau N (2021; protoplanetary_disks, star_formation; archival_reuse)
+- question: Explore several au-scale substructures in the compact protoplanetary disks around the T Tau triple star system using sparse modeling super-resolution imaging of ALMA 1.3 mm continuum data.
+- processing.calibration.self_calibration: Two rounds of phase (1st: 98 s, 2nd: 49 s, calmode = p) and one round of amplitude and phase (98 s, calmode = ap) [Data Reduction and Imaging with CLEAN: "Next, to improve the signal-to-noise ratio (SNR) of the image by correcting a systematic gain error (e.g., antenna-based and baseline-based errors), we performed two rounds of phase (longer at the 1st (98 s) and down to the integration time at the 2nd (49 s) with $\tt calmode = p$) and one round of amplitude and phase…"]
+- step 1: Calibrate raw ALMA data, self-calibrate, and produce CLEAN continuum image
+  - method: Initial calibration via ALMA pipeline in CASA 5.1.1, phase center adjustment to T Tau N peak using fixvis, imaging with tclean (Briggs robust = 0.5), two rounds of phase self-calibration and one round of amplitude+phase self-calibration. [Data Reduction and Imaging with CLEAN: "The initial calibration was performed using the ALMA pipeline on $\tt CASA$."] [Data Reduction and Imaging with CLEAN: "The positional offset between the phase (map) center and the emission peak of the T Tau N disk was adjusted using the $\tt CASA$ task $\tt fixvis$."]
+  - software: CASA, tclean, fixvis
+  - parameter: robust = 0.5 [Data Reduction and Imaging with CLEAN: "The data were firstly imaged with the $\tt tclean$ task (hereafter CLEAN) by adopting Briggs weighting ($\tt robust = 0.5$)."]
+  - parameter: self-cal solution intervals: 98 s (1st phase), 49 s (2nd phase), 98 s (amp+phase) [Data Reduction and Imaging with CLEAN: "Next, to improve the signal-to-noise ratio (SNR) of the image by correcting a systematic gain error (e.g., antenna-based and baseline-based errors), we performed two rounds of phase (longer at the 1st (98 s) and down to the integration time at the 2nd (49 s) with $\tt calmode = p$) and one round of amplitude and phase…"]
+  - validation: SNR improved by a factor of 3.8; peak intensity and RMS noise compared and found in good agreement with Long et al. (2019). [Data Reduction and Imaging with CLEAN: "We obtained the final CLEAN image (= CLEAN model convolved with CLEAN beam $+$ residual map) after self-calibration with the signal-to-noise ratio improved by a factor of 3.8, compared with the initial one."] [Data Reduction and Imaging with CLEAN: "These values are in relatively good agreement with those reported previously in (cite: Long2019) (i.e., peak intensity = $64.56~\rm mJy~beam^{-1}$, RMS noise = $52~ \rm \mu Jy~beam^{-1}$)."]
+- step 2: Super-resolution image reconstruction with Sparse Modeling (SpM) and evaluation of effective resolution and noise
+  - method: Reconstruct image from self-calibrated visibilities using PRIISM ver.0.3.0 by minimizing cost function with chi-squared, l1-norm, and TSV regularizers; select optimal (Lambda_l, Lambda_tsv) via 10-fold cross-validation over 5x5 grid; evalu… [Imaging with Sparse Modeling: "The self-calibrated visibility data were adopted for the image reconstruction with the latest SpM imaging task, $\tt PRIISM$, ver.0.3.0 (cite: nakazato2020) working with $\tt CASA$."] [Imaging with Sparse Modeling: "In this study, we used the 10-fold CV implemented in $\tt PRIISM$ and searched for the optimal parameter set with $5\times5$ sets of regularization parameters, which are $\Lambda_{l} = (10^{3},10^{4}, ...,10^{7}$) and $\Lambda_{tsv} =(10^{7}, 10^{8}, ..., 10^{11}$)."]
+  - software: PRIISM, CASA, DIFMAP
+  - parameter: Lambda_l = 10^5, Lambda_tsv = 10^9 (optimal from 5x5 grid) [Imaging with Sparse Modeling: "In other words, the image of ($\Lambda_{l}$, $\Lambda_{tsv}$) $=$ ($10^{5},10^{9}$) is selected as the optimal one."]
+  - parameter: N_iter = 1000, 10-fold CV [Imaging with Sparse Modeling: "In the imaging using $\tt PRIISM$, we used non-uniform fast Fourier transform (NuFFT) algorithms to compute the Fourier transform and perform iterative fitting of the model to visibility data ($N_{\rm iter} = 1000$) until the iteration algorithm converges."]
+  - assumption: Non-negative brightness distribution constraint [SpM image and evaluation of its noise l…: "This is because non-negative constraints have been adopted in the SpM imaging algorithm, and artificial emissions with positive intensity may be present in the off-source area."]
+  - fitting: Iterative convex optimization minimizing chi-squared + l1-norm + TSV cost function with NuFFT (N_iter = 1000); 2D Gaussian fit to injected 7.1 mJy point source. [Imaging with Sparse Modeling: "In the imaging using $\tt PRIISM$, we used non-uniform fast Fourier transform (NuFFT) algorithms to compute the Fourier transform and perform iterative fitting of the model to visibility data ($N_{\rm iter} = 1000$) until the iteration algorithm converges."] [Imaging with Sparse Modeling: "In the SpM images, effective resolution was evaluated with an elliptical Gaussian fit to the point source (see Figure 9)."]
+  - validation: 10-fold cross-validation error (CVE), comparison of total fluxes above I_DT with CLEAN (>5 sigma), and comparison of radial visibility profiles and reduced chi-squared (1.18 for SpM vs 1.31 for CLEAN image). [Results, SpM image and evaluation of it…: "the total fluxes of these sources obtained from the SpM image above the $I_{\rm DT}$ level are generally consistent with the values obtained from the CLEAN image above $5\sigma$ levels."] [Comparison between CLEAN and SpM Images: "Finally, all the visibility models corresponding to the three images (CLEAN image, CLEAN model, and SpM) have resulted in the reduced $\chi^2$ of around unity: 1.31 for the CLEAN image, 1.18 for the CLEAN model, and 1.18 for the SpM, respectively."]
+- result: Effective spatial resolution of optimal SpM image (theta_eff) = 0''.038 x 0''.027 (5 x 4 au) ± not stated arcsec (au) [Imaging with Sparse Modeling: "The reconstructed image for the optimal parameter provides the FWHM size (i.e., effective spatial resolution) of the point source, $\theta_{\rm eff} = 0''.038 \times 0''.027$ (or $5\times 4$ au) with a PA of $45.3^{\circ}$ and recovers a total flux of $7.9$ mJy ($\sim10\%$ higher than the input value)."]
+- result: T Tau N 1.3 mm total flux density (SpM, >I_DT) = 174.4 ± not stated mJy [Disk Structure of T Tau N: "| T Tau N | 175.0 | 4.0 | 174.4 | 9.1 | $(04^{h}21^{m}59^{s}.4475$, $+19^{d}32^{m}06^{s}.1731)$ |"]
+- result: T Tau N 1.3 mm total flux density (CLEAN, >5sigma) = 175.0 ± not stated mJy [Disk Structure of T Tau N: "| T Tau N | 175.0 | 4.0 | 174.4 | 9.1 | $(04^{h}21^{m}59^{s}.4475$, $+19^{d}32^{m}06^{s}.1731)$ |"]
+- result: T Tau Sa 1.3 mm flux density (SpM, >I_DT) = 7.1 ± not stated mJy [Disk Structure of T Tau N: "| T Tau Sa | $-$ | $-$ | 7.1 | 5.1 | $(04^{h}21^{m}59^{s}.4362$, $+19^{d}.32^{m}.05^{s}.5131)$ |"]
+- result: T Tau Sb 1.3 mm flux density (SpM, >I_DT) = 0.8 ± not stated mJy [Disk Structure of T Tau N: "| T Tau Sb | $-$ | $-$ | 0.8 | 0.8 | $(04^{h}21^{m}59^{s}.4365$, $+19^{d}.32^{m}.05^{s}.6131)$ |"]
+- limitation (authors): SpM image suffers from artificial positive emissions in off-source areas due to non-negative constraints and thermal/systematic noise. [SpM image and evaluation of its noise l…: "As described in (cite: yamaguchi2020), owing to both thermal and systematic noise, an SpM image suffers from (unexpected) positive emissions in its off-source area (i.e., outside the target source area)."]
+- limitation (authors): T Tau Sa and Sb disk sizes (6x4 au and 7x3 au) are only slightly larger than the SpM effective resolution (5x4 au), so they are not sufficiently resolved and represent conservative upper limits. [Dust Emissions from T Tau Sa and Sb: "These disk sizes are slightly larger than the effective spatial resolution of the SpM image ($\theta_{\rm eff} = 5\times 4$ au) and not resolved sufficiently. Hence, these sizes should be considered to be the conservative upper limits."]
+- limitation (authors): The T Tau N disk is optically thick at 1.3 mm, so the brightness temperature traces the disk atmosphere rather than the midplane, making derived dust surface densities and dust masses lower limits. [Physical Properties of T Tau N Disk: "It should be noted that a disk midplane temperature will generally be lower than $T_{\mathrm{br}}(r)$ at optically thick regions. Thus, dust surface densities (and dust masses) estimated in what follows would be lower limits in such a case."]
+- not stated (card): Pixel size (cell size) and image dimensions (number of pixels) used in PRIISM SpM reconstruction and tclean; Spectral window bandwidths and channel averaging applied to the continuum visibilities prior to PRIISM and tclean; Exact numerical value of the DSHARP dust opacity kappa_nu,I at 225.5 GHz used in the surface density calculation; Clean threshold and masking strategy used during tclean and s…
+
+### 2024ApJ...973..138H: The ALMA Legacy Survey of Class 0/I Disks in Corona australis, Aquila, chaMaeleon, oPhiuchus north, Ophiuchus, Serpens (CAMPOS). I. Evolution of Protostellar D… (2024; star_formation, protoplanetary_disks; large_program_or_survey)
+- question: How do the dust disk radii of Class 0/I protostars evolve with evolutionary stage and cloud environment, and can the Class 0 radius distribution discriminate between disk formation models (hydrodynamic, Hall effect, ambipolar diffusion)?
+- processing.calibration.self_calibration: Modified auto_selfcal with manually drawn masks; phase self-cal with solint from inf down to int, accepted if S/N rises and beam area changes under 5% [Self-calibration pipeline modifying and…: "We used the modified version of the self-calibration pipeline developed by J. Tobin to conduct the self-calibration for the entire sample"] [Self-calibration pipeline modifying and…: "We accept the self-calibration solution if the signal-to-noise ratio of the image increases and the area of the beam size does not change more than 5% compared to the original image."]
+- step 1: Self-calibrate each field with user masks
+  - method: Modified auto_selfcal: first pass with automasking, then manual masks made from local peaks in uniform/briggs0.5/natural maps; solint reduced by factor 2 from inf to int; fall-back mode combines scans and SPWs [Self-calibration pipeline modifying and…: "and modified the pipeline such that it takes in a self-calibration mask that can be specified by the user"] [Self-calibration pipeline modifying and…: "are reduced iteratively by a factor of 2 until the solution no longer satisfies the above criteria"]
+  - software: CASA, tclean, auto_selfcal
+  - parameter: Fall-back mode when solint=inf fails: combine all scans and spectral windows [Self-calibration pipeline modifying and…: "then the pipeline goes to fall-back mode and combines all the observational scans and different spectral windows to do the self-calibration"]
+  - parameter: Mask version 2: all sources above 4 times the rms plus surrounding extended emission [Self-calibration pipeline modifying and…: "In the second version, the mask includes all the sources above 4 times the rms as well as the extended emission surrounding it."]
+  - parameter: Self-cal weighting must match final imaging weighting (natural, briggs 0.5, uniform) [Self-calibration pipeline modifying and…: "we found in order to have the best S/N ratio the the weighting used in the self-calibration"]
+  - validation: Compared images from default automasking and user-mask pipelines; user masks gave better S/N and cleaner noise [Self-calibration pipeline modifying and…: "we found that images from the modified pipeline have a better S/N ratio and a cleaner noise pattern"]
+- step 2: Two-stage imaging in three weightings
+  - method: Stage 1 tclean with self-cal masks to make images for drawing final masks on natural maps; stage 2 tclean with multi-scale deconvolver and larger final masks on natural, briggs0.5 and uniform self-calibrated data [Self-calibration and Imaging processing: "Once the self-calibration was complete, we then proceeded with a two-stage imaging process."] [Self-calibration and Imaging processing: "The purpose of the first step is to produce images from which we can draw the final clean masks on all the identified sources."]
+  - software: CASA, tclean
+  - parameter: Cleaned down to 2 sigma in both stages [Self-calibration and Imaging processing: "and cleaned down to"]
+  - parameter: Multi-scale deconvolver used to recover 1-2 arcsec emission [Self-calibration and Imaging processing: "in order to better recover the large-scale emission"]
+  - parameter: Each weighting imaged from visibilities self-calibrated with the same weighting [Self-calibration and Imaging processing: "For each weighting scheme, we used the self-calibrated visibilities with the same weighting scheme to achieve the best signal-to-noise ratio."]
+- limitation (authors): Sample is severely incomplete for Class II sources, so they are excluded from the analysis [Sample Selection: "our sample is severely incomplete for Class II sources"]
+- limitation (authors): Sample is biased against the lowest-mass (luminosity) protostars [Sample Selection: "Our sample lacks representation of protostars nestled within low-mass cores, leading to a bias against the lowest-mass (luminosity) protostars."]
+- limitation (authors): Gaussian-fit radii may not reflect true disk radii and can include envelope emission [Measuring disk radii: "the 2D Gaussian fitting might not reflect the exact radius of the disks, potentially due to contamination with envelope material"]
+- not stated (card): tclean parameters: cell size, image size, niter, nterms for mtmfs, multiscale scale list, gain, threshold definition and the region used to measure the rms for the 2 sigma stopping criterion; Whether calibration used the ALMA pipeline or manual scripts, the pipeline version, and the flux-scale uncertainty; The manually drawn self-calibration and final clean masks (not released); reproduction need…
+
+### 2021ApJ...907...94C: The Explosion in Orion-KL as Seen by Mosaicking the Magnetic Field with ALMA (2021; star_formation, milky_way_ism; observational_alma_primary)
+- question: The interplay between the explosion and the magnetic field in OMC1
+- processing.calibration.self_calibration: Phase-only; final solution interval 90 s [OBSERVATIONS: "We imaged both mosaics by performing phase-only self-calibration with a final solution interval of 90 s."]
+- step 1: Produce continuum and polarization mosaics
+  - method: Phase-only self-calibration; primary-beam correction; pixel-by-pixel polarized-intensity debiasing; plot final maps with APLpy [OBSERVATIONS: "We imaged both mosaics by performing phase-only self-calibration with a final solution interval of 90 s."] [OBSERVATIONS: "All images were primary-beam corrected, and the polarized intensity image was debiased pixel-by-pixel (cite: Wardle1974; Hull2015)."]
+  - software: CASA, APLpy
+  - parameter: Rectangular mosaic; factor 2 over-sampling relative to Nyquist along both axes; factor 4 total beam overlap [OBSERVATIONS: "The observations were configured as a rectangular, super-sampled mosaic with a factor of 2 over-sampling (with respect to Nyquist) along both axes, or a factor of 4 in total beam overlap."]
+  - parameter: 3.1 mm: ~2.20 × 1.75 arcmin, 15 pointings; 1.3 mm: ~1.25 × 0.94 arcmin, 45 pointings [The total intensity mosaic of Orion-KL: "The mosaics cover regions of $\sim$ $2.20^{\prime}\,\times\,1.75^{\prime}$ (15 pointings) at 3.1 mm and $\sim$ $1.25^{\prime}\,\times\,0.94^{\prime}$ (45 pointings) at 1.3 mm"]
+  - parameter: Final phase-only self-calibration solution interval: 90 s [OBSERVATIONS: "a final solution interval of 90 s."]
+  - validation: Recovery of all previously detected continuum sources [The total intensity mosaic of Orion-KL: "We recover all of the continuum sources previously detected by others (cite: Eisner2006; Friedel2011; Hirota2015)."]
+- limitation (authors): DCF variants omit finite-resolution and line-of-sight smoothing; reported field strength is an upper limit [Estimation of the magnetic field streng…: "these three flavors of the DCF method do not take into account the effect of finite angular resolution and integration along the line of sight"]
+- limitation (authors): Shock type cannot be determined from these data alone [A Shock in the Orion-KL Magnetic Field: "Unfortunately, from our data alone, we cannot conclude what type of shock is manifesting itself through the magnetic field morphology in Orion-KL."]
+- limitation (authors): Available one-dimensional shock models do not provide a suitable comparison [A Shock in the Orion-KL Magnetic Field: "current models are only one-dimensional, with the field orthogonal to the shock propagation direction (cite: Pilipp1994); therefore, we do not have a model to which we can refer for comparison."]
+- not stated (card): Exact mosaic pointing coordinates and per-execution antenna, baseline, and integration metadata.; Calibration scripts, calibrator identities, polarization calibration solutions, flagging, and flux-scale uncertainty.; Self-calibration iteration sequence, earlier solution intervals, solution grouping, reference antenna, and acceptance criteria.; Imaging task, weighting and robust value, deconvolver…
+
+### 2013Sci...340.1199V: A Major Asymmetric Dust Trap in a Transition Disk (2013; protoplanetary_disks; observational_alma_primary)
+- question: Is the dust in the transition disk around Oph IRS 48 distributed asymmetrically relative to the gas and small grains, as expected for a dust trap in a vortex?
+- processing.calibration.self_calibration: Phase self-calibration on IRS 48 continuum using unselfcalibrated continuum as model; 40% S/N gain [Materials and Methods: "This resulted in a net gain of 40% in S/N."]
+- step 1: Calibrate and image continuum and CO lines
+  - method: CASA calibration with Titan/3c279/J1625-254, phase self-cal on continuum, natural-weighted CLEAN with masks [Materials and Methods: "The calibration was improved by calibrating these fluctuations on the continuum of IRS 48 itself."]
+  - software: CASA
+  - parameter: natural weighting; beam 0.32" × 0.21" [Materials and Methods: "The image conversion of the continuum and line data was done using natural weighting"]
+  - validation: Different clean masks compared on selfcal and non-selfcal images; no structural differences [Materials and Methods: "different sizes and shapes of clean masks were compared to the result seen in the main paper."]
+- result: Continuum rms = 0.82 ± not stated mJy/beam [Materials and Methods: "The RMS noise level is 0.82 mJy/beam for the continuum"]
+- result: Total continuum flux at 685 GHz = 950 ± <20% calibration mJy [Materials and Methods: "The total continuum flux is 950 mJy."]
+- result: Peak S/N and north/south contrast = ~390; at least 130 ± not stated dimensionless [Main Text: "The peak emission has a very high signal-to-noise ratio of ~390 and the contrast with the upper limit on the opposite side of the ring is at least a factor of 130."]
+- limitation (authors): Azimuthal gas density variations cannot be constrained by current data [Materials and Methods: "The amount of variation cannot be constrained by the current data set."]
+- not stated (card): CLEAN threshold, number of iterations, cell and image size; Self-calibration solution interval and reference antenna; Exact channel ranges flagged as CO-contaminated; Rest frequencies adopted for lines; Details of the generic radiative transfer model giving the 60 K dust temperature; Dust evolution model parameters (fragmentation velocity, etc.); How the model image was sampled (uv coverage, nois…
+
+### 2019A&A...632A..66O: ALMA observations of PKS 1549-79: a case of feeding and feedback in a young radio quasar (2019; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: How are accretion and outflow of molecular gas distributed in the young radio quasar PKS 1549-79, and what drives the outflow?
+- processing.calibration.self_calibration: Self-calibration in MIRIAD; time-variable bandpass from phase calibrator J1617-7717 for CO(1-0) [2.1 Observations of CO(1-0) and 3-mm co…: "we used the scans of the phase calibrator J1617–7717 (which has a flux density of 2.9 Jy) that were interleaved with the scans on PKS 1549$-$79 to derive a time-variable bandpass calibration"]
+- step 1: Calibrate and image ALMA data
+  - method: CASA calibration scripts, then MIRIAD bandpass/self-cal, imaging with various weightings and velocity resolutions [2.1 Observations of CO(1-0) and 3-mm co…: "a number of cubes were made, adopting various weighting schemes and velocity resolutions in order to explore the optimum"]
+  - software: CASA, MIRIAD
+  - assumption: z = 0.1525 for de-redshifting [2.1 Observations of CO(1-0) and 3-mm co…: "All cubes were de-redshifted assuming a redshift of $z = 0.1525$."]
+  - validation: Super-resolved ALMA image compared with VLBI image [2.1 Observations of CO(1-0) and 3-mm co…: "This very high resolution image compares very well with the 2.3-GHz VLBI image"]
+- result: 100 GHz continuum peak = 350 ± rms 85 µJy/beam mJy/beam [2.1 Observations of CO(1-0) and 3-mm co…: "The peak in the continuum image is 350 mJy at the location of the core"]
+- limitation (authors): Outflow rate is quite uncertain: overlap with disc, conversion factor, velocity and size [4.5 The molecular outflow: "This number is, however, quite uncertain."]
+- limitation (authors): Narrow CO(3-2) bandwidth prevents detecting the broad component [4. Results: the molecular gas: "this is quite likely due to the limited bandwidth of the CO(3-2) data"]
+- not stated (card): Robust values, taper parameters, cell and image sizes for MIRIAD imaging; Clean masks and thresholds; Line-free channels for continuum subtraction; Self-calibration solution intervals for ALMA data; Exact bandpass calibration procedure in MIRIAD; Target coordinates; Outflow radius used (120 pc vs 0.045") and exact mass-to-rate arithmetic; Spectral index fitting procedure and flux uncertainties
+
+### 2018A&A...615A..28D: ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz (2018; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the dominant physical, dynamical and chemical processes in the inner wind of the low mass-loss rate AGB star R Dor and the high mass-loss rate AGB star IK Tau, as traced by an ALMA band 7 spectral line and imaging survey?
+- processing.calibration.self_calibration: Self-calibration on line-free continuum channels, applied to all data [2.2 Data reduction: "Line-free continuum channels were identified and used for self-calibration, applied to all data."]
+- step 1: Calibrate and image continuum and line cubes
+  - method: Standard CASA calibration scripts, self-calibration on continuum channels, continuum subtraction, imaging of full cubes [2.2 Data reduction: "Line-free continuum channels were identified and used for self-calibration, applied to all data."]
+  - software: CASA
+  - parameter: robust 0.5 [2.2 Data reduction: "all images discussed used partial uniform weighting (CASA ‘robust 0.5’)."]
+  - validation: Astrometric accuracy checked using phase-reference solutions and check sources; 17 mas adopted [2.2 Data reduction: "it seems reasonable to adopt 17 mas astrometric accuracy for both targets."]
+- result: Continuum peak IK Tau = 0.069 ± not stated Jy/beam [3 Continuum image: "The continuum peak is 0.069 Jy/beam for IK Tau and 0.596 Jy/beam for R Dor"]
+- result: Continuum peak R Dor = 0.596 ± not stated Jy/beam [3 Continuum image: "The continuum peak is 0.069 Jy/beam for IK Tau and 0.596 Jy/beam for R Dor"]
+- limitation (authors): Dust masses and dust-to-gas ratios uncertain by about a factor of 5 [3 Continuum image: "subject to large uncertainties (being around a factor of 5)"]
+- limitation (authors): Extended emission may be resolved out [2.2 Data reduction: "we have resolved-out extended emission"]
+- not stated (card): Number of execution blocks and exact calibrator assignment per spectral window; Line-free channel ranges used for continuum and self-calibration; Self-calibration solution intervals and number of iterations; tclean deconvolver, masks, clean thresholds and iteration counts; Per-cube beam and rms for each spectral window; Exact adopted stellar flux model at 345 GHz; Parameters of the RADEX models u…
+
+### 2019MNRAS.484.4239R: The AGN fuelling/feedback cycle in nearby radio galaxies I. ALMA observations and early results (2019; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the molecular gas and 230 GHz continuum (core and jet) properties of nearby LERGs, and how do the gas discs relate to the radio jets, to inform the AGN fuelling/feedback cycle?
+- processing.calibration.self_calibration: multiple cycles of phase-only self-cal for all; amplitude+phase for brightest cores only [3.1 Continuum imaging: "multiple cycles of phase-only self calibration were performed in all cases. Additional amplitude and phase self-calibration was performed for the brightest cores only."]
+- step 1: Continuum imaging and core/jet photometry
+  - method: MFS imaging with natural weighting using three continuum SPWs plus line-free channels, self-calibration, 2D Gaussian fits to components [3.1 Continuum imaging: "Two-dimensional Gaussian fits were performed within the regions covered by the continuum emission in order to estimate the spatial extent of each observed component."]
+  - software: CASA
+  - parameter: nterms=1, natural weighting [3.1 Continuum imaging: "using the CLEAN task in multi-frequency synthesis (MFS) mode with one Taylor series term"]
+  - validation: Compared with re-analysed archival VLA maps at matched resolution [3.1 Continuum imaging: "chosen to match as closely as possible the angular resolution of the corresponding ALMA image"]
+- result: IC 4296 core 230 GHz flux density = 190 ± 19.0 mJy [Table 3: "core | | 190$\pm$19.0 | (0.1$\times$0.1)"]
+- limitation (authors): Upper limits underestimated if CO is resolved; R21 and XCO uncertain [4.2 Line widths and profiles: "this assumption leads to a significant underestimation of the total flux limit."]
+- limitation (authors): Projection effects limit alignment analysis; 3D modelling needed [6.3 Jets and molecular gas: "A more comprehensive analysis would require 3D modelling of both the radio jets and the molecular gas disc"]
+- not stated (card): Line-free channel ranges per target for uvcontsub; Image size and cell size; Clean mask details and number of iterations; Self-calibration solution intervals and number of cycles; Phase center/coordinates of targets; Flux density used for secondary calibrators and bandpass/phase calibrator per execution block; Exact box sizes for spectral extraction (only in captions); uv ranges used for spectral…
+
+### 2023ApJ...948..134P: 183 GHz Water Megamasers in Active Galactic Nuclei: A New Accretion Disk Tracer (2023; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Identify and characterize 183 GHz H2O megamaser emission from AGN already known to host 22 GHz megamaser systems, and compare their spectral and spatial properties to 22 GHz masers.
+- processing.calibration.self_calibration: Phase self-calibration on Circinus using the strongest spectral line (3 channels / ~0.6 km s^-1 centered at 561.6 km s^-1) with a 60 s solution interval [Circinus: "After initial gain calibration, we further self-calibrate the phases to the strongest spectral line, averaging over the three channels ($\sim$0.6 km s$^{-1}$) centered at 561.6 km s$^{-1}$ and using a solution interval of 60 seconds."]
+- step 1: Calibrate raw ALMA visibility data and concatenate multi-epoch observations
+  - method: Import raw ASDM files to MSs, flag pointing scans/autocorrelations/shadowed antennas and manual edge/initial channels, apply Tsys and WVR tables, solve bandpass and phase/amplitude gains, bootstrap absolute flux scale using power-law inter… [Data reduction procedure: "We start by importing the raw ALMA Science Data Model files and converting them to CASA Measurement Sets (MSs) using the `importasdm` task."] [Data reduction procedure: "Following this gain calibration, we bootstrap the absolute flux density calibration from the flux density calibrator to the gain calibrator using the `fluxscale` task."]
+  - software: CASA
+  - parameter: Bandpass pre-gaincal averaging over ~5% of each spectral window per integration time [Data reduction procedure: "Prior to determining the bandpass solution, we first track the phase variations of the bandpass calibrator on every integration time by averaging over a small number of frequency channels ($\sim$5% of each spectral window) using the `gaincal` task."]
+  - parameter: Circinus phase self-calibration: 3 channels (~0.6 km s^-1) centered at 561.6 km s^-1, solint = 60 seconds [Circinus: "After initial gain calibration, we further self-calibrate the phases to the strongest spectral line, averaging over the three channels ($\sim$0.6 km s$^{-1}$) centered at 561.6 km s$^{-1}$ and using a solution interval of 60 seconds."]
+  - assumption: Power-law spectral energy distribution S_nu = S_{nu,0} (nu / nu_0)^alpha for flux density calibrators [Data reduction procedure: "For each flux density calibrator, we assume a power-law spectral energy distribution to extrapolate from the ALMA calibrator source catalog measurements to the $\sim$183 GHz observing frequencies relevant for the observations in this paper."]
+  - validation: Empirically estimate flux density calibration reliability using historical ALMA monitoring epochs with a third intermediate frequency nu_mid, finding 5% to 10% precision. [Additional calibration details: "We also use the historical ALMA monitoring observations to empirically estimate the reliability of the flux density calibration for each target."] [Additional calibration details: "We find a typical flux density precision between 5% and 10%."]
+- step 5: Map 183 GHz maser spot positions in Circinus via visibility modeling
+  - method: Fit a point source model directly to the self-calibrated, time-averaged Stokes I complex visibilities in each spectral channel individually using nested sampling. [Circinus: "To map the 183 GHz maser system in Circinus, we fit a point source model directly to the visibilities in each spectral channel individually."] [Maser position modeling: "We fit directly to the Stokes I complex visibilities in each spectral channel, after self-calibration and averaging in time across the entire observing track."]
+  - software: dynesty
+  - parameter: Plot threshold: geometric mean positional uncertainty sqrt(sigma_x * sigma_y) < 20 mas; reference maser spot at v = 561.6 km s^-1 [Circinus: "We plot only the maser features that have geometric mean fitted positional uncertainties less than 20 mas; i.e., we require that $\sqrt{\sigma_x \sigma_y} < 20$ mas, given an uncertainty in the $x$-position of $\sigma_x$ and an uncertainty in the $y$-position of $\sigma_y$."] [Maser position modeling: "Because we have self-calibrated using the brightest spectral line at 561.6 km s$^{-1}$(see [5.16](#app:Circinus)), all positions are referenced to the location of the associated maser spot."]
+  - assumption: Each maser spot in a spectral channel is a single point source; noise sigma is constant across visibilities within a single channel; brightest 183 GHz spot at 561.6 km s^-1 corresponds to the 22 GHz reference spot at 566.3 km s^-1 [Maser position modeling: "We assume that each maser spot is a point source, for which we fit the position $(x,y)$ and flux density $S$ in every spectral channel."] [Maser position modeling: "where $\hat{V}_i$ represents an observed complex visibility and $\sigma$ is the uncertainty (which we assume to be the same for all data points within a single channel)."]
+  - fitting: Nested sampling via dynesty; complex Gaussian likelihood; uniform priors: p_S ~ U(0, 10) Jy, p_x, p_y ~ U(-0.5, 0.5) arcsec, p_sigma ~ U(0, 5) Jy [Maser position modeling: "Within a single spectral channel, our likelihood function for each data point $i$ is a complex Gaussian (cite: TMS),"] [Maser position modeling: "We specify uniform priors of $p_S \sim \mathcal{U}(0,10)$ (in units of Jy) for $S$, $p_x \sim \mathcal{U}(-0.5,0.5)$ (in units of arcseconds) for $x$ and $y$, and $p_{\sigma} \sim \mathcal{U}(0,5)$ (in units of Jy) for $\sigma$."]
+  - validation: Compare spatial distribution and velocity gradient against 22 GHz VLBI maps of Circinus. [Circinus: "Our map shows that the 183 GHz maser system in Circinus is spatially resolved by these ALMA observations, covering a region that appears to be well-matched in size and shape to the ${\sim}90\text{\,mas} \times 50$ mas distribution of 22 GHz masers."]
+- limitation (authors): Atmospheric 183 GHz water absorption creates a steep transmission gradient across the spectral windows for low-redshift targets (e.g., Circinus, NGC 1386), which is not compensated when computing the average RMS noise level. [Spectral line identification: "We note that for our lowest-redshift targets (e.g., Circinus, NGC 1386), the steep transmission gradient caused by the atmospheric 183 GHz line causes the the RMS noise level to change substantially across the spectral windows. We do not attempt to compensate for this effect when computing the RMS, so our estimate is …"]
+- limitation (authors): Lack of absolute astrometric referencing between the 183 GHz ALMA map and the 22 GHz VLBI map of Circinus requires assuming that the brightest 183 GHz spot (561.6 km s^-1) and 22 GHz spot (566.3 km s^-1) coincide spatially. [Circinus: "It is plausible that both of these lines originate from the same parcel of masing gas (with the $\sim$5 km s$^{-1}$ difference in velocity then attributable to dynamical evolution during the $\sim$20 years separating the two observations), but the lack of absolute astrometric referencing between the two observations m…"]
+- limitation (authors): Large positional uncertainties in the C-4 configuration ALMA observations of Circinus prevent unambiguously distinguishing between a disk and outflow origin for the 183 GHz masers. [Circinus: "However, the current large uncertainties in our maser position measurements (relative to the size of the system) ultimately make it difficult to unambiguously distinguish between a disk and outflow origin for the 183 GHz masers in Circinus."]
+- not stated (card): Exact aperture or pixel extraction region used to extract 1D spectra from the central region of each image cube; Exact velocity integration bounds used to compute integrated line flux (int S_v dv) for isotropic luminosity calculations of each source; Exact channel ranges excluded as containing molecular line emission when imaging continuum for Circinus and NGC 1068; Whether continuum subtraction …
+
+### 2025A&A...704A..18O: High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB>O, SO<SUB>2</SUB>, … (2025; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the dynamics and chemistry in the atmosphere and inner wind (within a few stellar radii) of the asymptotic giant branch star W Hya, and how do molecular species relate to dust formation and shocks?
+- processing.calibration.self_calibration: 2 iterations on line-free continuum: 1st phase-only with solint = scan length (<=54 s), 2nd amplitude and phase with solint = entire EB (~45 min) [Observations and data reduction: "The continuum images of W Hya were reconstructed, which provided initial models for self-calibration, which was done in two iterations."] [Observations and data reduction: "The first iteration was for phase alone with the solution interval being the scan length (${\lesssim}54$ s)."]
+- step 1: Determine stellar continuum disk center, angular size, flux density spectrum, and brightness temperature
+  - method: Fit visibility data at line-free channels before self-calibration with a uniform elliptical disk using uvmultifit; measure integrated continuum flux densities across the 9 spectral windows and fit a frequency power law. [Observations and data reduction: "In order to determine the position of the stellar disk center, we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit` (Martí-Vidal et al. (cite: marti-vidal14))."] [Continuum: "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$."]
+  - software: uvmultifit
+  - parameter: Uniform elliptical disk model [Observations and data reduction: "we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit`"]
+  - assumption: Continuum is formed by optically thick free-free emission [Continuum: "Assuming that the continuum is formed by the optically thick free-free emission, the derived brightness temperatures correspond to the gas temperature in the millimeter-continuum-forming layers."]
+  - fitting: Visibility-plane uniform ellipse fit with uvmultifit; power-law fit to continuum flux densities vs frequency [Observations and data reduction: "we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit` (Martí-Vidal et al. (cite: marti-vidal14))."] [Continuum: "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$."]
+  - validation: Compared continuum flux density with literature 250 GHz measurement by Dehaes et al. (2007) and spectral index with radio-photosphere model (1.86) [Continuum: "The flux densities are in broad agreement with the measurement by Dehaes et al. ((cite: dehaes07)), who obtained $280.0 \pm 17.2$ mJy at 250 GHz"] [Continuum: "This is close to the power-law index of 1.86 expected from the radio-photosphere model"]
+- result: Continuum flux density at 250.727 GHz (spw 1) = 267.7 ± 1.3 mJy [Table 1: "| 1 | 250.727 | 468.75 | 1.17 | $19.7\times16.5$ | 0.57 | $267.7 \pm 1.3$ |"]
+- result: Continuum flux density at 251.826 GHz (spw 2) = 270.0 ± 1.4 mJy [Table 1: "| 2 | 251.826 | 468.75 | 1.16 | $19.3\times16.7$ | 0.52 | $270.0 \pm 1.4$ |"]
+- result: Continuum flux density at 252.471 GHz (spw 3) = 271.8 ± 1.0 mJy [Table 1: "| 3 | 252.471 | 468.75 | 1.16 | $19.3\times16.7$ | 0.47 | $271.8 \pm 1.0$ |"]
+- result: Continuum flux density at 253.703 GHz (spw 4) = 273.7 ± 1.4 mJy [Table 1: "| 4 | 253.703 | 468.75 | 1.15 | $19.1\times16.5$ | 0.52 | $273.7 \pm 1.4$ |"]
+- result: Continuum flux density at 265.886 GHz (spw 5) = 301.5 ± 1.6 mJy [Table 1: "| 5 | 265.886 | 468.75 | 1.10 | $18.4\times15.8$ | 0.59 | $301.5 \pm 1.6$ |"]
+- result: Continuum flux density at 266.943 GHz (spw 6) = 305.6 ± 1.5 mJy [Table 1: "| 6 | 266.943 | 468.75 | 1.10 | $18.4\times15.8$ | 0.55 | $305.6 \pm 1.5$ |"]
+- result: Continuum flux density at 267.198 GHz (spw 7) = 306.0 ± 1.5 mJy [Table 1: "| 7 | 267.198 | 468.75 | 1.10 | $18.3\times15.8$ | 0.60 | $306.0 \pm 1.5$ |"]
+- result: Continuum flux density at 267.720 GHz (spw 8) = 306.2 ± 1.3 mJy [Table 1: "| 8 | 267.720 | 937.50 | 1.09 | $18.2\times15.8$ | 0.63 | $306.2 \pm 1.3$ |"]
+- result: Continuum flux density at 268.168 GHz (spw 9) = 307.8 ± 1.3 mJy [Table 1: "| 9 | 268.168 | 937.50 | 1.09 | $18.1\times15.7$ | 0.65 | $307.8 \pm 1.3$ |"]
+- result: Continuum flux frequency power-law spectral index = 2.08 ± 0.03 dimensionless [Continuum: "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$."]
+- result: Millimeter continuum brightness temperature across 9 spws = 2130–2170 ± not stated K [Continuum: "The uniform elliptical disk fitting in nine spectral windows results in brightness temperatures of 2130–2170 K over the millimeter continuum stellar disk."]
+- limitation (authors): Missing short spacings (largest recoverable scale of 190 mas) cause smooth, extended emission on scales larger than ~190 mas (radius >95 mas) to be resolved out, preventing conclusions on large-scale kinematics and global symmetry of Si17O… [Conclusions: "However, diffuse, smooth emission on scales larger than $\sim$190 mas is missing due to the lack of short baselines, which prevented us from drawing a conclusion on the large-scale kinematics."]
+- limitation (authors): The 1D spherical LTE model of the SiO lines is simplified; full non-LTE radiative transfer modeling is beyond the scope of the paper, and the model cannot distinguish between a shock-induced density jump and Si depletion onto dust grains a… [Modeling of the $^{30}$SiO $\varv = 1$ …: "We assumed LTE primarily for simplicity, because full non-LTE radiative transfer modeling is beyond the scope of this paper."]
+- limitation (authors): Dynamic range limitations in channels containing strong 29SiO v=2 J=6-5 maser emission (~18 Jy/beam) increase the RMS noise up to 2.7 mJy/beam. [Observations and data reduction: "Due to the dynamic range limit, the RMS noise is much higher in the channels containing the strongest emission, up to 2.7 mJy/beam."]
+- not stated (card): Exact frequency ranges or channel indices selected as line-free channels in each of the 9 spectral windows for continuum visibility extraction and uvcontsub; tclean image size (number of pixels), stopping threshold, niter, and masking strategy during self-calibration and final cube imaging; Exact beam/aperture size used when extracting spatially resolved single-position spectra (whether single pi…
+
+### 2015ApJ...806...17R: Morphology and Kinematics of Warm Molecular Gas in the Nuclear Region of Arp 220 as Revealed by ALMA (2015; nearby_galaxies, milky_way_ism; observational_alma_primary)
+- question: What are the morphology and kinematics of the warm (CO J=6-5) molecular gas in the two nuclei of Arp 220, and what energy source heats it?
+- processing.calibration.self_calibration: Two rounds of phase-only (natural weighting), then one amplitude+phase round; noise 36->16 mJy/beam (line-free), 100->18 mJy/beam (line channels) [2 Observations and Data Reduction: "we carried out two rounds of phase-only self-calibration using natural weighting and a relatively small clean box to include emission from the bright central region."]
+- step 1: Re-image calibrated data and self-calibrate
+  - method: Re-clean delivered calibrated uv data with adjusted clean boxes, self-calibration, continuum subtraction, uniform and natural cubes at 10 km/s [2 Observations and Data Reduction: "we began with the delivered calibrated $uv$ data and made new, cleaned data cubes following the same steps carried out by ALMA staff using CASA version 4.1.0."]
+  - software: CASA
+  - parameter: 10 km/s channels; beam 0.39"x0.22" [2 Observations and Data Reduction: "We used a velocity resolution of 10 km s$^{-1}$ for the CO data cube."]
+  - validation: Total CO 6-5 flux 3670 Jy km/s compared with Herschel 4070 +/- 80 [2 Observations and Data Reduction: "This value is in agreement with the total flux obtained from *Herschel*-SPIRE of $4070 \pm 80$ Jy km s$^{-1}$"]
+- result: Total integrated CO 6-5 flux = 3670 ± ~15% systematic Jy km/s [2: "the total integrated CO $J=6-5$ flux is 3670 Jy km s$^{-1}$"]
+- limitation (authors): Warm-gas mass per nucleus uses global Herschel ratio [footnote 5: "our mass estimate for the warm molecular gas for the individual nuclei should be used with caution"]
+- not stated (card): Clean thresholds, iteration counts and clean box definitions; Cell size and image size; Line-free channels used for continuum subtraction; Self-calibration solution intervals; Robust/weighting details beyond natural vs uniform; Optimization method for choosing kinematic model parameters (apparently by eye); Rotation curve tabulation for model; Moment-map clipping thresholds; Data cube product not…
+
+### 2019ApJ...882...10N: Resolved [C II] Emission from z &gt; 6 Quasar Host-Companion Galaxy Pairs (2019; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the resolved [C II] and dust continuum structure, kinematics and dynamical masses of z>6 quasar hosts and their companion galaxies, and does the quasar alter their FIR properties?
+- processing.calibration.self_calibration: Several rounds of phase-only self-calibration for PJ231-20 only [2 Observations and Data Reduction: "the continuum flux of the quasar was bright enough to perform several rounds of phase-only self-calibration"]
+- step 1: Calibrate and image continuum and cubes
+  - method: ALMA pipeline, combine with compact data, flag, self-cal PJ231-20, tclean natural weighting, uvcontsub [2 Observations and Data Reduction: "All this was done using standard routines available in CASA."]
+  - software: CASA, tclean, uvcontsub
+  - parameter: 16-channel averaging (~35 km/s) [2 Observations and Data Reduction: "spectrally averaged over 16 channels ($\approx$31 MHz or $\approx$35 km s$^{-1}$)"]
+  - validation: Robust 0.5 imaging compared; choice does not affect analysis [2 Observations and Data Reduction: "This choice does not affect the analysis presented in this paper."]
+- limitation (authors): Marginal resolution cannot rule out merging clumps; size estimates uncertain by factor 2 [4.4 Constraints on Dynamical Mass: "the resolution is insufficient to rule out other possible scenarios, such as merging clumps."]
+- not stated (card): Line-free channel ranges for continuum and uvcontsub; Image size, cell size, clean threshold and masks; CASA version; Self-calibration solution intervals for PJ231-20; Custom kinematic fitting code not released; priors, bootstrap details, chain lengths; Flux calibrator and flux scale uncertainty; Regions/uv-range for combining with 2015.1.01115.S data; Exact Tdust/beta fiducial values for the spa…
+
+### 2019ApJ...871...30I: The Size, Shape, and Scattering of Sagittarius A* at 86 GHz: First VLBI with ALMA (2019; milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: What are the intrinsic size and shape of Sgr A* at 86 GHz, and what do long ALMA baselines imply for accretion/jet models and interstellar scattering?
+- processing.calibration.self_calibration: Station gains from self-cal to closure-only calibrator images and to Gaussian (215x140 uas, PA 80 deg, 2.0 Jy) on <0.75 Glambda [4.2.1 Self-calibration: "we used a visibility function corresponding to a Gaussian source size of 215 by 140 $\mu$as with a position angle of 80$^\circ$ (east of north) and a total flux density of 2.0$\pm 0.2$ Jy"]
+- step 2: Amplitude self-calibration of stations
+  - method: Self-cal to calibrator closure images and to Gaussian Sgr A* model on short baselines; flag NL and PT [4.2.1 Self-calibration: "We flagged the VLBA stations NL and PT, which showed extreme signal loss in both methods."]
+  - software: eht-imaging
+  - assumption: Gaussian 215x140 uas, 2.0 Jy on baselines <0.75 Glambda [4.2.1 Self-calibration: "self-calibrated all Sgr A$^{\ast}$ visibility amplitudes within 0.75G$\lambda$"]
+  - validation: Two methods gave comparable gains [4.2.1 Self-calibration: "The two methods gave comparable gain solutions, hence validating the Gaussian assumption for short-baseline measurements"]
+- step 3: Image scattered and intrinsic Sgr A*
+  - method: RML imaging with MEM, TV and second-moment regularizers (10% weight), then stochastic optics, two iterations with self-cal [4.2.2 Imaging with regularized maximum …: "Two iterations of stochastic imaging and self-calibration are done for convergence."]
+  - software: eht-imaging, Stochastic Optics
+  - parameter: J18 kernel 159.9 x 79.5 uas, PA 81.9 deg; alpha=1.38, r_in=800 km [4.2.2 Imaging with regularized maximum …: "we used the scattering kernel (with a size of (159.9 $\times$ 79.5) $\mu$as, PA of 81.9$^\circ$) and power spectrum (with $\alpha=1.38$ and $r_\mathrm{in}=800$ km)"]
+  - fitting: gradient descent regularized maximum likelihood [4.2.2 Imaging with regularized maximum …: "This method is now included and implemented in the `eht-imaging library` via gradient descent minimization"]
+  - validation: Synthetic data tests on four GRMHD snapshots [4.2.3 Uncertainties of image-derived pa…: "we performed imaging tests on simulated observations where the intrinsic model image was known"]
+- limitation (authors): Single epoch cannot separate refractive noise from intrinsic substructure; VLBA performance poor [7 Summary: "using our single observation with ALMA, we cannot conclusively determine whether those detections are entirely due to refractive noise"]
+- not stated (card): Final eht-imaging parameters (image size, pixel size, field of view, iterations, regularizer weights beyond 10%); Exact flagging and scan-averaging times; Details of HOPS calibration scripts (in prep. reference); Flux scale uncertainty for ALMA; Access to the correlated VLBI data (MB007 / 2016.1.00413.V) and its format; Which previous experiments' Gaussian fit was used for second-moment constraint
+
+### 2021A&A...651A..35O: Heavy-element Rydberg transition line emission from the post-giant-evolution star HD 101584 (2021; evolved_stars, stellar_physics; observational_alma_primary)
+- question: Are two lines detected at 232 and 354 GHz towards HD 101584 Rydberg transitions (X30alpha, X26alpha) of neutral atoms heavier than carbon, and what gas conditions explain them?
+- processing.calibration.self_calibration: self-calibration on the strong continuum, Band 6 data only [Observations / ALMA data: "Subsequently, self-calibration was performed on the strong continuum for the Band 6 data."]
+- step 1: calibrate and image the ALMA data
+  - method: CASA calibration (Tsys, WVR, bandpass, gain), Band 6 self-calibration, continuum subtraction, tclean imaging [Observations / ALMA data: "After corrections for the time and frequency dependence of the system temperatures, and rapid atmospheric variations at each antenna using water vapour radiometer data, bandpass and gain calibration were performed."]
+  - software: CASA, tclean
+  - parameter: Bandpass: J1107-4449 (TA1-TA3), J1037-2934 and J0635-7516 (TA4); gain: J1131-5818 (TA1), J1132-5606 (TA2-TA4) [Observations / ALMA data: "Bandpass calibration was performed on J1107-4449 (TA1, TA2, TA3) and J1037-2934 and J0635-7516 (TA4), and gain calibration on J1131-5818 (TA1), J1132-5606 (TA2, TA3, TA4)."]
+  - parameter: Briggs robust 0.5 for final line images [Observations / ALMA data: "The final line images were created using Briggs robust weighting (0.5)."]
+  - assumption: absolute flux calibration accurate to within 5% [Observations / ALMA data: "Based on the calibrator fluxes, we estimate the absolute flux calibration to be accurate to within 5%."]
+- limitation (authors): a non-LTE model with chemistry, ionisation, excitation and radiative transfer is beyond the scope [A simple model in strict LTE: "A complete analysis of the data requires a non-LTE model that takes into account chemistry, ionisation, excitation, and radiative transfer in a source of arbitrary geometry."]
+- limitation (authors): the two lines were observed at different times so variability could affect the flux ratio [Footnote 3: "The observations of the two lines were made at different times; therefore, it is possible that variability has affected the ratio of their fluxes."]
+- limitation (authors): continuum from the line-emitting source is contaminated by dust [Line identification: "The continuum flux from the line-emitting source is difficult to estimate due to contamination with dust continuum emission."]
+- not stated (card): CASA version(s) used for each execution block and whether the ALMA pipeline or manual scripts were used; Mapping of ALMA project codes (2012.1.00248.S, 2015.1.00078.S, 2018.1.00753.S) to the datasets TA1-TA4 and which execution blocks were combined; Target coordinates / phase centre; Line-free channels and polynomial order for continuum subtraction; tclean cell size, image size, deconvolver, mask…
+
+### 2012A&A...548A..69N: Outflow structure and velocity field of Orion source. I. ALMA imaging of SiO isotopologue maser and thermal emission (2012; star_formation, astrochemistry; observational_alma_primary)
+- question: What are the large-scale structure and velocity field of the Source I outflow in Orion BN/KL as traced by SiO isotopologues, and is the J=5-4 v=1 emission maser?
+- processing.calibration.self_calibration: single step phase-only on strongest emission feature in each cube; more steps did not help [2 Observations and Imaging: "In each data cube, we used the strongest emission feature to perform a single step, phase-only self-calibration."]
+- step 1: Continuum subtraction and cleaning of SiO cubes
+  - method: uvcontsub on line-free channels, clean with Briggs weighting, one phase-only self-cal [2 Observations and Imaging: "The first step of the SiO line imaging process was the continuum subtraction."]
+  - software: CASA
+  - parameter: robust=1, 0.3" pixels, 30" image [2 Observations and Imaging: "a pixel size of 0$\ensuremath{''}$3, an imagesize of 30$\ensuremath{''}$ $\times$ 30$\ensuremath{''}$ and a Briggs weighting with a robustness parameter of 1"]
+  - validation: further self-cal steps tested, no significant improvement [2 Observations and Imaging: "Tests with further steps of self-calibration did not improve the image quality significantly."]
+- result: 28SiO v=1 peak flux = 44.97 ± not stated Jy [Table 2: "SiO v=1 | 215.59595 | 5-4 | 1.75$\times$1.18; 0.98 | 44.97 | 28 | $\geq$580"]
+- result: 28SiO v=0 peak flux = 72.96 ± not stated Jy [Table 2: "SiO v=0 | 217.10498 | 5-4 | 1.72$\times$1.17; 1.29 | 72.96 | 55 | $\geq$50"]
+- limitation (authors): Vibrationally excited emission unresolved at ~1.7"x1.2"; maser nature needs confirmation [4.2: "If confirmed, this would be the first detection of high-frequency SiO maser emission"]
+- not stated (card): Line-free channel ranges for uvcontsub and fit order; Deconvolver, clean threshold, masks and iterations; Self-calibration solint; CASA version; Which SV datasets/execution blocks and any reprocessing; Region/angular size used for brightness temperature; Exact velocity-channel rebinning procedure
+
+### 2025ApJ...989...83B: CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging (2025; agn_and_quasars, nearby_galaxies; archival_reuse)
+- question: Is there molecular gas in the inner kpc of M87 (CO emission from the circumnuclear disk, ionized-gas filaments and dusty clouds, or CO absorption against the nucleus), as probed by archival ALMA imaging?
+- processing.calibration.self_calibration: Phase (and usually amplitude) self-calibration, final solint per integration (per scan); amplitude self-cal not used for X20d and X1b0 when DR decreased [Calibration Processes: "We applied phase (and usually amplitude) self-calibration with final solution intervals that were per integration (per scan)."] [Calibration Processes: "amplitude self-calibration was not adopted when the multi-frequency synthesis (MFS) image peak/rms dynamic range (DR) decreased noticeably compared to the final phase-only products"]
+- step 1: Calibrate 12-m ALMA data
+  - method: Standard CASA pipeline calibration with the pipeline version appropriate to each data set; additional manual flagging; X20f re-calibrated after removing mis-flagged ozone channels; flux calibrator fluxdensity rescaled by up to 2% per spw f… [Calibration Processes: "we applied standard pipeline calibrations to the 12-m data using the appropriate"] [Manual Flagging: "Removing these manually-flagged channels, re-calibrating the raw visibilities, and re-imaging a new MS resulted in more consistent spectral behavior."]
+  - software: CASA, setjy
+  - parameter: setjy flux density rescaling of up to 2% for individual spws (2015.1.00030.S, 2016.1.00021.S) [Calibration Processes: "for individual spws by up to 2% to ensure more continuous flux densities in image-plane spectral cubes."]
+  - parameter: Additional manual flagging for high antenna temperature, amplitude disagreement and poor bandpass calibration near spw edges [Manual Flagging: "We manually flagged a limited number of additional visibilities based on high antenna temperature, amplitude disagreement, and poor bandpass calibration near spw edges."]
+  - assumption: APP-mode calibration adopted for the .V programs; no interferometric-mode phase self-calibration possible [Calibration Processes: "We adopted the APP-mode results since other projects covered redshifted CO(2$-$1) and because reconstructing the ALMA interferometric-mode calibration tables is beyond the scope of this archival project (cite: goddi19)"]
+  - validation: Inter-spw continuum mismatches of 1-3% checked against expected relative flux calibration errors [Calibration Processes: "In adjacent or overlapping spws, peak continuum spectra show mismatches at the 1–3% level"]
+- step 2: Self-calibrate and image continuum (MFS)
+  - method: Phase (and usually amplitude) self-calibration loops using gaincal with MFS Stokes I tclean images (Briggs weighting; some uniform/natural) [MFS and Spectral Imaging: "As a part of the self-calibration loops, we imaged each MS into a Stokes $I$ MFS map using Briggs weighting (cite: briggs95) in the"] [Atmospheric Modeling: "clean phase solutions can generally be obtained through iterative self-calibration by using the"]
+  - software: CASA, tclean, gaincal
+  - parameter: Final solution intervals per integration (per scan); resulting dynamic ranges from several hundred to ~9000 [Calibration Processes: "We applied phase (and usually amplitude) self-calibration with final solution intervals that were per integration (per scan)."] [Calibration Processes: "DRs spanned from several hundred up to $\sim$9000"]
+  - validation: Amplitude self-calibration dropped where the MFS peak/rms dynamic range decreased relative to the phase-only product [Calibration Processes: "amplitude self-calibration was not adopted when the multi-frequency synthesis (MFS) image peak/rms dynamic range (DR) decreased noticeably compared to the final phase-only products"]
+- step 11: Measure ACA/ALMA continuum light curve and spectral index
+  - method: Pipeline calibration and phase-only self-calibration of ACA data, MFS imaging, combine peak flux densities with SMA monitoring, fit mm/sub-mm spectral index; simulate DRW light curves to estimate non-contemporaneous index error [Light Curves and Spectral Slopes: "We obtained these archival data and applied standard pipeline calibration followed by phase-only self-calibration prior to MFS imaging"] [Light Curves and Spectral Slopes: "We then collected these $\alpha^{\prime}$ for a given time separation across the entire synthetic light curve"]
+  - software: CASA
+  - parameter: Intrinsic alpha = -0.6 for the mock light curves; Band 6 light curve 2 yr with one-day cadence [Light Curves and Spectral Slopes: "Additional Bands 3 and 7 light curves were then created using a consistent (intrinsic) $\alpha_\mathrm{intr} = -0.6$ at each time epoch."]
+  - fitting: Spectral-index fit with errors including rms and absolute flux scaling uncertainties [Light Curves and Spectral Slopes: "Fit errors include both rms and absolute flux scaling uncertainties."]
+  - validation: Index uncertainty calibrated with synthetic light curves; real 12-m uncertainty likely underestimated by a factor >=3 [Light Curves and Spectral Slopes: "underestimates the true uncertainty by at least a factor of 3"]
+- result: mm/sub-mm spectral index alpha' from ACA data (program 2021.1.01398.S) = -0.60 ± 0.07 dimensionless [Light Curves and Spectral Slopes: "we measured an apparent mm/sub-mm spectral index $\alpha^{\prime} = -0.60\pm0.07$"]
+- result: mm/sub-mm spectral index alpha' from ALMA 12-m data (2012.1.00661.S and 2015.1.01352.S) = -0.47 ± 0.11 (likely underestimated by >= 3x) dimensionless [Light Curves and Spectral Slopes: "result in a best-fit $\alpha^{\prime} = -0.47\pm0.11$"]
+- limitation (authors): Bandpass calibration effects on tau_0 and tau_CO are not quantified [CO Absorption-line Properties: "However, we do not attempt to quantify here the bandpass calibration effects on"]
+- limitation (authors): CO(3-2) and CO(2-1) opacities are less reliable than CO(1-0), so LTE reconciliation is not attempted [Temperature and Column Densities: "Unfortunately, neither $\tau_\mathrm{CO(3-2)}$ or $\overline{\tau}_\mathrm{CO(2-1)}$ values are as reliable as is $\overline{\tau}_\mathrm{CO(1-0)}$"]
+- limitation (authors): Xa1 maximum recoverable scale cannot entirely rule out diffuse emission over larger regions [Channel Maps: "cannot entirely rule out diffuse emission spread out over a couple of the larger regions with $\sim$5$''$ extent"]
+- not stated (card): CASA and pipeline versions used for each data set (only 'the appropriate pipeline version' is given); Briggs robust value for MFS maps, cell size, image size, niter/threshold, deconvolver and masks for tclean MFS and cube imaging; Which flux calibrator and which spws had setjy rescaling, and the exact rescale factors per spw; Self-calibration details: refant, solint sequence, number of loops, whi…
+
+### 2024ApJ...971L..33K: An HI-absorption-selected Cold Rotating Disk Galaxy at z ≈ 2.193 (2024; high_z_galaxies; observational_alma_primary)
+- question: Is the CO(3-2) emitting galaxy DLA-B1228g, associated with the z~2.1929 high-metallicity DLA towards PKS B1228-113, a cold rotating disk or a merger, and what are its kinematics and dynamical mass?
+- processing.calibration.self_calibration: Three rounds of continuum imaging and phase-only self-cal, then one round of amplitude-and-phase self-cal; gains measured with gaincalR; self-cal continuum imaging with Briggs robust -0.5 [ALMA Observations and Data Analysis: "The self-calibration process involved three rounds of continuum imaging and phase-only self-calibration, followed by one round of amplitude-and-phase self-calibration and imaging,"] [ALMA Observations and Data Analysis: "In the self-calibration procedure, the antenna-based gains were measured using the routine gaincalR (cite: Chowdhury20)."]
+- step 1: Calibrate and self-calibrate the visibilities
+  - method: ALMA pipeline calibration in CASA, manual flagging, then three phase-only and one amplitude-and-phase self-calibration rounds on the QSO continuum [ALMA Observations and Data Analysis: "We used the standard ALMA pipeline in the Common Astronomy Software Application package (cite: casa22; Hunter23) to carry out the initial data editing and calibration of the visibility dataset."] [ALMA Observations and Data Analysis: "The self-calibration process involved three rounds of continuum imaging and phase-only self-calibration, followed by one round of amplitude-and-phase self-calibration and imaging,"]
+  - software: CASA, gaincalR
+  - parameter: Self-cal continuum imaging with Briggs weighting, robust = -0.5 [ALMA Observations and Data Analysis: "The continuum imaging in the self-calibration procedure used Briggs weighting (cite: Briggs95) with a robust value of $-0.5$."]
+  - parameter: Antenna-based gains measured with gaincalR [ALMA Observations and Data Analysis: "In the self-calibration procedure, the antenna-based gains were measured using the routine gaincalR (cite: Chowdhury20)."]
+  - assumption: The bright mm QSO PKS B1228-113 in the field allows self-calibration of the target field [ALMA Observations and Data Analysis: "PKS B1228-113 was chosen as the pointing centre as it is bright at mm wavelengths, allowing self-calibration of the target field."]
+  - validation: Self-calibration stopped when no further improvement in image or image/visibility residuals [ALMA Observations and Data Analysis: "after which no further improvement was seen in either the image or the image/visibility residuals upon further self-calibration"]
+- step 2: Make continuum-subtracted CO(3-2) cubes and choose the final cube
+  - method: Apply self-cal gains to the full-resolution CO visibilities, subtract continuum, and make tclean cubes at several velocity resolutions and robust values; pick robust +1 at 35 km/s for modelling [ALMA Observations and Data Analysis: "We next applied the antenna-based gains obtained from the self-calibration procedure to the CO(3–2) visibility dataset at the original spectral resolution, and subtracted out the continuum emission from the calibrated visibilities."] [ALMA Observations and Data Analysis: "We then used the task tclean to make spectral cubes from the residual visibilities, using a range of velocity resolutions (25, 35, 50 km s$^{-1}$) and values of the robust parameter (-1, -0.5, 0, +0.5, +1)."]
+  - software: CASA, tclean
+  - parameter: Clean threshold 0.5 sigma (per-channel RMS); square mask ~2.5'' x 2.5'' [ALMA Observations and Data Analysis: "For all cubes, the CO(3–2) line emission was cleaned down to a threshold of 0.5$\sigma$, where $\sigma$ is the per-channel RMS noise."] [ALMA Observations and Data Analysis: "For cleaning, we used a square mask of size $~2.5'' \times 2.5''$, enclosing the CO emission for all frequency planes."]
+  - parameter: Final cube: robust +1, 35 km/s channels [ALMA Observations and Data Analysis: "We chose a robust value of +1 and a velocity resolution of 35 km s$^{-1}$ for the final spectral cube used for the kinematic modelling"]
+  - validation: Choice balances per-channel sensitivity, S/N and angular resolution (Table 1) [ALMA Observations and Data Analysis: "based on a balance between the per-channel sensitivity and signal-to-noise ratio, and the angular resolution"]
+- result: Flux density of PKS B1228-113 in the final continuum image = 24.85 ± 0.02 mJy [ALMA Observations and Data Analysis: "PKS B1228-113 has a flux density of $24.85 \pm 0.02$ mJy in this image."]
+- limitation (authors): Intermediate angular resolution and sensitivity, only 2-3 beams across the CO region, so a merger can mimic a disk [Results: "we note that the current ALMA CO(3–2) image has intermediate angular resolution and sensitivity, with only $2-3$ synthesized beams across the CO-emitting region."]
+- limitation (authors): Dynamical mass error includes only the fit error; spherical assumption dominates the uncertainty [The dynamical mass of DLA-B1228g: "We emphasize that the quoted error only includes the error from the fit."]
+- not stated (card): CASA version and ALMA pipeline version used for calibration (only 'casa22; Hunter23' cited); Flux, bandpass and phase calibrators and the flux scale uncertainty; Spectral averaging used for self-calibration, self-calibration solution intervals, and gaincalR settings; Line-free channels / velocity range used for continuum subtraction and the continuum model, and the rest frequency adopted for CO(3…
+
+### 2021ApJ...917...99Y: ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System at the Epoch of Reion… (2021; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the sub-kpc spatial structure, lensing configuration, physical properties, and gas kinematics of the host galaxy of the z=6.51 gravitationally lensed quasar J0439+1634?
+- processing.calibration.self_calibration: Phase self-calibration using continuum data, applied to line-only data [Data: "We then use the continuum data to perform phase self-calibration and apply the self-calibration model to the line-only data."]
+- step 1: Calibrate visibilities, subtract continuum, and image continuum and [C II] line
+  - method: Fit linear continuum to line-free channels with UVCONTSUB, perform phase self-calibration on continuum and apply to line visibilities, and clean both using TCLEAN with Briggs weighting. [Data: "We use the task UVCONTSUB [^1] to fit a linear function to the line-free channels, which models the continuum, and subtract the continuum model to obtain the line-only visibility."] [Data: "We then use the continuum data to perform phase self-calibration and apply the self-calibration model to the line-only data."]
+  - software: CASA, UVCONTSUB, TCLEAN
+  - parameter: robust = 0.5 [Data: "We clean the continuum and line data with the CASA task TCLEAN using Briggs weighting, setting robust $=0.5$."]
+  - parameter: linear function for UVCONTSUB [Data: "We use the task UVCONTSUB [^1] to fit a linear function to the line-free channels, which models the continuum, and subtract the continuum model to obtain the line-only visibility."]
+  - fitting: Linear fit in UVCONTSUB [Data: "We use the task UVCONTSUB [^1] to fit a linear function to the line-free channels, which models the continuum, and subtract the continuum model to obtain the line-only visibility."]
+- limitation (authors): The high-resolution C43-8 ALMA configuration observations from Program 2018.1.00566.S were not yet completed. [Data: "The high-resolution observation with configuration C43-8 is not completed at the time of this paper’s writing."]
+- limitation (authors): The inclination angle i of the host galaxy rotation axis remains unconstrained, leaving sin(i) dependencies in the dynamical mass, gas fraction, and SMBH-to-host mass ratio. [Abstract: "However, our data cannot be fit by an axisymmetric thin rotating disk, and the inclination of the rotation axis, $i$, remains unconstrained."]
+- limitation (authors): The SIE + Sérsic lensing model is an over-simplification that leaves statistically significant residual clumps (4.9% of continuum peak, 8.1% of [C II] peak), and Table 1 uncertainties only include statistical errors. [Table 1: "Besides, note that the uncertainties only include statistical errors, and do not take into account the systematic errors introduced by the model choice (see Section 3.5 for more discussion)."]
+- not stated (card): Exact frequency/channel ranges used as line-free channels in UVCONTSUB; Self-calibration solution interval (solint) and number of self-calibration iterations; TCLEAN imaging parameters: cell size, image size, stopping threshold, masking, and spectral channel width of the cleaned cube; Flux calibrator identity; Priors and MCMC sampler configuration (number of walkers, steps, burn-in) in VISILENS; …
+
+### 2025MNRAS.537..520Z: WISDOM Project - XXII. A 5 per cent precision CO-dynamical supermassive black hole mass measurement in the galaxy NGC 383 (2025; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Measure the supermassive black hole mass in the nearby lenticular galaxy NGC 383 with unprecedented spatial resolution and precision using ALMA CO(2-1) dynamical modelling.
+- processing.calibration.self_calibration: Two runs of phase-only self-calibration using CASA task gaincal, decreasing solution interval from 5 to 1 min, increasing continuum dynamic range from ~1000 to ~4000; applied to line SPWs [2.3 Continuum emission: "We thus performed two runs of phase-only self-calibration using the CASA task"] [2.4.1 Imaging: "After applying the continuum self-calibration to the line SPWs, the CO line emission was isolated in the _𝑢𝑣_ -plane using the CASA task `uvcontsub`, which forms a continuum model from linear fits to linefree channels in frequency and then subtracts this model from the visibilities."]
+- step 1: Calibrate, flag, self-calibrate, and image the 1.3 mm continuum emission and measure its properties
+  - method: Calibrate tracks with ALMA pipeline, manually flag edge-channel noise spikes in continuum SPWs using flagdata, exclude the first C43-10 track due to poor weather decorrelation, concatenate the remaining four tracks with concat, perform two… [2.2 Observations and data reduction: "We therefore excluded this track from the rest of the analysis and combined the remaining calibrated (two new and two previous) tracks from all three ALMA projects using the CASA task `concat` ."] [2.2 Observations and data reduction: "We therefore excluded this track from the rest of the analysis and combined the remaining calibrated (two new and two previous) tracks from all three ALMA projects using the CASA task"]
+  - software: CASA, plotms, flagdata, concat, gaincal, tclean, imfit
+  - parameter: Self-calibration solution intervals decreased from 5 to 1 min; Högbom deconvolver; pixel size 0.01 arcsec; image size 960 × 960 pixels; Briggs robust = 2 [2.2 Observations and data reduction: "All the data products were created with a Högbom deconvolver (Högbom 1974), a pixel size of 0 [′′] _._ 01 and an image size of 960×960 pixels, to reduce file sizes while sampling the synthesised beams properly."] [2.3 Continuum emission: "The final continuum image was created using the `tclean` task in multi-frequency synthesis mode (Rau & Cornwell 2011), with no spectral dependence, and Briggs weighting with a robust parameter of 2 (equivalent to natural weighting)."]
+  - fitting: 2D Gaussian fit to the continuum source using CASA imfit [2.3 Continuum emission: "The deconvolved size of the source, derived by fitting a two-dimensional (2D) Gaussian with the CASA task `imfit`, is consistent with it being spatially unresolved (i.e. a point source)."]
+  - validation: Tested imaging the continuum with robust = 0.5 to verify source remains unresolved; compared integrated flux density with North et al. (2019) [2.3 Continuum emission: "The source remains unresolved if we image the continuum with a different robust parameter (e.g. 0 _._ 5)."]
+- step 2: Image the 12CO(2-1) line cube, create moment maps and PVDs, and measure corrected total line flux
+  - method: Apply continuum self-calibration to line SPWs, subtract continuum in uv-plane with uvcontsub, image CO(2-1) cube with tclean, generate masked moment maps and PVDs, and compute true total CO flux correcting for clean/dirty beam area mismatc… [2.4.1 Imaging: "After applying the continuum self-calibration to the line SPWs, the CO line emission was isolated in the _𝑢𝑣_ -plane using the CASA task `uvcontsub`, which forms a continuum model from linear fits to linefree channels in frequency and then subtracts this model from the visibilities."] [2.4.2 Moment maps: "We visualise the final data cube by creating zeroth-moment (integrated-intensity) and first-moment (intensity-weighted mean line-of-sight velocity) maps using a masked moment technique (e.g. Dame 2011)."]
+  - software: CASA, uvcontsub, tclean
+  - parameter: Briggs robust = 0.5 (and robust = 2.0 for warp/non-circular motion analysis); channel width 20 km s^-1; rest frequency 230.538 GHz; clean threshold 1.5 sigma_RMS; moment mask smoothed by 3× beam FWHM spatially and 11 channels Hanning spect… [2.4.1 Imaging: "We adopted a channel width of 20 km s [−][1], larger than that of North et al. (2019; 10 km s [−][1] ) but necessary as the combined data cube used here generally has lower signal-to-noise ratios ( _𝑆_ / _𝑁_ )."] [2.4.2 Moment maps: "We thus chose the size of the filters (3 times the synthesised beam FWHM spatially and 11 channels spectrally) and the clipping threshold (0 _._ 5 _𝜎_ RMS of the unsmoothed data cube or ≈ 6 _._ 5 _𝜎_ RMS of the smoothed cube) to optimise the trade-off between flux recovery and noise reduction."]
+  - assumption: Linear frequency dependence for continuum subtraction in uvcontsub [2.4.1 Imaging: "After applying the continuum self-calibration to the line SPWs, the CO line emission was isolated in the _𝑢𝑣_ -plane using the CASA task `uvcontsub`, which forms a continuum model from linear fits to linefree channels in frequency and then subtracts this model from the visibilities."]
+  - fitting: Linear fits to line-free channels in uvcontsub [2.4.1 Imaging: "After applying the continuum self-calibration to the line SPWs, the CO line emission was isolated in the _𝑢𝑣_ -plane using the CASA task `uvcontsub`, which forms a continuum model from linear fits to linefree channels in frequency and then subtracts this model from the visibilities."]
+  - validation: Verified Jorsater & van Moorsel flux correction with additional tclean runs cleaned to 1 sigma_RMS and 0.7 sigma_RMS and compared with IRAM 30-m single-dish flux [2.4.3 Total flux: "We verified this result by creating two other data cubes cleaning down to thresholds of 1 _𝜎_ RMS and 0 _._ 7 _𝜎_ RMS, respectively."] [2.4.3 Total flux: "Our computed total [12] CO(2-1) flux is slightly smaller than that reported by North et al. (2019), but it is consistent with the single-dish [12] CO(2-1) flux of 74 _._ 4 ± 2 _._ 8 Jy km s [−][1] from Ocaña Flaquer et al. (2010) considering ALMA’s flux calibration uncertainty (≈ 10%)."]
+- result: 1.3 mm continuum integrated flux density = 71.0 ± ±0.6 mJy [2.3 Continuum emission: "As shown in Figure 1, the continuum image reveals only one source near the galaxy’s kinematic centre (best-fitting SMBH position; see Section 3.5), with an integrated flux density of 71 _._ 0 ± 0 _._ 6 mJy, consistent (within the usual ≈ 10% ALMA flux calibration uncertainty) with that reported by North et al. (2019)."]
+- result: 1.3 mm continuum peak intensity = 72.7 ± ±0.6 mJy beam^-1 [Figure 1 caption: "Contour levels are equally spaced between the peak intensity of 72 _._ 7 ± 0 _._ 6 mJy beam [−][1] and 50 times the RMS noise."]
+- result: True corrected total 12CO(2-1) flux (T) = 77.6 ± ±0.9 Jy km s^-1 [2.4.3 Total flux: "Substituting _𝐶_ 1 = 61 _._ 5 Jy km s [−][1] and _𝑅_ 1 = 67 _._ 4 ± 1 _._ 3 Jy km s [−][1] from the deeper `tclean` run, and _𝐶_ 2 = 51 _._ 4 Jy km s [−][1] and _𝑅_ 2 = 109 _._ 5 ± 1 _._ 3 Jy km s [−][1] from the shallower `tclean` run, we obtain _𝜖_ = 0 _._ 24 ± 0 _._ 01 and _𝑇_ = 77 _._ 6 ± 0 _._ 9 Jy km s [−][1] ."]
+- result: Clean-to-dirty beam area ratio correction factor (epsilon) = 0.24 ± ±0.01 dimensionless [2.4.3 Total flux: "Substituting _𝐶_ 1 = 61 _._ 5 Jy km s [−][1] and _𝑅_ 1 = 67 _._ 4 ± 1 _._ 3 Jy km s [−][1] from the deeper `tclean` run, and _𝐶_ 2 = 51 _._ 4 Jy km s [−][1] and _𝑅_ 2 = 109 _._ 5 ± 1 _._ 3 Jy km s [−][1] from the shallower `tclean` run, we obtain _𝜖_ = 0 _._ 24 ± 0 _._ 01 and _𝑇_ = 77 _._ 6 ± 0 _._ 9 Jy km s [−][1] ."]
+- result: Maximum observed line-of-sight velocity (blueshifted) = 635 ± not stated km s^-1 [2.4.4 PVD: "we detect velocities up to ≈ 635 km s [−][1] in the blueshifted half of the disc,"]
+- limitation (authors): Low S/N (~3 per synthesised beam per 20 km s^-1 channel) in the high-resolution cube impairs the direct constraint on inclination and prevents breaking the degeneracy between a PA warp and radial/non-circular motions. [3.4 Prior distributions: "Although our data cube has a substantially higher angular and thus spatial resolution than the previous one from North et al. (2019), a MCMC fit with uninformative priors does not guarantee a more precise SMBH mass because of the lower _𝑆_ / _𝑁_ of our data cube (typically ≈ 3 per synthesised beam per 20 km s [−][1] c…"]
+- limitation (authors): The relatively low inclination of the gas disc (38 deg) dominates the SMBH mass error budget (~55% of the uncertainty). [4.2.2 Other uncertainties: "With an inclination of only 38°, the inclination uncertainty contributes ≈ 55% to the NGC 383 SMBH mass uncertainty budget."]
+- limitation (authors): The ~15% uncertainty on the adopted galaxy distance (66.6 ± 9.9 Mpc) is larger than all fitted uncertainties combined and is not included in the quoted SMBH mass uncertainty. [4.2.2 Other uncertainties: "We note that every uncertainty discussed so far is much smaller than that introduced by the ≈ 15% uncertainty of the adopted distance (66 _._ 6 ± 9 _._ 9 Mpc; Freedman et al. 2001)."]
+- not stated (card): Exact frequency/channel ranges defined as line-free channels for uvcontsub and continuum imaging; Exact edge channel numbers flagged manually with flagdata in the continuum SPWs; Whether primary beam correction was applied to the continuum image and CO data cubes; Interactive tclean clean mask regions; Exact RMS noise of the natural-weighted (robust = 2.0) CO data cube used in Section 4.1; Exact …
+
+### 2026A&A...709A..93D: Tentative detection of the glycine isomer glycolamide in a hot molecular core (2026; astrochemistry, star_formation; archival_reuse)
+- question: Whether the glycine isomer glycolamide is present in the hot molecular core G358.93-0.03 MM1 and how its abundance compares to chemically related amides (formamide and acetamide) across environments.
+- processing.calibration.self_calibration: Three iterations of phase self-calibration with solution intervals 'inf', '30.25s', and 'int', applied to line data [Data Reduction: "Three iterations of phase self-calibration were performed to improve phase stability, using solution intervals of ‘inf’, ‘30.25s’, and ‘int’, respectively."] [Data Reduction: "The final self-calibration solutions were applied to the original spectral-line data to correct phase errors across all channels."]
+- step 1: Calibrate visibilities, perform continuum self-calibration, and image continuum and line cubes
+  - method: Initial calibration with ALMA pipeline, iterative line-free channel selection starting from findcont (< 3 sigma), three rounds of phase self-calibration with MT-MFS imaging, UV continuum subtraction with uvcontsub, and multiscale imaging o… [Data Reduction: "We then used the line-free channels obtained by the CASA pipeline task $findcont$ as an initial estimate for the continuum-fitting and iteratively exclude channels affected by line emission until no line-emission channels are found over 3$\sigma$."] [Data Reduction: "Three iterations of phase self-calibration were performed to improve phase stability, using solution intervals of ‘inf’, ‘30.25s’, and ‘int’, respectively."]
+  - software: CASA, findcont, uvcontsub
+  - parameter: solint = 'inf', '30.25s', 'int' [Data Reduction: "Three iterations of phase self-calibration were performed to improve phase stability, using solution intervals of ‘inf’, ‘30.25s’, and ‘int’, respectively."]
+  - parameter: MT-MFS with two Taylor terms; multiscale scales = 0, 5, 15, 50, 150 pixels (continuum) and 0, 5, 15, 50 pixels (line) [Data Reduction: "Each iteration employed a multi-term multi-frequency synthesize (MT-MFS) deconvolver with two Taylor terms and multiscale cleaning scales of 0, 5, 15, 50, and 150 pixels."] [Data Reduction: "continuum-subtracted visibilities were imaged with the multiscale deconvolver, using the same weighting scheme and scales (0, 5, 15, and 50 pixels)."]
+  - parameter: Briggs weighting robust = 0.5 [Data Reduction: "Briggs weighting with a robust parameter of 0.5 was adopted throughout."]
+  - fitting: First-order polynomial fit to line-free channels in uvcontsub [Data Reduction: "The continuum emission was then removed in the UV domain using the CASA task uvcontsub, where the line-free channels were fitted with a first-order polynomial."]
+  - validation: Line-cube sensitivity (~0.5 K per 0.5 km s^-1 channel) checked against expected thermal noise; continuum subtraction compared with STATCONT [Data Reduction: "The final line-cube sensitivity achieved was $\sim$0.5 K per 0.5 km s$^{-1}$ channel, consistent with the expected thermal noise after self-calibration."] [Molecular line identifications: "We also assessed the robustness of the continuum subtraction by comparing our CASA-based procedure with STATCONT (cite: Sanchez18)"]
+- limitation (authors): Limited bandwidth (~8 GHz), modest number of securely detected transitions (7 features), and high line density mean coincidental line blending cannot be excluded, making the GA detection tentative. [Molecular line identifications: "However, given the limited bandwidth ($\sim$8 GHz), the modest number of securely detected transitions, and the high line density of this warm HMC, a coincidental assignment cannot be excluded with the confidence required for a firm detection claim."]
+- limitation (authors): Uncertainties are affected by line blending, baseline effects, and simplifying LTE assumptions. [Spectroscopic inputs and local thermody…: "Because the uncertainties are dominated not only by the fitting procedure, but also by line blending, baseline effects, and the simplifying assumptions of the LTE model, we adopted a conservative uncertainty of 20% for the derived $T_{\rm ex}$ and $N_{\rm t}$ values."]
+- limitation (authors): With only two GA detections to date, conclusions on formation mechanisms remain preliminary. [Chemical linkages of GA with FA and AA: "Nevertheless, with only two confirmed GA detections to date, any conclusions regarding its precise formation mechanisms remain preliminary."]
+- not stated (card): CASA version and ALMA pipeline version used for calibration and imaging; Pixel cell size and image dimensions used during tclean imaging; Cleaning threshold/stopping criterion and masking strategy in tclean; Exact coordinates and aperture/beam size of the slightly offset position in G358.93 MM1 from which the analyzed spectra were extracted; Exact value of the deconvolved continuum source size th…
+
+### 2022A&A...661A.125W: Radio properties of the OH megamaser galaxy IIZw 096 (2022; nearby_galaxies, star_formation, agn_and_quasars; archival_reuse)
+- question: To study the properties of the high-resolution structure of the OH megamaser emission in IIZw 096 and its connections with environmental conditions (dense gas, compact radio continuum, merging status), and determine whether the OHMs origin…
+- processing.calibration.self_calibration: Phase-only self-calibration performed on EVN 2005Jun08 peak line channel; no self-calibration conducted for other continuum and line emission projects [Data reduction: "We have cleaned the brightest region in this peak line channel image (V $\sim$ 10886 km s$^{-1}$) and use these clean models to calibrate the data (phase-only self-calibration) prior to making all the channel images"] [Data reduction: "We conduct no self-calibration for other continuum and line emission projects."]
+- step 1: Calibrate and image EVN OH spectral-line data and combine two epochs
+  - method: Calibrate VLBI data in AIPS, perform phase-only self-calibration on the 2005Jun08 peak channel (V ~ 10886 km s^-1), image channels in DIFMAP, average 3-sigma signals over elliptical regions for OH1 and OH2, and combine the two EVN epochs w… [Data reduction: "We imported all the calibrated data into the DIFMAP package (cite: 1997ASPC..125...77S) to obtain the continuum and spectral line (OH and H I) channel images."] [Two epoch EVN results of OH megamaser e…: "we have investigated the integrated OH 1667 line spectrum by averaging the 3 $\sigma$ signals from each channel image over two elliptical regions for OH1 and OH2"]
+  - software: AIPS, DIFMAP
+  - parameter: OH 1667 MHz averaged over 10750 to 10950 km s^-1; OH 1665 MHz averaged over 11080 to 11320 km s^-1 [Two epoch EVN results of OH megamaser e…: "We have also averaged the channels of OH 1667 MHz line emission from 10750 to 10950 km s$^{-1}$"] [Two epoch EVN results of OH megamaser e…: "we have averaged the channels for this line emission (V $\sim$ 11080-11320 km s$^{-1}$, see Fig. [2](#evnspectrum))"]
+  - assumption: VLBI calibration error is ~10% of the measured flux [Two epoch EVN results of OH megamaser e…: "the VLBI calibration error ($\sim$10% of the measured flux): $\sqrt{(N \times \sigma)^{2}+(0.1 \times S_{peak})^2}$"]
+  - fitting: Gaussian model fitting to spectral line profiles (Table 2) [Table 2: "Columns (4)-(7) The Gaussian fitted model parameters"]
+  - validation: Compared integrated EVN OH line profiles with Arecibo single-dish observations and compared two epochs for variability [Two epoch EVN results of OH megamaser e…: "We can see that the detected OH line profiles are partly resolved and consistent with the Arecibo observations."]
+- result: OH 1665 MHz peak flux density at OH1 = 0.42 ± not stated (6 sigma detection) mJy/beam [Two epoch EVN results of OH megamaser e…: "As a result, the OH 1665 MHz line emission is detected at 6 $\sigma$ level with a peak of about 0.42 mJy/beam distributed at the OH1 region"]
+- result: OH 1667 MHz Gaussian amplitude (2005-OH1) = 21 ± 3 mJy [Table 2: "OH1667 | 2005-OH1 | 205724.375+170739.144 | 21 $\pm$ 3 | 10887 $\pm$ 1 | 67 $\pm$ 2 | 1429 $\pm$ 220"]
+- result: OH 1667 MHz Gaussian amplitude (2010-OH1) = 25 ± 4 mJy [Table 2: "2010-OH1 | 205724.375+170739.145 | 25 $\pm$ 4 | 10884 $\pm$ 1 | 53 $\pm$ 1 | 1359 $\pm$ 198"]
+- limitation (authors): Direct proof of a supermassive black hole requires very high angular resolution probing close to the Schwarzschild radius, which is difficult to establish. [The total mass of D1 estimated from CO …: "The direct proof of the existence of a super-massive black-hole requires very high angular resolution to probe close to the Schwarzschild radius, which has been difficult to establish (cite: 2005ARA&A..43..625L)."]
+- limitation (authors): The high gas surface density in D1 leaves open the possibility of an obscured AGN, and a few scarce pixels in the 1" spectral index map have alpha > 1.1. [The total mass of D1 estimated from CO …: "Meanwhile, the excessive-high gas surface density is also consistent with the view that there is a possibility it also hosts an obscured AGN"]
+- not stated (card): Exact aperture sizes and shapes used to extract CO(3-2) and HCO+(4-3) spectra for the regions DP1-DP6 and Reg. 1-6 (whether single-beam or integrated over a specific aperture); CASA version and pipeline version used for EVLA data reduction and imfit analysis; Cell sizes and weighting schemes used in DIFMAP when imaging EVN, VLBA, and VLA datasets; Coordinates of the double-peak regions DP1-DP6 in…
+
+### 2020MNRAS.491..427B: Sulphur-bearing and complex organic molecules in an infrared cold core (2020; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Can sulphur-bearing molecules and complex organic molecules be detected in starless infrared cold cores, and what do they reveal about temperature and chemical/physical evolution (e.g. a warm-up phase)?
+- processing.calibration.self_calibration: Self-calibration performed for the continuum band image and applied to the data cube (solint etc. not stated) [2.1 Data Reduction: "We obtained our final continuum band image after performing self-calibration, which was also applied to the ALMA data cube."]
+- step 1: Calibrate, self-calibrate and image continuum and cube
+  - method: Followed Kong et al. 2017 calibration, then CASA clean (Hogbom, Briggs) and self-calibration applied to continuum and cube [2.1 Data Reduction: "After following the same calibration procedure applied by (cite: kon17), we used the standard Hogboom algorithm available in CASA to clean the image with Briggs weighting."]
+  - software: CASA
+  - parameter: 256x256 pixels, 0.05 arcsec cell [2.1 Data Reduction: "256$\times$256 pixels map with $0.05\ensuremath{''}$ cell sizes"]
+  - parameter: 1920 channels of 980 kHz (1.26 km/s) [2.1 Data Reduction: "The ALMA data cube is formed by 1920 channels, with a frequency bandwidth of $980$ KHz per channel"]
+  - parameter: Self-calibration applied to continuum and cube [2.1 Data Reduction: "We obtained our final continuum band image after performing self-calibration, which was also applied to the ALMA data cube."]
+- result: Core total continuum flux density = 9.2e-2 ± not stated Jy [3.1 Continuum and line emission: "The total flux density of the core is 9.2 $\times$ 10$^{-2}$ Jy, while the tail is 4.6 $\times$ 10$^{-2}$ Jy."]
+- result: Tail total continuum flux density = 4.6e-2 ± not stated Jy [3.1 Continuum and line emission: "The total flux density of the core is 9.2 $\times$ 10$^{-2}$ Jy, while the tail is 4.6 $\times$ 10$^{-2}$ Jy."]
+- result: Synthesized beam = 1.4 x 0.7 ± not stated arcsec [Core and tail characteristics: "The ALMA synthesized beam is very small (1.4 $\times$0.7 arcsec"]
+- limitation (authors): 13CH3CN temperature is only an estimate because few lines are available [3.2.3 The nitriles: "we can only estimate the $^{13}$CH$_3$CN temperature"]
+- limitation (authors): Single-line OCS and 13CS in the tail give only rough column density and temperature [3.3 Molecules in the tail: "they can only provide a rough estimation of column density and temperature, because we only count with a single line for each of them."]
+- limitation (authors): Possible line contamination in the core spectrum [3.1 Continuum and line emission: "In this way, we can not rule out the possibility of contamination."]
+- not stated (card): Whether the archive pipeline products or a manual script were used for calibration, and the CASA version; Briggs robust value, clean threshold, number of iterations, masks, and primary-beam correction; Self-calibration parameters (solint, number of rounds, reference antenna, which spw/channels used); Continuum subtraction method and line-free channels used for the cube; Spectral extraction region…
+
+### 2019AJ....158..139D: First ALMA Millimeter-wavelength Maps of Jupiter, with a Multiwavelength Study of Convection (2019; solar_system; observational_alma_primary)
+- question: What do the first ALMA 1.3 and 3 mm maps of Jupiter, together with contemporaneous multiwavelength data, reveal about the ammonia distribution and moist convection in the SEB outbreak and northern plumes?
+- processing.calibration.self_calibration: Self-calibration as in earlier VLA Jupiter work [2.1 ALMA: "The procedures to produce longitude-smeared and longitude-resolved maps were then similar to those used in earlier VLA observations, including self-calibration"]
+- step 3: Make longitude-smeared and resolved maps
+  - method: Subtract limb-darkened disk, image residuals in MIRIAD with mosaicking and self-calibration, add disk back [2.1 ALMA: "The subtracted disk is added back before we model the data with radiative transfer calculations"]
+  - software: MIRIAD
+  - parameter: Disk best fit by eye so no planet remains in residual image [2.1 ALMA: "“best fit” means parameters such that there is no planet after imaging the residual u-v data"]
+  - fitting: by-eye fit [ALMA: "a limb-darkened disk was subtracted from the u-v data with a brightness temperature and limb-darkening parameter that produced a best fit (by eye) to the data"]
+- result: Best-fit disk Band 3 = Tb' = 131 K, q = 0.10 ± not stated K [2.1 ALMA: "Band 3 (T$_b' =$ 131 K with $q=$ 0.10)"]
+- result: Best-fit disk Band 6 = Tb' = 115 K, q = 0.08 ± not stated K [2.1 ALMA: "Band 6 (T$_b' =$ 115 K with $q=$ 0.08)"]
+- result: EZ to radio-hot belt Tb contrast = 22 to 27 K from 3 mm to 1.3 mm ± not stated K [3.1 Longitude-smeared ALMA Maps: "varies from 22 to 27 K from 3 mm down to 1.3 mm"]
+- limitation (authors): Brightness temperatures only 60-70% of expected, attributed to Tsys calibration on blank sky; data scaled [2.1 ALMA: "revealed brightness temperatures that were only of order 60–70% of what we expected"]
+- limitation (authors): Small features are unresolved so Tb are upper limits; missing short spacings [4.2 RT Modeling of the ALMA Longitude-r…: "Because these features are small in angular extent, the measured brightness temperatures should be considered upper limits."]
+- not stated (card): Which calibrators were used in each execution and the exact flux rescaling factors; Adopted Tb values per band (in image table, not in text); Uv-range, cell size, image size, weighting and CLEAN settings for the MIRIAD mosaic imaging; Self-calibration parameters for ALMA data; CASA pipeline version; Final beam sizes and rms noise values (only in tables); Exact Radio-BEAR model inputs per latitude…
+
+### 2019A&A...628A..10B: Re-exploring Molecular Complexity with ALMA (ReMoCA): interstellar detection of urea (2019; astrochemistry, star_formation; observational_alma_primary)
+- question: Is urea detected toward the hot cores of Sgr B2(N) in the ReMoCA ALMA survey, and how does its abundance compare with related COMs and chemical models?
+- processing.calibration.self_calibration: 3–4 iterations using a strong line toward Sgr B2(N1) in each setup [2.2 Data reduction: "three or four iterations of self-calibration were performed using a strong spectral line detected toward Sgr B2(N1) in each setup."]
+- step 1: Calibrate and image the survey
+  - method: JAO calibration procedures plus self-calibration, csclean imaging [2.2 Data reduction: "The data was calibrated and imaged with the Common Astronomy Software Applications package (CASA)"]
+  - software: CASA
+  - parameter: Briggs robust 0.5 [2.2 Data reduction: "a *Briggs* weighting scheme with a *robust* parameter of 0.5"]
+- limitation (authors): Line-continuum splitting is preliminary with unexplained baseline artifacts [2.2 Data reduction: "the splitting of the line and continuum emission performed so far is still preliminary and we plan to improve it in the future."]
+- not stated (card): Pipeline/QA details and flux calibrator names and flux scale uncertainty; Which line was used for self-calibration in each setup; Exact channel masks for continuum determination; Clean thresholds, masks and iteration counts; Full list of molecules/parameters in the full Weeds model; Uncertainties on LTE column densities; Urea spectroscopic line list (Medvedev et al. in prep.); Details of the MAGI…
+
+### 2021PSJ.....2..105T: Neptune's Spatial Brightness Temperature Variations from the VLA and ALMA (2021; solar_system; observational_alma_primary)
+- question: Retrieve H2S, NH3, and CH4 abundance profiles across Neptune's disk from ~1 bar to ~50 bar using spatially resolved VLA and ALMA radio maps.
+- processing.calibration.self_calibration: Phase self-calibration using a limb-darkened disk model (VLA) [2.2. Calibration and Imaging: "In addition, self-calibration was performed to correct for short-term variability in the phases caused by fast atmospheric fluctuations. The self-calibration model used was a limb-darkened disk that best matched the observations."]
+- step 1: Calibrate and image VLA observations and construct residual maps and latitude bins
+  - method: Flag, calibrate, self-calibrate against a limb-darkened disk model (Tb cos^k theta), and image VLA data in MIRIAD; subtract best-fit limb-darkened disks and divide Neptune into seven latitude bins. [2.2. Calibration and Imaging: "Flagging, calibration, and imaging were performed within MIRIAD."] [2.2. Calibration and Imaging: "The self-calibration model used was a limb-darkened disk that best matched the observations."]
+  - software: MIRIAD
+  - parameter: Seven latitude bins: 90S-66S, 66S-50S, 50S-36S, 36S-12S, 12S-4N, 4N-20N, 20N-50N [2.2. Calibration and Imaging: "We divide Neptune into seven regions where the transitions in the brightness temperature variations are apparent: 90 [◦] S − 66 [◦] S, 66 [◦] S − 50 [◦] S, 50 [◦] S − 36 [◦] S, 36 [◦] S − 12 [◦] S, 12 [◦] S − 4 [◦] N, 4 [◦] N − 20 [◦] N, 20 [◦] N − 50 [◦] N."]
+  - assumption: Equatorial and polar radii of 24,766 km and 24,323 km (Lindal 1992) [Table 1: "Resolution at sub-observer location, assuming equatorial and polar radii of 24,766 km and 24,323 km, respectively (Lindal 1992)."]
+  - assumption: Flux density calibration uncertainty of 5% in each band [2.3. Error estimation: "Uncertainties in the flux density are estimated at 5% or less in each band so we use this as a conservative estimate for the absolute error in our disk-averaged temperature data."]
+  - fitting: Minimize difference between limb-darkened model disk (Tb * cos^k(theta)) and observations at each wavelength [2.2. Calibration and Imaging: "Values for T b and k were found at each wavelength such that the difference between the limb-darkened model disk and observations were minimized."]
+  - validation: Measure random noise RMS across four sky boxes equal to Neptune's diameter and compare with residual map RMS [2.3. Error estimation: "The random noise in our VLA maps is calculated by averaging over four regions of the sky with boxes equal to the diameter of Neptune and taking the root-mean-square (RMS)."]
+- limitation (authors): High degree of longitudinal smearing in the maps because Neptune was observed over nearly a full 16.11 hr rotation period. [2.1 Data: "Neptune throughout nearly an entire 16.11 hr rotation period (Warwick et al. 1989)."]
+- limitation (authors): Cloud opacity is ignored in the radiative transfer modeling. [3.2. Cloud Structure: "Therefore, we ignore the effect of cloud opacity in our modeling and focus instead on the effect of gas opacity."]
+- limitation (authors): Observations only extend to 9.7 cm, so NH3 below the NH4SH cloud (~50 bar) cannot be probed directly and is only weakly constrained via chemical coupling with H2S. [3.3. Condensible Species: "Therefore, while NH 3 and H 2 O are strong microwave absorbers, they are only abundant deeper than ∼ 40 bar and only impact Neptune’s radio spectrum significantly at wavelengths longer than 10 cm."]
+- not stated (card): Complete ALMA data reduction, calibration, self-calibration, and imaging parameters (inherited from Tollefson et al. 2019); Exact MIRIAD imaging parameters for the VLA data (weighting/robustness, cell size, deconvolution algorithm, self-calibration solution intervals); Exact prior bounds (minimum and maximum values) for all free parameters in the emcee MCMC retrievals; Exact values of the limb-da…
+
+### 2015ApJ...808...36M: New Measurements of the Radio Photosphere of Mira Based on Data from the JVLA and ALMA (2015; evolved_stars; observational_alma_primary)
+- question: Do JVLA and ALMA continuum data at 46, 96 and 229 GHz match the radio photosphere model of Mira A (size, shape, flux, brightness structure), and what are the properties of Mira B?
+- processing.calibration.self_calibration: ALMA: phase-only at record length (~6 s B3, ~3 s B6) then amp+phase 60 s, gains normalized; JVLA: SiO maser phase self-cal then amp+phase [3.2 ALMA Data: "additional iterations were performed, solving for both amplitude and phase with a solution interval of 60 seconds."]
+- step 1: Calibrate JVLA data
+  - method: AIPS calibration with 3C48 flux scale, NRAO150 bandpass, J0215-0222 gains, SiO maser phase self-cal [3.1 JVLA Data: "Bandpass calibration was performed using NRAO150, assuming a spectral index $\alpha$=0.4 (Trippe et al. 2010)."]
+  - software: AIPS, Obit
+  - validation: amplitude scale change from self-cal <0.5% [3.1 JVLA Data: "the resulting change in the amplitude scale was measured to be less than 0.5%"]
+- step 2: Self-calibrate ALMA pipeline data
+  - method: Self-cal on Mira AB continuum, phase then amp+phase [3.2 ALMA Data: "Using the continuum emission from the Mira AB binary itself, we performed self-calibration on the pipeline data for both ALMA bands."]
+  - software: CASA
+  - validation: amplitude change <0.7% [3.2 ALMA Data: "were measured to be $<$0.7%"]
+- limitation (authors): Mira A size and PA uncertainties dominated by systematics; disagreements with Vlemmings et al. 2015 in Band 3 [Appendix: "the uncertainties on the source size and position angle reported in this work are dominated by systematic uncertainties"]
+- not stated (card): Number of clean iterations, clean masks/thresholds in AIPS; Exact AIPS/CASA versions; Which flagged channels containing line emission in JVLA data; Data selection and weighting for uv fits (OMFIT settings); Exact target coordinates; Whether ALMA self-cal reference antenna and models were specified
+
+### 2013ApJ...767..132H: ALMA Observations of SPT-discovered, Strongly Lensed, Dusty, Star-forming Galaxies (2013; high_z_galaxies; observational_alma_primary)
+- question: Are four SPT-discovered dusty sources gravitationally lensed, and what are their magnifications and intrinsic properties from visibility-plane lens modeling?
+- processing.calibration.self_calibration: Antenna phases fit simultaneously with lens model in MCMC [3.1 Lens Modeling: "We optimize the $\chi^2$ for each step in the Markov chain by adjusting the $N-1$ antenna phases."]
+- step 2: Visibility-plane lens modeling with integrated phase self-calibration
+  - method: Gaussian source lensed by SIE, Fourier transformed and sampled at ALMA uv; chi^2 vs visibilities with antenna phases solved at each chain step [3.1 Lens Modeling: "We model the lenses by generating model lensed images that are subjected to simulated observations and compared to the data."]
+  - software: custom MCMC code
+  - parameter: Source: 4 params; SIE lens: 5 params [3.1 Lens Modeling: "The lens is modelled as a Singular Isothermal Ellipsoid (SIE) with five free parameters"]
+  - assumption: WMAP7 cosmology h=0.71, Om=0.27, OL=0.73 [1 Introduction: "with WMAP7 parameters, with $h=0.71$, $\Omega_M=0.27$, and $\Omega_\Lambda=0.73$"]
+  - fitting: MCMC with Metropolis-Hastings sampling, tempering (posterior^1/T); noise from differencing adjacent visibilities [3.1 Lens Modeling: "We explore the model parameter space using a Markov Chain Monte Carlo (MCMC) method with Metropolis-Hastings sampling."]
+  - validation: Simulated observations recover input antenna phases; extended-array data compared with predictions [Lens Model Self-Calibration: "The excellent agreement between input and recovered phase demonstrates that the simultaneous fitting of the lens model and antenna phases does not bias the antenna phase measurement"]
+- result: SPT0346-52 magnification = 5.4 ± 0.2 dimensionless [Table 1: "5.4$\pm$0.2"]
+- result: SPT0418-47 magnification = 21.0 ± 3.5 dimensionless [Table 1: "21.0$\pm$3.5"]
+- result: SPT0529-54 magnification = 9.4 ± 1.0 dimensionless [Table 1: "9.4$\pm$1.0"]
+- result: SPT0346-52 Einstein radius = 1.124 ± 0.004 arcsec [Table 1: "1.124$\pm$0.004"]
+- result: SPT0346-52 magnification from extended data = 5.26 ± 0.12 dimensionless [High Resolution Observations of SPT0346…: "$5.26 \pm 0.12$"]
+- limitation (authors): Only compact-configuration data used; SPT0529-54 posterior bimodal [4 Discussion: "The extended array data on this source can possibly break this degeneracy."]
+- not stated (card): CASA version and calibration scripts; Imaging parameters (weighting, cleaning, cell size); MCMC chain length, priors, tempering schedule T; Greybody fit parameters (T_dust, beta) and FIR luminosity integration range; Lens priors and source-model starting values; Phase calibrator names; Code for lens modeling not released
+
+### 2026MNRAS.549g1100P: ALMA measurements of mass-loss and wind clumping in the massive stars of the Arches cluster (2026; stellar_physics, milky_way_ism; observational_alma_primary)
+- question: What are the millimetre continuum flux densities, radio-to-millimetre spectral indices, clumping-scaled mass-loss rates, and radial wind clumping structures of the massive stars in the Arches cluster?
+- processing.calibration.self_calibration: two iterations of phase-only self-calibration using one solution per scan [Imaging: "For each band, all visibilities were concatenated and two iterations of phase-only self-calibration were performed using one solution per scan."]
+- step 1: Calibrate, self-calibrate, and image Band 3 and Band 6 visibilities
+  - method: Run ALMA pipeline calibration in CASA, concatenate visibilities per band, apply two iterations of phase-only self-calibration (one solution per scan), and image continuum and individual spectral windows/epochs with tclean using mtmfs and B… [Imaging: "We used the task `tclean` to implement the CASA CLEAN algorithm in order to image the data, utilising the Multi-term (Multi Scale) Multi-Frequency Synthesis (mtmfs) deconvolution (cite: rau11) with mosaicking for required for Band 6 only."] [Imaging: "For each band, all visibilities were concatenated and two iterations of phase-only self-calibration were performed using one solution per scan."]
+  - software: CASA, ALMA pipeline, tclean, uvsub
+  - parameter: Briggs robust = 1.0 (Band 3) and 0.5 (Band 6); clean gain = 0.1 (Band 3) and 0.05 (Band 6); mosaicking for Band 6 [Imaging: "After testing a range of robust parameters, we adopted values of 1.0 (Band 3) and 0.5 (Band 6), which provided the best compromise between sensitivity and angular resolution."] [Imaging: "We further found that the default gain of 0.1 worked best for Band 3, while for Band 6 a value of 0.05 was preferred."]
+  - validation: Generated 20 independent images across individual spectral windows and observing blocks plus 5 continuum images; found no statistically significant flux differences; subtracted clean models with uvsub and re-imaged to check for faint stars [Imaging: "We found no statistically significant differences in measured flux densities between the original deep continuum images and those produced from the alternative imaging combinations."] [Imaging: "To check for the presence of faint stars, we used the CASA task `uvsub` to subtract model visibilities created during the cleaning process."]
+- step 2: Extract sources, measure flux densities, and cross-match counterparts
+  - method: Run PYBDSF on continuum and spectral-window images with stepped significance thresholds, sum fitted Gaussian components for source flux densities, estimate 3-sigma local rms upper limits for Band 6 non-detections, and cross-match positions… [Source extraction and flux density dete…: "We initially adopted the default significance/ pixel threshold of 5$\sigma$ and island boundary threshold 3$\sigma$. In subsequent runs, the significance threshold was lowered to 4.5$\sigma$ and then 4$\sigma$ in order to detect fainter sources."] [Source extraction and flux density dete…: "Source flux densities are computed as the sum of the associated Gaussian components, with positions defined by the fitted centroids."]
+  - software: PYBDSF, SIMBAD, VizieR
+  - parameter: Pixel thresholds of 5, 4.5, and 4 sigma; island boundary threshold of 3 sigma; 3 sigma upper limits for non-detections; 0.5-2.0 arcsec (1 arcsec conservative upper limit) catalog matching radius [Source extraction and flux density dete…: "We initially adopted the default significance/ pixel threshold of 5$\sigma$ and island boundary threshold 3$\sigma$. In subsequent runs, the significance threshold was lowered to 4.5$\sigma$ and then 4$\sigma$ in order to detect fainter sources."] [Source extraction and flux density dete…: "For the remaining stars, a 3$\sigma$ upper limit on the flux density was estimated from the local rms noise at the source positions."]
+  - assumption: Relative positions are preserved after phase-only self-calibration despite a systematic offset of +0.9 arcsec in RA and -0.5 arcsec in Dec relative to Clark et al. (2018) [Source identification: "Coordinates were, on average, offset in right ascension by $+0.9^{\prime \prime}$ and in declination by $-0.5^{\prime \prime}$."] [Source identification: "Any systematic offset did not affect source identification, as relative positions within the field are preserved and the offsets are consistent across all detected sources."]
+  - fitting: Gaussian component fitting to islands of contiguous emission in PYBDSF [Source extraction and flux density dete…: "An island is then grown by adding any surrounding pixels exceeding the island threshold, fitting one or more Gaussian components to each island."]
+  - validation: Visual inspection of all candidate faint detections [Source extraction and flux density dete…: "Lower thresholds were adopted only to identify candidate faint sources, with all detections subsequently verified by visual inspection."]
+- result: F6 100 GHz flux density = 2.25 ± 0.11 mJy [Table 1: "| F6 | WN8-9h | 17 45 50.42 | -28 49 22.31 | 33900 | 1400 | 0.2 | 1.5 | 2.25 $\pm$ 0.11 | 3.48 $\pm$ 0.35 | 0.49 $\pm$ 0.29 | 7.12 $\times 10^{-5}$ | AR1, Dong80 | | |"]
+- result: F6 243 GHz flux density = 3.48 ± 0.35 mJy [Table 1: "| F6 | WN8-9h | 17 45 50.42 | -28 49 22.31 | 33900 | 1400 | 0.2 | 1.5 | 2.25 $\pm$ 0.11 | 3.48 $\pm$ 0.35 | 0.49 $\pm$ 0.29 | 7.12 $\times 10^{-5}$ | AR1, Dong80 | | |"]
+- result: F7 100 GHz flux density = 1.90 ± 0.10 mJy [Table 1: "| F7 | WN8-9h | 17 45 50.47 | -28 49 19.56 | 32900 | 1300 | 0.3 | 1.7 | 1.90 $\pm$ 0.10 | 3.17 $\pm$ 0.32 | 0.58 $\pm$ 0.29 | 6.99 $\times 10^{-5}$ | AR4, Dong83 | | |"]
+- result: F7 243 GHz flux density = 3.17 ± 0.32 mJy [Table 1: "| F7 | WN8-9h | 17 45 50.47 | -28 49 19.56 | 32900 | 1300 | 0.3 | 1.7 | 1.90 $\pm$ 0.10 | 3.17 $\pm$ 0.32 | 0.58 $\pm$ 0.29 | 6.99 $\times 10^{-5}$ | AR4, Dong83 | | |"]
+- result: F2 100 GHz flux density = 0.90 ± 0.05 mJy [Table 1: "| F2 | WN8-9h + O5-6 Ia$^{+}$ | 17 45 49.69 | -28 49 25.80 | 33500 | 1400 | 0.3 | 1.8 | 0.90 $\pm$ 0.05 | 2.17 $\pm$ 0.22 | 1.00 $\pm$ 0.30 | 5.93 $\times 10^{-5}$ | AR10, Dong18 | | |"]
+- result: F2 243 GHz flux density = 2.17 ± 0.22 mJy [Table 1: "| F2 | WN8-9h + O5-6 Ia$^{+}$ | 17 45 49.69 | -28 49 25.80 | 33500 | 1400 | 0.3 | 1.8 | 0.90 $\pm$ 0.05 | 2.17 $\pm$ 0.22 | 1.00 $\pm$ 0.30 | 5.93 $\times 10^{-5}$ | AR10, Dong18 | | |"]
+- limitation (authors): Phase-only self-calibration removes absolute astrometric information, introducing a systematic offset of +0.9 arcsec in RA and -0.5 arcsec in Dec relative to Clark et al. (2018). [Source identification: "Due to the use of phase-only self-calibration, absolute astrometric information is not preserved in the final images."]
+- limitation (authors): For sources with non-thermal synchrotron contributions, the clumping index zeta_bf is ambiguous and cannot be interpreted as a direct diagnostic of radial wind clumping. [Wind clumping: "For sources with non-thermal contributions, this interpretation becomes ambiguous. At longer wavelengths the contribution from synchrotron emission is expected to increase, potentially modifying the observed ratios independently of any intrinsic change in wind structure."]
+- limitation (authors): Observations are inherently biased toward stars with higher mass-loss rates and luminosities, and the O hypergiant sample is small. [O super-/hypergiants: "Since mass-loss rate increases with luminosity, our observations are inherently biased toward stars with higher $\dot{M}$. Given the small size of the hypergiant sample, comparison with Galactic counterparts is necessarily limited, serving primarily to demonstrate that the high mass-loss rates inferred here are not an…"]
+- not stated (card): Pixel cell size and image dimensions in tclean for Band 3 and Band 6; Clean stopping threshold, niter,nterms, and multiscale scales used in tclean mtmfs; Absolute flux calibrator sources and whether systematic flux calibration uncertainty (5-10% in Bands 3 and 6) is folded into the quoted flux uncertainties; Global and local RMS noise values of the final Band 3 and Band 6 continuum images; Exact …
+
+### 2018ApJ...865...13T: A Galaxy-scale Fountain of Cold Molecular Gas Pumped by a Black Hole (2018; galaxy_clusters_and_sz, nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Are the warm ionized and cold molecular gas in the Abell 2597 BCG cospatial and comoving, and does their kinematics reflect inflow, jet-driven outflow and bubble uplift (a galaxy-scale fountain) as predicted by chaotic cold accretion/preci…
+- processing.calibration.self_calibration: iterative phase-only self-cal on galaxy continuum; 14% RMS improvement [2.1 ALMA CO(2-1) Observations: "we iteratively performed phase-only self-calibration using the galaxy’s own continuum, yielding a $14\%$ improvement in RMS noise."]
+- step 1: Calibrate and image CO(2-1) and continuum
+  - method: CASA calibration, phase-only self-cal, UVCONTSUB, natural-weighted CLEAN; optional uv taper; continuum from three line-free basebands [2.1 ALMA CO(2-1) Observations: "We then deconvolved and imaged the continuum-free CO(2-1) measurement set using the `CLEAN` algorithm with `natural` weighting"]
+  - software: CASA
+  - parameter: natural weighting; 40 km/s channels (binned to 5, 10, 40 km/s as needed) [2.1 ALMA CO(2-1) Observations: "binned the data (in the $uv$ plane) to 5, 10, or 40 km s channels"]
+  - validation: Compared total flux with IRAM 30m; no resolved-out emission [2.1 ALMA CO(2-1) Observations: "In comparing the total recovered ALMA CO(2-1) flux with an older single-dish IRAM 30m observation"]
+- result: 230 GHz continuum point source flux at 221.3 GHz = 13.6 ± 0.2 mJy [2.1 ALMA CO(2-1) Observations: "The peak (and therefore total) flux measured from the continuum point source is $13.6 \pm 0.2$ mJy at 221.3 GHz"]
+- result: Radio-through-mm spectral index = 0.95 ± 0.03 dimensionless [3.1: "a spectral index of $\alpha=0.95 \pm 0.03$ if $S \propto \nu^{-\alpha}$"]
+- limitation (authors): X_CO uncertainty may overestimate mass by a factor of a few [3.3: "we may be overestimating the total mass by a factor of a few"]
+- limitation (authors): Projection effects: motions in plane of sky unknown [3.4: "unless most gas motions are contained in the plane of the sky"]
+- not stated (card): CLEAN cell size, image size, niter/threshold, and masking; Line-free channels used for UVCONTSUB and fit order; Self-calibration solution intervals and number of iterations; Spectral resampling/regridding details for velocity frame; Exact smoothing kernel widths in the masked-moment code beyond FWHM=beam; Polygon aperture definitions for spectra; Flux scale uncertainty; Pipeline vs manual calibra…
+
+### 2022A&A...666A..39M: A first search of transients in the Galactic center from 230 GHz ALMA observations (2022; transients, milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Can second-to-minute timescale millimeter-wave radio transients be detected in the Galactic Center at 230 GHz using a novel two-component self-calibration procedure on ALMA observations?
+- processing.calibration.self_calibration: Two-component self-calibration at 4 s cadence scaling amplitudes via constant extended mini-spiral flux (gain Gt), followed by one standard amplitude and phase self-calibration iteration using the two-component model visibilities [Two-components’ self-calibration algori…: "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."] [Two-components’ self-calibration algori…: "In addition to the use of $G_t$, we have also performed one standard self-calibration iteration(i.e., computed the antenna-wise time-dependent complex gains) correcting at the same time amplitudes and phases using the model visibilities from Eq. [\[eq:model\]](#eq:model)"]
+- step 2: Two-component self-calibration and extended mini-spiral modeling
+  - method: Decompose the GC field of view into a time-variable point source (Sgr A*) and a stable extended component (mini-spiral). Iteratively solve for the mini-spiral image model using CASA tclean, fit the 4-parameter visibility model at each 4 s … [Two-components’ self-calibration algori…: "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."] [Two-components’ self-calibration algori…: "In addition to the use of $G_t$, we have also performed one standard self-calibration iteration(i.e., computed the antenna-wise time-dependent complex gains) correcting at the same time amplitudes and phases using the model visibilities from Eq. [\[eq:model\]](#eq:model)"]
+  - software: CASA, tclean
+  - parameter: 4 s cadence [Two-components’ self-calibration algori…: "Following (cite: Wielgus21), we have modeled these two components across the FOV at each integration time of 4s."]
+  - parameter: 4 fitted parameters per integration time: F_ext, F_SgrA*, delta_ra, delta_dec [Mathematical details of the two-compone…: "Eq. [\[eq:model\]](#eq:model) can be seen as four-dimensional fitting whose variables are $F^{\text{ext}}, F^{\text{SgrA*}}, \Delta \text{ra}, \Delta \text{dec}$."]
+  - assumption: The morphology and integrated flux density of the extended mini-spiral are constant within each observing track (varying only between tracks from 1.16 to 1.18 Jy) [Two-components’ self-calibration algori…: "The morphology of the large scale minispiral emission, on the other hand, is stable in time on relevant timescales of several days, hence we assume this in the presented analysis. Nevertheless we allow for the total flux density scale of the extended emission component to vary between the three observed tracks, findin…"] [Two-components’ self-calibration algori…: "Since the integrated flux density of the mini-spiral is assumed to be constant, we can use the values of $G_t$ to remove the residual corruption effects in the Sgr A$^*$ flux density estimates $F^{\text{SgrA*}}$."]
+  - fitting: Chi-square minimization at each integration time using a recursive Newton method with first-order Taylor expansion for position offsets [Two-components’ self-calibration algori…: "The observed visibility vector at a time $t$ given a baseline $j$, denoted by $\mathcal{V}_{j,t}^{\text{obs}}$, can be model-fitted to $\mathcal{V}_{j,t}^{\text{mod}}$ by minimizing the chi-square distribution function"] [Mathematical details of the two-compone…: "Then, the fitting minimization problem can be solved applying a simple Newton method, whose recursive formulation reads"]
+  - validation: Incremental antenna gains checked to be close to unity (amplitude ~1, phase ~0), and residual image rms compared against QA2 data showing a factor of ~5 improvement [Calibration plots: "In all cases, we see that the incremental gains are actually close to unity, as expected."] [Calibration plots: "In addition, Fig. [9](#fig:rms_vs_time) right panel shows a comparison of the rms obtained by taking the QA2 data and cleaning with the same mask and `CLEAN` parameters used for the two-components’ self-calibration. We can see an improvement on the rms by a factor of $\sim$5."]
+- step 3: Validate transient detection pipeline on synthetic data
+  - method: Simulate Track B (April 6) 230 GHz observations using CASA simalma with real Sgr A* light curves, the mini-spiral model, thermal noise, real antenna gains, and an injected Gaussian-like transient. Apply the two-component self-calibration, … [Simulated data: "We have simulated ALMA observations of Sgr A$^*$ corresponding to the array configuration, and exact observing times, of the true visibilities of Track B (April 6) in the 2017 EHT campaign by using the CASA task `simalma` with its default parameters for 230 GHz."] [Simulated data: "Once convergence of the self-calibration was achieved, we computed the residual visibilities (i.e., by subtracting the model of the minispiral and Sgr A$^*$) and generated the corresponding residual images for each integration time."]
+  - software: CASA, simalma, tclean
+  - parameter: Synthetic transient: peak ~207 mJy, duration ~42 s, centered at 10:52:01 UT, offset 5 arcsec East and 1 arcsec North of Sgr A* [Simulated data: "In addition to this, we have inserted a short transient, with amplitude evolution Gaussian-like, with a duration of $\sim42$ seconds and centered on 10:52:01 UT and located at 5 arcsec to the east of Sgr A$^*$ and 1 arcsec to the north. The peak flux density of the transient is $\sim207$ mJy (see Fig. [3](#fig:trans_a…"]
+  - fitting: Same two-component chi-square self-calibration as step 2 [Simulated data: "We have calibrated the synthetic observations using the two-components’ self-calibration explained in Sect [4](#sec:stgy)."]
+  - validation: Successful recovery of the injected synthetic transient in both 4 s and 12 s residual images with peak S/N of 15.194 and peak brightness ~200 mJy [Simulated data: "From time 10:51:27 UT (h) to 10:52:33 UT (h) we can see how a transient point source is appearing $\sim5$ arcsec to the East of Sgr A$^*$. The brightness peak is notably increasing to reach a maximum of $\sim$ 200 mJy, while the duration of the transient is approximately to 1 min."] [Some details on the synthetic transient: "Now, we can easily follow the evolution of the S/N and rms. In both cases, they start with relative low (close to the mean) and they start to increase progressively while they are advancing in time, until their maximum (15.19 , 1.32 mJy/beam respectively) is reached."]
+- result: Extended mini-spiral integrated flux density across tracks = 1.16 to 1.18 ± not stated Jy [Two-components’ self-calibration algori…: "Nevertheless we allow for the total flux density scale of the extended emission component to vary between the three observed tracks, finding values between 1.16 and 1.18 Jy."]
+- result: RMS improvement factor of two-component self-calibration over QA2 data = ~5 ± not stated dimensionless [Calibration plots: "We can see an improvement on the rms by a factor of $\sim$5."]
+- limitation (authors): The observations and residual snapshot images are dynamic-range limited rather than thermal-noise limited, even at 4-second integration times, due to finite fidelity of the mini-spiral model and suboptimal calibration in bad weather. [Introduction: "Indeed, and as we discuss in Sect. [6](#sec:realdata), we are limited by dynamic range (rather than by sensitivity) even at the level of the integration time used in the ALMA correlator (four seconds)."]
+- limitation (authors): The statistical false-positive calculation assumes a Gaussian noise distribution, which does not strictly hold because the snapshot residuals are dynamic-range limited and non-Gaussian. [Strategy for finding transients: "In addition, one important assumption we have made is that we are working on a Gaussian distribution of the noise. This is not true, as as we are dynamic range limited in snapshots where potential excursions are seen."]
+- limitation (authors): Primary-beam attenuation is not corrected during the search, which reduces sensitivity toward the edges of the field of view. [Strategy for finding transients: "An important point to highlight is that, with this strategy, the primary-beam response is not corrected. In the case a transient would be found, the primary-beam correction should be applied."]
+- not stated (card): Exact tclean imaging parameters (weighting scheme, robust parameter, cell size, image pixel dimensions, niter, stopping threshold, and clean mask definition); ALMA project code in the paper text (linked as 2016.1.01154.V only in archive metadata); Quantitative threshold value used to flag visibilities with 'extremely high and nonrealistic rms'; Length (number of frames) of the running median wind…
+
+### 2025PSJ.....6..183C: A Multifrequency Global View of Callisto's Thermal Properties from ALMA (2025; solar_system; observational_alma_primary)
+- question: What are the global thermophysical properties (thermal inertia, emissivity, electrical skin depth) and local thermal anomalies of Callisto's leading and trailing hemispheres, from multi-frequency ALMA maps?
+- processing.calibration.self_calibration: phase-only, iterative with tclean, solint from full integration time down to 2 s [Data Analysis: "Our phase-only self-calibration using CASA followed as such"] [Data Analysis: "This cycle of cleaning and computing gains continued down to an interval of 2 s"]
+- step 1: self-calibrate and image the visibilities
+  - method: iterative cycle of tclean imaging and phase-only gain calibration, continuing until the image SNR stopped improving [Data Analysis: "The imaging routine for these datasets consisted of an iterative cycle of imaging and self-calibration."]
+  - software: CASA, tclean, gaincal, applycal
+  - parameter: Briggs weighting, robust = 0.0, Clark deconvolver [Data Analysis: "we adopted a Briggs weighting scheme (cite: briggs_high_1995) with a robust parameter of 0.0"]
+  - parameter: signal integrated over the entire 8 GHz bandwidth, multi-frequency synthesis [Data Analysis: "In each band, we integrated the signal over the entire 8 GHz of bandwidth using multi-frequency synthesis"]
+  - parameter: gain solution interval from the full integration time down to 2 s [Data Analysis: "This cycle of cleaning and computing gains continued down to an interval of 2 s"]
+  - assumption: Callisto modelled as a Lambertian disk for the first startmodel [Data Analysis: "a Lambertian disk scaled to the size and brightness temperature of Callisto was used as a `startmodel` for the `tclean` task"]
+  - validation: stopped at 2 s because image SNR no longer improved [Data Analysis: "at shorter time intervals the image SNR ceased to substantially improve"]
+- result: Final image rms range = 0.20-1.7 ± not stated K [Data Analysis: "is reported, with values ranging from about 0.20-1.7 K."]
+- limitation (authors): model cannot fit large-scale trailing hemisphere warm/cold structure; extra physics may be needed [Local Thermal Residuals: "may require more complex model physics (e.g., roughness) than is used by the present approach"]
+- limitation (authors): self-consistent model could not fit the data, indicating missing physics [Thermophysical Model: "The fact that the self-consistent model implementation was not able to fit the data indicates that some physics may be missing in the model"]
+- not stated (card): CASA version used for imaging and self-calibration; Image size, cell size, clean masks, iteration counts and thresholds for tclean; Radius, brightness temperature and sampling of the Lambertian startmodel disk; Intermediate self-calibration solution intervals between the full integration and 2 s, and number of cycles; Flagging, ephemeris handling and any UV range cuts before imaging and self-cali…
+
+### 2022PASJ...74..738T: ALMA astrometry of the objects within 0.5 pc of Sagittarius A<SUP>*</SUP> (2022; stellar_physics, milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Whether ALMA can serve as a powerful tool for precision astrometry of compact objects and stars in the Nuclear Star Cluster within 0.5 pc of Sagittarius A* by measuring relative positions and proper motions.
+- processing.calibration.self_calibration: Iterative self-calibration using gaincal, applycal, and tclean; first 2 iterations phase-only with solint='inf', successive iterations with solint='int', finally both phase and amplitude; 7 iterations for Oct 2017 (8 total imaging steps), 8 iterations for Jun 2019 [Observation in Oct. 2017: "In the first 2 self-calibration iterations, only the phase correction was applied using the solution interval of ‘solint=inf’ in `gaincal`, which means that the solution interval is the length of a scan."] [Observation in Oct. 2017: "In the successive iterations, we used the solution interval of ‘solint=int’, which means that the solution interval is the length of data sampling."]
+- step 1: Sub-select observation epochs to minimize time-variability artifacts of Sgr A* and perform iterative self-calibration and continuum/line imaging
+  - method: Select first 7 days of Oct 2017 data and last 2 days of Jun 2019 data; perform iterative phase and amplitude self-calibration with gaincal, applycal, and tclean; subtract continuum with uvcontsub (fitorder=1) and image H30alpha line with t… [Observation in Oct. 2017: "Accordingly, we used the first seven days of the data. The observation epoch is $t_\mathrm{obs}=2017.773$ year."] [Observation in Oct. 2017: "The imaging to obtain the maps was done using `gaincal`, `applycal`, and `tclean` tasks sequentially."]
+  - software: CASA, tclean, gaincal, applycal, uvcontsub
+  - parameter: solint='inf' (first 2 self-cal iterations, phase only), solint='int' (successive iterations, then phase+amplitude), 7-8 iterations [Observation in Oct. 2017: "In the first 2 self-calibration iterations, only the phase correction was applied using the solution interval of ‘solint=inf’ in `gaincal`, which means that the solution interval is the length of a scan."] [Observation in Oct. 2017: "In the successive iterations, we used the solution interval of ‘solint=int’, which means that the solution interval is the length of data sampling."]
+  - parameter: natural weight and Briggs weight (robust parameter = 0.5) [Observation in Oct. 2017: "The angular resolutions using natural weight and Briggs weight (robust parameter = 0.5) as *u-v* sampling are $\theta_{{\mathrm maj}}\times\theta_{{\mathrm min}}=0.037\ensuremath{''} \times 0.025\ensuremath{''}, PA=85^\circ$ and $\theta_{{\mathrm maj}}\times\theta_{{\mathrm min}}=0.029\ensuremath{''} \times 0.020\ensu…"]
+  - assumption: Sources in FOV are assumed non-variable during synthesis imaging [Observation in Oct. 2017: "Because such intensity change is contrary to the basic assumption of synthesis imaging that sources seen in the FOV are not variable, it makes specific artifacts in the resultant map (e.g. (cite: Cotton), (cite: Rau))."]
+  - validation: Checked disappearance of side lobe features around weak objects (< 1 mJy/beam) and evaluated map dynamic range (>= 200,000 for Oct 2017, ~90,000 for Jun 2019). [Observation in Oct. 2017: "After 7 iterations, side lobe features were disappeared even around weak objects with peak intensity of $< 1$ mJy beam$^{-1}$. Then we concluded that the imaging reached to the goal."] [Observation in Oct. 2017: "Although some image quality degradation mentioned above is still identified around Sgr A$^\ast$ even after applying the “self-calibration" method, the dynamic range[^1] reaches to $\frac{\mathrm{Flux~density~of~Sgr A^\ast}}{\mathrm{image~noise~level}} = \frac{\sim3 \mathrm{Jy}}{12~\mathrm{or}~15 \mu\mathrm{Jy}} \gtrsi…"]
+- limitation (authors): Short-timescale intensity variations and flaring of Sgr A* violate the non-variability assumption of synthesis imaging, producing concentric circular artifacts that degrade SNR and can shift positions and flux densities (notably in 2019.47… [Observation in Oct. 2017: "When the observed source is on the artificial concentric circle, the position and intensity may shift from the original values besides the degradation of SN."]
+- limitation (authors): Reported positional and proper motion errors include only statistical 2-D Gaussian fitting errors and do not include calibration or systematic errors. [Continuum Maps and Positions of the Det…: "These positional errors include only fitting errors not calibration errors."]
+- limitation (authors): Extended structures of the Galactic Center Mini-Spiral (GCMS) larger than the maximum recoverable scale (~0.4'') are resolved out, and complex extended emission in IRS13E and IRS13N can bias Gaussian fits. [Continuum Maps and Positions of the Det…: "Because these stars are, for the most part, located in the IRS13E and IRS13N clusters, the large offsets would be caused by complex extended emission around stars in the clusters (see Figure 9)."]
+- not stated (card): Exact pixel/cell size and image dimensions used in tclean for the 226 GHz, 230 GHz, and 343 GHz continuum maps and H30alpha cubes; Deconvolver algorithm (e.g., hogbom, clark, mtmfs, multiscale) and cleaning stopping threshold/niter in tclean; Line-free channel ranges used for uvcontsub on the 231.9 GHz spectral window; Whether primary beam correction was applied before measuring peak flux densiti…
+
+### 2017A&A...600A...8D: ALMA observations of 4U 1728-34 and 4U 1820-30: first detection of neutron star X-ray binaries at 300 GHz (2017; stellar_physics, milky_way_ism; observational_alma_primary)
+- question: How do jet properties (radio-to-mm spectrum and the optically thick/thin break) of two atoll neutron-star X-ray binaries relate to their hard/soft states, compared with black holes?
+- processing.calibration.self_calibration: self-calibrated on a timescale of 1 hour [2.2 ALMA: "The images were self-calibrated on a timescale of 1 hour."]
+- step 1: Image ALMA continuum and measure flux
+  - method: Re-generate images from calibrated products, self-calibrate, primary-beam correct, fit elliptical Gaussian for peak flux [2.2 ALMA: "the reported flux density for all sources in this section corresponds to the peak flux from the elliptical Gaussian fitted to the source emission in the image plane"]
+  - software: CASA
+  - parameter: uniform weighting; 301.99 GHz; self-cal 1 h [2.2 ALMA: "The images were self-calibrated on a timescale of 1 hour."]
+  - validation: error is rms far from the source [2.2 ALMA: "the error corresponds to the rms of the image measured far away from the source position"]
+- result: 4U 1728-34 ALMA 302 GHz peak flux = 1.40 ± 0.02 mJy/beam [Table 2: "4U 1728$-$34 | 17:31:57.6757 $\pm$ 0.0003 | -33:50:01.544 $\pm$ 0.005 | 1.40 $\pm$ 0.02"]
+- result: 4U 1820-30 ALMA 302 GHz peak flux = 0.40 ± 0.02 mJy/beam [Table 2: "4U 1820$-$30 | 18:23:40.5050 $\pm$ 0.0004 | -30:21:40.089 $\pm$ 0.005 | 0.40 $\pm$ 0.02"]
+- limitation (authors): Observations not strictly simultaneous; 4U 1728-34 in transitional state [Results: "our observations at different frequencies are not strictly simultaneous."]
+- not stated (card): CASA version used for ALMA imaging; tclean parameters: cell size, image size, deconvolver, masking, niter/threshold; Self-calibration details beyond the 1 h solint; Fitting method for spectral indices and the break (interpolation procedure); Which flux scale uncertainty was applied for ALMA; Tudor et al. model for ATCA subtraction unavailable
+
+### 2017ApJ...841L...5S: The First ALMA Observation of a Solar Plasmoid Ejection from an X-Ray Bright Point (2017; sun; observational_alma_primary)
+- question: What are the thermal structure and physical parameters (temperature, density, mass, energy) of a plasmoid ejected from an X-ray bright point, from combined 100 GHz ALMA, AIA EUV and XRT data?
+- processing.calibration.self_calibration: self-calibration using image from entire observing period as reference to remove jitter [Observation: "we carried out self-calibration using the image synthesized from the entire observing period as a reference"]
+- step 1: calibrate and image ALMA data
+  - method: Calibrate per Shimojo17, 2-s imaging, self-calibration against full-period image, scale with single-dish background [Observation: "we carried out self-calibration using the image synthesized from the entire observing period as a reference, and this successfully removed the artificial motion."]
+  - validation: jitter removal checked in 2-s movie [Observation: "this successfully removed the artificial motion"]
+- limitation (authors): ALMA-XRT alignment uncertain by up to 5" [Observation: "the positional uncertainty between ALMA and XRT might be as poor as 5$^{\prime\prime}$"]
+- limitation (authors): Three-dimensional path unknown [Plasmoid ejection observed with ALMA, A…: "although we have no way of determining the exact path in three dimensions"]
+- not stated (card): CASA version and imaging parameters (weighting, deconvolver, cell/image size); Details of the Shimojo17 calibration and noise-estimation procedures; Self-calibration solution interval; Exact time windows for signal and background averaging; Gaunt factor formula used; Exact AIA response values and DEM/response tool used; ALMA project/dataset identifier for retrieval beyond the SV acknowledgement
+
+### 2025ApJ...995L..51G: The CO-to-H<SUB>2</SUB> Conversion Factor in the Milky Way's Central Parsec (2025; milky_way_ism; observational_alma_primary)
+- question: What is the CO-to-H2 conversion factor (alpha_CO, X_CO) in the Milky Way's Circumnuclear Disk/Ring (~1 pc around Sgr A*), derived without assuming virialization
+- processing.calibration.self_calibration: Sgr A* variability fit at uv-level with UVmultifit; time-dependent lightcurve used to self-calibrate; black hole continuum then removed at uv-level [Calibration and Image quality: "We then used the time-dependent lightcurve to self-calibrate the data."] [Calibration and Image quality: "we removed the continuum emission of the black hole from the data at the uv-level"]
+- step 1: calibrate and remove Sgr A* variability
+  - method: Fit Sgr A* variability at uv-level with UVmultifit, self-calibrate with the lightcurve, remove black hole continuum at uv-level [Calibration and Image quality: "We used `UVmultifit` (cite: marti-vidal2014) to fit the variability of Sgr A$^*$ at uv-level."] [Calibration and Image quality: "We then used the time-dependent lightcurve to self-calibrate the data."]
+  - software: UVmultifit, CASA
+- limitation (authors): Uncertainties dominated by wide variation in the CND mass estimates [Summary: "The uncertainties are large due to the wide variations in the estimated mass of the molecular gas in the Galactic Center’s CND"]
+- limitation (authors): Area method ignores density variations [Caculating by area: "This approach does not take into account density variations in the CND."]
+- limitation (authors): If the CND is optically thick (tau of a few), alpha_CO could be overestimated by a similar factor [Summary: "This would lead to an overestimation of the CO–to–H$_{2}$ conversion factor by a similar factor as the optical depth."]
+- not stated (card): Exact line-free channel ranges for the image-domain continuum subtraction; Self-calibration solution interval, reference model and how the UVmultifit lightcurve was applied; Which CASA version and whether the archive pipeline or manual calibration products were used; Exact tclean parameters (niter, threshold, mask, imsize in pixels, phasecenter, mosaic or single field, gridder); How the common be…
+
+### 2020PASP..132i4501H: Characterizing the Accuracy of ALMA Linear-polarization Mosaics (2020; instrumentation, star_formation; technical_calibration_or_instrument)
+- question: How accurate are ALMA linear-polarization observations away from the pointing center, and how much do mosaics of overlapping pointings reduce the residual off-axis errors
+- processing.calibration.self_calibration: 3C 279: one round of phase-only self-calibration on every pointing; Orion-KL: none [11x11 observations of 3C 279: "we perform one round of phase-only self-calibration (selfcal) to correct the residual phase errors as a function of time for both the on-axis data and each off-axis pointing"] [Orion-KL mosaic observations: "we do not perform self-calibration on any of the images of Orion-KL"]
+- step 2: apply on-axis calibration to all pointings and self-calibrate
+  - method: Apply on-axis tables to all on- and off-axis data, then one round of phase-only self-calibration per pointing [11x11 observations of 3C 279: "we perform one round of phase-only self-calibration (selfcal) to correct the residual phase errors as a function of time for both the on-axis data and each off-axis pointing"]
+  - software: CASA
+  - parameter: D-terms and XY-phase solved from on-axis data only, to mimic standard ALMA polarization calibration [11x11 observations of 3C 279: "this includes $D$-terms and $XY$-phase"] [11x11 observations of 3C 279: "We do this to mimic the standard calibration method of ALMA polarization data."]
+- limitation (authors): 11x11 grid extent is too small to sample the full beam-squash pattern [Q and U errors (beam squash): "and thus the extent of the 11$\times$11 observations is not sufficient to sample the entire pattern"]
+- limitation (authors): Orion-KL maps are dynamic-range limited, not thermal-noise limited [Results: Orion-KL mosaic observations: "Note also that the maps are dynamic range limited; in no case have we reached the thermal noise limit."]
+- not stated (card): Cell size, image size, masks, threshold, niter and deconvolver for clean/tclean in both datasets (only 'standard imaging parameters' given); Which fields and scans were treated as on-axis, and the self-calibration solution interval for the 3C 279 data; CASA version used for calibration (only imaging versions are given); Which pointings of each 11x11 grid and which Orion-KL pointings were combined…
+
+### 2019ApJ...871...73H: AT2018cow: A Luminous Millimeter Transient (2019; transients; observational_alma_primary)
+- question: What are the properties of the shock and the origin of the X-ray emission in the luminous millimeter transient AT2018cow?
+- processing.calibration.self_calibration: Phase-only self-cal on target for Bands 3-8; none for Band 9 [2.1.3 ALMA: "We subsequently applied a phase-only self-calibration using the target source (for Bands 3–8)"] [7 ALMA Band 9 Calibration: "Therefore, we did not apply a self-calibration to the Band 9 data."]
+- step 1: Measure multi-band flux densities
+  - method: Point-source fluxes from calibrated SMA/ATCA/ALMA data; ALMA via imaging after self-cal [2.1.3 ALMA: "AT2018cow is unresolved in our ALMA data"]
+  - software: CASA, MIRIAD
+  - validation: Band 9 checked by splitting in time, uv-range, polarization; calibrators compared with catalog [7 ALMA Band 9 Calibration: "The change in flux density between the different time-bins was within 6$\%$."]
+- result: Brightness temperature = >=3e10 ± not stated K [3.1 Light curve: "\gtrsim 3 \times 10^{10}\,\mbox{$\rm K$}"]
+- limitation (authors): Band 9 excess is only 2 sigma [6 Conclusions: "the apparent excess in the Band 9 flux is only 2$\sigma$"]
+- not stated (card): CASA version and pipeline version; Self-calibration solution interval and imaging parameters (weighting, cell size, image size, masking); Method and aperture used to measure ALMA flux densities; Details of Monte Carlo uncertainties beyond input percentages; Position of AT2018cow
+
+### 2020A&A...643A..41D: ALMA observations of transient heating in a solar active region (2020; sun; observational_alma_primary)
+- question: Are Ellerman bombs, UV bursts and flaring active-region fibrils visible in the ALMA 3 mm continuum, and what temperatures and formation heights do they have?
+- processing.calibration.self_calibration: phase self-calibration with progressively smaller intervals [2.1 Data reduction and calibration: "The data in each execution block were mapped and self-calibrated in phase with progressively smaller intervals to remove atmospheric effects."]
+- step 1: Image ALMA Band 3 and set absolute temperature scale
+  - method: Phase self-calibrated mapping of all four sidebands, primary beam correction, conversion to Tb, offset by single-dish comparison [2.1 Data reduction and calibration: "The maps are converted from flux to brightness temperature."]
+  - parameter: cell 0.3 arcsec, beam 1.2 arcsec, +7700 K [2.1 Data reduction and calibration: "This resulted in the addition of 7700 K to the interferometer maps."]
+- result: Max Tb in NF kernels = 14300 ± not stated K [3.2 The millimeter counterparts of EUV …: "The highest brightness temperature at 3 mm that we observe in the EUV kernels is $T_{\rm b}$$\approx$14 300 K."]
+- limitation (authors): Simulation magnetic topology not comparable to the observed region; no IRIS data; DEM coronal estimates are lower limits [4 Synthetic millimeter continuum: "Furthermore, the magnetic topology is not directly comparable to the observed active region"]
+- not stated (card): ALMA reduction software (CASA?) and version, and imaging task/parameters (weighting, deconvolver); self-calibration solution intervals; how the calibrated single-dish image was obtained; exact co-alignment offsets and angle between ALMA and SDO; EBDETECT parameters beyond threshold, and 1700 A reference level; absolute coordinates of the pointing; time cadence of ALMA maps and how they were made
+
+## All papers in this technique
+
+- 2012A&A...544L...7P (2012): The first ALMA view of IRAS 16293-2422. Direct detection of infall onto source B and high-resolution kinematics of source A
+- 2012A&A...548A..69N (2012): Outflow structure and velocity field of Orion source. I. ALMA imaging of SiO isotopologue maser and thermal emission
+- 2012ApJ...752L..30W (2012): [C II] Line Emission in Massive Star-forming Galaxies at z = 4.7
+- 2013A&A...549L...6K (2013): ALMA CO J = 6-5 observations of IRAS 16293-2422. Shocks and entrainment
+- 2013A&A...555A..73K (2013): ALMA detection of the rotating molecular disk wind from the young star HD 163296
+- 2013A&A...557A.132M (2013): ALMA imaging of the CO snowline of the HD 163296 disk with DCO<SUP>+</SUP>
+- 2013A&A...557L..11B (2013): ALMA observations of the Red Rectangle, a preliminary analysis
+- 2013A&A...558A.123M (2013): Probing the jet base of the blazar PKS 1830-211 from the chromatic variability of its lensed images. Serendipitous ALMA observations of a s…
+- 2013A&A...559A..29C (2013): Strongly star-forming rotating disks in a complex merging system at z = 4.7 as revealed by ALMA
+- 2013ApJ...763..120C (2013): The Anatomy of an Extreme Starburst within 1.3 Gyr of the Big Bang Revealed by ALMA
+- 2013ApJ...767..132H (2013): ALMA Observations of SPT-discovered, Strongly Lensed, Dusty, Star-forming Galaxies
+- 2013ApJ...778L..25C (2013): Unveiling the Dust Nucleation Zone of IRC+10216 with ALMA
+- 2013Natur.493..191C (2013): Flows of gas through a protoplanetary gap
+- 2013Natur.499..450B (2013): Suppression of star formation in the galaxy NGC 253 by a starburst-driven molecular wind
+- 2013PASJ...65L..14F (2013): Local Enhancement of the Surface Density in the Protoplanetary Ring Surrounding HD 142527
+- 2013Sci...340.1199V (2013): A Major Asymmetric Dust Trap in a Transition Disk
+- 2013Sci...341..630Q (2013): Imaging of the CO Snow Line in a Solar Nebula Analog
+- 2014A&A...566A..74L (2014): ALMA observations of the kinematics and chemistry of disc formation
+- 2014A&A...566A.112M (2014): An ALMA Early Science survey of molecular absorption lines toward PKS 1830-211. Analysis of the absorption profiles
+- 2014A&A...567A.125G (2014): Molecular line emission in NGC 1068 imaged with ALMA. I. An AGN-driven outflow in the dense molecular gas
+- 2014A&A...568A..92M (2014): Herschel-ATLAS and ALMA. HATLAS J142935.3-002836, a lensed major merger at redshift 1.027
+- 2014A&A...570L..14R (2014): The wonderful complexity of the Mira AB system
+- 2014A&A...572L...9R (2014): ALMA sub-mm maser and dust distribution of VY Canis Majoris
+- 2014ApJ...782L..28H (2014): A Hot Molecular Circumstellar Disk around the Massive Protostar Orion Source I
+- 2014ApJ...783L..13P (2014): Large-scale Asymmetries in the Transitional Disks of SAO 206462 and SR 21
+- 2014ApJ...784...62A (2014): Circumstellar Disks around Binary Stars in Taurus
+- 2014ApJ...787...48X (2014): ALMA Observations of Warm Molecular Gas and Cold Dust in NGC 34
+- 2014ApJ...789L..36W (2014): Extreme Dust Disks in Arp 220 as Revealed by ALMA
+- 2014ApJ...791...42Z (2014): Comparison of the Dust and Gas Radial Structure in the Transition Disk [PZ99] J160421.7-213028
+- 2014ApJ...791L...6W (2014): ALMA Hints at the Presence of two Companions in the Disk around HD 100546
+- 2014ApJ...795..156W (2014): ALMA Observations of the Antennae Galaxies. I. A New Window on a Prototypical Merger
+- 2014ApJ...795L..30C (2014): ALMA Measurements of the HNC and HC<SUB>3</SUB>N Distributions in Titan's Atmosphere
+- 2014ApJ...796...82Z (2014): Spectral and Morphological Analysis of the Remnant of Supernova 1987A with ALMA and ATCA
+- 2014ApJ...796..117G (2014): The Slow Ionized Wind and Rotating Disklike System that are Associated with the High-mass Young Stellar Object G345.4938+01.4677
+- 2014ApJ...796L..15S (2014): Around the Ring We Go: The Cold, Dense Ring of Molecular Gas in NGC 1614
+- 2014ApJ...797...27F (2014): Revealing H<SUB>2</SUB>D<SUP>+</SUP> Depletion and Compact Structure in Starless and Protostellar Cores with ALMA
+- 2014Natur.511..567J (2014): Misaligned protoplanetary disks in a young binary star system
+- 2014Sci...345.1584B (2014): Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide
+- 2015A&A...573L...4L (2015): ALMA observations of α Centauri. First detection of main-sequence stars at 3 mm wavelength
+- 2015A&A...574A...5D (2015): ALMA data suggest the presence of spiral structure in the inner wind of CW Leonis
+- 2015A&A...575L...5H (2015): High-resolution observations of the outer disk around T Chamaeleontis: the view from ALMA
+- 2015A&A...576A..41B (2015): ALMA and VLA measurements of frequency-dependent time lags in Sagittarius A*: evidence for a relativistic outflow
+- 2015A&A...576L..15O (2015): ALMA view of the circumstellar environment of the post-common-envelope-evolution binary system HD 101584
+- 2015A&A...577L...4V (2015): Resolving the stellar activity of the Mira AB binary with ALMA
+- 2015A&A...579A.106V (2015): Gas density drops inside dust cavities of transitional disks around young stars observed with ALMA
+- 2015A&A...580A...1M (2015): The fast molecular outflow in the Seyfert galaxy IC 5063 as seen by ALMA
+- 2015A&A...581L...3V (2015): VLT/SPHERE- and ALMA-based shape reconstruction of asteroid (3) Juno
+- 2015A&A...582L...4M (2015): Detection of extragalactic argonium, ArH<SUP>+</SUP>, toward PKS 1830-211
+- 2015ApJ...798...31A (2015): Suppression of Star Formation in NGC 1266
+- 2015ApJ...798L..23K (2015): An ALMA Disk Mass for the Candidate Protoplanetary Companion to FW Tau
+- 2015ApJ...799...11X (2015): ALMA Observations of Warm Dense Gas in NGC 1614—Breaking of the Star Formation Law in the Central Kiloparsec
+- 2015ApJ...800...70S (2015): ALMA Imaging of HCN, CS, and Dust in Arp 220 and NGC 6240
+- 2015ApJ...801...63M (2015): ALMA Multi-line Imaging of the Nearby Starburst NGC 253
+- 2015ApJ...801...82H (2015): ALMA Imaging of Millimeter/Submillimeter Continuum Emission in Orion KL
+- 2015ApJ...802...69B (2015): Radio and Millimeter Monitoring of Sgr A*: Spectrum, Variability, and Constraints on the G2 Encounter
+- 2015ApJ...804...37L (2015): ALMA Resolves the Spiraling Accretion Flow in the Luminous OB Cluster-forming Region G33.92+0.11
+- 2015ApJ...804..141Z (2015): Fragmentation of Molecular Clumps and Formation of a Protocluster
+- 2015ApJ...806...17R (2015): Morphology and Kinematics of Warm Molecular Gas in the Nuclear Region of Arp 220 as Revealed by ALMA
+- 2015ApJ...806..154C (2015): A Disk-based Dynamical Mass Estimate for the Young Binary AK Sco
+- 2015ApJ...806L..22C (2015): On the Nature of the Tertiary Companion to FW Tau: ALMA CO Observations and SED Modeling
+- 2015ApJ...808...36M (2015): New Measurements of the Radio Photosphere of Mira Based on Data from the JVLA and ALMA
+- 2015ApJ...808..102K (2015): Resolving Protoplanetary Disks at Millimeter Wavelengths with CARMA
+- 2015ApJ...808L...1A (2015): The 2014 ALMA Long Baseline Campaign: An Overview
+- 2015ApJ...808L...2A (2015): The 2014 ALMA Long Baseline Campaign: Observations of Asteroid 3 Juno at 60 Kilometer Resolution
+- 2015ApJ...808L...3A (2015): The 2014 ALMA Long Baseline Campaign: First Results from High Angular Resolution Observations toward the HL Tau Region
+- 2015ApJ...808L...4A (2015): The 2014 ALMA Long Baseline Campaign: Observations of the Strongly Lensed Submillimeter Galaxy HATLAS J090311.6+003906 at z = 3.042
+- 2015ApJ...809L..25L (2015): The Distribution and Chemistry of H<SUB>2</SUB>CO in the DM Tau Protoplanetary Disk
+- 2015ApJ...810..112O (2015): Double DCO<SUP>+</SUP> Rings Reveal CO Ice Desorption in the Outer Disk Around IM Lup
+- 2015ApJ...810L...7V (2015): A Concentration of Centimeter-sized Grains in the Ophiuchus IRS 48 Dust Trap
+- 2015ApJ...811...92C (2015): Accretion Kinematics through the Warped Transition Disk in HD142527 from Resolved CO(6-5) Observations
+- 2015ApJ...811L..23K (2015): A New Constraint on the Molecular Oxygen Abundance at z ~ 0.886
+- 2015ApJ...812...43B (2015): HerMES: ALMA Imaging of Herschel-selected Dusty Star-forming Galaxies
+- 2015ApJ...812..126C (2015): A Compact Concentration of Large Grains in the HD 142527 Protoplanetary Dust Trap
+- 2015ApJ...812..134H (2015): The Early ALMA View of the FU Ori Outburst System
+- 2015ApJ...813..128Q (2015): Chemical Imaging of the CO Snow Line in the HD 163296 Disk
+- 2015ApJ...813L..19J (2015): A Keplerian-like Disk around the Forming O-type Star AFGL 4176
+- 2015ApJ...814...22E (2015): Detection of Infall in the Protostar B335 with ALMA
+- 2015ApJ...814...53G (2015): Cyanide Photochemistry and Nitrogen Fractionation in the MWC 480 Disk
+- 2015ApJ...815..103B (2015): Dense Gas Fraction and Star-formation Efficiency Variations in the Antennae Galaxies
+- 2015MNRAS.452...88K (2015): ALMA detection of a disc-dominated [C II] emission line at z=4.6 in the luminous QSO J1554+1937
+- 2015Natur.520..198O (2015): The comet-like composition of a protoplanetary disk as revealed by complex cyanides
+- 2016A&A...585A..58V (2016): Resolved gas cavities in transitional disks inferred from CO isotopologs with ALMA
+- 2016A&A...586A..69P (2016): The radio continuum spectrum of Mira A and Mira B up to submillimeter wavelengths
+- 2016A&A...586A..70L (2016): Anatomy of a blazar in the (sub-)millimeter: ALMA observations of PKS 0521-365
+- 2016A&A...586A..99H (2016): Steepening of the 820 μm continuum surface brightness profile signals dust evolution in TW Hydrae's disk
+- 2016A&A...587A..91B (2016): Exploring molecular complexity with ALMA (EMoCA): Deuterated complex organic molecules in Sagittarius B2(N2)
+- 2016A&A...589L...5M (2016): Detection of extragalactic CF<SUP>+</SUP> toward PKS 1830-211. Chemical differentiation in the absorbing gas
+- 2016A&A...592A..42K (2016): An observational study of dust nucleation in Mira (o Ceti). I. Variable features of AlO and other Al-bearing species
+- 2016A&A...592A..49T (2016): Measuring turbulence in TW Hydrae with ALMA: methods and limitations
+- 2016A&A...593A..44L (2016): The 492 GHz emission of Sgr A* constrained by ALMA
+- 2016A&A...593A..61M (2016): Dual differential polarimetry. A technique to recover polarimetric information from dual-polarization observations
+- 2016A&A...593L..19M (2016): The MHz-peaked radio spectrum of the unusual γ-ray source PMN J1603-4904
+- 2016A&A...594A.109L (2016): ALMA's view of the nearest neighbors to the Sun. The submm/mm SEDs of the α Centauri binary and a new source
+- 2016A&A...595A.117J (2016): The ALMA Protostellar Interferometric Line Survey (PILS). First results from an unbiased submillimeter wavelength line survey of the Class …
+- 2016A&A...596A..88L (2016): ALMA observations of the <ASTROBJ>Th 28</ASTROBJ> protostellar disk. A new example of counter-rotation between disk and optical jet
+- 2016A&A...596A..92K (2016): ALMA observations of the nearby AGB star L<SUB>2</SUB> Puppis. I. Mass of the central star and detection of a candidate planet
+- 2016ApJ...817..168H (2016): ALMA Observation of the 658 GHz Vibrationally Excited H2O Maser in Orion KL Source I
+- 2016ApJ...818..156C (2016): A Disk-based Dynamical Constraint on the Mass of the Young Binary DQ Tau
+- 2016ApJ...818..158A (2016): Planetary System Formation in the Protoplanetary Disk around HL Tauri
+- 2016ApJ...818L..16Z (2016): On the Commonality of 10-30 AU Sized Axisymmetric Dust Structures in Protoplanetary Disks
+- 2016ApJ...819L...7N (2016): ALMA Observations of a Gap and a Ring in the Protoplanetary Disk around TW Hya
+- 2016ApJ...820...19T (2016): Mapping CO Gas in the GG Tauri A Triple System with 50 au Spatial Resolution
+- 2016ApJ...820L..39N (2016): First Connection between Cold Gas in Emission and Absorption: CO Emission from a Galaxy-Quasar Pair
+- 2016ApJ...820L..40A (2016): Ringed Substructure and a Gap at 1 au in the Nearest Protoplanetary Disk
+- 2016ApJ...821..112K (2016): SMA Observations of the Extended <SUP>12</SUP>CO(J = 6-5) Emission in the Starburst Galaxy NGC 253
+- 2016ApJ...821L...8S (2016): Isotopic Ratios of Carbon and Oxygen in Titan’s CO using ALMA
+- 2016ApJ...821L..16C (2016): The VLA View of the HL Tau Disk: Disk Mass, Grain Evolution, and Early Planet Formation
+- 2016ApJ...822...36O (2016): ALMACAL I: First Dual-band Number Counts from a Deep and Wide ALMA Submillimeter Survey, Free from Cosmic Variance
+- 2016ApJ...822..115K (2016): Detection of HF Toward PKS 1830-211, Search for Interstellar H<SUB>2</SUB>F<SUP>+</SUP>, and Laboratory Study of H<SUB>2</SUB>F<SUP>+</SUP>…
+- 2016ApJ...823...91S (2016): The Radial Distribution of H<SUB>2</SUB> and CO in TW Hya as Revealed by Resolved ALMA Observations of CO Isotopologues
+- 2016ApJ...823..160D (2016): An ALMA Search for Substructure, Fragmentation, and Hidden Protostars in Starless Cores in Chamaeleon I
+- 2016ApJ...823L..10W (2016): First Detection of Gas-phase Methanol in a Protoplanetary Disk
+- 2016ApJ...823L..18H (2016): Evidence for a CO Desorption Front in the Outer AS 209 Disk
+- 2016ApJ...824..132N (2016): ALMA Science Verification Data: Millimeter Continuum Polarimetry of the Bright Radio Quasar 3C 286
+- 2016ApJ...825L..10O (2016): A Dwarf Transitional Protoplanetary Disk around XZ Tau B
+- 2016ApJ...825L..15C (2016): Interferometric Mapping of Magnetic Fields: The ALMA View of the Massive Star-forming Clump W43-MM1
+- 2016ApJ...826..112S (2016): ALMA Imaging and Gravitational Lens Models of South Pole Telescope—Selected Dusty, Star-Forming Galaxies at High Redshifts
+- 2016ApJ...827...68P (2016): Submillimeter H<SUB>2</SUB>O Megamasers in NGC 4945 and the Circinus Galaxy
+- 2016ApJ...829L...7G (2016): High-velocity Bipolar Molecular Emission from an AGN Torus
+- 2016ApJ...829L..35T (2016): A Gap with a Deficit of Large Grains in the Protoplanetary Disk around TW Hya
+- 2016ApJ...831..101B (2016): Hydrocarbon Emission Rings in Protoplanetary Disks Induced by Dust Evolution
+- 2016ApJ...831..125P (2016): A Steeper than Linear Disk Mass-Stellar Mass Scaling Relation
+- 2016ApJ...831..200W (2016): ALMA Reveals the Anatomy of the mm-sized Dust and Molecular Gas in the HD 97048 Disk
+- 2016ApJ...831L..12K (2016): Submillimeter Polarization Observation of the Protoplanetary Disk around HD 142527
+- 2016ApJ...832..110C (2016): The Coupled Physical Structure of Gas and Dust in the IM Lup Protoplanetary Disk
+- 2016ApJ...832..142Z (2016): The Molecular Wind in the Nearest Seyfert Galaxy Circinus Revealed by ALMA
+- 2016ApJ...832..148V (2016): Molecular Gas Along a Bright Hα Filament in 2A 0335+096 Revealed by ALMA
+- 2016ApJ...832..187B (2016): The Massive Protostellar Cluster NGC 6334I at 220 au Resolution: Discovery of Further Multiplicity, Diversity, and a Hot Multi-core
+- 2016ApJ...833...41Z (2016): High-resolution Observations of Molecular Lines in Arp 220: Kinematics, Morphology, and Limits on the Applicability of the Ammonia Thermome…
+- 2016ApJ...833..219P (2016): ALMA Observations of Orion Source I at 350 and 660 GHz
+- 2016ApJ...833..238H (2016): ALMA Band 8 Continuum Emission from Orion Source I
+- 2016MNRAS.458.3134R (2016): ALMA observations of cold molecular gas filaments trailing rising radio bubbles in PKS 0745-191
+- 2016MNRAS.458L..29C (2016): A ring-like concentration of mm-sized particles in Sz 91
+- 2016Natur.534..218T (2016): Cold, clumpy accretion onto an active supermassive black hole
+- 2016Natur.535..258C (2016): Imaging the water snow-line during a protostellar outburst
+- 2016Natur.538..483T (2016): A triple protostar system formed via fragmentation of a gravitationally unstable disk
+- 2016PASJ...68L...7T (2016): Galactic center mini-spiral by ALMA: Possible origin of the central cluster
+- 2016Sci...353.1519P (2016): Spiral density waves in a young protoplanetary disk
+- 2017A&A...597A..32V (2017): Cavity and other radial substructures in the disk around HD 97048
+- 2017A&A...597A..53L (2017): The ALMA-PILS survey: First detections of ethylene oxide, acetone and propanal toward the low-mass protostar IRAS 16293-2422
+- 2017A&A...597L...5B (2017): A second post-AGB nebula that contains gas in rotation and in expansion: ALMA maps of IW Carinae
+- 2017A&A...599A..59K (2017): An observational study of dust nucleation in Mira (o Ceti). II. Titanium oxides are negligible for nucleation at high temperatures
+- 2017A&A...600A...8D (2017): ALMA observations of 4U 1728-34 and 4U 1820-30: first detection of neutron star X-ray binaries at 300 GHz
+- 2017A&A...600A..72F (2017): ALMA unveils rings and gaps in the protoplanetary system <ASTROBJ>HD 169142</ASTROBJ>: signatures of two giant protoplanets
+- 2017A&A...601A...5H (2017): ALMA observations of the nearby AGB star L<SUB>2</SUB> Puppis. II. Gas disk properties derived from <SUP>12</SUP>CO and <SUP>13</SUP>CO J =…
+- 2017A&A...602A..42K (2017): Subarcsecond imaging of the water emission in Arp 220
+- 2017A&A...602L..10O (2017): The inhomogeneous submillimeter atmosphere of Betelgeuse
+- 2017A&A...603A..10B (2017): Fragmentation and disk formation in high-mass star formation: The ALMA view of G351.77-0.54 at 0.06'' resolution
+- 2017A&A...603A..68M (2017): Approaching hell's kitchen: Molecular daredevil clouds in the vicinity of Sagittarius A*
+- 2017A&A...603A..92V (2017): Magnetically aligned dust and SiO maser polarisation in the envelope of the red supergiant VY Canis Majoris
+- 2017A&A...603L...3A (2017): Molecular outflow launched beyond the disk edge
+- 2017A&A...603L...6H (2017): Direct evidence of multiple reservoirs of volatile nitrogen in a protosolar nebula analogue
+- 2017A&A...604A...6S (2017): The physical and chemical structure of Sagittarius B2. II. Continuum millimeter emission of Sgr B2(M) and Sgr B2(N) with ALMA
+- 2017A&A...605A..21C (2017): Increased H<SUB>2</SUB>CO production in the outer disk around HD 163296
+- 2017A&A...606A..88T (2017): Physical properties of dusty protoplanetary disks in Lupus: evidence for viscous evolution?
+- 2017A&A...606A.121L (2017): Complex organics in IRAS 4A revisited with ALMA and PdBI: Striking contrast between two neighbouring protostellar cores
+- 2017A&A...606L...6Z (2017): Detection of a new methanol maser line with ALMA
+- 2017A&A...607A..55V (2017): An 80 au cavity in the disk around HD 34282
+- 2017A&A...607A.114W (2017): CO emission tracing a warp or radial flow within ≲100 au in the HD 100546 protoplanetary disk
+- 2017A&A...608A..38O (2017): Properties of the molecular gas in the fast outflow in the Seyfert galaxy IC 5063
+- 2017A&A...608A..55D (2017): Study of the aluminium content in AGB winds using ALMA. Indications for the presence of gas-phase (Al<SUB>2</SUB>O<SUB>3</SUB>)<SUB>n</SUB>…
+- 2017A&A...608A..96L (2017): The ortho-to-para ratio of H<SUB>2</SUB>Cl<SUP>+</SUP>: Quasi-classical trajectory calculations and new simulations in light of new observa…
+- 2017AJ....154..148T (2017): ALMA Thermal Observations of a Proposed Plume Source Region on Europa
+- 2017AJ....154..234W (2017): An Explanation of the Very Low Radio Flux of Young Planet-mass Companions
+- 2017ApJ...835...17M (2017): ALMA Measurements of Circumstellar Material in the GQ Lup System
+- 2017ApJ...835..213P (2017): The Dense Molecular Gas and Nuclear Activity in the ULIRG IRAS 13120-5453
+- 2017ApJ...835..231H (2017): An ALMA Survey of DCN/H<SUP>13</SUP>CN and DCO<SUP>+</SUP>/H<SUP>13</SUP>CO<SUP>+</SUP> in Protoplanetary Disks
+- 2017ApJ...835..265W (2017): Dense Molecular Gas Tracers in the Outflow of the Starburst Galaxy NGC 253
+- 2017ApJ...835L..13S (2017): ALMA Observations of the Water Fountain Pre-planetary Nebula IRAS 16342-3814: High-velocity Bipolar Jets and an Expanding Torus
+- 2017ApJ...835L..35M (2017): New ALMA and Fermi/LAT Observations of the Large-scale Jet of PKS 0637-752 Strengthen the Case Against the IC/CMB Model
+- 2017ApJ...836...30G (2017): Nitrogen Fractionation in Protoplanetary Disks from the H<SUP>13</SUP>CN/HC<SUP>15</SUP>N Ratio
+- 2017ApJ...836..223W (2017): An ALMA and MagAO Study of the Substellar Companion GQ Lup B*
+- 2017ApJ...837...93Y (2017): Tidal Distortion of the Envelope of an AGB Star IRS 3 near Sgr A*
+- 2017ApJ...837..174O (2017): L483: Warm Carbon-chain Chemistry Source Harboring Hot Corino Activity
+- 2017ApJ...837..182O (2017): ALMACAL II: Extreme Star Formation Rate Densities in Dusty Starbursts Revealed by ALMA 20 mas Resolution Imaging
+- 2017ApJ...837L..29H (2017): An Extraordinary Outburst in the Massive Protostellar System NGC6334I-MM1: Quadrupling of the Millimeter Continuum
+- 2017ApJ...838..114K (2017): ALMA Observations of Starless Core Substructure in Ophiuchus
+- 2017ApJ...839...43O (2017): H<SUB>2</SUB>CO Distribution and Formation in the TW HYA Disk
+- 2017ApJ...840...23L (2017): A Multi-ringed, Modestly Inclined Protoplanetary Disk around AA Tau
+- 2017ApJ...840...60B (2017): A Close-up View of the Young Circumbinary Disk HD 142527
+- 2017ApJ...840L..11S (2017): Extreme CO Isotopic Abundances in the ULIRG IRAS 13120-5453: An Extremely Young Starburst or Top-heavy Initial Mass Function
+- 2017ApJ...841L...5S (2017): The First ALMA Observation of a Solar Plasmoid Ejection from an X-Ray Bright Point
+- 2017ApJ...842...92G (2017): Thermal Feedback in the High-mass Star- and Cluster-forming Region W51
+- 2017ApJ...842L...9H (2017): Unveiling the Role of the Magnetic Field at the Smallest Scales of Star Formation
+- 2017ApJ...843...83W (2017): ALMA Images of the Orion Hot Core at 349 GHz
+- 2017ApJ...843..136E (2017): Disentangling the Circumnuclear Environs of Centaurus A. III. An Inner Molecular Ring, Nuclear Shocks, and the CO to Warm H<SUB>2</SUB> Int…
+- 2017ApJ...843..150F (2017): A Three-dimensional View of Turbulence: Constraints on Turbulent Motions in the HD 163296 Protoplanetary Disk Using DCO<SUP>+</SUP>
+- 2017ApJ...843L...3C (2017): Variable H<SUP>13</SUP>CO<SUP>+</SUP> Emission in the IM Lup Disk: X-Ray Driven Time-dependent Chemistry?
+- 2017ApJ...844..158S (2017): Dynamical Masses of Low-mass Stars in the Taurus and Ophiuchus Star-forming Regions
+- 2017ApJ...844L...5K (2017): The Evidence of Radio Polarization Induced by the Radiative Grain Alignment and Self-scattering of Dust Grains in a Protoplanetary Disk
+- 2017ApJ...845...10F (2017): Strongly Misaligned Triple System in SR 24 Revealed by ALMA
+- 2017ApJ...845..170B (2017): ALMA Observations of Circumnuclear Disks in Early-type Galaxies: <SUP>12</SUP>CO(2-1) and Continuum Properties
+- 2017ApJ...846L..26W (2017): An ALMA Dynamical Mass Estimate of the Proposed Planetary-mass Companion FW Tau C
+- 2017ApJ...847...66O (2017): ALMA Observations of the Archetypal “Hot Core” That Is Not: Orion-KL
+- 2017ApJ...847...92H (2017): ALMA Observations of Dust Polarization and Molecular Line Emission from the Class 0 Protostellar Source Serpens SMM1
+- 2017ApJ...847..108W (2017): Discovery of Striking Difference of Molecular-emission-line Richness in the Potential Proto-binary System NGC 2264 CMM3
+- 2017ApJ...848L..11K (2017): Dust-trapping Vortices and a Potentially Planet-triggered Spiral Wake in the Pre-transitional Disk of V1247 Orionis
+- 2017ApJ...849...14S (2017): Resolved Structure of the Arp 220 Nuclei at λ ≈ 3 mm
+- 2017ApJ...849...29I (2017): ALMA Multiple-transition Molecular Line Observations of the Ultraluminous Infrared Galaxy IRAS 20551-4250: Different HCN, HCO<SUP>+</SUP>, …
+- 2017ApJ...849...56A (2017): ALMA Observations of the Protostar L1527 IRS: Probing Details of the Disk and the Envelope Structures
+- 2017ApJ...849...95B (2017): Fermi Non-detections of Four X-Ray Jet Sources and Implications for the IC/CMB Mechanism
+- 2017ApJ...850L...2A (2017): ALMA Observations of SMM11 Reveal an Extremely Young Protostar in Serpens Main Cluster
+- 2017ApJ...850L...5T (2017): The Second Galactic Center Black Hole? A Possible Detection of Ionized Gas Orbiting around an IMBH Embedded in the Galactic Center IRS13E C…
+- 2017ApJ...850L..30Y (2017): ALMA Detection of Bipolar Outflows: Evidence for Low-mass Star Formation within 1 pc of Sgr A*
+- 2017ApJ...851...55S (2017): ALMA Reveals Transition of Polarization Pattern with Wavelength in HL Tau’s Disk
+- 2017ApJ...851...76M (2017): ALMA Observations of the Physical and Chemical Conditions in Centaurus A
+- 2017ApJ...851...83C (2017): Protoplanetary Disks in ρ Ophiuchus as Seen from ALMA
+- 2017ApJ...851..126V (2017): Galactic-scale Feedback Observed in the 3C 298 Quasar Host Galaxy
+- 2017ApJ...851..132C (2017): The Architecture of the GW Ori Young Triple-star System and Its Disk: Dynamical Masses, Mutual Inclinations, and Recurrent Eclipses
+- 2017ApJ...851L..23C (2017): ALMA Observations of Elias 2-24: A Protoplanetary Disk with Multiple Gaps in the Ophiuchus Molecular Cloud
+- 2017ApJ...851L..46M (2017): ALMA Detection of Interstellar Methoxymethanol (CH<SUB>3</SUB>OCH<SUB>2</SUB>OH)
+- 2017Icar..286..289L (2017): Detection of CO and HCN in Pluto's atmosphere with ALMA
+- 2017MNRAS.464L..75F (2017): ALMA observations of the supergiant B[e] star Wd1-9
+- 2017MNRAS.467..922Y (2017): ALMA and VLA Observations: Evidence for Ongoing Low-mass Star Formation near Sgr A*
+- 2017MNRAS.468.3694C (2017): Simultaneous low- and high-mass star formation in a massive protocluster: ALMA observations of G11.92-0.61<SUP>★</SUP>
+- 2017MNRAS.470.4209Y (2017): ALMA and VLA observations of emission from the environment of Sgr A*
+- 2017NatAs...1..848V (2017): The shock-heated atmosphere of an asymptotic giant branch star resolved by ALMA
+- 2017NatAs...1E..60K (2017): The large-scale nebular pattern of a superwind binary in an eccentric orbit
+- 2017NatAs...1E.130Z (2017): Mass inventory of the giant-planet formation zone in a solar nebula analogue
+- 2017NatAs...1E.146H (2017): Disk-driven rotating bipolar outflow in Orion Source I
+- 2017Natur.548..430F (2017): Large turbulent reservoirs of cold molecular gas around high-redshift starburst galaxies
+- 2017PASJ...69....6U (2017): ALMA observations of the dense and shocked gas in the nuclear region of NGC 4038 (Antennae galaxies)
+- 2017PASJ...69...34S (2017): Detailed modeling of dust distribution in the disk of HD 142527
+- 2017PASP..129c5004M (2017): ALMA Long Baseline Campaigns: Phase Characteristics of Atmosphere at Long Baselines in the Millimeter and Submillimeter Wavelengths
+- 2017Sci...355.1285N (2017): [C II] 158-μm emission from the host galaxies of damped Lyman-alpha systems
+- 2018A&A...609A..47P (2018): Direct mapping of the temperature and velocity gradients in discs. Imaging the vertical CO snow line around IM Lupi
+- 2018A&A...609A..67K (2018): The close circumstellar environment of Betelgeuse. V. Rotation velocity and molecular envelope properties from ALMA
+- 2018A&A...610A..24F (2018): ALMA continuum observations of the protoplanetary disk AS 209. Evidence of multiple gaps opened by a single planet
+- 2018A&A...611A..16B (2018): Sulphur monoxide exposes a potential molecular disk wind from the planet-hosting disk around HD 100546
+- 2018A&A...611A..99K (2018): The evolution of young HII regions. I. Continuum emission and internal dynamics
+- 2018A&A...614A..42M (2018): ALMA observations of AGN fuelling. The case of PKS B1718-649
+- 2018A&A...614A..58B (2018): High-resolution observations of IRAS 08544-4431. Detection of a disk orbiting a post-AGB star and of a slow disk wind
+- 2018A&A...614A.106C (2018): Probing midplane CO abundance and gas temperature with DCO<SUP>+</SUP> in the protoplanetary disk around HD 169142
+- 2018A&A...615A..28D (2018): ALMA spectral line and imaging survey of a low and a high mass-loss rate AGB star between 335 and 362 GHz
+- 2018A&A...615A..83V (2018): Unveiling the physical conditions of the youngest disks. A warm embedded disk in L1527
+- 2018A&A...615A..95P (2018): Resolved millimeter-dust continuum cavity around the very low mass young star CIDA 1
+- 2018A&A...616A..34H (2018): An unusual face-on spiral in the wind of the M-type AGB star EP Aquarii
+- 2018A&A...616A..88V (2018): V1094 Scorpii: A rare giant multi-ringed disk around a T Tauri star
+- 2018A&A...616A.127R (2018): The role of molecular gas in the nuclear regions of IRAS 00183-7111. ALMA and X-ray investigations of an ultraluminous infrared galaxy
+- 2018A&A...617A..28S (2018): Chemistry in disks. XI. Sulfur-bearing species as tracers of protoplanetary disk physics and chemistry: the DM Tau case
+- 2018A&A...617A.129K (2018): Submillimeter-wave emission of three Galactic red novae: cool molecular outflows produced by stellar mergers
+- 2018A&A...617A.137F (2018): An ALMA 3 mm continuum census of Westerlund 1
+- 2018A&A...619A..40M (2018): The radio jets of SS 433 at millimetre wavelengths
+- 2018A&A...619A.161C (2018): Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk
+- 2018A&A...619L...6N (2018): First high-resolution look at the quiet Sun with ALMA at 3mm
+- 2018A&A...620A..31M (2018): Chasing discs around O-type (proto)stars. ALMA evidence for an SiO disc and disc wind from G17.64+0.16
+- 2018A&A...620A..75K (2018): High-resolution observations of gas and dust around Mira using ALMA and SPHERE/ZIMPOL
+- 2018AJ....155...54W (2018): The Taurus Boundary of Stellar/Substellar (TBOSS) Survey. II. Disk Masses from ALMA Continuum Observations
+- 2018AJ....156..161T (2018): ALMA Thermal Observations of Europa
+- 2018AJ....156..164B (2018): Medium-sized Satellites of Large Kuiper Belt Objects
+- 2018AJ....156..239Z (2018): ALMA Reveals a Collision between Protostellar Outflows in BHR 71
+- 2018ApJ...852..122H (2018): CO and Dust Properties in the TW Hya Disk from High-resolution ALMA Observations
+- 2018ApJ...853..162B (2018): The Complex Morphology of the Young Disk MWC 758: Spirals and Dust Clumps around a Large Cavity
+- 2018ApJ...853..171G (2018): Distributed Star Formation throughout the Galactic Center Cloud Sgr B2
+- 2018ApJ...853L..28B (2018): Fast, Collimated Outflow in the Western Nucleus of Arp 220
+- 2018ApJ...854...96O (2018): Chemical and Physical Picture of IRAS 16293-2422 Source B at a Sub-arcsecond Scale Studied with ALMA
+- 2018ApJ...854..170H (2018): The Extraordinary Outburst in the Massive Protostellar System NGC 6334I-MM1: Emergence of Strong 6.7 GHz Methanol Masers
+- 2018ApJ...855...92C (2018): ALMA’s Polarized View of 10 Protostars in the Perseus Molecular Cloud
+- 2018ApJ...856L..12N (2018): Molecular Emission from a Galaxy Associated with a z ∼ 2.2 Damped Lyα Absorber
+- 2018ApJ...856L..23K (2018): Massive, Absorption-selected Galaxies at Intermediate Redshifts
+- 2018ApJ...856L..27G (2018): Resolving the Polarized Dust Emission of the Disk around the Massive Star Powering the HH 80-81 Radio Jet
+- 2018ApJ...857...18S (2018): Multiple Gaps in the Disk of the Class I Protostar GY 91
+- 2018ApJ...857...69B (2018): A Survey of CH<SUB>3</SUB>CN and HC<SUB>3</SUB>N in Protoplanetary Disks
+- 2018ApJ...858..112L (2018): Differences in the Gas and Dust Distribution in the Transitional Disk of a Sun-like Young Star, PDS 70
+- 2018ApJ...859...32P (2018): Homogeneous Analysis of the Dust Morphology of Transition Disks Observed with ALMA: Investigating Dust Trapping and the Origin of the Cavit…
+- 2018ApJ...859...86T (2018): ALMA Images of the Host Cloud of the Intermediate-mass Black Hole Candidate CO-0.40-0.22*: No Evidence for Cloud-Black Hole Interaction, bu…
+- 2018ApJ...859..111H (2018): The Circumstellar Disk and Asymmetric Outflow of the EX Lup Outburst System
+- 2018ApJ...859..131L (2018): The Distribution and Excitation of CH<SUB>3</SUB>CN in a Solar Nebula Analog
+- 2018ApJ...859..150R (2018): Multiple Stellar Flybys Sculpting the Circumstellar Architecture in RW Aurigae
+- 2018ApJ...859..165S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. I. VLA 1623
+- 2018ApJ...859L..28K (2018): Probing Signatures of a Distant Planet around the Young T-Tauri Star CI Tau Hosting a Possible Hot Jupiter
+- 2018ApJ...860....9M (2018): Detection of an Optical/UV Jet/Counterjet and Multiple Spectral Components in M84
+- 2018ApJ...860...77E (2018): Protoplanetary Disk Properties in the Orion Nebula Cluster: Initial Results from Deep, High-resolution ALMA Observations
+- 2018ApJ...860...82H (2018): ALMA Observations of Polarization from Dust Scattering in the IM Lup Protoplanetary Disk
+- 2018ApJ...860L..12T (2018): A Kinematical Detection of Two Embedded Jupiter-mass Planets in HD 163296
+- 2018ApJ...860L..13P (2018): Kinematic Evidence for an Embedded Protoplanet in a Circumstellar Disk
+- 2018ApJ...861...91H (2018): ALMA Observations of Polarized 872 μm Dust Emission from the Protostellar Systems VLA 1623 and L1527
+- 2018ApJ...862L...2F (2018): First Detection of the Simplest Organic Acid in a Protoplanetary Disk
+- 2018ApJ...863...19A (2018): The Distinct Evolutionary Nature of Two Class 0 Protostars in Serpens Main SMM4
+- 2018ApJ...863...72O (2018): Sub-arcsecond Kinematic Structure of the Outflow in the Vicinity of the Protostar in L483
+- 2018ApJ...863...96Y (2018): ALMA Observations of the Solar Chromosphere on the Polar Limb
+- 2018ApJ...863..106K (2018): A Subarcsecond ALMA Molecular Line Imaging Survey of the Circumbinary, Protoplanetary Disk Orbiting V4046 Sgr
+- 2018ApJ...863..193V (2018): Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248
+- 2018ApJ...863L..35M (2018): First Results of an ALMA Band 10 Spectral Line Survey of NGC 6334I: Detections of Glycolaldehyde (HC(O)CH<SUB>2</SUB>OH) and a New Compact …
+- 2018ApJ...864...76Z (2018): Rotation in the NGC 1333 IRAS 4C Outflow
+- 2018ApJ...864...81O (2018): Two Different Grain Size Distributions within the Protoplanetary Disk around HD 142527 Revealed by ALMA Polarization Observation
+- 2018ApJ...864..133T (2018): Temperature, Mass, and Turbulence: A Spatially Resolved Multiband Non-LTE Analysis of CS in TW Hya
+- 2018ApJ...864..170G (2018): H<SUB>2</SUB>CO Ortho-to-para Ratio in the Protoplanetary Disk HD 163296
+- 2018ApJ...864L..23V (2018): Methanol and its Relation to the Water Snowline in the Disk around the Young Outbursting Star V883 Ori
+- 2018ApJ...865...13T (2018): A Galaxy-scale Fountain of Cold Molecular Gas Pumped by a Black Hole
+- 2018ApJ...865...37M (2018): Multiple Rings in the Transitional Disk of GM Aurigae Revealed by VLA and ALMA
+- 2018ApJ...865..127I (2018): Constraints on the Cosmic-Ray Ionization Rate in the z ∼ 2.3 Lensed Galaxies SMM J2135-0102 and SDP 17b from Observations of OH<SUP>+</SUP>…
+- 2018ApJ...865..155C (2018): Constraining Gas-phase Carbon, Oxygen, and Nitrogen in the IM Lup Protoplanetary Disk
+- 2018ApJ...865..157A (2018): Scaling Relations Associated with Millimeter Continuum Sizes in Protoplanetary Disks
+- 2018ApJ...865L..12B (2018): ALMA Observations of Polarized Emission toward the CW Tau and DG Tau Protoplanetary Disks: Constraints on Dust Grain Growth and Settling
+- 2018ApJ...866...87B (2018): The Extraordinary Outburst in the Massive Protostellar System NGC 6334I-MM1: Flaring of the Water Masers in a North-South Bipolar Outflow D…
+- 2018ApJ...866..141K (2018): Extremely Dense Cores Associated with Chandra Sources in Ophiuchus A: Forming Brown Dwarfs Unveiled?
+- 2018ApJ...866L...3B (2018): ALMA Resolves the Stellar Birth Explosion in Distant Quasar 3C298
+- 2018ApJ...867...43T (2018): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Perseus Protostars. VI. Characterizing the Formation Mechanism for Close Mult…
+- 2018ApJ...867...94K (2018): Zooming in to Massive Star Birth
+- 2018ApJ...867..111Z (2018): Spatially Resolved <SUP>12</SUP>CO(2-1)/<SUP>12</SUP>CO(1-0) in the Starburst Galaxy NGC 253: Assessing Optical Depth to Constrain the Mole…
+- 2018ApJ...867L..25B (2018): SS433's Jet Trace from ALMA Imaging and Global Jet Watch Spectroscopy: Evidence for Post-launch Particle Acceleration
+- 2018ApJ...868..113T (2018): Evidence for a Vertical Dependence on the Pressure Structure in AS 209
+- 2018ApJ...868L...3M (2018): ALMA Reveals a Misaligned Inner Gas Disk inside the Large Cavity of a Transitional Disk
+- 2018ApJ...869...17L (2018): Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region
+- 2018ApJ...869..115S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. II. IRAS 16293-2422
+- 2018ApJ...869..158F (2018): ALMA Detections of the Youngest Protostars in Ophiuchus
+- 2018ApJ...869L..14M (2018): Discovery of <SUP>14</SUP>NH<SUB>3</SUB> (2,2) Maser Emission in Sgr B2 Main
+- 2018ApJ...869L..24I (2018): G11.92-0.61 MM 1: A Fragmented Keplerian Disk Surrounding a Proto-O Star
+- 2018ApJ...869L..41A (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). I. Motivation, Sample, Calibration, and Overview
+- 2018ApJ...869L..48G (2018): The Disk Substructures at High Angular Resolution Program (DSHARP). VIII. The Rich Ringed Substructures in the AS 209 Disk
+- 2018ApJ...869L..49I (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). IX. A High-definition Study of the HD 163296 Planet-forming Disk
+- 2018MNRAS.474.3640M (2018): CO excitation in the Seyfert galaxy NGC 34: stars, shock or AGN driven?
+- 2018MNRAS.475.4924K (2018): ALMA observations of the narrow HR 4796A debris ring
+- 2018MNRAS.475.5296D (2018): Rings and gaps in the disc around Elias 24 revealed by ALMA
+- 2018MNRAS.475L..52S (2018): Imaging the molecular outflows of the prototypical ULIRG NGC 6240 with ALMA
+- 2018MNRAS.477.2760M (2018): Magnetically regulated collapse in the B335 protostar? I. ALMA observations of the polarized dust emission
+- 2018MNRAS.477.5104C (2018): An inner warp in the DoAr 44 T Tauri transition disc
+- 2018MNRAS.480.4991G (2018): ALMA imaging of the nascent planetary nebula IRAS 15103-5754
+- 2018MNRAS.481L..40S (2018): A flux-ratio anomaly in the CO spectral line emission from gravitationally lensed quasar MG J0414+0534
+- 2018NatAs...2..478M (2018): The unexpectedly large proportion of high-mass star-forming cores in a Galactic mini-starburst
+- 2018NatAs...2..646H (2018): Evidence for the start of planet formation in a young circumstellar disk
+- 2018NatAs...2..778K (2018): Astronomical detection of radioactive molecule <SUP>26</SUP>AlF in the remnant of an ancient explosion
+- 2018NatCo...9.4636L (2018): Unveiling a magnetized jet from a low-mass protostar
+- 2018RAA....18...31P (2018): Morphology of the <SUP>13</SUP>CO(3-2) millimetre emission across the gas disc surrounding the triple protostar GG Tau A using ALMA observa…
+- 2018RAA....18...93Z (2018): Disks and outflows in the S255IR area of high mass star formation from ALMA observations
+- 2019A&A...621A..18M (2019): Submillimeter polarization and variability of quasar PKS 1830-211
+- 2019A&A...621A..27F (2019): Massive galaxies on the road to quenching: ALMA observations of powerful high redshift radio galaxies
+- 2019A&A...621A.122B (2019): High-mass star formation at sub-50 au scales
+- 2019A&A...622A.206M (2019): A 10-M<SUB>☉</SUB> YSO with a Keplerian disk and a nonthermal radio jet
+- 2019A&A...623A.124C (2019): Upper limits on CH<SUB>3</SUB>OH in the HD 163296 protoplanetary disk. Evidence for a low gas-phase CH<SUB>3</SUB>OH-to-H<SUB>2</SUB>CO rat…
+- 2019A&A...623A.150V (2019): The ALMA Lupus protoplanetary disk survey: evidence for compact gas disks and molecular rings from CN
+- 2019A&A...623A.153O (2019): HD 101584: circumstellar characteristics and evolutionary status
+- 2019A&A...623L...1K (2019): Detection of highly excited OH towards AGB stars. A new probe of shocked gas in the extended atmospheres
+- 2019A&A...623L...6P (2019): Organic molecules in the protoplanetary disk of DG Tauri revealed by ALMA
+- 2019A&A...624A...7V (2019): Spatial segregation of dust grains in transition disks. SPHERE observations of 2MASS J16083070-3828268 and RXJ1852.3-3700
+- 2019A&A...624A..33V (2019): ALMA study of the HD 100453 AB system and the tidal interaction of the companion with the disk
+- 2019A&A...624A..82B (2019): Methylamine and other simple N-bearing species in the hot cores NGC 6334I MM1-3
+- 2019A&A...624A.138Y (2019): CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP> line and dust emission in a z = 3.63 strongly lensed starburst merger at sub-kiloparsec scal…
+- 2019A&A...624L...7V (2019): Stringent limits on the magnetic field strength in the disc of TW Hya. ALMA observations of CN polarisation
+- 2019A&A...626A..81V (2019): Resolving the extended stellar atmospheres of asymptotic giant branch stars at (sub)millimetre wavelengths
+- 2019A&A...626A..93V (2019): The ALMA-PILS survey: gas dynamics in IRAS 16293-2422 and the connection between its two protostars
+- 2019A&A...626L...2F (2019): High gas-to-dust size ratio indicating efficient radial drift in the mm-faint CX Tauri disk
+- 2019A&A...627A.114K (2019): Massive dust clumps in the envelope of the red supergiant VY Canis Majoris
+- 2019A&A...627L...6M (2019): Substructures in the Keplerian disc around the O-type (proto-)star G17.64+0.16
+- 2019A&A...628A..10B (2019): Re-exploring Molecular Complexity with ALMA (ReMoCA): interstellar detection of urea
+- 2019A&A...628A..95M (2019): Observational constraints on dust disk sizes in tidally truncated protoplanetary disks in multiple systems in the Taurus region
+- 2019A&A...629A...8T (2019): Spatio-kinematical model of the collimated molecular outflow in the water-fountain nebula IRAS 16342-3814
+- 2019A&A...629A..29J (2019): Organic chemistry in the innermost, infalling envelope of the Class 0 protostar L483
+- 2019A&A...629A..30F (2019): Complex molecular gas kinematics in the inner 5 kpc of 4C12.50 as seen by ALMA
+- 2019A&A...629A..75B (2019): First detections of H<SUP>13</SUP>CO<SUP>+</SUP> and HC<SUP>15</SUP>N in the disk around HD 97048. Evidence for a cold gas reservoir in the…
+- 2019A&A...629A.128W (2019): Chlorine-bearing molecules in molecular absorbers at intermediate redshifts
+- 2019A&A...629A.136S (2019): A rotating fast bipolar wind and disk system around the B[e]-type star MWC 922
+- 2019A&A...629A.146V (2019): IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS
+- 2019A&A...631A..25J (2019): ALMA observations of water deuteration: a physical diagnostic of the formation of protostars
+- 2019A&A...631A..69M (2019): Bright C<SUB>2</SUB>H emission in protoplanetary discs in Lupus: high volatile C/O &gt; 1 ratios
+- 2019A&A...632A..38A (2019): A radio census of the massive stellar cluster Westerlund 1
+- 2019A&A...632A..66O (2019): ALMA observations of PKS 1549-79: a case of feeding and feedback in a young radio quasar
+- 2019A&A...632A.101T (2019): Chemical and kinematic structure of extremely high-velocity molecular jets in the Serpens Main star-forming region
+- 2019A&A...632L..12H (2019): Multiple nitrogen reservoirs in a protoplanetary disk at the epoch of comet and giant planet formation
+- 2019AJ....157..165A (2019): A Tail Structure Associated with a Protoplanetary Disk around SU Aurigae
+- 2019AJ....157..237R (2019): Constraints on a Putative Planet Sculpting the V4046 Sagittarii Circumbinary Disk
+- 2019AJ....157..251T (2019): Neptune's Latitudinal Variations as Viewed with ALMA
+- 2019AJ....158...15P (2019): Dust Unveils the Formation of a Mini-Neptune Planet in a Protoplanetary Ring
+- 2019AJ....158...47M (2019): Thermal Emission from the Uranian Ring System
+- 2019AJ....158..139D (2019): First ALMA Millimeter-wavelength Maps of Jupiter, with a Multiwavelength Study of Convection
+- 2019AJ....158..208G (2019): First Detection of CS Masers around a High-mass Young Stellar Object, W51 e2e
+- 2019ApJ...870...81T (2019): The Formation Conditions of the Wide Binary Class 0 Protostars within BHR 71
+- 2019ApJ...870L..19N (2019): [C II] 158 μm Emission from z ∼ 4 H I Absorption-selected Galaxies
+- 2019ApJ...871...30I (2019): The Size, Shape, and Scattering of Sagittarius A* at 86 GHz: First VLBI with ALMA
+- 2019ApJ...871...48P (2019): High-resolution ALMA Observations of HD 100546: Asymmetric Circumstellar Ring and Circumplanetary Disk Upper Limits
+- 2019ApJ...871...73H (2019): AT2018cow: A Luminous Millimeter Transient
+- 2019ApJ...871..107F (2019): Gas Density Perturbations Induced by One or More Forming Planets in the AS 209 Protoplanetary Disk as Seen with ALMA
+- 2019ApJ...871..109P (2019): Multiband Optical and Near-Infrared Properties of Faint Submillimeter Galaxies with Serendipitous ALMA Detections
+- 2019ApJ...871..149F (2019): Identifying Variability in Deeply Embedded Protostars with ALMA and CARMA
+- 2019ApJ...871..170M (2019): Fire in the Heart: A Characterization of the High Kinetic Temperatures and Heating Sources in the Nucleus of NGC 253
+- 2019ApJ...871..185L (2019): Investigating Fragmentation of Gas Structures in OB Cluster-forming Molecular Clump G33.92+0.11 with 1000 au Resolution Observations of ALMA
+- 2019ApJ...871..243Y (2019): JCMT POL-2 and ALMA Polarimetric Observations of 6000-100 au Scales in the Protostar B335: Linking Magnetic Field and Gas Kinematics in Obs…
+- 2019ApJ...872....2R (2019): ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP>
+- 2019ApJ...872...64K (2019): Extremely High Excitation SiO Lines in Disk-outflow Systems in Orion Source I
+- 2019ApJ...872...70T (2019): ALMA High Angular Resolution Polarization Study: An Extremely Young Class 0 Source, OMC-3/MMS 6
+- 2019ApJ...872..176Z (2019): An Asymmetric Keplerian Disk Surrounding the O-type Protostar IRAS 16547-4247
+- 2019ApJ...873...73Z (2019): An Ordered Envelope-Disk Transition in the Massive Protostellar Source G339.88-1.26
+- 2019ApJ...874..136S (2019): High-precision Dynamical Masses of Pre-main-sequence Stars with ALMA and Gaia
+- 2019ApJ...875...94H (2019): On the Nature of the Compact Sources in IRAS 16293-2422 Seen at Centimeter to Submillimeter Wavelengths
+- 2019ApJ...875...96N (2019): Dust Continuum Emission and the Upper Limit Fluxes of Submillimeter Water Lines of the Protoplanetary Disk around HD 163296 Observed by ALMA
+- 2019ApJ...875L...1E (2019): First M87 Event Horizon Telescope Results. I. The Shadow of the Supermassive Black Hole
+- 2019ApJ...875L...2E (2019): First M87 Event Horizon Telescope Results. II. Array and Instrumentation
+- 2019ApJ...875L...3E (2019): First M87 Event Horizon Telescope Results. III. Data Processing and Calibration
+- 2019ApJ...875L...4E (2019): First M87 Event Horizon Telescope Results. IV. Imaging the Central Supermassive Black Hole
+- 2019ApJ...876...25B (2019): A Survey of C<SUB>2</SUB>H, HCN, and C<SUP>18</SUP>O in Protoplanetary Disks
+- 2019ApJ...876...72L (2019): Sulfur Chemistry in Protoplanetary Disks: CS and H<SUB>2</SUB>CS
+- 2019ApJ...876L..13S (2019): Line Ratios Reveal N<SUB>2</SUB>H<SUP>+</SUP> Emission Originates above the Midplane in TW Hydrae
+- 2019ApJ...877L...2H (2019): Dust Polarization in Four Protoplanetary Disks at 3 mm: Further Evidence of Multiple Origins
+- 2019ApJ...877L..22L (2019): The Anomalously Low (Sub)Millimeter Spectral Indices of Some Protoplanetary Disks May Be Explained By Dust Self-scattering
+- 2019ApJ...877L..26L (2019): ALMA Detection of Dark Chromospheric Holes in the Quiet Sun
+- 2019ApJ...878L...8T (2019): Discovery of An au-scale Excess in Millimeter Emission from the Protoplanetary Disk around TW Hya
+- 2019ApJ...878L..25H (2019): ALMA Polarimetry of AT2018cow
+- 2019ApJ...879...75H (2019): Jet-driven Galaxy-scale Gas Outflows in the Hyperluminous Quasar 3C 273
+- 2019ApJ...879..101L (2019): A Pseudodisk Threaded with a Toroidal and Pinched Poloidal Magnetic Field Morphology in the HH 211 Protostellar System
+- 2019ApJ...879L..25I (2019): Detection of Continuum Submillimeter Emission Associated with Candidate Protoplanets
+- 2019ApJ...880...69Y (2019): HL Tau Disk in HCO<SUP>+</SUP> (3-2) and (1-0) with ALMA: Gas Density, Temperature, Gap, and One-arm Spiral
+- 2019ApJ...880..130M (2019): A New, Rotating Hot Corino in Serpens
+- 2019ApJ...881...99M (2019): Solar Chromospheric Temperature Diagnostics: A Joint ALMA-Hα Analysis
+- 2019ApJ...881..159M (2019): Characterization of Ring Substructures in the Protoplanetary Disk of HD 169142 from Multiwavelength Atacama Large Millimeter/submillimeter …
+- 2019ApJ...881L...2B (2019): ALMA Observations of the Terahertz Spectrum of Sagittarius A*
+- 2019ApJ...881L..39B (2019): Sub-arcsecond (Sub)millimeter Imaging of the Massive Protocluster G358.93-0.03: Discovery of 14 New Methanol Maser Lines Associated with a …
+- 2019ApJ...882...10N (2019): Resolved [C II] Emission from z &gt; 6 Quasar Host-Companion Galaxy Pairs
+- 2019ApJ...882...49L (2019): Compact Disks in a High-resolution ALMA Survey of Dust Structures in the Taurus Molecular Cloud
+- 2019ApJ...882..160Q (2019): Probing CO and N<SUB>2</SUB> Snow Surfaces in Protoplanetary Disks with N<SUB>2</SUB>H<SUP>+</SUP> Emission
+- 2019ApJ...882L...4C (2019): Resolved ALMA Continuum Image of the Circumbinary Ring and Circumstellar Disks in the L1551 IRS 5 System
+- 2019ApJ...882L..31B (2019): The First Detection of <SUP>13</SUP>C<SUP>17</SUP>O in a Protoplanetary Disk: A Robust Tracer of Disk Gas Mass
+- 2019ApJ...883....1Z (2019): An Episodic Wide-angle Outflow in HH 46/47
+- 2019ApJ...883...22C (2019): The Degree of Alignment between Circumbinary Disks and Their Binary Hosts
+- 2019ApJ...883...98Z (2019): Systematic Variations of CO Gas Abundance with Radius in Gas-rich Protoplanetary Disks
+- 2019ApJ...883..193N (2019): The ALMA Discovery of the Rotating Disk and Fast Outflow of Cold Molecular Gas in NGC 1275
+- 2019ApJ...883L...2M (2019): The Origin of the X-Ray Emission in Two Well-aligned Extragalactic Jets: The Case for IC/CMB
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019ApJ...884...97L (2019): Diagnosing 0.1-10 au Scale Morphology of the FU Ori Disk Using ALMA and VLTI/GRAVITY
+- 2019ApJ...884..121L (2019): A Reverse Shock in GRB 181201A
+- 2019ApJ...884..146T (2019): An ALMA Study of the FU Ori-type Object V900 Mon: Implications for the Progenitor
+- 2019ApJ...884L..28I (2019): Counter-rotation and High-velocity Outflow in the Parsec-scale Molecular Torus of NGC 1068
+- 2019ApJ...884L..58U (2019): First Detection of Radio Linear Polarization in a Gamma-Ray Burst Afterglow
+- 2019ApJ...885..106L (2019): Characterizing Magnetic Field Morphologies in Three Serpens Protostellar Cores with ALMA
+- 2019ApJ...885L..21M (2019): How to Fuel an AGN: Mapping Circumnuclear Gas in NGC 6240 with ALMA
+- 2019ApJ...886....6T (2019): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. I. Identifying and Characterizing the Protostellar Content …
+- 2019ApJ...886...14F (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. I. The Formation of High-mass Stars and Pillars in the N159E-Papillon Ne…
+- 2019ApJ...886..103O (2019): Radial Variations in Grain Sizes and Dust Scale Heights in the Protoplanetary Disk around HD 163296 Revealed by ALMA Polarization Observati…
+- 2019ApJ...886L...4Z (2019): Discovery of a Photoionized Bipolar Outflow toward the Massive Protostar G45.47+0.05
+- 2019ApJ...886L..35P (2019): ALMA C II 158 μm Imaging of an H I-selected Major Merger at z ∼ 4
+- 2019ApJ...887...55C (2019): Physical Characterization of an Unlensed, Dusty Star-forming Galaxy at z = 5.85
+- 2019ApJ...887..149B (2019): Origins of Molecular Clouds in Early-type Galaxies
+- 2019ApJ...887..209A (2019): Protostellar Evolution in Serpens Main: Possible Origin of Disk-size Diversity
+- 2019ApJS..244...25S (2019): The Bulge Asymmetries and Dynamical Evolution (BAaDE) SiO Maser Survey at 86 GHz with ALMA
+- 2019ApJS..245....2S (2019): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. III. Survey Overview
+- 2019MNRAS.482..698C (2019): The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - I: project description and continuum images at 28 au resolution
+- 2019MNRAS.482L..29D (2019): Submillimetre dust polarization and opacity in the HD163296 protoplanetary ring system
+- 2019MNRAS.484.4239R (2019): The AGN fuelling/feedback cycle in nearby radio galaxies I. ALMA observations and early results
+- 2019MNRAS.485..739M (2019): Asymmetric mid-plane gas in ALMA images of HD 100546
+- 2019MNRAS.485.1595P (2019): Multiphase circumgalactic medium probed with MUSE and ALMA
+- 2019MNRAS.486.2366M (2019): The molecular gas properties in the gravitationally lensed merger HATLAS J142935.3-002836
+- 2019MNRAS.486.4638U (2019): A dust and gas cavity in the disc around CQ Tau revealed by ALMA
+- 2019MNRAS.487..444R (2019): Nuclear kinematics in nearby AGN - I. An ALMA perspective on the morphology and kinematics of the molecular CO(2-1) emission
+- 2019MNRAS.488..191G (2019): ALMA observations of A0620-00: fresh clues on the nature of quiescent black hole X-ray binary jets
+- 2019MNRAS.490.3025R (2019): Driving massive molecular gas flows in central cluster galaxies with AGN feedback
+- 2019NatAs...3..230K (2019): A circumbinary protoplanetary disk in a polar configuration
+- 2019NatAs...3..278K (2019): Publisher Correction: A circumbinary protoplanetary disk in a polar configuration
+- 2019NatAs...3..517Z (2019): Dynamics of a massive binary at birth
+- 2019NatAs...3..614L (2019): An intense thermospheric jet on Titan
+- 2019NatAs...3.1109P (2019): Kinematic detection of a planet carving a gap in a protoplanetary disk
+- 2019PASJ...71...57K (2019): Searching for the 380 GHz H<SUB>2</SUB>O emission from the high-z lensed quasi-stellar object MG J0414+0534
+- 2019PASJ...71..105T (2019): Rotating ionized gas ring around the Galactic center IRS13E3
+- 2019PASJ...71..124S (2019): Investigating the gas-to-dust ratio in the protoplanetary disk of HD 142527
+- 2019Sci...366...90A (2019): Gas flow and accretion via spiral streamers and circumstellar disks in a young binary protostar
+- 2020A&A...634L..12D (2020): ALMA reveals a large structured disk and nested rotating outflows in DG Tauri B
+- 2020A&A...635A...2S (2020): Physical properties of the star-forming clusters in NGC 6334. A study of the continuum dust emission with ALMA
+- 2020A&A...635L...9P (2020): Planet-induced spirals in the circumbinary disk of GG Tauri A
+- 2020A&A...636A...5R (2020): SYMBA: An end-to-end VLBI synthetic data generation pipeline. Simulating Event Horizon Telescope observations of M 87
+- 2020A&A...636A..26H (2020): Missing water in Class I protostellar disks
+- 2020A&A...636A..65G (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). I. CO, CS, CN, and H<SUB>2</SUB>CO around DG Tau B
+- 2020A&A...636L...4M (2020): Spirals inside the millimeter cavity of transition disk SR 21
+- 2020A&A...637A...7M (2020): Detection of deuterated molecules, but not of lithium hydride, in the z = 0.89 absorber toward PKS 1830-211
+- 2020A&A...638A..65O (2020): ALMA and VLA reveal the lukewarm chromospheres of the nearby red supergiants Antares and Betelgeuse
+- 2020A&A...638L..13M (2020): ALMA full polarization observations of PKS 1830-211 during its record-breaking flare of 2019
+- 2020A&A...639A.121F (2020): Annular substructures in the transition disks around LkCa 15 and J1610
+- 2020A&A...639L...1M (2020): Ongoing flyby in the young multiple system UX Tauri
+- 2020A&A...640A..19T (2020): Dust masses of young disks: constraining the initial solid reservoir for planet formation
+- 2020A&A...640A..27V (2020): Protoplanetary disk masses in NGC 2024: Evidence for two populations
+- 2020A&A...640A..57A (2020): Modeling the quiet Sun cell and network emission with ALMA
+- 2020A&A...640A.111A (2020): Outflows, cores, and magnetic field orientations in W43-MM1 as seen by ALMA
+- 2020A&A...640A.133R (2020): DEATHSTAR: Nearby AGB stars with the Atacama Compact Array. I. CO envelope sizes and asymmetries: A new hope for accurate mass-loss-rate es…
+- 2020A&A...641L...2M (2020): All good things come in threes: the third image of the lensed quasar PKS 1830-211
+- 2020A&A...642A..93H (2020): A detailed view on the circumstellar environment of the M-type AGB star EP Aquarii. I. High-resolution ALMA and SPHERE observations
+- 2020A&A...642A.164V (2020): Observations of edge-on protoplanetary disks with ALMA. I. Results from continuum data
+- 2020A&A...642L...7P (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). II. Vertical stratification of CO, CS, CN, H<SUB>2</SUB>CO, and CH<SUB>3…
+- 2020A&A...643A..41D (2020): ALMA observations of transient heating in a solar active region
+- 2020A&A...644A..11L (2020): A statistical analysis of dust polarization properties in ALMA observations of Class 0 protostellar cores
+- 2020A&A...644A..59K (2020): Molecular remnant of Nova 1670 (CK Vulpeculae). I. Properties and enigmatic origin of the gas
+- 2020A&A...644A.119P (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG…
+- 2020A&A...644A.120C (2020): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). IV. Thioformaldehyde (H<SUB>2</SUB>CS) in protoplanetary discs: spatial …
+- 2020AJ....159..171F (2020): A Ringed Pole-on Outflow from DO Tauri Revealed by ALMA
+- 2020AJ....159..215L (2020): Disk-integrated Thermal Properties of Ceres Measured at Millimeter Wavelengths
+- 2020AJ....159..229W (2020): ALMA 0.88 mm Survey of Disks around Planetary-mass Companions
+- 2020ApJ...888...72K (2020): The Detection of Dust Gap-ring Structure in the Outer Region of the CR Cha Protoplanetary Disk
+- 2020ApJ...888L..28S (2020): Estimating the Temperature and Density of a Spicule from 100 GHz Data Obtained with ALMA
+- 2020ApJ...889...59P (2020): Resolving the FU Orionis System with ALMA: Interacting Twin Disks?
+- 2020ApJ...889..155W (2020): Observations of the Orion Source I Disk and Outflow Interface
+- 2020ApJ...889..172K (2020): Resolving Linear Polarization due to Emission and Extinction of Aligned Dust Grains on NGC 1333 IRAS4A with JVLA and ALMA
+- 2020ApJ...889L...4L (2020): Revealing the CO X-factor in Dark Molecular Gas through Sensitive ALMA Absorption Observations
+- 2020ApJ...889L..24P (2020): Long Baseline Observations of the HD 100546 Protoplanetary Disk with ALMA
+- 2020ApJ...890...44B (2020): ALMA Observations Reveal No Preferred Outflow-filament and Outflow-magnetic Field Orientations in Protoclusters
+- 2020ApJ...890..129K (2020): Detection of Irregular, Submillimeter Opaque Structures in the Orion Molecular Clouds: Protostars within 10,000 yr of Formation?
+- 2020ApJ...890..130T (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. II. A Statistical Characterization of Class 0 and Class I P…
+- 2020ApJ...890..142P (2020): An ALMA Survey of H<SUB>2</SUB>CO in Protoplanetary Disks
+- 2020ApJ...890..149T (2020): The Molecular Gas in the NGC 6240 Merging Galaxy System at the Highest Spatial Resolution
+- 2020ApJ...891...48H (2020): A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk
+- 2020ApJ...891...61Y (2020): Constraining the Infalling Envelope Models of Embedded Protostars: BHR 71 and Its Hot Corino
+- 2020ApJ...892..152H (2020): Understanding the Origin of the Magnetic Field Morphology in the Wide-binary Protostellar System BHR 71
+- 2020ApJ...892L..18I (2020): ALMA 50-parsec-resolution Imaging of Jet-ISM Interaction in the Lensed Quasar MG J0414+0534
+- 2020ApJ...892L..30I (2020): Time Variations in the Flux Density of Sgr A* at 230 GHz Detected with ALMA
+- 2020ApJ...893...51S (2020): Disk Structure around the Class I Protostar L1489 IRS Revealed by ALMA: A Warped-disk System
+- 2020ApJ...893...54Y (2020): Transition from Ordered Pinched to Warped Magnetic Field on a 100 au Scale in the Class 0 Protostar B335
+- 2020ApJ...893..101L (2020): An Unbiased ALMA Spectral Survey of the LkCa 15 and MWC 480 Protoplanetary Disks
+- 2020ApJ...893..125U (2020): Scattering-induced Intensity Reduction: Large Mass Content with Small Grains in the Inner Region of the TW Hya disk
+- 2020ApJ...894...72S (2020): Atacama Compact Array Measurements of the Molecular Mass in the NGC 5044 Cooling-flow Group
+- 2020ApJ...894L..14L (2020): ALMA Observations of Massive Clouds in the Central Molecular Zone: Jeans Fragmentation and Cluster Formation
+- 2020ApJ...895...64L (2020): Radio Linear Polarization of GRB Afterglows: Instrumental Systematics in ALMA Observations of GRB 171205A
+- 2020ApJ...895...73K (2020): A Massive Molecular Torus inside a Gas-poor Circumnuclear Disk in the Radio Galaxy NGC 1052 Discovered with ALMA
+- 2020ApJ...895...84Y (2020): Super-resolution Imaging of the Protoplanetary Disk HD 142527 Using Sparse Modeling
+- 2020ApJ...895..109F (2020): Measuring Turbulent Motion in Planet-forming Disks with ALMA: A Detection around DM Tau and Nondetections around MWC 480 and V4046 Sgr
+- 2020ApJ...895..142L (2020): Magnetic Fields in the Early Stages of Massive Star Formation as Revealed by ALMA
+- 2020ApJ...895L...2N (2020): Substructure Formation in a Protostellar Disk of L1527 IRS
+- 2020ApJ...895L..18B (2020): GW Ori: Interactions between a Triple-star System and Its Circumtriple Disk in Action
+- 2020ApJ...895L..46L (2020): Hints of a Population of Solar System Analog Planets from ALMA
+- 2020ApJ...896...35J (2020): A Detailed View of the Circumstellar Environment and Disk of the Forming O-star AFGL 4176
+- 2020ApJ...896..157H (2020): Magnetic Field Structure of Orion Source I
+- 2020ApJ...897...59M (2020): Orbital and Mass Constraints of the Young Binary System IRAS 16293-2422 A
+- 2020ApJ...897L..33J (2020): The Ionized Warped Disk and Disk Wind of the Massive Protostar Monoceros R2-IRS2 Seen with ALMA
+- 2020ApJ...898...10T (2020): Circumbinary Disks of the Protostellar Binary Systems in the L1551 Region
+- 2020ApJ...898...36L (2020): Dual-wavelength ALMA Observations of Dust Rings in Protoplanetary Disks
+- 2020ApJ...898...97B (2020): An Evolutionary Study of Volatile Chemistry in Protoplanetary Disks
+- 2020ApJ...898..140H (2020): Large-scale CO Spiral Arms and Complex Kinematics Associated with the T Tauri Star RU Lup
+- 2020ApJ...898..146M (2020): Dust Populations in the Iconic Vega Planetary System Resolved by ALMA
+- 2020ApJ...899..157T (2020): The Excitation Conditions of CN in TW Hya
+- 2020ApJ...900....7H (2020): ALMA Observations of Young Eruptive Stars: Continuum Disk Sizes and Molecular Outflows
+- 2020ApJ...900L...2T (2020): Salt, Hot Water, and Silicon Compounds Tracing Massive Twin Disks
+- 2020ApJ...901...37L (2020): The Family of Amide Molecules toward NGC 6334I
+- 2020ApJ...901...71S (2020): Low-level Carbon Monoxide Line Polarization in Two Protoplanetary Disks: HD 142527 and IM Lup
+- 2020ApJ...901..166V (2020): Temperature Structures of Embedded Disks: Young Disks in Taurus Are Warm
+- 2020ApJ...901L...5K (2020): High Molecular Gas Masses in Absorption-selected Galaxies at z ≍ 2
+- 2020ApJ...902..132B (2020): On the Nature of the T Tauri Triple System
+- 2020ApJ...902..141S (2020): The VLA/ALMA Nascent Disk and Multiplicity (VANDAM) Survey of Orion Protostars. III. Substructures in Protostellar Disks
+- 2020ApJ...902L..33G (2020): A Tale of Two Transition Disks: ALMA Long-baseline Observations of ISO-Oph 2 Reveal Two Closely Packed Nonaxisymmetric Rings and a ∼2 au Ca…
+- 2020ApJ...902L..47Z (2020): Confirming the Explosive Outflow in G5.89 with ALMA
+- 2020ApJ...904...77G (2020): A Photoionized Accretion Disk around a Young High-mass Star
+- 2020ApJ...904...78S (2020): Constraining the Chemical Signatures and the Outburst Mechanism of the Class 0 Protostar HOPS 383
+- 2020ApJ...904..125S (2020): Spiral-arm Substructures in the Asymmetrical Dust Rings of the Circumstellar Disk MWC 758
+- 2020ApJ...904..168B (2020): Gravity and Rotation Drag the Magnetic Field in High-mass Star Formation
+- 2020ApJ...904..181L (2020): ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1
+- 2020ApJ...904L...6A (2020): A Case of Simultaneous Star and Planet Formation
+- 2020ApJ...905...25G (2020): Multidirectional Mass Accretion and Collimated Outflows on Scales of 100-2000 au in Early Stages of High-mass Protostars
+- 2020ApJ...905...85S (2020): Ubiquitous Molecular Outflows in z &gt; 4 Massive, Dusty Galaxies. I. Sample Overview and Clumpy Structure in Molecular Outflows on 500 pc …
+- 2020ApJ...905...89Y (2020): Kinematical Signs of Dust Trapping and Feedback in a Local Pressure Bump in the Protoplanetary Disk around HD 142527 Revealed with ALMA
+- 2020MNRAS.491..178K (2020): Carina's pillars of destruction: the view from ALMA
+- 2020MNRAS.491..427B (2020): Sulphur-bearing and complex organic molecules in an infrared cold core
+- 2020MNRAS.492.4847L (2020): VVV-WIT-01: highly obscured classical nova or protostellar collision?
+- 2020MNRAS.493.5290S (2020): Smoke on the water: CO and H<SUB>2</SUB>O in a circumnuclear disc around a quasar at redshift 2.64
+- 2020MNRAS.495.4297S (2020): ALMA reveals the coherence of the magnetic field geometry in OH 231.8+4.2
+- 2020MNRAS.495L...1I (2020): Giant star-forming clumps?
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2020MNRAS.496.1834L (2020): Atacama Compact Array observations of the pulsar-wind nebula of SNR 0540-69.3
+- 2020MNRAS.496.2362P (2020): Binary-induced spiral arms inside the disc cavity of AB Aurigae
+- 2020MNRAS.496.3128R (2020): Characterizing the radio continuum nature of sources in the massive star-forming region W75N (B)
+- 2020MNRAS.498L..87B (2020): FAUST I. The hot corino at the heart of the prototypical Class I protostar L1551 IRS5
+- 2020MNRAS.499.3837G (2020): Spirals, shadows, and precession in HD 100453 - I. The orbit of the binary
+- 2020MNRAS.499.3909Y (2020): Evidence for a jet and outflow from Sgr A*: a continuum and spectral line study
+- 2020NatAs...4..142L (2020): Spiral structures in an embedded protostellar disk driven by envelope accretion
+- 2020Natur.584..201R (2020): A dynamically cold disk galaxy in the early Universe
+- 2020PASJ...72...36T (2020): Sub-millimeter detection of a Galactic center cool star IRS 7 by ALMA
+- 2020PASP..132i4501H (2020): Characterizing the Accuracy of ALMA Linear-polarization Mosaics
+- 2021A&A...645A.145G (2021): ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). V. Sample, overview, and demography of disk molecular emission
+- 2021A&A...646A..59R (2021): Tracing molecular stratification within an edge-on protoplanetary disk
+- 2021A&A...646A..72H (2021): Resolved molecular line observations reveal an inherited molecular layer in the young disk around TMC1A
+- 2021A&A...647L...8C (2021): First direct measurement of auroral and equatorial jets in the stratosphere of Jupiter
+- 2021A&A...648A..19W (2021): A highly non-Keplerian protoplanetary disc. Spiral structure in the gas disc of CQ Tau
+- 2021A&A...648A..33M (2021): Characterizing the dust content of disk substructures in TW Hydrae
+- 2021A&A...649A.122P (2021): A bright inner disk and structures in the transition disk around the very low-mass star CIDA 1
+- 2021A&A...650A..37D (2021): A search for signatures of interactions of X-ray binary outflows with their environments with ALMA
+- 2021A&A...650A.153D (2021): Multiwavelength view of SPT-CL J2106-5844. The radio galaxies and the thermal and relativistic plasmas in a massive galaxy cluster merger a…
+- 2021A&A...650A.172J (2021): ALMA observations of doubly deuterated water: inheritance of water from the prestellar environment
+- 2021A&A...651A..35O (2021): Heavy-element Rydberg transition line emission from the post-giant-evolution star HD 101584
+- 2021A&A...651A..90F (2021): ALMA 870 μm continuum observations of HD 100546. Evidence of a giant planet on a wide orbit
+- 2021A&A...652A...5M (2021): A study of submillimeter methanol absorption toward PKS 1830‒211:. Excitation, invariance of the proton-electron mass ratio, and systematics
+- 2021A&A...652A..66P (2021): ALMA multiline survey of the ISM in two quasar host-companion galaxy pairs at z &gt; 6
+- 2021A&A...652A..92N (2021): ALMA observations of the variability of the quiet Sun at millimeter wavelengths
+- 2021A&A...653A..46V (2021): Probing protoplanetary disk evolution in the Chamaeleon II region
+- 2021A&A...653A..53A (2021): DEATHSTAR: nearby AGB stars with the Atacama Compact Array. II. CO envelope sizes and asymmetries: the S-type stars
+- 2021A&A...653A.117B (2021): ORion Alma New GEneration Survey (ORANGES). I. Dust continuum and free-free emission of OMC-2/3 filament protostars
+- 2021A&A...653A.166C (2021): Structured velocity field in the inner envelope of B335: ALMA observations of rare CO isotopologues
+- 2021A&A...654A..18V (2021): Maser emission from the CO envelope of the asymptotic giant branch star W Hydrae
+- 2021A&A...656A..46M (2021): ALCHEMI, an ALMA Comprehensive High-resolution Extragalactic Molecular Inventory. Survey presentation and first results from the ACA array
+- 2021A&A...656A.150P (2021): Constraining the properties of the potential embedded planets in the disk around HD 100546
+- 2021AJ....162...14A (2021): Precision Millimeter Astrometry of the α Centauri AB System
+- 2021AJ....162...99F (2021): The Chemical Inventory of the Planet-hosting Disk PDS 70
+- 2021AN....342.1160P (2021): CO kinematics unveil outflows plausibly driven by a young jet in the gigahertz peaked radio core of NGC 6328
+- 2021ApJ...906...16S (2021): A New Feedback Cycle in the Archetypal Cooling Flow Group NGC 5044
+- 2021ApJ...906..111T (2021): The TW Hya Rosetta Stone Project. II. Spatially Resolved Emission of Formaldehyde Hints at Low-temperature Gas-phase Formation
+- 2021ApJ...907...94C (2021): The Explosion in Orion-KL as Seen by Mosaicking the Magnetic Field with ALMA
+- 2021ApJ...907L..10R (2021): Kinematic Analysis of a Protostellar Multiple System: Measuring the Protostar Masses and Assessing Gravitational Instability in the Disks o…
+- 2021ApJ...907L..27A (2021): Complications in the ALMA Detection of Phosphine at Venus
+- 2021ApJ...908....8C (2021): The TW Hya Rosetta Stone Project. III. Resolving the Gaseous Thermal Profile of the Disk
+- 2021ApJ...908...19B (2021): Black Hole Mass Measurements of Radio Galaxies NGC 315 and NGC 4261 Using ALMA CO Observations
+- 2021ApJ...908..141H (2021): ALMA CN Zeeman Observations of AS 209: Limits on Magnetic Field Strength and Magnetically Driven Accretion Rate
+- 2021ApJ...908..250H (2021): ALMA Observations of the Inner Cavity in the Protoplanetary Disk around Sz 84
+- 2021ApJ...909...11J (2021): 25 au Angular Resolution Observations of HH 211 with ALMA: Jet Properties and Shock Structures in SiO, CO, and SO
+- 2021ApJ...909...98Y (2021): The Evolution of NGC 7465 as Revealed by Its Molecular Gas Properties
+- 2021ApJ...909..212K (2021): ALMA Observation of the Protoplanetary Disk around WW Cha: Faint Double-peaked Ring and Asymmetric Structure
+- 2021ApJ...910...11O (2021): FAUST. II. Discovery of a Secondary Outflow in IRAS 15398-3359: Variability in Outflow Direction during the Earliest Stage of Star Formatio…
+- 2021ApJ...910...53V (2021): A Massive, Clumpy Molecular Gas Distribution and Displaced AGN in Zw 3146
+- 2021ApJ...910...75L (2021): What Produces Dust Polarization in the HH 212 Protostellar Disk at 878 μm: Dust Self-scattering or Dichroic Extinction?
+- 2021ApJ...911...29C (2021): The TW Hya Rosetta Stone Project IV: A Hydrocarbon-rich Disk Atmosphere
+- 2021ApJ...911..150P (2021): An Atacama Large Millimeter/submillimeter Array Survey of Chemistry in Disks around M4-M5 Stars
+- 2021ApJ...915...99I (2021): Persistent Non-Gaussian Structure in the Image of Sagittarius A* at 86 GHz
+- 2021ApJ...917...99Y (2021): ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System a…
+- 2021ApJ...923..121Y (2021): ALMA Super-resolution Imaging of T Tau: r = 12 au Gap in the Compact Dust Disk around T Tau N
+- 2021MNRAS.500.3667S (2021): The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2
+- 2021MNRAS.501.2934C (2021): The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - III. The evolution of substructures in massive discs at 3-5 au resolution
+- 2021MNRAS.501.4317P (2021): Planet formation in intermediate-separation binary systems
+- 2021MNRAS.503.1174K (2021): Feedback factory: multiple faint radio jets detected in a cluster at z = 2
+- 2021MNRAS.505.4726K (2021): The relativistic jet dichotomy and the end of the blazar sequence
+- 2021MNRAS.506.4175M (2021): Massive protocluster of a periodic maser source G188.95+0.89
+- 2021PSJ.....2....3M (2021): Tropospheric Composition and Circulation of Uranus with ALMA and the VLA
+- 2021PSJ.....2..105T (2021): Neptune's Spatial Brightness Temperature Variations from the VLA and ALMA
+- 2022A&A...659A.111K (2022): Laboratory rotational spectroscopy of acrylamide and a search for acrylamide and propionamide toward Sgr B2(N) with ALMA
+- 2022A&A...661A.125W (2022): Radio properties of the OH megamaser galaxy IIZw 096
+- 2022A&A...662A.121R (2022): Observational constraints on gas disc sizes in the protoplanetary discs of multiple systems in the Taurus region
+- 2022A&A...664A.171V (2022): FAUST. V. Hot methanol in the [BHB2007] 11 protobinary system; hot corino versus shock origin
+- 2022A&A...666A..39M (2022): A first search of transients in the Galactic center from 230 GHz ALMA observations
+- 2022A&A...668A..45L (2022): Physics of ULIRGs with MUSE and ALMA: The PUMA project. IV. No tight relation between cold molecular outflow rates and AGN luminosities
+- 2022ApJ...928..150T (2022): Probing Multiphase Gas in Local Massive Elliptical Galaxies via Multiwavelength Observations
+- 2022Icar..37214722L (2022): Pluto's atmosphere observations with ALMA: Spatially-resolved maps of CO and HCN emission and first detection of HNC
+- 2022JApA...43...83M (2022): Detection of interstellar cyanamide (NH<inline-formula id="IEq1"><mml:math><mml:msub><mml:mrow></mml:mrow><mml:mn>2</mml:mn></mml:msub></mm…
+- 2022MNRAS.509..748W (2022): ALMA observations of the Extended Green Object G19.01-0.03 - I. A Keplerian disc in a massive protostellar system
+- 2022MNRAS.510.4485R (2022): The AGN fuelling/feedback cycle in nearby radio galaxies - IV. Molecular gas conditions and jet-ISM interaction in NGC 3100
+- 2022MNRAS.511.1408G (2022): The far-infrared/radio correlation for a sample of strongly lensed dusty star-forming galaxies detected by Herschel
+- 2022MNRAS.513.5790C (2022): Variable structure in the PDS 70 disc and uncertainties in radio-interferometric image restoration
+- 2022MNRAS.514.2346K (2022): CO excitation and line energy distributions in gas-selected galaxies
+- 2022MNRAS.514.6215Y (2022): Is there a sub-parsec-scale jet base in the nearby dwarf galaxy NGC 4395?
+- 2022MNRAS.515..543C (2022): FAUST VI. VLA1623-2417 B: a new laboratory for astrochemistry around protostars on 50 au scale
+- 2022MNRAS.516.5618P (2022): MUSE-ALMA haloes VII: survey science goals &amp; design, data processing and final catalogues
+- 2022NatAs...6..275K (2021): Observational identification of a sample of likely recent common-envelope events
+- 2022PASJ...74..407U (2022): Spatially-resolved relation between [C I] <SUP>3</SUP>P<SUB>1</SUB>-<SUP>3</SUP>P<SUB>0</SUB> and <SUP>12</SUP>CO (1-0) in Arp 220
+- 2022PASJ...74..594D (2022): The symbiotic and bipolar nebula M 2-9: Morphological variability of the collimated ionized wind arising from the core
+- 2022PASJ...74..738T (2022): ALMA astrometry of the objects within 0.5 pc of Sagittarius A<SUP>*</SUP>
+- 2023A&A...669A..53B (2023): Sulphur monoxide emission tracing an embedded planet in the HD 100546 protoplanetary disk
+- 2023A&A...669A..56Q (2023): History of two mass loss processes in VY CMa. Fast outflows carving older ejecta
+- 2023A&A...669A..90C (2023): Magnetically regulated collapse in the B335 protostar?. II. Observational constraints on gas ionization and magnetic field coupling
+- 2023A&A...674A..75N (2023): ALMA-IMF. V. Prestellar and protostellar core populations in the W43 cloud complex
+- 2023A&A...674A..76P (2023): ALMA-IMF. VI. Investigating the origin of stellar masses: Core mass function evolution in the W43-MM2&amp;MM3 mini-starburst
+- 2023A&A...674A.101M (2023): Cosmo-tomography toward PKS 1830‒211: Variability of the quasar and of its foreground molecular absorption monitored with ALMA
+- 2023A&A...674A.125B (2023): ATOMIUM: Probing the inner wind of evolved O-rich stars with new, highly excited H<SUB>2</SUB>O and OH lines
+- 2023A&A...675A.131T (2023): Investigating the asymmetric chemistry in the disk around the young star HD 142527
+- 2023A&A...676A...4C (2023): FAUST. IX. Multiband, multiscale dust study of L1527 IRS. Evidence for variations in dust properties within the envelope of a class 0/I you…
+- 2023A&A...678A.137C (2023): CoCCoA: Complex Chemistry in hot Cores with ALMA. Selected oxygen-bearing species
+- 2023A&A...678A.146B (2023): Tracing snowlines and C/O ratio in a planet-hosting disk. ALMA molecular line observations towards the HD 169142 disk
+- 2023A&A...678A.160E (2023): FAUST. X. Formaldehyde in the protobinary system [BHB2007] 11: Small-scale deuteration
+- 2023A&A...678A.194C (2023): ALMA-IMF. VII. First release of the full spectral line cubes: Core kinematics traced by DCN J = (3‒2)
+- 2023ApJ...942L..24K (2023): UGC 4211: A Confirmed Dual Active Galactic Nucleus in the Local Universe at 230 pc Nuclear Separation
+- 2023ApJ...945...40C (2023): Multifrequency Black Hole Imaging for the Next-generation Event Horizon Telescope
+- 2023ApJ...945L...3M (2023): Resurrection of Type IIL Supernova 2018ivc: Implications for a Binary Evolution Sequence Connecting Hydrogen-rich and Hydrogen-poor Progeni…
+- 2023ApJ...948..110Y (2023): Multiple Rings and Asymmetric Structures in the Disk of SR 21
+- 2023ApJ...948..134P (2023): 183 GHz Water Megamasers in Active Galactic Nuclei: A New Accretion Disk Tracer
+- 2023ApJ...948L...2Y (2023): Eccentric Dust Ring in the IRS 48 Transition Disk
+- 2023ApJ...953L...6P (2023): Detection of a High-velocity Jet from MWC 349A Traced by Hydrogen Recombination Line Maser Emission
+- 2023ApJ...954..197I (2023): ALMA Measurement of 10 kpc Scale Lensing-power Spectra toward the Lensed Quasar MG J0414+0534
+- 2023ApJ...956L..35Z (2023): One, Two, Three ... An Explosive Outflow in IRAS 12326-6245 Revealed by ALMA
+- 2023ApJ...956L..45G (2023): An SiO Toroid and Wide-angle Outflow Associated with the Massive Protostar W75N(B)-VLA2
+- 2023FaDi..245..164B (2023): Streamers feeding the SVS13-A protobinary system: astrochemistry reveals accretion shocks?
+- 2023MNRAS.518.2034H (2023): Evidence for episodic and patchy mass ejection in the circumstellar envelope of AGB star R Leonis
+- 2023MNRAS.518.3222B (2023): A multiwavelength study of multiple spectral component jets in AGN: testing the IC/CMB model for the large-scale-jet X-ray emission
+- 2023MNRAS.519...34H (2023): ALMACAL VIII: a pilot survey for untargeted extragalactic CO emission lines in deep ALMA calibration data
+- 2023MNRAS.522.2384M (2023): FAUST - VIII. The protostellar disc of VLA 1623-2417W and its streamers imaged by ALMA
+- 2023MNRAS.523.4970N (2023): Resolving the binary components of the outbursting protostar HBC 494 with ALMA
+- 2023MNRAS.525.6146W (2023): ALMA observations of the Extended Green Object G19.01-0.03 - II. A massive protostar with typical chemical abundances surrounded by four lo…
+- 2023MNRAS.526.2077A (2023): Radio-continuum decrements associated to shadowing from the central warp in transition disc DoAr 44
+- 2023NatAs...7...80U (2023): Simultaneous radio and optical polarimetry of GRB 191221B afterglow
+- 2023Natur.617..696V (2023): Atmospheric molecular blobs shape up circumstellar envelopes of AGB stars
+- 2023Natur.623..705S (2023): Aligned grains and scattered light found in gaps of planet-forming disk
+- 2023PASJ...75..424O (2023): ALMA Band 6 high-resolution observations of the transitional disk around SY Chamaeleontis
+- 2023PASP..135b5002C (2023): A Characterization of the ALMA Phasing System at 345 GHz
+- 2023PASP..135g4501H (2023): The ALMA Interferometric Pipeline Heuristics
+- 2023PSJ.....4..142C (2023): Thermal Properties of the Leading Hemisphere of Callisto Inferred from ALMA Observations
+- 2023PSJ.....4..206R (2023): ALMA Observations of the DART Impact: Characterizing the Ejecta at Submillimeter Wavelengths
+- 2024A&A...681A..50W (2024): ATOMIUM: Molecular inventory of 17 oxygen-rich evolved stars observed with ALMA
+- 2024A&A...681A..82G (2024): IRAS4A1: Multiwavelength continuum analysis of a very flared Class 0 disk
+- 2024A&A...682A...2C (2024): Near-infrared observations of outflows and young stellar objects in the massive star-forming region AFGL 5180
+- 2024A&A...682A..55M (2024): High-resolution ALMA observations of compact discs in the wide-binary system Sz 65 and Sz 66
+- 2024A&A...682A..56Z (2024): Exploring the dust grain size and polarization mechanism in the hot and massive Class 0 disk IRAS 16293-2422 B
+- 2024A&A...682A..61C (2024): A dusty streamer infalling onto the disk of a class I protostar. ALMA dual-band constraints on grain properties and the mass-infall rate
+- 2024A&A...682A..97W (2024): The internal Faraday screen of Sagittarius A*
+- 2024A&A...682L...5G (2024): Structures Of Dust and gAs (SODA): Constraining the innermost dust properties of II Zw96 with JWST observations of H<SUB>2</SUB>O and CO
+- 2024A&A...683A..62M (2024): Protonated acetylene in the z = 0.89 molecular absorber toward PKS 1830-211
+- 2024A&A...683A.141R (2024): AB Aur, a Rosetta stone for studies of planet formation. III. Continuum observations at 2 and 7 mm
+- 2024A&A...684A.174P (2024): High turbulence in the IM Lup protoplanetary disk. Direct observational constraints from CN and C<SUB>2</SUB>H emission
+- 2024A&A...684L..12S (2024): FAUST. XIII. Dusty cavity and molecular shock driven by IRS7B in the Corona Australis cluster
+- 2024A&A...686A.120U (2024): Vertical and radial distribution of atomic carbon in HD 163296
+- 2024A&A...686A.122A (2024): ALMA-IMF. X. The core population in the evolved W33-Main (G012.80) protocluster
+- 2024A&A...686A.274V (2024): Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars
+- 2024A&A...686A.298G (2024): Into the thick of it: ALMA 0.45 mm observations of HL Tau at a resolution of 2 au
+- 2024A&A...686L..13D (2024): FAUST. XV. A disc wind mapped by CH<SUB>3</SUB>OH and SiO in the inner 300 au of the NGC 1333 IRAS 4A2 protostar
+- 2024A&A...687A..43B (2024): Physical properties of the southwest outflow streamer in the starburst galaxy NGC 253 with ALCHEMI
+- 2024A&A...687A..84N (2024): Core to ultracompact HII region evolution in the W49A massive protocluster
+- 2024A&A...687A.188K (2024): Recovering the gas properties of protoplanetary disks through parametric visibility modeling: MHO 6
+- 2024A&A...687A.299L (2024): Chemistry across dust and gas gaps in protoplanetary disks. Modelling the co-spatial molecular rings in the HD 100546 disk
+- 2024A&A...687A.308S (2024): Constraining the stellar masses and origin of the protostellar VLA 1623 system
+- 2024A&A...687A.311A (2024): V892 Tau: A tidally perturbed circumbinary disc in a triple stellar system
+- 2024A&A...688A.110S (2024): Complex angular structure of three elliptical galaxies from high-resolution ALMA observations of strong gravitational lenses
+- 2024A&A...688A.149D (2024): Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): PDS 111, an old T Tauri star with a young-looking disk
+- 2024A&A...688L..22P (2024): FAUST. XVII. Super deuteration in the planet-forming system IRS 63 where the streamer strikes the disk
+- 2024A&A...689A..65R (2024): ALMA high-resolution observations unveil planet formation shaping molecular emission in the PDS 70 disk
+- 2024A&A...689A..85G (2024): MINDS: A multi-instrument investigation into the molecule-rich JWST-MIRI spectrum of the DF Tau binary system
+- 2024A&A...689A.104D (2024): From traffic jams to roadblocks: The outer regions of TW Hya with ALMA Band 8
+- 2024A&A...689A.145S (2024): The ALMA-CRISTAL survey: Discovery of a 15 kpc-long gas plume in a z = 4.54 Lyman-α blob
+- 2024A&A...689A.317G (2024): Continuum and molecular emission from the inner regions of the symbiotic system R Aquarii
+- 2024A&A...689L...5M (2024): FAUST: XVIII. Evidence of annular substructure in a very young Class 0 disk
+- 2024A&A...689L...7D (2024): Sulfur monoxide (SO) as a shock tracer in protoplanetary disks: Case of AB Aurigae
+- 2024A&A...690A..46S (2024): Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0…
+- 2024A&A...690A.258B (2024): ALMACAL: XII. Data characterisation and products
+- 2024A&A...690L..16J (2024): A photo-z cautionary tale: Redshift confirmation of COSBO-7 at z = 2.625
+- 2024A&A...691A.157V (2024): Identifying the mechanisms of water maser variability during the accretion burst in NGC6334I
+- 2024A&A...691L..14O (2024): Contemporaneous high-angular-resolution imaging of the AGB star W Hya in vibrationally excited H<SUB>2</SUB>O lines and visible polarized l…
+- 2024A&A...692A..86H (2024): Millimetre observations of the S-type AGB star χ Cygni: Variability of the emission of the inner envelope
+- 2024A&A...692A.151S (2024): Uncovering the structure and kinematics of the ionized core of M 2-9 with ALMA
+- 2024A&A...692A.155K (2024): Binary orbit and disks properties of the RW Aur system using ALMA observations
+- 2024AJ....167...66Y (2024): Chemistry of Complex Organic Molecules in the V883 Ori Disk Revealed by ALMA Band 3 Observations
+- 2024AJ....167...77D (2024): JWST Imaging of Edge-on Protoplanetary Disks. I. Fully Vertically Mixed 10 μm Grains in the Outer Regions of a 1000 au Disk
+- 2024AJ....167...94H (2024): The Hidden Clumps in VY CMa Uncovered by the Atacama Large Millimeter/submillimeter Array
+- 2024AJ....167..164B (2024): An ALMA Molecular Inventory of Warm Herbig Ae Disks. I. Molecular Rings, Asymmetries, and Complexity in the HD 100546 Disk
+- 2024AJ....167..165B (2024): An ALMA Molecular Inventory of Warm Herbig Ae Disks. II. Abundant Complex Organics and Volatile Sulphur in the IRS 48 Disk
+- 2024AJ....167..232T (2024): Sites of Planet Formation in Binary Systems. I. Evidence for Disk−Orbit Alignment in the Close Binary FO Tau
+- 2024Ap&SS.369...18M (2024): Multi-wavelength observation of MAXI J1348─630 during the outburst in 2019
+- 2024ApJ...960....1L (2024): A Centiparsec-scale Compact Radio Core in the Nearby Galaxy M60
+- 2024ApJ...961....4B (2024): Protostellar Cores in Sagittarius B2 N and M
+- 2024ApJ...961...28H (2024): Dual-band Observations of the Asymmetric Ring around CIDA 9A: Dead or Alive?
+- 2024ApJ...961..108K (2024): The CO Outflow Components Ejected by a Recent Accretion Event in B335
+- 2024ApJ...963...19N (2024): On the Evidence for Molecular Outflows in High-redshift Dusty Star-forming Galaxies
+- 2024ApJ...963..164R (2024): The Disk Orientations of Perseus Protostellar Multiples at ∼8 au Resolution
+- 2024ApJ...963L..31H (2024): On the Magnetic Field Properties of Protostellar Envelopes in Orion
+- 2024ApJ...964..190L (2024): Mapping the Vertical Gas Structure of the Planet-hosting PDS 70 Disk
+- 2024ApJ...965...14E (2024): An Automated Chemical Exploration of NGC 6334I at 340 au Resolution
+- 2024ApJ...965..147B (2024): The Carbon Isotopic Ratio and Planet Formation
+- 2024ApJ...965L..23F (2024): Rotational Spectrum and First Interstellar Detection of 2-methoxyethanol Using ALMA Observations of NGC 6334I
+- 2024ApJ...966...32E (2024): Early Planet Formation in Embedded Disks (eDisk). XIII. Aligned Disks with Nonsettled Dust around the Newly Resolved Class 0 Protobinary R …
+- 2024ApJ...966...59S (2024): Small and Large Dust Cavities in Disks around Mid-M Stars in Taurus
+- 2024ApJ...966...63Y (2024): The First Spatially Resolved Detection of <SUP>13</SUP>CN in a Protoplanetary Disk and Evidence for Complex Carbon Isotope Fractionation
+- 2024ApJ...966..119L (2024): ALMA Spectral Survey of an Eruptive Young Star, V883 Ori (ASSAY). I. What Triggered the Current Episode of Eruption?
+- 2024ApJ...966..120L (2024): Dark Dragon Breaks Magnetic Chain: Dynamical Substructures of IRDC G28.34 Form in Supported Environments
+- 2024ApJ...966L..13D (2024): Detection of Rydberg Lines from the Atmosphere of Betelgeuse
+- 2024ApJ...967...68H (2024): Radial and Vertical Constraints on the Icy Origin of H<SUB>2</SUB>CO in the HD 163296 Protoplanetary Disk
+- 2024ApJ...968...10F (2024): An ALMA Search for Substructure and Fragmentation in Starless Cores in Orion B North
+- 2024ApJ...969...56M (2024): Observational Constraints on Sunyaev─Zeldovich Effect Halos around High-z Quasars
+- 2024ApJ...969..102N (2024): Physical and Chemical Properties of Galactic Molecular Gas toward QSO J1851+0035
+- 2024ApJ...969..165D (2024): Chemistry in Externally FUV-irradiated Disks in the Outskirts of the Orion Nebula Cluster
+- 2024ApJ...970...28O (2024): CH<SUB>3</SUB>OH and Its Deuterated Species in the Disk/Envelope System of the Low-mass Protostellar Source B335
+- 2024ApJ...970...56P (2024): Radio Emission from the Magnetically Active M Dwarf UV Ceti from 1 to 105 GHz
+- 2024ApJ...971...52M (2024): Multiwavelength Observations of Sgr A*. II. 2019 July 21 and 26
+- 2024ApJ...971..129C (2024): A Dust-trapping Ring in the Planet-hosting Disk of Elias 2-24
+- 2024ApJ...971L...7M (2024): Imaging the Jet of MWC 349A with Resolved Radio Recombination Line Emission from ALMA
+- 2024ApJ...971L..15Y (2024): Outflow Driven by a Protoplanet Embedded in the TW Hya Disk
+- 2024ApJ...971L..23L (2024): Polarization Substructure in the Spiral-dominated HH 111 Disk: Evidence for Grain Growth
+- 2024ApJ...971L..33K (2024): An HI-absorption-selected Cold Rotating Disk Galaxy at z ≈ 2.193
+- 2024ApJ...972...88L (2024): Exploring the Complex Ionization Environment of the Turbulent DM Tau Disk
+- 2024ApJ...972..115C (2024): MagMaR III—Resisting the Pressure, Is the Magnetic Field Overwhelmed in NGC6334I?
+- 2024ApJ...972..163L (2024): First JVLA Radio Observation on PDS 70
+- 2024ApJ...972L...6S (2024): Magnetic Fields in Massive Star-forming Regions (MagMaR): Unveiling an Hourglass Magnetic Field in G333.46─0.16 Using ALMA
+- 2024ApJ...973...42B (2024): Resolving Twin Jets and Twin Disks with JWST and ALMA: The Young WL 20 Multiple System
+- 2024ApJ...973..135H (2024): Constraints on the Gas-phase C/O Ratio of DR Tau's Outer Disk from CS, SO, and C<SUB>2</SUB>H Observations
+- 2024ApJ...973..138H (2024): The ALMA Legacy Survey of Class 0/I Disks in Corona australis, Aquila, chaMaeleon, oPhiuchus north, Ophiuchus, Serpens (CAMPOS). I. Evoluti…
+- 2024ApJ...974...83Y (2024): Detection of Dimethyl Ether in the Central Region of the MWC 480 Protoplanetary Disk
+- 2024ApJ...974..102S (2024): Hints of Planet Formation Signatures in a Large-cavity Disk Studied in the AGE-PRO ALMA Large Program
+- 2024ApJ...974..257Z (2024): Magnetic Fields in Massive Star-forming Regions (MagMaR). IV. Tracing the Magnetic Fields in the O-type Protostellar System IRAS 16547─4247
+- 2024ApJ...974..306S (2024): Constraints on the Physical Origin of Large Cavities in Transition Disks from Multiwavelength Dust Continuum Emission
+- 2024ApJ...974L..25D (2024): Asymmetric Dust Accumulation of the PDS 70 Disk Revealed by ALMA Band 3 Observations
+- 2024ApJ...975...72B (2024): Measuring the <SUP>34</SUP>S and <SUP>33</SUP>S Isotopic Ratios of Volatile Sulfur during Planet Formation
+- 2024ApJ...976..132H (2024): High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis
+- 2024ApJ...976..258K (2024): Chemistry in the GG Tau A Disk: Constraints from H<SUB>2</SUB>D<SUP>+</SUP>, N<SUB>2</SUB>H<SUP>+</SUP>, and DCO<SUP>+</SUP> High Angular R…
+- 2024ApJS..270....9X (2024): The ALMA Survey of Star Formation and Evolution in Massive Protoclusters with Blue Profiles (ASSEMBLE): Core Growth, Cluster Contraction, a…
+- 2024ESC.....8..665M (2024): Detection and Chemical Modeling of Complex Prebiotic Molecule Cyanamide in the Hot Molecular Core G31.41 + 0.31
+- 2024MNRAS.527.9668H (2024): Surviving the heat: multiwavelength analysis of V883 Ori reveals that dust aggregates survive the sublimation of their ice mantles
+- 2024MNRAS.528..843L (2024): Panchromatic (Sub)millimeter polarization observations of HL Tau unveil aligned scattering grains
+- 2024MNRAS.528.7383C (2024): FAUST XII. Accretion streamers and jets in the VLA 1623-2417 protocluster
+- 2024MNRAS.531.2653C (2024): Multiple chemical tracers finally unveil the intricate NGC 1333 IRAS 4A outflow system. FAUST XVI
+- 2024MNRAS.532.1752R (2024): Inner walls or vortices? Crescent-shaped asymmetries in ALMA observations of protoplanetary discs
+- 2024MNRAS.532.2842K (2024): MeerKAT observations of starburst galaxies and AGNs within the core of XMMXCS J2215.9-1738 at z = 1.46
+- 2024MNRAS.533.1143M (2024): Detection of antifreeze molecule ethylene glycol in the hot molecular core G358.93-0.03 MM1
+- 2024MNRAS.534.3237M (2024): An independent hybrid imaging of Sgr A* from the data in EHT 2017 observations
+- 2024NatAs...8..256O (2024): Closing the feedback-feeding loop of the radio galaxy 3C 84
+- 2024NatAs...8..587F (2024): Resolved ALMA observations of water in the inner astronomical units of the HL Tau disk
+- 2024Natur.633..323V (2024): One month convection timescale on the surface of a giant evolved star
+- 2024PASJ...76...54L (2024): Tentative detection of cyanoformamide NCCONH<SUB>2</SUB> in space
+- 2024PASJ...76..340K (2024): Sub-parsec-scale jet-driven water maser with possible gravitational acceleration in the radio galaxy NGC 1052
+- 2024PASJ...76..437Y (2024): ALMA 2D super-resolution imaging of Taurus-Auriga protoplanetary disks: Probing statistical properties of disk substructures
+- 2024PSJ.....5..125T (2024): Observations of Titan's Stratosphere during Northern Summer: Temperatures, CH<SUB>3</SUB>CN and CH<SUB>3</SUB>D Abundances
+- 2024PSJ.....5..230D (2024): Surface Properties of the Kalliope─Linus System from ALMA and VLA Data
+- 2024RAA....24b5009L (2024): The ALMA-QUARKS Survey. I. Survey Description and Data Reduction
+- 2024RAA....24c5009N (2024): EP Aquarii: A New Picture of the Circumstellar Envelope
+- 2024RAA....24f5011X (2024): The ALMA-QUARKS Survey. II. The ACA 1.3 mm Continuum Source Catalog and the Assembly of Dense Gas in Massive Star-Forming Clumps
+- 2025A&A...693A.286S (2025): Intermediate mass T Tauri disk masses and a comparison to their Herbig disk descendants
+- 2025A&A...694A.147G (2025): MINDS: The influence of outer dust disc structure on the volatile delivery to the inner disc
+- 2025A&A...694L..15H (2025): Discovery of ionized circumstellar gas emission around the long-period Cepheid ℓ Carinae with ALMA
+- 2025A&A...695A..51B (2025): Hierarchical accretion flow from the G351 infrared dark filament to its central cores
+- 2025A&A...695A.149K (2025): Physical conditions around high-mass young star-forming objects via simultaneous observations of excited OH and methanol masers
+- 2025A&A...695A.163B (2025): ALMACAL: XIII. Evolution of the CO luminosity function and the molecular gas mass density out to z ∼ 6
+- 2025A&A...695A.236L (2025): Erosion of a dense molecular core by a strong outflow from a massive protostar
+- 2025A&A...696A...7L (2025): ALMA observations of CH<SUB>3</SUB>COCH<SUB>3</SUB> and the related species CH<SUB>3</SUB>CHO, CH<SUB>3</SUB>OH, and C<SUB>2</SUB>H<SUB>5</…
+- 2025A&A...696A..18C (2025): The hot corino-like chemistry of four FUor-like protostars
+- 2025A&A...696A..33P (2025): The MUSE Ultra Deep Field (MUDF): VII. Probing high-redshift gas structures in the surroundings of ALMA-identified massive dusty galaxies
+- 2025A&A...696A.150S (2025): ALMAGAL: II. The ALMA evolutionary study of high-mass protocluster formation in the Galaxy: ALMA data processing and pipeline
+- 2025A&A...697A..64V (2025): Turbulence in protoplanetary disks: A systematic analysis of dust settling in 33 disks
+- 2025A&A...698A.115R (2025): Radial variations in the nitrogen, carbon, and hydrogen fractionation in the PDS 70 planet-hosting disk
+- 2025A&A...698A.165A (2025): Confirmation of a ring structure in the disk around MP Mus (PDS 66) with ALMA Band 7 observations
+- 2025A&A...698L..16S (2025): FAUST: XXIV. Large dust grains in the protostellar outflow cavity walls of the Class I binary L1551 IRS5
+- 2025A&A...699A...5T (2025): The ALMA-CRISTAL survey: Complex kinematics of galaxies at the end of the reionization era
+- 2025A&A...699A.187G (2025): Decoding the molecular torus of NGC 1068: Insights into its structure and kinematics from high-resolution ALMA observations
+- 2025A&A...699A.373F (2025): Inner disc and circumplanetary material in the PDS 70 system: Insights from multi-epoch, multi-frequency ALMA observations
+- 2025A&A...700A.188C (2025): FAUST: XXVI. The dust opacity spectral indices of protostellar envelopes bridge the gap between interstellar medium and disks
+- 2025A&A...700L...5G (2025): Edge-On Disk Study (EODS): I. Thermal structure of the Flying Saucer disk
+- 2025A&A...702A..18D (2025): Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment
+- 2025A&A...704A..18O (2025): High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB…
+- 2025A&A...704A.133S (2025): Early Planet Formation in Embedded Disks (eDisk): XX. Constraining the chemical tracers of young protostellar sources
+- 2025ApJ...979..142N (2025): Peculiar Dust Emission within the Orion Molecular Cloud
+- 2025ApJ...979..217S (2025): The Arp 240 Galaxy Merger: A Detailed Look at the Molecular Kennicutt─Schmidt Star Formation Law on Subkiloparsec Scales
+- 2025ApJ...984L..16G (2025): exoALMA. XI. ALMA Observations and Hydrodynamic Models of LkCa 15: Implications for Planetary Mass Companions in the Dust Continuum Cavity
+- 2025ApJ...984L..18T (2025): exoALMA. XIII. Gas Masses from N<SUB>2</SUB>H<SUP>+</SUP> and C<SUP>18</SUP>O: A Comparison of Measurement Techniques for Protoplanetary Ga…
+- 2025ApJ...984L..19Y (2025): exoALMA. XIV. Gas Surface Densities in the RX J1604.3−2130 A Disk from Pressure-broadened CO Line Wings
+- 2025ApJ...985...84L (2025): A Multiline Analysis of the Distribution and Excitation of CS and H<SUB>2</SUB>CS in the HD 163296 Disk
+- 2025ApJ...985..148L (2025): L1448 IRS3B: Dust Polarization Aligned with Spiral Features, Tracing Gas Flows
+- 2025ApJ...985..226W (2025): A Multiwavelength Study of the Dynamic Environment Surrounding the FUor V960 Mon
+- 2025ApJ...986L..11S (2025): Hints of Disk Substructure in the First Brown Dwarf with a Dynamical Mass Constraint
+- 2025ApJ...988..106H (2025): Grand Design Spiral Arms in the Compact, Embedded Protoplanetary Disk of Haro 6-13
+- 2025ApJ...988..109H (2025): Comprehensive Radio Monitoring of the Black Hole X-Ray Binary Swift J1727.8−1613 during Its 2023─2024 Outburst
+- 2025ApJ...988..111I (2025): The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy
+- 2025ApJ...989....1Z (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). I. Program Overview and Summary of First Results
+- 2025ApJ...989....3D (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). III. Dust and Gas Disk Properties in the Lupus Star-forming Region
+- 2025ApJ...989...30Z (2025): SO Emission in the Dynamically Perturbed Protoplanetary Disks around CQ Tau and MWC 758
+- 2025ApJ...989...41A (2025): Discovery of Jet─Bubble─Disk Interaction: Jet Feedback on a Protoplanetary Disk Via an Expanding Bubble in WSB 52
+- 2025ApJ...989...52B (2025): Properties of H<SUB>2</SUB>O Masers and Their Associated Sources in Sagittarius B2
+- 2025ApJ...989...83B (2025): CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging
+- 2025ApJ...990..150A (2025): PEACHES. IV. Tracing the Formation and Evolution of C<SUB>2</SUB>H in Perseus Low-mass Protostars
+- 2025ApJ...990..183U (2025): Multiwavelength Dust Characterization of the HL Tau Disk and Implications for Planet Formation
+- 2025ApJ...990L..70L (2025): Discovery of Hα Emission from a Protoplanet Candidate around the Young Star 2MASS J16120668─3010270 with MagAO-X
+- 2025ApJ...991L...6T (2025): A Radially Resolved Magnetic Field Threading the Disk of TW Hya
+- 2025ApJ...991L..31B (2025): The Mid-infrared-emitting Jet in the Black Hole V404 Cygni in Quiescence
+- 2025ApJ...992...18P (2025): Early Planet Formation in Embedded Disks (eDisk). XXII. Keplerian Disk, Disk Structures, and Jets/Outflows in the Class 0 Protostar IRAS 04…
+- 2025ApJ...992..103Z (2025): Impact of Gravity on Changing Magnetic Field Orientations in a Sample of Massive Protostellar Clusters Observed with ALMA
+- 2025ApJ...992..211N (2025): Revisiting the Supermassive Black Hole Mass of NGC 7052 Using High Spatial Resolution Molecular Gas Observed with ALMA
+- 2025ApJ...992L..31C (2025): First Results from ALPPS: A Sub-Alfvénic Streamer in SVS 13A
+- 2025ApJ...993...85Y (2025): Peculiar Disk Substructures Associated with the Young Eruptive Star EX Lupi
+- 2025ApJ...993...90S (2025): ALMA High-resolution Observation for the Transitional Disk Around IRAS 04125+2902
+- 2025ApJ...993..120H (2025): Early Planet Formation in Embedded Disks (eDisk). XVII. A Compact but Structured Keplerian Disk and Large-scale Streamers Revealed in the C…
+- 2025ApJ...993..166J (2025): Puffed-up Inner Rings and Razor-thin Outer Rings in Structured Protoplanetary Disks
+- 2025ApJ...993..200C (2025): The Hourglass-shaped Magnetic Fields and Dust Filaments in the HH 211 Protostellar Envelope
+- 2025ApJ...994..233Y (2025): ALMA-IMF. XX. Core Fragmentation in the W51 High-mass Star-forming Region
+- 2025ApJ...994..256Y (2025): A Face-on Accretion Disk Geometry Revealed by Millimeter-wave Periodicity in Sgr A<SUP>∗</SUP>
+- 2025ApJ...995L..51G (2025): The CO-to-H<SUB>2</SUB> Conversion Factor in the Milky Way's Central Parsec
+- 2025ApJ...995L..75C (2025): A Bridge between Young Stars Formed by Gravitational Interaction
+- 2025ApJS..280...33Y (2025): The ALMA-QUARKS Survey. III. Clump-to-core Fragmentation and Searches for High-mass Starless Cores
+- 2025MNRAS.536..684D (2025): The salty emission of the intermediate-mass AGB star OH 30.1-0.7
+- 2025MNRAS.537..520Z (2025): WISDOM Project - XXII. A 5 per cent precision CO-dynamical supermassive black hole mass measurement in the galaxy NGC 383
+- 2025MNRAS.538.1481M (2025): FAUST-XXII. Deuteration in the VLA1623-2417 protostellar hot-corinos, cavities, and streamers
+- 2025MNRAS.538.2358S (2025): High angular resolution evidence of dust traps from deep ALMA Band 3 observations of LkCa15
+- 2025MNRAS.538.2421S (2025): An attempt to determine the magnetic field configuration in the planetary nebula K 3-35 with ALMA
+- 2025MNRAS.539.1977W (2025): ALMACAL ─ XIV. X-Shooter spectroscopy, infrared properties, and radio SEDs of calibrators
+- 2025MNRAS.540.2396S (2025): MeerKAT discovery of an infalling cold gas tail on to the nearby barred spiral galaxy, NGC 5643
+- 2025MNRAS.543..862V (2025): Low-frequency spectra of neutron star + OB supergiant binaries: Does wind density drive persistent and flaring modes of accretion?
+- 2025NatAs...9..526O (2025): Observationally derived magnetic field strength and 3D components in the HD 142527 disk
+- 2025NatAs...9.1176R (2025): A young gas giant and hidden substructures in a protoplanetary disk
+- 2025NatAs...9.1486L (2025): Pristine ices in a planet-forming disk revealed by heavy water
+- 2025NatAs...9.1672Y (2025): Winding motion of spirals in a gravitationally unstable protoplanetary disk
+- 2025NatAs...9.1833L (2025): Detection of a septuple stellar system in formation via disk fragmentation
+- 2025PASJ...77..572S (2025): ALMA 2D super-resolution imaging survey of Ophiuchus Class I/flat spectrum/II disks. I. Discovery of new disk substructures
+- 2025PSJ.....6..183C (2025): A Multifrequency Global View of Callisto's Thermal Properties from ALMA
+- 2025PSJ.....6..286M (2025): Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics
+- 2025SciA...11.4512O (2025): Massive extended streamers feed high-mass young stars
+- 2025SciA...11.6953M (2025): A misaligned protostellar disk fed by gas streamers in a barred spiral-like massive dense core
+- 2026A&A...705A..96M (2026): FAUST: XXVIII. High-resolution ALMA observations of Class 0/I disks: Structure, optical depths, and temperatures
+- 2026A&A...705A.193L (2026): Zooming into the water snow line: High-resolution water observations of the HL Tau disk
+- 2026A&A...705L..16C (2026): FAUST: XXX. Dust enhancement in the young binary L1551 IRS 5
+- 2026A&A...706A..27S (2026): Probing jet base emission of M87* with the 2021 Event Horizon Telescope observations
+- 2026A&A...706A.227G (2026): The CON-quasar stage of IRAS 07251−0248 E
+- 2026A&A...706A.292S (2026): Dissecting the dust distribution and polarization around two B213 young stellar objects with ALMA
+- 2026A&A...706A.365M (2026): A sub-ppm upper limit on the cosmological variations of the fine structure constant α
+- 2026A&A...707A.240C (2026): Observations of the temporal evolution of Saturn's stratosphere following the Great Storm of 2010─2011: II. Latitudinal distribution of CO …
+- 2026A&A...707A.255C (2026): ALMA Band 1 observations of the ρ Oph W filament: I. Enhanced power from excess microwave emission at high spatial frequencies
+- 2026A&A...708A.146P (2026): MUSE-ALMA Haloes: XIV. The ALMA Large Programme Data Release
+- 2026A&A...708A.251X (2026): Linear filament and nested cluster evolution tomography (LANCET): I. Capture the evolution of dense gas in 14-parsec filament G316.8
+- 2026A&A...709A..93D (2026): Tentative detection of the glycine isomer glycolamide in a hot molecular core
+- 2026A&A...710A.140M (2026): Observations of highly inclined disks with ALMA: Results from <SUP>12</SUP>CO gas and continuum observations
+- 2026A&A...710A.238D (2026): Dust characterization of halos: The extended emission in protoplanetary disks
+- 2026A&A...710L..10C (2026): Hourly radio variability of PDS 70c from time-differential photometry
+- 2026A&A...711A.159M (2026): The formation radius of HCN in O-rich asymptotic giant branch stars
+- 2026A&A...712A.244H (2026): Multiband ALMA polarimetry of the jet base and kiloparsec-scale jet of 3C 273: A multicomponent Faraday structure in the nucleus
+- 2026A&A...713A..67X (2026): Local constraints on alcohol-thioalcohol analogs in G35.2N
+- 2026A&A...713A.105M (2026): ALMA-IMF: XXII. Role of core subfragmentation in the IMF origin: Hierarchical mass cascade in W43-MM1
+- 2026AJ....171..368M (2026): Digging into the Massive Protostar S255IR NIRS3: A Study of Nitrogen-bearing Molecules and Their Prebiotic Chemistry
+- 2026AJ....172...75M (2026): ALMA Observations of Magnetic Fields in the Massive Star-forming Region IRAS 18360-0537
+- 2026ApJ...996L..27L (2026): The Magnetic Fields of the Dusty Nuclei and Molecular Outflows of Arp 220
+- 2026ApJ...997L..19Q (2026): Isotopic Ratios in the Disk of HD 163296
+- 2026ApJ...997L..21H (2026): A Millimeter Methanol Maser Ring Tracing the Deceleration of the Heat Wave Powered by the Massive Protostellar Accretion Outburst in G358.9…
+- 2026ApJ...999...62H (2026): HOPS-288: A Laboratory for Complex Organics in Proto-binary/Proto-multiple Systems
+- 2026ApJ...999..194I (2026): Digging into the Chemical Complexity in the Outer Galaxy: A Hot Molecular Core in Sh 2-283
+- 2026ApJ..1000L..10C (2026): An Overabundance of Radio Active Galactic Nuclei in the SPT2349─56 Protocluster: Preheating the Intracluster Medium
+- 2026ApJ..1001..120X (2026): Disk Wind Feedback from High-mass Protostars. V. Application of Multimodal Machine Learning to Characterize Outflow Properties
+- 2026ApJ..1001..124M (2026): Multiwavelength ALMA Imaging of HD 34282: Dust-trapping Signatures of a Vortex Candidate
+- 2026ApJ..1001..134S (2026): Protostellar Outflows Shed Light on the Dominant Close Companion Star Formation Pathways
+- 2026ApJ..1003...64Y (2026): Compact Hydrogen Sulfide Emission Indicates Sulfur-bearing Ice Sublimation in the Inner Disk of HD 163296
+- 2026ApJ..1003...65O (2026): A Study of HH 270 with the James Webb Space Telescope
+- 2026ApJ..1003..219W (2026): The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone
+- 2026ApJ..1003L..17Y (2026): Evidence for Multiple Orbiting Hotspots in the 340 GHz Variability of Sgr A*
+- 2026ApJ..1003L..30W (2026): First Detection of HC<SUB>5</SUB>N in a Class II Disk around TW Hya
+- 2026ApJ..1005...94N (2026): Dynamical Evidence for a Billion Solar-mass Black Hole in Galaxy NGC 4061 from ALMA <SUP>12</SUP>CO(2─1) Kinematics
+- 2026MNRAS.548ag641R (2026): Large dust grains and a possible dust trap in the polar circumbinary disc of HD 98800B
+- 2026MNRAS.549g1100P (2026): ALMA measurements of mass-loss and wind clumping in the massive stars of the Arches cluster
+- 2026MNRAS.551g1645K (2026): A high-velocity SiO jet from S255N SMA3
+- 2026MNRAS.552g1573L (2026): The ALMA EGO-10 survey of massive protoclusters: correlation of 1.3 mm continuum source clustering with evolutionary state
+- 2026MNRAS.552g1700S (2026): Dust substructures and line perturbations driven by a forming planet in J16120

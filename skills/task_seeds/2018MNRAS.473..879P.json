@@ -1,0 +1,263 @@
+{
+ "bibcode": "2018MNRAS.473..879P",
+ "title": "The ALMA early science view of FUor/EXor objects - IV. Misaligned outflows in the complex star-forming environment of V1647 Ori and McNeil's Nebula",
+ "year": 2018,
+ "doi": "10.1093/mnras/stx2320",
+ "arxiv_id": "1709.01924",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What are the properties of the V1647 Ori circumstellar disc and the large-scale molecular environment and outflows traced by continuum and CO isotopologue emission?",
+ "alma_project_codes": [
+  "2013.1.00710.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "~1.0\" (two early epochs); 0.2\" (final epoch)",
+  "sensitivity": "Continuum 0.80 mJy/beam (3σ); 12CO and 13CO 45, C18O 36 mJy km/s/beam (3σ)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 414 ± 7 pc",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "a distance of 414 $\\pm{7}$ pc (cite: Menten2007)"
+     }
+    ]
+   },
+   "citation": "Menten2007"
+  },
+  {
+   "what": {
+    "value": "12CO/13CO abundance ratio of 62 and 12CO/H2 of 1e-4",
+    "evidence": [
+     {
+      "loc": "3.6 Dynamics of the V1647 Ori Environment",
+      "quote": "adopt a $^{12}$CO to H$_{2}$ abundance ratio of 10$^{-4}$ and a $^{12}$CO to $^{13}$CO relative abundance of 62 (cite: Langer1993)"
+     }
+    ]
+   },
+   "citation": "Langer1993"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "CASA reduction of pipeline-calibrated data, visibility-domain continuum subtraction, concatenation of the two ~1\" epochs, cleaning; separate 0.2\" continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment-0 maps",
+   "method": "immoments using pixels ≥3σ in blue (5.0-9.49), systemic (9.5-10.5), red (10.51-13.0 km/s) ranges",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "systemic velocity ~10.0 km/s from C18O peak"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit disc continuum",
+   "method": "2D Gaussian fit in CASA; inclination from aspect ratio of assumed circular disc; radius from FWHM and distance",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "circular disc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Disc dust and total mass",
+   "method": "Optically thin M = F d^2/(kappa B(T))",
+   "software": [],
+   "key_parameters": [
+    "beta=1, kappa=0.023 cm2/g, T=20 K, d=414 pc"
+   ],
+   "assumptions": [
+    "gas to dust mass ratio of 100"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Extract spectra",
+   "method": "Spectra in 2\" and 20\" diameter apertures centered on V1647 Ori, 0.25 km/s bins",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Outflow dynamical ages",
+   "method": "tau = r_outflow/(v_system - v_max) per line",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "low inclination (17 deg) makes ages uncertain; straight-line travel"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Outflow mass, momentum, energy",
+   "method": "Sum over channels within 10\" on PB-corrected 12CO and 13CO cubes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex=50 K, filling factor 1, 12CO/H2=1e-4, 12CO/13CO=62"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux (~225 GHz)",
+   "value": "82.62",
+   "uncertainty": "8.26",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "a flux, inclination, position angle and centroid of 82.62 $\\pm$ 8.26 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination",
+   "value": "17",
+   "uncertainty": "+6/-9",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "${\\it i} = 17^{\\circ}$ $^{+6}_{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc dust radius",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "results in a disc dust radius of $\\sim$40 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc dust mass",
+   "value": "427",
+   "uncertainty": "range 110-2688",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "we estimate the disc dust mass of V1647 Ori to be $M_\\mathrm{dust}$ = 427 M$_\\mathrm{E}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total disc mass",
+   "value": "0.13",
+   "uncertainty": "range 0.03-0.80",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Emission",
+     "quote": "total disc mass $M_\\mathrm{disc}$ = 0.13 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical age, northern outflow",
+   "value": "~11,700",
+   "uncertainty": "~200",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.6 Dynamics of the V1647 Ori Environment",
+     "quote": "has a dynamical age of $\\sim$11,700 years"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical age, southern outflow",
+   "value": "~17,200",
+   "uncertainty": "~300",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.6 Dynamics of the V1647 Ori Environment",
+     "quote": "has a dynamical age of $\\sim$17,200 years"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO total outflow mass (lower limit)",
+   "value": "33.7e-3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Total |  15.3 |  33.7 |  55.2 |  100.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO total outflow mass",
+   "value": "15.3e-3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Total |  7.5 | 15.3 | 14.2 | 15.3 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters (weighting/robust, cell, image size, deconvolver, masks, niter, threshold)",
+  "line-free channels for continuum subtraction",
+  "CASA version",
+  "channel width of the line cubes",
+  "pipeline version",
+  "how the pipeline calibration was done for each epoch",
+  "phase center/field details of the concatenation",
+  "aperture for flux and fitting details of the 2D Gaussian (imfit settings)",
+  "values of vmax and radii used in dynamical age (measurement method)"
+ ],
+ "missing_for_reproduction": [
+  "tclean settings",
+  "line-free channels",
+  "vmax measurement details",
+  "CASA version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identifiable and analysis simple, but imaging parameters are not given.",
+ "rediscovery_reason": "Public project, simple numerical results (flux, mass, ages), though imaging details must be guessed.",
+ "source_card": "cards/2018MNRAS.473..879P/sonnet/card.md"
+}

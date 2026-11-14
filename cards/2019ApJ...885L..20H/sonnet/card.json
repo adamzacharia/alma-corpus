@@ -1,0 +1,730 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...885L..20H",
+  "title": "The Nuclear Filaments inside the Circumnuclear Disk in the Central 0.5 pc of the Galactic Center",
+  "year": 2019,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Hsieh, Pei-Ying",
+  "n_authors": 7,
+  "arxiv_id": "1910.07559",
+  "doi": "10.3847/2041-8213/ab4e1e",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00040.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present CS(7-6) line maps toward the central parsec of the Galactic Center (GC), conducted with the Atacama Large Millimeter/submillimeter Array (ALMA)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "Galactic Center (Sgr A*, CND and nuclear filaments)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the molecular inflow channeled past the CND? What are the structure and kinematics of the gas in the inner cavity of the CND (nuclear filaments)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "”Is the molecular inflow able to be channeled past the CND?”"
+     },
+     {
+      "loc": "abstract",
+      "quote": "The primary goal is to find and characterize the gas structure in the inner cavity of the circumnuclear disk (CND) in high resolution"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00040.S",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "(project code: 2017.1.00040.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "CS(7-6) 342.882 GHz; default channel width 244.141 kHz",
+    "evidence": [
+     {
+      "loc": "ALMA Observations and Data Reduction",
+      "quote": "The default channel width of the spectral windows was 244.141 kHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CS",
+     "transition": "J=7-6",
+     "rest_frequency": "342.882 GHz",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "CS (7-6) ($f_{\\rm rest}=$342.882 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "43 12-m antennas, 7 m, and total-power array",
+    "evidence": [
+     {
+      "loc": "ALMA Observations and Data Reduction",
+      "quote": "we combined the 12 m, 7 m, and single-dish data."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "native 0.8'', smoothed to 1.3'' (0.05 pc)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations and Data Reduction",
+      "quote": "The native resolution of the CS(7-6) map is 0.8$\\ensuremath{''}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "11 mJy noise in smoothed map",
+    "evidence": [
+     {
+      "loc": "ALMA Observations and Data Reduction",
+      "quote": "The noise level is 11 mJy of the smoothed map."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Enclosed mass M(r) of stars and Sgr A* used for Keplerian curves",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The enclosed mass $M(r)$ is adopted from the literature (cite: genzel10) to account for the total mass of the enclosed stars and Sgr A\\* (cite: ghez08)."
+       }
+      ]
+     },
+     "citation": "(cite: genzel10); (cite: ghez08)"
+    },
+    {
+     "what": {
+      "value": "Filament mass of 5 Msun",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "To create the nuclear filaments with a mass of 5 $M_{\\odot}$ (cite: moser17)"
+       }
+      ]
+     },
+     "citation": "(cite: moser17)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "pipeline and manual reduction script for cycle-5 data",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "Calibration of the raw visibilities was performed with the pipeline and manual reduction script for the cycle-5 data"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v5.1.1-5",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "(CASA v5.1.1-5)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "Tclean for deconvolution, Feather for merging with single dish",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "The CASA tasks Tclean and Feather were used to deconvolve and merge the interferometric and single-dish maps."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "We used the Briggs robust parameter of 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Mstransform",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "The task Mstrasform was used to subtract the continuum emission."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12 m + 7 m + single-dish; four mosaics processed separately then combined",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "We processed the four individual mosaics separately, and combined them into one map."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "smoothed to 1.3'' (0.05 pc); 2 km/s channels",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "we smoothed the maps to 1.3$\\ensuremath{''}$ ($=0.05$ pc)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "11 mJy (smoothed map)",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "The noise level is 11 mJy of the smoothed map."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Rotating ring model with circular orbits for the CND",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "we start this analysis with the simplest rotating ring model (cite: guesten87; jackson93; martin12)."
+       }
+      ]
+     },
+     "from_reference": "(cite: guesten87; jackson93; martin12)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Total-power and 12m/7m configurations, observing dates, and integration times",
+    "Feather parameters (SD scale factor) and tclean cleaning threshold, mask, cell and image size",
+    "Line-free channels for continuum subtraction",
+    "Distance to GC and exact M(r) function used",
+    "Chi-square definition, uncertainties, and how phase-plot data points were extracted",
+    "Flux calibrators and flux scale uncertainty",
+    "Position of Sgr A* used as center"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, image and combine 12m, 7m and single-dish data",
+    "method": {
+     "value": "Pipeline/manual calibration, tclean mosaic of four fields, Feather with single dish, continuum subtraction, smoothing to 1.3''",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "The CASA tasks Tclean and Feather were used to deconvolve and merge the interferometric and single-dish maps."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean",
+     "feather",
+     "mstransform"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5; 2 km/s channels; smoothed to 1.3''",
+      "evidence": [
+       {
+        "loc": "ALMA Observations and Data Reduction",
+        "quote": "The image cubes were made at a velocity resolution of 2 km s$^{-1}$ to enhance the signal-to-noise ratio."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make moment maps",
+    "method": {
+     "value": "Integrated intensity (MOM0) and intensity-weighted velocity (MOM1) maps",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "Figure [1](#fig-m0) displays the integrated CS(7-6) intensity maps (MOM0) in the inner region of the CND."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit Keplerian circular orbits at five radii",
+    "method": {
+     "value": "Grid search over inclination, position angle and radial velocity minimizing chi^2 of V_los against phase plots",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The best-fit circular orbits of the line-of-sight velocity $V_{\\rm los}$ determined by the mininum $\\chi^2$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "radii 0.5, 0.4, 0.35, 0.25, 0.15 pc; inclination 5-80 deg step 5; PA 70-150 deg step 5; radial velocity 0-120 km/s step 10",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The free parameters with their fitting ranges are the inclination (5$\\ensuremath{^\\circ}$-80$\\ensuremath{^\\circ}$ in steps of 5$\\ensuremath{^\\circ}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Keplerian motion around enclosed mass M(r) from literature; points separated by one beam are independent",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "The data points at the different radii for fitting are chosen with a separation of one beam size, and can thus be considered as being independent."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Minimum chi^2 grid search",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "determined by the mininum $\\chi^2$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with higher-inclination (65-80 deg) models, which fail to explain features",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "A higher inclination (65$\\ensuremath{^\\circ}$ to 80$\\ensuremath{^\\circ}$) is not able to explain the gross feature within the radius of 0.5 pc."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate eccentricity from radial/tangential velocity ratio",
+    "method": {
+     "value": "Eccentric Keplerian orbit relation V_rad/V_tan = e sin(theta)/(1+e cos(theta))",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "we obtain $e \\geq$ 0.6 and $\\theta \\geq 60^\\circ$ (i.e., far from the periapsis of Sgr A\\*) to match the ${V_{\\rm rad}}/{V_{\\rm tan}}$ ratio."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "V_rad=120 km/s, V_tan=200 km/s",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "Using $V_{\\rm rad}$=120 km s$^{-1}$ and $V_{\\rm tan}$= 200 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v5.1.1-5",
+    "used_for": {
+     "value": "calibration, tclean, feather, mstransform",
+     "evidence": [
+      {
+       "loc": "ALMA Observations and Data Reduction",
+       "quote": "Common Astronomy Software Applications (CASA v5.1.1-5)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Nuclear filament inclination",
+    "value": "~10-20",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "inclination angle of $\\sim10\\ensuremath{^\\circ}-20\\ensuremath{^\\circ}$ (radius $\\le$ 0.5 pc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Inward radial velocity of E1-E3, W1-W3",
+    "value": "90-120",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "inward radial velocities (90-120 km s$^{-1}$) of E1-E3 and W1-W3"
+     }
+    ]
+   },
+   {
+    "quantity": "Eccentricity lower limit",
+    "value": "e >= 0.6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we obtain $e \\geq$ 0.6"
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical timescale at 0.25 pc",
+    "value": "5600",
+    "uncertainty": "not stated",
+    "units": "years",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the dynamical time scale of the nuclear filaments is 5600 years at a radius of 0.25 pc"
+     }
+    ]
+   },
+   {
+    "quantity": "Accretion time 0.55 to 0.15 pc",
+    "value": "7800",
+    "uncertainty": "not stated",
+    "units": "years",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "it takes about 7800 years to accrete from 0.55 to 0.15 pc"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Nuclear filaments rotate in the same sense as the CND about Sgr A*",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "we find that the nuclear filaments are rotating in the same sense as the CND"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do the nuclear filaments share the CND geometry?",
+    "experiment": "Keplerian circular orbit fits at five radii to CS(7-6) phase plots",
+    "result": "Inclination 10-20 deg versus 65-80 deg for the CND",
+    "finding": "Nuclear filaments are nearly face-on, implying a warped structure from CND to filaments",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our analysis suggests a highly warped structure from the CND to the nuclear filaments."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the filaments purely Keplerian?",
+    "experiment": "Compare the single-orbit fit with the data at 0.4 and 0.5 pc",
+    "result": "Single Keplerian orbit cannot fit all features at 0.4 and 0.5 pc",
+    "finding": "Deviation is likely from inward radial motion or multiple orbits",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a single Keplerian rotation is unable to fit the centroids of all features simultaneously at the radii of 0.4 and 0.5 pc"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Filaments might have CND-like inclination but be sub-Keplerian due to radiation and thermal pressure",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "their low projected velocities are sub-Keplerian due to radiation and thermal pressure"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Regions filled with nuclear filaments are small, so shear and non-rotating clumps could be present",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "We note that the regions filled with nuclear filaments are still rather small."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Low inclination relies on the assumption of Keplerian motion",
+    "No uncertainties on fitted parameters; coarse grid",
+    "Small number of independent points per radius"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Feather and tclean details",
+    "Fitting data point selection and chi^2 specifics",
+    "Enclosed mass function"
+   ],
+   "estimated_data_volume_inferred": "~hundreds of GB to 1 TB (four 150-pointing mosaics, 12m+7m+TP)",
+   "score_inferred": 4,
+   "score_reason": "Imaging recipe is brief and the fitting is only loosely specified, but the project code is given and the result is simple.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the data are public, and the fitting details are incomplete."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "(cite: moser17)",
+     "why": "Earlier ALMA CS(5-4) of the central association"
+    },
+    {
+     "citation": "(cite: hsieh17)",
+     "why": "Earlier team work on CND streamers"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a0d338058e6b8c731bbe949c569d4768",
+  "batch_id": "msgbatch_01NyPpV8KwpU3YmZSqJaEUmN",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:14:28",
+  "usage": {
+   "input_tokens": 9173,
+   "output_tokens": 5624,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.0379,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 41,
+  "quotes_ok": 41,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 30,
+   "rate": 0.455
+  },
+  "evidence_ok": true
+ }
+}

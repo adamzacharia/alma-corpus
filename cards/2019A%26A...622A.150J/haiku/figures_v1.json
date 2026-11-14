@@ -1,0 +1,1025 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 4,
+    "shows": "ALMA band 6 brightness temperature maps of the solar field of view in four sub-bands (1.209, 1.219, 1.292, 1.303 mm), with dashed circles marking structures with different temperature distributions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "solar x position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "solar y position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. colour scale 5 to 8 kK",
+     "approx. sub-band wavelengths 1.209, 1.219, 1.292, 1.303 mm"
+    ],
+    "caption_quote": "ALMA sub-band images of brightness temperature in band 6. The sampling wavelengths are indicated in the upper-left corner of each panel.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Normalized histograms of brightness temperature over the entire field of view for the four ALMA sub-band images shown in Figure 1, with shaded 5% uncertainty bands.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "brightness temperature",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. histogram peaks near 1.0 normalized frequency"
+    ],
+    "caption_quote": "Distributions of brightness temperature of the entire field-of-view of the ALMA sub-band images shown in Figure 1.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "moment_map",
+    "panels": 9,
+    "shows": "Radiation temperature maps of ALMA 1.3 mm and several IRIS line features: C II 133.4 nm line core, Si IV 139.4 nm line core, and Mg II k and h blue peak, line core and red peak, with blue pixels where features could not be determined.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "solar x position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "solar y position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Si IV core intensity",
+      "units": "erg s-1 cm-3 sr-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ALMA 1.3 mm colour range 5 to 7 kK",
+     "approx. C II core colour range 6 to 8 kK",
+     "approx. Si IV core range 10^12.4 to 10^15.1 erg s-1 cm-3 sr-1"
+    ],
+    "caption_quote": "Radiation temperature maps of the ALMA 1.3 mm (a) and of a few IRIS line features at UV wavelengths",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "histogram",
+    "panels": 6,
+    "shows": "Normalized distributions of ALMA 1.3 mm radiation temperature and IRIS Mg II k line features (k2v, k3, k2r) for the entire field of view and for sunspot and pores, umbra, penumbra and pores, plage and quiet regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares radiation temperature distributions per magnetic-field region between ALMA and IRIS Mg II k features.",
+    "readable_values": [
+     "approx. entire FOV ALMA peak near 6.8 kK",
+     "approx. entire FOV Mg II k3 peak near 5.2 kK",
+     "approx. umbra Mg II k3 peak near 5.1 kK",
+     "approx. quiet regions ALMA peak near 6.7 kK"
+    ],
+    "caption_quote": "The histograms are plotted for the entire field-of-view and for the various isolated regions with different levels of magnetic fields (see main text).",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 4
+   },
+   {
+    "number": 7,
+    "kind": "histogram",
+    "panels": 6,
+    "shows": "Normalized distributions of ALMA 1.3 mm radiation temperature and IRIS Mg II h features (h2v, h3, h2r) and C II core for the same six regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares radiation temperature distributions per magnetic-field region between ALMA and IRIS Mg II h and C II features.",
+    "readable_values": [
+     "approx. entire FOV C II core peak near 6.6 kK",
+     "approx. umbra Mg II h3 peak near 4.8 kK"
+    ],
+    "caption_quote": "Same as Figure 6, but for the Mg ii h line as observed with IRIS at 280.4 nm as well as the IRIS C ii 133.4 nm line-core.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 5
+   },
+   {
+    "number": 8,
+    "kind": "other",
+    "panels": 6,
+    "shows": "Mean radiation temperature (red dots with standard deviation error bars) from ALMA 1.3 mm and IRIS C II core, Mg II k and Mg II h features, for six solar regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "diagnostic (1.3 mm, C II core, Mg II k2/k3/k2, Mg II h2/h3/h2)",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "mean radiation temperature",
+      "units": "kK"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Summarises mean radiation temperatures and spread per diagnostic and region, comparing ALMA with UV line features.",
+    "readable_values": [
+     "approx. entire FOV ALMA 1.3 mm mean 6.6 kK",
+     "approx. entire FOV C II core mean 6.6 kK",
+     "approx. entire FOV Mg II k3 mean 5.3 kK",
+     "approx. umbra Mg II h3 mean 4.9 kK"
+    ],
+    "caption_quote": "Comparison of the mean radiation temperature (red dots) retrieved from the millimetre and ultraviolet observations with ALMA and IRIS.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 6
+   },
+   {
+    "number": 10,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features (Mg II k3, Mg II h3, Mg II k2r, Mg II h2r, Si IV core, O I core) against ALMA 1.3 mm radiation temperature for the sunspot and small pores, with slope m, Pearson r and Spearman rho.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS features, reporting regression slope and correlation coefficients.",
+    "readable_values": [
+     "approx. Mg II k3 slope m = 0.27 ± 0.02",
+     "approx. Mg II k2r Pearson r = 0.83",
+     "approx. Si IV core slope m = 0.21 ± 0.03"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels included in the sunspot and the small pores.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 7
+   },
+   {
+    "number": 11,
+    "kind": "scatter_or_relation",
+    "panels": 4,
+    "shows": "Pixel-to-pixel density plots of IRIS Mg II k3 and h3 and O I core against ALMA 1.3 mm radiation temperature restricted to the umbral region, with fit slope and correlation coefficients.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in the umbra, showing weak correlation.",
+    "readable_values": [
+     "approx. Mg II k3 slope m = 0.12 ± 0.25",
+     "approx. Mg II h3 Pearson r = 0.04"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels in the umbral region.",
+    "reproduction_target": false,
+    "crop_ok": true,
+    "renumbered_from": 8
+   },
+   {
+    "number": 12,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS Mg II k3, h3, k2r, h2r, Si IV and O I cores against ALMA 1.3 mm radiation temperature for the penumbra and small pores.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in penumbra and small pores.",
+    "readable_values": [
+     "approx. k2r slope m = 0.50 ± 0.03",
+     "approx. C II core slope m = 0.54 ± 0.02"
+    ],
+    "caption_quote": "Same as Figure 9, but for the penumbra and the small pores.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 9
+   },
+   {
+    "number": 13,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for plage pixels.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in plage areas.",
+    "readable_values": [
+     "approx. C II core slope m = 0.58 ± 0.01",
+     "approx. C II core Pearson r = 0.83"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels of the plage areas.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 10
+   },
+   {
+    "number": 14,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for quasi-quiet regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in quasi-quiet regions.",
+    "readable_values": [
+     "approx. k2r slope m = 0.41 ± 0.02",
+     "approx. C II core slope m = 0.38 ± 0.05"
+    ],
+    "caption_quote": "Same as Figure 9, but for the quasi-quiet regions.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 11
+   },
+   {
+    "number": 16,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Cumulative distribution functions of radiation temperature for the entire field of view for ALMA 1.3 mm and IRIS Mg II k, h and C II core diagnostics, with Kolmogorov-Smirnov statistics d for each UV channel against ALMA.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "cumulative distribution",
+      "units": "normalized"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 8,
+    "validation_check": "Kolmogorov-Smirnov test of distribution agreement between each UV channel and ALMA, pixels with maximum time difference 2 min.",
+    "readable_values": [
+     "approx. C II core KS d = 0.26",
+     "approx. Mg II k3 KS d = 0.92",
+     "approx. ALMA median near 7.0 kK"
+    ],
+    "caption_quote": "The Kolmogorov–Smirnov statistics (d) has been provided for distribution comparison of each UV channel with ALMA.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 13
+   }
+  ],
+  "dropped": [
+   {
+    "number": 14,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for a further region set, with slope m, r and rho values.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS, reporting slope and correlation per region.",
+    "readable_values": [
+     "approx. k2r slope m = 0.48 ± 0.21",
+     "approx. C II core slope m = 0.38 ± 0.05"
+    ],
+    "caption_quote": "Same as Figure 9, but for the quasi-quiet regions.",
+    "reproduction_target": false,
+    "crop_ok": true,
+    "renumbered_from": 12
+   }
+  ]
+ },
+ "checks": {
+  "figures": 12,
+  "caption_quotes_ok": 12,
+  "renumbered": [
+   6,
+   7,
+   8,
+   10,
+   11,
+   12,
+   13,
+   14,
+   16
+  ],
+  "dropped_duplicates": 1,
+  "cropped_without_note": [
+   15
+  ],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 9,
+  "reproduction_targets": 10,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.996,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 8,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 11,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 12,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 13,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 14,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 16,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.983,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 4,
+    "shows": "ALMA band 6 brightness temperature maps of the solar field of view in four sub-bands (1.209, 1.219, 1.292, 1.303 mm), with dashed circles marking structures with different temperature distributions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "solar x position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "solar y position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. colour scale 5 to 8 kK",
+     "approx. sub-band wavelengths 1.209, 1.219, 1.292, 1.303 mm"
+    ],
+    "caption_quote": "ALMA sub-band images of brightness temperature in band 6. The sampling wavelengths are indicated in the upper-left corner of each panel.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 1,
+    "shows": "Normalized histograms of brightness temperature over the entire field of view for the four ALMA sub-band images shown in Figure 1, with shaded 5% uncertainty bands.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "brightness temperature",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. histogram peaks near 1.0 normalized frequency"
+    ],
+    "caption_quote": "Distributions of brightness temperature of the entire field-of-view of the ALMA sub-band images shown in Figure 1.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "moment_map",
+    "panels": 9,
+    "shows": "Radiation temperature maps of ALMA 1.3 mm and several IRIS line features: C II 133.4 nm line core, Si IV 139.4 nm line core, and Mg II k and h blue peak, line core and red peak, with blue pixels where features could not be determined.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "solar x position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "y",
+      "quantity": "solar y position",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Si IV core intensity",
+      "units": "erg s-1 cm-3 sr-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. ALMA 1.3 mm colour range 5 to 7 kK",
+     "approx. C II core colour range 6 to 8 kK",
+     "approx. Si IV core range 10^12.4 to 10^15.1 erg s-1 cm-3 sr-1"
+    ],
+    "caption_quote": "Radiation temperature maps of the ALMA 1.3 mm (a) and of a few IRIS line features at UV wavelengths",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "histogram",
+    "panels": 6,
+    "shows": "Normalized distributions of ALMA 1.3 mm radiation temperature and IRIS Mg II k line features (k2v, k3, k2r) for the entire field of view and for sunspot and pores, umbra, penumbra and pores, plage and quiet regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares radiation temperature distributions per magnetic-field region between ALMA and IRIS Mg II k features.",
+    "readable_values": [
+     "approx. entire FOV ALMA peak near 6.8 kK",
+     "approx. entire FOV Mg II k3 peak near 5.2 kK",
+     "approx. umbra Mg II k3 peak near 5.1 kK",
+     "approx. quiet regions ALMA peak near 6.7 kK"
+    ],
+    "caption_quote": "The histograms are plotted for the entire field-of-view and for the various isolated regions with different levels of magnetic fields (see main text).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "histogram",
+    "panels": 6,
+    "shows": "Normalized distributions of ALMA 1.3 mm radiation temperature and IRIS Mg II h features (h2v, h3, h2r) and C II core for the same six regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalized occurrence frequency",
+      "units": "normalized to maximum"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Compares radiation temperature distributions per magnetic-field region between ALMA and IRIS Mg II h and C II features.",
+    "readable_values": [
+     "approx. entire FOV C II core peak near 6.6 kK",
+     "approx. umbra Mg II h3 peak near 4.8 kK"
+    ],
+    "caption_quote": "Same as Figure 6, but for the Mg ii h line as observed with IRIS at 280.4 nm as well as the IRIS C ii 133.4 nm line-core.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "other",
+    "panels": 6,
+    "shows": "Mean radiation temperature (red dots with standard deviation error bars) from ALMA 1.3 mm and IRIS C II core, Mg II k and Mg II h features, for six solar regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "diagnostic (1.3 mm, C II core, Mg II k2/k3/k2, Mg II h2/h3/h2)",
+      "units": "not labelled"
+     },
+     {
+      "axis": "y",
+      "quantity": "mean radiation temperature",
+      "units": "kK"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "Summarises mean radiation temperatures and spread per diagnostic and region, comparing ALMA with UV line features.",
+    "readable_values": [
+     "approx. entire FOV ALMA 1.3 mm mean 6.6 kK",
+     "approx. entire FOV C II core mean 6.6 kK",
+     "approx. entire FOV Mg II k3 mean 5.3 kK",
+     "approx. umbra Mg II h3 mean 4.9 kK"
+    ],
+    "caption_quote": "Comparison of the mean radiation temperature (red dots) retrieved from the millimetre and ultraviolet observations with ALMA and IRIS.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features (Mg II k3, Mg II h3, Mg II k2r, Mg II h2r, Si IV core, O I core) against ALMA 1.3 mm radiation temperature for the sunspot and small pores, with slope m, Pearson r and Spearman rho.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS features, reporting regression slope and correlation coefficients.",
+    "readable_values": [
+     "approx. Mg II k3 slope m = 0.27 ± 0.02",
+     "approx. Mg II k2r Pearson r = 0.83",
+     "approx. Si IV core slope m = 0.21 ± 0.03"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels included in the sunspot and the small pores.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "scatter_or_relation",
+    "panels": 4,
+    "shows": "Pixel-to-pixel density plots of IRIS Mg II k3 and h3 and O I core against ALMA 1.3 mm radiation temperature restricted to the umbral region, with fit slope and correlation coefficients.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in the umbra, showing weak correlation.",
+    "readable_values": [
+     "approx. Mg II k3 slope m = 0.12 ± 0.25",
+     "approx. Mg II h3 Pearson r = 0.04"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels in the umbral region.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS Mg II k3, h3, k2r, h2r, Si IV and O I cores against ALMA 1.3 mm radiation temperature for the penumbra and small pores.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in penumbra and small pores.",
+    "readable_values": [
+     "approx. k2r slope m = 0.50 ± 0.03",
+     "approx. C II core slope m = 0.54 ± 0.02"
+    ],
+    "caption_quote": "Same as Figure 9, but for the penumbra and the small pores.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for plage pixels.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in plage areas.",
+    "readable_values": [
+     "approx. C II core slope m = 0.58 ± 0.01",
+     "approx. C II core Pearson r = 0.83"
+    ],
+    "caption_quote": "Same as Figure 9, but limited to pixels of the plage areas.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for quasi-quiet regions.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS in quasi-quiet regions.",
+    "readable_values": [
+     "approx. k2r slope m = 0.41 ± 0.02",
+     "approx. C II core slope m = 0.38 ± 0.05"
+    ],
+    "caption_quote": "Same as Figure 9, but for the quasi-quiet regions.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "scatter_or_relation",
+    "panels": 9,
+    "shows": "Pixel-to-pixel density plots of IRIS line features against ALMA 1.3 mm radiation temperature for a further region set, with slope m, r and rho values.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "ALMA 1.3 mm radiation temperature",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "IRIS radiation temperature or line-core intensity",
+      "units": "kK / erg s-1 cm-3 sr-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "pixel density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "Pixel-to-pixel comparison of ALMA with IRIS, reporting slope and correlation per region.",
+    "readable_values": [
+     "approx. k2r slope m = 0.48 ± 0.21",
+     "approx. C II core slope m = 0.38 ± 0.05"
+    ],
+    "caption_quote": "Same as Figure 9, but for the quasi-quiet regions.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 13,
+    "kind": "other",
+    "panels": 1,
+    "shows": "Cumulative distribution functions of radiation temperature for the entire field of view for ALMA 1.3 mm and IRIS Mg II k, h and C II core diagnostics, with Kolmogorov-Smirnov statistics d for each UV channel against ALMA.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "radiation temperature T_rad",
+      "units": "kK"
+     },
+     {
+      "axis": "y",
+      "quantity": "cumulative distribution",
+      "units": "normalized"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 8,
+    "validation_check": "Kolmogorov-Smirnov test of distribution agreement between each UV channel and ALMA, pixels with maximum time difference 2 min.",
+    "readable_values": [
+     "approx. C II core KS d = 0.26",
+     "approx. Mg II k3 KS d = 0.92",
+     "approx. ALMA median near 7.0 kK"
+    ],
+    "caption_quote": "The Kolmogorov–Smirnov statistics (d) has been provided for distribution comparison of each UV channel with ALMA.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

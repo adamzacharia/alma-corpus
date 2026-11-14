@@ -1,0 +1,1228 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017MNRAS.469.3200B",
+  "title": "The Northern arc of ∊ Eridani's Debris Ring as seen by ALMA",
+  "year": 2017,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Booth, Mark",
+  "n_authors": 13,
+  "arxiv_id": "1705.01560",
+  "doi": "10.1093/mnras/stx1072",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00645.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this paper we present the first Atacama Large Millimeter/submillimeter Array (ALMA) observations of $\\epsilon$ Eri."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "exoplanets"
+   ],
+   "targets": [
+    {
+     "name": "epsilon Eridani",
+     "coordinates": {
+      "value": "pointing 03:32:54.8535 -09:27:11.438 (J2000), 18'' north of the star",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "$\\alpha=03:32:54.8535$; $\\delta=-09.27.11.438$ (J2000), 18$''$ to the North of the star"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At a distance of 3.2 pc, the K2V star $\\epsilon$ Eridani is the closest extrasolar system known to host a debris disc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "3.2 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "$\\alpha=03:32:54.8535$; $\\delta=-09.27.11.438$ (J2000), 18$''$ to the North of the star"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "At a distance of 3.2 pc, the K2V star $\\epsilon$ Eridani is the closest extrasolar system known to host a debris disc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the geometry, width and structure of the epsilon Eri debris ring at 1.3 mm, what do they imply for planets, and is there emission at the star, interior dust or CO gas?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We use a forward modelling technique to determine the geometric properties of the disc. We compare these results with prior observations and discuss the implications for planets in the system"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00645.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "$\\epsilon$ Eri was observed by ALMA in cycle 2 as part of the project 2013.1.00645.S (PI: A. Jordán)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.34 mm)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The data were taken in band 6 (1.34 mm) on the 17th and 18th January 2015"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "One SPW at CO(2-1) 230.538 GHz with 3840 x 0.5 MHz channels; three SPWs at 232, 219, 217 GHz with 128 x 16 MHz channels",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "one spectral window, centred at the CO(2-1) line at 230.538 GHz, had 3840 channels of width 0.5 MHz (0.6 kms$^{-1}$) and the other three spectral windows, centred at 232, 219 and 217 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "one spectral window, centred at the CO(2-1) line at 230.538 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "7.875 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we can, therefore, use the full bandwidth of all four channels adding up to 7.875 GHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "compact configuration",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were taken whilst the array was in a compact configuration with baselines between 15 and 350 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "15-350 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "baselines between 15 and 350 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.6'' x 1.1'', PA 92 deg (natural weighting)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting synthesised beam has a size 1.6$''$$\\times$1.1$''$ with a position angle of 92$^\\circ$ E of N."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~18'' (shortest baseline 15 m)",
+    "evidence": [
+     {
+      "loc": "Disc flux density",
+      "quote": "has a shortest baseline of 15 m meaning that we are not sensitive to emission on scales larger than 18$''$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "continuum RMS 14 uJy/beam; line RMS 0.98 mJy/beam per 1.27 km/s channel",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "We find this to be $\\sigma=14$ $\\mu$Jy beam$^{-1}$."
+     },
+     {
+      "loc": "Observations",
+      "quote": "No spectral lines were detected down to an RMS sensitivity per beam of 0.98 mJy beam$^{-1}$ in a 1.27 km s$^{-1}$ wide channel."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "4.4 hours",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total time on target was 4.4 hours."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "17-18 January 2015",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The data were taken in band 6 (1.34 mm) on the 17th and 18th January 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Project 2013.1.00645.S, PI A. Jordán (an author)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "as part of the project 2013.1.00645.S (PI: A. Jordán)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar photosphere flux 530±11 uJy at 1.3 mm (Kurucz model)",
+      "evidence": [
+       {
+        "loc": "Stellar flux",
+        "quote": "The flux density of the stellar photosphere at 1.3 mm is expected to be $530\\pm11\\mu$Jy based on a Kurucz atmosphere model (cite: macgregor15)"
+       }
+      ]
+     },
+     "citation": "(cite: macgregor15)"
+    },
+    {
+     "what": {
+      "value": "Schechter galaxy-count parameters at 1.3 mm: phi*=1800±400 deg^-2, S*=1.7±0.2 mJy, alpha=-2.08±0.11",
+      "evidence": [
+       {
+        "loc": "Azimuthal variations",
+        "quote": "They find values of these constants of $\\phi_\\star=1800\\pm400$ deg$^{-2}$, $S_\\star=1.7\\pm0.2$ mJy and $\\alpha=-2.08\\pm0.11$."
+       }
+      ]
+     },
+     "citation": "(cite: carniani15)"
+    },
+    {
+     "what": {
+      "value": "alpha Cen B excesses of 40% (870 um) and 220% (3 mm), used to interpolate chromospheric contribution",
+      "evidence": [
+       {
+        "loc": "Stellar flux",
+        "quote": "find that $\\alpha$ Cen B has excesses above the photosphere of 40% and 220% at 870 $\\mu$m and 3 mm respectively"
+       }
+      ]
+     },
+     "citation": "(cite: liseau15)"
+    },
+    {
+     "what": {
+      "value": "Planet mass limits from direct imaging",
+      "evidence": [
+       {
+        "loc": "Orientation / radial profile",
+        "quote": "(cite: janson15) provide the most constraining limits on planets in the system, which are shown by the grey region in figure"
+       }
+      ]
+     },
+     "citation": "(cite: janson15)"
+    },
+    {
+     "what": {
+      "value": "Stellar radial velocity 16.43±0.09 km/s",
+      "evidence": [
+       {
+        "loc": "CO mass limit",
+        "quote": "$\\epsilon$ Eri itself has a radial velocity of 16.43$\\pm$0.09 km s$^{-1}$ (cite: nidever02)"
+       }
+      ]
+     },
+     "citation": "(cite: nidever02)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard observatory calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were reduced using the standard observatory calibration in `CASA` version 4.3.1 (cite: mcmullin07)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.3.1",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "standard observatory calibration in `CASA` version 4.3.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "5% calibration uncertainty",
+     "evidence": [
+      {
+       "loc": "Observations footnote",
+       "quote": "Including a 5% calibration uncertainty (cite: alma16)."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting, multi-frequency synthesis (dirty image)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "created using natural weighting and multi-frequency synthesis"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "2.5'' taper for the displayed CLEAN image",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We also show a CLEAN image[^3] with a 2.5$''$ taper"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Gaussian primary beam model; pixels with beam power >20% used in fits",
+     "evidence": [
+      {
+       "loc": "Modelling",
+       "quote": "We, therefore, only include pixels where the primary beam power is $>$20% of the peak in the primary beam."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Modelling procedure based on earlier work",
+      "evidence": [
+       {
+        "loc": "Modelling",
+        "quote": "The modelling procedure used here is based on that of (cite: booth16)."
+       }
+      ]
+     },
+     "from_reference": "(cite: booth16)"
+    },
+    {
+     "what": {
+      "value": "Gaussian ring model (run C) as in earlier work",
+      "evidence": [
+       {
+        "loc": "Single component",
+        "quote": "As in (cite: macgregor15), we also consider a Gaussian function (run C)"
+       }
+      ]
+     },
+     "from_reference": "(cite: macgregor15)"
+    },
+    {
+     "what": {
+      "value": "CO mass upper-limit method (low and high density)",
+      "evidence": [
+       {
+        "loc": "CO mass limit",
+        "quote": "we follow the method of (cite: matra15), considering both the case of low and high gas density"
+       }
+      ]
+     },
+     "from_reference": "(cite: matra15)"
+    },
+    {
+     "what": {
+      "value": "Chromospheric contribution interpolation approach",
+      "evidence": [
+       {
+        "loc": "Stellar flux",
+        "quote": "Following (cite: chavez16), we interpolate between these, assuming that the excess follows a power law"
+       }
+      ]
+     },
+     "from_reference": "(cite: chavez16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Dirty image cell size, image size and mask details",
+    "Exact calibrators used and flux-scale reference",
+    "How the six execution blocks were combined/weighted and any flagging",
+    "Pixel-per-beam value used for S_ncr",
+    "Convergence/burn-in criteria for emcee beyond walker and step numbers",
+    "Details of the Gaussian primary beam model and dirty beam generation",
+    "Whether self-calibration was applied"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and measure noise and stellar peak",
+    "method": {
+     "value": "Dirty image with natural weighting and MFS over all four SPWs; RMS from a region 90'' off; Gaussian fit to stellar peak",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "we measure the RMS, $\\sigma$, in a region 90$''$ offset from the primary beam to avoid any influence from the emission"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CLEAN image with 2.5'' taper used to check the northern peak is not due to sensitivity",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "This also shows that the peak at the northern ansa is not simply due to the higher sensitivity near to the phase centre."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Forward-model the ring in the image plane (single component, runs A, B, C)",
+    "method": {
+     "value": "Model disc with line-of-sight integrator, plus central point source, times primary beam, convolved with dirty beam, compared to dirty image; chi2 with noise correlation ratio",
+     "evidence": [
+      {
+       "loc": "Modelling",
+       "quote": "The resulting sky image is then multiplied by the primary beam, convolved with the dirty beam and compared with the dirty image to produce a likelihood"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "120 walkers, 2000 timesteps; uniform priors; pixels with primary beam >20%",
+      "evidence": [
+       {
+        "loc": "Modelling",
+        "quote": "The MCMC is run with 120 walkers and 2000 timesteps for each model tested."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Black-body grains with T ∝ R^-0.5; ring centre coincident with star",
+      "evidence": [
+       {
+        "loc": "Modelling",
+        "quote": "The disc grains are assumed to act like black bodies i.e., they have a temperature that is $\\propto R^{-0.5}$."
+       },
+       {
+        "loc": "Modelling",
+        "quote": "we assume that it is coincident with the location of the star"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC with emcee; ln L = -chi2/2; priors in Table",
+     "evidence": [
+      {
+       "loc": "Modelling",
+       "quote": "a Markov Chain Monte Carlo (MCMC) routine is run making use of `emcee` (cite: foreman13)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi2 comparison among runs; radial profiles of restored images; visibility-plane refit in appendix",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "here we re-run run A but this time fitting to the visibilities."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Test for interior dust components (runs D, E, F)",
+    "method": {
+     "value": "Add second component to run A best fit with same orientation; priors from LMT models (D: narrow ring ~20 AU; E: wide R^-3.5); run F for ring just interior to main belt",
+     "evidence": [
+      {
+       "loc": "Multiple components",
+       "quote": "we assume that the main belt is described as in the best fit for run A and that the interior dust has the same inclination and position angle as the main belt."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Extrapolate 1.1 mm flux to 1.3 mm with lambda^-3 slope",
+      "evidence": [
+       {
+        "loc": "Multiple components",
+        "quote": "Extrapolating this flux density to 1.3 mm using a spectral slope of $\\lambda^{-3}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "same MCMC",
+     "evidence": [
+      {
+       "loc": "Multiple components",
+       "quote": "To test these we assume that the main belt is described as in the best fit for run A and that the interior dust has the same inclination and position angle as the main belt."
+      }
+     ]
+    },
+    "validation": {
+     "value": "chi2_red compared (1.086 for run F)",
+     "evidence": [
+      {
+       "loc": "Multiple components",
+       "quote": "it offers just a very slight improvement on the single component models with a $\\chi^2_{red}=1.086$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "CO gas upper limit",
+    "method": {
+     "value": "Integrate three channels (14.5-18.3 km/s), primary-beam correct, sum over ring pixels within 50% beam, scale to full ring; convert to mass with Matra et al. method for CMB-dominated and LTE cases",
+     "evidence": [
+      {
+       "loc": "CO mass limit",
+       "quote": "we consider the channels between 14.5 and 18.3 km s$^{-1}$ as potentially including the CO emission and spectrally integrate over these (three) channels."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO co-located with dust in 63-76 AU ring (second-generation gas); LTE minimum mass at 16.6 K",
+      "evidence": [
+       {
+        "loc": "CO mass limit",
+        "quote": "we assume the CO to be co-located with the dust of the best-fit model for run A, i.e. in a uniform ring between 63 and 76 AU."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Kral et al. 2017 predicted ~1e-9 Earth masses",
+     "evidence": [
+      {
+       "loc": "CO mass limit",
+       "quote": "(cite: kral17) show that $\\epsilon$ Eri should have roughly 10$^{-9}$ M$_\\oplus$ of CO."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Planet constraints from ring edges",
+    "method": {
+     "value": "Wisdom chaotic-zone relation for planet mass vs semi-major axis, with corrections for planetesimal eccentricity, planet eccentricity and collisions; resonance interpretation of edges (3:2 and 2:1)",
+     "evidence": [
+      {
+       "loc": "Radial profile",
+       "quote": "If the belt we see around $\\epsilon$ Eri is also bounded by the 3:2 and 2:1 resonances of an unseen planet, then the inner and outer edges should correspond to the same planet semi-major axis."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "C = 1.3; age 600 Myr for collisional case; planetesimal e<0.1",
+      "evidence": [
+       {
+        "loc": "Radial profile",
+        "quote": "Given the width of the ring, the planetesimals must have an eccentricity less than 0.1"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Inner edge set by outermost planet",
+      "evidence": [
+       {
+        "loc": "Radial profile",
+        "quote": "Assuming the inner edge is defined solely by the outermost planet in the system (cite: deller05)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to Janson et al. imaging limits",
+     "evidence": [
+      {
+       "loc": "Radial profile",
+       "quote": "(cite: janson15) provide the most constraining limits on planets in the system, which are shown by the grey region in figure [6](#fplloc)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Assess residual clumps and background galaxy probability",
+    "method": {
+     "value": "Residuals from run F; Schechter function galaxy counts from Carniani et al. to estimate chance of background galaxy",
+     "evidence": [
+      {
+       "loc": "Azimuthal variations",
+       "quote": "Galaxy number counts can be parametrised using a (cite: schechter76) function."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.3.1",
+    "used_for": {
+     "value": "Standard calibration of the data",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "standard observatory calibration in `CASA` version 4.3.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting of disc models",
+     "evidence": [
+      {
+       "loc": "Modelling",
+       "quote": "a Markov Chain Monte Carlo (MCMC) routine is run making use of `emcee`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Acknowledged community Python package",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Run A inner radius",
+    "value": "62.6",
+    "uncertainty": "+0.9/-1.5",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table fit",
+      "quote": "62.6$^{+0.9}_{-1.5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Run A outer radius",
+    "value": "75.9",
+    "uncertainty": "+1.0/-0.9",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table fit",
+      "quote": "75.9$^{+1.0}_{-0.9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Run C Gaussian ring centre R_mid",
+    "value": "69.4",
+    "uncertainty": "+0.5/-0.4",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table fit",
+      "quote": "69.4$^{+0.5}_{-0.4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Run C FWHM",
+    "value": "11.3",
+    "uncertainty": "+1.4/-1.2",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table fit",
+      "quote": "11.3$^{+1.4}_{-1.2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination (run A)",
+    "value": "34",
+    "uncertainty": "±2",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Orientation to the line of sight",
+      "quote": "Our models result in an inclination of around 34$\\pm2$$^\\circ$ and position angle of $-4\\pm3$$^\\circ$ East of North."
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle",
+    "value": "-4",
+    "uncertainty": "±3",
+    "units": "deg E of N",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Orientation to the line of sight",
+      "quote": "position angle of $-4\\pm3$$^\\circ$ East of North"
+     }
+    ]
+   },
+   {
+    "quantity": "Total disc flux density (run A)",
+    "value": "8.3",
+    "uncertainty": "±0.6",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table fit",
+      "quote": "8.3$^{+0.6}_{-0.6}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux density at star",
+    "value": "820",
+    "uncertainty": "±68",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Stellar flux",
+      "quote": "$F_{cen}=820\\pm68\\,\\mu$Jy"
+     }
+    ]
+   },
+   {
+    "quantity": "Excess over photosphere",
+    "value": "290",
+    "uncertainty": "±55",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Stellar flux",
+      "quote": "there is an excess over the photosphere of $290\\pm55\\mu$Jy"
+     }
+    ]
+   },
+   {
+    "quantity": "Fractional ring width ΔR/R",
+    "value": "0.17",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Radial profile",
+      "quote": "we find a fractional belt width of $\\Delta R/R=0.17$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) flux in ring",
+    "value": "0.13",
+    "uncertainty": "±0.11",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "CO mass limit",
+      "quote": "giving a final result of 0.13$\\pm$0.11 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) 3σ upper limit",
+    "value": "0.33",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "CO mass limit",
+      "quote": "3$\\sigma$ upper limit on the CO (2-1) line flux density within the main belt of 0.33 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO mass 3σ upper limit (CMB-dominated)",
+    "value": "9.6e-7",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "CO mass limit",
+      "quote": "3$\\sigma$ CO mass upper limit of 9.6$\\times10^{-7}$ M$_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO mass 3σ upper limit (LTE)",
+    "value": "2.6e-8",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "CO mass limit",
+      "quote": "3$\\sigma$ CO mass upper limit of 2.6$\\times10^{-8}$ M$_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "Implied planet semi-major axis (resonances)",
+    "value": "47.8",
+    "uncertainty": "±1.2 (inner), ±1.0 (outer)",
+    "units": "AU",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Radial profile",
+      "quote": "the inner edge would be at the 3:2 resonance of a planet at 47.8$\\pm$1.2 AU and the outer edge would be at the 2:1 resonance of a planet at 47.8$\\pm$1.0 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Run F inner component",
+    "value": "R_in 51 (+3/-4), R_out 59 (±5) AU, flux 0.7±0.4 mJy",
+    "uncertainty": "as listed",
+    "units": "AU, mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Multiple components",
+      "quote": "$R_{in, int} = 51^{+3}_{-4}$ AU, $R_{out, int} = 59^{+5}_{-5}$ AU and $F_{\\nu, int} = 0.7^{+0.4}_{-0.4}$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Narrow interior ring flux limit (run D)",
+    "value": ">0.8 mJy ruled out at 99.7%",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Multiple components",
+      "quote": "models with a total flux density of this component $>$0.8 mJy are ruled out at the 99.7% level"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Ring is narrow (11-13 AU), comparable fractional width to the Kuiper belt; edges steep",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The observed disc emission is found to be narrow with a width of just 11-13 AU."
+     }
+    ]
+   },
+   {
+    "value": "Emission at the star is unresolved and consistent with chromospheric emission",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "attribute this excess to stellar chromospheric emission"
+     }
+    ]
+   },
+   {
+    "value": "No CO detected",
+    "evidence": [
+     {
+      "loc": "CO mass limit",
+      "quote": "We have, therefore, not detected any CO gas in the disc"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the epsilon Eri ring narrow?",
+    "experiment": "Image-plane MCMC fits of sharp-edged and Gaussian ring models",
+    "result": "Width 11-13 AU, ΔR/R=0.17",
+    "finding": "One of the narrowest known debris discs, similar to the Kuiper belt",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "makes this one of the narrowest debris discs known"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the ring edges set by resonances with a planet?",
+    "experiment": "Compared edges to 3:2 and 2:1 resonances",
+    "result": "Both match a planet at ~47.8 AU",
+    "finding": "A planet at ~48 AU is possible, mass 0.4-1.2 MJ, though possibly coincidence",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Radial profile",
+      "quote": "perfectly matching and suggesting the chance of a planet at this distance. However, it may just be coincidence"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there dust interior to the main ring or clumps in the ring?",
+    "experiment": "Multi-component fits and residual analysis",
+    "result": "Narrow 20 AU belt limited to <0.8 mJy; tentative 2σ emission just interior; residuals likely contain a background galaxy",
+    "finding": "Tentative evidence only; follow-up needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "We do find tentative evidence for a faint, extra component just interior to the main disc, peaking at around 55 AU."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the central emission above the photosphere due to the chromosphere?",
+    "experiment": "Compared measured flux to photosphere plus alpha Cen B-based chromospheric estimate",
+    "result": "Excess 290±55 uJy; expected total ~900 uJy",
+    "finding": "Entire excess consistent with chromosphere",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Stellar flux",
+      "quote": "suggesting that the entirety of excess we see is due to the chromosphere"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Image-plane forward modelling since the disc is much larger than the primary beam and only part is observed",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The proximity of this star to the Earth results in the disc having an angular diameter far larger than the primary beam of ALMA"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Visibility-plane fit of run A gave consistent results (flux 0.6% higher)",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "In particular, the total disc flux density is only 0.6% higher."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only part of ring observed; flux density may be underestimated, and lack of short baselines limits sensitivity to extended emission",
+     "evidence": [
+      {
+       "loc": "Disc flux density",
+       "quote": "we have only observed part of the ring and assumed there to be no large variations around the ring."
+      }
+     ]
+    },
+    {
+     "value": "Models cannot be distinguished from the image alone",
+     "evidence": [
+      {
+       "loc": "Single component",
+       "quote": "from the images alone it is not possible to distinguish between these models"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Ring flux depends on assumption of azimuthal symmetry from a partial arc",
+    "Gaussian primary beam model and dirty-image fitting may bias results",
+    "Clump significance low (≤5σ) with high background galaxy probability",
+    "Black-body temperature profile degenerate with optical depth"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data cited as ALMA project 2013.1.00645.S (archive data, acknowledged)",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00645.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Modelling code (Booth et al. 2016 based) not released",
+    "Imaging parameters (cell, size) not given",
+    "Calibrators and exact EB processing not given"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for six execution blocks",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear model/priors/MCMC setup, but custom unreleased code and missing imaging details.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires custom image-plane forward-model code not released; imaging details incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: booth16)",
+     "why": "Modelling procedure basis"
+    },
+    {
+     "citation": "(cite: matra15)",
+     "why": "CO mass limit method"
+    },
+    {
+     "citation": "(cite: wyatt99)",
+     "why": "Line-of-sight integrator for sky image"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: chavez16)",
+     "why": "LMT 1.1 mm observations of epsilon Eri"
+    },
+    {
+     "citation": "(cite: macgregor15)",
+     "why": "SMA 1.3 mm observations of epsilon Eri"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-856f99fd5f679d2b48bcefe00961df72",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:33",
+  "usage": {
+   "input_tokens": 27074,
+   "output_tokens": 10307,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.079215,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 87,
+  "quotes_ok": 87,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 17,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 59,
+   "rate": 0.686
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:24:24",
+  "custom_id": "repair-sonnet-e59357e37df5e4f48bedee6677aef755",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "To test these we assume that the main belt is described as in the best fit for run A and that the interior dust has the same inclination and position angle as the main belt."
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "(cite: janson15) provide the most constraining limits on planets in the system, which are shown by the grey region in figure [6](#fplloc)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

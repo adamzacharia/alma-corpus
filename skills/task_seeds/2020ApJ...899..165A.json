@@ -1,0 +1,249 @@
+{
+ "bibcode": "2020ApJ...899..165A",
+ "title": "Local Starburst Conditions and Formation of GRB 980425/SN 1998bw within a Collisional Ring",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba3c0",
+ "arxiv_id": "2007.01317",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "transients"
+ ],
+ "question": "What are the molecular gas properties and depletion times on cloud scales near GRB 980425 in ESO 184-G82, and was the progenitor formed in situ or ejected from a starburst cluster?",
+ "alma_project_codes": [
+  "2018.1.01750.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.35\" x 0.25\" (62 x 44 pc)",
+  "sensitivity": "~0.4 mJy/beam/channel near line, ~0.6 at primary beam edges"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Metallicity range 0.28-0.44 Zsun",
+    "evidence": [
+     {
+      "loc": "3 Measurements and Results",
+      "quote": "We therefore adopt a full metallicity range of $0.28-0.44\\,Z_{\\odot}$ reported by (cite: Kruhler17-2017A&A...602A..85K)"
+     }
+    ]
+   },
+   "citation": "(cite: Kruhler17-2017A&A...602A..85K)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO 12-40 from metallicity-dependent prescription",
+    "evidence": [
+     {
+      "loc": "3 Measurements and Results",
+      "quote": "we adopt the metallicity-dependent $\\alpha_{\\rm CO}$ suggested by (cite: Wolfire10-2010ApJ...716.1191W)"
+     }
+    ]
+   },
+   "citation": "(cite: Wolfire10-2010ApJ...716.1191W)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1)/CO(1-0) ratio 0.8",
+    "evidence": [
+     {
+      "loc": "3 Measurements and Results",
+      "quote": "We also assume a ratio of 0.8 for the brightness temperature luminosity of the CO(2-1) to CO(1-0) lines"
+     }
+    ]
+   },
+   "citation": "(cite: Leroy09-2009AJ....137.4670L)"
+  },
+  {
+   "what": {
+    "value": "HI ring identification",
+    "evidence": [
+     {
+      "loc": "3 Measurements and Results",
+      "quote": "which was identified through Hi 21 cm emission observations presented in (cite: Arabsalmani19-2019MNRAS.485.5411A)"
+     }
+    ]
+   },
+   "citation": "(cite: Arabsalmani19-2019MNRAS.485.5411A)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image CO(2-1) cube and continuum",
+   "method": "ALMA pipeline calibration, imaging with Briggs robust=0.5, 3 km/s channels; continuum from 227.7-228.5 and 228.7-229.4 GHz",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps",
+   "method": "AIPS MOMNT with smoothed-mask",
+   "software": [
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify clumps",
+   "method": "Local peaks in moment-0 separated by at least one beam; accept if detected in >=2 adjacent channels with total >=5 sigma; PV diagrams checked for substructure",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure fluxes, luminosities and line widths",
+   "method": "Integrate adjacent channels above rms; significance = flux/(sqrt(N) x rms); FWHM from moment-2 max and Gaussian fits, corrected for resolution",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas masses",
+   "method": "M_mol from L'CO(2-1) with r21=0.8 and alpha_CO=12-40",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "metallicity 0.28-0.44 Zsun; CO(2-1)/CO(1-0)=0.8"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute SFR and depletion times per gas complex",
+   "method": "Total Halpha flux from MUSE in CO-defined regions, Kennicutt98 calibration, Salpeter IMF, no extinction correction; tau_dep = M_mol/SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "E(B-V)=0.05 mag, extinction correction negligible"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Upper limit on depletion time at GRB position",
+   "method": "3 sigma per channel over >=2 channels in ~150 pc region at GRB position",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of CO clumps",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detect eleven molecular gas clumps in the galaxy, seven of which are within the gas ring."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux of HII region",
+   "value": "0.197",
+   "uncertainty": "0.064",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA",
+     "quote": "We measured an integrated flux of $0.197 \\pm 0.064$ mJy for the continuum in this region"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightest clump C5 integrated flux",
+   "value": "177.6",
+   "uncertainty": "6.9",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C5    | 26  | 177.6$\\pm$6.9     | 14.7 $\\times 10^4$"
+    }
+   ]
+  },
+  {
+   "quantity": "C5 molecular gas mass",
+   "value": "22-74",
+   "uncertainty": "not stated",
+   "units": "1e5 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "22$-$74"
+    }
+   ]
+  },
+  {
+   "quantity": "Spread of tau_dep",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3 Measurements and Results",
+     "quote": "We find the molecular gas depletion times to show a variation of 1.9 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit tau_dep at GRB position",
+   "value": "0.37-1.25",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "we estimate an upper limit of $0.37-1.25$ Gyr for the molecular gas depletion time at the GRB position"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of GRB from nearest clumps C8-C9",
+   "value": "1.6 arcsec (~280 pc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "The location of GRB 980425 is offset by about 1.6$^{\\prime\\prime}$  ($\\sim$280 pc) from the centre of the closest clumps, C8-C9"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "Imaging task parameters (cell, image size, deconvolver, niter, threshold)",
+  "Line-free channels / continuum subtraction method",
+  "Flux calibrator and flux scale uncertainty",
+  "Halpha map extraction regions for gas complexes",
+  "Exact MUSE reduction and Halpha flux measurement details",
+  "Distance used for physical scales"
+ ],
+ "missing_for_reproduction": [
+  "CASA/pipeline versions and tclean parameters",
+  "clump region definitions and moment map masks beyond MOMNT settings",
+  "MUSE Halpha region definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and main steps described, but imaging/region details missing; results numeric in a table.",
+ "rediscovery_reason": "Single ALMA project, simple measurements, tabulated numeric results; some details need guessing.",
+ "source_card": "cards/2020ApJ...899..165A/sonnet/card.md"
+}

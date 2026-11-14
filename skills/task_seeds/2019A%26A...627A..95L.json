@@ -1,0 +1,206 @@
+{
+ "bibcode": "2019A&A...627A..95L",
+ "title": "Standing in the shadow of dark gas: ALMA observations of absorption from dark CO in the molecular dark neutral medium of Chamaeleon",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935436",
+ "arxiv_id": "1905.05369",
+ "fields": [
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "Why did CO emission fail to represent the molecular gas (HCO+-traced H2) in the dark neutral medium in the outskirts of Chamaeleon: inadequate CO excitation or very small CO column densities?",
+ "alma_project_codes": [
+  "2017.1.00227.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCO+ integrated optical depths and column densities from Paper I",
+    "evidence": [
+     {
+      "loc": "2.3 Other observational data",
+      "quote": "In Table 1 we quote the integrated HCO+ optical depths from Paper I"
+     }
+    ]
+   },
+   "citation": "Liszt et al. (2018) (Paper I)"
+  },
+  {
+   "what": {
+    "value": "N(CO)-Υ_CO relation from CO emission and absorption",
+    "evidence": [
+     {
+      "loc": "2.3 Other observational data",
+      "quote": "Fig. 3 shows the N(CO)-Υ CO relation derived from the prior observations of J=1-0 and J=2-1 CO emission and absorption by Liszt & Lucas (1998)"
+     }
+    ]
+   },
+   "citation": "Liszt & Lucas (1998)"
+  },
+  {
+   "what": {
+    "value": "UV absorption N(H2), N(CO) toward stars",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "Stellar quantities from Sheffer et al. (2008)"
+     }
+    ]
+   },
+   "citation": "Sheffer et al. (2008); Burgh et al. (2007); Sonnentrucker et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "Reddening E(B-V) from dust maps",
+    "evidence": [
+     {
+      "loc": "2.4 Reddening and dust optical depth",
+      "quote": "dust-emission maps scaled to optical reddening E(B-V) by Schlegel et al. (1998) are used in Tables 1 and 4"
+     }
+    ]
+   },
+   "citation": "Schlegel et al. (1998)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract optical depth spectra",
+   "method": "Extract spectra at peak continuum pixel from pipeline continuum-subtracted cubes and divide by continuum flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Convert integrated CO optical depth to N(CO)",
+   "method": "Power-law N(CO)=1.861e15 Υ_CO^1.131 from Liszt & Lucas (1998) regression",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Roughly equivalent to Tex of 4.4-4.5 K for the stronger lines"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive N(H2) and CO/H2, CO-H2 conversion factor",
+   "method": "N(H2)=N(HCO+)/3e-9; N(CO)/N(H2); X_CO from W_CO = N(CO)/1e15",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCO+/H2 uncertain by ±0.2 dex"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gaussian decomposition of CO and HCO+ profiles",
+   "method": "Gaussian fits; FWHM corrected by quadrature differencing of velocity resolution",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO column density range",
+   "value": "4e13 to 1.2e15",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6. Summary",
+     "quote": "the observed CO column densities were found to lie in the range 4 × 10 13 cm −2 ∼< N(CO) <∼ 1.2 × 10 15 cm −2"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean N(CO)/N(H2) (six components)",
+   "value": "2.27",
+   "uncertainty": "2.15 (std dev)",
+   "units": "1e-6",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.4(1.8) 0.80(0.45) 2.68(1.35) 0.59(0.47) 2.27(2.15)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean FWHM of HCO+",
+   "value": "0.87",
+   "uncertainty": "0.24",
+   "units": "km s-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "0.87 ± 0.24 km s −1 for HCO+ and 0.72 ± 0.22 km s −1 for CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean FWHM of CO",
+   "value": "0.72",
+   "uncertainty": "0.22",
+   "units": "km s-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "0.87 ± 0.24 km s −1 for HCO+ and 0.72 ± 0.22 km s −1 for CO"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-H2 conversion factor toward J1723 overall",
+   "value": "2.4",
+   "uncertainty": "0.3",
+   "units": "1e20 H2 cm-2 (K km/s)-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "N(H2)/W CO = 2.4 ± 0.3 × 10 20 H2 cm −2 (K-km s −1 ) −1 overall"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ minus CO velocity difference",
+   "value": "0.10",
+   "uncertainty": "0.40 (dispersion)",
+   "units": "km s-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Fig. 7 caption",
+     "quote": "The mean difference and its dispersion are 0.10 km s −1 ± 0.40 km s −1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pipeline/CASA version",
+  "Array configuration, baselines, observing dates and time on source",
+  "Details of the continuum maps and any imaging parameters",
+  "Velocity range used for integrating optical depths",
+  "Procedure for Gaussian decomposition fits",
+  "Software used for spectra extraction and fitting"
+ ],
+ "missing_for_reproduction": [
+  "Integration velocity ranges",
+  "Gaussian fitting details",
+  "Pipeline version"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Simple recipe with published conversion formulas and tables, but fit details and velocity ranges are not given.",
+ "rediscovery_reason": "Data from a single project, simple spectrum extraction and a closed-form conversion with numeric results in tables.",
+ "source_card": "cards/2019A%26A...627A..95L/sonnet/card.md"
+}

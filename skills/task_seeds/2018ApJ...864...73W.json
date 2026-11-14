@@ -1,0 +1,228 @@
+{
+ "bibcode": "2018ApJ...864...73W",
+ "title": "ALMA Observations of Molecular Absorption in the Gravitational Lens PMN 0134-0931 at z = 0.7645",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aad4ac",
+ "arxiv_id": "1804.05377",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Do the lensing galaxies of PMN 0134-0931 at z=0.7645 show CO and HCO+ J=2-1 absorption along different lensed lines of sight, and what do the kinematics and column densities reveal about the molecular gas?",
+ "alma_project_codes": [
+  "2015.1.00582.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO J=2-1) and Band 4 (HCO+ J=2-1)",
+  "arrays": "not stated",
+  "angular_resolution": "nominal 0.35\" (B3), 0.28\" (B4); best continuum 0.24\"x0.18\" at 140 GHz uniform",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio continuum component positions and flux densities (15 GHz, spectral index -0.69) used for lens comparison and covering factors",
+    "evidence": [
+     {
+      "loc": "4.1 Millimeter Continuum",
+      "quote": "The location and relative flux levels are taken from Winn & Keeton (2003)."
+     }
+    ]
+   },
+   "citation": "Winn & Keeton (2003)"
+  },
+  {
+   "what": {
+    "value": "OH 1667 MHz 4-component Gaussian fit and HI 21cm profile",
+    "evidence": [
+     {
+      "loc": "5.2 Column Density",
+      "quote": "Kanekar et al. (2012) provide a 4-component Gaussian fit to their OH 1667 MHz spectrum"
+     }
+    ]
+   },
+   "citation": "Kanekar et al. (2012)"
+  },
+  {
+   "what": {
+    "value": "Lens model with two galaxies of similar mass",
+    "evidence": [
+     {
+      "loc": "3 The Gravitational Lens PMN 0134-0931",
+      "quote": "The two lensing galaxies, called Gal-N and Gal-S in Keeton & Winn (2003), are of similar mass"
+     }
+    ]
+   },
+   "citation": "Keeton & Winn (2003)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "Continuum images from continuum basebands; component fluxes and positions tabulated",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract absorption spectra and fit Gaussians",
+   "method": "Spectra extracted with aperture equal to restoring beam toward A-C and D from Briggs cubes; Gaussian fits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5; 3 Gaussians for D, 2 for A-C"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive opacity and column densities",
+   "method": "tau = -ln(1-F); LTE column density from integrated opacity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Covering factor f_c = 1 (lower limits); LTE"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO emission upper limit",
+   "method": "1.0\" aperture spectrum binned to 13.4 km/s; 5 sigma limit on H2 mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha = 4.6 Msun (km/s pc^2)^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Velocity difference between A-C and D absorption",
+   "value": "215",
+   "uncertainty": "8",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular Absorption",
+     "quote": "we adopt $\\Delta$v = 215$\\pm8$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO column density toward D",
+   "value": "2.40e17",
+   "uncertainty": "0.24e17",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| D | 4.48 | 0.013 | 70.26 $\\pm$ 6.96 | $2.40 \\pm 0.24 \\times 10^{17}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO column density toward A-C",
+   "value": "1.80e16",
+   "uncertainty": "0.41e16",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| CO(J=2-1) | A–C | 4.48 | 0.017 | 5.25 $\\pm$ 1.20 | $1.80 \\pm 0.41 \\times 10^{16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ column density toward D",
+   "value": "1.73e14",
+   "uncertainty": "0.16e14",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| D | 5.79 | 0.070 | 35.14 $\\pm$ 3.21 | $1.73 \\pm 0.16 \\times 10^{14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ column density toward A-C",
+   "value": "3.55e13",
+   "uncertainty": "0.32e13",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| A–C | 5.79 | 0.036 | 7.20 $\\pm$ 0.65 | $3.55 \\pm 0.32 \\times 10^{13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N_CO/N_HCO+ ratio A-C and D",
+   "value": "~500 (A-C), ~1500 (D)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular Absorption",
+     "quote": "The ratio of $N_{CO}/N_{HCO^+}$ is $\\sim$500 towards the A-C component and $\\sim$1500 towards the D component."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mm spectral index",
+   "value": "-1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Millimeter Continuum",
+     "quote": "The average spectral index is $\\alpha = -1.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "5 sigma upper limit on molecular mass",
+   "value": "3.5e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Molecular Emission",
+     "quote": "the 5$\\sigma$ upper limit to the molecular mass is $3.5 \\times 10^{9}$ M$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Phase calibrator and bandpass details beyond names; flagging",
+  "Continuum subtraction / how continuum level in line cubes was determined",
+  "Cell and image size, clean threshold, masking",
+  "Restoring beam sizes of cubes",
+  "Initial guesses and fitting code for Gaussian fits",
+  "Excitation temperature Tx used for column densities",
+  "Rest frequencies of CO and HCO+ used"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "Imaging parameters",
+  "Tx and rest frequencies for column densities"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA project and clear recipe, but many processing and imaging details unstated.",
+ "rediscovery_reason": "Public data, simple spectra, numeric results in tables.",
+ "source_card": "cards/2018ApJ...864...73W/sonnet/card.md"
+}

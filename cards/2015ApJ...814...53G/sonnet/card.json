@@ -1,0 +1,937 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...814...53G",
+  "title": "Cyanide Photochemistry and Nitrogen Fractionation in the MWC 480 Disk",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Guzmán, V. V.",
+  "n_authors": 4,
+  "arxiv_id": "1511.03313",
+  "doi": "10.1088/0004-637X/814/1/53",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00629.S",
+   "2013.1.00226.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we present ALMA observations of CN, HCN, H$^{13}$CN and HC$^{15}$N toward the protoplanetary disk around Herbig Ae star MWC480, and of CN and HCN toward the disk around T Tauri star DM Tau."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "MWC 480",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Both stars are located in the Taurus star forming region at a distance of 140 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "DM Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Both stars are located in the Taurus star forming region at a distance of 140 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Do CN and HCN have different radial abundance profiles in Herbig Ae vs T Tauri disks (photochemistry), and what is the 14N/15N ratio in the MWC 480 disk?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "To address the utility of HCN as a probe of disks, we present ALMA observations of CN, HCN, H$^{13}$CN and HC$^{15}$N toward the protoplanetary disk around Herbig Ae star MWC480"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 7 (CN, HCN); Band 6 (H13CN, HC15N)",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "The Band 7 observations were carried out in October 2012 with 23 antennas."
+     },
+     {
+      "loc": "2.2 H13CN and HC15N",
+      "quote": "In brief, the Band 6 observations were carried out in June 2014 with 33 antennas"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 7: two 468 MHz windows, 122 kHz resolution; Band 6: two 59 MHz windows, 61 kHz spacing",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "Two spectral windows of 468 MHz bandwidth and 122 kHz spectral resolution were centered on the CN and HCN lines."
+     },
+     {
+      "loc": "2.2 H13CN and HC15N",
+      "quote": "Two spectral windows of 59 MHz bandwidth and 61 kHz channel spacing"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CN",
+     "transition": "N=3-2, J=7/2-5/2",
+     "rest_frequency": "340.24777 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CN $N=3-2, J=7/2-5/2$ | 340.24777"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "J=4-3",
+     "rest_frequency": "354.50548 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCN $J=4-3$ | 354.50548"
+      }
+     ]
+    },
+    {
+     "species": "H13CN",
+     "transition": "J=3-2",
+     "rest_frequency": "259.0118 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$\\mathrm{H^{13}CN}$ $J=3-2$ | 259.0118"
+      }
+     ]
+    },
+    {
+     "species": "HC15N",
+     "transition": "J=3-2",
+     "rest_frequency": "258.1571 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$\\mathrm{HC^{15}N}$ $J=3-2$ | 258.1571"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21-384 m (Band 7); 18-650 m (Band 6)",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "the baselines lengths ranged between 21 and 384 m"
+     },
+     {
+      "loc": "2.2 H13CN and HC15N",
+      "quote": "baseline lengths spanning between 18 and 650 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "34 min (Band 7); 24 min (Band 6)",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "The total on-source observing time was 34 min"
+     },
+     {
+      "loc": "2.2 H13CN and HC15N",
+      "quote": "The total on-source observing time was 24 min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "October 2012 (Band 7); June 2014 (Band 6)",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "The Band 7 observations were carried out in October 2012 with 23 antennas."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival; Cycle 0 PI E. Chapillon, Cycle 2 PI K.I. Öberg",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "retrieved from the public archive"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Disk scale height and gas surface density parameters for MWC 480 model",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Scale height | $H_{100}$ | 16 AU"
+       }
+      ]
+     },
+     "citation": "(cite: guilloteau2011)"
+    },
+    {
+     "what": {
+      "value": "Temperature structure T100=23 K, q=0.5",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Temperature | $T_{100}$ | 23 K"
+       }
+      ]
+     },
+     "citation": "(cite: pietu2007)"
+    },
+    {
+     "what": {
+      "value": "HCN collision rates",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "collision rates from (cite: dumouchel2010) for HCN and from (cite: lique2010) for CN"
+       }
+      ]
+     },
+     "citation": "(cite: dumouchel2010)"
+    },
+    {
+     "what": {
+      "value": "CN collision rates",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "collision rates from (cite: dumouchel2010) for HCN and from (cite: lique2010) for CN"
+       }
+      ]
+     },
+     "citation": "(cite: lique2010)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibrated by ALMA staff with standard procedures; further self-calibration in CASA",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "The data were calibrated by the ALMA staff using standard procedures, and retrieved from the public archive."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J01510-180 (Band 7); J0510+1800 (Band 6)",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "J01510-180 was used to derive the absolute flux scale."
+      },
+      {
+       "loc": "2.2 H13CN and HC15N",
+       "quote": "The same quasar was used to derive the absolute flux scale, as no planet was available during the observations."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase and amplitude self-cal on continuum, applied to each spectral window; Band 6 described in Öberg et al. 2015",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "We further self-calibrated the data in phase and amplitude in CASA, taking advantage of the bright continuum emission in both sources."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5 (CN, HCN); robust 1.0 (H13CN, HC15N)",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "with Briggs weighting and a robust parameter of 0.5"
+      },
+      {
+       "loc": "2.2 H13CN and HC15N",
+       "quote": "cleaned in CASA using a robust parameter of 1.0"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Clean mask per channel on line emission",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "A clean mask was created for each channel to select only regions with line emission during the cleaning process."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Subtracted from visibilities using line-free channels",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "The continuum was then subtracted from the visibilities using channels free of line emission to produce the spectral line cubes."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.6 arcsec; see Table 1",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "resulting in an angular resolution of $0.6''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Band 6 phase/amplitude calibration and self-calibration",
+      "evidence": [
+       {
+        "loc": "2.2 H13CN and HC15N",
+        "quote": "A description of the phase and amplitude calibration, as well as the self-calibration, can be found in (cite: oberg2015)."
+       }
+      ]
+     },
+     "from_reference": "(cite: oberg2015)"
+    },
+    {
+     "what": {
+      "value": "Modeling procedure and disk density/temperature structure",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "using the procedure and disk density and temperature structure described in (cite: oberg2015)"
+       }
+      ]
+     },
+     "from_reference": "(cite: oberg2015)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum subtraction",
+    "Self-calibration solution intervals and reference antenna",
+    "CASA version",
+    "Cell size, image size, clean threshold",
+    "Grid step sizes, LIME settings (photons, grid points)",
+    "Vertical abundance structure assumed in the models",
+    "Flux calibrator flux values",
+    "Definition of the Keplerian mask"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate, subtract continuum and image line cubes",
+    "method": {
+     "value": "Self-cal on continuum in CASA, continuum subtraction, CLEAN with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "The images were obtained by deconvolution of the visibilities using the CLEAN algorithm in CASA"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5 (CN, HCN), 1.0 (H13CN, HC15N)",
+      "evidence": [
+       {
+        "loc": "2.2 H13CN and HC15N",
+        "quote": "cleaned in CASA using a robust parameter of 1.0"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radial profiles and half-light radii",
+    "method": {
+     "value": "Azimuthally averaged radial profiles of velocity-integrated maps",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "azimuthally averaged radial profiles of the CN and HCN lines towards MWC 480 and DM Tau"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit abundance profiles with radiative transfer model",
+    "method": {
+     "value": "Power-law abundance X=X0(r/R0)^alpha with outer cut-off Rout, non-LTE LIME models, chi2 fit to visibilities on a grid",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The model fitting was done in the $u-v$ plane by computing $\\chi^2$, the weighted difference between model and observations"
+      }
+     ]
+    },
+    "software": [
+     "LIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "50<Rout/AU<500, -2<alpha<2, 1e-14<X100<1e-9, R0=100 AU",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "outer radius $50<\\ensuremath{R_\\ensuremath{\\mathrm{out}}}/\\mathrm{AU}<500$, power-law indexes $-2<\\alpha<2$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Disk structure from Table 2 (Guilloteau 2011, Pietu 2007); HCN collision rates used for isotopologues",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "For the HCN isotopologues, we use the collisional rates of HCN."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization on grid; errors are 7 sigma",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The best-fit models were obtained by minimizing $\\chi^2$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual maps and disk-integrated spectra with Keplerian mask",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Except for the low-velocity CN channels there are no significant residuals"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive 14N/15N ratio",
+    "method": {
+     "value": "H13CN/HC15N abundance ratio times 12C/13C=70, H13CN as proxy since HCN partially optically thick",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "Assuming an isotopic ratio of $^{12}$C/$^{13}$C$=70$, we derive a disk HCN isotopologue ratio HC$^{14}$N/$\\ensuremath{\\mathrm{HC^{15}N}}=200\\pm110$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Isotopologues co-spatial, optically thin; 30% uncertainty on 12C/13C",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we included a 30% uncertainty in the C isotopic ratio"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Self-calibration, continuum subtraction, CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "We further self-calibrated the data in phase and amplitude in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE radiative transfer for line emission",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The line emission was calculated using the radiative transfer code LIME (cite: brinch2010) assuming non-LTE excitation"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HCN outer cut-off radius, MWC 480",
+    "value": "110",
+    "uncertainty": "±10",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$R_\\ensuremath{\\mathrm{out}}$ \\[AU\\] | $>300$ | $110\\pm 10$"
+     }
+    ]
+   },
+   {
+    "quantity": "CN outer cut-off radius, MWC 480",
+    "value": ">300",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "while the outer-radius of the CN emission is constrained to $>300$ AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Half-light radius HCN / CN, MWC 480",
+    "value": "66 / 102",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The best-fit half-light radius for the HCN and CN emission toward MWC 480 are 66 and 102 AU, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Half-light radius HCN / CN, DM Tau",
+    "value": "151 / 158",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "toward DM Tau the best-fit half-radius for HCN and CN are similar, 151 and 158 AU, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN/HC15N abundance ratio",
+    "value": "2.8",
+    "uncertainty": "±1.4",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "This abundance ratio is 2.8$\\pm$1.4"
+     }
+    ]
+   },
+   {
+    "quantity": "14N/15N ratio, MWC 480",
+    "value": "200",
+    "uncertainty": "±100 (±110 in text)",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find a low disk averaged $\\mathrm{^{14}N/^{15}N}$ ratio of 200$\\pm$100"
+     }
+    ]
+   },
+   {
+    "quantity": "X0 CN / HCN",
+    "value": "8.5e-11 / 5.2e-12",
+    "uncertainty": "±1.5e-11 / ±0.7e-12",
+    "units": "wrt total H at 100 AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$(8.5\\pm 1.5)\\times 10^{-11}$ | $(5.2\\pm 0.7)\\times 10^{-12}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "First detection of HC15N in a disk; CN extends >1 arcsec beyond HCN cut-off in MWC 480 but not in DM Tau.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "including the first detection of HC$^{15}$N in a disk"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CN is more radially extended than HCN in Herbig Ae disk due to HCN photodissociation",
+    "experiment": "Radial profiles and visibility-plane abundance modeling of MWC 480",
+    "result": "Rout HCN 110±10 AU vs CN >300 AU",
+    "finding": "Consistent with efficient HCN photodissociation in outer disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "best-fit outer cut-off radii of $>$300 AU and 110$\\pm$10 AU, respectively"
+     }
+    ]
+   },
+   {
+    "hypothesis": "T Tauri disk shows the same CN/HCN difference",
+    "experiment": "Compare DM Tau profiles",
+    "result": "Half-light radii 151 vs 158 AU",
+    "finding": "Different photochemical structure in T Tauri disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "No such difference in CN and HCN emission profiles are observed toward DM Tau"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Nitrogen fractionation in MWC 480 disk is high",
+    "experiment": "H13CN and HC15N modeling",
+    "result": "14N/15N = 200±100",
+    "finding": "Comparable to comets and cold cores; inheritance and/or efficient fractionation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The presented HCN isotopologue observations in the MWC 480 disk cannot distinguish between these scenarios."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Robust 1.0 chosen to improve SNR of weak isotopologue lines while keeping resolution",
+    "evidence": [
+     {
+      "loc": "2.2 H13CN and HC15N",
+      "quote": "This selection of robustness parameter allowed us to improve the signal-to-noise ratio of the weak $\\mathrm{H^{13}CN}$ and $\\mathrm{HC^{15}N}$ lines"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Absolute abundances highly model dependent owing to unknown vertical abundance profile",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "they are highly model dependent, i.e. they depend strongly on the assumed vertical abundance profile"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Error bars are 7 sigma-based and ad hoc, not a posterior",
+    "Single 12C/13C value assumed",
+    "Second CN hyperfine component not modeled",
+    "Optically thin assumption for H13CN/HC15N untested",
+    "Fixed disk structure from literature"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Band 7 data retrieved from public archive",
+    "evidence": [
+     {
+      "loc": "2.1 CN and HCN",
+      "quote": "retrieved from the public archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Self-calibration parameters",
+    "Line-free channels",
+    "Imaging pixel/size/threshold",
+    "LIME run settings",
+    "Full model details in Öberg et al. 2015"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB",
+   "score_inferred": 5,
+   "score_reason": "Public data and key settings (robust, model grid) given, but self-cal, channel selection and model details are deferred to another paper or omitted.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe relies on unstated self-calibration and the Öberg et al. 2015 modeling procedure."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: oberg2015)",
+     "why": "Calibration, self-calibration and disk model procedure"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: oberg2015)",
+     "why": "Same MWC 480 Band 6 survey data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-35d2c666c33a72702bf9403f4cb48535",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:44",
+  "usage": {
+   "input_tokens": 13188,
+   "output_tokens": 7285,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05022,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00629.S",
+   "2013.1.00226.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 38,
+   "rate": 0.528
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:34:47",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2011.0.00629",
+     "evidence": [
+      {
+       "loc": "2.1 CN and HCN",
+       "quote": "during Cycle 0 (PI: E. Chapillon, proposal 2011.0.00629)"
+      }
+     ]
+    }
+   },
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2013.1.00226",
+     "evidence": [
+      {
+       "loc": "2.2 H13CN and HC15N",
+       "quote": "as part of project 2013.1.00226 (PI: K.I. Öberg)"
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

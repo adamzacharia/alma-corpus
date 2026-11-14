@@ -1,0 +1,220 @@
+{
+ "bibcode": "2020MNRAS.496..364R",
+ "title": "A molecular absorption line survey towards the AGN of Hydra-A",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1474",
+ "arxiv_id": "2005.10252",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "What molecular species and cloud properties are revealed by multi-line molecular absorption against the Hydra-A AGN, and does the absorption vary over two years?",
+ "alma_project_codes": [
+  "2016.1.01214.S",
+  "2018.1.01471.S",
+  "2017.1.00629.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 5, 6",
+  "arrays": "not stated",
+  "angular_resolution": "beams 2.3x1.6, 0.60x0.46, 0.27x0.25, 0.47x0.29, 0.38x0.32 arcsec",
+  "sensitivity": "noise per channel 0.27-1.33 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "X-ray line-of-sight column density N_H = 3.5e22 cm^-2",
+    "evidence": [
+     {
+      "loc": "6.3 continuum size",
+      "quote": "(cite: Russell2013) find a line of sight column density of $N_{H} = 3.5 \\times 10^{22} \\textnormal{cm}^{-2}$ from X-ray observations."
+     }
+    ]
+   },
+   "citation": "(cite: Russell2013)"
+  },
+  {
+   "what": {
+    "value": "2016 CO(2-1) absorption observation used for variability comparison",
+    "evidence": [
+     {
+      "loc": "6.4 Absorption variability",
+      "quote": "CO(2-1) absorption was first detected in Hydra-A in October 2016 (cite: Rose2019a)"
+     }
+    ]
+   },
+   "citation": "(cite: Rose2019a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract absorption spectra",
+   "method": "Channel maps at maximal spectral resolution; spectra extracted from a beam-sized region at the continuum source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Remove CO emission",
+   "method": "Gaussian fit to broad emission with absorption velocities (-50 to +10 km/s) masked",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Multi-Gaussian line fit",
+   "method": "Common 12-Gaussian fit with fixed sigma and vcen across spectra, free non-positive amplitudes",
+   "software": [],
+   "key_parameters": [
+    "initial 10 Gaussians from CO(2-1), HCO+(2-1), HCN(2-1); two added after >5 sigma residuals"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Optical depths",
+   "method": "tau = -ln(1 - Iobs/(fc Icont))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "covering factor 0.7 for G2, 1 for others"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Excitation and kinetic temperatures",
+   "method": "Tex from HCO+ (1-0)/(2-1) integrated tau ratio; Tkin = 10 x I(HCN)/I(HNC)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thin and LTE"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Column densities, sizes, masses",
+   "method": "Optically thin N with optical-depth correction tau/(1-exp(-tau)); Larson sigma-D relation; virial mass M=D sigma^2/2G",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way sigma=D^0.5 relation holds; virial equilibrium"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of absorbing Gaussian components",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Line fitting procedure",
+     "quote": "The minimum number of Gaussians required to provide a good fit for all of the lines is found to be 12."
+    }
+   ]
+  },
+  {
+   "quantity": "Average Tex from HCN",
+   "value": "5.5",
+   "uncertainty": "+2.0/-1.6",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Excitation temperature estimates",
+     "quote": "This gives an excitation temperature of 5.5$^{+ 2.0 }_{- 1.6 }$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Average Tex from HCO+",
+   "value": "5.8",
+   "uncertainty": "+0.7/-0.7",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Excitation temperature estimates",
+     "quote": "5.8$^{+ 0.7 }_{- 0.7}$ K when the same method is applied"
+    }
+   ]
+  },
+  {
+   "quantity": "Average kinetic temperature",
+   "value": "33",
+   "uncertainty": "+9/-8",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinetic temperature estimate",
+     "quote": "which we find to be $33^{+9}_{-8}$K"
+    }
+   ]
+  },
+  {
+   "quantity": "Total virial mass of absorbers",
+   "value": "4e4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.3 continuum size",
+     "quote": "The total mass inferred from the molecular absorption seen in Hydra-A is $4\\times 10 ^{4} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum source diameter",
+   "value": "7 (4 after correction)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.3 continuum size",
+     "quote": "Hydra-A’s central continuum source has an apparent diameter of 7 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Significance of absorption variability",
+   "value": "3.4",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "6.4 Absorption variability",
+     "quote": "has a combined significance of $3.4 \\sigma$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/imaging parameters (weighting, robust, cell, image size, continuum subtraction, line-free channels)",
+  "Continuum RMS used and how continuum level extracted",
+  "Flux calibrators and flux scale uncertainty",
+  "Partition functions, Einstein A values and spectroscopic database used",
+  "How the 2016 and 2018 data were matched in resolution for variability test",
+  "Exact fitting algorithm/software for Gaussian fits"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Fitting code",
+  "Spectroscopic constants source"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear spectral analysis, but imaging settings and fitting details missing.",
+ "rediscovery_reason": "Data public, spectra analysis recipe largely given with numeric tables of tau and N.",
+ "source_card": "cards/2020MNRAS.496..364R/sonnet/card.md"
+}

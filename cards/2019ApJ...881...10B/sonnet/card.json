@@ -1,0 +1,1351 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...881...10B",
+  "title": "A Precision Measurement of the Mass of the Black Hole in NGC 3258 from High-resolution ALMA Observations of Its Circumnuclear Disk",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Boizelle, Benjamin D.",
+  "n_authors": 7,
+  "arxiv_id": "1906.06267",
+  "doi": "10.3847/1538-4357/ab2a0a",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00229.S",
+   "2016.1.00854.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present $\\sim0.10\\ensuremath{''}-$resolution Atacama Large Millimeter/submillimeter Array (ALMA) CO(2$-$1) imaging of the arcsecond-scale ($r \\approx 150$ pc) dusty molecular disk in the giant elliptical galaxy NGC 3258."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 3258",
+     "coordinates": {
+      "value": "10h28m53.550s, -35d36m19.78s (J2000; nuclear continuum centroid)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance modulus $m-M=32.53\\pm 0.27$ mag based on surface brightness fluctuation measurements (cite: ton01), which corresponds to a luminosity distance $D_L=31.9\\pm 3.9$ Mpc."
+       },
+       {
+        "loc": "Table 3",
+        "quote": "nuclear continuum source centroid at 10$^{\\rm h}$28$^{\\rm m}$53.550s, $-$35$^\\circ$36$'$19.78$''$ (J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=0.0092091; D_L=31.9±3.9 Mpc; 1'' = 151.8 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance modulus $m-M=32.53\\pm 0.27$ mag based on surface brightness fluctuation measurements (cite: ton01), which corresponds to a luminosity distance $D_L=31.9\\pm 3.9$ Mpc."
+       },
+       {
+        "loc": "Table 3",
+        "quote": "nuclear continuum source centroid at 10$^{\\rm h}$28$^{\\rm m}$53.550s, $-$35$^\\circ$36$'$19.78$''$ (J2000)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "surface brightness fluctuations (Tonry et al. 2001)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance modulus $m-M=32.53\\pm 0.27$ mag based on surface brightness fluctuation measurements (cite: ton01), which corresponds to a luminosity distance $D_L=31.9\\pm 3.9$ Mpc."
+       },
+       {
+        "loc": "Table 3",
+        "quote": "nuclear continuum source centroid at 10$^{\\rm h}$28$^{\\rm m}$53.550s, $-$35$^\\circ$36$'$19.78$''$ (J2000)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the mass of the supermassive black hole in NGC 3258, measured to high precision by fitting gas-dynamical models to high-resolution ALMA CO(2-1) kinematics, and how do dust extinction, disk warping and distance affect it?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "A factor of four improvement in angular resolution compared with the earlier Cycle 2 data fully resolves gas rotation within $r_\\mathrm{g}$ and enables measurement of the BH mass to an unprecedented level of precision for a giant elliptical galaxy."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00854.S",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "The new Cycle 4 data were obtained in ALMA Program 2016.1.00854.S during 7-8 August 2017 in the C40-7 configuration"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00229.S",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "over the Cycle 2 observations of this target from Program 2013.1.00229.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Three ~2 GHz spectral windows: one on redshifted 12CO(2-1), two continuum at 228.4 and 243.0 GHz; line channels 3.91 MHz, continuum 15.6 MHz",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "Observations consisted of a single pointing with three $\\sim$2 GHz$-$bandwidth spectral windows, one of which was centered on the redshifted $^{12}$CO(2$-$1) 230.538 GHz line"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "centered on the redshifted $^{12}$CO(2$-$1) 230.538 GHz line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "C40-7 configuration (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "during 7-8 August 2017 in the C40-7 configuration, which had baselines ranging from 21 to 3696 m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "21 to 3696 m",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "which had baselines ranging from 21 to 3696 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Cycle 4 alone 0.11''x0.08'' PA=88; combined line cube 0.12''x0.09'' PA=89 deg",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "Briggs ($r=0.5$) weighting produced a line cube with $\\theta_\\mathrm{FWHM}=0.12\\ensuremath{''}\\times0.09\\ensuremath{''}$ at PA=89$^\\circ$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~1.2'' (Cycle 4 alone)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "results in a $\\sim$1.2$''$ maximum recoverable scale"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "line cube ~0.23 mJy/beam in ~10.2 km/s channels; continuum rms 9.8 uJy/beam (combined)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "with $\\sim$0.23 mJy beam$^{-1}$ sensitivities in $\\sim$10.2 km s$^{-1}$ channels at the 0.015$''$ pixel$^{-1}$ scale"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "135 minutes (three execution blocks)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "for a total on-source integration time of 135 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "7-8 August 2017 (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data processing",
+      "quote": "during 7-8 August 2017 in the C40-7 configuration"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST WFC3/IR",
+     "provided": {
+      "value": "F110W and F160W NIR images for the stellar luminosity profile (MGE)",
+      "evidence": [
+       {
+        "loc": "2.1 HST Imaging",
+        "quote": "as part of program GO-14920 with $HST$ WFC3 through the IR channel using the F110W and F160W ($J$ and $H$) filters"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST ACS/WFC",
+     "provided": {
+      "value": "Archival F435W and F814W images for the dust disk B-I color map",
+      "evidence": [
+       {
+        "loc": "2.1 HST Imaging",
+        "quote": "we retrieved ACS/WFC F435W and F814W ($B$ and $I$) images of NGC 3258 from the $HST$ archive"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Carnegie-Irvine Galaxy Survey",
+     "provided": {
+      "value": "Ground-based V-band image for the galaxy outskirts",
+      "evidence": [
+       {
+        "loc": "2.2 CGS Imaging",
+        "quote": "We used ground-based optical data from CGS to complement the $HST$ images."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Distance modulus 32.53±0.27 mag (SBF)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance modulus $m-M=32.53\\pm 0.27$ mag based on surface brightness fluctuation measurements (cite: ton01)"
+       }
+      ]
+     },
+     "citation": "(cite: ton01)"
+    },
+    {
+     "what": {
+      "value": "Stellar velocity dispersion 260±10 km/s and M_K=-24.33±0.45",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "bulge stellar velocity dispersion of $\\sigma_\\star=260\\pm10$ km s$^{-1}$ and $K$-band absolute magnitude of $M_K=-24.33\\pm0.45$ mag (cite: mak14)"
+       }
+      ]
+     },
+     "citation": "(cite: mak14)"
+    },
+    {
+     "what": {
+      "value": "Galactic reddening A_H=0.041 mag",
+      "evidence": [
+       {
+        "loc": "2.3 Stellar Luminosity Profile",
+        "quote": "We corrected for foreground Galactic reddening of $A_H=0.041$ mag (cite: sch11)"
+       }
+      ]
+     },
+     "citation": "(cite: sch11)"
+    },
+    {
+     "what": {
+      "value": "Cycle 2 ALMA data of NGC 3258 (Program 2013.1.00229.S) and its CO flux 23.89±2.39 Jy km/s",
+      "evidence": [
+       {
+        "loc": "3.2 Emission Line Properties",
+        "quote": "is slightly higher than the Cycle 2 value of $23.89\\pm2.39$ Jy km s$^{-1}$ reported in ."
+       }
+      ]
+     },
+     "citation": "Cycle 2 paper (citation key missing in text)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Flagged and calibrated with the CASA pipeline",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "we flagged and calibrated the Cycle 4 visibilities using version 4.7.2 of the `Common Astronomy Software Applications (CASA)` pipeline"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "using version 4.7.2 of the `Common Astronomy Software Applications (CASA)` pipeline"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "quasars J1037-2934 and J1107-4449",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "The data were flux calibrated using ALMA quasar standards J1037$-$2934 and J1107$-$4449"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "which have absolute flux calibration accuracies of $\\sim$10% (cite: fom14)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA TCLEAN",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "`CASA` `TCLEAN` deconvolution with Briggs (cite: bri95) weighting results in a synthesized beam"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale deconvolution on combined Cycle 2+4",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "We therefore simultaneously imaged together the Cycle 2 and 4 visibilities using a multiscale deconvolution."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs r=0.5 for the line cube; natural for continuum (Cycle 2+4)",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "Briggs ($r=0.5$) weighting produced a line cube with $\\theta_\\mathrm{FWHM}=0.12\\ensuremath{''}\\times0.09\\ensuremath{''}$"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.015'' per pixel",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "at the 0.015$''$ pixel$^{-1}$ scale"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane continuum subtraction",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "After $uv$-plane continuum subtraction, we imaged the primary spectral window into a line cube"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Cycle 2 and Cycle 4 visibilities imaged together",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "We therefore simultaneously imaged together the Cycle 2 and 4 visibilities using a multiscale deconvolution."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.12''x0.09'' PA=89 deg (line cube); geometric mean ~0.10''",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "Briggs ($r=0.5$) weighting produced a line cube with $\\theta_\\mathrm{FWHM}=0.12\\ensuremath{''}\\times0.09\\ensuremath{''}$ at PA=89$^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~0.23 mJy/beam per ~10.2 km/s channel",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "with $\\sim$0.23 mJy beam$^{-1}$ sensitivities in $\\sim$10.2 km s$^{-1}$ channels"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cycle 2 data description, reduction and CO-to-H2 conversion assumptions (alpha_CO) taken from the earlier Cycle 2 paper",
+      "evidence": [
+       {
+        "loc": "3.2 Emission Line Properties",
+        "quote": "Making the same assumptions about the CO-to-H$_2$ conversion factor $\\alpha_{\\rm CO}$ as in , the CO flux measured from the Cycle 4 data implies a total H$_2$+He mass"
+       }
+      ]
+     },
+     "from_reference": "earlier Cycle 2 NGC 3258 paper (citation key missing in text)"
+    },
+    {
+     "what": {
+      "value": "Flat-disk forward-modeling method of CO data cubes, described in detail in Barth et al. 2016b",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "(cite: bar16b) present a detailed description of the method, which we summarize here."
+       }
+      ]
+     },
+     "from_reference": "(cite: bar16b)"
+    },
+    {
+     "what": {
+      "value": "Embedded-screen dust extinction model",
+      "evidence": [
+       {
+        "loc": "2.4 Disk Extinction Modeling",
+        "quote": "we employed a simple embedded-screen model following the method described by (cite: via17)"
+       }
+      ]
+     },
+     "from_reference": "(cite: via17)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Clean thresholds, mask definitions and multiscale scales for tclean",
+    "Line-free channel selection for uv continuum subtraction",
+    "Whether archival calibrated products or a re-run of the pipeline was used for Cycle 2 data",
+    "Details of the Cycle 2 data processing (in the earlier paper)",
+    "Specifics of the fitting code (custom; not released) and starting guesses for the simplex",
+    "Ring-radius and v_ext initialization details",
+    "Source of the Cycle 2+4 relative weighting/flux scaling in the combined imaging"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure stellar luminosity profile and mass model",
+    "method": {
+     "value": "Surface brightness of HST H-band and CGS V-band fit with 14-component MGE, deprojected assuming oblate shape; circular velocity v_c* computed with Upsilon_H=1 then scaled",
+     "evidence": [
+      {
+       "loc": "2.3 Stellar Luminosity Profile",
+       "quote": "The final MGE model of the galaxy consists of 14 concentric elliptical Gaussians, for which the best-fit parameters are provided in Table [1]"
+      }
+     ]
+    },
+    "software": [
+     "MGE (Cappellari 2002)",
+     "Tiny Tim",
+     "AstroDrizzle"
+    ],
+    "key_parameters": [
+     {
+      "value": "flattening q' > 0.72; common center and PA 77 deg",
+      "evidence": [
+       {
+        "loc": "2.3 Stellar Luminosity Profile",
+        "quote": "constrained the observed flattening (the ratio between the projected major and minor axis of the 2D Gaussian, $q^\\prime$) to be $>0.72$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "oblate axisymmetric galaxy inclined at i~48 deg, no dark matter halo",
+      "evidence": [
+       {
+        "loc": "2.3 Stellar Luminosity Profile",
+        "quote": "We do not include contributions from a dark matter halo, as these are negligible within the central few kpc of the galaxy (cite: bru04)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "MGE compared to data along major axis (Figure 2)",
+     "evidence": [
+      {
+       "loc": "2.3 Stellar Luminosity Profile",
+       "quote": "This MGE is a good description of the $H$-band surface brightness measurements"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Model dust extinction and create dust-corrected mass profiles",
+    "method": {
+     "value": "Embedded thin-disk screen model predicts B-I and J-H color excess vs A_V; central H-band profile corrected by modifying Nuker gamma to 0.09, 0.17, 0.26 (A_H=0.31, 0.75, 1.50) with GALFIT, then re-fit with MGE",
+     "evidence": [
+      {
+       "loc": "2.4 Disk Extinction Modeling",
+       "quote": "we adjusted $\\gamma$ to 0.09, 0.17, and 0.26 to approximately correct for absorption of ¼, ½, and ¾ of the integrated stellar light originating *behind* the disk"
+      }
+     ]
+    },
+    "software": [
+     "GALFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "R_V=3.1 extinction law, w->0 thin disk, i=48 deg",
+      "evidence": [
+       {
+        "loc": "2.4 Disk Extinction Modeling",
+        "quote": "We used the same $R_V=3.1$ extinction law to characterize $A_\\lambda$, and for simplicity assumed a very thin ($w\\rightarrow0$) disk."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "no straightforward extinction correction; three fiducial A_H values bracket the likely range",
+      "evidence": [
+       {
+        "loc": "2.4 Disk Extinction Modeling",
+        "quote": "adjusting the central $H$-band surface brightness profile to correct for three fiducial values of disk extinction that bracket the likely range"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "PSF-convolved 2D Nuker function fit to central R<~10''",
+     "evidence": [
+      {
+       "loc": "2.4 Disk Extinction Modeling",
+       "quote": "we fit the central $R \\lesssim 10\\ensuremath{''}$ of the mosaic with a PSF-convolved 2D Nuker function (cite: pen02)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "model color excess maxima agree with observed B-I and J-H maps",
+     "evidence": [
+      {
+       "loc": "2.4 Disk Extinction Modeling",
+       "quote": "this simple model predicts maximum color excess values that are in very close agreement with both the $B-I$ and $J-H$ color maps of NGC 3258"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image ALMA CO cube and characterize emission",
+    "method": {
+     "value": "tclean of Cycle 2+4 data into CO cube; Gauss-Hermite moment maps, PVD, and kinemetry of the velocity field",
+     "evidence": [
+      {
+       "loc": "3.2 Emission Line Properties",
+       "quote": "we decomposed the $v_{\\rm LOS}$ map using kinemetry (cite: kra06) to measure the kinematic PA $\\Gamma_k$ and axis ratio $q_k$"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "kinemetry"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs r=0.5, 10.2 km/s channels, 0.015'' pixels",
+      "evidence": [
+       {
+        "loc": "3.1 Observations and data processing",
+        "quote": "Briggs ($r=0.5$) weighting produced a line cube with $\\theta_\\mathrm{FWHM}=0.12\\ensuremath{''}\\times0.09\\ensuremath{''}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit flat-disk gas-dynamical models to the data cube",
+    "method": {
+     "value": "Forward model of thin flat disk in BH + extended mass potential, Gaussian line profiles, beam convolution on oversampled grid (s=4), chi^2 fit to the cube over block-averaged 5x5 pixel cells within r_fit=1''",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "Models are optimized by $\\chi^2$ minimization using a downhill simplex minimization method (cite: pre92) by fitting the calculated cubes directly to the ALMA data cube."
+      }
+     ]
+    },
+    "software": [
+     "IRAF STSDAS LUCY",
+     "custom modeling code"
+    ],
+    "key_parameters": [
+     {
+      "value": "CO surface brightness map from 10 iterations of Richardson-Lucy deconvolution",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "applied ten iterations of the IRAF STSDAS Richardson-Lucy deconvolution (cite: ric72; luc74) task `LUCY` using the elliptical Gaussian synthesized beam."
+       }
+      ]
+     },
+     {
+      "value": "fit region 415 spatial pixels x 94 channels = 39010 data points; spectral range 2310-3273 km/s",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "The block-averaged fitting region used to compute $\\chi^2$ contains 415 spatial pixels and 94 frequency channels, for a total of 39010 data points."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "spatially uniform M/L; gas disk mass not included; thin, cold disk with no asymmetric drift",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "We assume a spatially uniform $M/L$ ratio in our model calculations."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi^2 downhill simplex; at least nine free parameters (M_BH, Upsilon_H, x_c, y_c, i, Gamma, v_sys, sigma_turb, f_0); uniform or Gaussian radial sigma_turb",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "These basic models employ at least nine free parameters: the black hole mass $M_\\mathrm{BH}$, the stellar $H$-band $M/L$ ratio $\\Upsilon_H$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "oversampling factor tests (stable for s>=4); comparison with Cycle 2 fits",
+     "evidence": [
+      {
+       "loc": "4.1.2 Flat disk model results",
+       "quote": "we find that the best-fitting BH mass converges to stable values for $s\\geq 4$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Tilted-ring model with kinematic host mass profile (final model F1)",
+    "method": {
+     "value": "Ten-ring tilted-ring disk (Gamma, q per ring, cubic spline) plus ten free v_ext values replacing the MGE mass model; 39 free parameters",
+     "evidence": [
+      {
+       "loc": "4.2.2 Host galaxy mass profile from CO kinematics",
+       "quote": "The ten free $v_\\mathrm{ext}$ parameters were optimized simultaneously with the tilted-ring angular parameters and the other disk parameters, for a total of 39 free parameters in the final model."
+      }
+     ]
+    },
+    "software": [
+     "custom modeling code"
+    ],
+    "key_parameters": [
+     {
+      "value": "v_ext increasing with radius and v_ext=0 at r=0",
+      "evidence": [
+       {
+        "loc": "4.2.2 Host galaxy mass profile from CO kinematics",
+        "quote": "The only constraints we applied to the circular velocity model is that $\\ensuremath{v_\\mathrm{ext}}(r)$ was required to be an increasing function of radius and that $\\ensuremath{v_\\mathrm{ext}}=0$ at $r=0$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "chi^2 simplex minimization",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "Models are optimized by $\\chi^2$ minimization using a downhill simplex minimization method (cite: pre92) by fitting the calculated cubes directly to the ALMA data cube."
+      }
+     ]
+    },
+    "validation": {
+     "value": "lowest chi^2_nu (1.179) of all models; residual maps",
+     "evidence": [
+      {
+       "loc": "4.3 Detailed modeling results",
+       "quote": "Model F1 attains the lowest $\\chi^2_\\nu$ value of any of our trial models, and we consider it to be our final preferred model for the NGC 3258 disk."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Statistical uncertainty via Monte Carlo",
+    "method": {
+     "value": "100 Monte Carlo realizations of best-fit model cube with noise slices from line-free channels, refit each; standard deviation as 1 sigma",
+     "evidence": [
+      {
+       "loc": "4.4 Monte Carlo error analysis",
+       "quote": "we carried out 100 Monte Carlo realizations of the best-fit model F1 cube."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "~100 line-free channels with |v_LOS - v_sys|>500 km/s used as noise",
+      "evidence": [
+       {
+        "loc": "4.4 Monte Carlo error analysis",
+        "quote": "We extracted nearly 100 line-free channels from the data cube where $|\\ensuremath{v_\\mathrm{LOS}}-\\ensuremath{v_\\mathrm{sys}}|>500$ km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared with Delta chi^2 bounds",
+     "evidence": [
+      {
+       "loc": "4.4 Monte Carlo error analysis",
+       "quote": "While somewhat broader than the $\\chi^2$ bounds, the distribution of $M_\\mathrm{BH}$ values remains very narrow."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Systematic error budget tests",
+    "method": {
+     "value": "Vary oversampling, block averaging, number of rings, fitting region, central CO hole, radial flow, turbulent pressure, distance (+-1 sigma), peculiar velocity; combine positive and negative terms in quadrature",
+     "evidence": [
+      {
+       "loc": "4.5 Additional tests and error budget",
+       "quote": "we separately combined in quadrature the positive and negative $\\Delta \\ensuremath{M_\\mathrm{BH}}$ contributions listed above"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "distance D_L=35.8 and 28.0 Mpc for +-1 sigma",
+      "evidence": [
+       {
+        "loc": "4.5 Additional tests and error budget",
+        "quote": "(i.e., $D_L=35.8$ and 28.0 Mpc, corresponding to angular scales of 170 and 133 pc arcsec$^{-1}$, respectively)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "M_BH proportional to adopted angular size distance",
+      "evidence": [
+       {
+        "loc": "4.5 Additional tests and error budget",
+        "quote": "the inferred BH mass should in principle be directly proportional to the assumed angular size distance"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "each test refit with all free parameters",
+     "evidence": [
+      {
+       "loc": "4.5 Additional tests and error budget",
+       "quote": "After optimizing over all free parameters, we obtain best-fit BH masses that are $\\Delta \\ensuremath{M_\\mathrm{BH}}= \\pm 2.7\\times10^8$ $M_\\odot$ (or about 12%)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "pipeline calibration and TCLEAN imaging",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data processing",
+       "quote": "using version 4.7.2 of the `Common Astronomy Software Applications (CASA)` pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CALWF3",
+    "version": "not stated",
+    "used_for": {
+     "value": "HST WFC3 reduction",
+     "evidence": [
+      {
+       "loc": "2.1 HST Imaging",
+       "quote": "We processed the data through the `CALWF3` pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AstroDrizzle",
+    "version": "not stated",
+    "used_for": {
+     "value": "drizzling HST WFC3 images",
+     "evidence": [
+      {
+       "loc": "2.1 HST Imaging",
+       "quote": "used `AstroDrizzle` (cite: gon12) to produce cleaned, distortion-corrected images"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CALACS",
+    "version": "not stated",
+    "used_for": {
+     "value": "HST ACS reduction",
+     "evidence": [
+      {
+       "loc": "2.1 HST Imaging",
+       "quote": "We processed the raw ACS data using the `CALACS` pipeline"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Tiny Tim",
+    "version": "not stated",
+    "used_for": {
+     "value": "HST PSF model for MGE fitting",
+     "evidence": [
+      {
+       "loc": "2.3 Stellar Luminosity Profile",
+       "quote": "we generated a Tiny Tim (cite: kri04) PSF, which was dithered and drizzled identically to the $H$-band mosaic of the galaxy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "dust-corrected inner H-band models (Nuker fits)",
+     "evidence": [
+      {
+       "loc": "2.4 Disk Extinction Modeling",
+       "quote": "we created a new model image by seamlessly replacing the dust-obscured region (out to $R=1.5\\ensuremath{''}$) with the associated `GALFIT` product"
+      }
+     ]
+    }
+   },
+   {
+    "name": "IRAF STSDAS LUCY",
+    "version": "not stated",
+    "used_for": {
+     "value": "Richardson-Lucy deconvolution of CO flux map",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "applied ten iterations of the IRAF STSDAS Richardson-Lucy deconvolution (cite: ric72; luc74) task `LUCY`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "kinemetry",
+    "version": "not stated",
+    "used_for": {
+     "value": "decompose velocity map into circular and non-circular components",
+     "evidence": [
+      {
+       "loc": "3.2 Emission Line Properties",
+       "quote": "we decomposed the $v_{\\rm LOS}$ map using kinemetry (cite: kra06)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Black hole mass (model F1)",
+    "value": "2.249e9",
+    "uncertainty": "stat 0.004e9; mod +0.007/-0.004e9; dist ±0.270e9",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Additional tests and error budget",
+      "quote": "$(\\ensuremath{M_\\mathrm{BH}}/10^9\\,\\ensuremath{M_\\odot})=2.249\\pm0.004$ (stat) $^{+0.007}_{-0.004}$ (mod) $\\pm0.270$ (dist)"
+     }
+    ]
+   },
+   {
+    "quantity": "Statistical uncertainty on M_BH (Monte Carlo)",
+    "value": "3.8e6 (~0.17%)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 Monte Carlo error analysis",
+      "quote": "We adopt the standard deviation $3.8\\times10^6$ $M_\\odot$ (corresponding to $\\sim$0.17% of the BH mass) of these Monte Carlo results"
+     }
+    ]
+   },
+   {
+    "quantity": "M_BH range across dust-corrected MGE flat-disk models D1-D4",
+    "value": "(2.059-2.276)e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2 Flat disk model results",
+      "quote": "The parameters for their best-fit model cubes converge to a range of values $\\ensuremath{M_\\mathrm{BH}}=(2.059-2.276)\\times10^9$ $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Tilted-ring model E1 M_BH",
+    "value": "2.203e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Detailed modeling results",
+      "quote": "The optimized model converges to $\\ensuremath{M_\\mathrm{BH}}=2.203\\times10^9$ $M_\\odot$ and $\\ensuremath{\\Upsilon_H}=2.18$ $M_\\odot$/$L_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Reduced chi^2 of model F1",
+    "value": "1.179",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Detailed modeling results",
+      "quote": "the best fit achieves $\\ensuremath{\\chi^2}=45956.4$ over $\\ensuremath{N_\\mathrm{dof}}=38971$ for $\\ensuremath{\\chi^2_\\nu}=1.179$"
+     }
+    ]
+   },
+   {
+    "quantity": "BH sphere of influence radius (model F1)",
+    "value": "143 pc (0.94'')",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Detailed modeling results",
+      "quote": "the BH radius of influence (defined as the radius within which the enclosed stellar mass is equal to $M_\\mathrm{BH}$) is $\\ensuremath{r_\\mathrm{g}}= 143$ pc, or 0.94$''$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total CO(2-1) line flux",
+    "value": "27.40",
+    "uncertainty": "±0.15 (stat) ±2.74 (sys)",
+    "units": "Jy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Emission Line Properties",
+      "quote": "$S_{\\rm CO(2-1)}\\Delta v=27.40\\pm0.15\\pm2.74$ Jy km s$^{-1}$ (statistical and systematic uncertainties, respectively)"
+     }
+    ]
+   },
+   {
+    "quantity": "Molecular gas mass (H2+He)",
+    "value": "1.0e8",
+    "uncertainty": "±0.3e8",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Emission Line Properties",
+      "quote": "$M_{\\rm gas}=(1.0\\pm0.3)\\times10^8$ $M_\\odot$ for the gas disk"
+     }
+    ]
+   },
+   {
+    "quantity": "Relative resolution of r_g, xi",
+    "value": "17",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.2 The impact of angular resolution",
+      "quote": "achieving $\\xi\\approx 17$ (see Figure [22]) with CO(2$-$1) emission detected down to $\\sim0.14\\ensuremath{r_\\mathrm{g}}$ from the disk center"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean sigma_turb/v_c",
+    "value": "0.030",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.5 Additional tests and error budget",
+      "quote": "a mean value $\\langle\\ensuremath{\\sigma_\\mathrm{turb}}/v_\\mathrm{c}\\rangle = 0.030$ averaged over the disk surface"
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted M_BH from M-sigma relation",
+    "value": "0.62",
+    "uncertainty": "+0.43/-0.23 (x1e9)",
+    "units": "1e9 Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.1 BH Mass",
+      "quote": "predict ($\\ensuremath{M_\\mathrm{BH}}/10^9$ $M_\\odot$) values of $(0.62^{+0.43}_{-0.23})$ and $(1.00^{+0.18}_{-0.16})$, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO emission shows quasi-Keplerian rotation to within ~20 pc of the nucleus ending in a central hole of radius ~0.13''",
+    "evidence": [
+     {
+      "loc": "3.2 Emission Line Properties",
+      "quote": "We identify a central hole in CO surface brightness with a radius of $\\sim 0.13\\ensuremath{''}$ that corresponds to the innermost emission detected in the PVD."
+     }
+    ]
+   },
+   {
+    "value": "The disk is mildly warped, modeled with a tilted-ring giving ~3% higher M_BH than the flat disk",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "The $\\sim$3% difference between flat and warped disk model BH mass measurements is large relative to the other sub-percent level modeling systematics."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can ALMA CO kinematics yield a very precise M_BH for NGC 3258 without relying on optical/NIR stellar mass profile?",
+    "experiment": "Tilted-ring model with free v_ext(r) fit directly to the 0.1'' CO(2-1) cube",
+    "result": "M_BH=2.249e9 Msun, 0.18% statistical and 0.62% model systematic uncertainty",
+    "finding": "A highly precise BH mass is achievable independent of dust extinction in the host mass profile",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The best model fit yields $\\ensuremath{M_\\mathrm{BH}}= 2.249\\times10^9$ $M_\\odot$ with a statistical model-fitting uncertainty of just 0.18%"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does dust extinction in the MGE mass model limit M_BH precision?",
+    "experiment": "Flat-disk fits with four extinction-corrected mass profiles",
+    "result": "M_BH spans ~10% range across extinction cases",
+    "finding": "Dust extinction produces systematics far larger than statistical error, removable using v_ext",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.2 Flat disk model results",
+      "quote": "This range is representative of the systematic uncertainty introduced by dust extinction."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the improved angular resolution improve M_BH precision relative to Cycle 2?",
+    "experiment": "Same flat-disk models fit to Cycle 2 and Cycle 4 cubes",
+    "result": "M_BH agree within a few percent; statistical uncertainty smaller by ~2 in Cycle 4",
+    "finding": "Higher resolution gives only a modest precision gain for fixed mass model but enables detailed models",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.3 Cycle 2 Comparison",
+      "quote": "results in a relatively modest improvement in precision on $M_\\mathrm{BH}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the M_BH error budget dominated by distance?",
+    "experiment": "Refit with distance shifted by ±1 sigma and alternative distances",
+    "result": "±12% for adopted SBF distance; plausible range (2.0-3.8)e9 Msun",
+    "finding": "Distance uncertainty dominates the total error budget",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5 Additional tests and error budget",
+      "quote": "the galaxy distance uncertainty dominates the total $M_\\mathrm{BH}$ error budget"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Cycle 2 data showed a rapid central rise in velocity, making NGC 3258 a promising target for high-resolution imaging",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "These attributes made NGC 3258 a promising target for high-resolution ALMA imaging in order to determine its BH mass to high precision."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Fit cube directly to use all information; v_ext method avoids dust-extinction uncertainty in stellar mass profile",
+    "evidence": [
+     {
+      "loc": "4.2.2 Host galaxy mass profile from CO kinematics",
+      "quote": "This is the only method that can potentially reduce the systematic uncertainties to the percent level (or better) for such dusty disks"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Delta chi^2 contours not used for error budget because correlated noise makes them underestimate; Monte Carlo used instead",
+     "evidence": [
+      {
+       "loc": "4.1.2 Flat disk model results",
+       "quote": "Thus, we do not use the $\\Delta \\ensuremath{\\chi^2}$ curves when determining the error budget on $M_\\mathrm{BH}$"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model not a formally acceptable fit (chi^2_nu=1.179); correlated noise; local irregularities in velocity/dispersion fields",
+     "evidence": [
+      {
+       "loc": "4.4 Monte Carlo error analysis",
+       "quote": "the final $\\ensuremath{\\chi^2_\\nu}= 1.179$ for model F1 indicates that the model is not formally an acceptable fit to the data"
+      }
+     ]
+    },
+    {
+     "value": "Distance disagreements among estimates imply M_BH may lie in (2.0-3.8)e9 Msun",
+     "evidence": [
+      {
+       "loc": "4.5 Additional tests and error budget",
+       "quote": "the $M_\\mathrm{BH}$ may plausibly lie in the range $(2.0-3.8)\\times 10^9$ $M_\\odot$ based on these other distance estimates"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Thin, cold disk assumption with correction for turbulent pressure only estimated, not modeled",
+    "Fit code is custom and not released, so exact reproduction is hard",
+    "Receding/approaching asymmetry (sub-Keplerian west side) not modeled",
+    "Block averaging only approximately handles correlated noise; quoted precision may be optimistic",
+    "v_ext freedom and 39 parameters could absorb unmodeled structure"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data cited by ALMA project code, acknowledged as ADS/JAO.ALMA data",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00229.S and ADS/JAO.ALMA#2016.1.00854.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Modeling code (custom, not released)",
+    "Exact tclean parameters (masks, thresholds, multiscale scales)",
+    "Cycle 2 reduction details and alpha_CO from earlier paper"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for two ALMA MSs (Cycle 2 + Cycle 4); cubes a few GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clearly described modeling method, but the fitting code is not released and imaging details are incomplete.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The recipe depends on a custom unreleased forward-modeling code and incomplete imaging parameters, although data are public and results numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: bar16b)",
+     "why": "Detailed description of the flat-disk cube-fitting method"
+    },
+    {
+     "citation": "(cite: via17)",
+     "why": "Embedded-screen dust extinction model"
+    },
+    {
+     "citation": "(cite: cap02)",
+     "why": "MGE fitting method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Cycle 2 NGC 3258 paper (key missing in text)",
+     "why": "Earlier 0.44'' ALMA CO(2-1) observations of NGC 3258"
+    },
+    {
+     "citation": "(cite: bar16a)",
+     "why": "Previous ALMA BH mass measurement for NGC 1332 using the same method"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Carnegie-Irvine Galaxy Survey",
+    "HST program GO-14920",
+    "HST program GO-9427"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-85baf20117ec10b12a16969642b26f4e",
+  "batch_id": "msgbatch_01MY66sGvKajpLU4bUBXRVRf",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:58:16",
+  "usage": {
+   "input_tokens": 60384,
+   "output_tokens": 14584,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.13391,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 100,
+  "quotes_ok": 100,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 99,
+   "stated": 78,
+   "rate": 0.788
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:04",
+  "custom_id": "repair-sonnet-d0873dc42b95051f5a25be818af5d88f",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "Models are optimized by $\\chi^2$ minimization using a downhill simplex minimization method (cite: pre92) by fitting the calculated cubes directly to the ALMA data cube."
+   },
+   {
+    "path": "analysis_steps[6].validation.evidence[0]",
+    "old": null,
+    "new": "After optimizing over all free parameters, we obtain best-fit BH masses that are $\\Delta \\ensuremath{M_\\mathrm{BH}}= \\pm 2.7\\times10^8$ $M_\\odot$ (or about 12%)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

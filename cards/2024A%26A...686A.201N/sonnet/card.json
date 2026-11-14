@@ -1,0 +1,1268 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024A&A...686A.201N",
+  "title": "ALMA view of the L1448-mm protostellar system on disk scales: CH<SUB>3</SUB>OH and H<SUP>13</SUP>CN as new disk wind tracers",
+  "year": 2024,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Nazari, P.",
+  "n_authors": 10,
+  "arxiv_id": "2402.18631",
+  "doi": "10.1051/0004-6361/202348676",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.01578.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "1 Introduction",
+    "quote": "In this paper we present high angular resolution ($\\sim 0.1\\ensuremath{''} = 30$ au) and high sensitivity ALMA observations to characterize the disk of the emblematic L1448-mm protostellar system"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "L1448-mm (L1448-C, Per-emb 26)",
+     "coordinates": {
+      "value": "03h25m38.879s, +30d44m05.210s (J2000, continuum peak)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "L1448-mm (also known as L1448-C and Per-emb 26) is a well-known Class 0 source located in the Perseus star-forming region ($d \\simeq {\\sim}300$ pc; (cite: Ortiz2018))"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "centered on the continuum peak ($\\alpha_{2000}$ = $03^{\\rm h}25^{\\rm m}38.879^{\\rm s}$, $\\delta_{2000}$ =$+30^{\\circ}44\\ensuremath{'}05.210\\ensuremath{''}$)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~300 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "L1448-mm (also known as L1448-C and Per-emb 26) is a well-known Class 0 source located in the Perseus star-forming region ($d \\simeq {\\sim}300$ pc; (cite: Ortiz2018))"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "centered on the continuum peak ($\\alpha_{2000}$ = $03^{\\rm h}25^{\\rm m}38.879^{\\rm s}$, $\\delta_{2000}$ =$+30^{\\circ}44\\ensuremath{'}05.210\\ensuremath{''}$)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Ortiz-León et al. 2018",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "L1448-mm (also known as L1448-C and Per-emb 26) is a well-known Class 0 source located in the Perseus star-forming region ($d \\simeq {\\sim}300$ pc; (cite: Ortiz2018))"
+       },
+       {
+        "loc": "2 Observations",
+        "quote": "centered on the continuum peak ($\\alpha_{2000}$ = $03^{\\rm h}25^{\\rm m}38.879^{\\rm s}$, $\\delta_{2000}$ =$+30^{\\circ}44\\ensuremath{'}05.210\\ensuremath{''}$)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Does the Class 0 protostar L1448-mm drive an MHD disk wind, traced by rotating CH3OH and H13CN at the base of the outflow, and can the wind carry enough angular momentum to drive disk accretion?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this work we present high angular resolution (${\\sim}30$ au) ALMA observations of the emblematic L1448-mm protostellar system and find suggestive evidence for an MHD disk wind."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.01578.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "(PI: B. Tabone; project ID: 2021.1.01578.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "L1448-mm was observed in Band 7 with the ALMA 12-m array during Cycle 8"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "nine spectral windows, ~333.786 to ~347.557 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "include nine spectral windows with frequencies ranging from ${\\sim}333.786$ GHz to ${\\sim}347.557$ GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "2_2,1 - 3_1,2",
+     "rest_frequency": "335.13357 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CH$_3$OH ($2_{2,1}-3_{1,2}$) | 335.13357"
+      }
+     ]
+    },
+    {
+     "species": "H13CN",
+     "transition": "4-3",
+     "rest_frequency": "345.33977 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "H$^{13}$CN (4-3) | 345.33977"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "8_9-7_8",
+     "rest_frequency": "346.52848 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SO ($8_9-7_8$) | 346.52848"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "8-7",
+     "rest_frequency": "347.33058 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO ($8_0-7_0$) | 347.33058"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "4-3",
+     "rest_frequency": "346.99834 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "H$^{13}$CO$^+$ (4-3) | 346.99834"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C-3 and C-6 combined",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "combining a compact (C-3) and extended configuration (C-6)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.12\" x 0.09\" (~30 au); H13CO+ ~0.18\" x 0.13\"",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "yielding a clean beam of ${\\sim}0.12\\ensuremath{''} \\times 0.09\\ensuremath{''}$ at PA of ${\\sim2^\\circ-3^\\circ}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~6\" (~1800 au)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The maximum recoverable scale for the observations is ${\\sim}6\\ensuremath{''}$ (i.e., ${\\sim} 1800$ au)."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "line rms 1.4-2.2 mJy/beam per channel; continuum 0.25 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.88 mm continuum | 340.8399 | – | – | 0.25 | – | $0.08 \\times 0.12$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI B. Tabone, Cycle 8",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "(PI: B. Tabone; project ID: 2021.1.01578.S)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "1.3 mm disk flux 130±5 mJy used for spectral index",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "between 0.88 mm (integrated flux of ${\\sim}266$ mJy, see above) and 1.3 mm ($130\\pm 5$ mJy)"
+       }
+      ]
+     },
+     "citation": "not stated explicitly (CALYPSO/Maury2019, Toledano2023 context)"
+    },
+    {
+     "what": {
+      "value": "Jet inclination from SiO knot proper motions (~30 deg inner, ~44 deg red lobe)",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "they find $i \\sim 30^{\\circ}$ for the innermost, brightest knots RI-a and RI-b"
+       }
+      ]
+     },
+     "citation": "(cite: Yoshida2021)"
+    },
+    {
+     "what": {
+      "value": "Disk mass 0.27 Msun from 9 mm flux with T=30 K",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "(cite: Tychoniec2018) obtained a disk mass of 0.27$M_\\odot$, using a typical disk dust temperature of 30 K"
+       }
+      ]
+     },
+     "citation": "(cite: Tychoniec2018)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity law for coagulated grains",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "dust opacity law (extrapolated from 1.3 mm to 9 mm with $\\kappa_\\nu \\propto \\nu$) of (cite: Ossenkopf1994)"
+       }
+      ]
+     },
+     "citation": "(cite: Ossenkopf1994)"
+    },
+    {
+     "what": {
+      "value": "Excitation temperature 100 K for HCN column density",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "an excitation temperature of $100$ K (cite: Belloche2020) was assumed"
+       }
+      ]
+     },
+     "citation": "(cite: Belloche2020)"
+    },
+    {
+     "what": {
+      "value": "HCN abundance 1e-7 from HCN/CO ratios",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "is assumed as $10^{-7}$ based on the measured column density ratios of HCN/CO in outflows from observations of (cite: Tafalla2010)"
+       }
+      ]
+     },
+     "citation": "(cite: Tafalla2010)"
+    },
+    {
+     "what": {
+      "value": "12C/13C = 70",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "by assuming a $^{12}$C/$^{13}$C ratio of 70 ((cite: Milam2005))"
+       }
+      ]
+     },
+     "citation": "(cite: Milam2005)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "pipeline calibrated",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data were pipeline calibrated using CASA versions 6.2.1.7 and 6.4.1.12"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.2.1.7 and 6.4.1.12 (calibration); 6.4.1.12 (imaging)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We then used CASA version 6.4.1.12 to perform continuum subtraction and imaging."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Next we used the `tclean` task for imaging."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we set the `deconvolver` parameter to `multiscale`"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "briggs robust 0.5 (H13CO+: 2.0)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Because H$^{13}$CO$^+$ line is relatively weak, we used a `briggs` weighting of 2.0 to increase its signal to noise."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "2\" circular mask on continuum peak for continuum, CH3OH, H13CN; manual masks for H13CO+, SiO, SO",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "we used a circular mask with a radius of $2\\ensuremath{''}$ centered on the continuum peak"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from line-free channels in all spws, subtracted in uv-plane",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The continuum visibilities were computed using carefully selected line-free channels in all spectral windows"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "C-3 and C-6 measurement sets concatenated",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Next we concatenated the measurement sets from the two C-3 and C-6 configurations."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.12\"x0.09\" PA 2-3 deg; H13CO+ 0.18\"x0.13\" PA -4 deg",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The resulting clean beam FWHM is ${\\sim}0.18\\ensuremath{''} \\times 0.13\\ensuremath{''}$ at a PA of ${\\sim}-4^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~1.5 to ~2 mJy/beam in 0.2-0.4 km/s channels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The rms varies from ${\\sim}1.5$ mJy beam$^{-1}$ to ${\\sim}2$ mJy beam$^{-1}$ in channel widths of 0.2 or 0.4 km s$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Envelope infall+rotation ballistic model",
+      "evidence": [
+       {
+        "loc": "3.2 Infall",
+        "quote": "ballistic model of rotating and infalling flattened envelope (see (cite: Sakai2014); (cite: Lee2017Infall) for model details)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sakai2014); (cite: Lee2017Infall)"
+    },
+    {
+     "what": {
+      "value": "Beam deconvolution of 1D Gaussian cuts",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "deconvolving the fitted FWHMs from the beam (see Appendix D of (cite: Podio2021))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Podio2021)"
+    },
+    {
+     "what": {
+      "value": "Thin-shell outflow model",
+      "evidence": [
+       {
+        "loc": "4.1 Wind morphology and kinematics",
+        "quote": "(see also, (cite: Louvet2018; Tabone2020; deValon2022))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Louvet2018; Tabone2020; deValon2022)"
+    },
+    {
+     "what": {
+      "value": "Anderson relation for launching radius",
+      "evidence": [
+       {
+        "loc": "4.2 Wind launching point",
+        "quote": "using the \"Anderson relation\" (Eq. 4 of (cite: Anderson2003))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Anderson2003)"
+    },
+    {
+     "what": {
+      "value": "Wind-to-accretion ratio f_M",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "(cite: Tabone2020) showed that the ratio of wind mass loss rate to disk accretion rate has to be"
+       }
+      ]
+     },
+     "from_reference": "(cite: Tabone2020)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum",
+    "Multiscale scale values, cell and image size, tclean threshold and niter",
+    "Manual mask definitions for H13CO+, SiO, SO",
+    "uv-fit procedure and software for Gaussian disk fit",
+    "Exact PV cut widths and how r_proj, v_proj were read from PVs",
+    "CASSIS fit details (linewidths, priors)",
+    "Flux calibrators and flux uncertainty",
+    "Whether self-calibration was applied",
+    "Origin of 1.3 mm flux"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure dust disk size and flux",
+    "method": {
+     "value": "Gaussian model fit to continuum visibilities; cross-check with 1D Gaussian cuts deconvolved from beam",
+     "evidence": [
+      {
+       "loc": "3.1 Dust disk size and mass",
+       "quote": "Assuming a Gaussian model for the disk, we fitted for the disk size and its flux in the uv visibility plane."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "geometrically thin disk for inclination lower limit",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "a lower limit on inclination angle from the line of sight of $i {\\sim}30^{\\circ}-35^{\\circ}$ is found assuming a geometrically thin disk"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "1D Gaussian fits consistent with uv fit",
+     "evidence": [
+      {
+       "loc": "3.1 Dust disk size and mass",
+       "quote": "provides the disk FWHMs fully consistent with the measured disk size from the uv visibility fit"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Estimate disk mass",
+    "method": {
+     "value": "Optically thin 9 mm formula M=D^2F/(B(T)kappa), rescaled with T=100 K and Ossenkopf & Henning opacity",
+     "evidence": [
+      {
+       "loc": "3.1 Dust disk size and mass",
+       "quote": "The higher dust disk temperature of 100 K revealed by our observations reduces the mass to 0.08 $M_\\odot$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "dust T=100 K; aggregates without ice mantles, coagulation at >=1e8 cm-3 raises kappa by 6.5",
+      "evidence": [
+       {
+        "loc": "3.1 Dust disk size and mass",
+        "quote": "Using the corresponding model in (cite: Ossenkopf1994) increases $\\kappa_\\nu$ by a factor 6.5, decreasing the disk mass further to 0.01$M_\\odot$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit envelope infall/rotation to get stellar mass and angular momentum",
+    "method": {
+     "value": "Ballistic rotating-infalling envelope model compared to H13CO+ PV diagram perpendicular to jet",
+     "evidence": [
+      {
+       "loc": "3.2 Infall",
+       "quote": "well reproduced by a ballistic model of rotating and infalling flattened envelope"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "inclination 30-44 deg",
+      "evidence": [
+       {
+        "loc": "3.2 Infall",
+        "quote": "considering inclination angles ${\\sim}30^\\circ-44^\\circ$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "by-eye comparison to PV",
+     "evidence": [
+      {
+       "loc": "Wind morphology and kinematics",
+       "quote": "We find that the morphology of the brightest features in the observed P-V diagrams match well with the thin shell model."
+      }
+     ]
+    },
+    "validation": {
+     "value": "compared with Gaudel et al. 2020 l_env",
+     "evidence": [
+      {
+       "loc": "3.2 Infall",
+       "quote": "We checked that their measured $V(R)$ agree very well with the brightest \"branches\" of our PV cut in H$^{13}$CO$^+$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Accretion rate from luminosity",
+    "method": {
+     "value": "L_acc = G M Mdot / R_star with L=9 Lsun, R=3 Rsun",
+     "evidence": [
+      {
+       "loc": "3.2 Infall",
+       "quote": "taking the appropriate stellar radius for an accreting protostar of this mass, $R_{\\star}=3$ R$_{\\odot}$ ((cite: Stahler1988))"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "bolometric luminosity dominated by accretion",
+      "evidence": [
+       {
+        "loc": "3.2 Infall",
+        "quote": "assuming that the bolometric luminosity is dominated by the accretion luminosity"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Retrieve outflow shape and kinematics from transverse PV",
+    "method": {
+     "value": "Thin axisymmetric rotating shell; measure max projected radii and velocities at z_proj=30-120 au, derive r(z), v_phi, v_z; model PV overlay with conical shape, linear v_z, constant v_phi=3.5 km/s",
+     "evidence": [
+      {
+       "loc": "4.1 Wind morphology and kinematics",
+       "quote": "Our model assumes a thin, axisymmetric rotating shell of gas to retrieve the flow shape $r(z)$, $v_{\\phi}$ (rotational velocity), and $v_z$ (velocity along the axis)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "poloidal velocity tangential to flow",
+      "evidence": [
+       {
+        "loc": "Appendix A",
+        "quote": "we find $v_r$ by assuming that the poloidal velocity is tangential to the flow shape"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "parameters adjusted manually",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "we played with the various parameters to find the best-fit ring-like structure for the P-V diagrams"
+      }
+     ]
+    },
+    "validation": {
+     "value": "black curves from the model compared to PV diagrams",
+     "evidence": [
+      {
+       "loc": "4.1 Wind morphology and kinematics",
+       "quote": "We find that the morphology of the brightest features in the observed P-V diagrams match well with the thin shell model."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Wind launching radius and lever arm",
+    "method": {
+     "value": "Anderson relation with measured r v_phi and v_tot for M*=0.3, 0.5 Msun; lambda_phi from r v_phi v_tot/GM = lambda sqrt(2 lambda-3)",
+     "evidence": [
+      {
+       "loc": "4.2 Wind launching point",
+       "quote": "(rv_{\\phi} \\times v_{\\rm tot})/GM_\\star = \\lambda_\\phi \\sqrt{2\\lambda_\\phi -3}."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "cold, steady, axisymmetric MHD wind, gravity neglected",
+      "evidence": [
+       {
+        "loc": "4.2 Wind launching point",
+        "quote": "valid at any point in a cold, steady, axisymmetric MHD disk wind where gravitational potential can be neglected"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "including gravity changes r0 by ~1-5 au",
+     "evidence": [
+      {
+       "loc": "4.2 Wind launching point",
+       "quote": "would only affect the launching radius by ${\\sim}1-5$ au"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Wind mass-loss rate and angular momentum budget",
+    "method": {
+     "value": "H13CN column density from CASSIS in aperture at 60 au; Mdot=1.4 mp N dr v_z/X; compare with f_M from Tabone 2020",
+     "evidence": [
+      {
+       "loc": "4.3 Wind mass-flux",
+       "quote": "The column density of HCN, $N_{\\rm HCN}$, was calculated from that of H$^{13}$CN using the CASSIS spectral analysis tool"
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [
+     {
+      "value": "aperture 2\" x ~0.1\" at 60 au SE; v_z=2.5 km/s; two Gaussian components",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "we fit two Gaussian profiles to find the column density using CASSIS"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Tex=100 K, 12C/13C=70, X_HCN=1e-7, optically thin",
+      "evidence": [
+       {
+        "loc": "4.3 Wind mass-flux",
+        "quote": "the optically thin assumption remains valid"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "two-Gaussian fit in CASSIS",
+     "evidence": [
+      {
+       "loc": "Wind mass-flux",
+       "quote": "because the H$^{13}$CN line profile is asymmetric, we fit two Gaussian profiles to find the column density using CASSIS"
+      }
+     ]
+    },
+    "validation": {
+     "value": "optical depth check; f_M ~4 agrees with observed ratio",
+     "evidence": [
+      {
+       "loc": "4.3 Wind mass-flux",
+       "quote": "we find $f_{\\rm M} {\\sim} 4$, in agreement with the observationally derived mass-flux"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.2.1.7 and 6.4.1.12",
+    "used_for": {
+     "value": "pipeline calibration, continuum subtraction, tclean imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data were pipeline calibrated using CASA versions 6.2.1.7 and 6.4.1.12"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASSIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "H13CN column density",
+     "evidence": [
+      {
+       "loc": "4.3 Wind mass-flux",
+       "quote": "using the CASSIS spectral analysis tool ((cite: Vastel2015))"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Dust disk FWHM (major x minor)",
+    "value": "0.15 x 0.12",
+    "uncertainty": "±0.01 each",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Dust disk size and mass",
+      "quote": "We find a disk FWHM of $0.15\\ensuremath{''}\\pm 0.01\\ensuremath{''} \\times 0.12\\ensuremath{''}\\pm 0.01\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "0.88 mm disk integrated flux",
+    "value": "266",
+    "uncertainty": "18",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Dust disk size and mass",
+      "quote": "The integrated flux from the fit is ${\\sim} 266 \\pm 18$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Central mass",
+    "value": "0.4",
+    "uncertainty": "0.1",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Infall",
+      "quote": "with a central mass of ${\\sim}0.4\\pm0.1$ M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Envelope specific angular momentum",
+    "value": "130",
+    "uncertainty": "20",
+    "units": "au km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Infall",
+      "quote": "$l_{\\rm env} \\simeq 130\\pm20$ au km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Centrifugal barrier radius",
+    "value": "24",
+    "uncertainty": "9",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Infall",
+      "quote": "$R_{\\rm b} =$ $l_{\\rm env}^2/(2GM_{\\star}) \\sim 24\\pm 9$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Accretion rate",
+    "value": "(2-3)e-6",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 Infall",
+      "quote": "we find $\\dot{M}_{\\rm acc} \\simeq (2-3) \\times 10^{-6}$ M$_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Outflow half-opening angle",
+    "value": "13",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Wind morphology and kinematics",
+      "quote": "conical flow with a half-opening angle of $i\\simeq 13^{\\circ}$, with its base at ${\\sim}19$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotation velocity of wind",
+    "value": "4",
+    "uncertainty": "2",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Wind morphology and kinematics",
+      "quote": "The rotation velocity is found to be constant and about $v_{\\phi} \\simeq 4 \\pm 2~$km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind launching radius",
+    "value": "10",
+    "uncertainty": "+13/-8",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Wind launching point",
+      "quote": "$r_0 \\simeq 10^{+13}_{-8}~$au"
+     }
+    ]
+   },
+   {
+    "quantity": "Lever arm lambda_phi",
+    "value": "1.7-2.3 (adopted 1.7)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Wind launching point",
+      "quote": "relatively low values of $\\lambda_\\phi \\simeq 1.7-2.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CN column density at 60 au",
+    "value": "7.2e13",
+    "uncertainty": "+0.8/-0.5 e13",
+    "units": "cm-2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Wind mass-flux",
+      "quote": "$N_{\\rm{H^{13}CN}} = 7.2^{+0.8}_{-0.5}\\times10^{13}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind mass-loss rate (red lobe)",
+    "value": "4e-6",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Wind mass-flux",
+      "quote": "$\\dot{M}_{\\rm DW} {\\sim} 4 \\times 10^{-6}$ M$_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral index 0.88-1.3 mm",
+    "value": "1.8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Dust disk size and mass",
+      "quote": "the spectral index of 1.8 observed for the compact disk component"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CH3OH and H13CN emission shows a central hole attributed to continuum over-subtraction of optically thick dust.",
+    "evidence": [
+     {
+      "loc": "3.1 Dust disk size and mass",
+      "quote": "Therefore, continuum over-subtraction is likely causing this hole in methanol emission."
+     }
+    ]
+   },
+   {
+    "value": "H13CN PV cuts show nested onion-like velocity structure and ring at 120 au.",
+    "evidence": [
+     {
+      "loc": "3.3 Rotating small-scale outflow",
+      "quote": "suggestive of an \"onion-like\" nested velocity structure inside the low-velocity rotating flow"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CH3OH and H13CN trace a rotating MHD disk wind",
+    "experiment": "Transverse PV cuts and thin-shell model of the redshifted outflow",
+    "result": "Rotation signatures, conical shell with base ~19 au, r0~10 au",
+    "finding": "Suggestive evidence for MHD disk wind; first in H13CN and CH3OH",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This is the first detection of an MHD disk wind candidate in H$^{13}$CN and CH$_3$OH."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The wind can drive disk accretion",
+    "experiment": "Mass-loss rate from H13CN vs accretion rate and f_M",
+    "result": "Mdot_DW total ~2.5-4 times accretion rate; f_M~4",
+    "finding": "Wind could carry enough angular momentum",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggests that the rotating wind could carry enough angular momentum to drive disk accretion"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Central mass and centrifugal radius of the system",
+    "experiment": "H13CO+ PV with infall-rotation model",
+    "result": "M=0.4±0.1 Msun, Rb~24 au matching disk",
+    "finding": "centrifugal radius similar to dust disk radius",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "indicate a central mass of $0.4\\pm 0.1$ M$_\\odot$ and a centrifugal radius similar to the dust disk radius"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Need resolution of tens of au and high sensitivity to resolve base of the outflow.",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "the new ALMA observations presented here are the first able to resolve the base of the outflow in this object"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "X-wind origin excluded by launching radius",
+     "evidence": [
+      {
+       "loc": "4.2 Wind launching point",
+       "quote": "It excludes an X-wind origin, with launching radius $\\lesssim0.1$ au."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Evidence is suggestive; detailed model comparison and alternative entrainment models needed.",
+     "evidence": [
+      {
+       "loc": "5 Concluding remarks",
+       "quote": "are now required to obtain more robust constraints and definitely test the MHD interpretation"
+      }
+     ]
+    },
+    {
+     "value": "Disk mass quite uncertain.",
+     "evidence": [
+      {
+       "loc": "3.1 Dust disk size and mass",
+       "quote": "The disk mass is quite uncertain, but is probably below 0.1 M$_\\ensuremath{\\odot}$"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "PV measurements have large uncertainties (v_phi 4±2 km/s) and are read by eye",
+    "X_HCN uncertain by an order of magnitude drives mass-loss rate",
+    "Entrainment by jet not excluded",
+    "Inclination uncertain (30-44 deg)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project ID given; public status not explicit",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "(PI: B. Tabone; project ID: 2021.1.01578.S)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, image size, scales, threshold)",
+    "PV extraction details and measured-point selection",
+    "CASSIS setup details",
+    "Line-free channel list"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for two Band 7 configurations (estimate)",
+   "score_inferred": 3,
+   "score_reason": "Data identified and key steps given, but many imaging parameters and manual PV measurements are unspecified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results rely on manual PV measurements and unstated imaging settings; public status not stated."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Tabone et al. 2020 (cite: Tabone2020)",
+     "why": "MHD wind PV predictions and f_M relation"
+    },
+    {
+     "citation": "Anderson et al. 2003 (cite: Anderson2003)",
+     "why": "Anderson relation for launching radius"
+    },
+    {
+     "citation": "Louvet et al. 2018",
+     "why": "thin-shell method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Maury et al. 2019 (cite: Maury2019)",
+     "why": "CALYPSO continuum disk size"
+    },
+    {
+     "citation": "Gaudel et al. 2020 (cite: Gaudel2020)",
+     "why": "envelope angular momentum"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "CALYPSO",
+    "VANDAM"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-afdf0da1ed271edccb31f688d69d2a0a",
+  "batch_id": "msgbatch_012H12PX4HtJW1c1dDKp5uWB",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:49:44",
+  "usage": {
+   "input_tokens": 25824,
+   "output_tokens": 11279,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.082825,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 91,
+  "quotes_ok": 91,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 91,
+   "stated": 65,
+   "rate": 0.714
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:54",
+  "custom_id": "repair-sonnet-e7c9a352ee0d575138ee608de5ebcf26",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "We find that the morphology of the brightest features in the observed P-V diagrams match well with the thin shell model."
+   },
+   {
+    "path": "analysis_steps[6].fitting.evidence[0]",
+    "old": null,
+    "new": "because the H$^{13}$CN line profile is asymmetric, we fit two Gaussian profiles to find the column density using CASSIS"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

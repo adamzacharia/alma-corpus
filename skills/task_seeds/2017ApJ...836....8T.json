@@ -1,0 +1,254 @@
+{
+ "bibcode": "2017ApJ...836....8T",
+ "title": "ALMA Observations Show Major Mergers Among the Host Galaxies of Fast-growing, High-redshift Supermassive Black Holes",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/836/1/8",
+ "arxiv_id": "1612.00010",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Are major mergers important drivers of rapid early SMBH growth, as tested with ALMA continuum and [C II] observations of six z≃4.8 quasar hosts, three FIR-bright and three FIR-faint?",
+ "alma_project_codes": [
+  "2013.1.01153.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12m antennas, 29-38 per execution",
+  "angular_resolution": "~0.3 arcsec at 330 GHz (~2 kpc); beams 0.38-0.54 x 0.29-0.31 arcsec",
+  "sensitivity": "(4.2-9.2)x10^-2 mJy/beam rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mg II-based redshifts, BH masses and bolometric luminosities",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "b Mg II λ 2798-based redshifts taken from T11."
+     }
+    ]
+   },
+   "citation": "Trakhtenbrot et al. 2011 (T11)"
+  },
+  {
+   "what": {
+    "value": "SDSS-based redshifts",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "a SDSS-based redshifts taken from Hewett & Wild (2010)."
+     }
+    ]
+   },
+   "citation": "Hewett & Wild (2010)"
+  },
+  {
+   "what": {
+    "value": "Herschel/SPIRE measurements and stacking",
+    "evidence": [
+     {
+      "loc": "Figure 8 caption",
+      "quote": "For all three FIR-faint systems (bottom row), we adopted the measurements of the stacked Herschel signal (N14)."
+     }
+    ]
+   },
+   "citation": "Netzer et al. 2014 (N14)"
+  },
+  {
+   "what": {
+    "value": "[C II]/FIR comparison compilation",
+    "evidence": [
+     {
+      "loc": "3.2 [C II] emission line properties",
+      "quote": "The compilation, adapted from Cicone et al. (2015), includes inactive star forming galaxies at low and intermediate redshifts"
+     }
+    ]
+   },
+   "citation": "Cicone et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "local elliptical galaxy BH-bulge masses",
+    "evidence": [
+     {
+      "loc": "Figure 9 caption",
+      "quote": "a sample of z ≃ 0 elliptical galaxies (taken from Kormendy & Ho 2013, black circles)"
+     }
+    ]
+   },
+   "citation": "Kormendy & Ho 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [C II] cubes",
+   "method": "Observatory scripts for visibilities, then CLEAN with Briggs robust 0.5; continuum from two upper windows; uv continuum subtraction for [C II] from the lower two",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure sizes, line fluxes, widths and redshifts",
+   "method": "2D Gaussian fits to continuum and moment-0 images; 1D spectra from Gaussian-based apertures (1.5-2 sigma) fitted with a single Gaussian; the spatial fluxes adopted",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive FIR luminosities, TIR and SFR",
+   "method": "Gray-body SED (Td=47 K, beta=1.6) and Chary & Elbaz 2001 templates anchored to ALMA continuum; SFR = L_TIR(8-1000 µm)/10^10 Lsun",
+   "software": [],
+   "key_parameters": [
+    "L_FIR integrated over 42.5-122.5 µm; TIR over 8-1000 µm"
+   ],
+   "assumptions": [
+    "AGN contribution to FIR neglected (<~10%); Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Dynamical, dust and gas masses",
+   "method": "M_dyn = 9.8e8 (D_[CII]/kpc)(FWHM/100 km/s)^2 / sin^2(i) Msun, with cos(i) = a_min/a_maj; dust mass from optically thin dust; gas mass via gas-to-dust 100",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclined rotating disk, v_circ = 0.75 FWHM/sin i; Td=47 K, beta=1.6; gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with SF main sequence and BH-host relations; assess mergers",
+   "method": "Compare SFR vs M_dyn with the main-sequence relation; BH growth rate from L_bol with eta=0.1; compare M_BH/M_dyn with local ellipticals; identify companions via continuum and [C II] redshift",
+   "software": [
+    "MATLAB package for astronomy and astrophysics"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Host mass grows only via star formation at CE01-based SFR"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Companion SMGs detected",
+   "value": "3 of 6 quasars (separations ~14-45 kpc)",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "separated by ∼ 14 − 45kpc and < 450kms −1 from the quasar hosts"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM of quasar hosts",
+   "value": "240-510",
+   "uncertainty": "~10%",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.2 Data Reduction and Spectral Measurements",
+     "quote": "FWHM [C II ] ∼ 240 − 510kms −1"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII]/LFIR of quasar hosts",
+   "value": "(2.1-9.4)e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 [C II] emission line properties",
+     "quote": "the L [C II ] /L FIR ratio is in the range of (2.1 − 9.4) × 10 −4"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR of quasar hosts (gray-body)",
+   "value": "260-3040",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1 FIR SEDs and SFRs",
+     "quote": "span a wide range of ∼ 260 − 3040 M ⊙ yr −1 for the gray-body SEDs"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust masses of quasar hosts",
+   "value": "(0.4-4.8)e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2 Host and companion galaxy masses",
+     "quote": "The dust masses we derive are in the range M dust ∼ (0.4 − 4.8) × 10 8 M ⊙ for the quasar hosts"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination-corrected M_dyn of quasar hosts",
+   "value": "(3.7-7.5)e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2 Host and companion galaxy masses",
+     "quote": "we obtain dynamical masses of M dyn ≃ (3.7 − 7.5) × 10 10 M ⊙ for the quasar hosts"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH/M_dyn",
+   "value": "1/260 to 1/10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.3 SMBH-host galaxy relations",
+     "quote": "which are in the range M BH /M dyn ∼ 1/260 − 1/10"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN parameters: deconvolver, threshold, masks, iterations, image size",
+  "Line-free channels and exact spectral windows used for continuum subtraction",
+  "Flux calibrator and flux scale uncertainty",
+  "Whether pipeline or manual calibration scripts were used and which pipeline version",
+  "Aperture and fitting details for the 2D Gaussian fits",
+  "How inclinations were bounded for unresolved sources",
+  "Primary beam correction treatment",
+  "Uncertainties of L_TIR and SFR"
+ ],
+ "missing_for_reproduction": [
+  "Full CLEAN parameters and masks",
+  "Line-free channel ranges",
+  "Fitting uncertainty treatment",
+  "Herschel and T11 data tables from other papers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main steps are described, but CLEAN settings and flux calibration are missing, and some inputs come from earlier papers.",
+ "rediscovery_reason": "Data are public, the recipe is mostly clear, and the main results (fluxes, FWHM, SFR, M_dyn) are numeric.",
+ "source_card": "cards/2017ApJ...836....8T/sonnet/card.md"
+}

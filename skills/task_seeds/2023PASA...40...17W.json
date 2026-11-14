@@ -1,0 +1,498 @@
+{
+ "bibcode": "2023PASA...40...17W",
+ "title": "VERTICO V: The environmentally driven evolution of the inner cold gas discs of Virgo cluster galaxies",
+ "year": 2023,
+ "doi": "10.1017/pasa.2023.14",
+ "arxiv_id": "2303.07549",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "How do cluster environmental mechanisms impact the surviving atomic and molecular gas in the inner optical discs of Virgo cluster galaxies on 1.2-kpc scales?",
+ "alma_project_codes": [
+  "2019.1.00763.L",
+  "2017.1.00886.L",
+  "2016.1.00912.S",
+  "2015.1.00956.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA ACA (7-m array and Total Power array; NGC4394 and NGC4567 are 7-m array only)",
+  "angular_resolution": "native ~8 arcsec; smoothed to 9 arcsec and 15 arcsec (15 arcsec / 1200 pc used)",
+  "sensitivity": "Sigma_mol >= 0.4-1 M_sun pc^-2 detection limit after homogenisation and masking"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Virgo cluster distance of 16.5 Mpc",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "we adopt a constant distance for Virgo galaxies of 16.5 Mpc (Mei et al., 2007)."
+     }
+    ]
+   },
+   "citation": "Mei et al., 2007"
+  },
+  {
+   "what": {
+    "value": "Photometric position angles, inclinations, CO-to-H2 conversion factor, R_21=0.8, and VERTICO CO(2-1) data products",
+    "evidence": [
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "We used a constant R 21 = 0.8, as derived by Brown et al. (2021)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "3) Position angle (Brown et al., 2021); 4) inclination (Brown et al., 2021);"
+     }
+    ]
+   },
+   "citation": "Brown et al., 2021"
+  },
+  {
+   "what": {
+    "value": "B-band optical radii R_25 and type-independent H I deficiency parameter (def-H I) for VERTICO galaxies",
+    "evidence": [
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "and B -band 25 th mag arcsec –2 optical radii ( R 25 ) were sourced from Chung et al. (2009)."
+     },
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "we used the type-independent H I deficiency parameter (def-H I) for each galaxy from Chung et al. (2009)"
+     }
+    ]
+   },
+   "citation": "Chung et al., 2009"
+  },
+  {
+   "what": {
+    "value": "Luminosity distances and B-band R_25 for HERACLES/THINGS control galaxies",
+    "evidence": [
+     {
+      "loc": "2.2 HERACLES control sample",
+      "quote": "and B -band R 25 were drawn from Walter et al. (2008)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "2) Luminosity distance (Mei et al., 2007; Walter et al., 2008);"
+     }
+    ]
+   },
+   "citation": "Walter et al., 2008"
+  },
+  {
+   "what": {
+    "value": "Global stellar masses, integrated SFRs, star-forming main-sequence parametrisation, and WISE mass-to-light ratio prescription",
+    "evidence": [
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "Global stellar masses were drawn from the z = 0 Multiwavelength Galaxy Synthesis ( z 0MGS, Leroy et al., 2019) sample"
+     },
+     {
+      "loc": "2.2 HERACLES control sample",
+      "quote": "using the parametrisation from the z 0MGS sample ( σ = 0.36, with star-formation rates (SFR) from the same catalogue, Leroy et al., 2019)."
+     }
+    ]
+   },
+   "citation": "Leroy et al., 2019"
+  },
+  {
+   "what": {
+    "value": "Milky Way disc CO(1-0) conversion factor alpha_CO = 4.35 M_sun pc^-2",
+    "evidence": [
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "4.35 M ⊙ pc –2 based on observations of the Milky Way disc by Bolatto et al. (2013), which includes a 36 per cent contribution from Helium."
+     }
+    ]
+   },
+   "citation": "Bolatto et al., 2013"
+  },
+  {
+   "what": {
+    "value": "Average type-independent H I surface density log Sigma_HI = 0.37 (from 6.81 M_sun kpc^-2)",
+    "evidence": [
+     {
+      "loc": "2.1 VERTICO sample",
+      "quote": "and log Σ H I = 0.37 is the average type-independent value of log ( M H I / D 2 25 ) from Haynes & Giovanelli (1984, Table 4, 6.81) after a unit conversion from M ⊙ kpc –2 ."
+     }
+    ]
+   },
+   "citation": "Haynes & Giovanelli, 1984"
+  },
+  {
+   "what": {
+    "value": "xCOLD GASS star-forming galaxy subset for control sample validation",
+    "evidence": [
+     {
+      "loc": "2.2 HERACLES control sample",
+      "quote": "We compared the integrated properties of the final control sample galaxies to a subset of star-forming galaxies from the xCOLD GASS e (Saintonge et al., 2017) sample"
+     }
+    ]
+   },
+   "citation": "Saintonge et al., 2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select galaxy samples and homogenise spatial resolution and pixel grids",
+   "method": "Select massive (log(M_*/M_sun) >= 10), moderately inclined (i <= 70 deg) galaxies from VERTICO (excluding NGC 4772 and NGC 4698) and star-forming control galaxies from HERACLES/THINGS. Smooth CO(2-1) and H I cubes with CASA IMSMOOTH to match a 1200 pc physical beam and 650 pc spaxel size (15 arcsec beam, 8 arcsec spaxels at Virgo).",
+   "software": [
+    "CASA (IMSMOOTH)"
+   ],
+   "key_parameters": [
+    "log(M_*/M_sun) >= 10, i <= 70 deg, physical resolution = 1200 pc, spaxel size = 650 pc"
+   ],
+   "assumptions": [
+    "Virgo distance = 16.5 Mpc; Kroupa (2001) IMF; LambdaCDM cosmology with h = 0.7, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute spatially resolved surface densities (Sigma_HI, Sigma_mol, Sigma_*) and mask to optical disc",
+   "method": "Apply signal masks to create moment 0 maps; convert integrated fluxes to H I mass (Eq. 1), CO luminosity (Eq. 2), and molecular gas mass (Eq. 3); compute WISE pixel-by-pixel stellar mass; divide by 650-pc pixel area; de-project by cos(i); and mask spaxels to within B-band R_25.",
+   "software": [],
+   "key_parameters": [
+    "R_21 = 0.8, alpha_CO = 4.35 M_sun pc^-2, intrinsic axial ratio q = 0.2"
+   ],
+   "assumptions": [
+    "Optically thin H I emission; no Helium correction for H I in Sections 2-4 (36% Helium included in alpha_CO, and 36% Helium added to H I in Section 5)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Determine H I deficiency categories and H I truncation radius stellar surface density (<log Sigma_*>_HI)",
+   "method": "Calculate def-H I from Eq. 4 and split VERTICO H I-deficient galaxies into moderate (def-H I = [0.3, 0.7) dex) and large (def-H I >= 0.7 dex) subsamples. Compute radial profiles of log Sigma_HI and log Sigma_* in 4-arcsec annuli to find R_HI where radial average Sigma_HI = 1 M_sun pc^-2, and record the average log Sigma_* at R_HI (<log Sigma_*>_HI).",
+   "software": [],
+   "key_parameters": [
+    "4-arcsec annuli; Sigma_HI(R_HI) = 1 M_sun pc^-2; def-H I bins: [0.3, 0.7) dex and >= 0.7 dex"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Construct galaxy-weighted resolved scaling relations and distributions in bins of Sigma_* and within R_HI",
+   "method": "Weight each spaxel by 1/(N_sp * N_G) so each galaxy contributes equally. Compute density-normalised histograms and weighted medians/percentiles of log Sigma_HI and log Sigma_mol in 0.5 dex bins of log Sigma_* and for spaxels within R_HI (log Sigma_* >= <log Sigma_*>_HI), constructing matched control samples for the R_HI comparison.",
+   "software": [
+    "astro-functions (custom Python weighted K-S test)"
+   ],
+   "key_parameters": [
+    "log Sigma_* bins: [0, 0.75), [0.75, 1.25), [1.25, 1.75), [1.75, 2.25), >= 2.25; non-detections set to log Sigma = -0.5; quantitative Sigma_mol comparisons restricted to log Sigma_* >= 1.25"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test physical drivers of molecular gas reduction using Sigma_mol / Sigma_HI vs ISM condition proxies and mock H I-stripped galaxies",
+   "method": "For detected spaxels with log Sigma_* >= 1.25 (including 36% Helium in H I), compare log(Sigma_mol/Sigma_HI) against midplane hydrostatic pressure proxy Sigma_*^0.5 * Sigma_gas and total gas surface density Sigma_gas. Create mock H I-stripped control galaxies by subtracting the median log Sigma_HI offset of each VERTICO galaxy at fixed Sigma_* from HERACLES spaxels, and compare observed distributions to mock H I-only removal predictions.",
+   "software": [
+    "astro-functions (custom Python weighted K-S test)"
+   ],
+   "key_parameters": [
+    "log(Sigma_*^0.5 * Sigma_gas) bins: [1.5, 2.0) and [2.0, 2.5); log(Sigma_gas) bins: [0.85, 1.35) and [1.35, 1.85); log Sigma_* >= 1.25"
+   ],
+   "assumptions": [
+    "36 per cent Helium contribution added to H I masses; stellar scale height and gas velocity dispersion have minor contributions to midplane pressure."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Unweighted median detected log Sigma_HI (VERTICO combined)",
+   "value": "0.58",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. Combined Sigma_HI - Sigma_* and Sigma_mol - Sigma_* relations",
+     "quote": "The median detected spaxel has log ( Σ H I /M ⊙ pc –2 ) = 0.58 for VERTICO galaxies, while HERACLES has log ( Σ H I /M ⊙ pc –2 ) = 0.93"
+    }
+   ]
+  },
+  {
+   "quantity": "Unweighted median detected log Sigma_HI (HERACLES combined)",
+   "value": "0.93",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. Combined Sigma_HI - Sigma_* and Sigma_mol - Sigma_* relations",
+     "quote": "The median detected spaxel has log ( Σ H I /M ⊙ pc –2 ) = 0.58 for VERTICO galaxies, while HERACLES has log ( Σ H I /M ⊙ pc –2 ) = 0.93"
+    }
+   ]
+  },
+  {
+   "quantity": "Unweighted median detected log Sigma_mol (VERTICO combined)",
+   "value": "0.73",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. Combined Sigma_HI - Sigma_* and Sigma_mol - Sigma_* relations",
+     "quote": "Quantitatively, the median detected VERTICO spaxel has log ( Σ mol /M ⊙ pc –2 ) = 0.73, lower than the HERACLES value of log ( Σ mol /M ⊙ pc –2 ) = 0.85"
+    }
+   ]
+  },
+  {
+   "quantity": "Unweighted median detected log Sigma_mol (HERACLES combined)",
+   "value": "0.85",
+   "uncertainty": "not stated",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. Combined Sigma_HI - Sigma_* and Sigma_mol - Sigma_* relations",
+     "quote": "Quantitatively, the median detected VERTICO spaxel has log ( Σ mol /M ⊙ pc –2 ) = 0.73, lower than the HERACLES value of log ( Σ mol /M ⊙ pc –2 ) = 0.85"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_HI within R_HI (moderate def-H I sample)",
+   "value": "0.52",
+   "uncertainty": "0.07",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Atomic hydrogen",
+     "quote": "The moderate def-H I galaxies have median detected log ( Σ H I /M ⊙ pc –2 ) = 0.52 ± 0.07, while their matched control sample has log ( Σ H I /M ⊙ pc –2 ) = 0.95 ± 0.02"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "def-H I= [0.3, 0.7) 0.95 ± 0.02 0.50 ± 0.07 0.95 ± 0.02 0.52 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_HI within R_HI (control matched to moderate def-H I)",
+   "value": "0.95",
+   "uncertainty": "0.02",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I= [0.3, 0.7) 0.95 ± 0.02 0.50 ± 0.07 0.95 ± 0.02 0.52 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_HI within R_HI (large def-H I sample)",
+   "value": "0.28",
+   "uncertainty": "0.06",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Atomic hydrogen",
+     "quote": "The difference is larger in the large def-H I galaxies, which have a median log ( Σ H I /M ⊙ pc –2 ) = 0.28 ± 0.06 that is 0.66 dex lower than the median of their matched control sample, log ( Σ H I /M ⊙ pc –2 ) = 0.94 ± 0.02."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "def-H I ≥ 0.7 0.94 ± 0.02 0.19 ± 0.14 0.94 ± 0.02 0.28 ± 0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_HI within R_HI (control matched to large def-H I)",
+   "value": "0.94",
+   "uncertainty": "0.02",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I ≥ 0.7 0.94 ± 0.02 0.19 ± 0.14 0.94 ± 0.02 0.28 ± 0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_mol within R_HI (moderate def-H I sample)",
+   "value": "0.80",
+   "uncertainty": "0.07",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I= [0.3, 0.7) 0.88 ± 0.03 0.77 ± 0.08 0.95 ± 0.02 0.80 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_mol within R_HI (control matched to moderate def-H I)",
+   "value": "0.95",
+   "uncertainty": "0.02",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I= [0.3, 0.7) 0.88 ± 0.03 0.77 ± 0.08 0.95 ± 0.02 0.80 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_mol within R_HI (large def-H I sample)",
+   "value": "0.71",
+   "uncertainty": "0.09",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I ≥ 0.7 1.15 ± 0.04 0.70 ± 0.09 1.16 ± 0.04 0.71 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted median detected log Sigma_mol within R_HI (control matched to large def-H I)",
+   "value": "1.16",
+   "uncertainty": "0.04",
+   "units": "dex (M_sun pc^-2)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "def-H I ≥ 0.7 1.15 ± 0.04 0.70 ± 0.09 1.16 ± 0.04 0.71 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduction of median detected Sigma_mol within R_HI for large def-H I galaxies",
+   "value": "0.45",
+   "uncertainty": "not stated",
+   "units": "dex (factor of 2.8 or 64 per cent)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular hydrogen",
+     "quote": "The weighted median detected spaxel is 0.45 dex lower (a factor of 2.8 or 64 per cent) than the control sample and significant considering the uncertainties (Table 3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in low midplane pressure bin (moderate def-H I)",
+   "value": "0.09",
+   "uncertainty": "0.07",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Σ mol reduction",
+     "quote": "observed values of 0.09 ± 0.07 dex and 0.31 ± 0.04 dex by 0.15 dex and 0.34 dex, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in low midplane pressure bin (large def-H I)",
+   "value": "0.31",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Σ mol reduction",
+     "quote": "observed values of 0.09 ± 0.07 dex and 0.31 ± 0.04 dex by 0.15 dex and 0.34 dex, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in high midplane pressure bin (large def-H I)",
+   "value": "0.61",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Sigma_mol reduction",
+     "quote": "In the highest Σ 0.5 ⋆ Σ gas bin, the large def-H I galaxies similarly show 0.2 dex smaller Σ mol / Σ H I elevation (median 0.61 ± 0.04 dex) than expected from H I removal alone (0.81 ± 0.04 dex)."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in high midplane pressure bin (moderate def-H I)",
+   "value": "0.48",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Sigma_mol reduction",
+     "quote": "which is reflected in the expected and observed Σ mol / Σ H I medians of 0.47 ± 0.03 dex and 0.48 ± 0.04 dex, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in low Sigma_gas bin (moderate def-H I)",
+   "value": "0.05",
+   "uncertainty": "0.07",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Σ mol reduction",
+     "quote": "0.05 ± 0.07 dex 0.47 ± 0.03 dex for the moderate and large defH I samples by 0.12 dex and 0.16 dex respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in low Sigma_gas bin (large def-H I)",
+   "value": "0.47",
+   "uncertainty": "0.03",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Σ mol reduction",
+     "quote": "0.05 ± 0.07 dex 0.47 ± 0.03 dex for the moderate and large defH I samples by 0.12 dex and 0.16 dex respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in high Sigma_gas bin (large def-H I)",
+   "value": "0.63",
+   "uncertainty": "0.04",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Sigma_mol reduction",
+     "quote": "In the higher Σ gas bin, the elevation in Σ mol / Σ H I of the large def-H I sample is smaller by 0.11 dex, with an expected median 0.74 ± 0.03 dex compared to 0.63 ± 0.04 dex observed"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed median log(Sigma_mol/Sigma_HI) in high Sigma_gas bin (moderate def-H I)",
+   "value": "0.41",
+   "uncertainty": "0.05",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Physical drivers of Sigma_mol reduction",
+     "quote": "while the moderate def-H I galaxies agree more closely with their mock control sample, having 0.38 ± 0.03 dex expected and 0.41 ± 0.05 dex observed."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for IMSMOOTH",
+  "Exact re-imaging parameters for the VIVA H I data (re-imaged by A. Chung)",
+  "Explicit 2D coordinate grid alignment/reprojection routine used to match WISE, VIVA H I, and VERTICO CO maps onto identical 8-arcsec spaxels"
+ ],
+ "missing_for_reproduction": [
+  "Re-imaged VIVA H I circularised-beam datacubes and moment 0 maps (re-imaged by A. Chung) are not given a public repository link in the text.",
+  "Pixel-by-pixel WISE stellar mass surface density maps homogenised to the 15-arcsec/8-arcsec grid are not directly linked.",
+  "Full analysis scripts for spaxel table generation and mock H I-stripped galaxy construction (beyond the weighted K-S test function) are not linked."
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The VERTICO CO(2-1) cubes/maps are publicly hosted on CANFAR, HERACLES/THINGS/WISE data are public, sample selection and equations/conversions are completely specified, numeric summary tables (Tables 1-3) are provided, and the custom weighted K-S test code is linked on GitHub. Only the custom re-imaged VIVA H I maps and the end-to-end spaxel-matching pipeline scripts are not directly hosted.",
+ "rediscovery_reason": "Public ALMA ACA survey products (VERTICO on CANFAR) and well-defined mathematical recipes for converting moment-0 maps to de-projected surface densities and galaxy-weighted medians make the main numeric results in Tables 2 and 3 strong candidates for reproduction.",
+ "source_card": "cards/2023PASA...40...17W/sonnet/card.md"
+}

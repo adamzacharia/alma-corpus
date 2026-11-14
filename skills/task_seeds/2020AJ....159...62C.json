@@ -1,0 +1,271 @@
+{
+ "bibcode": "2020AJ....159...62C",
+ "title": "ALMA Observations of the Extraordinary Carina Pillars: HH 901/902",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/ab6295",
+ "arxiv_id": "1911.11026",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the molecular outflows, dusty disks/envelopes and pillar kinematics and masses of the HH 901/902 protostellar objects in Carina, and how fast will the pillars photo-evaporate?",
+ "alma_project_codes": [
+  "2017.1.00912.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.32'' x 0.27'' PA -65 deg (continuum)",
+  "sensitivity": "continuum rms 50 uJy/beam; line rms 6.5 mJy/beam km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Jet inclination ~20 deg to plane of sky",
+    "evidence": [
+     {
+      "loc": "HH 901",
+      "quote": "where $\\theta$ is the inclination angle taken to be 20$^\\circ$ (cite: rei2013; rei2014)"
+     }
+    ]
+   },
+   "citation": "(cite: rei2013; rei2014)"
+  },
+  {
+   "what": {
+    "value": "Tr 14 UV luminosity Q_H = 2e50 photon/s",
+    "evidence": [
+     {
+      "loc": "HH 901",
+      "quote": "The Tr 14 cluster has an UV luminosity $(Q_H)$ of $2 \\times 10^{50} \\mathrm{\\ photon\\ s^{-1}}$ (cite: sb2008)"
+     }
+    ]
+   },
+   "citation": "(cite: sb2008)"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity 0.015 cm2/g at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "HH 901",
+      "quote": "Assuming a dust mass opacity ($\\kappa_\\nu$) of 0.015 cm$^2$ g$^{-1}$ (taking a dust-to-gas ratio of 100) appropriate for these wavelengths (1.3 mm) (cite: Oss1994)"
+     }
+    ]
+   },
+   "citation": "(cite: Oss1994)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate and image",
+   "method": "CASA calibration, CONCAT of C43-6 and C43-3, CLEAN/TCLEAN with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum sources and derive disk+envelope dust mass",
+   "method": "Gaussian fit to robust=0.5 map; optically thin isothermal dust mass equation",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=0.015 cm2/g, beta=1.2, Td=50 K (30 K for source B), dust-to-gas 100, D=2.3 kpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Outflow and pillar gas masses from C18O/CO",
+   "method": "LTE mass equation with opacity correction, inclination correction for outflow; energy, momentum, force",
+   "software": [],
+   "key_parameters": [
+    "Tex=50 K, X(H2/CO)~1e4, mean molecular weight 2.8, inclination 20 deg"
+   ],
+   "assumptions": [
+    "tau0=0.2 from C18O/12CO ratio ~5"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Photo-evaporation timescale",
+   "method": "EUV mass-loss rate formula, timescale = pillar mass / rate",
+   "software": [],
+   "key_parameters": [
+    "F_EUV=1e12 photon/s/cm2; R=1000 au (HH 901), 4000 au (HH 902)"
+   ],
+   "assumptions": [
+    "Only Tr 14 considered, Tr 16 ignored"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HH 901 continuum deconvolved size",
+   "value": "0.49'' x 0.33'' PA 100 deg",
+   "uncertainty": "±0.03'' ±0.03'' ±7 deg",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "we obtained a deconvolved size of 0.49$''$ $\\pm$ 0.03$''$ $\\times$ 0.33$''$ $\\pm$ 0.03$''$ with a PA of 100$^\\circ$ $\\pm$ 7$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 integrated continuum flux",
+   "value": "6.8",
+   "uncertainty": "±0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "an integrated flux of 6.8 $\\pm$ 0.4 mJy Beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 disk+envelope mass",
+   "value": "~0.1",
+   "uncertainty": "factor 3-4",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "of the disk and envelope system associated with HH 901 of about 0.1 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 902 A integrated flux",
+   "value": "6.5",
+   "uncertainty": "±0.7",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HH 902",
+     "quote": "an integrated flux of 6.5 $\\pm$ 0.7 mJy Beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 902 source B flux density",
+   "value": "38",
+   "uncertainty": "±2.0",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "HH 902",
+     "quote": "has a flux density of 38 $\\pm$ 2.0 mJy Beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 outflow mass (inclination corrected)",
+   "value": "1e-3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "so the $dv_{real}$ = 16 km s$^{-1}$ and the mass is 10$^{-3}$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 pillar mass",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "for the pillar of $\\sim$ 0.1 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 902 pillar mass",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HH 902",
+     "quote": "for the pillar of $\\sim$ 0.2 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 outflow force F_CO",
+   "value": "1.5e-5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "we obtain a value of 1.5 $\\times$ $10^{-5}$ M$_\\odot$ yr$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 901 pillar photo-evaporation time",
+   "value": "~1e5",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "HH 901",
+     "quote": "the pillar will be photo-evaporated in around 10$^5$ years"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 902 pillar photo-evaporation time",
+   "value": "~2e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "HH 902",
+     "quote": "photo-evaporated in around 2 $\\times$ 10$^4$ years"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum",
+  "Clean threshold, masks, cell and image size",
+  "Which continuum/moment velocity ranges and clip levels",
+  "How the continuum beta=1.2 was derived",
+  "Which archival calibration (pipeline or manual) was used",
+  "Exact method for average intensities and areas in mass equation",
+  "How 0.1 Msun and flux uncertainties were propagated"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters, masks, image sizes",
+  "Line-free channel selection",
+  "Exact intensity/area values behind mass equation",
+  "Calibration pipeline details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the analysis is simple with stated assumptions, but imaging details and extraction choices are missing.",
+ "rediscovery_reason": "Public data, simple recipe with numeric masses and fluxes, though imaging details are partly missing.",
+ "source_card": "cards/2020AJ....159...62C/sonnet/card.md"
+}

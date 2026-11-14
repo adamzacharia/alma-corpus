@@ -1,0 +1,926 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 2,
+    "shows": "Continuum maps of the protocluster at 3 mm (ATOMS) and 1.3 mm (QUARKS), with dense cores identified at 870 µm by Xu et al. (2024a) overlaid as ellipses; red marks protostellar cores and black prestellar core candidates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Intensity",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 1.3 mm colour scale spans -0.002 to 0.008 Jy/beam",
+     "approx. scale bar 0.1 pc"
+    ],
+    "caption_quote": "The continuum map of the protocluster at 3 mm (left panel) from the ATOMS survey and 1.3 mm (right panel) from the QUARKS survey.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "H13CO+ filaments identified on the moment 0 map (red longest filament, green others) and 1.3 mm continuum filaments (orange) with F1-F4 labelled, overlaid with cores from Xu et al. (2024a).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H13CO+ brightness",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "1.3 mm intensity",
+      "units": "Jy beam-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. H13CO+ brightness up to 0.6 Jy beam-1 km s-1",
+     "approx. 1.3 mm intensity up to 0.008 Jy beam-1"
+    ],
+    "caption_quote": "The identified H13CO+ filaments overlaid on the moment 0 map of H13CO+ above the 5σ level.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "residual_map",
+    "panels": 1,
+    "shows": "N(H2) column density map derived from H13CO+ emission above the 3σ level, with cores from Xu et al. (2024a) marked.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H2 column density N(H2)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. N(H2) peak 4e24 cm-2 near cores 5-7",
+     "approx. N(H2) 0.5e24 to 1.5e24 cm-2 over much of the filamentary region"
+    ],
+    "caption_quote": "N(H2) column density map of the observed region derived using the H13CO+ line emission above the 3σ level.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Filaments from the 1.3 mm continuum overlaid on the H13CO+ (1-0) intensity-weighted velocity map, with olive and green primary filament paths F1-F2 and F3-F4 used for PV diagrams.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. velocity range -53 to -47 km s-1"
+    ],
+    "caption_quote": "The olive and green colors mark the primary filament paths (i.e., F1-F2 and F3-F4, respectively) used to derive the PV diagrams.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Position-velocity diagrams of intensity-weighted velocity along filament paths F1-F2 (upper) and F3-F4 (lower) with linear least-squares velocity gradient fits, sampled every 0.016 pc.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Offset along filament",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. F1 velocity gradient -17.78 km s-1 pc-1",
+     "approx. F3 velocity gradient -22.12 km s-1 pc-1",
+     "approx. F4 velocity gradient 10.86 km s-1 pc-1",
+     "approx. F1 minimum velocity -51.6 km s-1 at 0.105 pc"
+    ],
+    "caption_quote": "The upper panel shows the PV diagram along the filament path F1 and F2, and the lower panel shows the PV along F3 and F4.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "schematic",
+    "panels": 3,
+    "shows": "Average spectra of H13CO+, CCH and CH3OH (13(1,12)-13(0,13)) for core 8 and H13CN (4-3) for cores 10 and 13, with single Gaussian fits giving centroid velocity and dispersion.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "TMB"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 8 CH3OH centroid -50.18 km/s, sigma 2.15 km/s",
+     "approx. core 10 H13CN centroid -49.31 km/s, sigma 1.02 km/s",
+     "approx. core 13 H13CN centroid -50.30 km/s, sigma 0.83 km/s"
+    ],
+    "caption_quote": "The spectra of CH3OH (131,12–130,13) and H13CN (4–3) are fitted with a single Gaussian (red dashed line) to derive the centroid velocity (µ) and velocity dispersion (σ).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "H13CO+ spectra of protostellar cores (left) and prestellar core candidates (right), with the protocluster systemic velocity marked by a green line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Vlsr of protocluster -50 km s-1",
+     "approx. core 9 H13CO+ peak near -51 km s-1"
+    ],
+    "caption_quote": "H13CO+ spectra of the protostellar cores (left) and prestellar core candidates (right) in the region. The vertical green line shows the Vlsr of the protocluster.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Extracted CCH spectra of protostellar cores (left) and prestellar core candidates (right), with the protocluster systemic velocity marked by a green line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 14 CCH peak near -48.5 km s-1 at about 25 K offset scale",
+     "approx. Vlsr of protocluster -50 km s-1"
+    ],
+    "caption_quote": "Extracted CCH spectra of the protostellar cores (left) and prestellar core candidates (right). The vertical green line shows the Vlsr of the protocluster.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "model_vs_data",
+    "panels": 5,
+    "shows": "Hill5 model fits (blue or red) to H13CO+ spectra (black) of cores 5, 8, 9, 12 and 13, with the Vlsr from the fit marked as a green dashed line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "TMB",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Checks how well the Hill5 line-profile model reproduces the observed H13CO+ spectra of each core, including double-peaked profiles.",
+    "readable_values": [
+     "approx. core 5 peak 4.3 K near -51 km/s",
+     "approx. core 13 red peak 2.5 K near -49 km/s",
+     "approx. core 12 peak 2.5 K near -51 km/s"
+    ],
+    "caption_quote": "Model fit to the H13CO+ spectral profiles (shown in black) of the cores. The profiles show the best-fit results with the Hill5 model (De Vries & Myers 2005).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "model_vs_data",
+    "panels": 5,
+    "shows": "Hill5 model fits to CCH spectra (black) of cores 6, 7, 10, 11 and 12, with the remaining symbols as in Figure 9.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "TMB",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Checks Hill5 model fits to CCH spectra of cores with blue, red and single-peaked profiles.",
+    "readable_values": [
+     "approx. core 10 peak 4 K near -48.5 km/s",
+     "approx. core 12 peak 6.3 K near -50.5 km/s",
+     "approx. core 6 peak 1.7 K near -50.5 km/s"
+    ],
+    "caption_quote": "Model fit to the CCH spectral profiles (shown in black) of the cores. The remaining symbols are the same as in the caption of Figure 9.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Core radius versus mass for protostellar cores (red) and prestellar core candidates (purple), with the m(r) > 870 Msun (r/pc)^1.33 threshold region and surface density lines at 0.05 and 1 g cm-2 and an 8 Msun reference.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Core radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Core mass",
+      "units": "Msun"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Surface density thresholds",
+      "units": "g cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 7 mass 10 Msun at radius 0.018 pc",
+     "approx. core 5 mass 4 Msun",
+     "approx. core 2 mass 1.4 Msun at radius 0.033 pc"
+    ],
+    "caption_quote": "The radii vs masses of the cores. The red circles mark the protostellar cores, while the purple circles represent the prestellar core candidates.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Integrated intensity (upper) and intensity-weighted velocity (lower) of H13CO+ sampled along filament F3-F4, with core positions marked by their profile type (blue, red, single-peaked magenta).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Offset along filament",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Integrated intensity",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. integrated intensity peak 0.64 Jy beam-1 km/s at 0.18 pc",
+     "approx. velocity -48.5 km/s at 0.0 pc",
+     "approx. velocity -50.4 km/s at 0.16 pc"
+    ],
+    "caption_quote": "The upper panel shows the distributions of integrated intensity along filament F3-F4, while the lower panel displays the intensity-weighted velocity (PV) along the same filament using H13CO+(see Figure 4).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 12,
+  "caption_quotes_ok": 12,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 2,
+  "reproduction_targets": 5,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 8,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 9,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 11,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 12,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 2,
+    "shows": "Continuum maps of the protocluster at 3 mm (ATOMS) and 1.3 mm (QUARKS), with dense cores identified at 870 µm by Xu et al. (2024a) overlaid as ellipses; red marks protostellar cores and black prestellar core candidates.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Intensity",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. 1.3 mm colour scale spans -0.002 to 0.008 Jy/beam",
+     "approx. scale bar 0.1 pc"
+    ],
+    "caption_quote": "The continuum map of the protocluster at 3 mm (left panel) from the ATOMS survey and 1.3 mm (right panel) from the QUARKS survey.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "H13CO+ filaments identified on the moment 0 map (red longest filament, green others) and 1.3 mm continuum filaments (orange) with F1-F4 labelled, overlaid with cores from Xu et al. (2024a).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H13CO+ brightness",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "colour",
+      "quantity": "1.3 mm intensity",
+      "units": "Jy beam-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. H13CO+ brightness up to 0.6 Jy beam-1 km s-1",
+     "approx. 1.3 mm intensity up to 0.008 Jy beam-1"
+    ],
+    "caption_quote": "The identified H13CO+ filaments overlaid on the moment 0 map of H13CO+ above the 5σ level.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "residual_map",
+    "panels": 1,
+    "shows": "N(H2) column density map derived from H13CO+ emission above the 3σ level, with cores from Xu et al. (2024a) marked.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H2 column density N(H2)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. N(H2) peak 4e24 cm-2 near cores 5-7",
+     "approx. N(H2) 0.5e24 to 1.5e24 cm-2 over much of the filamentary region"
+    ],
+    "caption_quote": "N(H2) column density map of the observed region derived using the H13CO+ line emission above the 3σ level.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Filaments from the 1.3 mm continuum overlaid on the H13CO+ (1-0) intensity-weighted velocity map, with olive and green primary filament paths F1-F2 and F3-F4 used for PV diagrams.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA (ICRS)",
+      "units": "hh:mm:ss"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec (ICRS)",
+      "units": "dd:mm:ss"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. velocity range -53 to -47 km s-1"
+    ],
+    "caption_quote": "The olive and green colors mark the primary filament paths (i.e., F1-F2 and F3-F4, respectively) used to derive the PV diagrams.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Position-velocity diagrams of intensity-weighted velocity along filament paths F1-F2 (upper) and F3-F4 (lower) with linear least-squares velocity gradient fits, sampled every 0.016 pc.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Offset along filament",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. F1 velocity gradient -17.78 km s-1 pc-1",
+     "approx. F3 velocity gradient -22.12 km s-1 pc-1",
+     "approx. F4 velocity gradient 10.86 km s-1 pc-1",
+     "approx. F1 minimum velocity -51.6 km s-1 at 0.105 pc"
+    ],
+    "caption_quote": "The upper panel shows the PV diagram along the filament path F1 and F2, and the lower panel shows the PV along F3 and F4.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "schematic",
+    "panels": 3,
+    "shows": "Average spectra of H13CO+, CCH and CH3OH (13(1,12)-13(0,13)) for core 8 and H13CN (4-3) for cores 10 and 13, with single Gaussian fits giving centroid velocity and dispersion.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "TMB"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 8 CH3OH centroid -50.18 km/s, sigma 2.15 km/s",
+     "approx. core 10 H13CN centroid -49.31 km/s, sigma 1.02 km/s",
+     "approx. core 13 H13CN centroid -50.30 km/s, sigma 0.83 km/s"
+    ],
+    "caption_quote": "The spectra of CH3OH (131,12–130,13) and H13CN (4–3) are fitted with a single Gaussian (red dashed line) to derive the centroid velocity (µ) and velocity dispersion (σ).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "H13CO+ spectra of protostellar cores (left) and prestellar core candidates (right), with the protocluster systemic velocity marked by a green line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Vlsr of protocluster -50 km s-1",
+     "approx. core 9 H13CO+ peak near -51 km s-1"
+    ],
+    "caption_quote": "H13CO+ spectra of the protostellar cores (left) and prestellar core candidates (right) in the region. The vertical green line shows the Vlsr of the protocluster.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Extracted CCH spectra of protostellar cores (left) and prestellar core candidates (right), with the protocluster systemic velocity marked by a green line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Brightness temperature plus offset",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 5,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 14 CCH peak near -48.5 km s-1 at about 25 K offset scale",
+     "approx. Vlsr of protocluster -50 km s-1"
+    ],
+    "caption_quote": "Extracted CCH spectra of the protostellar cores (left) and prestellar core candidates (right). The vertical green line shows the Vlsr of the protocluster.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "model_vs_data",
+    "panels": 5,
+    "shows": "Hill5 model fits (blue or red) to H13CO+ spectra (black) of cores 5, 8, 9, 12 and 13, with the Vlsr from the fit marked as a green dashed line.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "TMB",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Checks how well the Hill5 line-profile model reproduces the observed H13CO+ spectra of each core, including double-peaked profiles.",
+    "readable_values": [
+     "approx. core 5 peak 4.3 K near -51 km/s",
+     "approx. core 13 red peak 2.5 K near -49 km/s",
+     "approx. core 12 peak 2.5 K near -51 km/s"
+    ],
+    "caption_quote": "Model fit to the H13CO+ spectral profiles (shown in black) of the cores. The profiles show the best-fit results with the Hill5 model (De Vries & Myers 2005).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "model_vs_data",
+    "panels": 5,
+    "shows": "Hill5 model fits to CCH spectra (black) of cores 6, 7, 10, 11 and 12, with the remaining symbols as in Figure 9.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Velocity",
+      "units": "km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "TMB",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 5,
+    "validation_check": "Checks Hill5 model fits to CCH spectra of cores with blue, red and single-peaked profiles.",
+    "readable_values": [
+     "approx. core 10 peak 4 K near -48.5 km/s",
+     "approx. core 12 peak 6.3 K near -50.5 km/s",
+     "approx. core 6 peak 1.7 K near -50.5 km/s"
+    ],
+    "caption_quote": "Model fit to the CCH spectral profiles (shown in black) of the cores. The remaining symbols are the same as in the caption of Figure 9.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Core radius versus mass for protostellar cores (red) and prestellar core candidates (purple), with the m(r) > 870 Msun (r/pc)^1.33 threshold region and surface density lines at 0.05 and 1 g cm-2 and an 8 Msun reference.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Core radius",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Core mass",
+      "units": "Msun"
+     },
+     {
+      "axis": "colour",
+      "quantity": "Surface density thresholds",
+      "units": "g cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 7,
+    "validation_check": "",
+    "readable_values": [
+     "approx. core 7 mass 10 Msun at radius 0.018 pc",
+     "approx. core 5 mass 4 Msun",
+     "approx. core 2 mass 1.4 Msun at radius 0.033 pc"
+    ],
+    "caption_quote": "The radii vs masses of the cores. The red circles mark the protostellar cores, while the purple circles represent the prestellar core candidates.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 12,
+    "kind": "pv_diagram",
+    "panels": 2,
+    "shows": "Integrated intensity (upper) and intensity-weighted velocity (lower) of H13CO+ sampled along filament F3-F4, with core positions marked by their profile type (blue, red, single-peaked magenta).",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "Offset along filament",
+      "units": "pc"
+     },
+     {
+      "axis": "y",
+      "quantity": "Integrated intensity",
+      "units": "Jy beam-1 km s-1"
+     },
+     {
+      "axis": "y",
+      "quantity": "Intensity weighted velocity",
+      "units": "km s-1"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 3,
+    "validation_check": "",
+    "readable_values": [
+     "approx. integrated intensity peak 0.64 Jy beam-1 km/s at 0.18 pc",
+     "approx. velocity -48.5 km/s at 0.0 pc",
+     "approx. velocity -50.4 km/s at 0.16 pc"
+    ],
+    "caption_quote": "The upper panel shows the distributions of integrated intensity along filament F3-F4, while the lower panel displays the intensity-weighted velocity (PV) along the same filament using H13CO+(see Figure 4).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

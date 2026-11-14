@@ -1,0 +1,1236 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...867...48I",
+  "title": "Circumnuclear Multiphase Gas in the Circinus Galaxy. II. The Molecular and Atomic Obscuring Structures Revealed with ALMA",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Izumi, Takuma",
+  "n_authors": 5,
+  "arxiv_id": "1809.09154",
+  "doi": "10.3847/1538-4357/aae20b",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01613.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We used the Atacama Large Millimeter/Submillimeter Array (ALMA) to map the CO(3–2) and [C I](1–0) lines, as well as their underlying continuum emission, from the central $\\sim 200$ pc region of the Circinus galaxy"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "Circinus galaxy",
+     "coordinates": {
+      "value": "14h13m09.950s, -65d20m21.0s (J2000, phase center)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "We set the phase tracking center to ($\\alpha_{\\rm J2000.0}$, $\\delta_{\\rm J2000.0}$) = (14$^{\\rm h}$13$^{\\rm m}$09$^{\\rm s}$.950, $-$65$\\ensuremath{^\\circ}$20$\\ensuremath{'}$21$\\ensuremath{''}$.0)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the geometry, mass, chemistry and kinematics of the molecular (CO) and atomic (CI) gas in the Circinus circumnuclear disk, and do they support the radiation-driven fountain model of the AGN torus?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Our aim is to investigate the nature of the circumnuclear obscuring material, by focusing particularly on the differences in the dynamical or geometrical structures as a function of the phase of the gas (molecular vs. atomic)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01613.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "as a Cycle 4 program (ID = 2016.1.01613.S, PI = T. Izumi)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 and Band 8",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "We observed Circinus with ALMA Band 7 and 8 during 2016–2017 using 42–47 antennas"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four 1.875 GHz spectral windows, one covering CO(3–2) or [C I](1–0); 2SB dual polarization",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "one of the four spectral windows (each with a width of 1.875 GHz) was used to fully cover the CO(3–2) or [C I](1–0) emission lines, both in the 2SB dual-polarization mode."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=3–2",
+     "rest_frequency": "345.7960 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "CO(3–2) ($\\nu_{\\rm rest}$ = 345.7960 GHz) and the [C I](1–0) ($\\nu_{\\rm rest}$ = 492.1607 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "[C I]",
+     "transition": "3P1–3P0",
+     "rest_frequency": "492.1607 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "CO(3–2) ($\\nu_{\\rm rest}$ = 345.7960 GHz) and the [C I](1–0) ($\\nu_{\\rm rest}$ = 492.1607 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15–704 m and 15–1124 m (Band 7); 15–287 m (Band 8)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2017 May 5  | 47                 | 15–1124  | 42.5           | J1427-4206 | J1424-6807 | J1427-4206 | $\\sim 140$    |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "CO(3–2) 0.29x0.24 arcsec (5.9x4.9 pc); [CI](1–0) 0.71x0.66 arcsec (14.5x13.4 pc)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| CO(3–2) | 345.796 | 0.29 $\\times$ 0.24 (153.6) | 5.9 $\\times$ 4.9 | 0.37 | 301 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~7'' (Band 7), ~5'' (Band 8)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The expected maximum recoverable scales per pointing are $\\sim 7\\ensuremath{''}$ (Band 7) and $\\sim 5\\ensuremath{''}$ (Band 8)."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 0.37 (CO), 0.08 (B7 cont), 3.10 ([CI]), 0.80 (B8 cont) mJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $[$C I$]$(1–0) | 492.161 | 0.71 $\\times$ 0.66 (95.9) | 14.5 $\\times$ 13.4 | 3.10 | 1435 |"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "42.5 min per Band 7 execution; 31.5 min Band 8",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| [C I](1–0) | 2017 Mar 18 | 43 | 15–287 | 31.5 |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Nov 24, 2016 Nov 26, 2017 May 5 (Band 7); 2017 Mar 18 (Band 8)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| [C I](1–0) | 2017 Mar 18 | 43 | 15–287 | 31.5 | J1427-4206 | J1424-6807 | J1427-4206 | $\\sim 500$ |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Cycle 4 program, PI T. Izumi",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "as a Cycle 4 program (ID = 2016.1.01613.S, PI = T. Izumi)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HST",
+     "provided": {
+      "value": "PC F656N, F606W, F814W images from Hubble Legacy Archive (Halpha map, F814 for Ks/F814 ratio)",
+      "evidence": [
+       {
+        "loc": "2.2 Ancillary data",
+        "quote": "We retrieved the *Hubble Space Telescope (HST)* Planetary Camera images (PC-F656N, F606W, F814W) of Circinus from the Hubble Legacy Archive"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/NaCo",
+     "provided": {
+      "value": "Ks-band image",
+      "evidence": [
+       {
+        "loc": "2.2 Ancillary data",
+        "quote": "We also use the $Ks$-band image obtained with the NaCo/VLT (cite: 2016MNRAS.457L..94M)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "APEX single-dish CO(3–2) and [CI] fluxes used for missing-flux estimates and line ratio comparison",
+      "evidence": [
+       {
+        "loc": "4.1 CO(3–2) map",
+        "quote": "a roughly $\\sim 50\\%$ of the total CO(3–2) line flux has been resolved out compared to the APEX single dish data (cite: 2014A&A...568A.122Z)"
+       }
+      ]
+     },
+     "citation": "(cite: 2014A&A...568A.122Z)"
+    },
+    {
+     "what": {
+      "value": "X-ray luminosity L44=0.13 (photon index 1.31, cutoff 160 keV) for XDR estimate",
+      "evidence": [
+       {
+        "loc": "4.3 line ratio",
+        "quote": "we adopted $L_{44} = 0.13$ (with a photon index = 1.31 and cut-off energy = 160 keV) from (cite: 2014ApJ...791...81A)"
+       }
+      ]
+     },
+     "citation": "(cite: 2014ApJ...791...81A)"
+    },
+    {
+     "what": {
+      "value": "Black hole mass 1.7e6 Msun from H2O masers",
+      "evidence": [
+       {
+        "loc": "1.1 Our target",
+        "quote": "$M_{\\rm BH} = (1.7\\pm0.3) \\times 10^6~M_\\odot$ (cite: 2003ApJ...590..162G)"
+       }
+      ]
+     },
+     "citation": "(cite: 2003ApJ...590..162G)"
+    },
+    {
+     "what": {
+      "value": "Ks and HST F814 data for warm dust ratio map",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "We thank Dr. M. Mezcua for kindly providing us the NIR $Ks$-band and *HST*/F814 data."
+       }
+      ]
+     },
+     "citation": "(cite: 2016MNRAS.457L..94M)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Snapshot of the multi-phase dynamic (radiation-driven fountain) torus model tuned for Circinus, with non-equilibrium XDR chemistry and post-processed non-LTE radiative transfer for CO(3–2) and [CI](1–0); r~16 pc, M_H2 = 2e6 Msun, 128^3 grids at 0.25 pc",
+     "evidence": [
+      {
+       "loc": "6.1 Line intensities",
+       "quote": "The simulated CND has a circular gas distribution for simplicity with $r \\simeq 16$ pc, with the total $M_{\\rm H_2}$ of $2 \\times 10^6~M_\\odot$ (128$^3$ grids; 0.25 pc resolution)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.7",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Data reduction, calibration, and analyses were performed with CASA version 4.7 (cite: 2007ASPC..376..127M) in the usual way."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1427-4206 (or J1617-5848 on 2016 Nov 26)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 2016 Nov 26 | 42 | 17–704 | 42.5 | J1427-4206 | J1424-6807 | J1617-5848 | $\\sim 140$ |"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The absolute flux uncertainty is $\\sim 10\\%$ according to the ALMA Cycle 4 Proposer’s Guide"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The line and underlying continuum emission were reconstructed using the `CLEAN` task with Briggs weighting (robust = 0.5)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The line and underlying continuum emission were reconstructed using the `CLEAN` task with Briggs weighting (robust = 0.5)."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.03'' (Band 7), 0.1'' (Band 8)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "the pixel scale of Band 7 maps is set to 0$\\ensuremath{''}$.03, whereas that of Band 8 maps is 0$\\ensuremath{''}$.1"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Emission <1.5 sigma clipped in displayed images; moment 1/2 maps with 10 sigma clipping",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "emission with $<1.5\\sigma$ are clipped to enhance the clarity of the images"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Subtracted in the uv plane before line cubes",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "These continuum emission were subtracted in the $uv$ plane before making the line cubes."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied when comparing with APEX fluxes",
+     "evidence": [
+      {
+       "loc": "4.1 CO(3–2) map",
+       "quote": "After convolving the map to an 18$\\ensuremath{''}$ aperture and correcting for the primary beam attenuation"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Channels binned to ~10 km/s; CO(3–2) uv range (25–470 kλ) and beam matched to [CI] (0.71x0.66)",
+     "evidence": [
+      {
+       "loc": "4.3 line ratio",
+       "quote": "We first adjust the $uv$ range and the beam size of the CO(3–2) data to those of the \\[C I\\](1–0) data (25–470 k$\\lambda$, $0\\ensuremath{''}.71 \\times 0\\ensuremath{''}.66$ with PA = 96$\\ensuremath{^\\circ}$)."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "CO 0.29x0.24 (PA 153.6); [CI] 0.71x0.66 (PA 95.9)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| CO(3–2) | 345.796 | 0.29 $\\times$ 0.24 (153.6) | 5.9 $\\times$ 4.9 | 0.37 | 301 |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "CO 0.37, B7 cont 0.08, [CI] 3.10, B8 cont 0.80 mJy/beam; matched CO cube 0.54 mJy/beam",
+     "evidence": [
+      {
+       "loc": "4.3 line ratio",
+       "quote": "The resultant CO(3–2) cube has a 1$\\sigma$ sensitivity of 0.54 mJy beam$^{-1}$ at a velocity resolution of 10 km s$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Multi-phase dynamic torus model tuned for Circinus, used for comparisons",
+      "evidence": [
+       {
+        "loc": "6.1 Line intensities",
+        "quote": "we used a snapshot of our multi-phase dynamic torus model tuned for Circinus (cite: 2016ApJ...828L..19W)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016ApJ...828L..19W)"
+    },
+    {
+     "what": {
+      "value": "Non-LTE radiative transfer procedure for CO lines, applied here to [CI](1–0)",
+      "evidence": [
+       {
+        "loc": "6.1 Line intensities",
+        "quote": "Their procedure was fully applied to the case of the \\[C I\\](1–0) in this work."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2018ApJ...852...88W)"
+    },
+    {
+     "what": {
+      "value": "C I mass equation",
+      "evidence": [
+       {
+        "loc": "4.2 [C I](1–0) map",
+        "quote": "We first estimate the atomic carbon mass ($M_{\\rm CI}$) by following (cite: 2002ApJS..139..467I) and (cite: 2005A&A...429L..25W)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2002ApJS..139..467I); (cite: 2005A&A...429L..25W)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image sizes, clean thresholds, masks, and deconvolver settings",
+    "Line-free channels and continuum fitting order for uv continuum subtraction",
+    "Exact channel binning and velocity range per cube",
+    "Flux calibrator models/values and any self-calibration",
+    "3DBarolo parameter settings (initial guesses, weighting, mask, fit bounds)",
+    "Alpha_CO value used (0.8 stated in Sect. 6 only) and conversion details",
+    "UVMULTIFIT initial values and fitting setup",
+    "Region definitions of AGN, CND and 10'' box apertures for flux ratios",
+    "Distance to Circinus used for pc scale conversions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and line cubes",
+    "method": {
+     "value": "CASA CLEAN with Briggs robust 0.5; channels binned to ~10 km/s; uv-plane continuum subtraction",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The line and underlying continuum emission were reconstructed using the `CLEAN` task with Briggs weighting (robust = 0.5)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Continuum nature and spectral index",
+    "method": {
+     "value": "Compare Band 7 and 8 flux at AGN position after matching uv range and beam; compare synchrotron extrapolation from 6 cm",
+     "evidence": [
+      {
+       "loc": "3.2 Physical nature",
+       "quote": "A Band 8 to 7 flux density ratio at the AGN position, after matching the Band 7 $uv$ range and beam size to the Band 8 ones"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Synchrotron spectral index -0.7",
+      "evidence": [
+       {
+        "loc": "3.2 Physical nature",
+        "quote": "with a typical synchrotron spectral index[^4] of $\\alpha = -0.7$ is only $\\sim 2.5$ mJy"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit compact and extended continuum components in the visibility plane",
+    "method": {
+     "value": "Two-component 2D Gaussian fit to Band 7 visibilities",
+     "evidence": [
+      {
+       "loc": "3.4 The polar elongation",
+       "quote": "Here we performed a two-dimensional *double* Gaussian fit to this visibility data"
+      }
+     ]
+    },
+    "software": [
+     "UVMULTIFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Visibility-plane Gaussian model fit; sampler not stated",
+     "evidence": [
+      {
+       "loc": "Continuum Emission, The polar elongation",
+       "quote": "Here we performed a two-dimensional *double* Gaussian fit to this visibility data"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with MIR polar elongation size and PA",
+     "evidence": [
+      {
+       "loc": "3.4 The polar elongation",
+       "quote": "are roughly consistent with those of the MIR polar elongation ($\\sim 1.9$ pc and $\\sim 287\\ensuremath{^\\circ}$, respectively)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "CND size and molecular mass",
+    "method": {
+     "value": "IMFIT 2D Gaussian on 3''x3'' CO(3–2) moment 0; CO(3–2) assumed thermalized with CO(1–0); L'CO to M_H2 with canonical alpha_CO",
+     "evidence": [
+      {
+       "loc": "4.1.2 The CND",
+       "quote": "We assume that the CO(3–2) emission there (integrated intensity = 805 Jy km s$^{-1}$) is thermalized with that of CO(1–0)"
+      }
+     ]
+    },
+    "software": [
+     "CASA IMFIT",
+     "CASA IMMOMENTS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO(3–2)/CO(1–0) thermalized; canonical alpha_CO in active environments (0.8 Msun (K km/s pc2)^-1)",
+      "evidence": [
+       {
+        "loc": "6.1 Line intensities",
+        "quote": "$\\alpha_{\\rm CO} = 0.8$ $M_\\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with [CI]-based M_H2",
+     "evidence": [
+      {
+       "loc": "4.2 [C I](1–0) map",
+       "quote": "This is consistent with the CO(3–2)-based $M_{\\rm H_2}$ derived in § 4.1.2."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Atomic carbon mass and M_H2",
+    "method": {
+     "value": "Optically thin LTE M_CI equation with Tex = 30 K; C I/H2 abundance 8e-5",
+     "evidence": [
+      {
+       "loc": "4.2 [C I](1–0) map",
+       "quote": "If we adopt a relative C I abundance with respect to H$_2$ as $8 \\times 10^{-5}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Tex=30 K, tau<~1",
+      "evidence": [
+       {
+        "loc": "4.2 [C I](1–0) map",
+        "quote": "Then we achieve $M_{\\rm CI} \\simeq 1770~M_\\odot$ within the CND by assuming that $T_{\\rm ex} = 30$ K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "[CI]/CO line ratio and XDR interpretation",
+    "method": {
+     "value": "Ratio on matched uv/beam maps; one-zone XDR model H_X/n estimate",
+     "evidence": [
+      {
+       "loc": "4.3 line ratio",
+       "quote": "we can estimate the X-ray energy deposition rate per particle ($H_X/n$)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "n_H2 = 1e5 cm^-3, r = 7 pc",
+      "evidence": [
+       {
+        "loc": "4.3 line ratio",
+        "quote": "as well as $n_{\\rm H_2} = 10^5$ cm$^{-3}$ as a typical value"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Tilted-ring kinematics",
+    "method": {
+     "value": "Fit concentric rings to cubes, free Vrot, sigma, i, PA; dynamical center fixed at AGN, Vsys = 446 km/s; 50 rings (0.15'') on full-resolution CO, 20 rings (0.25'') on matched cubes",
+     "evidence": [
+      {
+       "loc": "5.2 Decomposition",
+       "quote": "$V_{\\rm rot}$, $\\sigma_{\\rm disp}$, $i$, and PA were thus the major free parameters and were evaluated by minimizing $|$model$-$observed data$|$."
+      }
+     ]
+    },
+    "software": [
+     "3DBarolo"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "sigma/Vrot ~ H/R under hydrostatic equilibrium",
+      "evidence": [
+       {
+        "loc": "5.2.1",
+        "quote": "This ratio can be considered as a scale height ($H$) to scale radius ($R$) ratio"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Minimize |model-observed|; no sampler stated",
+     "evidence": [
+      {
+       "loc": "Molecular and Atomic Gas Dynamics, Decomposition with tilted rings",
+       "quote": "were thus the major free parameters and were evaluated by minimizing $|$model$-$observed data$|$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare model and observed PVDs and residual map; compare full-resolution and matched results",
+     "evidence": [
+      {
+       "loc": "5.2.1",
+       "quote": "The overall structures are well reproduced by a combination of gas rotation and dispersion"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Multi-Gaussian fit to nuclear spectra and compare with model",
+    "method": {
+     "value": "Single and triple Gaussian fits to AGN-position spectra, observed and simulated at i=75 deg",
+     "evidence": [
+      {
+       "loc": "5.2.2",
+       "quote": "adding two more components (i.e., triple Gaussians) can fit the observed nuclear [C I](1–0) spectrum more faithfully"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistency of outflow velocities with model",
+     "evidence": [
+      {
+       "loc": "6.2",
+       "quote": "The blueshifted and redshifted features emerge at around the coherent outflow velocity of $\\sim 50-60$ km s$^{-1}$ in our model."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7",
+    "used_for": {
+     "value": "Reduction, calibration, CLEAN imaging, IMMOMENTS, IMFIT",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Data reduction, calibration, and analyses were performed with CASA version 4.7"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIRIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Some analyses",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Some parts of our analyses were also performed with the MIRIAD package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMULTIFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Visibility model fitting of Band 7 continuum",
+     "evidence": [
+      {
+       "loc": "3.4 The polar elongation",
+       "quote": "we applied the `UVMULTIFIT` procedure (cite: 2014A&A...563A.136M) to the Band 7 continuum visibility data"
+      }
+     ]
+    }
+   },
+   {
+    "name": "3DBarolo",
+    "version": "not stated",
+    "used_for": {
+     "value": "Tilted-ring fits",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "we fitted concentric titled rings to the observed velocity structures with the $^{\\rm 3D}$Barolo code"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Band 7 total continuum flux (10'' box)",
+    "value": "66.5",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The total fluxes are $\\sim 66.5$ mJy (Band 7) and $\\sim 320$ mJy (Band 8) within the 10$\\ensuremath{''}$ box."
+     }
+    ]
+   },
+   {
+    "quantity": "Band 8 total continuum flux (10'' box)",
+    "value": "320",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "The total fluxes are $\\sim 66.5$ mJy (Band 7) and $\\sim 320$ mJy (Band 8) within the 10$\\ensuremath{''}$ box."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust emissivity index beta",
+    "value": "1.72 (spectral index 3.72)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "revealed a steep spectral index of 3.72, or dust emissivity index [^5] of $\\beta = 1.72$"
+     }
+    ]
+   },
+   {
+    "quantity": "Component-1 integrated flux (Band 7)",
+    "value": "20.7",
+    "uncertainty": "1.3",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "|   Integrated flux (mJy)    | 20.7 $\\pm$ 1.3 | 73.5 $\\pm$ 1.6 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Component-1 size",
+    "value": "1.6 x 1.2 pc, PA 298",
+    "uncertainty": "±0.3, ±0.1 pc; ±21 deg",
+    "units": "pc, deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "The derived source size ($1.6 \\pm 0.3$ pc $\\times$ $1.2 \\pm 0.1$ pc) and PA ($298\\ensuremath{^\\circ} \\pm 21\\ensuremath{^\\circ}$) of Component-1"
+     }
+    ]
+   },
+   {
+    "quantity": "CND deconvolved size",
+    "value": "74 x 34 pc, PA 212.0",
+    "uncertainty": "±3, ±1 pc; ±1.9 deg",
+    "units": "pc, deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "or (74 $\\pm$ 3) pc $\\times$ (34 $\\pm$ 1) pc with PA = $212.0\\ensuremath{^\\circ} \\pm 1.9\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CND M_H2 (CO-based)",
+    "value": "3e6",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "We estimate the molecular mass of the CND to be $M_{\\rm H_2} \\simeq 3 \\times 10^6~M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "N_H2 toward AGN",
+    "value": "5.4e23",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "as $N_{\\rm H_2} = 5.4 \\times 10^{23}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_CI in CND",
+    "value": "1770",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$M_{\\rm CI} \\simeq 1770~M_\\odot$ within the CND by assuming that $T_{\\rm ex} = 30$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "M_H2 from [CI]",
+    "value": "3.7e6",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "we obtain $M_{\\rm H_2}$ of $\\simeq 3.7 \\times 10^6~M_\\odot$ in the CND"
+     }
+    ]
+   },
+   {
+    "quantity": "R_CI/CO at AGN (Jy km/s, K km/s scales)",
+    "value": "1.80 / 0.89",
+    "uncertainty": "0.25 / 0.13",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| Jy km s$^{-1}$ | 1.80 $\\pm$ 0.25 | 1.03 $\\pm$ 0.15 |     0.97 $\\pm$ 0.14     |"
+     }
+    ]
+   },
+   {
+    "quantity": "log(H_X/n) at r=7 pc",
+    "value": "-27.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "as $\\log(H_X/n) = -27.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "sigma/Vrot at r>~15 pc and r<~10 pc (CO)",
+    "value": "~0.25 and ~0.4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2.1",
+      "quote": "the $\\sigma_{\\rm disp}$/$V_{\\rm rot}$ at $r \\gtrsim 15$ pc is $\\sim 0.25$, while the ratio at the central $r \\lesssim 10$ pc increases to $\\sim 0.4$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CI] outflow velocity offsets",
+    "value": "~75 blue, ~60 red",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.2.2",
+      "quote": "with a velocity offset of $\\sim 75$ km s$^{-1}$ (blue) and $\\sim 60$ km s$^{-1}$ (red), respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Continuum traces thermal dust; extended cold dust lies radially farther than warm dust in the Ks/F814 map",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "This indicates the existence of temperature-dependent dusty structures around this AGN."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Compact submm continuum shows polar elongation like MIR",
+    "experiment": "Double Gaussian visibility fit of Band 7",
+    "result": "Component-1 1.6x1.2 pc, PA 298 deg",
+    "finding": "Traces same structure as MIR polar elongation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.4",
+      "quote": "Therefore, we suggest that Component-1 traces the same physical structure as the MIR polar elongation."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CND contributes to nuclear obscuration",
+    "experiment": "CO(3–2)-derived mass and column density",
+    "result": "M_H2 ~3e6 Msun, N_H2 ~5.4e23 cm^-2 (beam-averaged)",
+    "finding": "CND is a significant part of the obscurer",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.2",
+      "quote": "Hence, we suggest that the CND indeed operates as a significant part of the nuclear obscurer."
+     }
+    ]
+   },
+   {
+    "hypothesis": "XDR chemistry elevates [CI]/CO at AGN",
+    "experiment": "Line ratio maps and XDR estimate",
+    "result": "R~0.9 at AGN vs ~0.3 in arms",
+    "finding": "XDR dissociation is a possible cause",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "Thus, we suggest that the molecular dissociation due to X-ray irradiation is significant at the close vicinity of the Circinus AGN"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Atomic gas is vertically more extended than molecular gas at r<~10 pc, driven by outflows",
+    "experiment": "Tilted-ring sigma/Vrot, triple Gaussian fits, model comparison",
+    "result": "sigma/Vrot ~0.4 ([CI]) vs ~0.15 (CO); outflow components ~±60–75 km/s",
+    "finding": "Supports the radiation-driven fountain scheme",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.2",
+      "quote": "we conclude that our results support the view that a radiation-driven fountain including outflows indeed functions in the central region of Circinus"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "[C I] observable with Band 8 probes diffuse atomic gas and XDR signatures, complementing dense molecular gas",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Thus, C I lines will be excellent probes of AGN signatures."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Synchrotron contamination of continuum rejected",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we first argue that contamination by such synchrotron emission is not significant at the ALMA Band 7 and 8 frequencies"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Significant missing flux (~50% CO, 45% recovered for [CI]) relative to single dish",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "a roughly $\\sim 50\\%$ of the total CO(3–2) line flux has been resolved out"
+      }
+     ]
+    },
+    {
+     "value": "Keplerian rotation evidence uncertain given large errors",
+     "evidence": [
+      {
+       "loc": "5.2.1",
+       "quote": "it is difficult at this moment to achieve a firmer conclusion given the large errors associated with the inner rings"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model comparison is qualitative; model amplitudes differ from observed",
+    "Distance, alpha_CO and Tex choices drive mass estimates",
+    "Beam dilution makes N_H2 a lower limit",
+    "Different beam/uv matching for CO and [CI] limits inner-ring comparisons"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given; ALMA data acknowledged by code",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01613.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Simulation snapshot of the fountain model not provided",
+    "3DBarolo settings and ring initial values",
+    "Clean masks and thresholds, line-free channels"
+   ],
+   "estimated_data_volume_inferred": "~100-200 GB raw for 4 execution blocks in Bands 7 and 8",
+   "score_inferred": 3,
+   "score_reason": "Public data and main numbers clear, but many imaging and fitting settings unstated and the model comparison relies on unreleased simulations.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results require unstated parameters and an unreleased model, though some ALMA-only numbers could be redone."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2015MNRAS.451.3021D)",
+     "why": "3DBarolo tilted-ring code"
+    },
+    {
+     "citation": "(cite: 2014A&A...563A.136M)",
+     "why": "UVMULTIFIT visibility fitting"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2018ApJ...852...88W)",
+     "why": "Paper I: model CO line predictions"
+    },
+    {
+     "citation": "(cite: 2016ApJ...828L..19W)",
+     "why": "Fountain torus model tuned for Circinus"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-9039a6a5ddf011bd283c903fa27966ae",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:38:00",
+  "usage": {
+   "input_tokens": 39970,
+   "output_tokens": 12577,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.103461,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 84,
+  "quotes_ok": 84,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 90,
+   "stated": 62,
+   "rate": 0.689
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:46",
+  "custom_id": "repair-sonnet-e5aae6c266c58bab2cadbbf7f2b52c4e",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "Here we performed a two-dimensional *double* Gaussian fit to this visibility data"
+   },
+   {
+    "path": "analysis_steps[6].fitting.evidence[0]",
+    "old": null,
+    "new": "were thus the major free parameters and were evaluated by minimizing $|$model$-$observed data$|$"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

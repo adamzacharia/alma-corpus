@@ -1,0 +1,239 @@
+{
+ "bibcode": "2018Natur.553..178S",
+ "title": "Rotation in [C II]-emitting gas in two galaxies at a redshift of 6.8",
+ "year": 2018,
+ "doi": "10.1038/nature24631",
+ "arxiv_id": "1706.04614",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can [C II] 158um confirm spectroscopically near-IR selected normal star-forming galaxies at z~7, and what are their [C II] luminosities, dust content and velocity structure?",
+ "alma_project_codes": [
+  "2015.1.01111.S"
+ ],
+ "data": {
+  "bands": "Band 6, ~241-245 GHz",
+  "arrays": "36 antennas",
+  "angular_resolution": "1.1\"x0.7\" (PA -48 deg), 5.8x3.7 kpc",
+  "sensitivity": "0.32 mJy/beam at 243 GHz in 50 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST and Spitzer photometry, photometric redshifts and [OIII]+Hbeta equivalent widths of the targets",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "the photometry of these objects that was used in the selection of these galaxies in previous work(cite: Smit2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Smit2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "Pipeline calibration in CASA, CLEAN with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect [C II] and measure redshift and width",
+   "method": "Extract spectrum, line-averaged map, Gaussian fit; S/N from 9000 random aperture measurements; blind line search with delta chi2>25",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dust continuum limit and IR luminosity",
+   "method": "Average line-free data, 3 sigma limit, grey body with beta_IR=1-2 and T_dust=20-60 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "grey body, beta_IR 1-2, T_dust 20-60 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SFR and stellar mass",
+   "method": "Kennicutt scaling relations for SFR; MAGPHYS+HIGHZ SED fit excluding 3.6um",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Velocity field and dynamical mass",
+   "method": "Per-pixel Gaussian fits (>5 sigma) for velocity gradient; estimates via Forster Schreiber approximation and thin exponential disk model fit with least squares and MCMC uncertainties",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "symmetric rotating circularly symmetric thin disk with exponential mass density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "z_[CII] COS-3018555981",
+   "value": "6.8540",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "6.8540$\\pm$0.0003"
+    }
+   ]
+  },
+  {
+   "quantity": "z_[CII] COS-2987030247",
+   "value": "6.8076",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "6.8076$\\pm$0.0002"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] (COS-3018555981, COS-2987030247)",
+   "value": "4.7, 3.6",
+   "uncertainty": "0.5, 0.5",
+   "units": "1e8 Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "4.7$\\pm$0.5 | 3.6$\\pm$0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM [CII]",
+   "value": "232, 124",
+   "uncertainty": "30, 18",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "232$\\pm$30 | 124$\\pm$18"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR 3sigma upper limits",
+   "value": "<1.3, <1.1",
+   "uncertainty": "not stated",
+   "units": "1e11 Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust",
+     "quote": "We derive a 3$\\sigma$ upper limit on the IR luminosity of 1.3 and 1.1$\\times10^{11}\\,L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected velocity difference",
+   "value": "111, 54",
+   "uncertainty": "28, 20",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Velocity structure and dynamical mass",
+     "quote": "$111\\pm28$ and $54\\pm20$ $\\rm km\\,s^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Delta v_obs/2 sigma_tot",
+   "value": "0.57, 0.52",
+   "uncertainty": "0.16, 0.21",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.57\\pm0.16$ | $0.52\\pm0.21$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn (disk model)",
+   "value": "1.0e10, 0.4e10",
+   "uncertainty": "+0.3/-0.2, +0.9/-0.3",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Velocity structure and dynamical mass",
+     "quote": "dynamical masses of $1.0_{-0.2}^{+0.3}$ and $0.4_{-0.3}^{+0.9}\\times 10^{10} \\, M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] half-light radius",
+   "value": "2.6, 3.1",
+   "uncertainty": "0.8, 1.0",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$2.6\\pm0.8$ | $3.1\\pm1.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "1.4, 1.7",
+   "uncertainty": "+0.7/-0.2, +0.5/-0.2",
+   "units": "1e9 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.4_{-0.2}^{+0.7}$ | $1.7_{-0.2}^{+0.5}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, and spectral cube channelization",
+  "Which channels were used for continuum averaging",
+  "Exact aperture/mask definitions for 1D spectra and half-max extraction",
+  "MCMC sampler, priors and chain settings of disk model",
+  "Conversion from continuum limit to L_IR (rest frequency, CMB correction)",
+  "MAGPHYS settings and priors"
+ ],
+ "missing_for_reproduction": [
+  "Imaging cell/image size and cube channelization",
+  "Disk model code and priors",
+  "MAGPHYS configuration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public small dataset and key methods stated, but imaging parameters and model code missing.",
+ "rediscovery_reason": "Public data, simple recipe, numeric line detections and redshifts.",
+ "source_card": "cards/2018Natur.553..178S/sonnet/card.md"
+}

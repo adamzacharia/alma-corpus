@@ -1,0 +1,766 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024MNRAS.534.3237M",
+  "title": "An independent hybrid imaging of Sgr A* from the data in EHT 2017 observations",
+  "year": 2024,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Miyoshi, Makoto",
+  "n_authors": 3,
+  "arxiv_id": "2410.19267",
+  "doi": "10.1093/mnras/stae1158",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.01154.V"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "1.1 Study Overview",
+    "quote": "In this paper we report the results of our analysis of the public EHT data of the Sgr A$^{*}$."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "milky_way_ism",
+    "instrumentation"
+   ],
+   "targets": [
+    {
+     "name": "Sgr A*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "about 8 kpc; mass ~4e6 Msun",
+      "evidence": [
+       {
+        "loc": "1.2 Prior radio research of Sgr A*",
+        "quote": "The distance from the Earth to the Galactic center is about 8 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the ring structure reported by the EHTC for Sgr A* real, or an artifact of the bumpy EHT 2017 PSF? Independent hybrid-mapping reimaging of the public EHT 2017 data.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We propose that the ring structure found by the Event Horizon Telescope Collaboration (EHTC) as the black hole shadow of Sgr A$^{*}$ is an artifact by the bumpy PSF (Point Spread Function) of the EHT2017."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "two recording channels at 227.1 and 229.1 GHz",
+    "evidence": [
+     {
+      "loc": "4.2.2 Residuals of closure phase",
+      "quote": "(227.1 and 229.1 GHz)"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "EHT 2017, eight stations including ALMA and SPT",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "The EHT observed Sgr A$^{*}$ in early April 2017 with a total of eight stations, including the Antarctic station"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "default restoring beam 23.0x15.3 uas, PA 66.6 deg; ~20 uas",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "yields a default restoring beam of $\\mathrm{(FWHM) =23.0\\times15.3~\\mu \\rm as}$ and $\\mathrm{PA= 66.6^{\\circ}}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "EHT 2017; analysis of April 7 data (April 6 in appendix)",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "Our data analysis focused on the April 7 data, which the EHTC analyzed in detail"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "EHT network (public EHTC data)",
+     "provided": {
+      "value": "Network-calibrated, HOPS-calibrated, LMT-corrected, normalized April 7 visibilities",
+      "evidence": [
+       {
+        "loc": "2 Observational data",
+        "quote": "Namely we analyzed data from April 7, i.e., calibrated by HOP, corrected for amplitude with respect to LMT, and normalized for time variability using measured intensities."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "EHTC ring image digitized from Figure 3 for residual comparison; ring diameter 51.8±2.3 uas, shadow 48.7±7.0 uas",
+      "evidence": [
+       {
+        "loc": "4.2 Reliability of our final image",
+        "quote": "we digitized Figure 3 in (cite: EHTC2022a) to obtain each coordinate value and the intensity at that coordinate."
+       }
+      ]
+     },
+     "citation": "(cite: EHTC2022a)"
+    },
+    {
+     "what": {
+      "value": "Intrinsic size and scattering scaling used for expected shape",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "Assuming that the intrinsic angular size of Sgr A$^{*}$ is proportional to the observed wavelength (cite: Johnson:2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Johnson:2018)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Simulated UVMOD datasets (noise only; 1 Jy point source) with EHT 2017 uv coverage, self-calibrated on ring models",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "We created two simulated data sets by using a AIPS task, UVMOD."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Public EHTC HOPS-calibrated data used as released",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "We selected the HOP-calibrated datasets because the CASA calibration data show a large difference in closure amplitude between channels of the raw data"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "phase-only self-cal, six steps, SOLINT=0.15 min, point-source initial model; no amplitude self-cal",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "The six steps of self-calibration were performed in phase-only mode."
+      },
+      {
+       "loc": "3.2",
+       "quote": "Data calibration using self-calibration solutions for amplitude was omitted due to the significant intensity variations in Sgr A$^{*}$"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "AIPS IMAGR CLEAN with hybrid mapping",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "hybrid mapping technique, which is commonly used in VLBI imaging and implemented in AIPS"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "FOV 1 mas square; CLEAN BOX 256 uas diameter",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "the CLEAN subtraction area is restricted by the BOX setting ($\\mathrm{256~\\mu \\rm as}$ in diameter)"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Gaussian beam 25 uas used for alternate image convolution",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "a $\\mathrm{25~\\mu \\rm as}$ Gaussian beam is used to convolve the CLEAN components"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SOLINT in CALIB set shorter than coherence time following earlier approach",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "following the same approach as in CALIB in (cite: Miyoshi2022a)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Miyoshi2022a)"
+    },
+    {
+     "what": {
+      "value": "LMT amplitude gains pre-corrected assuming 60 uas source size",
+      "evidence": [
+       {
+        "loc": "2 Observational data",
+        "quote": "According to Section 2-2 of (cite: EHTC2022c), the LMT amplitude gains were pre-corrected assuming a $\\mathrm{60~\\mu \\rm as}$ source size"
+       }
+      ]
+     },
+     "from_reference": "(cite: EHTC2022c)"
+    }
+   ],
+   "unstated_but_needed": [
+    "IMAGR ROBUSTNESS, GAIN and NITER values for the final image",
+    "Which candidate maps were averaged and how the final image was chosen",
+    "BOX positions for simulations",
+    "Weighting scheme and cell size",
+    "Software versions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Hybrid mapping of April 7 data",
+    "method": {
+     "value": "Iterate CLEAN imaging and phase-only self-calibration from a point-source start; choose among candidate images by residuals",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We started the hybrid mapping with a point source as the initial image model"
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [
+     {
+      "value": "SOLINT = 0.15 min, SNR cutoff 3, REFANT ALMA",
+      "evidence": [
+       {
+        "loc": "Appendix self-calibration table",
+        "quote": "APARM(7) (SNR cut off)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared residuals of normalized amplitude, closure phase and closure amplitude, and PSF features",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "compared the residuals of closure phases, closure amplitudes, and normalized amplitudes"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compare with EHTC ring via visibility residuals",
+    "method": {
+     "value": "Digitized EHTC image converted to visibilities with UVMOD at 1 Jy and residuals computed vs data",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "this numerical image data was input into the AIPS task, UVMOD, to create a visibility set"
+      }
+     ]
+    },
+    "software": [
+     "AIPS UVMOD"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared across integration times 10-900 s",
+     "evidence": [
+      {
+       "loc": "4.2.1 Residuals of normalized amplitude of our final image compared to those of the EHTC ring",
+       "quote": "Our final image consistently exhibits smaller means and standard deviations in the residuals than the case of the EHTC ring image, regardless of the integration time between $\\mathrm{T_{\\text{int}} = 10~sec}$ and $\\mathrm{T_{\\text{int}} = 900~sec}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Simulate ring artifacts",
+    "method": {
+     "value": "Self-calibrate noise-only and point-source data with ring models then CLEAN with narrow BOX; rings 30-70 uas",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "We made rings with diameters ranging from $\\mathrm{30}$ to $\\mathrm{70~\\mu \\rm as}$"
+      }
+     ]
+    },
+    "software": [
+     "AIPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "flux/rms ratio peaks at 50 uas",
+     "evidence": [
+      {
+       "loc": "5.2 Rings from the simulated data of other structures",
+       "quote": "It can be seen that the ring image with a diameter of $\\mathrm{50~\\mu \\rm as}$ shows the largest value and is the most plausible image among them."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Doppler boost interpretation",
+    "method": {
+     "value": "Brightness ratio of east peak to west dark spot gives v/c cosθ; radius and inclination derived",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "$\\frac{v}{c}\\cos\\theta =  0.438.$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "D=8 kpc, M=4e6 Msun, optically thin edge-on disk",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "Assuming a distance to the Galactic Center of $\\mathrm{D_{GC} = 8 kpc}$ and a black hole mass of $\\mathrm{4\\times10^6M_{\\odot}}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Hybrid mapping, CALIB, IMAGR, UVMOD, DBCON",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "implemented in AIPS (the NRAO Astronomical Image Processing System"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Normalized amplitude residual, our image (Tint=180 s)",
+    "value": "0.080 ± 0.397",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "$\\mathrm{NR_{ours} = 0.080 \\pm 0.397}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Normalized amplitude residual, EHTC ring (Tint=180 s)",
+    "value": "0.862 ± 1.552",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "$\\mathrm{NR_{EHTC} = 0.862 \\pm 1.552}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Closure phase residual, our image",
+    "value": "0.2 ± 58.1",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "$\\mathrm{Res_{cp} = 0.2 \\pm 58.1^\\circ}$"
+     }
+    ]
+   },
+   {
+    "quantity": "PSF first sidelobe spacing",
+    "value": "49.09",
+    "uncertainty": "not stated",
+    "units": "uas",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4.2.4",
+      "quote": "which is $\\mathrm{49.09~\\mu \\rm as}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness ratio Delta",
+    "value": "5.617",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$\\mathrm{\\Delta=\\frac{2.1701\\times 10^{-4}}{3.8635\\times 10^{-5}}=5.617}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inferred viewing angle",
+    "value": "~43.8",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "the viewing angle is estimated to be $\\mathrm{\\theta \\sim 43.8 ^{\\circ}}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Final image is east-west elongated with brighter east side, not a ring",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "our final image of Sgr A$^{*}$shows an east-west elongation with an asymmetry, the east side appearing brighter than the west side."
+     }
+    ]
+   },
+   {
+    "value": "Closure quantities differ between the two recording channels in all public data, suggesting internal inconsistency",
+    "evidence": [
+     {
+      "loc": "4.2.4",
+      "quote": "an unexplained closure discrepancy between recording channels is present in all EHTC data"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "EHTC ring is a PSF artifact",
+    "experiment": "Rings reproduced from noise-only and point-source simulated data with ring-model self-cal and narrow BOX",
+    "result": "Ring images produced, best at 50 uas",
+    "finding": "Ring can arise from the PSF and self-cal",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 Rings from the simulated data of other structures",
+      "quote": "This result is one of important indications that the EHT 2017 *u-v* coverage is insufficient to accurately reproduce the observed object’s structure and is likely to yield results consistent with the assumed image."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Hybrid mapping gives a more consistent image than the EHTC ring",
+    "experiment": "Residual comparison of normalized amplitudes and closures",
+    "result": "Half the amplitude residuals, comparable closure residuals",
+    "finding": "Elongated image more reliable",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "We believe that our image is more reliable than the EHTC image because our image shows half the residuals of the EHTC image in normalized visibility amplitude"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Fine structure not very reliable; the west dark spot disappears with 25 uas beam",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "the reliability of the fine structure seen in Figure 2 (a) is not very high."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Image selected by authors' own residual metric; both images have large residuals",
+    "Variability of Sgr A* unmodelled",
+    "Simulations use deliberately extreme self-cal and BOX",
+    "Doppler interpretation rests on single pixels"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "EHTC public data; derived products on request",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "The original observational data are available on the EHTC website."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Final IMAGR parameters",
+    "Digitization details of EHTC image"
+   ],
+   "estimated_data_volume_inferred": "<1 GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and AIPS but key imaging parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete and the result depends on subjective image selection."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "(cite: Miyoshi2022a)",
+     "why": "Same method applied to M87"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope 2017"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-bef20e97525050c67cad10f6c5333f13",
+  "batch_id": "msgbatch_01QWcLjT8YK6BSYKFu4oj18V",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:20:15",
+  "usage": {
+   "input_tokens": 53708,
+   "output_tokens": 5278,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.080704,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 41,
+  "quotes_ok": 41,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2016.1.01154.V"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 67,
+   "stated": 31,
+   "rate": 0.463
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:55",
+  "custom_id": "repair-sonnet-0cbd2d736b0f02dc6e6acfcf002ae0eb",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].validation.evidence[0]",
+    "old": null,
+    "new": "Our final image consistently exhibits smaller means and standard deviations in the residuals than the case of the EHTC ring image, regardless of the integration time between $\\mathrm{T_{\\text{int}} = 10~sec}$ and $\\mathrm{T_{\\text{int}} = 900~sec}$."
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "It can be seen that the ring image with a diameter of $\\mathrm{50~\\mu \\rm as}$ shows the largest value and is the most plausible image among them."
+   },
+   {
+    "path": "claims[0].evidence[0]",
+    "old": null,
+    "new": "This result is one of important indications that the EHT 2017 *u-v* coverage is insufficient to accurately reproduce the observed object’s structure and is likely to yield results consistent with the assumed image."
+   },
+   {
+    "path": "claims[1].evidence[0]",
+    "old": null,
+    "new": "We believe that our image is more reliable than the EHTC image because our image shows half the residuals of the EHTC image in normalized visibility amplitude"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

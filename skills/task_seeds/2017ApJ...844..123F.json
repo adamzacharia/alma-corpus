@@ -1,0 +1,339 @@
+{
+ "bibcode": "2017ApJ...844..123F",
+ "title": "The Circumgalactic Medium of Submillimeter Galaxies. II. Unobscured QSOs within Dusty Starbursts and QSO Sightlines with Impact Parameters below 100 kpc",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa7c63",
+ "arxiv_id": "1705.08908",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Are Herschel-selected SMGs near QSOs (5-30 arcsec) true projected SMG-QSO pairs, or are the QSOs hosted by SMGs, and what are the properties of the composites?",
+ "alma_project_codes": [
+  "2015.1.00131.S"
+ ],
+ "data": {
+  "bands": "Band 7 (343 GHz/874 um)",
+  "arrays": "12-m antennas, 38 to 44 antennas",
+  "angular_resolution": "~0.5 arcsec FWHM (clean beams on average 0.56x0.43 arcsec)",
+  "sensitivity": "rms 0.12 mJy/beam (G09, G12), 0.14 mJy/beam (G15)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Intrinsic QSO SED template (unobscured PG QSOs)",
+    "evidence": [
+     {
+      "loc": "4.1.1 QSO Contribution to the IR Emission",
+      "quote": "We adopt the intrinsic QSO SED from (cite: Symeonidis16)"
+     }
+    ]
+   },
+   "citation": "(cite: Symeonidis16)"
+  },
+  {
+   "what": {
+    "value": "Herschel flux deboosting table",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The flux densities have been deboosted using the flux bias table of (cite: Valiante16)."
+     }
+    ]
+   },
+   "citation": "(cite: Valiante16)"
+  },
+  {
+   "what": {
+    "value": "C IV line widths from the SDSS DR12 Quasar catalog",
+    "evidence": [
+     {
+      "loc": "4.2 Properties of the Supermassive Black Holes",
+      "quote": "we adopt the line widths in the SDSS Data Release 12 Quasar catalog (cite: Paris16)"
+     }
+    ]
+   },
+   "citation": "(cite: Paris16)"
+  },
+  {
+   "what": {
+    "value": "Literature average AGN luminosities of star-forming galaxies at various L_IR",
+    "evidence": [
+     {
+      "loc": "4.3 Star-Formation-AGN Co-evolution at z ~ 3",
+      "quote": "Then, we show the average AGN luminosities for star-forming galaxies at various IR luminosities from (cite: Fu10), (cite: Rafferty11), and (cite: Chen13)."
+     }
+    ]
+   },
+   "citation": "(cite: Fu10); (cite: Rafferty11); (cite: Chen13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image calibrated visibilities",
+   "method": "CASA clean with Briggs weighting, masks, then impbcor",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, gain 0.1, threshold 0.15 mJy/beam, pixel 0.08\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect sources and measure flux, position, size",
+   "method": "Search for >4 sigma peaks in SNR maps; fit elliptical Gaussians simultaneously with imfit on non-PB-corrected maps, then correct for primary beam",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "search primarily within 10 arcsec of field center; uncertainties following Condon97"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Upper limit on undetected QSOs and projected pair statistics",
+   "method": "Stack ALMA images at QSO positions; compute expected random pairs using Poisson nearest-neighbor distribution",
+   "software": [],
+   "key_parameters": [
+    "Sigma_SMG = 92 deg^-2, N_QSO = 1,100"
+   ],
+   "assumptions": [
+    "Poisson distribution of random positions"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Calibrate Herschel positional uncertainty",
+   "method": "Compare ALMA vs Herschel 250 um positions; add constant 0.7\" to 0.6 FWHM/SNR to enclose 67% of fields",
+   "software": [],
+   "key_parameters": [
+    "2D to 1D conversion factor 1.517; FWHM 17.8\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "QSO correction of IR photometry via SED templates",
+   "method": "Fit QSO template to SDSS+WISE photometry (plus torus for G15 1450+0026), extrapolate to far-IR to subtract QSO contribution",
+   "software": [],
+   "key_parameters": [
+    "Torus: QSO template reddened by A_V = 4 mag with Calzetti extinction law"
+   ],
+   "assumptions": [
+    "Negligible dust-obscured star formation at rest-frame <10 um"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive gas/dust mass and surface density",
+   "method": "Extrapolate observed 870 um luminosity to rest-frame 850 um with modified blackbody; apply L850/Mgas ratio and gas-to-dust ratio",
+   "software": [],
+   "key_parameters": [
+    "L850/Mgas = (6.7±1.7)e19 erg/s/Hz/Msun; Mgas/Mdust = 140"
+   ],
+   "assumptions": [
+    "Galactic X_CO = 3e20 (alpha_CO = 6.5); alpha_CO=1.4 alternative"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit IR luminosity and SFR",
+   "method": "Fit modified blackbody (optically thick, lambda0 = 150 um, beta = 2) to SPIRE+ALMA photometry; integrate 8-1000 um; SFR = L_IR/1e10 (Kennicutt98, Chabrier IMF)",
+   "software": [],
+   "key_parameters": [
+    "Redshift fixed (QSO z for composites, 2.5 otherwise)"
+   ],
+   "assumptions": [
+    "Constant dust temperature, local thermal equilibrium"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "BH mass, bolometric luminosity, accretion rate",
+   "method": "Virial mass from C IV FWHM and L1350 (Vestergaard & Peterson 2006); L_bol via Hopkins07 correction; Mdot = L_bol/6.3e45 with epsilon=0.1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "No correction applied for C IV non-virial bias"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Compare growth of BH and galaxies; estimate QSO duty cycle",
+   "method": "Compare SFR/Mdot_BH of composites with present-day BH-stellar mass density ratio and literature AGN luminosities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "50% recycling of stellar mass; 50% gas fraction; gas exhaustion time 200 Myr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of ALMA sources detected",
+   "value": "39 (38 used)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Properties of the ALMA Sources",
+     "quote": "A total of 39 sources with flux densities between 0.7 mJy $\\leq S_{870} \\leq 14.4$ mJy are detected in 27 of the 29 ALMA fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Herschel sources that are SMGs (S870>2 mJy)",
+   "value": "20 of 29 (69%)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Properties of the ALMA Sources",
+     "quote": "These observations confirm that 20 of the 29 (69%) *Herschel* sources in our sample are SMGs with $S_{870} > 2$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean intrinsic source size of 13 resolved high-SNR sources",
+   "value": "0.29",
+   "uncertainty": "0.03",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Properties of the ALMA Sources",
+     "quote": "The mean source size of those is 0.29$''$$\\pm$0.03$''$, where the uncertainty is from bootstrapping."
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 3 sigma upper limit per undetected QSO",
+   "value": "~3.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Submillimeter Emission from the QSOs and their Host/Companion Galaxies",
+     "quote": "The stacking analysis provides a 3$\\sigma$ upper limit of $\\sim$3.6 mJy per QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected projected pairs among six Herschel-QSO pairs",
+   "value": "1.4",
+   "uncertainty": "1.0",
+   "units": "pairs",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Submillimeter Emission from the QSOs and their Host/Companion Galaxies",
+     "quote": "Since six of these eight pairs were observed by ALMA, we expect only $1.4\\pm1.0$ projected pairs"
+    }
+   ]
+  },
+  {
+   "quantity": "Empirical Herschel-ALMA positional uncertainty (67% radius)",
+   "value": "4.22",
+   "uncertainty": "0.14",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Herschel Positional Uncertainties",
+     "quote": "18 of the 27 fields (67%) show ALMA positions within 4.22$''$$\\pm$0.14$''$ of the *Herschel* position"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean SFR surface density of SMG-QSO composites",
+   "value": "~260",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/kpc^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1.3 IR Luminosity and SFR Surface Density",
+     "quote": "The mean SFR surface density of the SMG-QSO composites is $\\sim$260 $M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass surface density (alpha_CO=6.5)",
+   "value": "~8e8",
+   "uncertainty": "not stated",
+   "units": "Msun/kpc^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1.2 Mass and Surface Density of the Interstellar Medium",
+     "quote": "the average dust mass surface density is $\\sim8\\times10^8$ $M_{\\odot}$ kpc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "BH accretion rates of composites",
+   "value": "2-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of the Supermassive Black Holes",
+     "quote": "The estimated BH accretion rates range between 2 and 7 $M_{\\odot}$ yr$^{-1}$, with Eddington ratios between 10 and 30%"
+    }
+   ]
+  },
+  {
+   "quantity": "BH accretion fraction of total bolometric luminosity",
+   "value": "30-60%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of the Supermassive Black Holes",
+     "quote": "BH accretion contributes a large fraction (30-60%) of the total bolometric luminosity"
+    }
+   ]
+  },
+  {
+   "quantity": "QSO duty cycle in SMGs at z~3",
+   "value": "~30% (upper limit)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.3 Star-Formation-AGN Co-evolution at z ~ 3",
+     "quote": "then it implies a QSO duty cycle of $\\sim$30% among SMGs with $L_{\\rm IR} \\sim 10^{13}$ $L_{\\odot}$ at $z \\sim 3$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations / niter and the exact mask definition procedure",
+  "Whether continuum was formed from all four spws without line flagging",
+  "Details of the SED fitting code, fitting method and priors (modified blackbody fit procedure)",
+  "QSO template fit procedure to SDSS/WISE photometry",
+  "Stacking procedure details for undetected QSOs",
+  "Bootstrapping details for mean size",
+  "CASA version used for pipeline/imaging"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "SED fitting code and details",
+  "Exact stacking procedure",
+  "QSO template fit details and Herschel/SDSS/WISE photometry values for composites"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging and source extraction are well specified and data are public with a single project code, but SED fitting details and CASA version are missing.",
+ "rediscovery_reason": "Data are public, imaging parameters (robust 0.5, threshold, pixel) and imfit analysis are stated, and main results (source counts, fluxes, sizes) are numeric and tabulated.",
+ "source_card": "cards/2017ApJ...844..123F/sonnet/card.md"
+}

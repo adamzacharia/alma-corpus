@@ -1,0 +1,1531 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025MNRAS.538.2579K",
+  "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - XXI. A large-sample observational study of ethanol and dimethyl ether in hot cores",
+  "year": 2025,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Kou, Zhiping",
+  "n_authors": 24,
+  "arxiv_id": "2503.07126",
+  "doi": "10.1093/mnras/staf408",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.00685.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "we aim to provide a large sample analysis of EA and DE with the ALMA (ATOMS) survey towards the 60 hot cores targeted in this work"
+   },
+   {
+    "loc": "Hot core sample",
+    "quote": "The study is based on high-sensitivity, high-resolution ALMA observations as part of the ATOMS project."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "60 ATOMS hot cores (IRAS clumps, e.g. I17441-2822, I18056-1952, I16348-4654)",
+     "coordinates": {
+      "value": "per-source RA/Dec listed in the paper's results table (continuum peaks)",
+      "evidence": [
+       {
+        "loc": "Hot core sample",
+        "quote": "resulting in the identification of a total of 60 hot cores, with 45 being newly detected (cite: 2022MNRAS.511.3463Qin)."
+       },
+       {
+        "loc": "Hot core sample",
+        "quote": "(see Table A1 in (cite: 2020MNRAS.496.2790LiuT))"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~1-12 kpc from the Sun",
+      "evidence": [
+       {
+        "loc": "Hot core sample",
+        "quote": "resulting in the identification of a total of 60 hot cores, with 45 being newly detected (cite: 2022MNRAS.511.3463Qin)."
+       },
+       {
+        "loc": "Hot core sample",
+        "quote": "(see Table A1 in (cite: 2020MNRAS.496.2790LiuT))"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Table A1 of Liu et al. 2020 (cite: 2020MNRAS.496.2790LiuT)",
+      "evidence": [
+       {
+        "loc": "Hot core sample",
+        "quote": "resulting in the identification of a total of 60 hot cores, with 45 being newly detected (cite: 2022MNRAS.511.3463Qin)."
+       },
+       {
+        "loc": "Hot core sample",
+        "quote": "(see Table A1 in (cite: 2020MNRAS.496.2790LiuT))"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the abundances of ethanol (EA) and dimethyl ether (DE) vary across a large, uniformly observed sample of hot cores, and are EA, DE and CH3OH chemically linked (formation pathways)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "It is still unknown to what extent the physical environment of the source influences the abundances of EA and DE."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "examining their abundance variations and gaining insights into their formation pathways."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00685.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The observations were carried out with ALMA band 3 towards 146 Infrared Astronomical Satellite (IRAS) clumps (2019.1.00685.S, PI: Tie Liu)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The observations were carried out with ALMA band 3 towards 146 Infrared Astronomical Satellite (IRAS) clumps"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "8 SPWs: SPWs 1-6 58.59 MHz bandwidth (0.2-0.4 km/s), SPWs 7-8 1875 MHz (~1.6 km/s); SPW 7 97536-99442 MHz, SPW 8 99470-101390 MHz; only SPWs 7-8 used",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Eight spectral windows (SPWs) were configured, including 6 higher spectral resolutions windows (SPWs 1–6, bandwidth 58.59 MHz with spectral resolution"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The frequency ranges of SPWs 7 and 8 are 97536-99442 MHz and 99470-101390 MHz respectively."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "C2H5OH (ethanol)",
+     "transition": "many g-, g+ and anti transitions in SPWs 7-8 (Eup 35-793 K); moment 0 map at 100990 MHz",
+     "rest_frequency": "97535.98-101243.61 MHz (e.g. 100990.11310 MHz)",
+     "evidence": [
+      {
+       "loc": "Statistical analysis",
+       "quote": "The upper level energies for EA range from 35 to 793 K"
+      },
+      {
+       "loc": "Line identification",
+       "quote": "These two lines are not blended with other molecules."
+      }
+     ]
+    },
+    {
+     "species": "CH3OCH3 (dimethyl ether)",
+     "transition": "AA/EE/EA/AE sub-states in SPWs 7-8 (Eup 10-490 K); moment 0 map at 99324 MHz (4(1,4)-3(0,3))",
+     "rest_frequency": "97990.63-100951.25 MHz (e.g. 99325.2 MHz)",
+     "evidence": [
+      {
+       "loc": "Statistical analysis",
+       "quote": "The upper energy levels for DE range from 10 to 490 K"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "13(-2,12)-12(-3,10) E, vt=0 (velocity reference)",
+     "rest_frequency": "100.6389 GHz",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "The velocity offsets are determined with reference to the rest frequency of the"
+      }
+     ]
+    },
+    {
+     "species": "H40α",
+     "transition": "recombination line (HII region tracer)",
+     "rest_frequency": "99022.952 MHz",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "recombination line at 99022.952 MHz."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "This recombination line originates from ionized gas associated with Hii regions."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "line-free channels of SPWs 7-8, centred at 99.4 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "SPWs 7-8 were used to create continuum images from the line-free channels centred at 99.4 GHz (or 3 mm)."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ACA 7-m and 12-m observed; only 12-m data used in this study",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "In this study, we only employ 12 m array data as hot cores typically have smaller source sizes and the COM lines are less affected by missing flux issues"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-2 or C43-3",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Atacama Compact 7-m Array (ACA) and 12-m array (C43-2 or C43-3 configurations) observations were conducted from late September to mid-November 2019."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1.2\"-1.9\" (12-m)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The angular resolution and maximum recovered angular scale for the 12-m array observations are"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~14.5\"-20.3\" (12-m)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The angular resolution and maximum recovered angular scale for the 12-m array observations are"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "mean 1σ rms of SPWs 7 and 8 better than 10 mJy/beam per channel",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "rms noise of SPWs 7 and 8 are better than 10 mJy beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~3 min per source (12-m), 8 min (ACA 7-m)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Observational mode was set to single-point mode, with typical on-source times of 3 minutes for 12-m array and 8 minutes per source for ACA 7-m array."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "late September to mid-November 2019",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "observations were conducted from late September to mid-November 2019."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ATOMS project data, PI: Tie Liu",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "(2019.1.00685.S, PI: Tie Liu)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "CDMS and JPL spectroscopic databases",
+     "provided": {
+      "value": "spectroscopic data for XCLASS modelling",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "We used the XCLASS version 1.2.5 for the line fitting, which incorporates an embedded SQLite database file containing spectroscopic data from CDMS and JPL."
+       }
+      ]
+     }
+    },
+    {
+     "name": "IRAS / CS J=2-1 surveys",
+     "provided": {
+      "value": "parent sample of 146 massive clumps",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The 146 massive clumps were selected from the CS J = 2 - 1 surveys (cite: bronfman1996cs)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Hot core identification and deconvolved continuum source sizes (Table 1)",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "In the first step, we take deconvolved angular sizes of the continuum sources as source sizes which are given by (cite: 2022MNRAS.511.3463Qin) in their Table 1."
+       }
+      ]
+     },
+     "citation": "(cite: 2022MNRAS.511.3463Qin)"
+    },
+    {
+     "what": {
+      "value": "CH3OH column densities of the sample",
+      "evidence": [
+       {
+        "loc": "Comparison with other sources and parameter correlations",
+        "quote": "we take the column densities of methanol in our sample from (cite: 2022MNRAS.511.3463Qin)"
+       }
+      ]
+     },
+     "citation": "(cite: 2022MNRAS.511.3463Qin)"
+    },
+    {
+     "what": {
+      "value": "Modelled spectra of CH3OH, C2H5CN, CH3OCHO for blending assessment",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "from (cite: 2022MNRAS.511.3463Qin) in order to assess the potential blending issue."
+       }
+      ]
+     },
+     "citation": "(cite: 2022MNRAS.511.3463Qin)"
+    },
+    {
+     "what": {
+      "value": "Hydrogen column densities (Tables C1-C4) for dust optical depth",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "The hydrogen column densities were obtained from (cite: 2025A&A...694A.166C) (in their Tables C1-C4)."
+       }
+      ]
+     },
+     "citation": "(cite: 2025A&A...694A.166C)"
+    },
+    {
+     "what": {
+      "value": "Column densities and temperatures of CH3OH, EA, DE for 28 literature hot cores and hot corinos (Table A.4)",
+      "evidence": [
+       {
+        "loc": "Comparison with other sources and parameter correlations",
+        "quote": "In Table [\\[tab:A.4\\]](#tab:A.4), we summarize the column densities of CH$_3$OH, EA, and DE from the literature."
+       }
+      ]
+     },
+     "citation": "literature references 1-13 in Table A.4"
+    },
+    {
+     "what": {
+      "value": "Source luminosities and distances",
+      "evidence": [
+       {
+        "loc": "Hot core sample",
+        "quote": "(see Table A1 in (cite: 2020MNRAS.496.2790LiuT))"
+       }
+      ]
+     },
+     "citation": "(cite: 2020MNRAS.496.2790LiuT)"
+    },
+    {
+     "what": {
+      "value": "HII-region association of hot cores",
+      "evidence": [
+       {
+        "loc": "Hot core sample",
+        "quote": "(UCHii regions) (cite: 2022MNRAS.511.3463Qin; 2023MNRAS.520.3245Z)"
+       }
+      ]
+     },
+     "citation": "(cite: 2022MNRAS.511.3463Qin; 2023MNRAS.520.3245Z)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Chemical models of G22 (three warm-up timescale models) compared with observed abundances",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "Compared with chemical models, the three different warm-up timescale models result in the systematic overproduction of EA and the systematic underproduction of DE."
+      },
+      {
+       "loc": "Implications for the chemistry of EA and DE",
+       "quote": "There are two main production pathways for EA in the chemical models of G22"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibrated and imaged with CASA; details in Liu et al. 2020",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated and imaged using the Common Astronomy Software Applications package (CASA; (cite: 2007ASPC..376..127McMullin))."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA 5.6 tclean",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Visibility data from the ALMA 12-m arrays are cleaned using the CASA 5.6 tclean task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multiscale",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "This was done by applying the natural weighting, setting the gridder with the ‘pblimit’ parameter of 0.2, and a multiscale deconvolver."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "This was done by applying the natural weighting, setting the gridder with the ‘pblimit’ parameter of 0.2, and a multiscale deconvolver."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from line-free channels of SPWs 7-8",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "SPWs 7-8 were used to create continuum images from the line-free channels centred at 99.4 GHz (or 3 mm)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "all images PB-corrected; pblimit = 0.2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All images are corrected for the primary beam."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "none; 12-m only",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "In this study, we only employ 12 m array data"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "better than 10 mJy/beam per channel (SPWs 7-8)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "rms noise of SPWs 7 and 8 are better than 10 mJy beam"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Spectral setups, flux and phase calibrators and data presentation",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The data were first presented by (cite: 2020MNRAS.496.2790LiuT; 2020MNRAS.496.2821LiuT), where more details about the spectral setups, flux and phase calibrators can be found."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020MNRAS.496.2790LiuT; 2020MNRAS.496.2821LiuT)"
+    },
+    {
+     "what": {
+      "value": "Line identification and parameter-calculation procedure",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "In this work, we use the same procedure to identify and calculate parameters for EA and DE, as described in (cite: 2022MNRAS.511.3463Qin)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2022MNRAS.511.3463Qin)"
+    },
+    {
+     "what": {
+      "value": "Continuum contribution estimate (Eq. 5)",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "We have estimated the continuum contribution to the line emission using Eq. (5) from the paper of (cite: 2020A&A...635A..48Manigand)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2020A&A...635A..48Manigand)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity equation (Eq. 4) for dust optical depth",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "To evaluate the dust attenuation, we used the dust opacity equation (see Eq.(4) of (cite: 2021A&A...651A...9Moller) to calculate the dust optical depth."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2021A&A...651A...9Moller)"
+    },
+    {
+     "what": {
+      "value": "Local noise calculation per window",
+      "evidence": [
+       {
+        "loc": "Additional figures",
+        "quote": "The method for calculating the local noise for each window was adopted from (cite: 2021NatAs...5..188Loomis)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2021NatAs...5..188Loomis)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact line-free channel ranges used for continuum and whether/how continuum was subtracted from line cubes",
+    "Self-calibration (if any) and the CASA/pipeline version used for calibration",
+    "Cell size, image size, masking/cleaning threshold and per-source synthesized beams",
+    "Exact extraction aperture per source (beam size) and the deconvolved source sizes (taken from Qin et al. 2022 Table 1)",
+    "Initial guesses and criteria for the manual XCLASS adjustment in step 1, and MAGIX parameter ranges, MCMC settings and convergence criteria",
+    "Which correlation coefficient (Pearson or Spearman) and which fitting is used for the ρ = 0.92/0.82/0.80 column-density correlations, and whether done in log space",
+    "Velocity offsets and line widths per source",
+    "Dust opacity law, temperature and gas-to-dust parameters in the dust optical depth estimate",
+    "Detection threshold definition for H40α-based HII association"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "image continuum and line cubes",
+    "method": {
+     "value": "CASA tclean of 12-m data for SPWs 7-8; continuum from line-free channels; primary beam correction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Visibility data from the ALMA 12-m arrays are cleaned using the CASA 5.6 tclean task."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "natural weighting, pblimit 0.2, multiscale deconvolver",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "This was done by applying the natural weighting, setting the gridder with the ‘pblimit’ parameter of 0.2, and a multiscale deconvolver."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "12-m only suffices because hot cores are compact and COM lines less affected by missing flux",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "hot cores typically have smaller source sizes and the COM lines are less affected by missing flux issues"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "extract spectra",
+    "method": {
+     "value": "spectra extracted over beam-sized area centred on the continuum peak",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The spectra of our sample were extracted from an area corresponding to the size of the beam, centred on the peak of the continuum."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "assess continuum and dust attenuation effects",
+    "method": {
+     "value": "continuum contribution via Manigand Eq. 5; dust optical depth via Möller Eq. 4 with literature N(H2)",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "The correction factors range from 0.99-1.1."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "The dust optical depths in our sample are less than 0.08."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "Thus, we neglect continuum emission and dust attenuation in our spectral line fitting."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "identify EA and DE lines and initial LTE fit",
+    "method": {
+     "value": "XCLASS LTE radiative transfer modelling; source size fixed to deconvolved continuum size; Trot, N and line width manually adjusted",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "Assuming molecular gas is in local thermodynamic equilibrium (LTE) and solving the radiative transfer equation, XCLASS produces theoretical spectra"
+      },
+      {
+       "loc": "Line identification",
+       "quote": "The rotation temperature, column density, and line width were manually adjusted to achieve a reasonable match between the synthetic and observed spectra."
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [
+     {
+      "value": "lines above 3σ identified; velocity referenced to CH3OH at 100.6389 GHz",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "The velocity offsets are determined with reference to the rest frequency of the"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE; source sizes from Qin et al. 2022 Table 1",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "In the first step, we take deconvolved angular sizes of the continuum sources as source sizes which are given by (cite: 2022MNRAS.511.3463Qin) in their Table 1."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "manual adjustment",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "The rotation temperature, column density, and line width were manually adjusted to achieve a reasonable match between the synthetic and observed spectra."
+      }
+     ]
+    },
+    "validation": {
+     "value": "blending checked against modelled CH3OH, C2H5CN, CH3OCHO spectra from Qin et al. 2022",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "from (cite: 2022MNRAS.511.3463Qin) in order to assess the potential blending issue."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "optimize Trot and N with errors",
+    "method": {
+     "value": "MAGIX optimization with line width fixed from step 1; LM and MCMC for errors",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "In the second step, the line width is set as a fixed parameter based on the first step."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "In the calculation, the Levenberg-Marquardt algorithm (LM) and the Markov chain Monte Carlo algorithm (MCMC) are employed to estimate the errors in the derived rotation temperatures and column densities."
+      }
+     ]
+    },
+    "software": [
+     "MAGIX",
+     "XCLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Levenberg-Marquardt + MCMC; step-1 results used when MAGIX does not converge",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "In some sources, the MAGIX calculations do not converge, so we show the results from the first step."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "column densities for poorly constrained sources",
+    "method": {
+     "value": "fixed Trot = 150 K for sources with only one or two lines; tested 100/150/200 K",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "We calculated the column densities using three different temperatures (100 K, 150 K, and 200 K), which showed a slight increase in column density, with the variation remaining within 20%."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "We chose a median value of 150 K to derive their column densities."
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Trot = 150 K",
+      "evidence": [
+       {
+        "loc": "Line identification",
+        "quote": "We chose a median value of 150 K to derive their column densities."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "column densities vary within 20% over 100-200 K",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "with the variation remaining within 20%."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "classify sources by detections and HII association",
+    "method": {
+     "value": "5 groups based on EA/DE detection and H40α-traced HII region association",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "Based on whether EA and DE are detected and whether hot cores are associated with Hii regions, we classified them into 5 groups"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "map EA and DE emission",
+    "method": {
+     "value": "moment 0 maps of unblended EA (100990 MHz) and DE (99324 MHz) lines compared with continuum",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "These two lines are not blended with other molecules."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "Overall, the molecular line emissions and the continuum emissions show very similar morphologies in most sources."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 9,
+    "goal": "statistics and correlations of Trot, N, abundances and ratios",
+    "method": {
+     "value": "Pearson coefficients between Trot and N; correlations of N(EA), N(DE), N(CH3OH) combined with 28 literature sources; EA/DE ratios and abundances relative to CH3OH",
+     "evidence": [
+      {
+       "loc": "Comparison with other sources and parameter correlations",
+       "quote": "we include all 39 sources from groups A and B, as well as 28 sources from the literature."
+      },
+      {
+       "loc": "Comparison with other sources and parameter correlations",
+       "quote": "We computed the molecular abundances relative to methanol by f$_{\\rm CH_3OH}$ = N(EA or DE)/N(CH$_3$OH)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "comparable rotation temperatures to literature used to argue consistency",
+     "evidence": [
+      {
+       "loc": "Comparison with other sources and parameter correlations",
+       "quote": "The comparable rotation temperatures between ours and those in the literature indicate that the measured column densities are consistent."
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "compare with chemical models and experiments",
+    "method": {
+     "value": "compare observed abundances with G22 warm-up models and laboratory radical–radical recombination results",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "Compared with chemical models, the three different warm-up timescale models result in the systematic overproduction of EA and the systematic underproduction of DE."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.6 (tclean)",
+    "used_for": {
+     "value": "calibration and imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Visibility data from the ALMA 12-m arrays are cleaned using the CASA 5.6 tclean task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "XCLASS",
+    "version": "1.2.5",
+    "used_for": {
+     "value": "LTE line identification and fitting; database updated with UpdateDatabase",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "We used the XCLASS version 1.2.5 for the line fitting, which incorporates an embedded SQLite database file containing spectroscopic data from CDMS and JPL."
+      },
+      {
+       "loc": "Line identification",
+       "quote": "We upgraded this database file by using the XCLASS task UpdateDatabase."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "optimizing rotation temperatures and column densities",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "(MAGIX; (cite: 2013A&A...549A..21Moller)) to obtain optimized rotation temperatures and column densities."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of hot cores with EA detected",
+    "value": "40",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "EA is detected in 40 hot cores and DE is detected in 59 hot cores."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of hot cores with DE detected",
+    "value": "59",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "EA is detected in 40 hot cores and DE is detected in 59 hot cores."
+     }
+    ]
+   },
+   {
+    "quantity": "Hot cores with both EA and DE",
+    "value": "39",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Of these, EA and DE are simultaneously detected in 39 hot cores."
+     }
+    ]
+   },
+   {
+    "quantity": "EA rotation temperature range and average (40 hot cores)",
+    "value": "91-215; average 154",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Statistical analysis",
+      "quote": "Rotation temperatures towards 40 hot cores range from 91 to 215 K with an average value of 154 K."
+     }
+    ]
+   },
+   {
+    "quantity": "DE rotation temperature range and average (59 hot cores)",
+    "value": "102-197; average 143",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Statistical analysis",
+      "quote": "Rotation temperatures towards 59 hot cores range from 102 to 197 K, with an average value of 143 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Average EA rotation temperature (25 well-fitted group A/B sources)",
+    "value": "167",
+    "uncertainty": "±14",
+    "units": "K",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "with EA having a temperature of $167\\pm14$ K compared to $136\\pm12$ K of DE."
+     }
+    ]
+   },
+   {
+    "quantity": "Average DE rotation temperature (25 well-fitted group A/B sources)",
+    "value": "136",
+    "uncertainty": "±12",
+    "units": "K",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "with EA having a temperature of $167\\pm14$ K compared to $136\\pm12$ K of DE."
+     }
+    ]
+   },
+   {
+    "quantity": "Average DE column density (groups A/B)",
+    "value": "4.2e17",
+    "uncertainty": "±0.1e17",
+    "units": "cm^-2",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "with DE having a column density of $4.2\\pm0.1$ $\\times$ 10$^{17}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Average EA column density (groups A/B)",
+    "value": "1.9e17",
+    "uncertainty": "±0.1e17",
+    "units": "cm^-2",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "compared to $1.9\\pm0.1$ $\\times$ 10$^{17}$ cm$^{-2}$ of EA."
+     }
+    ]
+   },
+   {
+    "quantity": "Correlation coefficient N(EA)-N(DE)",
+    "value": "0.92",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find strong column density correlations among EA and DE ($\\rho$ = 0.92), EA and CH$_3$OH ($\\rho$ = 0.82), as well as DE and CH$_3$OH ($\\rho$ = 0.80)."
+     }
+    ]
+   },
+   {
+    "quantity": "Correlation coefficient N(EA)-N(CH3OH)",
+    "value": "0.82",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find strong column density correlations among EA and DE ($\\rho$ = 0.92), EA and CH$_3$OH ($\\rho$ = 0.82), as well as DE and CH$_3$OH ($\\rho$ = 0.80)."
+     }
+    ]
+   },
+   {
+    "quantity": "Correlation coefficient N(DE)-N(CH3OH)",
+    "value": "0.80",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find strong column density correlations among EA and DE ($\\rho$ = 0.92), EA and CH$_3$OH ($\\rho$ = 0.82), as well as DE and CH$_3$OH ($\\rho$ = 0.80)."
+     }
+    ]
+   },
+   {
+    "quantity": "EA/DE column density ratio (67 sources)",
+    "value": "0.1-2.1; average 0.60",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Comparison with other sources and parameter correlations",
+      "quote": "The column density ratios of EA to DE are within one order of magnitude, ranging from 0.1 to 2.1 with an average value of 0.60."
+     }
+    ]
+   },
+   {
+    "quantity": "Abundance relative to CH3OH",
+    "value": "EA 0.02-0.19; DE 0.06-0.29",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Comparison with other sources and parameter correlations",
+      "quote": "The relative abundances range from 0.02 to 0.19 for EA and from 0.06 to 0.29 for DE, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient Trot vs N for EA",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Statistical analysis",
+      "quote": "Pearson’s co-efficient for EA between rotation temperatures and column densities is 0.4, indicating that column densities of EA are not correlated with rotation temperatures."
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient Trot vs N for DE",
+    "value": "0.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Statistical analysis",
+      "quote": "Pearson’s co-efficient for DE between rotation temperatures and column densities is 0.5"
+     }
+    ]
+   },
+   {
+    "quantity": "Pearson coefficient Trot(EA) vs Trot(DE)",
+    "value": "0.44",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Statistical analysis",
+      "quote": "Rotation temperatures between EA and DE show no correlation, with Pearson’s co-efficient of 0.44."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust optical depth",
+    "value": "< 0.08",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "The dust optical depths in our sample are less than 0.08."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Average rotation temperature of EA is higher than DE; average column density of EA lower than DE",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The average rotation temperature of EA is higher than that of DE, whereas the average column density of EA is lower than that of DE."
+     }
+    ]
+   },
+   {
+    "value": "EA/DE ratios show no trend with CH3OH column density or rotation temperature, suggesting independence from physical environment",
+    "evidence": [
+     {
+      "loc": "Implications for the chemistry of EA and DE",
+      "quote": "The nearly stable ratios suggest that the EA/DE ratio does not depend on the physical environment."
+     }
+    ]
+   },
+   {
+    "value": "Line emission morphologies mostly resemble continuum, but not in some sources",
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "It should be noted that in some sources, the molecular line emissions of EA and DE are not well associated with the continuum emissions."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "EA, DE and CH3OH are chemically linked",
+    "experiment": "Correlate column densities for 39 ATOMS hot cores plus 28 literature sources",
+    "result": "ρ = 0.92 (EA-DE), 0.82 (EA-CH3OH), 0.80 (DE-CH3OH); EA/DE ratio 0.1-2.1, mean 0.60",
+    "finding": "CH3OH may be a precursor of EA and DE",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These strong correlations and the stable ratios, suggest that EA, DE, and CH$_3$OH could be chemically linked, with CH$_3$OH potentially serving as a precursor for EA and DE."
+     }
+    ]
+   },
+   {
+    "hypothesis": "EA/DE ratio depends on physical environment",
+    "experiment": "Plot EA/DE vs N(CH3OH) and vs Trot of EA and DE",
+    "result": "No obvious upward or downward trend",
+    "finding": "EA/DE ratio does not depend on physical environment",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Implications for the chemistry of EA and DE",
+      "quote": "The ratios of EA/DE do not show an obvious upward or downward trend with the rotation temperatures of both EA and DE."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Radical products of CH3OH dissociation dominate EA and DE formation",
+    "experiment": "Compare stable observed ratios with laboratory radical–radical recombination results",
+    "result": "Observed ratios within one order of magnitude, consistent with experiments",
+    "finding": "Radical–radical recombination may be the predominant mechanism",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The comparison with experiments suggests that reactions involving the radical products of CH$_3$OH dissociation may be the predominant mechanism for the production of EA and DE."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Current chemical models reproduce EA and DE abundances",
+    "experiment": "Compare observed abundances with three warm-up timescale models (G22)",
+    "result": "EA systematically overproduced, DE underproduced",
+    "finding": "Models need revision; sample provides constraints",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Compared with chemical models, the abundance of EA is systematically overproduced while the abundance of DE is systematically underproduced in chemical models."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Large sample with similar spatial resolution and identical spectral coverage was lacking",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "To the best of our knowledge, large sample observations of EA and DE molecules with similar spatial resolutions and the same spectral coverage are still lacking."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Continuum and dust attenuation negligible, so pure LTE line fitting without continuum",
+    "evidence": [
+     {
+      "loc": "Line identification",
+      "quote": "Thus, we neglect continuum emission and dust attenuation in our spectral line fitting."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Fixed temperatures of 100, 200 K tested vs adopted 150 K for poorly constrained sources",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "We calculated the column densities using three different temperatures (100 K, 150 K, and 200 K), which showed a slight increase in column density, with the variation remaining within 20%."
+      }
+     ]
+    },
+    {
+     "value": "DE formation via ground-state CH2 + methanol considered and judged not the main pathway",
+     "evidence": [
+      {
+       "loc": "Implications for the chemistry of EA and DE",
+       "quote": "We propose that DE formation in chemical models involving ground-state CH$_2$ reactions may not represent the main pathway."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Continuum-based source sizes may bias column densities where line and continuum emission differ",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "the adopted source sizes from the continuum may lead to an underestimation of molecular column densities if the molecular emission more compact than the continuum emissions and vice versa."
+      }
+     ]
+    },
+    {
+     "value": "Rotation temperature unconstrained when only one or two lines are detected",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "For sources where only one or two molecular lines of DE and EA were detected, the rotation temperature could not be constrained."
+      }
+     ]
+    },
+    {
+     "value": "Low-Eup EA lines not covered, so EA non-detections need confirmation at other wavelengths",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "observations at other wavelengths are needed to confirm the absence of EA in these sources"
+      }
+     ]
+    },
+    {
+     "value": "MAGIX did not converge for some sources",
+     "evidence": [
+      {
+       "loc": "Line identification",
+       "quote": "In some sources, the MAGIX calculations do not converge, so we show the results from the first step."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Average DE temperature quoted as 136±12 K in Sect. 3.2/conclusions but 131±11 K in Sect. 4.1; inconsistency.",
+    "Correlations of column densities across 4 orders of magnitude of CH3OH may be partly driven by shared source size/beam dilution and sample heterogeneity (hot corinos vs hot cores), not necessarily chemistry.",
+    "Several detections rest on single or blended lines; manual first-step fitting introduces subjectivity.",
+    "Correlation coefficient type and significance (p-values) for ρ not given.",
+    "Model comparison details (G22 model parameters, abundances) only briefly presented."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Raw data in ALMA archive",
+    "evidence": [
+     {
+      "loc": "Data Availability",
+      "quote": "The raw data are available in ALMA archive."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Per-source source sizes, velocity offsets and line widths (from Qin et al. 2022 and step 1)",
+    "MAGIX/MCMC configuration and parameter bounds",
+    "Imaging cell/image size, clean thresholds, masks",
+    "Exact line-free channel selection",
+    "Literature compilation values for comparison (Table A.4 references)",
+    "Correlation method details"
+   ],
+   "estimated_data_volume_inferred": "Raw 12-m Band 3 data for ~50 ATOMS fields (of 146) of order hundreds of GB; SPW 7-8 cubes per field of order a few GB.",
+   "score_inferred": 6,
+   "score_reason": "Public data and named software/versions with clear two-step XCLASS/MAGIX scheme, but manual fitting, inherited source sizes and procedures from Qin et al. 2022, and missing fit/imaging parameters limit exact reproduction.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public in the ALMA archive, the LTE fitting recipe (XCLASS 1.2.5 + MAGIX, fixed 150 K fallback) is described, and the main results (detection counts, average Trot, N, correlation coefficients, EA/DE ratio) are numeric; manual initial fitting adds tolerance needs."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2017A&A...598A...7Moller)",
+     "why": "XCLASS software"
+    },
+    {
+     "citation": "(cite: 2013A&A...549A..21Moller)",
+     "why": "MAGIX optimization"
+    },
+    {
+     "citation": "(cite: 2020A&A...635A..48Manigand)",
+     "why": "Eq. 5 continuum contribution correction"
+    },
+    {
+     "citation": "(cite: 2021A&A...651A...9Moller)",
+     "why": "Eq. 4 dust opacity"
+    },
+    {
+     "citation": "(cite: 2021NatAs...5..188Loomis)",
+     "why": "local noise calculation"
+    },
+    {
+     "citation": "(cite: 2007ASPC..376..127McMullin)",
+     "why": "CASA"
+    },
+    {
+     "citation": "(cite: 2005JMoSt.742..215M); (cite: 1998JQSRT..60..883Pickett)",
+     "why": "CDMS and JPL spectroscopic databases"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2020MNRAS.496.2790LiuT; 2020MNRAS.496.2821LiuT)",
+     "why": "ATOMS survey overview, observations and calibration"
+    },
+    {
+     "citation": "(cite: 2022MNRAS.511.3463Qin)",
+     "why": "ATOMS hot core identification, source sizes, CH3OH column densities and fitting procedure"
+    },
+    {
+     "citation": "(cite: 2023MNRAS.520.3245Z)",
+     "why": "HII region association"
+    },
+    {
+     "citation": "(cite: 2025A&A...694A.166C)",
+     "why": "hydrogen column densities"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ATOMS (ALMA Three-millimeter Observations of Massive Star-forming regions)",
+    "Bronfman et al. 1996 CS J=2-1 survey of IRAS sources"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-opus-5-5",
+  "custom_id": "card-opus-492c7624853071761a15f111ea1aa9a2",
+  "batch_id": "msgbatch_017Jz9svfCQSFYSWmp8RzAs6",
+  "run": "pilot",
+  "collected_at": "2026-10-28T06:56:40",
+  "usage": {
+   "input_tokens": 40308,
+   "output_tokens": 20355,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.284772,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 118,
+  "quotes_ok": 118,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 18,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 105,
+   "stated": 73,
+   "rate": 0.695
+  },
+  "evidence_ok": true
+ }
+}

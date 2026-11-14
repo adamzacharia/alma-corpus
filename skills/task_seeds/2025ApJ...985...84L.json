@@ -1,0 +1,636 @@
+{
+ "bibcode": "2025ApJ...985...84L",
+ "title": "A Multiline Analysis of the Distribution and Excitation of CS and H<SUB>2</SUB>CS in the HD 163296 Disk",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/adc304",
+ "arxiv_id": "2503.16605",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "How are CS, H2CS and their 34S isotopologues distributed and excited in the HD 163296 disk (rotational temperature, column density, 32S/34S ratio, emitting layer)?",
+ "alma_project_codes": [
+  "2015.1.00847.S",
+  "2015.1.01137.S",
+  "2016.1.00884.S",
+  "2016.1.01086.S",
+  "2017.1.01682.S",
+  "2018.1.01055.L",
+  "2021.1.00535.S",
+  "2021.1.00899.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 3 to Band 8, plus SMA",
+  "arrays": "ALMA (SB and LB data for 2017.1.01682.S) and SMA compact configuration with 8 antennas",
+  "angular_resolution": "about 0.2-0.4 arcsec (20-40 au) for most lines; coarser for CS 5-4 (SMA) and CS 10-9",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CS J=2-1 image properties and integrated flux",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The image properties and flux for CS J=2–1 are taken from (cite: Oberg21_MAPSI)."
+     }
+    ]
+   },
+   "citation": "(cite: Oberg21_MAPSI)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic constants (CDMS)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The spectroscopic constants for all lines are taken from the CDMS database (cite: Muller01; Muller05; Endres16)"
+     }
+    ]
+   },
+   "citation": "(cite: Muller01; Muller05; Endres16)"
+  },
+  {
+   "what": {
+    "value": "HD 163296 system parameters (PA, inclination, systemic velocity, stellar mass)",
+    "evidence": [
+     {
+      "loc": "2 The HD 163296 Disk",
+      "quote": "PA=133.$^{\\circ}$3, incl=46.$^{\\circ}$7, v$_{\\rm{sys}}$=5.8 km s$^{-1}$, and M$_*$=2.0 M$_{\\odot}$ (cite: Oberg21_MAPSI; Teague21)"
+     }
+    ]
+   },
+   "citation": "(cite: Oberg21_MAPSI; Teague21)"
+  },
+  {
+   "what": {
+    "value": "2D gas temperature structure T(r,z) of the HD 163296 disk, renormalized for emitting-region inference",
+    "evidence": [
+     {
+      "loc": "4.4.2 Inferred from 2D Gas Structure",
+      "quote": "we first renormalized the 2D temperature profile of (cite: Law21_MAPSIV)"
+     }
+    ]
+   },
+   "citation": "(cite: Law21_MAPSIV)"
+  },
+  {
+   "what": {
+    "value": "Thermochemical model CO snowline radius used to renormalize the temperature profile",
+    "evidence": [
+     {
+      "loc": "4.4.2 Inferred from 2D Gas Structure",
+      "quote": "matches the midplane radius derived in the thermochemical models of (cite: Zhang21)"
+     }
+    ]
+   },
+   "citation": "(cite: Zhang21)"
+  },
+  {
+   "what": {
+    "value": "ISM 32S/34S ratio of about 22",
+    "evidence": [
+     {
+      "loc": "4.2 Disk-Integrated Excitation",
+      "quote": "which is at least several times lower than the ISM ratio of ${\\approx}$22 (cite: Wilson99)"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson99)"
+  },
+  {
+   "what": {
+    "value": "Ortho-to-para ratio measured from H2CO in HD 163296 (2.70 +0.20/-0.19), used to support the adopted value of 3",
+    "evidence": [
+     {
+      "loc": "4.2 Disk-Integrated Excitation",
+      "quote": "which is approximately consistent with the ratio (2.70$^{+0.20}_{-0.19}$) measured from H$_2$CO in the HD 163296 disk (cite: Hernandez_Vera24)"
+     }
+    ]
+   },
+   "citation": "(cite: Hernandez_Vera24)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate archival visibilities",
+   "method": "Pipeline calibration by ALMA staff; per-program self-calibration after aligning execution blocks with fixvis/fixplanets; SMA data calibrated with MIR then exported to CASA; some measurement sets obtained pre-calibrated from other authors",
+   "software": [
+    "CASA",
+    "MIR"
+   ],
+   "key_parameters": [
+    "CS 3-2: two phase-only rounds (900s, 360s) on SB, then one phase-only round (inf) after concatenating LB; about 2x peak continuum SNR gain",
+    "CS 4-3 and H2CS: three phase rounds (inf, 120s, 60s) and one amplitude round (inf)",
+    "CS 8-7: two phase rounds (900s, 360s) and one amplitude round (inf) after flagging strong-line channels",
+    "CS 10-9: one phase-only round (inf)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract continuum and image line cubes",
+   "method": "uvcontsub (first-order polynomial) then tclean with Briggs weighting, multiscale deconvolver and Keplerian masks, with per-line robust and uv-taper",
+   "software": [
+    "CASA",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "multiscale pixel scales [0,5,15,25]; CLEAN to 4 sigma, sigma from five line-free channels of the dirty image",
+    "velocity binning to channel spacings 0.13-1.20 km/s depending on the line",
+    "robust chosen manually to maximize detection SNR"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make moment maps, radial profiles and integrated fluxes",
+   "method": "Zeroth-moment and peak-intensity maps with bettermoments; deprojected radial profiles and spectra with GoFish using the Keplerian masks; flux uncertainties by bootstrapping",
+   "software": [
+    "bettermoments",
+    "GoFish",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "no flux threshold for pixel inclusion; same Keplerian masks as CLEANing",
+    "uncertainty = standard deviation of fluxes in 500 random Keplerian masks over line-free channels"
+   ],
+   "assumptions": [
+    "flat (midplane) emitting surface for deprojected radial profiles"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit disk-integrated rotational diagrams",
+   "method": "LTE rotational diagram with optical depth correction, disk-integrated fluxes from Table 1; H2CS and H2C34S Trot fixed to CS-derived value; ortho-to-para ratio 3 for total column",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "256 walkers, 2000 burn-in steps plus 1000 sampling steps; median and 16th/84th percentiles",
+    "uniform priors Trot 3-300 K, NT 1e7-1e20 cm^-2",
+    "CS and C34S partition function Q(T) = kT/(hB0) + 1/3 with B0 = 24495.56 MHz (CS) and 24103.55 MHz (C34S)",
+    "10% flux calibration uncertainty added in quadrature"
+   ],
+   "assumptions": [
+    "LTE for all lines",
+    "statistical ortho-to-para ratio of 3 for H2CS and H2C34S",
+    "thermal line widths, FWHM about 1-2 km/s measured from resolved lines"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit radially-resolved rotational diagrams",
+   "method": "Beam-matched images (0.35 arcsec for CS/H2CS, 0.5 arcsec for C34S) and the same rotational diagram fit per radius; H2CS and H2C34S use the CS Trot profile",
+   "software": [
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Lines used: CS J=2-1, 3-2, 4-3, 8-7, C34S J=5-4, 6-5, H2CS J=6-5, H2C34S J=9-8; CS J=7-6 excluded for small MRS",
+    "C34S priors Trot 10-35 K, NT 1e9-1e17 cm^-2"
+   ],
+   "assumptions": [
+    "all lines remain optically thin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain CS emitting height from channel maps",
+   "method": "Overlay isovelocity contours at z/r = 0 to 0.2 in steps of 0.05 on CS J=4-3 channel maps and compare by eye; direct surface extraction failed for low SNR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Infer emitting regions from Trot and 2D gas temperature",
+   "method": "Map radially-resolved Trot onto the renormalized 2D T(r,z) of HD 163296 to find the (r,z) region where gas temperature equals Trot",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Trot equals gas kinetic temperature"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test sub-thermal excitation and estimate gap gas density",
+   "method": "RADEX calculations at typical CS gap conditions compared Tex and Tkin; sub-thermal excitation assumed significant within a factor 10 of n_crit of CS J=8-7 to estimate gap surface density",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "critical densities about 1e4 cm^-3 (J=2-1) to 5e6 cm^-3 (J=8-7) at 20-30 K"
+   ],
+   "assumptions": [
+    "Critical densities from Shirley15; gap at D85 is the planet-carved gap"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CS disk-integrated rotational temperature",
+   "value": "24.4",
+   "uncertainty": "+1.2/-1.3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "T$_{\\rm{rot}}$ = 24.4$^{+1.2}_{-1.3}$ K and N$_{\\rm{T}}$ = 5.53$^{+0.33}_{-0.33}\\times10^{12}$ cm$^{-2}$ for CS"
+    }
+   ]
+  },
+  {
+   "quantity": "CS disk-integrated column density",
+   "value": "5.53e12",
+   "uncertainty": "+0.33/-0.33 e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "T$_{\\rm{rot}}$ = 24.4$^{+1.2}_{-1.3}$ K and N$_{\\rm{T}}$ = 5.53$^{+0.33}_{-0.33}\\times10^{12}$ cm$^{-2}$ for CS"
+    }
+   ]
+  },
+  {
+   "quantity": "C34S disk-integrated rotational temperature",
+   "value": "12.5",
+   "uncertainty": "+2.8/-1.6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "T$_{\\rm{rot}}$ = 12.5$^{+2.8}_{-1.6}$ K and N$_{\\rm{T}}$ = 1.19$^{+0.53}_{-0.43}\\times10^{12}$ cm$^{-2}$ for C$^{34}$S"
+    }
+   ]
+  },
+  {
+   "quantity": "C34S disk-integrated column density",
+   "value": "1.19e12",
+   "uncertainty": "+0.53/-0.43 e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "T$_{\\rm{rot}}$ = 12.5$^{+2.8}_{-1.6}$ K and N$_{\\rm{T}}$ = 1.19$^{+0.53}_{-0.43}\\times10^{12}$ cm$^{-2}$ for C$^{34}$S"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS disk-integrated column density (Trot fixed to CS)",
+   "value": "2.97e12",
+   "uncertainty": "+0.62/-0.61 e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "N$_{\\rm{T}}$ = 2.97$^{+0.62}_{-0.61}\\times10^{12}$ cm$^{-2}$ for H$_2$CS"
+    }
+   ]
+  },
+  {
+   "quantity": "H2C34S disk-integrated column density (Trot fixed to CS)",
+   "value": "1.05e12",
+   "uncertainty": "+0.29/-0.30 e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "N$_{\\rm{T}}$ = 1.05$^{+0.29}_{-0.30}\\times10^{12}$ cm$^{-2}$ for H$_2$C$^{34}$S"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CS)/N(C34S) disk-integrated",
+   "value": "4.7",
+   "uncertainty": "+3.1/-1.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "N(CS)/N(C$^{34}$S) = 4.7$^{+3.1}_{-1.6}$; N(H$_2$CS) / N(H$_2$C$^{34}$S) = 2.8$^{+2.0}_{-1.1}$; and N(H$_2$CS) / N(CS) = 0.54$^{+0.15}_{-0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2CS)/N(H2C34S) disk-integrated",
+   "value": "2.8",
+   "uncertainty": "+2.0/-1.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "N(CS)/N(C$^{34}$S) = 4.7$^{+3.1}_{-1.6}$; N(H$_2$CS) / N(H$_2$C$^{34}$S) = 2.8$^{+2.0}_{-1.1}$; and N(H$_2$CS) / N(CS) = 0.54$^{+0.15}_{-0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2CS)/N(CS) disk-integrated",
+   "value": "0.54",
+   "uncertainty": "+0.15/-0.13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "N(CS)/N(C$^{34}$S) = 4.7$^{+3.1}_{-1.6}$; N(H$_2$CS) / N(H$_2$C$^{34}$S) = 2.8$^{+2.0}_{-1.1}$; and N(H$_2$CS) / N(CS) = 0.54$^{+0.15}_{-0.13}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CS)/N(C34S) using the warmer CS excitation temperature for C34S",
+   "value": "10.4",
+   "uncertainty": "+2.0/-1.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "the resulting disk-integrated ratio is N(CS)/N(C$^{34}$S) = 10.4$^{+2.0}_{-1.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Line optical depths range (H2C34S to CS)",
+   "value": "0.0007 to 0.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Disk-Integrated Excitation",
+     "quote": "Values of $\\tau$ range from 0.0007 (H$_2$C$^{34}$S) to 0.08 (CS)"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=2-1",
+   "value": "0.307",
+   "uncertainty": "0.017",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.307 $\\pm$ 0.017"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=3-2",
+   "value": "1.195",
+   "uncertainty": "0.025",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.195 $\\pm$ 0.025"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=4-3",
+   "value": "1.779",
+   "uncertainty": "0.060",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.779 $\\pm$ 0.060"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=5-4 (SMA)",
+   "value": "1.759",
+   "uncertainty": "0.193",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.759 $\\pm$ 0.193"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=7-6 (lower limit)",
+   "value": ">1.415",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "${>}$1.415$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=8-7",
+   "value": "2.602",
+   "uncertainty": "0.370",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2.602 $\\pm$ 0.370"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux CS J=10-9",
+   "value": "1.334",
+   "uncertainty": "0.165",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.334 $\\pm$ 0.165"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux C34S J=5-4",
+   "value": "0.287",
+   "uncertainty": "0.030",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.287 $\\pm$ 0.030"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux C34S J=6-5",
+   "value": "0.190",
+   "uncertainty": "0.019",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.190 $\\pm$ 0.019"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux o-H2CS J=6(1,5)-5(1,4)",
+   "value": "0.152",
+   "uncertainty": "0.038",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.152 $\\pm$ 0.038"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux o-H2C34S J=9(1,9)-8(1,8)",
+   "value": "0.052",
+   "uncertainty": "0.014",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.052 $\\pm$ 0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "CS and C34S ring radii (two rings)",
+   "value": "about 40-50 au and 110-120 au",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial Distribution of Emission",
+     "quote": "In general, CS and C$^{34}$S take the form of two rings at radii of ${\\approx}$40-50 au and ${\\approx}$110-120 au."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS ring radius",
+   "value": "56",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial Distribution of Emission",
+     "quote": "H$_2$CS instead shows only a single ring at 56 au"
+    }
+   ]
+  },
+  {
+   "quantity": "H2C34S ring radius",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial Distribution of Emission",
+     "quote": "H$_2$C$^{34}$S peaks in a narrower ring at a smaller radius of 37 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer CS J=4-3 ring radii",
+   "value": "about 240 and 385",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Spatial Distribution of Emission",
+     "quote": "Two external rings at ${\\approx}$240 au and ${\\approx}$385 au are seen in CS J=4–3"
+    }
+   ]
+  },
+  {
+   "quantity": "CS emitting height z/r",
+   "value": "<= about 0.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4.2 Inferred from 2D Gas Structure",
+     "quote": "CS is relatively well-constrained to a height of $z/r\\lesssim0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas surface density at the D85 gap from CS J=8-7 sub-thermal excitation",
+   "value": "about 1",
+   "uncertainty": "not stated (described as quite uncertain)",
+   "units": "g cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2 Local Sub-thermal CS Line Excitation in a Planet-Carved Gap",
+     "quote": "We find $\\Sigma_{\\rm{g}} \\sim$ 1 g cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "32S/34S ratio from CS/C34S and H2CS/H2C34S (disk-averaged and resolved)",
+   "value": "about 5 (CS/C34S) and about 2 (H2CS/H2C34S)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We derive $^{32}$S/$^{34}$S ratios of ${\\approx}$5 (CS/C$^{34}$S) and ${\\approx}$2 (H$_2$CS/H$_2$C$^{34}$S)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "uv-taper sizes for each line (Table 1 only flags 'taper')",
+  "image size and cell size for each cube",
+  "which channels were line-free for uvcontsub and for the RMS estimate",
+  "Keplerian mask parameters other than the maximum radius (e.g. emission surface and width used)",
+  "CLEAN niter and mask details beyond the 4 sigma threshold",
+  "ALMA flux, bandpass and phase calibrators and pipeline versions for each project",
+  "self-calibration details (solints, reference antenna, gaincal parameters) for the C34S data sets obtained privately from other authors",
+  "primary beam correction treatment for fluxes and rings",
+  "exact method of interpolating CDMS partition functions for H2CS and H2C34S",
+  "RADEX inputs (collision partner, density grid, line width) for the sub-thermal excitation check",
+  "how the gap gas surface density was converted from n_crit to Sigma_g (scale height, abundance)",
+  "renormalization details of the 2D temperature profile"
+ ],
+ "missing_for_reproduction": [
+  "uv-taper sizes, image and cell sizes per line",
+  "line-free channel selection for uvcontsub",
+  "pre-calibrated C34S, H2C34S measurement sets from other authors",
+  "ALMA calibrator and pipeline details per project",
+  "RADEX setup and gas density conversion for the gap estimate",
+  "2D temperature profile renormalization details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Table 1 gives fluxes, beams, robust values and spectroscopy, and the rotational diagram method, priors and sampler settings are explicit, but taper sizes, line-free channels, some self-cal products and RADEX/gap-density details are missing.",
+ "rediscovery_reason": "Data are archival and mostly public, the rotational diagram fits can be redone from tabulated fluxes with stated priors and walkers, and the main results (Trot, NT, ratios, 32S/34S) are numeric; imaging reproduction is less complete.",
+ "source_card": "cards/2025ApJ...985...84L/sonnet/card.md"
+}

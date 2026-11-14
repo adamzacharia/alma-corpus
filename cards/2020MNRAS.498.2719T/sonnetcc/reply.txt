@@ -1,0 +1,407 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "SINFONI J-, H- and KMOS YJ-, H- bands spectroscopic data have been analyzed, together with deep archival HST photometric data in F105W, F140W, and F160W bands, Chandra X-ray, radio JVLA data at 1-2 GHz, and ALMA band-6 observations."}
+],
+"fields": ["high_z_galaxies", "galaxy_clusters_and_sz", "agn_and_quasars"],
+"question": {
+"value": "How the brightest cluster galaxy (BCG) of the z~1.6 cluster XDCP0044 assembles, probed through the AGN, star formation and merger activity of galaxies in its core",
+"evidence": [
+{"loc": "abstract", "quote": "How these central galaxies form is still debated."},
+{"loc": "Introduction", "quote": "We have performed a detailed multi-wavelength analysis of the core of XDCP J0044.0-2033"}
+]
+},
+"targets": [
+{
+"name": "XDCP J0044.0-2033 (XDCP0044) cluster core",
+"details": [
+{"loc": "Introduction", "quote": "thanks to its extended X-ray emission (RA=00:44:05.2, Dec = -20:33:59.7)"},
+{"loc": "2.3 Dynamics of the galaxy cluster", "quote": "The central redshift of the cluster, defined as the mean redshift of all member galaxies, is $z_c =1.5750$"}
+],
+"coordinates": "RA=00:44:05.2, Dec=-20:33:59.7 (X-ray cluster position)",
+"redshift_or_distance": "z_c = 1.5750 (mean of 13 confirmed members)",
+"distance_source": "mean redshift of the confirmed member galaxies (SINFONI/KMOS plus FORS2 redshifts)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.01387.S", "evidence": [
+{"loc": "Archival data", "quote": "band 6 data from project 2017.1.01387.S (PI S. Stach), covering the FOV of our SINFONI data, are also included in our study."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6", "evidence": [
+{"loc": "Archival data", "quote": "band 6 data from project 2017.1.01387.S (PI S. Stach), covering the FOV of our SINFONI data, are also included in our study."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "221.5-225.3 GHz and 236.3-240.7 GHz, total bandwidth ~7.5 GHz, spectral resolution ~40 km/s", "evidence": [
+{"loc": "Archival data", "quote": "These observations span the frequency range 221.5-225.3 GHz and 236.3-240.7 GHz for a total bandwidth of $\\sim$7.5 GHz, and a spectral resolution of $\\rm \\sim 40~km~s^{-1}$."}
+]},
+{"field": "continuum_bandwidth", "value": "continuum averaged over the whole bandwidth (~7.5 GHz total)", "evidence": [
+{"loc": "Archival data", "quote": "The continuum map was created by averaging the visibilities over the whole bandwidth."}
+]},
+{"field": "angular_resolution", "value": "0.98 x 0.78 arcsec^2 (continuum); 0.82 x 0.63 arcsec^2 at native spectral resolution", "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."},
+{"loc": "Archival data", "quote": "The resulting sensitivity to the native spectral resolution of the observations ($\\sim$10$\\rm~km~s^{-1}$) is 1.5 mJy/beam and the beam is 0.82 $\\times$ 0.63 arcsec$^2$."}
+]},
+{"field": "sensitivity", "value": "continuum rms 0.024 mJy/beam; 1.5 mJy/beam at native spectral resolution", "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."},
+{"loc": "Archival data", "quote": "The resulting sensitivity to the native spectral resolution of the observations ($\\sim$10$\\rm~km~s^{-1}$) is 1.5 mJy/beam and the beam is 0.82 $\\times$ 0.63 arcsec$^2$."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Archival; project 2017.1.01387.S (PI S. Stach), not the authors' own proposal", "evidence": [
+{"loc": "Archival data", "quote": "band 6 data from project 2017.1.01387.S (PI S. Stach), covering the FOV of our SINFONI data, are also included in our study."},
+{"loc": "Data availability", "quote": "All data are free in the archive of the different telescopes"}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "5-4", "rest_frequency": "576.27 GHz", "evidence": [
+{"loc": "Archival data", "quote": "Given the redshift of the cluster, the ALMA coverage corresponds to the rest-frame $\\sim$600 GHz continuum and CO(5-4) emission line ($\\rm \\nu_{rest}$=576.27 GHz)."}
+]}
+],
+"other_facilities": [
+{"name": "VLT/SINFONI (program 094.A-0713(A))", "provided": {"value": "J- and H-band IFU spectroscopy of the cluster core: redshifts, Halpha/[NII] fits, broad-line AGN identification, BH masses", "evidence": [
+{"loc": "Proprietary data / SINFONI", "quote": "Observations consist of 6 Observing Blocks (OBs) in J-band and 2 OBs in H-band."},
+{"loc": "Proprietary data / SINFONI", "quote": "The total on target integration time is $\\sim$4 h in J-band and 1.5 h in H-band."}
+]}},
+{"name": "VLT/KMOS (Program 092.A-0114(A))", "provided": {"value": "YJ- and H-band IFU spectroscopy centred on the BCG candidate", "evidence": [
+{"loc": "Proprietary data / KMOS", "quote": "Observations consist of 7 OBs in YJ-band and 2 OBs in H-band."}
+]}},
+{"name": "JVLA (project 16A-082)", "provided": {"value": "L-band 1-2 GHz radio images in A, B and C configuration; radio emission of Complex A and other sources", "evidence": [
+{"loc": "Proprietary data / JVLA", "quote": "JVLA data have been taken in 2016 in the L-band (1–2 GHz) in A, B, and C configuration"}
+]}},
+{"name": "HST (Program 13677)", "provided": {"value": "F105W, F140W, F160W (and F814W, not used) imaging for source identification, photometry and 5100 A luminosity", "evidence": [
+{"loc": "Archival data", "quote": "have been obtained in 2015 (Program 13677; PI S. Perlmutter) in F105W, F140W, F160W and F814W bands"}
+]}},
+{"name": "Chandra/ACIS-S", "provided": {"value": "~370 ks X-ray data used for the X-ray spectrum of b1 and upper limits for a2 and a3", "evidence": [
+{"loc": "Archival data", "quote": "X-ray observation of the cluster has been performed in October-December 2013 and carried out in six exposures for an total time of $\\sim$370 ks (PI P. Tozzi)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Herschel far-IR SFR of the whole central region, ~450 +/- 60 Msun/yr, used for comparison with the ALMA-based SFR of b1", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "derived the SFR in the cluster core galaxies through Herschel far-IR data"},
+{"loc": "Summary and Conclusions", "quote": "This value has been derived by (cite: Santos15) using Herschel data which however do not allow us to distinguish the different sources."}
+]}, "citation": "(cite: Santos15)"},
+{"what": {"value": "Redshifts of 6 additional cluster members from FORS2 optical slit spectroscopy", "evidence": [
+{"loc": "2.3 Dynamics of the galaxy cluster", "quote": "whose redshift has been determined through FORS2 optical slit spectroscopy in (cite: Fassbender14)"}
+]}, "citation": "(cite: Fassbender14)"},
+{"what": {"value": "CO luminosity relation used to convert the CO flux limit to L'CO", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "following the relation from (cite: Solomon05) and assuming the ratio CO(5-4) to CO(1-0) given by (cite: Carilli13)"}
+]}, "citation": "(cite: Solomon05)"},
+{"what": {"value": "CO(5-4) to CO(1-0) ratio used to scale the CO limit", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "assuming the ratio CO(5-4) to CO(1-0) given by (cite: Carilli13)"}
+]}, "citation": "(cite: Carilli13)"},
+{"what": {"value": "Molecular gas mass conversion values for massive galaxies, used to turn the CO limit into M(CO)", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "According to the values found by (cite: Accurso17) for massive galaxies"}
+]}, "citation": "(cite: Accurso17)"},
+{"what": {"value": "Radio-luminosity to SFR relation used for the Complex A radio emission", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "according to the relation by (cite: Brown17)"}
+]}, "citation": "(cite: Brown17)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Mrk 231 QSO SED template normalised to the observed ALMA flux, used to derive the SFR of b1 and a2 limit", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "we derived the SFR by assuming a typical QSO SED, i.e. Mrk 231 template, and normalising it to the observed ALMA flux."}
+]},
+{"value": "Simple blackbody dust template (40 K for b1; best fit T = 30 K for a2) normalised to the ALMA flux", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "a simple blackbody template normalized to the ALMA flux with dust temperature of 40 K"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "pipeline mode", "evidence": [
+{"loc": "Archival data", "quote": "ALMA data were calibrated with the CASA 5.1.1 version in pipeline mode using the default calibrators provided by the Observatory."}
+]},
+{"field": "casa_version", "value": "CASA 5.1.1", "evidence": [
+{"loc": "Archival data", "quote": "ALMA data were calibrated with the CASA 5.1.1 version in pipeline mode using the default calibrators provided by the Observatory."}
+]},
+{"field": "flux_calibrator", "value": "default calibrators provided by the Observatory (not named)", "evidence": [
+{"loc": "Archival data", "quote": "ALMA data were calibrated with the CASA 5.1.1 version in pipeline mode using the default calibrators provided by the Observatory."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "standard non-interactive cleaning (task name not given)", "evidence": [
+{"loc": "Archival data", "quote": "Specifically, we applied the standard non-interactive cleaning, with clark algorithm and natural weighting."}
+]},
+{"field": "deconvolver", "value": "clark", "evidence": [
+{"loc": "Archival data", "quote": "Specifically, we applied the standard non-interactive cleaning, with clark algorithm and natural weighting."}
+]},
+{"field": "weighting_robust", "value": "natural weighting", "evidence": [
+{"loc": "Archival data", "quote": "Specifically, we applied the standard non-interactive cleaning, with clark algorithm and natural weighting."}
+]},
+{"field": "final_beam", "value": "0.98 x 0.78 arcsec^2 (continuum)", "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."}
+]},
+{"field": "final_rms", "value": "0.024 mJy/beam (continuum)", "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."}
+]}
+],
+"inherited": [
+{"what": {"value": "Chandra observation details and data reduction", "evidence": [
+{"loc": "Archival data", "quote": "Details on observations and data reduction can be found in (cite: Tozzi15)."}
+]}, "from_reference": "(cite: Tozzi15)"},
+{"what": {"value": "JVLA flux scale", "evidence": [
+{"loc": "Proprietary data / JVLA", "quote": "The flux scale has been set to (cite: Perley13)."}
+]}, "from_reference": "(cite: Perley13)"},
+{"what": {"value": "SINFONI J-band flux rescaled to HAWK-I photometric point from earlier work", "evidence": [
+{"loc": "Proprietary data / SINFONI", "quote": "rescaling the continuum flux to the HAWK-I J-band photometric point published in (cite: Fassbender14)"}
+]}, "from_reference": "(cite: Fassbender14)"}
+],
+"unstated_but_needed": [
+"tclean-equivalent parameters for the ALMA continuum image: cell size, image size, clean mask, threshold, niter, uv range or taper",
+"ALMA pipeline version, flux and bandpass calibrators and the flux-scale uncertainty; whether any self-calibration was done",
+"Whether the continuum map includes channels that could contain CO(5-4) or other lines (no line-free channel selection given); primary beam correction",
+"How the flux of b1 (0.80 +/- 0.15 mJy) was measured (aperture, point-source or Gaussian fit) and where the a2 3-sigma limit was taken",
+"Exact Mrk 231 template used, redshift/k-correction, and how the 8-1000 um integral was converted to SFR (conversion law, IMF)",
+"How the CO velocity-integrated map was made (channel range, continuum subtraction) and the CO(5-4)/CO(1-0) ratio value and conversion factor used",
+"ALMA array configuration, baselines, dates, time on source and maximum recoverable scale are not given",
+"The text gives both ~40 km/s and ~10 km/s for the native spectral resolution, and 230 GHz vs 288 GHz for the continuum frequency"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "calibrate and image the ALMA continuum",
+"method": {"value": "Archival ALMA Band 6 data calibrated in CASA pipeline mode; continuum made by averaging visibilities over the whole bandwidth and cleaned non-interactively", "evidence": [
+{"loc": "Archival data", "quote": "The continuum map was created by averaging the visibilities over the whole bandwidth."},
+{"loc": "Archival data", "quote": "Specifically, we applied the standard non-interactive cleaning, with clark algorithm and natural weighting."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "CASA 5.1.1, pipeline mode", "evidence": [
+{"loc": "Archival data", "quote": "ALMA data were calibrated with the CASA 5.1.1 version in pipeline mode using the default calibrators provided by the Observatory."}
+]},
+{"value": "clark deconvolution, natural weighting", "evidence": [
+{"loc": "Archival data", "quote": "Specifically, we applied the standard non-interactive cleaning, with clark algorithm and natural weighting."}
+]},
+{"value": "rms 0.024 mJy/beam, beam 0.98 x 0.78 arcsec^2", "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "measure the 600 GHz rest-frame continuum flux of b1 and a limit for a2",
+"method": {"value": "Source b1 detected at 5 sigma in the 230 GHz continuum map; 3 sigma upper limit for a2; no line emission found in the SINFONI FOV", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "at 5$\\sigma$ significance with a rest-frame 600 GHz flux of $0.80 \\pm 0.15$ mJy."},
+{"loc": "4.2 Star formation activity", "quote": "a 3$\\sigma$ upper limit on the flux has been computed to be \\<0.59 mJy."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "map rms 0.024 mJy/beam", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "The analysis of the ALMA data did not spot emission lines in the region covered by the SINFONI FOV."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "convert the ALMA flux to a star formation rate",
+"method": {"value": "Normalise a Mrk 231 QSO SED template (or a blackbody) to the ALMA flux and integrate 8-1000 um to get the IR luminosity-based SFR", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "we derived the SFR by assuming a typical QSO SED, i.e. Mrk 231 template, and normalising it to the observed ALMA flux."},
+{"loc": "4.2 Star formation activity", "quote": "The derived value obtained by integrating from 8-to-1000$\\rm ~\\mu m$, is $\\rm 490~M_{\\odot}~yr^{-1}$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "blackbody alternative: dust temperature 40 K for b1; T = 30 K best fit for a2", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "a simple blackbody template normalized to the ALMA flux with dust temperature of 40 K"},
+{"loc": "4.2 Star formation activity", "quote": "finding a best fit with $\\rm T= 30~K$ and a SFR\\< 240 $\\rm M_{\\odot}~yr^{-1}$."}
+]}
+],
+"assumptions": [
+{"value": "Source b1 is a typical QSO, so its SED follows the Mrk 231 template", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "we derived the SFR by assuming a typical QSO SED, i.e. Mrk 231 template"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with the Herschel SFR of the whole central region and with the radio-based SFR of Complex A", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "This value is consistent with the SFR derived from IR Herschel data by (cite: Santos15) for the entire central region"},
+{"loc": "4.2 Star formation activity", "quote": "in agreement with the upper limit estimated from the ALMA data."}
+]}
+},
+{
+"order": 4,
+"goal": "derive an upper limit on CO(5-4) flux and molecular gas mass",
+"method": {"value": "Velocity-integrated map assuming FWHM = 500 km/s centred at the cluster redshift gives a 3 sigma CO flux limit, converted to L'CO and M(CO)", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "producing a velocity-integrated map by assuming a FWHM=500$\\rm~km~s^{-1}$, typically expected for CO emission lines of AGN"},
+{"loc": "4.2 Star formation activity", "quote": "this value results in $\\rm M(CO)<3.5-4 \\times 10^9 M_{\\odot}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "line FWHM 500 km/s, centred at the cluster redshift", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "producing a velocity-integrated map by assuming a FWHM=500$\\rm~km~s^{-1}$, typically expected for CO emission lines of AGN"}
+]}
+],
+"assumptions": [
+{"value": "CO(5-4) to CO(1-0) ratio from Carilli13; L'CO relation from Solomon05; gas-mass values for massive galaxies from Accurso17", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "following the relation from (cite: Solomon05) and assuming the ratio CO(5-4) to CO(1-0) given by (cite: Carilli13)"},
+{"loc": "4.2 Star formation activity", "quote": "According to the values found by (cite: Accurso17) for massive galaxies"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with CO limits found for galaxies in high-z clusters", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "in agreement with what recently found for galaxies in high-z clusters"}
+]}
+}
+],
+"software": [
+{"name": "CASA", "version": "5.1.1 (ALMA)", "used_for": {"value": "Pipeline calibration and continuum imaging of the ALMA data", "evidence": [
+{"loc": "Archival data", "quote": "ALMA data were calibrated with the CASA 5.1.1 version in pipeline mode using the default calibrators provided by the Observatory."}
+]}},
+{"name": "SExtractor", "version": "not stated", "used_for": {"value": "Source detection and deblending in HST images, isophotal photometry", "evidence": [
+{"loc": "3.1 Optical/NIR source identification", "quote": "we used SEXTRACTOR (cite: Bertin96) to detect and deblend the sources."}
+]}},
+{"name": "ESOREX", "version": "not stated", "used_for": {"value": "SINFONI data reduction", "evidence": [
+{"loc": "Proprietary data / SINFONI", "quote": "SINFONI data reduction was performed using the ESO pipeline"}
+]}},
+{"name": "SPARK", "version": "not stated", "used_for": {"value": "KMOS data reduction", "evidence": [
+{"loc": "Proprietary data / KMOS", "quote": "The data were reduced using the pipeline with the Software Package for Astronomical Reduction with KMOS (SPARK; (cite: Davies13))"}
+]}},
+{"name": "AOflagger", "version": "not stated", "used_for": {"value": "Automatic flagging of JVLA visibilities", "evidence": [
+{"loc": "Proprietary data / JVLA", "quote": "The visibilities were Hanning-smoothed, bandpass-calibrated and then flagged using the automatic tool"}
+]}},
+{"name": "CIAO specextract", "version": "not stated", "used_for": {"value": "Chandra spectral extraction and response files", "evidence": [
+{"loc": "3.4 Chandra X-ray spectroscopy", "quote": "The spectral extractions and response files production were performed with the CIAO script"}
+]}},
+{"name": "XSPEC", "version": "12.9.0", "used_for": {"value": "Fitting the Chandra X-ray spectrum of b1 with C-stat", "evidence": [
+{"loc": "3.4 Chandra X-ray spectroscopy", "quote": "modeled in XSPEC v. 12.9.0 in the 0.3-8 keV (0.8-20 keV rest-frame) band"}
+]}},
+{"name": "zphot", "version": "not stated", "used_for": {"value": "SED fitting of HST and HAWK-I photometry for stellar masses", "evidence": [
+{"loc": "5.2 Mass assembly and time scales for the BCG formation", "quote": "code (cite: Fontana00), with (cite: Bruzual03) templates, (cite: Salpeter59) IMF and (cite: Calzetti00) extinction."}
+]}}
+],
+"results_numeric": [
+{"quantity": "ALMA continuum rms (230 GHz)", "value": "0.024", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [
+{"loc": "Archival data", "quote": "This resulted into a rms sensitivity of 0.024 mJy/beam and an angular resolution of 0.98 $\\times$ 0.78 $\\rm arcsec^2$."}
+]},
+{"quantity": "b1 rest-frame 600 GHz flux (5 sigma detection)", "value": "0.80", "uncertainty": "0.15", "units": "mJy", "from_step": 2, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "at 5$\\sigma$ significance with a rest-frame 600 GHz flux of $0.80 \\pm 0.15$ mJy."}
+]},
+{"quantity": "a2 600 GHz flux, 3 sigma upper limit", "value": "<0.59", "uncertainty": "not stated", "units": "mJy", "from_step": 2, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "a 3$\\sigma$ upper limit on the flux has been computed to be \\<0.59 mJy."}
+]},
+{"quantity": "b1 SFR, Mrk 231 template", "value": "490", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 3, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "The derived value obtained by integrating from 8-to-1000$\\rm ~\\mu m$, is $\\rm 490~M_{\\odot}~yr^{-1}$."}
+]},
+{"quantity": "b1 SFR, 40 K blackbody", "value": "~150", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 3, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "the SFR we obtain is lower, i.e. $\\sim$150 M$_{\\odot}$/yr."}
+]},
+{"quantity": "a2 SFR upper limit, Mrk 231 template", "value": "<285", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 3, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "using the Mrk 231 template, finding SFR\\<285 $\\rm M_{\\odot}~yr^{-1}$"}
+]},
+{"quantity": "a2 SFR upper limit, blackbody (T = 30 K)", "value": "<240", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 3, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "finding a best fit with $\\rm T= 30~K$ and a SFR\\< 240 $\\rm M_{\\odot}~yr^{-1}$."}
+]},
+{"quantity": "CO(5-4) 3 sigma integrated flux upper limit (point source, FWHM 500 km/s)", "value": "~0.27 Jy/beam km/s (~0.585 mJy)", "uncertainty": "not stated", "units": "Jy/beam km/s", "from_step": 4, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "This translates into a 3$\\sigma$ upper limit on the CO integrated flux for a point source of $\\sim$0.27 Jy/beam km/s, equivalent to $\\sim 0.585 \\rm ~mJy$."}
+]},
+{"quantity": "L'CO upper limit", "value": "4.9e11", "uncertainty": "not stated", "units": "K km/s pc^2", "from_step": 4, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "This value corresponds to a $\\rm L'_{CO}=4.9 \\times 10^{11} K~km/s~pc^2$ following the relation from (cite: Solomon05)"}
+]},
+{"quantity": "M(CO) upper limit", "value": "<3.5-4e9", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "this value results in $\\rm M(CO)<3.5-4 \\times 10^9 M_{\\odot}$"}
+]},
+{"quantity": "BH masses of a2 and b1 (Halpha virial)", "value": "~3-8e7", "uncertainty": "statistical plus 0.3 dex systematic", "units": "Msun", "from_step": 0, "evidence": [
+{"loc": "4.1 Bolometric luminosity, BH masses and Eddington ratios", "quote": "host relatively massive SMBHs of $\\rm \\sim 3-8\\times 10^7 M_{\\odot}$."}
+]},
+{"quantity": "Eddington ratio of a2 and b1", "value": "~0.4-0.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 0, "evidence": [
+{"loc": "4.1 Bolometric luminosity, BH masses and Eddington ratios", "quote": "From these values we also derived their Eddington ratios, finding $\\rm \\lambda _{Edd} = L_{bol}/L_{Edd}\\sim  0.4-0.5$."}
+]},
+{"quantity": "b1 X-ray photon index and log N_H", "value": "Gamma = 1.4; log N_H = 22.7", "uncertainty": "Gamma +/-0.2; N_H +0.1/-0.2", "units": "dimensionless; cm^-2", "from_step": 0, "evidence": [
+{"loc": "3.4 Chandra X-ray spectroscopy", "quote": "gives a $\\rm \\Gamma=1.4\\pm0.2$ and $\\rm log[N_{H}/cm^{-2}]=22.7^{+0.1}_{-0.2}$"}
+]},
+{"quantity": "b1 unabsorbed 2-10 keV luminosity (log)", "value": "44.1", "uncertainty": "0.2", "units": "log erg/s", "from_step": 0, "evidence": [
+{"loc": "3.4 Chandra X-ray spectroscopy", "quote": "The resulting unabsorbed 2-10 keV luminosity is $\\rm log [L_{[2-10]keV}/erg~s^{-1}] = 44.1 \\pm 0.2$."}
+]},
+{"quantity": "Cluster velocity dispersion (standard deviation; gapper estimator)", "value": "1383; 1534", "uncertainty": "216; 271", "units": "km/s", "from_step": 0, "evidence": [
+{"loc": "3.3 Dynamics of the galaxy cluster", "quote": "$\\rm \\sigma _c \\simeq 1383 \\pm 216 ~km~s^{-1}$ and $\\rm \\sigma _c \\simeq 1534 \\pm 271 ~km~s^{-1}$, respectively"}
+]},
+{"quantity": "Cluster mean redshift", "value": "1.5750", "uncertainty": "not stated", "units": "dimensionless", "from_step": 0, "evidence": [
+{"loc": "3.3 Dynamics of the galaxy cluster", "quote": "The central redshift of the cluster, defined as the mean redshift of all member galaxies, is $z_c =1.5750$"}
+]},
+{"quantity": "BCG assembly time scale", "value": "~2.5 Gyr", "uncertainty": "not stated", "units": "Gyr", "from_step": 0, "evidence": [
+{"loc": "5.2 Mass assembly and time scales for the BCG formation", "quote": "Therefore, according to this scenario, all these galaxies will merge in $\\rm \\simeq$ 2.5 Gyr."}
+]}
+],
+"findings_qualitative": [
+{"value": "No single early-type BCG is detected in the core; it hosts many interacting star-forming galaxies in two complexes with multiple AGN", "evidence": [
+{"loc": "Summary and Conclusions", "quote": "Indeed, no single, early-type BCG has been detected in the core of"}
+]},
+{"value": "Only b1 is detected in the ALMA continuum; no emission lines are found in the ALMA data over the SINFONI FOV", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "The analysis of the ALMA data did not spot emission lines in the region covered by the SINFONI FOV."},
+{"loc": "4.2 Star formation activity", "quote": "No emission is associated to"}
+]}
+],
+"claims": [
+{"hypothesis": "The core of XDCP0044 hosts multiple AGN during BCG assembly", "experiment": "SINFONI and KMOS Halpha spectroscopy with BPT diagnostics, Chandra X-ray spectroscopy and JVLA radio data", "result": "Two broad-line AGN (a2, b1) and one type-2 AGN (a3) identified, with projected separations of 10-40 kpc", "finding": "The core hosts one of the closest AGN triples known at z>1", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "The three AGN provide one of the closest AGN triple at z$>$1 revealed so far with a minimum (maximum) projected distance of 10 (40) kpc."}
+]},
+{"hypothesis": "The central AGN b1 accounts for much of the star formation of the core", "experiment": "ALMA 230 GHz continuum flux normalised to a Mrk 231 template or a 40 K blackbody and compared with the Herschel SFR", "result": "SFR of b1 is 490 Msun/yr (template) or ~150 Msun/yr (blackbody), versus 450 +/- 60 Msun/yr for the whole region", "finding": "Most of the IR emission and star formation might be associated with b1, depending on the assumed SED", "support": "partially", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "suggesting that most of the IR emission, and therefore of the SF, might be associated to"}
+]},
+{"hypothesis": "The galaxies in the core will assemble into a massive BCG on a Gyr timescale", "experiment": "Stellar masses from SED fitting and merger and dynamical-friction timescales", "result": "Total stellar mass ~1e12 Msun and BH mass > 2e8 Msun; all galaxies merge in ~2.5 Gyr under the sub-clump scenario", "finding": "A typical massive central galaxy forms within a few Gyr", "support": "supported", "evidence": [
+{"loc": "5.2 Mass assembly and time scales for the BCG formation", "quote": "Summarising, we find that in a time scale of a couple of Gyrs, all galaxies in the core of XDCP0044 will experience several major mergers, forming a massive central galaxy with"}
+]},
+{"hypothesis": "The core galaxies contain detectable molecular gas in CO(5-4)", "experiment": "Velocity-integrated ALMA map assuming FWHM = 500 km/s at the cluster redshift", "result": "No CO detection; 3 sigma limit ~0.27 Jy/beam km/s, M(CO) < 3.5-4e9 Msun", "finding": "CO limit is in line with other high-z cluster galaxies", "support": "supported", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "this value results in $\\rm M(CO)<3.5-4 \\times 10^9 M_{\\odot}$"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ALMA resolution is high enough to separate single sources, unlike Herschel", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "ALMA observations provide sufficient angular resolution"}
+]},
+{"field": "why_this_method", "value": "A typical QSO SED template was assumed to turn the single ALMA flux into an SFR", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "we derived the SFR by assuming a typical QSO SED, i.e. Mrk 231 template"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "A simple 40 K blackbody template instead of Mrk 231 gives a lower SFR (~150 Msun/yr) for b1", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "a simple blackbody template normalized to the ALMA flux with dust temperature of 40 K"}
+]}
+],
+"limitations_admitted": [
+{"value": "The Herschel SFR blends all core sources plus a bright object to the north", "evidence": [
+{"loc": "4.2 Star formation activity", "quote": "this value includes all sources studied here plus an additional very bright object to the north of the studied region."}
+]},
+{"value": "BH masses may be underestimated because of high N_H extinction", "evidence": [
+{"loc": "4.1 Bolometric luminosity, BH masses and Eddington ratios", "quote": "We caution the reader that the values obtained for the BH masses can be underestimated due to the high"}
+]},
+{"value": "Final BCG stellar and BH masses and merger timescales are lower limits", "evidence": [
+{"loc": "5.2 Mass assembly and time scales for the BCG formation", "quote": "Stellar and BH masses of the final BCG as well as merging timescales have to be considered as lower limits."}
+]}
+],
+"referee_caveats_inferred": [
+"SFR of b1 depends strongly on the assumed SED (490 vs ~150 Msun/yr) and rests on a single 5 sigma ALMA flux point",
+"ALMA imaging settings are minimal and the stated spectral resolution (40 vs 10 km/s) and continuum frequency (230 vs 288 GHz) are inconsistent in the text",
+"The CO limit assumes a 500 km/s line width and an unspecified CO(5-4)/CO(1-0) ratio, so M(CO) is model dependent",
+"Most conclusions rest on non-ALMA data (SINFONI, KMOS, HST, Chandra); ALMA contributes one continuum detection and limits"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "All data stated to be free in telescope archives; data generated in this work on request", "evidence": [
+{"loc": "Data availability", "quote": "All data are free in the archive of the different telescopes, while data generated in this work are available on request."}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA image parameters (cell, image size, mask, threshold), flux measurement method and primary beam correction",
+"Mrk 231 template source and SFR conversion",
+"CO map construction details and CO ratio value",
+"Array configuration, dates and time on source for the ALMA project"
+],
+"estimated_data_volume_inferred": "Single-pointing Band 6 dataset with ~7.5 GHz bandwidth; likely a few to tens of GB raw (inferred)",
+"score_inferred": 3,
+"score_reason": "ALMA data are public and the main ALMA numbers are given, but the imaging, flux extraction and SED/SFR conversion are under-specified",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA role is minor and the recipe lacks imaging and SED template details, so the SFR of b1 cannot be redone exactly",
+"methods_papers": [
+{"citation": "(cite: Solomon05)", "why": "L'CO relation used for the CO flux limit"},
+{"citation": "(cite: Carilli13)", "why": "CO(5-4)/CO(1-0) ratio used"},
+{"citation": "(cite: Accurso17)", "why": "Gas mass conversion used for M(CO)"}
+],
+"companion_papers": [
+{"citation": "(cite: Tozzi15)", "why": "Chandra data and X-ray cluster properties and AGN"},
+{"citation": "(cite: Fassbender14)", "why": "HAWK-I photometry, BCG candidate and FORS2 redshifts"},
+{"citation": "(cite: Santos15)", "why": "Herschel SFR of the cluster core"}
+],
+"related_projects_or_surveys": ["XMM-Newton Distant Cluster Project (XDCP)", "JVLA project 16A-082", "HST Program 13677", "ALMA project 2017.1.01387.S"]
+}

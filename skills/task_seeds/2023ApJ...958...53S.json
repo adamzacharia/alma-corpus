@@ -1,0 +1,421 @@
+{
+ "bibcode": "2023ApJ...958...53S",
+ "title": "ALMA Observations of Supernova Remnant N49 in the Large Magellanic Cloud. II. Non-LTE Analysis of Shock-heated Molecular Clouds",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acffbe",
+ "arxiv_id": "2311.02180",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "What are the H$_2$ number density and kinetic temperature of molecular clouds in the vicinity of the LMC supernova remnant N49, and are they heated by supernova shocks or cosmic rays?",
+ "alma_project_codes": [
+  "2021.2.00008.S",
+  "2015.1.01195.S"
+ ],
+ "data": {
+  "bands": "Band 7, Band 6",
+  "arrays": "12 m array, 7 m array, Total Power (TP) array",
+  "angular_resolution": "3.48'' x 2.76'' for 12CO(3-2); 1.73'' x 1.10'' for 12CO(2-1); 1.82'' x 1.14'' for 13CO(2-1); 3.5'' x 3.5'' after smoothing",
+  "sensitivity": "~0.11 K at 0.4 km s^-1 for 12CO(3-2); ~0.09 K at 0.4 km s^-1 for 12CO(2-1) and 13CO(2-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Primary-beam-corrected ALMA 12CO(J=1-0) cleaned data and cloud definitions/positions",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "An important breakthrough came from observations of the $^{12}$CO($J$ = 1–0) emission line by (cite: 2018ApJ...863...55Y) using the Atacama Large Millimeter/Submillimeter Array (ALMA)."
+     },
+     {
+      "loc": "ALMA CO",
+      "quote": "In order to take an intensity ratio of two different CO $J$-transitions, we also used the primary-beam-corrected, $^{12}$CO($J$ = 1–0) cleaned data published in ."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Col. (1): Cloud name defined by . Cols. (2, 3): Position of the maximum intensity of $^{12}$CO($J$ = 1–0) ."
+     }
+    ]
+   },
+   "citation": "Yamane et al. 2018 (cite: 2018ApJ...863...55Y)"
+  },
+  {
+   "what": {
+    "value": "Low metal elemental abundances for the LMC used in the PDR model",
+    "evidence": [
+     {
+      "loc": "APPENDIX Time evolution of the kinetic temperature",
+      "quote": "Elemental abundances are taken from (cite: 2015ApJ...812..142A) (low metal abundances for the LMC in their Table 1)."
+     }
+    ]
+   },
+   "citation": "Acharyya & Herbst 2015 (cite: 2015ApJ...812..142A)"
+  },
+  {
+   "what": {
+    "value": "UV intensity G0 = 110 used in the PDR model",
+    "evidence": [
+     {
+      "loc": "APPENDIX Time evolution of the kinetic temperature",
+      "quote": "As input parameters for the model, we employ the UV intensity $G_0$ = $110$ (cite: 2012ApJ...744..160S) and the hydrogen (Hi+H$_2$) gas density $n_{\\mathrm{HI+H_2}}$ = $1\\times10^3$ cm$^{-3}$."
+     }
+    ]
+   },
+   "citation": "Seok et al. 2012 (cite: 2012ApJ...744..160S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and combine multi-array ALMA CO data and smooth to a common resolution",
+   "method": "Apply multiscale CLEAN with natural weighting in tclean, combine 7m+TP for CO(3-2) and 12m+7m for CO(2-1) using feather, apply primary beam correction, and smooth all CO cubes to a 3.5'' x 3.5'' beam",
+   "software": [
+    "CASA",
+    "tclean",
+    "feather"
+   ],
+   "key_parameters": [
+    "Velocity resolution 0.4 km s^-1; PB threshold 0.2 for 12CO(2-1) and 0.5 for 12CO(3-2) and 13CO(2-1); smoothed beam 3.5'' x 3.5''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure cloud line parameters, sizes, virial masses, and CO intensity ratios",
+   "method": "Identify eight clouds detected in 13CO(2-1) at >= 3 sigma, fit single Gaussian profiles to CO spectra, measure cloud sizes from the half-peak integrated intensity contour area, compute virial masses, and map the 12CO(2-1)/12CO(1-0) ratio",
+   "software": [],
+   "key_parameters": [
+    "Velocity range V_LSR = 285.5-287.8 km s^-1 for peak intensity maps"
+   ],
+   "assumptions": [
+    "Virial equilibrium for cloud mass estimation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive kinetic temperature and H2 number density via non-LTE LVG analysis",
+   "method": "Perform non-LTE radiative transfer calculations using the Large Velocity Gradient (LVG) approximation on 12CO(2-1), 12CO(3-2), and 13CO(2-1) line intensities for each of the eight clouds",
+   "software": [],
+   "key_parameters": [
+    "Individual velocity gradient dv/dr calculated for each cloud from HMHW linewidth dv and cloud radius dr"
+   ],
+   "assumptions": [
+    "Isothermal spherical cloud with uniform photon escape probability and velocity gradient dv/dr",
+    "Abundance ratios [12CO/H2] = 1.6 x 10^-5 and [12CO/13CO] = 50"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit X-ray shell geometry and T_kin vs n(H2) correlation",
+   "method": "Reprocess archival Chandra data to create a 0.5-7.0 keV flux image, fit radial X-ray profile with a 3D spherical Gaussian shell model, and fit the T_kin vs n(H2) relation for clouds N, O, P, Q, R using MPFITEXY",
+   "software": [
+    "CIAO",
+    "CALDB",
+    "chandra_repro",
+    "fluximage",
+    "MPFITEXY"
+   ],
+   "key_parameters": [
+    "SNR geometric center at (05h25m59.57s, -66d04m56.4s); X-ray energy band 0.5-7.0 keV"
+   ],
+   "assumptions": [
+    "Three-dimensional spherical shell geometry with Gaussian radial profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model cosmic-ray diffusion and time evolution of gas temperature in a PDR",
+   "method": "Calculate cosmic-ray diffusion length and run 1D plane-parallel PDR models over two stages (10^7 yr pre-SN at standard cosmic-ray ionization rate, then 10^5 yr post-SN with enhanced ionization rates) to track T_kin at the cloud center (A_V = 5 mag)",
+   "software": [],
+   "key_parameters": [
+    "t_age = 1.5 x 10^11 s, E = 100 MeV, B = 10 uG for diffusion; G_0 = 110, n_(HI+H2) = 1 x 10^3 cm^-3, N_H/A_V = 3.5 x 10^21 cm^-2, A_V = 5 mag, zeta = 3 x 10^-17 to 1 x 10^-14 s^-1 for PDR model"
+   ],
+   "assumptions": [
+    "LMC low metal abundances; initially all H in H2, all C in CO, remaining O in H2O ice"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO(J=2-1)/12CO(J=1-0) intensity ratio (R_2-1/1-0)",
+   "value": "1.0-1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Intensity Ratio of 12CO(J = 2–1)/12CO(J = 1–0)",
+     "quote": "We find a high intensity ratio of $R_\\mathrm{2-1/1-0}$ $\\sim$1.0–1.2 in the entire molecular cloud associated with the SNR."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud K kinetic temperature (T_kin)",
+   "value": "45",
+   "uncertainty": "+14/-9",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| K ...... | 5$:$26$:$5.5 | $-$66$:$05$:$21 | $3.60$ | $6.59$ | $0.35$ | $285.5$ | $0.83$ | 1.3 | 80 | 10.7 | $45^{+14}_{-9\\phantom{0}}$ | $0.53^{+0.05}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud K H2 number density n(H2)",
+   "value": "0.53",
+   "uncertainty": "+0.05/-0.06",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| K ...... | 5$:$26$:$5.5 | $-$66$:$05$:$21 | $3.60$ | $6.59$ | $0.35$ | $285.5$ | $0.83$ | 1.3 | 80 | 10.7 | $45^{+14}_{-9\\phantom{0}}$ | $0.53^{+0.05}_{-0.06}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud L kinetic temperature (T_kin)",
+   "value": "42",
+   "uncertainty": "+26/-13",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| L ...... | 5$:$26$:$4.7 | $-$66$:$05$:$02 | $2.00$ | $3.75$ | $0.18$ | $286.3$ | $1.72$ | 1.2 | 340 | 7.7 | $42^{+26}_{-13}$ | $0.72^{+0.13}_{-0.14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud L H2 number density n(H2)",
+   "value": "0.72",
+   "uncertainty": "+0.13/-0.14",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| L ...... | 5$:$26$:$4.7 | $-$66$:$05$:$02 | $2.00$ | $3.75$ | $0.18$ | $286.3$ | $1.72$ | 1.2 | 340 | 7.7 | $42^{+26}_{-13}$ | $0.72^{+0.13}_{-0.14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud N kinetic temperature (T_kin)",
+   "value": "21",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| N ...... | 5$:$26$:$6.7 | $-$66$:$05$:$15 | $2.58$ | $4.67$ | $0.40$ | $286.4$ | $0.40$ | 0.8 | 10 | 11.6 | $21^{+4\\phantom{0}}_{-3\\phantom{0}}$ | $0.78^{+0.02}_{-0.04}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud N H2 number density n(H2)",
+   "value": "0.78",
+   "uncertainty": "+0.02/-0.04",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| N ...... | 5$:$26$:$6.7 | $-$66$:$05$:$15 | $2.58$ | $4.67$ | $0.40$ | $286.4$ | $0.40$ | 0.8 | 10 | 11.6 | $21^{+4\\phantom{0}}_{-3\\phantom{0}}$ | $0.78^{+0.02}_{-0.04}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud O kinetic temperature (T_kin)",
+   "value": "19",
+   "uncertainty": "+1/-2",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| O ...... | 5$:$26$:$3.7 | $-$66$:$05$:$23 | $4.91$ | $8.26$ | $0.91$ | $286.2$ | $0.69$ | 1.2 | 50 | 8.8 | $19^{+1\\phantom{0}}_{-2\\phantom{0}}$ | $1.10^{+0.01}_{-0.01}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud O H2 number density n(H2)",
+   "value": "1.10",
+   "uncertainty": "+0.01/-0.01",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| O ...... | 5$:$26$:$3.7 | $-$66$:$05$:$23 | $4.91$ | $8.26$ | $0.91$ | $286.2$ | $0.69$ | 1.2 | 50 | 8.8 | $19^{+1\\phantom{0}}_{-2\\phantom{0}}$ | $1.10^{+0.01}_{-0.01}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud P kinetic temperature (T_kin)",
+   "value": "19",
+   "uncertainty": "+4/-3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| P ...... | 5$:$26$:$7.5 | $-$66$:$05$:$12 | $2.17$ | $3.70$ | $0.36$ | $286.4$ | $1.00$ | 1.1 | 100 | 12.2 | $19^{+4\\phantom{0}}_{-3\\phantom{0}}$ | $1.32^{+0.01}_{-0.03}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud P H2 number density n(H2)",
+   "value": "1.32",
+   "uncertainty": "+0.01/-0.03",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| P ...... | 5$:$26$:$7.5 | $-$66$:$05$:$12 | $2.17$ | $3.70$ | $0.36$ | $286.4$ | $1.00$ | 1.1 | 100 | 12.2 | $19^{+4\\phantom{0}}_{-3\\phantom{0}}$ | $1.32^{+0.01}_{-0.03}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud Q kinetic temperature (T_kin)",
+   "value": "21",
+   "uncertainty": "+6/-4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Q ...... | 5$:$26$:$1.7 | $-$66$:$05$:$34 | $1.82$ | $3.64$ | $0.25$ | $286.5$ | $0.90$ | 1.0 | 80 | 9.6 | $21^{+6\\phantom{0}}_{-4\\phantom{0}}$ | $0.81^{+0.06}_{-0.05}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud Q H2 number density n(H2)",
+   "value": "0.81",
+   "uncertainty": "+0.06/-0.05",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Q ...... | 5$:$26$:$1.7 | $-$66$:$05$:$34 | $1.82$ | $3.64$ | $0.25$ | $286.5$ | $0.90$ | 1.0 | 80 | 9.6 | $21^{+6\\phantom{0}}_{-4\\phantom{0}}$ | $0.81^{+0.06}_{-0.05}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud R kinetic temperature (T_kin)",
+   "value": "20",
+   "uncertainty": "+3/-2",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| R ...... | 5$:$26$:$6.3 | $-$66$:$05$:$11 | $3.17$ | $5.49$ | $0.51$ | $286.4$ | $0.86$ | 1.1 | 80 | 10.7 | $20^{+3\\phantom{0}}_{-2\\phantom{0}}$ | $1.10^{+0.02}_{-0.03}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud R H2 number density n(H2)",
+   "value": "1.10",
+   "uncertainty": "+0.02/-0.03",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| R ...... | 5$:$26$:$6.3 | $-$66$:$05$:$11 | $3.17$ | $5.49$ | $0.51$ | $286.4$ | $0.86$ | 1.1 | 80 | 10.7 | $20^{+3\\phantom{0}}_{-2\\phantom{0}}$ | $1.10^{+0.02}_{-0.03}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud T kinetic temperature (T_kin)",
+   "value": "46",
+   "uncertainty": "+57/-18",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| T ...... | 5$:$26$:$1.0 | $-$66$:$05$:$27 | $1.55$ | $2.94$ | $0.14$ | $286.4$ | $0.57$ | 0.9 | 30 | 7.7 | $46^{+57}_{-18}$ | $0.48^{+0.09}_{-0.14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud T H2 number density n(H2)",
+   "value": "0.48",
+   "uncertainty": "+0.09/-0.14",
+   "units": "10^3 cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| T ...... | 5$:$26$:$1.0 | $-$66$:$05$:$27 | $1.55$ | $2.94$ | $0.14$ | $286.4$ | $0.57$ | 0.9 | 30 | 7.7 | $46^{+57}_{-18}$ | $0.48^{+0.09}_{-0.14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray shell radius (r_0)",
+   "value": "7.7",
+   "uncertainty": "1.8",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Large Velocity Gradient Analysis",
+     "quote": "We obtained a shell radius of $7.7 \\pm 1.8$ pc and shell thickness of $2.6 \\pm 4.5$ pc as the best-fit parameters of the fitting, where the shell thickness was defined as the FWHM of the Gaussian function."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray shell thickness (FWHM)",
+   "value": "2.6",
+   "uncertainty": "4.5",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Large Velocity Gradient Analysis",
+     "quote": "We obtained a shell radius of $7.7 \\pm 1.8$ pc and shell thickness of $2.6 \\pm 4.5$ pc as the best-fit parameters of the fitting, where the shell thickness was defined as the FWHM of the Gaussian function."
+    }
+   ]
+  },
+  {
+   "quantity": "Cosmic-ray diffusion length (l_diff)",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Adopting $t_\\mathrm{age} = 1.5 \\times 10^{11}$ s (cite: 2012ApJ...748..117P), $E = 100$ MeV, and $B = 10~\\mu$G, we obtain $l_\\mathrm{diff} \\sim$6 pc which is substantially larger than the maximum separation between cloud P and the shock boundary of the SNR."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Multiscale CLEAN scale sizes, stopping threshold, and masking strategy in tclean",
+  "How 12 m and 7 m visibilities were combined for 13CO(J=2-1) (feather is only explicitly mentioned for CO(J=3-2) and CO(J=2-1), or whether CO(J=2-1) refers to both isotopologues)",
+  "Specific LVG radiative transfer code and collisional rate coefficients (e.g., LAMDA tables) used for the non-LTE analysis",
+  "Grid spacing and chi-square minimization details for the LVG fitting",
+  "Exact virial theorem coefficient/formula used to compute M_vir in Table 1",
+  "Exact project code and archival access for the 12CO(J=1-0) cube from Yamane et al. (2018)"
+ ],
+ "missing_for_reproduction": [
+  "Specific LVG radiative transfer code and collisional rate coefficients used",
+  "Exact CASA version and tclean imaging parameters (cell size, image size, multiscale scales, cleaning threshold/masking)",
+  "Method used to combine 12 m and 7 m array data for 13CO(J=2-1)",
+  "Exact formula/prefactor used to compute virial masses in Table 1"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "ALMA project codes, Chandra ObsIDs, calibrators, beam sizes, RMS sensitivities, smoothing resolution (3.5''), cloud coordinates, Gaussian line parameters, and LVG assumptions ([12CO/H2], [12CO/13CO], dv/dr definition) are clearly tabulated and described, though the specific LVG code and detailed tclean parameters are omitted.",
+ "rediscovery_reason": "Public archival ALMA data (#2015.1.01195.S and #2021.2.00008.S) and explicit cloud coordinates/apertures in Table 1 allow direct independent extraction of CO spectra, Gaussian line fits, and non-LTE LVG derivation of T_kin and n(H2) for the eight clouds.",
+ "source_card": "cards/2023ApJ...958...53S/sonnet/card.md"
+}

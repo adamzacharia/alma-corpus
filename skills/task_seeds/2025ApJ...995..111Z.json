@@ -1,0 +1,306 @@
+{
+ "bibcode": "2025ApJ...995..111Z",
+ "title": "The ALMA-ATOMS-QUARKS Survey: Resolving a Chemically Rich Massive Protostellar Outflow",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae1cad",
+ "arxiv_id": "2511.04504",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical and chemical structures and the chemical origins of molecular species within the bipolar protostellar outflow of the high-mass star-forming region SDC335?",
+ "alma_project_codes": [
+  "2019.1.00685.S",
+  "2021.1.00095.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm) and Band 6 (1.3 mm)",
+  "arrays": "12-m array and ACA 7-m array",
+  "angular_resolution": "Band 3 12-m continuum: 1.7'' x 1.5''; Band 6 TM2+ACA: ~1.3'' x 1.1''; Band 6 ACA+TM1+TM2: 0.34'' (best 0.3'')",
+  "sensitivity": "3 mm continuum rms: 10 mJy beam^-1; 1.3 mm continuum rms: ~0.8 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total gas mass of the SDC335 clump (~3700 M_sun)",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "This clump contains a total gas mass of ∼3700 M⊙ (C. J. Cyganowski et al. 2008; M. Anderson et al. 2021)."
+     }
+    ]
+   },
+   "citation": "C. J. Cyganowski et al. 2008; M. Anderson et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Mass of the central region encompassing massive core SDC335-C1 (~400 M_sun)",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "Within the central region corresponding to the area shown in Figure 1 (b), which encompasses the massive core SDC335-C1, the mass is ∼400 M⊙ (F. Xu et al. 2023)"
+     }
+    ]
+   },
+   "citation": "F. Xu et al. 2023"
+  },
+  {
+   "what": {
+    "value": "Detection of 18 COMs toward C1 in the ATOMS 3mm survey",
+    "evidence": [
+     {
+      "loc": "3.1. The outflow and driven source",
+      "quote": "In the ATOMS 3mm band survey, 18 COMs were detected toward C1, including c-C2H4O, C2H5CN, CH3CHO, and CH3OCHO (S.-L. Qin et al. 2022; Z.-Y. Li et al. 2025), indicating that it is a typical hot molecular core."
+     }
+    ]
+   },
+   "citation": "S.-L. Qin et al. 2022; Z.-Y. Li et al. 2025"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract line spectra at knots and identify molecular transitions",
+   "method": "Extract 3 mm and 1.3 mm spectra at the seven bright knots along the walls of the jet-driven outflow cavity and identify transitions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct velocity channel maps, integrated intensity (moment 0) maps, and position-velocity diagrams (PVDs)",
+   "method": "Integrate ACA+TM1+TM2 data over 3 km s^-1 channels for channel maps; integrate blue-shifted, systemic, and red-shifted velocity components for moment 0 maps; extract PVDs along the outflow-jet axis (K1-K7)",
+   "software": [],
+   "key_parameters": [
+    "Channel map velocity bin: 3 km s^-1 (±1.3 km s^-1 around each velocity)",
+    "CO (2-1) RGB velocity intervals: -42 to -12 km s^-1 (blue), ±12 km s^-1 (green), +12 to +42 km s^-1 (red)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Calculate position-integrated intensities and relative abundance ratios along the jet axis",
+   "method": "Compute integrated intensities along the outflow axis with a 1'' slit width over -36 to +36 km s^-1, normalize to reference value at 2'' from C1, and divide by local 13CO intensity as a proxy for relative abundance",
+   "software": [],
+   "key_parameters": [
+    "Slit width = 1'', velocity range = -36 to +36 km s^-1, inner hot-core exclusion radius = 2''"
+   ],
+   "assumptions": [
+    "LTE and optically thin conditions; 13CO traces H2 column density"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive gas rotational/kinetic temperature along the outflow axis from H2CO transitions",
+   "method": "Model H2CO 3-2 line ratios along the outflow axis using non-LTE radiative transfer code RADEX and compare with the spatial derivative of SiO/13CO intensity ratio",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Outflow volume density of 10^5 - 10^6 cm^-3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Classify molecular species using Principal Component Analysis (PCA) and pairwise Kendall rank correlations",
+   "method": "Perform PCA on the molecular PVDs along the jet axis (excluding inner ±2'') and compute pairwise Kendall rank correlation coefficients between integrated intensities of molecular lines",
+   "software": [],
+   "key_parameters": [
+    "PCA input dimensions: 18,684-dimensional vectors (173 positions x 108 high-velocity channels), inner ±2'' of C1 excluded"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified molecular transitions along the outflow",
+   "value": "35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Along the outflow, we have identified 35 transitions from 22 molecular species."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified molecular species along the outflow",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Along the outflow, we have identified 35 transitions from 22 molecular species."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet axis length",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. The outflow and driven source",
+     "quote": "The 1.3 mm continuum is overlaid as white contours, and the jet axis, spanning ∼37′′ (0.63 pc at the distance to the source), is indicated by a cyan line."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet axis physical length",
+   "value": "0.63",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. The outflow and driven source",
+     "quote": "The 1.3 mm continuum is overlaid as white contours, and the jet axis, spanning ∼37′′ (0.63 pc at the distance to the source), is indicated by a cyan line."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of core C1",
+   "value": "1.14 x 1.01",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1. The outflow and driven source",
+     "quote": "C1 is a chemically rich core with a deconvolved size of 1.14′′ × 1.01′′."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum line-of-sight velocity of the bipolar jet",
+   "value": "±40",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Consistently, the PVD (Fig.3) and moment0 map (Fig.2) show that the bipolar jet driven by C1 is remarkably symmetric within ±14′′ in both morphology and velocity, reaching line-of-sight velocities of up to ±40 km s−1 at ∼±10′′ from C1."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum line width at knots K1, K6, and K7",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "The broadest line widths (up to 20 km s−1) and the highest gas temperatures are found at knots K1, K6, and K7, coinciding with peaks in molecular emission."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO rotational temperature at several knots",
+   "value": ">=200",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Independent constraints from H2CO rotational analysis (Fig. B4) reveal Trot ≳ 200 K at several knots, consistent with strong shock heating by the protostellar jet"
+    }
+   ]
+  },
+  {
+   "quantity": "Variance explained by PC1",
+   "value": "36.2",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Finally, PCA on the full 18,684-dimensional vectors (173 positions × 108 high-velocity channels) shows that PC1 and PC2 account for 36.2% and 10.3% of the variance (46.5% combined), with nearly all variance driven by spatial differences in high-velocity (> 4km s−1) line intensities."
+    }
+   ]
+  },
+  {
+   "quantity": "Variance explained by PC2",
+   "value": "10.3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Finally, PCA on the full 18,684-dimensional vectors (173 positions × 108 high-velocity channels) shows that PC1 and PC2 account for 36.2% and 10.3% of the variance (46.5% combined), with nearly all variance driven by spatial differences in high-velocity (> 4km s−1) line intensities."
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall correlation coefficient between SiO J=2-1 and J=5-4",
+   "value": "0.88",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Complementing this, pairwise Kendall correlations (Fig. 5) reveal that CS, SO, HCN, and SiO are tightly correlated (> 0.8), with the strongest correlation (0.88) between two SiO transitions J=2–1 and J=5–4."
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall correlation coefficient between H2CO and HCO+",
+   "value": "0.86",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "H2CO and HCO+ correlate uniformly with most species (0.77–0.83) and with each other (0.86), indicating strong chemical coupling."
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall correlation coefficient between CH3OH 2_-1,1-1_-1,0 A and 4_-2,3-3_-1,2 E",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. Quantitative Analysis and Global Results",
+     "quote": "Notably, CH3OH 2−1,1–1−1,0 A and 4−2,3–3−1,2 E correlate at only 0.79, and their correlations with other molecules show larger differences, possibly related to nuclear spin isomers (Zou et al., in prep)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration pipeline version, and self-calibration details (deferred to survey papers)",
+  "Imaging parameters (tclean weighting/robust, cell size, image size, continuum subtraction method, primary beam correction)",
+  "Exact systemic velocity (v_LSR) of SDC335 used for velocity offsets",
+  "Exact sky coordinates of the seven outflow knots (K1-K7) and position angle of the jet axis",
+  "Aperture size used to extract spectra at knots K1-K7",
+  "Beam matching / smoothing procedure prior to comparing 3 mm and 1.3 mm line intensities, ratios, and PVDs",
+  "H2CO column density and line width parameters or grids assumed in the RADEX chi-square minimization"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates (RA, Dec) of core C1 and the seven knots (K1-K7), and the exact position angle of the 1'' PVD slit",
+  "Systemic velocity (v_LSR) adopted for SDC335",
+  "Calibration and imaging scripts or parameters (deferred to ATOMS and QUARKS survey papers)",
+  "Beam matching and spectral regridding steps used to homogenize Band 3 and Band 6 cubes for the 173 x 108 PVD matrix",
+  "Preprocessing/normalization applied to the PVD vectors prior to PCA"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Both ALMA project codes are explicitly stated and high-level analysis steps (slit width, velocity ranges, PCA dimensions, RADEX density range) are given, but data reduction is entirely deferred to survey papers and exact knot coordinates, slit PA, v_LSR, and cube homogenization steps are omitted.",
+ "rediscovery_reason": "Archival ALMA data from two well-known surveys (2019.1.00685.S and 2021.1.00095.S) on a single target (SDC335) with clear quantitative outputs (35 detected lines, Kendall correlation matrix, PCA variance fractions, and H2CO temperatures).",
+ "source_card": "cards/2025ApJ...995..111Z/sonnet/card.md"
+}

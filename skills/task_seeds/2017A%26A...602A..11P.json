@@ -1,0 +1,318 @@
+{
+ "bibcode": "2017A&A...602A..11P",
+ "title": "ALMA reveals starburst-like interstellar medium conditions in a compact star-forming galaxy at z   2 using [CI] and CO",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201730391",
+ "arxiv_id": "1703.05764",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the ISM conditions (density, UV field), gas mass, depletion time and kinematics of a compact star-forming galaxy at z=2.225, from [CI] and CO?",
+ "alma_project_codes": [
+  "2015.1.00228.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 4",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3 3.4x2.16 arcsec; Band 4 2.22x1.54 arcsec",
+  "sensitivity": "Band 4 rms 0.014 mJy/beam continuum, 0.076 (CO 4-3) and 0.08 ([CI]) mJy/beam/(100 km/s); Band 3 0.012 continuum, 0.16 CO 3-2"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical-NIR photometry",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "(1) (cite: Skelton2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Skelton2014)"
+  },
+  {
+   "what": {
+    "value": "Effective radius 2.5 kpc",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "This source has an effective radius of 2.5 $\\pm$ 0.1 kpc (cite: vanderWel2014)."
+     }
+    ]
+   },
+   "citation": "(cite: vanderWel2014)"
+  },
+  {
+   "what": {
+    "value": "Hα velocity dispersion for comparison",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "The derived velocity dispersions of CO and [CI] are in agreement with the H$\\alpha$ velocity dispersion for this source (cite: vanDokkum2015)."
+     }
+    ]
+   },
+   "citation": "(cite: vanDokkum2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and detect lines and continuum",
+   "method": "CLEAN with natural weighting; moment-0 maps; spectra extracted and fit with single Gaussian",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Line luminosities",
+   "method": "L' from Solomon & Vanden Bout relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "SED fit for LIR, M*, SFR, Mdust",
+   "method": "MAGPHYS fit to optical-NIR, Herschel and ALMA Band 4 photometry",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "ISM density and UV field from line ratios",
+   "method": "Compare [CI]/CO(4-3) vs [CI]/FIR to PDR model contours; XDR check",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "H2 mass from [CI], CO, dust",
+   "method": "[CI] mass via Weiss+05 then X[CI]; CO via assumed thermalised ratio and starburst alpha_CO; dust via gas-to-dust ratio",
+   "software": [],
+   "key_parameters": [
+    "Tex = 30 K"
+   ],
+   "assumptions": [
+    "CO 3-2/1-0 flux ratio = 9 (thermalised)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Gas fraction, depletion time, alpha_CO, gas-to-dust",
+   "method": "M_H2/SFR, M_H2/(M_H2+M*), alpha_CO=M_H2/L'CO1-0, gas/dust with 1.36 He",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Dynamical test of line widths",
+   "method": "Predicted sigma from M_dyn = M* + 1.36 MH2 and re",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas and stars dynamically coupled"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) integrated flux",
+   "value": "0.77",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO (3–2)      | $0.77 \\pm 0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) integrated flux",
+   "value": "1.08",
+   "uncertainty": "0.04",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CO (4–3)      | $1.08 \\pm 0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](1-0) integrated flux",
+   "value": "0.32",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$[$CI$]$ (1–0)   | $0.32\\pm 0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "660 um continuum",
+   "value": "0.085",
+   "uncertainty": "0.014",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.085 \\pm 0.014$"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM CO(4-3)",
+   "value": "751",
+   "uncertainty": "44",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3 Kinematics",
+     "quote": "This corresponds to a FWHM of 764 $\\pm$ 88, 751 $\\pm$ 44, and 675 $\\pm$ 92 km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "LIR",
+   "value": "2.3e12",
+   "uncertainty": "0.6e12",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$L_{\\rm IR} = 2.3\\pm0.6\\,\\times10^{12}\\,\\rm{L}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "ISM density",
+   "value": "6e4",
+   "uncertainty": "0.5e4",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "a density of $(6 \\pm 0.5)\\times 10^4\\,\\rm{cm}^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UV radiation field",
+   "value": "2e4",
+   "uncertainty": "2e4",
+   "units": "G0",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "a UV radiation field of $(2 \\pm 2) \\times 10^4\\,\\rm{G}_0$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 from [CI]",
+   "value": "3.0e10",
+   "uncertainty": "0.3e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5.1",
+     "quote": "$M_{\\rm H2}(\\rm{[CI]}) = 3.0 \\pm 0.3 \\times 10^{10}\\,\\rm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 from CO",
+   "value": "1.7e10",
+   "uncertainty": "0.1e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.5.2",
+     "quote": "CO-based H$_2$ mass of $1.7 \\pm 0.1 \\times 10^{10}\\,\\rm{M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time ([CI])",
+   "value": "140",
+   "uncertainty": "30",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.6",
+     "quote": "$M_{\\rm H2}/{\\rm SFR}= 140 \\pm 30\\,\\rm{Myr}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO",
+   "value": "1.4",
+   "uncertainty": "0.15",
+   "units": "Msun/(K km/s pc^2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.7",
+     "quote": "$\\alpha_{\\rm CO} = \\rm{M}_{\\rm H2} / L'_{\\rm CO 1-0} = 1.4 \\pm 0.15"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted sigma ([CI]-based Mdyn)",
+   "value": "340",
+   "uncertainty": "35",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "we find a predicted velocity dispersion for the gas of $340 \\pm 35$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, masks, iterations, cell and image size",
+  "Line-free channels and continuum subtraction method",
+  "Channel width used for line spectra and flux extraction aperture/method",
+  "Exact alpha_CO starburst value and gas-to-dust formula numerical values",
+  "MAGPHYS setup/priors and handling of ALMA upper limit",
+  "Flux calibrators and flux-scale uncertainty",
+  "How line S/N and Gaussian fit errors were computed",
+  "Cosmology adopted for luminosity distance"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and line extraction details",
+  "MAGPHYS configuration",
+  "alpha_CO starburst value and PDR grid access"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Simple data and analysis with equations given, but imaging, flux extraction and SED details are missing.",
+ "rediscovery_reason": "Archival-quality data with numeric line fluxes and derived quantities, simple analysis chain.",
+ "source_card": "cards/2017A%26A...602A..11P/sonnet/card.md"
+}

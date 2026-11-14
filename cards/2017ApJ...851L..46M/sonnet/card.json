@@ -1,0 +1,961 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...851L..46M",
+  "title": "ALMA Detection of Interstellar Methoxymethanol (CH<SUB>3</SUB>OCH<SUB>2</SUB>OH)",
+  "year": 2017,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "McGuire, Brett A.",
+  "n_authors": 13,
+  "arxiv_id": "1712.03256",
+  "doi": "10.3847/2041-8213/aaa0c3",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00150.S",
+   "2015.A.00022.T",
+   "2016.1.00383.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "Here, we present the first interstellar detection of using ALMA data in Bands 6 and 7 toward NGC 6334I"
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "NGC 6334I MM1",
+     "coordinates": {
+      "value": "analysis position J2000 17:20:53.373, -35:46:58.14",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "at a distance of 1.3 kpc (cite: Reid:2014km)"
+       },
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "The position chosen for analysis (J2000 17:20:53.373, $-35$:46:58.14)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "1.3 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "at a distance of 1.3 kpc (cite: Reid:2014km)"
+       },
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "The position chosen for analysis (J2000 17:20:53.373, $-35$:46:58.14)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Reid et al. 2014 (cite: Reid:2014km)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "at a distance of 1.3 kpc (cite: Reid:2014km)"
+       },
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "The position chosen for analysis (J2000 17:20:53.373, $-35$:46:58.14)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is methoxymethanol (CH3OCH2OH) present in the ISM toward NGC 6334I MM1, at what abundance, and what does it imply for formation routes?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We report the detection of interstellar methoxymethanol () in ALMA Bands 6 and 7 toward the MM1 core in the high-mass star-forming region NGC 6334I"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00383.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "Project code | 2016.1.00383.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.A.00022.T",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "2015.A.00022.T"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00150.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "2015.1.00150.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (249 GHz) and Band 7 (287, 303, 344 GHz)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Band | Band 6 | Band 7 | Band 7 | Band 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OCH2OH (conformer I)",
+     "transition": "more than two dozen unblended transitions",
+     "rest_frequency": "e.g. 281024.6590 MHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "$27_{12,15} - 26_{12,14}$ E | 281024.6590"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Cycle 4: C40-7; Cycle 3: C36-4, C36-5, C36-2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Cycle: configuration(s) | 4: C40-7 | 3: C36-4, C36-5 | 3: C36-2 | 3: C36-4, C36-5"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.11x0.08'' (249 GHz), 0.25x0.19'' (287), 0.87x0.64'' (303), 0.22x0.17'' (344)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$0.11\\times 0.08$ ($+76$) | $0.25\\times 0.19$ ($-82$) | $0.87\\times 0.64$ ($+74$) | $0.22\\times 0.17$ ($-76$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms per channel 1.1, 2.0, 20.0, 3.3 mJy/beam (2.5, 0.62, 0.48, 0.91 K)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1.1 (2.5) | 2.0 (0.62) | 20.0 (0.48) | 3.3 (0.91)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "37+37, 26+26, 27, 27+27 min",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Time on Source (min) | 37, 37 | 26, 26 | 27 | 27, 27"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Jan to Aug (Cycle 3); 2017 Aug 18, 19 (Cycle 4)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2017 Aug 18, 19 | 2016 Jul 18, 2016 Aug 02 | 2016 Jan 17"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Laboratory rotational spectrum of CH3OCH2OH conformers (150-450 GHz) and dipole moments",
+      "evidence": [
+       {
+        "loc": "Spectroscopy",
+        "quote": "were recently published by (cite: Motiyenko:2017dwa) between 150 and 450 GHz."
+       }
+      ]
+     },
+     "citation": "Motiyenko et al. 2017 (cite: Motiyenko:2017dwa)"
+    },
+    {
+     "what": {
+      "value": "12CH3OH/13CH3OH ratio of 68",
+      "evidence": [
+       {
+        "loc": "Appendix Column Density",
+        "quote": "by scaling by a / ratio of 68 (cite: Milam:2005gt)"
+       }
+      ]
+     },
+     "citation": "Milam et al. 2005 (cite: Milam:2005gt)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "MAGICKAL three-phase chemical model with warm-up timescales (fast/intermediate/slow) for gas-phase CH3OCH2OH abundance",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Modeling",
+       "quote": "was included in the three-phase chemical kinetics model *MAGICKAL* of (cite: Garrod:2013id)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline; self-calibration on line-free continuum channels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "used to construct an initial continuum image model that was then used to iteratively self-calibrate the data."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2 (Cycle 3 data), CASA 5.1.1 (Cycle 4 data)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "calibrated by the ALMA Cycle 4 pipeline (CASA 4.7.2)"
+      },
+      {
+       "loc": "2 Observations",
+       "quote": "calibrated by the ALMA Cycle 5 pipeline (CASA 5.1.1)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "iterative self-cal using continuum model from line-free channels; solint not given",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "used to iteratively self-calibrate the data"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uv-plane subtraction using relatively line-free channels",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The same channels were also used to subtract the continuum emission in the uv-plane before the spectral cubes were imaged."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data presented here have been corrected for primary beam attenuation."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Cycle 3 calibration procedure",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "as described in (cite: Hunter:2017th)"
+       }
+      ]
+     },
+     "from_reference": "Hunter et al. 2017 (cite: Hunter:2017th)"
+    },
+    {
+     "what": {
+      "value": "Column density formalism for single-excitation model",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "following the formalism established in (cite: Hollis:2004uh)"
+       }
+      ]
+     },
+     "from_reference": "Hollis et al. 2004 (cite: Hollis:2004uh)"
+    },
+    {
+     "what": {
+      "value": "Optical depth correction",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "a correction was applied using the formalisms of (cite: Goldsmith:1999vg) and (cite: Turner:1991um)"
+       }
+      ]
+     },
+     "from_reference": "Goldsmith & Langer 1999; Turner 1991"
+    },
+    {
+     "what": {
+      "value": "Two-stage chemical modeling approach",
+      "evidence": [
+       {
+        "loc": "4.2 Chemical Modeling",
+        "quote": "The chemical modeling was performed using the two-stage approach described in (cite: Garrod:2013id)."
+       }
+      ]
+     },
+     "from_reference": "Garrod 2013 (cite: Garrod:2013id)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum and self-calibration",
+    "Self-cal solution intervals and number of iterations",
+    "Imaging task, weighting/robust, cell and image size, deconvolver",
+    "Spectral resolution handling and exact beam-to-K conversion details",
+    "Full list of the >two dozen transitions (only in Supplementary Information)",
+    "Chemical network and reaction rates for the MAGICKAL runs",
+    "Which transitions were used in the column density fit",
+    "Line list/catalog for the other simulated species"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract spectra and convert to K",
+    "method": {
+     "value": "Spectra extracted at an offset position from the continuum peak; Jy/beam converted to K using the beam sizes",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "The spectra were converted from Jy/beam to K intensity scale in each spectral window using the beam sizes listed in Table [1](#obs)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "position 17:20:53.373, -35:46:58.14, ~400 au west of MM1b",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "lies $\\sim$400 au west of the brightest continuum peak"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Column density by spectral simulation",
+    "method": {
+     "value": "Single-excitation model fit of convolved spectra; N varied to minimize RMS error over unblended lines; optical depth correction",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "The excitation temperature was fixed to 200 K, and the column density was varied to minimize the RMS intensity error for unblended transitions."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Tex = 200 K, linewidth 2.4 km/s, Tbg ~53 K (287 GHz), ~66 K (344 GHz)",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "and with a 2.4 km s$^{-1}$ linewidth (red)"
+       }
+      ]
+     },
+     {
+      "value": "detection threshold: >=10 sigma and not substantially blended",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "only features at least 10$\\sigma$ above the RMS, and not substantially blended with another spectral feature, were considered significant"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Source fills the beam; beam efficiency unity",
+      "evidence": [
+       {
+        "loc": "4 Results and Analysis",
+        "quote": "We assume that the source fills the beam."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual minimization of RMS intensity error; rotation diagram not used",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "made it difficult to extract physically-meaningful quantitative results from a rotation diagram analysis"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Simulations compared to Band 6 and 1'' Band 7 data",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "Because these profiles show remarkably good agreement even at twice the spatial resolution"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Partition function",
+    "method": {
+     "value": "Rotational Q by direct summation; vibrational correction from Gaussian 09 B3LYP/6-311++G(d,p) frequencies",
+     "evidence": [
+      {
+       "loc": "Appendix Vibrational Partition Function",
+       "quote": "a geometry optimization and frequency analysis was performed using Gaussian 09 (cite: gaussian09B1) at the B3LYP/6-311++G(d,p) level"
+      }
+     ]
+    },
+    "software": [
+     "Gaussian 09"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Methanol column density for ratio",
+    "method": {
+     "value": "Optically thin 13CH3OH vt=1 line at 282383 MHz, Tex=150 K, scaled by 12C/13C = 68",
+     "evidence": [
+      {
+       "loc": "Appendix Column Density",
+       "quote": "A column density of $N_T$ = $1.4\\times10^{20}$ cm$^{-2}$ was then inferred by scaling by a / ratio of 68"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Tbg = 53 K, linewidth 2.8 km/s",
+      "evidence": [
+       {
+        "loc": "Appendix Column Density",
+        "quote": "A linewidth of 2.8 km s$^{-1}$ was fit to the lines."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Viewed as an estimate and lower limit",
+     "evidence": [
+      {
+       "loc": "Appendix Column Density",
+       "quote": "this value should be viewed as an estimate and as a lower limit."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Chemical modeling",
+    "method": {
+     "value": "MAGICKAL with back-diffusion correction and Belloche et al. network; cold collapse then warm-up at three timescales",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Modeling",
+       "quote": "Phase 1 is a cold collapse to a maximum density of 2 x 10$^8$ cm$^{-3}$ and a dust grain temperature of 8 K."
+      }
+     ]
+    },
+    "software": [
+     "MAGICKAL"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with observed ratio",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Modeling",
+       "quote": "The observed ratio of : is estimated to be 1:34"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2 and 5.1.1",
+    "used_for": {
+     "value": "Pipeline calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "calibrated by the ALMA Cycle 4 pipeline (CASA 4.7.2)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Gaussian 09",
+    "version": "Revision B.01",
+    "used_for": {
+     "value": "Vibrational frequencies for Qvib",
+     "evidence": [
+      {
+       "loc": "Appendix Vibrational Partition Function",
+       "quote": "performed using Gaussian 09 (cite: gaussian09B1)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGICKAL",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gas-grain chemical kinetics modeling",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Modeling",
+       "quote": "three-phase chemical kinetics model *MAGICKAL*"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH3OCH2OH column density (Tex=200 K)",
+    "value": "4(2)e18",
+    "uncertainty": "~60%",
+    "units": "cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4 Results and Analysis",
+      "quote": "The final derived value is $N_T$ = 4(2)$\\times$10$^{18}$ cm$^{-2}$ at $T_{ex}$ = 200 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Abundance ratio to CH3OH",
+    "value": "1:34",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Chemical Modeling",
+      "quote": "The observed ratio of : is estimated to be 1:34"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3OH column density",
+    "value": "1.95e18",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Appendix Column Density",
+      "quote": "The resulting column density was $N_T$ = $1.95\\times10^{18}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH column density",
+    "value": "1.4e20",
+    "uncertainty": "lower limit",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Appendix Column Density",
+      "quote": "A column density of $N_T$ = $1.4\\times10^{20}$ cm$^{-2}$ was then inferred"
+     }
+    ]
+   },
+   {
+    "quantity": "Modeled peak CH3OCH2OH abundance (fast warm-up)",
+    "value": "~1e-12",
+    "uncertainty": "not stated",
+    "units": "relative to H",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 Chemical Modeling",
+      "quote": "with a maximum fractional abundance of $\\sim$10$^{-12}$ with respect to total hydrogen"
+     }
+    ]
+   },
+   {
+    "quantity": "Qvib(300 K)",
+    "value": "5.33",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Results and Analysis",
+      "quote": "$Q_{vib}$\\[300 K\\] = 5.33"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CH3OCH2OH spatial distribution is nearly identical across transitions, similar to but slightly more compact than CH3OH vt=1, and differs from g'Gg-ethylene glycol",
+    "evidence": [
+     {
+      "loc": "4.1 Spatial Distributions",
+      "quote": "Notably, the distribution of appears to be similar to, but slightly more compact than, that of  $v_t$=1."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CH3OCH2OH is detectable in NGC 6334I MM1",
+    "experiment": "Spectral simulation against Band 6/7 ALMA data",
+    "result": "More than two dozen unblended transitions above 10 sigma",
+    "finding": "First interstellar detection of methoxymethanol",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "More than two dozen unblended transitions above 10$\\sigma$ were identified."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Current models reproduce the observed abundance",
+    "experiment": "MAGICKAL runs with three warm-up timescales",
+    "result": "Model peak ~1e-12 vs observed ratio 1:34 to CH3OH",
+    "finding": "Models significantly underproduce CH3OCH2OH",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.5 Comparison to Models",
+      "quote": "current models using only Reaction [\\[association\\]](#association) are significantly under-producing ."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CH3OCH2OH chemistry is tied to CH3OH",
+    "experiment": "Integrated intensity maps",
+    "result": "Similar distribution to CH3OH, different from other COMs",
+    "finding": "Suggestive of CH3O + CH2OH formation; not definitive",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6.5 Comparison to Models",
+      "quote": "While not definitive, this is highly suggestive of a closely-tied chemistry between these two species"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 7 0.2'' data had the most unblended features",
+    "evidence": [
+     {
+      "loc": "4 Results and Analysis",
+      "quote": "This Band 7 data contained the largest number of unblended features"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Spectral simulation used because methyl-rotor line profiles are non-Gaussian, preventing rotation diagrams",
+    "evidence": [
+     {
+      "loc": "4 Results and Analysis",
+      "quote": "Instead, the convolved spectra were simulated using a single-excitation model"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Rotation diagram analysis rejected due to non-Gaussian line profiles",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "made it difficult to extract physically-meaningful quantitative results from a rotation diagram analysis"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Uncertainty from continuum subtraction due to lack of line-free channels; Tex assumed; abundance uncertain",
+     "evidence": [
+      {
+       "loc": "4 Results and Analysis",
+       "quote": "the somewhat significant uncertainty introduced by the continuum subtraction due to the lack of line-free channels"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Tex fixed at 200 K, not fitted",
+    "Source assumed to fill the beam while MM1 is structured",
+    "Methanol column from optically thin 13CH3OH with assumed Tex and 12C/13C",
+    "Fits by-eye/RMS minimization without formal errors",
+    "Chemical model network not detailed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes acknowledged, but public status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.A.00022.T,"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "Line-free channel selection",
+    "Full transition list (Supplementary)",
+    "Chemical network files"
+   ],
+   "estimated_data_volume_inferred": "~200-500 GB for four datasets (raw); less for calibrated products",
+   "score_inferred": 3,
+   "score_reason": "Data and column-density formalism are described, but imaging and calibration details and line list are incomplete.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging and channel selection details are missing, and the analysis was done by hand-tuned spectral simulation."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Hollis et al. 2004 (cite: Hollis:2004uh)",
+     "why": "Column density formalism"
+    },
+    {
+     "citation": "Hunter et al. 2017 (cite: Hunter:2017th)",
+     "why": "Calibration of Cycle 3 data"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Brogan et al. 2016 (cite: Brogan:2016cy)",
+     "why": "NGC 6334I ALMA continuum and MM1/MM2 description"
+    },
+    {
+     "citation": "Motiyenko et al. 2017 (cite: Motiyenko:2017dwa)",
+     "why": "Laboratory spectroscopy"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-67f2882a5c846ba3a921e67e5df5b15c",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:34",
+  "usage": {
+   "input_tokens": 13926,
+   "output_tokens": 7577,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.052417,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 45,
+   "rate": 0.592
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:12:51",
+  "custom_id": "repair-sonnet-a9af9598530f3e64d94eabb0b1521847",
+  "fixed": [
+   {
+    "path": "data.external_data_from_literature[0].what.evidence[0]",
+    "old": "The rotational spectra of two conformers of were recently published by (cite: Motiyenko:2017dwa) between 150 and 450 GHz.",
+    "new": "were recently published by (cite: Motiyenko:2017dwa) between 150 and 450 GHz."
+   },
+   {
+    "path": "reproducibility.data_public_as_stated.evidence[0]",
+    "old": null,
+    "new": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.A.00022.T,"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

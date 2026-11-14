@@ -1,0 +1,400 @@
+{
+ "bibcode": "2021A&A...647A..87L",
+ "title": "The prebiotic molecular inventory of Serpens SMM1. I. An investigation of the isomers CH<SUB>3</SUB>NCO and HOCH<SUB>2</SUB>CN",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039619",
+ "arxiv_id": "2012.15672",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Investigate the interstellar chemistry of cyanides (CN) and isocyanates (NCO) and the reservoir of interstellar prebiotic molecules via the C2H3NO isomers CH3NCO and HOCH2CN towards Serpens SMM1-a and IRAS 16293B.",
+ "alma_project_codes": [
+  "2018.1.00836.S",
+  "2013.1.00278.S"
+ ],
+ "data": {
+  "bands": "Band 6 (SMM1, 217.59-235.93 GHz); Band 7 (IRAS 16293B PILS, 329-363 GHz)",
+  "arrays": "12m array (42 antennae)",
+  "angular_resolution": "1''.32 × 1''.04 (SMM1); 0''.5 (IRAS 16293B PILS)",
+  "sensitivity": "2.6 mJy beam^-1 km s^-1 (SMM1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic line lists from JPL and CDMS databases",
+    "evidence": [
+     {
+      "loc": "2.3. Analysis method",
+      "quote": "Spectral line lists were obtained from the JPL database for molecular spectroscopy (Pickett et al. 1998), the Cologne Database for Molecular Spectroscopy (CDMS, Müller et al. 2001, 2005), and from literature."
+     }
+    ]
+   },
+   "citation": "Pickett et al. 1998; Müller et al. 2001, 2005"
+  },
+  {
+   "what": {
+    "value": "Column densities of molecules in IRAS 16293B from PILS survey",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "CH 3 OH and HNCO column densities were adopted from Jørgensen et al. (2018) and Coutens et al. (2016), respectively."
+     },
+     {
+      "loc": "4. Discussion",
+      "quote": "For IRAS 16293B, the analysis performed in this work is combined with results from Jørgensen et al. (2016); Coutens et al. (2016); Ligterink et al. (2017); Coutens et al. (2018); Persson et al. (2018); Calcutt et al. (2018); Jørgensen et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Jørgensen et al. (2016, 2018); Coutens et al. (2016, 2018); Ligterink et al. (2017); Persson et al. (2018); Calcutt et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Local interstellar 12C/13C ratio of 52.5±15.4 and 16O/18O ratio of 560",
+    "evidence": [
+     {
+      "loc": "3.1. SMM1",
+      "quote": "This is done by multiplying with the local interstellar 12 C/ 13 C ratio of 52.5±15.4 (Yan et al. 2019) and 16 O/ 18 O ratio of 560 (Wilson 1999)."
+     }
+    ]
+   },
+   "citation": "Yan et al. 2019; Wilson 1999"
+  },
+  {
+   "what": {
+    "value": "Column densities of CH3NCO and HNCO towards G+0.693, Orion KL, G10.47+0.03, and Sgr B2(N)",
+    "evidence": [
+     {
+      "loc": "Figure 10 caption",
+      "quote": "Column densities from the following publications are used: Belloche et al. (2013), Cernicharo et al. (2016), Ligterink et al. (2017), Belloche et al. (2017), Zeng et al. (2018), Gorai et al. (2020), and this work."
+     }
+    ]
+   },
+   "citation": "Belloche et al. (2013, 2017); Cernicharo et al. (2016); Ligterink et al. (2017); Zeng et al. (2018); Gorai et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum subtraction and spectrum extraction for SMM1-a and IRAS 16293B",
+   "method": "Image spectral windows without continuum subtraction, run STATCONT corrected sigma-clipping to locate line-free channels, run CASA uvcontsub in the uv-plane, re-image, and extract spectra at SMM1-a continuum peak and IRAS 16293B offset positions; also compute moment 0 maps integrated over 8 velocity bins.",
+   "software": [
+    "CASA",
+    "STATCONT"
+   ],
+   "key_parameters": [
+    "SMM1-a extraction position: α_J2000 = 18:29:49.793, δ_J2000 = +1.15.20.200",
+    "Line-free bandwidth fraction: ≥20% (10% in two spectral windows)"
+   ],
+   "assumptions": [
+    "SMM1-a background temperature T_bg = 5.2 K from average continuum flux density (0.41 mJy beam^-1); IRAS 16293B T_BG = 21 K (full-beam offset) and 52 K (half-beam offset)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Synthetic spectrum fitting and column density determination",
+   "method": "Initial by-eye LTE synthetic spectrum fit in CASSIS using CDMS/JPL line lists, followed by MCMC chi-squared minimisation on optically thin unblended transitions to derive N_T, T_ex, V_LSR, and ΔV; scale optically thick main isotopologues from minor isotopologues.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "T_ex free range: 50 – 350 K; N_T free range: two orders of magnitude centered on by-eye fit",
+    "SMM1-a: ΔV = 1.0 – 4.0 km s^-1, V_LSR = 6.0 – 9.0 km s^-1, θ_source = 1''.2, T_bg = 5.2 K",
+    "IRAS 16293B: ΔV = 1.0 km s^-1 (fixed), V_LSR = 2.7 km s^-1 (fixed), θ_source = 0''.5, T_bg = 21 K"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and optically thin lines (τ ≪ 1.0)",
+    "Source size equal to beam size (beam filling factor = 0.5)",
+    "Isotopic ratios 16O/18O = 560 and 12C/13C = 52.5±15.4; T_ex = 200 K for SMM1-a upper limits"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Abundance ratio comparison and statistical distance calculation",
+   "method": "Compute abundance ratios relative to CH3OH and HNCO and calculate statistical distances S_(X/Y) in sigma between molecular ratios in SMM1-a and IRAS 16293B.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HOCH2CN column density N_T (SMM1-a)",
+   "value": "7.4e14",
+   "uncertainty": "0.9e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HOCH 2 CN 18 (7.4±0.9)×10 14 260±45 6.8±0.2 2.5±0.3 6.2×10 −4 7.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "HOCH2CN excitation temperature T_ex (SMM1-a)",
+   "value": "260",
+   "uncertainty": "45",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HOCH 2 CN 18 (7.4±0.9)×10 14 260±45 6.8±0.2 2.5±0.3 6.2×10 −4 7.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "[HOCH2CN]/[CH3OH] ratio (SMM1-a)",
+   "value": "6.2e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HOCH 2 CN 18 (7.4±0.9)×10 14 260±45 6.8±0.2 2.5±0.3 6.2×10 −4 7.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "[HOCH2CN]/[HNCO] ratio (SMM1-a)",
+   "value": "7.4e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HOCH 2 CN 18 (7.4±0.9)×10 14 260±45 6.8±0.2 2.5±0.3 6.2×10 −4 7.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO column density N_T (SMM1-a)",
+   "value": "6.4e14",
+   "uncertainty": "1.9e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 NCO 12 (6.4±1.9)×10 14 240±60 7.0±0.4 3.0±0.6 5.3×10 −4 6.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO excitation temperature T_ex (SMM1-a)",
+   "value": "240",
+   "uncertainty": "60",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 NCO 12 (6.4±1.9)×10 14 240±60 7.0±0.4 3.0±0.6 5.3×10 −4 6.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "[CH3NCO]/[CH3OH] ratio (SMM1-a)",
+   "value": "5.3e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 NCO 12 (6.4±1.9)×10 14 240±60 7.0±0.4 3.0±0.6 5.3×10 −4 6.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "[CH3NCO]/[HNCO] ratio (SMM1-a)",
+   "value": "6.4e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 NCO 12 (6.4±1.9)×10 14 240±60 7.0±0.4 3.0±0.6 5.3×10 −4 6.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO column density N_T (SMM1-a)",
+   "value": "5.4e14",
+   "uncertainty": "2.5e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "D 2 CO 3 (5.4±2.5)×10 14 [200] 7.4±0.4 3.9±0.2 4.5×10 −4 5.4×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH318OH column density N_T (SMM1-a)",
+   "value": "2.0e15",
+   "uncertainty": "1.1e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 18 3 OH 4 (2.0±1.1)×10 15 250±60 7.1±0.2 2.8±0.3 – –"
+    }
+   ]
+  },
+  {
+   "quantity": "12CH3OH column density N_T (SMM1-a)",
+   "value": "1.1e18",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "12 CH 3 OH a 5 b 1.1×10 18 – – – 1.0 110"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN (v8=1) column density N_T (SMM1-a)",
+   "value": "1.3e15",
+   "uncertainty": "0.3e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 CN c 6 (1.3±0.3)×10 15 190±25 7.5±0.2 3.4±0.3 1.1×10 −3 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CN column density N_T (SMM1-a)",
+   "value": "5.1e13",
+   "uncertainty": "1.3e13",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NH 2 CN 3 (5.1±1.3)×10 13 190±40 7.1±0.2 3.2±0.4 4.3×10 −5 5.1×10 −3"
+    }
+   ]
+  },
+  {
+   "quantity": "HN13CO column density N_T (SMM1-a)",
+   "value": "1.9e14",
+   "uncertainty": "0.3e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HN 13 CO 3 (1.9±0.3)×10 14 190±30 7.6±0.2 3.5±0.3 – –"
+    }
+   ]
+  },
+  {
+   "quantity": "HN12CO column density N_T (SMM1-a)",
+   "value": "1.0e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "HN 12 CO a 5 b 1.0×10 16 – – – 1.1×10 −2 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2OH column density N_T (SMM1-a)",
+   "value": "4.1e15",
+   "uncertainty": "0.9e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 CH 2 OH 14 (4.1±0.9)×10 15 210±25 7.3±0.2 2.8±0.6 4.1×10 −3 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO column density N_T (SMM1-a)",
+   "value": "7.4e15",
+   "uncertainty": "0.7e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH 3 OCHO 24 (7.4±0.7)×10 15 215±20 7.3±0.2 3.1±0.3 7.4×10 −3 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "a-(CH2OH)2 column density N_T (SMM1-a)",
+   "value": "1.7e15",
+   "uncertainty": "0.5e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "a-(CH 2 OH) 2 14 (1.7±0.5)×10 15 195±70 7.2±0.2 2.7±0.3 1.7×10 −3 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "HOCH2CN column density N_T (IRAS 16293B full-beam offset)",
+   "value": "≤1.0e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HOCH 2 CN ≤1.0×10 15 [150] ≤1.0×10 −4 ≤3.3×10 −2"
+    }
+   ]
+  },
+  {
+   "quantity": "HOCH2CN column density N_T (IRAS 16293B half-beam offset)",
+   "value": "3.0e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. IRAS 16293B",
+     "quote": "These lines can approximately be fitted with synthetic spectra of N T = 3.0×10 15 cm −2 for T ex = 150 and 300 K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether calibration of SMM1 data was pipeline or manual",
+  "Whether self-calibration was applied to the SMM1 data",
+  "Exact pixel/cell size and image dimensions used in CASA cleaning for SMM1",
+  "Clean stopping threshold and masking strategy in CASA",
+  "Polynomial fit order used in CASA uvcontsub",
+  "Exact J2000 coordinates of the full-beam and half-beam offset positions in IRAS 16293B"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel ranges identified by STATCONT and passed to CASA uvcontsub for each spectral window",
+  "Exact J2000 coordinates of the full-beam and half-beam offset positions in IRAS 16293B",
+  "Exact CASA tclean parameters (cell size, image size, stopping threshold, masking)",
+  "Whether SMM1-a spectrum was extracted from a single pixel or averaged over a beam aperture"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "ALMA project codes, extraction coordinates for SMM1-a, software versions (CASA 5.4.0-70, STATCONT, CASSIS), spectroscopic catalog tags, transition lists, MCMC parameter bounds, and full best-fit tables are all explicitly provided; only minor imaging and uvcontsub channel-mask details are omitted.",
+ "rediscovery_reason": "Both ALMA datasets (2018.1.00836.S and 2013.1.00278.S) are public, the line lists and CASSIS LTE fitting setup are thoroughly documented in the text and appendices, and the primary outputs are quantitative column densities and excitation temperatures.",
+ "source_card": "cards/2021A%26A...647A..87L/sonnet/card.md"
+}

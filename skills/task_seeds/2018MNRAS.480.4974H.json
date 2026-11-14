@@ -1,0 +1,160 @@
+{
+ "bibcode": "2018MNRAS.480.4974H",
+ "title": "On the multiplicity of ALMA Compact Array counterparts of far-infrared bright quasars",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty2073",
+ "arxiv_id": "1809.00856",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Are the Herschel/SPIRE far-infrared fluxes of FIR-bright z=2-4 SDSS quasars from single sub-mm sources or from multiple counterparts, and what does this imply for major mergers as triggers?",
+ "alma_project_codes": [
+  "2016.2.00060.S",
+  "2011.1.00539.S"
+ ],
+ "data": {
+  "bands": "Band 7, 870 um continuum",
+  "arrays": "ACA (Atacama Compact Array)",
+  "angular_resolution": "synthesised beams ~4.3\" x 3.0\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SPIRE fluxes, SED-fit LAGN, LFIR, SFRs of quasar sample",
+    "evidence": [
+     {
+      "loc": "2 sample",
+      "quote": "Based on the SED-fitting presented in P16, their L$_{\\textrm {FIR}}$ lie between 10$^{12.8}$ and 10$^{13.8}$ L$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: pitchford16)"
+  },
+  {
+   "what": {
+    "value": "ALMA 0.45\" band 7 maps of SMGs from archive, degraded for comparison",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "we degraded ALMA band 7 continuum maps of sub-millimetre galaxies (SMGs) at 0$.\\!\\!^{\\prime\\prime}$45 from (cite: bussmann15)"
+     }
+    ]
+   },
+   "citation": "(cite: bussmann15)"
+  },
+  {
+   "what": {
+    "value": "SCUBA sub-mm source counts",
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "The density of SCUBA sources at 850 $\\mu$m   is reported in Tab. 16 of (cite: scott06)"
+     }
+    ]
+   },
+   "citation": "(cite: scott06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and image ACA data",
+   "method": "Re-ran ALMA pipeline with QA flag files, antenna position corrections and flux.csv; primary-beam corrected",
+   "software": [
+    "CASA 5.1"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify ACA counterparts within SPIRE beam",
+   "method": "Search within 11\" of SPIRE coordinates; primary = unique or closest counterpart; compare with SDSS/SPIRE positions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Test detectability of hidden companions",
+   "method": "Simulate point-source pairs, smooth to ACA beam, fit beam to primary and inspect residuals; apply same to real maps and to degraded Bussmann maps",
+   "software": [
+    "CASA imsmooth"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Quasars with unique ACA counterpart within 11\"",
+   "value": "19 of 28",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "Of the 28 SDSS quasars, 19 have unique ALMA counterparts, while six and three sources have a second and third counterparts within 11"
+    }
+   ]
+  },
+  {
+   "quantity": "Lowest detection significance (J233456)",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "Source J233456, the source with the lowest ACA detection level, is detected at 3.5$\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "J233600 hidden-companion residual fraction",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "S$_{\\rm res}$/S$_{\\rm tot}$=0.27 at a distance of 2$.\\!\\!^{\\prime\\prime}$5"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ACA offsets for six objects from SDSS and SPIRE",
+   "value": "3.59 and 1.62",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "mean offsets for those six objects of 3$.\\!\\!^{\\prime\\prime}$59 and 1$.\\!\\!^{\\prime\\prime}$62"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "imaging parameters (tclean weighting, robust, cell, size, deconvolution)",
+  "source extraction method for fluxes and positions (fitting vs peak)",
+  "how rms/detection significance was computed",
+  "how beam-subtraction residual fitting was implemented",
+  "self-calibration or flux scale uncertainty",
+  "SFR/flux conversion used"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and source-extraction recipe",
+  "Flux error method"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis but imaging and extraction details missing.",
+ "rediscovery_reason": "Data public, results are counts and fluxes in tables; recipe moderately complete.",
+ "source_card": "cards/2018MNRAS.480.4974H/sonnet/card.md"
+}

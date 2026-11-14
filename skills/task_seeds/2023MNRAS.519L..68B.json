@@ -1,0 +1,474 @@
+{
+ "bibcode": "2023MNRAS.519L..68B",
+ "title": "Positive feedback, quenching, and sequential super star cluster (SSC) formation in NGC 4945",
+ "year": 2023,
+ "doi": "10.1093/mnrasl/slac154",
+ "arxiv_id": "2211.17268",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "nearby_galaxies"
+ ],
+ "question": "How do the formation and early evolution of Super Star Clusters (SSCs) in NGC 4945 proceed, and to what extent does positive feedback from the molecular outflow trigger sequential SSC formation versus quenching?",
+ "alma_project_codes": [
+  "2016.1.01135.S",
+  "2018.1.01236.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.14'' x 0.11'' (~100 GHz) to 0.42'' x 0.37'' (~350 GHz)",
+  "sensitivity": "0.3 mJy (~100 GHz) to 0.9 mJy (~350 GHz) in 8 km s^-1 channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of 27 SSC regions, gas mass estimates, stellar mass / L_ZAMS from 90 GHz radio continuum emission",
+    "evidence": [
+     {
+      "loc": "Super Star Cluster (SSC) selection",
+      "quote": "We selected 14 SSCs, out of 27 found by (cite: Emig20), in two ways"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "Column (3) (cite: Emig20) gas mass estimates. The ($^{\\star}$) symbol indicates the mass of gas derived as described in (cite: Emig20) Sect. 5.6."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "Column (5): The ($^{\\star\\star}$) symbol indicates the we have estimated the $M_{\\rm ZAMS}$ using the 90 GHz continuum emission following (cite: Emig20)."
+     }
+    ]
+   },
+   "citation": "(cite: Emig20)"
+  },
+  {
+   "what": {
+    "value": "CO observations of the molecular outflow in NGC 4945",
+    "evidence": [
+     {
+      "loc": "Triggering the SSC formation. Positive feedback",
+      "quote": "Furthermore, it is remarkable that the proto-HC$_3$N are just bordering the outer edges of the molecular outflow observed in CO by (cite: Bolatto21), as clearly illustrated in Fig. [4](#outflow_map)."
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto21)"
+  },
+  {
+   "what": {
+    "value": "Properties, ages, and gas mass reservoir of proto-SSCs in NGC 253 for comparison",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Then the study of the formation and early evolution of the SSCs in NGC 4945, when compared to the one already carried out toward NGC 253 ((cite: Rico20; Rico21; Rico22))"
+     }
+    ]
+   },
+   "citation": "(cite: Rico20; Rico21; Rico22)"
+  },
+  {
+   "what": {
+    "value": "CDMS and JPL molecular spectroscopy catalogues",
+    "evidence": [
+     {
+      "loc": "Analysis",
+      "quote": "This tool uses the molecular spectroscopy in the publicly available molecular catalogues CDMS ((cite: Muller01)) and JPL ((cite: Pickett98))."
+     }
+    ]
+   },
+   "citation": "(cite: Muller01), (cite: Pickett98)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select sample of 14 Super Star Clusters (SSCs) across evolutionary stages",
+   "method": "Select 14 SSCs out of 27 in Emig et al. (2020) by peak emission of vibrationally excited HC3N,v71 or HCN*, and by dust continuum peak at ~350 GHz with only CS and ground-state HC3N emissions and high stellar mass (10^5.1 - 10^5.7 M_sun)",
+   "software": [],
+   "key_parameters": [
+    "Stellar mass range 10^5.1 - 10^5.7 M_sun; gas mass threshold 10^5.0 M_sun"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular lines and fit LTE line profiles to derive rotational and vibrational temperatures (T_rot and T_vib)",
+   "method": "Simulate line profiles under LTE conditions including opacity effects for a given source size using MADCUBA SLIM; derive T_vib from transitions with the same J across different vibrational states, and T_rot from rotational transitions within the same vibrational state (or from CS and HC3N,v0)",
+   "software": [
+    "MADCUBA",
+    "SLIM",
+    "AUTOFIT"
+   ],
+   "key_parameters": [
+    "Systemic velocity = 550 km s^-1"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE); T_vib ~ T_dust because HC3N* is mid-IR pumped and mid-IR dust emission is optically thick"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate lower and upper limits to the proto-SSC sizes",
+   "method": "Estimate lower limit to proto-HC3N size from line intensities of v71 rotational transitions assuming optically thick emission; for non-detections of HC3N*, derive upper limit to size from HC3N,v0 line intensity assuming the T_vib upper limit",
+   "software": [
+    "MADCUBA",
+    "SLIM"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thick emission for v71 transitions; D ~ 3.8 Mpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive apparent and greenhouse-corrected protostellar luminosities (L_p*), protostellar masses (M_p*), and SSC evolutionary ages (t_age)",
+   "method": "Compute apparent luminosity via Stefan-Boltzmann law L_app = 4 * pi * r^2 * sigma * T_vib^4; apply greenhouse correction factor 4/psi ~ 1/10 to get L_p* = (4/psi) * L_app; estimate ages from L_p*/L_ZAMS using t_age = 10^5 / (1 + L_p*/L_ZAMS) yr",
+   "software": [],
+   "key_parameters": [
+    "Greenhouse correction factor 4/psi ~ 1/10; HII region timescale ~ 10^5 yr"
+   ],
+   "assumptions": [
+    "N(H2) of a few 10^24 cm^-2; SHC density profile power-law index between 1 and 2; light-to-mass ratio of 10^3 L_sun M_sun^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze spatial distribution of SSCs relative to the molecular outflow and correlate T_rot with SSC evolutionary age",
+   "method": "Correlate T_rot(v0) with t_age and compare deprojected galactocentric distances of SSCs with the CO molecular outflow lobes from Bolatto et al. (2021)",
+   "software": [],
+   "key_parameters": [
+    "Inner disk inclination ~ 62 deg"
+   ],
+   "assumptions": [
+    "Inner disk inclination of ~62 deg from Chou et al. (2007)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of proto-SSCs showing vibrational HCN* emission (out of 14 selected SSCs)",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Out of the 14 identified SSCs, we find that 8 are in the proto-SSC phase showing vibrational HCN emission with 5 of them also showing vibrational HC$_3$N emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of proto-SSCs showing vibrational HC3N* emission",
+   "value": "5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Out of the 14 identified SSCs, we find that 8 are in the proto-SSC phase showing vibrational HCN emission with 5 of them also showing vibrational HC$_3$N emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Age of proto-SSCs in NGC 4945",
+   "value": "5-9.7 x 10^4",
+   "uncertainty": "1.5 x 10^4",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We estimate proto-SSC ages of 5-9.7$\\times$10$^4$ yr."
+    },
+    {
+     "loc": "HCN* emission. Tracing the latest stages of the proto-SSC phase before reaching the ZAMS-SSC stage.",
+     "quote": "we found that most of the proto-HC$_3$N have ages of 5-9.6$\\times$10$^4$ yr ($\\pm$1.5$\\times$10$^4$ yr), close to reach the ZAMS stage with ages, $t_{\\rm age}$, $\\gtrsim$10$^5$ yr ((cite: Rico20))."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean age of proto-SSCs in NGC 4945",
+   "value": "~7 x 10^4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "We found that the 8 SSCs detected in vibrationally excited emission are in the proto phase, characterized by a mean age of $\\sim$7$\\times$10$^4$ yr, in contrast with the 6 more evolved SSCs, which are in the ZAMS phase with ages $\\gtrsim$10$^5$ yr;"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical rotational temperature T_rot(v0) of proto-HC3N SSCs",
+   "value": "~65",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The excitation of the parental cloud seems to be related to the SSC evolutionary stage, with high ($\\sim$65 K) and low ($\\sim$25 K) rotational temperatures for the youngest proto and ZAMS SSCs, respectively."
+    },
+    {
+     "loc": "The effect of the SSC evolution on the excitation of the parent cloud",
+     "quote": "The proto-HC$_3$N show the highest $T_{\\rm rot}$ ($\\sim$65 K), while the proto-HCN show moderate rotational temperatures ($\\sim$45 K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical rotational temperature T_rot(v0) of proto-HCN SSCs",
+   "value": "~45",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The effect of the SSC evolution on the excitation of the parent cloud",
+     "quote": "The proto-HC$_3$N show the highest $T_{\\rm rot}$ ($\\sim$65 K), while the proto-HCN show moderate rotational temperatures ($\\sim$45 K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical rotational temperature T_rot(v0) of ZAMS-SSCs",
+   "value": "~25",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The excitation of the parental cloud seems to be related to the SSC evolutionary stage, with high ($\\sim$65 K) and low ($\\sim$25 K) rotational temperatures for the youngest proto and ZAMS SSCs, respectively."
+    },
+    {
+     "loc": "The effect of the SSC evolution on the excitation of the parent cloud",
+     "quote": "Finally, the ZAMS-SSCs show rather low $T_{\\rm rot}$ ($\\sim$25 K; see also Table [3](#Params_physical))."
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-2 T_rot(v0)",
+   "value": "61",
+   "uncertainty": "1",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-2 | 61 (1) | 76 (23) | 81 (14) | 335 (33) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-2 T_vib",
+   "value": "335",
+   "uncertainty": "33",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-2 | 61 (1) | 76 (23) | 81 (14) | 335 (33) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-3 T_rot(v0)",
+   "value": "66",
+   "uncertainty": "2",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-3 | 66 (2) | 82 (89) | 90 (35) | 201 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-3 T_vib",
+   "value": "201",
+   "uncertainty": "15",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-3 | 66 (2) | 82 (89) | 90 (35) | 201 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-4 T_rot(v0)",
+   "value": "70",
+   "uncertainty": "4",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-4 | 70 (4) | 95 (63) | 77 (10) | 398 (26) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-4 T_vib",
+   "value": "398",
+   "uncertainty": "26",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-4 | 70 (4) | 95 (63) | 77 (10) | 398 (26) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-6 T_rot(v0)",
+   "value": "67",
+   "uncertainty": "14",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-6 | 67 (14) | 79 (77) | 77 (16) | 197 (31) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-6 T_vib",
+   "value": "197",
+   "uncertainty": "31",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-6 | 67 (14) | 79 (77) | 77 (16) | 197 (31) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-8 T_rot(v0)",
+   "value": "58",
+   "uncertainty": "2",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-8 | 58 (2) | 73 | 72 (15) | 412 (72) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-8 T_vib",
+   "value": "412",
+   "uncertainty": "72",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| proto-HC$_3$N-8 | 58 (2) | 73 | 72 (15) | 412 (72) |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-4 size lower limit",
+   "value": ">0.35",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| p-HC$_3$N-4 | $>$0.35 | 5.0 | $\\sim$1.32 | 1.26 | $\\sim$1.05 | 4.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-4 protostellar luminosity L_p*",
+   "value": "~1.32",
+   "uncertainty": "not stated",
+   "units": "10^8 L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| p-HC$_3$N-4 | $>$0.35 | 5.0 | $\\sim$1.32 | 1.26 | $\\sim$1.05 | 4.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "proto-HC3N-4 age t_age",
+   "value": "4.9",
+   "uncertainty": "not stated",
+   "units": "10^4 yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| p-HC$_3$N-4 | $>$0.35 | 5.0 | $\\sim$1.32 | 1.26 | $\\sim$1.05 | 4.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear correlation coefficient between T_rot(v0) and SSC evolutionary stage",
+   "value": "~0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The effect of the SSC evolution on the excitation of the parent cloud",
+     "quote": "We have also identified a clear linear trend ($\\rho$$\\sim$0.7) between the rotational temperature derived from the HC$_3$N,v$_0$ line with the evolutionary stage of the SSCs, as illustrated in Fig. [3](#fig_pos_Trot_2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Deprojected galactocentric distances of the youngest proto-SSCs from the nucleus",
+   "value": "~65 and ~80",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Triggering the SSC formation. Positive feedback",
+     "quote": "Adopting an inclination of $\\sim$62$^\\circ$ for the inner disk ((cite: Chou07)), we derived a deprojected distance of $\\sim$65 and $\\sim$80 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass reservoir in proto-SSCs in NGC 4945",
+   "value": "7.5 x 10^4",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The evolution of the star formation in NGC 4945 and NGC 253. Sequential SSC formation.",
+     "quote": "Also the mean gas mass reservoir available for star formation in the proto-SSCs in NGC 253 ($\\sim$1.7$\\times$10$^5$ $M_{\\ensuremath{\\odot}}$) is larger, by at least a factor of 2, than in the NGC 4945 (7.5$\\times$10$^4$ $M_{\\ensuremath{\\odot}}$), also consistent with the different ages of the starburst in both galaxies."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether continuum subtraction was performed on the spectral line cubes and which line-free channels were used",
+  "Clean stopping threshold, cell size, image size, and masking strategy in CASA clean",
+  "Whether the different frequency bands (~100 GHz and ~350 GHz) were smoothed to a common beam or analyzed at native resolution with source size beam dilution factors in MADCUBA SLIM",
+  "Exact spectral extraction apertures (single pixel/spaxel vs integrated aperture) for each of the 14 SSCs"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral extraction apertures/spaxels for each of the 14 SSCs",
+  "Complete SLIM fitted parameters (column densities N, linewidths, radial velocities) which are mentioned in Section 4 but not tabulated",
+  "Continuum subtraction details and clean masking/threshold parameters"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Archival ALMA project codes, target coordinates, software tools (CASA 4.2.2, MADCUBA SLIM), and equations for physical quantities are clearly stated, but imaging details (continuum subtraction, clean thresholds) and intermediate LTE fit parameters (column densities, linewidths, exact extraction apertures) are omitted.",
+ "rediscovery_reason": "All raw data are public in the ALMA archive, the 14 SSC positions are tabulated, and the main results (T_rot, T_vib, sizes, luminosities, ages) are numeric and derived via a well-defined LTE + analytical pipeline.",
+ "source_card": "cards/2023MNRAS.519L..68B/sonnet/card.md"
+}

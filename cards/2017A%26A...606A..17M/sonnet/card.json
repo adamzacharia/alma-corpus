@@ -1,0 +1,1163 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017A&A...606A..17M",
+  "title": "An ALMA survey of submillimetre galaxies in the COSMOS field: Physical properties derived from energy balance spectral energy distribution modelling",
+  "year": 2017,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Miettinen, O.",
+  "n_authors": 28,
+  "arxiv_id": "1707.00637",
+  "doi": "10.1051/0004-6361/201730762",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00978.S",
+   "2013.1.00118.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We used the `MAGPHYS` model package to fit the panchromatic (ultraviolet to radio) spectral energy distributions (SEDs) of 124 of the target SMGs"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "124 AzTEC/ALMA SMGs in COSMOS (AzTEC/C1a ... C129)",
+     "coordinates": {
+      "value": "COSMOS field, RA ~10 hr, Dec ~+2.2 deg",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "centred at $\\alpha_{2000.0}\\simeq 10$ hr and $\\delta_{2000.0}\\simeq 2.2\\ensuremath{^\\circ}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "median z = 2.30 (19.4% spectroscopic)",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "centred at $\\alpha_{2000.0}\\simeq 10$ hr and $\\delta_{2000.0}\\simeq 2.2\\ensuremath{^\\circ}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Brisbin et al. (2017) photometric/spectroscopic redshifts",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "centred at $\\alpha_{2000.0}\\simeq 10$ hr and $\\delta_{2000.0}\\simeq 2.2\\ensuremath{^\\circ}$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the physical properties (stellar, dust and gas masses, SFR, dust temperature, main-sequence offset) of ALMA 1.3 mm-detected, AzTEC 1.1 mm-selected SMGs in COSMOS, and what do they imply for SMG evolution?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We determine the physical properties of a sample of SMGs in the COSMOS field that were pre-selected at the observed-frame wavelength of $\\lambda_{\\rm obs}=1.1$ mm"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00118.S",
+     "evidence": [
+      {
+       "loc": "2.1.1",
+       "quote": "(Cycle 2 ALMA project 2013.1.00118.S; PI: M. Aravena)"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00978.S",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "(Cycle 1 ALMA project 2012.1.00978.S; PI: A. Karim)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "1.3 mm continuum survey (project 2013.1.00118.S); Band 7 for C5, C17, C42",
+    "evidence": [
+     {
+      "loc": "2.1.1",
+      "quote": "followed up with dedicated ALMA pointings at $\\lambda_{\\rm obs}=1.3$ mm"
+     },
+     {
+      "loc": "2.2.2",
+      "quote": "were observed with the ALMA Band 7 during the second early science campaign"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1.6'' x 0.9''",
+    "evidence": [
+     {
+      "loc": "2.1.1",
+      "quote": "$\\sim1.6\\ensuremath{''} \\times 0.9\\ensuremath{''}$ angular resolution with a $1\\sigma$ root-mean-square (rms) noise of $\\sim0.1$ mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1 sigma rms ~0.1 mJy/beam; detection S/N>=5",
+    "evidence": [
+     {
+      "loc": "2.1.1",
+      "quote": "we detected 152 ALMA sources at an S/N$_{\\rm 1.3\\, mm}\\geq5$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Main survey PI M. Aravena (Cycle 2); Band 7 data PI A. Karim (Cycle 1)",
+    "evidence": [
+     {
+      "loc": "2.1.1",
+      "quote": "(Cycle 2 ALMA project 2013.1.00118.S; PI: M. Aravena)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "COSMOS2015 catalogue (CFHT, Subaru, UltraVISTA, Spitzer)",
+     "provided": {
+      "value": "UV/optical to mid-IR photometry",
+      "evidence": [
+       {
+        "loc": "2.2.1",
+        "quote": "we employed the band-merged COSMOS2015 photometric catalogue"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel PACS/SPIRE",
+     "provided": {
+      "value": "100-500 um far-IR photometry, with ALMA and 24 um positions as priors",
+      "evidence": [
+       {
+        "loc": "2.2.2",
+        "quote": "the *Herschel* flux densities were extracted by using the ALMA 1.3 mm and *Spitzer* 24 $\\mu$m sources as positional priors"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ASTE/AzTEC, SCUBA-2, LABOCA, MAMBO-2, SMA",
+     "provided": {
+      "value": "1.1 mm parent selection and submm/mm photometry",
+      "evidence": [
+       {
+        "loc": "2.2.2",
+        "quote": "we used the deboosted ASTE/AzTEC 1.1 mm flux densities reported by Aretxaga et al. (2011; their Table 1)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "GMRT and VLA",
+     "provided": {
+      "value": "325 MHz, 610 MHz, 1.4 GHz and 3 GHz radio photometry",
+      "evidence": [
+       {
+        "loc": "2.2.3",
+        "quote": "we employed the 325 MHz and 610 MHz observations taken by the Giant Meterwave Radio Telescope (GMRT)-COSMOS survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Redshifts (photometric/spectroscopic) and multiwavelength counterparts and photometry extraction",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "98 ($64.5\\% \\pm 6.5\\%$) of our SMGs were found to have a well-defined counterpart in the COSMOS2015 multiwavelength catalogue"
+       }
+      ]
+     },
+     "citation": "Brisbin et al. 2017 (cite: brisbin2017)"
+    },
+    {
+     "what": {
+      "value": "3 GHz flux densities and radio sizes",
+      "evidence": [
+       {
+        "loc": "2.2.3",
+        "quote": "the corresponding flux densities used in the present study can be found in their Table C.1"
+       }
+      ]
+     },
+     "citation": "Miettinen et al. 2017b (cite: miettinen2017b)"
+    },
+    {
+     "what": {
+      "value": "ALESS SMG MAGPHYS physical properties for comparison",
+      "evidence": [
+       {
+        "loc": "4.8",
+        "quote": "we take our main comparison sample of SMGs to be the so-called ALESS SMGs studied by da Cunha et al. (2015)"
+       }
+      ]
+     },
+     "citation": "da Cunha et al. 2015 (cite: dacunha2015)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CASA continuum images from line-free channels (Band 7 data of C5, C17, C42)",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "was used to construct the continuum images from the line-free channels at $\\lambda_{\\rm obs}=870$ $\\mu$m, 857 $\\mu$m, and 994 $\\mu$m, respectively"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "1.3 mm ALMA survey, catalogue, reliability and multiplicity",
+      "evidence": [
+       {
+        "loc": "2.1.1",
+        "quote": "Our ALMA follow-up survey, which together with the source catalogue are described in detail by M. Aravena et al. (in prep.)"
+       }
+      ]
+     },
+     "from_reference": "M. Aravena et al., in prep."
+    },
+    {
+     "what": {
+      "value": "Upper limits treated by setting nominal flux to zero and using 3 sigma as error",
+      "evidence": [
+       {
+        "loc": "3.1.1",
+        "quote": "Following da Cunha et al. (2015) and Miettinen et al. (2017a), the flux density upper limits in the SED fitting process were taken into account by setting the nominal value to zero"
+       }
+      ]
+     },
+     "from_reference": "da Cunha et al. (2015); Miettinen et al. (2017a)"
+    },
+    {
+     "what": {
+      "value": "Gas masses via Scoville et al. (2016) long-wavelength dust method",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "we estimate the gas masses of our SMGs using the long-wavelength ($\\lambda_{\\rm rest}\\gtrsim250$ $\\mu$m) dust continuum method of Scoville et al. (2016)"
+       }
+      ]
+     },
+     "from_reference": "Scoville et al. (2016) (cite: scoville2016)"
+    },
+    {
+     "what": {
+      "value": "Starburst definition (Delta_MS > 3) and SED approach",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "In keeping with the studies by da Cunha et al. (2015) and Miettinen et al. (2017a), we define these sources as starbursts"
+       }
+      ]
+     },
+     "from_reference": "da Cunha et al. (2015); Miettinen et al. (2017a)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Flux densities and rms/beam of the 1.3 mm ALMA catalogue are not described (in Aravena et al. in prep.); calibration and imaging details for 2013.1.00118.S not given",
+    "CASA version, weighting, cleaning and masking for the Band 7 continuum images of C5, C17, C42 not given",
+    "Exact MAGPHYS high-z library version/filter list and handling of redshift uncertainties",
+    "How Herschel deblending was done in detail (in Brisbin et al. 2017)",
+    "Binning scheme for the binned averages and fits"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Define clean SMG sample",
+    "method": {
+     "value": "Remove AGN hosts via VLBA detection and X-ray detection, and require optical-mid-IR photometry, leaving 124 SMGs",
+     "evidence": [
+      {
+       "loc": "2.1.3",
+       "quote": "we end up with a final sample of 124 SMGs ($81.6\\% \\pm 7.3\\%$ of the initial ALMA sample)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "IR AGN criteria of Donley et al. (2012) give ~6.5% AGN among X-ray non-detected",
+     "evidence": [
+      {
+       "loc": "2.1.2",
+       "quote": "We found that the percentage of such AGNs in our sample of X-ray non-detected SMGs is about 6.5%."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Assemble multiwavelength photometry",
+    "method": {
+     "value": "COSMOS2015 UV-mid-IR, Herschel with ALMA priors, submm/mm single-dish and interferometric, GMRT/VLA radio; ALMA Band 7 fluxes for C5, C17, C42 by JMFIT Gaussian fits",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "we used the National Radio Astronomy Observatory (NRAO) Astronomical Image Processing System (`AIPS`) software package to make two-dimensional elliptical Gaussian fits (the `AIPS` task `JMFIT`)"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "AIPS",
+     "BLOBCAT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit panchromatic SEDs",
+    "method": {
+     "value": "MAGPHYS high-z version energy balance fits; parameters are medians of likelihood distribution with 16-84 percentile range",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "We adopted the median of the likelihood distribution as an estimate of each `MAGPHYS`-based parameter"
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS"
+    ],
+    "key_parameters": [
+     {
+      "value": "q_FIR centred at 2.34 with sigma 0.25; thermal fraction f_T = 0.1; synchrotron nu^-0.8",
+      "evidence": [
+       {
+        "loc": "3.1.1",
+        "quote": "The thermal radio emission is assumed to amount to 10% ($f_{\\rm T}=0.1$) of the total flux density at $\\nu_{\\rm rest}=1.4$ GHz."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Chabrier (2003) IMF; no AGN contribution to dust heating",
+      "evidence": [
+       {
+        "loc": "1",
+        "quote": "A Chabrier (2003) Galactic-disk initial mass function (IMF) is assumed in the calculation of $M_{\\star}$ and SFR."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Bayesian library fitting in MAGPHYS; upper limits entered as zero flux with 3 sigma error",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "setting the nominal value to zero, and using the upper limit value (here $3\\sigma$) as the flux density error"
+      }
+     ]
+    },
+    "validation": {
+     "value": "chi2 below threshold ~14 for 33 bands; refits without upper limits; AGN contribution to L_IR checked with SED3FIT (mean 1.4%); spec-z vs photo-z",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "the mean (median) AGN contribution to $L_{\\rm IR}$ was found to be only about 1.4% (0.2%)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive SFR",
+    "method": {
+     "value": "SFR = 1e-10 L_IR (Kennicutt 1998, Chabrier IMF), L_IR integrated over 8-1000 um",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "${\\rm SFR}=10^{-10}\\times L_{\\rm IR}[{\\rm L}_{\\ensuremath{\\odot}}]\\, {\\rm M}_{\\ensuremath{\\odot}}~{\\rm yr}^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "optically thick starburst, solar metallicity; cirrus heating ignored",
+      "evidence": [
+       {
+        "loc": "3.1.2",
+        "quote": "it is based on the assumption of solar metallicity, and an optically thick ($\\tau_{\\rm dust}\\gg1$) starburst region"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to MAGPHYS SFR: ratio median 1.31 (100 Myr), 1.15 (10 Myr)",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "with a median of $1.31^{+0.83}_{-0.17}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Estimate molecular gas mass from 1.3 mm flux",
+    "method": {
+     "value": "Scoville et al. (2016) R-J dust method, Eq. with Gamma_RJ",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "for our ALMA 1.3 mm dust continuum measurements, we can write (cf. Eq. (16) in (cite: scoville2016))"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "mass-weighted T_dust = 25 K, beta = 1.8",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "where the mass-weighted $T_{\\rm dust}$ is assumed to have a constant value of 25 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Galactic alpha_CO = 6.5 (with helium); alpha_850 = 6.7e19 erg/s/Hz/Msun; gas mostly molecular",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "a Galactic conversion factor of $\\alpha_{\\rm CO}=6.5$ M$_{\\ensuremath{\\odot}}$ (K km s$^{-1}$ pc$^2$)$^{-1}$ assumed by Scoville et al. (2016)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to CO-based gas masses of C5 and C17 (ratios 0.5 and 1.8 after alpha_CO scaling)",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we obtain the ratios $M_{\\rm gas}/M_{\\rm gas}^{\\rm CO}=0.5\\pm0.1$ and $M_{\\rm gas}/M_{\\rm gas}^{\\rm CO}=1.8\\pm0.5$ for AzTEC/C5 and C17"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Main-sequence offset and derived ratios",
+    "method": {
+     "value": "Delta_MS = SFR/SFR_MS with Speagle et al. (2014) MS; tau_dep = M_gas/SFR; f_gas; gas-to-dust ratio; binned linear least-squares fits vs redshift and others",
+     "evidence": [
+      {
+       "loc": "4.1.1",
+       "quote": "we calculated the ratio of the derived SFR to that expected for a MS galaxy of the same redshift and $M_{\\star}$, that is $\\Delta_{\\rm MS}\\equiv{\\rm SFR}/{\\rm SFR}_{\\rm MS}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Starburst: Delta_MS > 3; MS: 1/3 < Delta_MS <= 3",
+      "evidence": [
+       {
+        "loc": "4.1.1",
+        "quote": "Seventy-one of our SMGs ($57.3\\%\\pm6.8\\%$) have $1/3 < \\Delta_{\\rm MS} \\leq3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Flat LCDM, H0=70, Om=0.30",
+      "evidence": [
+       {
+        "loc": "1",
+        "quote": "The Hubble constant is set at $H_0=70$ km s$^{-1}$ Mpc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linear least squares on binned averages; Kaplan-Meier for censored size data",
+     "evidence": [
+      {
+       "loc": "4.5",
+       "quote": "The latter values were calculated by using a Kaplan-Meier (K-M) survival analysis to take the upper size limits (left-censored data) into account."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Pearson/Spearman coefficients and slope significance quoted",
+     "evidence": [
+      {
+       "loc": "4.1.3",
+       "quote": "The Spearman rank-order correlation coefficient between the nominal binned data point values is $\\rho=-0.71$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare with ALESS SMGs and compact quiescent galaxies",
+    "method": {
+     "value": "Welch t-test and two-sided KS test against flux-matched ALESS subsample (71 sources); KS tests of final stellar mass vs cQGs and cSFGs",
+     "evidence": [
+      {
+       "loc": "4.8",
+       "quote": "we also performed a two-sided Kolmogorov–Smirnov (K-S) test between the aforementioned physical parameters of our ALMA sources and the flux-limited ALESS sample"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "final stellar mass M_final = M_star + 0.1 M_gas",
+      "evidence": [
+       {
+        "loc": "4.9.1",
+        "quote": "assuming that $10\\%$ of the cold molecular gas reservoir is converted into stars ($M_{\\star}^{\\rm final}=M_{\\star}+0.1\\times M_{\\rm gas}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MAGPHYS",
+    "version": "high-z version (not stated)",
+    "used_for": {
+     "value": "panchromatic SED fitting",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "The observational data were modelled using the Multiwavelength Analysis of Galaxy Physical Properties code `MAGPHYS`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SED3FIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "estimating AGN contribution to L_IR",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "the three-component SED fitting code `SED3FIT`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Band 7 continuum images from line-free channels",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "was used to construct the continuum images from the line-free channels"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AIPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "JMFIT Gaussian fits for Band 7 fluxes",
+     "evidence": [
+      {
+       "loc": "2.2.2",
+       "quote": "to make two-dimensional elliptical Gaussian fits (the `AIPS` task `JMFIT`)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "BLOBCAT",
+    "version": "not stated",
+    "used_for": {
+     "value": "GMRT source catalogue",
+     "evidence": [
+      {
+       "loc": "2.2.3",
+       "quote": "We used the `BLOBCAT` source extraction software ((cite: hales2012)) to create a preliminary catalogue of GMRT sources"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "acknowledged as used in the research",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "median stellar mass log(M*/Msun)",
+    "value": "11.09",
+    "uncertainty": "+0.41/-0.53",
+    "units": "dex(Msun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$11.09^{+0.41}_{-0.53}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median SFR",
+    "value": "402",
+    "uncertainty": "+661/-233",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "${\\rm SFR}=402^{+661}_{-233}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median T_dust",
+    "value": "39.7",
+    "uncertainty": "+9.7/-7.4",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$T_{\\rm dust}=39.7^{+9.7}_{-7.4}$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "median log M_dust",
+    "value": "9.01",
+    "uncertainty": "+0.20/-0.31",
+    "units": "dex(Msun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\log(M_{\\rm dust}/{\\rm M}_{\\ensuremath{\\odot}})=9.01^{+0.20}_{-0.31}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median log M_gas",
+    "value": "11.34",
+    "uncertainty": "+0.20/-0.23",
+    "units": "dex(Msun)",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$\\log(M_{\\rm gas}/{\\rm M}_{\\ensuremath{\\odot}})=11.34^{+0.20}_{-0.23}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median gas-to-dust ratio",
+    "value": "120",
+    "uncertainty": "+73/-30",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The derived median gas-to-dust ratio of $120^{+73}_{-30}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median gas fraction",
+    "value": "0.62",
+    "uncertainty": "+0.27/-0.23",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "with a median of $0.62^{+0.27}_{-0.23}$"
+     }
+    ]
+   },
+   {
+    "quantity": "fraction of SMGs on main sequence",
+    "value": "57.3%",
+    "uncertainty": "6.8%",
+    "units": "percent",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "Seventy-one of our SMGs ($57.3\\%\\pm6.8\\%$) have $1/3 < \\Delta_{\\rm MS} \\leq3$"
+     }
+    ]
+   },
+   {
+    "quantity": "fraction of starbursts (Delta_MS>3)",
+    "value": "41.9%",
+    "uncertainty": "5.8%",
+    "units": "percent",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "Fifty-two out of the 124 SMGs ($41.9\\%$ with a Poisson counting error of $5.8\\%$)"
+     }
+    ]
+   },
+   {
+    "quantity": "median gas depletion time",
+    "value": "~535",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.3",
+      "quote": "with a median of $\\sim535$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "fit gas-to-dust ratio vs z, full sample",
+    "value": "log(gdr) = 0.12 z + 1.79",
+    "uncertainty": "slope +-0.01, intercept +-0.04",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "$\\log(\\delta_{\\rm gdr})=(0.12\\pm0.01)\\times z + (1.79\\pm0.04)$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Starbursts are preferentially at z>~3, likely reflecting the sensitivity limit of the selection",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These super-MS objects, or starbursts, are preferentially found at $z \\gtrsim 3$, which likely reflects the sensitivity limit of our source selection."
+     }
+    ]
+   },
+   {
+    "value": "Irregular rest-frame UV SMGs are predominantly starbursts, disks mostly MS",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Those SMGs that appear irregular in the rest-frame UV are predominantly starbursts, while the MS SMGs are mostly disk-like."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do the SMGs follow the main sequence or lie in a starburst mode?",
+    "experiment": "MAGPHYS SFR and M* compared with Speagle et al. 2014 MS",
+    "result": "57.3% on MS, 41.9% above MS by factor >3",
+    "finding": "SMGs comprise both highly star-forming MS galaxies and starbursts",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1.1",
+      "quote": "Seventy-one of our SMGs ($57.3\\%\\pm6.8\\%$) have $1/3 < \\Delta_{\\rm MS} \\leq3$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do starbursts exhaust gas faster than MS SMGs?",
+    "experiment": "tau_dep = M_gas/SFR compared across Delta_MS",
+    "result": "median 407 Myr (super-MS) vs 644 Myr (MS)",
+    "finding": "Super-MS SMGs consume gas faster",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1.3",
+      "quote": "For the super-MS SMGs, $\\tau_{\\rm dep}$ is found to lie in the range of about 30 Myr–5.6 Gyr, with a median of 407 Myr."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do ALMA 1.3 mm-selected AzTEC SMGs have the same property distributions as 870 um ALESS SMGs?",
+    "experiment": "Welch t-test and KS tests vs flux-matched ALESS sample",
+    "result": "KS p-values 0.003-0.22 for most parameters, 0.48 for L_dust",
+    "finding": "Distributions unlikely drawn from common parents, possibly due to selection wavelength",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.8",
+      "quote": "the K-S test results suggest that the parameters are unlikely to be drawn from the same parent distribution (the $p$-values range from $p=0.003$ to $p=0.22$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are z>3 SMGs progenitors of z~2 compact quiescent galaxies?",
+    "experiment": "Mass-size and stellar mass distribution comparison with Krogager et al. 2014",
+    "result": "21%+-5% of 98 within the mass-radio size relation; final-mass KS D=0.22, p=0.33",
+    "finding": "Only broadly consistent; link not universal",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.9.1",
+      "quote": "Similarly to the mass-size relationship, the mass distribution analysis presented here is only roughly consistent with the proposed evolutionary connection"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Large homogeneous multiwavelength sample in COSMOS enables panchromatic SED fitting; 1.3 mm dust used as gas tracer since CO is available for only two sources",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "To our knowledge, only two of our target SMGs have a published CO tracer-based molecular gas mass estimate available"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "AGN-host candidates removed rather than modelled, since MAGPHYS lacks an AGN component",
+     "evidence": [
+      {
+       "loc": "2.1.2",
+       "quote": "AGN-host galaxies need to be discounted from an analysis of SED properties."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Gas masses depend on uniform Galactic alpha_CO; may be overestimated by factor >~8 if alpha_CO ~0.8",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "then the dust-based gas masses can be overestimated by a factor of $\\gtrsim8$"
+      }
+     ]
+    },
+    {
+     "value": "Selection bias at z>~3 toward warmer, brighter sources",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "our $z\\gtrsim3$ SMGs are likely biased towards warmer objects than at lower redshifts"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Energy balance assumes stellar and dust emission are co-spatial, which may fail for SMGs",
+    "Photometric redshifts dominate (100/124); only 5 z>3 sources spectroscopic",
+    "Many binned fits have low significance and small number statistics",
+    "ALMA data are only used as flux densities; the ALMA reduction itself is not documented here"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public tools and COSMOS data; ALMA data acknowledged by project codes; SED code publicly available",
+    "evidence": [
+     {
+      "loc": "footnote 9",
+      "quote": "`MAGPHYS` is publicly available, and can be retrieved at `http://www.iap.fr/magphys/magphys/MAGPHYS.html`."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Aravena et al. ALMA 1.3 mm catalogue (in prep.) and calibrated fluxes",
+    "Brisbin et al. 2017 redshifts and Herschel deblended photometry",
+    "Binning details for fitted trends"
+   ],
+   "estimated_data_volume_inferred": "Small if the published photometry table is used (~MB); raw ALMA data of 2013.1.00118.S ~tens of GB",
+   "score_inferred": 4,
+   "score_reason": "Photometry is tabulated and MAGPHYS is public so the SED analysis is reproducible; the ALMA reduction and some inputs are in companion papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA role is a single flux per source taken from an unpublished catalogue; the main results come from SED fits that need external companion data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "da Cunha et al. 2008, 2015",
+     "why": "MAGPHYS and its high-z extension"
+    },
+    {
+     "citation": "Scoville et al. 2016",
+     "why": "dust-continuum gas mass calibration"
+    },
+    {
+     "citation": "Speagle et al. 2014",
+     "why": "main-sequence prescription"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Aravena et al. in prep.",
+     "why": "ALMA 1.3 mm survey and catalogue"
+    },
+    {
+     "citation": "Brisbin et al. 2017",
+     "why": "counterparts, photometry and redshifts"
+    },
+    {
+     "citation": "Miettinen et al. 2017b",
+     "why": "3 GHz radio sizes, morphologies"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "COSMOS",
+    "ALESS",
+    "AzTEC/ASTE COSMOS survey",
+    "VLA-COSMOS 3 GHz",
+    "HerMES",
+    "PEP"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-541e3e3ca857605fb2792bef77a9bc35",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 141380,
+   "output_tokens": 10918,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.196576,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 74,
+  "quotes_ok": 74,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 94,
+   "stated": 55,
+   "rate": 0.585
+  },
+  "evidence_ok": true
+ }
+}

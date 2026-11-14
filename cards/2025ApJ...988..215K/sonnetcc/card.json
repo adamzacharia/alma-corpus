@@ -1,0 +1,1632 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...988..215K",
+  "title": "Timescales of Polycyclic Aromatic Hydrocarbon and Dust Continuum Emission from Gas Clouds Compared to Molecular Gas Cloud Lifetimes in PHANGS-JWST Galaxies",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Kim, Jaeyeon",
+  "n_authors": 27,
+  "arxiv_id": "2506.10063",
+  "doi": "10.3847/1538-4357/ade443",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.1.00650.S",
+   "2013.1.01161.S",
+   "2015.1.00925.S",
+   "2015.1.00956.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L",
+   "2018.1.01651.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "1 Introduction",
+    "quote": "In this work, we leverage PHANGS-JWST Cycle 1 observations to measure mid-IR emitting time-scales, which is an extension of previous studies on GMC lifetimes."
+   },
+   {
+    "loc": "abstract",
+    "quote": "Leveraging PHANGS-JWST Cycle 1 and PHANGS-MUSE data, we measure the PAH and dust continuum emission lifetimes of gas clouds across 17 nearby star-forming galaxies"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "17 PHANGS-JWST Cycle 1 star-forming galaxies (NGC 0628, 1087, 1300, 1365, 1385, 1433, 1512, 1566, 1672, 2835, 3351, 3627, 4254, 4303, 4321, 4535, 5068)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "5-20 Mpc (per-galaxy distances in Table 1)",
+      "evidence": [
+       {
+        "loc": "2 Observational Data",
+        "quote": "our sample is composed of 17 galaxies in total."
+       },
+       {
+        "loc": "2.1 Mid-IR bands",
+        "quote": "across the range of distances of our galaxy sample ($5-20$ Mpc)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Distance from (cite: anand21) and inclination and position angle from (cite: lang20)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: anand21)",
+      "evidence": [
+       {
+        "loc": "2 Observational Data",
+        "quote": "our sample is composed of 17 galaxies in total."
+       },
+       {
+        "loc": "2.1 Mid-IR bands",
+        "quote": "across the range of distances of our galaxy sample ($5-20$ Mpc)"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "Distance from (cite: anand21) and inclination and position angle from (cite: lang20)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How long do gas clouds emit in PAH/dust mid-IR (JWST 7.7, 10, 11.3 um) relative to H-alpha, and how do these time-scales compare with CO molecular cloud lifetimes in 17 PHANGS galaxies",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we measure the PAH and dust continuum emission lifetimes of gas clouds across 17 nearby star-forming galaxies"
+     },
+     {
+      "loc": "abstract",
+      "quote": "In most galaxies, the mid-IR time-scale closely matches the molecular cloud lifetime measured with CO."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00650.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.00650.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01161.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.01161.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00925.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00925.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00956.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00956.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00392.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00392.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00886.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00886.L"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01651.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.1.01651.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "not stated",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+       "quote": "the CO data is from PHANGS-ALMA (cite: leroy21_survey)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA CO data processed as part of the PHANGS-ALMA survey (not observed for this paper)",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data, which have been processed as part of the PHANGS–ALMA survey:"
+     },
+     {
+      "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+      "quote": "the CO data is from PHANGS-ALMA (cite: leroy21_survey)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST/MIRI (PHANGS-JWST Cycle 1, GO 2107)",
+     "provided": {
+      "value": "F770W, F1000W, F1130W mid-IR images tracing PAH and dust continuum, from MAST",
+      "evidence": [
+       {
+        "loc": "2.1 Mid-IR bands",
+        "quote": "We use mid-IR emission at 7.7 $\\mu$m, 10 $\\mu$m, and 11.3 $\\mu$m observed with F770W, F1000W, and F1130W filters on MIRI on board JWST"
+       },
+       {
+        "loc": "2 Observational Data",
+        "quote": "The PHANGS-JWST Cycle 1 Treasury program (GO 2107, PI Lee; (cite: lee23; williams24))"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/MUSE (PHANGS-MUSE)",
+     "provided": {
+      "value": "H-alpha line maps (star formation tracer) from Gaussian fits to the H-alpha line in the copt cubes",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE H$\\alpha$",
+        "quote": "we use H$\\alpha$ line maps obtained by a Gaussian fit to the H$\\alpha$ line, accounting for the stellar continuum and Balmer line absorption."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO-based GMC evolutionary time-scales (including the H-alpha emitting time-scale t_s used as reference time-scale t_ref) and CO fitted parameters for comparison",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "by using the duration of the H$\\alpha$-bright phase ($t_{\\rm s}$) as a reference time-scale ($t_{\\rm ref}$) which is measured in (cite: kim22)"
+       },
+       {
+        "loc": "4.1",
+        "quote": "We also show results using CO as the gas tracer for comparison from (cite: kim22)."
+       }
+      ]
+     },
+     "citation": "(cite: kim22)"
+    },
+    {
+     "what": {
+      "value": "Galaxy global properties (stellar mass, SFR, molecular gas mass, CO luminosity) from PHANGS-ALMA",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Global stellar mass, SFR, molecular gas mass, and integrated CO luminosity from PHANGS–ALMA (cite: leroy19; leroy21_survey)."
+       }
+      ]
+     },
+     "citation": "(cite: leroy19; leroy21_survey)"
+    },
+    {
+     "what": {
+      "value": "Galaxy distances",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Distance from (cite: anand21) and inclination and position angle from (cite: lang20)"
+       }
+      ]
+     },
+     "citation": "(cite: anand21)"
+    },
+    {
+     "what": {
+      "value": "kpc-scale surface densities, pressure and GMC free-fall and crossing times",
+      "evidence": [
+       {
+        "loc": "5.1 Correlations between global galaxy properties and cloud evolutionary time-scales",
+        "quote": "We include mass weighted averages of kpc-scale galaxy properties measured by (cite: sun22)."
+       }
+      ]
+     },
+     "citation": "(cite: sun22)"
+    },
+    {
+     "what": {
+      "value": "PHANGS-ALMA GMC catalog (CPROPS) used for mass-weighted GMC property averages",
+      "evidence": [
+       {
+        "loc": "5.1 Correlations between global galaxy properties and cloud evolutionary time-scales",
+        "quote": "using the GMC catalog generated using the CPROPS algorithm (cite: rosolowsky21) for PHANGS-ALMA (cite: leroy21_survey) galaxies"
+       }
+      ]
+     },
+     "citation": "(cite: rosolowsky21)"
+    },
+    {
+     "what": {
+      "value": "Kpc-scale CO flux completeness c",
+      "evidence": [
+       {
+        "loc": "5.1 Correlations between global galaxy properties and cloud evolutionary time-scales",
+        "quote": "the mass-weighted average of CO flux completeness on the kpc-scale ($c$; from (cite: leroy21_pipe) and (cite: sun22))"
+       }
+      ]
+     },
+     "citation": "(cite: leroy21_pipe); (cite: sun22)"
+    },
+    {
+     "what": {
+      "value": "Star formation history used to check the SFR-constancy requirement",
+      "evidence": [
+       {
+        "loc": "Accuracy of our measurements",
+        "quote": "Using the SFR history measured by (cite: pessa23), we verify that this condition is satisfied."
+       }
+      ]
+     },
+     "citation": "(cite: pessa23)"
+    },
+    {
+     "what": {
+      "value": "Average PAH abundance of HII regions R_PAH,Neb",
+      "evidence": [
+       {
+        "loc": "5.5 PAH abundance and feedback duration",
+        "quote": "the average PAH abundance of HII regions ($R_{\\rm PAH, Neb}$) from (cite: sutter24)"
+       }
+      ]
+     },
+     "citation": "(cite: sutter24)"
+    },
+    {
+     "what": {
+      "value": "HII region ionization parameters",
+      "evidence": [
+       {
+        "loc": "5.5 PAH abundance and feedback duration",
+        "quote": "The data points are color-coded according to the ionization parameter, which is estimated in (cite: GROVES_HIICAT)"
+       }
+      ]
+     },
+     "citation": "(cite: GROVES_HIICAT)"
+    },
+    {
+     "what": {
+      "value": "CO-to-F770W scaling relation",
+      "evidence": [
+       {
+        "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+        "quote": "based on the correlation from (cite: chown24)"
+       }
+      ]
+     },
+     "citation": "(cite: chown24)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "STARBURST99 model used (instantaneous star formation 5 Myr ago) to compute the minimum stellar mass matching the H-alpha sensitivity",
+     "evidence": [
+      {
+       "loc": "Accuracy of our measurements",
+       "quote": "We obtain the initial mass using the STARBURST99 model with an assumption that star formation was instantaneous 5 Myr ago."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Same masks as Kim et al. 2022 (bright regions, most galactic centers), plus extra masking of exceedingly bright peaks (a peak at least twice as luminous as the next brightest); analysis limited to JWST-MUSE overlap",
+     "evidence": [
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "we use the same masks as (cite: kim22) and apply additional masks if extremely bright regions are present in mid-IR observations"
+      },
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "defined as a peak being at least twice as luminous as the next brightest peak"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "JWST maps convolved to the coarser H-alpha (MUSE) resolution with a kernel to a circular Gaussian PSF, then regridded to the H-alpha pixel grid",
+     "evidence": [
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "We first convolve finer-resolution JWST observations to match the coarser resolution of the H$\\alpha$ observations"
+      },
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "we use a kernel that transforms the JWST PSF to a circular Gaussian PSF, generated following (cite: aniano11)"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "H-alpha reference time-scale t_ref (t_s) for converting relative durations to Myr",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "by using the duration of the H$\\alpha$-bright phase ($t_{\\rm s}$) as a reference time-scale ($t_{\\rm ref}$) which is measured in (cite: kim22)"
+       }
+      ]
+     },
+     "from_reference": "(cite: kim22)"
+    },
+    {
+     "what": {
+      "value": "Masks of bright regions and galactic centers",
+      "evidence": [
+       {
+        "loc": "2.3 Post-processing images",
+        "quote": "we use the same masks as (cite: kim22) and apply additional masks if extremely bright regions are present in mid-IR observations"
+       }
+      ]
+     },
+     "from_reference": "(cite: kim22)"
+    },
+    {
+     "what": {
+      "value": "Criterion for detecting exceedingly bright regions",
+      "evidence": [
+       {
+        "loc": "2.3 Post-processing images",
+        "quote": "We adopt the same criteria for detecting exceedingly bright regions as in (cite: kim22)"
+       }
+      ]
+     },
+     "from_reference": "(cite: kim22)"
+    },
+    {
+     "what": {
+      "value": "Default values of the HEISENBERG parameters for error propagation and model fitting",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "For other parameters not listed here, related to error propagation and model fitting, we use the default values from (cite: kruijssen18)."
+       }
+      ]
+     },
+     "from_reference": "(cite: kruijssen18)"
+    },
+    {
+     "what": {
+      "value": "Choice of n_lambda as lowest integer with <10% flux loss from compact emission",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "We adopt the lowest possible integer value of $n_{\\lambda}$ for which the flux loss from the compact emission remains $<$10%, as recommended by (cite: hygate19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: hygate19)"
+    },
+    {
+     "what": {
+      "value": "Non-overlapping aperture Monte Carlo realizations (1000)",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "repeat this process 1000 times, following the description in (cite: kruijssen18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: kruijssen18)"
+    },
+    {
+     "what": {
+      "value": "JWST survey design and data reduction",
+      "evidence": [
+       {
+        "loc": "2.1 Mid-IR bands",
+        "quote": "For comprehensive explanations of the survey and the data reduction process, we refer readers to (cite: lee23) and (cite: williams24)."
+       }
+      ]
+     },
+     "from_reference": "(cite: lee23); (cite: williams24)"
+    },
+    {
+     "what": {
+      "value": "MUSE survey and data reduction",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE H$\\alpha$",
+        "quote": "Detailed explanations of the PHANGS-MUSE survey and data reduction can be found in (cite: emsellem22)."
+       }
+      ]
+     },
+     "from_reference": "(cite: emsellem22)"
+    },
+    {
+     "what": {
+      "value": "ALMA CO data and its processing (PHANGS-ALMA)",
+      "evidence": [
+       {
+        "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+        "quote": "the CO data is from PHANGS-ALMA (cite: leroy21_survey)"
+       }
+      ]
+     },
+     "from_reference": "(cite: leroy21_survey)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CO transition, ALMA array configuration, beam and rms of the PHANGS-ALMA maps used (only the PHANGS-ALMA survey is cited)",
+    "Which CO cubes/moment maps the CO time-scales of Kim et al. 2022 used, since the paper takes t_g^CO, t_fb^CO and t_ref from that work",
+    "The exact bright-region and galactic-center masks inherited from Kim et al. 2022",
+    "HEISENBERG version or git commit and the default error-propagation/fitting settings (sampler, priors, likelihood) referenced only as 'defaults from Kruijssen et al. 2018'",
+    "Pixel scale and exact PSF-matched resolution maps for each galaxy beyond l_ap,min in Table 2",
+    "Which MUSE data release and exact H-alpha map files were used",
+    "How uncertainties on correlations (Spearman) were estimated"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "PSF-match and regrid JWST and MUSE maps",
+    "method": {
+     "value": "Convolve finer-resolution JWST maps to the coarser H-alpha resolution (l_ap,min) with a Gaussian-target kernel and regrid to the H-alpha pixel grid",
+     "evidence": [
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "We then regrid these convolved maps to align with the pixel grid of the H$\\alpha$ maps."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Matched resolution l_ap,min per galaxy listed in Table 2 (e.g. 29-145 pc)",
+      "evidence": [
+       {
+        "loc": "2.3 Post-processing images",
+        "quote": "where Table [2](#tab:input) lists the matched resolution ($l_{\\rm ap, min}$)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Mask bright peaks and galactic centers; restrict to overlap area",
+    "method": {
+     "value": "Sort peaks by luminosity, mask all peaks above a gap where a peak is at least twice as luminous as the next, in any of the three mid-IR bands; restrict to JWST-MUSE overlap polygon",
+     "evidence": [
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "Whenever such a gap is identified, we mask all peaks that surpass the brightness of the next brightest peak."
+      },
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "we limit our analysis to areas where both JWST and MUSE observations overlap"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Masking bright regions has negligible impact; results consistent within 1 sigma (Table 4)",
+     "evidence": [
+      {
+       "loc": "2.3 Post-processing images",
+       "quote": "Appendix [10](#app:masking) shows that masking bright regions has a negligible impact on the derived properties, with results consistent within the 1$\\sigma$ uncertainty."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify emission peaks in mid-IR and H-alpha maps",
+    "method": {
+     "value": "CLUMPFIND contouring at steps delta log F over range Delta log F from the maximum flux; peaks below N_pix,min pixels discarded",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "using CLUMPFIND (cite: williams94). This algorithm detects peaks by contouring the data at multiple flux levels."
+      },
+      {
+       "loc": "3 Method",
+       "quote": "Peaks containing fewer than $N_{\\rm pix, min}$ pixels are disregarded."
+      }
+     ]
+    },
+    "software": [
+     "CLUMPFIND"
+    ],
+    "key_parameters": [
+     {
+      "value": "Per-galaxy delta log F, Delta log F, N_pix,min given in Table 2",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Main input parameters adopted in our analysis."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visually verified that all obvious emission peaks are identified",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "we have visually verified that all the obvious emission peaks are identified."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure aperture-averaged mid-IR-to-H-alpha flux ratios vs aperture size",
+    "method": {
+     "value": "Center apertures on each peak type, sum enclosed mid-IR and H-alpha flux, take the ratio; use 1000 Monte Carlo realizations of non-overlapping aperture samples",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "we sum the total enclosed mid-IR and H$\\alpha$ flux across all apertures and compute their ratio"
+      },
+      {
+       "loc": "3 Method",
+       "quote": "we generate Monte Carlo realizations of non-overlapping aperture samples for each peak type and aperture size"
+      }
+     ]
+    },
+    "software": [
+     "HEISENBERG"
+    ],
+    "key_parameters": [
+     {
+      "value": "Aperture sizes from l_ap,min ~100 pc to l_ap,max ~3 kpc (per-galaxy values in Table 2); 1000 realizations",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "ranging from $\\rm l_{ap,min}\\approx 100\\,pc$ to $\\rm l_{ap,max}\\approx 3\\,kpc$"
+       },
+       {
+        "loc": "3 Method",
+        "quote": "repeat this process 1000 times, following the description in (cite: kruijssen18)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Filter diffuse emission",
+    "method": {
+     "value": "Gaussian high-pass filter in Fourier space removing emission on scales larger than n_lambda times the region separation length lambda; iterate until lambda changes by <5% for three consecutive runs",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "using a Gaussian high-pass filter in Fourier space, where $n_{\\lambda}$ is the scaling factor"
+      },
+      {
+       "loc": "3 Method",
+       "quote": "defined as when the change in $\\lambda$ is less than 5% for three consecutive runs"
+      }
+     ]
+    },
+    "software": [
+     "HEISENBERG"
+    ],
+    "key_parameters": [
+     {
+      "value": "n_lambda is the lowest integer with <10% flux loss from compact emission; n_lambda*lambda ~1.5 kpc",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "We adopt the lowest possible integer value of $n_{\\lambda}$ for which the flux loss from the compact emission remains $<$10%, as recommended by (cite: hygate19)."
+       },
+       {
+        "loc": "4.5 Diffuse emission fractions",
+        "quote": "$n_{\\lambda}\\lambda\\approx 1.5$ kpc"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Large-scale diffuse emission has a different physical origin from the compact star-forming structures",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "the diffuse components in mid-IR and H$\\alpha$ maps often have a different physical origin from the compact star-forming structures we aim to trace"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Diffuse fractions compared with Spitzer 8 um in M33, Belfiore et al. 2022 and Pathak et al. 2024",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "which agrees well with the diffuse emission fraction measured in *Spitzer* 8 $\\mu$m observations of M33 obtained by separating discrete sources (cite: verley09)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit the analytical model to get t_g, t_fb and lambda",
+    "method": {
+     "value": "Fit an analytic function of the relative flux ratio vs aperture size depending on mid-IR-bright, H-alpha-bright and overlap durations and region separation lambda; absolute scale set by t_ref = t_s from Kim et al. 2022",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "To these observed flux ratios, we fit an analytical function which depends on the relative durations of successive phases in the timeline of cloud evolution"
+      },
+      {
+       "loc": "3 Method",
+       "quote": "The analytical function is then described by three independent quantities"
+      }
+     ]
+    },
+    "software": [
+     "HEISENBERG"
+    ],
+    "key_parameters": [
+     {
+      "value": "t_ref per galaxy from Kim et al. 2022 (Table 2)",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "by using the duration of the H$\\alpha$-bright phase ($t_{\\rm s}$) as a reference time-scale ($t_{\\rm ref}$) which is measured in (cite: kim22)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Emission enclosed in an aperture originates solely from regions inside it",
+      "evidence": [
+       {
+        "loc": "3 Method",
+        "quote": "Our analytical model assumes that the emission enclosed in an aperture originates solely from regions inside it."
+       }
+      ]
+     },
+     {
+      "value": "Mid-IR emission traces the gas column density",
+      "evidence": [
+       {
+        "loc": "6 Conclusions",
+        "quote": "Assuming that mid-IR emission (7.7-11.3 $\\mu$m) traces the gas column density"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Sampler, priors and likelihood not given in this paper; defaults of HEISENBERG from Kruijssen et al. 2018",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "For other parameters not listed here, related to error propagation and model fitting, we use the default values from (cite: kruijssen18)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked the eleven accuracy requirements of Kruijssen et al. 2018; all satisfied except resolution requirement (lambda > 1.5 l_ap,min) in NGC 1365, 1512, 4321 (all bands) and NGC 1300, 2835 (7.7 um), so t_fb and lambda are upper limits there",
+     "evidence": [
+      {
+       "loc": "Accuracy of our measurements",
+       "quote": "(cite: kruijssen18) lists a set of requirements that our measurements have to satisfy in order to be considered accurate within 30% error."
+      },
+      {
+       "loc": "Accuracy of our measurements",
+       "quote": "we find that almost all of the the requirements are satisfied except for the condition (2)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive CO-dark mid-IR phase and feedback time-scale difference",
+    "method": {
+     "value": "t_CO-dark = t_g^X - t_fb^X - (t_g^CO - t_fb^CO) and Delta t_fb,CO = t_fb^X - t_fb^CO, combining mid-IR results with the Kim et al. 2022 CO results",
+     "evidence": [
+      {
+       "loc": "4.2 Mid-IR emitting time-scale",
+       "quote": "$t_{\\rm CO-dark}^{X}=t_{\\rm g}^{X}-t_{\\rm fb}^{X}-(t_{\\rm g}^{\\rm CO}-t_{\\rm fb}^{\\rm CO})$"
+      },
+      {
+       "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+       "quote": "We measure the difference in the feedback time-scales between mid-IR bands and CO as $\\Delta t_{\\rm fb, CO}^{X}=t_{\\rm fb}^{X}- t_{\\rm fb}^{\\rm CO}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Detection of emission peaks is symmetric in terms of mass traced across tracers (for the CO-dark mass fraction)",
+      "evidence": [
+       {
+        "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+        "quote": "Assuming that our detection of emission peaks is symmetric in terms of mass traced across different tracers"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Correlate time-scales with galaxy and GMC properties",
+    "method": {
+     "value": "Spearman rank correlations between measurements and galaxy/GMC properties; significance with Holm-Bonferroni effective p-value; residuals after linear regression against CO completeness or resolution to test biases",
+     "evidence": [
+      {
+       "loc": "5.1 Correlations between global galaxy properties and cloud evolutionary time-scales",
+       "quote": "rank correlation coefficients computed between our measurements and the galaxy environmental properties described above"
+      },
+      {
+       "loc": "5.1.2 Identification of statistically significant correlations",
+       "quote": "defined using the Holm-Bonferroni method"
+      },
+      {
+       "loc": "5.1.1 Theoretical expectations",
+       "quote": "We then used the residuals to represent the time-scale ratio after removing the dependence on completeness."
+      }
+     ]
+    },
+    "software": [
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "p_ref = 0.05; N_corr ~ 15",
+      "evidence": [
+       {
+        "loc": "5.1.2 Identification of statistically significant correlations",
+        "quote": "where $p_{\\rm ref}$ is the desired significance level (0.05)"
+       },
+       {
+        "loc": "5.1.2 Identification of statistically significant correlations",
+        "quote": "resulting in $N_{\\rm corr} \\approx 15$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "With N_corr = 28 (all variables independent) correlations with t_g and f_diffuse would no longer be significant",
+     "evidence": [
+      {
+       "loc": "5.1.2 Identification of statistically significant correlations",
+       "quote": "if we assume all the variables are independent with $N_{\\rm corr}=28$, the correlations with $t_{\\rm g}^{\\rm mid-IR}$ and $f_{\\rm diffuse}^{\\rm mid-IR}$ are no longer defined as statistically significant"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "HEISENBERG",
+    "version": "not stated",
+    "used_for": {
+     "value": "Statistical method translating gas-to-SFR tracer flux ratio deviations into time-scales (the code formalizing the method)",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "we briefly describe the method (formalized in the HEISENBERG code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CLUMPFIND",
+    "version": "not stated",
+    "used_for": {
+     "value": "Identification of emission peaks in mid-IR and H-alpha maps",
+     "evidence": [
+      {
+       "loc": "3 Method",
+       "quote": "we first identify emission peaks in both mid-IR and H$\\alpha$ maps (at the highest PSF-matched resolution; $l_{\\rm ap, min}$) using CLUMPFIND (cite: williams94)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "STARBURST99",
+    "version": "not stated",
+    "used_for": {
+     "value": "Initial stellar mass for the H-alpha sensitivity check",
+     "evidence": [
+      {
+       "loc": "Accuracy of our measurements",
+       "quote": "We obtain the initial mass using the STARBURST99 model with an assumption that star formation was instantaneous 5 Myr ago."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CPROPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Algorithm behind the PHANGS-ALMA GMC catalog from which GMC property averages were taken",
+     "evidence": [
+      {
+       "loc": "5.1 Correlations between global galaxy properties and cloud evolutionary time-scales",
+       "quote": "using the GMC catalog generated using the CPROPS algorithm (cite: rosolowsky21) for PHANGS-ALMA (cite: leroy21_survey) galaxies"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Named in the Software list; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Clumpfind (cite: williams94), Heisenberg (cite: kruijssen18), Matplotlib (cite: Hunter07), SciPy (cite: scipy), seaborn (cite: seaborn), pandas (cite: pandas)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "Named in the Software list; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Clumpfind (cite: williams94), Heisenberg (cite: kruijssen18), Matplotlib (cite: Hunter07), SciPy (cite: scipy), seaborn (cite: seaborn), pandas (cite: pandas)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SciPy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Named in the Software list; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Clumpfind (cite: williams94), Heisenberg (cite: kruijssen18), Matplotlib (cite: Hunter07), SciPy (cite: scipy), seaborn (cite: seaborn), pandas (cite: pandas)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "seaborn",
+    "version": "not stated",
+    "used_for": {
+     "value": "Named in the Software list; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Clumpfind (cite: williams94), Heisenberg (cite: kruijssen18), Matplotlib (cite: Hunter07), SciPy (cite: scipy), seaborn (cite: seaborn), pandas (cite: pandas)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pandas",
+    "version": "not stated",
+    "used_for": {
+     "value": "Named in the Software list; specific use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "Astropy (cite: astropy:2013; astropy:2018; astropy:2022), Clumpfind (cite: williams94), Heisenberg (cite: kruijssen18), Matplotlib (cite: Hunter07), SciPy (cite: scipy), seaborn (cite: seaborn), pandas (cite: pandas)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Mid-IR emitting time-scale t_g range (disk, excluding centers)",
+    "value": "10-30 Myr",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the mid-IR emitting time-scale of gas clouds in galaxy disks (excluding centers) ranges from 10 to 30 Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean t_g at 7.7, 10, 11.3 um (average and 16-84% range)",
+    "value": "18, 18, 23",
+    "uncertainty": "5, 4, 5",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 Mid-IR emitting time-scale",
+      "quote": "The average and $16{-}84$% range for each mid-IR band are $18\\pm5$ Myr, $18\\pm4$ Myr, and $23\\pm5$ Myr, for 7.7 $\\mu$m, 10 $\\mu$m, and 11.3 $\\mu$m, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean feedback (overlap) time-scale t_fb at 7.7, 10, 11.3 um",
+    "value": "5.7, 5.8, 6.2",
+    "uncertainty": "1.0, 1.2, 1.1",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+      "quote": "with an average and 16-84% range of $5.7\\pm1.0$ Myr, $5.8\\pm1.2$ Myr, and $6.2\\pm1.1$ Myr, for 7.7, 10, and 11.3 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of H-alpha emitting phase with associated mid-IR, t_fb/t_s",
+    "value": "70-80%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+      "quote": "with an average ratio $t_{\\rm fb}^{\\rm mid-IR}/t_{\\rm s}$ of 70-80%"
+     }
+    ]
+   },
+   {
+    "quantity": "Difference in feedback time-scale, mid-IR minus CO (range across galaxies, 7.7 / 10 / 11.3 um)",
+    "value": "1.3-2.8 / 1.3-4.0 / 1.9-4.1",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+      "quote": "We find the difference to range $1.3{-}2.8$ Myr, $1.3{-}4.0$ Myr, and $1.9{-}4.1$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean ratio t_g(mid-IR)/t_g(CO) at 7.7, 10, 11.3 um",
+    "value": "1.1, 1.1, 1.3",
+    "uncertainty": "0.4, 0.3, 0.5",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Mid-IR emitting time-scale",
+      "quote": "being $1.1\\pm0.4$, $1.1\\pm0.3$, and $1.3\\pm0.5$, for 7.7 $\\mu$m, 10 $\\mu$m, and 11.3 $\\mu$m, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean CO-dark mid-IR emitting phase t_CO-dark at 7.7, 10, 11.3 um",
+    "value": "-3, -2, 3",
+    "uncertainty": "6, 5, 5",
+    "units": "Myr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Mid-IR emitting time-scale",
+      "quote": "are $-3\\pm6$ Myr, $-2\\pm5$ Myr, and $3\\pm5$ Myr, respectively, for 7.7, 10, and 11.3 $\\mu$m."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean region separation length lambda at 7.7, 10, 11.3 um",
+    "value": "112, 128, 117",
+    "uncertainty": "33, 33, 30",
+    "units": "pc",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 Average separation length between regions",
+      "quote": "with their average and 16-84% range of $112\\pm33$, $128\\pm33$, and $117\\pm30$ pc"
+     }
+    ]
+   },
+   {
+    "quantity": "Mid-IR diffuse emission fraction (mean over bands)",
+    "value": "60",
+    "uncertainty": "10",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Diffuse emission fractions",
+      "quote": "are very similar among different wavelengths ($60\\pm10\\%$)"
+     }
+    ]
+   },
+   {
+    "quantity": "H-alpha diffuse emission fraction",
+    "value": "40-60% range, average 50-60%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.5 Diffuse emission fractions",
+      "quote": "we find it to range from $40\\%$ to $60$%, with an average of $50-60\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of compact mid-IR emission in and near HII regions dark in CO",
+    "value": "30-70%, average ~45%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+      "quote": "$30{-}70\\%$ of the compact mid-IR emission is dark in CO, with an average of $\\sim 45\\%$"
+     }
+    ]
+   },
+   {
+    "quantity": "Ramp-up period t_g - t_fb of mid-IR emitting clouds",
+    "value": "5-30 Myr",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.4 Comparison with characteristic time-scales",
+      "quote": "The compact mid-IR emitting gas clouds experience a ramp-up period of $5-30$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rho of t_g(7.7um)/t_g(CO) vs metallicity",
+    "value": "-0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.1.1 Theoretical expectations",
+      "quote": "shows the tightest relation with metallicity with a correlation coefficient ($\\rho$) of $-0.7$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Mid-IR emission overlaps H-alpha because HII-region radiation illuminates nearby PAHs and dust; overlap time-scale is the feedback time-scale at ~100 pc scales",
+    "evidence": [
+     {
+      "loc": "4.3 Mid-IR and H$\\alpha$ overlapping time-scale",
+      "quote": "Our measurements also show that mid-IR emitting phase ends before H$\\alpha$"
+     }
+    ]
+   },
+   {
+    "value": "Most galaxies show no mid-IR emitting phase dark in CO, i.e. compact mid-IR clouds quickly become CO-stable",
+    "evidence": [
+     {
+      "loc": "4.2 Mid-IR emitting time-scale",
+      "quote": "This implies that once gas clouds assemble, being associated with compact mid-IR peaks, they immediately provide sufficient shielding for CO to become stable."
+     }
+    ]
+   },
+   {
+    "value": "t_g^10um correlates strongly with the H-alpha flux density contrast epsilon_Halpha",
+    "evidence": [
+     {
+      "loc": "5.1.3 Interpreting the strong correlations",
+      "quote": "we found a strong positive correlation between $t_{\\rm g}^{\\rm 10\\mu m}$ and $\\epsilon_{\\rm H\\alpha}$"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "How long do gas clouds emit in mid-IR (PAH/dust) in galaxy disks",
+    "experiment": "Apply the Kruijssen et al. 2018 time-scale method to F770W/F1000W/F1130W vs MUSE H-alpha for 17 galaxies",
+    "result": "t_g = 10-30 Myr; mean 18+-5, 18+-4, 23+-5 Myr",
+    "finding": "Mid-IR emitting time-scale of gas clouds is 10-30 Myr",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the mid-IR emitting time-scale of gas clouds in galaxy disks (excluding centers) ranges from 10 to 30 Myr."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does mid-IR emission persist during the stellar feedback (H-alpha) phase",
+    "experiment": "Measure the mid-IR/H-alpha overlap time-scale t_fb",
+    "result": "t_fb = 3-7 Myr, covering 70-80% of the H-alpha emitting phase",
+    "finding": "Mid-IR emission persists after star formation is detected in H-alpha because HII regions illuminate surrounding PAHs and dust",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "After star formation is detected in H$\\alpha$, mid-IR emission persists for 3-7 Myr during the stellar feedback phase, covering 70-80% of the H$\\alpha$ emission."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the mid-IR emitting time-scale match the CO molecular cloud lifetime, i.e. is there a CO-dark compact cloud phase",
+    "experiment": "Compare t_g(mid-IR) with t_g(CO) from Kim et al. 2022 and compute t_CO-dark",
+    "result": "Ratio 1.1+-0.4, 1.1+-0.3, 1.3+-0.5; t_CO-dark consistent with zero in most galaxies",
+    "finding": "Clouds with compact mid-IR emission quickly shield CO, in these molecular-gas-rich, near-solar-metallicity regions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In most galaxies, the mid-IR time-scale closely matches the molecular cloud lifetime measured with CO."
+     },
+     {
+      "loc": "4.2 Mid-IR emitting time-scale",
+      "quote": "In most galaxies in our sample, regardless of the mid-IR bands, the measured $t_{\\rm CO-dark}^{\\rm mid-IR}$ is consistent with being zero"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the shape of the ISM around HII regions influence the mid-IR time-scale",
+    "experiment": "Spearman correlations of time-scales with galaxy properties incl. epsilon_Halpha, with Holm-Bonferroni significance",
+    "result": "Strong correlation of t_g^10um with epsilon_Halpha; other bands show similar but non-significant trends",
+    "finding": "Mid-IR time-scale is longer where HII regions are well defined with less structured background",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the mid-IR emitting time-scale is longer in galaxies with well-defined HII regions and less structured backgrounds"
+     },
+     {
+      "loc": "5.1.3 Interpreting the strong correlations",
+      "quote": "They exhibit similar trends with log $p\\approx -1.5$, which was not small enough to be considered statistically significant."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Why do some galaxies have negative t_CO-dark",
+    "experiment": "Map CO to F770W-predicted flux ratio (Chown et al. 2024 correlation) in NGC 1566 and NGC 4321",
+    "result": "Long ridges with unusually high CO-to-PAH ratios, not coincident with HII regions",
+    "finding": "CO-PAH decorrelation (possibly PAH coagulation or CO emissivity changes) yields negative t_CO-dark; cause unconfirmed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+      "quote": "NGC 1566 and NGC 4321, where CO emitting phase begins earlier than the mid-IR emitting phase"
+     },
+     {
+      "loc": "5.2 Galaxies with decorrelation between CO and mid-IR emission",
+      "quote": "However, these ratios are degenerate with PAH properties"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Mid-IR bands correlate best with cold gas and give the highest resolution and sensitivity view of neutral gas, including gas missed in CO",
+    "evidence": [
+     {
+      "loc": "2.1 Mid-IR bands",
+      "quote": "These mid-IR bands are known to best correlate with the cold gas"
+     },
+     {
+      "loc": "2.1 Mid-IR bands",
+      "quote": "currently provide the highest resolution and highest sensitivity view of the neutral gas distribution of the PHANGS-JWST galaxies"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Extends the established statistical method for GMC lifetimes to mid-IR tracers, for consistency with Kim et al. 2022",
+    "evidence": [
+     {
+      "loc": "3 Method",
+      "quote": "We characterize evolutionary time-scales from mid-IR emitting gas phase to HII regions by applying a robust statistical method (cite: kruijssen14; kruijssen18) to mid-IR and H$\\alpha$ observations."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "21 um (F2100W) excluded because it traces dust in very high radiation fields, more associated with star-forming regions than cold gas",
+     "evidence": [
+      {
+       "loc": "2.1 Mid-IR bands",
+       "quote": "We do not include the dust continuum at 21 $\\mu$m (F2100W) in our analysis"
+      }
+     ]
+    },
+    {
+     "value": "Balmer-decrement extinction-corrected H-alpha tested for NGC 0628; time-scale changes within 1 sigma, not adopted for consistency with Kim et al. 2022",
+     "evidence": [
+      {
+       "loc": "2.2 MUSE H$\\alpha$",
+       "quote": "we do not use H$\\alpha$ maps that have been corrected for the dust extinction using the Balmer decrement (cite: belfiore22)"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mid-IR emission is influenced by column density, heating, and dust/PAH abundance, so the time-scale's physical interpretation is not trivial",
+     "evidence": [
+      {
+       "loc": "4.2 Mid-IR emitting time-scale",
+       "quote": "Therefore, the physical interpretation of the mid-IR emitting time-scale is not trivial."
+      }
+     ]
+    },
+    {
+     "value": "The method is flux weighted and biased toward bright mid-IR peaks near HII regions",
+     "evidence": [
+      {
+       "loc": "4.2 Mid-IR emitting time-scale",
+       "quote": "our method is flux weighted, which naturally biases our measurements toward bright mid-IR emission peaks"
+      }
+     ]
+    },
+    {
+     "value": "Trends of the mid-IR to CO time-scale ratio could be driven by differing CO sensitivity (flux completeness)",
+     "evidence": [
+      {
+       "loc": "5.1.1 Theoretical expectations",
+       "quote": "This raises the possibility that the observed trends may be biased by the shallow CO observations"
+      }
+     ]
+    },
+    {
+     "value": "lambda depends on resolution and is overestimated in poorly resolved galaxies",
+     "evidence": [
+      {
+       "loc": "5.1.2 Identification of statistically significant correlations",
+       "quote": "imply that $\\lambda$ are overestimated in galaxies with a poor resolution"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "ALMA enters only through PHANGS-ALMA CO products and Kim et al. 2022 time-scales; the CO side is not re-derived here",
+    "Small sample (17) and many correlation tests; significance depends on N_corr choice (15 vs 28)",
+    "CO and JWST have different resolution and sensitivity, confounding the mid-IR vs CO comparison",
+    "Time-scale uncertainties come from HEISENBERG defaults not restated in the paper"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "JWST data via MAST/STScI PHANGS HLSP page; ALMA data are public PHANGS-ALMA products (project codes listed)",
+    "evidence": [
+     {
+      "loc": "footnote 4",
+      "quote": "Data can be accessed via <https://archive.stsci.edu/hlsp/phangs> or (cite: doi)"
+     },
+     {
+      "loc": "2.1 Mid-IR bands",
+      "quote": "The observations are obtained from the Mikulski Archive for Space Telescope at the Space Telescope Science Institute"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "HEISENBERG code on GitHub (mustang-project/Heisenberg)",
+     "evidence": [
+      {
+       "loc": "footnote 5",
+       "quote": "https://github.com/mustang-project/Heisenberg"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Kim et al. 2022 CO time-scales, masks and t_ref values (only t_ref given in Table 2)",
+    "HEISENBERG version and non-listed default parameters",
+    "Exact PHANGS-ALMA CO map products and MUSE map versions",
+    "Fitting sampler/priors/likelihood"
+   ],
+   "estimated_data_volume_inferred": "Roughly 10-50 GB: JWST MIRI F770W/F1000W/F1130W mosaics and MUSE H-alpha maps for 17 galaxies; no raw ALMA visibilities are reprocessed",
+   "score_inferred": 3,
+   "score_reason": "Public JWST/MUSE/PHANGS products, public HEISENBERG code, per-galaxy parameters in Table 2 and full numeric Table 3, but inherited CO results, masks, and fit defaults from Kim et al. 2022 and Kruijssen et al. 2018 are needed.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA data are peripheral (inherited CO time-scales and masks from another paper); a standalone redo needs Kim et al. 2022 products not given here."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: kruijssen14); (cite: kruijssen18)",
+     "why": "Statistical method and HEISENBERG code, including validation and accuracy requirements"
+    },
+    {
+     "citation": "(cite: kim22)",
+     "why": "CO-based GMC time-scales, t_ref, masks and bright-region criteria inherited here"
+    },
+    {
+     "citation": "(cite: hygate19)",
+     "why": "Recommendation for diffuse emission filter scale n_lambda"
+    },
+    {
+     "citation": "(cite: lee23); (cite: williams24)",
+     "why": "PHANGS-JWST survey and data reduction"
+    },
+    {
+     "citation": "(cite: emsellem22)",
+     "why": "PHANGS-MUSE survey and data reduction"
+    },
+    {
+     "citation": "(cite: leroy21_survey)",
+     "why": "PHANGS-ALMA CO survey"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: kim22)",
+     "why": "Same method applied with CO for 54 galaxies; source of CO timeline"
+    },
+    {
+     "citation": "(cite: chown24)",
+     "why": "CO vs PAH relation across PHANGS-JWST"
+    },
+    {
+     "citation": "(cite: leroy23)",
+     "why": "Mid-IR, CO and H-alpha correlations in first four PHANGS-JWST galaxies"
+    },
+    {
+     "citation": "(cite: pathak24)",
+     "why": "Fraction of mid-IR emission from HII regions vs diffuse"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "PHANGS-JWST Cycle 1 (GO 2107)",
+    "PHANGS-MUSE"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025ApJ...988..215K",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T07:53:53",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 129,
+  "quotes_ok": 129,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 7,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 118,
+   "stated": 74,
+   "rate": 0.627
+  },
+  "evidence_ok": true
+ }
+}

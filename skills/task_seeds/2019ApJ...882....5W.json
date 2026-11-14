@@ -1,0 +1,203 @@
+{
+ "bibcode": "2019ApJ...882....5W",
+ "title": "The Kennicutt-Schmidt Law and Gas Scale Height in Luminous and Ultraluminous Infrared Galaxies",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab31f3",
+ "arxiv_id": "1907.05432",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What is the resolved Kennicutt-Schmidt slope at high gas surface density in U/LIRGs, and what do velocity dispersion and surface density imply for the gas scale height, free-fall time and star formation efficiency?",
+ "alma_project_codes": [
+  "2011.0.00525.S",
+  "2012.1.00165.S",
+  "2013.1.00218.S",
+  "2013.1.00379.S",
+  "2015.1.00167.S",
+  "2015.1.00287.S",
+  "2015.1.00993.S",
+  "2016.1.00140.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "beam FWHM 0.5\" to 2.2\" (Table 1)",
+  "sensitivity": "sigma_cont 0.015-0.10 mJy/beam; sigma_CO 0.043-0.18 mJy/beam km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor for U/LIRGs",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "We adopt the U/LIRG value for the CO-to-H$_2$ conversion factor (cite: downes1998)"
+     }
+    ]
+   },
+   "citation": "(cite: downes1998)"
+  },
+  {
+   "what": {
+    "value": "Thermal-only radio SFR calibration",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "We therefore calculate the star formation rate surface density, $\\Sigma_{\\rm SFR}$, using the thermal-only formula from (cite: murphy2011)."
+     }
+    ]
+   },
+   "citation": "(cite: murphy2011)"
+  },
+  {
+   "what": {
+    "value": "Arp 220 western nucleus dust contribution of 40%",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "the western nucleus of Arp 220, where the dust contributes 40% of the flux (cite: sakamoto2017)"
+     }
+    ]
+   },
+   "citation": "(cite: sakamoto2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make cubes and continuum images",
+   "method": "Clean cubes (Briggs robust 0.5), uv continuum subtraction, matched-resolution continuum, smoothing",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and rebinning",
+   "method": "Moment 0 and 2 with 3 and 4 sigma cutoffs, rebin to beam size, keep S/N>4 pixels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Sigma_mol and Sigma_SFR",
+   "method": "CO to Sigma_mol with Downes & Solomon factor and helium; dust-corrected 93-106 GHz continuum to thermal-only SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Constant X_CO; no inclination correction; NGC 7469 nucleus excluded"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit KS relation",
+   "method": "Double power law with free break, bootstrapped 10000 times",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Scale height and timescales",
+   "method": "H = 0.5 sigma_v^2/(pi G Sigma_mol); rho_mid = Sigma/(2H); t_ff, t_dep, eps_ff per pixel",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha+beta~0.3, Sigma_gas/Sigma_total~0.5, g_galaxy/g~0.05-0.2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "High-density KS slope",
+   "value": "1.74",
+   "uncertainty": "+0.09/-0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We find a slope of $1.74^{+0.09}_{\\rm -0.07}$ in the high surface density regime"
+    }
+   ]
+  },
+  {
+   "quantity": "Single power law KS slope",
+   "value": "1.73",
+   "uncertainty": "+0.08/-0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "($1.73^{+0.08}_{\\rm -0.07}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H range",
+   "value": "150 +/- 15 pc (NGC 7469) to 190 +/- 20 pc (NGC 3256)",
+   "uncertainty": "15-20 pc",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The mean values range from $150 \\pm 15$ pc in NGC 7469 to $190 \\pm 20$ pc in NGC 3256."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean eps_ff",
+   "value": "5-7%",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "roughly constant with mean values of 5-7% in each of the 5 galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion range",
+   "value": "30-160",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The velocity dispersions range from 30 km s$^{-1}$ to 160 km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges per galaxy",
+  "Clean threshold, mask, cell and image sizes",
+  "Taper values and uv cutoff",
+  "Which project code maps to which galaxy",
+  "Spectral setup details",
+  "Dust-correction inputs for each galaxy",
+  "Radio-SFR formula frequency and temperature details per pixel",
+  "Exact velocity range for moment maps"
+ ],
+ "missing_for_reproduction": [
+  "Details deferred to Wilson et al. 2019 in prep",
+  "Line-free channels and clean parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear formulas, but imaging details are deferred to an unpublished paper.",
+ "rediscovery_reason": "Public archival data, explicit equations, numeric results.",
+ "source_card": "cards/2019ApJ...882....5W/sonnet/card.md"
+}

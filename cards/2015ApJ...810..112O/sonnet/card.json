@@ -1,0 +1,909 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...810..112O",
+  "title": "Double DCO<SUP>+</SUP> Rings Reveal CO Ice Desorption in the Outer Disk Around IM Lup",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Öberg, Karin I.",
+  "n_authors": 8,
+  "arxiv_id": "1508.07296",
+  "doi": "10.1088/0004-637X/810/2/112",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00226.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA observations of the disk around the young star IM Lup in 1.4 mm continuum, C$^{18}$O 2–1, H$^{13}$CO$^+$ 3–2 and DCO$^+$ 3–2 emission at $\\sim$0.5$''$ resolution."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "IM Lup",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "155 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "the IM Lup disk, located at a distance of 155 pc (cite: Lombardi08)"
+       },
+       {
+        "loc": "Observational Results",
+        "quote": "We assumed an inclination of 49$^\\circ$ and a position angle of -35$^\\circ$ for these calculations (cite: Pinte08; Panic09)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lombardi et al. 2008",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "the IM Lup disk, located at a distance of 155 pc (cite: Lombardi08)"
+       },
+       {
+        "loc": "Observational Results",
+        "quote": "We assumed an inclination of 49$^\\circ$ and a position angle of -35$^\\circ$ for these calculations (cite: Pinte08; Panic09)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Where is CO ice desorbed in the IM Lup disk, as traced by the DCO+ emission morphology compared with C18O and H13CO+ and a disk chemistry model?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Non-thermal desorption should result in volatile-enriched gas in disk-regions where complete freeze-out is otherwise expected."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00226.S",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "project code ADS/JAO.ALMA#2013.1.00226.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "the correlator was configured to process 14 SPWs in a different part of the Band 6 spectrum."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "July 6: 13 SPWs, 12 with 61 kHz resolution and 59 MHz bandwidth, one with 469 MHz bandwidth; July 17: 14 SPWs, 61 kHz resolution",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The spectral resolution $\\delta\\nu$ and bandwidth for 12 of the SPW were 61 kHz and 59 MHz, respectively; the remaining SPW had a coarser resolution with a bandwidth of 469 MHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "DCO+",
+     "transition": "J=3–2",
+     "rest_frequency": "216.1126 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "DCO$^+$ J=3–2 | 216.1126"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2–1",
+     "rest_frequency": "219.5604 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "C$^{18}$O J=2–1 | 219.5604"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "J=3–2",
+     "rest_frequency": "260.2553 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "H$^{13}$CO$^+$ J=3–2 | 260.2553"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "31 antennas (2014 July 6) and 32 antennas (2014 July 17)",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "on 2014 July 6 with 31 antennas (targeting DCO$^+$ and C$^{18}$O) and on 2014 July 17 with 32 antennas (targeting H$^{13}$CO$^+$)."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15–650 m",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The antenna separations spanned baselines of 15–650 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.7'' x 0.5'' synthesized beam",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The CLEANed maps were restored with a synthesized beam with FWHM dimensions of $\\sim0.7\\ensuremath{''} \\times 0.5\\ensuremath{''}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum RMS ~0.24 mJy/beam; 4-6 mJy in 0.2 km/s channels",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The resulting RMS noise level in 0.2 km s$^{-1}$ binned channels is 4-6 mJy."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~21 minutes in each execution",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The total on source integration time was $\\sim$21 minutes in each execution."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014 July 6 and 2014 July 17",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "on 2014 July 6 with 31 antennas (targeting DCO$^+$ and C$^{18}$O) and on 2014 July 17 with 32 antennas"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "IM Lup inclination 49 deg and position angle -35 deg",
+      "evidence": [
+       {
+        "loc": "Observational Results",
+        "quote": "We assumed an inclination of 49$^\\circ$ and a position angle of -35$^\\circ$ for these calculations (cite: Pinte08; Panic09)."
+       }
+      ]
+     },
+     "citation": "(cite: Pinte08; Panic09)"
+    },
+    {
+     "what": {
+      "value": "Distance to IM Lup 155 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "located at a distance of 155 pc (cite: Lombardi08)"
+       }
+      ]
+     },
+     "citation": "(cite: Lombardi08)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Generic T Tauri disk chemistry model (M*=0.5 Msun, disk mass 1.7e-2 Msun), post-processed with LIME into line cubes",
+     "evidence": [
+      {
+       "loc": "4.1 Model Description",
+       "quote": "This model adopts a generic steady, axisymmetric Keplerian disk around a T Tauri star with stellar mass, radius, and effective temperature of $M_{\\ast}=0.5$ $M_{\\odot}$"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Calibrated by ALMA staff; delivered calibration used unchanged, then self-calibrated per SPW",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The visibility data were calibrated by ALMA staff. The calibration plots were inspected, deemed adequate, and no changes to the delivered calibration were made."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.2.2",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "Each individual SPW was further phase and amplitude self-calibrated in CASA 4.2.2."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Delivered calibration used without changes",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "no changes to the delivered calibration were made."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "Titan (absolute amplitude); J1534-3526 gain; J1427-4206 bandpass",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "Titan was observed to calibrate the absolute amplitude scale."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10%",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "which includes a 10% flux calibration uncertainty"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Phase and amplitude self-calibration on each SPW",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "Each individual SPW was further phase and amplitude self-calibrated in CASA 4.2.2."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5 continuum, 1.0 lines",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "the robust parameter was set 0.5 for the continuum and 1.0 for the spectral lines."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Manual CLEAN mask from bright C18O 2–1, applied to H13CO+ and DCO+",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "A CLEAN mask was manually generated based on the bright C$^{18}$O 2–1 line, and then applied to the H$^{13}$CO$^+$ and DCO$^+$ lines."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Subtracted using line-free channels in each SPW",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "In each SPW, the continuum was subtracted using line-free channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.7'' x 0.5''; per-line beams in Table 1",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The CLEANed maps were restored with a synthesized beam with FWHM dimensions of $\\sim0.7\\ensuremath{''} \\times 0.5\\ensuremath{''}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum ~0.24 mJy/beam; 4-6 mJy per 0.2 km/s channel",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The 1.4 mm continuum has an RMS noise level of $\\sim$0.24 mJy beam$^{-1}$ (dynamic range limited)."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Disk chemistry model from earlier work, updated with deuterium and ortho/para chemistry",
+      "evidence": [
+       {
+        "loc": "4.1 Model Description",
+        "quote": "we explored the relevant predictions of the disk chemistry model presented by (cite: Furuya14; Aikawa15), updated with deuterium chemistry"
+       }
+      ]
+     },
+     "from_reference": "(cite: Furuya14; Aikawa15)"
+    },
+    {
+     "what": {
+      "value": "Disk physical structure calculation",
+      "evidence": [
+       {
+        "loc": "4.1 Model Description",
+        "quote": "The gas temperature, dust temperature and density distributions of the disk are calculated self-consistently, considering various heating and cooling mechanisms (cite: Nomura07)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Nomura07)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels used for continuum subtraction",
+    "Self-calibration solution intervals and reference SPWs",
+    "CLEAN threshold, cell size, image size",
+    "Which SPW/channels were used for the continuum image",
+    "Integration velocity range and radial bin widths of the profiles",
+    "LIME setup (grid, inclination, beam convolution)",
+    "Model parameters not given (full chemistry network inputs, the small parameter-study grid)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and lines",
+    "method": {
+     "value": "Fourier inversion and CLEAN of self-calibrated, continuum-subtracted visibilities with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The fully calibrated visibilities were Fourier inverted and CLEANed using the Briggs weighting scheme"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5 continuum, 1.0 lines; 0.2 km/s channels",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "the robust parameter was set 0.5 for the continuum and 1.0 for the spectral lines."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Continuum flux compared with previous SMA measurements",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "consistent with previous SMA measurements (cite: Oberg11a)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make moment-0 maps and radial profiles",
+    "method": {
+     "value": "Sum 0.2 km/s channels above 2 sigma; also unclipped moment-0 maps deprojected and azimuthally averaged",
+     "evidence": [
+      {
+       "loc": "Observational Results",
+       "quote": "we also produced moment-0 maps without any clipping, deprojected and azimuthally averaged them into radial brightness profiles"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "inclination 49 deg, PA -35 deg",
+      "evidence": [
+       {
+        "loc": "Observational Results",
+        "quote": "We assumed an inclination of 49$^\\circ$ and a position angle of -35$^\\circ$ for these calculations"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Inclination and PA from Pinte08, Panic09",
+      "evidence": [
+       {
+        "loc": "Observational Results",
+        "quote": "(cite: Pinte08; Panic09)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Unclipped maps used to mitigate clipping bias",
+     "evidence": [
+      {
+       "loc": "Observational Results",
+       "quote": "to mitigate any bias introduced by the applied clipping threshold"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Model disk chemistry and compare to observed profiles",
+    "method": {
+     "value": "Time-dependent gas-grain chemistry (300 kyr) on a generic T Tauri disk, LIME line emission, radial profiles compared qualitatively",
+     "evidence": [
+      {
+       "loc": "4.1 Model Description",
+       "quote": "integrating a time-dependent system of gas and grain surface rate equations for 300 kyr, assuming the physical structure is static"
+      }
+     ]
+    },
+    "software": [
+     "LIME"
+    ],
+    "key_parameters": [
+     {
+      "value": "CO binding energy 1150 K (1000 K tested); CO photodesorption yield 7e-3; cosmic ray ionization rate lowered to 1e-20 s-1 test",
+      "evidence": [
+       {
+        "loc": "4.1 Model Description",
+        "quote": "The CO photodesorption yield is set to $7\\times10^{-3}$ (cite: Fayolle13)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "CO and HCO+ densities scaled by 500 and 70 for C18O and H13CO+ (ISM 16O/18O, 12C/13C)",
+      "evidence": [
+       {
+        "loc": "4.2 Model Results and Comparison to Observations",
+        "quote": "we have scaled the calculated CO and HCO$^+$ densities by factors of 500 and 70, respectively"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "No fitting; qualitative comparison",
+     "evidence": [
+      {
+       "loc": "4.1 Model Description",
+       "quote": "The differences in temperature and density structure clearly precludes any quantitative comparison between the model and data."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Small parameter study of binding energy, density/temperature structure, and cosmic ionization rate",
+     "evidence": [
+      {
+       "loc": "4.1 Model Description",
+       "quote": "we performed a small parameter study where we varied the CO binding energy, the disk density and temperature structure, and the cosmic ionization rate."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.2",
+    "used_for": {
+     "value": "Self-calibration, continuum subtraction, imaging",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "Each individual SPW was further phase and amplitude self-calibrated in CASA 4.2.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "LIME",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D Monte Carlo radiative transfer to produce model line cubes",
+     "evidence": [
+      {
+       "loc": "4.2 Model Results and Comparison to Observations",
+       "quote": "We calculated disk emission spectral data cubes using the 3D Monte Carlo radiative transfer code LIME (cite: Brinch10)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "1.4 mm continuum integrated flux density",
+    "value": "181",
+    "uncertainty": "18 mJy (includes 10% calibration)",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The integrated flux density is 181$\\pm$18 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ 3–2 integrated flux",
+    "value": "450",
+    "uncertainty": "45",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$450\\pm45$"
+     }
+    ]
+   },
+   {
+    "quantity": "C18O 2–1 integrated flux",
+    "value": "1460",
+    "uncertainty": "150",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$1460\\pm150$"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ 3–2 integrated flux",
+    "value": "484",
+    "uncertainty": "48",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$484\\pm48$"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ ring radii",
+    "value": "~0.6'' (~90 AU) and 2'' (~300 AU)",
+    "uncertainty": "not stated",
+    "units": "arcsec / AU",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "peak at radii of $\\sim$0.6$''$ and 2$''$ ($\\sim$90 and 300 AU, respectively)"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ peak radius",
+    "value": "0.8'' (~125 AU)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "the H$^{13}$CO$^+$ line peaks at 0.8$''$ ($\\sim$125 AU)"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak continuum flux density at 1.4 mm",
+    "value": "66",
+    "uncertainty": "7",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "66$\\pm$7 mJy beam$^{-1}$ at 1.4 mm"
+     }
+    ]
+   },
+   {
+    "quantity": "Central continuum brightness temperature",
+    "value": "~6",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "corresponding to a brightness temperature of $\\sim$6 K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "All three lines show a central depression, not seen in the continuum",
+    "evidence": [
+     {
+      "loc": "Observational Results",
+      "quote": "all three molecular species show a clear central depression"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does DCO+ emission trace CO ice desorbed non-thermally in the cold outer disk?",
+    "experiment": "ALMA imaging of DCO+, C18O, H13CO+ compared with a disk chemistry model plus LIME",
+    "result": "DCO+ shows two rings at ~90 and ~300 AU; the model reproduces both rings, with the outer ring from non-thermally desorbed CO",
+    "finding": "The outer DCO+ ring traces non-thermal (likely UV photodesorption) CO release in the low-density outer disk",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "The second, outer DCO$^+$ emission ring at 300 AU is readily reproduced by non-thermal CO ice desorption in the low-density, outer disk."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the inner DCO+ ring tied to the CO snowline?",
+    "experiment": "Compare ring radius with the previously inferred midplane temperature profile and the model",
+    "result": "Inner ring may coincide with onset of CO freeze-out, but multiple formation pathways complicate this",
+    "finding": "Inner ring is associated with the balance of freeze-out and thermal desorption, with caveats",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the inner ring may coincide with the onset of CO freeze-out."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What causes the central depression in the line emission?",
+    "experiment": "Evaluate four scenarios against the data",
+    "result": "Gas depletion and cloud absorption disfavoured; chemistry alone insufficient; optical depth requires strong beam dilution",
+    "finding": "Origin unresolved",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Based on the results presented so far, it seems unlikely, however, that chemistry alone can explain the entire observed effect."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "A generic model is used qualitatively because it is not tuned to IM Lup",
+    "evidence": [
+     {
+      "loc": "4.1 Model Description",
+      "quote": "qualitative comparisons still provide valuable insight into the origins of the observed molecular emission structure"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "A radial thermal inversion in the outer disk was considered but the non-thermal desorption scenario is favored",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "Of the two scenarios we favor the former, since it naturally explains the large DCO$^+$ enhancement and the much smaller H$^{13}$CO$^+$ enhancement at large disk radii."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Model is not tuned to IM Lup, so no quantitative comparison is possible",
+     "evidence": [
+      {
+       "loc": "4.1 Model Description",
+       "quote": "The differences in temperature and density structure clearly precludes any quantitative comparison between the model and data."
+      }
+     ]
+    },
+    {
+     "value": "Outer-ring intensity is model dependent and may vary from disk to disk",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "the expected intensity of the second DCO$^+$ ring *is* model dependent."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model is generic with colder, lower-mass disk than IM Lup; conclusions are qualitative only",
+    "UV photodesorption vs cosmic-ray desorption is not discriminated observationally",
+    "No radiative transfer fit or abundance retrieval from data",
+    "Central depression unexplained"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; data publicly archived is implied by project citation only",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00226.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Line-free channel ranges and self-calibration parameters",
+    "Chemical model code and exact disk model outputs",
+    "LIME configuration"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB for two Band 6 executions",
+   "score_inferred": 3,
+   "score_reason": "Data are public and imaging steps are simple, but imaging and self-cal details are sparse and the model is not released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main result is morphological (rings) and the model comparison is qualitative and not reproducible from the text."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Furuya14; Aikawa15)",
+     "why": "Disk chemistry model used"
+    },
+    {
+     "citation": "(cite: Brinch10)",
+     "why": "LIME radiative transfer"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Favre15)",
+     "why": "Alternative DCO+ formation pathways in disk models"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4b764a1f8b991eb8edd3a72c11099a57",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:21",
+  "usage": {
+   "input_tokens": 15219,
+   "output_tokens": 8018,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.055915,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 65,
+  "quotes_ok": 65,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 47,
+   "rate": 0.691
+  },
+  "evidence_ok": true
+ }
+}

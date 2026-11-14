@@ -1,0 +1,414 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "In this paper we present new, sensitive high-resolution ($\\sim$30 mas) Band 7 ALMA observations of this source."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {
+"value": "Do the scattered-light spiral arms of HD100453 have sub-mm continuum and CO counterparts launched by the stellar companion, and does the difference in spiral pitch angle between tracers reflect a vertical temperature gradient?",
+"evidence": [
+{"loc": "Introduction", "quote": "We thus confirm that the spirals are actual structures in the disc surface density and not only in the surface layers of the disc"},
+{"loc": "Introduction", "quote": "We then use these observations to test the hypothesis of (cite: juhasz_2018) that the spiral pitch angle should depend on the tracer."}
+]
+},
+"targets": [
+{
+"name": "HD100453",
+"details": [
+{"loc": "Introduction", "quote": "HD100453A has a spectral type A9V (cite: Dominik2003) and a mass of 1.5 $M_\\odot \\pm 0.15$ (cite: Fairlamb)"},
+{"loc": "4.1 Disc inclination and position angle", "quote": "we assume a distance of 103pc (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "103 pc",
+"distance_source": "Gaia (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.01424.S", "evidence": [
+{"loc": "Observations", "quote": "(Project ID 2017.1.01424.S, PI: A. Juhász)"}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7; four spectral windows centred on 345.79599, 343.810092, 331.80974 and 333.809798 GHz", "evidence": [
+{"loc": "Observations", "quote": "The correlator was set up to use four spectral windows in Band 7, centred on 345.79599 GHz, 343.810092 GHz, 331.80974 GHz and 333.809798 GHz, respectively."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "SPW 1 FDM, 488.281 kHz channels (0.84 km/s after Hanning smoothing) for CO J=3-2; other three SPWs TDM for continuum", "evidence": [
+{"loc": "Observations", "quote": "The first spectral window, centred on 345.79599 GHz, was set to Frequency Division Mode (FDM) with a channel spacing of 488.281 kHz, corresponding to 0.84 km/s velocity resolution after Hanning smoothing, to observe the CO J=3-2 line."},
+{"loc": "Observations", "quote": "The remaining three spectral windows were set to Time Division Mode (TDM) to observe the continuum."}
+]},
+{"field": "continuum_bandwidth", "value": "1.875 GHz per spectral window (all four)", "evidence": [
+{"loc": "Observations", "quote": "All four spectral windows had a bandwidth of 1.875 GHz."}
+]},
+{"field": "arrays", "value": "40 antennas", "evidence": [
+{"loc": "Observations", "quote": "Our target was observed with 40 antennas with baselines ranging from 92 m to 8547 m"}
+]},
+{"field": "baselines", "value": "92 m to 8547 m", "evidence": [
+{"loc": "Observations", "quote": "Our target was observed with 40 antennas with baselines ranging from 92 m to 8547 m"}
+]},
+{"field": "angular_resolution", "value": "continuum 0.036 x 0.031 arcsec (robust 0.5); CO 0.054 x 0.052 arcsec (robust 2)", "evidence": [
+{"loc": "Observations", "quote": "achieving a resolution of 0.036$''$ x 0.031$''$ and a beam position angle of -38.36$^\\circ$"},
+{"loc": "Observations", "quote": "in this case the spatial resolution was 0.054$''$ x 0.052$''$ with a beam position angle of 83$^\\circ$."}
+]},
+{"field": "max_recoverable_scale", "value": "0.6 arcsec", "evidence": [
+{"loc": "Observations", "quote": "Formally, the maximum recoverable scale with this antenna configuration is 0.6$''$."}
+]},
+{"field": "sensitivity", "value": "continuum rms 22 uJy/beam; CO rms 0.95 mJy/beam per channel", "evidence": [
+{"loc": "Observations", "quote": "The rms noise level in the continuum was 22 $\\mu$Jy/beam."},
+{"loc": "Observations", "quote": "The rms noise level was 0.95 mJy/beam in a single channel."}
+]},
+{"field": "time_on_source", "value": "1h 46min", "evidence": [
+{"loc": "Observations", "quote": "the total on-source integration time was 1h 46min"}
+]},
+{"field": "observing_dates", "value": "24 and 25 November 2017", "evidence": [
+{"loc": "Observations", "quote": "on the 24th and 25th November 2017"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PI: A. Juhász (not stated whether archival)", "evidence": [
+{"loc": "Observations", "quote": "(Project ID 2017.1.01424.S, PI: A. Juhász)"}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [
+{"loc": "Observations", "quote": "to observe the CO J=3-2 line"}
+]}
+],
+"other_facilities": [
+{"name": "SPHERE/VLT (scattered light)", "provided": {"value": "Near-infrared scattered-light image showing two symmetric spiral arms, compared with ALMA continuum", "evidence": [
+{"loc": "Introduction", "quote": "Scattered light imaging has shown that the system presents 2 symmetric spiral arms (cite: wagner_2015; benisty_2017)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "SPHERE R' scattered-light image of HD100453", "evidence": [
+{"loc": "3.3 Comparison with scattered light observations", "quote": "(cite: benisty_2017), probing the disc atmosphere"}
+]}, "citation": "(cite: benisty_2017)"},
+{"what": {"value": "Stellar mass 1.5 +/- 0.15 Msun used as Gaussian prior", "evidence": [
+{"loc": "Introduction", "quote": "a mass of 1.5 $M_\\odot \\pm 0.15$ (cite: Fairlamb)"}
+]}, "citation": "(cite: Fairlamb)"},
+{"what": {"value": "Distance 103 pc", "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "we assume a distance of 103pc (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"}
+]}, "citation": "(cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"},
+{"what": {"value": "Companion position (separation 1.05 arcsec, PA 132 deg)", "evidence": [
+{"loc": "4.2 Geometric toy model for the spiral arms", "quote": "The position of the companion (separation of 1.05$''$, at PA = 132$^\\circ$) was taken from (cite: wagner_2015)."}
+]}, "citation": "(cite: wagner_2015)"},
+{"what": {"value": "Optical constants of astronomical silicates for Mie opacities", "evidence": [
+{"loc": "5.1.2 Radiative transfer", "quote": "using the optical constants of astronomical silicates (cite: Weingartner2001)"}
+]}, "citation": "(cite: Weingartner2001)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Three 3D FARGO3D hydrodynamical simulations (cold, hot, stratified) post-processed with RADMC-3D into 1.65 um and 880 um mock images", "evidence": [
+{"loc": "5.1 Methods", "quote": "we perform a suite of 3D hydrodynamical simulations and then post-process them with a radiative transfer code to generate mock observations"},
+{"loc": "5.1.1 Hydrodynamics", "quote": "We run three simulations."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline", "evidence": [
+{"loc": "Observations", "quote": "To calibrate the visibilities we used the ALMA pipeline and the Common Astronomy Software Applications (CASA, version 5.1.1; (cite: 2007ASPC..376..127M))."}
+]},
+{"field": "casa_version", "value": "CASA 5.1.1", "evidence": [
+{"loc": "Observations", "quote": "the Common Astronomy Software Applications (CASA, version 5.1.1; (cite: 2007ASPC..376..127M))"}
+]},
+{"field": "self_calibration", "value": "Tried for continuum and gas; no significant improvement, so not applied", "evidence": [
+{"loc": "Observations", "quote": "Since self-calibration of both continuum and gas data did not significantly improve the images, we will base our analysis on the non-self-calibrated data."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA clean", "evidence": [
+{"loc": "Observations", "quote": "The calibrated visibilities were imaged using the `clean` task in CASA."}
+]},
+{"field": "weighting_robust", "value": "continuum: Briggs robust = 0.5; CO: robust = 2 (natural weighting)", "evidence": [
+{"loc": "Observations", "quote": "we used Briggs weighting with a robust parameter value of 0.5"},
+{"loc": "Observations", "quote": "we used a robust parameter of 2 (corresponding to natural weighting)"}
+]},
+{"field": "smoothing", "value": "CO channel maps smoothed with imsmooth to test for extended CO disc", "evidence": [
+{"loc": "6.1 On the extent of the CO disc", "quote": "we have lowered the resolution of our CO map, using the task `imsmooth` in CASA on the individual channel maps."}
+]},
+{"field": "final_beam", "value": "continuum 0.036 x 0.031 arcsec, PA -38.36 deg; CO 0.054 x 0.052 arcsec, PA 83 deg", "evidence": [
+{"loc": "Observations", "quote": "achieving a resolution of 0.036$''$ x 0.031$''$ and a beam position angle of -38.36$^\\circ$"},
+{"loc": "Observations", "quote": "in this case the spatial resolution was 0.054$''$ x 0.052$''$ with a beam position angle of 83$^\\circ$."}
+]},
+{"field": "final_rms", "value": "continuum 22 uJy/beam; CO 0.95 mJy/beam in a single channel", "evidence": [
+{"loc": "Observations", "quote": "The rms noise level in the continuum was 22 $\\mu$Jy/beam."},
+{"loc": "Observations", "quote": "The rms noise level was 0.95 mJy/beam in a single channel."}
+]}
+],
+"inherited": [
+{"what": {"value": "Velocity-map fitting method for inclination and position angle (using eddy)", "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "we fitted the projected velocity map following the method in (cite: 2018ApJ...868..113T) using the code `eddy`"}
+]}, "from_reference": "(cite: 2018ApJ...868..113T)"},
+{"what": {"value": "Deprojection of scattered-light image onto a conical surface", "evidence": [
+{"loc": "4.3 De-projected images", "quote": "we also take into account the fact that the emission comes from a conical surface, in the same way as done by (cite: benisty_2017)"}
+]}, "from_reference": "(cite: benisty_2017); method in (cite: 2016A&A...596A..70S)"},
+{"what": {"value": "Spiral wake equation used in the toy model", "evidence": [
+{"loc": "4.2 Geometric toy model for the spiral arms", "quote": "is given by the analytic wake equation for spiral waves in the linear regime by (cite: rafikov_2002a)"}
+]}, "from_reference": "(cite: rafikov_2002a)"},
+{"what": {"value": "Vertical temperature prescription for the stratified simulation", "evidence": [
+{"loc": "5.1.1 Hydrodynamics", "quote": "we use the prescription commonly employed when fitting observations of (cite: dartois_2003) and subsequently updated by (cite: rosenfeld_2013)"}
+]}, "from_reference": "(cite: dartois_2003); (cite: rosenfeld_2013)"},
+{"what": {"value": "Temperature ratio and disc aspect ratios chosen from a tailored radiative transfer model", "evidence": [
+{"loc": "5.1.1 Hydrodynamics", "quote": "This value, as well as the disc aspect ratios, were chosen based on the radiative transfer model, tailored for this system, presented in (cite: benisty_2017)"}
+]}, "from_reference": "(cite: benisty_2017)"},
+{"what": {"value": "Dust grain size distribution dN/da ~ a^-3.5", "evidence": [
+{"loc": "5.1.2 Radiative transfer", "quote": "(cite: 1977ApJ...217..425M)"}
+]}, "from_reference": "(cite: 1977ApJ...217..425M)"}
+],
+"unstated_but_needed": [
+"CLEAN masks, thresholds, niter, deconvolver, cell and image size for continuum and CO imaging",
+"Which channels were used for continuum and whether any line-free channel selection or continuum subtraction was done",
+"Velocity range and rest frequency used for the CO moment maps, and clipping/threshold settings in bettermoments",
+"Details of the eddy fit (emission surface, free parameters, sampler settings, mask)",
+"Exact tracing procedure for spiral locations (radial ranges, number of points, which azimuth ranges) and the exact pipeline version",
+"Boundary conditions, resolution-dependent smoothing length and companion softening in FARGO3D; grain-size dependent mass fractions and star-companion setup files for RADMC-3D",
+"Flux calibrator and flux-scale uncertainty"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Image continuum and CO",
+ "method": {"value": "CASA clean of pipeline-calibrated visibilities; continuum with Briggs robust 0.5, CO with natural weighting", "evidence": [
+ {"loc": "Observations", "quote": "The calibrated visibilities were imaged using the `clean` task in CASA."}]},
+ "software": ["CASA"],
+ "key_parameters": [
+ {"value": "robust = 0.5 (continuum); robust = 2 (CO)", "evidence": [
+ {"loc": "Observations", "quote": "we used a robust parameter of 2 (corresponding to natural weighting)"}]}],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Self-calibration tried but did not significantly improve the images", "evidence": [
+ {"loc": "Observations", "quote": "Since self-calibration of both continuum and gas data did not significantly improve the images"}]}},
+{"order": 2, "goal": "Measure continuum flux and high-pass filter to reveal spirals",
+ "method": {"value": "Total flux in a circular aperture around the ring; inverse Gaussian Fourier-space high-pass filter to reveal arms S1 and S2", "evidence": [
+ {"loc": "3.1 Continuum", "quote": "We measure a total continuum flux in a circular aperture encompassing the extent of the ring of 510 mJy."},
+ {"loc": "3.1 Continuum", "quote": "We chose an inverse Gaussian filter kernel, which we defined in the Fourier space as"}]},
+ "software": [],
+ "key_parameters": [
+ {"value": "filter width sigma = 0.2 arcsec^-1", "evidence": [
+ {"loc": "3.1 Continuum", "quote": "where $\\nu$ is the spatial frequency and $\\sigma$ is the width of the filter which we took to be 0.2 arcsec$^{-1}$."}]}],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Fit CO velocity map for inclination and position angle",
+ "method": {"value": "Keplerian fit of the first-moment map with eddy, Gaussian prior on stellar mass", "evidence": [
+ {"loc": "4.1 Disc inclination and position angle", "quote": "we fitted the projected velocity map following the method in (cite: 2018ApJ...868..113T) using the code `eddy`"}]},
+ "software": ["eddy", "bettermoments"],
+ "key_parameters": [
+ {"value": "stellar mass prior 1.5 +/- 0.15 Msun", "evidence": [
+ {"loc": "4.1 Disc inclination and position angle", "quote": "We impose a Gaussian prior on the stellar mass of 1.5 $M_\\odot \\pm 0.15$ (cite: Fairlamb)"}]}],
+ "assumptions": [
+ {"value": "distance 103 pc", "evidence": [
+ {"loc": "4.1 Disc inclination and position angle", "quote": "we assume a distance of 103pc (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"}]}],
+ "fitting": {"value": "Gaussian prior on stellar mass; sampler and likelihood not stated", "evidence": [
+ {"loc": "4.1 Disc inclination and position angle", "quote": "We impose a Gaussian prior on the stellar mass of 1.5 $M_\\odot \\pm 0.15$ (cite: Fairlamb)"}]},
+ "validation": {"value": "Compared with previous inclination estimates; residuals inspected", "evidence": [
+ {"loc": "4.1 Disc inclination and position angle", "quote": "which are in good agreement with previous investigations"}]}},
+{"order": 4, "goal": "Geometric toy model of projection effects on pitch angle",
+ "method": {"value": "3D spiral wake from the analytic linear wake equation, projected at the disc orientation, with surface at z_p = 0.22 r_p versus midplane; compared isothermal and 2.5x temperature-difference cases", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "we employ a simple geometric toy model, in which the 3D cartesian coordinates of the spiral wake are given by"}]},
+ "software": [],
+ "key_parameters": [
+ {"value": "aspect ratio 0.215", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "we use a value of 0.215"}]},
+ {"value": "inclination 33 deg, PA 145 deg, flaring index 0.04", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "We assumed a disc inclination of 33$^\\circ$ , a position angle of 145$^\\circ$  and a flaring index of 0.04"}]},
+ {"value": "temperature difference factor of 2.5 between midplane and surface", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "we assumed a temperature difference of a factor of 2.5 between the disc midplane and the surface layer"}]}],
+ "assumptions": [
+ {"value": "m=2 spiral made by shifting the wake solution by 180 deg in azimuth", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "We artificially produce a m=2 spiral by shifting the solution of the spiral wake equation by 180$^\\circ$ in azimuth."}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Deproject images and measure spiral pitch angles",
+ "method": {"value": "Deproject using fitted inclination/PA (conical surface for scattered light, razor-thin disc for continuum); trace the radial emission maximum at each azimuth and fit an Archimedean spiral R = a phi + b", "evidence": [
+ {"loc": "4.3 De-projected images", "quote": "we trace the position of the spiral by looking at each azimuthal angle for the radial location corresponding to the maximum in emission"},
+ {"loc": "4.3 De-projected images", "quote": "while we assume a razor-thin disc for the sub-mm continuum"}]},
+ "software": [],
+ "key_parameters": [
+ {"value": "pitch angle evaluated at projected radius 0.26 arcsec for the continuum spirals", "evidence": [
+ {"loc": "4.3 De-projected images", "quote": "these values are evaluated at a projected radius of 0.26$''$, corresponding to the mid-point of the radial range covered by the spirals"}]}],
+ "assumptions": [
+ {"value": "Archimedean and logarithmic models not distinguished given limited radial range", "evidence": [
+ {"loc": "4.3 De-projected images", "quote": "Given the limited radial range of the continuum spirals, we do not attempt to distinguish between an Archimedean"}]}],
+ "fitting": {"value": "Least-squares-type fit with radial uncertainty set to the projected beam size; tracing points spaced by the beam", "evidence": [
+ {"loc": "4.3 De-projected images", "quote": "we assign a standard deviation of the radial position corresponding to the projected beam size"}]},
+ "validation": {"value": "Compared with geometric toy model and with hydrodynamical models", "evidence": [
+ {"loc": "4.2 Geometric toy model for the spiral arms", "quote": "We conclude that the difference in pitch angles between the SPHERE and the ALMA data cannot be explained as a projection effect"}]}},
+{"order": 6, "goal": "Run 3D hydrodynamical simulations of binary-disc interaction",
+ "method": {"value": "FARGO3D spherical grid, point-mass companion, locally isothermal; cold (h=0.1), hot (h=0.2) and vertically stratified temperature (upper layers 4x midplane, z_q = 3H) runs", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "The simulations shown in this paper have been run with the code FARGO3D"},
+ {"loc": "5.1.1 Hydrodynamics", "quote": "with the normalization set such that the disc aspect ratio at the location of the companion is 0.1 for the cold simulation and 0.2 for the hot simulation."}]},
+ "software": ["FARGO3D"],
+ "key_parameters": [
+ {"value": "grid 250 x 80 x 512 cells", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "We employ a spherical grid with 250, 80 and 512 cells"}]},
+ {"value": "M2/M1 = 0.17", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "The companion is treated like a point mass at a radius $r=1$, with a companion to star ratio $M_2/M_1=0.17$."}]},
+ {"value": "alpha viscosity 1e-3; images after 90 orbits at 30 au", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "a physical viscosity using the (cite: shakurasunyaev) prescription with a value of $\\alpha=10^{-3}$"},
+ {"loc": "5.1.1 Hydrodynamics", "quote": "All the images shown are after 90 orbits at a radius of 30 au (roughly 13 orbits at the companion location)."}]},
+ {"value": "upper-layer temperature 4x midplane; z_q = 3H", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "we assume that the temperature in the upper layers is 4 times the value in the midplane"},
+ {"loc": "5.1.1 Hydrodynamics", "quote": "We also assume that $z_q=3H$, where H is the disc scale-height."}]}],
+ "assumptions": [
+ {"value": "Locally isothermal equation of state; mean molecular weight 2.35", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "We employ a locally isothermal equation of state, in which the sound speed $c_s$ is a function of position only"},
+ {"loc": "5.1.1 Hydrodynamics", "quote": "assuming a mean molecular weight of 2.35 to convert from temperature to sound speed"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Steady state reached after about 10 companion orbits per cited work", "evidence": [
+ {"loc": "5.1.1 Hydrodynamics", "quote": "the spiral structure settles into a steady state after 10 companion orbits"}]}},
+{"order": 7, "goal": "Generate mock images with radiative transfer and compare with data",
+ "method": {"value": "RADMC-3D thermal Monte Carlo then images at 1.65 um and 880 um using hydro gas density; compared deprojected, high-pass filtered polar images with SPHERE and ALMA", "evidence": [
+ {"loc": "5.1.2 Radiative transfer", "quote": "we calculate images in scattered light and sub-mm using the 3D radiative transfer code RADMC-3D"},
+ {"loc": "5.2 Results", "quote": "We plot all the images in polar coordinates"}]},
+ "software": ["RADMC-3D"],
+ "key_parameters": [
+ {"value": "10^7 photons for thermal Monte Carlo and imaging", "evidence": [
+ {"loc": "5.1.2 Radiative transfer", "quote": "We use $10^7$ photons both for the thermal Monte Carlo simulations and for the image calculations."}]},
+ {"value": "10 log-spaced grain size bins, 0.1 um to 1 mm", "evidence": [
+ {"loc": "5.1.2 Radiative transfer", "quote": "We use 10 logarithmically spaced grain size bins between 0.1 $\\mu$m and 1 mm"}]}],
+ "assumptions": [
+ {"value": "gas-to-dust ratio 100", "evidence": [
+ {"loc": "5.1.2 Radiative transfer", "quote": "We assume a gas-to-dust ratio of 100 to set the dust density."}]},
+ {"value": "Stellar radiation as blackbody; Mie opacities of astronomical silicates", "evidence": [
+ {"loc": "5.1.2 Radiative transfer", "quote": "The radiation field of the central star is modelled with blackbody emission"},
+ {"loc": "5.1.2 Radiative transfer", "quote": "The mass absorption coefficients of the dust grains are calculated with Mie-theory"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Qualitative comparison of simulated and observed pitch angles for cold, hot and stratified models", "evidence": [
+ {"loc": "5.2 Results", "quote": "The comparison clearly shows that the stratified model is the only one capable of reproducing the pitch angles of the scattered light and sub-mm observations *at the same time*."}]}},
+{"order": 8, "goal": "Test for extended CO disc by smoothing",
+ "method": {"value": "Smooth CO channel maps with imsmooth to Band 6 resolution and recompute moment 8 map", "evidence": [
+ {"loc": "6.1 On the extent of the CO disc", "quote": "We then recomputed the moment maps from the low resolution channel maps."}]},
+ "software": ["CASA"],
+ "key_parameters": [],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Smoothed map closely resembles the earlier Band 6 map, so missing flux is unlikely to alter morphology", "evidence": [
+ {"loc": "6.1 On the extent of the CO disc", "quote": "it does prove that, if we are missing some flux, the effect is too small to affect the morphology of the emission."}]}}
+],
+"software": [
+{"name": "CASA", "version": "5.1.1", "used_for": {"value": "Calibration, clean imaging, imsmooth", "evidence": [
+{"loc": "Observations", "quote": "the Common Astronomy Software Applications (CASA, version 5.1.1; (cite: 2007ASPC..376..127M))"}]}},
+{"name": "ALMA pipeline", "version": "not stated", "used_for": {"value": "Calibrating the visibilities", "evidence": [
+{"loc": "Observations", "quote": "To calibrate the visibilities we used the ALMA pipeline"}]}},
+{"name": "eddy", "version": "not stated", "used_for": {"value": "Fitting the projected velocity map for inclination and position angle", "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "using the code `eddy`"}]}},
+{"name": "bettermoments", "version": "not stated", "used_for": {"value": "Computing the first-moment (velocity) map", "evidence": [
+{"loc": "Footnotes", "quote": "Computed using `bettermoments` (cite: bettermoments)"}]}},
+{"name": "FARGO3D", "version": "not stated", "used_for": {"value": "3D hydrodynamical simulations of binary-disc interaction", "evidence": [
+{"loc": "5.1.1 Hydrodynamics", "quote": "The simulations shown in this paper have been run with the code FARGO3D"}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Radiative transfer mock images in scattered light and sub-mm", "evidence": [
+{"loc": "5.1.2 Radiative transfer", "quote": "we calculate images in scattered light and sub-mm using the 3D radiative transfer code RADMC-3D"}]}}
+],
+"results_numeric": [
+{"quantity": "Total continuum flux in aperture around ring", "value": "510", "uncertainty": "not stated", "units": "mJy", "from_step": 2, "evidence": [
+{"loc": "3.1 Continuum", "quote": "We measure a total continuum flux in a circular aperture encompassing the extent of the ring of 510 mJy."}]},
+{"quantity": "Central unresolved continuum flux", "value": "~1.6", "uncertainty": "not stated", "units": "mJy", "from_step": 2, "evidence": [
+{"loc": "3.1 Continuum", "quote": "and has a flux of $\\sim 1.6$ mJy"}]},
+{"quantity": "Maximum continuum brightness temperature", "value": "18", "uncertainty": "not stated", "units": "K", "from_step": 0, "evidence": [
+{"loc": "6.2 On the origin of the spirals and model limitations", "quote": "the maximum brightness temperature across the image is 18 K"}]},
+{"quantity": "Disc inclination (eddy fit, stellar mass prior)", "value": "35", "uncertainty": "not stated", "units": "deg", "from_step": 3, "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "The best-fit value is $35 \\ensuremath{^\\circ}$ for the disc inclination and $145 \\ensuremath{^\\circ}$ for the position angle"}]},
+{"quantity": "Disc position angle (eddy fit)", "value": "145", "uncertainty": "not stated", "units": "deg", "from_step": 3, "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "The best-fit value is $35 \\ensuremath{^\\circ}$ for the disc inclination and $145 \\ensuremath{^\\circ}$ for the position angle"}]},
+{"quantity": "Fitted stellar mass", "value": "1.27", "uncertainty": "not stated", "units": "Msun", "from_step": 3, "evidence": [
+{"loc": "4.1 Disc inclination and position angle", "quote": "the fit converges to a stellar mass of 1.27 $M_\\odot$"}]},
+{"quantity": "Scattered-light pitch angle, eastern spiral", "value": "14", "uncertainty": "2", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "For scattered light, we obtain an angle of 14$\\pm$2$^\\circ$ for the eastern spiral and 18$\\pm$3$^\\circ$ for the western spiral."}]},
+{"quantity": "Scattered-light pitch angle, western spiral", "value": "18", "uncertainty": "3", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "For scattered light, we obtain an angle of 14$\\pm$2$^\\circ$ for the eastern spiral and 18$\\pm$3$^\\circ$ for the western spiral."}]},
+{"quantity": "Continuum pitch angle, eastern spiral S1", "value": "4.8", "uncertainty": "0.8", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "we obtain instead a value of 4.8$\\pm$0.8$^\\circ$ for the eastern spiral S1 and 6.6$\\pm$1.5$^\\circ$ for the western spiral S2"}]},
+{"quantity": "Continuum pitch angle, western spiral S2", "value": "6.6", "uncertainty": "1.5", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "we obtain instead a value of 4.8$\\pm$0.8$^\\circ$ for the eastern spiral S1 and 6.6$\\pm$1.5$^\\circ$ for the western spiral S2"}]},
+{"quantity": "12CO pitch angle, eastern spiral", "value": "19", "uncertainty": "3", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "The measured pitch angles in this case are 19$\\pm$3$^\\circ$ for the eastern spiral and 11$\\pm$2$^\\circ$ for the western one."}]},
+{"quantity": "12CO pitch angle, western spiral", "value": "11", "uncertainty": "2", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "The measured pitch angles in this case are 19$\\pm$3$^\\circ$ for the eastern spiral and 11$\\pm$2$^\\circ$ for the western one."}]},
+{"quantity": "12CO southern spiral pitch angle at r>0.6 arcsec", "value": "25", "uncertainty": "4", "units": "deg", "from_step": 5, "evidence": [
+{"loc": "4.3 De-projected images", "quote": "obtaining a pitch angle of 25$\\pm$4$^\\circ$"}]}
+],
+"findings_qualitative": [
+{"value": "Two spiral arms are detected in sub-mm continuum (S1, S2) and two in CO (S3, S4); the southern CO spiral points to the companion position", "evidence": [
+{"loc": "abstract", "quote": "This is the first source where we find counterparts in the sub-mm continuum to both scattered light spirals."},
+{"loc": "3.2 CO J=3-2", "quote": "The southern spiral points to the position of the companion"}]},
+{"value": "CO disc extends only to ~0.3 arcsec; the apparently larger CO disc in lower-resolution data is likely the spirals blended with the disc", "evidence": [
+{"loc": "6.1 On the extent of the CO disc", "quote": "the large extent of the CO disc is likely an artefact of the low resolution, which does not allow one to distinguish the spirals from the disc"}]},
+{"value": "No strong sub-mm counterparts of the scattered-light shadows", "evidence": [
+{"loc": "6.2 On the origin of the spirals and model limitations", "quote": "there are no strong, obvious sub-mm counterparts of the NIR shadows"}]}
+],
+"claims": [
+{"hypothesis": "Do the scattered-light spirals have sub-mm continuum and CO counterparts, and is the companion the launching source?",
+ "experiment": "High-resolution Band 7 continuum and CO J=3-2 imaging, high-pass filtering and overlay with SPHERE",
+ "result": "Two continuum spirals and two CO spirals found; the southern CO spiral points to the companion",
+ "finding": "The spirals are real density structures launched by the companion",
+ "support": "supported",
+ "evidence": [
+ {"loc": "abstract", "quote": "This is clear evidence that the companion is responsible for launching the spirals."}]},
+{"hypothesis": "Does the spiral pitch angle differ between sub-mm continuum (midplane) and scattered light (upper layers)?",
+ "experiment": "Deprojection and Archimedean spiral fits to the SPHERE and ALMA images",
+ "result": "Continuum pitch angles 4.8 and 6.6 deg versus scattered light 14 and 18 deg",
+ "finding": "Scattered-light spirals are more open, and projection effects cannot explain it",
+ "support": "supported",
+ "evidence": [
+ {"loc": "4.3 De-projected images", "quote": "This confirms that the scattered light spirals have a higher pitch angle than the ones in the sub-mm continuum."}]},
+{"hypothesis": "Can binary-disc hydrodynamical simulations reproduce both pitch angles?",
+ "experiment": "Cold, hot and vertically stratified FARGO3D runs post-processed with RADMC-3D",
+ "result": "Only the stratified model matches both the scattered-light and sub-mm pitch angles",
+ "finding": "A colder midplane than upper layers is needed, supporting the vertical temperature gradient prediction",
+ "support": "supported",
+ "evidence": [
+ {"loc": "5.2 Results", "quote": "The comparison clearly shows that the stratified model is the only one capable of reproducing the pitch angles of the scattered light and sub-mm observations *at the same time*."}]},
+{"hypothesis": "Is the CO disc truncated at about one third of the companion separation?",
+ "experiment": "Compare the high-resolution CO map with CO smoothed to Band 6 resolution",
+ "result": "CO disc extends only to ~0.3 arcsec; smoothed map resembles the Band 6 map",
+ "finding": "The orbit is compatible with being coplanar with the disc, though misalignment is not excluded",
+ "support": "partially",
+ "evidence": [
+ {"loc": "6.1 On the extent of the CO disc", "quote": "The orbit could also be misaligned, but the ALMA data does not favour a specific scenario."}]}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "Hydrodynamics plus radiative transfer used to test whether binary-disc interaction with a stratified temperature reproduces the observed pitch-angle difference", "evidence": [
+{"loc": "5.1 Methods", "quote": "In order to test the hypothesis that the spirals arms seen in the ALMA and SPHERE observations are launched by the stellar companion"}]},
+{"field": "why_this_data", "value": "High resolution needed to resolve the spirals; some resolution sacrificed for CO surface brightness sensitivity", "evidence": [
+{"loc": "Observations", "quote": "a clear detection of the southern spiral up to the companion position (see later) requires to sacrifice some spatial resolution in exchange for surface brightness sensitivity"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Shadow-launched spirals rejected: no strong sub-mm counterparts, CO spiral points to the companion, dust-dynamics simulations predict no sub-mm spiral", "evidence": [
+{"loc": "6.2 On the origin of the spirals and model limitations", "quote": "Given that all these facts rule out launching by shadows as origin for the spirals, it is possible that the special shadow location is just a lucky coincidence."}]},
+{"value": "Projection effect as explanation of pitch angle difference rejected via toy model", "evidence": [
+{"loc": "4.2 Geometric toy model for the spiral arms", "quote": "We conclude that the difference in pitch angles between the SPHERE and the ALMA data cannot be explained as a projection effect"}]}
+],
+"limitations_admitted": [
+{"value": "Maximum recoverable scale (0.6 arcsec) is smaller than the companion separation, so large-scale emission may be missed", "evidence": [
+{"loc": "Observations", "quote": "in principle we might be missing information on the largest spatial scales"}]},
+{"value": "Simulated spirals are asymmetric whereas observed scattered-light spirals are symmetric", "evidence": [
+{"loc": "6.2 On the origin of the spirals and model limitations", "quote": "the spirals in scattered light observations are symmetrical, while in the hydrodynamical simulations (see [7](#fig:model_comp)) we find that one spiral is stronger than the other."}]},
+{"value": "Assumed continuum spirals trace the same morphology as midplane gas spirals; untested", "evidence": [
+{"loc": "6.2 On the origin of the spirals and model limitations", "quote": "we have assumed that the spirals in the ALMA continuum image trace the same morphology as the spirals in the midplane gas"}]}
+],
+"referee_caveats_inferred": [
+"Pitch-angle fits use a hand-chosen tracing procedure with beam-based errors; sensitivity to tracing choices is not explored",
+"The comparison between models and data is qualitative (visual) with no quantitative fit to the simulations",
+"Gas density is used to set dust density for the sub-mm image, ignoring dust-gas decoupling for mm grains",
+"The inclination depends strongly on the stellar mass prior (30 vs 35 deg)"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Clean parameters (mask, threshold, niter, cell, image size) and channel selection",
+"Exact spiral tracing procedure and radial/azimuthal ranges",
+"Full hydro/radiative-transfer setup beyond the listed parameters (boundaries, grain-size mass weighting, plotting filters)",
+"Pipeline version and flux calibration details"
+],
+"estimated_data_volume_inferred": "Roughly 100-300 GB of raw visibilities for 2 execution blocks at 8.5 km baselines in Band 7 with one FDM window; calibrated measurement set tens of GB (inferred)",
+"score_inferred": 3,
+"score_reason": "Data project code and key imaging settings (robust, beam, rms) are given, but clean parameters, tracing procedure and simulation details are missing; hydro/RT parts need substantial inference.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public status of the data is not stated in the paper and the imaging and spiral-tracing recipe lacks key parameters; the hydrodynamical comparison is not numerically specified enough for a clean redo.",
+"methods_papers": [
+{"citation": "(cite: 2018ApJ...868..113T)", "why": "Velocity-map fitting method used with eddy"},
+{"citation": "(cite: 2016A&A...596A..70S)", "why": "Deprojection method for scattered-light images"},
+{"citation": "(cite: rafikov_2002a)", "why": "Analytic spiral wake equation"}
+],
+"companion_papers": [
+{"citation": "(cite: benisty_2017)", "why": "SPHERE scattered-light image and radiative transfer model of HD100453"},
+{"citation": "(cite: vanderplas2019)", "why": "Earlier ALMA Band 6 observations of the same source"},
+{"citation": "(cite: juhasz_2018)", "why": "Prediction that pitch angle depends on tracer"}
+],
+"related_projects_or_surveys": []
+}

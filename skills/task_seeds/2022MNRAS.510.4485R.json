@@ -1,0 +1,689 @@
+{
+ "bibcode": "2022MNRAS.510.4485R",
+ "title": "The AGN fuelling/feedback cycle in nearby radio galaxies - IV. Molecular gas conditions and jet-ISM interaction in NGC 3100",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab3541",
+ "arxiv_id": "2112.00755",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Investigate the molecular gas physical conditions, kinematics, and jet-ISM interaction in the nearby low-excitation radio galaxy NGC 3100 using multiple molecular transitions and continuum data.",
+ "alma_project_codes": [
+  "2015.1.01572.S",
+  "2018.1.01095.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, Band 6, Band 7",
+  "arrays": "12-m array (41 to 48 antennae)",
+  "angular_resolution": "Band 3: 1.4\" x 1.0\" (250 pc); Band 4: 1.1\" x 0.9\" (195 pc); Band 6: 0.9\" x 0.7\" (160 pc); Band 7: 1.1\" x 0.6\" (195 pc)",
+  "sensitivity": "Continuum rms: 9 to 50 uJy beam^-1; CO cubes (10 km/s): 0.6 mJy beam^-1; HNCO/SiO cubes (105 km/s): 0.05 mJy beam^-1; HCO+ cube (105 km/s): 0.2 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "B-I optical colour map of NGC 3100",
+    "evidence": [
+     {
+      "loc": "Section 4.4 (CO kinematics)",
+      "quote": "knowing from the B-I colour map of NGC 3100"
+     },
+     {
+      "loc": "CO-dust comparison and gas-phase metallicity: implications for the gas origin",
+      "quote": "where $\\Sigma$ is the area covered by the dust features, $\\langle A_{\\rm \\lambda} \\rangle$ is the wavelength-dependent mean extinction (i.e. dust absorption) of that area (measured directly from the $B$-$I$ colour map"
+     }
+    ]
+   },
+   "citation": "(cite: Ruffa19a; Ruffa20)"
+  },
+  {
+   "what": {
+    "value": "Galaxy sky coordinates",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(2) and (3) Galaxy sky coordinates from (cite: Petrov05)."
+     }
+    ]
+   },
+   "citation": "(cite: Petrov05)"
+  },
+  {
+   "what": {
+    "value": "Galaxy redshift z = 0.0088 and [OIII]5007 luminosity L_[OIII] ~ 1.7x10^39 erg s^-1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(4) Galaxy redshift from (cite: Dopita15)."
+     },
+     {
+      "loc": "CO excitation conditions and kinematics",
+      "quote": "Based on the optical spectroscopy presented by (cite: Dopita15), $L_{\\rm [OIII]}\\approx1.7\\times10^{39}$ erg s$^{-1}$ and thus $L_{\\rm bol}=6\\times10^{42}$ erg s$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Dopita15)"
+  },
+  {
+   "what": {
+    "value": "Radio power at 1.4 GHz (log P_1.4GHz = 23.0 W Hz^-1)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(7) Radio power at 1.4 GHz derived from the flux density given in (cite: Brown11), including all the radio emission associated with the source."
+     }
+    ]
+   },
+   "citation": "(cite: Brown11)"
+  },
+  {
+   "what": {
+    "value": "Optical stellar velocity v_opt = 2629 +/- 20 km s^-1",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$v_{\\rm opt}$ (km s$^{-1}$) | $2629\\pm20$"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(8) Optical stellar velocity from (cite: Kerr86)."
+     }
+    ]
+   },
+   "citation": "(cite: Kerr86)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create moment maps of molecular lines",
+   "method": "Masked moment technique: copy of cleaned cube is Gaussian-smoothed spatially (FWHM equal to synthesized beam) and Hanning-smoothed in velocity; a 3D mask is defined above a flux threshold, then applied to the un-smoothed cube.",
+   "software": [],
+   "key_parameters": [
+    "Flux threshold = 1.2 sigma (measured in un-smoothed cube)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectral profiles, line widths, and integrated fluxes / upper limits",
+   "method": "Extract spectra within boxes covering central 10\"x11\" (CO) and 1.5\"x1.5\" (HCO+); measure FWZI across channels >=3 sigma; measure CO FWHM directly from double-horned profile and HCO+ FWHM via Gaussian fit; compute 3-sigma upper limits for non-detections.",
+   "software": [],
+   "key_parameters": [
+    "Extraction box: 10\" x 11\" for CO, 1.5\" x 1.5\" for HCO+(4-3); FWZI threshold >= 3 sigma"
+   ],
+   "assumptions": [
+    "For SiO and HNCO upper limits, emission is assumed unresolved (within synthesized beam) with expected FWHM = 340 km s^-1 (same as CO(2-1))."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate total molecular gas mass from CO(1-0)",
+   "method": "Convert integrated CO(1-0) flux density to total molecular gas mass including heavy elements using the standard Bolatto et al. (2013) relation.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way CO-to-H2 conversion factor X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (with +/- 0.4 dex systematic scatter), z = 0.0088, D_L = 38.0 Mpc (10% distance uncertainty)."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute spatially-resolved line ratio maps (R_21, R_31, R_HCO)",
+   "method": "Re-image CO cubes to identical channel number, channel width, pixel and image size, select a common uv range, convolve to a common 1.4\" x 0.9\" beam, produce masked moment 0 maps, and divide using CASA immath.",
+   "software": [
+    "CASA",
+    "immath"
+   ],
+   "key_parameters": [
+    "Common beam: 1.4\" x 0.9\"; channel width: 10 km s^-1 (for CO ratios) and 105 km s^-1 (for HCO+/CO(2-1) ratio)"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and optically thin conditions in the inner high-ratio region to infer T_ex >= 50 K from R_31 >= 12."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "3D kinematic modelling of CO(3-2) and outflow mass/rate estimation",
+   "method": "Simulate mock cubes with KinMS using a nuclear two-armed logarithmic spiral embedded in an axisymmetric exponential disc, linear radial PA and inclination warps, an arctangent rotation curve, and spatially constant velocity dispersion; fit to observed cube with KinMS_MCMC; extract spectra in velocity residual regions to identify inflow/outflow components and compute outflow mass and rate.",
+   "software": [
+    "KinMS",
+    "KINMS_MCMC",
+    "IDL"
+   ],
+   "key_parameters": [
+    "10^5 - 10^6 point-like sources; R_max = 300 pc, v_max = 200 km s^-1 for outflow"
+   ],
+   "assumptions": [
+    "Pure circular motion for the baseline model; spatially constant intrinsic velocity dispersion; optically thin LTE gas with T_ex = 50 K giving X_CO = 2.5 x 10^19 cm^-2 (K km s^-1)^-1 for outflow mass; spherical geometry for outflow rate (M_dot <= 3 v_max M_out / R_max)."
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit radio to (sub-)mm continuum spectral energy distribution",
+   "method": "Fit single power-law function S_nu = A nu^alpha to total, core, and jet continuum flux densities across radio and ALMA mm bands.",
+   "software": [
+    "lmfit",
+    "PYTHON"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Radio source is compact with no emission on larger scales, allowing combination of low- and high-resolution data for total spectrum; matched-resolution data used for core and jet components."
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Estimate dust mass, molecular gas-to-dust ratio, and gas-phase metallicity",
+   "method": "Measure mean extinction <A_lambda> from B-I colour map in regions co-spatial with CO, compute dust mass M_dust = Sigma <A_lambda> Gamma_lambda^-1, and derive gas-phase metallicity upper limit from M_gas/M_dust using the Draine et al. (2007) relation.",
+   "software": [],
+   "key_parameters": [
+    "<A_lambda> = 2.0 mag (central structure) and 1.7 mag (eastern patch)"
+   ],
+   "assumptions": [
+    "Milky Way B-band mass absorption coefficient Gamma_B = 8 x 10^-6 mag kpc^2 M_sun^-1; solar metallicity 12+log10(O/H) = 8.66 at gas-to-dust ratio of 100; neglecting HI yields a lower limit on M_gas/M_dust and upper limit on metallicity."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO(1-0) peak flux density",
+   "value": "13.8",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$^{12}$CO(1-0) | 0.6 | 13.8 | 23 | 10"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) peak flux density",
+   "value": "50.0",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$^{12}$CO(3-2) | 0.6 | 50.0 | 83 | 10"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) peak flux density",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HCO$^{+}$(4-3) | 0.2 | 1.0 | 5 | 105"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO(6-5) peak flux density upper limit",
+   "value": "<0.15",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HNCO(6-5) | 0.05 | $<0.15$ | $-$ | 105"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(3-2) peak flux density upper limit",
+   "value": "<0.15",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SiO(3-2) | 0.05 | $<0.15$ | $-$ | 105"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) integrated flux density (S Delta v)",
+   "value": "9.3",
+   "uncertainty": "1.1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(1-0) | 350 | 440 | 9.3$\\pm$1.1 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) line FWHM",
+   "value": "350",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(1-0) | 350 | 440 | 9.3$\\pm$1.1 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) line FWZI",
+   "value": "440",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(1-0) | 350 | 440 | 9.3$\\pm$1.1 | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(2-1) integrated flux density (S Delta v)",
+   "value": "20.0",
+   "uncertainty": "2.1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(2-1) | 340 | 440 | 20.0$\\pm$2.1$^{*}$ | 2.14$\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average integrated flux density ratio R_21 (CO(2-1)/CO(1-0))",
+   "value": "2.14",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(2-1) | 340 | 440 | 20.0$\\pm$2.1$^{*}$ | 2.14$\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) integrated flux density (S Delta v)",
+   "value": "31.3",
+   "uncertainty": "3.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | 350 | 460 | 31.3$\\pm$3.2 | 3.35$\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) line FWHM",
+   "value": "350",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | 350 | 460 | 31.3$\\pm$3.2 | 3.35$\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) line FWZI",
+   "value": "460",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | 350 | 460 | 31.3$\\pm$3.2 | 3.35$\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average integrated flux density ratio R_31 (CO(3-2)/CO(1-0))",
+   "value": "3.35",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$^{12}$CO(3-2) | 350 | 460 | 31.3$\\pm$3.2 | 3.35$\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) integrated flux density (S Delta v)",
+   "value": "0.32",
+   "uncertainty": "0.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "HCO$^{+}$(4-3) | 150 | 420 | 0.32$\\pm0.2$ | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) line FWHM",
+   "value": "150",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "HCO$^{+}$(4-3) | 150 | 420 | 0.32$\\pm0.2$ | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+(4-3) line FWZI",
+   "value": "420",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "HCO$^{+}$(4-3) | 150 | 420 | 0.32$\\pm0.2$ | $-$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNCO(6-5) velocity-integrated flux upper limit",
+   "value": "<28",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "HNCO(6-5) | 340 | $-$ | $<28$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "SiO(3-2) velocity-integrated flux upper limit",
+   "value": "<28",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "SiO(3-2) | 340 | $-$ | $<28$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (M_mol)",
+   "value": "1.4e8",
+   "uncertainty": "+/- 0.2e8 (random) +/- 0.3e8 (systematic)",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular gas mass",
+     "quote": "The estimated molecular gas mass is $(1.4\\pm0.2\\pm0.3)\\times10^{8}$ M~$\\odot$~."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner high-excitation gas excitation temperature (T_ex)",
+   "value": ">=50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spatially-resolved line ratios",
+     "quote": "Assuming local thermodynamic equilibrium (LTE) and optically thin conditions, CO ratios $\\gtrsim12$ imply gas excitation temperatures $T_{\\rm ex} \\gtrsim50$ K (cite: Oosterloo17)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatially-resolved HCO+(4-3)/CO(2-1) flux density ratio (R_HCO)",
+   "value": "0.1 to 0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spatially-resolved line ratios",
+     "quote": "The R$_{\\rm HCO}$ values are found to vary from $\\approx0.1$ to $\\approx 0.7$, much higher than those typically observed in unperturbed gas regions (cite: Oosterloo17)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) kinematic position angle (PA)",
+   "value": "190-250",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(1) | Kinematic position angle, PA | (deg) | 190$-$250"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) disc inclination (i)",
+   "value": "20-80",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(2) | Disc inclination, $i$ | (deg) | 20$-$80"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) disc scale length (R_disc)",
+   "value": "3.1",
+   "uncertainty": "0.3",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(3) | Disc scale length, R$_{\\rm disc}$ | (arcsec) | 3.1$\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) maximum circular velocity (v_flat)",
+   "value": "345",
+   "uncertainty": "5",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(4) | Max circular velocity, v$_{\\rm flat}$ | (km s$^{-1}$) | 345$\\pm$5"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) rotation curve turnover radius (r_turn)",
+   "value": "2.6",
+   "uncertainty": "0.2",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(5) | Rotation curve turn over radius, r$_{\\rm turn}$ | (arcsec) | 2.6$\\pm0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) intrinsic gas velocity dispersion (sigma_gas)",
+   "value": "41",
+   "uncertainty": "3",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "(6) | Velocity dispersion, $\\sigma_{\\rm gas}$ | (km s$^{-1}$) | 41$\\pm3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet-induced outflow gas mass (M_out)",
+   "value": "5.6e4",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Assuming $T_{\\rm ex}=50$ K for an average $R_{\\rm 31}\\approx12$ in the high-excitation regions, we get $X_{\\rm CO}= 2.5\\times10^{19}$ cm$^{2}$ (K km s$^{-1}$)$^{-1}$ and $M_{\\rm out} = 5.6 \\times 10^{4}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet-induced maximum outflow velocity (v_max)",
+   "value": "200",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Assuming $R_{\\rm max}=300$ pc (i.e. the maximum extent of regions C and D in Figure 13) and $v_{\\rm max}=200$ km s$^{-1}$, we obtain $\\dot{M} \\lesssim 0.12$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet-induced mass outflow rate (M_dot)",
+   "value": "<=0.12",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CO kinematics",
+     "quote": "Assuming $R_{\\rm max}=300$ pc (i.e. the maximum extent of regions C and D in Figure 13) and $v_{\\rm max}=200$ km s$^{-1}$, we obtain $\\dot{M} \\lesssim 0.12$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total radio-to-mm continuum spectral index (alpha_tot)",
+   "value": "-0.49",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The resulting best-fitting spectral indices are $\\alpha_{\\rm tot}=-0.49\\pm0.03$ for the total continuum, $\\alpha_{\\rm core}=-0.3\\pm0.2$ for the core component, and $\\alpha_{\\rm jet}=-0.73\\pm0.01$ for the jet component."
+    }
+   ]
+  },
+  {
+   "quantity": "Core radio-to-mm continuum spectral index (alpha_core)",
+   "value": "-0.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The resulting best-fitting spectral indices are $\\alpha_{\\rm tot}=-0.49\\pm0.03$ for the total continuum, $\\alpha_{\\rm core}=-0.3\\pm0.2$ for the core component, and $\\alpha_{\\rm jet}=-0.73\\pm0.01$ for the jet component."
+    }
+   ]
+  },
+  {
+   "quantity": "Jet radio-to-mm continuum spectral index (alpha_jet)",
+   "value": "-0.73",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "The resulting best-fitting spectral indices are $\\alpha_{\\rm tot}=-0.49\\pm0.03$ for the total continuum, $\\alpha_{\\rm core}=-0.3\\pm0.2$ for the core component, and $\\alpha_{\\rm jet}=-0.73\\pm0.01$ for the jet component."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass in regions co-spatial with molecular gas (M_dust)",
+   "value": "2.5e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO-dust comparison and gas-phase metallicity: implications for the gas origin",
+     "quote": "The estimated dust mass in the regions co-spatial with the molecular gas is then $2.5\\times10^5$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas-to-dust mass ratio (M_gas/M_dust)",
+   "value": "560",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO-dust comparison and gas-phase metallicity: implications for the gas origin",
+     "quote": "These values imply a molecular $M_{\\rm gas}/M_{\\rm dust}=560$ and a gas-phase metallicity $<$7.9, which about six times smaller than the solar metallicity."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity 12 + log10(O/H)",
+   "value": "<7.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "CO-dust comparison and gas-phase metallicity: implications for the gas origin",
+     "quote": "These values imply a molecular $M_{\\rm gas}/M_{\\rm dust}=560$ and a gas-phase metallicity $<$7.9, which about six times smaller than the solar metallicity."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image cell size and image dimensions (pixel and image size) for continuum maps and line cubes",
+  "Solution intervals (solint) and number of cycles for phase-only and amplitude+phase self-calibration",
+  "Exact frequency/velocity ranges of line-free channels used for uvcontsub",
+  "Exact common uv-range selected when matching resolution for the line ratio maps",
+  "Exact parameter values for the nuclear logarithmic spiral component in the KinMS model",
+  "Missing continuum flux density table (Table of continuum image properties was omitted/unparsed in text)"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel size and image dimensions for tclean",
+  "Self-calibration solution intervals and S/N thresholds",
+  "Exact uv-range tapering/clipping limits used when matching the CO cubes to 1.4\" x 0.9\"",
+  "Logarithmic spiral parametrisation values used in the KinMS model",
+  "Exact coordinates/apertures of Regions A, B, C, and D and exact velocity integration limits for the outflow mass calculation",
+  "External 5 and 10 GHz JVLA continuum maps and optical B-I colour map needed for SED fitting and dust mass calculation"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "ALMA project codes, CASA versions, calibrators, channel widths, weighting, cleaning thresholds, and analysis equations/software (KinMS, KinMS_MCMC, lmfit) are clearly documented. Minor deductions for missing self-calibration solints, pixel/image sizes, exact uv-range cuts for resolution matching, and spiral parameter values in KinMS.",
+ "rediscovery_reason": "Both ALMA project codes (2015.1.01572.S and 2018.1.01095.S) are public, the imaging and kinematic modelling recipes use standard public tools (CASA, KinMS_MCMC), and the main findings are quantitative (line fluxes, line ratios R_21 and R_31, molecular gas mass, KinMS rotation parameters, and outflow mass/rate).",
+ "source_card": "cards/2022MNRAS.510.4485R/sonnet/card.md"
+}

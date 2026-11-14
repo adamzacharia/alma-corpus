@@ -1,0 +1,401 @@
+{
+ "bibcode": "2026MNRAS.548ag641R",
+ "title": "Large dust grains and a possible dust trap in the polar circumbinary disc of HD 98800B",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag641",
+ "arxiv_id": "2603.28867",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "What is the millimetre/centimetre dust spectral index, level of grain growth, non-thermal emission contribution, and origin of the azimuthal asymmetry in the polar circumbinary disc of HD 98800B?",
+ "alma_project_codes": [
+  "2016.1.01042.S",
+  "2017.1.00350.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 6 (1.3 mm) and ALMA B3 (2.9 / 3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA Ka band (8.8 mm) and C band (5 cm) observations and compiled optical-to-cm SED data",
+    "evidence": [
+     {
+      "loc": "Ancillary observations and spectral energy distributions",
+      "quote": "for this work we also make use of the previous VLA observations at Ka band (8.8 mm) and C band (5 cm) analyzed in (cite: Ribas2018)"
+     },
+     {
+      "loc": "Ancillary observations and spectral energy distributions",
+      "quote": "Here we make use of the SED data compiled in (cite: Ribas2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Ribas2018)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 6 (1.3 mm) high-resolution continuum observations, flux, and disc geometry (radial extent 2.5 to 4.6 au, inclination 26 deg, PA 16 deg)",
+    "evidence": [
+     {
+      "loc": "Ancillary observations and spectral energy distributions",
+      "quote": "as well as the ALMA Band 6 (1.3 mm) observations presented in (cite: Kennedy2019)."
+     },
+     {
+      "loc": "Emission from an optically thick inner wall",
+      "quote": "update the radial extent (2.5 to 4.6 au), inclination (26 $\\deg$), and position angle (16 $\\deg$) to match those from the ALMA high-resolution observations in (cite: Kennedy2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Kennedy2019)"
+  },
+  {
+   "what": {
+    "value": "SMA 880 um flux density",
+    "evidence": [
+     {
+      "loc": "Ancillary observations and spectral energy distributions",
+      "quote": "We note that we update the uncertainty of the SMA flux at 880 $\\mu$m in (cite: Andrews2010a) to include a 10% absolute uncertainty."
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2010a)"
+  },
+  {
+   "what": {
+    "value": "Binary orbital period (314.8 days), eccentricity, semi-major axis, and periastron passage time T0",
+    "evidence": [
+     {
+      "loc": "Illumination changes during the binary orbit",
+      "quote": "We calculated the orbital phase $\\phi$ at the time of the VLA 6.8 mm, ALMA 1.3 mm, and VLA 8.8 mm observations using a period of 314.8 days (cite: Zuniga2021), and using the $T_0$ (passage of periastron) values in (cite: Zuniga2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Zuniga2021)"
+  },
+  {
+   "what": {
+    "value": "Alternative periastron passage time T0 for binary orbital phase calculation",
+    "evidence": [
+     {
+      "loc": "Illumination changes during the binary orbit",
+      "quote": "and (cite: Merle2024) ($\\phi_{\\rm 1.3~mm}=0.76$, $\\phi_{\\rm 6.8~mm}=0.9$, and $\\phi_{\\rm 8.8~mm}=0.24$)."
+     }
+    ]
+   },
+   "citation": "(cite: Merle2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image new VLA 6.8 mm and 3 cm observations and measure fluxes, plus extract archival ALMA 3 mm flux",
+   "method": "Calibrate VLA Q and X band data with CASA and the VLA pipeline, perform one round of phase-only self-calibration, image with tclean (natural weighting at 6.8 mm, briggs robust=0.5 at 3 cm, hobgom deconvolver), measure 3 cm fluxes with imfit, and fit a Gaussian to unresolved archival ALMA 3 mm emission.",
+   "software": [
+    "CASA",
+    "VLA pipeline",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Q band: natural weighting, hobgom deconvolver; X band: briggs weighting with robust = 0.5, hobgom deconvolver"
+   ],
+   "assumptions": [
+    "Absolute flux calibration uncertainty is 5% at ALMA 3 mm and VLA 3 cm, and 10% at VLA 6.8 mm"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate disc dust mass of HD 98800B from 6.8 mm flux",
+   "method": "Calculate optically thin dust mass from the 6.8 mm VLA flux using standard blackbody relation and bootstrap 1000 realizations to propagate parameter uncertainties",
+   "software": [],
+   "key_parameters": [
+    "1000 bootstrap realizations"
+   ],
+   "assumptions": [
+    "Optically thin emission at 6.8 mm, distance d = 45 pc, dust opacity at 6.8 mm varied log-uniformly between 0.03 and 0.3 g cm^-2, dust temperature varied uniformly between 50 and 100 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure azimuthal asymmetry significance in VLA 6.8 mm and 8.8 mm images",
+   "method": "Compare peak brightness on the east and west sides of the disc relative to the image rms noise: (I_max,East - I_max,West) / sqrt(2 * sigma_rms^2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive pairwise mm/cm spectral indices and fit multi-wavelength SED model for dust and non-thermal contamination",
+   "method": "Compute pairwise spectral indices alpha = log(F_nu1/F_nu2)/log(nu1/nu2) and fit all photometry at lambda >= 500 um with a 7-parameter model combining a sigmoid-transitioning double power-law dust component and a single power-law contamination component using MCMC",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "7 free parameters: F_0,dust, eta_-, eta_+, nu_dust, gamma, F_0,cont, alpha_cont"
+   ],
+   "assumptions": [
+    "Non-thermal contamination is represented by a single power law; alpha_cont <= eta_+ <= eta_- enforced"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test illumination and optically thick inner wall explanations for the azimuthal asymmetry",
+   "method": "Calculate binary orbital phases at the epochs of ALMA 1.3 mm and VLA 6.8 and 8.8 mm observations, and generate 3D radiative transfer simulated images at 1.3 mm, 6.8 mm, and 8.8 mm with MCFOST convolved with the observed beams",
+   "software": [
+    "MCFOST"
+   ],
+   "key_parameters": [
+    "Disc radial extent 2.5 to 4.6 au, inclination 26 deg, PA 16 deg, dust mass 5e-5 M_sun, stars placed 0.5 au above/below disc plane"
+   ],
+   "assumptions": [
+    "Far side of the disc is located on the east side in the test model; dust density distribution is azimuthally symmetric"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 98800B 2.9 mm (ALMA Band 3) flux density",
+   "value": "10.6",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Ancillary observations and spectral energy distributions",
+     "quote": "We estimated a 3 mm flux of $10.6\\pm0.5$ mJy by fitting a Gaussian to the emission, as the source appears unresolved."
+    },
+    {
+     "loc": "Table 1",
+     "quote": "2.9 (ALMA B3) | 10600$\\pm$500 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800A 2.9 mm (ALMA Band 3) flux density 3sigma upper limit",
+   "value": "< 170",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2.9 (ALMA B3) | $<$ 170$^{\\dagger}$ | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B 6.8 mm (VLA Q band) flux density",
+   "value": "1110",
+   "uncertainty": "120",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "We measured a flux of 1110$\\pm$120 $\\mu$Jy at 6.8 mm"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "6.8 (Q band) | 1110$\\pm$120 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800A 6.8 mm (VLA Q band) flux density 3sigma upper limit",
+   "value": "< 60",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "6.8 (Q band) | $<$ 60$^{\\dagger}$ | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800A 30 mm (VLA X band) flux density",
+   "value": "251",
+   "uncertainty": "15",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "We obtained 3 cm fluxes of 251$\\pm$15 $\\mu$Jy and 73$\\pm$10 $\\mu$Jy for HD 98800A and B, respectively"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "30 (X band) | 251$\\pm$15 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B 30 mm (VLA X band) flux density",
+   "value": "73",
+   "uncertainty": "10",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "We obtained 3 cm fluxes of 251$\\pm$15 $\\mu$Jy and 73$\\pm$10 $\\mu$Jy for HD 98800A and B, respectively"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "30 (X band) | 73$\\pm$10 | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B disc dust mass",
+   "value": "2.7e-5",
+   "uncertainty": "+3.4e-5/-1.4e-5",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "This yielded a dust mass of $2.7^{+3.4}_{-1.4} \\times 10^{-5} M_\\odot$, which is comparable to other protoplanetary discs (cite: Manara2023)."
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B spectral index alpha (1.3 - 6.8 mm)",
+   "value": "2.26",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "1.3 - 6.8 | $2.26\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B spectral index alpha (6.8 - 8.8 mm)",
+   "value": "1.2",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "6.8 - 8.8 | $1.2\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B spectral index alpha (8.8 - 30 mm)",
+   "value": "1.97",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8.8 - 30 | $1.97\\pm0.14$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800B spectral index alpha (30 - 50 mm)",
+   "value": "-0.4",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "30 - 50 | $-0.4\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800A spectral index alpha (8.8 - 30 mm)",
+   "value": "-0.93",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8.8 - 30 | $-0.93\\pm0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 98800A spectral index alpha (30 - 50 mm)",
+   "value": "0.9",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "30 - 50 | $0.9\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Contamination component spectral index alpha_cont for HD 98800B",
+   "value": "-0.9",
+   "uncertainty": "+0.4/-0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral indices at millimetre/centimetre wavelengths",
+     "quote": "As expected, the spectral index of the contamination component is significantly more negative ($\\alpha_{\\rm cont}=-0.9^{+0.4}_{-0.5}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "East-west azimuthal asymmetry significance at 6.8 mm",
+   "value": "1.0",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "The resulting significances are 1.0 and 2.8 $\\sigma$ at 6.8 mm and 8.8 mm, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "East-west azimuthal asymmetry significance at 8.8 mm",
+   "value": "2.8",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "VLA images, fluxes, and dust mass",
+     "quote": "The resulting significances are 1.0 and 2.8 $\\sigma$ at 6.8 mm and 8.8 mm, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration and imaging parameters for the archival ALMA Band 3 (2016.1.01042.S) data (whether archive products were used as-is or re-imaged, weighting, beam size, rms)",
+  "Reference frequency nu_0 used in Equations 2 and 4 for the MCMC spectral index modeling",
+  "Number of walkers, steps, and burn-in length for the emcee MCMC fit",
+  "Exact table of all photometric fluxes at wavelengths >= 500 um included in the MCMC SED fit (mentioned as being in Appendix, which is not included in the main paper text)"
+ ],
+ "missing_for_reproduction": [
+  "Appendices (Appendix A and B) containing the updated SED table and MCMC posterior parameter values/corner plot are referenced in the text but omitted from the provided document text",
+  "Reference frequency nu_0 used in Equations 2 and 4",
+  "Exact imaging/reduction details for the archival ALMA Band 3 dataset 2016.1.01042.S",
+  "Complete MCFOST parameter file (dust grain size distribution, composition, scale height, flaring index, stellar parameters) inherited from Ribas et al. 2018"
+ ],
+ "reproducibility_score": 70,
+ "score_reason": "Raw data are public and the VLA calibration, imaging, and SED MCMC model equations and priors are clearly described, but the appendices with the full SED table and posterior values, the reference frequency nu_0, and the archival ALMA Band 3 reduction details are missing from the main text.",
+ "rediscovery_reason": "All VLA and ALMA datasets are public in the archives, and the core results (3 mm, 6.8 mm, and 3 cm flux densities, pairwise spectral indices, dust mass, and MCMC spectral index fit) are quantitative and straightforward to re-derive.",
+ "source_card": "cards/2026MNRAS.548ag641R/sonnet/card.md"
+}

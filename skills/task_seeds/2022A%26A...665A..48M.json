@@ -1,0 +1,420 @@
+{
+ "bibcode": "2022A&A...665A..48M",
+ "title": "The strongest cool core in REXCESS: Missing X-ray cavities in RXC J2014.8-2430",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243718",
+ "arxiv_id": "2207.13359",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars"
+ ],
+ "question": "Why are bilateral X-ray cavities and radio bubbles missing in RXC J2014.8-2430 despite it being an extreme cool-core cluster hosting a powerful radio source, and how does sloshing affect the cool gas reservoir?",
+ "alma_project_codes": [
+  "2018.1.00940.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-metre 'main' array",
+  "angular_resolution": "not stated",
+  "sensitivity": "continuum: ~12 uJy RMS; line: ~6 mJy per 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical spectroscopic redshift of BCG z = 0.1555 +/- 0.0003 and UV-based SFR of 8-14 M_sun/yr",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We use a more recent optical spectroscopic redshift, $z = 0.1555 \\pm 0.0003$, obtained by (cite: 2010ApJ...715..881D), who fit for the H$\\alpha$ emission from the BCG."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "its minimum star formation rate, based on UV *XMM-Newton* optical monitor data uncorrected for dust extinction, is 8-14 M$_\\odot$ yr$^{-1}$ (cite: 2010ApJ...715..881D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2010ApJ...715..881D)"
+  },
+  {
+   "what": {
+    "value": "Cluster mass M_500 = (6.0 +1.6/-1.3) x 10^14 M_sun from ACT SZ measurements",
+    "evidence": [
+     {
+      "loc": "Chandra X-ray analysis",
+      "quote": "we use the mass $M_{500}=(6.0\\substack{+1.6\\\\-1.3}) \\times 10^{14}~\\rm M_\\odot$ reported by (cite: Hilton2021) for this cluster using Sunyaev-Zeldovich (SZ; (cite: 1972CoASP...4..173S)) measurements from the Atacama Cosmology Telescope (ACT)."
+     }
+    ]
+   },
+   "citation": "(cite: Hilton2021)"
+  },
+  {
+   "what": {
+    "value": "Galactic foreground column density N_H = 7.4 x 10^20 cm^-2",
+    "evidence": [
+     {
+      "loc": "Chandra X-ray analysis",
+      "quote": "For all spectral fits, the Galactic foreground extinction is fixed at N$_H$ = 7.4$\\times 10^{20}$ cm$^{-2}$, the value reported in (cite: 1990ARAA..28..215D) for this region of the sky."
+     }
+    ]
+   },
+   "citation": "(cite: 1990ARAA..28..215D)"
+  },
+  {
+   "what": {
+    "value": "Archival radio flux densities from GLEAM, TGSS ADR1, WISH, Texas, RACS, NVSS, and VLASS",
+    "evidence": [
+     {
+      "loc": "Low-frequency radio observations",
+      "quote": "We summarise in Table [1](#tbl:flux) the total flux measurements of the archival catalogues, including data from the GaLactic and Extragalactic All-sky Murchison Widefield Array (MWA) Survey (cite: 2017MNRAS.464.1146H)"
+     }
+    ]
+   },
+   "citation": "(cite: 2017MNRAS.464.1146H; TGSS; WISH; 1996AJ....111.1945D; 2021PASA...38...58H; 1998AJ....115.1693C; 2020PASP..132c5001L; 2021ApJS..255...30G; Gordon2020)"
+  },
+  {
+   "what": {
+    "value": "2MASS stars for WCS alignment and SDSS template galaxy spectrum SDSS J120028.87-000724.8",
+    "evidence": [
+     {
+      "loc": "SOAR H\\alpha imaging and spectral observations",
+      "quote": "The images were aligned to the world coordinate system (WCS) using stars from the Two Micron All Sky Survey (2MASS)."
+     },
+     {
+      "loc": "SOAR analysis",
+      "quote": "We estimated the redshift of the stellar emission by Fourier cross-correlating the continuum emission in RXC J2014.8-2430 to the spectrum of an elliptical galaxy SDSS J120028.87-000724.8 ($z = 0.0813\\pm0.0002$)."
+     }
+    ]
+   },
+   "citation": "2MASS, SDSS"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA CO(1-0) spectral cube and continuum, and generate moment maps",
+   "method": "Reimage calibrated ALMA visibilities using tclean to produce spectral datacubes at 30 km/s and 80 km/s resolution, and compute moment 0, 1, and 2 maps at reference frequency 99.759 GHz.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting; spectral resolution 30 km/s (and 80 km/s for channel maps); reference frequency 99.759 GHz"
+   ],
+   "assumptions": [
+    "z = 0.1555; no correction for beam smearing in moment maps"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract regional CO(1-0) spectra, fit velocity profiles, and derive molecular gas masses",
+   "method": "Extract CO(1-0) spectra from four regions of interest (total detection, central BCG region, south-western spur, western spur), fit Gaussian profiles to the spectra, and convert CO luminosities to molecular gas masses.",
+   "software": [],
+   "key_parameters": [
+    "Four regions of interest: total, central BCG, south-western spur, western spur"
+   ],
+   "assumptions": [
+    "CO-to-H2 conversion factor alpha_CO = M_mol / L_CO = 3.6 M_sun/L_sun"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze Chandra X-ray surface brightness, thermodynamic profiles, AGN upper limits, and cavity toy model",
+   "method": "Fit 2D elliptical profiles and 2D beta-model to 0.5-7.0 keV flux map, perform unsharp masking, extract spectra in contour and radial bins to fit MEKAL/MKCFLOW models in XSPEC and JACO, compute AGN point source upper limits with celldetect/aprates, and simulate 3D beta-model with empty spheres along the line of sight.",
+   "software": [
+    "CIAO",
+    "IRAF",
+    "Sherpa",
+    "contbin",
+    "XSPEC",
+    "JACO"
+   ],
+   "key_parameters": [
+    "N_H = 7.4 x 10^20 cm^-2; min 2500 net counts per radial annulus; Gaussian smoothing 1 pixel (0.984'') and 10 pixels (9.84'') for unsharp mask"
+   ],
+   "assumptions": [
+    "Projected temperature approximately equal to deprojected temperature; cooling time threshold 7.7 x 10^9 yr; fully ionised plasma n = 2.3 n_H"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure H-alpha luminosity, optical emission-line kinematics, and BPT line ratios from SOAR data",
+   "method": "Measure continuum-subtracted H-alpha+[NII] luminosity inside an 8'' aperture, extract 1D spectra in 3-pixel (0.45'') bins along the Goodman slit, fit Gaussian profiles and deblend H-alpha+[NII] using IRAF splot, and cross-correlate stellar continuum with an SDSS template using fxcor.",
+   "software": [
+    "IRAF"
+   ],
+   "key_parameters": [
+    "8'' radius aperture for H-alpha photometry; 17 regions of 3 pixels (0.45'') each for spectroscopy; instrumental velocity width 294 km/s"
+   ],
+   "assumptions": [
+    "E(B-V) = 0.1491, A_V/E(B-V) = 3.1; [NII] 6584 / [NII] 6548 ratio fixed to 3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure low-frequency radio continuum fluxes, spectral index, and residual structures",
+   "method": "Measure integrated flux densities from VLA 1.4 GHz, GMRT 610 MHz, and VLITE 338 MHz observations, combine with archival survey fluxes to determine the spectral index, and subtract a 2D Gaussian model from the GMRT image to inspect residuals.",
+   "software": [
+    "CASA",
+    "EVLA Pipeline",
+    "SPAM"
+   ],
+   "key_parameters": [
+    "2D Gaussian model dimensions 6.8'' x 4.6'', PA 8.2 deg at 610 MHz; 92 GHz ALMA point excluded from spectral index fit"
+   ],
+   "assumptions": [
+    "Power law spectrum S proportional to nu^alpha"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 92 GHz continuum flux density",
+   "value": "4.05",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Low-frequency radio analysis",
+     "quote": "We note that we have excluded the 92 GHz continuum data point provided by ALMA, which at 4.05 mJy $\\pm 0.01$ mJy lies above the power law extrapolation."
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass M_mol (total CO detection)",
+   "value": "3.6e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Velocity structure in the BCG",
+     "quote": "we assume a standard CO-to-H$_2$ conversion factor $\\alpha_{CO} = M_{\\rm mol} / L_{\\rm CO} = 3.6~\\rm M_{\\odot}/L_{\\odot}$, finding molecular gas masses of $M_{\\rm mol} \\approx [3.6, 1.4, 0.63, 0.16]\\times 10^9~\\rm M_{\\odot}$ for the four regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (central BCG region)",
+   "value": "1.4e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Velocity structure in the BCG",
+     "quote": "finding molecular gas masses of $M_{\\rm mol} \\approx [3.6, 1.4, 0.63, 0.16]\\times 10^9~\\rm M_{\\odot}$ for the four regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (south-western spur)",
+   "value": "0.63e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Velocity structure in the BCG",
+     "quote": "finding molecular gas masses of $M_{\\rm mol} \\approx [3.6, 1.4, 0.63, 0.16]\\times 10^9~\\rm M_{\\odot}$ for the four regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (western spur)",
+   "value": "0.16e9",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Velocity structure in the BCG",
+     "quote": "finding molecular gas masses of $M_{\\rm mol} \\approx [3.6, 1.4, 0.63, 0.16]\\times 10^9~\\rm M_{\\odot}$ for the four regions."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray centroid shift parameter w (within 500 kpc)",
+   "value": "0.018",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Chandra X-ray analysis",
+     "quote": "Using our elliptical profile fit, our centroid shift parameter $w$ = 0.018 computed within 500 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "2D beta-model core radius r_c",
+   "value": "5.53",
+   "uncertainty": "0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Chandra X-ray analysis",
+     "quote": "The parameters for the 2D $\\beta$ model fit (with 1$\\sigma$ errors) are: $r_\\mathrm{c}$=5.53$\\ensuremath{''}$ $\\pm$ 0.08$\\ensuremath{''}$, I$_0$=83.5 $\\pm$ 1.6 counts pixel$^{-2}$, ellipticity $\\epsilon = 1-R = 0.098 \\pm 0.006$, $\\beta=0.998\\pm 0.002$."
+    }
+   ]
+  },
+  {
+   "quantity": "2D beta-model power-law index beta",
+   "value": "0.998",
+   "uncertainty": "0.002",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Chandra X-ray analysis",
+     "quote": "The parameters for the 2D $\\beta$ model fit (with 1$\\sigma$ errors) are: $r_\\mathrm{c}$=5.53$\\ensuremath{''}$ $\\pm$ 0.08$\\ensuremath{''}$, I$_0$=83.5 $\\pm$ 1.6 counts pixel$^{-2}$, ellipticity $\\epsilon = 1-R = 0.098 \\pm 0.006$, $\\beta=0.998\\pm 0.002$."
+    }
+   ]
+  },
+  {
+   "quantity": "Central entropy K_0",
+   "value": "11.6",
+   "uncertainty": "3.9",
+   "units": "keV cm^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Chandra X-ray analysis",
+     "quote": "We find a central entropy $K_0 = 11.6 \\pm 3.9 \\rm{~keV~cm^2}$, with fit parameters $K_{100} = 159.0 \\pm 57.2$, and $\\alpha = 1.284 \\pm 0.002$ for the radial dependence ($\\chi^2_{red}$ = 0.725)."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on AGN X-ray luminosity (0.5-7.0 keV)",
+   "value": "< 5.39e42",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Limits on the X-ray luminosity of the AGN",
+     "quote": "corresponding to a limit of $<$ 1.55$\\times$10$^{-14}$ erg cm$^{-2}$ s$^{-1}$ (at $\\bar{\\rm{E}}$=2 keV), corresponding to a 0.5-7.0 keV X-ray luminosity of $<$ 5.39$\\times$10$^{42}$ erg s$^{-1}$ for a power-law ($\\alpha$=1) point source at the cluster redshift."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray cooling radius r_cool",
+   "value": "105",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio bubble limits",
+     "quote": "For this cluster the cooling radius is 105 kpc (39$\\ensuremath{''}$). Inside this aperture we have a luminosity $L_\\textsc{x}(< r_{cool}) = 4.71 \\times 10^{44}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray luminosity inside cooling radius L_X(< r_cool)",
+   "value": "4.71e44",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio bubble limits",
+     "quote": "For this cluster the cooling radius is 105 kpc (39$\\ensuremath{''}$). Inside this aperture we have a luminosity $L_\\textsc{x}(< r_{cool}) = 4.71 \\times 10^{44}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total H-alpha+[NII] luminosity (within 8'' radius)",
+   "value": "189e40",
+   "uncertainty": "6e40",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SOAR H\\alpha imaging and spectral observations",
+     "quote": "We calculated a total H$\\alpha$+\\[NII\\] luminosity of $189\\pm6\\times10^{40}$ erg s$^{-1}$ for the cluster inside a circular aperture with a radius of 8$\\ensuremath{''}$ (21.5 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "VLITE 338 MHz flux density",
+   "value": "838.8",
+   "uncertainty": "167.8",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "VLITE observations",
+     "quote": "The new VLITE flux measurement of $S_{\\mbox{\\tiny338~\\rm MHz}}=838.8 \\pm 167.8$ mJy is shown in red in Figure [6](#fig:radio_spec)."
+    }
+   ]
+  },
+  {
+   "quantity": "GMRT 610 MHz integrated flux density",
+   "value": "515.6",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Low-frequency radio analysis",
+     "quote": "The peak and integrated flux for this Gaussian are $430.4 \\pm 0.3$ mJy/beam and $S_{\\mbox{\\tiny610~\\rm MHz}}=515.6 \\pm 0.5$ mJy, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 1.4 GHz integrated flux density",
+   "value": "182.6",
+   "uncertainty": "0.4 (statistical), ~1.2 (systematic)",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Low-frequency radio analysis",
+     "quote": "The central radio source has an integrated 1.4 GHz flux density of $S_{\\mbox{\\tiny 1.4~\\rm GHz}}=182.6 \\pm 0.4~\\rm mJy$, where the reported error is statistical only. Variations due to sidelobe structure and aperture choice clearly dominate the errors in this measurement, and are $\\approx$1.2 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Median low-frequency radio spectral index alpha",
+   "value": "-1.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Low-frequency radio analysis",
+     "quote": "Taken together with the archival low-frequency radio observations, we find a median spectral index $\\alpha=-1.02$ (where $S \\propto \\nu^\\alpha$ (see Figure [6](#fig:radio_spec)), indicative of ageing in the electron population."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected offset between radio/mm/optical AGN and X-ray peak",
+   "value": "3.5 (9.4 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Low-frequency radio analysis",
+     "quote": "Notably, the radio, millimetre-wave, and optical data all locate the AGN 3.5$''$ (9.4 kpc projected separation) to the east of the X-ray peak (see Figure [5](#fig:radio) & [7](#fig:radio_overlays))."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA synthesized beam size and position angle for Band 3 continuum and CO(1-0) cube",
+  "ALMA tclean parameters: cell size, image size, deconvolver, stopping threshold, masking, and continuum subtraction method (e.g. uvcontsub or line-free channels)",
+  "Intensity threshold or velocity range used to compute the CO(1-0) moment 0, 1, and 2 maps",
+  "Exact spatial aperture definitions (coordinates and sizes) for the four CO(1-0) extraction regions (total, core, south-western spur, western spur)"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial regions (polygons/boxes) used to extract the four ALMA CO(1-0) spectra in Fig. 14 and compute their molecular gas masses",
+  "ALMA tclean imaging parameters (cell size, thresholds, continuum subtraction settings) and synthesized beam dimensions",
+  "Thresholding or masking parameters used to generate the CO(1-0) moment 0, 1, and 2 maps"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The raw data are public and published images/datacubes are hosted at CDS, and software versions are well documented across wavelengths; however, ALMA tclean parameters, synthesized beam size, continuum subtraction method, and exact spectral extraction region coordinates are not explicitly given in the text.",
+ "rediscovery_reason": "Single ALMA project (2018.1.00940.S) with public archival data and CDS cubes, clear quantitative targets (92 GHz continuum flux of 4.05 mJy, total molecular gas mass of 3.6e9 M_sun, bimodal CO velocity structure), and standard CASA tclean + Gaussian spectral fitting workflow.",
+ "source_card": "cards/2022A%26A...665A..48M/sonnet/card.md"
+}

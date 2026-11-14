@@ -1,0 +1,342 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Continuum ALMA image at 230.17 GHz of the Orion BN/KL region, dominated by the extended Hot Core emission, with the cm sources I, BN and n marked by circles.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum flux density per beam",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. peak 0.8 Jy/beam in the Hot Core",
+     "approx. noise scale of -0.1 to 0.1 Jy/beam in the colour bar"
+    ],
+    "caption_quote": "Continuum ALMA image centered at 230.17 GHz (1.3 mm) of the Orion BN/KL region. The centimeter sources I, BN, and n are marked with circles.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Compact 1.3 mm continuum emission of the BN object, built from baselines longer than 100 kλ, showing BN as an unresolved source.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum flux density per beam",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. peak 0.06 Jy/beam at BN",
+     "approx. negative colour scale down to -0.01 Jy/beam"
+    ],
+    "caption_quote": "The BN object is detected as an unresolved source. The rms noise around BN in this map is σ ∼3 mJy.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Hydrogen recombination line spectra toward BN (grey) with Gaussian fits (red): H30α from ALMA in the top panel and H53α from the VLA in the bottom panel.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "LSR velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Gaussian fits to the H30α and H53α line profiles, showing the lines are detected at the BN position.",
+    "readable_values": [
+     "approx. H30α peak 0.18 Jy at 26 km/s",
+     "approx. H53α peak 0.01 Jy at 20 km/s",
+     "approx. H30α channel width 2.0 km/s",
+     "approx. H53α channel width 10.9 km/s"
+    ],
+    "caption_quote": "Hydrogen recombination line spectra (gray) and Gaussian fits (red) toward BN. The top panel shows the H30α line observed with ALMA.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Velocity-integrated (moment 0) H30α emission toward BN in colour, with H53α VLA moment-0 contours overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H30α velocity-integrated emission",
+      "units": "Jy/beam km/s"
+     },
+     {
+      "axis": "contours",
+      "quantity": "H53α velocity-integrated emission",
+      "units": "Jy/beam km/s (not labelled)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. H30α peak 1.4 Jy/beam km/s at BN",
+     "approx. colour scale from -0.2 to 1.4 Jy/beam km/s"
+    ],
+    "caption_quote": "Maps of the velocity-integrated (moment 0) emission of the recombination lines. The color scale shows the H30α line observed with ALMA (HPBW= 1.′′40 × 0.′′63, PA= 177.9◦).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 4,
+  "caption_quotes_ok": 4,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 1,
+  "reproduction_targets": 3,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Continuum ALMA image at 230.17 GHz of the Orion BN/KL region, dominated by the extended Hot Core emission, with the cm sources I, BN and n marked by circles.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum flux density per beam",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. peak 0.8 Jy/beam in the Hot Core",
+     "approx. noise scale of -0.1 to 0.1 Jy/beam in the colour bar"
+    ],
+    "caption_quote": "Continuum ALMA image centered at 230.17 GHz (1.3 mm) of the Orion BN/KL region. The centimeter sources I, BN, and n are marked with circles.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "sky_image",
+    "panels": 1,
+    "shows": "Compact 1.3 mm continuum emission of the BN object, built from baselines longer than 100 kλ, showing BN as an unresolved source.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "continuum flux density per beam",
+      "units": "Jy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 1,
+    "validation_check": "",
+    "readable_values": [
+     "approx. peak 0.06 Jy/beam at BN",
+     "approx. negative colour scale down to -0.01 Jy/beam"
+    ],
+    "caption_quote": "The BN object is detected as an unresolved source. The rms noise around BN in this map is σ ∼3 mJy.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "spectrum",
+    "panels": 2,
+    "shows": "Hydrogen recombination line spectra toward BN (grey) with Gaussian fits (red): H30α from ALMA in the top panel and H53α from the VLA in the bottom panel.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "LSR velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 2,
+    "validation_check": "Gaussian fits to the H30α and H53α line profiles, showing the lines are detected at the BN position.",
+    "readable_values": [
+     "approx. H30α peak 0.18 Jy at 26 km/s",
+     "approx. H53α peak 0.01 Jy at 20 km/s",
+     "approx. H30α channel width 2.0 km/s",
+     "approx. H53α channel width 10.9 km/s"
+    ],
+    "caption_quote": "Hydrogen recombination line spectra (gray) and Gaussian fits (red) toward BN. The top panel shows the H30α line observed with ALMA.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Velocity-integrated (moment 0) H30α emission toward BN in colour, with H53α VLA moment-0 contours overlaid.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "J2000 Right Ascension",
+      "units": "hours:minutes:seconds"
+     },
+     {
+      "axis": "y",
+      "quantity": "J2000 Declination",
+      "units": "arcsec"
+     },
+     {
+      "axis": "colour",
+      "quantity": "H30α velocity-integrated emission",
+      "units": "Jy/beam km/s"
+     },
+     {
+      "axis": "contours",
+      "quantity": "H53α velocity-integrated emission",
+      "units": "Jy/beam km/s (not labelled)"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. H30α peak 1.4 Jy/beam km/s at BN",
+     "approx. colour scale from -0.2 to 1.4 Jy/beam km/s"
+    ],
+    "caption_quote": "Maps of the velocity-integrated (moment 0) emission of the recombination lines. The color scale shows the H30α line observed with ALMA (HPBW= 1.′′40 × 0.′′63, PA= 177.9◦).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

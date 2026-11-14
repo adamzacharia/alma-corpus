@@ -1,0 +1,204 @@
+{
+ "bibcode": "2019ApJ...879L..25I",
+ "title": "Detection of Continuum Submillimeter Emission Associated with Candidate Protoplanets",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab2a12",
+ "arxiv_id": "1906.06308",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Is there sub-mm continuum emission associated with the PDS 70 planets b and c, and what dust mass would a circumplanetary disk need to explain it?",
+ "alma_project_codes": [
+  "2015.1.00888.S",
+  "2017.A.00006.S"
+ ],
+ "data": {
+  "bands": "Band 7 (855 um)",
+  "arrays": "not stated",
+  "angular_resolution": "0.093\" x 0.074\" (natural); 0.067\" x 0.050\" (robust 0.3)",
+  "sensitivity": "rms 18 uJy/beam (natural), 19 uJy/beam (robust 0.3)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Planet masses, luminosities, orbital radii, accretion rates (Table 1)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Data from (cite: Wagner2018; Keppler2018; Haffert2019)"
+     }
+    ]
+   },
+   "citation": "Wagner2018; Keppler2018; Haffert2019"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosity L*=0.36 Lsun",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "We assume a stellar luminosity $L_\\star=0.36 L_\\odot$ (cite: Muller2018)"
+     }
+    ]
+   },
+   "citation": "Muller2018"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 3.5 cm2/g",
+    "evidence": [
+     {
+      "loc": "Estimating the CPD dust mass",
+      "quote": "a dust opacity of 3.5 cm$^{2}$ g$^{-1}$ (cite: Keppler2019)"
+     }
+    ]
+   },
+   "citation": "Keppler2019"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image continuum",
+   "method": "Phase self-cal of short-baseline data, then of combined data; tclean imaging at several robust values",
+   "software": [
+    "CASA",
+    "tclean",
+    "gaincal",
+    "applycal"
+   ],
+   "key_parameters": [
+    "clean threshold 8x rms; robust 0.5/0.6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Subtract symmetric ring to expose c_smm",
+   "method": "Visibility-space shift, deprojection, azimuthal average subtraction, re-imaging",
+   "software": [],
+   "key_parameters": [
+    "inclination 49.9 deg, PA 159.9 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure source astrometry and fluxes",
+   "method": "2D Gaussian fits relative to disk center from continuum core and CO Keplerian rotation center",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Star at disk center"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate CPD dust mass",
+   "method": "Grid of CPD models (Isella 2014) with temperature from viscous heating plus planet and stellar irradiation, matched to 106 uJy",
+   "software": [],
+   "key_parameters": [
+    "T_irr,* 20-80 K; mu=0.1; Sigma ∝ r^-1; Rout 0.3-3 au"
+   ],
+   "assumptions": [
+    "kappa=3.5 cm2/g; gas-to-dust 100; CPD inclination equals circumstellar disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "PDS 70 c_smm peak intensity (robust image)",
+   "value": "106",
+   "uncertainty": "19",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "PDS 70 c$_{smm}$ has a peak intensity of 106$\\pm$19 $\\mu$Jy beam$^{-1}$ (snr $\\sim5.6$)"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 b_smm peak intensity (natural image)",
+   "value": "100",
+   "uncertainty": "18",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "peak intensity of 100$\\pm$18 $\\mu$Jy beam$^{-1}$ (snr $\\sim5.5$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of b_smm from PDS 70 b",
+   "value": "0.074",
+   "uncertainty": "0.013",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "at an angular distance of 0.074$''$$\\pm$0.013$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "CPD dust mass of PDS 70 c",
+   "value": "2e-3 to 4.2e-3",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "dust mass between $2\\times10^{-3}$ M$_\\Earth$ and $4.2 \\times 10^{-3}$ M$_\\Earth$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring flux density",
+   "value": "177",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "and a flux density of 177 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "52",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "the measured aspect ratio implies a disk inclination of 52$^\\circ$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cleaning threshold, mask and scales for the robust 0.3 and 2 final images",
+  "Spectral windows and line-free channels used for the continuum",
+  "Flux calibrator and corrected flux value for the 2016 data",
+  "Fit procedure and errors for the 2D Gaussian source fits",
+  "Details of the CPD flux model grid (inner radius, inclination used numerically)"
+ ],
+ "missing_for_reproduction": [
+  "Exact final-image clean parameters",
+  "Corrected 2016 flux calibrator value"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, script released and detailed self-cal; some final imaging and model details missing.",
+ "rediscovery_reason": "Public archival data, released script, numeric results.",
+ "source_card": "cards/2019ApJ...879L..25I/sonnet/card.md"
+}

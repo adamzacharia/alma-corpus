@@ -1,0 +1,228 @@
+{
+ "bibcode": "2014ApJ...784...82M",
+ "title": "ALMA Observations of the Orion Proplyds",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/784/1/82",
+ "arxiv_id": "1403.2026",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the dust disk masses of the Orion proplyds and other ONC stars, and how do they depend on distance from theta1 Ori C (external photoevaporation)?",
+ "alma_project_codes": [
+  "2011.0.00028.S"
+ ],
+ "data": {
+  "bands": "Band 7 (345 GHz), 856 um",
+  "arrays": "Twenty-two 12-m antennas",
+  "angular_resolution": "~0.5 arcsec (robust weighting); beam 0.51x0.46",
+  "sensitivity": "1 sigma rms 0.24-1.15 mJy/beam by field"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA centimeter flux densities used for free-free extrapolation",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "using published VLA flux densities from 1.3 cm to 6 cm (cite: garay; felli; felli93; zapata)"
+     }
+    ]
+   },
+   "citation": "(cite: garay; felli; felli93; zapata)"
+  },
+  {
+   "what": {
+    "value": "SMA disk masses at intermediate distances",
+    "evidence": [
+     {
+      "loc": "Disk Masses and Distance from theta1 Ori C",
+      "quote": "including the previous SMA results from (cite: mann10) to fill in the intermediate distances not yet probed with ALMA"
+     }
+    ]
+   },
+   "citation": "(cite: mann10)"
+  },
+  {
+   "what": {
+    "value": "Positions and names of non-proplyd targets from HST ACS and CTIO surveys",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "ACS sources from (cite: robberto), ROB sources from (cite: robberto10)"
+     }
+    ]
+   },
+   "citation": "(cite: robberto; robberto10; ricci)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "CASA CLEAN with MFS, Briggs robust 0.5, Clark, boxes, primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure fluxes",
+   "method": "Fit elliptical Gaussians in the image plane for centroids and integrated flux densities; noise from emission-free regions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Subtract free-free emission",
+   "method": "Extrapolate maximum cm flux with F_ff ∝ nu^-0.1 to 856 um, subtract to get F_dust",
+   "software": [],
+   "key_parameters": [
+    "cm data only at wavelengths <= 6 cm"
+   ],
+   "assumptions": [
+    "free-free ∝ nu^-0.1, dust ∝ nu^2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive disk masses",
+   "method": "M = F d^2/(kappa B_nu(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "d=400 pc, kappa=0.034 cm2/g with gas-to-dust 100:1, T=20 K (40 K for massive stars)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Completeness",
+   "method": "Fraction of sources detectable at >=3 sigma vs disk mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Test mass vs distance correlation",
+   "method": "Censored-data correlation tests on ALMA plus SMA data",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Proplyds detected",
+   "value": "21 of 22",
+   "uncertainty": "not stated",
+   "units": "count",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "We detected submillimeter emission from 21 of the 22 targeted *HST*-identified proplyds in this survey"
+    }
+   ]
+  },
+  {
+   "quantity": "100% completeness mass limit",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "M_jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the observed fields are 100% complete for $M_{\\rm disk} \\geq\\,1.2\\,M_{\\rm jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "50% completeness mass limit",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "M_jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "50% complete for $M_{\\rm disk} \\ge \n0.4\\,M_{\\rm jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "114-426 flux density",
+   "value": "7.0",
+   "uncertainty": "1.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 3 | 114-426 | 5:35:11.32 | -5:24:26.52 | 7.0 $\\pm$1.2 | 0 | 7.0$\\pm$1.2 | 3.38 $\\pm$0.56 |"
+    }
+   ]
+  },
+  {
+   "quantity": "253-1536 dust flux density",
+   "value": "162.9",
+   "uncertainty": "0.9",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 5 | 253-1536 | 5:35:25.30 | -5:15:35.40 | 162.9 $\\pm$0.9 | 0 | 162.9$\\pm$0.9 | 78.66 $\\pm$0.42 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limits on undetected disk masses",
+   "value": "0.1-0.6",
+   "uncertainty": "3 sigma",
+   "units": "M_jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The ALMA observations place stringent (3 $\\sigma$) upper limits of 0.1–0.6 $M_{\\rm jup}$ on the disk masses for the undetected targets"
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of no correlation, mass vs projected distance",
+   "value": "<1e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Disk Masses and Distance from theta1 Ori C",
+     "quote": "the probability of no correlation between disk mass and projected distance to $\\theta^1$ Ori C is $<$10$^{-4}$ for all 3 tests"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel selection for continuum",
+  "Exact CASA version and CLEAN parameters (niter, cell size, image size in pixels, box definitions)",
+  "Exact numerical RMS threshold used for CLEAN",
+  "Specific cm flux values and spectral index fits used for free-free extrapolation",
+  "Details of Gaussian fitting procedure for flux and sizes",
+  "Details of the survival analysis implementation (ASURV?) and the SMA data table",
+  "Whether the 3-sigma upper limit was computed from local or field-center rms"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact CLEAN parameters",
+  "cm flux values used",
+  "SMA data table and survival analysis details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the recipe is mostly described, but several processing parameters and the literature fluxes are not given.",
+ "rediscovery_reason": "Public Cycle 0 data; fluxes and masses in tables with a simple mass formula.",
+ "source_card": "cards/2014ApJ...784...82M/sonnet/card.md"
+}

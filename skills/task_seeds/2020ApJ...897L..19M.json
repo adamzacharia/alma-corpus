@@ -1,0 +1,254 @@
+{
+ "bibcode": "2020ApJ...897L..19M",
+ "title": "Discovery of a [C I]-faint, CO-bright Galaxy: ALMA Observations of the Merging Galaxy NGC 6052",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/ab9d28",
+ "arxiv_id": "2006.10059",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "Why is [C I](1-0) undetected relative to CO(4-3) in the merging galaxy NGC 6052, and can [C I] trace its molecular gas mass?",
+ "alma_project_codes": [
+  "2018.1.00994.S"
+ ],
+ "data": {
+  "bands": "Band 8",
+  "arrays": "Morita Array (ACA 7 m), stand-alone",
+  "angular_resolution": "[C I] 3.1''x2.8''; CO(4-3) 3.8''x3.1''",
+  "sensitivity": "rms 61.5 mJy/beam ([C I]) and 46.8 mJy/beam (CO 4-3) at 15 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(1-0) flux, IRAM 30m (16.4 K km/s in 24'' beam)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "from the integrated intensity reported as 16.4 [K km s$^{-1}$] in the 24$''$ single-dish beam"
+     }
+    ]
+   },
+   "citation": "Albrecht et al. 2007 (cite: Albrecht_2007)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) flux from SMA",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "CO (2–1) | $162\\pm32$"
+     }
+    ]
+   },
+   "citation": "(cite: Ueda_2014)"
+  },
+  {
+   "what": {
+    "value": "SPIRE/FTS line fluxes and U/LIRG comparison sample",
+    "evidence": [
+     {
+      "loc": "4.1 Photodissociation Regions",
+      "quote": "together with the data for nearby U/LIRGs observed by SPIRE/FTS (cite: Kame_2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Kame_2016)"
+  },
+  {
+   "what": {
+    "value": "[O I]63 and [C II]158 fluxes",
+    "evidence": [
+     {
+      "loc": "Footnote 6",
+      "quote": "The flux of [O I]$_{63}$ and [C II]$_{158}$ is 82 and 138 [W m$^{-1}$] (cite: Diaz-Santos_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Diaz-Santos_2017)"
+  },
+  {
+   "what": {
+    "value": "alpha_[CI]=7.3",
+    "evidence": [
+     {
+      "loc": "4.2 Molecular gas mass",
+      "quote": "$\\alpha_{\\rm [CI]} = 7.3$ $M_{\\odot}$ (K km s$^{-1}$ pc$^2$)$^{-1}$ (cite: Crocker_2019)"
+     }
+    ]
+   },
+   "citation": "(cite: Crocker_2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes",
+   "method": "tclean with Briggs weighting at 15 km/s resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, 0.2'' cells, 200 px"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO(4-3) flux and [C I] upper limit",
+   "method": "Integrate primary-beam-corrected spectrum over FoV; 3 sigma upper limit for [C I] using box/beam scaling",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "FWHM=96 km/s assumed for [C I]; N_box=3990; N_beam=247"
+   ],
+   "assumptions": [
+    "[C I] line shape same as CO(4-3)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute luminosities",
+   "method": "L (Lsun) and L' (K km/s pc^2) equations from Solomon & Vanden Bout",
+   "software": [],
+   "key_parameters": [
+    "D_L=70.8 Mpc, z=0.01581"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "PDR modeling of density",
+   "method": "Compare L[CI]/L_CO(4-3) and L[CI]/L_TIR upper limits to PDRT tracks of constant n_H and U_uv",
+   "software": [
+    "PDRT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Milky Way metallicity; plane-parallel PDR"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Molecular gas mass comparison",
+   "method": "M_H2 = alpha*L' for CO(1-0) and [C I] upper limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO=0.8, alpha_[CI]=7.3 Msun (K km/s pc^2)^-1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(4-3) integrated flux",
+   "value": "414",
+   "uncertainty": "124",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Morita Array Observation",
+     "quote": "$S_{\\rm CO(4-3)}\\Delta v = 414\\pm124$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I](1-0) 3sigma upper limit",
+   "value": "<28",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Morita Array Observation",
+     "quote": "We obtain a $3\\sigma$ upper limit for the \\[C I\\] (1–0) velocity integrated intensity using"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CI](1-0)/L_CO(4-3)",
+   "value": "<0.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "line luminosity ratio of$~\\lesssim0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) L'",
+   "value": "3.1e8",
+   "uncertainty": "0.9e8",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$(3.1\\pm0.9)\\times10^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 from CO(1-0)",
+   "value": "8e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular gas mass",
+     "quote": "$M_{\\rm H2}^{\\rm CO} = 8 \\times 10^{8}~M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 upper limit from [C I]",
+   "value": "<1e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Molecular gas mass",
+     "quote": "$M_{\\rm H2}^{\\rm [CI]} < 10^{8}~[M_{\\odot}$]"
+    }
+   ]
+  },
+  {
+   "quantity": "U_uv from ([OI]+[CII])/TIR",
+   "value": "4-5",
+   "uncertainty": "not stated",
+   "units": "G0",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Photodissociation Regions",
+     "quote": "The ratio suggests $U_{\\rm uv}=4-5$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold and iteration count",
+  "Phase center coordinates",
+  "Continuum subtraction and line-free channels for ACA data",
+  "Number of execution blocks, calibrators and integration times",
+  "Which PDRT model parameters (metallicity grid, version) and how L ratios were mapped to tracks",
+  "How CO(4-3) FWHM of 96 km/s was measured",
+  "Derivation of the 88% missing-flux figure"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN threshold, continuum subtraction details",
+  "PDRT grid settings",
+  "Unclear how CO(4-3) spectrum and FWHM were extracted"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Small dataset and simple recipe with stated imaging parameters, but some processing and PDR modeling details are missing.",
+ "rediscovery_reason": "Single ALMA project, simple numeric outputs (CO flux, [C I] upper limit); archive data likely public after proprietary period.",
+ "source_card": "cards/2020ApJ...897L..19M/sonnet/card.md"
+}

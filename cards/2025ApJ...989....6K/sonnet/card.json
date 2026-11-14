@@ -1,0 +1,767 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...989....6K",
+  "title": "The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). VI. Comparison of Dust Evolution Models to AGE-PRO Observations",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Kurtovic, Nicolás T.",
+  "n_authors": 21,
+  "arxiv_id": "2506.10740",
+  "doi": "10.3847/1538-4357/add1d0",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00128.L"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "in this study we compare the observational results to dust evolution simulations. Using `DustPy` for the dust evolution, and `RADMC-3D` for the radiative transfer, we ran a large grid of models"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "AGE-PRO sample (30 disks in Ophiuchus, Lupus, Upper Sco)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "distances from inverse Gaia DR3 parallax",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "has allowed for the measurement of the gas mass and size in a sample of 30 disks three different star forming regions (SFRs)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 (cite: gaia2021edr3)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "has allowed for the measurement of the gas mass and size in a sample of 30 disks three different star forming regions (SFRs)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can dust evolution models (with or without dust traps, viscous gas evolution) reproduce the gas masses, 1.3 mm fluxes, sizes and spectral indices of the AGE-PRO disk sample, and do the data favor dust traps?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "aiming to investigate if any observational trend can favor or exclude the presence of dust traps."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00128.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.00128.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm) and Band 7 (1.05 mm)",
+    "evidence": [
+     {
+      "loc": "3.4 Spectral index",
+      "quote": "The dual-band setup of the AGE-PRO observations (Band 6 and Band 7 at 1.3-1.05 mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "average 0.25'' (1.3 mm setup) and 0.8'' (1.05 mm setup) as stated",
+    "evidence": [
+     {
+      "loc": "Appendix",
+      "quote": "The AGE-PRO observations have an average angular resolution of $0.25''$ and $0.8''$ in the 1.3 mm and 1.05 mm setups"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "about 25 uJy/beam",
+    "evidence": [
+     {
+      "loc": "Appendix",
+      "quote": "normalized to match a sensitivity of $25\\,\\mu\\text{Jy}/\\text{beam}$, comparable to AGE-PRO"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR3",
+     "provided": {
+      "value": "parallax distances to the stars",
+      "evidence": [
+       {
+        "loc": "3.2 Dust mass comparison",
+        "quote": "measured as the inverse of the parallax from Gaia DR3"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "AGE-PRO gas masses",
+      "evidence": [
+       {
+        "loc": "3.1 Gas mass evolution",
+        "quote": "When comparing against $M_{\\rm gas}$ derived from (cite: AGEPRO_V_gasmasses)"
+       }
+      ]
+     },
+     "citation": "(cite: AGEPRO_V_gasmasses)"
+    },
+    {
+     "what": {
+      "value": "AGE-PRO dust masses and millimeter fluxes",
+      "evidence": [
+       {
+        "loc": "3.2 Dust mass comparison",
+        "quote": "The dust content of the AGE-PRO disks was calculated directly from the measured millimeter fluxes, and they are presented in (cite: AGEPRO_I_overview)"
+       }
+      ]
+     },
+     "citation": "(cite: AGEPRO_I_overview); (cite: AGEPRO_II_Ophiuchus); (cite: AGEPRO_III_Lupus); (cite: AGEPRO_IV_UpperSco)"
+    },
+    {
+     "what": {
+      "value": "AGE-PRO dust disk sizes from visibility modeling",
+      "evidence": [
+       {
+        "loc": "2 Dust model",
+        "quote": "the AGE-PRO disk sizes were obtained using visibility modeling (cite: AGEPRO_X_dust_disks)"
+       }
+      ]
+     },
+     "citation": "(cite: AGEPRO_X_dust_disks)"
+    },
+    {
+     "what": {
+      "value": "Stellar masses and ages of the sources",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "The full discussion about the estimation of $M_\\star$ and age is given in (cite: AGEPRO_I_overview)"
+       }
+      ]
+     },
+     "citation": "(cite: AGEPRO_I_overview)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Grid of DustPy models (M*=0.25-1.0 Msun, Mdisk/M*=0.01/0.05/0.1, rc=15-120 au, Agap=0/1/4, alpha0=1e-4/1e-3, eps0=0.01/0.05), 3 groups of 144 disks saved at 9 ages, with RADMC-3D at 5 ages",
+     "evidence": [
+      {
+       "loc": "2.4 Numerical grid",
+       "quote": "Each of these three groups has 144 disks, which result from choosing the different $M_\\star$, $M_{\\text{disk}}$, $R_{\\rm c}$, and $A_{\\rm gap}$."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "AGE-PRO stellar mass and age estimates",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "we refer the reader to that work for a detailed description."
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_I_overview)"
+    },
+    {
+     "what": {
+      "value": "Dust mass opacity and temperature convention (kappa=2.3 (nu/230GHz)^0.4 cm2/g, T=20 K)",
+      "evidence": [
+       {
+        "loc": "3.2 Dust mass comparison",
+        "quote": "as in (cite: andrews2013). For the temperature, a constant $T=20\\,$K is used for consistency with the literature (cite: Ansdell2016)."
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews2013); (cite: Ansdell2016)"
+    },
+    {
+     "what": {
+      "value": "Disk radius containing 90% of flux measured as in AGE-PRO",
+      "evidence": [
+       {
+        "loc": "Appendix",
+        "quote": "We calculated the $R_{90\\%,cont}$ from the synthetic observations similarly to the AGE-PRO observations (cite: AGEPRO_XI_gas_disk_sizes)."
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_XI_gas_disk_sizes)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Numerical AGE-PRO observed values (fluxes, radii, gas masses, spectral indices per source) are not tabulated; they must be taken from companion papers",
+    "Stellar-mass to model matching of observed sources and any tolerance on how a source is deemed consistent with a model",
+    "Exact RADMC-3D inclination/distance settings and flux scaling of images to observed distance",
+    "Procedure used to determine total flux and R90 from the model images in the main comparison",
+    "Model snapshot data are not released"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Simulate gas and dust evolution",
+    "method": {
+     "value": "1D DustPy with Lynden-Bell self-similar initial profile, alpha-bump traps, stellar irradiation temperature, run to 10 Myr",
+     "evidence": [
+      {
+       "loc": "2 Dust model",
+       "quote": "we used the 1D dust evolution code `Dustpy`"
+      }
+     ]
+    },
+    "software": [
+     "DustPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "rin=5 au, rout=500 au, nr=250; mass grid 1e-12 to 3e6 g, nm=134; vfrag=10 m/s; rho_s=1.6 g/cm3",
+      "evidence": [
+       {
+        "loc": "2.4 Numerical grid",
+        "quote": "The standard radial grid of the simulations goes from $r_\\textrm{in} = \\SI{5}{au}$ to $r_\\textrm{out} = \\SI{500}{au}$ with $n_r = 250$ logarithmically spaced grid cells."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant alpha in space and time; no back-reaction, photoevaporation or MHD winds; static traps",
+      "evidence": [
+       {
+        "loc": "2.2 Initial conditions",
+        "quote": "our approach does not include mechanisms such as photoevaporation or MHD winds"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radiative transfer to 1.05 and 1.3 mm images",
+    "method": {
+     "value": "RADMC-3D on 30 resampled grain species with Ricci2010 opacities from OpTool, vertical Gaussian hydrostatic dust, two-step Monte Carlo",
+     "evidence": [
+      {
+       "loc": "2.5 Radiative Transfer",
+       "quote": "First, we ran a Monte Carlo simulation to obtain the dust temperature for every grain species, using $n_\\textrm{phot} = 10^7$ photon packages."
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "OpTool"
+    ],
+    "key_parameters": [
+     {
+      "value": "images with nphot=2e5, isotropic scattering; ages 0.5, 1, 2, 5, 10 Myr; 19440 models",
+      "evidence": [
+       {
+        "loc": "2.5 Radiative Transfer",
+        "quote": "This implies a total of 19440 radiative transfer models ($5\\times3888$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust composition 10% silicate, 20% carbon, 30% water ice, 40% vacuum",
+      "evidence": [
+       {
+        "loc": "2.5 Radiative Transfer",
+        "quote": "10% Silicate (cite: Draine2003), 20% Carbon (cite: Zubko1996), 30% water ice (cite: warren&brandt08), and 40% vacuum."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Scattering variations verified to be well below 10% of total flux",
+     "evidence": [
+      {
+       "loc": "2.5 Radiative Transfer",
+       "quote": "we verified the flux variations were well below 10% of the total flux."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compare models with AGE-PRO observables",
+    "method": {
+     "value": "Compare Mgas, Mpebble vs Mdust, 1.3 mm flux, R90 and spectral index of models to AGE-PRO by age group",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "The Ophiuchus sources are compared to our simulations at 0.5 Myr. The Lupus sources are compared to the simulations at 1 Myr and 2 Myr."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Mpebble = mass in grains 0.1 mm-10 cm; R90 = radius containing 90% of flux; alpha_mm from B6 and B7 fluxes",
+      "evidence": [
+       {
+        "loc": "3.2 Dust mass comparison",
+        "quote": "measured by adding the mass content in particles of sizes ranging from $0.1$ mm to $10$ cm"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin emission, T=20 K for observed dust masses",
+      "evidence": [
+       {
+        "loc": "3.2 Dust mass comparison",
+        "quote": "it is assumed that the emission is optically thin"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Synthetic observations with beam convolution and noise tested R90 recovery, robust for disks larger than about three beams",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "proves robust for bright disks which are larger than approximately three times the angular resolution of the image"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "DustPy",
+    "version": "0.5.6",
+    "used_for": {
+     "value": "gas and dust evolution",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "Version 0.5.6 was used for this work."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "radiative transfer to produce continuum images",
+     "evidence": [
+      {
+       "loc": "2 Dust model",
+       "quote": "we used the radiative transfer code `RADMC-3D`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "OpTool",
+    "version": "not stated",
+    "used_for": {
+     "value": "dust opacities",
+     "evidence": [
+      {
+       "loc": "2.5 Radiative Transfer",
+       "quote": "To obtain the dust opacities, we use the code `OpTool`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total DustPy snapshots",
+    "value": "3888",
+    "uncertainty": "not stated",
+    "units": "snapshots",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.4 Numerical grid",
+      "quote": "thus resulting in 3888 different snapshots of the disks evolution."
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral index range in Upper Sco",
+    "value": "1.9-3.2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.4 Spectral index",
+      "quote": "A large dispersion in the values of spectral indices is also observed in Upper Sco, ranging between 1.9-3.2"
+     }
+    ]
+   },
+   {
+    "quantity": "Observed Mgas spread in Ophiuchus",
+    "value": "~3 orders of magnitude",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 Gas mass evolution",
+      "quote": "the measured $M_{\\rm gas}$ from observations spans $\\sim3$ orders of magnitude in Ophiuchus"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Models with weak or strong traps match observed dust masses, fluxes and sizes better than no-trap models",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "allows us to exclude disks with no pressure traps as the dominant population in the observations of AGE-PRO"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Viscous evolution with constant alpha explains observed gas masses",
+    "experiment": "Compare no-trap model Mgas to AGE-PRO Mgas",
+    "result": "Observed range is wider; lowest Ophiuchus masses are 2 orders below models; about half of Lupus and Upper Sco agree",
+    "finding": "Additional mechanisms (winds, photoevaporation, external effects) are needed",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "3.1 Gas mass evolution",
+      "quote": "only about half of the targets in Lupus and Upper Sco are in agreement to the measured $M_{\\rm gas}$ of the models"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dust traps are needed to explain dust fluxes and sizes",
+    "experiment": "Compare 1.3 mm flux and R90 of model grids to AGE-PRO",
+    "result": "Most disks consistent with weak or strong traps",
+    "finding": "Traps favored at ages above 1 Myr",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "most of the disks in the AGE-PRO sample are consistent with simulations that have either weak or strong dust traps."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Spectral indices indicate unresolved traps",
+    "experiment": "Compare alpha_mm from models and observations",
+    "result": "Large spread 2-4 only reproduced with traps",
+    "finding": "Supports weak or strong traps",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "it is only in the presence of dust traps that the spectral index distribution can have a distribution ranging between 2-4 for later ages"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Models were not tailored to individual disks; constant alpha; static traps; simple scattering",
+     "evidence": [
+      {
+       "loc": "2.3 Parameter Space",
+       "quote": "Simulations that are tailored to the properties of each disks will be part of a future publication."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Comparison is qualitative, with no statistical fit",
+    "Result depends strongly on the Ricci2010 opacity choice",
+    "Observations only partly used as data in this paper"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "DustPy publicly available; ALMA data used via companion papers",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "`DustPy` is available on [github.com/stammler/DustPy](https://github.com/stammler/DustPy)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Observed AGE-PRO measurements table",
+    "Model output files and scripts",
+    "RADMC-3D viewing setup"
+   ],
+   "estimated_data_volume_inferred": "Simulations only; observed values from companion papers (negligible)",
+   "score_inferred": 3,
+   "score_reason": "Model parameters and codes are well specified, but no observational data reduction is involved and the observed values and comparison are from companion papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Results are mostly qualitative model-data comparisons; ALMA data reduction not performed here."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Stammler2022_Dustpy)",
+     "why": "DustPy code"
+    },
+    {
+     "citation": "(cite: AGEPRO_X_dust_disks)",
+     "why": "visibility modeling of dust disks"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: AGEPRO_I_overview)",
+     "why": "AGE-PRO overview"
+    },
+    {
+     "citation": "(cite: AGEPRO_V_gasmasses)",
+     "why": "gas masses"
+    },
+    {
+     "citation": "(cite: AGEPRO_VII_population)",
+     "why": "population/MHD winds analysis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "AGE-PRO"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b68118a7ce1553a9dd4b4cccddc5b542",
+  "batch_id": "msgbatch_011QjbLPHqMEK6drDa6QExga",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:40:50",
+  "usage": {
+   "input_tokens": 31575,
+   "output_tokens": 6023,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.062296,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 40,
+  "quotes_ok": 40,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 32,
+   "rate": 0.444
+  },
+  "evidence_ok": true
+ }
+}

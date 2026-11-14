@@ -1,0 +1,456 @@
+{
+ "bibcode": "2025ApJ...995..150K",
+ "title": "Comprehensive JWST+ALMA Study on the Extended Lyα Emitters, Himiko, and CR7 at z ∼ 7: Blue Major Merger Systems in Stark Contrast to Submillimeter Galaxies",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ae1cc3",
+ "arxiv_id": "2504.03156",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the physical origins of the extended Lya emission and UV-bright nature of Himiko and CR7 at z=6.6, probed with JWST NIRCam/NIRSpec IFU plus archival ALMA Band 6 ([CII] and dust continuum)?",
+ "alma_project_codes": [
+  "2012.1.00033.S",
+  "2011.0.00115.S",
+  "2015.1.00122.S"
+ ],
+ "data": {
+  "bands": "Band 6 (Himiko Cycles 0 and 1; CR7 Cycle 3)",
+  "arrays": "12-m array, 44 antennas (Cycle 1 Himiko)",
+  "angular_resolution": "continuum beams 0.38\" x 0.30\" (Himiko) and 0.46\" x 0.41\" (CR7); uv-tapered [CII] cube 0.94\" x 0.81\" (Himiko), 0.90\" x 0.87\" (CR7)",
+  "sensitivity": "continuum sigma = 10.5 uJy/beam (Himiko), 6.4 uJy/beam (CR7)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CR7 NIRSpec IFU line fluxes and physical properties listed for comparison",
+    "evidence": [
+     {
+      "loc": "4.1 Morphology and Dynamics",
+      "quote": "We also list the values of CR7 from the literature (cite: marconcini24b)."
+     }
+    ]
+   },
+   "citation": "(cite: marconcini24b)"
+  },
+  {
+   "what": {
+    "value": "Lya spectra of Himiko and CR7 used in the [CII]/[OIII]/Lya spectrum comparison",
+    "evidence": [
+     {
+      "loc": "4.1 Morphology and Dynamics",
+      "quote": "and Ly$\\alpha$ (blue; (cite: ouchi09; sobral15)) spectra of Himiko (left) and CR7 (right)"
+     }
+    ]
+   },
+   "citation": "(cite: ouchi09; sobral15)"
+  },
+  {
+   "what": {
+    "value": "Virial mass from stellar-to-halo mass relation",
+    "evidence": [
+     {
+      "loc": "5.1 Origins of the multiple clumps",
+      "quote": "The virial mass $M_{200}$ is derived from the stellar-to-halo mass relation (SHMR) in (cite: behroozi19)."
+     }
+    ]
+   },
+   "citation": "(cite: behroozi19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate archival ALMA Band 6 data",
+   "method": "Retrieve data from the ALMA Science Archive and calibrate with the archive calibration or pipeline scripts in CASA",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "CASA 3.4 (Cycle 0), 4.3.1 (Cycle 1), 4.7.0 (Cycle 3)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Combine Himiko Cycle 0 and Cycle 1 visibilities",
+   "method": "concatenate with CASA concat",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Total on-source time 6.4 h"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image continuum and [CII] cubes",
+   "method": "tclean in CASA 6.6.4 with natural weighting; continuum from spectral windows without [CII]; uv-tapered [CII] cube for flux and morphology",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting, 0.1\" pixel, 50 km/s channel",
+    "uv-taper Gaussian width 0.7\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure [CII] flux and luminosity",
+   "method": "Moment 0 maps, sum regions >3 sigma to get total spectrum, sum spectral bins for flux, convert to L[CII]",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Noise from 1000 random circular apertures with same size as flux apertures"
+   ],
+   "assumptions": [
+    "D_L = 65862.5 Mpc at z=6.60 for luminosity conversion"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive dust continuum upper limits and IR luminosity",
+   "method": "3 sigma upper limit from noise of continuum maps; L_IR from limit assuming modified blackbody",
+   "software": [],
+   "key_parameters": [
+    "L_IR over 8-1000 um; T_dust 30-50 K and beta_IR 1.5-2.0 tested"
+   ],
+   "assumptions": [
+    "T_dust = 40 K, beta_IR = 1.5"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive dust mass upper limits",
+   "method": "Optically thin dust mass with CMB correction using the 3 sigma flux limit",
+   "software": [],
+   "key_parameters": [
+    "rest wavelength 158 um"
+   ],
+   "assumptions": [
+    "Dust mass absorption coefficient from Dunne et al. 2000, kappa = 0.77 (850 um/lambda_rest)^beta cm2/g",
+    "beta_IR = 1.5, T_dust = 40 K (also 35 and 45 K tabulated)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Estimate molecular/total gas mass and metal mass from L[CII]",
+   "method": "H2 mass from the Zanella et al. [CII] relation, total gas mass with metallicity-dependent factor xi, metal mass from gas and dust mass",
+   "software": [],
+   "key_parameters": [
+    "xi from 1.33 (zero metallicity) to 1.39 (solar)"
+   ],
+   "assumptions": [
+    "Atomic HI gas mass ignored",
+    "Solar 12+log(O/H)=8.69 and metal mass fraction 0.0134; primordial He fraction 0.2485"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Fit SED of clumps with NIRCam photometry",
+   "method": "Prospector SED fitting with FSPS, nonparametric SFH, Calzetti attenuation, Madau IGM, NIRCam photometry (PSF matched, 0.4\" apertures); ALMA excluded",
+   "software": [
+    "Prospector",
+    "FSPS",
+    "emcee",
+    "SEP",
+    "Photutils"
+   ],
+   "key_parameters": [
+    "log M* in 6-11 (top-hat prior), tau_V in 0-2 (log-uniform), Z=0.2 Zsun",
+    "Circular 0.4\" diameter apertures (0.5\" for CR7-A), no aperture correction"
+   ],
+   "assumptions": [
+    "Chabrier IMF, Calzetti attenuation, Madau IGM, no AGN component"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Measure emission-line fluxes and direct-method metallicity",
+   "method": "Least-squares Gaussian fits to NIRSpec spectra, T_e([OIII]) from 4363/5007 with PyNeb, O abundance from PyNeb",
+   "software": [
+    "SciPy",
+    "PyNeb"
+   ],
+   "key_parameters": [
+    "Up to three Gaussians for G395H; number chosen by Delta AIC > 20"
+   ],
+   "assumptions": [
+    "n_e = 100 cm^-3 (PRISM cannot resolve [OII] doublet)"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Estimate black hole mass of Himiko-B from broad Halpha",
+   "method": "Single-epoch H-alpha relation of Reines et al. 2013 equation 5 with epsilon scaling factor",
+   "software": [],
+   "key_parameters": [
+    "epsilon = 1.075 (range 0.75-1.4 for uncertainty)"
+   ],
+   "assumptions": [
+    "No dust-extinction correction for the broad line"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum rms, Himiko",
+   "value": "10.5",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 ALMA",
+     "quote": "The resulting continuum map sensitivities for Himiko and CR7 are $\\sigma_\\mathrm{cont} = 10.5~\\mu\\mathrm{Jy~beam^{-1}}$ and $6.4~\\mu\\mathrm{Jy~beam^{-1}}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum rms, CR7",
+   "value": "6.4",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3 ALMA",
+     "quote": "The resulting continuum map sensitivities for Himiko and CR7 are $\\sigma_\\mathrm{cont} = 10.5~\\mu\\mathrm{Jy~beam^{-1}}$ and $6.4~\\mu\\mathrm{Jy~beam^{-1}}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit S_158um, Himiko",
+   "value": "<31",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 [CII] and IR luminosity",
+     "quote": "with the 3$\\sigma$ upper limits of $S_\\mathrm{158\\,\\mu m}<31~\\mathrm{\\mu Jy}$ and $S_\\mathrm{158\\,\\mu m}<19~\\mathrm{\\mu Jy}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit S_158um, CR7",
+   "value": "<19",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 [CII] and IR luminosity",
+     "quote": "with the 3$\\sigma$ upper limits of $S_\\mathrm{158\\,\\mu m}<31~\\mathrm{\\mu Jy}$ and $S_\\mathrm{158\\,\\mu m}<19~\\mathrm{\\mu Jy}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR upper limit, Himiko (CR7)",
+   "value": "<4e10 (<3e10)",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 [CII] and IR luminosity",
+     "quote": "These upper limits correspond to the IR luminosity of $<4\\times10^{10}~L_\\odot$ and $<3\\times10^{10}~L_\\odot$ for Himiko and CR7, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit, Himiko (CR7), T_dust=40 K, beta=1.5",
+   "value": "<9e6 (<5e6)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.6 Comparisons with other merger systems",
+     "quote": "obtain a dust mass upper limit of $9\\times10^6~M_\\odot$ ($5\\times10^6~M_\\odot$), assuming $\\beta_\\mathrm{IR}=1.5$ and $T_\\mathrm{dust}=40~\\mathrm{K}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line flux, Himiko (CR7)",
+   "value": "70.9 (196.9)",
+   "uncertainty": "15.9 (32.5)",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "70.9$\\pm$15.9 | 108$\\pm$13 | 196.9$\\pm$32.5"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII], Himiko (CR7)",
+   "value": "0.80e8 (2.22e8)",
+   "uncertainty": "0.17e8 (0.37e8)",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0.80$\\pm$0.17 | 1.2$\\pm$0.2 | 2.22$\\pm$0.37"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass from [CII], Himiko (CR7)",
+   "value": "3.1e9 (8.9e9)",
+   "uncertainty": "not stated (~0.3 dex molecular gas uncertainty noted)",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$M_\\mathrm{gas}$ ($10^9~M_\\odot$) | 3.1 | ... | 8.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Metal mass upper limit, Himiko (CR7)",
+   "value": "<16e6 (<33e6)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$M_\\mathrm{metal}$ ($10^6~M_\\odot$) | $<16$ | ... | $<33$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass range of Himiko clumps",
+   "value": "log(M*/Msun) = 8.4-8.9, mean 8.6",
+   "uncertainty": "not stated",
+   "units": "dex(Msun)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Spectral energy distribution",
+     "quote": "The stellar masses of individual Himiko clumps range $\\log{(M_*/M_\\odot)}=8.4$–$8.9$, with a mean stellar mass of $\\log{(M_*/M_\\odot)}=8.6$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR of CR7-A (10 Myr average)",
+   "value": "23.4",
+   "uncertainty": "+2.4/-3.0",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Spectral energy distribution",
+     "quote": "has the highest star formation rate (SFR) measured at $23.4^{+2.4}_{-3.0}~M_\\odot~\\mathrm{yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity 12+log(O/H), Himiko-A,-B,-C, CR7-A,-B",
+   "value": "7.92, 7.90, 8.02, 7.90, 8.11",
+   "uncertainty": "0.19, 0.20, 0.14, 0.06, 0.20",
+   "units": "dex",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.3 Emission line diagnostics",
+     "quote": "The metallicities are estimated as $12+\\log{(\\mathrm{O/H})}=7.92\\pm0.19, 7.90\\pm0.20, 8.02\\pm0.14, 7.90\\pm0.06$, and $8.11\\pm0.20$ for Himiko-A, -B, -C, CR7-A, and -B, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad H-alpha FWHM, Himiko-B",
+   "value": "1030",
+   "uncertainty": "110",
+   "units": "km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.1 Morphology and Dynamics",
+     "quote": "also has a broad component with FWHM$=1030\\pm110~\\mathrm{km~s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass of Himiko-B",
+   "value": "log(M_BH/Msun) = 6.6",
+   "uncertainty": "+0.1/-0.2",
+   "units": "dex(Msun)",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.4 Signature of AGN",
+     "quote": "We measure a black hole mass of $\\log{(M_\\mathrm{BH}/M_\\odot)}=6.6^{+0.1}_{-0.2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity of Himiko-B",
+   "value": "5.7e44",
+   "uncertainty": "+19.0/-3.8 e44",
+   "units": "erg/s",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.4 Signature of AGN",
+     "quote": "We obtain the bolometric luminosity of Himiko-B as $L_\\mathrm{bol}=5.7^{+19.0}_{-3.8}\\times10^{44}$ erg s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Clump velocity offsets in [OIII]",
+   "value": "<~220",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Morphology and Dynamics",
+     "quote": "show complex kinematics with a velocity offset of $\\Delta v \\lesssim 220~\\mathrm{km~s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of [CII] and Lya peaks from UV/Halpha peaks in Himiko",
+   "value": "~0.3",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1 Morphology and Dynamics",
+     "quote": "we find that the peaks of \\[C ii\\] and Ly$\\alpha$ from Himiko have an offset ($\\sim0.3\\ensuremath{''}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters beyond weighting, cell and channel width: niter, threshold, deconvolver, cleaning masks, imsize, restoring beam handling",
+  "Which spectral windows were excluded as containing [CII] for the continuum maps, and the exact continuum frequency range and effective bandwidth",
+  "Velocity range and rest frequency used for the [CII] cube and moment 0 maps, and the exact frequency/redshift used for the line centre",
+  "Primary-beam correction handling for flux measurements and upper limits",
+  "Exact region definition for the >3 sigma spectral extraction and the aperture size used for the 1000 random-aperture noise estimate",
+  "Phase centres and CASA pipeline or script versions actually applied to each archival dataset; details of the Help Desk recalibration of Cycle 1",
+  "How the three Cycle 0/1 execution blocks were weighted when concatenated and whether any self-calibration or flux rescaling was done",
+  "Source of the redshift used to center [CII] spectra for each target and the exact frequency used in the L[CII] conversion",
+  "Exact beam position angles and rms of the tapered [CII] cube (only partly given)"
+ ],
+ "missing_for_reproduction": [
+  "tclean cleaning parameters (threshold, niter, masks, image size, deconvolver)",
+  "exact continuum spectral-window selection and frequency range",
+  "exact aperture/region definitions and velocity range for [CII] flux",
+  "primary-beam correction details",
+  "Help Desk recalibration details for Cycle 1 data"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data are public and the main imaging choices (natural weighting, 0.1 arcsec, 50 km/s, 0.7 arcsec taper) and flux/dust-mass recipes are given with numeric results, but tclean parameters, apertures, continuum windows and recalibration details are missing.",
+ "rediscovery_reason": "Public archival ALMA data, concise recipe for continuum limit, [CII] flux, L[CII] and dust/gas mass, and numeric results in Table 5 make the ALMA part redoable.",
+ "source_card": "cards/2025ApJ...995..150K/sonnet/card.md"
+}

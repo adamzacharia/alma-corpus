@@ -1,0 +1,202 @@
+{
+ "bibcode": "2020AJ....159..229W",
+ "title": "ALMA 0.88 mm Survey of Disks around Planetary-mass Companions",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/ab818c",
+ "arxiv_id": "2003.08658",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Do disks around planetary-mass companions follow the disk flux-host mass trend of stellar disks, or are they fainter (e.g., like binary-star disks)?",
+ "alma_project_codes": [
+  "2016.1.01018.S",
+  "2013.1.00487.S",
+  "2015.1.00773.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.88 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.6''–1.2''",
+  "sensitivity": "rms 39–71 uJy/beam; 3sigma limits 120–210 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Literature disk fluxes of stars/brown dwarfs in Taurus, Cha I, Lupus, Upper Sco for flux-mass relation",
+    "evidence": [
+     {
+      "loc": "5.1. Disk Flux-Host Mass Relationship",
+      "quote": "Disk fluxes of stars and brown dwarfs are compiled from millimeter studies of star-forming regions, including Taurus"
+     }
+    ]
+   },
+   "citation": "(cite: A13; Ricci14; WD18; Pascucci16; Long18; Ansdell16; Sanchis20; Barenfeld16; V16)"
+  },
+  {
+   "what": {
+    "value": "Upper limits for GSC 6214-210 b, GQ Lup b, 2M1207 b and PDS 70 b,c fluxes",
+    "evidence": [
+     {
+      "loc": "5.1. Disk Flux-Host Mass Relationship",
+      "quote": "$<$200 $\\mu$Jy for GSC 6214-210 b, (cite: Bowler15); $<$150 $\\mu$Jy for GQ Lup b, (cite: M17); $<$78 $\\mu$Jy for 2M1207 b, (cite: R17)"
+     }
+    ]
+   },
+   "citation": "(cite: Bowler15; M17; R17; Isella19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate",
+   "method": "Archive calibration scripts; self-calibration for CT Cha and DH Tau",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "phase solint 400 s to 30 s; amplitude 30 s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and measure fluxes/limits",
+   "method": "tclean natural-weighted MFS; aperture photometry of beam area for undetected sources; elliptical gaussian visibility fit for detected hosts",
+   "software": [
+    "CASA",
+    "pdspy",
+    "uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "companions are unresolved point sources"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit disk flux vs host mass relation",
+   "method": "Bayesian linear regression with linmix including non-detections, fluxes scaled to 140 pc, extrapolated to planetary masses",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "F scaled by (distance/140 pc)^2"
+   ],
+   "assumptions": [
+    "Fluxes not converted to dust masses because of optical depth uncertainty"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "PMC 3sigma flux limits at 0.88 mm",
+   "value": "120–210",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Continuum Emission: PMCs and Host Stars",
+     "quote": "The 3$\\sigma$ upper limits for the 0.88 mm flux density span 120–210 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "CT Cha A flux",
+   "value": "94.0",
+   "uncertainty": "9.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Continuum Emission: PMCs and Host Stars",
+     "quote": "$94.0\\pm9.4$ mJy, $52.3\\pm5.2$ mJy, and $0.53\\pm0.09$ mJy for CT Cha A, DH Tau A, and FU Tau A"
+    }
+   ]
+  },
+  {
+   "quantity": "DH Tau A flux",
+   "value": "52.3",
+   "uncertainty": "5.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Continuum Emission: PMCs and Host Stars",
+     "quote": "$94.0\\pm9.4$ mJy, $52.3\\pm5.2$ mJy, and $0.53\\pm0.09$ mJy for CT Cha A, DH Tau A, and FU Tau A"
+    }
+   ]
+  },
+  {
+   "quantity": "FU Tau A flux",
+   "value": "0.53",
+   "uncertainty": "0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1. Continuum Emission: PMCs and Host Stars",
+     "quote": "$94.0\\pm9.4$ mJy, $52.3\\pm5.2$ mJy, and $0.53\\pm0.09$ mJy for CT Cha A, DH Tau A, and FU Tau A"
+    }
+   ]
+  },
+  {
+   "quantity": "Young (<5 Myr) F-M relation slope",
+   "value": "1.54",
+   "uncertainty": "+0.21/-0.21 (95%)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1. Disk Flux-Host Mass Relationship",
+     "quote": "the slope, intercept, and scatter of log($F_{\\rm disk}$) are $1.54^{+0.21}_{-0.21}$, $1.88^{+0.14}_{-0.13}$, and $0.74^{+0.08}_{-0.07}$ dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper Sco F-M relation slope",
+   "value": "2.37",
+   "uncertainty": "+0.73/-0.71",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1. Disk Flux-Host Mass Relationship",
+     "quote": "the slope, intercept, and scatter are $2.37^{+0.73}_{-0.71}$, $1.58^{+0.44}_{-0.43}$, and $0.67^{+0.19}_{-0.13}$ dex"
+    }
+   ]
+  },
+  {
+   "quantity": "SMM J160929.9-210457 flux at 0.88 mm",
+   "value": "1.86",
+   "uncertainty": "0.21",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2. Continuum Emission: Background Objects",
+     "quote": "It has a flux density of $1.86\\pm0.21$ mJy at 0.88 mm"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean cell size, image size, masks, threshold, niter",
+  "Which pipeline versions and which flux calibrator per source (table lists confusing entries)",
+  "Self-calibration spw/combination and flagged CO channel ranges",
+  "Programs 2013.1.00487.S and 2015.1.00773.S role not described",
+  "Full compiled literature table (fluxes, stellar masses) for the regression",
+  "linmix settings (chains, priors)",
+  "Monte Carlo details for companion masses"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters",
+  "compiled literature flux/mass table",
+  "linmix configuration"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and flux measurements simple, but imaging details and the regression sample are unspecified.",
+ "rediscovery_reason": "Public data, short recipe, numeric flux limits and host fluxes are checkable.",
+ "source_card": "cards/2020AJ....159..229W/sonnet/card.md"
+}

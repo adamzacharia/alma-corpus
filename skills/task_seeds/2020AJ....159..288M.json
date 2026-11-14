@@ -1,0 +1,283 @@
+{
+ "bibcode": "2020AJ....159..288M",
+ "title": "The Big Sibling of AU Mic: A Cold Dust-rich Debris Disk around CP-72 2713 in the β Pic Moving Group",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/ab8f98",
+ "arxiv_id": "2005.00861",
+ "fields": [
+  "debris_disks"
+ ],
+ "question": "Characterize the newly identified cold debris disk around CP-72 2713 (size, dust and gas content, nature, stirring) using Spitzer, Herschel and ALMA 7-m data",
+ "alma_project_codes": [
+  "2016.2.00200.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm)",
+  "arrays": "ALMA 7-m array, nine antennas",
+  "angular_resolution": "7.4″×5.5″, PA 6.3°",
+  "sensitivity": "rms 0.28 mJy/beam (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ATCA 9 mm flux 0.096±0.023 mJy",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "8820 0.096±0.023 ATCA 10.6×10 [−][5] Norfolk et al. in prep."
+     }
+    ]
+   },
+   "citation": "Norfolk et al. in prep."
+  },
+  {
+   "what": {
+    "value": "Optical photometry from ASAS used for stellar SED",
+    "evidence": [
+     {
+      "loc": "3.1. Basic stellar properties of CP−72 2713",
+      "quote": "we limited our analysis to data that are based on longer term monitoring observations taken from Kiraga (2012)"
+     }
+    ]
+   },
+   "citation": "Kiraga (2012)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity κν=2.3 cm2 g-1",
+    "evidence": [
+     {
+      "loc": "3.3.1. The dust component",
+      "quote": "By adopting κ ν =2.3 cm [2] g [−][1] for the dust opacity (Andrews et al. 2013)"
+     }
+    ]
+   },
+   "citation": "Andrews et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and fit ring model in uv plane",
+   "method": "tclean continuum image; Gaussian ring (FWHM 0.2R) fitted to visibilities with uvmultifit after statwt",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvmultifit",
+    "statwt"
+   ],
+   "key_parameters": [
+    "Briggs robust 0.5"
+   ],
+   "assumptions": [
+    "Gaussian radial profile, FWHM = 0.2R"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit PACS 100 µm ring model",
+   "method": "Grid of ring models convolved with alpha Boo PSF, Bayesian fit for R, PA, i",
+   "software": [
+    "HIPE"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Upper limit on 12CO(2-1) flux",
+   "method": "Spectrum extracted in disk mask (continuum SNR>2), rms scaled by √2.667, 3σ with linewidth 5 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "CO co-located with dust; stellar mass 0.71 Msun"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED fit for dust temperature and fractional luminosity",
+   "method": "Single-temperature modified blackbody with λ0 fixed at 100 µm, iterative color corrections",
+   "software": [
+    "mpfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "ATLAS9 photosphere, E(B-V)=0, solar metallicity, log g 4.5"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive dust and CO gas masses",
+   "method": "Optically thin single-temperature dust mass; LTE optically thin CO mass upper limit for 10–45 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "κν=2.3 cm2/g, grain temperature ~15 K at 140 au"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Collisional evolution modelling and stirring feasibility",
+   "method": "ACE simulations of a 126–154 au belt with different wind rates; analytic stirring-onset models",
+   "software": [
+    "ACE"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "size distribution index -1.88, max 1e21 g, e=0.03, wind velocity 400 km/s"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA ring radius",
+   "value": "140",
+   "uncertainty": "±14",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3. Observations with the ALMA 7-m Array",
+     "quote": "R = 140±14 au"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA inclination",
+   "value": "46",
+   "uncertainty": "±12",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "ALMA 1.33 mm 130±16 46±12 140±14"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.33 mm flux density",
+   "value": "3.8",
+   "uncertainty": "±0.6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3. Observations with the ALMA 7-m Array",
+     "quote": "yields a flux density of 3.8±0.6 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(2-1) 3σ upper limit",
+   "value": "0.216",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3. Observations with the ALMA 7-m Array",
+     "quote": "we derived a 3σ upper limit of 0.216 Jy km s [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "PACS 100 µm ring radius",
+   "value": "99",
+   "uncertainty": "+22/-26",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "PACS 100µm 153 [+60] −64 29 [+26] −21 99 [+22] −26"
+    }
+   ]
+  },
+  {
+   "quantity": "dust temperature",
+   "value": "43",
+   "uncertainty": "±3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Disk properties",
+     "quote": "we derived a dust temperature of 43±3 K and a β of 0.05±0.08"
+    }
+   ]
+  },
+  {
+   "quantity": "fractional luminosity",
+   "value": "1.1e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3. Disk properties",
+     "quote": "For the fractional luminosity we obtained f d = 1.1 × 10 [−][3] ."
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass",
+   "value": "0.21",
+   "uncertainty": "±0.03",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1. The dust component",
+     "quote": "Eq. 1 provides a dust mass estimate of 0.21±0.03 M ⊕ ."
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass upper limit",
+   "value": "6.8–9.4e-6",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2. The gas component",
+     "quote": "we derived CO mass upper limits in the range of 6.8–9.4×10 [−][6] M ⊕ ."
+    }
+   ]
+  },
+  {
+   "quantity": "stellar mass",
+   "value": "0.71",
+   "uncertainty": "+0.05/-0.03",
+   "units": "Msun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1. Basic stellar properties of CP−72 2713",
+     "quote": "0.71 − [+0] 0 [.] . [03] 05 [M] [⊙]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Priors and sampler for the PACS Bayesian ring fit and for the uvmultifit ALMA fit",
+  "Image size, cell size, masking and clean threshold for tclean",
+  "Phase center, source coordinates and ring-model fixed parameters beyond FWHM=0.2R",
+  "Line-free channels and uvcontsub fit order",
+  "Rest frequencies for CO lines",
+  "ACE sensitivity setup details (critical energy parameters, size grid)"
+ ],
+ "missing_for_reproduction": [
+  "Priors/sampler for the ring fits",
+  "tclean image parameters and masks",
+  "ACE configuration files",
+  "ATCA data are unpublished"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps are described, but fit priors, imaging parameters and ACE inputs are missing.",
+ "rediscovery_reason": "The ALMA data are in the archive, the recipe is short and results are numeric (R, i, PA, flux, CO limit).",
+ "source_card": "cards/2020AJ....159..288M/sonnet/card.md"
+}

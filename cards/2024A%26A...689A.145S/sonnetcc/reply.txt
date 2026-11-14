@@ -1,0 +1,536 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "1 Introduction", "quote": "Here, we present new ALMA observations of this system and report the discovery of a puzzling \\[C ii\\]-emitting gas plume that extends from the center of the system."}
+],
+"fields": ["high_z_galaxies"],
+"question": {"value": "What caused the [C ii] plume in the J1000+0234 system (outflow, inflow, ram pressure stripping or tidal interaction)", "evidence": [
+{"loc": "5 Discussion", "quote": "The main question we want to answer in this paper is what caused the \\[C ii\\] plume in the J1000+0234 system."}
+]},
+"targets": [
+{"name": "J1000+0234 system (J1000+0234-North / the DSFG, and CRISTAL-01a)", "details": [
+{"loc": "2 The J1000+0234 system", "quote": "In this paper, we study the core region of the J1000+0234 system at $z=4.54$, first reported by (cite: Capak2008ExtremeStarburst) as a bright sub-millimeter source with an associated Ly$\\alpha$ blob."},
+{"loc": "1 Introduction", "quote": "1 ″ corresponds to 6.57   of proper physical scale at $z=4.54$."}
+], "coordinates": "not stated", "redshift_or_distance": "z = 4.54", "distance_source": "flat LambdaCDM, H0 = 70 km/s/Mpc, Omega_m = 0.3 (proper scale at z = 4.54)"},
+{"name": "CRISTAL-01a", "details": [
+{"loc": "2 The J1000+0234 system", "quote": "A successful detection of the line provided the first systemic redshift of this source at $z=4.5537$ (cite: Bethermin2020DataProcessing)"}
+], "coordinates": "not stated", "redshift_or_distance": "z = 4.5537", "distance_source": "[C ii] systemic redshift from ALPINE (cite: Bethermin2020DataProcessing)"}
+],
+"alma_project_codes": [
+{"code": "2017.1.00428.L", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00428.L, ADS/JAO.ALMA#2021.1.00280.L, ADS/JAO.ALMA#2019.1.01587.S."}]},
+{"code": "2021.1.00280.L", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00428.L, ADS/JAO.ALMA#2021.1.00280.L, ADS/JAO.ALMA#2019.1.01587.S."}]},
+{"code": "2019.1.01587.S", "evidence": [{"loc": "3.1 ALMA", "quote": "an archival dataset from project 2019.1.01587.S (PI: F. Lelli)"}]},
+{"code": "2012.1.00978.S", "evidence": [{"loc": "3.1 ALMA", "quote": "We do not include data from the Cycle 2 program 2012.1.00978.S"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7", "evidence": [{"loc": "6 Summary & conclusions", "quote": "We have presented new ALMA Band 7 observations of the inner region of the J1000+0234 system at $z=4.54$"}]},
+{"field": "frequencies_and_spectral_setup", "value": "ALPINE tuned to the [C ii] line at 349.1 GHz, 40 km/s velocity resolution; CRISTAL 10 km/s per channel; 2019.1.01587.S spectral windows tuned around the DSFG rest-frame velocity, only partial overlap (red half of CRISTAL-01a's line)", "evidence": [
+{"loc": "3.1 ALMA", "quote": "tuned to cover the line at 349.1 GHz with a velocity resolution of 40 km s^−1^"},
+{"loc": "3.1 ALMA", "quote": "and with a higher spectral resolution (10 km s^−1^ per channel) than that of the ALPINE data."},
+{"loc": "3.1 ALMA", "quote": "the spectral windows were tuned around the DSFG’s rest-frame velocity, so the frequency overlap with previous data is partial"}
+]},
+{"field": "configurations", "value": "ALPINE: C43-1; CRISTAL: C43-1 and C43-4; 2019.1.01587.S: C43-6", "evidence": [
+{"loc": "3.1 ALMA", "quote": "The ALPINE observations were carried out with the most compact configuration (C43-1)"},
+{"loc": "3.1 ALMA", "quote": "include deeper integrations in two antenna configurations, namely C43-1 and C43-4"},
+{"loc": "3.1 ALMA", "quote": "the 2019.1.01587.S dataset was observed using a longer baseline configuration (C43-6)"}
+]},
+{"field": "angular_resolution", "value": "CRISTAL designed for ~0.25″ beam (1.65 kpc at z = 4.54); ALPINE natural-weighting beam 1.25″ x 0.78″; 2019.1.01587.S nominal 0.06″; Briggs robust=0.5 synthesized beam 0.25″ x 0.23″", "evidence": [
+{"loc": "3.1 ALMA", "quote": "These observations were designed to resolve the \\[C ii\\] emission with a beam of $\\sim$0.25 ″, equivalent to 1.65   at $z = 4.54$."},
+{"loc": "3.1 ALMA", "quote": "providing a nominal resolution of 0.06″"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "With this weighting, the synthesized beam ($\\ang{;;0.25}\\times\\ang{;;0.23}$) fits comfortably within each aperture, making them independent."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Combines ALPINE, CRISTAL (Herrera-Camus et al. in prep.) and archival project 2019.1.01587.S (PI: F. Lelli)", "evidence": [
+{"loc": "3.1 ALMA", "quote": "from three different programs, namely the ALPINE survey (cite: LeFevre2020AlpineSurveyDesign), the CRISTAL survey (Herrera-Camus et al. in prep.), and an archival dataset from project 2019.1.01587.S (PI: F. Lelli)"}
+]}
+],
+"lines_targeted": [
+{"species": "C+", "transition": "[C ii] 158 μm (redshifted)", "rest_frequency": "not stated", "evidence": [
+{"loc": "3.1 ALMA", "quote": "ALMA observations of the redshifted \\[C ii\\] 158 μm line targeting J1000+0234"}
+]}
+],
+"other_facilities": [
+{"name": "VLT/MUSE", "provided": {"value": "Archival IFU cube of the Ly-alpha blob (16 exposures of 900 s, 4 h total; ESO programs 0102.A-0448 and 0103.A-0272), used for Ly-alpha morphology", "evidence": [
+{"loc": "3.2 MUSE", "quote": "These observations, comprising 16 exposures of 900 s (total 4 h), were taken as part of ESO GTO programs 0102.A-0448 (PI: S. Lilly) and 0103.A-0272 (PI: S. Cantalupo)"}
+]}},
+{"name": "HST", "provided": {"value": "ACS/F606W, ACS/F814W, WFC3/F105W, F125W, F160W imaging (plus F140W in the stack) from MAST; used for rest-frame UV morphology and a WFC3-IR stack", "evidence": [
+{"loc": "3.3 HST", "quote": "We found observations in the ACS/F606W, ACS/F814W, WFC3/F105W, WFC3/F125W and WFC3/F160W bands"},
+{"loc": "8 Stack of HST images", "quote": "In this section we present the stack of HST imaging in the F105W, F125W, F140W and F160W filters."}
+]}},
+{"name": "Gaia DR2", "provided": {"value": "Astrometric reference for MUSE and HST alignment", "evidence": [
+{"loc": "3.2 MUSE", "quote": "we apply a simple 2D translation to the WCS to match the positions of the two Gaia DR2"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Global properties of the DSFG and CRISTAL-01a in Table 1 (redshift, stellar mass, dynamical mass, UV slope, SFRs)", "evidence": [
+{"loc": "2 The J1000+0234 system", "quote": "The global properties of each galaxy are extracted from the literature and listed in Table [1](#tab:glob_tab)."}
+]}, "citation": "References 1-3 of Table 1 (not named in the text)"},
+{"what": {"value": "Chandra X-ray luminosity upper limit of the DSFG, used for the AGN bolometric luminosity estimate", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "Recalling that the X-ray luminosity of the DSFG is $L_\\mathrm{2-10keV} < \\SI{1.3e43}{\\erg\\per\\second}$ (cite: Smolcic2015PhysicalPropertiesSmgsCosmos)"}
+]}, "citation": "(cite: Smolcic2015PhysicalPropertiesSmgsCosmos)"},
+{"what": {"value": "Virial mass, virial radius, gas reservoir and rotation velocity of the DSFG", "evidence": [
+{"loc": "5.2 Gas accretion", "quote": "Following the estimation of (cite: Fraternali2021FastRotators) for the J1000+0234 system, we assume a virial mass of $M_\\mathrm{vir}=\\SI{2e12}{M\\ensuremath{_\\odot}}$"},
+{"loc": "5.4 Gravitational interactions", "quote": "the DSFG has a maximum rotation velocity of 550 km s^−1^ at a radius of 3.5   (cite: Fraternali2021FastRotators)"}
+]}, "citation": "(cite: Fraternali2021FastRotators)"},
+{"what": {"value": "Previously published centers and effective radius used as Gaussian priors for the DSFG Sersic fit", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we adopted broad Gaussian priors centered on previously published values (cite: Fraternali2021FastRotators)"}
+]}, "citation": "(cite: Fraternali2021FastRotators)"},
+{"what": {"value": "Conversion factor kappa_[CII] = 1.5 Msun/Lsun for maximal excitation and solar abundance", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "Following (cite: HerreraCamus2021OutflowHZ4), we assume the collisions are dominated by atomic hydrogen"}
+]}, "citation": "(cite: HerreraCamus2021OutflowHZ4)"},
+{"what": {"value": "Cold-stream inflow velocity V_stream ~ 0.9 V_vir for halos at z ~ 4", "evidence": [
+{"loc": "5.2 Gas accretion", "quote": "found that halos of similar mass at $z \\sim 4$ accrete at $V_\\mathrm{stream}\\approx 0.9 V_\\mathrm{vir}$"}
+]}, "citation": "(cite: GoerdtAndCeverino2015InflowVelocitiesColdStreams)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Self-calibrated and combined measurement sets processed with the CRISTAL reduction pipeline (Herrera-Camus et al. in prep.)", "evidence": [
+{"loc": "3.1 ALMA", "quote": "the self-calibrated and combined measurement sets were processed with CRISTAL’s reduction pipeline as described in Herrera-Camus et al. (in prep.)"}
+]},
+{"field": "self_calibration", "value": "Two phase-only rounds per observation on ALPINE and CRISTAL continuum visibilities before combination: first combining spectral windows and scans, second only scans; ~11% decrease in continuum rms", "evidence": [
+{"loc": "3.1 ALMA", "quote": "we performed self-calibration on the continuum visibilities of both ALPINE and CRISTAL datasets before combination"},
+{"loc": "3.1 ALMA", "quote": "This was done in two “phase-only” rounds for each observation"},
+{"loc": "3.1 ALMA", "quote": "This process resulted in a $\\approx$11% decrease in continuum rms"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean with automasking, run multiple times to make cubes with different weightings and channel widths; CASA used to combine the observations", "evidence": [
+{"loc": "3.1 ALMA", "quote": "automasking multiple times, producing cubes with different weightings and channel widths"},
+{"loc": "3.1 ALMA", "quote": "We use CASA (cite: CasaTeam2022CasaRefPaper) to combine ALMA observations"}
+]},
+{"field": "weighting_robust", "value": "Natural or Briggs robust = 0.5; 20 km/s channels", "evidence": [
+{"loc": "3.1 ALMA", "quote": "we use datacubes with 20 km s^−1^ channel width and either natural or Briggs"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We extract the spectra from the Briggs-weighted (robust=0.5) datacube without continuum subtraction."}
+]},
+{"field": "continuum_subtraction", "value": "Visibility-space continuum subtraction with CASA uvcontsub in the pipeline (line-free channels not stated)", "evidence": [
+{"loc": "3.1 ALMA", "quote": "it starts by subtracting the continuum on the visibility space using CASA’s"}
+]},
+{"field": "array_combination", "value": "Multi-configuration data combined; JvM correction measured and applied per channel range with similar beam properties, following Czekala et al. 2021; mean factor epsilon ~ 0.37 (Briggs) and ~ 0.31 (natural) in the [C ii] channels", "evidence": [
+{"loc": "3.1 ALMA", "quote": "Since the data combines different array configurations, it is important to measure and apply the “JvM” correction"},
+{"loc": "3.1 ALMA", "quote": "we compute and apply the correction in channel ranges with similar beam properties"},
+{"loc": "3.1 ALMA", "quote": "We find a mean multiplicative correction factor of $\\epsilon\\approx 0.37$ in the channels covering the \\[C ii\\] line emission when using Briggs weighting, and $\\epsilon\\approx0.31$ when using natural weighting."}
+]},
+{"field": "primary_beam_correction", "value": "Applied to the FIR luminosity limits (primary beam gain decrement)", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "After correcting for primary beam gain decrement, we quote the resulting limits in Table"}
+]},
+{"field": "final_beam", "value": "0.25″ x 0.23″ (Briggs robust=0.5)", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "With this weighting, the synthesized beam ($\\ang{;;0.25}\\times\\ang{;;0.23}$) fits comfortably within each aperture, making them independent."}
+]}
+],
+"inherited": [
+{"what": {"value": "CRISTAL reduction pipeline (uvcontsub, tclean automasking, cube production)", "evidence": [
+{"loc": "3.1 ALMA", "quote": "processed with CRISTAL’s reduction pipeline as described in Herrera-Camus et al. (in prep.)"}
+]}, "from_reference": "Herrera-Camus et al. in prep."},
+{"what": {"value": "ALPINE observation setup and natural-weighting beam", "evidence": [
+{"loc": "3.1 ALMA", "quote": "a natural weighting beam size of $\\SI{1.25}{\\arcsecond}\\times\\SI{0.78}{\\arcsecond}$ (cite: Bethermin2020DataProcessing)"}
+]}, "from_reference": "(cite: Bethermin2020DataProcessing)"},
+{"what": {"value": "JvM correction method", "evidence": [
+{"loc": "3.1 ALMA", "quote": "We do this by following the method of (cite: Czekala2021JvMGuidelines)."}
+]}, "from_reference": "(cite: Czekala2021JvMGuidelines)"},
+{"what": {"value": "MUSE variance-cube scaling to match observed noise levels", "evidence": [
+{"loc": "3.2 MUSE", "quote": "We then follow the steps described in (cite: Solimano2022LymanAlphaSGASJ1226) to scale the variance cube and match the observed noise levels."}
+]}, "from_reference": "(cite: Solimano2022LymanAlphaSGASJ1226)"},
+{"what": {"value": "MUSE reduction details of the earlier independent reduction", "evidence": [
+{"loc": "3.2 MUSE", "quote": "Here we use an independent reduction from that of , but we refer the reader to their work for further details about the observations."}
+]}, "from_reference": "Jimenez-Andrade et al. 2023 (reference marker missing in the text)"},
+{"what": {"value": "Matched-filter template (point-like source with Gaussian spectral profile) following LSDCAT", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "Following (cite: Herenz2017LsdCat) we built our template as a point-like source with a Gaussian spectral profile of $\\mathrm{FWHM}=\\SI{250}{\\kilo\\meter\\per\\second}$"}
+]}, "from_reference": "(cite: Herenz2017LsdCat)"},
+{"what": {"value": "Noise covariance matrix estimated in source-free regions", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "The covariance matrix is estimated in source-free regions of the image using the method and the code[^3] presented by (cite: Tsukui2022CorrelatedNoiseInterferometry)."}
+]}, "from_reference": "(cite: Tsukui2022CorrelatedNoiseInterferometry)"},
+{"what": {"value": "Sersic index prior centered at n = 1 based on a disk characterization of the DSFG", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "based on previous work that characterized this source as a disk (cite: Jones2017DynamicsTiltedRingSmgs), we adopt a Gaussian prior for the Sérsic index centered at $n=1$"}
+]}, "from_reference": "(cite: Jones2017DynamicsTiltedRingSmgs)"},
+{"what": {"value": "Maximum outflow velocity prescription v_out = |dv| + 2 sigma_broad", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "For the maximum outflow velocity we use the prescription of (cite: Genzel2011SinsSurvey)"}
+]}, "from_reference": "(cite: Genzel2011SinsSurvey)"},
+{"what": {"value": "Local Sigma_[CII]-Sigma_SFR relation used to interpret the surface brightness", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "according to the local $\\Sigma_\\mathrm{[CII]}-\\Sigma_\\mathrm{SFR}$ relation (cite: HerreraCamus2015CiiAsSfrTracerKingFish)"}
+]}, "from_reference": "(cite: HerreraCamus2015CiiAsSfrTracerKingFish)"}
+],
+"unstated_but_needed": [
+"CASA version used for combination, self-calibration, tclean and uvcontsub",
+"The CRISTAL pipeline settings (line-free channels for uvcontsub, tclean masking parameters, cell size, image size, niter and threshold detail, restoring beam) are deferred to an in-preparation paper",
+"Self-calibration solution intervals, reference antenna and solution tables beyond 'two phase-only rounds'",
+"Relative weighting applied when combining the ALPINE, CRISTAL and 2019.1.01587.S datasets and the continuum channel selection",
+"Per-channel-range JvM factors beyond the mean values",
+"Custom script for the [C ii] adaptive mask is not described in enough detail to rebuild identically (kernel widths are given, rms measurement region is not)",
+"Priors for the CRISTAL-01a two-component fit ('broad uniform or Gaussian priors') are not listed",
+"Width of the Gaussian priors for the DSFG centers and effective radius",
+"Placement and exact geometry of the six plume apertures (centers, position angle 14 deg east of north is given)",
+"Observing dates, on-source times and achieved sensitivities of each ALMA execution"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Self-calibrate, combine and image the three ALMA datasets", "method": {"value": "Self-calibrate ALPINE and CRISTAL continuum visibilities, combine with the archival data, then run the CRISTAL pipeline (uvcontsub and tclean with automasking) to make cubes", "evidence": [
+{"loc": "3.1 ALMA", "quote": "we performed self-calibration on the continuum visibilities of both ALPINE and CRISTAL datasets before combination"},
+{"loc": "3.1 ALMA", "quote": "In this paper, we use datacubes with 20 km s^−1^ channel width and either natural or Briggs"}
+]}, "software": ["CASA", "tclean", "uvcontsub"], "key_parameters": [
+{"value": "Two phase-only self-calibration rounds per observation; 20 km/s channels; natural or Briggs robust = 0.5 weighting; cleaned down to 1 sigma", "evidence": [
+{"loc": "3.1 ALMA", "quote": "This was done in two “phase-only” rounds for each observation"},
+{"loc": "3.1 ALMA", "quote": "In all cases the data are cleaned down to $1\\sigma$."}
+]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "~11% decrease in continuum rms and mitigation of patchy noise patterns after self-calibration", "evidence": [
+{"loc": "3.1 ALMA", "quote": "This process resulted in a $\\approx$11% decrease in continuum rms and the mitigation of patchy patterns in the noise."}
+]}},
+{"order": 2, "goal": "Apply the JvM correction to the multi-array cubes", "method": {"value": "Measure and apply the JvM correction per channel range with similar beam properties, following Czekala et al. 2021, instead of the pipeline's single factor per spectral window", "evidence": [
+{"loc": "3.1 ALMA", "quote": "While the CRISTAL pipeline provides JvM-corrected products, it uses a single correction factor per spectral window."},
+{"loc": "3.1 ALMA", "quote": "we compute and apply the correction in channel ranges with similar beam properties"}
+]}, "software": ["CASA"], "key_parameters": [
+{"value": "Mean epsilon ~ 0.37 (Briggs) and ~ 0.31 (natural) in the [C ii] channels", "evidence": [
+{"loc": "3.1 ALMA", "quote": "We find a mean multiplicative correction factor of $\\epsilon\\approx 0.37$ in the channels covering the \\[C ii\\] line emission when using Briggs weighting, and $\\epsilon\\approx0.31$ when using natural weighting."}
+]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Build adaptive 3D masks and moment maps (Ly-alpha from MUSE, [C ii] from ALMA)", "method": {"value": "Matched-filter style 3D masking: LSDCAT on the MUSE cube; a custom script on the ALMA cube (smooth, threshold at 2 x rms, then CASA immoments on the original cube)", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "For the MUSE data, we used the off-the-shelf software LSDCAT (cite: Herenz2017LsdCat), while for the ALMA cubes we used a custom script."},
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "Finally, we split cells above and below a $2\\times\\mathrm{rms}$ threshold into a 3D mask, which we then fed to CASA task"}
+]}, "software": ["LSDCAT", "CASA", "immoments"], "key_parameters": [
+{"value": "ALMA: naturally-weighted cube in 20 km/s channels smoothed with a sigma = 30 km/s spectral Gaussian and a sigma = 0.1″ spatial Gaussian, rms measured in signal-free regions, 2 x rms threshold", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "we convolved with a $\\sigma=\\SI{30}{\\kilo\\meter\\per\\second}$ Gaussian kernel along the velocity axis, and a $\\sigma=\\ang{;;0.1}$ 2D Gaussian kernel in the spatial axes"}
+]},
+{"value": "MUSE: 250 km/s FWHM template, S/N >= 2 between 6729 and 6776 Angstrom, spaxels with fewer than three voxels above threshold excluded, regions under 55 connected spaxels pruned", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "Finally, we selected all voxels with $\\mathrm{S/N}\\geq 2$ between 6729 Å and 6776 Å"},
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "prune the regions with less than 55 connected spaxels"}
+]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "55-spaxel pruning chosen because it masks remaining spurious signal; the plume is also seen in individual channels", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "We find that this number successfully masks any remaining spurious signal."},
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "this elongated diffuse emission was already apparent in the individual channels of our cubes"}
+]}},
+{"order": 4, "goal": "Fit Sersic profiles to the DSFG dust continuum and [C ii] maps", "method": {"value": "Image-plane 2D Sersic fit with PyAutoGalaxy/PyAutoFit, full noise covariance matrix in the likelihood, on unmasked intensity maps; two independent fits (160 um continuum and [C ii])", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "We account for the noise correlation in the images by feeding the full covariance matrix into the calculation of the likelihood."},
+{"loc": "4.2 Parametric morphology", "quote": "We performed two independent fits."}
+]}, "software": ["PyAutoGalaxy", "PyAutoFit", "dynesty", "ESSENCE"], "key_parameters": [
+{"value": "[C ii] map integrated between 342.293 GHz and 344.006 GHz (1492.7 km/s)", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we integrated between 342.293 GHz and 344.006 GHz, corresponding to a bandwidth of 1492.7 km s^−1^"}
+]},
+{"value": "Seven free parameters; priors: broad Gaussian on center and effective radius, uniform intensity 0 to image maximum, Gaussian Sersic index (mean 1, sigma 1) limited to 0.2-10", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we choose to fit a single 2D Sérsic profile (cite: Sersic1968AtlasdeGalaxias), with a total of seven free parameters."},
+{"loc": "4.2 Parametric morphology", "quote": "but allowed $n$ to vary between 0.2 and 10"}
+]}
+], "assumptions": [
+{"value": "Dust and gas have disk-like geometries, share the same inclination and are optically thin (for the axis-ratio comparison)", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "Assuming instead that the dust and gas both have disk-like geometries, share the same inclination, and are optically thin"}
+]}
+], "fitting": {"value": "dynesty nested sampler via PyAutoFit with 50 live points", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "The parameter space was explored using the DYNESTY (cite: Speagle2020Dynesty; Koposov2022DynestyZenodoV203) nested sampler backend with 50 live points."}
+]}, "validation": {"value": "Residual maps inspected; the authors refrain from claiming the gas is more extended than the dust because Sersic indices and S/N differ", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we refrain from claiming the gas is more extended than the dust"}
+]}},
+{"order": 5, "goal": "Fit the two [C ii] clumps of CRISTAL-01a", "method": {"value": "Two-component model: elliptical 2D Sersic (SW clump) plus circular Gaussian (NE clump), 11 free parameters, on an unmasked intensity map; continuum not detected", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "We thus model the emission with two independent profiles, an elliptical 2D Sérsic for the brighter component (hereafter SW clump) and a circular Gaussian profile for the fainter component (hereafter NE clump)."},
+{"loc": "4.2 Parametric morphology", "quote": "This model has a total of 11 free parameters."}
+]}, "software": ["PyAutoGalaxy", "PyAutoFit", "dynesty"], "key_parameters": [
+{"value": "Map integrated between 342.088 GHz and 342.454 GHz, which encloses 85% of the line flux", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "We construct the unmasked intensity map by integrating the cube between 342.088 GHz and 342.454 GHz, which encloses only 85% of the total line flux"}
+]}
+], "assumptions": [], "fitting": {"value": "Same Sersic-index prior as before for the SW clump; other priors broad uniform or Gaussian (not listed)", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "For the rest of the quantities we use either broad uniform or Gaussian priors covering reasonable limits in the parameter space."}
+]}, "validation": {"value": "2D residuals shown (Fig. 2)", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "The right panel of Fig. [2](#fig:residuals) shows the 2D residuals."}
+]}},
+{"order": 6, "goal": "Extract and fit spectra along the plume in six apertures", "method": {"value": "Six adjacent rectangular apertures along the plume (PA 14 deg east of north) on the Briggs robust=0.5 cube without continuum subtraction; single 1D Gaussian per spectrum, first-order polynomial continuum in apertures 1 and 2 with -700 to 0 km/s masked", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we place six adjacent rectangular $\\ang{;;0.4}\\times\\ang{;;0.9}$ apertures covering the full extent of the plume"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We then fit each extracted spectrum independently with a single 1D Gaussian"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "In these apertures we also mask emission from −700 km s^−1^ to 0 km s^−1^"}
+]}, "software": ["PyAutoFit", "dynesty"], "key_parameters": [
+{"value": "Uniform priors: velocity center -200 to 1000 km/s, FWHM 60 to 1000 km/s, total flux 0 to 1.0 Jy km/s", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We adopt uniform priors for the three fitted parameters, namely the velocity center between −200 km s^−1^ and 1000 km s^−1^; the FWHM between 60 and 1000 km s^−1^"}
+]},
+{"value": "Per-channel (20 km/s) rms from 3-sigma-clipped standard deviation of 300 random apertures of the same size and orientation", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we measure the rms as the $3\\sigma-$clipped standard deviation of the flux densities of 300 random apertures with the same size and orientation as the extraction apertures"}
+]}
+], "assumptions": [], "fitting": {"value": "PyAutoFit with dynesty static nested sampler, Gaussian likelihood on rms-weighted residuals", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We assume a Gaussian likelihood for the sum of the rms-weighted residuals (data minus model)."}
+]}, "validation": {"value": "Beam fits within each aperture so apertures are independent; systematic uncertainty of aperture #1 tested with a symmetric-difference correction", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "making them independent"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "These differences illustrate the systematic uncertainties associated with aperture #1, that make flux and FWHM less reliable."}
+]}},
+{"order": 7, "goal": "Correct aperture #1 for host contamination (symmetric difference)", "method": {"value": "Subtract a velocity-inverted spectrum from the aperture mirrored about the projected rotation axis (cropped to avoid overlap), after shifting and scaling it to match the original peak, then refit the Gaussian", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we subtract a velocity-inverted spectrum from an aperture that mirrors aperture #1 by the projected rotation axis"},
+{"loc": "8 Symmetric difference correction of aperture #1’s [C ii] spectrum", "quote": "We thus shift and scale the mirrored spectrum to match the peak of the original and then perform the subtraction."}
+]}, "software": ["PyAutoFit"], "key_parameters": [
+{"value": "Spectra from the robust=0.5, 20 km/s cube without continuum subtraction; first-order polynomial continuum fitted to channels between +/-1330 and +/-1000 km/s; negative velocities down to -700 km/s masked in the fit", "evidence": [
+{"loc": "8 Symmetric difference correction of aperture #1’s [C ii] spectrum", "quote": "fitting a first-order polynomial to channels between $\\pm\\SI{1330}{\\kilo\\meter\\per\\second}$ and $\\pm\\SI{1000}{\\kilo\\meter\\per\\second}$ independently for each spectrum"}
+]}
+], "assumptions": [
+{"value": "The DSFG rotator is axially symmetric about the projected rotation axis (taken where the second moment is maximal)", "evidence": [
+{"loc": "8 Symmetric difference correction of aperture #1’s [C ii] spectrum", "quote": "If the DSFG rotator is axially symmetric, we expect any aperture-extracted spectrum from one side of the DSFG to be similar"}
+]}
+], "fitting": {"value": "1D Gaussian fit as in step 6", "evidence": [
+{"loc": "8 Symmetric difference correction of aperture #1’s [C ii] spectrum", "quote": "we fit a 1D Gaussian using PYAUTOFIT"}
+]}, "validation": {"value": "Corrected fit gives lower flux and FWHM with a consistent central velocity", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "After this correction, we find both lower fluxes and FWHM, but a consistent central velocity"}
+]}},
+{"order": 8, "goal": "Measure transverse width and put limits on FIR luminosity and [C ii]/FIR", "method": {"value": "Custom intensity maps per aperture (velocity window 1.1 x best-fit FWHM) with Gaussian fits to 1D spatial profiles for the transverse FWHM; continuum upper limits from 600 random apertures on the robust=0.5 160 um map, converted to L_FIR with a modified blackbody SED", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we create custom intensity maps for each aperture, integrating over a velocity window of size 1.1 times the best-fit spectral FWHM for maximal S/N"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we randomly placed 600 rectangular apertures of size"}
+]}, "software": [], "key_parameters": [
+{"value": "5 sigma detection limit with sigma = 38.8 uJy; T_dust = 45 K, beta_dust = 1.5, nu L_nu(158 um)/L_FIR = 0.185; L_FIR integrated between 42 and 122 um", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "Taking $5\\sigma$ as the detection limit"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "Such an SED gives the ratio $\\nu L_\\nu(\\SI{158}{\\micro\\meter})/L_\\mathrm{FIR} = 0.185$."},
+{"loc": "Footnote 4", "quote": "Defined as the integral of the rest-frame SED between 42 μm and 122 μm."}
+]}
+], "assumptions": [
+{"value": "T_dust = 45 K modified blackbody with beta_dust = 1.5, chosen to roughly describe the average SED of z > 4 star-forming galaxies; limits rise 1.7x and 2.4x for 55 K and 65 K", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "a choice that roughly describes the average SED of star-forming galaxies at $z>4$"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "produce $1.7\\times$ and $2.4\\times$ higher $L_\\mathrm{FIR}$ limits, respectively"}
+]}
+], "fitting": {"value": "Gaussian fit to the transverse profiles after beam deconvolution", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We then fit a Gaussian to these profiles to obtain the transversal (spatial) FWHM of the plume."}
+]}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 9, "goal": "Derive plume gas mass, outflow velocity and mass outflow rates under the outflow hypothesis", "method": {"value": "M_out = kappa_[CII] x L_[CII] per aperture; mass outflow rate = M_out x v_out x tan(i) / R with v_out = |dv| + 2 sigma_broad and |dv| = v_cen", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "the gas mass in each aperture is $M_\\mathrm{out}=\\kappa_\\mathrm{[CII]}\\times L_\\mathrm{[CII]}$"},
+{"loc": "5.1 Conical outflow", "quote": "$v_\\mathrm{out}=\\left|\\Delta v\\right| + 2\\sigma_\\mathrm{broad}$"},
+{"loc": "5.1 Conical outflow", "quote": "Since we only detect a single spectral component along the plume, we take $\\left|\\Delta v\\right|=v_\\mathrm{cen}$"}
+]}, "software": [], "key_parameters": [
+{"value": "kappa_[CII] = 1.5 Msun/Lsun; R = 2.63 kpc (projected aperture short side); mean inclination 57.3 deg", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "adopt $\\kappa_\\mathrm{[CII]}=\\SI{1.5}{M\\ensuremath{_\\odot}\\per\\lumsol}$"},
+{"loc": "5.1 Conical outflow", "quote": "Assuming $\\left<i\\right>=\\ang{57.3}$"}
+]}
+], "assumptions": [
+{"value": "Optically thin [C ii], negligible background, collisions dominated by atomic hydrogen, maximal excitation (T >> 90 K, n >> 1e3 cm^-3) and solar abundance; masses are lower limits", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "In the optically thin limit, and assuming negligible background emission"},
+{"loc": "5.1 Conical outflow", "quote": "the masses we derive will effectively represent lower limits"}
+]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Compared with starburst SFR scaling and AGN wind scaling relations (Fiore et al. 2017) using L_bol < 1.3e44 erg/s (bolometric correction of 10)", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "In summary, our mass outflow rates are consistent with the scaling relations for molecular outflows in both starbursts and AGN."}
+]}},
+{"order": 10, "goal": "Test inflow, ram-pressure stripping and tidal scenarios with order-of-magnitude estimates", "method": {"value": "Compare the plume velocities, line widths and timescales with predicted cold-stream speeds, the Gunn and Gott ram-pressure criterion and a dynamical age; qualitative discussion of tidal scenarios", "evidence": [
+{"loc": "5.4 Gravitational interactions", "quote": "Here we present a qualitative discussion of three different ways this interaction could have happened."}
+]}, "software": [], "key_parameters": [
+{"value": "Inflow: M_vir = 2e12 Msun and R_vir = 70 kpc give V_vir ~ 350 km/s and V_stream = 0.9 V_vir = 315 km/s", "evidence": [
+{"loc": "5.2 Gas accretion", "quote": "so for the DSFG we would expect $V_\\mathrm{stream}=\\SI{315}{\\kilo\\meter\\per\\second}$"}
+]},
+{"value": "RPS: Sigma_gas = 1.6e7 Msun/kpc^2, v_rot = 100 km/s, R_gal = 200 pc, V = 166 km/s give n_CGM >~ 1 cm^-3", "evidence": [
+{"loc": "5.3 Ram pressure stripping", "quote": "we obtain $n_\\mathrm{CGM}=\\rho_\\mathrm{CGM}/m_{H}\\gtrsim\\SI{1}{\\per\\cubic\\centi\\meter}$"}
+]},
+{"value": "Dynamical age of the plume: length divided by the velocity difference between its ends, apertures 2-6 only", "evidence": [
+{"loc": "5.4 Gravitational interactions", "quote": "To first order, we divide the length of the plume by the velocity difference between its two ends."}
+]}
+], "assumptions": [
+{"value": "Average inclination for random viewing angles, <sin i> = 0.79, for de-projection", "evidence": [
+{"loc": "5.2 Gas accretion", "quote": "Using again the average inclination for a random distribution of viewing angles, $\\left<\\sin{i}\\right>=0.79$"}
+]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Combining the ALMA observations, self-calibration, uvcontsub, tclean and immoments", "evidence": [
+{"loc": "3.1 ALMA", "quote": "We use CASA (cite: CasaTeam2022CasaRefPaper) to combine ALMA observations"}
+]}},
+{"name": "LSDCAT", "version": "not stated", "used_for": {"value": "Matched-filter 3D masking of the MUSE cube", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "For the MUSE data, we used the off-the-shelf software LSDCAT"}
+]}},
+{"name": "PyAutoGalaxy", "version": "not stated", "used_for": {"value": "2D light-profile (Sersic) fitting of the DSFG and CRISTAL-01a maps", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we make use of 2D light profile modeling code PYAUTOGALAXY (cite: Nightingale2023PyAutoGalaxy)"}
+]}},
+{"name": "PyAutoFit", "version": "not stated", "used_for": {"value": "Probabilistic programming framework for the image fits and the plume spectral fits", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "Once again, we use PYAUTOFIT with the DYNESTY"}
+]}},
+{"name": "dynesty", "version": "v2.0.3 (cited Zenodo release)", "used_for": {"value": "Nested sampler backend (50 live points in the image fits; static nested sampler for the spectra)", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "nested sampler backend with 50 live points"}
+]}},
+{"name": "ESSENCE", "version": "not stated", "used_for": {"value": "Estimating the noise covariance matrix in source-free regions", "evidence": [
+{"loc": "Footnote 3", "quote": "ESSENCE, (cite: Tsukui2023Essence)"}
+]}},
+{"name": "MUSE pipeline with EsoRex", "version": "not stated", "used_for": {"value": "Standard MUSE calibrations and data reduction", "evidence": [
+{"loc": "3.2 MUSE", "quote": "The standard calibrations and procedures are performed using the MUSE pipeline (cite: Weilbacher2020MUSE_DPP) within the ESO Recipe Execution Tool (EsoRex) environment"}
+]}},
+{"name": "ZAP (Zurich Atmosphere Purge)", "version": "not stated", "used_for": {"value": "Sky-line residual removal in the MUSE cube", "evidence": [
+{"loc": "3.2 MUSE", "quote": "We then apply the Zurich Atmosphere Purge (cite: Soto2016ZAP) post-processing tool to further remove sky line residuals."}
+]}},
+{"name": "ASTRODRIZZLE / DRIZZLEPAC within GRIZLI", "version": "not stated", "used_for": {"value": "Drizzling the HST images (square kernel, pixel fraction 0.5; 0.03″ ACS and 0.06″ WFC3/IR pixels)", "evidence": [
+{"loc": "3.3 HST", "quote": "All images were then drizzled with a square kernel and a pixel fraction of 0.5 using the ASTRODRIZZLE routine from DRIZZLEPAC"}
+]}}
+],
+"results_numeric": [
+{"quantity": "JvM correction factor, Briggs weighting (mean over [C ii] channels)", "value": "0.37", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "3.1 ALMA", "quote": "We find a mean multiplicative correction factor of $\\epsilon\\approx 0.37$ in the channels covering the \\[C ii\\] line emission when using Briggs weighting, and $\\epsilon\\approx0.31$ when using natural weighting."}
+]},
+{"quantity": "JvM correction factor, natural weighting (mean over [C ii] channels)", "value": "0.31", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "3.1 ALMA", "quote": "We find a mean multiplicative correction factor of $\\epsilon\\approx 0.37$ in the channels covering the \\[C ii\\] line emission when using Briggs weighting, and $\\epsilon\\approx0.31$ when using natural weighting."}
+]},
+{"quantity": "Decrease in continuum rms from self-calibration", "value": "~11", "uncertainty": "not stated", "units": "percent", "from_step": 1, "evidence": [
+{"loc": "3.1 ALMA", "quote": "This process resulted in a $\\approx$11% decrease in continuum rms"}
+]},
+{"quantity": "DSFG 160 um dust: circularized effective radius", "value": "0.74", "uncertainty": "0.003 (Table 2: 0.740 ± 0.003)", "units": "kpc", "from_step": 4, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "dust emisison is fitted by a single 2D Sérsic profile with circularized effective radius of $R_\\mathrm{eff}\\approx\\SI{0.74}{\\kilo\\parsec}$, Sérsic index $n\\approx1.29$ and axis ratio $\\approx0.4$"}
+]},
+{"quantity": "DSFG 160 um dust: Sersic index", "value": "1.29", "uncertainty": "0.01 (Table 2)", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "Sérsic index $n\\approx1.29$ and axis ratio $\\approx0.4$"}
+]},
+{"quantity": "DSFG [C ii]: circularized effective radius", "value": "1.13", "uncertainty": "0.04 (Table 2: 1.13 ± 0.04)", "units": "kpc", "from_step": 4, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "the \\[C ii\\] emission is fitted by 2D Sérsic profile of $R_\\mathrm{eff}\\approx\\SI{1.13}{\\kilo\\parsec}$, $n\\approx0.7$ and axis ratio $\\approx\\num{.34}$"}
+]},
+{"quantity": "DSFG [C ii]: Sersic index", "value": "0.71", "uncertainty": "0.08 (Table 2)", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "$n\\approx0.7$ and axis ratio $\\approx\\num{.34}$"}
+]},
+{"quantity": "Ratio of [C ii] to dust effective radius in the DSFG", "value": "~1.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "The effective radius of the gas component is approximately 1.5 times larger than that of the dust"}
+]},
+{"quantity": "CRISTAL-01a SW clump effective radius and axis ratio", "value": "R_eff 2.4, axis ratio 0.82", "uncertainty": "0.4 and 0.09 (Table 3)", "units": "kpc (R_eff); dimensionless (axis ratio)", "from_step": 5, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "the southwestern clump with an elliptical exponential of $R_\\mathrm{eff}\\approx\\SI{2.4}{\\kilo\\parsec}$ and axis ratio $\\approx0.82$"}
+]},
+{"quantity": "CRISTAL-01a NE clump effective radius", "value": "0.8", "uncertainty": "0.3 (Table 3)", "units": "kpc", "from_step": 5, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "We model the northeastern clump with a circular exponential profile of $R_\\mathrm{eff}\\approx\\SI{0.8}{\\kilo\\parsec}$"}
+]},
+{"quantity": "Projected length of the [C ii] plume", "value": "2.4 arcsec (~15 kpc)", "uncertainty": "not stated", "units": "arcsec", "from_step": 3, "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "in a 2.4″-long plume extending north of the DSFG"}
+]},
+{"quantity": "Total [C ii] flux of plume apertures #2 to #6", "value": "0.50", "uncertainty": "0.04", "units": "Jy km/s (unit not shown in the text)", "from_step": 6, "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "Summing apertures from #2 to #6 yields a total flux of 0.50 ± 0.04"}
+]},
+{"quantity": "[C ii] luminosity of the plume (apertures #2 to #6)", "value": "3.1e8", "uncertainty": "0.25e8", "units": "Lsun (unit not shown in the text)", "from_step": 6, "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "amounts to a \\[C ii\\] luminosity of 3.1 ± 0.25 × 10^8^"}
+]},
+{"quantity": "Plume central velocity gradient relative to the DSFG systemic velocity", "value": "180 to 400 km/s from the base to the outer end", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "increasing the line central velocity as a function of radial distance from 180 km s^−1^ to 400 km s^−1^"}
+]},
+{"quantity": "Plume line FWHM trend", "value": "450 km/s near the DSFG decreasing to 190 km/s at the farthest point", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "showing a smooth drop from 450 km s^−1^ at the center of the DSFG to 190 km s^−1^ at the farthest measured point"}
+]},
+{"quantity": "Transverse (spatial) FWHM of the plume after beam deconvolution", "value": "0.4 to 0.8 arcsec, average 0.6 arcsec", "uncertainty": "not stated", "units": "arcsec", "from_step": 8, "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we obtain FWHMs between 0.4″ and 0.8″ with an average of 0.6″"}
+]},
+{"quantity": "Aperture #1 flux and FWHM after symmetric-difference correction", "value": "flux ~0.3 Jy km/s, FWHM ~420 km/s", "uncertainty": "not stated", "units": "Jy km/s; km/s", "from_step": 7, "evidence": [
+{"loc": "8 Symmetric difference correction of aperture #1’s [C ii] spectrum", "quote": "this fit yields a significantly lower flux ($\\approx\\SI{0.3}{\\jansky\\kilo\\meter\\per\\second}$) and FWHM ($\\approx\\SI{420}{\\kilo\\meter\\per\\second}$)"}
+]},
+{"quantity": "Continuum flux-density noise per 0.9 x 0.4 arcsec aperture (sigma-clipped)", "value": "38.8", "uncertainty": "not stated", "units": "uJy", "from_step": 8, "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We obtain a distribution of flux densities with $\\sigma-$clipped standard deviation of $\\sigma=\\SI{38.8}{\\micro\\jansky}$."}
+]},
+{"quantity": "5-sigma continuum limit on the plume per aperture", "value": "194", "uncertainty": "not stated", "units": "uJy", "from_step": 8, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "down to $5\\sigma=\\SI{194}{\\micro\\jansky}$ per"}
+]},
+{"quantity": "Lower limits on the [C ii]/FIR ratio along the plume (T_dust = 45 K)", "value": "~0.2% (aperture #6) to ~0.6% (aperture #2)", "uncertainty": "not stated", "units": "percent", "from_step": 8, "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "we obtain lower limits on the \\[C ii\\]/FIR ratio between $\\approx$0.2% (aperture #6) and $\\approx$0.6% (aperture #2)"}
+]},
+{"quantity": "Total minimum gas mass of the plume (kappa_[CII] = 1.5 Msun/Lsun)", "value": "7.1e8", "uncertainty": "0.4e8", "units": "Msun", "from_step": 9, "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "The sum of all the apertures gives 7.1 ± 0.4 × 10^8^"}
+]},
+{"quantity": "Maximum outflow velocity across the plume", "value": "530 to 620", "uncertainty": "not stated", "units": "km/s", "from_step": 9, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "The maximum outflow velocities across the plume range from 530 km s^−1^ to 620 km s^−1^."}
+]},
+{"quantity": "Resolved mass outflow rates (Summary; Sec. 5.1 text quotes 15 to 85)", "value": "16 to 83", "uncertainty": "not stated", "units": "Msun/yr (unit not shown in the text)", "from_step": 9, "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "we infer resolved mass outflow rates between 16 M $_\\odot$ ^−1^ and 83 M $_\\odot$ ^−1^"}
+]},
+{"quantity": "Conical outflow opening angle", "value": "~15", "uncertainty": "not stated", "units": "deg", "from_step": 9, "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "we estimate $\\theta\\approx\\ang{15}$"}
+]},
+{"quantity": "Dynamical age of the plume", "value": "115", "uncertainty": "not stated", "units": "Myr", "from_step": 10, "evidence": [
+{"loc": "5.4 Gravitational interactions", "quote": "$\\tau_\\mathrm{dyn}=\\SI{13.15}{\\kilo\\parsec}/\\SI{112}{\\kilo\\meter\\per\\second} = \\SI{115}{\\mega\\year}$"}
+]},
+{"quantity": "Stacked HST WFC3-IR 5-sigma depth (per square arcsec)", "value": "26.2", "uncertainty": "not stated", "units": "mag per arcsec^2 (unit not shown in the text)", "from_step": 0, "evidence": [
+{"loc": "9 Stack of HST images", "quote": "obtain a $5\\sigma$ depth of 26.2"}
+]}
+],
+"findings_qualitative": [
+{"value": "A faint, diffuse [C ii] plume extends north from the DSFG with a velocity gradient along its long axis and a line width that decreases with distance", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "the plume displays a gradient along its long axis, with a mild increase in velocity as one moves away from the DSFG"}
+]},
+{"value": "No dust continuum is detected from the plume, and the [C ii]/FIR lower limits do not rule out UV photoelectric heating", "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "consistent with UV photoelectric heating of the gas"}
+]},
+{"value": "The DSFG [C ii] and dust morphologies are slightly different (gas effective radius ~1.5x larger, smaller axis ratio) but the authors do not claim the gas is more extended", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we refrain from claiming the gas is more extended than the dust"}
+]},
+{"value": "The origin of the plume is not settled: outflow, inflow and tidal tail each have pros and cons, and ram-pressure stripping needs very special conditions", "evidence": [
+{"loc": "6 Summary & conclusions", "quote": "Further observations and modeling are needed to discriminate between them."}
+]}
+],
+"claims": [
+{"hypothesis": "Is there extended [C ii] emission beyond the two galaxies in J1000+0234?", "experiment": "Adaptive 3D masking of the combined ALPINE/CRISTAL/archival [C ii] cube, channel maps and aperture spectra", "result": "A 2.4″ (~15 kpc) plume north of the DSFG with a velocity gradient, a decreasing line width and no dust continuum", "finding": "A faint diffuse [C ii] plume extends ~15 kpc from the DSFG", "support": "supported", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "in a 2.4″-long plume extending north of the DSFG"},
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "All eight channel maps exhibit large patches of $\\geq 3\\sigma$ emission distributed between 0.2″ and 2.5″ northward from the DSFG kinematic center"}
+]},
+{"hypothesis": "Is the plume a collimated outflow from the DSFG?", "experiment": "Opening angle, misalignment with the minor axis, mass outflow rates versus SFR and AGN scaling relations, kinematic trends versus outflow expectations", "result": "Opening angle ~15 deg and 40 deg offset from the minor axis favor an AGN driver; outflow rates are consistent with scaling relations; the decreasing line width is in mild tension", "finding": "The outflow scenario is a natural explanation but struggles with the kinematic structure", "support": "partially", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "The main caveat of the outflow interpretation is that it struggles to explain the kinematic structure of the \\[C ii\\] plume."},
+{"loc": "5.1 Conical outflow", "quote": "In conclusion, the outflow scenario is a natural explanation for the observed \\[C ii\\] plume"}
+]},
+{"hypothesis": "Does the plume trace an inflowing cold-gas filament?", "experiment": "Compare the measured velocities with the stream speed expected from the virial velocity of the halo, and stack HST images for associated UV sources", "result": "Measured velocities match V_stream ~ 315 km/s, but the gas appears to slow down as it falls and must be metal enriched", "finding": "The cold accretion filament is qualitatively sound but needs a deceleration mechanism and significant enrichment", "support": "partially", "evidence": [
+{"loc": "5.2 Gas accretion", "quote": "interpreting the \\[C ii\\] plume as a cold accretion filament is qualitatively sound, although it requires some mechanism to slow down the gas as it falls"}
+]},
+{"hypothesis": "Is the plume a ram-pressure-stripped tail?", "experiment": "Gunn and Gott criterion applied to aperture #1 and comparison of the line-width trend with stripped-tail observations and simulations", "result": "Requires a CGM density of at least ~1 cm^-3; observed line width decreases with distance whereas stripped tails show an increase", "finding": "Ram-pressure stripping is at odds with the observed kinematics and requires very special hydrodynamic conditions", "support": "refuted", "evidence": [
+{"loc": "5.3 Ram pressure stripping", "quote": "The RPS scenario, however, is at odds with our observation of a decreasing linewidth as a function of distance along the plume."}
+]},
+{"hypothesis": "Is the plume tidal debris from a gravitational interaction?", "experiment": "Qualitative discussion of a flyby of CRISTAL-01a, a late-stage merger remnant and tidal stripping of a satellite, plus a dynamical-age estimate", "result": "Flyby and merger scenarios have problems (mass ratio ~1:10, one-sided tail), the 115 Myr plume age is plausible for a surviving tail", "finding": "Gravitational interactions can produce such structures but the details are very uncertain; the first two cases are slightly disfavored", "support": "partially", "evidence": [
+{"loc": "5.4 Gravitational interactions", "quote": "We conclude that gravitational interactions are more than capable of creating extended gas structures such as the \\[C ii\\] plume we observe, although the details are very uncertain."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Deep, higher-resolution ALMA [C ii] data from CRISTAL are needed to confirm and understand extended [C ii] emission at high redshift", "evidence": [
+{"loc": "1 Introduction", "quote": "confirming and understanding extended \\[C ii\\] emission at high redshift requires deeper and higher angular resolution ALMA observations"}
+]},
+{"field": "why_this_method", "value": "An adaptive matched-filter mask is used instead of a simple collapse because a pseudo-narrowband image hides narrow, low-surface-brightness features", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "a simple pseudo-narrowband “collapse” around the line will hide narrow and low surface brightness (SB) features below the noise level."}
+]},
+{"field": "how_they_decided_enough", "value": "Cubes are cleaned down to 1 sigma in all cases", "evidence": [
+{"loc": "3.1 ALMA", "quote": "In all cases the data are cleaned down to $1\\sigma$."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "The Cycle 2 dataset 2012.1.00978.S was not combined because of its shallower depth and weighting complexities", "evidence": [
+{"loc": "3.1 ALMA", "quote": "because its shallower depth plus the complexities of weighting data that was processed with old versions of the pipeline"}
+]},
+{"value": "The adaptive (masked) intensity map was not used for the morphology fits because its noise properties are ill-defined", "evidence": [
+{"loc": "4.2 Parametric morphology", "quote": "we refrained from using the adaptive intensity map, since the noise properties are not well defined after the masking procedure"}
+]}
+],
+"limitations_admitted": [
+{"value": "Only [C ii] is available so the dominant gas phase is unknown", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "Since \\[C ii\\] is the only line available, the dominant gas phase producing the emission remains unknown."}
+]},
+{"value": "Aperture #1 flux and FWHM are less reliable because of contamination from the DSFG", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "These differences illustrate the systematic uncertainties associated with aperture #1, that make flux and FWHM less reliable."}
+]},
+{"value": "Derived gas masses are lower limits and outflow rates depend on the assumed kappa_[CII]", "evidence": [
+{"loc": "5.1 Conical outflow", "quote": "the masses we derive will effectively represent lower limits"}
+]},
+{"value": "The FIR limits depend on the assumed dust temperature", "evidence": [
+{"loc": "4.3 Spectral properties of the [C II]-emitting plume", "quote": "We note, however, that these values depend on the assumed temperature."}
+]}
+],
+"referee_caveats_inferred": [
+"The [C ii]/FIR lower limits and kappa_[CII] mass conversion rest on assumed dust temperature, excitation and abundance, so mass and outflow-rate conclusions are order-of-magnitude only",
+"Aperture #1 values depend on a symmetric-difference correction that assumes an axisymmetric DSFG rotator",
+"Scenario discrimination is qualitative; no hydrodynamic or N-body modelling is done",
+"Image-plane fits use unmasked integrated maps with a covariance matrix; results on the plume depend on a hand-chosen aperture layout"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "MUSE data retrieved from the ESO archive, HST data from MAST, project 2019.1.01587.S described as archival; public status of the ALPINE and CRISTAL data is not stated", "evidence": [
+{"loc": "3.2 MUSE", "quote": "We retrieved observations of the J1000+0234 field from the ESO archive"},
+{"loc": "3.3 HST", "quote": "We retrieved from MAST"},
+{"loc": "3.1 ALMA", "quote": "an archival dataset from project 2019.1.01587.S (PI: F. Lelli)"}
+]}
+],
+"code_released": [
+{"value": "An in-house script was used for the ALMA adaptive masking; no release is stated", "evidence": [
+{"loc": "4.1 Adaptive masking of datacubes", "quote": "for the ALMA cubes we used a custom script"}
+]}
+],
+"missing_for_reproduction": [
+"CRISTAL pipeline description (in preparation), including line-free channels, tclean parameters and image geometry",
+"CASA version and self-calibration solution intervals",
+"Custom ALMA masking script",
+"Priors for the CRISTAL-01a fit and widths of the DSFG priors",
+"Exact plume aperture positions",
+"Whether the ALPINE and CRISTAL data are public"
+],
+"estimated_data_volume_inferred": "Several hundred GB to ~1 TB of raw ALMA data across three projects, plus ~4 h of MUSE cubes and a few HST images",
+"score_inferred": 2,
+"score_reason": "Key ALMA settings are deferred to an in-preparation CRISTAL pipeline paper, the masking script is custom and unreleased, and several fit priors and aperture geometries are not given, although many numeric results and several fit setups are stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The ALPINE and CRISTAL data and the CRISTAL pipeline settings are not fully specified or stated to be public, so the main plume results cannot be redone from the paper alone.",
+"methods_papers": [
+{"citation": "Herrera-Camus et al. in prep. (CRISTAL)", "why": "Describes the CRISTAL reduction pipeline used to make the cubes"},
+{"citation": "(cite: Czekala2021JvMGuidelines)", "why": "JvM correction method"},
+{"citation": "(cite: Herenz2017LsdCat)", "why": "LSDCAT matched filtering for MUSE"},
+{"citation": "(cite: Tsukui2022CorrelatedNoiseInterferometry)", "why": "Noise covariance estimation"},
+{"citation": "(cite: Bethermin2020DataProcessing)", "why": "ALPINE data processing and ALPINE beam"}
+],
+"companion_papers": [
+{"citation": "(cite: LeFevre2020AlpineSurveyDesign)", "why": "ALPINE survey that provided the first [C ii] data and the parent sample"},
+{"citation": "(cite: Fraternali2021FastRotators)", "why": "Earlier [C ii] kinematics of the DSFG and source of its published properties"},
+{"citation": "(cite: Jones2017DynamicsTiltedRingSmgs)", "why": "Earlier [C ii] analysis of the DSFG that characterised it as a disk"},
+{"citation": "(cite: Jimenez-Andrade2023LyaNebulaeGalaxyPair)", "why": "MUSE observations of the Ly-alpha blob and the C iv and He ii emission"}
+],
+"related_projects_or_surveys": ["ALMA ALPINE survey", "ALMA CRISTAL Large Program"]
+}

@@ -1,0 +1,1038 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...839...58S",
+  "title": "The SCUBA-2 Cosmology Legacy Survey: Multi-wavelength Properties of ALMA-identified Submillimeter Galaxies in UKIDSS UDS",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Simpson, J. M.",
+  "n_authors": 21,
+  "arxiv_id": "1611.03084",
+  "doi": "10.3847/1538-4357/aa65d0",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00090.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present a multi-wavelength analysis of 52 sub-millimeter galaxies (SMGs), identified using ALMA 870 $\\mu$m continuum imaging in a pilot program to precisely locate bright SCUBA2–selected sub-mm sources"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "52 ALMA-identified SMGs in 30 SCUBA-2 sources in UKIDSS UDS",
+     "coordinates": {
+      "value": "e.g. UDS47.0 02:19:24.84 -05:09:20.7 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "UDS47.0 | 02:19:24.84 | $-$05:09:20.7"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "photometric z median 2.65 ± 0.13",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "UDS47.0 | 02:19:24.84 | $-$05:09:20.7"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "photometric redshifts from UKIDSS UDS (Hartley13)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "UDS47.0 | 02:19:24.84 | $-$05:09:20.7"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the multi-wavelength properties (redshifts, FIR luminosity, dust temperature, optical depth, attenuation) of ALMA-identified bright SMGs in the UDS field?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Here, we use the available photometric imaging of the UDS field to study the properties of these 52 ALMA–identified SMGs at optical to radio wavelengths"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00090.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA$\\#$2012.1.00090.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (870 um) continuum",
+    "evidence": [
+     {
+      "loc": "2 Sample Selection",
+      "quote": "identified using targeted ALMA Band 7 continuum imaging of 30 bright single-dish–detected sub-mm sources"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.35'' x 0.25'' (high-res); 0.80'' x 0.65'' (tapered)",
+    "evidence": [
+     {
+      "loc": "2 Sample Selection",
+      "quote": "a median synthesized beam of 0.80$''$ $\\times$ 0.65$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "median 1-sigma 0.21 mJy/beam (high-res), 0.26 mJy/beam (tapered)",
+    "evidence": [
+     {
+      "loc": "2 Sample Selection",
+      "quote": "median 1–$\\sigma$ depth of 0.21 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2013 November 1",
+    "evidence": [
+     {
+      "loc": "2 Sample Selection",
+      "quote": "observed with ALMA on 2013 November 1 with 26 12 m antennae"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "UKIDSS/WFCAM, CFHT, Subaru, Spitzer",
+     "provided": {
+      "value": "U to 4.5 um photometry for photometric redshifts",
+      "evidence": [
+       {
+        "loc": "3.1 Optical and Near-Infrared Imaging",
+        "quote": "The DR8 UKIDSS catalog contains the $U$–to–4.5 $\\mu$m photometry for $\\sim$ 140,000 sources"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel SPIRE (HerMES)",
+     "provided": {
+      "value": "250/350/500 um deblended fluxes",
+      "evidence": [
+       {
+        "loc": "3.2 Far-infrared Imaging",
+        "quote": "The UDS field was observed at 250, 350, and 500 $\\mu$m with the Spectral and Photometric Imaging Receiver (SPIRE)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA 1.4 GHz (UDS20)",
+     "provided": {
+      "value": "radio counterparts, 27/52 detected",
+      "evidence": [
+       {
+        "loc": "3.3 Radio",
+        "quote": "in total 27 / 52 ALMA–identified SMGs are detected in the deep 1.4 GHz imaging"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SCUBA-2 S2CLS",
+     "provided": {
+      "value": "parent 850 um sub-mm sources",
+      "evidence": [
+       {
+        "loc": "2 Sample Selection",
+        "quote": "The initial sample of 30 sub-mm sources was detected in wide-field SCUBA–2 850 $\\mu$m imaging of the UDS field"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA catalog, sizes of the 52 SMGs",
+      "evidence": [
+       {
+        "loc": "2 Sample Selection",
+        "quote": "(cite: Simpson15b) construct a source catalog of 52 SMGs ($S_{870}$ = 1.3-12.9 mJy)"
+       }
+      ]
+     },
+     "citation": "(cite: Simpson15b); (cite: Simpson15)"
+    },
+    {
+     "what": {
+      "value": "UKIDSS UDS photometric redshifts",
+      "evidence": [
+       {
+        "loc": "3.1.1 Photometric Redshifts",
+        "quote": "The analysis was presented in (cite: Hartley13) and (cite: Mortlock13)"
+       }
+      ]
+     },
+     "citation": "(cite: Hartley13); (cite: Mortlock13)"
+    },
+    {
+     "what": {
+      "value": "ALESS photometry and redshifts for comparison",
+      "evidence": [
+       {
+        "loc": "4.1",
+        "quote": "we show the magnitude distributions for the 96 ALESS SMGs ((cite: Simpson14))"
+       }
+      ]
+     },
+     "citation": "(cite: Simpson14); (cite: Swinbank13)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibrated and imaged with CASA; details in Simpson15b",
+     "evidence": [
+      {
+       "loc": "2 Sample Selection",
+       "quote": "the data were calibrated and imaged using the Common Astronomy Software Application (; version 4.2.1)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "4.2.1",
+     "evidence": [
+      {
+       "loc": "2 Sample Selection",
+       "quote": "(; version 4.2.1)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2 Sample Selection",
+       "quote": "using Briggs weighting with robust = 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "uv-tapered detection images, beam 0.80'' x 0.65''",
+     "evidence": [
+      {
+       "loc": "2 Sample Selection",
+       "quote": "a set of $uv$–tapered “detection” images"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA data reduction and source extraction",
+      "evidence": [
+       {
+        "loc": "2 Sample Selection",
+        "quote": "For a detailed description of the data reduction and analysis we refer the reader to (cite: Simpson15b)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson15b)"
+    },
+    {
+     "what": {
+      "value": "SPIRE deblending procedure",
+      "evidence": [
+       {
+        "loc": "3.2 Far-infrared Imaging",
+        "quote": "we deblend the UDS maps following the procedure presented in (cite: Swinbank13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Swinbank13)"
+    },
+    {
+     "what": {
+      "value": "gas-to-dust ratio 90±25",
+      "evidence": [
+       {
+        "loc": "5.4 Dust Correction",
+        "quote": "We follow (cite: Swinbank13), who present a comparison of the dust masses"
+       }
+      ]
+     },
+     "from_reference": "(cite: Swinbank13)"
+    },
+    {
+     "what": {
+      "value": "870 um source sizes",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Intrinsic source size, corrected for synthesized beam, at observed 870 $\\mu$m (see (cite: Simpson15))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson15)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CLEAN parameters, cell/image size, masks (in Simpson15b)",
+    "ALMA calibrators and flux scale",
+    "Herschel prior catalog and deblending code details",
+    "Redshift PDFs needed for MCMC prior",
+    "Method for bootstrap errors and median uncertainties",
+    "Dust temperature prior range and SED normalisation details for optically thick fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "match ALMA SMGs to K-band catalog",
+    "method": {
+     "value": "positional match within 1'' after astrometric alignment; false-match test with 50,000 random positions",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "A matching radius of 1$''$ was adopted"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "random positions false matching rate",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "we first construct a catalog of 50,000 random positions within the area of the UKIDSS $K$–band image"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "photometric redshifts",
+    "method": {
+     "value": "eazy template fitting to eleven-band photometry (from Hartley13)",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "The template fitting code eazy (cite: Brammer08) was used to fit a library of seven template spectral energy distributions"
+      }
+     ]
+    },
+    "software": [
+     "eazy",
+     "SExtractor"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "zero-point calibration with 2146 spec-z",
+     "evidence": [
+      {
+       "loc": "Photometric Redshifts",
+       "quote": "First, a subset of 2146 spectroscopically-confirmed sources (excluding AGN) were used to calibrate the photometric redshifts, and correct for any zero-point offsets between the template SEDs and the UDS photometry."
+      }
+     ]
+    },
+    "validation": {
+     "value": "median dz/(1+z)=0.020, dispersion 0.031",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "median ($z_{\\rm phot}$-$z_{\\rm spec}$) / (1+$z_{\\rm spec}$) = 0.020, with a 1–$\\sigma$ dispersion of 0.031"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "deblend SPIRE",
+    "method": {
+     "value": "chi2 beam fitting at prior positions (24 um + ALMA)",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "The SPIRE maps are then deblended by fitting the appropriate beam at the position of each source in the prior catalog and minimizing the $\\chi^{2}$ statistic."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "simulations for upper limits",
+     "evidence": [
+      {
+       "loc": "Far-infrared Imaging",
+       "quote": "Upper limits for non-detections and appropriate error bars are determined through simulations (see (cite: Swinbank13))."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "optically thin FIR SED fit",
+    "method": {
+     "value": "modified blackbody with beta=1.8, redshift PDF prior, Sawicki12 chi2 for limits",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "The MCMC code is run using 50 “walkers” for a total 10$^6$ steps, following an initial, and conservative, burn–in phase of 10$^4$ steps."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "50 walkers, 10^6 steps, 10^4 burn-in",
+      "evidence": [
+       {
+        "loc": "Far-infrared SED Fitting",
+        "quote": "The MCMC code is run using 50 “walkers” for a total 10$^6$ steps, following an initial, and conservative, burn–in phase of 10$^4$ steps."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "beta = 1.8",
+      "evidence": [
+       {
+        "loc": "3.2.1",
+        "quote": "In our analysis we adopt $\\beta$ = 1.8"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee; flat prior on Td above CMB limit; redshift PDF prior",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "we place an additional, flat prior on the characteristic dust temperature of each source"
+      }
+     ]
+    },
+    "validation": {
+     "value": "chain well-mixed from time series",
+     "evidence": [
+      {
+       "loc": "Far-infrared SED Fitting",
+       "quote": "An analysis of the time-series data indicates that for each source the burn-in phase is complete and the chain is well–mixed."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "brightness temperature and optical depth",
+    "method": {
+     "value": "solve for T_B from 870um size; optically thick SED with size as prior, assuming same half-light radius at all FIR wavelengths",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "we assume that half-light radius of the observed emission at all far–infrared wavelengths is the same as that measured at 870 $\\mu$m"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "same size at all wavelengths (lower limits on tau)",
+      "evidence": [
+       {
+        "loc": "Luminosity Density, Brightness Temperature and Optical Depth",
+        "quote": "our assumption of a constant source size over-estimates the fraction of observed 250, 350 and 500 $\\mu$m flux density that is located within the observed 870–$\\mu$m half–light radius, and the optical depth and the true dust temperature derived in our analysis should be considered lower limits."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "as step 4",
+     "evidence": [
+      {
+       "loc": "Luminosity Density, Brightness Temperature and Optical Depth",
+       "quote": "The emission from each SMG is modeled using Eqn. [\\[eqn:tb\\]](#eqn:tb) and the fitting procedure described in § [3.2.1](#subsubsec:firfitting)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "beta 1.5 and 2.0 tests",
+     "evidence": [
+      {
+       "loc": "footnote 2",
+       "quote": "we repeat our analysis at a fixed value of $\\beta$ = 1.5 and 2.0"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "dust mass, N_H and A_V",
+    "method": {
+     "value": "dust mass with kappa; gas-to-dust 90; N_H=2.21e21 Av",
+     "evidence": [
+      {
+       "loc": "5.4",
+       "quote": "we assume a dust opacity of $\\kappa_{850{\\mu}\\mathrm{m}}$ = 0.07 m$^2$kg$^{-1}$ ((cite: James02))"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "gas-to-dust 90±25; uniform dust within half-light radius",
+      "evidence": [
+       {
+        "loc": "5.4",
+        "quote": "Adopting a gas–to-dust ratio of $\\delta_{gdr}$ = 90 $\\pm$ 25"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.1",
+    "used_for": {
+     "value": "calibration and imaging of ALMA data",
+     "evidence": [
+      {
+       "loc": "2 Sample Selection",
+       "quote": "(; version 4.2.1)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC SED fitting",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "affine-invariant, Markov Chain Monte Carlo (MCMC) sampler (emcee; (cite: EMCEE13))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "eazy",
+    "version": "not stated",
+    "used_for": {
+     "value": "photometric redshifts",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "The template fitting code eazy (cite: Brammer08)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SExtractor",
+    "version": "not stated",
+    "used_for": {
+     "value": "dual-image photometry",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "running Sextractor (cite: Bertin96) in “dual-image” mode"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "median photometric redshift (35 SMGs)",
+    "value": "2.65",
+    "uncertainty": "0.13",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "have a median redshift of $z_{\\mathrm{phot}}$ = 2.65 $\\pm$ 0.13"
+     }
+    ]
+   },
+   {
+    "quantity": "median redshift incl. unconstrained at z=3-6",
+    "value": "2.9",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "$z$ = 2.9 $\\pm$ 0.2"
+     }
+    ]
+   },
+   {
+    "quantity": "median L_FIR (24 SMGs, thin)",
+    "value": "3.4e12",
+    "uncertainty": "+0.2/-0.2",
+    "units": "Lsun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "$L_{\\mathrm{FIR}}$ = $3.4^{+0.2}_{-0.2}$ $\\times$10$^{12}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median characteristic Td",
+    "value": "32.9",
+    "uncertainty": "+0.4/-1.6",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "$T_{\\mathrm{d}}$ = $32.9^{+0.4}_{-1.6}$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "median brightness temperature",
+    "value": "25",
+    "uncertainty": "1-sigma range 20-32 K",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "median brightness temperature for the A2SUDS SMGs of 25 K, with a 1–$\\sigma$ range of 20–32 K"
+     }
+    ]
+   },
+   {
+    "quantity": "lambda_0 (tau=1)",
+    "value": ">=75",
+    "uncertainty": "1-sigma dispersion 55-90 um",
+    "units": "um",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "median optical depth of unity at $\\lambda_0$ (= $c$ / $\\nu_0$) $\\ge$ 75 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "quantity": "median dust mass (thick)",
+    "value": "6.3e8",
+    "uncertainty": "+1.1/-0.8",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$M_{d}$ = 6.3$_{-0.8}^{+1.1}$$\\times$10$^8$"
+     }
+    ]
+   },
+   {
+    "quantity": "median N_H",
+    "value": "9.8e23",
+    "uncertainty": "+1.4/-0.7",
+    "units": "cm^-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$N_{H}$ = 9.8$_{-0.7}^{+1.4}$$\\times$10$^{23}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "median A_V",
+    "value": "540",
+    "uncertainty": "+80/-40",
+    "units": "mag",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$A_\\mathrm{v}$ = 540$^{+80}_{-40}$ mag"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SMGs are cooler than local ULIRGs at fixed luminosity",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "appear to be significantly cooler at a fixed luminosity"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Dust emission in SMGs is optically thin",
+    "experiment": "Compare sizes, brightness temperatures and SEDs",
+    "result": "lambda_0 >= 75 um",
+    "finding": "Dust is optically thick at long wavelengths",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "the dust regions in these archetypal SMGs are optically–thick at a median wavelength of $\\lambda_0$ $\\ge$ 75 $\\mu$m"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Optical SED fitting captures SMG obscuration",
+    "experiment": "Derive A_V from dust mass and gas-to-dust ratio",
+    "result": "A_V = 540 mag vs ~2 mag from SED fitting",
+    "finding": "Stellar properties from SED fitting are unreliable",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "The magnitude of the $V$–band extinction in the AS2UDS SMGs is clearly in strong disagreement with estimates from optical–to–near–infrared SED fitting."
+     }
+    ]
+   },
+   {
+    "hypothesis": "SMGs are high-z ULIRG analogues",
+    "experiment": "Compare Td vs L_FIR with Symeonidis13",
+    "result": "~8 K cooler",
+    "finding": "SMGs are not scaled-up ULIRGs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "SMGs are $\\sim$ 8 K cooler, at a fixed far-infrared luminosity"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Constant size assumption makes optical depth and true Td lower limits",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "the optical depth and the true dust temperature derived in our analysis should be considered lower limits"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gas-to-dust ratio and opacity uncertain (factor ~3)",
+    "Photometric redshifts of SMGs may be less accurate",
+    "Equal-size assumption across FIR wavelengths"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "data available from ALMA archive, CADC, WSA",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "All data used in this analysis can be obtained from either the ALMA archive, the Canadian Data Archive Center (CADC / JCMT), or the WFCAM Science Archive (WSA / UKIDSS)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA imaging details (in Simpson15b)",
+    "UKIDSS photometric redshift PDFs",
+    "Herschel prior catalogs"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB (30 pointings, one ALMA Cycle 1 execution) plus ancillary catalogs",
+   "score_inferred": 3,
+   "score_reason": "Downstream analysis is well described but depends on earlier papers for ALMA reduction and on catalogs.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires multi-survey catalogs and previous-paper products not given here."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Simpson15b)",
+     "why": "ALMA data reduction and catalog"
+    },
+    {
+     "citation": "(cite: Swinbank13)",
+     "why": "SPIRE deblending and gas-to-dust ratio"
+    },
+    {
+     "citation": "(cite: Hartley13)",
+     "why": "photometric redshifts"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Simpson15)",
+     "why": "far-infrared sizes of SMGs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "S2CLS",
+    "UKIDSS UDS",
+    "HerMES"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-2e3af49d4c4513fe60dfb9dbb9b55910",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:36",
+  "usage": {
+   "input_tokens": 49976,
+   "output_tokens": 7328,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.087222,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 82,
+   "stated": 48,
+   "rate": 0.585
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:07",
+  "custom_id": "repair-sonnet-b13a8178509afda2ba25a2a9358c35b8",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "First, a subset of 2146 spectroscopically-confirmed sources (excluding AGN) were used to calibrate the photometric redshifts, and correct for any zero-point offsets between the template SEDs and the UDS photometry."
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "Upper limits for non-detections and appropriate error bars are determined through simulations (see (cite: Swinbank13))."
+   },
+   {
+    "path": "analysis_steps[3].key_parameters[0].evidence[0]",
+    "old": null,
+    "new": "The MCMC code is run using 50 “walkers” for a total 10$^6$ steps, following an initial, and conservative, burn–in phase of 10$^4$ steps."
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "An analysis of the time-series data indicates that for each source the burn-in phase is complete and the chain is well–mixed."
+   },
+   {
+    "path": "analysis_steps[4].assumptions[0].evidence[0]",
+    "old": null,
+    "new": "our assumption of a constant source size over-estimates the fraction of observed 250, 350 and 500 $\\mu$m flux density that is located within the observed 870–$\\mu$m half–light radius, and the optical depth and the true dust temperature derived in our analysis should be considered lower limits."
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "The emission from each SMG is modeled using Eqn. [\\[eqn:tb\\]](#eqn:tb) and the fitting procedure described in § [3.2.1](#subsubsec:firfitting)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

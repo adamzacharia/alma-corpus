@@ -1,0 +1,175 @@
+{
+ "bibcode": "2021A&A...649A.125W",
+ "title": "HCN (1‒0) opacity of outflowing gas in Arp 220W",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202140433",
+ "arxiv_id": "2104.02896",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "What is the HCN/H13CN 1-0 line ratio, and hence the HCN 1-0 opacity, in the molecular outflow of Arp 220W?",
+ "alma_project_codes": [
+  "2015.1.00702.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCN/H13CN 1-0 ratio of about five for whole Arp 220 (IRAM 30m)",
+    "evidence": [
+     {
+      "loc": "3.2 HCN/H13CN 1-0 line ratio",
+      "quote": "The HCN/H$^{13}$CN 1-0 ratio in the entire system of Arp 220 is about five according to single-dish observations with IRAM 30-meter telescope"
+     }
+    ]
+   },
+   "citation": "(cite: 2016MNRAS.455.3986W)"
+  },
+  {
+   "what": {
+    "value": "12C/13C = 40 in Arp 220",
+    "evidence": [
+     {
+      "loc": "4.1 HCN 1-0 opacity in the outflowing gas",
+      "quote": "The $^{12}$C/$^{13}$C ratio in Arp 220 was updated to be 40 with ALMA observations of $^{12}$CO 3-2 and $^{13}$CO 4-3"
+     }
+    ]
+   },
+   "citation": "(cite: 2020ApJ...896...43W)"
+  },
+  {
+   "what": {
+    "value": "Abundance ratio HCN/H13CN of 100",
+    "evidence": [
+     {
+      "loc": "4.1 HCN 1-0 opacity in the outflowing gas",
+      "quote": "namely 100, which was suggested by (cite: 2011A&A...527A..36M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011A&A...527A..36M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes and maps",
+   "method": "tclean cube with natural weighting; continuum from line-free channels; velocity-integrated maps of HCN and H13CN wings",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure wing fluxes and line ratio limits",
+   "method": "Integrate spectra over red 5620-5800 and blue 4860-5040 km/s; 3 sigma upper limits for H13CN; ratio in brightness temperature",
+   "software": [],
+   "key_parameters": [
+    "uncertainty = sigma_rms x sqrt(dv DeltaV), dv ~13.2 km/s, DeltaV=180 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive HCN opacity",
+   "method": "Ratio of line intensities with tau(H13CN)/tau(HCN) set by 13C/12C abundance ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCN/H13CN abundance ratio 100 (or 40 from updated 12C/13C)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCN 1-0 flux, red wing",
+   "value": "631.1",
+   "uncertainty": "22.5",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 HCN/H13CN 1-0 line ratio",
+     "quote": "is 631.1$\\pm$22.5 mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 1-0 flux, blue wing",
+   "value": "794.1",
+   "uncertainty": "27.7",
+   "units": "mJy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 HCN/H13CN 1-0 line ratio",
+     "quote": "794.1$\\pm$27.7 mJy km s$^{-1}$ for the blue wing"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/H13CN 1-0 ratio lower limit, red and blue wings",
+   "value": ">9.5 and >9.7",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 HCN/H13CN 1-0 line ratio",
+     "quote": "line ratios of HCN/H$^{13}$CN 1-0 greater than 9.5 and 9.7 in the red and blue wings"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/H13CN ratio lower limit, combined wings",
+   "value": ">13.3",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 HCN 1-0 opacity in the outflowing gas",
+     "quote": "which gives a ratio of greater than 13.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN 1-0 opacity upper limit (12C/13C=40)",
+   "value": "<4.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCN 1-0 (blue)   |   794.1$\\pm$27.7    |    $<$4.4"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "Line-free channels for continuum",
+  "Cleaning threshold, masks and iterations",
+  "Exact coordinates and distance of Arp 220W",
+  "Box coordinates for spectral extraction",
+  "Beam size and rms of the cubes",
+  "Brightness temperature conversion details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and clean parameters",
+  "Extraction box positions",
+  "Line-free channels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple recipe, but imaging and extraction details are missing.",
+ "rediscovery_reason": "Public data, simple flux and ratio calculation with numeric limits, though extraction regions are not given.",
+ "source_card": "cards/2021A%26A...649A.125W/sonnet/card.md"
+}

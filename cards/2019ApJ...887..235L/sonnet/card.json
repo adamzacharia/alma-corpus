@@ -1,0 +1,948 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...887..235L",
+  "title": "Automated Mining of the ALMA Archive in the COSMOS Field (A<SUP>3</SUP>COSMOS). II. Cold Molecular Gas Evolution out to Redshift 6",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Liu, Daizhong",
+  "n_authors": 16,
+  "arxiv_id": "1910.12883",
+  "doi": "10.3847/1538-4357/ab578d",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00064.S",
+   "2011.0.00097.S",
+   "2011.0.00539.S",
+   "2011.0.00742.S",
+   "2012.1.00076.S",
+   "2012.1.00323.S",
+   "2012.1.00523.S",
+   "2012.1.00536.S",
+   "2012.1.00919.S",
+   "2012.1.00952.S",
+   "2012.1.00978.S",
+   "2013.1.00034.S",
+   "2013.1.00092.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00171.S",
+   "2013.1.00208.S",
+   "2013.1.00276.S",
+   "2013.1.00668.S",
+   "2013.1.00815.S",
+   "2013.1.00884.S",
+   "2013.1.00914.S",
+   "2013.1.01258.S",
+   "2013.1.01292.S",
+   "2015.1.00026.S",
+   "2015.1.00055.S",
+   "2015.1.00122.S",
+   "2015.1.00137.S",
+   "2015.1.00260.S",
+   "2015.1.00299.S",
+   "2015.1.00379.S",
+   "2015.1.00388.S",
+   "2015.1.00540.S",
+   "2015.1.00568.S",
+   "2015.1.00664.S",
+   "2015.1.00704.S",
+   "2015.1.00853.S",
+   "2015.1.00861.S",
+   "2015.1.00862.S",
+   "2015.1.00928.S",
+   "2015.1.01074.S",
+   "2015.1.01105.S",
+   "2015.1.01111.S",
+   "2015.1.01171.S",
+   "2015.1.01212.S",
+   "2015.1.01495.S",
+   "2015.1.01590.S",
+   "2015.A.00026.S",
+   "2016.1.00478.S",
+   "2016.1.00624.S",
+   "2016.1.00735.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Our A$^3$COSMOS dataset contains $\\sim700$ galaxies ($0.3 \\lesssim z \\lesssim 6$) with high-confidence ALMA detections in the (sub-)millimeter continuum and multi-wavelength spectral energy distributions (SEDs)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "A3COSMOS galaxy sample in the COSMOS field",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "0.29–5.667 (spectroscopic or photometric)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "a large ($\\sim700$), robust galaxy sample at $0.3 < z \\lesssim 6$ in the 2 deg$^2$ COSMOS field (cite: Scoville2007) from the A$^3$COSMOS project"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "COSMOS spec-z compilation, Laigle2016/Davidzon2017 and Jin2018 photo-z",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "a large ($\\sim700$), robust galaxy sample at $0.3 < z \\lesssim 6$ in the 2 deg$^2$ COSMOS field (cite: Scoville2007) from the A$^3$COSMOS project"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do the molecular gas depletion time and gas-to-stellar-mass ratio of galaxies depend on stellar mass, offset from the main sequence and cosmic age out to z~6, and what cosmic molecular gas density evolution follows?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we parameterize galaxies’ molecular gas depletion time ($\\tau_{\\mathrm{depl}}$) and molecular gas to stellar mass ratio ($\\mu_{\\mathrm{molgas}}$) each as a function of the stellar mass ($M_{\\star}$), offset from the star-forming main sequence ($\\Delta{\\mathrm{MS}}$) and cosmic age (or redshift)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Mostly ALMA Band 6 and 7 (all public archival bands used)",
+    "evidence": [
+     {
+      "loc": "3.2.1 Band conversion",
+      "quote": "Our high-redshift galaxies are most commonly observed in ALMA Band 6 and 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Data with beam size < 0.1'' discarded",
+    "evidence": [
+     {
+      "loc": "2.1 The A3COSMOS Galaxy Sample",
+      "quote": "discarded very high resolution (beam size $< 0.1''$) data"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Public ALMA archival data, release date up to Aug. 1st, 2018",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "All A$^3$COSMOS galaxies have robust (sub-)mm continuum detections from public ALMA archival data (release date up to Aug. 1st, 2018)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "CO-observed literature samples (PHIBSS, xCOLD GASS, etc.)",
+     "provided": {
+      "value": "20 complementary samples of CO-detected galaxies at 0<z<4 for combined fitting",
+      "evidence": [
+       {
+        "loc": "2.2 Complementary Local-to-High-Redshift Galaxy Samples",
+        "quote": "We include 20 samples of galaxies with CO observations and well-constrained stellar mass and SFR properties from the literature"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "A3COSMOS catalog (continuum photometry, MAGPHYS M*, L_IR, Mdust) from the companion paper",
+      "evidence": [
+       {
+        "loc": "2.1 The A3COSMOS Galaxy Sample",
+        "quote": "Galaxy properties in the A$^3$COSMOS galaxy catalog, including stellar mass ($M_{\\star}$), IR luminosity ($L_{\\mathrm{IR}}$) and dust mass ($M_{\\mathrm{dust}}$), are obtained from MAGPHYS"
+       }
+      ]
+     },
+     "citation": "Liu et al. 2019 (cite: Liudz2019)"
+    },
+    {
+     "what": {
+      "value": "RJ-tail calibration alpha_850 luminosity-dependent",
+      "evidence": [
+       {
+        "loc": "3.2 Molecular Gas Mass from RJ-tail Dust Continuum",
+        "quote": "we will adopt the three calibrations from , (cite: Hughes2017) and (cite: Groves2015)"
+       }
+      ]
+     },
+     "citation": "(cite: Hughes2017)"
+    },
+    {
+     "what": {
+      "value": "Main sequence function, #49 fit of Table 7 (cosmic age)",
+      "evidence": [
+       {
+        "loc": "5 Fitting",
+        "quote": "we adopt the MS function from the #49 fitting of Table 7 of (cite: Speagle2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Speagle2014)"
+    },
+    {
+     "what": {
+      "value": "SIDES mock galaxy catalog",
+      "evidence": [
+       {
+        "loc": "7.3",
+        "quote": "The “SIDES” simulation (cite: Bethermin2017Model) generated 1,489,629 mock galaxies within a 2 deg$^2$ lightcone"
+       }
+      ]
+     },
+     "citation": "(cite: Bethermin2017Model)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "SIDES mock catalog used to integrate molecular gas density with log M*>9 star-forming galaxies",
+     "evidence": [
+      {
+       "loc": "7.3",
+       "quote": "We use the SIDES mock galaxy catalog and select $\\log_{10}M_{\\star}>9.0$ star-forming galaxies"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Continuum imaging, photometry extraction, flux bias correction, SED fitting and catalog flags",
+      "evidence": [
+       {
+        "loc": "2.1",
+        "quote": "We developed pipelines for producing continuum images using nearly all publicly available ALMA archival data in COSMOS"
+       }
+      ]
+     },
+     "from_reference": "paper I (cite: Liudz2019)"
+    },
+    {
+     "what": {
+      "value": "Metallicity-dependent alpha_CO for complementary samples",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "we recalculated all molecular gas masses from the CO line luminosities by applying the metallicity-dependent $\\alpha_{\\mathrm{CO}}$ following ."
+       }
+      ]
+     },
+     "from_reference": "Accurso2017/Genzel2015 as cited in text"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact catalog entries (A3COSMOS v20180801) with MAGPHYS outputs must be obtained from paper I",
+    "Priors and sampler settings in pymc3 beyond the (-10,10) coefficient range, and how uncertainties/weights enter the chi2",
+    "ALMA project codes not printed in text",
+    "Exact uncertainties used for gas masses in fitting",
+    "Details of the Genzel2015 alpha_CO-metallicity relation used"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select robust A3COSMOS sample",
+    "method": {
+     "value": "Apply S/N cuts (5.40 blind, 4.35 prior) and remove flagged sources (inconsistent flux, outlier CPA, outlier SED)",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "a peak flux to rms noise ratio of 5.40 for blind extraction and 4.35 for prior photometry"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Monte Carlo simulations in paper I; spurious fraction near zero",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "the spurious fraction is reduced to close to zero according to our statistics in paper"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compute gas masses via band conversion and RJ-tail calibration",
+    "method": {
+     "value": "Scale ALMA flux by MAGPHYS SED ratio Gamma to rest-frame 850 um, compute luminosity, divide by Hughes2017 alpha_850; compare with dust-SED delta_GDR and Groves2015 methods",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "then we scale the observed ALMA flux density by $\\Gamma^{\\mathrm{SED}}$ and compute the luminosity"
+      }
+     ]
+    },
+    "software": [
+     "MAGPHYS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Gas mass purely molecular, atomic gas ignored; metallicity from modified Genzel2015 MZR; delta_GDR from Remy-Ruyer2014",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "we obtain the dust-SED-based $M_{\\mathrm{mol\\,gas}}$ by multiplying $M_{\\mathrm{dust}}$ with the mass–metallicity-derived $\\delta_{\\mathrm{GDR}}$ and ignore the contribution from atomic gas"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Band conversion bias tested with JINGLE galaxies",
+     "evidence": [
+      {
+       "loc": "Appendix 10",
+       "quote": "we have done some tests using the multi-wavelength data from UV to submm for the JINGLE survey galaxy sample"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit functional forms for tau_depl and mu_molgas",
+    "method": {
+     "value": "Multivariate fit of log tau_depl and log mu_molgas versus DeltaMS, log M*, cosmic age to combined 1663-galaxy sample; also re-fit Scoville2017 and Tacconi2018 forms",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "We use the `Python` packages `pymc3` and `scipy.optimize.curve_fit` for the fitting"
+      }
+     ]
+    },
+    "software": [
+     "pymc3",
+     "scipy.optimize.curve_fit",
+     "corner"
+    ],
+    "key_parameters": [
+     {
+      "value": "Coefficients allowed in range (-10,10)",
+      "evidence": [
+       {
+        "loc": "Appendix 11",
+        "quote": "In the fitting we allow the coefficients to vary within a relatively large range of $(-10,10)$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Speagle2014 MS with cosmic age used for DeltaMS",
+      "evidence": [
+       {
+        "loc": "5",
+        "quote": "Here we adopt the MS function from the #49 fitting of Table 7 of (cite: Speagle2014)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC (pymc3) and least-squares (curve_fit), agree well",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "The two algorithms agree very well, and the former one provides better uncertainty estimates for the fitted parameters."
+      }
+     ]
+    },
+    "validation": {
+     "value": "chi2 comparison; subsample tests without z>4 and without z>1 CO; alternative gas calibrations",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "we tested the stability of our fitting for subsamples of galaxies: (a) only $z<4$ data, and (b) without $z>1$ CO"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive cosmic molecular gas mass density",
+    "method": {
+     "value": "Sum SMF x M* x mu_molgas for MS galaxies (M*>1e9), and alternative sum over SIDES mock galaxies",
+     "evidence": [
+      {
+       "loc": "7.2",
+       "quote": "we integrate only down to $M_{\\star}=10^{9.0}\\;\\mathrm{M}_{\\odot}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "SMFs adapted from Peng2010/Davidzon2017 shapes normalized to integrated CSFRD",
+      "evidence": [
+       {
+        "loc": "Appendix 12",
+        "quote": "we adopt the shape of our SMF from an interpolation of the (cite: Davidzon2017) SMFs"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to CO blind surveys and SAM of Popping2019",
+     "evidence": [
+      {
+       "loc": "7.3",
+       "quote": "At higher redshifts ($z>0.5$) our curve coincidentally agrees with the Semi-Analytic Model (SAM) simulation by (cite: Popping2019)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MAGPHYS",
+    "version": "not stated",
+    "used_for": {
+     "value": "SED fitting for M*, L_IR, Mdust and band conversion",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "are obtained from MAGPHYS ((cite: daCunha2008; daCunha2015)) SED fitting"
+      }
+     ]
+    }
+   },
+   {
+    "name": "FAST",
+    "version": "not stated",
+    "used_for": {
+     "value": "independent stellar mass check",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "with the FAST ((cite: Kriek2009)) and “SUPER-DEBLENDED” ((cite: Liudz2017; Jin2018)) SED fitting tools"
+      }
+     ]
+    }
+   },
+   {
+    "name": "pymc3",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting of functional forms",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "The former package performs Markov chain Monte Carlo (MCMC) fitting to calculate the probability distribution of the fitting"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy.optimize.curve_fit",
+    "version": "not stated",
+    "used_for": {
+     "value": "least-squares fitting",
+     "evidence": [
+      {
+       "loc": "5",
+       "quote": "the latter one performs least-chi-square minimization to find the best fit"
+      }
+     ]
+    }
+   },
+   {
+    "name": "corner",
+    "version": "not stated",
+    "used_for": {
+     "value": "posterior probability plots",
+     "evidence": [
+      {
+       "loc": "Appendix 11",
+       "quote": "as automatically determined by the `Python` package `corner`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "log tau_depl coefficient a",
+    "value": "-0.5724",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5",
+      "quote": "a  = -0.5724, \\ \\mathsf{b}  = -0.5174"
+     }
+    ]
+   },
+   {
+    "quantity": "log mu_molgas coefficient a",
+    "value": "+0.4195",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5",
+      "quote": "a  = +0.4195, \\ \\mathsf{b}  = -0.6906"
+     }
+    ]
+   },
+   {
+    "quantity": "reduced chi2 for mu_molgas, this work's form",
+    "value": "0.86",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table of fits",
+      "quote": "1663  | 1426.98  | 0.86"
+     }
+    ]
+   },
+   {
+    "quantity": "Total sample with gas measurements",
+    "value": "1,663",
+    "uncertainty": "not stated",
+    "units": "galaxies",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4",
+      "quote": "In total, we have 1,663 galaxies with redshift, SFR, stellar mass and molecular gas mass measurements."
+     }
+    ]
+   },
+   {
+    "quantity": "Local tau_depl predictions for M*=3e9, 3e10, 3e11, 3e12",
+    "value": "0.7, 1.3, 2.6, 5.0",
+    "uncertainty": "not stated",
+    "units": "Gyr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "their $\\tau_{\\mathrm{depl}}=0.7$, 1.3, 2.6 and 5.0 Gyr, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Band conversion under-prediction at z>4",
+    "value": "factor 2–6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "5",
+      "quote": "our SED fitting tends to underestimate their true R-J tail dust continuum by a factor of 2–6"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Functional form implies downsizing and mass-quenching",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "implies a “downsizing” effect (i.e., more-massive galaxies evolve earlier than less-massive ones) and “mass-quenching”"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does a new functional form fit gas fraction and depletion time better than Tacconi2018 and Scoville2017 forms?",
+    "experiment": "Fit three forms to the combined 1663-galaxy sample",
+    "result": "Reduced chi2 0.86 vs 0.87 (re-fit Tacconi) and 1.26 (re-fit Scoville); original-literature fits worse",
+    "finding": "The new form is statistically better",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our proposed functional form provides a statistically better fit to current data (than functional forms in the literature)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the gas fraction function reproduce the cosmic molecular gas density to z=6?",
+    "experiment": "Integrate SMF x mu_molgas and SIDES mock galaxies",
+    "result": "Agrees with CO blind surveys' upper bounds and SAM of Popping2019",
+    "finding": "Coherent picture of gas, SFR and stellar mass evolution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we for the first time infer the cosmic cold molecular gas density evolution out to redshift 6 and find agreement with CO blind surveys as well as semi-analytic modeling"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Lowering S/N threshold to 3.0 doubles sample but 40% spurious",
+     "evidence": [
+      {
+       "loc": "2.1",
+       "quote": "however 40% of the sample will be spurious based on our simulation statistics"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Band conversion underestimates RJ-tail flux at z>4 lacking long-wavelength data",
+     "evidence": [
+      {
+       "loc": "8 Summary",
+       "quote": "it potentially results in a factor of 2–6 underestimation of gas mass at $z>4$"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Heterogeneous sample, with dust-based gas masses at high z and CO at low z, confounds redshift evolution",
+    "Atomic gas ignored and metallicity inferred from relations",
+    "MAGPHYS stellar masses 0.25 dex above FAST"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public ALMA archival data",
+    "evidence": [
+     {
+      "loc": "1",
+      "quote": "All A$^3$COSMOS galaxies have robust (sub-)mm continuum detections from public ALMA archival data"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Python package for calculating the functions via ASCL",
+     "evidence": [
+      {
+       "loc": "Footnote 5",
+       "quote": "We also provide a `Python` package for the calculation with our functions: <https://ascl.net/code/v/2377>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Full catalog from paper I and complementary-sample tables",
+    "pymc3 sampler configuration",
+    "ALMA project code list in text"
+   ],
+   "estimated_data_volume_inferred": "Large for full re-processing (~50 archival projects), but catalog-level analysis needs only small tables",
+   "score_inferred": 3,
+   "score_reason": "Fitting uses a public catalog and well-specified functional forms, but the ALMA processing is deferred to paper I and sample compilation is complex.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires the paper I catalog and many literature tables; recipe is only partly specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Liu et al. 2019 (cite: Liudz2019)",
+     "why": "A3COSMOS imaging pipeline, photometry, catalog"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Liudz2019)",
+     "why": "Paper I of A3COSMOS"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "A3COSMOS",
+    "PHIBSS",
+    "ASPECS",
+    "COLDz",
+    "xCOLD GASS",
+    "JINGLE"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e1bebc5e6701067add7814805bc1d64c",
+  "batch_id": "msgbatch_01NyPpV8KwpU3YmZSqJaEUmN",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:14:28",
+  "usage": {
+   "input_tokens": 80781,
+   "output_tokens": 6766,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.115218,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 46,
+  "quotes_ok": 46,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00064.S",
+   "2011.0.00097.S",
+   "2011.0.00539.S",
+   "2011.0.00742.S",
+   "2012.1.00076.S",
+   "2012.1.00323.S",
+   "2012.1.00523.S",
+   "2012.1.00536.S",
+   "2012.1.00919.S",
+   "2012.1.00952.S",
+   "2012.1.00978.S",
+   "2013.1.00034.S",
+   "2013.1.00092.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00171.S",
+   "2013.1.00208.S",
+   "2013.1.00276.S",
+   "2013.1.00668.S",
+   "2013.1.00815.S",
+   "2013.1.00884.S",
+   "2013.1.00914.S",
+   "2013.1.01258.S",
+   "2013.1.01292.S",
+   "2015.1.00026.S",
+   "2015.1.00055.S",
+   "2015.1.00122.S",
+   "2015.1.00137.S",
+   "2015.1.00260.S",
+   "2015.1.00299.S",
+   "2015.1.00379.S",
+   "2015.1.00388.S",
+   "2015.1.00540.S",
+   "2015.1.00568.S",
+   "2015.1.00664.S",
+   "2015.1.00704.S",
+   "2015.1.00853.S",
+   "2015.1.00861.S",
+   "2015.1.00862.S",
+   "2015.1.00928.S",
+   "2015.1.01074.S",
+   "2015.1.01105.S",
+   "2015.1.01111.S",
+   "2015.1.01171.S",
+   "2015.1.01212.S",
+   "2015.1.01495.S",
+   "2015.1.01590.S",
+   "2015.A.00026.S",
+   "2016.1.00478.S",
+   "2016.1.00624.S",
+   "2016.1.00735.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 37,
+   "rate": 0.487
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T16:55:25",
+  "custom_id": "sonnet-repair-claude-code",
+  "fixed": [
+   {
+    "path": "claims[0].evidence[0]",
+    "old": "our proposed functional form ... gives statistically better fits to the data in this work than both the",
+    "new": "Our proposed functional form provides a statistically better fit to current data (than functional forms in the literature)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,406 @@
+{
+ "bibcode": "2023A&A...670A.177F",
+ "title": "Millimetre and sub-millimetre spectroscopy of doubly deuterated acetaldehyde (CHD<SUB>2</SUB>CHO) and first detection towards IRAS 16293-2422",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245442",
+ "arxiv_id": "2301.06315",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Can doubly deuterated acetaldehyde (CHD2CHO) be detected in the interstellar medium towards IRAS 16293-2422 using a new laboratory spectroscopic catalogue, and what are its column density and D2/D ratio?",
+ "alma_project_codes": [
+  "2013.1.00278.S",
+  "2013.0.00278.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5'' (70 au)",
+  "sensitivity": "4–5 mJy beam^-1 per 1 km s^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previously measured microwave transitions of CHD2CHO",
+    "evidence": [
+     {
+      "loc": "Spectroscopic investigation of",
+      "quote": "In this section, the experimental spectrum is described and, after briefly outlining the IAM approach, the fitting of previously available microwave transitions (cite: turner:76; turner:81) and of the newly measured submillimetre ones is reported."
+     }
+    ]
+   },
+   "citation": "(cite: turner:76; turner:81)"
+  },
+  {
+   "what": {
+    "value": "Energy difference E_d' for the monodeuterated species CH2DCHO (15.55866(4) cm^-1)",
+    "evidence": [
+     {
+      "loc": "Theory",
+      "quote": "Since $E_{d}'$, first estimated by (cite: turner:81) and (cite: cox:03) and determined later with a higher accuracy by (cite: coudert:19), is $15.558\\,66(4)$ cm$^{-1}$, we obtain $E_d= 14.487$ cm$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: turner:81), (cite: cox:03), (cite: coudert:19)"
+  },
+  {
+   "what": {
+    "value": "Molecular structure and dipole moment components for acetaldehyde",
+    "evidence": [
+     {
+      "loc": "Theory",
+      "quote": "Table 1 of the present paper lists computed values for the rotational constants and dipole moment components of the In and Out configurations as retrieved from the structure of (cite: kilb:57) and the dipole moment components reported in Table 16 of (cite: turner:78) for ."
+     }
+    ]
+   },
+   "citation": "(cite: kilb:57), (cite: turner:78)"
+  },
+  {
+   "what": {
+    "value": "Column density of singly deuterated acetaldehyde CH2DCHO (6.2 x 10^15 cm^-2) and D/H ratio towards IRAS 16293-2422",
+    "evidence": [
+     {
+      "loc": "Astrophysical observations",
+      "quote": "The derived column density can be compared to that of the singly deuterated variant, CH$_2$DCHO, of $6.2\\times10^{15}$ cm$^{-2}$ (cite: manigand:20)."
+     },
+     {
+      "loc": "Discussion of astronomical observational results",
+      "quote": "The acetaldehyde D$_{2}$/D ratio found in this work and the D/H ratio from (cite: manigand:20) combined with a gas-grain chemical model can potentially shed light on the formation mechanism of singly- and multi-deuterated acetaldehyde."
+     }
+    ]
+   },
+   "citation": "(cite: manigand:20)"
+  },
+  {
+   "what": {
+    "value": "Doubly-to-singly deuterated ratios towards IRAS 16293-2422 for methyl formate (22%), dimethylether (15-20%), and methanol (25%)",
+    "evidence": [
+     {
+      "loc": "Astrophysical observations",
+      "quote": "The ratio between the singly and doubly deuterated variants of 20% is very close to those for methyl formate (CHD$_2$OCHO/CH$_2$DOCHO) of 22% (cite: manigand:19), dimethylether (CH$_3$OCHD$_2$/CH$_2$OCH$_2$D) of 15-20% (cite: richard:21) and methanol (CHD$_{2}$OH/CH$_{2}$DOH) of 25% (cite: drozdovskaya:22)"
+     }
+    ]
+   },
+   "citation": "(cite: manigand:19), (cite: richard:21), (cite: drozdovskaya:22)"
+  },
+  {
+   "what": {
+    "value": "Average column density of CH3CHO towards starless cores (2 x 10^12 cm^-2) and [CH3CHO]/[CH3OH] ratios (0.02 to 0.26)",
+    "evidence": [
+     {
+      "loc": "Discussion of astronomical observational results",
+      "quote": "Acetaldehyde is less abundant than methanol in pre-stellar cores with a \\[CH$_{3}$CHO\\]/\\[CH$_{3}$OH\\] ratios betweewn 0.02 and 0.26 (cite: scibelli:20)."
+     },
+     {
+      "loc": "Discussion of astronomical observational results",
+      "quote": "We base our estimate on the average column density of observed towards starless cores in (cite: scibelli:20) (2$\\times10^{12}$ cm$^{-2}$), and assuming the D/H and D$_{2}$/H ratio observed towards IRAS16293."
+     }
+    ]
+   },
+   "citation": "(cite: scibelli:20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure laboratory rotational spectrum and build spectroscopic catalogue for CHD2CHO",
+   "method": "Record rotational transitions between 82.5 and 450 GHz in the laboratory, combine with archival microwave transitions, fit with an effective IAM/Watson A-set Hamiltonian using weighted least-squares, and compute a JPL-format line catalogue up to J=28",
+   "software": [
+    "Gaussian 16"
+   ],
+   "key_parameters": [
+    "Frequency range = 82.5–450 GHz, 853 transitions fitted, 40 spectroscopic constants varied",
+    "Catalogue up to J = 28, LOGSTR0 = -8, LOGSTR1 = -8, minimum calculated error = 10 kHz"
+   ],
+   "assumptions": [
+    "E_d = 14.487 cm^-1 computed from ab initio B3LYP/6-31G(d) ratio r = E_d/E_d' = 0.9311 and CH2DCHO E_d' = 15.55866(4) cm^-1",
+    "Zero energy set at Out configurations 0_00,+ level; rotational partition function degeneracy factor = (2J+1)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Search for CHD2CHO and fit LTE synthetic spectra to ALMA PILS data",
+   "method": "Extract spectrum at position offset by one beam (0.5'') from IRAS 16293-2422 B and fit LTE synthetic spectra across the Band 7 frequency range (329.1–362.9 GHz)",
+   "software": [],
+   "key_parameters": [
+    "Line width (FWHM) = 1 km s^-1, velocity offset (v_LSR) = 2.6 km s^-1, T_rot = 125 K",
+    "68 transitions predicted to be brighter than 40 mJy beam^-1 km s^-1 inspected over 329.1–362.9 GHz"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE) excitation",
+    "Rotational temperature fixed at T_rot = 125 K, matching non-deuterated and singly-deuterated isotopologues of acetaldehyde"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute D2/D ratio for acetaldehyde and estimate 3 mm line brightness towards pre-stellar cores",
+   "method": "Compare derived CHD2CHO column density with literature CH2DCHO column density towards IRAS 16293-2422 B, and estimate 3 mm band line brightnesses in pre-stellar cores from average starless core CH3CHO column density",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Assume average starless core CH3CHO column density of 2 x 10^12 cm^-2 from Scibelli & Shirley (2020) and D/H and D2/H ratios equal to those observed towards IRAS 16293-2422"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of fitted rotational transitions of CHD2CHO",
+   "value": "853",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "A line position analysis is carried out allowing us to reproduce 853 transition frequencies with a weighted root mean square standard deviation of 1.7, varying 40 spectroscopic constants."
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted root mean square standard deviation of spectroscopic fit",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "A line position analysis is carried out allowing us to reproduce 853 transition frequencies with a weighted root mean square standard deviation of 1.7, varying 40 spectroscopic constants."
+    }
+   ]
+  },
+  {
+   "quantity": "RMS residual (observed minus calculated frequency) for all transitions",
+   "value": "83",
+   "uncertainty": "not stated",
+   "units": "kHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "The root mean square value of the observed minus calculated frequency is 81 kHz for transitions within the In configuration, 88 kHz for transitions within the Out configurations, and 83 kHz for all transitions."
+    }
+   ]
+  },
+  {
+   "quantity": "Energy difference E_d between In and Out configurations of CHD2CHO",
+   "value": "14.487",
+   "uncertainty": "not stated",
+   "units": "cm^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Theory",
+     "quote": "Since $E_{d}'$, first estimated by (cite: turner:81) and (cite: cox:03) and determined later with a higher accuracy by (cite: coudert:19), is $15.558\\,66(4)$ cm$^{-1}$, we obtain $E_d= 14.487$ cm$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A^In of CHD2CHO",
+   "value": "47940.4115",
+   "uncertainty": "0.0057",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $A^{{\\rm In}}$ | $\\times10^{-3}$ | 47 | 940 411 5(57) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B^In of CHD2CHO",
+   "value": "8778.6906",
+   "uncertainty": "0.0014",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $B^{{\\rm In}}$ | $\\times10^{-3}$ | 8 | 778 690 6(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C^In of CHD2CHO",
+   "value": "8175.0645",
+   "uncertainty": "0.0013",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $C^{{\\rm In}}$ | $\\times10^{-3}$ | 8 | 175 064 5(13) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant A^Out of CHD2CHO",
+   "value": "45141.6390",
+   "uncertainty": "0.0039",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $A^{{\\rm Out}}$ | $\\times10^{-3}$ | 45 | 141 639 0(39) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B^Out of CHD2CHO",
+   "value": "9176.20044",
+   "uncertainty": "0.00090",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $B^{{\\rm Out}}$ | $\\times10^{-3}$ | 9 | 176 200 44(90) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C^Out of CHD2CHO",
+   "value": "8187.14615",
+   "uncertainty": "0.00081",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $C^{{\\rm Out}}$ | $\\times10^{-3}$ | 8 | 187 146 15(81) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Tunneling splitting parameter h_2",
+   "value": "-91.824",
+   "uncertainty": "0.022",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| $h_2$ | | \\-$-$91 | 824(22) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational partition function Q_rot at 300 K",
+   "value": "44014.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| | | 300 | 44014.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational partition function Q_rot at 225 K",
+   "value": "28438.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| | | 225 | 28438.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational partition function Q_rot at 150 K",
+   "value": "15262.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Line assignment and line analysis",
+     "quote": "| | | 150 | 15262.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CHD2CHO towards IRAS 16293-2422 B",
+   "value": "1.3e15",
+   "uncertainty": "10-20%",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The first detection of the species allows for the derivation of its column density with a value of 1.3$\\times$10$^{15}$ cm$^{-2}$ and an uncertainty of 10-20%."
+    },
+    {
+     "loc": "Astrophysical observations",
+     "quote": "Several clean and unblended transitions are seen providing a good constraint on the CHD$_2$CHO column density of 1.3$\\times 10^{15}$ cm$^{-2}$ with an uncertainty of 10-20%"
+    }
+   ]
+  },
+  {
+   "quantity": "CHD2CHO / CH2DCHO (D2/D) column density ratio towards IRAS 16293-2422 B",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The resulting D$_{2}$/D ratio of $\\sim$ 20% is found to be coincident with D$_{2}$/D ratios derived for other complex organic molecules towards IRAS 16293-2422"
+    },
+    {
+     "loc": "Astrophysical observations",
+     "quote": "The ratio between the singly and doubly deuterated variants of 20% is very close to those for methyl formate (CHD$_2$OCHO/CH$_2$DOCHO) of 22% (cite: manigand:19)"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted 3 mm line brightness of singly deuterated acetaldehyde (CH2DCHO) towards pre-stellar cores",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion of astronomical observational results",
+     "quote": "We estimate the line brightness of the most intense lines of the singly and doubly deuterated acetaldehyde in the 3 mm band towards pre-stellar cores to be 4.3 mK and 0.5 mK, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted 3 mm line brightness of doubly deuterated acetaldehyde (CHD2CHO) towards pre-stellar cores",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "mK",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion of astronomical observational results",
+     "quote": "We estimate the line brightness of the most intense lines of the singly and doubly deuterated acetaldehyde in the 3 mm band towards pre-stellar cores to be 4.3 mK and 0.5 mK, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact sky coordinates (RA, Dec) of the extracted spectrum offset by 0.5'' from IRAS 16293-2422 B",
+  "Assumed source size / beam filling factor and background continuum temperature used in the LTE synthetic spectrum calculation",
+  "Specific software or code used to compute the LTE synthetic spectra and fit the ALMA PILS data",
+  "Calibration and imaging parameters for the ALMA PILS data (inherited from Jørgensen et al. 2016)"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates of the 0.5'' offset position towards IRAS 16293-2422 B (requires looking up Jørgensen et al. 2016/2018)",
+  "Source size / beam filling factor and continuum brightness temperature used in the LTE radiative transfer calculation",
+  "Specific software tool used for the LTE synthetic spectrum calculation and fitting",
+  "Custom Hamiltonian fitting code used for the IAM spectroscopic analysis"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The new spectroscopic catalogue is published at CDS/CDMS, the ALMA PILS data are public, and the fixed LTE parameters (T_rot = 125 K, FWHM = 1 km s^-1, v_LSR = 2.6 km s^-1) and 68 transitions are explicitly listed. However, exact extraction coordinates, source size/continuum treatment in LTE, and the specific radiative transfer fitting software are deferred to earlier PILS papers.",
+ "rediscovery_reason": "The ALMA PILS dataset (2013.1.00278.S) and the CDMS/CDS spectroscopic catalogue for CHD2CHO are publicly available, and the main astrophysical result is a numeric column density (1.3e15 cm^-2) and D2/D ratio (20%) derived with clearly stated LTE parameters.",
+ "source_card": "cards/2023A%26A...670A.177F/sonnet/card.md"
+}

@@ -1,0 +1,241 @@
+{
+ "bibcode": "2019ApJ...878...83W",
+ "title": "Evolution of the Gas Mass Fraction of Progenitors to Today’s Massive Galaxies: ALMA Observations in the CANDELS GOODS-S Field",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab1089",
+ "arxiv_id": "1903.06962",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How does the gas mass fraction of likely progenitors of a z=0 galaxy of M*=1.5e11 Msun evolve over z=2-5, using ALMA dust continuum as a gas tracer?",
+ "alma_project_codes": [
+  "2015.1.00870.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz, 1.3 mm) for z=4-5; Band 7 (345 GHz, 870 µm) for z=2-3",
+  "arrays": "41-50 12-m antennas",
+  "angular_resolution": "requested ~0.5\"x0.5\"",
+  "sensitivity": "required 1σ rms 100 µJy (z=2,3), 50 µJy (z=4), 30 µJy (z=5)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses, redshifts, SFR, E(B-V), metallicity from CANDELS SED fits",
+    "evidence": [
+     {
+      "loc": "3.2 CANDELS data",
+      "quote": "The redshifts and stellar mass estimates used in our analysis are from Santini et al. (2015)."
+     }
+    ]
+   },
+   "citation": "Santini et al. 2015 (cite: Santini2015)"
+  },
+  {
+   "what": {
+    "value": "Sizes and Sersic indices",
+    "evidence": [
+     {
+      "loc": "3.2 CANDELS data",
+      "quote": "We also use data on the size and morphology of the galaxies in the CANDELS GOODS-S catalog from van der Wel et al. 2012."
+     }
+    ]
+   },
+   "citation": "van der Wel et al. 2012"
+  },
+  {
+   "what": {
+    "value": "L850/Mgas conversion factor alpha = 6.7±1.7e19 erg/s/Hz/Msun",
+    "evidence": [
+     {
+      "loc": "4.1 Submm data",
+      "quote": "derived by Scoville et al. (2014, 2016):"
+     }
+    ]
+   },
+   "citation": "Scoville et al. 2014, 2016"
+  },
+  {
+   "what": {
+    "value": "CMB correction to observed flux",
+    "evidence": [
+     {
+      "loc": "4.1 Submm data",
+      "quote": "see da Cunha et al. (2013) for a discussion and quantification of this correction."
+     }
+    ]
+   },
+   "citation": "da Cunha et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select progenitor sample",
+   "method": "MEAM defines M*-z region of progenitors of z=0 log M*=11.2; 70 galaxies randomly chosen from CANDELS GOODS-S H-band catalog in four z bins",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum and measure fluxes",
+   "method": "CLEAN natural-weight images; peak flux, or 2D Gaussian integrated flux for slightly extended sources; 5σ detection limit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "detection limit 5σ"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Stack non-detections",
+   "method": "stacked ALMA images of non-detected galaxies per bin; 3σ rms upper limits; random 4-galaxy substacks checked",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive gas masses and gas fractions",
+   "method": "Mgas = L850/alpha850 with CMB correction; fgas = Mgas/(Mgas+M*)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=25 K, beta=1.8, alpha_850 = 6.7e19 erg/s/Hz/Msun, CMB correction for 25 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test sensitivity and metallicity effect",
+   "method": "Modified blackbody SED to get minimum detectable SFR; gas-to-dust vs metallicity (Draine 2007; Remy-Ruyer) correction to z>=4 limits",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "gas-phase Z as low as ~0.2 Zsun at z>=4 via mass-metallicity relation"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit evolution of fgas with cosmic time",
+   "method": "linear fit of fgas vs cosmic time over z=3 to 0 including literature points",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detection rate z=2",
+   "value": "75% (15/20)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Submm data",
+     "quote": "We detect submm emission in 15 out of 20 galaxies in the z=2 sample, 11 out of 20 in the z=3 sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fgas detected z=2",
+   "value": "0.55",
+   "uncertainty": "±0.12 (abstract/summary; ±0.17 in Sect. 4.2)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The average gas mass fraction for the detected z = 2 galaxies is f gas = 0.55 ± 0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fgas detected z=3",
+   "value": "0.62",
+   "uncertainty": "±0.15 (summary; ±0.12 in Sect. 4.2)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "f gas = 0.62 ± 0.15 for the z = 3 sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked fgas upper limits z=2,3,4,5",
+   "value": "<0.08, <0.15, <0.38, <0.37",
+   "uncertainty": "3σ",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "4 4.339 20 8.6 < 9.560 < 0.38"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit fgas z>=4 corrected for low metallicity",
+   "value": "0.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3 Metallicity and stellar mass",
+     "quote": "the upper limit to the gas mass fraction of the z=4 and z=5 samples would increase to ∼ 0.66."
+    }
+   ]
+  },
+  {
+   "quantity": "Rate of fgas decrease with cosmic time",
+   "value": "0.043",
+   "uncertainty": "±0.007",
+   "units": "Gyr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1 The gas mass fraction over cosmic time",
+     "quote": "decreases at a constant rate of 0.043 ± 0.007 Gyr − 1 over a time interval of ∼ 11.5 Gyr."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean Δfgas vs Sargent 2014 / Tacconi 2018",
+   "value": "0.013 / 0.025",
+   "uncertainty": "±0.15 each",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Gas mass fraction",
+     "quote": "are 0.013 ± 0.15 and 0.025 ± 0.15, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust and CLEAN threshold/masking, number of iterations",
+  "Method of stacking (weights, positions) of non-detected galaxies",
+  "Pipeline/CASA version",
+  "Exact procedure and aperture for 2D Gaussian fits and noise measurement",
+  "How the 3σ upper limit flux was converted, rest-frame 850 µm k-correction details",
+  "Which MEAM stellar mass bounds per bin and how random selection was done",
+  "Bandpass/phase calibrator spelled consistently (J023+1636, J03344008 appear garbled)",
+  "Table 3 band/redshift labels inconsistent with text"
+ ],
+ "missing_for_reproduction": [
+  "Stacking procedure",
+  "CLEAN parameters",
+  "CASA/pipeline version",
+  "Exact CMB correction implementation and SED k-correction"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data, Table of per-galaxy fluxes and simple conversion; imaging and stacking details are thin.",
+ "rediscovery_reason": "Public data, simple flux-to-gas-mass recipe with numeric results in tables, though stacking and imaging details are missing.",
+ "source_card": "cards/2019ApJ...878...83W/sonnet/card.md"
+}

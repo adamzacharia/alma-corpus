@@ -1,0 +1,410 @@
+{
+ "bibcode": "2022A&A...661A..53V",
+ "title": "Survey of Orion Disks with ALMA (SODA). I. Cloud-level demographics of 873 protoplanetary disks",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202141913",
+ "arxiv_id": "2202.11057",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What is the disk dust mass distribution across 873 Class II protoplanetary disks in the L1641 and L1647 regions of the Orion A cloud, and how do median disk masses vary with position, YSO clustering, and compared to nearby star-forming regions?",
+ "alma_project_codes": [
+  "2019.1.01813.S"
+ ],
+ "data": {
+  "bands": "Band 6 (225 GHz)",
+  "arrays": "12m-array",
+  "angular_resolution": "~ 1.4\" x 1.1\" (580 AU x 414 AU)",
+  "sensitivity": "0.08 mJy beam^-1 (1.5 M_earth at 4 sigma)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spitzer YSO catalog in Orion A",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "We selected all Class II YSOs from (cite: megeath12) located in Orion A and below $-6^{\\circ}$ degrees in declination, or above $\\ell \\sim 209.5^{\\circ}$ degrees in Galactic longitude."
+     }
+    ]
+   },
+   "citation": "(cite: megeath12)"
+  },
+  {
+   "what": {
+    "value": "Herschel Orion Protostars Survey (HOPS) classifications",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "To correct for this effect, we refined the classifications from (cite: megeath12) to include the observations from the *Herschel* Orion Protostars Survey (HOPS) (cite: furlan16) at longer wavelengths, targeting embedded sources."
+     }
+    ]
+   },
+   "citation": "(cite: furlan16)"
+  },
+  {
+   "what": {
+    "value": "ALMA survey of 104 Herschel-detected Class II disks in L1641",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Recently, (cite: grant21) surveyed protoplanetary disks in L1641 with ALMA for the first time. Their sample consists of 104 Class II candidates from  that were also detected by *Herschel* at 70 $\\mu$m."
+     }
+    ]
+   },
+   "citation": "(cite: grant21)"
+  },
+  {
+   "what": {
+    "value": "Class III YSO catalog in L1641 from XMM-Newton",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In this section, we use the (cite: pillitteri13) catalog for Class III source numbers, and (cite: tobin20) for all embedded sources (Class I and 0)."
+     }
+    ]
+   },
+   "citation": "(cite: pillitteri13)"
+  },
+  {
+   "what": {
+    "value": "Class 0 and Class I protostellar disk masses and numbers in Orion from VANDAM",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In this section, we use the (cite: pillitteri13) catalog for Class III source numbers, and (cite: tobin20) for all embedded sources (Class I and 0)."
+     },
+     {
+      "loc": "Star-forming regions in Orion A and B",
+      "quote": "Figure 13 extends this comparison between the SODA sample and Class II disk masses in other nearby star-forming regions, as well as the Class 0 and Class I disk mass distributions in Orion A and B presented by (cite: tobin20)."
+     }
+    ]
+   },
+   "citation": "(cite: tobin20)"
+  },
+  {
+   "what": {
+    "value": "Upper Sco disk mass catalog and Class III/II ratio",
+    "evidence": [
+     {
+      "loc": "Impact of age gradients",
+      "quote": "we artificially construct a sample of disks by randomly sampling (with replacement) disks from both the $\\ell > 213.1^{\\circ}$ area in Orion, and from the Upper Sco catalog published by (cite: barenfeld16)."
+     },
+     {
+      "loc": "Impact of age gradients",
+      "quote": "Using a Class III to Class II ratio for Upper Sco of 4.2 (cite: luhman22) and $\\sim 1$ for the southern L1641 sample leads to an $N_{III}/N_{II}$ ratio of $\\sim 2$ for the mixed sample"
+     }
+    ]
+   },
+   "citation": "(cite: barenfeld16); (cite: luhman22)"
+  },
+  {
+   "what": {
+    "value": "Disk mass surveys of nearby star-forming regions (Lupus, Taurus, Cha I, rho Oph, CrA, OMC-2, ONC, NGC 2024, lambda Ori)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This behavior was seen in surveys of disks at submillimeter wavelengths in the Taurus (cite: andrews13), Lupus (cite: ansdell16; ansdell18), and Chamaeleon I (cite: pascucci16) SFRs, as well as (more recently) the Corona Australis (cite: cazzoletti19) and $\\rho$ Ophiuchus (cite: cieza19; williams19) regions."
+     }
+    ]
+   },
+   "citation": "(cite: andrews13; ansdell16; pascucci16; cazzoletti19; cieza19; williams19; mann14; eisner18; vanterwisga19b; vanterwisga20; ansdell20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities and image continuum for all 882 pointings in parallel",
+   "method": "Parallel calibration of 6 Scheduling Blocks using facility-provided scripts, extraction of individual target fields, and parallel deconvolution of each target combining all 4 continuum spectral windows",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Briggs weighting with robust = 0.5",
+    "Primary beam correction applied"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract continuum fluxes and check for resolved emission",
+   "method": "Search for brightest pixel within a 1.4\" radius around catalog position; adopt 4 sigma detection threshold; fit double Gaussians to check for resolved emission",
+   "software": [],
+   "key_parameters": [
+    "Search radius = 1.4\"",
+    "Detection limit = 4 sigma"
+   ],
+   "assumptions": [
+    "Unresolved continuum emission for Class II disks"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate disk dust masses",
+   "method": "Convert 225 GHz continuum flux densities (and 4 sigma upper limits) to dust masses using optically thin greybody equation and interpolated Gaia DR2 distances",
+   "software": [],
+   "key_parameters": [
+    "16 galactic longitude bins (oversampled by factor of 2) for distance interpolation"
+   ],
+   "assumptions": [
+    "Optically thin 225 GHz dust continuum emission",
+    "Effective dust temperature T_dust,eff = 20 K",
+    "Dust opacity kappa_230GHz = 2.3 cm^2 g^-1 with power-law index beta = 1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit nonparametric and parametric disk mass distributions and compare populations",
+   "method": "Estimate censored cumulative disk mass distributions using the Kaplan-Meier estimator, fit parametric log-normal and Weibull distributions, and compare distributions using log-rank tests",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [
+    "p = 0.05 cutoff for log-rank statistical significance"
+   ],
+   "assumptions": [
+    "Censoring is independent of disk mass for Kaplan-Meier, or underlying distribution is parametric (log-normal or Weibull)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze spatial variations along galactic longitude and identify YSO clusters",
+   "method": "Bin sources into galactic longitude bins and identify 2D (RA, Dec) clusters using OPTICS algorithm; fit log-normal distributions to each bin/cluster and compare with Class III and embedded source fractions and simulated mixed populations",
+   "software": [],
+   "key_parameters": [
+    "OPTICS min_samples = 5, minimum reachability steepness xi = 0.05, minimum cluster size = 50 members of Class II or earlier",
+    "10 longitudinal bins listed in Table (209.5 to 214.2 deg)"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio of 100 and 1 Myr evolution timescale from Class I to Class II for mass loss rate estimate"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Class II disk detection rate",
+   "value": "58",
+   "uncertainty": "2.6",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We detected $58\\%$ (502/873) of the observed disks."
+    },
+    {
+     "loc": "Results",
+     "quote": "In total, we detect 502 of 873 sources ($58 \\pm 2.6 \\%$) in the sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of detected Class II disks",
+   "value": "502",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "In total, we detect 502 of 873 sources ($58 \\pm 2.6 \\%$) in the sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of disks with dust mass > 100 M_earth",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "This includes 20 disks with dust masses $> 100\\,\\textrm{M}_{\\oplus}$, and two objects associated with extended dust emission."
+    },
+    {
+     "loc": "The most massive disks in Orion A",
+     "quote": "Figure 1 shows the locations of all disks with masses (assuming optically thin emission) higher than $100\\,M_{\\oplus}$ in dust in Orion A. We find 20 such objects"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of most massive disk ([MGM2012]-540)",
+   "value": "364",
+   "uncertainty": "0.5",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The most massive disks in Orion A",
+     "quote": "The most massive object is [MGM2012]-540, with $M_{\\textrm{dust}} = 364 \\pm 0.5\\,M_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass (full SODA sample, Kaplan-Meier)",
+   "value": "1.97",
+   "uncertainty": "+0.15/-0.19",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk mass distribution in SODA",
+     "quote": "Figure 6 shows the inferred disk mass distribution using the Kaplan-Meier estimator for the full SODA Class II sample of 873 disks. We find a median disk dust mass of $1.97 ^{+0.15}_{-0.19} \\,M_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass (full SODA sample, log-normal fit)",
+   "value": "2.2",
+   "uncertainty": "+0.2/-0.2",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "By fitting a log-normal distribution to the data, we infer a median disk dust mass in the full sample of $2.2^{+0.2}_{-0.2}\\,M_{\\oplus}$."
+    },
+    {
+     "loc": "Nearby star-forming regions",
+     "quote": "| SODA (all) | 873 | $2.2^{+0.2}_{-0.2}$ | 2.0$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass (full SODA sample, Weibull fit)",
+   "value": "2.2",
+   "uncertainty": "0.19",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disk mass distribution in SODA",
+     "quote": "However, the values for the median dust mass agree to within their respective errors: these are $2.2 \\pm 0.19\\,\\rm{M}_{\\oplus}$ for the Weibull, and $2.2^{+0.17}_{-0.17}$ for the log-normal distribution."
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass in L1641 (log-normal fit)",
+   "value": "2.1",
+   "uncertainty": "+0.2/-0.2",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In L1641 and L1647, median dust masses are $2.1^{+0.2}_{-0.2}\\,M_{\\oplus}$ and $2.6^{+0.4}_{-0.5}\\,M_{\\oplus}$, respectively."
+    },
+    {
+     "loc": "Nearby star-forming regions",
+     "quote": "| L1641 (all) | 708 | $2.1^{+0.2}_{-0.2}$ | 2.0$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass in L1647 (log-normal fit)",
+   "value": "2.6",
+   "uncertainty": "+0.4/-0.5",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In L1641 and L1647, median dust masses are $2.1^{+0.2}_{-0.2}\\,M_{\\oplus}$ and $2.6^{+0.4}_{-0.5}\\,M_{\\oplus}$, respectively."
+    },
+    {
+     "loc": "Nearby star-forming regions",
+     "quote": "| L1647 (all) | 165 | $2.6^{+0.4}_{-0.5}$ | 1.9$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass in L1641S (reduced)",
+   "value": "3.2",
+   "uncertainty": "+0.4/-0.4",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Nearby star-forming regions",
+     "quote": "| L1641S (red.) | 301 | $3.2^{+0.4}_{-0.4}$ | 1.9$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median disk dust mass in L1641N",
+   "value": "1.6",
+   "uncertainty": "+0.2/-0.2",
+   "units": "M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Nearby star-forming regions",
+     "quote": "| L1641N | 407 | $1.6^{+0.2}_{-0.2}$ | 2.0$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Occurrence rate of extended dust emission morphology in Class II sample",
+   "value": "0.23",
+   "uncertainty": "0.16",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Regardless of the origin of the observed extended dust tails seen in these two sources, the advantage of the size of this homogeneous dataset is that it is possible to say that this kind of morphology must be rare, occurring only $0.23 \\pm 0.16 \\%$ of the time."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk mass reduction factor from Class I to Class II",
+   "value": "13",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Mass evolution from Class I to Class II in Orion",
+     "quote": "From Class I to Class II, the disk mass is reduced by a factor of $13 \\pm 3$, based on these observations."
+    }
+   ]
+  },
+  {
+   "quantity": "Average disk mass loss rate from Class I to Class II",
+   "value": "10^-8",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with disk mass loss rates of $\\sim 10^{-8}\\,\\textrm{M}_{\\odot}\\,\\textrm{yr}^{-1}$."
+    },
+    {
+     "loc": "Mass evolution from Class I to Class II in Orion",
+     "quote": "If we assume the evolution from Class I to Class II takes about 1 Myr and continue to use a gas-to-dust mass ratio of 100, that implies an average disk mass loss rate of $\\dot{M} \\sim 10^{-8}\\,M_{\\odot}$ yr$^{-1}$ during this period."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean image size and pixel/cell size",
+  "tclean stopping threshold, niter, and masking strategy",
+  "Whether any spectral channels were flagged for line contamination before continuum imaging",
+  "Exact distance values for each of the 16 galactic longitude bins used for interpolation",
+  "Specific software or fitter used for the parametric Weibull and log-normal censored distribution fits (lifelines or custom)",
+  "Software implementation and exact distance scaling metric used for the OPTICS clustering algorithm"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, imsize, niter, stopping threshold, mask)",
+  "Exact script or likelihood used to fit censored log-normal and Weibull distributions",
+  "Exact coordinate scaling used in OPTICS clustering"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "Raw data (2019.1.01813.S), calibrated continuum FITS maps, and the full flux/mass catalog (at CDS) are all public, and the flux extraction and mass conversion equations/assumptions are explicitly given; only minor tclean imaging parameters and the exact censored parametric fitting code are omitted.",
+ "rediscovery_reason": "All raw ALMA data and FITS continuum maps are public, the analysis recipe (peak flux extraction within 1.4\", analytic dust mass conversion, Kaplan-Meier and log-normal fitting, and OPTICS clustering) is straightforward and well-specified, and the paper reports precise numeric answer keys.",
+ "source_card": "cards/2022A%26A...661A..53V/sonnet/card.md"
+}

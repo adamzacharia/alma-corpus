@@ -1,0 +1,285 @@
+{
+ "bibcode": "2018A&A...614A..42M",
+ "title": "ALMA observations of AGN fuelling. The case of PKS B1718-649",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732269",
+ "arxiv_id": "1801.03514",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Is cold molecular gas falling onto the SMBH of the young radio AGN PKS B1718-649, and does it fuel the radio source (e.g. via chaotic cold accretion)?",
+ "alma_project_codes": [
+  "2015.1.01359.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.28\" x 0.19\" (~82 pc)",
+  "sensitivity": "0.09 mJy/beam per channel (48 km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SINFONI H2 1-0 S(1) data, rotation curve model and H2 spectra",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "In (cite: maccagni2016), we estimated a model of the rotation curve of the inner disk"
+     }
+    ]
+   },
+   "citation": "(cite: maccagni2016)"
+  },
+  {
+   "what": {
+    "value": "HI spectra and expected accretion rate ~1e-2 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the expected accretion rate is $\\dot{M}\\sim 10^{-2}$ ${\\rm M}_\\odot$ yr$^{-1}$(cite: maccagni2014)"
+     }
+    ]
+   },
+   "citation": "(cite: maccagni2014)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 abundance ratio 1.6e-4",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we assume a CO-to-H$_{\\,2}$ abundance ratio, $A_C= 1.6\\times10^{-4}$ (cite: sofia2004)"
+     }
+    ]
+   },
+   "citation": "(cite: sofia2004)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image",
+   "method": "CASA reduction scripts, then MIRIAD self-cal, continuum subtraction and cleaning; cube and continuum image",
+   "software": [
+    "CASA",
+    "MIRIAD"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps, flux and kinematics of CO emission",
+   "method": "Total intensity and velocity maps, PV diagram along disk major axis; systemic velocity from mean of velocity range",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "CO absorption column density",
+   "method": "Optical depth from line against 230 GHz continuum; LTE column density equation, partition function, CO/H2 ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex ~16 K, LTE, homogeneous absorber, A_C=1.6e-4"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CO luminosity and H2 masses",
+   "method": "L'CO from flux (Solomon & Vanden Bout formula), M_H2 = alpha_CO L'CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "L'CO(2-1)=L'CO(1-0); alpha_CO 0.8 to 4.6"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Infall time-scale and accretion rate",
+   "method": "Distance limit from co-spatial red-shifted H2 (75 pc) and infall velocity, with absorber mass range",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "all absorbing gas at 75 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(2-1) flux",
+   "value": "174",
+   "uncertainty": "17.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$S_{\\rm CO} \\Delta v = 174\\pm17.4$  Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumnuclear disk CO flux",
+   "value": "29.5",
+   "uncertainty": "2.95",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$S_{\\rm CO} \\Delta v =29.5\\pm 2.95$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO systemic velocity",
+   "value": "4250",
+   "uncertainty": "20",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$4250\\pm20$$\\,$km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption line velocity offset",
+   "value": "+365",
+   "uncertainty": "22",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$\\Delta v = v_\\mathrm{peak} - v_\\mathrm{sys} = + 365\\pm22$$\\,$km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption FWHM",
+   "value": "57.4",
+   "uncertainty": "20",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "FWHM$=57.4\\pm20$$\\,$km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N_CO (absorption)",
+   "value": "1.0e17",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "obtaining $N_\\mathrm{CO} = 1.0\\times10^{17}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N_H2 (absorption)",
+   "value": "1.6e21",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we find $N_\\mathrm{H_2}= 1.6\\times10^{21}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total H2 mass",
+   "value": "3.26e8 to 1.88e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "varies between $3.26\\times10^8$ ${\\rm M}_\\odot$ for ($\\alpha_{\\rm CO}$$=0.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumnuclear disk H2 mass",
+   "value": "5.35e7 to 3.08e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The mass of the circumnuclear disk ranges between $5.35\\times10^7$ ${\\rm M}_\\odot$ and $3.08\\times10^8$ ${\\rm M}_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Infalling absorber mass",
+   "value": "3e2 to 5e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the mass of the in-falling molecular gas ranges between $3\\times10^2$ ${\\rm M}_\\odot$ and $5\\times10^5$ ${\\rm M}_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Accretion rate",
+   "value": "1.6e-3 to 2.2",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$1.6\\times10^{-3}$ ${\\rm M}_\\odot$ yr$^{-1}$ $\\lesssim\\dot{M}_{\\rm H_2}\\lesssim2.2$ ${\\rm M}_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "230 GHz continuum flux",
+   "value": "303",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "($S_\\mathrm{cont}=303$ mJy)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust values explored and the continuum-free channels for subtraction",
+  "MIRIAD self-calibration parameters and CASA version",
+  "Clean masks, thresholds and cell/image size",
+  "How moment maps and PV cuts were made (clipping)",
+  "Cosmology-based D_L value used and exact absorption spectrum extraction aperture",
+  "Inconsistencies: L'CO 7.4e7 vs 7.3e7, FWHM 57.4 vs 54, Delta v 365 vs 345 km/s"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and continuum-free channels",
+  "MIRIAD self-cal settings",
+  "Moment/PV extraction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and simple analysis, but imaging parameters and some numbers are missing or inconsistent.",
+ "rediscovery_reason": "Single project, simple numeric measurements (fluxes, masses, absorption line properties) are redoable, though imaging details are missing.",
+ "source_card": "cards/2018A%26A...614A..42M/sonnet/card.md"
+}

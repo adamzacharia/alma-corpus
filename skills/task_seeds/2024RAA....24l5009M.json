@@ -1,0 +1,543 @@
+{
+ "bibcode": "2024RAA....24l5009M",
+ "title": "ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF)",
+ "year": 2024,
+ "doi": "10.1088/1674-4527/ad8eae",
+ "arxiv_id": "2411.03049",
+ "fields": [
+  "solar_system",
+  "astrochemistry"
+ ],
+ "question": "To study the radio and millimeter wavelength dust continuum emission and volatile molecular / atomic lines (CH3OH and HI) toward Oort cloud non-periodic comet C/2022 E3 (ZTF), and determine the dust production activity, CH3OH abundance, and its formation mechanism.",
+ "alma_project_codes": [
+  "2022.1.00997.T"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array (39 antennas)",
+  "angular_resolution": "0.50'' x 0.38'' to 0.53'' x 0.42''",
+  "sensitivity": "continuum RMS: 4.68 to 9.45 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Orbital parameters of comet ZTF",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Note: The orbital parameters of comet ZTF are taken from Bolin et al. (2022) and NASA JPL Horizons System."
+     }
+    ]
+   },
+   "citation": "Bolin et al. (2022) and NASA JPL Horizons System"
+  },
+  {
+   "what": {
+    "value": "Solar flux F_sun at 1 AU from high-resolution solar spectrum",
+    "evidence": [
+     {
+      "loc": "Section 3.1.1",
+      "quote": "The solar flux is taken from the high-resolution solar spectrum of Kurucz et al. (1984)."
+     }
+    ]
+   },
+   "citation": "Kurucz et al. (1984)"
+  },
+  {
+   "what": {
+    "value": "Nucleocentric distance rho ~ 6500 km of comet ZTF",
+    "evidence": [
+     {
+      "loc": "Section 3.1.1",
+      "quote": "ρ ∼ 6500 km is the nucleocentric distance of the comet ZTF (Bolin et al. 2024), and F⊙ is the solar flux in unit of erg cm−2 s−1 at 1 AU."
+     }
+    ]
+   },
+   "citation": "Bolin et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "Production rate of H2O towards comet ZTF (Q_H2O = 4.8 x 10^28 molecules s^-1)",
+    "evidence": [
+     {
+      "loc": "Section 3.1.3",
+      "quote": "The abundance of CH3OH with respect to H2O towards comet ZTF is 1.52×10−2 (alternatively 1.52%), where the production rate of H2O towards comet ZTF is 4.8×1028 molecules s−1 (Schleicher et al. 2023)."
+     }
+    ]
+   },
+   "citation": "Schleicher et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Spin temperature of HI T_s = 100 K",
+    "evidence": [
+     {
+      "loc": "Section 3.2 Results based on GMRT data",
+      "quote": "= 100 K (Paris 2017)"
+     }
+    ]
+   },
+   "citation": "Paris (2017)"
+  },
+  {
+   "what": {
+    "value": "Af_rho values of other comets for comparison",
+    "evidence": [
+     {
+      "loc": "Section 3.1.1",
+      "quote": "Now, we compare the Afρ value of the comet ZTF with different dynamical types of other comets, as shown in Table 3."
+     }
+    ]
+   },
+   "citation": "Gillan et al. (2024), Schleicher (2006), Schleicher et al. (1998), Lellouch et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "CH3OH abundances of other comets for comparison",
+    "evidence": [
+     {
+      "loc": "Section 3.1.4",
+      "quote": "Now, we compare the abundance of CH3OH towards comet ZTF with other comets to understand the ice composition, as shown in Table 6."
+     }
+    ]
+   },
+   "citation": "Bockelée-Morvan et al. (1994a, 1994b, 2000), Eberhardt et al. (1994), Biver et al. (1999b, 2022, 2023, 2024), Mumma et al. (2001), Disanti et al. (2002), Remijan et al. (2008), Agúndez et al. (2014), Cordiner et al. (2017, 2023), Bøgelund & Hogerheijde (2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure millimeter dust continuum properties of comet ZTF",
+   "method": "Fit a 2D Gaussian over the cometary area in each of the 6 frequency bands to measure integrated flux, peak flux, and deconvolved source size.",
+   "software": [
+    "CASA (IMFIT)"
+   ],
+   "key_parameters": [
+    "circular region of radius 1.7''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust temperature and dust spectral index from continuum SED",
+   "method": "Plot spectral energy distribution (SED) from 224.79 to 242.60 GHz and fit a blackbody model using MCMC.",
+   "software": [
+    "ASTROPY 5.0"
+   ],
+   "key_parameters": [
+    "frequency range 224.79 GHz to 242.60 GHz"
+   ],
+   "assumptions": [
+    "blackbody model with dust spectral index beta"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate dust production activity (Af_rho)",
+   "method": "Calculate Af_rho using Equation 1 (A'Hearn et al. 1984) from the 242.60 GHz continuum flux.",
+   "software": [],
+   "key_parameters": [
+    "frequency = 242.60 GHz"
+   ],
+   "assumptions": [
+    "R_h = 1.35 AU, Delta = 0.96 AU",
+    "nucleocentric distance rho ~ 6500 km (Bolin et al. 2024) and solar flux F_sun from Kurucz et al. (1984)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract molecular spectra and fit LTE model and rotational diagram for CH3OH",
+   "method": "Extract spectra from a 0.8'' circular region, fit LTE model using MCMC in CASSIS with CDMS database to derive column density and excitation temperature, and construct a rotational diagram to verify temperature.",
+   "software": [
+    "CASSIS",
+    "CDMS"
+   ],
+   "key_parameters": [
+    "extraction aperture diameter = 0.8''",
+    "source size ~ 0.5''"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE) and optically thin emission lines"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Map spatial distribution of CH3OH emission",
+   "method": "Create integrated intensity maps of four high-intensity CH3OH lines and fit 2D Gaussians using CASA task IMFIT to measure emitting region sizes.",
+   "software": [
+    "CASA (IMFIT)"
+   ],
+   "key_parameters": [
+    "four high-intensity lines of CH3OH"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive CH3OH production rate, fractional abundance, and formation pathway",
+   "method": "Calculate production rate Q for each of the 15 transitions using Equation 2 (Drahus et al. 2010), average them, divide by Q(H2O) to get fractional abundance, and compare with Garrod (2019) chemical model.",
+   "software": [],
+   "key_parameters": [
+    "v_exp (half-width at half-maximum of each transition, ~0.75-0.86 km s^-1)"
+   ],
+   "assumptions": [
+    "Q_H2O = 4.8 x 10^28 molecules s^-1 (Schleicher et al. 2023)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive upper limits for GMRT radio continuum and atomic HI column density",
+   "method": "Measure upper limit continuum flux density at 1250 MHz, extract spectra from a 5.0'' diameter circular region at 1420 MHz, and compute upper limit HI column density using Equation 3 (Chengalur et al. 2013).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "5.0'' diameter circular extraction region; tau <= 0.23; int dv <= 0.36 km s^-1"
+   ],
+   "assumptions": [
+    "HI spin temperature T_s = 100 K (Paris 2017)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated dust continuum flux at 224.79 GHz",
+   "value": "124",
+   "uncertainty": "± 17",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "224.79 124 ± 17 120 ± 10 9.45 0.53′′ × 0.42′′ 0.51′′ × 0.44′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 224.79 GHz",
+   "value": "120",
+   "uncertainty": "± 10",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "224.79 124 ± 17 120 ± 10 9.45 0.53′′ × 0.42′′ 0.51′′ × 0.44′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated dust continuum flux at 226.84 GHz",
+   "value": "132",
+   "uncertainty": "± 49",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "226.84 132 ± 49 106 ± 12 5.87 0.53′′ × 0.41′′ 0.49′′ × 0.42′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 226.84 GHz",
+   "value": "106",
+   "uncertainty": "± 12",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "226.84 132 ± 49 106 ± 12 5.87 0.53′′ × 0.41′′ 0.49′′ × 0.42′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated dust continuum flux at 239.12 GHz",
+   "value": "138",
+   "uncertainty": "± 17",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "239.12 138 ± 17 109 ± 13 7.52 0.50′′ × 0.39′′ 0.47′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 239.12 GHz",
+   "value": "109",
+   "uncertainty": "± 13",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "239.12 138 ± 17 109 ± 13 7.52 0.50′′ × 0.39′′ 0.47′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated dust continuum flux at 239.94 GHz",
+   "value": "140",
+   "uncertainty": "± 25",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "239.94 140 ± 25 112 ± 9 5.20 0.50′′ × 0.39′′ 0.48′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 239.94 GHz",
+   "value": "112",
+   "uncertainty": "± 9",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "239.94 140 ± 25 112 ± 9 5.20 0.50′′ × 0.39′′ 0.48′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated dust continuum flux at 240.83 GHz",
+   "value": "145",
+   "uncertainty": "± 38",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "240.83 145 ± 38 115 ± 10 4.68 0.50′′ × 0.39′′ 0.48′′ × 0.37′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 240.83 GHz",
+   "value": "115",
+   "uncertainty": "± 10",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "240.83 145 ± 38 115 ± 10 4.68 0.50′′ × 0.39′′ 0.48′′ × 0.37′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated dust continuum flux at 242.60 GHz",
+   "value": "155",
+   "uncertainty": "± 32",
+   "units": "µJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "242.60 155 ± 32 120 ± 15 6.68 0.50′′ × 0.39′′ 0.49′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust continuum flux at 242.60 GHz",
+   "value": "120",
+   "uncertainty": "± 15",
+   "units": "µJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "242.60 155 ± 32 120 ± 15 6.68 0.50′′ × 0.39′′ 0.49′′ × 0.38′′"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature",
+   "value": "65.05",
+   "uncertainty": "± 4.65",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Section 3.1.1",
+     "quote": "After SED analysis, we found the dust temperature and dust spectral index (β) of comet ZTF were 65.05 ± 4.65 K and 1.20 ± 0.44."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust spectral index (beta)",
+   "value": "1.20",
+   "uncertainty": "± 0.44",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Section 3.1.1",
+     "quote": "After SED analysis, we found the dust temperature and dust spectral index (β) of comet ZTF were 65.05 ± 4.65 K and 1.20 ± 0.44."
+    }
+   ]
+  },
+  {
+   "quantity": "Activity of dust production (Af_rho)",
+   "value": "2280",
+   "uncertainty": "± 50",
+   "units": "cm",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "From the dust continuum emission, the activity of dust production (Afρ) of comet ZTF is 2280 ± 50 cm."
+    },
+    {
+     "loc": "Section 3.1.1",
+     "quote": "Using equation 1, the calculated value of Afρ of comet ZTF, based on ALMA data, is 2280 ± 50 cm, which is nearly similar to the estimated value of Jehin et al. (2023)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density (LTE)",
+   "value": "4.50e14",
+   "uncertainty": "± 0.25e14",
+   "units": "cm−2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on LTE spectral modelling, the column density and excitation temperature of CH3OH towards C/2022 E3 (ZTF) are (4.50 ± 0.25) × 1014 cm−2 and 70 ± 3 K."
+    },
+    {
+     "loc": "abstract",
+     "quote": "column density and excitation temperature of CH 3 OH towards C/2022 E3 (ZTF) are (4.50 _±_ 0.25) _×_ 10 [14] cm _[−]_ [2] and 70 _±_ 3 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperature (LTE)",
+   "value": "70",
+   "uncertainty": "± 3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on LTE spectral modelling, the column density and excitation temperature of CH3OH towards C/2022 E3 (ZTF) are (4.50 ± 0.25) × 1014 cm−2 and 70 ± 3 K."
+    },
+    {
+     "loc": "abstract",
+     "quote": "column density and excitation temperature of CH 3 OH towards C/2022 E3 (ZTF) are (4.50 _±_ 0.25) _×_ 10 [14] cm _[−]_ [2] and 70 _±_ 3 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature (rotational diagram)",
+   "value": "72",
+   "uncertainty": "± 12",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Section 3.1.2",
+     "quote": "After the rotational diagram, we found the rotational temperature of CH3OH is 72 ± 12 K, which is very close to the excitation temperature of CH3OH."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH emitting region size",
+   "value": "0.47 to 0.49",
+   "uncertainty": "not stated",
+   "units": "′′",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Section 3.1.2",
+     "quote": "After fitting the 2D Gaussian over the integrated intensity maps, we observed that the emitting regions of CH3OH vary between 0.47′′ and 0.49′′."
+    }
+   ]
+  },
+  {
+   "quantity": "Average production rate of CH3OH (Q_CH3OH)",
+   "value": "7.32e26",
+   "uncertainty": "± 0.64e26",
+   "units": "molecules s−1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The production rate of CH3OH towards C/2022 E3 (ZTF) is (7.32 ± 0.64) × 1026 molecules s−1."
+    },
+    {
+     "loc": "Table 5",
+     "quote": "Average production rate (QCH3OH) (7.32 ± 0.64) × 1026"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance of CH3OH with respect to H2O",
+   "value": "1.52",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The fractional abundance of CH3OH with respect to H2O in the coma of the comet is 1.52%."
+    },
+    {
+     "loc": "Section 3.1.3",
+     "quote": "The abundance of CH3OH with respect to H2O towards comet ZTF is 1.52×10−2 (alternatively 1.52%), where the production rate of H2O towards comet ZTF is 4.8×1028 molecules s−1 (Schleicher et al. 2023)."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit radio continuum flux density at 1250 MHz (GMRT)",
+   "value": "≤ 1.50",
+   "uncertainty": "± 0.21",
+   "units": "mJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Section 3.2",
+     "quote": "The upper limit flux density of comet ZTF at frequency 1250 MHz was ≤ 1.50 ± 0.21 mJy, where the synthesized beam size of the continuum emission image was 2.66′′ × 1.50′′."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of atomic HI at 1420 MHz (GMRT)",
+   "value": "≤ 1.50e19",
+   "uncertainty": "not stated",
+   "units": "cm−2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Section 3.2",
+     "quote": "Using Equation 3, we found the upper limit column density of atomic HI is ≤ 1.50 × 1019 cm−2."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Weighting scheme and Briggs robust parameter in TCLEAN for ALMA continuum and spectral line imaging",
+  "Pixel cell size and image dimensions used in TCLEAN",
+  "Clean stopping threshold and masking strategy in TCLEAN",
+  "Exact channel ranges selected as line-free channels for continuum subtraction and continuum imaging",
+  "Exact modified blackbody SED formula and priors used in the Astropy MCMC fit for dust temperature and spectral index beta",
+  "Velocity integration ranges used to create the CH3OH integrated intensity (moment 0) maps",
+  "Assumed partition function or rotational constant details (DI(T)) used in Equation 2 for CH3OH production rate calculation"
+ ],
+ "missing_for_reproduction": [
+  "TCLEAN imaging parameters (weighting/robust, cell size, image size, stopping threshold, masking)",
+  "Exact modified blackbody function and MCMC priors used in the Astropy SED fit",
+  "Exact line-free channel selections used in UVCONTSUB / MSTRANSFORM",
+  "Velocity integration windows for the CH3OH integrated intensity maps",
+  "Value of the partition function / rotational constant factor DI(T) used in Equation 2"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Both ALMA and GMRT raw datasets are public with project codes clearly given, and the main software (CASA 5.4.1, CASSIS, Astropy 5.0), calibrators, extraction apertures (1.7'', 0.8'', 5.0''), and analytic formulas are explicitly stated. However, standard TCLEAN imaging parameters (robust weighting, cell size, thresholds), the exact modified blackbody parametrization/priors, and the partition function values in Equation 2 are omitted.",
+ "rediscovery_reason": "The ALMA dataset (2022.1.00997.T) is publicly available, the target is a single compact source, the extraction apertures and 15 CH3OH transitions are fully tabulated, and the main outputs (continuum fluxes, CH3OH line fluxes, column density, excitation temperature, and production rate) are concrete numeric targets.",
+ "source_card": "cards/2024RAA....24l5009M/sonnet/card.md"
+}

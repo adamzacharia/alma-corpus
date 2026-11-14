@@ -1,0 +1,334 @@
+{
+ "bibcode": "2021PSJ.....2..105T",
+ "title": "Neptune's Spatial Brightness Temperature Variations from the VLA and ALMA",
+ "year": 2021,
+ "doi": "10.3847/PSJ/abf837",
+ "arxiv_id": "2104.06554",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "Retrieve H2S, NH3, and CH4 abundance profiles across Neptune's disk from ~1 bar to ~50 bar using spatially resolved VLA and ALMA radio maps.",
+ "alma_project_codes": [
+  "2016.1.00859.S"
+ ],
+ "data": {
+  "bands": "ALMA 1-3 mm (including Band 6); VLA Bands Ka (0.9 cm), Ku (2.0 cm), X (3.0 cm), C (5.1 cm), S (9.7 cm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.1'' - 1.0''",
+  "sensitivity": "ALMA sky RMS: 0.1-0.6 K; VLA sky RMS: 0.4-2.0 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA millimeter observations of Neptune from 2016-2017",
+    "evidence": [
+     {
+      "loc": "2.1. Data",
+      "quote": "This work makes use of two primary data sets: 1) ALMA millimeter observations of Neptune taken from 2016 2017, described in Section 2 of Tollefson et al. (2019); 2) centimeter observations of Neptune taken with the upgraded VLA taken in 2015, described below."
+     }
+    ]
+   },
+   "citation": "Tollefson et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "VLA 2003 centimeter maps of Neptune",
+    "evidence": [
+     {
+      "loc": "2.1. Data",
+      "quote": "We supplement these observations with VLA maps in 2003 from de Pater et al. (2014) in order to model Neptune’s disk-average temperature."
+     }
+    ]
+   },
+   "citation": "de Pater et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Voyager 2 temperature of 71.5 K at 1 bar and equatorial/polar radii",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Resolution at sub-observer location, assuming equatorial and polar radii of 24,766 km and 24,323 km, respectively (Lindal 1992)."
+     },
+     {
+      "loc": "3.1. Temperature Profile",
+      "quote": "Temperature profiles are calculated from deep in the atmosphere upward, assuming either a dry or wet adiabat such that the profile matches the Voyager 2 temperature of 71.5 K at 1 bar (Lindal 1992)."
+     }
+    ]
+   },
+   "citation": "Lindal (1992)"
+  },
+  {
+   "what": {
+    "value": "Temperature profile at pressures shallower than 1 bar derived from mid-infrared inversions",
+    "evidence": [
+     {
+      "loc": "3.1. Temperature Profile",
+      "quote": "At pressures shallower than 1 bar, the temperature profile follows that derived from mid-infrared inversions by Fletcher et al. (2014)."
+     }
+    ]
+   },
+   "citation": "Fletcher et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "Protosolar elemental abundances (C/H2, N/H2, O/H2, S/H2)",
+    "evidence": [
+     {
+      "loc": "3.1. Temperature Profile",
+      "quote": "We use the protosolar values from Asplund et al. (2009): C/H 2 = 5.90E-4; N/H 2 = 1.48E-4; O/H 2 = 1.07E-3; S/H 2 = 2.89E-5."
+     }
+    ]
+   },
+   "citation": "Asplund et al. (2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image VLA observations and construct residual maps and latitude bins",
+   "method": "Flag, calibrate, self-calibrate against a limb-darkened disk model (Tb cos^k theta), and image VLA data in MIRIAD; subtract best-fit limb-darkened disks and divide Neptune into seven latitude bins.",
+   "software": [
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "Seven latitude bins: 90S-66S, 66S-50S, 50S-36S, 36S-12S, 12S-4N, 4N-20N, 20N-50N"
+   ],
+   "assumptions": [
+    "Equatorial and polar radii of 24,766 km and 24,323 km (Lindal 1992)",
+    "Flux density calibration uncertainty of 5% in each band"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract disk-averaged and zonally-averaged brightness temperatures",
+   "method": "Sum flux density within Neptune's disk plus three model beam diameters past the limb and apply CMB correction for disk averages; average pixels within +/- 60 degrees of sub-observer longitude for latitude bands.",
+   "software": [],
+   "key_parameters": [
+    "Aperture radius for disk average: disk plus 3x model beam diameter past limb",
+    "Longitude averaging window: +/- 60 degrees of sub-observer longitude"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Perform radiative transfer forward modeling and MCMC atmospheric retrievals for disk-average and south pole / mid-latitude regions",
+   "method": "Couple Radio-BEAR radiative transfer models to emcee MCMC sampler to retrieve deep H2S, NH3, CH4 abundances, H2S relative humidity, P_mix, PH3, and H2 state for disk-averaged data and simultaneously for 90S-66S and 36S-12S.",
+   "software": [
+    "Radio-BEAR",
+    "emcee"
+   ],
+   "key_parameters": [
+    "30 walkers, 4000-5000 steps, 50% burn-in",
+    "PSF-scale convolution correction factor and free error parameter sigma_PSF = sigma * T * S"
+   ],
+   "assumptions": [
+    "Hydrostatic equilibrium and local thermodynamic equilibrium; wet or dry adiabat matching 71.5 K at 1 bar (Voyager 2) and Fletcher et al. (2014) above 1 bar",
+    "Cloud opacity is ignored; gas opacity dominated by H2S, NH3, H2O, and CIA of H2 (H2-H2, H2-He, H2-CH4)",
+    "NH4SH cloud chemistry follows Lewis (1969); aqueous solution cloud removes 5% of interior H2S and 25% of interior NH3; protosolar abundances from Asplund et al. (2009)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simultaneously retrieve latitudinal variations relative to 36S-12S and compare thermal models",
+   "method": "Simultaneously fit absolute brightness temperatures in 36S-12S and temperature differences Delta T_b between 36S-12S and other latitude bands using Eq. 4, allowing H2S subsaturation or supersaturation up to P_ss, and compare wet vs dry adiabats using the Deviance Information Criterion (DIC).",
+   "software": [
+    "Radio-BEAR",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Reference latitude band: 36S-12S; compared bands: 90S-66S, 66S-50S, 50S-36S, 12S-4N, 4N-20N",
+    "No PH3 and fully intermediate H2 assumed at all latitudes"
+   ],
+   "assumptions": [
+    "Differential uncertainty sigma_Delta includes 5% of Delta T_b, sky RMS per root number of beams in each band, and sigma_PSF (Eq. 6)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Deep H2S abundance below all clouds (dry adiabat)",
+   "value": "1.3e-3",
+   "uncertainty": "+0.4e-3/-0.3e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Discussion",
+     "quote": "1 _._ 3 [+0] _−_ 0 _[.]_ _._ [4] 3 _[×]_ [ 10] _[−]_ [3] [(53] _[.]_ [8] [+18] _−_ 13 _[.]_ _._ [9] 4 _[×]_ [protosolar)] [for] [a] [dry] [adiabat.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Deep H2S protosolar enrichment below all clouds (dry adiabat)",
+   "value": "53.8",
+   "uncertainty": "+18.9/-13.4",
+   "units": "x protosolar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Below all cloud formation, the data are well fit by 53 . 8 [+18] − 13 [.] . [9] 4 [×] [ and 3] [.] [9] − [+2] 3 [.] . [1] 1 [×] [ protosolar] enrichment in the H 2 S and NH 3 abundances, respectively, assuming a dry adiabat."
+    }
+   ]
+  },
+  {
+   "quantity": "Deep NH3 abundance below all clouds (dry adiabat)",
+   "value": "4.7e-4",
+   "uncertainty": "+2.5e-4/-3.7e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. DISCUSSION",
+     "quote": "We obtain loose bounds on the NH 3 abundance: 2 . 5 [+2] − 2 [.] . [7] 3 [×] [10] [−] [4] [(2] [.] [1] [+2] − 1 [.] . [3] 9 [×] [ protosolar) for a wet adiabat and 4] [.] [7] − [+2] 3 [.] . [5] 7 [×] [10] [−] [4] [(3] [.] [9] [+2] − 3 [.] . [1] 1 [×] [ protosolar)] for a dry adiabat."
+    }
+   ]
+  },
+  {
+   "quantity": "Deep NH3 protosolar enrichment below all clouds (dry adiabat)",
+   "value": "3.9",
+   "uncertainty": "+2.1/-3.1",
+   "units": "x protosolar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Below all cloud formation, the data are well fit by 53 . 8 [+18] − 13 [.] . [9] 4 [×] [ and 3] [.] [9] − [+2] 3 [.] . [1] 1 [×] [ protosolar] enrichment in the H 2 S and NH 3 abundances, respectively, assuming a dry adiabat."
+    }
+   ]
+  },
+  {
+   "quantity": "Deep H2S abundance below all clouds (wet adiabat)",
+   "value": "8.7e-4",
+   "uncertainty": "+2.6e-4/-1.7e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Discussion",
+     "quote": "Below all cloud formation, we obtain H 2 S abundances of 8 _._ 7 [+2] _−_ 1 _[.]_ _._ [6] 7 _[×]_ [10] _[−]_ [4] [(37] _[.]_ [3] [+15] _−_ 10 _[.]_ _._ [7] 3 _[×]_ [ protosolar)]"
+    }
+   ]
+  },
+  {
+   "quantity": "Deep NH3 abundance below all clouds (wet adiabat)",
+   "value": "2.5e-4",
+   "uncertainty": "+2.7e-4/-2.3e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. DISCUSSION",
+     "quote": "We obtain loose bounds on the NH 3 abundance: 2 . 5 [+2] − 2 [.] . [7] 3 [×] [10] [−] [4] [(2] [.] [1] [+2] − 1 [.] . [3] 9 [×] [ protosolar) for a wet adiabat and 4] [.] [7] − [+2] 3 [.] . [5] 7 [×] [10] [−] [4] [(3] [.] [9] [+2] − 3 [.] . [1] 1 [×] [ protosolar)] for a dry adiabat."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged H2S below all clouds (wet adiabat)",
+   "value": "6.6e-4",
+   "uncertainty": "+2.0e-4/-1.3e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "H2S below all clouds 6.6+2.0 −1.3 × 10−4 28.2+8.5 −5.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged H2S below all clouds (dry adiabat)",
+   "value": "9.3e-4",
+   "uncertainty": "+2.1e-4/-2.2e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "H2S below all clouds 9.3+2.1 −2.2 × 10−4 39.4+9.9 −9.4"
+    }
+   ]
+  },
+  {
+   "quantity": "South polar cap mixing pressure P_mix (90S-66S, dry adiabat)",
+   "value": "33",
+   "uncertainty": "+6/-4",
+   "units": "bar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "Pmix 33+6 −4 bar —"
+    }
+   ]
+  },
+  {
+   "quantity": "South polar cap mixing pressure P_mix (90S-66S, wet adiabat)",
+   "value": "41",
+   "uncertainty": "+9/-7",
+   "units": "bar",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Pmix 41+9 −7 bar —"
+    }
+   ]
+  },
+  {
+   "quantity": "PH3 abundance 2-sigma upper limit (36S-12S, dry adiabat)",
+   "value": "<= 4.4e-7",
+   "uncertainty": "2 sigma upper limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "PH3 ≤4.4 × 10−7 ≤0.1"
+    },
+    {
+     "loc": "6. CONCLUSIONS",
+     "quote": "Our retrievals are consistent with a PH 3 2 σ upper limit of 0.4 ppm ( ≤ 0 . 1 × protosolar)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total Deviance Information Criterion (DIC) difference (wet minus dry adiabat)",
+   "value": "+95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 9",
+     "quote": "Wet Adiabat DIC 177 152 145 134 173 781"
+    },
+    {
+     "loc": "Table 9",
+     "quote": "Dry Adiabat DIC 151 134 130 116 155 689"
+    },
+    {
+     "loc": "Table 9",
+     "quote": "Diﬀerence +26 +18 +15 +18 +18 +95"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Complete ALMA data reduction, calibration, self-calibration, and imaging parameters (inherited from Tollefson et al. 2019)",
+  "Exact MIRIAD imaging parameters for the VLA data (weighting/robustness, cell size, deconvolution algorithm, self-calibration solution intervals)",
+  "Exact prior bounds (minimum and maximum values) for all free parameters in the emcee MCMC retrievals",
+  "Exact values of the limb-darkening parameters Tb and k at each wavelength used for self-calibration and residual map subtraction"
+ ],
+ "missing_for_reproduction": [
+  "Tabulated zonally-averaged brightness temperatures T_b and uncertainties for each of the seven latitude bins at all VLA and ALMA frequencies (only plotted in Fig. 2, 7, 8, 9, 10; only disk-averaged T_b is tabulated in Table 2)",
+  "Exact PSF-scale multiplicative factors for each latitude bin and wavelength",
+  "Exact prior distributions and bounds for all MCMC free parameters",
+  "Scripts coupling Radio-BEAR to emcee and implementing the specific cloud/chemistry parameterizations"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Raw VLA and ALMA project codes and the core radiative transfer code (Radio-BEAR) are publicly available, and disk-averaged brightness temperatures are tabulated in Table 2; however, ALMA processing is deferred to Tollefson et al. (2019), exact zonally-averaged brightness temperatures per latitude bin are not tabulated, and MCMC prior bounds and wrapper scripts are not provided.",
+ "rediscovery_reason": "Both the ALMA (2016.1.00859.S) and VLA (15A-118) datasets and the Radio-BEAR code are public, Table 2 provides a complete numeric benchmark for the disk-averaged spectrum, and the main atmospheric retrieval results are quantitative.",
+ "source_card": "cards/2021PSJ.....2..105T/sonnet/card.md"
+}

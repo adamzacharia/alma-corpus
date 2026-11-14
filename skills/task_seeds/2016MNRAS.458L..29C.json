@@ -1,0 +1,252 @@
+{
+ "bibcode": "2016MNRAS.458L..29C",
+ "title": "A ring-like concentration of mm-sized particles in Sz 91",
+ "year": 2016,
+ "doi": "10.1093/mnrasl/slw006",
+ "arxiv_id": "1601.06801",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the radial distribution of mm-sized dust grains versus 12CO gas in the transition disc Sz 91, and is it consistent with planet-disc interaction models?",
+ "alma_project_codes": [
+  "2013.1.00663.S",
+  "2011.0.00733.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7",
+  "arrays": "12-m antennas: 40 (Band 6), 42 (Band 7)",
+  "angular_resolution": "Continuum beam 0.21x0.15 arcsec (42x30 au), PA 79.9 deg; 12CO beam 0.60x0.57 arcsec",
+  "sensitivity": "continuum median rms 0.95 mJy/beam; 12CO line-free rms 20.12 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of 200 pc",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "Using a distance of 200 pc (cite: 2008ApJS..177..551M)"
+     }
+    ]
+   },
+   "citation": "2008ApJS..177..551M"
+  },
+  {
+   "what": {
+    "value": "Dust mass–flux relation calibrated from literature",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "linear relations derived by (cite: 2005ApJ...631.1134A; 2007ApJ...671.1800A) and calibrated by (cite: 2008ApJ...686L.115C)"
+     }
+    ]
+   },
+   "citation": "2005ApJ...631.1134A; 2007ApJ...671.1800A; 2008ApJ...686L.115C"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Process visibilities and image continuum and 12CO",
+   "method": "CASA calibration/imaging, continuum subtraction, CLEAN with natural (continuum) and Briggs (CO) weighting, one round self-cal",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit ring geometry to continuum visibilities",
+   "method": "Fit ring profile to visibilities with uvfit",
+   "software": [
+    "uvfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate dust mass",
+   "method": "Linear flux-mass relation at 0.86 mm with d=200 pc, 10% flux and distance uncertainties",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "ISM grain size distribution with power-law index p = -3.5; optically thin emission; d = 200 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Make 12CO moment maps",
+   "method": "Moment-0 and Moment-1 from >3 sigma channels, pixels below 2.5x median rms excluded, Gaussian fitted along spectral axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit radial surface brightness profile of the ring",
+   "method": "Fit Gaussian, hat-like and r^-1 power-law profiles along the major axis, convolved with 0.16 arcsec FWHM Gaussian; MCMC",
+   "software": [],
+   "key_parameters": [
+    "Beam FWHM 0.16 arcsec along major axis"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated continuum flux (S/N>3)",
+   "value": "40.15",
+   "uncertainty": "0.95",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "$\\mathrm{F_{1.3\\mathrm{mm}}} = 40.15 \\pm 0.95$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Total continuum flux from uvfit",
+   "value": "42.43",
+   "uncertainty": "0.95",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "a total flux of $42.43 \\pm 0.95$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination",
+   "value": "51.7",
+   "uncertainty": "0.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "inclination $i = 51.7\\pm0.4\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle",
+   "value": "17.4",
+   "uncertainty": "0.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "We derive a PA = 17.4$\\pm0.4\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "23",
+   "uncertainty": "6",
+   "units": "M_Earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "we derive a total mass of $23\\pm6\\,M_\\mathrm{Earth}$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO Moment-0 integrated flux",
+   "value": "4.932",
+   "uncertainty": "0.023",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "12CO Moments",
+     "quote": "its integrated flux is $4.932\\pm0.023$ Jy $\\mbox{${\\rm km\\,s}^{-1}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian ring centre",
+   "value": "110.5",
+   "uncertainty": "0.3",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface brightness profile of mm emission",
+     "quote": "a Gaussian profile centred at $110.5\\pm0.3$ au and with $1\\sigma$ width of $22.2\\pm0.5$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Gaussian ring 1-sigma width",
+   "value": "22.2",
+   "uncertainty": "0.5",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface brightness profile of mm emission",
+     "quote": "a Gaussian profile centred at $110.5\\pm0.3$ au and with $1\\sigma$ width of $22.2\\pm0.5$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi2 Gaussian / hat / power-law",
+   "value": "1.27 / 1.61 / 2.39",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Surface brightness profile of mm emission",
+     "quote": "the hat-like and the power-law distribution result in $\\chi_{\\nu}^2 = 1.61$ and $\\chi_{\\nu}^2 = 2.39$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO extent (blue side)",
+   "value": "~488 au (2.44 arcsec)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "12CO Moments",
+     "quote": "shows $\\mbox{$^{12}{\\rm CO}$}$ emission up to $\\sim2.44$ arcsec ($\\sim$488 au) from the disc’s centre"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value",
+  "line-free channel ranges",
+  "which channels were flagged",
+  "self-calibration solint and reference data",
+  "cell and image size, clean threshold and masks",
+  "uvfit ring model functional form and parameters",
+  "MCMC sampler, priors and number of steps",
+  "CASA version",
+  "Band 6 results are not used so no analysis details given",
+  "which of the two projects (2011.0.00733.S or 2013.1.00663.S) is used beyond the Band 7 data"
+ ],
+ "missing_for_reproduction": [
+  "robust value",
+  "CASA version and calibration script",
+  "MCMC details",
+  "uvfit model specification",
+  "image parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis but many imaging and fitting parameters are unstated.",
+ "rediscovery_reason": "Public Band 7 data, numeric results (ring radius, width, flux, inclination), fairly simple recipe.",
+ "source_card": "cards/2016MNRAS.458L..29C/sonnet/card.md"
+}

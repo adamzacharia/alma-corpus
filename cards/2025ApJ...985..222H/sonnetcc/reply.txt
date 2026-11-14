@@ -1,0 +1,263 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "from archival ALMA data, finding that the magnetic field orientations on these two different scales are perpendicular to one another"},
+{"loc": "5 Summary", "quote": "We compare the magnetic field orientations with those seen on core scales using archival ALMA data."}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {"value": "Compare magnetic field orientations and strengths on clump scale (JCMT/POL-2, ~2 pc) with core scale (archival ALMA, ~0.2 pc) in the P2 clump of G28.34+0.06, and test whether the field supports the clump against gravitational collapse", "evidence": [
+{"loc": "abstract", "quote": "We investigate magnetic field orientations and strengths in the massive star-forming clump P2 within the filamentary infrared dark cloud G28.34+0.06 using dust polarization observations made using SCUBA-2/POL-2 on the James Clerk Maxwell Telescope"},
+{"loc": "abstract", "quote": "In the region surrounding the core, the mass-to-flux ratio is larger than 1, which indicates the magnetic field strength is insufficient to support the region against gravitational collapse."}
+]},
+"targets": [
+{"name": "G28.34+0.06 (G28), clump P2 and embedded core",
+ "details": [
+ {"loc": "1 Introduction", "quote": "is an Infrared Dark Cloud (IRDC) located at 4.8 kpc (cite: Carey1998)"},
+ {"loc": "2.2 TRAO Observations", "quote": "Right Ascension (J2000) = 18$^{\\mathrm{h}}$ 42$^{\\mathrm{m}}$ 50.9$^{\\mathrm{s}}$ and Declination (J2000) = –04$^{\\mathrm{\\circ}}$ 03$^{\\mathrm{'}}$ 14$^{\\mathrm{''}}$"}
+ ],
+ "coordinates": "Centre of the TRAO mapping area: RA(J2000) 18h42m50.9s, Dec(J2000) -04d03m14s (as printed; this is the single-dish map centre, not an ALMA phase centre)",
+ "redshift_or_distance": "4.8 kpc",
+ "distance_source": "Carey et al. 1998 (cite: Carey1998)"}
+],
+"alma_project_codes": [
+{"code": "2016.1.00248.S", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "as part of the projects of 2016.1.00248.S (Cycle 4; PI: Qizhou Zhang)"}]},
+{"code": "2017.1.00793.S", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "and 2017.1.00793.S (Cycle 5; PI: Qizhou Zhang)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (ALMA dust polarization)", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "We used dust polarization observations of a core embedded in the P2 clump of the G28 obtained using ALMA in Band 6."}]},
+{"field": "frequencies_and_spectral_setup", "value": "tuned to cover ~1.27-1.29 GHz (as printed), full polarization mode", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The receiver for the observations was tuned to cover $\\sim$1.27–1.29 GHz, with a total bandwidth of 5.6 GHz in the full polarization mode."}]},
+{"field": "continuum_bandwidth", "value": "total bandwidth 5.6 GHz", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "with a total bandwidth of 5.6 GHz in the full polarization mode"}]},
+{"field": "angular_resolution", "value": "0.8'' x 0.6'' (~0.014 pc x 0.019 pc) in Stokes I, Q, U", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The synthesized beam sizes in the Stokes $I$, $Q$, and $U$ maps are 0$''$.8 $\\times$ 0$''$.6 ($\\sim$0.014 pc $\\times$ 0.019 pc)"}]},
+{"field": "max_recoverable_scale", "value": "~7'' (~0.16 pc) in Section 2.3; Section 4.3 instead quotes 13'' (~0.3 pc)", "evidence": [
+ {"loc": "2.3 ALMA archive data", "quote": "the maximum recoverable scale in the observation is $\\sim$7$''$ ($\\sim$0.16 pc)"},
+ {"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "the maximum recoverable scale of the ALMA observations of 13$''$"}]},
+{"field": "observing_dates", "value": "April 2017 to June 2018", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The ALMA observations were made between April 2017 and June 2018"}]},
+{"field": "pi_or_archival_as_stated", "value": "Archival data; PI Qizhou Zhang (Cycle 4 and Cycle 5)", "evidence": [
+ {"loc": "5 Summary", "quote": "We compare the magnetic field orientations with those seen on core scales using archival ALMA data."},
+ {"loc": "2.3 ALMA archive data", "quote": "2017.1.00793.S (Cycle 5; PI: Qizhou Zhang)"}]}
+],
+"lines_targeted": [
+{"species": "N2H+ (TRAO, not ALMA)", "transition": "J = 1-0", "rest_frequency": "93.17631 GHz", "evidence": [{"loc": "2.2 TRAO Observations", "quote": "We carried out observations of N$_2$H$^+$ ($J$ = 1-0; 93.17631 GHz) spectral lines in G28 using the TRAO 14-m telescope"}]},
+{"species": "CO (ALMA outflow data, taken from Liu et al. 2020)", "transition": "2-1", "rest_frequency": "not stated", "evidence": [{"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "detected an outflow from the core embedded in the P2 clump using ALMA CO (2-1) line observations"}]}
+],
+"other_facilities": [
+{"name": "JCMT SCUBA-2/POL-2 (BISTRO)", "provided": {"value": "850 micron dust polarization (Stokes I, Q, U) of G28; primary data set of the paper (27 BISTRO data sets plus 18 from M22AP018)", "evidence": [
+ {"loc": "2.1 JCMT Observations", "quote": "The observations were conducted as part of the BISTRO Survey (Project ID : M20AL018)."},
+ {"loc": "2.1 JCMT Observations", "quote": "The 27 data sets were obtained between September 2020 and August 2022."}]}},
+{"name": "TRAO 14-m (SEQUOIA)", "provided": {"value": "N2H+ (1-0) OTF maps used for the non-thermal velocity dispersion", "evidence": [
+ {"loc": "2.2 TRAO Observations", "quote": "The observations were conducted from January to February 2023."},
+ {"loc": "3.4 Velocity dispersion", "quote": "Figure [6](#fig:veldisp) shows a map of the non-thermal velocity dispersion obtained using the TRAO N$_2$H$^+$ observations."}]}},
+{"name": "Planck", "provided": {"value": "Large-scale magnetic field orientations at 350 GHz shown for comparison", "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "large-scale magnetic field orientations at 350 GHz"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "JCMT flux conversion factor 495 +/- 32 Jy/beam/pW, with extra POL-2 factor 1.35 (final 668 Jy/beam/pW)", "evidence": [
+ {"loc": "2.1 JCMT Observations", "quote": "495 $\\pm$ 32 Jy beam$^{-1}$ pW$^{-1}$ which is appropriate for data observed after June 30, 2018 (cite: Mairs2021)"},
+ {"loc": "2.1 JCMT Observations", "quote": "The POL-2 data are further corrected by an additional factor of 1.35"}]}, "citation": "(cite: Mairs2021)"},
+{"what": {"value": "Dust temperature taken as NH3 rotation temperature of 29 K in P2", "evidence": [{"loc": "3.3 Volume density", "quote": "the rotation temperature of 29 K obtained using NH$_3$ ($J$, $K$) = (1,1) and (2,2) observations in the P2 clump (cite: Wang2008)"}]}, "citation": "(cite: Wang2008)"},
+{"what": {"value": "Distance to G28 of 4.8 kpc", "evidence": [{"loc": "1 Introduction", "quote": "is an Infrared Dark Cloud (IRDC) located at 4.8 kpc (cite: Carey1998)"}]}, "citation": "(cite: Carey1998)"},
+{"what": {"value": "Dust-to-gas mass ratio 1:100 and dust opacity (0.1 cm2/g at 1 THz, beta = 2)", "evidence": [{"loc": "3.3 Volume density", "quote": "assuming a dust-to-gas mass ratio of 1:100 (cite: Motte2001; Andre2010)"}]}, "citation": "(cite: Motte2001; Andre2010)"},
+{"what": {"value": "ALMA Stokes I, Q, U data reduction and CO outflow maps (data presented and reduced in Liu et al. 2020)", "evidence": [
+ {"loc": "2.3 ALMA archive data", "quote": "The data were presented by (cite: Liu2020) and reduced using the Common Astronomy Software Applications"},
+ {"loc": "CO outflow", "quote": "Figure [11](#fig:co) shows the blueshifted and redshifted CO outflows obtained by the ALMA observations (cite: Liu2020)."}]}, "citation": "(cite: Liu2020)"},
+{"what": {"value": "DCF correction factor Q = 0.5 (Ostriker et al.) and alternative Q = 0.28 (Liu et al. 2022)", "evidence": [
+ {"loc": "3.5 Magnetic field strengths", "quote": "$Q$ is a correction factor which is taken to be 0.5 following (cite: Ostriker2001)"},
+ {"loc": "3.5 Magnetic field strengths", "quote": "has suggested a $Q$ value of 0.28 in a cloud with"}]}, "citation": "(cite: Ostriker2001); (cite: Liu2022)"},
+{"what": {"value": "Literature column density maps of G28 (PPMAP and SED fitting) used only as a comparison", "evidence": [{"loc": "3.3 Volume density", "quote": "We also compared our results with column density maps of G28 obtained using the point process mapping (PPMAP) tool and Spectral Energy Distribution (SED) fitting by (cite: Marsh2017) and (cite: Lin2017)."}]}, "citation": "(cite: Marsh2017); (cite: Lin2017)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA data reduced in CASA as described by Liu et al. 2020 (pipeline vs manual not stated here)", "evidence": [
+ {"loc": "2.3 ALMA archive data", "quote": "The detailed data reduction processes are described by (cite: Liu2020)."}]}
+],
+"imaging": [
+{"field": "cell_size", "value": "ALMA polarization segments on 0.36'' x 0.36'' pixels (about half the beam)", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "We produced polarization segments on 0.36 $''$ $\\times$ 0.36 $''$ pixels, which is about half of the beam size."}]},
+{"field": "final_beam", "value": "ALMA: 0.8'' x 0.6''", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The synthesized beam sizes in the Stokes $I$, $Q$, and $U$ maps are 0$''$.8 $\\times$ 0$''$.6"}]},
+{"field": "final_rms", "value": "JCMT 850 um Stokes I, Q, U rms: 7.6, 4.4, 4.3 mJy/beam", "evidence": [{"loc": "2.1 JCMT Observations", "quote": "The rms values of the Stokes $I$, $Q$, and $U$ maps are 7.6, 4.4, and 4.3 mJy beam$^{-1}$, respectively."}]}
+],
+"inherited": [
+{"what": {"value": "ALMA data reduction (CASA calibration and imaging of Stokes I, Q, U)", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The detailed data reduction processes are described by (cite: Liu2020)."}]}, "from_reference": "(cite: Liu2020)"},
+{"what": {"value": "JCMT flux conversion factor and POL-2 throughput correction", "evidence": [{"loc": "2.1 JCMT Observations", "quote": "due to the reduced optical throughput caused by the introduction of the spinning POL-2 half-wave plate into the SCUBA-2 light path (cite: Mairs2021)"}]}, "from_reference": "(cite: Mairs2021)"},
+{"what": {"value": "Moving-box polarization angle dispersion method", "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "using the method introduced by (cite: Hwang2021), in which the mean magnetic field orientations are determined within a small box region"}]}, "from_reference": "(cite: Hwang2021)"},
+{"what": {"value": "Radius of curvature estimate used to choose the box size", "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "To decide the box size, we estimated a radius of curvature for a circle on which two adjacent segments become tangents (cite: Koch2012)."}]}, "from_reference": "(cite: Koch2012)"},
+{"what": {"value": "DCF formulation for plane-of-sky field strength", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "using the following simple formulation of the DCF method (cite: Crutcher2004)"}]}, "from_reference": "(cite: Crutcher2004)"},
+{"what": {"value": "Clump mass formulation", "evidence": [{"loc": "4.2 Energy Balance", "quote": "The mass of the P2 clump is calculated using the formulation (cite: Hildebrand1983)"}]}, "from_reference": "(cite: Hildebrand1983)"}
+],
+"unstated_but_needed": [
+"ALMA calibration and imaging details (CASA version, weighting/robust, tclean settings, polarization calibration, self-calibration, how Stokes Q/U maps and the PI cut were produced) are deferred to Liu et al. 2020",
+"Which ALMA execution blocks and spectral windows (continuum-only selection) were used from the two projects, and the array configurations",
+"Exact pol2map settings beyond skyloop/mapvar (masks, bin size handling, mask thresholds) and Starlink version",
+"astrodendro min_delta and min_npix choices other than the 3 sigma threshold and beam-size minimum; how the P2 contour was chosen",
+"TRAO data reduction (baseline fitting, gridding, T_A* to T_mb conversion) and pyspeckit initial guesses and fit constraints",
+"How mean polarization angle and angle dispersion inside the 3x3 box were computed (circular statistics, weighting)",
+"The mean N(H2) differs between the text (3.0e22) and Table 1 (3.5e22), and the mean velocity dispersion used in the energy calculation (1.2 km/s) differs from the quoted non-thermal mean (1.40 km/s); the intended value is not stated",
+"How the ALMA and JCMT field-orientation histograms (Figure 3) were binned and which ALMA pixels were included"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Reduce JCMT POL-2 data to Stokes I, Q, U maps and a polarization catalogue",
+ "method": {"value": "Starlink SMURF pol2map run twice (skyloop, mapvar), instrumental polarization correction, binning to 12'' pixels", "evidence": [
+  {"loc": "Data reduction procedures", "quote": "In this second run, we used the $skyloop$ and $mapvar$ parameters in $pol2map$."},
+  {"loc": "2.1 JCMT Observations", "quote": "We binned the polarization segments to a 12$''$ pixel grid using the $binsize$ parameter in the Starlink software"}]},
+ "software": ["Starlink", "SMURF", "pol2map"],
+ "key_parameters": [
+  {"value": "August 2019 instrumental polarization model", "evidence": [{"loc": "Data reduction procedures", "quote": "We used the August 2019 instrumental polarization model to correct the Stokes $Q$ and $U$ maps."}]},
+  {"value": "Final conversion factor 668 Jy/beam/pW", "evidence": [{"loc": "2.1 JCMT Observations", "quote": "(which results in a final conversion factor of 668 Jy beam$^{-1}$ pW$^{-1}$)"}]}],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Select polarization segments and compute angles and debiased fractions",
+ "method": {"value": "Compute theta, PI and p from Stokes parameters; apply S/N cuts on I and p and a 20% maximum polarization fraction", "evidence": [{"loc": "2.1 JCMT Observations", "quote": "We selected polarization segments using the following criteria: $I$/$\\Delta I \\geq$ 10, $p$/$\\Delta p \\geq$ 3 and $p$ $<$ 20%"}]},
+ "software": [],
+ "key_parameters": [{"value": "Maximum polarization fraction 20% justified by Planck", "evidence": [{"loc": "2.1 JCMT Observations", "quote": "The maximum dust polarization fraction is 20% in *Planck* observations (cite: Planck2015)."}]}],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Compare JCMT and ALMA field orientations",
+ "method": {"value": "Rotate polarization segments by 90 degrees to get field orientation; ALMA segments selected with PI/sigma_PI > 3; compare mean angles in a polar histogram", "evidence": [
+  {"loc": "3.1 Magnetic field orientations", "quote": "with selection criteria of $\\mathrm{PI}/\\sigma_{\\mathrm{PI}}$ $>$ 3, where $\\mathrm{PI}$ and $\\sigma_{\\mathrm{PI}}$ are the polarized intensity and its uncertainty"},
+  {"loc": "3.1 Magnetic field orientations", "quote": "In the right panel, these segments are rotated by 90 degrees to show magnetic field orientations"}]},
+ "software": ["CASA"],
+ "key_parameters": [],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Planck 350 GHz large-scale orientation shown for context", "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "large-scale magnetic field orientations at 350 GHz"}]}},
+{"order": 4, "goal": "Map polarization angle dispersion and define the P2 clump boundary",
+ "method": {"value": "Moving 3x3 pixel (36'' x 36'') box over the 12'' grid; clump boundary from a dendrogram", "evidence": [
+  {"loc": "3.2 Polarization angle dispersion", "quote": "we assume that the mean magnetic field orientation in a box of 36$''$ $\\times$ 36$''$ (3 $\\times$ 3 pixels) is uniform"},
+  {"loc": "3.2 Polarization angle dispersion", "quote": "The red contour marks the boundary of the P2 clump, which we identified using a dendrogram algorithm."}]},
+ "software": ["astrodendro"],
+ "key_parameters": [
+  {"value": "Dendrogram: minimum level 27 mJy/beam (3 sigma_I), minimum structure size 14.1'' (JCMT beam)", "evidence": [{"loc": "footnote 2", "quote": "A minimum intensity level of 27 mJy beam$^{-1}$ (3 $\\sigma_I$) and a minimum size of hierarchical structures of 14.1$''$ (the JCMT beam size) were used when applying the algorithm."}]}],
+ "assumptions": [{"value": "Field is uniform inside the box; radii of curvature all larger than 36''", "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "The derived radii of curvatures are larger than 36$''$"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Per-pixel uncertainties propagated from segment angle errors", "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "The uncertainties in each pixel are estimated from the measurement errors on the polarization segments"}]}},
+{"order": 5, "goal": "Derive column density, volume density and clump mass from 850 um intensity",
+ "method": {"value": "N(H2) = I_nu / (mu m_H kappa B_nu(T)) per pixel; n(H2) = N(H2)/R with R the equivalent radius of the P2 clump", "evidence": [
+  {"loc": "3.3 Volume density", "quote": "By dividing our column densities by this radius, we obtained volume densities of molecular hydrogen in each pixel"}]},
+ "software": [],
+ "key_parameters": [
+  {"value": "Equivalent radius ~1 pc", "evidence": [{"loc": "3.3 Volume density", "quote": "The estimated radius was $\\sim$1 pc."}]}],
+ "assumptions": [
+  {"value": "mu = 2.8 (10% helium)", "evidence": [{"loc": "3.3 Volume density", "quote": "$\\mu$ = 2.8 is the mean molecular weight per particle, assuming 10% of the total number of gas particles is helium (cite: Kauffmann2008)"}]},
+  {"value": "kappa = 0.1 cm2/g at 1 THz, beta = 2", "evidence": [{"loc": "3.3 Volume density", "quote": "where $\\kappa_{\\nu_0}$ is 0.1 cm$^2$ g$^{-1}$ at $\\nu_0 = 1$ THz, taking the dust emissivity index $\\beta$ to be 2"}]},
+  {"value": "Dust-to-gas 1:100", "evidence": [{"loc": "3.3 Volume density", "quote": "assuming a dust-to-gas mass ratio of 1:100 (cite: Motte2001; Andre2010)"}]},
+  {"value": "Dust temperature 29 K from NH3", "evidence": [{"loc": "3.3 Volume density", "quote": "We assumed that the dust temperature is similar to the rotation temperature of 29 K"}]},
+  {"value": "Depth equals equivalent radius (oblate clump); using 2R would lower density by 2 and field strength by 1.4", "evidence": [{"loc": "3.3 Volume density", "quote": "We note that we have assumed that P2 clump is an oblate structure."}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Compared with Carey et al. 2000 (factor ~2) and with PPMAP and SED-fit maps (factor of a few)", "evidence": [{"loc": "3.3 Volume density", "quote": "which are consistent within a factor of a few with our value"}]}},
+{"order": 6, "goal": "Measure non-thermal velocity dispersion from TRAO N2H+ (1-0)",
+ "method": {"value": "Hyperfine-structure fit of each spectrum, then subtract the thermal component at T_k = 29 K", "evidence": [
+  {"loc": "3.4 Velocity dispersion", "quote": "We fit each N$_2$H$^+$ spectrum with a hyperfine line model using the Python package of *pyspeckit*"},
+  {"loc": "3.4 Velocity dispersion", "quote": "is the kinetic temperature which is taken here to be the rotational temperature of NH$_3$ spectral line, 29 K"}]},
+ "software": ["pyspeckit", "CLASS"],
+ "key_parameters": [{"value": "TRAO map grid 22'', spectral resolution 0.3 km/s", "evidence": [{"loc": "2.2 TRAO Observations", "quote": "The map was reconstructed with a pixel size of 22$''$ and a spectral resolution of 0.3 km s$^{-1}$."}]}],
+ "assumptions": [{"value": "TRAO 54'' beam does not bias line broadening", "evidence": [{"loc": "3.4 Velocity dispersion", "quote": "Therefore, it seems likely that the large beam of the TRAO does not affect the line broadening"}]}],
+ "fitting": {"value": "Hyperfine-structure line model in pyspeckit; priors and sampler not stated", "evidence": [{"loc": "3.4 Velocity dispersion", "quote": "We estimated the velocity dispersion from the hyperfine structure fitting."}]},
+ "validation": {"value": "Compared with VLA NH3 non-thermal dispersion of about 1.8 km/s (Wang et al. 2008)", "evidence": [{"loc": "3.4 Velocity dispersion", "quote": "is about 1.8 km s$^{-1}$ in the P2 clump, which is comparable to our results (cite: Wang2008)"}]}},
+{"order": 7, "goal": "Estimate plane-of-sky magnetic field strength map with the DCF method",
+ "method": {"value": "B_pos = Q sqrt(4 pi rho) sigma_v_nth / sigma_theta, evaluated per pixel on the 12'' grid", "evidence": [
+  {"loc": "3.5 Magnetic field strengths", "quote": "We obtained the map of plane-of-sky magnetic field strengths using the maps of polarization angle dispersion, volume density, and velocity dispersion."}]},
+ "software": [],
+ "key_parameters": [
+  {"value": "Q = 0.28 adopted for the analysis (Q = 0.5 gives about 2x higher)", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "We will use the magnetic field strengths determined using $Q$ = 0.28 in our analysis in the upcoming sections."}]}],
+ "assumptions": [{"value": "No 3D correction applied to B_pos (B = 1.27 B_pos noted)", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "so we do not apply it to our value of $B_{\\text{pos}}$"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Authors state DCF is correct only to within a factor of a few; error bars are statistical only", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "suggest that the DCF method produces magnetic field strength values that are correct to within a factor of a few"}]}},
+{"order": 8, "goal": "Compute mass-to-flux ratio map and radial profile",
+ "method": {"value": "mu_Phi = 7.6e-21 N(H2)/B in units of the critical value, using plane-of-sky B; mean values in circles of growing radius about the Stokes I peak", "evidence": [
+  {"loc": "4.1 Mass-to-flux ratio", "quote": "Therefore, the estimated mass-to-flux ratios may be upper limits."},
+  {"loc": "4.1 Mass-to-flux ratio", "quote": "centered on the peak intensity position in our 850 $\\ensuremath{\\mu}m$ Stokes $I$ map"}]},
+ "software": [],
+ "key_parameters": [],
+ "assumptions": [{"value": "Critical value of a magnetized disk, 1/(2 pi G^1/2)", "evidence": [{"loc": "4.1 Mass-to-flux ratio", "quote": "usually taken to be the value of a magnetized disk, $1/2\\pi G^{1/2}$ where $G$ is the gravitational constant"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "DCF overestimation (factor ~3-5) argued to make a supercritical result robust", "evidence": [{"loc": "4.1 Mass-to-flux ratio", "quote": "Despite our large uncertainties, we can have some confidence that G28 is magnetically supercritical."}]}},
+{"order": 9, "goal": "Derive clump mass and energy budget",
+ "method": {"value": "Mass from summed 850 um flux density; E_K = 3/2 M sigma_tot^2, E_G = -3/5 G M^2/R, E_B = 1/2 M v_A^2", "evidence": [
+  {"loc": "4.2 Energy Balance", "quote": "We calculate a mass for the P2 clump of 2037 M$_\\odot$."},
+  {"loc": "4.2 Energy Balance", "quote": "The mean velocity dispersion of 1.2 km s$^{-1}$ and the magnetic field strength of 185 $\\mu$G in the P2 clump are used when calculating $E_{\\rm K}$ and $E_{\\rm B}$."}]},
+ "software": [],
+ "key_parameters": [],
+ "assumptions": [{"value": "Thermal dispersion uses mu = 2.37", "evidence": [{"loc": "4.2 Energy Balance", "quote": "is the thermal velocity dispersion for free particle with the mean molecular weight, $\\mu$=2.37"}]}],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "Values flagged as order-of-magnitude only", "evidence": [{"loc": "4.2 Energy Balance", "quote": "We emphasize that these values are order-of-magnitude estimates only"}]}}
+],
+"software": [
+{"name": "Starlink (SMURF, pol2map, KAPPA)", "version": "not stated", "used_for": {"value": "Reduction of JCMT POL-2 data to Stokes maps and polarization catalogue; KAPPA is listed in the Software section without a stated use", "evidence": [
+ {"loc": "Data reduction procedures", "quote": "The raw data were reduced using the Submillimetre User Reduction Facility (SMURF) package (cite: Chapin2013) from the Starlink software suite (cite: Currie2014)."},
+ {"loc": "Software", "quote": "CLASS (cite: Pety2005; gildasteam2013), KAPPA (cite: Currie2008), Starlink (cite: Jenness2013)"}]}},
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Reduction of the archival ALMA data (done in Liu et al. 2020)", "evidence": [{"loc": "2.3 ALMA archive data", "quote": "The data were presented by (cite: Liu2020) and reduced using the Common Astronomy Software Applications (CASA; (cite: McMullin2007))."}]}},
+{"name": "CLASS (GILDAS)", "version": "not stated", "used_for": {"value": "Analysis of the TRAO N2H+ map data", "evidence": [{"loc": "2.2 TRAO Observations", "quote": "Further analysis of the map data was performed using the Continuum and Line Analysis Single-dish Software (CLASS; (cite: Pety2005); (cite: gildasteam2013))."}]}},
+{"name": "astrodendro", "version": "not stated", "used_for": {"value": "Dendrogram identification of the P2 clump boundary", "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "The red contour marks the boundary of the P2 clump, which we identified using a dendrogram algorithm."}]}},
+{"name": "pyspeckit", "version": "not stated", "used_for": {"value": "Hyperfine-structure fits of N2H+ (1-0) spectra", "evidence": [{"loc": "3.4 Velocity dispersion", "quote": "We fit each N$_2$H$^+$ spectrum with a hyperfine line model using the Python package of *pyspeckit*"}]}}
+],
+"results_numeric": [
+{"quantity": "Mean JCMT magnetic field direction", "value": "24 deg (std 19 deg)", "uncertainty": "std 19 deg", "units": "degrees", "from_step": 3, "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "The mean values of the JCMT (magenta histogram) and ALMA (cyan histogram) magnetic field directions are 24 and 117 degrees, with standard deviations of 19 and 32 degrees"}]},
+{"quantity": "Mean ALMA magnetic field direction", "value": "117 deg (std 32 deg)", "uncertainty": "std 32 deg", "units": "degrees", "from_step": 3, "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "The mean values of the JCMT (magenta histogram) and ALMA (cyan histogram) magnetic field directions are 24 and 117 degrees, with standard deviations of 19 and 32 degrees"}]},
+{"quantity": "Mean angle difference between JCMT and ALMA field orientations", "value": "87", "uncertainty": "not stated", "units": "degrees", "from_step": 3, "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "with a mean angle difference of 87 degrees"}]},
+{"quantity": "Polarization angle dispersion in P2 (range 3 to 20 deg)", "value": "11", "uncertainty": "4", "units": "degrees", "from_step": 4, "evidence": [{"loc": "3.2 Polarization angle dispersion", "quote": "varies from 3 to 20 degrees, with a mean value of 11 $\\pm$ 4 degrees"}]},
+{"quantity": "Mean H2 column density (JCMT 850 um)", "value": "3.0e22", "uncertainty": "not stated", "units": "cm^-2", "from_step": 5, "evidence": [{"loc": "3.3 Volume density", "quote": "The mean value that we obtain is 3.0 $\\times$ 10$^{22}$ cm$^{-2}$ which is comparable to the value estimated by"}]},
+{"quantity": "Equivalent radius of the P2 clump", "value": "~1", "uncertainty": "not stated", "units": "pc", "from_step": 5, "evidence": [{"loc": "3.3 Volume density", "quote": "The estimated radius was $\\sim$1 pc."}]},
+{"quantity": "H2 volume density (range 2.9e3 to 58.1e3)", "value": "1.0e4", "uncertainty": "not stated", "units": "cm^-3", "from_step": 5, "evidence": [{"loc": "3.3 Volume density", "quote": "Volume densities in the clump range between (2.9 – 58.1) $\\times$ 10$^3$ cm$^{-3}$, with a mean value of 1.0 $\\times$ 10$^4$ cm$^{-3}$."}]},
+{"quantity": "Non-thermal velocity dispersion (range 1.29 to 1.48)", "value": "1.40", "uncertainty": "0.03", "units": "km/s", "from_step": 6, "evidence": [{"loc": "3.4 Velocity dispersion", "quote": "The velocity dispersion of the non-thermal gas component ranges from 1.29 to 1.48 km s$^{-1}$ in G28 with a mean value of 1.40 $\\pm$ 0.03 km s$^{-1}$."}]},
+{"quantity": "Plane-of-sky B, Q = 0.5 (range 96 to 772)", "value": "330", "uncertainty": "115", "units": "microgauss", "from_step": 7, "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "which varies from 96 to 772 $\\mu$G with a mean value of 330 $\\pm$ 115 $\\mu$G"}]},
+{"quantity": "Plane-of-sky B, Q = 0.28 (adopted; range 54 to 432)", "value": "185", "uncertainty": "65", "units": "microgauss", "from_step": 7, "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "the magnetic field strength will vary from 54 to 432 $\\mu$G with a mean value of 185 $\\pm$ 65 $\\mu$G"}]},
+{"quantity": "Mass-to-flux ratio in units of critical (range 0.3 to 3.2)", "value": "1.5", "uncertainty": "0.5", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "4.1 Mass-to-flux ratio", "quote": "The derived mass-to-flux ratios vary from 0.3 to 3.2, with a mean value of 1.5 $\\pm$ 0.5."}]},
+{"quantity": "Mass of the P2 clump", "value": "2037", "uncertainty": "not stated", "units": "Msun", "from_step": 9, "evidence": [{"loc": "4.2 Energy Balance", "quote": "We calculate a mass for the P2 clump of 2037 M$_\\odot$."}]},
+{"quantity": "Kinetic, gravitational and magnetic energy of P2", "value": "12e46, 21e46, 6e46", "uncertainty": "order-of-magnitude only", "units": "erg", "from_step": 9, "evidence": [{"loc": "4.2 Energy Balance", "quote": "are 12 $\\times$ 10$^{46}$, 21 $\\times$ 10$^{46}$, and 6 $\\times$ 10$^{46}$ erg, respectively"}]}
+],
+"findings_qualitative": [
+{"value": "The magnetic field is strongest where the ALMA core is embedded, and the clump is magnetically supercritical in the surrounding region", "evidence": [{"loc": "abstract", "quote": "The region forming the core shows the highest magnetic field strength."}]},
+{"value": "Gravitational energy is the dominant term in the P2 energy budget", "evidence": [{"loc": "4.2 Energy Balance", "quote": "The gravitational potential energy is the dominant term in the energy budget of the P2 clump."}]}
+],
+"claims": [
+{"hypothesis": "Do field orientations on clump scale (JCMT) and core scale (ALMA) in P2 agree?", "experiment": "Compared JCMT 850 um POL-2 field segments with archival ALMA Band 6 polarization segments", "result": "Mean directions 24 and 117 degrees, difference 87 degrees", "finding": "Field orientations on the two scales are roughly perpendicular", "support": "supported", "evidence": [{"loc": "3.1 Magnetic field orientations", "quote": "The field orientations on JCMT and ALMA scales are roughly perpendicular to one another."}]},
+{"hypothesis": "How strong is the field across P2 and where is it highest?", "experiment": "DCF method with moving-box angle dispersion, N2H+ non-thermal dispersion and 850 um density, Q = 0.28", "result": "54 to 432 microgauss, mean 185 +/- 65, highest at the core", "finding": "Field strength peaks in the region forming the core", "support": "supported", "evidence": [{"loc": "abstract", "quote": "The region forming the core shows the highest magnetic field strength."}]},
+{"hypothesis": "Can the field support P2 against gravitational collapse?", "experiment": "Mass-to-flux ratio map and energy budget using plane-of-sky B", "result": "mu_Phi 0.3 to 3.2, mean 1.5 +/- 0.5; E_G larger than E_B", "finding": "The clump is magnetically supercritical overall; the field cannot prevent collapse (with large uncertainties and trans-critical possible)", "support": "partially", "evidence": [{"loc": "4.1 Mass-to-flux ratio", "quote": "The P2 clump is in a magnetically supercritical state over all of the radii that we consider"}, {"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "so the clump could be trans-, rather than super-critical"}]},
+{"hypothesis": "What causes the 90 degree change in field orientation from clump to core?", "experiment": "Compared mass-to-flux profile with hourglass/ambipolar-diffusion predictions and considered the ALMA CO outflow", "result": "Mass-to-flux ratios resemble the collapse prediction; outflow effect cannot be constrained", "finding": "Gravitational collapse is favoured as the primary cause; outflow scenario cannot be ruled out", "support": "partially", "evidence": [{"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "We cannot rule out the second scenario, but gravitational collapse could be the primary cause of the observed magnetic field geometry"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "P2 and P1 show different core fragmentation modes, so G28 is a good test of the role of the field", "evidence": [{"loc": "1 Introduction", "quote": "G28 is a good target to examine this role due to the two distinctive core fragmentation types in clumps P1 and P2."}]},
+{"field": "why_this_method", "value": "Moving-box dispersion handles curved fields and yields a field-strength map; N2H+ chosen as dense-gas tracer for non-thermal motions", "evidence": [
+ {"loc": "1 Introduction", "quote": "Using this moving box method, a map of the magnetic field strength can be obtained."},
+ {"loc": "3.4 Velocity dispersion", "quote": "it is one of the best tracers with which to measure non-thermal velocity dispersion within the P2 clump"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Q = 0.5 versus Q = 0.28; the latter adopted (field about 2x lower)", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "We will use the magnetic field strengths determined using $Q$ = 0.28 in our analysis in the upcoming sections."}]},
+{"value": "Outflow-driven field geometry considered as second scenario but not confirmed", "evidence": [{"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "it is hard to constrain the effect of the outflow on the magnetic field orientations"}]}
+],
+"limitations_admitted": [
+{"value": "DCF has large statistical and systematic uncertainties; error bars are statistical only", "evidence": [{"loc": "3.5 Magnetic field strengths", "quote": "We note that the DCF method is subject to significant statistical and systematic uncertainties"}]},
+{"value": "No quantitative uncertainty on column or volume density (flux loss, opacity, depth)", "evidence": [{"loc": "Table 1 notes", "quote": "We were unable to determine quantitative uncertainties of the column density and number densities of molecular hydrogen"}]},
+{"value": "JCMT and ALMA scales barely overlap, so the transition scale is unknown", "evidence": [{"loc": "4.3 Scenarios changing magnetic field orientations", "quote": "we need observations on intermediate scales between those mapped by the JCMT and ALMA"}]}
+],
+"referee_caveats_inferred": [
+"Single-depth (R) geometry and fixed T = 29 K drive the density and mass, with no propagated uncertainty",
+"Beam mismatch: ALMA (0.8'') and JCMT (14'') probe nearly disjoint scales, so 'perpendicular' compares different structures",
+"Section 2.3 gives the ALMA band frequency as GHz (probably a typo) and max recoverable scale as 7'' versus 13'' later",
+"Mean N(H2) 3.0e22 in text but 3.5e22 in Table 1; mean velocity dispersion 1.2 vs 1.40 km/s"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data described as archival (ADS/JAO.ALMA project codes cited)", "evidence": [{"loc": "Facilities", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00248.S and ADS/JAO.ALMA#2017.1.00793.S."}]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"ALMA calibration and imaging recipe (deferred to Liu et al. 2020)",
+"JCMT and TRAO raw data availability and exact reduction parameters",
+"pyspeckit fit setup, astrodendro min_delta, circular-statistics details of the box dispersion"
+],
+"estimated_data_volume_inferred": "ALMA Band 6 polarization raw data from two projects likely tens to hundreds of GB; JCMT POL-2 (45 observations) and TRAO maps a few GB, if public",
+"score_inferred": 2,
+"score_reason": "The main results come from JCMT and TRAO data that are not stated to be public, with partial recipes; the ALMA part is archival but its processing is inherited from Liu et al. 2020; numeric results are given.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA plays a supporting role, ALMA processing is not given, and the main numbers rest on JCMT and TRAO data without a stated public release.",
+"methods_papers": [
+{"citation": "Liu et al. 2020 (cite: Liu2020)", "why": "Describes the ALMA data reduction and presents the data used"},
+{"citation": "Hwang et al. 2021 (cite: Hwang2021)", "why": "Moving-box polarization angle dispersion method"},
+{"citation": "Mairs et al. 2021 (cite: Mairs2021)", "why": "JCMT flux conversion factor and POL-2 throughput correction"}
+],
+"companion_papers": [
+{"citation": "Liu et al. 2024 (cite: Liu2024)", "why": "JCMT and ALMA magnetic field study of the P1 clump in G28"}
+],
+"related_projects_or_surveys": ["JCMT BISTRO survey", "JCMT project M22AP018 (PI Junhao Liu)"]
+}

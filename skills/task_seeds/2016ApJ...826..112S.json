@@ -1,0 +1,299 @@
+{
+ "bibcode": "2016ApJ...826..112S",
+ "title": "ALMA Imaging and Gravitational Lens Models of South Pole Telescope—Selected Dusty, Star-Forming Galaxies at High Redshifts",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/826/2/112",
+ "arxiv_id": "1604.05723",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the lens models, magnifications and intrinsic sizes of SPT-selected lensed DSFGs, and what do the sizes imply for the size distribution, dust optical depth wavelength and [CII]/FIR ratio?",
+ "alma_project_codes": [
+  "2011.0.00958.S",
+  "2011.0.00957.S",
+  "2012.1.00844.S",
+  "2012.1.00994.S"
+ ],
+ "data": {
+  "bands": "870 um (Band 7), four basebands near 336.8, 338.8, 348.8, 350.8 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5 arcsec in higher-resolution tracks",
+  "sensitivity": "per-track average rms 0.21-0.72 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source and lens redshifts",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Source redshifts are given in (cite: weiss13) and Strandet et al.(submitted). Lens redshifts are given in Rotermund et al., in prep."
+     }
+    ]
+   },
+   "citation": "(cite: weiss13); (cite: strandet16)"
+  },
+  {
+   "what": {
+    "value": "Multiwavelength photometry for SED fitting",
+    "evidence": [
+     {
+      "loc": "4.3 Constraining the Dust Opacity",
+      "quote": "We perform the fitting described using the source photometry in (cite: weiss13; strandet16), and an MCMC fitting routine."
+     }
+    ]
+   },
+   "citation": "(cite: weiss13; strandet16)"
+  },
+  {
+   "what": {
+    "value": "Unlensed DSFG sizes for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Size Distribution",
+      "quote": "(cite: simpson15b) measure sizes of 22 sources based on 870 $\\mu\\rm{m}$ ALMA imaging"
+     }
+    ]
+   },
+   "citation": "(cite: simpson15b); (cite: ikarashi15)"
+  },
+  {
+   "what": {
+    "value": "Herschel-selected lens model sizes/magnifications",
+    "evidence": [
+     {
+      "loc": "4.2 Size Distribution",
+      "quote": "for both the SPT sample and the *Herschel*-selected samples of (cite: bussmann13; bussmann15)"
+     }
+    ]
+   },
+   "citation": "(cite: bussmann13; bussmann15)"
+  },
+  {
+   "what": {
+    "value": "[CII]/FIR vs Sigma_FIR slope from GOALS",
+    "evidence": [
+     {
+      "loc": "4.4 Revisiting the [CII]/FIR Ratio",
+      "quote": "the slope is exactly as determined by (cite: diazsantos13), i.e., $[C{\\scriptsize II}]/\\ensuremath{L_{\\rm{FIR}}}\\propto \\ensuremath{\\Sigma_{\\rm{FIR}}}^{-0.35}$."
+     }
+    ]
+   },
+   "citation": "(cite: diazsantos13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and combine tracks",
+   "method": "Standard calibration with quasar bandpass/phase calibrators; visibility noise from differencing successive visibilities; tracks combined",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Visibility-plane lens modeling",
+   "method": "SIE lenses (plus optional shear) and point-source or Sersic background components; model image Fourier transformed and sampled at data uv points; chi^2 likelihood; free amplitude rescaling, astrometric offset and antenna phase errors",
+   "software": [
+    "emcee",
+    "visilens"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat WMAP9 cosmology, h=0.693, Om=0.286"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Flux recovery test vs LABOCA",
+   "method": "Taper at 50 klambda, CLEAN, sum components, compare to LABOCA",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Compare lensed vs unlensed size distributions",
+   "method": "Two-sample K-S test of sizes of strongly lensed (mu>2) SPT and Herschel sources vs unlensed samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit modified blackbody SED to constrain lambda0",
+   "method": "Fit rest wavelengths >50 um with modified blackbody with free normalization, Tdust, lambda0; likelihood includes lens-model intrinsic flux and size at 870 um; lambda0-Tdust relation by orthogonal distance regression with outlier marginalization",
+   "software": [
+    "MCMC (unnamed)"
+   ],
+   "key_parameters": [
+    "beta = 2"
+   ],
+   "assumptions": [
+    "Uniform source emission with single Tdust and lambda0"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare [CII]/LFIR with Sigma_FIR",
+   "method": "Refit photometry for uniform LFIR, compute Sigma_FIR from lens-model sizes, compare with GOALS relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LFIR integrated over rest-frame 42.5-122.5 um"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median magnification, strongly lensed subset",
+   "value": "6.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Basic Lens Model Properties",
+     "quote": "with a median magnification of 5.5 for all sources, or 6.3 for the strongly lensed subset alone"
+    }
+   ]
+  },
+  {
+   "quantity": "Median magnification, all sources",
+   "value": "5.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Basic Lens Model Properties",
+     "quote": "with a median magnification of 5.5 for all sources"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Einstein radius",
+   "value": "0.64",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Basic Lens Model Properties",
+     "quote": "We find a median Einstein radius of 0.64$''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sources strongly lensed",
+   "value": "38 of 47 (81%)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Basic Lens Model Properties",
+     "quote": "for 38 sources (81%), strong gravitational lensing is the most plausible explanation for the ALMA emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Median ALMA/LABOCA flux recovery",
+   "value": "91",
+   "uncertainty": "24",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Flux Recovery",
+     "quote": "We recover a median of ($91\\pm24$)% of the LABOCA flux density"
+    }
+   ]
+  },
+  {
+   "quantity": "Median intrinsic FWHM",
+   "value": "0.28",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Size Distribution",
+     "quote": "We find a median intrinsic FWHM of 0.28”."
+    }
+   ]
+  },
+  {
+   "quantity": "K-S p-value lensed vs unlensed sizes",
+   "value": "0.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Size Distribution",
+     "quote": "($p=0.84$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median lambda0",
+   "value": "140",
+   "uncertainty": "40",
+   "units": "um",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Constraining the Dust Opacity",
+     "quote": "We find a median value of $\\lambda_0$= 140 $\\pm$ 40 $\\mu\\rm{m}$"
+    }
+   ]
+  },
+  {
+   "quantity": "lambda0-Tdust relation slope",
+   "value": "3.0",
+   "uncertainty": "0.7",
+   "units": "um/K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Constraining the Dust Opacity",
+     "quote": "\\ensuremath{\\lambda_0}= (3.0 \\pm 0.7) \\times (\\ensuremath{T_{\\rm{dust}}}- 40) + (118 \\pm 12) \\ensuremath{\\mu\\rm{m}}."
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity fraction",
+   "value": "13% (6/47)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Multiplicity in the SPT Sample",
+     "quote": "only 13% (6/47) of sources contain multiple components at $>5\\sigma$ significance"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC settings (walkers, steps, burn-in, convergence)",
+  "Priors/bounds on lens and source parameters",
+  "CASA version and calibration/flagging details",
+  "Software used for imaging (CLEAN) not named",
+  "Flux standard model versions",
+  "SED fit priors and MCMC settings; outlier model for the lambda0-Tdust fit",
+  "Source-plane component number choices per source beyond DIC",
+  "Photometry values used in SED fits"
+ ],
+ "missing_for_reproduction": [
+  "MCMC and prior settings",
+  "Photometry tables and lens-redshift data (in prep.)",
+  "CASA version and calibration scripts"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public Cycle 0 data, public code and full parameter tables; but MCMC and calibration details are sparse.",
+ "rediscovery_reason": "Data and code are public and results are numeric (magnifications, sizes), though some settings are missing.",
+ "source_card": "cards/2016ApJ...826..112S/sonnet/card.md"
+}

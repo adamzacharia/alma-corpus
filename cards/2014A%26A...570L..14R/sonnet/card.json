@@ -1,0 +1,768 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014A&A...570L..14R",
+  "title": "The wonderful complexity of the Mira AB system",
+  "year": 2014,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Ramstedt, S.",
+  "n_authors": 20,
+  "arxiv_id": "1410.1529",
+  "doi": "10.1051/0004-6361/201425029",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00524.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We have mapped the $^{12}$CO(3-2) line emission around the Mira AB system at 0.5$''$ resolution using the Atacama Large Millimeter/submillimeter Array (ALMA)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "Mira AB",
+     "coordinates": {
+      "value": "Mira A 02:19:20.784 -02:58:42.818 (J2000)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Mira AB system is well-studied and nearby (cite: vlee07)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| Mira A | 02:19:20.784 | -02:58:42.818 | 252.3$\\pm$0.3 mJy |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "100 pc (assumed in discussion)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Mira AB system is well-studied and nearby (cite: vlee07)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| Mira A | 02:19:20.784 | -02:58:42.818 | 252.3$\\pm$0.3 mJy |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "van Leeuwen 2007 (nearby); 100 pc used in modelling estimate",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Mira AB system is well-studied and nearby (cite: vlee07)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "| Mira A | 02:19:20.784 | -02:58:42.818 | 252.3$\\pm$0.3 mJy |"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the morphology of the circumstellar CO(3-2) gas around the Mira AB binary, and how has it been shaped by the binary interaction?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We have mapped the CO(3-2) line emission around the system with considerably higher spatial resolution than previous observations ($\\sim$0.5$''$)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00524.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00524.S ."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (CO(3-2); spectral windows at 331-345 GHz)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations have four spectral windows with a width of $1.875$ GHz (main array) and $2$ GHz (ACA) centered on 331, 333, 343 and 345 GHz."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "We have mapped the $^{12}$CO(3-2) line emission around the Mira AB system"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12m main array (27 and 30 antennas) plus ACA 7m (seven antennas)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Mira was observed on 25 February 2014 and 3 May 2014, with 27 and 30 of the main array 12m antennas, respectively."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Main array 13-450 m; ACA 9-45 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The baseline length of the main array ranges from 13 to 450 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "beam 0.576'' x 0.403''",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The images have a beam full width half maximum (FWHM) of 0.576$''$$\\times$0.403$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~6'' (main array), ~9'' (ACA)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "we find a maximum recoverable scale (MRS) of $\\sim$6$''$. The ACA covers 9 to 45 m baselines and the MRS is $\\sim$9$''$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 23 mJy/beam in emission-free channels",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "reach an rms noise of 23 mJy/beam in the emission free channels."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "6.25 min main array; 6 min ACA",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The total time on source is 6.25 minutes with the main array and 6 minutes with the ACA."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "25 Feb 2014, 3 May 2014 (main); 8 Oct 2013 (ACA)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "It was also observed with seven Atacama Compact Array (ACA) 7m antennas on 8 October 2013."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Orbit of Mira AB: inclination 112 deg, period ~500 yr, expected separation ~0.5'' at PA ~100 deg",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The latest calculation of the orbit (cite: prieetal02), gives an inclination of 112$^{\\circ}$, an orbital period of $\\sim$500 yrs"
+       }
+      ]
+     },
+     "citation": "(cite: prieetal02)"
+    },
+    {
+     "what": {
+      "value": "Single-dish CO spectrum used to estimate recovered flux",
+      "evidence": [
+       {
+        "loc": "3.2 Circumstellar morphology",
+        "quote": "Comparison of our spectrum with previous single dish observations (cite: youn95) indicates that even with the ACA only 50% of the extended flux is recovered."
+       }
+      ]
+     },
+     "citation": "(cite: youn95)"
+    },
+    {
+     "what": {
+      "value": "VLA radio continuum spectral index S ∝ nu^1.5 for Mira A",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission and current positions",
+        "quote": "In order for the $S_{\\nu}$ $\\propto$ $\\nu^{1.5}$ relation determined by (cite: mattkaro06) for Mira A to hold to submm wavelengths"
+       }
+      ]
+     },
+     "citation": "(cite: mattkaro06)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedures, each data set separately",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Calibration on the separate data sets was carried out using CASA, following standard procedures"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ganymede, Uranus and J0334-401",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Ganymede, Uranus and the quasar J0334-401 as flux calibrators."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Self-calibration using the continuum image",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "As the continuum emission is sufficiently strong, this image was used for self-calibration."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Continuum from emission-free channels of all spectral windows, subtracted before line imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "A continuum image was made using the emission free channels from all spectral windows."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Main array and ACA combined, ACA weighted down by factor 0.3",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data were subsequently combined, weighing the ACA data down by a factor of $0.3$ to account for the lower sensitivity of the 7m antennas."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "Averaged over 2 channels to ~0.85 km/s",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "averaging over 2 channels to $\\sim$0.85 km s$^{-1}$ spectral resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "0.576'' x 0.403''",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The images have a beam full width half maximum (FWHM) of 0.576$''$$\\times$0.403$''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "23 mJy/beam (emission-free channels); 30-160 mJy in line channels",
+     "evidence": [
+      {
+       "loc": "Appendix A",
+       "quote": "the rms varies between 30 and 160 mJy in the different velocity channels."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Continuum positions and fluxes determined by uv fitting",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum emission and current positions",
+        "quote": "The current positions determined by uv fitting (cite: martetal14) are given in Table [1](#contdata)"
+       }
+      ]
+     },
+     "from_reference": "(cite: martetal14)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean parameters: weighting/robust, deconvolver, cell and image size, masks",
+    "CASA version",
+    "Line-free channels used for continuum",
+    "Self-calibration solution intervals",
+    "Flux scale uncertainty",
+    "How the uv fit was performed (model, software)",
+    "How the position-velocity cut was extracted",
+    "Spectral setup details beyond window centres"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Combine and image data",
+    "method": {
+     "value": "Calibrate separately, combine 12m and ACA with ACA weight 0.3, self-calibrate on continuum, subtract continuum, image line",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "After applying the self-calibration, final imaging was done after subtracting the continuum, and averaging over 2 channels to $\\sim$0.85 km s$^{-1}$ spectral resolution."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "ACA weight factor 0.3",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "weighing the ACA data down by a factor of $0.3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tests indicate the exact ACA weight does not affect results",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Tests indicate that the exact weight does not affect our results."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure binary positions and continuum flux",
+    "method": {
+     "value": "uv fitting of continuum data for Mira A and B",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum emission and current positions",
+       "quote": "The current positions determined by uv fitting (cite: martetal14) are given in Table [1](#contdata)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "uv fitting",
+     "evidence": [
+      {
+       "loc": "Results, Continuum emission and current positions",
+       "quote": "The current positions determined by uv fitting (cite: martetal14) are given in Table [1](#contdata) together with the measured flux density at 338 GHz of the two sources."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with predicted orbit position",
+     "evidence": [
+      {
+       "loc": "4.1 Comparison to previous observations",
+       "quote": "This agrees with predictions from the orbit by (cite: prieetal02)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Characterise CO morphology",
+    "method": {
+     "value": "Inspect channel maps and a position-velocity diagram along bubble major axis (PA 38 deg)",
+     "evidence": [
+      {
+       "loc": "3.2 Circumstellar morphology",
+       "quote": "position-velocity diagram created along the major axis (position angle 38$^{\\circ}$) of the south-east bubble."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration, combination, imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Calibration on the separate data sets was carried out using CASA, following standard procedures"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Binary separation",
+    "value": "0.487",
+    "uncertainty": "0.006",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum emission and current positions",
+      "quote": "This gives a total separation of 0.487$''$$\\pm$0.006$''$."
+     }
+    ]
+   },
+   {
+    "quantity": "Mira A flux density at 338 GHz",
+    "value": "252.3",
+    "uncertainty": "0.3",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Mira A | 02:19:20.784 | -02:58:42.818 | 252.3$\\pm$0.3 mJy |"
+     }
+    ]
+   },
+   {
+    "quantity": "Mira B flux density at 338 GHz",
+    "value": "15.3",
+    "uncertainty": "0.3",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Mira B | 02:19:20.816 | -02:58:42.887 | 15.3$\\pm$0.3 mJy |"
+     }
+    ]
+   },
+   {
+    "quantity": "Bubble radial expansion velocity (lower limit)",
+    "value": "~5",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Circumstellar morphology",
+      "quote": "this gives a lower limit of the radial expansion velocity of $\\sim$5 km s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Bubble size",
+    "value": "~800",
+    "uncertainty": "not stated",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Possible shaping scenarios",
+      "quote": "The bubble found on the south-east side of Mira A is $\\sim$800 AU across"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle of Mira B",
+    "value": "98",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Comparison to previous observations",
+      "quote": "the current position of Mira B is $\\approx$0.5$''$ east of Mira A at a position angle of 98$^{\\circ}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Spiral arcs around Mira A are flat and oriented in the orbital plane, with an accretion wake behind the companion",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The spiral appears to be relatively flat and oriented in the orbital plane."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the CO gas shaped by binary interaction producing a flat spiral?",
+    "experiment": "ALMA+ACA CO(3-2) channel maps",
+    "result": "Spiral arcs seen from 45 to 54 km/s with accretion wake; projected separation 3-5''",
+    "finding": "Slow AGB wind fills Roche lobe and flows onto companion in orbital plane",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "A relatively flat spiral is formed and seen as separate arcs at different velocities."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does Mira B's wind blow a bubble in Mira A's envelope?",
+    "experiment": "Blue-wing channel maps and PV diagram, order-of-magnitude timescale",
+    "result": "~800 AU bubble, expansion >=5 km/s, timescale ~380 yr",
+    "finding": "Tentative explanation; timescale somewhat longer than orbital half-period",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We tentatively suggest that this structure is created by the wind of Mira B blowing a bubble in the expanding envelope of Mira A."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Interaction with the ISM cannot explain inner structures, since the bow shock lies much further out",
+     "evidence": [
+      {
+       "loc": "4.1 Comparison to previous observations",
+       "quote": "The presence of the bow shock much further out means that the inner structures cannot be explained by (hydrodynamic) interaction with the ISM."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Only ~50% of extended flux recovered even with ACA; dynamic range limited to ~50",
+     "evidence": [
+      {
+       "loc": "3.2 Circumstellar morphology",
+       "quote": "even with the ACA only 50% of the extended flux is recovered."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Bubble interpretation is qualitative; no modelling",
+    "Missing short-spacing flux affects bubble interior interpretation",
+    "Imaging parameters unspecified"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project code given; ALMA data acknowledged",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00524.S ."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "uv-fit details",
+    "Self-cal settings"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB (Cycle 1 12m mosaic plus ACA, 4 spws)",
+   "score_inferred": 3,
+   "score_reason": "Data identified and calibration outlined, but imaging parameters missing and results mostly morphological.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are largely qualitative morphology; imaging recipe incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Martí-Vidal et al. 2014 (cite: martetal14)",
+     "why": "uv fitting of positions"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Maercker et al. 2012 (cite: maeretal12)",
+     "why": "R Scl spiral comparison"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c2d729d598d5d48605a91c0ec6a700ea",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:18",
+  "usage": {
+   "input_tokens": 8666,
+   "output_tokens": 5776,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.038152,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 50,
+  "quotes_ok": 50,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 61,
+   "stated": 36,
+   "rate": 0.59
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:02",
+  "custom_id": "repair-sonnet-c2c01cef51db4ec14b130fab7211ecb3",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The current positions determined by uv fitting (cite: martetal14) are given in Table [1](#contdata) together with the measured flux density at 338 GHz of the two sources."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

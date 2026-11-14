@@ -1,0 +1,683 @@
+{
+ "bibcode": "2023A&A...677A..30B",
+ "title": "Matter ejections behind the highs and lows of the transitional millisecond pulsar PSR J1023+0038",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202346418",
+ "arxiv_id": "2305.14509",
+ "fields": [
+  "stellar_physics",
+  "transients"
+ ],
+ "question": "What is the root cause of the mode changes in the active sub-luminous X-ray state of PSR J1023+0038 and its implication for accretion-ejection coupling in X-ray binary systems harbouring rapidly spinning neutron stars?",
+ "alma_project_codes": [
+  "2019.A.00036.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3.1 mm)",
+  "arrays": "12 m array (38 antennas)",
+  "angular_resolution": "0.87'' x 0.53'' (natural), 0.55'' x 0.30'' (Briggs robust=0)",
+  "sensitivity": "6.1 uJy beam^-1 (natural continuum), 10.6 uJy beam^-1 (robust=0 continuum), ~0.48 mJy beam^-1 (3sigma per spectral channel)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2MASS point source catalogue J- and K-band magnitudes for photometric calibration",
+    "evidence": [
+     {
+      "loc": "NTT/SOFI (Night 1)",
+      "quote": "we performed photometry on J1023 and a reference star (at position R.A. = 10$^\\mathrm{h}$23$^\\mathrm{m}$50$^\\mathrm{s}$54, Dec. = +00$^{\\circ}$38$^{\\prime}$16.$^{\\prime\\prime}$4, J2000.0, and with a magnitude of $J = 15.44 \\pm 0.05$ mag in the Vega system from the Two Micron All-Sky Survey (2MASS) point source catalogue)"
+     },
+     {
+      "loc": "REM photometric observations (Night 2)",
+      "quote": "The images were flux-calibrated against a selection of stars in the field from the 2MASS point source catalogue"
+     }
+    ]
+   },
+   "citation": "2MASS point source catalogue"
+  },
+  {
+   "what": {
+    "value": "APASS catalogue stars for REM griz flux calibration",
+    "evidence": [
+     {
+      "loc": "REM photometric observations (Night 2)",
+      "quote": "We performed flux calibration using stars in the field from the American Association of Variable Star Observers (AAVSO) Photometric All-Sky Survey (APASS) catalogue (cite: Henden2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Henden2019)"
+  },
+  {
+   "what": {
+    "value": "Absorption column density N_H = 5.0^{+0.3}_{-0.2} x 10^20 cm^-2",
+    "evidence": [
+     {
+      "loc": "VLT/FORS2 polarimetric observations (Night 2)",
+      "quote": "For J1023, the best-fitting absorption column density, $N_{\\rm H}$, according to *XMM-Newton* observations is $5.0^{+0.3}_{-0.2}\\times 10^{20}$ cm$^{-2}$ (cite: campana19)."
+     }
+    ]
+   },
+   "citation": "(cite: campana19)"
+  },
+  {
+   "what": {
+    "value": "Distance to J1023 D = 1.37 kpc (1368 pc) and radio position",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "for a distance of 1.37 kpc (cite: deller12)."
+     },
+     {
+      "loc": "Model setup",
+      "quote": "$D=1368$ pc (cite: deller12), $R_{\\rm c}=0.43\\, R_{\\odot}$ (cite: Archibald2009)"
+     }
+    ]
+   },
+   "citation": "(cite: deller12)"
+  },
+  {
+   "what": {
+    "value": "System parameters M_NS = 1.65 M_sun, M_C = 0.24 M_sun, P_orb = 4.75 h, R_c = 0.43 R_sun, DM = 14.3 pc cm^-3",
+    "evidence": [
+     {
+      "loc": "The non-detection of radio pulsations",
+      "quote": "We assume $M_{\\rm NS}$ = 1.65 $M_{\\odot}$, $M_{\\ C}$= 0.24 $M_{\\odot}$, $P_{\\rm orb}$=4.75 h (cite: Archibald2009)"
+     },
+     {
+      "loc": "Model setup",
+      "quote": "$D=1368$ pc (cite: deller12), $R_{\\rm c}=0.43\\, R_{\\odot}$ (cite: Archibald2009)"
+     }
+    ]
+   },
+   "citation": "(cite: Archibald2009)"
+  },
+  {
+   "what": {
+    "value": "Spin-down luminosity L_sd = 4.43 x 10^34 erg s^-1",
+    "evidence": [
+     {
+      "loc": "The physical picture",
+      "quote": "($L_{\\rm sd}=4.43\\times10^{34}$ erg s$^{-1}$ is the spin-down luminosity; (cite: archibald13))."
+     }
+    ]
+   },
+   "citation": "(cite: archibald13)"
+  },
+  {
+   "what": {
+    "value": "Irradiation luminosity L_irr = 6.5 x 10^33 erg s^-1",
+    "evidence": [
+     {
+      "loc": "Model setup",
+      "quote": "$L_{\\rm irr}$ was fixed to $6.5\\times10^{33}$ erg s$^{-1}$, the value estimated by (cite: shahbaz19) from the difference of the temperatures of the illuminated and dark sides of the companion star of J1023."
+     }
+    ]
+   },
+   "citation": "(cite: shahbaz19)"
+  },
+  {
+   "what": {
+    "value": "Companion star temperature prior T_* = 6128 +/- 33 K",
+    "evidence": [
+     {
+      "loc": "Model fit",
+      "quote": "We used a Gaussian prior for the temperature of the star centred on the value measured by (cite: shahbaz22) during the disc state, $T_*$ = ($6128\\pm33$) K."
+     }
+    ]
+   },
+   "citation": "(cite: shahbaz22)"
+  },
+  {
+   "what": {
+    "value": "Compact jet spectral slopes priors alpha_1 = 0.2 +/- 0.2 and alpha_2 = -0.7 +/- 0.2",
+    "evidence": [
+     {
+      "loc": "Model fit",
+      "quote": "Gaussian priors have also been used for the parameters $\\alpha_1$ (centred on $0.2\\pm0.2$) and $\\alpha_2$ (centred on $-0.7\\pm0.2$), following the results of (cite: bogdanov18)."
+     }
+    ]
+   },
+   "citation": "(cite: bogdanov18)"
+  },
+  {
+   "what": {
+    "value": "Millimetre and X-ray luminosities of black hole and neutron star XRBs in Table 5",
+    "evidence": [
+     {
+      "loc": "The millimetre continuum emission of J1023 and other X-ray binary systems",
+      "quote": "We can compare the millimetre and X-ray luminosities of J1023 with those measured for black-hole and NS systems using quasi-simultaneous millimetre and X-ray observations. These luminosities are reported in Table [\\[tab:mmxray\\]](#tab:mmxray)"
+     }
+    ]
+   },
+   "citation": "(cite: vanderhorst13); (cite: tetarenko19); (cite: russell20); (cite: dehaas21); (cite: tetarenko21); (cite: koljonen21); (cite: fender01); (cite: diaztrigo17); (cite: diaztrigo18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA Band 3 continuum and measure source properties",
+   "method": "Calibrate using the ALMA pipeline in CASA, image continuum with interactive tclean using manual mask and primary beam correction with both natural and Briggs robust=0 weighting, and fit 2D Gaussian functions to the robust=0 image to obtain positions, peak intensities, integrated fluxes, and deconvolved sizes. Image lower and upper sidebands separately to compute in-band spectral index.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting and Briggs robust=0",
+    "LSB central frequency 91.47886 GHz, USB central frequency 103.5115 GHz"
+   ],
+   "assumptions": [
+    "Distance of 1.37 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract ALMA millimetre light curves, mode-resolved fluxes, and short flare properties",
+   "method": "Produce natural-weighted images scan by scan (~4–5 min), during X-ray high and low mode time intervals (selected from NICER light curves with 2.5 counts s^-1 threshold), and over short time intervals (15 s) to search for flares; measure peak intensities, flux densities above 3sigma, and fit 2D Gaussians to flares.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "NICER threshold 2.5 counts s^-1 for high/low mode selection",
+    "3sigma detection threshold; 15 s intervals for peak flare measurements"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Process multi-wavelength X-ray, UV, optical, NIR, polarimetric, and radio observations",
+   "method": "Reduce and extract light curves, spectra, photometry, polarimetry, and pulsar searches from XMM-Newton, NuSTAR, HST, NTT/SOFI, VLA, FAST, NICER, Swift, REM, and VLT/FORS2 following standard and literature prescriptions.",
+   "software": [
+    "SAS",
+    "NUSTARDAS",
+    "stis_photons",
+    "DAOPHOT",
+    "CASA",
+    "invgain",
+    "PRESTO",
+    "NICERDAS",
+    "HEASOFT",
+    "IRAF",
+    "XSPEC",
+    "CIAO"
+   ],
+   "key_parameters": [
+    "VLA 60 s image intervals with niters=10, cycleniter=10; 3sigma detection threshold",
+    "VLT/FORS2 80 s combined bins, 2sigma detection threshold for LP"
+   ],
+   "assumptions": [
+    "FAST pulse duty cycle between 0.05–0.3, DM range 3–100 pc cm^-3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure X-ray low-mode ingress and egress timescales",
+   "method": "Fit a four-component piecewise linear model (constant entrance high mode, linear ingress, constant low mode, linear egress, constant exit high mode) to 56 low-mode episodes in XMM-Newton and 10 in NICER 10 s binned light curves.",
+   "software": [],
+   "key_parameters": [
+    "10 s time binning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Model millimetre/radio flares with expanding plasma blob and constrain mass transfer rate from radio non-detection",
+   "method": "Calculate flare light curves at ALMA Band 3 and VLA Band X using the van der Laan (1966) expanding plasma blob model. Estimate lower limit on companion mass transfer rate by requiring free-free absorption optical depth tau_ff >= 1 at 1.25 GHz.",
+   "software": [],
+   "key_parameters": [
+    "v approx 0.05 c, B ~ 10^5 G at launch scaling as R^-1, n_e = 10^11 - 10^12 cm^-3"
+   ],
+   "assumptions": [
+    "M_NS = 1.65 M_sun, M_C = 0.24 M_sun, P_orb = 4.75 h, v_8 = 1, X = 0.7, Y = 0.3"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Simultaneous MCMC modelling of high-mode and low-mode broadband SEDs",
+   "method": "De-redden NIR/optical/UV fluxes, construct mode-resolved SEDs from radio to X-rays, and perform simultaneous MCMC sampling of the high-mode model (irradiated star + multi-colour disc + compact jet broken power law + shock synchrotron) and low-mode model (irradiated star + multi-colour disc + compact jet broken power law + discrete ejecta optically thin power law).",
+   "software": [
+    "CORNER PLOT"
+   ],
+   "key_parameters": [
+    "A_V = 0.17 +/- 0.01 mag"
+   ],
+   "assumptions": [
+    "D = 1368 pc, R_c = 0.43 R_sun, eta_* = 0.1, M_NS = 1.65 M_sun, M_C = 0.24 M_sun, P_orb = 4.75 hrs, L_irr = 6.5 x 10^33 erg s^-1, disc albedo = 0.95, mass transfer rate = 10^-11 M_sun yr^-1"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fit the millimetre-X-ray luminosity correlation for black hole XRBs and compare with J1023",
+   "method": "Perform Bayesian MCMC linear regression on log L_mm vs log L_X for black hole XRBs (including upper limits) using LINMIX_ERR with 10^4 posterior draws.",
+   "software": [
+    "LINMIX_ERR"
+   ],
+   "key_parameters": [
+    "10^4 draws from posterior distribution; L_mm,ave = 10^31.93 erg s^-1, L_X,ave = 10^38.03 erg s^-1"
+   ],
+   "assumptions": [
+    "Flat spectrum assumed to evaluate 100 GHz luminosity where literature flux is at other frequencies (except alpha=0.25 for MAXI J1820+070 and alpha=0.13 for 4U 1820-30)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "PSR J1023+0038 ALMA 3.1 mm peak intensity (all data, robust=0)",
+   "value": "103.7",
+   "uncertainty": "3.6",
+   "units": "uJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "PSR J1023 | 10:23:47.689$\\pm$0.001 | 00:38:40.677$\\pm$0.004 | 103.7$\\pm$3.6 | 144.6$\\pm$8.0 | (0.305$\\pm$0.060)$\\times$(0.205$\\pm$0.031) | 86$\\pm$29"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 ALMA 3.1 mm integrated flux density (all data, robust=0)",
+   "value": "144.6",
+   "uncertainty": "8.0",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "PSR J1023 | 10:23:47.689$\\pm$0.001 | 00:38:40.677$\\pm$0.004 | 103.7$\\pm$3.6 | 144.6$\\pm$8.0 | (0.305$\\pm$0.060)$\\times$(0.205$\\pm$0.031) | 86$\\pm$29"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 ALMA 3.1 mm deconvolved size (all data, robust=0)",
+   "value": "0.305 x 0.205",
+   "uncertainty": "0.060 x 0.031",
+   "units": "arcsec x arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "PSR J1023 | 10:23:47.689$\\pm$0.001 | 00:38:40.677$\\pm$0.004 | 103.7$\\pm$3.6 | 144.6$\\pm$8.0 | (0.305$\\pm$0.060)$\\times$(0.205$\\pm$0.031) | 86$\\pm$29"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA J102349.1+003824 3.1 mm peak intensity",
+   "value": "95",
+   "uncertainty": "15",
+   "units": "uJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "ALMA J102349.1 | 10:23:49.131$\\pm$0.002 | 00:38:23.72$\\pm$0.02 | 95$\\pm$15 | 109$\\pm$29 | \\<0.39$\\times$0.22$^{\\rm d}$ | …"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA J102349.1+003824 3.1 mm integrated flux density",
+   "value": "109",
+   "uncertainty": "29",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "ALMA J102349.1 | 10:23:49.131$\\pm$0.002 | 00:38:23.72$\\pm$0.02 | 95$\\pm$15 | 109$\\pm$29 | \\<0.39$\\times$0.22$^{\\rm d}$ | …"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 in-band ALMA spectral index",
+   "value": "-0.1",
+   "uncertainty": "0.8",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "The resulting spectral index is $-0.1\\pm0.8$, which is consistent with previous reports for the average cm emission (cite: deller15; bogdanov18)."
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 average ALMA flux density in high mode",
+   "value": "89",
+   "uncertainty": "13",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "We measured average flux densities of 89$\\pm$13 $\\mu$Jy in the high mode and 134$\\pm$23 $\\mu$Jy in the low mode, excluding the two flaring episodes (see Table [\\[tab:mode_properties\\]](#tab:mode_properties))."
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 average ALMA flux density in low mode",
+   "value": "134",
+   "uncertainty": "23",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "We measured average flux densities of 89$\\pm$13 $\\mu$Jy in the high mode and 134$\\pm$23 $\\mu$Jy in the low mode, excluding the two flaring episodes (see Table [\\[tab:mode_properties\\]](#tab:mode_properties))."
+    }
+   ]
+  },
+  {
+   "quantity": "Flare 1 ALMA integrated flux density (15 s peak)",
+   "value": "1006",
+   "uncertainty": "84",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "Flare 1 | 10:23:47.705$\\pm$0.006 | 00:38:40.92$\\pm$0.11 | 426$\\pm$26 | 1006$\\pm$84 | (0.96$\\pm$0.89)$\\times$(0.40$\\pm$0.10) | 13.3$\\pm$6.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare 1 ALMA peak intensity (15 s peak)",
+   "value": "426",
+   "uncertainty": "26",
+   "units": "uJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "Flare 1 | 10:23:47.705$\\pm$0.006 | 00:38:40.92$\\pm$0.11 | 426$\\pm$26 | 1006$\\pm$84 | (0.96$\\pm$0.89)$\\times$(0.40$\\pm$0.10) | 13.3$\\pm$6.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare 2 ALMA integrated flux density (15 s peak)",
+   "value": "675",
+   "uncertainty": "114",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "Flare 2 | 10:23:47.702$\\pm$0.002 | 00:38:40.63$\\pm$0.01 | 701$\\pm$62 | 675$\\pm$114 | …$^{\\mathrm{b}}$ | …$^{\\mathrm{b}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flare 2 ALMA peak intensity (15 s peak)",
+   "value": "701",
+   "uncertainty": "62",
+   "units": "uJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Millimetre emission",
+     "quote": "Flare 2 | 10:23:47.702$\\pm$0.002 | 00:38:40.63$\\pm$0.01 | 701$\\pm$62 | 675$\\pm$114 | …$^{\\mathrm{b}}$ | …$^{\\mathrm{b}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 VLA 10 GHz flux density in low mode",
+   "value": "0.158",
+   "uncertainty": "0.009",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data preparation",
+     "quote": "Radio & $1.00\\times 10^{10}$ & $0.158\\pm 0.009$ & $0.064\\pm0.006$ & –"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 VLA 10 GHz flux density in high mode",
+   "value": "0.064",
+   "uncertainty": "0.006",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data preparation",
+     "quote": "Radio & $1.00\\times 10^{10}$ & $0.158\\pm 0.009$ & $0.064\\pm0.006$ & –"
+    }
+   ]
+  },
+  {
+   "quantity": "FAST 1.25 GHz 5sigma pulsed radio flux density upper limit (total)",
+   "value": "2.0",
+   "uncertainty": "0.5",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FAST (Night 1)",
+     "quote": "and derived a 5-$\\sigma$ flux density upper limit for persistent radio pulsations of 2.0$\\pm$0.5 $\\mu$Jy at 1.25 GHz considering the entire integration time of 2.8 hr"
+    }
+   ]
+  },
+  {
+   "quantity": "FAST 1.25 GHz 5sigma pulsed radio flux density upper limit (high mode)",
+   "value": "2.2",
+   "uncertainty": "0.6",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FAST (Night 1)",
+     "quote": "we obtain upper limits of 2.2$\\pm$0.6 $\\mu$Jy in the high mode (2.3 hr) and 4.7$\\pm$1.0 $\\mu$Jy in the low mode (0.5 hr)."
+    }
+   ]
+  },
+  {
+   "quantity": "FAST 1.25 GHz 5sigma pulsed radio flux density upper limit (low mode)",
+   "value": "4.7",
+   "uncertainty": "1.0",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "FAST (Night 1)",
+     "quote": "we obtain upper limits of 2.2$\\pm$0.6 $\\mu$Jy in the high mode (2.3 hr) and 4.7$\\pm$1.0 $\\mu$Jy in the low mode (0.5 hr)."
+    }
+   ]
+  },
+  {
+   "quantity": "VLT/FORS2 R-band average linear polarisation (detections)",
+   "value": "0.92",
+   "uncertainty": "0.39",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical polarimetric properties",
+     "quote": "The average level of LP, calculated as the average of all 2$\\sigma$-significant detections, is $0.92\\pm0.39\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "VLT/FORS2 R-band linear polarisation in high mode",
+   "value": "0.65",
+   "uncertainty": "0.43",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical polarimetric properties",
+     "quote": "We found that the LP was $0.65\\pm0.43$% (with a 99.97% confidence level upper limit of $2.12\\%$) in the high mode and $0.36^{+0.27}_{-0.35}\\%$ (with a 99.97% confidence level upper limit of $1.58\\%$) in the low mode."
+    }
+   ]
+  },
+  {
+   "quantity": "VLT/FORS2 R-band linear polarisation in low mode",
+   "value": "0.36",
+   "uncertainty": "+0.27/-0.35",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Optical polarimetric properties",
+     "quote": "We found that the LP was $0.65\\pm0.43$% (with a 99.97% confidence level upper limit of $2.12\\%$) in the high mode and $0.36^{+0.27}_{-0.35}\\%$ (with a 99.97% confidence level upper limit of $1.58\\%$) in the low mode."
+    }
+   ]
+  },
+  {
+   "quantity": "XMM-Newton average logarithmic low-mode ingress time",
+   "value": "10.4",
+   "uncertainty": "6.9",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The low-mode ingress and egress timescales",
+     "quote": "The average logarithmic ingress time is $(10.4\\pm6.9)$ s, which is consistent with the time binning."
+    }
+   ]
+  },
+  {
+   "quantity": "XMM-Newton average logarithmic low-mode egress time",
+   "value": "30.6",
+   "uncertainty": "8.2",
+   "units": "s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The low-mode ingress and egress timescales",
+     "quote": "The average logarithmic egress time is $(30.6\\pm8.2)$ s."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion star mass transfer rate lower limit",
+   "value": "10^-11",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The non-detection of radio pulsations",
+     "quote": "In order to have $\\tau_{\\rm ff,1.25\\,GHz}\\simeq 1$, and therefore not detect the radio signal due to free-free scattering, we estimate $\\dot{m}_{\\rm C}\\gtrsim10^{-11}$ $M_{\\odot}$ yr$^{-1}\\approx6\\times10^{14}$ g s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Compact jet spectral break frequency",
+   "value": "2.4e13",
+   "uncertainty": "+1.9e13/-1.0e13",
+   "units": "Hz",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The physical picture",
+     "quote": "According to our SED modelling, the corresponding jet synchrotron spectrum is optically thick up to the mid-infrared band and breaks to optically thin above a frequency of $(2.4^{+1.9}_{-1.0})\\times 10^{13}$ Hz"
+    }
+   ]
+  },
+  {
+   "quantity": "Shock synchrotron log peak frequency (Log nu_sync)",
+   "value": "14.34",
+   "uncertainty": "+0.44/-0.30",
+   "units": "log(Hz)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model setup",
+     "quote": "Shock emission & Log \\[\\nu_{\\rm sync} / 1 Hz\\] &– & $14.34^{+0.44}_{-0.30}$&\\rm Log\\, \\nu_{\\rm sync}\\sim \\mathcal{U}(12, 16)"
+    }
+   ]
+  },
+  {
+   "quantity": "Shock synchrotron spectral slope (alpha_sync)",
+   "value": "-0.61",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model setup",
+     "quote": "& $\\alpha_{\\rm sync}$ & – & $-0.61\\pm 0.01$&$\\alpha_{\\rm sync}\\sim\\mathcal{U}(-0.9, -0.4)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Discrete ejecta optically thin spectral slope (alpha_thin)",
+   "value": "-0.78",
+   "uncertainty": "+0.24/-0.43",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Model setup",
+     "quote": "Discrete ejecta & $\\alpha_{\\rm thin}$ & $-0.78_{-0.43}^{+0.24}$ & –&$\\alpha_{\\rm thin}\\sim \\mathcal{U}(-1.5, 0)$"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 100 GHz millimetre luminosity (mean)",
+   "value": "3.2e28",
+   "uncertainty": "0.2e28",
+   "units": "erg s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The millimetre continuum emission of J1023 and other X-ray binary systems",
+     "quote": "(mean) | 1.37 | (3.2$\\pm$0.2)$\\times$10$^{28}$ | (1.7$\\pm$0.2)$\\times$10$^{33}$ | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 100 GHz millimetre luminosity (high mode)",
+   "value": "2.0e28",
+   "uncertainty": "0.3e28",
+   "units": "erg s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The millimetre continuum emission of J1023 and other X-ray binary systems",
+     "quote": "(high) | 1.37 | (2.0$\\pm$0.3)$\\times$10$^{28}$ | (2.40$\\pm$0.04)$\\times$10$^{33}$ | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "PSR J1023+0038 100 GHz millimetre luminosity (low mode)",
+   "value": "3.0e28",
+   "uncertainty": "0.5e28",
+   "units": "erg s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The millimetre continuum emission of J1023 and other X-ray binary systems",
+     "quote": "(low) | 1.37 | (3.0$\\pm$0.5)$\\times$10$^{28}$ | (3.6$\\pm$0.4)$\\times$10$^{32}$ | This work"
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole L_mm - L_X correlation slope (beta)",
+   "value": "0.46",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "The millimetre continuum emission of J1023 and other X-ray binary systems",
+     "quote": "We derived $\\alpha= -0.04\\pm0.15$, $\\beta= 0.46\\pm0.09$ and $\\sigma_0=0.18\\pm0.13$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA tclean cell size, image size, stopping threshold, and deconvolver settings",
+  "Exact time intervals (start/stop UTC or MJD) used for each X-ray mode interval when stacking/imaging ALMA data in high and low modes",
+  "Whether self-calibration was attempted on the ALMA dataset",
+  "Specific MCMC sampler software, number of walkers, and number of steps used for the simultaneous high/low-mode SED fitting"
+ ],
+ "missing_for_reproduction": [
+  "Exact good time intervals (GTIs) from NICER used to split the ALMA visibilities into high-mode and low-mode stacks",
+  "Interactive cleaning masks and tclean parameters (cell size, imsize, stopping criteria) for ALMA continuum, scan-by-scan, and 15 s flare images",
+  "Custom SED fitting code and MCMC sampler configuration"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All raw datasets are publicly archived with explicit project/Obs IDs, standard pipeline calibration was used for ALMA, and key time ranges (including the 15 s flare windows) and SED flux tables are explicitly provided. Minor deductions for interactive masking, unstated tclean imaging parameters, and unreleased custom SED MCMC fitting code.",
+ "rediscovery_reason": "The ALMA Band 3 dataset (2019.A.00036.S) is public, calibrated with the standard CASA pipeline, and yields clear, quantitative continuum flux densities, in-band spectral index, a serendipitous 9sigma source, and two bright 15 s flares at specified UTC timestamps.",
+ "source_card": "cards/2023A%26A...677A..30B/sonnet/card.md"
+}

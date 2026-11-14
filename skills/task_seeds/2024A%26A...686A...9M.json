@@ -1,0 +1,901 @@
+{
+ "bibcode": "2024A&A...686A...9M",
+ "title": "Rotation curves in protoplanetary disks with thermal stratification. Physical model and observational evidence in MAPS disks",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348546",
+ "arxiv_id": "2402.12236",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Investigate the impact of vertical thermal stratification on the azimuthal velocity of protoplanetary disks and determine whether a stratified model can explain velocity differences between CO isotopologues.",
+ "alma_project_codes": [
+  "2018.1.01055.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Thermal parameters for the vertically isothermal model (H_100 and q)",
+    "evidence": [
+     {
+      "loc": "4.1. The curves",
+      "quote": "For the vertically isothermal model, the thermal structure is defined by the hydrostatic height of the disk at R = 100au and the power law coefficient of the temperature profile, q . These parameters were taken from Zhang et al. (2021)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "the thermal parameters for the isothermal model are taken from Zhang et al. (2021), for the stratified model from Law et al. (2021)."
+     }
+    ]
+   },
+   "citation": "Zhang et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "2D temperature structure parameters for the stratified model (T_mid, T_atm, q, q_atm, zeta_0, alpha, beta)",
+    "evidence": [
+     {
+      "loc": "Table 1 caption",
+      "quote": "the thermal parameters for the isothermal model are taken from Zhang et al. (2021), for the stratified model from Law et al. (2021)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "the thermal parameters for the isothermal model are taken from Zhang et al. (2021), for the stratified model from Law et al. (2021)."
+     }
+    ]
+   },
+   "citation": "Law et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Disk orientation parameters (i, PA) and 12CO and 13CO emitting surface parameters (z_0, psi, R_t, q_t)",
+    "evidence": [
+     {
+      "loc": "4.1. The curves",
+      "quote": "where the best-fit parameters have been obtained by Izquierdo et al. (2023). All the parameters used are summarized in Table 1."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "The orientation parameters and the emitting surfaces are taken from Izquierdo et al. (2023),"
+     }
+    ]
+   },
+   "citation": "Izquierdo et al. (2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive analytical model for density and azimuthal velocity in a thermally stratified disk",
+   "method": "Analytically solve vertical hydrostatic equilibrium and radial centrifugal balance including vertical temperature stratification and disk self-gravity, implemented in the code DYSC.",
+   "software": [
+    "DYSC"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Self-similar surface density profile from Lynden-Bell & Pringle (1974)",
+    "Barotropic fluid in vertical hydrostatic equilibrium and radial centrifugal balance; mean molecular weight mu = 2.1",
+    "Dullemond et al. (2020) 2D temperature prescription"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Validate analytical model with 3D SPH hydrodynamical simulations",
+   "method": "Run SPH simulation of a thermally stratified disk with MWC 480 parameters for eight outer orbits (~45 kyr) until relaxed, and compare azimuthally averaged density and velocity in 50 radial bins at z = 20 au (for R > 100 au) against isothermal and stratified analytical models.",
+   "software": [
+    "phantom"
+   ],
+   "key_parameters": [
+    "N = 10^6 gas particles, gamma = 1, R_c = 150 au, R_in = 10 au, R_out = 400 au, M_star = 2.1 M_sun, alpha_SS = 0.005",
+    "Dullemond temperature parameters: zeta_0 = 7 au, alpha = 2.78, beta = -0.05, T_mid,100 = 27 K, q = 0.23, T_atm,100 = 69 K, q_atm = 0.7"
+   ],
+   "assumptions": [
+    "No self-gravity or dust included in the simulation"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract 12CO and 13CO rotation curves from MAPS datacubes",
+   "method": "Extract frontside velocities from moment maps using Gaussian (MWC 480, AS 209) or double-Bell decomposition (IM Lup, GM Aur, HD 163296) based on velocity priors from discminer models.",
+   "software": [
+    "discminer"
+   ],
+   "key_parameters": [
+    "Orientation (i, PA) and extraction methods (Gauss or Dbell) as listed in Table 1"
+   ],
+   "assumptions": [
+    "Emitting layer height parameterized as tapered power law z(R) with parameters from Izquierdo et al. (2023)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit rotation curves for stellar mass, disk mass, and scale radius",
+   "method": "Simultaneously fit 12CO and 13CO rotation curves using MCMC for both vertically isothermal and thermally stratified models including disk self-gravity, and evaluate relative squared velocity differences (v_13^2 - v_12^2)/v_13^2.",
+   "software": [
+    "DYSC"
+   ],
+   "key_parameters": [
+    "Free parameters: M_star, M_d, R_c; fixed thermal and surface parameters from Table 1"
+   ],
+   "assumptions": [
+    "Fixed 1D/2D temperature profiles from Zhang et al. (2021) and Law et al. (2021) and fixed emitting surfaces from Izquierdo et al. (2023)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute dust masses, gas-to-dust ratios, and Toomre Q profiles",
+   "method": "Compute dust mass from 283 GHz continuum flux density using Hildebrand (1983) optically thin relation, combine with stratified-model disk gas mass to obtain gas-to-dust ratio, and compute radial Toomre Q profile using best-fit stratified parameters.",
+   "software": [],
+   "key_parameters": [
+    "nu = 283 GHz, T = 20 K, kappa_nu = 2.3 (nu / 230 GHz)^0.4 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Optically thin dust continuum emission at 283 GHz with T = 20 K; nearly Keplerian disk (kappa approx Omega) for Toomre Q; for AS 209, upper limit on M_d taken as 5% of M_star for gas-to-dust ratio."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "MWC 480 stellar mass (isothermal model)",
+   "value": "1.969",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.969 ±0.002 0.201±0.002 80±1 11.21"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 disk mass (isothermal model)",
+   "value": "0.201",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.969 ±0.002 0.201±0.002 80±1 11.21"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 scale radius (isothermal model)",
+   "value": "80",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.969 ±0.002 0.201±0.002 80±1 11.21"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 reduced chi-squared (isothermal model)",
+   "value": "11.21",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.969 ±0.002 0.201±0.002 80±1 11.21"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 stellar mass (stratified model)",
+   "value": "2.027",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 2.027±0.002 0.150 ± 0.002 128 ±1 6.14"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 disk mass (stratified model)",
+   "value": "0.150",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 2.027±0.002 0.150 ± 0.002 128 ±1 6.14"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 scale radius (stratified model)",
+   "value": "128",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 2.027±0.002 0.150 ± 0.002 128 ±1 6.14"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 reduced chi-squared (stratified model)",
+   "value": "6.14",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 2.027±0.002 0.150 ± 0.002 128 ±1 6.14"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup stellar mass (isothermal model)",
+   "value": "1.055",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.055 ±0.002 0.200±0.003 55±1 35.68"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disk mass (isothermal model)",
+   "value": "0.200",
+   "uncertainty": "±0.003",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.055 ±0.002 0.200±0.003 55±1 35.68"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup scale radius (isothermal model)",
+   "value": "55",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.055 ±0.002 0.200±0.003 55±1 35.68"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup reduced chi-squared (isothermal model)",
+   "value": "35.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.055 ±0.002 0.200±0.003 55±1 35.68"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup stellar mass (stratified model)",
+   "value": "1.194",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.194±0.002 0.106 ± 0.002 115 ±1 6.29"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup disk mass (stratified model)",
+   "value": "0.106",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.194±0.002 0.106 ± 0.002 115 ±1 6.29"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup scale radius (stratified model)",
+   "value": "115",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.194±0.002 0.106 ± 0.002 115 ±1 6.29"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup reduced chi-squared (stratified model)",
+   "value": "6.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.194±0.002 0.106 ± 0.002 115 ±1 6.29"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur stellar mass (isothermal model)",
+   "value": "0.872",
+   "uncertainty": "±0.003",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 0.872 ±0.003 0.312±0.003 56±1 90.84"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur disk mass (isothermal model)",
+   "value": "0.312",
+   "uncertainty": "±0.003",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 0.872 ±0.003 0.312±0.003 56±1 90.84"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur scale radius (isothermal model)",
+   "value": "56",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 0.872 ±0.003 0.312±0.003 56±1 90.84"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur reduced chi-squared (isothermal model)",
+   "value": "90.84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 0.872 ±0.003 0.312±0.003 56±1 90.84"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur stellar mass (stratified model)",
+   "value": "1.128",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.128±0.002 0.118±0.002 96 ±1 8.48"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur disk mass (stratified model)",
+   "value": "0.118",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.128±0.002 0.118±0.002 96 ±1 8.48"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur scale radius (stratified model)",
+   "value": "96",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.128±0.002 0.118±0.002 96 ±1 8.48"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur reduced chi-squared (stratified model)",
+   "value": "8.48",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.128±0.002 0.118±0.002 96 ±1 8.48"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 stellar mass (isothermal model)",
+   "value": "1.842",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.842 ±0.002 0.124±0.001 38±1 29.60"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 disk mass (isothermal model)",
+   "value": "0.124",
+   "uncertainty": "±0.001",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.842 ±0.002 0.124±0.001 38±1 29.60"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 scale radius (isothermal model)",
+   "value": "38",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.842 ±0.002 0.124±0.001 38±1 29.60"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 reduced chi-squared (isothermal model)",
+   "value": "29.60",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.842 ±0.002 0.124±0.001 38±1 29.60"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 stellar mass (stratified model)",
+   "value": "1.948",
+   "uncertainty": "±0.002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.948±0.002 0.134 ± 0.001 91 ±1 19.74"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 disk mass (stratified model)",
+   "value": "0.134",
+   "uncertainty": "±0.001",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.948±0.002 0.134 ± 0.001 91 ±1 19.74"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 scale radius (stratified model)",
+   "value": "91",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.948±0.002 0.134 ± 0.001 91 ±1 19.74"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 reduced chi-squared (stratified model)",
+   "value": "19.74",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.948±0.002 0.134 ± 0.001 91 ±1 19.74"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 stellar mass (isothermal model)",
+   "value": "1.272",
+   "uncertainty": "±0.003",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.272 ±0.003 0.042±0.003 45±1 25.13"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 disk mass (isothermal model)",
+   "value": "0.042",
+   "uncertainty": "±0.003",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.272 ±0.003 0.042±0.003 45±1 25.13"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 scale radius (isothermal model)",
+   "value": "45",
+   "uncertainty": "±1",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.272 ±0.003 0.042±0.003 45±1 25.13"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 reduced chi-squared (isothermal model)",
+   "value": "25.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Isothermal 1.272 ±0.003 0.042±0.003 45±1 25.13"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 stellar mass (stratified model)",
+   "value": "1.311",
+   "uncertainty": "±0.001",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.311±0.001 0.0002 ± 0.0002 126 ±2 10.55"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 disk mass (stratified model)",
+   "value": "0.0002",
+   "uncertainty": "±0.0002",
+   "units": "M_⊙",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.311±0.001 0.0002 ± 0.0002 126 ±2 10.55"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 scale radius (stratified model)",
+   "value": "126",
+   "uncertainty": "±2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.311±0.001 0.0002 ± 0.0002 126 ±2 10.55"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 reduced chi-squared (stratified model)",
+   "value": "10.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Stratified 1.311±0.001 0.0002 ± 0.0002 126 ±2 10.55"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 continuum flux at 283 GHz",
+   "value": "943.51",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MWC 480 943.51 0.00138 108"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 dust mass",
+   "value": "0.00138",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MWC 480 943.51 0.00138 108"
+    }
+   ]
+  },
+  {
+   "quantity": "MWC 480 gas-to-dust ratio",
+   "value": "108",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "MWC 480 943.51 0.00138 108"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup continuum flux at 283 GHz",
+   "value": "536.25",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IM Lup 536.25 0.00075 134"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup dust mass",
+   "value": "0.00075",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IM Lup 536.25 0.00075 134"
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup gas-to-dust ratio",
+   "value": "134",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IM Lup 536.25 0.00075 134"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur continuum flux at 283 GHz",
+   "value": "347.95",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "GM Aur 347.95 0.00049 240"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur dust mass",
+   "value": "0.00049",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "GM Aur 347.95 0.00049 240"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur gas-to-dust ratio",
+   "value": "240",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "GM Aur 347.95 0.00049 240"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 continuum flux at 283 GHz",
+   "value": "1127.97",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HD 163296 1127.97 0.00064 202"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 dust mass",
+   "value": "0.00064",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HD 163296 1127.97 0.00064 202"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 163296 gas-to-dust ratio",
+   "value": "202",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "HD 163296 1127.97 0.00064 202"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 continuum flux at 283 GHz",
+   "value": "414.83",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "AS 209 414.83 0.00034 < 192"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 dust mass",
+   "value": "0.00034",
+   "uncertainty": "not stated",
+   "units": "M_⊙",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "AS 209 414.83 0.00034 < 192"
+    }
+   ]
+  },
+  {
+   "quantity": "AS 209 gas-to-dust ratio",
+   "value": "< 192",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "AS 209 414.83 0.00034 < 192"
+    }
+   ]
+  },
+  {
+   "quantity": "GM Aur minimum Toomre Q",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4. Toomre Q",
+     "quote": "Interestingly, the two disks that showed spiral structures (IM Lup and GM Aur) have a Toomre profile that is lower than the others, with a minimum value of ∼ 4 for GM Aur and ∼ 6 for IM Lup."
+    }
+   ]
+  },
+  {
+   "quantity": "IM Lup minimum Toomre Q",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4. Toomre Q",
+     "quote": "Interestingly, the two disks that showed spiral structures (IM Lup and GM Aur) have a Toomre profile that is lower than the others, with a minimum value of ∼ 4 for GM Aur and ∼ 6 for IM Lup."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Value of the surface density steepness parameter gamma used when fitting the MAPS observations (gamma = 1 is stated for the SPH simulation and implied in Eq. 26 for Toomre Q, but not explicitly stated for the observational rotation curve fits)",
+  "Exact radial fitting ranges and radial binning used for the rotation curves of each disk",
+  "MCMC sampler details (e.g., number of walkers, steps, burn-in, and prior distributions for M_star, M_d, and R_c)",
+  "Distance assumed for GM Aur when computing dust mass from Eq. 25",
+  "Exact method or aperture used to extract the 283 GHz continuum flux densities from MAPS data"
+ ],
+ "missing_for_reproduction": [
+  "Exact version/implementation of the improved double-Bell decomposition algorithm with discminer velocity priors (cited as Izquierdo et al. in prep) used to extract the rotation curves in Fig. 2",
+  "Exact radial fitting ranges and data filtering applied to the 12CO and 13CO rotation curves during the MCMC fits",
+  "Explicit value of gamma used in the observational fits (assumed to be 1) and MCMC prior bounds",
+  "Assumed distance for GM Aur in the dust mass calculation"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The analytical model is fully derived in the paper, the fitting code (DYSC) is publicly released on GitHub, all input thermal/surface/orientation parameters are tabulated in Table 1, and the MAPS data are public; however, the exact rotation curve extraction relies on an improved double-Bell algorithm cited as 'Izquierdo et al. in prep' and exact radial fitting ranges are not specified.",
+ "rediscovery_reason": "Public MAPS ALMA datacubes, publicly released modeling code (DYSC), complete input parameter tables (Table 1), and clear numeric answer keys (Tables 2 and 3) make this an excellent candidate for reproducing dynamical mass and scale radius fits.",
+ "source_card": "cards/2024A%26A...686A...9M/sonnet/card.md"
+}

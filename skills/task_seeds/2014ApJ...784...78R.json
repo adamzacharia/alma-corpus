@@ -1,0 +1,219 @@
+{
+ "bibcode": "2014ApJ...784...78R",
+ "title": "Massive Molecular Gas Flows in the A1664 Brightest Cluster Galaxy",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/784/1/78",
+ "arxiv_id": "1309.0014",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies"
+ ],
+ "question": "What are the mass, kinematics and origin (inflow, outflow or merger) of the molecular gas in the Abell 1664 BCG?",
+ "alma_project_codes": [
+  "2011.0.00374.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "1.4x1.1 arcsec (CO 1-0); 0.55x0.39 arcsec (CO 3-2)",
+  "sensitivity": "rms 0.5 mJy (40 km/s chan) CO(1-0); 1.5 mJy (30 km/s chan) CO(3-2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "U-band star formation rate ~20 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "determine a star formation rate of $\\sim20\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$"
+     }
+    ]
+   },
+   "citation": "Kirkpatrick09"
+  },
+  {
+   "what": {
+    "value": "Infrared SFR 15 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the infrared star formation rate, $SFR_{\\rm IR}=15\\hbox{$\\hbox{$\\rm\\thinspace M_{\\odot}$}\\rm\\; yr^{-1}\\,$}$ ((cite: ODea08))"
+     }
+    ]
+   },
+   "citation": "ODea08"
+  },
+  {
+   "what": {
+    "value": "FUV luminosity 1.7e43 erg/s",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "$L_{\\rm UV} = 1.7\\times10^{43}\\hbox{$\\rm\\; erg\\rm\\; s^{-1}\\,$}$ ((cite: ODea10))"
+     }
+    ]
+   },
+   "citation": "ODea10"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image cubes and continuum",
+   "method": "CASA calibration with ALMA scripts; CLEAN cubes of continuum-subtracted data, Briggs robust 0.5, polygon masks; continuum from line-free channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and fit line components",
+   "method": "Spectra from 6x6 arcsec (CO1-0) and 3x3 arcsec (CO3-2) regions fitted with two Gaussians",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make moment maps and PV diagrams",
+   "method": "Integrated intensity maps over velocity ranges; PV cuts along PA 77 deg (systemic) and 120 deg (HVS), PA from 2D Gaussian fit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas masses",
+   "method": "M_mol = 1.05e4 X_CO /(1+z) S_CO dv D_L^2 from CO(1-0) intensities",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Galactic X_CO = 2e20 cm-2 (K km/s)-1; z=0.128; H0=70, Om=0.3, OL=0.7"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Assess origin (merger, inflow, outflow) via energetics and Toomre Q",
+   "method": "Compare outflow energy with radiation pressure, supernova and AGN mechanical power; Toomre Q for putative disk",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass",
+   "value": "1.1e10",
+   "uncertainty": "0.1e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The total CO mass in the BCG is then $(1.1\\pm0.1)\\times 10^{10}"
+    }
+   ]
+  },
+  {
+   "quantity": "HVS mass",
+   "value": "5.0e9",
+   "uncertainty": "0.7e9",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.5\\pm0.2$ | $8.2\\pm0.8$ | $170\\pm20$ | $-568\\pm8$ | $5.0\\pm0.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic component mass",
+   "value": "5.7e9",
+   "uncertainty": "1.0e9",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$M_{\\rm disk} =\n(5.7\\pm1.0)\\times 10^9"
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(1-0) integrated intensity",
+   "value": "3.2",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The total CO(1-0) integrated intensity of $3.2\\pm0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "HVS velocity shift CO(1-0)",
+   "value": "-568",
+   "uncertainty": "8",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$-568\\pm8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux band 3",
+   "value": "2.5",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "with flux $2.5\\pm0.2\\rm\\; mJy$ in band 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux band 7",
+   "value": "1.1",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data reduction",
+     "quote": "$1.1\\pm0.1\\rm\\; mJy$ in band 7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method/order",
+  "Image size, cell size, clean threshold and iterations",
+  "Channel binning used for spectra",
+  "Spectral extraction details and baseline fitting",
+  "Flux calibration uncertainty",
+  "Pixel/region definitions for clumps A, B and HVS sub-regions",
+  "PV slice widths",
+  "Luminosity distance value used"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges",
+  "Image and cell sizes, clean threshold",
+  "Region definitions for clumps"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple recipe, public Cycle 0 data, but imaging and extraction details are sparse.",
+ "rediscovery_reason": "Public data, simple recipe, numeric Gaussian-fit and mass results.",
+ "source_card": "cards/2014ApJ...784...78R/sonnet/card.md"
+}

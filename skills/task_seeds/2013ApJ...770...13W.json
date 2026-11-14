@@ -1,0 +1,303 @@
+{
+ "bibcode": "2013ApJ...770...13W",
+ "title": "Redshift 6.4 Host Galaxies of 10<SUP>8</SUP> Solar Mass Black Holes: Low Star Formation Rate and Dynamical Mass",
+ "year": 2013,
+ "doi": "10.1088/0004-637X/770/1/13",
+ "arxiv_id": "1302.1587",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the star formation rates, [C II] properties and dynamical masses of the host galaxies of two z=6.4 quasars with ~1e8 Msun black holes?",
+ "alma_project_codes": [
+  "2011.0.00243.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m antennae, 17 to 24 in use",
+  "angular_resolution": "0.77\" x 0.52\" (J0210-0456); 0.73\" x 0.63\" (J2329-0301)",
+  "sensitivity": "0.22 mJy/beam (J0210-0456), 0.23 mJy/beam (J2329-0301) in a 2 channel (31.25 MHz) bin"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quasar Mg II redshifts and black hole masses",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Derived from Mg ii $\\lambda2799$ observations (Willott et al. 2010b)."
+     }
+    ]
+   },
+   "citation": "Willott et al. 2010b"
+  },
+  {
+   "what": {
+    "value": "Comparison [CII]/FIR vs L_FIR compilation of low and high redshift galaxies",
+    "evidence": [
+     {
+      "loc": "3.2 [C ii] luminosity",
+      "quote": "for a compilation of low ($z<0.4$) and high ($1<z<5$) redshift galaxies (Graciá-Carpio et al. 2011 and in prep.)"
+     }
+    ]
+   },
+   "citation": "Graciá-Carpio et al. 2011"
+  },
+  {
+   "what": {
+    "value": "Stacked L_FIR and L_Bol of z~6 quasars and L_FIR-L_Bol relation",
+    "evidence": [
+     {
+      "loc": "3.1 Far-infrared luminosity",
+      "quote": "Figure [2](#fig:lbollfir) shows previously published data for individually-detected $z\\approx 6$ quasars and stacked averages from Wang et al. (2011a) and Omont et al (2013)."
+     }
+    ]
+   },
+   "citation": "Wang et al. 2011a; Omont et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 1.2 mm continuum",
+   "method": "Combine three line-free spectral windows into continuum images and measure flux density at quasar position",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive L_FIR and SFR",
+   "method": "Convert continuum flux to L_FIR (42.5-122.5 micron) with a greybody, then SFR via Kennicutt relation",
+   "software": [],
+   "key_parameters": [
+    "Td=47 K, beta=1.6"
+   ],
+   "assumptions": [
+    "No contribution from quasar-heated dust; Salpeter IMF; Td 33 K would give 3x lower L_FIR"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure [C II] line properties",
+   "method": "Gaussian plus constant fit to spectrum; integrate line channels after continuum subtraction; 3 sigma upper limit for J2329 assuming unresolved FWHM=300 km/s",
+   "software": [],
+   "key_parameters": [
+    "15 channels of 15.625 MHz integrated"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Size and kinematics",
+   "method": "IMFIT deconvolved source fit; separate blue and red wing maps (5 channels each); Gaussian-fitted velocity-centroid map",
+   "software": [
+    "CASA IMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare black hole mass to dynamical mass",
+   "method": "Convert FWHM to sigma and use local M_BH-sigma relation of Gultekin et al. 2009 to predict M_BH",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gaussian, no inclination correction"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "J0210-0456 1.2 mm flux density",
+   "value": "120",
+   "uncertainty": "35",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Far-infrared luminosity",
+     "quote": "J0210-0456 is detected at $3.4\\,\\sigma$ with $f_{\\rm 1.2mm} = 120 \\pm 35 \\,\\mu$Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "J0210-0456 L_FIR",
+   "value": "2.60e11",
+   "uncertainty": "0.76e11",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm FIR}$ | $(2.60 \\pm 0.76) \\times 10^{11} \\, {\\rm L}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2329-0301 L_FIR (3 sigma)",
+   "value": "<1.9e11",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Far-infrared luminosity",
+     "quote": "J2329-0301 is undetected with $L_{\\rm FIR} <1.9 \\times\n10^{11} \\, {\\rm L}_\\odot$ ($3\\,\\sigma$ limit)."
+    }
+   ]
+  },
+  {
+   "quantity": "J0210-0456 SFR",
+   "value": "48",
+   "uncertainty": "14",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFR | $48 \\pm 14\\, {\\rm M}_\\odot\\,{\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "J2329-0301 SFR limit",
+   "value": "<40",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFR | $48 \\pm 14\\, {\\rm M}_\\odot\\,{\\rm yr}^{-1}$ | $<40\\, {\\rm M}_\\odot\\,{\\rm yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift of J0210-0456",
+   "value": "6.4323",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$z_{\\rm [CII]}$ | $6.4323 \\pm 0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM",
+   "value": "189",
+   "uncertainty": "18",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "FWHM$_{\\rm [CII]}$ | $189 \\pm 18$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] line flux J0210-0456",
+   "value": "0.269",
+   "uncertainty": "0.037",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$I _{\\rm [CII]}$ | $0.269  \\pm 0.037$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] luminosity J0210-0456",
+   "value": "3.01e8",
+   "uncertainty": "0.41e8",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm [CII]}$ | $(3.01 \\pm 0.41) \\times 10^8  \\,{\\rm L}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII]/L_FIR",
+   "value": "1.15e-3",
+   "uncertainty": "0.32e-3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$L_{\\rm [CII]} / L_{\\rm FIR}$ | $(1.15 \\pm 0.32) \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue-red spatial offset",
+   "value": "0.5 (3 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 [C ii] dynamics and spatial extent",
+     "quote": "there is a spatial offset of $0.5\\ensuremath{''}$ (3 kpc) between these peaks"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity gradient",
+   "value": "~100 across 1.0\" (6 kpc)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 [C ii] dynamics and spatial extent",
+     "quote": "magnitude $\\approx 100$ km s$^{-1}$ across a size scale of $1.0\\ensuremath{''}$ (6 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted M_BH from sigma=80 km/s",
+   "value": "~3e6",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 [C ii] dynamics and spatial extent",
+     "quote": "would be expected to have $M_{\\rm BH} \\approx 3 \\times 10^6 \\,{\\rm\n  M}_\\odot$, a factor of 25 lower"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging weighting/robust, deconvolution and cleaning parameters",
+  "CASA version and calibration script/flux model for Uranus",
+  "Exact channel ranges for line, wings, and continuum spectral windows",
+  "Method and aperture for the 3.4 sigma continuum flux measurement and spectral extraction",
+  "How [C II] flux integration and line luminosity conversion were done",
+  "Fit details for the Gaussian plus constant spectrum",
+  "Velocity-centroid map pixel threshold",
+  "Observed frequencies for the spectral windows"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and CASA version",
+  "Spectrum extraction and flux integration details",
+  "Comparison sample unpublished data (Graciá-Carpio in prep.)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public Cycle 0 data and simple analysis, but imaging and extraction details are missing.",
+ "rediscovery_reason": "Data are public, analysis is simple, and the results are numeric (flux, FWHM, line flux), though imaging details are missing.",
+ "source_card": "cards/2013ApJ...770...13W/sonnet/card.md"
+}

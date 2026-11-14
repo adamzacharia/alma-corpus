@@ -1,0 +1,288 @@
+{
+ "bibcode": "2020ApJ...891..113R",
+ "title": "Effect of Feedback of Massive Stars in the Fragmentation, Distribution, and Kinematics of the Gas in Two Star-forming Regions in the Carina Nebula",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab6d76",
+ "arxiv_id": "2001.06969",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How does stellar feedback from massive stars affect fragmentation, gas distribution and kinematics in two Carina Nebula regions (Northern Cloud vs Southern Pillars)?",
+ "alma_project_codes": [
+  "2016.1.01609.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12 m and 7 m arrays",
+  "angular_resolution": "~2.8\"x1.8\" beam (3\" requested)",
+  "sensitivity": "10 mJy/beam per channel; continuum 0.22 mJy/beam (NC), 0.12 mJy/beam (SP)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust temperatures 23 K (SP) and 28 K (NC)",
+    "evidence": [
+     {
+      "loc": "4.1 Masses of the cores",
+      "quote": "assuming dust temperature values of 23 K for the SP and 28 K for the NC, both reported in (cite: 2016MNRAS.456.2406R)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016MNRAS.456.2406R)"
+  },
+  {
+   "what": {
+    "value": "Herschel gas column density map",
+    "evidence": [
+     {
+      "loc": "4.2 Fraction of the mass in cores",
+      "quote": "using the gas column density map derived in (cite: 2016MNRAS.456.2406R) from Herschel maps"
+     }
+    ]
+   },
+   "citation": "(cite: 2016MNRAS.456.2406R)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image 12m+7m data",
+   "method": "Combined imaging of both arrays with tclean",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5; channel width 0.41 km/s for main lines"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure core fluxes and sizes",
+   "method": "2D Gaussian plus offset fitted to each core",
+   "software": [
+    "Miriad"
+   ],
+   "key_parameters": [
+    "cores kept only if S/N > 10 in NC"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive core masses",
+   "method": "Dust continuum mass with fixed temperature and opacity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T = 23 K (SP), 28 K (NC); gas-to-dust 100; beta=2; d=2.3 kpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Core velocity dispersion and virial parameter",
+   "method": "Gaussian fit to H13CO+ core spectra; alpha_vir = 5 dv^2 R/(G M)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "uniform density, no magnetic fields or external pressure"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Jeans analysis",
+   "method": "Jeans mass from ATLASGAL-derived density in 20\" radius sphere and dust temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa_0.87mm=0.42, beta=2, gas-to-dust 100"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Turbulence via dendrograms",
+   "method": "SCIMES dendrograms on HCO+ and H13CO+ cubes; K-S and t-tests on leaf velocity dispersions",
+   "software": [
+    "SCIMES",
+    "Astropy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Turbulence via PCA",
+   "method": "PCA on HCO+ cubes giving size-linewidth; Bayesian MCMC regression for alpha",
+   "software": [
+    "TurbuStat"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "N-PDF",
+   "method": "Feather ALMA with ATLASGAL (immerge), build N-PDF, fit log-normal, infer Mach number",
+   "software": [
+    "Miriad"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "not stated"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NC1 continuum flux",
+   "value": "14.40",
+   "uncertainty": "0.92",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NC1                 | 14.40 $\\pm$ 0.92    | 2.33                       | 1.23                       |"
+    }
+   ]
+  },
+  {
+   "quantity": "mean core mass NC",
+   "value": "19.4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Masses of the cores",
+     "quote": "While the NC has a mean core mass of 19.4 $\\mbox{$M_{\\odot}$}$, the mean in the SP is 3.8 $\\mbox{$M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mean core mass SP",
+   "value": "3.8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Masses of the cores",
+     "quote": "the mean in the SP is 3.8 $\\mbox{$M_{\\odot}$}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass",
+   "value": "~4.5 (both regions)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Gas fragmentation",
+     "quote": "we estimated $M_\\mathrm{J} \\sim 4.5\\ \\mbox{$M_{\\odot}$}$ for both regions"
+    }
+   ]
+  },
+  {
+   "quantity": "mean HCO+ leaf velocity dispersion NC / SP",
+   "value": "0.37 / 0.31",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5.1 Dendrograms",
+     "quote": "The mean velocity dispersion is 0.37 $\\mbox{km s$^{-1}$}$ for the NC, white for the SP is 0.31 $\\mbox{km s$^{-1}$}$."
+    }
+   ]
+  },
+  {
+   "quantity": "PCA alpha NC",
+   "value": "0.59",
+   "uncertainty": "90% HDI [0.37,0.75]",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5.2 PCA",
+     "quote": "the peak value is 0.59 and a 90% HDI of \\[0.37,0.75\\] in the NC"
+    }
+   ]
+  },
+  {
+   "quantity": "PCA alpha SP",
+   "value": "0.34",
+   "uncertainty": "90% HDI [0.01,0.52]",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5.2 PCA",
+     "quote": "peak at 0.34 for the SP, with a 90% HDI of \\[0.01,0.52\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "N-PDF transition column density NC / SP",
+   "value": "3.2e23 / 1.7e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.6 Distribution of column densities",
+     "quote": "In the NC, the $N_\\mathrm{H2,log}$ is $\\sim 3.2\\times 10^{23}\\ \\mathrm{cm}^{-2}$, while in the SP the $N_\\mathrm{H2,log}$ is $\\sim 1.7\\times 10^{23}\\ \\mathrm{cm}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log-normal width delta_H2 NC / SP",
+   "value": "0.62 / 0.39",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.6 Distribution of column densities",
+     "quote": "Table [\\[log-normal-fit\\]](#log-normal-fit) shows a value of $\\delta_\\mathrm{H2}=0.62$ for the NC. In contrast, for the SP $\\delta_\\mathrm{H2}=0.39$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mach number NC / SP",
+   "value": "1.37 / 0.81",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.6 Distribution of column densities",
+     "quote": "This imply a $\\mathcal{M}=1.37$ for the NC and $\\mathcal{M}=0.81$ for the SP"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method for line cubes",
+  "CASA version and tclean deconvolver/threshold/masking, cell and image size",
+  "Flux calibrator and calibration details",
+  "MCMC sampler and priors for Kelly regression",
+  "Method for spectra Gaussian fit and PCA parameters in TurbuStat",
+  "N-PDF binning and ALMA-ATLASGAL feathering parameters",
+  "Dendrogram input cube smoothing and velocity-dispersion definition per leaf",
+  "Core-mass equation and how free-free was handled in masses"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and tclean parameters",
+  "line-free channels",
+  "MCMC and PCA settings",
+  "N-PDF binning"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many steps described, but key imaging and fitting parameters missing.",
+ "rediscovery_reason": "Public data, numeric results (core fluxes, masses, N-PDF), moderately complete recipe.",
+ "source_card": "cards/2020ApJ...891..113R/sonnet/card.md"
+}

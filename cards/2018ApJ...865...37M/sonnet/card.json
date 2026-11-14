@@ -1,0 +1,1127 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...865...37M",
+  "title": "Multiple Rings in the Transitional Disk of GM Aurigae Revealed by VLA and ALMA",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Macías, Enrique",
+  "n_authors": 9,
+  "arxiv_id": "1808.01920",
+  "doi": "10.3847/1538-4357/aad811",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00565.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here we present the combined results of ALMA (0.9 mm) and VLA (7 mm) dust continuum observations toward the protoplanetary disk around the solar analogue GM Aur."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "GM Aur",
+     "coordinates": {
+      "value": "RA 04h55m10.9885s, Dec 30d21m58.947s (Gaia-based stellar position, ALMA epoch)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at $160\\pm2$ pc (cite: gai16; gai18) in the Taurus-Auriga cloud"
+       },
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "RA = 04h55m10.9885s DEC = 30d21m58.947s for the ALMA observations"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "160±2 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at $160\\pm2$ pc (cite: gai16; gai18) in the Taurus-Auriga cloud"
+       },
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "RA = 04h55m10.9885s DEC = 30d21m58.947s for the ALMA observations"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 (gai18)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "located at $160\\pm2$ pc (cite: gai16; gai18) in the Taurus-Auriga cloud"
+       },
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "RA = 04h55m10.9885s DEC = 30d21m58.947s for the ALMA observations"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the radial distribution of large dust grains in the transitional disk of GM Aur at 0.9 mm and 7 mm, and does it contain multiple rings?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We model our observations using two approaches: an analytical fit to the observed deprojected visibilities, and a physical disk model that fits the SED as well as the VLA and ALMA observations."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00565.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00565.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 7 (~0.9 mm); VLA Q band (~7 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "The ALMA observations were performed at Band 7 ($\\sim0.9$ mm) during Cycle 4 (PI: Kamber Schwarz)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Continuum SPW at 317.989 GHz (2 GHz bandwidth); 13CO and C18O (3-2) SPWs with ~122 kHz resolution, ~234.4 MHz each",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "One was centered at 317.989 GHz and was dedicated exclusively to detect the continuum dust emission, using the highest bandwidth possible (2 GHz)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "13CO",
+     "transition": "3-2",
+     "rest_frequency": "330.588 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "13CO ($3-2$), and C$^{18}$O ($3-2$) molecular transitions with rest frequencies 330.588 GHz and 329.331 GHz"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "3-2",
+     "rest_frequency": "329.331 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "13CO ($3-2$), and C$^{18}$O ($3-2$) molecular transitions with rest frequencies 330.588 GHz and 329.331 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m array, 39 antennas",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "using 39 antennas of the 12 m array, with baselines ranging from $\\sim15$ m to $\\sim850$ m"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "ALMA ~15 m to ~850 m; VLA B config ~150 m to ~10000 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "with baselines ranging from $\\sim15$ m to $\\sim850$ m"
+     },
+     {
+      "loc": "2.2 VLA Observations",
+      "quote": "with antenna separations that ranged from $\\sim150$ m to $\\sim10000$ m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "ALMA robust 0.5: 0.39x0.28 arcsec; uniform: 0.29x0.20 arcsec; VLA 0.18x0.15 arcsec",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "This resulted in a synthesized beam size of $0\\rlap.''39\\times0\\rlap.''28$ (PA$=0^{\\circ}$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "ALMA 2016 Nov 11; VLA 2016 June 17 and July 20",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "The data were obtained on 2016 November 11"
+     },
+     {
+      "loc": "2.2 VLA Observations",
+      "quote": "The observations were performed on 2016 June 17 and July 20 using the B configuration"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA Cycle 4, PI Kamber Schwarz",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Observations",
+      "quote": "during Cycle 4 (PI: Kamber Schwarz)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "7 mm B-configuration continuum data",
+      "evidence": [
+       {
+        "loc": "2.2 VLA Observations",
+        "quote": "We obtained Q band ($\\sim7$ mm) data of GM Aur using the VLA"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Distance and stellar position",
+      "evidence": [
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "The stellar position was obtained from the position and proper motions measured by Gaia"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Optical to far-IR SED photometry",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "Most optical to far-IR data were taken from (cite: esp11) and references therein."
+       }
+      ]
+     },
+     "citation": "(cite: esp11)"
+    },
+    {
+     "what": {
+      "value": "Herschel photometry and spectra",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "we included Herschel photometry and spectra (cite: rib17)"
+       }
+      ]
+     },
+     "citation": "(cite: rib17)"
+    },
+    {
+     "what": {
+      "value": "(sub)mm and cm photometry 0.62 mm to 5 cm; VLA C-config 7 mm image",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "(sub)mm and cm photometry, from 0.62 mm to 5 cm ((cite: mac16), and references therein)"
+       }
+      ]
+     },
+     "citation": "(cite: mac16)"
+    },
+    {
+     "what": {
+      "value": "Single dish flux 730±70 mJy at 0.80 mm",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "previous single dish submm observations measured a flux density of $730\\pm70$ mJy at 0.80 mm (cite: wei89)"
+       }
+      ]
+     },
+     "citation": "(cite: wei89)"
+    },
+    {
+     "what": {
+      "value": "Accretion rate 7.8e-9 Msun/yr (average of measured range)",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "The mass accretion rate on GM Aur has been measured to be variable, between $1.1\\times10^{-8}$ $M_{\\odot}$ yr$^{-1}$ and $3.9\\times10^{-9}$ $M_{\\odot}$ yr$^{-1}$ (cite: ing15)"
+       }
+      ]
+     },
+     "citation": "(cite: ing15)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline used, no extra flagging; VLA calibration pipeline with additional flagging and rerun",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "The pipeline was used to calibrate the data, with no additional flagging required."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.0 (ALMA calibration); 4.7.2 (VLA); CLEAN with 4.5.3",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "version 4.7.0)"
+      },
+      {
+       "loc": "2.2 VLA Observations",
+       "quote": "VLA calibration pipeline within CASA (version 4.7.2)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "ALMA: J0522-3627 (flux), J0510+1800 (bandpass and gain); VLA: 3C147 flux/bandpass, J0438+3004 gain",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "The quasar J0522-3627 was observed as the absolute flux calibrator"
+      },
+      {
+       "loc": "2.2 VLA Observations",
+       "quote": "The quasar 3C147 was used as the flux and bandpass calibrator"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10% for both ALMA and VLA",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "with an expected uncertainty in the flux scale of $\\sim10\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Applied on GM Aur (ALMA); details not given",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "Self-calibration was applied on GM Aur, which successfully improved the quality and signal-to-noise ratio of the data."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN, version 4.5.3",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "We used the task CLEAN of CASA (version 4.5.3) to produce cleaned images from the calibrated visibilities."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Multi-frequency synthesis with nterms=2",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "the multi-frequency deconvolution algorithm built in CLEAN was used with nterms=2 (cite: con90)"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "ALMA robust = 0.5 and uniform; VLA natural",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "The top-left panel of Fig. [1](#fig:maps) shows the image obtained with a robust parameter of 0.5"
+      },
+      {
+       "loc": "2.2 VLA Observations",
+       "quote": "We applied a natural weighting to maximize the signal-to-noise ratio of the image"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "2 GHz continuum SPW combined with line-free channels of the two 234 MHz SPWs; channels not specified",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "The 2 GHz spectral window was combined with the line-free channels of the two 234 MHz spectral windows to maximize the continuum sensitivity."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "ALMA robust 0.39x0.28 arcsec PA 0; uniform 0.29x0.20 arcsec PA 14; VLA 0.18x0.15 arcsec PA -72",
+     "evidence": [
+      {
+       "loc": "2.2 VLA Observations",
+       "quote": "angular resolution of $0\\rlap.''18\\times0\\rlap.''15$ (PA$=-72^{\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "ALMA 0.10 mJy/beam (robust), 0.35 mJy/beam (uniform); VLA 12 uJy/beam",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "an rms of $0.10$mJy beam$^{-1}$, producing a peak SNR of 500"
+      },
+      {
+       "loc": "2.2 VLA Observations",
+       "quote": "an rms of $12~\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Stellar properties (Teff, spectral type, Av) and optically thin inner dust and photosphere components",
+      "evidence": [
+       {
+        "loc": "4.2 Physical Disk Model",
+        "quote": "Furthermore, we included optically thin dust inside the disk cavity, following (cite: esp11)."
+       }
+      ]
+     },
+     "from_reference": "(cite: esp11)"
+    },
+    {
+     "what": {
+      "value": "Dust composition: ~38% graphite, ~62% silicates (50% olivine, 50% pyroxene)",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "We use a similar dust composition to (cite: esp11)"
+       }
+      ]
+     },
+     "from_reference": "(cite: esp11)"
+    },
+    {
+     "what": {
+      "value": "Grain size distribution power law -3.5, min size 0.005 um",
+      "evidence": [
+       {
+        "loc": "4.2 Physical Disk Model",
+        "quote": "starting at a minimum size of $0.005~\\mu$m and with a power of $-3.5$ (cite: mat77)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mat77)"
+    },
+    {
+     "what": {
+      "value": "DIAD code details; epsilon_mid from vertical conservation of dust mass",
+      "evidence": [
+       {
+        "loc": "4.2 Physical Disk Model",
+        "quote": "We refer to (cite: dal06) and references therein for a more detailed description of the code."
+       }
+      ]
+     },
+     "from_reference": "(cite: dal06)"
+    },
+    {
+     "what": {
+      "value": "Spectral index 3.05 for flux extrapolation",
+      "evidence": [
+       {
+        "loc": "3 Results",
+        "quote": "Assuming a spectral index of 3.05, as measured by (cite: mac16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mac16)"
+    },
+    {
+     "what": {
+      "value": "Molecular line analysis deferred",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations",
+        "quote": "the molecular emission will be analyzed in Schwarz et al. (in prep.)"
+       }
+      ]
+     },
+     "from_reference": "Schwarz et al. (in prep.)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Self-calibration solution intervals, number of rounds and reference",
+    "Line-free channel selection for the line SPWs",
+    "CLEAN masks, image size, cell size and number of iterations/threshold",
+    "Prior ranges of the flat priors and MCMC walker count and initial scatter",
+    "Uvrange/binning of visibilities used in the fit",
+    "DIAD code availability and grid ranges/steps; exact chi2 definition",
+    "Dust opacity details for DIAD",
+    "Treatment of free-free contribution at 7 mm in the models"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image continuum",
+    "method": {
+     "value": "CASA pipeline calibration with self-calibration, then CLEAN with nterms=2 using continuum SPW plus line-free channels",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "The pipeline was used to calibrate the data, with no additional flagging required."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5 and uniform weighting (ALMA); natural (VLA)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA Observations",
+        "quote": "a robust parameter of 0.5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Radial profiles and flux densities",
+    "method": {
+     "value": "Average emission in concentric ellipses of 0.02 arcsec width using i=52.8, PA=56.5; flux in box above 3 sigma",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "The width of the ellipses was set to $0\\rlap.''02$, a relatively small fraction of the beam size."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with single-dish flux extrapolated with spectral index 3.05",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "Assuming a spectral index of 3.05, as measured by (cite: mac16)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit Gaussian-ring surface brightness model to deprojected visibilities",
+    "method": {
+     "value": "Hankel transform of sum of Gaussian rings fitted to real part of deprojected visibilities; 3 Gaussians for ALMA, 2 for VLA",
+     "evidence": [
+      {
+       "loc": "4.1 Surface Brightness Profile Model",
+       "quote": "directly fitting an analytical model of the surface brightness profile of the disk to the real part of deprojected visibilities"
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free: i, PA, dRA, dDEC, and a_i, sigma_i, x_i per ring",
+      "evidence": [
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "the free parameters of our model are the inclination, PA, offsets in RA and DEC, and $a_i$, $\\sigma_i$, and $x_i$ for each Gaussian ring"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Axisymmetric emission",
+      "evidence": [
+       {
+        "loc": "4.1 Surface Brightness Profile Model",
+        "quote": "If we assume that the emission is axisymmetric"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee affine-invariant ensemble MCMC; chains initialized around Levenberg-Marquardt best fit; flat priors for ALMA; Gaussian priors from ALMA posteriors for VLA; 30000 iterations, last 5000 used",
+     "evidence": [
+      {
+       "loc": "Markov Chain Monte Carlo runs",
+       "quote": "We ran the MCMC for 30000 iterations to assure that the chains had converged. The last 5000 iterations were used to obtain the posteriors"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Third Gaussian added when two failed to reproduce second visibility minimum at ~600 kλ",
+     "evidence": [
+      {
+       "loc": "4.1 Surface Brightness Profile Model",
+       "quote": "it failed to reproduce the second minimum in the negative visibilities at $\\sim600$ k$\\lambda$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Physical DIAD disk model fit to SED, VLA and ALMA",
+    "method": {
+     "value": "Grids of DIAD models; best fit chosen by min chi2, visual inspection and iterative refinement; epsilon_mid modulated by factor delta in radial ranges; model visibilities with observed uv coverage, residuals imaged",
+     "evidence": [
+      {
+       "loc": "4.2.1 Modeling Procedure",
+       "quote": "we ran a number of grids of models and found the best-fit parameters by a combination of model selection based on minimum $\\chi^2$, visual inspection, and successive refinement of the parameters of the grids"
+      }
+     ]
+    },
+    "software": [
+     "DIAD",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Mdot fixed at 7.8e-9 Msun/yr; alpha varied 0.0001-0.01; Rwall 25-40 au; mid amax 1 mm-2.5 cm; eps_atm 0.001-0.8; Rdisk 150-300 au",
+      "evidence": [
+       {
+        "loc": "4.2.1 Modeling Procedure",
+        "quote": "we decided to fix $\\dot{M}$ to an average value of $7.8\\times10^{-9}$ $M_{\\odot}$ yr$^{-1}$, and we varied $\\alpha$ between 0.0001 and 0.01"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust-to-gas ratio 0.01; distance 160 pc; inclination and PA fixed from step 3",
+      "evidence": [
+       {
+        "loc": "4.2 Physical Disk Model",
+        "quote": "We assume a fixed “standard\" dust-to-gas mass ratio of 0.01."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Grid search, not MCMC or Levenberg-Marquardt, due to computational cost",
+     "evidence": [
+      {
+       "loc": "4.2.1 Modeling Procedure",
+       "quote": "This prevents us from using common algorithms or statistical methods, such as Levenberg-Marquardt $\\chi^2$ minimization or MCMC"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Iterated until SED fit good and VLA/ALMA image residuals below ~3 sigma",
+     "evidence": [
+      {
+       "loc": "4.2.1 Modeling Procedure",
+       "quote": "ensuring that the residuals in the VLA and ALMA images were below $\\sim3\\sigma$"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.0 (ALMA cal), 4.7.2 (VLA cal), 4.5.3 (CLEAN)",
+    "used_for": {
+     "value": "Calibration, self-calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA Observations",
+       "quote": "Data calibration and editing were performed using the data reduction package CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fit of visibility model",
+     "evidence": [
+      {
+       "loc": "4.1 Surface Brightness Profile Model",
+       "quote": "provided with the `EMCEE` package (cite: for13)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Physical disk model of structure and SED",
+     "evidence": [
+      {
+       "loc": "4.2 Physical Disk Model",
+       "quote": "We use the D’Alessio Irradiated Accretion Disk (DIAD) code"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "ALMA 0.9 mm flux density (robust)",
+    "value": "380",
+    "uncertainty": "40",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "we measure a flux density of $380\\pm40$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA flux density (uniform)",
+    "value": "350",
+    "uncertainty": "40",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "yields a flux density of $350\\pm40$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "VLA 7 mm flux density",
+    "value": "1.36",
+    "uncertainty": "0.15",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "We measure a flux density of $1.36\\pm0.15$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk inclination",
+    "value": "52.77",
+    "uncertainty": "+0.05/-0.04",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Surface Brightness Profile Model",
+      "quote": "we find an inclination of $52.77^{\\circ} ~^{+0.05}_{-0.04}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk position angle",
+    "value": "56.45",
+    "uncertainty": "+0.06/-0.05",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Surface Brightness Profile Model",
+      "quote": "a PA of $56.45^{\\circ}~^{+0.06}_{-0.05}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inner ring radius x1 at 0.9 mm",
+    "value": "42.5",
+    "uncertainty": "±0.2",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Surface Brightness Profile Model",
+      "quote": "than at 0.9 mm ($x_1=42.5\\pm0.2$ au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Inner ring radius x1 at 7 mm",
+    "value": "39",
+    "uncertainty": "±1",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Surface Brightness Profile Model",
+      "quote": "smaller at 7 mm ($x_1=39\\pm1$ au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Second ring radius x2 at 0.9 mm",
+    "value": "83.4",
+    "uncertainty": "±0.6",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$x_{2}$ | $0\\rlap.''521^{+0\\rlap.''004}_{-0\\rlap.''004}$ ($83.4^{+0.6}_{-0.6}$ au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Third component x3 at 0.9 mm",
+    "value": "149",
+    "uncertainty": "±1",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$x_{3}$ | $0\\rlap.''934^{+0\\rlap.''006}_{-0\\rlap.''006}$ ($149^{+1}_{-1}$ au)"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass in DIAD model",
+    "value": "2.0",
+    "uncertainty": "not stated",
+    "units": "M_Jup",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.2 Model Results",
+      "quote": "The dust mass ($M^{\\rm{dust}}_{\\rm{disk}}$) in our disk model is $2.0~M_{J}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Total disk mass (assuming gas-to-dust 100)",
+    "value": "200",
+    "uncertainty": "not stated",
+    "units": "M_Jup",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.2 Model Results",
+      "quote": "this implies a total disk mass of $200~M_{J}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit alpha",
+    "value": "0.0012",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\alpha$                                   | 0.0012"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Cavity is resolved in both bands; ALMA also shows a fainter extended disk to ~250 au",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The ALMA observations also reveal a fainter disk that extends up to $\\sim250$ au."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the GM Aur dust disk contain multiple rings despite smooth deconvolved images?",
+    "experiment": "Gaussian-ring fit to deprojected ALMA and VLA visibilities",
+    "result": "Two rings at ~40 and ~80 au needed, plus an extended component in ALMA",
+    "finding": "The disk has at least two bright rings",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the VLA and ALMA visibilities can only be fitted with two bright rings of radii $\\sim$40 and $\\sim$80 au"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the rings due to large-grain trapping?",
+    "experiment": "DIAD model with epsilon_mid enhancements",
+    "result": "Enhancement factors of 4 and 3 in two rings fit SED and images",
+    "finding": "Large grains are probably trapped in two pressure bumps",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "this morphology is the result of an accumulation or trapping of large dust grains, probably due to the presence of two pressure bumps in the disk"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the cavity size different at 0.9 and 7 mm?",
+    "experiment": "Compare ring positions in the visibility fits and the model residuals",
+    "result": "x1 = 39±1 au at 7 mm vs 42.5±0.2 au at 0.9 mm",
+    "finding": "Cavity may be smaller at 7 mm, due to free-free emission or stronger grain concentration; not confirmed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1 Surface Brightness Profile Model",
+      "quote": "the size of the disk cavity appears to be smaller at 7 mm ($x_1=39\\pm1$ au) than at 0.9 mm"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Visibility fitting avoids CLEAN artifacts and uses the highest spatial frequencies",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "Directly analyzing the observed visibilities can provide us with additional information while also avoiding these possible artifacts."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Varying total gas density instead of epsilon_mid rejected since observations trace only large grains",
+     "evidence": [
+      {
+       "loc": "4.2.1 Modeling Procedure",
+       "quote": "we choose to only vary $\\epsilon_{\\rm{mid}}$ since our VLA and ALMA observations only provide information about the large dust grains located in the disk midplane"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Mdot and alpha degenerate; other combinations may fit; no MCMC uncertainties on the physical model",
+     "evidence": [
+      {
+       "loc": "4.2.1 Modeling Procedure",
+       "quote": "other models with similar disk masses but different values of $\\alpha$ and $\\dot{M}$ may also result in satisfactory fits"
+      }
+     ]
+    },
+    {
+     "value": "VLA data sensitivity limited; asymmetry and cavity difference low significance",
+     "evidence": [
+      {
+       "loc": "3 Results",
+       "quote": "both the C configuration and B configuration images of the 7 mm emission are probably sensitivity limited"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gaussian ring parametrization and number of rings is a model choice; no model comparison statistic given",
+    "Physical model has no uncertainties and a hand-tuned grid",
+    "Cavity size difference rests on poorly constrained VLA fit with informative priors from ALMA",
+    "Possible missing extended flux in ALMA"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project cited; VLA program not identified",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00565.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "VLA project code",
+    "DIAD code and grid details",
+    "Self-calibration parameters",
+    "Clean masks and image parameters"
+   ],
+   "estimated_data_volume_inferred": "ALMA Band 7 single execution, ~10-30 GB; VLA 8 GHz B config two tracks, ~100+ GB raw",
+   "score_inferred": 3,
+   "score_reason": "Data and many settings stated and the visibility fit is reproducible with emcee, but the DIAD model and self-calibration details are unavailable.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The key physical model needs a non-public DIAD code and the VLA data are not identified, though the ring fit is repeatable."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: dal06)",
+     "why": "DIAD model description"
+    },
+    {
+     "citation": "(cite: zha16)",
+     "why": "Visibility-based ring fitting approach"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: mac16)",
+     "why": "Earlier VLA C-configuration observations of GM Aur"
+    },
+    {
+     "citation": "Schwarz et al. (in prep.)",
+     "why": "Molecular line analysis of the same ALMA data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-fe192a5f36f27e70a87ec9c396c936a7",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:58",
+  "usage": {
+   "input_tokens": 25155,
+   "output_tokens": 10556,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.078542,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 86,
+  "quotes_ok": 86,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 58,
+   "rate": 0.725
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,486 @@
+{
+ "bibcode": "2021A&A...646A..26B",
+ "title": "A puzzling non-detection of [O III] and [C II] from a z ≈ 7.7 galaxy observed with ALMA",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202038180",
+ "arxiv_id": "2011.13319",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Characterize the ISM of the z=7.664 Lyman-alpha emitting galaxy z7_GSD_3811 via [O III] 88 um, [C II] 158 um and dust continuum, combined with rest-frame UV data, and compare with other high-redshift galaxies and local galaxies",
+ "alma_project_codes": [
+  "2017.1.00190.S",
+  "2015.1.00821.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "Continuum beams: band 6 0.87'' x 0.67'' (PA -81 deg); band 8 0.34'' x 0.25'' (PA -88 deg); tapered beams reach ~0.6'' (and ~1.1'' for [C II] with 0.5'' taper)",
+  "sensitivity": "Continuum rms 26 uJy/beam (band 8, 87 um) and 9.9 uJy/beam (band 6, 152 um); collapsed line rms 23 (100 km/s) and 44 (400 km/s) mJy km/s/beam for [O III], 9.8 and 19 for [C II]"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Lyman-alpha redshift, UV magnitude and target coordinates",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "Coordinates from (cite: song_keck_2016), not corrected for offset between Gaia and HST."
+     }
+    ]
+   },
+   "citation": "Song et al. 2016 (cite: song_keck_2016)"
+  },
+  {
+   "what": {
+    "value": "CANDELS catalog HST/HAWK-I photometry",
+    "evidence": [
+     {
+      "loc": "5 SED fitting",
+      "quote": "ground based infrared photometry (VLT/HAWK-I Ks) from the CANDELS catalog"
+     }
+    ]
+   },
+   "citation": "(cite: guo_candels_2013)"
+  },
+  {
+   "what": {
+    "value": "Gaia-corrected HLF GOODS-S catalog coordinates",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "We have therefore used the coordinates from the Hubble Legacy Fields (HLF) GOODS-S catalog (cite: whitaker_hubble_2019)"
+     }
+    ]
+   },
+   "citation": "(cite: whitaker_hubble_2019)"
+  },
+  {
+   "what": {
+    "value": "z>6 galaxy compilation (UV magnitudes, IR luminosities, [C II] data) used for [C II]-SFR and IRX-beta comparisons",
+    "evidence": [
+     {
+      "loc": "4.3 The [C II]-SFR relation",
+      "quote": "from the recently published compilation by (cite: matthee_resolved_2019)"
+     }
+    ]
+   },
+   "citation": "Matthee et al. 2019 (cite: matthee_resolved_2019)"
+  },
+  {
+   "what": {
+    "value": "Local [C II]-SFR relations for HII/Starburst and metal-poor dwarf galaxies",
+    "evidence": [
+     {
+      "loc": "4.3 The [C II]-SFR relation",
+      "quote": "We also show the local relation for HII/Starburst galaxies and metal-poor dwarf galaxies from (cite: delooze_applicability_2014)."
+     }
+    ]
+   },
+   "citation": "De Looze et al. 2014 (cite: delooze_applicability_2014)"
+  },
+  {
+   "what": {
+    "value": "Local dwarf galaxy L[O III]/L_UV versus oxygen abundance compilation",
+    "evidence": [
+     {
+      "loc": "4.5 [O III] and UV luminosity",
+      "quote": "nearby dwarf galaxies originally from (cite: madden_overview_2013; delooze_applicability_2014; cormier_herschel_2015), compiled by (cite: inoue_detection_2016)"
+     }
+    ]
+   },
+   "citation": "(cite: inoue_detection_2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and combine ALMA data",
+   "method": "Standard pipeline calibration in CASA; executions from different cycles combined before imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Flux calibration uncertainty estimated from historical calibrator monitoring: ~30% band 8, ~10% band 6"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image cubes and continuum, with tapering",
+   "method": "CASA clean with natural weighting; dirty image rms measured first, then cleaning threshold set to 2x rms; several spectral resolutions and tapers",
+   "software": [
+    "CASA clean"
+   ],
+   "key_parameters": [
+    "natural weighting; tapers up to 0.35'' and 0.5'' ([C II]); spectral resolution from native to ~200 km/s"
+   ],
+   "assumptions": [
+    "[C II] emitting region may be 2-3 times larger than the UV component, motivating the 0.5'' taper"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "search for line emission near the target",
+   "method": "Visual inspection of cubes in velocity slices, then systematic search for pixels above 3x rms within 1'' of the target; moment-0 maps and spectra; imfit integrated SNR for brightest features",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Search range -2000 to 700 km/s ([O III]) and -2900 to 1300 km/s ([C II]) relative to expected line position",
+    "5 sigma desired for a firm detection; marginal features also examined"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive 3 sigma upper limits on [O III] and [C II] line luminosities",
+   "method": "Integrated rms measured in images collapsed over 100 and 400 km/s around expected line positions; 3 sigma used as upper limit assuming unresolved source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Fiducial line FWHM 100 km/s, also 400 km/s"
+   ],
+   "assumptions": [
+    "Target unresolved with native beams; no continuum subtraction"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "dust continuum upper limits and total IR luminosity",
+   "method": "Continuum rms in full-band images after masking foreground source; modified black-body integrated over 8-1000 um with CMB correction; T_d 35 and 55 K as variations",
+   "software": [],
+   "key_parameters": [
+    "beta_d = 1.5, T_d = 45 K (also 35 and 55 K)"
+   ],
+   "assumptions": [
+    "Dust temperature of 45 K and beta_d = 1.5 chosen to match other studies"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "compare [C II] luminosity and SFR with local and high-z relations",
+   "method": "UV and IR SFRs from Kennicutt & Evans relations; UV+IR SFR with IR 1 sigma limit as upper error bar; compare with Matthee et al. compilation rescaled to 100 km/s and De Looze local relations",
+   "software": [],
+   "key_parameters": [
+    "T_d = 45 K for SFR_IR; velocity-integrated rms scales as sqrt(line width)"
+   ],
+   "assumptions": [
+    "UV magnitude error bars assumed symmetric and equal to the larger error"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "place the target in the IRX-beta plane",
+   "method": "UV slope from CANDELS F125W and F160W; IRX from 3 sigma band 6 L_IR upper limit; compared to Calzetti, SMC and ALPINE relations",
+   "software": [],
+   "key_parameters": [
+    "T_d = 45 K, beta_d = 1.5 for L_IR; L_UV = nu L_nu at 1500 A rest-frame"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "compare L[O III]/L_UV with high-z detections and local dwarfs",
+   "method": "Compute L_UV for literature [O III] detections (with lensing magnification) and compare the L[O III]/L_UV upper limit with high-z objects and local dwarf galaxies versus oxygen abundance",
+   "software": [],
+   "key_parameters": [
+    "Solar oxygen abundance 12+log(O/H) = 8.69"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "SED fitting with ALMA upper limits",
+   "method": "PANHIT SED fit to HST/HAWK-I photometry plus ALMA [O III] and band 6/8 continuum upper limits, constant SFR, Chabrier IMF, GALAXEV stellar models, Calzetti attenuation",
+   "software": [
+    "PANHIT"
+   ],
+   "key_parameters": [
+    "Redshift fixed to 7.664 and escape fraction zero; Z = 0.0001-0.02; A_V = 0-0.5 in steps of 0.05",
+    "7 data points, 4 fitted parameters, 3 degrees of freedom; age restricted to 300 Myr for the alternative solutions"
+   ],
+   "assumptions": [
+    "Constant SFR; [C II] upper limit not included"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[O III] 88 um and [C II] 158 um 3 sigma luminosity upper limits (100 km/s)",
+   "value": "L[OIII] < 1.6e8; L[CII] < 4.0e7",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with $3\\sigma$ upper limits of $1.6 \\ \\times \\ 10^{8} \\ \\mathrm{L_{\\odot}}$ and $4.0 \\ \\times \\ 10^{7} \\ \\mathrm{L_{\\odot}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] 3 sigma luminosity upper limit for 400 km/s line width",
+   "value": "< 3.2e8",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Upper limits for the [O III] and [C II] line fluxes",
+     "quote": "$L_{\\mathrm{[O iii]}} < 3.2 \\ \\times \\ 10^{8} \\  \\mathrm{L_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 3 sigma luminosity upper limit for 400 km/s line width",
+   "value": "< 7.5e7",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Upper limits for the [O III] and [C II] line fluxes",
+     "quote": "$L_{\\mathrm{[C ii]}} < 7.5 \\ \\times \\ 10^{7} \\ \\mathrm{L_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Collapsed [O III] image rms (100 and 400 km/s)",
+   "value": "23 and 44",
+   "uncertainty": "not stated",
+   "units": "mJy km/s/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Upper limits for the [O III] and [C II] line fluxes",
+     "quote": "The measured rms in our collapsed \\[O iii\\] images is $23$ and $44 \\ \\mathrm{mJy\\ km \\ s^{-1} \\ beam^{-1}}$ for $\\Delta v = 100$ and $400 \\ \\mathrm{km \\ s^{-1}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Collapsed [C II] image rms (100 and 400 km/s)",
+   "value": "9.8 and 19",
+   "uncertainty": "not stated",
+   "units": "mJy km/s/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Upper limits for the [O III] and [C II] line fluxes",
+     "quote": "For the corresponding \\[C ii\\] images, we measure an rms of $9.8$ and $19 \\ \\mathrm{mJy\\ km \\ s^{-1} \\ beam^{-1}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum rms band 8 (87 um) and band 6 (152 um)",
+   "value": "26 and 9.9",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The measured rms in the band 8 and band 6 continuum is 26 and 9.9 $\\mathrm{\\mu Jy \\ beam}^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma total IR luminosity upper limits at 87 um and 152 um (T_d = 45 K)",
+   "value": "< 9.3e10 (87 um); < 9.1e10 (152 um)",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Upper limits for the 87 um and 152 um dust continuum",
+     "quote": "$L_{\\mathrm{IR,87\\mathrm{\\mu m},45K}} \\ <9.3 \\ \\times  \\ 10^{10} \\ \\mathrm{L_{\\odot}}$ and $L_{\\mathrm{IR,152\\mathrm{\\mu m},45K}} <9.1 \\ \\times  \\ 10^{10} \\ \\mathrm{L_{\\odot}}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "UV SFR",
+   "value": "12 (+1/-1)",
+   "uncertainty": "+1/-1",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The [C II]-SFR relation",
+     "quote": "we find a UV SFR for z7_GSD_3811 of $\\mathrm{SFR_{UV}} \\ = \\ 12_{-1}^{+1} \\ \\mathrm{M_{\\odot}} \\ \\mathrm{yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "IR SFR upper limit (1 sigma, T_d = 45 K)",
+   "value": "< 4.5",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The [C II]-SFR relation",
+     "quote": "we derive an IR SFR of $\\mathrm{SFR_{IR}} \\ < 4.5 \\ \\mathrm{M_{\\odot}} \\ \\mathrm{yr^{-1}}$ ($1\\sigma$) for a dust temperature of 45 K."
+    }
+   ]
+  },
+  {
+   "quantity": "UV+IR SFR",
+   "value": "12 (+5/-1)",
+   "uncertainty": "+5/-1",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 The [C II]-SFR relation",
+     "quote": "$\\mathrm{SFR_{UV+IR}} \\ = \\ 12_{-1}^{+5} \\ \\mathrm{M_{\\odot}} \\ \\mathrm{yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UV continuum slope beta",
+   "value": "-1.7",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 IRX-beta",
+     "quote": "We obtain F125W$=25.89_{-0.07}^{+0.08}$, F160W$=25.81_{-0.08}^{+0.09}$ and $\\beta \\approx -1.7\\pm 0.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "log10(IRX) upper limit",
+   "value": "< 0.11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 IRX-beta",
+     "quote": "We obtain $\\mathrm{log_{10}(IRX)} \\lesssim 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[O III]/L_UV upper limit relative to MACS0416_Y1 and SXDF-NB1006-2",
+   "value": "factor ~12 and ~5 lower",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.5 [O III] and UV luminosity",
+     "quote": "is a factor $\\sim 12$ and $\\sim 5$ times lower than the ratio observed in MACS0416_Y1"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean oxygen abundance of local dwarfs with L[O III]/L_UV lower than the target",
+   "value": "~9% of solar",
+   "uncertainty": "not stated",
+   "units": "fraction of solar",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.5 [O III] and UV luminosity",
+     "quote": "The mean oxygen abundance of nearby dwarf galaxies with $L_{O iii} / L_{\\mathrm{UV}}$ lower than z7_GSD_3811 is $\\approx 9\\%$ of the solar value."
+    }
+   ]
+  },
+  {
+   "quantity": "Metallicity upper limit from [C II] vs Vallini et al. 2015 relation (100 km/s)",
+   "value": "Z <~ 0.08 Zsun (0.12 Zsun for 400 km/s)",
+   "uncertainty": "not stated",
+   "units": "Zsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6 Discussion & Summary",
+     "quote": "we find that the values we obtain are consistent with a metallicity of $Z\\lesssim 0.08 \\ \\mathrm{Z_{\\odot}}$ for a line-width of $\\Delta v = 100 \\ \\mathrm{km \\ s^{-1}}$."
+    },
+    {
+     "loc": "6 Discussion & Summary",
+     "quote": "this upper limit is relaxed to $Z\\lesssim 0.12 \\ \\mathrm{Z_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Formal best-fit PANHIT solution (chi2_nu, age, Z)",
+   "value": "chi2_nu 3.40, age 0.57 Gyr, Z 0.0004",
+   "uncertainty": "not stated",
+   "units": "chi2_nu dimensionless; Gyr; Z as mass fraction",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5 SED fitting",
+     "quote": "Formally, the best-fitting solution ($\\chi_{\\nu}^2 \\  = \\ 3.40$) obtained from PANHIT gives a high age of $0.57 \\ \\mathrm{Gyr}$ and a low metallicity of $Z \\ = \\ 0.0004$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit PANHIT SFR and stellar mass",
+   "value": "SFR 7.95 Msun/yr; M* 3.05e9 Msun",
+   "uncertainty": "not stated",
+   "units": "Msun/yr; Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5 SED fitting",
+     "quote": "The star formation rate of the model is $\\mathrm{SFR} \\ = \\ 7.95 \\  \\mathrm{M_{\\odot}yr^{-1}}$, with a stellar mass of $M_{\\star} \\ = \\ 3.05 \\times 10^{9} \\ \\mathrm{M_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Alternative solutions for age-limited fits",
+   "value": "Young: 2 Myr, Z = 0.0001; two older solutions at 0.29 Gyr with Z = 0.02 and Z = 0.0004",
+   "uncertainty": "not stated",
+   "units": "Myr, Gyr, Z",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5 SED fitting",
+     "quote": "Here we find a Young solution (with an age of $2 \\ \\mathrm{Myr}$) with low metallicity ($Z \\ = \\ 0.0001$), and two older solutions (with ages of $0.29 \\ \\mathrm{Gyr}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Overall metallicity inference from non-detections",
+   "value": "Z <~ 0.1 Zsun (low metallicity suggested)",
+   "uncertainty": "not stated",
+   "units": "Zsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "could indicate that z7_GSD_3811 has a low metallicity ($Z \\lesssim 0.1 \\ \\mathrm{Z_{\\odot}}$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, niter and clean masks for the cubes and continuum images",
+  "Which channels or SPW edges were flagged or excluded in the combined cycle 3 and cycle 5 band 6 data",
+  "Exact taper values used for each tapered cube and the exact velocity-binned channel widths",
+  "Array type (12 m versus 7 m) and configuration names for each execution block",
+  "Primary beam correction treatment for the upper limits",
+  "Whether self-calibration was applied",
+  "Exact sky position used for spectral extraction (HLF-corrected coordinates are not printed numerically)",
+  "Rest frequencies and exact conversion from flux upper limits to line luminosities",
+  "PANHIT version, model grid spacing and priors, and the exact filter definitions used",
+  "Compiled values for the Matthee et al. sample after the authors' rescaling",
+  "Details of the 3 sigma upper limit for continuum (aperture versus peak pixel)"
+ ],
+ "missing_for_reproduction": [
+  "Cell size, image size, clean mask and niter settings",
+  "Exact channel flagging and SPW edge exclusions for combined cycles",
+  "Array type and configuration details per execution",
+  "PANHIT version and grid details; the code may require the authors",
+  "Exact extraction position and conversion details for luminosity limits"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes, SPW setups, natural weighting, clean threshold, line widths, T_d, beta_d and numeric upper limits are given, but cell size, masks, flagging and PANHIT details are missing, so upper limits are approximately but not exactly reproducible.",
+ "rediscovery_reason": "Both projects are named, the data are likely public, the recipe (natural weighting, 100 km/s collapse, 3 sigma limits) is simple enough to redo, and the main results are numeric upper limits.",
+ "source_card": "cards/2021A%26A...646A..26B/sonnet/card.md"
+}

@@ -1,0 +1,1382 @@
+{
+  "$defs": {
+    "CalSetting": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "field": {
+          "enum": [
+            "pipeline_or_manual",
+            "casa_version",
+            "pipeline_version",
+            "archive_products_used_as_is",
+            "flux_calibrator",
+            "flux_scale_uncertainty",
+            "self_calibration"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "CitedWork": {
+      "additionalProperties": false,
+      "properties": {
+        "citation": {
+          "type": "string"
+        },
+        "why": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "citation",
+        "why"
+      ],
+      "type": "object"
+    },
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "experiment": {
+          "type": "string"
+        },
+        "finding": {
+          "type": "string"
+        },
+        "hypothesis": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        },
+        "support": {
+          "enum": [
+            "supported",
+            "partially",
+            "refuted"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "hypothesis",
+        "experiment",
+        "result",
+        "finding",
+        "support",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "DataSetting": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "field": {
+          "enum": [
+            "bands",
+            "frequencies_and_spectral_setup",
+            "continuum_bandwidth",
+            "arrays","configurations",
+            "baselines",
+            "angular_resolution",
+            "max_recoverable_scale",
+            "sensitivity",
+            "time_on_source",
+            "observing_dates",
+            "pi_or_archival_as_stated"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "loc": {
+          "description": "Section heading (e.g. '2.1 Observations') or 'abstract', 'Table 2', 'Figure 3 caption'",
+          "type": "string"
+        },
+        "quote": {
+          "description": "Verbatim text copied from the paper, at most 40 words",
+          "type": "string"
+        }
+      },
+      "required": [
+        "loc",
+        "quote"
+      ],
+      "type": "object"
+    },
+    "ExternalData": {
+      "additionalProperties": false,
+      "properties": {
+        "citation": {
+          "description": "The cited work as written in the paper, with its (cite: key) if present",
+          "type": "string"
+        },
+        "what": {
+          "$ref": "#/$defs/Fact",
+          "description": "Table, catalog or measurement taken from another paper"
+        }
+      },
+      "required": [
+        "what",
+        "citation"
+      ],
+      "type": "object"
+    },
+    "Facility": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "provided": {
+          "$ref": "#/$defs/Fact",
+          "description": "What this facility, survey or archive contributed"
+        }
+      },
+      "required": [
+        "name",
+        "provided"
+      ],
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "description": "1-3 verbatim quotes supporting the value; empty when not stated",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "value": {
+          "description": "The fact in the paper's terms, or exactly 'not stated'",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "ImgSetting": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "field": {
+          "enum": [
+            "task",
+            "deconvolver",
+            "weighting_robust",
+            "uv_taper",
+            "cell_size",
+            "image_size",
+            "masking",
+            "multiscale_scales",
+            "continuum_subtraction",
+            "line_free_channels",
+            "primary_beam_correction",
+            "array_combination",
+            "smoothing",
+            "final_beam",
+            "final_rms"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "Inherited": {
+      "additionalProperties": false,
+      "properties": {
+        "from_reference": {
+          "type": "string"
+        },
+        "what": {
+          "$ref": "#/$defs/Fact",
+          "description": "A choice the paper takes from earlier work ('as in Paper I', 'following X')"
+        }
+      },
+      "required": [
+        "from_reference",
+        "what"
+      ],
+      "type": "object"
+    },
+    "NumericResult": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "from_step": {
+          "description": "order of the analysis step that produced it; 0 if not tied to one",
+          "type": "integer"
+        },
+        "quantity": {
+          "type": "string"
+        },
+        "uncertainty": {
+          "description": "As stated (e.g. '+0.3/-0.2', '10%'), or 'not stated'",
+          "type": "string"
+        },
+        "units": {
+          "description": "Units as stated; 'dimensionless' for ratios and indices",
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence",
+        "from_step",
+        "quantity",
+        "uncertainty",
+        "units",
+        "value"
+      ],
+      "type": "object"
+    },
+    "ProjectCode": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "description": "ALMA project code exactly as printed, e.g. 2015.1.00123.S",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "ReasonSetting": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "field": {
+          "enum": [
+            "why_this_data",
+            "why_this_method",
+            "how_they_decided_enough"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "ReproSetting": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "field": {
+          "enum": [
+            "data_public_as_stated",
+            "products_in_archive"
+          ],
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "value",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "Software": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "used_for": {
+          "$ref": "#/$defs/Fact"
+        },
+        "version": {
+          "description": "Version as stated, or 'not stated'",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "used_for",
+        "version"
+      ],
+      "type": "object"
+    },
+    "SpectralLine": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "rest_frequency": {
+          "type": "string"
+        },
+        "species": {
+          "type": "string"
+        },
+        "transition": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "evidence",
+        "rest_frequency",
+        "species",
+        "transition"
+      ],
+      "type": "object"
+    },
+    "WireStep": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "type": "array"
+        },
+        "fitting": {
+          "$ref": "#/$defs/Fact"
+        },
+        "goal": {
+          "description": "Short label for the step (our wording, e.g. 'measure the continuum flux')",
+          "type": "string"
+        },
+        "key_parameters": {
+          "items": {
+            "$ref": "#/$defs/Fact"
+          },
+          "type": "array"
+        },
+        "method": {
+          "$ref": "#/$defs/Fact"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "software": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "validation": {
+          "$ref": "#/$defs/Fact"
+        }
+      },
+      "required": [
+        "assumptions",
+        "fitting",
+        "goal",
+        "key_parameters",
+        "method",
+        "order",
+        "software",
+        "validation"
+      ],
+      "type": "object"
+    },
+    "WireTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "type": "string"
+        },
+        "details": {
+          "description": "Quotes giving its coordinates, redshift/distance and where the distance comes from; empty if none",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "type": "array"
+        },
+        "distance_source": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "redshift_or_distance": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "coordinates",
+        "details",
+        "distance_source",
+        "name",
+        "redshift_or_distance"
+      ],
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "alma_project_codes": [
+    {
+      "code": "2016.1.00309.S",
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00309.S."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "evidence": [
+        {
+          "loc": "3.1 The quasar host galaxy and its environment",
+          "quote": "The estimated mass of this cluster, $6\\times 10^{12}M_{\\odot}$ is much too small for it to contribute to the observed SZE though."
+        },
+        {
+          "loc": "3.1 The quasar host galaxy and its environment",
+          "quote": "The lack of any other obvious group or cluster in the field argues against significant contamination of the SZE signal by the intracluster medium of a compact cluster or intragroup medium"
+        }
+      ],
+      "value": "Contamination from an intracluster medium or intragroup medium ruled out based on small cluster mass and lack of obvious groups/clusters in Spitzer/Gemini/HST imaging."
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+          "quote": "Given the relatively low power of the wind, it is also worth investigating whether it can be produced by a starburst in the quasar host galaxy... In the absence of constraints on the star formation rate in this object, we cannot currently rule out a starburst origin."
+        }
+      ],
+      "value": "Starburst-driven wind considered as an alternative origin, requiring SFR ~ 500 M_sun/yr for 1.3e8 yr; cannot be ruled out without SFR constraints."
+    }
+  ],
+  "analysis_steps": [
+    {
+      "assumptions": [
+        {
+          "evidence": [
+            {
+              "loc": "2.1 ALMA",
+              "quote": "all sources were unresolved in the smaller configuration data"
+            }
+          ],
+          "value": "Quasar and three bright field sources are point sources in the ALMA data."
+        }
+      ],
+      "fitting": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "the subtraction of point source models in the $uv$-plane was adequate to remove them"
+          }
+        ],
+        "value": "Point source models fit and subtracted in the uv-plane"
+      },
+      "goal": "Subtract compact point source emission in the uv-plane",
+      "key_parameters": [
+        {
+          "evidence": [
+            {
+              "loc": "2.1 ALMA",
+              "quote": "three other bright ($>20\\, \\mu$Jy) sources in the field (A1, A3, and A5; Figure 1)"
+            }
+          ],
+          "value": "Point source flux densities subtracted: A1 (41.7 uJy), A3 (21.8 uJy), A5 (188.2 uJy), QSO (66.2 uJy)"
+        }
+      ],
+      "method": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "subtraction of point source models in the $uv$-plane was adequate to remove them, with the possible exception of a small amount of diffuse extended emission associated with the brightest source, A5."
+          }
+        ],
+        "value": "Point source modeling and uv-plane subtraction"
+      },
+      "order": 1,
+      "software": [],
+      "validation": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "Two scheduling blocks were made: one executed once in a relatively large configuration (delivering $\\theta_{\\rm FWHM}$ $\\approx$0.7$''$) to measure the point source contribution"
+          }
+        ],
+        "value": "High-resolution configuration observations verified point source contribution"
+      }
+    },
+    {
+      "assumptions": [],
+      "fitting": {
+        "evidence": [],
+        "value": "not stated"
+      },
+      "goal": "Image the field with uv-tapering to optimize surface brightness sensitivity",
+      "key_parameters": [
+        {
+          "evidence": [
+            {
+              "loc": "2.1 ALMA",
+              "quote": "The taper with a beam best matched to the size of the signal produced an image with $\\sigma =$ 6.6 $\\mu$Jy beam$^{-1}$ and $\\theta_{\\rm FWHM} =$ 6.7$''$$\\times$6.4$''$ at PA $= 110^{\\circ}$"
+            }
+          ],
+          "value": "uv-taper yielding 6.7'' x 6.4'' synthesized beam, rms 6.6 uJy/beam"
+        }
+      ],
+      "method": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "tapering was applied to improve the surface brightness sensitivity of the image."
+          }
+        ],
+        "value": "uv-tapering of point-source-subtracted visibilities"
+      },
+      "order": 2,
+      "software": [],
+      "validation": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "recovers an apparent dip of flux density of $-23.1\\,\\mu$Jy, significant at the 3.5$\\sigma$ level, to the SW of the quasar position."
+          }
+        ],
+        "value": "Detection confirmed at 3.5-sigma significance"
+      }
+    },
+    {
+      "assumptions": [
+        {
+          "evidence": [
+            {
+              "loc": "3.2.1 Thermal SZE Model",
+              "quote": "we assume that our observed SZE signal comes from a region which is a spherical cone, with the cone apex and the center of curvature located at the QSO. We estimate the half angle of the cone in our system to be $\\theta = 30^{\\circ}$"
+            },
+            {
+              "loc": "3.2.1 Thermal SZE Model",
+              "quote": "We further assume that the axis of the outflow is at an angle of 45$^{\\circ}$ to the outward extension of our line of sight."
+            }
+          ],
+          "value": "Conical wind geometry with half-angle 30 deg, inclination 45 deg to line of sight"
+        }
+      ],
+      "fitting": {
+        "evidence": [
+          {
+            "loc": "3.2.1 Thermal SZE Model",
+            "quote": "Equations (3) and (4) are two relations with two unknowns. Since we have observed values for both $R \\approx 112$ kpc (corrected for projection) and $y_{\\rm max} \\approx 2.08 \\times 10^{-5}$, we can estimate both $L_W$ and $t$"
+          }
+        ],
+        "value": "Analytic inversion of two equations for outer radius and maximum Compton y"
+      },
+      "goal": "Model SZE energetics using thermal and kinematic SZE conical bubble models",
+      "key_parameters": [
+        {
+          "evidence": [
+            {
+              "loc": "3.2 Interpretation of the SZE Signal",
+              "quote": "The peak brightness of the SZE decrement of $-$25.9 $\\mu$Jy (Section 2.1) corresponds to a brightness temperature change of $\\Delta T_{\\rm b,peak} = -37.7$ $\\mu$K."
+            }
+          ],
+          "value": "Decrement -25.9 uJy (primary beam corrected), Delta T_b = -37.7 uK"
+        }
+      ],
+      "method": {
+        "evidence": [
+          {
+            "loc": "3.2.1 Thermal SZE Model",
+            "quote": "We base our treatment of the expansion of the wind bubble on the model in RS11, which uses the self-similar stellar wind bubble solution of Weaver et al. (1977)."
+          }
+        ],
+        "value": "Rowe & Silk (2011) self-similar wind bubble solution modified for conical outflow"
+      },
+      "order": 3,
+      "software": [],
+      "validation": {
+        "evidence": [
+          {
+            "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+            "quote": "Furthermore, the fair agreement in the total energy estimate between the three different methods (total enthalpy, tSZE only and kSZE+tSZE) suggests that our estimate of that quantity at least is fairly robust."
+          }
+        ],
+        "value": "Consistency across enthalpy, pure tSZE, and tSZE+kSZE energy estimates"
+      }
+    }
+  ],
+  "calibration": [
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "Calibration of the data was performed with the ALMA pipeline."
+        }
+      ],
+      "field": "pipeline_or_manual",
+      "value": "ALMA pipeline"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "A standard calibration strategy was used resulting in an amplitude calibration accuracy of $\\approx 5$%"
+        }
+      ],
+      "field": "flux_scale_uncertainty",
+      "value": "~5%"
+    }
+  ],
+  "claims": [
+    {
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "In this letter, we present evidence that we have made the first detection of such a bubble, associated with the hyperluminous quasar HE 0515-4414."
+        },
+        {
+          "loc": "2.1 ALMA",
+          "quote": "recovers an apparent dip of flux density of $-23.1\\,\\mu$Jy, significant at the 3.5$\\sigma$ level, to the SW of the quasar position."
+        }
+      ],
+      "experiment": "ALMA Band 4 continuum observations with compact configuration and uv-tapering after subtracting point sources",
+      "finding": "First direct detection of an SZE bubble produced by a quasar wind",
+      "hypothesis": "Quasar thermal winds blow bubbles into the IGM that produce a detectable SZE decrement",
+      "result": "Detected a flux decrement of -23.1 uJy (-25.9 uJy after 12% primary beam correction) at 3.5 sigma significance SW of the quasar",
+      "support": "supported"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+          "quote": "a combined tSZE and kSZE model provides a natural explanation for the one-sided appearance. In the receding half of the outflow (relative to the observer) the kZSE and tSZE contributions to the SZE are both of the same sign, but in the approaching half the two partially cancel."
+        }
+      ],
+      "experiment": "Analytical modeling of tSZE and kSZE contributions to the decrement",
+      "finding": "The one-sided nature of the SZE signal is explained by combined thermal and kinetic SZE where approaching counter-flow components cancel",
+      "hypothesis": "The asymmetry (one-sidedness) of the SZE decrement can be explained by kinematic SZE effects",
+      "result": "In the combined model, ~60% of the decrement is kSZE and 40% is tSZE",
+      "support": "supported"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.3 Discussion",
+          "quote": "Although the wind luminosity seen in HE0515-4414 is high in absolute terms, it is only a small fraction ($\\approx 0.003$%) of the bolometric luminosity of the quasar ($\\approx 1.3\\times 10^{15}L_{\\odot}$)."
+        },
+        {
+          "loc": "3.3 Discussion",
+          "quote": "This fraction, $E_{\\rm W}/(\\eta M_{\\bullet} c^2)\\approx 0.01$% (0.02% if the wind is two-sided), is still low compared to the models."
+        }
+      ],
+      "experiment": "Comparison of derived wind kinetic energy and luminosity to quasar bolometric and accretion energy",
+      "finding": "The wind kinetic luminosity is at the lower end of theoretical models (~0.01% of bolometric/accretion power vs 1-10% predicted)",
+      "hypothesis": "Quasar wind kinetic luminosity matches standard theoretical predictions of 1-10% bolometric luminosity",
+      "result": "Wind luminosity is ~0.003% of bolometric luminosity and E_W / (eta M_BH c^2) ~ 0.01%",
+      "support": "refuted"
+    }
+  ],
+  "code_released": [],
+  "companion_papers": [],
+  "data_settings": [
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "The peak intensity of the thermal SZE decrement is seen at $\\approx 130$ GHz (Sunyaev & Zeldovich 1972), which lies in ALMA band-4."
+        }
+      ],
+      "field": "bands",
+      "value": "Band 4"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "four 2 GHz basebands centered at 133, 135, 145, and 147 GHz."
+        }
+      ],
+      "field": "frequencies_and_spectral_setup",
+      "value": "four 2 GHz basebands centered at 133, 135, 145, and 147 GHz"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "four 2 GHz basebands"
+        }
+      ],
+      "field": "continuum_bandwidth",
+      "value": "8 GHz"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "Two scheduling blocks were made: one executed once in a relatively large configuration (delivering $\\theta_{\\rm FWHM}$ $\\approx$0.7$''$) to measure the point source contribution, and one executed 14 times in a compact configuration (delivering $\\theta_{\\rm FWHM}$ $\\approx$2.7$''$) to maximize our response to the SZE."
+        }
+      ],
+      "field": "configurations",
+      "value": "one large configuration (theta_FWHM ~ 0.7'') executed once, and one compact configuration (theta_FWHM ~ 2.7'') executed 14 times"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "naturally-weighted map (which has the highest point source sensitivity, with an RMS of $\\sigma =$ 3.5 $\\mu$Jy beam$^{-1}$ and a synthesized beam of $\\theta_{\\rm FWHM} =$ 3.2$''$$\\times$2.3$''$ at a position angle of PA = 106$^{\\circ}$)"
+        }
+      ],
+      "field": "angular_resolution",
+      "value": "3.2'' x 2.3'' at PA = 106 deg (naturally-weighted); 6.7'' x 6.4'' at PA = 110 deg (tapered)"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "RMS of $\\sigma =$ 3.5 $\\mu$Jy beam$^{-1}$"
+        },
+        {
+          "loc": "2.1 ALMA",
+          "quote": "produced an image with $\\sigma =$ 6.6 $\\mu$Jy beam$^{-1}$"
+        }
+      ],
+      "field": "sensitivity",
+      "value": "3.5 uJy/beam (naturally-weighted); 6.6 uJy/beam (tapered)"
+    }
+  ],
+  "depth": "full",
+  "estimated_data_volume_inferred": "15 - 30 GB",
+  "external_data_from_literature": [
+    {
+      "citation": "Reimers et al. 1998",
+      "what": {
+        "evidence": [
+          {
+            "loc": "1 Introduction",
+            "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)."
+          }
+        ],
+        "value": "Redshift of HE 0515-4414 (z = 1.71)"
+      }
+    },
+    {
+      "citation": "Bielby et al. (2017)",
+      "what": {
+        "evidence": [
+          {
+            "loc": "3.1 The quasar host galaxy and its environment",
+            "quote": "Bielby et al. (2017) find a poor cluster at $z=0.28$ in the field based on absorption lines in the spectrum of the quasar and follow-up integral field spectroscopy. The estimated mass of this cluster, $6\\times 10^{12}M_{\\odot}$"
+          }
+        ],
+        "value": "Mass and redshift of foreground poor cluster at z = 0.28"
+      }
+    },
+    {
+      "citation": "Skrutskie et al. (2006)",
+      "what": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "continuum flux from 2MASS $J$-band data (Skrutskie et al. 2006)"
+          }
+        ],
+        "value": "2MASS J-band continuum flux"
+      }
+    },
+    {
+      "citation": "Mauch et al. 2003",
+      "what": {
+        "evidence": [
+          {
+            "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+            "quote": "HE 0515$-$4414 is undetected in the cm radio ($<$6 mJy at 843 MHz in the SUMSS survey, Mauch et al. 2003"
+          }
+        ],
+        "value": "SUMSS 843 MHz upper limit (< 6 mJy)"
+      }
+    }
+  ],
+  "fields": [
+    "agn_and_quasars",
+    "galaxy_clusters_and_sz"
+  ],
+  "findings_qualitative": [
+    {
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "The SZE detection is corroborated by the presence of extended emission line gas at the same position angle as the wind."
+        },
+        {
+          "loc": "3.1 The quasar host galaxy and its environment",
+          "quote": "Taken together with the SZE detection, we hypothesize that C1 and C2 help to define a broad outflow cone"
+        }
+      ],
+      "value": "Extended optical/NIR emission line gas aligns with the position angle of the SZE decrement, corroborating a broad outflow cone."
+    },
+    {
+      "evidence": [
+        {
+          "loc": "abstract",
+          "quote": "the age we estimate for the bubble, $\\sim 0.1$ Gyr, and the long cooling time, $\\sim 0.6$ Gyr, means that such bubbles may be effective at providing feedback between bursts of quasar activity."
+        }
+      ],
+      "value": "The long cooling time (~0.6 Gyr) indicates thermal wind bubbles can provide feedback between episodic bursts of quasar activity."
+    }
+  ],
+  "imaging": [
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "No clear signal was readily apparent in the naturally-weighted map"
+        }
+      ],
+      "field": "weighting_robust",
+      "value": "natural"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "tapering was applied to improve the surface brightness sensitivity of the image. The taper with a beam best matched to the size of the signal produced an image with $\\sigma =$ 6.6 $\\mu$Jy beam$^{-1}$ and $\\theta_{\\rm FWHM} =$ 6.7$''$$\\times$6.4$''$ at PA $= 110^{\\circ}$"
+        }
+      ],
+      "field": "uv_taper",
+      "value": "taper yielding 6.7'' x 6.4'' synthesized beam"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "subtraction of point source models in the $uv$-plane was adequate to remove them"
+        }
+      ],
+      "field": "continuum_subtraction",
+      "value": "Point source models subtracted in the uv-plane"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "(After a 12% correction for the response of the primary beam, this peak value of the decrement becomes $-25.9 \\, \\mu$Jy.)"
+        }
+      ],
+      "field": "primary_beam_correction",
+      "value": "12% primary beam correction applied at the peak decrement position"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "synthesized beam of $\\theta_{\\rm FWHM} =$ 3.2$''$$\\times$2.3$''$ at a position angle of PA = 106$^{\\circ}$"
+        },
+        {
+          "loc": "2.1 ALMA",
+          "quote": "$\\theta_{\\rm FWHM} =$ 6.7$''$$\\times$6.4$''$ at PA $= 110^{\\circ}$"
+        }
+      ],
+      "field": "final_beam",
+      "value": "3.2'' x 2.3'' at PA = 106 deg (naturally-weighted); 6.7'' x 6.4'' at PA = 110 deg (tapered)"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "RMS of $\\sigma =$ 3.5 $\\mu$Jy beam$^{-1}$"
+        },
+        {
+          "loc": "2.1 ALMA",
+          "quote": "$\\sigma =$ 6.6 $\\mu$Jy beam$^{-1}$"
+        }
+      ],
+      "field": "final_rms",
+      "value": "3.5 uJy/beam (naturally-weighted); 6.6 uJy/beam (tapered)"
+    }
+  ],
+  "inherited": [
+    {
+      "from_reference": "Rowe & Silk 2011 (RS11)",
+      "what": {
+        "evidence": [
+          {
+            "loc": "3.2.1 Thermal SZE Model",
+            "quote": "We base our treatment of the expansion of the wind bubble on the model in RS11, which uses the self-similar stellar wind bubble solution of Weaver et al. (1977)."
+          }
+        ],
+        "value": "Self-similar wind bubble expansion model and scaling relations from Rowe & Silk (2011)"
+      }
+    },
+    {
+      "from_reference": "Bennert et al. (2015)",
+      "what": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "estimate the mass of the black hole, $M_{\\bullet}\\approx 4.3\\times 10^{10}\\,M_{\\odot}$, based on the width of the H$\\beta$ line (9440 km s$^{-1}$) and the continuum flux from 2MASS $J$-band data (Skrutskie et al. 2006) using the formulation of Bennert et al. (2015)."
+          }
+        ],
+        "value": "Black hole mass formulation using H-beta FWHM and J-band continuum"
+      }
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "evidence": [
+        {
+          "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+          "quote": "In the absence of constraints on the star formation rate in this object, we cannot currently rule out a starburst origin."
+        }
+      ],
+      "value": "Cannot rule out a starburst-driven wind origin due to lack of star formation rate constraints."
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.3 Discussion",
+          "quote": "We emphasize though that this is only a single object, and that studies of further objects are needed to confirm this in the general quasar population."
+        }
+      ],
+      "value": "Results are based on a single object and need confirmation in the broader quasar population."
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2.2 Thermal Plus Kinetic SZE Model",
+          "quote": "in this model, the shock speed is relatively low ($\\approx 500\\;$kms$^{-1}$), and it is possible that if the quasar is in a sufficiently massive virialized dark matter halo ($\\stackrel{>}{_{\\sim}}10^{13} M_{\\odot}$) with a sound speed comparable to the estimated shock speed, the assumption of a strong shock may not be valid."
+        }
+      ],
+      "value": "Strong shock assumption may not be valid if the quasar resides in a massive halo (>~ 1e13 M_sun)."
+    }
+  ],
+  "lines_targeted": [],
+  "methods_papers": [
+    {
+      "citation": "Rowe & Silk 2011",
+      "why": "Theoretical framework for SZE bubbles driven by quasar winds and self-similar expansion equations"
+    },
+    {
+      "citation": "Weaver et al. 1977",
+      "why": "Interstellar wind bubble dynamical solutions underlying RS11 model"
+    },
+    {
+      "citation": "Bennert et al. 2015",
+      "why": "Virial black hole mass calibration from H-beta FWHM and optical/NIR luminosity"
+    }
+  ],
+  "missing_for_reproduction": [
+    "Exact uv-taper parameter or filter function applied in CASA/imaging software",
+    "Specific CASA task and parameters used for uv-plane point source fitting and subtraction (e.g., uvsub or ft/cltool)",
+    "Exact pixel size and image size for ALMA maps"
+  ],
+  "other_facilities": [
+    {
+      "name": "Spitzer",
+      "provided": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "Spitzer observations were obtained in a DDT program (PID 13221)... 30s frametimes to achieve a 5$\\sigma$ depth of AB$\\approx 23.1$ in the $3.6$ and $4.5\\,\\mu$m bands."
+          }
+        ],
+        "value": "IRAC 3.6 and 4.5 um imaging to constrain host galaxy environment"
+      }
+    },
+    {
+      "name": "Gemini",
+      "provided": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "Gemini fast turnaround observations were obtained in program GS-2017B-FT-12 using the GMOS and FLAMINGOS-2 instruments. GMOS was used to image the field in the NIR $Z$-band... FLAMINGOS-2 imaging was performed through the $J$ and $K_s$ filters."
+          }
+        ],
+        "value": "GMOS Z-band and FLAMINGOS-2 J, Ks imaging"
+      }
+    },
+    {
+      "name": "HST",
+      "provided": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "HST observations of the field of HE 0515-4414 from program 14594 (P.I. R. Bielby) using the WFC3 instrument... broad-band images in the F140W and F160W filters, and grism spectra using the G141 dispersive element."
+          }
+        ],
+        "value": "WFC3 F140W, F160W broadband imaging and G141 grism spectroscopy"
+      }
+    }
+  ],
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+    {
+      "loc": "abstract",
+      "quote": "In this letter, we present evidence that we have made the first detection of such a bubble, associated with the hyperluminous quasar HE 0515-4414."
+    },
+    {
+      "loc": "1 Introduction",
+      "quote": "In this paper, we describe our attempt to use ALMA to directly detect the SZE from a quasar wind."
+    }
+  ],
+  "question": {
+    "evidence": [
+      {
+        "loc": "1 Introduction",
+        "quote": "In this paper, we describe our attempt to use ALMA to directly detect the SZE from a quasar wind."
+      }
+    ],
+    "value": "Can ALMA directly detect the Sunyaev-Zeldovich effect decrement from a thermal wind bubble around a hyperluminous radio-quiet quasar?"
+  },
+  "reasoning": [
+    {
+      "evidence": [
+        {
+          "loc": "1 Introduction",
+          "quote": "We selected the most luminous radio-quiet quasar we could find in the literature that had good visibility to ALMA, HE 0515-4414 ($z=1.71$; Reimers et al. 1998)."
+        }
+      ],
+      "field": "why_this_data",
+      "value": "HE 0515-4414 was chosen as the most luminous radio-quiet quasar with good ALMA visibility to maximize the expected SZE signal."
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "The peak intensity of the thermal SZE decrement is seen at $\\approx 130$ GHz (Sunyaev & Zeldovich 1972), which lies in ALMA band-4."
+        }
+      ],
+      "field": "why_this_method",
+      "value": "ALMA Band 4 was chosen because the peak intensity of the thermal SZE decrement occurs at ~130 GHz."
+    }
+  ],
+  "rediscovery_candidate": true,
+  "rediscovery_reason": "ALMA raw visibilities are public under project 2016.1.00309.S; point source positions and fluxes are tabulated, and the main result is a 3.5-sigma flux decrement and derived wind parameters.",
+  "referee_caveats_inferred": [
+    "The 3.5-sigma decrement detection is modest and reliant on uv-tapering and accurate uv-subtraction of four point sources.",
+    "The physical interpretation relies heavily on geometric cone assumptions (opening angle 30 deg, inclination 45 deg) and strong shock approximations."
+  ],
+  "related_projects_or_surveys": [
+    "SUMSS",
+    "2MASS"
+  ],
+  "reproducibility": [
+    {
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00309.S."
+        }
+      ],
+      "field": "data_public_as_stated",
+      "value": "ALMA data available under ADS/JAO.ALMA#2016.1.00309.S"
+    }
+  ],
+  "results_numeric": [
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "recovers an apparent dip of flux density of $-23.1\\,\\mu$Jy, significant at the 3.5$\\sigma$ level, to the SW of the quasar position."
+        }
+      ],
+      "from_step": 2,
+      "quantity": "apparent dip peak flux density (un-corrected)",
+      "uncertainty": "6.6",
+      "units": "uJy",
+      "value": "-23.1"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.1 ALMA",
+          "quote": "(After a 12% correction for the response of the primary beam, this peak value of the decrement becomes $-25.9 \\, \\mu$Jy.)"
+        }
+      ],
+      "from_step": 2,
+      "quantity": "peak SZE flux decrement (primary-beam corrected)",
+      "uncertainty": "not stated",
+      "units": "uJy",
+      "value": "-25.9"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2 Interpretation of the SZE Signal",
+          "quote": "corresponds to a brightness temperature change of $\\Delta T_{\\rm b,peak} = -37.7$ $\\mu$K."
+        }
+      ],
+      "from_step": 3,
+      "quantity": "peak brightness temperature change",
+      "uncertainty": "not stated",
+      "units": "uK",
+      "value": "-37.7"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2 Interpretation of the SZE Signal",
+          "quote": "The average projected radius of the bubble is $r \\approx 3.9\\ensuremath{''} = 33$ kpc."
+        }
+      ],
+      "from_step": 3,
+      "quantity": "average projected radius of the bubble",
+      "uncertainty": "not stated",
+      "units": "kpc",
+      "value": "33"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2 Interpretation of the SZE Signal",
+          "quote": "The peak is located at a distance of $r_{\\rm max} \\approx 10.1\\ensuremath{''} = 85$ kpc from the QSO."
+        }
+      ],
+      "from_step": 3,
+      "quantity": "projected distance of peak decrement from QSO",
+      "uncertainty": "not stated",
+      "units": "kpc",
+      "value": "85"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2 Interpretation of the SZE Signal",
+          "quote": "The distance from the QSO to the outer edge of the bubble is about $R \\approx 12.8\\ensuremath{''} = 108$ kpc."
+        }
+      ],
+      "from_step": 3,
+      "quantity": "projected outer radius of the bubble",
+      "uncertainty": "not stated",
+      "units": "kpc",
+      "value": "108"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "3.2.1 Thermal SZE Model",
+          "quote": "Compton parameter $y=\\tau k_{\\rm B} T_{\\rm e}/(m_{\\rm e}c^2) \\approx 2.08 \\times 10^{-5}$."
+        }
+      ],
+      "from_step": 3,
+      "quantity": "Compton y parameter (pure tSZE)",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "value": "2.08e-5"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "Table [tab:models]",
+          "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+        }
+      ],
+      "from_step": 3,
+      "quantity": "kinetic power (tSZE plus kSZE)",
+      "uncertainty": "not stated",
+      "units": "10^11 L_sun",
+      "value": "0.429"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "Table [tab:models]",
+          "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+        }
+      ],
+      "from_step": 3,
+      "quantity": "bubble age (tSZE plus kSZE)",
+      "uncertainty": "not stated",
+      "units": "10^7 yr",
+      "value": "12.87"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "Table [tab:models]",
+          "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+        }
+      ],
+      "from_step": 3,
+      "quantity": "wind energy E_W (tSZE plus kSZE)",
+      "uncertainty": "not stated",
+      "units": "10^53 J",
+      "value": "0.67"
+    },
+    {
+      "evidence": [
+        {
+          "loc": "2.2 Optical and Infrared",
+          "quote": "estimate the mass of the black hole, $M_{\\bullet}\\approx 4.3\\times 10^{10}\\,M_{\\odot}$"
+        }
+      ],
+      "from_step": 0,
+      "quantity": "black hole mass",
+      "uncertainty": "not stated",
+      "units": "M_sun",
+      "value": "4.3e10"
+    }
+  ],
+  "score_inferred": 7,
+  "score_reason": "The ALMA observations, source subtraction method, and analytical bubble modeling are clearly explained, and the raw data are public in the ALMA archive. However, specific imaging parameters such as the exact uv-taper weighting details and pixel size are omitted.",
+  "simulations_or_models_as_data": [],
+  "software": [
+    {
+      "name": "ALMA pipeline",
+      "used_for": {
+        "evidence": [
+          {
+            "loc": "2.1 ALMA",
+            "quote": "Calibration of the data was performed with the ALMA pipeline."
+          }
+        ],
+        "value": "Calibration of ALMA visibility data"
+      },
+      "version": "not stated"
+    },
+    {
+      "name": "IRAF",
+      "used_for": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "We used the standard GMOS data reduction package in IRAF to subtract the bias, apply the flat field, and coadd the final images."
+          }
+        ],
+        "value": "Reduction and combination of Gemini GMOS and FLAMINGOS-2 data"
+      },
+      "version": "not stated"
+    },
+    {
+      "name": "astrodrizzle",
+      "used_for": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "The broad-band images were combined using astrodrizzle"
+          }
+        ],
+        "value": "Combining HST WFC3 broad-band images"
+      },
+      "version": "not stated"
+    },
+    {
+      "name": "aXe",
+      "used_for": {
+        "evidence": [
+          {
+            "loc": "2.2 Optical and Infrared",
+            "quote": "and the aXe software (Kümmel et al. 2009) was used to extract the grism spectra."
+          }
+        ],
+        "value": "Extracting HST WFC3 G141 grism spectra"
+      },
+      "version": "not stated"
+    }
+  ],
+  "targets": [
+    {
+      "coordinates": "05:17:07.614 -44:10:55.64",
+      "details": [
+        {
+          "loc": "Table 1",
+          "quote": "QSO | 05:17:07.614 | -44:10:55.64 | 66.2"
+        },
+        {
+          "loc": "1 Introduction",
+          "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)."
+        }
+      ],
+      "distance_source": "Reimers et al. 1998",
+      "name": "HE 0515-4414",
+      "redshift_or_distance": "z = 1.71"
+    }
+  ],
+  "unstated_but_needed": [
+    "Specific uv-taper function and cutoff values used to achieve the 6.7'' x 6.4'' beam",
+    "Specific CASA task used for point source fitting and uv subtraction (e.g. uvsub)",
+    "Image size and cell size for naturally-weighted and tapered maps"
+  ]
+}

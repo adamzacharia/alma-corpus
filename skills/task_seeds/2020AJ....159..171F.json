@@ -1,0 +1,278 @@
+{
+ "bibcode": "2020AJ....159..171F",
+ "title": "A Ringed Pole-on Outflow from DO Tauri Revealed by ALMA",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/ab7a10",
+ "arxiv_id": "2003.01148",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What is the nature of the nested elliptical CO (2-1) rings around DO Tauri, and do they trace a pole-on outflow with measurable ages, mass and energetics?",
+ "alma_project_codes": [
+  "2016.1.01042.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "CO cube from combined configs: 0.21\"x0.16\"; continuum 0.17\"x0.12\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination 28 deg and PA 170 deg",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "reporting a low inclination of $28\\ensuremath{^\\circ}\\pm0.3\\ensuremath{^\\circ}$ and a position angle (PA) of $170\\ensuremath{^\\circ}\\pm1\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2019Long)"
+  },
+  {
+   "what": {
+    "value": "Optical jet blue lobe PA 250+-10 deg; blue-shifted jet velocity 95 km/s",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The PA of its blue-shifted lobe is 250$\\ensuremath{^\\circ}\\pm10\\ensuremath{^\\circ}$ (cite: 1997Hirth)"
+     }
+    ]
+   },
+   "citation": "(cite: 1997Hirth); (cite: 1994Hirth)"
+  },
+  {
+   "what": {
+    "value": "Accretion rates 1.4e-7 and 3.0e-8 Msun/yr",
+    "evidence": [
+     {
+      "loc": "4.3 CO masses, momentum and energy of the rings",
+      "quote": "$\\dot{M}_{acc}$ has been estimated as $1.4\\times 10^{-7}$ M$_{\\ensuremath{\\odot}}$ yr$^{-1}$ and $3.0\\times10^{-8}$ M$_{\\ensuremath{\\odot}}$ yr$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: 1998Gullbring; 2017AlonsoMartinez)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image continuum and CO",
+   "method": "ALMA scripts in CASA, continuum self-calibration applied to CO spw; separate continuum from high-res track, CO cube from combined tracks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5; 0.63 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit disk continuum",
+   "method": "2D Gaussian in uv-plane with uvmodelfit; inclination from axis ratio for circular disk; image-plane Gaussian for comparison",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk intrinsically circular"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit ellipses to CO rings channel by channel",
+   "method": "Automatic Minuit fit of an infinitely thin elliptical ring maximizing product with channel image; manual fits for blended rings",
+   "software": [
+    "Perl-PDL",
+    "Minuit"
+   ],
+   "key_parameters": [
+    "Errors: +-0.3\" manual centers/axes, +-15 deg PA, plus 0.1\" and 5 deg added; PA not quoted if eccentricity < 0.35"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Deproject outflow geometry and dynamical ages",
+   "method": "Rotate ring centers to outflow axis (PA 253.6 deg), deproject with i=19 deg, t_dyn=R/V with V=V_radial/cos i",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Outflow perpendicular to disk; wide-angle wind model"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive CO mass, momentum, energy",
+   "method": "LTE optically thin column density, M = mu m_H Omega N/X_CO, velocity corrected by inclination",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 25 K, LTE, optically thin; yields lower limits"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain launching region size",
+   "method": "c_s * Delta t_outburst, outburst 0.2-0.3 of shell interval, T=100 K",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "not stated"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk continuum flux density",
+   "value": "116.8",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The disk",
+     "quote": "a flux density of 116.8$\\pm0.1$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "19",
+   "uncertainty": "9",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The disk",
+     "quote": "this fit implies an inclination of $19\\ensuremath{^\\circ}\\pm9\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk PA (uv fit)",
+   "value": "150",
+   "uncertainty": "20",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The disk",
+     "quote": "its derived PA is $150\\ensuremath{^\\circ}\\pm20\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring-center alignment PA",
+   "value": "253.6",
+   "uncertainty": "0.1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.3 Ring properties",
+     "quote": "gives a position angle of $253.6\\ensuremath{^\\circ}\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical jet PA (HST)",
+   "value": "260",
+   "uncertainty": "1",
+   "units": "deg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2 The optical jet",
+     "quote": "The maximum of the emission of the jet has a PA of $260\\ensuremath{^\\circ}\\pm1\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical age of outflow (LB shell)",
+   "value": "1090",
+   "uncertainty": "90",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "T$_{dyn}$ (yr) | 460$\\pm70$ | 700$\\pm$100 | 1090$\\pm$90 | 1090$\\pm$90"
+    }
+   ]
+  },
+  {
+   "quantity": "Total blue-lobe mass (lower limit)",
+   "value": "1.3e-4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 CO masses, momentum and energy of the rings",
+     "quote": "$1.3\\times10^{-4}$ M$_{\\ensuremath{\\odot}}$, $1.1\\times10^{-3}$ M$_{\\ensuremath{\\odot}}$ km s$^{-1}$ and $1.1\\times10^{41}$ erg"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-velocity slope gamma (SB, M, LB)",
+   "value": "3.2, 2.2, 3.9",
+   "uncertainty": "0.3, 0.4, 0.7",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\gamma$ | 3.2$\\pm$0.3 | 2.2$\\pm$0.4 | 3.9$\\pm$0.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Launching region size upper limit",
+   "value": "<10-15",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Launching region",
+     "quote": "we obtain an upper limit for the size of the wind/jet outburst launching region of $<10-15$ au"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow opening angle",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 An outflow from DO Tauri",
+     "quote": "This implies an opening angle of $27\\ensuremath{^\\circ}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum spw selection",
+  "Self-calibration solution intervals and imaging parameters (cell, image size, masks, deconvolver, niter, threshold)",
+  "How the two tracks were combined (weights, phase centers) and the cube velocity grid",
+  "Channel-by-channel image/rms values used to define ring emission for the Minuit merit function",
+  "Per-ring area Omega and integration velocity ranges for mass calculation",
+  "Selection of points for power-law mass-velocity fits",
+  "Primary beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Perl-PDL fitting script not released",
+  "Imaging parameters beyond robust",
+  "Ring masks/areas for mass sums"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear recipe with tables of ring fits, but imaging details and fitting code are missing.",
+ "rediscovery_reason": "Public archival data, ring-fit table and numeric results; recipe mostly complete though some details missing.",
+ "source_card": "cards/2020AJ....159..171F/sonnet/card.md"
+}

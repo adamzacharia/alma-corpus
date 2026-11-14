@@ -1,0 +1,435 @@
+{
+ "bibcode": "2021PASJ...73S..62S",
+ "title": "ALMA CO observations of a giant molecular cloud in M 33: Evidence for high-mass star formation triggered by cloud-cloud collisions",
+ "year": 2021,
+ "doi": "10.1093/pasj/psaa045",
+ "arxiv_id": "1908.08404",
+ "fields": [
+  "star_formation",
+  "nearby_galaxies"
+ ],
+ "question": "Whether high-mass star formation in giant molecular cloud 37 (M33GMC 37) in M33 is triggered by cloud-cloud collisions",
+ "alma_project_codes": [
+  "2018.1.00378.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211–275 GHz)",
+  "arrays": "12-m array (45–49 antennas)",
+  "angular_resolution": "0.59'' x 0.42'' (12CO), 0.62'' x 0.44'' (13CO), 0.63'' x 0.44'' (C18O), 0.59'' x 0.43'' (1.3 mm continuum); ~2 pc",
+  "sensitivity": "~0.15 K at 1 km s^-1 (line) and 0.017 mJy beam^-1 (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to M33 (817 ± 59 kpc)",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The typical spatial resolution is $\\sim2$ pc at the distance of M33 ($817 \\pm 59$ kpc, (cite: 2001ApJ...553...47F))."
+     }
+    ]
+   },
+   "citation": "(cite: 2001ApJ...553...47F)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30-m 12CO(J=2-1) dataset",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "To estimate the missing flux density, we used the $^{12}$CO($J$ = 2–1) dataset obtained with the IRAM 30-m radio telescope ((cite: 2010A&A...522A...3G; 2014A&A...567A.118D))."
+     }
+    ]
+   },
+   "citation": "(cite: 2010A&A...522A...3G; 2014A&A...567A.118D)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor X_CO = 4.0 x 10^20 (K km s^-1)^-1 cm^-2",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "Following the previous study by (cite: 2012A&A...542A.108G), we used $X = 4.0 \\times 10^{20}$ (K km s$^{-1}$)$^{-1}$ cm$^{-2}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2012A&A...542A.108G)"
+  },
+  {
+   "what": {
+    "value": "Nobeyama 45-m archival 12CO(J=1-0) cube data",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "We also derived a typical intensity ratio of $^{12}$CO($J$ = 2–1) / $^{12}$CO($J$ = 1–0) $\\sim0.7$ toward M33GMC 37 through the comparison with an archival $^{12}$CO($J$ = 1–0) cube data obtained with the Nobeyama Radio Observatory 45-m telescope ((cite: 2011PASJ...63.1171T))."
+     }
+    ]
+   },
+   "citation": "(cite: 2011PASJ...63.1171T)"
+  },
+  {
+   "what": {
+    "value": "24 μm luminosity (~1.7 x 10^38 erg s^-1) and Hα luminosity (~4.6 x 10^37 erg s^-1)",
+    "evidence": [
+     {
+      "loc": "Presence of high-mass stars and their spectral types",
+      "quote": "According to (cite: 2007A&A...476.1161V), the luminosity of the 24 $\\mu$m emission is $\\sim1.7 \\times 10^{38}$ erg s$^{-1}$ and that of the H$\\alpha$ emission is $\\sim4.6 \\times 10^{37}$ erg s$^{-1}$ using the $Spitzer$ MIPS and KPNO H$\\alpha$ datasets."
+     }
+    ]
+   },
+   "citation": "(cite: 2007A&A...476.1161V)"
+  },
+  {
+   "what": {
+    "value": "Stellar spectral type calibration for TIR and Lyman continuum luminosities",
+    "evidence": [
+     {
+      "loc": "Presence of high-mass stars and their spectral types",
+      "quote": "The total infrared luminosity of the high-mass stars is estimated to be $\\sim1.4 \\times 10^{39}$ erg s$^{-1}$, which corresponds to ten O7.5V stars ((cite: 2005A&A...436.1049M)), assuming that the ten high-mass stars have the same spectral types."
+     },
+     {
+      "loc": "Presence of high-mass stars and their spectral types",
+      "quote": "We then obtain $N_\\mathrm{Lyman}$ = $1.1 \\times 10^{49}$ photons, corresponding to ten B0V stars ((cite: 2005A&A...436.1049M))."
+     }
+    ]
+   },
+   "citation": "(cite: 2005A&A...436.1049M)"
+  },
+  {
+   "what": {
+    "value": "Correlation data between column density and relative velocity for Milky Way cloud-cloud collision sites",
+    "evidence": [
+     {
+      "loc": "An Alternative Idea: High-mass Star Formation Triggered by Cloud-Cloud Collisions in M33GMC 37",
+      "quote": "Figure 9 shows the correlation plot between the column density and relative velocity toward the sites of cloud-cloud collisions in the Milky Way (cite: 2019PASJ..tmp..127E)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019PASJ..tmp..127E)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Estimate missing flux density",
+   "method": "Compare integrated intensities of ALMA and IRAM 30-m 12CO(J=2-1) data after smoothing to 12'' FWHM resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "FWHM resolution = 12''"
+   ],
+   "assumptions": [
+    "IRAM 30-m forward efficiency = 0.92, main beam efficiency = 0.56"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create moment maps, velocity channel maps, and position-velocity diagrams, and identify millimeter continuum sources",
+   "method": "Generate moment 0, 1, and 2 maps, velocity channel maps, and R.A.-integrated PV diagrams of CO lines; detect 1.3 mm continuum sources at >= 5 sigma and compute source sizes from 5 sigma contour area",
+   "software": [],
+   "key_parameters": [
+    "5 sigma detection threshold for 1.3 mm continuum sources; size defined as (S / pi)^0.5 * 2",
+    "Blue cloud velocity range: V_LSR = -143.0 to -134.0 km s^-1; Red cloud velocity range: V_LSR = -133.0 to -127.0 km s^-1",
+    "PV diagram R.A. integration range: 01h33m35.243s to 01h33m35.341s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive H2 column densities and molecular cloud masses",
+   "method": "Convert 12CO(J=2-1) integrated intensity to 12CO(J=1-0) using measured line ratio, apply X_CO factor to get N(H2), and sum over pixels using Equations (1) and (2)",
+   "software": [],
+   "key_parameters": [
+    "12CO(J=2-1) / 12CO(J=1-0) intensity ratio ~ 0.7"
+   ],
+   "assumptions": [
+    "Mean molecular weight μ ~ 2.74",
+    "Distance D = 2.5 x 10^24 cm (817 kpc)",
+    "X_CO = 4.0 x 10^20 (K km s^-1)^-1 cm^-2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Identify embedded high-mass stars and estimate their spectral types",
+   "method": "Align archival HST WFPC2/WFC3 images using Gaia DR2, count bright stars in KPNO Hα contours, and derive spectral types from Spitzer 24 μm luminosity (via TIR luminosity Eq. 3) and KPNO Hα luminosity (via Lyman continuum Eq. 4)",
+   "software": [],
+   "key_parameters": [
+    "L(24 μm) ~ 1.7 x 10^38 erg s^-1, L(Hα) ~ 4.6 x 10^37 erg s^-1"
+   ],
+   "assumptions": [
+    "Ten high-mass stars having the same spectral types"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test whether stellar wind feedback can explain the cloud velocity separation",
+   "method": "Compare estimated total stellar wind momentum of ten O-type stars with the total expanding momentum of the two molecular clouds",
+   "software": [],
+   "key_parameters": [
+    "Expanding velocity ~ 3 km s^-1 (half the velocity separation of the two clouds)"
+   ],
+   "assumptions": [
+    "10 O-type stars, mass loss rate ~ 10^-6 M_sun yr^-1, wind duration ~ 10^6 yr, wind velocity ~ 2000 km s^-1"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Quantify complementary spatial distribution and estimate cloud-cloud collision timescale",
+   "method": "Calculate spatial correlation coefficient between intensity distributions of red and blue clouds as a function of R.A. and Dec. displacement, find local minimum, and divide deprojected displacement by deprojected velocity difference",
+   "software": [],
+   "key_parameters": [
+    "Shift of 15 pix in R.A. and -12 pix in Dec. (~6.2 pc southeast)"
+   ],
+   "assumptions": [
+    "Collision angle θ = 45 degrees relative to line of sight"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO(J=2-1) / 12CO(J=1-0) intensity ratio",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "We also derived a typical intensity ratio of $^{12}$CO($J$ = 2–1) / $^{12}$CO($J$ = 1–0) $\\sim0.7$ toward M33GMC 37 through the comparison with an archival $^{12}$CO($J$ = 1–0) cube data obtained with the Nobeyama Radio Observatory 45-m telescope ((cite: 2011PASJ...63.1171T))."
+    }
+   ]
+  },
+  {
+   "quantity": "Total size of M33GMC 37",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Finally, the derived size and mass of the GMCs are $\\sim60$ pc and $\\sim5 \\times 10^5$ $M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass of M33GMC 37",
+   "value": "5e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Finally, the derived size and mass of the GMCs are $\\sim60$ pc and $\\sim5 \\times 10^5$ $M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical width of CO filaments",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The typical width and length of filaments are $\\sim3$ pc and $\\sim10$ pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical length of CO filaments",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The typical width and length of filaments are $\\sim3$ pc and $\\sim10$ pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of blue cloud",
+   "value": "2.4e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The total mass is estimated to be $\\sim2.4 \\times 10^5$ $M_\\odot$ for the blue cloud and $\\sim1.9 \\times 10^5$ $M_\\odot$ for the red cloud using equations (1) and (2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of red cloud",
+   "value": "1.9e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The total mass is estimated to be $\\sim2.4 \\times 10^5$ $M_\\odot$ for the blue cloud and $\\sim1.9 \\times 10^5$ $M_\\odot$ for the red cloud using equations (1) and (2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak H2 column density of blue cloud",
+   "value": "4.5e22",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The peak column density of molecular hydrogen is $\\sim4.5 \\times 10^{22}$ cm$^{-2}$ for the blue-cloud, and $\\sim4.1 \\times 10^{22}$ cm$^{-2}$ for the red-cloud."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak H2 column density of red cloud",
+   "value": "4.1e22",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The peak column density of molecular hydrogen is $\\sim4.5 \\times 10^{22}$ cm$^{-2}$ for the blue-cloud, and $\\sim4.1 \\times 10^{22}$ cm$^{-2}$ for the red-cloud."
+    }
+   ]
+  },
+  {
+   "quantity": "Systematic velocity difference between blue and red clouds",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "There are two individual molecular clouds with a systematic velocity difference of $\\sim6$ km s$^{-1}$."
+    },
+    {
+     "loc": "Results",
+     "quote": "The blue cloud is clearly seen whose radial velocity is centered at $V_\\mathrm{LSR} \\sim -137$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total infrared luminosity of high-mass stars L(TIR)",
+   "value": "1.4e39",
+   "uncertainty": "not stated",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Presence of high-mass stars and their spectral types",
+     "quote": "The total infrared luminosity of the high-mass stars is estimated to be $\\sim1.4 \\times 10^{39}$ erg s$^{-1}$, which corresponds to ten O7.5V stars ((cite: 2005A&A...436.1049M)), assuming that the ten high-mass stars have the same spectral types."
+    }
+   ]
+  },
+  {
+   "quantity": "Lyman continuum luminosity N_Lyman",
+   "value": "1.1e49",
+   "uncertainty": "not stated",
+   "units": "photons",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Presence of high-mass stars and their spectral types",
+     "quote": "We then obtain $N_\\mathrm{Lyman}$ = $1.1 \\times 10^{49}$ photons, corresponding to ten B0V stars ((cite: 2005A&A...436.1049M))."
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar wind momentum of ten O-type stars",
+   "value": "2e4",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Can stellar feedback explain the large velocity separation of the two clouds?",
+     "quote": "In the case of M33GMC 37, the total wind momentum is therefore to be $\\sim$$2 \\times 10^{4}$ $M_\\odot$ km s$^{-1}$ assuming that there are ten O-type stars (see Section 4.1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total cloud momentum",
+   "value": "1.3e6",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Can stellar feedback explain the large velocity separation of the two clouds?",
+     "quote": "On the other hand, we derive a total cloud momentum of $\\sim$$1.3 \\times 10^6$ $M_\\odot$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial displacement between complementary clouds (projected)",
+   "value": "6.2",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The two molecular clouds show a complementary spatial distribution with a spatial displacement of $\\sim6.2$ pc, and show a V-shaped structure in the position-velocity diagram."
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum spatial correlation coefficient between displaced clouds",
+   "value": "-0.44",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "An Alternative Idea: High-mass Star Formation Triggered by Cloud-Cloud Collisions in M33GMC 37",
+     "quote": "We can find the local minimum with the correlation coefficient of $-$0.44 at a shift by 15 pix in R.A. and $-12$ pix in Dec., which is significantly lower than the correlation coefficient of $-0.05$ without displacement."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud-cloud collision dynamical timescale",
+   "value": "1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "An Alternative Idea: High-mass Star Formation Triggered by Cloud-Cloud Collisions in M33GMC 37",
+     "quote": "If the cloud-collision scenario is correct, we can also estimate the collision time scale as a dynamical time scale using the values of displacement and velocity difference of two clouds to be (spatial displacement) / (velocity difference) = 8.8 pc / 8.5 km s$^{-1}$ $\\sim1$ Myr assuming the collision angle $\\theta$ = 45 degree."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Visibility weighting scheme and robust parameter used in tclean",
+  "Multiscale CLEAN scale sizes, stopping threshold, cell size, and image size",
+  "Continuum subtraction procedure and line-free channel selection",
+  "Whether primary beam correction was applied before flux and mass measurements",
+  "Intensity clipping thresholds and velocity integration ranges used for Moment 0, 1, and 2 maps",
+  "Exact pixel size and bounding box coordinates used when calculating the spatial correlation coefficient between the blue and red clouds",
+  "Values of Table 1 (Positions, peak fluxes, and sizes of continuum sources MMS 1-3, which were embedded in a figure image rather than text)"
+ ],
+ "missing_for_reproduction": [
+  "CASA tclean imaging parameters (weighting/robust parameter, multiscale scales, cell size, cleaning threshold, continuum subtraction details)",
+  "Exact pixel scale and region box coordinates for the 2D spatial correlation coefficient calculation",
+  "Table 1 numeric values in machine-readable form (embedded as a graphic in the manuscript)",
+  "Velocity integration ranges and intensity clipping thresholds for the full-cloud Moment 0, 1, and 2 maps in Figure 2"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project code, CASA version, velocity ranges for the red and blue clouds, PV slice coordinates, and conversion equations/constants are clearly stated. However, tclean imaging parameters (robust weighting, cell size, multiscale parameters), exact bounding box for the spatial correlation test, and Table 1 text values are omitted.",
+ "rediscovery_reason": "Public single-pointing ALMA dataset (#2018.1.00378.S) with straightforward moment map, PV diagram, cloud mass, and spatial cross-correlation analyses yielding clear numeric benchmarks.",
+ "source_card": "cards/2021PASJ...73S..62S/sonnet/card.md"
+}

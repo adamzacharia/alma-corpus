@@ -1,0 +1,363 @@
+{
+ "bibcode": "2022MNRAS.512.4419P",
+ "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - X. Chemical differentiation among the massive cores in G9.62+0.19",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac624",
+ "arxiv_id": "2203.12255",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Investigate the physical and chemical conditions (rotational temperatures, column densities, abundances, chemical differentiation, and COM formation routes) of dense cores at different evolutionary stages in G9.62+0.19.",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m array and ACA (7-m)",
+  "angular_resolution": "12-m continuum: 1.56'' x 1.38''; 12-m+ACA continuum: 2.3'' x 1.7''; 12-m spectral SPWs 1-6: ~1.9'' x 1.7''; SPWs 7-8: ~1.6'' x 1.4''; combined SiO/HCO+/CS: 2.7'' x 2.1'', 2.5'' x 1.9'', 2.3'' x 1.7''",
+  "sensitivity": "12-m continuum: 0.4 mJy beam^-1; 12-m+ACA continuum: ~0.5 mJy beam^-1; 12-m SPWs 1-4: 8 mJy beam^-1 ch^-1, SPWs 5-6: 10 mJy beam^-1 ch^-1, SPWs 7-8: 3 mJy beam^-1 ch^-1; combined SiO/HCO+/CS: ~13, 60, 48 mJy beam^-1 ch^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA 1.3 mm continuum data of G9.62+0.19 used to derive H2 column densities",
+    "evidence": [
+     {
+      "loc": "LTE Analyses / Molecular abundance",
+      "quote": "Instead, we use 1.3 mm continuum data from (cite: Liu17), and smooth it to the same spatial resolution as that of 3 mm continuum data."
+     }
+    ]
+   },
+   "citation": "(cite: Liu17)"
+  },
+  {
+   "what": {
+    "value": "Volume densities of starless cores MM2, MM3, MM5, MM9, MM10, and MM12",
+    "evidence": [
+     {
+      "loc": "Results / Molecular lines identification / Molecular lines from different cores",
+      "quote": "It is worth to mention that MM3 and MM9 have larger volume density (6.1$\\times$10$^{6}$ cm$^{-3}$ and 15.9$\\times$10$^{6}$ cm$^{-3}$) than other four starless cores (1.9$\\times$10$^{6}$, 2.2$\\times$10$^{6}$, 2.8$\\times$10$^{6}$, and 0.6$\\times$10$^{6}$ cm$^{-3}$ for MM2, MM5, MM10, and MM12, respectively; see more details in Table 1 of (cite: Liu17))."
+     }
+    ]
+   },
+   "citation": "(cite: Liu17)"
+  },
+  {
+   "what": {
+    "value": "Molecular abundances relative to CH3OH and H2 in HMSFRs, LMSFRs, and GCMCs (Table 4)",
+    "evidence": [
+     {
+      "loc": "Discussions / Physical parameters of individual molecule",
+      "quote": "We also compare molecular abundances with respect to H$_{2}$ and CH$_{3}$OH derived in our work with those derived in other sources including high-mass star forming regions (HMSFRs), low-mass star forming regions (LMSFRs) and Galactic Center molecular clouds (GCMCs)."
+     }
+    ]
+   },
+   "citation": "(cite: Tercero18); (cite: Crockett14); (cite: Feng15); (cite: Belloche13); (cite: Bonfand19); (cite: Bogelund19); (cite: Zernickel12); (cite: Rivilla17b); (cite: Gorai2021); (cite: Bisschop07); (cite: Jorgensen18); (cite: Jorgensen20); (cite: Drozdovskaya2019); (cite: Taquet15); (cite: Requena-Torres06); (cite: Requena-Torres08); (cite: Rodriguez-Almeida2021); (cite: Zeng18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 3 mm continuum core properties",
+   "method": "Two-dimensional Gaussian fitting to the 12-m array and 12-m+ACA combined 3 mm continuum maps to obtain positions, sizes, peak flux densities, and total flux densities of the dense cores.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and identify molecular line transitions",
+   "method": "Extract full-band beam-averaged spectra at the continuum peaks from 12-m array observations and identify transitions above 3 sigma using XCLASS with CDMS and JPL databases, requiring consistent rest frequencies, LSR velocities, and spatial distributions.",
+   "software": [
+    "XCLASS",
+    "CDMS",
+    "JPL"
+   ],
+   "key_parameters": [
+    "Detection threshold: > 3 sigma (1 sigma RMS = 0.12 - 0.14 K computed in line-free channels)"
+   ],
+   "assumptions": [
+    "Transitions of a specific species are excited by similar conditions and share similar LSR velocity and spatial distribution"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map spatial distributions of molecular emission and outflows",
+   "method": "Generate integrated intensity maps of main transitions of O-, N-, and S-bearing species and outflow tracers (SiO, HCO+, CS).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotational temperatures, column densities, and line optical depths via LTE spectral modeling",
+   "method": "Model observed 12-m spectra using myXCLASS and MAGIX under LTE assumptions, fitting unblended transitions (>3 transitions with wide Eu range) for T_rot and N_T, or fixing T_rot to core average gas temperature when fewer than 3 transitions are detected.",
+   "software": [
+    "XCLASS",
+    "myXCLASS",
+    "MAGIX"
+   ],
+   "key_parameters": [
+    "Model parameters: source size, rotational temperature, column density, FWHM line width, velocity offset",
+    "Fixed T_rot for species with <3 transitions: 99 K (MM7), 134 K (MM8), 137 K (MM4), 100 K (MM11)"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE)",
+    "Beam filling factor ~ 1 (very large source size) for extended components; 2D Gaussian fit to line images for compact components; free parameter when comparable to beam size"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 column densities, molecular fractional abundances, and carbon isotopic ratios",
+   "method": "Smooth archival 1.3 mm continuum data to 3 mm resolution, fit 2D Gaussians to get core sizes and fluxes, compute H2 column density and continuum optical depth, and calculate fractional abundances chi = N_T / N_H2 and 12C/13C ratios.",
+   "software": [],
+   "key_parameters": [
+    "Gas-to-dust mass ratio eta = 100",
+    "Mean molecular mass per H2 molecule mu = 2.8",
+    "Dust absorption coefficient kappa_nu = 0.899 cm^2 g^-1 at 1.3 mm"
+   ],
+   "assumptions": [
+    "Optically thin dust continuum emission",
+    "Dust temperature equals average rotational temperature of COMs (thermal coupling at n_H2 > 10^6 cm^-3): 99 K (MM7), 134 K (MM8), 137 K (MM4), 100 K (MM11)",
+    "Dust grains with thin ice mantles at a gas density of 10^6 cm^-3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "3 mm continuum total flux density S_nu of MM1 (12-m / 12-m+ACA)",
+   "value": "32.4 / 38.3",
+   "uncertainty": "2.3 / 2.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results / ALMA 3 mm continuum emission",
+     "quote": "| MM1 | $18^\\mathrm{h}06^\\mathrm{m}14^\\mathrm{s}.357$ | $-20^{\\circ}31^{'}25^{\\prime\\prime}.73$ | 3.01$^{\\prime\\prime}\\times2.09^{\\prime\\prime}$ | 8.2$\\pm$0.6 | 32.4$\\pm$2.3 | | 3.73$^{\\prime\\prime}\\times2.54^{\\prime\\prime}$ | 11.1$\\pm$0.8 | 38.3$\\pm$2.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum total flux density S_nu of MM4 (12-m / 12-m+ACA)",
+   "value": "41.4 / 56.9",
+   "uncertainty": "2.1 / 5.3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results / ALMA 3 mm continuum emission",
+     "quote": "| MM4 | $18^\\mathrm{h}06^\\mathrm{m}14^\\mathrm{s}.67$ | $-20^{\\circ}31^{'}31^{\\prime\\prime}.52$ | 1.32$^{\\prime\\prime}\\times1.06^{\\prime\\prime}$ | 25.2$\\pm$1.9 | 41.4$\\pm$2.1 | | 1.97$^{\\prime\\prime}\\times1.79^{\\prime\\prime}$ | 30.1$\\pm$2.0 | 56.9$\\pm$5.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum total flux density S_nu of MM6 (12-m / 12-m+ACA)",
+   "value": "10.8 / 18.5",
+   "uncertainty": "0.7 / 1.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results / ALMA 3 mm continuum emission",
+     "quote": "| MM6 | $18^\\mathrm{h}06^\\mathrm{m}14^\\mathrm{s}.772$ | $-20^{\\circ}31^{'}34^{\\prime\\prime}.78$ | 2.05$^{\\prime\\prime}\\times0.88^{\\prime\\prime}$ | 5.3$\\pm$0.4 | 10.8$\\pm$0.7 | | 2.43$^{\\prime\\prime}\\times1.95^{\\prime\\prime}$ | 8.2$\\pm$0.2 | 18.5$\\pm$1.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum total flux density S_nu of MM8 (12-m / 12-m+ACA)",
+   "value": "36.3 / 46.9",
+   "uncertainty": "4.1 / 3.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results / ALMA 3 mm continuum emission",
+     "quote": "| MM8 | $18^\\mathrm{h}06^\\mathrm{m}14^\\mathrm{s}.884$ | $-20^{\\circ}31^{'}39^{\\prime\\prime}.37$ | 2.67$^{\\prime\\prime}\\times1.23^{\\prime\\prime}$ | 13.1$\\pm$1.0 | 36.3$\\pm$4.1 | | 3.05$^{\\prime\\prime}\\times1.58^{\\prime\\prime}$ | 19.2$\\pm$0.8 | 46.9$\\pm$3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm continuum total flux density S_nu of MM11 (12-m / 12-m+ACA)",
+   "value": "99.1 / 109.7",
+   "uncertainty": "4.3 / 4.6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Results / ALMA 3 mm continuum emission",
+     "quote": "| MM11 | $18^\\mathrm{h}06^\\mathrm{m}14^\\mathrm{s}.92$ | $-20^{\\circ}31^{'}42^{\\prime\\prime}.95$ | 1.05$^{\\prime\\prime}\\times0.75^{\\prime\\prime}$ | 71.4$\\pm$3.7 | 99.1$\\pm$4.3 | | 1.40$^{\\prime\\prime}\\times1.07^{\\prime\\prime}$ | 77.5$\\pm$3.3 | 109.7$\\pm$4.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature range for MM7",
+   "value": "72 - 115",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Modeling of these spectral lines reveals the rotational temperature in a range of 72$-$115 K, 100$-$163 K, 102$-$204 K, and 84$-$123 K for the MM7, MM8, MM4, and MM11, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature range for MM8",
+   "value": "100 - 163",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Modeling of these spectral lines reveals the rotational temperature in a range of 72$-$115 K, 100$-$163 K, 102$-$204 K, and 84$-$123 K for the MM7, MM8, MM4, and MM11, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature range for MM4",
+   "value": "102 - 204",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Modeling of these spectral lines reveals the rotational temperature in a range of 72$-$115 K, 100$-$163 K, 102$-$204 K, and 84$-$123 K for the MM7, MM8, MM4, and MM11, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature range for MM11",
+   "value": "84 - 123",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Modeling of these spectral lines reveals the rotational temperature in a range of 72$-$115 K, 100$-$163 K, 102$-$204 K, and 84$-$123 K for the MM7, MM8, MM4, and MM11, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean rotational temperature of MM7, MM8, MM4, MM11",
+   "value": "99, 134, 137, 100",
+   "uncertainty": "28, 27, 21, 18",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussions / Evolution of dense cores",
+     "quote": "The mean values of the two parameters are: $T_{\\rm rot}$ = 99$\\pm$28 K, $\\chi$= (3.0$\\pm$1.2)$\\times$10$^{-8}$ for MM7, $T_{\\rm rot}$ = 134$\\pm$27 K, $\\chi$= (1.0$\\pm$0.2)$\\times$10$^{-7}$ for MM8, $T_{\\rm rot}$ = 137$\\pm$21 K, $\\chi$= (6.9$\\pm$1.7)$\\times$10$^{-7}$ for MM4, and $T_{\\rm rot}$ = 100$\\pm$18 K, $\\chi$= (7.4$\\pm$2.6)$\\times$10$^{-8}$ for MM11."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH v=0 column density and rotational temperature in MM4",
+   "value": "7.5e17 cm^-2, 159 K",
+   "uncertainty": "0.3e17 cm^-2, 8 K",
+   "units": "cm^-2, K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Rotational Temperatures and Column Densities",
+     "quote": "The excitation temperature and column density are 159$\\pm$8 K and (7.5$\\pm$0.3) $\\times$ 10$^{17}$ cm$^{-2}$ for ground state, 204$\\pm$20 K and (9.2$\\pm$0.7) $\\times$ 10$^{17}$ cm$^{-2}$ for torsional state."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH vt=1 column density and rotational temperature in MM4",
+   "value": "9.2e17 cm^-2, 204 K",
+   "uncertainty": "0.7e17 cm^-2, 20 K",
+   "units": "cm^-2, K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Rotational Temperatures and Column Densities",
+     "quote": "The excitation temperature and column density are 159$\\pm$8 K and (7.5$\\pm$0.3) $\\times$ 10$^{17}$ cm$^{-2}$ for ground state, 204$\\pm$20 K and (9.2$\\pm$0.7) $\\times$ 10$^{17}$ cm$^{-2}$ for torsional state."
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5CN column density in MM7, MM8, MM4",
+   "value": "4.4e15, 3.4e16, 4.3e15",
+   "uncertainty": "0.9e15, 0.7e16, 0.3e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Rotational Temperatures and Column Densities",
+     "quote": "The best fit parameters are $T_{\\rm rot}$=115$\\pm$26 K and $N_{\\rm T}$=(4.4$\\pm$0.9)$\\times10^{15}$ cm$^{-2}$ toward MM7, 140$\\pm$21 K and (3.4$\\pm$0.7)$\\times10^{16}$ cm$^{-2}$ toward MM8, 114$\\pm$14 K and (4.3$\\pm$0.3)$\\times10^{15}$ cm$^{-2}$ toward MM4."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH rotational temperature and column density in MM8",
+   "value": "156 K, 3.7e16 cm^-2",
+   "uncertainty": "21 K, 0.9e16 cm^-2",
+   "units": "K, cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Rotational Temperatures and Column Densities",
+     "quote": "$T_{\\rm rot}$ and $N_{\\rm T}$ are 156$\\pm$21 K and (3.7$\\pm$0.9)$\\times10^{16}$ cm$^{-2}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N_H2 for MM7, MM8, MM4, MM11",
+   "value": "2.3e23, 3.8e23, 3.3e23, 2.8e23",
+   "uncertainty": "0.2e23, 0.3e23, 0.4e23, 0.2e23",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Molecular abundance",
+     "quote": "The $N_{\\rm H_{2}}$ derived from 1.3 mm continuum emission are: (2.3$\\pm$0.2) $\\times$ 10$^{23}$ cm$^{-2}$ for MM7, (3.8$\\pm$0.3) $\\times$ 10$^{23}$ cm$^{-2}$ for MM8, (3.3$\\pm$0.4) $\\times$ 10$^{23}$ cm$^{-2}$ for MM4 and (2.8$\\pm$0.2) $\\times$ 10$^{23}$ cm$^{-2}$ for MM11."
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C isotopic ratio from C2H5CN in MM8",
+   "value": "24",
+   "uncertainty": "8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "LTE Analyses / Rotational Temperatures and Column Densities",
+     "quote": "Therefore, $^{12}$C/$^{13}$C ratio of 24$\\pm$8 is derived (see Section 4.4 for more details)."
+    },
+    {
+     "loc": "LTE Analyses / Carbon Isotopic Ratio",
+     "quote": "| CH$_{3}$CH$_{2}$CN/CH$_{3}^{13}$CH$_{2}$CN | 23.9$\\pm$8.4 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "Imaging task (e.g., tclean), deconvolver, weighting scheme, and Briggs robust parameter",
+  "Cell size, image size, and cleaning mask/threshold parameters",
+  "Method and relative weighting used to combine 12-m and ACA visibility/image data",
+  "Exact frequency ranges of line-free channels used for continuum construction and spectral RMS estimation",
+  "Exact extraction aperture for the beam-averaged spectra at the continuum peaks"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and tclean imaging parameters (weighting/robust, cell size, thresholds, multiscale settings)",
+  "Exact XCLASS/MAGIX input files (molfit files, parameter priors/ranges, fitted source sizes and velocity offsets per species)",
+  "The archival 1.3 mm ALMA continuum image from Liu et al. (2017) (project code not stated in this paper)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project code is stated and data are public, spectral setup and beam/noise properties are well documented, and XCLASS/MAGIX modeling methodology and line tables are thorough; however, low-level CASA imaging parameters, exact XCLASS fitted source sizes/line widths per species, and the project code for the 1.3 mm continuum data from Liu et al. (2017) are not explicitly provided in the text.",
+ "rediscovery_reason": "Public ALMA Band 3 data (2019.1.00685.S) with clear target coordinates, comprehensive line tables (172 transitions), and quantitative LTE rotational temperatures and column densities across well-defined continuum cores.",
+ "source_card": "cards/2022MNRAS.512.4419P/sonnet/card.md"
+}

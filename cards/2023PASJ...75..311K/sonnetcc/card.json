@@ -1,0 +1,2244 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023PASJ...75..311K",
+  "title": "Galaxy clusters at z ∼ 1 imaged by ALMA with the Sunyaev-Zel'dovich effect",
+  "year": 2023,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Kitayama, Tetsu",
+  "n_authors": 18,
+  "arxiv_id": "2209.09503",
+  "doi": "10.1093/pasj/psac110",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.00680.S",
+   "2019.1.00673.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "taken by ALMA, and supplement them with available X-ray, optical, and wider-field SZE data."
+   }
+  ],
+  "science": {
+   "fields": [
+    "galaxy_clusters_and_sz"
+   ],
+   "targets": [
+    {
+     "name": "RCS J2319+0038",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.90; 1'' = 7.79 h70^-1 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We adopt for this cluster the spectroscopic redshift of $z=0.90$ from (cite: Gilbank08)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "the angular size of 1$''$ corresponds to the physical sizes of 7.79 $h_{70}^{-1}$kpc and 8.19 $h_{70}^{-1}$kpc at $z=0.90$ and $z=1.11$, respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "spectroscopic redshift from Gilbank08; Omega_M=0.3, Omega_Lambda=0.7, h70 left free",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We adopt for this cluster the spectroscopic redshift of $z=0.90$ from (cite: Gilbank08)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "the angular size of 1$''$ corresponds to the physical sizes of 7.79 $h_{70}^{-1}$kpc and 8.19 $h_{70}^{-1}$kpc at $z=0.90$ and $z=1.11$, respectively."
+       }
+      ]
+     }
+    },
+    {
+     "name": "HSC J0947-0119",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 1.11 (photometric); 1'' = 8.19 h70^-1 kpc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we adopt for this cluster the photometric redshift[^2] of $z=1.11$ from the CAMIRA catalogue for the third public data release of HSC-SSP"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "the angular size of 1$''$ corresponds to the physical sizes of 7.79 $h_{70}^{-1}$kpc and 8.19 $h_{70}^{-1}$kpc at $z=0.90$ and $z=1.11$, respectively."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "photometric redshift from the CAMIRA catalogue for HSC-SSP DR3 (Oguri18); Omega_M=0.3, Omega_Lambda=0.7, h70 left free",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we adopt for this cluster the photometric redshift[^2] of $z=1.11$ from the CAMIRA catalogue for the third public data release of HSC-SSP"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "the angular size of 1$''$ corresponds to the physical sizes of 7.79 $h_{70}^{-1}$kpc and 8.19 $h_{70}^{-1}$kpc at $z=0.90$ and $z=1.11$, respectively."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Reveal the thermodynamic structure (pressure, temperature, density, entropy, cooling time) of two z~1 galaxy clusters, RCS J2319+0038 and HSC J0947-0119, from high-resolution ALMA Band 3 SZE images combined with Chandra, HSC and ACT data, including whether they host cool cores",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Our goal is to reveal thermodynamic structures of clusters at"
+     },
+     {
+      "loc": "Introduction",
+      "quote": "We develop a method to reconstruct electron pressure and temperature profiles of distant clusters non-parametrically, taking into account departures from spherical symmetry."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00673.S",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "project codes 2019.1.00673.S and 2018.1.00680.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00680.S",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "project codes 2019.1.00673.S and 2018.1.00680.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "were observed by the 12-m and 7-m arrays of ALMA in Band 3"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four continuum bands centered at 85, 87, 97 and 99 GHz, overall central frequency 92 GHz (3.3 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "All the data were taken at four continuum bands centered at 85, 87, 97, and 99 GHz, yielding the overall central frequency of 92 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "effective bandwidth 7.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "with an effective bandwidth of 7.5 GHz."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12-m and 7-m arrays",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "were observed by the 12-m and 7-m arrays of ALMA in Band 3"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "12-m array C1 (most compact configuration); 7-m array configuration not stated",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "The most compact configuration for the 12m array, C1, was adopted"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "overall 2.5-147 klambda (RCS J2319+0038) and 2.5-120 klambda (HSC J0947-0119); 7-m 2.5-16.3 klambda, 12-m 4.2-147 / 4.2-120 klambda",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "to cover the overall baseline ranges of 2.5–147 k"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Baseline coverage"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "all baselines: beam 3.76 x 3.38 arcsec PA 82.5 deg (RCS J2319+0038), 3.77 x 3.22 arcsec PA -89.1 deg (HSC J0947-0119); 12-m only 3.60 x 3.25 and 3.63 x 3.11 arcsec; 7-m only 18.7 x 11.9 and 17.8 x 11.2 arcsec",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Beam major axis FWHM"
+     },
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "Unless otherwise stated, quantitative analysis in this paper is done on the unsmoothed images created from all baselines whose characteristics are listed in table"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "average 1 sigma noise 4.8 uJy/beam (RCS J2319+0038) and 5.0 uJy/beam (HSC J0947-0119) for all baselines; 5.8 and 5.9 uJy/beam after smoothing to 5'' FWHM",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Average 1$\\sigma$ noise"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "The 1$\\sigma$ noise for all baselines after smoothing to $5''$ FWHM is 5.8 $\\mu$Jy/beam and 5.9 $\\mu$Jy/beam for RCS J2319$+$0038 and HSC J0947$-$0119, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "RCS J2319+0038: 12.1 hr (12-m), 78.6 hr (7-m); HSC J0947-0119: 8.0 hr (12-m), 64.5 hr (7-m)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Total on-source time"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "RCS J2319+0038: 12-m 2019-11-15 to 2019-11-22, 7-m 2019-10-22 to 2020-01-02; HSC J0947-0119: 12-m 2019-01-14 to 2019-01-20, 7-m 2018-11-28 to 2019-05-13",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Observation Start"
+     },
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "The observations were executed over the periods listed in table"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Chandra ACIS-S",
+     "provided": {
+      "value": "X-ray data for RCS J2319+0038 (ObsID 5750, 7172, 7173, 7174; 69.7 ks net exposure) used for beta-model density, spectral temperature and joint deprojection",
+      "evidence": [
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "We extracted four datasets taken in 2005 by *Chandra* ACIS-S for this cluster (ObsID: 5750, 7172, 7173, and 7174)."
+       },
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "the total net exposure time is 69.7 ks"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Subaru Hyper Suprime-Cam (HSC-SSP)",
+     "provided": {
+      "value": "optical imaging, CAMIRA cluster catalogue, galaxy density, and weak-lensing mass maps",
+      "evidence": [
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "We used the CAMIRA cluster catalogue (cite: Oguri18) updated for the third public data release of HSC-SSP (cite: Aihara22)"
+       },
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "Weak lensing analysis was done on the HSC-SSP S19A data[^6]"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Atacama Cosmology Telescope (ACT DR5)",
+     "provided": {
+      "value": "98 and 150 GHz wide-field SZE maps and cluster detections for both clusters",
+      "evidence": [
+       {
+        "loc": "2.2 Millimeter: ACT",
+        "quote": "The ACT DR5 cluster search used the 98, 150 GHz maps made from all ACT data obtained between 2008 and 2018"
+       }
+      ]
+     }
+    },
+    {
+     "name": "FIRST and VLASS",
+     "provided": {
+      "value": "1.4 GHz and 3.0 GHz radio counterparts of compact sources C1 and C2",
+      "evidence": [
+       {
+        "loc": "3.1.1 RCS J2319+0038",
+        "quote": "Both C1 and C2 are bright at lower frequencies and detected in the Faint Images of the Radio Sky at Twenty-cm (FIRST; (cite: Becker95)) as well as the Very Large Array Sky Survey (VLASS; (cite: Gordon21))."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectroscopic redshift z=0.90 of RCS J2319+0038",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "We adopt for this cluster the spectroscopic redshift of $z=0.90$ from (cite: Gilbank08)."
+       }
+      ]
+     },
+     "citation": "(cite: Gilbank08)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshift z=1.11 of HSC J0947-0119 from the CAMIRA catalogue",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we adopt for this cluster the photometric redshift[^2] of $z=1.11$ from the CAMIRA catalogue for the third public data release of HSC-SSP"
+       }
+      ]
+     },
+     "citation": "(cite: Oguri18)"
+    },
+    {
+     "what": {
+      "value": "ACT DR5 detection of RCS J2319+0038 (S/N 5.2) and HSC J0947-0119 (S/N 13.2) and ACT mass estimates",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "More recently, RCS J2319$+$0038 was also detected in the ACT Data Release 5 (DR5; (cite: Naess20)) cluster search[^1] (cite: Hilton21), with signal-to-noise ratio (S/N) of 5.2."
+       }
+      ]
+     },
+     "citation": "(cite: Hilton21)"
+    },
+    {
+     "what": {
+      "value": "Hydrostatic M500 of RCS J2319+0038 from Chandra",
+      "evidence": [
+       {
+        "loc": "4.3.2 Reconstructed y-parameter profile",
+        "quote": "inferred from the *Chandra* X-ray data of RCS J2319$+$0038 assuming hydrostatic equilibrium (cite: Hicks08)"
+       }
+      ]
+     },
+     "citation": "(cite: Hicks08)"
+    },
+    {
+     "what": {
+      "value": "Average pressure profile of X-ray clusters at 0.6<z<1.2, used as the input model for HSC J0947-0119",
+      "evidence": [
+       {
+        "loc": "4.1.2 Input models",
+        "quote": "we used the average pressure profile measured from a statistical sample of X-ray clusters at"
+       }
+      ]
+     },
+     "citation": "(cite: McDonald14b)"
+    },
+    {
+     "what": {
+      "value": "Generalized NFW pressure profile parameters (equation 13 of Arnaud10 with parameter values from table 5 of McDonald14b)",
+      "evidence": [
+       {
+        "loc": "4.3.2 Reconstructed y-parameter profile",
+        "quote": "we used equation (13) of (cite: Arnaud10) with the parameter values listed in table 5 of (cite: McDonald14b)"
+       }
+      ]
+     },
+     "citation": "(cite: Arnaud10; McDonald14b; Nagai07)"
+    },
+    {
+     "what": {
+      "value": "Temperature-mass scaling relation used to get kT=9.4 keV for HSC J0947-0119 and the relativistic correction",
+      "evidence": [
+       {
+        "loc": "4.1.2 Input models",
+        "quote": "using the scaling relation of (cite: Reichert11)"
+       }
+      ]
+     },
+     "citation": "(cite: Reichert11)"
+    },
+    {
+     "what": {
+      "value": "Relativistic correction to the SZE intensity",
+      "evidence": [
+       {
+        "loc": "4.1.1 Method",
+        "quote": "A relativistic correction to the SZE intensity by (cite: Itoh04) was taken into account."
+       }
+      ]
+     },
+     "citation": "(cite: Itoh04)"
+    },
+    {
+     "what": {
+      "value": "Absolute flux calibration uncertainty of ALMA (6%)",
+      "evidence": [
+       {
+        "loc": "4.3.1 Method",
+        "quote": "the absolute calibration uncertainty of ALMA (6%; (cite: Kitayama16))"
+       }
+      ]
+     },
+     "citation": "(cite: Kitayama16)"
+    },
+    {
+     "what": {
+      "value": "Metal abundance 0.3 solar on the Anders & Grevesse scale for X-ray spectral fitting",
+      "evidence": [
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "the metal abundance $Z$ is 0.3 times the solar value given by (cite: Anders89)"
+       }
+      ]
+     },
+     "citation": "(cite: Anders89)"
+    },
+    {
+     "what": {
+      "value": "Galactic hydrogen column density N_H = 4.2e20 cm^-2",
+      "evidence": [
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "(cite: HI4PI16), respectively."
+       }
+      ]
+     },
+     "citation": "(cite: HI4PI16)"
+    },
+    {
+     "what": {
+      "value": "Halo mass-concentration relation used in the weak-lensing mass fit",
+      "evidence": [
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "the halo concentration is linked to the mass by the relation of (cite: Diemer15)"
+       }
+      ]
+     },
+     "citation": "(cite: Diemer15)"
+    },
+    {
+     "what": {
+      "value": "Mass-richness relation estimate of M500 (about 1.8e14 Msun for RCS J2319+0038, about 5.7e14 Msun for HSC J0947-0119)",
+      "evidence": [
+       {
+        "loc": "4.3.2 Reconstructed y-parameter profile",
+        "quote": "whereas the value inferred from the mass-richness relation of (cite: Okabe19)"
+       }
+      ]
+     },
+     "citation": "(cite: Okabe19)"
+    },
+    {
+     "what": {
+      "value": "Entropy profile prediction for steady-state cooling flow, K proportional to r^1.4",
+      "evidence": [
+       {
+        "loc": "4.4.2 Deprojected profiles",
+        "quote": "for the steady-state cooling flow (cite: Voit11)"
+       }
+      ]
+     },
+     "citation": "(cite: Voit11)"
+    },
+    {
+     "what": {
+      "value": "Non-radiative entropy model K proportional to r^1.2",
+      "evidence": [
+       {
+        "loc": "4.4.2 Deprojected profiles",
+        "quote": "$r \\ltsim 0.5 r_{500}$ (cite: Voit05)"
+       }
+      ]
+     },
+     "citation": "(cite: Voit05)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Mock ALMA observations of model SZE y maps made with CASA simobserve in four 1.875 GHz spectral windows, 10 noise realizations, matched to each execution block",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "Visibility data were then produced using the CASA task *simobserve* including both instrumental and atmospheric thermal noise in each spectral window; this procedure was repeated 10 times adopting different noise seeds."
+      }
+     ]
+    },
+    {
+     "value": "Triaxial isothermal beta-model y map for RCS J2319+0038 built from Chandra data (kT=5.90 keV, y_peak=1.1e-4 fiducial), also doubled and halved",
+     "evidence": [
+      {
+       "loc": "4.1.2 Input models",
+       "quote": "The model Compton $y$-parameter map of RCS J2319$+$0038 was constructed from the available X-ray data as follows."
+      }
+     ]
+    },
+    {
+     "value": "Triaxial model y map for HSC J0947-0119 from the McDonald14b average pressure profile with M500=5.7e14 Msun, kT=9.4 keV, y_peak=1.5e-4, also doubled and halved",
+     "evidence": [
+      {
+       "loc": "4.1.2 Input models",
+       "quote": "we used the average pressure profile measured from a statistical sample of X-ray clusters at"
+      },
+      {
+       "loc": "4.1.2 Input models",
+       "quote": "The inferred peak value of the $y$-parameter is $y_{\\rm peak}=1.5 \\times 10^{-4}$"
+      }
+     ]
+    },
+    {
+     "value": "Cluster-injection simulations in the real ACT map to test position recovery, similar to Hilton21",
+     "evidence": [
+      {
+       "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+       "quote": "We injected a model cluster and model sources to the real ACT map, re-ran filtering and cluster-detection procedures, and assessed the accuracy of the recovered cluster position."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 6.4.0 (stated for imaging)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "Imaging was done with the Common Astronomy Software Applications package (CASA) (cite: McMullin07; CASA2022) version 6.4.0."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "QA2 visibility data used; no further calibration described",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "we used the visibility data produced by the second stage of ALMA"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "6% of the SZE intensity",
+     "evidence": [
+      {
+       "loc": "4.3.1 Method",
+       "quote": "the absolute calibration uncertainty of ALMA (6%; (cite: Kitayama16))"
+      },
+      {
+       "loc": "Table of systematic errors",
+       "quote": "Flux calibration of ALMA at 92GHz"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean (mosaic, multi-frequency synthesis)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "Secondly, we performed image deconvolution with the Multi-Scale CLEAN algorithm (cite: Cornwell08; Rich08; Steeb19) using the CASA task *tclean*."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Multi-Scale CLEAN",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "we performed image deconvolution with the Multi-Scale CLEAN algorithm (cite: Cornwell08; Rich08; Steeb19) using the CASA task *tclean*."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "the multi-frequency synthesis mode in joint mosaic imaging, and natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.5 arcsec pixel",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "have the pixel size of $0.5\"$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "circular mask of radius 50'' and flux threshold 0.01 mJy (~2 sigma) for both objects",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "we adopted a circular mask region with a radius $50''$ and a flux threshold of 0.01 mJy"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "Gaussian component FWHMs of [0, 4'', 8'', 16'', 32'', 64'']",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "we adopted \\[0, $4''$, $8''$, $16''$, $32''$, $64''$\\] as the FWHMs of the Gaussian components"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "frequency ranges affected by line emission excluded (ranges for lines W-a, W-b, W1-a given in the line table, not tabulated here)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "excluding the frequency ranges affected by line emissions"
+      },
+      {
+       "loc": "Appendix: Line emissions from compact sources",
+       "quote": "obtained excluding the frequency ranges listed in table"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "images corrected for primary beam attenuation",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "are corrected for primary beam attenuation (e.g., (cite: Mason20))"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "12-m and 7-m data imaged together (joint mosaic imaging)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "the multi-frequency synthesis mode in joint mosaic imaging"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "display images smoothed with a Gaussian filter to 5'' FWHM; quantitative analysis on unsmoothed images",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "For display purposes, we also present the images smoothed by a Gaussian filter to an effective beam size of $5''$ FWHM."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "3.76 x 3.38 arcsec (RCS J2319+0038) and 3.77 x 3.22 arcsec (HSC J0947-0119) for all baselines",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "lists the parameters of the synthesized beams as well as the $1\\sigma$ noise levels of the synthesized image within $45''$ from the field center."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "4.8 uJy/beam (RCS J2319+0038) and 5.0 uJy/beam (HSC J0947-0119), measured on difference maps within 45'' of the field centre",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "Average 1$\\sigma$ noise"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging procedure",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter: ALMA Band 3",
+        "quote": "The procedure was similar to that adopted by (cite: Kitayama16) and (cite: Kitayama20)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kitayama16) and (cite: Kitayama20)"
+    },
+    {
+     "what": {
+      "value": "Other tclean parameters not listed in the paper",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter: ALMA Band 3",
+        "quote": "The choice of other parameters were identical to (cite: Kitayama20)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Kitayama20)"
+    },
+    {
+     "what": {
+      "value": "Linear relation between simulated input and output intensities used for the missing flux correction",
+      "evidence": [
+       {
+        "loc": "4.1.3 Missing flux correction using simulation results",
+        "quote": "As noted in (cite: Kitayama16) and (cite: Kitayama20), the following linear relation holds on average for the simulated ALMA images"
+       }
+      ]
+     },
+     "from_reference": "(cite: Kitayama16) and (cite: Kitayama20)"
+    },
+    {
+     "what": {
+      "value": "Statistical error per bin of the azimuthal intensity profiles",
+      "evidence": [
+       {
+        "loc": "3.2.1 RCS J2319+0038",
+        "quote": "The statistical error in each bin is computed using equation (1) of (cite: Kitayama16)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kitayama16)"
+    },
+    {
+     "what": {
+      "value": "Joint SZE and X-ray deprojection procedure (extended here to an ellipsoidal gas profile)",
+      "evidence": [
+       {
+        "loc": "4.4 Deprojected electron temperature and density of RCS J2319+0038",
+        "quote": "The procedure is an extension of that described in (cite: Kitayama20) to an ellipsoidal gas profile."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kitayama20)"
+    },
+    {
+     "what": {
+      "value": "Weak lensing analysis method",
+      "evidence": [
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "following the method described in (cite: Okabe19) and (cite: Okabe21)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Okabe19) and (cite: Okabe21)"
+    },
+    {
+     "what": {
+      "value": "Background galaxy selection for weak lensing",
+      "evidence": [
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "were selected using the colour–colour selection following (cite: Medezinski18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Medezinski18)"
+    },
+    {
+     "what": {
+      "value": "ACT S/N measurement at fixed filter scale 2.4'",
+      "evidence": [
+       {
+        "loc": "2.2 Millimeter: ACT",
+        "quote": "as described in (cite: Hilton21)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hilton21)"
+    },
+    {
+     "what": {
+      "value": "ACT cluster injection simulation method",
+      "evidence": [
+       {
+        "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+        "quote": "by means of cluster injection simulations similar to those done in (cite: Hilton21)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hilton21)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Field-centre coordinates and compact-source RA/Dec for both clusters are blank in the supplied text, so source positions for uvmodelfit/subtraction and the cluster centres are missing",
+    "tclean parameters beyond those listed (niter, gain, cycle factors, convergence settings, field phase centres, gridder, image size) are only given by reference to Kitayama20",
+    "Exact line-affected frequency ranges and spectral-window/channel selection used to fit and subtract sources (only given in a table of W, W1 lines)",
+    "Whether the QA2 products came from the ALMA pipeline or manual calibration, the pipeline/CASA version used for calibration, and the flux/bandpass/phase calibrators",
+    "No self-calibration information, and no description of how the 7-m and 12-m data were combined weight-wise",
+    "simobserve parameters: PWV values, antenna configuration files, integration times per execution block, and CASA version used for the simulations",
+    "Optimizer, likelihood and treatment of covariance for the joint SZE plus X-ray deprojection in ellipsoidal shells and for the M500 and h70/eta fits",
+    "Details of the Chandra spectral extraction region/binning and the ACT map data products and filtering used for the injection test",
+    "Weak-lensing shear catalogue cuts and the exact S/N map and mass-fit procedure (deferred to Okabe19, Okabe21)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Detect and subtract compact millimeter sources",
+    "method": {
+     "value": "Fit compact sources in the uv plane with uvmodelfit using only baselines longer than 15 klambda, all channels fitted together excluding line-affected ranges; subtract sources detected above 5 sigma from the whole visibility data",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "First, we identified compact sources in the observing field using only the baselines longer than 15k$\\lambda$; the position and the flux density were determined in the $uv$ plane by the CASA task *uvmodelfit*."
+      },
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "were subtracted from the entire visibility data"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "uvmodelfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "baselines > 15 klambda",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter: ALMA Band 3",
+        "quote": "using only the baselines longer than 15k$\\lambda$"
+       }
+      ]
+     },
+     {
+      "value": "detection threshold 5 sigma",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter: ALMA Band 3",
+        "quote": "All the compact sources detected at $>5\\sigma$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "sources are point-like",
+      "evidence": [
+       {
+        "loc": "3.1.1 RCS J2319+0038",
+        "quote": "All the detected sources are consistent with being point-like"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residuals at long baselines consistent with noise; fitting channels together vs separately changes residual by less than 1/5 of noise for C1",
+     "evidence": [
+      {
+       "loc": "3.1.1 RCS J2319+0038",
+       "quote": "the residuals at long baselines are consistent with noise"
+      },
+      {
+       "loc": "Footnote 4",
+       "quote": "We checked that this simplification has no apparent effect on the results of the present paper."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image the SZE and estimate noise",
+    "method": {
+     "value": "Multi-Scale CLEAN with tclean in joint mosaic imaging of 12-m and 7-m data; noise measured on difference maps from time-split visibilities; images smoothed to 5'' for display",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "we performed image deconvolution with the Multi-Scale CLEAN algorithm (cite: Cornwell08; Rich08; Steeb19) using the CASA task *tclean*."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "mask radius 50'', threshold 0.01 mJy, scales [0,4,8,16,32,64]'', natural weighting, 0.5'' pixels",
+      "evidence": [
+       {
+        "loc": "2.1 Millimeter: ALMA Band 3",
+        "quote": "we adopted a circular mask region with a radius $50''$ and a flux threshold of 0.01 mJy"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Noise estimated from difference maps made by splitting the visibilities in time, flipping the sign of one half, concatenating and imaging",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "the visibility data was divided into the first and the second half along the time sequence of observations, the sign of the latter was flipped, concatenated with the former, and the resultant was inverse Fourier transformed into the image domain."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit SZE and X-ray morphology",
+    "method": {
+     "value": "Elliptical Gaussian fit to the unsmoothed ALMA image with imfit; elliptical beta model fit to the unsmoothed Chandra image with Sherpa beta2d; integrated SZE flux within 45''",
+     "evidence": [
+      {
+       "loc": "3.2.1 RCS J2319+0038",
+       "quote": "we fit the unsmoothed ALMA image with an elliptical Gaussian using the CASA task *imfit*"
+      },
+      {
+       "loc": "3.2.1 RCS J2319+0038",
+       "quote": "We used the Sherpa modeling package (*beta2d*) in CIAO (cite: Sherpa01; Sherpa07; Sherpa09) for this purpose."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "imfit",
+     "CIAO",
+     "Sherpa"
+    ],
+    "key_parameters": [
+     {
+      "value": "Gaussian free parameters: center, major and minor axis FWHM, position angle; beta model parameters x0, y0, S0, beta, theta_c, q, psi",
+      "evidence": [
+       {
+        "loc": "3.2.1 RCS J2319+0038",
+        "quote": "varying its center, major and minor axis FWHMs, and the position angle[^11]"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "constant noise within 50'' of field centre for error estimates (Condon97)",
+      "evidence": [
+       {
+        "loc": "3.2.1 RCS J2319+0038",
+        "quote": "assuming a constant noise level within a radius of $50\"$ from the field center"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "SZE and X-ray emission centres and morphology agree within 1.5''",
+     "evidence": [
+      {
+       "loc": "3.2.1 RCS J2319+0038",
+       "quote": "the emission center also matches within $1.5''$ between two images"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure mean X-ray temperature and luminosity",
+    "method": {
+     "value": "Fit the 0.4-7.0 keV Chandra spectrum within 45'' of the cluster centre with XSPEC; spectral analysis of Chandra data processed with CIAO 4.13",
+     "evidence": [
+      {
+       "loc": "2.3 X-ray: Chandra ACIS-S",
+       "quote": "Spectral fitting was done with XSPEC version 12.12.0 (cite: Arnaud96)"
+      },
+      {
+       "loc": "4.1.2 Input models",
+       "quote": "yielded the average electron temperature of $kT_{\\rm e}=5.90^{+0.79}_{-0.62}$ keV"
+      }
+     ]
+    },
+    "software": [
+     "CIAO",
+     "XSPEC",
+     "FTOOLS"
+    ],
+    "key_parameters": [
+     {
+      "value": "energy band 0.4-7.0 keV; background from region theta > 3.2'",
+      "evidence": [
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "The backgrounds were estimated from the off-center region at $\\theta > 3.2'$ from the emission peak of this cluster"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "collisional ionization equilibrium, metal abundance 0.3 solar (Anders89), z=0.90, N_H=4.2e20 cm^-2 (HI4PI16), helium mass fraction Y=0.25",
+      "evidence": [
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "We fixed the helium mass fraction at $Y=0.25$"
+       },
+       {
+        "loc": "2.3 X-ray: Chandra ACIS-S",
+        "quote": "assuming that the ICM is in collisional ionization equilibrium and the metal abundance $Z$ is 0.3 times the solar value given by (cite: Anders89)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Galaxy density and weak-lensing mass",
+    "method": {
+     "value": "CAMIRA richness and galaxy density from HSC-SSP; weak-lensing shear with re-Gaussianization, background selection, NFW fit to tangential shear",
+     "evidence": [
+      {
+       "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+       "quote": "The galaxy shapes were measured using the re-Gaussianization method (cite: Hirata03) implemented in the HSC pipeline (cite: Mandelbaum18; Li22)."
+      },
+      {
+       "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+       "quote": "We adopted the NFW density profile (cite: Navarro96) for estimating the deprojected halo mass, from the tangential shear profiles"
+      }
+     ]
+    },
+    "software": [
+     "HSC pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "surface mass density smoothed by a 30'' FWHM Gaussian for S/N peaks",
+      "evidence": [
+       {
+        "loc": "3.3 Galaxy density and weak lensing mass",
+        "quote": "after being smoothed by a Gaussian with $30''$ FWHM"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "NFW profile with concentration tied to mass by Diemer15",
+      "evidence": [
+       {
+        "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+        "quote": "the halo concentration is linked to the mass by the relation of (cite: Diemer15)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Lensing mass peak in agreement with main peak of galaxy concentration, though S/N is only 2.8 and 3.2",
+     "evidence": [
+      {
+       "loc": "3.3 Galaxy density and weak lensing mass",
+       "quote": "While the significance is low, the peak of the surface mass density is in agreement with the main peak of galaxy concentration."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Imaging simulations and missing flux correction",
+    "method": {
+     "value": "Build model y maps, create SZE input images in four spectral windows, simulate ALMA visibilities with simobserve (10 noise seeds), deconvolve as for real data, and fit I_out = c1 I_in + c0 binned by input intensity; apply c1 to intensity differences relative to a reference radius",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "Visibility data were then produced using the CASA task *simobserve* including both instrumental and atmospheric thermal noise in each spectral window; this procedure was repeated 10 times adopting different noise seeds."
+      },
+      {
+       "loc": "4.1.3 Missing flux correction using simulation results",
+       "quote": "Each bin contains at least 1000 pixel data after accumulating 10 realizations for each adopted value of $y_{\\rm peak}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "simobserve",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "reference radius theta_bar = 35'' from the cluster centre",
+      "evidence": [
+       {
+        "loc": "4.1.3 Missing flux correction using simulation results",
+        "quote": "the reference points are taken at the mean radius $\\bar{\\theta}=35''$ from the cluster center"
+       }
+      ]
+     },
+     {
+      "value": "y_peak = 1.1e-4 (RCS J2319+0038) and 1.5e-4 (HSC J0947-0119), with doubled and halved cases",
+      "evidence": [
+       {
+        "loc": "4.1.2 Input models",
+        "quote": "to obtain $y_{\\rm peak}=1.1\\times 10^{-4}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "RCS J2319+0038 gas isothermal at 5.90 keV with triaxial elliptical beta density, h70/eta=1; HSC J0947-0119 McDonald14b pressure profile, kT=9.4 keV, h70=1, eta=1",
+      "evidence": [
+       {
+        "loc": "4.1.2 Input models",
+        "quote": "Assuming that the gas is isothermal[^13]"
+       },
+       {
+        "loc": "4.1.2 Input models",
+        "quote": "$M_{500}=5.7 \\times 10^{14}$ M$_\\odot$ assuming $h_{70}=1$ and $\\eta=1$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linear relation fit with c1 common across y_peak values for each cluster; fitting method not stated",
+     "evidence": [
+      {
+       "loc": "4.1.3 Missing flux correction using simulation results",
+       "quote": "assuming that $c_1$ is common among different values of $y_{\\rm peak}$ for each cluster"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Simulated images agree with input models after correction; noise-only runs reproduce observed RMS; RMS of residuals 6.2, 5.9, 5.7, 6.3 uJy/beam consistent with noise",
+     "evidence": [
+      {
+       "loc": "4.1.3 Missing flux correction using simulation results",
+       "quote": "further illustrate that the simulated images are in agreement with the input models once corrected by equation"
+      },
+      {
+       "loc": "4.1.1 Method",
+       "quote": "We have checked that the RMS levels of dirty maps created from such noise-only runs are consistent with the observed values in table"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Reconstruct y profile and fit pressure-profile models",
+    "method": {
+     "value": "Average observed intensity in elliptical bins, apply missing-flux correction relative to the 7th bin, add systematics in quadrature, compare with isothermal beta model and generalized NFW profiles, fit M500 and h70/eta by chi-square",
+     "evidence": [
+      {
+       "loc": "4.3.1 Method",
+       "quote": "The observed intensity was averaged over elliptical bins to take into account elongated morphology of the clusters"
+      },
+      {
+       "loc": "4.3.2 Reconstructed y-parameter profile",
+       "quote": "lists the values of $M_{500}$ fitted to the observed $y$-parameter profile of each cluster"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "bins geometrically spaced, inner-most 0<theta<4'', width increasing by a factor of 1.1; reference bin centered at 34.4''",
+      "evidence": [
+       {
+        "loc": "4.3.1 Method",
+        "quote": "The bins are geometrically spaced with the inner-most bin at $0 < \\bar{\\theta} < 4''$ and the bin width increasing by a factor of 1.1"
+       }
+      ]
+     },
+     {
+      "value": "relativistic correction c_rel between 0.94 and 0.98 at 92 GHz for 3<kT<10 keV applied to model predictions, not data",
+      "evidence": [
+       {
+        "loc": "4.3.1 Method",
+        "quote": "is in the range $0.94 < c_{\\rm rel} < 0.98$ at 92 GHz"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "h70=1 and eta=1 in the presented results; axis ratio and position angle fixed to best-fit values",
+      "evidence": [
+       {
+        "loc": "4.3.2 Reconstructed y-parameter profile",
+        "quote": "we present the results with $h_{70}=1$ and $\\eta=1$ in what follows"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Chi-square fits of M500 (and h70/eta) to the y profile; chi^2/dof tabulated; sampler and priors not stated",
+     "evidence": [
+      {
+       "loc": "4.3.2 Reconstructed y-parameter profile",
+       "quote": "with the minimum $\\chi^2$ of 3.1 for 5 degrees of freedom (dof)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared best-fit M500 with Chandra hydrostatic, weak-lensing, ACT and mass-richness masses",
+     "evidence": [
+      {
+       "loc": "4.3.2 Reconstructed y-parameter profile",
+       "quote": "is in reasonable agreement with $M_{500}=4.01^{+0.38}_{-0.39} \\times 10^{14} M_\\odot$ inferred from the *Chandra* X-ray data of RCS J2319$+$0038 assuming hydrostatic equilibrium (cite: Hicks08)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Joint SZE plus X-ray deprojection to temperature, density, entropy and cooling time",
+    "method": {
+     "value": "Fit SZE (theta_bar<30'') and 0.4-7 keV X-ray (theta_bar<60'') elliptical-annulus brightness jointly, varying temperature and density per ellipsoidal shell; compute K and t_cool",
+     "evidence": [
+      {
+       "loc": "4.4.1 Method",
+       "quote": "together varying the temperature and the density in each ellipsoidal shell (in 3D)"
+      },
+      {
+       "loc": "4.4.1 Method",
+       "quote": "From the reconstructed electron temperature and density, we evaluated entropy $K$ and the radiative cooling time"
+      }
+     ]
+    },
+    "software": [
+     "SPEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "bin size 10'' in elliptical annuli, reference bin centered at 35''; temperature beyond 30'' fixed at 5.90 keV",
+      "evidence": [
+       {
+        "loc": "4.4.1 Method",
+        "quote": "it was fixed at the projected mean value of 5.90 keV from the X-ray spectral analysis described in section"
+       }
+      ]
+     },
+     {
+      "value": "Lambda_bol from rest-frame emissivity integrated from 0.1 eV to 1 MeV",
+      "evidence": [
+       {
+        "loc": "4.4.1 Method",
+        "quote": "We obtained $\\Lambda_{\\rm bol}$ by integrating the rest-frame X-ray emissivity from $0.1$ eV to 1 MeV"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ellipsoidal shells with same orientation as triaxial beta model; h70/eta=1",
+      "evidence": [
+       {
+        "loc": "4.4.1 Method",
+        "quote": "We present the results with $h_{70}/\\eta=1$ in figure"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Deprojected density agrees with the X-ray-only isothermal beta model, serving as a consistency test",
+     "evidence": [
+      {
+       "loc": "4.4.2 Deprojected profiles",
+       "quote": "It agrees well with the isothermal $\\beta$ model obtained solely from the X-ray data in section"
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Test the origin of the ACT SZE centroid offset",
+    "method": {
+     "value": "Cluster-injection simulations in the real ACT map with model cluster and compact sources, re-running filtering and detection, plus comparison with Hilton21 position recovery statistics",
+     "evidence": [
+      {
+       "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+       "quote": "We injected a model cluster and model sources to the real ACT map, re-ran filtering and cluster-detection procedures, and assessed the accuracy of the recovered cluster position."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "spectral index -0.7 assumed for the compact-source effect on peak y (at most 4%)",
+      "evidence": [
+       {
+        "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+        "quote": "by at most $4\\%$ for a spectral index of $-0.7$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compact sources too weak to produce offset; at S/N 5.2, 22% of injected clusters are recovered more than 30'' away",
+     "evidence": [
+      {
+       "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+       "quote": "22% of the injected clusters in the simulations are recovered at $> 30''$ away from the position at which the cluster model was inserted"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.4.0",
+    "used_for": {
+     "value": "Imaging of ALMA data (uvmodelfit, tclean, imfit) and simulations (simobserve)",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "Imaging was done with the Common Astronomy Software Applications package (CASA) (cite: McMullin07; CASA2022) version 6.4.0."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "Multi-Scale CLEAN deconvolution of real and simulated visibilities",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "using the CASA task *tclean*."
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmodelfit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Fitting compact source positions and flux densities in the uv plane",
+     "evidence": [
+      {
+       "loc": "2.1 Millimeter: ALMA Band 3",
+       "quote": "the position and the flux density were determined in the $uv$ plane by the CASA task *uvmodelfit*."
+      }
+     ]
+    }
+   },
+   {
+    "name": "imfit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Elliptical Gaussian fit to the SZE image",
+     "evidence": [
+      {
+       "loc": "3.2.1 RCS J2319+0038",
+       "quote": "we fit the unsmoothed ALMA image with an elliptical Gaussian using the CASA task *imfit*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "simobserve",
+    "version": "not stated",
+    "used_for": {
+     "value": "Producing mock ALMA visibilities of model SZE maps",
+     "evidence": [
+      {
+       "loc": "4.1.1 Method",
+       "quote": "Visibility data were then produced using the CASA task *simobserve*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CIAO",
+    "version": "4.13 (CALDB 4.9.6)",
+    "used_for": {
+     "value": "Chandra data processing and Sherpa beta model fitting",
+     "evidence": [
+      {
+       "loc": "2.3 X-ray: Chandra ACIS-S",
+       "quote": "The data were processed with CIAO version 4.13 (cite: Fruscione06) and the Calibration database (CALDB) version 4.9.6."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Sherpa (beta2d)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Fitting the elliptical beta model to the X-ray brightness",
+     "evidence": [
+      {
+       "loc": "3.2.1 RCS J2319+0038",
+       "quote": "We used the Sherpa modeling package (*beta2d*) in CIAO (cite: Sherpa01; Sherpa07; Sherpa09) for this purpose."
+      }
+     ]
+    }
+   },
+   {
+    "name": "FTOOLS (fadapt)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Adaptive smoothing of the X-ray brightness image for display",
+     "evidence": [
+      {
+       "loc": "2.3 X-ray: Chandra ACIS-S",
+       "quote": "we applied adaptive smoothing to the brightness image including backgrounds using the task *fadapt* implemented in FTOOLS[^5]"
+      }
+     ]
+    }
+   },
+   {
+    "name": "XSPEC",
+    "version": "12.12.0",
+    "used_for": {
+     "value": "Chandra X-ray spectral fitting",
+     "evidence": [
+      {
+       "loc": "2.3 X-ray: Chandra ACIS-S",
+       "quote": "Spectral fitting was done with XSPEC version 12.12.0 (cite: Arnaud96)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SPEX",
+    "version": "3.0.6.01",
+    "used_for": {
+     "value": "X-ray emissivity in the joint deprojection",
+     "evidence": [
+      {
+       "loc": "4.4.1 Method",
+       "quote": "The X-ray emissivity was computed by SPEX version 3.0.6.01 (cite: Kaastra96; Kaastra20)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "HSC pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Galaxy shape measurement with the re-Gaussianization method",
+     "evidence": [
+      {
+       "loc": "2.4 Optical: Subaru Hyper Suprime-Cam",
+       "quote": "implemented in the HSC pipeline (cite: Mandelbaum18; Li22)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SZE elliptical Gaussian flux, RCS J2319+0038",
+    "value": "-2.04",
+    "uncertainty": "0.20",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.1 RCS J2319+0038",
+      "quote": "for reference, the flux inferred from the elliptical Gaussian fit is $-2.04 \\pm 0.20$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "SZE integrated flux within 45'' radius, RCS J2319+0038",
+    "value": "-1.98",
+    "uncertainty": "0.10",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.1 RCS J2319+0038",
+      "quote": "is $-1.98 \\pm 0.10$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "SZE integrated flux within 45'' radius, HSC J0947-0119",
+    "value": "-3.66",
+    "uncertainty": "0.11",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.2 HSC J0947-0119",
+      "quote": "is $-3.66\\pm 0.11$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "SZE elliptical Gaussian flux, HSC J0947-0119",
+    "value": "-4.12",
+    "uncertainty": "0.24",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.2 HSC J0947-0119",
+      "quote": "the flux inferred from the elliptical Gaussian fit is $-4.12"
+     }
+    ]
+   },
+   {
+    "quantity": "SZE axis ratio, HSC J0947-0119",
+    "value": "0.66",
+    "uncertainty": "0.06",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.2 HSC J0947-0119",
+      "quote": "with a mean size of $\\sim 45''$ FWHM and an axis ratio of $0.66 \\pm 0.06$"
+     }
+    ]
+   },
+   {
+    "quantity": "X-ray beta-model beta, RCS J2319+0038",
+    "value": "0.673",
+    "uncertainty": "+0.034/-0.032",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table of beta-model fit",
+      "quote": "$0.673^{+0.034}_{-0.032}$"
+     }
+    ]
+   },
+   {
+    "quantity": "X-ray beta-model core radius theta_c, RCS J2319+0038",
+    "value": "13.2",
+    "uncertainty": "+1.4/-1.2",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table of beta-model fit",
+      "quote": "$13.2^{+1.4}_{-1.2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "X-ray beta-model axis ratio q, RCS J2319+0038",
+    "value": "0.694",
+    "uncertainty": "+0.036/-0.034",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table of beta-model fit",
+      "quote": "$0.694^{+0.036}_{-0.034}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Intrinsic X-ray luminosity within 15'', RCS J2319+0038",
+    "value": "2.17e44",
+    "uncertainty": "0.09e44",
+    "units": "h70^-2 erg/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2.1 RCS J2319+0038",
+      "quote": "(2.17 \\pm 0.09)\\times 10^{44} h_{70}^{-2}$ erg/s"
+     }
+    ]
+   },
+   {
+    "quantity": "Average X-ray electron temperature within 45'', RCS J2319+0038",
+    "value": "5.90",
+    "uncertainty": "+0.79/-0.62",
+    "units": "keV",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "yielded the average electron temperature of $kT_{\\rm e}=5.90^{+0.79}_{-0.62}$ keV"
+     }
+    ]
+   },
+   {
+    "quantity": "Weak-lensing M500, RCS J2319+0038",
+    "value": "3.6e14",
+    "uncertainty": "+4.6/-2.2 e14",
+    "units": "h70^-1 Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "$M_{500} = 3.6 ^{+4.6}_{-2.2} \\times 10^{14}"
+     }
+    ]
+   },
+   {
+    "quantity": "Weak-lensing M500, HSC J0947-0119",
+    "value": "2.6e14",
+    "uncertainty": "+3.2/-1.4 e14",
+    "units": "h70^-1 Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "2.6 ^{+3.2}_{-1.4} \\times 10^{14} M_\\odot$ is inferred from our weak lensing analysis"
+     }
+    ]
+   },
+   {
+    "quantity": "CAMIRA richness N_mem, RCS J2319+0038 and HSC J0947-0119",
+    "value": "31.6 and 67.5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Galaxy density and weak lensing mass",
+      "quote": "The richness of these clusters is $N_{\\rm mem}=31.6$ and $67.5$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Missing-flux coefficient c1, RCS J2319+0038",
+    "value": "0.89",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table of c1 and c0",
+      "quote": "$0.89 \\pm 0.03$"
+     }
+    ]
+   },
+   {
+    "quantity": "Missing-flux coefficient c1, HSC J0947-0119",
+    "value": "0.79",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table of c1 and c0",
+      "quote": "$0.79 \\pm 0.03$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak Compton y of HSC J0947-0119 input model",
+    "value": "1.5e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "The inferred peak value of the $y$-parameter is $y_{\\rm peak}=1.5 \\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak Compton y of RCS J2319+0038 input model",
+    "value": "1.1e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "to obtain $y_{\\rm peak}=1.1\\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Missing-flux systematic uncertainty",
+    "value": "0.030 (RCS J2319+0038), 0.042 (HSC J0947-0119)",
+    "uncertainty": "not stated",
+    "units": "uJy/arcsec^2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1.4 Systematic errors",
+      "quote": "$\\Delta I_\\nu^{\\rm in}=0.030 ~\\mu$Jy/arcsec$^2$ and $0.042$ $\\mu$Jy/arcsec$^2$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit h70/eta from RCS J2319+0038 y profile",
+    "value": "1.07",
+    "uncertainty": "+0.15/-0.12",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "\\frac{h_{70}}{\\eta} = 1.07^{+0.15}_{-0.12}"
+     }
+    ]
+   },
+   {
+    "quantity": "Chi-square of isothermal beta model fit to RCS J2319+0038 y profile",
+    "value": "3.1 for 5 dof (best fit), 3.4 for h70/eta=1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "with the minimum $\\chi^2$ of 3.1 for 5 degrees of freedom (dof)"
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted M500 for RCS J2319+0038 with 0.6<z<1.2 all-cluster pressure profile",
+    "value": "5.4",
+    "uncertainty": "0.4",
+    "units": "1e14 Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table of M500 fits",
+      "quote": "Assumed pressure profile"
+     }
+    ]
+   },
+   {
+    "quantity": "Fitted M500 for HSC J0947-0119 with 0.6<z<1.2 all-cluster pressure profile",
+    "value": "5.7",
+    "uncertainty": "0.4",
+    "units": "1e14 Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.1.2 Input models",
+      "quote": "$M_{500}=5.7 \\times 10^{14}$ M$_\\odot$ assuming $h_{70}=1$ and $\\eta=1$"
+     }
+    ]
+   },
+   {
+    "quantity": "Chi^2/dof of HSC J0947-0119 y profile against the RCS J2319+0038 beta model",
+    "value": "39/6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3.2 Reconstructed y-parameter profile",
+      "quote": "$\\chi^2/\\mbox{dof}=39/6$"
+     }
+    ]
+   },
+   {
+    "quantity": "Central entropy of RCS J2319+0038 within the core",
+    "value": "~80",
+    "uncertainty": "not stated",
+    "units": "keV cm^2",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "4.4.2 Deprojected profiles",
+      "quote": "the entropy decreases moderately to $\\sim 80$ keV cm$^2$ within the core"
+     }
+    ]
+   },
+   {
+    "quantity": "Core radiative cooling time of RCS J2319+0038",
+    "value": "about half the age of the Universe at z=0.9 (~6 Gyr)",
+    "uncertainty": "not stated",
+    "units": "Gyr",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "4.4.2 Deprojected profiles",
+      "quote": "the radiative cooling time in the core is about half the age of the Universe ($\\sim 6$ Gyr) at $z=0.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "Offset of SZE centre from BCG and main galaxy density peak, HSC J0947-0119",
+    "value": "~17'' (140 h70^-1 kpc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Galaxy density and weak lensing mass",
+      "quote": "is persistently offset from the BCG and the main peak of galaxy density by about $17''$ (140 $h_{70}^{-1}$kpc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Offset of ACT centroid from ALMA and Chandra centres, RCS J2319+0038",
+    "value": "~30'' (230 h70^-1 kpc)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.2.1 RCS J2319+0038",
+      "quote": "is offset from the centers of the ALMA and *Chandra* images by $\\sim 30''$ (230 $h_{70}^{-1}$kpc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact source 92 GHz flux density C1",
+    "value": "262.9",
+    "uncertainty": "3.9",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table of RCS J2319+0038 compact sources",
+      "quote": "$262.9 \\pm 3.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact source 92 GHz flux density C2",
+    "value": "36.6",
+    "uncertainty": "3.9",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table of RCS J2319+0038 compact sources",
+      "quote": "$36.6 \\pm 3.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact source 92 GHz flux density W",
+    "value": "76.8",
+    "uncertainty": "6.1",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table of RCS J2319+0038 compact sources",
+      "quote": "$76.8 \\pm 6.1$"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact source 92 GHz flux density W1",
+    "value": "35.3",
+    "uncertainty": "4.9",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table of HSC J0947-0119 compact sources",
+      "quote": "$35.3 \\pm 4.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact source 92 GHz flux density W2",
+    "value": "42.2",
+    "uncertainty": "4.5",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table of HSC J0947-0119 compact sources",
+      "quote": "$42.2 \\pm 4.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "RMS of residual SZE images after model subtraction",
+    "value": "6.8 (HSC J0947-0119), 6.5 (RCS J2319+0038)",
+    "uncertainty": "not stated",
+    "units": "uJy/beam",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.2 Residual SZE images",
+      "quote": "The RMS value of the residuals for HSC J0947$-$0119, 6.8 $\\mu$Jy/beam, is slightly larger than that for RCS J2319$+$0038, 6.5 $\\mu$Jy/beam."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The ICM of both clusters is elongated (axis ratio 0.7 or below), probably linked to asymmetric galaxy distributions",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The elongated morphology is probably associated with highly asymmetrical galaxy distributions found in these clusters."
+     }
+    ]
+   },
+   {
+    "value": "ALMA SZE centre and Chandra X-ray centre of RCS J2319+0038 coincide with the main galaxy density and weak-lensing peaks, with no ICM concentration at the second galaxy peak",
+    "evidence": [
+     {
+      "loc": "3.3 Galaxy density and weak lensing mass",
+      "quote": "On the other hand, no concentration of the ICM is detected around the second peak of galaxy density"
+     }
+    ]
+   },
+   {
+    "value": "ALMA SZE morphology and centroid agree with the Chandra X-ray image for RCS J2319+0038",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Both the centroid position and overall morphology of the ALMA SZE map are in agreement with those of the *Chandra* X-ray brightness image."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do clusters at z~1 already have cool-core-like inner pressure profiles?",
+    "experiment": "Reconstruct elliptical-bin y profiles from ALMA Band 3 SZE images with a simulation-based missing flux correction and fit generalized NFW pressure profiles",
+    "result": "Both clusters have inner pressure profiles much shallower than the local cool-core average and consistent with 0.6<z<1.2 averages",
+    "finding": "The inner pressure profiles of both clusters are much shallower than those of local cool-core clusters",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the inner pressure profile of both clusters is much shallower than that of local cool-core clusters."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does RCS J2319+0038 host a cool core?",
+    "experiment": "Joint SZE and Chandra X-ray deprojection of temperature, density, entropy and cooling time",
+    "result": "Temperature decreases moderately toward the centre, entropy ~80 keV cm^2 in the core follows K proportional to r^1.2, cooling time about half the age of the Universe",
+    "finding": "RCS J2319+0038 hosts a weak cool core with radiative cooling less significant than in local cool cores",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our results consistently suggest that RCS J2319$+$0038 hosts a weak cool core, where radiative cooling is less significant than in local cool cores."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is HSC J0947-0119 a cool-core cluster, and how disturbed is it?",
+    "experiment": "Fit its ALMA y profile with average pressure profiles and compare SZE centre with galaxy density peaks and weak lensing",
+    "result": "Pressure profile even shallower than RCS J2319+0038 and best matched by the non-cool-core average at 0.6<z<1.2; SZE centre offset ~17'' from the BCG and main galaxy peak; no deep X-ray data",
+    "finding": "HSC J0947-0119 is more likely a non-cool-core cluster with a stronger merger influence",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "On the other hand, HSC J0947$-$0119 exhibits an even shallower pressure profile than RCS J2319$+$0038 and is more likely a non-cool-core cluster."
+     },
+     {
+      "loc": "Limitations",
+      "quote": "could hence be due partly to a mismatch, if any, between the SZE center and the gas density peak, seen frequently in merging clusters"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the ~30'' offset of the ACT SZE centroid in RCS J2319+0038 due to compact sources or real?",
+    "experiment": "ACT cluster-injection simulations including the ALMA-detected compact sources and comparison with Hilton21 position recovery",
+    "result": "Compact sources are far too weak to cause the offset; 22% of injected clusters at S/N 5.2 are recovered >30'' away",
+    "finding": "The offset is statistically insignificant and likely due to primary CMB fluctuations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5 Origin of the offset of the ACT SZE centroid",
+      "quote": "We thus conclude that the observed offset in the ACT SZE map of RCS J2319$+$0038 is statistically insignificant and likely due to the primary CMB fluctuations."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can an image-domain non-parametric joint SZE and X-ray deprojection recover thermodynamic profiles of a z~0.9 cluster?",
+    "experiment": "Deproject temperature and density in ellipsoidal shells for RCS J2319+0038 and compare density with the X-ray-only beta model",
+    "result": "Deprojected density agrees well with the X-ray-only isothermal beta model",
+    "finding": "The technique passes a consistency test and gives one of the first such measurements for an individual cluster at z>~0.9",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.4.2 Deprojected profiles",
+      "quote": "It agrees well with the isothermal $\\beta$ model obtained solely from the X-ray data in section"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are these distant clusters at an early stage of developing cool cores?",
+    "experiment": "Combine ALMA SZE, Chandra, HSC and ACT results for the two clusters",
+    "result": "Shallow pressure profiles in both, weak cool core in one, probable non-cool-core in the other",
+    "finding": "These distant clusters are at a very early stage of developing the cool cores typically found at lower redshift",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We conclude that these distant clusters are at a very early stage of developing the cool cores typically found in clusters at lower redshifts."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "The SZE surface brightness is free from (1+z)^-4 dimming and directly measures electron thermal pressure; ALMA gives high angular resolution for deep SZE data on these relatively low-mass clusters",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The SZE brightness is free from the aforementioned $(1+z)^{-4}$ dimming and provides a direct measure of electron thermal pressure."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "The present paper therefore makes use of one of the deepest ALMA SZE data obtained so far."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Image-domain, non-parametric reconstruction allowing departures from spherical symmetry; simulation-based missing flux correction",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We develop a method to reconstruct electron pressure and temperature profiles of distant clusters non-parametrically, taking into account departures from spherical symmetry."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Model fitting in the visibility (uv) domain is an alternative approach, planned for future work",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "An alternative and complementary approach is to perform model fitting in the visibility ($uv$) domain (e.g., (cite: Basu16; Luca19AA)), which we plan to investigate in our future publication."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Weak-lensing mass errors are very large due to the limited number of background galaxies",
+     "evidence": [
+      {
+       "loc": "3.3 Galaxy density and weak lensing mass",
+       "quote": "Note that the errors on $M_{500}$ from weak lensing are very large for these distant clusters, owing to the limited number of background galaxies."
+      }
+     ]
+    },
+    {
+     "value": "No deep X-ray data for HSC J0947-0119, so its centre and gas density peak are unconstrained",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "As of this writing, deep X-ray observations for this cluster are unavailable."
+      }
+     ]
+    },
+    {
+     "value": "Redshift of HSC J0947-0119 is photometric",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "Given the lack of accurate spectroscopic measurements"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Pressure and temperature profile conclusions depend on h70 and the line-of-sight elongation eta, which are unconstrained; results are shown only for h70=1, eta=1 (eta degeneracy partly explored via h70/eta fit)",
+    "Missing flux correction uses a linear relation calibrated on model-dependent simulations (isothermal beta model, McDonald14b profile), so model bias could affect the corrected profiles",
+    "Cool-core classification of HSC J0947-0119 rests only on SZE and a photometric redshift with no X-ray data",
+    "Weak-lensing masses have S/N of only 2.8-3.2, so they hardly discriminate between pressure models"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "QA2 visibility data used; archive availability not explicitly stated",
+    "evidence": [
+     {
+      "loc": "2.1 Millimeter: ALMA Band 3",
+      "quote": "we used the visibility data produced by the second stage of ALMA"
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Cluster centre and compact-source coordinates (blank in text)",
+    "Full tclean parameter set (only partially given; rest deferred to Kitayama20)",
+    "simobserve inputs (configurations, PWV, integration times) and CASA version for simulations",
+    "Fitting/optimization details of the joint SZE and X-ray deprojection and of the M500 / h70/eta fits",
+    "ACT DR5 map products and filtering configuration, weak-lensing catalogue details",
+    "No released code or analysis scripts stated"
+   ],
+   "estimated_data_volume_inferred": "Likely on the order of 100-300 GB of raw measurement sets for the two ALMA projects (12-m and 7-m Band 3 mosaics with 7 pointings, ~163 hr total on source), plus public Chandra, HSC and ACT products; inferred, not stated",
+   "score_inferred": 3,
+   "score_reason": "ALMA imaging recipe is mostly specified (tclean scales, mask, weighting, 5 sigma source subtraction) but important details are inherited from Kitayama16/Kitayama20, coordinates are missing, and the simulation-based correction and joint deprojection lack fitting details",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA projects (2019.1.00673.S, 2018.1.00680.S) and Chandra data are linked; imaging recipe and numeric results (integrated fluxes of -1.98 and -3.66 mJy, beam and noise, c1 values, y-profile fits) are checkable, though full reproduction needs inherited settings"
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Kitayama, T., Ueda, S., Takakuwa, S., et al. 2016, PASJ, 68, 88 (cite: Kitayama16)",
+     "why": "Earlier ALMA SZE imaging procedure, statistical error equation and 6% flux calibration uncertainty"
+    },
+    {
+     "citation": "Kitayama, T., Ueda, S., Akahori, T., et al. 2020, PASJ, 72, 33 (cite: Kitayama20)",
+     "why": "Source of other tclean parameters, missing-flux linear relation and the deprojection procedure"
+    },
+    {
+     "citation": "Okabe, N., Oguri, M., Akamatsu, H., et al. 2019, PASJ, 71, 79 (cite: Okabe19); Okabe et al. 2021 (cite: Okabe21)",
+     "why": "Weak lensing analysis method"
+    },
+    {
+     "citation": "Hilton, M., Sifon, C., Naess, S., et al. 2021, ApJS, 253, 3 (cite: Hilton21)",
+     "why": "ACT cluster search, S/N filter scale and injection simulations"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Hicks, A. K., Ellingson, E., Bautz, M., et al. 2008, ApJ, 680, 1022 (cite: Hicks08)",
+     "why": "Earlier Chandra analysis of RCS J2319+0038 giving hydrostatic mass"
+    },
+    {
+     "citation": "McDonald, M., Benson, B. A., Vikhlinin, A., et al. 2014, ApJ, 794, 67 (cite: McDonald14b)",
+     "why": "Average pressure and temperature profiles of clusters at 0.6<z<1.2"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ACT DR5",
+    "HSC-SSP CAMIRA",
+    "Red-Sequence Cluster Survey",
+    "FIRST",
+    "VLASS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023PASJ...75..311K",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:44:26",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 191,
+  "quotes_ok": 191,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 33,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 143,
+   "stated": 122,
+   "rate": 0.853
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T11:44:27",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "least-squares style fits via imfit and Sherpa; sampler, priors and likelihood not stated"
+   },
+   {
+    "path": "analysis_steps[7].fitting",
+    "old_value": "not stated (no sampler, priors or likelihood given)"
+   }
+  ],
+  "dropped_items": []
+ }
+}

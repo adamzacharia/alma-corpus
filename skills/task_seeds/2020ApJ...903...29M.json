@@ -1,0 +1,212 @@
+{
+ "bibcode": "2020ApJ...903...29M",
+ "title": "Reconstructing the EUV Spectrum of Star-forming Regions from Millimeter Recombination Lines of H I, He I, and He II",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abb67c",
+ "arxiv_id": "2006.15153",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Can the EUV spectrum (13.6-54.4 eV slope and above) of star-forming regions be reconstructed from mm recombination lines H30a, He30a and He+48a, and does it agree with Starburst99 and BPASS models?",
+ "alma_project_codes": [
+  "2013.1.00111.S",
+  "2016.1.01015.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "38, 30 antennas (Cycle 2); 47-50 antennas (Cycle 4)",
+  "angular_resolution": "Cycle 2: 0.53''x0.47'' (1.24''x0.93'' for the first Sgr B2(M) run); Cycle 4: ~0.3''x0.28''",
+  "sensitivity": "Cycle 2: 2 mJy/beam; Cycle 4: 0.4 mJy/beam in a 10 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Line emissivities of H30a, He+48a at n~1e4 cm-3, T~1e4 K",
+    "evidence": [
+     {
+      "loc": "2 Theory",
+      "quote": "are (cite: sto95a; sto95):"
+     }
+    ]
+   },
+   "citation": "Storey & Hummer 1995 (cite: sto95a; sto95)"
+  },
+  {
+   "what": {
+    "value": "Effective charge Z_eff=1.0002 for He30a emissivity scaling",
+    "evidence": [
+     {
+      "loc": "2 Theory",
+      "quote": "assume $Z_\\mathrm{eff}= 1.0002$ for the effective charge of the nucleus (cite: Towle96)"
+     }
+    ]
+   },
+   "citation": "Towle96"
+  },
+  {
+   "what": {
+    "value": "Target selection and classification of the ultra-compact HII regions",
+    "evidence": [
+     {
+      "loc": "3 Observations and Data reduction",
+      "quote": "The three ultra-compact HII regions are taken from the survey of (cite: 2010MNRAS.405.1560M)."
+     }
+    ]
+   },
+   "citation": "2010MNRAS.405.1560M"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image and subtract continuum",
+   "method": "Image with CASA, identify line-free channels, uv-plane continuum subtraction to get line and continuum cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and fit recombination lines",
+   "method": "Spectra from sub-regions and tot_H30a region; fit Gaussian/Voigt profiles to get V, DeltaV and integrated flux, excluding molecular lines; HI fitted first and subtracted when HeI sits on its wing",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "He+48a flux limit",
+   "method": "Assume V and width equal to He30a and fit the expected profile to uncontaminated data points",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "V(He+48a)=V(H30a)~V(He30a); DeltaV(He+48a)=DeltaV(He30a)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive EM, Q and EUV slopes",
+   "method": "Convert line fluxes to emission measures (eq. SdVtoEM), then to Q0,Q1,Q2 via recombination coefficients, then solve for gamma, L0, gamma_2 of a broken power law",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Radiation equilibrium, no EUV photon escape, no photon stealing by lower-threshold species; T=1e4 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with population synthesis models",
+   "method": "Compare gamma and Q with Starburst99 v7.0.1 and BPASS v2.2.1 (binary and single) for 1e3 Msun instantaneous starburst as a function of age",
+   "software": [
+    "Starburst99",
+    "BPASS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "EUV spectral slope gamma (13.6-54.4 eV)",
+   "value": "4.5",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L_{\\nu}\\propto \\nu^{-4.5 \\pm 0.4}.$"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma_2 (>54.4 eV)",
+   "value": ">15",
+   "uncertainty": "lower limit",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "where $\\gamma_2>15$"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma, G330.9536 tot_H30a",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "tot$_\\mathrm{H30\\alpha }$ | 7.01 | -89.7 | 35.2 | 485.04 | 12.93 | 33.49"
+    }
+   ]
+  },
+  {
+   "quantity": "gamma, G328.8076",
+   "value": "~7.5",
+   "uncertainty": "unreliable",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "The spectral slope $\\gamma$ obtained for G328.8076 is $\\sim 7.5$."
+    }
+   ]
+  },
+  {
+   "quantity": "model slope for <7 Myr starburst",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "$\\gamma_\\mathrm{sin} \\simeq \\gamma_\\mathrm{bin} \\simeq 3$"
+    }
+   ]
+  },
+  {
+   "quantity": "temperatures from continuum+line",
+   "value": "5,000-12,000",
+   "uncertainty": "highly uncertain",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Data analysis",
+     "quote": "The temperature estimates for the observed extraction regions obtained this way are between 5,000 K to 12,000 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean weighting/robust, deconvolver, threshold, masking",
+  "CASA version",
+  "line-free channel ranges used for uvcontsub",
+  "exact extraction regions (coordinates/sizes) for sub-regions",
+  "Gaussian/Voigt fitting setup and code",
+  "flux calibrator and flux scale uncertainty",
+  "how He+48a upper limits were computed (confidence level)",
+  "BPASS/Starburst99 input parameters (IMF, etc.)",
+  "how <gamma> and its 0.4 uncertainty were averaged"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters",
+  "line-free channels",
+  "extraction region definitions",
+  "CASA version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Analytic equations are fully given and data available, but imaging parameters and extraction regions are unspecified.",
+ "rediscovery_reason": "Public data, explicit equations, and numeric results in Table 1, though imaging details are loosely specified.",
+ "source_card": "cards/2020ApJ...903...29M/sonnet/card.md"
+}

@@ -1,0 +1,1170 @@
+{
+ "bibcode": "2021AJ....162...99F",
+ "title": "The Chemical Inventory of the Planet-hosting Disk PDS 70",
+ "year": 2021,
+ "doi": "10.3847/1538-3881/abf0a4",
+ "arxiv_id": "2101.08369",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "exoplanets"
+ ],
+ "question": "What is the chemical inventory of the planet-hosting PDS 70 disk (detections, radial profiles, column densities, deuteration and N fractionation, C/O) and what does it imply for the gas accreted by the two planets?",
+ "alma_project_codes": [
+  "2019.1.01619.S",
+  "2015.1.00888.S",
+  "2017.A.00006.S"
+ ],
+ "data": {
+  "bands": "Band 6 (new data, program 2019.1.01619.S); Band 7 (archival, HCO+ 4-3 and 12CO 3-2)",
+  "arrays": "array type not stated; 43-46 antennas after flagging per execution block (Table 1)",
+  "angular_resolution": "0.4''-0.5'' (~50 au) for the line data",
+  "sensitivity": "~1 mJy/beam in a 1 km/s channel at ~0.4''-0.5''"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk geometry and kinematics: M_star = 0.875 Msun, i = 51.7 deg, PA = 160.4 deg",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "We use the following geometrical parameters: M$_{\\rm star}=0.875\\,M_\\odot$, $i=51.7^\\circ$, PA$=160.4^\\circ$ (cite: keppler19)."
+     }
+    ]
+   },
+   "citation": "(cite: keppler19)"
+  },
+  {
+   "what": {
+    "value": "Elevated emission surface z(r)=0.33 (r/1'')^0.76 for 12CO and HCO+",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "using the best fit parameters by (cite: keppler19): $z(r)[\\ensuremath{''}]=0.33\\times(r / 1\\ensuremath{''})^{0.76}$"
+     }
+    ]
+   },
+   "citation": "(cite: keppler19)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity 5505 +/- 2 m/s",
+    "evidence": [
+     {
+      "loc": "Line fluxes",
+      "quote": "with the systemic velocity being $5505\\pm2\\,$m s$^{-1}$ (cite: keppler19)"
+     }
+    ]
+   },
+   "citation": "(cite: keppler19)"
+  },
+  {
+   "what": {
+    "value": "Initial parameters for the visibility-plane ring fit taken from the Band 7 continuum fit",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "with the parameters initialized from the fit to the ALMA Band 7 continuum reported in (cite: keppler19)"
+     }
+    ]
+   },
+   "citation": "(cite: keppler19)"
+  },
+  {
+   "what": {
+    "value": "0.85 mm flux density 177 mJy (re-analysed with flux offset correction)",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "By using their estimated flux density of 177 mJy, we obtain a spectral index of $2.49\\pm0.44$ and $2.84\\pm0.59$ in the 0.85-1.33 and 0.85-1.19 mm range."
+     }
+    ]
+   },
+   "citation": "(cite: isella19)"
+  },
+  {
+   "what": {
+    "value": "SMA 1.33 mm flux density ~38 mJy as published; 63 mJy after recalibration (private communication)",
+    "evidence": [
+     {
+      "loc": "Continuum",
+      "quote": "While they report a flux density of $\\sim38$ mJy, a new calibration of the data leads to a flux density of 63 mJy for baselines $<15\\,$k$\\lambda$ (Mark Gurwell, private communication)."
+     }
+    ]
+   },
+   "citation": "(cite: hashimoto15)"
+  },
+  {
+   "what": {
+    "value": "12C/13C = 68 +/- 15 used to convert H13CN to HCN",
+    "evidence": [
+     {
+      "loc": "Deuteration and N fractionation",
+      "quote": "In order to derive HCN column densities, a $^{12}$C/$^{13}$C ratio of 68$\\pm15$ is assumed (cite: milam2005)."
+     }
+    ]
+   },
+   "citation": "(cite: milam2005)"
+  },
+  {
+   "what": {
+    "value": "Molecular data (E_u, A_ul, g_u, partition functions) from CDMS",
+    "evidence": [
+     {
+      "loc": "Column Densities and Optical Depths",
+      "quote": "taken from the CDMS catalogue (cite: cdms), and interpolate the partition function, $Q$, with a cubic spline."
+     }
+    ]
+   },
+   "citation": "(cite: cdms)"
+  },
+  {
+   "what": {
+    "value": "PDS 70c semi-major axis 33.2 au (used to define the high-velocity channels inside the planet orbit)",
+    "evidence": [
+     {
+      "loc": "Integrated maps",
+      "quote": "From (cite: wang_ea_2021), planet c has an orbit with semi-major axis of 33.2 au."
+     }
+    ]
+   },
+   "citation": "(cite: wang_ea_2021)"
+  },
+  {
+   "what": {
+    "value": "Model N(CS)/N(SO) ~0.03 for solar C/O; ~10 for C/O ~1",
+    "evidence": [
+     {
+      "loc": "C/O ratio",
+      "quote": "Their reference model produces a disk averaged column density ratio $N$(CS)/$N$(SO)$\\sim0.03$, while observations indicate a ratio with a lower limit $>1$."
+     },
+     {
+      "loc": "C/O ratio",
+      "quote": "A C/O ratio of $\\sim1$ leads to a $N$(CS)/$N$(SO) ratio of $\\sim10$ (cite: semenov_ea_2018)."
+     }
+    ]
+   },
+   "citation": "(cite: semenov_ea_2018)"
+  },
+  {
+   "what": {
+    "value": "C2H/13CO flux-ratio criterion: C/O>1 required when C2H 3-2 F=4-3 to 13CO 2-1 ratio >~0.2",
+    "evidence": [
+     {
+      "loc": "C/O ratio",
+      "quote": "they showed that C/O$>1$ is required when the ratio of the C$_2$H $N$=3-2 $J$=$\\frac{7}{2}$-$\\frac{5}{2}$ $F$=4-3 line to the $^{13}$CO $J$=2-1 line is $\\gtrsim 0.2$."
+     }
+    ]
+   },
+   "citation": "(cite: fedele_ea_2020)"
+  },
+  {
+   "what": {
+    "value": "Thermochemical models: high C2H flux cannot be obtained with solar C/O; C/O ~1.5 required",
+    "evidence": [
+     {
+      "loc": "C/O ratio",
+      "quote": "In the thermo-chemical models by (cite: miotello_ea_2019), such a high flux cannot be obtained with a solar C/O ratio, and elemental ratios close to $\\sim1.5$ are required."
+     }
+    ]
+   },
+   "citation": "(cite: miotello_ea_2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Align execution blocks",
+   "method": "Per-EB continuum imaging showed pointing offsets; ring fitted in the visibility plane per EB, then phase centres shifted with fixvis and EBs re-aligned with fixplanet",
+   "software": [
+    "CASA",
+    "GALARIO",
+    "emcee"
+   ],
+   "key_parameters": [
+    "60 walkers, 2000 steps after burn-in",
+    "baselines <650 klambda used in the fit",
+    "phase-centre shift with fixvis, alignment with fixplanet"
+   ],
+   "assumptions": [
+    "outer ring modelled as a Gaussian ring because no inner disk is detected in single EBs"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Correct Band 6 flux scale",
+   "method": "Spectral index of the flux calibrator from Band 3 and Band 7 used to correct Band 6 flux; offsets between EBs of the same setup corrected relative to the EB closest in time to the Band 7 calibrator measurement, following DSHARP, with gaincal",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Band 7 calibrator measurement was 8-18 days from the science observations"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Self-calibrate the continuum",
+   "method": "EBs of the same setup combined with concat; self-cal on the two setups separately: 3 rounds of phase self-cal and one amplitude round, applied afterwards to the unflagged, unaveraged visibilities",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "channels within +/-20 km/s of listed lines flagged before self-cal",
+    "continuum averaged with channels <500 MHz",
+    "model imaged down to 5 sigma of initial data, Briggs robust 0.5, elliptical mask; rms in annulus 2.55''-4.25''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Image the continuum and derive flux densities and spectral index",
+   "method": "tclean multiscale continuum images with robust=2 for flux density, superuniform weighting for high resolution; spectral index vs 0.85 mm flux; inner-disk upper limit from the cavity-centre intensity",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "flux density measured within the self-cal mask"
+   ],
+   "assumptions": [
+    "0.85 mm flux density of 177 mJy from Isella+2019 and 10% absolute flux uncertainty in all datasets"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Image the line cubes",
+   "method": "uvcontsub first-order continuum subtraction; tclean multiscale with Keplerian masks; lines imaged -6 to +17 km/s with natural and robust 0 weighting, final per-line choice in Table 2; elevated emission surface for 12CO and HCO+",
+   "software": [
+    "CASA tclean",
+    "CASA uvcontsub",
+    "keplerian_mask.py"
+   ],
+   "key_parameters": [
+    "Keplerian mask geometry from Keppler+2019: M_star 0.875 Msun, i 51.7 deg, PA 160.4 deg",
+    "elevated surface z(r)=0.33 x (r/1'')^0.76 for 12CO and HCO+",
+    "weak lines c-C3H2 3_21-2_12 and H2CO 3_21-2_20 additionally uv-tapered by 0.7''"
+   ],
+   "assumptions": [
+    "line emission follows the Keplerian model fitted to 12CO 3-2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Stack spectra and measure line fluxes and detections",
+   "method": "Deproject and shift local spectra to systemic velocity with GoFish using the Keppler+2019 Keplerian fit, integrate within 3'' (4'' for 12CO 2-1), integrate spectrum over velocity windows; C2H F=4-3 and F=3-2 blend fitted with a double Gaussian; weak lines checked by azimuthally averaged spectra and a VISIBLE matched filter",
+   "software": [
+    "GoFish",
+    "VISIBLE",
+    "CASA"
+   ],
+   "key_parameters": [
+    "integration window 3-8 km/s (default); 1.5-9.5 km/s for the two 12CO and HCO+; 2-9 km/s for 13CO, H13CN and C2H",
+    "flux uncertainty from standard deviation of unused velocity bins times sqrt(number of integrated bins)",
+    "C2H J=5/2-3/2 only half covered: only the part of the disk within 80 deg of the red-shifted major axis is used, azimuthal symmetry assumed"
+   ],
+   "assumptions": [
+    "Keplerian kinematics from Keppler+2019 apply to all lines"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Make integrated intensity maps and radial profiles",
+   "method": "Integrated intensity maps over whole cubes with 2.5 sigma clipping and Keplerian masking; azimuthal average of deprojected moment-0 maps in annuli of 1/4 beam major axis",
+   "software": [
+    "CASA",
+    "GoFish"
+   ],
+   "key_parameters": [
+    "annulus width = 1/4 of the beam major axis",
+    "error bars: standard deviation within annuli divided by sqrt of number of independent beams"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Derive column densities, optical depths and H2CO excitation temperature",
+   "method": "Optically thin column density with optical-depth correction, LTE; H2CO N and Tex fitted jointly from two transitions per 0.1'' annulus; other molecules fitted at fixed Tex of 20, 30, 50 K with tau<1 prior; c-C3H2, SO, CH3OH disk-averaged (upper limits from 3 sigma flux limits)",
+   "software": [
+    "emcee",
+    "scipy.optimize.curve_fit",
+    "GoFish"
+   ],
+   "key_parameters": [
+    "H2CO: 128 walkers, 1000 burn-in steps, 500 sampling steps per radial bin",
+    "C2H: Tex fixed to 20, 30, 50 K; 128 walkers, 1000 burn-in, 500 sampling steps",
+    "radial bins 0.1'' wide; c-C3H2 disk average uses a 3'' radius",
+    "C2H blended lines fitted with two Gaussians (scipy curve_fit), line centres fixed to the rest frequencies"
+   ],
+   "assumptions": [
+    "LTE, top-hat line profile for tau, partition function interpolated with cubic spline, CDMS molecular data"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Derive HCN deuteration and 14N/15N fractionation",
+   "method": "Column-density ratios of H13CN, DCN, HC15N (disk-averaged within 3'' and radial profiles), HCN = 68 x H13CN, Tex 30 K (20-50 K for uncertainty); cubes smoothed to a common 0.42'' beam",
+   "software": [
+    "CASA imsmooth"
+   ],
+   "key_parameters": [
+    "H13CN and HC15N compared in natural-weighted images; H13CN and DCN in robust=0 images",
+    "profiles limited to r <~ 1.8'' due to low snr"
+   ],
+   "assumptions": [
+    "uniform 12C/13C = 68 +/- 15 and equal Tex for the three isotopologues"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Infer C/O from C2H and CS/SO",
+   "method": "Compare C2H flux and C2H/13CO ratio with thermochemical models (Miotello+2019, Fedele & Favre 2020) and the lower limit on N(CS)/N(SO) with Semenov+2018",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "literature model grids (not tailored to a large cavity) apply qualitatively"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "Compare radial peak locations with continuum and scattered light",
+   "method": "Radius of peak integrated intensity (r>0.2'' for 12CO and HCO+) read from radial profiles without smoothing or fitting, error = 1/4 beam major axis; compared with 855 micron continuum and J-band polarized intensity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density at 1.19 mm (robust=2)",
+   "value": "68.7",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "Within the same mask used for self-calibration the disk shows a flux density of 68.7 and 57.6 mJy, respectively, with an rms of 21 $\\mu$Jy beam$^{-1}$ in both images."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1.33 mm (robust=2)",
+   "value": "57.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "Within the same mask used for self-calibration the disk shows a flux density of 68.7 and 57.6 mJy, respectively, with an rms of 21 $\\mu$Jy beam$^{-1}$ in both images."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 0.85-1.33 mm",
+   "value": "2.49",
+   "uncertainty": "0.44",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "By using their estimated flux density of 177 mJy, we obtain a spectral index of $2.49\\pm0.44$ and $2.84\\pm0.59$ in the 0.85-1.33 and 0.85-1.19 mm range."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 0.85-1.19 mm",
+   "value": "2.84",
+   "uncertainty": "0.59",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "By using their estimated flux density of 177 mJy, we obtain a spectral index of $2.49\\pm0.44$ and $2.84\\pm0.59$ in the 0.85-1.33 and 0.85-1.19 mm range."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk flux density upper limit at 1.33 mm",
+   "value": "<0.34",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "By estimating the intensity at the center of the disk, we determine an upper limit for the inner disk flux density of 0.34 mJy at 1.33 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disk 0.85-1.33 mm spectral index lower limit",
+   "value": "1.61",
+   "uncertainty": "0.44",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Continuum",
+     "quote": "we obtain a lower limit on the 0.85-1.33 mm spectral index of the inner disk of $1.61\\pm0.44$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 3-2 line flux (text value)",
+   "value": "12.3",
+   "uncertainty": "0.1",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Line fluxes",
+     "quote": "the bright $^{12}$CO 3-2 line ($12.3\\pm0.1\\,$Jy km s$^{-1}$) and the faint c-C$_3$H$_2$ 3$_{21}$-2$_{12}$ line ($60\\pm14$ mJy km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 3-2 line flux (Table 2)",
+   "value": "12421",
+   "uncertainty": "147",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "345.7959 | nat | 0.11$''$$\\times$0.10$''$ (90.3$^\\circ$) | 0.42 | 1.1 | 12421 | 147 |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO 2-1 line flux",
+   "value": "6109",
+   "uncertainty": "26",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "230.5380 | r=0 | 0.37$''$$\\times$0.33$''$ (67.1$^\\circ$) | 0.09 | 4.1 | 6109 | 26 |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO 2-1 line flux",
+   "value": "1846",
+   "uncertainty": "14",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "220.3986 | r=0 | 0.39$''$$\\times$0.35$''$ (69.6$^\\circ$) | 0.19 | 3.0 | 1846 | 14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O 2-1 line flux",
+   "value": "465",
+   "uncertainty": "9",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "219.5603 | r=0 | 0.39$''$$\\times$0.35$''$ (68.3$^\\circ$) | 0.19 | 2.4 | 465 | 9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO 3_03-2_02 line flux",
+   "value": "710",
+   "uncertainty": "7",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "218.2221 | r=0 | 0.40$''$$\\times$0.35$''$ (69.0$^\\circ$) | 0.39 | 1.5 | 710 | 7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO 3_21-2_20 line flux",
+   "value": "53",
+   "uncertainty": "12",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "218.7600 | nat | 0.57$''$$\\times$0.52$''$ (100.8$^\\circ$) | 0.39 | 1.2 | 53 | 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H J=7/2-5/2 F=4-3 line flux",
+   "value": "741",
+   "uncertainty": "12",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "262.0042 | r=0 | 0.39$''$$\\times$0.32$''$ (107.7$^\\circ$) | 0.16 | 3.0 | 741 | 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H J=7/2-5/2 F=3-2 line flux",
+   "value": "586",
+   "uncertainty": "14",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "262.0064 | r=0 | 0.39$''$$\\times$0.32$''$ (107.7$^\\circ$) | 0.16 | 3.0 | 586 | 14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H J=5/2-3/2 F=3-2 line flux (half of the line covered, corrected assuming symmetry)",
+   "value": "603",
+   "uncertainty": "17",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "262.0648 | r=0 | 0.39$''$$\\times$0.32$''$ (107.7$^\\circ$) | 0.16 | 3.0 | 603$^d$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H J=7/2-5/2 total line flux",
+   "value": "~1327",
+   "uncertainty": "18",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "C/O ratio",
+     "quote": "with a total flux of the $J$=$\\frac{7}{2}$-$\\frac{5}{2}$ transition of $\\sim1327\\pm18\\,$mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 3_21-2_12 line flux",
+   "value": "60",
+   "uncertainty": "14 (text); 11 (Table 2)",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Line fluxes",
+     "quote": "the bright $^{12}$CO 3-2 line ($12.3\\pm0.1\\,$Jy km s$^{-1}$) and the faint c-C$_3$H$_2$ 3$_{21}$-2$_{12}$ line ($60\\pm14$ mJy km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN 3-2 line flux",
+   "value": "326",
+   "uncertainty": "17",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "259.0117 | r=0 | 0.39$''$$\\times$0.32$''$ (107.1$^\\circ$) | 0.33 | 1.9 | 326 | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HC15N 3-2 line flux",
+   "value": "197",
+   "uncertainty": "16",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "258.1571 | nat | 0.56$''$$\\times$0.46$''$ (100.6$^\\circ$) | 0.33 | 1.7 | 197 | 16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "DCN 3-2 line flux",
+   "value": "209",
+   "uncertainty": "11",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "217.2386 | r=0 | 0.40$''$$\\times$0.35$''$ (70.8$^\\circ$) | 0.39 | 1.7 | 209 | 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ 4-3 line flux",
+   "value": "5199",
+   "uncertainty": "122",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "356.7342 | nat | 0.21$''$$\\times$0.18$''$ (73.1$^\\circ$) | 0.21 | 3.3 | 5199 | 122 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H13CO+ 3-2 line flux",
+   "value": "344",
+   "uncertainty": "12",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "260.2553 | r=0 | 0.39$''$$\\times$0.32$''$ (108.8$^\\circ$) | 0.16 | 3.0 | 344 | 12 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CS 5-4 line flux",
+   "value": "450",
+   "uncertainty": "6",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "244.9355 | r=0 | 0.42$''$$\\times$0.34$''$ (108.8$^\\circ$) | 1.38 | 0.9 | 450 | 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 7_6-6_5 line flux 3-sigma upper limit",
+   "value": "<27",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "261.8436 | nat | 0.56$''$$\\times$0.44$''$ (103.6$^\\circ$) | 1.38 | 1.1 | $<$27$^{c}$ | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO 6_6-5_5 line flux 3-sigma upper limit",
+   "value": "<52",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "258.2558 | nat | 0.56$''$$\\times$0.47$''$ (104.4$^\\circ$) | 1.38 | 1.0 | $<$52$^{c}$ | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 10_2-9_3 (A+) line flux 3-sigma upper limit",
+   "value": "<32",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "232.4185 | nat | 0.53$''$$\\times$0.50$''$ (96.7$^\\circ$) | 1.45 | 0.6 | $<$32$^{c}$ | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 5_1-4_1 (A-) line flux 3-sigma upper limit",
+   "value": "<62",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "243.9157 | nat | 0.60$''$$\\times$0.49$''$ (107.0$^\\circ$) | 1.38 | 0.7 | $<$62$^{c}$ | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2 7_16-7_07 line flux 3-sigma upper limit",
+   "value": "<29",
+   "uncertainty": "not stated",
+   "units": "mJy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "218.7327 | nat | 0.57$''$$\\times$0.52$''$ (100.8$^\\circ$) | 1.00 | 0.9 | $<$29$^{c}$ | ... |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, 12CO 3-2",
+   "value": "0.40",
+   "uncertainty": "0.03",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.11$''$$\\times$0.10$''$ (90.3$^\\circ$) | 0.40 | 0.03 | 57.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, 12CO 2-1",
+   "value": "0.42",
+   "uncertainty": "0.09",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.37$''$$\\times$0.33$''$ (67.1$^\\circ$) | 0.42 | 0.09 | 46.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, 13CO 2-1",
+   "value": "0.54",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(69.6$^\\circ$) | 0.54 | 0.10 | 17.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, C18O 2-1",
+   "value": "0.64",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(68.3$^\\circ$) | 0.64 | 0.10 | 5.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, H2CO 3_03-2_02",
+   "value": "0.55",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(69.0$^\\circ$) | 0.55 | 0.10 | 5.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, C2H",
+   "value": "0.63",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(107.7$^\\circ$) | 0.63 | 0.10 | 6.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, c-C3H2 3_21-2_12",
+   "value": "0.93",
+   "uncertainty": "0.27",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(104.6$^\\circ$) | 0.93 | 0.27 | 0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, H13CN 3-2",
+   "value": "0.44",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(107.1$^\\circ$) | 0.44 | 0.10 | 4.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, DCN 3-2",
+   "value": "0.45",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(70.8$^\\circ$) | 0.45 | 0.10 | 2.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, HCO+ 4-3",
+   "value": "0.45",
+   "uncertainty": "0.05",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(73.1$^\\circ$) | 0.45 | 0.05 | 23.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, H13CO+ 3-2",
+   "value": "0.54",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(108.8$^\\circ$) | 0.54 | 0.10 | 3.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of peak integrated intensity, CS 5-4",
+   "value": "1.09",
+   "uncertainty": "0.10",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "(108.8$^\\circ$) | 1.09 | 0.10 | 2.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO excitation temperature range",
+   "value": "~10-40",
+   "uncertainty": "large (low snr)",
+   "units": "K",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "H2CO",
+     "quote": "The excitation temperature ranges between $\\sim10-40\\,$K, with the temperature decreasing in the outer disk regions."
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO column density across 0.5''-2''",
+   "value": "10^13-10^14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "H2CO",
+     "quote": "Column densities across the $0.5-2\\ensuremath{''}$ interval range between $10^{13}-10^{14}\\,$cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(C18O) at Tex 30 K",
+   "value": "6.2e15",
+   "uncertainty": "+0.2/-2.8 e15",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "28.81 | $6.2^{+0.2}_{-2.8} \\times10^{15}$ | $9.8^{+0.02}_{-0.41} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak optical depth tau(C18O 2-1)",
+   "value": "0.98",
+   "uncertainty": "+0.02/-0.41 (in 1e-1 units: 9.8)",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "28.81 | $6.2^{+0.2}_{-2.8} \\times10^{15}$ | $9.8^{+0.02}_{-0.41} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(H2CO) (Tex fitted)",
+   "value": "8.4e13",
+   "uncertainty": "+1.8/-1.4 e13",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "361.72 | $8.4^{+1.8}_{-1.4} \\times10^{13}$ | $8.8^{+11.3}_{-5.8} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(C2H) from J=7/2-5/2 F=4-3 (Tex 30 K)",
+   "value": "2.0e14",
+   "uncertainty": "+0.5/-0.1 e14",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "144.71 | $2.0^{+0.5}_{-0.1} \\times10^{14}$ | $3.5^{+0.2}_{-1.1} \\times10^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(C2H) from J=7/2-5/2 F=3-2 (Tex 30 K)",
+   "value": "3.4e14",
+   "uncertainty": "+2.0/-1.5 e14",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "144.71 | $3.4^{+2.0}_{-1.5} \\times10^{14}$ | $7.4^{+1.7}_{-1.8} \\times10^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(C2H) from J=5/2-3/2 F=3-2 (Tex 30 K)",
+   "value": "1.8e14",
+   "uncertainty": "+0.3/-0.1 e14",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "144.71 | $1.8^{+0.3}_{-0.1} \\times10^{14}$ | $3.8^{+2.2}_{-0.1} \\times10^{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged N(c-C3H2) (r=3'', Tex 20-50 K)",
+   "value": "5.7e12",
+   "uncertainty": "+4.0/-1.6 e12",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "c-C3H2 and upper limits on SO and CH3OH",
+     "quote": "A column density of $5.7^{+4.0}_{-1.6}\\times10^{12}$ cm$^{-2}$ is obtained"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(H13CN) (Tex 30 K)",
+   "value": "5.4e12",
+   "uncertainty": "+0.4/-1.3 e12",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "109.62 | $5.4^{+0.4}_{-1.3} \\times10^{12}$ | $6.9^{+3.0}_{-3.0} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(HC15N) (Tex 30 K)",
+   "value": "1.1e12",
+   "uncertainty": "+0.2/-0.1 e12",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "36.66 | $1.1^{+0.2}_{-0.1} \\times10^{12}$ | $1.4^{+1.2}_{-0.5} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(DCN) (Tex 30 K)",
+   "value": "3.7e12",
+   "uncertainty": "+0.5/-0.3 e12",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "130.51 | $3.7^{+0.5}_{-0.3} \\times10^{12}$ | $3.6^{+3.7}_{-1.4} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(H13CO+) (Tex 30 K)",
+   "value": "2.2e12",
+   "uncertainty": "+0.3/-0.1 e12",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "36.37 | $2.2^{+0.3}_{-0.1} \\times10^{12}$ | $4.9^{+4.7}_{-1.9} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak N(CS) (Tex 30 K)",
+   "value": "1.0e13",
+   "uncertainty": "+2.6/-0.6 e13",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "64.15 | $1.0^{+2.6}_{-0.6} \\times10^{13}$ | $5.0^{+4.8}_{-1.8} \\times10^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged N(CS) used for the CS/SO ratio",
+   "value": "1.8e12",
+   "uncertainty": "+0.4/-0.2 e12 (as printed: +0.4, 0.2)",
+   "units": "cm^-2",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "C/O ratio",
+     "quote": "the disk averaged CS column density of $1.8^{+0.4}_{0.2}\\times10^{12}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(SO) disk-averaged 3-sigma upper limit from SO 7_6-6_5 (Table 4)",
+   "value": "<1.5e10",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "197.51 | $<1.5\\times10^{10}$ | ...$^c$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH) disk-averaged upper limit from 5_1-4_1 (A-)",
+   "value": "<6.5e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "731.07 | $<6.5 \\times10^{12}$ | ...$^c$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged H/D from H13CN/DCN",
+   "value": "60",
+   "uncertainty": "17",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Deuteration and N fractionation",
+     "quote": "The derived disk averaged H/D and $^{14}$N/$^{15}$N in HCN isotopologues are $60\\pm17$ and $111\\pm27$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged 14N/15N from H13CN/HC15N",
+   "value": "111",
+   "uncertainty": "27",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Deuteration and N fractionation",
+     "quote": "The derived disk averaged H/D and $^{14}$N/$^{15}$N in HCN isotopologues are $60\\pm17$ and $111\\pm27$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of C2H 3-2 J=7/2-5/2 F=4-3 to 13CO 2-1 across the disk out to ~2''",
+   "value": "0.25-0.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "C/O ratio",
+     "quote": "For PDS 70, this ratio ranges between 0.25-0.35 throughout the whole disk out to $r\\sim2\\ensuremath{''}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on N(CS)/N(SO)",
+   "value": ">~109",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "C/O ratio",
+     "quote": "we obtain a lower limit on the $N$(CS)/$N$(SO) ratio of $\\sim109$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size for continuum and every line cube",
+  "Multiscale scales and clean thresholds/niter per line cube",
+  "Line-free channels and spw handling used in uvcontsub",
+  "Keplerian mask parameters (mask radii, velocity tolerance, per-line settings)",
+  "Per-EB flux-scale factors found with gaincal and the Band 3/Band 7 calibrator flux values",
+  "Amplitude self-cal solution interval details and which self-cal tasks and parameters (combine, gaintype, minsnr)",
+  "Pipeline version used for the calibration",
+  "Prior ranges and likelihood (noise model) for the emcee column-density fits, and the Delta v and Omega used for each annulus",
+  "Exact GoFish settings (annulus widths, deprojection options) for the stacked spectra",
+  "How the 3-sigma line-flux upper limits were computed (velocity range, aperture)",
+  "Which exact Gaussian-ring parameter values were obtained per EB in the visibility fit",
+  "How HCO+ and 12CO 3-2 Band 7 data were imaged beyond 'natural weighting' (cell, size, channel)"
+ ],
+ "missing_for_reproduction": [
+  "Image/cell sizes, clean thresholds and multiscale scales for all cubes",
+  "Line-free channels for uvcontsub",
+  "Keplerian mask parameters",
+  "Per-EB flux scaling and calibrator fluxes",
+  "Priors/likelihood for column-density fits and the Delta v, Omega used",
+  "Treatment of the Band 7 data beyond reference to Isella+2019 and Keppler+2019"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes and many processing parameters (self-cal intervals, robust values, weighting per line, integration windows, Tex grid, emcee set-up) are given and results are numeric, but cell/image sizes, masks, line-free channels, flux factors and priors are missing and several numbers are inconsistent between text and tables.",
+ "rediscovery_reason": "Band 6 data from a single program (2019.1.01619.S) are expected to be archive-public, the line-flux and column-density recipe is largely given and results are numeric, though several imaging details would need to be inferred.",
+ "source_card": "cards/2021AJ....162...99F/sonnet/card.md"
+}

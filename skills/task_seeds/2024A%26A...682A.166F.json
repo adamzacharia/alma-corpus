@@ -1,0 +1,369 @@
+{
+ "bibcode": "2024A&A...682A.166F",
+ "title": "A benchmark for extreme conditions of the multiphase interstellar medium in the most luminous hot dust-obscured galaxy at z = 4.6",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202347869",
+ "arxiv_id": "2401.01871",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies",
+  "milky_way_ism"
+ ],
+ "question": "What are the multiphase ISM conditions in the hot dust-obscured galaxy W2246-0526, as constrained by eight FIR fine-structure lines compared with CLOUDY models?",
+ "alma_project_codes": [
+  "2017.1.00899.S",
+  "2021.1.00726.S",
+  "2016.1.00668.S",
+  "2013.1.00576.S",
+  "2015.1.00883.S",
+  "2018.1.00119.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 6, 7, 8, 9, 10",
+  "arrays": "ALMA main 12-m array, six projects, Cycles 3-9",
+  "angular_resolution": "synthesized beams ~0.3'' to 0.5''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(2-1) derived M(H2) = 7±1.5e10 Msun with alpha_CO = 0.8",
+    "evidence": [
+     {
+      "loc": "4.3.2",
+      "quote": "They estimate a $M(H_2)=7\\pm1.5\\times10^{10}$ M$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "Díaz-Santos et al. 2018 (cite: diaz2018)"
+  },
+  {
+   "what": {
+    "value": "XMM-Newton 3 sigma upper limit L(2-10 keV) < 6.9e45 erg/s",
+    "evidence": [
+     {
+      "loc": "4.2.2",
+      "quote": "is $<6.9\\times10^{45}$ erg s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2018MNRAS.474.4528V)"
+  },
+  {
+   "what": {
+    "value": "Compilation of high-z quasars, local AGN/ULIRGs/LIRGs line data for comparison",
+    "evidence": [
+     {
+      "loc": "3.1.7",
+      "quote": "we show a sample of high-z quasars gathered from the literature"
+     }
+    ]
+   },
+   "citation": "weiss2003; uzgil2016; lu2017; venemans2017; walter2018; lee2019; novak2019; li2020; pensabene2021; meyer2022; farrah2013; pereira2013; rossenberg2015; pereira2017; herrera2018a; diaz2017"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity 3.6e14 Lsun",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "bolometric luminosity of $3.6\\times10^{14} \\ \\mathrm{L_{\\odot}}$"
+     }
+    ]
+   },
+   "citation": "(cite: tsai2015; 2018ApJ...868...15T)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image line cubes",
+   "method": "ScriptForPI pipeline restore, tclean Hogbom cubes, uvcontsub continuum subtraction",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "robust 2.0, 0.05'' pixels, threshold 2 rms, 1.25'' mask"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and fit lines",
+   "method": "0.7'' diameter aperture at peak pixel; single Gaussian fit (center, peak, FWHM free); moment 0 over ±2.75 sigma",
+   "software": [],
+   "key_parameters": [
+    "upper limits: Gaussian with FWHM 600 km/s and 1 sigma peak"
+   ],
+   "assumptions": [
+    "Aperture contains 99% of flux for the largest beam; no aperture correction"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute line luminosities and ratios",
+   "method": "L_line = 1.04e-3 S dv nu_rest (1+z)^-1 D_L^2; line ratios from Gaussian fits and fixed FWHM",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat LCDM, H0=70, Omega_M=0.3"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit CLOUDY grid to line ratios",
+   "method": "Bayesian comparison of all line ratios (relative to [CII]) with CLOUDY grid, P = exp(-chi2/2), marginalized posteriors",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "grid: A_V 10^1-10^4 mag, Z 0.05-2, nH 10^2-10^5, alpha_ox -1.4 to -0.4, log U -3 to 0.5; 15% model-ratio uncertainty"
+   ],
+   "assumptions": [
+    "Pure AGN radiation, spherical covering factor unity, constant density, T_BB=1e6 K, alpha_uv=-0.5, alpha_x=-1, cosmic-ray background included"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive X-ray, gas mass and neutral carbon implications",
+   "method": "Compare model X-ray flux with XMM limit; estimate cloud hydrogen mass from shell volume; CI mass from Weiss formula with Tex from CI ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thin CI lines"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] 158um line flux (observed)",
+   "value": "10.5",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| \\[CII\\]$_{158\\upmu \\mathrm{m}}$ | $10.5 \\pm 0.4$ | $11.1 \\pm 0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OI] 63um line flux (observed)",
+   "value": "20.6",
+   "uncertainty": "2.9",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| \\[OI\\]$_{63\\upmu \\mathrm{m}}$ | $20.6 \\pm 2.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "[NII]122/[NII]205 ratio (Gaussian fit)",
+   "value": "13.8",
+   "uncertainty": "4.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.5",
+     "quote": "\\[NII\\]$_{122\\upmu \\mathrm{m}}$/\\[NII\\]$_{205 \\upmu \\mathrm{m}}=13.8 \\pm 4.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII]/[CI]370 ratio",
+   "value": "58",
+   "uncertainty": "29",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3",
+     "quote": "\\[CII\\]$_{158\\upmu \\mathrm{m}}$/\\[CI\\]$_{370 \\upmu \\mathrm{m}} = 58\\pm29$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OI]63/[CII] ratio",
+   "value": "4.7",
+   "uncertainty": "1.0",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.5",
+     "quote": "our observed ratio of $4.7\\pm1.0$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit log nH (posterior mean)",
+   "value": "3.5 (3.44)",
+   "uncertainty": "0.37",
+   "units": "log cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$log(n_{\\mathrm{H}}) = 3.5 \\ \\mathrm{cm}^{-3}\\ (3.44\\pm0.37)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit log U",
+   "value": "-0.5 (-0.47)",
+   "uncertainty": "0.62",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$log(U) = -0.5 \\ (-0.47\\pm0.62)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit A_V",
+   "value": "316 (222)",
+   "uncertainty": "+546/-158",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$A_{\\mathrm{V}} = 316 \\ \\mathrm{mag}\\ (222_{-158}^{+546})$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit alpha_ox",
+   "value": "-0.8 (-0.78); lower limit >= -0.8",
+   "uncertainty": "0.29",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$\\alpha_{\\mathrm{ox}} = -0.8 \\ (-0.78\\pm0.29)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit metallicity",
+   "value": "0.5 (0.49)",
+   "uncertainty": "+0.67/-0.29",
+   "units": "Zsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "$Z = 0.5 \\ Z_{\\odot}\\ (0.49_{-0.29}^{+0.67})$"
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi-square of best fit",
+   "value": "3.34",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "reduced chi-square $\\chi_{\\nu}^{2}=3.34$"
+    }
+   ]
+  },
+  {
+   "quantity": "Model B probability (BIC)",
+   "value": "0.85",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.1",
+     "quote": "$p(B)=0.85$"
+    }
+   ]
+  },
+  {
+   "quantity": "Hydrogen column density",
+   "value": "1.2e24",
+   "uncertainty": "+3.1/-0.8 e24",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.2",
+     "quote": "$N_{\\mathrm{H}}=(1.2_{-0.8}^{+3.1})\\times10^{24}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral carbon mass upper limit",
+   "value": "<1.3e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.3",
+     "quote": "$M_{CI}<1.3\\times10^7 \\ M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud hydrogen mass upper limit",
+   "value": "<0.6e11",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.2",
+     "quote": "$M_{H}<0.6\\times10^{11} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) luminosity",
+   "value": "0.59",
+   "uncertainty": "0.04",
+   "units": "1e9 Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3",
+     "quote": "with a luminosity of $0.59\\pm0.04\\times10^9$ L$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges and spectral channel widths for each cube",
+  "Continuum uvcontsub fit order",
+  "Exact phase centre/aperture centre coordinates",
+  "Pipeline versions per cycle",
+  "Flux calibration uncertainty",
+  "How errors on fluxes were computed",
+  "Priors and grid-interpolation details of the Bayesian fit, and which ratios entered the fit",
+  "CLOUDY input files/scripts",
+  "Source coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels and spectral setup",
+  "Fitting priors/interpolation details",
+  "CLOUDY input scripts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters and grid ranges are stated, but cube spectral details, fit details and CLOUDY inputs are missing.",
+ "rediscovery_reason": "Archival data, stated imaging recipe, numeric line fluxes and model parameters.",
+ "source_card": "cards/2024A%26A...682A.166F/sonnet/card.md"
+}

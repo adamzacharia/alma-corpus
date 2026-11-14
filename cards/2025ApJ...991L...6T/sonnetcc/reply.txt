@@ -1,0 +1,394 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+ {"loc": "abstract", "quote": "we apply it to new ALMA observations of the full complement of hyperfine components from the"}
+],
+"fields": ["protoplanetary_disks"],
+"question": {"value": "Can a radially resolved magnetic field in a protoplanetary disk (TW Hya) be detected and characterized from the differential Zeeman broadening of unpolarized CN N=1-0 hyperfine emission?", "evidence": [
+ {"loc": "abstract", "quote": "We present a new approach to detecting and characterizing a magnetic field in protoplanetary disks through the differential broadening of unpolarized molecular emission from CN."}
+]},
+"targets": [
+ {"name": "TW Hya", "details": [], "coordinates": "not stated", "redshift_or_distance": "not stated", "distance_source": "not stated"}
+],
+"alma_project_codes": [
+ {"code": "2022.1.00840.S", "evidence": [
+  {"loc": "2 Observations", "quote": "The data from project 2022.1.00840.S (P.I. Teague) comprise ten execution blocks (EBs) observed between 7 January 2023 and 12 May 2023"}
+ ]}
+],
+"data_settings": [
+ {"field": "frequencies_and_spectral_setup", "value": "Three spectral windows covering CN N=1-0 hyperfine transitions, 113.123 to 113.520 GHz, spectral resolution 80 m/s", "evidence": [
+  {"loc": "2 Observations", "quote": "Three spectral windows covered multiple CN"},
+  {"loc": "2 Observations", "quote": "transitions from 113.123 to 113.520 GHz"}
+ ]},
+ {"field": "arrays", "value": "41 to 44 antennas per execution block (array type not stated)", "evidence": [
+  {"loc": "2 Observations", "quote": "using between 41 and 44 antennas"}
+ ]},
+ {"field": "configurations", "value": "short-baseline (SB) and long-baseline (LB) data, concatenated", "evidence": [
+  {"loc": "2 Observations", "quote": "These calibrated SB data were concatenated with the long-baseline (LB) observations"}
+ ]},
+ {"field": "baselines", "value": "15.3 to 2516.8 m projected", "evidence": [
+  {"loc": "2 Observations", "quote": "Projected baselines ranged from 15.3 to 2516.8 m"}
+ ]},
+ {"field": "angular_resolution", "value": "median beam 0.53'' x 0.42'', PA 105 deg", "evidence": [
+  {"loc": "2 Observations", "quote": "These parameters result in a median beam size of $0.53\\ensuremath{''} \\times 0.42\\ensuremath{''}$ with a position angle of $105\\ensuremath{^\\circ}$"}
+ ]},
+ {"field": "max_recoverable_scale", "value": "12.2''", "evidence": [
+  {"loc": "2 Observations", "quote": "the maximum recoverable scale (MRS) was 12.2"}
+ ]},
+ {"field": "sensitivity", "value": "1.8 mJy/beam per channel (0.76 K)", "evidence": [
+  {"loc": "2 Observations", "quote": "and a per channel sensitivity of $1.8~{\\rm mJy~beam^{-1}}$ (0.76 K)"}
+ ]},
+ {"field": "time_on_source", "value": "670 minutes total on-source", "evidence": [
+  {"loc": "2 Observations", "quote": "for a total on-source integration time of 670 minutes"}
+ ]},
+ {"field": "observing_dates", "value": "7 January 2023 to 12 May 2023 (ten execution blocks)", "evidence": [
+  {"loc": "2 Observations", "quote": "comprise ten execution blocks (EBs) observed between 7 January 2023 and 12 May 2023"}
+ ]},
+ {"field": "pi_or_archival_as_stated", "value": "PI program (P.I. Teague); described as new ALMA observations", "evidence": [
+  {"loc": "2 Observations", "quote": "The data from project 2022.1.00840.S (P.I. Teague)"},
+  {"loc": "abstract", "quote": "we apply it to new ALMA observations of the full complement of hyperfine components from the"}
+ ]}
+],
+"lines_targeted": [
+ {"species": "CN", "transition": "N=1-0, nine hyperfine components (J, F levels as in Table 1)", "rest_frequency": "113.123369 to 113.520420 GHz (Table 1)", "evidence": [
+  {"loc": "2 Observations", "quote": "transitions from 113.123 to 113.520 GHz"},
+  {"loc": "2 Observations", "quote": "Flux densities for all nine hyperfine components are shown in Figure"}
+ ]}
+],
+"other_facilities": [
+ {"name": "CDMS", "provided": {"value": "Einstein A coefficients and upper-state level weights for the CN hyperfine components", "evidence": [
+  {"loc": "Molecular Properties", "quote": "were taken from CDMS (cite: Endres_ea_2016)"}
+ ]}}
+],
+"external_data_from_literature": [
+ {"what": {"value": "Zeeman-related line properties z, Delta Q and Q-bar for the CN hyperfine components", "evidence": [
+  {"loc": "Molecular Properties", "quote": "were taken from (cite: Lankhaar_Teague_2023)"}
+ ]}, "citation": "(cite: Lankhaar_Teague_2023)"},
+ {"what": {"value": "Einstein A coefficients and upper-state level weights g_u (CDMS)", "evidence": [
+  {"loc": "Molecular Properties", "quote": "were taken from CDMS (cite: Endres_ea_2016)"}
+ ]}, "citation": "(cite: Endres_ea_2016), which collates (cite: Dixon_Woods_1977) and (cite: Skatrud_ea_1983)"},
+ {"what": {"value": "CN-H2 collision rates used in the RADEX excitation model", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "with the collision rates from (cite: Kaligina_Lique_2015)"}
+ ]}, "citation": "(cite: Kaligina_Lique_2015)"},
+ {"what": {"value": "Source inclination and position angle adopted for each annulus (+5.8 deg, 151.6 deg)", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "Following (cite: Teague_ea_2022), a source inclination and position angle of"}
+ ]}, "citation": "(cite: Teague_ea_2022)"},
+ {"what": {"value": "Upper limits on non-thermal broadening used for the Gaussian prior on Delta V_nt", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "following the upper limits reported in (cite: Flaherty_ea_2018)"}
+ ]}, "citation": "(cite: Flaherty_ea_2018)"},
+ {"what": {"value": "3.1 mm continuum optical depth estimate used to justify ignoring continuum opacity", "evidence": [
+  {"loc": "3.2 Zeeman Splitting", "quote": "estimates the 3.1 mm continuum optical depth to be"}
+ ]}, "citation": "(cite: Macias_ea_2021)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+ {"field": "self_calibration", "value": "Per-EB alignment to common disk center, then SB data: 3 rounds phase-only (solint inf, 360 s, 90 s) + 1 amplitude (inf); concatenated with LB, then 2 rounds phase-only (inf, 360 s) + 1 amplitude (inf); ~4x peak continuum SNR gain; tables applied to line visibilities", "evidence": [
+  {"loc": "2 Observations", "quote": "followed by one round of amplitude self-calibration with"},
+  {"loc": "2 Observations", "quote": "These calibrated SB data were concatenated with the long-baseline (LB) observations, after which two rounds of phase-only self-calibration ("},
+  {"loc": "2 Observations", "quote": "This calibration yielded an improvement of approximately 4"}
+ ]}
+],
+"imaging": [
+ {"field": "weighting_robust", "value": "robust = 1", "evidence": [
+  {"loc": "2 Observations", "quote": "value of 1 for the final imaging run, CLEANing down to a threshold of"}
+ ]},
+ {"field": "final_beam", "value": "median 0.53'' x 0.42'', PA 105 deg", "evidence": [
+  {"loc": "2 Observations", "quote": "These parameters result in a median beam size of $0.53\\ensuremath{''} \\times 0.42\\ensuremath{''}$ with a position angle of $105\\ensuremath{^\\circ}$"}
+ ]},
+ {"field": "final_rms", "value": "1.8 mJy/beam per channel (0.76 K); CLEAN threshold 3 sigma", "evidence": [
+  {"loc": "2 Observations", "quote": "and a per channel sensitivity of $1.8~{\\rm mJy~beam^{-1}}$ (0.76 K)"},
+  {"loc": "2 Observations", "quote": "CLEANing down to a threshold of $3\\sigma$"}
+ ]}
+],
+"inherited": [
+ {"what": {"value": "Zeeman splitting line-profile model (sum over magnetic substate transitions, weighted by relative line strength)", "evidence": [
+  {"loc": "3.2 Zeeman Splitting", "quote": "we implement the Zeeman splitting model presented in (cite: Lankhaar_Teague_2023)"}
+ ]}, "from_reference": "(cite: Lankhaar_Teague_2023)"},
+ {"what": {"value": "Excitation analysis framework that the Zeeman splitting is added to", "evidence": [
+  {"loc": "3 Methodology", "quote": "This builds on excitation analyses described in many previous works, such as (cite: Teague_ea_2016) and (cite: Teague_ea_2018c)"}
+ ]}, "from_reference": "(cite: Teague_ea_2016); (cite: Teague_ea_2018c)"},
+ {"what": {"value": "Convolution of the model spectrum with a Gaussian kernel of free FWHM to absorb systematic broadening", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "Following (cite: Cataldi_ea_2021), we account for any systematic broadening"}
+ ]}, "from_reference": "(cite: Cataldi_ea_2021)"},
+ {"what": {"value": "Shift-and-stack approach (used by earlier works; here replaced by shifting model spectra; also used for integrated intensities)", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "approach described in (cite: Yen_ea_2016)"}
+ ]}, "from_reference": "(cite: Yen_ea_2016)"},
+ {"what": {"value": "Source inclination and position angle", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "Following (cite: Teague_ea_2022), a source inclination and position angle of"}
+ ]}, "from_reference": "(cite: Teague_ea_2022)"},
+ {"what": {"value": "Definition of the Zeeman sensitivity weight w = Z x Q-bar", "evidence": [
+  {"loc": "2 Observations", "quote": "as defined in (cite: Lankhaar_Teague_2023)"}
+ ]}, "from_reference": "(cite: Lankhaar_Teague_2023)"}
+],
+"unstated_but_needed": [
+ "ALMA band and array (12 m vs 7 m) of the observations; antenna configurations per EB",
+ "CASA version and whether the pipeline or manual calibration was used; flux, bandpass and phase calibrators and flux scale uncertainty",
+ "Imaging task, deconvolver, cell size, image size, masks and primary-beam correction",
+ "Continuum subtraction method and line-free channels",
+ "Self-calibration details: reference antenna, SB/LB boundary, spw combination, solution SNR cuts",
+ "Which pixels per annulus count as independent samples and how spectra were extracted and weighted",
+ "Prior ranges for every free parameter and the likelihood function (noise estimate per channel)",
+ "Walker initialization, convergence checks beyond the ~200 autocorrelation time, and handling of the isothermal-slab geometry",
+ "How radius-dependent systemic velocity and Keplerian stellar mass (0.82 vs 0.84 Msun used in different places) were fixed for fitting",
+ "Source distance and coordinates",
+ "Mapping from posterior to the 'significant detection' radii beyond the stated median-separation rule, and the exact plotted lower limit procedure for plasma beta"
+],
+"analysis_steps": [
+ {"order": 1, "goal": "Align and self-calibrate the execution blocks",
+  "method": {"value": "Re-align EBs to a common disk center (Gaussian fit to continuum) with phaseshift and fixplanets; phase-only and amplitude self-calibration on SB data, concatenate with LB, further self-calibration; apply tables to line visibilities", "evidence": [
+   {"loc": "2 Observations", "quote": "All individual EBs were first re-aligned to a common disk center, determined based on a Gaussian fit to the continuum emission, using the"},
+   {"loc": "2 Observations", "quote": "The final calibration tables were then applied to the aligned line visibilities."}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "SB: phase-only solint inf, 360 s, 90 s; amplitude solint inf. SB+LB: phase-only solint inf, 360 s; amplitude solint inf", "evidence": [
+    {"loc": "2 Observations", "quote": "followed by one round of amplitude self-calibration with"},
+    {"loc": "2 Observations", "quote": "These calibrated SB data were concatenated with the long-baseline (LB) observations, after which two rounds of phase-only self-calibration ("}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Peak continuum SNR improved by approximately 4x", "evidence": [
+   {"loc": "2 Observations", "quote": "This calibration yielded an improvement of approximately 4"}
+  ]}},
+ {"order": 2, "goal": "Image the CN line cubes",
+  "method": {"value": "Final imaging at 80 m/s channel spacing (the FWHM spectral resolution), robust = 1, CLEAN down to 3 sigma", "evidence": [
+   {"loc": "2 Observations", "quote": "value of 1 for the final imaging run, CLEANing down to a threshold of"},
+   {"loc": "2 Observations", "quote": "CLEANing down to a threshold of $3\\sigma$"}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "robust = 1; channel spacing 80 m/s; median beam 0.53'' x 0.42''; 1.8 mJy/beam per channel", "evidence": [
+    {"loc": "2 Observations", "quote": "These parameters result in a median beam size of $0.53\\ensuremath{''} \\times 0.42\\ensuremath{''}$ with a position angle of $105\\ensuremath{^\\circ}$"},
+    {"loc": "2 Observations", "quote": "and a per channel sensitivity of $1.8~{\\rm mJy~beam^{-1}}$ (0.76 K)"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 3, "goal": "Measure hyperfine flux densities and integrated intensities",
+  "method": {"value": "Spatially integrate a 4'' (240 au) radius circular aperture per channel; integrated intensities via shift-and-stack, integrated spatially to 4'' and spectrally over +/-300 kHz", "evidence": [
+   {"loc": "2 Observations", "quote": "which were calculated by spatially integrating a circulate aperture with a radius of 4"},
+   {"loc": "Molecular Properties", "quote": "The data were spatially integrated out to"}
+  ]},
+  "software": ["GoFish"],
+  "key_parameters": [
+   {"value": "Shift-and-stack with dynamical stellar mass 0.84 Msun and inclination 5.8 deg", "evidence": [
+    {"loc": "Molecular Properties", "quote": "where a dynamical stellar mass of"}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 4, "goal": "Extract annular spectra",
+  "method": {"value": "Annuli of spatially independent pixels (separated by at least a beam FWHM) fitted simultaneously; annuli every 0.1'' with one-pixel (0.05'') width between 0.4'' and 4''", "evidence": [
+   {"loc": "3.1 Excitation Analysis", "quote": "we simultaneously fit annuli of spatially independent pixels (i.e., pixels that are separated by at least a beam FWHM)"},
+   {"loc": "3.3 MCMC Sampling", "quote": "To create the radial profiles, annuli were extracted every $0.1\\ensuremath{''}$, roughly a fifth of the beam major axis, with a width of one pixel, $0.05\\ensuremath{''}$,"}
+  ]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [
+   {"value": "Disk is azimuthally symmetric so line profiles vary only in their centers through projected disk velocity", "evidence": [
+    {"loc": "3.1 Excitation Analysis", "quote": "The assumption here is that the disk is azimuthally symmetric such that the line profiles vary only in their centers due to the projection of the disk velocity structure."}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Narrow annuli limit Keplerian shear broadening to ~100 m/s at 1'' down to ~10 m/s at 3''", "evidence": [
+   {"loc": "3.3 MCMC Sampling", "quote": "The narrow annuli are necessary to reduce the impact of Keplerian shear across the annulus width"}
+  ]}},
+ {"order": 5, "goal": "Fit excitation plus Zeeman model with MCMC",
+  "method": {"value": "Model all hyperfine components with RADEX (SpectralRadex) optical depths plus the Zeeman splitting profile, shifted by projected velocity field; two field scenarios (disk-centric B_phi, B_r, B_z with mixing angle; constant-theta environmental field); 9 or 10 free parameters", "evidence": [
+   {"loc": "3.1 Excitation Analysis", "quote": "(cite: vanderTak_ea_2007) with the collision rates from (cite: Kaligina_Lique_2015) to calculate the optical depth of each hyperfine component"},
+   {"loc": "3.2 Zeeman Splitting", "quote": "we explore two scenarios:"},
+   {"loc": "3.2 Zeeman Splitting", "quote": "In total, the model contains either nine or ten free parameters"}
+  ]},
+  "software": ["SpectralRadex", "RADEX", "emcee"],
+  "key_parameters": [
+   {"value": "emcee with 128 walkers, 20,000 steps, default StretchMove; autocorrelation time ~200, 20 tau discarded as burn-in", "evidence": [
+    {"loc": "3.3 MCMC Sampling", "quote": "utilizing 128 walkers which took 20,000 steps using the default"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Emitting region is a geometrically thin, isothermal slab", "evidence": [
+    {"loc": "3.1 Excitation Analysis", "quote": "This model makes the implicit assumption that the emitting region can be well represented by a geometrically thin, isothermal slab."}
+   ]},
+   {"value": "Continuum opacity ignored", "evidence": [
+    {"loc": "3.2 Zeeman Splitting", "quote": "With this model, we implicitly ignore the impact of continuum opacity"}
+   ]}
+  ],
+  "fitting": {"value": "emcee; uniform priors over broad ranges, except Gaussian prior on non-thermal broadening centered on zero with width 0.08 c_s; likelihood not stated", "evidence": [
+   {"loc": "3.3 MCMC Sampling", "quote": "All parameters assumed uniform priors over some broad range of possible values, except the non-thermal broadening contribution which was chosen to have a Gaussian prior centered on zero with a width of"}
+  ]},
+  "validation": {"value": "Posterior covariances inspected for one annulus; slight FWHM_conv vs |B| covariance noted", "evidence": [
+   {"loc": "9.1 Excitation Analysis", "quote": "No significant correlations are found, however a slight covariance is observed between"}
+  ]}},
+ {"order": 6, "goal": "Test Zeeman origin with randomized sensitivities",
+  "method": {"value": "Rerun fits for both field scenarios with the Zeeman properties of the most sensitive hyperfine transitions swapped with the least sensitive ones (two swap pairs); real vs mixed |B| posteriors compared", "evidence": [
+   {"loc": "3.4 Randomized Zeeman Sensitivities", "quote": "To verify that the broadening we detect can be uniquely associated with magnetic-field induced Zeeman splitting, we run two additional"}
+  ]},
+  "software": ["emcee"],
+  "key_parameters": [
+   {"value": "Posteriors counted as statistically different if medians differ by more than the quadrature sum of their standard deviations (16th to 84th percentile widths in the appendix)", "evidence": [
+    {"loc": "3.4 Randomized Zeeman Sensitivities", "quote": "To classify the posterior distributions as statistically different, we require that their medians are separated by more than the quadrature sum of their standard deviations."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "Same MCMC as step 5", "evidence": []},
+  "validation": {"value": "Colored points mark radii where correct sensitivities give significantly higher |B| than mixed ones", "evidence": [
+   {"loc": "4.1 Field Strength", "quote": "The colored points show radii where the magnetic field strength posteriors of the"}
+  ]}},
+ {"order": 7, "goal": "Derive plasma beta lower limits",
+  "method": {"value": "Thermal pressure from ideal gas with inferred T_kin and n(H2) lower limit; magnetic pressure |B|^2/8pi; median of beta distribution plotted as lower limit", "evidence": [
+   {"loc": "4.3 Plasma beta", "quote": "The thermal pressure was calculated assuming an ideal gas with a temperature set to the inferred"},
+   {"loc": "4.3 Plasma beta", "quote": "the median of the parameter distribution was chosen as the plotted lower limit"}
+  ]},
+  "software": [],
+  "key_parameters": [],
+  "assumptions": [
+   {"value": "CN data favor LTE at all radii, so only lower limits on density and beta", "evidence": [
+    {"loc": "4.3 Plasma beta", "quote": "the data favored an LTE solution at all radii, which results only in lower limits of the gas density"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+ {"name": "CASA", "version": "not stated", "used_for": {"value": "Calibration and imaging (phaseshift, fixplanets tasks named; listed in Software)", "evidence": [
+  {"loc": "2 Observations", "quote": "All individual EBs were first re-aligned to a common disk center, determined based on a Gaussian fit to the continuum emission, using the"},
+  {"loc": "Software", "quote": "(cite: CASA)"}
+ ]}},
+ {"name": "GoFish", "version": "not stated", "used_for": {"value": "Spatially integrated flux densities of the hyperfine components", "evidence": [
+  {"loc": "2 Observations", "quote": "which were calculated by spatially integrating a circulate aperture with a radius of 4"},
+  {"loc": "Software", "quote": "(cite: GoFish)"}
+ ]}},
+ {"name": "SpectralRadex", "version": "not stated", "used_for": {"value": "Python implementation of RADEX used to model the observed spectrum", "evidence": [
+  {"loc": "Software", "quote": "(cite: SpectralRadex)"},
+  {"loc": "3.1 Excitation Analysis", "quote": "(cite: vanderTak_ea_2007) with the collision rates from (cite: Kaligina_Lique_2015) to calculate the optical depth of each hyperfine component"}
+ ]}},
+ {"name": "RADEX", "version": "not stated", "used_for": {"value": "Non-LTE excitation and optical depth of each CN hyperfine component", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "(cite: vanderTak_ea_2007) with the collision rates from (cite: Kaligina_Lique_2015) to calculate the optical depth of each hyperfine component"}
+ ]}},
+ {"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC sampling of the model posteriors", "evidence": [
+  {"loc": "3.3 MCMC Sampling", "quote": "An exploration of the parameter posterior distributions was performed with the MCMC package"}
+ ]}}
+],
+"results_numeric": [
+ {"quantity": "Total integrated CN N=1-0 flux", "value": "4.38", "uncertainty": "0.04", "units": "Jy km/s", "from_step": 3, "evidence": [
+  {"loc": "2 Observations", "quote": "The total integrated flux for the $N=1-0$ transition is $4.38 \\pm 0.04~{\\rm Jy~km\\,s^{-1}}$"}
+ ]},
+ {"quantity": "Median beam size", "value": "0.53 x 0.42 arcsec, PA 105 deg", "uncertainty": "not stated", "units": "arcsec, deg", "from_step": 2, "evidence": [
+  {"loc": "2 Observations", "quote": "These parameters result in a median beam size of $0.53\\ensuremath{''} \\times 0.42\\ensuremath{''}$ with a position angle of $105\\ensuremath{^\\circ}$"}
+ ]},
+ {"quantity": "Per-channel sensitivity", "value": "1.8 mJy/beam (0.76 K)", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [
+  {"loc": "2 Observations", "quote": "and a per channel sensitivity of $1.8~{\\rm mJy~beam^{-1}}$ (0.76 K)"}
+ ]},
+ {"quantity": "Radially averaged magnetic field strength, disk-centric model", "value": "9", "uncertainty": "2", "units": "mG", "from_step": 5, "evidence": [
+  {"loc": "4.1 Field Strength", "quote": "Both field morphologies yield a similar radially averaged magnetic field strength of $9 \\pm 2$ mG and $8 \\pm 2$ mG for the disk-centric model and for the environmental field, respectively."}
+ ]},
+ {"quantity": "Radially averaged magnetic field strength, environmental model", "value": "8", "uncertainty": "2", "units": "mG", "from_step": 5, "evidence": [
+  {"loc": "4.1 Field Strength", "quote": "Both field morphologies yield a similar radially averaged magnetic field strength of $9 \\pm 2$ mG and $8 \\pm 2$ mG for the disk-centric model and for the environmental field, respectively."}
+ ]},
+ {"quantity": "Magnetic field strength between 60 and 120 au", "value": "~10", "uncertainty": "not stated", "units": "mG", "from_step": 5, "evidence": [
+  {"loc": "abstract", "quote": "we recover a radially resolved magnetic field with a strength of ${\\sim}10~{\\rm mG}$ between 60 and 120 au"}
+ ]},
+ {"quantity": "Magnetic field strength at 3.2'' (190 au), disk-centric model only", "value": "~12", "uncertainty": "not stated", "units": "mG", "from_step": 5, "evidence": [
+  {"loc": "4.1 Field Strength", "quote": "a magnetic field is also detected at $3.2\\ensuremath{''}$ (190 au) with a ${\\sim}~12$ mG field strength"}
+ ]},
+ {"quantity": "Plasma beta lower limit range", "value": "between 0.1 and 0.01", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [
+  {"loc": "abstract", "quote": "correspond to a lower limit between 0.1 and 0.01 for the plasma"}
+ ]},
+ {"quantity": "Local gas density lower limit", "value": ">~1e8", "uncertainty": "not stated", "units": "cm^-3", "from_step": 5, "evidence": [
+  {"loc": "abstract", "quote": "Lower limits on the local gas density ($n({\\rm H_2}) \\gtrsim 10^8~{\\rm cm^{-3}}$)"}
+ ]},
+ {"quantity": "Kinetic temperature profile", "value": "above 30 K in the inner disk, ~10 K outside 2.5'' (plateau)", "uncertainty": "not stated", "units": "K", "from_step": 5, "evidence": [
+  {"loc": "9.1 Excitation Analysis", "quote": "starting from above 30 K in the inner disk and dropping to around 10 K outside"}
+ ]},
+ {"quantity": "Field inclination angle theta_B transition", "value": "theta_B <~30 deg at 1.2'' to >~60 deg at 1.6''", "uncertainty": "not stated", "units": "deg", "from_step": 5, "evidence": [
+  {"loc": "4.2 Field Orientation", "quote": "a steady transition from $\\theta_B \\lesssim 30\\ensuremath{^\\circ}$ at $1.2\\ensuremath{''}$ to $\\theta_B \\gtrsim 60\\ensuremath{^\\circ}$ at $1.6\\ensuremath{''}$"}
+ ]}
+],
+"findings_qualitative": [
+ {"value": "Field is poloidal inside the gap at 1.37'' and in the disk plane at larger radii; field strength appears to peak at the gap", "evidence": [
+  {"loc": "abstract", "quote": "revealing a predominantly poloidal field at 60 au, sharply transitioning to one within the disk plane outside of the gap at 82 au."}
+ ]},
+ {"value": "Both field morphologies fit the data equally well, so neither is favored", "evidence": [
+  {"loc": "5.1 Global Magnetic Field Morphology", "quote": "neither is clearly favored."}
+ ]},
+ {"value": "Planar component could not be split into toroidal and radial parts; phi_B unconstrained at every radius", "evidence": [
+  {"loc": "abstract", "quote": "The signal-to-noise ratio of the data meant that the planar component was unable to be decomposed into toroidal and radial components."}
+ ]}
+],
+"claims": [
+ {"hypothesis": "Zeeman broadening of unpolarized CN hyperfine lines can reveal a magnetic field in the TW Hya disk", "experiment": "Fit a RADEX plus Zeeman model with emcee to annular spectra of all nine CN N=1-0 hyperfine components", "result": "~10 mG field detected between 60 and 120 au, with |B|/delta|B| >~ 5 between 1'' and 2.5''", "finding": "A radially resolved magnetic field threads the disk", "support": "supported", "evidence": [
+  {"loc": "abstract", "quote": "we recover a radially resolved magnetic field with a strength of ${\\sim}10~{\\rm mG}$ between 60 and 120 au"}
+ ]},
+ {"hypothesis": "The detected broadening is uniquely attributable to Zeeman splitting", "experiment": "Randomized models swapping Zeeman properties of the most and least sensitive hyperfine transitions", "result": "Correct-sensitivity posteriors peak at larger |B| over most of the disk, but outer-disk posteriors are too wide to differentiate", "finding": "Zeeman origin holds over the inner/mid disk; not demonstrated beyond ~2.5''", "support": "partially", "evidence": [
+  {"loc": "9.2 Zeeman Sensitivities", "quote": "however the large widths of the posteriors in the outer disk"}
+ ]},
+ {"hypothesis": "The field morphology (poloidal vs in-plane; toroidal vs radial) can be constrained from azimuthal broadening", "experiment": "Compared disk-centric and constant-theta environmental models; fitted theta_B and phi_B per annulus", "result": "Poloidal inside the gap and in-plane outside; phi_B unconstrained everywhere", "finding": "Morphology only weakly constrained; toroidal/radial decomposition not possible with these data", "support": "partially", "evidence": [
+  {"loc": "Conclusions", "quote": "The data were insufficient to provide tight constraints on the morphology of the field"}
+ ]},
+ {"hypothesis": "The excitation analysis can bound the plasma beta in the CN emitting layer", "experiment": "Combined T_kin and n(H2) lower limits from the LTE solution with the derived |B|", "result": "Beta lower limits between 0.1 and 0.01", "finding": "Field is dynamically important in the CN layer (strict lower limits only)", "support": "supported", "evidence": [
+  {"loc": "abstract", "quote": "correspond to a lower limit between 0.1 and 0.01 for the plasma"}
+ ]}
+],
+"reasoning": [
+ {"field": "why_this_method", "value": "Avoids needing polarized emission; low frequency lines are easier to schedule; single pixels lack signal, so annuli are fitted jointly", "evidence": [
+  {"loc": "1 Introduction", "quote": "bypasses the need for polarized emission and benefits from the improved schedulability of low frequency programs"},
+  {"loc": "3.1 Excitation Analysis", "quote": "A single pixel does not contain sufficient signal to robustly identify the influence of a magnetic fields on the line profile."}
+ ]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "Two field scenarios (azimuthally symmetric disk-centric field vs large-scale environmental field with constant theta) were both fitted; neither rejected", "evidence": [
+  {"loc": "3.2 Zeeman Splitting", "quote": "we explore two scenarios:"}
+ ]},
+ {"value": "Instead of shift-and-stack before fitting, model spectra are shifted to the reference frame to propagate uncertainties", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "we opt to instead shift our model spectra to the appropriate reference frame through"}
+ ]}
+],
+"limitations_admitted": [
+ {"value": "Beam smearing biases results inside ~1'' (60 au)", "evidence": [
+  {"loc": "4 Results", "quote": "In general, beam smearing will impact the shape of the spectrum in regions inwards of approximately twice the beam FWHM."}
+ ]},
+ {"value": "Isothermal thin-slab excitation model", "evidence": [
+  {"loc": "3.1 Excitation Analysis", "quote": "This model makes the implicit assumption that the emitting region can be well represented by a geometrically thin, isothermal slab."}
+ ]},
+ {"value": "LTE solution gives only lower limits on density and plasma beta", "evidence": [
+  {"loc": "4.3 Plasma beta", "quote": "the data favored an LTE solution at all radii, which results only in lower limits of the gas density"}
+ ]},
+ {"value": "Limited spectral resolution prevents robust line-width inference in the outer disk where lines are very narrow", "evidence": [
+  {"loc": "9.1 Excitation Analysis", "quote": "With such narrow lines, the limited spectral resolution of the data will prohibit robust inferences about the line width"}
+ ]}
+],
+"referee_caveats_inferred": [
+ "Detection rests on small differential line-width ratios at 80 m/s resolution; unmodeled broadening (e.g. vertical structure, back-side emission) is argued against in simulations only",
+ "Both morphology models fit equally well and phi_B is unconstrained, so the field orientation claims are weak",
+ "Plasma beta is a lower limit from an LTE density bound and refers to the CN layer, not the midplane",
+ "Prior ranges and likelihood details are not given, so posterior widths cannot be audited"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+ "Fitting code with priors and likelihood is not released or linked in the paper text",
+ "CASA version, calibrators, imaging masks and cell/image size not stated",
+ "Per-annulus pixel selection and noise model not specified"
+],
+"estimated_data_volume_inferred": "Ten execution blocks with three spectral windows at 80 m/s resolution; likely on the order of 100 GB to a few hundred GB raw (rough estimate)",
+"score_inferred": 3,
+"score_reason": "Project code, spectral setup, self-calibration solints, imaging robust and MCMC settings are given, and numeric results are listed, but there is no code release and several key settings (priors, likelihood, CASA version, masks, calibrators) are missing.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public availability of the data is not stated in the paper and the custom Zeeman fitting code and priors are not provided, so a faithful redo is not guaranteed.",
+"methods_papers": [
+ {"citation": "(cite: Lankhaar_Teague_2023)", "why": "Zeeman splitting line-profile model, sensitivity parameters z, Delta Q, Q-bar"},
+ {"citation": "(cite: Yen_ea_2016)", "why": "shift-and-stack technique"},
+ {"citation": "(cite: Teague_Loomis_2020)", "why": "non-LTE excitation analysis with non-thermal broadening and Keplerian shear estimates"},
+ {"citation": "(cite: Teague_ea_2016); (cite: Teague_ea_2018c)", "why": "excitation analyses the model builds on"}
+],
+"companion_papers": [
+ {"citation": "(cite: Teague_ea_2022)", "why": "source inclination and position angle, spiral arm and gap structure of TW Hya"},
+ {"citation": "(cite: Vlemmings_ea_2019)", "why": "earlier circular polarization upper limits for CN in TW Hya"},
+ {"citation": "(cite: Yoshida_ea_2024)", "why": "independent non-LTE CN analysis with consistent excitation conditions"}
+],
+"related_projects_or_surveys": ["2022.1.00840.S"]
+}

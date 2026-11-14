@@ -1,0 +1,279 @@
+{
+ "bibcode": "2026A&A...705A.198M",
+ "title": "The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): IV. CO gas imaging and overview",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202556605",
+ "arxiv_id": "2601.11712",
+ "fields": [
+  "debris_disks",
+  "astrochemistry"
+ ],
+ "question": "What is the spectro-spatial distribution, optical depth and mass of CO gas in ARKS debris discs, and is CO detectable in the 13 discs without previous detections?",
+ "alma_project_codes": [
+  "2022.1.00338.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "beams 70-150 mas for 12CO in gas-bearing discs; 130-950 mas in gas-free discs",
+  "sensitivity": "RMS 3-5 mJy/beam 12CO and 0.6-1.0 mJy/beam 13CO (gas-bearing)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disc geometry (i, PA, r, Δr), stellar masses from continuum MCMC fits",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "measured from the best fit parameters derived by MCMC sampling carried out by (cite: SebasARKSpaper)"
+     }
+    ]
+   },
+   "citation": "(cite: SebasARKSpaper)"
+  },
+  {
+   "what": {
+    "value": "Literature 12CO line fluxes, ages and fractional luminosities for population study",
+    "evidence": [
+     {
+      "loc": "4.4 population study",
+      "quote": "we combine ARKS line fluxes (including 13 upper limits) with any archival discs observed with ALMA with a reported line flux for the $^{12}$CO J=3-2 line"
+     }
+    ]
+   },
+   "citation": "Archival refs in Table (cite: marino2019gap; marino2018gap; daley2019mass)"
+  },
+  {
+   "what": {
+    "value": "ISM 12C/13C abundance ratio of 77",
+    "evidence": [
+     {
+      "loc": "3.4 Flux and mass",
+      "quote": "If the ISM $^{12}$C/$^{13}$C abundance ratio of 77 applies, that implies that the $^{12}$CO optical depth must be at least 77"
+     }
+    ]
+   },
+   "citation": "(cite: wilson1994abundances)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "Three-stage tclean with Keplerian masks and multiscale CLEAN to 4 RMS",
+   "software": [
+    "CASA",
+    "tclean",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "robust 0.5 or 2; scales [0,5,10]; pixel 1/5 beam"
+   ],
+   "assumptions": [
+    "Gas co-located with dust and near-Keplerian"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps",
+   "method": "Quadratic fit to peak velocity; peak brightness temperature via Planck; spectro-spatial shifted integrated intensity",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "clip at 3.5 sigma; integrate channels above 4 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Spectra and radial profiles, 12CO/13CO ratio",
+   "method": "Gofish spectra and shifted-stacked radial profiles in 1/4-beam elliptical annuli; on-sky profiles for edge-on discs; ratio where 13CO >2 sigma",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Search for CO in gas-free discs by stacking",
+   "method": "Spectro-spatial shifting/stacking of dirty cubes in both rotation directions; 3 sigma upper limits from 7 km/s bootstrapped windows",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Keplerian rotation, CO co-located with dust"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Line fluxes and CO masses",
+   "method": "Integrate stacked spectrum over V*±5 sigma (Gaussian fit); box integration for edge-on; optically thin LTE mass and tau=77 scaling",
+   "software": [
+    "GoFish"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE with Tex equal to peak brightness temperature; tau12CO=77 from ISM 12C/13C"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Population comparison",
+   "method": "Scale fluxes to 100 pc, convert J=2-1 to J=3-2 with ratio 1.67, compare with age and fractional luminosity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12CO J=3-2 integrated flux HD 9672",
+   "value": "8.9",
+   "uncertainty": "0.9",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| HD 9672   | $3$                       | 8.9 $\\pm$ 0.9            | 3.0 $\\pm$ 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated flux HD 32297",
+   "value": "3.7",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| HD 32297  | $68$                      | 3.7 $\\pm$ 0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated flux HD 121617",
+   "value": "3.6",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| HD 121617 | $28$                      | 3.6 $\\pm$ 0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated flux HD 131488",
+   "value": "2.7",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| HD 131488 | $6$                       | 2.7 $\\pm$ 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated flux HD 131835",
+   "value": "1.9",
+   "uncertainty": "0.2",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table",
+     "quote": "| HD 131835 | $21$                      | 1.9 $\\pm$ 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Optically thin 12CO mass range",
+   "value": "~1-6e-4",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Flux and mass",
+     "quote": "These values (Table [\\[tab:linefluxesofgas\\]](#tab:linefluxesofgas)) are of order $\\sim1-6\\times10^{-4}$ M$_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO/13CO intensity ratio at 12CO peak",
+   "value": "~2.0-5.5",
+   "uncertainty": "±6%-33%",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral and radial profiles",
+     "quote": "intensity ratios at the radial $^{12}$CO intensity peaks of each system are $\\sim 2.0 - 5.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO peak brightness temperatures",
+   "value": "~25-50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Temperature",
+     "quote": "we measure peak-brightness temperatures of $\\sim 25 - 50$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity-based upper limits on 12CO inner radius",
+   "value": "3-68",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Conclusions",
+     "quote": "We calculated velocity-based upper limits to the inner disc radii of $3 - 68$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass opening gap in HD 131488 (lower limit)",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "HD 131488",
+     "quote": "We find that a $7 M_\\oplus$ planet located at 5.8 au is capable of opening a gap"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / continuum subtraction approach for the line cubes",
+  "Exact nbeams and C value for each system",
+  "Clean mask thresholds and RMS estimation region",
+  "Which Measurement Sets / execution blocks per target",
+  "Gofish annulus/aperture radii used for each spectrum",
+  "Excitation temperatures per disc used in mass calculation"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated measurement sets from the companion ARKS paper",
+  "Per-disc nbeams and C values"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Large-program data, code and cubes released and recipe largely detailed; some per-target parameters unstated.",
+ "rediscovery_reason": "Data and pipeline public, numeric fluxes and masses in tables.",
+ "source_card": "cards/2026A%26A...705A.198M/sonnet/card.md"
+}

@@ -1,0 +1,274 @@
+{
+ "bibcode": "2019NatAs...3..517Z",
+ "title": "Dynamics of a massive binary at birth",
+ "year": 2019,
+ "doi": "10.1038/s41550-019-0718-y",
+ "arxiv_id": "1903.07532",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Is the massive protostar IRAS07299-1651 a binary at birth, what are its orbital dynamics and masses, and does this support disk fragmentation as the formation mechanism?",
+ "alma_project_codes": [
+  "2015.1.01454.S",
+  "2016.1.00125.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "35 mas x 29 mas (high-res continuum); 0.22'' x 0.15'' (low-res)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 1.68 kpc",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "$1.68\\:$kpc away(cite: Reid09)"
+     }
+    ]
+   },
+   "citation": "Reid09"
+  },
+  {
+   "what": {
+    "value": "Total bolometric luminosity (1-4)x10^4 Lsun",
+    "evidence": [
+     {
+      "loc": "Estimating protostellar masses from free-free emission",
+      "quote": "consistent with the $(1-4)\\times10^4\\:L_\\odot$ estimate for the total bolometric luminosity of this system(cite: Debuizer17)"
+     }
+    ]
+   },
+   "citation": "Debuizer17"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 0.00899 cm2/g at 1.3 mm incl. gas-to-dust 100",
+    "evidence": [
+     {
+      "loc": "Estimating ambient gas mass",
+      "quote": "an opacity of $\\kappa_\\mathrm{1.3mm}=0.00899~\\mathrm{cm}^2~\\mathrm{g}^{-1}$ with a standard gas-to-dust mass ratio of 100 included (ref. (cite: Ossenkopf94))"
+     }
+    ]
+   },
+   "citation": "Ossenkopf94"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and H30a",
+   "method": "CLEAN imaging with robust 0.5 after self-calibration; source positions with imfit",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure H30a central velocities",
+   "method": "Gaussian fits to spectra at continuum peaks; uncertainties by Monte Carlo noise and sinusoidal perturbation for asymmetry",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "H30a central velocities trace protostar radial velocities"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive orbital constraints and mass ratio",
+   "method": "Circular and elliptical orbit limits from apparent separation and velocity difference; mass ratio from center-of-mass velocity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Center-of-mass velocity equals cloud systemic velocity 16.5-18 km/s"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Separate free-free and dust continuum and estimate protostar masses",
+   "method": "Line-to-continuum ratio under LTE optically thin assumption; ionizing photon rates to ZAMS and protostellar evolution masses",
+   "software": [],
+   "key_parameters": [
+    "Te = 8000 K, N(He+)/N(H+)=0.08"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit rotating ring to H30a centroids",
+   "method": "Per-channel 2D Gaussian centroids (>20 sigma) fit with half-ring model, chi2 minimisation",
+   "software": [],
+   "key_parameters": [
+    "weights w_pos=0.9, w_int=0.1; thermal broadening FWHM 19 km/s"
+   ],
+   "assumptions": [
+    "Keplerian rotation; only half of ring emits"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model large-scale infall and estimate gas masses",
+   "method": "Rotating-infall parabola model to CH3OH PV diagram; optically thin dust mass for extended emission",
+   "software": [],
+   "key_parameters": [
+    "Tdust 50-100 K, kappa1.3mm=0.00899 cm2/g, D=1680 pc"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H30a velocity Source A",
+   "value": "15.5",
+   "uncertainty": "1.1",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$15.5\\pm1.1\\:\\mbox{km s}^{-1}$ for A"
+    }
+   ]
+  },
+  {
+   "quantity": "H30a velocity Source B",
+   "value": "25.0",
+   "uncertainty": "1.6",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$25.0\\pm1.6\\:\\mbox{km s}^{-1}$ for B"
+    }
+   ]
+  },
+  {
+   "quantity": "minimum total system mass M0",
+   "value": "18.4",
+   "uncertainty": "7.4",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$M_0=18.4\\pm7.4\\:M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "maximum orbital period",
+   "value": "570",
+   "uncertainty": "120",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$P_0=(5.7\\pm1.2)\\times 10^2$ years"
+    }
+   ]
+  },
+  {
+   "quantity": "free-free flux A / B at 1.3 mm",
+   "value": "39 / 4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We estimate free-free components in the 1.3 mm continuum to be 39 mJy and 4 mJy in Sources A and B"
+    }
+   ]
+  },
+  {
+   "quantity": "ring radius",
+   "value": "7",
+   "uncertainty": "1",
+   "units": "mas",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$R_\\mathrm{ring}=7\\pm1\\:\\mathrm{mas}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ring rotation velocity",
+   "value": "21",
+   "uncertainty": "2",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "$V_\\mathrm{rot}=21\\pm2\\:\\mbox{km s}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "dynamical mass of Source A",
+   "value": "6",
+   "uncertainty": "2",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "corresponding to a central mass of $6\\pm2\\:M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "infall model central mass",
+   "value": "27",
+   "uncertainty": "6",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "This model requires a central mass of $27\\pm6~M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "ambient gas mass >500 au",
+   "value": "3.8-8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Estimating ambient gas mass",
+     "quote": "the mass of this ambient gas is estimated to be $3.8-8~M_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals and number of iterations",
+  "CASA version and calibration procedure",
+  "Clean masks, thresholds, cell and image sizes",
+  "Line-free channels for continuum subtraction",
+  "Spectral window frequencies",
+  "Fitting parameter ranges and optimiser for ring model",
+  "Which ALMA project corresponds to which configuration"
+ ],
+ "missing_for_reproduction": [
+  "Self-cal parameters",
+  "CASA version",
+  "Fit parameter ranges and code for ring model",
+  "Image sizes and masks"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and quantitative recipe, but processing details and custom model codes are unspecified.",
+ "rediscovery_reason": "Data public and central numbers (velocities, fluxes, masses) are measurable, though ring model needs reimplementation.",
+ "source_card": "cards/2019NatAs...3..517Z/sonnet/card.md"
+}

@@ -1,0 +1,491 @@
+{
+ "bibcode": "2025ApJ...991L..38U",
+ "title": "RIOJA. JWST and ALMA Unveil the Inhomogeneous and Complex Interstellar Medium Structure in a Star-forming Galaxy at z = 6.81",
+ "year": 2025,
+ "doi": "10.3847/2041-8213/ae0574",
+ "arxiv_id": "2507.02054",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Investigate whether a density stratification of highly ionized gas in the z = 6.81 star-forming galaxy COS-2987 can be identified by combining rest-frame optical (JWST/NIRSpec IFS) and far-infrared (ALMA) [O III] emission lines.",
+ "alma_project_codes": [
+  "2018.1.00429.S"
+ ],
+ "data": {
+  "bands": "Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "0.80'' x 0.61'' (PA 86 deg)",
+  "sensitivity": "0.576 mJy beam^-1 per 30 km s^-1 channel; 82.6 mJy beam^-1 km s^-1 in moment-0 map"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Electron density measurements at z ~ 0-3 and z >= 4 for redshift evolution comparison",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "Literature data at _z_ _∼_ 0–3 are compiled from Sanders et al. (2016) ([S ii] or [O ii]) and Davies et al. (2021) ([S ii]), while data at _z_ ≳ 4 are taken from Isobe et al. (2023), Abdurro’uf et al. (2024), and Marconcini et al. (2024), all based on the [O ii] ratios."
+     }
+    ]
+   },
+   "citation": "Sanders et al. (2016); Davies et al. (2021); Isobe et al. (2023); Abdurro'uf et al. (2024); Marconcini et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "[O III] 4364, 5008, and 88 um line ratios for high-z star-forming galaxies and local dwarf galaxies",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "Black filled symbols represent high- _z_ star-forming galaxies (Witstok et al. 2022; Stiavelli et al. 2023; Fujimoto et al. 2024; Harshan et al. 2024; Harikane et al. 2025b)"
+     },
+     {
+      "loc": "Figure 3 caption",
+      "quote": "Open symbols represent local dwarf galaxies (Chen et al. 2023; Kumari et al. 2024; Chen et al. 2024)."
+     }
+    ]
+   },
+   "citation": "Witstok et al. (2022); Scholtz et al. (2025); Harikane et al. (2025b); Harshan et al. (2024); Fujimoto et al. (2024); Stiavelli et al. (2023); Chen et al. (2023); Kumari et al. (2024); Chen et al. (2024)"
+  },
+  {
+   "what": {
+    "value": "LyC escape fraction f_esc = 5 +8/-5 % for COS-2987",
+    "evidence": [
+     {
+      "loc": "5.3. Interpretation of the the density-stratified ionized ISM",
+      "quote": "Mawatari et al. (2025) obtained a non-zero escape fraction of _f_ esc = 5 [+8] _−_ 5 [%]."
+     }
+    ]
+   },
+   "citation": "Mawatari et al. (2025)"
+  },
+  {
+   "what": {
+    "value": "[O III] 88 um to [C II] 158 um luminosity ratio of ~ 6 in COS-2987",
+    "evidence": [
+     {
+      "loc": "5.3. Interpretation of the the density-stratified ionized ISM",
+      "quote": "This estimate is consistent with the high [O iii]88 _µ_ m-to-[C ii]158 _µ_ m luminosity ratio of _≈_ 6 in COS-2987 (Witstok et al. 2022)."
+     }
+    ]
+   },
+   "citation": "Witstok et al. (2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST NIRSpec IFS data and extract optical emission line fluxes",
+   "method": "Process raw G395H/F290LP data with JWST pipeline, apply sigma clipping and median background subtraction, drizzle to 0.05'' pixels, match PSF to Halpha (0.21'' FWHM), extract spectra from >= 2sigma region in [O III]5008 map, fit Gaussians to line profiles, and apply 10% aperture correction.",
+   "software": [
+    "JWST Calibration Pipeline"
+   ],
+   "key_parameters": [
+    "pixel size = 0.05'', PSF FWHM = 0.21'' at 5.125 um, extraction threshold >= 2 sigma in [O III]5008 map, aperture correction = 10%"
+   ],
+   "assumptions": [
+    "Adopted aperture misses ~10% of total flux based on curve-of-growth analysis"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image ALMA Band 8 data and measure [O III] 88 um line flux and profile",
+   "method": "Image Band 8 data with CASA tclean using natural weighting, integrate cube over 434.2-434.9 GHz (480 km s^-1) to make moment-0 map, measure integrated line flux, and fit 1D velocity profile with a single Gaussian corrected for instrumental broadening.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting, 30 km s^-1 channel width, integration range 434.2-434.9 GHz (480 km s^-1)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive integrated dust extinction, electron temperature, electron density, and gas-phase metallicity from optical lines",
+   "method": "Iteratively compute dust extinction A_V from Halpha/Hbeta Balmer decrement, electron temperature Te([O III]) from [O III]4364/5008, Te([O II]) from scaling relation, electron density ne([O II]) from [O II]3730/3727, and oxygen abundance 12+log(O/H) via direct-Te method using PyNeb.",
+   "software": [
+    "PyNeb"
+   ],
+   "key_parameters": [
+    "Convergence threshold delta_Te < 10 K; 10,000 Monte Carlo realizations"
+   ],
+   "assumptions": [
+    "SMC extinction curve with R_V = 2.74; Case B recombination with initial ne = 100 cm^-3 and Te = 10^4 K; Galactic extinction negligible; Te([O II]) = 0.7 * Te([O III]) + 3000 K; O/H = O++/H+ + O+/H+"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test inhomogeneous dust distribution via spatially resolved pixel-by-pixel dust correction",
+   "method": "Apply Voronoi pixel binning to Hbeta and Halpha intensity maps within 3sigma regions, generate an A_V map, correct [O III]4364 and [O III]5008 maps pixel-by-pixel, and measure total fluxes using 2sigma isophotal aperture of [O III]5008 with 10% aperture correction.",
+   "software": [],
+   "key_parameters": [
+    "3sigma threshold for Halpha and Hbeta maps; 2sigma [O III]5008 isophotal aperture; 10% aperture correction"
+   ],
+   "assumptions": [
+    "A_V = 0 outside the 3sigma detection region of Halpha and Hbeta"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model [O III] 4364, 5008, and 88 um line ratios with a two-component density-stratified ionized gas toy model",
+   "method": "Calculate cooling rates Lambda_line for two ionized gas components using PyNeb and combine their line luminosities linearly as a function of volume ratio V1/V2 to reproduce observed [O III]88/5008 and [O III]4364/5008 ratios.",
+   "software": [
+    "PyNeb"
+   ],
+   "key_parameters": [
+    "Component 1: (Te,1, ne,1) = (26,000 K, 500 cm^-3); Component 2: (Te,2, ne,2) = (8,000 K, 50 cm^-3)"
+   ],
+   "assumptions": [
+    "n_O++,i = n_e,i * 10^-4 (12 + log(O++/H+) = 8); 10% absolute flux calibration uncertainty on both [O III]5008 and [O III]88"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated [O III] 88 um velocity-integrated flux",
+   "value": "1.06",
+   "uncertainty": "+/- 0.23",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA [O iii] 88 µm data",
+     "quote": "We measure an integrated line flux of 1 _._ 06 _±_ 0 _._ 23 Jy km s _[−]_ [1], corresponding to a flux of (15 _._ 3 _±_ 3 _._ 3) _×_ 10 _[−]_ [18] erg s _[−]_ [1] cm _[−]_ [2]"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O III] 88 um line flux (F_[OIII]88)",
+   "value": "15.3",
+   "uncertainty": "+/- 3.3",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2. ALMA [O iii] 88 µm data",
+     "quote": "We measure an integrated line flux of 1 _._ 06 _±_ 0 _._ 23 Jy km s _[−]_ [1], corresponding to a flux of (15 _._ 3 _±_ 3 _._ 3) _×_ 10 _[−]_ [18] erg s _[−]_ [1] cm _[−]_ [2]"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OIII]88 15 _._ 3 _±_ 3 _._ 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O II] 3727 line flux (F_[OII]3727)",
+   "value": "7.1",
+   "uncertainty": "+/- 0.9",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OII]3727 7 _._ 1 _±_ 0 _._ 9"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O II] 3730 line flux (F_[OII]3730)",
+   "value": "7.6",
+   "uncertainty": "+/- 1.2",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OII]3730 7 _._ 6 _±_ 1 _._ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O III] 4364 line flux (F_[OIII]4364)",
+   "value": "1.8",
+   "uncertainty": "+/- 0.5",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OIII]4364 1 _._ 8 _±_ 0 _._ 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Hbeta line flux (F_Hbeta)",
+   "value": "8.0",
+   "uncertainty": "+/- 0.8",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ H _β_ 8 _._ 0 _±_ 0 _._ 8"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O III] 4960 line flux (F_[OIII]4960)",
+   "value": "17.4",
+   "uncertainty": "+/- 1.8",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OIII]4960 17 _._ 4 _±_ 1 _._ 8"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed [O III] 5008 line flux (F_[OIII]5008)",
+   "value": "52.3",
+   "uncertainty": "+/- 5.4",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ [OIII]5008 52 _._ 3 _±_ 5 _._ 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Halpha line flux (F_Halpha)",
+   "value": "23.9",
+   "uncertainty": "+/- 2.4",
+   "units": "10^-18 erg s^-1 cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_F_ H _α_ 23 _._ 9 _±_ 2 _._ 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed Halpha / Hbeta line ratio",
+   "value": "3.00",
+   "uncertainty": "+/- 0.40",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Integrated Internal Dust Extinction",
+     "quote": "We obtain (H _α/_ H _β_ ) obs = 3 _._ 00 _±_ 0 _._ 40 (Table 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O III] 4364/5008 line ratio",
+   "value": "0.038",
+   "uncertainty": "+0.010/-0.011",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[O iii]4364/5008 0 _._ 038 [+0] _−_ 0 _[.]_ _._ [010] 011"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O II] 3730/3727 line ratio",
+   "value": "1.05",
+   "uncertainty": "+/- 0.21",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[O ii]3730/3727 1 _._ 05 _±_ 0 _._ 21"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O III] 88/5008 line ratio",
+   "value": "0.22",
+   "uncertainty": "+0.09/-0.07",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "[O iii]88/5008 _[a]_ 0 _._ 22 [+0] _−_ 0 _[.]_ _._ [09] 07"
+    }
+   ]
+  },
+  {
+   "quantity": "Internal dust extinction (A_V)",
+   "value": "0.14",
+   "uncertainty": "+0.32/-0.14",
+   "units": "mag",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Integrated Internal Dust Extinction",
+     "quote": "We find _A_ _V_ = 0 _._ 14 [+0] _−_ 0 _[.]_ _._ [32] 14 [mag.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature Te([O III])",
+   "value": "2.02e4",
+   "uncertainty": "+0.30e4/-0.28e4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Electron Temperature",
+     "quote": "we derive an electron temperature of _T_ e ([O iii]) = 2 _._ 02 [+0] _−_ 0 _[.]_ _._ [30] 28 _[×]_ [10] [4] [ K.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature Te([O II])",
+   "value": "1.72e4",
+   "uncertainty": "+0.21e4/-0.20e4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2. Electron Temperature",
+     "quote": "Applying this relation, we obtain _T_ e ([O ii]) = 1 _._ 72 [+0] _−_ 0 _[.]_ _._ [21] 20 _[×]_ 10 [4] K."
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density ne([O II])",
+   "value": "494",
+   "uncertainty": "+546/-300",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3. Electron Density",
+     "quote": "From the measured line ratio of [O ii]3730/3727 = 1 _._ 05 _±_ 0 _._ 21 (Table 1), we derive an electron density of _n_ e ([O ii]) = 494 _−_ [+546] 300 [cm] _[−]_ [3] [.]"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase oxygen abundance 12 + log(O/H)",
+   "value": "7.67",
+   "uncertainty": "+0.11/-0.13",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4. Gas-Phase Metallicity based on the direct-Te method",
+     "quote": "We obtain a metallicity of 12 + log(O _/_ H) = 7 _._ 67 [+0] _−_ 0 _[.]_ _._ [11] 13 [,] corresponding to 10 _±_ 2% of the solar metallicity."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O III] 4364 luminosity (L_[O III]4364)",
+   "value": "3.35",
+   "uncertainty": "+2.08/-1.17",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [O iii]4364 3 _._ 35 [+2] _−_ 1 _[.]_ _._ [08] 17"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O III] 5008 luminosity (L_[O III]5008)",
+   "value": "88.5",
+   "uncertainty": "+44.2/-17.2",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [O iii]5008 88 _._ 5 [+44] _−_ 17 _[.]_ _._ [2] 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected [O III] 88 um luminosity (L_[O III]88)",
+   "value": "21.4",
+   "uncertainty": "+/- 4.6",
+   "units": "10^8 L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "_L_ [O iii]88 21 _._ 4 _±_ 4 _._ 6"
+    }
+   ]
+  },
+  {
+   "quantity": "Volume ratio V1/V2 in two-component ISM model",
+   "value": "1/300",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Evidence for a density-stratified ionized ISM",
+     "quote": "By comparing the model predictions with the observed values of [O iii]88/5008 and [O iii]4364/5008, we derive a volume ratio of _V_ 1 _/V_ 2 _∼_ 1 _/_ 300."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass ratio M1/M2 in two-component ISM model",
+   "value": "1/30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Evidence for a density-stratified ionized ISM",
+     "quote": "The corresponding mass ratio of the two gas components is _M_ 1 _/M_ 2 _∼_ 1 _/_ 30, where the mass of each component is calculated as _M_ i = _n_ e _,_ i _V_ i ."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of [O III] 5008 line (FWHM_5008)",
+   "value": "146",
+   "uncertainty": "+/- 2",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "C. LINE PROFILES OF [O iii]5008 AND [O iii]88",
+     "quote": "Fitting each line with a single Gaussian profile and correcting for instrumental broadening, we obtain FWHM 5008 = 146 _±_ 2 km s _[−]_ [1] and FWHM 88 = 239 _±_ 45 km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM of [O III] 88 um line (FWHM_88)",
+   "value": "239",
+   "uncertainty": "+/- 45",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "C. LINE PROFILES OF [O iii]5008 AND [O iii]88",
+     "quote": "Fitting each line with a single Gaussian profile and correcting for instrumental broadening, we obtain FWHM 5008 = 146 _±_ 2 km s _[−]_ [1] and FWHM 88 = 239 _±_ 45 km s _[−]_ [1] ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact aperture/method used to measure the integrated ALMA [O III] 88 um line flux from the moment-0 map or cube",
+  "ALMA tclean parameters: cell size, image size, stopping threshold, masking, and whether continuum subtraction was applied",
+  "Exact target coordinates and systemic redshift value used for velocity zero-point",
+  "Target S/N threshold used for Voronoi pixel binning of the Halpha and Hbeta maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact aperture definition (or fitting method) used to extract the integrated ALMA [O III] 88 um flux and 1D spectrum",
+  "Custom JWST NIRSpec reduction scripts (sigma clipping and background subtraction details, though described further in Mawatari et al. 2025)",
+  "Target S/N parameter for Voronoi binning in Section 5.1",
+  "Exact PyNeb atomic data settings/version used"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Both ALMA and JWST datasets are publicly archived with explicit IDs/DOIs, line fluxes and derived quantities are fully tabulated, and the PyNeb equations and iterative procedures are clearly specified; minor imaging/aperture parameters are omitted or deferred to Mawatari et al. (2025).",
+ "rediscovery_reason": "Public archival ALMA and JWST data with a clear quantitative recipe (tclean moment-0 flux measurement, Gaussian line fitting, and PyNeb diagnostics/toy modeling) leading to well-defined numeric results in Table 1.",
+ "source_card": "cards/2025ApJ...991L..38U/sonnet/card.md"
+}

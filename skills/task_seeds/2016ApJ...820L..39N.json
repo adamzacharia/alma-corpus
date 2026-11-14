@@ -1,0 +1,255 @@
+{
+ "bibcode": "2016ApJ...820L..39N",
+ "title": "First Connection between Cold Gas in Emission and Absorption: CO Emission from a Galaxy-Quasar Pair",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/820/2/L39",
+ "arxiv_id": "1604.05720",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Does the z = 0.101 galaxy toward PKS 0439-433 emit CO(1-0), and does the molecular absorption toward the quasar arise from its molecular disk or from its CGM?",
+ "alma_project_codes": [
+  "2013.1.01178.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "~2 arcsec (≈3.7 kpc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass log M*/Msun = 10.01 ± 0.02 and SFR ≈ 1.5 Msun/yr",
+    "evidence": [
+     {
+      "loc": "2. THE Z = 0.101 ABSORBER",
+      "quote": "the stellar mass of the spiral galaxy has been estimated to be log[M ⋆ /M ⊙ ] = 10.01 ± 0.02"
+     }
+    ]
+   },
+   "citation": "Christensen et al. 2014"
+  },
+  {
+   "what": {
+    "value": "HI 3-sigma upper limit on atomic gas mass of 3×10^9 Msun",
+    "evidence": [
+     {
+      "loc": "2. THE Z = 0.101 ABSORBER",
+      "quote": "yields a 3-σ upper limit of 3×10 [9] M ⊙ on its atomic gas mass"
+     }
+    ]
+   },
+   "citation": "Kanekar et al. 2001"
+  },
+  {
+   "what": {
+    "value": "H2 column density ≈ (4.1 ± 0.5)×10^16 cm^-2 from UV absorption",
+    "evidence": [
+     {
+      "loc": "2. THE Z = 0.101 ABSORBER",
+      "quote": "H 2 column density ≈ (4.1 ± 0.5) × 10 [16] cm [−][2]"
+     }
+    ]
+   },
+   "citation": "Muzahid et al. 2015"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and self-calibrate",
+   "method": "Combine three continuum spws, detect quasar, self-calibrate (phase, then phase+amplitude)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make CO(1-0) cube and moment maps",
+   "method": "clean cube with Briggs robust 0.5, 20 km/s channels; first moment with immoments for >3σ emission",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit disk kinematic model",
+   "method": "Infinitely thin exponential disk with flat rotation curve, convolved with beam and compared with data cube",
+   "software": [
+    "custom MCMC code"
+   ],
+   "key_parameters": [
+    "free parameters: I0, R_D, inclination, PA, center (3 coords), v_max"
+   ],
+   "assumptions": [
+    "zero intrinsic velocity dispersion, flat rotation curve"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive gas and dynamical masses",
+   "method": "M_mol = alpha_CO L'CO with helium correction; M_dyn ~ V^2 R/G",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.3 Msun (K km/s pc^2)^-1 (Bolatto et al. 2013); R ≈ 10 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare emission with absorption",
+   "method": "Compare absorption component velocities to disk rotation curve and extrapolate surface density to sightline",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "covering fraction <10%, representative H2 column, gas within 20 kpc sphere"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) integrated flux",
+   "value": "1.46",
+   "uncertainty": "0.07",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. RESULTS",
+     "quote": "We obtain an integrated CO(1−0) flux density of 1.46 ± 0.07 Jy km s [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "CO line luminosity L'CO",
+   "value": "7.0e8",
+   "uncertainty": "0.3e8",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. RESULTS",
+     "quote": "L ′ CO = 7.0 ± 0.3 × 10 8 K km s −1 pc 2"
+    }
+   ]
+  },
+  {
+   "quantity": "inclination",
+   "value": "67",
+   "uncertainty": "+6/-5",
+   "units": "degrees",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "we find an inclination angle of 67 [+6] −5 [degrees,]"
+    }
+   ]
+  },
+  {
+   "quantity": "position angle",
+   "value": "56",
+   "uncertainty": "±5",
+   "units": "degrees",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "with a position angle of 56°± 5°"
+    }
+   ]
+  },
+  {
+   "quantity": "rotational velocity",
+   "value": "134",
+   "uncertainty": "+8/-11",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "a rotational velocity of 134 [+8] −11 [km s] [−][1]"
+    }
+   ]
+  },
+  {
+   "quantity": "molecular gas mass",
+   "value": "4.2e9",
+   "uncertainty": "0.2e9",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "M mol = 4.2 ± 0.2 × 10 [9] M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "dynamical mass",
+   "value": "≳4e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "yielding M dyn ≳ 4 × 10 [10] M ⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "gas consumption timescale",
+   "value": "≈2.8",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "yields a gas consumption timescale of ≈ 2.8 Gyr"
+    }
+   ]
+  },
+  {
+   "quantity": "molecular gas in absorbing component",
+   "value": "≲1e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "the absorbing molecular component contains ≲ 10 [5] M ⊙ of gas"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version",
+  "cell size and image size",
+  "clean threshold, masks and iterations",
+  "continuum subtraction and line-free channels",
+  "self-calibration solution intervals",
+  "MCMC priors, chain length, step sizes and likelihood",
+  "on-source time, number of antennas, baselines",
+  "how R_D and the 10 kpc disk radius were derived",
+  "exact CO line luminosity conversion details",
+  "how the SFR of 1.5 was adopted vs 0.53"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and exact imaging parameters",
+  "MCMC code and priors",
+  "line-free channels and moment settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single compact-array dataset and simple recipe, but key imaging and MCMC details missing and custom code unreleased.",
+ "rediscovery_reason": "Data are public, the recipe is short, and the results (flux, M_mol, v_rot) are numeric, though the MCMC model needs reimplementation.",
+ "source_card": "cards/2016ApJ...820L..39N/sonnet/card.md"
+}

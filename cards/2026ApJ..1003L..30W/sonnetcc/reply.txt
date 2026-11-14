@@ -1,0 +1,483 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+ {"loc": "2.1 Observational Details", "quote": "TW Hya was observed over 7 execution blocks on 22-Mar-2021, 23-Mar-2021, 25-Mar-2021, and 28-Mar-2021 in Band 3 as part of the ALMA Cycle 6 project 2019.1.00769.S."},
+ {"loc": "2.1 Observational Details", "quote": "The main targets of the observations were HC$_3$N and HC$_3$N isotopologues, but two transitions of HC$_{5}$N were targeted as ancillary bonus lines"}
+],
+"fields": ["protoplanetary_disks", "astrochemistry"],
+"question": {
+ "value": "Is the long cyanopolyyne HC5N present in the Class II TW Hya disk, what is its column density and HC3N/HC5N ratio, and what do chemical models say about its formation and emitting layer?",
+ "evidence": [
+  {"loc": "abstract", "quote": "Here, we report the first detection of HC$_5$N toward the TW Hya protoplanetary disk, representing the largest cyanopolyyne identified to date in a Class II system."},
+  {"loc": "abstract", "quote": "We compare HC$_5$N and HC$_3$N formation mechanisms and analyze the HC$_3$N / HC$_5$N ratio."}
+ ]
+},
+"targets": [
+ {"name": "TW Hya",
+  "details": [
+   {"loc": "Introduction", "quote": "The protoplanetary disk around TW Hya, located at a distance of 60 pc (cite: Gaia_Collaboration)"},
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "distance 60 pc, and stellar mass 0.88"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "60 pc (d = 59.5 pc used for the Keplerian mask)",
+  "distance_source": "Gaia Collaboration"}
+],
+"alma_project_codes": [
+ {"code": "2019.1.00769.S", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "in Band 3 as part of the ALMA Cycle 6 project 2019.1.00769.S"}
+ ]}
+],
+"data_settings": [
+ {"field": "bands", "value": "Band 3", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "in Band 3 as part of the ALMA Cycle 6 project 2019.1.00769.S"}
+ ]},
+ {"field": "frequencies_and_spectral_setup", "value": "TDM continuum window at 110.169 GHz; six FDM windows at 99.665, 100.078, 98.541, 96.982, 109.173, 108.715 GHz, each 58.594 MHz wide with 30.518 kHz channels (~0.08 km/s)", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "Frequency Division Mode (FDM) spectral windows centered at 99.665, 100.078, 98.541, 96.982, 109.173, and 108.715 GHz."},
+  {"loc": "2.1 Observational Details", "quote": "These spectral windows had a bandwidth of 58.594 MHz and channel spacing of 30.518 kHz"}
+ ]},
+ {"field": "time_on_source", "value": "325 minutes total, 7 execution blocks", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "The total on-source integration time was 325 minutes."}
+ ]},
+ {"field": "observing_dates", "value": "22, 23, 25 and 28 March 2021", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "TW Hya was observed over 7 execution blocks on 22-Mar-2021, 23-Mar-2021, 25-Mar-2021, and 28-Mar-2021"}
+ ]},
+ {"field": "angular_resolution", "value": "beam 1.07\" x 0.86\" (HC5N 37-36); 0.97\" x 0.77\" (HC5N 41-40 and HC3N 12-11)", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "This resulted in a beam of 1.07\" x 0.86\""},
+  {"loc": "2.2 Calibration and Imaging", "quote": "transition and 0.97\" x 0.77\""}
+ ]},
+ {"field": "sensitivity", "value": "rms ~1.1 mJy/beam (HC5N 37-36), ~1.3 mJy/beam (HC5N 41-40), ~1.3 mJy/beam (HC3N 12-11)", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "The achieved rms values were $\\sim$1.1 and $\\sim$1.3 mJy bm$^{-1}$ respectively for the J=37-36 and J=41-40 HC$_5$N transitions, and $\\sim$1.3 mJy bm$^{-1}$ for HC$_3$N J=12-11."}
+ ]}
+],
+"lines_targeted": [
+ {"species": "HC3N", "transition": "J=12-11", "rest_frequency": "109173.63 MHz", "evidence": [
+  {"loc": "Table 1", "quote": "109173.63"}
+ ]},
+ {"species": "HC5N", "transition": "J=37-36", "rest_frequency": "98512.524 MHz", "evidence": [
+  {"loc": "Table 1", "quote": "98512.524"}
+ ]},
+ {"species": "HC5N", "transition": "J=41-40", "rest_frequency": "109160.973 MHz", "evidence": [
+  {"loc": "Table 1", "quote": "109160.973"}
+ ]}
+],
+"other_facilities": [
+ {"name": "Gaia", "provided": {"value": "TW Hya distance (60 pc)", "evidence": [
+  {"loc": "Introduction", "quote": "located at a distance of 60 pc (cite: Gaia_Collaboration)"}
+ ]}}
+],
+"external_data_from_literature": [
+ {"what": {"value": "TW Hya disk geometry and stellar mass (i = 5 deg, PA = 152 deg, M* = 0.88 Msun, d = 59.5 pc) used for the Keplerian mask and GoFish shift-and-stack", "evidence": [
+   {"loc": "2.2 Calibration and Imaging", "quote": "based on the adopted TW Hya disk geometry"},
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "The well established parameters of TW Hya were adopted"}
+  ]},
+  "citation": "(cite: Huang_2018; Andrews_2012; Gaia_Collaboration)"},
+ {"what": {"value": "Typical disk HC3N column densities used for comparison with the derived HC5N values", "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "These values are one to two orders of magnitude lower than typical HC$_3$N column densities reported for disks (cite: Bergner_2018; Ilee_2021)"}
+  ]},
+  "citation": "(cite: Bergner_2018; Ilee_2021)"},
+ {"what": {"value": "Assumed rotational temperature range 20-50 K reasonable for Class II T Tauri disks", "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "that are reasonable rotational temperatures for Class II T Tauri disks (cite: Aikawa_2002; Oberg&Bergin_2021)"}
+  ]},
+  "citation": "(cite: Aikawa_2002; Oberg&Bergin_2021)"},
+ {"what": {"value": "TW Hya FUV spectrum used in the chemical model", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "The TW Hya FUV spectrum from (cite: Herczeg_2002; Herczeg_2004)"}
+  ]},
+  "citation": "(cite: Herczeg_2002; Herczeg_2004)"},
+ {"what": {"value": "TW Hya X-ray spectrum used in the chemical model", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "the X-ray spectrum from (cite: Cleeves_2013) are used"}
+  ]},
+  "citation": "(cite: Cleeves_2013)"},
+ {"what": {"value": "Elevated outer-disk C/O in TW Hya motivating the C/O values of the models", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "TW Hya shows significant evidence for enhanced C/O ratios in its outer disk (cite: Bergin_2016; Kama_2016; Cleeves_2021)"}
+  ]},
+  "citation": "(cite: Bergin_2016; Kama_2016; Cleeves_2021)"}
+],
+"simulations_or_models_as_data": [
+ {"value": "2D time-dependent disk chemistry model (OSU gas-phase network, expanded), Rc = 40 AU, disk mass 0.1 Msun, 90% large grains, 1 Myr, C/O = 0.57, 1.0, 1.5, run to predict HC3N and HC5N column density profiles", "evidence": [
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "with an exponential taper beyond a characteristic radius R$_c$ of 40 AU, and a total disk mass of 0.1"},
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "Three different C/O ratios were considered: 0.57 (solar-like), 1.0, and 1.5."},
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "and the model is evolved for 1 Myr."}
+ ]}
+],
+"calibration": [
+ {"field": "pipeline_or_manual", "value": "ALMA observatory pipeline calibration, then additional self-calibration by the authors", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "The data were initially calibrated by the ALMA Observatory using the ALMA pipeline version 2020.1.0.40 (cite: Hunter_2023) in CASA 6.1.1.15."}
+ ]},
+ {"field": "casa_version", "value": "CASA 6.1.1.15", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "using the ALMA pipeline version 2020.1.0.40 (cite: Hunter_2023) in CASA 6.1.1.15."}
+ ]},
+ {"field": "pipeline_version", "value": "ALMA pipeline 2020.1.0.40", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "using the ALMA pipeline version 2020.1.0.40 (cite: Hunter_2023)"}
+ ]},
+ {"field": "flux_calibrator", "value": "J1107-4449 (also bandpass); phase calibrator J1037-2934", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "The quasar J1037-2934 was used for phase calibration and J1107-4449 was used as the bandpass and flux calibrator across all executions."}
+ ]},
+ {"field": "self_calibration", "value": "three rounds of phase-only and one round of phase and amplitude self-calibration", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "We then additionally self-calibrated the data with three rounds of phase-only and one round of phase and amplitude self-calibration."}
+ ]}
+],
+"imaging": [
+ {"field": "weighting_robust", "value": "natural weighting", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "natural weighting for maximum sensitivity in CASA 6.1.1.15."}
+ ]},
+ {"field": "continuum_subtraction", "value": "uv-plane continuum subtraction of the self-calibrated visibilities", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "we continuum subtracted the self-calibrated visibilities in the"}
+ ]},
+ {"field": "masking", "value": "Keplerian mask for HC3N CLEAN; no mask for HC5N", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "For HC$_3$N a Keplerian mask based on the adopted TW Hya disk geometry"},
+  {"loc": "2.2 Calibration and Imaging", "quote": "while no mask was used for the HC$_5$N transitions as there was no significant emission"}
+ ]},
+ {"field": "final_beam", "value": "1.07\" x 0.86\" PA -84.531 deg (HC5N 37-36); 0.97\" x 0.77\" PA -85.550 deg (HC5N 41-40, HC3N 12-11)", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "This resulted in a beam of 1.07\" x 0.86\""},
+  {"loc": "2.2 Calibration and Imaging", "quote": "transition and 0.97\" x 0.77\""}
+ ]},
+ {"field": "final_rms", "value": "~1.1 mJy/beam (HC5N 37-36), ~1.3 mJy/beam (HC5N 41-40), ~1.3 mJy/beam (HC3N 12-11)", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "The achieved rms values were $\\sim$1.1 and $\\sim$1.3 mJy bm$^{-1}$ respectively for the J=37-36 and J=41-40 HC$_5$N transitions, and $\\sim$1.3 mJy bm$^{-1}$ for HC$_3$N J=12-11."}
+ ]}
+],
+"inherited": [
+ {"what": {"value": "TW Hya disk geometry and system parameters (i, PA, M*, d, radial sampling) for the Keplerian CLEAN mask", "evidence": [
+   {"loc": "2.2 Calibration and Imaging", "quote": "(cite: Huang_2018; Andrews_2012; Gaia_Collaboration)"}
+  ]},
+  "from_reference": "(cite: Huang_2018; Andrews_2012; Gaia_Collaboration)"},
+ {"what": {"value": "Matched filtering technique for line detection", "evidence": [
+   {"loc": "3.2 Matched Filtering Analysis", "quote": "we employed a matched filtering technique (cite: Loomis_2018b) to enhance line detectability."}
+  ]},
+  "from_reference": "(cite: Loomis_2018b)"},
+ {"what": {"value": "Shift-and-stack of spectra with GoFish, correcting for Keplerian rotation", "evidence": [
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "We applied the `GoFish` package (cite: Teague_2019) to perform a shift and stack analysis (cite: Yen_2016)"}
+  ]},
+  "from_reference": "(cite: Teague_2019); (cite: Yen_2016)"},
+ {"what": {"value": "Optically thin column density formula", "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "Following (cite: Loomis_2018a): assuming optically thin emission, we have:"}
+  ]},
+  "from_reference": "(cite: Loomis_2018a)"},
+ {"what": {"value": "Chemical model code, based on an earlier code and updated networks", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "The two dimensional time-dependent chemical code used is based on the one from (cite: Fogel_2011)."}
+  ]},
+  "from_reference": "(cite: Fogel_2011); (cite: Smith_2004); (cite: Cleeves_2014; Cleeves_2015; Cleeves_2018)"},
+ {"what": {"value": "Stellar FUV and X-ray radiation transfer in the disk model", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "see (cite: Cleeves_2013; Cleeves_2014) for details"}
+  ]},
+  "from_reference": "(cite: Bethell_2011a); (cite: Cleeves_2013; Cleeves_2014)"},
+ {"what": {"value": "Binding energy updates in the chemical network not described here", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "Additional updates to several binding energies were made and will be described in a forthcoming paper."}
+  ]},
+  "from_reference": "forthcoming paper (not cited)"}
+],
+"unstated_but_needed": [
+ "Self-calibration solution intervals, reference antenna, spectral windows and which scans were used for each of the four rounds",
+ "Line-free channels used for uv continuum subtraction and the fit order",
+ "tclean parameters: deconvolver, cell size, image size, threshold/niter, spectral rebinning and velocity resolution of the cubes",
+ "Whether the cubes were primary-beam corrected before flux extraction",
+ "Matched-filter kernel construction details in VISIBLE and how significance and the 5.3 sigma stack were computed (noise estimate, weighting)",
+ "GoFish settings beyond geometry: radial binning, annulus width, how uncertainties on the integrated flux were derived",
+ "Emitting-region solid angle (Omega) and line FWHM adopted in the column density equation, and the partition function / Einstein A source",
+ "How the two transition column densities were averaged and how the quoted ranges were propagated",
+ "HC3N column-density derivation (flux, Omega, FWHM) behind the HC3N N_T values in Table 2",
+ "Chemical model input files, network version and the forthcoming binding energy updates",
+ "Archive product version / reprocessing used for 2019.1.00769.S"
+],
+"analysis_steps": [
+ {"order": 1,
+  "goal": "calibrate and self-calibrate visibilities",
+  "method": {"value": "Observatory pipeline calibration followed by three phase-only rounds and one phase plus amplitude round of self-calibration", "evidence": [
+   {"loc": "2.2 Calibration and Imaging", "quote": "We then additionally self-calibrated the data with three rounds of phase-only and one round of phase and amplitude self-calibration."}
+  ]},
+  "software": ["CASA", "ALMA pipeline"],
+  "key_parameters": [
+   {"value": "ALMA pipeline version 2020.1.0.40 in CASA 6.1.1.15", "evidence": [
+    {"loc": "2.2 Calibration and Imaging", "quote": "using the ALMA pipeline version 2020.1.0.40 (cite: Hunter_2023) in CASA 6.1.1.15."}
+   ]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 2,
+  "goal": "continuum-subtract and image line cubes",
+  "method": {"value": "uv-plane continuum subtraction then CLEAN with natural weighting; Keplerian mask for HC3N, no mask for HC5N", "evidence": [
+   {"loc": "2.2 Calibration and Imaging", "quote": "we continuum subtracted the self-calibrated visibilities in the"},
+   {"loc": "2.2 Calibration and Imaging", "quote": "natural weighting for maximum sensitivity in CASA 6.1.1.15."}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [
+   {"value": "Mask geometry i = 5 deg, PA = 152 deg, M* = 0.88 Msun, d = 59.5 pc, dr = 0.1", "evidence": [
+    {"loc": "2.2 Calibration and Imaging", "quote": "with a radial sampling of $dr=0.1$ (cite: Huang_2018; Andrews_2012; Gaia_Collaboration)"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Keplerian rotation with the adopted TW Hya geometry for the HC3N mask", "evidence": [
+    {"loc": "2.2 Calibration and Imaging", "quote": "For HC$_3$N a Keplerian mask based on the adopted TW Hya disk geometry"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 3,
+  "goal": "look for HC5N in the image plane",
+  "method": {"value": "Moment 0 maps of HC3N J=12-11 and the two HC5N lines; HC5N maps show no strong signal", "evidence": [
+   {"loc": "3.1 HC$_3$N and HC$_5$N Integrated Intensity", "quote": "These moment maps show no strong signal."}
+  ]},
+  "software": ["CASA"],
+  "key_parameters": [],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 4,
+  "goal": "matched-filter detection of HC5N",
+  "method": {"value": "Matched filter applied to visibilities across all spectral windows using an empirical kernel from the strong HC3N J=12-11 emission; individual and stacked significances measured", "evidence": [
+   {"loc": "3.2 Matched Filtering Analysis", "quote": "use here an empirical filter kernel from the strong HC$_3$N J=12-11 emission illustrated in Figure"},
+   {"loc": "3.2 Matched Filtering Analysis", "quote": "This kernel was applied to the observed visibilities across all spectral windows."}
+  ]},
+  "software": ["VISIBLE"],
+  "key_parameters": [],
+  "assumptions": [
+   {"value": "HC5N shares the spatio-kinematic structure and morphology of HC3N", "evidence": [
+    {"loc": "3.2 Matched Filtering Analysis", "quote": "with the assumption that HC$_3$N and HC$_5$N likely share a similar morphology."}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Multiple filter kernels tried with similar results", "evidence": [
+   {"loc": "3.2 Matched Filtering Analysis", "quote": "We examined multiple filter kernels, all of which had similar results"}
+  ]}},
+ {"order": 5,
+  "goal": "measure integrated line fluxes",
+  "method": {"value": "GoFish shift-and-stack correcting for Keplerian rotation, spectra extracted within 90 AU, integrated over 2.0-3.7 km/s defined from HC3N", "evidence": [
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "Spectra were extracted within a radius of 90 AU, based on the emission extent of HC$_3$N"},
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "GoFish analysis of HC3N J=12-11 shows emission from 2.0–3.7 km s$^{-1}$"}
+  ]},
+  "software": ["GoFish"],
+  "key_parameters": [
+   {"value": "i = 5 deg, PA = 152 deg, distance 60 pc, M* = 0.88 Msun", "evidence": [
+    {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "distance 60 pc, and stellar mass 0.88"}
+   ]},
+   {"value": "Extraction radius 90 AU; integration range 2.0-3.7 km/s", "evidence": [
+    {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "Using the same integration range between 2.0–3.7 km s$^{-1}$ yields fluxes of"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Well-established TW Hya parameters adopted from the literature", "evidence": [
+    {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "The well established parameters of TW Hya were adopted"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Authors state the flux does not alone confirm the detection because of low signal to noise", "evidence": [
+   {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "however due to low signal to noise, this does not alone confirm the detection of these transitions."}
+  ]}},
+ {"order": 6,
+  "goal": "derive HC5N column densities",
+  "method": {"value": "Direct optically thin LTE column density from each flux at assumed T_rot (20, 30, 40, 50 K), then averaged; no rotation diagram", "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "we opt to directly calculate column densities from the two fluxes and some assumed rotational temperature, and then average them."}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "T_rot range 20-50 K", "evidence": [
+    {"loc": "3.4 Column Density Analysis", "quote": "we can then estimate column densities of HC$_5$N for a range of 20K-50K"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "Optically thin emission in LTE", "evidence": [
+    {"loc": "abstract", "quote": "for assumed $T_{rot}$ = 20-50 K and optically thin emission in LTE"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Compared with HC3N column densities in disks and with model predictions", "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "A comparison to predictions of 2D time-dependent chemical models is presented in Section 4.2."}
+  ]}},
+ {"order": 7,
+  "goal": "compare with a 2D disk chemistry model",
+  "method": {"value": "Ran a small set of disk chemistry models at three C/O ratios and compared vertically integrated HC3N and HC5N column density profiles with the observed values", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "To aid interpretation of the observations we ran a small set of disk chemistry models."}
+  ]},
+  "software": [],
+  "key_parameters": [
+   {"value": "C/O = 0.57, 1.0, 1.5; Rc = 40 AU; disk mass 0.1 Msun; evolved 1 Myr", "evidence": [
+    {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "Three different C/O ratios were considered: 0.57 (solar-like), 1.0, and 1.5."}
+   ]},
+   {"value": "Cosmic ray ionization rate 1.3e-18 s-1", "evidence": [
+    {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "a cosmic ray ionization rate of $\\zeta_{\\rm CR} = (1.3)\\times10^{-18}$ s$^{-1}$"}
+   ]}
+  ],
+  "assumptions": [
+   {"value": "90% large dust grains; self-similar viscous surface density with exponential taper", "evidence": [
+    {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "The disk physical structure is described using a standard self-similar viscous surface-density prescription"}
+   ]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Model HC5N column density ~1e12 cm-2 in moderate agreement with estimate, especially for T_rot >= 30 K", "evidence": [
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "This value is in moderate agreement with our estimated column density"}
+  ]}}
+],
+"software": [
+ {"name": "CASA", "version": "6.1.1.15", "used_for": {"value": "Calibration, continuum subtraction and CLEAN imaging", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "natural weighting for maximum sensitivity in CASA 6.1.1.15."}
+ ]}},
+ {"name": "ALMA pipeline", "version": "2020.1.0.40", "used_for": {"value": "Initial observatory calibration", "evidence": [
+  {"loc": "2.2 Calibration and Imaging", "quote": "initially calibrated by the ALMA Observatory using the ALMA pipeline version 2020.1.0.40"}
+ ]}},
+ {"name": "GoFish", "version": "not stated", "used_for": {"value": "Shift-and-stack spectra and integrated flux measurement", "evidence": [
+  {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "We applied the `GoFish` package (cite: Teague_2019) to perform a shift and stack analysis"}
+ ]}},
+ {"name": "VISIBLE", "version": "not stated", "used_for": {"value": "Matched filter analysis (cited as Loomis_2018b)", "evidence": [
+  {"loc": "Software", "quote": "VISIBLE (cite: Loomis_2018b)"},
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "we employed a matched filtering technique (cite: Loomis_2018b) to enhance line detectability."}
+ ]}},
+ {"name": "Astropy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "Matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "NumPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+ {"name": "ChatGPT 5.1", "version": "5.1", "used_for": {"value": "Limited text editing and code formatting assistance", "evidence": [
+  {"loc": "Acknowledgments", "quote": "for limited assistance with text editing and code formatting."}
+ ]}}
+],
+"results_numeric": [
+ {"quantity": "HC5N J=37-36 matched-filter significance", "value": "3.4", "uncertainty": "not stated", "units": "sigma", "from_step": 4, "evidence": [
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "individual line significances of 3.4$\\sigma$ and 4.2$\\sigma$ for the J=37-36 and J=41-40 transitions, respectively"}
+ ]},
+ {"quantity": "HC5N J=41-40 matched-filter significance", "value": "4.2", "uncertainty": "not stated", "units": "sigma", "from_step": 4, "evidence": [
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "individual line significances of 3.4$\\sigma$ and 4.2$\\sigma$ for the J=37-36 and J=41-40 transitions, respectively"}
+ ]},
+ {"quantity": "HC5N stacked detection significance (two transitions)", "value": "5.3", "uncertainty": "not stated", "units": "sigma", "from_step": 4, "evidence": [
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "A stacked spectrum of the two transitions produces a 5.3$\\sigma$ detection of the species."}
+ ]},
+ {"quantity": "HC5N J=37-36 integrated flux density", "value": "3.7", "uncertainty": "3.5", "units": "mJy km/s", "from_step": 5, "evidence": [
+  {"loc": "Table 1", "quote": "3.7$\\pm$3.5"}
+ ]},
+ {"quantity": "HC5N J=41-40 integrated flux density", "value": "8.3", "uncertainty": "6.3", "units": "mJy km/s", "from_step": 5, "evidence": [
+  {"loc": "Table 1", "quote": "8.3$\\pm$6.3"}
+ ]},
+ {"quantity": "HC3N J=12-11 integrated flux density", "value": "275", "uncertainty": "28", "units": "mJy km/s", "from_step": 5, "evidence": [
+  {"loc": "Table 1", "quote": "275$\\pm$28"}
+ ]},
+ {"quantity": "HC5N column density at T_rot = 20 K", "value": "1.3e13", "uncertainty": "1.0e13", "units": "cm-2", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "$1.3\\pm1.0\\times10^{13}$"}
+ ]},
+ {"quantity": "HC5N column density at T_rot = 30 K", "value": "3.4e12", "uncertainty": "2.7e12", "units": "cm-2", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "$3.4\\pm2.7\\times10^{12}$"}
+ ]},
+ {"quantity": "HC5N column density at T_rot = 40 K", "value": "1.9e12", "uncertainty": "1.5e12", "units": "cm-2", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "$1.9\\pm1.5\\times10^{12}$"}
+ ]},
+ {"quantity": "HC5N column density at T_rot = 50 K", "value": "1.4e12", "uncertainty": "1.1e12", "units": "cm-2", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "$1.4\\pm1.1\\times10^{12}$"}
+ ]},
+ {"quantity": "HC3N column density at T_rot = 20 K", "value": "2.1e13", "uncertainty": "0.2e13", "units": "cm-2", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "$2.1\\pm0.2\\times10^{13}$"}
+ ]},
+ {"quantity": "HC3N/HC5N ratio at T_rot = 20 K", "value": "0.9-7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "| 0.9–7 |"}
+ ]},
+ {"quantity": "HC3N/HC5N ratio at T_rot = 50 K", "value": "8-63", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+  {"loc": "Table 2", "quote": "| 8–63 |"}
+ ]},
+ {"quantity": "Modelled disk-averaged HC5N column density", "value": "~1e12", "uncertainty": "not stated", "units": "cm-2", "from_step": 7, "evidence": [
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "while the HC$_5$N disk-averaged column density is $\\sim$10$^{12}$ cm$^{-2}$."}
+ ]}
+],
+"findings_qualitative": [
+ {"value": "HC5N is consistently less abundant than HC3N across the assumed T_rot range, consistent with the steep decline with chain length seen in cold clouds such as TMC-1", "evidence": [
+  {"loc": "4.1 Formation Chemistry & Emission Region of HC$_5$N", "quote": "we find that HC$_5$N is consistently less abundant than HC$_3$N"}
+ ]},
+ {"value": "Models need elevated C/O (above 1.0) to raise HC3N and HC5N column densities, with enhanced formation in the inner 10 AU", "evidence": [
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "Both show monotonically decreasing column densities with radius and elevated column densities when the C/O ratio is enhanced beyond 1.0"}
+ ]}
+],
+"claims": [
+ {"hypothesis": "Is HC5N, a larger cyanopolyyne, present in the Class II TW Hya disk?",
+  "experiment": "Band 3 observations of two HC5N lines analysed with a matched filter built from HC3N J=12-11 and a GoFish shift-and-stack",
+  "result": "3.4 and 4.2 sigma individually, 5.3 sigma stacked; fluxes 3.7 +/- 3.5 and 8.3 +/- 6.3 mJy km/s",
+  "finding": "First (tentative) detection of HC5N in a Class II disk",
+  "support": "partially",
+  "evidence": [
+   {"loc": "Summary", "quote": "We tentatively detected two individual HC$_5$N transitions in ALMA Band 3 with a 5.3$\\sigma$ stacked detection"},
+   {"loc": "abstract", "quote": "Here, we report the first detection of HC$_5$N toward the TW Hya protoplanetary disk"}
+  ]},
+ {"hypothesis": "What HC5N column density does the detection imply?",
+  "experiment": "Optically thin LTE column densities from the two GoFish fluxes at assumed T_rot of 20-50 K",
+  "result": "N_T of order 1e12 cm-2, 1.3e13 at 20 K down to 1.4e12 at 50 K",
+  "finding": "HC5N column density ~1e12 cm-2, one to two orders of magnitude below typical disk HC3N",
+  "support": "supported",
+  "evidence": [
+   {"loc": "3.4 Column Density Analysis", "quote": "We infer an HC$_5$N column density of $N_T \\sim10^{12}$ cm$^{-2}$ for assumed $T_{\\rm rot}$ = 20-50 K."}
+  ]},
+ {"hypothesis": "Does the HC3N/HC5N ratio follow the decline of cyanopolyynes with chain length seen in cold clouds?",
+  "experiment": "Compared HC5N and HC3N column densities from Table 2 across assumed temperatures",
+  "result": "HC5N consistently less abundant than HC3N",
+  "finding": "Disk chemistry can reach long carbon chains, with abundance declining rapidly with size",
+  "support": "partially",
+  "evidence": [
+   {"loc": "4.1 Formation Chemistry & Emission Region of HC$_5$N", "quote": "Our derived ratios therefore support the interpretation that disk chemistry can access long carbon-chain molecules"}
+  ]},
+ {"hypothesis": "Can a TW Hya-like disk chemistry model reproduce the HC5N abundance and where does it emit?",
+  "experiment": "2D time-dependent chemical models at C/O = 0.57, 1.0, 1.5 compared with the derived column densities",
+  "result": "Model HC5N disk-averaged column density ~1e12 cm-2, in moderate agreement, better for T_rot >= 30 K; elevated C/O needed",
+  "finding": "HC5N plausibly originates in the warm molecular layer where CN and small hydrocarbons coexist, with elevated C/O",
+  "support": "partially",
+  "evidence": [
+   {"loc": "Summary", "quote": "A simple chemical model supports this interpretation, predicting column densities consistent with the observed values and requiring elevated C/O ratios"},
+   {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "This value is in moderate agreement with our estimated column density"}
+  ]}
+],
+"reasoning": [
+ {"field": "why_this_data", "value": "The observations targeted HC3N and isotopologues; two HC5N lines fell in the setup as bonus lines", "evidence": [
+  {"loc": "2.1 Observational Details", "quote": "two transitions of HC$_{5}$N were targeted as ancillary bonus lines"}
+ ]},
+ {"field": "why_this_method", "value": "No obvious image-plane HC5N detection, so matched filtering was used to enhance detectability", "evidence": [
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "Given the lack of an obvious image plane detection of the individual HC$_5$N transitions, we employed a matched filtering technique"}
+ ]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "Multiple matched-filter kernels were tried and gave similar results", "evidence": [
+  {"loc": "3.2 Matched Filtering Analysis", "quote": "We examined multiple filter kernels, all of which had similar results"}
+ ]},
+ {"value": "A rotation diagram was not constructed because only two highly uncertain fluxes were available", "evidence": [
+  {"loc": "3.4 Column Density Analysis", "quote": "Rather than attempting to construct a rotation diagram from two highly uncertain flux values"}
+ ]}
+],
+"limitations_admitted": [
+ {"value": "Measured HC5N fluxes are low signal to noise and do not alone confirm the detection", "evidence": [
+  {"loc": "3.3 GoFish Spectra and Flux Measurements", "quote": "due to low signal to noise, this does not alone confirm the detection of these transitions."}
+ ]},
+ {"value": "Column densities are rough, rely on assumed T_rot, and the emission is unresolved", "evidence": [
+  {"loc": "3.4 Column Density Analysis", "quote": "These measured fluxes are quite uncertain, but allow us to roughly constrain a disk averaged column density"},
+  {"loc": "Summary", "quote": "Although our observations do not resolve any radial or vertical structure"}
+ ]},
+ {"value": "Inner 10 AU model results may be unreliable owing to model resolution and possible C/O depletion", "evidence": [
+  {"loc": "4.2 Comparison of Chemical Models and Observations", "quote": "we caution that interpretation of these regions of the disk may be difficult both due to model resolution"}
+ ]}
+],
+"referee_caveats_inferred": [
+ "The detection rests on a 5.3 sigma stack of two lines with individually marginal (3.4 and 4.2 sigma) significance and flux errors near 100 percent for one line",
+ "The matched-filter kernel is taken from HC3N, which presumes identical morphology and may bias significance",
+ "Column densities depend on an assumed T_rot and an unstated emitting area; HC3N/HC5N ratios span an order of magnitude",
+ "Only a single chemical model family at three C/O values is compared, with no fit",
+ "No independent confirmation (e.g. additional HC5N transitions) is presented"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+ "Self-calibration solution intervals and line-free channels for continuum subtraction",
+ "Full tclean parameters, cube velocity resolution and primary-beam handling",
+ "VISIBLE matched-filter details and significance estimation",
+ "Emitting solid angle and FWHM in the column density equation, and how Table 2 HC3N values were derived",
+ "Chemical model code and updated binding energies, not released"
+],
+"estimated_data_volume_inferred": "Several tens of GB of raw/calibrated data for seven Band 3 execution blocks (7 EBs, 325 min on source, 7 spectral windows)",
+"score_inferred": 3,
+"score_reason": "ALMA project code and main settings (calibrators, pipeline/CASA versions, beam, rms, GoFish geometry, T_rot range) are given, but self-calibration and imaging parameters, matched-filter implementation and emitting area are not, and the model code is not released.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data public status is not stated and key self-calibration, imaging and column-density inputs are missing, so the 5.3 sigma detection and Table 2 values could not be redone exactly from the text alone.",
+"methods_papers": [
+ {"citation": "(cite: Loomis_2018b)", "why": "Matched filter technique and VISIBLE"},
+ {"citation": "(cite: Teague_2019)", "why": "GoFish package"},
+ {"citation": "(cite: Yen_2016)", "why": "Shift and stack analysis"},
+ {"citation": "(cite: Loomis_2018a)", "why": "Optically thin column density formula"},
+ {"citation": "(cite: Hunter_2023)", "why": "ALMA pipeline"},
+ {"citation": "(cite: Fogel_2011)", "why": "Base 2D time-dependent disk chemistry code"}
+],
+"companion_papers": [
+ {"citation": "(cite: Huang_2018)", "why": "TW Hya disk geometry and Keplerian emission range"},
+ {"citation": "(cite: Bergner_2018)", "why": "HC3N column densities in disks for comparison"},
+ {"citation": "(cite: Ilee_2021)", "why": "HC3N column densities in disks for comparison"}
+],
+"related_projects_or_surveys": ["ALMA Cycle 6 project 2019.1.00769.S"]
+}

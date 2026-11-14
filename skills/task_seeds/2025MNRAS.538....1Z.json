@@ -1,0 +1,505 @@
+{
+ "bibcode": "2025MNRAS.538....1Z",
+ "title": "ATOMS: ALMA Three-millimeter Observations of massive Star-forming regions - XX. Probability distribution function of integrated intensity for dense molecular gas tracers",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf176",
+ "arxiv_id": "2501.16682",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Investigate the correlation between gravitationally bound gas and star formation by analyzing integrated intensity probability distribution functions (I-PDFs) and power-law tails of dense molecular gas tracers across massive star-forming clumps.",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "12-m and ACA 7-m",
+  "angular_resolution": "~2 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Global dust temperature, clump mass, bolometric luminosity, distance, and radius of target clumps",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS",
+      "quote": "The global dust temperature, mass, and luminosity of these 146 targets were obtained from the infared spectral energy distribution (SED) fitting (Faúndez et al. 2004; Urquhart et al. 2018), and are categorized in Table A1 of Liu et al. (2020a)."
+     },
+     {
+      "loc": "4.1 power-law slope s",
+      "quote": "The volume area is c' [2], where R (compiled by Liu et al. 2020a) is the radius of the clump."
+     }
+    ]
+   },
+   "citation": "Faúndez et al. (2004); Urquhart et al. (2018); Liu et al. (2020a)"
+  },
+  {
+   "what": {
+    "value": "[12C]/[13C] abundance ratio as a function of Galactocentric distance",
+    "evidence": [
+     {
+      "loc": "3.2 The L bol -L mol scaling relations",
+      "quote": "We assummed the abundance ratio X 12 /X 13 =[HCO [+] ]/[H [13] CO [+] ] as a function of Galactocentric distance as given by Pineda et al. (2013),"
+     }
+    ]
+   },
+   "citation": "Pineda et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Smooth images to uniform linear resolution within distance intervals and generate integrated intensity maps",
+   "method": "Divide 135 sources into three distance intervals (<3 kpc, 3-6 kpc, >6 kpc), smooth within each interval using CASA to uniform linear resolution, and produce integrated intensity maps for the six molecular transitions.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Linear resolutions: 0.03 kpc (< 3 kpc), 0.07 kpc (3 to 6 kpc), 0.15 kpc (> 6 kpc)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Construct and fit integrated intensity probability distribution functions (I-PDFs)",
+   "method": "Fit the lower-intensity side of the I-PDF peak with a log-normal distribution, subtract the best-fit log-normal profile from the overall I-PDF, and fit the remaining high-intensity component with a linear regression power-law fit.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "I-PDF is composed of a log-normal distribution at low intensity and a power-law tail at high intensity."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate power-law tail molecular line luminosities and fit L_bol - L_mol(p) scaling relations",
+   "method": "Calculate molecular line luminosity for the power-law high-intensity component L_mol(p) from velocity-integrated flux, line frequency, and distance, then fit L_bol vs L_mol(p) scaling relations in log-log space.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate optical depths of HCO+, H13CO+, HCN, and H13CN",
+   "method": "Measure average brightness temperature within a 30 arcsec circular aperture centered on each source and solve the brightness temperature ratio equation between main and 13C isotopologue lines.",
+   "software": [],
+   "key_parameters": [
+    "Circular region aperture = 30 arcsec"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE) and identical excitation temperature for main and isotopologue lines",
+    "Beam-filling factor = 1 and cosmic background temperature T_bg = 2.73 K",
+    "Isotope abundance ratio X_12/X_13 = 4.7 * R_gal + 25.05"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze correlations of I-PDF power-law slope s and equivalent density profile exponent alpha with clump properties and star formation efficiency",
+   "method": "Examine power-law slope s against L/M and clump surface density; convert H13CO+ slope s into radial density profile exponents for spheres and filaments; compute Spearman rank correlation coefficients and linear fits with R^2 between L_bol/L_mol(p) and s or alpha.",
+   "software": [],
+   "key_parameters": [
+    "Outlier rejection for alpha_c > 2.5 (3 points excluded)"
+   ],
+   "assumptions": [
+    "H13CO+ is optically thin so intensity is directly proportional to column density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median I-PDF power-law tail slope s for H13CN (J=1-0)",
+   "value": "-1.98",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median I-PDF power-law tail slope s for H13CO+ (J=1-0)",
+   "value": "-2.28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median I-PDF power-law tail slope s for CS (J=2-1)",
+   "value": "-2.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median I-PDF power-law tail slope s for HCN (J=1-0)",
+   "value": "-2.19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median I-PDF power-law tail slope s for HCO+ (J=1-0)",
+   "value": "-2.10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median I-PDF power-law tail slope s for HC3N (J=11-10)",
+   "value": "-2.02",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity probability distribution functions",
+     "quote": "The median values of s for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -1.98, -2.28, -2.01, -2.19, -2.10, -2.02, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for H13CN (J=1-0)",
+   "value": "1.0",
+   "uncertainty": "± 0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for H13CO+ (J=1-0)",
+   "value": "0.94",
+   "uncertainty": "± 0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for CS (J=2-1)",
+   "value": "0.93",
+   "uncertainty": "± 0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for HCN (J=1-0)",
+   "value": "0.82",
+   "uncertainty": "± 0.09",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for HCO+ (J=1-0)",
+   "value": "0.83",
+   "uncertainty": "± 0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_bol - L_mol(p) correlation slope for HC3N (J=11-10)",
+   "value": "0.98",
+   "uncertainty": "± 0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The slope of the correlation for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are 1.0 ± 0.07, 0.94 ± 0.07, 0.93 ± 0.07, 0.82 ± 0.09, 0.83 ± 0.08, 0.98 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical optical depth of H13CO+ (J=1-0)",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The optical depth for the majority of sources of H [13] CO [+] is approximately 0.2, whereas for HCO [+] it is around 10."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical optical depth of HCO+ (J=1-0)",
+   "value": "~10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 The L bol -L mol scaling relations",
+     "quote": "The optical depth for the majority of sources of H [13] CO [+] is approximately 0.2, whereas for HCO [+] it is around 10."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for H13CN",
+   "value": "-0.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for H13CO+",
+   "value": "-0.27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for CS",
+   "value": "-0.42",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for HCN",
+   "value": "-0.52",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for HCO+",
+   "value": "-0.43",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rank correlation coefficient between L_bol/L_mol(p) and slope s for HC3N",
+   "value": "-0.37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The SRC coefficients for H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.35, -0.27, -0.42, -0.52, -0.43 and -0.37, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for H13CN",
+   "value": "-0.33",
+   "uncertainty": "± 0.07",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for H13CO+",
+   "value": "-0.17",
+   "uncertainty": "± 0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for CS",
+   "value": "-0.37",
+   "uncertainty": "± 0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for HCN",
+   "value": "-0.43",
+   "uncertainty": "± 0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for HCO+",
+   "value": "-0.32",
+   "uncertainty": "± 0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and slope s for HC3N",
+   "value": "-0.4",
+   "uncertainty": "± 0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 power-law slope s",
+     "quote": "The slope of L bol -to-L mol 0 [ratios] [and] [the] [slope] [s] [correlation] [for] H [13] CN, H [13] CO [+], CS, HCN, HCO [+], HC 3 N are -0.33 ± 0.07, -0.17 ± 0.05, -0.37 ± 0.06, -0.43 ± 0.05, -0.32 ± 0.05, -0.4 ± 0.08, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Spherical equivalent density distribution exponent alpha_c for H13CO+",
+   "value": "1.4 to 3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 power-law slope s of H 13 CO +",
+     "quote": "The values we obtain for U 2 vary around 1.4 to 3 which is consistent with the spherical free-fall scenario."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear regression slope between L_bol/L_mol(p) and alpha_c for H13CO+",
+   "value": "-0.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 power-law slope s of H 13 CO +",
+     "quote": "The correlation between U 2 and the L bol -to-L mol ( ? ) ratio is weak, with a slope of -0.67 and an < [2] value of 0.11."
+    }
+   ]
+  },
+  {
+   "quantity": "Cylindrical/filamentary equivalent density distribution exponent alpha_f for H13CO+",
+   "value": "1.2 to 1.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 power-law slope s of H 13 CO +",
+     "quote": "The values we obtain for U 5 vary around 1.2 to 1.8 which are consistent with self-gravitating but non-collapsing filament models (Toci & Galli 2015; Myers 2015)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration, imaging, and smoothing (the text has a typo saying 'using the CASA version' without the number)",
+  "Velocity ranges or masking thresholds used to generate the integrated intensity (moment 0) maps",
+  "Binning parameters and intensity threshold/break point separating the log-normal fit from the power-law tail in the I-PDF fitting",
+  "Exact rest frequencies used for the six molecular transitions in the line luminosity equation",
+  "Specific CASA task used for spatial smoothing (e.g., imsmooth)"
+ ],
+ "missing_for_reproduction": [
+  "Exact velocity integration windows or moment-0 masking thresholds for each source and line",
+  "Criterion used to define the fitting range of the low-intensity log-normal peak and the break point for the high-intensity power-law tail",
+  "CASA version number (omitted in manuscript text)",
+  "Complete machine-readable Table 1 for all 135 sources and all 6 molecular tracers (referenced as online supplementary material)"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "Public ALMA project code (2019.1.00685.S) and clear high-level analytical equations (line luminosity, optical depth, density exponent conversion), plus online supplementary tables, but missing low-level parameters for moment-0 integration ranges and the exact I-PDF log-normal/power-law separation algorithm.",
+ "rediscovery_reason": "The ALMA data are public under 2019.1.00685.S, target metadata are published in Liu et al. (2020a), and the main outputs are quantitative scaling slopes and correlation coefficients across 135 clumps.",
+ "source_card": "cards/2025MNRAS.538....1Z/sonnet/card.md"
+}

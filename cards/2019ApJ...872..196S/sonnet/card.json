@@ -1,0 +1,1065 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...872..196S",
+  "title": "Implications of a Hot Atmosphere/Corino from ALMA Observations toward NGC 1333 IRAS 4A1",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Sahu, Dipen",
+  "n_authors": 7,
+  "arxiv_id": "1901.05424",
+  "doi": "10.3847/1538-4357/aaffda",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00147.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report high angular resolution observations of NGC1333 IRAS4A, a protostellar binary including A1 and A2, at 0.84 mm with the Atacama Large Millimeter/submillimeter Array."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1333 IRAS 4A (A1 and A2)",
+     "coordinates": {
+      "value": "03 29 10.50 +31 13 31.5 (J2000 phase centre)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The phase centre of the observations was set at R.A.(J2000) = 03$^d$ 29$^m$ 10.50$^s$ , Dec.(J2000) =+31$^\\circ$13$'$ 31.5$''$"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "A recent result from GAIA measured the distance of Perseus molecular cloud to be 293$\\pm$22 pc (cite: ortiz18; zucker18), we adopt this updated distance ($\\sim$293 pc) throughout the paper."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "293 pc",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The phase centre of the observations was set at R.A.(J2000) = 03$^d$ 29$^m$ 10.50$^s$ , Dec.(J2000) =+31$^\\circ$13$'$ 31.5$''$"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "A recent result from GAIA measured the distance of Perseus molecular cloud to be 293$\\pm$22 pc (cite: ortiz18; zucker18), we adopt this updated distance ($\\sim$293 pc) throughout the paper."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia distance to Perseus (Ortiz-Leon et al. 2018; Zucker et al. 2018)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The phase centre of the observations was set at R.A.(J2000) = 03$^d$ 29$^m$ 10.50$^s$ , Dec.(J2000) =+31$^\\circ$13$'$ 31.5$''$"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "A recent result from GAIA measured the distance of Perseus molecular cloud to be 293$\\pm$22 pc (cite: ortiz18; zucker18), we adopt this updated distance ($\\sim$293 pc) throughout the paper."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do the protostellar binary cores IRAS 4A1 and 4A2 host complex organic molecules, and what do the continuum opacity and COM absorption/emission imply for the nature of A1?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we report, for the first time, the solid evidence of complex organic molecules (COMs), including CH$_3$OH, $^{13}$CH$_3$OH, CH$_2$DOH, CH$_3$CHO associated with the A1 core seen in absorption."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00147.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The observations of IRAS 4A were carried out by ALMA under the project code 2015.1.00147.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (0.84 mm)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Three Execution Blocks (EBs) were conducted with ALMA Band 7 receiver on 2016 Jul. 23 and 24 and 2016 Dec. 14."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Seven spectral windows; analysed broadband window centred at 350.714 GHz, 1.875 GHz bandwidth, 976 kHz channels (0.84 km/s, Hanning-smoothed)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "including one broadband window centered at 350.714 GHz whose bandwidth and spectral channel width are 1.875 GHz and 976 kHz, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH",
+     "transition": "vt=0 1(1,1)-0(0,0)++ and others",
+     "rest_frequency": "350905.12 MHz (this line)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "vt=0 1(1,1) - 0(0,0)++          | 350905.12"
+      }
+     ]
+    },
+    {
+     "species": "13CH3OH",
+     "transition": "vt=0 1(1,0)-0(0,0)++, 8(1,7)-7(2,5)",
+     "rest_frequency": "350103.12, 350421.58 MHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "vt=0 1(1,0) - 0(0,0)++          | 350103.12"
+      }
+     ]
+    },
+    {
+     "species": "CH2DOH",
+     "transition": "several e1 transitions",
+     "rest_frequency": "349862-350632 MHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "8(4,4) - 8(3,6)  e$_1$          | 349864.35"
+      }
+     ]
+    },
+    {
+     "species": "CH3CHO",
+     "transition": "18-17 transitions",
+     "rest_frequency": "350133-351119 MHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "v=0 18(1,17) - 17(1,16) E       | 350362.84"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array, 39, 42 and 43 antennas in the three EBs",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The number of antennas in the 12 M array for the three EBs were respectively 39, 42, and 43."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.30'' x 0.20'' continuum; 0.31'' x 0.20'' cubes",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting synthesized beam size is 0.30$''$ $\\times$ 0.20$''$ (PA=-6.45$^\\circ$) for the continuum map"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms ~8 mJy/beam continuum, 3 mJy/beam cubes",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The resulting rms level is $\\sim$ 8 mJy beam$^{-1}$ and 3 mJy beam$^{-1}$ in the continuum image and spectral cubes, respectively"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "about 84 min",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the total integration time on-source was approximately 84 mins."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2016 Jul 23, 24 and Dec 14",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Three Execution Blocks (EBs) were conducted with ALMA Band 7 receiver on 2016 Jul. 23 and 24 and 2016 Dec. 14."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Single-dish 0.85 mm peak flux densities (10.3 and 9.05 Jy/beam)",
+      "evidence": [
+       {
+        "loc": "3.1 Dust continuum emission",
+        "quote": "reported a peak flux density of 10.3 Jy beam$^{-1}$ within a 16${''}$ beam toward IRAS 4A."
+       }
+      ]
+     },
+     "citation": "Smith et al. 2000 (cite: smith00); Sandell & Knee 2001 (cite: sand01)"
+    },
+    {
+     "what": {
+      "value": "ALMA 1.2 mm peak flux of 542 mJy toward A1",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Opacity",
+        "quote": "detected with ALMA a peak continuum flux of 542 mJy towards the A1 centroid"
+       }
+      ]
+     },
+     "citation": "(cite: lopez17)"
+    },
+    {
+     "what": {
+      "value": "VLA 8.1 and 10.3 mm peak fluxes of 4.151 and 2.759 mJy toward A1",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Opacity",
+        "quote": "measured peak continuum fluxes of 4.151 mJy and 2.759 mJy at 8.1 mm and 10.3 mm, respectively, towards A1"
+       }
+      ]
+     },
+     "citation": "(cite: cox15)"
+    },
+    {
+     "what": {
+      "value": "Line catalogs JPL and CDMS for synthetic spectra",
+      "evidence": [
+       {
+        "loc": "3.2 Detected molecules",
+        "quote": "employing the JPL (cite: pick98) and CDMS (cite: muller01; muller05) databases"
+       }
+      ]
+     },
+     "citation": "(cite: pick98); (cite: muller01; muller05)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA observatory pipeline",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were first calibrated by the ALMA observatory through the data reduction pipeline"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Common Astronomy Software Application package (CASA, version 4.7 (cite: mcmullin07))"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "calibration error ~10%",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "there are calibration error $\\sim 10\\%$, we have not included it here."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We used Briggs weighting with a robustness parameter of 0.5 for forming the images."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "fit and subtract continuum in visibility domain",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "by fitting and subtracting continuum emission in the visibility domain"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.30'' x 0.20'' (PA -6.45 deg) continuum; 0.31'' x 0.20'' (PA -24 deg) cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "0.31$''$ $\\times$ 0.20$''$ (P.A= -24$^\\circ$) for the spectral data cubes"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~8 mJy/beam continuum; 3 mJy/beam cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The resulting rms level is $\\sim$ 8 mJy beam$^{-1}$ and 3 mJy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Full observational setup described in a forthcoming paper",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "more details about the full observational setup can be found in our forthcoming paper (Su et al. 2019)"
+       }
+      ]
+     },
+     "from_reference": "Su et al. 2019"
+    },
+    {
+     "what": {
+      "value": "Dust opacity law",
+      "evidence": [
+       {
+        "loc": "3.1 Dust continuum emission",
+        "quote": "a dust opacity $\\kappa_{\\nu}$ = 0.006 ($\\nu$/245 GHz) $^\\beta$ cm$^2$ g$^{-1}$ (Kramer et al. 1998; Shepherd & Watson 2002)"
+       }
+      ]
+     },
+     "from_reference": "Kramer et al. 1998; Shepherd & Watson 2002"
+    },
+    {
+     "what": {
+      "value": "Rotation diagram method",
+      "evidence": [
+       {
+        "loc": "3.3 Gas temperatures",
+        "quote": "we may estimate the gas temperature using the rotation diagram method ((cite: turner91; herbst09) and references therein)"
+       }
+      ]
+     },
+     "from_reference": "(cite: turner91; herbst09)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels used for continuum fitting/subtraction",
+    "Image size, cell size, deconvolver, masks and clean thresholds",
+    "Flux, bandpass and phase calibrators",
+    "Integration velocity ranges for moment maps",
+    "Partition functions and line strengths used in rotation diagrams",
+    "Details of how 2D Gaussian fits and stacking were done",
+    "Whether self-calibration was applied"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and cubes",
+    "method": {
+     "value": "Pipeline calibration, visibility-domain continuum subtraction, Briggs imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We then generated both the 0.84 mm continuum and spectral visibilities by fitting and subtracting continuum emission in the visibility domain."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "MIRIAD"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "We used Briggs weighting with a robustness parameter of 0.5 for forming the images."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit continuum components and derive masses",
+    "method": {
+     "value": "Two-component 2D Gaussian fit to each source; optically thin dust mass",
+     "evidence": [
+      {
+       "loc": "3.1 Dust continuum emission",
+       "quote": "We applied a two-component 2D Gaussian fitting to the two sources and summarize the fitting results in Table [1](#tb-cont-fit)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "gas-to-dust 100, Tdust 60 K, beta 1.5, d = 293 pc, optically thin",
+      "evidence": [
+       {
+        "loc": "3.1 Dust continuum emission",
+        "quote": "Assuming a gas-to-dust ratio of 100, a (uniform) dust temperature of 60 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with single-dish 0.85 mm fluxes; missing flux judged not severe",
+     "evidence": [
+      {
+       "loc": "3.1 Dust continuum emission",
+       "quote": "we conclude that the missing flux issue, though may result from the most extended envelope, is not severe"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify lines",
+    "method": {
+     "value": "Synthetic spectra from JPL/CDMS in CASSIS compared with observed spectra",
+     "evidence": [
+      {
+       "loc": "3.2 Detected molecules",
+       "quote": "we generated synthetic spectra within CASSIS."
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [
+     {
+      "value": "vsys = 6.96 km/s; match at 3 sigma for Aij >= 1e-5",
+      "evidence": [
+       {
+        "loc": "3.2 Detected molecules",
+        "quote": "Essentially all isolated transitions from these molecules with their Einstein co-efficient $A_{ij} \\geq 10^{-5}$ are well matched (at a level of 3$\\sigma$ and above)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit line profiles",
+    "method": {
+     "value": "Gaussian profile fitting giving intensity, Vlsr, width",
+     "evidence": [
+      {
+       "loc": "3.2 Detected molecules",
+       "quote": "We applied Gaussian profile fitting for extracting the spectral parameters of the identified features."
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Velocities of transitions of one molecule consistent",
+     "evidence": [
+      {
+       "loc": "3.2 Detected molecules",
+       "quote": "The fitting results of spectral profiles from different transitions of a molecule have peak around a common LSR velocity"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive Trot and column densities",
+    "method": {
+     "value": "Rotation diagram, LTE; for A1 absorption (Scenario I) optically thin foreground layer against continuum background",
+     "evidence": [
+      {
+       "loc": "3.3 Gas temperatures",
+       "quote": "we assume that most, if not all, of the observed transitions in A1 are optically thin and there is no saturation in absorption."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Trot assumed 200 K where no diagram fit",
+      "evidence": [
+       {
+        "loc": "3.3 Gas temperatures",
+        "quote": "for molecules where do not have any estimation of rotational temperature, we choose the temperature to be 200 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, single Trot",
+      "evidence": [
+       {
+        "loc": "3.3 Gas temperatures",
+        "quote": "characterized by a single (rotation) temperature T$_{ex} =$ T$_{rot}$, if its excitation is assumed in local thermodynamic equilibrium (LTE)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare continuum brightness temperatures across wavelengths and deuteration",
+    "method": {
+     "value": "Brightness temperatures from ALMA, JVLA, VLA; smooth ALMA to JVLA beam; 13CH3OH/CH2DOH ratios with 12C/13C ~ 70",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Opacity",
+       "quote": "We, for example, smooth our ALMA 0.84 mm continuum to have the same beam size as that of the JVLA 6.9 mm observations"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "12C/13C ~ 70",
+      "evidence": [
+       {
+        "loc": "4.4 Deuterium Fractionation",
+        "quote": "If we consider $^{12}$C/$^{13}$C $\\sim$ 70 (cite: sheffer07)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7",
+    "used_for": {
+     "value": "Pipeline calibration",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Common Astronomy Software Application package (CASA, version 4.7 (cite: mcmullin07))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIRIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Image inspection and spectral line analysis",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We subsequently used MIRIAD (cite: sault95) and CASSIS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASSIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification, synthetic spectra and analysis",
+     "evidence": [
+      {
+       "loc": "3.2 Detected molecules",
+       "quote": "We visualized the spectral data in CASSIS for initial line identifications."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total recovered continuum flux density",
+    "value": "7.24",
+    "uncertainty": "not stated",
+    "units": "Jy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum emission",
+      "quote": "Overall we recovered within the region a flux density of 7.24 Jy."
+     }
+    ]
+   },
+   {
+    "quantity": "A1-A2 separation",
+    "value": "1.8",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum emission",
+      "quote": "is 1.8$''$, in agreement with previous measurements"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak brightness temperature A1 / A2",
+    "value": "57 / 42",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum emission",
+      "quote": "The brightness temperatures derived from the observed peak continuum are 57 K and 42 K towards A1 and A2, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Masses A1 compact, A1 extended, A2 compact, A2 extended",
+    "value": "0.15, 0.49, 0.07, 0.50",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 4A1    | compact   | 03 29 10.538 | +31 13 30.93 | 923       | 0.397                | 0.354                | 64.1         | 0.15        |"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 column density toward A1 centroid",
+    "value": ">= 1.3e26",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Dust continuum emission",
+      "quote": "the H$_2$ column density toward the 4A1 centroid is estimated to be at least 1.3 $\\times$ 10$^{26}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Trot 13CH3OH in A2 / CH3CHO in A2",
+    "value": "375.13 / 261.31",
+    "uncertainty": "270.02 / 10.79",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Gas temperatures",
+      "quote": "we obtained rotation temperatures of 375.13$\\pm$270.02 K and 261.31$\\pm$10.79 K for $^{13}$CH$_3$OH and the CH$_3$CHO, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Trot CH3OH / 13CH3OH in A1",
+    "value": "140.39 / 58.94",
+    "uncertainty": "6.63 / 3.74",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Gas temperatures",
+      "quote": "rotation temperatures for CH$_3$OH and $^{13}$CH$_3$OH are 140.39$\\pm$6.63 K and 58.94$\\pm$ 3.74 K, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH column density in A1",
+    "value": ">= 1.14e17",
+    "uncertainty": "0.17e17",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$\\leq 140.39 \\pm 6.63$ K  | $\\geq (1.14 \\pm 0.17)\\times 10^{17}$"
+     }
+    ]
+   },
+   {
+    "quantity": "13CH3OH/CH2DOH ratio A2 and A1",
+    "value": "2.47 and 0.29",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 Deuterium Fractionation",
+      "quote": "The $^{13}$CH$_3$OH/CH$_2$DOH ratio for A2 and A1 is 2.47 and 0.29 (considering the average value) respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "CH2DOH/CH3OH lower limit A2 and A1",
+    "value": "0.6e-2 and 4.9e-2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 Deuterium Fractionation",
+      "quote": "then the lower limit of CH$_2$DOH/CH$_3$OH ratio in A2 and A1 becomes the 0.6$\\times 10^{-2}$ and 4.9$\\times 10^{-2}$ respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "A1 peak brightness smoothed to JVLA 6.9 mm beam",
+    "value": "39",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Opacity",
+      "quote": "find the resulting A1 peak brightness be 39 K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "COMs (CH3OH, 13CH3OH, CH2DOH, CH3CHO) seen in absorption toward A1 against optically thick continuum; A2 shows emission from a hot corino",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "A forest of spectral line emissions is observed towards A2, while spectral transitions towards A1 are detected in absorption."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the A1 continuum optically thick while A2 is optically thin?",
+    "experiment": "Compare brightness temperatures from 0.84 mm to 10 mm and line absorption",
+    "result": "Comparable brightness (~40-80 K) from 10 mm to 0.84 mm for A1; A2 much weaker at 6.9 mm",
+    "finding": "A1 continuum likely optically thick, A2 predominantly optically thin",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "The dust continuum emission towards the core A2 is found to be predominantly optically thin at this scale while the continuum emission towards A1 is most likely to be optically thick."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does A1 host COMs?",
+    "experiment": "Line identification in the 350 GHz band",
+    "result": "Absorption by CH3OH, 13CH3OH, CH2DOH, CH3CHO toward A1",
+    "finding": "COMs are associated with A1, in a compact region",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The absorption features mostly arise from a compact region around the continuum peak position of the A1 core."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Origin of A1 absorption",
+    "experiment": "Rotation diagrams under optically thin (Scenario I) vs saturated (Scenario II) absorption",
+    "result": "Trot ~100 K, compact <~73 AU absorbing layer; no infall signature",
+    "finding": "Either hot-corino-like atmosphere over an optically thick disk, or temperature-stratified envelope; not distinguished",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we propose two possible scenarios for IRAS 4A1 - the COM absorption lines may arise from a hot-corino-like atmosphere at the surface of an optically-thick circumstellar disk around A1"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the methanol deuteration indicate a hot-corino environment in A1?",
+    "experiment": "Estimate CH2DOH/CH3OH from 13CH3OH and CH2DOH columns",
+    "result": "Ratios of order 1e-2 in both sources",
+    "finding": "Low deuteration suggests hot gas (~100 K) in both",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "This low deuterium fractionation in both sources may imply a hot gas condition ($\\sim 100$ K) typical to a hot corino."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Common foreground origin and outflow-shock origin of COM features were ruled out",
+     "evidence": [
+      {
+       "loc": "4.2 COM Features",
+       "quote": "strongly ruling out a common (foreground) origin of the observed COM absorption and emission."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Rotation temperatures are upper limits and column densities lower limits because low-Eu lines may be optically thick; large uncertainty in 13CH3OH columns; assumed 200 K",
+     "evidence": [
+      {
+       "loc": "3.3 Gas temperatures",
+       "quote": "These temperatures should be taken as upper limits though, as their corresponding lower E$_u$ lines are possibly optically thick."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Rotation-diagram temperatures rest on few lines, some blended, with huge uncertainty for 13CH3OH in A2",
+    "Assumed 200 K Trot and 12C/13C=70 drive the deuteration ratios",
+    "Beam filling factor and absorption saturation are unconstrained",
+    "Scenarios for A1 are not discriminated",
+    "Single dust temperature of 60 K for masses"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA project cited, public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgment",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00147.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, masks, line-free channels)",
+    "Calibrator information",
+    "Integration ranges and fitting windows for lines",
+    "Partition function and spectroscopic constants used"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for three EBs; ~10 GB for the broadband spw products",
+   "score_inferred": 3,
+   "score_reason": "Data identified by project code and key steps described, but imaging and fitting details are sparse.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe lacks imaging and line-fit details, and the results rely on interpretive scenarios and assumptions."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Turner 1991 (cite: turner91)",
+     "why": "Rotation diagram equations"
+    },
+    {
+     "citation": "Goldsmith & Langer 1999 (cite: goldsmith99)",
+     "why": "Opacity correction to column density"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Su et al. 2019",
+     "why": "Forthcoming paper with full observational setup"
+    },
+    {
+     "citation": "López-Sepulcre et al. 2017 (cite: lopez17)",
+     "why": "Previous ALMA/PdBI study of COMs in IRAS 4A"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "VANDAM survey",
+    "PROSAC survey"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-49b03d54c3c434563ac65258231e8287",
+  "batch_id": "msgbatch_019YWVxz74gaBdDUmtwUveVm",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:54:03",
+  "usage": {
+   "input_tokens": 29709,
+   "output_tokens": 9517,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.0779,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 70,
+  "quotes_ok": 70,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 46,
+   "rate": 0.575
+  },
+  "evidence_ok": true
+ }
+}

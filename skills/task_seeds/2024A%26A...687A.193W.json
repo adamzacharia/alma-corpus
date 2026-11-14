@@ -1,0 +1,271 @@
+{
+ "bibcode": "2024A&A...687A.193W",
+ "title": "Continuum and spectral-line observations of the OH megamaser galaxy IRAS 01298‒0744",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202450206",
+ "arxiv_id": null,
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Investigate the high-resolution properties of OH line and radio continuum emission from IRAS 01298−0744 and their relationship with the nuclear region's environment, merging phase, radio AGN, dense gas, and possible low-velocity outflows.",
+ "alma_project_codes": [
+  "2017.1.00057.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "150 × 120 mas (PA −55 deg)",
+  "sensitivity": "0.53 mJy beam−1 (HCN), 0.47 mJy beam−1 (HCO+), 0.032 mJy beam−1 (Continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Single-dish GBT OH line profile",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The OH line profile obtained from GBT observations by Willett (2012) is represented by the solid line."
+     }
+    ]
+   },
+   "citation": "Willett (2012)"
+  },
+  {
+   "what": {
+    "value": "Normalised Na I D spectra",
+    "evidence": [
+     {
+      "loc": "Figure 1 caption",
+      "quote": "The normalised Na I D spectra from Rupke et al. (2005) are represented by the black dotted line in the right panel."
+     }
+    ]
+   },
+   "citation": "Rupke et al. (2005)"
+  },
+  {
+   "what": {
+    "value": "HCN and HCO+ line FWHMs and velocity maps",
+    "evidence": [
+     {
+      "loc": "4.2. Comparing OH with sub-millimetre line emission",
+      "quote": "HCN and HCO+ line emissions from IRAS 01298−0744 have been detected by Imanishi et al. (2019). The full widths at half-maximum (FWHMs) of the two lines are 621 and 634 km s−1, respectively"
+     }
+    ]
+   },
+   "citation": "Imanishi et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image VLBA OH and radio continuum data",
+   "method": "Calibrate VLBA data in AIPS, image continuum and spectral line in DIFMAP, subtract continuum using CLEANed continuum map, and extract integrated OH profile over a 50x50 mas region.",
+   "software": [
+    "AIPS",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "integration area ~ 50 x 50 mas, channel width 3.8 km s−1"
+   ],
+   "assumptions": [
+    "Heliocentric velocity with optical definition; H0 = 73 km s−1 Mpc−1, Omega_M = 0.27, Omega_Lambda = 0.73"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit OH spectral line components and map velocity structure",
+   "method": "Extract spectra at each pixel across a 50 mas region and fit single or multiple Gaussian components to line profiles at components A, B, C, D, and positions OH1-8.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Square region 50 mas in size"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Restore, reimage, and extract ALMA HCN, HCO+, and continuum data for comparison",
+   "method": "Restore pipeline-calibrated ALMA data, bin channels to 14 km s−1, reimage HCN and HCO+ lines, extract spectra from a 150 mas radius circular region smoothed to 45 km s−1, and compare spatially and kinematically with VLBA OH and continuum.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5, gain = 0.1, extraction radius ~ 150 mas, smoothed to 45 km s−1"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Recovered fraction of single-dish OH line emission",
+   "value": "82",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We recover over 82% of the OH line emission seen in single-dish observations"
+    },
+    {
+     "loc": "3. Results",
+     "quote": "Moreover, the VLBA observation captures over 82% of the integrated flux densities across the velocity ranges presented in the single-dish GBT profile (see Fig. 1)."
+    }
+   ]
+  },
+  {
+   "quantity": "1.5 GHz VLBA radio continuum peak brightness",
+   "value": "0.19",
+   "uncertainty": "not stated",
+   "units": "mJy beam−1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. Results",
+     "quote": "Its peak brightness reached around 0.19 mJy beam−1."
+    }
+   ]
+  },
+  {
+   "quantity": "1.5 GHz VLBA total radio continuum flux density",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. Results",
+     "quote": "Both techniques provided a flux density close to 2 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "1.5 GHz radio continuum brightness temperature",
+   "value": "3e6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We have detected compact radio continuum emissions adjacent to the maser positions with a brightness temperature of around 3 × 106 K"
+    },
+    {
+     "loc": "5. Summary",
+     "quote": "Third, we measure the brightness of the 1.4 GHz radio continuum emission of approximately 3 × 106 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial offset between OH components A/D and continuum emission",
+   "value": "22",
+   "uncertainty": "0.8",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. Results",
+     "quote": "OH regions B and C lie near the continuum emission, but regions D and A are offset by roughly 22 mas (see Fig. 2)."
+    },
+    {
+     "loc": "3. Results",
+     "quote": "Based on this equation, we estimate that the error σrel on the relative positions between component A/D and the continuum emission is about 0.8 mas"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A2 OH line amplitude",
+   "value": "28",
+   "uncertainty": "2",
+   "units": "mJy beam−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2 28 ± 2 40 704 ± 1 28 ± 2 815 ± 77"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A2 OH line center velocity",
+   "value": "40704",
+   "uncertainty": "1",
+   "units": "km s−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2 28 ± 2 40 704 ± 1 28 ± 2 815 ± 77"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A2 OH line FWHM",
+   "value": "28",
+   "uncertainty": "2",
+   "units": "km s−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2 28 ± 2 40 704 ± 1 28 ± 2 815 ± 77"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A3 OH line amplitude",
+   "value": "24",
+   "uncertainty": "2",
+   "units": "mJy beam−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3 24 ± 2 40 745 ± 1 39 ± 3 998 ± 125"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A3 OH line center velocity",
+   "value": "40745",
+   "uncertainty": "1",
+   "units": "km s−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3 24 ± 2 40 745 ± 1 39 ± 3 998 ± 125"
+    }
+   ]
+  },
+  {
+   "quantity": "Component A3 OH line FWHM",
+   "value": "39",
+   "uncertainty": "3",
+   "units": "km s−1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3 24 ± 2 40 745 ± 1 39 ± 3 998 ± 125"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for ALMA pipeline restoration and reimaging",
+  "Continuum subtraction procedure for ALMA HCN and HCO+ spectral cubes",
+  "Stopping threshold and masking during ALMA line cube cleaning"
+ ],
+ "missing_for_reproduction": [
+  "Exact AIPS calibration parameters and DIFMAP cleaning scripts/windows for VLBA data",
+  "Exact pixel coordinates for extracted spectra OH1-8",
+  "CASA version and exact tclean parameters for ALMA line cubes"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Archival ALMA data and standard VLBA data with clear observational tables, coordinates, and Gaussian fit results (Tables 1, 2, A.1), though exact software versions and cleaning masks/thresholds are not stated.",
+ "rediscovery_reason": "Both the ALMA (2017.1.00057.S) and VLBA (BW144, BH237D) datasets are in public archives, the extraction regions and coordinates are given, and the main results are quantitative Gaussian line fits and continuum flux/brightness temperature measurements.",
+ "source_card": "cards/2024A%26A...687A.193W/sonnet/card.md"
+}

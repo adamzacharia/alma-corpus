@@ -1,0 +1,290 @@
+{
+ "bibcode": "2022MNRAS.513.6013M",
+ "title": "Selecting a complete sample of blazars in sub-millimetre catalogues",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1262",
+ "arxiv_id": "2205.07497",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "How to efficiently select a complete sample of blazars in sub-millimetre catalogues (specifically H-ATLAS) and determine their number counts at 500 μm.",
+ "alma_project_codes": [
+  "2011.0.00001.CAL"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "5th edition of the Multifrequency Catalogue of Blazars (BZCAT)",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "To define improved selection criteria we first cross-matched the H-ATLAS catalogues with the latest (5th) edition of the BZCAT (cite: Massaro2015b)"
+     }
+    ]
+   },
+   "citation": "(cite: Massaro2015b)"
+  },
+  {
+   "what": {
+    "value": "1.4 GHz peak flux densities from FIRST and NVSS catalogues",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "For the equatorial and NGP fields we adopted the $1.4\\,$GHz peak flux densities from the FIRST catalogue. For the SGP field, not covered by the FIRST survey, we used those from the NRAO VLA Sky Survey (cite: Condon1998)."
+     }
+    ]
+   },
+   "citation": "(cite: Becker1995); (cite: Condon1998)"
+  },
+  {
+   "what": {
+    "value": "Australia Telescope 20 GHz (AT20G) survey catalogue",
+    "evidence": [
+     {
+      "loc": "Radio and mm cross-matches",
+      "quote": "The Australia Telescope 20 GHz (cite: mm2008MNRAS384; mm2011MNRAS412; murphy2010MNRAS402) survey covered the whole Southern sky at 20 GHz above a typical flux density limit of 40 mJy, with follow-up at 5.5 and 9.0 GHz."
+     }
+    ]
+   },
+   "citation": "(cite: mm2008MNRAS384; mm2011MNRAS412; murphy2010MNRAS402)"
+  },
+  {
+   "what": {
+    "value": "Planck ATCA Co-eval Observations (PACO) catalogue",
+    "evidence": [
+     {
+      "loc": "Radio and mm cross-matches",
+      "quote": "The *Planck* ATCA Co-eval Observations (cite: mm2011MNRAS415; bonavera2011MNRAS416; bonaldi2013MNRAS428; galluzzi2017MNRAS465; Galluzzi2018) catalogue was built by following up with the ATCA a sample of AT20G sources"
+     }
+    ]
+   },
+   "citation": "(cite: mm2011MNRAS415; bonavera2011MNRAS416; bonaldi2013MNRAS428; galluzzi2017MNRAS465; Galluzzi2018)"
+  },
+  {
+   "what": {
+    "value": "WISE-selected blazar candidate catalogues WIBRaLS2 and KDEBLLACS",
+    "evidence": [
+     {
+      "loc": "Near/mid-IR selection",
+      "quote": "we have cross-matched H-ATLAS sources brighter than our flux-density threshold ($S_{500\\mu{\\rm m}}=35\\,$mJy) with the two catalogues of radio-loud candidate blazars selected by (cite: DAbrusco2019) on the basis of WISE colours."
+     }
+    ]
+   },
+   "citation": "(cite: DAbrusco2019)"
+  },
+  {
+   "what": {
+    "value": "Blazar Radio and Optical Survey (BROS) catalogue",
+    "evidence": [
+     {
+      "loc": "Radio/optical selection",
+      "quote": "(cite: Itoh2020) built a new catalogue of blazar candidates, named Blazar Radio and Optical Survey (BROS)."
+     }
+    ]
+   },
+   "citation": "(cite: Itoh2020)"
+  },
+  {
+   "what": {
+    "value": "Fourth Fermi-LAT catalogue (4FGL)",
+    "evidence": [
+     {
+      "loc": "Gamma-ray selection",
+      "quote": "Table 4 shows the results of a cross-match of H-ATLAS sources with the 4FGL catalogue using as search radius the 95% confidence semi-major axis of the 4FGL error ellipse."
+     }
+    ]
+   },
+   "citation": "(cite: FermiLAT2019_4LAC)"
+  },
+  {
+   "what": {
+    "value": "Blazar number count estimates from ALMA calibrator data",
+    "evidence": [
+     {
+      "loc": "Number counts of sub-mm selected Blazars",
+      "quote": "Our counts are in reasonably good agreement with, although somewhat lower than the estimate obtained by (cite: Bonato2019) at 467 GHz"
+     }
+    ]
+   },
+   "citation": "(cite: Bonato2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select initial known blazars and define sub-mm/radio colour selection criteria",
+   "method": "Cross-match H-ATLAS catalogues with BZCAT (5th edition) and 1.4 GHz radio surveys (FIRST and NVSS), then compute SPIRE and 1.4 GHz flux density ratios to define selection boundaries.",
+   "software": [
+    "TOPCAT"
+   ],
+   "key_parameters": [
+    "S_500um > 35 mJy; 0.5 < S_250um/S_350um < 1.2; 0.4 < S_350um/S_500um < 1.2; S_500um/S_1.4GHz < 1.7; search radius = 10 to 15 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Follow up candidate blazars in radio and cross-match with radio/mm catalogues to classify genuine blazars",
+   "method": "Observe candidates with ATCA and VLA, cross-match with AT20G, PACO, ALMA calibrator catalogue, and NED, and use radio-to-sub-mm colour-colour plots and SEDs to separate synchrotron-dominated blazars from dusty galaxies.",
+   "software": [
+    "MIRIAD",
+    "CASA"
+   ],
+   "key_parameters": [
+    "|alpha_2.1^39| < 0.5 and -0.5 < alpha_39^600 < 0"
+   ],
+   "assumptions": [
+    "S_nu proportional to nu^alpha"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate synchrotron peak frequencies and derive 500 um blazar number counts",
+   "method": "Fit rest-frame SEDs with a parabola in nu*L_nu to find synchrotron peak frequencies, and compute differential and integral number counts at 500 um with Poisson errors.",
+   "software": [],
+   "key_parameters": [
+    "rest-frame fitting range: 5 <= [nu_rest / GHz] <= 10^5"
+   ],
+   "assumptions": [
+    "Flat LambdaCDM cosmology with H_0 = 67.37 km s^-1 Mpc^-1 and Omega_m = 0.315"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of confirmed sub-mm blazars in H-ATLAS (S_500um > 35 mJy)",
+   "value": "39",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In this way, we identified a sample of 39 blazars brighter than $S_{500\\mu\\rm m} = 35\\,$mJy in the H-ATLAS fields."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean blazar SED low-frequency spectral slope (alpha)",
+   "value": "0.17",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sample selection",
+     "quote": "with $\\alpha=0.17$, $\\beta=1.15$, $\\nu_0=1000\\,$GHz. The normalisation of the thick solid red line is $A=228\\,$mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean blazar SED high-frequency spectral slope (beta)",
+   "value": "1.15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Sample selection",
+     "quote": "with $\\alpha=0.17$, $\\beta=1.15$, $\\nu_0=1000\\,$GHz. The normalisation of the thick solid red line is $A=228\\,$mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Median synchrotron peak frequency",
+   "value": "10^13",
+   "uncertainty": "not stated",
+   "units": "Hz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Blazar SEDs",
+     "quote": "The distribution of synchrotron peak frequencies is presented in the right-hand panel of Fig. 6; the median value is $\\sim\\mathbf{10^{13}}$ Hz."
+    }
+   ]
+  },
+  {
+   "quantity": "Median redshift of the blazar sample",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Blazar SEDs",
+     "quote": "The left-hand panel of the same figure shows the redshift distribution; redshifts range from 0.02 to 2.677, with a median value of 1.1."
+    }
+   ]
+  },
+  {
+   "quantity": "Differential blazar counts dn/dlogS at 500 um (S_eff = 0.040 Jy)",
+   "value": "449",
+   "uncertainty": "+118,-96",
+   "units": "sr^-1 dex^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $0.035-0.070$ | $0.040$ | $449 (+118,-96)$ | 22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential blazar counts dn/dlogS at 500 um (S_eff = 0.083 Jy)",
+   "value": "196",
+   "uncertainty": "+80,-59",
+   "units": "sr^-1 dex^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $0.070-0.139$ | $0.083$ | $196 (+80,-59)$ | 11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential blazar counts dn/dlogS at 500 um (S_eff = 0.191 Jy)",
+   "value": "75",
+   "uncertainty": "+52,-34",
+   "units": "sr^-1 dex^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $0.139-0.278$ | $0.191$ | $75 (+52,-34)$ | 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential blazar counts dn/dlogS at 500 um (S_eff = 0.379 Jy)",
+   "value": "34",
+   "uncertainty": "+47,-24",
+   "units": "sr^-1 dex^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| $0.278-0.555$ | $0.379$ | $34 (+47,-24)$ | 2 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact epochs or dates of the ALMA calibrator catalogue flux density measurements extracted for the matched sources.",
+  "Specific search radius used when cross-matching H-ATLAS sources with the ALMA calibrator catalogue."
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA calibrator catalogue query dates and extracted 100/250 GHz flux density tables for each matched source.",
+  "Specific CASA tclean imaging parameters (weighting, robust, cell size, niters) for the 3 VLA targets."
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All catalogues, source tables, flux densities, selection criteria, and number count bins are explicitly provided in the text and tables, and archival data are public; minor deductions for unstated VLA imaging parameters and exact ALMA calibrator flux table values.",
+ "rediscovery_reason": "The primary results (39 selected blazars, flux ratios, spectral indices, and 500 um number counts) are numeric and derived from public catalogues and published flux tables in the paper.",
+ "source_card": "cards/2022MNRAS.513.6013M/sonnet/card.md"
+}

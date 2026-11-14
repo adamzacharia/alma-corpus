@@ -1,0 +1,1613 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024MNRAS.528.7383C",
+  "title": "FAUST XII. Accretion streamers and jets in the VLA 1623-2417 protocluster",
+  "year": 2024,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Codella, C.",
+  "n_authors": 26,
+  "arxiv_id": "2402.10258",
+  "doi": "10.1093/mnras/stae472",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2018.1.01205.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In the context of the FAUST ALMA LP, the archetypical VLA1623-2417 protostellar cluster has been imaged at 1.3 mm in the SO(5$_6$–4$_5$), SO(6$_6$–5$_5$), and SiO(5–4) line emission at the spatial resolution of 50 au."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "VLA 1623-2417 (A1+A2, B, W)",
+     "coordinates": {
+      "value": "Phase centre RA(J2000) = 16h 26m 26.392s, Dec(J2000) = -24d 24m 30.178s",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The observations were centered at $\\alpha_{\\rm J2000}$ = 16$^{\\rm h}$ 26$^{\\rm m}$ 26.392s, $\\delta_{\\rm J2000}$ = –24$\\ensuremath{^\\circ}$ 24$\\ensuremath{'}$ 30.178$''$."
+       },
+       {
+        "loc": "The VLA1623–2417 protostellar system",
+        "quote": "at a projected angular separation of $\\simeq$ 1$\\ensuremath{''}$ ($\\sim$130 au)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Do molecular streamers feed the VLA 1623-2417 protostars, and do SO and SiO trace the streamers and the protostellar jet?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we present a survey in SO and SiO of the VLA 1623–2417 protostellar cluster in order to reveal material associated with accretions streamers as well as protostellar jets."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.01205.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.01205.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6; Setup 1: 214.0-219.0 and 229.0-234.0 GHz, Setup 2: 242.5-247.5 and 257.2-262.5 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "ALMA Band 6 (Setup 1: 214.0–219.0 GHz and 229.0–234.0 GHz, Setup 2: 242.5–247.5 GHz and 257.2–262.5 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "SO and SiO windows with 59 MHz bandwidth, 122 kHz resolution (0.14-0.17 km/s)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The SO and SiO lines were observed using spectral windows with a bandwidth/frequency resolution of 59 MHz/122 kHz ($\\sim$80 km s$^{-1}$/0.14–0.17 km s$^{-1}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SO",
+     "transition": "5_6-4_5",
+     "rest_frequency": "219.9 GHz (219949.442 MHz)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The lines here analysed are SO(5$_{\\rm 6}$–4$_{\\rm 5}$) (219.9 GHz), SO(6$_{\\rm 6}$–5$_{\\rm 5}$) (258.3 GHz), and SiO(5–4) (217.1 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "6_6-5_5",
+     "rest_frequency": "258.3 GHz (258255.826 MHz)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The lines here analysed are SO(5$_{\\rm 6}$–4$_{\\rm 5}$) (219.9 GHz), SO(6$_{\\rm 6}$–5$_{\\rm 5}$) (258.3 GHz), and SiO(5–4) (217.1 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "5-4",
+     "rest_frequency": "217.1 GHz (217104.980 MHz)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The lines here analysed are SO(5$_{\\rm 6}$–4$_{\\rm 5}$) (219.9 GHz), SO(6$_{\\rm 6}$–5$_{\\rm 5}$) (258.3 GHz), and SiO(5–4) (217.1 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "1.875 GHz wide spectral window",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "A wide bandwidth (1.875 GHz) spectral window was also included to support measurement of the continuum emission."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12-m array plus ACA 7-m array (12 antennas)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "using the 12-m array (C43-1, C43-4, with 48 and 49 antennas, respectively) as well as the ACA (Atacama Compact Array) 7-m array (12 antennas)"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-1 and C43-4 (12-m, 48 and 49 antennas) plus ACA",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "using the 12-m array (C43-1, C43-4, with 48 and 49 antennas, respectively)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "9 m to 969 m",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The baselines were between 9 m ($B_{\\rm min}$) and 969 m ($B_{\\rm max}$), for a maximum recoverable scale"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "50 au; line beams 0.54'' x 0.45'' (PA=-75 deg) Setup 1, 0.48'' x 0.45'' (PA=+86 deg) Setup 2",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "at the spatial resolution of 50 au"
+     },
+     {
+      "loc": "Observations",
+      "quote": "The synthesized beams of the line datasets are 0.54$''$$\\times$0.45$''$ (PA=–75$^{\\circ}$), for Setup 1, and 0.48$''$$\\times$0.45$''$ (PA=+86$^{\\circ}$), for Setup 2."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "~29 arcsec",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "for a maximum recoverable scale ($\\theta_{\\rm MRS}$ $\\sim$ $0.6\\,\\lambda\\,B_{\\rm min}^{-1}$) of $\\sim\\,$29$\\ensuremath{''}$"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "line rms ~3 mJy/beam per channel; continuum rms 0.22 mJy/beam (Setup 1), 0.15 mJy/beam (Setup 2)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The typical r.m.s. noise (per channel) is $\\sim$3 mJy beam$^{-1}$."
+     },
+     {
+      "loc": "Observations",
+      "quote": "the r.m.s. noise is 0.22 mJy beam$^{-1}$ (Setup 1), and 0.15 mJy beam$^{-1}$ (Setup 2)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2018 December to 2020 March",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The VLA1623 multiple system was observed between 2018 December, and 2020 March with ALMA Band 6"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "FAUST Large Program (PI: S. Yamamoto)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "in the context of the FAUST Large Program (2018.1.01:205.L, PI: S. Yamamoto)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "C18O(2-1) FAUST dataset used for H2 column density and streamer mass",
+      "evidence": [
+       {
+        "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+        "quote": "we inspected the C$^{18}$O(2–1) dataset, published by (cite: Mercimek2023)"
+       }
+      ]
+     },
+     "citation": "(cite: Mercimek2023)"
+    },
+    {
+     "what": {
+      "value": "CS(5-4) moment 1 map overlaid on SO maps and PV cuts",
+      "evidence": [
+       {
+        "loc": "Southern region: the VLA1623 B accretion streamer",
+        "quote": "On these maps the intensity-weighted velocity CS(5–4) map (moment 1 map), by (cite: Ohashi2022), is overlapped."
+       }
+      ]
+     },
+     "citation": "(cite: Ohashi2022)"
+    },
+    {
+     "what": {
+      "value": "Systemic velocity Vsys = +3.8 km/s",
+      "evidence": [
+       {
+        "loc": "Overall SO spatial distribution and spectra",
+        "quote": "i.e. $V_{\\rm sys}$ = +3.8 km s$^{-1}$ (cite: Ohashi2022)"
+       }
+      ]
+     },
+     "citation": "(cite: Ohashi2022)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic parameters of SO and SiO lines",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Spectroscopic parameters are from (cite: Klaus1996), and (cite: Bogey1997) (SO), and (cite: Manson1977), for SiO, retrieved from the CDMS database (cite: Muller2005)."
+       }
+      ]
+     },
+     "citation": "(cite: Klaus1996); (cite: Bogey1997); (cite: Manson1977); (cite: Muller2005)"
+    },
+    {
+     "what": {
+      "value": "Bolometric luminosity of source B, 0.2-0.3 Lsun",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "The bolometric luminosity of source B derived by (cite: Murillo2018L) based on the source spectral energy distribution is 0.2–0.3 $L_{\\rm \\ensuremath{\\odot}}$"
+       }
+      ]
+     },
+     "citation": "(cite: Murillo2018L)"
+    },
+    {
+     "what": {
+      "value": "Dynamical mass of protostar B, 1.7 Msun (from disk rotation curve)",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "the protostellar mass has been estimated from the fit of the rotation curve of the disk by (cite: Ohashi2022), giving a dynamical mass of 1.7 $M_{\\rm \\ensuremath{\\odot}}$."
+       }
+      ]
+     },
+     "citation": "(cite: Ohashi2022)"
+    },
+    {
+     "what": {
+      "value": "Total mass inside the streamer radius, 1-2 Msun",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "a total mass in the 1–2 $M_{\\rm \\ensuremath{\\odot}}$ range (cite: Murillo2018L; Ohashi2022)"
+       }
+      ]
+     },
+     "citation": "(cite: Murillo2018L; Ohashi2022)"
+    },
+    {
+     "what": {
+      "value": "16O/18O = 560 and CO/H2 = 1e-4",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "Using the classical $^{16}$O/$^{18}$O = 560 and CO/H$_2$ = 10$^{-4}$ (cite: Wilson1994)"
+       }
+      ]
+     },
+     "citation": "(cite: Wilson1994)"
+    },
+    {
+     "what": {
+      "value": "Stellar radius R* = 2 Rsun",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "assuming that the stellar radius is $R_{\\rm *}$ = 2 $R_{\\rm \\ensuremath{\\odot}}$ (cite: Stahler1988)"
+       }
+      ]
+     },
+     "citation": "(cite: Stahler1988)"
+    },
+    {
+     "what": {
+      "value": "Typical jet temperature of 100+-50 K used for the SiO column density",
+      "evidence": [
+       {
+        "loc": "VLA 1623B: the SiO jet",
+        "quote": "The SiO total column density has been derived assuming a typical jet temperature of 100$\\pm$50 K (cite: Podio2021)"
+       }
+      ]
+     },
+     "citation": "(cite: Podio2021)"
+    },
+    {
+     "what": {
+      "value": "Disk geometry (inclination, position angle) used to deproject jet velocities",
+      "evidence": [
+       {
+        "loc": "SO and SiO jet emission",
+        "quote": "The velocities once deprojected using the geometry of the protostellar system (cite: Harris2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Harris2018)"
+    },
+    {
+     "what": {
+      "value": "Toy model of protostellar heating giving ~20 K at ~390 au",
+      "evidence": [
+       {
+        "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+        "quote": "Based on a simple toy model where the gas and dust are heated by the central protostars (without considering the outflow cavities and the disks) (cite: Ceccarelli2000)"
+       }
+      ]
+     },
+     "citation": "(cite: Ceccarelli2000)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibration pipeline in CASA plus an additional routine for Tsys issues and spectral normalization",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "including an additional calibration routine to correct for $T_{\\rm sys}$ issues and spectral data normalization"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.6.1-8",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "within CASA 5.6.1-8 (cite: CASA2022)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "quasars J1427-4206, J1517-2422, J1625-2527, J1924-2914, J1626-2951 (roles not specified)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Data were calibrated using the quasars J1427-4206, J1517-2422, J1625-2527, J1924-2914, and J1626-2951"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "reaching an absolute flux calibration uncertainty of $\\sim$10%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "self-calibrated using line-free continuum channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were self-calibrated using line-free continuum channels."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs parameter 0.5 for line cubes; uniform weighting for continuum",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "were cleaned with a Briggs parameter of 0.5"
+      },
+      {
+       "loc": "Observations",
+       "quote": "The continuum has been imaged using uniform weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "line cubes are continuum-subtracted (method not described)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the resulting continuum-subtracted line-cubes were cleaned"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "applied",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The primary beam correction has also been applied."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "three array configurations merged before cleaning",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Once the three array configurations were merged, the resulting continuum-subtracted line-cubes were cleaned"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "SiO(5-4) cube spectrally smoothed to 1 km/s (rms 1 mJy/beam)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the SiO(5–4) datacube has been spectrally smoothed to 1 km s$^{-1}$, for an r.m.s. of 1 mJy beam$^{-1}$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "continuum 0.37'' x 0.34'' (-65 deg) Setup 1, 0.43'' x 0.32'' (-65 deg) Setup 2; lines 0.54'' x 0.45'' (PA=-75 deg) Setup 1, 0.48'' x 0.45'' (PA=+86 deg) Setup 2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "thus obtaining a beam of 0.37$''$ $\\times$ 0.34$''$ ($-65^\\circ$), and 0.43$''$ $\\times$ 0.32$''$ ($-65^\\circ$), for Setup 1 and Setup 2, respectively"
+      },
+      {
+       "loc": "Observations",
+       "quote": "The synthesized beams of the line datasets are 0.54$''$$\\times$0.45$''$ (PA=–75$^{\\circ}$), for Setup 1, and 0.48$''$$\\times$0.45$''$ (PA=+86$^{\\circ}$), for Setup 2."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 0.22 mJy/beam (Setup 1), 0.15 mJy/beam (Setup 2); lines ~3 mJy/beam per channel",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the r.m.s. noise is 0.22 mJy beam$^{-1}$ (Setup 1), and 0.15 mJy beam$^{-1}$ (Setup 2)"
+      },
+      {
+       "loc": "Observations",
+       "quote": "The typical r.m.s. noise (per channel) is $\\sim$3 mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Calibration pipeline (FAUST line-imaging pipeline)",
+      "evidence": [
+       {
+        "loc": "footnote 3",
+        "quote": "Chandler et al. (in preparation)"
+       }
+      ]
+     },
+     "from_reference": "Chandler et al. (in preparation)"
+    },
+    {
+     "what": {
+      "value": "Additional Tsys and spectral normalization correction routine",
+      "evidence": [
+       {
+        "loc": "footnote 4",
+        "quote": "Moellenbrock et al. (in preparation)"
+       }
+      ]
+     },
+     "from_reference": "Moellenbrock et al. (in preparation)"
+    },
+    {
+     "what": {
+      "value": "1.2 mm continuum image previously reported (C43-4 only)",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "A 1.2 mm image has been already reported in the context of the FAUST campaign by (cite: Codella2022), but only using the C43-4 configuration of the 12m array."
+       }
+      ]
+     },
+     "from_reference": "(cite: Codella2022)"
+    },
+    {
+     "what": {
+      "value": "1.4 mm continuum image presented earlier",
+      "evidence": [
+       {
+        "loc": "Continuum emission",
+        "quote": "The 1.4 mm image has been presented by (cite: Mercimek2023) in the context of the analysis of source W."
+       }
+      ]
+     },
+     "from_reference": "(cite: Mercimek2023)"
+    },
+    {
+     "what": {
+      "value": "Free-fall timescale equation",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "An estimate of the free-fall timescale of the southern streamer accreting VLA1623 B can be obtained using the classical equation (cite: Pineda2020; Pineda2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pineda2020; Pineda2023)"
+    }
+   ],
+   "unstated_but_needed": [
+    "The cleaning task, deconvolver, threshold, mask and number of iterations for the line cubes and continuum.",
+    "The line-free channels used for self-calibration and continuum subtraction, and the self-calibration solution intervals.",
+    "Which of the listed quasars served as flux, bandpass and phase calibrator for each execution block.",
+    "The velocity channel width and velocity grid of the final cubes (only the native 0.14-0.17 km/s is given).",
+    "The extraction aperture or beam-averaging used for the spectra at (-0.7'',-3.0'') and the other positions, and the velocity range integrated for the SO line ratio.",
+    "Line-flux or integrated-intensity values of the two SO lines, and the partition function and constants used for the LTE Tex and column density.",
+    "How the 33+-9 K uncertainty was obtained, and the emitting area used for the streamer mass.",
+    "How the C18O(2-1) cube of Mercimek2023 was imaged and regridded to compare with SO, and the C18O excitation temperature assumed.",
+    "The GILDAS procedures used for moment maps and PV cuts, and any intensity clipping for moments 1 and 2.",
+    "Details of the FAUST line-imaging pipeline (in preparation) and the Tsys/normalization routine."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, self-calibrate, merge and image the data",
+    "method": {
+     "value": "Calibration pipeline in CASA with an extra Tsys/spectral normalization routine, self-calibration on line-free continuum, merge of three array configurations, cleaning of continuum-subtracted line cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Once the three array configurations were merged, the resulting continuum-subtracted line-cubes were cleaned with a Briggs parameter of 0.5."
+      },
+      {
+       "loc": "Observations",
+       "quote": "The data were self-calibrated using line-free continuum channels."
+      }
+     ]
+    },
+    "software": [
+     "CASA 5.6.1-8"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs parameter 0.5 for line cubes",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "were cleaned with a Briggs parameter of 0.5"
+       }
+      ]
+     },
+     {
+      "value": "uniform weighting for the continuum",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The continuum has been imaged using uniform weighting"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Dynamic range of the continuum improved by up to one order of magnitude with the extra calibration routine",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the dynamical range of the continuum data improved up to one order of magnitude"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract spectra and make moment maps in velocity windows (S, LV, HV)",
+    "method": {
+     "value": "SO spectra integrated over the 22'' field of view; moment 0 maps integrated over S (Vsys +-1 km/s), LV (blue 1-6.6, red 1-2.5 km/s from Vsys) and HV (blue up to 11.2, red up to 8.2 km/s) ranges; moment 1 and 2 maps for blue LV emission",
+     "evidence": [
+      {
+       "loc": "Southern region: the VLA1623 B accretion streamer",
+       "quote": "SO(6$_6$–5$_5$) maps of the blue-shifted (by 1–6.6 km s$^{-1}$ with respect to $V_{\\rm sys}$) and red-shifted emission (by 1–2.5 km s$^{-1}$)"
+      },
+      {
+       "loc": "SO and SiO jet emission",
+       "quote": "blue-shifted by up to 11.2 km s$^{-1}$, and red-shifted by up to 8.2 km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "Vsys = +3.8 km/s",
+      "evidence": [
+       {
+        "loc": "Overall SO spatial distribution and spectra",
+        "quote": "i.e. $V_{\\rm sys}$ = +3.8 km s$^{-1}$ (cite: Ohashi2022)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LV velocity ranges are asymmetric and were chosen a posteriori to isolate the same molecular structure",
+      "evidence": [
+       {
+        "loc": "Southern region: the VLA1623 B accretion streamer",
+        "quote": "they have been defined a posteriori after inspecting the SO dataset to identify velocity ranges tracing the same molecular structure"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Characterise streamer kinematics with PV cuts and moment maps",
+    "method": {
+     "value": "PV cuts along the southern direction from A and B, compared with CS(5-4); moment 1 and moment 2 maps of blue-shifted LV emission",
+     "evidence": [
+      {
+       "loc": "Southern region: the VLA1623 B accretion streamer",
+       "quote": "Position-Velocity (PV) cut (obtained with a slice width equal to the beam)"
+      }
+     ]
+    },
+    "software": [
+     "GILDAS"
+    ],
+    "key_parameters": [
+     {
+      "value": "slice width equal to the beam",
+      "evidence": [
+       {
+        "loc": "Southern region: the VLA1623 B accretion streamer",
+        "quote": "Position-Velocity (PV) cut (obtained with a slice width equal to the beam)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Outflow-cavity origin excluded because of curved morphology and because the southern cavity is red-shifted",
+     "evidence": [
+      {
+       "loc": "Southern region: the VLA1623 B accretion streamer",
+       "quote": "the association with the outflow cavity is excluded from both the curved morphology"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate SO excitation temperature of the streamer from two lines",
+    "method": {
+     "value": "Two-line LTE estimate from SO(5_6-4_5) and SO(6_6-5_5) spectra extracted at offset (-0.7'', -3.0'')",
+     "evidence": [
+      {
+       "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+       "quote": "a crude estimate of the SO excitation temperature ($T_{\\rm ex}$) can be derived from the two SO observed lines: 33$\\pm$9 K"
+      },
+      {
+       "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+       "quote": "We extracted the spectrum at the position offset by –0.7$''$,–3.0$''$ (with respect to the phase center of the map, see Sect. 2)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Spectrum position offset (-0.7'', -3.0'') from the phase centre",
+      "evidence": [
+       {
+        "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+        "quote": "We extracted the spectrum at the position offset by –0.7$''$,–3.0$''$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE population and optically thin lines",
+      "evidence": [
+       {
+        "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+        "quote": "Assuming an LTE (Local Thermodynamic Equilibrium) population and optically thin lines"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with a toy protostellar heating model giving ~20 K at ~390 au; authors caution the comparison is based on two transitions only",
+     "evidence": [
+      {
+       "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+       "quote": "For a total bolometric luminosity of $\\sim$ 1 $L_{\\rm \\ensuremath{\\odot}}$, we find that the temperature is $\\sim$ 20 K."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive column densities and streamer mass",
+    "method": {
+     "value": "SO column density at Tex = 33 K; C18O column density converted to H2 with 16O/18O = 560 and CO/H2 = 1e-4; mass from emitting region and average H2 column density",
+     "evidence": [
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "The total mass of the blue-shifted southern streamer can be estimated from the emitting region and the estimate of the average C$^{18}$O (and consequently H$_2$) column density throughout the emitting region"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Tex = 33 K for SO; N_SO increases by a factor 2 for 20 K",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "To derive the uncertainty, $N_{\\rm SO}$ increases by a factor 2 assuming 20 K instead of 33 K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "16O/18O = 560 and CO/H2 = 1e-4",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "Using the classical $^{16}$O/$^{18}$O = 560 and CO/H$_2$ = 10$^{-4}$ (cite: Wilson1994)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Mass compared with Class 0 and Class I streamers from the literature",
+     "evidence": [
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "if we compare the VLA 1623–2417 southern streamer with the Class I streamers, our estimates are similar"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute streamer infall rate and compare with accretion rate onto B",
+    "method": {
+     "value": "Free-fall time t_ff = sqrt(R^3/(G M_total)) with R = 1500 au and M_total = 1-2 Msun; streamer infall rate = streamer mass / t_ff; accretion rate of B from Lbol R*/(G M*)",
+     "evidence": [
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "By dividing the streamer mass with the free-fall timescale we obtain an estimate of the accretion rate of the southern streamer onto the B protostar"
+      },
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "we assume that the source bolometric luminosity is due to the gravitational energy released by the accretion onto the protostar"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "R = 1500 au; total mass 1-2 Msun",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "Taking R = 1500 au, a total mass in the 1–2 $M_{\\rm \\ensuremath{\\odot}}$ range (cite: Murillo2018L; Ohashi2022)"
+       }
+      ]
+     },
+     {
+      "value": "Lbol(B) = 0.2-0.3 Lsun, M* = 1.7 Msun, R* = 2 Rsun",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "assuming that the stellar radius is $R_{\\rm *}$ = 2 $R_{\\rm \\ensuremath{\\odot}}$ (cite: Stahler1988)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Lbol = Lacc (all luminosity from accretion)",
+      "evidence": [
+       {
+        "loc": "Accretion and infalling rates",
+        "quote": "we assume that the source bolometric luminosity is due to the gravitational energy released by the accretion onto the protostar"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Free-fall velocity compared with observed velocity difference of 1.6 km/s (56%-81%); M* varied over 0.05-0.25 Msun to bracket the accretion rate",
+     "evidence": [
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "i.e. values quite close (56%–81%) to the difference in velocity, 1.6 km s$^{-1}$, observed within the southern streamer"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive SO abundance in the streamer",
+    "method": {
+     "value": "Ratio of SO and H2 column densities at (-0.7'', -3.0'') where C18O is dominated by the streamer",
+     "evidence": [
+      {
+       "loc": "SO abundances in the southern VLA1623 B streamer",
+       "quote": "by comparing the SO and H$_2$ column densities extracted at the (–0.7$''$,–3.0$''$) position"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with abundances in molecular clouds and hot-corinos from the literature",
+     "evidence": [
+      {
+       "loc": "SO abundances in the southern VLA1623 B streamer",
+       "quote": "This value is larger than that measured in the gas phase in molecular clouds located in Perseus, Taurus, and Orion"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Characterise the jet from B with HV SO and SiO",
+    "method": {
+     "value": "Two-line LTE Tex for HV SO red and blue emission, SO column density, and SiO column density assuming a jet temperature of 100+-50 K; jet velocity deprojected with the disk geometry",
+     "evidence": [
+      {
+       "loc": "VLA 1623B: the SiO jet",
+       "quote": "The SiO total column density has been derived assuming a typical jet temperature of 100$\\pm$50 K (cite: Podio2021)"
+      },
+      {
+       "loc": "SO and SiO jet emission",
+       "quote": "The velocities once deprojected using the geometry of the protostellar system (cite: Harris2018)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "LTE and optically thin emission",
+      "evidence": [
+       {
+        "loc": "VLA 1623B: the SiO jet",
+        "quote": "Assuming LTE conditions and optically thin emission"
+       }
+      ]
+     },
+     {
+      "value": "Jet temperature 100+-50 K for SiO",
+      "evidence": [
+       {
+        "loc": "VLA 1623B: the SiO jet",
+        "quote": "assuming a typical jet temperature of 100$\\pm$50 K (cite: Podio2021)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "SiO velocity gradient compared with CO(2-1) jet of Santangelo et al. and with the perpendicular disk rotation traced by methanol and C18O",
+     "evidence": [
+      {
+       "loc": "SO and SiO jet emission",
+       "quote": "This is consistent with the CO(2–1) ALMA Band 6 images by (cite: Santangelo2015)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.6.1-8",
+    "used_for": {
+     "value": "Calibration pipeline",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "within CASA 5.6.1-8 (cite: CASA2022)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data analysis",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data analysis was performed using the IRAM-GILDAS"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source of spectroscopic parameters of SO and SiO",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "retrieved from the CDMS database (cite: Muller2005)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SO excitation temperature of southern streamer",
+    "value": "33",
+    "uncertainty": "+-9",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+      "quote": "a crude estimate of the SO excitation temperature ($T_{\\rm ex}$) can be derived from the two SO observed lines: 33$\\pm$9 K"
+     }
+    ]
+   },
+   {
+    "quantity": "SO excitation temperature at northern streamer impact on A circumbinary disk",
+    "value": "55",
+    "uncertainty": "+-12",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+      "quote": "is higher than the value measured in the southern streamer, 55$\\pm$12 K"
+     }
+    ]
+   },
+   {
+    "quantity": "SO excitation temperature where southern streamer impacts B disk",
+    "value": "63",
+    "uncertainty": "+-12",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+      "quote": "the temperature is high, 63$\\pm$12 K, and it can be explained again by a shock"
+     }
+    ]
+   },
+   {
+    "quantity": "SO column density of southern streamer",
+    "value": "2e14",
+    "uncertainty": "factor 2 higher if Tex = 20 K",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "At a temperature of 33 K, the total SO column density is $N_{\\rm SO}$ $\\simeq$ 2 $\\times$ 10$^{14}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "C18O total column density in streamer",
+    "value": "4e15",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "The total column density of C$^{18}$O is 4 $\\times$ 10$^{15}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "H2 total column density in streamer",
+    "value": "2e22",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "the H$_2$ total column density is 2 $\\times$ 10$^{22}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total mass of blue-shifted southern streamer",
+    "value": "3e-3",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "The total mass of the blue-shifted southern streamer is 3 $\\times$ 10$^{-3}$ $M_{\\rm \\ensuremath{\\odot}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Streamer free-fall timescale",
+    "value": "6-9e3",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "we obtain, for the southern blue-shifted streamer, $t_{\\rm ff}$ $\\simeq$ 6–9 $\\times$ 10$^{3}$ yr."
+     }
+    ]
+   },
+   {
+    "quantity": "Free-fall velocity of streamer",
+    "value": "0.9-1.3",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "the free-fall velocity lies in the range 0.9–1.3 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Streamer accretion rate onto B",
+    "value": "3-5e-7",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "we obtain an estimate of the accretion rate of the southern streamer onto the B protostar: 3–5 $\\times$ 10$^{-7}$ $M_{\\rm \\ensuremath{\\odot}}$ yr$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Mass accretion rate of protostar B (M* = 1.7 Msun)",
+    "value": "1e-8",
+    "uncertainty": "highly uncertain",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "we infer $\\dot{M}_{\\rm acc}$ = 10$^{-8}$ $M_{\\rm \\ensuremath{\\odot}}$ yr$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Mass accretion rate of B for M* = 0.25 and 0.05 Msun",
+    "value": "up to 6e-8 and 3e-7",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "we obtain a mass accretion rate up to 6 $\\times$ 10$^{-8}$ $M_{\\rm \\ensuremath{\\odot}}$ yr$^{-1}$ (for 0.25 $M_{\\rm \\ensuremath{\\odot}}$) and 3 $\\times$ 10$^{-7}$ $M_{\\rm \\ensuremath{\\odot}}$ yr$^{-1}$ (for 0.05 $M_{\\rm \\ensuremath{\\odot}}$)."
+     }
+    ]
+   },
+   {
+    "quantity": "SO abundance relative to H2 in southern streamer",
+    "value": "1e-8",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "SO abundances in the southern VLA1623 B streamer",
+      "quote": "$X_{\\rm SO}$ $\\simeq$ 10$^{-8}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Length of southern blue-shifted streamer",
+    "value": "~1500",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Southern region: the VLA1623 B accretion streamer",
+      "quote": "a long ($\\sim$ 1500 au) southern streamer pointing to the central protostellar A+B system"
+     }
+    ]
+   },
+   {
+    "quantity": "Increase in mean velocity along southern streamer",
+    "value": "~1.6",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "with an increase in the mean velocity of $\\sim$ 1.6 km s$^{-1}$ approaching the central A+B system"
+     }
+    ]
+   },
+   {
+    "quantity": "HV SO excitation temperature, red-shifted emission",
+    "value": "92",
+    "uncertainty": "+-18 (Discussion); +-5 (Conclusions)",
+    "units": "K",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "VLA 1623B: the SiO jet",
+      "quote": "the excitation temperature of the HV SO ranges between 92$\\pm$18 K (emission red-shifted by up to 8.2 km s$^{-1}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "HV SO excitation temperature, blue-shifted emission",
+    "value": "102",
+    "uncertainty": "+-19 (Discussion); +-6 (Conclusions)",
+    "units": "K",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "VLA 1623B: the SiO jet",
+      "quote": "and 102$\\pm$19 K (emission blue-shifted by up to 11.2 km s$^{-1}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "HV SO column density",
+    "value": "~5e14",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "VLA 1623B: the SiO jet",
+      "quote": "With these temperatures the SO column density is $\\sim$ 5 $\\times$ 10$^{14}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "SiO total column density",
+    "value": "2-5e12",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "VLA 1623B: the SiO jet",
+      "quote": "obtaining $N_{\\rm SiO}$ = 2–5 $\\times$ 10$^{12}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Deprojected jet velocity with respect to systemic",
+    "value": "~40",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "SO and SiO jet emission",
+      "quote": "reaches values $\\sim$ 40 km s$^{-1}$ with respect to the systemic velocity"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SiO(5-4) detected for the first time in VLA1623, compact and associated with B",
+    "evidence": [
+     {
+      "loc": "SO and SiO jet emission",
+      "quote": "The SiO(5–4) line has been detected, for the first time, in the VLA1623 star forming region."
+     }
+    ]
+   },
+   {
+    "value": "SO profiles at B show an absorption dip near the systemic velocity, stronger in the lower-excitation SO(5_6-4_5) line",
+    "evidence": [
+     {
+      "loc": "SO emission close to the A and B protostars",
+      "quote": "An absorption dip is observed at velocities close to the systemic one in the SO(5$_6$–4$_5$) line"
+     }
+    ]
+   },
+   {
+    "value": "The elevated SO abundance in the streamer is tentatively attributed to mild accretion shocks",
+    "evidence": [
+     {
+      "loc": "SO abundances in the southern VLA1623 B streamer",
+      "quote": "A possibility to explain an SO abundance larger than those typical in starless molecular clouds is to speculate the occurrence of mild shocks"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Extended SO emission reveals an accretion streamer feeding VLA1623 B",
+    "experiment": "SO(5_6-4_5) and SO(6_6-5_5) LV maps, PV cuts and moment 1/2 maps compared with the CS outflow cavity",
+    "result": "A ~1500 au blue-shifted southern structure with velocity increasing towards B, not associated with the red-shifted outflow cavity",
+    "finding": "An accelerating streamer plausibly feeds B",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "reveals for the first time a long ($\\sim$ 2000 au) accelerating streamer plausibly feeding the VLA1623 B protostar"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The excitation temperature of a streamer can be constrained from two SO lines",
+    "experiment": "LTE optically thin ratio of SO(5_6-4_5) and SO(6_6-5_5) at the streamer peak",
+    "result": "Tex = 33+-9 K, higher than the ~20 K toy-model value",
+    "finding": "First two-line Tex of an accreting streamer, with caveats on LTE and opacity",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+      "quote": "the comparison has to be taken with a pinch of salt, being based on two transitions"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The mass infall rate of the streamer is comparable to the accretion rate of B",
+    "experiment": "Streamer mass from C18O divided by free-fall time, versus Lbol-based Mdot of B",
+    "result": "Streamer rate 3-5e-7 Msun/yr versus B accretion rate 1e-8 to 3e-7 Msun/yr depending on assumed mass",
+    "finding": "The streamer can supply a significant fraction of the accretion onto B",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Accretion and infalling rates",
+      "quote": "as the streamer infall rate is about 3–5 $\\times$ 10$^{-7}$ $M_{\\rm \\ensuremath{\\odot}}$ yr$^{-1}$ the mass fed by the streamer is comparable with the total mass accretion rate."
+     }
+    ]
+   },
+   {
+    "hypothesis": "SiO and high-velocity SO trace the protostellar jet driven by B",
+    "experiment": "HV SO and SiO(5-4) red/blue maps, Tex of HV SO, deprojected velocity",
+    "result": "Compact (100-200 au) emission on B with SE-NW velocity gradient, Tex ~100 K",
+    "finding": "SiO and HV SO trace shocks from the jet from B",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "SO and SiO jet emission",
+      "quote": "As a typical high-velocity shock tracer, SiO then probes the protostellar jet driven by VLA1623 B."
+     }
+    ]
+   },
+   {
+    "hypothesis": "A northern N-S streamer falls onto the A circumbinary disk",
+    "experiment": "LV SO maps and moment 2 map",
+    "result": "~2'' structure outside the cavity with broader line width at the outer circumbinary disk",
+    "finding": "Material plausibly falls onto the A circumbinary disk",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Northern region: the VLA1623 A accretion streamer",
+      "quote": "these findings are very suggestive that material falls onto the circumbinary disk at the position where SO emission is broader"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Survey of SO and SiO in the cluster to find streamers and jets",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we present a survey in SO and SiO of the VLA 1623–2417 protostellar cluster in order to reveal material associated with accretions streamers as well as protostellar jets."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "LV velocity ranges chosen after inspecting the data to isolate one structure",
+    "evidence": [
+     {
+      "loc": "Southern region: the VLA1623 B accretion streamer",
+      "quote": "they have been defined a posteriori after inspecting the SO dataset to identify velocity ranges tracing the same molecular structure"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Outflow cavity as origin of the southern blue-shifted SO structure was rejected",
+     "evidence": [
+      {
+       "loc": "Southern region: the VLA1623 B accretion streamer",
+       "quote": "the association with the outflow cavity is excluded from both the curved morphology"
+      }
+     ]
+    },
+    {
+     "value": "Hot-corino origin (thermal evaporation) of streamer SO excluded from the derived Tex",
+     "evidence": [
+      {
+       "loc": "SO abundances in the southern VLA1623 B streamer",
+       "quote": "the hot-corino nature, i.e. the thermal evaporation of the dust mantle in the streamer, is here excluded (assuming LTE conditions)"
+      }
+     ]
+    },
+    {
+     "value": "Strong shocks (>=10 km/s) excluded as origin of the streamer SO abundance",
+     "evidence": [
+      {
+       "loc": "SO abundances in the southern VLA1623 B streamer",
+       "quote": "Even the occurrence of strong shocks ($V_{\\rm shocks}$ $\\geq$ 10 km s$^{-1}$) has to be excluded"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Tex from two SO lines under LTE and optically thin assumptions; more lines needed",
+     "evidence": [
+      {
+       "loc": "Excitation temperature of the VLA1623 B accretion streamer",
+       "quote": "more lines need to be observed to investigate the reliability of the LTE assumption, as well as possible line opacity effects"
+      }
+     ]
+    },
+    {
+     "value": "Mass accretion rate of B is highly uncertain",
+     "evidence": [
+      {
+       "loc": "Accretion and infalling rates",
+       "quote": "The estimated mass accretion rate is highly uncertain because it depends strongly on the protostellar properties"
+      }
+     ]
+    },
+    {
+     "value": "SO emission from the hot-corino in A cannot be assessed because of absorption",
+     "evidence": [
+      {
+       "loc": "SO emission close to the A and B protostars",
+       "quote": "the contribution of the SO emission by the hot-corino in A cannot be assessed using the observed lines"
+      }
+     ]
+    },
+    {
+     "value": "Streamer length not fully traced because it exceeds the field of view",
+     "evidence": [
+      {
+       "loc": "Conclusions",
+       "quote": "which looks not fully traced because it is larger than the FoV of the interferometric (IRAM-NOEMA, ALMA) images"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Streamer mass and accretion rate rest on C18O taken from another paper with a CO/H2 and 16O/18O fixed at standard values; no uncertainty on the mass is given.",
+    "Tex rests on two SO lines at one position with LTE and thin assumptions, while SO shows self-absorption near Vsys elsewhere.",
+    "The B accretion rate depends on Lbol, R* and M*, spanning a factor of ~30, so 'comparable' to the streamer rate is weakly constrained.",
+    "Streamer length is 1500 au in the Results and ~2000 au in the abstract and conclusions; HV SO Tex uncertainties differ between Discussion (+-18, +-19) and Conclusions (+-5, +-6).",
+    "The LV velocity windows were chosen a posteriori, and a blue-shifted streamer on the red-shifted side requires an assumed back-side geometry."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Raw data available in the ALMA archive after the proprietary period",
+    "evidence": [
+     {
+      "loc": "DATA AVAILABILITY",
+      "quote": "The raw data are available on the ALMA archive at the end of the proprietary period (ADS/JAO.ALMA#2018.1.01205.L)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Calibration/line-imaging pipeline referenced at a public GitHub repository (autocorr/faust_line_imaging)",
+     "evidence": [
+      {
+       "loc": "footnote 3",
+       "quote": "https://github.com/autocorr/faust"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Cleaning parameters, masks and line-free channels for the FAUST cubes.",
+    "Spectrum extraction aperture, integration windows and constants for the LTE Tex and column densities.",
+    "The C18O(2-1) cube from Mercimek et al. and the exact emitting area used for the streamer mass.",
+    "In-preparation pipeline papers (Chandler et al.; Moellenbrock et al.) for the calibration details."
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for the three arrays and two setups of the field; a few GB of cubes",
+   "score_inferred": 3,
+   "score_reason": "Data are public through the archive and the pipeline repository exists, with numeric results, but imaging settings, extraction apertures and the C18O input are not given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data will be public and results are numeric, but key imaging choices, spectrum extraction and the C18O cube from another paper are not specified well enough to redo the Tex and mass estimates."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Chandler et al. (in preparation)",
+     "why": "FAUST calibration/line-imaging pipeline"
+    },
+    {
+     "citation": "Moellenbrock et al. (in preparation)",
+     "why": "Tsys and spectral normalization correction"
+    },
+    {
+     "citation": "(cite: Codella2021)",
+     "why": "FAUST Large Program description"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Ohashi2022)",
+     "why": "FAUST CS, CCH, H13CO+ study of VLA1623; Vsys, CS map, disk dynamical mass"
+    },
+    {
+     "citation": "(cite: Codella2022)",
+     "why": "FAUST methanol and methyl formate in VLA1623"
+    },
+    {
+     "citation": "(cite: Mercimek2023)",
+     "why": "FAUST C18O(2-1) data and source W"
+    },
+    {
+     "citation": "(cite: Hsieh2020)",
+     "why": "Earlier SO(8_8-7_7) streamers in VLA1623"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "FAUST ALMA Large Program (2018.1.01205.L)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024MNRAS.528.7383C",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T11:59:29",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 129,
+  "quotes_ok": 129,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 20,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 112,
+   "stated": 88,
+   "rate": 0.786
+  },
+  "evidence_ok": true
+ }
+}

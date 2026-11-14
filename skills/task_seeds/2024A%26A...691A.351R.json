@@ -1,0 +1,474 @@
+{
+ "bibcode": "2024A&A...691A.351R",
+ "title": "Dynamical resonances in PHANGS galaxies",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202450935",
+ "arxiv_id": "2410.13353",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "Locate the bar corotation resonance (and derive ILR/OLR) in 46 barred PHANGS-ALMA galaxies with the gravitational torque method, and compare with literature CR estimates",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.00803.S",
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2015.1.00782.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2016.1.00386.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "<~ 1 arcsec (PHANGS-ALMA survey)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Galaxy centers, orientations and distances from the PHANGS sample table v1.6",
+    "evidence": [
+     {
+      "loc": "2.1 Sample",
+      "quote": "The corresponding galaxy parameters such as distances, centers, and orientations are adopted from PHANGS sample table version v1.6"
+     }
+    ]
+   },
+   "citation": "(cite: 2021ApJS..257...43L)"
+  },
+  {
+   "what": {
+    "value": "Inclination and position angle from CO kinematic analysis",
+    "evidence": [
+     {
+      "loc": "2.1 Sample",
+      "quote": "The inclination ($i$) and position angle (PA) are obtained from the CO kinematic analysis in (cite: Lang+20)"
+     }
+    ]
+   },
+   "citation": "(cite: Lang+20)"
+  },
+  {
+   "what": {
+    "value": "CO-based rotation curves used as proxy for circular velocity",
+    "evidence": [
+     {
+      "loc": "3.4 Identifying other dynamical resonances",
+      "quote": "We use rotation curves based on CO kinematics from (cite: Lang+20) as a proxy for the circular velocity."
+     }
+    ]
+   },
+   "citation": "(cite: Lang+20)"
+  },
+  {
+   "what": {
+    "value": "Bar radii R_bar",
+    "evidence": [
+     {
+      "loc": "3.3 Gas flows",
+      "quote": "where $R_{\\rm bar}$ is obtained from (cite: Querejeta+21)"
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta+21)"
+  },
+  {
+   "what": {
+    "value": "Disk scale-lengths H_disk from NIR photometric decompositions",
+    "evidence": [
+     {
+      "loc": "3.1 Gravitational potential",
+      "quote": "where $H_{\\rm disk}$ is obtained from photometric decompositions of NIR images ((cite: 2015ApJS..219....4S; Querejeta+21))"
+     }
+    ]
+   },
+   "citation": "(cite: 2015ApJS..219....4S; Querejeta+21)"
+  },
+  {
+   "what": {
+    "value": "Stellar mass maps (S4G, ICA-corrected where recommended)",
+    "evidence": [
+     {
+      "loc": "2.3 NIR images (stellar mass maps)",
+      "quote": "Most stellar mass maps are obtained from the S$^4$G survey ((cite: Sheth+2010; Querejeta+15))."
+     }
+    ]
+   },
+   "citation": "(cite: Sheth+2010; Querejeta+15)"
+  },
+  {
+   "what": {
+    "value": "Bar classification (strong/weak) from infrared data",
+    "evidence": [
+     {
+      "loc": "2.1 Sample",
+      "quote": "This bar classification is based on infrared data from (cite: Buta+15)."
+     }
+    ]
+   },
+   "citation": "(cite: Buta+15)"
+  },
+  {
+   "what": {
+    "value": "Literature CR measurements (ten methods, 33 papers) used for comparison",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "After this extensive literature research (ten different methods, 33 different papers)"
+     }
+    ]
+   },
+   "citation": "references listed in Table 4"
+  },
+  {
+   "what": {
+    "value": "Central ring radii from earlier work, used to test rings against the derived ILR",
+    "evidence": [
+     {
+      "loc": "Table 4.5 notes",
+      "quote": "Columns (4) and (5) contain the central ring positions registered in (cite: Querejeta+21) and (cite: Comeron+14) respectively."
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta+21); (cite: Comeron+14)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "assemble gas and stellar mass maps",
+   "method": "Use PHANGS-ALMA v4.0 strict-mask CO(2-1) moment-0 maps as the gas distribution and S4G/Spitzer 3.6 micron maps (ICA1, ICA2 or IRAC) as stellar mass maps",
+   "software": [],
+   "key_parameters": [
+    "M/L = 0.6 at 3.6 micron"
+   ],
+   "assumptions": [
+    "Milky Way-like alpha_CO = 4.3 Msun (K km/s pc^2)^-1",
+    "constant line ratio R21 ~ 0.65"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "deproject images",
+   "method": "Deproject gas and stellar maps with PA and inclination from Table 1",
+   "software": [
+    "pydisc"
+   ],
+   "key_parameters": [
+    "PA and i from CO kinematics (Lang+20)"
+   ],
+   "assumptions": [
+    "central structures are as flattened as the disk (no spherical bulge)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "compute gravitational potential",
+   "method": "Convolve the stellar surface density with the kernel of a constant scale-height isothermal (sech^2) disk using Fourier transforms",
+   "software": [],
+   "key_parameters": [
+    "h ~ 1/12 H_disk"
+   ],
+   "assumptions": [
+    "vertical distribution of an isothermal disk",
+    "baryon-dominated disk, no dark matter"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "compute torque field",
+   "method": "Forces from the potential gradient; torque per unit mass t = xFy - yFx; multiplied by molecular gas to get angular momentum change",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "azimuthally average torques and identify CR",
+   "method": "Gas-weighted azimuthal average tau(R); CR taken as the negative-to-positive crossing with the largest amplitude within 0.75-2.25 R_bar",
+   "software": [],
+   "key_parameters": [
+    "annulus width delta R = 1.5 arcsec"
+   ],
+   "assumptions": [
+    "steady state, gas distribution traces where gas spends its time"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "derive pattern speed and Lindblad resonances",
+   "method": "Omega_p from the angular velocity curve at R_CR; ILR/OLR from intersections of Omega -/+ kappa/2 with Omega_p using CO rotation curves",
+   "software": [],
+   "key_parameters": [
+    "rotation curves in 150 pc wide radial bins"
+   ],
+   "assumptions": [
+    "epicyclic theory (valid only for small perturbations); observed rotation curve used as circular velocity"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "bootstrap uncertainties and quality flags",
+   "method": "Perturb i, PA and center with Gaussian errors N=100 times, take 16th-84th percentile as error, add in quadrature; assign QF from max error relative to R_bar; also vary stellar mass map",
+   "software": [],
+   "key_parameters": [
+    "N = 100 iterations; center uncertainty +/-0.5 px",
+    "QF=2 for 30% R_bar < err < 80% R_bar (QF=1 below, QF=3 above)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "compare CR with literature methods",
+   "method": "Spearman correlation and ratio of CR to literature CR, overall and per method, for QF=1,2 galaxies",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "classify bars by R = R_CR/R_bar",
+   "method": "Compute R = R_CR/R_bar and classify ultra-fast (<1), fast (1-1.4), slow (>1.4)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "R_CR NGC 1097",
+   "value": "6.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 NGC 1097",
+     "quote": "the change from negative to positive torques at $R_{\\rm CR}=6.4 \\ \\rm kpc$, is identified as the CR"
+    }
+   ]
+  },
+  {
+   "quantity": "Omega_p NGC 1097",
+   "value": "38.5",
+   "uncertainty": "+/-4.7",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 NGC 1097",
+     "quote": "we measure a pattern speed value of $\\Omega_{\\rm p} = 38.5\\pm 4.7 \\ \\rm km \\ s^{-1}\\ kpc^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "oILR and OLR NGC 1097",
+   "value": "oILR 1.0 kpc, OLR 9.6 kpc",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 NGC 1097",
+     "quote": "This leads to an oILR at $R = 1.0\\ \\rm kpc$ and an OLR at $R = 9.6\\ \\rm kpc$."
+    }
+   ]
+  },
+  {
+   "quantity": "R_CR NGC 3627",
+   "value": "5.2",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 NGC 3627",
+     "quote": "we consider the CR to be at $R_{\\rm CR}=5.2 \\ \\rm kpc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Omega_p NGC 3627",
+   "value": "38.8",
+   "uncertainty": "+/-1.8",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 NGC 3627",
+     "quote": "we measure a pattern speed value of $\\Omega_{\\rm p} = 38.8\\pm 1.8 \\ \\rm km \\ s^{-1} \\ kpc ^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CR NGC 4321",
+   "value": "3.7",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 NGC 4321",
+     "quote": "the selected crossing ($R_{\\rm CR}=3.7 \\ \\rm kpc$) clearly represents the CR of the bar"
+    }
+   ]
+  },
+  {
+   "quantity": "Omega_p NGC 4321",
+   "value": "44.2",
+   "uncertainty": "+/-4.5",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 NGC 4321",
+     "quote": "we measure a pattern speed of $\\Omega_{\\rm p} = 44.2\\pm4.5 \\ \\rm km \\ s^{-1} \\ kpc^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CR NGC 4579",
+   "value": "3.3",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 NGC 4579",
+     "quote": "torques robustly point to a CR at $R_{\\rm CR} = 3.3 \\ \\rm kpc$"
+    }
+   ]
+  },
+  {
+   "quantity": "Omega_p NGC 4579",
+   "value": "68.2",
+   "uncertainty": "+/-3.5",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 NGC 4579",
+     "quote": "We measure a pattern speed $\\Omega_{\\rm p} = 68.2\\pm3.5 \\ \\rm km \\ s^{-1} \\ kpc^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "galaxies with a derived R_CR",
+   "value": "38 of 46",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5 Statistics",
+     "quote": "We derived the $R_{\\rm CR}$ for 38 out of 46 galaxies"
+    }
+   ]
+  },
+  {
+   "quantity": "galaxies with reliable CR (QF=1 or 2)",
+   "value": "20 of 46 (QF=1: 8, QF=2: 12)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5 Statistics",
+     "quote": "we find that $20$ out of $46$ barred galaxies are reliable"
+    },
+    {
+     "loc": "4.5 Statistics",
+     "quote": "$QF=1$ (8 galaxies, $\\sim17\\%$) or $QF=2$ (12 galaxies, $\\sim26\\%$)"
+    }
+   ]
+  },
+  {
+   "quantity": "number of ILRs deduced",
+   "value": "19 (41% of sample)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5 Statistics",
+     "quote": "we have a total of 19 ILRs (i.e., a $41\\%$ of the sample)"
+    }
+   ]
+  },
+  {
+   "quantity": "mean R = R_CR/R_bar (QF=1,2)",
+   "value": "1.12",
+   "uncertainty": "+/-0.39",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Fast and slow bars",
+     "quote": "Our average value, if we exclude those galaxies with $QF=3$, is $\\mathcal{R}\\sim 1.12 \\pm 0.39$"
+    }
+   ]
+  },
+  {
+   "quantity": "bar classes among 20 QF=1,2 galaxies",
+   "value": "6 fast (30%), 4 slow (20%), 10 ultra-fast (50%)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Fast and slow bars",
+     "quote": "we find six galaxies (30%) presenting fast bars, four galaxies (20%) presenting slow bars and ten galaxies (50%) presenting ultra-fast bars"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation with all literature methods",
+   "value": "rho = 0.64, p < 0.001",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 R_CR comparison",
+     "quote": "We obtain a Spearman coefficient $\\rho=0.64\\ (p\\rm-value<0.001)$."
+    }
+   ]
+  },
+  {
+   "quantity": "mean and median CR_this paper/CR_literature",
+   "value": "mean ~0.9, median ~0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 R_CR comparison",
+     "quote": "the mean quotient of all datapoints $\\rm CR_{\\rm This \\ paper}/\\rm CR_{\\rm Literature}\\sim 0.9$ and the median is $\\sim 0.8$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Processing of the PHANGS-ALMA cubes (CASA version, imaging parameters, calibration) is not given; reproducer must rely on the public v4.0 release",
+  "Which stellar mass map (IRAC, ICA1 or ICA2) is nominal for each galaxy (Table 2) and the per-galaxy H_disk values",
+  "pydisc version and deprojection options (interpolation, pixel grid, handling of CO vs 1.7 arcsec S4G resolution mismatch)",
+  "Numerical treatment of the rotation-curve derivative (smoothing/spline) used for kappa and the ILR/OLR intersections",
+  "Exact sign convention bookkeeping and mask handling when azimuthally averaging",
+  "Literature CR values, their rescaling to the adopted distances/inclinations, and which entries were excluded",
+  "Random seeds and perturbation implementation for the bootstrap; criteria for manual QF downgrades beyond visual inspection"
+ ],
+ "missing_for_reproduction": [
+  "pydisc deprojection settings and version",
+  "per-galaxy H_disk and nominal stellar mass map",
+  "rotation curve smoothing for kappa",
+  "torque-profile code (only the Zenodo supplementary material is mentioned)",
+  "manual QF downgrade criteria per galaxy"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public input maps, a fully described torque recipe with numeric results in tables; code and some per-galaxy choices not given, and manual QF judgement.",
+ "rediscovery_reason": "Public PHANGS-ALMA and S4G maps, recipe largely complete, and numeric R_CR, Omega_p and R values are tabulated.",
+ "source_card": "cards/2024A%26A...691A.351R/sonnet/card.md"
+}

@@ -1,0 +1,294 @@
+{
+ "bibcode": "2020ApJ...895...21I",
+ "title": "ALMA Observations of the Molecular Clouds in NGC 625",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab8883",
+ "arxiv_id": "2002.09498",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the global and cloud-scale properties of the molecular gas in the dwarf starburst NGC 625, and how do the clouds relate to HII regions and star formation?",
+ "alma_project_codes": [
+  "2015.1.01395.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-m array, 36 antennas, two pointings",
+  "angular_resolution": "~1.1'' minimum; final beam 1.31''x1.08''",
+  "sensitivity": "10.3 mJy per 1.5 km/s channel (0.7 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HII region sizes and Halpha SFR comparison/stellar populations",
+    "evidence": [
+     {
+      "loc": "6.2 Small scales",
+      "quote": "assuming the sizes of these regions as determined by (cite: Cannon_2003)"
+     }
+    ]
+   },
+   "citation": "(cite: Cannon_2003)"
+  },
+  {
+   "what": {
+    "value": "Single-dish CO mass 5.0e6 Msun",
+    "evidence": [
+     {
+      "loc": "3.1 Integrated intensity",
+      "quote": "a molecular gas mass of $(5.0\\pm0.7)\\times10^6$ $M_\\odot$, assuming a Galactic conversion factor"
+     }
+    ]
+   },
+   "citation": "(cite: Cormier_2014)"
+  },
+  {
+   "what": {
+    "value": "Galactic extinction E(B-V)=0.16 mag",
+    "evidence": [
+     {
+      "loc": "2.2 Archival Hubble Halpha observations",
+      "quote": "following the reddening $E(B-V)=0.16$ mag reported by (cite: Schlegel_1998)"
+     }
+    ]
+   },
+   "citation": "(cite: Schlegel_1998)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the CO cube and continuum",
+   "method": "Multiscale CLEAN with natural weighting, masked, continuum subtracted, primary-beam corrected; tapered cubes for flux recovery",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "1.5 km/s channels, 0.25'' pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Global CO spectrum and molecular mass",
+   "method": "Average brightness temperature per channel, fit a Gaussian, convert luminosity to mass with Galactic alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.35 Msun (K km/s pc^2)^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Identify GMCs and measure properties",
+   "method": "CPROPS with CLUMPFIND modification, extrapolation to 0 K, beam/channel deconvolution, 50 bootstraps",
+   "software": [
+    "CPROPS"
+   ],
+   "key_parameters": [
+    "t=4, e=2, 15 pc x 15 pc x 2 km/s search box, EDGE=2"
+   ],
+   "assumptions": [
+    "Mvir=1040 R sigma_v^2, spherical clouds with rho ~ R^-1; Milky Way alpha_CO"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Larson scaling relations",
+   "method": "Spearman rank correlation and BCES fits of size-linewidth, C-Sigma, Mvir-Mlum, mass-size",
+   "software": [
+    "BCES"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Halpha SFR map and extinction correction",
+   "method": "HST Halpha continuum-subtracted, corrected for Galactic extinction and Balmer decrement, converted with Kennicutt & Evans relation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Case B, T=10,000 K, ne=100 cm^-3, Halpha/Hbeta=2.86; SFR constant over 10 Myr"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Depletion times",
+   "method": "tau_dep = M_H2/SFR globally and in HII regions A-D, Butterfly, Serpent",
+   "software": [],
+   "key_parameters": [
+    "upper limit SFR <~5e-4 Msun/yr for Butterfly and Serpent"
+   ],
+   "assumptions": [
+    "Galactic alpha_CO; possibly higher (3x, ~9x with metallicity scaling)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular gas mass (Galactic alpha_CO)",
+   "value": "5.34e6",
+   "uncertainty": "0.34e6",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity",
+     "quote": "corresponds to a total molecular mass of $(5.34\\pm0.34)\\times 10^6$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO intensity",
+   "value": "3.00",
+   "uncertainty": "0.19",
+   "units": "K km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity",
+     "quote": "$I_{\\rm CO}=(3.00\\pm 0.19)$ K km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO luminosity",
+   "value": "1.2e6",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Integrated intensity",
+     "quote": "the luminosity of this region is $1.2\\times10^6$ K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clouds identified / resolved",
+   "value": "33 / 19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 GMC Properties",
+     "quote": "we catalog 33 clouds. Fourteen clouds have deconvolved radii smaller than the telescope beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Median cloud surface density",
+   "value": "169",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 GMC Properties",
+     "quote": "$20$ pc, $2.5$ km s$^{-1}$, $1.7\\times 10^5$ $M_\\odot$, and 169 $M_\\odot$ pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "50% completeness limits",
+   "value": "6.5e4 Msun and 55 Msun pc^-2",
+   "uncertainty": "not stated",
+   "units": "Msun; Msun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 GMC Properties",
+     "quote": "50% completeness limits of $6.5\\times10^4~\\ensuremath{M_\\odot}$ and $55~\\ensuremath{M_\\odot}$ pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth slope",
+   "value": "0.91",
+   "uncertainty": "0.36",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.1 Size-linewidth relation",
+     "quote": "$\\sigma_v\\propto R^{0.91\\pm0.36}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial fit Mvir vs Mlum",
+   "value": "Mvir=0.50 Mlum^1.04",
+   "uncertainty": "0.16 (norm), 0.03 (slope)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.2 Virial relation",
+     "quote": "$\\ensuremath{M_{\\rm vir}}=(0.50\\pm0.16)\\ensuremath{M_{\\rm lum}}^{1.04\\pm0.03}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass-size fit",
+   "value": "Mlum=466 R^2.06",
+   "uncertainty": "0.11 (slope)",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.3 Mass-size relation",
+     "quote": "$\\ensuremath{M_{\\rm lum}}= 466 R^{2.06\\pm0.11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Global molecular depletion time",
+   "value": "106-134",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.1 Global scales",
+     "quote": "$\\tau_{\\rm dep}\\approx 106$-134 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Butterfly depletion time",
+   "value": ">=5.0",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$\\ge 5.0$ Gyr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Multiscale scales, cell/image size in pixels, number of CLEAN iterations and threshold",
+  "Line-free channels used for continuum subtraction",
+  "Exact uv-taper parameters",
+  "Flux scale uncertainty and calibrator flux values",
+  "Whether archive-delivered or reprocessed calibrated data were used",
+  "CPROPS settings beyond defaults (e.g. exact masks, MAXPEAK/fudge values)",
+  "Halpha flux values/aperture definitions for regions A-D and the Butterfly/Serpent boundaries",
+  "Project-code discrepancy: acknowledgments print 2015.1.01569.S"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters (scales, iterations, threshold)",
+  "Line-free channels",
+  "Halpha region flux measurements",
+  "Exact CPROPS extra settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and stated cloud-finding recipe, but imaging parameters and the Halpha SFR steps are only partly specified.",
+ "rediscovery_reason": "Data are public, the CPROPS recipe is largely stated, and the main results are numeric (mass, cloud medians, scaling fits).",
+ "source_card": "cards/2020ApJ...895...21I/sonnet/card.md"
+}

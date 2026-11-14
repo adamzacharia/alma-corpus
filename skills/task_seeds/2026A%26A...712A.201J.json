@@ -1,0 +1,427 @@
+{
+ "bibcode": "2026A&A...712A.201J",
+ "title": "Physical and chemical conditions of molecular gas in NGC 1068: The nuclear feedback in the circumnuclear disk and starburst ring",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202659614",
+ "arxiv_id": "2606.31611",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Map the physical conditions across the circumnuclear disk and the starburst ring of NGC 1068, test whether the nuclear outflow influences the molecular gas in the ring, and examine whether the heating or the quiescent cloud scenario better matches the observations.",
+ "alma_project_codes": [
+  "2018.1.01506.S",
+  "2018.1.01684.S",
+  "2018.1.00321.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 4, and Band 5",
+  "arrays": "not stated",
+  "angular_resolution": "Native: 0.3'' (~20 pc) to 0.8'' (~60 pc) (0.34''x0.30'' to 0.78''x0.45''); convolved to common 0.8'' (~56 pc)",
+  "sensitivity": "Channel noise after convolving to 0.8'': 0.41 to 0.82 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to NGC 1068 of 14 Mpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Located at a distance of 14 Mpc ((cite: Bland1997); 1$''$ $\\sim$ 70 pc), its proximity enables sufficient spatial resolution to distinguish between star formation and AGN-driven processes."
+     }
+    ]
+   },
+   "citation": "(cite: Bland1997)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity v_sys(HEL) ~= 1130 km/s",
+    "evidence": [
+     {
+      "loc": "ALMA data",
+      "quote": "The rest frequencies were determined using the systemic velocity from (cite: Garcia2019), with $v_{sys}(HEL) \\simeq$ 1130 km/s."
+     }
+    ]
+   },
+   "citation": "(cite: Garcia2019)"
+  },
+  {
+   "what": {
+    "value": "Linewidths of 150, 100, and 50 km s^-1 for the CND, stellar bar, and starburst ring",
+    "evidence": [
+     {
+      "loc": "Bayesian and Neural Network Workflow",
+      "quote": "We adopted linewidths of 150, 100, and 50 km s$^{-1}$ for the CND, stellar bar, and starburst ring, respectively (cite: Scourfield2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Scourfield2020)"
+  },
+  {
+   "what": {
+    "value": "Superstar cluster (SSC) positions in the starburst ring",
+    "evidence": [
+     {
+      "loc": "Posterior Results and Model Preference",
+      "quote": "The SSC positions are adopted from (cite: Villas2021), where Pa$\\alpha$ emission was used to trace compact young stellar clusters."
+     }
+    ]
+   },
+   "citation": "(cite: Villas2021)"
+  },
+  {
+   "what": {
+    "value": "Position of Type II SN 2018ivc",
+    "evidence": [
+     {
+      "loc": "Posterior Results and Model Preference",
+      "quote": "Circles denote sub-regions in the CND and the AGN, squares indicate superstar clusters (SSCs) in the starburst ring, and a pentagram marks the position of Type II SN 2018ivc (cite: bostroem2020)."
+     }
+    ]
+   },
+   "citation": "(cite: bostroem2020)"
+  },
+  {
+   "what": {
+    "value": "Previous physical parameter measurements (n_H2, T_K, zeta) in NGC 1068 sub-regions for comparison",
+    "evidence": [
+     {
+      "loc": "Comparisons with Previous Studies",
+      "quote": "We compare our results with previous multi molecular studies of NGC 1068 in Fig. 6, focusing on (cite: Josh2022), (cite: viti2014), and (cite: Scourfield2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Josh2022), (cite: viti2014), (cite: Scourfield2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Convolve cubes, generate moment-0 maps, and partition into hexagonal regions",
+   "method": "Convolve all ALMA image cubes to a common 0.8'' beam, integrate over velocity windows to make moment-0 maps, and partition into 56 pc hexagonal regions keeping detections with S/N >= 3 and regions with >5 detected transitions.",
+   "software": [
+    "CASA",
+    "HERA"
+   ],
+   "key_parameters": [
+    "Common beam = 0.8''; Hexagon size = 56 pc; S/N threshold >= 3; > 5 detected transitions per hexagon (198 regions total)",
+    "Velocity integration windows: |v - v_sys| <= 230 km s^-1 for most transitions; v - v_sys in [-510, 230] km s^-1 for C2H (1-0)"
+   ],
+   "assumptions": [
+    "Distance = 14 Mpc (1'' ~ 70 pc); v_sys(HEL) ~= 1130 km/s"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Generate chemical model grid and train neural network emulator",
+   "method": "Run two-stage UCLCHEM models (both quiescent and heating scenarios) across a 4D parameter grid, filter out abundances < 10^-15, normalize to (-1, 1), and train a 4-hidden-layer TensorFlow neural network to predict fractional molecular abundances.",
+   "software": [
+    "UCLCHEM",
+    "TensorFlow"
+   ],
+   "key_parameters": [
+    "4 inputs: T_K in [30, 300] K (26 log points), n_H2 in [10^3, 10^7] cm^-3 (23 log points), zeta in [1, 10^3] zeta_0 (31 log points), N_H2 in [10^22, 10^25] cm^-2 (26 log points); 481,988 unique combinations",
+    "Architecture: 4 hidden layers with 2048 nodes each, ReLU activation, MSE loss, early stopping after 20 epochs without validation loss improvement; 80%/10%/10% train/val/test split"
+   ],
+   "assumptions": [
+    "Stage 1 freefall collapse from n = 100 cm^-3, T = 10 K, zeta_0 = 1.3e-17 s^-1 over 6 Myr; Stage 2 evolution for 1 Myr at fixed visual extinction A_v = 10 mag"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform hierarchical Bayesian inference coupled with non-LTE radiative transfer",
+   "method": "Couple neural network chemical abundances with SpectralRadex non-LTE radiative transfer to predict line ratios, and sample the hierarchical Bayesian posterior across 198 hexagonal regions using Nautilus for both heating and quiescent models.",
+   "software": [
+    "SpectralRadex",
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "Observables: m = n - 1 chained log line ratios y_i^obs = ln(r_i) where r_k = I_k / I_{k+1}; Linewidths = 150, 100, and 50 km s^-1 for CND, stellar bar, and starburst ring",
+    "Hyperparameter priors: mu_n in (3.0, 6.00), mu_T in (1.55, 2.30), mu_N in (22.5, 24.0), mu_zeta in (0.0, 2.0), sigma_error in (0.02, 0.5)"
+   ],
+   "assumptions": [
+    "All transitions optically thin at best-fit parameters; C2H (N=1-0) modeled as a single transition; ensemble of region parameters follows a multivariate Student-t distribution with soft correlation bounds"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract and fit CO(1-0) and 13CO(1-0) line profiles",
+   "method": "Extract CO(1-0) and 13CO(1-0) spectra from selected regions in the CND, arcs, and inner edges of the starburst ring and fit single-component Gaussian profiles to test for non-Gaussian outflow wings and multiple kinematic components.",
+   "software": [],
+   "key_parameters": [
+    "Single-component Gaussian FWHM values in SSC1, SSC2, SSC3 and N-SB-Bar regions"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of hexagonal regions with >5 detected transitions (>3 sigma)",
+   "value": "198",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Posterior Results and Model Preference",
+     "quote": "We identify 198 regions where more than five molecular transitions are detected above the three-sigma level, ensuring that the number of observational constraints exceeds the number of free parameters in the Bayesian inference."
+    }
+   ]
+  },
+  {
+   "quantity": "Neural network HNC abundance mean relative error",
+   "value": "0.35",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Traning Results",
+     "quote": "The network reproduces the `UCLCHEM` predictions with a mean relative error of 0.35% and accurately recovers abundance variations spanning approximately eight orders of magnitude."
+    }
+   ]
+  },
+  {
+   "quantity": "Bayesian log-evidence (log Z) for heating model in CND-S representative region",
+   "value": "-26.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Posterior Results and Model Preference",
+     "quote": "In this representative region, the evidence values are $-26.13$ for the heating model and $-28.92$ for the quiescent model."
+    }
+   ]
+  },
+  {
+   "quantity": "Bayesian log-evidence (log Z) for quiescent model in CND-S representative region",
+   "value": "-28.92",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Posterior Results and Model Preference",
+     "quote": "In this representative region, the evidence values are $-26.13$ for the heating model and $-28.92$ for the quiescent model."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 volume density log10(n_H2) in CND",
+   "value": "4.42",
+   "uncertainty": "0.31",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND exhibits the highest molecular gas density ($n_{\\rm H_2} \\approx 10^{4.42 \\pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\\rm H_2} \\approx 10^{4.17 \\pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\\rm H_2} \\approx 10^{3.78 \\pm 0.29}$ cm$^{-3}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 volume density log10(n_H2) in starburst ring",
+   "value": "4.17",
+   "uncertainty": "0.32",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND exhibits the highest molecular gas density ($n_{\\rm H_2} \\approx 10^{4.42 \\pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\\rm H_2} \\approx 10^{4.17 \\pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\\rm H_2} \\approx 10^{3.78 \\pm 0.29}$ cm$^{-3}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 volume density log10(n_H2) in stellar bar",
+   "value": "3.78",
+   "uncertainty": "0.29",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND exhibits the highest molecular gas density ($n_{\\rm H_2} \\approx 10^{4.42 \\pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\\rm H_2} \\approx 10^{4.17 \\pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\\rm H_2} \\approx 10^{3.78 \\pm 0.29}$ cm$^{-3}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 column density log10(N_H2) in CND",
+   "value": "23.52",
+   "uncertainty": "0.34",
+   "units": "log(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\\rm H_2} \\approx 10^{23.52 \\pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\\rm H_2} \\approx 10^{23.23 \\pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\\rm H_2} \\approx 10^{22.84 \\pm 0.31}$ cm$^{-2}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 column density log10(N_H2) in starburst ring",
+   "value": "23.23",
+   "uncertainty": "0.33",
+   "units": "log(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\\rm H_2} \\approx 10^{23.52 \\pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\\rm H_2} \\approx 10^{23.23 \\pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\\rm H_2} \\approx 10^{22.84 \\pm 0.31}$ cm$^{-2}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H2 column density log10(N_H2) in stellar bar",
+   "value": "22.84",
+   "uncertainty": "0.31",
+   "units": "log(cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\\rm H_2} \\approx 10^{23.52 \\pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\\rm H_2} \\approx 10^{23.23 \\pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\\rm H_2} \\approx 10^{22.84 \\pm 0.31}$ cm$^{-2}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean kinetic temperature T_kin in stellar bar",
+   "value": "140.8",
+   "uncertainty": "36.6",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\\rm kin} = 140.8 \\pm 36.6$ K), substantially exceeding both the CND ($T_{\\rm kin} = 82.2 \\pm 28.3$ K) and the starburst ring ($T_{\\rm kin} = 76.2 \\pm 28.1$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean kinetic temperature T_kin in CND",
+   "value": "82.2",
+   "uncertainty": "28.3",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\\rm kin} = 140.8 \\pm 36.6$ K), substantially exceeding both the CND ($T_{\\rm kin} = 82.2 \\pm 28.3$ K) and the starburst ring ($T_{\\rm kin} = 76.2 \\pm 28.1$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean kinetic temperature T_kin in starburst ring",
+   "value": "76.2",
+   "uncertainty": "28.1",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\\rm kin} = 140.8 \\pm 36.6$ K), substantially exceeding both the CND ($T_{\\rm kin} = 82.2 \\pm 28.3$ K) and the starburst ring ($T_{\\rm kin} = 76.2 \\pm 28.1$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cosmic ray ionization rate log(zeta/zeta_0) in CND",
+   "value": "1.95",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND shows the highest mean value, $\\log(\\zeta/\\zeta_{0}) \\approx 1.95 \\pm 0.21$, followed by the stellar bar ($1.91 \\pm 0.23$) and the SSCs in the starburst ring ($1.88 \\pm 0.24$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cosmic ray ionization rate log(zeta/zeta_0) in stellar bar",
+   "value": "1.91",
+   "uncertainty": "0.23",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND shows the highest mean value, $\\log(\\zeta/\\zeta_{0}) \\approx 1.95 \\pm 0.21$, followed by the stellar bar ($1.91 \\pm 0.23$) and the SSCs in the starburst ring ($1.88 \\pm 0.24$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cosmic ray ionization rate log(zeta/zeta_0) in starburst ring SSCs",
+   "value": "1.88",
+   "uncertainty": "0.24",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The CND shows the highest mean value, $\\log(\\zeta/\\zeta_{0}) \\approx 1.95 \\pm 0.21$, followed by the stellar bar ($1.91 \\pm 0.23$) and the SSCs in the starburst ring ($1.88 \\pm 0.24$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cosmic ray ionization rate log(zeta/zeta_0) in non-SSC molecular clouds",
+   "value": "1.03",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical Properties of the Cloud",
+     "quote": "The molecular clouds not associated with SSCs show a more pronounced decrease, with an average of $1.03 \\pm 0.21$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) Gaussian FWHM in SSC1, SSC2, SSC3",
+   "value": "55.74, 51.94, 46.59",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO Line Profiles",
+     "quote": "The SSC spectra are well described by single, nearly symmetric Gaussian components with FWHM values of $55.74$, $51.94$, and $46.59$ km s$^{-1}$, while the N-SB-Bar spectra, although not systematically broader in FWHM (one is comparable at $55.85$ km s$^{-1}$ and the other two are narrower at $37.88$ and $40.00$ km s$^{-1}$), are markedly more *non-Gaussian*"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) Gaussian FWHM in N-SB-Bar, N-SB-Bar-2, N-SB-Bar-3",
+   "value": "55.85, 37.88, 40.00",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO Line Profiles",
+     "quote": "The SSC spectra are well described by single, nearly symmetric Gaussian components with FWHM values of $55.74$, $51.94$, and $46.59$ km s$^{-1}$, while the N-SB-Bar spectra, although not systematically broader in FWHM (one is comparable at $55.85$ km s$^{-1}$ and the other two are narrower at $37.88$ and $40.00$ km s$^{-1}$), are markedly more *non-Gaussian*"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and specific calibration/imaging parameters (e.g., tclean weighting/robust, cell size, image size, continuum subtraction method, velocity channel width Delta V)",
+  "Project code and imaging details for the CO(1-0) and 13CO(1-0) cubes used in Section 5.2.2",
+  "Exact hyperparameters of the TensorFlow training (optimizer, learning rate, batch size)",
+  "Degrees of freedom (nu) for the multivariate Student-t distribution in the hierarchical Bayesian model",
+  "Exact upper/lower bounds denoted by '...' in Table 1 for correlation coefficients R_nT, R_nN, R_Tzeta, R_Nzeta",
+  "Spatial boundaries defining which hexagons are assigned to CND, stellar bar, or starburst ring for linewidth assignment (150, 100, 50 km/s) and regional averaging"
+ ],
+ "missing_for_reproduction": [
+  "Trained TensorFlow neural network weights or the 481,988-point UCLCHEM training dataset and exact chemical network configuration",
+  "Custom hierarchical Bayesian model implementation script for Nautilus (including exact Student-t degrees of freedom and correlation matrix parameterization)",
+  "CASA imaging and continuum subtraction parameters for generating the data cubes from raw archival visibilities",
+  "Provenance and reduction parameters for the CO(1-0) and 13CO(1-0) cubes used in Section 5.2.2",
+  "Coordinate polygon definitions used to assign hexagons to CND, stellar bar, and starburst ring"
+ ],
+ "reproducibility_score": 62,
+ "score_reason": "Archival ALMA project codes, target transitions, velocity integration windows, hexagonal binning tool (HERA), and Bayesian prior ranges are clearly specified, and all core underlying packages (UCLCHEM, SpectralRadex, Nautilus, TensorFlow) are public. However, CASA imaging details, the trained neural network emulator weights, the exact hierarchical Bayesian likelihood script, and the provenance of the CO/13CO cubes are not provided.",
+ "rediscovery_reason": "The ALMA datasets are public in the archive, the software stack (CASA, HERA, UCLCHEM, TensorFlow, SpectralRadex, Nautilus) is open-source, and the main results are concrete regional statistics (mean n_H2, T_kin, N_H2, zeta, and Bayes factors) that can be quantitatively compared.",
+ "source_card": "cards/2026A%26A...712A.201J/sonnet/card.md"
+}

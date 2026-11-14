@@ -1,0 +1,331 @@
+{
+ "bibcode": "2021MNRAS.504.4511P",
+ "title": "ALMA <SUP>13</SUP>CO(J = 1-0) observations of NGC 604 in M33: physical properties of molecular clouds",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab1251",
+ "arxiv_id": "2104.14701",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Whether the 13CO(J=1-0) emission from molecular clouds in NGC 604 obeys Larson's scaling relations, what the physical properties of the clouds are, and what the state of star formation is in the region.",
+ "alma_project_codes": [
+  "2013.1.00639.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12m array (34 antennas, 2 flagged as unusable)",
+  "angular_resolution": "3.2 x 2.4 arcsec (13 x 10 pc) for line; 3.9 x 2.8 arcsec for continuum; minimum beam 2.2 arcsec",
+  "sensitivity": "2.6 mJy beam^-1 (line rms); 0.04 mJy beam^-1 (continuum rms)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Nobeyama Millimeter Array 12CO(J=1-0) cloud identifications and properties in NGC 604 (NMA clouds)",
+    "evidence": [
+     {
+      "loc": "Structure Decomposition and Cloud Properties",
+      "quote": "We compared our results with the results from (cite: Miura2010), who show observations of $^{12}$CO(J=1-0) line emission from NGC 604 as observed by the Nobeyama Millimeter Array."
+     }
+    ]
+   },
+   "citation": "(cite: Miura2010)"
+  },
+  {
+   "what": {
+    "value": "12CO emission GMC properties in NGC 604 for size-linewidth and virial-luminous mass comparisons",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We look at whether the $^{13}$CO emission from NGC 604 obey Larson’s relations in the same way as the $^{12}$CO emission from the same region as presented by (cite: Wilson1992)."
+     },
+     {
+      "loc": "Size - Line width Relation",
+      "quote": "In the figure, we plot results done by (cite: Wilson1992) (black points)."
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1992)"
+  },
+  {
+   "what": {
+    "value": "Milky Way GMC size-linewidth power-law slope",
+    "evidence": [
+     {
+      "loc": "Size - Line width Relation",
+      "quote": "We also show in Figure 5 the Milky Way power-law slope (green solid line) from (cite: Solomon1987) and the extragalactic slope (green dashed line) from (cite: Faesi2018) for NGC 300."
+     }
+    ]
+   },
+   "citation": "(cite: Solomon1987)"
+  },
+  {
+   "what": {
+    "value": "Extragalactic GMC size-linewidth power-law slope for NGC 300",
+    "evidence": [
+     {
+      "loc": "Size - Line width Relation",
+      "quote": "We also show in Figure 5 the Milky Way power-law slope (green solid line) from (cite: Solomon1987) and the extragalactic slope (green dashed line) from (cite: Faesi2018) for NGC 300."
+     }
+    ]
+   },
+   "citation": "(cite: Faesi2018)"
+  },
+  {
+   "what": {
+    "value": "Average 13CO(1-0)-to-H2 conversion factor of 1.0 x 10^21 cm^-2 / (K km s^-1) (X2 = 5)",
+    "evidence": [
+     {
+      "loc": "Structure Decomposition and Cloud Properties",
+      "quote": "We have adopted $X_2 = 5$ based on the average $\\mathrm{^{13}CO(1-0)-to-H_2}$ conversion factor of $\\mathrm{1.0\\times 10^{21}cm^{-2}/(K~km~s^{-1})}$ for nearby disc spiral galaxies found by (cite: Cormier2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Cormier2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibility data and image 13CO(1-0) line cube and 104 GHz continuum",
+   "method": "Standard pipeline calibration followed by imaging with tclean using Briggs weighting",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "pixel scale = 0.36 arcsec",
+    "channel width = 0.664 km s^-1 for 13CO image",
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Decompose 13CO(1-0) emission into hierarchical structures and identify molecular clouds",
+   "method": "Dendrogram decomposition using ASTRODENDRO to identify trunks, branches, and leaves",
+   "software": [
+    "ASTRODENDRO"
+   ],
+   "key_parameters": [
+    "local maxima threshold = 4 sigma_rms, delta above merge level = 3 sigma_rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract basic cloud properties and derive physical quantities (size, linewidth, masses, surface density, virial parameter)",
+   "method": "Bijection approach in ASTRODENDRO for moments and fluxes; analytic equations for physical properties; bootstrap method with 50 iterations for uncertainties",
+   "software": [
+    "ASTRODENDRO",
+    "ASTROPY"
+   ],
+   "key_parameters": [
+    "R = 1.91 sigma_r",
+    "50 bootstrap iterations"
+   ],
+   "assumptions": [
+    "Distance to M33 = 840 kpc",
+    "13CO(1-0)-to-H2 conversion factor X_13CO = 1.0 x 10^21 cm^-2 / (K km s^-1) (X_2 = 5), including 1.36 helium factor",
+    "Truncated power-law density distribution rho propto R^-beta with beta = 1, and negligible magnetic fields and external pressure for virial mass"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze Larson's scaling relations (size-linewidth and virial-luminous mass)",
+   "method": "Compute Spearman rank correlation coefficients and compare against Milky Way, NGC 300, and previous NGC 604 relations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of identified molecular clouds (leaves)",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structure Decomposition and Cloud Properties",
+     "quote": "We identified 20 structures in the entire dendrogram, consisting of 15 leaves and 4 branches, using the above parameters."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of identified branches in dendrogram",
+   "value": "4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structure Decomposition and Cloud Properties",
+     "quote": "We identified 20 structures in the entire dendrogram, consisting of 15 leaves and 4 branches, using the above parameters."
+    }
+   ]
+  },
+  {
+   "quantity": "Total structures in dendrogram",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Structure Decomposition and Cloud Properties",
+     "quote": "We identified 20 structures in the entire dendrogram, consisting of 15 leaves and 4 branches, using the above parameters."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloud sizes (R)",
+   "value": "5-21",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The identified molecular clouds have sizes ranging from 5-21 pc, linewidths of 0.3-3.0 $\\mathrm{km~s^{-1}}$ and luminosity-derived masses of $\\mathrm{(0.4-80.5)\\times 10^3~M_{\\ensuremath{\\odot}}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloud linewidths (Delta v)",
+   "value": "0.3-3.0",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The identified molecular clouds have sizes ranging from 5-21 pc, linewidths of 0.3-3.0 $\\mathrm{km~s^{-1}}$ and luminosity-derived masses of $\\mathrm{(0.4-80.5)\\times 10^3~M_{\\ensuremath{\\odot}}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloud luminosity-derived masses (M_lum)",
+   "value": "(0.4-80.5) x 10^3",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The identified molecular clouds have sizes ranging from 5-21 pc, linewidths of 0.3-3.0 $\\mathrm{km~s^{-1}}$ and luminosity-derived masses of $\\mathrm{(0.4-80.5)\\times 10^3~M_{\\ensuremath{\\odot}}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloud virial parameters (alpha_vir)",
+   "value": "0.2-1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Molecular Mass - Virial Mass Relations",
+     "quote": "These clouds have virial parameters ranging from 0.2-1.1, indicating that some clouds are in virial equilibrium while others could be in a state of forming stars."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient for size-linewidth relation",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Size - Line width Relation",
+     "quote": "The Spearman correlation coefficient for these data has the value of $\\mathrm{r_{s}=0.8}$, which indicates that there is a correlation between size and linewidths of GMCs in NGC 604."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient for virial mass vs molecular mass",
+   "value": "0.98",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Molecular Mass - Virial Mass Relations",
+     "quote": "We show in Figure 6 that the clouds in NGC 604 are in near virial equilibrium and that the data are strongly correlated, with a Spearman coefficient of $r_{s}=0.98$."
+    }
+   ]
+  },
+  {
+   "quantity": "NMA-8 13CO virial mass",
+   "value": "0.8 x 10^5",
+   "uncertainty": "0.3 x 10^5",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "NMA-8",
+     "quote": "Using $^{13}$CO(J=1-0), we estimate a virial mass of $\\mathrm{0.8\\pm 0.3\\times 10^5~M_{\\ensuremath{\\odot}}}$ and a molecular mass of $\\mathrm{1.2\\pm 0.2\\times 10^5~M_{\\ensuremath{\\odot}}}$ in NMA-8, which is a factor of 5 less than the $^{12}$CO(J=1-0) molecular mass presented by (cite: Miura2010)."
+    }
+   ]
+  },
+  {
+   "quantity": "NMA-8 13CO molecular mass",
+   "value": "1.2 x 10^5",
+   "uncertainty": "0.2 x 10^5",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "NMA-8",
+     "quote": "Using $^{13}$CO(J=1-0), we estimate a virial mass of $\\mathrm{0.8\\pm 0.3\\times 10^5~M_{\\ensuremath{\\odot}}}$ and a molecular mass of $\\mathrm{1.2\\pm 0.2\\times 10^5~M_{\\ensuremath{\\odot}}}$ in NMA-8, which is a factor of 5 less than the $^{12}$CO(J=1-0) molecular mass presented by (cite: Miura2010)."
+    }
+   ]
+  },
+  {
+   "quantity": "L5 molecular mass",
+   "value": "0.8 x 10^5",
+   "uncertainty": "0.1 x 10^5",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "NMA-8",
+     "quote": "The estimated molecular mass of $\\mathrm{0.8\\pm 0.1\\times 10^5~M_{\\ensuremath{\\odot}}}$ in L5 is comparable to Orion B in the Milky Way, which has a mass of $\\mathrm{0.82 \\times 10^5~M_{\\ensuremath{\\odot}}}$ (cite: Wilson2005)."
+    }
+   ]
+  },
+  {
+   "quantity": "NMA-9 molecular mass",
+   "value": "0.6 x 10^5",
+   "uncertainty": "0.1 x 10^5",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Other GMCs in NGC 604",
+     "quote": "NMA-9 is the second massive and second largest complex in the imaged area, with a molecular mass of about $0.6\\pm 0.1\\times 10^5 M_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether UV continuum subtraction was performed before imaging the 13CO(1-0) cube and which line-free channels were used",
+  "Which spectral windows were combined to create the 104 GHz continuum image (given the dedicated continuum window is at 98.56-99.50 GHz)",
+  "tclean stopping criteria (threshold, niter), masking strategy, deconvolver, and primary beam correction settings",
+  "Minimum number of pixels (min_npix) parameter in ASTRODENDRO",
+  "Whether spatial and spectral resolution (beam size and channel width) were deconvolved from sigma_r and Delta v before calculating R and M_vir",
+  "Missing Table 1 (tab:Cloud Properties) in the manuscript text which contains the individual properties of the 15 clouds"
+ ],
+ "missing_for_reproduction": [
+  "Table of individual cloud properties (referenced in text as Table [tab:Cloud Properties] but omitted from the source text)",
+  "ASTRODENDRO min_npix parameter value",
+  "tclean deconvolution parameters (threshold, niter, masking, deconvolver, continuum spectral window selection, UV continuum subtraction)",
+  "Whether beam and channel width deconvolution was applied to ASTRODENDRO moments"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Raw ALMA data are public (2013.1.00639.S), CASA version (5.6.1), imaging pixel scale (0.36 arcsec), channel width (0.664 km/s), Briggs robust (0.5), achieved rms, and ASTRODENDRO thresholds (4 sigma min_value, 3 sigma min_delta) and mass conversion formulas are explicitly stated. However, tclean cleaning thresholds/masks, ASTRODENDRO min_npix, beam deconvolution choices, and the table of individual cloud properties are missing.",
+ "rediscovery_reason": "Public archival dataset with standard pipeline calibration, straightforward tclean imaging, and an open-source ASTRODENDRO analysis workflow yielding clear numeric benchmarks (number of leaves/branches, mass and size ranges, Spearman correlations, NMA-8 and NMA-9 masses).",
+ "source_card": "cards/2021MNRAS.504.4511P/sonnet/card.md"
+}

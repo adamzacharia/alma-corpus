@@ -1,0 +1,508 @@
+{
+ "bibcode": "2021ApJ...917...99Y",
+ "title": "ALMA Observations of the Sub-kpc Structure of the Host Galaxy of a z = 6.5 Lensed Quasar: A Rotationally Supported Hyper-Starburst System at the Epoch of Reionization",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac0af4",
+ "arxiv_id": "2106.07429",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the sub-kpc spatial structure, lensing configuration, physical properties, and gas kinematics of the host galaxy of the z=6.51 gravitationally lensed quasar J0439+1634?",
+ "alma_project_codes": [
+  "2018.1.00566.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12-m array (48 antennas)",
+  "angular_resolution": "0.31'' x 0.27'' (image plane); ~0.15'' (~0.8 kpc, source plane)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Fiducial HST lens model parameters (lens redshift 0.67, mass 2.06x10^10 M_sun, ellipticity 0.65, PA 94.58 deg, quasar magnification 51.3 +/- 1.4) and SMBH mass M_BH = (4.29 +/- 0.60) x 10^8 M_sun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The lensing model based on *HST* data suggests that J0439+1634 is a naked-cusp lens with three images, with a total magnification of $51.3\\pm1.4$."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "$^{1}$ In the default model, the parameters of the lens galaxy, except its position, are fixed to the fiducial model in (cite: fan19)."
+     },
+     {
+      "loc": "5.2 SMBH-Host Co-evolution",
+      "quote": "(cite: fan19) measures the SMBH mass of J0439+1634 to be $M_\\text{BH}=(4.29\\pm 0.60)\\times10^8M_\\odot$, which gives $M_\\text{BH}/M_\\text{dyn}=0.055\\sin^2(i)$."
+     }
+    ]
+   },
+   "citation": "(cite: fan19)"
+  },
+  {
+   "what": {
+    "value": "Apparent (un-corrected for lensing) infrared luminosities, emission line luminosities, SFR, dust mass, and CO-based molecular gas mass",
+    "evidence": [
+     {
+      "loc": "4.1 Dust Continuum and [C ii] Emission",
+      "quote": "Based on these measurements, (cite: yang19) calculate the infrared luminosities, emission line luminosities, star formation rate, dust mass, and gas mass without correcting for the lensing magnification."
+     },
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: These values are calculated according to Table 1 in (cite: yang19)."
+     }
+    ]
+   },
+   "citation": "(cite: yang19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, subtract continuum, and image continuum and [C II] line",
+   "method": "Fit linear continuum to line-free channels with UVCONTSUB, perform phase self-calibration on continuum and apply to line visibilities, and clean both using TCLEAN with Briggs weighting.",
+   "software": [
+    "CASA",
+    "UVCONTSUB",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "linear function for UVCONTSUB"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract lensed continuum and [C II] fluxes and fit 1D [C II] line profile",
+   "method": "Extract continuum and [C II] fluxes using a 2.0'' diameter aperture and fit a 1D Gaussian profile to the [C II] spectrum using SPECFIT.",
+   "software": [
+    "CASA",
+    "SPECFIT"
+   ],
+   "key_parameters": [
+    "aperture diameter = 2.0''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model gravitational lensing and source surface brightness in the uv-plane",
+   "method": "Use VISILENS to fit an SIE lens + Sérsic source model directly to the continuum and [C II] visibilities using MCMC. In the default model, fix lens mass, ellipticity, and PA to the HST fiducial model, fit lens position on continuum, and fix lens position for [C II].",
+   "software": [
+    "VISILENS"
+   ],
+   "key_parameters": [
+    "Lens redshift = [0.67], Source redshift = [6.5187], Lens Mass = [2.06x10^10 M_sun], Lens e = [0.65], Lens PA = [94.58 deg] (in default model)"
+   ],
+   "assumptions": [
+    "Singular isothermal ellipsoid (SIE) lens mass distribution and single Sérsic source profile"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Reconstruct source-plane [C II] data cube, moment maps, and kinematics",
+   "method": "Attempt uv-plane axisymmetric thin rotating disk fit with VISILENS (rejected due to poor fit). Reconstruct source-plane data cube via inverse ray-tracing of the cleaned image cube onto a 0.04'' grid using the default lens model, compute moment maps for pixels with SNR > 10, and extract PV diagram.",
+   "software": [
+    "VISILENS"
+   ],
+   "key_parameters": [
+    "source-plane pixel size = 0.04''",
+    "integrated flux SNR > 10 threshold for moment 1 and 2"
+   ],
+   "assumptions": [
+    "Default lensing model mapping from image plane to source plane"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive de-lensed physical properties, spatially resolved [C II] deficit, and dynamical mass",
+   "method": "Correct apparent luminosities, SFR, dust mass, and gas mass from (cite: yang19) using derived continuum and [C II] magnifications. Measure [C II]/FIR vs Sigma_FIR in 4 concentric elliptical rings of width R_eff. Compute dynamical mass from v_max sin(i) and r_max, and evaluate SMBH sphere of influence.",
+   "software": [],
+   "key_parameters": [
+    "mu_[C II] = 3.44, mu_cont = 4.53",
+    "4 elliptical annuli with width R_eff = 0.136''"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_Lambda = 0.7",
+    "Dust continuum traces molecular gas (for CO magnification) and SFR surface density"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Apparent continuum flux density (S_245GHz)",
+   "value": "16.0",
+   "uncertainty": "+/- 0.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "We extract the continuum and [C ii] fluxes of J0439+1634 with a $2.0\\ensuremath{''}$ diameter aperture, which gives $S_\\text{245 GHz}=16.0\\pm0.1 \\text{ mJy}$ for the continuum and $F_\\text{[C\\,{\\sc ii}]}=14.5\\pm0.2\\text{ Jy km s}^{-1}$ for the integrated [C ii] flux."
+    }
+   ]
+  },
+  {
+   "quantity": "Apparent integrated [C II] flux (F_[CII])",
+   "value": "14.5",
+   "uncertainty": "+/- 0.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "We extract the continuum and [C ii] fluxes of J0439+1634 with a $2.0\\ensuremath{''}$ diameter aperture, which gives $S_\\text{245 GHz}=16.0\\pm0.1 \\text{ mJy}$ for the continuum and $F_\\text{[C\\,{\\sc ii}]}=14.5\\pm0.2\\text{ Jy km s}^{-1}$ for the integrated [C ii] flux."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] observed central frequency",
+   "value": "252.7744",
+   "uncertainty": "+/- 0.0011",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "The [C ii] line is centered at $252.7744\\pm0.0011$ GHz with an FWHM of $270.0\\pm2.8 \\text{ km s}^{-1}$, which gives a redshift $z_\\text{[C\\,{\\sc ii}]}=6.51871\\pm0.00003$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] line FWHM",
+   "value": "270.0",
+   "uncertainty": "+/- 2.8",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "The [C ii] line is centered at $252.7744\\pm0.0011$ GHz with an FWHM of $270.0\\pm2.8 \\text{ km s}^{-1}$, which gives a redshift $z_\\text{[C\\,{\\sc ii}]}=6.51871\\pm0.00003$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift (z_[CII])",
+   "value": "6.51871",
+   "uncertainty": "+/- 0.00003",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "The [C ii] line is centered at $252.7744\\pm0.0011$ GHz with an FWHM of $270.0\\pm2.8 \\text{ km s}^{-1}$, which gives a redshift $z_\\text{[C\\,{\\sc ii}]}=6.51871\\pm0.00003$."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum magnification (mu_cont, default model)",
+   "value": "4.53",
+   "uncertainty": "+/- 0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The overall magnification is $4.53\\pm0.05$ for the continuum and $3.44\\pm0.05$ for the [C ii] line."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] magnification (mu_[CII], default model)",
+   "value": "3.44",
+   "uncertainty": "+/- 0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The overall magnification is $4.53\\pm0.05$ for the continuum and $3.44\\pm0.05$ for the [C ii] line."
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed continuum source flux (default model)",
+   "value": "3.46",
+   "uncertainty": "+/- 0.04",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Flux $^{6}$ | \\- | $3.46\\pm0.04$ | $4.15\\pm0.10$ | \\- | $3.18\\pm0.07$ | $4.16\\pm0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed [C II] source flux (default model)",
+   "value": "4.15",
+   "uncertainty": "+/- 0.10",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Flux $^{6}$ | \\- | $3.46\\pm0.04$ | $4.15\\pm0.10$ | \\- | $3.18\\pm0.07$ | $4.16\\pm0.10$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum half-light radius (R_eff, angular)",
+   "value": "0.136",
+   "uncertainty": "+/- 0.002",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dust Continuum",
+     "quote": "The best-fit Sérsic index is $1.71\\pm0.06$ and the half-light radius is $0.136\\ensuremath{''}\\pm0.002\\ensuremath{''}$ ($0.74\\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum half-light radius (R_eff, physical)",
+   "value": "0.74",
+   "uncertainty": "+/- 0.01",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dust Continuum",
+     "quote": "The best-fit Sérsic index is $1.71\\pm0.06$ and the half-light radius is $0.136\\ensuremath{''}\\pm0.002\\ensuremath{''}$ ($0.74\\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum Sérsic index (n)",
+   "value": "1.71",
+   "uncertainty": "+/- 0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Dust Continuum",
+     "quote": "The best-fit Sérsic index is $1.71\\pm0.06$ and the half-light radius is $0.136\\ensuremath{''}\\pm0.002\\ensuremath{''}$ ($0.74\\pm0.01$ kpc), suggesting a compact, exponential-disk-like profile."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] half-light radius (R_eff, angular)",
+   "value": "0.233",
+   "uncertainty": "+/- 0.006",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Integrated [C ii] Flux",
+     "quote": "The best-fit [C ii] emission has a Sérsic index of $0.82\\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\\ensuremath{''}\\pm 0.006\\ensuremath{''}$ $(1.27\\pm0.03 \\text{ kpc})$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] half-light radius (R_eff, physical)",
+   "value": "1.27",
+   "uncertainty": "+/- 0.03",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Integrated [C ii] Flux",
+     "quote": "The best-fit [C ii] emission has a Sérsic index of $0.82\\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\\ensuremath{''}\\pm 0.006\\ensuremath{''}$ $(1.27\\pm0.03 \\text{ kpc})$."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] Sérsic index (n)",
+   "value": "0.82",
+   "uncertainty": "+/- 0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Integrated [C ii] Flux",
+     "quote": "The best-fit [C ii] emission has a Sérsic index of $0.82\\pm0.05$, consistent with an exponential $(n=1)$ profile, and a half-light radius of $0.233\\ensuremath{''}\\pm 0.006\\ensuremath{''}$ $(1.27\\pm0.03 \\text{ kpc})$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum line-of-sight rotation velocity (v_max sin(i))",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 [C ii] Kinematics",
+     "quote": "The maximum rotation velocity is roughly $v_\\text{max}\\sin(i)=130\\text{ km s}^{-1}$ where $i$ is the inclination angle of the rotation axis, and the velocity is measured out to $r_\\text{max}=2\\text{ kpc}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outer rotation velocity dispersion (sigma)",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 [C ii] Kinematics",
+     "quote": "The moment 2 map suggests that these regions have $\\sigma\\sim70 \\text{ km s}^{-1}$, which means that a thick geometry is likely."
+    }
+   ]
+  },
+  {
+   "quantity": "Median source-plane velocity dispersion (sigma_med)",
+   "value": "94",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 SMBH-Host Co-evolution",
+     "quote": "We thus adopt the median value of the source-plane moment 2 map, $\\sigma_\\text{med}=94 \\text{ km s}^{-1}$, which gives $r_h = 0.18 \\text{ kpc}$."
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed [C II] luminosity (L_[CII])",
+   "value": "3.5e9",
+   "uncertainty": "+/- 0.3e9",
+   "units": "L_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L_\\text{[C\\,{\\sc ii}]} (L_\\odot)$ | $(3.5\\pm0.3)\\times10^9$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed FIR luminosity (L_FIR)",
+   "value": "7.5e12",
+   "uncertainty": "+/- 0.4e12",
+   "units": "L_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L_\\text{FIR} (L_\\odot)$ | $(7.5\\pm0.4)\\times10^{12}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed TIR luminosity (L_TIR)",
+   "value": "1.06e13",
+   "uncertainty": "+/- 0.04e13",
+   "units": "L_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $L_\\text{TIR} (L_\\odot)$ | $(1.06\\pm0.04)\\times10^{13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed TIR star formation rate (SFR_TIR)",
+   "value": "1.56e3",
+   "uncertainty": "not stated",
+   "units": "M_sun year^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The host galaxy of J0439+1634 is a compact ultra-luminous infrared galaxy, with a total star formation rate (SFR) of $1.56\\times10^{3}M_\\odot/\\text{year}$ after correcting for lensing and an effective radius of $0.74$ kpc."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $\\text{SFR}_\\text{TIR} (M_\\odot\\text{ year}^{-1})$ | $1.56\\times10^3$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed dust mass (M_dust)",
+   "value": "4.9e8",
+   "uncertainty": "+/- 0.2e8",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_\\text{dust}(M_\\odot)$ | $4.9\\pm0.2\\times10^8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "De-lensed molecular gas mass (M_H2,CO)",
+   "value": "1.19e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $M_{\\text{H}_2,\\text{CO}}(M_\\odot)$ | $1.19\\times10^{10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within 2 kpc (M_dyn sin^2(i))",
+   "value": "7.9e9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Host Galaxy Dynamics",
+     "quote": "Using the maximum line-of-sight velocity $v_\\text{max}\\sin(i) = 130 \\text{ km s}^{-1}$ and the corresponding radius $r_\\text{max}=2\\text{ kpc}$, we estimate the dynamical mass within $r_\\text{max}$ for J0439+1634, $M_\\text{dyn}\\sin^2(i)=7.9\\times10^{9}M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR surface density within continuum half-light radius (Sigma_SFR)",
+   "value": "800",
+   "uncertainty": "not stated",
+   "units": "M_sun year^-1 kpc^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 A Maximum Star Forming Rotating System",
+     "quote": "to be $\\Sigma_\\text{SFR}\\approx800 M_\\odot\\text{ year}^{-1}\\text{ kpc}^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH sphere of influence radius (r_h)",
+   "value": "0.18",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 SMBH-Host Co-evolution",
+     "quote": "We thus adopt the median value of the source-plane moment 2 map, $\\sigma_\\text{med}=94 \\text{ km s}^{-1}$, which gives $r_h = 0.18 \\text{ kpc}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges used as line-free channels in UVCONTSUB",
+  "Self-calibration solution interval (solint) and number of self-calibration iterations",
+  "TCLEAN imaging parameters: cell size, image size, stopping threshold, masking, and spectral channel width of the cleaned cube",
+  "Flux calibrator identity",
+  "Priors and MCMC sampler configuration (number of walkers, steps, burn-in) in VISILENS",
+  "Velocity range/channel range integrated over for the [C II] moment maps and VISILENS integrated line fit"
+ ],
+ "missing_for_reproduction": [
+  "Exact self-calibration parameters (solution intervals, SNR thresholds, number of iterations)",
+  "Exact velocity/frequency channel range integrated for the [C II] visibility modeling and moment maps",
+  "Imaging grid parameters (pixel size, image dimensions, cleaning threshold/masking in TCLEAN)",
+  "Phase center coordinates used as the (0,0) reference for Delta RA and Delta Dec in Table 1",
+  "Custom script used for the inverse ray-tracing cube reconstruction and PV extraction"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA project code, CASA versions, spectral setup, and lens modeling software (VISILENS) with fixed and free parameters are clearly documented. However, low-level imaging/self-calibration parameters, the exact phase center reference coordinates for Table 1, and the custom ray-tracing script are not provided.",
+ "rediscovery_reason": "Public archival dataset (2018.1.00566.S) of a high-SNR target with clear numeric benchmarks: aperture fluxes, 1D Gaussian line parameters, VISILENS SIE+Sérsic magnifications and effective radii, and kinematic v_max sin(i).",
+ "source_card": "cards/2021ApJ...917...99Y/sonnet/card.md"
+}

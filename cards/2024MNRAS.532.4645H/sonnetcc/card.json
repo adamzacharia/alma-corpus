@@ -1,0 +1,1418 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024MNRAS.532.4645H",
+  "title": "Dust beyond the torus: revealing the mid-infrared heart of local Seyfert ESO 428-G14 with JWST/MIRI",
+  "year": 2024,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Haidar, Houda",
+  "n_authors": 37,
+  "arxiv_id": "2404.16100",
+  "doi": "10.1093/mnras/stae1596",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2015.1.00086.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "3.2 ALMA spectroscopy",
+    "quote": "We processed the data using the [CARTA](https://cartavis.org) software package and generated a flux map with a $2\\sigma$ cut."
+   },
+   {
+    "loc": "3 Archival data",
+    "quote": "The ALMA, HST, and VLA data were employed to understand the structure and origin of the extended MIR emission within the broader context of this galaxy"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "ESO 428-G14",
+     "coordinates": {
+      "value": "RA = 07h 16m 31.26s, DEC = -29d 19' 28.85'' (ICRS), peak of the ALMA 1.3 mm continuum",
+      "evidence": [
+       {
+        "loc": "2 ESO 428-G14",
+        "quote": "a redshift-independent distance of $\\rm D \\approx 23.2$ Mpc (a projected physical scale of $\\approx 112.5$ pc/arcsecond) and a redshift of $z = 0.0057$"
+       },
+       {
+        "loc": "2.2 Astrometry",
+        "quote": "we derive a nuclear position of $\\rm RA = 07^h\\, 16^m\\, 31.26s$ and $\\rm DEC = -29\\degree \\, 19'\\, 28.85''$ (ICRS)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "D ~ 23.2 Mpc (112.5 pc/arcsec); z = 0.0057",
+      "evidence": [
+       {
+        "loc": "2 ESO 428-G14",
+        "quote": "a redshift-independent distance of $\\rm D \\approx 23.2$ Mpc (a projected physical scale of $\\approx 112.5$ pc/arcsecond) and a redshift of $z = 0.0057$"
+       },
+       {
+        "loc": "2.2 Astrometry",
+        "quote": "we derive a nuclear position of $\\rm RA = 07^h\\, 16^m\\, 31.26s$ and $\\rm DEC = -29\\degree \\, 19'\\, 28.85''$ (ICRS)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "NED (redshift-independent distance)",
+      "evidence": [
+       {
+        "loc": "2 ESO 428-G14",
+        "quote": "a redshift-independent distance of $\\rm D \\approx 23.2$ Mpc (a projected physical scale of $\\approx 112.5$ pc/arcsecond) and a redshift of $z = 0.0057$"
+       },
+       {
+        "loc": "2.2 Astrometry",
+        "quote": "we derive a nuclear position of $\\rm RA = 07^h\\, 16^m\\, 31.26s$ and $\\rm DEC = -29\\degree \\, 19'\\, 28.85''$ (ICRS)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the characteristics, extent and origin of the polar mid-infrared dust emission in the Seyfert 2 ESO 428-G14 as imaged by JWST/MIRI, and is it dusty torus wind, AGN-illuminated NLR dust, or jet-shock-heated dust (ALMA CO(2-1) and 1.3 mm continuum used for astrometry and context)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present the first JWST/MIRI study aimed at imaging polar dust by zooming onto the centre of ESO 428-G14"
+     },
+     {
+      "loc": "abstract",
+      "quote": "Radiation-driven dusty winds from the torus is unlikely to be important."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00086.S",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA spectroscopy",
+       "quote": "(progam ID: 2015.1.00086.S, PI: Neil Nagar)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA spectroscopy",
+      "quote": "We extracted ALMA Band 6 data products for ESO 428-G14 from the"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "rest frequencies of 230.538 GHz (CO (2-1) line) and 232.538 GHz (1.33 mm continuum)",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA spectroscopy",
+      "quote": "in rest frequencies of 230.538 GHz and 232.538 GHz corresponding to the CO (2-1) line and the 1.33 mm continuum emission respectively"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA spectroscopy",
+       "quote": "in rest frequencies of 230.538 GHz and 232.538 GHz corresponding to the CO (2-1) line and the 1.33 mm continuum emission respectively"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "12 May 2016",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA spectroscopy",
+      "quote": "ESO 428-G14 was observed by ALMA on the $12^{th}$ of May, 2016"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival extraction from the ALMA Science Archive; PI Neil Nagar, program 2015.1.00086.S",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA spectroscopy",
+      "quote": "(progam ID: 2015.1.00086.S, PI: Neil Nagar)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST/MIRI",
+     "provided": {
+      "value": "Primary data: five broad-band MIR images (F560W, F1000W, F1500W, F1800W, F2100W), programme 2064",
+      "evidence": [
+       {
+        "loc": "2 JWST Observations & Data reduction",
+        "quote": "ESO 428-G14 was observed in five broad-band filters (F560W, F1000W, F1500W, F1800W, F2100W"
+       },
+       {
+        "loc": "2 JWST Observations & Data reduction",
+        "quote": "the JWST Cycle 1 programme “Dust in the Wind” (ID: 2064, PI: David Rosario)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT/SINFONI",
+     "provided": {
+      "value": "K-band IFU maps of [Si VI], Br gamma and H2 1-0 S(1) used as morphology templates for line-contamination mock maps",
+      "evidence": [
+       {
+        "loc": "3.1 VLT/SINFONI spectroscopy",
+        "quote": "Program 086.B-0484 (PI: Mueller Sanchez)"
+       },
+       {
+        "loc": "3 Archival data",
+        "quote": "the VLT/SINFONI and the Spitzer/IRS data were used to compute and correct for emission line contamination"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer/IRS",
+     "provided": {
+      "value": "Low- and high-resolution MIR spectra (CASSIS) for JWST flux-calibration check and [S IV] line flux",
+      "evidence": [
+       {
+        "loc": "3.4 Spitzer IRS spectra",
+        "quote": "We retrieved fully reduced low- and high-resolution MIR spectra (program ID: 30572, PI: Varoujan Gorjian)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST/WFPC2",
+     "provided": {
+      "value": "F658N (H-alpha-like) and F814W images, program 5411",
+      "evidence": [
+       {
+        "loc": "3.3 HST images",
+        "quote": "(progam ID: 5411, PI: Andrew Wilson)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "15 GHz (2 cm) U-band archival radio data, PI Heino Falcke",
+      "evidence": [
+       {
+        "loc": "3.5 VLA",
+        "quote": "We extracted high-frequency (15 GHz, 2 cm) Very Large Array (VLA) U-band radio data from National Radio Astronomy Observatory data archive (PI: Heino Falcke)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "[S IV]/H2 0-0 S(3) line flux: H2 0-0 S(3) total flux (9.2+-1.6)e-21 W cm^-2 from Spitzer/IRS low-resolution data",
+      "evidence": [
+       {
+        "loc": "4.4.2 H2 mock map",
+        "quote": "We extracted from (cite: Spoon+22) the total flux arising from the $\\rm H_{2}$ 0-0 S(3)"
+       }
+      ]
+     },
+     "citation": "(cite: Spoon+22)"
+    },
+    {
+     "what": {
+      "value": "Shock velocity 250 km/s and density 4350 cm^-3 (region b1)",
+      "evidence": [
+       {
+        "loc": "5.3 Dust heated by shocks",
+        "quote": "we adopt measurements from (cite: May+18) (their Table 2, region b1) for $v_s= 250\\,\\rm  km~s^{-1}$ and $n = 4350\\,\\rm  cm^{-3}$"
+       }
+      ]
+     },
+     "citation": "(cite: May+18)"
+    },
+    {
+     "what": {
+      "value": "Intrinsic 2-10 keV luminosity 3.6e41 erg/s used to derive L_bol",
+      "evidence": [
+       {
+        "loc": "5.2 Dust illuminated in the NLR",
+        "quote": "to the hard X-ray luminosity of $L_{2-10\\, \\rm keV}= 3.6\\times 10^{41}\\, \\rm erg\\, s^{-1}$ reported by (cite: Levenson+06)"
+       }
+      ]
+     },
+     "citation": "(cite: Levenson+06)"
+    },
+    {
+     "what": {
+      "value": "BH mass (1-3)e7 Msun",
+      "evidence": [
+       {
+        "loc": "5.3 Dust originating from the torus",
+        "quote": "(cite: Fabbiano+19) derived an estimate for the BH mass of $\\rm M_{BH} \\approx (1-3) \\times 10^{7}\\, M_{\\odot}$"
+       }
+      ]
+     },
+     "citation": "(cite: Fabbiano+19)"
+    },
+    {
+     "what": {
+      "value": "Line-of-sight H2 column density ~2e23 cm^-2 (lower limit) from ALMA CO(2-1)",
+      "evidence": [
+       {
+        "loc": "5.3 Dust originating from the torus",
+        "quote": "(cite: Feruglio+20) estimated the line-of-sight $H_{2}$ column density to be $\\rm N_{H_{2}} \\approx 2 \\times 10^{23}\\, cm^{-2}$"
+       }
+      ]
+     },
+     "citation": "(cite: Feruglio+20)"
+    },
+    {
+     "what": {
+      "value": "Radio core coordinates RA = 07h 16m 31.207s, DEC = -29d 19' 28.89'' (ICRS)",
+      "evidence": [
+       {
+        "loc": "3.5 VLA",
+        "quote": "The radio core coordinates (RA, DEC) can be found in Table 3 of (cite: Falcke+98)"
+       }
+      ]
+     },
+     "citation": "(cite: Falcke+98)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "WebbPSF model PSFs for each dithered image and band, drizzled like the science images",
+     "evidence": [
+      {
+       "loc": "2.3 Point spread function",
+       "quote": "to generate PSF models at the detector position of the AGN for each of the four dithered images, and in each band"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "ALMA Band 6 data products extracted from the ALMA Science Archive; whether pipeline or manual calibration is not stated",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA spectroscopy",
+       "quote": "We extracted ALMA Band 6 data products for ESO 428-G14 from the"
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Detailed analysis of the ALMA CO(2-1) data (processing, modelling)",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA spectroscopy",
+        "quote": "A more detailed analysis of these data was conducted by (cite: Feruglio+20)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Feruglio+20)"
+    },
+    {
+     "what": {
+      "value": "VLA data reduction",
+      "evidence": [
+       {
+        "loc": "3.5 VLA",
+        "quote": "The data reduction was performed as described in Section 2.2 of (cite: Falcke+98)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Falcke+98) Section 2.2"
+    },
+    {
+     "what": {
+      "value": "Naming convention: F658N image referred to as the H-alpha image",
+      "evidence": [
+       {
+        "loc": "3.3 HST images",
+        "quote": "We follow (cite: Falcke+98) and refer to the F658N image as the"
+       }
+      ]
+     },
+     "from_reference": "(cite: Falcke+98)"
+    },
+    {
+     "what": {
+      "value": "Line-contamination method validated on NGC 5728 (details in a paper in preparation)",
+      "evidence": [
+       {
+        "loc": "4.4 Emission line contamination",
+        "quote": "Our method has been validated against another nearby Seyfert from the GATOS survey, NGC 5728"
+       }
+      ]
+     },
+     "from_reference": "Rosario et al. 2024, in prep"
+    },
+    {
+     "what": {
+      "value": "More focused PSF modelling study",
+      "evidence": [
+       {
+        "loc": "2.3 Point spread function",
+        "quote": "A more focused study on PSF modelling will be presented in Rosario et al. 2024, in prep."
+       }
+      ]
+     },
+     "from_reference": "Rosario et al. 2024, in prep"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA/pipeline version and calibration route of the ALMA archive products",
+    "ALMA array configuration, beam, rms, channel width and the exact data product (cube vs. moment map) fed to CARTA",
+    "How the CO(2-1) map and the 1.33 mm continuum map were made and which peak-finding method gave the nuclear position",
+    "Aperture photometry details (background treatment, region definitions beyond Table values) and blackbody fitting procedure for the 100-120 K temperatures",
+    "Exact scaling of the SINFONI maps to the mock line maps (flux normalisation, handling of PSF and resolution differences)",
+    "The PSF-subtraction scaling procedure, deferred to a paper in preparation",
+    "Why the shock-heating temperatures differ between text (154, 70 K) and Table 1 (152, 70 K)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract ALMA CO(2-1) and 1.3 mm continuum maps",
+    "method": {
+     "value": "Archive Band 6 products visualised and turned into a flux map with CARTA, 2 sigma cut",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA spectroscopy",
+       "quote": "We processed the data using the [CARTA](https://cartavis.org) software package and generated a flux map with a $2\\sigma$ cut."
+      }
+     ]
+    },
+    "software": [
+     "CARTA"
+    ],
+    "key_parameters": [
+     {
+      "value": "rest frequencies 230.538 GHz (CO 2-1) and 232.538 GHz (1.33 mm continuum)",
+      "evidence": [
+       {
+        "loc": "3.2 ALMA spectroscopy",
+        "quote": "in rest frequencies of 230.538 GHz and 232.538 GHz corresponding to the CO (2-1) line and the 1.33 mm continuum emission respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Reduce JWST/MIRI images with modified saturation handling",
+    "method": {
+     "value": "JWST pipeline with the first-frame correction turned off for saturated pixels to gain a viable group for ramp fitting",
+     "evidence": [
+      {
+       "loc": "2.1 Saturation",
+       "quote": "by turning off the first frame correction for the saturated pixels, we gained an additional viable group"
+      }
+     ]
+    },
+    "software": [
+     "JWST pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "JWST pipeline python package version 10.2, CRDS jwst_1097.pmap",
+      "evidence": [
+       {
+        "loc": "2 JWST Observations & Data reduction",
+        "quote": "processed using the JWST pipeline python package version 10.2 with CRDS reference files"
+       }
+      ]
+     },
+     {
+      "value": "N_ints = 50, four dithers, 358 s per filter",
+      "evidence": [
+       {
+        "loc": "2 JWST Observations & Data reduction",
+        "quote": "A relatively large number of integrations ($N_{\\rm ints} = 50$) and four dithered exposures yielded a final exposure time of 358 seconds in each filter."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared X and Y profiles of the F1500W image between default and modified pipeline",
+     "evidence": [
+      {
+       "loc": "2.1 Saturation",
+       "quote": "Here, we compare the default pipeline with our modified approach."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Register JWST astrometry to the ALMA continuum peak",
+    "method": {
+     "value": "Align the target centroid of the images with the nuclear position taken as the peak of the ALMA 1.3 mm continuum, since tweak_registration fails when the galaxy fills the FOV",
+     "evidence": [
+      {
+       "loc": "2.2 Astrometry",
+       "quote": "we corrected the astrometry by aligning the target centroid of our images with the AGN’s nuclear coordinates derived from ALMA"
+      }
+     ]
+    },
+    "software": [
+     "DAOStarFinder (default method that failed)"
+    ],
+    "key_parameters": [
+     {
+      "value": "nuclear position RA = 07h 16m 31.26s, DEC = -29d 19' 28.85'' (ICRS)",
+      "evidence": [
+       {
+        "loc": "2.2 Astrometry",
+        "quote": "we derive a nuclear position of $\\rm RA = 07^h\\, 16^m\\, 31.26s$ and $\\rm DEC = -29\\degree \\, 19'\\, 28.85''$ (ICRS)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ALMA 1.3 mm continuum peak emerges from very close to the SMBH",
+      "evidence": [
+       {
+        "loc": "2.2 Astrometry",
+        "quote": "By setting the nuclear position to be the peak in the ALMA 1.3 mm continuum (which emerges from very close to the SMBH)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Subtract the nuclear point source",
+    "method": {
+     "value": "WebbPSF models per dither and band, drizzled with the same parameters as the science images, subtracted from the images",
+     "evidence": [
+      {
+       "loc": "2.3 Point spread function",
+       "quote": "The individual PSF frames were drizzled into a single PSF model image for each band using the same image reconstruction parameters as the corresponding science images."
+      }
+     ]
+    },
+    "software": [
+     "WebbPSF"
+    ],
+    "key_parameters": [
+     {
+      "value": "Point source accounts for 75% of the nuclear F560W flux and 57-61% in F1000W, F1500W, F1800W",
+      "evidence": [
+       {
+        "loc": "2.3 Point spread function",
+        "quote": "The point source accounts for 75% of the F560W flux at the nucleus, 57-61% of the flux in the F1000W, F1500W and F1800W filters, and 35% of the flux in the F2100W filter."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Time-dependent wavefront models and appropriate source SEDs",
+      "evidence": [
+       {
+        "loc": "2.3 Point spread function",
+        "quote": "`WEBBPSF` allows the use of optimised PSFs including time-dependent wavefront distortion models and appropriate source spectral energy distributions (SEDs)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Check JWST flux calibration against Spitzer/IRS",
+    "method": {
+     "value": "Convolve JWST images with the Spitzer PSF and perform aperture photometry within the Spitzer apertures",
+     "evidence": [
+      {
+       "loc": "2.5 Flux calibration",
+       "quote": "we convolved the JWST images with the Spitzer PSF[^2] to simulate Spitzer’s optical blurring effects."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "JWST photometry in good agreement with Spitzer/IRS low- and high-resolution SEDs",
+     "evidence": [
+      {
+       "loc": "2.5 Flux calibration",
+       "quote": "is in good agreement with the SED of the Spitzer/IRS from both low-resolution (navy) and high-resolution (turquoise) spectra"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Measure region SEDs and estimate dust temperature",
+    "method": {
+     "value": "Fixed-size aperture photometry of PSF-subtracted images in regions defined on the F1000W image; blackbody temperature from the five-band SED",
+     "evidence": [
+      {
+       "loc": "4.2 MIR regions of interest",
+       "quote": "We then examine and compare the MIR spectral energy distributions of these regions, measured in fixed sized apertures, to explore their properties."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Apertures larger than the F2100W PSF FWHM = 0.67 arcsec",
+      "evidence": [
+       {
+        "loc": "4.2 MIR regions of interest",
+        "quote": "we select apertures with diameters bigger than the PSF FWHM of the longest wavelength filter"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Simple black body",
+      "evidence": [
+       {
+        "loc": "4.2 MIR regions of interest",
+        "quote": "Assuming a simple black body, we estimate temperatures within the range $\\sim 100-120\\, \\rm K$ for the regions in the extended emission."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Authors say values are approximate, based on five photometric points",
+     "evidence": [
+      {
+       "loc": "4.2 MIR regions of interest",
+       "quote": "These values serve as an approximation (based on five photometric points), and a more advanced fitting method is required to accurately estimate the temperature."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Estimate and remove emission-line contamination in F1000W",
+    "method": {
+     "value": "Scale SINFONI line maps of comparable ionisation potential (Br gamma for [S IV], H2 1-0 S(1) for H2 0-0 S(3)) to Spitzer/IRS line fluxes, ratio against the PSF-subtracted F1000W image, then subtract the boosted [S IV] map",
+     "evidence": [
+      {
+       "loc": "4.4 Emission line contamination",
+       "quote": "First, we leverage the Spitzer/IRS SH spectrum (when possible, otherwise low spectral resolution) to estimate the total flux due to each line."
+      },
+      {
+       "loc": "4.4 Emission line contamination",
+       "quote": "Second, we use these estimates to scale a SINFONI line map of comparable ionisation potential (IP)"
+      }
+     ]
+    },
+    "software": [
+     "LINEFIT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Single-Gaussian fit of [S IV] in Spitzer/IRS SH gives total flux 7.564e-13 erg/s/cm2",
+      "evidence": [
+       {
+        "loc": "4.4.1 [S IV] mock map",
+        "quote": "yielding a total flux of $f_{\\rm SIV}= 7.564 \\times 10^{-13}\\, \\rm  erg/s/cm{^2}$"
+       }
+      ]
+     },
+     {
+      "value": "[S IV] flux boosted by 4% for H2",
+      "evidence": [
+       {
+        "loc": "4.4.3 Pure dust continuum morphology",
+        "quote": "we boosted the \\[S IV\\] flux by $4\\%$ to account for the $\\rm H_{2}$ contribution"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Little to no star-formation contribution in Br gamma; extinction very low and ignored",
+      "evidence": [
+       {
+        "loc": "4.4.1 [S IV] mock map",
+        "quote": "we assume that there is little to no SF contribution in this line"
+       },
+       {
+        "loc": "4.4 Emission line contamination",
+        "quote": "extinction, which is very low for this object and thus has no impact on the measurements made"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Single-component Gaussian per spaxel (SINFONI, LINEFIT); single Gaussian for [S IV] in Spitzer/IRS",
+     "evidence": [
+      {
+       "loc": "3.1 VLT/SINFONI spectroscopy",
+       "quote": "This single-component Gaussian fitting procedure was performed for each spaxel of the data cube."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Method validated against NGC 5728 (details in prep)",
+     "evidence": [
+      {
+       "loc": "4.4 Emission line contamination",
+       "quote": "Our method has been validated against another nearby Seyfert from the GATOS survey, NGC 5728"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Test dust heating scenarios (AGN illumination, torus wind, jet shocks)",
+    "method": {
+     "value": "Analytic estimates: Habing-field scaling G0 from L_bol and distance, equilibrium grain temperature T_d(a, G0) after Tielens, with shock radiative flux from Dopita and Sutherland; evaluated for NW2 at D ~ 100 pc and grain sizes 0.005-0.25 um (ISM) or 0.075-1 um (wind)",
+     "evidence": [
+      {
+       "loc": "5.2 Dust illuminated in the NLR",
+       "quote": "Assuming classical ISM dust grains within the range of $a= 0.005-0.25\\, \\rm \\mu m$ (cite: DraineLee1984)"
+      },
+      {
+       "loc": "5.3 Dust originating from the torus",
+       "quote": "Using Eqs. 1 & 2, but taking the larger grain sizes expected in the wind"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "L_bol,AGN = 5.5e42 erg/s from bolometric correction to L(2-10 keV)",
+      "evidence": [
+       {
+        "loc": "5.2 Dust illuminated in the NLR",
+        "quote": "we applied a bolometric correction according to Eq. 3 in (cite: 2020A&A...636A..73D) to the hard X-ray luminosity"
+       }
+      ]
+     },
+     {
+      "value": "Shock v_s = 250 km/s, n = 4350 cm^-3, G0 = 653 F_T",
+      "evidence": [
+       {
+        "loc": "5.4 Dust heated by shocks",
+        "quote": "we can express $F_{\\rm T}$ in terms of the Habing field, so that $G_{0} = 653\\, F_{T}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "AGN SED peaks in the UV like the Habing field; post-shock gas strongly radiative; shocks uniformly distributed",
+      "evidence": [
+       {
+        "loc": "5.2 Dust illuminated in the NLR",
+        "quote": "An important assumption here is that the intrinsic AGN SED that heats the dust peaks strongly in the UV, roughly like the local Habing field."
+       },
+       {
+        "loc": "5.4 Dust heated by shocks",
+        "quote": "An important assumption here is that the post-shock gas is strongly radiative, radiating away all its thermalised energy efficiently."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared predicted temperatures with the ~120 K measured in NW2",
+     "evidence": [
+      {
+       "loc": "5.4 Dust heated by shocks",
+       "quote": "local shock heating is more likely to achieve the temperature of $\\sim 120 \\,\\rm K$ that we find in the North-Western extended dust emission"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "JWST pipeline",
+    "version": "10.2",
+    "used_for": {
+     "value": "Reduction of MIRI imaging data, with modified saturation handling",
+     "evidence": [
+      {
+       "loc": "2 JWST Observations & Data reduction",
+       "quote": "processed using the JWST pipeline python package version 10.2 with CRDS reference files"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CARTA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Processing the ALMA Band 6 products and making a flux map with a 2 sigma cut",
+     "evidence": [
+      {
+       "loc": "3.2 ALMA spectroscopy",
+       "quote": "software package and generated a flux map with a $2\\sigma$ cut."
+      }
+     ]
+    }
+   },
+   {
+    "name": "WebbPSF",
+    "version": "not stated",
+    "used_for": {
+     "value": "Generating PSF models for each dither and band",
+     "evidence": [
+      {
+       "loc": "2.3 Point spread function",
+       "quote": "to generate PSF models at the detector position of the AGN for each of the four dithered images, and in each band"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LINEFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Custom IDL code fitting emission lines per spaxel of the SINFONI cubes",
+     "evidence": [
+      {
+       "loc": "3.1 VLT/SINFONI spectroscopy",
+       "quote": "The emission line flux maps were generated using the custom IDL code LINEFIT"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total extent of extended MIR emission",
+    "value": "~450",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Characteristics of the MIR morphology",
+      "quote": "The total extent of the extended MIR emission is $\\sim 450\\, \\rm pc$."
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle of extended MIR emission (similar to radio jet)",
+    "value": "~131",
+    "uncertainty": "not stated",
+    "units": "degrees (North to East)",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.1 Characteristics of the MIR morphology",
+      "quote": "extending along a similar PA to the radio jet of $\\sim 131$ degrees, measured North to East"
+     }
+    ]
+   },
+   {
+    "quantity": "Blackbody temperature of extended emission regions",
+    "value": "~100-120",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 MIR regions of interest",
+      "quote": "we estimate temperatures within the range $\\sim 100-120\\, \\rm K$ for the regions in the extended emission"
+     }
+    ]
+   },
+   {
+    "quantity": "SB_F560W/SB_F2100W ratio of extended-emission regions",
+    "value": "~0.07-0.1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 MIR regions of interest",
+      "quote": "defined by their $\\rm SB_{F560W}/SB_{F2100W}$ ratios of $\\sim [0.07-0.1]$"
+     }
+    ]
+   },
+   {
+    "quantity": "SB_F560W/SB_F2100W ratio of PSF-subtracted nuclear SED",
+    "value": "~0.56",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2 MIR regions of interest",
+      "quote": "is flat, with a $\\rm SB_{F560W}/SB_{F2100W}$ ratio of $\\sim 0.56$"
+     }
+    ]
+   },
+   {
+    "quantity": "[S IV] total flux from Spitzer/IRS SH",
+    "value": "7.564e-13",
+    "uncertainty": "not stated",
+    "units": "erg/s/cm2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4.1 [S IV] mock map",
+      "quote": "yielding a total flux of $f_{\\rm SIV}= 7.564 \\times 10^{-13}\\, \\rm  erg/s/cm{^2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median [S IV] contribution to extended F1000W emission",
+    "value": "~15",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4.1 [S IV] mock map",
+      "quote": "across the entire extended MIR structure is approximately 15%"
+     }
+    ]
+   },
+   {
+    "quantity": "Maximum [S IV] contamination (~1 arcsec from nucleus)",
+    "value": "up to 45",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4.1 [S IV] mock map",
+      "quote": "with contamination levels reaching up to 45%"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 0-0 S(3) contribution to extended F1000W emission",
+    "value": "2-4",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4.2 H2 mock map",
+      "quote": "varying between 2% to 4%"
+     }
+    ]
+   },
+   {
+    "quantity": "Total extent of dust-only (continuum) structure",
+    "value": "~1.8 arcsec (~200 pc)",
+    "uncertainty": "not stated",
+    "units": "arcsec / pc",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4.3 Pure dust continuum morphology",
+      "quote": "The new total extent of the dust is roughly $\\sim 1.8''$ ($\\sim 200$ pc) in size"
+     }
+    ]
+   },
+   {
+    "quantity": "AGN bolometric luminosity",
+    "value": "5.5e42",
+    "uncertainty": "not stated",
+    "units": "erg/s",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.2 Dust illuminated in the NLR",
+      "quote": "This gives $L_{\\rm bol, \\, AGN} = 5.5\\times 10^{42}\\, \\rm erg\\, s^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted dust temperature, AGN illumination at 100 pc (grain sizes 0.005-0.25 um)",
+    "value": "76, 35",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.2 Dust illuminated in the NLR",
+      "quote": "would be $T_{\\rm dust} =[76, 35]\\, \\rm K$"
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted dust temperature, torus-wind grains at 100 pc",
+    "value": "44, 26",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.3 Dust originating from the torus",
+      "quote": "the temperature of the polar dust would be $T_{\\rm dust} =[44,26]\\, \\rm K$"
+     }
+    ]
+   },
+   {
+    "quantity": "Shock total radiative flux F_T (v_s = 250 km/s, n = 4350 cm^-3)",
+    "value": "156",
+    "uncertainty": "not stated",
+    "units": "erg/s/cm2",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.4 Dust heated by shocks",
+      "quote": "We then compute $F_T = 156\\, \\rm erg/s/cm^{2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Predicted dust temperature from shock heating (text value; Table 1 lists 152, 70)",
+    "value": "154, 70",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.4 Dust heated by shocks",
+      "quote": "the expected temperature of the dust driven by shock heating is $T_{\\rm dust} = [154,70]\\,\\rm K$"
+     }
+    ]
+   },
+   {
+    "quantity": "Eddington ratio log10(lambda_Edd)",
+    "value": "-2.83 to -2.36",
+    "uncertainty": "range from M_BH = (1-3)e7 Msun",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.3 Dust originating from the torus",
+      "quote": "we compute an Eddington ratio within the range of $\\rm \\log_{10} \\lambda_{Edd}  \\approx (-2.83,-2.36)$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The MIR polar structure is co-linear with the radio jet and perpendicular to the ALMA CO(2-1) gas lane that feeds the nucleus",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This polar structure is co-linear with a radio jet and lies perpendicular to a molecular gas lane that feeds and obscures the nucleus."
+     }
+    ]
+   },
+   {
+    "value": "Part of the MIR morphological match to ionised gas is emission-line contamination within the filter bands",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We demonstrate that part of this spatial correspondence is due to contamination within the JWST filter bands from strong emission lines."
+     }
+    ]
+   },
+   {
+    "value": "Regions D1 and D2, beyond the extended emission along a similar PA, have flat SEDs and are interpreted as star-forming regions",
+    "evidence": [
+     {
+      "loc": "4.2 MIR regions of interest",
+      "quote": "For this reason, we suggest that these features are star-forming regions."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is there extended polar dust emission in the MIR around the AGN of ESO 428-G14, and how does it relate to the jet and the CO gas?",
+    "experiment": "Five-band JWST/MIRI imaging with PSF subtraction, compared with VLA, HST, SINFONI and ALMA CO(2-1)",
+    "result": "Asymmetric extended MIR emission along PA ~131 deg with total extent ~450 pc, aligned with the radio jet and perpendicular to the CO(2-1) lane",
+    "finding": "The MIR structure is polar",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "Comparison with the ALMA CO(2-1) nuclear emission, which is a proxy for the torus orientation, reveals the MIR structure to be perpendicular to it, reinforcing its polar orientation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does line emission in the broad filters contaminate the apparent dust morphology?",
+    "experiment": "Mock [S IV] and H2 maps from Spitzer/IRS fluxes scaled onto SINFONI templates, compared with the F1000W image",
+    "result": "[S IV] contamination of order 50% in the extended emission, median ~15%, H2 only 2-4%; dust-only structure ~200 pc",
+    "finding": "The extended dust emission is more compact than the raw MIR morphology",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "We generate a pure dust continuum image from the F1000W filter and uncover that the dust is more compact, extending up to $\\sim 1''$ on each side of the nucleus."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Could a radiation-driven dusty wind from the torus supply the polar dust?",
+    "experiment": "Eddington ratio and N_H placement on the N_H-lambda_Edd plane; temperature estimates for large grains expected in a wind",
+    "result": "Large-grain temperatures 44, 26 K at 100 pc are well below the estimated temperature of NW2; log lambda_Edd -2.83 to -2.36",
+    "finding": "Radiation-driven dusty wind from the torus is unlikely to be important",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Radiation-driven dusty winds from the torus is unlikely to be important."
+     },
+     {
+      "loc": "5.3 Dust originating from the torus",
+      "quote": "While a polar dusty wind may still be present in ESO 428-G14, it would be too small for our images to resolve,"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What heats the extended dust to ~120 K at ~100 pc?",
+    "experiment": "Analytic AGN-illumination and jet-shock heating temperature estimates for ISM grains",
+    "result": "AGN illumination gives 76, 35 K; shock heating gives 154 (Table: 152), 70 K",
+    "finding": "Local jet-induced shock heating is more likely to reach ~120 K, with AGN heating also contributing",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "predict, under the assumption of typical ISM grain size, that local heating by jet-induced shocks can reproduce similar temperatures"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Source selected for prior evidence of polar MIR emission; ALMA continuum chosen as a high-precision astrometric anchor",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "ESO 428-G14 was selected as it shows prior evidence of polar MIR emission from ground-based observations (cite: Asmus+16)."
+     },
+     {
+      "loc": "2.2 Astrometry",
+      "quote": "leveraging its high-resolution and precision as a reliable astrometric reference"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Line contamination had to be estimated indirectly because no JWST MIRI/MRS spectroscopy exists",
+    "evidence": [
+     {
+      "loc": "4.4 Emission line contamination",
+      "quote": "The absence of any high-resolution JWST spectroscopy for ESO 428-G14, such as from the MIRI Mid-Infrared Spectrograph (MIRI/MRS), complicates this analysis"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "tweak_registration star-finding astrometry rejected because the galaxy fills the FOV",
+     "evidence": [
+      {
+       "loc": "2.2 Astrometry",
+       "quote": "Given that the galaxy fills all of the field of view (FOV) in our images, this method proves ineffective."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Temperature estimates rest on five photometric bands and a simple black body",
+     "evidence": [
+      {
+       "loc": "4.2 MIR regions of interest",
+       "quote": "These values serve as an approximation (based on five photometric points), and a more advanced fitting method is required to accurately estimate the temperature."
+      }
+     ]
+    },
+    {
+     "value": "Gas and dust structures cannot be cleanly separated without MIR spectroscopy",
+     "evidence": [
+      {
+       "loc": "5.1 Dust beyond the torus",
+       "quote": "While it is challenging to disentangle gas and pure dust structures in the absence of MIR spectroscopy"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Shock-heating temperature differs between text (154 K) and Table 1 (152 K)",
+    "Mock line maps assume the Br gamma / H2 1-0 S(1) morphology matches [S IV] / H2 0-0 S(3); ionisation-potential differences could bias the dust-only image",
+    "Analytic heating estimates are order-of-magnitude (single NW2 region, assumed grain sizes, no radiative transfer)",
+    "ALMA data play only an astrometric and contextual role; CO and continuum processing details are not given"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "All data from public archives; reduced JWST/MIRI images released on Zenodo",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "All data used in this paper can be extracted as described in section"
+     },
+     {
+      "loc": "Data availability",
+      "quote": "The reduced JWST/MIRI images are available online on Zenodo under the Creative Commons Attribution 4.0 International license, DOI: 10.5281/zenodo.11491161."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA calibration, imaging and peak-position method details",
+    "PSF subtraction scaling (deferred to a paper in preparation)",
+    "Aperture photometry and blackbody-fit procedure details",
+    "SINFONI line-map scaling details and the NGC 5728 validation"
+   ],
+   "estimated_data_volume_inferred": "ALMA Band 6 archive products for one project ~ 5-30 GB; JWST/MIRI 5-band SUB256 imaging ~ 1-5 GB; SINFONI/HST/VLA/Spitzer small",
+   "score_inferred": 3,
+   "score_reason": "All data are public and the JWST pipeline version is stated, but the PSF subtraction, mock-map scaling, aperture definitions and ALMA processing are only partly specified, and the ALMA role is minor.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA plays a minor astrometric and contextual role, and the key recipe (PSF subtraction, mock line maps) is not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Feruglio+20",
+     "why": "Detailed ALMA CO(2-1) analysis of ESO 428-G14 on the same data"
+    },
+    {
+     "citation": "Falcke+98",
+     "why": "VLA data reduction and HST H-alpha reference"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Rosario et al. 2024, in prep",
+     "why": "PSF modelling and the GATOS sample paper with the NGC 5728 validation"
+    },
+    {
+     "citation": "May+18",
+     "why": "SINFONI [Si VI] and Br gamma analysis and shock parameters"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "GATOS (Galaxy Activity, Torus, and Outflow Survey)",
+    "JWST Cycle 1 programme Dust in the Wind (ID 2064)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024MNRAS.532.4645H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T22:14:26",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 105,
+  "quotes_ok": 105,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 109,
+   "stated": 68,
+   "rate": 0.624
+  },
+  "evidence_ok": true
+ }
+}

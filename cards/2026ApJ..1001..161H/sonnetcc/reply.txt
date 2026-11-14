@@ -1,0 +1,270 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "Observations and Data / ALMA Observations", "quote": "In this study, we utilize ALMA band 6 data from the QUARKS (cite: xunchuan2024) survey."}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {
+"value": "Is the molecular outflow in the massive protocluster IRAS 15520-5234 explosive, and what are its energetics, dynamical age, Galactic occurrence rate and possible driving mechanism?",
+"evidence": [
+{"loc": "Introduction", "quote": "We confirm the explosive nature of the outflow fingers and investigate the possible driving mechanism of the explosive event."}
+]
+},
+"targets": [
+{
+"name": "IRAS 15520-5234 (I15520)",
+"details": [
+{"loc": "Introduction", "quote": "is located at a distance of 2.56 kpc and have a local standard of rest velocity"},
+{"loc": "Identification of Outflows and their Kinematics", "quote": "we define a common center of origin at RA: 15h55m48.51s, Dec:-52d43m07.11s with a box of size"}
+],
+"coordinates": "common center of explosion at RA 15h55m48.51s, Dec -52d43m07.11s (target coordinates themselves not stated)",
+"redshift_or_distance": "2.56 kpc; Vlsr = -41.8 km/s",
+"distance_source": "QUARKS survey paper (cite: xunchuan2024)"
+}
+],
+"alma_project_codes": [
+{"code": "2021.1.00095.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper utilizes the following ALMA dataset: ADS/JAO.ALMA#2021.1.00095.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (1.3 mm continuum, CO 2-1 and other lines)", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "In this study, we utilize ALMA band 6 data from the QUARKS (cite: xunchuan2024) survey."}]},
+{"field": "arrays", "value": "ALMA 12-m array plus ACA 7-m array, combined", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "observed using both the ALMA 12-m compact array and ACA 7-m array in ALMA band 6"}, {"loc": "2.1 ALMA Observations", "quote": "In our study, we use the 12-m array + ACA 7-m array combined data"}]},
+{"field": "frequencies_and_spectral_setup", "value": "Lines in Table 1: SiO 5-4, CH3OH 4(2,2)-3(1,2), SO 6(5)-5(4), 13CO 2-1, 12CO 2-1 (230.538 GHz), H30alpha; rms quoted per 0.488 MHz channel; spectral resolution 1.26-1.35 km/s", "evidence": [{"loc": "Table 1", "quote": "rms per 0.488 MHz Channel"}, {"loc": "Table 1", "quote": "230.538000"}]},
+{"field": "angular_resolution", "value": "beam ~0.36'' x 0.33'' (combined 12-m + 7-m); line cubes 0.40-0.42'' x 0.36-0.40'' (Table 1)", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "which has a beam size of $\\sim0.36\\ensuremath{''} \\times 0.33\\ensuremath{''}$ and a rms noise level of 0.2 mJy beam$^{-1}$."}]},
+{"field": "sensitivity", "value": "continuum rms 0.2 mJy/beam; line rms 5.8-8.2 mJy/beam per 0.488 MHz channel", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "which has a beam size of $\\sim0.36\\ensuremath{''} \\times 0.33\\ensuremath{''}$ and a rms noise level of 0.2 mJy beam$^{-1}$."}, {"loc": "Table 1", "quote": "rms per 0.488 MHz Channel"}]},
+{"field": "pi_or_archival_as_stated", "value": "Data from the QUARKS survey, project 2021.1.00095.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper utilizes the following ALMA dataset: ADS/JAO.ALMA#2021.1.00095.S."}]}
+],
+"lines_targeted": [
+{"species": "SiO", "transition": "5-4", "rest_frequency": "217.104919 GHz", "evidence": [{"loc": "Table 1", "quote": "217.104919"}]},
+{"species": "CH3OH", "transition": "4(2,2)-3(1,2)", "rest_frequency": "218.440063 GHz", "evidence": [{"loc": "Table 1", "quote": "218.440063"}]},
+{"species": "SO", "transition": "6(5)-5(4)", "rest_frequency": "219.949442 GHz", "evidence": [{"loc": "Table 1", "quote": "219.949442"}]},
+{"species": "13CO", "transition": "2-1", "rest_frequency": "220.398684 GHz", "evidence": [{"loc": "Table 1", "quote": "220.398684"}]},
+{"species": "12CO", "transition": "2-1", "rest_frequency": "230.538000 GHz", "evidence": [{"loc": "Table 1", "quote": "230.538000"}]},
+{"species": "H30alpha", "transition": "recombination line", "rest_frequency": "231.900928 GHz", "evidence": [{"loc": "Table 1", "quote": "231.900928"}]}
+],
+"other_facilities": [
+{"name": "Spitzer IRAC (GLIMPSE)", "provided": {"value": "Archival Ch1 (3.6 um) and Ch2 (4.5 um) images used for the Ch2/Ch1 shock ratio map", "evidence": [{"loc": "2.2 Archival Data", "quote": "archival images were obtained from the Galactic Legacy Infrared Mid-Plane Survey Extraordinaire survey (cite: benjamin2003)"}]}},
+{"name": "CORNISH-South", "provided": {"value": "5.5 GHz radio continuum image tracing ionized emission", "evidence": [{"loc": "2.2 Archival Data", "quote": "We utilize the 5.5 GHz radio continuum image from the"}, {"loc": "2.2 Archival Data", "quote": "survey to identify the ionized emissions in the region"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "16 compact 1.3 mm cores (positions, sizes, fluxes, masses, evolutionary stage) extracted with getsf in QUARKS-III", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "overlaid with the compact cores identified previously in the ALMA-QUARKS survey (cite: yang2025)"}]}, "citation": "(cite: yang2025)"},
+{"what": {"value": "Core masses assume a dust temperature of 100 K for evolved cores", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "The authors estimated the masses of the cores assuming a dust temperature of 100 K for the evolved cores (cite: yang2025)."}]}, "citation": "(cite: yang2025)"},
+{"what": {"value": "Distance 2.56 kpc and Vlsr -41.8 km/s of the source", "evidence": [{"loc": "Introduction", "quote": "is located at a distance of 2.56 kpc and have a local standard of rest velocity"}]}, "citation": "(cite: xunchuan2024)"},
+{"what": {"value": "Galactocentric distance 6.2 kpc used for the 12CO/13CO abundance ratio", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "is the Galactocentric distance to the source which is 6.2 kpc for I15520 (cite: liu2020)"}]}, "citation": "(cite: liu2020)"},
+{"what": {"value": "CO/H2 abundance 1e-4", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "The value of $[\\text{CO}/\\text{H}_2]$ is adopted as $10^{-4}$ (cite: blake1987)."}]}, "citation": "(cite: blake1987)"},
+{"what": {"value": "Mean inclination angle of 57.3 deg for the outflow fingers", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "we assumed a mean inclination angle, $\\theta$ of 57.3$^{\\circ}$ (cite: dunham2014)"}]}, "citation": "(cite: dunham2014)"},
+{"what": {"value": "CO partition function, statistical weight, Einstein A and lower-level energy from CDMS and XCLASS database", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "are obtained from the Cologne Database for Molecular Spectroscopy (cite: muller2001) and XCLASS database (cite: moller2017)."}]}, "citation": "(cite: muller2001; moller2017)"},
+{"what": {"value": "Two radio peaks at the explosion center from ATCA at 1.4, 2.5, 4.8 and 8.6 GHz", "evidence": [{"loc": "3.4 Radio Emission and NIR Shocked Gas", "quote": "(cite: Garay2006) previously reported the presence of two radio peaks at the center of explosion from the observations at 1.4, 2.5, 4.8, and 8.6 GHz using the Australia Telescope Compact Array (ATCA)."}]}, "citation": "(cite: Garay2006)"},
+{"what": {"value": "Previously reported explosive outflows (seven in the Galaxy) and earlier rate estimates (one per 160 yr; one per 90 yr)", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "estimated the rate of explosive events in the Galaxy to be one every 160 years"}]}, "citation": "(cite: issac2025; zapata2023)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [
+{"field": "array_combination", "value": "12-m array + ACA 7-m array combined data", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "In our study, we use the 12-m array + ACA 7-m array combined data"}]},
+{"field": "final_beam", "value": "~0.36'' x 0.33'' continuum; line beams in Table 1", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "which has a beam size of $\\sim0.36\\ensuremath{''} \\times 0.33\\ensuremath{''}$ and a rms noise level of 0.2 mJy beam$^{-1}$."}]},
+{"field": "final_rms", "value": "0.2 mJy/beam continuum", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "which has a beam size of $\\sim0.36\\ensuremath{''} \\times 0.33\\ensuremath{''}$ and a rms noise level of 0.2 mJy beam$^{-1}$."}]}
+],
+"inherited": [
+{"what": {"value": "Observation details and data reduction of the QUARKS data", "evidence": [{"loc": "2.1 ALMA Observations", "quote": "More comprehensive details of the observations and data reductions can be found in (cite: xunchuan2024)."}]}, "from_reference": "(cite: xunchuan2024)"},
+{"what": {"value": "Core extraction (getsf) and classification of the 16 continuum cores, and their masses", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "In QUARKS-III, the *getsf* source extraction algorithm (cite: Menshchikov2021) was adopted to extract the cores from the high-resolution ALMA 1.3 mm continuum map."}]}, "from_reference": "(cite: yang2025) QUARKS-III"},
+{"what": {"value": "Optically thin CO column density method", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "following the methodology devised in (cite: garden1991) and (cite: sanhueza2012)"}]}, "from_reference": "(cite: garden1991; sanhueza2012)"},
+{"what": {"value": "Optical depth correction of CO column density", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "and then corrected for optical depth of CO following (cite: Goldsmith1999) and (cite: Mangum2015)."}]}, "from_reference": "(cite: Goldsmith1999; Mangum2015)"},
+{"what": {"value": "Outflow mass, momentum, energy and dynamical timescale equations", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "using the following equations given in (cite: lopez2009) and (cite: Wang2011)"}]}, "from_reference": "(cite: lopez2009; Wang2011)"},
+{"what": {"value": "Galactic rate of explosive events method", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "we re-estimate the rate of explosive events following the same method described in (cite: guzman2022; zapata2023)"}]}, "from_reference": "(cite: guzman2022; zapata2023)"}
+],
+"unstated_but_needed": [
+"CASA version, pipeline/manual reduction and calibration choices for the QUARKS data (deferred to xunchuan2024)",
+"tclean settings (weighting/robust, cell size, image size, masks, deconvolver) and how 12-m and 7-m data were combined for the line cubes",
+"Continuum subtraction method and line-free channels used to make the CO cubes",
+"Whether cubes were rebinned or smoothed before channel maps and moment maps; pixel size used for the area A in the mass equation",
+"How sigma was measured (which emission-free regions or channels) for the 5 sigma thresholds",
+"Exact procedure for tracing the spine of each finger and for measuring finger length and radial velocity (appears manual); finger list and coordinates",
+"How I(12CO)/I(13CO) was formed for the optical depth (per channel, per pixel or integrated) and over what velocity range",
+"Which channels/pixels enter the mass sum and how the central -50 to -36 km/s gap is treated in mass, momentum and energy",
+"Input ages, distances and positions of the eight explosive outflows used for the Galactic rate calculation",
+"Dust opacity and gas-to-dust assumptions behind the adopted core masses (deferred to yang2025)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "adopt continuum core catalog",
+"method": {"value": "Use the 16 compact 1.3 mm cores previously extracted with getsf in QUARKS-III and plot them on the continuum map", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "A total of 16 compact cores were identified in the region."}]},
+"software": ["getsf"],
+"key_parameters": [{"value": "10 hot molecular cores and 6 UCHII regions", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "Among them, 10 were classified as hot molecular cores (HMCs) and the remaining 6 were classified as UCHii regions."}]}],
+"assumptions": [{"value": "Dust temperature 100 K for evolved cores; free-free emission may bias masses high", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "The authors estimated the masses of the cores assuming a dust temperature of 100 K for the evolved cores (cite: yang2025)."}, {"loc": "1.3 mm Continuum Emission", "quote": "this could lead to the overestimation of the masses of the continuum cores"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "make CO moment maps and choose wing velocity ranges",
+"method": {"value": "Moment-0 and moment-1 maps of 12CO 2-1; blue and red wing maps integrated outside the self-absorbed cloud velocities", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We generate the integrated intensity (i.e., moment-0), and the intensity-weighted velocity (i.e., moment-1) maps using the"}, {"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We generate the blue- and red-shifted outflow wing emission maps by integrating emission in the velocity ranges $[-76.0, -50.0]$ km s$^{-1}$ and $[-36.0, -12.0]$ km s$^{-1}$, respectively."}]},
+"software": ["spectral-cube", "astropy"],
+"key_parameters": [{"value": "excluded velocity range -50.0 to -36.0 km/s; wings [-76,-50] and [-36,-12] km/s", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "we exclude the velocity range $-50.0$ km s$^{-1}$ to $-36.0$ km s$^{-1}$ for the estimation of outflow parameters and kinematics."}]}],
+"assumptions": [{"value": "Central velocities are contaminated by cloud emission and CO self-absorption", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "The CO emissions show self-absorption toward the central velocity of the cloud."}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "identify outflow fingers and their common center",
+"method": {"value": "2 km/s channel maps; 5 sigma contours per channel with spines traced along emission peaks from the outermost channels inward; spines aggregated into finger trajectories; common center defined where backward-extended fingers converge", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "Outflow fingers are identified by investigating consecutive velocity channels, starting from the outermost velocity channels in the blue- and red-shifted directions with respect to the V$_{\\text{lsr}}$."}, {"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We generate contour at emissions $\\geq5\\sigma$ (where $\\sigma$ represents the rms of the background noise) in each velocity channel"}]},
+"software": [],
+"key_parameters": [{"value": "channel width 2 km/s; 5 sigma threshold; common-center box 4.5'' x 4.5''", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "with each channel representing integrated intensity within 2 km s$^{-1}$ velocity width"}]}],
+"assumptions": [{"value": "Fingers originate from a common center", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "Although the outflow fingers are believed to originate from a common center, pinpointing the exact location is challenging"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Searched opposite-velocity channels for bipolar counterparts and found none", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "and do not find any bipolar components associated with the outflow fingers."}]}
+},
+{
+"order": 4,
+"goal": "measure radial velocity versus projected distance",
+"method": {"value": "Radial velocity of each finger taken from the farthest channel with >5 sigma emission; plotted against sky-projected distance from the common center to test a Hubble-Lemaitre law", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We estimate the radial velocity of the outflow fingers from the farthest velocity channel having emissions $>5\\sigma$ within the outflow fingers"}, {"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We find a linearly increasing trend of the radial velocity of the outflowing gas with distance (Hubble-Lemaître velocity law)."}]},
+"software": [],
+"key_parameters": [{"value": "sigma from emission-free regions", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "where $\\sigma$ is the rms of the background noise, estimated from emission-free regions"}]}],
+"assumptions": [{"value": "Different inclinations give different slopes for individual fingers", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "the PV diagrams of the outflow fingers will appear to have different slopes as seen in Figure"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with kinematics reported for earlier explosive outflows", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "are one of the most defining characteristics of this category of outflows."}]}
+},
+{
+"order": 5,
+"goal": "derive CO column density with optical depth correction",
+"method": {"value": "LTE optically thin 12CO 2-1 column density, then corrected by tau/(1-exp(-tau)) with tau from the 12CO/13CO intensity ratio", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "With the assumptions for the CO emission to be optically thin and also in local thermodynamic equilibrium (LTE), we derive the CO column density following the equation"}, {"loc": "3.3 Outflow Energetics", "quote": "Assuming the two isotopologues $^{12}$CO $(2-1)$ and $^{13}$CO $(2-1)$ have same excitation temperature, we estimate $\\tau$ (cite: Qiu2009) from,"}]},
+"software": ["XCLASS database", "CDMS"],
+"key_parameters": [{"value": "Tex = 50 K; Tbg = 2.7 K; Qrot = 18.45; g_u = 5; A_ul = 6.911e-7 s^-1; E_l = 5.53 K", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "we use a $T_{\\text{ex}}$ of 50 K for the outflow materials"}]}, {"value": "12CO/13CO abundance ratio chi = (7.5+/-1.9) D_GC + (7.6+/-12.9), D_GC = 6.2 kpc", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "where $\\chi$ is the abundance ratio of $^{12}$CO $(2-1)$ and $^{13}$CO $(2-1)$ derived using the relation, $\\chi= (7.5\\pm1.9) \\text{D}_{\\text{GC}}+(7.6\\pm12.9)$ (cite: Wilson1994)."}]}],
+"assumptions": [{"value": "Same Tex for 12CO and 13CO", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "have same excitation temperature"}]}, {"value": "Tex 50 K chosen from outflow temperatures of ~20-100 K in the literature", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "In general, the temperature of the outflowing material lies within $\\sim20-100$ K (cite: hatchell1999; Shimajiri2009)."}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "compute outflow mass, momentum, energy and dynamical age",
+"method": {"value": "Sum per-channel masses over emission >=5 sigma; momentum and energy from M v and 1/2 M v^2 with inclination corrections 1/cos(theta) and 1/cos^2(theta); dynamical age from longest projected finger and fastest finger", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We included emissions $\\geq5\\sigma$ in each channel for the estimation of outflow parameters, where $\\sigma$ is calculated from emission-free channels."}, {"loc": "3.3 Outflow Energetics", "quote": "Therefore, the most likely estimate of the true extent of the explosive outflow would come from the longest projected outflow finger."}]},
+"software": [],
+"key_parameters": [{"value": "mean molecular weight 2.8; [CO/H2] = 1e-4; inclination 57.3 deg", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "is the mean molecular weight (adopted as 2.8)"}, {"loc": "3.3 Outflow Energetics", "quote": "we assumed a mean inclination angle, $\\theta$ of 57.3$^{\\circ}$ (cite: dunham2014)"}]}],
+"assumptions": [{"value": "Fingers isotropic with the same 3D velocity; differences in projected extent and radial velocity arise from inclination", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "by assuming that outflow fingers are isotropic and have the same v$_{3D}$"}]}, {"value": "Biases from missing flux, distance, constant temperature and constant H2/CO ratio", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "Overall, these factors may result in the underestimation or overestimation of the outflow parameters by a factor of two to three."}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared the energy, mass and momentum with other explosive outflows and with bipolar outflows", "evidence": [{"loc": "4.1 Evidence of an Explosive event", "quote": "Finally, the mass and momentum of the outflow in I15520 are also similar to those found in other explosive outflows."}]}
+},
+{
+"order": 7,
+"goal": "estimate Galactic rate of explosive events",
+"method": {"value": "Re-estimate the rate with the eight known explosive outflows, assuming events evenly distributed in time and space, within a thin Galactic disk", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "We assume that the Galaxy is a thin disk with a radius of 15 kpc and estimate the rate of explosive events, which is one event in every 83 years."}]},
+"software": [],
+"key_parameters": [{"value": "time span 19000 yr; circle diameter 5.6 kpc; Galactic radius 15 kpc", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "We assume that the explosive outflows are evenly distributed in time over a time span of 19000 years covering the time period of all eight explosive outflows"}, {"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "and are distributed within a circle of diameter 5.6 kpc"}]}],
+"assumptions": [{"value": "Simplified: size of the Galaxy, constant star formation rate with galactocentric distance, rough dynamical timescale", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "Note that the method employed here is simplified and relies on several assumptions"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with earlier rate estimates and with massive star formation and supernova rates", "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "The estimated rate of explosive outflows is very similar to the massive star formation rate"}]}
+},
+{
+"order": 8,
+"goal": "compare with shocked gas, radio and methanol shell",
+"method": {"value": "Spitzer IRAC Ch2/Ch1 ratio map, CORNISH-South 5.5 GHz contours, H30alpha moment map and CH3OH moment/PV maps compared with the outflow fingers and common center", "evidence": [{"loc": "3.4 Radio Emission and NIR Shocked Gas", "quote": "We use the *Spitzer*-IRAC ratio map Ch2(4.5$\\mu$m)/Ch1(3.6$\\mu$m) to identify the large-scale shock extent of the explosive source."}, {"loc": "4.2 Expansion of CH3OH Shell", "quote": "We further investigate the expanding CH$_3$OH shell by generating a PV diagram along a rectangular strip across the shell."}]},
+"software": [],
+"key_parameters": [{"value": "Ch2/Ch1 >= 1.5 indicates shocked emission (criterion from takami2010)", "evidence": [{"loc": "3.4 Radio Emission and NIR Shocked Gas", "quote": "reported a flux ratio (Ch2/Ch1) $\\geq1.5$ is dominated by shocked emissions"}]}],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "astropy", "version": "not stated", "used_for": {"value": "listed in the Software section; used with spectral-cube for moment maps", "evidence": [{"loc": "Software", "quote": "astropy (cite: astropy2013), spectral-cube (cite: spectralcube2019), APLpy (cite: aplpy2012), SAOds9 (cite: ds9)"}]}},
+{"name": "spectral-cube", "version": "not stated", "used_for": {"value": "moment-0 and moment-1 maps of the CO cubes", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We generate the integrated intensity (i.e., moment-0), and the intensity-weighted velocity (i.e., moment-1) maps using the"}]}},
+{"name": "APLpy", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "astropy (cite: astropy2013), spectral-cube (cite: spectralcube2019), APLpy (cite: aplpy2012), SAOds9 (cite: ds9)"}]}},
+{"name": "SAOImage DS9", "version": "not stated", "used_for": {"value": "listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "astropy (cite: astropy2013), spectral-cube (cite: spectralcube2019), APLpy (cite: aplpy2012), SAOds9 (cite: ds9)"}]}},
+{"name": "getsf", "version": "not stated", "used_for": {"value": "core extraction in the earlier QUARKS-III work (not run in this paper)", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "In QUARKS-III, the *getsf* source extraction algorithm (cite: Menshchikov2021) was adopted to extract the cores from the high-resolution ALMA 1.3 mm continuum map."}]}},
+{"name": "XCLASS database / CDMS", "version": "not stated", "used_for": {"value": "partition function, statistical weight, Einstein A and lower-level energy for CO", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "are obtained from the Cologne Database for Molecular Spectroscopy (cite: muller2001) and XCLASS database (cite: moller2017)."}]}}
+],
+"results_numeric": [
+{"quantity": "number of outflow fingers", "value": "28 (14 blue-shifted, 14 red-shifted)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "We find a total of 14 blue-shifted and 14 red-shifted narrow outflow fingers emerging from the central cloud."}]},
+{"quantity": "total outflow mass", "value": "23.8", "uncertainty": "factor of two to three systematic (stated for outflow parameters overall)", "units": "Msun", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We calculate the total mass, momentum, and energy of the outflow as 23.8 M$_{\\odot}$, 3129.8 M$_{\\odot}$ km s$^{-1}$, 4.1$\\times10^{48}$ erg, respectively."}]},
+{"quantity": "total outflow momentum", "value": "3129.8", "uncertainty": "factor of two to three systematic (stated for outflow parameters overall)", "units": "Msun km/s", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We calculate the total mass, momentum, and energy of the outflow as 23.8 M$_{\\odot}$, 3129.8 M$_{\\odot}$ km s$^{-1}$, 4.1$\\times10^{48}$ erg, respectively."}]},
+{"quantity": "total outflow kinetic energy", "value": "4.1e48", "uncertainty": "factor of two to three systematic (stated for outflow parameters overall)", "units": "erg", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We calculate the total mass, momentum, and energy of the outflow as 23.8 M$_{\\odot}$, 3129.8 M$_{\\odot}$ km s$^{-1}$, 4.1$\\times10^{48}$ erg, respectively."}]},
+{"quantity": "extent of the explosive outflow (longest projected finger)", "value": "0.26", "uncertainty": "not stated", "units": "pc", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We find the extend of the explosive outflow as 0.26 pc and the value of v$_{3D}$ as 38.5 km s$^{-1}$."}]},
+{"quantity": "3D velocity v3D (fastest finger)", "value": "38.5", "uncertainty": "not stated", "units": "km/s", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "We find the extend of the explosive outflow as 0.26 pc and the value of v$_{3D}$ as 38.5 km s$^{-1}$."}]},
+{"quantity": "dynamical age of the explosive event", "value": "6550", "uncertainty": "not stated", "units": "yr", "from_step": 6, "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "The estimated dynamical age of the explosive outflow is 6550 years."}]},
+{"quantity": "Galactic rate of explosive outflows", "value": "one event every 83", "uncertainty": "not stated", "units": "yr", "from_step": 7, "evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "estimate the rate of explosive events, which is one event in every 83 years."}]},
+{"quantity": "expansion velocity of the CH3OH shell", "value": "~5", "uncertainty": "not stated", "units": "km/s", "from_step": 8, "evidence": [{"loc": "4.2 Expansion of CH3OH Shell", "quote": "The PV diagram indicates that the CH$_3$OH shell is slowly expanding outward at velocities $\\sim \\pm5$ km s$^{-1}$ from the V$_{\\text{LSR}}$."}]}
+],
+"findings_qualitative": [
+{"value": "Fingers show no preferred orientation, have no bipolar counterparts, and point back to a common center near the protocluster center", "evidence": [{"loc": "4.1 Evidence of an Explosive event", "quote": "The outflow fingers point back to a common center, which approximately coincides with the center of the protocluster, where most of the massive cores are located."}]},
+{"value": "5.5 GHz radio emission shows a shell-like HII region at the center and extended jet-like structures outside; jet nature unconfirmed", "evidence": [{"loc": "3.4 Radio Emission and NIR Shocked Gas", "quote": "Although the morphology of these extended emission suggests the possibility of candidate ionized jets, further high-resolution and high-sensitivity radio observations are required to confirm the nature of these structures."}]},
+{"value": "Massive cores are mass segregated toward the protocluster center", "evidence": [{"loc": "4.4 Possible Driving Mechanism", "quote": "we find that the continuum cores located within the protocluster are mass segregated"}]}
+],
+"claims": [
+{
+"hypothesis": "The outflow in I15520 is an explosive outflow rather than a set of bipolar outflows",
+"experiment": "Identify CO 2-1 fingers in channel maps, test linear velocity-distance relation and common origin, search for bipolar counterparts",
+"result": "28 fingers, most following a Hubble-Lemaitre law, no preferred orientation, common center, no bipolar counterparts",
+"finding": "The outflow is explosive in nature",
+"support": "supported",
+"evidence": [{"loc": "abstract", "quote": "The morphology and kinematics of the outflow fingers suggest that the outflow associated with IRAS 15520–5234 is explosive in nature."}]
+},
+{
+"hypothesis": "The explosive outflow is far more energetic than typical bipolar massive-protostar outflows",
+"experiment": "Derive CO mass, momentum and kinetic energy from the fingers and compare with literature",
+"result": "23.8 Msun, 3129.8 Msun km/s, 4.1e48 erg",
+"finding": "Energy is one to two orders of magnitude above typical bipolar outflows; mass and momentum similar to other explosive outflows",
+"support": "supported",
+"evidence": [{"loc": "4.1 Evidence of an Explosive event", "quote": "Its energy is at least one or two orders of magnitude higher than the typical energies of bipolar outflows associated with massive protostars (cite: zapata2017)."}]
+},
+{
+"hypothesis": "Explosive outflow events occur at a measurable rate in the Galaxy",
+"experiment": "Re-estimate the rate with eight known events assuming a thin disk and uniform distribution in time",
+"result": "one event every 83 years",
+"finding": "Rate is similar to the massive star formation rate and supernova rate, suggesting massive stars may go through an explosive phase",
+"support": "partially",
+"evidence": [{"loc": "4.3 Rate of Explosive Events in the Milky Way", "quote": "Note that the method employed here is simplified and relies on several assumptions"}]
+},
+{
+"hypothesis": "Dynamical interaction or rearrangement among the massive cores drives the explosion",
+"experiment": "Examine core mass distribution and positions relative to the explosion center",
+"result": "Cores are mass segregated; central massive cores are separated by about 4000 au",
+"finding": "Speculated mechanism; the data cannot verify it",
+"support": "partially",
+"evidence": [{"loc": "4.4 Possible Driving Mechanism", "quote": "But the data used in this analysis preclude us from verifying the exact driving mechanism."}]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "High-resolution QUARKS band 6 data used to detect and characterize the outflow fingers", "evidence": [{"loc": "Introduction", "quote": "In this study, we utilized high-resolution ALMA band 6 data from the QUARKS survey and detected 28 outflow fingers associated with I15520."}]},
+{"field": "why_this_method", "value": "Velocity gap near cloud velocity excluded because of self-absorption and cloud contamination; Tex of 50 K chosen from literature range of outflow temperatures", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "Therefore, to exclude the contamination of the central cloud and mitigate the effect of self-absorption, we exclude the velocity range"}, {"loc": "3.3 Outflow Energetics", "quote": "In general, the temperature of the outflowing material lies within $\\sim20-100$ K (cite: hatchell1999; Shimajiri2009)."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Bipolar outflows searched for in velocity-opposite channels and not found associated with the fingers", "evidence": [{"loc": "3.2 Identification of Outflows and their Kinematics", "quote": "and do not find any bipolar components associated with the outflow fingers."}]}
+],
+"limitations_admitted": [
+{"value": "Outflow parameters affected by missing flux, distance uncertainty, constant temperature and constant H2/CO; factor of two to three over- or underestimate", "evidence": [{"loc": "3.3 Outflow Energetics", "quote": "Overall, these factors may result in the underestimation or overestimation of the outflow parameters by a factor of two to three."}]},
+{"value": "Resolution and sensitivity cannot rule out a few individual bipolar outflows", "evidence": [{"loc": "4.1 Evidence of an Explosive event", "quote": "Furthermore, due to the limitations in resolution and sensitivity, we cannot rule out the presence of a few individual bipolar outflows in the region"}]},
+{"value": "1.3 mm continuum may be affected by free-free emission, overestimating core masses", "evidence": [{"loc": "1.3 mm Continuum Emission", "quote": "this could lead to the overestimation of the masses of the continuum cores"}]}
+],
+"referee_caveats_inferred": [
+"Fingers are traced by hand-like spine tracing at 5 sigma with no stated objective algorithm, so the count of 28 may not be reproducible",
+"Energetics rest on a single Tex of 50 K, [CO/H2] = 1e-4 and one mean inclination for all fingers, with no uncertainty propagation",
+"Central -50 to -36 km/s excluded, so mass, momentum and energy are lower limits of unknown size",
+"Galactic rate depends on a small sample of eight events and a simplified geometric model"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"QUARKS calibration and imaging recipe (deferred to xunchuan2024) including CASA version and tclean parameters",
+"Continuum subtraction and cube construction details for 12CO and 13CO",
+"Objective definition of the finger tracing and the list of finger positions, lengths and velocities",
+"Inputs for the Galactic rate calculation (ages and distances of the other explosive outflows)"
+],
+"estimated_data_volume_inferred": "Calibrated 12-m + 7-m band 6 cubes for one field; likely tens of GB of raw data plus pipeline products",
+"score_inferred": 3,
+"score_reason": "Outflow energetics recipe and numeric results are given, but data reduction and imaging are deferred to QUARKS papers and finger identification is not specified well enough to repeat exactly.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The paper does not state that the data are public, and the finger tracing is not an objective procedure, although the energetics results are numeric.",
+"methods_papers": [
+{"citation": "(cite: xunchuan2024)", "why": "QUARKS survey observations and data reduction"},
+{"citation": "(cite: yang2025)", "why": "QUARKS-III continuum core catalog and masses"},
+{"citation": "(cite: lopez2009; Wang2011)", "why": "Outflow mass, momentum, energy equations"},
+{"citation": "(cite: guzman2022; zapata2023)", "why": "Method for the Galactic rate of explosive events"}
+],
+"companion_papers": [
+{"citation": "(cite: hoque2025)", "why": "Earlier ALMA-ATOMS HC3N outflow study hinting at an explosive event in I15520"},
+{"citation": "(cite: baug2020)", "why": "Earlier ALMA band 7 outflow study of the region"},
+{"citation": "(cite: Xu2024)", "why": "Earlier ALMA band 7 core study and mass segregation in the region"}
+],
+"related_projects_or_surveys": ["ALMA-QUARKS", "ALMA-ATOMS", "CORNISH-South", "GLIMPSE (Spitzer)"]
+}

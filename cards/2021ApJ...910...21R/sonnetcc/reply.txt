@@ -1,0 +1,418 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "Observations", "quote": "In the following, we give information about the different simultaneous observations collected from archives, covering different bands from radio to gamma-ray on April 12, 2018."}
+],
+"fields": ["transients", "stellar_physics"],
+"question": {
+"value": "Build a quasi-simultaneous radio-to-hard-X-ray SED of MAXI J1820+070 on 12 April 2018 and model it with a leptonic jet, irradiated disk and corona",
+"evidence": [
+{"loc": "Introduction", "quote": "Therefore we compiled quasi-simultaneous observations from public archives, Astronomer’s Telegrams, and Gamma-ray Coordination Network Circulars to construct the widest possible frequency range"},
+{"loc": "Introduction", "quote": "we studied the spectral components independently before investigating them jointly by constructing a model consisting of a leptonic jet, an irradiated disk, and a corona"}
+]
+},
+"targets": [
+{
+"name": "MAXI J1820+070 (=ASASSN-18ey)",
+"details": [
+{"loc": "Introduction", "quote": "The low-mass X-ray binary MAXI J$1820+070$ (=ASASSN-18ey) was first detected on 6.59 March 2018"},
+{"loc": "Phenomenological Model Setup", "quote": "we fix the distance of jet from the observer to the value of $d=3$ kpc"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "d = 3 kpc",
+"distance_source": "Bright et al. 2020 (cite: 2020NatAs.tmp....2B)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.01103.T", "evidence": [
+{"loc": "ALMA", "quote": "Atacama Large Millimiter/submillimiter Array (ALMA) data for project 2017.1.01103.T were retrieved from the ESO archive"}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 7", "evidence": [
+{"loc": "ALMA", "quote": "(Band 7, spw 5, 7, 9, 11)"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "4 spectral windows (spw 5, 7, 9, 11) at central frequencies 336, 338, 348, 350 GHz, imaged separately", "evidence": [
+{"loc": "ALMA", "quote": "version 5.1.1, separately for each one of the 4 spectral windows (spw) present in the data (Band 7, spw 5, 7, 9, 11) corresponding to the following central frequencies: 336 GHz, 338 GHz, 348 GHz, 350 GHz"}
+]},
+{"field": "observing_dates", "value": "12 April 2018, 08:13:18 to 09:20:16 UTC", "evidence": [
+{"loc": "Observations", "quote": "covering different bands from radio to gamma-ray on April 12, 2018"},
+{"loc": "Table 1", "quote": "08:13:18 12-04-2018"},
+{"loc": "Table 1", "quote": "09:20:16 12-04-2018"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "Archival: retrieved from the ESO archive", "evidence": [
+{"loc": "ALMA", "quote": "data for project 2017.1.01103.T were retrieved from the ESO archive"}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "JVLA (project VLA/18A-470)", "provided": {"value": "Radio flux densities at 4.7, 7.5, 8.5, 11, 20.7, 25.5 GHz from retrieved calibrated archive data", "evidence": [
+{"loc": "JVLA", "quote": "We retrieved calibrated Karl G. Jansky Very Large Array (VLA) data for experiment VLA/18A-470 from the National Radio Astronomy (NRAO) online archive."},
+{"loc": "JVLA", "quote": "The JVLA antennas, in A configuration, were split in 3 subarrays in order to obtain simultaneous observations at 6 different central frequencies (4.7 GHz, 7.5 GHz, 8.5 GHz, 11 GHz, 20.7 GHz, 25.5 GHz)."}
+]}},
+{"name": "VLITE", "provided": {"value": "Low-frequency radio flux density (3.39E+08 Hz) taken from the literature", "evidence": [
+{"loc": "The compact jet emission", "quote": "we considered Very Large Array Low-band Ionosphere and Transient Experiment (VLITE, (cite: 2016SPIE.9906E..5BC)), also collected on 12 April 2018 (cite: 2018ATel11540....1P)"}
+]}},
+{"name": "VLT/X-shooter (ESO program 0101.D-0356(A))", "provided": {"value": "NIR to UV continuum flux densities (12 photometric points) and optical wind line profiles", "evidence": [
+{"loc": "VLT/X-shooter", "quote": "We retrieved the processed spectra obtained during the 2018 outburst on 12 April from the European Southern Observatory (ESO) archive science portal."},
+{"loc": "The compact jet emission", "quote": "In this way, we calculated 12 photometric measurements (Table 2) covering the interval from NIR to UV."}
+]}},
+{"name": "XMM-Newton/EPIC-pn", "provided": {"value": "Soft X-ray spectrum (0.5-12 keV)", "evidence": [
+{"loc": "XMM-Newton/EPIC-pn", "quote": "*XMM-Newton* ToO observations were carried out from 2018-04-12 07:27:58 to 09:39:28 UTC (obsid 0820880501) using burst mode."}
+]}},
+{"name": "INTEGRAL (ISGRI and OMC)", "provided": {"value": "Hard X-ray spectrum (30-400 keV) and optical flux", "evidence": [
+{"loc": "INTEGRAL", "quote": "The data were analyzed using the Offline Science Analysis software (OSA) v11.0 available at the *INTEGRAL* Science Data Center (ISDC)."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Source distance 3 kpc", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "we fix the distance of jet from the observer to the value of $d=3$ kpc"}
+]}, "citation": "Bright et al. 2020 (cite: 2020NatAs.tmp....2B)"},
+{"what": {"value": "Jet speed and viewing angle (beta_jet = 0.89, theta_obs = 63 deg), giving beaming factor of about 2.2", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "using the values of $\\beta_{jet}=0.89$ and $\\theta_{obs}= 63^{\\circ}$ reported in (cite: 2020NatAs.tmp....2B)"}
+]}, "citation": "Bright et al. 2020 (cite: 2020NatAs.tmp....2B)"},
+{"what": {"value": "Radio jet extends to about 1e15 cm", "evidence": [
+{"loc": "Broadband SED modelling", "quote": "extends up to a distance of $\\approx 1\\times 10^{15}$ cm according to (cite: 2020NatAs.tmp....2B)"}
+]}, "citation": "Bright et al. 2020 (cite: 2020NatAs.tmp....2B)"},
+{"what": {"value": "VLITE flux density on 12 April 2018", "evidence": [
+{"loc": "The compact jet emission", "quote": "also collected on 12 April 2018 (cite: 2018ATel11540....1P)"}
+]}, "citation": "Polisensky et al. 2018 ATel 11540 (cite: 2018ATel11540....1P)"},
+{"what": {"value": "Foreground extinction A_V = 0.627 mag with R(V) = 3.1", "evidence": [
+{"loc": "VLT/X-shooter", "quote": "with R(V)=3.1 and A$_V$=0.627 mag (cite: Schlafly11)"}
+]}, "citation": "Schlafly & Finkbeiner 2011 (cite: Schlafly11)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Data pipelined at the Italian ARC node (INAF-IRA, Bologna)", "evidence": [
+{"loc": "ALMA", "quote": "and pipelined at the the Italian node of the European ALMA Regional Centre (INAF-Istituto di Radioastronomia, Bologna)"}
+]},
+{"field": "casa_version", "value": "CASA 5.1.1 (stated for imaging)", "evidence": [
+{"loc": "ALMA", "quote": "version 5.1.1, separately for each one of the 4 spectral windows (spw) present in the data"}
+]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "ALMA imaging and central frequencies of the 4 spectral windows cite Bonato et al. 2018", "evidence": [
+{"loc": "ALMA", "quote": "(Band 7, spw 5, 7, 9, 11) corresponding to the following central frequencies: 336 GHz, 338 GHz, 348 GHz, 350 GHz (cite: 2018MNRAS.478.1512B)"}
+]}, "from_reference": "(cite: 2018MNRAS.478.1512B)"},
+{"what": {"value": "Detailed description of the JetSeT jet/disk model deferred to a paper in preparation", "evidence": [
+{"loc": "Broadband SED modelling", "quote": "A more accurate description of the model is discussed in (cite: TramacereInPrep)."}
+]}, "from_reference": "(cite: TramacereInPrep)"},
+{"what": {"value": "Fixed disk irradiation parameters r_irr = 1.1 and f_in = 0.1 in the JetSeT fit", "evidence": [
+{"loc": "Initial model setup", "quote": "and the parameters $r_{irr}=1.1$ and $f_{in}=0.1$, the choice adopted in (cite: DiskIrrModel2009)"}
+]}, "from_reference": "(cite: DiskIrrModel2009)"},
+{"what": {"value": "Cutoff power-law component added to the hard X-ray CompTT fit", "evidence": [
+{"loc": "Hard X-ray", "quote": "Following (cite: 2019ApJ...870...92R), a cutoff power-law was added"}
+]}, "from_reference": "(cite: 2019ApJ...870...92R)"},
+{"what": {"value": "Disk wind search in X-shooter lines follows the earlier analysis", "evidence": [
+{"loc": "Accretion disk winds", "quote": "Following the (cite: 2019ApJ...879L...4M) analysis, we explored the presence of wind signatures linked to the mentioned emission lines"}
+]}, "from_reference": "(cite: 2019ApJ...879L...4M)"},
+{"what": {"value": "Multi-zone radio jet built as a sum of single zones", "evidence": [
+{"loc": "Radio Jet", "quote": "following the approach of (cite: Kaiser2006)"}
+]}, "from_reference": "(cite: Kaiser2006)"},
+{"what": {"value": "Jet launching position z_0 = 50 R_S taken from earlier reference values", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "it is chosen according to reference values published in previous analysis (cite: Romero2010)"}
+]}, "from_reference": "(cite: Romero2010)"}
+],
+"unstated_but_needed": [
+"ALMA calibration details: pipeline version, flux and bandpass calibrators, flux-scale accuracy, whether any self-calibration was applied",
+"ALMA imaging settings: tclean parameters (weighting, robust, cell, image size, deconvolver, masking, threshold) and the continuum or line-free channel selection in each spw",
+"How the source flux density was measured in the ALMA images (aperture, point-source fit, or peak) and any primary beam correction",
+"ALMA array configuration, baselines, angular resolution, time on source and rms (only start and stop times are tabulated)",
+"Which Table 2 points were included in each fit and how the X-shooter continuum intervals were chosen",
+"JetSeT version and Minuit minimizer settings",
+"JVLA, VLITE and X-shooter reduction details beyond 'standard procedures'"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Image the ALMA Band 7 data and obtain continuum flux densities",
+"method": {"value": "Pipelined ALMA data imaged with CASA separately for each of the 4 spectral windows; resulting flux densities listed in Table 2", "evidence": [
+{"loc": "ALMA", "quote": "version 5.1.1, separately for each one of the 4 spectral windows (spw) present in the data"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "spw 5, 7, 9, 11 at 336, 338, 348, 350 GHz", "evidence": [
+{"loc": "ALMA", "quote": "(Band 7, spw 5, 7, 9, 11) corresponding to the following central frequencies: 336 GHz, 338 GHz, 348 GHz, 350 GHz"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Build the jet SED and fit a broken power law",
+"method": {"value": "Combine JVLA, VLITE, ALMA, X-shooter continuum and OMC points; fit radio-to-optical data with a broken power law to get the synchrotron peak and the optically thick and thin slopes, and fit the 0.3-10 GHz radio SED with a power law", "evidence": [
+{"loc": "The compact jet emission", "quote": "We fitted the radio to optical data set with a broken-power law to identify the synchrotron peak frequency and the spectral slopes of the optically thin and thick regions"},
+{"loc": "The compact jet emission", "quote": "For X-shooter, we considered only the part of the spectrum not affected by absorption/emission features, and averaged values for each of these intervals to obtain continuum flux density values."}
+]},
+"software": ["Astropy"],
+"key_parameters": [
+{"value": "Data points below 20 GHz excluded from the broken-power-law fit", "evidence": [
+{"loc": "The compact jet emission", "quote": "Similarly, we did not consider data points below 20 GHz, since they show a different slope, probably belonging to a physically distinct (and more expanded) radio jet component."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Levenberg-Marquardt least squares (Astropy BrokenPowerLaw1D with LevMarLSQFitter)", "evidence": [
+{"loc": "The compact jet emission", "quote": "We used the Astropy `BrokenPowerLaw1D` function (see (cite: astropy:2013; astropy:2018)) adopting the `LevMarLSQFitter` routine to perform a Levenberg-Marquardt least squares statistic."}
+]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Fit XMM and INTEGRAL X-ray spectra and an irradiated disk model",
+"method": {"value": "Fit XMM and INTEGRAL spectra with Comptonization models, a joint 0.5-400 keV fit, then a near-IR to hard X-ray fit with the diskir irradiated disk model with and without an extra power law", "evidence": [
+{"loc": "Soft X-ray", "quote": "To characterize the X-ray spectrum, a joint fit was performed between the two instruments spanning $0.5 - 400$ keV using the model `Tbabs*Reflect*(diskbb+CompTT)+Tbabs*cutoff`"},
+{"loc": "IR - Hard X-ray Spectrum", "quote": "Subsequently, we fit our data from the near-IR to hard X-rays using an irradiated disk model to compare with (cite: 2018ApJ...868...54S)"}
+]},
+"software": ["XSPEC"],
+"key_parameters": [
+{"value": "1.5% systematic error added to the INTEGRAL data", "evidence": [
+{"loc": "Hard X-ray", "quote": "A systematic 1.5 % error was added to the data, following OSA 11 standard recommendations"}
+]}
+],
+"assumptions": [
+{"value": "Accretion luminosity computed for a distance of 3 kpc", "evidence": [
+{"loc": "Soft X-ray", "quote": "found a value of $\\sim 6 \\times 10^{37}$ erg/s for a distance 3 kpc"}
+]}
+],
+"fitting": {"value": "Chi-square fitting in XSPEC", "evidence": [
+{"loc": "Hard X-ray", "quote": "A power-law fit to the data in `XSPEC` found a photon index of"}
+]},
+"validation": {"value": "F-test used to justify the added power-law component in the diskir fit", "evidence": [
+{"loc": "IR - Hard X-ray Spectrum", "quote": "with an f-test probability of $3.7 \\times 10^{-8}$"}
+]}
+},
+{
+"order": 4,
+"goal": "Fit the full broadband SED with the JetSeT jet, disk and corona model",
+"method": {"value": "Fit DiskIrrComp and Comp. hump first over nu = 5e14 to 1e20 Hz, then freeze most disk parameters and fit the global model including JetAcc and RadioJet over the full SED band", "evidence": [
+{"loc": "Model fit results for the Disk and Corona emission", "quote": "We fit first the `DiskIrrComp` and `Comp. hump` components restricting the fit range to $\\nu$= $[5\\times 10^{14},10^{20}]$ Hz"},
+{"loc": "Model fit results for the jet emission", "quote": "and we fit the global model over the full SED band in the range $\\nu$= $[5\\times 10^{8},10^{20}]$ Hz"}
+]},
+"software": ["JetSeT", "Minuit"],
+"key_parameters": [
+{"value": "5% systematic error added over 1e8 to 1e16 Hz", "evidence": [
+{"loc": "Initial model setup", "quote": "we have added a 5% systematic error in the range $[1\\times 10^{8},1\\times 10^{16}]$ Hz"}
+]},
+{"value": "Jet launch distance z_0 = 50 R_S, initial jet radius 0.1 z_0, q_jet = 0.2 for the phenomenological setup", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "We assume that the jet is launched at a distance $z=z_{0}$ from the BH with $z_0=50 R_S\\approx 1.2 \\times 10^{8}$ cm"},
+{"loc": "Phenomenological Model Setup", "quote": "setting $q_{jet}=0.2$ we obtain $B_0\\approx 6.8 \\times 10^{6}$ G"}
+]}
+],
+"assumptions": [
+{"value": "Black hole mass 8 solar masses", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "We use a black hole mass of $M_{BH}= 8 M_{\\Sun}$."}
+]},
+{"value": "Ballistic jet with toroidal-dominated magnetic field and constant bulk Lorentz factor", "evidence": [
+{"loc": "Phenomenological Model Setup", "quote": "This choice assumes that the jet is very close to the ballistic regime, with a magnetic field dominated by the toroidal component"}
+]},
+{"value": "Only synchrotron cooling in the radio jet", "evidence": [
+{"loc": "Radio Jet", "quote": "In our analysis we take into account only synchrotron cooling"}
+]}
+],
+"fitting": {"value": "Frequentist fit with Minuit; errors from MIGRAD only, no MCMC", "evidence": [
+{"loc": "Initial model setup", "quote": "In the current analysis we use a frequentist approach and we use the  `Minuit`  `ModelMinimizer` option."},
+{"loc": "Initial model setup", "quote": "For the error estimate we provide only errors derived form the"}
+]},
+"validation": {"value": "Compared with XSPEC diskir fit parameters; model said to reproduce the UV-to-optical emission and flat radio spectrum", "evidence": [
+{"loc": "Model fit results for the jet emission", "quote": "we find that our assumption based on the connection between a compact acceleration region feeding the extended radio jet is able to model self-consistently the UV-to-optical emission, reproducing the observed flat radio spectrum"}
+]}
+},
+{
+"order": 5,
+"goal": "Fit X-shooter wind line profiles",
+"method": {"value": "Normalise spectra by a spline continuum, search for absorption troughs in He I and H-alpha, fit multi-component Gaussians to the line profiles", "evidence": [
+{"loc": "Accretion disk winds", "quote": "We consider as bona-fide absorption troughs the ones with a dip of at least three times the continuum RMS."},
+{"loc": "Accretion disk winds", "quote": "by applying multi-component Gaussian fits using the `python` packages `curvefit` and `leastsq`"}
+]},
+"software": ["IRAF", "python curvefit/leastsq"],
+"key_parameters": [
+{"value": "H-alpha fit region 644-670 nm; He I 6678 fit region 664-672 nm", "evidence": [
+{"loc": "Accretion disk winds", "quote": "The H$\\alpha$ line analysis has been performed in the wavelength region 644$-$670 nm"},
+{"loc": "Accretion disk winds", "quote": "we used the wavelength region $664-672$ nm"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Multi-component Gaussian least squares", "evidence": [
+{"loc": "Accretion disk winds", "quote": "by applying multi-component Gaussian fits using the `python` packages `curvefit` and `leastsq`"}
+]},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA (ALMA imaging)", "version": "5.1.1", "used_for": {"value": "Imaging of the ALMA Band 7 spectral windows", "evidence": [
+{"loc": "ALMA", "quote": "version 5.1.1, separately for each one of the 4 spectral windows (spw) present in the data"}
+]}},
+{"name": "CASA (JVLA imaging)", "version": "5.6.2", "used_for": {"value": "Imaging of the JVLA data", "evidence": [
+{"loc": "JVLA", "quote": "Data were imaged using `CASA` (`Common Astronomy Software Applications` package) version 5.6.2"}
+]}},
+{"name": "JetSeT", "version": "not stated", "used_for": {"value": "Broadband SED modelling with jet, irradiated disk and corona components", "evidence": [
+{"loc": "Broadband SED modelling", "quote": "We modelled the broadband SED of MAXI J1820+070 using a combination of jet leptonic models and irradiated disk and corona model implemented in Jets SED modeler and fitting Tool (`JetSeT`)"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Broken power-law and power-law fits to the radio-to-optical SED", "evidence": [
+{"loc": "The compact jet emission", "quote": "We used the Astropy `BrokenPowerLaw1D` function (see (cite: astropy:2013; astropy:2018)) adopting the `LevMarLSQFitter` routine to perform a Levenberg-Marquardt least squares statistic."}
+]}},
+{"name": "XSPEC", "version": "not stated", "used_for": {"value": "X-ray spectral fitting of INTEGRAL and XMM data", "evidence": [
+{"loc": "Hard X-ray", "quote": "A power-law fit to the data in `XSPEC` found a photon index of"}
+]}},
+{"name": "Minuit", "version": "not stated", "used_for": {"value": "Minimizer for the JetSeT global fit", "evidence": [
+{"loc": "Initial model setup", "quote": "In the current analysis we use a frequentist approach and we use the  `Minuit`  `ModelMinimizer` option."}
+]}},
+{"name": "SAS", "version": "xmmsas_20190531_1155-18.0.0", "used_for": {"value": "Reduction of XMM-Newton EPIC-pn data", "evidence": [
+{"loc": "XMM-Newton/EPIC-pn", "quote": "using the Science Analysis System (SAS) software version `xmmsas_20190531_1155-18.0.0`"}
+]}},
+{"name": "OSA", "version": "v11.0", "used_for": {"value": "Analysis of INTEGRAL ISGRI and OMC data", "evidence": [
+{"loc": "INTEGRAL", "quote": "The data were analyzed using the Offline Science Analysis software (OSA) v11.0 available at the *INTEGRAL* Science Data Center (ISDC)."}
+]}},
+{"name": "ESO X-shooter pipeline", "version": "V2.7.0", "used_for": {"value": "Reduction of X-shooter spectra", "evidence": [
+{"loc": "VLT/X-shooter", "quote": "These data have been reduced by using the ESO X-shooter pipeline V2.7.0"}
+]}},
+{"name": "IRAF", "version": "not stated", "used_for": {"value": "Continuum normalisation of X-shooter spectra (task continuum)", "evidence": [
+{"loc": "Accretion disk winds", "quote": "We normalized these spectra by dividing them for the continuum emission, fitted with a third order spline3 function by using the IRAF task `continuum`."}
+]}},
+{"name": "python curvefit/leastsq", "version": "not stated", "used_for": {"value": "Multi-component Gaussian fits to emission line profiles", "evidence": [
+{"loc": "Accretion disk winds", "quote": "by applying multi-component Gaussian fits using the `python` packages `curvefit` and `leastsq`"}
+]}}
+],
+"results_numeric": [
+{"quantity": "ALMA flux density, spw at 3.36E+11 Hz", "value": "0.116", "uncertainty": "0.006", "units": "Jy", "from_step": 1, "evidence": [
+{"loc": "Table 2", "quote": "0.116$\\pm$0.006"}
+]},
+{"quantity": "ALMA flux density, spw at 3.38E+11 Hz", "value": "0.114", "uncertainty": "0.006", "units": "Jy", "from_step": 1, "evidence": [
+{"loc": "Table 2", "quote": "0.114$\\pm$0.006"}
+]},
+{"quantity": "ALMA flux density, spw at 3.48E+11 Hz", "value": "0.115", "uncertainty": "0.006", "units": "Jy", "from_step": 1, "evidence": [
+{"loc": "Table 2", "quote": "0.115$\\pm$0.006"}
+]},
+{"quantity": "ALMA flux density, spw at 3.50E+11 Hz", "value": "0.110", "uncertainty": "0.006", "units": "Jy", "from_step": 1, "evidence": [
+{"loc": "Table 2", "quote": "0.110$\\pm$0.006"}
+]},
+{"quantity": "Synchrotron peak frequency (broken power-law fit)", "value": "1.6e13", "uncertainty": "0.2e13", "units": "Hz", "from_step": 2, "evidence": [
+{"loc": "The compact jet emission", "quote": "We obtained a synchrotron peak frequency of 1.6$\\pm$0.2$\\times10^{13}$ Hz."}
+]},
+{"quantity": "Optically thick spectral index alpha_thick", "value": "0.28", "uncertainty": "0.02", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "The compact jet emission", "quote": "The estimated slope for the optically thick part of the spectrum is $\\alpha_{thick}=0.28\\pm0.02$ and $\\alpha_{thin}=-0.61\\pm0.01$ for the optically thin one"}
+]},
+{"quantity": "Optically thin spectral index alpha_thin", "value": "-0.61", "uncertainty": "0.01", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "The compact jet emission", "quote": "The estimated slope for the optically thick part of the spectrum is $\\alpha_{thick}=0.28\\pm0.02$ and $\\alpha_{thin}=-0.61\\pm0.01$ for the optically thin one"}
+]},
+{"quantity": "Low-frequency (0.3-10 GHz) radio spectral index", "value": "0.11", "uncertainty": "0.02", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "The compact jet emission", "quote": "The slope of the lower frequency radio SED (0.3$-$10 GHz), fitted with the `PowerLaw1D` Astropy function, is $\\alpha=0.11\\pm0.02$."}
+]},
+{"quantity": "Accretion luminosity (1-200 keV)", "value": "~6e37", "uncertainty": "not stated", "units": "erg/s", "from_step": 3, "evidence": [
+{"loc": "Soft X-ray", "quote": "we calculated the accretion luminosity in the $1 - 200$ kev energy range and found a value of $\\sim 6 \\times 10^{37}$ erg/s for a distance 3 kpc"}
+]},
+{"quantity": "Joint XMM+INTEGRAL fit electron temperature kT and optical depth tau", "value": "kT = 27 keV, tau = 2.2", "uncertainty": "kT +/- 1 keV, tau +/- 0.1", "units": "keV; dimensionless", "from_step": 3, "evidence": [
+{"loc": "Soft X-ray", "quote": "$kt_{BB} = 0.27 \\pm 0.01 \\textrm{ keV, } kT = 27 \\pm 1 \\textrm{ keV, and } \\tau = 2.2 \\pm 0.1 \\textrm{ with } \\chi^2 / \\nu = 0.95$"}
+]},
+{"quantity": "JetSeT global fit chi-square", "value": "181 for 122 dof (reduced 1.48)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "Model fit results for the jet emission", "quote": "The model fit converged with a final $\\chi^2 = 181$ for 122 degree of freedom ($N_{dof}$), corresponding to a $\\chi^2_{red}=1.48$."}
+]},
+{"quantity": "Disk outer-irradiation fraction f_out from JetSeT fit", "value": "7.33e-3", "uncertainty": "0.15e-3", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "Model fit results for the jet emission", "quote": "adding the jet component results in a better constraint on the value of $f_{out}$=$(7.33\\pm0.15)\\times10^{-3}$"}
+]},
+{"quantity": "Acceleration-region magnetic field and radius (best-fit model)", "value": "B ~ 1.8e4 G, R ~ 2.6e9 cm", "uncertainty": "not stated", "units": "G; cm", "from_step": 4, "evidence": [
+{"loc": "Discussion and Conclusions", "quote": "gives a magnetic field in the acceleration region of $\\approx 1.8 \\times 10^4$ G, and a region radius of $\\approx 2.6 \\times 10^9$ cm"}
+]},
+{"quantity": "Jet luminosity (lower limit)", "value": ">= 8.0e37 (0.15 L_Edd)", "uncertainty": "lower limit", "units": "erg/s", "from_step": 4, "evidence": [
+{"loc": "Discussion and Conclusions", "quote": "We found that the relativistic jet required a total energy of $L_{jet}\\geq 8.0\\times10^{37}$ erg/s, corresponding to 0.15 $L_{Edd}$."}
+]},
+{"quantity": "Radio-jet field index m_jet", "value": "~1.2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "Discussion and Conclusions", "quote": "the best-fit index $m_{jet}\\approx 1.2$"}
+]},
+{"quantity": "He I 5876 wind terminal velocity", "value": "880", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Accretion disk winds", "quote": "This one has a $v_t$ of 880 km/s."}
+]},
+{"quantity": "H-alpha broad red wing outflow velocity", "value": "923", "uncertainty": "14", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Accretion disk winds", "quote": "we derive an outflow velocity of $v$= (923$\\pm$14) km/s"}
+]}
+],
+"findings_qualitative": [
+{"value": "The source was in the hard state on 12 April 2018, with a flat/inverted radio spectrum and optical disk winds", "evidence": [
+{"loc": "abstract", "quote": "The flat/inverted radio spectrum and the accretion disk winds seen at optical wavelengths are also consistent with the hard state."}
+]},
+{"value": "The jet is a lower limit on power because only cold protons are assumed for the hadronic content", "evidence": [
+{"loc": "Discussion and Conclusions", "quote": "This value represents a lower limit, since we assume that the hadronic content of the jets is only in terms of cold protons, without a significant radiative contribution."}
+]}
+],
+"claims": [
+{"hypothesis": "Is MAXI J1820+070 in the hard state at the 12 April 2018 epoch?", "experiment": "Comptonization fits to XMM and INTEGRAL spectra, radio spectral shape and optical wind lines", "result": "kT about 27 keV, tau about 2.2 in the joint fit; flat/inverted radio spectrum", "finding": "The source is a black hole binary in the hard state", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "indicative of an accreting black hole binary in the hard state"}
+]},
+{"hypothesis": "Which components dominate the SED across frequency?", "experiment": "JetSeT broadband fit with jet, irradiated disk and corona", "result": "Jet-dominated to about 1e14 Hz, disk and corona above", "finding": "The jet dominates up to the near-IR/optical", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "`JetSeT` finds the spectrum is dominated by jet emission up to approximately $10^{14}$ Hz after which disk and coronal emission dominate."}
+]},
+{"hypothesis": "Can the flat radio spectrum arise from the cooling of electrons leaving a compact acceleration region?", "experiment": "RadioJet zones fed by the acceleration region with synchrotron cooling, fit to the SED", "result": "Best-fit m_jet about 1.2 reproduces the flat radio spectrum", "finding": "Flat radio spectrum follows naturally from synchrotron cooling of accelerated electrons", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "a flat radio spectral shape naturally obtained from the synchroton cooling of the accelerated electrons"}
+]},
+{"hypothesis": "Is the jet powered mainly by accretion?", "experiment": "Compare the JetSeT jet luminosity lower limit with the X-ray accretion luminosity", "result": "L_jet >= 8e37 erg/s versus L_acc about 6e37 erg/s at 3 kpc", "finding": "Jet could be powered mainly by accretion, with a small Blandford-Znajek contribution", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "Because these two values are comparable, it is possible the jet is powered predominately via accretion with only a small contribution needed from the Blanford-Znajek mechanism"}
+]},
+{"hypothesis": "Are optical disk winds still present at this epoch?", "experiment": "Absorption trough search and Gaussian fits to He I and H-alpha lines in X-shooter spectra", "result": "He I 5876 trough with v_t = 880 km/s; H-alpha red-wing outflow of 923 km/s", "finding": "Winds are present but slower than in earlier hard-state epochs", "support": "supported", "evidence": [
+{"loc": "Discussion and Conclusions", "quote": "These properties indicate that at this epoch optical disk winds are still present, although with slower velocities with respect to what found in"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Quasi-simultaneous public archive data give the widest possible frequency range", "evidence": [
+{"loc": "Introduction", "quote": "Therefore we compiled quasi-simultaneous observations from public archives, Astronomer’s Telegrams, and Gamma-ray Coordination Network Circulars to construct the widest possible frequency range"}
+]},
+{"field": "why_this_method", "value": "Irradiated disk fit chosen to compare with an earlier analysis of 24 March data", "evidence": [
+{"loc": "IR - Hard X-ray Spectrum", "quote": "Subsequently, we fit our data from the near-IR to hard X-rays using an irradiated disk model to compare with (cite: 2018ApJ...868...54S)"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Adding a power-law component to the diskir fit improved the fit at high energies over diskir alone", "evidence": [
+{"loc": "IR - Hard X-ray Spectrum", "quote": "We found that including a power-law component improved the fit at high energies"}
+]}
+],
+"limitations_admitted": [
+{"value": "Parameter errors come only from MIGRAD; MCMC deferred to future work", "evidence": [
+{"loc": "Initial model setup", "quote": "a more reliable estimate based on a Markov chain Monte Carlo (MCMC) will be presented in"}
+]},
+{"value": "Fit may be biased by parameter degeneracies", "evidence": [
+{"loc": "Model fit results for the jet emission", "quote": "even though the fit might be biased by the degeneracy among some parameters"}
+]}
+],
+"referee_caveats_inferred": [
+"ALMA enters as four continuum flux densities with no imaging or flux-calibration details, so the ALMA points cannot be independently checked from the paper",
+"Abstract quotes B ~ 1.6e4 G and R ~ 2.8e9 cm while the text gives 1.8e4 G and 2.6e9 cm; the Table 4 value of B_acc in the setup list is printed as 1.8e-4 G; the VLITE flux error 5.3 is implausible",
+"Error bars come only from MIGRAD with a frozen-parameter fit and a 5% systematic floor, so uncertainties on jet parameters are likely underestimated",
+"Distance of 3 kpc, black hole mass of 8 solar masses and jet geometry are assumed or borrowed, and the jet luminosity scales with them"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA data retrieved from the ESO archive; X-shooter from the ESO archive; JVLA from the NRAO archive", "evidence": [
+{"loc": "ALMA", "quote": "data for project 2017.1.01103.T were retrieved from the ESO archive"},
+{"loc": "JVLA", "quote": "We retrieved calibrated Karl G. Jansky Very Large Array (VLA) data for experiment VLA/18A-470 from the National Radio Astronomy (NRAO) online archive."}
+]}
+],
+"code_released": [
+{"value": "JetSeT is a public code with an ASCL entry; the authors' own fit scripts are not stated as released", "evidence": [
+{"loc": "References", "quote": "JetSeT: Numerical modeling and SED fitting tool for relativistic jets."}
+]}
+],
+"missing_for_reproduction": [
+"ALMA calibration and imaging recipe and the method used to extract flux density",
+"JetSeT version and exact fit scripts",
+"Selection of X-shooter continuum windows"
+],
+"estimated_data_volume_inferred": "Roughly tens of GB for the raw ALMA Band 7 execution (about 1 h), plus the other archives",
+"score_inferred": 3,
+"score_reason": "Public data and a public code with tabulated starting values and bounds allow redoing the JetSeT fit from Table 2, but the ALMA reduction and flux extraction are not specified.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "ALMA is a minor input (four flux points) and its imaging and flux-extraction recipe is incomplete; the main results come from multi-facility SED modelling.",
+"methods_papers": [
+{"citation": "Bonato et al. 2018 (cite: 2018MNRAS.478.1512B)", "why": "Cited alongside the ALMA imaging and spectral window frequencies"},
+{"citation": "Tramacere 2020 JetSeT (cite: jetsetascl)", "why": "SED modelling code"},
+{"citation": "Gierlinski, Done & Page 2009 (cite: DiskIrrModel2009)", "why": "diskir irradiated disk model and fixed parameter choices"}
+],
+"companion_papers": [
+{"citation": "Bright et al. 2020 (cite: 2020NatAs.tmp....2B)", "why": "Distance, jet speed, viewing angle and radio jet extent"},
+{"citation": "Munoz-Darias et al. 2019 (cite: 2019ApJ...879L...4M)", "why": "Optical disk wind analysis followed here"},
+{"citation": "Shidatsu et al. 2018 (cite: 2018ApJ...868...54S)", "why": "Irradiated disk fit to 24 March data used for comparison"},
+{"citation": "Roques & Jourdain 2019 (cite: 2019ApJ...870...92R)", "why": "Hard X-ray cutoff power-law model followed"}
+],
+"related_projects_or_surveys": ["ESO program 0101.D-0356(A)", "VLA/18A-470", "XMM-Newton obsid 0820880501"]
+}

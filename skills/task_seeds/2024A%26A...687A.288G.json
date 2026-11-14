@@ -1,0 +1,644 @@
+{
+ "bibcode": "2024A&A...687A.288G",
+ "title": "Dark progenitors and massive descendants: A first ALMA perspective of radio-selected near-IR-dark galaxies in the COSMOS field",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348623",
+ "arxiv_id": "2402.05994",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the spectroscopic redshifts, physical properties, molecular gas content and line kinematics of nine radio-selected NIR-dark galaxies in COSMOS, and could they be progenitors of massive passive z~3 galaxies?",
+ "alma_project_codes": [
+  "2021.1.01467.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~84-115 GHz, whole band)",
+  "arrays": "12-m array, C-4/C-3 configurations (service mode)",
+  "angular_resolution": "Expected 1.4\"/0.92\"; measured beam ~1.45\" x 1.31\", PA ~ -70 deg (natural weighting)",
+  "sensitivity": "Requested 0.32 mJy/beam per stacked channel; achieved median rms 0.2 mJy/beam, rising to 0.4 mJy/beam at higher frequency"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source selection: radio sources lacking COSMOS2015 NIR counterpart, from VLA-COSMOS 3GHz Large Project catalog",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations and data reduction",
+      "quote": "these objects were part of a sample of 476 galaxies robustly detected"
+     }
+    ]
+   },
+   "citation": "(cite: Talia_21); (cite: Smolcic_17); (cite: Laigle_16)"
+  },
+  {
+   "what": {
+    "value": "Optical/NIR/MIR maps and COSMOS2020 catalog (photometry, counterparts)",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data",
+      "quote": "The fluxes in the optical/NIR/MIR regimes are extracted from the scientific maps employed by (cite: Weaver_22) to build the COSMOS2020 catalog."
+     }
+    ]
+   },
+   "citation": "(cite: Weaver_22)"
+  },
+  {
+   "what": {
+    "value": "FIR photometry from SuperDeblended catalog v20201010",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data",
+      "quote": "the photometry at FIR wavelengths is obtained from the SuperDeblended catalog (v20201010; (cite: Jin_18))"
+     }
+    ]
+   },
+   "citation": "(cite: Jin_18)"
+  },
+  {
+   "what": {
+    "value": "(sub)mm ALMA fluxes from the A3COSMOS catalog (v.20200310)",
+    "evidence": [
+     {
+      "loc": "Table 1 caption",
+      "quote": "measured with ALMA through cross-matching with the A3COSMOS catalog (cite: Liu_19)"
+     }
+    ]
+   },
+   "citation": "(cite: Liu_19)"
+  },
+  {
+   "what": {
+    "value": "Radio fluxes at 1.28, 1.4 and 3 GHz from COSMOS-VLA and MIGHTEE catalogs",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data",
+      "quote": "radio fluxes at 1.28, 1.4, and 3 GHz are obtained from the catalogs of the COSMOS-VLA large program (cite: Schinnerer_10; Smolcic_17)"
+     }
+    ]
+   },
+   "citation": "(cite: Schinnerer_10; Smolcic_17); MIGHTEE (cite: Jarvis_16; Heywood_22)"
+  },
+  {
+   "what": {
+    "value": "CO SLED line ratios R31, R41, R51 from DSFG sample",
+    "evidence": [
+     {
+      "loc": "4.3 Gas mass and depletion time",
+      "quote": "we choose the CO-SLED obtained by (cite: Bothwell_13)"
+     },
+     {
+      "loc": "4.3 Gas mass and depletion time",
+      "quote": "we employ $R_{31}=2.3\\pm0.3$, $R_{41}=3.0\\pm0.4$, and $R_{51}=3.8\\pm0.7$"
+     }
+    ]
+   },
+   "citation": "(cite: Bothwell_13)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 0.8 (starburst value)",
+    "evidence": [
+     {
+      "loc": "4.3 Gas mass and depletion time",
+      "quote": "we choose a literature value of 0.8"
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto_13; Gururajan_23)"
+  },
+  {
+   "what": {
+    "value": "[CI] abundance X_CI = 3e-5 and excitation factor Q10 = 0.6",
+    "evidence": [
+     {
+      "loc": "4.3 Gas mass and depletion time",
+      "quote": "we employ literature-standard values of $X_{CI}=3\\times10^{-5}$ and $Q_{10}=0.6$ (cite: Papadopoulos_04; Bothwell_17)"
+     }
+    ]
+   },
+   "citation": "(cite: Papadopoulos_04; Bothwell_17)"
+  },
+  {
+   "what": {
+    "value": "SFR-L_IR relation rescaled to Chabrier IMF",
+    "evidence": [
+     {
+      "loc": "3.5 SED-Fitting",
+      "quote": "we estimate the SFR from the $L_{\\rm IR}$ through the relation by (cite: Kennicutt_12) rescaled to a (cite: Chabrier_03) IMF"
+     }
+    ]
+   },
+   "citation": "(cite: Kennicutt_12)"
+  },
+  {
+   "what": {
+    "value": "Main sequence of star-forming galaxies for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Analysis of the physical properties",
+      "quote": "most of the targets are still located above the main sequence by (cite: Schreiber_15)"
+     }
+    ]
+   },
+   "citation": "(cite: Schreiber_15)"
+  },
+  {
+   "what": {
+    "value": "Infrared luminosities and [CI](1-0) fluxes of literature SMGs for comparison",
+    "evidence": [
+     {
+      "loc": "4.3 Gas mass and depletion time",
+      "quote": "we retrieve the infrared luminosity and the \\[CI\\](1-0) line fluxes from the study by (cite: Valentino_20CI)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino_20CI)"
+  },
+  {
+   "what": {
+    "value": "Earlier photometric redshifts used to select targets",
+    "evidence": [
+     {
+      "loc": "4.1 Analysis of the spec-z",
+      "quote": "the photometric redshifts computed by (cite: Talia_21)"
+     }
+    ]
+   },
+   "citation": "(cite: Talia_21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Merge MSs and resample channels",
+   "method": "Merge calibrated MSs in CASA; resample to ~0.02 GHz channels; first tclean with natural weighting to check rms",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux at 3 mm",
+   "method": "tclean mfs with natural weighting after masking lines; aperture photometry in CARTA on 2 sigma contour",
+   "software": [
+    "CASA",
+    "tclean",
+    "CARTA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "aperture = 2 sigma contour of the continuum image",
+    "detection threshold S/N>3, 3 sigma upper limits otherwise"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Search for emission lines",
+   "method": "uvcontsub, 0th moment map, natural-weight cube, boxcar convolution, S/N cubes, S/N spectrum extraction with interferopy",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "immoments",
+    "tclean",
+    "Interferopy"
+   ],
+   "key_parameters": [
+    "boxcar widths 1-13 channels (60-780 km/s at 100 GHz)",
+    "rms from sigma clipping in the inner primary beam",
+    "extraction region = 2 sigma contour of the 0th moment map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Assess line reliability",
+   "method": "Spurious probability following Jin et al. 2019 (N_Eff formula) and FINDCLUMPS positive/negative peak ratio",
+   "software": [
+    "Interferopy"
+   ],
+   "key_parameters": [
+    "all lines S/N>6 have spurious probability < 1e-6 (Jin) and 100% reliability (Walter)"
+   ],
+   "assumptions": [
+    "Noise at phase centre approximately Gaussian (Jin method)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure integrated line fluxes",
+   "method": "0th moment maps of continuum-subtracted lines; CARTA aperture photometry on 2 sigma contour",
+   "software": [
+    "CASA",
+    "immoments",
+    "CARTA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive spectroscopic redshifts",
+   "method": "Model the highest-S/N line as each CO transition for 0<z<8, test for second line, pick highest joint reliability; for single-line sources fix z at allowed values and choose lowest chi2 in CIGALE SED fit including the 3 mm continuum point",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "N_Eff for second line = number of CO transitions possible for the first line",
+    "joint spurious probability = product of first and second line probabilities"
+   ],
+   "assumptions": [
+    "Lines are CO or [CI](1-0) transitions"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test line profiles for double-peaked structure",
+   "method": "Fit single vs double Gaussian to the highest-S/N line and compare with partial F-test",
+   "software": [],
+   "key_parameters": [
+    "significance threshold 0.05; 4 vs 7 free parameters (with residual continuum)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "SED fitting for physical properties",
+   "method": "CIGALE with BC03 stellar populations, delayed-style exponentially declining SFH plus bursts, Charlot and Fall attenuation, Draine 2014 dust, Fritz 2006 torus, with redshift fixed to spec-z; SFR from L_IR (Kennicutt 2012)",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "AGN torus component added (Fritz et al. 2006)",
+    "median radio slope assumed for sources lacking a second radio detection (q_TIR)"
+   ],
+   "assumptions": [
+    "Chabrier IMF; flat LCDM with Omega_m=0.3, Omega_Lambda=0.7, h=0.7"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Derive molecular gas masses",
+   "method": "[CI](1-0) gas mass with the Papadopoulos et al. 2004 relation where [CI] detected; otherwise CO-based mass with alpha_CO and CO SLED rescaling to CO(1-0)",
+   "software": [],
+   "key_parameters": [
+    "A10 = 0.793e-7 s^-1",
+    "R31=2.3+-0.3, R41=3.0+-0.4, R51=3.8+-0.7"
+   ],
+   "assumptions": [
+    "X_CI = 3e-5, Q10 = 0.6",
+    "alpha_CO = 0.8 Msun (K km/s pc^2)^-1",
+    "CO SLED of Bothwell et al. 2013 DSFGs (no strong AGN)"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Depletion time and evolutionary path",
+   "method": "tau_D = M(H2)/SFR; constant-SFR toy model evolving z and M* until gas exhausted, uncertainties by Monte Carlo; compared with massive passive z~3 galaxies of Schreiber et al. 2018",
+   "software": [],
+   "key_parameters": [
+    "final state z_f = z_spec - Delta z, M*_f = M* + M(H2)"
+   ],
+   "assumptions": [
+    "No quenching or gas accretion"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "Compare photo-z to spec-z",
+   "method": "median |z_phot - z_spec|/(1+z_spec) for all nine spec-z",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median rms per stacked channel",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 ALMA observations and data reduction",
+     "quote": "we verified that the median rms across the stacked channels was 0.2 mJy/beam"
+    }
+   ]
+  },
+  {
+   "quantity": "Targets robustly detected in 3 mm continuum",
+   "value": "6 of 9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum images",
+     "quote": "We obtain that 6 out of 9 targets are robustly detected (S/N$>$3) in the continuum images."
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-41",
+   "value": "2.779",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2.779"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-84",
+   "value": "3.518",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.518"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-121",
+   "value": "3.323",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "3.323"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-182",
+   "value": "4.745",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.745"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-235",
+   "value": "4.652",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.652"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-247",
+   "value": "2.929",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2.929"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-298",
+   "value": "4.150",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.150"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-361",
+   "value": "4.585",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.585"
+    }
+   ]
+  },
+  {
+   "quantity": "z_spec RSN-456",
+   "value": "2.987",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2.987"
+    }
+   ]
+  },
+  {
+   "quantity": "Median spec-z of sample (range 2.8-4.7)",
+   "value": "~3.52",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Analysis of the spec-z",
+     "quote": "with a median value of $\\sim 3.52$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of targets with statistically significant double Gaussian component",
+   "value": "5 of 9 (~55%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.4 Initial insights on the ISM kinematics",
+     "quote": "we obtain that the presence of a double component is statistically significant for five out of nine targets ($\\sim 55\\%$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median photo-z accuracy |z_phot - z_spec|/(1+z_spec)",
+   "value": "0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "4.1 Analysis of the spec-z",
+     "quote": "=0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log(M*)",
+   "value": "11.0",
+   "uncertainty": "0.1",
+   "units": "log(Msun)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$11.0\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log(SFR)",
+   "value": "2.6",
+   "uncertainty": "0.1",
+   "units": "log(Msun/yr)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$2.6\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log(L_IR)",
+   "value": "12.6",
+   "uncertainty": "0.1",
+   "units": "log(Lsun)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$12.6\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median A_V",
+   "value": "4.5",
+   "uncertainty": "0.4",
+   "units": "mag",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$4.5\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median log M(H2) from [CI]",
+   "value": "11.03",
+   "uncertainty": "0.07",
+   "units": "log(Msun)",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$11.03\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median depletion time",
+   "value": "263",
+   "uncertainty": "86",
+   "units": "Myr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "$263\\pm86$"
+    }
+   ]
+  },
+  {
+   "quantity": "Depletion time range of sample",
+   "value": "80-300",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "4.3 Gas mass and depletion time",
+     "quote": "The galaxies in our sample have values in the range $80-300$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "q_TIR range",
+   "value": "2.45-2.55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.5 SED-Fitting",
+     "quote": "We obtain that all the $q_{\\rm TIR}$ are in the range \\[2.45,2.55\\]"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction f_AGN from CIGALE",
+   "value": "0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.5 SED-Fitting",
+     "quote": "CIGALE reports a $f_{\\rm AGN}=0$ for all our targets"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters for continuum and cube imaging (cell size, image size, deconvolver, niter, threshold, masks)",
+  "Which channels were masked as line-contaminated for continuum imaging and uvcontsub",
+  "Whether the 'first cleaning' cube used for line search was cleaned and to what threshold",
+  "CASA pipeline version, calibrators and flux scale uncertainty",
+  "Exact rest frequencies and the CO/[CI] redshift grid used in the line-identification step",
+  "Full CIGALE parameter grid (Donevski et al. 2020 values), priors and fit settings",
+  "Radio slope fitting details and median slope value used for q_TIR",
+  "Monte Carlo set-up for the evolutionary-path model (sampling of uncertainties, cosmic-time conversion)",
+  "Parameters of the single/double Gaussian fits (initial guesses, bounds, fitting method)",
+  "Number of execution blocks, observation dates per setting and per-source time on source"
+ ],
+ "missing_for_reproduction": [
+  "tclean imaging parameters and cleaning thresholds",
+  "Line-free channel selection for continuum and uvcontsub",
+  "CIGALE grids and priors",
+  "Gaussian fit initialization for the F-test",
+  "Monte Carlo evolution model details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and most analysis steps (continuum, line search, reliability formulae, redshift logic, gas-mass equations, constants) are given with numeric tables, but imaging parameters, line masks, CIGALE grids and fit details are missing.",
+ "rediscovery_reason": "Project 2021.1.01467.S is a Cycle 8 program that should be in the ALMA archive, the recipe is largely specified, and results (redshifts, line fluxes, FWHM) are numeric tables.",
+ "source_card": "cards/2024A%26A...687A.288G/sonnet/card.md"
+}

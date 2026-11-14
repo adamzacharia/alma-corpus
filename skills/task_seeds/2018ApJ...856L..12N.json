@@ -1,0 +1,267 @@
+{
+ "bibcode": "2018ApJ...856L..12N",
+ "title": "Molecular Emission from a Galaxy Associated with a z ∼ 2.2 Damped Lyα Absorber",
+ "year": 2018,
+ "doi": "10.3847/2041-8213/aab5b1",
+ "arxiv_id": "1803.05914",
+ "fields": [
+  "high_z_galaxies",
+  "other"
+ ],
+ "question": "Is a high-metallicity z~2.2 DLA toward QSO B1228-113 associated with a molecular gas-rich galaxy, and what is the multi-phase nature of the absorbing gas?",
+ "alma_project_codes": [
+  "2016.1.00628.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "continuum beam 2.9'' x 2.0''; cube 2.6'' x 1.8''",
+  "sensitivity": "continuum rms 6.9 uJy/beam; cube 0.15 mJy/beam per 43.2 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLBA 327 MHz core flux density of the quasar, used for covering factor",
+    "evidence": [
+     {
+      "loc": "2.4 GMRT Observations",
+      "quote": "(cite: Kanekar2009) used the Very Long Baseline Array (VLBA) to measure the core flux density of the quasar"
+     }
+    ]
+   },
+   "citation": "(cite: Kanekar2009)"
+  },
+  {
+   "what": {
+    "value": "CO(3-2)/CO(1-0) ratio r31 = 0.57",
+    "evidence": [
+     {
+      "loc": "3.1 Galaxy Properties",
+      "quote": "$r_{31} = L'_{\\text{CO(3$-$2)}}/L'_{\\text{CO(1$-$0)}} = 0.57$ (cite: Dessauges2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Dessauges2015)"
+  },
+  {
+   "what": {
+    "value": "Previous QSO flux used to scale SINFONI cube",
+    "evidence": [
+     {
+      "loc": "2.3 SINFONI Observations",
+      "quote": "The final co-added data cube was scaled to match the previously measured flux of the integrated QSO spectrum (cite: Ellison2005)."
+     }
+    ]
+   },
+   "citation": "(cite: Ellison2005)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "ALMA pipeline in CASA, self-calibration in AIPS, natural-weighted continuum and Hanning-smoothed cube",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive CO line luminosity and total IR luminosity",
+   "method": "Fit modified blackbody to 100.5 GHz continuum flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha=1.5, beta=1.5, T_dust=35 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure Halpha flux and SFR",
+   "method": "SINFONI re-reduction, pseudo narrow-band image, Gaussian fit of Halpha and [NII]; Kennicutt & Evans SFR with TIR dust correction",
+   "software": [
+    "ESO SINFONI pipeline",
+    "IRAF"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate molecular gas mass",
+   "method": "M_mol from L'CO(3-2) with r31 and alpha_CO",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.3 Msun (K km/s pc^2)^-1, r31 = 0.57"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit absorption lines and HI 21cm spin temperature",
+   "method": "MCMC Voigt fitting of UVES metal lines with tied components; GMRT 21 cm optical depth limit and covering factor",
+   "software": [
+    "LINETOOLS",
+    "AIPS"
+   ],
+   "key_parameters": [
+    "six components fit to Ni II 1741/1751; assumed 20 km/s FWHM Gaussian for 21 cm"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) velocity-integrated flux",
+   "value": "0.73",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\int S_{\\rm CO(3-2)} dv$ (Jy ${\\rm km~s}^{-1}$)        | $0.73 \\pm 0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) FWHM",
+   "value": "600",
+   "uncertainty": "60",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "FWHM$_{\\rm CO(3-2)}$ (${\\rm km~s}^{-1}$)                | $600 \\pm 60$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux at 100.5 GHz",
+   "value": "46",
+   "uncertainty": "10",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$S_{\\rm cont}$ at $\\nu_{\\rm obs}$ = 100.5 GHz ($\\mu$Jy) | $46 \\pm 10$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO(3-2)",
+   "value": "1.88e10",
+   "uncertainty": "0.15e10",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Galaxy Properties",
+     "quote": "$L'_{\\text{CO(3$-$2)}}$ = $(1.88 \\pm 0.15) \\times 10^{10}$ K ${\\rm km~s}^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR",
+   "value": "2.2e12",
+   "uncertainty": "0.5e12 (systematic ~0.6 dex)",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Galaxy Properties",
+     "quote": "$L\\text{(TIR)} = (2.2 \\pm 0.5) \\times 10^{12}~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-corrected SFR",
+   "value": "110",
+   "uncertainty": "+60/-30",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Galaxy Properties",
+     "quote": "yields a dust-corrected SFR of $110^{+60}_{-30}$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha SFR (uncorrected)",
+   "value": "3.9",
+   "uncertainty": "0.4",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Galaxy Properties",
+     "quote": "dust-uncorrected star formation rate (SFR) of $3.9 \\pm 0.4$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass",
+   "value": "1.4e11",
+   "uncertainty": "0.2e11",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 Galaxy Properties",
+     "quote": "$M_{\\text{mol}} = (1.4 \\pm 0.2) \\times 10^{11} \\times (\\alpha_{\\text{CO}}/4.3) \\times (0.57/r_{31})$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spin temperature lower limit",
+   "value": "1895 x (f/0.93)",
+   "uncertainty": "3 sigma limit",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.4 GMRT Observations",
+     "quote": "The $3\\sigma$ lower limit to the DLA spin temperature is then $T_{\\rm s} > 1895 \\times (f/0.93)$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "DLA metallicity [M/H]",
+   "value": "-0.27",
+   "uncertainty": "0.10",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.1 UVES Observations",
+     "quote": "resulting in an updated metallicity of ${\\rm [M/H]} = -0.27 \\pm 0.10$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA/CASA and pipeline versions",
+  "Line-free channels and continuum subtraction method",
+  "Image size and cell size",
+  "Self-calibration solution intervals",
+  "Method of fitting the CO line and extracting flux (aperture or Gaussian)",
+  "Flux scale uncertainty",
+  "SINFONI aperture and narrow-band widths",
+  "Details of SFR-TIR dust correction calibration"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "Self-cal details",
+  "Line-fit method details"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public ALMA data and simple measurements, but imaging and fitting details are sparse.",
+ "rediscovery_reason": "Public ALMA project; main results are numeric (line flux, continuum flux), though some settings are unstated.",
+ "source_card": "cards/2018ApJ...856L..12N/sonnet/card.md"
+}

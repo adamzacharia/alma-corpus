@@ -1,0 +1,265 @@
+{
+ "bibcode": "2019ApJ...881..112O",
+ "title": "Sulfur-bearing Species Tracing the Disk/Envelope System in the Class I Protostellar Source Elias 29",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab2b97",
+ "arxiv_id": "1906.09724",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical and chemical structures (S-bearing species, organic molecules, rotation) of the disk/envelope system of the Class I protostar Elias 29 at subarcsecond resolution?",
+ "alma_project_codes": [
+  "2013.1.01102.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "continuum beam 0.856\" x 0.470\" (P.A. 95.17 deg)",
+  "sensitivity": "rms 0.3 mJy/beam continuum; 7, 7, 4, 6, 4 mJy/beam for CS, SO, 34SO, SO2, SiO"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust temperature distribution model (~70 K at 40 au, ~25 K at 500 au) used to assume gas temperature",
+    "evidence": [
+     {
+      "loc": "3.1 1.2 mm Continuum Emission",
+      "quote": "dust temperature is about 70 K at a distance of 40 au from the protostar."
+     }
+    ]
+   },
+   "citation": "Rocha & Pilling 2018"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity kappa = 1.3 cm2/g at 1.2 mm",
+    "evidence": [
+     {
+      "loc": "3.1 1.2 mm Continuum Emission",
+      "quote": "is estimated"
+     }
+    ]
+   },
+   "citation": "Ossenkopf & Henning (1994)"
+  },
+  {
+   "what": {
+    "value": "Abundance ratios for comparison (L1157 B1, NGC1333 IRAS 2, IRAS 16293 B)",
+    "evidence": [
+     {
+      "loc": "3.3 Abundance Ratios of the S-bearing Species",
+      "quote": "Table 4 also shows previously reported results for comparison: the shocked outflow"
+     }
+    ]
+   },
+   "citation": "Bachiller & Pérez Gutiérrez 1997; Wakelam et al. 2005; Drozdovskaya et al. 2018"
+  },
+  {
+   "what": {
+    "value": "NGC1333 IRAS 4A organic-molecule abundances for comparison",
+    "evidence": [
+     {
+      "loc": "4.1 Deficiency in Organic Molecules",
+      "quote": "fractional abundances or their upper limits reported for NGC1333 IRAS 4A1 and A2 by"
+     }
+    ]
+   },
+   "citation": "López-Sepulcre et al. 2017"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "CLEAN imaging with Briggs weighting, continuum subtraction in uv, primary beam correction",
+   "software": [],
+   "key_parameters": [
+    "robust 0.5; channel widths 0.5 or 0.1 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum fit and H2 column density/mass",
+   "method": "2D Gaussian fit of continuum; N(H2) from optically thin dust emission equation",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 1.3 cm2/g at 1.2 mm; dust-to-gas 0.01"
+   ],
+   "assumptions": [
+    "Ossenkopf & Henning dense-region MRN opacity; beta=1.0 alternative gives factor 2 smaller"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Molecular column densities and abundance ratios",
+   "method": "LTE, optically thin 34SO; SO from 34SO with 32S/34S = 22.6; Gaussian fit of integrated intensity maps",
+   "software": [],
+   "key_parameters": [
+    "Tgas 50-150 K at the continuum peak; 100 K adopted for ratios; 20 K in ridge"
+   ],
+   "assumptions": [
+    "Gas temperature equals dust temperature"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Upper limits for organic molecules",
+   "method": "Upper limits from rms of integrated intensity maps compared with IRAS 4A",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Rotation and protostellar mass",
+   "method": "Moment 1 and PV diagrams of SO; compare with Keplerian disk model PV",
+   "software": [],
+   "key_parameters": [
+    "M=1.0 Msun, i=65 deg, PA 0 deg, radius 100 au, emissivity r^-2.0"
+   ],
+   "assumptions": [
+    "Keplerian rotation, no radiative transfer; M = 0.82 Msun / sin^2 i"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak intensity (1.2 mm)",
+   "value": "17.2",
+   "uncertainty": "0.3 (3σ)",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1.2 mm Continuum Emission",
+     "quote": "(17 _\\."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux",
+   "value": "21.4",
+   "uncertainty": "0.7 (3σ)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1.2 mm Continuum Emission",
+     "quote": "(21 _._ 4 _±_ 0 _._ 7) mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "32SO/34SO intensity ratio",
+   "value": "13",
+   "uncertainty": "4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 SO, SO2, and SiO",
+     "quote": "The intensity ratio [32] SO/ [34] SO is found to be 13 _±_ 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth of 32SO",
+   "value": "2.33",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 SO, SO2, and SiO",
+     "quote": "The optical depth of [32] SO is indeed estimated to be 2.33"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust continuum optical depth",
+   "value": "0.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 1.2 mm Continuum Emission",
+     "quote": "beam-averaged optical depth of the dust continuum is estimated to be 0.07."
+    }
+   ]
+  },
+  {
+   "quantity": "N(SO)/N(CS) at protostar",
+   "value": "3 x 10^2",
+   "uncertainty": "+13/-2 x10^2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The abundance ratio SO/CS is as high as 3"
+    }
+   ]
+  },
+  {
+   "quantity": "Protostellar mass",
+   "value": "0.82-1.0",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "6. Summary",
+     "quote": "protostellar mass between 0.82 and 1.0 _M_ _⊙_ by assuming an inclination angle of 90 _[◦]_ to"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination (lower limit)",
+   "value": "65",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5. Rotation Traced by SO",
+     "quote": "If we assume a flat disk with no thickness, _i_ is estimated to be 65 _[◦]_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 red/blue peak asymmetry",
+   "value": "blue 329±10, red 225±9; ratio 0.68",
+   "uncertainty": "10, 9",
+   "units": "mJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.3 Asymmetric Spectral Line Profiles of the SO2 emission",
+     "quote": "and red-shifted peaks of 329 _±_ 10 and 225 _±_ 9 mJy beam _[−]_ [1]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of channels/line-free channel ranges for continuum",
+  "Image size and cell size",
+  "CASA version and calibration pipeline",
+  "Clean threshold/mask and number of iterations",
+  "Partition functions / molecular data source and line parameters used for LTE column densities",
+  "Details of the PV model beyond mass, inclination, PA, radius 100 au (velocity broadening, grid)",
+  "Spectral window to line assignment (Table 1 not in text)"
+ ],
+ "missing_for_reproduction": [
+  "Table 1 line parameters",
+  "CASA version",
+  "Imaging parameters (size, cell, masks)",
+  "Details of PV model code"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear outline, but software, version and imaging details missing.",
+ "rediscovery_reason": "Public archive data, numeric results (continuum fluxes, column densities, mass) reproducible with standard imaging, though some settings are missing.",
+ "source_card": "cards/2019ApJ...881..112O/sonnet/card.md"
+}

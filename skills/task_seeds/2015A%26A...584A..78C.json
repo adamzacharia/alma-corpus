@@ -1,0 +1,303 @@
+{
+ "bibcode": "2015A&A...584A..78C",
+ "title": "ALMA constraints on the faint millimetre source number counts and their contribution to the cosmic infrared background",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201525780",
+ "arxiv_id": "1502.00640",
+ "fields": [
+  "high_z_galaxies",
+  "cosmology"
+ ],
+ "question": "What are the faint (sub-mJy) number counts of millimetre sources at 1.1 and 1.3 mm from deep ALMA maps, and what fraction of the cosmic infrared background do they resolve?",
+ "alma_project_codes": [
+  "2012.A.00040.S",
+  "2012.1.00374.S",
+  "2012.1.00719.S",
+  "2011.1.00115.S",
+  "2011.1.00243.S",
+  "2011.0.00767.S",
+  "2012.1.00142.S",
+  "2012.1.00523.S"
+ ],
+ "data": {
+  "bands": "Bands 6 and 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "7.8 to 52.1 μJy/beam rms in 18 continuum maps"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bright-end 1.1 mm number counts (two faintest bins excluded)",
+    "evidence": [
+     {
+      "loc": "4.1 Differential number counts",
+      "quote": "However, the two faintest bins in the latter data are not considered when comparing models or when fitting analytic functions"
+     }
+    ]
+   },
+   "citation": "(cite: Scott:2012)"
+  },
+  {
+   "what": {
+    "value": "SMG SED: beta = 2.0, T = 35 K",
+    "evidence": [
+     {
+      "loc": "3 Source extraction",
+      "quote": "We adopted a spectral index $\\beta = 2.0$ and dust temperature T = 35 K from (cite: Greve:2012)"
+     }
+    ]
+   },
+   "citation": "(cite: Greve:2012)"
+  },
+  {
+   "what": {
+    "value": "CIB from COBE: 25 (+22/-13) Jy/deg2 at 1.1 mm and 17 (+16/-9) at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "4.5 Cosmic infrared background",
+      "quote": "$25_{-13}^{+22}$ Jy deg$^{-2}$ at 1.1 mm and $17_{-9}^{+16}$ Jy deg$^{-2}$ at 1.3 mm"
+     }
+    ]
+   },
+   "citation": "(cite: Fixsen:1998)"
+  },
+  {
+   "what": {
+    "value": "Faint 1.3 mm counts from ALMA for comparison",
+    "evidence": [
+     {
+      "loc": "4.1 Differential number counts",
+      "quote": "At 1.3 mm, the differential number counts of (cite: Hatsukade:2013) (orange symbols), which are obtained from sources with S/N$\\geq4$, are consistent with our results within the uncertainties"
+     }
+    ]
+   },
+   "citation": "(cite: Hatsukade:2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image continuum maps",
+   "method": "CASA reduction, data weights rescaled for some fields, continuum imaged from line-free channels with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting; extraction within two primary beams (~20 arcsec diameter)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract sources and set the detection threshold",
+   "method": "2D Gaussian fit candidates with S/N>3.5 and size consistent with beam (at most 1.5x beam); negative-map test and blank-field simulations used to assess spurious sources",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [
+    "S/N>3.5; 50 sources detected"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Completeness and effective survey area",
+   "method": "Inject artificial sources, 1000 iterations per map, 4-8 per simulation, in 0.05-1 mJy; recovered if S/N>=3.5; A_survey = sum C_i A_i",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Flux boosting correction",
+   "method": "Inject sources with S/N 3-8 in maps not corrected for primary beam, 10^4 repeats, boost = S_out/S_in vs S/N",
+   "software": [],
+   "key_parameters": [
+    "boost ~1.09 at S/N=3.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Scale fluxes to 1.1 and 1.3 mm",
+   "method": "Modified blackbody scaling; sources with lambda<1.2 mm scaled to 1.1 mm, others to 1.3 mm",
+   "software": [],
+   "key_parameters": [
+    "beta = 2.0, T = 35 K, z=2; errors tested over 1<z<6, 20<T<60 K, 1.5<beta<2"
+   ],
+   "assumptions": [
+    "SMG-like SED for all faint sources"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Differential number counts with uncertainties",
+   "method": "Sum of (1-f_c)/A_survey in bins of dLogS=0.2, scaled to 1; f_c = negative/positive ratio at source S/N; errors from Poisson (Gehrels), cosmic variance (Moster tool), completeness/boosting",
+   "software": [
+    "Moster et al. 2011 cosmic variance tool"
+   ],
+   "key_parameters": [
+    "cosmic variance with z=3.5, dz=3, M*=10^10.5 Msun"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Fit Schechter function",
+   "method": "chi2 minimisation of three-parameter Schechter function, separately at 1.1 and 1.3 mm, using this work plus literature counts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Integrate counts and compare with CIB",
+   "method": "Integrate dN/dS * S above S_lim; compare to COBE CIB of Fixsen 1998; convert 60 μJy at 1.3 mm to L_IR and SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "1.3 mm flux corresponds to redshift-independent IR luminosity for 0.5<z<15; SFR from Kennicutt & Evans 2012"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of detected sources",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Source catalogue",
+     "quote": "In the 18 continuum maps, we detected 50 sources with S/N in the range 3.5-38.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Total survey area at 1.1 mm",
+   "value": "~9.5e-4",
+   "uncertainty": "not stated",
+   "units": "deg^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and data reduction",
+     "quote": "${\\rm \\sim9.5\\times10^{-4} \n \\ deg^2}$ at 1.1 mm and ${\\rm \\sim6.6\\times10^{-4} \\  deg^2}$ at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux boost at S/N=3.5",
+   "value": "1.09",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Flux boosting",
+     "quote": "At S/N = 3.5, the boost fraction is $\\simeq$1.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter 1.1 mm: phi*",
+   "value": "(2.7±0.9)e3",
+   "uncertainty": "0.9e3",
+   "units": "deg^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  1.1 mm   |  $(2.7\\pm0.9)\\times10^{3}$  |    $2.6\\pm0.4$    | $-1.81\\pm0.14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter 1.1 mm: S* and alpha",
+   "value": "S*=2.6 mJy, alpha=-1.81",
+   "uncertainty": "0.4 mJy; 0.14",
+   "units": "mJy; dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  1.1 mm   |  $(2.7\\pm0.9)\\times10^{3}$  |    $2.6\\pm0.4$    | $-1.81\\pm0.14$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Schechter 1.3 mm: phi*, S*, alpha",
+   "value": "phi*=(1.8±0.4)e3 deg^-2, S*=1.7±0.2 mJy, alpha=-2.08±0.11",
+   "uncertainty": "as given",
+   "units": "deg^-2; mJy; dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  1.3 mm   |  $(1.8\\pm0.4)\\times10^{3}$  |    $1.7\\pm0.2$    | $-2.08\\pm0.11$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density resolved at 1.1 mm (S>0.1 mJy)",
+   "value": "17",
+   "uncertainty": "+10/-5",
+   "units": "Jy deg^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.5 Cosmic infrared background",
+     "quote": "$17^{+10}_{-5}$ Jy deg$^{-2}$ and $13^{+6}_{-3}$ Jy deg$^{-2}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux density resolved at 1.3 mm (S>0.06 mJy)",
+   "value": "13",
+   "uncertainty": "+6/-3",
+   "units": "Jy deg^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.5 Cosmic infrared background",
+     "quote": "$17^{+10}_{-5}$ Jy deg$^{-2}$ and $13^{+6}_{-3}$ Jy deg$^{-2}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR at 60 μJy at 1.3 mm",
+   "value": "40",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.5 Cosmic infrared background",
+     "quote": "corresponds to a total IR luminosity $\\rm L(8-1000\\mu m)=6~\\times10^{44}~erg~s^{-1}$, corresponding to a $\\rm\nSFR=40~M_{\\odot}~yr^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Source-extraction code and the exact Gaussian-fitting tool used for 2D source fitting are not named",
+  "Image size, cell size, clean threshold and iterations for each map",
+  "Which line channels were flagged as line-free in each field",
+  "Manual data-weight rescaling factors for BDF fields",
+  "Precise source flux catalogue (positions, fluxes, S/N) for all 50 sources",
+  "Binning edges and the counts per bin; Schechter fit weighting details",
+  "Pipeline vs manual calibration of archival data and calibrator choices for most fields",
+  "Cosmic variance tool inputs beyond those listed (field geometry)"
+ ],
+ "missing_for_reproduction": [
+  "Source extraction code/tool and parameters",
+  "Imaging parameters (cell, size, thresholds)",
+  "Source catalogue",
+  "Per-field calibration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear counting recipe, but extraction tool and imaging details are missing.",
+ "rediscovery_reason": "Data public, the pipeline is described and results are numeric, though some imaging settings are missing.",
+ "source_card": "cards/2015A%26A...584A..78C/sonnet/card.md"
+}

@@ -1,0 +1,1218 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016PASJ...68...20S",
+  "title": "Spatially resolved radio-to-far-infrared SED of the luminous merger remnant NGC 1614 with ALMA and VLA",
+  "year": 2016,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Saito, Toshiki",
+  "n_authors": 12,
+  "arxiv_id": "1512.05133",
+  "doi": "10.1093/pasj/psv136",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00182.S",
+   "2011.0.00768.S",
+   "2013.1.01172.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the results of Atacama Large Millimeter/Submillimeter Array (ALMA) 108, 233, 352, and 691 GHz continuum observations and Very Large Array (VLA) 4.81 and 8.36 GHz observations of the nearby luminous merger remnant NGC 1614."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1614",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 0.015938; D_L = 67.8 Mpc used in the SED fit (68.6 Mpc in the Introduction)",
+      "evidence": [
+       {
+        "loc": "INTRODUCTION",
+        "quote": "NGC 1614 is one of the nearby ($D_{\\rm{L}}$ = 68.6 Mpc; 1$''$ = 330 pc) gas-rich LIRGs"
+       },
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "we fix z = 0.015938, $D_{\\rm{L}}$ = 67.8 Mpc (cite: xu15)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Xu et al. 2015 (cite: xu15) for the SED-fit values",
+      "evidence": [
+       {
+        "loc": "INTRODUCTION",
+        "quote": "NGC 1614 is one of the nearby ($D_{\\rm{L}}$ = 68.6 Mpc; 1$''$ = 330 pc) gas-rich LIRGs"
+       },
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "we fix z = 0.015938, $D_{\\rm{L}}$ = 67.8 Mpc (cite: xu15)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the physical origins of the spatially resolved radio-to-FIR continuum SED of NGC 1614, and how do its sub-kpc star formation relation and gas depletion time compare with other galaxies along the merger sequence?",
+    "evidence": [
+     {
+      "loc": "INTRODUCTION",
+      "quote": "In this paper, we focus on the sub-kpc properties of the radio-to-FIR SED of a luminous merger remnant NGC 1614 using ALMA and VLA."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.01172.S",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Observations toward NGC 1614 were carried out as an ALMA cycle 2 program (ID = 2013.1.01172.S)"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00182.S",
+     "evidence": [
+      {
+       "loc": "Archival ALMA and VLA Data",
+       "quote": "two cycle 0 programs (ID = 2011.0.00182.S and 2011.0.00768.S)"
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00768.S",
+     "evidence": [
+      {
+       "loc": "Archival ALMA and VLA Data",
+       "quote": "two cycle 0 programs (ID = 2011.0.00182.S and 2011.0.00768.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Bands 3, 6 (Cycle 2), 7, 9 (Cycle 0); VLA C and X bands",
+    "evidence": [
+     {
+      "loc": "Archival ALMA and VLA Data",
+      "quote": "NGC 1614 was observed using ALMA band 7 and band 9 as two cycle 0 programs"
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "The band 3 and 6 receivers were tuned to the $^{12}$CO (1–0) and $^{12}$CO (2–1) line emission in the upper sideband."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Each spw 1.875 GHz with 3840 channels; two spws per sideband, ~7.5 GHz total coverage (Bands 3 and 6)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "Each spectral window had a bandwidth of 1.875 GHz with 3840 channels, and two spectral windows were set to each sideband to achieve a total frequency coverage of $\\sim$ 7.5 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0 (Band 3 target; line subtracted for continuum)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The band 3 and 6 receivers were tuned to the $^{12}$CO (1–0) and $^{12}$CO (2–1) line emission in the upper sideband."
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=2-1 (Band 6 target; line subtracted for continuum)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The band 3 and 6 receivers were tuned to the $^{12}$CO (1–0) and $^{12}$CO (2–1) line emission in the upper sideband."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Band 3: 28-1060 m; Band 6: 15-349 m; Band 7: 18-1341 m; Band 9: 20-394 m",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The band 3 data were obtained on August 30, 2014 (on-source time of $T_{\\rm{integ}}$ = 16.9 min.) using the projected baseline lengths of 28 - 1060 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.0'' x 1.0'' (convolved)",
+    "evidence": [
+     {
+      "loc": "Data Reduction and Imaging",
+      "quote": "We convolved all images into a same beam (1.0$''$ $\\times$ 1.0$''$)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4.6'' (~1.5 kpc) after clipping at 45 kλ",
+    "evidence": [
+     {
+      "loc": "Data Reduction and Imaging",
+      "quote": "the produced images have a same MRS of 4.6$''$ ($\\simeq$ 1.5 kpc)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 32, 7.4, 51, 143, 68, 736 uJy at 4.81, 8.36, 108, 233, 352, 691 GHz",
+    "evidence": [
+     {
+      "loc": "Data Reduction and Imaging",
+      "quote": "The rms level of 4.81, 8.36, 108, 233, 352, and 691 GHz images (Figure [1](#fig_1)) are 32, 7.4, 51, 143, 68, and 736 $\\mu$Jy, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 3 16.9 min; Band 6 22.0 min; Band 7 88.8 min; Band 9 24.7 min",
+    "evidence": [
+     {
+      "loc": "Archival ALMA and VLA Data",
+      "quote": "The band 7 data were obtained on July 31 and August 14, 2012 ($T_{\\rm{integ}}$= 88.8 min.)"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 3: 2014 Aug 30; Band 6: 2014 Dec 8; Band 7: 2012 Jul 31 and Aug 14; Band 9: 2012 Aug 13 and 28",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The band 6 data were obtained on December 8, 2014"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLA",
+     "provided": {
+      "value": "Archival 4.81 and 8.36 GHz continuum visibilities",
+      "evidence": [
+       {
+        "loc": "Archival ALMA and VLA Data",
+        "quote": "We use the archival calibrated visibility data (see (cite: cnd90), (cite: sch06), (cite: ols10), and (cite: hi14) for the details of the data)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "GBT 91 m",
+     "provided": {
+      "value": "4.83 GHz single-dish flux to estimate VLA recovered flux",
+      "evidence": [
+       {
+        "loc": "4.81, 8.36, and 108 GHz Emission",
+        "quote": "A comparison of the 4.81 GHz flux observed by the VLA with the 4.83 GHz flux obtained by the Green Bank 91 m (GBT) telescope (cite: bic95)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "JCMT",
+     "provided": {
+      "value": "352 and 691 GHz single-dish fluxes for recovered flux comparison",
+      "evidence": [
+       {
+        "loc": "233, 352, and 691 GHz Emission",
+        "quote": "relative to those in the James Clerk Maxwell Telescope (JCMT; (cite: dun00; d&e01)) observations are 18 $\\pm$ 4 and 27 $\\pm$ 4 %, respectively."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "z = 0.015938, D_L = 67.8 Mpc, T_d = 35 ± 2 K (from Spitzer/Herschel)",
+      "evidence": [
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "$T_d$ = 35 $\\pm$ 2 K (cite: xu15) which is derived by using Spitzer/MIPS 24 $\\mu$m and Herschel 70 - 500 $\\mu$m data"
+       }
+      ]
+     },
+     "citation": "(cite: xu15)"
+    },
+    {
+     "what": {
+      "value": "VV 114, NGC 34, SDP.81 KS-relation data",
+      "evidence": [
+       {
+        "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+        "quote": "compare with similar spatial resolution (0.3 - 0.8 kpc) data of U/LIRGs in the literature (VV 114, NGC 34, and SDP.81; (cite: xu14; hat15; TS15))"
+       }
+      ]
+     },
+     "citation": "(cite: xu14; hat15; TS15)"
+    },
+    {
+     "what": {
+      "value": "Nearby spiral galaxy KS data at ~0.75 kpc",
+      "evidence": [
+       {
+        "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+        "quote": "We also make a comparison with $\\sim$ 0.75 kpc resolution data of nearby spiral galaxies (cite: big08)."
+       }
+      ]
+     },
+     "citation": "(cite: big08)"
+    },
+    {
+     "what": {
+      "value": "Dust absorption coefficient kappa_352 = 0.43 ± 0.04 cm2 g-1",
+      "evidence": [
+       {
+        "loc": "Dust Mass and Gas Surface Density Derivation",
+        "quote": "$\\kappa_{352}$ is the dust absorption coefficient (0.43 $\\pm$ 0.04 cm$^2$ g$^{-1}$; (cite: l&d01))"
+       }
+      ]
+     },
+     "citation": "(cite: l&d01)"
+    },
+    {
+     "what": {
+      "value": "Gas-to-dust ratio 264 ± 68",
+      "evidence": [
+       {
+        "loc": "Dust Mass and Gas Surface Density Derivation",
+        "quote": "Assuming a gas-to-dust ratio of 264 $\\pm$ 68 (cite: wil08)"
+       }
+      ]
+     },
+     "citation": "(cite: wil08)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.2.2",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "The data processing was accomplished using `CASA` (version 4.2.2; (cite: CASA))."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Delivered calibrated uv data for Bands 3 and 6; calibrated archival uv data for the others",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "We used the delivered calibrated $uv$ data for the band 3 and 6 observations, and the calibrated archival $uv$ data for the others."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "Bands 3/6: Uranus; Band 7: Callisto; Band 9: Ceres; VLA C-band: 3C48, 3C138, J0134+329, J0420-013; X-band: 3C48, J0134+329",
+     "evidence": [
+      {
+       "loc": "Archival ALMA and VLA Data",
+       "quote": "For the band 7 and 9 observations, Callisto and Ceres were used for the flux calibration, respectively."
+      },
+      {
+       "loc": "ALMA Observations",
+       "quote": "Uranus was used for the flux calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "3%, 3%, 5%, 10%, 10%, 15% at 4.81, 8.36, 108, 233, 352, 691 GHz",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "The systematic errors of absolute flux calibration are estimated to be 3%, 3%, 5%, 10%, 10%, and 15% for 4.81, 8.36, 108, 233, 352, and 691 GHz, respectively."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs weighting with robust = 0.5 (per table note)",
+     "evidence": [
+      {
+       "loc": "Table notes",
+       "quote": "“briggs\" means Briggs weighting with `robust` = 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "uv data clipped at minimum baseline 45 kλ before imaging",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "the minimum baseline of all data shown in this paper is clipped at 45 k$\\lambda$ (i.e., minimum baseline of the band 9 observation) before imaging processes"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "0.2''/pixel",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "Throughout this paper, the pixel scales of all images are set to 0.2$''$/pixel."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Strong lines (e.g., CO, CN) excluded by masking ±500 km/s around rest frequencies before continuum imaging",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "We subtracted all strong line emission features (e.g., CO and CN) before the imaging of continuum emission by masking the velocity range of $\\pm$ 500 km s$^{-1}$ centered on their rest frequencies."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "All images convolved to a common 1.0'' x 1.0'' beam",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "We convolved all images into a same beam (1.0$''$ $\\times$ 1.0$''$)."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.0'' x 1.0''",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "We convolved all images into a same beam (1.0$''$ $\\times$ 1.0$''$)."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "32, 7.4, 51, 143, 68, 736 uJy (4.81 to 691 GHz)",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "The rms level of 4.81, 8.36, 108, 233, 352, and 691 GHz images (Figure [1](#fig_1)) are 32, 7.4, 51, 143, 68, and 736 $\\mu$Jy, respectively."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Details of archival ALMA Band 7 and 9 data",
+      "evidence": [
+       {
+        "loc": "Archival ALMA and VLA Data",
+        "quote": "We obtained the calibrated archival visibility data from the ALMA archive (see (cite: slw14) and (cite: xu15) for the details of the data)."
+       }
+      ]
+     },
+     "from_reference": "(cite: slw14), (cite: xu15)"
+    },
+    {
+     "what": {
+      "value": "SED formulation for starburst galaxies",
+      "evidence": [
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "We modeled the radio-to-FIR continuum emission by using the formulation described in (cite: y&c02)"
+       }
+      ]
+     },
+     "from_reference": "(cite: y&c02)"
+    },
+    {
+     "what": {
+      "value": "Dust mass equation",
+      "evidence": [
+       {
+        "loc": "Dust Mass and Gas Surface Density Derivation",
+        "quote": "using the following equation (cite: wil08)"
+       }
+      ]
+     },
+     "from_reference": "(cite: wil08)"
+    },
+    {
+     "what": {
+      "value": "VV 114 Sigma_H2 and Sigma_SFR derivation",
+      "evidence": [
+       {
+        "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+        "quote": "We used the ALMA CO (1–0) and the miniTAO Paschen $\\alpha$ emission to derive the $\\Sigma_{\\rm{H_2}}$ and $\\Sigma_{\\rm{SFR}}$ of VV 114, respectively (see (cite: TS15) for details)."
+       }
+      ]
+     },
+     "from_reference": "(cite: TS15)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging task/deconvolver, masks, threshold and number of iterations",
+    "Bandpass/phase calibrators for VLA beyond those listed, and the VLA calibration details",
+    "Exact line-free channels and rest frequencies used for the masking",
+    "Priors, sampler/optimizer and likelihood for the SED fit, and which parameters were free per ring",
+    "Exact ring radii and flux-measurement procedure (3 sigma contour vs ring)",
+    "Procedure for converting SFR to Sigma_SFR (area/inclination correction)",
+    "Which D_L (68.6 vs 67.8 Mpc) was used in each calculation",
+    "How Sigma_H2 was derived from dust mass (pixel area, inclination)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Make continuum images matched in uv and beam",
+    "method": {
+     "value": "Clip uv at 45 kλ, mask lines ±500 km/s, image and convolve to 1.0'' x 1.0''",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "We convolved all images into a same beam (1.0$''$ $\\times$ 1.0$''$)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "uv min 45 kλ; pixel 0.2''; Briggs robust 0.5",
+      "evidence": [
+       {
+        "loc": "Data Reduction and Imaging",
+        "quote": "Throughout this paper, the pixel scales of all images are set to 0.2$''$/pixel."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Missing flux negligible for structures smaller than MRS",
+      "evidence": [
+       {
+        "loc": "Data Reduction and Imaging",
+        "quote": "we assume that the missing flux effect (i.e., absence of short spacings) is negligible"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared recovered flux with single-dish GBT and JCMT fluxes",
+     "evidence": [
+      {
+       "loc": "233, 352, and 691 GHz Emission",
+       "quote": "The recovered fluxes at 352 and 691 GHz in the ALMA observations relative to those in the James Clerk Maxwell Telescope"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure source sizes and inclinations",
+    "method": {
+     "value": "2D Gaussian fit in the image plane, deconvolved size, cos i = minor/major",
+     "evidence": [
+      {
+       "loc": "4.81, 8.36, and 108 GHz Emission",
+       "quote": "The source size is derived by fitting a 2D gaussian in the image plane using `imfit` in `CASA`"
+      }
+     ]
+    },
+    "software": [
+     "CASA imfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Circular thin disk geometry",
+      "evidence": [
+       {
+        "loc": "233, 352, and 691 GHz Emission",
+        "quote": "Assuming a circular disk geometry for simplicity, we estimate the inclination of the disk from the axial ratio"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "2D Gaussian least-squares via imfit",
+     "evidence": [
+      {
+       "loc": "RESULTS, 4.81, 8.36, and 108 GHz Emission",
+       "quote": "The source size is derived by fitting a 2D gaussian in the image plane using `imfit` in `CASA` as shown in Figure [2](#fig_2)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residual images inspected",
+     "evidence": [
+      {
+       "loc": "4.81, 8.36, and 108 GHz Emission",
+       "quote": "All of the residual images show a same strong negative peak at the nuclear position and a same positive ring-like structure"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Build spatially-resolved SED",
+    "method": {
+     "value": "Measure flux densities in concentric rings of 0.2'' width from 4.81 to 691 GHz",
+     "evidence": [
+      {
+       "loc": "Spatially-resolved radio-to-FIR SED",
+       "quote": "by measuring the flux densities contained in concentric rings defined by the width of 0.2$''$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Noted adjacent rings are not independent but trend is robust",
+     "evidence": [
+      {
+       "loc": "Spatially-resolved radio-to-FIR SED",
+       "quote": "We note that the flux values between adjacent rings are not independent because the width of the ring is smaller than the convolved beam."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit SED with synchrotron + free-free + dust model",
+    "method": {
+     "value": "Fit the Yun & Carilli (2002) starburst SED model to each ring",
+     "evidence": [
+      {
+       "loc": "SED Formulation for Starburst-dominated Galaxies",
+       "quote": "We modeled the radio-to-FIR continuum emission by using the formulation described in (cite: y&c02)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Fixed: z = 0.015938, D_L = 67.8 Mpc, nu_c = 2 THz, T_d = 35 ± 2 K; free: f_nth, alpha, SFR, beta",
+      "evidence": [
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "we fix z = 0.015938, $D_{\\rm{L}}$ = 67.8 Mpc (cite: xu15), $\\nu_c$ = 2 THz (cite: y&c02), and $T_d$ = 35 $\\pm$ 2 K (cite: xu15)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Starburst-dominated, negligible AGN contribution",
+      "evidence": [
+       {
+        "loc": "SED Formulation for Starburst-dominated Galaxies",
+        "quote": "This formulation is only valid for starburst-dominated galaxies (i.e., AGN contribution to the radio-to-FIR SED is negligible)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared f_nth, alpha, Sigma_SFR with global fits and Pa-alpha/radio-based estimates",
+     "evidence": [
+      {
+       "loc": "SED Formulation for Starburst-dominated Galaxies",
+       "quote": "This is consistent with $f_{\\rm{nth}}$ derived by global SED fitting"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive dust mass and molecular gas surface density",
+    "method": {
+     "value": "Dust mass from 352 GHz flux (Wilson et al. 2008 equation), then gas via gas-to-dust ratio",
+     "evidence": [
+      {
+       "loc": "Dust Mass and Gas Surface Density Derivation",
+       "quote": "We calculate the dust mass from the 352 GHz (852 $\\mu$m) continuum emission assuming that the 352 GHz flux is dominated by the cold dust component"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "kappa_352 = 0.43 cm2/g; T_d = 35 K; gas-to-dust 264 ± 68",
+      "evidence": [
+       {
+        "loc": "Dust Mass and Gas Surface Density Derivation",
+        "quote": "Assuming a gas-to-dust ratio of 264 $\\pm$ 68 (cite: wil08)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "352 GHz dominated by cold dust; synchrotron and free-free neglected",
+      "evidence": [
+       {
+        "loc": "Dust Mass and Gas Surface Density Derivation",
+        "quote": "Here, we ignore the $S_{\\rm{nth}}$ and the $S_{\\rm{ff}}$ contributions to the 352 GHz flux"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with CO(6-5)-derived Sigma_H2 and alpha_CO from Sliwa et al.",
+     "evidence": [
+      {
+       "loc": "Dust Mass and Gas Surface Density Derivation",
+       "quote": "The derived $\\Sigma_{\\rm{H_2}}$ are consistent with the values estimated from the high-resolution CO (6–5) image (cite: xu15)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute gas depletion time and compare KS relation with other galaxies",
+    "method": {
+     "value": "tau_gas = Sigma_H2/Sigma_SFR; compare with VV 114, NGC 34, SDP.81 and spirals",
+     "evidence": [
+      {
+       "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+       "quote": "we derive the molecular gas depletion time ($\\tau_{\\rm{gas}}$ = $\\Sigma_{\\rm{H_2}}$/$\\Sigma_{\\rm{SFR}}$ yr)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO = 0.8 for the U/LIRG comparison data",
+      "evidence": [
+       {
+        "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+        "quote": "derived by simply assuming a CO luminosity-to-H$_2$ mass conversion factor ($\\alpha_{\\rm{CO}}$) of 0.8"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Index of 1.4 argued robust to alpha_CO choice",
+     "evidence": [
+      {
+       "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+       "quote": "Therefore, the index of 1.4 does not change significantly."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.2",
+    "used_for": {
+     "value": "Data processing, imaging, imfit Gaussian fitting",
+     "evidence": [
+      {
+       "loc": "Data Reduction and Imaging",
+       "quote": "The data processing was accomplished using `CASA` (version 4.2.2; (cite: CASA))."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Deconvolved major axis, low frequency (≤108 GHz)",
+    "value": "1.28 (~420 pc)",
+    "uncertainty": "0.03",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.81, 8.36, and 108 GHz Emission",
+      "quote": "deconvolved major axis and minor axis of 1.28$''$ $\\pm$ 0.03$''$ ($\\sim$ 420 pc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Deconvolved minor axis, low frequency",
+    "value": "1.15 (~380 pc)",
+    "uncertainty": "0.05",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.81, 8.36, and 108 GHz Emission",
+      "quote": "1.15$''$ $\\pm$ 0.05$''$ ($\\sim$ 380 pc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Deconvolved major axis, high frequency (≥233 GHz)",
+    "value": "1.70 (~560 pc)",
+    "uncertainty": "0.09",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "233, 352, and 691 GHz Emission",
+      "quote": "1.70$''$ $\\pm$ 0.09$''$ ($\\sim$ 560 pc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Deconvolved minor axis, high frequency",
+    "value": "1.18 (~390 pc)",
+    "uncertainty": "0.13",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "233, 352, and 691 GHz Emission",
+      "quote": "1.18$''$ $\\pm$ 0.13$''$ ($\\sim$ 390 pc)"
+     }
+    ]
+   },
+   {
+    "quantity": "VLA 4.81 GHz recovered flux fraction",
+    "value": "42",
+    "uncertainty": "8",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.81, 8.36, and 108 GHz Emission",
+      "quote": "suggests that the VLA data recovers 42 $\\pm$ 8 % of the total emission"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA recovered flux at 352 GHz",
+    "value": "18",
+    "uncertainty": "4",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "233, 352, and 691 GHz Emission",
+      "quote": "are 18 $\\pm$ 4 and 27 $\\pm$ 4 %, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "ALMA recovered flux at 691 GHz",
+    "value": "27",
+    "uncertainty": "4",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "233, 352, and 691 GHz Emission",
+      "quote": "are 18 $\\pm$ 4 and 27 $\\pm$ 4 %, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Averaged f_nth",
+    "value": "0.66",
+    "uncertainty": "0.13",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "SED Formulation for Starburst-dominated Galaxies",
+      "quote": "The derived $f_{\\rm{nth}}$ ranges between 0.43 - 1.45 (averaged $f_{\\rm{nth}}$ = 0.66 $\\pm$ 0.13)."
+     }
+    ]
+   },
+   {
+    "quantity": "Synchrotron spectral index alpha",
+    "value": "-0.9",
+    "uncertainty": "within error",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "SED Formulation for Starburst-dominated Galaxies",
+      "quote": "The synchrotron spectral index $\\alpha$ shows a constant index of $-$0.9 within the error"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust optical depth at 691 GHz (central 1.8'')",
+    "value": "0.06 - 0.21",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "SED Formulation for Starburst-dominated Galaxies",
+      "quote": "we found that the $\\tau_{\\rm{691GHz}}$ is optically thin (0.06 - 0.21) in the nuclear region of NGC 1614"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass range",
+    "value": "3.3e5 - 2.6e6",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Dust Mass and Gas Surface Density Derivation",
+      "quote": "The derived dust masses range between 3.3 $\\times$ 10$^5$ and 2.6 $\\times$ 10$^6$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Sigma_H2 range",
+    "value": "10^3.0 - 10^3.8",
+    "uncertainty": "not stated",
+    "units": "Msun pc^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Dust Mass and Gas Surface Density Derivation",
+      "quote": "the surface densities of molecular gas ($\\Sigma_{\\rm{H_2}}$) are estimated to be in the range 10$^{3.0}$ - 10$^{3.8}$ $M_{\\odot}$ pc$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Sigma_SFR range",
+    "value": "10^0.9 - 10^2.1",
+    "uncertainty": "not stated",
+    "units": "Msun yr^-1 kpc^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+      "quote": "$\\Sigma_{\\rm{SFR}}$ (= 10$^{0.9 - 2.1}$ $M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Average gas depletion time, nuclear/ring region",
+    "value": "49 - 77",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+      "quote": "(averaged $\\tau_{\\rm{gas}}$ = 49 - 77 Myr)"
+     }
+    ]
+   },
+   {
+    "quantity": "Average gas depletion time, outer region",
+    "value": "74 - 226",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "MERGER EVOLUTION ON THE STAR-FORMING RELATION",
+      "quote": "than the outer region (averaged $\\tau_{\\rm{gas}}$ = 74 - 226 Myr)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Peaks of all continuum maps are ~0.8'' west of the nucleus, owing to the asymmetric starburst ring",
+    "evidence": [
+     {
+      "loc": "4.81, 8.36, and 108 GHz Emission",
+      "quote": "The offset arises due to the asymmetric starburst ring structure (cite: hi14; xu15)."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do low- and high-frequency continuum have different spatial distributions reflecting different physical origins?",
+    "experiment": "Gaussian fits and radial profiles of beam- and uv-matched ALMA and VLA images",
+    "result": "≤108 GHz is 420 x 380 pc; ≥233 GHz is 560 x 390 pc, elongated N-S",
+    "finding": "Different emission mechanisms dominate low and high frequencies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the deconvolved source size of lower frequency emission ($\\leq$ 108 GHz) is more compact (420 pc $\\times$ 380 pc) compared to the higher frequency emission ($\\geq$ 233 GHz) (560 pc $\\times$ 390 pc)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the resolved SED be explained by synchrotron, free-free and dust components?",
+    "experiment": "Ring-by-ring SED fit with Yun & Carilli model",
+    "result": "4.81/8.36 GHz synchrotron, 108 GHz free-free, 352/691 GHz dust",
+    "finding": "Three-component model explains the SED",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "it is found that the SED can be explained by three components"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is gas depletion time in NGC 1614 shorter than in normal disks and a mid-stage merger?",
+    "experiment": "Derived resolved KS relation and tau_gas, compared with VV 114, NGC 34, SDP.81, spirals",
+    "result": "tau_gas 49-77 Myr (ring) and 70-226 Myr (outer), versus ~2 Gyr in normal disks and 0.1-1 Gyr in VV 114",
+    "finding": "Star formation efficiency increases as the merger stage proceeds",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This implies that the star formation activities in U/LIRGs are efficiently enhanced as the merger stage proceeds"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Used the Li & Draine dust model because kappa from the SED fit has a large error and constant T_d may affect beta",
+    "evidence": [
+     {
+      "loc": "Dust Mass and Gas Surface Density Derivation",
+      "quote": "because the $\\kappa_{352}$ derived from the SED fitting has a large error"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Large fractions of 352 and 691 GHz emission are more extended than the MRS; constant T_d assumed; small sample for KS comparison",
+     "evidence": [
+      {
+       "loc": "233, 352, and 691 GHz Emission",
+       "quote": "Large amounts of the 352 and 691 GHz emission are more extended than the MRS scale ($\\sim$ 1.5 kpc)."
+      },
+      {
+       "loc": "Dust Mass and Gas Surface Density Derivation",
+       "quote": "High-resolution high-frequency observations are required to constrain the $T_{\\rm{d}}$ gradient in the nuclear region of NGC 1614."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Missing flux (only 18-42% recovered) may bias SED shapes and Sigma_SFR, Sigma_H2",
+    "Fixed T_d = 35 K across rings; likely varies with radius",
+    "Adjacent rings are non-independent, so fit uncertainties are underestimated",
+    "Merger sequence conclusion rests on three-four objects with heterogeneous methods and alpha_CO assumptions",
+    "Ignoring free-free and synchrotron at 352 GHz and SFR driven by the 108 GHz flux are model-dependent"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA data were obtained from the ALMA archive; ALMA data codes listed",
+    "evidence": [
+     {
+      "loc": "Archival ALMA and VLA Data",
+      "quote": "We obtained the calibrated archival visibility data from the ALMA archive"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters beyond robust, pixel scale and uv cut",
+    "SED fit algorithm and ring definitions",
+    "Calibrated archival VLA visibilities (several epochs, old data)",
+    "Literature comparison data tables for VV 114, NGC 34, SDP.81"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB raw for four ALMA bands; plus archival VLA",
+   "score_inferred": 3,
+   "score_reason": "ALMA data are public and the SED formulae are given, but imaging and fitting details are sparse and VLA data are archival with complex combination.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe is incomplete and the fitting procedure is not specified, although the results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Yun & Carilli 2002 (cite: y&c02)",
+     "why": "SED model formulation"
+    },
+    {
+     "citation": "Wilson et al. 2008 (cite: wil08)",
+     "why": "dust mass equation and gas-to-dust ratio"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Xu et al. 2015 (cite: xu15)",
+     "why": "Prior ALMA Band 9 study of NGC 1614 supplying T_d, z, D_L"
+    },
+    {
+     "citation": "Sliwa et al. 2014 (cite: slw14)",
+     "why": "Prior ALMA study of NGC 1614 data"
+    },
+    {
+     "citation": "Saito et al. 2015 (cite: TS15)",
+     "why": "VV 114 ALMA analysis used in the KS comparison"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b727aed09ea12885d706ec4ef803a9c0",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:09",
+  "usage": {
+   "input_tokens": 17611,
+   "output_tokens": 13065,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.083543,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 89,
+  "quotes_ok": 89,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 15,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 60,
+   "rate": 0.714
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:20:47",
+  "custom_id": "repair-sonnet-6fe704abe3c598621e52c937b305f89b",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The source size is derived by fitting a 2D gaussian in the image plane using `imfit` in `CASA` as shown in Figure [2](#fig_2)."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

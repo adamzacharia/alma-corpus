@@ -1,0 +1,947 @@
+{
+ "bibcode": "2024A&A...687A.217D",
+ "title": "ALMA-IMF. XII. Point-process mapping of 15 massive protoclusters",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348984",
+ "arxiv_id": "2407.07610",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Measure luminosity, mass, column density and dust temperature of the 15 ALMA-IMF protoclusters at 2.5 arcsec resolution with PPMAP SED fitting, then extract luminosity peaks and compare luminosity-to-mass ratios with evolutionary stage and tracks",
+ "alma_project_codes": [
+  "2017.1.01355.L",
+  "2013.1.01365.S",
+  "2015.1.01273.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) and Band 3 (3 mm) continuum; only Band 6 enters PPMAP",
+  "arrays": "ALMA 12 m array mosaics",
+  "angular_resolution": "Band 6: 0.35'' x 0.27'' to 1.09'' x 0.70''; Band 3: 0.29'' x 0.26'' to 1.52'' x 1.30'' (best to coarsest across fields)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA-IMF 1 mm and 3 mm continuum images combined with MGPS90 and BGPS (used as input)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA-IMF images",
+      "quote": "These images are the result of combining the 3 mm (Band 3) and 1 mm (Band 6) ALMA-IMF continuum images presented in Paper I"
+     }
+    ]
+   },
+   "citation": "(cite: Diaz2023); Paper I (cite: Motte2022); Paper II (cite: Ginsburg2022)"
+  },
+  {
+   "what": {
+    "value": "Free-free-subtracted ALMA Band 6 (pure dust) maps based on H41alpha",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA-IMF images",
+      "quote": "we also used the estimates of pure dust emission presented in Galván-Madrid et al. (in prep.)"
+     }
+    ]
+   },
+   "citation": "Galván-Madrid et al. (in prep.)"
+  },
+  {
+   "what": {
+    "value": "Distances to the 15 protoclusters",
+    "evidence": [
+     {
+      "loc": "Table (results) footnote a",
+      "quote": "From Table 1 in"
+     }
+    ]
+   },
+   "citation": "(cite: Motte2022)"
+  },
+  {
+   "what": {
+    "value": "Evolutionary stage classification (young, intermediate, evolved)",
+    "evidence": [
+     {
+      "loc": "4.1 Results",
+      "quote": "The regions are classified according to their evolutionary stages, as defined in"
+     }
+    ]
+   },
+   "citation": "(cite: Motte2022)"
+  },
+  {
+   "what": {
+    "value": "ATLASGAL source footprints used for luminosity and mass apertures",
+    "evidence": [
+     {
+      "loc": "4.1 Results",
+      "quote": "measured in the ATLASGAL sources’ footprints, as outlined in"
+     }
+    ]
+   },
+   "citation": "(cite: Contreras2013); (cite: Urquhart2014)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosities and masses of ATLASGAL sources, and their apertures, used as the benchmark",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison to results from ATLASGAL",
+      "quote": "compares the bolometric luminosity and mass measured in the PPMAP images to those obtained by"
+     }
+    ]
+   },
+   "citation": "(cite: Koenig2017)"
+  },
+  {
+   "what": {
+    "value": "Continuum core catalog from ALMA-IMF 1.3 mm images, compared with PPMAP maps",
+    "evidence": [
+     {
+      "loc": "4.1 Results",
+      "quote": "relationships between the continuum cores identified by"
+     }
+    ]
+   },
+   "citation": "(cite: Louvet2024)"
+  },
+  {
+   "what": {
+    "value": "Hot core detection used to interpret a local temperature increase",
+    "evidence": [
+     {
+      "loc": "5.1.2 Comparison with N2H+ line",
+      "quote": "A hot core was detected at this location"
+     }
+    ]
+   },
+   "citation": "(cite: Armante2024); (cite: Bonfand2024)"
+  },
+  {
+   "what": {
+    "value": "N2H+ J=1-0 integrated intensity maps",
+    "evidence": [
+     {
+      "loc": "5.1.2 Comparison with N2H+ line",
+      "quote": "J=1–0 integrated line emission (Stutz et al. in prep; Alvarez-Gutierrez et al. in prep)"
+     }
+    ]
+   },
+   "citation": "Stutz et al. in prep; Alvarez-Gutierrez et al. in prep"
+  },
+  {
+   "what": {
+    "value": "Opacity index of dust models: beta = 1.5 (diffuse) and 1.8 (dense media)",
+    "evidence": [
+     {
+      "loc": "3.2 PPMAP analysis",
+      "quote": "The opacity indices predicted by dust models describing diffuse and dense interstellar media are $\\beta = 1.5$ and $\\beta = 1.8$"
+     }
+    ]
+   },
+   "citation": "(cite: Koehler2015)"
+  },
+  {
+   "what": {
+    "value": "Herschel colour-correction tables from the PACS and SPIRE user manuals",
+    "evidence": [
+     {
+      "loc": "6.2.2 Herschel color correction",
+      "quote": "These corrections are taken directly from the PACS and SPIRE user manuals"
+     }
+    ]
+   },
+   "citation": "(cite: Balog2014); (cite: Valtchanov2018)"
+  },
+  {
+   "what": {
+    "value": "Absolute flux calibration uncertainties of SABOCA (20%) and LABOCA (15%)",
+    "evidence": [
+     {
+      "loc": "2.2 ATLASGAL & APEX/SABOCA observations",
+      "quote": "The absolute flux calibration uncertainties on SABOCA and LABOCA observations are estimated to be 20% and 15%, respectively"
+     }
+    ]
+   },
+   "citation": "(cite: Lin2019); (cite: Contreras2013)"
+  },
+  {
+   "what": {
+    "value": "Absolute flux calibration uncertainties of Herschel PACS (10%) and SPIRE (7%)",
+    "evidence": [
+     {
+      "loc": "2.3 Hi-GAL survey",
+      "quote": "the absolute flux calibration uncertainties are estimated to be 10% and 7%, respectively, as reported by"
+     }
+    ]
+   },
+   "citation": "(cite: Galametz2014)"
+  },
+  {
+   "what": {
+    "value": "Absolute flux calibration uncertainties of SOFIA (15% at 53 and 89 um, 20% at 214 um)",
+    "evidence": [
+     {
+      "loc": "2.4 SOFIA/HAWC+ observations",
+      "quote": "The absolute flux calibration uncertainties for SOFIA observations are estimated at 15% for 53 $\\upmu$m and 89 $\\upmu$m, and 20% for 214 $\\upmu$m"
+     }
+    ]
+   },
+   "citation": "(cite: Chuss2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Preprocess input maps",
+   "method": "Repair or drop saturated Herschel maps, build PSFs for all instruments, apply Herschel colour corrections, and set per-map errors; use free-free-subtracted and native Band 6 versions",
+   "software": [
+    "astrofix",
+    "astropy.convolution (Gaussian2DKernel)"
+   ],
+   "key_parameters": [
+    "Maps with 25% or more saturated area removed (11 of 124 images); maps with less than 25% saturated were interpolated",
+    "25 of 124 images interpolated, median 6 pixels per image",
+    "Herschel PSFs replaced by versions on 2048 x 2048 frames",
+    "Per-map error = MAD of empty areas plus flux-calibration error times sky background",
+    "Gaussian synthetic beams for SABOCA, LABOCA and ALMA"
+   ],
+   "assumptions": [
+    "Herschel colour corrections assume a modified blackbody with beta = 2",
+    "Free-free subtraction assumes electron temperature of 7000 K and region-dependent helium abundance"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Run PPMAP SED fitting (Run1 and Run2)",
+   "method": "Multi-resolution Bayesian SED fitting of 70 um to 1.3 mm maps with PPMAP; Run1 uses free-free-subtracted Band 6 for column density and temperature, Run2 uses native Band 6 for luminosity",
+   "software": [
+    "PPMAP"
+   ],
+   "key_parameters": [
+    "8 MBB components, 10-50 K",
+    "Opacity index fixed to beta = 1.8",
+    "1.25'' pixels, 2.5'' synthetic resolution",
+    "Reference opacity kappa_300 = 0.1 cm2/g",
+    "Maximum 10 000 iterations",
+    "Dilution eta = 0 (internal default N_prior/N_states)",
+    "Cells of 60 px, overlap 40 px (50 px in some cases giving 7x7 mosaics)",
+    "High-pass option on, subtracting a constant background from model images at ground-based wavelengths",
+    "Temperature range lowered per region after a first run (example G012.80: 21-39 K)"
+   ],
+   "assumptions": [
+    "Dust emission optically thin at all wavelengths",
+    "Gas-to-dust mass ratio of 100 (kappa_300 defined w.r.t. total mass)",
+    "X_H = 0.7, X_H2 = 1, Z_D = 0.01 for the H2 column density",
+    "Measurement noise is Gaussian"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Correct dust temperature for optical depth",
+   "method": "Build a correction table from PPMAP runs on synthetic uniform-slab observations, extrapolate it with cubic splines and apply it a posteriori to each pixel",
+   "software": [
+    "PPMAP"
+   ],
+   "key_parameters": [
+    "Grid of model sources over temperature, optical depth, size and measurement error",
+    "Synthetic flux maps between 70 um and 3 mm",
+    "Cubic-spline extrapolation beyond the original table limits"
+   ],
+   "assumptions": [
+    "Simplified slab model; column density not changed by the correction"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Suppress ring artifacts and resample products",
+   "method": "Convolve with a 1 pixel Gaussian, replace pixels where the relative change is above a threshold and Band 6 is at noise level, then resample to 3 pixels per beam",
+   "software": [
+    "reproject (reproject_adaptive, reproject_exact)"
+   ],
+   "key_parameters": [
+    "Relative-difference threshold t = 0.05",
+    "Pixels with significant Band 6 signal left unchanged",
+    "Resampling from 2 to 3 pixels per beam; reproject_exact on temperature maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive bolometric luminosity, mass and L/M per footprint",
+   "method": "Compute L_MBB from the Run2 model; add Spitzer and SOFIA near/mid-infrared by piecewise cubic Hermite interpolation to get L_bol (3.6 um to 1.3 mm); derive gas mass from Run1 column density; integrate in the ALMA mosaic and ATLASGAL footprints",
+   "software": [
+    "scipy",
+    "Python"
+   ],
+   "key_parameters": [
+    "L_bol integrated from 3.6 um to 1.3 mm",
+    "Footprints: ALMA 12 m array mosaic primary-beam response, and ATLASGAL source footprints"
+   ],
+   "assumptions": [
+    "Distances to the regions taken from the ALMA-IMF paper I"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Quantify uncertainties",
+   "method": "Re-run PPMAP with modified inputs (saturation, free-free, noise estimator, beta, artifacts, pointing shifts), take map differences, add the PPMAP fit errors and combine in quadrature",
+   "software": [
+    "PPMAP"
+   ],
+   "key_parameters": [
+    "beta = 1.8 +/- 0.2 for the opacity-index error",
+    "Relative Herschel pointing shifts of 1'' and 2.5''",
+    "Three noise estimate methods compared"
+   ],
+   "assumptions": [
+    "Total uncertainties exclude the kappa_300 uncertainty and the optically thin bias"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Benchmark against Koenig et al. 2017",
+   "method": "Aperture photometry of the PPMAP luminosity and column density maps in the same apertures as Koenig et al., with distance correction, then compare luminosity and mass",
+   "software": [],
+   "key_parameters": [
+    "Comparison on a subset of regions observed by both studies (stated as 10)"
+   ],
+   "assumptions": [
+    "Koenig et al. use a two-temperature MBB over 8-870 um"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Column density PDFs and N2H+ comparison",
+   "method": "Build the mean column density PDF, fit a lognormal plus power-law tail in G012.80, and compare maps visually with N2H+ J=1-0 integrated emission",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Map L/M and extract luminosity peaks with getsf",
+   "method": "Pixel-by-pixel L/M PDFs by evolutionary stage, then getsf on the resampled Run2 luminosity maps with Run1 column density as auxiliary image to get masses, giving a source catalog",
+   "software": [
+    "getsf"
+   ],
+   "key_parameters": [
+    "Luminosity maps resampled to three pixels per beam",
+    "Maximum source size 5'' (twice the PPMAP beam)",
+    "Luminosity-map clustering threshold log(L/M) = 1.8 (G012.80 illustration)"
+   ],
+   "assumptions": [
+    "Peaks with no massive counterpart interpreted as diffuse areas heated by evolved protostars or HII regions"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Compare source L/M with evolutionary tracks",
+   "method": "Place the catalog sources in the M-Lbol diagram and compare with accretion evolutionary tracks",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Massive sources above the 50 Msun track are unresolved clusters of cores/protostars"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "W43-MM1 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 27 K; N_peak 12e24 cm^-2; M 170e2 Msun; L_bol 250e3 Lsun; L/M 15",
+   "uncertainty": "T 5 K; N 3e24; M 60e2; L_bol 90e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "W43-MM1 | $5.5\\pm 0.4$ | 27 $\\pm$ 5 | 12 $\\pm$ 3 | 170 $\\pm$ 60 | 250 $\\pm$ 90 | 15"
+    }
+   ]
+  },
+  {
+   "quantity": "W43-MM2 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 25 K; N_peak 9e24 cm^-2; M 150e2 Msun; L_bol 180e3 Lsun; L/M 12",
+   "uncertainty": "T 5 K; N 3e24; M 60e2; L_bol 60e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "W43-MM2 | $5.5\\pm 0.4$ | 25 $\\pm$ 5 | 9 $\\pm$ 3 | 150 $\\pm$ 60 | 180 $\\pm$ 60 | 12"
+    }
+   ]
+  },
+  {
+   "quantity": "G338.93 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 25 K; N_peak 1.7e24 cm^-2; M 40e2 Msun; L_bol 100e3 Lsun; L/M 25",
+   "uncertainty": "T 5 K; N 0.5e24; M 30e2; L_bol 60e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G338.93 | $3.9 \\pm 1.0$ | 25 $\\pm$ 5 | 1.7 $\\pm$ 0.5 | 40 $\\pm$ 30 | 100 $\\pm$ 60 | 25"
+    }
+   ]
+  },
+  {
+   "quantity": "G328.25 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 25 K; N_peak 1.9e24 cm^-2; M 10e2 Msun; L_bol 50e3 Lsun; L/M 50",
+   "uncertainty": "T 5 K; N 0.5e24; M 5e2; L_bol 30e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G328.25 | $2.5 \\pm 0.5$ | 25 $\\pm$ 5 | 1.9 $\\pm$ 0.5 | 10 $\\pm$ 5 | 50 $\\pm$ 30 | 50"
+    }
+   ]
+  },
+  {
+   "quantity": "G337.92 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 22 K; N_peak 8e24 cm^-2; M 30e2 Msun; L_bol 130e3 Lsun; L/M 43",
+   "uncertainty": "T 4 K; N 2e24; M 20e2; L_bol 80e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G337.92 | $2.7 \\pm 0.7$ | 22 $\\pm$ 4 | 8 $\\pm$ 2 | 30 $\\pm$ 20 | 130 $\\pm$ 80 | 43"
+    }
+   ]
+  },
+  {
+   "quantity": "G327.29 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 25 K; N_peak 60e24 cm^-2; M 80e2 Msun; L_bol 110e3 Lsun; L/M 14",
+   "uncertainty": "T 5 K; N 20e24; M 40e2; L_bol 60e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G327.29 | $2.5 \\pm 0.5$ | 25 $\\pm$ 5 | 60 $\\pm$ 20 | 80 $\\pm$ 40 | 110 $\\pm$ 60 | 14"
+    }
+   ]
+  },
+  {
+   "quantity": "G351.77 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 26 K; N_peak 19e24 cm^-2; M 20e2 Msun; L_bol 80e3 Lsun; L/M 40",
+   "uncertainty": "T 5 K; N 5e24; M 10e2; L_bol 60e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G351.77 | $2.0\\pm 0.7$ | 26 $\\pm$ 5 | 19 $\\pm$ 5 | 20 $\\pm$ 10 | 80 $\\pm$ 60 | 40"
+    }
+   ]
+  },
+  {
+   "quantity": "G008.67 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 21 K; N_peak 4e24 cm^-2; M 30e2 Msun; L_bol 70e3 Lsun; L/M 23",
+   "uncertainty": "T 4 K; N 1e24; M 10e2; L_bol 30e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G008.67 | $3.4 \\pm 0.3$ | 21 $\\pm$ 4 | 4 $\\pm$ 1 | 30 $\\pm$ 10 | 70 $\\pm$ 30 | 23"
+    }
+   ]
+  },
+  {
+   "quantity": "W43-MM3 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 25 K; N_peak 3e24 cm^-2; M 80e2 Msun; L_bol 180e3 Lsun; L/M 23",
+   "uncertainty": "T 5 K; N 1e24; M 30e2; L_bol 70e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "W43-MM3 | $5.5\\pm 0.4$ | 25 $\\pm$ 5 | 3 $\\pm$ 1 | 80 $\\pm$ 30 | 180 $\\pm$ 70 | 23"
+    }
+   ]
+  },
+  {
+   "quantity": "W51-E ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 23 K; N_peak 30e24 cm^-2; M 240e2 Msun; L_bol 1200e3 Lsun; L/M 50",
+   "uncertainty": "T 4 K; N 10e24; M 70e2; L_bol 400e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "W51-E | $5.4\\pm 0.3$ | 23 $\\pm$ 4 | 30 $\\pm$ 10 | 240 $\\pm$ 70 | 1200 $\\pm$ 400 | 50"
+    }
+   ]
+  },
+  {
+   "quantity": "G353.41 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 21 K; N_peak 7e24 cm^-2; M 20e2 Msun; L_bol 60e3 Lsun; L/M 30",
+   "uncertainty": "T 4 K; N 2e24; M 10e2; L_bol 50e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G353.41 | $2.0\\pm 0.7$ | 21 $\\pm$ 4 | 7 $\\pm$ 2 | 20 $\\pm$ 10 | 60 $\\pm$ 50 | 30"
+    }
+   ]
+  },
+  {
+   "quantity": "G010.62 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 24 K; N_peak 5e24 cm^-2; M 110e2 Msun; L_bol 500e3 Lsun; L/M 45",
+   "uncertainty": "T 5 K; N 1e24; M 40e2; L_bol 200e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G010.62 | $5.0 \\pm 0.5$ | 24 $\\pm$ 5 | 5 $\\pm$ 1 | 110 $\\pm$ 40 | 500 $\\pm$ 200 | 45"
+    }
+   ]
+  },
+  {
+   "quantity": "W51-IRS2 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 29 K; N_peak 50e24 cm^-2; M 250e2 Msun; L_bol 1300e3 Lsun; L/M 52",
+   "uncertainty": "T 5 K; N 20e24; M 80e2; L_bol 500e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "W51-IRS2 | $5.4\\pm 0.3$ | 29 $\\pm$ 5 | 50 $\\pm$ 20 | 250 $\\pm$ 80 | 1300 $\\pm$ 500 | 52"
+    }
+   ]
+  },
+  {
+   "quantity": "G012.80 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 28 K; N_peak 3e24 cm^-2; M 120e2 Msun; L_bol 300e3 Lsun; L/M 25",
+   "uncertainty": "T 5 K; N 1e24; M 40e2; L_bol 100e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G012.80 | $2.4 \\pm 0.2$ | 28 $\\pm$ 5 | 3 $\\pm$ 1 | 120 $\\pm$ 40 | 300 $\\pm$ 100 | 25"
+    }
+   ]
+  },
+  {
+   "quantity": "G333.60 ALMA-footprint properties (mean T_dust, peak N_H2, M, L_bol, L/M)",
+   "value": "T_dust 27 K; N_peak 3e24 cm^-2; M 130e2 Msun; L_bol 1400e3 Lsun; L/M 108",
+   "uncertainty": "T 5 K; N 1e24; M 60e2; L_bol 700e3; L/M not stated",
+   "units": "K; cm^-2; Msun; Lsun; Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table (results)",
+     "quote": "G333.60 | $4.2 \\pm 0.7$ | 27 $\\pm$ 5 | 3 $\\pm$ 1 | 130 $\\pm$ 60 | 1400 $\\pm$ 700 | 108"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean L/M of young protoclusters (ALMA footprint)",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "younger regions generally correspond to lower ratios ($L / M = 20$ on average for the young protoclusters listed in Table"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean L/M of evolved protoclusters (ALMA footprint)",
+   "value": "76",
+   "uncertainty": "not stated",
+   "units": "Lsun/Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "and vice versa ($L / M = 76$ on average for the evolved protoclusters listed in Table"
+    }
+   ]
+  },
+  {
+   "quantity": "99th percentile temperature, young / intermediate / evolved regions",
+   "value": "33.7 / 35.4 / 38.7",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "with a 99$^\\mathrm{th}$ percentile temperature of 33.7 K, 35.4 K and 38.7 K respectively for the young, intermediate and evolved regions"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of 99th percentile temperature across regions",
+   "value": "28 to 42",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "The $99^\\mathrm{th}$ percentile temperature ranges from 28 K to 42 K, depending on the specific region."
+    }
+   ]
+  },
+  {
+   "quantity": "Range of region-averaged dust temperature",
+   "value": "21 to 29",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "The average temperatures presented in the table, ranging from 21 K to 29 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of average column density",
+   "value": "2.5e22 to 2.5e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Results",
+     "quote": "The average column density measured in the 2.5$^{\\prime \\prime}$ maps ranges from $2.5 \\times 10^{22}$ to $2.5 \\times 10^{23}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "G012.80 99th percentile temperature before and after the opacity correction",
+   "value": "33.2 before, 38.0 after",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Temperature correction and final products",
+     "quote": "in G012.80 the 99$^\\mathrm{th}$ percentile temperature raises to 38.0 K from 33.2 K after the opacity correction"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio of modified-blackbody to bolometric luminosity",
+   "value": ">= 0.77",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Bolometric luminosity measurements",
+     "quote": "$L_\\mathrm{MBB} / L_\\mathrm{bol} \\geq 0.77$ across the 15 star-forming regions studied"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of observations within 1 sigma of the PPMAP MBB model",
+   "value": "86",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 Bolometric luminosity measurements",
+     "quote": "All of the observations align within $\\pm 2$ standard deviation ($\\sigma$) of the PPMAP MBB model, and 86% of the observations maintain agreement within $\\pm 1 \\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Reference opacity at 1.3 mm for kappa_300 = 0.1 and beta = 1.8",
+   "value": "0.007",
+   "uncertainty": "not stated",
+   "units": "cm2 g^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Point process mapping",
+     "quote": "yields $\\kappa_{1.3\\mathrm{mm}} = 0.007~\\mathrm{cm^2 g^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total column density uncertainty",
+   "value": "0.29 N_H2 (29%)",
+   "uncertainty": "not stated",
+   "units": "fraction of N_H2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.2 Quantification of errors",
+     "quote": "The resulting total uncertainties are $u_{N_\\mathrm{H_2}} = 0.29 N_\\mathrm{H_2}$ and $u_{T_\\mathrm{dust}}= 0.16 T_\\mathrm{dust} \\pm 1$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust temperature uncertainty",
+   "value": "0.16 T_dust + 1 K (16% and 1 K)",
+   "uncertainty": "not stated",
+   "units": "fraction of T_dust plus K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.2 Quantification of errors",
+     "quote": "The resulting total uncertainties are $u_{N_\\mathrm{H_2}} = 0.29 N_\\mathrm{H_2}$ and $u_{T_\\mathrm{dust}}= 0.16 T_\\mathrm{dust} \\pm 1$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from input saturation (N_H2 / T_dust)",
+   "value": "9 / 3",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "input saturation | 9% | 3%"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from free-free emission (N_H2 / T_dust)",
+   "value": "8 / 1",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "free-free emission | 8% | 1%"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from PPMAP SED fitting (N_H2 / T_dust)",
+   "value": "8 / 11",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "PPMAP SED fitting | 8% | 11%"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from noise estimates (N_H2 / T_dust)",
+   "value": "14 / 7",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "noise estimates | 14% | 7%"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from opacity index (N_H2 / T_dust)",
+   "value": "21 / 9",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "opacity index | 21% | 9%"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncertainty from ring-like artifacts (N_H2 / T_dust)",
+   "value": "3% / 1 K",
+   "uncertainty": "not stated",
+   "units": "percent / K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table (systematic errors)",
+     "quote": "ring-like artifacts | 3% | $\\pm 1~$K"
+    }
+   ]
+  },
+  {
+   "quantity": "Temperature change when adopting beta = 1.5 and beta = 1",
+   "value": "+3 and +12",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.2.4 Temperature and opacity index optimization",
+     "quote": "we observed average changes of $\\Delta T_\\mathrm{dust} = + 3$ K and $\\Delta T_\\mathrm{dust} = + 12$ K when adopting $\\beta = 1.5$ and $\\beta = 1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit beta range when beta was left free",
+   "value": "1.4 to 2.1 depending on field",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.2.4 Temperature and opacity index optimization",
+     "quote": "(between $\\beta=1.4$ and $\\beta=2.1$, depending on the specific fields of observation)"
+    }
+   ]
+  },
+  {
+   "quantity": "Temperature bias bound from ring-like artifacts",
+   "value": "+/- 1",
+   "uncertainty": "upper limit",
+   "units": "K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.4 PPMAP ring-like artifacts and post-processing",
+     "quote": "This yielded an estimated upper limit of $\\pm 1$ Kelvin for potential temperature biases stemming from these artifacts"
+    }
+   ]
+  },
+  {
+   "quantity": "Run2 minus Run1 increase in column density over the ALMA footprint",
+   "value": "12.5",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.1.3 Free-free emission in the ALMA 1.3 mm emission map",
+     "quote": "While the overall column density within the ALMA footprint registers a mere 12.5% increment between the two instances"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index of the G012.80 column density PDF tail",
+   "value": "2.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1.1 Probability density functions",
+     "quote": "We measure $s=2.1 \\pm 0.2$ in G012.80"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of PPMAP luminosity peaks",
+   "value": "313",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "6 Summary and perspectives",
+     "quote": "Our catalog of 313 luminosity peaks presents a resource for forthcoming investigations."
+    }
+   ]
+  },
+  {
+   "quantity": "Catalog completeness in luminosity (all / young / evolved regions)",
+   "value": "60 / 30 / 100",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2.2 Results of the getsf extraction",
+     "quote": "We estimated the completeness level of the catalog of 313 luminosity peaks to be $\\sim 60$ $L_\\odot$, with a tendency for a better completeness level in young regions ($\\sim 30$ $L_\\odot$) than in evolved ones ($\\sim 100$ $L_\\odot$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of luminosity peaks without mass counterpart",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2.2 Results of the getsf extraction",
+     "quote": "In some instances (18% of the peaks), the luminosity peaks have no counterparts in the column density maps"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean L/M of luminosity peaks in evolved / intermediate / young regions",
+   "value": "253.5 / 12.8 / 12.3",
+   "uncertainty": "dispersion (mean absolute deviation) 100.0 / 4.2 / 8.0",
+   "units": "Lsun/Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2.2 Results of the getsf extraction",
+     "quote": "we measure mean $L / M$ values of 253.5, 12.8, and 12.3 $L_\\ensuremath{\\odot} / M_\\ensuremath{\\odot}$ for the luminosity peaks of evolved, intermediate, and young regions"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of sources above the 50 Msun final stellar mass track",
+   "value": "about 20",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2.2 Results of the getsf extraction",
+     "quote": "approximately 20% of the sources are above the 50 $M_\\odot$ final stellar mass track"
+    }
+   ]
+  },
+  {
+   "quantity": "Saturated Herschel images removed from the inputs",
+   "value": "11 of 124",
+   "uncertainty": "not stated",
+   "units": "images",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6.1.1 Correction of saturated pixels",
+     "quote": "In severe cases of saturation (11 out of 124 images in our study)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "The free-free-subtracted Band 6 maps (Run1 input) come from an in-preparation paper; their method details and availability are not given here beyond Te = 7000 K and region-dependent helium abundance",
+  "Per-region PPMAP temperature ranges after the refinement (only G012.80, 21-39 K, is given) and which regions used noverlap = 50 versus 40",
+  "Number of PPMAP iterations used per region (only the 10 000 maximum and a 25 000 over-fit test are given)",
+  "Which of the 124 input images were dropped or interpolated, beyond the counts",
+  "Beam parameters used for the ALMA Band 6, SABOCA and LABOCA Gaussian PSFs for each region",
+  "The sky-background flux F_sky values entering the per-map error estimate",
+  "Grid values (optical depth, size, noise) and the resulting table behind the temperature correction, and the cubic-spline extrapolation settings",
+  "getsf settings other than maximum source size (detection thresholds, scales, versions)",
+  "PPMAP version or commit and the exact premap input files",
+  "How background-subtracted Spitzer and SOFIA fluxes were measured and merged per pixel",
+  "Exact aperture definitions for the ALMA-footprint versus ATLASGAL-footprint sums and how the distance correction was applied in the Koenig et al. comparison"
+ ],
+ "missing_for_reproduction": [
+  "Free-free-subtracted Band 6 maps (in prep.)",
+  "Per-region PPMAP temperature ranges, iteration counts and noverlap choices",
+  "Temperature-correction table values",
+  "getsf parameters beyond maximum size",
+  "Herschel, APEX and SOFIA map cutouts and exact versions",
+  "Sky-background terms used in the error estimate"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Inputs are mostly public surveys and released ALMA-IMF images, PPMAP is public and many parameters and numeric results are tabulated, but the free-free-subtracted maps, per-region iteration and temperature-range choices and correction table are not given",
+ "rediscovery_reason": "Survey data and ALMA-IMF images are public, the PPMAP set-up is largely specified and the results are tabulated per region; a native-Band-6 (Run2) reproduction of luminosity and column density is feasible, though the Run1 free-free-subtracted maps are not",
+ "source_card": "cards/2024A%26A...687A.217D/sonnet/card.md"
+}

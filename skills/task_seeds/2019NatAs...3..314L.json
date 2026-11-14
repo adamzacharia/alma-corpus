@@ -1,0 +1,301 @@
+{
+ "bibcode": "2019NatAs...3..314L",
+ "title": "The ice composition in the disk around V883 Ori revealed by its stellar outburst",
+ "year": 2019,
+ "doi": "10.1038/s41550-018-0680-0",
+ "arxiv_id": "1809.00353",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Can the outburst-driven expansion of the snow line in V883 Ori reveal the ice composition (COM abundances) of the disk midplane, and how does it compare with hot corinos and comets?",
+ "alma_project_codes": [
+  "2016.1.00728.S",
+  "2017.1.01066.T"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "Forty-seven (Cycle 4) and forty-five (Cycle 5) 12-m antennas",
+  "angular_resolution": "0.043\"x0.025\" (Cycle 4, robust 0.5); 0.23\"x0.17\" (Cycle 5, robust 0)",
+  "sensitivity": "RMS 4 mJy/beam (Cycle 4 lines, tapered); 7-8 mJy/beam (Cycle 5 lines)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass 1.2 Msun, midplane snow line, source velocity 4.3 km/s, T_mid(0.1\")=100 K",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "The source velocity is 4.3 km s$^{-1}$(cite: Cieza2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Cieza2016)"
+  },
+  {
+   "what": {
+    "value": "Dust absorption opacity at 1.3 mm of 2.2 cm2/g and Tatm/Tmid=2",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "dust absorption opacity at 1.3 mm ($2.2~{\\rm cm^2 g^{-1}}$)(cite: Cieza2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Cieza2018)"
+  },
+  {
+   "what": {
+    "value": "Elemental 12C/13C = 60",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "multiplied by the elemental abundance of $^{12}$C/$^{13}$C$=60$(cite: Langer1993)"
+     }
+    ]
+   },
+   "citation": "(cite: Langer1993)"
+  },
+  {
+   "what": {
+    "value": "COM abundances in IRAS 16293B and comets for comparison",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "higher than those in the hot corino IRAS 16293 B(cite: Jorgensen2016; Lykke2017; Calcutt2018b)"
+     }
+    ]
+   },
+   "citation": "(cite: Jorgensen2016; Lykke2017; Calcutt2018b; LeRoy2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image data",
+   "method": "Standard CASA reduction; Briggs imaging, tapered for Cycle 4 lines",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Cycle 4 uv-taper 1000 klambda, robust 0.5; Cycle 5 robust 0.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine distance",
+   "method": "Median distance of 47 Gaia DR2 L1641 members near V883 Ori",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "V883 Ori Gaia parallax unreliable, so cluster distance adopted"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit COM column densities in spectra",
+   "method": "Extract spectra in 0.6\" circular aperture, shift to source velocity, fit LTE model with XCLASS/MAGIX",
+   "software": [
+    "XCLASS",
+    "MAGIX",
+    "CDMS",
+    "JPL"
+   ],
+   "key_parameters": [
+    "FWHM fixed at 2 km/s, Tex = 120 K, emission size 0.6\""
+   ],
+   "assumptions": [
+    "LTE; CH3OH column = 13CH3OH x 60"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive disk temperature and density structure (Models A and B)",
+   "method": "Solve dust continuum radiative transfer on Band 6 high-res image for N_H2(r) and Tmid(r); Model B adds isothermal accretion-heated midplane inside snow line",
+   "software": [],
+   "key_parameters": [
+    "Tmid(r>0.1\")=100 K x sqrt(0.1\"/r); gamma=1.5; H/r=0.1; kappa 2.2 cm2/g at 1.3 mm"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; Tatm/Tmid = 2; beta = 1; gas and dust temperatures equal"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model 13CH3OH line emission and compare with high-res radial profile",
+   "method": "LTE line radiative transfer with sublimation at 80 K, smoothed to 0.11\" resolution; midplane contribution via zero-abundance in |z|<=H",
+   "software": [],
+   "key_parameters": [
+    "X_mol = 4e-9 above 80 K; FWHM 2 km/s"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Excitation temperature 13CH3OH",
+   "value": "91.5",
+   "uncertainty": "3.5",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "We find excitation temperatures for $^{13}$CH$_3$OH of 91.5 $\\pm$ 3.5 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature CH3OCHO",
+   "value": "103.3",
+   "uncertainty": "34.9",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "for CH$_3$OCHO of 103.3 $\\pm$ 34.9 K"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH column density",
+   "value": "5.26e16",
+   "uncertainty": "+0.53/-0.55e16",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Table 1",
+     "quote": "$^{13}$CH$_{3}$OH & 5.26$_{-0.55}^{+0.53}$ $\\times$ 10$^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO column density",
+   "value": "2.37e17",
+   "uncertainty": "+/-0.24e17",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Table 1",
+     "quote": "CH$_{3}$OCHO & 2.37$_{-0.24}^{+0.24}$ $\\times$ 10$^{17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3COCH3 column density",
+   "value": "4.32e16",
+   "uncertainty": "+0.45/-0.46e16",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Table 1",
+     "quote": "Acetone & CH$_{3}$COCH$_{3}$ & 4.32 $_{-0.46}^{+0.45}$ $\\times$ 10$^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN/CH3OH ratio",
+   "value": "7.76e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Supplementary Table 1",
+     "quote": "7.76$\\times$ 10$^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance w.r.t. H2",
+   "value": "2e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "is then $2\\times 10^{-7}$, which is in reasonable agreement with the recent study"
+    }
+   ]
+  },
+  {
+   "quantity": "Distance",
+   "value": "388 pc (scatter 16 pc)",
+   "uncertainty": "16 pc std",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "This set of stars has a distance of $388$ pc and a standard deviation of 16 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Midplane water snow line radius",
+   "value": "39",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "the midplane snow line is located at 39 AU rather than 42 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH sublimation temperature fit",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "was 80 K, as marked with the white dashed line in Figure 4(d)"
+    }
+   ]
+  },
+  {
+   "quantity": "D/H and 13C/12C ratios of CH3OH",
+   "value": "0.16 and 0.13",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "The D/H and $^{13}$C/$^{12}$C ratios of CH$_3$OH are 0.16 and 0.13"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which continuum image (Band 6) and its reduction were used for the radiative transfer fit",
+  "CASA task parameters (tclean deconvolver, cell/image size, masks, niter, threshold)",
+  "Line-free channels and continuum subtraction method",
+  "Self-calibration details",
+  "Moment map clipping thresholds",
+  "XCLASS/MAGIX fit priors and ranges",
+  "Supplementary Tables 1 and 3 line lists partially incomplete",
+  "Beam used for the Cycle 5 high-res images and final image rms of continuum"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters and masks",
+  "line-free channels",
+  "Band 6 continuum image details",
+  "XCLASS fitting setup details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many parameters given, but imaging details and model fitting are only loosely specified.",
+ "rediscovery_reason": "Public data and a described XCLASS fit with numeric column densities, though imaging details are missing.",
+ "source_card": "cards/2019NatAs...3..314L/sonnet/card.md"
+}

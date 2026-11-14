@@ -1,0 +1,184 @@
+{
+ "bibcode": "2021A&A...654A.165V",
+ "title": "The effect of active galactic nuclei on the cold interstellar medium in distant star-forming galaxies",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202141417",
+ "arxiv_id": "2109.03842",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the effect of mid-IR- and X-ray-detected AGN on the molecular gas reservoirs, excitation (CO, [CI] SLEDs) and dust of IR-selected main-sequence and starburst galaxies at z~1-1.7?",
+ "alma_project_codes": [
+  "2015.1.00260.S",
+  "2016.1.00171.S",
+  "2018.1.00635.S",
+  "2016.1.01040.S",
+  "2019.1.01702.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.8-1.4\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "De-blended far-IR photometric catalog",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations and far-IR modeling",
+      "quote": "The modeling of the SED was performed on the de-blended far-IR catalog by (cite: jin_2018)"
+     }
+    ]
+   },
+   "citation": "(cite: jin_2018)"
+  },
+  {
+   "what": {
+    "value": "Chandra X-ray luminosities (column #50)",
+    "evidence": [
+     {
+      "loc": "Data table",
+      "quote": "2-10 keV rest frame logarithmic luminosity (column #50 in (cite: marchesi_2016); negative values: upper limits)"
+     }
+    ]
+   },
+   "citation": "(cite: marchesi_2016)"
+  },
+  {
+   "what": {
+    "value": "ASPECS and Liu+21 CO compilations used for comparison and fit",
+    "evidence": [
+     {
+      "loc": "3.2 The effect on CO line luminosities",
+      "quote": "we also added the literature compilation from (cite: liu_2021) who applied an SED modeling similar to and consistent with ours"
+     }
+    ]
+   },
+   "citation": "(cite: boogaard_2020; liu_2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "SED fit for L_IR, f_AGN, Mdust, U",
+   "method": "chi2 minimization with Draine & Li templates plus Mullaney AGN templates on far-IR catalog plus ALMA continuum",
+   "software": [
+    "STARDUST"
+   ],
+   "key_parameters": [
+    "4/55 extreme-f_AGN cases refit with U fixed to redshift average, 30% variation"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Mean CO/[CI] SLEDs",
+   "method": "Kaplan-Meier mean including robust upper limits, split by f_AGN=20% and X-ray detection",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dust optical depth wavelength lambda0",
+   "method": "tau = kappa850 (nu/nu850)^beta Mdust/(2 pi R^2) with ALMA sizes; kendall tau and KS tests",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit L'CO(5-4) as linear combination of L_IR,SFR and L_IR,AGN",
+   "method": "Bayesian multiple linear regression with upper limits, zero intercept",
+   "software": [
+    "MLINMIX_ERR.PRO"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "X-ray detected AGN fraction (L2-10keV>1e43)",
+   "value": "18/55",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.2 Ancillary data",
+     "quote": "which we found in 18/55 sources"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) fit coefficient for L_IR,SFR",
+   "value": "0.28",
+   "uncertainty": "±0.01",
+   "units": "1e10 K km/s pc2 per 1e12 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Nuclear activity as a factor contributing",
+     "quote": "(0.28\\pm0.01) \\times \\frac{L_{\\rm IR,\\,SFR}}{10^{12}L_\\odot} + (0.05\\pm0.03)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) fit coefficient for L_IR,AGN",
+   "value": "0.05",
+   "uncertainty": "±0.03",
+   "units": "1e10 K km/s pc2 per 1e12 Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Nuclear activity as a factor contributing",
+     "quote": "(0.28\\pm0.01) \\times \\frac{L_{\\rm IR,\\,SFR}}{10^{12}L_\\odot} + (0.05\\pm0.03)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean lambda0, X-ray detected",
+   "value": "51",
+   "uncertainty": "±8",
+   "units": "micron",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.6 A point about dust masses, opacities, and sizes",
+     "quote": "$\\langle \\lambda_0 \\rangle_{\\rm X-ray} = 51\\pm 8$ $\\mu$m and $\\langle \\lambda_0 \\rangle_{\\rm SFG} = 27\\pm 3$ $\\mu$m"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter of CO(5-4) fit",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Nuclear activity as a factor contributing",
+     "quote": "We also estimate an intrinsic scatter of 0.16 dex."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging details (all deferred to V20a)",
+  "Line flux extraction method",
+  "Exact Kaplan-Meier and Kendall tau implementations",
+  "Modified MLINMIX_ERR code details and priors"
+ ],
+ "missing_for_reproduction": [
+  "Raw ALMA processing deferred to V20a",
+  "Private Herschel/SED remodeling of ASPECS sources"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Released catalog and public code enable reproduction of statistics, but observational details are inherited.",
+ "rediscovery_reason": "Public catalog, stated tests and fit, numeric results.",
+ "source_card": "cards/2021A%26A...654A.165V/sonnet/card.md"
+}

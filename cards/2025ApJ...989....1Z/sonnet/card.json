@@ -1,0 +1,1234 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...989....1Z",
+  "title": "The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). I. Program Overview and Summary of First Results",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Zhang, Ke",
+  "n_authors": 22,
+  "arxiv_id": "2506.10719",
+  "doi": "10.3847/1538-4357/addebe",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2015.1.01199.S",
+   "2017.1.00569.S",
+   "2019.1.01135.S",
+   "2019.A.00034.S",
+   "2021.1.00128.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO), a Large Program of the Atacama Large Millimeter/submillimeter Array (ALMA)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "AGE-PRO sample: 10 Ophiuchus, 10 Lupus, 10 Upper Sco disks around M3-K6 stars",
+     "coordinates": {
+      "value": "per-source RA/Dec listed in Table 1",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "It uses a carefully selected sample of 30 disks around M3-K6 stars in three nearby star-forming regions: Ophiuchus (0.5-1 Myr), Lupus (1-3 Myr), and Upper Sco (2-6 Myr)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "All distances are adopted from (cite: BailerJones2021)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~130-160 pc (Lupus/Upper Sco Gaia distances in Table 1; Ophiuchus not listed)",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "It uses a carefully selected sample of 30 disks around M3-K6 stars in three nearby star-forming regions: Ophiuchus (0.5-1 Myr), Lupus (1-3 Myr), and Upper Sco (2-6 Myr)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "All distances are adopted from (cite: BailerJones2021)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Bailer-Jones et al. 2021",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "It uses a carefully selected sample of 30 disks around M3-K6 stars in three nearby star-forming regions: Ophiuchus (0.5-1 Myr), Lupus (1-3 Myr), and Upper Sco (2-6 Myr)."
+       },
+       {
+        "loc": "Table 1",
+        "quote": "All distances are adopted from (cite: BailerJones2021)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do gas disk mass and size evolve over the lifetime of protoplanetary disks, and what do they imply for disk evolution mechanisms?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "AGE-PRO aims to systematically trace the evolution of gas disk mass and size throughout the lifetime of protoplanetary disks."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00128.L",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "an ALMA Cycle 8 Large Program (2021.1.00128.L, PI Zhang)"
+      }
+     ]
+    },
+    {
+     "code": "2019.A.00034.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| Oph 7        | $^{12}$CO, $^{13}$CO, C$^{18}$O | 2019.A.00034.S |  Tobin   |  1  |"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00569.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| Lupus 1      | $^{12}$CO, $^{13}$CO, C$^{18}$O | 2017.1.00569.S |   Yen    |  2  |"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01135.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| Lupus 1, 6   |           N$_2$H$^+$            | 2019.1.01135.S | Anderson |  3  |"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01199.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| UppSco 9, 10 |           N$_2$H$^+$            | 2015.1.01199.S | Anderson |  4  |"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 and Band 7",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "These observations were carried out at ALMA band 6 and 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 230.538000 | CO J=2–1 | 0.092 | 58.59 |"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "J=2-1",
+     "rest_frequency": "220.398684 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 220.398684 | $^{13}$CO J=$2-1$ | 0.192 | 58.59 |"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "219.560358 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 219.560358 | C$^{18}$O J=$2-1$ | 0.193 | 58.59 |"
+      }
+     ]
+    },
+    {
+     "species": "C17O",
+     "transition": "J=2-1",
+     "rest_frequency": "224.714373 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 224.714373 | C$^{17}$O J=$2-1$ | 0.094 | 58.59 |"
+      }
+     ]
+    },
+    {
+     "species": "N2H+",
+     "transition": "J=3-2",
+     "rest_frequency": "279.511760 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| Lupus/UppSco-B7-N2Hp | 279.511760 | N$_2$H$^+$ J=3-2 | 0.076 | 117.2 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "1875 MHz bands; doubled in Band 6 for Upper Sco",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "One or two continuum bands with 1875 MHz bandwidth were included in all correlator setups for self-calibration."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12-meter array",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The ALMA observations of the AGE-PRO program were conducted with the 12-meter array from 2021 December to 2022 August"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15 to 2917 m",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "with baseline lengths between 15 to 2917 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "typical CLEAN beam 0.35\" (Band 6), 0.7\" (Band 7)",
+    "evidence": [
+     {
+      "loc": "3.2 Imaging Processes",
+      "quote": "typical for achieving a CLEAN beam of 0.35$''$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "Band 6 CO setup ~30 min (Oph, Lupus), ~60 min (Upper Sco); C17O ~60 min; Band 7 N2H+ 60 (Lupus) and 120 min (Upper Sco)",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "The Band 7 N$_2$H$^+$ setup had 60 and 120  minutes of on-source time for the Lupus and Upper Sco targets, respectively."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2021 December to 2022 August",
+    "evidence": [
+     {
+      "loc": "3 Observations",
+      "quote": "conducted with the 12-meter array from 2021 December to 2022 August"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "New Large Program data plus archival sets for a few sources (Table 3)",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "Several archival datasets were used in the AGE-PRO program (see Table [3](#tab:archival_data))."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Distances (DR3) used for stellar luminosities",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "The literature stellar luminosities were updated with Gaia DR3 distances"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectral types, Teff, L*, Av, accretion rates for the sample",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "the references for Class, Spectral type, {$T_{\\rm eff}$, $L_\\ast$}, A$_v$, and accretion rates"
+       }
+      ]
+     },
+     "citation": "Evans09; Cieza19_ODISEA_I; Alcala14_Lupus; Alcala17_Lupus; Luhman2022_uppstars; Manara2020; Fang2023"
+    },
+    {
+     "what": {
+      "value": "Distances to all sources",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "All distances are adopted from (cite: BailerJones2021)."
+       }
+      ]
+     },
+     "citation": "(cite: BailerJones2021)"
+    },
+    {
+     "what": {
+      "value": "Ages of Upper Sco clusters for comparison",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "The isochronal ages of Upper Sco clusters were estimated between $\\sim$4-14 Myr (cite: Ratzenbock2023a; Ratzenbock2023b)."
+       }
+      ]
+     },
+     "citation": "Ratzenbock2023a,b"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Grid of thermo-chemical (DALI) models used to infer gas masses (done in AGE-PRO V)",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "The gas disk masses are estimated by comparing line fluxes with a large grid of thermo-chemical models."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline, then self-calibration",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "All execution blocks (EBs) were initially calibrated using the Common Astronomy Software Application (CASA; (cite: CASA2022)) pipeline version 6.2."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "Pipeline 6.2; self-calibration CASA 6.4",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we conducted self-calibration using CASA version 6.4"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "EB fluxes consistent within 10%; rescaled if beyond",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "We found that most EBs had fluxes consistent within 10%."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Phase self-cal on continuum for SNR>20, solint from 'inf' down to 300-60 s, one amplitude round with solint='inf'; based on DSHARP/MAPS",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Self-calibration of the continuum visibilities was performed for sources with continuum SNR larger than 20."
+      },
+      {
+       "loc": "3.1",
+       "quote": "The first round of gaincal solutions were computed with `solint=‘inf’` and further iterations use decreasing time intervals, typically between 300 to 60 seconds."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean multiscale CLEAN",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we utilized the `tclean` task in CASA with the multiscale clean option"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "robust 0.5 for 12CO; 1 for other lines",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "A robust parameter of 0.5 was adopted for $^{12}$CO line images to achieve high spatial resolution, while value of 1 was used for all other lines to favor sensitivity."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "uvtaper to circularize beam for Band 6 lines; uvrange >50 klambda for 12CO of Lupus/Upper Sco",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we use uvrange =‘$>$50klambda’ to remove cloud contamination at scale$>$4$''$"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "0.025\" Band 6; 0.04\" Band 7",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "Band 6 images were produced with a resolution of 1600$\\times$1600 pixels and a pixel size of 0.025$''$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "1600x1600 Band 6; 864x864 Band 7",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we used 864$\\times$864 pixels and a pixel size of 0.04$''$"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Keplerian masks for Lupus/Upper Sco; automask for Ophiuchus",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we constructed “cleaning” Keplerian masks for these sources."
+      },
+      {
+       "loc": "3.2",
+       "quote": "we utilized the `automask` option in `tclean`"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "[0,4,12,24,48] pixels Band 6; [0,4] Band 7",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "employing scales of \\[0, 4, 12, 24, 48\\] pixels for Band 6 images and \\[0, 4\\] for Band 7 images"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub with all spectral windows together",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we then used the task `uvcontsub` to subtract the continuum with all spectral windows together"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "imsmooth to circular beam for Band 6",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "`imsmooth` was used to make the final image with a circular beam."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "cleaned to 1 sigma, no JvM correction",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We found that CLEAN to 1$\\sigma$ and without JvM correction gives the most accurate results"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Self-calibration procedure",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "Our methodology was based on the self-cal procedures of the DSHARP and MAPS large programs"
+       }
+      ]
+     },
+     "from_reference": "(cite: Andrews18b; Czekala21_MAPS)"
+    },
+    {
+     "what": {
+      "value": "Gas mass derivation details via thermo-chemical model grid",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "Please see AGE-PRO V (cite: AGEPRO_V_gasmasses) for details."
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_V_gasmasses)"
+    },
+    {
+     "what": {
+      "value": "Keplerian mask parameters (M*, inclination, PA)",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "can be found in (cite: AGEPRO_III_Lupus; AGEPRO_IV_UpperSco)"
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_III_Lupus; AGEPRO_IV_UpperSco; AGEPRO_X_dust_disks)"
+    },
+    {
+     "what": {
+      "value": "Gas disk sizes from Nuker profile fits",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "AGE-PRO XI (cite: AGEPRO_XI_gas_disk_sizes) fit the $^{12}$CO integrated intensity maps with a 2D Nuker profile"
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_XI_gas_disk_sizes)"
+    },
+    {
+     "what": {
+      "value": "Dust disk sizes and geometries from visibility fitting",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "AGE-PRO X (cite: AGEPRO_X_dust_disks) employs visibility fitting"
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_X_dust_disks)"
+    },
+    {
+     "what": {
+      "value": "Ophiuchus automask imaging",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "as detailed in (cite: AGEPRO_II_Ophiuchus)"
+       }
+      ]
+     },
+     "from_reference": "(cite: AGEPRO_II_Ophiuchus)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Per-source robust values for self-calibration (0.5-1.0 range only)",
+    "Exact solint sequence and SNR criteria per source",
+    "Line-free channels and continuum-flagging details per source",
+    "Keplerian mask parameters and R_max per disk (in companion papers)",
+    "Thermo-chemical model grid parameters for gas masses",
+    "Individual line fluxes and uncertainties",
+    "CLEAN thresholds/mask details and Ophiuchus Keplerian-mask settings"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate continuum",
+    "method": {
+     "value": "Align EBs astrometrically, check flux scale, iterative phase then one amplitude self-cal",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "We then aligned the different EBs (with CASA tasks `phaseshift` and `fixplanets`) to a common phase center."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "SNR>20; solint inf then 300-60 s; scales [0,5,15,45]",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "multiscale `CLEAN` and `scales=[0, 5, 15, 45]` pixels"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Peak intensity and SNR improvement per iteration",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "The resulting peak intensity to noise ratio on the image were used to evaluate whether another iteration is needed."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image line cubes",
+    "method": {
+     "value": "Split, cvel2 to LSRK grid, tclean multiscale with Keplerian masks, deep clean without JvM, circularize beam",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "The line visibilities from multiple EBs were then regridded to a constant LSRK velocity grid using the `cvel2` task"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "0.1 km/s channels for 12CO, 0.2 km/s others",
+      "evidence": [
+       {
+        "loc": "3.2",
+        "quote": "We adopted a velocity channel width of 0.1  km s$^{-1}$ for the $^{12}$CO (2-1) line and 0.2  km s$^{-1}$ for all other lines"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested CLEAN thresholds 1-4 sigma with/without JvM on flux and radial profiles",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We varied the CLEAN threshold between the 1-4$\\sigma$ noise level, with/without applying the JvM corrections."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Handle cloud contamination and measure line fluxes",
+    "method": {
+     "value": "Keplerian mask on channel maps, curve-of-growth integrated flux; half-spectrum x2 for asymmetric contamination",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "The line fluxes of the Lupus and Upper Sco disks were measured using a curve-of-growth method"
+      }
+     ]
+    },
+    "software": [
+     "GoFish",
+     "bettermoments"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection of channel and moment zero maps",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "we also visually inspected the channel and moment zero maps"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure gas disk sizes",
+    "method": {
+     "value": "Radius enclosing 90% of 12CO flux from beam-convolved 2D Nuker fits",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "measures gas disk sizes from the unconvolved best fit Nuker profiles using the curve-of-growth method"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Nuker profile convolved with clean beam (AGE-PRO XI)",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "fit the $^{12}$CO integrated intensity maps with a 2D Nuker profile that was convolved with the clean beam"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive gas and dust masses",
+    "method": {
+     "value": "Compare 13CO, C18O, N2H+ (Class II) or C17O (Oph) fluxes and 1.3 mm continuum with thermo-chemical model grid; dust mass from optically thin continuum",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "we estimate the gas disk masses by comparing the $^{13}$CO, C$^{18}$O, and N$_2$H$^+$ line fluxes, along with the 1.3 mm continuum fluxes, to a large grid of thermo-chemical models"
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa = 2.3 (nu/230 GHz) cm2/g, Tdust = 20 K; ISM xCO=1e-4 for Ophiuchus",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "assuming a dust opacity of $\\kappa_\\nu=2.3~(\\nu/230\\,{\\rm GHz})\\,$cm$^2$ g$^{-1}$ and an average dust temperature of 20 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated here (AGE-PRO V)",
+     "evidence": [
+      {
+       "loc": "Analysis: Gas and dust disk masses",
+       "quote": "The gas disk masses are estimated by comparing line fluxes with a large grid of thermo-chemical models. Please see AGE-PRO V (cite: AGEPRO_V_gasmasses) for details."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute regional medians and spectral index",
+    "method": {
+     "value": "Kaplan-Meier medians including limits; alpha_mm from Band 7 and Band 6 fluxes",
+     "evidence": [
+      {
+       "loc": "6",
+       "quote": "We calculate the median values for each region using the Kaplan–Meier estimator in the `lifelines` python package"
+      }
+     ]
+    },
+    "software": [
+     "lifelines"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Repeated with four age groups",
+     "evidence": [
+      {
+       "loc": "6",
+       "quote": "we also test separating our results into four age groups and find the general trends still hold"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.2 pipeline; 6.4 self-cal",
+    "used_for": {
+     "value": "Calibration, self-calibration, imaging",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we conducted self-calibration using CASA version 6.4"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ysoisochrone",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stellar masses and ages from evolutionary tracks",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "We use the `Python` package `ysoisochrone`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "keplerian_mask",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian CLEAN masks",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "Masks were constructed using the `keplerian_mask` function"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian masks on channel maps",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "we apply a new Keplerian mask to channel maps, using the `gofish` and `bettermoments` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "Moment zero maps with Keplerian masks",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "using the `gofish` and `bettermoments` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "lifelines",
+    "version": "v0.29.0",
+    "used_for": {
+     "value": "Kaplan-Meier medians with limits",
+     "evidence": [
+      {
+       "loc": "6",
+       "quote": "using the Kaplan–Meier estimator in the `lifelines` python package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median gas mass Ophiuchus",
+    "value": "58",
+    "uncertainty": "not stated",
+    "units": "1e-4 Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Ophiuchus | 58 | 14.4 | 122 | 40.3 | ... | ... | ... | ... |"
+     }
+    ]
+   },
+   {
+    "quantity": "Median gas mass Lupus",
+    "value": "6.5",
+    "uncertainty": "not stated",
+    "units": "1e-4 Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Lupus | 6.5 | 4.7 | 46 | 30.4 | 74.1 | 3.4 | -4.83 | 2.25 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Median gas mass Upper Sco",
+    "value": "4.2",
+    "uncertainty": "not stated",
+    "units": "1e-4 Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Upper Sco | 4.2 | 1.9 | 120 | 42.0 | 109.9 | 3.4 | -4.69 | 2.45 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Median gas-to-dust ratio (Oph, Lupus, Upper Sco)",
+    "value": "122, 46, 120",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "decreases from 122 in the youngest disks ($<$1 Myr) to 46 in Lupus disks, and then increases to 120 in the Upper Sco disks"
+     }
+    ]
+   },
+   {
+    "quantity": "Median gas disk size Lupus / Upper Sco",
+    "value": "74.1 / 109.9",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Upper Sco | 4.2 | 1.9 | 120 | 42.0 | 109.9 | 3.4 | -4.69 | 2.45 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Median spectral index Lupus / Upper Sco",
+    "value": "2.25 / 2.45",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Lupus | 6.5 | 4.7 | 46 | 30.4 | 74.1 | 3.4 | -4.83 | 2.25 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Median dust disk radius Oph / Lupus / Upper Sco",
+    "value": "40.3 / 30.4 / 42.0",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| Ophiuchus | 58 | 14.4 | 122 | 40.3 | ... | ... | ... | ... |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Most Class II disks have xCO ~1e-5, about an order of magnitude CO depletion, with no difference between Lupus and Upper Sco",
+    "evidence": [
+     {
+      "loc": "6.1",
+      "quote": "We find the majority of our Class II disks have inferred CO abundances around 10$^{-5}$, suggesting an order of magnitude CO depletion with respect to the ISM ratio."
+     }
+    ]
+   },
+   {
+    "value": "Dust disk sizes similar across regions; substructures in half the sample",
+    "evidence": [
+     {
+      "loc": "6.2",
+      "quote": "dust substructures are present in half of the AGE-PRO sample"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas disk mass decreases with age",
+    "experiment": "Gas masses from CO isotopologue/N2H+ fluxes with thermo-chemical models in three regions",
+    "result": "Median gas mass Oph ~6 MJup vs 0.68 (Lupus) and 0.44 (Upper Sco)",
+    "finding": "Most gas mass evolution happens early; Lupus and Upper Sco similar",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Ophiuchus disks have the highest median gas mass (6 M$_{\\rm Jup}$), while the Lupus and Upper Sco disks have significantly lower median masses (0.68 and 0.44 M$_{\\rm Jup}$, respectively)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Gas and dust evolve on the same timescale",
+    "experiment": "Compare median gas-to-dust ratios across regions",
+    "result": "122 -> 46 -> 120",
+    "finding": "Gas and dust evolve on different timescales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Notably, the gas and dust disk masses appear to evolve on different timescales."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Typical gas disks are as large as well-studied massive disks",
+    "experiment": "90% 12CO radii",
+    "result": "Median 74-110 au",
+    "finding": "Typical gas disks are much smaller",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The median gas disk sizes range between 74-110 au, suggesting that typical gas disks are much smaller than those of well-studied, massive disks."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which accretion mechanism explains disk populations",
+    "experiment": "Population synthesis models compared to AGE-PRO medians (AGE-PRO VII)",
+    "result": "MHD wind models match; turbulent models overpredict gas mass by ~10x",
+    "finding": "MHD wind-driven accretion with compact disks and declining field favored",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In contrast, turbulent-driven models overestimate gas masses of $>$1 Myr disks by an order of magnitude."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "CO isotopologues plus N2H+ constrain xCO and improve gas mass precision; C17O for optically thin Ophiuchus",
+    "evidence": [
+     {
+      "loc": "2.4.1",
+      "quote": "the line flux ratios of CO isotopologue and N$_2$H$^+$ provide constraints of $x_{\\rm CO}$ and thus largely improve the precision of gas mass estimates"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "JvM correction rejected in favor of deep clean to 1 sigma",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "we adopted cleaning the AGE-PRO molecular line cubes down to 1 $\\sigma$ without applying the JvM correction"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Medians are of survivors; survival bias not accounted in medians; absolute ages model-dependent; regions assumed to share initial conditions",
+     "evidence": [
+      {
+       "loc": "6",
+       "quote": "The median values, listed in Table [4](#tab:median), do not take into consideration survival bias"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Age ordering relies on three different regions assumed to share initial conditions",
+    "Ophiuchus sample is mostly highly inclined and its representativeness is unquantified",
+    "Gas masses depend on thermo-chemical model assumptions such as cosmic-ray ionization rate",
+    "Small sample (10 per region)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Self-calibrated visibilities, cubes and profiles on AGE-PRO website",
+    "evidence": [
+     {
+      "loc": "5 Data Release",
+      "quote": "The self-calibrated visibility data, image cubes, and radial profiles of spectral lines are available for download from the AGE-PRO website"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Gas mass model grid and fitting (AGE-PRO V)",
+    "Per-source masks and parameters in companion papers",
+    "Per-source self-cal settings"
+   ],
+   "estimated_data_volume_inferred": "Several TB raw; ~0.5-1 TB calibrated for 30 disks",
+   "score_inferred": 3,
+   "score_reason": "Calibration and imaging are well described and data public, but the main gas mass analysis is in companion papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key results (gas masses) depend on thermo-chemical modelling detailed elsewhere; this paper is an overview."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: AGEPRO_V_gasmasses)",
+     "why": "Gas mass derivation"
+    },
+    {
+     "citation": "(cite: AGEPRO_XI_gas_disk_sizes)",
+     "why": "Beam-corrected gas sizes"
+    },
+    {
+     "citation": "(cite: AGEPRO_X_dust_disks)",
+     "why": "Dust sizes and geometries"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: AGEPRO_II_Ophiuchus)",
+     "why": "Ophiuchus results"
+    },
+    {
+     "citation": "(cite: AGEPRO_III_Lupus)",
+     "why": "Lupus results"
+    },
+    {
+     "citation": "(cite: AGEPRO_IV_UpperSco)",
+     "why": "Upper Sco results"
+    },
+    {
+     "citation": "(cite: AGEPRO_VII_population)",
+     "why": "Population synthesis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP",
+    "MAPS",
+    "eDisk",
+    "CAMPOS",
+    "ODISEA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-38f24992c4874ef023af9c34c0fd6de8",
+  "batch_id": "msgbatch_011QjbLPHqMEK6drDa6QExga",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:40:50",
+  "usage": {
+   "input_tokens": 56394,
+   "output_tokens": 10907,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.111535,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 91,
+  "quotes_ok": 91,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 5,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 85,
+   "stated": 64,
+   "rate": 0.753
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:59",
+  "custom_id": "repair-sonnet-c1f8e9d7b74e7c85b55ebabd2fcab385",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "The gas disk masses are estimated by comparing line fluxes with a large grid of thermo-chemical models. Please see AGE-PRO V (cite: AGEPRO_V_gasmasses) for details."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

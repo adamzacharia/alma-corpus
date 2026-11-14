@@ -1,0 +1,678 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+{"loc": "Introduction", "quote": "In this paper, we focus mainly on the Atacama Compact Array (ACA) 7-m continuum and line data sets."},
+{"loc": "Summary", "quote": "Leveraging the QUARKS ACA data, we construct the ACA 1.3 mm continuum source catalog with 207 sources."}
+],
+"fields": ["star_formation", "milky_way_ism"],
+"question": {
+"value": "How dense gas is assembled in massive clumps: build the QUARKS ACA 1.3 mm continuum source catalog (physical parameters) and test clump-fragment mass correlation, dense gas fraction and its evolution, and limited fragmentation",
+"evidence": [
+{"loc": "Introduction", "quote": "Investigating how dense gas is concentrated and structured within these massive clumps serves as an intermediate step in understanding this intricate process."},
+{"loc": "Introduction", "quote": "we find a mass correlation between clumps and their fragments"}
+]
+},
+"targets": [
+{"name": "QUARKS clumps (139 ATOMS massive clumps)",
+ "details": [
+ {"loc": "Observing Strategy", "quote": "As a result, 139 ATOMS massive clumps are selected as the QUARKS sample, hereafter the QUARKS clumps."},
+ {"loc": "Introduction", "quote": "equivalent to 0.07 pc at a typical distance of 3 kpc within the QUARKS sample"},
+ {"loc": "QUARKS Atlas", "quote": "and the latest model for the rotation curve of the Milky Way (cite: Reid2019Distance)"}
+ ],
+ "coordinates": "not stated (per-source ICRS coordinates given in Table 2)",
+ "redshift_or_distance": "typical 3 kpc; per-clump distances listed in Table A of Liu2023QUARKS",
+ "distance_source": "H13CO+ lines of ATOMS plus the Milky Way rotation curve model of Reid2019Distance (cite: Reid2019Distance)"},
+{"name": "I13291-6229 (example field)",
+ "details": [
+ {"loc": "QUARKS Atlas", "quote": "in one of the QUARKS massive clump I13291-6229"}
+ ],
+ "coordinates": "not stated",
+ "redshift_or_distance": "not stated",
+ "distance_source": "not stated"}
+],
+"alma_project_codes": [
+{"code": "2021.1.00095.S", "evidence": [
+ {"loc": "Introduction", "quote": "Project ID: 2021.1.00095.S"}
+]},
+{"code": "2019.1.00685.S", "evidence": [
+ {"loc": "Acknowledgements", "quote": "This paper uses the following ALMA data: ADS/JAO.ALMA#2019.1.00685.S and 2021.1.00095.S."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (1.3 mm), dual polarization", "evidence": [
+ {"loc": "Observing Strategy", "quote": "The observations utilized ALMA Band 6 receivers in dual-polarization mode, with the correlator frequencies configured into four spectral windows (SPWs 1–4)."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "four SPWs centred at ~217.92, 220.32, 231.37, 233.52 GHz, each 2 GHz wide with 4096 channels", "evidence": [
+ {"loc": "Observing Strategy", "quote": "The four SPWs were designed with center frequencies at approximately 217.92 GHz, 220.32 GHz, 231.37 GHz, and 233.52 GHz, each with a bandwidth of 2 GHz and 4096 channels."}
+]},
+{"field": "arrays", "value": "ACA 7-m", "evidence": [
+ {"loc": "Introduction", "quote": "In this paper, we focus mainly on the Atacama Compact Array (ACA) 7-m continuum and line data sets."}
+]},
+{"field": "baselines", "value": "per-group minimum and maximum baselines given in Table 1 column (4)", "evidence": [
+ {"loc": "Observing Strategy", "quote": "so they share similar minimum and maximum baselines (BL), angular resolution (AR), and maximum recoverable scale (MRS)"}
+]},
+{"field": "angular_resolution", "value": "~5 arcsec (0.07 pc at 3 kpc); per-group AR in Table 1 column (5)", "evidence": [
+ {"loc": "Introduction", "quote": "With an angular resolution of $\\sim5$$''$, equivalent to 0.07 pc at a typical distance of 3 kpc within the QUARKS sample"}
+]},
+{"field": "max_recoverable_scale", "value": "~27 arcsec (per-group MRS in Table 1 column (6))", "evidence": [
+ {"loc": "Introduction", "quote": "a maximum recoverable scale as large as $\\sim27$$''$"}
+]},
+{"field": "sensitivity", "value": "continuum rms varies by group (Table 1 column 9), limited by dynamic range; typical 7-m continuum sensitivity 15 mJy (mass limit ~3 Msun at 3 kpc, 20 K)", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The rms levels have large variations between groups because some sources are too strong and the continuum sensitivities are limited by the dynamic range."},
+ {"loc": "Protocluster ensembles", "quote": "typical ATOMS and QUARKS 7-m continuum sensitivities of 0.2 and 15 mJy give sensitivity limits of 1.5 and 3 $M_\\odot$, respectively"}
+]},
+{"field": "time_on_source", "value": "about 5 minutes per pointing (156 pointings)", "evidence": [
+ {"loc": "Observing Strategy", "quote": "The on-source time of each pointing was about 5 minutes."},
+ {"loc": "Observing Strategy", "quote": "A total of 156 ALMA 1.3 mm pointings were performed"}
+]},
+{"field": "observing_dates", "value": "ALMA Cycle 8 and 9; 1-3 execution blocks per group, dates in Table 1 column (3)", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "QUARKS ACA data were acquired during the ALMA Cycle 8 and 9 observations."},
+ {"loc": "Observing Strategy", "quote": "1–3 execution blocks (EBs) were performed on different observing dates, which are listed in column (3)"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "QUARKS survey, PIs Lei Zhu, Guido Garay and Tie Liu; ACA 1.3 mm images of ASHES clumps retrieved for a comparison sample", "evidence": [
+ {"loc": "Introduction", "quote": "QUARKS; PIs: Lei Zhu, Guido Garay and Tie Liu; Project ID: 2021.1.00095.S"},
+ {"loc": "Self-similarity in protocluster formation", "quote": "We also retrieved 39 ACA 1.3 mm continuum images from the"}
+]}
+],
+"lines_targeted": [
+{"species": "p-H2CO", "transition": "3(0,3)-2(0,2)", "rest_frequency": "218.22219 GHz", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "($3_{03}$–$2_{02}$) at 218.22219 GHz"}
+]},
+{"species": "p-H2CO", "transition": "3(2,2)-2(2,1)", "rest_frequency": "218.47563 GHz", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "($3_{22}$–$2_{21}$) at 218.47563 GHz"}
+]},
+{"species": "p-H2CO", "transition": "3(2,1)-2(2,0)", "rest_frequency": "218.76007 GHz", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "($3_{21}$–$2_{20}$) at 218.76007 GHz"}
+]}
+],
+"other_facilities": [
+{"name": "ATOMS (ALMA 3 mm, 12m+ACA)", "provided": {"value": "3 mm continuum data and dense core catalog cross-matched with ACA sources", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "the ATOMS 12m+ACA combined 3 mm continuum data can trace both the dust emission from cold dense cores"},
+ {"loc": "Protocluster ensembles", "quote": "we performed a spatial cross-match between the ATOMS 3 mm continuum dense cores by (cite: Liu2021ATOMS-III) and the QUARKS ACA 1.3 mm continuum sources"}
+]}},
+{"name": "Spitzer GLIMPSE", "provided": {"value": "3.6, 4.5, 8.0 micron images for the atlas", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "Here we combine the Galactic Legacy Infrared Mid-Plane Survey Extraordinaire (GLIMPSE) data at 3.6, 4.5, and 8.0"}
+]}},
+{"name": "ALLWISE", "provided": {"value": "3.4, 4.6, 22.0 micron images where no Spitzer data", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "for these we use ALLWISE data at 3.4, 4.6, and 22.0"}
+]}},
+{"name": "ATLASGAL", "provided": {"value": "~870 micron large-scale dust emission for the atlas", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "We use the ATLASGAL data to trace the large scale cold and dense gas which indicates the star formation region"}
+]}},
+{"name": "Herschel Hi-GAL", "provided": {"value": "500 micron images where no ATLASGAL data", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "If no ATLASGAL data are available, far infrared (FIR) Herschel data from"}
+]}},
+{"name": "MeerKAT Galactic Plane Survey", "provided": {"value": "1.28 GHz radio continuum tracing ionized gas for the atlas", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "The MeerKAT Galactic Plane Survey 1.28 GHz data (cite: Padmanabh2023MeerKAT; Goedhart2023MGPS) provides essential radio information with a resolution of"}
+]}},
+{"name": "ASHES (ALMA ACA 1.3 mm)", "provided": {"value": "39 ACA continuum images of early-stage clumps used as a comparison sample for the dense gas fraction", "evidence": [
+ {"loc": "Self-similarity in protocluster formation", "quote": "We also retrieved 39 ACA 1.3 mm continuum images from the"},
+ {"loc": "Self-similarity in protocluster formation", "quote": "To maintain consistency, we cropped the ASHES continuum images to the same size as the QUARKS."}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "QUARKS clump masses and radii", "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "We collect the QUARKS clump mass $M_{\\rm clump}$ and radius $R_{\\rm clump}$ from (cite: Liu2023QUARKS)"}
+]}, "citation": "(cite: Liu2023QUARKS)"},
+{"what": {"value": "QUARKS clump distances", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "as listed in Table A. of (cite: Liu2023QUARKS)"}
+]}, "citation": "(cite: Liu2023QUARKS)"},
+{"what": {"value": "Clump-averaged dust temperatures from infrared-to-submillimeter SED fitting", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "determined through infrared-to-submillimeter SED fitting (cite: Urquhart2018ATLASGAL)"}
+]}, "citation": "(cite: Urquhart2018ATLASGAL)"},
+{"what": {"value": "Clump masses for the combined, ASHES, Csengeri and SQUALO samples", "evidence": [
+ {"loc": "Dense gas grows with evolution", "quote": "all the clump masses are retrieved from (cite: Urquhart2018ATLASGAL) in the following discussion"}
+]}, "citation": "(cite: Urquhart2018ATLASGAL)"},
+{"what": {"value": "ATOMS 3 mm dense core catalog", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "Dense cores identified in (cite: Liu2021ATOMS-III) are marked with red ellipses and ID numbers."}
+]}, "citation": "(cite: Liu2021ATOMS-III)"},
+{"what": {"value": "Dust opacity (1 cm2 g-1 at ~230 GHz)", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "which is interpolated from the given table in (cite: O&H1994dust)"}
+]}, "citation": "(cite: O&H1994dust); size distribution (cite: MRN1997)"},
+{"what": {"value": "Uncertainties of 28% (gas-to-dust ratio) and 23% (dust opacity)", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "We adopt the uncertainties derived by (cite: Sanhueza2017G28) of 28% for the gas-to-dust ratio and of 23% for the dust opacity"}
+]}, "citation": "(cite: Sanhueza2017G28)"},
+{"what": {"value": "Flux calibration uncertainty of 10%", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "from flux calibration (assumed to be 10%; Yun et al. 2022"}
+]}, "citation": "Yun et al. 2022 (ALMA Memo 211)"},
+{"what": {"value": "H2CO collision rates for RADEX", "evidence": [
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "the collision rates were taken from (cite: Wiesenfeld2013H2CO)"}
+]}, "citation": "(cite: Wiesenfeld2013H2CO)"},
+{"what": {"value": "DGF results from ACA 0.87 mm survey and SQUALO", "evidence": [
+ {"loc": "Dense gas grows with evolution", "quote": "We incorporate the DGF results from an ACA 0.87 mm survey (cite: Csengeri2017ACA) and the"}
+]}, "citation": "(cite: Csengeri2017ACA); (cite: Traficante2023SQUALO-I)"}
+],
+"simulations_or_models_as_data": [
+{"value": "RADEX non-LTE model grid for p-H2CO: 100 densities 10^2.5-10^7 cm-3, 100 N(H2CO) 10^11-10^15 cm-2, 50 Tkin 10-350 K, line gradient 5 km/s/pc", "evidence": [
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "we used RADEX (cite: van2007RADEX) to create model grids for the p-H$_2$CO molecular lines over 100 densities of $n=10^{2.5}$–$10^{7}$ cm$^{-3}$"},
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "with a fixed assumed line gradient of 5 km s$^{-1}$ pc$^{-1}$"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline (routine calibration)", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The data were routinely calibrated using the ALMA pipelines"}
+]},
+{"field": "casa_version", "value": "CASA 6.2.1 and 6.4.1 for pipeline calibration; CASA 6.5.6 for tclean imaging", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "in the corresponding versions of 6.2.1 and 6.4.1"},
+ {"loc": "Data Calibration and Imaging", "quote": "The continuum and line cube imaging processes were performed by the task *tclean* in CASA 6.5.6"}
+]},
+{"field": "flux_calibrator", "value": "bandpass/flux calibrators listed per group in Table 1 column (8), e.g. J1058+0133, J1427-4206, J1924-2914, J2232+1143", "evidence": [
+ {"loc": "Observing Strategy", "quote": "while bandpass and flux calibrators are listed in column (8)"},
+ {"loc": "Table 1", "quote": "J1427-4206"},
+ {"loc": "Table 1", "quote": "J1924-2914"}
+]},
+{"field": "flux_scale_uncertainty", "value": "10% (assumed)", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "from flux calibration (assumed to be 10%; Yun et al. 2022"}
+]},
+{"field": "self_calibration", "value": "not performed", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "self-calibration has not been performed on our released ACA data"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tclean in CASA 6.5.6", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The continuum and line cube imaging processes were performed by the task *tclean* in CASA 6.5.6, with `briggs` robust weighting of 0.5."}
+]},
+{"field": "deconvolver", "value": "multiscale for line cubes, scales [0,5,15]; continuum deconvolver not stated", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "we applied the `multiscale` deconvolver (cite: Cornwell2008Multiscale) to the cleaning process of line cubes, with scales of \\[0,5,15\\]"}
+]},
+{"field": "weighting_robust", "value": "briggs, robust = 0.5", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "with `briggs` robust weighting of 0.5"}
+]},
+{"field": "cell_size", "value": "1 arcsec", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "We uniformly set the image size of $108\\times108$ pix$^2$ and cell size of 1$''$"}
+]},
+{"field": "image_size", "value": "108 x 108 pix", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "We uniformly set the image size of $108\\times108$ pix$^2$ and cell size of 1$''$"}
+]},
+{"field": "masking", "value": "auto-multithresh (noisethreshold 5 sigma, sidelobethreshold 1.25 sigma); manual masks for some fields", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "Within the cleaning mask, we set the stopping `noisethreshold` to be 5$\\sigma$ and `sidelobethreshold` to be $1.25\\sigma$ in the dirty image/cube."},
+ {"loc": "Data Calibration and Imaging", "quote": "For these fields, we performed a manual mask to further improve the imaging fidelity."}
+]},
+{"field": "continuum_subtraction", "value": "uvcontsub, linear fit (order 1), line channels flagged", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "in the Fourier space using the task *uvcontsub* with linear fitting (polynomial order of 1)"}
+]},
+{"field": "line_free_channels", "value": "model-spectrum mask shifted and expanded to a width of 50 km/s per source", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "For each source, the model spectrum was shifted and expanded with a width of 50 km s$^{-1}$ to ensure clean channels free from multiple velocity components and spectral line wings."}
+]},
+{"field": "primary_beam_correction", "value": "pblimit = 0.2", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The primary beam correction was performed with ` pblimit = 0.2`."}
+]},
+{"field": "final_rms", "value": "continuum rms per group in Table 1 column (9)", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The noise rms of the cleaned continuum image is tabulated in column (9) of Table"}
+]}
+],
+"inherited": [
+{"what": {"value": "Survey description and showcase of data combinations", "evidence": [
+ {"loc": "Introduction", "quote": "The details of the survey description and the showcase of data combinations can be found in (cite: Liu2023QUARKS)."}
+]}, "from_reference": "(cite: Liu2023QUARKS)"},
+{"what": {"value": "Basics of the main targeted lines", "evidence": [
+ {"loc": "Observing Strategy", "quote": "The basics of the main targeted lines are summarized in Table 2 of (cite: Liu2023QUARKS)."}
+]}, "from_reference": "(cite: Liu2023QUARKS) Table 2"},
+{"what": {"value": "Line identification and model-spectrum line-channel mask", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "(cite: Liu2023QUARKS) identified all the transitions of strong lines within the four SPWs by matching the reduced data cubes of the ALMA pipeline"}
+]}, "from_reference": "(cite: Liu2023QUARKS)"},
+{"what": {"value": "auto-multithresh input parameters", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "whose input parameters are recommended by the official guides [^2] for the ACA data"}
+]}, "from_reference": "casaguide:automask (CASA Automasking Guide)"},
+{"what": {"value": "Clump distances (updated with H13CO+ and rotation curve)", "evidence": [
+ {"loc": "QUARKS Atlas", "quote": "as listed in Table A. of (cite: Liu2023QUARKS)"}
+]}, "from_reference": "(cite: Liu2023QUARKS) Table A"},
+{"what": {"value": "H2CO triplet fitting approach (RADEX grid)", "evidence": [
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "Following the method introduced in (cite: Ginsburg2016CMZTemp), we used RADEX (cite: van2007RADEX)"}
+]}, "from_reference": "(cite: Ginsburg2016CMZTemp)"},
+{"what": {"value": "Source angular size definition with eta = 2.4", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "Following (cite: Rosolowsky2010BGPSII) and (cite: Contreras2013ATLASGAL; Urquhart2014ATLASGAL), the source angular size can be calculated as the geometric mean of the deconvolved major and minor axes."}
+]}, "from_reference": "(cite: Rosolowsky2010BGPSII); (cite: Contreras2013ATLASGAL; Urquhart2014ATLASGAL)"},
+{"what": {"value": "Mass uncertainty terms for gas-to-dust ratio and opacity", "evidence": [
+ {"loc": "Physical Parameters of Sources", "quote": "We adopt the uncertainties derived by (cite: Sanhueza2017G28) of 28% for the gas-to-dust ratio and of 23% for the dust opacity"}
+]}, "from_reference": "(cite: Sanhueza2017G28)"},
+{"what": {"value": "Clump SED masses and dust temperatures", "evidence": [
+ {"loc": "Dense Gas Fraction and Its Assembly", "quote": "performed the photometry from near- to far-infrared data of these massive clumps, by which the spectral energy distribution (SED) are fitted"}
+]}, "from_reference": "(cite: Urquhart2018ATLASGAL)"}
+],
+"unstated_but_needed": [
+"tclean niter, cleaning threshold, and the remaining auto-multithresh parameters (lownoisethreshold, negativethreshold, minbeamfrac etc.); only noisethreshold and sidelobethreshold are given",
+"Continuum deconvolver (hogbom vs multiscale) is not stated; multiscale is stated only for line cubes",
+"Which fields needed manual masks and the mask shapes",
+"Which channels per source form the continuum image (model-spectrum line mask lives in Liu2023QUARKS) and the continuum reference frequency",
+"Restoring beam per field and the beam used in the deconvolution of source sizes (sigma_bm)",
+"Full SExtractor configuration: detection threshold semantics, filter, background box and rms map values, SNR cut that defines the 207-source catalog (SNR > 9 is mentioned as 'solid' only for the example)",
+"Spectral extraction aperture/region for the source-averaged H2CO spectra, pyspeckit initial guesses, parameter bounds, fitter and error estimation",
+"Ortho/para and background (CMB) settings in RADEX",
+"Number of Monte Carlo draws and the input distributions for the mass uncertainties",
+"Regression method (OLS vs orthogonal, weights, treatment of unresolved sources and upper limits) for the M-R, mass-correlation and DGF fits",
+"How L/M for each clump is obtained (taken from Urquhart2018ATLASGAL but not listed); clump distances, masses and temperatures are needed from outside tables",
+"Which ALMA project supplies the ASHES comparison images and what 2019.1.00685.S covers",
+"Observed velocity dispersion sigma_obs measurement from the fitted FWHM, and how the 30 outflow-wing sources are treated beyond the fixed 1.66 km/s"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate and image ACA continuum and line data",
+ "method": {"value": "ALMA pipeline calibration, line-channel flagging with a model-spectrum mask, uvcontsub, then tclean with auto-multithresh", "evidence": [
+  {"loc": "Data Calibration and Imaging", "quote": "The data were routinely calibrated using the ALMA pipelines"},
+  {"loc": "Data Calibration and Imaging", "quote": "The continuum and line cube imaging processes were performed by the task *tclean* in CASA 6.5.6, with `briggs` robust weighting of 0.5."}
+ ]},
+ "software": ["CASA", "tclean", "uvcontsub", "auto-multithresh"],
+ "key_parameters": [
+  {"value": "uvcontsub linear fit (order 1); line channels flagged using model spectrum widened to 50 km/s", "evidence": [
+   {"loc": "Data Calibration and Imaging", "quote": "in the Fourier space using the task *uvcontsub* with linear fitting (polynomial order of 1)"},
+   {"loc": "Data Calibration and Imaging", "quote": "For each source, the model spectrum was shifted and expanded with a width of 50 km s$^{-1}$ to ensure clean channels free from multiple velocity components and spectral line wings."}
+  ]},
+  {"value": "briggs robust 0.5; noisethreshold 5 sigma; sidelobethreshold 1.25 sigma; line cubes multiscale [0,5,15]; pblimit 0.2; image 108x108 pix, 1 arcsec cell", "evidence": [
+   {"loc": "Data Calibration and Imaging", "quote": "Within the cleaning mask, we set the stopping `noisethreshold` to be 5$\\sigma$ and `sidelobethreshold` to be $1.25\\sigma$ in the dirty image/cube."},
+   {"loc": "Data Calibration and Imaging", "quote": "We uniformly set the image size of $108\\times108$ pix$^2$ and cell size of 1$''$"}
+  ]},
+  {"value": "edge channels (~2x128 per SPW) flagged in the first data release; no self-calibration", "evidence": [
+   {"loc": "Data Calibration and Imaging", "quote": "The edge channels of each spectral window ($\\sim2\\times128$) were flagged in the first version of data release"},
+   {"loc": "Data Calibration and Imaging", "quote": "self-calibration has not been performed on our released ACA data"}
+  ]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Extract 1.3 mm continuum sources and measure fluxes",
+ "method": {"value": "SExtractor on background-subtracted unpbcor continuum map with local rms map; fluxes divided by the primary beam response at barycenter/peak", "evidence": [
+  {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "We adopted an automatic source extraction algorithm SEXTRACTOR [^3] (cite: Bertin1996SExtractor) on the ACA 1.3 mm continuum emission maps to extract the 1.3 mm continuum sources."},
+  {"loc": "Source Extraction", "quote": "the `pb` map is interpolated to the barycenter and at the intensity peak of the source, by which the measured integrated flux and peak intensity are divided, respectively."}
+ ]},
+ "software": ["SExtractor"],
+ "key_parameters": [
+  {"value": "background clipping at 3 sigma in boxes equal to the maximum recoverable scale", "evidence": [
+   {"loc": "Source Extraction", "quote": "Within each unit of boxes, whose size is equivalent to the maximum recoverable scale, we performed iterative clipping of the local background histogram until convergence was achieved at $\\pm3\\sigma$ around its median"}
+  ]},
+  {"value": "nthresh = 4 (times local rms)", "evidence": [
+   {"loc": "Source Extraction", "quote": "Before the program runs, $\\texttt{nthresh}=4$ is set to mask the low SNR (`nthresh`$\\times$local rms) pixels."}
+  ]},
+  {"value": "deblend_nthresh = 512, deblend_cont = 1e-5, minarea = effective beam size", "evidence": [
+   {"loc": "Source Extraction", "quote": "are set $\\texttt{deblend\\_nthresh}=512$ and $\\texttt{deblend\\_cont}=10^{-5}$"},
+   {"loc": "Source Extraction", "quote": "we set the parameter controlling the minimum pixel count for a source, `minarea`, to match the effective beam size."}
+  ]}
+ ],
+ "assumptions": [
+  {"value": "missing flux ignored because maximum observed source size (~14 arcsec) is about half the MRS", "evidence": [
+   {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "We thus ignore the effects of missing flux in the following analyses."}
+  ]}
+ ],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Fit p-H2CO triplet for kinetic temperature and line width",
+ "method": {"value": "five-parameter pyspeckit model on source-averaged SPW1 spectra, using a pre-computed RADEX non-LTE grid", "evidence": [
+  {"loc": "Temperature Estimation from Formaldehyde", "quote": "perform a five-parameter model using the formaldehyde official model[^4] by PYSPECKIT (cite: Ginsburg2011Pyspeckit; Ginsburg2022Pyspeckit) with a non-LTE RADEX model."},
+  {"loc": "Summary", "quote": "Three source-averaged formaldehyde transition lines p-H$_2$CO (3–2) are fitted using non-LTE radiative transfer model, to obtain the gas kinetic temperature and line width."}
+ ]},
+ "software": ["PySpecKit", "RADEX"],
+ "key_parameters": [
+  {"value": "free parameters: Tkin, log N(H2CO), log n(H2), v_lsr, FWHM; single velocity component", "evidence": [
+   {"loc": "Non-LTE Model Fitting of H2CO", "quote": "The five parameters are kinetic temperature ($T_{\\rm kin}$), formaldehyde column density ($\\log N(\\rm H_2CO)$), hydrogen molecule volume density ($\\log n(\\rm H_2)$), centroid velocity ($v_{\\rm lsr}$) and line width (FWHM)."},
+   {"loc": "Non-LTE Model Fitting of H2CO", "quote": "For all the sources, only one velocity component is considered."}
+  ]},
+  {"value": "RADEX grid with line gradient fixed at 5 km/s/pc and Wiesenfeld & Faure collision rates", "evidence": [
+   {"loc": "Non-LTE Model Fitting of H2CO", "quote": "with a fixed assumed line gradient of 5 km s$^{-1}$ pc$^{-1}$"},
+   {"loc": "Non-LTE Model Fitting of H2CO", "quote": "the collision rates were taken from (cite: Wiesenfeld2013H2CO)"}
+  ]},
+  {"value": "failed fits (seven spectra) assigned the clump-averaged dust temperature", "evidence": [
+   {"loc": "Non-LTE Model Fitting of H2CO", "quote": "If the fitting fails (for seven spectra), then the $T_{\\rm kin}$ is set to be equal to clump-averaged dust temperature $T_{\\rm dust,clump}$"}
+  ]}
+ ],
+ "assumptions": [],
+ "fitting": {"value": "least-squares line fitting on the pre-built RADEX grid; priors and likelihood not stated", "evidence": [
+  {"loc": "Non-LTE Model Fitting of H2CO", "quote": "Based on the preconstructed non-LTE model grids, the line fitting is performed."},
+  {"loc": "Caveats", "quote": "For example, line wings can make least-square method fall into a false local minimum."}
+ ]},
+ "validation": {"value": "compared RADEX-derived H2 density with dust-derived density (bulk trend, RADEX systematically higher); Tkin lies above clump dust temperature for all sources", "evidence": [
+  {"loc": "Validation", "quote": "The data points follow a bulk increasing trend although with a large dispersion, further justifying the self-consistency of the temperature estimation."},
+  {"loc": "Temperature Estimation from Formaldehyde", "quote": "All the data points lie above the “isothermal line”"}
+ ]}},
+{"order": 4, "goal": "Derive source mass, size, densities, turbulence and Mach number",
+ "method": {"value": "optically thin single-temperature dust mass formula, deconvolved size, N_H2, surface and volume density, thermal and non-thermal velocity dispersions, 3D Mach number", "evidence": [
+  {"loc": "Physical Parameters of Sources", "quote": "Assuming that all the emission comes from dust in a single component with $T_{\\rm dust}$ and that the dust emission is optically thin, the masses of the sources can be calculated using"},
+  {"loc": "Physical Parameters of Sources", "quote": "The three-dimensional (3D) Mach number is defined as,"}
+ ]},
+ "software": [],
+ "key_parameters": [
+  {"value": "gas-to-dust ratio 100", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "$\\mathcal{R}$ is the gas-to-dust mass ratio (assumed to be 100)"}
+  ]},
+  {"value": "kappa = 1 cm2/g at ~230 GHz (Ossenkopf & Henning 1994, thin ice mantles)", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "$\\kappa_{\\nu}$ is assumed to be 1 cm$^2$ g$^{-1}$ at $\\nu\\sim230$ GHz which is interpolated from the given table in (cite: O&H1994dust)"}
+  ]},
+  {"value": "eta = 2.4 for deconvolved size", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "$\\eta=2.4$, the median value derived for a range of models consisting of a spherical emissivity distribution (cite: Rosolowsky2010BGPSII), is adopted here."}
+  ]},
+  {"value": "mu_H2 = 2.81; mu_p = 2.37; channel width 1.34 km/s; m_H2CO = 30 m_H", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "Throughout the paper, we adopt the molecular weight per hydrogen molecule $\\mu_{\\scriptscriptstyle\\rm H_2} = 2.81$ (cite: Evans2022SlowSF)."},
+   {"loc": "Physical Parameters of Sources", "quote": "where $\\mu_{p}=2.37$ for a mean molecular weight per free particle (cite: Kauffmann2008dust)"},
+   {"loc": "Physical Parameters of Sources", "quote": "where $\\Delta_{\\rm chan}=1.34$ km s$^{-1}$ is the channel width."}
+  ]},
+  {"value": "30 sources with line width > 7 km/s (outflow wings) assigned an averaged observed velocity dispersion of 1.66 km/s", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "We check that 30 sources with line width $>7$ km s$^{-1}$ are strongly influenced by outflow wings"},
+   {"loc": "Physical Parameters of Sources", "quote": "and set an averaged observed velocity dispersion of $1.66$ km s$^{-1}$."}
+  ]}
+ ],
+ "assumptions": [
+  {"value": "dust temperature of each ACA source equals the H2CO kinetic temperature", "evidence": [
+   {"loc": "Temperature Estimation from Formaldehyde", "quote": "we assume that the dust temperature of ACA source/fragment ($T_{\\rm dust,frag}$) equals to the kinetic temperature derived from H$_2$CO triplet line fitting ($T_{\\rm kin,H_2CO}$)."}
+  ]},
+  {"value": "distance uncertainty 20% and flux calibration uncertainty 10% included in mass errors", "evidence": [
+   {"loc": "Physical Parameters of Sources", "quote": "the uncertainty of distance (assumed to be 20%) are included"}
+  ]}
+ ],
+ "fitting": {"value": "Monte Carlo propagation of uncertainties, 1 sigma intervals", "evidence": [
+  {"loc": "Physical Parameters of Sources", "quote": "Monte Carlo methods are adopted for uncertainty estimation and $1\\sigma$ confidence intervals are given."}
+ ]},
+ "validation": {"value": "not stated", "evidence": []}},
+{"order": 5, "goal": "Fit mass-radius and clump-fragment mass relations",
+ "method": {"value": "linear regression in log space of M-R for clumps and fragments, and of Msource,max and Msource,total against Mclump", "evidence": [
+  {"loc": "Fragments with self-similar gravitational collapse", "quote": "We perform a linear regression on the $M$–$R$ diagram for the QUARKS clumps"},
+  {"loc": "Correlation Between Clumps and Fragments", "quote": "Linear regression is used to correlate $M_{\\rm source,max}$ with $M_{\\rm clump}$."}
+ ]},
+ "software": [],
+ "key_parameters": [
+  {"value": "distance bins for robustness: <=3 kpc, 3-6 kpc, >6 kpc", "evidence": [
+   {"loc": "Distance Effects on Mass Correlation", "quote": "$d\\leq3$ kpc (Near), $3<d\\leq6$ kpc (Mid), and $d>6$ kpc (Far)"}
+  ]}
+ ],
+ "assumptions": [
+  {"value": "clump masses from SED fitting scaled to the updated distances", "evidence": [
+   {"loc": "Dense Gas Fraction and Its Assembly", "quote": "were derived and are scaled with the updated distances in this work"}
+  ]}
+ ],
+ "fitting": {"value": "ordinary linear regression (method details not stated); correlation coefficient and 1 sigma scatter reported", "evidence": [
+  {"loc": "Correlation Between Clumps and Fragments", "quote": "with the correlation coefficient of 0.82 and 1$\\sigma$ data scatter of 0.34 dex"}
+ ]},
+ "validation": {"value": "repeated regression in three distance bins gives similar quasi-linear correlations", "evidence": [
+  {"loc": "Distance Effects on Mass Correlation", "quote": "We perform linear regression on the three groups individually and obtain similar quasi-linear correlations as observed in the total sample."}
+ ]}},
+{"order": 6, "goal": "Compute dense gas fraction and its dependence on size and L/M",
+ "method": {"value": "DGF = summed ACA source mass in a clump / clump mass; compared against clump radius and L/M with a QUARKS plus ASHES combined sample", "evidence": [
+  {"loc": "Dense Gas Fraction and Its Assembly", "quote": "where $M_{\\rm dense}=\\sum\\limits^{\\rm \\in clump} M_{\\rm source}$ is the total ACA source mass within the clump."},
+  {"loc": "Self-similarity in protocluster formation", "quote": "After adopting the same source extraction algorithm and mass calculation, we derive the DGF of 39 ASHES clumps"}
+ ]},
+ "software": [],
+ "key_parameters": [
+  {"value": "ASHES continuum images cropped to the QUARKS field size", "evidence": [
+   {"loc": "Self-similarity in protocluster formation", "quote": "To maintain consistency, we cropped the ASHES continuum images to the same size as the QUARKS."}
+  ]},
+  {"value": "linear regression on combined sample in log(DGF) vs log(L/M)", "evidence": [
+   {"loc": "Dense gas grows with evolution", "quote": "a linear regression is performed on the data points from the combined sample"}
+  ]}
+ ],
+ "assumptions": [
+  {"value": "L/M indicates evolutionary stage", "evidence": [
+   {"loc": "Dense gas grows with evolution", "quote": "The ratio of bolometric luminosity to envelope mass $L/M$, can thus be used to indicate the evolutionary stage"}
+  ]}
+ ],
+ "fitting": {"value": "linear regression with Spearman coefficient and p value (method details not stated)", "evidence": [
+  {"loc": "Dense gas grows with evolution", "quote": "The correlation yields a Spearman correlation coefficient of $R_s=0.41$ and an associated $p$ value of $2.9\\times10^{-8}$"}
+ ]},
+ "validation": {"value": "independent Csengeri2017 and SQUALO data show a similar increasing trend", "evidence": [
+  {"loc": "Dense gas grows with evolution", "quote": "As a result, two independent data sets mutually verify a dense mass growth in massive star-forming clumps as they evolve."}
+ ]}},
+{"order": 7, "goal": "Cross-match ACA sources with ATOMS 3 mm dense cores",
+ "method": {"value": "elliptical mask from each ACA source geometry; an ATOMS core inside it defines a QUARKS-ATOMS link, with a fidelity value", "evidence": [
+  {"loc": "QUARKS-ATOMS Link", "quote": "Elliptical mask is defined by the geometrical measurement of the ACA 1.3 mm continuum source"},
+  {"loc": "QUARKS-ATOMS Link", "quote": "The link fidelity, defined as how close the ATOMS source is to the QUARKS source, with values from 0 (unreliable) to 1 (reliable)"}
+ ]},
+ "software": [],
+ "key_parameters": [],
+ "assumptions": [],
+ "fitting": {"value": "not stated", "evidence": []},
+ "validation": {"value": "not stated", "evidence": []}}
+],
+"software": [
+{"name": "CASA", "version": "6.2.1 and 6.4.1 (pipeline); 6.5.6 (imaging)", "used_for": {"value": "ALMA pipeline calibration and imaging", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The data were routinely calibrated using the ALMA pipelines"},
+ {"loc": "Data Calibration and Imaging", "quote": "in the corresponding versions of 6.2.1 and 6.4.1"}
+]}},
+{"name": "tclean", "version": "CASA 6.5.6", "used_for": {"value": "continuum and line cube imaging", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "The continuum and line cube imaging processes were performed by the task *tclean* in CASA 6.5.6"}
+]}},
+{"name": "uvcontsub", "version": "not stated", "used_for": {"value": "continuum subtraction in the uv plane after line-channel flagging", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "in the Fourier space using the task *uvcontsub* with linear fitting (polynomial order of 1)"}
+]}},
+{"name": "auto-multithresh", "version": "not stated", "used_for": {"value": "automatic cleaning masks", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "the images/cubes were automatically masked by `auto-multithresh` algorithm"}
+]}},
+{"name": "SExtractor", "version": "not stated", "used_for": {"value": "source extraction on ACA 1.3 mm continuum maps", "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "We adopted an automatic source extraction algorithm SEXTRACTOR [^3] (cite: Bertin1996SExtractor) on the ACA 1.3 mm continuum emission maps to extract the 1.3 mm continuum sources."}
+]}},
+{"name": "PySpecKit", "version": "not stated", "used_for": {"value": "fitting the p-H2CO triplet", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "perform a five-parameter model using the formaldehyde official model[^4] by PYSPECKIT"}
+]}},
+{"name": "RADEX", "version": "not stated", "used_for": {"value": "non-LTE model grids for p-H2CO", "evidence": [
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "we used RADEX (cite: van2007RADEX) to create model grids for the p-H$_2$CO molecular lines"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "named in the software statement; specific use not stated", "evidence": [
+ {"loc": "Acknowledgements", "quote": "This research uses ASTROPY, a community-developed core Python package for Astronomy"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Number of ACA 1.3 mm continuum sources", "value": "207", "uncertainty": "not stated", "units": "count", "from_step": 2, "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "a total of 207 ACA 1.3 mm continuum sources are extracted from the 139 massive star-forming clumps"}
+]},
+{"quantity": "Sources per clump", "value": "1 to 5", "uncertainty": "not stated", "units": "count", "from_step": 2, "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "At least one and at most five sources have been detected in one clump."}
+]},
+{"quantity": "Maximum observed angular size of ACA sources", "value": "~14", "uncertainty": "not stated", "units": "arcsec", "from_step": 2, "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "We note that the maximum observed angular size (convolved with the beam) of ACA sources is $\\sim14\\ensuremath{''}$, which is only half of the maximum recoverable scale in most cases"}
+]},
+{"quantity": "H2CO kinetic temperature range and median (Section 4.2)", "value": "24 to 180 K, median 72 K", "uncertainty": "not stated", "units": "K", "from_step": 3, "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "The derived kinetic temperatures have values between 24 to 180 K with median of 72 K"}
+]},
+{"quantity": "H2CO kinetic temperature mean and median (Section 5.1.1)", "value": "~68", "uncertainty": "not stated", "units": "K", "from_step": 3, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "In panel (a), $T_{\\rm kin}$ ranges from $\\sim20$ to $\\sim180$ K, with a mean and median of $\\sim$68 K."}
+]},
+{"quantity": "Fraction of sources with Tkin above 30 K", "value": ">97%", "uncertainty": "not stated", "units": "percent", "from_step": 3, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "More than 97% sources have a temperature larger than 30 K"}
+]},
+{"quantity": "Number of failed H2CO fits", "value": "7 (6 self-absorbed, 1 weak)", "uncertainty": "not stated", "units": "count", "from_step": 3, "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "seven sources with failed fitting (six with a strong self-absorption line profile and one with a weak detection)"}
+]},
+{"quantity": "Tkin of example source I13291-6229_ACA2 (Figure 8)", "value": "53", "uncertainty": "+/-11", "units": "K", "from_step": 3, "evidence": [
+ {"loc": "Non-LTE Model Fitting of H2CO", "quote": "where $T_{\\rm kin}$ is estimated to be 53($\\pm11$) K"}
+]},
+{"quantity": "Source mass 16th and 84th percentiles", "value": "6 and 160", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "with 16 and 84 percentile values of 6 and 160 $M_\\odot$"}
+]},
+{"quantity": "Sources with mass > 8 Msun", "value": "120 (58%)", "uncertainty": "not stated", "units": "count", "from_step": 4, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "120 ACA sources (58%) are massive enough to form a massive star ($>8$ $M_\\odot$)"}
+]},
+{"quantity": "Sources able to form massive stars with Larson cluster relation", "value": "72 of 207", "uncertainty": "not stated", "units": "count", "from_step": 4, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "we find that 72 out of 207 sources can form massive stars if only mass *in situ* participates in star formation"}
+]},
+{"quantity": "Sources with surface density > 1 g/cm2", "value": "35", "uncertainty": "not stated", "units": "count", "from_step": 4, "evidence": [
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "A total of 35 ACA sources exceed the more stringent surface density threshold of 1 g cm$^{-2}$"}
+]},
+{"quantity": "Source size range (R_dec)", "value": "0.02 to 0.4", "uncertainty": "not stated", "units": "pc", "from_step": 4, "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "the ACA sources exhibit sizes ranging from 0.02 to 0.4 pc"}
+]},
+{"quantity": "Median volume density of ACA sources", "value": "1.6e5", "uncertainty": "not stated", "units": "cm^-3", "from_step": 4, "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "The median volume density of the ACA sources is $1.6\\times10^5$ cm$^{-3}$, which is 20 times larger than that of the clumps."}
+]},
+{"quantity": "Sources with volume density above 1e5 cm^-3", "value": "107", "uncertainty": "not stated", "units": "count", "from_step": 4, "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "with 107 of them surpassing $10^5$ cm$^{-3}$"}
+]},
+{"quantity": "M-R power-law index for QUARKS clumps (correlation coefficient 0.91, scatter 0.26)", "value": "1.8", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "a correlation of $M\\propto R^{1.8}$ (shown as orange line) with correlation coefficient of 0.91 and $1\\sigma$ data scatter of 0.26"}
+]},
+{"quantity": "M-R power-law index for ACA fragments", "value": "1.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "A linear regression applied to the ACA fragments reveals a correlation of $M\\propto R^{1.1}$"}
+]},
+{"quantity": "log(Msource,max/Msun) vs log(Mclump/Msun): slope 0.96, intercept -1.33, r 0.82", "value": "slope 0.96, intercept -1.33", "uncertainty": "1 sigma scatter 0.34 dex", "units": "dimensionless", "from_step": 5, "evidence": [
+ {"loc": "Correlation Between Clumps and Fragments", "quote": "The derived scaling relation is $\\log (M_{\\rm source,max}/M_{\\odot}) = 0.96 (\\log M_{\\rm clump}/M_{\\odot}) - 1.33$"},
+ {"loc": "Correlation Between Clumps and Fragments", "quote": "with the correlation coefficient of 0.82 and 1$\\sigma$ data scatter of 0.34 dex"}
+]},
+{"quantity": "log(Msource,total/Msun) vs log(Mclump/Msun): slope 0.94, intercept -1.22, r 0.85", "value": "slope 0.94, intercept -1.22", "uncertainty": "1 sigma scatter 0.30 dex", "units": "dimensionless", "from_step": 5, "evidence": [
+ {"loc": "Correlation Between Clumps and Fragments", "quote": "linear regression gives $\\log (M_{\\rm source,total}/M_\\odot) = 0.94 (\\log M_{\\rm clump}/M_{\\odot}) - 1.22$"},
+ {"loc": "Correlation Between Clumps and Fragments", "quote": "Intriguingly, the correlation is even tighter with coefficient of 0.85 and 1$\\sigma$ data scatter of 0.30 dex"}
+]},
+{"quantity": "Correlation coefficients in three distance bins", "value": "0.72 to 0.74 (scatter 0.25 to 0.35)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [
+ {"loc": "Distance Effects on Mass Correlation", "quote": "The correlation coefficients for the three fittings are substantial, ranging from 0.72 to 0.74, and the $1\\sigma$ scatters fall between 0.25 and 0.35."}
+]},
+{"quantity": "Dense gas fraction (DGF)", "value": "6% (intercept 10^-1.22)", "uncertainty": "scatter 1-10%", "units": "percent", "from_step": 6, "evidence": [
+ {"loc": "Dense Gas Fraction and Its Assembly", "quote": "giving a value directly by its intercept of $10^{-1.22}$, i.e., 6%"},
+ {"loc": "Dense Gas Fraction and Its Assembly", "quote": "Although showing invariance with $M_{\\rm clump}$, DGF still has a scatter of 1–10%."}
+]},
+{"quantity": "Spearman coefficient DGF vs clump radius", "value": "-0.12", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+ {"loc": "Self-similarity in protocluster formation", "quote": "Linear regression shows a weak correlation with a Spearman correlation coefficient of -0.12"}
+]},
+{"quantity": "log(DGF) vs log(L/M) fit (QUARKS+ASHES): slope 0.13, intercept -1.59", "value": "slope 0.13, intercept -1.59; Rs = 0.41, p = 2.9e-8", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+ {"loc": "Dense gas grows with evolution", "quote": "a correlation of $\\log({\\rm DGF}) = 0.13\\log{(L/M)}-1.59$"},
+ {"loc": "Dense gas grows with evolution", "quote": "The correlation yields a Spearman correlation coefficient of $R_s=0.41$ and an associated $p$ value of $2.9\\times10^{-8}$"}
+]},
+{"quantity": "Number of QUARKS-ATOMS links", "value": "301", "uncertainty": "not stated", "units": "count", "from_step": 7, "evidence": [
+ {"loc": "Protocluster ensembles", "quote": "we have identified a total of 301"}
+]},
+{"quantity": "ATOMS field sources without an ACA counterpart", "value": "128", "uncertainty": "not stated", "units": "count", "from_step": 7, "evidence": [
+ {"loc": "Protocluster ensembles", "quote": "The remaining 128 ATOMS dense cores, without any associated ACA sources, are referred to as"}
+]},
+{"quantity": "ACA sources containing more than one ATOMS core", "value": "86 (42%); 25 with three or more", "uncertainty": "not stated", "units": "count", "from_step": 7, "evidence": [
+ {"loc": "Protocluster ensembles", "quote": "There are 86 ACA sources (42%) with more than one ATOMS dense cores, and among them, 25 have three or more ATOMS dense cores"}
+]},
+{"quantity": "ACA sources associated with a single ATOMS core", "value": "95", "uncertainty": "not stated", "units": "count", "from_step": 7, "evidence": [
+ {"loc": "Protocluster ensembles", "quote": "there are 95 ACA sources associated with single ATOMS dense cores"}
+]},
+{"quantity": "Mean number of fragments per clump", "value": "~1.5 (93 clumps with one fragment)", "uncertainty": "not stated", "units": "count", "from_step": 2, "evidence": [
+ {"loc": "Limited Fragmentation", "quote": "The facts that the mean number of fragments per clump is $\\bar N_{\\rm frag}\\sim1.5$ and that 93 clumps have only one fragment"}
+]}
+],
+"findings_qualitative": [
+{"value": "ACA sources are massive, gravity-dominated subclump fragments with supersonic turbulence and possibly embedded protoclusters", "evidence": [
+ {"loc": "Summary", "quote": "Statistically speaking, the nature of ACA sources is massive gravity-dominated fragments with at the subclump scale, with supersonic turbulence and possibly embedded star-forming protocluster."}
+]},
+{"value": "H2CO temperatures of ACA sources exceed clump-averaged dust temperatures, implying an outward negative temperature gradient", "evidence": [
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "This suggests an outward negative temperature gradient, with the inner dense gas traced by H$_2$CO being warmer than the surrounding low-density gas and warmer than gas on average."}
+]},
+{"value": "Quasi-linear clump-fragment mass correlation interpreted as clump-core coevolution in late stages", "evidence": [
+ {"loc": "Summary", "quote": "A quasi-linear correlation between clump mass and ACA source mass is found, which can be explained by the dynamic coevolution between clump and core in a late stage."}
+]},
+{"value": "DGF increases with L/M across four orders of magnitude", "evidence": [
+ {"loc": "Summary", "quote": "With the data across four orders of magnitude of luminosity-to-mass ratio, we find a significantly increasing trend of DGF with clump evolution."}
+]},
+{"value": "Fragmentation at the subclump scale is limited, possibly due to global clump collapse", "evidence": [
+ {"loc": "Summary", "quote": "The fragmentation on the subclump scale is limited and the reasons could be that equilibrium may never be reached at subclump scale and massive clumps are undergoing a global collapse."}
+]}
+],
+"claims": [
+{"hypothesis": "Are ACA 1.3 mm continuum sources condensed, gravity-dominated fragments of massive clumps?",
+ "experiment": "Derived Tkin from H2CO, masses, sizes, densities, Mach numbers for 207 ACA sources and compared with clumps",
+ "result": "Median density 1.6e5 cm^-3 (20x the clumps), sizes 0.02-0.4 pc, Mach numbers mostly > 2, Tkin above clump dust T",
+ "finding": "ACA sources are subclump fragments (dense, turbulent, possibly protocluster ensembles)",
+ "support": "supported",
+ "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "This suggests that these ACA sources are the condensed gas fragments at a subclump scale."},
+ {"loc": "Massive star-forming regions with supersonic turbulence", "quote": "In panel (d), the Mach numbers $\\mathcal{M}$ at the scale of the ACA sources are mostly greater than 2."}
+ ]},
+{"hypothesis": "Does the mass of the most massive fragment (or total fragment mass) correlate with clump mass?",
+ "experiment": "Linear regression of log Msource,max and log Msource,total against log Mclump, plus distance-bin tests",
+ "result": "Slopes 0.96 and 0.94, r = 0.82 and 0.85, scatter 0.34 and 0.30 dex",
+ "finding": "Quasi-linear clump-fragment mass correlation; total dense mass is the more direct correlate",
+ "support": "supported",
+ "evidence": [
+ {"loc": "Correlation Between Clumps and Fragments", "quote": "Intriguingly, the correlation is even tighter with coefficient of 0.85 and 1$\\sigma$ data scatter of 0.30 dex"},
+ {"loc": "Distance Effects on Mass Correlation", "quote": "In summary, we assert a weak distance effect on the mass correlation in the QUARKS sample."}
+ ]},
+{"hypothesis": "Is the mass-radius relation of fragments consistent with self-similar gravitational collapse (rho ~ R^-2)?",
+ "experiment": "Linear regression of M-R for clumps and for ACA fragments",
+ "result": "Clumps M ~ R^1.8; fragments M ~ R^1.1",
+ "finding": "Fragments show a shallower M-R relation consistent with scale-free, self-similar collapse",
+ "support": "partially",
+ "evidence": [
+ {"loc": "Fragments with self-similar gravitational collapse", "quote": "This scaling aligns with a density profile of $\\rho\\propto R^{-2}$, indicative of a scale-free gravitational collapse in a self-similar fashion"}
+ ]},
+{"hypothesis": "Is the dense gas fraction size-invariant, indicating self-similar fragmentation, and does it grow with evolution?",
+ "experiment": "DGF vs clump radius and vs L/M for QUARKS, ASHES, Csengeri2017 and SQUALO clumps",
+ "result": "DGF ~6% (1-10%); Spearman -0.12 vs radius; log(DGF) = 0.13 log(L/M) - 1.59, Rs 0.41, p 2.9e-8",
+ "finding": "DGF is size-invariant but increases with L/M",
+ "support": "supported",
+ "evidence": [
+ {"loc": "Self-similarity in protocluster formation", "quote": "Therefore, our result favors the self-similarity of density structure in massive protoclusters in a dependent way."},
+ {"loc": "Dense gas grows with evolution", "quote": "indicating an evident increase in the mass fraction of the dense part of the clump as it evolves"}
+ ]},
+{"hypothesis": "Is fragmentation at the subclump scale limited?",
+ "experiment": "Counted fragments per clump and cross-matched with ATOMS 3 mm cores",
+ "result": "mean 1.5 fragments per clump, 93 clumps with one; 86 sources contain more than one ATOMS core",
+ "finding": "Limited fragmentation at the ACA scale, attributed to resolution/sensitivity and global clump collapse (partly speculative)",
+ "support": "partially",
+ "evidence": [
+ {"loc": "Limited Fragmentation", "quote": "Therefore, those small low-mass fragments cannot be effectively resolved even if they exist."}
+ ]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ACA 1.3 mm continuum has little free-free contamination and a large recoverable scale, suited to dense gas in massive clumps", "evidence": [
+ {"loc": "Introduction", "quote": "With relatively little free-free emission contamination and a maximum recoverable scale as large as $\\sim27$$''$, ACA 1.3 mm continuum data are useful for tracking dense molecular gas within massive clumps."}
+]},
+{"field": "why_this_method", "value": "SExtractor handles background, local rms thresholds and deblending; p-H2CO minimizes optical depth uncertainties for temperature", "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "The advantages of SEXTRACTOR in our case are: 1) to subtract the background diffuse emission and rms noise automatically;"},
+ {"loc": "Temperature Estimation from Formaldehyde", "quote": "Therefore, temperature estimation from p-H$_2$CO transition lines minimizes the uncertainties from a high optical depth."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Self-calibration was not applied because it would not contribute much to the science goals", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "Self-calibration can improve the sensitivity, but will not contribute much to the science goals in this paper."}
+]},
+{"value": "Missing flux from extended emission was ignored", "evidence": [
+ {"loc": "ACA 1.3 mm Continuum Source Catalog", "quote": "We thus ignore the effects of missing flux in the following analyses."}
+]}
+],
+"limitations_admitted": [
+{"value": "Limited mass sensitivity (>~3 Msun) and spatial resolution (>~0.1 pc) cannot resolve small low-mass fragments", "evidence": [
+ {"loc": "Limited Fragmentation", "quote": "the QUARKS ACA observations have limited mass sensitivity of $\\gtrsim3$ $M_\\odot$, at a temperature of 20 K and distance of 4 kpc and limited spatial resolution of $\\gtrsim0.1$ pc."}
+]},
+{"value": "H2CO temperature fidelity depends on H2CO tracing dense core gas, which may fail (outflow-dominated emission)", "evidence": [
+ {"loc": "Caveats", "quote": "The temperature estimation using the H$_2$CO triplet assumes that the H$_2$CO emission mainly traces dense gas, which is not the case in a sample of 12 infrared dark clouds"}
+]},
+{"value": "Multiple velocity components overestimate line width; line wings and self-absorption disturb the fit", "evidence": [
+ {"loc": "Caveats", "quote": "If more than one velocity component is associated with an ACA source, the line width will be overestimated."}
+]},
+{"value": "QUARKS fields may not cover all dense gas in large clumps (very low DGF)", "evidence": [
+ {"loc": "Self-similarity in protocluster formation", "quote": "indicating that QUARKS field of views are not large enough to cover all the dense gas in clumps with large sizes"}
+]}
+],
+"referee_caveats_inferred": [
+"Internal inconsistency: the Figure 8 example gives Tkin = 53(+/-11) K for I13291-6229_ACA2 while the sample table lists 74.8(1.4) K for the same source; Section 4.2 gives median 72 K, Section 5.1.1 gives mean and median ~68 K",
+"Dust temperature set equal to H2CO Tkin from source-averaged ACA-resolution spectra; Tkin errors in the table look very small compared with the +/-11 K of the example",
+"Clump and fragment masses both scale as d^2 with the same adopted distance, which can induce a correlation; only checked with three distance bins",
+"Clump masses from ATLASGAL SED fitting at much coarser resolution than the ACA data; DGF depends on the clump mass definition and field coverage (ATOMS-biased pointings)",
+"Regression method and error treatment (OLS vs orthogonal, selection effects from sensitivity limits, unresolved sources) are not specified; no slope uncertainties given",
+"DGF-L/M trend mixes samples with different temperature assumptions and different cropping; statistical weight of the 0.13 slope is modest (Rs = 0.41)",
+"Interpretation of M ~ R^1.1 as self-similar collapse is qualitative and not tested against alternative profiles"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Public availability of the ALMA data is not explicitly stated; the paper refers to its 'released ACA data' and provides catalog tables in machine-readable form", "evidence": [
+ {"loc": "Data Calibration and Imaging", "quote": "self-calibration has not been performed on our released ACA data"},
+ {"loc": "Table 2", "quote": "The table is available in its entirety in machine-readable form."}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Liu2023QUARKS Table A distances and the model-spectrum line mask",
+"Urquhart2018ATLASGAL clump masses, temperatures and L/M values",
+"Complete tclean/auto-multithresh parameters and manual masks",
+"SExtractor configuration and the catalog SNR cut",
+"pyspeckit fit settings (initial guesses, bounds, aperture)",
+"ASHES comparison data identification and processing",
+"Regression/Monte Carlo implementation details"
+],
+"estimated_data_volume_inferred": "15 ACA scheduling blocks (1-3 EBs each) in 4 x 2 GHz x 4096 channel setup; raw MS likely tens to a few hundred GB in total, plus several GB of per-field cubes",
+"score_inferred": 3,
+"score_reason": "Project codes, imaging parameters, SExtractor settings, mass formulae and many numeric results are given, but clump masses, distances, line masks, several tclean parameters and fit/regression details are inherited or missing, and the catalog depends on external tables.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "ALMA ACA data under stated project codes are archive data, imaging and extraction recipe is largely explicit, and key results are numeric (207 sources, DGF 6%, regression coefficients), though external clump tables are needed.",
+"methods_papers": [
+{"citation": "(cite: Liu2023QUARKS)", "why": "QUARKS survey description, data combinations, line list, distances and clump masses"},
+{"citation": "(cite: Ginsburg2016CMZTemp)", "why": "RADEX-grid p-H2CO temperature fitting method"},
+{"citation": "(cite: Bertin1996SExtractor)", "why": "SExtractor source extraction"},
+{"citation": "(cite: Rosolowsky2010BGPSII)", "why": "deconvolved source size definition with eta = 2.4"},
+{"citation": "(cite: Sanhueza2017G28)", "why": "mass uncertainty terms for gas-to-dust ratio and opacity"}
+],
+"companion_papers": [
+{"citation": "(cite: Liu2020ATOMS-I)", "why": "ATOMS survey that QUARKS follows up"},
+{"citation": "(cite: Liu2021ATOMS-III)", "why": "ATOMS dense core catalog used for the cross-match"},
+{"citation": "(cite: Xu2024ASSEMBLE)", "why": "high-resolution clump-core mass correlation in 11 protoclusters"},
+{"citation": "(cite: Urquhart2018ATLASGAL)", "why": "clump masses, temperatures and L/M"},
+{"citation": "(cite: Morii2023ASHES)", "why": "ASHES early-stage clumps used as comparison"},
+{"citation": "(cite: Traficante2023SQUALO-I)", "why": "SQUALO ACA survey with comparable mass correlation and DGF"}
+],
+"related_projects_or_surveys": ["QUARKS", "ATOMS", "ASHES", "ATLASGAL", "SQUALO", "ALMA-IMF", "Hi-GAL", "GLIMPSE", "MeerKAT Galactic Plane Survey"]
+}

@@ -1,0 +1,658 @@
+{
+ "bibcode": "2022ApJ...931L...5J",
+ "title": "ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Deriving Inclination Angle and Velocity of the Protostellar Jets from Their SiO Knots",
+ "year": 2022,
+ "doi": "10.3847/2041-8213/ac6a53",
+ "arxiv_id": "2204.12731",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Can a shock-forming model of semi-periodical jet velocity variations derive the inclination angle and velocity of protostellar jets from single-epoch ALMA observations of SiO knots?",
+ "alma_project_codes": [
+  "2018.1.00302.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m (TM1, TM2) and ACA",
+  "angular_resolution": "~0.35\" x 0.31\" for CO, ~0.40\" x 0.32\" for SiO, ~0.43\" x 0.31\" for C18O",
+  "sensitivity": "~2.2 mJy beam^-1 (CO), ~2.0 mJy beam^-1 (SiO), ~2.7 mJy beam^-1 (C18O) per ~1.6 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Systemic velocities (V_sys) of the six targeted sources",
+    "evidence": [
+     {
+      "loc": "Results and models",
+      "quote": "It is found to be 8.0$\\pm$0.8, 9.6$\\pm$0.8, 9.6$\\pm$0.8, 10.4$\\pm$0.8, 9.9$\\pm$0.8, and 8.8$\\pm$0.8 km s$^{-1}$ for G209, G205, G203, G191, G205S3, and G206, respectively (cite: 2022ApJ...925...11D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...925...11D)"
+  },
+  {
+   "what": {
+    "value": "SiO PV diagram measurements (Delta V_obs and V_obs) and CO outflow shell model parameters for G205S3 and G206",
+    "evidence": [
+     {
+      "loc": "SiO jets and the shock-forming model",
+      "quote": "the values of $\\Delta V_{\\rm obs}$ and $V_{\\rm obs}$ measured from the SiO PV diagrams (cite: 2022ApJ...925...11D),"
+     },
+     {
+      "loc": "CO outflows and the wide-angle wind-driven shell model",
+      "quote": "Note that the values for G205S3 and G206 are taken from (cite: 2022ApJ...925...11D)."
+     }
+    ]
+   },
+   "citation": "(cite: 2022ApJ...925...11D)"
+  },
+  {
+   "what": {
+    "value": "SiO jet knot observations, proper motions, and radial velocities for HH 211",
+    "evidence": [
+     {
+      "loc": "Application to other sources",
+      "quote": "In order to further test the shock-forming model, we applied it to three previously reported SiO jets, HH 211 (cite: 2016ApJ...816...32J; 2021ApJ...909...11J),"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: (1) (cite: 2016ApJ...816...32J; 2021ApJ...909...11J) (2) (cite: 1998Natur.394..862Z; 2015ApJ...805..186L; 2017NatAs...1E.152L) (3) (cite: 2010ApJ...717...58H; 2021ApJ...906..112Y)"
+     }
+    ]
+   },
+   "citation": "(cite: 2016ApJ...816...32J; 2021ApJ...909...11J)"
+  },
+  {
+   "what": {
+    "value": "SiO and H2 jet knot observations, proper motions, and radial velocities for HH 212",
+    "evidence": [
+     {
+      "loc": "Application to other sources",
+      "quote": "In the case of HH 212, we also included the H$_2$ knots in our analysis (cite: 2015ApJ...805..186L),"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: (1) (cite: 2016ApJ...816...32J; 2021ApJ...909...11J) (2) (cite: 1998Natur.394..862Z; 2015ApJ...805..186L; 2017NatAs...1E.152L) (3) (cite: 2010ApJ...717...58H; 2021ApJ...906..112Y)"
+     }
+    ]
+   },
+   "citation": "(cite: 1998Natur.394..862Z; 2015ApJ...805..186L; 2017NatAs...1E.152L)"
+  },
+  {
+   "what": {
+    "value": "SiO jet knot observations, proper motions, and radial velocities for L1448C(N)",
+    "evidence": [
+     {
+      "loc": "Application to other sources",
+      "quote": "and L1448C(N) (cite: 2021ApJ...906..112Y), of which the jet velocity and inclination angle have been derived independently from proper motion measurements and the observed radial velocity."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "References: (1) (cite: 2016ApJ...816...32J; 2021ApJ...909...11J) (2) (cite: 1998Natur.394..862Z; 2015ApJ...805..186L; 2017NatAs...1E.152L) (3) (cite: 2010ApJ...717...58H; 2021ApJ...906..112Y)"
+     }
+    ]
+   },
+   "citation": "(cite: 2010ApJ...717...58H; 2021ApJ...906..112Y)"
+  },
+  {
+   "what": {
+    "value": "Mid-IR and sub-mm light curve variability classifications for protostars",
+    "evidence": [
+     {
+      "loc": "Jet Knot Timescales and Mid-IR/Sub-mm Light Curve Variability",
+      "quote": "(cite: park21) analyzed 7-year mid-IR light curves of 735 protostars, classifying 140 (20%) as having dominant brightness variation timescales longer than three years."
+     },
+     {
+      "loc": "Jet Knot Timescales and Mid-IR/Sub-mm Light Curve Variability",
+      "quote": "Similarly, (cite: lee21) classified 4-year sub-mm light curves of 43 protostars, and recovered 15 (35%) with dominant periods longer than three years."
+     }
+    ]
+   },
+   "citation": "(cite: park21), (cite: lee21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Determine systemic velocity of each target",
+   "method": "Identify the velocity at the peak emission of the C18O position-velocity structure cut perpendicular to the jet axis through the source center",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Peak emission in C18O PV cut perpendicular to the jet axis represents the systemic velocity"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure SiO jet knot spatial and kinematic properties",
+   "method": "Measure distance to first knot (D_obs) and average knot interval (Delta D_obs) from total intensity SiO maps, and measure radial sideways-ejection velocity (Delta V_obs) and radial jet velocity (V_obs) from SiO PV diagrams",
+   "software": [],
+   "key_parameters": [
+    "Error on D_obs assumed to be -0.5 Delta D_obs and +0.5 beam size"
+   ],
+   "assumptions": [
+    "Knots very close to the central source (blueshifted side of G205S3, both sides of G206, BK0/RK0 in HH 211, R1-a/BI-a in L1448C(N)) have a different origin and are excluded; downstream knots are adopted as the first shock-formed knots"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive jet inclination angle, velocity, and velocity variation period using the shock-forming model",
+   "method": "Apply analytical shock-forming model equations (Equations 3, 6, 7, 8) to measured D_obs, Delta D_obs, Delta V_obs, and V_obs to compute inclination angle i, jet velocity V_j, and period P",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Jet velocity varies sinusoidally with period P and amplitude Delta V: V = V_j - (Delta V / 2) sin(2 pi t / P)",
+    "No energy dissipation in shocks; thermal energy is totally transferred sideways so sideways-ejection velocity equals Delta V"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit CO outflow shells with the wide-angle wind-driven shell model",
+   "method": "Fit projected parabolic shell equation (Eq. 11) to outflow boundaries in low-velocity CO channel maps and tilted parabolic PV equation (Eq. 12) to CO PV diagrams along the jet axis to obtain i, c, and t_0",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Outflow shell is a radially expanding parabolic shell with z = c R^2 and v_R = R / t_0"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Jet inclination angle i (G209)",
+   "value": "28",
+   "uncertainty": "+0.7/-0.6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209 (HOPS 10) | 1.3$^{+0.2}_{-0.4}$ | 0.8$\\pm$0.2 | 20 | 49 | 28$^{+0.7}_{-0.6}$ | 104$^{+25}_{-20}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G209)",
+   "value": "104",
+   "uncertainty": "+25/-20",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209 (HOPS 10) | 1.3$^{+0.2}_{-0.4}$ | 0.8$\\pm$0.2 | 20 | 49 | 28$^{+0.7}_{-0.6}$ | 104$^{+25}_{-20}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G209)",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G209 (HOPS 10) | 1.3$^{+0.2}_{-0.4}$ | 0.8$\\pm$0.2 | 20 | 49 | 28$^{+0.7}_{-0.6}$ | 104$^{+25}_{-20}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G205)",
+   "value": "1.0",
+   "uncertainty": "+0.6/-0.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205 (HOPS 358) | 1.4$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 1.6 | 1.0$^{+0.6}_{-0.2}$ | 88$^{+12}_{-20}$ | 22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G205)",
+   "value": "88",
+   "uncertainty": "+12/-20",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205 (HOPS 358) | 1.4$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 1.6 | 1.0$^{+0.6}_{-0.2}$ | 88$^{+12}_{-20}$ | 22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G205)",
+   "value": "22",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205 (HOPS 358) | 1.4$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 1.6 | 1.0$^{+0.6}_{-0.2}$ | 88$^{+12}_{-20}$ | 22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G203)",
+   "value": "18",
+   "uncertainty": "+4/-5",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G203 | 1.8$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 30.8 | 18$^{+4}_{-5}$ | 117$^{+12}_{-30}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G203)",
+   "value": "117",
+   "uncertainty": "+12/-30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G203 | 1.8$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 30.8 | 18$^{+4}_{-5}$ | 117$^{+12}_{-30}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G203)",
+   "value": "17",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G203 | 1.8$^{+0.2}_{-0.5}$ | 1.0$\\pm$0.2 | 20 | 30.8 | 18$^{+4}_{-5}$ | 117$^{+12}_{-30}$ | 17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G191)",
+   "value": "1.8",
+   "uncertainty": "+0.2/-0.2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G191 | 4.1$^{+0.2}_{-0.45}$ | 0.9$\\pm$0.2 | 20 | 8.9 | 1.8$^{+0.2}_{-0.2}$ | 286$^{+14}_{-30}$ | 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G191)",
+   "value": "286",
+   "uncertainty": "+14/-30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G191 | 4.1$^{+0.2}_{-0.45}$ | 0.9$\\pm$0.2 | 20 | 8.9 | 1.8$^{+0.2}_{-0.2}$ | 286$^{+14}_{-30}$ | 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G191)",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G191 | 4.1$^{+0.2}_{-0.45}$ | 0.9$\\pm$0.2 | 20 | 8.9 | 1.8$^{+0.2}_{-0.2}$ | 286$^{+14}_{-30}$ | 6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G205S3 redshifted)",
+   "value": "48",
+   "uncertainty": "+13/-5",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.1$^{+0.2}_{-0.55}$ | 1.1$\\pm$0.2 | 20 | 70 | 48$^{+13}_{-5}$ | 94$^{+8}_{-18}$ | 33 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G205S3 redshifted)",
+   "value": "94",
+   "uncertainty": "+8/-18",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.1$^{+0.2}_{-0.55}$ | 1.1$\\pm$0.2 | 20 | 70 | 48$^{+13}_{-5}$ | 94$^{+8}_{-18}$ | 33 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G205S3 redshifted)",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.1$^{+0.2}_{-0.55}$ | 1.1$\\pm$0.2 | 20 | 70 | 48$^{+13}_{-5}$ | 94$^{+8}_{-18}$ | 33 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G205S3 blueshifted)",
+   "value": "52",
+   "uncertainty": "+16/-4",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.5$^{+0.2}_{-0.75}$ | 1.5$\\pm$0.2 | 20 | 80 | 52$^{+16}_{-4}$ | 102$^{+5}_{-17}$ | 45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G205S3 blueshifted)",
+   "value": "102",
+   "uncertainty": "+5/-17",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.5$^{+0.2}_{-0.75}$ | 1.5$\\pm$0.2 | 20 | 80 | 52$^{+16}_{-4}$ | 102$^{+5}_{-17}$ | 45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G205S3 blueshifted)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G205S3 (HOPS 315) | 1.5$^{+0.2}_{-0.75}$ | 1.5$\\pm$0.2 | 20 | 80 | 52$^{+16}_{-4}$ | 102$^{+5}_{-17}$ | 45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (G206 redshifted)",
+   "value": "15",
+   "uncertainty": "+6/-2",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G206 (HOPS 399) | 1.5$^{+0.2}_{-0.5}$ | 1$\\pm$0.2 | 40 | 50 | 15$^{+6}_{-2}$ | 195$^{+20}_{-60}$ | 16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (G206 redshifted)",
+   "value": "195",
+   "uncertainty": "+20/-60",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G206 (HOPS 399) | 1.5$^{+0.2}_{-0.5}$ | 1$\\pm$0.2 | 40 | 50 | 15$^{+6}_{-2}$ | 195$^{+20}_{-60}$ | 16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity variation period P (G206 redshifted)",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "year",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "G206 (HOPS 399) | 1.5$^{+0.2}_{-0.5}$ | 1$\\pm$0.2 | 40 | 50 | 15$^{+6}_{-2}$ | 195$^{+20}_{-60}$ | 16 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (HH211 model)",
+   "value": "10",
+   "uncertainty": "+6/-1.7",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HH211 | 2.4$^{+0.5}_{-1}$ | 2$\\pm$0.5 | 30 | 20 | 10$^{+6}_{-1.7}$ | 114$^{+24}_{-46}$ | 27 | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (HH211 model)",
+   "value": "114",
+   "uncertainty": "+24/-46",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HH211 | 2.4$^{+0.5}_{-1}$ | 2$\\pm$0.5 | 30 | 20 | 10$^{+6}_{-1.7}$ | 114$^{+24}_{-46}$ | 27 | 1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (HH212 model)",
+   "value": "3",
+   "uncertainty": "+0.7/-0.3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HH212 | 4.5$^{+0.5}_{-1}$ | 2$\\pm$0.5 | 20 | 7.3 | 3$^{+0.7}_{-0.3}$ | 141$^{+16}_{-30}$ | 27 | 2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (HH212 model)",
+   "value": "141",
+   "uncertainty": "+16/-30",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HH212 | 4.5$^{+0.5}_{-1}$ | 2$\\pm$0.5 | 20 | 7.3 | 3$^{+0.7}_{-0.3}$ | 141$^{+16}_{-30}$ | 27 | 2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (L1448C(N) redshifted model)",
+   "value": "36",
+   "uncertainty": "+0.7/-3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L1448C(N) | 2.63$^{+0.3}_{-1.1}$ | 2.2$\\pm$0.3 | 20 | 54 | 36$^{+0.7}_{-3}$ | 92$^{+7}_{-2}$ | 40 | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (L1448C(N) redshifted model)",
+   "value": "92",
+   "uncertainty": "+7/-2",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L1448C(N) | 2.63$^{+0.3}_{-1.1}$ | 2.2$\\pm$0.3 | 20 | 54 | 36$^{+0.7}_{-3}$ | 92$^{+7}_{-2}$ | 40 | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet inclination angle i (L1448C(N) blueshifted model)",
+   "value": "59",
+   "uncertainty": "+30/-7",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L1448C(N) | 1.87$^{+0.3}_{-1.6}$ | 3.2$\\pm$0.3 | 20 | 61.2 | 59$^{+30}_{-7}$ | 71$^{+6}_{-10}$ | 122 | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet velocity V_j (L1448C(N) blueshifted model)",
+   "value": "71",
+   "uncertainty": "+6/-10",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "L1448C(N) | 1.87$^{+0.3}_{-1.6}$ | 3.2$\\pm$0.3 | 20 | 61.2 | 59$^{+30}_{-7}$ | 71$^{+6}_{-10}$ | 122 | 3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G209 Red)",
+   "value": "30",
+   "uncertainty": "5",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G209 Red | HOPS 10 | 28$^{+0.7}_{-0.6}$ | 30$\\pm$5 | 0.55$\\pm$0.05 | 0.7$\\pm$0.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G209 Blue)",
+   "value": "30",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G209 Blue | HOPS 10 |  | 30$\\pm$3 | 1.6$\\pm$0.3 | 1.3$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G205 Red)",
+   "value": "5",
+   "uncertainty": "2",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G205 Red | HOPS 358 | 1.0$^{+0.6}_{-0.2}$ | 5$\\pm$2 | 1$\\pm$0.3 | 1.2$\\pm$0.3 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G205 Blue)",
+   "value": "4",
+   "uncertainty": "1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G205 Blue | HOPS 358 |  | 4$\\pm$1 | 4$\\pm$1 | 0.4$\\pm$0.15 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G203 Red)",
+   "value": "30",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G203 Red |  | 18$^{+4}_{-5}$ | 30$\\pm$3 | 0.3$\\pm$0.1 | 0.6$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G203 Blue)",
+   "value": "30",
+   "uncertainty": "4",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G203 Blue |  |  | 30$\\pm$4 | 0.5$\\pm$0.1 | 0.35$\\pm$0.05 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G191 Red)",
+   "value": "2",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G191 Red |  | 1.8$^{+0.2}_{-0.2}$ | 2$\\pm$0.5 | 0.8$\\pm$0.2 | 0.9$\\pm$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow inclination angle i (G191 Blue)",
+   "value": "10",
+   "uncertainty": "2",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "G191 Blue |  |  | 10$\\pm$2 | 0.8$\\pm$0.1 | 0.65$\\pm$0.1 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Adopted distances to the Orion targets and literature sources (needed to convert angular knot interval Delta D_obs in arcsec and jet velocity V_j in km s^-1 into period P in years)",
+  "Exact source center coordinates and jet position angles used for extracting C18O, SiO, and CO position-velocity cuts",
+  "Velocity integration ranges used to create the total intensity SiO maps and low-velocity CO channel maps",
+  "TCLEAN imaging parameters: cell size, image size, deconvolver, stopping threshold, masking, and continuum subtraction details"
+ ],
+ "missing_for_reproduction": [
+  "Adopted distances to the targets used to convert angular knot intervals (arcsec) and velocities (km s^-1) into periods P (years) in Table 1",
+  "Exact source coordinates and position angles for the PV cuts",
+  "Velocity integration ranges for the SiO moment 0 maps",
+  "Detailed fitting procedure (visual vs. numerical optimization) for the CO parabolic shell model in Equations 11 and 12"
+ ],
+ "reproducibility_score": 70,
+ "score_reason": "The ALMA project code (2018.1.00302.S) is public, basic imaging parameters (CASA 5.4, tclean, robust 0.5, velocity resolution, beam, rms) are stated, and the analytical equations for both the shock-forming model and wind-driven shell model are fully given alongside all intermediate measured quantities in Table 1. However, calibration details, source coordinates, PV cut position angles, and target distances are delegated to companion ALMASOP papers.",
+ "rediscovery_reason": "Public ALMA data (2018.1.00302.S) and a simple, explicit analytical recipe (Equations 1-12) with full intermediate and final numerical tables (Tables 1 and 2) make this a strong candidate for reproducing both the image-plane knot measurements and the derived kinematic parameters.",
+ "source_card": "cards/2022ApJ...931L...5J/sonnet/card.md"
+}

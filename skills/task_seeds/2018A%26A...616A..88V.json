@@ -1,0 +1,326 @@
+{
+ "bibcode": "2018A&A...616A..88V",
+ "title": "V1094 Scorpii: A rare giant multi-ringed disk around a T Tauri star",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201832862",
+ "arxiv_id": "1805.03221",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the structure of the extended multi-ringed disk around V1094 Sco, and how common are such large disks in Lupus?",
+ "alma_project_codes": [
+  "2016.1.01239.S"
+ ],
+ "data": {
+  "bands": "Band 6 (234 GHz) and Band 7 (328 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.25'' x 0.22'' (B6), 0.19'' x 0.18'' (B7)",
+  "sensitivity": "rms 0.11 (Band 6) and 0.3 (Band 7) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar luminosity and accretion rate of V1094 Sco",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "V1094 is a K6 star with a luminosity of 1.7 (1.95) L$_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: alcala17)"
+  },
+  {
+   "what": {
+    "value": "GQ Lup Band 7 fluxes used to recalibrate Band 7 flux scale",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "it is safe to compare these data with the (cite: macgregor17) results to re-calibrate the Band 7 fluxes"
+     }
+    ]
+   },
+   "citation": "(cite: macgregor17)"
+  },
+  {
+   "what": {
+    "value": "Temperature profile T(R)=99.3 K (R/1AU)^-0.68 from SED fit",
+    "evidence": [
+     {
+      "loc": "3.2.1",
+      "quote": "$T(R) = 99.3\\,\\rm{K} \\left( \\frac{R}{1\\,\\rm{AU}} \\right)^{-0.68}$"
+     }
+    ]
+   },
+   "citation": "(cite: tsukagoshi11)"
+  },
+  {
+   "what": {
+    "value": "Lupus disk continuum radii and fractions (large disks, transition disks)",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "$8 \\pm 3.0 \\%$ of the full population (cite: vandermarel18)"
+     }
+    ]
+   },
+   "citation": "(cite: vandermarel18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure integrated continuum flux and disk geometry",
+   "method": "Curve-of-growth aperture photometry; imfit 2D Gaussian for PA, inclination, center",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "aperture radius 2.16''"
+   ],
+   "assumptions": [
+    "disk purely radially symmetric"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit radial intensity profile in uv-plane to locate rings and gaps",
+   "method": "Gaussian times cosine model Fourier transformed and fit to deprojected visibilities binned in 10 klambda; baselines < 700 klambda",
+   "software": [
+    "pymc"
+   ],
+   "key_parameters": [
+    "up to n=4 terms, 13 free parameters; rho ranges at least 100 klambda wide"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive radial spectral index profile",
+   "method": "Re-image both bands with common 0.25'' circular beam and uv range 17-1260 klambda; compute alpha per pixel after deprojection, radially average",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "pixels with S/N < 2.5 masked"
+   ],
+   "assumptions": [
+    "10% flux calibration error in both bands gives 0.42 error on alpha"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test cold optically thick inner disk with brightness temperature and models",
+   "method": "Brightness temperature of peak assuming optically thick; compared to Tsukagoshi SED model and DALI grid of 45 models imaged with 0.25'' beam",
+   "software": [
+    "DALI"
+   ],
+   "key_parameters": [
+    "Rc=250 AU, gamma=0.6, Mdisk fixed 0.1 Msun, h_c, psi, f_ls, chi grid"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; smooth disks without rings or gaps"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate occurrence rate of giant disks in Lupus",
+   "method": "Count disks with continuum radii up to ~300 AU among 95 Class II Lupus sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "uniform 150 pc distance"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 6 integrated flux",
+   "value": "180",
+   "uncertainty": "14",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "in Band 6 is $180 \\pm 14$ mJy, while in Band 7 it is $390 \\pm 19$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 integrated flux",
+   "value": "390",
+   "uncertainty": "19",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "in Band 6 is $180 \\pm 14$ mJy, while in Band 7 it is $390 \\pm 19$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "109",
+   "uncertainty": "1.9",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "PA$= 109 \\pm 1.9 ^{\\circ}$ and $i = 53 \\pm 1.3 ^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "53",
+   "uncertainty": "1.3",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Results and analysis",
+     "quote": "PA$= 109 \\pm 1.9 ^{\\circ}$ and $i = 53 \\pm 1.3 ^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gap 1 and Gap 2 radii",
+   "value": "100 and 170",
+   "uncertainty": "6 and 13",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "while the gaps are found at $100 \\pm 6$ AU and $170 \\pm 13$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring 1 and Ring 2 radii",
+   "value": "130 and 220",
+   "uncertainty": "9 and 16",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "the locations of the bright rings become $130 \\pm 9$ AU and $220 \\pm 16$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Core characteristic radius",
+   "value": "35",
+   "uncertainty": "2",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "having a characteristic radius of $35 \\pm 2$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index in inner disk",
+   "value": "2.09",
+   "uncertainty": "0.03 (statistical; 0.42 absolute flux calibration)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "consistent with $\\alpha_{\\rm{mm}} = 2.09 \\pm 0.03$, increasing outward"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index in first gap (100 AU)",
+   "value": "3.0",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "towards $3.0 \\pm 0.2$ in the first gap at $100$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index in first ring (130 AU)",
+   "value": "2.3",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2",
+     "quote": "to $2.3 \\pm 0.3$ in the first ring at $130$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Central brightness temperature",
+   "value": "12.9",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "corresponds to a brightness temperature of only 12.9 K if we assume the emission is optically thick"
+    }
+   ]
+  },
+  {
+   "quantity": "DALI midplane temperature at 20 AU",
+   "value": "20",
+   "uncertainty": "4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "we find midplane temperatures of $20 \\pm 4$ K at this radius"
+    }
+   ]
+  },
+  {
+   "quantity": "Occurrence rate of giant disks in Lupus",
+   "value": "2.1",
+   "uncertainty": "1.5",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "This implies an occurrence rate of $2.1 \\pm 1.5 \\%$ for these largest disks."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "MCMC priors, number of steps and burn-in for the pymc uv fit",
+  "CASA version",
+  "Self-calibration solution intervals beyond the minimum and the reference models",
+  "Line-free channels and spectral windows used for continuum",
+  "Mask used in tclean and cleaning threshold",
+  "Initial pymc ranges of rho_i",
+  "Exact DALI grid parameters besides Table 1 (inner radius, dust opacities, stellar spectrum)",
+  "Whether the Band 7 1.3 flux rescaling was applied to the spectral index maps and how the ratio of 1.3 was sourced in detail"
+ ],
+ "missing_for_reproduction": [
+  "pymc priors and sampler settings",
+  "CASA version and self-calibration details",
+  "DALI full setup"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Data and main steps stated, but MCMC priors, CASA version and several imaging details are missing.",
+ "rediscovery_reason": "Data are from a standard ALMA project, the recipe is mostly specified and the results are numeric (ring/gap radii, alpha).",
+ "source_card": "cards/2018A%26A...616A..88V/sonnet/card.md"
+}

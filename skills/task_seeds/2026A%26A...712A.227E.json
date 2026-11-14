@@ -1,0 +1,419 @@
+{
+ "bibcode": "2026A&A...712A.227E",
+ "title": "ALMA CO-CAVITY: I. Resolved molecular gas in void galaxies",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202660095",
+ "arxiv_id": "2605.23399",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "How are detailed molecular gas properties and their connection to star formation and stellar content influenced by large-scale and local environments in void galaxies?",
+ "alma_project_codes": [
+  "2022.1.00482.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "ALMA main array (12m)",
+  "angular_resolution": "1.0'' - 1.5'' (~0.64 - 0.96 kpc) native; 2.5'' smoothed",
+  "sensitivity": "0.677 to 1.040 mJy beam^-1 per 10 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalogue of Cosmic Voids and CAVITY parent sample",
+    "evidence": [
+     {
+      "loc": "3 Sample",
+      "quote": "The galaxies used in this work are drawn from the CAVITY sample (cite: Perez2024), which is based on the Catalogue of Cosmic Voids (cite: Pan2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Perez2024), (cite: Pan2012)"
+  },
+  {
+   "what": {
+    "value": "Stellar masses and star formation rates from MPA/JHU DR7 catalogue, and morphological T-types",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "we also list the individual main properties for each galaxy, mainly from SDSS DR7, the MPA/JHU catalogue (cite: Kauffmann2003a; Brinchmann2004; Tremonti2004; Salim2007) and (cite: Dominguez_Sanchez2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Kauffmann2003a; Brinchmann2004; Tremonti2004; Salim2007), (cite: Dominguez_Sanchez2018)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m CO(1-0) unresolved fluxes and galaxy SF classifications",
+    "evidence": [
+     {
+      "loc": "3 Sample",
+      "quote": "(cite: Rodriguez2024) studied the molecular gas of VGs using (unresolved) IRAM 30m CO(1–0) observations."
+     },
+     {
+      "loc": "Potential flux loss due to lack of short spacings in ALMA observations, Table notes",
+      "quote": "(2) $F_{\\rm IRAM~30m,~corr}$: The aperture-corrected flux obtained from CO-CAVITY IRAM 30m observations, compiled from (cite: Rodriguez2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Rodriguez2024)"
+  },
+  {
+   "what": {
+    "value": "Physically bound neighbours and LSS isolation environmental parameters",
+    "evidence": [
+     {
+      "loc": "3 Sample",
+      "quote": "and the number of physically bound neighbours within 0.45 Mpc projected radius and $\\pm$160 km s$^{-1}$ in line-of-sight velocity ($N_{\\rm neigh, TR24}$) compiled from (cite: TorresRios2024), based on the catalogue by (cite: Tempel2017)."
+     },
+     {
+      "loc": "3 Sample",
+      "quote": "We also list, using the NSA catalogue and considering a volume-limited sample of neighbours to avoid redshift bias, LSS neighbours within 1 Mpc projected radius and $\\pm$500 km s$^{-1}$ ($N_{\\rm neigh, AF15}$) following the criteria in (cite: Argudo2015)."
+     }
+    ]
+   },
+   "citation": "(cite: TorresRios2024), (cite: Tempel2017), (cite: Argudo2015)"
+  },
+  {
+   "what": {
+    "value": "Comparison galaxy samples: xCOLD GASS, EDGE-CALIFA, ALMaQUEST, and iEDGE",
+    "evidence": [
+     {
+      "loc": "5.1 Molecular gas masses",
+      "quote": "In 6 we present the $M_{\\rm H_2}$ distribution for the ALMA CO-CAVITY, CO-CAVITY, xCOLD GASS, EDGE-CALIFA, and ALMaQUEST samples."
+     },
+     {
+      "loc": "5.4 Global scaling relations: SK, MGMS, SFMS",
+      "quote": "in comparison with previous surveys including global data: CO-CAVITY (cite: Rodriguez2024), xCOLD GASS (cite: Saintonge2017), and iEDGE (cite: 2025A&A...699A.367C)."
+     }
+    ]
+   },
+   "citation": "(cite: Saintonge2017), (cite: Bolatto2017; Wong2024), (cite: Lin2020; Ellison2024), (cite: 2025A&A...699A.367C)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine multi-configuration ALMA data and image CO(1-0) data cubes",
+   "method": "Use QA2 pipeline products directly for 15 single-configuration (C-3) galaxies; for 26 two-configuration galaxies, subtract continuum with uvcontsub, concatenate MS files with concat, and clean with tclean using auto-multithresh and primary beam correction.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "concat",
+    "tclean"
+   ],
+   "key_parameters": [
+    "freqtol = 30 MHz in concat",
+    "robust = 0.5, threshold = 2 sigma, channel width = 10 km s^-1, pixel size = 0.1'', auto-multithresh"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Rebin, smooth, and regrid data cubes to match optical IFU resolution",
+   "method": "Rebin cubes spectrally to 10 km s^-1 with imrebin, smooth spatially to a circular 2.5'' PSF with imsmooth, and regrid to match PPak (1.0'') or MaNGA (0.5'') pixel grids with imregrid.",
+   "software": [
+    "CASA",
+    "imrebin",
+    "imsmooth",
+    "imregrid"
+   ],
+   "key_parameters": [
+    "spectral resolution = 10 km s^-1, circular PSF = 2.5'', pixel size = 1.0'' (PPak) or 0.5'' (MaNGA)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Generate 3D emission masks, measure integrated CO(1-0) fluxes, and classify detections",
+   "method": "Crop cubes to +/- 300 km s^-1 around optical velocity and run SoFiA 2 S+C finder using primary beam weights. For failed masks, apply an elliptical mask based on d25, PA, and inclination over +/- 150 km s^-1. Integrate flux within masks and classify by S/N.",
+   "software": [
+    "SoFiA 2"
+   ],
+   "key_parameters": [
+    "S+C finder S/N clip = 3.5, linking radius = 1 pixel and 1 channel, reliability S/N threshold = 3"
+   ],
+   "assumptions": [
+    "Delta V = 300 km s^-1 assumed for non-detection upper limits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Produce native-resolution moment maps and position-velocity diagrams for the Atlas",
+   "method": "Compute moment-0, 1, and 2 maps using immoments over the detected channel range and 3D mask, and compute PV diagrams along the galaxy PA using impv.",
+   "software": [
+    "CASA",
+    "immoments",
+    "impv"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive global molecular gas masses and 2.5'' resolved physical surface density maps",
+   "method": "Calculate L'_CO using Solomon et al. (1997) and convert to M_H2 using metallicity- and SFMS-dependent alpha_CO from Accurso et al. (2017). Derive resolved Sigma_star, Sigma_SFR, 12+log(O/H), and Sigma_H2 maps at 2.5'' resolution.",
+   "software": [
+    "pyPipe3D"
+   ],
+   "key_parameters": [
+    "MaStars_sLOG stellar library in pyPipe3D"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.30, Omega_Lambda = 0.70; Chabrier (2003) IMF",
+    "alpha_CO includes a factor of 1.36 for heavy elements; 12+log(O/H) capped at 8.8 for Accurso et al. (2017) prescription"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit global scaling relations (SK, MGMS, SFMS) and compare across environments",
+   "method": "Perform Orthogonal Distance Regression (ODR) fits to global M_H2, M_star, and SFR for ALMA CO-CAVITY and comparison samples converted to a Chabrier IMF.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF and 1.36 helium/heavy element factor applied uniformly across surveys"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(1-0) detection rate (detections S/N >= 5)",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "galaxies (80%)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Masks and detections",
+     "quote": "33 (80%) are detected, 2 (5%) are tentative, and 6 (15%) of the galaxies are non-detected (with failed masking procedure)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio of aperture-corrected IRAM 30m flux to ALMA flux",
+   "value": "1.02",
+   "uncertainty": "0.22 (median absolute deviation)",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.4 Potential flux loss due to lack of short-spacings",
+     "quote": "The median ratio of the aperture corrected IRAM 30m flux with respect to the ALMA flux for tentative and detected galaxies is 1.02, with a median absolute deviation of 0.22"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log(M_H2) for ALMA CO-CAVITY sample",
+   "value": "8.8",
+   "uncertainty": "0.5",
+   "units": "dex (log(M_sun))",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Molecular gas masses",
+     "quote": "The means and standard deviations are very similar: $8.8\\pm0.5$, $8.8\\pm0.4$ and $8.8\\pm0.5$ dex for the ALMA CO-CAVITY, CO-CAVITY and xCOLD GASS samples, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log(Delta H2MS) for ALMA CO-CAVITY sample",
+   "value": "0.0",
+   "uncertainty": "0.3",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Molecular gas masses",
+     "quote": "The mean value of $\\rm \\log\\Delta H_2MS$ is $0.0\\pm0.3$ dex for the ALMA CO-CAVITY sample"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SK relation slope (ALMA CO-CAVITY VGs)",
+   "value": "1.08",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SK | ACC VGs | $1.08 \\pm 0.13$ | $-9.6 \\pm 1.1$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SK relation intercept (ALMA CO-CAVITY VGs)",
+   "value": "-9.6",
+   "uncertainty": "1.1",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SK | ACC VGs | $1.08 \\pm 0.13$ | $-9.6 \\pm 1.1$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SK relation orthogonal scatter (ALMA CO-CAVITY VGs)",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SK | ACC VGs | $1.08 \\pm 0.13$ | $-9.6 \\pm 1.1$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Global MGMS relation slope (ALMA CO-CAVITY VGs)",
+   "value": "1.15",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MGMS | ACC VGs | $1.15 \\pm 0.13$ | $-2.5 \\pm 1.3$ | 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "Global MGMS relation intercept (ALMA CO-CAVITY VGs)",
+   "value": "-2.5",
+   "uncertainty": "1.3",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MGMS | ACC VGs | $1.15 \\pm 0.13$ | $-2.5 \\pm 1.3$ | 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "Global MGMS relation orthogonal scatter (ALMA CO-CAVITY VGs)",
+   "value": "0.21",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MGMS | ACC VGs | $1.15 \\pm 0.13$ | $-2.5 \\pm 1.3$ | 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SFMS relation slope (ALMA CO-CAVITY VGs)",
+   "value": "1.25",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFMS | ACC VGs | $1.25 \\pm 0.16$ | $-12.5 \\pm 1.6$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SFMS relation intercept (ALMA CO-CAVITY VGs)",
+   "value": "-12.5",
+   "uncertainty": "1.6",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFMS | ACC VGs | $1.25 \\pm 0.16$ | $-12.5 \\pm 1.6$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Global SFMS relation orthogonal scatter (ALMA CO-CAVITY VGs)",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SFMS | ACC VGs | $1.25 \\pm 0.16$ | $-12.5 \\pm 1.6$ | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated flux of galaxy 11248",
+   "value": "7.2",
+   "uncertainty": "0.3",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Potential flux loss due to lack of short spacings in ALMA observations, Table",
+     "quote": "11248 | $6.7 \\pm 0.8$ | $7.2 \\pm 0.3$ | 3.13 | $8.93 \\pm 0.06$ | $8.966 \\pm 0.017$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass log(M_H2, ALMA) of galaxy 11248",
+   "value": "8.966",
+   "uncertainty": "0.017",
+   "units": "log(M_sun)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Molecular gas masses, Table",
+     "quote": "11248 | $8.966 \\pm 0.017$ | 3.13 | 0.05 | 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(1-0) integrated flux of galaxy 27516",
+   "value": "11.2",
+   "uncertainty": "0.3",
+   "units": "Jy km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Potential flux loss due to lack of short spacings in ALMA observations, Table",
+     "quote": "27516 | $13.3 \\pm 1.1$ | $11.2 \\pm 0.3$ | 3.18 | $9.24 \\pm 0.05$ | $9.166 \\pm 0.011$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass log(M_H2, ALMA) of galaxy 27516",
+   "value": "9.166",
+   "uncertainty": "0.011",
+   "units": "log(M_sun)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 Molecular gas masses, Table",
+     "quote": "27516 | $9.166 \\pm 0.011$ | 3.18 | -0.08 | -0.11"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size (imsize) and deconvolver algorithm used in CASA tclean for the 26 combined cubes",
+  "Line-free channel ranges and polynomial order used in uvcontsub",
+  "Exact list of spatial and spectral smoothing kernels used in SoFiA 2 S+C finder",
+  "Specific manual mask boundary coordinates for galaxies 27516 and 46746",
+  "Specific channel ranges used in immoments for each galaxy",
+  "Details of inclination corrections and upper limit estimations for the resolved 2.5'' surface density maps (deferred to Paper II)"
+ ],
+ "missing_for_reproduction": [
+  "Complete online versions of Tables 1, 2, 3, and B.1 (truncated to 5-10 rows in the main text)",
+  "Exact manual mask modifications for galaxies 27516 and 46746",
+  "SoFiA 2 parameter files (specifically spatial/spectral kernel sizes for the S+C finder)",
+  "Detailed pixel-by-pixel map homogenisation and upper-limit prescriptions deferred to Paper II"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project code, Member OUS UIDs, CASA/pipeline versions, tclean imaging parameters, and SoFiA 2 thresholds are clearly documented; minor deductions for truncated data tables in the text, manual mask adjustments on two sources, and map homogenisation details deferred to Paper II.",
+ "rediscovery_reason": "All 24 ALMA Member OUS UIDs under 2022.1.00482.S are listed in Table A.1, the concat/tclean/SoFiA 2 workflow is straightforward, and quantitative answer keys (per-galaxy CO fluxes, M_H2, and ODR scaling relation slopes/intercepts/scatters) are explicitly provided.",
+ "source_card": "cards/2026A%26A...712A.227E/sonnet/card.md"
+}

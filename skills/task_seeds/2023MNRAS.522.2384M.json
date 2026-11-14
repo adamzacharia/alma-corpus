@@ -1,0 +1,385 @@
+{
+ "bibcode": "2023MNRAS.522.2384M",
+ "title": "FAUST - VIII. The protostellar disc of VLA 1623-2417W and its streamers imaged by ALMA",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad964",
+ "arxiv_id": "2303.16257",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Investigate the gas in the disk of VLA 1623W and its dynamical interaction with the other protostellar sources in the VLA 1623 multiple protostellar system using ALMA 1.3 mm continuum and C18O (2-1) observations.",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 216-234 GHz)",
+  "arrays": "12-m array and 7-m array (ACA)",
+  "angular_resolution": "~50 au; continuum: 0.42'' x 0.32''; C18O (12-m): 0.48'' x 0.40''; C18O (12-m + 7-m): 0.53'' x 0.44''",
+  "sensitivity": "1.8 mJy beam^-1 per channel for C18O 12-m datacube; 1.4 mJy beam^-1 per channel for C18O 12-m+7-m datacube; 0.26 mJy beam^-1 for continuum map"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to Ophiuchus A / VLA 1623 of d = 131 pc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "VLA1623 is located in Ophiuchus A at a distance, $d$, of 131 pc (cite: Gagne2018),"
+     }
+    ]
+   },
+   "citation": "(cite: Gagne2018)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity at 1.3 mm of 2.17 cm^2 g^-1",
+    "evidence": [
+     {
+      "loc": "Continuum emission at 1.3 mm",
+      "quote": "We assume isothermal conditions and optically thin emission, dust opacity ($\\kappa_{\\nu}$) at 1.3 mm of 2.17 cm$^{2}$g$^{-1}$ (Zamponi et al. submitted),"
+     }
+    ]
+   },
+   "citation": "Zamponi et al. submitted"
+  },
+  {
+   "what": {
+    "value": "CS(5-4) emission map probing outflow cavity walls and systemic velocity of VLA 1623AB (+3.8 km/s)",
+    "evidence": [
+     {
+      "loc": "C$^{18}$O (2–1) emission",
+      "quote": "The magenta contour indicates the $25\\sigma$ level of the CS(5–4) emission integrated on the velocity interval 3.4 – 4.2 km s$^{-1}$, which probes the outflow cavity walls associated with VLA 1623A (cite: Ohashi2022)."
+     },
+     {
+      "loc": "Hypothesis 1: formation in a separate core",
+      "quote": "while our observations indicate that VLA 1623W has a systemic velocity of $+1.6$ km s$^{-1}$, which differs from the systemic velocity of VLA 1623AB ($+3.8$ km s$^{-1}$) and the two ridges."
+     }
+    ]
+   },
+   "citation": "(cite: Ohashi2022)"
+  },
+  {
+   "what": {
+    "value": "VLA X-band (3.6 cm) continuum positions from 1991.8 (project AB817)",
+    "evidence": [
+     {
+      "loc": "Proper motions between 1991.8 and 2019.5",
+      "quote": "combining our FAUST ALMA Band 6 observations of the continuum at 1.3 mm, taken in 2019, with the data at 3.6 cm, taken with the VLA in the X-band in 1991 ((cite: Andre1993), project AB817)."
+     }
+    ]
+   },
+   "citation": "(cite: Andre1993)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit 1.3 mm continuum emission to measure source positions, sizes, PAs, and fluxes",
+   "method": "Two-dimensional elliptical Gaussian fitting on the 12-m + 7-m 1.3 mm continuum image",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Elliptical Gaussian morphology for disk continuum; disk inclination derived from fitted aspect ratio (i ~ 80 deg for W)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate disk dust and total masses from 1.3 mm continuum flux",
+   "method": "Analytic optically thin isothermal dust mass calculation from integrated 1.3 mm continuum flux: M_dust = (F_1.3mm * d^2) / (kappa_nu * B_nu(T_dust))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Isothermal conditions and optically thin dust emission",
+    "Dust opacity at 1.3 mm kappa_nu = 2.17 cm^2 g^-1",
+    "Dust temperature T_dust between 20 K and 50 K",
+    "Distance d = 131 pc",
+    "Gas-to-dust ratio of 100"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map spatial distribution and kinematics of C18O (2-1) emission in disk and streamers",
+   "method": "Generate channel maps, moment 0, and moment 1 maps for low velocities (+0.2 to +3.0 km/s using 12-m + 7-m data) and high velocities (-2.6 to +5.8 km/s using 12-m only data)",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [
+    "Low velocity range: +0.2 to +3.0 km/s; High velocity range: -2.6 to -0.4 km/s and +3.6 to +5.8 km/s (overall -2.6 to +5.8 km/s)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate dynamical mass of VLA 1623W from high-velocity C18O disk kinematics",
+   "method": "Measure radial peak distances of symmetric high-velocity C18O channels and apply Keplerian rotation formula M_dyn = r * V^2 / G",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [
+    "Channels at radial velocities of +/- 2.8 and +/- 3.0 km/s with respect to V_sys = +1.6 km/s, peaking at 0.37'' and 0.33''"
+   ],
+   "assumptions": [
+    "Keplerian rotation, disk inclination of 80 deg, systemic velocity V_sys(W) = +1.6 km/s, distance d = 131 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate relative proper motions between VLA 1623W and VLA 1623A/B",
+   "method": "Compare angular offsets and separations between source W and sources A and B across a 27.7-year baseline using 1991.8 VLA X-band (3.6 cm) and 2019.5 ALMA Band 6 (1.3 mm) continuum positions",
+   "software": [],
+   "key_parameters": [
+    "Time baseline of 27.7 years between 1991.8 and 2019.5"
+   ],
+   "assumptions": [
+    "Distance d = 131 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dynamical mass of VLA 1623W (M_dyn)",
+   "value": "0.45",
+   "uncertainty": "0.08",
+   "units": "M_odot",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We estimate the dynamical mass of VLA 1623W, $M_{\\rm dyn}=0.45\\pm0.08$ M$_{\\rm \\ensuremath{\\odot}}$, and the mass of its disk, $M_{\\rm disk}\\sim6\\times10^{-3}$ M$_{\\rm \\ensuremath{\\odot}}$."
+    },
+    {
+     "loc": "The gas towards the disk of VLA 1623W",
+     "quote": "The estimated dynamical mass is $0.45 \\pm 0.08$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total disk mass of VLA 1623W (M_disk)",
+   "value": "6e-3",
+   "uncertainty": "3e-3",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission at 1.3 mm",
+     "quote": "For source W, assuming a gas-to-dust ratio of 100, we obtain a total disk mass of $6\\pm3 \\times 10^{-3}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm integrated continuum flux of VLA 1623 A1+A2 (F_1.3mm)",
+   "value": "158",
+   "uncertainty": "14",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A1+A2 | 16:26:26.3907 $\\pm$ 0.0013 | –24.24.30.934 $\\pm$ 0.017 | 0.49 ($\\pm$0.01) $\\times$ 0.33 ($\\pm$0.01) | 74 $\\pm$ 20 | 158 $\\pm$ 14 | 71 $\\pm$ 4 | 1.6$\\pm$0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak intensity of VLA 1623 A1+A2",
+   "value": "71",
+   "uncertainty": "4",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A1+A2 | 16:26:26.3907 $\\pm$ 0.0013 | –24.24.30.934 $\\pm$ 0.017 | 0.49 ($\\pm$0.01) $\\times$ 0.33 ($\\pm$0.01) | 74 $\\pm$ 20 | 158 $\\pm$ 14 | 71 $\\pm$ 4 | 1.6$\\pm$0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of VLA 1623 A1+A2 (M_dust)",
+   "value": "1.6e-4",
+   "uncertainty": "0.8e-4",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "A1+A2 | 16:26:26.3907 $\\pm$ 0.0013 | –24.24.30.934 $\\pm$ 0.017 | 0.49 ($\\pm$0.01) $\\times$ 0.33 ($\\pm$0.01) | 74 $\\pm$ 20 | 158 $\\pm$ 14 | 71 $\\pm$ 4 | 1.6$\\pm$0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm integrated continuum flux of VLA 1623B (F_1.3mm)",
+   "value": "121",
+   "uncertainty": "2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B | 16:26:26.3063 $\\pm$ 0.0001 | –24.24.30.787 $\\pm$ 0.002 | 0.32 ($\\pm$0.04) $\\times$ 0.16 ($\\pm$0.03) | 43 $\\pm$ 5 | 121 $\\pm$ 2 | 80 $\\pm$ 1 | 1.2$\\pm$0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak intensity of VLA 1623B",
+   "value": "80",
+   "uncertainty": "1",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B | 16:26:26.3063 $\\pm$ 0.0001 | –24.24.30.787 $\\pm$ 0.002 | 0.32 ($\\pm$0.04) $\\times$ 0.16 ($\\pm$0.03) | 43 $\\pm$ 5 | 121 $\\pm$ 2 | 80 $\\pm$ 1 | 1.2$\\pm$0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of VLA 1623B (M_dust)",
+   "value": "1.2e-4",
+   "uncertainty": "0.6e-4",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "B | 16:26:26.3063 $\\pm$ 0.0001 | –24.24.30.787 $\\pm$ 0.002 | 0.32 ($\\pm$0.04) $\\times$ 0.16 ($\\pm$0.03) | 43 $\\pm$ 5 | 121 $\\pm$ 2 | 80 $\\pm$ 1 | 1.2$\\pm$0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm integrated continuum flux of VLA 1623W (F_1.3mm)",
+   "value": "59",
+   "uncertainty": "1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W | 16:26:25.6312 $\\pm$ 0.0002 | –24:24:29.669 $\\pm$ 0.005 | 0.71 ($\\pm$0.01) $\\times$ 0.12 ($\\pm$0.02) | 10.0 $\\pm$ 0.8 | 59 $\\pm$ 1 | 23.7 $\\pm$ 0.3 | 0.6$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm continuum peak intensity of VLA 1623W",
+   "value": "23.7",
+   "uncertainty": "0.3",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W | 16:26:25.6312 $\\pm$ 0.0002 | –24:24:29.669 $\\pm$ 0.005 | 0.71 ($\\pm$0.01) $\\times$ 0.12 ($\\pm$0.02) | 10.0 $\\pm$ 0.8 | 59 $\\pm$ 1 | 23.7 $\\pm$ 0.3 | 0.6$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of VLA 1623W (M_dust)",
+   "value": "0.6e-4",
+   "uncertainty": "0.3e-4",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W | 16:26:25.6312 $\\pm$ 0.0002 | –24:24:29.669 $\\pm$ 0.005 | 0.71 ($\\pm$0.01) $\\times$ 0.12 ($\\pm$0.02) | 10.0 $\\pm$ 0.8 | 59 $\\pm$ 1 | 23.7 $\\pm$ 0.3 | 0.6$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle of VLA 1623W",
+   "value": "10.0",
+   "uncertainty": "0.8",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "W | 16:26:25.6312 $\\pm$ 0.0002 | –24:24:29.669 $\\pm$ 0.005 | 0.71 ($\\pm$0.01) $\\times$ 0.12 ($\\pm$0.02) | 10.0 $\\pm$ 0.8 | 59 $\\pm$ 1 | 23.7 $\\pm$ 0.3 | 0.6$\\pm$0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination of VLA 1623W",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission at 1.3 mm",
+     "quote": "For source W, we find that the disk is almost edge-on (inclination $i \\simeq$ 80$^{\\circ}$), and has a diameter of $\\sim 93$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk diameter of VLA 1623W",
+   "value": "93",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission at 1.3 mm",
+     "quote": "For source W, we find that the disk is almost edge-on (inclination $i \\simeq$ 80$^{\\circ}$), and has a diameter of $\\sim 93$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity of VLA 1623W (V_sys)",
+   "value": "+1.6",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The gas towards the disk of VLA 1623W",
+     "quote": "The moment 1 map indicates that the systemic velocity of VLA 1623W is V$_{\\rm sys}$(W) $\\simeq$ +1.6 km s$^{-1}$, as it corresponds to the central velocity of the range where compact blue-shifted and red-shifted emission is detected and to the mean velocity at the peak continuum emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Plane-of-sky velocity of VLA 1623A with respect to W",
+   "value": "-4.4",
+   "uncertainty": "1.47",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motions between 1991.8 and 2019.5",
+     "quote": "Namely, the velocity on the plane of the sky of A with respect to W is ($-4.4 \\pm 1.47$) km s$^{-1}$, while that of B with respect to W is ($-3.5 \\pm 1.26$) km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Plane-of-sky velocity of VLA 1623B with respect to W",
+   "value": "-3.5",
+   "uncertainty": "1.26",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Proper motions between 1991.8 and 2019.5",
+     "quote": "Namely, the velocity on the plane of the sky of A with respect to W is ($-4.4 \\pm 1.47$) km s$^{-1}$, while that of B with respect to W is ($-3.5 \\pm 1.26$) km s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact multiscale scales, cell size, image size, and cleaning thresholds/masks used in CASA tclean",
+  "Exact solution intervals and number of iterations for phase and amplitude self-calibration",
+  "Exact frequency/channel ranges used as line-free channels for continuum imaging and self-calibration",
+  "Flux, bandpass, and phase calibrator source names"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters: cell size, image dimensions, multiscale scale sizes, stopping threshold, and masking strategy",
+  "Self-calibration parameters: solution intervals, number of rounds, SNR thresholds, and reference antennas",
+  "Exact channel ranges used for continuum identification and subtraction",
+  "1991.8 VLA X-band (project AB817) fitted source coordinates (only relative offsets are tabulated in Table 2)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The paper clearly states the ALMA project code, CASA versions, weighting schemes, beam sizes, noise levels, and exact analytical equations and parameters used to derive disk masses and dynamical masses. However, low-level imaging and self-calibration parameters (scales, thresholds, solints) are omitted.",
+ "rediscovery_reason": "Public ALMA Large Program data (2018.1.01205.L) with straightforward, well-specified analysis steps (2D Gaussian fitting with CASA imfit, analytical dust mass equation, and two-channel Keplerian dynamical mass calculation) yielding clear numeric benchmarks.",
+ "source_card": "cards/2023MNRAS.522.2384M/sonnet/card.md"
+}

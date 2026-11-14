@@ -1,0 +1,400 @@
+{
+ "bibcode": "2021A&A...647A.173K",
+ "title": "ALMA/NICER observations of GRS 1915+105 indicate a return to a hard state",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202039581",
+ "arxiv_id": "2102.00693",
+ "fields": [
+  "stellar_physics",
+  "transients"
+ ],
+ "question": "Study the jet and accretion disk properties of GRS 1915+105 during its 2018-2019 outburst decay to determine if it has descended into a low-luminosity hard X-ray state.",
+ "alma_project_codes": [
+  "2018.1.00621.S"
+ ],
+ "data": {
+  "bands": "Band 3 (90–105 GHz)",
+  "arrays": "12m array (DV and DA antennas)",
+  "angular_resolution": "~0.6'' (Epoch 1) and ~2.5'' (Epoch 2)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "350 GHz JCMT observations of GRS 1915+105 during a radio-quiet state",
+    "evidence": [
+     {
+      "loc": "3.3.2. Millimeter/X-ray correlation",
+      "quote": "We used the 350 GHz James Clerk Maxwell Telescope (JCMT) observations from Ogley et al. (2000) that were taken during a radio-quiet state"
+     }
+    ]
+   },
+   "citation": "Ogley et al. (2000)"
+  },
+  {
+   "what": {
+    "value": "94 GHz Nobeyama Millimeter Array (NMA) observations of GRS 1915+105 during a radio plateau state",
+    "evidence": [
+     {
+      "loc": "3.3.2. Millimeter/X-ray correlation",
+      "quote": "and 94 GHz Nobeyama Millimeter Array (NMA) observations from Ueda et al. (2002) that were taken during a radio plateau state, both of which should present a compact steady jet."
+     }
+    ]
+   },
+   "citation": "Ueda et al. (2002)"
+  },
+  {
+   "what": {
+    "value": "GX 339-4 hard-state 8.4 GHz radio and 3-10 keV X-ray correlation data",
+    "evidence": [
+     {
+      "loc": "3.3.2. Millimeter/X-ray correlation",
+      "quote": "For comparison, we plotted the GX 339-4 hard-state radio/X-ray correlation (gray triangles; same X-ray band, but radio luminosity is from 8.4 GHz; from Koljonen & Russell 2019)."
+     }
+    ]
+   },
+   "citation": "Koljonen & Russell 2019"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, flag, and extract flux densities and polarization from ALMA Band 3 data",
+   "method": "Run provided ALMA calibration script in CASA, apply manual channel and antenna flags for bad D-terms and gain/phase outliers, image the data, and fit a delta function to the uv-plane using uvmultifit to measure Stokes I, Q, U fluxes (full band, per spectral window, and per scan).",
+   "software": [
+    "CASA 5.4.0-70",
+    "uvmultifit 3.0.0"
+   ],
+   "key_parameters": [
+    "Flagged first 10 channels in spw 2 (both epochs); flagged DA63 (Epoch 1) and DA41 (Epoch 2) all spws; flagged DA42 and DA48 spw 1 (Epoch 2)",
+    "Scan length ~10 min for intra-epoch timing"
+   ],
+   "assumptions": [
+    "Point source model (delta function in uv-plane)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce NICER X-ray observations and model Power Spectral Densities (PSDs) and QPO lags",
+   "method": "Filter NICER events using nicerdas, calculate rms-normalized PSDs in 1-10 keV, fit PSDs in ISIS with up to three Lorentzians plus power-law and constant Poisson noise, and compute time lags between 2-4 keV and 5-10 keV bands.",
+   "software": [
+    "nicerdas 6a",
+    "xselect v2.4g",
+    "isis"
+   ],
+   "key_parameters": [
+    "nicercal_filtexpr=\"EVENT_FLAGS=bx1x000\", cor_range=\"4-\", PI channels 30-1200 (0.3-12 keV), exposure > 500 s",
+    "PSD binning 2^-7 s (or 2^-4 s in obscured phase), segment length 16 s (or 256 s in obscured phase), geometric rebinning factor 1.05"
+   ],
+   "assumptions": [
+    "Poisson noise is constant power component"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit NICER X-ray energy spectra and iron line evolution across outburst decay phases",
+   "method": "Adaptively bin NICER spectra (0.3-12 keV) by S/N and fit in ISIS with vphabs * (relxill + lines) + powerlaw (adding xillver in the obscured phase) to extract continuum parameters, fluxes, and iron absorption/emission line properties.",
+   "software": [
+    "xselect v2.4g",
+    "isis",
+    "relxill",
+    "xillver",
+    "vphabs"
+   ],
+   "key_parameters": [
+    "Adaptive binning: 0.3-1.5 keV to S/N=5-10, 1.5-5.0 keV to S/N=20-70, 5.0-8.0 keV to S/N=15-50, 8.0-12.0 keV to S/N=10-30",
+    "Obscured phase: R_in = 1, R_f = -2, inclination free"
+   ],
+   "assumptions": [
+    "Black hole spin a = 0, inclination i = 70 deg (except obscured phase), solar iron abundance"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Evaluate the millimeter/X-ray luminosity correlation and fit the X-ray light curve decay profile",
+   "method": "Combine ALMA Band 3 luminosities and NICER 3-10 keV luminosities with archival JCMT/NMA and RXTE data to fit the mm/X-ray correlation slope, and fit the NICER 1-10 keV light curve with an exponential-to-linear decay model.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance d = 8.6 kpc, black hole mass M = 12 M_sun, Eddington luminosity L_Edd = 1.5 x 10^39 erg s^-1, flat radio/mm spectrum"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Epoch 1 full-band Stokes I flux density (uvmultifit)",
+   "value": "2.499",
+   "uncertainty": "±0.007",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 full-band Stokes Q flux density (uvmultifit)",
+   "value": "0.001",
+   "uncertainty": "±0.007",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 full-band Stokes U flux density (uvmultifit)",
+   "value": "-0.031",
+   "uncertainty": "±0.006",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 polarization position angle",
+   "value": "-44",
+   "uncertainty": "±6",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 linear polarization fraction",
+   "value": "1.3",
+   "uncertainty": "±0.2",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 full-band Stokes I flux density (imaging)",
+   "value": "2.573",
+   "uncertainty": "±0.026",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 1 All 2.499±0.007 0.001±0.007 -0.031±0.006 -44±6 1.3±0.2 2.573±0.026 -0.040±0.014"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 full-band Stokes I flux density (uvmultifit)",
+   "value": "2.895",
+   "uncertainty": "±0.007",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 full-band Stokes Q flux density (uvmultifit)",
+   "value": "0.019",
+   "uncertainty": "±0.007",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 full-band Stokes U flux density (uvmultifit)",
+   "value": "-0.043",
+   "uncertainty": "±0.007",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 polarization position angle",
+   "value": "-33",
+   "uncertainty": "±4",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 linear polarization fraction",
+   "value": "1.6",
+   "uncertainty": "±0.2",
+   "units": "%",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 full-band Stokes I flux density (imaging)",
+   "value": "2.883",
+   "uncertainty": "±0.029",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Ep. 2 All 2.895±0.007 0.019±0.007 -0.043±0.007 -33±4 1.6±0.2 2.883±0.029 -0.043±0.003"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 1 in-band spectral index (alpha_1)",
+   "value": "-0.09",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. ALMA results",
+     "quote": "spectral indices α 1 = −0.09 ± 0.05 and α 2 = 0.11 ± 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Epoch 2 in-band spectral index (alpha_2)",
+   "value": "0.11",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. ALMA results",
+     "quote": "spectral indices α 1 = −0.09 ± 0.05 and α 2 = 0.11 ± 0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimeter/X-ray correlation index",
+   "value": "0.58",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2. Millimeter/X-ray correlation",
+     "quote": "The resulting mm/X-ray correlation can be seen in Fig. 11 with a correlation coefficient of 0.58±0.05."
+    }
+   ]
+  },
+  {
+   "quantity": "Viscous (exponential) decay timescale (tau_e)",
+   "value": "58",
+   "uncertainty": "±4",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Viscous outburst decay?",
+     "quote": "The fit resulted in the following parameters: τ_e = 58 ± 4 days, τ_l = 461 ± 6 days, t_b = 58328±1 days (MJD), f_t = 0.195 ± 0.001× 10^−8 erg s^−1 cm^−2, and f_2 = 0.07 ± 0.02× 10^−8 erg s^−1 cm^−2."
+    }
+   ]
+  },
+  {
+   "quantity": "Irradiation-controlled (linear) decay timescale (tau_l)",
+   "value": "461",
+   "uncertainty": "±6",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Viscous outburst decay?",
+     "quote": "The fit resulted in the following parameters: τ_e = 58 ± 4 days, τ_l = 461 ± 6 days, t_b = 58328±1 days (MJD), f_t = 0.195 ± 0.001× 10^−8 erg s^−1 cm^−2, and f_2 = 0.07 ± 0.02× 10^−8 erg s^−1 cm^−2."
+    }
+   ]
+  },
+  {
+   "quantity": "Exponential-to-linear decay transition time (t_b)",
+   "value": "58328",
+   "uncertainty": "±1",
+   "units": "days (MJD)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2. Viscous outburst decay?",
+     "quote": "The fit resulted in the following parameters: τ_e = 58 ± 4 days, τ_l = 461 ± 6 days, t_b = 58328±1 days (MJD), f_t = 0.195 ± 0.001× 10^−8 erg s^−1 cm^−2, and f_2 = 0.07 ± 0.02× 10^−8 erg s^−1 cm^−2."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X-ray photon index during linear decay phase",
+   "value": "1.93",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.3. The exponential and linear decay phases",
+     "quote": "In the linear decay phase, the continuum model parameters settle to a more stable state with Γ=1.93±0.06 and log ξ = 3.52±0.07."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X-ray photon index during rebrightening phase",
+   "value": "2.14",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.4. The rebrightening phase",
+     "quote": "In the X-ray spectra, the power-law photon index and the ionization parameter present elevated but steady values of Γ=2.14±0.06 and log ξ = 3.73±0.05 as compared with the linear decay phase."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA imaging parameters (CASA task tclean/clean, weighting/robust parameter, cell size, image size, deconvolution algorithm, number of iterations/threshold)",
+  "Flux and bandpass calibrator identities for the two ALMA epochs",
+  "Whether self-calibration was applied to the ALMA data",
+  "Exact RXTE observation IDs and spectral model used to extract the 3-10 keV X-ray fluxes for the archival JCMT and NMA epochs"
+ ],
+ "missing_for_reproduction": [
+  "Exact NICER 10-digit Observation IDs (the paper uses shorthand labels A137-C304 with MJD timestamps in Table A1)",
+  "Specific RXTE Observation IDs and spectral model used to derive the archival 3-10 keV X-ray fluxes for the mm/X-ray correlation",
+  "ALMA imaging parameters (tclean settings, weighting, cell size) for the imaging comparison in Table 2"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "ALMA data reduction, antenna/channel flagging, and uvmultifit modeling are clearly specified with exact software versions, and NICER timing/spectral parameters and full fit tables are provided, with only minor imaging parameters and exact archival X-ray ObsIDs omitted.",
+ "rediscovery_reason": "Both the ALMA (2018.1.00621.S) and NICER (HEASARC) datasets are public, the uv-plane point-source fitting and X-ray spectral/timing recipes are well-specified, and all key results (Stokes I/Q/U fluxes, spectral indices, polarization fractions, decay timescales, and mm/X-ray slope) are numeric.",
+ "source_card": "cards/2021A%26A...647A.173K/sonnet/card.md"
+}

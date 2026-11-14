@@ -1,0 +1,464 @@
+{
+ "bibcode": "2025ApJ...979..217S",
+ "title": "The Arp 240 Galaxy Merger: A Detailed Look at the Molecular Kennicutt─Schmidt Star Formation Law on Subkiloparsec Scales",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ad9bab",
+ "arxiv_id": "2412.07985",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How does the molecular Kennicutt-Schmidt (mK-S) star formation law behave on 500 pc scales across different surface brightness and morphological regimes in the early-stage luminous infrared galaxy merger Arp 240?",
+ "alma_project_codes": [
+  "2015.1.00804.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA 7m and 12m arrays",
+  "angular_resolution": "native 4'' (~2 kpc) for 7m and 0.6'' (~300 pc) for 12m; re-imaged to 1''",
+  "sensitivity": "4.7 mJy beam^-1 for NGC 5258 and 6.6 mJy beam^-1 for NGC 5257 per 3 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Average CO (2->1)/(1->0) ratio = 0.85 +/- 0.02 for Arp 240",
+    "evidence": [
+     {
+      "loc": "CO (2->1) Luminosity and Sigma_H2",
+      "quote": "To transform our measurements of CO ($2\\rightarrow1$) to CO ($1\\rightarrow0$), we used the average ratio reported by (cite: He_2019) for Arp 240, CO ($2\\rightarrow1$)/($1\\rightarrow0$) = 0.85 $\\pm$ 0.02."
+     }
+    ]
+   },
+   "citation": "(cite: He_2019)"
+  },
+  {
+   "what": {
+    "value": "Integrated measurements of normal spirals and starbursts for mK-S comparison",
+    "evidence": [
+     {
+      "loc": "Slope Determination",
+      "quote": "We incorporate integrated measurements of both normal spirals and starbursts from (cite: Kennicutt2021)(brown and yellow squares)."
+     }
+    ]
+   },
+   "citation": "(cite: Kennicutt2021)"
+  },
+  {
+   "what": {
+    "value": "1.5-kpc-sized regions from a sample of 80 normal spiral galaxies from PHANGS",
+    "evidence": [
+     {
+      "loc": "Slope Determination",
+      "quote": "Additionally, we include 1.5-kpc-sized regions from a sample of 80 normal spiral galaxies from PHANGS (cite: Sun_2023), represented by gray dots."
+     }
+    ]
+   },
+   "citation": "(cite: Sun_2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Combine and image VLA radio continuum and ALMA CO(2-1) datasets at matched 1'' resolution",
+   "method": "Combine configurations/arrays using CASA concat (4:1 A:C weight for VLA, equal weight for ALMA 7m+12m) and image with CASA tclean to a common 1'' restoring beam and 0.1'' pixel size.",
+   "software": [
+    "CASA",
+    "flagdata",
+    "concat",
+    "tclean",
+    "imstat"
+   ],
+   "key_parameters": [
+    "restoringbeam = 1'', cell = 0.1'', uvtaper = 0.75'' (VLA), robust = 0.5 (VLA), spectral resolution = 3 km s^-1 (ALMA)",
+    "ALMA automasking: rms factor = 3, sidelobethresh = 2.0, noisethresh = 4.25, minbeamfrac = 0.3, lownoisethresh = 1.5, negativethresh = 0.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Apply uniform hexagonal grid and select detected regions",
+   "method": "Overlay a uniform grid of hexagon-shaped tiles (each equal to the synthesized beam area of 1.13 arcsec^2 ~ 0.26 kpc^2) as photometric apertures, applying SNR thresholds to select overlapping and single-tracer detections.",
+   "software": [],
+   "key_parameters": [
+    "Radio continuum threshold: 3-sigma; CO(2->1) threshold: > 2-sigma across at least 9 consecutive channels"
+   ],
+   "assumptions": [
+    "Cosmology: H0 = 70 km s^-1 Mpc^-1, Omega_vacuum = 0.72, Omega_matter = 0.28, z = 0.02250, D_L = 98 Mpc, 1'' ~ 500 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive Star Formation Rate surface density (Sigma_SFR) from 3 GHz radio continuum",
+   "method": "Calculate SFR from 3 GHz luminosity using the Murphy et al. (2012) prescription (Eq. 1) and divide by the beam area (0.26 kpc^2) to obtain Sigma_SFR.",
+   "software": [],
+   "key_parameters": [
+    "nu = 3 GHz, beam area = 0.26 kpc^2"
+   ],
+   "assumptions": [
+    "Electron temperature T_e = 10^4 K, non-thermal spectral index alpha_NT = -0.85, Kroupa IMF, continuous SF over 100 Myr"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive molecular gas surface density (Sigma_H2), SFE, and depletion time (t_d)",
+   "method": "Extract CO(2-1) line profiles per hexagon, sum over channels multiplied by 3 km s^-1 channel width, convert to L'_CO(1-0), multiply by alpha_CO to get M_H2, divide by beam area in pc^2 for Sigma_H2, and compute SFE = Sigma_SFR / Sigma_H2 and t_d = 1 / SFE.",
+   "software": [],
+   "key_parameters": [
+    "Channel width = 3 km s^-1"
+   ],
+   "assumptions": [
+    "CO(2->1)/(1->0) = 0.85 +/- 0.02; alpha_CO = 1.1 M_sun (K km s^-1 pc^2)^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure molecular gas linewidth, turbulent pressure (P_turb), free-fall time (t_ff), and SFE per free-fall time (epsilon_ff)",
+   "method": "Fit single or multiple Gaussian profiles to CO(2-1) spectra in each hexagon using scipy.optimize.leastsq to obtain average sigma linewidth <sigma>, then compute P_turb/k_B (Eq. 6), t_ff (Eq. 8), and epsilon_ff (Eq. 9).",
+   "software": [
+    "Python",
+    "scipy.optimize.leastsq"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Linewidth is turbulently broadened; beam filling factor = 1; constant scale height H = 100 pc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Evaluate distributions and fit the mK-S law slope globally and by morphological component",
+   "method": "Compute skewness and fit 1- and 2-component Gaussian Mixture Models (evaluated with AIC and BIC) to Log Sigma_H2 and Log Sigma_SFR distributions; fit power-law slope N of Log(Sigma_SFR) vs Log(Sigma_H2) using ODR, Linmix (with and without upper limits), and ASURV survival analysis.",
+   "software": [
+    "Python",
+    "scikit-learn",
+    "Linmix",
+    "ASURV"
+   ],
+   "key_parameters": [
+    "GMM components = 1 and 2; Linmix MCMC iterations = 10^4"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Quantify correlations between star formation and kinematic properties and map intensity gradients",
+   "method": "Compute non-parametric Spearman's rank correlation coefficients (rho and p-value) at 16th, 50th, and 84th percentiles between Sigma_H2, Sigma_SFR, SFE and <sigma>, P_turb; compute normalized intensity gradient vectors for CO(2-1) and radio continuum.",
+   "software": [],
+   "key_parameters": [
+    "Statistical significance threshold: rho > 0.30 and p-value < 0.03 (weak: 0.30-0.40, moderate: 0.40-0.60, strong: > 0.60)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "mK-S law slope N for Arp 240 (Total, Linmix with upper limits)",
+   "value": "0.52",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "In Arp 240, N is sub-linear at 0.52 $\\pm$ 0.17."
+    },
+    {
+     "loc": "Slope Determination",
+     "quote": "| Total | $0.70 \\pm 0.19$ | $0.54 \\pm 0.16$ | $0.52 \\pm 0.17$ | $0.54 \\pm 0.17$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5257 (Linmix with upper limits)",
+   "value": "0.52",
+   "uncertainty": "0.16",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For NGC 5257 and NGC 5258, N is 0.52 $\\pm$ 0.16 and 0.75 $\\pm$ 0.15, respectively."
+    },
+    {
+     "loc": "Slope Determination",
+     "quote": "| NGC 5257 | $0.60 \\pm 0.25$ | $0.44 \\pm 0.17$ | $0.52 \\pm 0.16$ | $0.52 \\pm 0.15$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5258 (Linmix with upper limits)",
+   "value": "0.75",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For NGC 5257 and NGC 5258, N is 0.52 $\\pm$ 0.16 and 0.75 $\\pm$ 0.15, respectively."
+    },
+    {
+     "loc": "Slope Determination",
+     "quote": "| NGC 5258 | $0.82 \\pm 0.21$ | $0.76 \\pm 0.14$ | $0.75 \\pm 0.15$ | $0.70 \\pm 0.17$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5258 Southern Arm (Linmix)",
+   "value": "0.86",
+   "uncertainty": "0.18",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Southern Arm | 1.00 $\\pm$ 0.28 | 0.86 $\\pm$ 0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5257 Nucleus (Linmix)",
+   "value": "0.98",
+   "uncertainty": "0.14",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Nucleus | 1.04 $\\pm$ 0.39 | 0.98 $\\pm$ 0.14 |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5257 Northeastern Arm (Linmix)",
+   "value": "0.15",
+   "uncertainty": "0.09",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Northeastern Arm | 0.18 $\\pm$ 0.28 | 0.15 $\\pm$ 0.09 |"
+    }
+   ]
+  },
+  {
+   "quantity": "mK-S law slope N for NGC 5257 Southwestern Arm (Linmix)",
+   "value": "0.28",
+   "uncertainty": "0.18",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Southwestern Arm | 0.55 $\\pm$ 0.32 | 0.28 $\\pm$ 0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Sigma_SFR in NGC 5258 (southern spiral arm)",
+   "value": "4.22",
+   "uncertainty": "0.23",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio Continuum and Star Formation Rates",
+     "quote": "The brightest hexagon in NGC 5258, located in the southern spiral arm, has a $\\Sigma_{\\mathrm{SFR}}$ of 4.22 $\\pm$ 0.23 M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 1.08 M$_{\\odot}$ yr$^{-1}$), while the maximum value for NGC 5257 is found in the nucleus and has a $\\Sigma_{\\mathrm{SFR}}$ of 3.61 $\\pm$ 0.20 M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 0.92 M$_{\\odot}$ yr$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Sigma_SFR in NGC 5257 (nucleus)",
+   "value": "3.61",
+   "uncertainty": "0.20",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Radio Continuum and Star Formation Rates",
+     "quote": "The brightest hexagon in NGC 5258, located in the southern spiral arm, has a $\\Sigma_{\\mathrm{SFR}}$ of 4.22 $\\pm$ 0.23 M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 1.08 M$_{\\odot}$ yr$^{-1}$), while the maximum value for NGC 5257 is found in the nucleus and has a $\\Sigma_{\\mathrm{SFR}}$ of 3.61 $\\pm$ 0.20 M$_{\\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 0.92 M$_{\\odot}$ yr$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Sigma_H2 in NGC 5258",
+   "value": "5.67e2",
+   "uncertainty": "0.29e2",
+   "units": "M_sun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO (2->1) Luminosity and Sigma_H2",
+     "quote": "For NGC 5258, the brightest hexagon in $\\Sigma_{\\mathrm{H_2}}$ corresponds to the brightest hexagon in $\\Sigma_{\\mathrm{SFR}}$ in the southern spiral arm, and has a value of (5.67 $\\pm$ 0.29) $\\times$ 10$^2$ M$_\\odot$ pc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum Sigma_H2 in NGC 5257 (nucleus)",
+   "value": "5.49e2",
+   "uncertainty": "0.28e2",
+   "units": "M_sun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "CO (2->1) Luminosity and Sigma_H2",
+     "quote": "In NGC 5257, the highest concentrations of H$_2$ are located in the nucleus with a peak hexagon of (5.49 $\\pm$ 0.28) $\\times$ 10$^2$ M$_\\odot$ pc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE in NGC 5258",
+   "value": "7.24e-9",
+   "uncertainty": "0.22e-9",
+   "units": "yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star formation Efficiency and Gas Depletion Times",
+     "quote": "In NGC 5258, 67$\\%$ of hexagons (43 out of 64) in the southern spiral arm exceed the galaxy’s median SFE of (7.24 $\\pm$ 0.22) $\\times$ 10$^{-9}$ yr$^{-1}$ (t$_d$ $\\sim$ 0.14 Gyr)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE in NGC 5257",
+   "value": "1.00e-8",
+   "uncertainty": "0.26e-8",
+   "units": "yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Star formation Efficiency and Gas Depletion Times",
+     "quote": "The median SFE for NGC 5257 is (1.00 $\\pm$ 0.26) $\\times$ 10$^{-8}$ yr$^{-1}$ (t$_d$ $\\sim$ 0.10 Gyr) ."
+    }
+   ]
+  },
+  {
+   "quantity": "Median CO(2-1) linewidth in NGC 5258",
+   "value": "24.72",
+   "uncertainty": "0.64",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Linewidth",
+     "quote": "The median linewidths are 24.72 $\\pm$ 0.64 km s$^{\\mathrm{-1}}$ for NGC 5258 and 22.06 $\\pm$ 1.13 km s$^{\\mathrm{-1}}$ for NGC 5257."
+    }
+   ]
+  },
+  {
+   "quantity": "Median CO(2-1) linewidth in NGC 5257",
+   "value": "22.06",
+   "uncertainty": "1.13",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Linewidth",
+     "quote": "The median linewidths are 24.72 $\\pm$ 0.64 km s$^{\\mathrm{-1}}$ for NGC 5258 and 22.06 $\\pm$ 1.13 km s$^{\\mathrm{-1}}$ for NGC 5257."
+    }
+   ]
+  },
+  {
+   "quantity": "Median turbulent pressure P_turb in NGC 5258",
+   "value": "1.20e6",
+   "uncertainty": "0.20e6",
+   "units": "K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Turbulent Pressure",
+     "quote": "NGC 5258 has a median value of (1.20 $\\pm$ 0.20) $\\times$ 10$^6$ K cm$^{-3}$; while the median for NGC 5257 is (6.11 $\\pm$ 0.11) $\\times$ 10$^5$ K cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median turbulent pressure P_turb in NGC 5257",
+   "value": "6.11e5",
+   "uncertainty": "0.11e5",
+   "units": "K cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Turbulent Pressure",
+     "quote": "NGC 5258 has a median value of (1.20 $\\pm$ 0.20) $\\times$ 10$^6$ K cm$^{-3}$; while the median for NGC 5257 is (6.11 $\\pm$ 0.11) $\\times$ 10$^5$ K cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE per free-fall time (epsilon_ff) in NGC 5258",
+   "value": "25",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Free-Fall Time and SFE per Free-Fall Time",
+     "quote": "The median value of $\\epsilon_{\\mathrm{ff}}$ for NGC 5258 is 25%, whereas NGC 5257 exhibits a higher median of 42%."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE per free-fall time (epsilon_ff) in NGC 5257",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Free-Fall Time and SFE per Free-Fall Time",
+     "quote": "The median value of $\\epsilon_{\\mathrm{ff}}$ for NGC 5258 is 25%, whereas NGC 5257 exhibits a higher median of 42%."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman's rho for Sigma_SFR vs P_turb (entire system, 50th percentile)",
+   "value": "0.43",
+   "uncertainty": "+0.02/-0.03",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Star Formation and Molecular Gas Kinematics",
+     "quote": "The right column of Figure [13](#fig:SFR_kin) shows that $\\Sigma_{\\mathrm{SFR}}$ has a moderate positive correlation with turbulent pressure, with a $\\rho$-value of 0.43, indicating that SFR increases as turbulent pressure rises."
+    },
+    {
+     "loc": "Spearman’s Correlation Coeffients",
+     "quote": "| $\\Sigma_{\\mathrm{SFR}}$-P$_{turb}$ | $\\rho$ | 0.40 | 0.43 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman's rho for SFE vs P_turb (entire system, 50th percentile)",
+   "value": "-0.43",
+   "uncertainty": "+0.03/-0.03",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Star Formation and Molecular Gas Kinematics",
+     "quote": "Conversely, SFE negatively correlates with turbulent pressure, as indicated by a $\\rho$-value of -0.43."
+    },
+    {
+     "loc": "Spearman’s Correlation Coeffients",
+     "quote": "| SFE-P$_{turb}$ | $\\rho$ | -0.46 | -0.43 | -0.40 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Deconvolver, Briggs robust weighting, and uv-taper used specifically for the ALMA CO(2-1) tclean imaging (stated for VLA, not explicitly confirmed whether identical for ALMA beyond restoringbeam and cell size)",
+  "Whether continuum subtraction (e.g., uvcontsub) was performed on the ALMA CO(2-1) visibilities and which line-free channels were used",
+  "Primary beam correction settings for both ALMA and VLA images",
+  "Stopping threshold / niter used in CASA tclean for ALMA and VLA imaging",
+  "Exact phase center coordinates and orientation of the uniform hexagonal aperture grid",
+  "Exact coordinates and geometry of the gray dashed ellipses defining the morphological components"
+ ],
+ "missing_for_reproduction": [
+  "Exact VLA project codes and measurement set identifiers (delegated to Linden et al. 2019 and Song et al. 2022)",
+  "Exact ALMA tclean deconvolver, weighting/robust, and uv-taper parameters, and whether continuum subtraction was applied to the CO(2-1) cube",
+  "Exact grid origin/orientation for the hexagonal tiling and coordinates of the morphological component boundaries"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The ALMA project code, CASA version, array combination weights, automasking parameters, physical equations, conversion factors, detection thresholds, and regression tools (ODR, Linmix, ASURV, scikit-learn, SciPy) are all clearly documented. Minor deductions for delegating VLA observation details to earlier papers and omitting exact hexagonal grid anchoring coordinates and a few ALMA-specific tclean settings.",
+ "rediscovery_reason": "Public archival ALMA data (2015.1.00804.S) and published VLA data with a well-specified imaging, aperture photometry, and Bayesian regression recipe leading to concrete numerical answer keys (mK-S slopes N, median SFE, linewidths, and Spearman rank correlations).",
+ "source_card": "cards/2025ApJ...979..217S/sonnet/card.md"
+}

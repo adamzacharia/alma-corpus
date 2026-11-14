@@ -1,0 +1,281 @@
+{
+ "bibcode": "2020A&A...640A..13S",
+ "title": "Bipolar molecular outflow of the very low-mass star Par-Lup3-4. Evidence for scaled-down low-mass star formation",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038128",
+ "arxiv_id": "2006.03063",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Characterize the bipolar molecular outflow of the very low-mass star Par-Lup3-4 and test whether VLM stars form as a scaled-down version of low-mass star formation.",
+ "alma_project_codes": [
+  "2015.1.00512.S",
+  "2017.1.01401.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.33 mm) and Band 7 (0.89 mm)",
+  "arrays": "43 antennas (B6), 45 antennas (B7)",
+  "angular_resolution": "B6 ~0.9 arcsec; B7 ~0.25 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Teff 3197 K, L=0.003 Lsun, accretion rate",
+    "evidence": [
+     {
+      "loc": "2 Previous observations of Par-Lup3-4",
+      "quote": "including a temperature of 3197 K and a luminosity of 0.003 L$_{\\odot}$ (cite: alcalaetal14-1)"
+     }
+    ]
+   },
+   "citation": "(cite: alcalaetal14-1)"
+  },
+  {
+   "what": {
+    "value": "Optical jet velocity 168±30 km/s, inclination 6.7°",
+    "evidence": [
+     {
+      "loc": "2 Previous observations of Par-Lup3-4",
+      "quote": "The velocity of the jet is 168 $\\pm$ 30 km/s in the plane of the sky"
+     }
+    ]
+   },
+   "citation": "(cite: Comeron2011-1)"
+  },
+  {
+   "what": {
+    "value": "Dust opacities for thin ice mantles at 10^6 cm^-3",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum emission",
+      "quote": "$\\kappa_{\\lambda}$ is the absorption coefficient obtained from (cite: Ose94) for thin ice mantles and a density of $10^{6}$ cm$^{-3}$."
+     }
+    ]
+   },
+   "citation": "(cite: Ose94)"
+  },
+  {
+   "what": {
+    "value": "Previous ALMA fluxes 0.91±0.26 mJy (B7) and 0.35±0.11 mJy",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum emission",
+      "quote": "who measured a flux of 0.35$\\pm$0.11 mJy."
+     }
+    ]
+   },
+   "citation": "(cite: Ansdell16-1; Ansdell18-1)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and lines",
+   "method": "CASA CLEAN with Briggs weighting, varied robust; continuum from line-free channels; primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust disk mass",
+   "method": "Optically thin M = S D^2 / (B(Tdust) kappa), Tdust from stellar luminosity, Ossenkopf & Henning opacities",
+   "software": [],
+   "key_parameters": [
+    "Tdust 15 K (R=1.1 Rsun) or 20 K (R=2 Rsun); kappa 0.85 (1.3 mm), 1.8 (0.89 mm) cm2/g"
+   ],
+   "assumptions": [
+    "Distance 155 pc; optically thin thermal dust"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Outflow geometry and mass",
+   "method": "Lobe length, opening and position angles measured by hand on CO(3-2) 3σ contour; mass from optically thin channel-by-channel CO(3-2), Tex ~26.4 K, no inclination correction; then dynamical quantities from formulas",
+   "software": [],
+   "key_parameters": [
+    "vmax ~6 km/s; Rlobe 1.8 arcsec"
+   ],
+   "assumptions": [
+    "Material near plane of sky (limb brightening); emission near source excluded so mass is lower limit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Spectral index",
+   "method": "alpha from fluxes at 328 and 225 GHz with propagated error",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "SED grid fitting",
+   "method": "Grid of MCFOST radiative transfer models with 8 free parameters, chi2 for two near-IR datasets",
+   "software": [
+    "MCFOST"
+   ],
+   "key_parameters": [
+    "Teff fixed 3200 K, d 155 pc; stellar radius 1.1, 1.5, 2, 2.5 Rsun"
+   ],
+   "assumptions": [
+    "No dusty envelope included"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 6 (1.3 mm) continuum flux density",
+   "value": "0.31",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum emission",
+     "quote": "Par-Lup-3-4 was detected at a 6$\\sigma$ level with a flux density of 0.31$\\pm$0.05 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 7 (0.89 mm) continuum flux density",
+   "value": "0.59",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum emission",
+     "quote": "yielding an unresolved source with a flux density of 0.59$\\pm$0.06 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (T=20 K), Band 7",
+   "value": "0.28",
+   "uncertainty": "0.05",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum emission",
+     "quote": "The derived masses for the dust at a temperature of 20 K are 0.28 $\\pm$ 0.05 M$\\mathrm{_{\\oplus}}$ for Band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index",
+   "value": "1.6",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4 Spectral index",
+     "quote": "the Par-Lup3-4 spectral index is 1.6 $\\pm$ 0.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass",
+   "value": "9.5e-7",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Geometrical and dynamical properties",
+     "quote": "We obtained a total outflow mass of 9.5$\\times$10$^{-7}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass-loss rate",
+   "value": "4.3e-9",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Mass-loss rate | $\\dot{\\mathrm{M}}$ = M$\\mathrm{_{outflow}}$ / $\\tau\\mathrm{_{dynamical}}$ | 4.3$\\times$10$^{-9}$ M$_{\\odot}$/yr |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical time",
+   "value": "220",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Geometrical and dynamical properties",
+     "quote": "$\\tau\\mathrm{_{dyn}}$ = 220 yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Opening angle (south/north lobes)",
+   "value": "108 / 116",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3 Geometrical and dynamical properties",
+     "quote": "providing an angle of 108$^{\\circ}$ for the southern lobe and 116$^{\\circ}$ for the northern lobe."
+    }
+   ]
+  },
+  {
+   "quantity": "Wind mass-loss rate",
+   "value": "1.53e-10",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.3 Characterizing the molecular outflow cavity",
+     "quote": "The wind mass-loss rate derived for Par-Lup3-4 is 1.53$\\times$10$^{-10}$ M$_{\\odot}$ /yr"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO(3-2) optical depth",
+   "value": "0.31",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2.3 13CO(3-2)",
+     "quote": "we calculated the optical depth and obtained a value of 0.31"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for imaging/CLEAN (only pipeline versions given)",
+  "Line-free channels used for continuum and continuum subtraction",
+  "Image size, cell size, CLEAN masks, thresholds, deconvolver",
+  "Whether archive calibrated products or re-run pipeline",
+  "Robust values per line are inconsistent between text (0.5) and table (1)",
+  "CO abundance, CO(3-2) column density details and moment-map velocity limits",
+  "SED chi2 definition, photometric inputs and MCFOST settings",
+  "Systemic velocity used and cloud-emission masking for mass integration"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, image size, masks, line-free channels)",
+  "Velocity integration ranges for each moment/mass computation",
+  "Full MCFOST setup and chi2 details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified and main formulas given, but imaging settings, hand measurements and SED details are incomplete.",
+ "rediscovery_reason": "Public ALMA projects, formulas given and results numeric (fluxes, outflow mass, rates), though some settings missing.",
+ "source_card": "cards/2020A%26A...640A..13S/sonnet/card.md"
+}

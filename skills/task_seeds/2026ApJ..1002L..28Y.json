@@ -1,0 +1,308 @@
+{
+ "bibcode": "2026ApJ..1002L..28Y",
+ "title": "A Close Quasar Pair in a Massive Galaxy Merger at z = 5.7",
+ "year": 2026,
+ "doi": "10.3847/2041-8213/ae5e5b",
+ "arxiv_id": "2604.06504",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Is J2037–4537 a physical close quasar pair in a galaxy merger at z=5.7 rather than a doubly-imaged lensed quasar, and what are the host galaxy properties and implied pair fraction?",
+ "alma_project_codes": [
+  "2021.1.01052.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.44'' x 0.26'' clean beam (continuum)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quasar bolometric luminosities (log Lbol=47.1, 46.9) and SMBH masses (3.9e8, 2.8e8 Msun)",
+    "evidence": [
+     {
+      "loc": "2.1 The Target",
+      "quote": "(cite: yue21) measured the bolometric luminosities of the two quasars to be $\\log L_\\text{bol}[\\text{erg s}^{-1}]=47.1$ and $46.9$"
+     }
+    ]
+   },
+   "citation": "(cite: yue21)"
+  },
+  {
+   "what": {
+    "value": "Quasar luminosity function used to estimate N_qso=83 at 5.5<z<6 in DES",
+    "evidence": [
+     {
+      "loc": "4.1 Quasar Pair Fraction",
+      "quote": "Using the quasar luminosity function in (cite: mat18) and the template quasar spectrum in (cite: vb01)"
+     }
+    ]
+   },
+   "citation": "(cite: mat18); (cite: vb01)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature 47 K and beta=1.6",
+    "evidence": [
+     {
+      "loc": "3.2 Quasar Host Galaxy Properties",
+      "quote": "We adopt a canonical dust temperature of $T_\\text{dust}=47$K and emissivity of $\\beta=1.6$ (cite: beelen06)."
+     }
+    ]
+   },
+   "citation": "(cite: beelen06)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Continuum imaging",
+   "method": "Split line-free channels, run tclean interactively with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "[C II] cube, spectra and redshifts",
+   "method": "uvcontsub then tclean; extract spectra in 0.8'' circular apertures; fit Gaussian plus constant with MCMC",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "aperture diameter 0.8''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Moment maps",
+   "method": "immoments for moment 0 over 283.534-284.301 GHz; per-pixel Gaussian fits for velocity and dispersion",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Lens modeling test",
+   "method": "Fit continuum and [C II] with singular isothermal ellipsoid plus external shear lens and Sersic sources",
+   "software": [
+    "PyAutoLens"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fluxes and sizes",
+   "method": "imstat in apertures, error from annulus 6''-12''; imfit 2D Gaussians",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive L_FIR, L_TIR, SFR, L_[CII], M_dyn",
+   "method": "Modified blackbody SED with CMB correction; SFR from L_TIR; L_[CII] relation; M_dyn=1.5 R_maj sigma^2/G",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust=47 K, beta=1.6, kappa=0.077 (nu/352 GHz)^beta",
+    "Flat LCDM, Om=0.3, H0=70"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Quasar pair fraction lower limit",
+   "method": "N_qso=83 from luminosity function in DES area; F_pair>1/83; Poisson-Gamma posterior with flat prior",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "J2037–4537 is the only z>5.5 pair in DES field"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Merger timescale",
+   "method": "Chandrasekhar dynamical friction for galaxies then SMBHs",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "SIS profiles, circular orbits, ln Lambda=0.93 (galaxies) and ~6 (BHs)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[C II] redshift quasar A",
+   "value": "5.6947",
+   "uncertainty": "0.0004",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Observations",
+     "quote": "$z_{\\rm A}=5.6947 \\pm 0.0004$ and $z_{\\rm B}=5.6948 \\pm 0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift quasar B",
+   "value": "5.6948",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Observations",
+     "quote": "$z_{\\rm A}=5.6947 \\pm 0.0004$ and $z_{\\rm B}=5.6948 \\pm 0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "287 GHz continuum flux A / B",
+   "value": "0.807 / 0.828",
+   "uncertainty": "0.008 / 0.007",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $F_\\text{287GHz}$ (mJy) | $0.807\\pm0.008$ | $0.828\\pm0.007$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] line flux A / B",
+   "value": "1.95 / 1.30",
+   "uncertainty": "0.26 / 0.18",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.95\\pm0.26$ | $1.30\\pm0.18$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR A / B",
+   "value": "4.52e12 / 3.66e12",
+   "uncertainty": "0.19e12 / 0.13e12",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(4.52\\pm0.19)\\times10^{12}$ | $(3.66\\pm0.13)\\times10^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_TIR A / B",
+   "value": "672 / 543",
+   "uncertainty": "29 / 19",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $672\\pm29$ | $543\\pm19$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dyn A / B",
+   "value": "2.2e10 / 4.6e10",
+   "uncertainty": "0.7e10 / 1.7e10",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$(2.2\\pm0.7)\\times10^{10}$ | $(4.6\\pm1.7)\\times10^{10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] FWHM A / B",
+   "value": "549 / 479",
+   "uncertainty": "79 / 75",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$549\\pm79$ | $479\\pm75$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pair fraction lower limit",
+   "value": "1.2%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 Quasar Pair Fraction",
+     "quote": "We thus infer a pair fraction of $F_\\text{pair}>1/83=1.2\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "F_pair at 95% probability",
+   "value": ">4.28e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 Quasar Pair Fraction",
+     "quote": "the probability of having $F_\\text{pair}>4.28\\times10^{-3}$ is $95\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total binary formation timescale",
+   "value": "2.1",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2 Merger Timescale Estimate",
+     "quote": "$t_\\text{total}=t^\\text{gal}_\\text{fric}+t^\\text{BH}_\\text{fric}\\approx2.1$ Gyrs"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of channels/channel width and velocity resolution of the [C II] cube",
+  "Cell size, image size, masks and clean thresholds",
+  "Calibrators and whether the pipeline or manual calibration was used",
+  "MCMC sampler, priors and likelihood for Gaussian line fits",
+  "PyAutoLens model setup, priors and settings",
+  "Which line-free channels were used given the line at the spectrum edge",
+  "Procedure for sigma used in M_dyn (conversion from FWHM, size inputs)",
+  "Inclination or random-orientation assumption details for M_dyn"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, channel width, masks)",
+  "Calibration details",
+  "MCMC and lens-model settings"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public single-project data, code released on Zenodo, compact recipe, but imaging and fitting settings are sparse.",
+ "rediscovery_reason": "Public data, simple recipe, and numeric results in Table 1 can be rederived.",
+ "source_card": "cards/2026ApJ..1002L..28Y/sonnet/card.md"
+}

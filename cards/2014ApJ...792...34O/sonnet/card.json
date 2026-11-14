@@ -1,0 +1,971 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014ApJ...792...34O",
+  "title": "ALMA Observation of 158 μm [C II] Line and Dust Continuum of a z = 7 Normally Star-forming Galaxy in the Epoch of Reionization",
+  "year": 2014,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Ota, Kazuaki",
+  "n_authors": 19,
+  "arxiv_id": "1405.5387",
+  "doi": "10.1088/0004-637X/792/1/34",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00115.S",
+   "2011.0.00767.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA observations of the [CII] line and far-infrared (FIR) continuum of a normally star-forming galaxy in the reionization epoch, the $z=6.96$ Ly$\\alpha$ emitter (LAE) IOK-1."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "IOK-1 (z=6.96 LAE)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=6.96 (from Lyα)",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "We observed IOK-1 by targeting its [CII] line redshifted to $z=6.96$ measured from Ly$\\alpha$ emission"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lyα redshift (Iye06; Ota08)",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "We observed IOK-1 by targeting its [CII] line redshifted to $z=6.96$ measured from Ly$\\alpha$ emission"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Himiko (z=6.595 LAE, public ALMA data re-analysed)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=6.595",
+      "evidence": [
+       {
+        "loc": "3.1 FIR Continuum Properties",
+        "quote": "we have re-calibrated, flagged, and imaged the public Himiko ALMA Cycle 0 data."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Ouchi13",
+      "evidence": [
+       {
+        "loc": "3.1 FIR Continuum Properties",
+        "quote": "we have re-calibrated, flagged, and imaged the public Himiko ALMA Cycle 0 data."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the [CII] line and FIR dust continuum properties (dust mass, IR luminosity, obscured SFR) of a normal z=6.96 LAE, IOK-1, and how does it compare with other galaxy populations?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Motivated by this, we conducted a [CII] line and FIR continuum observation of such a galaxy with ALMA."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00767.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA# 2011.0.00767.S and 2011.0.00115.S."
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00115.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA# 2011.0.00767.S and 2011.0.00115.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.26 mm, 238.76 GHz observed)",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "(1.26 mm, 238.76 GHz in the observer’s frame or 157.74 $\\mu$m, 1900.54 GHz at rest frame)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four 2 GHz SPWs (1.875 GHz usable), TDM, centered 223.76, 225.76, 238.76, 240.76 GHz; 15.6 MHz channels = 40 km/s",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "with central frequencies of 223.76, 225.76, 238.76 and 240.76 GHz."
+     },
+     {
+      "loc": "2 Observation",
+      "quote": "The channel spacing of the TDM mode is 15.6 MHz, and this gives a spectral resolution of 40 km s$^{-1}$."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[CII]",
+     "transition": "2P3/2 -> 2P1/2",
+     "rest_frequency": "1900.54 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "the ionized carbon 157.74 $\\mu$m [CII] line (rest frame frequency 1900.54 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "Cycle 0 Extended Array, 19–24 12-m antennas",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "We used the ALMA band 6 with the Extended Array consisting of 19–24 12-m diameter antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.1\" x 0.75\" (natural); 1.5\" x 1.2\" with 100 kλ taper",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "The resolutions (synthesized beam sizes) of [CII] line and FIR continuum images presented here are $1.1\\ensuremath{''} \\times 0.75\\ensuremath{''}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "215 µJy/beam per 40 km/s channel; 18 µJy/beam continuum (7.5 GHz) at native resolution; 240 and 21 µJy/beam at 1.5\"x1.2\"",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "$\\sigma_{\\rm line} =$ 215 $\\mu$Jy beam$^{-1}$ per TDM channel (40 km s$^{-1}$) and $\\sigma_{\\rm cont} =$ 18 $\\mu$Jy beam$^{-1}$ for 7.5 GHz bandwidth"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2.7 hours",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "We obtained 2.7 hours of on-source integration."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "15 June, 15 and 27 July, 29 November 2012",
+    "evidence": [
+     {
+      "loc": "2 Observation",
+      "quote": "on 15 June, 15 and 27 July and 29 November 2012 during the Cycle 0 period."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Subaru Suprime-Cam",
+     "provided": {
+      "value": "Optical BVRi'z'y photometry for SED; NB973 Lyα image",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "Subaru Telescope Suprime-Cam $BVRi'z'y$ bands (cite: Ota08; Ota10b; Jiang13)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST WFC3",
+     "provided": {
+      "value": "F110W, F125W, F160W photometry",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "F110W, F125W and F160W bands (cite: Cai11; Jiang13)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer IRAC",
+     "provided": {
+      "value": "3.6–8.0 µm photometry",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "IRAC) 3.6, 4.5, 5.8 and 8.0 $\\mu$m bands (cite: Ota10b)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel SPIRE",
+     "provided": {
+      "value": "250/350/500 µm non-detections",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "IOK-1 is not detected in any of the SPIRE bands"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Local galaxy template SEDs (Arp 220, M82, M51, NGC 6946)",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "Arp 220, M82, M51, NGC 6946 (the left panel in Figure [2](#SED_IOK-1)) taken from (cite: Silva98)"
+       }
+      ]
+     },
+     "citation": "(cite: Silva98)"
+    },
+    {
+     "what": {
+      "value": "Dwarf/irregular templates and dust temperature/beta (average 27.6 K, beta=1.5)",
+      "evidence": [
+       {
+        "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+        "quote": "$T_{\\rm dust}^{z=0}=27.6$ K and $\\beta=1.5$, the average values of 17 local dwarf and irregular galaxies"
+       }
+      ]
+     },
+     "citation": "(cite: Skibba11), (cite: Dale07)"
+    },
+    {
+     "what": {
+      "value": "UV-derived SFR of IOK-1 = 23.9 Msun/yr",
+      "evidence": [
+       {
+        "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+        "quote": "(cite: Jiang13) estimated the SFR of IOK-1 to be SFR$_{\\rm UV} \\sim 23.9$ $M_{\\odot}$yr$^{-1}$"
+       }
+      ]
+     },
+     "citation": "(cite: Jiang13)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA data reduction; details not given",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "We carried out data reduction with the Common Astronomy Software Applications (CASA)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "3C279 for one execution block, Titan for the other three; J1310+323 phase, 3C279 bandpass",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "The flux density was scaled with the observation data of 3C279 (J1256-057) for one of the four execution blocks and Titan for the rest of three execution blocks."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "The typical flux uncertainties in the millimeter regime are $\\sim 10$%."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "using ‘natural’ weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "100 kλ taper giving 1.5\"x1.2\" beam",
+     "evidence": [
+      {
+       "loc": "3.1 FIR Continuum Properties",
+       "quote": "through tapering with a 100 k$\\lambda$ taper"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "21 µJy/beam continuum; 240 µJy/beam per 40 km/s channel at 1.5\"x1.2\"",
+     "evidence": [
+      {
+       "loc": "3.1 FIR Continuum Properties",
+       "quote": "As the rms of this map is $\\sigma_{\\rm cont}=21$ $\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CMB correction applied following da Cunha et al. formalism, with M_nu computed per González-López prescription",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "but following the prescription given by (cite: Gonzalez-Lopez14) to calculate the factor $M_{\\nu}$ as follows."
+       }
+      ]
+     },
+     "from_reference": "(cite: daCunha13); (cite: Gonzalez-Lopez14)"
+    },
+    {
+     "what": {
+      "value": "Dust mass absorption coefficient kappa=0.77 (850um/lambda)^beta cm2/g",
+      "evidence": [
+       {
+        "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+        "quote": "from Dunne et al. (2000) with the rest frame wavelength of $\\lambda_{\\rm rest}=158$ $\\mu$m."
+       }
+      ]
+     },
+     "from_reference": "Dunne et al. (2000)"
+    },
+    {
+     "what": {
+      "value": "Line luminosity formula",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$L_{\\rm line}=1.04 \\times 10^{-3} F_{\\rm line}\\nu_{\\rm rest}(1+z)^{-1}D_{\\rm L}^2$"
+       }
+      ]
+     },
+     "from_reference": "(cite: Walter12b)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and whether the pipeline or manual scripts were used",
+    "Flagging details and bandpass/phase solution intervals",
+    "Which execution blocks of each project were combined",
+    "Clean parameters (cell, image size, masks, iterations, continuum line-free channels)",
+    "Pixel-based rms measurement regions and how the 3-sigma limits were derived",
+    "Exact procedure for MBB scaling to the SED peak for template galaxies",
+    "Himiko data reduction details (project code, calibration, flagging)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image continuum and [CII] cubes",
+    "method": {
+     "value": "CASA reduction, natural weighting, 100 kλ taper to 1.5\"x1.2\"",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "Finally, we imaged the [CII] line and FIR continuum, using ‘natural’ weighting"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "40 km/s channels; 7.5 GHz continuum bandwidth",
+      "evidence": [
+       {
+        "loc": "2 Observation",
+        "quote": "for 7.5 GHz bandwidth (4 SPWs $\\times$ 1.875 GHz)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive 3-sigma continuum and [CII] limits",
+    "method": {
+     "value": "Non-detection; 3 sigma upper limits from tapered map rms",
+     "evidence": [
+      {
+       "loc": "3.1 FIR Continuum Properties",
+       "quote": "the $3\\sigma$ upper limit on 1.26 mm FIR continuum of IOK-1 is $F_{\\nu/(1+z)}^{\\rm obs} < 63$ $\\mu$Jy."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "[CII] line width of 40 km/s",
+      "evidence": [
+       {
+        "loc": "3.2 [CII] Line Properties",
+        "quote": "We assumed a line width of $\\Delta v = 40$ km s$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Width consistent with ~50 km/s FWHM simulated by González-López/Vallini",
+     "evidence": [
+      {
+       "loc": "3.2 [CII] Line Properties",
+       "quote": "our assumption of $\\Delta v = 40$ km s$^{-1}$ for calculating the [CII] line luminosity upper limit is reasonable."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compare SED with local galaxy templates incl. CMB effects",
+    "method": {
+     "value": "Shift templates to z=6.96, normalise to F125W, apply CMB heating and background corrections (Eqs. 1-7)",
+     "evidence": [
+      {
+       "loc": "3.1.2 Spectral Energy Distribution",
+       "quote": "normalize them to the rest frame UV continuum flux density redward of Ly$\\alpha$ (the *HST*/F125W band flux)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Template T_dust and beta from literature (e.g. Arp 220 66.7 K, 1.83)",
+      "evidence": [
+       {
+        "loc": "3.1.2 Spectral Energy Distribution",
+        "quote": "$T_{\\rm dust}^{z=0}=66.7$ K and $\\beta=1.83$ for Arp 220"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive dust mass, L_FIR, L_IR, SFR_dust limits",
+    "method": {
+     "value": "Scale MBB (T=27.6 K, beta=1.5) to CMB-corrected limit; integrate 42.5–122.5 µm and 8–1000 µm; Kennicutt98 SFR",
+     "evidence": [
+      {
+       "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+       "quote": "SFR$_{\\rm dust}= 1.73 \\times 10^{-10} L_{\\rm IR}$ $[L_{\\odot}]$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Dwarf-galaxy T_dust=27.6 K, beta=1.5; Salpeter IMF; cosmology (0.3,0.7,0.7)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "$(\\Omega_m, \\Omega_{\\Lambda}, h)=(0.3, 0.7, 0.7)$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Place IOK-1 and other LAEs in L_[CII]-SFR and L_[CII]/L_FIR-L_FIR diagrams",
+    "method": {
+     "value": "Compare limits with literature relations (De Looze11) and populations",
+     "evidence": [
+      {
+       "loc": "3.2.1 [CII] Line and SFRs of High Redshift LAEs",
+       "quote": "By using the local star-forming galaxy correlation derived by (cite: DeLooze11), the [CII] luminosity limit of IOK-1 converts to SFR of $\\sim 2.5$ $M_{\\odot}$yr$^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA data reduction and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observation",
+       "quote": "We carried out data reduction with the Common Astronomy Software Applications (CASA)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "3σ continuum limit (1.26 mm)",
+    "value": "<63",
+    "uncertainty": "not stated",
+    "units": "µJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$<63$"
+     }
+    ]
+   },
+   {
+    "quantity": "3σ [CII] flux density limit (40 km/s)",
+    "value": "<720",
+    "uncertainty": "not stated",
+    "units": "µJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 [CII] Line Properties",
+      "quote": "the $3\\sigma$ upper limit on [CII] line flux density of IOK-1 is 720 $\\mu$Jy beam$^{-1}$ over a channel width of 40 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "L_[CII]",
+    "value": "<3.4e7",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\rm [CII]} < 3.4 \\times 10^7 L_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "M_dust (CMB-corrected)",
+    "value": "<6.4e7",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "intrinsic dust mass $M_{\\rm dust} < 6.4 \\times 10^7 M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "L_FIR (42.5–122.5 µm)",
+    "value": "<3.7e10",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\rm FIR} < 3.7\\times 10^{10} L_{\\odot}$ (42.5–122.5 $\\mu$m)"
+     }
+    ]
+   },
+   {
+    "quantity": "L_IR (8–1000 µm)",
+    "value": "<5.7e10",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$L_{\\rm IR} < 5.7 \\times 10^{10} L_{\\odot}$ (8–1000 $\\mu$m)"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR_dust",
+    "value": "<10.0",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+      "quote": "SFR$_{\\rm dust} < 10.0$ $M_{\\odot}$yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Obscured fraction of star formation",
+    "value": "<29",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.3 Dust Mass, IR Luminosity and Dust-obscured SFR",
+      "quote": "$f_{\\rm obscured}=$ SFR$_{\\rm dust}/$SFR$_{\\rm total} < 29$% of star formation is obscured by dust in IOK-1."
+     }
+    ]
+   },
+   {
+    "quantity": "CMB correction factor C_nu M_nu",
+    "value": "0.76",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "a factor of $C_{\\nu}M_{\\nu}=0.76$ lower"
+     }
+    ]
+   },
+   {
+    "quantity": "Marginal [CII] peak redshift",
+    "value": "6.9585",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 [CII] Line Properties",
+      "quote": "the redshift based on its peak is $z_{\\rm [CII]}=6.9585$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "IOK-1 SED resembles local dwarf/irregular galaxies, not highly dusty galaxies",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggests that IOK-1 is similar to local dwarf/irregular galaxies in SED shape rather than highly dusty/obscured galaxies"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is IOK-1 a dusty/obscured system?",
+    "experiment": "ALMA 1.26 mm continuum compared with templates including CMB effects",
+    "result": "Undetected; 3σ <63 µJy",
+    "finding": "IOK-1 is similar to local dwarfs/irregulars; <29% of SF obscured",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggesting that $< 29$% of the star formation is obscured by dust."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does IOK-1 follow local [CII]–SFR relation?",
+    "experiment": "Compare [CII] limit with SFR range",
+    "result": "L_[CII] limit implies SFR~2.5 vs 23.9–33.8",
+    "finding": "LAEs at reionization have lower gas/dust enrichment than local star-forming galaxies, or different PDR/ISM",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.2.1 [CII] Line and SFRs of High Redshift LAEs",
+      "quote": "Hence, the local star-forming galaxy correlation does not seem to apply to IOK-1."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "IOK-1 chosen as a spectroscopically confirmed z~7 LAE with rich ancillary data",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "we have a wealth of ancillary data availaible for this galaxy"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "3σ feature at 238.805 GHz treated as non-detection because marginal",
+     "evidence": [
+      {
+       "loc": "3.2 [CII] Line Properties",
+       "quote": "Hence, in this paper, we consider it a non-detection"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Single object; may not be representative of LAE population",
+     "evidence": [
+      {
+       "loc": "4 Summary and Conclusion",
+       "quote": "results obtained from the analysis of them might not be representative"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust limits depend strongly on assumed T_dust and beta",
+    "Marginal 3σ [CII] feature treated as non-detection; line width assumed 40 km/s",
+    "Comparison samples use heterogeneous sensitivities and methods"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Himiko data described as public Cycle 0 data; IOK-1 codes given in acknowledgments",
+    "evidence": [
+     {
+      "loc": "3.1 FIR Continuum Properties",
+      "quote": "we have re-calibrated, flagged, and imaged the public Himiko ALMA Cycle 0 data."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and scripts",
+    "Imaging parameters",
+    "Which project corresponds to Himiko",
+    "Template SED fitting details"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB raw for four Cycle 0 execution blocks",
+   "score_inferred": 3,
+   "score_reason": "Public Cycle 0 data and analytic recipe with explicit numbers, but CASA reduction and imaging parameters are largely unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data public, results numeric limits derived from formulae; reasonably redoable."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: daCunha13)",
+     "why": "CMB effects on dust continuum"
+    },
+    {
+     "citation": "(cite: Gonzalez-Lopez14)",
+     "why": "CMB correction prescription for M_nu"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Walter12b)",
+     "why": "Previous PdBI limits on IOK-1"
+    },
+    {
+     "citation": "(cite: Ouchi13)",
+     "why": "ALMA observation of Himiko"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Herschel-ATLAS",
+    "KINGFISH"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-505bbb19d9c4b0691857b1c9d848b46f",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 36972,
+   "output_tokens": 8623,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.080694,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 61,
+  "quotes_ok": 61,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 44,
+   "rate": 0.557
+  },
+  "evidence_ok": true
+ }
+}

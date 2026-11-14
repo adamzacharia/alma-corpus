@@ -1,0 +1,834 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017PASJ...69...34S",
+  "title": "Detailed modeling of dust distribution in the disk of HD 142527",
+  "year": 2017,
+  "journal": "Publications of the Astronomical Society of Japan",
+  "first_author": "Soon, Kang-Lou",
+  "n_authors": 5,
+  "arxiv_id": "1701.06706",
+  "doi": "10.1093/pasj/psx007",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00318.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observational data",
+    "quote": "We use the continuum data of HD 142527 taken by ALMA over the period from 2012 June to August (ADS/JAO.ALMA#2011.0.00318.S)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 142527",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Considering its association with Sco OB2, the distance to the star is assumed to be 140 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "assumed from association with Sco OB2",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "Considering its association with Sco OB2, the distance to the star is assumed to be 140 pc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the dust surface density distribution along all position angles of the crescent disk around HD 142527, and how does it depend on the assumed scattering opacity?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The map is divided into 18 azimuthal sectors, and the radial intensity profile in each sector is reproduced with a 2D disk model."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00318.S",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "(ADS/JAO.ALMA#2011.0.00318.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "890 µm continuum (336 GHz), Cycle 0",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "we obtain a 1.8 GHz bandwidth for the continuum data at 336 GHz, or λ obs = 890 µm."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four spectral windows at 330.588, 329.331, 342.883, 342.400 GHz; 469 MHz bandwidth, 3840 channels each",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "The central frequencies for the windows are 330.588, 329.331, 342.883, and 342.400 GHz;"
+     },
+     {
+      "loc": "2 Observational data",
+      "quote": "each window has a 469 MHz bandwidth over 3840 channels."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "1.8 GHz from line-free channels",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "Aggregating all the line-free channels in the spectral windows, we obtain a 1.8 GHz bandwidth for the continuum data at 336 GHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "12-m array, 20 to 26 antennas, six scheduling blocks",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "Six scheduling blocks were carried out by using the Extended Array Configuration in Cycle 0 consisting of 20 to 26 12-meter antennas"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "maximum about 480 m",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "forming a maximum baseline of about 480 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.40'' × 0.47'' (PA 59.9°), 56 au × 66 au",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "The synthesized beam (FWHM) is 0 ′′ . 40 × 0 ′′ . 47 (PA = 59 ◦ .9), or 56 au × 66 au"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "RMS 0.61 mJy asec^-2",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "The RMS noise level is 0.61 mJy asec −2 ."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "three hours",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "The on-source integration time is three hours after flagging aberrant data."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012 June to August",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "over the period from 2012 June to August"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust opacities (kappa_a=2.9, kappa_s=26.2 cm2/g at 890 µm)",
+      "evidence": [
+       {
+        "loc": "3.1 Assumptions on dust properties",
+        "quote": "κ a = 2.9 cm 2 g −1 and κ s = 26.2 cm 2 g −1 at λ obs = 890 µm (Aikawa & Nomura 2006)."
+       }
+      ]
+     },
+     "citation": "Aikawa & Nomura 2006"
+    },
+    {
+     "what": {
+      "value": "Disk inclination 27 deg from 13CO kinematics",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the inclination of the disk axis to the line of sight is derived to be 27 ◦ (Fukagawa et al. 2013)."
+       }
+      ]
+     },
+     "citation": "Fukagawa et al. 2013"
+    },
+    {
+     "what": {
+      "value": "Grain composition mass fractions consistent with solar abundance",
+      "evidence": [
+       {
+        "loc": "3.1 Assumptions on dust properties",
+        "quote": "which are consistent with the solar elemental abundance (Anders & Grevesse 1989)"
+       }
+      ]
+     },
+     "citation": "Anders & Grevesse 1989"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 3.4",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "Calibration and data reduction are made with the Common Astronomy Software Applications package version 3.4."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Self-calibration performed, Briggs robust 0.5",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "We use Briggs weighting with a robust parameter of 0.5 during the self-calibration"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "We use Briggs weighting with a robust parameter of 0.5 during the self-calibration"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.40'' × 0.47'', PA 59.9°",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "The synthesized beam (FWHM) is 0 ′′ . 40 × 0 ′′ . 47 (PA = 59 ◦ .9)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.61 mJy asec^-2",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "The RMS noise level is 0.61 mJy asec −2 ."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Modeling method (2D axisymmetric, radiative and hydrostatic equilibrium)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We use the same modeling method adopted by Muto et al. (2015)."
+       }
+      ]
+     },
+     "from_reference": "Muto et al. (2015)"
+    },
+    {
+     "what": {
+      "value": "Robust 0.5 weighting to recover extended emission",
+      "evidence": [
+       {
+        "loc": "2 Observational data",
+        "quote": "in order to recover the weak and extended components of the dust emission (Muto et al. 2015)"
+       }
+      ]
+     },
+     "from_reference": "Muto et al. (2015)"
+    },
+    {
+     "what": {
+      "value": "Gas-to-dust ratio 100, well-mixed",
+      "evidence": [
+       {
+        "loc": "Appendix 1",
+        "quote": "Following Muto et al. (2015), we assume that the gas and dust are well mixed in the vertical direction and use the constant gas-to-dust ratio of 100"
+       }
+      ]
+     },
+     "from_reference": "Muto et al. (2015)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Phase center, imaging task, cell and image size, and CLEAN settings",
+    "Self-calibration solution intervals and reference datasets",
+    "Flux calibrator and flux scale",
+    "Line-free channel selection",
+    "Radiative transfer M1 code is not released",
+    "Exact PA offset conventions and sector extraction procedure",
+    "Stellar and disk model parameters beyond those listed (e.g. inner boundary, luminosity)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract observed radial profiles",
+    "method": {
+     "value": "Divide image into 18 azimuthal sectors (20 deg), radial bins of 14 au, fit Gaussian to each profile for I0, w0, r0",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "we create radial intensity profiles of the continuum emission for 18 azimuthal sectors with a radial bin width of 14 au."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "PA' = PA + 19 deg",
+      "evidence": [
+       {
+        "loc": "2 Observational data",
+        "quote": "PA ′ = PA + 19 ◦"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "distance 140 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the distance to the star is assumed to be 140 pc."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit to radial profile",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "We fit these discrete averaged intensities in every sector by using a Gaussian function"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compute disk structure grid",
+    "method": {
+     "value": "M1 radiative transfer with hydrostatic equilibrium over a grid of (Sigma0, w0, r0) with Gaussian surface density",
+     "evidence": [
+      {
+       "loc": "3.2 Disk models",
+       "quote": "we solve the radiative transfer of the disk by the M1 model"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "-2.1<=logSigma0<=0.1 step 0.1; 21<=w0<=31 au step 2; 159<=r0<=199 au step 8",
+      "evidence": [
+       {
+        "loc": "3 Modeling procedure",
+        "quote": "−2.1 ≤ logΣ 0 (g cm −2 ) ≤ 0.1 with the interval ∆logΣ 0 = 0.1, in 21 au ≤ w 0 ≤ 31 au with ∆w 0 = 2 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Grains: silicate, carbonaceous, ice; a^-3.5 size distribution, amax = 1 mm; Mie theory; gas-to-dust 100; M*=2.2 Msun, Teff=6250 K; i=27 deg",
+      "evidence": [
+       {
+        "loc": "3.1 Assumptions on dust properties",
+        "quote": "The grains have a power-law size distribution,"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Ray-trace and compare with observation",
+    "method": {
+     "value": "Ray-trace model images, convolve with the synthesized beam, fit Gaussians, and search for models meeting tolerance criteria; interpolate in Sigma0 and r0",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison between observation and simulation",
+       "quote": "|∆w 0 [∗] [| ≡] ��� w 0∗,obs [−] [w] 0 [∗] ��� ≤ 1 au, (11b)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "|ΔI|<=1% of I_obs, |Δw|<=1 au, |Δr|<=1 au",
+      "evidence": [
+       {
+        "loc": "3.4 Comparison between observation and simulation",
+        "quote": "criteria better than the beam resolution are set."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Grid search with interpolation in Sigma0 and r0",
+     "evidence": [
+      {
+       "loc": "3.4 Comparison between observation and simulation",
+       "quote": "we interpolate models to complement our sample on Σ 0 and r 0 ."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared uncertainties for optically thin and thick sectors using alternative parameter sets",
+     "evidence": [
+      {
+       "loc": "4.3 Uncertainties in the best fit values",
+       "quote": "The uncertainties in the optically thin and optically thick sectors are discussed separately"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test reduced scattering opacity",
+    "method": {
+     "value": "Repeat fits with scattering opacity reduced by 90% (kappa_s=2.62 cm2/g) in all sectors",
+     "evidence": [
+      {
+       "loc": "5.1 Reducing scattering opacities",
+       "quote": "we reduce the scattering opacity across all the wavelengths by 90%, as depicted in figure 2."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Absorption opacity unchanged",
+      "evidence": [
+       {
+        "loc": "5.1 Reducing scattering opacities",
+        "quote": "The absorption opacity of the dust particles is kept the same."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "same as step 3",
+     "evidence": [
+      {
+       "loc": "3 Modeling procedure",
+       "quote": "Fit the radial profiles of the model intensity with the Gaussian function and obtain their (I 0 [∗] [,w] 0 [∗] [,r] 0 [∗] [)]"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with conventional model; checked validity of 2D axisymmetric approximation via photon escape length (~10 au vs 56 au arc length)",
+     "evidence": [
+      {
+       "loc": "5.2 Intensity Dependence on Scattering Opacity and PA'",
+       "quote": "this length is approximately 10 au, much shorter than the arc length subtended by the 20 ◦ -sector"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "3.4",
+    "used_for": {
+     "value": "calibration, data reduction, self-calibration",
+     "evidence": [
+      {
+       "loc": "2 Observational data",
+       "quote": "Calibration and data reduction are made with the Common Astronomy Software Applications package version 3.4."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Sigma0 in brightest sector PA'=30-50 deg (conventional)",
+    "value": "1.12",
+    "uncertainty": "factor ~2",
+    "units": "g cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Derived best fit values",
+      "quote": "We derived Σ 0 = 1.12 g cm −2 for the brightest PA ′ = 30 ◦ − 50 ◦"
+     }
+    ]
+   },
+   {
+    "quantity": "Sigma0 in faintest sector PA'=230-250 deg (conventional)",
+    "value": "8.31e-3",
+    "uncertainty": "not stated",
+    "units": "g cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Derived best fit values",
+      "quote": "Σ 0 = 8.31 × 10 −3 g cm −2 for the faintest PA ′ = 230 ◦ − 250 ◦"
+     }
+    ]
+   },
+   {
+    "quantity": "Sigma0 contrast, conventional",
+    "value": "~130",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Derived best fit values",
+      "quote": "The contrast in Σ 0 between these two sectors is about a factor of 130"
+     }
+    ]
+   },
+   {
+    "quantity": "Sigma0 contrast, reduced-scattering",
+    "value": "~40",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 Reducing scattering opacities",
+      "quote": "is reduced to about a factor of 40"
+     }
+    ]
+   },
+   {
+    "quantity": "Sector mass uncertainty, optically thin sector",
+    "value": "~5%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Uncertainties in the best fit values",
+      "quote": "M sec is uncertain only by approximately ±5%."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The conventional model cannot reproduce the NW sectors (PA'=310-10 deg) because heavy self-scattering lowers the intensity ceiling.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This is because the model intensity gets insensitive to the increase in surface density due to heavy self-scattering"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Conventional dust opacity (amax=1 mm) can reproduce the radial profiles in all azimuthal sectors",
+    "experiment": "Grid-search fit of 2D model in 18 sectors",
+    "result": "Fails in PA'=310-10 deg; model is 16% too low in PA'=330-350",
+    "finding": "Conventional opacity cannot explain the NW region",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2 The northwest region of the disk",
+      "quote": "it is 16% lower than I 0 [∗],obs [in][ PA] [′] [ = 330] [◦] [−] [350] [◦]"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Reduced scattering opacity reproduces all sectors",
+    "experiment": "Repeat fits with kappa_s reduced by 90%",
+    "result": "All sectors reproduced; Sigma0 contrast ~40",
+    "finding": "Albedo is probably lower than assumed in the NW region",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Reducing scattering opacities",
+      "quote": "We successfully reproduce the radial profiles in all sectors"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Extend Muto et al. (2015) to all PA to reveal the whole dust distribution",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "we extend the modeling of dust continuum emission in all the PA directions."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution is insufficient to strictly constrain best fit values; optically thick Sigma0 uncertain by ~2",
+     "evidence": [
+      {
+       "loc": "4.3 Uncertainties in the best fit values",
+       "quote": "The best fit values cannot be strictly constrained because of the insufficient angular resolution"
+      }
+     ]
+    },
+    {
+     "value": "Shadowing by warped inner disk not considered; temperature may be overestimated in north and south",
+     "evidence": [
+      {
+       "loc": "4.1 Derived best fit values",
+       "quote": "as we did not consider the possible shadowing effects caused by the warped inner disk"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Reducing scattering opacity by 10x is ad hoc and no lower limit is set",
+    "Only a single dust composition and amax tested",
+    "Fit uses three Gaussian parameters per sector rather than visibility-space fitting",
+    "Tolerance of 1% is tighter than the data uncertainties"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Cycle 0 ALMA project code given",
+    "evidence": [
+     {
+      "loc": "2 Observational data",
+      "quote": "(ADS/JAO.ALMA#2011.0.00318.S)"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Radiative transfer code (M1) not released",
+    "Imaging and self-calibration parameters",
+    "Opacity tables provided privately by H. Nomura"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Data public and equations detailed, but custom RT code, opacities and imaging details missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires unreleased radiative transfer code and privately supplied opacities."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Muto et al. (2015)",
+     "why": "Same modeling method"
+    },
+    {
+     "citation": "Gonzalez et al. 2007; Kanno et al. 2013",
+     "why": "M1 radiative transfer approach"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Muto et al. 2015",
+     "why": "Modeling of two PA sectors in the same disk"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-352bab68b39ab9c1e3276e5b7334b691",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:33",
+  "usage": {
+   "input_tokens": 28656,
+   "output_tokens": 6585,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.062187,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 44,
+   "rate": 0.62
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:37:08",
+  "custom_id": "repair-sonnet-e31f683dcc63fe7b2a88f076cf2cd9fb",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "Fit the radial profiles of the model intensity with the Gaussian function and obtain their (I 0 [∗] [,w] 0 [∗] [,r] 0 [∗] [)]"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

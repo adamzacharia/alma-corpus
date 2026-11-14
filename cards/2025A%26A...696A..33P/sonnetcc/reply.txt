@@ -1,0 +1,701 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+ {"loc": "Introduction", "quote": "we present new ALMA observations of the MUSE Ultra Deep Field"}
+],
+"fields": ["high_z_galaxies", "other"],
+"question": {
+ "value": "Are dusty, gas-rich galaxies found blindly with ALMA associated with metal absorbers in the MUDF quasar sightlines, and what are their properties and environments?",
+ "evidence": [
+  {"loc": "Introduction", "quote": "we study the association of dusty and gas-rich galaxies with metal absorbers detected in the MUDF volume without preselection on the absorber properties"}
+ ]
+},
+"targets": [
+ {"name": "MUDF field with quasar pair QSO-NW and QSO-SE",
+  "details": [
+   {"loc": "Introduction", "quote": "hosting two bright $z\\approx 3.22$ quasars (Q2139-4433 and Q2139-4434, hereafter QSO-NW and QSO-SE, respectively)"},
+   {"loc": "Data calibration and imaging", "quote": "put the phase center at the coordinates ICRS 21:42:24.4658"}
+  ],
+  "coordinates": "band 6 mosaic phase center ICRS 21:42:24.4658 -44:19:53.007",
+  "redshift_or_distance": "quasars at z~3.22",
+  "distance_source": "not stated"},
+ {"name": "C1 (ALMA 1.2-mm continuum source)",
+  "details": [
+   {"loc": "Source detection in band 3 spectral scans", "quote": "The CO(3–2) line, which is identified based on the posterior distributions of the source photometric redshift"},
+   {"loc": "Table 1", "quote": "$2.2529^{+0.0003}_{-0.0003}$"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "z_CO = 2.2529 +/- 0.0003",
+  "distance_source": "ALMA band 3 CO(3-2) line"},
+ {"name": "C3 (ALMA 1.2-mm continuum source)",
+  "details": [
+   {"loc": "Table 1", "quote": "$2.2954^{+0.0005}_{-0.0005}$"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "z_CO = 2.2954 +/- 0.0005",
+  "distance_source": "ALMA band 3 CO(3-2) line"},
+ {"name": "C4 (ALMA 1.2-mm continuum source)",
+  "details": [
+   {"loc": "Table 1", "quote": "$2.3676^{+0.0003}_{-0.0003}$"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "z_CO = 2.3676 +/- 0.0003",
+  "distance_source": "ALMA band 3 CO(3-2) line"},
+ {"name": "C5 (ALMA 1.2-mm continuum source)",
+  "details": [
+   {"loc": "HST counterparts of ALMA continuum sources", "quote": "we assigned to both the sources a low-quality redshift estimate of $z\\approx 2.4723$ on the basis of only the tentative detection of C IV"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "z~2.4723 (low quality)",
+  "distance_source": "tentative MUSE C IV absorption feature"},
+ {"name": "C6 (ALMA 1.2-mm continuum source)",
+  "details": [
+   {"loc": "Line emitters in band 6 data cubes", "quote": "This source has a robust spectroscopic redshift of $z=1.05413$ measured with the MUSE data"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "z = 1.05413",
+  "distance_source": "MUSE spectrum"},
+ {"name": "C2 (host of QSO-SE) and C7",
+  "details": [
+   {"loc": "HST counterparts of ALMA continuum sources", "quote": "A high-quality spectroscopic redshift is constrained from the MUSE spectra for C2, C6, and C7."},
+   {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "including the host galaxy of the QSO-SE (C2)"}
+  ],
+  "coordinates": "not stated",
+  "redshift_or_distance": "C2 at z~3.22 (QSO-SE); C7 value not stated in the text",
+  "distance_source": "MUSE spectra"}
+],
+"alma_project_codes": [
+ {"code": "2021.1.00285.S", "evidence": [{"loc": "Description of observations", "quote": "ALMA band 6 mosaic observations from the program 2021.1.00285.S (Cycle 8, PI: M. Fumagalli)"}]},
+ {"code": "2023.1.00461.S", "evidence": [{"loc": "Description of observations", "quote": "(program ID: 2023.1.00461.S, Cycle 10, PI: A. Pensabene)"}]}
+],
+"data_settings": [
+ {"field": "bands", "value": "Band 6 (1.2 mm) mosaic; Band 3 spectral scans (CO(3-2) at z~2-3)",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "ALMA band 6 mosaic observations from the program 2021.1.00285.S"},
+   {"loc": "Description of observations", "quote": "along with three ALMA band 3 spectral scans toward individual sources within the sky region covered by the band 6 mosaic"}
+  ]},
+ {"field": "frequencies_and_spectral_setup",
+  "value": "Band 6: four 1.875 GHz SPWs at 254.498 and 257.998 GHz (USB), 240.102 and 243.102 GHz (LSB), FDM, ~7.8 MHz (9.5 km/s) native resolution; Band 3: five tunings, two adjacent 1.875 GHz SPWs per sideband, 86.25-115.80 GHz contiguous, 1.95 MHz (5.8 km/s) native resolution",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "The spectral tuning is composed of four $1.875\\,{\\rm GHz}$-wide spectral windows (SPWs) centered at frequencies $254.498\\,{\\rm GHz}$, and $257.998\\,{\\rm GHz}$ in the upper sideband (USB)"},
+   {"loc": "Description of observations", "quote": "and $240.102\\,{\\rm GHz}$ and $243.102\\,{\\rm GHz}$ in the lower sideband (LSB), respectively."},
+   {"loc": "Description of observations", "quote": "employing five frequency tunings with two adjacent $1.875\\,{\\rm GHz}$-wide SPWs per sideband designed to cover the spectral range $86.25 - 115.80\\,{\\rm GHz}$ contiguously"}
+  ]},
+ {"field": "continuum_bandwidth", "value": "Band 6: 7.5 GHz total effective bandwidth centered at 1.2 mm; Band 3: 29.55 GHz total effective bandwidth",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "The total effective bandwidth of the spectral setup is $7.5\\,{\\rm GHz}$ centered at wavelength $1.2\\,{\\rm mm}$."},
+   {"loc": "Description of observations", "quote": "The total effective bandwidth is $29.55\\,{\\rm GHz}$."}
+  ]},
+ {"field": "arrays", "value": "12-m antennas (41 to 44 in band 6; 40 to 45 in band 3)",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "employing 41 to 44 12-m antennas with baselines ranging between $15.1- 783.5\\,{\\rm m}$"},
+   {"loc": "Description of observations", "quote": "employing 40 to 45 12-m antennas with baselines ranging in $15.1-483.9\\,{\\rm m}$"}
+  ]},
+ {"field": "baselines", "value": "Band 6: 15.1-783.5 m; Band 3: 15.1-483.9 m",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "employing 41 to 44 12-m antennas with baselines ranging between $15.1- 783.5\\,{\\rm m}$"},
+   {"loc": "Description of observations", "quote": "employing 40 to 45 12-m antennas with baselines ranging in $15.1-483.9\\,{\\rm m}$"}
+  ]},
+ {"field": "angular_resolution", "value": "Band 6 natural weighting 0.55\" x 0.51\"; band 6 tapered 2.19\" x 2.39\"; band 3 natural 2.5\" x 2.3\" at 101 GHz",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "yielding a naturally-weighted synthesized beam FWHM of $0\\rlap{.}{\\ensuremath{''}}55\\times0\\rlap{.}{\\ensuremath{''}}51$"},
+   {"loc": "Data calibration and imaging", "quote": "yielding a synthesized beam FWHM of $2\\rlap{.}{\\ensuremath{''}}19\\times2\\rlap{.}{\\ensuremath{''}}39$"},
+   {"loc": "Description of observations", "quote": "naturally-weighted synthesized beam size of $2\\rlap{.}{\\ensuremath{''}}5\\times2\\rlap{.}{\\ensuremath{''}}3$ at the reference frequency of $101\\,{\\rm GHz}$"}
+  ]},
+ {"field": "sensitivity", "value": "Band 6: 26 uJy/beam over total bandwidth; Band 3: median 0.20 mJy/beam over 33.7 MHz (~100 km/s at 101 GHz)",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "achieving a sensitivity of $26\\,{\\rm \\mu Jy\\,beam^{-1}}$ over the total bandwidth"},
+   {"loc": "Description of observations", "quote": "has a median value of $0.20\\,{\\rm mJy\\,beam^{-1}}$ over $33.7\\,{\\rm MHz}$, or $\\simeq 100\\,{\\rm km\\,s^{-1}}$ at $101\\,{\\rm GHz}$"}
+  ]},
+ {"field": "time_on_source", "value": "Band 6: ~5.86 h; Band 3: 8.1 h",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "The total on-source integration time was $\\simeq 5.86\\,{\\rm h}$"},
+   {"loc": "Description of observations", "quote": "The total on-source observing time was $8.1\\,{\\rm h}$"}
+  ]},
+ {"field": "observing_dates", "value": "Band 6: May 28 to June 3, 2022 (five EBs); Band 3: January 18th to March 4th 2024 (ten EBs)",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "Observations were subdivided into five execution blocks (EBs) carried out during the period from May 28 to June 3, 2022"},
+   {"loc": "Description of observations", "quote": "Each frequency tuning was observed in two EBs, and executed between January 18th and March 4th 2024"}
+  ]},
+ {"field": "pi_or_archival_as_stated", "value": "Band 6 program PI M. Fumagalli (Cycle 8); band 3 program PI A. Pensabene (Cycle 10); described as new ALMA observations",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "ALMA band 6 mosaic observations from the program 2021.1.00285.S (Cycle 8, PI: M. Fumagalli)"},
+   {"loc": "Description of observations", "quote": "(program ID: 2023.1.00461.S, Cycle 10, PI: A. Pensabene)"}
+  ]}
+],
+"lines_targeted": [
+ {"species": "CO", "transition": "J=3-2", "rest_frequency": "461.041 GHz",
+  "evidence": [{"loc": "Description of observations", "quote": "to target their CO(3–2) line (rest-frame frequency $\\nu_{\\rm rest}=461.041\\,{\\rm GHz}$) in the redshift range $z\\simeq 2-3$"}]},
+ {"species": "[CI]", "transition": "609 um (detected in C6)", "rest_frequency": "not stated",
+  "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "that allowed us to identify the line as \\[C\\]$_{\\rm 609\\,\\mu m}$"}]},
+ {"species": "CO", "transition": "J=4-3 (QSO-SE, C2; analysis beyond scope)", "rest_frequency": "not stated",
+  "evidence": [{"loc": "Source detection in band 3 spectral scans", "quote": "reveal the CO(4–3) line of the QSO-SE (C2) which is redshifted in the ALMA band 3 at $z\\approx3.22$"}]}
+],
+"other_facilities": [
+ {"name": "VLT/MUSE",
+  "provided": {"value": "Deep optical IFS (~142 h, 4600-9350 A) giving spectroscopic redshifts and spectra for HST-selected galaxies",
+   "evidence": [{"loc": "Ancillary multi-wavelength observations", "quote": "extremely deep MUSE observations (ESO PID 1100.A-0528, PI: M. Fumagalli) with an integration time of $\\approx$142 hours in wide field mode"}]}},
+ {"name": "HST (WFC3/F140W imaging and G141 grism)",
+  "provided": {"value": "90 orbits of WFC3/F140W imaging and G141 grism spectroscopy; source catalog and counterparts",
+   "evidence": [{"loc": "Ancillary multi-wavelength observations", "quote": "In HST Cycle 26, we also collected 90 orbits of WFC3/F140W imaging and WFC3/IR G141 grism spectroscopy (PID 15637, PI: M. Rafelski & M. Fumagalli)"}]}},
+ {"name": "VLT/UVES",
+  "provided": {"value": "High-resolution spectra of the two quasars used to identify absorption systems",
+   "evidence": [{"loc": "Ancillary multi-wavelength observations", "quote": "The quasar spectra were obtained using the Ultraviolet and Visual Echelle Spectrograph"}]}},
+ {"name": "VLT/HAWK-I",
+  "provided": {"value": "Ks-band photometry used in SED fitting",
+   "evidence": [{"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "VLT/HAWK-I Ks filter (cite: Revalski+2024)"}]}}
+],
+"external_data_from_literature": [
+ {"what": {"value": "MUDF galaxy catalog with HST/MUSE photometry and high-confidence redshifts",
+   "evidence": [{"loc": "Ancillary multi-wavelength observations", "quote": "we use the catalog of MUDF galaxies from (cite: Revalski+2023), which provides deep photometry and high-confidence redshifts constrained with HST and MUSE spectroscopy"}]},
+  "citation": "(cite: Revalski+2023)"},
+ {"what": {"value": "Quasar absorption system catalog (22 systems QSO-SE, 9 QSO-NW)",
+   "evidence": [{"loc": "Catalog of quasar absorbers", "quote": "is illustrated in table 1 of (cite: Beckett+2024)"}]},
+  "citation": "(cite: Beckett+2024)"},
+ {"what": {"value": "CO(3-2)-to-CO(1-0) conversion r31 = 0.80 +/- 0.14",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we adopt a CO(3–2)-to-CO(1–0) conversion factor of $r_{31}=0.80\\pm0.14$ from (cite: Boogaard+2020)"}]},
+  "citation": "(cite: Boogaard+2020)"},
+ {"what": {"value": "alpha_CO = 0.8 Msun/(K km/s pc^2) (lower end)",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "At the lower end, we use a value of $0.8\\,M_{\\astrosun}/({\\rm K\\,km\\,s^{-1}\\,pc^2)}$, typical of SGMs and quasar hosts (cite: Downes+1998)."}]},
+  "citation": "(cite: Downes+1998)"},
+ {"what": {"value": "alpha_CO = 4.3 Msun/(K km/s pc^2) (upper end)",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "At the upper end, we adopt $4.3\\,M_{\\astrosun}/({\\rm K\\,km\\,s^{-1}\\,pc^2)}$ as measured in giant molecular clouds in the Milky Way"}]},
+  "citation": "(cite: Bolatto+2013; CarilliWalter2013)"},
+ {"what": {"value": "C-to-H2 abundance ratio X[CI]/X[H2] = (8.4 +/- 3.5)e-5 for converting [CI] mass to H2 mass; equation 2 of Weiss+2005 for atomic carbon mass",
+   "evidence": [
+    {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "assuming a C-to-H$_2$ abundance ratio of $X{\\rm [CI]}/X{\\rm [H_2]}=M_{\\rm CI}/(6M_{\\rm H_2})=(8.4\\pm3.5)\\times10^{-5}$, as derived by (cite: Walter+2011)"},
+    {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we first derive atomic carbon mass from equation 2 in (cite: Weiss+2005)"}]},
+  "citation": "(cite: Walter+2011); (cite: Weiss+2005)"},
+ {"what": {"value": "Dust temperature T_dust = 32 K and emissivity index beta = 1.8 typical of SMGs",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "assuming a characteristic dust temperature of $T_{\\rm dust}=32\\,{\\rm K}$, and emissivity index $\\beta=1.8$ typical of SMGs (cite: Dudzeviciute+2020)"}]},
+  "citation": "(cite: Dudzeviciute+2020)"},
+ {"what": {"value": "SFR_IR calibration",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "converted them to ${\\rm SFR}_{\\rm IR}$ using the calibration from (cite: Murphy+2011)"}]},
+  "citation": "(cite: Murphy+2011)"},
+ {"what": {"value": "Comparison sample of submillimeter galaxies at z~1-2.5",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "the sample of submillimeter galaxies (SMG) from (cite: Dudzeviciute+2020) at $z\\sim 1-2.5$"}]},
+  "citation": "(cite: Dudzeviciute+2020)"},
+ {"what": {"value": "Blank-field 1.2-mm number counts for comparison",
+   "evidence": [{"loc": "Gas-galaxy association rate", "quote": "consistent with that derived in blank field from ASPECS (cite: Gonzalez-Lopez+2020)"}]},
+  "citation": "(cite: Gonzalez-Lopez+2020)"},
+ {"what": {"value": "Stellar-to-halo mass relation used to estimate halo masses of groups",
+   "evidence": [{"loc": "footnote 8", "quote": "by employing the stellar-to-halo mass relation from (cite: Moster+2010), and obtain an average halo mass of $\\sim 10^{13}\\,M_{\\astrosun}$"}]},
+  "citation": "(cite: Moster+2010)"},
+ {"what": {"value": "Cosmology H0 = 67.7 km/s/Mpc, Omega_m = 0.310, flat LCDM",
+   "evidence": [{"loc": "Introduction", "quote": "$H_0 = 67.7\\,{\\rm km\\,s^{-1}\\,Mpc^{-1}}$, $\\Omega_{\\rm m} = 0.310$, and $\\Omega_\\Lambda = 1 - \\Omega_{\\rm m}$ from (cite: PlanckColl+2020)"}]},
+  "citation": "(cite: PlanckColl+2020)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+ {"field": "pipeline_or_manual", "value": "ALMA calibration pipeline, scriptForPI provided with the raw measurement set",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "by running the calibration pipeline"}]},
+ {"field": "casa_version", "value": "CASA pipeline 6.2.1 (band 6), 6.5.4 (band 3)",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "using the CASA pipeline versions 6.2.1 and 6.5.4 for band 6 and 3 data, respectively"}]},
+ {"field": "pipeline_version", "value": "CASA pipeline 6.2.1 (band 6), 6.5.4 (band 3)",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "using the CASA pipeline versions 6.2.1 and 6.5.4 for band 6 and 3 data, respectively"}]},
+ {"field": "self_calibration", "value": "none",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "No self-calibration was performed on the datasets."}]},
+ {"field": "flux_calibrator", "value": "J2126-4605 and J2258-2758 used as phase and flux calibrators (band 6)",
+  "evidence": [{"loc": "Description of observations", "quote": "The J2126-4605 and J2258-2758 were used as phase and flux calibrators during observations."}]}
+],
+"imaging": [
+ {"field": "task", "value": "CASA tclean; band 6 dirty continuum (mfs) and cubes, tapered continuum, cleaned images; band 3 dirty cubes only (no cleaning)",
+  "evidence": [
+   {"loc": "Data calibration and imaging", "quote": "We imaged band 6 visibilities by using the CASA task"},
+   {"loc": "Data calibration and imaging", "quote": "For these reasons, the cleaning of cubes is not required."}
+  ]},
+ {"field": "weighting_robust", "value": "natural weighting",
+  "evidence": [
+   {"loc": "Data calibration and imaging", "quote": "adopting a natural weighting scheme to maximize the sensitivity per beam"},
+   {"loc": "Data calibration and imaging", "quote": "the “natural” weighting scheme of the visibilities"}
+  ]},
+ {"field": "uv_taper", "value": "Gaussian taper FWHM_uv = 90 klambda for band 6 continuum",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "applying a Gaussian taper in the $uv$ plane with ${\\rm FWHM}_{uv}=90\\,{\\rm k}\\lambda$ and setting the pixel size to $0\\rlap{.}{\\ensuremath{''}}4$"}]},
+ {"field": "cell_size", "value": "Band 6: 0.08\"; band 6 tapered: 0.4\"; band 3: 0.3\"",
+  "evidence": [
+   {"loc": "Data calibration and imaging", "quote": "We used a pixel scale of $0\\rlap{.}{\\ensuremath{''}}08$ to achieve the Nyquist sampling of the longest baselines."},
+   {"loc": "Data calibration and imaging", "quote": "We set the pixel scale at $0\\rlap{.}{\\ensuremath{''}}3$ and the channel width at $100\\,{\\rm km\\,s^{-1}}$ at the reference frequency of $101\\,{\\rm GHz}$"}
+  ]},
+ {"field": "masking", "value": "Cleaned band 6 images: clean down to 2 sigma with circular masks of 2.0\" diameter around S/N>5 sources",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "by applying the cleaning algorithm down to $2\\sigma$, placing circular masks of $2\\rlap{.}{\\ensuremath{''}}0$ diameter around sources extracted with $S/N>5$"}]},
+ {"field": "primary_beam_correction", "value": "Source search on dirty image without PB correction; fluxes rescaled for PB response at source position",
+  "evidence": [
+   {"loc": "Source fluxes and luminosities", "quote": "through a single-pixel measurement of the continuum source flux peak that we then rescaled for the PB response at the corresponding location"}
+  ]},
+ {"field": "final_beam", "value": "Band 6 natural 0.55\" x 0.51\"; tapered 2.19\" x 2.39\"; band 3 2.5\" x 2.3\"",
+  "evidence": [
+   {"loc": "Data calibration and imaging", "quote": "yielding a synthesized beam FWHM of $2\\rlap{.}{\\ensuremath{''}}19\\times2\\rlap{.}{\\ensuremath{''}}39$"},
+   {"loc": "Description of observations", "quote": "naturally-weighted synthesized beam size of $2\\rlap{.}{\\ensuremath{''}}5\\times2\\rlap{.}{\\ensuremath{''}}3$ at the reference frequency of $101\\,{\\rm GHz}$"}
+  ]}
+],
+"inherited": [
+ {"what": {"value": "LineSeeker code details and performance",
+   "evidence": [{"loc": "Extraction and characterization of ALMA sources", "quote": "The complete details of the codes and performances are described in (cite: Gonzalez-Lopez+2017; Gonzalez-Lopez+2019)."}]},
+  "from_reference": "(cite: Gonzalez-Lopez+2017; Gonzalez-Lopez+2019)"},
+ {"what": {"value": "SED fitting method (MC-SPF), full details deferred",
+   "evidence": [{"loc": "Catalog of HST-selected galaxies", "quote": "as described in (cite: Fossati+2018) , to which we refer for full details about the method"}]},
+  "from_reference": "(cite: Fossati+2018)"},
+ {"what": {"value": "HST-selected galaxy catalog construction and redshift flags",
+   "evidence": [{"loc": "Catalog of HST-selected galaxies", "quote": "covers the entire area observed with MUSE, as described by (cite: Revalski+2023)"}]},
+  "from_reference": "(cite: Revalski+2023)"},
+ {"what": {"value": "Emission-line spectral fitting for HST/MUSE redshifts",
+   "evidence": [{"loc": "Catalog of HST-selected galaxies", "quote": "is detailed in (cite: Revalski+2024)"}]},
+  "from_reference": "(cite: Revalski+2024)"},
+ {"what": {"value": "MUSE survey design and data reduction",
+   "evidence": [{"loc": "Ancillary multi-wavelength observations", "quote": "We refer to (cite: Fossati+2019) for detailed descriptions of the survey design and the data reduction."}]},
+  "from_reference": "(cite: Fossati+2019)"},
+ {"what": {"value": "Friends-of-friends group identification",
+   "evidence": [{"loc": "Catalog of HST-selected galaxies", "quote": "we applied a friends-of-friends algorithm to identify galaxies belonging to a group as all the sources that are not isolated within"}]},
+  "from_reference": "(cite: Fossati+2019)"},
+ {"what": {"value": "Absorber identification procedure and line list",
+   "evidence": [{"loc": "Catalog of quasar absorbers", "quote": "The detailed procedure used to identify the absorption line systems in the spectra of the two quasars"}]},
+  "from_reference": "table 1 of (cite: Beckett+2024)"},
+ {"what": {"value": "Galaxy-absorber association criterion (|dv| <= 500 km/s)",
+   "evidence": [{"loc": "Gas-galaxy association rate", "quote": "Following the approach typically adopted in the literature for optical studies (cite: Dutta+2021; Schroetter+2021; Galbiati+2023; Beckett+2024)"}]},
+  "from_reference": "(cite: Dutta+2021; Schroetter+2021; Galbiati+2023; Beckett+2024)"},
+ {"what": {"value": "Single modified black-body dust mass estimate approach",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "By following a typical approach adopted in (sub-)millimeter studies of high-$z$ galaxies (cite: Casey+2012; Riechers+2013; Faisst+2020)"}]},
+  "from_reference": "(cite: Casey+2012; Riechers+2013; Faisst+2020)"},
+ {"what": {"value": "Photometry-based photometric redshift probability distributions with EAZY",
+   "evidence": [{"loc": "Description of observations", "quote": "obtained from multiwavelength photometry available for galaxies in the MUDF (cite: Revalski+2023) using the EAZY code (cite: Brammer+2008)"}]},
+  "from_reference": "(cite: Revalski+2023; Brammer+2008)"}
+],
+"unstated_but_needed": [
+ "Exact tclean parameters beyond those listed: niter/threshold per image, imsize, gridder details for the mosaic, deconvolver, and weighting robustness for the tapered image",
+ "Spectral window selection and line-free channels used to form continuum images and to subtract continuum from band 6 cubes",
+ "LineSeeker run parameters: exact kernel list, clustering (DBSCAN) eps and min_samples, and noise-clipping settings",
+ "Table of continuum source positions, fluxes and fidelity values (stripped from the provided text); positions needed to reproduce the source list",
+ "Redshift-dependent inputs for L_CO: source redshift priors, and the box-prior ranges for the Gaussian + constant line fits",
+ "Whether the archive pipeline-calibrated products or a fresh scriptForPI run were used, and any flagging done by hand",
+ "Details of the fiducial MC-SPF configuration (priors, grid steps) and the numeric catalog photometry (HST, MUSE, HAWK-I) used in the SED fits",
+ "Absorber catalog values (redshifts, EW, column densities, tau_50) from Beckett et al. needed to reproduce the association counts",
+ "Flux-calibrator flux densities adopted and any absolute flux scale uncertainty for ALMA bands 3 and 6",
+ "Aperture or beam handling for the [CI] line flux in C6 (units given are Jy/beam km/s, peak-pixel spectrum)"
+],
+"analysis_steps": [
+ {"order": 1, "goal": "Calibrate and image the ALMA data",
+  "method": {"value": "Run the ALMA pipeline scriptForPI in CASA; image band 6 with tclean (dirty natural-weighted mfs continuum, 25 km/s cubes, 90 klambda tapered continuum, cleaned images); image band 3 as dirty 100 km/s cubes",
+   "evidence": [
+    {"loc": "Data calibration and imaging", "quote": "using the CASA pipeline versions 6.2.1 and 6.5.4 for band 6 and 3 data, respectively"},
+    {"loc": "Data calibration and imaging", "quote": "adopting a natural weighting scheme to maximize the sensitivity per beam"},
+    {"loc": "Data calibration and imaging", "quote": "of the LSB and USB with $25\\,{\\rm km\\,s^{-1}}$ channel width"}]},
+  "software": ["CASA", "tclean"],
+  "key_parameters": [
+   {"value": "Pixel scale 0.08\" (band 6), 0.4\" (tapered), 0.3\" (band 3); taper FWHM 90 klambda; band 3 channel width 100 km/s",
+    "evidence": [
+     {"loc": "Data calibration and imaging", "quote": "We used a pixel scale of $0\\rlap{.}{\\ensuremath{''}}08$ to achieve the Nyquist sampling of the longest baselines."},
+     {"loc": "Data calibration and imaging", "quote": "applying a Gaussian taper in the $uv$ plane with ${\\rm FWHM}_{uv}=90\\,{\\rm k}\\lambda$ and setting the pixel size to $0\\rlap{.}{\\ensuremath{''}}4$"},
+     {"loc": "Data calibration and imaging", "quote": "We set the pixel scale at $0\\rlap{.}{\\ensuremath{''}}3$ and the channel width at $100\\,{\\rm km\\,s^{-1}}$ at the reference frequency of $101\\,{\\rm GHz}$"}]},
+   {"value": "Cleaning down to 2 sigma with 2.0\" circular masks around S/N>5 sources",
+    "evidence": [{"loc": "Data calibration and imaging", "quote": "by applying the cleaning algorithm down to $2\\sigma$, placing circular masks of $2\\rlap{.}{\\ensuremath{''}}0$ diameter around sources extracted with $S/N>5$"}]}
+  ],
+  "assumptions": [
+   {"value": "No self-calibration performed",
+    "evidence": [{"loc": "Data calibration and imaging", "quote": "No self-calibration was performed on the datasets."}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 2, "goal": "Blind continuum source search",
+  "method": {"value": "Run LineSeeker on the untapered dirty 1.2-mm continuum image (PB response >= 50%, no PB correction), extract S/N>3 detections, keep fidelity F >= 90% (S/N >= 5.0); fidelity from negative-peak statistics",
+   "evidence": [
+    {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "With LineSeeker we extracted all the detections above $S/N>3$ and selected the source candidates with $F\\ge 90\\%$, corresponding to $S/N\\ge 5.0$."},
+    {"loc": "Extraction and characterization of ALMA sources", "quote": "the ratio between positive and negative detections distributions is used to estimate the fidelity (or reliability) of source candidates"}]},
+  "software": ["LineSeeker"],
+  "key_parameters": [
+   {"value": "Exclude region below 50% of maximum PB response; dirty image used without PB correction",
+    "evidence": [
+     {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "excluding the region below $50\\%$ of the maximum PB response"},
+     {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "since the former preserves the intrinsic properties of the noise"}]},
+   {"value": "Low-fidelity (20% <= F < 90%) candidates cross-matched to HST F140W catalog within 0.5\"; no associations found",
+    "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "we search HST counterparts around the sky position of ALMA continuum sources within a separation limit of $0\\rlap{.}{\\ensuremath{''}}5$"}]}
+  ],
+  "assumptions": [
+   {"value": "Negative peaks are pure noise; cumulative negative-detection distribution modeled as Gaussian noise",
+    "evidence": [{"loc": "Extraction and characterization of ALMA sources", "quote": "The cumulative distribution of negative detections is then modeled assuming Gaussian-distributed noise by using a function of the form"}]}
+  ],
+  "fitting": {"value": "Model N[1-erf(S/N/sqrt(2) sigma)] with N and sigma free, fitted to cumulative negative detections to get F(S/N)",
+   "evidence": [{"loc": "Extraction and characterization of ALMA sources", "quote": "where erf is the error function, and $N$, $\\sigma$ are free parameters"}]},
+  "validation": {"value": "Completeness by injecting artificial point sources (20 at a time, 2-10 x RMS, 30 iterations): ~90% complete at S/N~7.5; flux boosting negligible at S/N>~5",
+   "evidence": [
+    {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "we find that our source search is complete to $\\approx90\\%$ at $S/N\\approx7.5$"},
+    {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "we determined that it is negligible at $S/N \\gtrsim 5$"}]}},
+ {"order": 3, "goal": "Blind line search in band 6 cubes and band 3 scans",
+  "method": {"value": "Run LineSeeker on LSB and USB cubes with a matched-filter Gaussian kernel (1 to 18 channels), S/N >= 3 then F >= 90%; band 3: line search on dirty cubes plus inspection of spectra at the 1.2-mm source positions",
+   "evidence": [
+    {"loc": "Line emitters in band 6 data cubes", "quote": "using a Gaussian kernel with width ranging from 1 to 18 channels"},
+    {"loc": "Source detection in band 3 spectral scans", "quote": "We ran LineSeeker on band 3"}]},
+  "software": ["LineSeeker", "scikit-learn"],
+  "key_parameters": [
+   {"value": "Kernel width corresponds to typical line FWHM ~50-1000 km/s; source extraction restricted to PB response >= 50%",
+    "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "adequate to match the typical linewidths of ${\\rm FWHM}\\sim 50-1000\\,{\\rm km\\,s^{-1}}$ observed in high-redshift galaxies"}]},
+   {"value": "Source extraction by DBSCAN clustering of connected voxels",
+    "evidence": [{"loc": "Extraction and characterization of ALMA sources", "quote": "The sources are extracted by grouping connected voxels using the Density-Based Spatial Clustering of Application with Noise algorithm"}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Cross-match with HST catalog found no additional line emitters",
+   "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "This procedure did not reveal additional line emitters."}]}},
+ {"order": 4, "goal": "Identify optical/NIR counterparts and redshifts",
+  "method": {"value": "Cross-match ALMA continuum sources to the HST F140W catalog within 0.5\"; take redshifts from MUSE where high-quality, otherwise from ALMA band 3 CO(3-2)",
+   "evidence": [
+    {"loc": "HST counterparts of ALMA continuum sources", "quote": "we found an unambiguous counterpart for all ALMA detections, except for C5"},
+    {"loc": "HST counterparts of ALMA continuum sources", "quote": "The redshifts of the latter, are accurately measured from the CO(3–2) lines detected in the band 3 spectral scans"}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Match radius 0.5\" (comparable to the untapered beam)",
+    "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "within a separation limit of $0\\rlap{.}{\\ensuremath{''}}5$, comparable to the beam size of the 1.2-mm continuum untapered image"}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "[CI] 609 um redshift in C6 consistent with MUSE redshift",
+   "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "The source redshift we estimated with this line is consistent with the one measured from the MUSE spectrum."}]}},
+ {"order": 5, "goal": "Measure continuum fluxes and CO/[CI] line fluxes and luminosities",
+  "method": {"value": "1.2 mm: single-pixel peak in the ~2\" tapered image, PB-rescaled, with RMS rescaled for uncertainty; CO(3-2): fit peak-pixel spectra with a Gaussian plus constant; L_CO and L'_CO from Solomon et al. 1997 relations",
+   "evidence": [
+    {"loc": "Source fluxes and luminosities", "quote": "through a single-pixel measurement of the continuum source flux peak that we then rescaled for the PB response at the corresponding location"},
+    {"loc": "Source fluxes and luminosities", "quote": "by fitting the spectra extracted from the source peak employing a single Gaussian plus a constant to model the line and the continuum"},
+    {"loc": "Source fluxes and luminosities", "quote": "We finally derived the line luminosities as (cite: Solomon+1997):"}]},
+  "software": ["emcee"],
+  "key_parameters": [
+   {"value": "Luminosity relation L_CO = 1.04e-3 S dv nu_obs D_L^2; L'_CO = 3.25e7 S dv D_L^2 / ((1+z)^3 nu_obs^2)",
+    "evidence": [{"loc": "Source fluxes and luminosities", "quote": "where $S\\Delta\\varv$ is the velocity-integrated line flux in ${\\rm Jy\\,km\\,s^{-1}}$"}]}
+  ],
+  "assumptions": [
+   {"value": "Planck cosmology for luminosity distance (H0 = 67.7, Omega_m = 0.310)",
+    "evidence": [{"loc": "Introduction", "quote": "$H_0 = 67.7\\,{\\rm km\\,s^{-1}\\,Mpc^{-1}}$, $\\Omega_{\\rm m} = 0.310$, and $\\Omega_\\Lambda = 1 - \\Omega_{\\rm m}$ from (cite: PlanckColl+2020)"}]}
+  ],
+  "fitting": {"value": "emcee MCMC ensemble sampler with box-like priors set from visual inspection; uncertainties from 16th and 84th percentiles of posteriors",
+   "evidence": [
+    {"loc": "Source fluxes and luminosities", "quote": "assuming box-like priors based on a visual inspection of the data"},
+    {"loc": "Table 1", "quote": "All reported uncertainties correspond to $1\\sigma$ confidence interval as derived from the 16th and 84th percentile of the posterior probability distribution."}]},
+  "validation": {"value": "not stated", "evidence": []}},
+ {"order": 6, "goal": "SED fitting for stellar mass, SFR and extinction",
+  "method": {"value": "Simultaneous fit of multiwavelength photometry (MUSE top-hat filters, HST, HAWK-I Ks, ALMA 1.2 mm) and MUSE spectra with MC-SPF with energy balance between UV absorption and FIR emission",
+   "evidence": [
+    {"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "by performing simultaneous fit of multiwavelength photometry and MUSE spectra"},
+    {"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "During the fitting procedure, we impose an energy balance between the UV flux from young stars that is absorbed by dust grains and re-emitted at FIR wavelengths."}]},
+  "software": ["MC-SPF"],
+  "key_parameters": [
+   {"value": "Sources fitted: C1, C3, C4, C6, C7 (C2 = QSO-SE and C5 excluded)",
+    "evidence": [{"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "excluding C2 that is QSO-SE, and C5"}]}
+  ],
+  "assumptions": [
+   {"value": "Bruzual & Charlot 2003 models at 40% solar metallicity, Chabrier IMF, delayed exponentially declining SFH",
+    "evidence": [{"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "at $40\\%$ solar metallicity, assuming a (cite: Chabrier2003) initial mass function and a delayed exponentially declining star formation history"}]},
+   {"value": "Double attenuation law of Calzetti et al. 2000; dust emission model of Dale et al. 2014; Byler et al. 2018 nebular lines",
+    "evidence": [
+     {"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "we assumed the double attenuation law from (cite: Calzetti+2000)"},
+     {"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "We used the dust emission model from (cite: Dale+2014)."}]}
+  ],
+  "fitting": {"value": "Monte Carlo spectro-photometric fitter MC-SPF; posterior percentiles give uncertainties; priors and sampler details not stated",
+   "evidence": [{"loc": "Table 2", "quote": "Statistical uncertainties on measurements are estimated from the 16th and 84th percentiles of the parameter posterior probability distribution."}]},
+  "validation": {"value": "SFR_IR from the black-body models comparable to SED-derived SFR; systematic 0.3 dex (M*) and 0.2 dex (SFR) added in quadrature",
+   "evidence": [
+    {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "comparable to those we derived from galaxy SED modeling"},
+    {"loc": "Table 2", "quote": "after adding in quadrature 0.3 and 0.2 dex, respectively, to account for systematics"}]}},
+ {"order": 7, "goal": "Estimate dust masses, IR SFR and molecular gas fractions",
+  "method": {"value": "Single modified black-body fit to the 1.2 mm flux for M_dust and L_IR (then SFR_IR); gas masses from CO(3-2) (via r31 and alpha_CO range) for C1, C3, C4 and from [CI] 609 um (C-to-H2 abundance) for C6; f_gas = M_H2/(M_H2+M*)",
+   "evidence": [
+    {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we employ a single modified black-body emission"},
+    {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we derive estimates of galaxy molecular gas fractions"}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "T_dust = 32 K, beta = 1.8; C5 and C2 excluded from dust masses",
+    "evidence": [
+     {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "assuming a characteristic dust temperature of $T_{\\rm dust}=32\\,{\\rm K}$, and emissivity index $\\beta=1.8$ typical of SMGs (cite: Dudzeviciute+2020)"},
+     {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "excluding C5 for which we do not have reliable redshift measurement, and C2 that is the QSO-SE"}]}
+  ],
+  "assumptions": [
+   {"value": "r31 = 0.80 +/- 0.14; alpha_CO from 0.8 to 4.3 Msun/(K km/s pc^2)",
+    "evidence": [
+     {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we adopt a CO(3–2)-to-CO(1–0) conversion factor of $r_{31}=0.80\\pm0.14$ from (cite: Boogaard+2020) and a range of $\\alpha_{\\rm CO}$"},
+     {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "At the upper end, we adopt $4.3\\,M_{\\astrosun}/({\\rm K\\,km\\,s^{-1}\\,pc^2)}$ as measured in giant molecular clouds in the Milky Way"}]},
+   {"value": "X[CI]/X[H2] = (8.4 +/- 3.5)e-5 for [CI]-to-H2 conversion in C6",
+    "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "as derived by (cite: Walter+2011) for a sample of $z\\sim 2-3$ FIR-bright sources"}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Gas fractions compared with the typical range of main-sequence galaxies and ULIRGs/SMGs at z>~1",
+   "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "These values are scattered in the typical range observed in both main-sequence galaxies and ULIRGs/SMGs at $z\\gtrsim1$"}]}},
+ {"order": 8, "goal": "Associate galaxies with quasar absorbers",
+  "method": {"value": "Match ALMA-selected and HST-selected galaxies with absorbers in velocity space within |dv| <= 500 km/s in either quasar sightline; count association rate",
+   "evidence": [{"loc": "Gas-galaxy association rate", "quote": "we link the absorbing gas with galaxies by searching for association within $\\left | \\Delta\\varv \\right |\\le 500\\,{\\rm km\\,s^{-1}}$ with respect to the absorbers"}]},
+  "software": [],
+  "key_parameters": [
+   {"value": "Redshift accuracy of ALMA-selected galaxies dv <~ 60 km/s",
+    "evidence": [{"loc": "Gas-galaxy association rate", "quote": "With accurate redshift measurements ($\\Delta\\varv\\lesssim 60\\,{\\rm km\\,s^{-1}}$) of our ALMA-selected galaxies"}]}
+  ],
+  "assumptions": [
+   {"value": "Absorber redshift taken from the component with the largest column density",
+    "evidence": [{"loc": "Catalog of quasar absorbers", "quote": "We finally assign the redshift of the component with the largest column density to each absorber."}]}
+  ],
+  "fitting": {"value": "not stated", "evidence": []},
+  "validation": {"value": "Compared with association rate of HST-selected galaxies with log M*/Msun >= 8 and >= 10",
+   "evidence": [{"loc": "Gas-galaxy association rate", "quote": "only $\\approx 25\\%$ of all spectroscopically confirmed HST-selected galaxies with $\\log M_\\star/M_{\\astrosun}\\ge 8$ are associated with absorbers"}]}},
+ {"order": 9, "goal": "Test environment and absorption strength",
+  "method": {"value": "Identify groups with friends-of-friends (+-500 km/s); count HST-selected galaxies within +-250 km/s and within a radius equal to the QSO impact parameter, divide by MUSE-coverage-corrected area, compare surface density with absorber EW and fit a linear model",
+   "evidence": [
+    {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "count the number of HST-selected sources within a velocity window of $\\left | \\Delta\\varv \\right |\\le 250\\,{\\rm km\\,s^{-1}}$"},
+    {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "We then divide the number of galaxies by the projected area corrected for the coverage of the MUSE FoV."}]},
+  "software": ["emcee"],
+  "key_parameters": [
+   {"value": "Mg II used for C1, C6, C7; Al II for C3",
+    "evidence": [{"loc": "footnote 10", "quote": "We used Mg II for C1, C6, and C7, and Al II for C3, since we have no Mg II detection for this source."}]}
+  ],
+  "assumptions": [],
+  "fitting": {"value": "Linear model fitted with emcee, Poisson maximum likelihood, flat priors",
+   "evidence": [
+    {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "we fit the data with a linear model by employing the Python MCMC ensemble sampler"},
+    {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "adopting a Poisson maximum likelihood estimator and flat priors on the free parameters"}]},
+  "validation": {"value": "Spearman rank test: rho = 0.8, p = 0.1 (80% confidence)",
+   "evidence": [{"loc": "footnote 11", "quote": "yields a degree of monotonic correlation of $\\rho=0.8$ with a $p$-value $0.1$"}]}}
+],
+"software": [
+ {"name": "CASA", "version": "6.2.1 (band 6), 6.5.4 (band 3)",
+  "used_for": {"value": "Data calibration with the ALMA pipeline and imaging",
+   "evidence": [{"loc": "Data calibration and imaging", "quote": "We calibrated the data using the Common Astronomy Software Application (cite: McMullin+2007; Hunter+2023)"}]}},
+ {"name": "tclean", "version": "not stated",
+  "used_for": {"value": "Imaging of band 6 and band 3 visibilities (dirty and cleaned continuum and cubes)",
+   "evidence": [{"loc": "Data calibration and imaging", "quote": "We imaged band 6 visibilities by using the CASA task"}]}},
+ {"name": "LineSeeker", "version": "not stated",
+  "used_for": {"value": "Blind search for continuum and line emitters with fidelity estimates",
+   "evidence": [{"loc": "Extraction and characterization of ALMA sources", "quote": "LineSeeker has been designed to perform a blind search of line emitters in large data cubes from (sub-)millimeter surveys"}]}},
+ {"name": "scikit-learn", "version": "not stated",
+  "used_for": {"value": "DBSCAN clustering inside LineSeeker",
+   "evidence": [{"loc": "footnote 5", "quote": "This algorithm is included within the Python package Scikit-learn (cite: Pedregosa+2011)."}]}},
+ {"name": "emcee", "version": "not stated",
+  "used_for": {"value": "MCMC fits of CO(3-2) line spectra and of the surface-density versus EW relation",
+   "evidence": [{"loc": "Source fluxes and luminosities", "quote": "obtained through the Python Markov chain Monte Carlo (MCMC) ensemble sampler"}]}},
+ {"name": "EAZY", "version": "not stated",
+  "used_for": {"value": "Photometric redshift probability distributions used to design band 3 tunings",
+   "evidence": [{"loc": "Description of observations", "quote": "using the EAZY code (cite: Brammer+2008)"}]}},
+ {"name": "ESPRESSO data analysis software", "version": "not stated",
+  "used_for": {"value": "Continuum normalization of quasar spectra",
+   "evidence": [{"loc": "Catalog of quasar absorbers", "quote": "by using the ESPRESSO data analysis software (cite: Cupani+2016)"}]}},
+ {"name": "MC-ALF", "version": "not stated",
+  "used_for": {"value": "Bayesian Voigt-profile fitting of quasar absorption lines",
+   "evidence": [{"loc": "Catalog of quasar absorbers", "quote": "All these lines are then fitted using the Bayesian code Monte Carlo Absorption Line Fitter"}]}},
+ {"name": "MC-SPF", "version": "not stated",
+  "used_for": {"value": "SED fitting of photometry and MUSE spectra",
+   "evidence": [{"loc": "Spectral Energy Distribution of the ALMA-selected galaxies", "quote": "We used the Monte Carlo Spectro-Photometric Fitter (MC-SPF, (cite: Fossati+2018; Fossati+2019b)) code."}]}},
+ {"name": "Astropy", "version": "not stated",
+  "used_for": {"value": "General analysis (named in acknowledgements)",
+   "evidence": [{"loc": "Acknowledgements", "quote": "a community-developed core Python package for Astronomy"}]}},
+ {"name": "NumPy, SciPy, Matplotlib", "version": "not stated",
+  "used_for": {"value": "General analysis and plotting (named in acknowledgements)",
+   "evidence": [{"loc": "Acknowledgements", "quote": "NumPy (cite: Numpy), SciPy (cite: Scipy), Matplotlib (cite: Matplotlib)"}]}}
+],
+"results_numeric": [
+ {"quantity": "Number of 1.2-mm continuum-selected sources (F >= 90%)", "value": "7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2,
+  "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "We recovered a total of seven 1.2-mm continuum-selected candidates (labeled C1 to C7)"}]},
+ {"quantity": "Band 6 completeness S/N for ~90% completeness", "value": "7.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 2,
+  "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "we find that our source search is complete to $\\approx90\\%$ at $S/N\\approx7.5$"}]},
+ {"quantity": "z_CO of C1", "value": "2.2529", "uncertainty": "+0.0003/-0.0003", "units": "dimensionless", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$2.2529^{+0.0003}_{-0.0003}$"}]},
+ {"quantity": "z_CO of C3", "value": "2.2954", "uncertainty": "+0.0005/-0.0005", "units": "dimensionless", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$2.2954^{+0.0005}_{-0.0005}$"}]},
+ {"quantity": "z_CO of C4", "value": "2.3676", "uncertainty": "+0.0003/-0.0003", "units": "dimensionless", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$2.3676^{+0.0003}_{-0.0003}$"}]},
+ {"quantity": "CO(3-2) velocity-integrated flux S dv, C1", "value": "0.63", "uncertainty": "+0.06/-0.06", "units": "Jy beam^-1 km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.63^{+0.06}_{-0.06}$"}]},
+ {"quantity": "CO(3-2) velocity-integrated flux S dv, C3", "value": "0.24", "uncertainty": "+0.06/-0.06", "units": "Jy beam^-1 km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.24^{+0.06}_{-0.06}$"}]},
+ {"quantity": "CO(3-2) velocity-integrated flux S dv, C4", "value": "0.23", "uncertainty": "+0.04/-0.04", "units": "Jy beam^-1 km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.23^{+0.04}_{-0.04}$"}]},
+ {"quantity": "CO(3-2) FWHM, C1", "value": "510", "uncertainty": "+50/-50", "units": "km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$510^{+50}_{-50}$"}]},
+ {"quantity": "CO(3-2) FWHM, C3", "value": "330", "uncertainty": "+120/-80", "units": "km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$330^{+120}_{-80}$"}]},
+ {"quantity": "CO(3-2) FWHM, C4", "value": "320", "uncertainty": "+50/-40", "units": "km s^-1", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$320^{+50}_{-40}$"}]},
+ {"quantity": "L_CO, C1", "value": "2.3", "uncertainty": "+0.2/-0.2", "units": "10^7 Lsun", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$2.3^{+0.2}_{-0.2}$"}]},
+ {"quantity": "L_CO, C3", "value": "0.9", "uncertainty": "+0.2/-0.2", "units": "10^7 Lsun", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.9^{+0.2}_{-0.2}$"}]},
+ {"quantity": "L_CO, C4", "value": "0.95", "uncertainty": "+0.14/-0.14", "units": "10^7 Lsun", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.95^{+0.14}_{-0.14}$"}]},
+ {"quantity": "L'_CO(3-2), C1", "value": "1.77", "uncertainty": "+0.17/-0.17", "units": "10^10 K km s^-1 pc^2", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$1.77^{+0.17}_{-0.17}$"}]},
+ {"quantity": "L'_CO(3-2), C3", "value": "0.70", "uncertainty": "+0.18/-0.18", "units": "10^10 K km s^-1 pc^2", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.70^{+0.18}_{-0.18}$"}]},
+ {"quantity": "L'_CO(3-2), C4", "value": "0.72", "uncertainty": "+0.11/-0.10", "units": "10^10 K km s^-1 pc^2", "from_step": 5,
+  "evidence": [{"loc": "Table 1", "quote": "$0.72^{+0.11}_{-0.10}$"}]},
+ {"quantity": "[CI] 609 um line flux, C6", "value": "0.36", "uncertainty": "0.10", "units": "Jy beam^-1 km s^-1", "from_step": 3,
+  "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "obtained $F_{\\rm [CI]609\\,\\mu m}=0.36\\pm0.10\\,{\\rm Jy\\,beam^{-1}\\,km\\,s^{-1}}$"}]},
+ {"quantity": "MUSE redshift of C6", "value": "1.05413", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4,
+  "evidence": [{"loc": "Line emitters in band 6 data cubes", "quote": "This source has a robust spectroscopic redshift of $z=1.05413$ measured with the MUSE data"}]},
+ {"quantity": "Photometric redshifts of C1, C3, C4", "value": "2.21, 2.51, 2.44", "uncertainty": "0.19, 0.07, 0.17", "units": "dimensionless", "from_step": 0,
+  "evidence": [{"loc": "footnote 7", "quote": "obtaining $z_{\\rm phot} = 2.21\\pm0.19$, $2.51\\pm0.07$, $2.44\\pm0.17$, respectively"}]},
+ {"quantity": "SED fit C1: log M*, log SFR, A_V", "value": "10.7, 1.8, 1.86", "uncertainty": "0.2, 0.3, 0.18", "units": "log Msun; log Msun/yr; mag", "from_step": 6,
+  "evidence": [
+   {"loc": "Table 2", "quote": "$10.7\\pm0.2$"},
+   {"loc": "Table 2", "quote": "$1.8\\pm0.3$"},
+   {"loc": "Table 2", "quote": "$1.86\\pm0.18$"}]},
+ {"quantity": "SED fit C3: log M*, log SFR, A_V", "value": "10.8, 1.8, 1.77", "uncertainty": "0.2, 0.3, 0.08", "units": "log Msun; log Msun/yr; mag", "from_step": 6,
+  "evidence": [
+   {"loc": "Table 2", "quote": "$10.8\\pm0.2$"},
+   {"loc": "Table 2", "quote": "$1.8\\pm0.3$"},
+   {"loc": "Table 2", "quote": "$1.77\\pm0.08$"}]},
+ {"quantity": "SED fit C4: log M*, log SFR, A_V", "value": "10.9, 2.0, 1.99", "uncertainty": "0.2, 0.3, 0.06", "units": "log Msun; log Msun/yr; mag", "from_step": 6,
+  "evidence": [
+   {"loc": "Table 2", "quote": "$10.9\\pm0.2$"},
+   {"loc": "Table 2", "quote": "$2.0\\pm0.3$"},
+   {"loc": "Table 2", "quote": "$1.99\\pm0.06$"}]},
+ {"quantity": "SED fit C6: log M*, log SFR, A_V", "value": "10.6, 1.9, 3.25", "uncertainty": "0.2, 0.3, 0.14", "units": "log Msun; log Msun/yr; mag", "from_step": 6,
+  "evidence": [
+   {"loc": "Table 2", "quote": "$10.6\\pm0.2$"},
+   {"loc": "Table 2", "quote": "$1.9\\pm0.3$"},
+   {"loc": "Table 2", "quote": "$3.25\\pm0.14$"}]},
+ {"quantity": "SED fit C7: log M*, log SFR, A_V", "value": "10.2, 1.2, 0.58", "uncertainty": "0.2, 0.3, 0.02", "units": "log Msun; log Msun/yr; mag", "from_step": 6,
+  "evidence": [
+   {"loc": "Table 2", "quote": "$10.2\\pm0.2$"},
+   {"loc": "Table 2", "quote": "$1.2\\pm0.3$"},
+   {"loc": "Table 2", "quote": "$0.58\\pm0.02$"}]},
+ {"quantity": "log dust mass of C1, C3, C4, C6 (range)", "value": "8.0-8.6", "uncertainty": "rough estimate, not stated", "units": "log Msun", "from_step": 7,
+  "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we find values in the range $\\log\\,(M_{\\rm dust}/M_{\\astrosun})\\simeq 8.0-8.6$"}]},
+ {"quantity": "log dust mass of C7", "value": "7.8", "uncertainty": "not stated", "units": "log Msun", "from_step": 7,
+  "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we find a lower value of $\\log\\,(M_{\\rm dust}/M_{\\astrosun})\\simeq 7.8$ for C7"}]},
+ {"quantity": "log SFR_IR (range)", "value": "1.6-2.4", "uncertainty": "not stated", "units": "log Msun/yr", "from_step": 7,
+  "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "find values in the range $\\log\\,({\\rm SFR}_{\\rm IR}/M_{\\astrosun}\\,{\\rm yr^{-1}})\\simeq1.6-2.4$"}]},
+ {"quantity": "Molecular gas fraction f_gas of C1, C3, C4, C6", "value": "51%, 24%, 20%, 65%", "uncertainty": "+14/-17, +15/-10, +12/-9, +10/-12 (percentage points)", "units": "percent", "from_step": 7,
+  "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we find $f_{\\rm gas}=M_{\\rm H_2}/(M_{\\rm H_2}+M_\\star)=51^{+14}_{-17}\\%$, $24^{+15}_{-10}\\%$, $20^{+12}_{-9}\\%$, and $65^{+10}_{-12}\\%$ for C1, C3, C4, and C6 respectively"}]},
+ {"quantity": "Fraction of ALMA-selected galaxies with robust redshifts associated with absorbers", "value": "100% (>=85% allowing for C5)", "uncertainty": "not stated", "units": "percent", "from_step": 8,
+  "evidence": [
+   {"loc": "Gas-galaxy association rate", "quote": "We found that $100\\%$ of our ALMA-selected galaxies"},
+   {"loc": "Gas-galaxy association rate", "quote": "This detection rate decreases to $\\ge85\\%$ when considering the uncertainties related to source C5"}]},
+ {"quantity": "Association rate of HST-selected galaxies (log M*/Msun >= 8, >= 10)", "value": "~25%, ~45%", "uncertainty": "not stated", "units": "percent", "from_step": 8,
+  "evidence": [{"loc": "Gas-galaxy association rate", "quote": "only $\\approx 25\\%$ of all spectroscopically confirmed HST-selected galaxies with $\\log M_\\star/M_{\\astrosun}\\ge 8$ are associated with absorbers, increasing to $\\approx 45\\%$ considering galaxies with $\\log M_\\star/M_{\\astrosun}\\ge 10$"}]},
+ {"quantity": "Fraction of HST galaxies in groups", "value": "~86% in 23 groups (z=1-3)", "uncertainty": "not stated", "units": "percent", "from_step": 9,
+  "evidence": [{"loc": "Catalog of HST-selected galaxies", "quote": "Overall, we found that $\\approx86\\%$ of the galaxies reside in 23 different groups across the redshift range $z=1-3$"}]},
+ {"quantity": "Impact parameters of ALMA galaxies to the quasars", "value": "~200-400 kpc (C3: 43 kpc)", "uncertainty": "not stated", "units": "kpc", "from_step": 9,
+  "evidence": [
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "The impact parameters are typically large, of the order of $\\sim 200-400\\,{\\rm kpc}$"},
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "at low impact parameter ($R=43\\,{\\rm kpc}$) from QSO-NW sightline"}]},
+ {"quantity": "Average halo mass of groups containing ALMA galaxies", "value": "~1e13", "uncertainty": "not stated", "units": "Msun", "from_step": 9,
+  "evidence": [{"loc": "footnote 8", "quote": "obtain an average halo mass of $\\sim 10^{13}\\,M_{\\astrosun}$"}]},
+ {"quantity": "Spearman correlation of galaxy surface density with EW", "value": "rho = 0.8, p = 0.1", "uncertainty": "not stated", "units": "dimensionless", "from_step": 9,
+  "evidence": [{"loc": "footnote 11", "quote": "yields a degree of monotonic correlation of $\\rho=0.8$ with a $p$-value $0.1$"}]}
+],
+"findings_qualitative": [
+ {"value": "All seven continuum-selected sources have an HST counterpart (C5 ambiguous), and three (C1, C3, C4) lack MUSE redshifts and lie in the MUSE redshift desert",
+  "evidence": [
+   {"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "For all of these sources, we found associations in the HST catalog as described in Sect"},
+   {"loc": "Gas-galaxy association rate", "quote": "and lie in the MUSE redshift desert"}]},
+ {"value": "ALMA-selected galaxies lie at the high-mass end of the stellar mass function and are near the main sequence but close to the starburst region",
+  "evidence": [
+   {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "The ALMA sources lie at the high-mass end of the stellar mass function at those redshifts"},
+   {"loc": "Properties of the ALMA galaxies around absorbers", "quote": "although close to the starburst region"}]},
+ {"value": "Completeness-corrected 1.2-mm number counts agree with the ASPECS blank field",
+  "evidence": [{"loc": "Gas-galaxy association rate", "quote": "found that these are consistent with that derived in blank field from ASPECS"}]},
+ {"value": "Massive dusty galaxies appear to trace large-scale structure rather than host the absorbers",
+  "evidence": [{"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "massive dusty galaxies appear to be more tracers of the large scale structure than the actual hosts of the absorbers"}]}
+],
+"claims": [
+ {"hypothesis": "Dusty galaxies selected blindly in the mm are associated with metal absorbers along the quasar sightlines",
+  "experiment": "Match ALMA-selected galaxies to Voigt-fit absorber systems in velocity within 500 km/s",
+  "result": "100% of ALMA-selected galaxies with robust redshifts associated; >=85% allowing for C5; far above the ~25-45% for HST-selected galaxies",
+  "finding": "Dust-selected galaxies are very often linked to metal absorbers, a rate significantly higher than at NIR-UV wavelengths",
+  "support": "supported",
+  "evidence": [
+   {"loc": "Gas-galaxy association rate", "quote": "We found that $100\\%$ of our ALMA-selected galaxies"},
+   {"loc": "Summary & Conclusions", "quote": "This association rate is significantly higher than in previous surveys at NIR–UV wavelengths."}]},
+ {"hypothesis": "Optical-only surveys miss a significant part of the galaxy population around absorbers",
+  "experiment": "Compare ALMA-selected sources with HST and MUSE identifications",
+  "result": "Three of the six robustly associated sources (C1, C3, C4) would have been missed; C4 is the only galaxy at the QSO-NW absorber at z = 2.368",
+  "finding": "Blind mm follow-up is needed for a complete census of galaxies around absorbers",
+  "support": "supported",
+  "evidence": [
+   {"loc": "Gas-galaxy association rate", "quote": "three out of the six sources (i.e., C1, C3, C4) for which we find a robust association to absorbers would have been missed if only relying on MUSE and HST identifications"}]},
+ {"hypothesis": "ALMA-selected galaxies in the field resemble massive, dusty, star-forming SMG-like systems",
+  "experiment": "SED fitting, dust masses and gas fractions from CO(3-2) and [CI]",
+  "result": "M* ~ 10^10.2-10.7 Msun, SFR ~ 10^1.2-2.0 Msun/yr, M_dust ~ 10^7.8-8.6 Msun, f_H2 ~ 20-65%",
+  "finding": "The galaxies are massive, highly star-forming and gas- and dust-rich, resembling SMGs at similar redshifts",
+  "support": "supported",
+  "evidence": [{"loc": "Summary & Conclusions", "quote": "most of these galaxies appear massive ($M_{\\star}\\simeq 10^{10.2-10.7}\\,M_{\\astrosun}$)"}]},
+ {"hypothesis": "ALMA galaxies sit at the centers of the potential wells of the large-scale structures traced by the absorbers",
+  "experiment": "Group membership, position relative to tau_50 of the absorbers and impact parameters",
+  "result": "4 of 6 live in groups; C1 and C6 at tau_50, C3, C4, C7 within 100 km/s of tau_50; impact parameters ~200-400 kpc",
+  "finding": "Galaxies are well aligned with absorber centers in velocity, but absorbing gas may sit within a few virial radii rather than in their inner CGM",
+  "support": "partially",
+  "evidence": [
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "we find that the remaining ALMA galaxies (i.e., C3, C4, and C7) lie within $100\\,{\\rm km\\,s^{-1}}$ from $\\tau_{50}$"},
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "However, we caution that this may also be a consequence of the low number density of these galaxies."}]},
+ {"hypothesis": "Absorption strength correlates with the projected galaxy surface density around ALMA galaxies",
+  "experiment": "Count HST-selected neighbors around C1, C3, C6, C7 and fit surface density versus EW",
+  "result": "Hint of positive correlation with Spearman rho = 0.8, p = 0.1",
+  "finding": "Consistent with absorption arising from superposed halos of multiple galaxies, but limited by a handful of sources",
+  "support": "partially",
+  "evidence": [
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "we find a hint of positive correlation"},
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "our analysis relies on a handful of sources and therefore is limited by the low statistics"}]}
+],
+"reasoning": [
+ {"field": "why_this_data", "value": "Band 6 mosaic covers the central MUDF where MUSE is deepest; band 3 scans were designed to measure redshifts of sources lacking robust MUSE redshifts",
+  "evidence": [
+   {"loc": "Description of observations", "quote": "The ALMA band 6 mosaic has been designed to cover the central part of the MUDF, where the MUSE observations achieve the maximum depth"},
+   {"loc": "Description of observations", "quote": "The latter observations were designed to accurately measure the redshift of sources lacking robust spectroscopic constraints from MUSE"}]},
+ {"field": "why_this_method", "value": "Dirty images used for source search because they preserve the noise properties, enabling reliable fidelity estimates",
+  "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "since the former preserves the intrinsic properties of the noise"}]},
+ {"field": "how_they_decided_enough", "value": "Fiducial sample limited to high-fidelity (F >= 90%) candidates, since lower-fidelity candidates had no HST counterparts",
+  "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "we therefore include in our fiducial sample of ALMA continuum sources only the high-fidelity candidates selected as previously described"}]}
+],
+"alternatives_considered_or_rejected": [
+ {"value": "C5 continuum may arise from an interacting system or from gravitational lensing; not resolved",
+  "evidence": [{"loc": "HST counterparts of ALMA continuum sources", "quote": "Alternatively, gravitational lensing may represent a viable explanation to the observed emission."}]},
+ {"value": "No flux-boosting correction applied because it is negligible at S/N >~ 5",
+  "evidence": [{"loc": "Continuum-selected sources in the 1.2-mm image", "quote": "Thus, we do not correct the measured fluxes of our source sample for this effect."}]},
+ {"value": "Cleaning of band 3 cubes not performed (faint, unresolved sources)",
+  "evidence": [{"loc": "Data calibration and imaging", "quote": "For these reasons, the cleaning of cubes is not required."}]}
+],
+"limitations_admitted": [
+ {"value": "Nature of C5 cannot be confidently assessed given limited S/N",
+  "evidence": [{"loc": "HST counterparts of ALMA continuum sources", "quote": "given the limited $S/N$ of the ALMA data, we cannot confidently assess the nature of this emission"}]},
+ {"value": "Dust masses are rough estimates from a single band and a single assumed temperature",
+  "evidence": [{"loc": "Properties of the ALMA galaxies around absorbers", "quote": "we provide rough estimates of the dust masses"}]},
+ {"value": "Small sample size limits statistics of the environment analysis",
+  "evidence": [
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "our analysis relies on a handful of sources and therefore is limited by the low statistics"},
+   {"loc": "The link between the large-scale galaxy environment and the absorbing gas", "quote": "More SMG-QSO pairs at small separations are needed to statistically assess our conclusions."}]}
+],
+"referee_caveats_inferred": [
+ "Only seven continuum sources and six robust associations, so the 100% association rate has a large binomial uncertainty that is not quantified",
+ "A +-500 km/s window is wide relative to absorber velocity spreads and could give chance associations given the density of metal absorbers; no random-redshift control is described",
+ "Dust masses use a single fixed T_dust = 32 K and beta = 1.8 from SMG samples; no uncertainty on M_dust is given",
+ "Peak-pixel fluxes are used for sources that are called marginally resolved, so total fluxes may be underestimated",
+ "The surface-density versus EW correlation rests on four points (rho = 0.8, p = 0.1) and mixes Mg II and Al II"
+],
+"reproducibility": [
+ {"field": "data_public_as_stated", "value": "HST/MUSE-based products stated as retrievable from MAST; public status of the ALMA data not stated in the text",
+  "evidence": [{"loc": "footnote 3", "quote": "The final products can be retrieved as High Level Science Products (HLSPs)"}]}
+],
+"code_released": [
+ {"value": "LineSeeker is publicly available (github.com/jigonzal/LineSeeker)",
+  "evidence": [{"loc": "footnote 4", "quote": "The code is publicly available at"}]},
+ {"value": "The Bruzual and Charlot model set used in the SED fits is publicly available",
+  "evidence": [{"loc": "footnote 13", "quote": "The set of models is publicly available at"}]}
+],
+"missing_for_reproduction": [
+ "Complete source table (positions, peak fluxes, S/N, fidelity) is not in the provided text",
+ "Full tclean parameter set and continuum channel selection are not given",
+ "LineSeeker input parameters other than kernel widths and thresholds",
+ "Catalog photometry, absorber table values and SED fitting priors come from other papers or data releases",
+ "Absolute flux scale uncertainty not given"
+],
+"estimated_data_volume_inferred": "Several hundred GB of raw ALMA data across 15 EBs (53-pointing band 6 mosaic with 5 EBs, 5.9 h; band 3 with 10 EBs, 8.1 h); tens of GB of imaged products. Plus HST and MUSE catalogs from the MAST HLSP and ESO.",
+"score_inferred": 3,
+"score_reason": "Observing setup, CASA versions, imaging options, LineSeeker thresholds, fitting method and many numeric results are given, but several imaging parameters, the source table, and the optical catalogs and absorber table (external) are not reproducible from this paper alone.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "The ALMA part (continuum source search, CO(3-2) fluxes, luminosities, redshifts) has numeric answers and a mostly complete recipe on archive projects that are linked to the paper; the SED and absorber association parts need external catalogs.",
+"methods_papers": [
+ {"citation": "(cite: Gonzalez-Lopez+2017; Gonzalez-Lopez+2019)", "why": "LineSeeker algorithm and performance"},
+ {"citation": "(cite: Fossati+2018)", "why": "SED fitting with MC-SPF"},
+ {"citation": "(cite: Solomon+1997)", "why": "CO line luminosity relations"}
+],
+"companion_papers": [
+ {"citation": "(cite: Revalski+2023)", "why": "MUDF HST/MUSE galaxy catalog and redshifts"},
+ {"citation": "(cite: Beckett+2024)", "why": "MUDF quasar absorber catalog"},
+ {"citation": "(cite: Fossati+2019)", "why": "MUSE survey design and group identification"},
+ {"citation": "(cite: Revalski+2024)", "why": "Spectral fitting of HST/MUSE emission lines"}
+],
+"related_projects_or_surveys": ["MUSE Ultra Deep Field (MUDF)", "ASPECS", "MAST MUDF HLSP"]
+}

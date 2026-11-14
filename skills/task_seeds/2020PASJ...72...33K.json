@@ -1,0 +1,661 @@
+{
+ "bibcode": "2020PASJ...72...33K",
+ "title": "Deeply cooled core of the Phoenix galaxy cluster imaged by ALMA with the Sunyaev-Zel'dovich effect",
+ "year": 2020,
+ "doi": "10.1093/pasj/psaa009",
+ "arxiv_id": "2001.11239",
+ "fields": [
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "How much thermal gas is cooling to low temperatures in the Phoenix cluster core, probed with an ALMA SZE image combined with Chandra X-ray data independent of the X-ray spectrum",
+ "alma_project_codes": [
+  "2015.1.00894.S"
+ ],
+ "data": {
+  "bands": "Band 3; four continuum bands centered at 85, 87, 97, 99 GHz (overall central frequency 92 GHz)",
+  "arrays": "ALMA 12-m and 7-m arrays",
+  "angular_resolution": "~2 arcsec native; 2.25 x 1.92 arcsec FWHM (12-m + 7-m) unsmoothed; 5 arcsec smoothed for display",
+  "sensitivity": "0.025 mJy/beam rms at 5 arcsec resolution (theta < 45 arcsec); 0.0122 mJy/beam 1 sigma at native resolution (12-m + 7-m)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "M500 = 8.8e14 h^-1 Msun and r500 = 0.92 h^-1 Mpc of the Phoenix cluster",
+    "evidence": [
+     {
+      "loc": "4.3 Compton y-parameter map and the inner pressure profile",
+      "quote": "assuming $M_{500} = 8.8 \\times 10^{14} h^{-1} M_{\\odot}$ and $r_{500} = 0.92 h^{-1}$Mpc at $z=0.597$ for the Phoenix cluster"
+     }
+    ]
+   },
+   "citation": "(cite: McDonald12)"
+  },
+  {
+   "what": {
+    "value": "Mean radial pressure profiles of local cool core clusters, used as comparison",
+    "evidence": [
+     {
+      "loc": "4.3 Compton y-parameter map and the inner pressure profile",
+      "quote": "We find that the inner pressure profile of the Phoenix cluster is in good agreement with the expectation from the local cool core clusters by (cite: Arnaud10)"
+     }
+    ]
+   },
+   "citation": "(cite: Arnaud10)"
+  },
+  {
+   "what": {
+    "value": "Generalized NFW pressure profile form, integrated along the line of sight for the comparison profiles",
+    "evidence": [
+     {
+      "loc": "4.3 Compton y-parameter map and the inner pressure profile",
+      "quote": "The mean radial pressure profiles are computed by integrating along the line-of-sight the generalized NFW profile (cite: Nagai07)"
+     }
+    ]
+   },
+   "citation": "(cite: Nagai07)"
+  },
+  {
+   "what": {
+    "value": "Mean temperature profiles of local and distant cool core clusters, scaled with kT500 = 12.6 keV from the X-ray scaling relation",
+    "evidence": [
+     {
+      "loc": "4.4 Deprojected electron temperature and density",
+      "quote": "Also plotted for reference in figure [13](#fig-tdeproj) are the mean profiles of local and distant cool core clusters (cite: Vikhlinin06; McDonald14b)"
+     },
+     {
+      "loc": "4.4 Deprojected electron temperature and density",
+      "quote": "using the average temperature within $r_{500}$ of this cluster, $kT_{500}=12.6$ keV, expected from the X-ray scaling relation by (cite: Reichert11)"
+     }
+    ]
+   },
+   "citation": "(cite: Vikhlinin06; McDonald14b); scaling relation (cite: Reichert11)"
+  },
+  {
+   "what": {
+    "value": "Best-fit density profiles of Abell 2029 and Abell 1795",
+    "evidence": [
+     {
+      "loc": "4.4 Deprojected electron temperature and density",
+      "quote": "overlaid are the best-fit density profiles by (cite: Vikhlinin06) of typical local cool core clusters, Abell 2029 and Abell 1795"
+     }
+    ]
+   },
+   "citation": "(cite: Vikhlinin06)"
+  },
+  {
+   "what": {
+    "value": "Galactic hydrogen column density 1.52e20 cm^-2",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison to X-ray data",
+      "quote": "the Galactic hydrogen column density toward the Phoenix cluster is $1.52 \\times 10^{20}$ cm$^{-2}$ (cite: Kalberla05)"
+     }
+    ]
+   },
+   "citation": "(cite: Kalberla05)"
+  },
+  {
+   "what": {
+    "value": "Central galaxy stellar mass ~3e12 Msun",
+    "evidence": [
+     {
+      "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+      "quote": "$\\sim 3 \\times 10^{12} M_\\odot$ in the central galaxy of the Phoenix cluster (cite: McDonald12; McDonald13)"
+     }
+    ]
+   },
+   "citation": "(cite: McDonald12; McDonald13)"
+  },
+  {
+   "what": {
+    "value": "Mass deposition rate ~2000 Msun/yr indicated by X-ray data",
+    "evidence": [
+     {
+      "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+      "quote": "$\\dot{M}_{\\rm cool} \\sim 2000 ~M_\\odot$ yr$^{-1}$ as indicated by the X-ray data (e.g., (cite: McDonald13; Ueda13))"
+     }
+    ]
+   },
+   "citation": "(cite: McDonald13; Ueda13)"
+  },
+  {
+   "what": {
+    "value": "Mass deposition rate 130-480 Msun/yr for gas below 2 keV",
+    "evidence": [
+     {
+      "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+      "quote": "$\\dot{M}_{\\rm cool} = 130-480~M_\\odot$ yr$^{-1}$ for the gas below 2 keV (cite: Pinto18)"
+     }
+    ]
+   },
+   "citation": "(cite: Pinto18)"
+  },
+  {
+   "what": {
+    "value": "ALMA absolute flux calibration uncertainty of 6%",
+    "evidence": [
+     {
+      "loc": "4.3 Compton y-parameter map and the inner pressure profile",
+      "quote": "the absolute calibration of ALMA (6%: (cite: Kitayama16))"
+     }
+    ]
+   },
+   "citation": "(cite: Kitayama16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit and subtract compact sources in the uv plane",
+   "method": "Fit point-like and Gaussian models to 12-m visibilities at baselines >30 klambda with uvmodelfit, subtract in the uv plane before imaging",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "Four compact sources detected above 5 sigma",
+    "C2 modelled as elliptical Gaussian with major-to-minor axis ratio fixed at 0.05"
+   ],
+   "assumptions": [
+    "C3 and W modelled as point sources since consistent with the synthesized beam"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image the SZE decrement with 12-m + 7-m multi-scale CLEAN",
+   "method": "Deconvolve the source-subtracted 12-m + 7-m visibilities with Multi-Scale CLEAN in tclean using joint mosaic imaging, multi-frequency synthesis and natural weighting; measure noise on half-split difference maps",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "Scales [0, 4, 8, 16, 32, 64] arcsec FWHM",
+    "Mask radius 42 arcsec, threshold 0.024 mJy, loop gain 0.05"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract Chandra X-ray spectra and compare with the SZE",
+   "method": "Contour-binned Chandra ACIS-I spectra (S/N 100) fitted with an ICM plus central AGN model in XSPEC; compare X-ray and SZE residual maps and estimate equation-of-state perturbations",
+   "software": [
+    "CIAO 4.11",
+    "XSPEC 12.10.0e"
+   ],
+   "key_parameters": [
+    "Energy range 0.7-7.0 keV observed",
+    "Background from off-center region 3-5 arcmin from the central AGN",
+    "Five position-dependent free parameters (ICM temperature, metallicity, intrinsic absorber column, ICM and AGN normalisations)",
+    "Equation-of-state method of Ueda et al. 2018 with line-of-sight depth l = 100 kpc"
+   ],
+   "assumptions": [
+    "Collisional ionization equilibrium; Anders & Grevesse 1989 abundances",
+    "Galactic NH = 1.52e20 cm^-2",
+    "Helium mass fraction Y = 0.25"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simulate ALMA observations to calibrate missing flux",
+   "method": "Generate mock visibilities with simobserve from an X-ray pseudo-pressure model at four spectral windows, add noise, deconvolve as for real data, and fit I_out = c1 I_in + c0",
+   "software": [
+    "CASA simobserve",
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "Four spectral windows at 85, 87, 97, 99 GHz with 1.875 GHz bandwidth each",
+    "Pointings, array configuration, hour angle, integration time and PWV matched to each execution block",
+    "10 noise realizations for each ypeak (4e-4, 8e-4, 12e-4)"
+   ],
+   "assumptions": [
+    "Pseudo pressure map normalised to ypeak = 8e-4, described as typical of massive cool core clusters; relativistic correction applied"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive the Compton y map and compare the inner pressure profile",
+   "method": "Divide ALMA image by c1 = 0.94, subtract mean signal at theta = 42 arcsec, apply relativistic correction with projected X-ray temperature, azimuthally average and compare with generalized NFW pressure profiles of cluster samples",
+   "software": [],
+   "key_parameters": [
+    "Geometrically spaced bins, innermost 0-4 arcsec, size increasing by a factor 1.1"
+   ],
+   "assumptions": [
+    "M500 = 8.8e14 h^-1 Msun, r500 = 0.92 h^-1 Mpc at z = 0.597"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Non-parametric deprojection of electron temperature and density",
+   "method": "Joint fit of SZE brightness (theta < 40 arcsec) and 0.7-2.0 keV X-ray brightness (theta < 100 arcsec) in spherical shells, varying T and ne per shell, with systematic errors added in quadrature; compared against an X-ray-only projct deprojection",
+   "software": [
+    "SPEX v3.0.5.00",
+    "XSPEC projct"
+   ],
+   "key_parameters": [
+    "Innermost bin 0-4 arcsec (0 < r < 26.7 kpc), size increasing by a factor 1.3",
+    "Systematic errors: ALMA flux calibration 6%, missing flux 0.24 uJy/arcsec^2, Chandra ACIS-I effective area 4%",
+    "SZE modelled as incremental brightness relative to the bin at theta = 43.6 arcsec, with missing-flux factor 0.94 and temperature-dependent relativistic correction"
+   ],
+   "assumptions": [
+    "Temperature at r > 250 kpc fixed at 15.8 keV from the X-ray spectral analysis",
+    "Metal abundance 0.35 Solar in SPEX emissivity",
+    "Innermost-bin intrinsic NH either 6.7e21 cm^-2 or 0"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive entropy, cooling time and cool gas mass",
+   "method": "Compute K = kT ne^-2/3 and radiative cooling time from the deprojected profiles using SPEX emissivity; integrate gas mass at ~3 keV within r = 27 kpc and divide by mass deposition rates",
+   "software": [
+    "SPEX v3.0.5.00"
+   ],
+   "key_parameters": [
+    "Comparison entropy slopes K ~ r^1.2 (non-radiative) and K ~ r^1.4 (steady-state cooling flow)"
+   ],
+   "assumptions": [
+    "Mass deposition rate ~2000 Msun/yr (X-ray) and star formation rate 500 Msun/yr used to compute accumulation times"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SZE decrement significance",
+   "value": ">11",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 The Sunyaev-Zel’dovich effect",
+     "quote": "The SZE decrement is detected at more than $11\\sigma$ statistical significance."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated SZE flux density within theta = 40 arcsec",
+   "value": "-11.9",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 The Sunyaev-Zel’dovich effect",
+     "quote": "The integrated SZE flux density within $\\theta = 40''$ is $-11.9\\pm 0.4$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "SZE intensity at SZE peak (5 arcsec smoothed)",
+   "value": "-0.294",
+   "uncertainty": "0.025",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 The Sunyaev-Zel’dovich effect",
+     "quote": "with the SZE intensities at the two positions of $-0.294 \\pm 0.025$ mJy/beam (SZE peak) and $-0.280 \\pm 0.025$ mJy/beam (source C1 location)"
+    }
+   ]
+  },
+  {
+   "quantity": "SZE intensity at source C1 location (5 arcsec smoothed)",
+   "value": "-0.280",
+   "uncertainty": "0.025",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 The Sunyaev-Zel’dovich effect",
+     "quote": "with the SZE intensities at the two positions of $-0.294 \\pm 0.025$ mJy/beam (SZE peak) and $-0.280 \\pm 0.025$ mJy/beam (source C1 location)"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset of SZE peak from central AGN (C1)",
+   "value": "3.6 arcsec south",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 The Sunyaev-Zel’dovich effect",
+     "quote": "The SZE peak is located at $3.6''$ south from the central AGN (source C1)"
+    }
+   ]
+  },
+  {
+   "quantity": "C1 92 GHz flux density (point-like)",
+   "value": "1.891",
+   "uncertainty": "0.010",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$1.891 \\pm 0.010$"
+    }
+   ]
+  },
+  {
+   "quantity": "C2 92 GHz flux density (Gaussian model)",
+   "value": "0.090",
+   "uncertainty": "0.017",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.090 \\pm 0.017$"
+    }
+   ]
+  },
+  {
+   "quantity": "C3 92 GHz flux density (point-like)",
+   "value": "0.091",
+   "uncertainty": "0.010",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.091 \\pm 0.010$"
+    }
+   ]
+  },
+  {
+   "quantity": "W 92 GHz flux density (point-like)",
+   "value": "0.158",
+   "uncertainty": "0.010",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$0.158 \\pm 0.010$"
+    }
+   ]
+  },
+  {
+   "quantity": "C2 major axis FWHM (elliptical Gaussian)",
+   "value": "1.3",
+   "uncertainty": "0.5",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Compact sources",
+     "quote": "to obtain the major axis FWHM of $1.3''\\pm 0.5''$ and the position angle of $-9.4^\\circ \\pm 21.8^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Residual rms after source subtraction (>30 klambda)",
+   "value": "0.0146",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Compact sources",
+     "quote": "The residuals have the root mean square (rms) value of 0.0146 mJy/beam and are consistent with noise."
+    }
+   ]
+  },
+  {
+   "quantity": "Missing-flux slope c1",
+   "value": "0.94",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Imaging simulations",
+     "quote": "This yielded $c_1=0.94 \\pm 0.02$ and $c_0= (1.19 \\pm 0.16, ~2.07 \\pm 0.20, ~3.02 \\pm 0.28)$ $\\mu$Jy/arcsec$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Offset c0 for ypeak = 4e-4, 8e-4, 12e-4",
+   "value": "1.19, 2.07, 3.02",
+   "uncertainty": "0.16, 0.20, 0.28",
+   "units": "uJy/arcsec^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Imaging simulations",
+     "quote": "This yielded $c_1=0.94 \\pm 0.02$ and $c_0= (1.19 \\pm 0.16, ~2.07 \\pm 0.20, ~3.02 \\pm 0.28)$ $\\mu$Jy/arcsec$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "1 sigma systematic uncertainty in true intensity from missing-flux offset",
+   "value": "0.24",
+   "uncertainty": "not stated",
+   "units": "uJy/arcsec^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Imaging simulations",
+     "quote": "We regard $\\sqrt{2}$ times this value (i.e., $\\Delta I_\\nu^{\\rm in}=0.24 \\mu$Jy/arcsec$^2$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak incremental Compton y",
+   "value": "5.3e-4",
+   "uncertainty": "0.4 (stat) and 0.3 (sys), in units of 1e-4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Compton y-parameter map and the inner pressure profile",
+     "quote": "The peak value is $\\Delta y = (5.3 \\pm 0.4 \\mbox{ [statistical]} \\pm 0.3 \\mbox{ [systematic]})\\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected ICM temperature at theta_X < 1.5 arcsec without intrinsic absorption",
+   "value": "9.8",
+   "uncertainty": "1.5",
+   "units": "keV",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison to X-ray data",
+     "quote": "the projected ICM temperature at $\\theta_{\\rm X} < 1.5''$ is $kT=9.8 \\pm 1.5$ keV"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected ICM temperature at theta_X < 1.5 arcsec with intrinsic absorption",
+   "value": "2.7",
+   "uncertainty": "+0.4/-0.3",
+   "units": "keV",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison to X-ray data",
+     "quote": "Inclusion of intrinsic absorption significantly decreases the temperature to $kT=2.7^{+0.4}_{-0.3}$ keV"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic absorber hydrogen column density",
+   "value": "6.7e21",
+   "uncertainty": "1.1e21",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison to X-ray data",
+     "quote": "the best-fit hydrogen column density of the absorber $N_{\\rm H, int}= (6.7 \\pm 1.1) \\times 10^{21}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic AGN X-ray luminosity (0.7-7.0 keV)",
+   "value": "1.81e45 h^-2",
+   "uncertainty": "0.09e45",
+   "units": "erg/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison to X-ray data",
+     "quote": "$L_{\\rm X}(0.7-7.0 \\mbox{ keV}) = (1.81 \\pm 0.09) \\times 10^{45} h^{-2}$ erg s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on sqrt(w) = sqrt(dp/drho) within 10 arcsec",
+   "value": "<1010 (l/100 kpc)^-1/4",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison to X-ray data",
+     "quote": "They lead to an upper limit on $w \\equiv \\Delta p/\\Delta \\rho$ of $\\sqrt{w} < 1010 (l/100 \\mbox{ kpc})^{-1/4}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Deprojected temperature at r < 27 kpc (SZE+X-ray, with intrinsic absorption)",
+   "value": "2.70",
+   "uncertainty": "1.71",
+   "units": "keV",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "the temperature at $r<27$ kpc is $2.70 \\pm 1.71$ keV and $3.01 \\pm 1.86$ keV with and without intrinsic absorption, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Deprojected temperature at r < 27 kpc (SZE+X-ray, without intrinsic absorption)",
+   "value": "3.01",
+   "uncertainty": "1.86",
+   "units": "keV",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "the temperature at $r<27$ kpc is $2.70 \\pm 1.71$ keV and $3.01 \\pm 1.86$ keV with and without intrinsic absorption, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray-only deprojected temperature at r < 20 kpc, with then without intrinsic absorption",
+   "value": "2.73 then 6.37",
+   "uncertainty": "+0.24/-0.22 then +0.73/-0.58",
+   "units": "keV",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "from $2.73^{+0.24}_{-0.22}$ keV to $6.37^{+0.73}_{-0.58}$ keV once intrinsic absorption is neglected"
+    }
+   ]
+  },
+  {
+   "quantity": "Central temperature relative to mean temperature at r > 300 kpc",
+   "value": "~5 times lower (mean ~16 keV)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "The inferred central temperature is $\\sim 5$ times lower than the mean temperature ($\\sim 16$ keV) at $r>300$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Entropy at r < 27 kpc",
+   "value": "<10",
+   "uncertainty": "not stated",
+   "units": "keV cm^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "decreases to $<10$ keV cm$^2$ at $r<27$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Radiative cooling time at r < 27 kpc",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 Deprojected electron temperature and density",
+     "quote": "and drops to $\\sim 0.1$ Gyr at $r<27$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of ~3 keV gas within r = 27 kpc",
+   "value": "6.4e11",
+   "uncertainty": "0.9e11",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+     "quote": "$M_{\\rm cool}=(6.4\\pm 0.9) \\times 10^{11} M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Accumulation time of cool gas for Mdot_cool = 2000 Msun/yr",
+   "value": "0.32",
+   "uncertainty": "0.05",
+   "units": "Gyr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+     "quote": "(0.32 \\pm 0.05)"
+    }
+   ]
+  },
+  {
+   "quantity": "Time for cool gas to turn into stars for SFR = 500 Msun/yr",
+   "value": "1.3",
+   "uncertainty": "0.2",
+   "units": "Gyr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.5 How much gas is cooling in the Phoenix cluster?",
+     "quote": "(1.3 \\pm 0.2)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Phase centre (target field centre) coordinates are blank in the text",
+  "tclean image size, cell size, niter / number of minor cycles, gridder and phasecenter for the 7-pointing mosaic",
+  "Calibration CASA/pipeline version and whether QA2 products were used unmodified or re-calibrated; any self-calibration",
+  "Starting parameters, weighting and error treatment used in uvmodelfit; source positions are blank in the table",
+  "Exact definition of how the difference-map noise was computed per pixel region and how the 5 arcsec smoothing was applied",
+  "simobserve inputs: sky model construction from the pseudo pressure map, PWV values, and the Chandra-based map units used",
+  "How the mean signal at the edge of the emission profile was determined when subtracting the offset",
+  "Chandra reprocessing steps, region definitions and ACIS-I spectral fitting statistic; five-parameter initial values and fixed AGN parameter values",
+  "Deprojection algorithm: optimiser, error propagation, shell geometry for the 0.7-2.0 keV X-ray brightness fit, and the covariance treatment between bins",
+  "Code for deprojection and the relativistic SZ correction implementation is not named or released",
+  "Choice of h = 0.7 for the deprojection versus h left free elsewhere"
+ ],
+ "missing_for_reproduction": [
+  "tclean image size, cell size and iteration limits",
+  "Target field centre coordinates (blank in the text)",
+  "Deprojection code and fitting algorithm details",
+  "Initial values and fixed AGN parameters of the Chandra spectral model",
+  "Compact source positions (blank in the table)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Observation setup, tclean multi-scale parameters, uvmodelfit usage and key numeric results are given, but image/cell size, iteration limits, mosaic phase centre, deprojection algorithm details and Chandra reprocessing choices are missing, and no code is released.",
+ "rediscovery_reason": "The ALMA project code is given and Chandra ObsIDs are listed; the SZE imaging recipe (scales, mask, threshold, gain, weighting) and numeric results (flux density -11.9 mJy, 11 sigma, c1 = 0.94) are specific enough to redo, although the deprojection part is only partially specified.",
+ "source_card": "cards/2020PASJ...72...33K/sonnet/card.md"
+}

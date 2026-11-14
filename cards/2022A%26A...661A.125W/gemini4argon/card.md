@@ -1,0 +1,272 @@
+# Radio properties of the OH megamaser galaxy IIZw 096
+
+`2022A&A...661A.125W` | Astronomy and Astrophysics 2022 | first author: Wu, Hong | arXiv: 2203.00276 | DOI: 10.1051/0004-6361/202142854
+
+Card schema 1.0 | model gemini-4-argon | depth full | type archival_reuse
+
+## Science
+
+- Fields: nearby_galaxies, star_formation, agn_and_quasars
+- Question: To study the properties of the high-resolution structure of the OH megamaser emission in IIZw 096 and its connections with environmental conditions (dense gas, compact radio continuum, merging status), and determine whether the OHMs originate from a starburst or an AGN.  
+  > "The main aims of this paper are to further study the properties of the high-resolution structure of the OHM emission (cite: 2010PhDT.......280C) and find its possible connections with the environmental conditions" (Introduction); "As a concenquence, these results support a starburst origin for the OHMs, without the presence of an AGN." (abstract)
+- Target **IIZw 096**: coordinates 205724.372+170739.221 (comp D1)  
+  > "D1: | 205724.372+170739.221" (Table 2); "The $\rm d_{Mpc}$ is about 148 Mpc for this source" (The total mass of D1 estimated from CO and HI observations); "The optical redshift of this source shows a system velocity of about 10770 km s$^{-1}$(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)" (The merging and inflow of gas to the central region); z/distance 148 Mpc; system velocity about 10770 km s^-1  
+  > "D1: | 205724.372+170739.221" (Table 2); "The $\rm d_{Mpc}$ is about 148 Mpc for this source" (The total mass of D1 estimated from CO and HI observations); "The optical redshift of this source shows a system velocity of about 10770 km s$^{-1}$(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)" (The merging and inflow of gas to the central region); distance from (cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)  
+  > "D1: | 205724.372+170739.221" (Table 2); "The $\rm d_{Mpc}$ is about 148 Mpc for this source" (The total mass of D1 estimated from CO and HI observations); "The optical redshift of this source shows a system velocity of about 10770 km s$^{-1}$(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)" (The merging and inflow of gas to the central region)
+- Target **SDSS J205738.81+170151.0**: coordinates 205739.307+170153.762  
+  > "the other is a new galaxy centered at RA: 20 57 39.307 and Dec: +17 01 53.762." (The H I emission from VLA project AG0613 (see Table [vlbilist])); "J205738.81+170151.0 | 205739.307+170153.762 | 2.9 $\pm$ 0.8 | 10689 $\pm$ 18" (Table 2); z/distance 10689 +/- 18 and 10820 +/- 12 km s^-1 (HI Gaussian centers)  
+  > "the other is a new galaxy centered at RA: 20 57 39.307 and Dec: +17 01 53.762." (The H I emission from VLA project AG0613 (see Table [vlbilist])); "J205738.81+170151.0 | 205739.307+170153.762 | 2.9 $\pm$ 0.8 | 10689 $\pm$ 18" (Table 2); distance from _not stated_
+
+## Data provenance
+
+- ALMA projects: 2012.1.01022.S
+- bands: _not stated_
+- frequencies and spectral setup: 333.3 GHz (CO 3-2) and 343.9 GHz (HCO+ 4-3), spectral velocity resolution 5.4 km s^-1  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1); "2015Jul16 | 343.9 | HCO+ (4-3) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.19$\times$0.16 | -55 | 1.92" (Table 1)
+- continuum bandwidth: _not stated_
+- arrays: ALMA  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1)
+- configurations: _not stated_
+- baselines: _not stated_
+- angular resolution: 0.20" x 0.17" (PA -54 deg) for CO (3-2); 0.19" x 0.16" (PA -55 deg) for HCO+ (4-3)  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1); "2015Jul16 | 343.9 | HCO+ (4-3) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.19$\times$0.16 | -55 | 1.92" (Table 1)
+- max recoverable scale: _not stated_
+- sensitivity: 1.91 mJy/beam (CO 3-2) and 1.92 mJy/beam (HCO+ 4-3) per 5.4 km s^-1 channel  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1); "2015Jul16 | 343.9 | HCO+ (4-3) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.19$\times$0.16 | -55 | 1.92" (Table 1)
+- time on source: _not stated_
+- observing dates: 2015Jul16  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1)
+- pi or archival as stated: archival  
+  > "We have collected the archival radio data from EVN, VLBA, VLA, and ALMA." (The archival radio data)
+- Line: CO 3-2 (333.3 GHz (observing frequency))
+- Line: HCO+ 4-3 (343.9 GHz (observing frequency))
+- Line: OH 1667 MHz and 1665 MHz (1667 MHz, 1665 MHz (1.6 GHz))
+- Line: HI 21 cm (1.4 GHz (observing frequency))
+- Other facility **EVN (European VLBI Network)**: Two epochs of archival high-resolution OH 1667/1665 MHz spectral-line observations (projects EK020 and ES064B)  
+  > "Based on the two epochs European Very Long Baseline Interferometry (VLBI) Network (EVN) archive data from OH line observations of IIZw 096" (abstract); "2005Jun08 | 1.6 | OH | $\rm EVN^{1}$ | J2052+1619$\rm ^{pr}$ | EK020" (Table 1); "2010Jun08 | 1.6 | OH | $\rm EVN^{2}$ | J2052+1619$\rm ^{pr}$ | ES064B" (Table 1)
+- Other facility **VLBA (Very Long Baseline Array)**: Archival 1.5 GHz high-resolution radio continuum observation (project BS0233)  
+  > "2014May18/19 | 1.5 | VLBA | J2052+1619$\rm ^{pr}$ | BS0233" (Online materials table (VLA/VLBA continuum data)); "2014May18/19 | 1.5 | VLBA | J2052+1619$\rm ^{pr}$ | BS0233 | 0.005 $\times$ 0.011 | 2 | 0.015" (Table 3)
+- Other facility **VLA / EVLA (Very Large Array)**: Archival HI line observations (project AG0613) and multi-band radio continuum observations from 1.4 to 33.0 GHz (projects AB0660, 14A-471, 13B-356, 14A-741)  
+  > "2001Jul22 | 1.4 | H I | VLA-C | 2035+189 | AG0613 | 22.2 | 19.7$\times$17.9 | 72 | 0.33" (Table 1); "1992Dec14 | 1.4 | VLA-A | 2029+121 | AB0660" (Table 3); "2014Mar30 | 3.0 | EVLA-A | J2139+1423 | 14A-471" (Table 3)
+- Other facility **HST (Hubble Space Telescope)**: I-band optical image used for spot selection and multi-wavelength overlays  
+  > "The HST I-band image (see Fig. [1](#radio-hst)) has shown that the OH emission region coincides with D1, surrounded by nuclei A, B, together with some other bright regions." (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy)
+- External data: CO(3-2)/CO(1-0) line ratio of 0.51  
+  > "The CO(3–2)/CO(1–0) line ratio is about 0.51 for this galaxy (cite: 2010MNRAS.406.1364L)" (The total mass of D1 estimated from CO and HI observations) [from (cite: 2010MNRAS.406.1364L)]
+- External data: Optical redshift / systemic velocity of 10770 km s^-1  
+  > "The optical redshift of this source shows a system velocity of about 10770 km s$^{-1}$(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)" (The merging and inflow of gas to the central region) [from (cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)]
+- External data: Mass estimate of D1 from H-band optical image (1-4 x 10^9 M_sun)  
+  > "Based on H-band optical image and solar metallicity, (cite: 2010AJ....140...63I) estimated that the mass of D1 is approximately 1–4 $\times$ $\rm 10^{9}$$\rm M_{\odot}$." (The total mass of D1 estimated from CO and HI observations) [from (cite: 2010AJ....140...63I)]
+- External data: Lower limit for enclosed mass of D1 from MERLIN OH observations (~3 x 10^9 M_sun)  
+  > "Based on the OH line velocities and emission region from MERLIN observations, (cite: 2011MNRAS.416.1267M) obtained a lower limit for the enclosed mass of about 3 $\rm \times10^{9}M_{\odot}$." (The total mass of D1 estimated from CO and HI observations) [from (cite: 2011MNRAS.416.1267M)]
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: _not stated_
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: ALMA primary beam corrected image files available online were used directly; EVLA calibrated with CASA pipeline; VLBI and historical VLA calibrated in AIPS  
+  > "we then extracted the CO (3-2) and HCO+ (4-3) spectra at these spots from the primary beam (PB) corrected image files available online for the ALMA project 2012.1.01022.S" (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy); "The EVLA data were calibrated using the pipeline of the Common Astronomy Software Application package (cite: 2007ASPC..376..127M)." (Data reduction)
+- flux calibrator: _not stated_
+- flux scale uncertainty: _not stated_
+- self calibration: Phase-only self-calibration performed on EVN 2005Jun08 peak line channel; no self-calibration conducted for other continuum and line emission projects  
+  > "We have cleaned the brightest region in this peak line channel image (V $\sim$ 10886 km s$^{-1}$) and use these clean models to calibrate the data (phase-only self-calibration) prior to making all the channel images" (Data reduction); "We conduct no self-calibration for other continuum and line emission projects." (Data reduction)
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: _not stated_
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: _not stated_
+- line free channels: _not stated_
+- primary beam correction: Used primary beam (PB) corrected image files available online for ALMA project 2012.1.01022.S  
+  > "we then extracted the CO (3-2) and HCO+ (4-3) spectra at these spots from the primary beam (PB) corrected image files available online for the ALMA project 2012.1.01022.S" (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy)
+- array combination: _not stated_
+- smoothing: Multi-band VLA continuum images remade with the same cell size and restored to a beam of 2" x 2" (and 1" for 3 and 9 GHz spectral index maps)  
+  > "We have remade these images with the same cell size and restored the beam to be 2" $\times$ 2" (cite: 2015A&A...574A...4V)." (Data reduction); "Second, we restored the images at 3 and 9 GHz to a beam size of 1" (comparable to the default beam of VLA-B observations at 9 GHz" (Discussion, The radio continuum)
+- final beam: ALMA CO(3-2): 0.20" x 0.17", PA -54 deg; ALMA HCO+(4-3): 0.19" x 0.16", PA -55 deg  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1); "2015Jul16 | 343.9 | HCO+ (4-3) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.19$\times$0.16 | -55 | 1.92" (Table 1)
+- final rms: ALMA CO(3-2): 1.91 mJy/beam; ALMA HCO+(4-3): 1.92 mJy/beam  
+  > "2015Jul16 | 333.3 | CO (3-2) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.20$\times$0.17 | -54 | 1.91" (Table 1); "2015Jul16 | 343.9 | HCO+ (4-3) | ALMA | J2051+1743 | 2012.1.01022.S | 5.4 | 0.19$\times$0.16 | -55 | 1.92" (Table 1)
+
+### Inherited from earlier work
+
+- Phase-only self-calibration procedure on the peak line channel of EVN project EK020  
+  > "which is similar to the self-calibration procedure performed by (cite: 2010PhDT.......280C) for this project." (Data reduction) [from (cite: 2010PhDT.......280C)]
+- Restoring multi-band VLA images to common beam size and constructing spectral index (alpha) maps to classify LIRGs  
+  > "We have remade these images with the same cell size and restored the beam to be 2" $\times$ 2" (cite: 2015A&A...574A...4V)." (Data reduction); "Following the methods as descripted in (cite: 2015A&A...574A...4V), we have constructed the $\alpha$-maps (see Fig. [10](#359))." (The radio continuum) [from (cite: 2015A&A...574A...4V)]
+- CO-to-H2 conversion factor X_CO = 0.4 x 10^20 cm^-2 (K km s^-1)^-1 and H2 mass formula  
+  > "The $\rm H_{2}$ masses can be derived from CO (1-0) fluxes detected by the interferometer with the following equation (cite: 2017ApJ...836..130R; 1991ApJ...370..172P):" (The total mass of D1 estimated from CO and HI observations); "We adopted the $\rm X_{CO}$ = 0.4 $\times$ $10^{20}$ $\rm cm^{-2}$ $(K km^{-1})^{-1}$ for starburst galaxies and ULIRGs used in (cite: 2017ApJ...836..130R; 1998ApJ...507..615D)" (The total mass of D1 estimated from CO and HI observations) [from (cite: 2017ApJ...836..130R; 1991ApJ...370..172P; 1998ApJ...507..615D)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Exact aperture sizes and shapes used to extract CO(3-2) and HCO+(4-3) spectra for the regions DP1-DP6 and Reg. 1-6 (whether single-beam or integrated over a specific aperture)
+- CASA version and pipeline version used for EVLA data reduction and imfit analysis
+- Cell sizes and weighting schemes used in DIFMAP when imaging EVN, VLBA, and VLA datasets
+- Coordinates of the double-peak regions DP1-DP6 in Table 2 and Table 4
+
+## Analysis recipe
+
+1. **Calibrate and image EVN OH spectral-line data and combine two epochs**: Calibrate VLBI data in AIPS, perform phase-only self-calibration on the 2005Jun08 peak channel (V ~ 10886 km s^-1), image channels in DIFMAP, average 3-sigma signals over elliptical regions for OH1 and OH2, and combine the two EVN epochs with AIPS DBCON to detect OH 1665 MHz.  
+  > "We imported all the calibrated data into the DIFMAP package (cite: 1997ASPC..125...77S) to obtain the continuum and spectral line (OH and H I) channel images." (Data reduction); "we have investigated the integrated OH 1667 line spectrum by averaging the 3 $\sigma$ signals from each channel image over two elliptical regions for OH1 and OH2" (Two epoch EVN results of OH megamaser emission); "we have averaged the channels for this line emission (V $\sim$ 11080-11320 km s$^{-1}$, see Fig. [2](#evnspectrum)) and combined the calibrated data from the two EVN projects (using task "DBCON" in AIPS)." (Two epoch EVN results of OH megamaser emission)
+   - software: AIPS, DIFMAP
+   - parameter: OH 1667 MHz averaged over 10750 to 10950 km s^-1; OH 1665 MHz averaged over 11080 to 11320 km s^-1  
+  > "We have also averaged the channels of OH 1667 MHz line emission from 10750 to 10950 km s$^{-1}$" (Two epoch EVN results of OH megamaser emission); "we have averaged the channels for this line emission (V $\sim$ 11080-11320 km s$^{-1}$, see Fig. [2](#evnspectrum))" (Two epoch EVN results of OH megamaser emission)
+   - assumption: VLBI calibration error is ~10% of the measured flux  
+  > "the VLBI calibration error ($\sim$10% of the measured flux): $\sqrt{(N \times \sigma)^{2}+(0.1 \times S_{peak})^2}$" (Two epoch EVN results of OH megamaser emission)
+   - fitting: Gaussian model fitting to spectral line profiles (Table 2)  
+  > "Columns (4)-(7) The Gaussian fitted model parameters" (Table 2)
+   - validation: Compared integrated EVN OH line profiles with Arecibo single-dish observations and compared two epochs for variability  
+  > "We can see that the detected OH line profiles are partly resolved and consistent with the Arecibo observations." (Two epoch EVN results of OH megamaser emission)
+2. **Extract and fit ALMA CO (3-2) and HCO+ (4-3) spectra and map velocity structures**: Extract CO (3-2) and HCO+ (4-3) spectra from archival primary-beam corrected ALMA image cubes at selected optical spots, six regions around D1, and double-peak regions, fit Gaussian profiles, and construct velocity maps.  
+  > "we then extracted the CO (3-2) and HCO+ (4-3) spectra at these spots from the primary beam (PB) corrected image files available online for the ALMA project 2012.1.01022.S" (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy); "We further extracted the CO spectra from six regions around D1" (Results, The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy)
+   - parameter: Central region around D1 size ~ 400 mas  
+  > "We have found that the CO and HCO+ line profiles extracted at the central region around D1 (with a size of $\sim$ 400 mas) all show broad FWHM (\> 100 km s$^{-1}$) features" (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy)
+   - fitting: Gaussian profile fitting to extracted CO and HCO+ spectra (Tables 2 and 4)  
+  > "Columns (3)-(6) The Gaussian-fitted model parameters." (Table 4)
+   - validation: _not stated_
+3. **Extract and fit VLA HI emission and absorption spectra**: Image VLA-C HI data in DIFMAP, extract integrated HI spectra over a 70" x 70" region and individual spots, and fit Gaussian components.  
+  > "The majority of the H I emission (3 $\sigma$) for IIZw 096 is distributed in a region with a size of about 70"$\times$70" (see Fig. [6](#vlaHI))" (The H I emission from VLA project AG0613 (see Table [vlbilist])); "Columns (3)-(6) The Gaussian-fitted model parameters." (Table 5)
+   - software: AIPS, DIFMAP
+   - parameter: 70" x 70" region for total HI spectrum  
+  > "The majority of the H I emission (3 $\sigma$) for IIZw 096 is distributed in a region with a size of about 70"$\times$70"" (The H I emission from VLA project AG0613 (see Table [vlbilist]))
+   - fitting: Gaussian profile fitting to HI spectra (Tables 2 and 5)  
+  > "Columns (3)-(6) The Gaussian-fitted model parameters." (Table 5)
+   - validation: Compared integrated VLA HI spectrum with Arecibo observations and absorption with GMRT observations  
+  > "the integrated H I spectrum in this region (see Fig. [7](#HItotal)) agrees well with the H I spectrum from Arecibo observations by (cite: 2015MNRAS.447.1531C)." (The H I emission from VLA project AG0613 (see Table [vlbilist])); "The H I gas in absorption is detected only corresponding to the D1 component (see Fig. [7](#HItotal)), and this result is consistent with the GMRT observations made by (cite: 2019MNRAS.489.1099D)." (The H I emission from VLA project AG0613 (see Table [vlbilist]))
+4. **Derive H2 and HI gas masses, gas surface density, and volume density**: Calculate H2 mass from integrated CO(3-2) line flux converted to CO(1-0), calculate HI mass from integrated HI flux assuming optically thin emission, and compute gas surface density and H2 number density in the central beam.  
+  > "The $\rm H_{2}$ masses can be derived from CO (1-0) fluxes detected by the interferometer with the following equation (cite: 2017ApJ...836..130R; 1991ApJ...370..172P):" (The total mass of D1 estimated from CO and HI observations); "In the optically thin case, the H I mass ($\rm M_{HI}$) can be derived from the integrated line flux with the equation: $\rm M_{HI}=2.36\times10^{5}\rm d^{2}_{Mpc}\int S_{Jy}\, d\upsilon$" (The total mass of D1 estimated from CO and HI observations); "We have calculated the n($\rm H_{2}$) using the following assumptions, n($\rm H_{2}$) = $\rm \frac{M(H_{2})}{m(H_{2}) \times V}$ is about 4$\times$ $10^{4}$$\rm cm^{-3}$" (Comparison with a general picture of OH megamaser emission)
+   - parameter: Beam size 0.2" x 0.16" (~134 pc x 107 pc, ~130 pc diameter) for CO; 19.7" x 17.9" (~13.2 kpc x 12.0 kpc) for HI  
+  > "the derived $\rm M(H_{2})$ is about 2.5$\times$ $10^{9}$ $\rm M_{\odot}$ in one beam with size of 0.2" $\times$ 0.16" ($\sim$ 134 pc $\times$ 107 pc)." (The total mass of D1 estimated from CO and HI observations); "whereby the H I mass are about 1.6$\times$ $10^{9}$ $\rm M_{\odot}$ in one beam with a size of 19.7" $\times$ 17.9" ($\sim$ 13.2 kpc $\times$ 12.0 kpc)." (The total mass of D1 estimated from CO and HI observations)
+   - assumption: CO(3-2)/CO(1-0) line ratio = 0.51; X_CO = 0.4 x 10^20 cm^-2 (K km s^-1)^-1; distance d_Mpc = 148 Mpc; optically thin HI emission  
+  > "The CO(3–2)/CO(1–0) line ratio is about 0.51 for this galaxy (cite: 2010MNRAS.406.1364L)" (The total mass of D1 estimated from CO and HI observations); "We adopted the $\rm X_{CO}$ = 0.4 $\times$ $10^{20}$ $\rm cm^{-2}$ $(K km^{-1})^{-1}$ for starburst galaxies and ULIRGs" (The total mass of D1 estimated from CO and HI observations); "The $\rm d_{Mpc}$ is about 148 Mpc for this source" (The total mass of D1 estimated from CO and HI observations)
+   - fitting: _not stated_
+   - validation: Compared derived H2 and HI masses with optical H-band mass and MERLIN dynamical mass estimates from the literature  
+  > "All the above four estimated masses through different methods indicate that there is a massive mass of about $10^{9}$ $\rm M_{\odot}$ concentrated in the central region of D1." (The total mass of D1 estimated from CO and HI observations)
+5. **Measure multi-band radio continuum fluxes, fit radio SEDs, estimate brightness temperature, and construct spectral index maps**: Restore multi-band VLA images to 2" x 2" beam, measure total and peak flux densities of comp D and A with CASA imfit, fit radio SEDs with single power-law and mixed thermal+non-thermal models, model-fit 33 GHz VLA-A visibility data and VLBA upper limits to derive brightness temperature T_b, and construct spectral index (alpha) maps at 2" and 1" resolution.  
+  > "by fitting with a single component using task "imfit" in the CASA package." (Data reduction); "We have used two models, one employs a single power-law and the other uses a mixed equation of single power-law and free-free emission ($S_{th}$$\times$ $\nu$$^{-0.1}$+$S_{nth}$ $\times$ $\nu$ $^{-\alpha}$), to fit the radio spectra." (The high-resolution radio continuum emission); "Following the methods as descripted in (cite: 2015A&A...574A...4V), we have constructed the $\alpha$-maps (see Fig. [10](#359))." (The radio continuum)
+   - software: CASA, DIFMAP
+   - parameter: Restored beam 2" x 2" for SED flux measurements and 1.4/3/9 GHz alpha-map; 1" beam for 3/9 GHz alpha-map; spectral index threshold alpha = 1.1  
+  > "We have remade these images with the same cell size and restored the beam to be 2" $\times$ 2" (cite: 2015A&A...574A...4V)." (Data reduction); "Second, we restored the images at 3 and 9 GHz to a beam size of 1"" (The radio continuum)
+   - assumption: For 33 GHz T_b calculation, assumed the flux density of the fitted component can also be obtained at 1.4 GHz with the same component size  
+  > "Assuming the flux density of the fitted component can also be obtained at 1.4 GHz with the same component size, the estimated temperature $T_{b}$ of the radio continuum emission is  1.21$\times$$10^{5}$ K." (The radio continuum)
+   - fitting: Single component image fitting via CASA imfit; visibility model-fitting of 33 GHz VLA-A data; SED fitting with power-law and mixed free-free + synchrotron models  
+  > "by fitting with a single component using task "imfit" in the CASA package." (Data reduction); "and model-fitted the visibility data." (Discussion, The radio continuum)
+   - validation: _not stated_
+
+## Software
+
+- **AIPS** : Calibration of VLBI (EVN and VLBA) and historical VLA data, and combining two EVN epochs using task DBCON  
+  > "The VLBI data (EVN and VLBA) were calibrated using the NRAO Astronomical Image Processing System (AIPS) package." (Data reduction); "The calibration of historical VLA data was done in AIPS following standard procedures." (Data reduction); "combined the calibrated data from the two EVN projects (using task "DBCON" in AIPS)." (Two epoch EVN results of OH megamaser emission)
+- **CASA** : Pipeline calibration of EVLA data and measuring continuum flux densities and uncertainties of comp D and A using task imfit  
+  > "The EVLA data were calibrated using the pipeline of the Common Astronomy Software Application package (cite: 2007ASPC..376..127M)." (Data reduction); "by fitting with a single component using task "imfit" in the CASA package." (Data reduction)
+- **DIFMAP** : Imaging continuum and spectral line (OH and HI) channel images and performing phase-only self-calibration on EVN data  
+  > "We imported all the calibrated data into the DIFMAP package (cite: 1997ASPC..125...77S) to obtain the continuum and spectral line (OH and H I) channel images." (Data reduction)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| OH 1665 MHz peak flux density at OH1 | 0.42 | not stated (6 sigma detection) | mJy/beam | 1 | As a result, the OH 1665 MHz line emission is detected at 6 $\sigma$ level with a peak of about 0.42 mJy/beam distributed at the OH1 region |
+| OH 1667 MHz Gaussian amplitude (2005-OH1) | 21 | 3 | mJy | 1 | OH1667 / 2005-OH1 / 205724.375+170739.144 / 21 $\pm$ 3 / 10887 $\pm$ 1 / 67 $\pm$ 2 / 1429 $\pm$ 220 |
+| OH 1667 MHz Gaussian amplitude (2010-OH1) | 25 | 4 | mJy | 1 | 2010-OH1 / 205724.375+170739.145 / 25 $\pm$ 4 / 10884 $\pm$ 1 / 53 $\pm$ 1 / 1359 $\pm$ 198 |
+| CO (3-2) peak amplitude at D1 | 153 | 1 | mJy/beam | 2 | CO / D1: / 205724.372+170739.221 / 153 $\pm$ 1$^{b}$ / 10888 $\pm$ 1 / 179 $\pm$ 1 / 29176 $\pm$ 155$^{b}$ |
+| CO (3-2) integrated Gaussian area at D1 | 29176 | 155 | mJy/beam*km s^-1 | 2 | CO / D1: / 205724.372+170739.221 / 153 $\pm$ 1$^{b}$ / 10888 $\pm$ 1 / 179 $\pm$ 1 / 29176 $\pm$ 155$^{b}$ |
+| CO (3-2) Gaussian FWHM at D1 | 179 | 1 | km s^-1 | 2 | CO / D1: / 205724.372+170739.221 / 153 $\pm$ 1$^{b}$ / 10888 $\pm$ 1 / 179 $\pm$ 1 / 29176 $\pm$ 155$^{b}$ |
+| HCO+ (4-3) peak amplitude at D1 | 27 | 1 | mJy/beam | 2 | D1 / 205724.372+170739.221 / 27 $\pm$ 1$^{b}$ / 10880 $\pm$ 2 / 196 $\pm$ 4 / 5509 $\pm$ 102$^{b}$ |
+| HCO+ (4-3) integrated Gaussian area at D1 | 5509 | 102 | mJy/beam*km s^-1 | 2 | D1 / 205724.372+170739.221 / 27 $\pm$ 1$^{b}$ / 10880 $\pm$ 2 / 196 $\pm$ 4 / 5509 $\pm$ 102$^{b}$ |
+| H2 mass of D1 in one beam | 2.5e9 | not stated | M_sun | 4 | the derived $\rm M(H_{2})$ is about 2.5$\times$ $10^{9}$ $\rm M_{\odot}$ in one beam with size of 0.2" $\times$ 0.16" ($\sim$ 134 pc $\times$ 107 pc). |
+| H2 mass of B0 in one beam | 1.6e8 | not stated | M_sun | 4 | the central mass in one beam for B0 and A0 are about 1.6$\times$ $10^{8}$ and 2.0$\times$ $10^{7}$ $\rm M_{\odot}$, respectively |
+| H2 mass of A0 in one beam | 2.0e7 | not stated | M_sun | 4 | the central mass in one beam for B0 and A0 are about 1.6$\times$ $10^{8}$ and 2.0$\times$ $10^{7}$ $\rm M_{\odot}$, respectively |
+| HI mass of D1 in one beam | 1.6e9 | not stated | M_sun | 4 | whereby the H I mass are about 1.6$\times$ $10^{9}$ $\rm M_{\odot}$ in one beam with a size of 19.7" $\times$ 17.9" ($\sim$ 13.2 kpc $\times$ 12.0 kpc). |
+| Total HI mass of IIZw 096 | 1.2e10 | not stated | M_sun | 4 | is about 1.2$\times$ $10^{10}$ $\rm M_{\odot}$ for the total H I mass in IIZw 096. |
+| Gas surface density of D1 | 2e5 | not stated | M_sun pc^-2 | 4 | Based on the derived $\rm M(H_{2})$ and the physical size of one beam from CO (3-2) line observation (see the third estimation), the surface density is estimated to be about 2 $\times$ $10^{5}$ $\rm M_{\odot}$ $\rm pc^{-2}$ |
+| Molecular gas number density n(H2) in D1 central region | 4e4 | not stated | cm^-3 | 4 | We have calculated the n($\rm H_{2}$) using the following assumptions, n($\rm H_{2}$) = $\rm \frac{M(H_{2})}{m(H_{2}) \times V}$ is about 4$\times$ $10^{4}$$\rm cm^{-3}$ |
+| Spatial offset between OH emission regions (OH1, OH2) and 33 GHz continuum center | 50-76 | not stated | mas | 5 | while the two OH emission regions (OH1 and OH2) arise from a location about 50-76 mas to the center of the 33 GHz emission (see Fig. [9](#cohcooh33)). |
+| Radio continuum brightness temperature T_b of comp D | 1.21e5 to 1e6 | not stated | K | 5 | the estimated temperature $T_{b}$ of the radio continuum emission is  1.21$\times$$10^{5}$ K. The estimated upper limit $T_{b}$ from the peak flux densities of VLBA images (as shown in Fig. [20](#vlbacontinuum)) is about $10^{6}$ K. |
+
+## Qualitative findings
+
+- High-resolution OH 1667 MHz emission in IIZw 096 mainly comes from two spots (OH1 and OH2) in component D1, showing no significant variations in flux densities or peak positions between 2005 and 2010.  
+  > "we confirm that the high-resolution OH emission in this source mainly comes from two spots (OH1 and OH2) of comp D1 of this merging system. We found no significant variations in the OH 1667 MHz line emission, including flux densities and peak positions." (abstract)
+- Component D1 exhibits the brightest CO (3-2) and HCO+ (4-3) line emission as well as multi-band radio continuum emission in the merging system.  
+  > "We found that the comp D1 shows the brightest CO, HCO+ line emission, as well as multi-band radio continuum emission." (abstract)
+- The CO (3-2) emission around D1 shows three distinct velocity structures (central broad FWHM region, surrounding double-peak region, and outer high-velocity clouds around ~11000 km s^-1) and no clear velocity gradient associated with circular rotation.  
+  > "The environment around D1 shows no clear velocity structure associated with circular motions, making it different from most other OH megamasers (OHMs) in the literature" (abstract); "Meanwhile, we found that the CO emission shows three velocity structures around D1, including the central broad FWHM region, the double peak region where the CO line profile shows two separated peaks, and the region of the high-velocity clouds" (abstract)
+- Multi-band radio continuum and brightness temperature (10^5 to 10^6 K) support a starburst origin with both synchrotron and free-free emission for the OH megamasers in D1, without clear evidence for an AGN.  
+  > "The multi-band VLA observations show that the radio continuum emission of comp D might also have contributions from free-free emission, besides synchrotron emission. As a concenquence, these results support a starburst origin for the OHMs, without the presence of an AGN." (abstract)
+
+## Claim tuples
+
+- H: The high-resolution OH 1667 MHz megamaser emission in IIZw 096 originates from two compact spots (OH1 and OH2) in component D1 and may exhibit variability or proper motion between epochs. | E: Calibrated and imaged two epochs of archival EVN 1.6 GHz spectral-line observations (2005 and 2010) and combined both epochs using DBCON in AIPS. | R: OH 1667 MHz emission is confirmed in two spots (OH1 and OH2) with no significant variations in flux density or peak position between epochs; OH 1665 MHz is detected at 6 sigma (~0.42 mJy/beam) at OH1. | F: The two-component OH megamaser structure in D1 is stable over a 5-year baseline, and OH 1665 MHz is present in the brighter OH1 region. | **supported**
+- H: The OH megamasers in IIZw 096 are associated with a dense molecular gas environment and ordered circumnuclear rotation typical of OHM galaxies. | E: Analyzed archival ALMA CO(3-2) and HCO+(4-3) data and VLA HI data across IIZw 096 and around component D1. | R: D1 has the brightest CO(3-2) (153 mJy/beam) and HCO+(4-3) (27 mJy/beam) emission, yielding M(H2) ~ 2.5 x 10^9 M_sun and surface density ~ 2 x 10^5 M_sun pc^-2, with three velocity structures (broad central line, double-peak regions, and high-velocity clouds ~11000 km s^-1) and no circular rotation velocity gradient. | F: The OHMs reside in the densest gas environment (D1), but lack a rotating disk/torus velocity gradient because IIZw 096 is in an intermediate merger stage with gas inflows rather than a settled final merger core. | **partially**
+- H: The OH megamaser emission and compact radio continuum in IIZw 096 comp D1 are powered by a starburst rather than an AGN. | E: Measured multi-band VLA continuum spectra (1.4-33 GHz), fitted thermal+non-thermal SED models, constructed spectral index maps, and derived brightness temperatures from 33 GHz VLA-A and 1.5 GHz VLBA observations. | R: No VLBA continuum is detected (rms 14.8-23.2 uJy/beam); T_b is between 1.21 x 10^5 K and 10^6 K; comp D radio SED requires a mixed free-free + synchrotron model; pixels with steep spectral index (alpha > 1.1) at 1" resolution are scarce. | F: The radio continuum and OHM activity in component D1 are predominantly of starburst origin with both synchrotron and free-free emission, without the presence of a dominant radio AGN. | **supported**
+
+## Reasoning
+
+- Why this data: IIZw 096 is a rare nearby bright OHM galaxy with rich merging components and dual OH/H2O megamasers, making multi-facility high-resolution archival spectral-line (EVN, ALMA, VLA) and continuum (VLA, VLBA) observations ideal for studying the OHM structure and its dense gas and merging environment.  
+  > "IIZw 096 is one of the few bright OHM galaxies in OH 1667 MHz line emission, potentially observable for a detailed study of compact megamasers with high-resolution spectral-line VLBI observations." (Introduction); "It is likely to be a rare nearby example potentially for studying the environment around the OH megamaser emission regions." (Introduction)
+- Why this method: High-resolution radio structure, brightness temperature (T_b), multi-band radio SED modeling (synchrotron + free-free), and spectral index maps (alpha > 1.1 threshold) are effective diagnostics to distinguish AGN from starburst galaxies in LIRGs.  
+  > "Since the high-resolution radio structure and $T_{b}$ are extremely significant ways to distinguish AGN from SB galaxies (cite: 1991ApJ...378...65C), we have investigated the 33 GHz (Ka-band) VLA-A observation" (The radio continuum); "(cite: 2015A&A...574A...4V) have shown that if the starburst is situated in an HII region, the value of $\alpha$ is hardly steeper than 1.1 from the $\alpha$-map when adopting a 2 $\sigma$ uncertainty" (The radio continuum)
+- Alternative: Single power-law model for the radio continuum SED of component D was rejected in favor of a mixed free-free + synchrotron model.  
+  > "We see that the radio spectra of D cannot be well-fitted with a single power-law model; it is fitted with the mixed equation, which indicates that the source D might contain free-free emission and steep synchrotron emission." (The high-resolution radio continuum emission)
+- Alternative: Ordered circular rotating disk or torus model for the OHM and molecular gas around D1 was rejected due to the absence of a velocity gradient.  
+  > "We also found that IIZw 096 also showed no clear presence of a velocity gradient from CO and HCO+ velocity distributions around D1 (see Fig. [4](#co-hco1115))." (Comparison with a general picture of OH megamaser emission); "this specific source might still be dominated by a phase of intense merging, as seen from the optical images, rather than an ordered circumnuclear disk or torus." (Comparison with a general picture of OH megamaser emission)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Direct proof of a supermassive black hole requires very high angular resolution probing close to the Schwarzschild radius, which is difficult to establish.  
+  > "The direct proof of the existence of a super-massive black-hole requires very high angular resolution to probe close to the Schwarzschild radius, which has been difficult to establish (cite: 2005ARA&A..43..625L)." (The total mass of D1 estimated from CO and HI observations)
+- Limitation (authors): The high gas surface density in D1 leaves open the possibility of an obscured AGN, and a few scarce pixels in the 1" spectral index map have alpha > 1.1.  
+  > "Meanwhile, the excessive-high gas surface density is also consistent with the view that there is a possibility it also hosts an obscured AGN" (The total mass of D1 estimated from CO and HI observations); "Although this might be a sign of the possible existence of radio AGN in the central region, the number of pixels with $\alpha$ \>1.1 is scarce" (The radio continuum)
+- Caveat (inferred, ours): ALMA data were not re-imaged or continuum-subtracted by the authors; they relied directly on online archival primary-beam corrected FITS cubes from project 2012.1.01022.S.
+- Caveat (inferred, ours): The 33 GHz brightness temperature estimate (1.21 x 10^5 K) assumes the 33 GHz component flux density and size apply directly at 1.4 GHz, which ignores spectral slope and free-free absorption effects.
+- Caveat (inferred, ours): Exact coordinates for the double-peak CO regions (DP1-DP6) are omitted from Tables 2 and 4.
+
+## Reproducibility
+
+- Data public (paper): All datasets (EVN, VLBA, VLA, ALMA) are archival; ALMA primary beam corrected image files are stated to be available online.  
+  > "We have collected the archival radio data from EVN, VLBA, VLA, and ALMA." (The archival radio data); "we then extracted the CO (3-2) and HCO+ (4-3) spectra at these spots from the primary beam (PB) corrected image files available online for the ALMA project 2012.1.01022.S" (The high-resolution CO (3-2) and HCO+ (4-3) line emission of this galaxy)
+- Products in archive: _not stated_
+- Missing: Exact J2000 coordinates and aperture sizes for CO double-peak regions DP1-DP6
+- Missing: Exact elliptical region parameters used to integrate EVN OH1 and OH2 spectra
+- Missing: Software Versions for CASA, AIPS, and DIFMAP
+- Missing: Best-fit parameter values (S_th, S_nth, alpha) for the multi-band radio continuum SED fits of components D and A
+- Data volume (inferred): moderate (~10-50 GB across archival ALMA cubes and multi-epoch VLA/VLBI datasets, or <5 GB if using only archival ALMA FITS cubes)
+- Score (inferred): 70/5, All data are public archival products and the ALMA analysis directly uses online primary-beam corrected archive cubes with standard Gaussian fitting and analytic mass formulas, with target coordinates tabulated for most spots (except DP1-DP6).
+- Rediscovery candidate: yes, The ALMA portion uses standard archival PB-corrected FITS cubes for project 2012.1.01022.S, gives exact J2000 coordinates for D1, A0, B0, C0, and Reg. 1-6, and reports concrete Gaussian line fits and analytic H2 mass/density values that can be directly reproduced.
+
+## Links
+
+- Method: (cite: 2015A&A...574A...4V) (Method for restoring multi-band VLA images to common resolution and constructing spectral index (alpha) maps to classify radio-AGN vs radio-SB)
+- Method: (cite: 2017ApJ...836..130R; 1991ApJ...370..172P; 1998ApJ...507..615D) (Formula and CO-to-H2 conversion factor X_CO used to derive molecular gas mass from CO observations)
+- Method: (cite: 2010PhDT.......280C) (Self-calibration and analysis procedure for the first epoch EVN OH observation (EK020))
+
+## Checks
+
+```json
+{
+ "quotes": 143,
+ "quotes_ok": 143,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 3,
+ "unsupported_facts": 0,
+ "project_codes": 1,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 17,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 91,
+  "stated": 63,
+  "rate": 0.692
+ },
+ "evidence_ok": true
+}
+```

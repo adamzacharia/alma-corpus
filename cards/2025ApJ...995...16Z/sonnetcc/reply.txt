@@ -1,0 +1,307 @@
+{
+"depth": "light",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "including 1.3 mm (ALMA band 6) fluxes from the literature"}
+],
+"fields": ["protoplanetary_disks", "star_formation"],
+"question": {
+"value": "Measure dust masses of 178 T Tauri disks in Serpens and L1641/L1647 with SED modeling and compare with optically thin millimeter-flux masses",
+"evidence": [
+{"loc": "abstract", "quote": "We analyze 178 T-Tauri stars, 18 in Serpens and 160 in L1641/L1647, and measure their disk dust masses using spectral energy distribution (SED) modeling and multiwavelength data, including 1.3 mm (ALMA band 6) fluxes from the literature."}
+]
+},
+"targets": [
+{
+"name": "Serpens sample (18 modeled T Tauri disks)",
+"details": [
+{"loc": "1 Introduction", "quote": "We use ALMA 1.3 mm continuum observations from the Serpens star-forming region"},
+{"loc": "3.2.1 The model", "quote": "distances derived from parallaxes"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "per-source Gaia DR3 parallaxes (Table 1)",
+"distance_source": "Gaia DR3 parallaxes"
+},
+{
+"name": "L1641/L1647 sample (160 modeled T Tauri disks, Orion A)",
+"details": [
+{"loc": "1 Introduction", "quote": "the Orion A cloud in the L1641 and L1647 regions"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "per-source Gaia DR3 parallaxes",
+"distance_source": "Gaia DR3 parallaxes"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.00218.S", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2019.1.00218.S and ADS/JAO.ALMA#2019.1.01813.S."}]},
+{"code": "2019.1.01813.S", "evidence": [{"loc": "Acknowledgments", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2019.1.00218.S and ADS/JAO.ALMA#2019.1.01813.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (1.3 mm)", "evidence": [{"loc": "abstract", "quote": "including 1.3 mm (ALMA band 6) fluxes from the literature"}]},
+{"field": "frequencies_and_spectral_setup", "value": "1.3 mm band centered at 241.1 GHz (Serpens) and 225 GHz (L1641/L1647)", "evidence": [{"loc": "2 Sample selection", "quote": "use the ALMA 1.3 mm band (centered at 241.1 GHz and 225 GHz, respectively)"}]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA 1.3 mm fluxes taken from published surveys (Anderson et al. 2022; van Terwisga et al. 2022); no data reduction done here", "evidence": [{"loc": "abstract", "quote": "including 1.3 mm (ALMA band 6) fluxes from the literature"}]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{"name": "Spitzer IRS (CASSIS)", "provided": {"value": "low-resolution mid-IR spectra used in the SED fits", "evidence": [{"loc": "1 Introduction", "quote": "Infrared Spectrograph (IRS) spectra from CASSIS"}]}},
+{"name": "VizieR multiwavelength photometry (including 2MASS, WISE/c2d)", "provided": {"value": "broad-band photometry compiled for each SED", "evidence": [{"loc": "3.1 SEDs", "quote": "We compile the SEDs using multiwavelength photometry gathered for each object from the Vizier catalog access tool"}]}},
+{"name": "Gaia DR3", "provided": {"value": "parallaxes (distances) and, for some sources, Teff and Av from GSP-Phot", "evidence": [{"loc": "Table 1 notes", "quote": "derived values from GSP-Phot using BP/RP spectra"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "ALMA 1.3 mm continuum fluxes for Serpens and L1641/L1647 disks", "evidence": [{"loc": "abstract", "quote": "including 1.3 mm (ALMA band 6) fluxes from the literature"}]}, "citation": "Anderson et al. 2022 (cite: 2022Anderson); van Terwisga et al. 2022 (cite: 2022vanTerwisga)"},
+{"what": {"value": "Stellar parameters (spectral type, Teff, Av, L*, M*, R*) used as priors", "evidence": [{"loc": "Table 1 notes", "quote": "Additional parameters are obtained from various sources as follows"}, {"loc": "A Sample selection criteria", "quote": "These are all parameters later used as priors for the ANN."}]}, "citation": "Oliveira et al. 2009, 2013; Erickson et al. 2015 and others for Serpens; Fang, Hsu, Da Rio, Kounkel, Kim, Yao and others for L1641/L1647"},
+{"what": {"value": "SED model results for 41 L1641 sources", "evidence": [{"loc": "3 Analysis and Results", "quote": "we incorporate their model results here"}]}, "citation": "Rilinger et al. 2023 (cite: 2023Rilinger)"},
+{"what": {"value": "SED-model dust masses and flux-based masses for 10 other star-forming regions used for comparison", "evidence": [{"loc": "4.2 Comparison of Serpens & L1641/L1647 with other Star-Forming Regions", "quote": "Here, we compare the results obtained for Serpens and L1641/L1647 with the 10 other star-forming regions studied in (cite: 2023Rilinger)."}]}, "citation": "Rilinger et al. 2023 (cite: 2023Rilinger)"},
+{"what": {"value": "Masses of confirmed exoplanets", "evidence": [{"loc": "4.3 The missing mass problem", "quote": "The masses of presently known and confirmed exoplanets were gathered from the"}]}, "citation": "NASA Exoplanet Archive"}
+],
+"simulations_or_models_as_data": [
+{"value": "D'Alessio Irradiated Accretion Disk (DIAD) models, emulated by an ANN trained on them (Ribas et al. 2020)", "evidence": [{"loc": "3.2.1 The model", "quote": "the ANN takes a few milliseconds to evaluate the SEDs, compared to the 1-2 hours that the DIAD models require"}]}
+],
+"calibration": [],
+"imaging": [],
+"inherited": [
+{"what": {"value": "SED model: ANN trained on DIAD models, model description and steps", "evidence": [{"loc": "3.2.1 The model", "quote": "We direct the reader to Section 4 and Figure 2 of (cite: 2020Ribas) for a detailed description of the model"}]}, "from_reference": "(cite: 2020Ribas)"},
+{"what": {"value": "Bayesian approach for posterior estimation", "evidence": [{"loc": "3.2 SED modeling", "quote": "We follow a Bayesian approach as detailed in (cite: 2020Ribas) and (cite: 2023Xin)"}]}, "from_reference": "(cite: 2020Ribas); (cite: 2023Xin)"},
+{"what": {"value": "Likelihood functions", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "Following (cite: 2023Rilinger), we adopted the likelihood functions from (cite: 2020Ribas) and (cite: 2023Xin)"}]}, "from_reference": "(cite: 2023Rilinger); (cite: 2020Ribas); (cite: 2023Xin)"},
+{"what": {"value": "Mixture-model treatment of outlier photometry and scaling of uncertainties by parameter f", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "(cite: 2023Xin) employed a mixture model approach, following the methodology described by (cite: 2010Hogg)."}]}, "from_reference": "(cite: 2023Xin); (cite: 2010Hogg)"},
+{"what": {"value": "Minimum Teff uncertainty of 100 K", "evidence": [{"loc": "2 Sample selection", "quote": "we adopted an uncertainty of 100 K for those objects with reported uncertainties below 100 K, following (cite: 2020Ribas)"}]}, "from_reference": "(cite: 2020Ribas)"},
+{"what": {"value": "L* and M* estimation with the MassAge code", "evidence": [{"loc": "Table 1 notes", "quote": "estimated here using the MassAge code following (cite: 2023Hernandez)"}]}, "from_reference": "(cite: 2023Hernandez)"},
+{"what": {"value": "Extinction law applied to model SEDs", "evidence": [{"loc": "3.2.1 The model", "quote": "applying the (cite: 2009McClure) extinction law (cite: 2017Ribas)"}]}, "from_reference": "(cite: 2009McClure); (cite: 2017Ribas)"},
+{"what": {"value": "Dust opacity law used for flux-based masses", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "we adopt $\\kappa_{\\nu} = (\\nu/100$ GHz) (cite: 1990Bekwith) resulting in $2.41\\ cm^2g^{-1}$ while assuming $\\beta = 1$"}]}, "from_reference": "following (cite: 2022Anderson)"},
+{"what": {"value": "Flux-weighted mean optical depth methodology", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "Following the same methodology detailed in (cite: 2023Xin), we used the median values obtained from the ANN as input parameters"}]}, "from_reference": "(cite: 2023Xin)"},
+{"what": {"value": "Exoplanet-systems CDF selection (systems with at least one planet above 0.3 M_Jup)", "evidence": [{"loc": "4.3 The missing mass problem", "quote": "Following the methodology detailed in (cite: 2020Tychoniec), we restrict our sample to only systems containing at least one planet with a total mass"}]}, "from_reference": "(cite: 2020Tychoniec)"}
+],
+"unstated_but_needed": [
+"The ANN weights and code of Ribas et al. 2020 and the DIAD model grid ranges are needed but only referenced, not given here",
+"MCMC settings for ptemcee (walkers, temperatures, steps, burn-in, convergence test) are not stated",
+"Prior ranges for all flat priors and the exact scale of the Gaussian priors beyond centre/width are not stated",
+"The ALMA 1.3 mm flux values and uncertainties per source are not tabulated in this paper; they must be taken from the cited surveys",
+"The list of photometric catalogs per source is only in a table not included in the text; flux and error handling per catalog is not stated",
+"Criteria used to judge a fit successful or unsuccessful are qualitative and not defined",
+"Which 10% of the L1641/L1647 sample is plotted in the optical-depth figure is not stated",
+"How the 7 mm optical depths were computed (same procedure as 1.3 mm at a different wavelength) is only implied"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "select the disk sample from ALMA 1.3 mm surveys",
+"method": {"value": "Apply a series of cuts (Class II, ALMA detection, photometry coverage, no TD/flat/binary, Gaia astrometric quality, T Tauri mass range, literature stellar parameters) to the Serpens and L1641/L1647 survey samples", "evidence": [{"loc": "2 Sample selection", "quote": "The original sample of 320 Serpens sources (cite: 2022Anderson) comes down to 23 objects, and the 873 L1641/L1647 sources (cite: 2022vanTerwisga) to 188 objects after considering several criteria."}]},
+"software": [],
+"key_parameters": [
+{"value": "ALMA detections of at least 3 sigma", "evidence": [{"loc": "2 Sample selection", "quote": "Only sources with ALMA detections of at least 3$\\sigma$ were included."}]},
+{"value": "parallax error below 20% and RUWE < 1.4", "evidence": [{"loc": "A Sample selection criteria", "quote": "We apply two criteria for good astrometric fits: a parallax error below 20$\\%$, and a RUWE $<$1.4."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "compile multiwavelength SEDs",
+"method": {"value": "Gather photometry from VizieR with a 2 arcsec search radius and add Spitzer IRS spectra from CASSIS where available", "evidence": [{"loc": "3.1 SEDs", "quote": "We compile the SEDs using multiwavelength photometry gathered for each object from the Vizier catalog access tool (cite: 2000Vizier), using a search radius of 2"}]},
+"software": ["VizieR", "CASSIS"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "fit SEDs with ANN-based DIAD models using MCMC",
+"method": {"value": "Bayesian MCMC fit with an ANN emulating DIAD disk models; parallel-tempering ptemcee sampler", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "We implement a Bayesian analysis framework as a Markov Chain Monte Carlo (MCMC) fitting process to probe the large parameter space and estimate posterior distributions for the model parameters."}]},
+"software": ["ptemcee", "emcee", "ANN of Ribas et al. 2020", "DIAD", "MIST"],
+"key_parameters": [
+{"value": "17 free parameters in total (13 model parameters plus 4 outlier/systematic-uncertainty parameters)", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "This results in a total of 17 free parameters, which are varied during the fitting to compute posterior probability distributions."}]},
+{"value": "photometry split into critical (2MASS and ALMA) and general (all other) groups", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "critical: includes 2MASS and ALMA photometry"}]},
+{"value": "Gaussian priors on M* and parallax centred on literature values; flat priors where literature values are absent", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "using their values as the centers and their uncertainties as the standard deviations, while flat priors are used when literature values are absent (e.g., inclination)."}]}
+],
+"assumptions": [
+{"value": "Dust composition and gas-to-dust ratio fixed; disk substructures not modeled", "evidence": [{"loc": "3.2.1 The model", "quote": "Some physical properties remain fixed (e.g. dust composition, gas-to-dust ratio) or not considered in the modeling"}]}
+],
+"fitting": {"value": "Gaussian likelihoods for critical photometry, IRS spectra, T* and R*; mixture model for general photometry; ptemcee sampler; Gaussian and flat priors", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "Four standard Gaussian likelihood functions are used, each for the critical photometry data, the spectral data (i.e., IRS Spectra)"}]},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "reject poorly fitted sources",
+"method": {"value": "Visual judgement of model fits reduces 211 sources to 178 (18 Serpens, 160 L1641/L1647)", "evidence": [{"loc": "3 Analysis and Results", "quote": "We end with the resulting model fits and further reduce our sample to 178 sources (18 from Serpens and 160 from L1641/L1647) based on the quality of the fits."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "check posteriors against literature stellar parameters",
+"method": {"value": "Compare M*, R*, parallax and Teff posteriors with the literature values used as priors", "evidence": [{"loc": "3.3 Model results", "quote": "is conducted to validate the robustness of the ANN fitting methodology"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Posteriors consistent with literature stellar parameters", "evidence": [{"loc": "B Priors vs Posteriors", "quote": "are in general consistent with literature measurements"}]}
+},
+{
+"order": 6,
+"goal": "recompute flux-based dust masses",
+"method": {"value": "Optically thin Hildebrand equation applied to the literature 1.3 mm fluxes with Gaia DR3 distances", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "is the Planck function evaluated at the dust temperature"}]},
+"software": [],
+"key_parameters": [
+{"value": "Td = 20 K constant, flux at 1.3 mm (241 GHz), kappa = 2.41 cm^2 g^-1 with beta = 1", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "which is typically assumed to be constant with a value of $T_d = 20\\ K$ for a Class II object"}]}
+],
+"assumptions": [
+{"value": "Optically thin emission at the observing frequency", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "Equation [\\[eq: Hildebrand\\]](#eq: Hildebrand) assumes that the disk emission is optically thin at the reference frequency"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "compare SED-model masses with flux-based masses",
+"method": {"value": "Compute the ratio M_dust,DIAD / M_dust,lit per source and across 12 regions", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "We find that, on average, our masses are a factor of about 2.0 higher for both Serpens and L1641/L1647."}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 8,
+"goal": "compute optical depth at 1.3 mm and 7 mm",
+"method": {"value": "Generate DIAD models from ANN median parameters, compute line-of-sight optical depth versus radius at 225 GHz, and take the flux-weighted mean; repeat at 7 mm", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "This is followed by computing a flux-weighted mean optical depth where the flux at each radius is used as the weight for the optical depth corresponding to that radius."}, {"loc": "4.3 The missing mass problem", "quote": "we calculate the optical depth at a longer reference wavelength of 7mm corresponding to ALMA band 1 for Serpens and L1641/L1647"}]},
+"software": ["DIAD"],
+"key_parameters": [
+{"value": "225 GHz (1.3 mm) and 7 mm", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "as a function of the radius at 225 GHz (1.3 mm)"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 9,
+"goal": "compare with other regions and exoplanet masses",
+"method": {"value": "Compare dust-mass distributions with 10 regions from Rilinger et al. 2023 and build cumulative distributions against confirmed exoplanet masses", "evidence": [{"loc": "4.3 The missing mass problem", "quote": "amounting to a sample of 3401 exoplanets with known masses and respective errors"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "ptemcee", "version": "not stated", "used_for": {"value": "parallel-tempering MCMC sampling", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "the `ptemcee` (cite: 2016Vousden) parallel-tempering version of the `emcee` MCMC code (cite: 2013Foreman-Mackey)"}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC code that ptemcee extends", "evidence": [{"loc": "3.2.2 Markov Chain Monte Carlo (MCMC)", "quote": "the `ptemcee` (cite: 2016Vousden) parallel-tempering version of the `emcee` MCMC code (cite: 2013Foreman-Mackey)"}]}},
+{"name": "MassAge", "version": "not stated", "used_for": {"value": "estimating L* and M* from literature data", "evidence": [{"loc": "Table 1 notes", "quote": "estimated here using the MassAge code following (cite: 2023Hernandez)"}]}},
+{"name": "MIST", "version": "not stated", "used_for": {"value": "evolutionary models used to derive M*", "evidence": [{"loc": "Table 1 notes", "quote": "is derived using the MIST (cite: 2016Dotter) evolutionary models"}]}},
+{"name": "DIAD (D'Alessio Irradiated Accretion Disk code)", "version": "not stated", "used_for": {"value": "disk models underlying the ANN and optical-depth calculation", "evidence": [{"loc": "Acknowledgments", "quote": "This paper utilizes the D"}]}},
+{"name": "TOPCAT", "version": "not stated", "used_for": {"value": "interactive viewer and editor for tabular data", "evidence": [{"loc": "Acknowledgments", "quote": "interactive graphical viewer and editor for tabular data TOPCAT"}]}},
+{"name": "AstroPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "SciPy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "lifelines", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "pandas", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "Final modeled sample size", "value": "178 (18 Serpens, 160 L1641/L1647)", "uncertainty": "not stated", "units": "disks", "from_step": 4, "evidence": [{"loc": "abstract", "quote": "18 in Serpens and 160 in L1641/L1647"}]},
+{"quantity": "Sample before fit-quality cut", "value": "211", "uncertainty": "not stated", "units": "sources", "from_step": 1, "evidence": [{"loc": "2 Sample selection", "quote": "This results in an overall sample of 211 objects."}]},
+{"quantity": "Average ratio of SED-model dust mass to flux-based mass (Serpens and L1641/L1647)", "value": "about 2.0", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "We find that, on average, our masses are a factor of about 2.0 higher for both Serpens and L1641/L1647."}]},
+{"quantity": "Median discrepancy factor M_dust,DIAD / M_dust,lit over all 12 regions", "value": "~1.74", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "has a median of $\\sim$1.74 for all regions and shows a slight increase toward the most massive disks"}]},
+{"quantity": "Discrepancy factor for Taurus and Upper Sco", "value": "Taurus 4.09 (largest); Upper Sco 0.72 (lowest)", "uncertainty": "not stated", "units": "dimensionless", "from_step": 7, "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "Taurus has the biggest discrepancy factor (4.09), and Upper Sco has the lowest (0.72)."}]},
+{"quantity": "Median disk dust mass, Serpens", "value": "~55.3", "uncertainty": "not stated", "units": "M_earth", "from_step": 3, "evidence": [{"loc": "5 Summary", "quote": "median disk dust mass is $\\sim$55.3 $M_{\\oplus}$, and L1641/L1647"}]},
+{"quantity": "Median disk dust mass, L1641/L1647", "value": "~17.9", "uncertainty": "not stated", "units": "M_earth", "from_step": 3, "evidence": [{"loc": "5 Summary", "quote": "median disk dust mass is $\\sim$17.9 $M_{\\oplus}$; whereas the median for all 12 star-forming regions is $\\sim$9.28 $M_{\\oplus}$"}]},
+{"quantity": "Median disk dust mass over all 12 star-forming regions", "value": "~9.28", "uncertainty": "not stated", "units": "M_earth", "from_step": 9, "evidence": [{"loc": "5 Summary", "quote": "median disk dust mass is $\\sim$17.9 $M_{\\oplus}$; whereas the median for all 12 star-forming regions is $\\sim$9.28 $M_{\\oplus}$"}]},
+{"quantity": "L1641/L1647 sources discarded for failed fits", "value": "28", "uncertainty": "not stated", "units": "sources", "from_step": 4, "evidence": [{"loc": "3.3 Model results", "quote": "For the L1641/L1647 region, 28 sources were discarded based on failed fits."}]},
+{"quantity": "Exoplanets with known masses used for the CDF", "value": "3401", "uncertainty": "not stated", "units": "exoplanets", "from_step": 9, "evidence": [{"loc": "4.3 The missing mass problem", "quote": "amounting to a sample of 3401 exoplanets with known masses and respective errors"}]}
+],
+"findings_qualitative": [
+{"value": "Dust settling parameter epsilon prefers low values in both samples, indicating significant settling", "evidence": [{"loc": "3.3 Model results", "quote": "shows a preference towards lower values in both samples (i.e., $\\epsilon < 10^{-2}$)"}]},
+{"value": "R_disk and a_max,midplane are not well constrained", "evidence": [{"loc": "3.3 Model results", "quote": "are not well constrained, consistent with the results of (cite: 2020Ribas) and (cite: 2023Xin), which use the same method"}]},
+{"value": "Higher mass discrepancy factors are caused by high optical depths, driven by high dust masses and small disk sizes", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "Panel (c) clearly demonstrates that higher disk dust mass discrepancy factors are caused by high optical depths."}]},
+{"value": "Most disks are optically thick at 1.3 mm and the vast majority are optically thin at 7 mm", "evidence": [{"loc": "5 Summary", "quote": "found that most disks are optically thick at 1.3mm while the vast majority are optically thin at 7 mm"}]}
+],
+"claims": [
+{
+"hypothesis": "SED-model dust masses differ from optically thin millimeter-flux masses",
+"experiment": "Fit ANN-DIAD SED models to 178 disks and recompute flux-based masses with the Hildebrand equation",
+"result": "SED-model masses are on average about a factor 2.0 higher",
+"finding": "Flux-based masses underestimate disk dust mass because many disks are optically thick at 1.3 mm",
+"support": "supported",
+"evidence": [{"loc": "5 Summary", "quote": "Disk dust masses calculated from SED modeling are, on average, a factor of 2.0 times higher for both Serpens and L1641/L1647 than those computed using mm-fluxes at 1.3mm."}]
+},
+{
+"hypothesis": "The mass discrepancy is driven by optical depth",
+"experiment": "Compute flux-weighted mean optical depth at 1.3 mm and compare with dust mass, disk size and discrepancy factor",
+"result": "Mean optical depth rises with dust mass and falls with disk size and correlates with the discrepancy factor",
+"finding": "High optical depth at (sub-)mm wavelengths causes the underestimates",
+"support": "supported",
+"evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "flux-based disk dust masses are underestimated to a greater extent for disks that are more massive and/or more compact"}]
+},
+{
+"hypothesis": "Longer wavelengths trace dust mass better",
+"experiment": "Compute optical depth at 7 mm (ALMA band 1) for the same disks",
+"result": "The vast majority of objects become optically thin at 7 mm",
+"finding": "Observations at band 3 and band 1 are essential to measure disk dust masses",
+"support": "supported",
+"evidence": [{"loc": "4.3 The missing mass problem", "quote": "We find that the vast majority of objects become optically thin at 7 mm."}]
+},
+{
+"hypothesis": "Serpens and L1641/L1647 follow the dust mass versus age trend of other regions",
+"experiment": "Compare dust mass distributions with 10 other regions from Rilinger et al. 2023",
+"result": "Younger regions have higher median dust mass than older ones",
+"finding": "Both samples follow the observed relation between dust mass and age",
+"support": "supported",
+"evidence": [{"loc": "5 Summary", "quote": "Dust masses for Serpens and L1641/L1647 follow the observed relation between dust mass and age"}]
+},
+{
+"hypothesis": "Correcting for optical depth resolves the missing mass problem",
+"experiment": "Compare cumulative distributions of SED-model and flux-based dust masses with confirmed exoplanet masses",
+"result": "Dust masses remain lower than exoplanet system masses at the high-mass end",
+"finding": "The missing mass problem persists and likely has multiple causes",
+"support": "refuted",
+"evidence": [{"loc": "4.3 The missing mass problem", "quote": "despite accounting for disk mass underestimation"}]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Millimeter observations are needed to constrain dust mass, so the sample was built from ALMA surveys of the regions", "evidence": [{"loc": "2 Sample selection", "quote": "so we compiled our sample using (sub)millimeter surveys of these regions"}]},
+{"field": "why_this_method", "value": "ANN emulation of DIAD models makes SED fitting of large samples fast", "evidence": [{"loc": "3.2.1 The model", "quote": "the ANN takes a few milliseconds to evaluate the SEDs, compared to the 1-2 hours that the DIAD models require"}]}
+],
+"alternatives_considered_or_rejected": [],
+"limitations_admitted": [
+{"value": "Sample includes only sources detected in the (sub)mm, biasing toward massive disks", "evidence": [{"loc": "3.2.1 The model", "quote": "Most importantly, this sample is only made up of sources detected in the (sub)mm range."}]},
+{"value": "Regions biased toward higher masses and have different detection limits", "evidence": [{"loc": "4.2 Comparison of Serpens & L1641/L1647 with other Star-Forming Regions", "quote": "We note that the objects included in each region are biased towards higher masses as we only include sources with millimeter-wavelength detections."}]},
+{"value": "Region discrepancy factors may be affected by differing sample sizes", "evidence": [{"loc": "4.1 The importance of optical depth when deriving disk masses", "quote": "It is important to note that these regions have different sample sizes, so it is likely that these values are influenced by the number of objects."}]},
+{"value": "Not sensitive to grains larger than 1 mm", "evidence": [{"loc": "4.3 The missing mass problem", "quote": "First, we are not sensitive to grains $> 1$ mm."}]}
+],
+"referee_caveats_inferred": [
+"Dust masses depend on fixed DIAD assumptions (dust composition, gas-to-dust ratio, no substructure), so the factor of 2 may be model-dependent",
+"Fit quality cuts are judged by eye and remove 33 sources, which may bias the result toward well-behaved disks",
+"Flux-based comparison uses a constant 20 K, which may exaggerate the discrepancy for luminous stars",
+"No independent test of the SED masses, such as longer-wavelength fluxes, is shown"
+],
+"reproducibility": [],
+"code_released": [
+{"value": "No code release stated; MCMC corner plots for all 178 disks hosted on Zenodo", "evidence": [{"loc": "3.3 Model results", "quote": "The corresponding corner plots generated from the MCMC process for all 178 disks are hosted within the designated"}]}
+],
+"missing_for_reproduction": [
+"ANN weights and DIAD code from earlier papers",
+"MCMC sampler settings and prior bounds",
+"Per-source photometry table and ALMA fluxes from the cited surveys",
+"Definition of successful versus unsuccessful fits"
+],
+"estimated_data_volume_inferred": "Under 1 GB: published fluxes and catalog photometry; no ALMA visibilities processed",
+"score_inferred": 2,
+"score_reason": "Uses only published ALMA fluxes and a pre-trained ANN from earlier papers; the paper gives the pipeline outline but leaves model and sampler settings to references",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The core recipe depends on the Ribas et al. 2020 ANN and unstated MCMC settings, and no ALMA data processing is involved",
+"methods_papers": [
+{"citation": "Ribas et al. 2020 (cite: 2020Ribas)", "why": "ANN-DIAD SED fitting method used here"},
+{"citation": "Xin et al. 2023 (cite: 2023Xin)", "why": "likelihood, mixture model and optical depth methodology"},
+{"citation": "Rilinger et al. 2023 (cite: 2023Rilinger)", "why": "MCMC set-up, 41 L1641 results and 10 comparison regions"}
+],
+"companion_papers": [
+{"citation": "Anderson et al. 2022 (cite: 2022Anderson)", "why": "ALMA 1.3 mm Serpens survey supplying fluxes"},
+{"citation": "van Terwisga et al. 2022 (cite: 2022vanTerwisga)", "why": "Survey of Orion Disks with ALMA supplying L1641/L1647 fluxes"}
+],
+"related_projects_or_surveys": ["Survey of Orion Disks with ALMA (SODA)", "Spitzer c2d", "Gould Belt Survey", "CASSIS"]
+}

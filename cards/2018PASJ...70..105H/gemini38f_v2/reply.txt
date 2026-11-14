@@ -1,0 +1,1297 @@
+{
+ "alternatives_considered_or_rejected": [
+  {
+   "evidence": [
+    {
+     "loc": "ALMA Archival Data",
+     "quote": "We do not use the data set of ASPECS, where the synthesized beam size ($1.68\\ensuremath{''} \\times 0.92\\ensuremath{''}$) is largely different from those of the others ($\\lesssim 0.5''$)."
+    }
+   ],
+   "value": "Exclusion of ASPECS archival data due to significantly different beam size (1.68\" x 0.92\" vs <0.5\")"
+  }
+ ],
+ "alma_project_codes": [
+  {
+   "code": "2015.1.00098.S",
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "ALMA band 6 observations of the GOODS-S field were conducted in September 02–29, 2016 for the Cycle 3 program (Project code: 2015.1.00098.S, PI: K. Kohno)"
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00098.S, #2012.1.00173.S, and #2015.1.00543.S."
+    }
+   ]
+  },
+  {
+   "code": "2012.1.00173.S",
+   "evidence": [
+    {
+     "loc": "ALMA Archival Data",
+     "quote": "The ALMA survey of HUDF by (cite: dunl17) covered a 4.5 arcmin$^2$ area at 1.3 mm during Cycle 1 and 2 (Project code: 2012.1.00173.S, PI: J. Dunlop)."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00098.S, #2012.1.00173.S, and #2015.1.00543.S."
+    }
+   ]
+  },
+  {
+   "code": "2015.1.00543.S",
+   "evidence": [
+    {
+     "loc": "ALMA Archival Data",
+     "quote": "A wider area of 69 arcmin$^2$ ($\\sim$$10' \\times 7'$) was observed in the GOODS-ALMA survey (cite: fran18) at 1.13 mm during Cycle 3 (Project code: 2015.1.00543.S, PI: D. Elbaz)."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00098.S, #2012.1.00173.S, and #2015.1.00543.S."
+    }
+   ]
+  }
+ ],
+ "analysis_steps": [
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "The effect of bandwidth smearing on the peak flux density of a source caused by the channel averaging is less than 1% even at the edge of the primary beam (cite: cond98)."
+      }
+     ],
+     "value": "Channel and time averaging effects on peak flux density are negligible"
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Average visibility data in frequency and time to reduce data volume",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Data Reduction",
+       "quote": "we average the data in frequency and time directions with 32 channels ($\\Delta \\nu = 0.5$ GHz) and 10.08 sec, respectively."
+      }
+     ],
+     "value": "32 channels (0.5 GHz) and 10.08 seconds averaging"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Data Reduction",
+      "quote": "To reduce the data volume for easier handling in continuum imaging, we average the data in frequency and time directions with 32 channels ($\\Delta \\nu = 0.5$ GHz) and 10.08 sec, respectively."
+     }
+    ],
+    "value": "Frequency and time averaging of uv data"
+   },
+   "order": 1,
+   "software": [
+    "CASA"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Data Reduction",
+      "quote": "We also confirm that the effect of the time averaging on the flux density is negligible based on the imaging of the bandpass calibrator."
+     }
+    ],
+    "value": "Imaging of the bandpass calibrator to confirm negligible flux density loss"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [],
+     "value": "not stated"
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Reframe coordinate system of older archival data and combine datasets",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Combined Map",
+       "quote": "we relabel the coordinates of Cycle 1 and 2 data from J2000.0 to the International Celestial Reference System (ICRS) by using a CASA script offered by the ALMA project"
+      }
+     ],
+     "value": "Relabel coordinates from J2000.0 to ICRS"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Combined Map",
+      "quote": "The archival data sets of HUDF (cite: dunl17) and GOODS-ALMA (cite: fran18) are combined to the original ASAGAO data to make a deeper map with the total effective frequency coverage of $\\sim$27 GHz"
+     }
+    ],
+    "value": "Coordinate relabeling and combined uv-data imaging"
+   },
+   "order": 2,
+   "software": [
+    "CASA"
+   ],
+   "validation": {
+    "evidence": [],
+    "value": "not stated"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [],
+     "value": "not stated"
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Continuum mosaic imaging with varying uv-tapering",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Combined Map",
+       "quote": "We adopt an $uv$-taper of 250 k$\\lambda$ to weight extended components, which gives a final synthesized beam size of $0.59\\ensuremath{''} \\times 0.53\\ensuremath{''}$."
+      },
+      {
+       "loc": "Combined Map",
+       "quote": "Maps without $uv$-taper (synthesized beam size of $0.30\\ensuremath{''} \\times 0.24\\ensuremath{''}$) and with a $uv$-taper of 160 k$\\lambda$ ($0.83\\ensuremath{''} \\times 0.72\\ensuremath{''}$) were also created"
+      }
+     ],
+     "value": "uv-tapers: 250 klambda (primary), 160 klambda, and untapered"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Combined Map",
+      "quote": "The combined map was produced with CASA with the same parameters adopted in Sec [subsec:reduction]. The representative frequency of the map is 243.047 GHz (1.23 mm)."
+     }
+    ],
+    "value": "CASA mosaic imaging"
+   },
+   "order": 3,
+   "software": [
+    "CASA"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Combined Map",
+      "quote": "Figure 1 shows the histogram of flux density of the signal map (before primary beam correction). The dashed curve represents the result of a Gaussian fit, which gives $1\\sigma$ of 34 $\\mu$Jy beam$^{-1}$."
+     }
+    ],
+    "value": "Pixel distribution histogram and Gaussian noise fitting"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "Source Detection",
+       "quote": "When $S_{\\rm int} < S_{\\rm peak}$, we adopt $S_{\\rm peak}$, since it is possible that the source fitting failed due to the low SN."
+      }
+     ],
+     "value": "If Sint < Speak, adopt Speak"
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "The detected sources are fitted with a 2D elliptical Gaussian to estimate the source size and integrated flux density."
+     }
+    ],
+    "value": "2D elliptical Gaussian fitting"
+   },
+   "goal": "Detect sources and measure peak and integrated flux densities",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Source Detection",
+       "quote": "We find 25 (45) sources with a peak SN of $\\ge$5$\\sigma$ ($\\ge$4.5$\\sigma$)."
+      }
+     ],
+     "value": "Peak S/N threshold >= 4.5 sigma and >= 5.0 sigma"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "Source detection is conducted on the signal map before correcting for the primary beam attenuation. We adopt the source-finding algorithm called Aegean (cite: hanc12; hanc18), which achieves high reliability and completeness performance for radio maps."
+     }
+    ],
+    "value": "Source extraction using Aegean and background/noise estimation with BANE"
+   },
+   "order": 4,
+   "software": [
+    "Aegean",
+    "BANE"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "In order to estimate the degree of contamination by spurious sources, we count the number of negative peaks as a function of SN threshold (figure 3)."
+     },
+     {
+      "loc": "Astrometry",
+      "quote": "To confirm the astrometry of ASAGAO sources, the positions of the 5$\\sigma$ sources are cross-matched with sources detected in the VLA 5-cm survey"
+     }
+    ],
+    "value": "Negative peak counts for spurious detection analysis and cross-matching with VLA 5-cm survey for astrometry check"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "Completeness and Flux Boosting",
+       "quote": "In the completeness calculation, we take a convolving beam size to be uniformly distributed from 0.01$''$–0.5$''$."
+      }
+     ],
+     "value": "Convolving source sizes uniformly distributed from 0.01\" to 0.5\""
+    }
+   ],
+   "fitting": {
+    "evidence": [],
+    "value": "not stated"
+   },
+   "goal": "Determine completeness, flux boosting, and spurious contamination via simulations",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "Completeness and Flux Boosting",
+       "quote": "We input 30000 artificial sources into the signal map one at a time, each with an integrated flux density randomly selected from 0.05–2 mJy"
+      }
+     ],
+     "value": "30,000 artificial sources injected one at a time with flux 0.05 to 2 mJy"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "Completeness and Flux Boosting",
+      "quote": "An artificial source of an elliptical Gaussian with the synthesized beam size is injected into a position randomly selected in the map. In order to take into account the effect of source size, the input source is convolved with another Gaussian function."
+     }
+    ],
+    "value": "Monte Carlo synthetic source injection and recovery"
+   },
+   "order": 5,
+   "software": [
+    "Aegean"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Completeness and Flux Boosting",
+      "quote": "The completeness calculated in regions with different coverage are consistent within errors and we do not find a significant difference."
+     }
+    ],
+    "value": "Tested separately for central deep region and shallower outer regions"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "1.2mm Number Counts",
+       "quote": "Here we assume a modified black body with a dust emissivity index of $\\beta = 1.5$, dust temperature of 35 K, and $z = 2$."
+      }
+     ],
+     "value": "Modified black body with beta=1.5, T_dust=35 K, z=2 for scaling 870 um data"
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "1.2mm Number Counts",
+      "quote": "The differential number counts obtained in this study and previous studies are fitted to a Schechter function of the form, $$\\begin{eqnarray} \\frac{dN}{dS} = \\frac{N'}{S'} \\left( \\frac{S}{S'} \\right)^{\\alpha} \\exp{\\left( \\frac{-S}{S'} \\right)}. \\end{eqnarray}$$"
+     }
+    ],
+    "value": "Schechter function fit"
+   },
+   "goal": "Derive differential and cumulative 1.2 mm number counts and fit Schechter function",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "1.2mm Number Counts",
+       "quote": "By using the 4.5$\\sigma$ sources, we create differential and cumulative number counts. To create number counts, we correct for the contamination of spurious sources, the effective area, and the completeness"
+      }
+     ],
+     "value": "45 sources with S/N >= 4.5"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "1.2mm Number Counts",
+      "quote": "To create number counts, we correct for the contamination of spurious sources, the effective area, and the completeness as follows: $$\\begin{eqnarray} \\frac{dN}{dS} = \\frac{1}{\\Delta S} \\sum_{i} \\frac{1 - f_{\\rm neg}{({\\rm SN}_i})}{A(S_i) C({\\rm SN}_i)}, \\end{eqnarray}$$"
+     }
+    ],
+    "value": "Area-, completeness-, and spurious-corrected bin summation"
+   },
+   "order": 6,
+   "software": [],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Comparison with Previous ALMA Studies",
+      "quote": "We find that our number counts are consistent with those of the previous ALMA blank-field surveys."
+     }
+    ],
+    "value": "Comparison with previous ALMA blank-field and serendipitous surveys"
+   }
+  },
+  {
+   "assumptions": [
+    {
+     "evidence": [
+      {
+       "loc": "IR Luminosity Function of ASAGAO Sources",
+       "quote": "The SED templates of (cite: bruz03) and the dust extinction model of (cite: char00) are adopted."
+      },
+      {
+       "loc": "Introduction",
+       "quote": "Throughout the paper, we adopt a cosmology with $H_0=70$ km s$^{-1}$ Mpc$^{-1}$, $\\Omega_{\\rm{M}}=0.3$, and $\\Omega_{\\Lambda}=0.7$, and a (cite: chab03) IMF."
+      }
+     ],
+     "value": "Bruzual & Charlot (2003) templates, Charlot & Fall (2000) dust extinction, Chabrier IMF, Flat LCDM (H0=70, Om=0.3, Ol=0.7)"
+    }
+   ],
+   "fitting": {
+    "evidence": [
+     {
+      "loc": "Comparison with Previous Studies",
+      "quote": "We fit the IR LFs at $1.5 < z < 2.5$ obtained from the ASAGAO sources and the results of (cite: kopr17) with a Schechter function of the form of equation [eq:lf]."
+     }
+    ],
+    "value": "Schechter function fit to Vmax binned LFs"
+   },
+   "goal": "Construct IR luminosity functions and estimate cosmic star formation rate density",
+   "key_parameters": [
+    {
+     "evidence": [
+      {
+       "loc": "IR Luminosity Function of ASAGAO Sources",
+       "quote": "We adopt a luminosity bin width of $\\Delta\\log{(L)} = 0.6$."
+      },
+      {
+       "loc": "IR Luminosity Function of ASAGAO Sources",
+       "quote": "We derive IR LFs in the redshift ranges of $1.0 < z < 2.0$, $1.5 < z < 2.5$, and $2.0 < z < 3.0$ by using 6 (mean redshift of $z_{\\rm mean} = 1.55$), 9 ($z_{\\rm mean} = 2.12$), and 13 ($z_{\\rm mean} = 2.49$) sources, respectively."
+      }
+     ],
+     "value": "Redshift bins 1.0-2.0, 1.5-2.5, 2.0-3.0 with Delta log(L) = 0.6"
+    }
+   ],
+   "method": {
+    "evidence": [
+     {
+      "loc": "IR Luminosity Function of ASAGAO Sources",
+      "quote": "To construct the LFs, we adopt the $V_{\\rm max}$ method (cite: schm68). This method uses the maximum observable volume of each source."
+     },
+     {
+      "loc": "Contribution to the Cosmic SFR Density",
+      "quote": "SFR is converted from IR luminosity by using the relation of (cite: kenn98) and corrected to a (cite: chab03) IMF."
+     }
+    ],
+    "value": "V_max method taking into account non-uniform sensitivity across the mosaic"
+   },
+   "order": 7,
+   "software": [
+    "MAGPHYS"
+   ],
+   "validation": {
+    "evidence": [
+     {
+      "loc": "Contribution to the Cosmic SFR Density",
+      "quote": "This is consistent with the results of (cite: yama18), where they derived the SFRD by counting the contribution from individual ASAGAO sources."
+     }
+    ],
+    "value": "Cross-check against individual source counting in Yamaguchi et al. (2018)"
+   }
+  }
+ ],
+ "calibration": [
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The bandpass was calibrated with quasars J0522$-$3627, J0238+1636, and J0334$-$4008, and the phase was calibrated with J0348$-$2749. J0334$-$4008 and J2357$-$5311 were observed as flux calibrators."
+    }
+   ],
+   "field": "flux_calibrator",
+   "value": "J0334-4008 and J2357-5311"
+  }
+ ],
+ "claims": [
+  {
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The number counts shows that $52^{+11}_{-8}$% of the extragalactic background light at 1.2 mm is resolved into discrete sources at $S_{\\rm 1.2mm} > 135$ $\\mu$Jy."
+    },
+    {
+     "loc": "Contribution to Extragalactic Background Light",
+     "quote": "We find that $52^{+11}_{-8}$% of the EBL at 1.2 mm is resolved into discrete sources in the ASAGAO map."
+    }
+   ],
+   "experiment": "Integrated the derived differential number counts for sources with deboosted flux S_1.2mm > 135 uJy and compared to Planck measurement of 1.2 mm EBL.",
+   "finding": "Approximately half of the 1.2 mm extragalactic background light originates from discrete sources brighter than 135 uJy.",
+   "hypothesis": "What fraction of the 1.2 mm extragalactic background light is resolved into discrete submillimeter sources at >135 uJy?",
+   "result": "52 (+11/-8) % of the EBL is resolved into discrete sources at S_1.2mm > 135 uJy.",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find that obscured star-formation of sources with IR luminosities of $\\log{(L_{\\rm IR}/L_{\odot})} \\gtrsim 11.8$ account for $\\approx$60%–90% of the $z \\sim 2$ cosmic star-formation rate density."
+    },
+    {
+     "loc": "Contribution to the Cosmic SFR Density",
+     "quote": "The fraction of SFRD contributed by the ASAGAO sources is $\\approx$60–90% at $z \\sim 2$, indicating that the major portion of SFRD at that redshift is composed of obscured star formation from sources with $\\log{(L_{\\rm IR}/L_{\odot})} \\gtrsim 11.8$"
+    }
+   ],
+   "experiment": "Integrated the best-fit IR LF down to log(L_IR/L_sun) = 11.78, converted to SFRD using the Kennicutt (1998) relation, and compared with literature total cosmic SFRD.",
+   "finding": "The bulk of the cosmic star-formation rate density at z ~ 2 is dust-obscured and powered by galaxies with log(L_IR/L_sun) >= 11.8.",
+   "hypothesis": "What fraction of the cosmic star formation rate density at z ~ 2 is accounted for by dust-obscured galaxies probed by ASAGAO?",
+   "result": "ASAGAO sources contribute a SFRD of 7.2 (+3.0/-1.9) x 10^-2 M_sun yr^-1 Mpc^-3, corresponding to approx 60-90% of the total SFRD at z ~ 2.",
+   "support": "supported"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Comparison with Previous Studies",
+     "quote": "We find that the ASAGAO LFs are consistent with those of (cite: kopr17) within the errors, supporting the evolution of LFs derived in (cite: kopr17)"
+    },
+    {
+     "loc": "Abstract",
+     "quote": "The LFs are consistent with previous results based on other ALMA and SCUBA-2 observations, which suggest a positive luminosity evolution and negative density evolution with increasing redshift."
+    }
+   ],
+   "experiment": "Constructed IR LFs in redshift bins z=1-2, 1.5-2.5, and 2-3 using the V_max method and compared to ALMA and SCUBA-2 legacy surveys.",
+   "finding": "Submillimeter-selected IR luminosity functions support positive luminosity evolution and negative density evolution with increasing redshift up to z ~ 3.",
+   "hypothesis": "Do the submillimeter IR luminosity functions derived from ASAGAO agree with earlier models of positive luminosity and negative density evolution?",
+   "result": "ASAGAO LF points match Koprowski et al. (2017) within errors, and constrain the faintest LF bin at 2.0 < z < 3.0.",
+   "support": "supported"
+  }
+ ],
+ "code_released": [
+  {
+   "evidence": [],
+   "value": "not stated"
+  }
+ ],
+ "companion_papers": [
+  {
+   "citation": "(cite: ueda18)",
+   "why": "Reports X-ray AGN properties based on ASAGAO data"
+  },
+  {
+   "citation": "(cite: fuji18)",
+   "why": "Presents morphological and uv-stacking size studies based on ASAGAO data"
+  },
+  {
+   "citation": "(cite: yama18)",
+   "why": "Detailed multi-wavelength counterpart identification, SED fitting, and individual source SFRD counting"
+  }
+ ],
+ "data_settings": [
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "ALMA band 6 observations of the GOODS-S field were conducted in September 02–29, 2016 for the Cycle 3 program"
+    }
+   ],
+   "field": "bands",
+   "value": "Band 6 (1.2 mm)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The center frequencies of the tunings are 262.56 GHz (1.14 mm) and 253.56 GHz (1.18 mm), which were selected to avoid strong atmospheric absorption lines"
+    },
+    {
+     "loc": "Observations",
+     "quote": "Four basebands were used for each tuning, and a spectral window (spw) was placed for each baseband with a bandwidth of 2000 MHz (15.625 MHz $\\times$ 128 channels), providing a total nominal bandwidth of 16 GHz"
+    }
+   ],
+   "field": "frequencies_and_spectral_setup",
+   "value": "Two tunings centered at 262.56 GHz and 253.56 GHz; 4 basebands per tuning, 2000 MHz bandwidth each (15.625 MHz x 128 channels)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "providing a total nominal bandwidth of 16 GHz (effective bandwidth of 15 GHz) centered at 258.6 GHz (1.16 mm)."
+    },
+    {
+     "loc": "Combined Map",
+     "quote": "total effective frequency coverage of $\\sim$27 GHz (table [fig:tunings] and figure [tab:tunings])."
+    }
+   ],
+   "field": "continuum_bandwidth",
+   "value": "16 GHz nominal (15 GHz effective) for ASAGAO alone; ~27 GHz effective combined"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The observations were done in 37 execution blocks in the C40-6 array configuration (maximum recoverable scale of $\\theta_{\\rm MRS} \\approx 1.2\\ensuremath{''}$) with a minimum baseline length of 15.065 m and a maximum baseline length ranging from 1770 m to 3247 m."
+    }
+   ],
+   "field": "configurations",
+   "value": "C40-6"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "with a minimum baseline length of 15.065 m and a maximum baseline length ranging from 1770 m to 3247 m."
+    }
+   ],
+   "field": "baselines",
+   "value": "15.065 m to 3247 m"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "maximum recoverable scale of $\\theta_{\\rm MRS} \\approx 1.2\\ensuremath{''}$"
+    }
+   ],
+   "field": "max_recoverable_scale",
+   "value": "approx 1.2\""
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "ASAGAO is a deep ($1\\sigma \\sim 61$ $\\mu$Jy beam$^{-1}$ for a 250 k$\\lambda$-tapered map with a synthesized beam size of $0.51\\ensuremath{''} \\times 0.45\\ensuremath{''}$)"
+    },
+    {
+     "loc": "Combined Map",
+     "quote": "We adopt an $uv$-taper of 250 k$\\lambda$ to weight extended components, which gives a final synthesized beam size of $0.59\\ensuremath{''} \\times 0.53\\ensuremath{''}$."
+    }
+   ],
+   "field": "angular_resolution",
+   "value": "0.51\" x 0.45\" (ASAGAO alone 250 klambda taper); 0.59\" x 0.53\" (combined 250 klambda taper)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "By combining with ALMA archival data in the GOODS-South field, we obtained a deeper map in the same region ($1\\sigma \\sim 30$ $\\mu$Jy beam$^{-1}$ for a deep region with a 250 k$\\lambda$-taper"
+    },
+    {
+     "loc": "Combined Map",
+     "quote": "the deepest region has $1\\sigma \\sim 26$ $\\mu$Jy beam$^{-1}$"
+    }
+   ],
+   "field": "sensitivity",
+   "value": "1-sigma ~ 61 uJy/beam (ASAGAO alone 250 klambda); 1-sigma ~ 26-30 uJy/beam (combined deep region 250 klambda)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "The total observing time is 45 hours, and the on-source integration time is 29 hours."
+    }
+   ],
+   "field": "time_on_source",
+   "value": "29 hours on-source (45 hours total)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "ALMA band 6 observations of the GOODS-S field were conducted in September 02–29, 2016 for the Cycle 3 program"
+    }
+   ],
+   "field": "observing_dates",
+   "value": "September 02–29, 2016"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "(Project code: 2015.1.00098.S, PI: K. Kohno)"
+    },
+    {
+     "loc": "ALMA Archival Data",
+     "quote": "In addition to our data, we also use the ALMA archival data of 1-mm (band 6) surveys in the GOODS-S field of HUDF (cite: dunl17) and GOODS-ALMA (cite: fran18)."
+    }
+   ],
+   "field": "pi_or_archival_as_stated",
+   "value": "PI: K. Kohno (2015.1.00098.S) combined with archival data from PI J. Dunlop (2012.1.00173.S) and PI D. Elbaz (2015.1.00543.S)"
+  }
+ ],
+ "depth": "full",
+ "estimated_data_volume_inferred": "100-300 GB (37 execution blocks in Cycle 3 plus archival datasets)",
+ "external_data_from_literature": [
+  {
+   "citation": "(cite: stra16)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "IR Luminosity Function of ASAGAO Sources",
+      "quote": "We identify $K_S$-band selected sources from the catalog of the `FourStar` galaxy evolution survey (ZFOURGE; (cite: stra16))."
+     }
+    ],
+    "value": "ZFOURGE Ks-band selected photometric and redshift catalog in GOODS-S"
+   }
+  },
+  {
+   "citation": "(cite: rujo16)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Astrometry",
+      "quote": "the positions of the 5$\\sigma$ sources are cross-matched with sources detected in the VLA 5-cm survey ((cite: rujo16), Rujopakarn et al. in prep.)."
+     }
+    ],
+    "value": "VLA 5-cm (6 GHz) GOODS-S source catalog"
+   }
+  },
+  {
+   "citation": "(cite: plan14)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Contribution to Extragalactic Background Light",
+      "quote": "The EBL at 1.2 mm (243 GHz) is estimated from the measurements by the *Planck* satellite (cite: plan14) following (cite: arav16) and (cite: muno17)."
+     }
+    ],
+    "value": "Planck satellite 217 and 353 GHz extragalactic background light measurements"
+   }
+  },
+  {
+   "citation": "(cite: kari13; stac18)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "1.2mm Number Counts",
+      "quote": "and the results of 870-$\\mu$m follow-up observations of single dish sources (cite: kari13; stac18) for the bright end by scaling the flux densities from 870-$\\mu$m to 1.2 mm."
+     }
+    ],
+    "value": "ALMA 870 um single-dish follow-up number counts"
+   }
+  },
+  {
+   "citation": "(cite: kopr17)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Comparison with Previous Studies",
+      "quote": "(cite: kopr17) derived rest-frame 250 $\\mu$m LFs and IR LFs up to $z \\sim 5$ by using 16 1.3-mm sources detected in the ALMA HUDF survey (cite: dunl17) for constraining the faint end and 577 850-$\\mu$m sources"
+     }
+    ],
+    "value": "SCUBA-2 and ALMA derived infrared luminosity functions"
+   }
+  }
+ ],
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "findings_qualitative": [
+  {
+   "evidence": [
+    {
+     "loc": "Source Detection",
+     "quote": "These suggest that sources are resolved by the synthesized beam in the 250 k$\\lambda$-tapered and the untapered maps."
+    }
+   ],
+   "value": "ASAGAO millimeter sources are spatially resolved by the synthesized beam in untapered and 250 klambda tapered maps."
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Comparison with AzTEC Sources",
+     "quote": "Two AzTEC sources identified in (cite: scot10) (AzTEC/GS18 and 21) are located inside the ASAGAO region, and detected as multiple sources in our 4.5$\\sigma$ source catalog."
+    }
+   ],
+   "value": "Single-dish AzTEC sources (GS18 and GS21) break up into multiple discrete sources when observed with ALMA resolution."
+  }
+ ],
+ "imaging": [
+  {
+   "evidence": [
+    {
+     "loc": "Combined Map",
+     "quote": "We adopt an $uv$-taper of 250 k$\\lambda$ to weight extended components, which gives a final synthesized beam size of $0.59\\ensuremath{''} \\times 0.53\\ensuremath{''}$."
+    },
+    {
+     "loc": "Combined Map",
+     "quote": "Maps without $uv$-taper (synthesized beam size of $0.30\\ensuremath{''} \\times 0.24\\ensuremath{''}$) and with a $uv$-taper of 160 k$\\lambda$ ($0.83\\ensuremath{''} \\times 0.72\\ensuremath{''}$) were also created"
+    }
+   ],
+   "field": "uv_taper",
+   "value": "250 klambda (primary), 160 klambda, and untapered"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Combined Map",
+     "quote": "which gives a final synthesized beam size of $0.59\\ensuremath{''} \\times 0.53\\ensuremath{''}$."
+    }
+   ],
+   "field": "final_beam",
+   "value": "0.59\" x 0.53\" (250 klambda taper); 0.30\" x 0.24\" (untapered); 0.83\" x 0.72\" (160 klambda taper)"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Combined Map",
+     "quote": "the deepest region has $1\\sigma \\sim 26$ $\\mu$Jy beam$^{-1}$"
+    },
+    {
+     "loc": "Combined Map",
+     "quote": "Figure 1 shows the histogram of flux density of the signal map (before primary beam correction). The dashed curve represents the result of a Gaussian fit, which gives $1\\sigma$ of 34 $\\mu$Jy beam$^{-1}$."
+    }
+   ],
+   "field": "final_rms",
+   "value": "1-sigma ~ 26 uJy/beam in deepest region; 34 uJy/beam overall map Gaussian fit"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Combined Map",
+     "quote": "The archival data sets of HUDF (cite: dunl17) and GOODS-ALMA (cite: fran18) are combined to the original ASAGAO data to make a deeper map"
+    }
+   ],
+   "field": "array_combination",
+   "value": "Combined ASAGAO Cycle 3 with HUDF Cycle 1/2 and GOODS-ALMA Cycle 3 visibilities"
+  }
+ ],
+ "inherited": [
+  {
+   "from_reference": "(cite: cond98)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Data Reduction",
+      "quote": "The effect of bandwidth smearing on the peak flux density of a source caused by the channel averaging is less than 1% even at the edge of the primary beam (cite: cond98)."
+     }
+    ],
+    "value": "Formulation for evaluating bandwidth smearing due to frequency channel averaging"
+   }
+  },
+  {
+   "from_reference": "(cite: nova17)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "IR Luminosity Function of ASAGAO Sources",
+      "quote": "Following the description of (cite: nova17), where they construct radio LFs taking into account a nonuniform noise in their radio maps, we calculate $V_{\\rm max}$ as the integration of comoving volume spherical shells"
+     }
+    ],
+    "value": "V_max calculation taking into account non-uniform sensitivity across a mosaic"
+   }
+  },
+  {
+   "from_reference": "(cite: gehr86)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "1.2mm Number Counts",
+      "quote": "The uncertainties from Poisson fluctuations is estimated from Poisson confidence limits of 84.13% (cite: gehr86)"
+     }
+    ],
+    "value": "Single-sided 84.13% confidence limits for Poisson errors in small number statistics"
+   }
+  },
+  {
+   "from_reference": "(cite: kenn98; chab03)",
+   "what": {
+    "evidence": [
+     {
+      "loc": "Contribution to the Cosmic SFR Density",
+      "quote": "SFR is converted from IR luminosity by using the relation of (cite: kenn98) and corrected to a (cite: chab03) IMF."
+     }
+    ],
+    "value": "Kennicutt (1998) L_IR to SFR conversion scaled to Chabrier (2003) IMF"
+   }
+  }
+ ],
+ "limitations_admitted": [
+  {
+   "evidence": [
+    {
+     "loc": "Comparison with Previous Studies",
+     "quote": "although the large uncertainties of our LFs due to the small sample size and the limited coverage of IR luminosity do not allow us to further discuss the density/luminosity evolution of submm sources."
+    }
+   ],
+   "value": "Small sample size and limited luminosity coverage limit independent constraints on LF evolution parameters"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Contribution to Extragalactic Background Light",
+     "quote": "although we note that there is a large uncertainty to extend the function to the faint flux regime."
+    }
+   ],
+   "value": "Large uncertainty when extrapolating the Schechter function down to ~20 uJy to reach 100% EBL"
+  }
+ ],
+ "lines_targeted": [],
+ "methods_papers": [
+  {
+   "citation": "(cite: hanc12)",
+   "why": "Aegean radio source-finding algorithm"
+  },
+  {
+   "citation": "(cite: hanc18)",
+   "why": "Updated Aegean and BANE source finding and background estimation tools"
+  },
+  {
+   "citation": "(cite: dacu08)",
+   "why": "MAGPHYS energy balance SED fitting code"
+  },
+  {
+   "citation": "(cite: schm68)",
+   "why": "V_max method for luminosity functions"
+  }
+ ],
+ "missing_for_reproduction": [
+  {
+   "type": "Specific CASA imaging task and deconvolution parameters (e.g. tclean vs clean, robust parameter value, multiscale scales, stopping threshold/niter) are not fully detailed in the text."
+  }
+ ],
+ "other_facilities": [
+  {
+   "name": "VLA",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Astrometry",
+      "quote": "To confirm the astrometry of ASAGAO sources, the positions of the 5$\\sigma$ sources are cross-matched with sources detected in the VLA 5-cm survey ((cite: rujo16), Rujopakarn et al. in prep.)."
+     }
+    ],
+    "value": "VLA 5-cm (6 GHz) survey data for astrometric cross-matching"
+   }
+  },
+  {
+   "name": "VLT/HAWK-I (HUGS)",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The observing area matches the deepest VLA C-band 5 cm (6 GHz) observations ((cite: rujo16); Rujopakarn et al. in prep.) and the ultra-deep VLT/HAWK-I $K_S$-band images."
+     }
+    ],
+    "value": "Ultra-deep Ks-band images"
+   }
+  },
+  {
+   "name": "FourStar (ZFOURGE)",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "IR Luminosity Function of ASAGAO Sources",
+      "quote": "We identify $K_S$-band selected sources from the catalog of the `FourStar` galaxy evolution survey (ZFOURGE; (cite: stra16))."
+     }
+    ],
+    "value": "Photometric and redshift catalog for counterpart identification and SED fitting"
+   }
+  },
+  {
+   "name": "Planck",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Contribution to Extragalactic Background Light",
+      "quote": "The EBL at 1.2 mm (243 GHz) is estimated from the measurements by the *Planck* satellite (cite: plan14) following (cite: arav16) and (cite: muno17)."
+     }
+    ],
+    "value": "Measurement of 1.2 mm EBL intensity"
+   }
+  },
+  {
+   "name": "ASTE/AzTEC",
+   "provided": {
+    "evidence": [
+     {
+      "loc": "Comparison with AzTEC Sources",
+      "quote": "The central 270 arcmin$^2$ area of the GOODS-S field was observed with AzTEC (cite: wils08), mounted on the Atacama Submillimeter Telescope Experiment (ASTE; (cite: ezaw04; ezaw08)) at 1.1 mm (270 GHz) (cite: scot10)."
+     }
+    ],
+    "value": "1.1 mm single-dish map and source catalog for comparison and multiplicity analysis"
+   }
+  }
+ ],
+ "paper_type": "observational_alma_primary",
+ "paper_type_evidence": [
+  {
+   "loc": "Abstract",
+   "quote": "We present the survey design, data reduction, construction of images, and source catalog of the Atacama Large Millimeter/submillimeter Array (ALMA) twenty-six arcmin$^2$ survey of GOODS-S at one-millimeter (ASAGAO)."
+  }
+ ],
+ "question": {
+  "evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "The primary goal of this survey is to obtain a census of galaxies with $L_{\\rm IR} \\gtrsim 3 \\times 10^{11}$ $L_{\\odot}$ or SFR $\\gtrsim 50$ $M_{\\odot}$ yr$^{-1}$ for the understanding of the dust-obscured star-formation history of the Universe."
+   }
+  ],
+  "value": "What are the source counts, resolved extragalactic background light fraction, and IR luminosity functions of faint 1.2 mm sources in an unbiased contiguous blank field?"
+ },
+ "reasoning": [
+  {
+   "evidence": [
+    {
+     "loc": "Introduction",
+     "quote": "It is necessary to conduct “unbiased” surveys in a contiguous field rather than collecting discrete fields in order to obtain a census on the population of faint submm sources. Surveys in a contiguous field are also beneficial for clustering analysis."
+    }
+   ],
+   "field": "why_this_data",
+   "value": "Contiguous blank-field mosaic avoids clustering biases around targeted objects and sidelobes from bright targets"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Combined Map",
+     "quote": "We adopt an $uv$-taper of 250 k$\\lambda$ to weight extended components, which gives a final synthesized beam size of $0.59\\ensuremath{''} \\times 0.53\\ensuremath{''}$."
+    }
+   ],
+   "field": "why_this_method",
+   "value": "A 250 klambda uv-taper was used to increase sensitivity to extended flux emission from submm galaxies"
+  }
+ ],
+ "rediscovery_candidate": true,
+ "rediscovery_reason": "All raw ALMA and archival datasets are public, source detection and simulations are fully described using Aegean and BANE, and numeric results (source catalogs, number count bins, EBL fraction, and LF points) are tabulated.",
+ "referee_caveats_inferred": [
+  "Extrapolation of the Schechter number counts fit to determine 100% EBL convergence is uncertain given the lack of direct detections at <100 uJy.",
+  "Sample size for LF determination (6 to 13 sources per redshift bin) is modest, necessitating broad redshift bins (Delta z = 1.0) and fixed faint-end slopes."
+ ],
+ "related_projects_or_surveys": [
+  "ASAGAO",
+  "GOODS-ALMA",
+  "HUDF ALMA",
+  "ASPECS",
+  "ZFOURGE",
+  "HUGS",
+  "CANDELS"
+ ],
+ "reproducibility": [
+  {
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00098.S, #2012.1.00173.S, and #2015.1.00543.S."
+    }
+   ],
+   "field": "data_public_as_stated",
+   "value": "Yes, public ALMA archive data"
+  }
+ ],
+ "results_numeric": [
+  {
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The number counts shows that $52^{+11}_{-8}$% of the extragalactic background light at 1.2 mm is resolved into discrete sources at $S_{\\rm 1.2mm} > 135$ $\\mu$Jy."
+    }
+   ],
+   "from_step": 6,
+   "quantity": "Resolved fraction of 1.2 mm EBL at S_1.2mm > 135 uJy",
+   "uncertainty": "+11/-8",
+   "units": "%",
+   "value": "52"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Contribution to Extragalactic Background Light",
+     "quote": "The integration of the ASAGAO differential number counts yields $7.7^{+1.7}_{-1.2}$ Jy deg$^{-2}$ ($S_{\\rm 1.2mm} > 135$ $\\mu$Jy)."
+    }
+   ],
+   "from_step": 6,
+   "quantity": "Integrated 1.2 mm flux density down to 135 uJy",
+   "uncertainty": "+1.7/-1.2",
+   "units": "Jy deg^-2",
+   "value": "7.7"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Contribution to Extragalactic Background Light",
+     "quote": "By interpolating the measurements at 217 and 353 GHz, the EBL at 1.2 mm is calculated to be $15.1 \\pm 0.59$ Jy deg$^{-2}$."
+    }
+   ],
+   "from_step": 6,
+   "quantity": "Interpolated Planck 1.2 mm total EBL",
+   "uncertainty": "0.59",
+   "units": "Jy deg^-2",
+   "value": "15.1"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Astrometry",
+     "quote": "The median offset is ($\\Delta \\alpha$, $\\Delta \\delta$) $= (+0.03\\ensuremath{''} \\pm 0.08\\ensuremath{''}, -0.01\\ensuremath{''} \\pm 0.06\\ensuremath{''})$"
+    }
+   ],
+   "from_step": 4,
+   "quantity": "Median astrometric RA offset relative to VLA 5-cm",
+   "uncertainty": "0.08",
+   "units": "arcsec",
+   "value": "+0.03"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Astrometry",
+     "quote": "The median offset is ($\\Delta \\alpha$, $\\Delta \\delta$) $= (+0.03\\ensuremath{''} \\pm 0.08\\ensuremath{''}, -0.01\\ensuremath{''} \\pm 0.06\\ensuremath{''})$"
+    }
+   ],
+   "from_step": 4,
+   "quantity": "Median astrometric Dec offset relative to VLA 5-cm",
+   "uncertainty": "0.06",
+   "units": "arcsec",
+   "value": "-0.01"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Source Detection",
+     "quote": "The median ratio between integrated flux and peak flux is $S_{\\rm int}/S_{\\rm peak} = 1.3 \\pm 0.8$."
+    }
+   ],
+   "from_step": 4,
+   "quantity": "Median Sint / Speak ratio",
+   "uncertainty": "0.8",
+   "units": "dimensionless",
+   "value": "1.3"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Source Detection",
+     "quote": "The median ratio of integrated flux between 250 k$\\lambda$-tapered map and 160 k$\\lambda$-tapered map or the untapered map is $S_{\\rm int}^{\\rm 250k\\lambda}/S_{\\rm int}^{\\rm 160k\\lambda} = 0.86 \\pm 0.24$, and $S_{\\rm int}^{\\rm 250k\\lambda}/S_{\\rm int}^{\\rm untaper} = 1.3 \\pm 3.0$."
+    }
+   ],
+   "from_step": 4,
+   "quantity": "Median Sint(250klambda) / Sint(160klambda) ratio",
+   "uncertainty": "0.24",
+   "units": "dimensionless",
+   "value": "0.86"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Source Detection",
+     "quote": "and $S_{\\rm int}^{\\rm 250k\\lambda}/S_{\\rm int}^{\\rm untaper} = 1.3 \\pm 3.0$."
+    }
+   ],
+   "from_step": 4,
+   "quantity": "Median Sint(250klambda) / Sint(untapered) ratio",
+   "uncertainty": "3.0",
+   "units": "dimensionless",
+   "value": "1.3"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0.180 | 6 | $924^{+552}_{-366}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "dN/dS at S=0.180 mJy",
+   "uncertainty": "+552/-366",
+   "units": "10^2 mJy^-1 deg^-2",
+   "value": "924"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0.341 | 12 | $299^{+114}_{-85}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "dN/dS at S=0.341 mJy",
+   "uncertainty": "+114/-85",
+   "units": "10^2 mJy^-1 deg^-2",
+   "value": "299"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0.568 | 17 | $132^{+40}_{-32}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "dN/dS at S=0.568 mJy",
+   "uncertainty": "+40/-32",
+   "units": "10^2 mJy^-1 deg^-2",
+   "value": "132"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0.878 | 7 | $20.0^{+10.7}_{-7.4}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "dN/dS at S=0.878 mJy",
+   "uncertainty": "+10.7/-7.4",
+   "units": "10^2 mJy^-1 deg^-2",
+   "value": "20.0"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1.828 | 3 | $4.0^{+3.9}_{-2.2}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "dN/dS at S=1.828 mJy",
+   "uncertainty": "+3.9/-2.2",
+   "units": "10^2 mJy^-1 deg^-2",
+   "value": "4.0"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 0.135 | 45 | $213^{+64}_{-43}$ |"
+    }
+   ],
+   "from_step": 6,
+   "quantity": "Cumulative number counts N(>0.135 mJy)",
+   "uncertainty": "+64/-43",
+   "units": "10^2 deg^-2",
+   "value": "213"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Contribution to the Cosmic SFR Density",
+     "quote": "The integration of the best-fitting luminosity function down to the lowest luminosity of the sources ($\\log{(L_{\\rm IR}/L_{\odot})} = 11.78$) gives a SFRD of $7.2^{+3.0}_{-1.9} \\times 10^{-2}$ $M_{\odot}$ yr$^{-1}$ Mpc$^{-3}$."
+    }
+   ],
+   "from_step": 7,
+   "quantity": "Cosmic SFRD contributed by ASAGAO sources at z ~ 2",
+   "uncertainty": "+3.0/-1.9 x 10^-2",
+   "units": "M_sun yr^-1 Mpc^-3",
+   "value": "7.2 x 10^-2"
+  },
+  {
+   "evidence": [
+    {
+     "loc": "Comparison with Previous Studies",
+     "quote": "The derived spectral slope of $\\alpha = -0.22 \\pm 0.28$ is flatter than $\\alpha = -0.4$ derived by (cite: kopr17), but consistent within the errors."
+    }
+   ],
+   "from_step": 7,
+   "quantity": "Faint-end Schechter slope alpha of LF at 1.5 < z < 2.5",
+   "uncertainty": "0.28",
+   "units": "dimensionless",
+   "value": "-0.22"
+  }
+ ],
+ "simulations_or_models_as_data": [],
+ "software": [
+  {
+   "name": "CASA",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Combined Map",
+      "quote": "The combined map was produced with CASA with the same parameters adopted in Sec [subsec:reduction]."
+     },
+     {
+      "loc": "Combined Map",
+      "quote": "by using a CASA script offered by the ALMA project"
+     }
+    ],
+    "value": "Data calibration, coordinate relabeling, visibility averaging, and mosaic imaging"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "Aegean",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "We adopt the source-finding algorithm called Aegean (cite: hanc12; hanc18), which achieves high reliability and completeness performance for radio maps."
+     }
+    ],
+    "value": "Source extraction and 2D Gaussian fitting"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "BANE",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "Source Detection",
+      "quote": "The background and noise estimation are done with the BANE package in the same manner as described in Sec. [subsec:reduction]."
+     }
+    ],
+    "value": "Background and noise map estimation"
+   },
+   "version": "not stated"
+  },
+  {
+   "name": "MAGPHYS",
+   "used_for": {
+    "evidence": [
+     {
+      "loc": "IR Luminosity Function of ASAGAO Sources",
+      "quote": "By using ancillary multi-wavelength data (0.4–500 $\\mu$m) and our ALMA photometry, SED fitting with the magphys model (cite: dacu08; dacu15) is performed."
+     }
+    ],
+    "value": "SED fitting from 0.4 to 500 um plus ALMA photometry"
+   },
+   "version": "not stated"
+  }
+ ],
+ "score_inferred": 8,
+ "score_reason": "High quality description of observation setups, data combination between cycles, source detection methodology using Aegean and BANE, simulation of completeness and flux boosting, and Vmax LF construction. Only minor CASA imaging parameters (robust value, clean iterations) are omitted from the main text.",
+ "targets": [
+  {
+   "coordinates": "03h32m28.0s -27d48m30s",
+   "details": [
+    {
+     "loc": "Observations",
+     "quote": "The $\\sim$$5' \\times 5'$ survey area centered at (R.A., Dec.) = (, ) consists of 9 tiles"
+    }
+   ],
+   "distance_source": "not stated",
+   "name": "GOODS-S (ASAGAO field)",
+   "redshift_or_distance": "z ~ 1-3"
+  }
+ ],
+ "unstated_but_needed": [
+  "CASA tclean/clean weighting scheme and exact robust parameter used for imaging (text mentions untapered and tapered maps, but robust parameter is not explicitly defined in the text)",
+  "Clean mask threshold or automasking criteria",
+  "Number of iterations (niter) or stopping flux threshold for mosaic deconvolution"
+ ]
+}

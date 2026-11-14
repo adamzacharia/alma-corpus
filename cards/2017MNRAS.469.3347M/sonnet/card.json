@@ -1,0 +1,983 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017MNRAS.469.3347M",
+  "title": "ALMA spectral survey of Supernova 1987A - molecular inventory, chemistry, dynamics and explosive nucleosynthesis",
+  "year": 2017,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Matsuura, M.",
+  "n_authors": 29,
+  "arxiv_id": "1704.02324",
+  "doi": "10.1093/mnras/stx830",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00075.S",
+   "2013.1.00063.S",
+   "2013.1.00280.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the first molecular line survey of Supernova 1987A in the millimetre wavelength range."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "SN 1987A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "50 kpc (LMC)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "SN1987A is unique. It is located only 50 kpc away."
+       },
+       {
+        "loc": "4.1 SiO analysis",
+        "quote": "We adopt an LMC distance of 50$\\pm$0.19$\\pm$1.11 kpc (cite: Pietrzynski:2013ck)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Pietrzynski et al. 2013 (LMC distance)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "SN1987A is unique. It is located only 50 kpc away."
+       },
+       {
+        "loc": "4.1 SiO analysis",
+        "quote": "We adopt an LMC distance of 50$\\pm$0.19$\\pm$1.11 kpc (cite: Pietrzynski:2013ck)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Which molecules, isotopologue ratios and kinematics does the ejecta of SN 1987A show in an ALMA 210–360 GHz line survey, and what do they imply for chemistry, mixing and nucleosynthesis?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We present a molecular line survey of SN 1987A’s ejecta in the 210–300 and 340–360 GHz ALMA spectra, from Cycle-1, Cycle-2 and Cycle-3 observations."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00280.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "As part of the ALMA cycle 2 program, 2013.1.00280.S (P.I. Matsuura)"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00075.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "as part of the ALMA cycle 1 programme 2012.1.00075.S (P.I. Indebetouw)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00063.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "as part of the ALMA cycle 3 programme 2013.1.00063.S (P.I. Indebetouw)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 6 and 7, 210–300 GHz continuous plus 340–360 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "ALMA obtained spectra covering a continuous spectral range from 210 to 300 GHz, using a combination of 10 ALMA ‘Scheduling Blocks’ in bands 6 and 7."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "SiO",
+     "transition": "J=5–4, 6–5",
+     "rest_frequency": "217.105, 260.518 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SiO $J$=5–4 & 217.105"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=2–1, 3–2",
+     "rest_frequency": "230.538, 345.796 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CO $J$=2–1 & 230.538"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=3–2",
+     "rest_frequency": "267.558 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "HCO$^+$ $J$=3–2 & 267.558"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "5_5–4_4, 5_6–4_5, 6_6–5_5",
+     "rest_frequency": "215.221, 219.949, 258.256 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SO $J_K$=$5_5$–$4_4$ & 215.221"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "fixed circular beam 0.3 arcsec",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The baselines were weighted in order to have a fixed circular beam size (0.3”) across the frequencies."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "requested rms 47–52 µJy, generally achieved",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "We requested a root mean square (rms) noise level of 47–52 $\\mu$Jy, which was in general achieved."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "480–750 s per segment; total observing time 5.6 hours",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The integration time was 480–750 s per segment"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2014 Aug 29 (band 7), 2014 Sep 2 (band 6), 2014 Aug 18 (CO 2–1), 2015 Jul 25 (CO 3–2, HCO+ 4–3)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "on 2014 August 29th (day 10,048 since the explosion) for part of band 7 (275–298 GHz)"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PIs Matsuura (Cycle 2) and Indebetouw (Cycles 1 and 3)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "2013.1.00280.S (P.I. Matsuura)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel Space Observatory",
+     "provided": {
+      "value": "CO J=7–6 and 6–5 fluxes",
+      "evidence": [
+       {
+        "loc": "4.2 CO analysis",
+        "quote": "together with published Herschel Space Observatory $J$=7–6 and 6–5 measurements"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Herschel CO J=7–6 and 6–5 line fluxes",
+      "evidence": [
+       {
+        "loc": "4.2 CO analysis",
+        "quote": "together with published Herschel Space Observatory $J$=7–6 and 6–5 measurements (cite: Kamenetzky:2013fv; Matsuura:2015kn)"
+       }
+      ]
+     },
+     "citation": "Kamenetzky:2013fv; Matsuura:2015kn"
+    },
+    {
+     "what": {
+      "value": "SiO–H2 collisional data (LAMDA)",
+      "evidence": [
+       {
+        "loc": "4.1 SiO analysis",
+        "quote": "We used SiO Einstein coefficients and SiO–H$_2$ collisional cross-sections from the LAMDA molecular and atomic data base (cite: Schoier:2005ja)"
+       }
+      ]
+     },
+     "citation": "Schoier:2005ja"
+    },
+    {
+     "what": {
+      "value": "CO–H2 collisional data",
+      "evidence": [
+       {
+        "loc": "4.2 CO analysis",
+        "quote": "We used the collisional cross sections and Einstein coefficients for CO–H$_2$ from (cite: Yang:2010bb)."
+       }
+      ]
+     },
+     "citation": "Yang:2010bb"
+    },
+    {
+     "what": {
+      "value": "Nucleosynthesis models and presolar grain Si isotope data for comparison",
+      "evidence": [
+       {
+        "loc": "5.4 Isotope ratios",
+        "quote": "The isotope ratios of pre-solar grains are taken from Washington University’s data base (cite: Hynes:2009vp)"
+       }
+      ]
+     },
+     "citation": "Hynes:2009vp; Sukhbold:2016bo"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "baselines weighted to a fixed circular 0.3 arcsec beam; robust not stated",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The baselines were weighted in order to have a fixed circular beam size (0.3”) across the frequencies."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "local continuum subtraction",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA spectrum and molecular identifications",
+       "quote": "We measured integrated line intensities after local continuum subtraction"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "spectra smoothed to 345.2 km/s resolution",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "yielding a final spectral resolution of 345.2 km s$^{-1}$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "CO modelling follows earlier method with revised CO 2–1 flux; filling factor definition differs",
+      "evidence": [
+       {
+        "loc": "4.2 CO analysis",
+        "quote": "The CO models have been revised after (cite: Kamenetzky:2013fv), as the ALMA CO $J=$2–1 line flux has been re-calibrated."
+       }
+      ]
+     },
+     "from_reference": "(cite: Kamenetzky:2013fv)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and calibration steps/calibrators",
+    "robust value, cell and image size, cleaning details",
+    "line-free channels and continuum fitting",
+    "aperture centre coordinates",
+    "how spectral segments were combined",
+    "flux scale uncertainty"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "extract ejecta spectrum",
+    "method": {
+     "value": "spectra extracted from an elliptical aperture 1.29×1.10 arcsec on ejecta; noise from differences of fluxes in four ring apertures (~80% above rms)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The spectrum was extracted from an ellipse-shaped aperture with long axis of 1.29 arcsec (east-west) and short axis of 1.10 arcsec (north-south), centred on the SN ejecta"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "identify and measure lines",
+    "method": {
+     "value": "Gaussian fits after local continuum subtraction; compared with RADEX and LTE SO2 model spectra; 3-sigma upper limits for FWHM 2000 km/s",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA spectrum and molecular identifications",
+       "quote": "We fit the lines with a Gaussian, and their heights, centres and FWHMs are also listed in the table."
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "HITRAN"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profiles",
+     "evidence": [
+      {
+       "loc": "Spectrum and images",
+       "quote": "We fit the lines with a Gaussian, and their heights, centres and FWHMs are also listed in the table."
+      }
+     ]
+    },
+    "validation": {
+     "value": "model spectra at 40 K compared with observed",
+     "evidence": [
+      {
+       "loc": "3.1 ALMA spectrum and molecular identifications",
+       "quote": "The temperatures of the models are 40 K in this plot."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "derive SiO and CO masses",
+    "method": {
+     "value": "non-LTE RADEX LVG grids in Tkin and N matched to line ratios (SiO 6–5/5–4; CO 7–6/2–1) and filling factor limits f<0.11 (max 0.45); M=fΩNd²m",
+     "evidence": [
+      {
+       "loc": "4.1 SiO analysis",
+       "quote": "The obtained column density is an ‘averaged’ value within the beam, and is converted to the total molecular mass by $M_{\\rm SiO}=f\\Omega N_{\\rm SiO}  d^2 m$"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "n_coll=1e6 cm-3 adopted for SiO (1e5 and 1e4 excluded)",
+      "evidence": [
+       {
+        "loc": "4.1 SiO analysis",
+        "quote": "Thus, we adopted the gas density of the collisional partner of $10^6$ cm$^{-3}$ for the analysis."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "distance 50 kpc; H2 collisional partner",
+      "evidence": [
+       {
+        "loc": "4.1 SiO analysis",
+        "quote": "where $d$ is the distance to SN 1987A (50 kpc)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "grid contours, no sampler",
+     "evidence": [
+      {
+       "loc": "SiO analysis",
+       "quote": "Fig. [4](#fig-sio-ratio) demonstrates the set of ($T_{\\rm {kin}}$, $N_{\\rm SiO}$) values that match the ALMA measured line ratio"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "masses of HCO+, SO, CS, SiS",
+    "method": {
+     "value": "RADEX with Tkin=40 K, n=1e6, filling factor 1, optically thin",
+     "evidence": [
+      {
+       "loc": "4.3 Estimating the masses",
+       "quote": "We also fixed the kinetic temperature of the gas to be 40 K because both the $^{12}$CO and $^{28}$SiO modelling gave solutions at this temperature."
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "267 GHz line entirely HCO+",
+      "evidence": [
+       {
+        "loc": "4.3 Estimating the masses",
+        "quote": "We assume that the 267 GHz line is due to HCO$^+$ only, with no SO$_2$ contamination"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "isotopologue ratios",
+    "method": {
+     "value": "optically thin LTE line ratios and RADEX with same Tkin for isotopologues",
+     "evidence": [
+      {
+       "loc": "4.4 Isotopologue ratios",
+       "quote": "We assume that the excitation temperatures of $^{28}$SiO, $^{29}$SiO and $^{30}$SiO are identical."
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "toy line-profile model",
+    "method": {
+     "value": "hollow prolate ellipsoid, axis ratio ~2, inner radius 80%, inclination 45°, ballistic expansion with max 1500 km/s, SiO deficient inner 20%, smoothed to 375 km/s",
+     "evidence": [
+      {
+       "loc": "4.5 Modelling of the CO and SiO line profiles",
+       "quote": "we assume that the line-emitting region is a hollow, prolate ellipsoid."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "no fit; qualitative comparison",
+     "evidence": [
+      {
+       "loc": "Modelling of the CO and SiO line profiles",
+       "quote": "we have derived normalised line profiles, which are comparable to the observed ones within the uncertainties"
+      }
+     ]
+    },
+    "validation": {
+     "value": "compared to observed normalised profiles",
+     "evidence": [
+      {
+       "loc": "4.5 Modelling of the CO and SiO line profiles",
+       "quote": "we have derived normalised line profiles, which are comparable to the observed ones within the uncertainties"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "data reduction of each setting",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Each setting and observation was reduced individually with the Common Astronomy Software Applications (CASA)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-LTE LVG excitation modelling",
+     "evidence": [
+      {
+       "loc": "4 Analysis of the line intensities",
+       "quote": "We analysed the measured line intensities by modelling them with the non-LTE radiative transfer code RADEX"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SiO mass range",
+    "value": "4e-5 to 2e-3",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 SiO analysis",
+      "quote": "the resulting SiO mass range is $4\\times10^{-5}$–$2\\times10^{-3}$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO mass range",
+    "value": "0.02 to 1.0",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "6.1 Molecular chemistry",
+      "quote": "Our analysis finds a current CO mass of 0.02–1.0 $M_{\\odot}$."
+     }
+    ]
+   },
+   {
+    "quantity": "HCO+ mass",
+    "value": "<=5e-6",
+    "uncertainty": "upper limit",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "HCO$^+$   | $\\leq5\\times10^{-6}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SiS mass",
+    "value": "<6e-5",
+    "uncertainty": "upper limit",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "SiS       | $<6\\times10^{-5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "28SiO/29SiO (RADEX, 50 K)",
+    "value": ">128",
+    "uncertainty": "lower limit",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Isotopologue ratios",
+      "quote": "increases to $^{28}$SiO/$^{29}$SiO$>128$ at 50 K"
+     }
+    ]
+   },
+   {
+    "quantity": "28SiO/30SiO (RADEX, 50 K)",
+    "value": ">188",
+    "uncertainty": "lower limit",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Isotopologue ratios",
+      "quote": "increases to $>$188 at 50 K"
+     }
+    ]
+   },
+   {
+    "quantity": "SiO J=6–5/5–4 ratio",
+    "value": "1.54",
+    "uncertainty": "+0.3/-0.2",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 SiO analysis",
+      "quote": "($r=1.54^{+0.3}_{-0.2}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "CO J=2–1 integrated flux",
+    "value": "51.0",
+    "uncertainty": "0.4 (stat), 0.3 (sys)",
+    "units": "1e-20 W m-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "CO $J$=2–1 & 230.538 & 51.0&0.4&0.3"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SiO line profiles show a central dip while CO does not, implying non-spherical SiO distribution",
+    "evidence": [
+     {
+      "loc": "6.2 Line profile and geometry",
+      "quote": "The absence of a prominent dip in the CO line profile is compelling evidence that the CO and SiO have different spatial distributions."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do SN 1987A ejecta contain molecules beyond CO and SiO?",
+    "experiment": "ALMA 210–360 GHz line survey",
+    "result": "HCO+ and SO detected",
+    "finding": "first identification of HCO+ and SO in a young SNR",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This is the first identification of HCO$^+$ and SO in a young supernova remnant."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are Si neutron-rich isotopes low in SN 1987A?",
+    "experiment": "upper limits on 29SiO, 30SiO with RADEX",
+    "result": "28Si/29Si>128, 28Si/30Si>188 for Tkin 50 K",
+    "finding": "consistent with low-metallicity nucleosynthesis",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Low $^{29}$Si and $^{30}$Si abundances in SN 1987A are consistent with nucleosynthesis models"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is ejecta morphology elongated and do CO and SiO differ?",
+    "experiment": "line profile analysis and toy model",
+    "result": "dip in SiO profiles",
+    "finding": "elongated, non-spherical SiO distribution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find a dip in the $J$=6–5 and 5–4 SiO line profiles, suggesting that the ejecta morphology is likely elongated."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does mixing explain large HCO+ and small SiS masses?",
+    "experiment": "compare masses with chemical models",
+    "result": "HCO+ ~5e-6 Msun, SiS <6e-5 Msun",
+    "finding": "some mixing after the explosion plausible",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "might be explained by some mixing of elements immediately after the explosion"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "n_coll 1e4 and 1e5 cm-3 excluded for SiO",
+     "evidence": [
+      {
+       "loc": "4.1 SiO analysis",
+       "quote": "a density $10^4$ cm$^{-3}$ can therefore be excluded"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "SiO excitation poorly constrained; more SiO lines needed",
+     "evidence": [
+      {
+       "loc": "5.4 Isotope ratios",
+       "quote": "Ill-constrained excitation conditions are the main concern in this current work."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Masses depend strongly on assumed Tkin and filling factor",
+    "Collision partner uncertain (O2, SO instead of H2)",
+    "Herschel and ALMA fluxes taken two years apart",
+    "HCO+ blend with SO2"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "calibration and imaging parameters",
+    "aperture position",
+    "exact RADEX input grids"
+   ],
+   "estimated_data_volume_inferred": "~100 GB raw for three projects",
+   "score_inferred": 3,
+   "score_reason": "Archive data and RADEX analysis are clear, but calibration/imaging settings are not given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging and calibration recipe incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "van der Tak et al. 2007 (RADEX)",
+     "why": "non-LTE radiative transfer"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Kamenetzky et al. 2013",
+     "why": "Cycle-0 detection of CO and SiO"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-069f7d1c72f1a674e1daec3c78395316",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:38",
+  "usage": {
+   "input_tokens": 35955,
+   "output_tokens": 7350,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.073312,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 59,
+  "quotes_ok": 59,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 37,
+   "rate": 0.493
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:56",
+  "custom_id": "repair-sonnet-e4b03f6583c468a915b09e704ae48aee",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "We fit the lines with a Gaussian, and their heights, centres and FWHMs are also listed in the table."
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "Fig. [4](#fig-sio-ratio) demonstrates the set of ($T_{\\rm {kin}}$, $N_{\\rm SiO}$) values that match the ALMA measured line ratio"
+   },
+   {
+    "path": "analysis_steps[5].fitting.evidence[0]",
+    "old": null,
+    "new": "we have derived normalised line profiles, which are comparable to the observed ones within the uncertainties"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

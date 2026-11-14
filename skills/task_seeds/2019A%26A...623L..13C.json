@@ -1,0 +1,214 @@
+{
+ "bibcode": "2019A&A...623L..13C",
+ "title": "The ALMA-PILS survey: First detection of nitrous acid (HONO) in the interstellar medium",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935040",
+ "arxiv_id": "1903.03378",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Is nitrous acid (HONO) present in the ISM towards IRAS16293 B, what are its abundance and excitation, and can a gas-grain chemical model reproduce it along with other nitrogen oxides?",
+ "alma_project_codes": [
+  "2013.1.00278.S"
+ ],
+ "data": {
+  "bands": "Band 7 (PILS); band 3 and band 6 PILS data also searched",
+  "arrays": "not stated",
+  "angular_resolution": "circular restoring beam of 0.5\"",
+  "sensitivity": "6–10 mJy/beam/channel (4–5 mJy/beam km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Column densities of NO, N2O, NH2OH towards IRAS16293 B",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^{\\ddagger}$Results from (cite: ligterink2018)."
+     }
+    ]
+   },
+   "citation": "(cite: ligterink2018)"
+  },
+  {
+   "what": {
+    "value": "trans/cis HONO energy difference 130.2 cm-1",
+    "evidence": [
+     {
+      "loc": "Observations and analysis",
+      "quote": "The trans/cis energy difference (130.2 cm$^{-1}$) is from (cite: Varma1976)."
+     }
+    ]
+   },
+   "citation": "(cite: Varma1976)"
+  },
+  {
+   "what": {
+    "value": "1D radiative hydrodynamical collapse physical structure",
+    "evidence": [
+     {
+      "loc": "Chemical modeling of HONO",
+      "quote": "we have used the physical structure derived from a 1D radiative hydrodynamical model (cite: 2008ApJ...674..984A)"
+     }
+    ]
+   },
+   "citation": "(cite: 2008ApJ...674..984A)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify HONO lines and check blending",
+   "method": "Compare candidate lines with template of previously detected species in PILS spectra, using JPL and CDMS spectroscopy",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive HONO column density and Tex",
+   "method": "LTE synthetic spectrum chi2 grid fit",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Tex grid 50–300 K step 25 K; N grid 5e14–3e15 cm-2 step 1e14"
+   ],
+   "assumptions": [
+    "source size 0.5\", VLSR 2.5 km/s, background temperature 21 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Upper limits for HNO, NO+, NO2, HNO3",
+   "method": "3sigma upper limits at Tex=100 K from line-free regions/brightest predicted lines",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Model HONO formation chemistry",
+   "method": "Nautilus gas-grain model: cold core phase 1e6 yr then collapse from 1D radiative hydro model, parcel arriving at 62.4 au; compare abundance ratios",
+   "software": [
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "cold phase: T=10 K, nH=1e4 cm-3, Av=15, zeta=1.3e-17 s-1"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HONO column density",
+   "value": "9e14",
+   "uncertainty": "±5e14 (3σ)",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "(9$\\pm$5) $\\times$ 10$^{14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HONO excitation temperature",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational results",
+     "quote": "The best-fit model is obtained for an excitation temperature of 100 K and a column density of 9 $\\times$ 10$^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HONO column density at fixed Tex=300 K",
+   "value": "1.4e15",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observational results",
+     "quote": "the best-fit column density is 1.4 $\\times$ 10$^{15}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNO upper limit",
+   "value": "≤3e14",
+   "uncertainty": "3σ",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$\\leq$ 3 $\\times$ 10$^{14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NO2 upper limit",
+   "value": "≤2e16",
+   "uncertainty": "3σ",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Upper limit determination of HNO, NO+, NO2, and HNO3",
+     "quote": "3 $\\times$ 10$^{14}$, 2 $\\times$ 10$^{14}$, 2 $\\times$ 10$^{16}$, and 5 $\\times$ 10$^{14}$ cm$^{-2}$ for HNO, NO$^{+}$, NO$_{2}$, and HNO$_{3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed HONO/NO",
+   "value": "4.5e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4.5 $\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed HONO/CH3OH",
+   "value": "9e-5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "9 $\\times$ 10$^{-5}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral line-free/continuum handling and continuum subtraction (in PILS paper)",
+  "Exact pixel/beam extraction method of spectra",
+  "Full chemical network (only HONO reactions in Table C.1)",
+  "Initial elemental abundances and grain parameters for Nautilus",
+  "Fit weighting/noise values used in chi2",
+  "Line widths fit details for HONO beyond FWHM 1 km/s"
+ ],
+ "missing_for_reproduction": [
+  "Full chemical network and Nautilus inputs",
+  "PILS calibrated cubes processing details (in Jørgensen 2016)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear LTE grid, but the chemical model network is not fully given and imaging is inherited from PILS.",
+ "rediscovery_reason": "Public data, explicit LTE grid, numeric results (N, Tex).",
+ "source_card": "cards/2019A%26A...623L..13C/sonnet/card.md"
+}

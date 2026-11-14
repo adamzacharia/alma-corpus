@@ -1,0 +1,460 @@
+{
+ "bibcode": "2024ApJ...964...29F",
+ "title": "The Relationships between Active Galactic Nucleus Power and Molecular Gas Mass within 500 pc of the Center of Elliptical Galaxies",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad28c0",
+ "arxiv_id": "2310.03794",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Which physical quantity controls AGN feedback in elliptical galaxies: how does molecular gas mass within 500 pc of the center relate to AGN jet power, continuum luminosity and black hole mass, and does the P_cav-M_mol relation extend from BCGs to non-central ellipticals?",
+ "alma_project_codes": [
+  "2015.1.00860.S",
+  "2017.1.00830.S",
+  "2013.1.00828.S",
+  "2019.1.01845.S",
+  "2015.1.00971.S",
+  "2017.1.00301.S",
+  "2019.1.00036.S",
+  "2015.1.01572.S",
+  "2016.1.01135.S",
+  "2016.1.00683.S",
+  "2013.1.00073.S",
+  "2011.0.00735.S",
+  "2012.1.00837.S",
+  "2015.1.00623.S",
+  "2015.1.00627.S",
+  "2015.1.00644.S",
+  "2015.1.01198.S",
+  "2016.1.01214.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "Synthesized beams from 0.21 x 0.15 arcsec (NGC 507) to 2.70 x 1.9 arcsec (NGC 1316); per-target values in Table 1",
+  "sensitivity": "Cube rms 0.2-2 mJy/beam per binned channel (20-30 km/s velocity binning), per target in Table 1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "P_cav of the NCEGs from Cavagnolo et al. 2010; of the BCGs from Rafferty et al. 2006 and Pulido et al. 2018",
+    "evidence": [
+     {
+      "loc": "4.2 Circumnuclear gas and jet power",
+      "quote": "While the data of $P_{\\rm cav}$ for the NCEGs are taken from (cite: 2010ApJ...720.1066C), those for the BCGs are taken from (cite: 2006ApJ...652...216R) and (cite: 2018ApJ...853..177P)."
+     }
+    ]
+   },
+   "citation": "(cite: 2010ApJ...720.1066C); (cite: 2006ApJ...652...216R); (cite: 2018ApJ...853..177P)"
+  },
+  {
+   "what": {
+    "value": "Black hole masses M_BH taken from the literature and adjusted to the adopted cosmology",
+    "evidence": [
+     {
+      "loc": "5.2 Black hole mass",
+      "quote": "we plot the jet power against the black hole masses $M_{\\rm BH}$, which are taken from the literature and adjusted to our cosmological parameters"
+     }
+    ]
+   },
+   "citation": "references per table footnotes (e.g. (cite: 2019ApJ...875L...1E), (cite: 2017MNRAS.464.4360M), (cite: 2018MNRAS.474.1342M))"
+  },
+  {
+   "what": {
+    "value": "1.4 GHz fluxes F_1.4 taken from the literature",
+    "evidence": [
+     {
+      "loc": "4.3 Circumnuclear gas and continuum emission",
+      "quote": "from the observed flux at 1.4 GHz taken from the literature"
+     }
+    ]
+   },
+   "citation": "not stated in the text (table footnote keys)"
+  },
+  {
+   "what": {
+    "value": "CO excitation ratios: CO(2-1)/CO(1-0) = 3.2 and CO(3-2)/CO(1-0) = 7.2 on the Jy scale",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular gas mass",
+      "quote": "$F_{21}$ gives a CO(2-1)/CO(1-0) line ratio on the flux density (Jy) scale of 3.2, and $F_{32}$ gives a CO(3-2)/CO(1-0) ratio of 7.2"
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.485..229R; 2019MNRAS.490.3025R)"
+  },
+  {
+   "what": {
+    "value": "M_mol-to-S_CO relation for converting CO flux to molecular gas mass",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular gas mass",
+      "quote": "We take the following relation from (cite: 2013ARA&A..51..207B):"
+     }
+    ]
+   },
+   "citation": "(cite: 2013ARA&A..51..207B)"
+  },
+  {
+   "what": {
+    "value": "Results for the 9 BCGs (CO intensities, M_mol, continuum) taken from Paper I",
+    "evidence": [
+     {
+      "loc": "4.1 Molecular gas mass",
+      "quote": "The table contains the objects studied in Paper I."
+     },
+     {
+      "loc": "Conclusion",
+      "quote": "combined the results with those of 9 BCGs studied in Paper I"
+     }
+    ]
+   },
+   "citation": "Paper I (cite: 2023arXiv230316927F)"
+  },
+  {
+   "what": {
+    "value": "Modified blackbody dust parameters nu_0 = 1.5 THz, b = 1.5",
+    "evidence": [
+     {
+      "loc": "5.3 The origin of the mm/submm continuum emission",
+      "quote": "where $\\gamma=-0.75$, $\\nu_0=1.5$ THz, $b=1.5$, and $B_\\nu(\\nu,T)$ is a blackbody distribution (cite: 2019A&A...621A..27F)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019A&A...621A..27F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate, continuum-subtract and image archival data",
+   "method": "Calibrate with CASA and the ALMA Pipeline, subtract continuum with uvcontsub, image line cubes and continuum with tclean (Briggs robust 2)",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "uvcontsub fitorder=1",
+    "tclean threshold 3 sigma",
+    "Briggs robust = 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "make integrated-intensity images and identify detections",
+   "method": "immoments integrated-intensity images for the 13 galaxies; CO detected in 6",
+   "software": [
+    "CASA immoments"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "measure CO line flux or 3-sigma upper limit",
+   "method": "Extract spectra of the emission regions; derive line flux density from the brightness of the integrated-intensity images (not Gaussian fits); 3-sigma upper limits for non-detections",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "IC 4296 channels with prominent absorption ignored",
+    "Upper-limit line assumed within +-500 km/s of the galaxy velocity"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "convert CO flux to molecular gas mass within 500 pc",
+   "method": "M_mol from S_CO Delta v with the Bolatto et al. 2013 relation, with F_ul excitation correction, X_CO and luminosity distance; 3-sigma upper bounds for non-detections",
+   "software": [],
+   "key_parameters": [
+    "F_21 = 3.2 (CO(2-1)/CO(1-0)), F_32 = 7.2 (CO(3-2)/CO(1-0))",
+    "Region: central 500 pc"
+   ],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 (K km/s)^-1 (Milky Way default)",
+    "H0 = 70 km/s/Mpc, Omega_m = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "derive continuum luminosities L_con and L_1.4",
+   "method": "L_con from ALMA line-free-channel continuum flux, K-corrected to the CO(1-0) frequency with a power law; L_1.4 from literature 1.4 GHz fluxes",
+   "software": [],
+   "key_parameters": [
+    "reference frequency nu_10 = 115.3 GHz"
+   ],
+   "assumptions": [
+    "Power-law continuum S_nu proportional to (nu/nu_10)^gamma, gamma = -0.75"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "test and fit correlations of M_mol with P_cav, L_con, L_1.4",
+   "method": "Kendall rank correlation on log scales and power-law regression including upper limits, using R package NADA",
+   "software": [
+    "R/CRAN NADA"
+   ],
+   "key_parameters": [
+    "Significance threshold p < 0.01"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "repeat the P_cav-M_mol test within 250 pc",
+   "method": "Recompute M_mol within 250 pc for all NCEGs and 5 BCGs and repeat the correlation test",
+   "software": [
+    "R/CRAN NADA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "test whether black hole mass drives jet power",
+   "method": "Correlate literature M_BH with P_cav for all 22 galaxies",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "assess the origin of the mm/submm continuum",
+   "method": "Compare F_con/F_1.4 ratios and overplot a power-law plus modified blackbody SED normalised to NGC 5044; t-test of NCEG vs BCG ratios",
+   "software": [],
+   "key_parameters": [
+    "gamma = -0.75, nu_0 = 1.5 THz, b = 1.5"
+   ],
+   "assumptions": [
+    "Dust temperature T = 10 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Kendall tau, P_cav vs M_mol (all 22 galaxies)",
+   "value": "0.472 (p = 1.9e-3)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Circumnuclear gas and jet power",
+     "quote": "The Kendall rank correlation coefficient on the logarithmic scales is $\\tau=0.472$ with a $p$-value of $1.9\\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "P_cav-M_mol regression A1, B1",
+   "value": "A1 = 1.3, B1 = -8.6 (P_cav ~ 4.1e42 (M_mol/1e7 Msun)^1.3 erg/s)",
+   "uncertainty": "not stated",
+   "units": "dimensionless (log-space slope and intercept)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Circumnuclear gas and jet power",
+     "quote": "we get $A_1 = 1.3$ and $B_1 = -8.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, P_cav vs M_mol within 250 pc",
+   "value": "0.25 (p = 0.16)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Circumnuclear gas and jet power",
+     "quote": "found that the correlation coefficient is $\\tau = 0.25$ and the $p$-value is $0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, L_con vs M_mol",
+   "value": "0.515 (p = 6.8e-4)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Circumnuclear gas and continuum emission",
+     "quote": "with a correlation coefficient of $\\tau = 0.515$ and a $p$-value of $6.8\\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_con-M_mol regression A2, B2",
+   "value": "A2 = 1.4, B2 = -11.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless (log-space slope and intercept)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Circumnuclear gas and continuum emission",
+     "quote": "we obtain $A_2=1.4$ and $B_2=-11.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, L_1.4 vs M_mol",
+   "value": "0.437 (p = 4.0e-3)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Circumnuclear gas and continuum emission",
+     "quote": "The correlation coefficient is $\\tau = 0.437$ and the $p$-value is $4.0\\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_1.4-M_mol regression A3, B3",
+   "value": "A3 = 2.0, B3 = -16.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless (log-space slope and intercept)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3 Circumnuclear gas and continuum emission",
+     "quote": "we obtain $A_3=2.0$ and $B_3=-16.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kendall tau, M_BH vs P_cav (22 galaxies)",
+   "value": "0.234 (p = 0.13)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.2 Black hole mass",
+     "quote": "For all 22 galaxies, the correlation coefficient is $\\tau = 0.234$, and the $p$-value is 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "L_con/L_1.4 scaling with L_1.4 in the extended sample",
+   "value": "L_con/L_1.4 proportional to L_1.4^-0.01",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.3 The origin of the mm/submm continuum emission",
+     "quote": "the relationship is $L_{\\rm con}/L_{\\rm 1.4}\\propto L_{\\rm 1.4}^{-0.01}$, and the trend disappears"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol NGC 4636",
+   "value": "0.0087",
+   "uncertainty": "0.0018",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.0087\\pm 0.0018$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol NGC 4374",
+   "value": "0.25",
+   "uncertainty": "0.15",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.25\\pm 0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol NGC 1316",
+   "value": "0.47",
+   "uncertainty": "0.16",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.47\\pm 0.16$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol NGC 4261",
+   "value": "2.6",
+   "uncertainty": "0.1",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$2.6\\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol IC 4296",
+   "value": "0.93",
+   "uncertainty": "0.18",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.93\\pm 0.18$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol NGC 315",
+   "value": "30",
+   "uncertainty": "1",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$30\\pm 1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA Pipeline versions per dataset (only 'the appropriate version' is given)",
+  "Which spectral windows and line-free channels were used for uvcontsub and for the continuum flux, per target",
+  "Image size, cell size, masking and the sigma reference for the tclean 3-sigma threshold",
+  "Primary-beam correction and treatment of the NGC 1316 mosaic",
+  "Whether self-calibration or any flux-scale correction was applied",
+  "Integrated-intensity channel ranges and extraction regions for the spectra and for the 500 pc aperture (centre position, shape)",
+  "How F_con was measured (aperture or point-source fit) and the continuum spectral windows per target",
+  "Luminosity distances used for each galaxy and exact K-correction inputs",
+  "Which survey/reference supplied each F_1.4 value (table footnote keys are incomplete in the text)",
+  "Exact censored-data regression and correlation routines within NADA (Kendall tau with censoring, regression estimator)",
+  "Reference for each M_BH and handling of its uncertainties in the correlation tests",
+  "How uncertainties on S_CO Delta v were derived and how the 3-sigma upper limits were converted to masses"
+ ],
+ "missing_for_reproduction": [
+  "Per-target line-free channels, spectral windows and tclean image/cell sizes and masks",
+  "Spectral extraction regions and integrated-intensity channel ranges",
+  "CASA/pipeline versions",
+  "Continuum flux measurement method",
+  "Origin of each F_1.4 and M_BH literature value",
+  "Exact NADA estimators for censored Kendall tau and regression"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public ALMA archive projects and Table 2 gives all numbers needed for the statistics, but imaging details, flux extraction regions and several literature inputs are unspecified.",
+ "rediscovery_reason": "Public ALMA data with a short recipe (moment maps, flux to M_mol via a stated formula, Kendall/NADA statistics) and numeric results in Table 2; exact values need assumed regions and imaging choices.",
+ "source_card": "cards/2024ApJ...964...29F/sonnet/card.md"
+}

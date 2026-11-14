@@ -1,0 +1,734 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025ApJ...987..152R",
+  "title": "Dynamical Inference from Polarized Light Curves of Sagittarius A<SUP>*</SUP>",
+  "year": 2025,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Ricarte, Angelo",
+  "n_authors": 6,
+  "arxiv_id": "2504.01114",
+  "doi": "10.3847/1538-4357/add729",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2016.1.00413.V",
+   "2016.1.01404.V"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we apply the differential geometry of planar curves to develop a new technique for estimating polarimetric rotation rates. Applying this technique to 230 GHz light curves of Sgr A$^*$"
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "Sagittarius A*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Can the average rotation rate and handedness of Q-U loops in Sgr A* polarized light curves be measured and used to constrain accretion flow dynamics via GRMHD models?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we apply the differential geometry of planar curves to develop a new technique for estimating polarimetric rotation rates."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01404.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01404.V and ADS/JAO.ALMA#2016.1.00413.V"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00413.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.01404.V and ADS/JAO.ALMA#2016.1.00413.V"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "212.1-216.1 and 226.1-230.1 GHz sub-bands; analysis focuses on 228.1-230.1 GHz",
+    "evidence": [
+     {
+      "loc": "3 Light Curve Analysis",
+      "quote": "These data were obtained at 212.1-216.1 GHz and 226.1-230.1 GHz as part of the EHT+ALMA observations of Sgr A$^*$"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "2017 April 6, 7, 11 (EHT+ALMA); 86-100 GHz on 2017 April 3",
+    "evidence": [
+     {
+      "loc": "6 Discussion",
+      "quote": "On April 3rd, 2017, polarized light curves in 85.3-89.3 GHz and 97.3-101.3 GHz were also recorded as a part of GMVA+ALMA observations"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "EHT",
+     "provided": {
+      "value": "2017 campaign context; ALMA phased array light curves",
+      "evidence": [
+       {
+        "loc": "3 Light Curve Analysis",
+        "quote": "as part of the EHT+ALMA observations of Sgr A$^*$"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "230 GHz polarized Sgr A* light curves (Stokes Q, U) from ALMA 2017",
+      "evidence": [
+       {
+        "loc": "3 Light Curve Analysis",
+        "quote": "millimeter light curves presented in (cite: Wielgus2022QU)"
+       }
+      ]
+     },
+     "citation": "(cite: Wielgus2022QU)"
+    },
+    {
+     "what": {
+      "value": "86-100 GHz GMVA+ALMA light curves, reduced and published",
+      "evidence": [
+       {
+        "loc": "6 Discussion",
+        "quote": "The light curves were reduced and published in (cite: Wielgus+2024)."
+       }
+      ]
+     },
+     "citation": "(cite: Wielgus+2024)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "KHARMA GRMHD library ray-traced with ipole: MAD/SANE, 5 spins, 9 inclinations, 4 Rhigh, aligned fields; analysed 15000-30000 tg",
+     "evidence": [
+      {
+       "loc": "2.1 Images from GRMHD",
+       "quote": "we consider the library run using the General Relativistic Magnetohydrodynamics (GRMHD) code KHARMA (cite: Prather2024), subsequently ray-traced using the General Relativistic Ray-tracing (GRRT) code ipole"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Simulation library and polarized images",
+      "evidence": [
+       {
+        "loc": "2.1 Images from GRMHD",
+        "quote": "We use as our starting point a library of polarized model images of Sgr A$^*$ presented in (cite: EHTC+2022e; EHTC+2024c)"
+       }
+      ]
+     },
+     "from_reference": "(cite: EHTC+2022e; EHTC+2024c), Patoka pipeline (cite: Wong+2022)"
+    },
+    {
+     "what": {
+      "value": "Windowed estimation across 10 windows of simulations",
+      "evidence": [
+       {
+        "loc": "4 Model Comparison",
+        "quote": "This is consistent with the methodology of (cite: EHTC+2024c)."
+       }
+      ]
+     },
+     "from_reference": "(cite: EHTC+2024c)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Calibrated Stokes Q,U light curve files (taken from Wielgus et al. 2022)",
+    "GRMHD library images (not public in paper)",
+    "Exact numerical differentiation and segmentation details beyond three-point scheme",
+    "Smoothing spline handling of gaps/weights"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Pre-process light curves",
+    "method": {
+     "value": "Split into segments at gaps >=1.8 min, fit smoothing splines to Q and U, trim edge points",
+     "evidence": [
+      {
+       "loc": "3 Light Curve Analysis",
+       "quote": "we fit a smoothing spline of polynomial order $\\kappa \\in \\{3,4,5\\}$ with smoothing factor $\\sigma \\in \\{0.1,0.5\\}$ using the Python function `scipy.interpolate.UnivariateSpline`."
+      }
+     ]
+    },
+    "software": [
+     "scipy"
+    ],
+    "key_parameters": [
+     {
+      "value": "kappa in {3,4,5}, sigma in {0.1,0.5}, n_T in {0,1,2,3}",
+      "evidence": [
+       {
+        "loc": "3 Light Curve Analysis",
+        "quote": "$\\kappa \\in \\{3,4,5\\}$, $\\sigma \\in \\{0.1,0.5\\}$, and $n_T \\in \\{0,1,2,3\\}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Splines visually characterize Q and U without obvious over-fitting",
+     "evidence": [
+      {
+       "loc": "3 Light Curve Analysis",
+       "quote": "We find that these splines are generally able to characterize the $Q$ and $U$ behavior well, without obvious over-fitting."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compute Q-U rotation rate and clockwise fraction",
+    "method": {
+     "value": "Signed curvature from three-point derivatives, integrated to total curvature; Omega_QU = slope; f_CW from sign per scan; mean and std over meta-parameter grid as systematic error",
+     "evidence": [
+      {
+       "loc": "3 Light Curve Analysis",
+       "quote": "We report the mean and use the standard deviation of these values as a systematic error bar"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "speed limit 2pi/5 rad per tg; curvature zeroed above it",
+      "evidence": [
+       {
+        "loc": "2.2 Differential Geometry of Loops",
+        "quote": "we place a “speed limit” of $2\\pi / 5 \\ \\mathrm{rad}\\,\\mathrm{t_g}^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Applied to GRMHD example; 5 tg boxcar smoothed data compared",
+     "evidence": [
+      {
+       "loc": "Light Curve Analysis",
+       "quote": "we also compute an all-day fit on light curves first smoothed with a boxcar filter with duration 5$t_g$, resulting in $\\Omega_{QU} = -2.8 \\pm 1.0 \\ \\mathrm{deg} \\, t_g^{-1}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compare with GRMHD library",
+    "method": {
+     "value": "Compute Omega_QU and f_CW in 10 windows of 1500 tg per model; models pass if 1 sigma regions overlap observations",
+     "evidence": [
+      {
+       "loc": "4 Model Comparison",
+       "quote": "Models pass if their 1$\\sigma$ confidence region overlaps with the 1$\\sigma$ confidence region of observations."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "25 tg segments within 1500 tg windows",
+      "evidence": [
+       {
+        "loc": "4 Model Comparison",
+        "quote": "we consider the fraction of $25 \\ t_g$ segments within each $1500 \\ t_g$ window which are clockwise."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "90 percent overlap test as robustness check",
+     "evidence": [
+      {
+       "loc": "Scoring Consistent with Previous EHT Studies",
+       "quote": "In previous EHT studies, a more permissive 90 percent confidence region overlap was used"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "scipy.interpolate.UnivariateSpline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Smoothing splines of Q and U",
+     "evidence": [
+      {
+       "loc": "3 Light Curve Analysis",
+       "quote": "using the Python function `scipy.interpolate.UnivariateSpline`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "KerrBAM",
+    "version": "not stated",
+    "used_for": {
+     "value": "Hotspot Q-U loop toy model",
+     "evidence": [
+      {
+       "loc": "6 Discussion",
+       "quote": "generated using the code `KerrBAM` (cite: Palumbo_2022)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "KHARMA",
+    "version": "not stated",
+    "used_for": {
+     "value": "GRMHD simulations",
+     "evidence": [
+      {
+       "loc": "2.1 Images from GRMHD",
+       "quote": "General Relativistic Magnetohydrodynamics (GRMHD) code KHARMA (cite: Prather2024)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ipole",
+    "version": "not stated",
+    "used_for": {
+     "value": "GRRT ray tracing",
+     "evidence": [
+      {
+       "loc": "2.1 Images from GRMHD",
+       "quote": "General Relativistic Ray-tracing (GRRT) code ipole (cite: Moscibrodzka&Gammie2018)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "All-days Q-U rotation rate",
+    "value": "-2.6",
+    "uncertainty": "0.6",
+    "units": "deg tg^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "All Days | $-2.6 \\pm 0.6$ | $0.65 \\pm 0.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "All-days clockwise fraction",
+    "value": "0.65",
+    "uncertainty": "0.09",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "All Days | $-2.6 \\pm 0.6$ | $0.65 \\pm 0.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "April 11th T0-T7 rotation rate",
+    "value": "-4.0",
+    "uncertainty": "0.7",
+    "units": "deg tg^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "April 11th ($T_0$-$T_7$) | $-4.0 \\pm 0.7$ | $0.82 \\pm 0.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "All days 5tg pre-smoothed rate",
+    "value": "-2.8",
+    "uncertainty": "1.0",
+    "units": "deg tg^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "All Days (5$t_g$ pre-smoothed) | $-2.8 \\pm 1.0$ | $0.67 \\pm 0.11$"
+     }
+    ]
+   },
+   {
+    "quantity": "100 GHz rotation rate",
+    "value": "1.4",
+    "uncertainty": "0.7",
+    "units": "deg tg^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6 Discussion",
+      "quote": "$\\Omega_{QU} = 1.4 \\pm 0.7 \\ \\mathrm{deg}\\,\\mathrm{t_g}^{-1}$ at 100 GHz"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Face-on clockwise MAD models are most likely to match; SANE models too depolarized",
+    "evidence": [
+     {
+      "loc": "4 Model Comparison",
+      "quote": "face-on and clockwise ($i>90^\\circ$) MAD models are most likely to match observational constraints."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Clockwise Q-U motion exists on quiescent days, not only post-flare",
+    "experiment": "Curvature-based rotation rate on 2017 ALMA light curves",
+    "result": "Omega_QU=-2.6±0.6 deg/tg, f_CW=0.65±0.09",
+    "finding": "Clockwise motion on all three days",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3 Light Curve Analysis",
+      "quote": "We consistently recover clockwise motion in the $Q-U$ plane, that is $\\Omega_{QU} < 0$, for all time intervals of data, not only April 11th."
+     }
+    ]
+   },
+   {
+    "hypothesis": "GRMHD models can be constrained by Omega_QU and f_CW",
+    "experiment": "Compare 1 sigma overlap for model library",
+    "result": "Face-on clockwise MAD models pass",
+    "finding": "Favors clockwise-rotating strongly magnetized flows, supporting external Faraday screen",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "face-on, clockwise-rotating models with strong magnetic fields are most likely to be consistent with the observations."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Antonopoulou+2025 model of counter-clockwise disk with clockwise hotspots appears disfavored",
+     "evidence": [
+      {
+       "loc": "6 Discussion",
+       "quote": "Our analysis appears to disfavor this model"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "86-100 GHz results inconclusive",
+     "evidence": [
+      {
+       "loc": "6 Discussion",
+       "quote": "We therefore report inconclusive results at this band."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Systematic error from spline meta-parameter grid is not a true statistical uncertainty",
+    "Only three days of data; correlated segments",
+    "Method insensitive to Faraday screen so inference is indirect",
+    "Model library limited to thermal electrons, aligned fields"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "GRMHD image library access",
+    "Light curve data tables",
+    "Analysis code"
+   ],
+   "estimated_data_volume_inferred": "small (light curves only); GRMHD library large",
+   "score_inferred": 3,
+   "score_reason": "Method is well specified and light curves are public via prior paper, but simulation library and code not stated as released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Needs the GRMHD library and published light curves; recipe depends on external data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Wielgus2022QU)",
+     "why": "Source of light curves and loop analysis"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: EHTC+2024c)",
+     "why": "Simulation library and best-bet model"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "EHT 2017 campaign",
+    "GMVA+ALMA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-3d3994d328c3ece156ffbc87a09dd2eb",
+  "batch_id": "msgbatch_011QjbLPHqMEK6drDa6QExga",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:40:50",
+  "usage": {
+   "input_tokens": 27978,
+   "output_tokens": 5231,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05474,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 35,
+  "quotes_ok": 35,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 68,
+   "stated": 25,
+   "rate": 0.368
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:10:03",
+  "custom_id": "repair-sonnet-bf2bf1bd72dcce36d1255a653c308025",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].validation.evidence[0]",
+    "old": null,
+    "new": "we also compute an all-day fit on light curves first smoothed with a boxcar filter with duration 5$t_g$, resulting in $\\Omega_{QU} = -2.8 \\pm 1.0 \\ \\mathrm{deg} \\, t_g^{-1}$"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

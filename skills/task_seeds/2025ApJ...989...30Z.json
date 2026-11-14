@@ -1,0 +1,305 @@
+{
+ "bibcode": "2025ApJ...989...30Z",
+ "title": "SO Emission in the Dynamically Perturbed Protoplanetary Disks around CQ Tau and MWC 758",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ade683",
+ "arxiv_id": "2506.16481",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Is SO emission in the spiral-hosting, dynamically perturbed disks of CQ Tau and MWC 758 detected, where does it arise, and is it linked to dynamical perturbations?",
+ "alma_project_codes": [
+  "2013.1.00498.S",
+  "2016.A.00026.S",
+  "2017.1.01404.S",
+  "2017.1.00940.S"
+ ],
+ "data": {
+  "bands": "Band 6 (SO 6_5-5_4 at 219.949 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CQ Tau stellar mass 1.47+/-0.18 Msun",
+    "evidence": [
+     {
+      "loc": "Sources, data, self-calibration: The perturbed CQ Tau and MWC 758 disks",
+      "quote": "$M_\\star=1.47\\pm0.18\\ M_\\odot$ (cite: VioqueEtal2018)"
+     }
+    ]
+   },
+   "citation": "(cite: VioqueEtal2018)"
+  },
+  {
+   "what": {
+    "value": "Distances to CQ Tau and MWC 758 (149.4 and 155.9 pc)",
+    "evidence": [
+     {
+      "loc": "Sources, data, self-calibration: The perturbed CQ Tau and MWC 758 disks",
+      "quote": "$d=149.4\\pm1.3$ pc (cite: GaiaCollaboration2020)"
+     },
+     {
+      "loc": "Sources, data, self-calibration: The perturbed CQ Tau and MWC 758 disks",
+      "quote": "$d=155.9\\pm0.8$ pc (cite: GaiaCollaboration2020)"
+     }
+    ]
+   },
+   "citation": "(cite: GaiaCollaboration2020)"
+  },
+  {
+   "what": {
+    "value": "Disk geometry (inclination, PA, stellar mass, distance, systemic velocity) used for the Keplerian mask and for gofish stacking (Table A3)",
+    "evidence": [
+     {
+      "loc": "Imaging and summary plots",
+      "quote": "and the geometric parameters of (cite: CuroneEtal2025) and (cite: IzquierdoEtal2025), listed in"
+     }
+    ]
+   },
+   "citation": "(cite: CuroneEtal2025); (cite: IzquierdoEtal2025)"
+  },
+  {
+   "what": {
+    "value": "KS-band Qphi SPHERE scattered-light image of both disks",
+    "evidence": [
+     {
+      "loc": "SO emission",
+      "quote": "the comparison between SO peak intensity and the $K_{\\rm s}$ band $Q_\\phi$ polarized differential image of (cite: RenEtal2023b)"
+     }
+    ]
+   },
+   "citation": "(cite: RenEtal2023b)"
+  },
+  {
+   "what": {
+    "value": "Stellar and disk parameters, and SO fluxes, of the other SO-bearing Class II disks (Table 1; per-row references given by number only)",
+    "evidence": [
+     {
+      "loc": "Comparison with the other SO-bearing Class II disks",
+      "quote": "The stellar and disk parameters of interest and the converted SO fluxes are summarized in"
+     }
+    ]
+   },
+   "citation": "references numbered 1-26 in the Ref.s column of Table 1 (not resolved in the text)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate archival EBs and build continuum-subtracted datasets",
+   "method": "Pseudo-continuum from line-flagged data, per-EB phase-only self-cal, EB alignment, iterative phase-only self-cal (short then combined baselines), amplitude rescaling, two amplitude+phase cycles, apply to full data, bin 30 s, uvcontsub",
+   "software": [
+    "CASA",
+    "tclean",
+    "statwt",
+    "gaincal",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Pseudo-continuum made by flagging +/-15 km/s around 12CO, 13CO, C18O, DCN, SO, H2CO lines",
+    "Imaging of pseudo-continuum: multiscale, briggs robust=0.5, smallscalebias=0.6, cycleniter=300, gain=0.3",
+    "First phase-only round: infinite solint, antennas with <3 baselines and SNR<4 rejected",
+    "Amplitude+phase cycles: infinite solint, SNR<5 solutions flagged, amplitude gains >20% flagged"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image the fiducial continuum",
+   "method": "tclean multiscale continuum imaging from the final self-calibrated, 30 s-averaged data",
+   "software": [
+    "CASA",
+    "tclean",
+    "imstat"
+   ],
+   "key_parameters": [
+    "robust=0.0 (CQ Tau), robust=1.0 (MWC 758)",
+    "gain=0.02"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image SO line cubes",
+   "method": "tclean cube imaging of continuum-subtracted data, multiscale, natural weighting with uv-taper, Keplerian or continuum mask",
+   "software": [
+    "CASA",
+    "tclean",
+    "keplerian_mask"
+   ],
+   "key_parameters": [
+    "CQ Tau: 23 channels of 0.7 km/s; MWC 758: 7 channels of 1.4 km/s",
+    "gain=0.01, 1 sigma threshold",
+    "natural weighting with Gaussian uv-taper 0.05 arcsec (CQ Tau) and 0.25 arcsec (MWC 758)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Detect SO and measure line fluxes by shift-and-stack",
+   "method": "gofish extraction of spectra from circular apertures, shifted to a common line centre assuming Keplerian rotation, stacked, and integrated",
+   "software": [
+    "gofish"
+   ],
+   "key_parameters": [
+    "Aperture radius set where the cumulative SO emission flattens: 0.33 arcsec (CQ Tau), 0.80 arcsec (MWC 758)",
+    "Cubes over >200 km/s velocity range to estimate background noise in line-free channels"
+   ],
+   "assumptions": [
+    "Keplerian velocity field used to shift spectra"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Make SO moment maps",
+   "method": "bettermoments integrated intensity, peak intensity and velocity maps without channel or threshold clipping",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "No channel or noise clipping applied"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Convert literature SO fluxes to a common 6_5-5_4 flux at 140 pc",
+   "method": "LTE optically thin flux ratio (T = 30, 50, 70 K) and optically thick Rayleigh-Jeans ratio",
+   "software": [],
+   "key_parameters": [
+    "Rescale fluxes to a common distance of 140 pc"
+   ],
+   "assumptions": [
+    "Optically thick case: same excitation temperature and emitting area for both transitions"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test correlations of SO flux with stellar and disk properties",
+   "method": "Pearson correlation coefficient and p-values between SO flux and stellar/disk parameters",
+   "software": [],
+   "key_parameters": [
+    "Significance threshold p<0.05"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SO J_N=6_5-5_4 integrated flux, CQ Tau",
+   "value": "72.4",
+   "uncertainty": "+/-14.6 (4.9 sigma)",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO emission",
+     "quote": "with fluxes of $72.4\\pm14.6$ ($4.9\\sigma$ detection) and $31.4\\pm9.3$ ($3.4\\sigma$ detection) mJy km s$^{-1}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "SO J_N=6_5-5_4 integrated flux, MWC 758",
+   "value": "31.4",
+   "uncertainty": "+/-9.3 (3.4 sigma)",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SO emission",
+     "quote": "with fluxes of $72.4\\pm14.6$ ($4.9\\sigma$ detection) and $31.4\\pm9.3$ ($3.4\\sigma$ detection) mJy km s$^{-1}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak SNR, CQ Tau and MWC 758 fiducial images",
+   "value": "~90 and ~170",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data and self-calibration",
+     "quote": "We measured a peak signal-to-noise ratio (SNR) of $\\approx90$ and $\\approx170$ in our fiducial continuum images of CQ Tau and MWC 758."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux, CQ Tau",
+   "value": "146.80",
+   "uncertainty": "+/-0.37",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "$146.80\\pm0.37$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux, MWC 758",
+   "value": "58.01",
+   "uncertainty": "+/-0.30",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "$58.01\\pm0.30$"
+    }
+   ]
+  },
+  {
+   "quantity": "Image RMS relative to expected thermal noise",
+   "value": "within 24.3% and 91.6%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data and self-calibration",
+     "quote": "Their root mean square (RMS) noise is within 24.3% and 91.6% of the expected thermal noise"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient, log SO flux vs linear stellar age",
+   "value": "-0.82",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Correlation test",
+     "quote": "with a PCC of $-0.82$ when SO flux is in logarithmic space and age is in linear space"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel size and image size (number of pixels) for continuum and cube imaging",
+  "Systemic-velocity-centred line-free channel ranges for each EB beyond the +/-15 km/s flagging rule",
+  "Exact CASA tclean threshold values and niter per image, and the continuum mask used for each cube",
+  "The adopted Keplerian mask geometry beyond Table A3 (e.g. emission surface height, mask width)",
+  "Which gofish options (aperture shape, shifting method, pixel/velocity binning) were used for stacking",
+  "Whether the archive's pipeline-calibrated products were used or the ARC re-calibrated raw data; pipeline version",
+  "Per-EB amplitude rescaling factors and the final self-calibration tables",
+  "The reference list behind the numeric keys in Table 1 (needed to reproduce the literature comparison)",
+  "Numerical values of stellar age uncertainties handling in the Pearson correlation (how upper limits and asymmetric errors were treated)"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel/image sizes and tclean thresholds (partly in the public scripts)",
+  "gofish stacking configuration details",
+  "Table 1 reference list resolution for the literature SO fluxes and stellar parameters",
+  "Stated pipeline vs raw starting point for each archived EB"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public ALMA data, a detailed self-calibration recipe, released scripts, and numeric SO fluxes; missing some image-size and stacking details and heavy data volume",
+ "rediscovery_reason": "Data are public, scripts are released and the key result is a numeric SO flux in both disks that can be re-derived by stacking",
+ "source_card": "cards/2025ApJ...989...30Z/sonnet/card.md"
+}

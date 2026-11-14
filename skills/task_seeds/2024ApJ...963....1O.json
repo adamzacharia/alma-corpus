@@ -1,0 +1,254 @@
+{
+ "bibcode": "2024ApJ...963....1O",
+ "title": "\"Beads-on-a-string\" Star Formation Tied to One of the Most Powerful Active Galactic Nucleus Outbursts Observed in a Cool-core Galaxy Cluster",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad1101",
+ "arxiv_id": "2312.06762",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "star_formation",
+  "agn_and_quasars"
+ ],
+ "question": "How do the cooling ICM, an AGN outburst, the warm ionized gas, cold molecular gas and the 'beads on a string' star formation relate in the merging cool-core cluster SDSS 1531?",
+ "alma_project_codes": [
+  "2015.1.01426.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "Compact and Extended configurations",
+  "angular_resolution": "0.53'' x 0.33'' (2.51 x 1.59 kpc), PA = -1.15 deg",
+  "sensitivity": "0.22 mJy/beam per 20 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Systemic redshift z = 0.3350 ± 0.0002 of southern BCG",
+    "evidence": [
+     {
+      "loc": "2.5 Adopting a Systemic Velocity",
+      "quote": "used archival SDSS spectroscopy centered on the southern BCG’s nucleus to pin the stellar redshift to $z = 0.3350 \\pm 0.0002$"
+     }
+    ]
+   },
+   "citation": "(cite: tremblay_30_2014)"
+  },
+  {
+   "what": {
+    "value": "Strong-lensing mass profile of the cluster",
+    "evidence": [
+     {
+      "loc": "3.1.4 Cooling and Free-fall Timescales",
+      "quote": "The strong-lensing analysis yields a cylindrical mass of $M(<R_E) = 2.32 \\pm 0.01 \\times 10^{13} M_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: sharon_mass_2014)"
+  },
+  {
+   "what": {
+    "value": "Empirical dust opacity kappa_500um = 0.051 m^2/kg, beta = 1.8",
+    "evidence": [
+     {
+      "loc": "3.4.4 Undetected Continuum",
+      "quote": "$\\kappa_{500 \\mu\\mathrm{m}} = 0.051$ m$^2$ kg$^{−1}$, and $\\beta = 1.8$"
+     }
+    ]
+   },
+   "citation": "(cite: clark_empirical_2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the CO(3-2) cube",
+   "method": "Pipeline calibration then CLEAN, testing weighting, channel width and uv-taper",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting, 20 km/s channels, no taper"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make moment maps",
+   "method": "bettermoments quadratic fit after smoothing and S/N clipping",
+   "software": [
+    "bettermoments"
+   ],
+   "key_parameters": [
+    "clip S/N < 3.5 sigma"
+   ],
+   "assumptions": [
+    "systemic velocity cz = 100,430 km/s (southern nucleus, z=0.3350)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas mass",
+   "method": "Fit four-component Gaussian to aperture spectrum, convert integral to H2 mass with CO-to-H2 factor",
+   "software": [
+    "pyspeckit"
+   ],
+   "key_parameters": [
+    "CO(3-2)/CO(1-0)=0.8; D_L=1767 Mpc"
+   ],
+   "assumptions": [
+    "X_CO = Milky Way disk value 2e20 cm^-2 (K km/s)^-1, ~30% uncertainty"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain continuum and dust mass",
+   "method": "2-sigma continuum upper limit converted to dust mass via modified blackbody",
+   "software": [],
+   "key_parameters": [
+    "beta = 1.8, kappa_500um = 0.051 m^2/kg"
+   ],
+   "assumptions": [
+    "dust temperature 25 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare CO with Halpha and test free-fall and ram-pressure scenarios",
+   "method": "Reproject ALMA maps onto GMOS grid for velocity difference; Hernquist free-fall model on PV diagram; ram-pressure separation timescale",
+   "software": [
+    "astropy"
+   ],
+   "key_parameters": [
+    "free-fall: inclination 72 deg, v_ICM +600 km/s, drop height 16 kpc"
+   ],
+   "assumptions": [
+    "Hernquist potential, M ~1e13 Msun within 30 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) integrated flux",
+   "value": "1.7",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4.3 Mass Distribution",
+     "quote": "yielded an emission integral of $\\sim 1.7 \\pm 0.3$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular H2 gas mass",
+   "value": "3.7e10",
+   "uncertainty": "0.7e10",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4.3 Mass Distribution",
+     "quote": "these results give a $H_2$ gas mass of $(3.7 \\pm 0.7) \\times 10^{10}\\text{ M}_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass upper limit",
+   "value": "3.7e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4.4 Undetected Continuum",
+     "quote": "we obtain a maximum dust mass of $3.7 \\times 10^8$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum 2-sigma upper limit",
+   "value": "4.87e-4",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4.4 Undetected Continuum",
+     "quote": "we place $2\\sigma$ upper limits of $4.87 \\times10^{-4}$ mJy beam$^{-1}$ on the continuum"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha star formation rate (uncorrected)",
+   "value": "0.60",
+   "uncertainty": "0.009",
+   "units": "Msun/yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.3.2 Rate of Star Formation",
+     "quote": "we use Equation (2) in (cite: kennicutt_global_1998) to obtain a total SFR of $0.60 \\pm 0.009$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cavity enthalpy",
+   "value": "~1e61",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1.4",
+     "quote": "we obtain a cavity enthalpy of $\\sim 1 \\times 10^{61}$ erg"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index of Source C",
+   "value": "-1.7",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "C- Central avocado-shaped source"
+    }
+   ]
+  },
+  {
+   "quantity": "CO velocity offset from southern BCG",
+   "value": "~+700",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.4.2 Velocity Structure",
+     "quote": "significantly redshifted by $\\sim +700$ km s$^{-1}$ with respect to the stellar velocity of the southern BCG"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Briggs robust value tested",
+  "Line-free channels and order used for continuum subtraction",
+  "clean threshold, mask, niter, cell and image size",
+  "Which of the Compact/Extended execution blocks were combined in the final cube",
+  "Aperture definition and four-Gaussian fit initial guesses for spectrum",
+  "Rest frequency/velocity frame used for channel binning",
+  "Whether archive pipeline products were used or the pipeline was re-run",
+  "Exact definition of the 2-sigma continuum upper-limit and region"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters and masks",
+  "continuum subtraction channels",
+  "spectrum extraction aperture",
+  "Briggs robust value"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and code, but imaging parameters are only partly given.",
+ "rediscovery_reason": "Public ALMA data, numeric mass and flux results, and a mostly specified recipe.",
+ "source_card": "cards/2024ApJ...963....1O/sonnet/card.md"
+}

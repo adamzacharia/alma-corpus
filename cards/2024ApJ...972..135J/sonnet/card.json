@@ -1,0 +1,697 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...972..135J",
+  "title": "Circular Polarization of Simulated Images of Black Holes",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Joshi, Abhishek V.",
+  "n_authors": 5,
+  "arxiv_id": "2406.15653",
+  "doi": "10.3847/1538-4357/ad5b51",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00764.S",
+   "2016.1.01154.V",
+   "2016.1.01404.V"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In this paper we compare unresolved circular polarization (CP) measurements to a library of models, where each model is characterized by a distribution of CP over time."
+   },
+   {
+    "loc": "6.1 Sgr A*",
+    "quote": "For Sgr A\\* the observations from ALMA given in (cite: bower_alma_2018) and (cite: wielgus_orbital_2022) are used as a constraint on the CP"
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "Sgr A*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "M87*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Which GRMHD/GRRT black hole models produce net circular polarization (v_net) consistent with unresolved ALMA 1.3 mm measurements of Sgr A* and M87*, and how does v_net depend on model parameters?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that ALMA observations of Sgr A\\* are inconsistent with all edge-on ($i = 90^\\circ$) models."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00764.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00764.S, ADS/JAO.ALMA#2016.1.01154.V and"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.01154.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00764.S, ADS/JAO.ALMA#2016.1.01154.V and"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.01404.V",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2016.1.01404.V."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "1.3 mm (ALMA) CP measurements",
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "Measurements of CP fraction at 1.3mm for EHT targets."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Submillimeter Array (SMA)",
+     "provided": {
+      "value": "Unresolved CP of Sgr A* (Muñoz et al. 2012), listed in Table but not used for comparison",
+      "evidence": [
+       {
+        "loc": "Table 6",
+        "quote": "we only use the ALMA epoch $v_\\mathrm{net}$ for comparing our simulations with Sgr A\\*."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALMA Sgr A* v_net measurements (8 data points, -1.5% to -0.92%) used as constraint",
+      "evidence": [
+       {
+        "loc": "6.1 Sgr A*",
+        "quote": "(8 data points, assumed uncorrelated, ranging from $-1.5\\%$ to $-0.92\\%$)"
+       }
+      ]
+     },
+     "citation": "(cite: bower_alma_2018); (cite: wielgus_orbital_2022)"
+    },
+    {
+     "what": {
+      "value": "M87* limit |v_net|<0.8%",
+      "evidence": [
+       {
+        "loc": "6.2 M87*",
+        "quote": "CP measurements of M87\\* given in (cite: Goddi2021) constrain $|v_\\mathrm{net}|<0.8\\%$."
+       }
+      ]
+     },
+     "citation": "(cite: Goddi2021)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "KHARMA GRMHD library (V3), ray-traced with ipole; 600 images per model over 15000-30000 GM/c^3; spin, MAD/SANE, R_high, inclination, field sign varied",
+     "evidence": [
+      {
+       "loc": "3.3 Image Library Parameters",
+       "quote": "Each model contains 600 images evenly spaced in the interval $15000 \\mbox{--} 30000\\; GM/c^3$"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Model comparison procedure (KS tests) similar to earlier EHT Sgr A* paper",
+      "evidence": [
+       {
+        "loc": "6.1 Sgr A*",
+        "quote": "To test the models, a procedure similar to that in is used."
+       }
+      ]
+     },
+     "from_reference": "EHT Sgr A* Paper V (reference not given in text)"
+    },
+    {
+     "what": {
+      "value": "GRMHD library and modeling procedure",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the modeling procedure is described in detail in (cite: wong_patoka_2022)."
+       }
+      ]
+     },
+     "from_reference": "(cite: wong_patoka_2022)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact ALMA epochs/values for the 8 data points beyond Table 6",
+    "Public availability of the model library and analysis scripts",
+    "ipole image field of view and exact ray-tracing settings",
+    "KS test implementation details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Generate model library",
+    "method": {
+     "value": "KHARMA GRMHD simulations ray-traced with ipole over spin, MAD/SANE, R_high, inclination, field sign",
+     "evidence": [
+      {
+       "loc": "3.2 Radiative Transfer Numerical Model",
+       "quote": "We image the GRMHD simulation snapshots using the general relativistic ray-tracing code `ipole `(cite: ipole18)."
+      }
+     ]
+    },
+    "software": [
+     "KHARMA",
+     "ipole"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Thermal Maxwell-Jüttner electrons; flux density scaled to 2.4 Jy (Sgr A*)",
+      "evidence": [
+       {
+        "loc": "3.3 Image Library Parameters",
+        "quote": "the average flux is within $5\\%$ of $0.7$ Jy and $2.4$ Jy, respectively"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Convergence tests with time, GRMHD and GRRT resolution",
+     "evidence": [
+      {
+       "loc": "5 CP Distributions Across All Models",
+       "quote": "the $v_\\mathrm{net}$ distributions appear converged with respect to GRMHD resolution and GRRT image resolution."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Compare model v_net distributions to ALMA data",
+    "method": {
+     "value": "Two-sided KS test between model (sampled every 400M) and observations; fail if both aligned and reversed field give p<0.01",
+     "evidence": [
+      {
+       "loc": "6.1 Sgr A*",
+       "quote": "The model is sampled every 400M to obtain an approximately uncorrelated sample."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "p<0.01 threshold",
+      "evidence": [
+       {
+        "loc": "6.1 Sgr A*",
+        "quote": "giving 99% confidence in rejecting the null hypothesis that the model and observations arose from the same distribution."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit mean v_net of Sgr A* MAD models",
+    "method": {
+     "value": "Symbolic regression",
+     "evidence": [
+      {
+       "loc": "5.2 Fits",
+       "quote": "which we extracted using the `PySR` symbolic regression code"
+      }
+     ]
+    },
+    "software": [
+     "PySR"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Fit within 0.3% for ~80% of models",
+     "evidence": [
+      {
+       "loc": "5.2 Fits",
+       "quote": "The fit accurately measures the mean $v_\\mathrm{net}$ of roughly 80% of the models to within 0.3% (absolute difference)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "KHARMA",
+    "version": "2022.3",
+    "used_for": {
+     "value": "GRMHD simulations",
+     "evidence": [
+      {
+       "loc": "3.1 GRMHD Models",
+       "quote": "The models are run using KHARMA[^1](cite: prather_grmhd_2022; prather_2024_kharma_zenodo)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ipole",
+    "version": "not stated",
+    "used_for": {
+     "value": "GR ray tracing / polarized radiative transfer",
+     "evidence": [
+      {
+       "loc": "3.2 Radiative Transfer Numerical Model",
+       "quote": "We image the GRMHD simulation snapshots using the general relativistic ray-tracing code `ipole `(cite: ipole18)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PySR",
+    "version": "not stated",
+    "used_for": {
+     "value": "Symbolic regression fit of mean v_net",
+     "evidence": [
+      {
+       "loc": "5.2 Fits",
+       "quote": "which we extracted using the `PySR` symbolic regression code"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "MAD models passing CP constraint",
+    "value": "27/180 (15%)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6.1 Sgr A*",
+      "quote": "We have $27/180 = 15\\%$ of the MAD models pass and $43/180 = 24\\%$ of the SANE models pass the CP constraint."
+     }
+    ]
+   },
+   {
+    "quantity": "SANE models passing CP constraint",
+    "value": "43/180 (24%)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6.1 Sgr A*",
+      "quote": "We have $27/180 = 15\\%$ of the MAD models pass and $43/180 = 24\\%$ of the SANE models pass the CP constraint."
+     }
+    ]
+   },
+   {
+    "quantity": "One-zone CP fraction Sgr A*",
+    "value": "5.1",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.5 One-zone Model",
+      "quote": "\\mathrm{CP_{SgrA^*}} = 5.1\\%"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Edge-on models produce v_net≈0 and are disfavored; passing MAD models have dipole moment pointing away from observer and clockwise rotation",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We also note that in 26 of the 27 passing MAD models the accretion flow rotates clockwise on the sky."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do ALMA unresolved CP data constrain Sgr A* models?",
+    "experiment": "KS tests of model v_net distributions against ALMA data",
+    "result": "All edge-on MAD models fail; passing MADs have field pointing away from observer",
+    "finding": "CP constrains inclination, field direction and flow rotation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "only models with magnetic dipole moment pointing away from the observer are consistent with ALMA data."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Best-bet EHT models are consistent with CP",
+    "experiment": "KS test",
+    "result": "All best-bet models fail",
+    "finding": "Prograde high-R_high low inclination MADs do not give sufficient CP",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "6.1 Sgr A*",
+      "quote": "All the best-bet models given in fail the CP constraint."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Models highly variable with frequent v_net sign crossings unlike observations",
+     "evidence": [
+      {
+       "loc": "7 Discussion",
+       "quote": "The primary caveat is that the models are highly variable in Stokes I and V when compared to Sgr A\\*."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Eight ALMA points assumed uncorrelated",
+    "Single GRMHD library with fixed adiabatic index and thermal electrons",
+    "Extended emission assumed negligible"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "KHARMA publicly available at GitHub",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "It is publicly available at <https://github.com/AFD-Illinois/kharma>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Model library images not stated as released",
+    "ipole settings"
+   ],
+   "estimated_data_volume_inferred": "Negligible ALMA data; large simulation library",
+   "score_inferred": 3,
+   "score_reason": "Observational inputs are literature values; theory pipeline described but library and details not fully released.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results depend on a large simulation library not provided; ALMA data not reprocessed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: wong_patoka_2022)",
+     "why": "GRMHD library and modeling procedure"
+    },
+    {
+     "citation": "(cite: ipole18)",
+     "why": "Polarized ray-tracing code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: wielgus_orbital_2022)",
+     "why": "ALMA Sgr A* CP data"
+    },
+    {
+     "citation": "(cite: bower_alma_2018)",
+     "why": "ALMA Sgr A* CP data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f5d96bf83fa25d4e314a841e79accf3a",
+  "batch_id": "msgbatch_015xvy2vr7Jjr74fC6RAsmHN",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:10:05",
+  "usage": {
+   "input_tokens": 60914,
+   "output_tokens": 4510,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.084071,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 31,
+  "quotes_ok": 31,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 21,
+   "rate": 0.304
+  },
+  "evidence_ok": true
+ }
+}

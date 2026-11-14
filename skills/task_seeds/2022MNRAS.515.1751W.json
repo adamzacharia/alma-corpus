@@ -1,0 +1,777 @@
+{
+ "bibcode": "2022MNRAS.515.1751W",
+ "title": "Dual constraints with ALMA: new [O III] 88-μm and dust-continuum observations reveal the ISM conditions of luminous LBGs at z   7",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1905",
+ "arxiv_id": "2207.00022",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the ISM conditions (ionisation state, metallicity, dust temperature, and dust mass) of five luminous Lyman-break galaxies at z ~ 7 revealed by ALMA observations of [O III] 88 μm, [C II] 158 μm, [N II] 205 μm, and dust continuum?",
+ "alma_project_codes": [
+  "2015.1.01111.S",
+  "2018.1.01359.S",
+  "2018.1.00429.S",
+  "2018.1.01551.S",
+  "2017.1.00604.S",
+  "2015.1.00540.S",
+  "2018.1.00085.S",
+  "2018.1.00933.S",
+  "2019.1.01611.S",
+  "2019.1.01524.S"
+ ],
+ "data": {
+  "bands": "Band 5, Band 6, Band 8",
+  "arrays": "12-meter ALMA antennae",
+  "angular_resolution": "0.4'' x 0.3'' to 1.4'' x 1.2'' (natural weighting); < 0.2'' for high-resolution [C II] data",
+  "sensitivity": "45.0 to 272 μJy/beam per 40 MHz channel ([C II]); 429 to 1015 μJy/beam per 70 MHz channel ([O III]); 166 μJy/beam per 30 MHz channel ([N II])"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Target coordinates, redshifts, UV magnitudes, UV luminosities, stellar masses, and EW([O III] + Hβ)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "These are followed by general properties of the galaxies: the apparent magnitude (𝑚UV) and luminosity (𝐿UV) of the rest-frame UV, the stellar mass (𝑀∗), and the EW of the optical [O iii] and Hβ lines, EW([O iii] + Hβ), as presented in the works by Smit et al. (2015, 2018) and Schouws et al. (2022a,b)."
+     }
+    ]
+   },
+   "citation": "Smit et al. (2015, 2018); Schouws et al. (2022a,b)"
+  },
+  {
+   "what": {
+    "value": "Local (U)LIRGs and metal-poor dwarf galaxies FIR line and continuum measurements",
+    "evidence": [
+     {
+      "loc": "5.1 On the origin of [N ii] 205 μm and [C ii] 158 μm emission",
+      "quote": "In this figure, several local galaxies are shown, all observed by Herschel/PACS: local (U)LIRGs from the GOALS survey (Díaz-Santos et al. 2017), as well as one lower limit that is part of the Dwarf Galaxy Survey (DGS; Cormier et al. 2015, 2019)"
+     }
+    ]
+   },
+   "citation": "Díaz-Santos et al. (2017); Cormier et al. (2015, 2019)"
+  },
+  {
+   "what": {
+    "value": "Literature dust continuum and peak temperature measurements of high-z galaxies and SMGs",
+    "evidence": [
+     {
+      "loc": "APPENDIX A: DUST PEAK TEMPERATURE MEASUREMENTS",
+      "quote": "At intermediate redshifts (2 < 𝑧< 6), SMGs from the SPT survey (Reuter et al. 2020) are shown as squares (all other high-redshift galaxies are circles with errorbars). In addition, results for four star-forming galaxies at 𝑧 ∼ 6 with photometric detections in three ALMA bands each are included as circles (Faisst et al. 2020)."
+     }
+    ]
+   },
+   "citation": "Schreiber et al. (2018); Reuter et al. (2020); Faisst et al. (2020); Harikane et al. (2020); Knudsen et al. (2017); Inoue et al. (2020); Bakx et al. (2020, 2021); Hashimoto et al. (2019); Sugahara et al. (2021); Tamura et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA line and continuum visibilities",
+   "method": "Calibrate visibilities with the CASA pipeline, subtract continuum in the uv plane with uvcontsub where continuum is detected, and image line cubes and mfs continuum maps with tclean using natural/Briggs weighting and uv tapers.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean"
+   ],
+   "key_parameters": [
+    "tclean threshold set to 3x theoretical sensitivity",
+    "0.6'' uv taper for total [O III] and [C II] line fluxes; |v| > 1000 km/s for mfs continuum"
+   ],
+   "assumptions": [
+    "Antenna efficiency factor η ~ 0.7 (A_eff ~ 80 m^2 for 12-m dishes)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure dust continuum fluxes, source sizes, and upper limits",
+   "method": "Measure continuum flux densities and deconvolved source sizes with 2D Gaussian fits (CASA imfit) or matched apertures on beam-matched tapered maps; place 3σ upper limits from RMS noise in beam/source-sized apertures.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "3σ upper limits; 10% systematic flux error (Bands 5, 6) and 20% (Band 8)"
+   ],
+   "assumptions": [
+    "Cosmological parameters Ω_m = 0.3, Ω_Λ = 0.7, H_0 = 70 km s^-1 Mpc^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure emission line fluxes, luminosities, and upper limits for [O III], [C II], and [N II]",
+   "method": "Create moment-zero maps over the line FWHM; extract SNR-weighted spectra from contiguous >=2σ spaxels in 0.6'' tapered cubes and integrate over line channels for [O III] and [C II]; compute 3σ upper limit for [N II] over a single beam and 2x FWHM channel range.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "0.6'' tapered cubes for [O III] and [C II]; contiguous spaxels >= 2σ; untapered natural cube for [N II]"
+   ],
+   "assumptions": [
+    "COS-2987030247 is unresolved in [N II] 205 μm"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit far-infrared dust SEDs and derive dust masses, temperatures, IR luminosities, SFRs, and dust yields",
+   "method": "Fit CMB-corrected modified blackbody (greybody) models to multi-band continuum detections and upper limits using mercurius (pymultinest/MultiNest), then compute L_IR, L_FIR, SFR_IR, and AGB/SN dust yields.",
+   "software": [
+    "mercurius",
+    "pymultinest",
+    "MultiNest"
+   ],
+   "key_parameters": [
+    "β_IR = 1.5 fixed; T_dust = 50 K fixed for sources with only upper limits; self-consistent opacity model (plus optically thin and fixed λ_0 = 200 μm variants)"
+   ],
+   "assumptions": [
+    "κ_ν,ref = 8.94 cm^2 g^-1 at λ_ref = 158 μm; clustering factor C = 1; Chabrier (2003) IMF for dust yields; Kennicutt & Evans (2012) SFR conversions"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate molecular gas masses and gas-to-dust / gas-to-stellar mass ratios",
+   "method": "Convert [C II] 158 μm luminosities to molecular gas masses using the Zanella et al. (2018) linear calibration and divide by M_dust and M_*.",
+   "software": [],
+   "key_parameters": [
+    "not stated"
+   ],
+   "assumptions": [
+    "Zanella et al. (2018) calibration holds at z ~ 7"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare observed emission line ratios and strengths with Cloudy photoionisation + PDR models",
+   "method": "Run 1D plane-parallel Cloudy v17.02 models with BPASS v2.1 binary stellar spectra across grids of ionisation parameter, metallicity, density, α/Fe enhancement, and stopping criteria, and compare to observed L_[C II]/L_[N II], L_[O III]/L_[C II], L_[O III]/SFR, and EW([O III] + Hβ).",
+   "software": [
+    "Cloudy",
+    "BPASS"
+   ],
+   "key_parameters": [
+    "log10 U from -4 to -0.5 (step 0.5); log10(n_H [cm^-3]) from 0.5 to 3 (fiducial 10^2 cm^-3); Z_*/Z_sun in {0.005, 0.05, 0.2, 1}; X_α/Fe,neb = 1 and 4; stopping criterion A_V = 10 mag (or H_2 fraction 10^-6)"
+   ],
+   "assumptions": [
+    "1D plane-parallel ionisation-bounded nebula; Salpeter IMF (1-100 M_sun) with interacting binaries; Orion-like graphite and silicate grains; turbulent velocity 1.5 km/s; CMB at z = 7"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Perform spatially resolved comparison of [O III], [C II], dust continuum, and HST rest-frame UV",
+   "method": "Combine and astrometrically align HST images to Gaia, convolve HST UV to match ALMA continuum PSF using a Richardson-Lucy kernel, regrid beam-matched [O III] and [C II] maps to a common mesh to create ratio maps, and extract spatially resolved [O III]/[C II] and L_IR/L_UV in apertures.",
+   "software": [
+    "DrizzlePac",
+    "AstroDrizzle"
+   ],
+   "key_parameters": [
+    "AstroDrizzle final_pixfrac = 0.8, pixel size = 0.065''; ratio maps where both lines >= 3σ; aperture circles with radius 1.5x mean circularised beam; 2σ threshold for resolved region measurements"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "COS-2987030247 [C II] 158 μm flux",
+   "value": "0.250",
+   "uncertainty": "±0.061",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 [C II] 158 μm luminosity",
+   "value": "2.83",
+   "uncertainty": "±0.69",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 [O III] 88 μm flux",
+   "value": "0.79",
+   "uncertainty": "±0.20",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 [O III] 88 μm luminosity",
+   "value": "16.0",
+   "uncertainty": "±4.1",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 L_[O III]/L_[C II]",
+   "value": "5.7",
+   "uncertainty": "±1.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 [N II] 205 μm flux",
+   "value": "< 0.0679",
+   "uncertainty": "3σ upper limit",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 [N II] 205 μm luminosity",
+   "value": "< 0.591",
+   "uncertainty": "3σ upper limit",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-2987030247 0.250 ± 0.061 2.83 ± 0.69 0.79 ± 0.20 16.0 ± 4.1 5.7 ± 1.8 < 0.0679 < 0.591"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 L_[C II]/L_[N II]",
+   "value": "> 4.8",
+   "uncertainty": "3σ lower limit",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 [N ii] 205 μm",
+     "quote": "The lower limit on the [C ii] 158 μm to [N ii] 205 μm ratio is 𝐿[C ii]/𝐿[N ii] > 4.8 (3𝜎)."
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 [C II] 158 μm flux",
+   "value": "0.347",
+   "uncertainty": "±0.027",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-3018555981 0.347 ± 0.027 3.97 ± 0.31 1.58 ± 0.29 32.3 ± 5.9 8.13 ± 0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 [C II] 158 μm luminosity",
+   "value": "3.97",
+   "uncertainty": "±0.31",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-3018555981 0.347 ± 0.027 3.97 ± 0.31 1.58 ± 0.29 32.3 ± 5.9 8.13 ± 0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 [O III] 88 μm flux",
+   "value": "1.58",
+   "uncertainty": "±0.29",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-3018555981 0.347 ± 0.027 3.97 ± 0.31 1.58 ± 0.29 32.3 ± 5.9 8.13 ± 0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 [O III] 88 μm luminosity",
+   "value": "32.3",
+   "uncertainty": "±5.9",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-3018555981 0.347 ± 0.027 3.97 ± 0.31 1.58 ± 0.29 32.3 ± 5.9 8.13 ± 0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 L_[O III]/L_[C II]",
+   "value": "8.13",
+   "uncertainty": "±0.92",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "COS-3018555981 0.347 ± 0.027 3.97 ± 0.31 1.58 ± 0.29 32.3 ± 5.9 8.13 ± 0.92"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 [C II] 158 μm flux",
+   "value": "0.564",
+   "uncertainty": "±0.095",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-001 0.564 ± 0.095 6.7 ± 1.1 0.92 ± 0.22 19.6 ± 4.7 2.91 ± 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 [C II] 158 μm luminosity",
+   "value": "6.7",
+   "uncertainty": "±1.1",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-001 0.564 ± 0.095 6.7 ± 1.1 0.92 ± 0.22 19.6 ± 4.7 2.91 ± 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 [O III] 88 μm flux",
+   "value": "0.92",
+   "uncertainty": "±0.22",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-001 0.564 ± 0.095 6.7 ± 1.1 0.92 ± 0.22 19.6 ± 4.7 2.91 ± 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 [O III] 88 μm luminosity",
+   "value": "19.6",
+   "uncertainty": "±4.7",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-001 0.564 ± 0.095 6.7 ± 1.1 0.92 ± 0.22 19.6 ± 4.7 2.91 ± 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 L_[O III]/L_[C II]",
+   "value": "2.91",
+   "uncertainty": "±0.66",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-001 0.564 ± 0.095 6.7 ± 1.1 0.92 ± 0.22 19.6 ± 4.7 2.91 ± 0.66"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 [C II] 158 μm flux",
+   "value": "0.408",
+   "uncertainty": "±0.065",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-007 0.408 ± 0.065 4.57 ± 0.73 0.65 ± 0.30 12.9 ± 5.9 2.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 [C II] 158 μm luminosity",
+   "value": "4.57",
+   "uncertainty": "±0.73",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-007 0.408 ± 0.065 4.57 ± 0.73 0.65 ± 0.30 12.9 ± 5.9 2.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 [O III] 88 μm flux",
+   "value": "0.65",
+   "uncertainty": "±0.30",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-007 0.408 ± 0.065 4.57 ± 0.73 0.65 ± 0.30 12.9 ± 5.9 2.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 [O III] 88 μm luminosity",
+   "value": "12.9",
+   "uncertainty": "±5.9",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-007 0.408 ± 0.065 4.57 ± 0.73 0.65 ± 0.30 12.9 ± 5.9 2.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 L_[O III]/L_[C II]",
+   "value": "2.8",
+   "uncertainty": "±1.0",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-007 0.408 ± 0.065 4.57 ± 0.73 0.65 ± 0.30 12.9 ± 5.9 2.8 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 [C II] 158 μm flux",
+   "value": "0.686",
+   "uncertainty": "±0.049",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-019 0.686 ± 0.049 7.69 ± 0.55 0.83 ± 0.35 16.6 ± 7.0 2.16 ± 0.54"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 [C II] 158 μm luminosity",
+   "value": "7.69",
+   "uncertainty": "±0.55",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-019 0.686 ± 0.049 7.69 ± 0.55 0.83 ± 0.35 16.6 ± 7.0 2.16 ± 0.54"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 [O III] 88 μm flux",
+   "value": "0.83",
+   "uncertainty": "±0.35",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-019 0.686 ± 0.049 7.69 ± 0.55 0.83 ± 0.35 16.6 ± 7.0 2.16 ± 0.54"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 [O III] 88 μm luminosity",
+   "value": "16.6",
+   "uncertainty": "±7.0",
+   "units": "10^8 L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-019 0.686 ± 0.049 7.69 ± 0.55 0.83 ± 0.35 16.6 ± 7.0 2.16 ± 0.54"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 L_[O III]/L_[C II]",
+   "value": "2.16",
+   "uncertainty": "±0.54",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "UVISTA-Z-019 0.686 ± 0.049 7.69 ± 0.55 0.83 ± 0.35 16.6 ± 7.0 2.16 ± 0.54"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 Band 6 continuum flux density",
+   "value": "76",
+   "uncertainty": "±13",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑆𝜈, obs (μJy) < 22.5 (18.4) 76 ± 13 97 ± 30 < 69.6 (81.8) 131 ± 36"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 Band 8 continuum flux density",
+   "value": "< 210",
+   "uncertainty": "3σ upper limit",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑆𝜈, obs (μJy) < 163 (160) < 210 (240) 189 ± 100 < 361 (260) < 840 (625)"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 Band 8 continuum flux density",
+   "value": "189",
+   "uncertainty": "±100",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑆𝜈, obs (μJy) < 163 (160) < 210 (240) 189 ± 100 < 361 (260) < 840 (625)"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 Band 6 continuum flux density",
+   "value": "97",
+   "uncertainty": "±30",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑆𝜈, obs (μJy) < 22.5 (18.4) 76 ± 13 97 ± 30 < 69.6 (81.8) 131 ± 36"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 Band 6 continuum flux density",
+   "value": "131",
+   "uncertainty": "±36",
+   "units": "μJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑆𝜈, obs (μJy) < 22.5 (18.4) 76 ± 13 97 ± 30 < 69.6 (81.8) 131 ± 36"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 dust temperature T_dust",
+   "value": "29",
+   "uncertainty": "+9/-5 (< 48 at 95% confidence)",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑇dust (K) . . . 29+9−5 (< 48) 59+41−20 . . . 47+40−17"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 dust mass M_dust",
+   "value": "7e7",
+   "uncertainty": "+19e7/-5e7",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑀dust (M⊙) ≲ 4 · 106 7+19−5 · 107 4+8−3 · 106 ≲ 1 · 107 2.1+7.6−1.6 · 107"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 SN dust yield y_dust,SN",
+   "value": "4.5",
+   "uncertainty": "+13.1/-3.3",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Section 4.2",
+     "quote": "a nominally gigantic yield of 𝑦dust, SN = 4.5"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 dust temperature T_dust",
+   "value": "59",
+   "uncertainty": "+41/-20",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑇dust (K) . . . 29+9−5 (< 48) 59+41−20 . . . 47+40−17"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 dust mass M_dust",
+   "value": "4e6",
+   "uncertainty": "+8e6/-3e6",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑀dust (M⊙) ≲ 4 · 106 7+19−5 · 107 4+8−3 · 106 ≲ 1 · 107 2.1+7.6−1.6 · 107"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 dust temperature T_dust",
+   "value": "47",
+   "uncertainty": "+40/-17",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑇dust (K) . . . 29+9−5 (< 48) 59+41−20 . . . 47+40−17"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 dust mass M_dust",
+   "value": "2.1e7",
+   "uncertainty": "+7.6e7/-1.6e7",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "𝑀dust (M⊙) ≲ 4 · 106 7+19−5 · 107 4+8−3 · 106 ≲ 1 · 107 2.1+7.6−1.6 · 107"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-2987030247 molecular gas mass M_mol",
+   "value": "8.8",
+   "uncertainty": "±4.8",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "COS-2987030247 8.8 ± 4.8 ≳ 2.5 · 103 5.2+2.9−3.1"
+    }
+   ]
+  },
+  {
+   "quantity": "COS-3018555981 molecular gas mass M_mol",
+   "value": "12.3",
+   "uncertainty": "±2.2",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "COS-3018555981 12.3 ± 2.2 1.7+3.7−1.3 · 102 8.9+2.2−3.4"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-001 molecular gas mass M_mol",
+   "value": "20.9",
+   "uncertainty": "±7.9",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "UVISTA-Z-001 20.9 ± 7.9"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-007 molecular gas mass M_mol",
+   "value": "14.2",
+   "uncertainty": "±5.0",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "UVISTA-Z-007 14.2 ± 5.0 ≳ 1.2 · 103 3.8+6.8−2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "UVISTA-Z-019 molecular gas mass M_mol",
+   "value": "23.8",
+   "uncertainty": "±3.8",
+   "units": "10^9 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "UVISTA-Z-019 23.8 ± 3.8 1.2+4.5−0.9 · 103 7.4+4.0−2.9"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell (pixel) size and image size (imsize) used in CASA tclean",
+  "Deconvolver algorithm and masking strategy used in CASA tclean",
+  "Whether primary beam correction was applied to the ALMA continuum and line images",
+  "Polynomial fit order and exact channel ranges used in CASA uvcontsub",
+  "Exact channel velocity/frequency ranges integrated for each galaxy to measure total [C II] and [O III] fluxes"
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel size (cell) and image dimensions (imsize) for CASA tclean",
+  "Exact channel ranges integrated for each line flux measurement (shown visually in Figure 2 and Figure A1 but not tabulated numerically)",
+  "Exact coordinates and radii of the apertures used in the spatially resolved analysis (shown visually in Figure A1)",
+  "Cloudy input scripts for the full photoionisation model grid"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All 10 ALMA project codes, HST dataset DOIs, CASA versions, weighting/taper schemes, flux extraction methodology, and the custom SED fitting code (mercurius on GitHub) are explicitly provided, with only minor tclean imaging parameters (cell size, imsize) and exact channel integration bounds left unstated.",
+ "rediscovery_reason": "All raw ALMA and HST data are public, the custom Bayesian SED fitting tool (mercurius) is open-source, the calibration and imaging recipe is well-specified, and the main results are concrete numeric tables of line fluxes, continuum fluxes, dust temperatures/masses, and gas masses.",
+ "source_card": "cards/2022MNRAS.515.1751W/sonnet/card.md"
+}

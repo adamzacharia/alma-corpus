@@ -1,0 +1,321 @@
+{
+ "bibcode": "2020A&A...641A..97V",
+ "title": "ALMA resolves molecular clouds in metal-poor Magellanic Bridge A",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/201937232",
+ "arxiv_id": "2007.01319",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the gas and dust properties of Magellanic Bridge A at sub-parsec resolution, and is the 870 um submillimeter excess also present at 1.3 mm?",
+ "alma_project_codes": [
+  "2012.1.00683.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 230 GHz)",
+  "arrays": "12m array (Cycle 2) and 7m array (Cycle 1)",
+  "angular_resolution": "CO cube 1.22''x1.15''; continuum natural 1.54''x1.37''",
+  "sensitivity": "continuum rms 0.17 mJy/beam (natural); CO 22-36 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(3-2) peak intensity 0.93+-0.07 K km/s for LABOCA line correction",
+    "evidence": [
+     {
+      "loc": "3.1.2 Free-free and CO(3-2)",
+      "quote": "We use $I_{^{12}CO(3-2)}=0.93\\pm 0.07$ K km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: muller2014)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity per H atom eps_d(345GHz)=3.94e-27 cm2",
+    "evidence": [
+     {
+      "loc": "3.4 Gas masses",
+      "quote": "$\\epsilon_d(345GHz)=(3.94\\pm0.05)\\times10^{-27}$ cm$^2$"
+     }
+    ]
+   },
+   "citation": "(cite: bot2010)"
+  },
+  {
+   "what": {
+    "value": "NANTEN CO(1-0) luminosity 70+-8 K km/s pc2",
+    "evidence": [
+     {
+      "loc": "4.1 CO(2-1) comparison",
+      "quote": "$L_{CO(1-0)}=70 \\pm 8$ K km s$^{-1}$ pc$^{2}$ (cite: mizuno2006)"
+     }
+    ]
+   },
+   "citation": "(cite: mizuno2006)"
+  },
+  {
+   "what": {
+    "value": "LABOCA 870 um image reduced earlier",
+    "evidence": [
+     {
+      "loc": "2.2.1 0.87 mm continuum",
+      "quote": "We use the 870 $\\mu m$ continuum image of Magellanic Bridge A presented in (cite: verdugo2012)."
+     }
+    ]
+   },
+   "citation": "(cite: verdugo2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reprocess and combine ALMA 12m and 7m data",
+   "method": "Archive scripts to calibrate, statwt weights, concat",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "freqtol 10 MHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image 1.3 mm continuum and CO(2-1) cube; feather with APEX",
+   "method": "clean with natural weighting/taper for continuum, briggs 0.5 for CO; feather with APEX CO",
+   "software": [
+    "CASA",
+    "GILDAS/CLASS"
+   ],
+   "key_parameters": [
+    "APEX main beam efficiency 0.72"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Aperture photometry for SED and 1.3 mm upper limit",
+   "method": "Convolve to common resolution (43'' or 22''), aperture r=50'' or 11'' with sky annulus; upper limit = 3x photometric error",
+   "software": [],
+   "key_parameters": [
+    "aperture correction factor 2 for North/South"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Subtract free-free and CO(3-2) contamination",
+   "method": "Halpha-based free-free formula (Hunt 2004); CO(3-2) via Drabek 2012",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "n(He+)/n(H+)~0.08; Te~1.7e4 K; A_V=0.140"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit modified blackbody SED and compute excess and gas mass",
+   "method": "Single-component optically thin MBB, chi2 minimisation; excess = measured/predicted flux; gas mass from predicted 870 um flux",
+   "software": [
+    "scipy.optimize curve_fit"
+   ],
+   "key_parameters": [
+    "beta fixed to 1.4 for North and South"
+   ],
+   "assumptions": [
+    "distance 60 kpc; dust-to-gas 1/6 solar; kappa_345GHz=1.26; mu=1.36"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Identify CO clouds, fit spectra, derive sizes, luminosities, virial masses, alpha_CO",
+   "method": "3 sigma sources in integrated intensity (172-176 km/s), second moments, Gaussian least-squares to spectra, Rosolowsky & Leroy deconvolution, Mvir=190 R dv^2, alpha_CO=Mvir/L",
+   "software": [],
+   "key_parameters": [
+    "L_CO=611.5 S dv D^2; R=1.91 sigma_r D"
+   ],
+   "assumptions": [
+    "spherical bound clouds with rho~r^-1; r21~1; D~60 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust temperature, Bridge A",
+   "value": "22.4",
+   "uncertainty": "3.4",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 SED modeling",
+     "quote": "gives a dust temperature $T_d=22.4\\pm3.4$ K and an emissivity index $\\beta=1.4\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Emissivity index beta, Bridge A",
+   "value": "1.4",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2 SED modeling",
+     "quote": "an emissivity index $\\beta=1.4\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "E(870um) Bridge A",
+   "value": "6.9",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Submillimeter excess",
+     "quote": "$E(870\\,\\mu m)=6.9\\pm1.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "E(870um) North",
+   "value": "6.7",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Submillimeter excess",
+     "quote": "For the North source, $E(870\\,\\mu m)=6.7\\pm1.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm flux upper limit, Bridge A",
+   "value": "16.5",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Flux measurements",
+     "quote": "which gives a 1.3 mm flux upper limit for Magellanic Bridge A of 16.5 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass from dust, North",
+   "value": "1.3e3",
+   "uncertainty": "0.5e3",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Gas masses",
+     "quote": "$(1.3\\pm0.5)\\times 10^{3}$ M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass North",
+   "value": "437.3",
+   "uncertainty": "26.1",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "The virial mass for CO source North is $437.3\\pm26.1$ M$_{\\ensuremath{\\odot}}$ and for source South is $732.9\\pm37.0$ M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass South",
+   "value": "732.9",
+   "uncertainty": "37.0",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "for source South is $732.9\\pm37.0$ M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO North",
+   "value": "6.5",
+   "uncertainty": "0.7",
+   "units": "Msun (K km/s pc2)^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "$\\alpha_{CO}=6.5\\pm0.7$ M$_{\\ensuremath{\\odot}}$ (K kms$^{-1}$ pc$^2$)$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO South",
+   "value": "15.3",
+   "uncertainty": "1.6",
+   "units": "Msun (K km/s pc2)^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "$\\alpha_{CO}=15.3\\pm1.6$ M$_{\\ensuremath{\\odot}}$ (K km s$^{-1}$ pc$^2$)$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CO(2-1) North",
+   "value": "67.5",
+   "uncertainty": "6.3",
+   "units": "K km/s pc2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "$L_{CO(2-1)}= 67.5 \\pm 6.3$ K km s$^{-1}$ pc$^2$ for CO cloud North"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud radius North",
+   "value": "1.29",
+   "uncertainty": "0.07",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Physical properties",
+     "quote": "$1.29\\pm0.07$ pc for cloud North and $1.04\\pm0.04$ pc for cloud South"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CO(2-1) cube clean threshold, niter, cell and image size",
+  "line-free channels used for the continuum",
+  "feather scaling/ single-dish calibration details and Jy/K conversion",
+  "how the CO mask from APEX was built",
+  "aperture photometry code and SED fit starting values",
+  "APEX CO map size is printed in arcsec (likely arcmin), unclear",
+  "statwt parameters"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters (niter, threshold, cell, imsize)",
+  "APEX CO and LABOCA raw data access/reduction details",
+  "feather scaling details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear analysis formulae, but imaging parameters and APEX data processing are partly unspecified.",
+ "rediscovery_reason": "ALMA data public, recipe largely given, results numeric (virial masses, alpha_CO, upper limits).",
+ "source_card": "cards/2020A%26A...641A..97V/sonnet/card.md"
+}

@@ -1,0 +1,301 @@
+{
+ "bibcode": "2025A&A...698A.204H",
+ "title": "An ALMA spectroscopic survey of the Planck high-redshift object PLCK G073.4−57.5 confirms two protoclusters",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453238",
+ "arxiv_id": "2412.00294",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What is the redshift distribution of the galaxies in the Planck-selected field G073, are the two suspected structures (z~1.5 and z~2) real protoclusters, and what are their gas and star-formation properties?",
+ "alma_project_codes": [
+  "2018.1.00562.S",
+  "2013.1.01173.S"
+ ],
+ "data": {
+  "bands": "Band 4 (2.1 mm; Cycle 6) plus Band 6 (1.3 mm; Cycle 2, from Kneissl+19)",
+  "arrays": "not stated",
+  "angular_resolution": "about 0.65'' x 0.55'' (LSB) and 0.58'' x 0.50'' (USB), natural weighting",
+  "sensitivity": "continuum 15–20 uJy/beam in each of 12 pointings"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cycle 2 Band 6 continuum detections of 18 galaxies, positions, photometric redshifts, de-blended SPIRE fluxes, NIR/MIR photometry",
+    "evidence": [
+     {
+      "loc": "2.3 Cycle 2 ALMA observations",
+      "quote": "These observations are presented in detail in (cite: kneissl19)"
+     }
+    ]
+   },
+   "citation": "(cite: kneissl19)"
+  },
+  {
+   "what": {
+    "value": "SCUBA-2 850 um source catalogue",
+    "evidence": [
+     {
+      "loc": "2.1 Target selection",
+      "quote": "(again within the Planck beam; see (cite: mackenzie2017))"
+     }
+    ]
+   },
+   "citation": "(cite: mackenzie2017)"
+  },
+  {
+   "what": {
+    "value": "TNG300 protocluster simulation comparison",
+    "evidence": [
+     {
+      "loc": "6.1 The large-scale structure probed by G073",
+      "quote": "(cite: gouin2022) compared the $z\\,{\\approx}\\,1.5$ and $z\\,{\\approx}\\,2$ structures in G073 to the (300 Mpc)$^3$ TNG300 simulation"
+     }
+    ]
+   },
+   "citation": "(cite: gouin2022)"
+  },
+  {
+   "what": {
+    "value": "CI/CO gas mass calibration alpha_CI/alpha_CO = 5.2±1.3 and r31, r41 ratios",
+    "evidence": [
+     {
+      "loc": "4.2 Molecular gas masses",
+      "quote": "finding an average $\\alpha_\\mathrm{CI}/\\alpha_\\mathrm{CO}$ of 5.2$\\,{\\pm}\\,$1.3, which we used here."
+     }
+    ]
+   },
+   "citation": "(cite: birkin2021)"
+  },
+  {
+   "what": {
+    "value": "Literature cluster/protocluster CO galaxies for comparison",
+    "evidence": [
+     {
+      "loc": "5.2 Depletion timescales",
+      "quote": "for example $\\alpha_{\\rm CO}=4.36$ in (cite: noble17), (cite: noble19), and (cite: rudnick17) and $\\alpha_{\\rm CO}=0.8$ in (cite: ivison13)"
+     }
+    ]
+   },
+   "citation": "(cite: noble17; noble19; rudnick17; ivison13; hayashi18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search cubes for emission lines",
+   "method": "LineSeeker on primary-beam-uncorrected LSB and USB cubes with Gaussian spectral convolution; cutoff set from most significant negative peak (S/N 6.1)",
+   "software": [
+    "LineSeeker"
+   ],
+   "key_parameters": [
+    "maximum kernel width 1000 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Search for Band 4 continuum sources",
+   "method": "Noise-weighted mean continuum maps per pointing; threshold equal to the largest negative peak (S/N 5.1)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and measure lines and continuum",
+   "method": "Elliptical apertures from the 2 sigma contours; continuum subtraction with imcontsub; single Gaussian fits; line flux summed over ±3 sigma; L' per Solomon+97; continuum from line-free channels with S/N>2",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "average aperture semi-major axis 1.6''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Assign line identification and redshift",
+   "method": "Likelihood ratio test for CO(3-2)+CI vs single line, threshold 0.05; chi2 SED fit for ID 24; ID 4 assumed at ID 3 redshift",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "only two redshift possibilities (z~1.5 and z~2.3) for non-SCUBA-2 lines"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive stellar mass and SFR",
+   "method": "CIGALE SED fitting (delayed SFH with burst, BC03, Draine14 dust, Calzetti attenuation, solar metallicity); SFR_IR from cmcirsed modified blackbody with Kennicutt&Evans relation",
+   "software": [
+    "CIGALE",
+    "cmcirsed"
+   ],
+   "key_parameters": [
+    "beta = 1.8, dust temperature free"
+   ],
+   "assumptions": [
+    "Chabrier IMF; SFR_IR = 1.40e-10 L_IR"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive molecular gas masses",
+   "method": "M_gas = alpha_CO L'CO(1-0) with CO(3-2) and CO(4-3) converted via r31=0.60 and r41=0.32; CI mass using alpha_CI = 5.2 alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO = 4.36"
+   ],
+   "assumptions": [
+    "same alpha_CO for all sources regardless of MS classification"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare gas properties to field and cluster samples and to TNG300",
+   "method": "Compute depletion time and gas-to-stellar ratio, MS offsets (Popesso+23), scaling relations of Liu+19 and Sargent+14, update Gouin+22 simulation comparison with spectroscopic redshifts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean redshift of low-z structure",
+   "value": "1.53",
+   "uncertainty": "std 0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "lie in two structures at $\\langle z \\rangle\\,{=}\\,1.53$ and $\\langle z \\rangle\\,{=}\\,2.31$ (both with a standard deviation in redshift of 0.02)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean redshift of high-z structure",
+   "value": "2.31",
+   "uncertainty": "std 0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "lie in two structures at $\\langle z \\rangle\\,{=}\\,1.53$ and $\\langle z \\rangle\\,{=}\\,2.31$ (both with a standard deviation in redshift of 0.02)"
+    }
+   ]
+  },
+  {
+   "quantity": "SCUBA-2 galaxies redshift",
+   "value": "2.61",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "while the two SCUBA-2-selected galaxies are at $z\\,{=}\\,2.61$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median depletion time, G073",
+   "value": "0.7",
+   "uncertainty": "±0.6",
+   "units": "Gyr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2 Depletion timescales",
+     "quote": "The median depletion times for the G073 sources and for the cluster members are ($0.7\\,{\\pm}\\,0.6$) Gyr and ($0.8\\,{\\pm}\\,1.2$) Gyr, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-stellar mass ratio, G073",
+   "value": "3.5",
+   "uncertainty": "+3.1/-1.6",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.3 Gas-to-stellar mass ratio",
+     "quote": "the G073 sample has a median gas-to-stellar mass ratio of $\\mu_{\\rm gas}\\,{=}\\,3.5^{+3.1}_{-1.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-stellar mass ratio, literature cluster sample",
+   "value": "1.6",
+   "uncertainty": "+2.3/-0.9",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.3 Gas-to-stellar mass ratio",
+     "quote": "our comparison sample has a median gas-to-stellar mass ratio of $\\mu_{\\rm gas}\\,{=}\\,1.6^{+2.3}_{-0.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average dust temperature",
+   "value": "27",
+   "uncertainty": "±3",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Stellar masses and star-formation rates",
+     "quote": "The resulting average dust temperature of the sample was found to be (27$\\pm$3) K."
+    }
+   ]
+  },
+  {
+   "quantity": "Halo mass of z=1.5 structure",
+   "value": "≈1e13",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.1 The large-scale structure probed by G073",
+     "quote": "a total dark matter halo mass of ${\\approx}\\,1\\,{\\times}\\,10^{13}\\,$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Halo mass of z=2 structure",
+   "value": "≈4e13",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.1 The large-scale structure probed by G073",
+     "quote": "a total dark matter halo mass of ${\\approx}\\,4\\,{\\times}\\,10^{13}\\,$M$_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version",
+  "Line-free channel ranges used for continuum subtraction per source",
+  "LineSeeker S/N threshold settings beyond the negative-peak cutoff and kernel details",
+  "Whether Cycle 2 Band 6 data were reprocessed or Kneissl+19 products used",
+  "CIGALE module parameter grids and cmcirsed fit details",
+  "Exact selection of the comparison literature sample and the corrections applied",
+  "Imaging cleaning details: the cubes appear to be dirty/natural weighted, but deconvolution is not specified"
+ ],
+ "missing_for_reproduction": [
+  "CASA/pipeline versions",
+  "line-free channel selection",
+  "CIGALE parameter grids",
+  "exact literature comparison sample compilation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and methods are reasonably described, but key parameters (versions, line-free channels, CIGALE grids) are missing.",
+ "rediscovery_reason": "Public data, a mostly specified line search and Gaussian fits, with numeric redshifts and line fluxes in tables.",
+ "source_card": "cards/2025A%26A...698A.204H/sonnet/card.md"
+}

@@ -1,0 +1,455 @@
+{
+ "bibcode": "2025MNRAS.536..684D",
+ "title": "The salty emission of the intermediate-mass AGB star OH 30.1-0.7",
+ "year": 2025,
+ "doi": "10.1093/mnras/stae2584",
+ "arxiv_id": "2411.08235",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "What is the complete molecular inventory and circumstellar structure of the intermediate-mass AGB star OH 30.1-0.7, and what does its circumstellar chemistry reveal about a potential binary companion and mass-loss history?",
+ "alma_project_codes": [
+  "2016.1.00005.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "Band 3: ~1.3\" (1.535\"x1.059\" to 1.756\"x1.179\"); Band 6 extended: ~0.3\" (0.355\"x0.255\" to 0.395\"x0.256\"); Band 6 compact: ~1.5\" (1.617\"x1.384\" to 1.714\"x1.500\")",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of 3900 +- 800 pc calculated using the maser phase-lag method",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Distance c 3900 ± 800 pc"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "( c ) Distance calculated using the maser phase-lag method by Engels et al. (2015)."
+     }
+    ]
+   },
+   "citation": "Engels et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Molecular spectroscopic data and predicted line intensities from the Cologne Database of Molecular Spectroscopy (CDMS)",
+    "evidence": [
+     {
+      "loc": "2.3 Line identification",
+      "quote": "We used data from the Cologne Database of Molecular Spectroscopy (CDMS, Müller et al. 2001, 2005) to assign carriers to detected lines."
+     }
+    ]
+   },
+   "citation": "Müller et al. 2001, 2005"
+  },
+  {
+   "what": {
+    "value": "JCMT CO J=2-1 spectrum for single-dish comparison",
+    "evidence": [
+     {
+      "loc": "APPENDIX B: INTERSTELLAR CONTAMINATION",
+      "quote": "The JCMT spectrum was first published in De Beck et al. (2010), the IRAM spectrum was first published in Justtanont et al. (2013)"
+     }
+    ]
+   },
+   "citation": "De Beck et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30m CO J=2-1 and J=1-0 spectra, and mass-loss rate of 1.8e-4 M_sun/yr",
+    "evidence": [
+     {
+      "loc": "APPENDIX B: INTERSTELLAR CONTAMINATION",
+      "quote": "The JCMT spectrum was first published in De Beck et al. (2010), the IRAM spectrum was first published in Justtanont et al. (2013)"
+     },
+     {
+      "loc": "4.2.2 New understanding from ALMA CO",
+      "quote": "1 _._ 8 × 10 [−][4] M ⊙ yr [−][1] computed by Justtanont et al. (2013), and assume it has not changed over the past 2800 years"
+     }
+    ]
+   },
+   "citation": "Justtanont et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reconstitute calibrated visibilities, self-calibrate, and image continuum and line cubes",
+   "method": "Download standard ALMA archive products, reconstitute calibrated Measurement Sets, split spectral windows adjusted to constant LSR velocity, identify line-free channels, image continuum for self-calibration, combine Band 6 configurations with equal weight, and produce continuum-subtracted spectral cubes.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs weighting with robust = 0.5",
+    "Equal weighting of extended and compact Band 6 configurations"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum astrometry, angular extents, and spectral indices",
+   "method": "Fit a 2D Gaussian to continuum peaks using CASA imfit, measure angular extents of 3-sigma and 5-sigma contours, and compute spectral indices between Band 3 (convolved to match Band 6 compact beam) and Band 6 compact continuum at 107.86 and 236.02 GHz.",
+   "software": [
+    "CASA (imfit)"
+   ],
+   "key_parameters": [
+    "Band 3 centre frequency = 107.86 GHz, Band 6 centre frequency = 236.02 GHz, 7% flux scale uncertainty per band"
+   ],
+   "assumptions": [
+    "Distance = 3900 +- 800 pc and negligible proper motion between epochs"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract aperture spectra, identify molecular lines, and construct zeroth moment maps",
+   "method": "Extract spectra in circular apertures of varying radii (0.3\" to 8\") centred on the stellar continuum peak, construct zeroth moment maps over channels with emission >3 sigma plus 1-2 channels on either side, and assign molecular carriers using CDMS.",
+   "software": [],
+   "key_parameters": [
+    "Detection threshold >= 3 sigma in spectrum and/or zeroth moment map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit line profiles to measure central velocities, line widths, systemic velocity, expansion velocity, and integrated fluxes",
+   "method": "Fit a soft parabola profile to unblended lines to obtain central velocity and line width, integrate line fluxes over a velocity range a few km/s wider than the fitted width, average central velocities for systemic velocity, and measure full CO expansion velocity from >30 sigma detections in channel maps.",
+   "software": [],
+   "key_parameters": [
+    "Free parameters of soft parabola: F_0, v_cent, v_w, gamma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate molecular excitation temperatures, column densities, radial temperature profile, and mass-loss timescale",
+   "method": "Compare detected/undetected SO2 lines with CDMS relative intensities at different temperatures, fit linear population diagrams for Na35Cl and K35Cl, derive power-law radial temperature profile, and calculate dynamical age and photodissociation mass-loss limit from CO outer radius and expansion velocity.",
+   "software": [],
+   "key_parameters": [
+    "T_* = 2000 K at R_* = 1.3e14 cm, T_SO2 = 25 K at R_SO2 = 1e17 cm (~1.7\")"
+   ],
+   "assumptions": [
+    "Power-law radial temperature profile T(r) = T_*(r/R_*)^-epsilon; constant expansion velocity of 23 km/s at distance 3.9 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic velocity (v_LSR) of OH 30.1-0.7",
+   "value": "100.3",
+   "uncertainty": "+-1.2",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "𝜐 LSR 𝑑 100 . 3 ± 1 . 2 km s −1"
+    },
+    {
+     "loc": "2.5 Integrated line fluxes and central velocities",
+     "quote": "By averaging the central velocities found from the soft parabola fits, we calculate a systemic velocity of 𝜐 LSR = 100 . 3 ± 1 . 2 km s −1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Circumstellar envelope expansion velocity",
+   "value": "23",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.5 Integrated line fluxes and central velocities",
+     "quote": "By considering the reddest and bluest channels with CO detections centred on the continuum peak with a certainty > 30 𝜎, we determine the expansion velocity to be 23 km s −1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 continuum peak flux",
+   "value": "0.746",
+   "uncertainty": "1.27e-2",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "Band 3 1 . 661 × 1 . 105 −55 . 9 1 . 27 × 10 −2 0 . 746 59"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 extended continuum peak flux",
+   "value": "5.22",
+   "uncertainty": "1.40e-2",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "Band 6, extended 0 . 372 × 0 . 239 −71 . 7 1 . 40 × 10 −2 5 . 22 372"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 compact continuum peak flux",
+   "value": "7.26",
+   "uncertainty": "4.21e-2",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "Band 6, compact 1 . 628 × 1 . 399 −75 . 0 4 . 21 × 10 −2 7 . 26 172"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 combined full resolution continuum peak flux",
+   "value": "5.26",
+   "uncertainty": "1.41e-2",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table A2",
+     "quote": "Band 6, combined, full resolution 0 . 397 × 0 . 252 −71 . 6 1 . 41 × 10 −2 5 . 26 374"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index of OH 30.1-0.7",
+   "value": "2.8",
+   "uncertainty": "+-0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.2 Spectral indices",
+     "quote": "Allowing for the rms and a 7% flux scale uncertainty as applied to the target, per band, we find a spectral index of 2 . 8 ± 0 . 3 for the AGB star."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index of feature B",
+   "value": ">3.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.2 Spectral indices",
+     "quote": "Using the Band 3 flux as an upper limit, this gives a lower limit on the spectral index of > 3 . 6, even steeper than for the AGB star itself."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular separation of feature B from primary peak",
+   "value": "4.6",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find a secondary peak in the continuum maps, “feature B”, separated by 4.6 ′′ from the AGB star, which corresponds to a projected separation of 1 . 8 × 10 4 au, placing a lower limit on the physical separation."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical separation of feature B",
+   "value": "1.8e4",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find a secondary peak in the continuum maps, “feature B”, separated by 4.6 ′′ from the AGB star, which corresponds to a projected separation of 1 . 8 × 10 4 au, placing a lower limit on the physical separation."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 flux of feature B (compact configuration)",
+   "value": "0.46",
+   "uncertainty": "0.042",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2.2 Spectral indices",
+     "quote": "For feature B, the Band 6 flux is 0.46 mJy beam −1 and for Band 3 the flux in the same region is 0.028 mJy beam −1 (i.e. < 3 𝜎 )."
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=1-0 integrated line flux (5.0\" aperture)",
+   "value": "48.20",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table A3",
+     "quote": "CO 115.271 0.0 𝑣= 0 , 𝐽 = 1 − 0 100.9 17.0 48.20 5.0"
+    }
+   ]
+  },
+  {
+   "quantity": "CO J=2-1 integrated line flux (5.0\" aperture)",
+   "value": "214.50",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table A3",
+     "quote": "CO 230.538 5.5 𝑣= 0 , 𝐽 = 2 − 1 101.9 17.9 214.50 5.0"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 excitation temperature",
+   "value": "<=25",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 SO 2",
+     "quote": "We checked the predicted line intensities for several other temperatures and found that the undetected 𝐽 𝐾 𝑎 ,𝐾 𝑐 = 11 5 , 7 − 12 4 , 8 line is only predicted to be fainter than all the detected lines for temperatures ≲ 25 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Na35Cl rotational/vibrational excitation temperature",
+   "value": "590",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 NaCl and KCl",
+     "quote": "We derive very similar temperatures for both species: approximately 600 K."
+    },
+    {
+     "loc": "Figure A9 caption",
+     "quote": "Average gas temperatures are given in the legend and are close to 600 K for both molecules."
+    }
+   ]
+  },
+  {
+   "quantity": "Na35Cl source-averaged column density",
+   "value": "1.4e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 NaCl and KCl",
+     "quote": "We also derive column densities of 1 . 4 × 10 12 cm −2 for Na 35 Cl and 1 . 6×10 11 cm −2 for K 35 Cl, resulting in Na 35 Cl/K 35 Cl = 8.8."
+    }
+   ]
+  },
+  {
+   "quantity": "K35Cl source-averaged column density",
+   "value": "1.6e11",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 NaCl and KCl",
+     "quote": "We also derive column densities of 1 . 4 × 10 12 cm −2 for Na 35 Cl and 1 . 6×10 11 cm −2 for K 35 Cl, resulting in Na 35 Cl/K 35 Cl = 8.8."
+    }
+   ]
+  },
+  {
+   "quantity": "Na35Cl / K35Cl column density ratio",
+   "value": "8.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6 NaCl and KCl",
+     "quote": "We also derive column densities of 1 . 4 × 10 12 cm −2 for Na 35 Cl and 1 . 6×10 11 cm −2 for K 35 Cl, resulting in Na 35 Cl/K 35 Cl = 8.8."
+    }
+   ]
+  },
+  {
+   "quantity": "Radial temperature profile power-law exponent (epsilon)",
+   "value": "0.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.3 Evidence from other molecular species",
+     "quote": "Assuming a power law radial temperature profile, 𝑇 ( 𝑟 ) = 𝑇 ★ ( 𝑟 / 𝑅 ★ ) − 𝜖, we then calculate the exponent, 𝜖 = 0 . 66."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated average radius of salt (NaCl and KCl) emission",
+   "value": "8e14",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.3 Evidence from other molecular species",
+     "quote": "If we instead use the estimated radial temperature profile with 𝜖 = 0 . 66 to calculate the average radius of the salt extents, we find 𝑅 salt = 8 × 10 14 cm, which corresponds to ∼ 0 . 014 ′′ (and ∼ 50 au), much smaller than our restoring beams (Table A1)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO envelope outer truncation radius",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The CO emission is abruptly truncated around 3 . 5 ′′ or 14,000 au from the continuum peak, suggesting that mass loss at a high rate may have commenced as little as 2800 years ago."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical age of the current high mass-loss phase",
+   "value": "2800",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2.2 New understanding from ALMA CO",
+     "quote": "we find that it took around 2800 years for the gas to expand to 3 _._ 5 [′′] (2 × 10 [17] cm = 14000 au) from the star."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for reconstituting Measurement Sets, self-calibration, and imaging",
+  "Specific imaging task (e.g., tclean), deconvolver, cell size, image size, and cleaning mask/threshold parameters",
+  "Exact frequency/channel ranges selected as line-free channels for continuum imaging and subtraction",
+  "Self-calibration solution intervals (solint), number of iterations, and whether phase-only or amplitude+phase self-calibration was applied",
+  "Line cube noise (rms per channel) values for each spectral window",
+  "Exact source size assumed for computing source-averaged column densities in the NaCl and KCl population diagrams"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration scripts and exact parameters (solution intervals, SNR thresholds, number of phase/amplitude rounds)",
+  "Exact tclean parameters (cell size, image size, deconvolver, stopping threshold, masking) for continuum and spectral line cubes",
+  "Exact list of line-free frequency intervals used for continuum imaging and uv-plane continuum subtraction",
+  "Assumed emitting region solid angle used to convert integrated fluxes into source-averaged column densities in the NaCl and KCl population diagrams",
+  "Specific velocity integration windows used for each individual line's integrated flux and zeroth moment map"
+ ],
+ "reproducibility_score": 72,
+ "score_reason": "Raw archival ALMA data (2016.1.00005.S) are public, spectral setups and restoring beams are fully tabulated, and line measurement methods (extraction aperture radii, soft parabola formula) are clearly stated; however, self-calibration and imaging parameters are inherited from Gottlieb et al. (2022) without source-specific values (e.g., line-free channels, solint, cell size) and custom cubes require author request.",
+ "rediscovery_reason": "Public archival data, clear aperture-based spectral extraction and soft-parabola fitting recipe, and well-defined numeric targets (continuum peak fluxes, spectral indices, systemic/expansion velocities, and 40+ molecular line fluxes/widths).",
+ "source_card": "cards/2025MNRAS.536..684D/sonnet/card.md"
+}

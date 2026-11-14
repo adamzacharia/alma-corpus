@@ -1,0 +1,18 @@
+# Reconciliation: solar-system-atmospheres
+- SR-01 | FIXED | Summary and table now attribute each scale separately: 0.85-1.15 per window (2024PSJ.....5..125T), single 1.047 (2019AJ....157..219T), ~10% off Horizons (2016ApJ...821L...8S).
+- SR-02 | FIXED | Summary and step 8 split three strategies: CO fixed + T retrieved (2024PSJ, 2018Icar), CO+T retrieved together (2016ApJ), T adopted (2019AJ..157); 2018Icar troposphere marked as a priori, 2024PSJ as fixed; CO row recounted to fixed 3 / a priori 1.
+- SR-03 | FIXED | Step 4 cites uv-plane subtraction only for 2020ApJ and 2025NatAs; 2014ApJ marked "standard routines", domain unstated (also in parameters.md).
+- SR-04 | FIXED | Disk-averaged row recounted from pack excerpts to 5 papers (2016ApJ, 2018Icar, 2019Icar, 2019AJ..157, 2014ApJ; 10-44); new row for 2024PSJ's 30 angles per regional extraction location.
+- SR-05 | FIXED | 12C/13C row separates prior 89.3 and retrieved 89.9 +/- 3.4 (2016ApJ) from the fixed conversion ratio 89.8 (2019Icar); parameters.md notes the retrieved value is a result.
+- SR-06 | FIXED | D/H row gives each paper's range (1.0-1.4e-4; 1.13-1.59e-4) and the combined envelope 1.0-1.59e-4.
+- SR-07 | FIXED | Step 2 made conditional on continuum S/N, disk-model quality and solution checks; 2024PSJ's +/-10% phase criterion kept as the documented example.
+- SR-08 | FIXED | Step 7 and the Flux-scale pitfall restrict model rescaling to Titan line retrievals; rings/planet continuum keep calibrated flux and propagate uncertainty (2019AJ..158..47M check; 2019AJ..157..251T normalization flagged as an assumption).
+- SR-09 | FIXED | Step 10 now describes the documented fixed-ratio conversion (89.8, 72.2) and requires an optical-depth check; the 2019Icar card has no "optically thin" statement.
+- SR-10 | FIXED | Step 10 and parameters.md state CH3D/CH4 ~ 4 D/H (general practice), separate profile-shape initialization from abundance conversion; checked against 2024PSJ numbers (5.54e-6/(4x1.2e-4) = 1.15%).
+- SR-11 | FIXED | Step 7 separates unit handling (beam area for Jy/beam sums, solid angle for radiance; general practice) from the forward-model angular quadrature, with per-paper angle counts.
+- SR-12 | FIXED | New Spatial-representativeness pitfall from the 2019AJ....157..219T limitation (disk average vs equatorial GCMS CH4).
+- SR-13 | FIXED | New Coma-source-geometry pitfall: L_p unconstrained for the 50% distributed case (2025NatAs...9.1476C); assess its effect on the ratio.
+- SR-14 | FIXED | New pitfall with both 2019AJ....158...76C limitations; 180-400 km range tied to CIRS only; step 6 points to it.
+- SR-15 | FIXED | Step 9, a new pitfall and parameters.md record the 2014ApJ no-latitude/longitude-variation assumption and its limit for mapped asymmetries.
+- SR-16 | FIXED | Aperture now "1.5 arcsec (12,000 km) in diameter, centered on Titan" in SKILL.md and parameters.md.
+- SR-17 | FIXED | 90% mask quoted verbatim from the card, flagged as borrowed from an earlier paper with its definition unstated; agent told to settle per-pixel vs cumulative first.

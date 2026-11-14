@@ -1,0 +1,838 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...827..133L",
+  "title": "Star Formation and Feedback: A Molecular Outflow-Prestellar Core Interaction in L1689N",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Lis, D. C.",
+  "n_authors": 8,
+  "arxiv_id": "1605.01239",
+  "doi": "10.3847/0004-637X/827/2/133",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00178.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present *Herschel*[^1], ALMA Compact Array (ACA), and Caltech Submillimeter Observatory (CSO) observations of the prestellar core in L1689N"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "L1689N prestellar core (I16293E)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "120 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "L1689N, a nearby (120 pc; (cite: loinard08)) dark cloud located in the $\\rho$ Ophiuchi complex"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Loinard et al. 2008",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "L1689N, a nearby (120 pc; (cite: loinard08)) dark cloud located in the $\\rho$ Ophiuchi complex"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is the L1689N prestellar core interacting with the molecular outflow from IRAS 16293-2422, and what are the core's dust continuum and deuterated-molecule properties?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "which has been suggested to be interacting with a molecular outflow driven by the nearby solar type protostar IRAS 16293-2422."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00178.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2012.1.00178.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "310 GHz setting: four spectral windows near 309 GHz; N2D+ and ND3 in 0.0625 GHz windows; 340 GHz setting for continuum",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Four spectral windows were observed centered near 309 GHz, with varying spectral resolution."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "N2D+",
+     "transition": "4-3",
+     "rest_frequency": "308.42227 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "N$_2$D$^+$  | 308.42227   | 4–3"
+      }
+     ]
+    },
+    {
+     "species": "ND3",
+     "transition": "1_0-0_0 (0a-0s)",
+     "rest_frequency": "309.90949 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "ND$_3$      | 309.90949   | $1_0-0_0$ (0a - 0s)"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "5_1,4-5_0,5 A-+",
+     "rest_frequency": "309.29040 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CH$_3$OH    | 309.29040   | $5_{1,4} - 5_{0,5}$ A – +"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "2_2-2_1",
+     "rest_frequency": "309.50244 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "SO          | 309.50244   | $2_2-2_1$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "two bands of 1.992 GHz width, near 308.053 and 309.873 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "by averaging channels within two bands of 1.992 GHz width, centered near 308.053 and 309.873 GHz"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ACA (Morita Array), eleven 7-m antennas",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "using eleven 7-m antennas of the Morita Array component of ALMA in Cycle 1"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "minimum 8.7 m; maximum 50 m",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The minimum baseline of the ACA is 8.7 m, for a transiting source."
+     },
+     {
+      "loc": "Observations",
+      "quote": "with a maximum baseline of 50 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "970 um beam 5.04x3.16 arcsec, PA 80 deg",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the synthesized beam size is $5.04 \\times 3.16$$^{\\prime\\prime}$, at a position angle of 80$^\\circ$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "13.8 arcsec",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the ALMA Technical Handbook provides a value of 13.8$^{\\prime\\prime}$ for the largest angular scale recovered by the interferometer"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "15 min per pointing of a ten-pointing mosaic",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "At each point of the mosaic, 15 minutes of data was collected"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "310 GHz: 2014 January–April (7 occasions); 340 GHz: 2014 April (6 occasions)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "was observed on seven occasions during 2014 January–April"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel/HIFI",
+     "provided": {
+      "value": "NH2D, NH3, o-H2O, SO maps and spectra",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "using the Band 1 receivers of the Heterodyne Instrument for the Far-Infrared (HIFI; (cite: degraauw10))"
+       }
+      ]
+     }
+    },
+    {
+     "name": "CSO",
+     "provided": {
+      "value": "1 mm maps of deuterated and hydrogenated tracers",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "using the 10.4 m Leighton Telescope of the Caltech Submillimeter Observatory (CSO)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust temperature 16 K from SED fit",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "isothermal dust temperature of 16 K derived from a SED fit by (cite: stark04)"
+       }
+      ]
+     },
+     "citation": "(cite: stark04)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity kappa_1.3mm = 0.005 cm2/g",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "we scale the grain opacity coefficient $\\kappa_{\\rm 1.3 mm} = 0.005$ cm$^2$ g$^{-1}$ (cite: motte98)"
+       }
+      ]
+     },
+     "citation": "(cite: motte98)"
+    },
+    {
+     "what": {
+      "value": "Distance 120 pc",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "assuming a distance of 120 pc (cite: loinard08)"
+       }
+      ]
+     },
+     "citation": "(cite: loinard08)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA/NAASC staff calibrated; bandpass J1733-1304 or J1427-4206, phase J1626-2951",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "ALMA/NAASC staff performed bandpass calibration with the quasar J1733-1304 or J1427-4206"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "deconvolved and CLEANed with the CASA software package (version 4.2)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the flux was calibrated with Titan"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The uncertainty in the absolute flux is ∼10%."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "850 um continuum by averaging line-free channels; CH3OH and H3O+ lines flagged for 970 um",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CH$_3$OH and H$_3$O$^+$ lines in the bands were flagged before averaging to avoid possible contamination."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "970 um: 5.04x3.16 arcsec PA 80 deg; 850 um: 4.4x2.9 arcsec PA 94 deg",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "the synthesized beam size is $4.4 \\times 2.9$$^{\\prime\\prime}$, at a position angle of 94$^\\circ$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "1.1 mJy/beam at 970 um; 3.3 mJy at 850 um",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The rms in the image is 1.1 mJy/beam"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dust temperature 16 K adopted",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "For a 16 K dust temperature (cite: stark04)"
+       }
+      ]
+     },
+     "from_reference": "(cite: stark04)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean/clean weighting, robust, cell and image size",
+    "deconvolver and masking",
+    "Line-free channels used for continuum",
+    "Gas-to-dust ratio used for mass",
+    "Exact coordinates and phase center",
+    "Which execution blocks were used",
+    "Primary-beam correction details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image ACA continuum and lines",
+    "method": {
+     "value": "CASA deconvolution/CLEAN of calibrated visibilities; continuum from averaged channels",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The calibrated visibilities were deconvolved and CLEANed with the CASA software package (version 4.2)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Hyperfine fits of NH2D, ND3, N2D+",
+    "method": {
+     "value": "HFS fits giving v0, width, Tex, tau",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "The HFS fit parameters (the line center velocity and width, the excitation temperature, and the line center optical depth) are given in Table [1](#tab:hfs)."
+      }
+     ]
+    },
+    "software": [
+     "GILDAS CLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "CLASS HFS fit, single velocity component",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "with single velocity component HFS fits overlaid in red"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Source size from continuum",
+    "method": {
+     "value": "2D Gaussian fit, deconvolved from beam",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "A two-dimensional Gaussian fit gives a FWHM source size of $13.2 \\times 8.6$$^{\\prime\\prime}$ at a position ange of 2$^\\circ$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "distance 120 pc",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "assuming a distance of 120 pc (cite: loinard08)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Column density, density and mass",
+    "method": {
+     "value": "Optically thin dust emission with scaled opacity, Td 16 K or 11 K",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "This leads to $\\kappa_{\\rm 970 \\mu m} = 0.009$ cm$^2$ g$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "line-of-sight size 9.5 arcsec (1140 au)",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "Assuming a line-of-sight source size of 9.5$^{\\prime\\prime}$ or 1140 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "nu^2 opacity dependence; Td 16 K or 11 K",
+      "evidence": [
+       {
+        "loc": "Discussion",
+        "quote": "appropriate for prestellar dense, clumps with a $\\nu^2$ frequency dependence"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Bacmann 2016 and Pattle 2015 values",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "consistent with the best-model value of $1.4 \\times 10^7$ cm$^{-2}$ in the recent study of (cite: bacmann16)"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2",
+    "used_for": {
+     "value": "ACA imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CASA software package (version 4.2)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "HIPE",
+    "version": "10.0",
+    "used_for": {
+     "value": "HIFI data reduction",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using HIPE version 10.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS CLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "spectra reduction and HFS fits",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "subsequently reduced using the GILDAS CLASS[^3] software package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "970 um peak flux",
+    "value": "76",
+    "uncertainty": "rms 1.1 mJy/beam",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the peak flux is 76 mJy/beam and the integrated flux is 840 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Intrinsic source size",
+    "value": "12.9 x 7.0 arcsec (1540 x 840 au)",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "the intrinsic source size is $12.9 \\times 7.0$$^{\\prime\\prime}$, or $1540 \\times 840$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 column density",
+    "value": "1.8e23 (16 K); 3.3e23 (11 K)",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we derive an H$_2$ column density of $1.8 \\times 10^{23}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 volume density",
+    "value": "(1.1-1.9)e7",
+    "uncertainty": "not stated",
+    "units": "cm^-3",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we derive an H$_2$ volume density of $(1.1-1.9)\\times 10^7$ cm$^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass of compact source",
+    "value": "0.22 (16 K); 0.42 (11 K)",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "The total mass of the compact continuum source seen in the ACA image is 0.22 M$_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "ND3 HFS line width",
+    "value": "0.40",
+    "uncertainty": "~0.002",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "ND$_3$      |     3.45      |     0.40      |   6.5    |   0.43   |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "NH2D line velocity and width change across the core, indicating interaction with the outflow",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The change in the NH$_2$D line velocity and width across the core provides clear evidence of an interaction with the outflow"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The core interacts with the IRAS 16293 outflow",
+    "experiment": "HIFI NH2D line velocity/width maps and water maps",
+    "result": "Velocity and width increase from NE to W/SW; water avoids core",
+    "finding": "Physical interaction with the blue outflow lobe",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The observations presented here provide clear evidence of a physical interaction between the prestellar core in L1689N and the blue lobe"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dust peak coincides with deuterated tracers",
+    "experiment": "ACA continuum vs N2D+/ND3",
+    "result": "Dust peak offset ~5 arcsec south",
+    "finding": "Northern extended emission is resolved out",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "The continuum emission is thus largely resolved out by the interferometer."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Low dynamic range and resolved-out extended emission; 850 um SNR too low for temperature gradient",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "the SNR in our 850 $\\mu$m continuum image is too low to draw definitive conclusions"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "No total-power data, so masses are lower limits for extended gas",
+    "Mass depends on assumed opacity and dust temperature"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "Gas-to-dust ratio"
+   ],
+   "estimated_data_volume_inferred": "~20-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public ACA data and simple recipe, but imaging parameters are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [],
+   "companion_papers": [
+    {
+     "citation": "(cite: pagani16)",
+     "why": "Complementary H2D+ and dust temperature study"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4633349ab4e66b81b0ee45587addef78",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:19",
+  "usage": {
+   "input_tokens": 24153,
+   "output_tokens": 6100,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.05526,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 53,
+  "quotes_ok": 53,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 38,
+   "rate": 0.551
+  },
+  "evidence_ok": true
+ }
+}

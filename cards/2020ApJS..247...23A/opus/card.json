@@ -1,0 +1,1583 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJS..247...23A",
+  "title": "ALMA High-frequency Long Baseline Campaign in 2017: Band-to-band Phase Referencing in Submillimeter Waves",
+  "year": 2020,
+  "journal": "The Astrophysical Journal Supplement Series",
+  "first_author": "Asaki, Yoshiharu",
+  "n_authors": 14,
+  "arxiv_id": "2003.07472",
+  "doi": "10.3847/1538-4365/ab6b20",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00011.SV",
+   "2011.0.00015.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "technical_calibration_or_instrument",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "In 2017, an Atacama Large Millimeter/submillimeter Array (ALMA) high-frequency long baseline campaign was organized to test image capabilities with baselines up to 16 km at submillimeter (submm) wavelengths."
+   },
+   {
+    "loc": "Introduction",
+    "quote": "This paper presents results from our feasibility study made during the High Frequency Long Baseline Campaign 2017 (HF-LBC-2017)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "instrumentation",
+    "protoplanetary_disks",
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "QSO J2228-0753 (stage 4 point-source target)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "QSO J0633-2333 (stage 3 target; J0633-2223 in Table 4)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "HL Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "HL Tau is a protoplanetary disk system surrounding a young star at a distance of 140 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Rebull2004",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "HL Tau is a protoplanetary disk system surrounding a young star at a distance of 140 pc"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VY CMa",
+     "coordinates": {
+      "value": "07h22m58.3261s, -25d46'03.038\" (J2000, measured peak)",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "Our second high-resolution imaging experiment targeted VY CMa, located at a distance of 1.17 kpc"
+       },
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "The peak position of VY CMa was estimated before the self-calibration to be located at ($\\alpha$, $\\delta$)$=$($7^{\\mathrm{h}}22^{\\mathrm{m}}58^{\\mathrm{s}}.3261$, $-25^{\\circ}46'03''.038$) (J2000)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "1.17 kpc",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "Our second high-resolution imaging experiment targeted VY CMa, located at a distance of 1.17 kpc"
+       },
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "The peak position of VY CMa was estimated before the self-calibration to be located at ($\\alpha$, $\\delta$)$=$($7^{\\mathrm{h}}22^{\\mathrm{m}}58^{\\mathrm{s}}.3261$, $-25^{\\circ}46'03''.038$) (J2000)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Zhang2012",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "Our second high-resolution imaging experiment targeted VY CMa, located at a distance of 1.17 kpc"
+       },
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "The peak position of VY CMa was estimated before the self-calibration to be located at ($\\alpha$, $\\delta$)$=$($7^{\\mathrm{h}}22^{\\mathrm{m}}58^{\\mathrm{s}}.3261$, $-25^{\\circ}46'03''.038$) (J2000)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can ALMA image at Bands 7-10 with baselines up to 16 km using band-to-band (B2B) phase referencing with a differential gain calibration (DGC), and does B2B allow closer phase calibrators and better images than in-band phase referencing?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We aimed to prove that ALMA has observation capabilities in Bands 7, 8, 9, and 10 (285–875 GHz) with up to the longest 16 km baselines using B2B phase referencing."
+     },
+     {
+      "loc": "Discussions",
+      "quote": "is B2B phase referencing more beneficial for selecting a phase calibrator than in-band phase referencing?"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00015.SV",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "comparison with the long baseline SV in Band 7 in LBC-2014 (ADS/JAO.ALMA #2011.0.00015.SV, hereafter LBC-2014-SV)."
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00011.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2011.0.00011.SV (VY CMa in Band 9)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 7, 8, 9 (and 10, failed) for targets; LF calibrator Bands 3, 4, 6, 7 (pairs 7–3, 8–4, 9–4, 9–6, 10–7)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We investigated image qualities using ALMA receiver Bands 7, 8, 9, and 10 (285–875 GHz) by adopting band-to-band (B2B) phase referencing in which a phase calibrator is tracked at a lower frequency."
+     },
+     {
+      "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+      "quote": "Various harmonic frequency pairs were tested (Bands 7–3, 8–4, 9–4, 9–6, and 10–7)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Stage 4 QSO: 289/405 GHz HF with 96/135 GHz LF; HL Tau: 671 GHz with 149 GHz LF, eight 2 GHz SPWs with 90° phase switching; VY CMa: 669/149 GHz, eight 1.875 GHz SPWs, one covering 658 GHz H2O maser at 15.625 kHz",
+    "evidence": [
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "The high LO1 frequencies are 289 (Band 7) and 405 (Band 8) GHz, while the corresponding low LO1 frequencies are 96 (Band 3) and 135 (Band 4) GHz, respectively."
+     },
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "The correlator was configured to have eight SPWs in Band 9 with a bandwidth of 2 GHz each using the $90^{\\circ}$ phase switching."
+     },
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "One of the SPWs covers the 658 GHz H$_{2}$O maser with the frequency resolution of 15.625 kHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H2O",
+     "transition": "v2=1, 1_{1,0}-1_{0,1} (maser)",
+     "rest_frequency": "658.00655 GHz",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "not only for the continuum emission but also for the 658.00655 GHz $v_{2}=1,$ $1_{1,0}-1_{0,1}$ H$_{2}$O maser"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m array, 40–50 antennas in stage 4",
+    "evidence": [
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "Array configurations with $B_{\\mathrm{max}}\\sim 14-16$ km were arranged containing 40–50 12-m antennas."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "Stage 2/3: Bmax ~400 m–4 km; stage 4: Bmax ~14–16 km; 2017 Nov 3: 133 m–13.8 km",
+    "evidence": [
+     {
+      "loc": "Strategy of HF-LBC-2017",
+      "quote": "From 2017 March to July, we conducted the tests of stages 2 and 3 tests using the mid-baseline lengths ($B_{\\mathrm{max}}\\sim$400 m–4 km)"
+     },
+     {
+      "loc": "Stage 4: high angular resolution imaging test",
+      "quote": "The longest and shortest baseline lengths are 13.8 km and 133 m, corresponding to angular resolutions of 7 mas and 0.7 arcsec in Band 9, respectively."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "14 × 11 mas (HL Tau), 10 × 8 mas (VY CMa); 19 × 16 and 16 × 12 mas for QSO in Bands 7 and 8",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The B2B phase referencing was successfully applied, allowing us to achieve an angular resolution of $14 \\times 11$ and $10 \\times 8$ mas for HL Tau and VY CMa, respectively."
+     },
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "The achieved beam sizes are $19 \\times 16$ and $16 \\times 12$ mas in Bands 7 and 8, respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "structures larger than 0.2 arcsec not properly sampled in stage 4",
+    "evidence": [
+     {
+      "loc": "Stage 4: high angular resolution imaging test",
+      "quote": "there were only a few baselines shorter than 200 m during the stage-4 period and thus we could not properly sample structures larger than 0.2 arcsec."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "VY CMa continuum RMS 1.5 mJy beam^-1 (robust 2); 1.8 mJy beam^-1 (robust 0)",
+    "evidence": [
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "The synthesized beam size is $12 \\times 11$ mas, and the image RMS noise is 1.5 mJy beam$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "HL Tau 45 min (two EBs); VY CMa 344 s",
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "Combined, there is 45 minutes on-source time for HL Tau."
+     },
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "The total observing time was 47 minutes, and the on-source time for VY CMa was 344 s."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 March–November; stage 2 Apr 11, Apr 23, May 4; stage 3 Jul 18; stage 4 Oct–Nov 3 2017",
+    "evidence": [
+     {
+      "loc": "Strategy of HF-LBC-2017",
+      "quote": "The baselines were longer than 10 km from the middle of July to the end of November, during which time more stage 3 tests and the stage 4 tests were undertaken."
+     },
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "Two B2B phase referencing EBs were taken on 2017 November 3 with switching cycle times of 37 and 26 s, respectively."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Campaign test data (EBs listed in Tables 3–5) plus archival SV data 2011.0.00015.SV and 2011.0.00011.SV",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "For this research, we used the ALMA data listed in"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA calibrator source catalog",
+     "provided": {
+      "value": "Flux densities of 3316 QSOs used for phase calibrator source counts",
+      "evidence": [
+       {
+        "loc": "Discussions",
+        "quote": "In the catalogue, 3316 QSOs whose flux densities have been measured with ALMA are available."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "LBC-2014-SV Band 7 HL Tau peak 11.56 mJy beam^-1 used to predict Band 9 peak",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "scaling from the LBC-2014-SV Band 7 data (11.56 mJy beam$^{-1}$,"
+       }
+      ]
+     },
+     "citation": "(cite: ALMApartnership2015b)"
+    },
+    {
+     "what": {
+      "value": "HL Tau disk features D1, B1, D2, B2, B6",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "The features are coincident with D1 and B1, dark and bright features reported by"
+       }
+      ]
+     },
+     "citation": "(cite: ALMApartnership2015b)"
+    },
+    {
+     "what": {
+      "value": "VY CMa stellar contribution 111–124 mJy at ~658 GHz",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "estimated a stellar contribution of 111–124 mJy at around 658 GHz based on the analytical stellar properties."
+       }
+      ]
+     },
+     "citation": "(cite: OGorman2015)"
+    },
+    {
+     "what": {
+      "value": "VY CMa photosphere diameter 11.4 mas",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "It is expected that the unresolved point source in HF-LBC-2017 represents the RSG photosphere with the diameter of 11.4 mas"
+       }
+      ]
+     },
+     "citation": "(cite: Wittkowski2012)"
+    },
+    {
+     "what": {
+      "value": "LBC-2013-SV VY CMa continuum image/maser comparison",
+      "evidence": [
+       {
+        "loc": "Complex structure target II: VY CMa in Band 9–4",
+        "quote": "we cannot identify which maser emissions correspond to those observed by"
+       }
+      ]
+     },
+     "citation": "(cite: Richards2014)"
+    },
+    {
+     "what": {
+      "value": "Distances: HL Tau 140 pc, VY CMa 1.17 kpc",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "HL Tau is a protoplanetary disk system surrounding a young star at a distance of 140 pc"
+       }
+      ]
+     },
+     "citation": "(cite: Rebull2004); (cite: Zhang2012)"
+    },
+    {
+     "what": {
+      "value": "Turbulent layer height 500 m and velocity 6 m s^-1",
+      "evidence": [
+       {
+        "loc": "B2B phase referencing",
+        "quote": "Assuming an atmospheric turbulent layer height of 500 m and its velocity of 6 m s$^{-1}$ at the ALMA site"
+       }
+      ]
+     },
+     "citation": "(cite: Robson2001)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "ALMA ATM program used to compute relative dispersive delay of water vapor (PWV = 1 mm)",
+     "evidence": [
+      {
+       "loc": "B2B phase referencing",
+       "quote": "calculated with the ALMA ATM program"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Manual CASA reduction with custom DGC/B2B workflow; in-band data with standard ALMA procedure; manual flagging",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "The data reduction of the in-band phase referencing was undertaken with a standard ALMA data reduction procedure, while the B2B phase referencing data reduction procedure requires the application of the DGC solutions."
+      },
+      {
+       "loc": "Results",
+       "quote": "there were a number of manual flagging commands to be entered for these data, mostly for the frequency switching segments"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "DGC source used as HF flux calibrator (stage 3); J0522-3627 for VY CMa bandpass and flux",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "For the amplitude calibration, we used the DGC source as an HF flux calibrator in addition to the system noise temperature calibration in both the B2B and in-band phase referencing."
+      },
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "A bright QSO, J0522$-$3627, $28^{\\circ}$ away from the target, was used as the DGC source, as well as for bandpass and flux-scale calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Phase self-cal for coherence checks (solint ~1 s stage 3; target scan length stage 4 QSO); VY CMa phase+amp self-cal solint 16 s on continuum then 4 s on maser; none for HL Tau",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "with a short solution interval (here we could use a solution interval of $\\sim 1$ s as the S/N was high)"
+      },
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "phase and amplitude self-calibrations were performed for the line-free continuum channels with the solution interval of 16 s to remove residual phase offsets between the SPWs."
+      },
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "We have not, however, performed any form of self-calibration"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN; fixed 50 iterations in stage 3",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "A fixed number of 50 CLEAN iterations were made with a 15 pixel radius masking box around the target (located at the phase tracking center in the image)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5 (stage 3, QSO, HL Tau, maser); natural for HL Tau; robust 2 and 0 for VY CMa continuum; robust -1 for LBC-2014-SV comparison",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "For the imaging, we use a Briggs weighting with a robustness parameter (robust) of 0.5, as this is representative of the common robust generally used in ALMA images."
+      },
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "The line-free continuum emission image using the averaged eight SPWs with Briggs weighting (robust $= 2$) is shown in the left panel of"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "5 (Bands 7, 8) or 7 (Band 9) pixels across beam major axis",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "The cell size is chosen such that 5 (for Bands 7 and 8) or 7 (Band 9) pixels cover the synthesized beam major axis."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "15 pixel radius box around target (stage 3); HL Tau also reimaged excluding baselines <500 kλ",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "A fixed number of 50 CLEAN iterations were made with a 15 pixel radius masking box around the target (located at the phase tracking center in the image)."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "line-free continuum channels of eight SPWs (VY CMa); specific channels not given",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "The line-free continuum emission image using the averaged eight SPWs"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Two EBs combined (QSO Bands 7/8; HL Tau)",
+     "evidence": [
+      {
+       "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+       "quote": "when combining two EBs taken in the middle of October and the beginning of 2017 November."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "H2O maser cube: 18 channels averaged to 8 km s^-1",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "A bright submm H$_{2}$O maser cube with a velocity resolution of 8 km s$^{-1}$ was generated for the 18 averaged frequency channels"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "HL Tau 20×18 mas (natural), 14×11 mas (robust 0.5); VY CMa 12×11 mas (robust 2), 10×8 mas (maser, robust 0.5)",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "The final beams achieved were 20$\\times$18 and 14$\\times$11 mas, respectively."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "VY CMa 1.5 mJy beam^-1 (robust 2); 1.8 mJy beam^-1 (robust 0)",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "The continuum emission map has a synthesized beam of $10 \\times 8$ mas and the image RMS noise of 1.8 mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "WVR phase correction and its performance",
+      "evidence": [
+       {
+        "loc": "Basic concept of B2B phase referencing",
+        "quote": "The WVR phase correction and its performance are described in previous reports"
+       }
+      ]
+     },
+     "from_reference": "(cite: Matsushita2017; Maud2017)"
+    },
+    {
+     "what": {
+      "value": "Details of stage 4 QSO observations and analysis",
+      "evidence": [
+       {
+        "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+        "quote": "Further details of the observations and data analysis results are described in another paper"
+       }
+      ]
+     },
+     "from_reference": "(cite: Asaki2019)"
+    },
+    {
+     "what": {
+      "value": "Full stage 3 study of 50 datasets and switching cycle culling",
+      "evidence": [
+       {
+        "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+        "quote": "The full study of 50 datasets will be detailed in the forthcoming paper"
+       }
+      ]
+     },
+     "from_reference": "(cite: Maud2020)"
+    },
+    {
+     "what": {
+      "value": "Cross-band calibration concept for instrumental phase offset (DGC)",
+      "evidence": [
+       {
+        "loc": "DGC",
+        "quote": "The instrumental phase offset difference can be independently measured with a cross-band calibration"
+       }
+      ]
+     },
+     "from_reference": "(cite: Holdaway2004b)"
+    },
+    {
+     "what": {
+      "value": "Coherence factor exp(-σφ²/2) relating image coherence to RMS phase",
+      "evidence": [
+       {
+        "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+        "quote": "where $\\sigma_{\\phi}$ is the residual RMS phase noise in radians"
+       }
+      ]
+     },
+     "from_reference": "(cite: TMS2001)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA version and exact tasks used for the DGC workflow (gaincal/applycal parameters, combine settings, interpolation)",
+    "Reference antenna choices and flagging commands for each EB",
+    "Image size, deconvolver and number of CLEAN iterations for stage 4 images",
+    "Clean thresholds/iterations and masks for HL Tau and VY CMa images",
+    "Exact frequency scaling ratio applied (LO1 ratio vs. actual SPW frequency ratio)",
+    "Which LBC-2014-SV EB was used for the single-EB comparison and its uv-range limit",
+    "Line-free channel ranges for VY CMa",
+    "Details of the calibrator count procedure: sky area, catalog snapshot date, how mean separation is computed from solid angle"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "apply WVR and Tsys corrections",
+    "method": {
+     "value": "WVR phase correction and system noise temperature correction applied to all data before DGC workflow",
+     "evidence": [
+      {
+       "loc": "Implementation of B2B phase referencing and DGC",
+       "quote": "The WVR phase correction and the system noise temperature correction have been applied to all of the data before this workflow starts."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "derive DGC solution and apply B2B phase referencing",
+    "method": {
+     "value": "Time-average LF DGC phases, frequency-transfer short-term LF solutions to HF DGC scans, average to obtain HF phase offset, then apply offset plus scaled LF calibrator phases to target",
+     "evidence": [
+      {
+       "loc": "Implementation of B2B phase referencing and DGC",
+       "quote": "Finally, the HF phase offset correction $\\left <\\bar \\Phi^{\\mathrm{DGC}}_{\\mathrm{HF}} \\right >$ is applied to the target phase $\\Phi^{\\mathrm{T}}_{\\mathrm{HF}}$, along with the time-dependent phase solutions derived from the LF phase calibrator, $\\Delta\\Phi^{\\mathrm{C}}_{\\mathrm{LF}}$ (panel (f))."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "switching cycle ~20 s with 8 s scans; 20–82 s overall",
+      "evidence": [
+       {
+        "loc": "Results",
+        "quote": "We adopted a consistent switching cycle time of $\\sim$20 s, typically consisting of 8 s target and phase calibrator scans and two 2 s overheads to switch sources and/or frequencies."
+       }
+      ]
+     },
+     {
+      "value": "harmonic frequency switching with fixed photonic LO",
+      "evidence": [
+       {
+        "loc": "Harmonic frequency switching",
+        "quote": "In HF-LBC-2017, we adopted harmonic frequency switching for all of the B2B phase referencing experiments."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Phase error proportional to frequency; simple scaling ratio R = νHF/νLF despite dispersive term",
+      "evidence": [
+       {
+        "loc": "Strategy of HF-LBC-2017",
+        "quote": "we adopted the simple frequency scaling ratio for B2B phase referencing because other comparable delay errors, such as the antenna position errors, do not have a frequency dependence."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "test DGC solution stability (stage 2)",
+    "method": {
+     "value": "Observe several bright QSOs in succession up to 100° apart; compute antenna-based DGC solutions per SPW/polarization, subtract linear trend, examine scatter vs baseline length",
+     "evidence": [
+      {
+       "loc": "Stage 2: DGC solution stability",
+       "quote": "one set targeting several bright QSOs as DGC sources in succession with the sky separations of up to 100$^{\\circ}$ to check the dependence of the DGC solutions with the sky position"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "v_w = 6 m s^-1",
+      "evidence": [
+       {
+        "loc": "Stage 2: DGC solution stability",
+        "quote": "If we assume $v_{\\mathrm{w}}=6$ m s$^{-1}$, this baseline length is expected to 60 m."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "single linear trend subtracted per antenna",
+     "evidence": [
+      {
+       "loc": "Stage 2: DGC solution stability",
+       "quote": "shows the antenna-based DGC solutions as a function of baseline length to the reference antenna after subtracting a single linear trend for each antenna."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "compare B2B vs in-band image quality (stage 3)",
+    "method": {
+     "value": "Interleaved DGC/in-band/B2B blocks on same target with calibrators at 1.2°–8.7°; image, then phase self-calibrate to define image coherence as ratio of peak fluxes",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "Here we define the image coherence as the ratio between peak flux densities for data with and without self-calibration applied."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5, 50 CLEAN iterations, 15 pixel mask; switching cycle 60 s by culling",
+      "evidence": [
+       {
+        "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+        "quote": "A fixed number of 50 CLEAN iterations were made with a 15 pixel radius masking box around the target (located at the phase tracking center in the image)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Residual phase noise Gaussian, coherence = exp(-σφ²/2)",
+      "evidence": [
+       {
+        "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+        "quote": "Assuming that the residual RMS phase noise in the visibility has characteristics of a Gaussian random noise"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Self-calibrated images as reference",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "After self-calibration, the image noise of the B2B and in-band phase referencing are equivalent, indeed confirming that the residual offsets have been fully corrected."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "long-baseline QSO imaging in Bands 7 and 8",
+    "method": {
+     "value": "B2B referencing with 0.7° calibrator, two EBs combined, robust 0.5 imaging, self-cal for coherence",
+     "evidence": [
+      {
+       "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+       "quote": "We also performed phase self-calibration with a solution interval of the target scan length and obtained the images free from the atmospheric and instrumental phase errors in order to investigate the image coherence."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "HL Tau Band 9 imaging and fidelity comparison",
+    "method": {
+     "value": "Image combined EBs with natural and robust 0.5, and with uv>500 kλ; compare with LBC-2014-SV Band 7 single-EB image (robust -1, and uv-limited robust 0.5); estimate coherence from expected peak",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "To provide a fairer comparison of the image structure, we use only one Band 9 HF-LBC-2017 EB compared with a Band 7 image with a single LBC-2014-SV EB."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Central peak optically thick, α = 2",
+      "evidence": [
+       {
+        "loc": "Complex structure target I: HL Tau in Band 9–4",
+        "quote": "Using the simple assumption that the central peak of emission is completely optically thick ($\\alpha$=2)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "RMS phase of bandpass calibrator over 30 s",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "Using the high-S/N bandpass calibrator observation, we performed an assessment of the Band 9 RMS phase with a time interval of 30 s"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "VY CMa continuum and maser imaging",
+    "method": {
+     "value": "Continuum image (robust 2), self-cal on continuum (16 s) then maser (4 s), aperture flux vs LBC-2013-SV Gaussian fit, peak position, maser cube (robust 0.5)",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "the bright maser peak, which has a higher S/N, was used for further self-calibration, now making and applying the solutions with an interval of 4 s to all data."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Two-dimensional Gaussian fit to LBC-2013-SV image; similar-sized aperture on new image",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "Fitting to a similar sized-aperture for VY CMa in our image gives 394 mJy at the reference frequency of 669 GHz."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Consistency with LBC-2013-SV flux within ~20%",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "These results are consistent within the $\\sim 20$% error for the LBC-2013-SV fluxes."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "phase calibrator availability statistics",
+    "method": {
+     "value": "Power-law fit of catalog fluxes, count sources above required flux (S/N 20×R per 8 s scan, SEFDs, 43 antennas), derive mean solid angle and mean separation per band",
+     "evidence": [
+      {
+       "loc": "Discussions",
+       "quote": "First, we count only the sources whose flux density is higher than the flux density requirement. Second, we obtain a mean solid angle per phase calibrator from the above number count."
+      },
+      {
+       "loc": "Discussions",
+       "quote": "flux density at an arbitrary frequency is evaluated by fitting the flux density measurements between Bands 3 and 7 or Bands 3 and 6 to a power-law function of $\\nu^{\\alpha}$, where $\\alpha$ is a spectral index."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Required S/N per scan 20 × R; 8 s scan; 43 antennas",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "Required S/N (per scan)"
+       }
+      ]
+     },
+     {
+      "value": "Declination limited below +25°",
+      "evidence": [
+       {
+        "loc": "Discussions",
+        "quote": "We constrain the decl. range lower than $+25^{\\circ}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Antennas at zenith; highest catalog flux used for multi-epoch sources",
+      "evidence": [
+       {
+        "loc": "Discussions",
+        "quote": "The antennas are assumed to be directed to zenith."
+       },
+       {
+        "loc": "Discussions",
+        "quote": "If a certain calibrator has been observed at multiple epochs, we refer to the highest value"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "power-law ν^α fit",
+     "evidence": [
+      {
+       "loc": "Discussions",
+       "quote": "flux density at an arbitrary frequency is evaluated by fitting the flux density measurements between Bands 3 and 7 or Bands 3 and 6 to a power-law function of , where  is a spectral index."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked calibrator distribution bias",
+     "evidence": [
+      {
+       "loc": "Discussions",
+       "quote": "We conclude that the current investigation is not seriously affected by the calibrator distribution bias."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "data reduction and imaging",
+     "evidence": [
+      {
+       "loc": "Results",
+       "quote": "For many parts of our data reduction, we made use of the Common Astronomy Software Applications (CASA) package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AATM (ALMA ATM program)",
+    "version": "not stated",
+    "used_for": {
+     "value": "computing dispersive delay of atmospheric water vapor",
+     "evidence": [
+      {
+       "loc": "B2B phase referencing",
+       "quote": "calculated with the ALMA ATM program"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "DGC solution standard deviation, Band 7",
+    "value": "10–20",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Stage 2: DGC solution stability",
+      "quote": "The DGC solution in Band 7 has a roughly a standard deviation of $10^{\\circ}$–$20^{\\circ}$, independent of the sky positions of the QSOs."
+     }
+    ]
+   },
+   {
+    "quantity": "DGC solution standard deviation, Bands 8–4 and 9–6",
+    "value": "~30",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Stage 2: DGC solution stability",
+      "quote": "the standard deviation of the DGC solution is increased to $\\sim$30$^{\\circ}$."
+     }
+    ]
+   },
+   {
+    "quantity": "DGC instrumental offset stability time",
+    "value": "approximately 1",
+    "uncertainty": "not stated",
+    "units": "hr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Stage 2: DGC solution stability",
+      "quote": "the instrumental phase offset difference determined from the DGC solution is stable for approximately 1 hr."
+     }
+    ]
+   },
+   {
+    "quantity": "Band 8 in-band image coherence at 5.8° and 8.7° separation",
+    "value": "71 and 64",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+      "quote": "Relative to the self-calibrated image, the image coherence is 71% and 64% for the $5.^{\\circ}8$ and $8.^{\\circ}7$ separation angles."
+     }
+    ]
+   },
+   {
+    "quantity": "Max calibrator separation for ≥70% coherence",
+    "value": "~6",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "If we wish to obtain an image coherence of $\\geq$70%, the separation angle should be within $\\sim 6^{\\circ}$."
+     }
+    ]
+   },
+   {
+    "quantity": "QSO J2228-0753 image coherence, Bands 7 and 8",
+    "value": "94 and 84",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "We obtained high image coherences of 94% and 84% in Bands 7 and 8, respectively, so that B2B phase referencing works effectively in those experiments."
+     }
+    ]
+   },
+   {
+    "quantity": "Implied RMS phase noise, Band 7 / Band 8",
+    "value": "21 / 34",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "The 94% image coherence in Band 7 corresponds to an RMS phase noise of $21^{\\circ}$,"
+     }
+    ]
+   },
+   {
+    "quantity": "QSO beam sizes Band 7 / Band 8",
+    "value": "19 × 16 / 16 × 12",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Point-source target: QSO J2228-0753 in Bands 7–3 and 8–4",
+      "quote": "The achieved beam sizes are $19 \\times 16$ and $16 \\times 12$ mas in Bands 7 and 8, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "HL Tau Band 9 natural-weighted peak",
+    "value": "24.9",
+    "uncertainty": "not stated",
+    "units": "mJy beam^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "The naturally weighted HF-LBC-2017 Band 9 image yields a peak of 24.9 mJy beam$^{-1}$, suggesting a coherence of around 56%."
+     }
+    ]
+   },
+   {
+    "quantity": "HL Tau inferred coherence",
+    "value": "~56",
+    "uncertainty": "lower limit",
+    "units": "%",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "The naturally weighted HF-LBC-2017 Band 9 image yields a peak of 24.9 mJy beam$^{-1}$, suggesting a coherence of around 56%."
+     }
+    ]
+   },
+   {
+    "quantity": "HL Tau beams (natural / robust 0.5)",
+    "value": "20×18 / 14×11",
+    "uncertainty": "not stated",
+    "units": "mas",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "The final beams achieved were 20$\\times$18 and 14$\\times$11 mas, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "VY CMa continuum peak before/after self-cal",
+    "value": "42 / 135",
+    "uncertainty": "not stated",
+    "units": "mJy beam^-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "Improvements were seen on the continuum peak, which increased from 42 to 135 mJy beam$^{-1}$, while the image RMS noise was largely unchanged at 1.5 mJy beam$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "VY CMa aperture flux density at 669 GHz",
+    "value": "394",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "Fitting to a similar sized-aperture for VY CMa in our image gives 394 mJy at the reference frequency of 669 GHz."
+     }
+    ]
+   },
+   {
+    "quantity": "VY CMa position offset from LBC-2013-SV",
+    "value": "(47, 5)",
+    "uncertainty": "LBC-2013-SV positional uncertainty 35 mas",
+    "units": "mas",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Complex structure target II: VY CMa in Band 9–4",
+      "quote": "The position is offset by (47, 5) mas from the position measured from the most astrometrically accurate LBC-2013-SV observations at 321 GHz in Band 7 (resolution of 180$\\times$90 mas)."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean separation to B2B calibrator, Band 10 with Band 3 / Band 7",
+    "value": "4.3 / 5.4",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Discussions",
+      "quote": "By introducing B2B phase referencing, one is expected to find a suitable phase calibrator within $4.^{\\circ}3$ in Band 3."
+     },
+     {
+      "loc": "abstract",
+      "quote": "There is a high probability of finding a low-frequency calibrator within $5^{\\circ}.4$ in B2B phase referencing, bright enough to use an 8 s scan length combined with a 7.5 GHz bandwidth."
+     }
+    ]
+   },
+   {
+    "quantity": "Mean separation to in-band calibrator, Band 10",
+    "value": "12.6",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Discussions",
+      "quote": "Band 10 is the most difficult Band in searching for an in-band phase calibrator, whose expected mean separation angle is $12.^{\\circ}6$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "DGC solutions independent of sky position over 100° and free of rapid instrumental variations, excluding problematic antennas",
+    "evidence": [
+     {
+      "loc": "Stage 2: DGC solution stability",
+      "quote": "As a whole, the DGC solutions are stable for QSOs with positions separated by 100$^{\\circ}$ apart on the sky."
+     }
+    ]
+   },
+   {
+    "value": "B2B and in-band give comparable coherence with the same close calibrator; in-band degrades with separation",
+    "evidence": [
+     {
+      "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+      "quote": "we found that in-band phase referencing has a noticeable degradation of image quality in terms of the image coherence and defects with increasing separation angle."
+     }
+    ]
+   },
+   {
+    "value": "HL Tau Band 9 image recovers D1/B1 features and is arguably as good as Band 7 SV in fair comparison; extended structure poorly recovered due to uv sampling",
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "Aside from the unfortunate ($u$, $v$) sampling, based upon these fairer comparisons, our Band 9 image of HL Tau is arguably as good as that in Band 7."
+     }
+    ]
+   },
+   {
+    "value": "B2B more beneficial than in-band for calibrator availability in Bands 8–10, no merit in Band 7",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "Our statistical investigation for the phase calibrator availability shows that B2B phase referencing is more beneficial for finding a phase calibrator in Bands 8–10 while there is no apparent merit in Band 7."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Instrumental phase offset between bands can be removed stably with DGC",
+    "experiment": "Stage 2 multi-QSO DGC blocks in Bands 7–3, 8–4, 9–6",
+    "result": "DGC scatter 10–20° (Band 7), ~30° (Bands 8, 9), independent of sky position; stable ~1 hr",
+    "finding": "DGC is satisfactorily stable",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Stage 2: DGC solution stability",
+      "quote": "From the stage 2 test, we found that the DGC is satisfactorily stable, i.e. there are no rapid instrumental variations, excluding obvious problematic antennas."
+     }
+    ]
+   },
+   {
+    "hypothesis": "B2B with a close calibrator outperforms in-band with distant calibrators",
+    "experiment": "Stage 3 Band 8–4 comparisons with calibrators at 1.2°–8.7°",
+    "result": "Comparable coherence for same calibrator; in-band coherence 71%/64% at 5.8°/8.7°",
+    "finding": "Calibrator within ~6° needed for ≥70% coherence; closer calibrator via B2B improves images in Bands 8–10",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "These results demonstrate that the use of a closer phase calibrator together with B2B phase referencing can improve the image quality compared with in-band phase referencing in Bands 8–10."
+     }
+    ]
+   },
+   {
+    "hypothesis": "B2B enables long-baseline high-frequency imaging",
+    "experiment": "Stage 4 imaging of QSO (Bands 7, 8), HL Tau and VY CMa (Band 9) on 14–16 km baselines",
+    "result": "QSO coherence 94%/84%; HL Tau 14×11 mas, VY CMa 10×8 mas beams",
+    "finding": "Objects imaged at highest resolutions with expected fidelity, but extended structure not recovered without short spacings",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We successfully imaged those objects with the highest angular resolutions that can be achieved at each frequency with an image fidelity expected from previous ALMA observations."
+     }
+    ]
+   },
+   {
+    "hypothesis": "B2B gives better calibrator availability despite needing higher S/N",
+    "experiment": "Source counts from ALMA calibrator catalog with flux requirements",
+    "result": "B2B mean separation 3.1–5.4°; in-band 3.7–12.6°",
+    "finding": "B2B beneficial in Bands 8–10, not in Band 7",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Discussions",
+      "quote": "The phase calibrator availability in B2B phase referencing is superior to in-band phase referencing in Bands 8, 9, and 10."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "HL Tau and VY CMa chosen because high-fidelity earlier SV images exist for comparison",
+    "evidence": [
+     {
+      "loc": "Complex structure target I: HL Tau in Band 9–4",
+      "quote": "to examine whether the image quality of B2B phase referencing is as expected in Band 9 when compared with the known high-fidelity image from previous ALMA SV data."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Frequencies chosen for harmonic switching availability and small dispersive term",
+    "evidence": [
+     {
+      "loc": "Strategy of HF-LBC-2017",
+      "quote": "In selecting the observing frequencies, we prioritized the following two points: (1) the harmonic frequency switching is available for a combination of HF and LF to achieve the fast switching"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Smaller robust values rejected for HL Tau because they resolve out extended emission",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "as Briggs weightings with smaller robustness parameters form too-sharp beams resolving out almost all of the extended emission."
+      }
+     ]
+    },
+    {
+     "value": "Band 10 experiments failed and excluded",
+     "evidence": [
+      {
+       "loc": "Strategy of HF-LBC-2017",
+       "quote": "In this paper, the Band 10 results are not mentioned further."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Flagged longest-baseline antennas prevented expected ~10 mas resolution for HL Tau",
+     "evidence": [
+      {
+       "loc": "Complex structure target I: HL Tau in Band 9–4",
+       "quote": "we could not achieve the expected $\\sim$10 mas angular resolution with the EBs."
+      }
+     ]
+    },
+    {
+     "value": "Dispersive water vapor term not fully investigated; simple scaling ratio used",
+     "evidence": [
+      {
+       "loc": "Summary",
+       "quote": "Another important subject not fully investigated for HFs is where the dispersive term of the atmospheric water vapor is greater than a few tens of percent."
+      }
+     ]
+    },
+    {
+     "value": "B2B not systematically tested at various separation angles",
+     "evidence": [
+      {
+       "loc": "Stage 3: image quality comparative test between B2B and in-band phase referencing",
+       "quote": "Although we have not systematically tested the B2B phase referencing image quality for a variety of separation angles"
+      }
+     ]
+    },
+    {
+     "value": "Observations in non-optimal atmospheric conditions; high Band 9 RMS phase",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "the observations were performed during available time and thus not during the most optimal conditions."
+      }
+     ]
+    },
+    {
+     "value": "VY CMa positional offset not yet understood",
+     "evidence": [
+      {
+       "loc": "Complex structure target II: VY CMa in Band 9–4",
+       "quote": "We are still investigating this positional offset"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Stage 3 conclusions rest on a single detailed Band 8–4 night; broader statistics deferred to Maud2020",
+    "Image coherence via self-cal peak ratio with 50 fixed CLEAN iterations may depend on cleaning depth",
+    "HL Tau coherence relies on optically thick α=2 extrapolation from Band 7",
+    "Calibrator counts use the highest catalog flux per source, which may overestimate availability given QSO variability",
+    "Target name inconsistency (J0633-2333 in text vs J0633-2223 in Table 4)"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "EB uids for test data listed in Tables 3–5; SV projects 2011.0.00015.SV and 2011.0.00011.SV",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "For this research, we used the ALMA data listed in"
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and scripts implementing the DGC/B2B workflow",
+    "Flagging commands for frequency-switching segments",
+    "Imaging parameters (niter, thresholds, image size) for stage 4 images",
+    "Snapshot of the ALMA calibrator catalog used and exact source-count computation",
+    "Explicit statement whether HF-LBC-2017 EBs are publicly available in the archive"
+   ],
+   "estimated_data_volume_inferred": "Tens of EBs (stage 2/3 short tests plus ~7 stage 4 long-baseline EBs with 40–50 antennas, 8 SPWs at Band 9), likely a few hundred GB to ~1 TB raw",
+   "score_inferred": 3,
+   "score_reason": "On a 1–5 scale: workflow and key imaging parameters are described and EB uids given, but no software versions, scripts or flag lists, and the custom DGC workflow requires substantial reimplementation.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public availability of the HF-LBC-2017 test EBs is not stated and the custom B2B/DGC calibration plus manual flagging are not specified in enough detail to redo directly."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Holdaway2004b)",
+     "why": "cross-band calibration and phase structure function concepts"
+    },
+    {
+     "citation": "(cite: Rioja2014)",
+     "why": "frequency phase transfer"
+    },
+    {
+     "citation": "(cite: Schwab1980)",
+     "why": "self-calibration"
+    },
+    {
+     "citation": "(cite: TMS2001)",
+     "why": "coherence factor, SEFD, 90° phase switching"
+    },
+    {
+     "citation": "(cite: Nikolic2009)",
+     "why": "ALMA ATM atmospheric model"
+    },
+    {
+     "citation": "(cite: Matsushita2017; Maud2017)",
+     "why": "WVR phase correction"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Asaki2019)",
+     "why": "details of stage 4 QSO observations"
+    },
+    {
+     "citation": "(cite: Maud2020)",
+     "why": "full stage 3 study of 50 datasets"
+    },
+    {
+     "citation": "(cite: ALMApartnership2015b)",
+     "why": "LBC-2014-SV HL Tau comparison image"
+    },
+    {
+     "citation": "(cite: Richards2014)",
+     "why": "LBC-2013-SV VY CMa comparison"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "HF-LBC-2017",
+    "LBC-2013",
+    "LBC-2014",
+    "LBC-2015",
+    "ALMA calibrator source catalog"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-opus-5-5",
+  "custom_id": "card-opus-f4d6b55184cd001f578a72c5131ad4d3",
+  "batch_id": "msgbatch_017Jz9svfCQSFYSWmp8RzAs6",
+  "run": "pilot",
+  "collected_at": "2026-10-28T06:56:40",
+  "usage": {
+   "input_tokens": 40907,
+   "output_tokens": 22920,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.311621,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 127,
+  "quotes_ok": 126,
+  "quote_pass_rate": 0.992,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 113,
+   "stated": 83,
+   "rate": 0.735
+  },
+  "evidence_ok": false
+ },
+ "repair_log": {
+  "at": "2026-10-28T07:03:03",
+  "fixed": [
+   {
+    "path": "analysis_steps[7].fitting.evidence[0]",
+    "old": null,
+    "new": "flux density at an arbitrary frequency is evaluated by fitting the flux density measurements between Bands 3 and 7 or Bands 3 and 6 to a power-law function of , where  is a spectral index."
+   }
+  ],
+  "removed_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

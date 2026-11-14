@@ -1,0 +1,335 @@
+{
+ "bibcode": "2021MNRAS.502..521D",
+ "title": "Disc-jet coupling changes as a possible indicator for outbursts from GX 339-4 remaining within the X-ray hard state",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3853",
+ "arxiv_id": "2012.05206",
+ "fields": [
+  "stellar_physics",
+  "transients"
+ ],
+ "question": "Can X-ray or radio/(sub-)mm disk-jet coupling signatures act as indicators for whether an outburst of GX 339-4 will remain in the hard X-ray spectral state ('hard-only') rather than completing a full outburst?",
+ "alma_project_codes": [
+  "2017.1.00864.T"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, and 6",
+  "arrays": "12m array (41 antennas)",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio and X-ray luminosities for the 2008, 2009, and 2012 hard-only outbursts and five successful outbursts of GX 339-4",
+    "evidence": [
+     {
+      "loc": "The radio – X-ray correlation",
+      "quote": "To extend the X-ray luminosity range, we combined our 2017–2018 $L_{\\rm r} - L_{\\rm X}$ data with radio and X-ray luminosities taken from other hard-only outbursts from GX 339$-$4 (Figure 9, left panel), where we include data presented by (cite: corbel) on the 2008, 2009 and 2012 hard-only outbursts."
+     }
+    ]
+   },
+   "citation": "(cite: corbel)"
+  },
+  {
+   "what": {
+    "value": "Interstellar abundances and photoionization cross-sections for X-ray spectral fitting, and fixed hydrogen column density value for comparison",
+    "evidence": [
+     {
+      "loc": "Swift-XRT",
+      "quote": "The tbabs model component, making use of abundances from (cite: 2000ApJ...542..914W), and photoionization cross-sections from (cite: 1996ApJ...465..487V), was used to account for interstellar absorption."
+     },
+     {
+      "loc": "Swift-XRT",
+      "quote": "We also compared all results with $N_{\\rm H}$ either fixed to literature values ($N_{\\rm H}$$_{\\rm ,fixed} = 0.851 \\times 10^{22}$ cm$^{-2}$; (cite: 2015ApJ...808..122F)), or left free (untied) for all epochs"
+     }
+    ]
+   },
+   "citation": "(cite: 2000ApJ...542..914W); (cite: 1996ApJ...465..487V); (cite: 2015ApJ...808..122F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image ALMA sub-mm continuum and measure integrated and sub-band flux densities",
+   "method": "Multi-frequency synthesis continuum imaging in CASA using tclean with natural weighting (both full 8 GHz bands and 2 GHz sub-bands), followed by point source fitting in the image plane with imfit",
+   "software": [
+    "CASA",
+    "tclean",
+    "imfit"
+   ],
+   "key_parameters": [
+    "natural weighting; central frequencies 97.5, 145, 233 GHz (8 GHz full bandwidth and 2 GHz sub-bands)"
+   ],
+   "assumptions": [
+    "5% systematic uncertainty on absolute flux density calibration for ALMA bands <350 GHz"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce and image ATCA radio continuum and measure flux densities, luminosities, and spectral indices",
+   "method": "Standard calibration and natural-weighted imaging in CASA, image-plane Gaussian fitting with FWHM fixed to the synthesised beam, and Monte Carlo fitting for spectral index alpha",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "5.5, 9, 17, 19 GHz; 2 GHz bandwidth per band"
+   ],
+   "assumptions": [
+    "Source distance D = 8 kpc; systematic flux scale uncertainty of 2% at 5.5/9 GHz and 4% at 17/19 GHz"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract intra-observational radio and sub-mm light curves and quantify short-timescale variability",
+   "method": "Extract 5-min time-resolved ATCA light curves at 5.5 and 9 GHz using UVMULTIFIT in the uv-plane and 30-sec time-resolved ALMA sub-mm light curves across Bands 3, 4, and 6, then compute fractional RMS variability statistic F_var",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "5-min time intervals for ATCA; 30-sec time intervals for ALMA"
+   ],
+   "assumptions": [
+    "Point source (delta function in uv-plane for ATCA)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit X-ray spectra and measure X-ray fluxes, photon indices, hardness ratios, and luminosities",
+   "method": "Fit 0.5-10 keV Swift-XRT spectra in XSPEC with an absorbed power-law (tbabs*powerlaw) and extract unabsorbed fluxes with cflux; convert MAXI 2-20 keV count rates during Sun constraint to 1-10 keV fluxes using WebPIMMS",
+   "software": [
+    "HEASOFT",
+    "XSPEC",
+    "WebPIMMS"
+   ],
+   "key_parameters": [
+    "Energy bands: 1–10 keV, 0.5–10 keV, 0.5–1.5 keV, and 1.5–10 keV; tied N_H = (0.56 +/- 0.02) x 10^22 cm^-2"
+   ],
+   "assumptions": [
+    "Distance D = 8 kpc; M_BH = 7.8 M_sun for Eddington luminosity; Gamma = 1.5 - 2.5 for MAXI flux conversion"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit the radio-X-ray luminosity correlation and compare hard-only vs successful outbursts",
+   "method": "Perform linear regression in logarithmic space on quasi-simultaneous radio and X-ray luminosities using Python LINMIX_ERR (10,000 iterations), and compare hard-only and successful outburst distributions with a Monte-Carlo 2D 2-sample K-S test",
+   "software": [
+    "LINMIX_ERR",
+    "ndtest"
+   ],
+   "key_parameters": [
+    "10,000 iterations in LINMIX_ERR; quasi-simultaneous data within 1 day (MJD 58058 interpolated assuming exponential rise)"
+   ],
+   "assumptions": [
+    "Power-law relation between L_r and L_X (linear in logarithmic space)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) continuum flux density on 2017-10-05",
+   "value": "2.0",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "97.5 | 2.0 $\\pm$ 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 4 (145.0 GHz) continuum flux density on 2017-10-05",
+   "value": "2.28",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "145.0 | 2.28 $\\pm$ 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 6 (233.0 GHz) continuum flux density on 2017-10-05",
+   "value": "2.20",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "233.0 | 2.20 $\\pm$ 0.11"
+    }
+   ]
+  },
+  {
+   "quantity": "Broadband radio-to-sub-mm spectral index alpha on 2017-10-05 (MJD 58031)",
+   "value": "0.11",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2017–10–05 | 58031 | 5.5 | 1.53 $\\pm$ 0.05 | 0.11 $\\pm$ 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional RMS variability F_var at 97 GHz (ALMA Band 3)",
+   "value": "21.6",
+   "uncertainty": "0.1",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intra-observational variability",
+     "quote": "We measure fractional RMS values of $21.6\\pm0.1$ %, $35.9\\pm0.2$ %, and $35.4\\pm0.1$ % for the 97, 145, and 230 GHz bands, respectively, indicating a mildly variable to highly variable source at these frequencies."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional RMS variability F_var at 145 GHz (ALMA Band 4)",
+   "value": "35.9",
+   "uncertainty": "0.2",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intra-observational variability",
+     "quote": "We measure fractional RMS values of $21.6\\pm0.1$ %, $35.9\\pm0.2$ %, and $35.4\\pm0.1$ % for the 97, 145, and 230 GHz bands, respectively, indicating a mildly variable to highly variable source at these frequencies."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional RMS variability F_var at 230 GHz (ALMA Band 6)",
+   "value": "35.4",
+   "uncertainty": "0.1",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intra-observational variability",
+     "quote": "We measure fractional RMS values of $21.6\\pm0.1$ %, $35.9\\pm0.2$ %, and $35.4\\pm0.1$ % for the 97, 145, and 230 GHz bands, respectively, indicating a mildly variable to highly variable source at these frequencies."
+    }
+   ]
+  },
+  {
+   "quantity": "Line-of-sight equivalent hydrogen absorption column density N_H (2017-2018 outburst)",
+   "value": "0.56",
+   "uncertainty": "0.02",
+   "units": "10^22 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Swift-XRT",
+     "quote": "Tying the line of sight equivalent hydrogen absorption, $N_{\\rm H}$, across all epochs provided $N_{\\rm H}$ = $(0.56 \\pm 0.02) \\times 10^{22}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak 1-10 keV X-ray luminosity during 2017-2018 outburst (MJD 58103)",
+   "value": "3.98",
+   "uncertainty": "0.88",
+   "units": "10^37 erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "2017–12–16 | 58103 | 0.353 $\\pm$ 0.052 | 52.0 $\\pm$ 11.5 | 3.98 $\\pm$ 0.88"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-X-ray luminosity correlation slope for 2017-2018 hard-only outburst (including MAXI)",
+   "value": "0.39",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "However, quasi-simultaneous radio and X-ray observations showed a flatter than expected coupling between the radio and X-ray luminosities (with a best fit relation of $L_{\\rm radio} \\propto L_{\\rm X}^{0.39 \\pm 0.06}$), when compared to successful outbursts from this system ($L_{\\rm radio} \\propto L_{\\rm X}^{0.62 \\pm 0.02}$)."
+    },
+    {
+     "loc": "The radio – X-ray correlation",
+     "quote": "finding a flatter than usual radio – X-ray coupling for GX 339$-$4, where $L_{\\rm r} \\propto L_{\\rm X}^{0.39 \\pm 0.06}$ for this hard-only outburst (Figure 8)."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-X-ray luminosity correlation slope for 2017-2018 hard-only outburst (excluding MAXI)",
+   "value": "0.3",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The radio – X-ray correlation",
+     "quote": "As such, excluding the MAXI points did not change our results, providing a best-fit relation of $L_{\\rm r} \\propto L_{\\rm X}^{0.3 \\pm 0.1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-X-ray luminosity correlation slope for combined hard-only outbursts of GX 339-4",
+   "value": "0.46",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "including data from other hard-only outbursts from GX 339$-$4 extends the luminosity range to $\\sim$1.2 and $\\sim$2.8 orders of magnitude, respectively, and also results in a flatter correlation (where $L_{\\rm radio} \\propto L_{\\rm X}^{0.46 \\pm 0.04}$)."
+    },
+    {
+     "loc": "The radio – X-ray correlation",
+     "quote": "We find a best-fit relation of $L_{\\rm r} \\propto L_{\\rm X}^{0.46 \\pm 0.04}$ ($L_{\\rm r} \\propto L_{\\rm X}^{0.44 \\pm 0.07}$ without the MAXI data), again much flatter than the $L_{\\rm r} \\propto L_{\\rm X}^{0.62 \\pm 0.02}$ relation for the successful outbursts from GX 339$-$4"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio-X-ray luminosity correlation slope for successful outbursts of GX 339-4",
+   "value": "0.62",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The radio – X-ray correlation",
+     "quote": "We find a best-fit relation of $L_{\\rm r} \\propto L_{\\rm X}^{0.46 \\pm 0.04}$ ($L_{\\rm r} \\propto L_{\\rm X}^{0.44 \\pm 0.07}$ without the MAXI data), again much flatter than the $L_{\\rm r} \\propto L_{\\rm X}^{0.62 \\pm 0.02}$ relation for the successful outbursts from GX 339$-$4"
+    }
+   ]
+  },
+  {
+   "quantity": "2D 2-sample K-S test p-value comparing hard-only and successful L_r-L_X distributions",
+   "value": "0.031",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The radio – X-ray correlation",
+     "quote": "Performing a Monte-Carlo 2-dimensional 2-sample Kolmogorov-Smirnov (K-S) test (cite: 1983MNRAS.202..615P; 1987MNRAS.225..155F) on the successful and hard-only data sets yields a $p$-value of 0.031"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact imaging parameters for ALMA tclean (cell size, image size, stopping threshold/niter, masking)",
+  "Method used to extract 30-second time-binned ALMA light curves (e.g., whether imaged in 30-sec intervals with tclean+imfit or fitted in the uv-plane with UVMULTIFIT)",
+  "Synthesised beam sizes and image rms noise levels for the ALMA and ATCA continuum images",
+  "Which flux calibrator (J1617-5848 vs J1427-4206) was used for which ALMA band"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA script or parameters for extracting the 30-second time-resolved ALMA light curves",
+  "Exact tclean imaging parameters (cell size, image size, cleaning threshold) for ALMA and ATCA continuum imaging",
+  "Tabulated values of the archival Corbel et al. (2013) L_r-L_X data points and exact luminosity cutoffs used for the restricted-range fit"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "All raw datasets (ALMA, ATCA, Swift, MAXI) are public with project codes and ObsIDs given, software versions are specified, and all intermediate and final flux densities and spectral fits (including 30-s ALMA and 5-min ATCA light curves) are fully tabulated in the paper; only minor imaging/extraction parameters are omitted.",
+ "rediscovery_reason": "Public ALMA, ATCA, and Swift-XRT data with a clear, quantitative analysis recipe (CASA continuum imaging/flux fitting, time-binned light curves, XSPEC power-law fits, and LINMIX_ERR correlation fitting) and well-defined numeric answer keys.",
+ "source_card": "cards/2021MNRAS.502..521D/sonnet/card.md"
+}

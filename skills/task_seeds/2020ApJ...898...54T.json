@@ -1,0 +1,288 @@
+{
+ "bibcode": "2020ApJ...898...54T",
+ "title": "Chemical Composition in the IRAS 16562-3959 High-mass Star-forming Region",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab994d",
+ "arxiv_id": "2006.01995",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What is the chemical composition of the three cores in the IRAS 16562-3959 G345.5+1.47 MYSO region, how is H2CO formed, and what causes the 33SO ring around the HC HII region?",
+ "alma_project_codes": [
+  "2013.1.00489.S"
+ ],
+ "data": {
+  "bands": "Band 6, cycle 2",
+  "arrays": "not stated",
+  "angular_resolution": "0.32\"x0.25\" (768 x 600 au)",
+  "sensitivity": "1sigma noise 1.1-2.1 mJy/beam per cube; continuum rms 1.6 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance 2.4 kpc and Lbol 154400 Lsun",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The distance and bolometric luminosity ($L_{\\rm {bol}}$) are 2.4 kpc and 154400 $L_{\\ensuremath{\\odot}}$ (cite: 2013ApJS..208...11L), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: 2013ApJS..208...11L)"
+  },
+  {
+   "what": {
+    "value": "Spectral window frequency/resolution table",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$^{a}$ Obtained from (cite: 2017AA...602A..59C)."
+     }
+    ]
+   },
+   "citation": "(cite: 2017AA...602A..59C)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity law kappa=0.1(nu/THz)^beta with beta=1.6",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Image and the H2 Column Density of Identified Cores",
+      "quote": "is calculated using Equation ([\\[equ:kappa\\]](#equ:kappa)) (cite: 2011A&A...536A..23P) with $\\beta=1.6$ (cite: 2013ApJ...767..126S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2011A&A...536A..23P); (cite: 2013ApJ...767..126S)"
+  },
+  {
+   "what": {
+    "value": "Chemical model results for H2CO (Nautilus, 3-phase slow warm-up)",
+    "evidence": [
+     {
+      "loc": "Model results of H2CO",
+      "quote": "We investigate main formation pathways of H$_{2}$CO using the results of (cite: 2019ApJ...881...57T) with the Nautilus (cite: 2016MNRAS.459.3756R)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...881...57T)"
+  },
+  {
+   "what": {
+    "value": "Rest frequencies and Eu from CDMS and JPL",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Rest frequency and excitation energy are taken from the Cologne Database for Molecular Spectroscopy (cite: 2005JMoSt.742..215M)."
+     }
+    ]
+   },
+   "citation": "(cite: 2005JMoSt.742..215M); (cite: 1998JQSRT..60..883P)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and cubes",
+   "method": "tclean with natural weighting; imcontsub for continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify cores and measure positions",
+   "method": "2D Gaussian fits to moment zero maps of H30alpha (Core A) and CH3OH (Cores B, C)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive H2 column density from dust continuum",
+   "method": "Kauffmann et al. 2008 formula with free-free subtracted for Core A",
+   "software": [],
+   "key_parameters": [
+    "beam sizes 0.3\" Core A, 0.5\" others"
+   ],
+   "assumptions": [
+    "Tdust = 100 K, beta = 1.6, kappa = 0.1 (nu/THz)^beta"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "CH3CN rotational diagram for Tex and N",
+   "method": "Gaussian fits to K=0-7 lines of J=12-11, rotational diagram, optically thin LTE",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thin"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive column densities of other species",
+   "method": "CASSIS LTE model with MCMC and chi2 minimization, two Tex cases (50-200 K; ranges around CH3CN Tex)",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "source size 0.3\" Core A, 0.5\" Cores B and C; filling factor 1; FWHM free between 1 and 10 km/s"
+   ],
+   "assumptions": [
+    "LTE, optically thin"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fractional abundances and comparison with models",
+   "method": "X = N(mol)/N(H2) at Cores B and C; compared with Nautilus model results",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3CN N and Tex, Core A",
+   "value": "1.0e16 cm-2; 279 K",
+   "uncertainty": "±0.1e16; ±57 K",
+   "units": "cm-2; K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "|  Core A  | ($1.0 \\pm 0.1$)$\\times 10^{16}$ |    $279 \\pm 57$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN N and Tex, Core B",
+   "value": "1.4e16 cm-2; 420 K",
+   "uncertainty": "±0.2e16; ±117 K",
+   "units": "cm-2; K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "|  Core B  | ($1.4 \\pm 0.2$)$\\times 10^{16}$ |   $420 \\pm 117$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN N and Tex, Core C",
+   "value": "1.3e15 cm-2; 213 K",
+   "uncertainty": "±0.2e15; ±25 K",
+   "units": "cm-2; K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "|  Core C  | ($1.3 \\pm 0.2$)$\\times 10^{15}$ |    $213 \\pm 25$    |"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2) Core A",
+   "value": "5.0e24",
+   "uncertainty": "+5.5/-2.6e24",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$5.0^{+5.5}_{-2.6} \\times 10^{24}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2) Core B",
+   "value": "1.9e23",
+   "uncertainty": "+2.1/-1.0e23",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1.9^{+2.1}_{-1.0} \\times 10^{23}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2) Core C",
+   "value": "4.8e23",
+   "uncertainty": "+5.3/-2.4e23",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$4.8^{+5.3}_{-2.4} \\times 10^{23}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha peak and FWHM at Core A",
+   "value": "46.7 K; 49.5 km/s",
+   "uncertainty": "±0.3 K; ±0.3 km/s",
+   "units": "K; km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "H30alpha spectra toward Core A",
+     "quote": "The peak intensity and full width half maximum (FWHM) were derived to be $46.7 \\pm 0.3$ K ($1\\sigma$) and $49.5 \\pm 0.3$ km s$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free contribution to continuum at Core A",
+   "value": "18.3 K",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "H30alpha spectra toward Core A",
+     "quote": "Therefore, the expected free-free contribution to the continuum is $46.7~{\\rm K}/2.55 = 18.3$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH N, Core B (Case 2)",
+   "value": "7.4e18 cm-2; Tex 300 K",
+   "uncertainty": "±3.4e18; ±31 K",
+   "units": "cm-2; K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CH$_{3}$OH         | ($9.6 \\pm 8.9$)$\\times 10^{17}$ | $256 \\pm 16$       |      | ($7.4 \\pm 3.4$)$\\times 10^{18}$ | $300 \\pm 31$       |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean cell size, image size, niter, threshold, masks",
+  "line-free channels used for imcontsub",
+  "CASA version and pipeline version",
+  "flux calibrator and flux scale uncertainty",
+  "velocity range used for moment zero maps",
+  "CASSIS MCMC settings (iterations, priors, chain length)",
+  "Core A free-free-subtracted continuum flux value used in N(H2)"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters",
+  "moment map velocity ranges",
+  "CASSIS MCMC configuration"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and named tools, but imaging parameters and fitting configuration are not given.",
+ "rediscovery_reason": "Public data; numeric Tex/N results for CH3CN and N(H2) can be rederived, though imaging details are missing.",
+ "source_card": "cards/2020ApJ...898...54T/sonnet/card.md"
+}

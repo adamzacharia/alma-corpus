@@ -1,0 +1,1031 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2014A&A...562A..26B",
+  "title": "Gas structure inside dust cavities of transition disks: Ophiuchus IRS 48 observed by ALMA",
+  "year": 2014,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Bruderer, Simon",
+  "n_authors": 4,
+  "arxiv_id": "1312.2756",
+  "doi": "10.1051/0004-6361/201322857",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00635.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present new high-resolution observations with the Atacama Large Millimeter/submillimeter Array (ALMA) of gas lines towards the transition disk Oph IRS 48 previously shown to host a large dust trap."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "Oph IRS 48",
+     "coordinates": {
+      "value": "RA 16h27m37.18s, Dec -24d30m35.3s (J2000)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "is an A0 star located in the $\\rho$ Ophiuchi star formation region at a distance of 120 parsec"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "$\\alpha_{\\rm 2000}=$16$^{\\rm h}$27$^{\\rm m}$37.18s, $\\delta_{\\rm 2000}=$-24$^\\circ$ 30$'$ 35.3$''$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "120 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "is an A0 star located in the $\\rho$ Ophiuchi star formation region at a distance of 120 parsec"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "$\\alpha_{\\rm 2000}=$16$^{\\rm h}$27$^{\\rm m}$37.18s, $\\delta_{\\rm 2000}=$-24$^\\circ$ 30$'$ 35.3$''$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Loinard08; Brown12",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "is an A0 star located in the $\\rho$ Ophiuchi star formation region at a distance of 120 parsec"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "$\\alpha_{\\rm 2000}=$16$^{\\rm h}$27$^{\\rm m}$37.18s, $\\delta_{\\rm 2000}=$-24$^\\circ$ 30$'$ 35.3$''$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How does the gas surface density behave inside the dust cavity (60 AU) and the inner 20 AU of the transition disk Oph IRS 48, and what is the total gas mass?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The observed gas lines are used to set constraints on the gas surface density profile."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 9 (690 GHz), Cycle 0",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "Band 9 ALMA Cycle 0 observations of IRS 48 were carried out in the extended configuration"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 spectral windows centered at 674.00, 678.84, 691.47, 693.88 GHz; 3840 channels each, 488 kHz spacing, 1875 MHz bandwidth; velocity resolution 0.21 km/s",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The spectral setup consisted of four spectral windows, centered at 674.00 , 678.84, 691.47 and 693.88 GHz"
+     },
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The final velocity resolution is 0.21 km s$^{-1}$ using a reference of 690 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=6-5",
+     "rest_frequency": "around 690 GHz",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "ALMA has detected the $J=6-5$ line of $^{12}$CO and C$^{17}$O around 690 GHz"
+      }
+     ]
+    },
+    {
+     "species": "C17O",
+     "transition": "J=6-5",
+     "rest_frequency": "spectral window centered at 674.00 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "to target the C$^{17}$O $J=6-5$, CN $J=6_{11/2}-5_{11/2}$, $^{12}$CO $J=6-5$, and H$^{13}$CO$^+$ $J=8-7$ transitions"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "extended configuration",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "carried out in the extended configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "up to 390 m, 18 to 21 antennas",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "In these blocks, 18 to 21 antennas were used with baselines up to 390 meter."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.32'' x 0.21'' (38 x 25 AU), PA 96 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The synthetic beam has a size of $0.32'' \\times 0.21''$ ($38 \\times 25$ AU) and a position angle of 96$^\\circ$ (east-of-north)."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 40 mJy/beam/channel",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "the rms noise level is 40 mJy beam$^{-1}$ channel$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "three execution blocks of 1.7 hours each",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "in three execution blocks of 1.7 hours each"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "June 6th and July 17th 2012",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "on June 6th and July 17th 2012"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLT-VISIR",
+     "provided": {
+      "value": "18.7 um dust continuum image used to constrain dust structure",
+      "evidence": [
+       {
+        "loc": "abstract",
+        "quote": "the VLT-VISIR 18.7 $\\mu$m dust continuum images"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "SED photometry and spectroscopy (2MASS, WISE, IRAC, IRAS, PACS, SMA, SCUBA, etc.)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "| WISE       | 3.4        | 1.29       | (cite: Wright10)    |"
+       }
+      ]
+     },
+     "citation": "Table 2 references (Cutri03, Wright10, vanKempen09, Fedele13a, Andrews07, Geers07, McClure10, ...)"
+    },
+    {
+     "what": {
+      "value": "Inclination 48+-8 deg and PA 98+-3 deg from 18.7 um images",
+      "evidence": [
+       {
+        "loc": "3.1 Integrated intensity maps",
+        "quote": "The inclination is determined by (cite: Geers07) from 18.7 $\\mu$m dust continuum images to be $i=48\\pm8^\\circ$."
+       }
+      ]
+     },
+     "citation": "(cite: Geers07)"
+    },
+    {
+     "what": {
+      "value": "Stellar type A0, mass 2 Msun, luminosity 14.3 Lsun; AV=11.5",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Stellar mass | M$_* =$ 2 M$_\\odot$ | B12 |"
+       }
+      ]
+     },
+     "citation": "(cite: Brown12)"
+    },
+    {
+     "what": {
+      "value": "Accretion rate 4e-9 Msun/yr",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| Accretion rate | $4 \\times 10^{-9}$ M$_\\odot$ yr$^{-1}$ | S13 |"
+       }
+      ]
+     },
+     "citation": "(cite: Salyk13)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "DALI physical-chemical models of the disk with varying gas surface density profiles, compared with ALMA CO cuts and spectra",
+     "evidence": [
+      {
+       "loc": "4 Analysis",
+       "quote": "we use the combined physical-chemical model DALI (Dust And LInes) by (cite: Bruderer13), based on (cite: Bruderer12)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 3.4",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Reduction and calibration of the data was performed using the Common Astronomy Software Application (CASA) version 3.4"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "integrated intensity maps are continuum subtracted (method not given)",
+     "evidence": [
+      {
+       "loc": "3.1 Integrated intensity maps",
+       "quote": "Figure [1](#fig:int_imgdeproj)a shows the continuum subtracted integrated intensity of the $^{12}$CO $J=6-5$ observation."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction and calibration",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "is further described in the Supplementary Online Material of (cite: vdMarel13)."
+       }
+      ]
+     },
+     "from_reference": "(cite: vdMarel13)"
+    },
+    {
+     "what": {
+      "value": "Disk structure from Andrews et al. 2011, with dust opacities and f, chi values",
+      "evidence": [
+       {
+        "loc": "4.1 Disk structure",
+        "quote": "we adopt the physical structure suggested by (cite: Andrews11), as implemented by (cite: Bruderer13)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Andrews11)"
+    },
+    {
+     "what": {
+      "value": "Dust structure of IRS 48 derived from SED and VISIR image",
+      "evidence": [
+       {
+        "loc": "4.1 Disk structure",
+        "quote": "The dust structure of IRS 48 is derived from the SED and 18.7 $\\mu$m VLT-VISIR dust continuum image by (cite: Geers07)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Geers07)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging parameters (weighting, robust, cell size, image size, deconvolver, masks) for the CO cubes",
+    "Continuum-subtraction line-free channels",
+    "Flux calibrator and flux scale uncertainty",
+    "Velocity range for integrated intensity and region definition of the cut along major axis",
+    "DALI code and input configuration (grid, chemistry, UV field) not released here; fit criterion between models and data is by-eye",
+    "Dust opacity details beyond Andrews11"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Map CO emission and extract spectra",
+    "method": {
+     "value": "Integrated intensity maps, channel maps binned to 1 km/s, total spectrum from >5 sigma regions, cut along disk major axis",
+     "evidence": [
+      {
+       "loc": "3.3 Total spectrum and C17O",
+       "quote": "The total spectrum extracted from regions with $>$5$\\sigma$ detections in $^{12}$CO is shown in Figure [3](#fig:tot_spec)"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Keplerian rotation around 2 Msun star, inclination 50 deg, PA 100.3 deg",
+      "evidence": [
+       {
+        "loc": "3.1 Integrated intensity maps",
+        "quote": "The contour lines are derived assuming a geometrically thin disk in Keplerian rotation around a 2 M$_{\\odot}$ star"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Model dust structure from SED and VISIR image",
+    "method": {
+     "value": "Power-law surface density with Gaussian vertical structure, explore parameters to fit SED and 18.7 um image",
+     "evidence": [
+      {
+       "loc": "4.1 Disk structure",
+       "quote": "The surface density profile is assumed to be a power-law and the vertical structure follows a Gaussian distribution (vertically isothermal structure)."
+      }
+     ]
+    },
+    "software": [
+     "DALI"
+    ],
+    "key_parameters": [
+     {
+      "value": "h_60AU = 0.14 rad, psi = 0.22, f = 0.85, chi = 0.2, R_inner,dust = 1 AU",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "| Vertical structure | $h_{\\rm 60\\, AU}$ | 0.14 radians |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "kappa(450 um)=7.1 cm2/g; PAH abundance ~10% of ISM; AV=11.5, RV=5.5 extinction",
+      "evidence": [
+       {
+        "loc": "4.1 Disk structure",
+        "quote": "the resulting total dust mass is $1.6 \\times 10^{-5}$ M$_\\odot$ ($\\kappa_{450\\, \\mu{\\rm m}}=7.1$ cm$^2$ g$^{-1}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "by-eye comparison, no formal fit",
+     "evidence": [
+      {
+       "loc": "Comparison to observations",
+       "quote": "Figure [10](#fig:surfcomp) shows the $^{12}$CO $J=6-5$ integrated intensity cuts along the major axis of the disk for various trial gas distributions."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared model SED and VISIR images",
+     "evidence": [
+      {
+       "loc": "4.1 Disk structure",
+       "quote": "Figure [7](#fig:visir_irs48) compares the VLT-VISIR 18.7 $\\mu$m observations to model images."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Constrain gas surface density and drops by comparing physical-chemical models to CO data",
+    "method": {
+     "value": "Vary Sigma_60AU, delta_60AU, delta_20AU; compare 12CO integrated intensity cut along major axis, total spectrum, and C17O total flux",
+     "evidence": [
+      {
+       "loc": "4.3 Comparison to observations",
+       "quote": "The major parameters that are varied are $\\Sigma_{\\rm 60\\, AU, gas}$, $\\delta_{\\rm 60 \\, AU}$ and $\\delta_{\\rm 20 \\, AU}$."
+      }
+     ]
+    },
+    "software": [
+     "DALI",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "gamma = 1; also tested gamma = 0 and 2; inner radii 15, 20, 25 AU tested",
+      "evidence": [
+       {
+        "loc": "4.4 The slope gamma",
+        "quote": "we have also run models with $\\gamma=0$ and $\\gamma=2$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "2D axisymmetric model; foreground absorption and asymmetries ignored, focus on velocities >=4 km/s from source velocity",
+      "evidence": [
+       {
+        "loc": "4 Analysis",
+        "quote": "we will restrict our analysis to 2d axisymmetric models."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "visual comparison of trial models, no formal sampler",
+     "evidence": [
+      {
+       "loc": "Comparison to observations",
+       "quote": "Figure [10](#fig:surfcomp) shows the $^{12}$CO $J=6-5$ integrated intensity cuts along the major axis of the disk for various trial gas distributions."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Model convolved to ALMA beam checked against simulated ALMA observations in CASA",
+     "evidence": [
+      {
+       "loc": "4.3 Comparison to observations",
+       "quote": "The ALMA observations have been simulated using the CASA software by converting the model image to ${\\rm (u,v)}$-data according to the observed ${\\rm (u,v)}$-coverage"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Predict CO isotopologue lines for future ALMA",
+    "method": {
+     "value": "Model integrated intensity cuts for 12CO, 13CO, C18O, C17O J=3-2 and 6-5 at beams 0.25, 0.1, 0.05''; detection limits from ALMA sensitivity calculator",
+     "evidence": [
+      {
+       "loc": "4.7 Prediction for the CO isotopologue lines",
+       "quote": "The limits have been calculated with the ALMA sensitivity calculator[^3], using a channel width of 0.2 km s$^{-1}$, and an intrinsic line width of 1 km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [
+     "DALI",
+     "ALMA sensitivity calculator"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "3.4",
+    "used_for": {
+     "value": "Data reduction and calibration; simulated ALMA observations of models",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Reduction and calibration of the data was performed using the Common Astronomy Software Application (CASA) version 3.4"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DALI",
+    "version": "not stated",
+    "used_for": {
+     "value": "Physical-chemical disk modeling of dust, gas temperature, CO abundance and line emission",
+     "evidence": [
+      {
+       "loc": "4 Analysis",
+       "quote": "we use the combined physical-chemical model DALI (Dust And LInes) by (cite: Bruderer13)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ALMA sensitivity calculator",
+    "version": "not stated",
+    "used_for": {
+     "value": "Detection limits for predicted isotopologue lines",
+     "evidence": [
+      {
+       "loc": "4.7 Prediction for the CO isotopologue lines",
+       "quote": "The limits have been calculated with the ALMA sensitivity calculator[^3]"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total gas mass",
+    "value": "1.4e-4",
+    "uncertainty": "factor of a few",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Comparison to observations",
+      "quote": "The gas mass[^2] of the representative model is $1.4 \\times 10^{-4}$ M$_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass",
+    "value": "1.6e-5",
+    "uncertainty": "factor of a few",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Disk structure",
+      "quote": "the resulting total dust mass is $1.6 \\times 10^{-5}$ M$_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust mass ratio",
+    "value": "~10",
+    "uncertainty": "considerable",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Comparison to observations",
+      "quote": "this gives a gas-to-dust mass ratio of about 10."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas surface density at 60 AU",
+    "value": "3.2e-2",
+    "uncertainty": "not stated",
+    "units": "g cm-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Surface density profile$^{1}$ | $\\gamma$ | 1.0 |"
+     },
+     {
+      "loc": "4.3 Comparison to observations",
+      "quote": "$\\Sigma_{\\rm 60 AU,gas}=3.2 \\times 10^{-2}$ g cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas drop inside 60 AU (delta_60AU)",
+    "value": "8e-2 (factor ~12)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| Gas, 20-60 AU | $\\delta_{\\rm 60\\, AU} = 8 \\times 10^{-2}$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas drop inside 20 AU (delta_20AU)",
+    "value": "< 9e-3 (factor >110)",
+    "uncertainty": "lower limit",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3.3 The inner 20 AU",
+      "quote": "A model with a drop $\\delta_{\\rm 20\\, AU} < 9 \\times 10^{-3}$ (factor of $>$110) reproduces the observed dip at the center position."
+     }
+    ]
+   },
+   {
+    "quantity": "Inner gas radius",
+    "value": "20",
+    "uncertainty": "better than 5",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.5 How well is the 20 AU radius determined?",
+      "quote": "We conclude that the drop of the surface density at 20 AU is constrained to better than $\\sim$5 AU."
+     }
+    ]
+   },
+   {
+    "quantity": "Observed C17O total flux",
+    "value": "1.3",
+    "uncertainty": "not stated",
+    "units": "Jy km/s",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.3.1 The outer disk",
+      "quote": "compares the modeled C$^{17}$O total flux of the three models discussed before with the observed 1.3 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Upper limit CO mass of inner disk (10 AU)",
+    "value": "5e23",
+    "uncertainty": "upper limit",
+    "units": "g",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.6 The presence of an inner gas disk",
+      "quote": "The upper limits on the CO mass of an inner disk are $5 \\times 10^{23}$ g for a 10 AU disk with $\\delta_{\\rm 20\\, AU} = 8 \\times 10^{-3}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "12CO emission is partly absorbed by foreground cloud at vlsr ~2.0-4.5 km/s, causing asymmetries",
+    "evidence": [
+     {
+      "loc": "3.1 Integrated intensity maps",
+      "quote": "We conclude that some, but not all, of the asymmetries seen in the integrated intensity maps can be attributed to foreground absorption."
+     }
+    ]
+   },
+   {
+    "value": "Photoevaporation alone is unlikely to form the cavities",
+    "evidence": [
+     {
+      "loc": "5.1 The gas mass and surface density profile",
+      "quote": "We thus conclude that in IRS 48 photoevaporation is unlikely the reason for the gap formation at 20 and 60 AU."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the gas surface density drop inside the 60 AU dust cavity?",
+    "experiment": "Compared DALI models with different delta_60AU to the 12CO cut and spectrum",
+    "result": "Drop of a factor ~12 required for gamma=1",
+    "finding": "Gas is partly depleted but not removed inside the dust cavity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3.2 Inside the gap",
+      "quote": "We conclude that a drop in surface density at 60 AU by about a factor of $\\sim$12 is required to fit the integrated intensity profile and reproduce the line width of the total spectrum."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is gas depleted inside 20 AU?",
+    "experiment": "Varied delta_20AU and inner radius",
+    "result": "Drop of factor >=110; inner radius 20+-5 AU",
+    "finding": "Gas hole at 20 AU, only a limit on depth",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3.3 The inner 20 AU",
+      "quote": "We conclude that the current data allows us to constrain a drop of a factor of $\\gtrsim$110 in gas surface density profile at 20 AU."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What is the total gas mass and gas-to-dust ratio?",
+    "experiment": "Fit 12CO and C17O flux with models",
+    "result": "1.4e-4 Msun, ratio ~10",
+    "finding": "Low gas mass, ratio only marginally below ISM given a factor-of-few uncertainties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "this gas-to-dust ratio is however only marginally below the ISM value of 100."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What clears the cavity?",
+    "experiment": "Compared derived profile with photoevaporation and planet predictions",
+    "result": "Drops moderate, accretion rate too high for photoevaporation",
+    "finding": "Points to one or more massive planets or companions",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The derived gas surface density profile points to the clearing of the cavity by one or more massive planet/companion rather than just photoevaporation or grain-growth."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Optically thick CO needs a model with chemistry and thermal balance to determine CO abundance in the UV-exposed cavity",
+    "evidence": [
+     {
+      "loc": "4 Analysis",
+      "quote": "Such a model is also needed to determine the abundance of CO inside and outside the dust cavity since it is not a priori obvious that CO can survive in the dust-free gas exposed to intense UV radiation from the star."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Photoevaporation (X-ray and EUV) rejected as sole mechanism",
+     "evidence": [
+      {
+       "loc": "5.1 The gas mass and surface density profile",
+       "quote": "This accretion rate is also higher than typical EUV photoevaporation rates ((cite: Alexander06a; Alexander06)) ruling out EUV driven evaporation."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "12CO is optically thick so surface density is not directly constrained; profiles accurate only to a factor of a few",
+     "evidence": [
+      {
+       "loc": "4.3 Comparison to observations",
+       "quote": "We do not expect that derived surface density profiles are more accurate than a factor of a few."
+      }
+     ]
+    },
+    {
+     "value": "Beam comparable to 20 AU hole, so only limits inside 20 AU",
+     "evidence": [
+      {
+       "loc": "4.3.3 The inner 20 AU",
+       "quote": "the current data can only set limits on the gas mass inside 20 AU."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model matching is by eye with no formal chi-square or uncertainty estimation",
+    "Axisymmetric model ignores strong azimuthal asymmetry and foreground absorption",
+    "Gas mass depends on assumed CO abundance, isotope ratios and gamma; a previous paper's gas mass was in error",
+    "Vertical structure and dust opacities adopted rather than fit"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project acknowledged; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA no. 2011.0.00635.SSB."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters and line-free channels",
+    "DALI model setup files and chemistry network details",
+    "Calibration details deferred to vdMarel13 supplement"
+   ],
+   "estimated_data_volume_inferred": "Cycle 0 Band 9, 3 execution blocks, ~tens of GB raw",
+   "score_inferred": 3,
+   "score_reason": "Data are Cycle 0 archive data and measurements are clear, but the modeling code setup and imaging details are not given and model fitting is by eye.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results depend on a specialized DALI model with by-eye comparison and calibration details deferred to another paper."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Bruderer13)",
+     "why": "DALI model and transition-disk framework"
+    },
+    {
+     "citation": "(cite: Bruderer12)",
+     "why": "Physical-chemical model basis"
+    },
+    {
+     "citation": "(cite: Andrews11)",
+     "why": "Disk structure and dust opacities"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: vdMarel13)",
+     "why": "Original presentation of the ALMA continuum, dust trap and data reduction"
+    },
+    {
+     "citation": "(cite: vdMarel13b)",
+     "why": "Other lines (CN, H13CO+, H2CO) from the same data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-de5b48f12af7588007dc067cf7cae5be",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 29660,
+   "output_tokens": 8945,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074992,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 67,
+  "quotes_ok": 67,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00635.S"
+  ],
+  "codes_printed_but_missing": [
+   "2011.0.00635.SSB"
+  ],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 46,
+   "rate": 0.597
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:39:58",
+  "custom_id": "repair-sonnet-79a0afddd4c34af099598c9337a46d2a",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "Figure [10](#fig:surfcomp) shows the $^{12}$CO $J=6-5$ integrated intensity cuts along the major axis of the disk for various trial gas distributions."
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "Figure [10](#fig:surfcomp) shows the $^{12}$CO $J=6-5$ integrated intensity cuts along the major axis of the disk for various trial gas distributions."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2011.0.00635.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA no. 2011.0.00635.SSB."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

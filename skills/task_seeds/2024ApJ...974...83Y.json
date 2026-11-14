@@ -1,0 +1,311 @@
+{
+ "bibcode": "2024ApJ...974...83Y",
+ "title": "Detection of Dimethyl Ether in the Central Region of the MWC 480 Protoplanetary Disk",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad6981",
+ "arxiv_id": "2407.21518",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Are sublimated complex organic molecules (CH3OCH3, CH3OCHO, CH3OH) present in the inner warm region of the full (non-transitional) MWC 480 Herbig Ae disk, and what are their excitation conditions and abundance ratios?",
+ "alma_project_codes": [
+  "2021.1.00535.S",
+  "2021.1.00982.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.2 arcsec (Table); cube beam 0.31x0.21 arcsec",
+  "sensitivity": "RMS 0.33 mJy/beam (00535) and 0.67 mJy/beam (00982) at 4 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk density/temperature structure model tailored to MWC 480",
+    "evidence": [
+     {
+      "loc": "Parametric Disk Model",
+      "quote": "we used the disk model tailored to MWC 480 in (cite: Zhang2021)"
+     }
+    ]
+   },
+   "citation": "Zhang et al. 2021 (cite: Zhang2021)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic data and partition functions from CDMS and JPL",
+    "evidence": [
+     {
+      "loc": "Details of Spectral Analysis",
+      "quote": "are taken from the Cologne Database for Molecular Spectroscopy (cite: CDMS1; CDMS2; CDMS3) for CH$_3$OCH$_3$ and CH$_3$OH"
+     }
+    ]
+   },
+   "citation": "CDMS (cite: CDMS1; CDMS2; CDMS3); JPL (cite: JPL)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity ≈5.1 km/s and stellar mass 2.1 Msun",
+    "evidence": [
+     {
+      "loc": "3.1 Spectra and Spatial Distributions",
+      "quote": "systemic velocity (5.1 km,s$^{-1}$; (cite: Pietu2007; Teague2021_MAPS))"
+     }
+    ]
+   },
+   "citation": "Pietu2007; Teague2021_MAPS"
+  },
+  {
+   "what": {
+    "value": "Abundance ratios of other disks (HD 100546, IRS 48) for comparison",
+    "evidence": [
+     {
+      "loc": "4.2 COM-rich Transition Disks",
+      "quote": "compares the abundance ratios of CH$_3$OCH$_3$ and CH$_3$OCHO relative to CH$_3$OH among HD 100546 (cite: Booth2024_HD100546), Oph IRS 48 (cite: Booth2024_IRS48), and MWC 480"
+     }
+    ]
+   },
+   "citation": "Booth2024_HD100546; Booth2024_IRS48"
+  },
+  {
+   "what": {
+    "value": "Binding energies of CH3OCH3 and CH3OH",
+    "evidence": [
+     {
+      "loc": "Parametric Disk Model",
+      "quote": "binding energies of CH$_3$OCH$_3$(${\\approx}4000$ K; (cite: Lattelais2011)) and CH$_3$OH(${\\approx}5000$–5500 K; (cite: Ferrero2020; Minissale2022))"
+     }
+    ]
+   },
+   "citation": "Lattelais2011; Ferrero2020; Minissale2022"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate, make cubes",
+   "method": "Pipeline calibration, align continuum peaks, phase and amplitude self-cal, uvcontsub, tclean cube at 4 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5, briggsbwtaper, 4 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and moment maps",
+   "method": "Spatially integrate cube in 0.6 arcsec diameter circular aperture at disk center; moment maps with bettermoments without flux threshold",
+   "software": [
+    "bettermoments",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Verify detections with matched filter",
+   "method": "Cross-correlate visibilities with Keplerian kernel (i=37 deg, PA=148 deg, M=2.1 Msun, outer radius 0.15 arcsec)",
+   "software": [
+    "VISIBLE",
+    "keplerian_mask"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit LTE slab model for Tex, line width, column densities",
+   "method": "Simultaneous 7-parameter LTE fit of four species with common Tex to all >600 transitions",
+   "software": [
+    "emcee",
+    "specfit"
+   ],
+   "key_parameters": [
+    "50 walkers, 10000 steps, 2000 burn-in"
+   ],
+   "assumptions": [
+    "Common Tex for all species, optically thin, Gaussian line shape, Tcmb=2.73 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Radiative transfer test of spatial distribution",
+   "method": "RADMC-3D image cubes from Zhang2021 disk structure with COMs set above sublimation temperatures (80/100 K for CH3OCH3; 100/120/140 K for CH3OH), z/r<0.3, Keplerian rotation; abundances adjusted to fit",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Gas temperature = dust temperature; constant abundance in regions above sublimation temperature"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Excitation temperature",
+   "value": "200",
+   "uncertainty": "+50/-50",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral Analysis",
+     "quote": "$T_\\mathrm{ex} = 200_{-50}^{+50}$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Line width FWHM",
+   "value": "30",
+   "uncertainty": "+8/-6",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral Analysis",
+     "quote": "$\\Delta V = 30_{-6}^{+8}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OCH3)",
+   "value": "7.4e15",
+   "uncertainty": "+4.6/-3.2 e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$7.4_{-3.2}^{+4.6} \\times 10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OCHO)",
+   "value": "7.4e14",
+   "uncertainty": "+3.6/-4.9 e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$7.4_{-4.9}^{+3.6} \\times 10^{14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH) upper limit",
+   "value": "<9.1e14",
+   "uncertainty": "3 sigma",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral Analysis",
+     "quote": "$<9.1\\,\\times\\,10^{14}$ and $<1.9\\,\\times\\,10^{14}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3CHO) upper limit",
+   "value": "<1.9e14",
+   "uncertainty": "3 sigma",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral Analysis",
+     "quote": "$<9.1\\,\\times\\,10^{14}$ and $<1.9\\,\\times\\,10^{14}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OCH3)/N(CH3OH) lower limit",
+   "value": ">7",
+   "uncertainty": "3 sigma",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Spectral Analysis",
+     "quote": "we derived a CH$_3$OCH$_3$/CH$_3$OH column density ratio (lower limit) of ${>}7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity fit",
+   "value": "4.3",
+   "uncertainty": "+2.4/-2.5",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$4.3^{+2.4}_{-2.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak S/N of 299.89 GHz CH3OCH3 feature",
+   "value": "9.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Spectra and Spatial Distributions",
+     "quote": "shows a peak S/N of 9.4"
+    }
+   ]
+  },
+  {
+   "quantity": "Matched filter response of 299.89 GHz cluster",
+   "value": "~17",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Matched Filter Analysis",
+     "quote": "shows a ${\\sim}17\\sigma$ filter response"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-model abundance ratio x(CH3OCH3)/x(CH3OH) lower limits",
+   "value": "~0.3–2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Parametric Disk Model",
+     "quote": "The constrained lower limits of the abundance ratios span ${\\sim}0.3$–2"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges used for continuum and uvcontsub",
+  "Self-calibration solution intervals and reference antenna/spw choices",
+  "Image size, cell size, cleaning threshold and masks",
+  "Aperture-extraction details for spectrum conversion to beam-averaged units (primary beam correction)",
+  "Exact MCMC convergence diagnostics and initialization",
+  "Matched filter inclination-based kernel details beyond listed parameters",
+  "Full Zhang2021 disk model parameters"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel selection",
+  "Self-calibration solints",
+  "Image/cell size and clean parameters",
+  "Full MWC 480 disk model from Zhang2021"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Clear spectral fit recipe with priors, line list and code; some imaging and selfcal details missing, and data proprietary period likely ended.",
+ "rediscovery_reason": "Data from two ALMA Cycle 8 projects, a complete LTE fit recipe with priors and line list, and numeric results (Tex, N, ratio) are given.",
+ "source_card": "cards/2024ApJ...974...83Y/sonnet/card.md"
+}

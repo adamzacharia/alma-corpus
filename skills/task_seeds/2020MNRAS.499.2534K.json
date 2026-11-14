@@ -1,0 +1,203 @@
+{
+ "bibcode": "2020MNRAS.499.2534K",
+ "title": "Resolved star formation in the metal-poor star-forming region Magellanic Bridge C",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa2963",
+ "arxiv_id": "2009.11868",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do molecular clumps, YSOs and PMS stars in the metal-poor Magellanic Bridge region MB-C compare with Galactic counterparts?",
+ "alma_project_codes": [
+  "2015.1.1013.S"
+ ],
+ "data": {
+  "bands": "Band 3 (84–116 GHz)",
+  "arrays": "ALMA 12-m antennas",
+  "angular_resolution": "3.6\" x 3.3\" (~0.9 pc)",
+  "sensitivity": "0.027 Jy/beam (0.21 K) average rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "NANTEN I_CO of 140 mK km/s and X_CO 1.4e21 for the Bridge",
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "using the reported $I_{\\text{CO}}$ of 140 mK km s$^{-1}$ by Mizuno et al. (2006)"
+     }
+    ]
+   },
+   "citation": "Mizuno et al. (2006)"
+  },
+  {
+   "what": {
+    "value": "YSO model grid",
+    "evidence": [
+     {
+      "loc": "3.2 YSO SED fitting",
+      "quote": "The observed SEDs are fit against the Robitaille (2017) model grid of young stellar objects"
+     }
+    ]
+   },
+   "citation": "Robitaille (2017)"
+  },
+  {
+   "what": {
+    "value": "Isochrones and mass tracks",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "we utilise the Bressan et al. (2012) single star isochrones and tracks"
+     }
+    ]
+   },
+   "citation": "Bressan et al. (2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify CO clumps and measure properties",
+   "method": "CPROPS with modified CLUMPFIND (/ECLUMP) decomposition; moment method with sensitivity extrapolation and deconvolution",
+   "software": [
+    "CPROPS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "mask above 4 sigma_rms, edge threshold 2.0–1.5 sigma"
+   ],
+   "assumptions": [
+    "Virial mass for spherical cloud with 1/r density profile; distance 59 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Estimate X_CO",
+   "method": "Least-squares fit of virial mass versus CO luminosity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "YSO SED fitting",
+   "method": "Fit Spitzer+optical SEDs to Robitaille (2017) models; select model set by chi2<=chi_best+3",
+   "software": [
+    "SEDFitter"
+   ],
+   "key_parameters": [
+    "distance 59 kpc; A_V 0–20 mag; Weingartner & Draine SMC bar law; >=5 fluxes"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Identify accreting PMS stars and derive mass/age",
+   "method": "r-Halpha excess gives EW; selection by Barrado y Navascues & Martin criteria; masses/ages from CMD with Bressan isochrones at 1/5 Zsun, A_V=0.5",
+   "software": [
+    "STARFINDER",
+    "IRAF"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Metallicity 1/5 Zsun; mean A_V = 0.5 mag"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of CO clumps",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "Twelve clumps in MB-C having signal-to-noise greater than 13 at the peak are detected."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of NANTEN luminosity recovered",
+   "value": "58",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2",
+     "quote": "Thus, 58 per cent of NANTEN observed luminosity is recovered by ALMA"
+    }
+   ]
+  },
+  {
+   "quantity": "X_CO",
+   "value": "5.5e20",
+   "uncertainty": "4.6e20",
+   "units": "cm^-2 (K km/s)^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.5",
+     "quote": "around 5.5.$\\pm$4.6 $\\times$ 10$^{20}$ cm$^{-2}$(K km s$^{-1}$)$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump surface density range",
+   "value": "12–200",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "6 Summary",
+     "quote": "The surface densities of these clumps range between 12–200 $M_{\\odot}$pc$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean A_V from optical TCD",
+   "value": "0.5",
+   "uncertainty": "0.07",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "We corrected for a mean absolute extinction $A_V$ of 0.5$\\pm$0.07 mag"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of PMS candidates",
+   "value": "11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "In total, eleven stars are selected on this basis."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration/imaging steps (weighting, cleaning, masks)",
+  "Whether archive or reprocessed products were used",
+  "Exact CPROPS parameters beyond 4 sigma mask and edge threshold",
+  "Rest frequency and moment-map velocity limits details"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging parameters",
+  "CPROPS settings detail"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear clump analysis but ALMA processing details missing.",
+ "rediscovery_reason": "Public data, numeric clump table, CPROPS recipe stated.",
+ "source_card": "cards/2020MNRAS.499.2534K/sonnet/card.md"
+}

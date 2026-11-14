@@ -1,0 +1,443 @@
+{
+ "bibcode": "2020NatAs...4..142L",
+ "title": "Spiral structures in an embedded protostellar disk driven by envelope accretion",
+ "year": 2020,
+ "doi": "10.1038/s41550-019-0905-x",
+ "arxiv_id": "1909.02812",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Whether spiral structures can appear in the early embedded phase of star formation in a protostellar disk accreting from an infalling envelope, and what mechanism drives them.",
+ "alma_project_codes": [
+  "2015.1.00037.S",
+  "2017.1.00044.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0''.050 x 0''.036 (P.A. ~55 deg), or ~0''.04 (16 au)",
+  "sensitivity": "~0.10 mJy beam^-1 (~0.58 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric temperature of HH 111 VLA 1 (78 K)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "temperature of only 78 K [19], it is a Class I source and therefore young."
+     }
+    ]
+   },
+   "citation": "Froebrich (2005) [19]"
+  },
+  {
+   "what": {
+    "value": "Central star mass M_* ~ 1.5 +/- 0.5 M_sun, envelope mass ~0.6 M_sun, and envelope infall rate ~4.2 x 10^-6 M_sun yr^-1",
+    "evidence": [
+     {
+      "loc": "Main text",
+      "quote": "The central star has a mass M ∗ ∼ 1.5 ± 0.5M ⊙ [5,20,22] . The infall rate in the envelope towards the [(][20][)] center is estimated at ∼ 4.2 × 10 [−][6] M ⊙ yr [−][1] ."
+     },
+     {
+      "loc": "Main text",
+      "quote": "The source is deeply embedded in an envelope with a mass of ∼ 0.6 M ⊙, extending out to ∼ 7000 au from the VLA 1 source [5,20] ."
+     }
+    ]
+   },
+   "citation": "Lee et al. (2016) [5], Lee (2010) [20], Lee (2011) [22]"
+  },
+  {
+   "what": {
+    "value": "Previous Cycle 3 ALMA observations of HH 111",
+    "evidence": [
+     {
+      "loc": "Methods: Observations",
+      "quote": "In order to restore a larger size scale, we combined these observations with our previous Cycle 3 observations [23], which had the same correlator setup but a larger MRS of ∼ 1 [′′] . 4."
+     }
+    ]
+   },
+   "citation": "Lee et al. (2018) [23]"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure size and orientation of HH 111 VLA 2 disklike structure",
+   "method": "Gaussian deconvolution of the 343 GHz continuum emission around VLA 2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance of 400 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Deproject HH 111 VLA 1 disk and isolate non-axisymmetric spiral structures",
+   "method": "Rotate disk to align major axis with vertical, estimate inclination from aspect ratio, deproject continuum map by inclination angle, compute annularly averaged map, and subtract annular mean map from deprojected map",
+   "software": [],
+   "key_parameters": [
+    "Inclination angle of disk axis ~18 deg to the plane of the sky (from aspect ratio ~0.3)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spiral arm peak positions and fit spiral morphology and pitch angles",
+   "method": "Locate emission peak positions of the NE and SW arms by fitting Gaussians by eye to radial intensity cuts every 10 deg in position angle on the difference map, then fit peak positions in polar coordinates (R, theta) with logarithmic and Archimedean spiral models",
+   "software": [],
+   "key_parameters": [
+    "Radial cuts every 10 deg in position angle"
+   ],
+   "assumptions": [
+    "Radial error bars taken as width at half maximum of the fitted Gaussians"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Model 343 GHz dust continuum of VLA 1 disk to derive disk mass and Toomre Q stability parameter",
+   "method": "Construct axisymmetric parametrized flared disk model with outer thinning, compute LTE radiative transfer integrated along lines of sight tilted by ~18 deg, convolve with telescope beam to fit observed continuum map, and integrate surface density to obtain disk mass and Toomre Q profile",
+   "software": [],
+   "key_parameters": [
+    "6 free parameters: R_t, R_o, q, T_t, p, and n_t",
+    "Disk axis tilted ~18 deg from plane of sky"
+   ],
+   "assumptions": [
+    "Vertical hydrostatic equilibrium with Keplerian rotation around M_* ~ 1.5 M_sun, and outer geometric thinning between R_t and R_o",
+    "Mass density rho = 1.4 n m_H2 (helium at solar abundance) and gas-to-dust mass ratio of 100",
+    "Dust opacity law kappa_nu = 0.1 (nu / 10^12 Hz)^beta cm^2 g^-1 with beta = 0.6 to 1.0, giving kappa_nu ~ 0.054 - 0.035 cm^2 g^-1 at 343 GHz"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HH 111 VLA 2 deconvolved major axis diameter",
+   "value": "0.064 (25.6)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "The emission around the VLA 2 source is spatially resolved for the first time, appearing as a disklike structure, with a Gaussian deconvolved size (diameter) of 0 [′′] . 064 (25.6 au) along the major axis at position angle 118.3 [◦] ."
+    }
+   ]
+  },
+  {
+   "quantity": "HH 111 VLA 2 major axis position angle",
+   "value": "118.3",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "The emission around the VLA 2 source is spatially resolved for the first time, appearing as a disklike structure, with a Gaussian deconvolved size (diameter) of 0 [′′] . 064 (25.6 au) along the major axis at position angle 118.3 [◦] ."
+    }
+   ]
+  },
+  {
+   "quantity": "HH 111 VLA 1 disk radius",
+   "value": "0.4 (160)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "As can be seen, the disk has a radius of ∼ 0 [′′] . 4 (160 au), where the rotation was previously found to be roughly Keplerian in C [18] O [(][5][)] ."
+    }
+   ]
+  },
+  {
+   "quantity": "HH 111 VLA 1 disk axis inclination to the plane of the sky",
+   "value": "18",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "The aspect ratio of the disk structure is ∼ 0.3, indicating that the disk axis is inclined by ∼ 18 [◦] to the plane of the sky"
+    }
+   ]
+  },
+  {
+   "quantity": "SW spiral arm logarithmic fit R_0",
+   "value": "0.132",
+   "uncertainty": "0.003",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SW 0 [′′] . 132±0 [′′] . 003 0.288±0.010 2.07 16.1 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "SW spiral arm logarithmic fit parameter a",
+   "value": "0.288",
+   "uncertainty": "0.010",
+   "units": "radian^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SW 0 [′′] . 132±0 [′′] . 003 0.288±0.010 2.07 16.1 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "SW spiral arm logarithmic fit pitch angle",
+   "value": "16.1",
+   "uncertainty": "0.6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "SW 0 [′′] . 132±0 [′′] . 003 0.288±0.010 2.07 16.1 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "NE spiral arm logarithmic fit R_0",
+   "value": "0.077",
+   "uncertainty": "0.004",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NE 0 [′′] . 077±0 [′′] . 004 0.222±0.011 2.88 12.5 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "NE spiral arm logarithmic fit parameter a",
+   "value": "0.222",
+   "uncertainty": "0.011",
+   "units": "radian^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NE 0 [′′] . 077±0 [′′] . 004 0.222±0.011 2.88 12.5 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "NE spiral arm logarithmic fit pitch angle",
+   "value": "12.5",
+   "uncertainty": "0.6",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "NE 0 [′′] . 077±0 [′′] . 004 0.222±0.011 2.88 12.5 [◦] ±0.6 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "SW spiral arm Archimedean fit R_0",
+   "value": "0.132",
+   "uncertainty": "0.005",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SW 0 [′′] . 132±0 [′′] . 005 0.061±0.003 3.77 23.4 [◦] ±1.2 [◦] − 8.8 [◦] ±0.4 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "SW spiral arm Archimedean fit parameter b",
+   "value": "0.061",
+   "uncertainty": "0.003",
+   "units": "arcsec radian^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SW 0 [′′] . 132±0 [′′] . 005 0.061±0.003 3.77 23.4 [◦] ±1.2 [◦] − 8.8 [◦] ±0.4 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "NE spiral arm Archimedean fit R_0",
+   "value": "-0.011",
+   "uncertainty": "0.008",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NE −0 [′′] . 011±0 [′′] . 008 0.050±0.002 1.41 19.1 [◦] ±0.8 [◦] − 7.2 [◦] ±0.4 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "NE spiral arm Archimedean fit parameter b",
+   "value": "0.050",
+   "uncertainty": "0.002",
+   "units": "arcsec radian^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "NE −0 [′′] . 011±0 [′′] . 008 0.050±0.002 1.41 19.1 [◦] ±0.8 [◦] − 7.2 [◦] ±0.4 [◦]"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model transition radius R_t",
+   "value": "0.4 (160)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "In our fit, R t ∼ 0 [′′] . 4 (160 au), consistent with the observed radius of the disk, and R o ∼ 0 [′′] . 5 (200 au) in order to produce the faint emission in the outer edge."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model outer radius R_o",
+   "value": "0.5 (200)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "In our fit, R t ∼ 0 [′′] . 4 (160 au), consistent with the observed radius of the disk, and R o ∼ 0 [′′] . 5 (200 au) in order to produce the faint emission in the outer edge."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model temperature power-law index q",
+   "value": "0.55",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "The temperature power-law index q ∼ 0.55 ± 0.11, similar to that found in protoplanetary disks in Ophiuchus [39] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model temperature T_t at R_t",
+   "value": "68",
+   "uncertainty": "13",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "With T t ∼ 68 ± 13 K, the resulting scale height h t is approximately 0 [′′] . 068±0 [′′] . 007 (∼ 27±3 au) at R t ."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model scale height h_t at R_t",
+   "value": "0.068 (27)",
+   "uncertainty": "0.007 (3)",
+   "units": "arcsec (au)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "With T t ∼ 68 ± 13 K, the resulting scale height h t is approximately 0 [′′] . 068±0 [′′] . 007 (∼ 27±3 au) at R t ."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model density power-law index p",
+   "value": "1.5",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods, Disk Model",
+     "quote": "For the density, we have p ∼ 1.5 ± 0.4 and n t ∼ (6.0 − 9.3) × 10 [9] cm [−][3]"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model midplane number density n_t at R_t",
+   "value": "6.0 - 9.3",
+   "uncertainty": "not stated",
+   "units": "10^9 cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods, Disk Model",
+     "quote": "For the density, we have p ∼ 1.5 ± 0.4 and n t ∼ (6.0 − 9.3) × 10 [9] cm [−][3]"
+    }
+   ]
+  },
+  {
+   "quantity": "HH 111 VLA 1 disk mass M_D",
+   "value": "0.33 - 0.50",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "disk has a relatively high mass of 0.33-0.50 M ⊙, or 22%-33% of the protostellar mass."
+    }
+   ]
+  },
+  {
+   "quantity": "HH 111 VLA 1 disk-to-star mass ratio",
+   "value": "22 - 33",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Main text",
+     "quote": "disk has a relatively high mass of 0.33-0.50 M ⊙, or 22%-33% of the protostellar mass."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q parameter in outer disk (R > 100 au)",
+   "value": "< 1.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Methods: Disk Model",
+     "quote": "As can be seen, Q is less than 1.5 for R > 0 [′′] . 25 (100 au), indicating that the disk is gravitationally unstable in its outer half."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals (solint) and number of iterations",
+  "Exact imaging task (e.g. clean vs tclean), deconvolver, cell size, image size, and masking strategy",
+  "Relative data weights when combining Cycle 3 and Cycle 5 visibility datasets",
+  "Exact position angle used to rotate and deproject the HH 111 VLA 1 disk",
+  "Optimization algorithm/fitter used to obtain the 6 free parameters of the flared disk radiative transfer model"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals and imaging parameters (tclean settings, cell size, masking)",
+  "Exact disk major axis position angle used for rotation and 2D deprojection",
+  "Custom radiative transfer code and optimization routine used to fit the 6-parameter flared disk model"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "ALMA project codes, calibrators, CASA version, weighting/robust, and analytical equations for both spiral fits and the flared disk model are clearly stated, though self-calibration details, exact deprojection PA, and the custom radiative transfer fitting code are not provided.",
+ "rediscovery_reason": "Both ALMA datasets are public in the archive, the continuum imaging and deprojection/annular-subtraction workflow is straightforward, and the main results (VLA 2 size, spiral pitch angles, disk mass, and Toomre Q) are quantitative.",
+ "source_card": "cards/2020NatAs...4..142L/sonnet/card.md"
+}

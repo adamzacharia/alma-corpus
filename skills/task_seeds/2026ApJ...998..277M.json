@@ -1,0 +1,419 @@
+{
+ "bibcode": "2026ApJ...998..277M",
+ "title": "ALMA Observations of Cold Methanol Gas in the Large Magellanic Cloud: N79 South Giant Molecular Cloud",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae2ad6",
+ "arxiv_id": "2512.19185",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "nearby_galaxies"
+ ],
+ "question": "Investigate the physical and chemical properties, molecular abundances, and origin of cold CH$_3$OH gas in two dense molecular cloud cores (N79S-1 and N79S-2) offset from the SSC candidate H72.97-69.39 in the low-metallicity N79 region of the LMC.",
+ "alma_project_codes": [
+  "2017.1.01323.S",
+  "2018.1.01366.S",
+  "2019.1.01770.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7",
+  "arrays": "12-m Array (46 antennas for Band 6, 50 antennas for Band 7)",
+  "angular_resolution": "0.4'' (0.097 pc)",
+  "sensitivity": "Continuum (0.87 mm): 0.158 mJy beam^-1; Line cubes: 135 to 159 mK (Band 6) and 39 to 46 mK (Band 7)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Coordinates of SSC candidate H72.97-69.39 from Herschel observations",
+    "evidence": [
+     {
+      "loc": "Overview of Target Source",
+      "quote": "We observe the massive ($>$ 8 M$_\\odot$) YSOs, HSOBMHERICC J72.971176–69.391112 (hereafter H72.97–69.39), located in the N79 South GMC (giant molecular cloud) of the LMC, as identified by Herschel observations (cite: seal14)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| H72.97-69.39 | 04$^\\mathrm{h}$51$^\\mathrm{m}$53.08s | -69$^\\circ$23$\\ensuremath{'}$28.00$''$ | Herschel coordinates$^a$ |"
+     }
+    ]
+   },
+   "citation": "(cite: seal14)"
+  },
+  {
+   "what": {
+    "value": "Relative molecular abundances for LMC sources ST11, ST16, N113A1, N105-2A, N105-1C, N105-2E, and N105-3C",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "$^1$This work, $^2$(cite: shim16b),$^3$(cite: shim20), $^4$(cite: sewi18),$^5$(cite: sewi22),$^a$Temperature of the molecular gas, $^b$Estimated from $^{33}$SO with $^{32}$S/$^{33}$S = 53 (cite: shim20), $^c$Estimated from $^{13}$CS with $^{12}$C/$^{13}$C = 49 (cite: wang09)"
+     }
+    ]
+   },
+   "citation": "(cite: shim16b), (cite: shim20), (cite: sewi18), (cite: sewi22)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure dust continuum source sizes and flux densities",
+   "method": "Fit 2D Gaussian within the 50% peak intensity contour to measure source sizes, and extract average 0.87 mm continuum flux density within a 0.42'' (0.1 pc) diameter circular region centered on CH3OH peak positions.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "0.42'' (0.1 pc) diameter extraction region",
+    "50% peak intensity contour for 2D Gaussian size fit"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra, identify molecular transitions, and fit line profiles",
+   "method": "Extract spectra from 0.42'' (0.1 pc) diameter regions at CH3OH peaks, identify lines using CASSIS with CDMS and JPL databases (S/N >= 3, matching systemic velocity, unblended), and fit single Gaussian profiles to unblended transitions.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "0.42'' (0.1 pc) diameter spectral extraction region",
+    "Detection threshold S/N >= 3",
+    "Fitting velocity range: 229 to 236 km s^-1 (N79S-1) and 230 to 238 km s^-1 (N79S-2)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Create moment zero maps and measure molecular emission source sizes",
+   "method": "Integrate spectra over the emission velocity range (typically 229 to 238 km s^-1) to make moment zero maps, and fit 2D Gaussians within the 50% peak intensity region to derive deconvolved source sizes.",
+   "software": [],
+   "key_parameters": [
+    "Velocity integration range: typically 229 to 238 km s^-1 (205 to 257 km s^-1 for CO(3-2), 205-220 km s^-1 blue lobe, 242-257 km s^-1 red lobe)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotational temperatures and column densities of CH3OH and SO, and column densities of other species",
+   "method": "Perform LTE rotation diagram analysis (straight-line fit of log(N_u/g_u) vs E_u/k) for CH3OH and SO; validate CH3OH and H2CO with non-LTE RADEX modeling; calculate LTE optically thin column densities for CS, H2CS, H2CO, CN, and CCH by averaging values at T_rot = 10 K and 20 K.",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "T_rot varied from 10 K to 20 K for CS, H2CS, H2CO, CN, and CCH",
+    "RADEX inputs: T_bg = 2.73 K, n(H2) = 1.8e6 cm^-3 (N79S-1) and 3.6e6 cm^-3 (N79S-2), line width = 2.0 km s^-1 (N79S-1) and 2.3 km s^-1 (N79S-2)"
+   ],
+   "assumptions": [
+    "LTE and optically thin conditions",
+    "Gas temperature of 13 K (N79S-1) and 15 K (N79S-2) with 10-20 K bounds for single-transition species"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive H2 column densities, gas densities, masses, visual extinctions, and relative molecular abundances",
+   "method": "Compute N(H2) from optically thin 0.87 mm dust continuum emission at T_d = 10, 13/15, and 20 K (averaging 10 K and 20 K values as final N(H2)), derive n(H2), gas mass, and A_V assuming a 0.1 pc spherical geometry, and divide molecular column densities by N(H2) to obtain relative abundances.",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 1.89 cm^2 g^-1 at 0.87 mm",
+    "Dust-to-gas mass ratio Z = 0.0027 and mean atomic mass per hydrogen mu = 1.41"
+   ],
+   "assumptions": [
+    "Optically thin dust continuum emission and thermal coupling between gas and dust (T_d = 10-20 K)",
+    "Spherical gas distribution with 0.1 pc diameter"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "0.87 mm continuum peak intensity (SSC continuum peak)",
+   "value": "123.78",
+   "uncertainty": "0.158",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum Emission",
+     "quote": "The rms noise of the continuum image is 0.158 $\\,\\mathrm{mJy\\,beam^{-1}}$."
+    },
+    {
+     "loc": "Continuum Emission",
+     "quote": "The peak intensity of the continuum emission is 123.78 $\\,\\mathrm{mJy\\,beam^{-1}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm continuum flux density (N79S-1)",
+   "value": "0.84",
+   "uncertainty": "0.16",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| N79S-1 | 0.87 | 0.84$\\pm$0.16 | 0.55 ( 0.13) | 0.38 (0.09) |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm continuum flux density (N79S-2)",
+   "value": "1.64",
+   "uncertainty": "0.16",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| N79S-2 | 0.87 | 1.64$\\pm$0.16 | 0.53 (0.13) | 0.34 (0.08) |  |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature (N79S-1)",
+   "value": "12.8",
+   "uncertainty": "0.3",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| CH$_3$OH$^*$ | 12.8$\\pm$0.3           | 7.8(14)$\\pm$1.0(14)            | 0.94                         | 0.85                                        |   | 15.4$\\pm$0.8  | 3.3(14)$\\pm$5.5(13)            | 0.74                     | 0.62                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature (N79S-2)",
+   "value": "15.4",
+   "uncertainty": "0.8",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| CH$_3$OH$^*$ | 12.8$\\pm$0.3           | 7.8(14)$\\pm$1.0(14)            | 0.94                         | 0.85                                        |   | 15.4$\\pm$0.8  | 3.3(14)$\\pm$5.5(13)            | 0.74                     | 0.62                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO rotational temperature (N79S-1)",
+   "value": "13.2",
+   "uncertainty": "0.4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| SO           | 13.2$\\pm$0.4           | 7.2(14)$\\pm$1.1(14)            | 0.80                         | 0.69                                        |   | 15.3$\\pm$0.9  | 1.4(14)$\\pm$3.2(13)            | 0.67                     | 0.54                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO rotational temperature (N79S-2)",
+   "value": "15.3",
+   "uncertainty": "0.9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| SO           | 13.2$\\pm$0.4           | 7.2(14)$\\pm$1.1(14)            | 0.80                         | 0.69                                        |   | 15.3$\\pm$0.9  | 1.4(14)$\\pm$3.2(13)            | 0.67                     | 0.54                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average gas temperature (N79S-1)",
+   "value": "13",
+   "uncertainty": "0.4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The rotation diagram analysis of CH$_3$OH and SO lines yields an average gas temperature of 13 $\\pm$ 0.4 K for N79S-1 and 15 $\\pm$ 0.9 K for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Average gas temperature (N79S-2)",
+   "value": "15",
+   "uncertainty": "0.9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The rotation diagram analysis of CH$_3$OH and SO lines yields an average gas temperature of 13 $\\pm$ 0.4 K for N79S-1 and 15 $\\pm$ 0.9 K for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density (N79S-1)",
+   "value": "7.8e14",
+   "uncertainty": "1.0e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| CH$_3$OH$^*$ | 12.8$\\pm$0.3           | 7.8(14)$\\pm$1.0(14)            | 0.94                         | 0.85                                        |   | 15.4$\\pm$0.8  | 3.3(14)$\\pm$5.5(13)            | 0.74                     | 0.62                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density (N79S-2)",
+   "value": "3.3e14",
+   "uncertainty": "5.5e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| CH$_3$OH$^*$ | 12.8$\\pm$0.3           | 7.8(14)$\\pm$1.0(14)            | 0.94                         | 0.85                                        |   | 15.4$\\pm$0.8  | 3.3(14)$\\pm$5.5(13)            | 0.74                     | 0.62                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density (N79S-1)",
+   "value": "7.2e14",
+   "uncertainty": "1.1e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| SO           | 13.2$\\pm$0.4           | 7.2(14)$\\pm$1.1(14)            | 0.80                         | 0.69                                        |   | 15.3$\\pm$0.9  | 1.4(14)$\\pm$3.2(13)            | 0.67                     | 0.54                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density (N79S-2)",
+   "value": "1.4e14",
+   "uncertainty": "3.2e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas-phase Molecular Column Density",
+     "quote": "| SO           | 13.2$\\pm$0.4           | 7.2(14)$\\pm$1.1(14)            | 0.80                         | 0.69                                        |   | 15.3$\\pm$0.9  | 1.4(14)$\\pm$3.2(13)            | 0.67                     | 0.54                                      |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N_H2 (N79S-1)",
+   "value": "3.8e23",
+   "uncertainty": "2.0e23",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3 notes",
+     "quote": "In this study, we use $N_{H_2}$ = (3.8$\\pm$2.0)$\\times$ $10^{23}$ cm$^{-2}$ for N79S-1"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N_H2 (N79S-2)",
+   "value": "7.4e23",
+   "uncertainty": "4.0e23",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3 notes",
+     "quote": "and $N_{H_2}$ = (7.4$\\pm$4.0)$\\times$ $10^{23}$ cm$^{-2}$ N79S-2 as a typical value"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 volume density n_H2 (N79S-1)",
+   "value": "1.85e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column Density of H$_2$",
+     "quote": "Assuming a source diameter of 0.1 pc and a spherical distribution of gas, the gas density and visual extinction are derived to be $n_{\\mathrm{H_2}} = 1.85 \\times 10^6$ cm$^{-3}$ and $A_V \\sim 128$ mag for N79S-1, and $n_{\\mathrm{H_2}} = 3.59 \\times 10^6$ cm$^{-3}$ and $A_V \\sim 196$ mag for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 volume density n_H2 (N79S-2)",
+   "value": "3.59e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column Density of H$_2$",
+     "quote": "Assuming a source diameter of 0.1 pc and a spherical distribution of gas, the gas density and visual extinction are derived to be $n_{\\mathrm{H_2}} = 1.85 \\times 10^6$ cm$^{-3}$ and $A_V \\sim 128$ mag for N79S-1, and $n_{\\mathrm{H_2}} = 3.59 \\times 10^6$ cm$^{-3}$ and $A_V \\sim 196$ mag for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass (N79S-1)",
+   "value": "67",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of N79S-1 and N79S-2 Core",
+     "quote": "The H$_2$ density corresponds to a total gas mass of 67 M$\\odot$ for N79S-1 and 131 M$\\odot$ for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass (N79S-2)",
+   "value": "131",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Physical Properties of N79S-1 and N79S-2 Core",
+     "quote": "The H$_2$ density corresponds to a total gas mass of 67 M$\\odot$ for N79S-1 and 131 M$\\odot$ for N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH relative abundance N(CH3OH)/N(H2) (N79S-1)",
+   "value": "2.1e-9",
+   "uncertainty": "1.1e-9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The abundance of cold CH$_3$OH gas is estimated to be (2.1 $\\pm$ 1.1)$\\times$ 10$^{-9}$ at N79S-1 and (4.5 $\\pm$2.5)$\\times$ 10$^{-10}$ at N79S-2."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH relative abundance N(CH3OH)/N(H2) (N79S-2)",
+   "value": "4.5e-10",
+   "uncertainty": "2.5e-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The abundance of cold CH$_3$OH gas is estimated to be (2.1 $\\pm$ 1.1)$\\times$ 10$^{-9}$ at N79S-1 and (4.5 $\\pm$2.5)$\\times$ 10$^{-10}$ at N79S-2."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency or channel ranges selected as line-free for continuum imaging and uvcontsub",
+  "tclean stopping threshold, niter, cell size, image size, deconvolver, and masking strategy",
+  "Calibration and imaging parameters for the Cycle 7 CO(3-2) dataset (2019.1.01770.S)",
+  "Collision partner rates and ortho/para H2 ratio assumed in RADEX non-LTE calculations",
+  "Partition function Q(T_rot) values or interpolation scheme used for each molecule in LTE column density calculations"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel selections for continuum imaging and uvcontsub across the eight spectral windows",
+  "tclean imaging parameters (cell size, image size, stopping threshold, masking)",
+  "Data reduction and imaging details for Cycle 7 project 2019.1.01770.S (CO 3-2)",
+  "Exact partition function Q(T_rot) values used in the LTE equations"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Target coordinates, extraction apertures (0.42''), restoring beam (0.4''), weighting (Briggs robust=0.5), spectroscopic constants, fitted line parameters (Tables 5 and 6), and equations/constants for column densities are all explicitly provided; minor imaging parameters and Cycle 7 reduction details are omitted.",
+ "rediscovery_reason": "All three ALMA datasets are public in the archive, extraction positions and aperture sizes are tabulated, and all main results (line intensities, rotational temperatures, column densities, and relative abundances) are numeric and straightforward to recompute.",
+ "source_card": "cards/2026ApJ...998..277M/sonnet/card.md"
+}

@@ -1,0 +1,261 @@
+# Fragmentation of Molecular Clumps and Formation of a Protocluster
+
+`2015ApJ...804..141Z` | The Astrophysical Journal 2015 | first author: Zhang, Qizhou | arXiv: 1503.03017 | DOI: 10.1088/0004-637X/804/2/141
+
+Card schema 1.0 | model claude-sonnet-5-5 | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: star_formation, astrochemistry, milky_way_ism
+- Question: How does the IRDC clump G28.34 P1 fragment, what is the evolutionary stage of its cores, and is there a distributed low-mass protostellar population as expected from thermal Jeans fragmentation?  
+  > "Despite the fact that the mass limit reached by the $1\sigma$ dust continuum sensitivity is 30 times lower than the thermal Jeans mass, there is a lack of a distributed low-mass protostellar population in the clump." (abstract)
+- Target **G28.34+0.06 P1 (IRDC)**: coordinates Table 1 components near 18:42:51, -04:03:05 to -04:03:25  
+  > "The cloud, at a kinematic distance of $\sim$4.8 kpc, contains several $10^3$ M$_\odot$ of dense gas along the infrared absorption filament extending 6 pc in the sky" (1 Introduction); z/distance ~4.8 kpc (kinematic)  
+  > "The cloud, at a kinematic distance of $\sim$4.8 kpc, contains several $10^3$ M$_\odot$ of dense gas along the infrared absorption filament extending 6 pc in the sky" (1 Introduction); distance from kinematic distance, citing carey2000; rathborne2006; pillai2006b; wang2008  
+  > "The cloud, at a kinematic distance of $\sim$4.8 kpc, contains several $10^3$ M$_\odot$ of dense gas along the infrared absorption filament extending 6 pc in the sky" (1 Introduction)
+
+## Data provenance
+
+- ALMA projects: 2011.0.00429.S
+- bands: Band 6 (230 GHz)  
+  > "The observations employed the Band 6 (230 GHz) receivers in dual polarization mode." (Observations)
+- frequencies and spectral setup: 4 SPWs of 1.875 GHz: 218.07-219.95, 215.62-217.49, 230.18-232.06, 232.82-234.70 GHz; channel 488.3 kHz (0.62-0.67 km/s)  
+  > "The frequency coverage of the data range from 218.07 to 219.95 GHz in SPW0, from 215.62 to 217.49 GHz in SPW1, from 230.18 to 232.06 GHz in SPW2, and from 232.82 to 234.70 GHz in SPW3, respectively." (Observations)
+- continuum bandwidth: _not stated_
+- arrays: 12-m array, 29 antennas, extended configuration  
+  > "in its extended configuration with a total of 29 12-m antennas in the array" (Observations)
+- configurations: _not stated_
+- baselines: 15 m to 400 m (11.5-308 kλ)  
+  > "The projected baselines range from 15m to 400m (11.5 - 308 k$\lambda$)." (Observations)
+- angular resolution: 0.8'' (robust 0.5); continuum beam 0.85'' x 0.64''  
+  > "The resulting synthesized beam is $0.8''$ when using a robust weighting parameter of 0.5." (Observations)
+- max recoverable scale: _not stated_
+- sensitivity: continuum 1σ 0.075 mJy/beam; line 2.5 mJy per 0.7 km/s channel (SPW0, 1, 3)  
+  > "The continuum image reaches a $1\sigma$ rms noise of 0.075 mJy in a synthesized beam of $0''.85 \times 0''.64$." (Observations)
+- time on source: 34 min on source (~1.5 h session)  
+  > "The actual time on-source is 34 mins." (Observations)
+- observing dates: 2012 November 15  
+  > "G28.34 P1 was observed with Atacama Large Millimeter/Submillimeter Array (ALMA) on 2012 November 15" (Observations)
+- pi or archival as stated: _not stated_
+- Line: CO 2-1 (not stated)
+- Line: SiO 5-4 (not stated)
+- Line: C18O, 13CS, N2D+, H2S, H2CO, CH3OH, SO, DCN not stated (not stated)
+- Other facility **SMA**: 1.3 mm and 0.88 mm continuum and CO data of earlier work; DR21 template spectra  
+  > "The SMA observations at 1.3mm resolved the G28.34 P1 clump into five cores along the filament" (1 Introduction)
+- Other facility **VLA**: NH3 (1,1) data for velocity structure and line widths  
+  > "We analyze the large scale $\rm{NH_3}$ data obtained with the VLA (cite: wang2008)." (3.5 Velocity structure along the main filament)
+- Other facility **JCMT archive**: 870 um NGC 1333 map for simulated observations  
+  > "we use the 870 $\mu$m continuum data from the JCMT archive (cite: kirk2006) to derive the sky model" (4.3 Formation of low-mass stars in a cluster)
+- External data: NH3-derived gas temperature 9-22 K used for masses  
+  > "(cite: wang2012) derived a gas temperature of 9 to 22K using the higher angular resolution $\rm{NH_3}$ (1,1) and (2,2) data." (3.1 Continuum Emission) [from (cite: wang2012)]
+- External data: Clump IRAM 30m 1.3mm continuum and Effelsberg NH3 for virial analysis  
+  > "we use the 1.3mm dust continuum data from the IRAM 30m telescope (cite: rathborne2006) and the $\rm{NH_3}$ data from the Effelsberg 100m telescope (cite: pillai2006b; wang2008)" (3.3 Core structure and dynamical state) [from (cite: rathborne2006; pillai2006b; wang2008)]
+- External data: SMA 1.3mm continuum and VLA NH3 for core scale  
+  > "we use the SMA 1.3mm continuum (cite: zhang2009), and the $\rm{NH_3}$ data obtained from the VLA (cite: wang2008; wang2012)" (3.3 Core structure and dynamical state) [from (cite: zhang2009; wang2008; wang2012)]
+- External data: SiO abundance 9.2e-10 for outflows  
+  > "a relative \[SiO\]/\[H$_2$\] abundance of $9.2 \times 10^{-10}$ (cite: sanhueza2012)" (Results, Molecular outflows) [from (cite: sanhueza2012)]
+- Simulation/model as data: Simulated ALMA observation in CASA of the CLEAN model of G28.34 plus a sky model of NGC 1333 (JCMT 870 um scaled to 1.3 mm and to 4800 pc)  
+  > "we perform simulated observations using the clean model of the 1.3mm continuum image shown in Figure 2, derived from *clean* in CASA." (4.3 Formation of low-mass stars in a cluster)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: Calibrated in CASA by ALMA supporting staff  
+  > "The visibility data were calibrated in CASA by the ALMA supporting staff." (Observations)
+- casa version: _not stated_
+- pipeline version: _not stated_
+- archive products used as is: _not stated_
+- flux calibrator: Neptune (bandpass J1751+096, gain J1830+063)  
+  > "The flux calibration was achieved by observations of Neptune." (Observations)
+- flux scale uncertainty: _not stated_
+- self calibration: Continuum self-calibrated in CASA; solutions applied to line data; ~20% dynamic range improvement  
+  > "The continuum emission was self calibrated in CASA to further improve the dynamical range in the maps." (Observations)
+
+### Imaging
+
+- task: _not stated_
+- deconvolver: _not stated_
+- weighting robust: robust = 0.5  
+  > "The resulting synthesized beam is $0.8''$ when using a robust weighting parameter of 0.5." (Observations)
+- uv taper: _not stated_
+- cell size: _not stated_
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: _not stated_
+- continuum subtraction: Continuum built from line-free channels; SPW2 excluded from continuum  
+  > "We construct continuum visibility data using the line free spectral channels for the science target G28.34 P1." (Observations)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: 0.85'' x 0.64''  
+  > "in a synthesized beam of $0''.85 \times 0''.64$" (Observations)
+- final rms: 0.075 mJy/beam continuum  
+  > "The continuum image reaches a $1\sigma$ rms noise of 0.075 mJy" (Observations)
+
+### Inherited from earlier work
+
+- Outflow mass, momentum, energy prescription  
+  > "We derive mass, momentum and energy in molecular outflows identified in the CO following the prescription outlined in (cite: zhang2001; zhang2005a)." (3.4 Molecular outflows) [from (cite: zhang2001; zhang2005a)]
+- Excitation temperature 18 K for outflows  
+  > "We adopt an excitation temperature of 18K following (cite: wang2012)." (3.4 Molecular outflows) [from (cite: wang2012)]
+- Source naming convention Core 1-5 = SMA1-5  
+  > "For convenience of cross referencing, as well as following the convention in the previous papers, we name the 5 groups of sources in the ALMA continuum image Core 1 through Core 5" (3.1 Continuum Emission) [from (cite: zhang2009)]
+
+### Not stated but needed to reproduce (our reading)
+
+- CASA version and tclean/clean parameters (deconvolver, cell, image size, masks, threshold)
+- Self-calibration solution intervals and number of iterations
+- Line-free channel ranges used for continuum
+- Dendrogram parameters and Gaussian-fit software/initial guesses
+- Rest frequencies and line identification/ velocity ranges for moment maps and outflow channels
+- Outflow velocity integration ranges and inclination corrections
+- Simulation (simobserve) parameters and noise treatment
+- Virial mass formula and clump/core line widths used
+- Mass conversion details (opacity value at 1.3 mm)
+
+## Analysis recipe
+
+1. **Image continuum and self-calibrate**: Line-free channels continuum, self-calibration in CASA, imaging with robust 0.5, excluding SPW2  
+  > "Thus we exclude the SPW2 data for the continuum image." (Observations)
+   - software: CASA
+   - fitting: _not stated_
+   - validation: _not stated_
+2. **Identify continuum components and measure fluxes**: Dendrogram to seed simultaneous elliptical Gaussian fit; 38 components  
+  > "We then resort to fitting elliptical Gaussian to the continuum image, but using the smallest features identified by dendrogram as a starting point of initial guesses for the Gaussian fitting." (3.1 Continuum Emission)
+   - software: dendrogram
+   - fitting: Simultaneous elliptical Gaussian fit  
+  > "We identify a total of 38 components in the simultaneous Gaussian fit." (3.1 Continuum Emission)
+   - validation: Residual rms 6x75 uJy, detection limit ~0.4 Msun  
+  > "The rms in the residual image is $6 \times 75 \mu$Jy, corresponding to a detection limit of about 0.4 M$_\odot$." (3.1 Continuum Emission)
+3. **Derive dust masses**: Hildebrand opacity law with beta = 1.5, gas-to-dust 100, NH3 temperatures  
+  > "we obtained gas masses of the objects ranging from 0.5 to 16 M$_\odot$, assuming a gas-to-dust mass ratio of 100." (3.1 Continuum Emission)
+   - assumption: Hildebrand 1983 opacity, beta=1.5, gas-to-dust 100  
+  > "Adopting the dust opacity law in (cite: hildebrand1983) and a dust emissivity index of $\beta$ = 1.5" (3.1 Continuum Emission)
+   - fitting: _not stated_
+   - validation: _not stated_
+4. **Virial analysis from clump to condensations**: Gaussian sizes with line widths (NH3 for clump/cores, C18O 1.7 km/s for condensations); virial parameter with density power law a=2 correction (5/3) and magnetic term  
+  > "With a power-law index of 2, the virial masses reported in Table 2 are reduced by a factor of 5/3." (3.3 Core structure and dynamical state)
+   - assumption: Magnetic field 0.27 mG from G11.11 assumed  
+  > "Assuming the same magnetic field flux in the G28.34 P1 clump, we find the mass for a critical mass-to-flux ratio of $1.6 \times 10^3$ M$_\odot$." (3.3 Core structure and dynamical state)
+   - fitting: _not stated_
+   - validation: _not stated_
+5. **Identify outflows and derive parameters**: Inspect channel maps of CO, SiO, H2CO, CH3OH, SO; optically thin masses, momenta, energies  
+  > "We identify outflow pairs by inspecting the channel maps of the CO, SiO, H$_2$CO, CH$_3$OH, and SO emission." (3.4 Molecular outflows)
+   - assumption: Optically thin CO, CO/H2 = 1e-4, Tex = 18 K  
+  > "We assume that the CO emission is optically thin, and a CO to H$_2$ abundance of $10^{-4}$." (3.4 Molecular outflows)
+   - fitting: _not stated_
+   - validation: SiO and CO masses consistent  
+  > "This abundance value of SiO yields consistent outflow masses computed from the SiO and the CO emission." (3.4 Molecular outflows)
+6. **Filament velocity structure from NH3**: VLA NH3(1,1) peak velocity, PV cut (PA 44 deg), first-moment centroid with 5σ (10 mJy) threshold  
+  > "We used a flux threshold of $5 \sigma$ noise (10 mJy) when computing the moment data to avoid the contamination from the satellite hyperfines." (3.5 Velocity structure along the main filament)
+   - fitting: _not stated_
+   - validation: _not stated_
+7. **Cumulative mass function and completeness test**: Compare cumulative mass function of 38 objects with Salpeter slope; simulated observations of G28.34 clean model plus scaled NGC 1333 low-mass protocluster  
+  > "In Figure 9c, the low-mass protostellar cores added to the model are also recovered robustly." (4.3 Formation of low-mass stars in a cluster)
+   - software: CASA
+   - parameter: 29 antennas, PWV 1.5 mm, 34 min on-source; 870->1.3 mm factor 3; distance scaling (4800/235)^2  
+  > "we adopt an array configuration with a total of 29 antennas, a precipitable water vapor PWV = 1.5mm, and an on-source observing time of 34 min" (4.3 Formation of low-mass stars in a cluster)
+   - fitting: _not stated_
+   - validation: Simulated image reproduces G28.34 image and recovers added cores  
+  > "As seen in Figure 9b, the simulated image reproduce the G28.34 image in Figure 2 well." (4.3 Formation of low-mass stars in a cluster)
+
+## Software
+
+- **CASA** : Calibration, self-calibration, imaging, simulated observations  
+  > "The continuum emission was self calibrated in CASA to further improve the dynamical range in the maps." (Observations)
+- **dendrogram algorithm** : Initial identification of continuum structures  
+  > "we employed dendrogram algorithm to decompose the continuum emission" (3.1 Continuum Emission)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Continuum 1σ rms | 0.075 | not stated | mJy/beam | 1 | The continuum image reaches a $1\sigma$ rms noise of 0.075 mJy |
+| Number of continuum components | 38 | not stated | dimensionless | 2 | We identify a total of 38 components in the simultaneous Gaussian fit. |
+| Integrated continuum flux | 228 | not stated | mJy | 2 | The integrated fluxes in the ALMA continuum image is 228 mJy |
+| Component gas masses | 0.5 to 16 | not stated | Msun | 3 | we obtained gas masses of the objects ranging from 0.5 to 16 M$_\odot$ |
+| 1σ mass sensitivity | 0.065 | not stated | Msun | 3 | this flux corresponds to a mass of 0.065 M$_\odot$ |
+| C18O FWHM line width in condensations | 1.7 | not stated | km/s | 4 | found a typical FWHM of 1.7 km s$^{-1}$ |
+| Clump virial parameter | 0.44 | not stated | dimensionless | 4 | Clump G28-P1 / 1000.0 / 2.67 / 0.30 / 444 / 0.44 / 1637.9 / 2.08 |
+| Number of outflows | 10 | not stated | dimensionless | 5 | A total of 10 outflows are identified in the region. |
+| Outflow masses | 0.054 to 2.8 | not stated | Msun | 5 | ranges from 0.054 to 2.8 M$_\odot$ |
+| Large-scale velocity gradient along filament | 0.6 over 80'' | not stated | km/s | 6 | There is a large scale velocity gradient of 0.6 km s$^{-1}$ over an angular scale of $80''$ from MM10, MM14 to MM4. |
+
+## Qualitative findings
+
+- Cores 2, 3, 4 chemically more active than Cores 1 and 5  
+  > "thus appear to be chemically more active than Cores 1 and 5." (3.2 Molecular Line Emission)
+
+## Claim tuples
+
+- H: Does the clump contain a distributed low-mass protostellar population expected from thermal Jeans fragmentation? | E: Compare cumulative mass function of 38 components with Salpeter slope; simulate recovery of NGC 1333-like cores | R: More than 5 times fewer cores at 1-2 Msun than Salpeter expectation; simulated low-mass cores recoverable | F: Low-mass stars form after massive protostars | **supported**
+- H: Are the clump, cores and condensations in virial equilibrium? | E: Virial parameters from sizes, masses and line widths | R: alpha < 0.47 at all scales without magnetic fields | F: Not in virial equilibrium unless magnetic fields of mG are present | **partially**
+- H: Evolutionary state of the cores | E: Line detections compared with DR21 intermediate-mass template | R: Cores 2-4 match intermediate-mass template; Cores 1, 5 weaker | F: Cores harbor low- to intermediate-mass protostars | **supported**
+- H: Do all cores drive outflows and does the filament show accretion flows? | E: Channel maps of CO, SiO etc. and NH3 velocity analysis | R: 10 outflows; velocity gradients along the filament | F: Cores drive collimated outflows; flows along filament toward clumps | **supported**
+
+## Reasoning
+
+- Why this data: SMA data lacked sensitivity and dynamic range to detect Jeans-mass fragments and line emission  
+  > "Our previous observations of G28.34 with the SMA do not have adequate sensitivity and/or dynamic range to reliably detect fragments of thermal Jeans mass (approximately 2 M$_\odot$)." (1 Introduction)
+- Why this method: Dendrogram missed features, so Gaussian fitting seeded by dendrogram used  
+  > "However, the decomposition misses some obvious emission features." (3.1 Continuum Emission)
+- Alternative: Three explanations for missing low-mass cores; first two discounted, third (not yet formed) favored  
+  > "Therefore, we propose that the third possibility is the likely scenario" (4.3 Formation of low-mass stars in a cluster)
+- How they decided it was enough: _not stated_
+- Limitation (authors): SPW2 noise 3x higher for unknown reasons; faint source at 10% primary beam not discussed; no direct magnetic field measurement  
+  > "The noise in SPW2 is a factor of 3 higher for unknown reasons." (Observations)
+- Caveat (inferred, ours): Mass sensitivity depends on assumed 15 K dust temperature and opacity
+- Caveat (inferred, ours): Virial results sensitive to unmeasured magnetic fields and adopted line widths
+- Caveat (inferred, ours): Lack of low-mass cores could reflect single-pointing, filtering of extended emission, or interferometric completeness rather than evolution
+- Caveat (inferred, ours): Single 34-min observation; one source
+
+## Reproducibility
+
+- Data public (paper): Project ID given; public status not explicitly stated  
+  > "(Project ID: 2011.0.00429.S)" (Observations)
+- Products in archive: _not stated_
+- Missing: CASA version and clean parameters
+- Missing: Self-cal details
+- Missing: Dendrogram/Gaussian fitting code settings
+- Missing: Outflow velocity ranges
+- Missing: Access to SMA, VLA NH3 and NGC 1333 JCMT data
+- Data volume (inferred): ~10-30 GB
+- Score (inferred): 5/5, Single public dataset with clear observing setup, but imaging parameters and many analysis details are unstated and several external datasets are needed.
+- Rediscovery candidate: no, Imaging and analysis recipe incomplete; results depend on external datasets.
+
+## Links
+
+- Method: (cite: zhang2001; zhang2005a) (Outflow parameter prescription)
+- Companion: (cite: zhang2009) (SMA study of G28.34 P1)
+- Companion: (cite: wang2011) (Subarcsecond SMA 0.88 mm study)
+- Companion: (cite: wang2012) (NH3 temperatures and CO outflows)
+- Companion: (cite: wang2008) (VLA NH3 observations)
+- Related: SMA G28.34 P1 observations
+- Related: DR21 filament SMA template (Zhang et al., in preparation)
+
+## Checks
+
+```json
+{
+ "quotes": 72,
+ "quotes_ok": 72,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 0,
+ "unsupported_facts": 0,
+ "project_codes": 1,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 10,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 84,
+  "stated": 53,
+  "rate": 0.631
+ },
+ "evidence_ok": true
+}
+```

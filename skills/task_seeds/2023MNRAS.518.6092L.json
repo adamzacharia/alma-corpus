@@ -1,0 +1,369 @@
+{
+ "bibcode": "2023MNRAS.518.6092L",
+ "title": "The radial profile of dust grain size in the protoplanetary disc of DS Tau",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3534",
+ "arxiv_id": "2211.16833",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the radial profile of dust grain size in the protoplanetary disk of DS Tau, and how does it correlate with disk substructures?",
+ "alma_project_codes": [
+  "2016.1.01164.S",
+  "2018.1.00614.S"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "~ 0.1 arcsec; convolved to [0.13'', 0.09'']",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical to millimeter SED photometry of DS Tau (Table 1)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Table 1 lists the measured flux densities of DS Tau, and the data points cover a broad range of wavelength from the optical to millimeter."
+     }
+    ]
+   },
+   "citation": "(cite: 1995ApJS..101..117K), (cite: 2018yCat.1345....0G), (cite: 2003yCat.2246....0C), (cite: 2012yCat.2311....0C), (cite: 2010ApJS..186..111L), (cite: 2017ApJ...849...63R), (cite: 2005ApJ...631.1134A), (cite: 1995ApJ...439..288O), (cite: 2018ApJ...869...17L), (cite: 2020ApJ...898...36L), (cite: 2010A&A...512A..15R)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 6 and Band 3 continuum images and flux densities",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Details of the ALMA observations and data reduction can be found in (cite: 2018ApJ...869...17L; 2020ApJ...898...36L)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...869...17L; 2020ApJ...898...36L)"
+  },
+  {
+   "what": {
+    "value": "Gap location and width (32 or 33 AU and 27 AU)",
+    "evidence": [
+     {
+      "loc": "Disk model",
+      "quote": "The gap location and width are denoted as $R_{\\mathrm {gap}}$ and $\\sigma$, and are set to 32 AU and 27 AU according to (cite: 2018ApJ...869...17L)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...869...17L)"
+  },
+  {
+   "what": {
+    "value": "Spectral type (M0.4) and effective temperature (3800 K / 3792 K) of DS Tau",
+    "evidence": [
+     {
+      "loc": "Stellar heating",
+      "quote": "The central star has a spectral type of M0.4 and an effective temperature of 3800 K (cite: 2014ApJ...786...97H)."
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...786...97H)"
+  },
+  {
+   "what": {
+    "value": "Distance to DS Tau (158 pc)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Our research target, DS Tau, is an M0.4 young star (cite: 2014ApJ...786...97H) in the Taurus star-forming region at a distance of 158 pc (cite: 2021A&A...649A...1G)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021A&A...649A...1G)"
+  },
+  {
+   "what": {
+    "value": "Accretion luminosity of DS Tau (0.05 L_odot)",
+    "evidence": [
+     {
+      "loc": "Stellar heating",
+      "quote": "(cite: 2018ApJ...868...28F) calculated the accretion luminosity to be $0.05\\,\\mathrm\\,L_{\\odot}$, which is only 7% of the blackbody luminosity of the central star."
+     }
+    ]
+   },
+   "citation": "(cite: 2018ApJ...868...28F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract radial intensity profiles and spectral index profile from ALMA images",
+   "method": "Convolve Band 3 and Band 6 ALMA images to a common beam of [0.13'', 0.09''], extract radial intensity profiles by azimuthal averaging on concentric ellipses defined by disk inclination and position angle, and compute the spectral index alpha_mm(R).",
+   "software": [],
+   "key_parameters": [
+    "Convolving beam = [0.13'', 0.09'']",
+    "Inclination i = 67.58 deg, Position angle = 159.62 deg"
+   ],
+   "assumptions": [
+    "Absolute flux calibration uncertainty (~10%) is neglected in main modeling"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit the SED to determine representative disk geometry parameters",
+   "method": "Run a grid of self-consistent two-layer flared disk radiative transfer models in RADMC-3D with isotropic scattering and constant midplane maximum grain size, minimizing chi^2_SED over the two ALMA wavelengths (and checking against the full SED) to find best-fit H_100 and beta.",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "H_100 in [5, 10] AU (6 grid points); beta in [1.00, 1.15] (4 grid points); gamma in [0.3, 1.5] (7 grid points); M_dust in [10^-7, 10^-2] M_odot (11 grid points); a_max^mid in [10^3, 10^5] um (5 grid points)",
+    "Fixed parameters: M_* = 0.58 M_odot, T_eff = 3792 K, L_* = 0.7 L_odot, R_in = 0.1 AU, R_out = 80 AU, R_gap = 33 AU, sigma = 27 AU, eta = 0.99, H_ratio = 0.2, D = 158 pc",
+    "160 wavelengths logarithmically distributed in [0.1, 10000 um]"
+   ],
+   "assumptions": [
+    "Passive stellar heating (accretion heating ignored)",
+    "85% of total dust mass in midplane, 15% in surface layer; surface layer a_max = 1 um, a_min = 0.01 um, size distribution slope p = 3.5",
+    "DSHARP homogeneous sphere dust composition (20% water ice, 32% astronomical silicates, 8% troilite, 40% refractory organics; rho_dust = 1.675 g cm^-3) with Bruggeman and Mie theory and isotropic scattering"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Iteratively reconstruct the dust surface density profile Sigma(R) and fit the radial maximum grain size profile a_max^mid(R)",
+   "method": "Divide the disk midplane (out to 80 AU) into 32 radial bins of width 2.5 AU. Initialize a_max^mid(R) with a power law (a_max0 = 1000 um, b = 6 at R0 = 40 AU) and fix a_max^mid = 10 cm for R < 20 AU. Sequentially from inner to outer bins, perform a dense logarithmic grid search of a_max^mid to fit the observed spectral index alpha_mm(R). For every trial model, iteratively adjust Sigma(R) from scratch using the 2.9 mm observed-to-model radial intensity ratio until convergence (<5% change, ~12 iterations). Estimate uncertainties using 17 logarithmically spaced models in [log(a_best)-0.4, log(a_best)+0.4] per bin weighted by 1/chi^2.",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "32 radial bins of width 2.5 AU; fixed H_100 = 7 AU, beta = 1.05; initial Sigma(R) with gamma = 0.5",
+    "Initial power-law search: R_0 = 40 AU, a_max0 in [100, 10000 um], b in [1, 8]; best initial power law a_max0 = 1000 um, b = 6; fixed a_max^mid = 10 cm for R < 20 AU",
+    "Convergence threshold: < 5% surface density change at any radius (~ 12 iterations); 17 models per bin for uncertainty"
+   ],
+   "assumptions": [
+    "Image-plane fitting is valid because uv sampling is similar between bands and MRS (~1.8'' and ~2.6'') is much larger than disk outer radius (~0.5'')"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate depleted dust mass in the gap and evaluate Toomre Q gravitational stability",
+   "method": "Interpolate a smooth power-law dust surface density between R = 6 AU and R = 60 AU, integrate to find the pre-depletion dust mass, and subtract the best-fit dust mass. Compute the radial Toomre Q parameter from the midplane temperature and scaled gas surface density.",
+   "software": [],
+   "key_parameters": [
+    "Power-law interpolation range = [6 AU, 60 AU]",
+    "Mean molecular weight mu_m = 2.34"
+   ],
+   "assumptions": [
+    "Uniform gas-to-dust mass ratio of 30 (and tested < 10 in the ring)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spectral index alpha_mm in inner disk",
+   "value": "2.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Fitting the multi-band ALMA images",
+     "quote": "Secondly, it is clearly shown in panel (b) of Figure 3 that the spectral index $\\alpha_{\\rm mm}$ varies from ${\\sim}\\,2.1$ in the inner disk to ${\\sim}\\,3$ in the outer regions, which implies that $a^{\\mathrm {mid}}_{\\mathrm {max}}$ is not constant along the radial direction."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index alpha_mm in outer disk",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Fitting the multi-band ALMA images",
+     "quote": "Secondly, it is clearly shown in panel (b) of Figure 3 that the spectral index $\\alpha_{\\rm mm}$ varies from ${\\sim}\\,2.1$ in the inner disk to ${\\sim}\\,3$ in the outer regions, which implies that $a^{\\mathrm {mid}}_{\\mathrm {max}}$ is not constant along the radial direction."
+    }
+   ]
+  },
+  {
+   "quantity": "Optically thin dust mass estimate",
+   "value": "6.3e-5",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Fitting the SED",
+     "quote": "Adopting a dust temperature of $T_{\\rm dust}\\,{=}\\,20\\,\\rm{K}$, $M_{\\mathrm {dust}}$ is estimated to be $6.3\\,{\\times}\\, 10^{-5}\\,M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit scale height at 100 AU (H_100)",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Fitting the SED",
+     "quote": "The best-fit flaring index $\\beta\\,{=}\\,1.05$ and scale height $H_{100}\\,{=}\\,7\\,\\rm{AU}$ are recorded in Table 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit flaring index (beta)",
+   "value": "1.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Fitting the SED",
+     "quote": "The best-fit flaring index $\\beta\\,{=}\\,1.05$ and scale height $H_{100}\\,{=}\\,7\\,\\rm{AU}$ are recorded in Table 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED surface density gradient (gamma)",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\gamma$ | 0.5 | 0.3 | 1.5 | 7 | free"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED total dust mass (M_dust)",
+   "value": "10^-3",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\mathrm {dust}}$ [$\\mathrm M_{\\odot}$] | $10^{-3}$ | $10^{-7}$ | $10^{-2}$ | 11 | free"
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit SED midplane maximum grain size (a_max^mid)",
+   "value": "10^4",
+   "uncertainty": "not stated",
+   "units": "um",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$a^{\\mathrm {mid}}_{\\mathrm {max}}$ [$\\mu$m] | $10^4$ | $10^3$ | $10^5$ | 5 | free"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum grain size in inner disk (R < 20 AU)",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Grid search for the maximum grain sizes in the midplane",
+     "quote": "The $a^{\\mathrm {mid}}_{\\mathrm {max}}$ for $R\\,{<}\\,20\\,\\mathrm{AU}$ are fixed to $10\\,\\mathrm {cm}$."
+    },
+    {
+     "loc": "Summary",
+     "quote": "We find that the grain sizes range from 10 cm in the inner disk down to ${\\sim}\\,30\\,\\mu{\\rm m}$ in the outer regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum grain size in outer disk",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "um",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The best-fit grain sizes range from centimeters in the inner disk down to ${\\sim}\\,30\\,\\mu{\\rm m}$ in the outer regions."
+    },
+    {
+     "loc": "Summary",
+     "quote": "We find that the grain sizes range from 10 cm in the inner disk down to ${\\sim}\\,30\\,\\mu{\\rm m}$ in the outer regions."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak optical depth at gap-ring boundary (R ~ 50 AU)",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Overview of the modeling results",
+     "quote": "Consequently, the optical depth at $R\\,{\\sim}\\,50\\,{\\rm AU}$ shows a spike peaking around 3."
+    }
+   ]
+  },
+  {
+   "quantity": "Midplane temperature at boundary between gap and ring",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Overview of the modeling results",
+     "quote": "However, according to our model, the midplane temperature at the boundary between the gap and ring is about 10 K which is not associated with condensation fronts of main volatile species in protoplanetary disks."
+    }
+   ]
+  },
+  {
+   "quantity": "Depleted dust mass within the gap",
+   "value": "2",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on the best-fit model, we find that dust of ${\\sim}\\,2$ Jupiter masses has been depleted within the gap."
+    },
+    {
+     "loc": "Potential for forming a ~ 3.5 M_Jup mass planet",
+     "quote": "The difference between this mass and the best-fit dust mass is ${\\sim}\\,2\\,\\mathrm M_{\\mathrm {Jup}}$, which is the amount of material that could contribute to the planet formation."
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q value in the ring region (assuming gas-to-dust ratio of 30)",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gravitational instability",
+     "quote": "The $Q$ value is greater than unity at all radii, except for the ring region with $Q\\,{\\sim}\\,0.5$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact rms noise values (rms_nu) of the convolved Band 6 and Band 3 ALMA images used to calculate radial profile uncertainties",
+  "Position angle of the [0.13'', 0.09''] convolving Gaussian beam",
+  "Exact radial step size / ellipse spacing used when extracting observed radial intensity profiles",
+  "Spatial grid resolution (radial and vertical grid cells) and photon packet counts used in RADMC-3D Monte Carlo temperature and image simulations",
+  "Exact logarithmic grid spacing and range used when searching a_max^mid in each of the 32 radial bins"
+ ],
+ "missing_for_reproduction": [
+  "The exact reduced and convolved Band 6 and Band 3 continuum FITS images from Long et al. (2018, 2020) and their rms noise values",
+  "The custom wrapper scripts driving the sequential 32-bin grid search and 12-step surface density iteration in RADMC-3D",
+  "Exact spatial grid parameters and photon counts for RADMC-3D"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The physical model, dust opacity prescriptions, fixed/free parameter ranges, and iterative fitting algorithm are clearly explained, and the archival ALMA project codes and SED table are provided, but the custom fitting wrapper scripts, exact RADMC-3D spatial/photon grid settings, and image rms values are not explicitly given.",
+ "rediscovery_reason": "Public archival ALMA Band 6 and Band 3 data exist with known project codes, the SED table is fully printed in the paper, and the main numerical results (spectral index range, best-fit disk geometry parameters, radial grain size trend, and depleted gap dust mass) are well-defined.",
+ "source_card": "cards/2023MNRAS.518.6092L/sonnet/card.md"
+}

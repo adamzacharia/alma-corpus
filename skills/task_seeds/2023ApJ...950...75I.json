@@ -1,0 +1,418 @@
+{
+ "bibcode": "2023ApJ...950...75I",
+ "title": "Dense Molecular Gas Properties of the Central Kiloparsec of Nearby Ultraluminous Infrared Galaxies Constrained by ALMA Three Transition-line Observations",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acc388",
+ "arxiv_id": "2303.08178",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "What are the physical and chemical properties (H2 volume density, kinetic temperature, and HCN-to-HCO+ abundance ratio) of nuclear dense molecular gas in the central 1–2 kpc of nearby (U)LIRGs with and without luminous AGN signatures?",
+ "alma_project_codes": [
+  "2011.0.00020.S",
+  "2013.1.00032.S",
+  "2013.1.00033.S",
+  "2015.1.00027.S",
+  "2017.1.00022.S",
+  "2017.1.00023.S"
+ ],
+ "data": {
+  "bands": "Band 5 (1.4–1.8 mm), Band 6 (1.1–1.4 mm), Band 7 (0.8–1.1 mm)",
+  "arrays": "45–47 antennas (for newly reported Cycle 5 observations)",
+  "angular_resolution": "0.12'' x 0.09'' to 1.8'' x 1.1'' native; matched to circular beams of 0.84'' to 3.1'' (1–2 kpc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "IRAS fluxes at 12, 25, 60, and 100 um",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(5)–(8): f$_{12}$, f$_{25}$, f$_{60}$, and f$_{100}$ are *IRAS* fluxes at 12 $\\mu$m, 25 $\\mu$m, 60 $\\mu$m, and 100 $\\mu$m, obtained from (cite: kim98), (cite: san03), or the IRAS Faint Source Catalog (FSC)."
+     }
+    ]
+   },
+   "citation": "(cite: kim98), (cite: san03), IRAS Faint Source Catalog (FSC)"
+  },
+  {
+   "what": {
+    "value": "Herschel photometric data at 250, 350, and 500 um",
+    "evidence": [
+     {
+      "loc": "Continuum Flux Density Measured with 1–2 kpc Beam",
+      "quote": "For certain fractions of the observed ULIRGs, the photometric data at 250 $\\mu$m, 350 $\\mu$m, and 500 $\\mu$m taken with the Herschel Space Observatory are available (cite: cle18)."
+     }
+    ]
+   },
+   "citation": "(cite: cle18)"
+  },
+  {
+   "what": {
+    "value": "Infrared spectroscopically estimated bolometric contribution of AGNs",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Col.(11): Infrared spectroscopically estimated bolometric contribution of AGNs in % by (cite: nar10) for all ULIRGs and by (cite: per15) for the LIRG NGC 1614."
+     }
+    ]
+   },
+   "citation": "(cite: nar10), (cite: per15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Match beam sizes of continuum-subtracted cubes and continuum images across transitions",
+   "method": "Convolve continuum-subtracted data cubes and continuum maps to a common circular beam size (1, 1.5, 1.6, or 2 kpc) for each target using CASA task imsmooth",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Adopted circular beam sizes: 3.1'' (1 kpc) for NGC 1614; 1.1'' (1.6 kpc) for IRAS 06035-7102; 0.9'' (1 kpc) for IRAS 08572+3915; 1.1'' (1.5 kpc) for IRAS 12112+0305; 0.86'' (2 kpc) for IRAS 12127-1412; 0.84'' (2 kpc) for IRAS 13509+0442; 1.4'' (1.5 kpc) for IRAS 15250+3609; 0.85'' (1 kpc) for Superantennae; 1.2'' (1 kpc) for IRAS 20551-4250; 1.0'' (1.5 kpc) for IRAS 22491-1808"
+   ],
+   "assumptions": [
+    "For transitions where the native beam or major axis is larger than the adopted beam, the bulk of the J=3-2 and J=4-3 flux originates from the nuclear region within the adopted beam"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract nuclear spectra, measure continuum flux densities, and fit Gaussian line profiles to derive line fluxes and ratios",
+   "method": "Extract 1–2 kpc beam spectra and continuum peak fluxes at the continuum peak position; fit single or double Gaussian profiles to molecular emission lines to derive velocity-integrated fluxes and line ratios",
+   "software": [],
+   "key_parameters": [
+    "Single Gaussian fit for all lines except HCN and HCO+ in IRAS 12112+0305 NE (double Gaussian fit)"
+   ],
+   "assumptions": [
+    "Cosmological parameters H_0 = 71 km s^-1 Mpc^-1, Omega_M = 0.27, Omega_Lambda = 0.73"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compare observed HCN-to-HCO+ flux ratios with RADEX non-LTE model grids",
+   "method": "Calculate non-LTE emission line flux ratios using RADEX via pyradex over a grid of H2 density and kinetic temperature and compare in 3D ratio space (J=2-1, J=3-2, J=4-3)",
+   "software": [
+    "RADEX",
+    "pyradex"
+   ],
+   "key_parameters": [
+    "n_H2 = 10^3–10^8 cm^-3, T_kin = 10–1000 K, fiducial N_HCO+ = 1 x 10^16 cm^-2, [HCN]/[HCO+] = 1, 3, and 7"
+   ],
+   "assumptions": [
+    "Static and spherically symmetric homogeneous medium, background temperature = 2.73 K, H2 as only collision partner, HNC excluded"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain H2 gas density and kinetic temperature via least-squares fitting of high-J to low-J line ratios",
+   "method": "Fit four observed high-J to low-J flux ratios (J=3-2/J=2-1 and J=4-3/J=2-1 of HCN and HCO+) with RADEX models using Levenberg-Marquardt algorithm in lmfit, optionally preceded by L-BFGS-B optimization of flux calibration scaling factors",
+   "software": [
+    "RADEX",
+    "pyradex",
+    "lmfit",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Grid of log n_H2 from 2 to 6 and log T_kin from 1 to 3; fiducial N_HCO+ = 1 x 10^16 cm^-2 and [HCN]/[HCO+] = 3; line widths Delta v from Table 3 (200 to 800 km s^-1)"
+   ],
+   "assumptions": [
+    "Absolute flux calibration uncertainty scaling up to 5% for Band 5 and 10% for Bands 6 and 7 (doubled for Cycle 0)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Perform Bayesian MCMC analysis with all model and scaling parameters free for six bright sources",
+   "method": "Simultaneously fit five independent emission line flux ratios using RADEX and MCMC sampling via emcee in lmfit with all parameters free",
+   "software": [
+    "RADEX",
+    "pyradex",
+    "lmfit",
+    "emcee",
+    "corner"
+   ],
+   "key_parameters": [
+    "100 walkers, chain length = 100 * tau steps, burn-in = 5 * tau steps, thinning = 0.5 * tau steps, 19,000 effective samples"
+   ],
+   "assumptions": [
+    "Flat priors with bounds: log(n_H2/cm^-3) in [2, 6], log(T_kin/K) in [1, 3], log(N_HCO+/cm^-2) in [14, 17], [HCN]/[HCO+] in [0.1, 10], J21a scaling in [0.95, 1.05], J32a scaling in [0.9, 1.1], J43a scaling in [0.9, 1.1]"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NGC 1614 HCN/HCO+ J=2-1 flux ratio",
+   "value": "0.56",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1614 (1 kpc) | 0.56$\\pm$0.04 | 0.38$\\pm$0.07 | 0.31$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 HCN/HCO+ J=3-2 flux ratio",
+   "value": "0.38",
+   "uncertainty": "±0.07",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1614 (1 kpc) | 0.56$\\pm$0.04 | 0.38$\\pm$0.07 | 0.31$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 HCN/HCO+ J=4-3 flux ratio",
+   "value": "0.31",
+   "uncertainty": "±0.05",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "NGC 1614 (1 kpc) | 0.56$\\pm$0.04 | 0.38$\\pm$0.07 | 0.31$\\pm$0.05"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 HCN J=4-3 velocity-integrated flux",
+   "value": "8.8",
+   "uncertainty": "±1.8",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IRAS 06035$-$7102 | 2.9$\\pm$0.1 | 5.1$\\pm$0.2 | 8.8$\\pm$1.8 | 3.6$\\pm$0.1 | 6.8$\\pm$0.2 | 10$\\pm$1 | 1.6$\\pm$0.1 | 1.9$\\pm$0.2 | 2.6$\\pm$0.6 | 350"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 HCO+ J=4-3 velocity-integrated flux",
+   "value": "10",
+   "uncertainty": "±1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IRAS 06035$-$7102 | 2.9$\\pm$0.1 | 5.1$\\pm$0.2 | 8.8$\\pm$1.8 | 3.6$\\pm$0.1 | 6.8$\\pm$0.2 | 10$\\pm$1 | 1.6$\\pm$0.1 | 1.9$\\pm$0.2 | 2.6$\\pm$0.6 | 350"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 HNC J=4-3 velocity-integrated flux",
+   "value": "2.6",
+   "uncertainty": "±0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IRAS 06035$-$7102 | 2.9$\\pm$0.1 | 5.1$\\pm$0.2 | 8.8$\\pm$1.8 | 3.6$\\pm$0.1 | 6.8$\\pm$0.2 | 10$\\pm$1 | 1.6$\\pm$0.1 | 1.9$\\pm$0.2 | 2.6$\\pm$0.6 | 350"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 08572+3915 HNC J=4-3 velocity-integrated flux",
+   "value": "3.3",
+   "uncertainty": "±0.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "IRAS 08572$+$3915 | 1.4$\\pm$0.1 | 2.8$\\pm$0.2 | 2.8$\\pm$0.3 | 1.8$\\pm$0.1 | 3.3$\\pm$0.3 | 4.2$\\pm$0.3 | 0.61$\\pm$0.09 | 0.84$\\pm$0.13 | 3.3$\\pm$0.3 | 300"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 nuclear log n_H2 (fiducial LM fit)",
+   "value": "3.4",
+   "uncertainty": "+0.3/-0.5",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "NGC 1614 | 16 | 3 | off | 3.4$^{+0.3}_{-0.5}$ | 2.1$\\pm$0.1 | 1.9 | Figure 4a"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 nuclear log T_kin (fiducial LM fit)",
+   "value": "2.1",
+   "uncertainty": "±0.1",
+   "units": "log(K)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "NGC 1614 | 16 | 3 | off | 3.4$^{+0.3}_{-0.5}$ | 2.1$\\pm$0.1 | 1.9 | Figure 4a"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 nuclear log n_H2 (Bayesian MCMC fit)",
+   "value": "3.3",
+   "uncertainty": "±0.8",
+   "units": "log(cm^-3)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "16 (16.0$^{+0.4}_{-0.5}$) | 1 (3.5$\\pm$0.5) | on (on) | 3.9$^{+0.2}_{-0.3}$ (3.3$\\pm$0.8) | 2.0$\\pm$0.1 (2.0$\\pm$0.2) | 0.39 (1.0) | Figure 4d,7a"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1614 nuclear log T_kin (Bayesian MCMC fit)",
+   "value": "2.0",
+   "uncertainty": "±0.2",
+   "units": "log(K)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "16 (16.0$^{+0.4}_{-0.5}$) | 1 (3.5$\\pm$0.5) | on (on) | 3.9$^{+0.2}_{-0.3}$ (3.3$\\pm$0.8) | 2.0$\\pm$0.1 (2.0$\\pm$0.2) | 0.39 (1.0) | Figure 4d,7a"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 06035-7102 nuclear log n_H2 (LM fit)",
+   "value": "5.3",
+   "uncertainty": "±0.2",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 06035$-$7102 | 16 (16.6$^{+0.3}_{-0.4}$) | 3 (4.7$^{+1.1}_{-1.4}$) | off (on) | 5.3$\\pm$0.2 (5.5$^{+0.3}_{-0.4}$) | 2.7$^{+\\infty}_{-0.3}$ (2.0$^{+0.6}_{-0.3}$) | 1.3 (4.2) | Figure 5a,7b"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 08572+3915 nuclear log n_H2 (LM fit)",
+   "value": "5.1",
+   "uncertainty": "±0.3",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 08572$+$3915 | 16 (16.4$^{+0.4}_{-0.5}$) | 3 (4.9$^{+1.3}_{-1.5}$) | off (on) | 5.1$\\pm$0.3 (5.2$^{+0.4}_{-0.5}$) | 2.7$^{+\\infty}_{-0.5}$ (2.0$^{+0.6}_{-0.4}$) | 1.1 (1.7) | Figure 5b,7c"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 12112+0305 NE nuclear log n_H2 (LM fit)",
+   "value": "4.6",
+   "uncertainty": "+0.5/-0.4",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 12112$+$0305 NE | 16 (15.7$^{+0.8}_{-1.0}$) | 3 (8.7$^{+1.0}_{-1.4}$) | off (on) | 4.6$^{+0.5}_{-0.4}$ (4.6$^{+0.4}_{-0.7}$) | 2.6$^{+\\infty}_{-0.7}$ (2.7$^{+0.2}_{-0.3}$) | 0.30 (2.1) | Figure 5c,7d"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 13509+0442 nuclear log n_H2 (LM fit)",
+   "value": "4.3",
+   "uncertainty": "+1.0/-0.5",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 13509$+$0442 | 16 (15.7$\\pm$0.8) | 3 (6.3$^{+1.9}_{-2.2}$) | off (on) | 4.3$^{+1.0}_{-0.5}$ (4.3$^{+0.9}_{-1.2}$) | 2.1$^{+0.3}_{-0.7}$ (2.1$\\pm$0.6) | 0.17 (1.3) | Figure 5f,7e"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 13509+0442 nuclear log T_kin (LM fit)",
+   "value": "2.1",
+   "uncertainty": "+0.3/-0.7",
+   "units": "log(K)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 13509$+$0442 | 16 (15.7$\\pm$0.8) | 3 (6.3$^{+1.9}_{-2.2}$) | off (on) | 4.3$^{+1.0}_{-0.5}$ (4.3$^{+0.9}_{-1.2}$) | 2.1$^{+0.3}_{-0.7}$ (2.1$\\pm$0.6) | 0.17 (1.3) | Figure 5f,7e"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 15250+3609 nuclear log n_H2 (LM fit)",
+   "value": "4.6",
+   "uncertainty": "±0.2",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 15250$+$3609 | 16 | 3 | on | 4.6$\\pm$0.2 | 2.7$^{+0.3}_{-0.2}$ | 3.4 | Figure 5g"
+    }
+   ]
+  },
+  {
+   "quantity": "Superantennae nuclear log n_H2 (LM fit)",
+   "value": "5.3",
+   "uncertainty": "+0.1/-0.2",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "Superantennae | 16 | 3 | on | 5.3$^{+0.1}_{-0.2}$ | 2.7$^{+0.3}_{-0.1}$ | 6.0 | Figure 5h"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 20551-4250 nuclear log n_H2 (LM fit)",
+   "value": "4.6",
+   "uncertainty": "±0.1",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 20551$-$4250 | 16 (15.4$^{+0.6}_{-0.2}$) | 3 (2.9$\\pm$0.2) | on (on) | 4.6$\\pm$0.1 (4.5$^{+0.3}_{-0.2}$) | 2.7$^{+0.2}_{-0.1}$ (2.8$^{+0.1}_{-0.2}$) | 0.88 (8.3) | Figure 5i,7f"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAS 22491-1808 nuclear log n_H2 (LM fit)",
+   "value": "4.9",
+   "uncertainty": "±0.1",
+   "units": "log(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRAS 22491$-$1808 | 16 | 3 | on | 4.9$\\pm$0.1 | 2.7$^{+0.3}_{-0.1}$ | 10.5 | Figure 5j"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and pipeline version used for calibration, imaging, and imsmooth",
+  "Imaging parameters (tclean/clean task, weighting/robust parameter, deconvolver, masking, image size) for both the newly reported Cycle 5 observations and the reanalyzed IRAS 22491-1808 Cycle 0 data",
+  "Molecular data file versions (e.g., LAMDA collision rate files) used in RADEX / pyradex"
+ ],
+ "missing_for_reproduction": [
+  "Scripts used for lmfit / pyradex / emcee fitting and grid evaluation",
+  "Exact imaging parameters (robust weighting, cell sizes, cleaning thresholds) for the newly published Cycle 5 cubes and reanalyzed Cycle 0 cube"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All measured line fluxes, line widths, continuum frequencies, beam sizes, and RADEX/MCMC priors and settings are tabulated in full detail; only the raw-to-cube imaging parameters are deferred to earlier papers.",
+ "rediscovery_reason": "All six ALMA project codes are public in the archive, the complete intermediate tables of integrated fluxes and ratios are provided, and the RADEX/lmfit/emcee modeling recipe is fully specified with explicit parameter bounds and convergence criteria.",
+ "source_card": "cards/2023ApJ...950...75I/sonnet/card.md"
+}

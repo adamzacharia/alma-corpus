@@ -1,0 +1,870 @@
+{
+ "bibcode": "2021MNRAS.501.2934C",
+ "title": "The Ophiuchus DIsc Survey Employing ALMA (ODISEA) - III. The evolution of substructures in massive discs at 3-5 au resolution",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3787",
+ "arxiv_id": "2012.00189",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "exoplanets"
+ ],
+ "question": "What are the incidence, properties, and evolutionary sequence of substructures in the brightest massive protoplanetary discs in the Ophiuchus star-forming region at 3-5 au resolution?",
+ "alma_project_codes": [
+  "2018.1.00028.S",
+  "2016.1.00545.S",
+  "2017.1.00007.S",
+  "2016.1.001042.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm / 230 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "20 x 21 mas to 38 x 58 mas (0.02'' x 0.02'' to 0.04'' x 0.06'')",
+  "sensitivity": "1.7e-2 to 3.2e-2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.3 mm low-resolution fluxes for sample targets",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "(10): fluxes from Cieza et al. (2019)."
+     }
+    ]
+   },
+   "citation": "Cieza et al. (2019) (cite: cieza2019)"
+  },
+  {
+   "what": {
+    "value": "IR spectral slopes alpha_IR",
+    "evidence": [
+     {
+      "loc": "Spectral Energy Distributions",
+      "quote": "The $\\alpha_{IR}$ values taken from (cite: evans2009) and the SED classifications (as discussed above) are also listed in Table [\\[t:sample\\]](#t:sample)."
+     }
+    ]
+   },
+   "citation": "(cite: evans2009)"
+  },
+  {
+   "what": {
+    "value": "High-resolution ALMA data and stellar properties for 5 Ophiuchus DSHARP targets",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "Five of them (SR4, Elias 2-20, DoAr 25 and Elias 2-27 and Elias 2-24) are part of the DSHARP ALMA Cycle-4 program (cite: Andrews2018) and were already observed at $\\sim$5 au resolution."
+     },
+     {
+      "loc": "Stellar properties",
+      "quote": "For these DSHARP objects, we adopt the stellar properties (measured and derived) listed by (cite: Andrews2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2018)"
+  },
+  {
+   "what": {
+    "value": "Effective temperatures and luminosities for the 3 most embedded sources (ISO-Oph 54, WLY 2-63, ISO-Oph 37)",
+    "evidence": [
+     {
+      "loc": "Stellar properties",
+      "quote": "The 3 most embedded sources in the sample (ISO-Oph 54, WLY 2-63, and ISO-Oph 37) do not have optical spectral types in the literature, but we adopt the effective temperatures and luminosities derived by (cite: doppmann2005)"
+     }
+    ]
+   },
+   "citation": "(cite: doppmann2005)"
+  },
+  {
+   "what": {
+    "value": "Spectral types and accretion rates for Class II targets",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "(4): Reference for spectral types and accretion rates: 1 = (cite: ricci2010); 2 = (cite: Andrews2018) 3 = (cite: manara2014); 4 Ruiz-Rodriguez et al., in prep; 5 = (cite: gatti2006); 6 = (cite: natta2006); 7 = (cite: cieza2012)."
+     }
+    ]
+   },
+   "citation": "(cite: ricci2010; Andrews2018; manara2014; gatti2006; natta2006; cieza2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive stellar properties and classify SEDs",
+   "method": "Classify YSOs using 2-20 um IR slope alpha_IR and mid-IR morphology; fit extinction A_V and luminosity using J-band bolometric corrections and BT-Settl model photospheres; infer stellar masses and ages from BT-Settl evolutionary tracks (or statistical durations for embedded sources).",
+   "software": [],
+   "key_parameters": [
+    "Class I: alpha_IR > +0.3; FS: +0.3 > alpha_IR > -0.3; Class II: -0.3 > alpha_IR > -1.6; Class III: -1.6 > alpha_IR; TD/PTD threshold: [3.6]-[4.5] = 0.25"
+   ],
+   "assumptions": [
+    "Temperature scale from Pecaut & Mamajek (2013); extinction law from Fitzpatrick (1999) with NIR corrections by Indebetouw et al. (2005); statistical ages <= 0.5 Myr for Class I and <= 1 Myr for Flat Spectrum sources"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit disc geometry, measure disc radii R_90%, and calculate dust masses",
+   "method": "Find disc center (Ra_disc, Dec_disc) by minimizing the imaginary part of continuum visibilities; fix center and calculate PA and inclination by minimizing dispersion of deprojected visibilities in circular annuli; measure 90% flux radius R_90% in concentric ellipses; compute dust mass from 1.3 mm flux.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust opacity kappa_1.3mm = 2.3 cm^2 g^-1, dust temperature = 20 K, distance = 140 pc for targets without Gaia parallax, and low-resolution 1.3 mm fluxes used for total dust mass"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract deprojected radial brightness profiles and characterize substructures",
+   "method": "Deproject CLEAN images to 0 deg inclination using fitted centers, PA, and inclinations; azimuthally average into radial brightness profiles; identify local minima (gaps), local maxima (rings), inner cavities (R_Cav, R_Cav.10%, 50%, 90%), central beam inner disc fluxes/masses, small cavities, and inflection points.",
+   "software": [],
+   "key_parameters": [
+    "Azimuthal angles restricted to within 20 deg of the semi-major axis for highly inclined systems (ISO-Oph 37 and WSB 82); combined 0.03'' + 0.2'' image used beyond 1.0'' for WSB 82"
+   ],
+   "assumptions": [
+    "All features in a given disc share the same center, position angle, and inclination; inner disc dust mass uses T = 20 K and kappa_1.3mm = 2.3 cm^2 g^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Reconstruct sub-beam radial profiles from visibilities using Frankenstein",
+   "method": "Fit deprojected continuum visibilities directly using the non-parametric Gaussian process code Frankenstein (frank) to recover axisymmetric brightness profiles at sub-beam resolution and compare with CLEAN profiles.",
+   "software": [
+    "Frankenstein (frank)"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Azimuthal symmetry of the disc continuum emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare large-cavity disc profiles with planet-disc interaction and dust evolution simulations",
+   "method": "Qualitatively compare observed 1.3 mm radial profiles of transition discs (WSB 82, DoAr 44, EM* SR 24S, RXJ1633.9-2442) with millimeter-sized dust surface density distributions at 0.5 and 5 Myr from numerical dust evolution models containing a giant planet.",
+   "software": [],
+   "key_parameters": [
+    "1 M_JUP planet at 70 au, alpha = 10^-3, fragmentation velocity threshold = 10 m s^-1, particle sizes 0.1-10 mm, evolution times 0.5 and 5 Myr"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total number of narrow rings and gaps identified in ODISEA long-baseline sample",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We identify a total of 26 narrow rings and gaps distributed in 8 sources and 3 discs with small dust cavities (r $<$10 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 54 total 1.3 mm flux (long-baseline)",
+   "value": "61",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ISO-Oph 54 | 2.9x10$^{-2}$ | 38 $\\times$ 58 | 5.3 $\\times$ 8.1 | 0.6 | 1.0 | 61"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 54 disc inclination",
+   "value": "32.5",
+   "uncertainty": "0.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 54 | 246.6686071 | -24.45417917 | 32.5$\\pm$0.4 | 160$\\pm$2.5 | 119 | 56"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 54 R_90% disc radius",
+   "value": "119",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 54 | 246.6686071 | -24.45417917 | 32.5$\\pm$0.4 | 160$\\pm$2.5 | 119 | 56"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 54 dust mass",
+   "value": "56",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 54 | 246.6686071 | -24.45417917 | 32.5$\\pm$0.4 | 160$\\pm$2.5 | 119 | 56"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 54 small inner dust cavity radius R_Cav",
+   "value": "2.5",
+   "uncertainty": "2.5",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "ISO-Oph 54 | 2.5 $\\pm$ 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "WLY 2-63 total 1.3 mm flux (long-baseline)",
+   "value": "288",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "WLY 2-63 | 1.8x10$^{-2}$ | 21 $\\times$ 22 | 2.9 $\\times$ 3.1 | 0.4 | 4.1 | 288"
+    }
+   ]
+  },
+  {
+   "quantity": "WLY 2-63 disc inclination",
+   "value": "46.2",
+   "uncertainty": "1.2",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WLY 2-63 | 247.8985657 | -24.02500088 | 46.2$\\pm$1.2 | 149$\\pm$5.0 | 67 | 194"
+    }
+   ]
+  },
+  {
+   "quantity": "WLY 2-63 R_90% disc radius",
+   "value": "67",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WLY 2-63 | 247.8985657 | -24.02500088 | 46.2$\\pm$1.2 | 149$\\pm$5.0 | 67 | 194"
+    }
+   ]
+  },
+  {
+   "quantity": "WLY 2-63 dust mass",
+   "value": "194",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WLY 2-63 | 247.8985657 | -24.02500088 | 46.2$\\pm$1.2 | 149$\\pm$5.0 | 67 | 194"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 37 total 1.3 mm flux (long-baseline)",
+   "value": "116",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ISO-Oph 37 | 2.9x10$^{-2}$ | 24 $\\times$ 27 | 3.4 $\\times$ 3.8 | 0.5 | 4.4 | 116"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 37 disc inclination",
+   "value": "72.4",
+   "uncertainty": "0.2",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 37 | 246.5982233 | -24.41112958 | 72.4$\\pm$0.2 | 49$\\pm$0.6 | 91 | 81"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 37 R_90% disc radius",
+   "value": "91",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 37 | 246.5982233 | -24.41112958 | 72.4$\\pm$0.2 | 49$\\pm$0.6 | 91 | 81"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 37 dust mass",
+   "value": "81",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 37 | 246.5982233 | -24.41112958 | 72.4$\\pm$0.2 | 49$\\pm$0.6 | 91 | 81"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 17 total 1.3 mm flux (long-baseline)",
+   "value": "164",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ISO-Oph 17 | 2.7x10$^{-2}$ | 23 $\\times$ 25 | 3.2 $\\times$ 3.5 | 0.3 | 3.4 | 164"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 17 disc inclination",
+   "value": "42.4",
+   "uncertainty": "0.7",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 17 | 246.5430326 | -24.34870389 | 42.4$\\pm$0.7 | 131$\\pm$0.7 | 63 | 100"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 17 R_90% disc radius",
+   "value": "63",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 17 | 246.5430326 | -24.34870389 | 42.4$\\pm$0.7 | 131$\\pm$0.7 | 63 | 100"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 17 dust mass",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 17 | 246.5430326 | -24.34870389 | 42.4$\\pm$0.7 | 131$\\pm$0.7 | 63 | 100"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 total 1.3 mm flux (long-baseline)",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "DoAr 44 | 2.6x10$^{-2}$ | 25 $\\times$ 34 | 3.6 $\\times$ 5.0 | 0.6 | 0.4 | 60"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 disc inclination",
+   "value": "21.8",
+   "uncertainty": "0.9",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "DoAr 44 | 247.8893970 | -24.46045289 | 21.8$\\pm$0.9 | 60$\\pm$2.7 | 60 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 R_90% disc radius",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "DoAr 44 | 247.8893970 | -24.46045289 | 21.8$\\pm$0.9 | 60$\\pm$2.7 | 60 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 dust mass",
+   "value": "54",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "DoAr 44 | 247.8893970 | -24.46045289 | 21.8$\\pm$0.9 | 60$\\pm$2.7 | 60 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 cavity radius R_Cav",
+   "value": "47",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "DoAr44 | 26 $\\pm$ 2 | 41 $\\pm$2 | 45 $\\pm$2 | 47 $\\pm$ 2 | 6$\\times$ 10$^{-2}$ | 4$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "DoAr 44 inner disc dust mass M_dust,CB",
+   "value": "4e-2",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "DoAr44 | 26 $\\pm$ 2 | 41 $\\pm$2 | 45 $\\pm$2 | 47 $\\pm$ 2 | 6$\\times$ 10$^{-2}$ | 4$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 total 1.3 mm flux (combined)",
+   "value": "171",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "WSB 82 | 2.7x10$^{-2}$ | 24 $\\times$ 31 | 3.7 $\\times$ 4.8 | 0.4 | 0.6 | 171"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 disc inclination",
+   "value": "61.2",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WSB 82 | 249.9393110 | -24.03453309 | 61.2$\\pm$0.5 | 173$\\pm$1.0 | 256 | 136"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 R_90% disc radius",
+   "value": "256",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WSB 82 | 249.9393110 | -24.03453309 | 61.2$\\pm$0.5 | 173$\\pm$1.0 | 256 | 136"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 dust mass",
+   "value": "136",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "WSB 82 | 249.9393110 | -24.03453309 | 61.2$\\pm$0.5 | 173$\\pm$1.0 | 256 | 136"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 cavity radius R_Cav",
+   "value": "50",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "WSB 82 | 33 $\\pm$ 2 | 41 $\\pm$2 | 47 $\\pm$ 2 | 50 $\\pm$ 2 | 2$\\times$ 10$^{-1}$ | 1$\\times$ 10$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "WSB 82 inner disc dust mass M_dust,CB",
+   "value": "1e-1",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "WSB 82 | 33 $\\pm$ 2 | 41 $\\pm$2 | 47 $\\pm$ 2 | 50 $\\pm$ 2 | 2$\\times$ 10$^{-1}$ | 1$\\times$ 10$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2 total 1.3 mm flux (long-baseline)",
+   "value": "63",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ISO-Oph 2 | 1.7x10$^{-2}$ | 21 $\\times$ 30 | 3.0 $\\times$ 4.3 | 0.3 | 0.2 | 63"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2A disc inclination",
+   "value": "37.6",
+   "uncertainty": "0.8",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 2A | 246.4088324 | -24.37685830 | 37.6$\\pm$0.8 | 0.4$\\pm$1.4 | 72 | 44"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2A R_90% disc radius",
+   "value": "72",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 2A | 246.4088324 | -24.37685830 | 37.6$\\pm$0.8 | 0.4$\\pm$1.4 | 72 | 44"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2A dust mass",
+   "value": "44",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 2A | 246.4088324 | -24.37685830 | 37.6$\\pm$0.8 | 0.4$\\pm$1.4 | 72 | 44"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2A cavity radius R_Cav",
+   "value": "49",
+   "uncertainty": "4",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "ISO-Oph 2A | 45 $\\pm$3 | 46 $\\pm$3 | 48 $\\pm$4 | 49 $\\pm$ 4 | $<$ 2$\\times$ 10$^{-2}$ | $<$ 1$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 2B small inner dust cavity radius R_Cav",
+   "value": "2.2",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "ISO-Oph 2B | 2.2 $\\pm$ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 196 total 1.3 mm flux (long-baseline)",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ISO-Oph 196 | 3.2x10$^{-2}$ | 22 $\\times$ 45 | 3.0 $\\times$ 6.2 | 0.5 | 1.9 | 90"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 196 disc inclination",
+   "value": "22.3",
+   "uncertainty": "1.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 196 | 247.0687631 | -24.61626712 | 22.3$\\pm$1.4 | 132$\\pm$7.1 | 69 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 196 R_90% disc radius",
+   "value": "69",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 196 | 247.0687631 | -24.61626712 | 22.3$\\pm$1.4 | 132$\\pm$7.1 | 69 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 196 dust mass",
+   "value": "54",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ISO-Oph 196 | 247.0687631 | -24.61626712 | 22.3$\\pm$1.4 | 132$\\pm$7.1 | 69 | 54"
+    }
+   ]
+  },
+  {
+   "quantity": "ISO-Oph 196 small inner dust cavity radius R_Cav",
+   "value": "8.5",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "ISO-Oph 196 | 8.5 $\\pm$ 2"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S total 1.3 mm flux (long-baseline)",
+   "value": "182",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "EM\\* SR24S | 2.7x10$^{-2}$ | 33 $\\times$ 37 | 3.8 $\\times$ 4.3 | 0.6 | 1.3 | 182"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S disc inclination",
+   "value": "47.3",
+   "uncertainty": "3.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "EM\\* SR 24S | 246.7437652 | -24.76022836 | 47.3$\\pm$3.1 | 28$\\pm$1.2 | 58 | 70"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S R_90% disc radius",
+   "value": "58",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "EM\\* SR 24S | 246.7437652 | -24.76022836 | 47.3$\\pm$3.1 | 28$\\pm$1.2 | 58 | 70"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S dust mass",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "EM\\* SR 24S | 246.7437652 | -24.76022836 | 47.3$\\pm$3.1 | 28$\\pm$1.2 | 58 | 70"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S cavity radius R_Cav",
+   "value": "30",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "EM\\* SR24S | 18 $\\pm$2 | 24 $\\pm$2 | 27 $\\pm$ 2 | 30 $\\pm$ 2 | 2$\\times$ 10$^{-1}$ | 8$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "EM* SR 24S inner disc dust mass M_dust,CB",
+   "value": "8e-2",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "EM\\* SR24S | 18 $\\pm$2 | 24 $\\pm$2 | 27 $\\pm$ 2 | 30 $\\pm$ 2 | 2$\\times$ 10$^{-1}$ | 8$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "RX J1633.9-2442 total 1.3 mm flux (long-baseline)",
+   "value": "71",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "RXJ1633.9-2442 | 2.1x10$^{-2}$ | 20 $\\times$ 21 | 2.8 $\\times$ 3.0 | 0.4 | 0.4 | 71"
+    }
+   ]
+  },
+  {
+   "quantity": "RX J1633.9-2442 disc inclination",
+   "value": "47.9",
+   "uncertainty": "1.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RX J1633.9-2442 | 248.4817004 | -24.70151736 | 47.9$\\pm$1.1 | 77$\\pm$1.4 | 53 | 47"
+    }
+   ]
+  },
+  {
+   "quantity": "RX J1633.9-2442 R_90% disc radius",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RX J1633.9-2442 | 248.4817004 | -24.70151736 | 47.9$\\pm$1.1 | 77$\\pm$1.4 | 53 | 47"
+    }
+   ]
+  },
+  {
+   "quantity": "RX J1633.9-2442 dust mass",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "RX J1633.9-2442 | 248.4817004 | -24.70151736 | 47.9$\\pm$1.1 | 77$\\pm$1.4 | 53 | 47"
+    }
+   ]
+  },
+  {
+   "quantity": "RX J1633.9-2442 cavity radius R_Cav",
+   "value": "36",
+   "uncertainty": "1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "RXJ1633.9-2442 | 16 $\\pm$ 1 | 24 $\\pm$1 | 27 $\\pm$ 1 | 36 $\\pm$ 1 | $<$ 4$\\times$ 10$^{-2}$ | $<$ 2$\\times$ 10$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of embedded (Class I/FS) sources showing deep gaps and bright rings",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Towards an evolutionary sequence of substructures in massive discs",
+     "quote": "We find that only 33$\\%$ (1/3) of the embedded (Class I/FS) sources show deep gaps and bright rings (i.e, ISO-Oph 54), while 100$\\%$ (12/12) of the Class II objects present such features."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Class II sources in Ophiuchus long-baseline sample showing deep gaps and bright rings",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Towards an evolutionary sequence of substructures in massive discs",
+     "quote": "We find that only 33$\\%$ (1/3) of the embedded (Class I/FS) sources show deep gaps and bright rings (i.e, ISO-Oph 54), while 100$\\%$ (12/12) of the Class II objects present such features."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Solution intervals (solint) and SNR thresholds for the two iterations of phase-only self-calibration",
+  "Deconvolver algorithm (e.g., hogbom vs. multiscale), cell size, image size, and stopping threshold/niter in TCLEAN",
+  "How channels were flagged around the 12CO J=2-1 line if the fourth spectral window was included in the continuum imaging",
+  "Relative dataset weighting and flux scale alignment when combining Cycle-6 long-baseline data with Cycle-4 0.2'' data for WSB 82",
+  "Hyperparameters (such as alpha and w_smooth) used in the Frankenstein (frank) visibility fits"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals (solint) and SNR cutoffs for each of the two phase-only iterations",
+  "TCLEAN cell size, image size, deconvolver, and stopping criteria, plus the manual CLEAN masks",
+  "Exact uv-range or Fourier annulus definitions used when fitting disc centers, inclinations, and position angles",
+  "Frankenstein configuration parameters (e.g., alpha, w_smooth, R_max, N)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Raw data and project codes are public, CASA and pipeline versions are explicitly stated, and visibility/profile analysis recipes and equations are clearly described and tabulated; minor deductions for missing self-calibration solints, TCLEAN cell/mask parameters, and frank hyperparameters.",
+ "rediscovery_reason": "All ALMA data are public under 2018.1.00028.S and 2016.1.00545.S, the imaging and radial profile analysis steps are straightforward to replicate, and the paper provides extensive numeric tables of disc geometry, fluxes, dust masses, and substructure locations/depths/widths.",
+ "source_card": "cards/2021MNRAS.501.2934C/sonnet/card.md"
+}

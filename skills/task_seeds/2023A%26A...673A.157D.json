@@ -1,0 +1,584 @@
+{
+ "bibcode": "2023A&A...673A.157D",
+ "title": "A comprehensive view of the interstellar medium in a quasar host galaxy at z ≈ 6.4",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245674",
+ "arxiv_id": "2302.04312",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Characterize the global physical properties, gas phases (ionized, neutral, molecular), excitation mechanisms, and mass budget of the star-forming interstellar medium in the quasar host galaxy PSO J183.1124+05.0926 at z=6.4386.",
+ "alma_project_codes": [
+  "2015.1.01115.S",
+  "2016.1.00226.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7, Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "0.8'' x 0.7'' to 4.0'' x 3.3''",
+  "sensitivity": "257 to 503 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Deconvolved dust sizes (0.45'' x 0.35'') and spatial extent of PJ183+05 at rest-frame 88 um",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "Two-dimensional channel-by-channel fits of the quasar emission at 88 $\\mu$m in the rest-frame revealed that the emission is spatially unresolved or only marginally resolved at $>0.7''$ resolution (cite: venemans20)."
+     },
+     {
+      "loc": "Dust continuum modeling",
+      "quote": "For the angular size, $\\Omega_{\\rm s}$, we adopt a Gaussian distribution around the spatial extent reported in (cite: venemans20) (deconvolved dust sizes: $0.45''\\times0.35'' \\approx 2.4\\times 1.9$ kpc$^2$)."
+     }
+    ]
+   },
+   "citation": "(cite: venemans20)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity law values at nu_0 > 1500 GHz",
+    "evidence": [
+     {
+      "loc": "Dust continuum modeling",
+      "quote": "$\\kappa(\\nu_0)$ is the dust emissivity law, for which we adopt an interpolation of the values reported in Table 5 of (cite: draine03) at $\\nu_0>1500$ GHz"
+     }
+    ]
+   },
+   "citation": "Table 5 of (cite: draine03)"
+  },
+  {
+   "what": {
+    "value": "Collision strengths Omega(l,u)",
+    "evidence": [
+     {
+      "loc": "Analytical prescriptions from first principles",
+      "quote": "and $\\Omega(l,u)$ are the collision strengths, which we take from Appendix F of (cite: draine11)."
+     }
+    ]
+   },
+   "citation": "Appendix F of (cite: draine11)"
+  },
+  {
+   "what": {
+    "value": "Empirical relation between [N II]205um/[C II]158um and dust color C(60/100)",
+    "evidence": [
+     {
+      "loc": "Inferred [N ii]205 um and the origin of [C ii]",
+      "quote": "We estimate the luminosity of the \\[N ii\\]$_{\\rm 205\\,\\mu m}$ line following the empirical trend presented in (cite: lu15) for a sample of local luminous IR galaxies:"
+     }
+    ]
+   },
+   "citation": "(cite: lu15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract single-pixel spectra and fit emission lines and continuum",
+   "method": "Single-pixel spectral extraction at the quasar position, followed by MCMC fitting of a flat continuum plus a fixed-width Gaussian profile for each targeted line.",
+   "software": [
+    "custom Monte Carlo Markov Chain tool"
+   ],
+   "key_parameters": [
+    "Fixed Gaussian FWHM = 375 km/s",
+    "3-sigma detection threshold and upper limits"
+   ],
+   "assumptions": [
+    "All lines have the same Gaussian width of 375 km/s as [C II]"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model the dust continuum SED and derive dust properties, IR luminosity, and optical depth",
+   "method": "Fit a modified black body observed against the CMB and corrected for radiative transfer (optical depth) using MCMC, then integrate over 8-1000 um for L_IR.",
+   "software": [
+    "Monte Carlo Markov Chain"
+   ],
+   "key_parameters": [
+    "T_CMB = 20.27 K at z=6.4386",
+    "Four free parameters: T_dust, Omega_s, M_dust, beta"
+   ],
+   "assumptions": [
+    "Single dust temperature T_dust",
+    "Dust emissivity law from Draine (2003) at nu_0 > 1500 GHz and power-law extrapolation kappa(nu_0) = 6.37 (nu_0/1500 GHz)^beta cm^2 g^-1 at lower frequencies"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model emission lines using analytical first-principles prescriptions and Cloudy simulations",
+   "method": "Solve linear statistical equilibrium equations for level populations in ionized gas and run Cloudy photoionization, PDR, and XDR slab models across grids of density, metallicity, and radiation fields.",
+   "software": [
+    "Cloudy"
+   ],
+   "key_parameters": [
+    "Ionized grid: fixed log U = -2, log n [cm^-3] = [0, +3] (step 0.25 dex), log Z [Z_sun] = [-1, +0.4] (step 0.2 dex), turbulence RMS = 100 km/s, stopping at x_HI = 0.05",
+    "PDR/XDR grid: log n [cm^-3] = [2, 6] (0.29 dex spacing), log G_0 = [1, 6] (0.29 dex spacing) or log F_X = [-2.0, 2.0] (0.24 dex spacing), log N_H [cm^-2] = [22, 24] (1 dex spacing)"
+   ],
+   "assumptions": [
+    "Constant density throughout each cloud; three distinct components (ionized, neutral, molecular)",
+    "Abundance scaling from Nicholls et al. (2017)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Infer [N II] 205 um luminosity, PDR fraction of [C II], electron density, H II volume, and radiation field hardness",
+   "method": "Estimate [N II] 205 um from dust color C(60/100) via Lu et al. (2015), compare with [C II] and [N II] 122 um to derive f([C II]^PDR), electron density n, H II region volume, and compare [O III]/[N II] with Cloudy grids for radiation hardness.",
+   "software": [
+    "Cloudy"
+   ],
+   "key_parameters": [
+    "C(60/100) = 0.84"
+   ],
+   "assumptions": [
+    "No dust opacity correction applied to fiducial line luminosities; solar metallicity Z = Z_sun and T_gas = 10,000 K for H II volume"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate ionized and molecular gas masses and star formation rates from multiple tracers",
+   "method": "Calculate ionized and molecular gas masses from level populations, dust mass, CO(7-6), [C I], and [C II]^PDR, and compute SFR from [O III], [C II], and IR luminosity using empirical scaling relations.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gas-to-dust ratio delta_g/d = 100, alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1, CO line ratio r_71 = 0.38 (for mass) or 0.20 (inferred from dust), T_ex = T_gas, Z = Z_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[O III] 88 um line flux",
+   "value": "1.79",
+   "uncertainty": "0.12",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{88\\,\\mu{\\rm m}}$         | 3393.01 | $6.4396\\pm0.0002$ | $1.79\\pm0.12$          | $33.3\\pm2.3$         | $0.22$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] 88 um line luminosity",
+   "value": "33.3",
+   "uncertainty": "2.3",
+   "units": "10^8 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{88\\,\\mu{\\rm m}}$         | 3393.01 | $6.4396\\pm0.0002$ | $1.79\\pm0.12$          | $33.3\\pm2.3$         | $0.22$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[N II] 122 um line flux",
+   "value": "0.87",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{122\\,\\mu{\\rm m}}$        | 2459.38 | $6.4373\\pm0.0002$ | $0.87\\pm0.08$          | $11.8\\pm1.1$         | $0.45$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[N II] 122 um line luminosity",
+   "value": "11.8",
+   "uncertainty": "1.1",
+   "units": "10^8 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{122\\,\\mu{\\rm m}}$        | 2459.38 | $6.4373\\pm0.0002$ | $0.87\\pm0.08$          | $11.8\\pm1.1$         | $0.45$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 158 um line flux",
+   "value": "5.00",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{158\\,\\mu{\\rm m}}$        | 1900.55 | $6.4386\\pm0.0001$ | $5.00\\pm0.09$          | $52.2\\pm0.9$         | $0.63$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 158 um line luminosity",
+   "value": "52.2",
+   "uncertainty": "0.9",
+   "units": "10^8 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $_{158\\,\\mu{\\rm m}}$        | 1900.55 | $6.4386\\pm0.0001$ | $5.00\\pm0.09$          | $52.2\\pm0.9$         | $0.63$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] 370 um line flux",
+   "value": "0.33",
+   "uncertainty": "0.11",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| \\[C i\\]$_{370\\,\\mu{\\rm m}}$ | 809.34  | $6.4391\\pm0.0005$ | $0.33\\pm0.11$          | $1.5\\pm0.5$          | $0.92$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "[C I] 370 um line luminosity",
+   "value": "1.5",
+   "uncertainty": "0.5",
+   "units": "10^8 L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| \\[C i\\]$_{370\\,\\mu{\\rm m}}$ | 809.34  | $6.4391\\pm0.0005$ | $0.33\\pm0.11$          | $1.5\\pm0.5$          | $0.92$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) line flux",
+   "value": "0.82",
+   "uncertainty": "0.09",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| CO(7–6)                     | 806.65  | $6.4391\\pm0.0005$ | $0.82\\pm0.09$          | $3.6\\pm0.4$          | $0.92$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) line luminosity L'",
+   "value": "2.16e11",
+   "uncertainty": "0.24e11",
+   "units": "K km s^-1 pc^2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "PDR or XDR?",
+     "quote": "Compared to the observed CO(7-6) luminosity, $L'_{\\rm CO(7-6)}=(2.16\\pm0.24)\\times 10^{11}$ K km s$^{-1}$ pc$^2$, this implies a line ratio $r_{71}=L'_{\\rm CO(7-6)}/L'_{\\rm CO(1-0)}$ = 0.20."
+    }
+   ]
+  },
+  {
+   "quantity": "OH 163.1 um line flux",
+   "value": "0.63",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| OH$_{163.1\\,\\mu{\\rm m}}$    | 1837.82 | $6.4389\\pm0.0001$ | $0.63\\pm0.07$          | $6.3\\pm0.7$          | $0.65$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "OH 163.4 um line flux",
+   "value": "0.65",
+   "uncertainty": "0.07",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| OH$_{163.4\\,\\mu{\\rm m}}$    | 1834.75 | $6.4389\\pm0.0001$ | $0.65\\pm0.07$          | $6.5\\pm0.8$          | $0.65$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O 3(3,1)-3(2,2) line flux",
+   "value": "0.29",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_2$O 3(3,1)–3(2,2)        | 2365.90 | $6.4376\\pm0.0003$ | $0.29\\pm0.08$          | $3.7\\pm1.0$          | $0.48$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O 3(0,3)-2(1,2) line flux",
+   "value": "0.32",
+   "uncertainty": "+0.04/-0.08",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| H$_2$O 3(0,3)–2(1,2)        | 1716.77 | $6.4380\\pm0.0004$ | $0.32_{-0.08}^{+0.04}$ | $3.0\\pm0.7$          | $0.69$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature T_dust",
+   "value": "47.0",
+   "uncertainty": "+1.5/-2.0",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find $T_{\\rm dust}=47.0_{-2.0}^{+1.5}$ K, $\\Omega_{\\rm s}=0.155_{-0.022}^{+0.029}$ arcsec$^2$ ($\\approx 4.67_{-0.66}^{+0.87}$ kpc$^2$), log $M_{\\rm dust}$/M$_\\odot$ = $8.94_{-0.05}^{+0.06}$, and $\\beta=1.84_{-0.16}^{0.15}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emitting region solid angle Omega_s",
+   "value": "0.155",
+   "uncertainty": "+0.029/-0.022",
+   "units": "arcsec^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find $T_{\\rm dust}=47.0_{-2.0}^{+1.5}$ K, $\\Omega_{\\rm s}=0.155_{-0.022}^{+0.029}$ arcsec$^2$ ($\\approx 4.67_{-0.66}^{+0.87}$ kpc$^2$), log $M_{\\rm dust}$/M$_\\odot$ = $8.94_{-0.05}^{+0.06}$, and $\\beta=1.84_{-0.16}^{0.15}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass log(M_dust/M_sun)",
+   "value": "8.94",
+   "uncertainty": "+0.06/-0.05",
+   "units": "dex (M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find $T_{\\rm dust}=47.0_{-2.0}^{+1.5}$ K, $\\Omega_{\\rm s}=0.155_{-0.022}^{+0.029}$ arcsec$^2$ ($\\approx 4.67_{-0.66}^{+0.87}$ kpc$^2$), log $M_{\\rm dust}$/M$_\\odot$ = $8.94_{-0.05}^{+0.06}$, and $\\beta=1.84_{-0.16}^{0.15}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index beta",
+   "value": "1.84",
+   "uncertainty": "+0.15/-0.16",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find $T_{\\rm dust}=47.0_{-2.0}^{+1.5}$ K, $\\Omega_{\\rm s}=0.155_{-0.022}^{+0.029}$ arcsec$^2$ ($\\approx 4.67_{-0.66}^{+0.87}$ kpc$^2$), log $M_{\\rm dust}$/M$_\\odot$ = $8.94_{-0.05}^{+0.06}$, and $\\beta=1.84_{-0.16}^{0.15}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth at [C II] frequency tau_1900GHz",
+   "value": "0.48",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find an optical depth at the frequency of \\[C ii\\] of $\\tau_{\\rm 1900\\,GHz}=0.48\\pm0.04$, and an IR luminosity of $\\log L_{\\rm IR}$ \\[L$_\\odot$\\]=$12.98_{-0.03}^{+0.04}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total IR luminosity log(L_IR/L_sun)",
+   "value": "12.98",
+   "uncertainty": "+0.04/-0.03",
+   "units": "dex (L_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum modeling",
+     "quote": "We find an optical depth at the frequency of \\[C ii\\] of $\\tau_{\\rm 1900\\,GHz}=0.48\\pm0.04$, and an IR luminosity of $\\log L_{\\rm IR}$ \\[L$_\\odot$\\]=$12.98_{-0.03}^{+0.04}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred [N II] 205 um luminosity log(L_[NII]/L_sun)",
+   "value": "8.51",
+   "uncertainty": "0.23",
+   "units": "dex (L_sun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Inferred [N ii]205 um and the origin of [C ii]",
+     "quote": "In the case of PJ183+05, $C(60/100)=0.84$, yielding $\\log L_{\\rm [NII]}$ \\[L$_\\odot$\\]$\\approx 8.51\\pm0.23$, where the uncertainty is dominated by the scatter in the relation from (cite: lu15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of [C II] from PDR f([CII]^PDR)",
+   "value": "0.44",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Inferred [N ii]205 um and the origin of [C ii]",
+     "quote": "f({\\rm [CII]^{PDR}}) = \\frac{\\rm [CII]^{PDR}}{\\rm [CII]}\\approx 1-9\\, \\frac{\\rm [NII]}{\\rm [CII]} \\approx 0.44"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized gas electron density log(n)",
+   "value": "2.26",
+   "uncertainty": "0.35",
+   "units": "dex (cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Electron density and size of the Hii regions",
+     "quote": "Using the measured \\[N ii\\]$_{122\\,\\mu{\\rm m}}$ luminosity from Tab. \\[\\[tab_lines\\]\\](#tab_lines), and the inferred \\[N ii\\]$_{205\\,\\mu{\\rm m}}$ from the previous section, we find a ratio of $\\log$\\[N ii\\]$_{122\\,\\mu{\\rm m}}$/\\[N ii\\]$_{205\\,\\mu{\\rm m}}$=$0.56_{-0.16}^{+0.23}$, corresponding to a gas density of $\\log n$ \\[cm$^{-3}$\\] $=2.26\\pm 0.35$."
+    }
+   ]
+  },
+  {
+   "quantity": "Effective volume of ionized gas V_HII^eff",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "kpc^3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Electron density and size of the Hii regions",
+     "quote": "For $T_{\\rm gas}=10,000$ K, $n$=180 cm$^{-3}$, and Z=Z$_\\odot$, using eq. \\[\\[eq_Lc_model\\]\\](#eq_Lc_model) in the case of the \\[N ii\\]$_{122\\,\\mu{\\rm m}}$ transition, we obtain an effective volume of the ionized gas, $V_{\\rm HII}^{\\rm eff}\\sim 0.2$ kpc$^3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Line ratio log([C II]/[C I])",
+   "value": "1.55",
+   "uncertainty": "+0.17/-0.13",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "PDR or XDR?",
+     "quote": "Here we measure a ratio of $\\log$ \\[C ii\\]/\\[C i\\] = $1.55_{-0.13}^{+0.17}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized gas mass M_HII",
+   "value": "2-3",
+   "uncertainty": "not stated",
+   "units": "10^10 M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Masses",
+     "quote": "We find that the low-ionization species (\\[C ii\\], \\[N ii\\]) yield very consistent ionized gas mass estimates, $M_{\\rm HII}=(2-3)\\times 10^{10}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from [C I]+[C II] M_H2,[CI]+[CII]",
+   "value": "5e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Masses",
+     "quote": "We find a corresponding molecular gas mass $M_{\\rm H2, [CI]+[CII]}\\approx 5\\times10^{10}$ M$_\\odot$ at $T_{\\rm gas}\\mathrel{\\rlap{\\lower 3pt \\hbox{$\\sim$}} \\raise 2.0pt \\hbox{$>$}}100$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from CO M_H2,CO",
+   "value": "4.5e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Masses",
+     "quote": "This is in excellent agreement with the CO-based mass estimate, $M_{\\rm H2, CO}=4.5\\times10^{10}$ M$_\\odot$, and a factor $\\sim 2$ lower than the dust-based estimate, $M_{\\rm H2, dust}=8.7\\times10^{10}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from dust M_H2,dust",
+   "value": "8.7e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Masses",
+     "quote": "This is in excellent agreement with the CO-based mass estimate, $M_{\\rm H2, CO}=4.5\\times10^{10}$ M$_\\odot$, and a factor $\\sim 2$ lower than the dust-based estimate, $M_{\\rm H2, dust}=8.7\\times10^{10}$ M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate from IR SFR_IR",
+   "value": "1330",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star formation rate estimates",
+     "quote": "On the other hand, following (cite: kennicutt12), we estimate a dust-based SFR$_{\\rm IR}$=1330 M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate from [C II] SFR_[CII] (uncorrected)",
+   "value": "750",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star formation rate estimates",
+     "quote": "In particular, following the scaling values reported in Tab. 2 by (cite: delooze14), we find SFR$_{\\rm [OIII]}$=110 M$_\\odot$ yr$^{-1}$ and SFR$_{\\rm [CII]}$=750 M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate from [O III] SFR_[OIII] (uncorrected)",
+   "value": "110",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star formation rate estimates",
+     "quote": "In particular, following the scaling values reported in Tab. 2 by (cite: delooze14), we find SFR$_{\\rm [OIII]}$=110 M$_\\odot$ yr$^{-1}$ and SFR$_{\\rm [CII]}$=750 M$_\\odot$ yr$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version and ALMA pipeline version used for calibration and imaging",
+  "Specific imaging task (e.g., clean vs tclean), pixel cell size, and image dimensions",
+  "Exact pixel coordinates used for single-pixel spectral extraction",
+  "MCMC sampler details (number of walkers, steps, burn-in) for the custom MCMC tool",
+  "Specific version of the Cloudy photoionization code used"
+ ],
+ "missing_for_reproduction": [
+  "Custom MCMC fitting code for spectral lines and dust continuum",
+  "Cloudy input scripts and pre-computed PDR/XDR model grids from Pensabene et al. (2021) and Meyer et al. (2022)",
+  "Exact CASA version, pixel size, and extraction pixel coordinates"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Observational setups, channel widths, weighting, priors, analytical equations, and Cloudy parameter grids are thoroughly documented, and intermediate continuum/line measurements are tabulated. Score is capped because the custom MCMC code, Cloudy scripts, and exact CASA imaging parameters (cell size, pixel coordinate) are not released or specified.",
+ "rediscovery_reason": "Both ALMA datasets (2015.1.01115.S and 2016.1.00226.S) are public, the reduction uses standard pipeline calibration and natural-weighted imaging, and the main results (line fluxes, continuum flux densities, dust SED parameters, and gas masses) are cleanly tabulated.",
+ "source_card": "cards/2023A%26A...673A.157D/sonnet/card.md"
+}

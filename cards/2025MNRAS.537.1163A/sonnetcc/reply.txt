@@ -1,0 +1,564 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "Conclusions", "quote": "Our datasets, which come from a variety of instruments (newly obtained from JWST and archival from HST and ALMA), trace different components of the galaxy"},
+{"loc": "2.1.3 ALMA", "quote": "we make use of the highest resolution ALMA continuum dataset available in the archive."}
+],
+"fields": ["high_z_galaxies"],
+"question": {
+"value": "Morphology and kinematics of the strongly lensed massive dusty star-forming galaxy SPT at z = 3.762: is there a bar and a rotating disc, and how baryon dominated is it",
+"evidence": [
+{"loc": "abstract", "quote": "We examine the morphological and kinematical properties of SPT, a strongly lensed, massive, dusty, star-forming galaxy at $z = 3.762$."},
+{"loc": "abstract", "quote": "The kinematics confirm the presence of the bar and of the regularly rotating disc."}
+]
+},
+"targets": [
+{
+"name": "SPT (SPT-2147)",
+"details": [
+{"loc": "1 Introduction", "quote": "SPT, a $z = 3.762$, massive DSFG, strongly lensed by a, z = 0.84, early-type galaxy (ETG)"},
+{"loc": "1 Introduction", "quote": "SPT was originally discovered in the South Pole Telescope (SPT) survey"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "z = 3.762 (source); lens z = 0.84",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2018.1.01060.S", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "The \\[Cii\\] emission line observations were carried out as part of proposal 2018.1.01060.S and achieve a resolution of $\\sim0.25\\,\\mathrm{arcsec}$."}
+]},
+{"code": "2019.1.00471.S", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "These data come from proposal 2019.1.00471, and achieve a resolution of $\\sim0.1\\,\\mathrm{arcsec}$ in band 8."},
+{"loc": "Acknowledgements", "quote": "2018.1.01060.S, 2019.1.00471.S"}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 8 continuum (2019.1.00471); [CII], CO(7-6), [CI](2-1) from 2018.1.01060.S (band not stated)", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "These data come from proposal 2019.1.00471, and achieve a resolution of $\\sim0.1\\,\\mathrm{arcsec}$ in band 8."}
+]},
+{"field": "configurations", "value": "continuum taken in different antenna configurations (specific configurations not stated)", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "Continuum observations were taken using different antenna configurations, leading to different resolutions."}
+]},
+{"field": "angular_resolution", "value": "~0.1 arcsec (band 8 continuum); ~0.25 arcsec ([CII])", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "These data come from proposal 2019.1.00471, and achieve a resolution of $\\sim0.1\\,\\mathrm{arcsec}$ in band 8."},
+{"loc": "2.1.3 ALMA", "quote": "The \\[Cii\\] emission line observations were carried out as part of proposal 2018.1.01060.S and achieve a resolution of $\\sim0.25\\,\\mathrm{arcsec}$."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "[CII] velocity resolution ~6 km/s (reconstructed in ~30 km/s channels)", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "and was observed at higher velocity resolution, $\\sim 6$ $\\rm km \\, s^{-1}$ instead of $\\sim 100$ $\\rm km \\, s^{-1}$ for the H$\\alpha$ cube"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "archival ALMA data", "evidence": [
+{"loc": "Conclusions", "quote": "Our datasets, which come from a variety of instruments (newly obtained from JWST and archival from HST and ALMA), trace different components of the galaxy"}
+]}
+],
+"lines_targeted": [
+{"species": "[CII]", "transition": "[CII] (transition not further specified)", "rest_frequency": "not stated", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "The \\[Cii\\] emission line observations were carried out as part of proposal 2018.1.01060.S"}
+]},
+{"species": "CO", "transition": "7-6", "rest_frequency": "not stated", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "As part of the same proposal the CO(7-6) and \\[Ci\\](2-1) were also observed for this source"}
+]},
+{"species": "[CI]", "transition": "2-1", "rest_frequency": "not stated", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "As part of the same proposal the CO(7-6) and \\[Ci\\](2-1) were also observed for this source"}
+]}
+],
+"other_facilities": [
+{"name": "JWST (NIRCam, MIRI, NIRSpec; TEMPLATES ERS program ID 1355)", "provided": {"value": "Stellar continuum images (NIRCam F200W-F444W, MIRI F560W-F2100W) and NIRSpec IFU Halpha map; archival, default pipeline reduction", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "We use the archival data, which were reduced with the default pipeline."}
+]}},
+{"name": "HST WFC3 F140W", "provided": {"value": "Rest-frame UV image; background source too faint (SNR_peak ~3) so not used in the analysis", "evidence": [
+{"loc": "2.1.2 HST", "quote": "Therefore, we will not use these data for the rest of this work."}
+]}},
+{"name": "Herschel, LABOCA, SPT", "provided": {"value": "Unresolved sub-mm fluxes used in the SED fit", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "since some of our observations, specifically in the sub-mm regime (from Herschel, LABOCA and SPT), do not resolve the source"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "CO(2-1) line luminosity L_CO(2-1) = (1.6 +/- 0.3)e11 K km/s pc^2 (previous observations of SPT)", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "observations of the CO(2$-$1) emission line have previously been obtained for SPT (cite: 2016MNRAS.457.4406A; 2022A&A...663A..22G)"}
+]}, "citation": "(cite: 2016MNRAS.457.4406A; 2022A&A...663A..22G)"},
+{"what": {"value": "CO(2-1)/CO(1-0) line ratio r21 = 0.84 +/- 0.13", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "for which we adopt the value $r_{21} = 0.84 \\pm 0.13$ (cite: 2013MNRAS.429.3047B)"}
+]}, "citation": "(cite: 2013MNRAS.429.3047B)"},
+{"what": {"value": "CO-H2 conversion factor alpha_CO = 1.0", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "for which we adopt the value, $\\alpha_{\\rm CO} = 1.0$ (cite: 2021MNRAS.501.3926B)"}
+]}, "citation": "(cite: 2021MNRAS.501.3926B)"},
+{"what": {"value": "Previously measured far-infrared/submm fluxes used in the SED fit (Herschel, LABOCA, SPT); individual citations not given", "evidence": [
+{"loc": "Conclusions", "quote": "as well as previously measured fluxes at far-infrared/submm wavelengths"}
+]}, "citation": "not stated"},
+{"what": {"value": "Earlier dynamical mass Mdyn = (25 +/- 4)e10 Msun from lower-resolution CO(7-6), used for comparison", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "This value is smaller than the value reported by (cite: 2022A&A...663A..22G)"}
+]}, "citation": "(cite: 2022A&A...663A..22G)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA pipeline in CASA", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "We calibrate the data using the ALMA pipeline in the Common Astronomy Software Applications package (cite: 2007ASPC..376..127M)."}
+]}
+],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Phases of the PyAutoLens lens-modelling pipeline (SIS+shear then pixelated source, priors passed between phases)", "evidence": [
+{"loc": "3 Strong Lensing Analysis", "quote": "have been described in previous papers that make use of the same software (cite: 2022MNRAS.517.3275E; 2022RAA....22b5014C), and are the same steps that we take in this work."}
+]}, "from_reference": "(cite: 2022MNRAS.517.3275E; 2022RAA....22b5014C)"},
+{"what": {"value": "Final imaging phase uses an MGE lens-light model", "evidence": [
+{"loc": "3.2.2 Pipeline", "quote": "the final phase of our imaging pipeline uses an MGE model for the lens galaxy light instead of a Sérsic profile (cite: 2024arXiv240316253H)"}
+]}, "from_reference": "(cite: 2024arXiv240316253H)"},
+{"what": {"value": "Voronoi mesh source reconstruction with regularization", "evidence": [
+{"loc": "3.2.1 Background source", "quote": "The lensing-corrected source surface brightness distribution is reconstructed on an irregular Voronoi mesh (cite: 2015MNRAS.452.2940N)."}
+]}, "from_reference": "(cite: 2015MNRAS.452.2940N)"},
+{"what": {"value": "Bar criteria and ellipse-fitting approach", "evidence": [
+{"loc": "5.1 Bars", "quote": "Similarly to (cite: 2023ApJ...945L..10G), we apply an ellipse fitting technique to the reconstructed F444W, F1280W and \\[Cii\\] emission line distributions."}
+]}, "from_reference": "(cite: 2023ApJ...945L..10G)"},
+{"what": {"value": "SED modelling approach (MAGPHYS high-z version)", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "we perform SED modelling using the high-redshift version of the publicly available software magphys (cite: 2015ApJ...806..110D; 2019ApJ...882...61B)"}
+]}, "from_reference": "(cite: 2015ApJ...806..110D; 2019ApJ...882...61B)"},
+{"what": {"value": "Asymmetric drift correction in 3DBarolo", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "by enabling the asymmetric drift correction functionality (cite: 2007ApJ...657..773V)"}
+]}, "from_reference": "(cite: 2007ApJ...657..773V)"}
+],
+"unstated_but_needed": [
+"ALMA CASA version and pipeline version, and any manual flagging or reprocessing",
+"Which ALMA execution blocks / measurement sets are used for the band 8 continuum and [CII] data",
+"Rest frequencies and band/spectral windows for [CII], CO(7-6), [CI](2-1)",
+"tclean settings (weighting, robust, cell, image size, deconvolver, masks) for the visualization images",
+"Continuum subtraction and line-free channels for the [CII] cube",
+"Visibility binning/averaging and uv weighting used for the uv-plane lens reconstruction",
+"Magnification values (mean and per tracer) and source-plane pixel counts of the Voronoi mesh",
+"Priors, nested sampler settings (dynesty is only listed in the software citations) and regularization coefficient values",
+"Which pixel/bins define the radial profile averages and the common centre coordinates",
+"Number of rings (nradii) used in 3DBarolo (left blank in the config table)",
+"Photutils ellipse fitting parameters (step, minimum SMA, sigma clipping)",
+"Source coordinates of SPT-2147 and the origin of the redshift",
+"Photometry table used in the SED fit, including the magnification-correction steps for LIR/SFR/M*"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate ALMA data and make visualization images",
+"method": {"value": "ALMA pipeline calibration in CASA; cleaned images made only for visualization", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "We calibrate the data using the ALMA pipeline in the Common Astronomy Software Applications package (cite: 2007ASPC..376..127M)."},
+{"loc": "2.1.3 ALMA", "quote": "For visualization purposes we produce cleaned images of both the dust continuum and \\[Cii\\] line emission"}
+]},
+"software": ["CASA"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Prepare JWST images and Halpha map",
+"method": {"value": "Subtract a constant background from each NIRCam/MIRI image (Gaussian fit to the pixel flux histogram below the peak); NIRSpec cube continuum-subtracted with a 2nd-order polynomial, then Halpha+[NII] deblended with 3 Gaussians per pixel", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "To estimate this background we fit a Gaussian function to the distribution of all pixel fluxes and subtract the best-fitting mean value from each image."},
+{"loc": "2.1.1 JWST", "quote": "we fit a model consisting of three Gaussian profiles to each individual pixel of the observed cube"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Continuum fit only in a window around Halpha (3.0 to 3.3 micron observed) after masking the line", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "we only fit the continuum in the frequency range, 3.0 $\\mu$m"}
+]},
+{"value": "NII doublet centres fixed relative to Halpha; all three line widths tied", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "In addition, we assume that the widths of all three lines are the same"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Gaussian line fits per pixel; sampler not stated", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "we fit a model consisting of three Gaussian profiles to each individual pixel of the observed cube"}
+]},
+"validation": {"value": "Data, model and residual moment-0 maps compared (Figure 2)", "evidence": [
+{"loc": "2.1.1 JWST", "quote": "From left to right the first three panels show the data, best-fitting model and residuals."}
+]}},
+{"order": 3, "goal": "Fit the SED for stellar mass, SFR and LIR",
+"method": {"value": "MAGPHYS high-redshift SED fit to fluxes from rest-frame 0.42 micron to ~630 micron, before magnification correction", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "we perform SED modelling using the high-redshift version of the publicly available software magphys"},
+{"loc": "2.2.1 SED fitting", "quote": "We note that the SED fitting was performed prior to correcting the observed fluxes for magnification"}
+]},
+"software": ["magphys"],
+"key_parameters": [
+{"value": "Upper limits not used in the fit", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "If only upper limits exist in some band these were not used in the fitting process"}
+]}
+],
+"assumptions": [
+{"value": "Chabrier IMF; energy balance between UV/optical and IR", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "which assumes a Chabrier IMF and employs an energy balance technique whereby all of the UV/optical emission from newly born stars is deemed to be absorbed by dust and re-emitted at infrared wavelengths."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Overall chi2 ~ 3; agreement with previous measurements of LIR, SFR and M*", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "The best-fit model provides a good fit to the data across the whole spectrum, with a overall goodness of fit, $\\chi^2 \\sim 3$."}
+]}},
+{"order": 4, "goal": "Derive molecular gas mass from CO(2-1)",
+"method": {"value": "Mgas = 1.36 alpha_CO r21 L_CO(2-1) using literature CO(2-1) luminosity", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "Here we use the CO(2$-$1) emission line luminosity, $L_{\\rm CO(2-1)} = (1.6 \\pm 0.3) \\times 10^{11} {\\rm (K \\, km \\, s^{-1} \\, pc^{2})}$, to estimate the molecular gas mass from"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "r21 = 0.84 +/- 0.13", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "for which we adopt the value $r_{21} = 0.84 \\pm 0.13$ (cite: 2013MNRAS.429.3047B)"}
+]}
+],
+"assumptions": [
+{"value": "alpha_CO = 1.0", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "for which we adopt the value, $\\alpha_{\\rm CO} = 1.0$ (cite: 2021MNRAS.501.3926B)"}
+]},
+{"value": "Factor 1.36 for helium", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "The factor of 1.36 accounts for the abundance of Helium."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Gas fraction f_gas = 0.45 +/- 0.12 compared with previous SMG/DSFG estimates", "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "which is on the high end but consistent with previous estimates for SMGs/DSFGs (cite: 2021MNRAS.501.3926B)"}
+]}},
+{"order": 5, "goal": "Build the lens mass model from NIRCam F444W",
+"method": {"value": "PyAutoLens: elliptical power-law mass plus external shear fitted to the F444W image; lens light subtracted (MGE in the final phase); phased pipeline starting from SIS+shear", "evidence": [
+{"loc": "3 Strong Lensing Analysis", "quote": "In order to build a mass model for the lensing galaxy we choose the F444W filter image from JWST/NIRCam."},
+{"loc": "3.2 Foreground mass & background source", "quote": "For the mass distribution of the lensing galaxy we consider an elliptical power-law model (EPL) with an external shear."}
+]},
+"software": ["PyAutoLens"],
+"key_parameters": [
+{"value": "Source reconstructed on Voronoi mesh with constant regularization (coefficient lambda_reg)", "evidence": [
+{"loc": "3.2.1 Background source", "quote": "In this work we use a constant regularization scheme, where the level of regularization is controlled by the coefficient, $\\lambda_{\\rm reg}$."}
+]},
+{"value": "Initial phase: SIS + shear mass and single Sersic source; later phases inherit priors", "evidence": [
+{"loc": "3.2.2 Pipeline", "quote": "In the initial phase of our pipeline, we fit an SIS + shear profile for the mass distribution of the lensing galaxy and a single Sérsic profile for the background source."}
+]}
+],
+"assumptions": [
+{"value": "Spatially flat LCDM, H0 = 67.8, Omega_M = 0.308 (Planck 2016)", "evidence": [
+{"loc": "1 Introduction", "quote": "we adopt a spatially-flat $\\Lambda$-CDM cosmology with H$_0=67.8 \\pm 0.9\\,\\mathrm{km}\\,\\mathrm{s}^{-1}\\,\\mathrm{Mpc}^{-1}$"}
+]},
+{"value": "Ignoring a small compact line-of-sight source; its SIS Einstein radius converged to negligible value", "evidence": [
+{"loc": "3.2 Foreground mass & background source", "quote": "Therefore, for the remainder of this work we ignore the presence of this compact source"}
+]}
+],
+"fitting": {"value": "Non-linear search sampler and priors not stated (priors passed between phases)", "evidence": [
+{"loc": "3.2.2 Pipeline", "quote": "inheriting from the previous phase in the form of priors"}
+]},
+"validation": {"value": "Mass model independently derived from ALMA dust continuum agrees with F444W model; systematics discussed", "evidence": [
+{"loc": "Footnote 4", "quote": "We independently modelled the dust continuum emission from high-resolution ALMA observations and found that the best-fitting mass model parameters are in good agreement with those derived from the F444W NIRCam image."}
+]}},
+{"order": 6, "goal": "Reconstruct source-plane stars, dust and gas",
+"method": {"value": "Fixed F444W mass model applied to NIRCam/MIRI images and to ALMA band 8 continuum and [CII] visibilities fitted directly in uv-space", "evidence": [
+{"loc": "3 Strong Lensing Analysis", "quote": "When reconstructing the dust continuum and \\[Cii\\] line emission distributions with ALMA we make use of the latter approach."},
+{"loc": "4 Results", "quote": "using a fixed mass model for the lensing galaxy"}
+]},
+"software": ["PyAutoLens", "PyNUFFT"],
+"key_parameters": [],
+"assumptions": [
+{"value": "Common centre set at the shared stellar and dust peak", "evidence": [
+{"loc": "Footnote 5", "quote": "Both the stellar and dust continuum distribution peak at the same location, which we used as the common centre for all reconstructions."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Same mass model for all datasets so slope-size degeneracy not expected to introduce artifacts", "evidence": [
+{"loc": "3.2.3 Lens modelling systematics", "quote": "However, since all datasets are reconstructed using the same mass model, this is not expected to introduce artifacts in the reconstructions."}
+]}},
+{"order": 7, "goal": "Build [CII] velocity and dispersion maps",
+"method": {"value": "Reconstruct each ~30 km/s channel in the uv-plane, then fit a Gaussian to the spectrum of each Voronoi cell for velocity and dispersion", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "first reconstructing (in the $uv$-plane) each individual channel of the emission line cube, where we binned the emission in channels of velocity width $\\sim 30$ $\\rm km \\, s^{-1}$ to further increase the signal-to-noise ratio"},
+{"loc": "4.2 Kinematics", "quote": "we fit the spectrum of each reconstructed Voronoi cell with a Gaussian profile"}
+]},
+"software": ["PyAutoLens"],
+"key_parameters": [
+{"value": "Pixels shown only where SNR_G > 5 (SNR_G^2 = chi2_G - chi2_line)", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "we are only showing pixels for which ${\\rm SNR}_{\\rm G} > 5$."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Gaussian per cell; comparison with straight-line chi2", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "we compared its goodness-of-fit (i.e. $\\chi^2$) to that of a straight line going through the abscissa"}
+]},
+"validation": {"value": "~20 independent resolution elements across the disc, so gradient not from beam smearing", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "(we have $\\sim$ 20 independent resolution elements across the area of the disc)"}
+]}},
+{"order": 8, "goal": "Fit 3D tilted-ring model to the reconstructed [CII] cube",
+"method": {"value": "3DBarolo tilted-ring fit to the reconstructed cube interpolated onto a regular grid; fiducial configuration in Table (radsep 0.025 arcsec, 3dfit true, ftype 2, wfunc 2, ltype 1, norm local, twostage true, adrift true)", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "The main function of this code is to iteratively fit a 3D tilted-ring model to an observed data cube"},
+{"loc": "4.2.1 Dynamical modelling", "quote": "we first need to interpolate it onto a regular grid of pixels"}
+]},
+"software": ["3DBarolo"],
+"key_parameters": [
+{"value": "radsep = 0.025 arcsec", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "radsep | 0.025 | $\\mathrm{arcsec}$ | Inter-ring spacing."}
+]},
+{"value": "Initial guesses vrot 330, vdisp 37 km/s, inc 47 deg, pa 115 deg; free: vrot vdisp inc pa vsys", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "inc | 47.0 | $\\mathrm{deg}$ | Initial guess for inclination."},
+{"loc": "Table 3DBarolo config", "quote": "pa | 115.0 | $\\mathrm{deg}$ | Initial guess for position angle."}
+]},
+{"value": "wfunc = 2 (cos^2 weighting), ftype = 2, norm = local, twostage = true, regtype = 1", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "Pixels weighted by angular distance $\\theta_{\\rm maj}$ from major axis as $\\cos^2\\theta_{\\rm maj}$."}
+]},
+{"value": "Disc scale height z0 = 0.0138 arcsec (100 pc)", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "z0 | 0.0138 | $\\mathrm{arcsec}$ | Disc scale height, equivalent to $100\\,\\mathrm{pc}$"}
+]}
+],
+"assumptions": [
+{"value": "Radial flows not modelled (vrad = 0); locally axisymmetric model", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "Radial flows are not modelled."}
+]}
+],
+"fitting": {"value": "3DBarolo ring-by-ring minimization of |model - data| with geometric regularization", "evidence": [
+{"loc": "Table 3DBarolo config", "quote": "Figure of merit for minimization set to $|{\\rm model}-{\\rm data}|$"}
+]},
+"validation": {"value": "Variant models (ftype, norm, regtype, weighting, vrad) changed the rotation curve by <~10 per cent mostly; uniform weighting and radial-flow variants changed it more", "evidence": [
+{"loc": "Details of kinematic modelling", "quote": "In most cases the influence of alternative assumptions was small, e.g. $\\lesssim 10$ per cent in the rotation curve amplitude at fixed radius."}
+]}},
+{"order": 9, "goal": "Derive dynamical mass and baryon fraction",
+"method": {"value": "Mdyn = 2.32e5 Vc^2 r Msun with Vc from 3DBarolo (asymmetric-drift corrected, mean of 5 outer rings) at r = 4 kpc; compared with stellar plus gas mass", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "{M}_{\\rm dyn} = 2.32 \\times 10^5"},
+{"loc": "4.2.1 Dynamical modelling", "quote": "where $V_{\\rm c}$ is the circular velocity and $r$ is the radius at which we compute the dynamical mass."}
+]},
+"software": ["3DBarolo"],
+"key_parameters": [
+{"value": "r = 4 kpc (extent of the region probed dynamically)", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "which is the extent of the region where we probe the dynamics of our galaxy"}
+]}
+],
+"assumptions": [
+{"value": "Integrated stellar and gas masses are assumed to lie within the 4.0 kpc aperture", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "In order to make this estimate we assume that the stellar and gas masses that we measure for our source"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Mbar/Mdyn treated as an upper limit since gas may extend beyond 4 kpc", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "Therefore, the ratio of baryonic to total mass should be considered as an upper limit."}
+]}},
+{"order": 10, "goal": "Measure radial profiles and sizes",
+"method": {"value": "Single/double Sersic fits to the averaged 1D profiles of stars, dust, [CII]; curves of growth for half-light radii (also Halpha)", "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "We fit a single/double Sérsic model to the average 1D profile"},
+{"loc": "4.1.1 1D profiles", "quote": "We can use this to estimate the half-light radius of each component."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "Fitting algorithm, priors and likelihood not stated", "evidence": []},
+"validation": {"value": "Curve-of-growth sizes consistent with Sersic fits", "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "The sizes measured from the curves of growth are consistent with our findings from the 1D Sérsic profiles."}
+]}},
+{"order": 11, "goal": "Ellipse fitting to identify the bar and its length",
+"method": {"value": "Photutils ellipse fitting of reconstructed F444W, F1280W and [CII]; centre free then fixed to median from F444W; bar criteria on ellipticity and position angle", "evidence": [
+{"loc": "5.1 Bars", "quote": "We make use of the in PHOTUTILS from Astropy package (Bradley et al. 2020)."},
+{"loc": "5.1 Bars", "quote": "We then run the algorithm a second time, fixing the centre of the ellipses to the median value estimated in the initial run."}
+]},
+"software": ["Photutils", "Astropy"],
+"key_parameters": [
+{"value": "Bar criterion (i): ellipticity rises to e_max > 0.25 with roughly constant PA; criterion (ii): ellipticity drops by at least 0.1 and PA changes by at least 10 deg at bar-disc transition", "evidence": [
+{"loc": "5.1 Bars", "quote": "(i) the ellipticity gradually increases in the bar-dominated region, reaching a maximum value $e_{\\rm max} > 0.25$, while the position angle remains relatively constant."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "F1280W reconstruction used to check dust obscuration in F444W; [CII] ellipticity consistent with a bar", "evidence": [
+{"loc": "5.1 Bars", "quote": "The reason for attributing the decrease in surface brightness to dust is that the F1280W reconstruction does not show the same behavior"}
+]}}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "ALMA pipeline calibration", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "We calibrate the data using the ALMA pipeline in the Common Astronomy Software Applications package (cite: 2007ASPC..376..127M)."}
+]}},
+{"name": "magphys (high-z version)", "version": "not stated", "used_for": {"value": "SED fitting", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "we perform SED modelling using the high-redshift version of the publicly available software magphys"}
+]}},
+{"name": "PyAutoLens", "version": "not stated", "used_for": {"value": "Lens modelling, lens light subtraction and source reconstruction (imaging and uv-plane)", "evidence": [
+{"loc": "3 Strong Lensing Analysis", "quote": "using the open-source software PyAutoLens"}
+]}},
+{"name": "3DBarolo", "version": "1.6.9 (git commit 171b30b379fdc76e402cb0c8cf6d8cbb8e784196)", "used_for": {"value": "3D tilted-ring kinematic modelling of the [CII] cube", "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "The main function of this code is to iteratively fit a 3D tilted-ring model to an observed data cube"},
+{"loc": "Footnote 6", "quote": "Version 1.6.9; git commit ID 171b30b379fdc76e402cb0c8cf6d8cbb8e784196."}
+]}},
+{"name": "Photutils (Astropy)", "version": "not stated", "used_for": {"value": "Ellipse fitting of reconstructions", "evidence": [
+{"loc": "5.1 Bars", "quote": "We make use of the in PHOTUTILS from Astropy package (Bradley et al. 2020)."}
+]}},
+{"name": "Dynesty", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "PyAutoFit", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "PyAutoGalaxy", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "PyNUFFT", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Scikit-image", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}},
+{"name": "Colossus", "version": "not stated", "used_for": {"value": "not stated", "evidence": []}}
+],
+"results_numeric": [
+{"quantity": "Dynamical mass within 4 kpc", "value": "(9.7 +/- 2.0)e10", "uncertainty": "2.0e10", "units": "Msun", "from_step": 9, "evidence": [
+{"loc": "abstract", "quote": "Dynamical modeling yields a dynamical mass, ${M}_{\\rm dyn} = (9.7 \\pm 2.0) \\times 10^{10}$ ${\\rm M}_{\\odot}$"}
+]},
+{"quantity": "V/sigma", "value": "9.8", "uncertainty": "1.2", "units": "dimensionless", "from_step": 8, "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "we estimate a ratio of rotational velocity to velocity dispersion of, $V / \\sigma = 9.8 \\pm 1.2$."}
+]},
+{"quantity": "Maximum rotational velocity Vmax", "value": "313", "uncertainty": "5", "units": "km/s", "from_step": 8, "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "$V_{\\rm max} = 313 \\pm 5 \\, {\\rm km \\, s^{-1}}$"}
+]},
+{"quantity": "Velocity dispersion sigma (5 outer rings)", "value": "32", "uncertainty": "4", "units": "km/s", "from_step": 8, "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "$\\sigma = 32 \\pm 4 \\, {\\rm km \\, s^{-1}}$"}
+]},
+{"quantity": "Circular velocity Vc (asymmetric-drift corrected)", "value": "327", "uncertainty": "3", "units": "km/s", "from_step": 8, "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "${V}_{\\rm c} = 327 \\pm 3 \\, {\\rm km \\, s^{-1}}$"}
+]},
+{"quantity": "Inclination range of fitted rings", "value": "48 to 50", "uncertainty": "not stated", "units": "deg", "from_step": 8, "evidence": [
+{"loc": "4.2.1 Dynamical modelling", "quote": "varying between 48 and 50 degrees"}
+]},
+{"quantity": "Stellar mass", "value": "(6.3 +/- 0.9)e10", "uncertainty": "0.9e10", "units": "Msun", "from_step": 3, "evidence": [
+{"loc": "abstract", "quote": "${M}_{\\star} = (6.3 \\pm 0.9) \\times 10^{10}$ $\\rm{M}_{\\odot}$"}
+]},
+{"quantity": "Star formation rate", "value": "781", "uncertainty": "99", "units": "Msun/yr", "from_step": 3, "evidence": [
+{"loc": "abstract", "quote": "${\\rm SFR} = 781 \\pm 99$ ${\\rm M_{\\odot} yr^{-1}}$, after correcting for magnification"}
+]},
+{"quantity": "Infrared luminosity LIR", "value": "(9.4 +/- 1.4)e12", "uncertainty": "1.4e12", "units": "Lsun", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "(9.4 $\\pm$ 1.4) $\\times \\, 10^{12}$"}
+]},
+{"quantity": "Stellar population age", "value": "0.8", "uncertainty": "0.1", "units": "Gyr", "from_step": 3, "evidence": [
+{"loc": "Table 1", "quote": "0.8 $\\pm$ 0.1"}
+]},
+{"quantity": "Molecular gas mass before magnification correction", "value": "(1.8 +/- 0.4)e11", "uncertainty": "0.4e11", "units": "Msun", "from_step": 4, "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "$M_{\\rm gas} = (1.8 \\pm 0.4) \\times 10^{11}$ ${\\rm M_{\\odot}}$"}
+]},
+{"quantity": "Molecular gas mass (magnification corrected)", "value": "(2.8 +/- 0.7)e10", "uncertainty": "0.7e10", "units": "Msun", "from_step": 4, "evidence": [
+{"loc": "Table 1", "quote": "(2.8 $\\pm$ 0.7) $\\times \\, 10^{10}$"}
+]},
+{"quantity": "Gas fraction", "value": "0.45", "uncertainty": "0.12", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "2.2.2 Gas mass", "quote": "$\\rm f_{\\rm gas} = 0.45 \\pm 0.12$"}
+]},
+{"quantity": "Baryonic mass (stars + gas)", "value": "(9.1 +/- 1.1)e10", "uncertainty": "1.1e10", "units": "Msun", "from_step": 9, "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "we estimate a total baryonic mass (stars $+$ gas) of ${M}_{\\rm b} = \\left( 9.1 \\pm 1.1 \\right) \\times 10^{10}$"}
+]},
+{"quantity": "Mbar/Mdyn within 4.0 kpc", "value": "0.9", "uncertainty": "0.2", "units": "dimensionless", "from_step": 9, "evidence": [
+{"loc": "abstract", "quote": "we derive a baryonic-to-total mass ratio of ${M}_{\\rm bar} / {M}_{\\rm dyn} = 0.9 \\pm 0.2$ within 4.0 kpc."}
+]},
+{"quantity": "Dark matter fraction within 4.0 kpc", "value": "<30", "uncertainty": "not stated", "units": "per cent", "from_step": 9, "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "the dark matter fraction, $f_{\\rm DM}$, within 4.0 kpc is $<30$ per cent"}
+]},
+{"quantity": "Einstein radius (F444W mass model)", "value": "1.175", "uncertainty": "0.003", "units": "arcsec", "from_step": 5, "evidence": [
+{"loc": "Table 2", "quote": "1.175 $\\pm$ 0.003"}
+]},
+{"quantity": "EPL slope alpha (F444W mass model)", "value": "2.05", "uncertainty": "0.04", "units": "dimensionless", "from_step": 5, "evidence": [
+{"loc": "Table 2", "quote": "2.05 $\\pm$ 0.04"}
+]},
+{"quantity": "Stellar central Sersic component (n, r_e)", "value": "n = 1.32, r_e = 0.72", "uncertainty": "0.04 (n), 0.01 (r_e)", "units": "kpc (r_e)", "from_step": 10, "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "$n = 1.32 \\pm 0.04$ and $r_{\\rm e} = 0.72 \\pm 0.01$ kpc for the central component of the double Sérsic model"}
+]},
+{"quantity": "Stellar extended Sersic component (n, r_e)", "value": "n = 0.25, r_e = 1.96", "uncertainty": "0.01 (n), 0.03 (r_e)", "units": "kpc (r_e)", "from_step": 10, "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "$n = 0.25 \\pm 0.01$ and $r_{\\rm e} = 1.96 \\pm 0.03$ kpc for the extended component"}
+]},
+{"quantity": "Dust continuum Sersic components (central n, r_e; extended n, r_e)", "value": "central n = 0.97, r_e = 0.72; extended n = 0.29, r_e = 1.80", "uncertainty": "0.01, 0.01; 0.04, 0.04", "units": "kpc (r_e)", "from_step": 10, "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "$n = 0.97 \\pm 0.01$ and $r_{\\rm e} = 0.72 \\pm 0.01$ kpc for the central, and $n = 0.29 \\pm 0.04$ and $r_{\\rm e} = 1.80 \\pm 0.04$ kpc for the extended components"}
+]},
+{"quantity": "[CII] single Sersic (n, r_e)", "value": "n = 0.64, r_e = 2.67", "uncertainty": "0.02 (n), 0.07 (r_e)", "units": "kpc (r_e)", "from_step": 10, "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "has $n = 0.64 \\pm 0.02$ and $r_{\\rm e} = 2.67 \\pm 0.07$ kpc"}
+]},
+{"quantity": "Fraction of dust continuum in extended component", "value": "~20", "uncertainty": "not stated", "units": "per cent", "from_step": 10, "evidence": [
+{"loc": "4.1.1 1D profiles", "quote": "$\\sim$20 per cent of the dust continuum emission is associated with an extended component"}
+]},
+{"quantity": "Bar length", "value": "~1.5", "uncertainty": "not stated", "units": "kpc", "from_step": 11, "evidence": [
+{"loc": "5.1 Bars", "quote": "we estimate a bar length of $L_{\\rm bar} \\sim 1.5$ kpc"}
+]},
+{"quantity": "Disc mass fraction", "value": "50 - 80", "uncertainty": "not stated", "units": "per cent", "from_step": 9, "evidence": [
+{"loc": "5.1 Bars", "quote": "we constrain the disc mass fraction in SPT in the range of, $f_{\\rm disc} = 50 - 80$ per cent"}
+]}
+],
+"findings_qualitative": [
+{"value": "Stellar and [CII] gas distributions show a central linear (bar) structure; the dust continuum is compact and centrally concentrated", "evidence": [
+{"loc": "abstract", "quote": "The imaging reveals a central bar structure in the stars and gas embedded within an extended disc with a spiral arm-like feature."}
+]},
+{"value": "Velocity and dispersion maps show a regularly rotating disc with no sign of a recent close interaction", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "we can confidently state that the source did not experience a close-proximity interaction with another massive galaxy in its recent past"}
+]},
+{"value": "SPT is a starburst, with SFR more than 4 times above the main sequence", "evidence": [
+{"loc": "2.2.1 SED fitting", "quote": "It’s SFR is more that $\\times 4$ above the main-sequence of star-formation galaxies at z=3.78"}
+]}
+],
+"claims": [
+{"hypothesis": "SPT hosts a bar", "experiment": "Source-plane reconstructions of F444W, MIRI F1280W and [CII] plus photutils ellipse fitting against literature bar criteria", "result": "Elongated central structure; [CII] ellipses with e ~ 0.8 out to ~1.5 kpc then drop of ~0.3; L_bar ~1.5 kpc", "finding": "SPT is a barred spiral; the bar is seen more clearly in gas than stars", "support": "supported", "evidence": [
+{"loc": "5.1 Bars", "quote": "We consider this as evidence that the bar is seen in the gas distribution, perhaps even more clearly than in the stellar distribution."}
+]},
+{"hypothesis": "The gas kinematics are those of a regularly rotating, rotation-dominated disc", "experiment": "3DBarolo tilted-ring model of the reconstructed [CII] cube", "result": "Vc = 327 +/- 3 km/s, sigma = 32 +/- 4 km/s, V/sigma = 9.8 +/- 1.2", "finding": "Rotation dominated disc with cold dispersion, similar to other DSFGs", "support": "supported", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "Based on this estimate, our source is classified as being rotation dominated"}
+]},
+{"hypothesis": "SPT is baryon dominated within 4 kpc", "experiment": "Compare SED stellar mass plus CO(2-1)-based gas mass with Mdyn from 3DBarolo", "result": "Mbar/Mdyn = 0.9 +/- 0.2; f_DM < 30 per cent", "finding": "Consistent with a baryon-dominated galaxy, but the ratio is an upper limit", "support": "partially", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "which is consistent with our source being baryon dominated out to a radius of $r = 4$ ${\\rm kpc}$"},
+{"loc": "4.2.2 The dynamics of SPT", "quote": "Therefore, the ratio of baryonic to total mass should be considered as an upper limit."}
+]},
+{"hypothesis": "SPT has spiral arm structure", "experiment": "Source-plane Halpha and F444W reconstructions and radial profiles", "result": "A spiral arm east of centre in Halpha with its base in F444W; a bump near r ~ 1.5 kpc in 1D profiles", "finding": "Evidence for at least one spiral arm; possibly m = 1", "support": "partially", "evidence": [
+{"loc": "5.2 Spiral-arms", "quote": "Our lensing reconstructions of the distributions of stars and gas provide evidence for the presence of at least one spiral arm in SPT."}
+]},
+{"hypothesis": "Bar formation can begin earlier and in more gas-rich galaxies than previously thought", "experiment": "Compare disc mass fraction, stellar age and gas fraction with idealised bar-formation simulations from literature", "result": "f_disc = 50-80 per cent, stellar age ~0.8 Gyr, f_gas = 0.45 +/- 0.12", "finding": "Tentative bar formation timescale of ~0.8 Gyr", "support": "partially", "evidence": [
+{"loc": "Conclusions", "quote": "this suggests a tentative timescale for the onset of bar formation of $t_{\\rm form} \\sim 0.8$ Gyr in SPT."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Highest-resolution ALMA continuum in the archive chosen to complement JWST", "evidence": [
+{"loc": "2.1.3 ALMA", "quote": "In order to best complement our data from JWST, we make use of the highest resolution ALMA continuum dataset available in the archive."}
+]},
+{"field": "why_this_method", "value": "[CII] chosen over Halpha for kinematics: higher SNR and finer velocity resolution; F444W chosen for the lens mass model because lens light is weaker and source SNR higher", "evidence": [
+{"loc": "4.2 Kinematics", "quote": "The reason for choosing the \\[Cii\\] over the H$\\alpha$ emission line is two fold: it has a higher signal-to-noise ratio"},
+{"loc": "3 Strong Lensing Analysis", "quote": "As for choosing the F444W filter out of four filter images observed with NIRCam, the reason is twofold."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Extra SIS mass component for the compact foreground source tried and dropped (Einstein radius converged to negligible value)", "evidence": [
+{"loc": "3.2 Foreground mass & background source", "quote": "We tried including an additional component in the mass model, specifically a spherical Singular Isothermal Sphere"}
+]},
+{"value": "Free radial-flow component in 3DBarolo tried but outcome depended strongly on initial guess", "evidence": [
+{"loc": "Details of kinematic modelling", "quote": "but found that the outcome was very sensitive to the initial guess provided"}
+]},
+{"value": "Uniform pixel weighting in 3DBarolo gave lower inclination and peak rotation near 400 km/s, judged biased by the bar", "evidence": [
+{"loc": "Details of kinematic modelling", "quote": "using a uniform weighting for all pixels leads to a preference for a lower inclination and a higher rotation curve amplitude"}
+]}
+],
+"limitations_admitted": [
+{"value": "Mbar/Mdyn is an upper limit since the unresolved CO(2-1) gas may extend beyond 4 kpc", "evidence": [
+{"loc": "4.2.2 The dynamics of SPT", "quote": "This is not necessarily true as the molecular gas distribution could extend beyond 4.0 kpc"}
+]},
+{"value": "The axisymmetric 3DBarolo model fails to capture the bar-dominated kinematics", "evidence": [
+{"loc": "Details of kinematic modelling", "quote": "our model (locally axisymmetric) model fails to capture the detailed kinematics of the galaxy that are dominated by an $m=2$ non-axisymmetric feature"}
+]},
+{"value": "Lens mass model is a power law without angular complexity; slope-size degeneracy can bias source size", "evidence": [
+{"loc": "3.2.3 Lens modelling systematics", "quote": "This type of systematic can lead to a biased estimate of the source’s size."}
+]},
+{"value": "MIRI reconstructions are too low in resolution to resolve the bar", "evidence": [
+{"loc": "5.1 Bars", "quote": "but due to resolution limitations the feature is not fully resolved"}
+]}
+],
+"referee_caveats_inferred": [
+"Bar identification rests on visual structure and ellipse fitting in reconstructed source-plane maps, with F444W ellipses failing the standard criteria in the central 0.5 kpc",
+"Stellar and gas masses are global values compared against a 4 kpc dynamical mass; gas mass uses a CO(2-1) to CO(1-0) ratio and alpha_CO = 1.0 with no uncertainty propagated from alpha_CO",
+"Dynamical mass depends on the inclination from an axisymmetric fit to a barred system; the uniform-weighting variant shows large sensitivity",
+"No ALMA imaging or reconstruction parameters given, so the visibility-plane modelling cannot be checked",
+"The tentative bar formation timescale equates stellar age (0.8 Gyr, very uncertain) with disc formation"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "All data used are publicly available", "evidence": [
+{"loc": "Data Availability", "quote": "All data used in this work are publicly available."}
+]}
+],
+"code_released": [
+{"value": "PyAutoLens and 3DBarolo are public; paper-specific scripts and lens/dynamical model outputs not stated", "evidence": [
+{"loc": "3 Strong Lensing Analysis", "quote": "using the open-source software PyAutoLens"},
+{"loc": "4.2.1 Dynamical modelling", "quote": "we use the publicly available software"}
+]}
+],
+"missing_for_reproduction": [
+"ALMA measurement sets, pipeline version and imaging/uv-processing settings",
+"Lens model priors, sampler settings and magnification maps",
+"Full mass-model parameters beyond Table 2 and the source mesh settings",
+"Number of 3DBarolo rings and which rings were averaged for Vmax and sigma beyond 'five outer rings'",
+"SED photometry table"
+],
+"estimated_data_volume_inferred": "ALMA raw data for two projects likely tens of GB (Band 8 continuum and [CII]/CO/[CI] cubes); JWST NIRCam/MIRI/NIRSpec products a few GB",
+"score_inferred": 3,
+"score_reason": "Data are public and key numbers are reported, and the 3DBarolo configuration is tabulated, but ALMA processing, uv-plane lens-modelling inputs and sampler settings are not given and rely on earlier papers.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public data and numeric results, but ALMA processing and the lens-model reconstruction recipe are incomplete, so the kinematic results cannot be redone from the paper alone.",
+"methods_papers": [
+{"citation": "(cite: 2015MNRAS.452.2940N; 2018MNRAS.478.4738N; 2021JOSS....6.2825N)", "why": "PyAutoLens lens modelling and Voronoi source reconstruction"},
+{"citation": "(cite: 2022MNRAS.517.3275E; 2022RAA....22b5014C)", "why": "Describe the phased lens-modelling pipeline reused here"},
+{"citation": "(cite: 2015MNRAS.451.3021D)", "why": "3DBarolo tilted-ring code"},
+{"citation": "(cite: 2015ApJ...806..110D; 2019ApJ...882...61B)", "why": "MAGPHYS SED fitting"}
+],
+"companion_papers": [
+{"citation": "(cite: 2022A&A...663A..22G)", "why": "Earlier CO(7-6) dynamical mass and CO(2-1) data for this source"},
+{"citation": "(cite: 2016MNRAS.457.4406A)", "why": "Earlier CO(2-1) observations of this source"},
+{"citation": "(cite: 2023ApJ...945L..10G)", "why": "Ellipse-fitting bar criteria applied here"},
+{"citation": "(cite: 2023arXiv230710412B)", "why": "NIRSpec emission lines detected in this source"}
+],
+"related_projects_or_surveys": [
+"JWST TEMPLATES Early Release Science program (ID 1355, PI Jane Rigby)",
+"South Pole Telescope survey (SPT)",
+"ALMA 2018.1.01060.S and 2019.1.00471.S"
+]
+}

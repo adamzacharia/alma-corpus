@@ -1,0 +1,340 @@
+{
+ "bibcode": "2020PASP..132i4501H",
+ "title": "Characterizing the Accuracy of ALMA Linear-polarization Mosaics",
+ "year": 2020,
+ "doi": "10.1088/1538-3873/ab99cd",
+ "arxiv_id": "2006.03671",
+ "fields": [
+  "instrumentation",
+  "star_formation"
+ ],
+ "question": "How accurate are ALMA linear-polarization observations away from the pointing center, and how much do mosaics of overlapping pointings reduce the residual off-axis errors",
+ "alma_project_codes": [
+  "2011.0.00007.E",
+  "2011.0.00008.E",
+  "2011.0.00009.E"
+ ],
+ "data": {
+  "bands": "3C 279: Bands 3, 5, 6, 7 (3, 1.6, 1.3, 0.87 mm); Orion-KL: Bands 3 and 6",
+  "arrays": "12 m array",
+  "angular_resolution": "Orion-KL synthesized beams 1.43'' x 0.95'' (Band 3) and 0.65'' x 0.48'' (Band 6)",
+  "sensitivity": "Theoretical Stokes I sensitivity per pointing ~30 uJy/beam (Band 3, 7 min per field) and ~79 uJy/beam (Band 6, 2.2 min per field)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Archival 1.3 mm CARMA full-polarization mosaic of Orion-KL",
+    "evidence": [
+     {
+      "loc": "Comparison with CARMA",
+      "quote": "Another mosaicked polarization observation of Orion-KL was performed by (cite: Hull2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Hull2014)"
+  },
+  {
+   "what": {
+    "value": "On-axis ALMA polarization angle uncertainty of ~0.4 deg used as a reference level",
+    "evidence": [
+     {
+      "loc": "11x11 observations of 3C 279",
+      "quote": "on-axis uncertainty of $\\sim$ 0.4$\\degree$ in the polarization angle calculated by (cite: Nagai2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Nagai2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate 3C 279 on-axis polarization",
+   "method": "Use the on-axis scans of 3C 279 to solve gains, cross-hand delay, XY-phase (ambiguity-resolved with xyamb) and D-terms with the standard ALMA polarization scheme",
+   "software": [
+    "CASA",
+    "almapolhelpers.py (qufromgain, xyamb)"
+   ],
+   "key_parameters": [
+    "Cross-hand delay solved on the scans where the XX/YY ratio changes fastest",
+    "Three executions spaced ~1 hr give parallactic angle coverage for D-terms and XY-phase"
+   ],
+   "assumptions": [
+    "Initial unpolarized source model for 3C 279, then polarization model from qufromgain and xyamb",
+    "Calibrator Stokes V = 0"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "apply on-axis calibration to all pointings and self-calibrate",
+   "method": "Apply on-axis tables to all on- and off-axis data, then one round of phase-only self-calibration per pointing",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "D-terms and XY-phase solved from on-axis data only, to mimic standard ALMA polarization calibration"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "image Stokes I,Q,U,V and measure peaks",
+   "method": "Make I,Q,U,V images with clean and extract peak values with imfit",
+   "software": [
+    "CASA clean",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Briggs robust = 2.0 (natural weighting), CASA 5.6.1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive off-axis error maps in Q, U, chi and Pfrac",
+   "method": "Divide off-axis Q and U by off-axis I, subtract the on-axis values to get dQ and dU, and take on- versus off-axis differences for chi and Pfrac",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Circular, azimuthally symmetric primary beam in Stokes I"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "calibrate the Orion-KL mosaic data",
+   "method": "Standard ALMA polarization calibration with J0522-3627 as polarization calibrator, J0423-0120 bandpass calibrator and J0529-0519 gain calibrator",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Bandpass scan taken only in the first execution of each session"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "image each Orion-KL mosaic pattern separately",
+   "method": "Image Hyper-Nyquist, Super-Nyquist, Nyquist and single-field subsets independently with tclean, Stokes I, Q, U cleaned separately, then primary-beam correct and form P, Pfrac, chi",
+   "software": [
+    "CASA tclean",
+    "CASA impbcor",
+    "CASA imregrid"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5"
+   ],
+   "assumptions": [
+    "Primary beam of each pointing is a 2D Gaussian peaked at the pointing center"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "compare mosaics with the inner 1/3 FWHM of single pointings in I, Q, U",
+   "method": "Build difference maps (mosaic minus single pointing) with immath, with and without a 5 sigma cutoff, and extract the inner 1/3 FWHM with imsubimage",
+   "software": [
+    "CASA immath",
+    "CASA imsubimage"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "compare polarization angle in mosaic versus single pointings",
+   "method": "Difference maps of chi (Hyper-Nyquist mosaic minus single pointing) for the Band 3 data, histogrammed in the inner 1/3 FWHM and the outer donut, plus median differences in high-SNR patches",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "5 sigma_P cutoff in the chi maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "compare ALMA mosaics with archival CARMA mosaic",
+   "method": "Match uv-range and beam of ALMA Nyquist mosaics to CARMA, regrid to CARMA coordinates, then difference chi",
+   "software": [
+    "CASA clean (uvrange)",
+    "CASA imsmooth"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin dust with grain alignment by radiative torques, so inferred field orientation is frequency independent"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "estimate mosaic errors from the 11x11 data",
+   "method": "Standard error propagation from sigma_Q and sigma_U measured in the ring 1/3 FWHM < r < FWHM, versus direct standard deviation of the dPfrac and dchi maps",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "sigma_Q approximately equals sigma_U equals sigma_P; no position-dependent error in Stokes I"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Residual Pfrac and chi errors inside inner 1/3 FWHM (3C 279, all bands)",
+   "value": "Pfrac <~ 0.001 (<~0.1% of I); chi <~ 1 deg",
+   "uncertainty": "not stated",
+   "units": "dimensionless; deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: 11x11 observations of 3C 279",
+     "quote": "the residual errors in $P_\\textrm{frac}$ and $\\chi$ are $\\lesssim$ 0.001 ($\\lesssim$ 0.1% of Stokes $I$) and $\\lesssim$ 1$\\degree$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Pfrac and chi errors near the FWHM of the primary beam (3C 279, all bands)",
+   "value": "Pfrac ~0.003-0.005 (~0.3-0.5% of I); chi ~1-5 deg",
+   "uncertainty": "not stated",
+   "units": "dimensionless; deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results: 11x11 observations of 3C 279",
+     "quote": "Near the FWHM, the errors increase to $\\sim$ 0.003–0.005 ($\\sim$ 0.3–0.5% of Stokes $I$) and $\\sim$ 1–5$\\degree$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Stokes V beam squint amplitude relative to on-axis Stokes I",
+   "value": "1-2%",
+   "uncertainty": "not stated",
+   "units": "percent of Stokes I",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "V beam shape (beam squint)",
+     "quote": "Each Stokes $V$ map exhibits a double-lobed “beam squint” pattern at the 1–2% level of the on-axis Stokes $I$ value"
+    }
+   ]
+  },
+  {
+   "quantity": "Stokes I dynamic range in 3C 279 maps",
+   "value": "~10,000-100,000 (lowest at Band 7, highest at Band 3)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "11x11 observations of 3C 279",
+     "quote": "in the Stokes $I$ continuum maps ranges from $\\sim$ 10,000–100,000"
+    }
+   ]
+  },
+  {
+   "quantity": "3C 279 polarization fraction at observation",
+   "value": "~12%",
+   "uncertainty": "not stated",
+   "units": "dimensionless (percent)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results: 11x11 observations of 3C 279",
+     "quote": "which had $P_\\textrm{frac} \\approx 12\\%$ at the time of observation"
+    }
+   ]
+  },
+  {
+   "quantity": "Orion-KL median polarization fraction in mosaics (Bands 3 and 6)",
+   "value": "~6-7%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Orion-KL mosaic observations",
+     "quote": "The mosaicked images of Orion-KL at both Bands 3 and 6 have median levels of $P_\\textrm{frac} \\approx 6-7\\%$ across the maps."
+    }
+   ]
+  },
+  {
+   "quantity": "Median SNR across the Orion-KL P maps (Bands 3 and 6)",
+   "value": "7-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Orion-KL mosaic observations",
+     "quote": "the median SNR values across the $P$ maps at Bands 3 and 6 are between 7–8"
+    }
+   ]
+  },
+  {
+   "quantity": "Std of chi differences in outer donut, single pointings 6 and 10 vs Hyper-Nyquist mosaic (Band 3)",
+   "value": "3.6 deg (point 6), 2.7 deg (point 10)",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Comparison of chi in the mosaics versus the inner region and outer donut region of single pointings",
+     "quote": "having standard deviations of 3.6$\\degree$ (point 6) and 2.7$\\degree$ (point 10)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median chi difference when emission is viewed off-axis (near FWHM of point 8) versus Hyper-Nyquist mosaic",
+   "value": "~3 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Comparison of chi in the mosaics versus the inner region and outer donut region of single pointings",
+     "quote": "the median difference with respect to the Hyper-Nyquist mosaic is $\\sim$ 3$\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "chi differences in inner 1/3 FWHM, Hyper-Nyquist mosaic vs single pointings (Band 3)",
+   "value": "~1 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "show that the differences are $\\sim$ 1$\\degree$"
+    }
+   ]
+  },
+  {
+   "quantity": "Width of ALMA minus CARMA chi difference distribution (68% window)",
+   "value": "+-12 deg",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Comparison with CARMA",
+     "quote": "with a width (defined as the minimum window necessary to encompass 68% of the data) of $\\pm$ 12$\\degree$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, masks, threshold, niter and deconvolver for clean/tclean in both datasets (only 'standard imaging parameters' given)",
+  "Which fields and scans were treated as on-axis, and the self-calibration solution interval for the 3C 279 data",
+  "CASA version used for calibration (only imaging versions are given)",
+  "Which pointings of each 11x11 grid and which Orion-KL pointings were combined for each statistic, and exact pixel-selection regions for the inner 1/3 FWHM and donut",
+  "Primary-beam FWHM values adopted per band for the inner and donut radii",
+  "Exact definition of the polarization-angle error cutoffs applied in the 11x11 error maps",
+  "Flux values and Stokes model assumed for the polarization calibrator J0522-3627 in the Orion-KL reduction"
+ ],
+ "missing_for_reproduction": [
+  "Full clean/tclean parameter set (cell, image size, masks, thresholds)",
+  "Region and pointing selections for statistics",
+  "Numeric values for the Q/U/chi error maps are only in figures"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public EOC data and public reduction scripts exist, key task versions and calibrators are given, and results are numeric, but imaging parameters and region choices are not spelled out in the paper.",
+ "rediscovery_reason": "Data and scripts are public, the recipe is largely described, and the main results are numeric error levels; the work is data-heavy.",
+ "source_card": "cards/2020PASP..132i4501H/sonnet/card.md"
+}

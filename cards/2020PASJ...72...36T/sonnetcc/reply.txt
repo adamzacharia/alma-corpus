@@ -1,0 +1,523 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We detected firstly the continuum emission at 340 GHz of IRS 7 using ALMA."}
+],
+"fields": ["stellar_physics", "evolved_stars", "milky_way_ism"],
+"question": {
+"value": "Can the 340 GHz continuum of the red supergiant IRS 7 and the H30alpha ionized gas around it be detected, and what do they say about photosphere size, electron temperature and density, mass loss and kinematics",
+"evidence": [
+{"loc": "Introduction", "quote": "such observations are suitable to detect both the continuum emission from IRS 7 itself and the recombination line from the extended structure."}
+]
+},
+"targets": [
+{
+"name": "IRS 7 (M red supergiant, Galactic center Nuclear star cluster)",
+"details": [
+{"loc": "Results", "quote": "Using 2D Gaussian fitting, the position of IRS 7 is derived to be $\\alpha_{\\rm ICRS}=17^{\\rm h}45^{\\rm m}40^{\\rm s}.03625\\pm0^{\\rm s}.0002$, $\\delta_{\\rm ICRS }=-29^\\circ00\\ensuremath{'}22.732\\ensuremath{''}\\pm0.002\\ensuremath{''}$"},
+{"loc": "Introduction", "quote": "as the distance to the Galactic center (e.g. (cite: Boehle), (cite: Abuter))"}
+],
+"coordinates": "RA 17h45m40.03625s +/- 0.0002s, Dec -29d00m22.732s +/- 0.002 arcsec (ICRS, epoch 2016.68)",
+"redshift_or_distance": "d ~ 8.2 kpc (distance to the Galactic center)",
+"distance_source": "adopted Galactic center distance, (cite: Boehle), (cite: Abuter)"
+}
+],
+"alma_project_codes": [
+{"code": "2015.1.01080.S", "evidence": [{"loc": "340 GHz Observation", "quote": "as an ALMA Cy.3 program (2015.1.01080.S. PI M.Tsuboi)"}]},
+{"code": "2015.A.00021.S", "evidence": [{"loc": "H30alpha recombination line", "quote": "region with ALMA (2015.A.00021.S)"}]}
+],
+"data_settings": [
+{"field": "frequencies_and_spectral_setup", "value": "340 GHz continuum; H30alpha recombination line, rest frequency 231.9009 GHz", "evidence": [
+{"loc": "Introduction", "quote": "Therefore we have observed IRS 7 at 340 GHz using ALMA"},
+{"loc": "H30alpha recombination line", "quote": "The data set involves the H30$\\alpha$ recombination line ($\\nu_{rest}$= 231.9009 GHz)."}
+]},
+{"field": "angular_resolution", "value": "340 GHz continuum: 0.107 x 0.101 arcsec, PA=-78 deg; H30alpha cube: 0.41 x 0.30 arcsec, PA=-77 deg (FWHM)", "evidence": [
+{"loc": "340 GHz Observation", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.107\\ensuremath{''} \\times 0.101\\ensuremath{''}, PA=-78^\\circ$ in FWHM"},
+{"loc": "H30alpha recombination line", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.41\\ensuremath{''} \\times 0.30\\ensuremath{''}, PA = -77^{\\circ}$ in FWHM"}
+]},
+{"field": "sensitivity", "value": "continuum 1 sigma = 45 uJy/beam in emission-free area; H30alpha cube 0.2 mJy/beam at a line-free channel", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The $1\\sigma$ sensitivity in the emission-free area is $45~\\mu$Jy beam$^{-1}$."},
+{"loc": "H30alpha recombination line", "quote": "high sensitivity (0.2 mJy beam$^{-1}$ at a line-free channel)"}
+]},
+{"field": "observing_dates", "value": "340 GHz: 23 Apr. 2016, 30/31 Aug. 2016, 08 Sep. 2016", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The observations were performed in three days (23 Apr. 2016, 30/31 Aug. 2016, and 08 Sep. 2016)."}
+]},
+{"field": "pi_or_archival_as_stated", "value": "340 GHz: own ALMA Cy.3 program (PI M. Tsuboi); H30alpha: ALMA Director's Discretionary Time (DDT) observation", "evidence": [
+{"loc": "340 GHz Observation", "quote": "as an ALMA Cy.3 program (2015.1.01080.S. PI M.Tsuboi)"},
+{"loc": "H30alpha recombination line", "quote": "We analyzed the DDT observation of the Sgr A"}
+]}
+],
+"lines_targeted": [
+{"species": "H (hydrogen recombination line)", "transition": "H30alpha", "rest_frequency": "231.9009 GHz", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "The data set involves the H30$\\alpha$ recombination line ($\\nu_{rest}$= 231.9009 GHz)."}
+]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "34.5 GHz flux density of IRS 7, S < 15 uJy (used for spectral index limit)", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "While the flux density at 34.5 GHz of IRS 7 would be less than $S_\\nu<15 \\mu$Jy (see Figure 2 in (cite: Yusef-Zadeh2015))."}
+]}, "citation": "(cite: Yusef-Zadeh2015)"},
+{"what": {"value": "Effective temperature of the photosphere, Teff = 3600 +/- 200 K (M1) or 3600 +/- 230 K (M2)", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "The effective temperature of the photosphere is reported to be $T_\\mathrm{eff}= 3600\\pm200$ K for M1( (cite: Paumard2014)) and $T_\\mathrm{eff} = 3600\\pm230$ K for M2 ((cite: Carr))."}
+]}, "citation": "(cite: Paumard2014); (cite: Carr)"},
+{"what": {"value": "VLTI H-band uniform-disk radius of IRS 7, R = 960 +/- 92 Rsun in 2013 (comparison value)", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "Meanwhile IRS 7 has been reported to be resolved marginally into a uniform-disk with $R=960\\pm92 ~R_\\odot$ in 2013 in the H band"}
+]}, "citation": "(cite: Paumard2014)"},
+{"what": {"value": "Transverse velocity of IRS 7 from SiO maser proper motion (V_perp = 136 km/s, PA = -170.6 deg)", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "based on the proper motion measured by the SiO maser astrometry ((cite: Borkar), see also (cite: Reid2003))"}
+]}, "citation": "(cite: Borkar); (cite: Reid2003)"},
+{"what": {"value": "SiO v=2 J=2-1 maser spectrum of IRS 7 (Figure 4c), extracted from earlier ALMA data", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "This spectrum is extracted from the ALMA data shown in the previous paper ((cite: Tsuboi2017))."}
+]}, "citation": "(cite: Tsuboi2017)"},
+{"what": {"value": "IR position of IRS 7 corrected to the observation epoch with the IR proper motion", "evidence": [
+{"loc": "Results", "quote": "using the IR proper motion ((cite: Schodel))"}
+]}, "citation": "(cite: Schodel)"},
+{"what": {"value": "Number ratio He+/H+ = 0.09, taken as typical for the Galactic center", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "a typical value in the Galactic center region (e.g. (cite: Tsuboi2017))"}
+]}, "citation": "(cite: Tsuboi2017)"},
+{"what": {"value": "LTE correction factor a(nu,Te) = 0.678-0.892 at 232 GHz for Te = 0.3-1.5e4 K", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "$a=0.678-0.892$ for $T^\\ast_{\\mathrm e}=0.3-1.5\\times10^4$ K (cite: Mezger)"}
+]}, "citation": "(cite: Mezger)"},
+{"what": {"value": "Electron density formula used for n_e", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The electron density, $\\bar{n}_{\\mathrm e}$. of the ionized gas ring around IRS 7 is estimated by the following well-known formula;"}
+]}, "citation": "(cite: Altenhoff)"},
+{"what": {"value": "Earlier electron temperature Te = 7000 K (comparison value)", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The estimated temperature is fairly lower than those of the previous observations (e.g. $\\bar{T}^\\ast_{\\mathrm e}=7000$ K in (cite: Zhao2010))."}
+]}, "citation": "(cite: Zhao2010)"},
+{"what": {"value": "Expected mass loss rate of a pulsating red supergiant with M = 20-25 Msun (comparison value)", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "consistent with the expected mass loss rate of a pulsating red supergiant star with $M=20-25 M_\\odot$ (e.g. (cite: Yoon))"}
+]}, "citation": "(cite: Yoon)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [
+{"field": "casa_version", "value": "CASA 5.4 for the 340 GHz continuum; CASA 5.0 for the H30alpha cube", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The imaging to obtain the maps was done using CASA 5.4 with `clean` task."},
+{"loc": "H30alpha recombination line", "quote": "we made images using CASA 5.0 with `tclean` task"}
+]},
+{"field": "flux_calibrator", "value": "Titan and J1733-1304", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The flux density scale was determined using Titan and J1733-1304."}
+]},
+{"field": "self_calibration", "value": "self-calibration in CASA 5.4 to minimise complex gain errors (340 GHz continuum data)", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The complex gain errors of the data were minimized using the"},
+{"loc": "340 GHz Observation", "quote": "method in CASA 5.4"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "clean (CASA 5.4) for the 340 GHz continuum; tclean (CASA 5.0) for the H30alpha cube", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The imaging to obtain the maps was done using CASA 5.4 with `clean` task."},
+{"loc": "H30alpha recombination line", "quote": "we made images using CASA 5.0 with `tclean` task"}
+]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.2 (continuum); Briggs, robust = 0.5 (H30alpha cube)", "evidence": [
+{"loc": "340 GHz Observation", "quote": "briggs weighting (robust parameter = 0.2)"},
+{"loc": "H30alpha recombination line", "quote": "briggs weighting (robust parameter = 0.5)"}
+]},
+{"field": "masking", "value": "multi-threshold auto-boxing (auto-multithresh) in tclean for the H30alpha cube", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "with the multi-threshold auto-boxing algorithm"}
+]},
+{"field": "continuum_subtraction", "value": "mstransform with fitorder=1 before imaging the H30alpha cube", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "After the subtraction of the continuum emission from the data using CASA task, `mstransform (fitorder=1)`"}
+]},
+{"field": "primary_beam_correction", "value": "IRS 7 flux density is corrected for the primary beam", "evidence": [
+{"loc": "Results", "quote": "after primary-beam correction"}
+]},
+{"field": "array_combination", "value": "continuum map made from the Aug. and Sep. 2016 days only", "evidence": [
+{"loc": "340 GHz Observation", "quote": "Using two days data of Aug. and Sep. 2016"}
+]},
+{"field": "final_beam", "value": "continuum 0.107 x 0.101 arcsec, PA=-78 deg; H30alpha cube 0.41 x 0.30 arcsec, PA=-77 deg", "evidence": [
+{"loc": "340 GHz Observation", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.107\\ensuremath{''} \\times 0.101\\ensuremath{''}, PA=-78^\\circ$ in FWHM"},
+{"loc": "H30alpha recombination line", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.41\\ensuremath{''} \\times 0.30\\ensuremath{''}, PA = -77^{\\circ}$ in FWHM"}
+]},
+{"field": "final_rms", "value": "continuum 45 uJy/beam; H30alpha cube 0.2 mJy/beam (line-free channel)", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The $1\\sigma$ sensitivity in the emission-free area is $45~\\mu$Jy beam$^{-1}$."},
+{"loc": "Results", "quote": "The $1\\sigma$ noise level is $0.2$ mJy beam$^{-1}$."}
+]}
+],
+"inherited": [
+{"what": {"value": "340 GHz observation and data reduction, summarised from the earlier IRS 13E study of the same data", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The data has been published already in the previous paper, specifically for the study of IRS 13E ((cite: Tsuboi2017b))."}
+]}, "from_reference": "(cite: Tsuboi2017b)"},
+{"what": {"value": "H30alpha DDT data analysis, summarised from the earlier IRS 13E gas-motion study", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "The analysis also has been published already in the previous paper, specifically for the study of gas motions around IRS 13E ((cite: Tsuboi2017b))."}
+]}, "from_reference": "(cite: Tsuboi2017b)"},
+{"what": {"value": "SiO v=2 J=2-1 maser spectrum of IRS 7 taken from earlier ALMA data", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "This spectrum is extracted from the ALMA data shown in the previous paper ((cite: Tsuboi2017))."}
+]}, "from_reference": "(cite: Tsuboi2017)"}
+],
+"unstated_but_needed": [
+"Spectral windows, channel widths and total continuum bandwidth used for the 340 GHz map and for the H30alpha cube",
+"Cell size, image size, clean threshold, niter, deconvolver and masks for the 340 GHz continuum clean",
+"Self-calibration solution intervals, number of rounds, reference model and which execution blocks were self-calibrated",
+"Which execution blocks of 2015.1.01080.S and 2015.A.00021.S were used, and whether the pipeline or manual calibration was used",
+"Line-free channels used for the mstransform continuum fit and the cube velocity resolution, auto-multithresh parameters",
+"How the IRS 7 flux density and its 45 uJy uncertainty were obtained given sidelobes of Sgr A* (fit region, background treatment, Gaussian fit setup)",
+"Flux scale uncertainty of the calibrators (Titan, J1733-1304)",
+"Integration aperture (oval in Figure 4a) and exact velocity limits used for the H30alpha line integral and the Gaussian line fit",
+"How the 232 GHz continuum was derived beyond the assumed spectral index 0.1, and the exact a(nu,Te) value used",
+"How the uncertainties on R, Te, ne were propagated"
+],
+"analysis_steps": [
+{"order": 1, "goal": "image the 340 GHz continuum",
+"method": {"value": "self-calibrate the 340 GHz data and image with clean using Briggs weighting on the Aug. and Sep. 2016 days", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The imaging to obtain the maps was done using CASA 5.4 with `clean` task."},
+{"loc": "340 GHz Observation", "quote": "Using two days data of Aug. and Sep. 2016"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "robust = 0.2; beam 0.107 x 0.101 arcsec, PA=-78 deg; 1 sigma = 45 uJy/beam", "evidence": [
+{"loc": "340 GHz Observation", "quote": "briggs weighting (robust parameter = 0.2)"},
+{"loc": "340 GHz Observation", "quote": "The $1\\sigma$ sensitivity in the emission-free area is $45~\\mu$Jy beam$^{-1}$."}
+]},
+{"value": "phase calibrator J1717-3342; flux scale from Titan and J1733-1304", "evidence": [
+{"loc": "340 GHz Observation", "quote": "J1717-3342 was used as a phase calibrator in the 340 GHz observation."},
+{"loc": "340 GHz Observation", "quote": "The flux density scale was determined using Titan and J1733-1304."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "dynamic range > 50000 in the area", "evidence": [
+{"loc": "340 GHz Observation", "quote": "The dynamic range reaches to $>50000$ in the area."}
+]}},
+{"order": 2, "goal": "make the H30alpha line cube",
+"method": {"value": "subtract the continuum in the uv data, then tclean with auto-multithresh masking and Briggs weighting", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "After the subtraction of the continuum emission from the data using CASA task, `mstransform (fitorder=1)`"},
+{"loc": "H30alpha recombination line", "quote": "we made images using CASA 5.0 with `tclean` task with the multi-threshold auto-boxing algorithm"}
+]},
+"software": ["CASA", "mstransform", "tclean"],
+"key_parameters": [
+{"value": "robust = 0.5; beam 0.41 x 0.30 arcsec, PA=-77 deg; 0.2 mJy/beam in a line-free channel; phase calibrator J1744-3116", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "briggs weighting (robust parameter = 0.5)"},
+{"loc": "H30alpha recombination line", "quote": "J1744-3116 was used as a phase calibrator."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "sensitivity compared with the ALMA sensitivity calculator", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "The sensitivity is close to the expected one by the ALMA sensitivity calculator."}
+]}},
+{"order": 3, "goal": "measure IRS 7 position and 340 GHz flux density",
+"method": {"value": "2D Gaussian fitting of the point-like source in the 340 GHz map, primary-beam corrected; mean brightness temperature from the beam-averaged formula", "evidence": [
+{"loc": "Results", "quote": "Using 2D Gaussian fitting, the position of IRS 7 is derived to be"},
+{"loc": "Results", "quote": "The angular extent of IRS 7 itself is not detected, and thus the total flux density at 340 GHz of IRS 7 is estimated to be"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Tb[K] = 1.22e6 (theta_maj x theta_min / arcsec^2)^-1 (nu/GHz)^-2 S_nu[Jy]", "evidence": [
+{"loc": "Results", "quote": "This flux density corresponds to the beam averaged brightness temperature of $\\bar{T_\\mathrm{B}}=0.41\\pm0.04$ K"}
+]}
+],
+"assumptions": [
+{"value": "source is unresolved (point-like)", "evidence": [
+{"loc": "Results", "quote": "The angular extent of IRS 7 itself is not detected"}
+]}
+],
+"fitting": {"value": "2D Gaussian fit; sampler/priors not stated", "evidence": [
+{"loc": "Results", "quote": "Using 2D Gaussian fitting, the position of IRS 7 is derived to be"}
+]},
+"validation": {"value": "position compared with the IR position corrected to the observation epoch with the IR proper motion", "evidence": [
+{"loc": "Results", "quote": "using the IR proper motion ((cite: Schodel))"}
+]}},
+{"order": 4, "goal": "derive the photosphere radius",
+"method": {"value": "treat the 340 GHz emission as optically thick photospheric emission; beam-dilution uniform-disk relation between mean Tb and Teff solved for R", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "Assuming that the distribution of the brightness temperature is like an uniform-disk, this is approximated as the following equation"},
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "Therefore, the radius of the photosphere is estimated to"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Tb ~ Teff = 3600 K; mean Tb = 0.41 +/- 0.04 K; d ~ 8.2 kpc", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "The brightness temperature at 340 GHz is assumed to be $T_\\mathrm{eff} = 3600$ K here."}
+]}
+],
+"assumptions": [
+{"value": "optically thick thermal emission from the photosphere or its vicinity, uniform-disk brightness", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "This also suggests that the sub-millimeter continuum emission is emitted from the photosphere itself or the vicinity."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "compared with the VLTI H-band radius, judged consistent because the star is variable in size", "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "However, our radius would be consistent with the VLTI radius because IRS 7 is reported to be variable in size based on the observations in 2008 and 2013 ((cite: Paumard2014))."}
+]}},
+{"order": 5, "goal": "characterise the H30alpha kinematics",
+"method": {"value": "channel maps, moment 0 and peak intensity maps, position-velocity diagram, Gaussian fit to the line profile, then sound speed, expansion velocity and spatial velocity from formulae", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The central velocity and FWHM velocity width by Gaussian fitting is $V_\\mathrm{c} = -124.4\\pm0.63$ km s$^{-1}$ and $V_\\mathrm{FWHM} =31.9\\pm1.5$ km s$^{-1}$, respectively."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "channel maps with dV = 10 km/s; moment 0 over V_LSR = -400 to 400 km/s", "evidence": [
+{"loc": "Results", "quote": "The integrated velocity range is $V_\\mathrm{LSR} = -400$ to $400$ km s$^{-1}$."},
+{"loc": "Results", "quote": "The velocity width of each map is $\\Delta V=10$ km s$^{-1}$."}
+]}
+],
+"assumptions": [
+{"value": "hydrogen ion temperature equals the electron temperature, Te* = 4650 K", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "Assuming Hydrogen ion temperature is equal to the electron temperature"}
+]},
+{"value": "observed velocity extent comes from gas expansion alone", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "If the observed velocity extent originates from the gas expansion alone"}
+]}
+],
+"fitting": {"value": "Gaussian fit to the single-peak H30alpha profile; no sampler stated", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The shell like structure around IRS 7 has a single-peak line profile."}
+]},
+"validation": {"value": "SiO v=2 maser velocity (-120 km/s) compared with the ionized gas central velocity", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "There is a peak of the SiO maser emission line at $V_\\mathrm{LSR} = -120$ km s$^{-1}$."}
+]}},
+{"order": 6, "goal": "derive the LTE electron temperature",
+"method": {"value": "iteratively solve the LTE formula using the H30alpha integrated line intensity and the 232 GHz continuum flux density, assuming both are optically thin", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "assuming that the line and continuum emissions are both optically thin and in local thermodynamic equilibrium."},
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The LTE electron temperature is obtained by iteratively solving the formula for $T^\\ast_{\\mathrm e}$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "S(232 GHz) = S(340 GHz) (340/232)^0.1 = 3.81 +/- 0.10 mJy", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The continuum flux density is estimated to be $S_\\nu(\\mathrm{232GHz})=3.81\\pm0.10$ mJy using $S_\\nu(\\mathrm{232GHz})=S_\\nu(\\mathrm{340GHz})(\\frac{340}{232})^{0.1}$."}
+]}
+],
+"assumptions": [
+{"value": "He+/H+ number ratio = 0.09; a = 0.678-0.892 for Te = 0.3-1.5e4 K", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "$a=0.678-0.892$ for $T^\\ast_{\\mathrm e}=0.3-1.5\\times10^4$ K (cite: Mezger)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "compared with an earlier Te = 7000 K and with Teff of the photosphere", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "This is slightly higher than the effective temperature of the photosphere of IRS 7"}
+]}},
+{"order": 7, "goal": "derive electron density, gas mass and mass loss rate",
+"method": {"value": "mean continuum brightness temperature of the shell gives ne with the Altenhoff formula; gas mass from a uniform sphere; expansion time from D/2 over Vexp; mass loss rate = M_gas / T_exp", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The mean path length is given by"},
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "If the gas mass is maintained mainly by the mass loss of IRS 7"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "shell diameter D ~ 0.055 pc = 1.7e17 cm; path length L = 2D/3 ~ 1.1e17 cm; mass abundance ratio 1.4", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The mean path length is $L\\sim1.1\\times10^{17}$ cm."}
+]}
+],
+"assumptions": [
+{"value": "spherical ionized gas of diameter D; solar abundances", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "assuming that the ionized gas has a spherical shape with the diameter, $D$."},
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "assuming the solar abundance of elements"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "mass loss rate compared with expected values for a pulsating red supergiant of 20-25 Msun", "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "consistent with the expected mass loss rate of a pulsating red supergiant star with $M=20-25 M_\\odot$ (e.g. (cite: Yoon))"}
+]}},
+{"order": 8, "goal": "test the bow shock interpretation",
+"method": {"value": "compare the transverse velocity vector with the brightened southern half, and estimate the kinetic energy of a hydrogen atom against the 13.6 eV ionization energy", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The kinetic energy reaches to $E_\\mathrm{kin} \\sim 22~\\mathrm{eV}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "V_air >~ 50 km/s, V_exp = 14 km/s; V_t = sqrt(V_perp^2 + V_LSR^2)", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The 3D airspeed would be at least $V_\\mathrm{air} \\gtrsim 50$ km s$^{-1}$ or supersonic."}
+]}
+],
+"assumptions": [
+{"value": "IRS 7 SiO maser velocity and position trace the star itself", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The radial velocity and position of the SiO maser emission should be nearly equal to the radial velocity and position of IRS 7 itself."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "positional shift of IRS 7 to the south judged consistent with earlier bow shock discussions", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "is consistent with the bow shock hypothesis, which have already been discussed"}
+]}}
+],
+"software": [
+{"name": "CASA", "version": "5.4 (340 GHz continuum); 5.0 (H30alpha cube)", "used_for": {"value": "data analysis, self-calibration and imaging", "evidence": [
+{"loc": "340 GHz Observation", "quote": "We performed the data analysis by Common Astronomy Software Applications (CASA) (cite: McMullin)."},
+{"loc": "340 GHz Observation", "quote": "The imaging to obtain the maps was done using CASA 5.4 with `clean` task."}
+]}},
+{"name": "tclean (auto-multithresh)", "version": "not stated", "used_for": {"value": "H30alpha cube imaging with automatic masking", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "which is automatically identify the emission regions to be CLEANed using threshold based on rms noise and sidelobe level and updated as the deconvolution iterations progress (cite: Kepley)"}
+]}},
+{"name": "mstransform", "version": "not stated", "used_for": {"value": "continuum subtraction from the H30alpha data (fitorder=1)", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "After the subtraction of the continuum emission from the data using CASA task, `mstransform (fitorder=1)`"}
+]}},
+{"name": "ALMA sensitivity calculator", "version": "not stated", "used_for": {"value": "expected line sensitivity for comparison", "evidence": [
+{"loc": "H30alpha recombination line", "quote": "The sensitivity is close to the expected one by the ALMA sensitivity calculator."}
+]}}
+],
+"results_numeric": [
+{"quantity": "340 GHz continuum synthesized beam", "value": "0.107 x 0.101 arcsec, PA=-78 deg", "uncertainty": "not stated", "units": "arcsec", "from_step": 1, "evidence": [
+{"loc": "340 GHz Observation", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.107\\ensuremath{''} \\times 0.101\\ensuremath{''}, PA=-78^\\circ$ in FWHM"}
+]},
+{"quantity": "340 GHz continuum 1 sigma noise", "value": "45", "uncertainty": "not stated", "units": "uJy/beam", "from_step": 1, "evidence": [
+{"loc": "340 GHz Observation", "quote": "The $1\\sigma$ sensitivity in the emission-free area is $45~\\mu$Jy beam$^{-1}$."}
+]},
+{"quantity": "H30alpha cube synthesized beam", "value": "0.41 x 0.30 arcsec, PA=-77 deg", "uncertainty": "not stated", "units": "arcsec", "from_step": 2, "evidence": [
+{"loc": "H30alpha recombination line", "quote": "$\\theta_\\mathrm{maj} \\times \\theta_\\mathrm{min}=0.41\\ensuremath{''} \\times 0.30\\ensuremath{''}, PA = -77^{\\circ}$ in FWHM"}
+]},
+{"quantity": "H30alpha cube noise at a line-free channel", "value": "0.2", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [
+{"loc": "Results", "quote": "The $1\\sigma$ noise level is $0.2$ mJy beam$^{-1}$."}
+]},
+{"quantity": "IRS 7 position (ICRS, epoch 2016.68)", "value": "RA 17h45m40.03625s, Dec -29d00m22.732s", "uncertainty": "0.0002 s in RA, 0.002 arcsec in Dec", "units": "hms / dms", "from_step": 3, "evidence": [
+{"loc": "Results", "quote": "$\\alpha_{\\rm ICRS}=17^{\\rm h}45^{\\rm m}40^{\\rm s}.03625\\pm0^{\\rm s}.0002$, $\\delta_{\\rm ICRS }=-29^\\circ00\\ensuremath{'}22.732\\ensuremath{''}\\pm0.002\\ensuremath{''}$"}
+]},
+{"quantity": "IRS 7 total flux density at 340 GHz", "value": "448", "uncertainty": "45", "units": "uJy", "from_step": 3, "evidence": [
+{"loc": "abstract", "quote": "The total flux density of IRS 7 is $S_\\nu=448\\pm45 \\mu$Jy."}
+]},
+{"quantity": "IRS 7 beam averaged brightness temperature at 340 GHz", "value": "0.41", "uncertainty": "0.04", "units": "K", "from_step": 3, "evidence": [
+{"loc": "Results", "quote": "This flux density corresponds to the beam averaged brightness temperature of $\\bar{T_\\mathrm{B}}=0.41\\pm0.04$ K"}
+]},
+{"quantity": "Spectral index between 34.5 and 340 GHz", "value": "> 1.5", "uncertainty": "lower limit", "units": "dimensionless", "from_step": 4, "evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "The spectrum index is estimated to be $\\alpha >1.5$"}
+]},
+{"quantity": "IRS 7 photosphere radius (2016)", "value": "1170", "uncertainty": "60", "units": "Rsun", "from_step": 4, "evidence": [
+{"loc": "abstract", "quote": "The flux density indicates that IRS 7 has a photosphere radius of $R=1170\\pm60 ~R_\\odot$"}
+]},
+{"quantity": "Shell diameter after beam subtraction", "value": "1.38 arcsec = 0.055 pc", "uncertainty": "not stated", "units": "arcsec; pc", "from_step": 5, "evidence": [
+{"loc": "Results", "quote": "The diameter of the structure is $\\theta_\\mathrm{d}=1.38\\ensuremath{''}$ after synthesized beam subtraction or $D=0.055$ pc."}
+]},
+{"quantity": "H30alpha line central velocity", "value": "-124.4", "uncertainty": "0.63", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "$V_\\mathrm{c} = -124.4\\pm0.63$ km s$^{-1}$"}
+]},
+{"quantity": "H30alpha line FWHM velocity width", "value": "31.9", "uncertainty": "1.5", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "$V_\\mathrm{FWHM} =31.9\\pm1.5$ km s$^{-1}$"}
+]},
+{"quantity": "Velocity gradient of the north extension", "value": "~22", "uncertainty": "not stated", "units": "km/s/arcsec", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "a velocity gradient of $\\sim22$ km s$^{-1}$ arcsec$^{-1}$"}
+]},
+{"quantity": "Sound speed of the ionized gas", "value": "8.9", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "the sound velocity of the ionized gas is estimated to $C_\\mathrm{s} = 8.9$ km s$^{-1}$"}
+]},
+{"quantity": "Expansion velocity of the shell", "value": "14", "uncertainty": "1", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "the expanding velocity is estimated to $V_\\mathrm{exp} = 14\\pm1$ km s$^{-1}$"}
+]},
+{"quantity": "Spatial traveling velocity of IRS 7", "value": "~181", "uncertainty": "not stated", "units": "km/s", "from_step": 5, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The spatial traveling velocity of IRS 7 is estimated to be $V_\\mathrm{t}\\sim181$ km s$^{-1}$"}
+]},
+{"quantity": "H30alpha integrated line intensity of the shell", "value": "0.79", "uncertainty": "0.08", "units": "Jy km/s", "from_step": 6, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "=0.79\\pm0.08$ Jy km s$^{-1}$"}
+]},
+{"quantity": "Continuum flux density at 232 GHz", "value": "3.81", "uncertainty": "0.10", "units": "mJy", "from_step": 6, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "$S_\\nu(\\mathrm{232GHz})=3.81\\pm0.10$ mJy"}
+]},
+{"quantity": "Mean LTE electron temperature of the shell", "value": "4650", "uncertainty": "500", "units": "K", "from_step": 6, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The mean electron temperature of the shell like structure around IRS 7 is estimated to $\\bar{T}^\\ast_{\\mathrm e}=4650\\pm500$ K."}
+]},
+{"quantity": "Mean brightness temperature of the shell continuum", "value": "8.0", "uncertainty": "0.1", "units": "K", "from_step": 7, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "$\\bar{T}_{\\mathrm B}=8.0\\pm0.1$ K"}
+]},
+{"quantity": "Mean electron density of the shell", "value": "6.1e4", "uncertainty": "0.6e4", "units": "cm^-3", "from_step": 7, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The mean electron density is estimated to be $\\bar{n}_{\\mathrm e}=(6.1\\pm0.6)\\times10^4$ cm$^{-3}$."}
+]},
+{"quantity": "Mass of the ionized gas", "value": "~0.18", "uncertainty": "not stated", "units": "Msun", "from_step": 7, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "The mass of the ionized gas is $M_{\\mathrm gas}\\sim0.18 M_\\odot$"}
+]},
+{"quantity": "Expansion time scale", "value": "~1900", "uncertainty": "not stated", "units": "yr", "from_step": 7, "evidence": [
+{"loc": "Physical Properties of the Surrounding Structures of IRS7", "quote": "$T_\\mathrm{exp} \\sim \\frac{D/2}{V_\\mathrm{exp}} =1900$ yrs"}
+]},
+{"quantity": "Mass loss rate of IRS 7", "value": "~1e-4", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 7, "evidence": [
+{"loc": "abstract", "quote": "The mass loss rate is estimated to be $\\dot{m} \\sim 1\\times 10^{-4} M_\\odot$ yr$^{-1}$"}
+]},
+{"quantity": "Kinetic energy of a hydrogen atom in the bow shock", "value": "~22", "uncertainty": "not stated", "units": "eV", "from_step": 8, "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The kinetic energy reaches to $E_\\mathrm{kin} \\sim 22~\\mathrm{eV}$"}
+]}
+],
+"findings_qualitative": [
+{"value": "First sub-millimeter detection of a cool star in the Nuclear star cluster; IRS 7 appears point-like at 340 GHz", "evidence": [
+{"loc": "Results", "quote": "This is the first sub-millimeter detection of a cool star in the NSC."}
+]},
+{"value": "The H30alpha shell with north extension has no counterpart in molecular emission lines (CS, H13CO+, SiO)", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "In addition, these structures have no associated feature in the molecular emission lines"}
+]}
+],
+"claims": [
+{"hypothesis": "Can the photosphere of the cool star IRS 7 be detected at sub-millimeter wavelengths",
+"experiment": "340 GHz ALMA continuum imaging and 2D Gaussian fit of the point-like source at the IR position",
+"result": "S_nu = 448 +/- 45 uJy, mean Tb = 0.41 +/- 0.04 K, position consistent with IR",
+"finding": "first sub-millimeter detection of a cool star in the NSC, emitted from the photosphere or its vicinity",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "We detected firstly the continuum emission at 340 GHz of IRS 7 using ALMA."},
+{"loc": "Results", "quote": "This is the first sub-millimeter detection of a cool star in the NSC."}
+]},
+{"hypothesis": "Is the sub-millimeter photosphere radius consistent with the VLTI measurement",
+"experiment": "beam-dilution uniform-disk model with Tb = Teff = 3600 K and the measured mean Tb",
+"result": "R = 1170 +/- 60 Rsun versus 960 +/- 92 Rsun from VLTI",
+"finding": "slightly larger but consistent given the size variability of IRS 7",
+"support": "supported",
+"evidence": [
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "Our estimated photosphere radius at 340 GHz is slightly larger than the radius at H band measured by VLTI."},
+{"loc": "Photosphere at 340 GHz of IRS 7", "quote": "However, our radius would be consistent with the VLTI radius because IRS 7 is reported to be variable in size based on the observations in 2008 and 2013 ((cite: Paumard2014))."}
+]},
+{"hypothesis": "Is the ionized shell produced by mass loss of IRS 7 with a mass loss rate typical of a pulsating red supergiant",
+"experiment": "H30alpha to 232 GHz continuum ratio for Te, continuum Tb for ne, then gas mass over expansion time",
+"result": "Te = 4650 +/- 500 K, ne = (6.1 +/- 0.6)e4 cm^-3, mass loss rate ~1e-4 Msun/yr",
+"finding": "mass loss rate consistent with a pulsating red supergiant of 20-25 Msun",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "which is consistent with a typical mass loss rate of a pulsating red supergiant star with"},
+{"loc": "abstract", "quote": "The mass loss rate is estimated to be $\\dot{m} \\sim 1\\times 10^{-4} M_\\odot$ yr$^{-1}$"}
+]},
+{"hypothesis": "Is the shell expanding supersonically and does IRS 7 travel supersonically through the ambient gas",
+"experiment": "Gaussian line fit, sound speed from Te, expansion velocity from FWHM, PV diagram and transverse velocity from SiO masers",
+"result": "Vexp = 14 +/- 1 km/s versus Cs = 8.9 km/s; radial airspeed ~50 km/s; Vt ~181 km/s",
+"finding": "expansion is moderately supersonic and IRS 7 moves supersonically toward the south",
+"support": "supported",
+"evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The expanding velocity shows that the expansion is moderately supersonic."},
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "IRS 7 runs in the ambient matter at a supersonic speed in the south direction."}
+]},
+{"hypothesis": "Are the brightened southern half and the north extension a bow shock and a cometary tail",
+"experiment": "compare the transverse velocity vector, the PV diagram and the shock kinetic energy against 13.6 eV",
+"result": "transverse velocity vector perpendicular to the bright southern half; north extension and shell lie on one inclined linear PV feature; Ekin ~ 22 eV",
+"finding": "kinematics would support the bow shock plus cometary tail picture",
+"support": "partially",
+"evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "This relation suggests that the brightened southern half of the structure is a sign of the bow shock made by supersonic gas traveling in the ambient matter."},
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "The north extension would be a gas stream flowed from the shell like structure, or would be like a cometary tail."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "line to continuum ratio of recombination lines and photospheric emission favour millimeter and sub-millimeter wavelengths, so ALMA at 340 GHz was used", "evidence": [
+{"loc": "Introduction", "quote": "such observations are suitable to detect both the continuum emission from IRS 7 itself and the recombination line from the extended structure."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Difference in appearance from the 34.5 GHz map attributed mainly to beam size; a Te distribution effect is not excluded", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "However, it cannot completely ruled out another cause, that is the distribution of the electron temperature because the line/continuum ratio is sensitive to the electron temperature."}
+]}
+],
+"limitations_admitted": [
+{"value": "IRS 7 image is slightly distorted by unavoidable sidelobes of Sgr A*", "evidence": [
+{"loc": "Results", "quote": "the image is slightly distorted by unavoidable side lobes of Sgr A"}
+]},
+{"value": "Electron temperature distribution may contribute to the appearance difference from 34.5 GHz", "evidence": [
+{"loc": "Kinematics of the Surrounding Structures of IRS 7", "quote": "However, it cannot completely ruled out another cause, that is the distribution of the electron temperature because the line/continuum ratio is sensitive to the electron temperature."}
+]}
+],
+"referee_caveats_inferred": [
+"Photosphere radius depends on assuming Tb = Teff = 3600 K and a uniform disk, and IRS 7 is only ~10 sigma at the beam size, so the R uncertainty of 60 Rsun looks small",
+"The 34.5 GHz limit and the 340 GHz flux come from different epochs and a star variable in size, so the spectral index limit is loose",
+"Te and ne rely on optically thin LTE, a spherical shell geometry, the assumed continuum spectral index 0.1 and He+/H+ = 0.09",
+"Shell continuum at 232 GHz is scaled from 340 GHz rather than measured, and may include stellar photospheric flux",
+"Mass loss rate comes from a single expansion time scale with Vexp derived from the line width; non-thermal broadening and the dominance of ambient gas are not excluded",
+"Bow shock interpretation rests on a 2D proper motion plus line-of-sight velocity and a rough energy estimate"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Execution block list and spectral window setup for both projects",
+"Imaging parameters for the continuum clean (cell, image size, threshold, masks) and self-calibration settings",
+"Exact flux extraction procedure for IRS 7 in the presence of Sgr A* sidelobes",
+"Integration region and velocity range definitions used for the line integral and Gaussian fit",
+"Error propagation for R, Te, ne"
+],
+"estimated_data_volume_inferred": "Three 340 GHz execution blocks plus one DDT dataset, roughly tens of GB raw; the calibrated cubes needed here are a few GB",
+"score_inferred": 3,
+"score_reason": "Both project codes are printed and the formulae and results are numeric, but imaging, self-calibration and flux extraction details are missing and the details sit in an earlier paper.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Public status of the data is not stated, and calibration, imaging and flux extraction settings are incomplete or deferred to earlier work.",
+"methods_papers": [
+{"citation": "(cite: Tsuboi2017b) Tsuboi, M., et al. 2017b, ApJL, 850, L5", "why": "earlier IRS 13E paper that published the same 340 GHz and H30alpha reductions"},
+{"citation": "(cite: Kepley) Kepley, A. A., et al. 2019, arXiv:1912.04970", "why": "auto-multithresh masking algorithm used in tclean"}
+],
+"companion_papers": [
+{"citation": "(cite: Tsuboi2017) Tsuboi, M., et al. 2017, ApJ, 842, 94", "why": "source of the SiO maser spectrum and the He+/H+ ratio"},
+{"citation": "(cite: Tsuboi2018) Tsuboi, M., et al. 2018, PASJ, 70, 85", "why": "molecular line maps showing no counterpart of the IRS 7 structure"},
+{"citation": "(cite: Yusef-Zadeh2017) Yusef-Zadeh, F., et al. 2017, ApJL, 850, L30", "why": "34.5 GHz continuum map of the shell like structure"}
+],
+"related_projects_or_surveys": ["ALMA Cycle 3 program 2015.1.01080.S", "ALMA DDT program 2015.A.00021.S"]
+}

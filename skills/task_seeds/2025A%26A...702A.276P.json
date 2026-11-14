@@ -1,0 +1,528 @@
+{
+ "bibcode": "2025A&A...702A.276P",
+ "title": "The pre-eruption state of T CrB as observed with ALMA in 2024",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202555830",
+ "arxiv_id": "2509.05111",
+ "fields": [
+  "stellar_physics",
+  "transients",
+  "evolved_stars"
+ ],
+ "question": "What is the pre-eruption state of T CrB and what are the properties (density, temperature, ionization) of the circumstellar medium and red giant wind into which the imminent nova ejecta will expand?",
+ "alma_project_codes": [
+  "2023.A.00038.T",
+  "2023.A.00041.S"
+ ],
+ "data": {
+  "bands": "Bands 1, 3, 4, 6, 7, and 8",
+  "arrays": "12 m main array (41-44 antennas) and 7 m ACA array (9-10 antennas, test only)",
+  "angular_resolution": "0.303x0.184 arcsec to 8.14x5.68 arcsec (12m array); 0.48x0.35 arcsec (Bands 7+8 combined)",
+  "sensitivity": "17 to 114 uJy/beam continuum RMS (12m array per-MOUS); 0.018 mJy/beam (all 12m combined); 0.16 to 8.2 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "VLA 5 GHz to 35 GHz flux density spectra of T CrB in 2016/17",
+    "evidence": [
+     {
+      "loc": "Spectral re-analysis of the 2016/17 VLA data",
+      "quote": "We can, however, assume a smooth spectral transition to the frequency window just below ours and compare to the measurements made by L2019 in 2016/17 with the VLA at 5 GHz to 35 GHz."
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...884....8L)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR3 distance to T CrB (D ~ 895 pc)",
+    "evidence": [
+     {
+      "loc": "Data interpretation",
+      "quote": "Now, we use equation [\\[eq:K\\]](#eq:K) to obtain a relation between $n_0$, $R$ and $T_0$, knowing $\\beta$ and using the distance $D\\sim$895 pc (cite: 2021AJ....161..147B)."
+     }
+    ]
+   },
+   "citation": "(cite: 2021AJ....161..147B)"
+  },
+  {
+   "what": {
+    "value": "Gaia EDR3 proper motion and astrometry for T CrB",
+    "evidence": [
+     {
+      "loc": "Calibration, imaging, and flux density measurements",
+      "quote": "The T CrB position used was (ICRS) RA 15:59:30.154, DEC +25.55.12.909 (Epoch 2025-08-10, 22:40:20.4 UT), with proper motion in RA = -6.853E-16 rad/s, in DEC = 1.846E-15 rad/s in agreement with the values from (cite: gaia_edr3)."
+     }
+    ]
+   },
+   "citation": "(cite: gaia_edr3)"
+  },
+  {
+   "what": {
+    "value": "Orbital parameters, distance, inclination, and stellar masses/radii of T CrB",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Independent of the particular value of the distance considered, the binary orbit is found to be circular to a high precision with period of 227.55 days."
+     },
+     {
+      "loc": "Spectral and spatial analysis",
+      "quote": "(the inclination of the system is between $49^\\circ$ and $56^\\circ$ according to the latest analysis by (cite: 2025ApJ...983...76H))."
+     }
+    ]
+   },
+   "citation": "(cite: 2025ApJ...983...76H)"
+  },
+  {
+   "what": {
+    "value": "Orbital phase ephemeris of T CrB",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The orbital phase is computed from the centroid JD following (cite: 2000AJ....119.1375F)."
+     }
+    ]
+   },
+   "citation": "(cite: 2000AJ....119.1375F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search for spectral line emission and derive line upper limits",
+   "method": "Per-day, per-SPW continuum-subtracted full spectral resolution cubes were searched using the ALMA QA Pipeline line search algorithm and visual inspection; a 2-sigma upper limit on HCN v=0 J=4-3 in combined Band 7+7b SPW 4 was derived from the peak channel.",
+   "software": [
+    "ALMA Pipeline",
+    "CASA"
+   ],
+   "key_parameters": [
+    "velocity resolution 0.82 km/s in Band 7 SPW 4"
+   ],
+   "assumptions": [
+    "10 km/s line width assumed for the HCN J=4-3 upper limit"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure per-band/per-visit continuum flux densities and noise RMS",
+   "method": "Image each 12m MOUS over aggregate bandwidth with CASA tclean (mtmfs, robust=0.5), estimate RMS in an annulus between 30% and 60% of the primary beam radius in the non-PB-corrected image, and fit a 2D Gaussian to an elliptical region of synthesized beam size around the peak to take the peak of the fitted Gaussian as flux density.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "deconvolver='mtmfs' (nterms=2 where fractional bandwidth > 10%), Briggs robust=0.5, pixel width = 10% of synthesized beam minor axis"
+   ],
+   "assumptions": [
+    "Source is an unresolved point source; systematic absolute flux calibration uncertainty is 2.5% in Bands 1-5 and 5% in Bands 6-8"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit power-law SED to ALMA continuum flux densities and cross-check with combined MTMFS imaging",
+   "method": "Fit power law F(nu) = F0 * nu^alpha to the five concurrent phase 0.43 points and to all nine points using scipy.optimize.curve_fit in Python 3; cross-check by imaging all 12m data combined with tclean MTMFS (nterms=2) and reading the central pixel of the PB-corrected alpha and alpha.error images.",
+   "software": [
+    "Python 3",
+    "scipy.optimize",
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Power law F(nu) = F0 * nu^alpha with nu in GHz; tclean MTMFS with nterms=2"
+   ],
+   "assumptions": [
+    "Power-law spectral energy distribution across 42 to 400 GHz"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain extended continuum emission and circum-binary brightness temperature",
+   "method": "Combine all Band 7 and 8 data to maximize angular resolution and measure the mean surface brightness and RMS in an annulus of inner radius 0.8 arcsec and outer radius 1.6 arcsec centered on T CrB to derive a 2-sigma continuum surface brightness and brightness temperature upper limit.",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Annulus inner radius = 0.8 arcsec, outer radius = 1.6 arcsec; beam FWHM = 0.48 x 0.35 arcsec; confidence level = 2 sigma"
+   ],
+   "assumptions": [
+    "Gaia DR3 distance of ~895 pc used to convert 0.8-1.6 arcsec to 720-1440 AU"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Re-analyze 2016/17 VLA high-state spectra from Linford et al. (2019)",
+   "method": "Fit separate power laws to the upper four frequency points (13.5 GHz to 35 GHz) of the seven per-visit VLA spectra from Linford et al. (2019), excluding two nights affected by atmospheric delay model and decorrelation systematics, and compare the resulting spectral indices with the 2024 ALMA index.",
+   "software": [
+    "Python 3",
+    "scipy.optimize"
+   ],
+   "key_parameters": [
+    "Frequency range 13.5 GHz to 35 GHz (4 data points per night across 5 retained nights)"
+   ],
+   "assumptions": [
+    "Smooth spectral transition between the upper VLA band (13.5-35 GHz) and the ALMA frequency range (42-407 GHz)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Model stellar wind density profile, temperature, density scale, and mass-loss rate",
+   "method": "Apply an analytical isotropic, isothermal, fully ionized free-free stellar wind model in the hybrid optical depth regime: solve Eq. 2 for the wind density exponent beta from alpha, set lower limits on turnover frequency nu_t from the highest observed frequencies, and use Eqs. 3 and 6 to constrain the allowed (n0, T0) parameter space and mass-loss rate for candidate donor radii R.",
+   "software": [],
+   "key_parameters": [
+    "nu_0 = 30 GHz; nu_t,min,2016/17 = 35 GHz; nu_t,min,2024 = 350 GHz; R = 54, 70, 100 R_sun"
+   ],
+   "assumptions": [
+    "Isotropic, isothermal (T0 > 10^4 K), fully ionized wind with power-law density n(r) = n0 (r/R)^(-beta); Rayleigh-Jeans approximation (h*nu << k_B*T0); distance D ~ 895 pc; wind launch velocity = 10 km/s"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density at 107.804 GHz (Band 3, MJD 60532.887, phase 0.4328)",
+   "value": "216",
+   "uncertainty": "+/-47 (stat) +/-11 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60532.887 | 0.4328 | 107.804 | 216$\\pm$47$\\pm$11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 224.533 GHz (Band 6, MJD 60532.898, phase 0.4329)",
+   "value": "251",
+   "uncertainty": "+/-52 (stat) +/-13 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60532.898 | 0.4329 | 224.533 | 251$\\pm$52$\\pm$13 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 136.307 GHz (Band 4, MJD 60532.922, phase 0.4329)",
+   "value": "212",
+   "uncertainty": "+/-38 (stat) +/-11 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60532.922 | 0.4329 | 136.307 | 212$\\pm$38$\\pm$11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 44.079 GHz (Band 1a, MJD 60532.944, phase 0.4330)",
+   "value": "111",
+   "uncertainty": "+/-34 (stat) +/-2.8 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60532.944 | 0.4330 | 44.079 | 111$\\pm$34$\\pm$2.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 349.507 GHz (Band 7, MJD 60532.969, phase 0.4331)",
+   "value": "435",
+   "uncertainty": "+/-114 (stat) +/-22 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60532.969 | 0.4331 | 349.507 | 435$\\pm$114$\\pm$22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 399.993 GHz (Band 8, MJD 60559.368, phase 0.5492)",
+   "value": "434",
+   "uncertainty": "+/-56 (stat) +/-22 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60559.368 | 0.5492 | 399.993 | 434$\\pm$56$\\pm$22 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 349.507 GHz (Band 7b, MJD 60568.775, phase 0.5905)",
+   "value": "338",
+   "uncertainty": "+/-79 (stat) +/-17 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60568.775 | 0.5905 | 349.507 | 338$\\pm$79$\\pm$17 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 42.089 GHz (Band 1b, MJD 60632.665, phase 0.8712)",
+   "value": "181",
+   "uncertainty": "+/-17 (stat) +/-4.5 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60632.665 | 0.8712 | 42.089 | 181$\\pm$17$\\pm$4.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 44.014 GHz (Band 1, MJD 60636.688, phase 0.8889)",
+   "value": "182",
+   "uncertainty": "+/-39 (stat) +/-4.6 (syst)",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 60636.688 | 0.8889 | 44.014 | 182$\\pm$39$\\pm$4.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA spectral index alpha (orbital phase 0.43)",
+   "value": "0.56",
+   "uncertainty": "+/-0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| only 0.43 | 0.014$\\pm$0.0072 | 0.56$\\pm$0.11 | 0.27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA power-law normalization F0 (orbital phase 0.43)",
+   "value": "0.014",
+   "uncertainty": "+/-0.0072",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| only 0.43 | 0.014$\\pm$0.0072 | 0.56$\\pm$0.11 | 0.27 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA spectral index alpha (all phases)",
+   "value": "0.374",
+   "uncertainty": "+/-0.070",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| all phases | 0.039$\\pm$0.013 | 0.374$\\pm$0.070 | 1.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA power-law normalization F0 (all phases)",
+   "value": "0.039",
+   "uncertainty": "+/-0.013",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| all phases | 0.039$\\pm$0.013 | 0.374$\\pm$0.070 | 1.11 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined 12m MTMFS peak flux density at 223.468 GHz",
+   "value": "0.258",
+   "uncertainty": "0.018",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectral and spatial analysis",
+     "quote": "The achieved noise RMS is 0.018 mJy/beam, the peak flux density is 0.258 mJy/beam, and the centroid frequency of the observation is 223.468 GHz."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined 12m MTMFS spectral index alpha",
+   "value": "0.57",
+   "uncertainty": "+/-0.23",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Spectral and spatial analysis",
+     "quote": "contain in their central pixels (where also the peak flux density is measured) the value $\\alpha=0.57\\pm0.23$ which is in very good agreement with our measurement in Table [3](#tab:specfit)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum surface brightness 2-sigma upper limit in 0.8-1.6 arcsec annulus (Bands 7+8)",
+   "value": "0.09",
+   "uncertainty": "2 sigma upper limit",
+   "units": "mJy/beam",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral and spatial analysis",
+     "quote": "This means there is no significant continuum emission between ca. 344 GHz and 407 GHz down to a surface brightness of 0.09 mJy/beam with a confidence level of 2 $\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature 2-sigma upper limit in 0.8-1.6 arcsec annulus (Bands 7+8)",
+   "value": "< 4.7",
+   "uncertainty": "2 sigma upper limit",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral and spatial analysis",
+     "quote": "With the given beam size, this corresponds to a brightness temperature upper limit in the annulus of $T_b < 4.7$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Line surface brightness 2-sigma upper limit in Band 7 SPW 4 (HCN J=4-3)",
+   "value": "3.1",
+   "uncertainty": "2 sigma upper limit",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectral and spatial analysis",
+     "quote": "We thus obtain a $2 \\sigma$ upper limit on the line surface brightness (assuming a 10 km/s line width) for any potential line in spectral window 4 from the peak channel of that spectral window with a value of 3.1 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Average VLA spectral index (13.5-35 GHz, 5 good nights in 2016/17)",
+   "value": "0.90",
+   "uncertainty": "+/-0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Spectral re-analysis of the 2016/17 VLA data",
+     "quote": "The average spectral index for these nights is 0.90$\\pm$0.02 (13.5 GHz - 35 GHz) compared to the average spectral index 0.96$\\pm0.03$ measured by L2019 over their full spectral range 5 GHz to 35 GHz for the same nights."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index difference between 2016/17 VLA (13.5-35 GHz) average and 2024 ALMA",
+   "value": "0.34",
+   "uncertainty": "+/-0.11",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The spectral index is on average lower by 0.34$\\pm$0.11 ."
+    },
+    {
+     "loc": "Spectral re-analysis of the 2016/17 VLA data",
+     "quote": "Compared to the average VLA index we measure between 13.5 and 35 GHz (see above), our ALMA index is softer by 0.34$\\pm$0.11 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Turnover frequency lower limit (2016/17 VLA)",
+   "value": "35",
+   "uncertainty": "lower limit",
+   "units": "GHz",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data interpretation",
+     "quote": "Hereafter, we set a lower limit to the turnover frequency to the last data point of each dataset: $$\\begin{align} &\\nu_{\\text{t,min},\\text{2016/17}}=35~\\text{GHz}\\\\ &\\nu_{\\text{t,min},\\text{2024}}=350~\\text{GHz} \\end{align}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Turnover frequency lower limit (2024 ALMA)",
+   "value": "350",
+   "uncertainty": "lower limit",
+   "units": "GHz",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data interpretation",
+     "quote": "Hereafter, we set a lower limit to the turnover frequency to the last data point of each dataset: $$\\begin{align} &\\nu_{\\text{t,min},\\text{2016/17}}=35~\\text{GHz}\\\\ &\\nu_{\\text{t,min},\\text{2024}}=350~\\text{GHz} \\end{align}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind density profile exponent beta (2016/17)",
+   "value": "2.5",
+   "uncertainty": "+/-0.09",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data interpretation",
+     "quote": "$$\\begin{align} \\label{eq:beta1} &\\beta_{\\text{2016/17}} = 2.5 \\pm 0.09\\\\ \\label{eq:beta2} &\\beta_{\\text{2024}} = 2.0 \\pm 0.11 \\end{align}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Wind density profile exponent beta (2024)",
+   "value": "2.0",
+   "uncertainty": "+/-0.11",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data interpretation",
+     "quote": "$$\\begin{align} \\label{eq:beta1} &\\beta_{\\text{2016/17}} = 2.5 \\pm 0.09\\\\ \\label{eq:beta2} &\\beta_{\\text{2024}} = 2.0 \\pm 0.11 \\end{align}$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-loss rate (2016/17 high state)",
+   "value": "1 to 5 x 10^-8",
+   "uncertainty": "not stated",
+   "units": "M_sun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data interpretation",
+     "quote": "The stellar mass loss rate we measure is in the range 1 to 5$\\times 10^{-8}$M$_{\\odot}/$yr, in agreement with the expected values from the accretion rate during the high-state (cite: 2004A&A...415..609S)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and ALMA Pipeline version numbers used for calibration and tclean imaging",
+  "Image sizes (imsize in pixels) for each band and combined images",
+  "Exact dimensions and position angles of the tight elliptical clean masks and cleaning stopping thresholds",
+  "How statistical and systematic flux calibration uncertainties were combined when weighting the scipy.optimize.curve_fit power-law fits",
+  "Which specific VLA epoch or average normalization K from Linford et al. (2019) was used in Equation 6 to compute the 2016/17 T0(n0) curves in Figure 7"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA and ALMA Pipeline versions",
+  "tclean image dimensions (imsize), clean mask sizes/shapes, and stopping thresholds",
+  "Exact weighting scheme (statistical only vs. statistical + systematic in quadrature) used in scipy.optimize.curve_fit",
+  "Exact normalization value K adopted from the 2016/17 VLA epochs when plotting Equation 6 in Figure 7"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "All MOUS UIDs, project codes, spectral setups, standard pipeline calibration usage, tclean weighting/deconvolver settings, flux extraction method, and analytical model equations are clearly specified, with only minor imaging parameters (imsize, clean threshold, exact CASA version) omitted.",
+ "rediscovery_reason": "The paper relies on standard ALMA pipeline calibration, lists every MOUS UID and intermediate flux density measurement in tables, uses straightforward tclean MTMFS imaging and power-law fitting, and yields clear numeric results.",
+ "source_card": "cards/2025A%26A...702A.276P/sonnet/card.md"
+}

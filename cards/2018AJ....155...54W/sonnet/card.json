@@ -1,0 +1,1047 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018AJ....155...54W",
+  "title": "The Taurus Boundary of Stellar/Substellar (TBOSS) Survey. II. Disk Masses from ALMA Continuum Observations",
+  "year": 2018,
+  "journal": "The Astronomical Journal",
+  "first_author": "Ward-Duong, K.",
+  "n_authors": 12,
+  "arxiv_id": "1712.07669",
+  "doi": "10.3847/1538-3881/aaa128",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00743.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "we present new ALMA Cycle 1 885 $\\mu$m continuum observations of 24 low mass stars and brown dwarfs in the Taurus star forming region"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "24 Taurus M4-M7.75 members (TBOSS ALMA sample)",
+     "coordinates": {
+      "value": "2MASS positions in Table 1 (e.g. J04144730+2646264); ALMA positions in Table 3",
+      "evidence": [
+       {
+        "loc": "Sample",
+        "quote": "The ALMA target sample consists of 24 Taurus low mass stars and brown dwarfs with spectral types of M4-M7.75."
+       },
+       {
+        "loc": "Data Analysis",
+        "quote": "A distance to Taurus of 140pc (cite: kenyon94; bertout99; torres09) is used in the calculation."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Sample",
+        "quote": "The ALMA target sample consists of 24 Taurus low mass stars and brown dwarfs with spectral types of M4-M7.75."
+       },
+       {
+        "loc": "Data Analysis",
+        "quote": "A distance to Taurus of 140pc (cite: kenyon94; bertout99; torres09) is used in the calculation."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Kenyon94; Bertout99; Torres09",
+      "evidence": [
+       {
+        "loc": "Sample",
+        "quote": "The ALMA target sample consists of 24 Taurus low mass stars and brown dwarfs with spectral types of M4-M7.75."
+       },
+       {
+        "loc": "Data Analysis",
+        "quote": "A distance to Taurus of 140pc (cite: kenyon94; bertout99; torres09) is used in the calculation."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust masses of disks around Taurus low-mass stars and brown dwarfs (M4-M7.75), and how do they scale with host mass, age (vs Upper Sco) and compare with exoplanet inventories?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "key questions remain as to whether similar disk mass relations and depletion timescales hold for lower-mass stars and substellar objects."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00743.S",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "during the Cycle 1 Early Science campaign (program ID 2012.1.00743.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (885 um, mean 338.8 GHz)",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "ALMA Band 7 observations were obtained for all targets"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four SPWs at 331.8, 333.8, 343.8, 345.7 GHz; 2 GHz modes, highest-frequency SPW 1.875 GHz",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The four spectral windows were centered on the following four frequencies: 331.8, 333.8, 343.8, and 345.7 GHz, providing a mean frequency of 338.8 GHz (885$\\mu$m)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=3-2 (searched in SPW; flagged for continuum, analyzed in companion paper)",
+     "rest_frequency": "345.70599 GHz",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "to enable a search for $^{12}$CO(3-2) emission at a rest frequency of 345.70599 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "17.3-1300 m (some tracks 24.2-820.2 m)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "17.3 – 1300"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Natural 0.47x0.38 arcsec; Uniform 0.33x0.22; Briggs 0.34x0.24",
+    "evidence": [
+     {
+      "loc": "Data Analysis",
+      "quote": "Average CLEAN beam sizes for the various weighting schemes were $0.47\\ensuremath{''} \\times 0.38\\ensuremath{''}$ (Natural)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Target RMS 0.15 mJy/beam",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "set to reach an RMS noise level of 0.15 mJy/beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "5 to 10 minutes per target",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The time on-source ranged from 5 minutes to 10 minutes per target"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "November 2013 to July 2014",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "a series of tracks executed between November 2013 and July 2014"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel PACS",
+     "provided": {
+      "value": "70 and 160 um fluxes used for target selection and SEDs",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "which were selected on the basis of previous *Herschel* detections at 70$\\mu$m and 160$\\mu$m (cite: bulger14)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Herschel photometry and SED-derived stellar radius and Av",
+      "evidence": [
+       {
+        "loc": "6.2",
+        "quote": "the stellar radius and value of $A_\\textnormal{v}$ for each source were derived with SED fitting in the previous *Herschel* TBOSS study by (cite: bulger14)"
+       }
+      ]
+     },
+     "citation": "(cite: bulger14)"
+    },
+    {
+     "what": {
+      "value": "179 Taurus systems 890um flux densities (SMA + single dish)",
+      "evidence": [
+       {
+        "loc": "6.3",
+        "quote": "provide a catalog of measured or extrapolated 890$\\mu$m flux densities for a sample of 179 Taurus systems (cite: andrews13)"
+       }
+      ]
+     },
+     "citation": "(cite: andrews13)"
+    },
+    {
+     "what": {
+      "value": "Upper Sco and Rho Oph submm fluxes for comparison",
+      "evidence": [
+       {
+        "loc": "6.4",
+        "quote": "values drawn from a single dish IRAM survey of high-mass Upper Sco members (cite: mathews12) and a large recent ALMA study (cite: barenfeld16)"
+       }
+      ]
+     },
+     "citation": "(cite: mathews12; barenfeld16; gvdp16; testi16)"
+    },
+    {
+     "what": {
+      "value": "Kepler heavy-element masses",
+      "evidence": [
+       {
+        "loc": "6.5",
+        "quote": "The average heavy element mass required to form the population of *Kepler*-detected 2-50 day period planets was inferred by (cite: mulders15)."
+       }
+      ]
+     },
+     "citation": "(cite: mulders15)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Evolutionary models BHAC15, MESA, Baraffe98 for stellar mass/luminosity",
+     "evidence": [
+      {
+       "loc": "6.3",
+       "quote": "a comparison of the evolutionary models of (cite: baraffe98) and (cite: baraffe15), and the MESA models for higher mass targets (cite: choi16)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA QA calibration and flagging tables re-applied to raw data, minimal extra flagging",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "calibration and flagging tables derived from the ALMA Quality Assurance process (cite: petry14) were re-applied to the raw data in CASA 4.2.2"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.2.2",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "re-applied to the raw data in CASA 4.2.2 (cite: mcmullin07)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% absolute flux uncertainty added",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "an additional 10% uncertainty was added to the uncertainties in Table [\\[tab:fluxes\\]] to account for the absolute flux scaling uncertainty"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "2-3 rounds phase-only self-cal for 8 sources with SNR>40",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "For the 8 highest signal-to-noise ratio detections (SNR $>$ 40), we also performed self-calibration, consisting of 2 or 3 rounds of phase-only self-calibration."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean; imfit for image-plane 2D Gaussian; uvmodelfit in uv-plane",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "The *imfit* task in CASA was used to fit the continuum emission in the image plane with 2D Gaussians for each of the 22 detections."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Natural, Briggs and uniform compared; self-cal sources Briggs robust=0.5; others natural",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "For the self-calibrated sources, imaging was performed with Briggs weighting with *“robust”*=0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CO channels flagged, remaining channels averaged",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "flagging all channels associated with CO emission as visually identified from plotting the amplitudes per channel"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dust temperature-luminosity relation T=A L^B for low-luminosity objects",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "a different temperature-luminosity relation more appropriate for samples extending to spectral types of $\\sim$M5 and later was used, as explored in our previous paper (cite: gvdp16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: gvdp16)"
+    },
+    {
+     "what": {
+      "value": "Genetic algorithm approach for MCFOST fitting",
+      "evidence": [
+       {
+        "loc": "6.2",
+        "quote": "We apply a genetic algorithm approach, previously employed in (cite: mathews13)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mathews13)"
+    },
+    {
+     "what": {
+      "value": "Opacity normalization and T-L scaling as in earlier surveys",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "similar to previous studies (cite: andrews13; carpenter14)"
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews13; carpenter14)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Briggs robust used for non-self-cal imaging checks, cell size, image size, clean threshold/masks",
+    "Which channels were flagged for CO per source",
+    "Self-cal solution intervals",
+    "Genetic algorithm population size, number of generations, mutation fraction",
+    "Fixed MCFOST parameters (inclination, A_v handling, grid)",
+    "uvmodelfit starting parameters",
+    "Kelly regression priors/settings and handling of upper limits"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image continuum",
+    "method": {
+     "value": "Re-apply QA calibration, concatenate EBs, flag CO channels, average, clean (natural/Briggs/uniform)",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "aligning the spectral windows between individual observations and concatenating the measurement sets"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared fluxes across weightings",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "The extracted fluxes agree within 7% on average for all methods."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure flux densities",
+    "method": {
+     "value": "Re-centre by phase shift; imfit 2D Gaussians; uvmodelfit; self-cal for SNR>40 sources",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "The phase-shifted measurement sets were also used to fit the continuum emission in the *uv*-plane using the CASA task *uvmodelfit*"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fit; 10% flux scale uncertainty added",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "The *imfit* task in CASA was used to fit the continuum emission in the image plane with 2D Gaussians for each of the 22 detections."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Image vs uv-plane comparison",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "A comparison between the image plane fitting and *uv*-fitting for the extracted fluxes is shown in Figure [3](#fig:fluxcomparison). The extracted fluxes agree within 7% on average for all methods."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Analytic dust masses",
+    "method": {
+     "value": "M_dust from S_nu, d, kappa, B_nu(T_dust) with T=A L^B",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "\\log M_{dust} = \\log S_{\\nu}+2 \\log d-\\log \\kappa_{\\nu}-\\log B_{\\nu}(\\langle T_{dust} \\rangle)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "disk outer radii 10-200 au; central 100 au, 40 or 20 au for low-mass",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "we explore a range of radii from 10 au to 200 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "kappa_1.3mm=2.3 cm2/g, kappa~nu^0.4, d=140 pc",
+      "evidence": [
+       {
+        "loc": "6.1",
+        "quote": "The opacity was scaled to the observation wavelength of 885$\\mu$m from the assumptions of $\\kappa_{1.3mm}$=2.3cm$^{2}$g$^{-1}$ and $\\kappa \\sim \\nu^{0.4}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with MCFOST masses",
+     "evidence": [
+      {
+       "loc": "Calculations of Disk Masses from Radiative Transfer Models (MCFOST)",
+       "quote": "the dust masses are compared with the analytically-derived masses in Figure [9](#fig:dustmass_modelanalytic)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "SED radiative transfer fits",
+    "method": {
+     "value": "MCFOST models with genetic algorithm minimizing chi2, 5 free parameters",
+     "evidence": [
+      {
+       "loc": "6.2",
+       "quote": "to explore five free model parameters – M$_\\textnormal{dust}$, $H_{0}$, $r_\\textnormal{in}$, $\\beta$, and surface density index"
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "r_out=100 au, a_min=0.01 um, a_max=3 mm, N(a)~a^-3.5, kappa=2.78 cm2/g at 870 um",
+      "evidence": [
+       {
+        "loc": "6.2",
+        "quote": "with a corresponding continuum opacity $\\kappa = 2.78\\textnormal{cm}^{2}/\\textnormal{g}$ at 870$\\mu$m"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Single continuous disk, no envelope",
+      "evidence": [
+       {
+        "loc": "6.2",
+        "quote": "a single continuous disk model was used, with no envelope component"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Genetic algorithm, minimum chi2",
+     "evidence": [
+      {
+       "loc": "Calculations of Disk Masses from Radiative Transfer Models (MCFOST)",
+       "quote": "We apply a genetic algorithm approach, previously employed in (cite: mathews13), to explore five free model parameters"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with analytic masses (Fig 9)",
+     "evidence": [
+      {
+       "loc": "Calculations of Disk Masses from Radiative Transfer Models (MCFOST)",
+       "quote": "the dust masses are compared with the analytically-derived masses in Figure [9](#fig:dustmass_modelanalytic)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Host masses and Mdust-Mstar regression",
+    "method": {
+     "value": "SpT to Teff (HH14), mass from BHAC15 at 1 Myr / MESA; Bayesian linear regression with limits",
+     "evidence": [
+      {
+       "loc": "6.3",
+       "quote": "applying the Bayesian linear regression approach of (cite: kelly07) to incorporate both detections and upper limits"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Taurus age 1 Myr; gas:dust 100:1",
+      "evidence": [
+       {
+        "loc": "Central Object Spectral Type, Temperatures, and Masses",
+        "quote": "For this study, an age of 1 Myr and the (cite: baraffe15) model grid were used in the mass determination"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Kelly07 linear regression",
+     "evidence": [
+      {
+       "loc": "Disk Mass as a Function of Central Object Mass",
+       "quote": "applying the Bayesian linear regression approach of (cite: kelly07) to incorporate both detections and upper limits."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Varied disk size, split by SpT, recomputed Barenfeld slope",
+     "evidence": [
+      {
+       "loc": "Disk Mass as a Function of Time and Environment",
+       "quote": "the Taurus and Upper Sco samples were broken into separate subsets at the M4 spectral type."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.2",
+    "used_for": {
+     "value": "calibration application, imaging, imfit, uvmodelfit, self-cal",
+     "evidence": [
+      {
+       "loc": "Data Analysis",
+       "quote": "re-applied to the raw data in CASA 4.2.2 (cite: mcmullin07)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MCFOST",
+    "version": "not stated",
+    "used_for": {
+     "value": "radiative transfer SED modeling",
+     "evidence": [
+      {
+       "loc": "6.2",
+       "quote": "Monte Carlo 3D continuum radiative transfer code MCFOST (cite: pinte06; pinte09)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "plotting",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of APLpy, an open-source plotting package for Python"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Detections",
+    "value": "22 of 24 detected; flux densities 1.0-55.7 mJy",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The flux densities of the detections range from 1.0 to 55.7 mJy."
+     }
+    ]
+   },
+   {
+    "quantity": "Non-detection 3sigma limits",
+    "value": "0.27 (J04190110), 0.29 (J04213459)",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "The non-detections have 3$\\sigma$ upper limits of 0.27 mJy/beam for J04190110 and 0.29 mJy/beam for J04213459"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust masses range",
+    "value": "0.3-20",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "dust mass estimates ranging from $\\sim$0.3–20M$_{\\oplus}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Taurus Mdust-Mstar slope",
+    "value": "0.97",
+    "uncertainty": "0.14",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.3",
+      "quote": "$\\textnormal{log}[M_\\textnormal{dust} (M_{\\oplus})] = (0.97\\pm0.14) \\textnormal{log}[M_\\textnormal{star}(M_{\\odot})] + (1.15\\pm0.09)$"
+     }
+    ]
+   },
+   {
+    "quantity": "Upper Sco slope",
+    "value": "0.92",
+    "uncertainty": "0.18",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4",
+      "quote": "(0.92\\pm0.18) \\textnormal{log}[M_\\textnormal{star}(M_{\\odot})] + (0.46\\pm0.09)"
+     }
+    ]
+   },
+   {
+    "quantity": "Taurus to Upper Sco dust mass decline",
+    "value": "~4-5",
+    "uncertainty": "not stated",
+    "units": "factor",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.4",
+      "quote": "suggests a decline in disk mass by a factor of $\\sim$4-5"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of M-star Taurus disks > MMSN",
+    "value": "17% (32 of 193)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6.5",
+      "quote": "32 (17%) have disk masses larger than the MMSN"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Brown dwarf disks form a continuous sequence with low-mass stars",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The substellar disks appear as part of a continuous sequence and not a distinct population."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do substellar disks differ from stellar ones?",
+    "experiment": "ALMA Band 7 survey plus regression with SMA Taurus sample",
+    "result": "Slope 0.97±0.14 consistent with linear",
+    "finding": "BD disks continue the stellar trend",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.3",
+      "quote": "is consistent with a linear relation"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do disk masses decline with age?",
+    "experiment": "Compare Taurus and Upper Sco with uniform dust masses",
+    "result": "Intercepts imply factor ~4-5 decline",
+    "finding": "Taurus disks more massive than Upper Sco",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.4",
+      "quote": "there is a clear drop in the overall disk mass level with time"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are disks massive enough for giant planets?",
+    "experiment": "Compare to MMSN with 100:1 gas:dust",
+    "result": "17% of M-star disks exceed MMSN; none of BDs",
+    "finding": "Low giant-planet formation efficiency",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "7",
+      "quote": "the frequency of observed candidate giant planet-forming disks is 17%"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 7 best compromise between declining flux and ALMA sensitivity",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "Band 7 represented the best compromise between declining disk flux with wavelength and increasing ALMA sensitivity with wavelength."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Eqn T=25 L^0.25 rejected for giving unphysically low temperatures (~12 K)",
+     "evidence": [
+      {
+       "loc": "6.1",
+       "quote": "To avoid the unphysically low temperatures implied by Eqn."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Slope depends strongly on stellar evolutionary model and dust temperature relation",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "derived power-law slopes depend strongly upon choices of stellar evolutionary model and dust temperature relation"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Optically thin single-opacity assumption; disk radii unresolved",
+    "Herschel-detected selection may bias sample",
+    "Class III BDs assumed to have no MMSN disks"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Reduction scripts and auxiliary data on OSF",
+    "evidence": [
+     {
+      "loc": "footnote",
+      "quote": "Example reduction scripts and auxiliary data are available at https://osf.io/9dyx4."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Example reduction/analysis scripts at osf.io/9dyx4",
+     "evidence": [
+      {
+       "loc": "footnote",
+       "quote": "Example analysis scripts and auxiliary data for the methods described in Appendices A and B are available at https://osf.io/9dyx4."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, thresholds)",
+    "Genetic algorithm settings",
+    "Regression configuration"
+   ],
+   "estimated_data_volume_inferred": "Tens of GB (Cycle 1, 7 EBs)",
+   "score_inferred": 4,
+   "score_reason": "Data and tools clear with tabulated fluxes and masses; some imaging and fitting settings missing.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Archive data, tabulated numeric results (fluxes, dust masses); analytic recipe is simple."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: gvdp16)",
+     "why": "T-L relation for low-luminosity objects"
+    },
+    {
+     "citation": "(cite: mathews13)",
+     "why": "genetic algorithm with MCFOST"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: bulger14)",
+     "why": "TBOSS Herschel survey (Paper I)"
+    },
+    {
+     "citation": "van der Plas et al. 2017, in prep",
+     "why": "12CO(3-2) spectral line analysis"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "TBOSS",
+    "Taurus SMA survey (Andrews 2013)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4c241c3f72b11fcfdd9a4157119ba50a",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:53",
+  "usage": {
+   "input_tokens": 90248,
+   "output_tokens": 7897,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.130339,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 70,
+  "quotes_ok": 70,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 54,
+   "rate": 0.684
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T03:30:26",
+  "custom_id": "repair-sonnet-ff80ef136f54ca11a01092f6a7d298e4",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "The *imfit* task in CASA was used to fit the continuum emission in the image plane with 2D Gaussians for each of the 22 detections."
+   },
+   {
+    "path": "analysis_steps[1].validation.evidence[0]",
+    "old": null,
+    "new": "A comparison between the image plane fitting and *uv*-fitting for the extracted fluxes is shown in Figure [3](#fig:fluxcomparison). The extracted fluxes agree within 7% on average for all methods."
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "the dust masses are compared with the analytically-derived masses in Figure [9](#fig:dustmass_modelanalytic)"
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "We apply a genetic algorithm approach, previously employed in (cite: mathews13), to explore five free model parameters"
+   },
+   {
+    "path": "analysis_steps[3].validation.evidence[0]",
+    "old": null,
+    "new": "the dust masses are compared with the analytically-derived masses in Figure [9](#fig:dustmass_modelanalytic)"
+   },
+   {
+    "path": "analysis_steps[4].assumptions[0].evidence[0]",
+    "old": null,
+    "new": "For this study, an age of 1 Myr and the (cite: baraffe15) model grid were used in the mass determination"
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "applying the Bayesian linear regression approach of (cite: kelly07) to incorporate both detections and upper limits."
+   },
+   {
+    "path": "analysis_steps[4].validation.evidence[0]",
+    "old": null,
+    "new": "the Taurus and Upper Sco samples were broken into separate subsets at the M4 spectral type."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

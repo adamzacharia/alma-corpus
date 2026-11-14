@@ -1,0 +1,476 @@
+{
+ "bibcode": "2026ApJ...999..194I",
+ "title": "Digging into the Chemical Complexity in the Outer Galaxy: A Hot Molecular Core in Sh 2-283",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae40b8",
+ "arxiv_id": "2602.03122",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What is the chemical complexity of the outer Galactic hot core Sh 2-283-1a SMM1, and how do its molecular abundances compare to hot cores in the inner Galaxy, outer Galaxy, and Magellanic Clouds to constrain the role of environmental factors beyond metallicity?",
+ "alma_project_codes": [
+  "2022.1.01270.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.79'' x 0.68'' (6.2 x 10^3 au x 5.4 x 10^3 au at 7.9 kpc)",
+  "sensitivity": "0.02–0.03 K per channel in extracted spectrum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance and galactocentric distance to Sh 2-283 based on Gaia EDR3 astrometry of ALS 18674",
+    "evidence": [
+     {
+      "loc": "Sh 2-283-1a SMM1",
+      "quote": "According to the astrometric data of a nearby cluster member (ALS 18674) in the Gaia Early Data Release 3 (cite: Gaia2021; Bra19), the distance to the Sh 2-283 region is estimated to be 7.9$^{+1.2}_{-1.1}$ kpc, which corresponds to the galactocentric distance of 15.7$^{+1.1}_{-0.9}$ kpc (cite: Ikeda2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Gaia2021; Bra19; Ikeda2025)"
+  },
+  {
+   "what": {
+    "value": "Metallicity of Sh 2-283 (~0.3 Z_sun) from optical spectroscopy of associated H II region",
+    "evidence": [
+     {
+      "loc": "Sh 2-283-1a SMM1",
+      "quote": "The metallicity of this region is estimated to be approximately 30$\\%$ of the solar value based on optical spectroscopy of the associated H$_\\mathrm{II}$ region (cite: Fer17)."
+     }
+    ]
+   },
+   "citation": "(cite: Fer17)"
+  },
+  {
+   "what": {
+    "value": "Mass absorption coefficient of dust grains coated by thin ice mantles (1.89 cm^2 g^-1 at 870 um)",
+    "evidence": [
+     {
+      "loc": "Column density of molecular hydrogen",
+      "quote": "$\\kappa_{\\nu}$ is the mass absorption coefficient of dust grains coated by thin ice mantles taken from (cite: Oss94) and we use 1.89 cm$^2$ g$^{-1}$ at 870 $\\mu$m."
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "Galactocentric 12C/13C isotope ratio gradients",
+    "evidence": [
+     {
+      "loc": "Column densities and gas temperatures",
+      "quote": "To avoid this underestimation, we estimated $N$(CH$_3$OH) from the $^{13}$CH$_3$OH column density, assuming a $^{12}$C/$^{13}$C ratio of 100 based on the isotope ratio gradients reported by (cite: Milam2005) and (cite: Yan2023) at $D_{\\mathrm{GC}}$ = 15.7 kpc."
+     }
+    ]
+   },
+   "citation": "(cite: Milam2005; Yan2023)"
+  },
+  {
+   "what": {
+    "value": "CH3OH and SO2 column densities and continuum data for inner Galactic hot cores",
+    "evidence": [
+     {
+      "loc": "Molecular abundances: Comparison with the Galactic and Magellanic hot cores",
+      "quote": "The CH$_3$OH and SO$_2$ column densities for the inner Galactic sources were taken from (cite: Fuente2014; Gelder2022L; Qin2022; Li2025) and (cite: Fuente2014; Santos2024)."
+     },
+     {
+      "loc": "Molecular abundances: Comparison with the Galactic and Magellanic hot cores",
+      "quote": "We calculated the H$_2$ column densities for the sources in (cite: Santos2024) by using the continuum data summarized in (cite: Gelder2022L), following the method used in Section 3.4."
+     }
+    ]
+   },
+   "citation": "(cite: Fuente2014; Gelder2022L; Gelder2022; Qin2022; Li2025; Santos2024)"
+  },
+  {
+   "what": {
+    "value": "CH3OH and SO2 column densities for outer Galactic and Magellanic hot cores",
+    "evidence": [
+     {
+      "loc": "Molecular abundances: Comparison with the Galactic and Magellanic hot cores",
+      "quote": "The column densities of CH$_3$OH and SO$_2$ for the outer Galactic and Magellanic sources are obtained from the literature (cite: Shimonishi2016; Shimonishi2020; Shimonishi2021; Shimonishi2023; Shimonishi_magos; Sewilo2022; Golshan2024; Broadmeadow2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Shimonishi2016; Shimonishi2020; Shimonishi2021; Shimonishi2023; Shimonishi_magos; Sewilo2022; Golshan2024; Broadmeadow2025)"
+  },
+  {
+   "what": {
+    "value": "N(CH2DOH)/N(CH3OH) ratios for inner Galactic hot cores and hot corinos",
+    "evidence": [
+     {
+      "loc": "Deuterium fractionation",
+      "quote": "Blue symbols represent the values for inner Galactic sources, taken from (cite: Gelder2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Gelder2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, and image visibilities",
+   "method": "Pipeline calibration followed by one round of continuum phase self-calibration, visibility continuum subtraction, Briggs-weighted cleaning, and primary beam correction",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean",
+    "impbcor"
+   ],
+   "key_parameters": [
+    "Briggs weighting with robust = 0.5",
+    "Phase self-calibration solution interval = 60 seconds"
+   ],
+   "assumptions": [
+    "10% systematic uncertainty on absolute flux scale"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectrum, identify molecular lines, and fit line profiles",
+   "method": "Extract spectrum from an elliptical aperture at the continuum/CH3OH peak, identify transitions using CDMS and JPL databases, smooth or bin weak lines, and fit Gaussian profiles to measure line parameters",
+   "software": [],
+   "key_parameters": [
+    "Elliptical extraction aperture: 0.89'' x 0.70'' centered at RA = 6h38m29.660s, Dec = 0d44m40.75s",
+    "Detection criteria: >= 3 sigma and within ~+-2 km s^-1 of V_sys = 53.2 km s^-1 (2.5–3 sigma with spatial coincidence for tentative detections)",
+    "Savitzky-Golay filter: window size = 5 channels, polynomial order = 3; or 2-channel binning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Generate integrated intensity maps",
+   "method": "Integrate spectral cubes over visually inspected velocity ranges (~+-FWHM) and stack multiple transitions for selected species to reduce noise",
+   "software": [],
+   "key_parameters": [
+    "Velocity integration range: typically ~+-FWHM determined by visual inspection"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotational temperatures and molecular column densities",
+   "method": "Rotational diagram analysis under optically thin LTE for SO2, CH3OH, and CH2DOH; fixed rotational temperatures (50 K or 150 K) for species with 1–2 lines; optical depth correction for CH3OH by scaling 13CH3OH with 12C/13C = 100",
+   "software": [],
+   "key_parameters": [
+    "SO2 separated into two components: E_u < 100 K and E_u >= 100 K; blended SO2(13_{2,12}–12_{1,11}) excluded",
+    "Fixed T_rot = 50 K (cold component) and 150 K (warm component)"
+   ],
+   "assumptions": [
+    "Optically thin emission and Local Thermodynamic Equilibrium (LTE)",
+    "12C/13C = 100 at D_GC = 15.7 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate H2 column density, gas volume density, and fractional abundances",
+   "method": "Calculate N(H2) from optically thin 0.87 mm dust continuum emission, divide by core extent to get gas volume density, and compute N(X)/N(H2) and N(X)/N(CH3OH) ratios",
+   "software": [],
+   "key_parameters": [
+    "kappa_nu = 1.89 cm^2 g^-1 at 870 um (thin ice mantles), dust-to-gas mass ratio Z = 0.0024, T_d = 150 K (range 80–180 K), core extent = 6.5 x 10^3 au"
+   ],
+   "assumptions": [
+    "Optically thin dust emission at 870 um, dust coated by thin ice mantles, T_d = 150 K, and Z = 0.0024"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Systemic velocity (V_sys)",
+   "value": "53.2",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra",
+     "quote": "Spectral lines were identified by determining the systemic velocity ($V_\\mathrm{{sys}}$) as 53.2 km s$^{-1}$ from the CH$_3$OH (5$_{4}$ A$^-$–6$_{3}$ A$^-$) line"
+    }
+   ]
+  },
+  {
+   "quantity": "Typical molecular line width (FWHM)",
+   "value": "3–6",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectra",
+     "quote": "The typical measured line widths are 3–6 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of SO2 (cold component, E_u < 100 K)",
+   "value": "46.2",
+   "uncertainty": "+8.4/-6.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO$_2$ | 46.2$^{+ 8.4}_{- 6.1}$ | (1.0 $^{+ 0.3}_{-0.2}$) $\\times$ 10$^{14}$ | 7.3 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SO2 (cold component, E_u < 100 K)",
+   "value": "1.0e14",
+   "uncertainty": "+0.3e14/-0.2e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "SO$_2$ | 46.2$^{+ 8.4}_{- 6.1}$ | (1.0 $^{+ 0.3}_{-0.2}$) $\\times$ 10$^{14}$ | 7.3 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of SO2 (warm component, E_u >= 100 K)",
+   "value": "97.5",
+   "uncertainty": "+26.4/-17.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 97.5$^{+ 26.4}_{- 17.1}$ | (1.0 $^{+ 0.5}_{-0.3}$) $\\times$ 10$^{14}$ | 7.3 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of SO2 (warm component, E_u >= 100 K)",
+   "value": "1.0e14",
+   "uncertainty": "+0.5e14/-0.3e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 97.5$^{+ 26.4}_{- 17.1}$ | (1.0 $^{+ 0.5}_{-0.3}$) $\\times$ 10$^{14}$ | 7.3 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance N(SO2)/N(H2) (warm component)",
+   "value": "7.3e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 97.5$^{+ 26.4}_{- 17.1}$ | (1.0 $^{+ 0.5}_{-0.3}$) $\\times$ 10$^{14}$ | 7.3 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3OH",
+   "value": "166.9",
+   "uncertainty": "+13.5/-11.7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH | 166.9$^{+ 13.5}_{- 11.7}$ | (1.5 $^{+ 0.1}_{-0.1}$) $\\times$ 10$^{15}$ | 1.1 $\\times$ 10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH (from rotational diagram)",
+   "value": "1.5e15",
+   "uncertainty": "+0.1e15/-0.1e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OH | 166.9$^{+ 13.5}_{- 11.7}$ | (1.5 $^{+ 0.1}_{-0.1}$) $\\times$ 10$^{15}$ | 1.1 $\\times$ 10$^{-8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of 13CH3OH (at T_rot = 150 K)",
+   "value": "1.4e14",
+   "uncertainty": "0.6e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$^{13}$CH$_3$OH | 150 | (1.4 $\\pm$ 0.6) $\\times$ 10$^{14}$ | 1.0 $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OH (scaled from 13CH3OH with 12C/13C = 100)",
+   "value": "1.4e16",
+   "uncertainty": "0.6e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 150$^{\\mathrm{(b)}}$ | (1.4 $\\pm$ 0.6) $\\times$ 10$^{16}$ | 1.0 $\\times$ 10$^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance N(CH3OH)/N(H2) (scaled from 13CH3OH)",
+   "value": "1.0e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 150$^{\\mathrm{(b)}}$ | (1.4 $\\pm$ 0.6) $\\times$ 10$^{16}$ | 1.0 $\\times$ 10$^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH2DOH",
+   "value": "~160",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_2$DOH | $\\sim$160 | (2.1$^{+ 5.4}_{-1.5}$) $\\times$ 10$^{14}$ | 1.5 $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH2DOH",
+   "value": "2.1e14",
+   "uncertainty": "+5.4e14/-1.5e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_2$DOH | $\\sim$160 | (2.1$^{+ 5.4}_{-1.5}$) $\\times$ 10$^{14}$ | 1.5 $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of CH3OCH3 (at T_rot = 150 K)",
+   "value": "2.0e14",
+   "uncertainty": "0.6e14",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OCH$_3$ | 150 | (2.0 $\\pm$ 0.6) $\\times$ 10$^{14}$ | 1.5 $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance N(CH3OCH3)/N(H2)",
+   "value": "1.5e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CH$_3$OCH$_3$ | 150 | (2.0 $\\pm$ 0.6) $\\times$ 10$^{14}$ | 1.5 $\\times$ 10$^{-9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of trans-HCOOH (at T_rot = 150 K)",
+   "value": "4.7e13",
+   "uncertainty": "1.7e13",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "*trans*-HCOOH | 150 | (4.7 $\\pm$ 1.7) $\\times$ 10$^{13}$ | 3.4 $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of D2CO (at T_rot = 50 K)",
+   "value": "3.4e12",
+   "uncertainty": "1.6e12",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "D$_2$CO | 50 | (3.4 $\\pm$ 1.6) $\\times$ 10$^{12}$ | 2.5 $\\times$ 10$^{-11}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density N(H2)",
+   "value": "1.4e23",
+   "uncertainty": "+1.3e23/-0.3e23",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column density of molecular hydrogen",
+     "quote": "In this paper, we adopt $N_{\\rm{H_2}}$ = 1.4$^{+ 1.3}_{-0.3}$ $\\times$ 10$^{23}$ cm$^{-2}$ as the representative value of H$_2$ column density."
+    }
+   ]
+  },
+  {
+   "quantity": "Core H2 gas volume density",
+   "value": "3.7e6",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column density of molecular hydrogen",
+     "quote": "The gas density of the core was estimated by dividing the $N_{\\rm{H_2}}$ by its extent (6.5 $\\times$ 10$^3$ au is assumed), and the derived value is 3.7 $\\times$ 10$^6$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Deuterium fractionation ratio N(CH2DOH)/N(CH3OH)",
+   "value": "1.5",
+   "uncertainty": "+3.9/-1.2",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The $N$(CH$_2$DOH)/$N$(CH$_3$OH) ratio of Sh 2-283-1a SMM1 is 1.5$^{+3.9}_{-1.2}$$\\%$, comparable to that of inner Galactic high-mass sources."
+    },
+    {
+     "loc": "Deuterium fractionation",
+     "quote": "The $N$(CH$_2$DOH)/$N$(CH$_3$OH) ratio of Sh 2-283-1a SMM1 is 1.5$^{+3.9}_{-1.2}$$\\%$, which is comparable to that of the other outer Galactic hot core (cite: Shimonishi2021)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free channels used for continuum subtraction in uvcontsub",
+  "Deconvolver, cell size, image size, stopping threshold, and masking strategy in tclean",
+  "Exact 0.87 mm continuum flux density F_nu/Omega used in Eq. 3 to compute N(H2) (likely reported in Ikeda2025)",
+  "Exact velocity integration ranges for each line in the integrated intensity maps (Figure 2)",
+  "Specific transitions stacked for SO, SO2, trans-HCOOH, CH3OH, CH2DOH, and CH3OCH3 in Figure 2"
+ ],
+ "missing_for_reproduction": [
+  "Exact 0.87 mm continuum flux density F_nu/Omega measured in the aperture (reported in companion paper Ikeda2025 rather than printed here)",
+  "Line-free frequency channels selected for uvcontsub",
+  "tclean imaging parameters (cell size, image size, stopping threshold, deconvolver, masking)",
+  "Upper limit value and transition used for C2H5OH in Figure 7"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Calibration, self-calibration, spectral extraction aperture (exact coordinates and size), line fitting, rotational diagram equations, and LTE assumptions are all clearly specified, and all fitted line parameters and column densities are tabulated; only minor imaging parameters and the continuum flux value (in Ikeda 2025) are omitted.",
+ "rediscovery_reason": "Public ALMA dataset (2022.1.01270.S), well-defined spectral extraction region, standard Gaussian line fitting and LTE rotational diagram equations, and complete numeric answer keys in Tables 1 and 2.",
+ "source_card": "cards/2026ApJ...999..194I/sonnet/card.md"
+}

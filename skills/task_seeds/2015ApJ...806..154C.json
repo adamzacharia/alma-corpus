@@ -1,0 +1,274 @@
+{
+ "bibcode": "2015ApJ...806..154C",
+ "title": "A Disk-based Dynamical Mass Estimate for the Young Binary AK Sco",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/806/2/154",
+ "arxiv_id": "1505.01850",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "What is the dynamical mass of the AK Sco binary from its circumbinary disk CO rotation curve, and how does it compare with RV constraints and pre-MS evolutionary model predictions?",
+ "alma_project_codes": [
+  "2012.1.00496.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.75\" x 0.60\", P.A. = 100 deg",
+  "sensitivity": "continuum rms 45 uJy/beam; CO rms 4 mJy/beam per 0.4 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UBVRI photometry compilation used for SED",
+    "evidence": [
+     {
+      "loc": "Comparison to Pre-MS Evolution Models",
+      "quote": "The $UBVRI$ photometry compilation of (cite: jensen97) was used to construct the AK Sco SED."
+     }
+    ]
+   },
+   "citation": "(cite: jensen97)"
+  },
+  {
+   "what": {
+    "value": "RV constraint M sin^3 i = 2.114+/-0.010 Msun, period, mass ratio, eccentricity",
+    "evidence": [
+     {
+      "loc": "Comparison to Previous Results",
+      "quote": "a total mass constraint $M_{\\ast} \\sin^3{i_{\\ast}} = 2.114\\pm0.010$ $M_{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: alencar03)"
+  },
+  {
+   "what": {
+    "value": "Distance estimates used for prior (144+/-12 pc; 141+/-7 pc)",
+    "evidence": [
+     {
+      "loc": "CO Modeling and Results",
+      "quote": "Recently, (cite: anthonioz15) combined astrometric and radial velocity monitoring to estimate $d = 141\\pm7$ pc."
+     }
+    ]
+   },
+   "citation": "(cite: pecaut12); (cite: anthonioz15)"
+  },
+  {
+   "what": {
+    "value": "Teff = 6450+/-150 K prior from F5 classification",
+    "evidence": [
+     {
+      "loc": "Comparison to Pre-MS Evolution Models",
+      "quote": "which we associate with $T_{\\rm eff} = 6450\\pm150$ K"
+     }
+    ]
+   },
+   "citation": "(cite: andersen89)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "CASA calibration, phase-only self-cal, 30 s averaging, continuum subtraction, natural-weighted CLEAN; CO averaged to 0.4 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Forward-model CO visibilities with disk model",
+   "method": "Parametric disk structure with LTE RADMC-3D ray tracing at 2.5 AU pixels, FFT and interpolation onto observed uv points, chi^2 likelihood",
+   "software": [
+    "RADMC-3D",
+    "FFTW"
+   ],
+   "key_parameters": [
+    "12 free parameters: T10, q, Mco, rc, xi, M*, i_d, phi, offsets, vsys, d; gamma fixed to 1"
+   ],
+   "assumptions": [
+    "LTE level populations; Keplerian rotation dominated by binary mass; vertical hydrostatic equilibrium; vertically isothermal"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compare with RV and astrometric constraints",
+   "method": "Convert RV M sin^3 i using disk inclination assuming co-planarity; derive dynamical distance from M/d and M sin^3 i",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "disk and binary co-planar"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED fit and pre-MS model mass and age",
+   "method": "BT-Settl SED model with extinction and per-band jitter, MCMC; then map Teff, L posterior onto four evolutionary grids",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Teff prior 6450+/-150 K; d prior 142+/-6 pc"
+   ],
+   "assumptions": [
+    "identical binary components; solar metallicity; Fitzpatrick reddening with R_V=4.3; near-IR excluded"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Binary dynamical mass",
+   "value": "2.49",
+   "uncertainty": "0.10",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$M_\\ast$ ($M_\\odot$)              | 2.49  | 0.10"
+    }
+   ]
+  },
+  {
+   "quantity": "M*/d",
+   "value": "0.01731",
+   "uncertainty": "0.00015",
+   "units": "Msun/pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO Modeling and Results",
+     "quote": "$M_{\\ast}/d = 0.01731\\pm0.00015$ $M_{\\odot}$ pc$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "109.4",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$i_d$ (${}^\\circ$)                         | 109.4 | 0.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic radius",
+   "value": "14.3",
+   "uncertainty": "1.2",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$r_c$ (AU)                        | 14.3  | 1.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical distance",
+   "value": "145.5",
+   "uncertainty": "2.0",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Comparison to Previous Results",
+     "quote": "we derive a dynamical distance to the system of $d=145.5 \\pm 2.0$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 1.3 mm",
+   "value": "32.65",
+   "uncertainty": "0.07 (+~10% systematic)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "a total flux density of $32.65\\pm0.07$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO 2-1 integrated intensity",
+   "value": "2.21",
+   "uncertainty": "0.01",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "has an integrated intensity of $2.21\\pm0.01$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pre-MS model mean mass",
+   "value": "2.68",
+   "uncertainty": "0.03",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison to Pre-MS Evolution Models",
+     "quote": "$M_{\\ast} = 2.68\\pm0.03$ $M_{\\odot}$ and $\\tau_{\\ast} = 18\\pm1$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Age from pre-MS models",
+   "value": "18",
+   "uncertainty": "1",
+   "units": "Myr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison to Pre-MS Evolution Models",
+     "quote": "$M_{\\ast} = 2.68\\pm0.03$ $M_{\\odot}$ and $\\tau_{\\ast} = 18\\pm1$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar Teff from SED",
+   "value": "6365",
+   "uncertainty": "155",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison to Pre-MS Evolution Models",
+     "quote": "We found $T_{\\rm eff} = 6365\\pm155$ K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number, initialization and length of MCMC chains, burn-in length, and Gelman-Rubin values",
+  "Jump covariance matrix",
+  "Parameter prior bounds",
+  "Outer disk radius, inner radius, and CO abundance/photodissociation treatment in the disk model",
+  "Which channels were treated as line-free for continuum subtraction",
+  "Phase center coordinates and the target coordinates",
+  "Number of CLEAN iterations, mask and threshold",
+  "Exact SED priors on the nuisance jitter terms and logg",
+  "Details of the evolutionary grid inputs"
+ ],
+ "missing_for_reproduction": [
+  "MCMC chain settings and priors bounds",
+  "CLEAN parameters and line-free channels",
+  "Jitter priors and evolutionary grid details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Single public dataset, open code and clearly specified model; some MCMC and imaging settings are missing.",
+ "rediscovery_reason": "Public ALMA data, open code, numeric headline result (M*=2.49 Msun).",
+ "source_card": "cards/2015ApJ...806..154C/sonnet/card.md"
+}

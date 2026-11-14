@@ -1,0 +1,414 @@
+{
+ "bibcode": "2026MNRAS.550g1193B",
+ "title": "GOTO identification and broad-band modelling of the counterpart to the SVOM GRB 250818B",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag1193",
+ "arxiv_id": "2602.16559",
+ "fields": [
+  "transients"
+ ],
+ "question": "What are the physical parameters of the broadband afterglow, circumburst environment, and host-galaxy association of the SVOM-triggered GRB 250818B?",
+ "alma_project_codes": [
+  "2024.1.01131.T"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "13.2 uJy (epoch 1) and 10.7 uJy (epoch 2) rms"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical and radio follow-up measurements reported in GCN Circulars (SVOM/VT, Swift/UVOT, KAIT, NOT, SAO RAS, TRT, Lesedi, LT, GRANDMA/KNC, FTW, VLA 10 GHz)",
+    "evidence": [
+     {
+      "loc": "Optical and NIR",
+      "quote": "and by numerous ground-based facilities including KAIT (cite: Zheng2025gcn41417), NOT (cite: BroeBendtsen2025gcn41426), SAO RAS (cite: Moskvitin2025gcn41428), TRT (cite: An2025gcn41430), Lesedi (cite: Kumar2025gcnLesedi), LT (cite: Dimple2025gcn41442), the GRANDMA/Kilonova-Catcher network (cite: Hellot2025gcn41444), and the Wendelstein FTW telescope (cite: Busmann2025gcn41445)"
+     },
+     {
+      "loc": "Radio and millimeter/submillimeter",
+      "quote": "In addition, we include the 10 GHz flux density reported in GCN 41455 (cite: Ricci2025gcn41455)."
+     }
+    ]
+   },
+   "citation": "(cite: Yao2025gcn41409; Siegel2025gcn41435; Zheng2025gcn41417; BroeBendtsen2025gcn41426; Moskvitin2025gcn41428; An2025gcn41430; Kumar2025gcnLesedi; Dimple2025gcn41442; Hellot2025gcn41444; Busmann2025gcn41445; Ricci2025gcn41455)"
+  },
+  {
+   "what": {
+    "value": "Optical R-band GRB afterglow comparison samples",
+    "evidence": [
+     {
+      "loc": "Optical afterglow brightness in context",
+      "quote": "To place the optical afterglow of GRB 250818B in the broader GRB population, we compare its observer-frame $R$-band evolution with the literature compilation of (cite: Kann2006; Kann2010; Kann2011) and the sGRB sample of (cite: NicuesaGuelbenzu2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Kann2006; Kann2010; Kann2011; NicuesaGuelbenzu2012)"
+  },
+  {
+   "what": {
+    "value": "COSMOS-Web DR1 photometric redshift and physical parameter catalogue",
+    "evidence": [
+     {
+      "loc": "Association",
+      "quote": "To further constrain the redshift of the probable host galaxy, we compare its photometry to the galaxy population in the COSMOS-Web DR1 catalogue (cite: 2026A&A...704A.339S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2026A&A...704A.339S)"
+  },
+  {
+   "what": {
+    "value": "Short and long GRB host physical offset comparison catalogues (BRIGHT and HST long-GRB sample)",
+    "evidence": [
+     {
+      "loc": "Progenitor interpretation: merger versus collapsar contamination",
+      "quote": "For the short-GRB population, we adopt the BRIGHT host catalogue (cite: Fong2022) and restrict to the cosmological subset with measured offsets"
+     },
+     {
+      "loc": "Progenitor interpretation: merger versus collapsar contamination",
+      "quote": "Using the *HST*-based long-GRB host sample of (cite: Blanchard2016) and restricting to bursts with measured projected physical offsets ($N=70$)"
+     }
+    ]
+   },
+   "citation": "(cite: Fong2022; Blanchard2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure radio and millimetre flux densities and upper limits (including ALMA and MeerKAT)",
+   "method": "Download ALMA QA2 archive images and inspect a 0.5 arcsec circle at the GOTO position to measure local image rms and 3-sigma upper limits; measure MeerKAT flux density and rms at the GOTO position using pwkit/imtool on SARAO pipeline images.",
+   "software": [
+    "pwkit/imtool"
+   ],
+   "key_parameters": [
+    "0.5 arcsec radius inspection circle at GOTO position for ALMA"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Reduce Keck/LRIS optical spectrum and determine redshift",
+   "method": "Reduce and co-add exposures using PypeIt (bias subtraction, flat-fielding, cosmic ray masking, wavelength calibration, 1D extraction, flux calibration, telluric correction), correct for Milky Way extinction, and align metal absorption lines (Fe II, Mg II, Mg I) to measure redshift.",
+   "software": [
+    "PypeIt"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "E(B-V)_MW = 0.0633 mag and R_V = 3.1 Milky Way extinction law"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform time-resolved X-ray spectral analysis",
+   "method": "Download and bin Swift/XRT data into S/N = 10 intervals via SWIFTTOOLS API and simultaneously fit absorbed power-law models (TBABS*ZTBABS*CFLUX*POWERLAW) across three intervals.",
+   "software": [
+    "SWIFTTOOLS API",
+    "PYXSPEC",
+    "XSPEC"
+   ],
+   "key_parameters": [
+    "S/N = 10 binning, 0.3 - 10 keV energy range"
+   ],
+   "assumptions": [
+    "Wilms solar abundance, fixed N_H,Gal = 6.49e20 cm^-2, fixed z = 1.216"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit single-epoch optical SED for line-of-sight host extinction",
+   "method": "Subtract late-time DECam host flux from LT gri photometry at t_ref = 2.035 d and fit a dust-extinguished power-law model for MW and SMC extinction laws.",
+   "software": [
+    "dust_extinction",
+    "scipy.optimize.least_squares"
+   ],
+   "key_parameters": [
+    "t_ref = 2.035 d, 5% fractional systematic flux uncertainty added"
+   ],
+   "assumptions": [
+    "Milky Way law with R_V = 3.1 and SMC Bar law with R_V = 2.74; z = 1.216"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model broadband afterglow and compare jet/energy-injection models",
+   "method": "Fit broadband X-ray, optical/NIR, and radio detections and upper limits with a baseline top-hat jet model (afterglowpy) and a refreshed-shock two-component jet model (twocomponent_redback_refreshed in redback).",
+   "software": [
+    "afterglowpy",
+    "redback",
+    "nessai"
+   ],
+   "key_parameters": [
+    "For twocomponent_refreshed: fixed theta_obs = 0, log epsilon_e = -1, log epsilon_B = -2, xi_N = 1"
+   ],
+   "assumptions": [
+    "Constant-density circumburst medium (n_0), z = 1.216, flat LambdaCDM cosmology (H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Evaluate host-galaxy association and model candidate host SED",
+   "method": "Compute Bayesian host association probabilities and empirical chance-coincidence probabilities (P_cc) for LS DR10 candidates within 0.1 deg, estimate local depth limits for an undetected coincident host, match photometry to COSMOS-Web DR1, and fit the candidate host SED with Prospector.",
+   "software": [
+    "The Tractor",
+    "Prospector",
+    "FSPS"
+   ],
+   "key_parameters": [
+    "0.1 deg search radius in LS DR10; delayed-tau SFH in Prospector"
+   ],
+   "assumptions": [
+    "Chabrier IMF, Calzetti foreground dust law, fixed z = 1.216 for Prospector fit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 97.5 GHz flux density upper limit (epoch 1, 10.14 d)",
+   "value": "<40",
+   "uncertainty": "13.2 (rms)",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio and millimeter/submillimeter",
+     "quote": "The image root-mean-square (rms) at the expected position of the target in the observations is 13.2 $\\mu$Jy and 10.7 $\\mu$Jy, respectively."
+    },
+    {
+     "loc": "Data tables",
+     "quote": "| ALMA | 97.5 | $10.14$ | $<40$ | | This work |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 97.5 GHz flux density upper limit (epoch 2, 17.19 d)",
+   "value": "<32",
+   "uncertainty": "10.7 (rms)",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Radio and millimeter/submillimeter",
+     "quote": "The image root-mean-square (rms) at the expected position of the target in the observations is 13.2 $\\mu$Jy and 10.7 $\\mu$Jy, respectively."
+    },
+    {
+     "loc": "Data tables",
+     "quote": "| ALMA | 97.5 | $17.19$ | $<32$ | | This work |"
+    }
+   ]
+  },
+  {
+   "quantity": "MeerKAT 3.1 GHz peak flux density (at 8.93 d)",
+   "value": "60",
+   "uncertainty": "13",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data tables",
+     "quote": "| MeerKAT | 3.1 | $8.93$ | 60 | 13 | This Work |"
+    }
+   ]
+  },
+  {
+   "quantity": "MeerKAT 1.3 GHz flux density detection (at 15.05 d)",
+   "value": "45",
+   "uncertainty": "12",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data tables",
+     "quote": "| MeerKAT | 1.3 | $15.05$ | 45 | 12 | This Work |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic absorption redshift (z)",
+   "value": "1.216",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Spectroscopy",
+     "quote": "We refine the redshift by maximising the alignment of these transitions with absorption troughs in the spectrum, yielding $z = 1.216$."
+    }
+   ]
+  },
+  {
+   "quantity": "Host-frame V-band extinction A_V^host (MW law)",
+   "value": "0.22",
+   "uncertainty": "0.18",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Optical SED and line-of-sight extinction",
+     "quote": "For the MW law we obtain $A_V^{\\rm host}=0.22\\pm0.18$ mag and $\\beta_{\\rm opt}=0.28\\pm0.30$ ($\\chi^2/{\\rm dof}\\approx5.67/1$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Isotropic kinetic energy log E_iso (twocomponent_refreshed)",
+   "value": "52.60",
+   "uncertainty": "+0.12/-0.13",
+   "units": "erg (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| $\\log E_{\\rm iso}$ (erg) | | $44, 54$ | \\- | $52.48^{+0.23}_{-0.22}$ | | $44, 54$ | \\- | $52.60^{+0.12}_{-0.13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumburst density log n_0 (twocomponent_refreshed)",
+   "value": "0.56",
+   "uncertainty": "+0.07/-0.07",
+   "units": "cm^-3 (log10)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| $\\log n_0$ (cm$^{-3}$) | | $-5,2$ | \\- | $-0.21^{+0.93}_{-0.67}$ | | $-5,2$ | \\- | $0.56^{+0.07}_{-0.07}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core opening angle theta_c (twocomponent_refreshed)",
+   "value": "0.07",
+   "uncertainty": "+0.01/-0.01",
+   "units": "rad",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| $\\theta_c$ (rad) | | \\- | \\- | \\- | | $0, 0.1$ | $\\theta_c < \\theta_j$ | $0.07^{+0.01}_{-0.01}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet opening angle theta_j (twocomponent_refreshed)",
+   "value": "0.10",
+   "uncertainty": "+0.01/-0.02",
+   "units": "rad",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| $\\theta_j$ (rad) | | $0, 0.3$ | \\- | $0.07^{+0.03}_{-0.02}$ | | $0.02, 0.12$ | $\\theta_j > \\theta_c$ | $0.10^{+0.01}_{-0.02}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron energy distribution index p (twocomponent_refreshed)",
+   "value": "1.64",
+   "uncertainty": "+0.05/-0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| $p$ | | $2, 3$ | \\- | $2.05^{+0.03}_{-0.02}$ | | $1.4, 3.1$ | \\- | $1.64^{+0.05}_{-0.05}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Log Bayes factor (twocomponent_refreshed vs afterglowpy top-hat)",
+   "value": "42.537",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "`afterglowpy` Baseline Modelling",
+     "quote": "| | | 25.82 | | $-42.537$ | | 21.98 | | $42.537$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical offset of candidate host objid 5790 (R_off)",
+   "value": "33.51",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Association",
+     "quote": "Its angular separation from the GOTO afterglow position ($\\alpha = 03^{\\rm h}04^{\\rm m}13.52s$, $\\delta = -03\\ensuremath{^\\circ}07\\ensuremath{'}30.8\\ensuremath{''}$) is $R_{\\rm off} = 4.03\\ensuremath{''}$. Adopting $z = 1.216$ (from afterglow absorption), this corresponds to a projected physical offset of $R_{\\rm off} = 33.51~{\\rm kpc}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Chance-coincidence probability P_cc of candidate host objid 5790",
+   "value": "0.195",
+   "uncertainty": "0.18-0.20",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Association",
+     "quote": "which yields $P_{\\rm cc}\\approx0.195$ (range $\\approx0.18$–$0.20$ when propagating the $r$-band uncertainty)."
+    }
+   ]
+  },
+  {
+   "quantity": "Bayesian association probability P_assoc of candidate host objid 5790",
+   "value": "0.025",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Association",
+     "quote": "The LS DR10 source (`objid` 5790) has the highest association probability, $P_{\\mathrm{assoc}}=0.025$"
+    }
+   ]
+  },
+  {
+   "quantity": "Uncatalogued/missing host probability P_empty",
+   "value": "0.882",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Association",
+     "quote": "we cannot definitely identify that `objid` 5790 is the true host and instead find support for the host being outside of the galaxy catalogue, $P_{\\varnothing} \\approx 0.882$, where we find that $P_{\\rm out} \\approx 0.084$ and $P_{\\rm faint} \\approx 0.829$."
+    }
+   ]
+  },
+  {
+   "quantity": "Candidate host formed stellar mass log(M_*,formed / M_sun)",
+   "value": "9.77",
+   "uncertainty": "+0.31/-0.37",
+   "units": "M_sun (log10)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "`Prospector` SED Modelling",
+     "quote": "$\\log(M_{\\star,\\mathrm{formed}}/M_\\odot)=9.77^{+0.31}_{-0.37}$, $\\log(Z_\\star/Z_\\odot)=-0.19^{+0.25}_{-0.22}$, $A_V=0.39^{+0.34}_{-0.27}\\,\\mathrm{mag}$, and $\\log\\mathrm{sSFR}_{100\\,\\mathrm{Myr}}\\,[\\mathrm{yr}^{-1}]=-9.28^{+0.47}_{-0.42}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Assumed uncertainty value assigned to the GCN 41455 10 GHz VLA data point during afterglow modelling",
+  "Exact likelihood function and treatment of upper limits in redback / afterglowpy nested sampling fits",
+  "Hyperparameter values (kappa_c) for the short and long GRB Gamma offset priors in the Bayesian host association analysis",
+  "Schechter luminosity function parameters (M*, alpha, M_max) used to compute the host completeness fraction C(z)"
+ ],
+ "missing_for_reproduction": [
+  "Exact assumed uncertainty assigned to the 10 GHz GCN data point in afterglow modelling",
+  "Exact treatment of upper limits in the nessai likelihood function for redback/afterglowpy",
+  "Specific hyperparameter values (kappa_c) for the short and long GRB offset priors and Schechter luminosity function parameters in the Bayesian host association calculation",
+  "1D extracted Keck/LRIS spectrum file (only plotted in Figure 1)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "All multiband photometry, radio flux densities/limits (including ALMA QA2 upper limits), X-ray spectral fits, extinction/AB offsets, and model priors/posteriors are explicitly tabulated in the paper, and standard open-source codes (afterglowpy, redback, nessai, Prospector, PypeIt) are used, with only minor hyperparameter and likelihood details omitted.",
+ "rediscovery_reason": "The ALMA QA2 images are directly used as archival products to measure simple 3-sigma continuum upper limits, and the entire compiled broadband dataset and prior tables are provided in the paper for reproducing the redback/afterglowpy and Prospector fits.",
+ "source_card": "cards/2026MNRAS.550g1193B/sonnet/card.md"
+}

@@ -1,0 +1,1256 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...869L..41A",
+  "title": "The Disk Substructures at High Angular Resolution Project (DSHARP). I. Motivation, Sample, Calibration, and Overview",
+  "year": 2018,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Andrews, Sean M.",
+  "n_authors": 17,
+  "arxiv_id": "1812.04040",
+  "doi": "10.3847/2041-8213/aaf741",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00531.S",
+   "2013.1.00226.S",
+   "2013.1.00366.S",
+   "2013.1.00498.S",
+   "2013.1.00601.S",
+   "2013.1.00694.S",
+   "2013.1.00798.S",
+   "2015.1.00486.S",
+   "2015.1.00964.S",
+   "2016.1.00484.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "one of the initial Large Programs conducted with the Atacama Large Millimeter/submillimeter Array (ALMA)"
+   },
+   {
+    "loc": "abstract",
+    "quote": "The DSHARP data – including visibilities, images, calibration scripts, and more – are released for community use"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "DSHARP sample of 20 disks (HT Lup, GW Lup, IM Lup, RU Lup, Sz 114, Sz 129, MY Lup, HD 142666, HD 143006, AS 205, SR 4, Elias 20, DoAr 25, Elias 24, Elias 27, DoAr 33, WSB 52, WaOph 6, AS 209, HD 163296)",
+     "coordinates": {
+      "value": "2MASS designations given in Table 1; no other coordinates stated",
+      "evidence": [
+       {
+        "loc": "Survey Design and Sample",
+        "quote": "Target distances ($d$) were derived from *Gaia* DR2 parallax measurements (cite: gaia_dr2), following (cite: astraatmadja16) for a flat $d$ prior."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "101–165 pc (Table 1; Elias 27: 116 +19/-10 pc)",
+      "evidence": [
+       {
+        "loc": "Survey Design and Sample",
+        "quote": "Target distances ($d$) were derived from *Gaia* DR2 parallax measurements (cite: gaia_dr2), following (cite: astraatmadja16) for a flat $d$ prior."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallaxes, following Astraatmadja & Bailer-Jones 2016 with a flat distance prior",
+      "evidence": [
+       {
+        "loc": "Survey Design and Sample",
+        "quote": "Target distances ($d$) were derived from *Gaia* DR2 parallax measurements (cite: gaia_dr2), following (cite: astraatmadja16) for a flat $d$ prior."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do protoplanetary disks show small-scale substructures in the distribution of mm-sized solids, and what are their prevalence, morphologies, spacings and amplitudes, as seen at ~5 au resolution in 240 GHz continuum for 20 nearby disks?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The primary goal of DSHARP is to find and characterize substructures in the spatial distributions of solid particles for a sample of 20 nearby protoplanetary disks"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00484.L",
+     "evidence": [
+      {
+       "loc": "4 Observations",
+       "quote": "The DSHARP ALMA observations were conducted in 2017 May–November as part of program 2016.1.00484.L."
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00226.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "IM Lup | 2014/07/06–22:18 | C34-4 | 20 – m | 31 | J1427-4206, Titan, J1534-3526, J1626-2951 | 2013.1.00226.S | 1"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00694.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "2015/01/29–09:48 | C34-2/1 | 15 – m | 40 | J1517-2422, Titan, J1610-3958, ... | 2013.1.00694.S | 2"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00798.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "2015/06/09–23:42 | C34-5 | 21 – m | 37 | J1517-2422, Titan, J1610-3958, J1614-3543 | 2013.1.00798.S | 3"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00498.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "HD 142666 | 2015/07/21–22:27 | C34-7/6 | 15 – 1600 m | 44 | J1517-2422, Titan, J1627-2426, J1625-2527 | 2013.1.00498.S | ..."
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00964.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "HD 143006 | 2016/06/14–03:35 | C40-4 | 15 – m | 37 | J1517-2422, J1517-2422, J1625-2527, ... | 2015.1.00964.S | ..."
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00531.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "AS 205 | 2012/03/27–10:08 | ... | 43 – m | 15 | J1924-2914, Titan, J1625-2527, ... | 2011.0.00531.S | 4"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00486.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "2016/09/22–23:15 | C40-6 | 15 – 3144 m | 38 | J1517-2422, J1733-1304, J1733-1304, ... | 2015.1.00486.S | 8"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00366.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "HD 163296 | 2014/06/04–07:10 | C34-4 | 21 – m | 33 | J1733-1304, J1733-1304, J1733-1304, ... | 2013.1.00366.S | 9"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00601.S",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "2015/08/05–04:15 | C34-7/6 | 42 – 1574 m | 37 | J1733-1304, Ceres, J1733-1304, J1812-2836 | 2013.1.00601.S | 10"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (240 GHz, 1.25 mm)",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "All measurements used the Band 6 receivers and correlated data from four spectral windows (SPWs) in dual polarization mode."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "3 continuum SPWs at 232.6, 245.0, 246.9 GHz (128 channels, 1.875 GHz each); 1 SPW at 12CO J=2-1 (938 MHz, 3840 channels, 488 kHz spacing)",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "The continuum was sampled in three SPWs, centered at 232.6, 245.0, and 246.9 GHz, each with 128 channels spanning 1.875 GHz (31.25 MHz per channel)."
+     },
+     {
+      "loc": "4 Observations",
+      "quote": "covered a bandwidth of 938 MHz in 3840 channels (488 kHz channel spacing, 0.64 km s$^{-1}$ velocity resolution)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "4 Observations",
+       "quote": "The remaining SPW was centered at the $^{12}$CO $J$=2$-$1 rest frequency (230.538 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Compact C40-5 (15 m–1.1 km) plus extended C40-8/C40-9 (up to ~12–15 km); archival compact data for some targets",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "The compact observations used an array with baseline lengths from 15 m to 1.1 km (a resolution of $\\sim$0.25$''$)."
+     },
+     {
+      "loc": "2 Survey Design and Sample",
+      "quote": "The Cycle 4 configuration schedule was set to provide the requisite resolution (with baseline lengths out to 6.8–12.6 km) during 2017 June and July."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.035'' (5 au) FWHM target; fiducial continuum beams ~22–67 mas (Table 4)",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "very high resolution ($\\sim$0.035$''$, or 5 au, FWHM) observations of their 240 GHz (1.25 mm) continuum emission"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "FWHM continuum and CO emission scales ≲2'', spatial filtering negligible with compact data",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "The FWHM continuum and CO (per channel) emission scales are $\\lesssim$ 2$''$, so spatial filtering should be negligible"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "10–20 µJy/beam in combined self-calibrated continuum data",
+    "evidence": [
+     {
+      "loc": "4.2 Self-Calibration",
+      "quote": "The typical noise measured in the combined, self-calibrated datasets is 10–20 $\\mu$Jy beam$^{-1}$ (0.1–0.5 K)."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~12 min per source compact; ~35 min per execution extended (two executions typical)",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "These observations cycled between nearby targets and totaled $\\sim$12 minutes of integration time per source."
+     },
+     {
+      "loc": "4 Observations",
+      "quote": "each with $\\sim$35 minutes of on-source integration time"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 May–November",
+    "evidence": [
+     {
+      "loc": "4 Observations",
+      "quote": "The DSHARP ALMA observations were conducted in 2017 May–November as part of program 2016.1.00484.L."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR2",
+     "provided": {
+      "value": "Parallax distances for the sample",
+      "evidence": [
+       {
+        "loc": "Survey Design and Sample",
+        "quote": "Target distances ($d$) were derived from *Gaia* DR2 parallax measurements (cite: gaia_dr2)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Literature spectral types, Teff, L*, and accretion luminosities for host stars (Table 1)",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "the references for the quoted SpT, {$T_{\\rm eff}$, $L_\\ast$}, and accretion luminosity measurements, respectively"
+       }
+      ]
+     },
+     "citation": "Table 1 refs 1–15 (e.g., (cite: alcala17), (cite: fairlamb15), (cite: luhman12))"
+    },
+    {
+     "what": {
+      "value": "Archival ALMA compact-configuration datasets for 8 targets",
+      "evidence": [
+       {
+        "loc": "4 Observations",
+        "quote": "We relied on archival ALMA observations of 5 targets (IM Lup, HD 142666, Elias 24, Elias 27, HD 163296) instead of obtaining new compact data"
+       }
+      ]
+     },
+     "citation": "(cite: oberg15); (cite: cleeves17); (cite: pinte18); (cite: salyk14); (cite: dipierro18); (cite: perez16); (cite: huang16); (cite: fedele18); (cite: flaherty15); (cite: isella16)"
+    },
+    {
+     "what": {
+      "value": "Previous ~0.3'' resolution continuum observations used for sample selection",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "This metric requires previous continuum observations at modest (0.3$''$) resolution for selection"
+       }
+      ]
+     },
+     "citation": "(cite: andrews09; andrews10b; ansdell16; barenfeld16)"
+    },
+    {
+     "what": {
+      "value": "Median Class II SED for comparison",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "Relative to the median SED (normalized at 1.5 $\\mu$m) of larger samples of Class II targets (cite: ribas17)"
+       }
+      ]
+     },
+     "citation": "(cite: ribas17)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "MIST stellar evolutionary models used to derive stellar masses and ages",
+     "evidence": [
+      {
+       "loc": "2 Survey Design and Sample",
+       "quote": "were adopted to derive masses ($M_\\ast$) and ages ($t_\\ast$) based on the `MIST` models (cite: choi16)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard ALMA pipeline by ALMA staff, followed by custom self-calibration and alignment",
+     "evidence": [
+      {
+       "loc": "4.1 Pipeline Calibration",
+       "quote": "The first step was a standard ALMA pipeline calibration. This procedure was performed by ALMA staff separately for the compact and extended data"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.7.2 or v5.1.1 (pipeline); v5.1.1 for self-calibration",
+     "evidence": [
+      {
+       "loc": "4.1 Pipeline Calibration",
+       "quote": "using `CASA` `v4.7.2` or `v5.1.1` for datasets that were processed before or after 2017 November, respectively"
+      },
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "using `CASA` `v5.1.1` and a set of custom `python` routines"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Second quasar in the calibrator list, with power-law model from Band 3/7 monitoring tied to planets/moons",
+     "evidence": [
+      {
+       "loc": "4.1 Pipeline Calibration",
+       "quote": "The flux density in each SPW for that quasar is determined from a power-law spectral model based on bi-monthly monitoring in ALMA Bands 3 and 7"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10% claimed; 5–25% mismatches between datasets, rescaled to within 5%",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "The claimed calibration accuracy is $\\sim$10%"
+      },
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "the majority exhibited 15–25% discrepancies for at least one dataset"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Compact: phase-only 60, 30, 18, 6 s then one amplitude (scan interval); combined: phase 900, 360, 180, 60, 30 s, one amplitude iteration",
+     "evidence": [
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "stepping down the solution interval (60, 30, 18, and 6 s)"
+      },
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "The phases for this combined dataset were iteratively self-calibrated on solution intervals of {900, 360, 180, 60, 30 s}"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "All imaging was performed with the `tclean` task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Multi-scale, multi-frequency synthesis (flat spectrum); scales target-dependent: point, ~θb, 2–3θb, further scales up to mask radius",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "We used the multi-scale, multi-frequency synthesis (assuming a flat spectrum) deconvolution mode (cite: cornwell08) with a Briggs `robust`=0.5 weighting scheme."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5 during self-calibration; fiducial images tailored per target (Table 4)",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "with a Briggs `robust`=0.5 weighting scheme"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "Target-dependent tapers in fiducial images (Table 4); CO tapers in Table 5",
+     "evidence": [
+      {
+       "loc": "4.5 Fiducial Images",
+       "quote": "this involved adopting a visibility weighting scheme that traded SNR for resolution, as well as a visibility taper to improve the PSF symmetry"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "30 mas (compact, to primary beam); 3 mas for combined data",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "we used 9$''$-wide images with 3 mas pixels (again, $\\sim$10 pixels per $\\theta_b$) for the combined datasets"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "26'' (primary beam FWHM) for compact; 9''-wide for combined",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "we imaged out to the primary beam FWHM (26$''$) with 30 mas pixels"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Elliptical masks reflecting target geometry, padded around emission",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "Elliptical masks were designed to reflect the target geometry (aspect ratio, position angle) and pad the outer reaches of the emission distribution."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Pseudo-continuum made by flagging ±25 km/s around CO line; CO visibilities continuum-subtracted for channel maps",
+     "evidence": [
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "A pseudo-continuum dataset was created by flagging data within $\\pm$25 km s$^{-1}$ from the CO $J$=2$-$1 line center and averaging into 125 MHz channels."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Compact self-calibrated first, then combined with extended data and self-calibrated jointly",
+     "evidence": [
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "the compact (already self-calibrated) and extended datasets were combined"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "13–25 µJy/beam for fiducial continuum images (Table 4)",
+     "evidence": [
+      {
+       "loc": "Table 4",
+       "quote": "HD 142666 | 231.9 | $32 \\times 22$, | 13, | 1.28, | 130"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Stellar mass and age derivation methodology",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "following the methodology described by (cite: andrews18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: andrews18)"
+    },
+    {
+     "what": {
+      "value": "Flat-prior distance estimation from Gaia parallaxes",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "following (cite: astraatmadja16) for a flat $d$ prior"
+       }
+      ]
+     },
+     "from_reference": "(cite: astraatmadja16)"
+    },
+    {
+     "what": {
+      "value": "Scaling of 340 GHz fluxes with I_nu ∝ nu^2.5 for sample selection",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "we assumed that $I_\\nu \\propto \\nu^{2.5}$ (cite: aw05)"
+       }
+      ]
+     },
+     "from_reference": "(cite: aw05)"
+    },
+    {
+     "what": {
+      "value": "Setups and strategies of archival compact observations",
+      "evidence": [
+       {
+        "loc": "4 Observations",
+        "quote": "The setups, observing strategies, and weather conditions are described in the listed references."
+       }
+      ]
+     },
+     "from_reference": "Table 3 references (cite: oberg15; cleeves17; pinte18 etc.)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact deconvolution scales, masks and noise thresholds per target (only in released scripts)",
+    "Per-target self-calibration choices, reference antennas and stopping iteration",
+    "Which datasets required flux rescaling and the reference dataset chosen",
+    "Per-target astrometric shifts applied",
+    "Robust value for many fiducial images (blank in Table 4 text)",
+    "Line-free/continuum channel definition for CO per target"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Pipeline calibration",
+    "method": {
+     "value": "Standard ALMA pipeline by ALMA staff on compact and extended data (WVR, bandpass, flux, gain)",
+     "evidence": [
+      {
+       "loc": "4.1 Pipeline Calibration",
+       "quote": "The first step was a standard ALMA pipeline calibration."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "CASA v4.7.2 or v5.1.1 depending on processing date",
+      "evidence": [
+       {
+        "loc": "4.1 Pipeline Calibration",
+        "quote": "using `CASA` `v4.7.2` or `v5.1.1` for datasets that were processed before or after 2017 November, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Align astrometry and flux scales between observations",
+    "method": {
+     "value": "Gaussian-fit centroids per execution, fixvis/fixplanets phase shifts; compare deprojected azimuthally averaged visibilities at 200–500 kλ and rescale with gaincal",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "We measure emission centroid positions with Gaussian fits in the image plane for each individual observation and calculate the offsets relative to the highest quality extended dataset."
+      },
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "We selected a reference dataset and used the `gaincal` task to re-scale the outlier datasets."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Relative flux scales consistent within 5%",
+      "evidence": [
+       {
+        "loc": "4.4 Astrometric and Flux Scale Alignment",
+        "quote": "noticeably improved self-calibration results were obtained if the relative flux scales between observations were consistent within 5%"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Checked deprojected visibilities between datasets",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "we inspected the deprojected (according to the Gaussian fit geometries noted above), azimuthally-averaged visibilities from different datasets"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Iterative self-calibration of compact then combined data",
+    "method": {
+     "value": "Phase-only iterations with decreasing solution intervals then one amplitude iteration; images made after each iteration with tclean",
+     "evidence": [
+      {
+       "loc": "4.2 Self-Calibration",
+       "quote": "This self-calibration sequence is stopped after reaching a solution interval on the record length (6 s) or if the peak SNR does not increase by $> 5$% from the previous iteration."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Combined data: SPWs combined; applymode='calonly' for antenna pairs with SNR ≤ 1.5",
+      "evidence": [
+       {
+        "loc": "4.2 Self-Calibration",
+        "quote": "For antenna pairings with SNR $\\le 1.5$ on these intervals, the self-calibration solutions were not applied but the corresponding data were not flagged"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "PSF sidelobe effects tested with different weightings/tapers; negligible impact on self-calibration",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "Direct comparisons (of both visibilities and images) between these variants and the standard methodology outlined above demonstrated that the PSF features had negligible impact on the self-calibration."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Make fiducial continuum images and CO channel maps",
+    "method": {
+     "value": "tclean with per-target weighting and taper to minimize PSF artifacts; CO continuum-subtracted and imaged in ~0.35 km/s LSRK channels with shorter-baseline weighting and taper",
+     "evidence": [
+      {
+       "loc": "4.5 Fiducial Images",
+       "quote": "The continuum imaging followed the methodology outlined in Section [4.3](#sec:imaging), but was tailored to individual sources with the aim of minimizing PSF artifacts."
+      },
+      {
+       "loc": "4.5 Fiducial Images",
+       "quote": "We compromised by increasing the relative weight of shorter baselines and employing a modest taper."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive host star properties",
+    "method": {
+     "value": "Gaia DR2 distances; Teff and L* (rescaled) fit with MIST models for mass and age",
+     "evidence": [
+      {
+       "loc": "2 Survey Design and Sample",
+       "quote": "Literature estimates of the effective temperatures ($T_{\\rm eff}$) and luminosities ($L_\\ast$; re-scaled for the appropriate $d$) were adopted to derive masses ($M_\\ast$) and ages ($t_\\ast$) based on the `MIST` models"
+      }
+     ]
+    },
+    "software": [
+     "ScottiePippen"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "flat distance prior",
+      "evidence": [
+       {
+        "loc": "2 Survey Design and Sample",
+        "quote": "following (cite: astraatmadja16) for a flat $d$ prior"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v4.7.2 / v5.1.1",
+    "used_for": {
+     "value": "Pipeline calibration, self-calibration, imaging",
+     "evidence": [
+      {
+       "loc": "4 Calibration and Imaging",
+       "quote": "All calibration tasks are performed with the `CASA` package (cite: mcmullin07) and a small supplement of `python` tasks."
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "All imaging",
+     "evidence": [
+      {
+       "loc": "4.3 Imaging During Self-Calibration",
+       "quote": "All imaging was performed with the `tclean` task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "fixvis",
+    "version": "not stated",
+    "used_for": {
+     "value": "Phase shifts to align datasets",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "The `fixvis` task then implements the appropriate phase adjustments."
+      }
+     ]
+    }
+   },
+   {
+    "name": "fixplanets",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reconcile different pointing centers",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "we manually reconcile them with the `fixplanets` task"
+      }
+     ]
+    }
+   },
+   {
+    "name": "gaincal",
+    "version": "not stated",
+    "used_for": {
+     "value": "Rescale outlier flux datasets",
+     "evidence": [
+      {
+       "loc": "4.4 Astrometric and Flux Scale Alignment",
+       "quote": "used the `gaincal` task to re-scale the outlier datasets"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ScottiePippen",
+    "version": "not stated",
+    "used_for": {
+     "value": "Listed in software section (stellar parameter inference)",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "`ScottiePippen` (cite: czekala16)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MIST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stellar evolutionary models for masses and ages",
+     "evidence": [
+      {
+       "loc": "2 Survey Design and Sample",
+       "quote": "based on the `MIST` models (cite: choi16)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Typical peak SNR improvement from compact-data self-calibration",
+    "value": "3",
+    "uncertainty": "not stated",
+    "units": "factor",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Self-Calibration",
+      "quote": "The typical peak SNR increased by a factor of 3; the resulting noise was 30 $\\mu$Jy beam$^{-1}$ (10 mK) for a $\\sim$0.25$''$ beam."
+     }
+    ]
+   },
+   {
+    "quantity": "Typical peak SNR improvement from combined-data self-calibration",
+    "value": "40%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Self-Calibration",
+      "quote": "This self-calibration of the combined datasets resulted in a typical improvement of 40% in the peak SNR"
+     }
+    ]
+   },
+   {
+    "quantity": "Noise in combined self-calibrated continuum data",
+    "value": "10–20",
+    "uncertainty": "not stated",
+    "units": "µJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Self-Calibration",
+      "quote": "The typical noise measured in the combined, self-calibrated datasets is 10–20 $\\mu$Jy beam$^{-1}$ (0.1–0.5 K)."
+     }
+    ]
+   },
+   {
+    "quantity": "Median WVR phase RMS improvement (extended data)",
+    "value": "~1.7",
+    "uncertainty": "range 1.2–3",
+    "units": "factor",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1 Pipeline Calibration",
+      "quote": "the WVR corrections improved the median RMS phase variations by a factor of $\\sim$1.7"
+     }
+    ]
+   },
+   {
+    "quantity": "Flux scale mismatches between datasets",
+    "value": "majority 15–25%; a third 5–10%",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.4 Astrometric and Flux Scale Alignment",
+      "quote": "About a third of the sample had 5–10% mismatches, but the majority exhibited 15–25% discrepancies for at least one dataset."
+     }
+    ]
+   },
+   {
+    "quantity": "Sample stellar mass range",
+    "value": "0.2–2",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "2 Survey Design and Sample",
+      "quote": "The sample hosts exhibit a range of young star properties, with $M_\\ast \\approx 0.2$–2 $M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Sample average continuum flux density",
+    "value": "150",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2 Survey Design and Sample",
+      "quote": "The DSHARP averages are $M_\\ast \\approx 0.8$ $M_\\odot$ (spectral type K7), $F_\\nu \\approx 150$ mJy, and $R_{\\rm eff} \\approx 50$ au"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Continuum substructures are ubiquitous in the sample, at radii from 5 au to >150 au",
+    "evidence": [
+     {
+      "loc": "6 Overview",
+      "quote": "Continuum substructures are ubiquitous in this sample, as can be deduced from Figure [\\[fig:gallery\\]](#fig:gallery)."
+     }
+    ]
+   },
+   {
+    "value": "Most common substructures are concentric rings and gaps; spirals less common; azimuthal asymmetries rare",
+    "evidence": [
+     {
+      "loc": "6 Overview",
+      "quote": "The most common form of these substructures are concentric bright rings and dark gaps."
+     },
+     {
+      "loc": "6 Overview",
+      "quote": "Azimuthal asymmetries are rare in this sample."
+     }
+    ]
+   },
+   {
+    "value": "Sample is biased toward bright, large disks and massive, accreting hosts",
+    "evidence": [
+     {
+      "loc": "2 Survey Design and Sample",
+      "quote": "it is worth emphasizing that this range is not representative of the general population"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are substructures common in large, bright protoplanetary disks?",
+    "experiment": "Imaged 240 GHz continuum at ~35–50 mas for 20 disks",
+    "result": "Small-scale substructures seen in all targets, often FWHM ≲10 au",
+    "finding": "Substructures are ubiquitous in this sample",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5 Fiducial Images",
+      "quote": "Small-scale substructures are notable in all of the DSHARP targets, often with compact (FWHM $\\lesssim$ 10 au) dimensions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Self-calibration and combining configurations yield reliable high-resolution images despite PSF sidelobes",
+    "experiment": "Repeated self-calibration with different weightings/tapers and compared",
+    "result": "PSF features had negligible impact on self-calibration",
+    "finding": "Standard homogeneous self-calibration is robust",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Imaging During Self-Calibration",
+      "quote": "demonstrated that the PSF features had negligible impact on the self-calibration"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Observed ring sizes and amplitudes reflect dust trapped in gas pressure bumps and planet-disk interactions",
+    "experiment": "Summarized companion analyses",
+    "result": "Ring sizes/amplitudes consistent with pressure bumps; simulations suggest sub-Jupiter planets",
+    "finding": "Plausible explanations offered in companion papers",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Overview",
+      "quote": "The ring substructure sizes and amplitudes suggest that these features can be understood as dust trapped in axisymmetric gas pressure bumps."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 6 (~240 GHz) was optimal given ALMA Cycle 4 Large Program restrictions and the resolution/sensitivity goals",
+    "evidence": [
+     {
+      "loc": "2 Survey Design and Sample",
+      "quote": "The combination of these criteria and ALMA technical restrictions meant that the optimal observing frequency was in the vicinity of 240 GHz (Band 6)."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Higher frequency observations rejected: not permitted for Cycle 4 Large Programs, and high optical depth would limit discovery to deep gaps",
+     "evidence": [
+      {
+       "loc": "2 Survey Design and Sample",
+       "quote": "Higher frequency observations at comparable (or better) resolution were not permitted for Cycle 4 Large Programs"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Self-calibration stopped when peak SNR did not improve by >5% (and map quality did not visually improve)",
+    "evidence": [
+     {
+      "loc": "4.2 Self-Calibration",
+      "quote": "The sequence was stopped when the peak SNR does not increase by $> 5$% and the map quality does not visually improve."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Sample is biased to bright, large disks and earlier spectral types, not representative of the general population",
+     "evidence": [
+      {
+       "loc": "2 Survey Design and Sample",
+       "quote": "this range is not representative of the general population"
+      }
+     ]
+    },
+    {
+     "value": "CO data not sensitive enough for useful channel maps at best resolution; cloud contamination in many targets",
+     "evidence": [
+      {
+       "loc": "4.5 Fiducial Images",
+       "quote": "The DSHARP data are generally not sensitive enough to reconstruct useful channel maps of the emission line at the best available resolution."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Per-target imaging parameters live in released scripts, so the paper alone does not fix the final images",
+    "Flux calibration mismatches of 15–25% were corrected ad hoc by a chosen reference dataset",
+    "Few quantitative results; main science is in companion papers",
+    "Sample selection biases limit prevalence statements"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Calibrated visibilities, images, scripts released publicly",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The DSHARP data – including visibilities, images, calibration scripts, and more – are released for community use at <https://almascience.org/alma-data/lp/DSHARP>."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "Release goes beyond standard ALMA archive products",
+    "evidence": [
+     {
+      "loc": "5 Data Release",
+      "quote": "we have released a suite of data products that go beyond the standard contents in the ALMA archive"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "CASA scripts and python modules used to calibrate and image the data are released",
+     "evidence": [
+      {
+       "loc": "5 Data Release",
+       "quote": "(1) `CASA` scripts and associated `python` modules used to calibrate and image the data"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Per-target calibration scripts are external (data release)",
+    "Exact per-target masks, scales, thresholds",
+    "Which executions needed flux/astrometric correction"
+   ],
+   "estimated_data_volume_inferred": "Large: ~20 targets, multiple executions each in Band 6 with long baselines; likely several TB raw, hundreds of GB for calibrated measurement sets",
+   "score_inferred": 4,
+   "score_reason": "Data, scripts and calibrated products are public and the procedure is detailed, but per-target parameters reside in released scripts and results are mostly qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data are public and the recipe is largely given, but the paper's main results are qualitative and per-target details are in external scripts."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: cornwell08)",
+     "why": "Multi-scale multi-frequency deconvolution used in tclean"
+    },
+    {
+     "citation": "(cite: andrews18)",
+     "why": "Stellar parameter derivation methodology"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Huang et al. 2018a (DSHARP II)",
+     "why": "Rings and gaps analysis"
+    },
+    {
+     "citation": "Huang et al. 2018b (DSHARP III)",
+     "why": "Spirals"
+    },
+    {
+     "citation": "Kurtovic et al. 2018 (DSHARP IV)",
+     "why": "HT Lup and AS 205 multiples"
+    },
+    {
+     "citation": "Birnstiel et al. 2018 (DSHARP V)",
+     "why": "Fiducial dust model"
+    },
+    {
+     "citation": "Dullemond et al. 2018 (DSHARP VI)",
+     "why": "Rings as dust traps in pressure bumps"
+    },
+    {
+     "citation": "Zhang et al. 2018 (DSHARP VII)",
+     "why": "Planet-disk hydrodynamics simulations"
+    },
+    {
+     "citation": "Guzmán et al. 2018 (DSHARP VIII)",
+     "why": "AS 209"
+    },
+    {
+     "citation": "Isella et al. 2018 (DSHARP IX)",
+     "why": "HD 163296"
+    },
+    {
+     "citation": "Pérez et al. 2018 (DSHARP X)",
+     "why": "HD 143006"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "DSHARP (ALMA Large Program 2016.1.00484.L)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e68a80eb3ce3aa6fb4154083673d84f4",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:10",
+  "usage": {
+   "input_tokens": 52587,
+   "output_tokens": 12894,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.117664,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 98,
+  "quotes_ok": 98,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 10,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2012.1.00694.S",
+   "2013.1.00631.S"
+  ],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 66,
+   "rate": 0.767
+  },
+  "evidence_ok": true
+ }
+}

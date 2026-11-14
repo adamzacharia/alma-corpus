@@ -1,0 +1,462 @@
+{
+ "bibcode": "2026A&A...705A.132W",
+ "title": "Observation of CH<SUB>3</SUB><SUP>17</SUP>OH and CH<SUB>3</SUB><SUP>18</SUP>OH in Orion KL: A new tool to study star formation history",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202556325",
+ "arxiv_id": "2510.08041",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Is CH3(17)OH present in the ISM (Orion KL), and what are the CH3(18)OH/CH3(17)OH, 16O/17O and 16O/18O isotope ratios in methanol",
+ "alma_project_codes": [
+  "2013.1.00553.S",
+  "2011.0.00009.SV"
+ ],
+ "data": {
+  "bands": "1.3 mm band (continuum image at 236.7 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "2013.1.00553.S cube: 1.7\" x 1.0\" PA = 87.6 deg; SV cube: 1.9\" x 1.4\" PA = -12.8 deg; convolved to 2.0\" x 2.0\" for line comparison",
+  "sensitivity": "7 mJy/beam (2013.1.00553.S cube); 12 mJy/beam (SV cube)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CH3(17)OH line parameters (laboratory spectroscopy)",
+    "evidence": [
+     {
+      "loc": "Column densities",
+      "quote": "we utilized the line parameters of CH$_3$$^{17}$OH by (cite: Tamanai2025) and those in CDMS for CH$_3$$^{18}$OH"
+     }
+    ]
+   },
+   "citation": "Tamanai2025 (and CDMS, Muller2001, for CH3(18)OH)"
+  },
+  {
+   "what": {
+    "value": "CH3OH column densities and rotational temperatures at dM-1 and dM-3 (rotation temperatures 130 K and 58 K)",
+    "evidence": [
+     {
+      "loc": "Column densities",
+      "quote": "using the column densities and rotational temperatures of CH$_3$OH at dM-1 and dM-3 from (cite: Peng2012)"
+     },
+     {
+      "loc": "Column densities",
+      "quote": "In the calculation, we assumed the rotation temperature of 58 K and 130 K for MeOH1 and MeOH2, respectively, which are the rotation temperatures of CH$_3$OH in dM-3 and dM-1 (cite: Peng2012)."
+     }
+    ]
+   },
+   "citation": "Peng2012"
+  },
+  {
+   "what": {
+    "value": "Canonical 16O/18O = 560 and 16O/17O = 2000 (local ISM), used for the optical-depth estimate and comparison",
+    "evidence": [
+     {
+      "loc": "Column densities",
+      "quote": "Assuming the canonical values of $^{16}$O/$^{18}$O $=560$ and $^{16}$O/$^{17}$O $=2000$ (cite: Wilson1999)"
+     }
+    ]
+   },
+   "citation": "Wilson1999"
+  },
+  {
+   "what": {
+    "value": "H2 volume density > 1e8 cm^-3 used to justify LTE",
+    "evidence": [
+     {
+      "loc": "Column densities",
+      "quote": "the assumption of LTE is justified because the emissions originate from sufficiently dense regions with the H$_2$ volume density of $n_{\\rm H_2} > 10^8$ cm$^{-3}$ (cite: Favre2011)"
+     }
+    ]
+   },
+   "citation": "Favre2011"
+  },
+  {
+   "what": {
+    "value": "Einstein A and C coefficients for the critical-density estimate of CH3OH (5_0-4_0, E) at 100 K",
+    "evidence": [
+     {
+      "loc": "footnote 1",
+      "quote": "from Leiden Atomic and Molecular Database (cite: Schoier2005)"
+     }
+    ]
+   },
+   "citation": "Schoier2005 (LAMDA)"
+  },
+  {
+   "what": {
+    "value": "18O/17O = 3.6 +/- 0.7 from C18O and C17O J=5-4 with Odin toward Orion KL (comparison)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Persson2007) evaluated the $^{18}$O/$^{17}$O ratio of $3.6 \\pm 0.7$ by using C$^{18}$O($J=5-4$)"
+     }
+    ]
+   },
+   "citation": "Persson2007"
+  },
+  {
+   "what": {
+    "value": "18O/17O = 4.1 (+2.1/-1.3) in the Compact Ridge from Herschel/HIFI CO isotopologues (comparison)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Plume2012) derived the $^{18}$O/$^{17}$O ratio of $4.1^{+2.1}_{-1.3}$ in the Compact Ridge"
+     }
+    ]
+   },
+   "citation": "Plume2012"
+  },
+  {
+   "what": {
+    "value": "18O/17O = 4.1 +/- 0.1 from low-J C18O/C17O (2-1) in G209.00-19.38 (comparison)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Zou2023) estimated the $^{18}$O/$^{17}$O ratio of $4.1\\pm0.1$ in G209.00-19.38 in Orion Nebula"
+     }
+    ]
+   },
+   "citation": "Zou2023"
+  },
+  {
+   "what": {
+    "value": "16O/18O ~ 218 from methyl formate isotopologues toward Orion KL (comparison)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "which estimated the $^{16}$O/$^{18}$O ratio to be $\\sim 218$ from the total column density of the two isotopomer HC$^{18}$OOCH$_3$ and HCO$^{18}$OCH$_3$"
+     }
+    ]
+   },
+   "citation": "Tercero2012"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image the archival cubes and continuum",
+   "method": "Calibrated visibilities (observatory script / SV data), continuum subtracted with a 0th-order polynomial fit to line-free channels, CLEAN with Briggs robust 0.5, primary-beam correction with impbcor",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5; 488 kHz frequency resolution; cube rms 7 mJy/beam (2013.1.00553.S) and 12 mJy/beam (SV)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Locate CH3(18)OH emission peaks",
+   "method": "Integrated intensity map of CH3(18)OH 5_0-4_0 E over 4.5-11.5 km/s; two peaks MeOH1 and MeOH2 coincident with methyl formate peaks MF1 and MF2",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Velocity integration range 4.5-11.5 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Identify CH3(17)OH lines",
+   "method": "Compare observed spectra at MeOH1 and MeOH2 to the laboratory CH3(17)OH spectrum and frequencies; assign other lines with CDMS and JPL catalogues; compare profiles and maps with CH3(18)OH",
+   "software": [
+    "CDMS",
+    "JPL catalog"
+   ],
+   "key_parameters": [
+    "Six CH3(17)OH lines identified at S/N more than 50 sigma; 5_2-4_2 A- blended with 5_3-4_3 E at 236.554 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Match angular resolution for line comparison",
+   "method": "Convolve cubes with Gaussian kernels to a common 2.0\" x 2.0\" resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Common resolution 2.0\" x 2.0\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive CH3(18)OH and CH3(17)OH column densities and their ratio at MeOH1 and MeOH2",
+   "method": "LTE, optically thin, single-transition (5_0-4_0 E) integrated intensities from the 2.0\" x 2.0\" cubes with fixed rotation temperatures",
+   "software": [
+    "CDMS",
+    "JPL catalog"
+   ],
+   "key_parameters": [
+    "Rotation temperature 58 K (MeOH1) and 130 K (MeOH2), fixed"
+   ],
+   "assumptions": [
+    "LTE justified by dense gas (n_H2 > 1e8 cm^-3 vs n_crit ~1e5 cm^-3); optically thin lines"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Check the optical-depth assumption",
+   "method": "Estimate optical depths of CH3(18)OH and CH3(17)OH 5_0-4_0 E from Peng2012 CH3OH column densities and rotational temperatures with canonical 16O/18O = 560 and 16O/17O = 2000",
+   "software": [],
+   "key_parameters": [
+    "Canonical 16O/18O = 560 and 16O/17O = 2000 (Wilson1999)"
+   ],
+   "assumptions": [
+    "Isotopologue ratios equal the canonical local-ISM values"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive 16O/17O and 16O/18O at dM-1 and dM-3 using Peng2012 CH3OH",
+   "method": "Smooth the ALMA data to 3.8\" x 2.0\" PA 22 deg, repeat the LTE column-density procedure with Trot 130 K (dM-1) and 58 K (dM-3), and combine with CH3OH column densities to form isotope ratios",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Trot = 130 K (dM-1), 58 K (dM-3)"
+   ],
+   "assumptions": [
+    "CH3OH column densities from Peng2012 (optical depth below 0.2) are applicable at the ALMA positions, which coincide with the PdBI positions within the beam"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3(18)OH/CH3(17)OH ratio at MeOH1 and MeOH2 (2.0\" x 2.0\")",
+   "value": "3.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "are evaluated to be $3.3\\pm 0.2$ in both MeOH1 and MeOH2"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3(18)OH) at MeOH1",
+   "value": "3.7e15",
+   "uncertainty": "0.2e15",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(3.7 \\pm 0.2)\\times 10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3(17)OH) at MeOH1",
+   "value": "1.1e15",
+   "uncertainty": "0.6e15",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(1.1 \\pm 0.6)\\times 10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3(18)OH) at MeOH2",
+   "value": "9.8e15",
+   "uncertainty": "0.5e15",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(9.8 \\pm 0.5)\\times 10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3(17)OH) at MeOH2",
+   "value": "3.0e15",
+   "uncertainty": "0.2e15",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(3.0 \\pm 0.2)\\times 10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth of CH3(18)OH 5_0-4_0 E (expected)",
+   "value": "0.05-0.12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "are expected to be $0.05-0.12$ and $0.01-0.04$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth of CH3(17)OH 5_0-4_0 E (expected)",
+   "value": "0.01-0.04",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "are expected to be $0.05-0.12$ and $0.01-0.04$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(16)OH/CH3(17)OH at dM-1 (3.8\" x 2.0\")",
+   "value": "2300",
+   "uncertainty": "300",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "ratios are $2300\\pm 300$, $650\\pm 70$, and $3.5\\pm 0.3$, respectively in dM-1"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(16)OH/CH3(18)OH at dM-1",
+   "value": "650",
+   "uncertainty": "70",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "ratios are $2300\\pm 300$, $650\\pm 70$, and $3.5\\pm 0.3$, respectively in dM-1"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(18)OH/CH3(17)OH at dM-1",
+   "value": "3.5",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "ratios are $2300\\pm 300$, $650\\pm 70$, and $3.5\\pm 0.3$, respectively in dM-1"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(16)OH/CH3(17)OH at dM-3",
+   "value": "2500",
+   "uncertainty": "200",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$2500 \\pm 200$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(16)OH/CH3(18)OH at dM-3",
+   "value": "710",
+   "uncertainty": "60",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$710 \\pm 60$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3(18)OH/CH3(17)OH at dM-3",
+   "value": "3.4",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$3.4 \\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH) at dM-1 (from Peng2012 combined in Table 3)",
+   "value": "4.2e18",
+   "uncertainty": "0.4e18",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(4.2 \\pm 0.4)\\times 10^{18}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(CH3OH) at dM-3",
+   "value": "1.7e18",
+   "uncertainty": "0.1e18",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(1.7 \\pm 0.1)\\times 10^{18}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of CH3(17)OH lines identified at MeOH1 and MeOH2",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "In MeOH1 and MeOH2, six emission lines are identified as CH$_3$$^{17}$OH with a S/N ratio of more than $50\\sigma$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN/tclean parameters: cell size, image size, niter, threshold, masking, channel width/velocity resolution of the cubes",
+  "Line-free channel ranges used for the 0th-order continuum fit in both datasets",
+  "Antenna configuration, baselines, array (12 m/7 m/ACA) and maximum recoverable scale of each dataset",
+  "Flux, bandpass and phase calibrators and flux-scale uncertainty; how the SV data were calibrated and with which CASA version",
+  "Whether the archival SV calibrated measurement set or a re-calibration was used, and how the 231.68-231.88 GHz cube was produced",
+  "How spectra were extracted at MeOH1/MeOH2 (single pixel or aperture, positions in Table 1) and how integrated intensities were measured (velocity range, baseline, Gaussian fit)",
+  "LTE formulae, partition function source for CH3(17)OH/CH3(18)OH, beam filling factor/source size assumed",
+  "Origin of the quoted column density uncertainties (noise only, fit, calibration) and how ratio uncertainties were propagated",
+  "How the CH3OH main-isotopologue column density was converted to the 3.8\" x 2.0\" comparison and which Peng2012 values/uncertainties were used",
+  "Beam-convolution method details for matching the two datasets to 2.0\" x 2.0\"; handling of the different phase centres and primary-beam corrections"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters (cell, image size, niter, threshold, mask, channel width) and line-free channel ranges",
+  "How spectra and integrated intensities were measured and the exact LTE equations and partition functions",
+  "Laboratory CH3(17)OH line list is in Tamanai2025, not in this paper's text beyond Table 2 frequencies",
+  "Peng2012 CH3OH column densities must be retrieved from that paper",
+  "Calibration details for the SV dataset"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data, stated beams, rms, robust, Trot and line frequencies allow a close redo; but imaging parameters, spectrum extraction, LTE details and the Peng2012 CH3OH inputs are missing, and numeric results are given in tables",
+ "rediscovery_reason": "Data are public archival ALMA projects, a short analysis chain (image, extract two lines, LTE column at fixed Trot) and numeric ratios (3.3 +/- 0.2, 2300 +/- 300) allow a check",
+ "source_card": "cards/2026A%26A...705A.132W/sonnet/card.md"
+}

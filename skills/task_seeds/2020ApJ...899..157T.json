@@ -1,0 +1,253 @@
+{
+ "bibcode": "2020ApJ...899..157T",
+ "title": "The Excitation Conditions of CN in TW Hya",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba956",
+ "arxiv_id": "2007.11906",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Is CN emission in the TW Hya disk in LTE, and what excitation temperatures, kinetic temperatures and densities, and hence emitting regions, does it trace across the N=1-0, 2-1 and 3-2 transitions?",
+ "alma_project_codes": [
+  "2013.1.00387.S",
+  "2017.1.01199.S",
+  "2016.1.00440.S"
+ ],
+ "data": {
+  "bands": "Band 3, 6 and 7 (N=1-0, 2-1, 3-2 at 113.5, 226.8, 340.1 GHz)",
+  "arrays": "Band 3: 42 antennas; Band 6: 34 antennas; Band 7: 45 antennas",
+  "angular_resolution": "Band 3 0.54\"x0.48\"; Band 6 0.52\"x0.43\"; Band 7 0.31\"x0.29\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CN line frequencies, Einstein A, degeneracies, dipole strengths",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "The line frequencies, Einstein A coefficients, upper state degeneracies and dipole strengths were taken from the CDMS"
+     }
+    ]
+   },
+   "citation": "CDMS (cite: CDMS)"
+  },
+  {
+   "what": {
+    "value": "CN-H2 collisional rates including hyperfine structure, from LAMDA",
+    "evidence": [
+     {
+      "loc": "4.1 Non-LTE Excitation",
+      "quote": "with the latest CN collisional rates which include hyperfine structure (cite: Kalugina_Lique_2015), obtained from the LAMDA database"
+     }
+    ]
+   },
+   "citation": "Kalugina & Lique 2015; Schoeier et al. 2005"
+  },
+  {
+   "what": {
+    "value": "TW Hya physical structure model for densities and temperatures",
+    "evidence": [
+     {
+      "loc": "4.1 Non-LTE Excitation",
+      "quote": "Based on the physical structure model from (cite: Qi_ea_2013), this is achieved at heights of $z\\,/\\,r \\gtrsim 0.2$."
+     }
+    ]
+   },
+   "citation": "Qi et al. 2013"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image cubes",
+   "method": "tclean with Keplerian mask and Briggs weighting, per band",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "robust 0 / -1 / 0.5 for Bands 3/6/7"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack spectra and measure rotation/stellar mass and fluxes",
+   "method": "Annuli of beam/4 width; Gaussian-process rotation curve; Keplerian fit; shift and stack; integrate over 1.5 km/s window; matched filter check",
+   "software": [
+    "GoFish",
+    "VISIBLE"
+   ],
+   "key_parameters": [
+    "inclination 6.5 deg, PA 151 deg; 1.5 km/s window; 40 m/s binning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit blended hyperfine components",
+   "method": "Two offset Gaussians with shared width and independent amplitudes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "negligible blending between components"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Infer excitation temperature",
+   "method": "Isothermal slab model with {Tex, dV, tau0} per fine-structure group in 0.1\" annuli, full Planck function, convolved with spectral response",
+   "software": [
+    "emcee",
+    "scipy.optimize",
+    "CASA imsmooth"
+   ],
+   "key_parameters": [
+    "emcee: walkers = 2x free parameters, 2000 burn-in + 10000 steps; Nelder-Mead start"
+   ],
+   "assumptions": [
+    "shared Tex within group; Gaussian profiles; optical depths summed"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Infer kinetic temperature",
+   "method": "Forward model beam-broadened dV profile with broken power-law Tkin(r), compare to observed dV",
+   "software": [
+    "emcee",
+    "scipy.optimize.curve_fit"
+   ],
+   "key_parameters": [
+    "12 walkers, 2000 burn-in + 2000 steps; fit 0.3\"-3.0\"; pivot at 1\""
+   ],
+   "assumptions": [
+    "purely thermal broadening, mu_CN=26, Mstar=0.65 Msun, i=6.8 deg"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Non-LTE test with RADEX",
+   "method": "Compute Tex scatter within fine-structure groups versus H2 density",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Tkin=24 K, N(CN)=1e14 cm^-2, thermalised linewidth"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar mass from rotation",
+   "value": "0.66",
+   "uncertainty": "0.02",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.3 Observational Results",
+     "quote": "$M_{\\rm star} = 0.66 \\pm 0.02~M_{\\rm sun}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average Tex (0.5\"-3\")",
+   "value": "27",
+   "uncertainty": "7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3 Results",
+     "quote": "$\\langle T_{\\rm ex} \\rangle = 27 \\pm 7$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Average Tkin (0.5\"-3\")",
+   "value": "24",
+   "uncertainty": "5",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3 Results",
+     "quote": "$\\langle T_{\\rm kin} \\rangle = 24 \\pm 5$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Tkin,0 N=1-0 J=3/2-1/2",
+   "value": "28",
+   "uncertainty": "3",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$28 \\pm 3$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Detected hyperfine transitions",
+   "value": "24 of 30",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "24 hyperfine transitions are detected out of the 30"
+    }
+   ]
+  },
+  {
+   "quantity": "Splitting of 340.247770 GHz blend",
+   "value": "334",
+   "uncertainty": "not stated",
+   "units": "kHz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.4 Blended Components",
+     "quote": "334 kHz for the 340.247770 GHz components and 295 kHz for the 340.035408 GHz components"
+    }
+   ]
+  },
+  {
+   "quantity": "Splitting of 340.035408 GHz blend",
+   "value": "295",
+   "uncertainty": "not stated",
+   "units": "kHz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.4 Blended Components",
+     "quote": "334 kHz for the 340.247770 GHz components and 295 kHz for the 340.035408 GHz components"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Band 6 and 7 flux/bandpass/phase calibrators",
+  "CASA and pipeline versions",
+  "Line-free channels and continuum subtraction details",
+  "Cell and image size, multiscale scales",
+  "Spectral averaging details (8 and 16 channels stated only in appendix)",
+  "Inclination 6.8 vs 6.5 deg inconsistency between uses",
+  "Priors on tau0 and Tkin parameters",
+  "Observing configuration details of Band 7 flux calibration"
+ ],
+ "missing_for_reproduction": [
+  "Calibrators for Bands 6 and 7",
+  "CASA version",
+  "Line-free channels and cleaning parameters"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Data are public and the method is well described with MCMC settings, but imaging and calibration details are missing.",
+ "rediscovery_reason": "Public data, numeric Tex/Tkin results, and a mostly complete recipe.",
+ "source_card": "cards/2020ApJ...899..157T/sonnet/card.md"
+}

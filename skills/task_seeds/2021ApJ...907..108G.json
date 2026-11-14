@@ -1,0 +1,565 @@
+{
+ "bibcode": "2021ApJ...907..108G",
+ "title": "Identification of Methyl Isocyanate and Other Complex Organic Molecules in a Hot Molecular Core, G31.41+0.31",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abc9c4",
+ "arxiv_id": "2011.02226",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Which complex organic molecules (including new detections of CH3NCO and CH3SH) are present in the hot molecular core G31.41+0.31, what are their column densities, temperatures and abundances, and what do infall and outflow tracers say about its kinematics",
+ "alma_project_codes": [
+  "2015.1.01193.S"
+ ],
+ "data": {
+  "bands": "Band 3 (cycle 3)",
+  "arrays": "forty 12 m antennas",
+  "angular_resolution": "synthesized beam ~1.19 x 0.98 arcsec, PA ~76 deg (also quoted as ~1.1 arcsec)",
+  "sensitivity": "continuum rms 5 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distance of 7.9 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "G31.41+0.31 (hereafter G31) is an HMC that is thought to be located at a 7.9 kpc distance from the Earth (cite: chur90)."
+     }
+    ]
+   },
+   "citation": "(cite: chur90)"
+  },
+  {
+   "what": {
+    "value": "Updated distance of 3.7 kpc from parallax",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "However, new parallax measurement suggests that G31 is located at a distance of 3.7 kpc."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "Therefore the luminosity of the source would be $\\rm{\\sim 4\\times10^{4}}$$L_\\odot$"
+     }
+    ]
+   },
+   "citation": "(cite: ried19; esta19; belt19)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient interpolated from tabulated dust opacities (thin ice): 0.176 cm2/g at 94 GHz",
+    "evidence": [
+     {
+      "loc": "Continuum emission and H2 column density estimation",
+      "quote": "According to the interpolation of the data presented in (cite: osse94), we estimated the mass absorption coefficient."
+     }
+    ]
+   },
+   "citation": "(cite: osse94)"
+  },
+  {
+   "what": {
+    "value": "Dust-to-gas ratio Z=0.01 and mu_H=1.41",
+    "evidence": [
+     {
+      "loc": "Continuum emission and H2 column density estimation",
+      "quote": "Here, we used $Z=0.01$, $\\mu_H=1.41$ (cite: cox00), and dust temperature 150 K."
+     }
+    ]
+   },
+   "citation": "(cite: cox00)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity ~97 km/s",
+    "evidence": [
+     {
+      "loc": "ALMA archival data",
+      "quote": "The systematic velocity of the source is known to be $\\sim$ $97$ km s$^{-1}$ (cite: cesa10; rivi17)."
+     }
+    ]
+   },
+   "citation": "(cite: cesa10; rivi17)"
+  },
+  {
+   "what": {
+    "value": "SiO abundance (1.0e-8) and excitation temperature (20 K) adopted for outflow mass estimates",
+    "evidence": [
+     {
+      "loc": "Molecular outflow",
+      "quote": "To estimate the outflow parameters, we assumed same abundance ($\\rm{1.0\\times10^{-8}}$) and excitation temperature ($20$ K) of SiO (cite: code13) and HCN."
+     }
+    ]
+   },
+   "citation": "(cite: code13)"
+  },
+  {
+   "what": {
+    "value": "Column densities and abundances of CH3OH, CH3OCHO, CH3NCO, CH3SH, SO2, H2CO, SiO in Sgr B2(N), Orion KL, G10.47+0.03 and a chemical model, used for comparison (Table of fractional abundances)",
+    "evidence": [
+     {
+      "loc": "Molecular distributions and abundances",
+      "quote": "We compare the abundance of all detected species between G31 and other sources, which is presented in Table"
+     }
+    ]
+   },
+   "citation": "(cite: mull16; bell16; bell17; higu15; bell13; favr15; favr11; cern16; kole14; terc18; espl13; schi01; rolf11; garr13; gora20) as footnoted in the table"
+  },
+  {
+   "what": {
+    "value": "Hot-core chemical model results (isothermal collapse then warm-up, fast timescale), peak gas-phase abundances at 100-200 K",
+    "evidence": [
+     {
+      "loc": "Discussions",
+      "quote": "We used peak gas-phase abundances of all the species around 100-200 K of fast warm-up timescale model to compare with the observed values."
+     }
+    ]
+   },
+   "citation": "(cite: garr13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Subtract continuum, image continuum and fit its size and flux",
+   "method": "uvcontsub with first-order baseline fit to separate continuum and line data; two-dimensional Gaussian fit to the dust continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "peak 158.4 mJy/beam, integrated flux 242.4 mJy, rms 5 mJy/beam"
+   ],
+   "assumptions": [
+    "Source treated as unresolved or at best marginally resolved; beam dilution correction applied to brightness temperature"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive H2 column density and dust optical depth from the continuum",
+   "method": "Optically thin dust continuum equation N_H2 = (S_beam/Omega_beam)/(2 kappa B_nu(T_d) Z mu_H m_H), with brightness-temperature check of optical depth",
+   "software": [],
+   "key_parameters": [
+    "kappa = 0.176 cm2/g at 94 GHz"
+   ],
+   "assumptions": [
+    "dust-to-gas ratio Z = 0.01, mu_H = 1.41, dust temperature 150 K",
+    "Dust continuum optically thin"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and measure line parameters",
+   "method": "Spectra extracted from a 1.1 arcsec diameter circular region at the phase centre; single Gaussian fits for FWHM, V_LSR and integrated intensity; multi-Gaussian fits for blended CH3SH profiles",
+   "software": [
+    "CASSIS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "CH3SH multi-Gaussian: fixed velocity separation and line-intensity ratio, FWHM free"
+   ],
+   "assumptions": [
+    "Line identification with CDMS and JPL spectroscopic databases"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotational temperatures with rotation diagrams",
+   "method": "Linear fit of log(N_u/g_u) versus E_u for CH3OH, CH3OCHO, CH3SH and CH3NCO; two temperature components fitted for methanol",
+   "software": [],
+   "key_parameters": [
+    "T_rot: CH3OCHO ~162 K, CH3SH 76 K, CH3NCO 48 K, CH3OH cold 33 K and hot 181 K"
+   ],
+   "assumptions": [
+    "Optically thin lines in LTE"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular column densities and abundances with LTE modeling",
+   "method": "CASSIS LTE model spectra compared with observed spectra; only column density varied, with Tex, source size, FWHM and N_H2 fixed; beam-averaged column density; abundances relative to H2",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Source size set to the deconvolved continuum size; FWHM from Gaussian fits; Tex assumed ~150 K"
+   ],
+   "assumptions": [
+    "Beam dilution not taken into account in the beam-averaged column density; abundances relative to N_H2 = 1.53e25 cm-2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain density and temperature from absorption lines with non-LTE radiative transfer",
+   "method": "RADEX grid over n_H = 1e3-1e7 cm-3 and T_kin = 1-100 K for HCN (1-0), H13CO+ (1-0), SiO (2-1) with a 36 K continuum background",
+   "software": [
+    "RADEX",
+    "LAMDA",
+    "JPL",
+    "CDMS"
+   ],
+   "key_parameters": [
+    "column densities 3.55e15 (H13CO+), 8.92e15 (HCN), 1.18e15 (SiO) cm-2"
+   ],
+   "assumptions": [
+    "Collisional rates from LAMDA; spectroscopic constants from JPL/CDMS"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Characterise infall and outflows",
+   "method": "Infall velocity from the offset of the H13CO+ red-shifted absorption from the systemic velocity; SiO and HCN blue/red lobes imaged and outflow velocity, dynamical time, mass, momentum and energy derived",
+   "software": [],
+   "key_parameters": [
+    "Outflow velocity taken as maximum outflow velocity relative to 97 km/s LSR; SiO blue/red lobe velocities 23 and 33 km/s"
+   ],
+   "assumptions": [
+    "Same abundance 1.0e-8 and excitation temperature 20 K for SiO and HCN; distance 7.9 kpc, with values for 3.7 kpc given in parentheses"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare abundances with other hot cores and a chemical model",
+   "method": "Compare G31 column densities, abundances and molecular ratios with Sgr B2(N), Orion KL, G10.47+0.03 and the hot-core model peak gas-phase abundances at 100-200 K (fast warm-up)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Fast warm-up timescale model judged most suitable for high-mass star-forming regions"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak intensity (94.3 GHz)",
+   "value": "158.4",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "Two dimensional Gaussian fitting of the continuum yields a peak intensity (S$_\\nu^{beam}$) of dust continuum of 158.4 mJy/beam and integrated flux (F$_\\nu$) of 242.4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux",
+   "value": "242.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "Two dimensional Gaussian fitting of the continuum yields a peak intensity (S$_\\nu^{beam}$) of dust continuum of 158.4 mJy/beam and integrated flux (F$_\\nu$) of 242.4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved continuum size",
+   "value": "0.90 x 0.68",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "Using two-dimensional Gaussian fitting over the dust continuum emission, we obtained the deconvolved size of G31 $\\sim 0.90 '' \\times 0.68''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum brightness temperature with beam dilution correction",
+   "value": "~36",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "After adding the beam dilution correction for the unresolved source, the brightness temperature is estimated to be $\\sim$36 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust optical depth (beam-dilution corrected)",
+   "value": "~0.24",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "Considering this value of brightness temperature; dust emission remains optically thin ($\\tau_\\nu \\sim 0.24$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass absorption coefficient at 94 GHz",
+   "value": "~0.176",
+   "uncertainty": "not stated",
+   "units": "cm2/g",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "By considering a thin ice condition, here, we obtained the mass absorption coefficient at 94 GHz ($3187.90$ micron) $\\sim 0.176$ cm$^2$/g."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density of G31",
+   "value": "~1.53e25",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Continuum emission and H2 column density estimation",
+     "quote": "By using equation 4, total hydrogen column density of G31 source is $\\sim{\\rm1.53\\times10^{25}}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3NCO",
+   "value": "48",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation diagram analysis: estimation of gas temperature",
+     "quote": "We have obtained a rotational temperature of 76 K for CH$_3$SH and 48 K for CH$_3$NCO."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3SH",
+   "value": "76",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation diagram analysis: estimation of gas temperature",
+     "quote": "We have obtained a rotational temperature of 76 K for CH$_3$SH and 48 K for CH$_3$NCO."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3OCHO",
+   "value": "~162",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Rotation diagram analysis: estimation of gas temperature",
+     "quote": "the obtained rotational temperature of methyl formate $\\sim 162$ K is consistent with the previously measured value in this source for the same molecule"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotational temperature range (cold and hot components)",
+   "value": "33 (cold) and 181 (hot)",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties of the source",
+     "quote": "In this source, we obtained a temperature range 33 to 180 K."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "The cold component is obtained by CH$_3$OH and CH$_3$NCO where temperature varies between 33 and 48 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO column density (LTE, CASSIS)",
+   "value": "7.22e17",
+   "uncertainty": "not stated (lower limit, opacity >=1 for some lines)",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methyl isocyanate, CH3NCO",
+     "quote": "The LTE model suggests that for a column density of $\\rm{7.22\\times10^{17}}$ cm$^{-2}$, we have a good fit with the observed spectra."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3NCO fractional abundance (relative to H2)",
+   "value": "~4.72e-8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CH3NCO",
+     "quote": "Our estimated CH$_3$NCO abundance in G31 is $\\sim$ $\\rm{4.72\\times10^{-8}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH column density (LTE) and abundance",
+   "value": "column density 4.13e17 (text prints 4.13e-17; Table gives 4.13(17)); abundance ~2.70e-8",
+   "uncertainty": "not stated",
+   "units": "cm-2 (column density); dimensionless (abundance)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methanethiol, CH3SH",
+     "quote": "Best fitted abundance and column density of methanethiol are $\\sim 2.70\\rm{\\times10^{-8}}$ and $\\sim 4.13\\rm{\\times10^{-17}}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH fractional abundance (LTE)",
+   "value": "~1.2e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Methanol, CH3OH",
+     "quote": "LTE model suggests that it has a high fractional abundance $\\sim 1.2\\rm{\\times10^{-6}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO fractional abundance",
+   "value": "4.25e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "CH3OCHO",
+     "quote": "The observed abundance of CH$_3$OCHO in G31 is $\\rm{4.25\\times10^{-7}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density and abundance (LTE)",
+   "value": "~2.88e18 cm-2; ~1.88e-7",
+   "uncertainty": "not stated",
+   "units": "cm-2 (column density); dimensionless (abundance)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Sulfur dioxide, SO2",
+     "quote": "we estimated the column density and the fractional abundance of SO$_2$, which are $\\sim 2.88 \\rm{\\times10^{18}}$ cm$^{-2}$ and 1.88$\\rm{\\times10^{-7}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Critical densities of HCN (1-0), H13CO+ (1-0), SiO (2-1)",
+   "value": "1.51e6, 1.83e5, 2.26e5",
+   "uncertainty": "not stated",
+   "units": "cm-3",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Radiative transfer modeling",
+     "quote": "We have estimated the critical density of HCN (1-0), $\\rm{H^{13}CO^{+}}$ (1-0), and SiO (2-1), which are 1.51$\\times$10$^{6}$ cm$^{-3}$, 1.83$\\times$10$^{5}$ cm$^{-3}$, and 2.26$\\times$10$^{5}$ cm$^{-3}$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Infall velocity from H13CO+ inverse P-Cygni profile",
+   "value": "4.5",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Infalling envelope",
+     "quote": "The infall velocity of the source is obtained to be 4.5 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass (SiO / HCN) at 7.9 kpc",
+   "value": "~50 (SiO), 67 (HCN)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular outflow",
+     "quote": "The estimated outflow is massive, 50 M$_\\odot$ for SiO and 67 M$_\\odot$ for HCN and the outflow is characterized as young (3-4$\\rm{\\times10^{3}}$ years)."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass (SiO / HCN) at 3.7 kpc",
+   "value": "~11 (SiO), ~14.6 (HCN)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular outflow",
+     "quote": "The estimated outflow mass is $\\sim$11 M$_\\odot$ for SiO and $\\sim$14.6 M$_\\odot$ for HCN."
+    }
+   ]
+  },
+  {
+   "quantity": "Average outflow dynamical time (SiO, HCN) at 7.9 kpc",
+   "value": "~4e3 (SiO), ~3e3 (HCN)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular outflow",
+     "quote": "We obtained the average dynamical time scale of outflow $\\sim$ $\\rm{4\\times10^{3}}$ years by considering the maximum velocity of SiO of the blue lobe and red lobe."
+    },
+    {
+     "loc": "Molecular outflow",
+     "quote": "The dynamical time scale of HCN outflow is obtained to be $\\sim$ $\\rm{3\\times10^{3}}$ years."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO outflow maximum velocities (blue, red lobe)",
+   "value": "23 (blue), 33 (red)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Molecular outflow",
+     "quote": "For the blue lobe and red lobe of SiO outflow, velocities are found to be $23$ km s$^{-1}$ and $33$ km s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the archive pipeline products were used or the data were recalibrated; CASA version used for calibration",
+  "Imaging task and parameters for continuum and line cubes (tclean/clean, weighting and robust value, cell size, image size, masks, deconvolver, primary beam correction)",
+  "Line-free channels and uvcontsub fit ranges used for continuum subtraction; whether continuum was formed from all four spectral windows (94.3 GHz centre)",
+  "Self-calibration, flux scale accuracy and Titan model used",
+  "Spectral line rms noise and detection significance for each CH3NCO and CH3SH line",
+  "How rotation-diagram partition functions were evaluated and the line-fit uncertainties propagated",
+  "Exact Tex used for each species in the CASSIS LTE models, given the text says rotation temperatures were used but also says Tex ~150 K was assumed",
+  "Fitting statistic or criterion beyond visual match of LTE model spectra to data",
+  "Velocity channel ranges used for the SiO and HCN blue and red lobes and the outflow length measurement method",
+  "Exact column densities for the 3 RADEX runs and the T/n solutions read from the contour plots"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (weighting, robust, cell, image size, masks, line-free channels, primary beam correction)",
+  "Whether archive-calibrated products or a re-run calibration was used",
+  "Per-line CASSIS model parameters (Tex, source size, FWHM, V_LSR, N) beyond what appears in a table not included in the text",
+  "Line rms noise",
+  "Exact definition of outflow lobe velocity ranges and length measurements",
+  "RADEX solutions read from contour plots"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the spectral analysis (Gaussian fits, rotation diagrams, CASSIS LTE with fixed parameters) is described and gives numeric results, but calibration and imaging details are missing and Tex/uncertainties are loosely specified.",
+ "rediscovery_reason": "Public archival data, an extraction aperture and line list are given, and the main results are numeric (temperatures, column densities, abundances), but imaging details must be chosen by the reproducer.",
+ "source_card": "cards/2021ApJ...907..108G/sonnet/card.md"
+}

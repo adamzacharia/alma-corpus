@@ -1,0 +1,1243 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...971..161M",
+  "title": "SERENADE. II. An ALMA Multiband Dust Continuum Analysis of 28 Galaxies at 5 &lt; z &lt; 8 and the Physical Origin of the Dust Temperature Evolution",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Mitsuhashi, Ikki",
+  "n_authors": 18,
+  "arxiv_id": "2311.16857",
+  "doi": "10.3847/1538-4357/ad5675",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2015.1.00540.S",
+   "2015.1.01406.S",
+   "2016.1.00954.S",
+   "2017.1.00190.S",
+   "2017.1.00508.S",
+   "2017.1.00697.S",
+   "2017.1.00775.S",
+   "2019.1.01634.L",
+   "2021.1.00318.S",
+   "2021.1.01297.S",
+   "2022.1.00522.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present an analysis of ALMA multi-band dust-continuum observations for 28 spectroscopicallyconfirmed bright Lyman-break galaxies at 5 < z < 8."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "SERENADE z~6 LBGs (14 with Band 6+8, plus others observed in one band)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 5.8-6.3",
+      "evidence": [
+       {
+        "loc": "2.1 SERENADE overview",
+        "quote": "redshifted [O iii] 88 µm and Lyα falling into ALMA Band-8 and ground-based optical telescopes, respectively (z = 5.8–6.3)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "spectroscopic redshifts from literature / [C II], [O III] lines (Table 1)",
+      "evidence": [
+       {
+        "loc": "2.1 SERENADE overview",
+        "quote": "redshifted [O iii] 88 µm and Lyα falling into ALMA Band-8 and ground-based optical telescopes, respectively (z = 5.8–6.3)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Archival z~5-7 LBGs (14 galaxies, e.g. HZ4, HZ6, HZ9, HZ10, A1689-zD1, REBELS-12/25/38)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z ~ 5.3-7.3",
+      "evidence": [
+       {
+        "loc": "2.2 Addtional 5 < z < 8 samples",
+        "quote": "four galaxies at z ~ 5 (Faisst et al. 2020a), and ten galaxies at z ~ 7"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "literature (Table 1)",
+      "evidence": [
+       {
+        "loc": "2.2 Addtional 5 < z < 8 samples",
+        "quote": "four galaxies at z ~ 5 (Faisst et al. 2020a), and ten galaxies at z ~ 7"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the IRX-beta_UV relation, the dust-obscured SFR density, and the dust temperature (and its redshift evolution) of z~5-8 Lyman-break galaxies, from multi-band (Band 6/8) ALMA dust continuum?",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "In this paper, we examine the FIR property of galaxies at z ~ 6 with our new ALMA Band-6/8 observations toward 11 Lyman-Break Galaxies (LBGs) at z spec ~ 6."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2022.1.00522.S",
+     "evidence": [
+      {
+       "loc": "2.1 SERENADE overview",
+       "quote": "an ALMA program (ID:#2022.1.00522.S, PI: Yuichi Harikane)"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00540.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "ADS/JAO.ALMA#2015.1.00540.S,"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.01406.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2015.1.01406.S, #2016.1.00954.S, #2017.1.00190.S,"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00954.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2015.1.01406.S, #2016.1.00954.S, #2017.1.00190.S,"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00190.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2015.1.01406.S, #2016.1.00954.S, #2017.1.00190.S,"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00508.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2017.1.00508.S, #2017.1.00697.S, #2017.1.00775.S,"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00697.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2017.1.00508.S, #2017.1.00697.S, #2017.1.00775.S,"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00775.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2017.1.00508.S, #2017.1.00697.S, #2017.1.00775.S,"
+      }
+     ]
+    },
+    {
+     "code": "2019.1.01634.L",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2019.1.01634.L, #2021.1.01297.S, #2021.1.00318.S,"
+      }
+     ]
+    },
+    {
+     "code": "2021.1.01297.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2019.1.01634.L, #2021.1.01297.S, #2021.1.00318.S,"
+      }
+     ]
+    },
+    {
+     "code": "2021.1.00318.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGMENTS",
+       "quote": "#2019.1.01634.L, #2021.1.01297.S, #2021.1.00318.S,"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 and Band 8 (rest-frame ~158 and ~88 um continuum)",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "our new ALMA Band-6/8 observations toward 11 Lyman-Break Galaxies (LBGs)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "[C II]",
+     "transition": "158 um",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 SERENADE overview",
+       "quote": "the two brightest FIR fine structure lines ([C ii] 158 µm and [O iii] 88 µm)"
+      }
+     ]
+    },
+    {
+     "species": "[O III]",
+     "transition": "88 um",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 SERENADE overview",
+       "quote": "the two brightest FIR fine structure lines ([C ii] 158 µm and [O iii] 88 µm)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C43-1/2/3 (SERENADE Cycle 9)",
+    "evidence": [
+     {
+      "loc": "2.1 SERENADE overview",
+      "quote": "Observations were conducted between October and December 2022 using the C43-1/2/3 configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "October-December 2022 (SERENADE)",
+    "evidence": [
+     {
+      "loc": "2.1 SERENADE overview",
+      "quote": "Observations were conducted between October and December 2022 using the C43-1/2/3 configuration."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "SERENADE new program (PI Harikane); additional galaxies from public ALMA archive",
+    "evidence": [
+     {
+      "loc": "2.2 Addtional 5 < z < 8 samples",
+      "quote": "We collect galaxies at 5 < z < 8 with both Band-6 and Band-8 observations publicly available in the ALMA science archive."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HSC-SSP, COSMOS2020, VIKING/UKIDSS, HST and other UV/NIR photometric catalogs",
+     "provided": {
+      "value": "broad-band photometry for beta_UV and M_UV",
+      "evidence": [
+       {
+        "loc": "3.1 Measurement of β UV and M UV",
+        "quote": "Our calculations utilize broad-band photometry spanning a rest-frame wavelength range as large as 800–3000A depending on the data availability"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "UV luminosity function at z~6 used for SFRD",
+      "evidence": [
+       {
+        "loc": "4.2 SFR density at z ~ 6",
+        "quote": "Our starting point is the galaxy UV luminosity function presented in Harikane et al. (2022)."
+       }
+      ]
+     },
+     "citation": "Harikane et al. (2022)"
+    },
+    {
+     "what": {
+      "value": "Faint-galaxy M_UV-beta_UV relation",
+      "evidence": [
+       {
+        "loc": "3.2 M UV vs β UV relationship",
+        "quote": "The UV slope could be redder than the extrapolated relationship from Bouwens et al. (2014) (hereafter B14)"
+       }
+      ]
+     },
+     "citation": "Bouwens et al. (2014)"
+    },
+    {
+     "what": {
+      "value": "Photometry and Lya EWs of archival and SERENADE galaxies (Table 1 references)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "All of the utilized photometries, along with their references, are listed in Table 1."
+       }
+      ]
+     },
+     "citation": "Table 1 references (e.g. Weaver et al. 2022; Aihara et al. 2022)"
+    },
+    {
+     "what": {
+      "value": "Mass-metallicity evolution and gas depletion time used in the T_dust model",
+      "evidence": [
+       {
+        "loc": "5. DISCUSSION",
+        "quote": "we assume a power-law dependence of d log(O/H)/dz = −0.11 with a z = 0 value of 12 + log(O/H) = 8.77 at M * = 10 10 M ⊙ (Sanders et al. 2021)"
+       }
+      ]
+     },
+     "citation": "Sanders et al. (2021); Tacconi et al. (2020)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA/tclean for continuum images; CASA/imfit for fluxes; imsmooth for stacking",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "Subsequently, we generate continuum images with CASA/tclean."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "0.25, 0.5, 1.0, 2.0, 3.0 arcsec plus natural weighting without taper",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "we reconstruct images with uv taper of 0.25′′, 0.5′′, 1.0′′, 2.0′′, and 3.0′′ in addition to the naturally-weighted image without tapering."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Line-masked: 3x line velocity dispersion for detections; ±0.8 GHz (±500 km/s) for non-detections",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "we exclude the frequencies at ±0.8 GHz (equivalent to ±500 km s −1 ) from the expected central frequency from their prior redshift"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "stacking images smoothed to round 2.0 arcsec beam with imsmooth after 1 arcsec taper",
+     "evidence": [
+      {
+       "loc": "3.4 Stacking analysis",
+       "quote": "we construct continuum images with a round 2 ′′. 0 beam by applying CASA/imsmooth for the images with a prior 1 ′′ taper."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "RMS of pixels within FoV where primary beam response >0.5, in images without PB correction",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "Noise levels are estimated in the images without primary beam corrections as the root-mean-square (RMS) of pixel values within the Field-of-View (FoV) where the primary beam correction value exceeds 0.5."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Lya line brightness from literature or calculated following earlier methodology",
+      "evidence": [
+       {
+        "loc": "3.1 Measurement of β UV and M UV",
+        "quote": "The brightness of the Lyα line is obtained from the literature or calculated from spectra following the methodologies in Harikane et al. (2020b)."
+       }
+      ]
+     },
+     "from_reference": "Harikane et al. (2020b)"
+    },
+    {
+     "what": {
+      "value": "CMB correction to the MBB",
+      "evidence": [
+       {
+        "loc": "3.5 T dust and L IR estimation",
+        "quote": "After considering these effects following da Cunha et al. (2013), the equation (2) becomes"
+       }
+      ]
+     },
+     "from_reference": "da Cunha et al. (2013)"
+    },
+    {
+     "what": {
+      "value": "Upper-limit treatment in MBB fit",
+      "evidence": [
+       {
+        "loc": "3.5 T dust and L IR estimation",
+        "quote": "we adopt the methodology described in Sawicki (2012)"
+       }
+      ]
+     },
+     "from_reference": "Sawicki (2012)"
+    },
+    {
+     "what": {
+      "value": "NIR photometry combination",
+      "evidence": [
+       {
+        "loc": "3.1 Measurement of β UV and M UV",
+        "quote": "we combine the photometries at NIR wavelengths with the i, z, and y -band photometry following Matsuoka et al. (2019)."
+       }
+      ]
+     },
+     "from_reference": "Matsuoka et al. (2019)"
+    },
+    {
+     "what": {
+      "value": "SFR conversion factors",
+      "evidence": [
+       {
+        "loc": "4.2 SFR density at z ~ 6",
+        "quote": "we derive the total (UV+IR) SFR from the UV and IR luminosities following the conversion factors in Madau & Dickinson (2014) with Chabrier (2003) IMF"
+       }
+      ]
+     },
+     "from_reference": "Madau & Dickinson (2014)"
+    },
+    {
+     "what": {
+      "value": "T_dust evolution analytic model",
+      "evidence": [
+       {
+        "loc": "5. DISCUSSION",
+        "quote": "we calculate the T dust evolution by combining the analytical model presented in Sommovigo et al. (2022) with recent observational constraints"
+       }
+      ]
+     },
+     "from_reference": "Sommovigo et al. (2022)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact CASA version and calibration/pipeline details for the archival and new data",
+    "tclean parameters (cell, image size, deconvolver, niter, threshold, masking, robust)",
+    "Which archival projects map to which of the 14 literature galaxies and exact spectral setups/sensitivities",
+    "Specific taper choices used before imfit for each source",
+    "MCMC settings (walkers, steps, convergence)",
+    "Stacking details (pixel positions/weights per galaxy, error estimation)",
+    "Details of the bootstrap for SFRD and the fobs-MUV fit",
+    "Visibility-based analysis details (deferred to Mitsuhashi et al. in prep)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure beta_UV and M_UV",
+    "method": {
+     "value": "Power-law fit f_lambda ∝ lambda^beta to broad-band photometry with truncation at 1216 A and Lya contribution; chi2 minimization",
+     "evidence": [
+      {
+       "loc": "3.1 Measurement of β UV and M UV",
+       "quote": "assuming a simple power-law spectral shape described by f λ ∝ λ β UV with a truncation at λ rest = 1216A"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "grid ranges: normalization [-0.5,0.5] dex, beta_UV [-5,3]; M_UV at rest 1500 A",
+      "evidence": [
+       {
+        "loc": "3.1 Measurement of β UV and M UV",
+        "quote": "We fit model UV SEDs created with the logarithmic ranges of [-0.5, 0.5] for the normalization flux in the y -band and [-5, 3] for the UV slope β UV ."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Best fit at minimum chi2; 1 sigma at delta chi2 = 1",
+     "evidence": [
+      {
+       "loc": "3.1 Measurement of β UV and M UV",
+       "quote": "derived as the value showing the minimum χ 2 and the deviation at which ∆ χ 2 = 1"
+      }
+     ]
+    },
+    "validation": {
+     "value": "typical reduced chi2 = 3.0",
+     "evidence": [
+      {
+       "loc": "3.1 Measurement of β UV and M UV",
+       "quote": "We find a typical reduced χ 2 value is χ 2 ν = 3.0"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure dust continuum flux densities",
+    "method": {
+     "value": "Line-masked tclean continuum images with multiple tapers; imfit for sources detected in both bands, 1 arcsec taper peak for single-band detections, upper limits from natural images; detection at S/N>3.5",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "Galaxies with fiducial S/N > 3.5 in any band are considered as continuum detection."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "peak within 0.5 arcsec radius of central position; highest S/N among images adopted",
+      "evidence": [
+       {
+        "loc": "3.3 Dust continuum fluxes",
+        "quote": "We obtain peak flux density within a 0.5 ′′ radius from each galaxy’s central position"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with UVMultifit visibility fits (Sersic n=1); consistent",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "we find that calculated fiducial fluxes, in any case, are consistent with those from the visibility analysis."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Stack dust continuum in beta_UV bins",
+    "method": {
+     "value": "Stack galaxies observed in both bands in two beta_UV bins with L_UV-based weights; measure flux as in step 2",
+     "evidence": [
+      {
+       "loc": "3.4 Stacking analysis",
+       "quote": "galaxies in two distinct β UV bins of β UV = [ −3 , −1] and [ −1 , 1]"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "weight w_i = L_UV^mean / L_UV,i; two galaxies excluded",
+      "evidence": [
+       {
+        "loc": "3.4 Stacking analysis",
+        "quote": "we exclude two galaxies (J020038021052 and J024801-033258)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "No major difference with weighted median",
+     "evidence": [
+      {
+       "loc": "3.4 Stacking analysis",
+       "quote": "We find that there is no major difference when we use the weighted median instead of the weighted average."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Fit modified blackbody for T_dust, M_dust, L_IR",
+    "method": {
+     "value": "Optically thin MBB with CMB correction fit by MCMC; upper limits treated per Sawicki (2012); L_IR over 8-1000 um",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "We use the Markov Chain Monte Carlo (MCMC) algorithm to fit the MBB profiles by utilizing the emcee library."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Priors: log-uniform log10(Mdust/Msun) in [4,10]; Tdust in [T_CMB,z,120] K; Gaussian beta_dust prior mean 1.8, sigma 0.5",
+      "evidence": [
+       {
+        "loc": "3.5 T dust and L IR estimation",
+        "quote": "we adopt a Gaussian prior with a mean value of ⟨β dust ⟩ = 1.8 and a standard deviation of σ β dust = 0.5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "kappa = kappa*(nu/nu*)^beta with [kappa*, nu*]=[10.41 cm^2/g, 1900 GHz]; T_dust=45 K assumed for unconstrained galaxies",
+      "evidence": [
+       {
+        "loc": "3.5 T dust and L IR estimation",
+        "quote": "[ κ ∗, ν ∗ ]=[10.41 cm −2 g −1, 1900 GHz]"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee MCMC; best fit and 1 sigma from modes with highest posterior density intervals",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "We compute best-fit values and 1 σ uncertainties from the modes with the highest posterior density intervals."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested uniform beta_dust prior [1.5,2.5] and T_dust prior upper edge 150 K; no significant impact",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "there is no significant difference if we apply a uniform prior of β dust ∈ [1.5, 2.5]"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive IRX-beta_UV, SFRD and obscured fraction",
+    "method": {
+     "value": "Convert UV luminosity function via M_UV-beta_UV and IRX-beta_UV relations to UV+IR SFR, integrate to M_UV=-17; bootstrap uncertainties; alternative via f_obs-M_UV",
+     "evidence": [
+      {
+       "loc": "4.2 SFR density at z ~ 6",
+       "quote": "We then integrate the SFR function with a range from M UV = −17 mag following previous studies"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "SFR_UV = 0.76e-28 L_UV; SFR_IR = 2.64e-44 L_IR",
+      "evidence": [
+       {
+        "loc": "4.2. SFR density at z ∼ 6",
+        "quote": "SFR UV = 0 _._ 76 _×_ 10 _[−]_ [28] _L_ UV (erg s _[−]_ [1] Hz _[−]_ [1] ) (5)\n\n\nSFR IR = 2 _._ 64 _×_ 10 _[−]_ [44] _L_ IR (erg s _[−]_ [1] ) (6)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Fudamoto et al. (2020a) IRX-beta relation fiducial; Chabrier IMF; for f_obs stacks T_dust=45 K, beta_dust=1.8",
+      "evidence": [
+       {
+        "loc": "4.3 Obscured fraction of the star formation",
+        "quote": "assuming an optically-thin MBB profile with T dust = 45 K and β dust = 1.8"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "bootstrap",
+     "evidence": [
+      {
+       "loc": "4.2 SFR density at z ~ 6",
+       "quote": "We estimate uncertainties using bootstrap techniques"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared alternative M_UV-beta_UV and IRX-beta_UV combinations (Table 3)",
+     "evidence": [
+      {
+       "loc": "4.2 SFR density at z ~ 6",
+       "quote": "we also calculate the SFRD with the different combinations of the M UV – β UV and IRX- β UV relation."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Average T_dust at z~6-7 and model evolution",
+    "method": {
+     "value": "Stack 22 galaxies observed in both bands and fit MBB; compare with analytic model of Sommovigo et al. (2022) using t_gas and metallicity evolution",
+     "evidence": [
+      {
+       "loc": "4.4 T dust evolution",
+       "quote": "resulting in a total of 22 galaxies for the stacking analysis."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "M*=1e10 Msun, tau_eff=1.3, K1500=1.4e10, beta_dust=1.8, D_sun=1/162",
+      "evidence": [
+       {
+        "loc": "5. DISCUSSION",
+        "quote": "Here we use τ eff = 1.3 to match the T dust observation at z = 0.5, 27.2 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "metallicity evolution dlog(O/H)/dz=-0.11 or none at z>3.3",
+      "evidence": [
+       {
+        "loc": "5. DISCUSSION",
+        "quote": "we also compute the redshift evolution under the assumption of no metallicity evolution at z > 3.3"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MBB with Gaussian beta prior as in step 4",
+     "evidence": [
+      {
+       "loc": "4.4 T dust evolution",
+       "quote": "estimate T dust and its uncertainty from MBB fitting with the Gaussian β dust prior"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Median stack gives no major difference",
+     "evidence": [
+      {
+       "loc": "4.4 T dust evolution",
+       "quote": "There is no major difference in the resulting T dust when we use a median stacking instead of the average stacking."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "mstransform line masking, tclean imaging, imfit, imsmooth",
+     "evidence": [
+      {
+       "loc": "3.3 Dust continuum fluxes",
+       "quote": "we mask a frequency range that is three times wider than the line velocity dispersion using CASA/mstransform."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting of MBB",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "We use the Markov Chain Monte Carlo (MCMC) algorithm to fit the MBB profiles by utilizing the emcee library."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "visibility-based flux check",
+     "evidence": [
+      {
+       "loc": "A. FLUX COMPARISON",
+       "quote": "we also measure the fluxes from visibility data with UVMultifit assuming Sérsic index n = 1 just to check the flux recovery."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Average T_dust of stacked z~6-7 galaxies",
+    "value": "40.9",
+    "uncertainty": "+10/-9.0",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 T dust evolution",
+      "quote": "The stacked result suggests that an average dust temperature is T dust = 40.9 +10 −9.0 K."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-obscured fraction of SFRD at z~6 (IRX-beta route)",
+    "value": "31",
+    "uncertainty": "+8/-8",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 SFR density at z ~ 6",
+      "quote": "contributes 31 +8 −8 % to the total star formation at z ~ 6."
+     }
+    ]
+   },
+   {
+    "quantity": "Dust-obscured fraction via M_UV-f_obs",
+    "value": "15",
+    "uncertainty": "+17/-8",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6. SUMMARY AND CONCLUSIONS",
+      "quote": "comprises 15 +17 −8 % of total SFRD"
+     }
+    ]
+   },
+   {
+    "quantity": "M_UV-beta_UV relation",
+    "value": "beta_UV = -(0.76±0.14)(M_UV+22) - (1.51±0.15)",
+    "uncertainty": "±0.14, ±0.15",
+    "units": "dimensionless",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.2 M UV vs β UV relationship",
+      "quote": "β UV = − (0.76 ± 0.14)( M UV + 22) − (1.51 ± 0.15)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack T_dust, beta_UV in [-3,-1]",
+    "value": "50.4",
+    "uncertainty": "+24/-9.5",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "−3 < β UV < −1 0.21 ± 0.04 ≤ 0.63 - - - - 50.4"
+     }
+    ]
+   },
+   {
+    "quantity": "Stack T_dust, beta_UV in [-1,1)",
+    "value": "26.0",
+    "uncertainty": "+14/-6.5",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "−1 ≤ β UV < 1 0.36 ± 0.01 1.24 ± 0.03 - - - - 26.0"
+     }
+    ]
+   },
+   {
+    "quantity": "Observed T_dust scatter at z=5-8",
+    "value": "12",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4 T dust evolution",
+      "quote": "The individual measurements have a large scatter of ∆ T dust ~ 12 K at z = 5–8"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "IRX-beta_UV at z~6 is shallower than Calzetti, Meurer and SMC relations and matches Fudamoto et al. (2020a) z~5.5",
+    "evidence": [
+     {
+      "loc": "4.1 β UV vs IRX relationship",
+      "quote": "We find that our result from the stacking analysis supports a shallower IRX- β UV relation than the Calzetti (Calzetti et al. 2000) and Meurer (Meurer et al. 1999) relations."
+     }
+    ]
+   },
+   {
+    "value": "T_dust results support linear (1+z) evolution rather than quadratic",
+    "evidence": [
+     {
+      "loc": "4.4 T dust evolution",
+      "quote": "Our results support the linear relation of ∝ (1+ z ) 1 (Schreiber et al. 2018) rather than the quadratic relation ∝ (1+ z ) 2 (Viero et al. 2022)."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the IRX-beta_UV relation at z~6 shallower than at z~2-4?",
+    "experiment": "Stacked Band 6 and 8 continuum in two beta_UV bins with MBB fits",
+    "result": "Shallower than Calzetti/Meurer/SMC, ~1 dex lower than z~3 at beta_UV~0",
+    "finding": "Shallow IRX-beta_UV at z~6, matching z~5.5 single-band results",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6. SUMMARY AND CONCLUSIONS",
+      "quote": "The IRX- β UV relation derived from multi-band observations at z ~ 6 appears to be ~ 1 dex lower than that at z ~ 3 at β UV ~ 0."
+     }
+    ]
+   },
+   {
+    "hypothesis": "How much of the SFRD at z~6 is dust-obscured?",
+    "experiment": "Convert UV luminosity function using M_UV-beta_UV and IRX-beta_UV (and f_obs-M_UV) relations",
+    "result": "31% (IRX-beta route), 15% (f_obs route)",
+    "finding": "Limited contribution (~30%) of dust-obscured SF in UV-selected galaxies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2 SFR density at z ~ 6",
+      "quote": "Thus, we conclude that the contribution of the dust-obscured star formation activity from LBGs is not dominant"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does T_dust increase gently with redshift to z~6-7?",
+    "experiment": "Stacked MBB fit of 22 galaxies",
+    "result": "T_dust = 40.9 +10/-9.0 K",
+    "finding": "Consistent with linear (1+z) evolution",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "supports a gentle increase of T dust from z = 0 to z ~ 6–7."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can the T_dust evolution and scatter be physically explained?",
+    "experiment": "Analytic model of Sommovigo et al. (2022) with t_gas and metallicity evolution",
+    "result": "~0.6 dex increase in gas depletion time scale and ~0.4 dex metallicity decrease reproduce the trend; main-sequence and mass-metallicity scatter give ±12 K",
+    "finding": "Evolution and scatter explained by t_gas, metallicity and scatter around relations",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the observed redshift evolution of the dust temperature can be reproduced by an ~ 0.6 dex increase in the gas depletion timescale and ~ 0.4 dex decrease of the metallicity."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Band 8 covers rest ~90 um near the dust peak at z~6, constraining T_dust",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "The ALMA Band-8, covering rest-frame ~ 90 µm dust continuum near the peak of the dust thermal emission at z ~ 6, enables us to constrain T dust ."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Optically thick MBB gives the same L_IR but higher T_dust; optically thin adopted",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "the resulting L IR does not change under the assumption of the optically thick MBB with λ 0 = 100 µm, whereas T dust becomes higher"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Sample selection biases and limited NIR coverage make beta_UV uncertain; sample inhomogeneous",
+     "evidence": [
+      {
+       "loc": "3.2 M UV vs β UV relationship",
+       "quote": "enlarging the sample size is imperative to draw robust conclusions."
+      }
+     ]
+    },
+    {
+     "value": "beta_dust not constrained by data; some galaxies lack constraints",
+     "evidence": [
+      {
+       "loc": "3.5 T dust and L IR estimation",
+       "quote": "the sampling range of the FIR SED is not enough to constrain β dust"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "T_dust stack depends on assumed beta_dust prior and optically thin assumption",
+    "Archival heterogeneity of data and resolution/flux recovery",
+    "T_dust=45 K fixed for non-detections affects IRX and upper limits",
+    "Stacking sample mixes lensed/selected galaxies with inhomogeneous selection",
+    "The analytic model has tuned tau_eff and fixed assumptions"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Galaxies with both bands publicly available in ALMA archive",
+    "evidence": [
+     {
+      "loc": "2.2 Addtional 5 < z < 8 samples",
+      "quote": "We collect galaxies at 5 < z < 8 with both Band-6 and Band-8 observations publicly available in the ALMA science archive."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and tclean parameters",
+    "Per-source choice of method/taper",
+    "MCMC settings",
+    "Exact stacking implementation",
+    "Visibility analysis (in prep)"
+   ],
+   "estimated_data_volume_inferred": "Large: ~11 projects, multiple bands per galaxy; likely tens to hundreds of GB raw",
+   "score_inferred": 5,
+   "score_reason": "Data are public and the methods are described in reasonable detail, but imaging parameters and CASA versions are missing and the sample assembly from 11 projects is laborious.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe lacks imaging parameters and sample-to-project mapping, and heavy multi-project processing is needed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sawicki (2012)",
+     "why": "treatment of upper limits in fits"
+    },
+    {
+     "citation": "da Cunha et al. (2013)",
+     "why": "CMB effect on MBB"
+    },
+    {
+     "citation": "Sommovigo et al. (2022)",
+     "why": "analytic T_dust model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Harikane et al. in prep (Paper I)",
+     "why": "SERENADE emission-line data"
+    },
+    {
+     "citation": "Harikane et al. (2020b)",
+     "why": "SERENADE pilot galaxies"
+    },
+    {
+     "citation": "Mitsuhashi et al. in prep",
+     "why": "visibility-based analysis and REBELS f_obs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "SERENADE",
+    "REBELS",
+    "ALPINE",
+    "CRISTAL",
+    "HSC-SSP",
+    "SHELLQs"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-48f6f401257541576f5e99d707217634",
+  "batch_id": "msgbatch_01Wqx8zKsXeudsaRDPY1S9JC",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:20",
+  "usage": {
+   "input_tokens": 50796,
+   "output_tokens": 11680,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.109802,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 85,
+  "quotes_ok": 79,
+  "quote_pass_rate": 0.929,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 11,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 92,
+   "stated": 60,
+   "rate": 0.652
+  },
+  "evidence_ok": false
+ },
+ "repair_log": {
+  "at": "2026-10-28T01:52:34",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].key_parameters[0].evidence[0]",
+    "old": "SFR IR = 2.64 × 10 −44 L IR (erg s −1 )",
+    "new": "SFR UV = 0 _._ 76 _×_ 10 _[−]_ [28] _L_ UV (erg s _[−]_ [1] Hz _[−]_ [1] ) (5)\n\n\nSFR IR = 2 _._ 64 _×_ 10 _[−]_ [44] _L_ IR (erg s _[−]_ [1] ) (6)"
+   }
+  ],
+  "removed_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,443 @@
+{
+ "bibcode": "2021MNRAS.504.4123N",
+ "title": "Black hole mass measurement using ALMA observations of [CI] and CO emissions in the Seyfert 1 galaxy NGC 7469",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab1002",
+ "arxiv_id": "2104.03539",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "Measure the supermassive black hole mass in the Seyfert 1 galaxy NGC 7469 using ALMA observations of [CI](1-0) and 12CO(1-0) gas kinematics, test whether [CI](1-0) is a better dynamical tracer than CO in AGNs, and constrain the broad-line region virial factor and inclination.",
+ "alma_project_codes": [
+  "2017.1.00078.S"
+ ],
+ "data": {
+  "bands": "Band 3 and Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "12CO(1-0): 0.37'' x 0.27'' (123 x 90 pc), BPA = -72.5 deg; [CI](1-0): 0.34'' x 0.31'' (113 x 103 pc), BPA = 75.7 deg (~0.3'' or ~100 pc)",
+  "sensitivity": "RMS = 34 mJy beam^-1 km s^-1 for 12CO(1-0); RMS = 227 mJy beam^-1 km s^-1 for [CI](1-0)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass of ~2.5 x 10^7 M_sun within r <= 7''",
+    "evidence": [
+     {
+      "loc": "The default-galaxy-mass model",
+      "quote": "(cite: Papadopoulos00) also estimated the dust mass of $\\approx2.5\\times10^7$ M$_{\\odot}$ in the same region of $r\\leq7\\ensuremath{''}$ ($\\lesssim2.3$ kpc)."
+     }
+    ]
+   },
+   "citation": "(cite: Papadopoulos00)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 and [CI]-to-H2 conversion factors at the innermost ~100 pc region of NGC 7469: X_CO = 1.9 x 10^20 cm^-2 (K km s^-1)^-1 and X_[CI](1-0) = 2.1 x 10^20 cm^-2 (K km s^-1)^-1, plus galaxy centre coordinates and sigma_gas/V_rot ratios",
+    "evidence": [
+     {
+      "loc": "KinMS model",
+      "quote": "Using the dynamics of \\[CI\\](1-0) and $^{12}$CO(2-1), I20 found $\\sigma_{\\rm gas}/V_{\\rm rot}\\approx0.35$ ($r\\lesssim0.5\\ensuremath{''}$) and $\\sigma_{\\rm gas}/V_{\\rm rot}\\approx0.19$ ($r>0.5\\ensuremath{''}$) (see panels a and b of their Fig. 11)"
+     },
+     {
+      "loc": "(cite: Izumi20) CO-to- vs [CI]-to-H2 conversion factor",
+      "quote": "Based on dynamical modellings, I20 found the CO-to- and \\[CI\\]-to-H$_2$ conversion factor of $X_{\\rm CO}=1.9\\times10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ and $X_{\\rm [CI](1-0)}=2.1\\times10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$, respectively, at the innermost $\\approx100$ pc region of NGC 7469."
+     }
+    ]
+   },
+   "citation": "I20 / (cite: Izumi20)"
+  },
+  {
+   "what": {
+    "value": "Reverberation mapping M_BH = (1.0 +- 0.1) x 10^7 M_sun and BLR R_BLR and Delta V errors",
+    "evidence": [
+     {
+      "loc": "INTRODUCTION",
+      "quote": "Whereas, the RM method used the indirect signature from the broad line region (BLR) variability using H$\\beta$ and He ii$~\\lambda$4686 emissions (cite: Peterson04; Peterson14; Wang14), giving a $M_{\\rm BH}=(1.0\\pm0.1)\\times10^7$ M$_{\\odot}$."
+     },
+     {
+      "loc": "Constraining the BLR inclination angle",
+      "quote": "Given our dynamical $M_{\\rm BH}$ constraint of $1.78\\times10^7$M$_{\\odot}$ and its $1\\sigma$ uncertainty (Table \\[fittable\\]) and account for the consistency with $1\\sigma$ errors of $R_{\\rm BLR}$ and $\\Delta V$ (cite: Peterson14), we find $f=7.2^{+4.2}_{-3.4}$ for the BLR in NGC 7469"
+     }
+    ]
+   },
+   "citation": "(cite: Peterson04; Peterson14; Wang14)"
+  },
+  {
+   "what": {
+    "value": "Bulge/spheroid stellar velocity dispersion sigma_* = 152 +- 16 km s^-1",
+    "evidence": [
+     {
+      "loc": "NGC 7469",
+      "quote": "Also, (cite: Onken04) used slit-spectroscopy to estimate its bulge/spheroid velocity dispersion of $\\sigma_\\star=152\\pm16$ km s$^{-1}$ using the stellar absorption lines of Ca ii triplet (CaT) in the NIR regime excited by the AGN."
+     }
+    ]
+   },
+   "citation": "(cite: Onken04)"
+  },
+  {
+   "what": {
+    "value": "Colour-M/L scaling relations for converting F547M-F814W colour maps into M/L and mass-surface-density maps",
+    "evidence": [
+     {
+      "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+      "quote": "In principle, we could apply the colour–$M/L$ scaling relations for the young nucleus ($<$1 Gyr) compiled by B01 and N19 to convert this colour map into their corresponding $M/L$ maps (panels a and b of Fig. 15)"
+     }
+    ]
+   },
+   "citation": "B01 (cite: Bell01) and N19 (cite: Nguyen19a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce HST images and construct PSF models",
+   "method": "Download raw flt frames of HST ACS F814W and WFC3 F547M, re-reduce ACS F814W with Astrodrizzle to 0.04'' pixel scale, align to the ALMA galaxy centre from Izumi et al. (2020), and generate combined PSF models (FWHM = 0.08'') by inserting Tiny Tim PSFs into flc frames and drizzling.",
+   "software": [
+    "drizzlepac/Astrodrizzle",
+    "Tiny Tim"
+   ],
+   "key_parameters": [
+    "Final pixel scale = 0.04'', PSF FWHM = 0.08''"
+   ],
+   "assumptions": [
+    "Galactic extinction A_V = 0.184 (A_F547M = 0.075 mag, A_F814W = 0.105 mag) and Cardelli et al. (1989) extinction law"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Create ALMA 3D cubes, moment maps, PVDs, and radial PA profiles",
+   "method": "Create 3D (R.A., decl., velocity) cubes for 12CO(1-0) and [CI](1-0) using CASA; generate moment 0, 1, and 2 maps using the moments masking technique (spatial smoothing by factor alpha and clipping at beta*sigma on the smoothed cube to mask the full-resolution cube); extract major- and minor-axis PVDs (3-pixel / 0.81'' width); extract radial position angle profiles from velocity fields using Kinemetry.",
+   "software": [
+    "CASA",
+    "Kinemetry"
+   ],
+   "key_parameters": [
+    "Smoothing factor alpha = 3, clipping threshold beta = 0.5 sigma; PVD cut width = 3 pixels (0.81'') along major axis PA = 308 deg and minor axis PA = 218 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Construct the default galaxy stellar and ISM mass models",
+   "method": "Fit the HST WFC3 F547M PSF with a circular Multi-Gaussian Expansion (MGE), then fit the F547M galaxy image with an axisymmetric MGE using mge_fit_sectors while masking the central AGN (r < 0.06''), starburst ring, and bright stars. Estimate H2 mass from 12CO(1-0) aperture fluxes and combine with literature dust mass via the KinMS gasgrav mechanism.",
+   "software": [
+    "IDL",
+    "MgeFit (mge_fit_sectors v4.14)",
+    "KinMS"
+   ],
+   "key_parameters": [
+    "6 Gaussian components for F547M PSF (Table 2); 7 Gaussian components for F547M stellar light (Table 3); central AGN mask r < 0.06''; M_H2(r <= 3'') = 2.7 x 10^9 M_sun, M_H2(r <= 7'') = 4 x 10^9 M_sun; M_dust(r <= 7'') = 2.5 x 10^7 M_sun"
+   ],
+   "assumptions": [
+    "Starburst CO-to-H2 conversion factor X_CO = 1.0 +- 0.3 x 10^20 cm^-2 (K km s^-1)^-1; gas-to-dust ratio ~ 160; ISM distributed according to 12CO(1-0) and [CI](1-0) surface brightness; constant stellar M/L_F547M"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 3D gas kinematics with KinMS and MCMC to measure M_BH",
+   "method": "Simulate 3D gas cubes in KinMS using circular velocities from mge_circular_velocity (JAM package), radial PA profiles from Kinemetry, and a Gaussian radial gas surface brightness profile; fit 9 free parameters (log M_BH, M/L_F547M, sigma_gas, G_sigma, F, i, x_c, y_c, v_off) to the 12CO(1-0) and [CI](1-0) cubes via KINMSpy_MCMC and emcee.",
+   "software": [
+    "KinMS",
+    "KINMSpy_MCMC",
+    "emcee",
+    "IDL",
+    "JAM (mge_circular_velocity)"
+   ],
+   "key_parameters": [
+    "Fit region = 60 x 60 pixels (6'' x 6'') and 60 velocity channels covering (-300, 300) km s^-1 (N = 60 x 60 x 60 constraints, P = 9 parameters); 3 x 10^5 MCMC iterations with 20% burn-in"
+   ],
+   "assumptions": [
+    "Gas moves on circular orbits in a dynamically thin, cold disc (asymmetric drift ignored); axisymmetric Gaussian gas surface brightness profile; D_A = 68.4 Mpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test systematic uncertainties in stellar and ISM mass models on M_BH",
+   "method": "Re-run KinMS on [CI](1-0) kinematics allowing only M_BH and M/L_F547M (or mass-scaling factor Gamma) to vary while fixing other parameters to best-fit values, testing: (1) Bell & de Jong (2001) and Nguyen et al. (2019) colour-based MGE mass maps from HST F547M-F814W, (2) Izumi et al. (2020) X_CO and X_[CI] conversion factors, (3) axisymmetric MGE ISM distribution with gasGrav turned off, and (4) unmasked central AGN light in F547M MGE.",
+   "software": [
+    "KinMS",
+    "KINMSpy_MCMC",
+    "emcee",
+    "MgeFit"
+   ],
+   "key_parameters": [
+    "Search range for Gamma = (0.1, 2.0); X_CO = 1.9 x 10^20 cm^-2 (K km s^-1)^-1; X_[CI](1-0) = 2.1 x 10^20 cm^-2 (K km s^-1)^-1; sky background annulus (20-22)''"
+   ],
+   "assumptions": [
+    "Bell & de Jong (2001) and Nguyen et al. (2019) colour-M/L relations; central saturated pixels in F814W interpolated from outer pixels"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain the BLR virial factor f and inclination angle i",
+   "method": "Combine the [CI](1-0) dynamical M_BH with reverberation-mapping R_BLR and Delta V measurements using the virial equation M_BH = f * R_BLR * (Delta V)^2 / G to solve for f, then derive the BLR inclination angle i using the planar thick-disc analytical relation in the thin-disc limit (h/R_BLR ~ 0).",
+   "software": [],
+   "key_parameters": [
+    "M_BH = 1.78 x 10^7 M_sun; h/R_BLR ~ 0"
+   ],
+   "assumptions": [
+    "Virial equilibrium in the BLR; geometrically thin planar BLR disc with (h/R_BLR) ~ 0"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Black hole mass M_BH from [CI](1-0) kinematics (default model)",
+   "value": "1.78e7",
+   "uncertainty": "+2.69e7 / -1.10e7 (3 sigma)",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Our dynamical model using the ${\\rm [CI]}$(1-0) kinematics yields a $M_{\\rm BH}=1.78^{+2.69}_{-1.10}\\times10^7$ M$_{\\odot}$"
+    },
+    {
+     "loc": "Results of the default-mass model",
+     "quote": "At $3\\sigma$ CL, the best-fit model gives $M_{\\rm BH}=1.78^{+2.69}_{-1.10}\\times10^7$ M$_{\\odot}$ and $M/L_{\\rm F547M}=2.20^{+0.43}_{-0.40}$ (M$_{\\odot}$/L$_\\odot$) at $\\chi^2_{\\rm min,\\;red}=1.94$."
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_BH / M_sun) from [CI](1-0) kinematics (default model)",
+   "value": "7.25",
+   "uncertainty": "-0.14, +0.13 (1 sigma); -0.42, +0.40 (3 sigma)",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $\\log(M_{\\rm BH}/{\\rm M_\\odot})$ | (1, 9) | 7.25 | $-$0.14, +0.13 | $-$0.42, +0.40 | 7.22 | $-$0.30, +0.31 | $-$0.90, +0.93 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio M/L_F547M from [CI](1-0) kinematics (default model)",
+   "value": "2.20",
+   "uncertainty": "-0.14, +0.13 (1 sigma); -0.43, +0.40 (3 sigma)",
+   "units": "M_sun/L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results of the default-mass model",
+     "quote": "At $3\\sigma$ CL, the best-fit model gives $M_{\\rm BH}=1.78^{+2.69}_{-1.10}\\times10^7$ M$_{\\odot}$ and $M/L_{\\rm F547M}=2.20^{+0.43}_{-0.40}$ (M$_{\\odot}$/L$_\\odot$) at $\\chi^2_{\\rm min,\\;red}=1.94$."
+    },
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $M/L_{\\rm F547M}$ (M$_{\\odot}$/L$_\\odot$) | (0.1, 5.0) | 2.20 | $-$0.14, +0.13 | $-$0.43, +0.40 | 2.22 | $-$0.07, +0.06 | $-$0.22, +0.20 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Black hole mass M_BH from 12CO(1-0) kinematics (default model)",
+   "value": "1.60e7",
+   "uncertainty": "+11.52e7 / -1.45e7 (3 sigma)",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The model using the $^{12}$CO(1-0) kinematics also gives a consistent $M_{\\rm BH}$ with a larger uncertainty, up to an order of magnitude, i.e. $M_{\\rm BH}=1.60^{+11.52}_{-1.45}\\times10^7$ M$_{\\odot}$."
+    },
+    {
+     "loc": "Results of the default-mass model",
+     "quote": "Similarly, at $3\\sigma$ CL, This best-fit model has $M_{\\rm BH}=1.60^{+11.52}_{-1.45}\\times10^7$ M$_{\\odot}$ and $M/L_{\\rm F547M}=2.22^{+0.20}_{-0.22}$ (M$_{\\odot}$/L$_\\odot$) at $\\chi^2_{\\rm min,\\;red}=1.91$."
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_BH / M_sun) from 12CO(1-0) kinematics (default model)",
+   "value": "7.22",
+   "uncertainty": "-0.30, +0.31 (1 sigma); -0.90, +0.93 (3 sigma)",
+   "units": "dex",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $\\log(M_{\\rm BH}/{\\rm M_\\odot})$ | (1, 9) | 7.25 | $-$0.14, +0.13 | $-$0.42, +0.40 | 7.22 | $-$0.30, +0.31 | $-$0.90, +0.93 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass-to-light ratio M/L_F547M from 12CO(1-0) kinematics (default model)",
+   "value": "2.22",
+   "uncertainty": "-0.07, +0.06 (1 sigma); -0.22, +0.20 (3 sigma)",
+   "units": "M_sun/L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $M/L_{\\rm F547M}$ (M$_{\\odot}$/L$_\\odot$) | (0.1, 5.0) | 2.20 | $-$0.14, +0.13 | $-$0.43, +0.40 | 2.22 | $-$0.07, +0.06 | $-$0.22, +0.20 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](1-0) CND gas velocity dispersion sigma_gas",
+   "value": "26.53",
+   "uncertainty": "-0.12, +0.17 (1 sigma); -0.36, +0.40 (3 sigma)",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $\\sigma_{\\rm gas}$ (km s$^{-1}$) | (1, 50) | 26.53 | $-$0.12, +0.17 | $-$0.36, +0.40 | 22.70 | $-$1.14, +1.34 | $-$4.00, +4.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) CND gas velocity dispersion sigma_gas",
+   "value": "22.70",
+   "uncertainty": "-1.14, +1.34 (1 sigma); -4.00, +4.02 (3 sigma)",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $\\sigma_{\\rm gas}$ (km s$^{-1}$) | (1, 50) | 26.53 | $-$0.12, +0.17 | $-$0.36, +0.40 | 22.70 | $-$1.14, +1.34 | $-$4.00, +4.02 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](1-0) CND inclination angle i",
+   "value": "53.59",
+   "uncertainty": "-0.42, +0.41 (1 sigma); -1.26, +1.25 (3 sigma)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $i\\;(^\\circ)$ | (45, 89) | 53.59 | $-$0.42, +0.41 | $-$1.26, +1.25 | 52.90 | $-$1.40, +1.17 | $-$3.20, +3.10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(1-0) CND inclination angle i",
+   "value": "52.90",
+   "uncertainty": "-1.40, +1.17 (1 sigma); -3.20, +3.10 (3 sigma)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "| $i\\;(^\\circ)$ | (45, 89) | 53.59 | $-$0.42, +0.41 | $-$1.26, +1.25 | 52.90 | $-$1.40, +1.17 | $-$3.20, +3.10 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Reverberation mapping BLR dimensionless scaling factor f",
+   "value": "7.2",
+   "uncertainty": "+4.2 / -3.4",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Given this new $M_{\\rm BH}$, we are able to constrain the specific RM dimensionless scaling factor of $f=7.2^{+4.2}_{-3.4}$ for the AGN BLR in NGC 7469."
+    },
+    {
+     "loc": "Constraining the BLR inclination angle",
+     "quote": "Given our dynamical $M_{\\rm BH}$ constraint of $1.78\\times10^7$M$_{\\odot}$ and its $1\\sigma$ uncertainty (Table \\[fittable\\]) and account for the consistency with $1\\sigma$ errors of $R_{\\rm BLR}$ and $\\Delta V$ (cite: Peterson14), we find $f=7.2^{+4.2}_{-3.4}$ for the BLR in NGC 7469"
+    }
+   ]
+  },
+  {
+   "quantity": "BLR line-of-sight inclination angle i",
+   "value": "11.0",
+   "uncertainty": "+2.2 / -2.5",
+   "units": "deg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The gas within the unresolved BLR thus has a Keplerian virial velocity component and the inclination of $i\\approx11.0^\\circ$$_{-2.5}^{+2.2}$, confirming its face-on orientation in a Seyfert 1 AGN by assuming a geometrically thin BLR model."
+    },
+    {
+     "loc": "Constraining the BLR inclination angle",
+     "quote": "We thus consider the thin disc BLR model for the NGC 7469 AGN in which $(h/R_{\\rm BLR})\\approx0$, giving the BLR’s LOS inclination of $i\\approx11.0^\\circ$$_{-2.5}^{+2.2}$, which tightly constrains the face-on orientation of the BLR."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH from [CI](1-0) with Bell & de Jong (2001) colour mass model",
+   "value": "2.2e7",
+   "uncertainty": "+3.3e7 / -1.3e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "These resulted in $M_{\\rm BH}=2.2^{+3.3}_{-1.3}\\times10^7$ M$_{\\odot}$ and $\\Gamma=1.09^{+0.21}_{-0.23}$ for the B01-mass map and $M_{\\rm BH}=2.9^{+1.8}_{-1.7}\\times10^7$ M$_{\\odot}$ and $\\Gamma=0.93^{+0.20}_{-0.20}$ for the N19-mass map."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH from [CI](1-0) with Nguyen et al. (2019) colour mass model",
+   "value": "2.9e7",
+   "uncertainty": "+1.8e7 / -1.7e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The stellar-mass models account for spatial variations of populations and extinction",
+     "quote": "These resulted in $M_{\\rm BH}=2.2^{+3.3}_{-1.3}\\times10^7$ M$_{\\odot}$ and $\\Gamma=1.09^{+0.21}_{-0.23}$ for the B01-mass map and $M_{\\rm BH}=2.9^{+1.8}_{-1.7}\\times10^7$ M$_{\\odot}$ and $\\Gamma=0.93^{+0.20}_{-0.20}$ for the N19-mass map."
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH from [CI](1-0) with Izumi et al. (2020) X_CO conversion factor",
+   "value": "9.3e6",
+   "uncertainty": "+9.2e6 / -4.6e6",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "(cite: Izumi20) CO-to- vs [CI]-to-H2 conversion factor",
+     "quote": "The best-fit KinMS models then yield $M_{\\rm BH}=9.3_{-4.6}^{+9.2}\\times10^6$ M$_{\\odot}$ and $M/L$$_{\\rm F547M}=2.27_{-0.45}^{+0.46}$ (M$_{\\odot}$/L$_\\odot$) for CO-to-H$_2$ and $M_{\\rm BH}=9.8_{-5.5}^{+12.6}\\times10^6$ M$_{\\odot}$ and $M/L$$_{\\rm F547M}=2.30_{-0.43}^{+0.43}$ (M$_{\\odot}$/L$_\\odot$) for \\[CI\\]-to-H$_2$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH from [CI](1-0) with Izumi et al. (2020) X_[CI](1-0) conversion factor",
+   "value": "9.8e6",
+   "uncertainty": "+12.6e6 / -5.5e6",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "(cite: Izumi20) CO-to- vs [CI]-to-H2 conversion factor",
+     "quote": "The best-fit KinMS models then yield $M_{\\rm BH}=9.3_{-4.6}^{+9.2}\\times10^6$ M$_{\\odot}$ and $M/L$$_{\\rm F547M}=2.27_{-0.45}^{+0.46}$ (M$_{\\odot}$/L$_\\odot$) for CO-to-H$_2$ and $M_{\\rm BH}=9.8_{-5.5}^{+12.6}\\times10^6$ M$_{\\odot}$ and $M/L$$_{\\rm F547M}=2.30_{-0.43}^{+0.43}$ (M$_{\\odot}$/L$_\\odot$) for \\[CI\\]-to-H$_2$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_BH from [CI](1-0) with axisymmetric MGE ISM distribution",
+   "value": "1.8e7",
+   "uncertainty": "+3.0e7 / -1.1e7",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Axisymmetric ISM distribution",
+     "quote": "The dynamical model uses this axisymmetric-ISM-MGE mass (we turned off the `gasGrav` mechanism during the KinMS fit) gives $M_{\\rm BH}=1.8^{+3.0}_{-1.1}\\times10^7$ M$_{\\odot}$ and $M/L_{\\rm F547M}=2.19^{+0.40}_{-0.39}$ (M$_{\\odot}$/L$_\\odot$)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA visibility calibration and tclean imaging parameters (weighting/robust, cell size, deconvolver, continuum subtraction channels), which are deferred to Izumi et al. (2020)",
+  "Number of walkers used in the emcee MCMC sampler in KINMSpy_MCMC",
+  "Exact spatial masks applied to the HST F547M image for the starburst ring and bright stars during the MGE fit",
+  "Channel binning / velocity channel width of the cubes fed into the 60x60x60 KinMS fit (appears to be 10 km/s given 60 channels over (-300, 300) km/s and residual text mentioning '10 km s^-1, the limit in which we bin the spectrum together')"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA visibility calibration and imaging scripts/parameters (deferred to Izumi et al. 2020)",
+  "Exact digitized radial PA profile arrays extracted from Kinemetry (only plotted in Fig. 4)",
+  "Exact spatial mask file used to mask the starburst ring, dust/AGN, and stars in the HST F547M MGE fit",
+  "Channel width / spectral binning applied to the cubes prior to the 60x60x60 KinMS fit"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The paper provides complete MGE tables (PSF and galaxy light), explicit MCMC priors, grid dimensions (60x60x60), error rescaling formula, and links to public modelling codes (KINMSpy_MCMC, MgeFit, Kinemetry), as well as public ALMA/HST project IDs. However, visibility reduction/imaging is deferred to Izumi et al. (2020) and exact radial PA arrays and HST pixel masks are not provided in machine-readable form.",
+ "rediscovery_reason": "Both the ALMA data (2017.1.00078.S) and HST images (GO-11661, GO-10592) are public in their respective archives, the MGE tables and KinMS parameter search ranges are explicitly tabulated, and the main results (M_BH, M/L_F547M, f, BLR inclination) are clear quantitative targets.",
+ "source_card": "cards/2021MNRAS.504.4123N/sonnet/card.md"
+}

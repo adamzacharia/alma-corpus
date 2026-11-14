@@ -1,0 +1,268 @@
+{
+ "bibcode": "2017ApJ...835...17M",
+ "title": "ALMA Measurements of Circumstellar Material in the GQ Lup System",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/835/1/17",
+ "arxiv_id": "1611.06229",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "What are the properties of the circumprimary disk of GQ Lup A (size, geometry, stellar mass) and is there a circumplanetary disk around the companion GQ Lup b?",
+ "alma_project_codes": [
+  "2013.1.00374.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.3 arcsec (~45 AU)",
+  "sensitivity": "continuum rms 50 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust temperature-luminosity relation T_dust=25(L/Lsun)^{1/4}",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "we use the dust temperature-stellar luminosity relationship of (cite: and13): $T_\\text{dust}=25(L/L_\\odot)^{1/4}$."
+     }
+    ]
+   },
+   "citation": "(cite: and13)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_nu = 10(nu/1e12 Hz) cm2/g",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Emission",
+      "quote": "we adopt the frequency-dependent dust opacity $\\kappa_\\nu = 10(\\nu/10^{12}\\text{ Hz})$ cm$^{2}$ g$^{-1}$ from (cite: beck90)"
+     }
+    ]
+   },
+   "citation": "(cite: beck90)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux/size, companion limit",
+   "method": "CLEAN imaging; 2D Gaussian fit to the image; 3 sigma upper limit at GQ Lup b position assuming point source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust masses and CPD limits",
+   "method": "Optically thin mass M=F D^2/(kappa B(T)); optically thick size limit",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=3.4 cm2/g at 870 um; T_dust=24 K (disk A), 18 K (at GQ Lup b); gas-to-dust 100 for total CPD mass"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Forward-model CO velocity field",
+   "method": "Parametric disk model (self-similar surface density, power-law temperature, Keplerian) with RADMC-3D images, Fourier transformed and sampled at data uv points, chi2 likelihood",
+   "software": [
+    "DiskJockey",
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Free parameters: M*, i, PA, r_c, T10, q, Mgas, xi, vsys, RA/Dec offsets"
+   ],
+   "assumptions": [
+    "Constant CO abundance ~1e-4 (ISM-like); vertically isothermal, hydrostatic equilibrium; Keplerian rotation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gas-to-dust ratio",
+   "method": "Combine 13CO gas mass with dust mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density of GQ Lup A disk",
+   "value": "77.8",
+   "uncertainty": "0.2",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum Emission",
+     "quote": "we obtain a total flux density for the circumprimary disk of $77.8\\pm0.2$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk FWHM",
+   "value": "59",
+   "uncertainty": "12",
+   "units": "AU",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The circumprimary dust disk is compact with a FWHM of $59\\pm12$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma flux limit on CPD",
+   "value": "<0.15",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum Emission",
+     "quote": "we determine a $3\\sigma$ upper limit on the flux density of any circumplanetary disk surrounding the secondary of $<0.15$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumprimary dust mass",
+   "value": "15.10",
+   "uncertainty": "0.04",
+   "units": "Earth masses",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum Emission",
+     "quote": "The resulting dust mass is $15.10\\pm0.04$ $M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "CPD dust mass limit",
+   "value": "<0.04",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum Emission",
+     "quote": "the resulting $3\\sigma$ upper limit on the dust mass is $M_\\text{dust}<0.04$ $M_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "CPD optically thick radius limit",
+   "value": "<1.1",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Continuum Emission",
+     "quote": "$R_\\text{dust}$ must be $<1.1$ AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass GQ Lup A (13CO fit)",
+   "value": "1.03",
+   "uncertainty": "0.15 (0.05 at known distance)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 CO Emission",
+     "quote": "The models imply a stellar mass, $M_*$, for GQ Lup A of $1.03\\pm0.15$ $M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "60.5",
+   "uncertainty": "0.5",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Circumprimary Disk Geometry",
+     "quote": "the best-fit inclination is $i = 60.5\\ensuremath{^\\circ}\\pm0.5\\ensuremath{^\\circ}$ and position angle is $PA=346\\ensuremath{^\\circ} \\pm1\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "346",
+   "uncertainty": "1",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| $PA$ | Disk position angle ($\\ensuremath{^\\circ}$) | $346\\pm1$ | $346\\pm1$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO characteristic radius",
+   "value": "46.5",
+   "uncertainty": "1.8",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 CO Emission",
+     "quote": "are $46.5\\pm1.8$ AU and log$M_\\text{gas}/M_\\odot = -3.67\\pm0.05$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio",
+   "value": "4.7",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 CO Emission",
+     "quote": "gas-to-dust ratio for the circumstellar disk around GQ Lup A to be $4.7\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (LSRK)",
+   "value": "3.00",
+   "uncertainty": "0.01",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 CO Emission",
+     "quote": "The systemic velocity in the LSRK frame is $3.00\\pm0.01$ km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and clean thresholds/masks for continuum and CO imaging",
+  "Channel width and velocity resolution of CO cubes",
+  "Image size and cell size",
+  "MCMC sampler, priors, and model grid/inner and outer radii settings for DiskJockey",
+  "Which spectral windows/channels were used in visibility fits",
+  "Self-calibration solution interval"
+ ],
+ "missing_for_reproduction": [
+  "Sampler/priors and model setup details for DiskJockey",
+  "Clean parameters, masks, channel widths"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data, scripts and open-source modeling code, but imaging and fit settings are partly missing.",
+ "rediscovery_reason": "Public data, numerical results (flux, mass, inclination) and a mostly complete recipe with open code.",
+ "source_card": "cards/2017ApJ...835...17M/sonnet/card.md"
+}

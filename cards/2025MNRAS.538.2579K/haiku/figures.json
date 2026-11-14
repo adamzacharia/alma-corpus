@@ -1,0 +1,536 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Rotation temperature versus column density for EA (left) and DE (right), with weighted least-squares fits; orange points are sources where rotation temperature and column density were not optimised and were excluded from the fits.",
+    "axes": [
+     {
+      "axis": "x (left and right)",
+      "quantity": "rotation temperature Trot",
+      "units": "K"
+     },
+     {
+      "axis": "y left",
+      "quantity": "EA column density N(EA)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y right",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. EA peak column density about 1.3e18 cm-2 at Trot about 185 K",
+     "approx. DE peak column density about 2.5e18 cm-2 at Trot about 183 K",
+     "approx. DE fitted line rising from about 1e17 cm-2 at 105 K to about 2.5e18 cm-2 at 200 K",
+     "approx. EA fitted line from about 5e16 cm-2 at 90 K to about 2e17 cm-2 at 220 K"
+    ],
+    "caption_quote": "The left panel shows the correlation between rotation temperatures and column densities for EA, and the right panel shows the correlation between rotation temperatures and column densities for DE.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 2,
+    "shows": "Left: distribution of rotation temperatures for DE and EA with their means marked; right: EA rotation temperature plotted against DE rotation temperature with an equality line.",
+    "axes": [
+     {
+      "axis": "x (left)",
+      "quantity": "rotation temperature",
+      "units": "K"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "number of sources",
+      "units": "count"
+     },
+     {
+      "axis": "x (right)",
+      "quantity": "DE rotation temperature",
+      "units": "K"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "EA rotation temperature",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "The right panel compares EA and DE rotation temperatures per source against the equality line to test whether the two species share a temperature.",
+    "readable_values": [
+     "approx. mean DE rotation temperature 136 K",
+     "approx. mean EA rotation temperature 167 K",
+     "approx. DE histogram peak of 7 sources near 140-150 K",
+     "approx. EA histogram peak of 7 sources near 165-185 K"
+    ],
+    "caption_quote": "The red line shows the mean rotation temperature of EA (167 K), and the black line shows the mean rotation temperature of DE (136 K).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "scatter_or_relation",
+    "panels": 3,
+    "shows": "Correlations of column densities among DE, EA and CH3OH across this work, other hot cores and hot corinos, with Pearson coefficients and one- and two-sigma bands around linear fits.",
+    "axes": [
+     {
+      "axis": "x (a)",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "x (b, c)",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y (a, b)",
+      "quantity": "EA column density N(EA)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y (c)",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Pearson coefficient 0.92 for EA vs DE",
+     "approx. Pearson coefficient 0.82 for EA vs CH3OH",
+     "approx. Pearson coefficient 0.80 for DE vs CH3OH",
+     "approx. largest plotted N(CH3OH) about 3e20 cm-2"
+    ],
+    "caption_quote": "Pearson's co-efficient is displayed in the top left corner of these figures.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Column density ratio EA/DE against CH3OH column density for this work, other hot cores and hot corinos, with the mean ratio and a linear fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y",
+      "quantity": "column density ratio N(EA)/N(DE)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "reference line",
+      "quantity": "mean EA/DE ratio 0.60 and EA/DE = 1",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. mean N(EA)/N(DE) 0.60",
+     "approx. fitted ratio near 0.5 at 1e17 cm-2 and 0.45 at 3e20 cm-2",
+     "approx. this-work ratios mostly 0.1 to 0.6 near 1e18 cm-2",
+     "approx. hot corino ratio up to about 2 near 3e17 cm-2"
+    ],
+    "caption_quote": "The teal line shows the mean value of the column density ratios of EA/DE, 0.60. The linear least-squares fit for all dots is shown as a dashed purple line.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Relationship between the EA/DE column density ratio and the rotation temperature of EA (upper) and of DE (lower), with linear fits.",
+    "axes": [
+     {
+      "axis": "x (a)",
+      "quantity": "rotation temperature of EA",
+      "units": "K"
+     },
+     {
+      "axis": "x (b)",
+      "quantity": "rotation temperature of DE",
+      "units": "K"
+     },
+     {
+      "axis": "y (both)",
+      "quantity": "column density ratio N(EA)/N(DE)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. EA/DE fit rising from about 0.25 at 80 K to about 0.9 at 330 K",
+     "approx. hot corino point near 2 at about 330 K",
+     "approx. this-work ratios mostly 0.1 to 1 at 130-180 K"
+    ],
+    "caption_quote": "The relationship between the ratios of EA/DE and rotation temper- atures of EA (upper panel), and rotation temperatures of DE (lower panel).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Left: CH3OH column density against EA/CH3OH ratio; right: CH3OH column density against DE/CH3OH ratio, with horizontal lines for mean ratios and for simulated warm-up timescale predictions from Garrod et al. 2022.",
+    "axes": [
+     {
+      "axis": "x (both)",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y left",
+      "quantity": "column density ratio N(EA)/N(CH3OH)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y right",
+      "quantity": "column density ratio N(DE)/N(CH3OH)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "Compares observed abundance ratios with model predictions for fast, medium and slow warm-up timescales.",
+    "readable_values": [
+     "approx. EA/CH3OH mean 0.050 (Mean Value 5.0e-2)",
+     "approx. DE/CH3OH mean 0.11 (Mean Value 1.1e-1)",
+     "approx. model DE/CH3OH fast 0.010, medium 0.017, slow 0.026",
+     "approx. model EA/CH3OH fast 0.061, medium 0.065, slow 0.080"
+    ],
+    "caption_quote": "The black lines show the mean of the column density ratios of EA/CH3OH and DE/CH3OH. The darkorange, red, and blue represent the different warm-up timescales from simulations (Garrod et al. 2022).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ],
+  "dropped": []
+ },
+ "checks": {
+  "figures": 6,
+  "caption_quotes_ok": 6,
+  "renumbered": [],
+  "dropped_duplicates": 0,
+  "cropped_without_note": [],
+  "unknown_numbers": [],
+  "bad_crops": [],
+  "validation_figures": 2,
+  "reproduction_targets": 4,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Rotation temperature versus column density for EA (left) and DE (right), with weighted least-squares fits; orange points are sources where rotation temperature and column density were not optimised and were excluded from the fits.",
+    "axes": [
+     {
+      "axis": "x (left and right)",
+      "quantity": "rotation temperature Trot",
+      "units": "K"
+     },
+     {
+      "axis": "y left",
+      "quantity": "EA column density N(EA)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y right",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. EA peak column density about 1.3e18 cm-2 at Trot about 185 K",
+     "approx. DE peak column density about 2.5e18 cm-2 at Trot about 183 K",
+     "approx. DE fitted line rising from about 1e17 cm-2 at 105 K to about 2.5e18 cm-2 at 200 K",
+     "approx. EA fitted line from about 5e16 cm-2 at 90 K to about 2e17 cm-2 at 220 K"
+    ],
+    "caption_quote": "The left panel shows the correlation between rotation temperatures and column densities for EA, and the right panel shows the correlation between rotation temperatures and column densities for DE.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "histogram",
+    "panels": 2,
+    "shows": "Left: distribution of rotation temperatures for DE and EA with their means marked; right: EA rotation temperature plotted against DE rotation temperature with an equality line.",
+    "axes": [
+     {
+      "axis": "x (left)",
+      "quantity": "rotation temperature",
+      "units": "K"
+     },
+     {
+      "axis": "y (left)",
+      "quantity": "number of sources",
+      "units": "count"
+     },
+     {
+      "axis": "x (right)",
+      "quantity": "DE rotation temperature",
+      "units": "K"
+     },
+     {
+      "axis": "y (right)",
+      "quantity": "EA rotation temperature",
+      "units": "K"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 4,
+    "validation_check": "The right panel compares EA and DE rotation temperatures per source against the equality line to test whether the two species share a temperature.",
+    "readable_values": [
+     "approx. mean DE rotation temperature 136 K",
+     "approx. mean EA rotation temperature 167 K",
+     "approx. DE histogram peak of 7 sources near 140-150 K",
+     "approx. EA histogram peak of 7 sources near 165-185 K"
+    ],
+    "caption_quote": "The red line shows the mean rotation temperature of EA (167 K), and the black line shows the mean rotation temperature of DE (136 K).",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "scatter_or_relation",
+    "panels": 3,
+    "shows": "Correlations of column densities among DE, EA and CH3OH across this work, other hot cores and hot corinos, with Pearson coefficients and one- and two-sigma bands around linear fits.",
+    "axes": [
+     {
+      "axis": "x (a)",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "x (b, c)",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y (a, b)",
+      "quantity": "EA column density N(EA)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y (c)",
+      "quantity": "DE column density N(DE)",
+      "units": "cm-2"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. Pearson coefficient 0.92 for EA vs DE",
+     "approx. Pearson coefficient 0.82 for EA vs CH3OH",
+     "approx. Pearson coefficient 0.80 for DE vs CH3OH",
+     "approx. largest plotted N(CH3OH) about 3e20 cm-2"
+    ],
+    "caption_quote": "Pearson's co-efficient is displayed in the top left corner of these figures.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "scatter_or_relation",
+    "panels": 1,
+    "shows": "Column density ratio EA/DE against CH3OH column density for this work, other hot cores and hot corinos, with the mean ratio and a linear fit.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y",
+      "quantity": "column density ratio N(EA)/N(DE)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "reference line",
+      "quantity": "mean EA/DE ratio 0.60 and EA/DE = 1",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. mean N(EA)/N(DE) 0.60",
+     "approx. fitted ratio near 0.5 at 1e17 cm-2 and 0.45 at 3e20 cm-2",
+     "approx. this-work ratios mostly 0.1 to 0.6 near 1e18 cm-2",
+     "approx. hot corino ratio up to about 2 near 3e17 cm-2"
+    ],
+    "caption_quote": "The teal line shows the mean value of the column density ratios of EA/DE, 0.60. The linear least-squares fit for all dots is shown as a dashed purple line.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 5,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Relationship between the EA/DE column density ratio and the rotation temperature of EA (upper) and of DE (lower), with linear fits.",
+    "axes": [
+     {
+      "axis": "x (a)",
+      "quantity": "rotation temperature of EA",
+      "units": "K"
+     },
+     {
+      "axis": "x (b)",
+      "quantity": "rotation temperature of DE",
+      "units": "K"
+     },
+     {
+      "axis": "y (both)",
+      "quantity": "column density ratio N(EA)/N(DE)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 6,
+    "validation_check": "",
+    "readable_values": [
+     "approx. EA/DE fit rising from about 0.25 at 80 K to about 0.9 at 330 K",
+     "approx. hot corino point near 2 at about 330 K",
+     "approx. this-work ratios mostly 0.1 to 1 at 130-180 K"
+    ],
+    "caption_quote": "The relationship between the ratios of EA/DE and rotation temper- atures of EA (upper panel), and rotation temperatures of DE (lower panel).",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 6,
+    "kind": "scatter_or_relation",
+    "panels": 2,
+    "shows": "Left: CH3OH column density against EA/CH3OH ratio; right: CH3OH column density against DE/CH3OH ratio, with horizontal lines for mean ratios and for simulated warm-up timescale predictions from Garrod et al. 2022.",
+    "axes": [
+     {
+      "axis": "x (both)",
+      "quantity": "CH3OH column density N(CH3OH)",
+      "units": "cm-2"
+     },
+     {
+      "axis": "y left",
+      "quantity": "column density ratio N(EA)/N(CH3OH)",
+      "units": "dimensionless"
+     },
+     {
+      "axis": "y right",
+      "quantity": "column density ratio N(DE)/N(CH3OH)",
+      "units": "dimensionless"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 7,
+    "validation_check": "Compares observed abundance ratios with model predictions for fast, medium and slow warm-up timescales.",
+    "readable_values": [
+     "approx. EA/CH3OH mean 0.050 (Mean Value 5.0e-2)",
+     "approx. DE/CH3OH mean 0.11 (Mean Value 1.1e-1)",
+     "approx. model DE/CH3OH fast 0.010, medium 0.017, slow 0.026",
+     "approx. model EA/CH3OH fast 0.061, medium 0.065, slow 0.080"
+    ],
+    "caption_quote": "The black lines show the mean of the column density ratios of EA/CH3OH and DE/CH3OH. The darkorange, red, and blue represent the different warm-up timescales from simulations (Garrod et al. 2022).",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

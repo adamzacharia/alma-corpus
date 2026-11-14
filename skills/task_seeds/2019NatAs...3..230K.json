@@ -1,0 +1,312 @@
+{
+ "bibcode": "2019NatAs...3..230K",
+ "title": "A circumbinary protoplanetary disk in a polar configuration",
+ "year": 2019,
+ "doi": "10.1038/s41550-018-0667-x",
+ "arxiv_id": null,
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "What are the orientation, size and structure of the circumbinary disc around HD 98800BaBb, and is it misaligned/polar and planet-forming?",
+ "alma_project_codes": [
+  "2017.1.00350.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "46x42 mas (Briggs), 64x56 mas (natural), 32x25 mas (uniform)",
+  "sensitivity": "rms 14 µJy/beam (Briggs); CO 0.8 mJy/beam per 0.73 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "BaBb orbit and combined mass 1.28 Msun",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "We assume the CO orbits a single point mass with the combined mass of HD 98800BaBb of 1.28 M⊙ [17]."
+     }
+    ]
+   },
+   "citation": "Boden et al. 2005 (cite: 17)"
+  },
+  {
+   "what": {
+    "value": "Radial velocities of AaAb and BaBb in early 1990s",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "Ref [42] find that the systemic velocity of AaAb (12.75 km s−1) was more positive than BaBb (5.73 km s−1) in the early 1990s"
+     }
+    ]
+   },
+   "citation": "Torres et al. 1995 (cite: 42)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature of 160 K from multiwavelength photometry",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "assuming a dust temperature of 160K derived from photometry over a range of wavelengths"
+     }
+    ]
+   },
+   "citation": "not stated"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate",
+   "method": "Pipeline calibration, one phase self-cal, concatenate two EBs",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "solint 20-40 min"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model continuum and CO in visibility plane",
+   "method": "Power-law ring line-of-sight integration model fit to visibilities; eccentric inner edge for continuum",
+   "software": [
+    "emcee",
+    "GALARIO"
+   ],
+   "key_parameters": [
+    "64 walkers, 1000 steps after 1000-step burn-in",
+    "scale height fixed to 0.05 r"
+   ],
+   "assumptions": [
+    "Distance 44.9 pc; CO orbits 1.28 Msun point mass"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate dust and CO masses",
+   "method": "Optically thin dust mass from flux; CO mass assuming tau=1, Tex=70 K; H2/CO=1e4",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "dust opacity 1.7 cm2/g, Td=160 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit AB orbit",
+   "method": "MCMC orbit fit to WDS astrometry plus radial velocity constraints",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Mass of A 1.3±0.15 Msun prior; B 1.28 Msun"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "N-body and SPH dynamics of the two disc orientations",
+   "method": "Gas-free n-body with REBOUND whfast for 1 Myr; SPH with Phantom",
+   "software": [
+    "REBOUND",
+    "Phantom",
+    "splash"
+   ],
+   "key_parameters": [
+    "300,000 SPH particles"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Population estimate of polar discs",
+   "method": "Monte Carlo of 1e6 random orientations at 16 eccentricities, classify via constant of motion c vs e^2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Uniform eccentricity 0-0.8, isotropic initial orientation, test-particle dynamics"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust inner edge",
+   "value": "2.5",
+   "uncertainty": "±0.02",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "the inner edges of the dust and CO are at 2.5 ± 0.02 and 1.6 ± 0.3 au respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust outer edge",
+   "value": "4.6",
+   "uncertainty": "±0.01",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "while the outer edges are at 4.6 ± 0.01 and 6.4 ± 0.5 au"
+    }
+   ]
+  },
+  {
+   "quantity": "CO inner/outer edges",
+   "value": "1.6 and 6.4",
+   "uncertainty": "±0.3 and ±0.5",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "the inner edges of the dust and CO are at 2.5 ± 0.02 and 1.6 ± 0.3 au respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc position angle",
+   "value": "16",
+   "uncertainty": "±1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "the disc has a position angle of 16 ± 1 ◦ (measured anti-clockwise from North)"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination",
+   "value": "26 or 154",
+   "uncertainty": "±1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "by either 26 or 154 ◦ (±1◦) from the sky plane"
+    }
+   ]
+  },
+  {
+   "quantity": "Total disc flux",
+   "value": "47",
+   "uncertainty": "±5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "Including an absolute calibration uncertainty of 10% yields a final flux measurement of 47 ±5 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass",
+   "value": "0.33",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "the result is 0.33 M⊕."
+    }
+   ]
+  },
+  {
+   "quantity": "CO mass (minimum)",
+   "value": "2.8e-5",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "The best-fit total CO flux of 0.31 Jy km s−1 is then equivalent to a mass of 2.8 × 10−5 M⊕."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass",
+   "value": "0.28",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "then the total gas mass is roughly 0.28 M⊕, similar to the dust mass."
+    }
+   ]
+  },
+  {
+   "quantity": "AB orbit eccentricity",
+   "value": "0.52",
+   "uncertainty": "±0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "which has an eccentricity of 0.52 ± 0.01 and a period of 246 ± 5 years"
+    }
+   ]
+  },
+  {
+   "quantity": "AB orbit period",
+   "value": "246",
+   "uncertainty": "±5",
+   "units": "years",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "which has an eccentricity of 0.52 ± 0.01 and a period of 246 ± 5 years"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of discs evolving to polar",
+   "value": "46% (about 45% in main text)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "is the average value across this range of eccentricities, and found to be 46%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, clean threshold, masks and niter",
+  "Line-free channels for uvcontsub",
+  "Prior ranges for MCMC parameters",
+  "Reference antenna and phase-up details for self-cal",
+  "Exact CO channel selection for the 40 channels",
+  "Source of 160 K dust temperature",
+  "Code in GitHub not specified by repository"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (image size, cell, masks, thresholds)",
+  "Line-free channels for continuum subtraction",
+  "MCMC priors",
+  "Origin of 160 K dust temperature"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, clear modelling approach and released scripts, but imaging and prior details are missing.",
+ "rediscovery_reason": "Public data, complete-enough modelling recipe, numeric disc parameters.",
+ "source_card": "cards/2019NatAs...3..230K/sonnet/card.md"
+}

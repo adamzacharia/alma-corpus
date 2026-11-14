@@ -1,0 +1,353 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "ALCHEMI data", "quote": "We took exactly the same integrated intensity images used in the PCA study by (cite: Harada2024), which omitted transitions with blending above certain levels."},
+{"loc": "abstract", "quote": "We used images of 148 transitions from 44 different species of the ALMA large program ALCHEMI."}
+],
+"fields": ["nearby_galaxies", "astrochemistry", "star_formation"],
+"question": {
+"value": "Can non-negative matrix factorization of ALCHEMI integrated intensity images of NGC 253 extract molecular/physical components involved in star formation, and how does it compare with PCA?",
+"evidence": [
+{"loc": "abstract", "quote": "We used non-negative matrix factorization (NMF) to extract individual molecular or physical components involved in the star formation process in NGC 253."},
+{"loc": "abstract", "quote": "We also compared our results using principal component analysis (PCA) previously applied to the same dataset."}
+]
+},
+"targets": [
+{
+"name": "NGC 253",
+"details": [
+{"loc": "Introduction", "quote": "It is located at a distance of $3.5 \\> \\mathrm{Mpc}$ (cite: Rekola2005)"},
+{"loc": "ALCHEMI data", "quote": "observed the central molecular zone (CMZ) of NGC 253"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "3.5 Mpc",
+"distance_source": "(cite: Rekola2005)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.00161.L", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00161.L, ADS/JAO.ALMA#2018.1.00162.S."}]},
+{"code": "2018.1.00162.S", "evidence": [{"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00161.L, ADS/JAO.ALMA#2018.1.00162.S."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "ALMA Bands 3-7 spectral scan (ALCHEMI); continuum images at Bands 3 and 7 included", "evidence": [
+{"loc": "ALCHEMI data", "quote": "The survey consisted of a spectral scan over most of the frequency coverage in ALMA Bands 3-7."},
+{"loc": "abstract", "quote": "Additionally, we included the continuum images at ALMA Bands 3 and 7 from the same dataset."}
+]},
+{"field": "angular_resolution", "value": "1.6 arcsec (= 27 pc)", "evidence": [
+{"loc": "ALCHEMI data", "quote": "with an angular resolution of $1.6^{\"}$ (= 27 pc)"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "ALCHEMI large program data (2017.1.00161.L, 2018.1.00162.S); images taken from Harada2024", "evidence": [
+{"loc": "abstract", "quote": "We used images of 148 transitions from 44 different species of the ALMA large program ALCHEMI."},
+{"loc": "ALCHEMI data", "quote": "We took exactly the same integrated intensity images used in the PCA study by (cite: Harada2024)"}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Integrated intensity (moment 0) images of 150 molecular lines, recombination lines and continuum maps, with blended transitions omitted and NaN masking", "evidence": [
+{"loc": "ALCHEMI data", "quote": "We took exactly the same integrated intensity images used in the PCA study by (cite: Harada2024), which omitted transitions with blending above certain levels."},
+{"loc": "Footnote 1", "quote": "because we masked out locations in the position-position-velocity cube of transitions where emission is not expected as described in (cite: Harada2024)"}
+]}, "citation": "(cite: Harada2024)"},
+{"what": {"value": "Complete list of transitions (Table 3 of Harada2024)", "evidence": [
+{"loc": "ALCHEMI data", "quote": "An complete list of transitions can be found in Table 3 of (cite: Harada2024)."}
+]}, "citation": "(cite: Harada2024)"},
+{"what": {"value": "PCA variance fractions used for comparison: 79.4% for PC1, 9.0% for PC2, 5.0% for PC3", "evidence": [
+{"loc": "Comparison with PCA", "quote": "the percentage of variance explained by PC1 is very large compared with other PCs (79.4$\\>\\%$ for PC1, 9.0$\\>\\%$ for PC2, 5.0$\\>\\%$, $\\cdots$)"}
+]}, "citation": "(cite: Harada2024)"},
+{"what": {"value": "Positions of the giant molecular clouds (GMCs) in the central region of NGC 253", "evidence": [
+{"loc": "ALCHEMI data", "quote": "The positions of the GMCs of NGC 253 are provided in table"}
+]}, "citation": "not stated in the text given"},
+{"what": {"value": "Super star cluster ages and locations used to interpret NF5", "evidence": [
+{"loc": "Interpretation of each NF component", "quote": "determined the age of the SSCs from the luminosity of the SSCs and the protostars"}
+]}, "citation": "(cite: Rico2020)"},
+{"what": {"value": "Starburst region locations from 99.02 GHz free-free and H40alpha emission, used to interpret NF4", "evidence": [
+{"loc": "Interpretation of each NF component", "quote": "identified the location of starburst regions based on 99.02 GHz free-free emission and H40$\\alpha$ emission in the central region of NGC 253"}
+]}, "citation": "(cite: Bendo2013)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Moment 0 images, transition list, line blending cuts and NaN masking taken from the earlier PCA study", "evidence": [
+{"loc": "ALCHEMI data", "quote": "We took exactly the same integrated intensity images used in the PCA study by (cite: Harada2024), which omitted transitions with blending above certain levels."},
+{"loc": "Footnote 1", "quote": "because we masked out locations in the position-position-velocity cube of transitions where emission is not expected as described in (cite: Harada2024)"}
+]}, "from_reference": "(cite: Harada2024)"},
+{"what": {"value": "Number of components (5) chosen following the PCA study", "evidence": [
+{"loc": "NMF", "quote": "Following this, we decided to use 5 components in this study."}
+]}, "from_reference": "(cite: Harada2024)"},
+{"what": {"value": "ALCHEMI observations and data processing (survey description)", "evidence": [
+{"loc": "ALCHEMI data", "quote": "The ALCHEMI survey ((cite: Martin2021)) observed the central molecular zone (CMZ) of NGC 253"}
+]}, "from_reference": "(cite: Martin2021)"},
+{"what": {"value": "Treatment of K-ladder transitions as one blended transition", "evidence": [
+{"loc": "Footnote 2", "quote": "all the $K$-ladder transitions are blended, and we treat them as one transition"}
+]}, "from_reference": "(cite: Harada2024)"}
+],
+"unstated_but_needed": [
+"The scikit-learn NMF parameter table (init, solver, max_iter, tol, random_state, alpha_W, alpha_H, l1_ratio) is referenced but its values are not in the text given",
+"The Harada2024 moment 0 images and the NaN masks themselves are needed; this paper does not describe how they were made from the ALCHEMI cubes (velocity windows, continuum subtraction, imaging, beam matching)",
+"Which transitions make up the 150 images (the list is only in Table 3 of Harada2024)",
+"scikit-learn and Python versions",
+"Exact positions of the GMCs (table of GMC positions)",
+"Which initialization was used for the published maps",
+"Calibration, imaging and self-calibration choices of the ALCHEMI data are all not stated"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Prepare moment 0 images",
+"method": {"value": "Replace NaN and negative values with 0 in each moment 0 image, normalize each image to min 0 and max 1, flatten 512 x 640 pixels to one dimension", "evidence": [
+{"loc": "NMF", "quote": "we begin by replacing all non-numbers and negative values"},
+{"loc": "NMF", "quote": "Subsequently, we normalize the minimum value to be 0 and the maximum value to be 1"}
+]},
+"software": ["Python"],
+"key_parameters": [
+{"value": "Image size 512 x 640 pixels per transition", "evidence": [
+{"loc": "NMF", "quote": "make the two-dimensional data (512 pixels $\\times$ 640 pixels) from a given transition one-dimensional"}
+]}
+],
+"assumptions": [
+{"value": "Negative values come from absorption lines near GMC 5 and are set to zero; NMF assumes emission only adds intensity if absorption is ignored", "evidence": [
+{"loc": "Footnote 1", "quote": "Negative values come from absorption lines that are present around GMC 5 for limited transition."},
+{"loc": "Introduction", "quote": "An addition of a cloud with certain physical parameters should only increase the emission intensity, and not decrease it if we can ignore absorption."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Build the data matrix",
+"method": {"value": "Stack all 150 flattened images as columns of a 327,680 x 150 matrix E", "evidence": [
+{"loc": "NMF", "quote": "Then, we integrate all the emission line data into a matrix ($327,680 \\mathrm{\\>rows} \\times 150 \\mathrm{\\>columns}$) by applying the same procedure to the 150 images."}
+]},
+"software": ["Python"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Factorize with NMF",
+"method": {"value": "Factorize E into non-negative base matrix B and coefficient matrix C with M = 5 components using sklearn.decomposition.NMF; each column of B reshaped into a 2D map (NF1-NF5)", "evidence": [
+{"loc": "NMF", "quote": "In our implementation, we used the `scikit-learn` module of Python (cite: scikit-learn)."},
+{"loc": "NMF", "quote": "Each column of the base matrix is then converted into a two-dimensional map, resulting in five maps defined as non-negative factor (NF) components (NF1 – NF5)."}
+]},
+"software": ["scikit-learn", "Python"],
+"key_parameters": [
+{"value": "M = 5 components", "evidence": [
+{"loc": "NMF", "quote": "Following this, we decided to use 5 components in this study."}
+]},
+{"value": "Frobenius norm loss; with the parameters used the objective reduces to the Frobenius norm of E - BC", "evidence": [
+{"loc": "Derivation method of base and coefficient matrices in scikit-learn", "quote": "The loss function is commonly chosen to be the Frobenius norm, which we use here."},
+{"loc": "Derivation method of base and coefficient matrices in scikit-learn", "quote": "the objective function simply becomes the Frobenius norm of E $-$ BC"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "scikit-learn NMF minimizing the Frobenius-norm reconstruction error; no sampler or priors", "evidence": [
+{"loc": "Derivation method of base and coefficient matrices in scikit-learn", "quote": "the algorithm in `scikit-learn` minimizes the following function called the objective function"}
+]},
+"validation": {"value": "Results unchanged across scikit-learn initializations (nndsvda, nndsvd, nndsvdar, random); reconstruction error versus M plateaus beyond M = 4; M = 8 gives localized or noisy components", "evidence": [
+{"loc": "Derivation method of base and coefficient matrices in scikit-learn", "quote": "we confirmed that changing the initialization methods does not change our results when using standard methods of initialization in `scikit-learn`, nndsvda, nndsvd, nndsvdar, and random."},
+{"loc": "The error before and after applying NMF", "quote": "The reconstruction error decreases steeply with the number of components for $M<4$, but it plateaus for larger $M$."},
+{"loc": "The case of another number of components", "quote": "As the number of components increases, more components contain structures that are too localized or noisy."}
+]}
+},
+{
+"order": 4,
+"goal": "Rescale base and coefficient matrices",
+"method": {"value": "Scale each column of B so its L1 norm is 1 and recompute C, so coefficients are the flux each NF contributes to each input image", "evidence": [
+{"loc": "Results", "quote": "Because we scaled the base matrix so that the sum of each column is 1"},
+{"loc": "Derivation method of base and coefficient matrices in scikit-learn", "quote": "After scaling the base matrices, coefficients directly reflect how much flux each NF contributes to the total flux of input images."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 5,
+"goal": "Compute NF fractions and contribution rates",
+"method": {"value": "From C compute the NF fraction of each transition (c_xn / sum_m c_mn) and the contribution rate of each NF; list the top 30 transitions per NF", "evidence": [
+{"loc": "Outline of each component", "quote": "we calculate a quantity called NF fraction (defined below)"},
+{"loc": "Outline of each component", "quote": "We show transitions with the top 30 NF fractions for each"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Test dependence on upper-state energy",
+"method": {"value": "Plot NF1, NF3, NF5 fractions of multi-transition species against upper-state energy", "evidence": [
+{"loc": "Energy dependence of the NF components", "quote": "using upper-state energy ($E_\\mathrm{up}$) as an indicator"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Upper-state energy is an indicator of excitation", "evidence": [
+{"loc": "Energy dependence of the NF components", "quote": "using upper-state energy ($E_\\mathrm{up}$) as an indicator"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "Compare NMF with PCA",
+"method": {"value": "Compare NF maps with PC score maps of the earlier PCA and compute pixel-to-pixel Spearman rank correlations among NFs and among PCs", "evidence": [
+{"loc": "Comparison with PCA", "quote": "Figure [12](#fig:NFPC_relation) shows the pixel-to-pixel relation between the NF maps (left panel) and PC scores (right panel)."},
+{"loc": "Comparison with PCA", "quote": "We choose this coefficient over the Pearson correlation coefficient because Pearson correlation coefficients become zero for PCA because PC scores are orthogonal to each other"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 8,
+"goal": "Select tracers per band",
+"method": {"value": "Define a tracer as a transition with NF fraction >= 0.6 for any component and tabulate by ALMA band", "evidence": [
+{"loc": "Useful tracers to understand the physical state", "quote": "a tracer was defined as one with an NF fraction of 0.6 or greater for any of the components."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "NF fraction threshold 0.6", "evidence": [
+{"loc": "Useful tracers to understand the physical state", "quote": "a tracer was defined as one with an NF fraction of 0.6 or greater for any of the components."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "scikit-learn", "version": "not stated", "used_for": {"value": "sklearn.decomposition.NMF for the factorization", "evidence": [
+{"loc": "NMF", "quote": "The NMF algorithms are described in the `sklearn.decomposition.NMF` class"}
+]}},
+{"name": "Python", "version": "not stated", "used_for": {"value": "Implementation of the NMF analysis", "evidence": [
+{"loc": "NMF", "quote": "In our implementation, we used the `scikit-learn` module of Python (cite: scikit-learn)."}
+]}}
+],
+"results_numeric": [
+{"quantity": "Contribution rate of NF1", "value": "23.1", "uncertainty": "not stated", "units": "%", "from_step": 5, "evidence": [{"loc": "Comparison with PCA", "quote": "contribution rate of 23.1$\\>\\%$ for NF1"}]},
+{"quantity": "Contribution rate of NF2", "value": "37.0", "uncertainty": "not stated", "units": "%", "from_step": 5, "evidence": [{"loc": "Comparison with PCA", "quote": "37.0$\\>\\%$ for NF2"}]},
+{"quantity": "Contribution rate of NF3", "value": "16.5", "uncertainty": "not stated", "units": "%", "from_step": 5, "evidence": [{"loc": "Comparison with PCA", "quote": "16.5$\\>\\%$ for NF3"}]},
+{"quantity": "Contribution rate of NF4", "value": "14.8", "uncertainty": "not stated", "units": "%", "from_step": 5, "evidence": [{"loc": "Comparison with PCA", "quote": "14.8$\\>\\%$ for NF4"}]},
+{"quantity": "Contribution rate of NF5", "value": "8.6", "uncertainty": "not stated", "units": "%", "from_step": 5, "evidence": [{"loc": "Comparison with PCA", "quote": "and 8.6$\\>\\%$ for NF5"}]},
+{"quantity": "Highest NF3 fraction of SiO", "value": "0.33", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Outline of each component", "quote": "the highest NF3 fraction of SiO (strong shock tracer) overall NF3 fraction is 0.33"}]},
+{"quantity": "NF3 fraction of low-excitation transitions of other shock tracers", "value": "0.61 - 0.94", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Outline of each component", "quote": "This fraction is relatively low compared to 0.61 – 0.94 for the low-excitation transitions of other shock tracers."}]},
+{"quantity": "NF4 fraction of RRLs and 3 mm continuum", "value": ">= 0.89", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Interpretation of each NF component", "quote": "the RRLs and the 3 mm continuum contain an NF4 fraction of $\\geq 0.89$, and the 0.8 mm continuum contains about 0.5"}]},
+{"quantity": "NF4 fraction of 0.8 mm continuum", "value": "about 0.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "Interpretation of each NF component", "quote": "the RRLs and the 3 mm continuum contain an NF4 fraction of $\\geq 0.89$, and the 0.8 mm continuum contains about 0.5"}]}
+],
+"findings_qualitative": [
+{"value": "NMF components are less orthogonal-constrained than PCs; NFs are mutually weakly correlated while PCs show strong rank correlations", "evidence": [
+{"loc": "Comparison with PCA", "quote": "On the other hand, each NF component does not have a strong correlation with each other."}
+]},
+{"value": "NF2 traces low-density extended gas including outflow streamers, extracted well by NMF but only weakly by PCA (PC4, PC5)", "evidence": [
+{"loc": "Interpretation of each NF component", "quote": "We argue that NF2 represents the low-density gas spreading throughout the galaxy."}
+]}
+],
+"claims": [
+{
+"hypothesis": "Can NMF separate molecular and physical components involved in star formation in NGC 253?",
+"experiment": "NMF with 5 components on 150 ALCHEMI moment 0 images, then interpretation of each NF map and its characteristic transitions",
+"result": "Five NF maps with distinct spatial distributions and characteristic transitions",
+"finding": "NF2 is low-density gas, NF3 shocks, NF4 starburst regions, NF5 young star-forming regions, NF1 mid-excitation shock tracers",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "we obtained that their distributions correspond to various basic phenomena related to star formation: i) low-density gas extended through the galactic central molecular zone (NF2), ii) shocks (NF3)"},
+{"loc": "abstract", "quote": "iii) starburst regions (NF4), and iv) young star-forming regions (NF5)."}
+]
+},
+{
+"hypothesis": "Do NF components depend on excitation?",
+"experiment": "NF fractions of multi-transition species versus upper-state energy",
+"result": "NF3 fraction falls and NF5 fraction rises with upper-state energy; NF1 is intermediate",
+"finding": "NF3, NF1 and NF5 represent low-, intermediate- and high-excitation",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "three components obtained by NMF (NF3, 1, and 5) show a strong dependence upon the upper state energies of transitions, and represent low-, intermediate-, and high-excitation, respectively."}
+]
+},
+{
+"hypothesis": "Is NMF better than PCA at isolating single physical components in this dataset?",
+"experiment": "Compare NF maps with PCA maps of the same data and compare Spearman correlations among components",
+"result": "NF components are weakly correlated with each other while PCs are strongly rank-correlated; diffuse/outflow gas appears as one NF but only weakly in PCA",
+"finding": "NMF extracts components tied to a single physical component, PCA components mix several",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "NMF is better at extracting components associated with a single physical component, while a single component in PCA usually contains information on multiple physical components."}
+]
+},
+{
+"hypothesis": "Which tuning would capture tracers of all components?",
+"experiment": "Select transitions with NF fraction >= 0.6 and tabulate by band",
+"result": "NF tracers are concentrated in Band 3",
+"finding": "Observing about 85-100 GHz in Band 3 gives structures involved in star formation",
+"support": "supported",
+"evidence": [
+{"loc": "Summary", "quote": "Therefore, we can extract the structure involved in star formation by observations in about 85 GHz to 100 GHz region of Band 3."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_method", "value": "NMF expected to give more unique physical components than PCA because emission only adds", "evidence": [
+{"loc": "Introduction", "quote": "Therefore, components obtained by NMF are expected to represent more unique components representing certain physical parameters than PCA."}
+]},
+{"field": "why_this_data", "value": "Use exactly the same images as the earlier PCA study for a direct comparison", "evidence": [
+{"loc": "ALCHEMI data", "quote": "We took exactly the same integrated intensity images used in the PCA study by (cite: Harada2024)"}
+]},
+{"field": "how_they_decided_enough", "value": "M = 5 chosen following the PCA study and checked against the reconstruction error", "evidence": [
+{"loc": "NMF", "quote": "Following this, we decided to use 5 components in this study."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "More components (up to eight) rejected because components became too localized or noisy", "evidence": [
+{"loc": "The case of another number of components", "quote": "As the number of components increases, more components contain structures that are too localized or noisy."}
+]},
+{"value": "Spearman correlation used instead of Pearson, which is zero for orthogonal PC scores", "evidence": [
+{"loc": "Comparison with PCA", "quote": "We choose this coefficient over the Pearson correlation coefficient because Pearson correlation coefficients become zero for PCA because PC scores are orthogonal to each other"}
+]}
+],
+"limitations_admitted": [
+{"value": "NMF can group multiple components of similar properties", "evidence": [
+{"loc": "Interpretation of each NF component", "quote": "It is important to note that there are some caveats in using NMF."}
+]},
+{"value": "NF numbering has no meaning and the NMF could not extract a component corresponding to the PCA PC1", "evidence": [
+{"loc": "Comparison with PCA", "quote": "PC1 is the prominent component of PCA, but NMF could not extract the component corresponding to PC1."}
+]}
+],
+"referee_caveats_inferred": [
+"Physical labels (shocks, starburst, young star formation) are interpretive and rest on spatial coincidence with literature, with no independent test such as radiative-transfer modelling",
+"Choice of M = 5 is partly inherited from PCA rather than determined by an objective criterion",
+"Results depend on the Harada2024 masking and image processing, and on normalizing each image to max 1, which favors extended maps in contribution rates",
+"No uncertainties on NF fractions or contribution rates, and no noise propagation or bootstrap"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"NMF parameter table (init, solver, tolerances, random state)",
+"The moment 0 images and masks of Harada2024 (the paper does not describe their creation)",
+"Software versions",
+"No statement of code or product release"
+],
+"estimated_data_volume_inferred": "Small (about 150 images of 512 x 640 pixels) if the Harada2024 moment 0 images are available; reproducing them from the ALCHEMI cubes would need hundreds of GB to TB",
+"score_inferred": 3,
+"score_reason": "The NMF recipe (matrix size, M = 5, Frobenius loss, normalization, scikit-learn) is clear and the results are numeric, but the parameter table and input images are not in the paper and come from an earlier paper.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "The inputs are processed images from an earlier paper and the data are not stated to be public, so the recipe cannot be redone from the text alone.",
+"methods_papers": [
+{"citation": "(cite: Harada2024)", "why": "Source of the moment 0 images, transition list, masking and the PCA used for comparison"},
+{"citation": "(cite: Martin2021)", "why": "Describes the ALCHEMI survey observations"}
+],
+"companion_papers": [
+{"citation": "(cite: Mijolla2024)", "why": "Applied NMF to simulated molecular line data"}
+],
+"related_projects_or_surveys": ["ALCHEMI (ALMA Comprehensive High-resolution Extragalactic Molecular Inventory)"]
+}

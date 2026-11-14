@@ -1,0 +1,474 @@
+{
+ "bibcode": "2021MNRAS.500.3667S",
+ "title": "The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3433",
+ "arxiv_id": "2009.01277",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "What are the intrinsic dust morphology, CO line morphology and kinematics, and star formation properties of z ~ 2 quasar host galaxies, and how do they relate to galaxy compaction and quenching?",
+ "alma_project_codes": [
+  "2017.1.01368.S",
+  "2017.1.01081.S",
+  "2018.1.01591.S",
+  "2012.1.00175.S",
+  "2015.1.01309.S",
+  "2018.1.01519.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.14x0.14 arcsec to 0.40x0.35 arcsec",
+  "sensitivity": "7 to 93 uJy beam^-1 (continuum rms with natural weighting)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Ancillary photometric data for SED fitting of lensed quasars",
+    "evidence": [
+     {
+      "loc": "Dust properties",
+      "quote": "The SED fitting follows a similar procedure described by (cite: Stacey:2018a) and uses ancillary data listed therein."
+     }
+    ]
+   },
+   "citation": "(cite: Stacey:2018a)"
+  },
+  {
+   "what": {
+    "value": "Lens model parameters (slope, ellipticity, position angle, and nearby galaxy parameters) for PG 1115+080 and WFI J2033-4723",
+    "evidence": [
+     {
+      "loc": "Lens Modelling",
+      "quote": "Robust lens models have been produced for PG 1115+080 and WFI J2033$-$4723, based on higher quality optical imaging of the quasars and extended arcs as part of the H$_0$ Lenses in COSMOGRAIL’s Wellspring (H0LiCOW) project (cite: Chen:2019; Rusu:2020)."
+     },
+     {
+      "loc": "Lens Modelling",
+      "quote": "The position and mass of these galaxies are fixed to the values found by (cite: Rusu:2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Chen:2019; Rusu:2020)"
+  },
+  {
+   "what": {
+    "value": "Photometry and sizes for ALESS DSFGs, z > 4 DSFGs, and lensed DSFGs",
+    "evidence": [
+     {
+      "loc": "Comparison with dusty star-forming galaxies",
+      "quote": "We perform SED fitting for the ALESS sample with photometry from (cite: Swinbank:2014) and (cite: Hodge:2019)."
+     },
+     {
+      "loc": "Supplementary figures and tables",
+      "quote": "References: [1] (cite: Hodge:2019); [2] (cite: Swinbank:2010); [3] (cite: Hodge:2016); [4] (cite: Riechers:2017); [5] (cite: Riechers:2013); [6] (cite: Riechers:2014); [7] (cite: Cortzen:2020); [8] (cite: Oteo:2016); [9] (cite: Nayyeri:2016); [10] Stacey et al. in prep; [11] (cite: Dye:2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Swinbank:2014), (cite: Hodge:2019), (cite: Swinbank:2010), (cite: Hodge:2016), (cite: Riechers:2017), (cite: Riechers:2013), (cite: Riechers:2014), (cite: Cortzen:2020), (cite: Oteo:2016), (cite: Nayyeri:2016), (cite: Dye:2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate raw visibilities, self-calibrate, subtract continuum, and create lens-plane images and line profiles",
+   "method": "ALMA pipeline calibration in CASA, phase self-calibration on line-free windows (for 4 targets), linear continuum subtraction in visibility plane, CLEAN deconvolution with natural weighting, and single Gaussian fitting to integrated line profiles",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "self-calibration solution interval = scan length",
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Visibility-plane gravitational lens modelling and pixellated source reconstruction",
+   "method": "Simultaneous optimisation of singular power-law ellipsoid lens mass distribution with external shear and pixellated source surface brightness directly on visibilities",
+   "software": [
+    "MultiNest"
+   ],
+   "key_parameters": [
+    "isothermal profile zeta = 2 (for 5 targets); fixed literature slope/ellipticity/PA for PG 1115+080 and WFI J2033-4723",
+    "maximum baseline < 300 m and 3 velocity channels for WFI J2033-4723 and SDSS J0924+0219 line cubes"
+   ],
+   "assumptions": [
+    "Smooth singular power-law ellipsoid mass distribution with external shear; SIS for nearby perturbers in WFI J2033-4723"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure intrinsic source sizes (R_eff), Sersic indices, and lensing magnifications",
+   "method": "Fit 2D Sersic profiles to 100 noise realisations of reconstructed continuum and integrated CO line sources using basin-hopping optimisation; compute mean magnification by masking source pixels below SNR of 4",
+   "software": [
+    "SciPy"
+   ],
+   "key_parameters": [
+    "100 noise realisations; SNR >= 4 mask for magnification; Sersic index n fixed to continuum value (1.0) for SDSS J0924+0219 and WFI J2033-4723 CO lines"
+   ],
+   "assumptions": [
+    "Additional +/- 10% uncertainty added to sizes where isothermal slope was assumed to account for empirical scatter in lens mass profile slope"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit SEDs to derive dust temperatures, FIR/IR luminosities, SFRs, SFR surface densities, Eddington limits, and dust masses",
+   "method": "MCMC fitting of an optically thick modified blackbody (plus warm dust component for 2 sources and radio power-law where applicable) to sub-mm and ancillary photometry, followed by analytical conversions to L_FIR, L_IR, SFR, Sigma_SFR, and M_dust",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "nu_0 = 3 THz (100 um) where tau = 1; beta = 2 fixed for HS 0810+2554; H1413+117 photometry > 300 GHz scaled by 0.8 for neighbour confusion"
+   ],
+   "assumptions": [
+    "Salpeter IMF with Kennicutt (1998) conversion SFR = L_IR / (5.8e9 L_sun); dust mass opacity kappa_850 = 0.077 m^2 kg^-1; flat LambdaCDM (H0 = 67.8 km/s/Mpc, Omega_M = 0.31, Omega_Lambda = 0.69)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas luminosities, dynamical masses, gas mass, gas fraction, and depletion timescale",
+   "method": "Integrate reconstructed source-plane CO line cubes to get intrinsic line luminosities; compute dynamical mass from 2*R_eff and inclination-corrected maximum velocity; convert CO(3-2) luminosity of HS 0810+2554 to gas mass and depletion time",
+   "software": [],
+   "key_parameters": [
+    "inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723)"
+   ],
+   "assumptions": [
+    "Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "145 GHz continuum flux density (HS 0810+2554)",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "HS 0810+2554",
+     "quote": "The total flux density of 0.3 mJy is consistent with the level of thermal dust emission expected at the observing frequency, based on SED fitting (see Fig. 21)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(3-2) line FWHM (HS 0810+2554)",
+   "value": "380",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "HS 0810+2554",
+     "quote": "The CO (3–2) line profile for HS 0810+2554 is shown in Fig. 1, which has a FWHM of about $380\\pm10$ km s$^{-1}$ based on a single Gaussian fit."
+    }
+   ]
+  },
+  {
+   "quantity": "145 GHz continuum flux density (RX J0911+0551)",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "RX J0911+0551",
+     "quote": "We detect thermal dust continuum for this system with a total flux density at 145 GHz of 1.4 mJy, consistent with the expectations from SED fitting"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(5-4) line FWHM (RX J0911+0551)",
+   "value": "133",
+   "uncertainty": "3",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "RX J0911+0551",
+     "quote": "The spatially integrated line profile has a FWHM of $133\\pm3$ km s$^{-1}$ based on a single Gaussian fit"
+    }
+   ]
+  },
+  {
+   "quantity": "358 GHz continuum flux density (SDSS J0924+0219)",
+   "value": "9.5",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SDSS J0924+0219",
+     "quote": "The continuum emission from SDSS J0924+0219 is detected with a total flux density of 9.5 mJy at 358 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) line FWHM (SDSS J0924+0219)",
+   "value": "176",
+   "uncertainty": "11",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "SDSS J0924+0219",
+     "quote": "The line profile is found from a Gaussian fit to have a FWHM of $176\\pm11$ km s$^{-1}$ that is shifted by $36\\pm5$ km s$^{-1}$ from the optical systemic velocity."
+    }
+   ]
+  },
+  {
+   "quantity": "346 GHz continuum flux density (PG 1115+080)",
+   "value": "2.6",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "PG 1115+080",
+     "quote": "We detect continuum emission with a total flux density of 2.6 mJy, consistent with the expectations for thermal dust emission from SED fitting"
+    }
+   ]
+  },
+  {
+   "quantity": "285 GHz continuum flux density (H1413+117)",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "H1413+117",
+     "quote": "Thermal dust emission is detected in the ALMA imaging with a total flux density of 26 mJy and an rms noise level of 93 $\\upmu$Jy beam$^{-1}$, using a natural weighting of the visibilities."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(9-8) line FWHM (H1413+117)",
+   "value": "394",
+   "uncertainty": "8",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "H1413+117",
+     "quote": "The CO (9–8) line emission is detected with a spatially integrated peak flux density of 83 mJy and a FWHM of $394\\pm8$ km s$^{-1}$ , from a Gaussian profile fit"
+    }
+   ]
+  },
+  {
+   "quantity": "350 GHz continuum flux density (WFI J2026-4536)",
+   "value": "28.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "WFI J2026-4536",
+     "quote": "The ALMA observations detect continuum emission with a flux density of 28.3 mJy and achieve an rms noise level of 30 $\\upmu$Jy beam$^{-1}$ with natural weighting."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(10-9) line FWHM (WFI J2026-4536)",
+   "value": "252",
+   "uncertainty": "7",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "WFI J2026-4536",
+     "quote": "The FWHM of the line is $252\\pm7$ km s$^{-1}$ and is offset by $\\sim1000$ km s$^{-1}$ from the systemic velocity assumed from optical spectroscopy."
+    }
+   ]
+  },
+  {
+   "quantity": "341 GHz continuum flux density (WFI J2033-4723)",
+   "value": "10.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "WFI J2033-4723",
+     "quote": "The ALMA observations detect thermal dust emission with a total flux density of 10.4 mJy and achieve an rms noise of 30 $\\upmu$Jy beam$^{-1}$ with natural weighting of the visibilities."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(8-7) line FWHM (WFI J2033-4723)",
+   "value": "83",
+   "uncertainty": "10",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "WFI J2033-4723",
+     "quote": "The FWHM of the line profile is quite narrow, at $83\\pm10$ km s$^{-1}$ , and is offset by $258\\pm4$ km s$^{-1}$ from the optical systemic velocity"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (HS 0810+2554)",
+   "value": "0.13",
+   "uncertainty": "0.04",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| HS 0810+2554 | $25\\pm4$ | $0.13\\pm0.04$ | $0.57\\pm0.05$ | $39^{+4}_{-5}$ | $135^{+25}_{-18}$ | $\\equiv2$ | $1.3^{+1.0}_{-0.9}\\times10^{11}$ | $40^{+30}_{-30}$ | $400^{+300}_{-300}$ | $1.1^{+0.4}_{-0.5}\\times10^{7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (RX J0911+0551)",
+   "value": "0.51",
+   "uncertainty": "0.03",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| RX J0911+0551 | $14.8\\pm0.2$ | $0.51\\pm0.03$ | $0.56\\pm0.04$ | $54^{+3}_{-3}$ | – | $1.9^{+0.1}_{-0.1}$ | $2.3^{+0.1}_{-0.1}\\times10^{12}$ | $750^{+50}_{-50}$ | $500^{+100}_{-100}$ | $5.3^{+0.9}_{-0.8}\\times10^{6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (SDSS J0924+0219)",
+   "value": "1.9",
+   "uncertainty": "0.2",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| SDSS J0924+0219 | $15.1\\pm0.7$ | $1.9\\pm0.2$ | $1.2\\pm0.1$ | $38^{+8}_{-7}$ | – | $1.5^{+0.6}_{-0.4}$ | $1.9^{+0.7}_{-0.5}\\times10^{11}$ | $60^{+20}_{-20}$ | $3^{+1}_{-1}$ | $3.9^{+1.5}_{-1.4}\\times10^{7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (PG 1115+080)",
+   "value": "0.14",
+   "uncertainty": "0.04",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| PG 1115+080 | $21.5\\pm0.4$ | $0.14\\pm0.04$ | $0.47\\pm0.01$ | $66^{+17}_{-21}$ | – | $1.9^{+0.3}_{-0.3}$ | $3.4^{+1.2}_{-1.0}\\times10^{11}$ | $110^{+40}_{-30}$ | $1000^{+400}_{-400}$ | $2.5^{+1.5}_{-1.0}\\times10^{6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (H1413+117)",
+   "value": "0.8",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| H1413+117 | $11.2\\pm0.2$ | $0.8\\pm0.1$ | $0.66\\pm0.07$ | $53^{+1}_{-1}$ | $246^{+14}_{-24}$ | $1.88^{+0.04}_{-0.04}$ | $4.9^{+0.2}_{-0.2}\\times10^{12}$ | $1600^{+60}_{-60}$ | $370^{+80}_{-80}$ | $1.2^{+0.1}_{-0.1}\\times10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (WFI J2026-4536)",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| WFI J2026$-$4536 | $19.6\\pm0.8$ | $0.19\\pm0.02$ | $0.61\\pm0.02$ | $63^{+4}_{-3}$ | – | $1.8^{+0.1}_{-0.1}$ | $3.1^{+1.7}_{-1.5}\\times10^{12}$ | $1010^{+60}_{-50}$ | $4500^{+1700}_{-1700}$ | $3.9^{+0.1}_{0.1}\\times10^7$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust effective radius R_dust (WFI J2033-4723)",
+   "value": "2.5",
+   "uncertainty": "0.2",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| WFI J2033$-$4723 | $17.6\\pm0.9$ | $2.5\\pm0.2$ | $1.1\\pm0.2$ | $31^{+7}_{-5}$ | – | $1.7^{+0.3}_{-0.3}$ | $3.1^{+0.9}_{-0.6}\\times10^{11}$ | $100^{+30}_{-20}$ | $2.5^{+0.9}_{-0.7}$ | $4.5^{+0.8}_{-0.7}\\times10^{7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate surface density Sigma_SFR (WFI J2026-4536)",
+   "value": "4500",
+   "uncertainty": "+1700/-1700",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "| WFI J2026$-$4536 | $19.6\\pm0.8$ | $0.19\\pm0.02$ | $0.61\\pm0.02$ | $63^{+4}_{-3}$ | – | $1.8^{+0.1}_{-0.1}$ | $3.1^{+1.7}_{-1.5}\\times10^{12}$ | $1010^{+60}_{-50}$ | $4500^{+1700}_{-1700}$ | $3.9^{+0.1}_{0.1}\\times10^7$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_gas (HS 0810+2554)",
+   "value": "2.1e9",
+   "uncertainty": "0.1e9",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Intensity of star formation",
+     "quote": "For this object we find $M_{\\rm gas}=(2.1\\pm0.1)\\times10^9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas fraction f_gas (HS 0810+2554)",
+   "value": "0.06",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\\pm0.04$ and a depletion timescale of $50\\pm40$ Myr, suggesting it is transitioning into quiescence."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion timescale t_dep (HS 0810+2554)",
+   "value": "50",
+   "uncertainty": "40",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\\pm0.04$ and a depletion timescale of $50\\pm40$ Myr, suggesting it is transitioning into quiescence."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "Table 2 (summary of spectral line observations) and Table lens_models are referenced in the text but missing from the manuscript/markdown",
+  "Exact channel widths and frequency ranges of the line-free spectral windows used for continuum subtraction and self-calibration",
+  "Pixel size and image dimensions used for CLEAN imaging and source-plane pixellated reconstructions",
+  "Regularisation constants and exact prior bounds used in MultiNest lens modelling"
+ ],
+ "missing_for_reproduction": [
+  "The proprietary/specialized visibility-plane pixellated lens modelling code of Vegetti & Koopmans (2009) / Powell et al. (2020) is not publicly linked or released in the paper",
+  "Table of best-fit lens model parameters (referenced as Table lens_models) and Table of spectral line observation parameters (referenced as Table obs2) are missing from the paper text",
+  "Source-plane grid resolution, pixel sizes, and regularisation weights used for each target",
+  "Exact correction offsets applied to Sersic sizes from the Gaussian mock source inflation tests"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "Raw ALMA project codes, physical equations, and numerical answer keys for all targets are clearly provided, but reproduction of the core source-plane reconstructions is blocked by the unstated availability of the specialized visibility-plane pixellated lens modelling code (Powell et al. 2020) and two missing tables (lens model parameters and spectral line setup) in the text.",
+ "rediscovery_reason": "All ALMA project codes are public in the archive, lens-plane continuum fluxes and CO line Gaussian FWHMs can be directly reproduced with standard CASA scripts, and intrinsic sizes/SED properties provide well-defined numeric targets if an equivalent visibility-plane lens modelling tool (e.g. PyAutoLens or visilens) is used.",
+ "source_card": "cards/2021MNRAS.500.3667S/sonnet/card.md"
+}

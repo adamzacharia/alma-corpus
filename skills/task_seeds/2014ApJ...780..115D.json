@@ -1,0 +1,272 @@
+{
+ "bibcode": "2014ApJ...780..115D",
+ "title": "An ALMA Survey of Sub-millimeter Galaxies in the Extended Chandra Deep Field South: Sub-millimeter Properties of Color-selected Galaxies",
+ "year": 2014,
+ "doi": "10.1088/0004-637X/780/2/115",
+ "arxiv_id": "1311.2604",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the sub-mm (344 GHz) properties, dust SEDs and SFRs of optical/NIR color-selected galaxies (K-selected, sBzK, ERO, DRG) in ALESS fields, as measured by stacking ALMA data?",
+ "alma_project_codes": [
+  "2011.1.00294.S"
+ ],
+ "data": {
+  "bands": "344 GHz (870 um) continuum",
+  "arrays": "not stated",
+  "angular_resolution": "~1.6''x1.15''",
+  "sensitivity": "typical central rms ≈0.4 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Photometric catalog, SED fits and photometric redshifts of ECDFS",
+    "evidence": [
+     {
+      "loc": "The optical/NIR dataset",
+      "quote": "We base our analysis on the photometric catalog by (cite: simpson14)"
+     }
+    ]
+   },
+   "citation": "(cite: simpson14)"
+  },
+  {
+   "what": {
+    "value": "Deblended SPIRE maps",
+    "evidence": [
+     {
+      "loc": "4.3 Stacks of Herschel/SPIRE observations",
+      "quote": "We use the deblended SPIRE maps described in (cite: swinbank14)."
+     }
+    ]
+   },
+   "citation": "(cite: swinbank14)"
+  },
+  {
+   "what": {
+    "value": "LABOCA stacking fluxes for comparison",
+    "evidence": [
+     {
+      "loc": "5.3 Comparison with previous results at 870 um",
+      "quote": "Table [1](#tab_results) (bottom) reports the stacked fluxes obtained in G10 for their sub-mm faint sample"
+     }
+    ]
+   },
+   "citation": "(cite: greve10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select galaxy samples",
+   "method": "Color/magnitude cuts on MUSYC catalog: K_Vega<20, sBzK, ERO, DRG",
+   "software": [],
+   "key_parameters": [
+    "only sources within 10.4'' (1.2x primary beam radius) of pointing centre"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Stack ALMA 344 GHz postage stamps",
+   "method": "Cut stamps, primary-beam correct, weighted average (weights = inverse square of PB correction); also median stacks",
+   "software": [],
+   "key_parameters": [
+    "flux cuts of 3.6, 1.8, 1.2 mJy; z>1 subsample; smoothing to 1.6'' circular beam test"
+   ],
+   "assumptions": [
+    "all maps have same depth within ~20%"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate stacking uncertainties",
+   "method": "Stack N random positions per sample, 50 iterations; rms of stacked fluxes = noise",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "maps are mostly source-free"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Stack SPIRE maps and fit dust SED, derive L_IR and SFR",
+   "method": "Stack deblended SPIRE residual maps at z>1; fit modified blackbody; integrate 8-1000 um; SFR from Genzel+10 relation",
+   "software": [],
+   "key_parameters": [
+    "T_dust=12-60 K, beta=1.4-2.0 range"
+   ],
+   "assumptions": [
+    "Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test ALESS-field bias with radio stacks, clustering and redshift distributions",
+   "method": "KS tests, Monte-Carlo clustering, 1.4 GHz median stacks, bootstrapping of field medians",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compute SFR density",
+   "method": "Average SFR x number of galaxies / comoving volume (34000 Mpc^3, 7.0 arcmin^2, 1<z<2.6), scaled down by ALESS radio excess",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "H0=70, Om=0.3, OL=0.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stacked 344 GHz flux, sBzK (all)",
+   "value": "1.88",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| sBzK              | 22         | 1.88       | 0.15       | 0.11       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 344 GHz flux, K_Vega<20 (all)",
+   "value": "0.78",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $K_{\\rm Vega}<20$ | 100        | 0.78       | 0.06       | 0.06       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 344 GHz flux, DRG (all)",
+   "value": "1.77",
+   "uncertainty": "0.12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| DRG               | 20         | 1.77       | 0.13       | 0.12       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked 344 GHz flux, ERO (all)",
+   "value": "1.11",
+   "uncertainty": "0.10",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| ERO               | 26         | 1.11       | 0.09       | 0.10       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature, K<20 z>1",
+   "value": "32",
+   "uncertainty": "+7/-2",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$32_{-2}^{+7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR, ERO z>1",
+   "value": "140",
+   "uncertainty": "+70/-40",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$140_{-40}^{+70}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR, sBzK z>1",
+   "value": "74",
+   "uncertainty": "+17/-19",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$74_{-19}^{+17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index beta",
+   "value": "1.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2 Herschel/SPIRE stacks",
+     "quote": "We find $\\beta=1.6$ and $T_{\\rm dust}\\approx 30$ K in all the cases."
+    }
+   ]
+  },
+  {
+   "quantity": "Sky area analysed",
+   "value": "0.00193",
+   "uncertainty": "not stated",
+   "units": "deg^2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3.3 Radio fluxes",
+     "quote": "Our analysis covered $74 \\times \\pi (1.2 \\times 17.3/2)^2$ arcsec$^2$ $\\approx$ 0.00193 deg$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "ALESS 1.4 GHz median stack K<20",
+   "value": "10.0",
+   "uncertainty": "1.0",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $K_{\\rm Vega}<20$ | $10.0 \\pm1.0$ | $9.8 \\pm1.0$  | $9.1 \\pm1.0$  | $8.2 \\pm1.0$  | $3.94\\pm0.16$ | $2.5\\pm0.3$  |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration details (in Hodge et al. 2013)",
+  "Calibrated ALESS image products/primary beam models used",
+  "Exact positions of pointings and catalog cross-match details",
+  "Fitting method/priors for the modified blackbody and how SPIRE+344 GHz points were weighted",
+  "Redshifts used for each galaxy in SED fits",
+  "Radio stacking details (map weighting, median stack procedure)",
+  "Procedure for rescaling SFRD by ALESS excess"
+ ],
+ "missing_for_reproduction": [
+  "Stacking code not released",
+  "Calibrated ALESS maps and Simpson et al. catalog needed",
+  "Fit procedure details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Stacking recipe clear and data public, but inputs from companion papers and fitting details missing.",
+ "rediscovery_reason": "Public data, simple stacking recipe, numeric results in tables; depends on companion catalogs.",
+ "source_card": "cards/2014ApJ...780..115D/sonnet/card.md"
+}

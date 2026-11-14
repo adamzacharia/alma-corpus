@@ -1,0 +1,238 @@
+{
+ "bibcode": "2016PASJ...68..103F",
+ "title": "A massive dense gas cloud close to the nucleus of the Seyfert galaxy NGC 1068",
+ "year": 2016,
+ "doi": "10.1093/pasj/psw095",
+ "arxiv_id": "1609.02400",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "What is the nature of the 689 GHz continuum peak close to the nucleus S1 of NGC 1068, and what role does it play in nuclear star formation and gas inflow?",
+ "alma_project_codes": [
+  "2011.0.00083.S"
+ ],
+ "data": {
+  "bands": "Band 9 (689 GHz continuum, CO(6-5))",
+  "arrays": "not stated",
+  "angular_resolution": "beam ~0.328\" x 0.215\"",
+  "sensitivity": "1σ = 16.8 mJy/beam per 14 km/s (CO 6-5); 1.67 mJy/beam (continuum)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "S1 nuclear position from 8.4 GHz VLBA/VLA astrometry",
+    "evidence": [
+     {
+      "loc": "3.1 The Nuclear 689 GHz Continuum Peak",
+      "quote": "The position of S1 reported in (cite: G04) was obtained through astrometry between the 8.4 GHz continuum image taken by VLBA"
+     }
+    ]
+   },
+   "citation": "(cite: G04)"
+  },
+  {
+   "what": {
+    "value": "SMBH mass (8.4±0.4)e6 Msun",
+    "evidence": [
+     {
+      "loc": "5.2 Origin of the Massive Dense Gas Cloud",
+      "quote": "$M_\\mathrm{SMBH} \\simeq (8.4\\pm 0.4) \\times 10^6$ $M_\\odot$(cite: KH13)"
+     }
+    ]
+   },
+   "citation": "(cite: KH13)"
+  },
+  {
+   "what": {
+    "value": "Stellar population ages 300 Myr and 30 Myr",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "one is the relatively young stellar population with an age of 300 Myr"
+     }
+    ]
+   },
+   "citation": "(cite: SB12)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Prepare archival cubes",
+   "method": "Set rest frequency, rebin velocity by 2 channels, export to FITS, import into GILDAS, shift origin to S1",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum peak and moment maps",
+   "method": "Peak intensity and flux in beam; moments over 1020-1240 km/s",
+   "software": [
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Position accuracy assumed ~beam/5 ~0.05\""
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Dust SED gas mass, Lbol, SFR",
+   "method": "Single-temperature grey body fit of 689 GHz flux; Lbol from optically thin dust; SFR from Kennicutt 1998",
+   "software": [],
+   "key_parameters": [
+    "Td 50-70 K, beta=1.7, kappa0=0.005 cm/g at 231 GHz"
+   ],
+   "assumptions": [
+    "Lbol ≈ LFIR"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate cloud size via RADEX beam filling and peak positions",
+   "method": "RADEX non-LTE with CO/H2~1e-4, Tgas=Td, FWHM 30 km/s; Tsb/TR gives filling factor and size; compared to peak-pixel scatter",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Virial mass and stellar mass",
+   "method": "Mvir from Reff and sigma_3D; M* = eps*Mgas with SFE a few-10%",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "689 GHz peak intensity",
+   "value": "16.2",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The Nuclear 689 GHz Continuum Peak",
+     "quote": "peak intensity of $I_{\\tiny 689\\mathrm{GHz}} =$ 16.2 mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected separation from S1",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 The Nuclear 689 GHz Continuum Peak",
+     "quote": "the angular separation corresponds to the projected separation of $\\simeq$ 14 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass",
+   "value": "(5±3)e5",
+   "uncertainty": "±3e5",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "$M_\\mathrm{gas} = (5\\pm 3)\\times 10^5$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Lbol",
+   "value": "(0.4–4)e8",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "$L_\\mathrm{bol}$ would range (0.4 – 4)$\\times 10^8$ $L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "we calculated SFR to be $\\sim$ 0.1 $M_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass",
+   "value": "~6e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "$M_\\mathrm{vir}\\sim 6\\times 10^5$ $M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) optical depth",
+   "value": "~15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "optical depth of the line of $\\tau_\\mathrm{\\tiny CO6-5}\\sim 15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas diameter",
+   "value": "~10 (blue), ~8 (red)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Star Formation and Gas Properties",
+     "quote": "Repeating the same analysis for the red, we obtained $2r\\sim 8$ pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image pixel size and beam parameters (blank in text)",
+  "Exact aperture/beam geometry and peak-pixel fitting procedure",
+  "Scripts not released",
+  "Flux scale uncertainty",
+  "Details of RADEX inputs beyond those given"
+ ],
+ "missing_for_reproduction": [
+  "Pixel size and beam values",
+  "Aperture definition details",
+  "RADEX input details",
+  "Custom GILDAS scripts"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public image products and clear recipe with simple formulae, but some parameters missing and results are order-of-magnitude.",
+ "rediscovery_reason": "Public image products and numeric results derivable from stated assumptions.",
+ "source_card": "cards/2016PASJ...68..103F/sonnet/card.md"
+}

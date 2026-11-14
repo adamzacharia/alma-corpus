@@ -1,0 +1,196 @@
+{
+ "bibcode": "2015ApJ...806...39O",
+ "title": "A Measurement of the Black Hole Mass in NGC 1097 Using ALMA",
+ "year": 2015,
+ "doi": "10.1088/0004-637X/806/1/39",
+ "arxiv_id": "1506.05917",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What is the SMBH mass of NGC 1097 from dense molecular gas (HCN and HCO+ J=1-0) kinematics measured with ALMA?",
+ "alma_project_codes": [
+  "2011.0.00108.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "1.60'' x 2.20'' at PA -81.2 deg (~112 pc x 154 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inclination 46±5 deg",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| Inclination angle ($^{\\circ}$) | 46$\\pm$5 | 5 |"
+     }
+    ]
+   },
+   "citation": "Ondrechen et al. 1989 (cite: 1989ApJ...342...39O)"
+  },
+  {
+   "what": {
+    "value": "Major axis PA 130 deg",
+    "evidence": [
+     {
+      "loc": "3.1 The Mass Model",
+      "quote": "The major axis defined here is at a position angle of $130^{\\circ}$ from (cite: 1991rc3..book.....D)."
+     }
+    ]
+   },
+   "citation": "de Vaucouleurs et al. 1991 (cite: 1991rc3..book.....D)"
+  },
+  {
+   "what": {
+    "value": "Velocity dispersion 196±5 km/s",
+    "evidence": [
+     {
+      "loc": "NGC 1097",
+      "quote": "with an observed $\\sigma=196 \\pm 5$ km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "Lewis & Eracleous 2006 (cite: 2006ApJ...642..711L)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the HCN and HCO+ cubes and make moment maps",
+   "method": "CASA imaging with robust 0.5, 2-channel binning; moment maps with Karma",
+   "software": [
+    "CASA",
+    "Karma"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model stellar luminosity with MGE",
+   "method": "Fit multi-Gaussian expansion to HST F814W major-axis profile after subtracting AGN (PSF 0.2'') and masking starburst ring",
+   "software": [
+    "Tiny Tim"
+   ],
+   "key_parameters": [
+    "Ring at -11'' to -7'' and 8'' to 13''"
+   ],
+   "assumptions": [
+    "Axisymmetric galaxy; constant I-band M/L radially"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute circular velocity field and model PVD",
+   "method": "MGE_circular_velocity at i=46 deg, then KinMS thin axisymmetric disk convolved with beam, PA 130 deg",
+   "software": [
+    "MGE_circular_velocity",
+    "KinMS"
+   ],
+   "key_parameters": [
+    "inclination 46 deg"
+   ],
+   "assumptions": [
+    "Streaming motion negligible"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Chi-square grid fit of M_BH and M/L to PVD",
+   "method": "Extract 106 points from observed PVD above 3 sigma ~8 mJy; grid M/L 4.80-5.35 (0.01), M_BH 0.5-2.5e8 (0.1e8); errors at Delta chi2<=9",
+   "software": [],
+   "key_parameters": [
+    "kinematic PA 130±5 deg; velocity error = channel width 3.284 km/s plus Gaussian fit error"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SMBH mass (HCN, i=46 deg)",
+   "value": "1.40e8",
+   "uncertainty": "+0.27/-0.32 e8",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "the SMBH mass is thus estimated to be $1.40^{+0.27}_{-0.32} \\times 10^{8} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "I-band M/L",
+   "value": "5.14",
+   "uncertainty": "+0.03/-0.04",
+   "units": "Msun/Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The M/L ratio is estimated to be $5.14^{+0.03}_{-0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum chi-square",
+   "value": "113 (reduced 1.09)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "The smallest chi-square value of 113 (reduced chi-square value is 1.09 when divided with the degree of freedom)"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass (HCO+, i=46 deg)",
+   "value": "1.40e8",
+   "uncertainty": "±0.30e8",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "estimate the SMBH mass to be $(1.40 \\pm 0.30) \\times 10^{8} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SMBH mass at i=51 deg",
+   "value": "1.20e8",
+   "uncertainty": "+0.35/-0.34 e8",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "evaluate the SMBH mass to be $1.20^{+0.35}_{-0.34} \\times 10^{8} M_{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum subtraction and line-free channels",
+  "Calibration details (calibrators, flux scale, pipeline vs manual)",
+  "Image size and cell size, cleaning threshold, masking",
+  "KinMS parameters: gas disk radial profile, thickness, number of clouds",
+  "Details of MGE fit and HST image processing",
+  "Exact PVD extraction slit width",
+  "Spectral-line rest frequencies"
+ ],
+ "missing_for_reproduction": [
+  "Calibration and continuum subtraction details",
+  "KinMS gas distribution settings",
+  "HST image processing details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear chi-square grid, but KinMS and calibration settings are unspecified.",
+ "rediscovery_reason": "Public Cycle 0 data, a numeric answer (M_BH, M/L), and a mostly described recipe.",
+ "source_card": "cards/2015ApJ...806...39O/sonnet/card.md"
+}

@@ -1,0 +1,1296 @@
+{
+ "summary": {
+  "quotes": 80,
+  "quotes_ok": 34,
+  "quote_pass_rate": 0.425,
+  "quotes_too_long": 8,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 52,
+   "rate": 0.65
+  },
+  "evidence_ok": false
+ },
+ "failed_quotes": [
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[1]",
+   "loc": "Table 2",
+   "quote": "Total x(pix)=2815.4, y(pix)=2790.4",
+   "ratio": 0.704,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[1]",
+   "loc": "Table 2",
+   "quote": "Total x(pix)=2815.4, y(pix)=2790.4",
+   "ratio": 0.704,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We targeted Himiko’s [C II] line of rest-frame 1900.54 GHz (157.74um) which is redshifted to 250.24 GHz (1.198mm) at a redshift of z_Lya=6.595.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.continuum_bandwidth.evidence[1]",
+   "loc": "Table 1",
+   "quote": "The continuum sensitivity is given in the total bandwidth for the continuum measurement is 19.417 GHz or 86.894 um that is a sum of 4 spectral windows (see text).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.angular_resolution.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The FWHM beam size of the final image is 0''.82 x 0''.58 with a position angle of 79 deg .5.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.sensitivity.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The 1sigma noise of continuum image is sigma_cont=17.4 uJy beam^-1 over the the total bandwidth of 19.417 GHz whose 7.5 GHz is sampled. The 1sigma noise of line image is sigma_line=83.3 uJy beam^-1 at 250.239 GHz over a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "data.other_facilities[0].provided.evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "We carried out deep HST/WFC3-IR broad-band (J125 and H160) and medium-band (F098M) observations for Himiko.",
+   "ratio": 0.651,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.other_facilities[1].provided.evidence[0]",
+   "loc": "2.3 Spitzer",
+   "quote": "we use the very deep Spitzer/IRAC SEDS data reaching 26 mag at the 3sigma level (Ashby et al. 2013) to investigate the counterpart of the overall Himiko system at 3.6um and 4.5um bands.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[1].what.evidence[0]",
+   "loc": "Table 3",
+   "quote": "Total magnitudes from UKIDSS/UDS DR8 data that are estimated with a 2'' diameter aperture photometry and the aperture correction in the same manner as Ono et al. (2010b).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.final_beam.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The FWHM beam size of the final image is 0''.82 x 0''.58 with a position angle of 79 deg .5.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.final_rms.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The 1sigma noise of continuum image is sigma_cont=17.4 uJy beam^-1 over the the total bandwidth of 19.417 GHz whose 7.5 GHz is sampled. The 1sigma noise of line image is sigma_line=83.3 uJy beam^-1 at 250.239 GHz over a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "processing.inherited[0].what.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "undertake chi^2 fitting of a range of stellar synthesis models in the same manner as Ono et al. (2010b) using the stellar synthesis models of Bruzual & Charlot (2003) with dust attenuation formulate given by Calzetti et al. (2000).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[1].what.evidence[0]",
+   "loc": "2.3 Spitzer",
+   "quote": "We obtain total magnitudes of Spitzer/IRAC images from a 3''-diameter aperture and use an aperture correction given in Yan et al. (2005).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].method.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We rebin our data to a resolution of 166 MHz (200 km s^-1)... We averaged fluxes over the two spectral windows of LSB (249.30-253.05 GHz or 1.203-1.185mm) and USB (264.96-268.71 GHz or 1.131-1.116mm) in the range of frequency free from the [C II] line.",
+   "ratio": 0.841,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We rebin our data to a resolution of 166 MHz (200 km s^-1)... Figure 1 presents the resulting ALMA continuum data at 259.01 GHz in frequency (or 1.167mm in wavelength) with a 1sigma sensitivity of 17.4uJy beam^-1.",
+   "ratio": 0.775,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].validation.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "There is a ~ 2sigma flux peak in the beam size on the position of Himiko. However, there are a series of negative pixels nearby that correspond to the 2-3 sigma level per beam. We conclude therefore that Himiko remains undetected",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[1].method.evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Assuming an optically thin graybody of modified blackbody radiation with a dust emissivity power-law spectral index of beta_d=1.5 and a dust temperature of T_d=40K (Eales et al. 1989; Klaas et al. 1997), we obtain a 3sigma upper limit of L_FIR < 8.0 x 10^10 L_odot integrated over 8-1000um.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[1].key_parameters[0].evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Assuming an optically thin graybody of modified blackbody radiation with a dust emissivity power-law spectral index of beta_d=1.5 and a dust temperature of T_d=40K",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].validation.evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "For T_d=25K and T_d=60K, the 3sigma upper limit luminosities in 8-1000um are <2.7 x 10^10 and <3.0 x 10^11 L_odot, respectively. Similarly, for beta_d=0 and beta_d=2, the 3sigma upper limit luminosities in 8-1000um are <3.5 x 10^10 and <1.2 x 10^11 L_odot",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The corresponding 3sigma upper limit for [C II] is 250.0 uJy in a channel width of 200 km s^-1. The associated luminosity limit is <5.4 x 10^7 L_odot.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[1]",
+   "loc": "3.2 ISM metallicity from [C II] Emission",
+   "quote": "Himiko clearly departs significantly from the scaling relation; the deficit amounts to a factor ~ x30.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We searched for a signal of [C II] over 600 km s^-1 around the frequency corresponding to z_Lya=6.595.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].assumptions[0].evidence[0]",
+   "loc": "Table 1",
+   "quote": "The line sensitivity is defined with a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].validation.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "there are noise peaks barely reaching at the 3sigma level in 0 km s^-1 and -200 km s^-1 that are slightly north and south of the Himiko’s optical center position, respectively. However, neither of these sources is a reliable counterpart of Himiko.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[3].method.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "undertake chi^2 fitting of a range of stellar synthesis models in the same manner as Ono et al. (2010b) using the stellar synthesis models of Bruzual & Charlot (2003) with dust attenuation formulate given by Calzetti et al. (2000).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "We adopt Salpeter initial mass function (IMF; Salpeter 1955) with lower and upper mass cutoffs of 0.1 and 100 M_odot, respectively. Applying models of constant and exponentially-decaying star-formation histories with metallicities ranging from Z=0.02-1.0Z_odot, we search for the best-fit model in a parameter space of E(B-V)=0-1 and age=1-810 Myr",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "results_numeric[0].evidence[0]",
+   "loc": "Table 1",
+   "quote": "259.007 GHz: sigma_cont = 17.4 uJy beam^-1",
+   "ratio": 0.644,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[1].evidence[0]",
+   "loc": "Table 1",
+   "quote": "f_cont < 52.1 uJy",
+   "ratio": 0.692,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[2].evidence[0]",
+   "loc": "Table 1",
+   "quote": "250.239 GHz: sigma_line = 83.3 uJy beam^-1",
+   "ratio": 0.659,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[3].evidence[0]",
+   "loc": "Table 1",
+   "quote": "f_line < 250.0 uJy",
+   "ratio": 0.692,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[4].evidence[0]",
+   "loc": "Table 1",
+   "quote": "L_FIR < 8.0 x 10^10 L_odot",
+   "ratio": 0.784,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[5].evidence[0]",
+   "loc": "Table 1",
+   "quote": "L_[CII] < 5.4 x 10^7 L_odot",
+   "ratio": 0.0,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[6].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: M_* = 1.5^+0.2_-0.2 x 10^10 M_odot",
+   "ratio": 0.819,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[7].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: SFR = 100 +- 2 M_odot yr^-1",
+   "ratio": 0.543,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[9].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: Age = 182^+22_-20 Myr",
+   "ratio": 0.635,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[10].evidence[0]",
+   "loc": "Table 4",
+   "quote": "sSFR = 6.7 +- 0.9 x 10^-9 yr^-1",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[11].evidence[0]",
+   "loc": "Table 2",
+   "quote": "A(clump): beta = -2.84 +- 0.32",
+   "ratio": 0.629,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[12].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Total: beta = -2.00 +- 0.57",
+   "ratio": 0.677,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[1].evidence[1]",
+   "loc": "4.1 The Low Dust and Metal Content of Himiko",
+   "quote": "De Looze (2012) has argued that offsets from the [C II]-SFR relation can be explained in terms of metal abundance and this would imply a gas-phase metallicity of <~ 0.03Z_odot.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[0].evidence[0]",
+   "loc": "4.1 The Low Dust and Metal Content of Himiko",
+   "quote": "we obtain SFR(FIR) < 14 M_odot yr^-1 that is far smaller than not only our best optical-NIR estimate SFR of ~ 100 M_odot yr^-1, but also the UV-luminosity SFR of SFR(UV)=30 +- 2 M_odot yr^-1 with no dust extinction correction.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[1].evidence[0]",
+   "loc": "3.2 ISM metallicity from [C II] Emission",
+   "quote": "Himiko clearly departs significantly from the scaling relation; the deficit amounts to a factor ~ x30.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[2].evidence[0]",
+   "loc": "4.2 Nature of Himiko",
+   "quote": "Thus, we conclude that Himiko is not a gravitational lensed system... Thus, we conclude the Lya halo is unlikely to be heated by an active galactic nucleus.",
+   "ratio": 0.691,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.alternatives_considered_or_rejected[0].evidence[0]",
+   "loc": "4.2 Nature of Himiko",
+   "quote": "we conclude that Himiko is not a gravitational lensed system... we conclude the Lya halo is unlikely to be heated by an active galactic nucleus... we consider that Himiko is unlikely to be a single virialized system",
+   "ratio": 0.61,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[0].evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Note that these upper limits depend upon the assumed dust temperature and beta_d. For T_d=25K and T_d=60K, the 3sigma upper limit luminosities in 8-1000um are <2.7 x 10^10 and <3.0 x 10^11 L_odot, respectively.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[1].evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "The F098M image in Figure 4 detects only marginal extended Lya emission, because of the shallower surface brightness limit of the 2.4m HST compared to the 8m Subaru telescope.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.data_public_as_stated.evidence[0]",
+   "loc": "Acknowledgments",
+   "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00115.S... These observations are associated with program #12265.",
+   "ratio": 0.669,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  }
+ ],
+ "unsupported_facts": [],
+ "codes": [
+  {
+   "code": "2011.0.00115.S",
+   "well_formed": true,
+   "in_text": true,
+   "in_obscore": true
+  }
+ ],
+ "numeric_problems": [],
+ "all_quotes": [
+  {
+   "path": "paper_type_evidence[0]",
+   "loc": "abstract",
+   "quote": "We report deep ALMA observations complemented with associated HST imaging for a luminous (m_UV=25) galaxy, ‘Himiko’, at a redshift z=6.595.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[0]",
+   "loc": "abstract",
+   "quote": "‘Himiko’, at a redshift z=6.595.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[1]",
+   "loc": "Table 2",
+   "quote": "Total x(pix)=2815.4, y(pix)=2790.4",
+   "ratio": 0.704,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[2]",
+   "loc": "1 Introduction",
+   "quote": "Ouchi et al. (2009a) reported the discovery of the star-forming galaxy at z=6.595, ’Himiko’",
+   "ratio": 0.989,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[0]",
+   "loc": "abstract",
+   "quote": "‘Himiko’, at a redshift z=6.595.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[1]",
+   "loc": "Table 2",
+   "quote": "Total x(pix)=2815.4, y(pix)=2790.4",
+   "ratio": 0.704,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[2]",
+   "loc": "1 Introduction",
+   "quote": "Ouchi et al. (2009a) reported the discovery of the star-forming galaxy at z=6.595, ’Himiko’",
+   "ratio": 0.989,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.question.evidence[0]",
+   "loc": "Introduction",
+   "quote": "We seek to use the cold dust continuum and [C II] measures from ALMA to understand its dust content and gas phase metallicity.",
+   "ratio": 0.996,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.question.evidence[1]",
+   "loc": "2.1 ALMA",
+   "quote": "To understand whether obscured star-formation is an important issue as well as the metallicity of Himiko, a key source at high redshift, we carried out deep ALMA Band 6 observations",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.alma_project_codes[0].evidence[0]",
+   "loc": "Acknowledgments",
+   "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00115.S.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 12,
+   "too_long": false
+  },
+  {
+   "path": "data.bands.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "we carried out deep ALMA Band 6 observations in 2012 July 15, 18, 28, and 31",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.frequencies_and_spectral_setup.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "set the central frequency of the 4 spectral windows are 250.24 and 252.11 GHz in LSB, and 265.90 and 267.78 GHz in USB with a bandwidth of 1875 MHz.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We targeted Himiko’s [C II] line of rest-frame 1900.54 GHz (157.74um) which is redshifted to 250.24 GHz (1.198mm) at a redshift of z_Lya=6.595.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.continuum_bandwidth.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "over the the total bandwidth of 19.417 GHz whose 7.5 GHz is sampled.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.continuum_bandwidth.evidence[1]",
+   "loc": "Table 1",
+   "quote": "The continuum sensitivity is given in the total bandwidth for the continuum measurement is 19.417 GHz or 86.894 um that is a sum of 4 spectral windows (see text).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.arrays.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "with 16 12m-antenna array under the the extended configuration of 36-400m baseline.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.baselines.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "under the the extended configuration of 36-400m baseline.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.angular_resolution.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The FWHM beam size of the final image is 0''.82 x 0''.58 with a position angle of 79 deg .5.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.sensitivity.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The 1sigma noise of continuum image is sigma_cont=17.4 uJy beam^-1 over the the total bandwidth of 19.417 GHz whose 7.5 GHz is sampled. The 1sigma noise of line image is sigma_line=83.3 uJy beam^-1 at 250.239 GHz over a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "data.time_on_source.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The total on-source integration time was 3.17 hours.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.observing_dates.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "carried out deep ALMA Band 6 observations in 2012 July 15, 18, 28, and 31",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.other_facilities[0].provided.evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "We carried out deep HST/WFC3-IR broad-band (J125 and H160) and medium-band (F098M) observations for Himiko.",
+   "ratio": 0.651,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.other_facilities[1].provided.evidence[0]",
+   "loc": "2.3 Spitzer",
+   "quote": "we use the very deep Spitzer/IRAC SEDS data reaching 26 mag at the 3sigma level (Ashby et al. 2013) to investigate the counterpart of the overall Himiko system at 3.6um and 4.5um bands.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.other_facilities[2].provided.evidence[0]",
+   "loc": "1 Introduction",
+   "quote": "This source was identified from an extensive 1 deg^2 optical survey for z=6.6 galaxies in the UKIDSS/UDS field conducted with the Subaru telescope.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.other_facilities[3].provided.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "Our near-IR SED is taken using total magnitudes from the HST images (§2.2), the Spitzer/IRAC SEDS images (§2.3) and JHK DR8 data from the UKIDSS/UDS survey.",
+   "ratio": 0.9,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 7,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[0].what.evidence[0]",
+   "loc": "Table 3",
+   "quote": "Measurements obtained in Ouchi et al. (2009a).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[1].what.evidence[0]",
+   "loc": "Table 3",
+   "quote": "Total magnitudes from UKIDSS/UDS DR8 data that are estimated with a 2'' diameter aperture photometry and the aperture correction in the same manner as Ono et al. (2010b).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.calibration.pipeline_or_manual.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "Our data were reduced with Common Astronomy Software Applications (CASA) package.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "processing.calibration.flux_calibrator.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The absolute flux scale was established by observations of Neptune and Callisto.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.final_beam.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The FWHM beam size of the final image is 0''.82 x 0''.58 with a position angle of 79 deg .5.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.final_rms.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The 1sigma noise of continuum image is sigma_cont=17.4 uJy beam^-1 over the the total bandwidth of 19.417 GHz whose 7.5 GHz is sampled. The 1sigma noise of line image is sigma_line=83.3 uJy beam^-1 at 250.239 GHz over a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "processing.inherited[0].what.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "undertake chi^2 fitting of a range of stellar synthesis models in the same manner as Ono et al. (2010b) using the stellar synthesis models of Bruzual & Charlot (2003) with dust attenuation formulate given by Calzetti et al. (2000).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[1].what.evidence[0]",
+   "loc": "2.3 Spitzer",
+   "quote": "We obtain total magnitudes of Spitzer/IRAC images from a 3''-diameter aperture and use an aperture correction given in Yan et al. (2005).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].method.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We rebin our data to a resolution of 166 MHz (200 km s^-1)... We averaged fluxes over the two spectral windows of LSB (249.30-253.05 GHz or 1.203-1.185mm) and USB (264.96-268.71 GHz or 1.131-1.116mm) in the range of frequency free from the [C II] line.",
+   "ratio": 0.841,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We rebin our data to a resolution of 166 MHz (200 km s^-1)... Figure 1 presents the resulting ALMA continuum data at 259.01 GHz in frequency (or 1.167mm in wavelength) with a 1sigma sensitivity of 17.4uJy beam^-1.",
+   "ratio": 0.775,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].validation.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "There is a ~ 2sigma flux peak in the beam size on the position of Himiko. However, there are a series of negative pixels nearby that correspond to the 2-3 sigma level per beam. We conclude therefore that Himiko remains undetected",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[1].method.evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Assuming an optically thin graybody of modified blackbody radiation with a dust emissivity power-law spectral index of beta_d=1.5 and a dust temperature of T_d=40K (Eales et al. 1989; Klaas et al. 1997), we obtain a 3sigma upper limit of L_FIR < 8.0 x 10^10 L_odot integrated over 8-1000um.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[1].key_parameters[0].evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Assuming an optically thin graybody of modified blackbody radiation with a dust emissivity power-law spectral index of beta_d=1.5 and a dust temperature of T_d=40K",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].assumptions[0].evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Assuming local thermal equilibrium between ISM of Himiko and CMB at z=6.595 (da Cunha et al. 2013), this yields a lower limit of T_d=21 K.",
+   "ratio": 0.986,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].validation.evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "For T_d=25K and T_d=60K, the 3sigma upper limit luminosities in 8-1000um are <2.7 x 10^10 and <3.0 x 10^11 L_odot, respectively. Similarly, for beta_d=0 and beta_d=2, the 3sigma upper limit luminosities in 8-1000um are <3.5 x 10^10 and <1.2 x 10^11 L_odot",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "The corresponding 3sigma upper limit for [C II] is 250.0 uJy in a channel width of 200 km s^-1. The associated luminosity limit is <5.4 x 10^7 L_odot.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[1]",
+   "loc": "3.2 ISM metallicity from [C II] Emission",
+   "quote": "Himiko clearly departs significantly from the scaling relation; the deficit amounts to a factor ~ x30.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "We searched for a signal of [C II] over 600 km s^-1 around the frequency corresponding to z_Lya=6.595.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].assumptions[0].evidence[0]",
+   "loc": "Table 1",
+   "quote": "The line sensitivity is defined with a channel width of 200 km s^-1.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].validation.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "there are noise peaks barely reaching at the 3sigma level in 0 km s^-1 and -200 km s^-1 that are slightly north and south of the Himiko’s optical center position, respectively. However, neither of these sources is a reliable counterpart of Himiko.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[3].method.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "undertake chi^2 fitting of a range of stellar synthesis models in the same manner as Ono et al. (2010b) using the stellar synthesis models of Bruzual & Charlot (2003) with dust attenuation formulate given by Calzetti et al. (2000).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "We adopt Salpeter initial mass function (IMF; Salpeter 1955) with lower and upper mass cutoffs of 0.1 and 100 M_odot, respectively. Applying models of constant and exponentially-decaying star-formation histories with metallicities ranging from Z=0.02-1.0Z_odot, we search for the best-fit model in a parameter space of E(B-V)=0-1 and age=1-810 Myr",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[3].assumptions[0].evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "In the stellar+nebular models, we assume that all ionizing photons lead to nebular emission lines corresponding to an escape fraction f_esc=0.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].fitting.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "we search for the best-fit model in a parameter space of E(B-V)=0-1 and age=1-810 Myr",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 7,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].fitting.evidence[1]",
+   "loc": "Table 4",
+   "quote": "The uncertainty of color excess is smaller than our model-parameter grid of Delta E(B-V)=0.01.",
+   "ratio": 0.995,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 6,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].validation.evidence[0]",
+   "loc": "3.3 Improved Physical Properties from the Near-Infrared SED",
+   "quote": "Adding nebular emission to the stellar SED models given above, the best fit has a more satisfactory reduced chi^2, 1.6",
+   "ratio": 0.996,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "software[0].used_for.evidence[0]",
+   "loc": "2.1 ALMA",
+   "quote": "Our data were reduced with Common Astronomy Software Applications (CASA) package.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "software[1].used_for.evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "The various WFC3 images were reduced with WFC3 and MULTIDRIZZLE packages on PyRAF.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "software[2].used_for.evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "The various WFC3 images were reduced with WFC3 and MULTIDRIZZLE packages on PyRAF.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[0].evidence[0]",
+   "loc": "Table 1",
+   "quote": "259.007 GHz: sigma_cont = 17.4 uJy beam^-1",
+   "ratio": 0.644,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[1].evidence[0]",
+   "loc": "Table 1",
+   "quote": "f_cont < 52.1 uJy",
+   "ratio": 0.692,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[2].evidence[0]",
+   "loc": "Table 1",
+   "quote": "250.239 GHz: sigma_line = 83.3 uJy beam^-1",
+   "ratio": 0.659,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[3].evidence[0]",
+   "loc": "Table 1",
+   "quote": "f_line < 250.0 uJy",
+   "ratio": 0.692,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[4].evidence[0]",
+   "loc": "Table 1",
+   "quote": "L_FIR < 8.0 x 10^10 L_odot",
+   "ratio": 0.784,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[5].evidence[0]",
+   "loc": "Table 1",
+   "quote": "L_[CII] < 5.4 x 10^7 L_odot",
+   "ratio": 0.0,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[6].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: M_* = 1.5^+0.2_-0.2 x 10^10 M_odot",
+   "ratio": 0.819,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[7].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: SFR = 100 +- 2 M_odot yr^-1",
+   "ratio": 0.543,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[8].evidence[0]",
+   "loc": "Table 4",
+   "quote": "E(B-V)_* = 0.15",
+   "ratio": 0.917,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 7,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[9].evidence[0]",
+   "loc": "Table 4",
+   "quote": "stellar+nebular: Age = 182^+22_-20 Myr",
+   "ratio": 0.635,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[10].evidence[0]",
+   "loc": "Table 4",
+   "quote": "sSFR = 6.7 +- 0.9 x 10^-9 yr^-1",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[11].evidence[0]",
+   "loc": "Table 2",
+   "quote": "A(clump): beta = -2.84 +- 0.32",
+   "ratio": 0.629,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[12].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Total: beta = -2.00 +- 0.57",
+   "ratio": 0.677,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[0].evidence[0]",
+   "loc": "abstract",
+   "quote": "Both aspects of our ALMA observations suggest Himiko is an unique object with a very low dust content and perhaps nearly primordial interstellar gas.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[1].evidence[0]",
+   "loc": "abstract",
+   "quote": "our observations indicate Himiko lies off the local L_[CII] - star formation rate scaling relation by a factor of more than 30.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[1].evidence[1]",
+   "loc": "4.1 The Low Dust and Metal Content of Himiko",
+   "quote": "De Looze (2012) has argued that offsets from the [C II]-SFR relation can be explained in terms of metal abundance and this would imply a gas-phase metallicity of <~ 0.03Z_odot.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[2].evidence[0]",
+   "loc": "abstract",
+   "quote": "Himiko is undergoing a triple major merger event whose extensive ionized nebula of Lyman alpha emitting gas, discovered in our earlier work with Subaru, is powered by star formation and the dense circum-galactic gas.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "claims[0].evidence[0]",
+   "loc": "4.1 The Low Dust and Metal Content of Himiko",
+   "quote": "we obtain SFR(FIR) < 14 M_odot yr^-1 that is far smaller than not only our best optical-NIR estimate SFR of ~ 100 M_odot yr^-1, but also the UV-luminosity SFR of SFR(UV)=30 +- 2 M_odot yr^-1 with no dust extinction correction.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[1].evidence[0]",
+   "loc": "3.2 ISM metallicity from [C II] Emission",
+   "quote": "Himiko clearly departs significantly from the scaling relation; the deficit amounts to a factor ~ x30.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[2].evidence[0]",
+   "loc": "4.2 Nature of Himiko",
+   "quote": "Thus, we conclude that Himiko is not a gravitational lensed system... Thus, we conclude the Lya halo is unlikely to be heated by an active galactic nucleus.",
+   "ratio": 0.691,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.why_this_data.evidence[0]",
+   "loc": "abstract",
+   "quote": "Our ALMA observations probe an order of magnitude deeper than previous IRAM observations, yet fail to detect a 1.2mm dust continuum",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.why_this_method.evidence[0]",
+   "loc": "1 Introduction",
+   "quote": "The present paper is concerned with the analysis of uniquely deep ALMA and HST observations of this remarkable source.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.alternatives_considered_or_rejected[0].evidence[0]",
+   "loc": "4.2 Nature of Himiko",
+   "quote": "we conclude that Himiko is not a gravitational lensed system... we conclude the Lya halo is unlikely to be heated by an active galactic nucleus... we consider that Himiko is unlikely to be a single virialized system",
+   "ratio": 0.61,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[0].evidence[0]",
+   "loc": "3.1 Far Infrared SED",
+   "quote": "Note that these upper limits depend upon the assumed dust temperature and beta_d. For T_d=25K and T_d=60K, the 3sigma upper limit luminosities in 8-1000um are <2.7 x 10^10 and <3.0 x 10^11 L_odot, respectively.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[1].evidence[0]",
+   "loc": "2.2 HST",
+   "quote": "The F098M image in Figure 4 detects only marginal extended Lya emission, because of the shallower surface brightness limit of the 2.4m HST compared to the 8m Subaru telescope.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.data_public_as_stated.evidence[0]",
+   "loc": "Acknowledgments",
+   "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00115.S... These observations are associated with program #12265.",
+   "ratio": 0.669,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  }
+ ]
+}

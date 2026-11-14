@@ -1,0 +1,148 @@
+{
+ "bibcode": "2015ApJ...806L..15K",
+ "title": "Mass Estimates of a Giant Planet in a Protoplanetary Disk from the Gap Structures",
+ "year": 2015,
+ "doi": "10.1088/2041-8205/806/1/L15",
+ "arxiv_id": "1505.04482",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How can observed gap depths, together with disk temperature, constrain the mass of a giant planet embedded in a protoplanetary disk (applied to HL Tau and HD 169142)?",
+ "alma_project_codes": [
+  "2011.0.00015.SV"
+ ],
+ "data": {
+  "bands": "Band 6 and Band 7 dust continuum (233 and 344 GHz central frequencies)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HD 169142 7 mm radial profile, aspect ratio ~0.1 and alpha=5e-4",
+    "evidence": [
+     {
+      "loc": "Application to Observations",
+      "quote": "If we adopt the disk aspect ratio of $\\sim 0.1$ and $\\alpha=5\\times10^{-4}$, as indicated by (cite: Osorio2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Osorio2014)"
+  },
+  {
+   "what": {
+    "value": "HL Tau ALMA continuum images (Band 6 and 7)",
+    "evidence": [
+     {
+      "loc": "Application to Observations",
+      "quote": "HL Tau was observed during the 2014 Long Baseline Campaign of ALMA (cite: ALMA_HLTau)"
+     }
+    ]
+   },
+   "citation": "(cite: ALMA_HLTau)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive radial brightness temperature profiles",
+   "method": "Average Band 6 and 7 images azimuthally over 130°<PA<140° between 20 and 50 AU about the brightest pixel",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 140 pc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Solve for optical depth and temperature",
+   "method": "Solve T_br = T(1-exp(-tau)) in both bands with tau7=tau6(nu7/nu6)^beta, for beta=1 and 2",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta = 1 or 2"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate gap depth and aspect ratio, then planet mass",
+   "method": "Ratio of tau max at 25 AU to min at 30 AU gives depth; T=55 K gives h~0.07; apply M_p/M_* formula",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "c = 1 km/s (T/300 K)^1/2, stellar mass 1 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HL Tau gap depth at 30 AU",
+   "value": "1/3-1/7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Application to Observations",
+     "quote": "$\\Sigma_p/\\Sigma_0 \\sim \\tau_{\\max}/\\tau_{\\min} \\sim 1/3-1/7$"
+    }
+   ]
+  },
+  {
+   "quantity": "HL Tau aspect ratio at 25 AU",
+   "value": "~0.07",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Application to Observations",
+     "quote": "we derive $h \\sim 0.07$ as an estimate of the disk aspect ratio"
+    }
+   ]
+  },
+  {
+   "quantity": "HL Tau planet-to-star mass ratio",
+   "value": "3–5e-4 (h_p/0.07)^5/2 (alpha/1e-3)^1/2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Application to Observations",
+     "quote": "{M_{p}}{M_{\\ast}}}   = 3 \\ \\mbox{--} \\ 5 \\times 10^{-4}"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 169142 planet mass lower limit",
+   "value": "~0.4",
+   "uncertainty": "not stated",
+   "units": "M_J",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Application to Observations",
+     "quote": "we obtain the lower limit of the planet mass as $\\sim 0.4~M_J$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which archive FITS files (names, resolution, beam) were used for Band 6 and 7",
+  "Whether images were convolved to a common beam before taking the ratio",
+  "How profile uncertainties were estimated",
+  "Coordinates of HL Tau and exact gap depth measurement procedure",
+  "Details of the chi2 spiral fit"
+ ],
+ "missing_for_reproduction": [
+  "Exact FITS files and beam handling",
+  "Gap depth measurement details",
+  "Spiral chi2 fit method"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public images and simple analytic formulas, but profile extraction details are sparse.",
+ "rediscovery_reason": "Public HL Tau images and a short analytic recipe with numeric results.",
+ "source_card": "cards/2015ApJ...806L..15K/sonnet/card.md"
+}

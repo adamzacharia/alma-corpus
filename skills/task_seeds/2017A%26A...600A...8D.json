@@ -1,0 +1,203 @@
+{
+ "bibcode": "2017A&A...600A...8D",
+ "title": "ALMA observations of 4U 1728-34 and 4U 1820-30: first detection of neutron star X-ray binaries at 300 GHz",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201629472",
+ "arxiv_id": "1611.06988",
+ "fields": [
+  "stellar_physics",
+  "milky_way_ism"
+ ],
+ "question": "How do jet properties (radio-to-mm spectrum and the optically thick/thin break) of two atoll neutron-star X-ray binaries relate to their hard/soft states, compared with black holes?",
+ "alma_project_codes": [
+  "2013.1.01013.S"
+ ],
+ "data": {
+  "bands": "~300 GHz (302 GHz continuum)",
+  "arrays": "not stated",
+  "angular_resolution": "0.33\"x0.29\" (4U 1728-34); 0.34\"x0.32\" (4U 1820-30)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Deep ATCA 6 km-configuration model of NGC 6624 used to subtract compact sources",
+    "evidence": [
+     {
+      "loc": "2.1 ATCA",
+      "quote": "We therefore used a model made from deep images of NGC 6624 at the same observing frequencies (Tudor et al., in prep.)"
+     }
+    ]
+   },
+   "citation": "Tudor et al., in prep."
+  },
+  {
+   "what": {
+    "value": "Hard/soft-state 15-50 keV flux thresholds from previous broad-band X-ray observations",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we calculated the 15–50 keV fluxes typical of hard and soft states based on previous observations of the source with broad-band X-ray detectors"
+     }
+    ]
+   },
+   "citation": "Falanga 2006; Tarana 2011; Seifina 2011 (cite: 1728:falanga06aa; 1728:tarana11mnras; 1728:seifina11apj)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA continuum and measure flux",
+   "method": "Re-generate images from calibrated products, self-calibrate, primary-beam correct, fit elliptical Gaussian for peak flux",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "uniform weighting; 301.99 GHz; self-cal 1 h"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine X-ray spectral state",
+   "method": "Compare Swift/BAT 15-50 keV fluxes with typical hard/soft thresholds (1e-9 erg/cm2/s) and hardness ratio",
+   "software": [
+    "HEASOFT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "power-law index 1 or 2 for BAT count-to-flux conversion"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit radio-to-IR SED spectral indices and jet break",
+   "method": "Power-law fits F_nu ∝ nu^alpha to ATCA+ALMA(+IR) points; break from interpolation of thick and thin spectra",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Identify nature of additional ALMA sources",
+   "method": "HST counterpart search, isochrone masses (Dartmouth), chance-coincidence and background-source counts",
+   "software": [
+    "Dartmouth Stellar Evolution Program"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "age 10.6 Gyr, [Fe/H] = -0.69, [alpha/Fe]=0.4, distance modulus 14.63"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "4U 1728-34 ALMA 302 GHz peak flux",
+   "value": "1.40",
+   "uncertainty": "0.02",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4U 1728$-$34  | 17:31:57.6757 $\\pm$ 0.0003 | -33:50:01.544 $\\pm$ 0.005 | 1.40 $\\pm$ 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1820-30 ALMA 302 GHz peak flux",
+   "value": "0.40",
+   "uncertainty": "0.02",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "4U 1820$-$30  | 18:23:40.5050 $\\pm$ 0.0004 | -30:21:40.089 $\\pm$ 0.005 | 0.40 $\\pm$ 0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1728-34 radio-IR spectral index (optically thick)",
+   "value": "0.28",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we obtain $\\alpha$ = 0.28 $\\pm$ 0.05 and a spectral break at $\\sim$6 $(\\pm$ 5)$\\times$10$^{13}$ Hz"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1728-34 jet break frequency",
+   "value": "~6e13",
+   "uncertainty": "±5e13",
+   "units": "Hz",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a spectral break at $\\sim$6 $(\\pm$ 5)$\\times$10$^{13}$ Hz"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1820-30 radio-mm spectral slope (5.5 and 302 GHz)",
+   "value": "0.13",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we obtain a spectral slope of 0.13 $\\pm$ 0.04"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1820-30 ATCA 5.5 GHz flux",
+   "value": "236",
+   "uncertainty": "27",
+   "units": "uJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 ATCA",
+     "quote": "with a flux density of $236\\pm27$ $\\mu$Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "4U 1728-34 ATCA 5.5 GHz flux",
+   "value": "424",
+   "uncertainty": "22",
+   "units": "uJy/beam",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 ATCA",
+     "quote": "$424\\pm22$ and $587\\pm38$ $\\mu$Jy beam$^{-1}$ at 5.5 and 9.0 GHz"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for ALMA imaging",
+  "tclean parameters: cell size, image size, deconvolver, masking, niter/threshold",
+  "Self-calibration details beyond the 1 h solint",
+  "Fitting method for spectral indices and the break (interpolation procedure)",
+  "Which flux scale uncertainty was applied for ALMA",
+  "Tudor et al. model for ATCA subtraction unavailable"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and tclean parameters",
+  "ATCA data and Tudor et al. model",
+  "Exact SED fitting procedure"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data public and simple imaging, but few imaging parameters given and multi-facility data needed for SED.",
+ "rediscovery_reason": "Public ALMA data, simple point-source flux measurements with numeric results.",
+ "source_card": "cards/2017A%26A...600A...8D/sonnet/card.md"
+}

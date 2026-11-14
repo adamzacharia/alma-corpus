@@ -1,0 +1,255 @@
+{
+ "bibcode": "2019MNRAS.490.1570B",
+ "title": "The peculiar chemistry of the inner ejecta of Eta Carina",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2621",
+ "arxiv_id": "1904.00256",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry",
+  "stellar_physics"
+ ],
+ "question": "What are the spatial distribution, kinematics and chemistry of molecular gas and continuum in the inner ejecta of eta Car, and how do they relate to the 19th-century eruptions?",
+ "alma_project_codes": [
+  "2016.1.00585.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.8 mm)",
+  "arrays": "41 12-m antennas",
+  "angular_resolution": "0.17x0.13 arcsec, PA -60 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust temperature relation T_dust ≈ 13100 D(au)^-1/2",
+    "evidence": [
+     {
+      "loc": "5.1 Column densities",
+      "quote": "We took the equation by (cite: 2003AJ....125.1458S):"
+     }
+    ]
+   },
+   "citation": "(cite: 2003AJ....125.1458S)"
+  },
+  {
+   "what": {
+    "value": "Homunculus polar axis tilt of 49 deg used for inclination correction",
+    "evidence": [
+     {
+      "loc": "5.1 Column densities",
+      "quote": "the polar axis of the Homunculus is tilted by 49$^\\circ$"
+     }
+    ]
+   },
+   "citation": "(cite: 2006ApJ...644.1151S)"
+  },
+  {
+   "what": {
+    "value": "Average H2 column density of ~1e22 cm-2 through Homunculus walls",
+    "evidence": [
+     {
+      "loc": "5.4 Mass estimates",
+      "quote": "provided an average H$_2$ column density through the walls of the Homunculus of around 10$^{22}$ cm$^{-2}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2005ASPC..332..294F; 2006ApJ...645L..41S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Make peak-intensity and channel maps",
+   "method": "Use QA2 cubes, convert to brightness temperature, make peak maps and 20 km/s velocity-binned HCO+ maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Tb = 1.22e6 S/(nu^2 theta_maj theta_min)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum point source and extended component",
+   "method": "Fit single 2D Gaussian to the point source and isolate the extended component",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive column densities and abundance ratios",
+   "method": "LTE, optically thin emission with radiative excitation; temperature from dust equilibrium; for the absorbing bullet full radiative transfer with LTE",
+   "software": [],
+   "key_parameters": [
+    "Non-detections: 3 sigma level as intensity upper limit"
+   ],
+   "assumptions": [
+    "Gas temperature equals dust temperature, T_dust = 13100 D^-1/2 K",
+    "Peanut distance approximated by projected distance, giving upper limit T ~500 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate masses",
+   "method": "Convert CO column to H2 with [CO]/[H2]=1e-4 for torus; express Peanut mass as function of HCO+ abundance",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HCO+ reference abundance 1e-8"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HCO+ peak intensity of the Peanut",
+   "value": "77.5",
+   "uncertainty": "±6.8",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "with a peak intensity of $77.5\\pm6.8$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Point source peak intensity",
+   "value": "6.41",
+   "uncertainty": "±0.02",
+   "units": "Jy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "The peak intensity of the point source is $6.41 \\pm 0.02$ Jy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of point-like source",
+   "value": "13.1",
+   "uncertainty": "±0.5",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "the integrated fluxes of the point-like and extended sources are $13.1\\pm 0.5$ and $17.4\\pm 1.1$ Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux of extended source",
+   "value": "17.4",
+   "uncertainty": "±1.1",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "the integrated fluxes of the point-like and extended sources are $13.1\\pm 0.5$ and $17.4\\pm 1.1$ Jy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux in 1 arcsec2 circular aperture",
+   "value": "38.9",
+   "uncertainty": "±0.6",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "integrating a circular area of this size yields a flux of $38.9 \\pm 0.6$ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of point source",
+   "value": "0.11 x 0.11",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Data and overall results",
+     "quote": "with a deconvolved size of $0.11 \\times 0.11$ arcsec (i.e. 260 au)"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO+) in the Peanut",
+   "value": "141.6e14",
+   "uncertainty": "±4.4e14",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Peanut | 500 | (–66, +81) | $<0.56$ | $<0.81$ | $<0.87$ | $141.6\\pm4.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Torus mass for [CO]/[H2]=1e-4",
+   "value": "0.07",
+   "uncertainty": "±0.02",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Mass estimates",
+     "quote": "a standard \\[CO\\]/\\[H$_2$\\] abundance of 10$^{-4}$ yields a mass of 0.07$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Peanut mass",
+   "value": "(0.8±0.3) x X_HCO+/1e-8",
+   "uncertainty": "±0.3",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.4 Mass estimates",
+     "quote": "M = (0.8\\pm0.3) \\times \\frac{X_\\mathrm{HCO^+}}{10^{-8}} \\, \\mathrm{M}_{\\ensuremath{\\odot}}"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of absorbing bullet",
+   "value": "500",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1 Column densities",
+     "quote": "The continuum and excitation temperatures result to be 3390 and 500 K, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters of the QA2 products (weighting, robust, cell and image size, channel width)",
+  "Continuum-free channels and continuum subtraction method",
+  "Noise rms of the cubes and continuum map",
+  "Exact regions and pixel positions used for column density extraction",
+  "Excitation/radiative transfer code and partition functions used for column densities",
+  "Velocity ranges and abundance ratios assumed for Peanut mass formula",
+  "Method used to separate point source and extended component beyond single 2D Gaussian"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and rms",
+  "Radiative transfer code details for column densities",
+  "Extraction regions"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and simple analysis, but column density and imaging details are sparse.",
+ "rediscovery_reason": "Public single-EB data and mostly numeric flux and column density results, though some settings need to be inferred.",
+ "source_card": "cards/2019MNRAS.490.1570B/sonnet/card.md"
+}

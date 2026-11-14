@@ -1,0 +1,251 @@
+{
+ "bibcode": "2018ApJ...867..153C",
+ "title": "No Evidence for Millimeter Continuum Source Overdensities in the Environments of z ≳ 6 Quasars",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aae396",
+ "arxiv_id": "1809.10178",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Do 1.2 mm continuum source counts in ALMA Band 6 fields around 35 z>6 quasars show an overdensity relative to blank-field number counts, as expected for early protoclusters?",
+ "alma_project_codes": [
+  "2011.0.00206.S",
+  "2011.0.00243.S",
+  "2012.1.00882.S",
+  "2013.1.00273.S",
+  "2015.1.00997.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz)",
+  "arrays": "12 m antennas, compact configuration",
+  "angular_resolution": "synthesized beam FWHM 0.5\" to 1.0\"",
+  "sensitivity": "mean RMS 58.6±19.0 µJy/beam (range 21.0-98.4)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Blank-field 1.2 mm number counts Schechter fit (phi*, alpha, S*) used for injected sources and expected counts",
+    "evidence": [
+     {
+      "loc": "Data Analysis",
+      "quote": "The Schechter model we choose is based on the most recent blank field 1.2 mm number counts compilation of (cite: Fujimoto2016a) valid for flux densities of 0.1-1.5 mJy"
+     }
+    ]
+   },
+   "citation": "(cite: Fujimoto2016a)"
+  },
+  {
+   "what": {
+    "value": "Quasar redshifts (Table 1)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1- (cite: Banados2016a); 2- Venemans et al. (in prep); 3- (cite: Carnall2015a)"
+     }
+    ]
+   },
+   "citation": "(cite: Banados2016a) and others in Table 1 notes"
+  },
+  {
+   "what": {
+    "value": "[CII] companion sources from earlier ALMA work shown for comparison",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "three \\[CII\\] sources found in (cite: Decarli2017a) and (cite: Willott2017a) which are not found in continuum here"
+     }
+    ]
+   },
+   "citation": "(cite: Decarli2017a); (cite: Willott2017a)"
+  },
+  {
+   "what": {
+    "value": "Protocluster overdensity profile model used to predict expected delta_gal",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(cite: Chiang2013a) uses semi-analytical models of protocluster evolution to predict their overdensity profiles out to $z=5$ in cubes of (15 cMpc)$^3$."
+     }
+    ]
+   },
+   "citation": "(cite: Chiang2013a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image continuum maps",
+   "method": "Pipeline calibration, CLEAN with natural weighting to 3σ, original resolution",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "pixel 0.1\" (Cycle 4) / 0.15\" (earlier)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Mask quasar and build SNR maps",
+   "method": "Mask 4\"x4\" around quasar; divide by continuum RMS (no primary beam correction); trim to PB>50%",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Choose detection threshold via mock observations",
+   "method": "1000 simulated noise maps with Schechter-injected unresolved sources, convolved with 0.8\"x0.5\" beam; region-growing source finder; completeness and contamination vs SNR",
+   "software": [],
+   "key_parameters": [
+    "source = two or more adjacent pixels above 5σ"
+   ],
+   "assumptions": [
+    "Injected sources unresolved and unclustered; blank-field Fujimoto2016 Schechter counts"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct number counts",
+   "method": "Per-source weight xi=(1-f)/(C A_eff), summed in 6 log bins of 0.25 dex; Poisson errors plus completeness/contamination uncertainty",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compute overdensity",
+   "method": "delta_gal=(N_gal-N_exp)/N_exp using Fujimoto2016 expected counts over effective area; also radial dependence test",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of continuum sources detected at ≥5σ",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The results from the source-finding algorithm reveal a total of 15 candidate detections in the 35 fields"
+    }
+   ]
+  },
+  {
+   "quantity": "Completeness at 5σ",
+   "value": "91.6",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data Analysis",
+     "quote": "completeness of 91.6% and contamination of 4.3% at a $5\\sigma$ detection threshold"
+    }
+   ]
+  },
+  {
+   "quantity": "Contamination at 5σ",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Data Analysis",
+     "quote": "completeness of 91.6% and contamination of 4.3% at a $5\\sigma$ detection threshold"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected sources N_exp (0.1-10 mJy)",
+   "value": "16.1",
+   "uncertainty": "+3.3/-6.8",
+   "units": "sources",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "we would expect $N_{\\rm exp} = 16.1^{+3.3}_{-6.8}$ sources between 0.1-10 mJy in these fields without an overdensity"
+    }
+   ]
+  },
+  {
+   "quantity": "Measured N_gal (corrected)",
+   "value": "15.1",
+   "uncertainty": "±5.7",
+   "units": "sources",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "our measured number of sources $N_{\\rm gal}$ is 15.1$\\pm$5.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Overdensity delta_gal",
+   "value": "-0.07",
+   "uncertainty": "±0.56",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "this implies a value of $\\delta_{\\rm gal} = -0.07\\pm0.56$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum effective area",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and Data Reduction",
+     "quote": "The deepest data have a flux limit of 0.15 mJy beam$^{-1}$ and the maximum effective area is 4.3 arcmin$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted 2D delta_gal if quasars sit at protocluster peak",
+   "value": "≈0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "or a 2D $\\delta_{\\rm gal} \\approx 0.3$ when including the expected millimeter foreground sources"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which CASA version and pipeline version were used",
+  "Exact observing setups/execution blocks per project and which project covers which quasar",
+  "Specific region-growing source-finder implementation and code",
+  "Details of the fidelity/completeness evaluation as function of flux (values beyond 5σ)",
+  "Whether archival Cycle 0-1 data were pipeline- or manually-calibrated; flux calibrators and scale uncertainties",
+  "Line-free channel selection/continuum bandwidth used for collapsing to continuum maps",
+  "CLEAN mask/iteration settings, image size",
+  "Method used for the Monte Carlo 16th-84th percentile Fujimoto curve"
+ ],
+ "missing_for_reproduction": [
+  "CASA/pipeline versions",
+  "Source-finder code",
+  "Continuum channel selection",
+  "Mapping of projects to targets"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear counting methodology, but source-finder, CASA version and calibration details are absent.",
+ "rediscovery_reason": "Public archival data, simple recipe (image, 5σ source finding, number-count comparison), numeric result delta_gal.",
+ "source_card": "cards/2018ApJ...867..153C/sonnet/card.md"
+}

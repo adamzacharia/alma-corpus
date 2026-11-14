@@ -1,0 +1,495 @@
+{
+ "bibcode": "2025A&A...702A..27P",
+ "title": "Revisiting G29.862─0.0044: A jet cavity disrupted by an outflow in a likely young stellar object wide binary system",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202555716",
+ "arxiv_id": "2508.10197",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Whether the near-IR features in YSO-G29 arise from a single source or from an unresolved system of YSOs and/or complex protostellar dynamics.",
+ "alma_project_codes": [
+  "2021.1.00311.S",
+  "2015.1.01312.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m array",
+  "angular_resolution": "0.3'' (~0.009 pc or ~1800 au at 6.2 kpc)",
+  "sensitivity": "Line sensitivity (10 km s^-1): 2.8 mJy beam^-1; continuum rms: ~0.2 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1100 um continuum flux of BGPS G029.863-00.048 from the Bolocam Galactic Plane Survey (BGPS)",
+    "evidence": [
+     {
+      "loc": "Bolometric luminosity of the region",
+      "quote": "In Table [5](#tabla_bolo) we report the fluxes $f_\\lambda$ of the catalogued sources from the Bolocam Galactic Plane Survey (BGPS, (cite: rosol10))"
+     },
+     {
+      "loc": "Table 5",
+      "quote": "BGPS G029.863$-$00.048 | 1100 | $1.90\\pm0.2$"
+     }
+    ]
+   },
+   "citation": "(cite: rosol10)"
+  },
+  {
+   "what": {
+    "value": "870 um continuum flux of AGAL 029.862-00.044 from the APEX Telescope Large Area Survey of the Galaxy (ATLASGAL)",
+    "evidence": [
+     {
+      "loc": "Bolometric luminosity of the region",
+      "quote": "the APEX Telescope Large Area Survey of the Galaxy (ATLASGAL, (cite: urqu14))"
+     },
+     {
+      "loc": "Table 5",
+      "quote": "AGAL 029.862$-$00.044 | 870 | $13.1\\pm 2.2$"
+     }
+    ]
+   },
+   "citation": "(cite: urqu14)"
+  },
+  {
+   "what": {
+    "value": "70, 160, 250, 350, and 500 um fluxes from the Herschel Space Observatory infrared Galactic Plane Survey (Hi-GAL)",
+    "evidence": [
+     {
+      "loc": "Bolometric luminosity of the region",
+      "quote": "and the Herschel Space Observatory infrared Galactic Plane Survey (Hi-GAL, (cite: moli16))."
+     }
+    ]
+   },
+   "citation": "(cite: moli16)"
+  },
+  {
+   "what": {
+    "value": "22 um magnitude and flux of allWISE J184559.51-024506.1 from the allWISE catalog",
+    "evidence": [
+     {
+      "loc": "Bolometric luminosity of the region",
+      "quote": "Instead, we used the flux at $22~\\mathrm{\\mu m}$ of the Wide-field Infrared Survey Explorer (allWISE, (cite: cutri14))."
+     },
+     {
+      "loc": "Table 5",
+      "quote": "allWISE J184559.51$-$024506.1 | 22 | $40.0\\pm0.1$"
+     }
+    ]
+   },
+   "citation": "(cite: cutri14)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 6 dataset 2015.1.01312.S for complementary spectral coverage",
+    "evidence": [
+     {
+      "loc": "Chemical and physical characterization of the main dust core",
+      "quote": "and Project 2015.1.01312.S (PI: G. Fuller), described in (cite: ortega23)."
+     }
+    ]
+   },
+   "citation": "(cite: ortega23)"
+  },
+  {
+   "what": {
+    "value": "S_5.8 D^2 vs. L_bol diagram for classifying the radio continuum source",
+    "evidence": [
+     {
+      "loc": "Radio continuum source",
+      "quote": "In Fig. [16](#purser), we show the $S_{5.8}D^2$ vs. $L_{bol}$ diagram of (cite: purser21) (see their Figure 4)"
+     }
+    ]
+   },
+   "citation": "(cite: purser21)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and analyze Gemini-NIFS near-IR IFU cubes and map H2 and Br-gamma emission",
+   "method": "Reduce NIFS spectra using Gemini IRAF tasks, create 3''x3'' cubes with 0.05'' sampling, fit continuum to each spaxel, integrate over full line profiles of Br-gamma and H2 1-0 S(1), and compute H2/Br-gamma ratio map.",
+   "software": [
+    "Gemini IRAF package v1.16",
+    "DS9",
+    "QFITSview"
+   ],
+   "key_parameters": [
+    "FoV = 3'' x 3'', angular sampling = 0.05'' x 0.05''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image JVLA 10 GHz radio continuum, measure flux density, and classify radio source",
+   "method": "Calibrate JVLA visibilities with CASA pipeline, manually flag RFI, image with tclean (Briggs ROBUST = 0.25), integrate flux within 50 uJy/beam contour, extrapolate to 5.8 GHz to compare with L_bol, and compute Lyman continuum photon flux.",
+   "software": [
+    "CASA pipeline v5.6.2-2.el7",
+    "tclean"
+   ],
+   "key_parameters": [
+    "ROBUST = 0.25, beam = 0.42'' x 0.17'', rms = 6 uJy beam^-1"
+   ],
+   "assumptions": [
+    "Spectral index alpha = 0.6 for ionised jet/knot and alpha = -0.1 for optically thin HC/UC HII region; D = 6.2 kpc; T_e = 10^4 K, a = 1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Map ALMA CO isotopologues and derive physical parameters of the southern molecular outflow",
+   "method": "Generate moment 0 and channel maps of 12CO, 13CO, and C18O J=2-1; exclude self-absorbed velocities (97.2-102.0 km s^-1); integrate blueshifted (87.6-96.0 km s^-1) and redshifted (102-108 km s^-1) 12CO emission; compute CO column density, outflow mass, dynamical time, mass outflow rate, momentum, and momentum rate for the southern redshifted lobe.",
+   "software": [
+    "Splatalogue Database for Astronomical Spectroscopy (SDAS)"
+   ],
+   "key_parameters": [
+    "Blue velocity range: 87.6 - 96.0 km s^-1; Red velocity range: 102 - 108 km s^-1; Excluded range: 97.2 - 102.0 km s^-1; Systemic velocity: 101 km s^-1; Outflow length L ~ 0.06 pc; Integrated intensity W ~ 0.5 Jy beam^-1 km s^-1"
+   ],
+   "assumptions": [
+    "LTE excitation temperature T_ex = 20 K, abundance ratio [CO/H2] = 10^-4, mean molecular weight mu_H2 = 2.72, distance = 6.2 kpc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate bolometric luminosity from archival mid-IR to mm SED",
+   "method": "Compile fluxes from allWISE (22 um), Hi-GAL (70-500 um), ATLASGAL (870 um), and BGPS (1100 um); perform linear interpolation between bands; integrate area under the curve to obtain bolometric flux and luminosity.",
+   "software": [
+    "VOSA SED Analyzer"
+   ],
+   "key_parameters": [
+    "Wavelength range: 22 um to 1100 um; zero point f_0 = 8.36 Jy at 22 um"
+   ],
+   "assumptions": [
+    "Distance d = 6.2 +/- 0.6 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Characterize chemical inventory, rotational temperatures, and gas mass of the main dust core",
+   "method": "Extract spectra from a circular region at the 1.3 mm continuum peak across 8 spws from ALMA projects 2021.1.00311.S and 2015.1.01312.S; identify lines using SDAS (CDMS/JPL); construct rotational diagrams for 6 species to fit T_rot; calculate core gas mass from 1.3 mm continuum flux.",
+   "software": [
+    "Splatalogue Database for Astronomical Spectroscopy (SDAS)",
+    "CDMS",
+    "JPL"
+   ],
+   "key_parameters": [
+    "1.3 mm integrated flux S_nu = 0.03 Jy"
+   ],
+   "assumptions": [
+    "LTE and optically thin emission for rotational diagrams; thermal coupling of gas and dust with T_dust = 361 K (from CH3CN); dust opacity per gram of matter kappa_nu = 0.013 cm^2 g^-1 at 1.3 mm; distance d = 6.2 kpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "10 GHz compact source integrated flux density (within 50 uJy/beam contour)",
+   "value": "0.13",
+   "uncertainty": "0.01",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discovering a compact radio continuum source",
+     "quote": "The flux density integrated within the $50~\\mathrm{\\mu Jy\\,beam^{-1}}$ contour level is $0.13\\pm 0.01~\\mathrm{mJy}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Angular separation between 10 GHz compact radio source and main 1.3 mm core peak",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "located at $\\sim$0.7$''$ ($\\sim$0.02 pc) from the main millimetre core."
+    },
+    {
+     "loc": "Discovering a compact radio continuum source",
+     "quote": "The radio emission appears as a compact source located $\\sim0.7\\ensuremath{''}$ from the peak position of the central core detected at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical separation of binary components",
+   "value": "0.02",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "located at $\\sim$0.7$''$ ($\\sim$0.02 pc) from the main millimetre core."
+    },
+    {
+     "loc": "Proposed scenario for YSO-G29",
+     "quote": "the observed system would present a projected separation of 0.02 pc (about 4000 au) between both stellar components."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity of molecular core",
+   "value": "101",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "The systemic velocity of 101 km s$^{-1}$ for the molecular core was confirmed from the C$^{18}$O line."
+    }
+   ]
+  },
+  {
+   "quantity": "Southern CO outflow integrated intensity (W)",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "From the moment zero map of the outflow structure, we estimated an integrated intensity of about 0.5 Jy beam$^{-1}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Southern CO outflow average column density N(12CO)",
+   "value": "6.7e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "we derived an average CO column density of about $6.7 \\times 10^{16}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow mass (M_out)",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "Using the distance of 6.2 kpc to YSO-G29, we obtained a mass for the outflow of about 0.2 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow length (L)",
+   "value": "0.06",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "where L is the length of the outflow (about 0.06 pc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow dynamical time (t_dyn)",
+   "value": "8.3e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "The following values were obtained: $t_{dyn} \\sim 8.3 \\times 10^{3}$ yr"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow mass rate (M_dot)",
+   "value": "2.4e5",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "$\\dot{M} = 2.4 \\times 10^{5}$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow momentum (P)",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "$P \\sim 0.8$ M$_\\odot$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern molecular outflow momentum rate (P_dot)",
+   "value": "1e-4",
+   "uncertainty": "not stated",
+   "units": "M_sun km s^-1 yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The dust emission and the molecular environment",
+     "quote": "and ${\\dot{P}} \\sim 1 \\times 10^{-4}$ M$_\\odot$ km s$^{-1}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Extrapolated 5.8 GHz radio luminosity (alpha = 0.6)",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "mJy kpc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum source",
+     "quote": "We obtain $S_{5.8}D^2=3.5$ and $5.2\\,\\mathrm{mJy\\,kpc^2}$ for $\\alpha=0.6$ and $-0.1$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Extrapolated 5.8 GHz radio luminosity (alpha = -0.1)",
+   "value": "5.2",
+   "uncertainty": "not stated",
+   "units": "mJy kpc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum source",
+     "quote": "We obtain $S_{5.8}D^2=3.5$ and $5.2\\,\\mathrm{mJy\\,kpc^2}$ for $\\alpha=0.6$ and $-0.1$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Lyman continuum photon flux of compact radio source (N_Ly)",
+   "value": "3.2e44",
+   "uncertainty": "not stated",
+   "units": "ph s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio continuum source",
+     "quote": "From (cite: kurtz94), using the radio flux at 10 GHz ($S_\\nu = 86~\\mu\\mathrm{Jy}$), $T_e = 10^{4}$ K and the parameter $a=1$, we derived $N_{Ly} = 3.2\\times 10^{44}$ ph s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit Lyman continuum photon flux of main mm core (N_Ly)",
+   "value": "2.2e43",
+   "uncertainty": "not stated",
+   "units": "ph s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Proposed scenario for YSO-G29",
+     "quote": "we obtain an amount of ionising photons of N$_{\\rm Ly} = 2.2 \\times 10^{43}$ ph s$^{-1}$ from considering a flux density equals to the rms noise level of the radio image."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric flux (A)",
+   "value": "3.06e-8",
+   "uncertainty": "0.01e-8",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Bolometric luminosity of the region",
+     "quote": "The area under the interpolation gives the bolometric flux $A = (3.06 \\pm 0.01)\\times 10^{-8}~\\mathrm{erg\\,s^{-1}\\,cm^{-2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity (L_bol)",
+   "value": "3.7e4",
+   "uncertainty": "0.7e4",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Bolometric luminosity of the region",
+     "quote": "For a distance $d=6.2\\pm0.6~\\mathrm{kpc}$, the bolometric luminosity is $L_{bol} = 4\\pi Ad^2 = (3.7\\pm0.7) \\times 10^{4}~\\mathrm{L_{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of CH3CN (T_rot)",
+   "value": "361",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Chemical and physical characterization of the main dust core",
+     "quote": "The derived T$_{\\rm rot}$ for CH$_{\\rm 3}$CN and HC$_{\\rm 3}$N are 361 K and 236 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of HC3N (T_rot)",
+   "value": "236",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Chemical and physical characterization of the main dust core",
+     "quote": "The derived T$_{\\rm rot}$ for CH$_{\\rm 3}$CN and HC$_{\\rm 3}$N are 361 K and 236 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Main dust core 1.3 mm integrated flux (S_nu)",
+   "value": "0.03",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Chemical and physical characterization of the main dust core",
+     "quote": "We used the integrated flux at 1.3 mm, S$_{\\nu} = 0.03$ Jy, and assumed a dust temperature, T$_{\\rm dust} = 361$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Main dust core gas mass (M_gas)",
+   "value": "1",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Chemical and physical characterization of the main dust core",
+     "quote": "The resulting mass is approximately 1 M$_\\odot$, for a distance of 6.2 kpc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact polygon or pixel mask (N_pixel and A_pixel) used to define the southeastern CO outflow lobe for mass integration",
+  "Exact radius and center coordinates of the circular aperture used to extract the hot core spectra in Figure 20",
+  "Complete list of specific molecular transitions (rest frequencies, E_u, integrated intensities) used in the rotational diagram fits for CH3CN, CH3CCH, E-CH3OH, A-CH3OH, HC3N, and CH3OCH3",
+  "Aperture or contour level used to measure the 1.3 mm integrated flux (S_nu = 0.03 Jy) of the main dust core",
+  "Specific CASA version and imaging parameters (robust weighting, cell size, cleaning thresholds) used by the archive pipeline to produce the ALMA QA2 cubes"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial polygon/pixel count (N_pixel) and velocity-averaging prescription used to measure W = 0.5 Jy beam^-1 km s^-1 and M_out = 0.2 M_sun for the southern outflow",
+  "Exact aperture radius and coordinates used to extract the hot core spectra and 1.3 mm integrated flux (S_nu = 0.03 Jy)",
+  "Table of transitions, rest frequencies, E_u, and measured integrated intensities used in the rotational diagrams (Figure 23) and the numerical T_rot values for E-CH3OH, A-CH3OH, CH3CCH, and CH3OCH3"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "The ALMA analysis relies directly on public QA2 archive products and standard analytical equations (CO outflow mass, rotational diagrams, dust mass, SED integration), making the workflow straightforward, though exact spatial apertures and the transition table for rotational diagrams are not explicitly tabulated.",
+ "rediscovery_reason": "Uses public QA2 ALMA Science Archive cubes (2021.1.00311.S and 2015.1.01312.S) and public IR/sub-mm catalogs with explicit analytical equations to derive numeric core temperatures, core mass, outflow mass/kinematics, and bolometric luminosity.",
+ "source_card": "cards/2025A%26A...702A..27P/sonnet/card.md"
+}

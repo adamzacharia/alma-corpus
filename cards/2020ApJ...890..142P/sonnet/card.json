@@ -1,0 +1,1214 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...890..142P",
+  "title": "An ALMA Survey of H<SUB>2</SUB>CO in Protoplanetary Disks",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Pegues, Jamila",
+  "n_authors": 16,
+  "arxiv_id": "2002.12525",
+  "doi": "10.3847/1538-4357/ab64d9",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00629.S",
+   "2012.1.00681.S",
+   "2013.1.00226.S",
+   "2015.1.00657.S",
+   "2015.1.00678.S",
+   "2015.1.00964.S",
+   "2016.1.00627.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 Disk Sample",
+    "quote": "The sample was assembled from three main ALMA observing projects, with H$_2$CO lines from other ALMA observing projects added in as available."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "15 disks (AS 209, CI Tau, DM Tau, DO Tau, GM Aur, HD 143006, HD 163296, IM Lup, J1604-2130, J1609-1908, J1612-1859, J1614-1906, LkCa 15, MWC 480, V4046 Sgr)",
+     "coordinates": {
+      "value": "Gaia R.A./Dec. in Table 1",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| AS 209$^{[1]}$ | K5 | 16:49:15.3 | -14:22:09.0 | 121 | 1.0 | 1.41 | 0.83 | 4266 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "R.A. and Dec. (Columns 3 and 4) are from GAIA"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "~70-170 pc (e.g. AS 209 121 pc)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| AS 209$^{[1]}$ | K5 | 16:49:15.3 | -14:22:09.0 | 121 | 1.0 | 1.41 | 0.83 | 4266 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "R.A. and Dec. (Columns 3 and 4) are from GAIA"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia distances, literature values (Andrews et al. 2018; Rosenfeld et al. 2012 for V4046 Sgr)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| AS 209$^{[1]}$ | K5 | 16:49:15.3 | -14:22:09.0 | 121 | 1.0 | 1.41 | 0.83 | 4266 |"
+       },
+       {
+        "loc": "Table 1",
+        "quote": "R.A. and Dec. (Columns 3 and 4) are from GAIA"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the H2CO emission morphologies, excitation temperatures and column densities across 15 protoplanetary disks, and what do they imply about H2CO formation (gas-phase vs CO-ice hydrogenation)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We characterize the H$_2$CO morphologies, excitation temperatures, and column densities, evaluate their dependence on stellar and disk characteristics, and assess the chemical origins of H$_2$CO."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00629.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2011.0.00629.S"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00681.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.00681.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00226.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.00226.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00657.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00657.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00678.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00678.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00964.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00964.S"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00627.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2016.1.00627.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (2016.1.00627.S, 2015.1.00964.S, 2013.1.00226.S) and Band 7 (2015.1.00678.S, 2015.1.00657.S, 2012.1.00681.S, 2011.0.00629.S)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations table",
+      "quote": "2016.1.00627.S, 6 & 22-26 & 47 & 15-704 & 4-5 & (cite: cite_bergneretal2019)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "H2CO",
+     "transition": "p-3_03-2_02",
+     "rest_frequency": "218.222 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-3$_{03}$-2$_{02}$ | 218.222 | 2.818 | 20.956 | 7 | 2016.1.00627.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "p-3_22-2_21",
+     "rest_frequency": "218.476 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-3$_{22}$-2$_{21}$ | 218.476 | 1.571 | 68.094 | 7 | 2015.1.00964.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "p-3_21-2_20",
+     "rest_frequency": "218.760 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-3$_{21}$-2$_{20}$ | 218.760 | 1.578 | 68.111 | 7 | 2015.1.00964.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "o-4_14-3_13",
+     "rest_frequency": "281.527 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| o-4$_{14}$-3$_{13}$ | 281.527 | 5.884 | 45.570 | 27 | 2015.1.00657.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "p-4_04-3_03",
+     "rest_frequency": "290.623 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-4$_{04}$-3$_{03}$ | 290.623 | 6.903 | 34.904 | 9 | 2015.1.00678.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "p-4_23-3_22",
+     "rest_frequency": "291.238 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-4$_{23}$-3$_{22}$ | 291.238 | 5.211 | 82.071 | 9 | 2015.1.00657.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "p-4_22-3_21",
+     "rest_frequency": "291.948 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| p-4$_{22}$-3$_{21}$ | 291.948 | 5.249 | 82.122 | 9 | 2015.1.00657.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "o-4_13-3_12",
+     "rest_frequency": "300.837 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| o-4$_{13}$-3$_{12}$ | 300.837 | 7.178 | 47.887 | 27 | 2015.1.00657.S |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "o-5_15-4_14",
+     "rest_frequency": "351.769 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| o-5$_{15}$-4$_{14}$ | 351.769 | 12.02 | 62.452 | 33 | 2011.0.00629.S |"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "not stated",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations",
+       "quote": "We also consider complementary dust continuum and C$^{18}$O observations towards all disks except GM Aur."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-784 m depending on project",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations table",
+      "quote": "2013.1.00226.S, 6 & 12-21 & 31-37 & 20-784 & 6 & (cite: cite_huangetal2017)"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "beams ~0.2-1.1 arcsec (Table 3)",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| AS 209 | 4$_{04}$-3$_{03}$ | 580 $\\pm$ 17 | 19 $\\pm$ 2.6 | 0.9 - 8.1 | 0.4 | 2.9 | 0.31\" x 0.22\" (-69.84$^{\\circ}$) | 0.5 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "largest angular scales 2.6-10 arcsec; may miss extended emission for DM Tau, HD 163296, V4046 Sgr 4_04-3_03",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations table notes",
+      "quote": "It is possible that we are missing extended H$_2$CO emission for these large disks."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "12-61 min depending on project",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations table",
+      "quote": "2015.1.00657.S, 7 & 23-61 & 39-44 & 15-650 & 5 & Loomis et al. (subm.)"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Disk coordinates (and distances via literature)",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "R.A. and Dec. (Columns 3 and 4) are from GAIA"
+       }
+      ]
+     }
+    },
+    {
+     "name": "CDMS",
+     "provided": {
+      "value": "Line frequencies, Einstein A, E_u, g_u and partition function",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "were obtained from the Cologne Database for Molecular Spectroscopy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar and disk properties (distance, age, L, M, Teff)",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "All other table values are taken from the literature."
+       }
+      ]
+     },
+     "citation": "Andrews et al. 2018 (cite: cite_andrewsetal2018); Rosenfeldetal2012 for V4046 Sgr"
+    },
+    {
+     "what": {
+      "value": "CO midplane snowline locations",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "| AS 209 | 50-111 | (cite: cite_bergneretal2019) |"
+       }
+      ]
+     },
+     "citation": "Bergner et al. 2019; Qi et al. 2019; Qi et al. 2015; Loomis et al. (subm.)"
+    },
+    {
+     "what": {
+      "value": "Flux calibration of HD 163296 optimized by earlier authors",
+      "evidence": [
+       {
+        "loc": "2.3 Data Reduction",
+        "quote": "The flux calibration for HD 163296 in ALMA observing projects 2012.1.00681.S and 2013.1.00226.S was further optimized by (cite: cite_qietal2015) and (cite: cite_huangetal2017), respectively."
+       }
+      ]
+     },
+     "citation": "Qi et al. 2015; Huang et al. 2017"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Initial calibration by ALMA/NAASC staff; then self-calibration in CASA",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "The ALMA/NAASC staff performed the initial calibration (including bandpass, flux, and phase calibration) for each observation."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "we used the COMMON ASTRONOMY SOFTWARE APPLICATIONS package (CASA) version 4.7.2 to self-calibrate and image each targeted line."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% absolute flux uncertainty added in quadrature in rotational diagram fits",
+     "evidence": [
+      {
+       "loc": "Table 4 notes",
+       "quote": "Errors and fits include 10% absolute flux uncertainties, added in quadrature to the velocity-integrated flux uncertainties."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Continuum from all spectral windows after removing strong lines; solint 10-100 s; 2 phase + 1 amplitude iterations; robust 0.5; exceptions for some lines",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "We carried out 2 iterations of phase calibration and 1 iteration of amplitude calibration for each line, and we used a Briggs weighting scheme and a robust value of 0.5 during the self-calibration process for all disks."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "imaged each targeted line using CASA’s `clean` algorithm"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5; weaker tentative/non-detected lines reimaged with robust=2",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "The weaker H$_2$CO lines that were tentatively-detected or non-detected with robust=0.5 were reimaged with robust=2 to maximize sensitivity."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.25-0.60 arcsec tapers for some lines (IM Lup, V4046 Sgr, MWC 480, HD 163296, DM Tau)",
+     "evidence": [
+      {
+       "loc": "Table 3 notes",
+       "quote": "0.25\" for the H$_2$CO 4$_{04}$-3$_{03}$ line towards IM Lup and V4046 Sgr, 0.40\" for the 5$_{15}$-4$_{14}$ line towards MWC 480"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Hand-made clean masks; recycled from stronger lines for weaker lines",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "We created the `clean`ing masks by hand to cover the emission and little else in each channel."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "CASA uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "we subtracted out the continuum using CASA’s `uvcontsub` function"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Opacity-corrected rotational diagram method",
+      "evidence": [
+       {
+        "loc": "4.3 Rotational Diagram Analysis",
+        "quote": "Following (cite: cite_loomisetal2018), we construct opacity-corrected rotational diagrams"
+       }
+      ]
+     },
+     "from_reference": "Loomis et al. 2018 (cite: cite_loomisetal2018)"
+    },
+    {
+     "what": {
+      "value": "rms map and ring-noise methodology",
+      "evidence": [
+       {
+        "loc": "3 Image Analysis",
+        "quote": "See (cite: cite_bergneretal2018) for the full methodology for generating rms maps."
+       }
+      ]
+     },
+     "from_reference": "Bergner et al. 2018 (cite: cite_bergneretal2018)"
+    },
+    {
+     "what": {
+      "value": "Keplerian mask thermal+turbulent broadening",
+      "evidence": [
+       {
+        "loc": "3 Image Analysis",
+        "quote": "incorporate thermal and turbulent broadening using the approach of (cite: cite_yenetal2016)"
+       }
+      ]
+     },
+     "from_reference": "Yen et al. 2016 (cite: cite_yenetal2016)"
+    },
+    {
+     "what": {
+      "value": "Intrinsic line width prescription, mu=2.37, t0~0.01",
+      "evidence": [
+       {
+        "loc": "4.3 Rotational Diagram Analysis",
+        "quote": "assumed to be a combination of thermal and turbulent broadening (cite: cite_flahertyetal2015)"
+       }
+      ]
+     },
+     "from_reference": "Flaherty et al. 2015 (cite: cite_flahertyetal2015)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and spectral windows used for continuum subtraction and self-calibration",
+    "Exact self-calibration solint per dataset",
+    "Clean thresholds, image size, cell size, and number of iterations",
+    "Hand-drawn clean masks not provided",
+    "Data-reduction details of Loomis et al. (subm.) for 2015.1.00657.S",
+    "Rotational diagram fit weighting and uncertainty procedure details",
+    "Beam used to convolve Keplerian masks per line"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate and image lines",
+    "method": {
+     "value": "Self-calibration on continuum, uvcontsub, clean with Briggs weighting",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "After self-calibration, we subtracted out the continuum using CASA’s `uvcontsub` function and imaged each targeted line using CASA’s `clean` algorithm."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust 0.5 (2 for weak lines); solint 10-100 s",
+      "evidence": [
+       {
+        "loc": "2.3 Data Reduction",
+        "quote": "Solution intervals were 10-100 seconds."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Build Keplerian masks and moment-0 maps, spectra and radial profiles",
+    "method": {
+     "value": "Keplerian masks from disk geometry with thermal+turbulent broadening; sum within masks; rms maps from 1000 random samples; azimuthal averaging in 0.1\" rings",
+     "evidence": [
+      {
+       "loc": "3 Image Analysis",
+       "quote": "We created a velocity-integrated emission map (a.k.a. a moment-0 map) for each line and disk pair by summing up the emission within the Keplerian masks across the velocity channels in the data cube."
+      }
+     ]
+    },
+    "software": [
+     "kepmask"
+    ],
+    "key_parameters": [
+     {
+      "value": "r0 = 100 AU, q = -0.3, v0 = 0.3 km/s (0.6 for 4_14, 4_13; 0.15 for J1604-2130)",
+      "evidence": [
+       {
+        "loc": "Table 6 notes",
+        "quote": "For all disks, we fixed $r_0$ and $q$ to be 100 AU and -0.3, respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Position and inclination angles from grid search using masks and C18O (12CO or H2CO where necessary)",
+     "evidence": [
+      {
+       "loc": "3 Image Analysis",
+       "quote": "we empirically fit for the position and inclination angles using the masks, C$^{18}$O emission towards each disk, and a grid-search algorithm"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Detection requires peak >=3 sigma and >=3 sigma in at least 4 channels",
+     "evidence": [
+      {
+       "loc": "4.1 Detection Statistics",
+       "quote": "Emission within the Keplerian masks is $\\geq 3\\sigma$ in at least 4 velocity channels of the channel map"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Disk-averaged and azimuthally-averaged rotational diagrams",
+    "method": {
+     "value": "Opacity-corrected rotational diagram linear fit with iterative opacity correction for four disks with >=3 lines",
+     "evidence": [
+      {
+       "loc": "4.3 Rotational Diagram Analysis",
+       "quote": "we initially solve for the opacity-uncorrected $\\overline{T_{ex}}$ and $\\overline{N_{tot}}$ using a linear fit assuming $C_{\\tau_{ul}}=1$, and then we correct the rotational diagram for the opacity using an iterative approach"
+      }
+     ]
+    },
+    "software": [
+     "Python",
+     "NumPy",
+     "SciPy"
+    ],
+    "key_parameters": [
+     {
+      "value": "convergence when tau and Tex change at most 0.001% (5000 iterations max for LkCa 15)",
+      "evidence": [
+       {
+        "loc": "4.3 Rotational Diagram Analysis",
+        "quote": "at most 0.001% (or, in the case of the uncertain spike in excitation temperature for LkCa 15, until 5000 iterations have passed)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, all lines from same environment, emission fills beam; mu=2.37, t0~0.01",
+      "evidence": [
+       {
+        "loc": "4.3 Rotational Diagram Analysis",
+        "quote": "This method assumes that the lines are in local thermodynamic equilibrium (LTE), that all lines originate from the same disk environment, and that the emission fills the beam."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Linear fit of ln(Nu/gu) vs Eu; includes 10% flux uncertainty",
+     "evidence": [
+      {
+       "loc": "Table 4 notes",
+       "quote": "Errors and fits include 10% absolute flux uncertainties, added in quadrature to the velocity-integrated flux uncertainties."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Energy ranges similar across disks; critical densities below disk densities supporting LTE",
+     "evidence": [
+      {
+       "loc": "4.3 Rotational Diagram Analysis",
+       "quote": "Notably the energy ranges covered by the H$_2$CO lines for each disk are similar, implying that these results are not due to excitation effects from using different H$_2$CO lines."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate column density profiles for all disks",
+    "method": {
+     "value": "Apply the rotational-diagram equation to single lines with assumed Tex 20-50 K",
+     "evidence": [
+      {
+       "loc": "4.4 Radial H2CO Column Density Profiles",
+       "quote": "we estimate a range of azimuthally-averaged column density profiles using Equation [\\[eq_fitline\\]](#eq_fitline) for H$_2$CO excitation temperatures between 20-50K."
+      }
+     ]
+    },
+    "software": [
+     "Python"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tex = 20-50 K",
+      "evidence": [
+       {
+        "loc": "4.4 Radial H2CO Column Density Profiles",
+        "quote": "demonstrating that they are quite insensitive to excitation temperature assumptions in this range"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Profiles insensitive to Tex in 20-50 K",
+     "evidence": [
+      {
+       "loc": "4.4 Radial H2CO Column Density Profiles",
+       "quote": "demonstrating that they are quite insensitive to excitation temperature assumptions in this range"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compare H2CO with CO snowline, dust and C18O",
+    "method": {
+     "value": "Compare radial profiles with literature/toy-model CO snowline ranges, continuum and C18O profiles",
+     "evidence": [
+      {
+       "loc": "5.2 H2CO and the CO Snowline",
+       "quote": "we compare the observed H$_2$CO emission profiles with estimated locations of CO snowlines at the disk midplane."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Freeze-out temperature range 17-25 K for model-based snowlines",
+      "evidence": [
+       {
+        "loc": "5.2 H2CO and the CO Snowline",
+        "quote": "we estimate midplane snowlines at locations corresponding to a similar temperature range of 17-25K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Self-calibration, uvcontsub, clean imaging",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "we used the COMMON ASTRONOMY SOFTWARE APPLICATIONS package (CASA) version 4.7.2 to self-calibrate and image each targeted line."
+      }
+     ]
+    }
+   },
+   {
+    "name": "kepmask",
+    "version": "1.0.0",
+    "used_for": {
+     "value": "Keplerian mask generation",
+     "evidence": [
+      {
+       "loc": "Footnote",
+       "quote": "The Keplerian mask package is available on GitHub (<https://github.com/jpegues/kepmask>). Version 1.0.0 was used for this paper"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Python",
+    "version": "2.7",
+    "used_for": {
+     "value": "All analysis code",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "All computer code used for this research was written in Python (version 2.7)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy, NumPy, SciPy, Matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "Analysis and plotting",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research also made use of Astropy (<http://www.astropy.org>)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Disk-averaged Tex, DM Tau",
+    "value": "11",
+    "uncertainty": "0.39",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| DM Tau | $11 \\pm 0.39$ | $2.4 \\pm 0.34$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged Tex, J1604-2130",
+    "value": "37",
+    "uncertainty": "3.6",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| J1604-2130 | $37 \\pm 3.6$ | $21 \\pm 3.2$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged Tex, LkCa 15",
+    "value": "29",
+    "uncertainty": "8.8",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| LkCa 15 | $29 \\pm 8.8$ | $3.1 \\pm 1.4$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged Tex, MWC 480",
+    "value": "21",
+    "uncertainty": "2.2",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| MWC 480 | $21 \\pm 2.2$ | $1.9 \\pm 0.47$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged Ntot, J1604-2130",
+    "value": "21e12",
+    "uncertainty": "3.2e12",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| J1604-2130 | $37 \\pm 3.6$ | $21 \\pm 3.2$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk-averaged Ntot, MWC 480",
+    "value": "1.9e12",
+    "uncertainty": "0.47e12",
+    "units": "cm^-2",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| MWC 480 | $21 \\pm 2.2$ | $1.9 \\pm 0.47$ |"
+     }
+    ]
+   },
+   {
+    "quantity": "Estimated column density range across sample",
+    "value": "~5-5000e11",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.4 Radial H2CO Column Density Profiles",
+      "quote": "estimated column densities span nearly three orders of magnitude, from $\\sim5 - 5000 \\times 10^{11}$cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections",
+    "value": "13/15 disks with 26 line detections; 11 additional tentative",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "6 Summary",
+      "quote": "We report a total of 26 H$_2$CO detections towards 13/15 disks"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "8/13 detected disks are centrally peaked; about half show outer rings/plateaus",
+    "evidence": [
+     {
+      "loc": "4.2 Spatial Distributions",
+      "quote": "The majority (8/13) of the disks are centrally peaked in H$_2$CO."
+     }
+    ]
+   },
+   {
+    "value": "H2CO emission is present both interior and exterior to the CO snowline in all disks, implying gas-phase and grain-surface formation",
+    "evidence": [
+     {
+      "loc": "5.2 H2CO and the CO Snowline",
+      "quote": "There is significant H$_2$CO emission both interior and exterior to the CO snowline of all disks."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "H2CO in disks forms through both gas-phase and CO-ice hydrogenation chemistry",
+    "experiment": "Compared H2CO radial profiles with estimated CO snowline locations",
+    "result": "Central emission inside snowline and rings/plateaus at or beyond it in majority of disks",
+    "finding": "H2CO is commonly produced by both pathways",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2 H2CO and the CO Snowline",
+      "quote": "The simplest explanation for these H$_2$CO morphologies is that H$_2$CO is produced through both gas-phase and grain-surface chemistry in disks."
+     }
+    ]
+   },
+   {
+    "hypothesis": "H2CO excitation temperatures reflect emission layers",
+    "experiment": "Rotational diagrams for four disks",
+    "result": "Tex 21-37 K for three disks, 11 K for DM Tau",
+    "finding": "Emission mostly from warm molecular layer, DM Tau from colder midplane",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.4 H2CO Excitation Temperatures",
+      "quote": "three are consistent with the warm molecular layer, and one (DM Tau) with the disk midplane"
+     }
+    ]
+   },
+   {
+    "hypothesis": "H2CO column density depends on stellar type/age/disk size",
+    "experiment": "Median column density profiles grouped by age and type",
+    "result": "Herbig Ae lower than T Tauri; no trend with dust size",
+    "finding": "Tentative trend with stellar type only (two Herbig Ae disks)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.4 Radial H2CO Column Density Profiles",
+      "quote": "Note that this trend is tentative, since there are only two Herbig Ae disks in the sample"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Keplerian masks reduce noise in extracted emission",
+    "evidence": [
+     {
+      "loc": "3 Image Analysis",
+      "quote": "ultimately reducing the noise incorporated into the extracted emission"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Dust opacity as cause of central H2CO depressions, rejected for all but IM Lup",
+     "evidence": [
+      {
+       "loc": "4.2 Spatial Distributions",
+       "quote": "For all disks except IM Lup, optically thick dust is likely not a major cause for the H$_2$CO emission substructure in the sample."
+      }
+     ]
+    },
+    {
+     "value": "Inheritance of H2CO ice alone cannot explain morphologies",
+     "evidence": [
+      {
+       "loc": "5.2 H2CO and the CO Snowline",
+       "quote": "which suggests that inheritance alone cannot explain the observed H$_2$CO emission morphologies."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Non-uniform initial calibration across the sample",
+     "evidence": [
+      {
+       "loc": "2.3 Data Reduction",
+       "quote": "we note that this initial calibration was non-uniform across the sample."
+      }
+     ]
+    },
+    {
+     "value": "Model-based snowline estimates are very uncertain",
+     "evidence": [
+      {
+       "loc": "5.2 H2CO and the CO Snowline",
+       "quote": "Note that these model-based estimates are very uncertain"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only two Herbig Ae disks, so the stellar-type trend is weak",
+    "Uniform Tex of 20-50 K assumed for single-line disks",
+    "Heterogeneous resolution and missing large-scale flux affect comparisons",
+    "LTE and beam-filling assumptions",
+    "Snowline locations from toy models and heterogeneous sources"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data are ALMA projects acknowledged; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data:"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "Keplerian mask package on GitHub/Zenodo",
+     "evidence": [
+      {
+       "loc": "Footnote",
+       "quote": "Version 1.0.0 was used for this paper and is available at https://doi.org/10.5281/zenodo.3382082."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Clean masks and exact imaging parameters",
+    "Line-free channel selection",
+    "Loomis et al. (submitted) calibration details for 2015.1.00657.S",
+    "Analysis code for rotational diagrams not stated as released"
+   ],
+   "estimated_data_volume_inferred": "Several hundred GB to ~1 TB raw across 7 projects",
+   "score_inferred": 3,
+   "score_reason": "Public projects and clear method, but imaging details, masks and several inherited choices are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe lacks key imaging details (masks, line-free channels) and spans seven heterogeneous datasets."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Loomis et al. 2018 (cite: cite_loomisetal2018)",
+     "why": "Rotational diagram method"
+    },
+    {
+     "citation": "Bergner et al. 2018 (cite: cite_bergneretal2018)",
+     "why": "rms map methodology"
+    },
+    {
+     "citation": "Yen et al. 2016 (cite: cite_yenetal2016)",
+     "why": "Keplerian mask broadening"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Bergner et al. 2019 (cite: cite_bergneretal2019)",
+     "why": "Source of data for 2016.1.00627.S and 2015.1.00964.S and snowline models"
+    },
+    {
+     "citation": "Huang et al. 2017 (cite: cite_huangetal2017)",
+     "why": "Reference for 2013.1.00226.S"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f3604566e1c3d52db9834ea45e2e6635",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:32",
+  "usage": {
+   "input_tokens": 40079,
+   "output_tokens": 11232,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.096846,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 88,
+  "quotes_ok": 88,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 7,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 56,
+   "rate": 0.667
+  },
+  "evidence_ok": true
+ }
+}

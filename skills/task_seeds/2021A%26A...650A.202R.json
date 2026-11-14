@@ -1,0 +1,549 @@
+{
+ "bibcode": "2021A&A...650A.202R",
+ "title": "Identification of pre-stellar cores in high-mass star forming clumps via H<SUB>2</SUB>D<SUP>+</SUP> observations with ALMA",
+ "year": 2021,
+ "doi": "10.1051/0004-6361/202140694",
+ "arxiv_id": "2104.06431",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Identify the prestellar core population in two infrared-dark massive clumps via ortho-H2D+ with ALMA and measure their physical and chemical properties (linewidths, column densities, masses, virial state)",
+ "alma_project_codes": [
+  "2018.1.00331.S"
+ ],
+ "data": {
+  "bands": "Band 7 (about 372 GHz, 0.8 mm continuum)",
+  "arrays": "12m Main Array (45 antennas) and ACA (12 antennas)",
+  "angular_resolution": "about 1.0 arcsec (about 1600 AU); line beams 1.00x0.80 (AG351) and 1.01x0.79 arcsec (AG354)",
+  "sensitivity": "continuum 0.8 mJy/beam (both sources); line median rms 300 mK per 0.22 km/s (primary-beam corrected)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Clump masses and distances (170 Msun at 1.3 kpc; 150 Msun at 1.9 kpc)",
+    "evidence": [
+     {
+      "loc": "2.1 The targeted sources",
+      "quote": "see (cite: Konig17) and references therein"
+     }
+    ]
+   },
+   "citation": "Konig et al. 2017 (cite: Konig17)"
+  },
+  {
+   "what": {
+    "value": "Clump-averaged dust temperatures 17-19 K from SED fits",
+    "evidence": [
+     {
+      "loc": "2.1 The targeted sources",
+      "quote": "From the fit of the spectral energy distribution they estimated dust temperatures of"
+     }
+    ]
+   },
+   "citation": "Konig et al. 2017 (cite: Konig17)"
+  },
+  {
+   "what": {
+    "value": "APEX o-H2D+ (1_10-1_11) spectra and clump-scale results used for comparison",
+    "evidence": [
+     {
+      "loc": "Appendix A ALMA and APEX comparison",
+      "quote": "obtained with APEX (from (cite: Sabatini20))"
+     }
+    ]
+   },
+   "citation": "Sabatini et al. 2020 (cite: Sabatini20)"
+  },
+  {
+   "what": {
+    "value": "o-H2D+ rest frequency 372421.3558 MHz",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "372421.3558"
+     }
+    ]
+   },
+   "citation": "Jusko et al. 2017 (cite: Jusko17)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters (A_ul, g_u, E_u, partition function) for the optical depth",
+    "evidence": [
+     {
+      "loc": "4.2 Spectral fitting with MCWEEDS",
+      "quote": "using the spectral parameters listed in the Cologne Database for Molecular Spectroscopy"
+     }
+    ]
+   },
+   "citation": "CDMS (Cologne Database for Molecular Spectroscopy)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa_0 = 10 cm2/g at 250 um",
+    "evidence": [
+     {
+      "loc": "5.2 Correlation between molecular and continuum emission",
+      "quote": "for the dust opacity at the reference frequency corresponding to the wavelength"
+     }
+    ]
+   },
+   "citation": "(cite: Hildebrand83; Beckwith90)"
+  },
+  {
+   "what": {
+    "value": "Dust emissivity index beta = 1.5",
+    "evidence": [
+     {
+      "loc": "5.2 Correlation between molecular and continuum emission",
+      "quote": "we employ $\\beta = 1.5$ for the dust emissivity index (cite: Mezger90; Walker90)"
+     }
+    ]
+   },
+   "citation": "(cite: Mezger90; Walker90)"
+  },
+  {
+   "what": {
+    "value": "ATLASGAL 870 um flux density within the ALMA field of view (2.6 Jy AG351, 1.8 Jy AG354)",
+    "evidence": [
+     {
+      "loc": "Appendix A ALMA and APEX comparison",
+      "quote": "of the clumps from the ATLASGAL project"
+     }
+    ]
+   },
+   "citation": "ATLASGAL (Schuller et al. 2009, (cite: Schuller09))"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and combine ACA and 12m visibilities",
+   "method": "Standard ALMA pipeline in CASA 5.4, then ACA weights modified and ACA plus 12m data concatenated",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "ACA visibility weight factor 2.4"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image continuum and o-H2D+ cubes",
+   "method": "tclean interactively with natural weighting and multiscale deconvolver; continuum from dedicated SPW plus line-free channels; 100-channel line cube; regrid to 3 pixels per beam; convert to brightness temperature",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Continuum total bandwidth about 4.2 GHz",
+    "Cube spectral resolution 0.22 km/s",
+    "3 pixels per beam minor axis",
+    "Jy/beam to brightness temperature gain G = 11 mK/(mJy/beam) at beam 1x0.8 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "identify cores in PPV space",
+   "method": "SCIMES (dendrogram leaves) on the o-H2D+ cubes before primary-beam correction; leaves treated as prestellar cores; 7 cores in AG351 and 9 in AG354",
+   "software": [
+    "SCIMES"
+   ],
+   "key_parameters": [
+    "S/N_peak = 2; S/N_lim = 1.5 (AG351), 1.3 (AG354); min_val = 0",
+    "Delta_min = 2.0 x rms with rms = 150 mK (before primary-beam correction)",
+    "Minimum channels per leaf = 2; leaves smaller than twice the beam area excluded"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "fit o-H2D+ spectra pixel by pixel",
+   "method": "MCWEEDS: LTE synthetic spectra (WEEDS/GILDAS) with Bayesian MCMC (PyMC); free N_col, V_lsr, FWHM; T_ex fixed at 10 K; results masked where FWHM exceeds a per-core threshold",
+   "software": [
+    "MCWEEDS",
+    "WEEDS",
+    "GILDAS",
+    "PyMC",
+    "multiprocessing"
+   ],
+   "key_parameters": [
+    "100000 iterations per spectrum, first 1000 steps burn-in",
+    "Noise rms 180 mK (AG351), 170 mK (AG354)",
+    "Fits with FWHM above a per-core threshold of 1-1.2 km/s discarded (<=3% of pixels)"
+   ],
+   "assumptions": [
+    "T_ex = 10 K (single transition cannot constrain N_col and T_ex independently); LTE"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "derive optical depth maps",
+   "method": "Optical depth computed from fitted N_col maps with the LTE formula using CDMS spectroscopic parameters",
+   "software": [
+    "CDMS"
+   ],
+   "key_parameters": [
+    "A_ul = 1.20e-8 s^-1, g_u = 9, E_u = 17.9 K, Q(10 K) = 10.48"
+   ],
+   "assumptions": [
+    "T_ex = 10 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "average spectra per core and decompose linewidth",
+   "method": "Spectra in each core aligned to the mean centroid velocity, averaged, refitted with MCWEEDS (T_ex = 10 K); non-thermal and thermal dispersion separated in quadrature to give 1D turbulent Mach number",
+   "software": [
+    "MCWEEDS"
+   ],
+   "key_parameters": [
+    "Mach number computed at T_gas = 10 K (sigma_th = 0.14 km/s); c_s = 0.19 km/s with mu = 2.33"
+   ],
+   "assumptions": [
+    "Thermal and non-thermal components independent and sum in quadrature"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "derive gas temperature upper limit from linewidth",
+   "method": "Set observed sigma_V equal to the thermal dispersion of H2D+ to get T_H2D+ per pixel; bounded to 5-20 K",
+   "software": [],
+   "key_parameters": [
+    "Lower limit 5 K, upper limit 20 K (H2D+ abundance expected to drop above 20 K)"
+   ],
+   "assumptions": [
+    "All observed linewidth is thermal (so T is an upper limit)"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "compute virial masses",
+   "method": "M_vir = 5 R sigma_dyn^2 / G with R_core = R_eff and sigma_dyn from the fitted sigma_V; done at constant 10 K and at T_min of each core; distributions propagated to median and 95% HPD",
+   "software": [],
+   "key_parameters": [
+    "Constant gas temperature 10 K, and T_min from step 7"
+   ],
+   "assumptions": [
+    "Spherical uniform-density core; non-thermal component equal for all gas components"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "dust column density, core masses and densities from continuum",
+   "method": "Pixel-by-pixel N(H2) and total core mass from 0.8 mm dust emission, computed at T_dust = 10 K and at T_min; M_core only for cores with peak flux above 5 sigma; volume density from M_core and R_eff for a uniform sphere",
+   "software": [],
+   "key_parameters": [
+    "Dust opacity kappa = 1.71 cm2/g at the observed frequency (kappa_0 = 10 cm2/g at 250 um, beta = 1.5)",
+    "Gas-to-dust ratio 100; mu_H2 = 2.8",
+    "Mass uncertainty set to 33% (30% kappa variation gives 33% in mass)"
+   ],
+   "assumptions": [
+    "T_dust = T_gas = 10 K (dust-gas coupling at high density); also re-done with T_H2D+ maps and T_min"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "virial parameter, Jeans mass and required magnetic field",
+   "method": "alpha_vir = M_vir / M_core at 10 K and T_min; Jeans masses for n = 1e6-1e7 cm-3 and 5-10 K; magnetic field estimated from U + 2T + Omega_B = 0",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Homogeneous spherical core with uniform magnetic field for Omega_B"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "identify continuum cores",
+   "method": "astrodendro dendrogram on the 0.8 mm continuum maps, masses at 5, 10 and 20 K; 15 cores found",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "min_val = 3 sigma, Delta_min = 1 sigma, min_area = 2 beams; 1 sigma = 0.5 mJy/beam (before primary-beam correction)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 12,
+   "goal": "quantify missing flux against APEX",
+   "method": "APEX spectra converted to flux and compared with ALMA integrated over the APEX beam and smoothed to 0.55 km/s; continuum compared with ATLASGAL 870 um over the ALMA field",
+   "software": [],
+   "key_parameters": [
+    "APEX gain 40 Jy/K"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of o-H2D+ cores identified (AG351 / AG354)",
+   "value": "7 / 9 (16 total)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Core identification with SCIMES",
+     "quote": "At the end of the process we identify seven cores in AG351 and nine cores in AG354"
+    }
+   ]
+  },
+  {
+   "quantity": "o-H2D+ column density, typical range",
+   "value": "(0.6 - 4) x 10^13",
+   "uncertainty": "median relative error 43% (AG351), 33% (AG354)",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Spectral fitting with MCWEEDS",
+     "quote": "$N_\\mathrm{col} = (0.6 - 4) \\times 10^{13} \\, \\rm cm^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of positions with subsonic linewidth (AG351 / AG354)",
+   "value": "36% / 23%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Spectral fitting with MCWEEDS",
+     "quote": "in AG351 36% of positions show subsonic linewidths"
+    },
+    {
+     "loc": "4.2 Spectral fitting with MCWEEDS",
+     "quote": "whilst the percentage for AG354 is 23%"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of pixels with linewidth below thermal at 10 K (AG351 / AG354)",
+   "value": "17% / 7%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 The gas traced by o-H2D+",
+     "quote": "17% of pixels in AG351 and 7% in AG354 show linewidths smaller than this level"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of positions with T_H2D+ < 20 K (AG351 / AG354)",
+   "value": "50% / 31%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.1 The gas traced by o-H2D+",
+     "quote": "(50% in AG351 and 31% in AG354)"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial masses of o-H2D+ cores",
+   "value": "0.3 - 2.2",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 The gas traced by o-H2D+",
+     "quote": "the estimated virial masses are in the range $0.3-2.2\\, \\rm M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average N(H2) of cores",
+   "value": "(1 - 4) x 10^23",
+   "uncertainty": "average uncertainty 2.9e22",
+   "units": "cm^-2",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Correlation between molecular and continuum emission",
+     "quote": "which span the range $(1-4) \\times 10^{23} \\, \\rm cm^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "o-H2D+ abundance X_mol (AG351; AG354)",
+   "value": "(0.2-3)e-10; (0.1-10)e-10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Correlation between molecular and continuum emission",
+     "quote": "The derived values are found in the range $(0.2-3)\\times 10^{-10}$ for AG351 and $(0.1-10)\\times 10^{-10}$ for AG354."
+    }
+   ]
+  },
+  {
+   "quantity": "Core masses at T_dust = 10 K",
+   "value": "0.4 - 6",
+   "uncertainty": "33%",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Correlation between molecular and continuum emission",
+     "quote": "The obtained masses range between 0.4-6 M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of AG354 core 2 at T_dust = 5 K",
+   "value": "39",
+   "uncertainty": "13",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$39\\pm 13$"
+    },
+    {
+     "loc": "5.4 Star formation theories",
+     "quote": "$M_\\mathrm{core} = 39 \\pm 13 \\, \\rm M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of AG354 core 2 at T_dust = 10 K",
+   "value": "5.6",
+   "uncertainty": "1.8",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$5.6\\pm 1.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter of AG354 core 2 at 10 K",
+   "value": "0.14",
+   "uncertainty": "+0.04/-0.04",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "$0.14_{-0.04}^{+0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of cores with alpha_vir consistent with <= 1",
+   "value": "80%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.4 Star formation theories",
+     "quote": "80% of them are consistent with"
+    }
+   ]
+  },
+  {
+   "quantity": "Jeans mass for n = 1e6-1e7 cm-3 and T = 5-10 K",
+   "value": "0.03 - 0.3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.4 Star formation theories",
+     "quote": "the Jeans mass is $M_\\mathrm{Jeans} = 0.03-0.3 \\, \\rm M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of continuum-identified cores",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Appendix B Continuum-identified cores",
+     "quote": "We find in total 15 cores"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of continuum flux filtered out by ALMA relative to APEX",
+   "value": "about 50-60%",
+   "uncertainty": "rough",
+   "units": "percent",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Appendix A ALMA and APEX comparison",
+     "quote": "it shows that the interferometer is filtering out $\\approx 50-60$% of the emission"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA o-H2D+ peak flux relative to APEX peak",
+   "value": "about 1/3 - 1/5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Appendix A ALMA and APEX comparison",
+     "quote": "The ALMA spectra in both sources present a peak flux of $\\approx 1/3-1/5$ of the APEX peak."
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass underestimation factor from missing flux",
+   "value": "2 - 5",
+   "uncertainty": "conservative estimate",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "Appendix A ALMA and APEX comparison",
+     "quote": "the mass values could be underestimated of a factor $2-5$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Roles of the four calibrator quasars (flux, bandpass, phase) and the flux-scale model are not given",
+  "Multiscale scales, tclean niter, threshold, masks, image size and cell size are not given",
+  "Channel ranges used as line-free for the continuum map and whether the line cubes were continuum-subtracted are not given",
+  "Exact velocity range, rest frame and centroid velocity used for the 100-channel, 25 MHz cube of each source are not given",
+  "No self-calibration is mentioned; whether it was done is unknown",
+  "CASA version mismatch (5.4 for calibration, 5.6 for imaging) and the pipeline version are not specified",
+  "Per-core FWHM rejection thresholds (1-1.2 km/s) and initial guesses for MCWEEDS are not listed",
+  "Which pixels/area define S_tot and R_eff of each core and the exact spectral resolution assumed in the fit (instrumental broadening) are not given",
+  "MCWEEDS version and the parallelised code are not released or cited with a repository; likelihood form is not stated",
+  "SCIMES clustering criterion (e.g. volume/luminosity) and the astrodendro/SCIMES versions are not given"
+ ],
+ "missing_for_reproduction": [
+  "Multiscale scales, niter, threshold and masks for tclean",
+  "Calibrator roles and any self-calibration",
+  "Per-core MCWEEDS FWHM masking thresholds and initial guesses",
+  "Core integration areas for fluxes and masses",
+  "MCWEEDS parallel version and exact likelihood"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Observational setup, SCIMES parameters, MCWEEDS settings and dust-mass equations are given with numbers, but tclean details, calibrator roles, masks and per-core thresholds are missing and MCWEEDS is a non-public custom fit",
+ "rediscovery_reason": "Cycle 6 ALMA project 2018.1.00331.S is named, ACA plus 12m data are stated, and results are numeric (core counts, column densities, linewidths, masses); imaging and thresholds are underspecified so exact numbers may differ",
+ "source_card": "cards/2021A%26A...650A.202R/sonnet/card.md"
+}

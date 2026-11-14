@@ -1,0 +1,611 @@
+{
+ "bibcode": "2024ApJ...972..116I",
+ "title": "Merging Gas-rich Galaxies That Harbor Low-luminosity Twin Quasars at z = 6.05: A Promising Progenitor of the Most Luminous Quasars",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad57c6",
+ "arxiv_id": "2405.02468",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What are the gas content, star formation, dynamics and possible outflows of the host galaxies of a low-luminosity quasar-quasar pair at z = 6.05, and is the pair a progenitor of the most luminous quasars?",
+ "alma_project_codes": [
+  "2019.A.00019.S"
+ ],
+ "data": {
+  "bands": "Band 6 (centered on 1.1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.57'' x 0.46'' ([CII] cube, P.A. = -41.2 deg); 0.56'' x 0.45'' (continuum, P.A. = -43.1 deg)",
+  "sensitivity": "[CII] cube 1 sigma = 0.14 mJy/beam per 50 km/s channel; continuum 1 sigma = 17.2 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Coordinates, rest-UV properties, broad Ly-alpha and black-hole masses of C1 and C2 (also C2 position from HSC z-band centroid)",
+    "evidence": [
+     {
+      "loc": "Table 1 notes",
+      "quote": "we adopt the flux-weighted centroid of the HSC $z$-band map (cite: Matsuoka2024)"
+     },
+     {
+      "loc": "Our target: a pair of quasars at z = 6.05",
+      "quote": "estimated their masses to be $\\log (M_{\\rm BH}/M_\\odot) \\simeq 8.1$ each"
+     }
+    ]
+   },
+   "citation": "Matsuoka et al. 2024, ApJL, 965, L4 (cite: Matsuoka2024)"
+  },
+  {
+   "what": {
+    "value": "SFR-[CII] calibration log(SFR) = -7.06 + 1.0 log(L_[CII])",
+    "evidence": [
+     {
+      "loc": "From [CII] emission",
+      "quote": "we can estimate the SFR using the (cite: 2014A&A...568A..62D) calibration based on local H II/starburst galaxies"
+     }
+    ]
+   },
+   "citation": "De Looze et al. 2014 (cite: 2014A&A...568A..62D)"
+  },
+  {
+   "what": {
+    "value": "[CII]-to-H2 conversion M_H2 ~ 30 x L_[CII]",
+    "evidence": [
+     {
+      "loc": "From [CII] emission",
+      "quote": "Using the calibration of (cite: 2018MNRAS.481.1976Z) for a collection of main sequence and starburst galaxies at intermediate redshifts"
+     }
+    ]
+   },
+   "citation": "Zanella et al. 2018 (cite: 2018MNRAS.481.1976Z)"
+  },
+  {
+   "what": {
+    "value": "[CII] line luminosity formula from flux",
+    "evidence": [
+     {
+      "loc": "From [CII] emission",
+      "quote": "Following (cite: 2005ARA&A..43..677S), the"
+     }
+    ]
+   },
+   "citation": "Solomon & Vanden Bout 2005 (cite: 2005ARA&A..43..677S)"
+  },
+  {
+   "what": {
+    "value": "SFR_TIR = 1.49e-10 L_TIR/L_sun (Kroupa IMF)",
+    "evidence": [
+     {
+      "loc": "From FIR continuum emission",
+      "quote": "${\\rm SFR_{TIR}} = 1.49 \\times 10^{-10} L_{\\rm TIR}/L_\\odot$ (cite: 2011ApJ...737...67M)"
+     }
+    ]
+   },
+   "citation": "Murphy et al. 2011 (cite: 2011ApJ...737...67M)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient kappa = 0.77 (850 um/lambda)^beta cm2/g",
+    "evidence": [
+     {
+      "loc": "From FIR continuum emission",
+      "quote": "Dust mass is estimated by adopting a rest-frame mass absorption coefficient of"
+     }
+    ]
+   },
+   "citation": "Dunne et al. 2000 (cite: 2000MNRAS.315..115D)"
+  },
+  {
+   "what": {
+    "value": "CMB contrast and heating correction to the dust continuum",
+    "evidence": [
+     {
+      "loc": "From FIR continuum emission",
+      "quote": "We also correct for the contrast and the additional heating effects of the cosmic microwave background (CMB) radiation (cite: 2013ApJ...766...13D)"
+     }
+    ]
+   },
+   "citation": "da Cunha et al. 2013 (cite: 2013ApJ...766...13D)"
+  },
+  {
+   "what": {
+    "value": "Adopted T_dust = 35 K, a typical value in local LIRGs",
+    "evidence": [
+     {
+      "loc": "From FIR continuum emission",
+      "quote": "we assume $T_{\\rm dust} = 35$ K, a typical value in local LIRGs (cite: 2012ApJS..203....9U)"
+     }
+    ]
+   },
+   "citation": "U et al. 2012 (cite: 2012ApJS..203....9U)"
+  },
+  {
+   "what": {
+    "value": "Outflow rate: total (multiphase) rate typically 3x the atomic-only value",
+    "evidence": [
+     {
+      "loc": "Potential indication of AGN feedback",
+      "quote": "including the cold molecular phase, is typically $3 \\times$ greater than the atomic-only value"
+     }
+    ]
+   },
+   "citation": "Fluetsch et al. 2019 (cite: 2019MNRAS.483.4586F)"
+  },
+  {
+   "what": {
+    "value": "Atomic outflow mass formula M_out from L_[CII],broad",
+    "evidence": [
+     {
+      "loc": "Potential indication of AGN feedback",
+      "quote": "The outflowing atomic mass in neutral hydrogen gas (cite: 2010ApJ...714L.162H; 2020A&A...633A..90G) is"
+     }
+    ]
+   },
+   "citation": "Hailey-Dunsheath et al. 2010 (cite: 2010ApJ...714L.162H); Ginolfi et al. 2020 (cite: 2020A&A...633A..90G)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "image the [CII] cube and continuum",
+   "method": "Pipeline-calibrated data re-imaged with CASA tclean (Briggs robust = 2.0); line-free channels give the continuum map; uvcontsub (first-order) removes continuum before the cube; channels averaged to 50 km/s",
+   "software": [
+    "CASA",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "robust = 2.0; 50 km/s channels; 3 sigma clean depth"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "measure [CII] fluxes, redshifts and line widths in apertures",
+   "method": "Circular apertures (1.5'' diameter for C1, 1.0'' for C2 + Bridge and Tail, 6.0'' for the whole system) on the velocity-integrated map; single Gaussian fits to the spectra for redshift and FWHM",
+   "software": [
+    "CASA",
+    "MIRIAD"
+   ],
+   "key_parameters": [
+    "aperture diameters 1.5'', 1.0'', 6.0''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "derive [CII] luminosity, SFR and molecular gas mass",
+   "method": "L_[CII] from flux via Solomon & Vanden Bout; SFR_[CII] from De Looze 2014 calibration; M_H2 ~ 30 L_[CII] from Zanella 2018",
+   "software": [],
+   "key_parameters": [
+    "rest frequency 1900.5369 GHz; SFR calibration uncertainty factor of two"
+   ],
+   "assumptions": [
+    "[CII] excited primarily by star formation (SFRs are upper limits if quasar contributes)",
+    "Flat LCDM H0 = 70 km/s/Mpc, Omega_M = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "measure the FIR continuum and derive dust properties",
+   "method": "2D Gaussian fit with imfit for position and size; modified blackbody (optically thin) gives L_FIR (42.5-122.5 um), L_TIR (8-1000 um), M_dust; SFR_TIR from Murphy 2011",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "T_dust = 35 K, beta = 1.6, kappa = 0.77 (850 um/lambda)^beta cm2/g"
+   ],
+   "assumptions": [
+    "T_dust = 35 K (local LIRG value, lower than the canonical 47 K for luminous quasars); beta = 1.6; CMB correction applied; TIR emission entirely from star formation; Kroupa IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "map global velocity field and estimate dynamical masses",
+   "method": "Moment-1 (and moment-2) maps with immoments and 3.5 sigma clipping; beam-deconvolved imfit sizes give inclination from axis ratio; thin-disk M_dyn with D = 1.5 a_maj and V_circ = 0.75 FWHM/sin i",
+   "software": [
+    "CASA",
+    "immoments",
+    "imfit"
+   ],
+   "key_parameters": [
+    "C1: 0.96'' x 0.68'', i = 45 deg; C2 + Bridge: 0.85'' x 0.35'', i = 66 deg"
+   ],
+   "assumptions": [
+    "[CII] emission arises from thin rotating disks; inclination from deconvolved axis ratio"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "test for and quantify a [CII] outflow at C1",
+   "method": "Fit the C1 spectrum (single synthesized beam) with single and double Gaussians (second centroid fixed to first); broad wing treated as outflow; M_out from L_[CII],broad with X_C+, T_ex; outflow rate M_out V_out / R_out; total rate = 3x neutral rate; mass loading factor = total outflow rate / SFR",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "X_C+ = 1.4e-4, T_ex = 200 K, high density limit (n >> n_crit ~ 3e3 cm^-3), R_out = 1.5 kpc, V_out = FWHM/2"
+   ],
+   "assumptions": [
+    "Wing is due to outflow (symmetric wing disfavors unseen companions); 70% of [CII] from neutral PDRs; constant outflow velocity"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] redshift of C1",
+   "value": "6.0561",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "6.0561 $\\pm$ 0.0002"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] FWHM of C1",
+   "value": "594",
+   "uncertainty": "20",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$594 \\pm 20$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line flux of C1",
+   "value": "3.67",
+   "uncertainty": "0.19",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$3.67 \\pm 0.19$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line flux, 6.0'' aperture (whole system)",
+   "value": "6.6",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "is 6.6 Jy km s$^{-1}$, which translates to $L_{\\rm [CII]}$, SFR$_{\\rm [CII]}$, and $M_{\\rm H2}$ of $6.3 \\times 10^9~L_\\odot$, 550 $M_\\odot$ yr$^{-1}$, and $1.9 \\times 10^{11}~M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] total (6.0'' aperture)",
+   "value": "6.3e9",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "is 6.6 Jy km s$^{-1}$, which translates to $L_{\\rm [CII]}$, SFR$_{\\rm [CII]}$, and $M_{\\rm H2}$ of $6.3 \\times 10^9~L_\\odot$, 550 $M_\\odot$ yr$^{-1}$, and $1.9 \\times 10^{11}~M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_[CII] total (6.0'' aperture)",
+   "value": "550",
+   "uncertainty": "factor of two calibration uncertainty",
+   "units": "M_sun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "is 6.6 Jy km s$^{-1}$, which translates to $L_{\\rm [CII]}$, SFR$_{\\rm [CII]}$, and $M_{\\rm H2}$ of $6.3 \\times 10^9~L_\\odot$, 550 $M_\\odot$ yr$^{-1}$, and $1.9 \\times 10^{11}~M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 total (6.0'' aperture, [CII]-based)",
+   "value": "1.9e11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "is 6.6 Jy km s$^{-1}$, which translates to $L_{\\rm [CII]}$, SFR$_{\\rm [CII]}$, and $M_{\\rm H2}$ of $6.3 \\times 10^9~L_\\odot$, 550 $M_\\odot$ yr$^{-1}$, and $1.9 \\times 10^{11}~M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] of C1",
+   "value": "3.5e9",
+   "uncertainty": "0.18e9 (Table 1)",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "The brightest \\[C II\\] emission originates from C1 ($3.5 \\times 10^9~L_\\odot$)"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_[CII] of C1 and C2 + Bridge",
+   "value": "305 (C1); 75 (C2 + Bridge)",
+   "uncertainty": "16 (C1); 11 (C2 + Bridge)",
+   "units": "M_sun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "we find SFR$_{\\rm [CII]} = 305 \\pm 16~M_\\odot$ yr$^{-1}$ in C1 and $75 \\pm 11~M_\\odot$ yr$^{-1}$ in C2 + Bridge"
+    }
+   ]
+  },
+  {
+   "quantity": "M_H2 of C1, C2 + Bridge, Tail",
+   "value": "~10, ~2.6, ~1.5 (x1e10)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "From [CII] emission",
+     "quote": "we found $M_{\\rm H2} \\sim 10, 2.6, 1.5 \\times 10^{10}~M_\\odot$ in the regions of C1, C2 + Bridge, and Tail, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR continuum flux density of C1 at 1.1 mm",
+   "value": "0.63",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.63 \\pm 0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak and integrated continuum flux density of C1",
+   "value": "220 (peak, uJy/beam); 814 (integrated, uJy)",
+   "uncertainty": "18; 84",
+   "units": "uJy/beam; uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "From FIR continuum emission",
+     "quote": "the peak and area-integrated total flux densities are 220 $\\pm$ 18 $\\mu$Jy beam$^{-1}$ and 814 $\\pm$ 84 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam-deconvolved FIR continuum size of C1",
+   "value": "1.19'' x 0.54'' (6.76 kpc x 3.04 kpc)",
+   "uncertainty": "0.14'' and 0.07'' (0.80 kpc and 0.40 kpc)",
+   "units": "arcsec; kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "From FIR continuum emission",
+     "quote": "The beam-deconvolved size of this 2D Gaussian is $(1''.19 \\pm 0''.14) \\times (0''.54 \\pm 0''.07)$ or (6.76 kpc $\\pm$ 0.80 kpc) $\\times$ (3.04 kpc $\\pm$ 0.40 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR of C1 (T_dust = 35 K, beta = 1.6)",
+   "value": "4.57e11",
+   "uncertainty": "0.36e11",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$4.57 \\pm 0.36$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR of C1 (T_dust = 35 K, beta = 1.6)",
+   "value": "5.99e11",
+   "uncertainty": "0.48e11",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$5.99 \\pm 0.48$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_dust of C1",
+   "value": "1.58e8",
+   "uncertainty": "0.13e8",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.58 \\pm 0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR_TIR of C1",
+   "value": "89",
+   "uncertainty": "7",
+   "units": "M_sun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$89 \\pm 7$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII]/L_FIR",
+   "value": "7.7e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "From FIR continuum emission",
+     "quote": "(cite: 2013ApJ...774...68D; 2018ApJ...861...95H), is $7.7 \\times 10^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of C1 and C2",
+   "value": "~9e10 (C1); ~5e10 (C2)",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Global gas dynamics",
+     "quote": "we estimate that $M_{\\rm dyn} \\sim 9 \\times 10^{10}~M_\\odot$ for C1, and $\\sim 5 \\times 10^{10}~M_\\odot$ for C2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Broad-wing Gaussian FWHM at C1",
+   "value": "1194",
+   "uncertainty": "193",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "the broad wing component has (peak amplitude, center, FWHM) = ($0.48 \\pm 0.11$ mJy beam$^{-1}$, 269.314 GHz (fixed), $1194 \\pm 193$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "FWHM at high-dispersion NE and SW positions",
+   "value": "928 (NE); 602 (SW)",
+   "uncertainty": "72; 75",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "FWHM = $928 \\pm 72$ km s$^{-1}$ at NE, $602 \\pm 75$ km s$^{-1}$ at SW"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] of the broad component at C1",
+   "value": "5.83e8",
+   "uncertainty": "0.16e8",
+   "units": "L_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "$L_{\\rm [CII]} = (5.83 \\pm 0.16) \\times 10^8~L_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflowing atomic mass M_out",
+   "value": "5.6e8",
+   "uncertainty": "1.5e8",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "we estimated $M_{\\rm out} = (5.6 \\pm 1.5) \\times 10^8~M_\\odot$ for $X_{\\rm C^+} = 1.4 \\times 10^{-4}$ and $T_{\\rm ex} = 200$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow velocity V_out = FWHM/2",
+   "value": "597",
+   "uncertainty": "97",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "Assuming an outflow velocity of $V_{\\rm out} = {\\rm FWHM}/2 = 597 \\pm 97$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral outflow rate",
+   "value": "229",
+   "uncertainty": "73",
+   "units": "M_sun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "we obtain a neutral outflow rate of $\\dot{M}_{\\rm out, neutral} = M_{\\rm out}V_{\\rm out}/R_{\\rm out} = 229 \\pm 73~M_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loading factor (multiphase-corrected)",
+   "value": ">~2-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The expected mass loading factor of the outflows, after accounting for multiphase gas, is $\\gtrsim 2-3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic energy rate",
+   "value": "~2.6e43",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Potential indication of AGN feedback",
+     "quote": "we compute its kinetic energy as $\\sim 2.6 \\times 10^{43}$ erg s$^{-1}$. This is only 0.4% of the quasar bolometric luminosity of C1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges / frequency ranges used for the continuum map and uvcontsub fit",
+  "tclean cell size, image size, clean threshold in mJy, masking and number of iterations",
+  "Whether and how the pipeline calibration was manually modified or self-calibrated",
+  "Primary-beam correction details and whether the cube was primary-beam corrected before photometry",
+  "Exact definition of the 50 km/s channel averaging (rest frequency used, velocity frame)",
+  "Exact formula and constants for M_dyn (only D and V_circ are given)",
+  "How the Gaussian fits to spectra were performed (fitter, weights, whether noise is per-channel rms)",
+  "Aperture centres for the Bridge, Tail and the NE/SW high-dispersion regions (only partly given)",
+  "Procedure for CMB correction and dust SED integration (software, numerical settings)",
+  "Spectral resolution / channel rms used for the chi-square values of the single vs double Gaussian fits"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges and uvcontsub fit windows",
+  "tclean cell size, image size, thresholds and masks",
+  "Primary-beam correction details",
+  "Aperture centres for all regions and exact fitting procedure for spectra",
+  "Exact M_dyn formula and constants",
+  "Full detail of the dust SED integration and CMB correction"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identified by project code and key settings (robust, CASA versions, calibrators, formulas, T_dust, beta, X_C+, T_ex) are given, and numerical results are listed, but line-free channel selection, image geometry, aperture centres and the dynamical-mass formula are not given.",
+ "rediscovery_reason": "The archive links project 2019.A.00019.S to this paper (data availability itself not stated in the paper); the recipe is mostly given with numeric results in Table 1 and the text, but several imaging choices must be reconstructed.",
+ "source_card": "cards/2024ApJ...972..116I/sonnet/card.md"
+}

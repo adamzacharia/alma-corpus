@@ -1,0 +1,1412 @@
+# Evidence pack: Astrochemical modelling compared to ALMA lines (`chemical-modelling`)
+
+Scope: chemical kinetics models compared to observed abundances
+
+Built from 135 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2014-2026.
+Matcher (regex over analysis steps): `chemical (?:model|network|code)|nautilus|ucl_chem|uclchem|magickal|astrochem|gas[- ]grain|reaction network`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- astrochemistry: 128
+- star_formation: 73
+- protoplanetary_disks: 39
+- milky_way_ism: 19
+- evolved_stars: 14
+- nearby_galaxies: 12
+- agn_and_quasars: 6
+- exoplanets: 4
+- solar_system: 2
+- high_z_galaxies: 2
+- stellar_physics: 2
+- debris_disks: 1
+
+### Software named in the matched steps
+- magickal: 17
+- nautilus: 16
+- uclchem: 12
+- dali: 10
+- casa: 3
+- radex: 3
+- ucl_chem: 3
+- lime: 3
+- kida: 2
+- tensorflow: 2
+- ratran: 2
+- spectralradex: 2
+- dusty: 2
+- meudon pdr code: 2
+- gaussian 09: 2
+- alchemic: 2
+- fogel et al. 2011 chemical code: 2
+- ultranest: 1
+- rate22_cse_code: 1
+- rate12 chemical model: 1
+- gaussian 16: 1
+- mesmer: 1
+- galfit: 1
+- bagpipes: 1
+- meudon pdr: 1
+- ucl_pdr: 1
+- monte carlo radiative transfer (dullemond et al. 2002): 1
+- du & bergin thermo-chemical code: 1
+- dnautilus: 1
+- pyrate: 1
+- 2d time–dependent rate equation chemical code: 1
+- gofish: 1
+- prodimo: 1
+- mcp: 1
+- ucl_chem-type cse chemical model (mcelroy13): 1
+- chemical model of molecular cloud: 1
+- scipy odeint (lsoda): 1
+- chempl: 1
+- marcs: 1
+- pgopher: 1
+
+### Fitting methods (most common phrasings)
+- Gaussian fit to line wings for optical depth correction: 1
+- Parameters adjusted to match the observed profile; no sampler stated: 1
+- Nested sampling aided by neural networks with Nautilus; flat priors in logarithm (log(gamma) and log(zeta) in [-15, 15]…: 1
+- Uniform slab fit with fixed R_max = 2 R_Jup or T = 7000 K: 1
+- Grid sampled over density, T, zeta, F_UV, initial O and C abundances; ranking by MSE: 1
+- Compare inferred parameters, uncertainties, and 1D/2D posterior distributions.: 1
+- By-eye fit of radial profile: 1
+- visual comparison of trial models, no formal sampler: 1
+- Manual parameter variation, no sampler: 1
+- Shape-group restriction followed by standard χ² selection: 1
+- Qualitative matching of model and observed log column density ratios; no formal fit: 1
+- Nested sampling via nautilus in bagpipes; redshift prior 0 < z < 5 for blind fit, or fixed z = 4.0148: 1
+- manual grid fit to integrated spectra and channel maps: 1
+- Parameters chosen heuristically, no formal fit: 1
+- Reduced chi-square over molecules and radii with 25 degrees of freedom; modelled errors 20%; observed errors from DISKF…: 1
+- Power-law fit between X_CH3OH(CH3CONH2) and X_CH3OH(NH2CHO): 1
+- Grid search over 1728 SED models followed by chemical abundance grid fitting against multi-wavelength line fluxes and u…: 1
+- Power-law fit zeta_CR(r) proportional to r^s to median radial profiles with errors from first and third quartiles: 1
+- Supervised neural network training minimizing mean-squared-error (MSE) loss with early stopping: 1
+- Hierarchical Bayesian nested/importance sampling with Nautilus using multivariate normal likelihood in log-ratio space …: 1
+- Manual adjustment of luminosity: 1
+- Direct comparison of multi-slab Monte Carlo predicted line intensities and column densities with observations: 1
+- Parametric grid study, no formal fit statistic stated: 1
+- Point-by-point iterative scaling until C18O radial profile relative difference < 10%, plus visual inspection: 1
+- Nautilus sampler; uniform or log-uniform priors; likelihood exp(-chi^2/2): 1
+- By eye; no chi2 or MCMC: 1
+- Grid fit following Kama et al. 2016b and Keyte et al. 2023; details not given here: 1
+
+### Validation checks used
+- Compared with observed abundances at dynamical age ~1-2e4 yr: 1
+- Column density from profile within a factor of two of observed value: 1
+- Network compared with full chemical models by Murillo+2015: 1
+- Reproduced tables from Zhu et al. (2018) for boundary layer case in Rayleigh-Jeans approximation prior to applying the …: 1
+- Confirmed simulated post-shock optical depths match uniform slab best-fit values (tau_300GHz ~ 3, tau_600GHz ~ 0.6): 1
+- Test with gas-to-dust ~3000 at low and high density: 1
+- Standard model compared with G22 abundance behavior: 1
+- Inspect peak-temperature offsets; variation in ratios at different peak times omitted from matching: 1
+- Assess sensitivity to H sticking and binding assumptions: 1
+- Modest abundance-ratio effect; threshold density essentially unaffected: 1
+- Iterate to self-consistency; updated network has negligible effects on CN emission: 1
+- Compared fall-off radii with observations and RT results: 1
+- Filter low-abundance combinations considered dominated by numerical error.: 1
+- Mean abundance recovery within 3%; inferred parameters within UCLCHEM uncertainties.: 1
+- Region 1 UCLCHEM/emulator comparison reproduces the low-abundance failure; affected regions lack higher-J detections.: 1
+- Consistency with DCO+ results of VLA 1623 in Murillo et al. 2015 and with line-ratio temperatures: 1
+- Tested including dust-gas interaction/depletion chemistry; tested using the chemical model SiO profile directly inside …: 1
+- Transition state heights adjusted within 6 kJ/mol to match observations: 1
+- Model convolved to ALMA beam checked against simulated ALMA observations in CASA: 1
+- Comparison with full time-dependent UMIST RATE06 deuterated network: 1
+- Compare production rate with Haser model value from Biver et al. (2024) (8.78 x 10^26 molecules s^-1): 1
+- Compare observed SLEDs with coupled-model and RADEX-only SLEDs; RADEX-only often fits better.: 1
+- RADEX density limit (>10^4 cm^-3) used to exclude models; ratios compared only at one time step: 1
+- Comparison of free photometric redshifts of clumps and total system against spectroscopic redshift z_spec = 4.0148 from…: 1
+- compared integrated spectra and channel maps with data: 1
+- compared with beta Pic and Kral et al. 2018: 1
+- Models compared with observed SO/CS intensity ratio and LTE-derived column density ratio: 1
+- Compared with Galactic diffuse clouds and earlier zeta estimates: 1
+- Compared model peak temperatures with observed rotation temperature and abundance ratios: 1
+- Model abundance ratios compared with observed ratios: 1
+- Compare molecular abundance ratios with observational detections and upper limits.: 1
+- Predicted emission matches observations within a factor of 1.5; test with 10x higher gas mass: 1
+- Best-fit solution independent of the assumed error size; modelled values for undetected molecules required to stay belo…: 1
+- Exclude duplicate NGC 6334I literature data from statistical analysis: 1
+- Static core model neglects contraction while the chemistry evolves: 1
+- Verified consistency of best-fit dust mass and C, O abundances with Kama et al. (2016).: 1
+- Compared derived zeta_CR radial profiles against FUV extinction depth and X-ray ionization rate models (zeta_X) compute…: 1
+- Compared qualitatively with ALMA detection of NaCl at 1.22'': 1
+- Evaluated on 10% held-out test set (~40,000 points); reproduces UCLCHEM HNC predictions with mean relative error of 0.3…: 1
+- Bayesian evidence (log Z) comparison between heating and quiescent models, and posterior predictive checks (PPCs) compa…: 1
+
+### Key parameters and settings (bibcode: value)
+- 2019MNRAS.484L..43Z: Warm: nH=5e8 cm-3, T up to 160 K; cold: nH=6e6 cm-3, T up to 30 K; G0=1 Habing
+- 2020A&A...636A..29W: r0=6010 au, n0=1.54e7 cm-3, T0=135.5 K, alpha=1.5, q=0.38, nf=2.74e9 cm-3
+- 2020A&A...636A..29W: H+CH3NC barrier 1200 K (standard) vs 3000 K (Model 2)
+- 2018A&A...616A..45S: Constant ionization rate 1.3e-17 s^-1
+- 2018A&A...616A..45S: Standard model X_high=5e-5, T_CO=19 K, radial cutoff 300 AU
+- 2025A&A...702A..18D: M_p = 4 M_Jup, d = 112.3 pc, orbital radius = 34 au, R_out = 1/3 R_Hill ~ 1.23 au, R_p = R_in = 1 R_Jup, kappa_R = 10 cm^2/g, T_floor = 27 K, mu = 1
+- 2025A&A...702A..18D: Jet spectral index alpha_jet = 0.4 (optically thick) or -0.1 (optically thin); magnetic disc alpha(R) > 10^-5
+- 2025A&A...702A..18D: Pre-shock velocities and densities: (v_0, n_0) = (30 km/s, 10^15 cm^-3) and (50 km/s, 10^12 cm^-3); mean molecular weight mu = 1.35; effective slab radius R_ma…
+- 2024A&A...691A.180F: R=0.5 pc, Av=1 mag, gas-to-dust 100, 12C/13C=10^1.8
+- 2024ApJ...972..146S: 749 gas-phase species; 318 grain-surface species and the same number in bulk ice; 22,401 reactions and processes
+- 2024ApJ...972..146S: H surface binding energy 661 K; diffusion barrier 243 K; tunneling barrier width 3.2 Å
+- 2024ApJ...972..146S: Initial extinction 2 or 3 mag; final n_H from 2×10^6 to 2×10^10 cm^-3, including 6.32×10^7 cm^-3
+- 2024ApJ...972..146S: CRIR 1.30×10^-18 to 1.30×10^-15 s^-1; constant through both stages
+- 2024ApJ...972..146S: Warm-up timescales 2×10^4 to 2×10^6 yr; final temperature 400 K
+- 2024ApJ...972..146S: Critical GA surface-destruction regime approximately 125–160 K
+- 2024ApJ...972..146S: Three warm-up timescales; standard CRIR; initial extinction 2 mag
+- 2021A&A...647A.118L: Initial [C]/[H]=1×10^-4; [O]/[H]=3.5×10^-4; [N]/[H]=1.6×10^-5
+- 2021A&A...647A.118L: HNC+H barrier 200 K; HNC+O barrier 20 K
+- 2021A&A...647A.118L: Grain binding energies: CN 1600 K; HNC and HCN 2050 K
+- 2021ApJ...910..141T: Cosmic-ray rates 1.3e-17, 3.0e-16, 4.0e-14 s^-1 (Models 1-3)
+- 2021ApJ...910..141T: C/O ratio 0.4 (Models 1-3), 0.5 (Model 4), 1.2 (Model 5)
+- 2021ApJ...910..141T: Initial T 10 K rising to 200 K during warm-up
+- 2021ApJ...910..141T: Slow warm-up period of 1e6 yr
+- 2019A&A...629A.146V: cosmic-ray ionisation rate 1.2e-17 s-1; NH/Av 1.5 times lower than classical; initial radius 2e14 cm
+- 2024ApJ...977...38B: Temperature: 50–300 K; 15 linear points
+- 2024ApJ...977...38B: H2 volume density: 10^3–10^7 cm−3; 20 logarithmic points; buffer 10^2.6–10^7.4 with 24 points
+- 2024ApJ...977...38B: CRIR: 10–10^7 ζ0; 25 logarithmic points; ζ0 = 1.36×10−17 s−1
+- 2024ApJ...977...38B: H2 column density: 10^22–10^25 cm−2; 15 logarithmic points; buffer 10^21.6–10^25.4 with 19 points
+- 2024ApJ...977...38B: ∼170,000 initial combinations; ∼115,000 after filtering
+- 2024ApJ...977...38B: Regions 26 and 53 represent outer and inner CMZ.
+- 2024ApJ...977...38B: 24 regions with X_HCN/X_HNC >4 also have ζ >5×10−13 s−1
+- 2024ApJ...977...38B: Abundances below 10−12 indicate unreliable chemical solutions.
+- 2018A&A...617A.120M: T_sub = 20–40 K, n_de = 1e5–1e8 cm-3, X[CO] = 1e-7–1e-4
+- 2026A&A...709A.216U: Initial abundances of SiO and SiS set to RT best-fit f0 values; CS initial abundance from Paper II; other parent molecules from Agundez et al. (2020)
+- 2021A&A...655A..80D: H35Cl/H37Cl fixed to 2.4
+- 2014A&A...562A..26B: gamma = 1; also tested gamma = 0 and 2; inner radii 15, 20, 25 AU tested
+- 2015A&A...579A.114M: Cases a-f of Drop abundance (Tev 30-35 K, nde 7e4-3e6 cm-3, XD 1e-6 to 1e-8) and Tests 1-4 varying density/temperature
+- 2024RAA....24l5009M: v_exp (half-width at half-maximum of each transition, ~0.75-0.86 km s^-1)
+- 2020MNRAS.496.5308S: Initial density 10 cm^-3; collapse at 10 K; evolution for 10^7 years
+- 2020MNRAS.496.5308S: Final densities 10^4, 10^5, 10^6 cm^-3; corresponding A_v 10, 20, 50 mag; temperatures 50, 100, 300 K
+- 2020MNRAS.496.5308S: ζ = 1, 10, 10^2, 10^3 ζ0; 36 models stated
+- 2020MNRAS.496.5308S: A, B, C: peaks at CS(2-1), CS(3-2), CS(6-5), respectively
+- 2020MNRAS.496.5308S: D: CS(3-2) ≈ CS(6-5); E: CS(6-5) ≈ CS(7-6)
+- 2014A&A...570A..28V: Phase II temperature 100 K and 200 K
+- 2014A&A...570A..28V: Radiation field 1, 10 and 500 Draine
+- 2014A&A...570A..28V: Shock velocity 40 km/s
+- 2014A&A...570A..28V: Visual extinctions 2 and 10 mag
+- 2026ApJ..1004..114V: Six delayed SFH parameters: log10(M_*/M_sun), SFR, A_V, system age, metallicity (Z/Z_sun), ionization parameter (U)
+- 2026ApJ..1004..114V: GALFIT single Sersic profile: R_e ~ 0.21'', n ~ 1.2, b/a ~ 0.7
+- 2019ApJ...878..113H: primordial mass grid 0.1-35 Earth masses in 5 steps, then 0.1 steps; p1,p2 varied manually in -5 to +5, fine step 0.05
+- 2024ApJ...968L..11G: Meudon grid: n_H 2e5 and 2e7 cm^-3, G0 = 1e3, zeta_CR 2e-17 to 2e-14 s^-1, A_V,max 20/200/800
+- 2024ApJ...968L..11G: UCLCHEM grid: final n_H 1e5, 1e6, 1e7 cm^-3; T 15 and 50 K
+- 2018ApJ...865..127I: Z=Zsun, nH=50 cm^-3, chi_UV 0.1-1000
+- 2017A&A...608A..56G: Solar C/O ~0.6; shock velocity ~40 km/s; cosmic-ray ionization 5e-17 s-1 standard
+- 2020A&A...642A.222H: density 1e5 cm-3, CRIR 7e-16 s-1 for +50 Cloud; density 1e4, CRIR 3e-15 s-1 for Sgr B2 regions
+- 2017A&A...601A..49B: nH = 2e8 cm-3, 8 K minimum dust temperature, intermediate warm-up timescale
+- 2023MNRAS.523.2887M: Hot-core collapse: nH 3000 → 2 × 10^8 cm−3; AV 3 → 500 mag; dust ∼14.6 → 8 K; gas 10 K
+- 2023MNRAS.523.2887M: Warm-up to 400 K; fast 5 × 10^4 yr, medium 2 × 10^5 yr, slow 1 × 10^6 yr, defined at 200 K
+- 2023MNRAS.523.2887M: Hot-core ζ = ζ0 to 10^1.5 ζ0; ζ0 = 1.3 × 10−17 s−1
+- 2023MNRAS.523.2887M: G+0.693 collapse: final nH 2 × 10^4 cm−3; ζ = 100 and 1000 ζ0
+- 2016ApJ...831..101B: Gas-to-dust mass ratio 100; dust size distribution power law exponent 3.5; cosmic ray rate ~1e-19 s^-1; models sampled at 5 Myr (TW Hya) and 1 Myr (DM Tau)
+- 2024ApJ...976..258K: UV flux at 214 au: 375, 1500, 3000 chi0
+- 2024ApJ...976..258K: C/O from 0.5 to 1.2
+- 2024ApJ...976..258K: CRI rate 1e-16 to 1e-20 s-1
+- 2025A&A...700A.141H: Grain radii a = 0.1, 0.2, 0.3 micron
+- 2025A&A...700A.141H: Cosmic-ray ionisation rate 0.5, 1, 2, 4, 8 times 1.3e-17 s^-1
+- 2025A&A...700A.141H: Chemical desorption efficiency constant, 1% of exothermic surface reactions
+- 2023NatAs...7..684K: Table 1 fiducial parameters: R_sub=0.25 au, R_gap=1.0 au, R_cav=13 au, R_out=1000 au, R_c=50 au, M_gas=1.45e-1 M_sun, M_dust=1.12e-3 M_sun, [C/H]gas=1.0e-5, [O…
+- 2023A&A...669A..90C: Core diameter L = 1720 au; break radius r = 270 au; radial profile range 40 to 700 au over position angles 0 <= vartheta <= pi
+- 2016A&A...592A..76D: n_H = 1e8 cm^-3 at ~10 R*, S=1, F_FUV Y_PD = 3e5
+- 2026A&A...712A.201J: 4 inputs: T_K in [30, 300] K (26 log points), n_H2 in [10^3, 10^7] cm^-3 (23 log points), zeta in [1, 10^3] zeta_0 (31 log points), N_H2 in [10^22, 10^25] cm^-…
+- 2026A&A...712A.201J: Architecture: 4 hidden layers with 2048 nodes each, ReLU activation, MSE loss, early stopping after 20 epochs without validation loss improvement; 80%/10%/10% …
+- 2026A&A...712A.201J: Observables: m = n - 1 chained log line ratios y_i^obs = ln(r_i) where r_k = I_k / I_{k+1}; Linewidths = 150, 100, and 50 km s^-1 for CND, stellar bar, and sta…
+- 2026A&A...712A.201J: Hyperparameter priors: mu_n in (3.0, 6.00), mu_T in (1.55, 2.30), mu_N in (22.5, 24.0), mu_zeta in (0.0, 2.0), sigma_error in (0.02, 0.5)
+- 2018ApJ...854...15H: X_CO=4e-4, X_N2=1e-4; CO binding energy 1150 K, N2 955 K; burst 100 and 200 yr; post-burst up to 1e5 yr
+- 2023A&A...674A.125B: Maser model: 411 ortho and 413 para H2O levels; Chemical model: radii 1-10 R_*, pulsation phases 0.2, 0.5, 1.0
+- 2015ApJ...810..112O: CO binding energy 1150 K (1000 K tested); CO photodesorption yield 7e-3; cosmic ray ionization rate lowered to 1e-20 s-1 test
+- 2015ApJ...803...70S: Cosmic-ray ionization rate 2.6e-17 s-1; Av = 10 mag
+- 2025PSJ.....6..107N: Peak observed altitudinal sensitivity ≈230 km
+- 2016A&A...587A..92M: nH = 2e8 cm-3, min dust T 8 K, sulfur abundance 8e-8
+- 2021A&A...647A..10G: G0 = 2x10^4 Habing; A_V = 10 mag; P_th/k = 2x10^8 cm^-3 K; ζ_CR = 10^-16 H2 s^-1; R_V = 5.5; M_gas/M_dust = 100
+- 2021A&A...647A..10G: Elemental abundances: O/H = 3.2x10^-4, C/H = 1.4x10^-4, S/H = 1.4x10^-5
+- 2021A&A...647A..10G: Binding energies: low E_b/k (S = 1100 K, SH = 1500 K) vs high E_b/k (S = 2600 K, SH = 2700 K), E_b/k(H2S) = 2700 K; Y(H2S) = 1.2x10^-3 photon^-1
+- 2021A&A...647A..10G: PDR inclination angle α = 5° (or 4° for column density table) vs face-on
+- 2019ApJ...871..107F: gaps at 54-70 au and 87-119 au, ring at 70-87 au; same delta in both gaps
+- 2024ApJ...972...88L: 18,608 reactions; 1038 species, including deuterium isotopologues
+- 2024ApJ...972...88L: Chemical evolution time: 1 Myr
+- 2025ApJ...988...95D: Assume 50% error margin for chemical-model values.
+- 2025ApJ...988...95D: Comparison motivated by MM1 H2 density 6.6 × 10^6 cm^-3 and dust temperature 146 K.
+- 2024ESC.....8..665M: Phase I: nH 300 to 1e8 cm^-3 at 10 K; Phase II: 10 to 300 K at 1e8 cm^-3; CR rate 1.3e-17 s^-1; initial Av = 2
+- 2023A&A...677A..76P: 5 iterations; radial bin spacing theta_maj/4; 1/3 line-free channels for zero-order continuum subtraction; no sigma clip in immoments; solar C/O = 0.457; PAH a…
+- 2022A&A...660L...6C: Pre-stellar stage: density = 5 x 10^4 cm^-3, T_gas = T_dust = 10 K, A_V = 4.5 mag, cosmic-ray ionization rate = 1.3 x 10^-17 s^-1, UV field = 1 G0, duration = …
+- 2018A&A...612L..11S: mass-loss 2.5e-7 Msun/yr, v_exp 2.5 km/s, 12CO/H2=5e-4, 13CO/H2=5e-5
+- 2025A&A...699A..70H: Priors (Table 2): n_H2 1e2-1e8 cm^-3 log-uniform; T_kin 10-800 K uniform; column densities 1e12-1e18 cm^-2 log-uniform; eta_ff 0-1 uniform
+- 2025A&A...699A..70H: T_kin outside the collisional-rate grid (3-250 K CH3OH, 10-300 K H2CO) is clamped to the nearest grid temperature
+- 2017A&A...601A..48G: n_H = 2e8 cm-3 post-collapse; zeta = 1.3e-17 s-1; 0.1 micron grains
+- 2022RAA....22f5021G: Hot core: n_H0 = 3 x 10^3 cm^-3 to n_Hmax = 2 x 10^8 cm^-3 (collapse, 10^5 yr, T_gas = 10 K, A_V = 2 to A_V0*(n_H/n_H0)^(2/3)), warm-up to 200 K in 10^5 yr the…
+- 2022RAA....22f5021G: Dark cloud (DC): n_H = 2.0 x 10^4 cm^-3, T_gas = T_ice = 20 K, A_V = 10, time = 1.0 x 10^7 yr
+- 2022RAA....22f5021G: Binding energies: 2056 K for C6H5 and 5476 K for C6H5OH (scaled by 1.416)
+- 2016A&A...585A..58V: Sigma(r) power law with exponential cutoff, gamma=1
+- 2024A&A...687A.299L: non-thermal desorption rates updated to 5e-4 and 1.4e-3 molecules per grain per UV photon
+- 2024A&A...687A.299L: cosmic ray ionisation rate 1e-18 s^-1
+- 2025A&A...699A.361V: Model position just inside the water snowline (~150 K), density 2e8 cm-3; L_X = 1e29 erg/s vs no X-rays
+- 2024ApJ...968L..19F: Chemical desorption probability 4%; xi = 3e-17 s^-1
+- 2021A&A...646A...3L: Initial x(CO) = 1e-4 in both networks; x(H2O) = 3.8e-7 in network W; others 0
+- 2021A&A...646A...3L: Grain number density 1e-12 x n(H2), grain size 0.1 um; H13CO+ abundance a factor 70 below HCO+
+- 2025A&A...696A..31G: PDR fiducial T=500 K, n=10^3 cm-3; shock preshock density 10^3 cm-3
+- 2019A&A...624L...5P: cosmic ionization rate 1e-15 s-1, low extinction
+- 2019A&A...628A..10B: zeta = 1.3e-17 s-1; warm-up to 200 K in 5e4, 2e5 or 1e6 yr
+- 2020MNRAS.491..427B: n = 4.6e4 cm-3, T = 15 K gas and grain
+- 2020MNRAS.491..427B: Cosmic ionization rate 1.3e-17 s-1; Av = 10 mag
+- 2018MNRAS.477..325B: gamma=0.8; R_gas ~ 3 R_c; two grain populations 5 nm-10 um and 10 um-0.3 mm; q=3; large/small mass ratio 30; settling 0.2 h_gas
+- 2018MNRAS.477..325B: R_in=0.04 au, i=45 deg, Av=3.8, Rv=3.1, Lx=1e28 erg/s
+- 2024A&A...686A.120U: chemical age 1 Myr; UMIST 06-based network with 118 species and 1675 reactions
+- 2025ApJ...991...59B: LMC and SMC abundances multiplied by 2 and 5; ST11 and N 132-14A abundances recalculated with the same gas-to-dust ratio (and H2 column from same method)
+- 2021ApJ...906..111T: Dust surface area reduction 85%; emitting layer z/R > 0.25.
+- 2024A&A...686A..48N: Pre-shock: n_H2 = 10^3 cm^-3, T = 10 K, A_V = 2 mag, radiation field = 1 Habing, cosmic-ray ionization rate = 1.3 x 10^-17 s^-1, duration = 10^5 yr; Post-shock…
+- 2019A&A...631A.137C: zeta = 1.3e-17 s-1; collapse 1.63e6 yr; warm-up reaching 400 K at 2.8e5 yr
+- 2022A&A...659A.158H: Shock model parameters: cosmic-ray ionisation rate zeta = 10^-13 s^-1, pre-shock density n(H) = 2x10^4 cm^-3
+- 2019ApJ...876...72L: Disk parameters in Table 3 (e.g. Md=0.18 and 0.03 Msun, Rc=100 au)
+- 2024JKAS...57..163L: n=2.2e10 (inner), 6.0e7 cm-3 (outer); CR 1e-17 s-1 fiducial
+- 2026ApJ..1005..142S: n(H2) = 10^7 cm^-3; T_gas = 150 K; A_V = 20 mag; ionization rate zeta = 10^-17 to 10^-14 s^-1
+- 2021A&A...646A..72H: Fixed CO abundance 1e-4 and a second species abundance 3e-6 relative to H2; range of densities, temperatures and zeta explored
+- 2019A&A...628A..27B: CRIR 1.3e-17 to 1.3e-14 s-1; ISRF 1 G0
+- 2020ApJ...899...65S: Model 1: 8 K, 2e4 cm-3, 1e6 yr prestellar, collapse to 1e8 cm-3 over ~2.1e5 yr, warm-up to 300 K; zeta = 1.3e-17 s-1; Av 10 to 150
+- 2020ApJ...899...65S: MC binding energy 10000 K (vs 7610 K test)
+- 2019ApJ...883...98Z: zeta_CR = 1.36e-18 (standard) and 1.36e-17 s^-1 (high); gamma ±0.2 tests
+- 2025A&A...698A.231P: Fiducial parameters in Table 1; sampled values in Table 2 (bold values fiducial)
+- 2019ESC.....3.2088S: n_H2 = 5e7 cm-3, T=150 K, zeta = 3e-17 s-1
+- 2022A&A...666A.114S: Slow warm-up timescale model setup for Sgr B2(N1S); cold grain-surface ratios for G+0.693-0.027
+- 2018A&A...617A..28S: Mdisk 0.066 Msun, Mdot 5e-9 Msun/yr, alpha 0.01, Rout 800 au, Lx 1e31 erg/s, grain 0.1 um
+- 2026AJ....171..368M: Pearson correlation threshold r = 0.7; sample size n = 9 sources
+- 2017MNRAS.469.2230M: nH 5e8 cm-3, T 10 to 110 K over 1e5 yr
+- 2020ApJ...895...86G: Model B best: rho_max=1e7 cm-3, Tmax=200 K, Tice=20 K, tcoll=(2-3)e5 yr, tw=5e4 yr, tpw=1e5 yr
+- 2018ApJ...865..155C: zeta_CR = 1e-20, 2e-19, 1.3e-18 s^-1; 9 C/O values
+- 2024A&A...688A...3H: Initial dust temperatures = 10, 15, 20, 25 K; final hot core temperatures = 100, 200 K
+- 2024A&A...687A.233M: density 2.5e4 cm-3, 10 K, Av 10 mag, zeta 1.3e-17 s-1
+- 2019MNRAS.483.2014H: Best: Av = 4, zeta = 8.0e-17 s-1
+- 2017ApJ...843L...3C: Flares: 35x (tr=3h, td=5h), 80x (1h, 3h), 10x (10h, 30h)
+- 2025NatAs...9.1486L: Inheritance: <~10% of ice destroyed; reset: >~70% destroyed
+- 2023Ap&SS.368...44M: Fast (5x10^4–7.12x10^4 yr), medium (2x10^5–2.85x10^5 yr), and slow (1x10^6–1.43x10^6 yr) warm-up timescales
+- 2019ApJ...875...96N: OPR=3, 16O/18O=560, kappa_mm original 1.0 cm2/g
+- 2018A&A...612A.107C: nH final = 6e10 and 1.6e7 cm-3
+- 2023A&A...677A..15M: 30% assumed uncertainty on chemical model abundances
+- 2019MNRAS.483..806R: Collapse 1e6 yr, n 3e3 to 1e8 cm-3; warm-up 10-200 K over 2e5 yr
+- 2017A&A...599A.101V: zeta = 1.2e-17 s-1 fiducial; 1e-19 and 5e-17 variants
+- 2019A&A...623L..13C: cold phase: T=10 K, nH=1e4 cm-3, Av=15, zeta=1.3e-17 s-1
+- 2017ApJ...835..228T: CRP ionization 1.3e-17 s^-1; grain radius 7 µm
+
+
+### Assumptions (bibcode: value)
+- 2019MNRAS.484L..43Z: HOCH2CN forms only on grains; ion-neutral rates assumed like CH3NCO
+- 2020A&A...636A..29W: alpha from Shu 1977, q from Terebey 1993; COM rotational temperature equals dust temperature
+- 2020A&A...636A..29W: New isocyanide reactions and binding energies analogous to cyanides
+- 2020A&A...636A..29W: LTE
+- 2018A&A...616A..45S: T_dust = T_gas; HD abundance equals the cosmic D/H ~1e-5; X_low = 0.01 X_high
+- 2025A&A...702A..18D: Dust opacity kappa_mm = 3.4 * zeta * (0.87 mm / lambda) cm^2/g; hydrostatic Gaussian vertical gas profile; LTE ionisation via Saha equation; solar photospheric…
+- 2025A&A...702A..18D: Pre-shock velocity equals free-fall velocity v_0 = sqrt(2 G M_p / r); spatially constant mass flux falling on both sides of a circular slab
+- 2024A&A...691A.180F: Isothermal constant-density static cloud
+- 2024ApJ...972..146S: Bulk diffusion limited to interstitial H and H2; bulk barriers twice surface barriers
+- 2024ApJ...972..146S: Unity sticking coefficient for all species
+- 2024ApJ...972..146S: Uniform grain radius 0.1 micrometre; visual extinction capped at 500 mag
+- 2024ApJ...972..146S: Peak-abundance ratios directly comparable with observed column-density ratios despite no spatial model
+- 2024ApJ...972..146S: Water-ice trapping exposes MF and GA progressively during desorption
+- 2024ApJ...972..146S: 25% reduction represents approximate calculated variation between functionals
+- 2021A&A...647A.118L: Steady-state chemistry with initial ISM CNO abundances and ISM C/O
+- 2021A&A...647A.118L: Chemical model inherited from Cazzoletti2018 except the two HNC-destruction changes
+- 2021ApJ...910..141T: Dust temperature equal to gas temperature
+- 2019A&A...629A.146V: SiS photo-dissociation rate assumed equal to SiO
+- 2024ApJ...977...38B: Phase 2 inherits phase-1 abundances.
+- 2024ApJ...977...38B: Shielded cloud interior: Av = 10 mag; UV = 1 Habing in both phases; UV negligible
+- 2024ApJ...977...38B: X-ray ionization excluded.
+- 2024ApJ...977...38B: Shielded, cosmic-ray-dominated chemistry may fail in diffuse UV-affected or shocked gas.
+- 2018A&A...617A.120M: cosmic-ray ionization rate 1.26e-17 s-1; ortho-to-para H2 lower limit 1e-3; sources centred on and dominated by A
+- 2026A&A...709A.216U: Warm condensation/dust temperatures (Tc ~ 1500-1800 K) preventing significant dust depletion
+- 2014A&A...562A..26B: 2D axisymmetric model; foreground absorption and asymmetries ignored, focus on velocities >=4 km/s from source velocity
+- 2015A&A...579A.114M: X_HD = 1e-5 relative to hydrogen nuclei; lower limit o/p 1e-3; Tgas = Tdust
+- 2024RAA....24l5009M: Q_H2O = 4.8 x 10^28 molecules s^-1 (Schleicher et al. 2023)
+- 2020MNRAS.496.5308S: Diffuse atomic initial cloud; standard solar metallicity ISM abundances
+- 2020MNRAS.496.5308S: Collapse-stage ζ0 = 5 × 10^-17 s^-1
+- 2020MNRAS.496.5308S: Cloud size varied with density to obtain density-dependent extinction
+- 2020MNRAS.496.5308S: Enhanced cosmic ray ionisation intended to replicate enhanced X-ray flux
+- 2020MNRAS.496.5308S: Fit each sub-region independently
+- 2014A&A...570A..28V: Solar-metallicity elemental abundances; cosmic-ray rate used to mimic enhanced X-rays; free-fall collapse in Phase I
+- 2026ApJ..1004..114V: Calzetti et al. (2000) dust attenuation law
+- 2026ApJ..1004..114V: Flat LCDM cosmology (H0 = 67.7 km s^-1, Omega_0 = 0.31, T_cmb = 2.725 K)
+- 2019ApJ...878..113H: secondary: CO:H2O 1:10 released, gas T = dust T, run to ~2 Myr; primordial: ISM abundances, CR rate 1e-16 s-1, X-ray 1e27 erg/s, 1% dust outside belt
+- 2024ApJ...968L..11G: Sulfur and silicon depletion included
+- 2018ApJ...865..127I: Metallicity solar; absorption arises in extended low-density halo
+- 2017A&A...608A..56G: Cosmic-ray ionization used to mimic X-ray enhancement
+- 2014Sci...345.1584B: Radical-site bias favoring secondary carbon; other rates and binding energies identical between isomers
+- 2019A&A...622A..26G: C+ main carbon carrier and electron source
+- 2017A&A...601A..49B: Binding energies 3575 K (CH3NCO) and 6281 K (CH3NHCHO) estimated
+- 2023MNRAS.523.2887M: Only H and H2 diffuse in bulk ice; other radical reactions require nondiffusive 3-B or PDI mechanisms.
+- 2023MNRAS.523.2887M: DMA surface binding energy 5856 K; direct cosmic-ray-impact desorption excluded
+- 2016ApJ...831..101B: Same TW Hya UV field used for both systems; 8:2 astrosilicate:graphite
+- 2024ApJ...976..258K: Dust temperature equal to gas temperature
+- 2024ApJ...976..258K: Uniform 0.1 micron grains, no grain growth, dust-to-gas 1e-2 below 1 H and 1e-3 above for settling
+- 2024ApJ...976..258K: Mean molecular weight 2.37, ring gas mass 0.13 Msun, M* = 1.37 Msun
+- 2024ApJ...976..258K: Cloud phase: 10 K, density 2e4 cm-3, Av = 15 mag, zeta = 1.3e-17 s-1, evolved 1e6 yr before the disk model
+- 2025A&A...702A..35D: 20% uncertainty assumed for literature abundances where not specified
+- 2025A&A...700A.141H: Grain material density 2.5 g cm^-3, uniform grain size, dust-to-gas mass ratio 0.01
+- 2023NatAs...7..684K: Interstellar gas-to-dust ratio ∆_g/d = 100; UMIST 06 chemical network (122 species, 1701 reactions); d = 110 pc; L_* = 36 L_sun
+- 2023A&A...669A..90C: Simple steady-state chemical network of Caselli et al. (1998); uniform line-of-sight core depth L = 1720 au.
+- 2016A&A...592A..76D: Dust-to-gas mass ratio 0.002; grain sizes 0.005-0.25 micron; solar Cl abundance 3.2e-7
+- 2026A&A...712A.201J: Stage 1 freefall collapse from n = 100 cm^-3, T = 10 K, zeta_0 = 1.3e-17 s^-1 over 6 Myr; Stage 2 evolution for 1 Myr at fixed visual extinction A_v = 10 mag
+- 2026A&A...712A.201J: All transitions optically thin at best-fit parameters; C2H (N=1-0) modeled as a single transition; ensemble of region parameters follows a multivariate Student…
+- 2024NatAs...8..308D: Companion treated as a 6000 K black body without chromospheric UV; models assume the companion is always close to the AGB star, which is not true for W Aql
+- 2023A&A...674A.125B: Slab geometry; ortho and para H2O treated separately without cross-species line overlap; fractional abundance H2O/H2 = 3e-5 in maser models
+- 2015ApJ...810..112O: CO and HCO+ densities scaled by 500 and 70 for C18O and H13CO+ (ISM 16O/18O, 12C/13C)
+- 2025PSJ.....6..107N: N2 isotopic ratio represents Titan’s intrinsic isotopic composition.
+- 2016A&A...587A..92M: CH3SH binding energy same as methanol (5534 K); C2H5SH 6230 K
+- 2021A&A...647A..10G: Grain size distribution n_gr ∝ a^-3.5; chemical desorption s-H + s-SH -> H2S efficiency of 50%; instant surface hydrogenation when τ_gr,H is shorter than subli…
+- 2019ApJ...871..107F: Small grain surface density follows large grains; elemental C and O abundances 1.35e-4 and 2.88e-4
+- 2024ApJ...972...88L: Table 2 molecular-cloud initial abundances
+- 2024ApJ...972...88L: Average CO depletion factor 5; starting CO abundance 2.6 × 10^-5
+- 2024ApJ...972...88L: H13CO+ from HCO+ using constant 12C/13C = 60
+- 2024ESC.....8..665M: Sticking probability unity; solar abundances for O, C, N, He (Asplund 2009); Si, S, Cl, Mg, P, F depleted by 100
+- 2023A&A...677A..76P: Reduced chemical network (100 species, 1286 reactions); no CO isotopologue chemistry or isotope-selective photodissociation; fixed dust column density during i…
+- 2022A&A...660L...6C: Isomeric ratio approximated by ratio of rovibrational densities of states at the isomerization barrier; barriers and imaginary frequencies calculated at M06-2X…
+- 2018A&A...612L..11S: Spherical uniformly expanding envelope, ISRF only external UV
+- 2025A&A...699A..70H: Gaussian intensity uncertainties
+- 2025A&A...699A..70H: Beam filling factor eta_ff = theta_S^2 / (theta_MB^2 + theta_S^2)
+- 2018ApJ...867...94K: Tex=10 K optically thin; [12CO/H]=1e-4; 16O/18O=557
+- 2024A&A...681A..50W: Chemical model assumes power-law temperature profile and a smooth, spherically symmetric outflow with constant expansion velocity and mass-loss rate
+- 2017A&A...601A..48G: Canonical cosmic-ray ionization rate 1.3e-17 s-1
+- 2022RAA....22f5021G: Destruction of phenol in gas phase via photodissociation (alpha = 2.9 x 10^-9, beta = 0, gamma = 1.7), cosmic ray dissociation (alpha = 1.3 x 10^-17, beta = 0,…
+- 2016A&A...585A..58V: Gas and dust follow same density profile with varying gas-to-dust ratio
+- 2024A&A...687A.299L: chemistry evolved to 5 Myr; fiducial total C/O of 0.4
+- 2025A&A...699A.361V: Warm H2O taken as the reference column
+- 2024ApJ...968L..19F: Photodesorption yield 1e-3 per UV photon for P species
+- 2021A&A...646A...3L: Single grain size for the chemistry is an approximation
+- 2021ApJ...907..108G: Fast warm-up timescale model judged most suitable for high-mass star-forming regions
+- 2017A&A...601A...4A: Distance 123 pc; C2H2 and HCN abundances 8e-5 and 4e-5 relative to H2
+- 2025A&A...696A..31G: Dust temperature equal to gas temperature in static models
+- 2019A&A...628A..10B: E_des(CH3NCO)=6486 K, N-methylformamide 7386 K
+- 2020MNRAS.491..427B: 13C isotopologues not in the code; derived using C/13C ~ 45
+- 2018MNRAS.477..325B: Distance 140 pc; inclination unknown, 45 deg adopted
+- 2024A&A...686A.120U: gas-to-dust ratio 100
+- 2025ApJ...991...59B: Simple metallicity scaling accounts for lower C, N, O abundances; detailed physicochemical modelling not done
+- 2024RAA....24g5014M: MM1 gas density and temperature are comparable to the model conditions, so the model applies
+- 2021ApJ...906..111T: Reduced dust surface area emulates dust settling and radial drift.
+- 2024A&A...686A..48N: Standard Galactic elemental abundances; constant radiation field and cosmic-ray ionization rate during shock
+- 2019A&A...631A.137C: Single-point uniform density; gas 10 K, dust 16 to 8 K in collapse
+- 2022A&A...659A.158H: C34S is optically thin and a good proxy for H2 barely affected by shocks or PDRs
+- 2022A&A...659A.158H: All hydrogen is in molecular form, n(H) = 2 * n(H2)
+- 2019ApJ...876...72L: Dust temperature equals gas temperature; dust-to-mass ratio 0.01; 0.1 micron grains; low S abundance 8e-8
+- 2024JKAS...57..163L: UV fully shielded in midplane; CR uniform; burst only affects temperature
+- 2026ApJ..1005..142S: Fixed physical conditions (n_H2 = 10^7 cm^-3, T = 150 K, A_V = 20 mag); X-ray and cosmic-ray ionization not distinguished; initial abundances from typical inte…
+- 2024A&A...688A.130H: Published no-shock models require T ≳ 100 K for comparable abundance enhancement
+- 2021A&A...646A..72H: HCO+ taken as the dominant ion
+- 2020ApJ...899...65S: Radical-radical reaction assumed barrier-less; NH2CO and CH3O binding energies 5160 K and 4400 K
+- 2019ApJ...883...98Z: Initial CO abundance 1.4e-4 relative to H; CO/C18O=570, CO/13CO=69; no isotopologue fractionation
+- 2025A&A...698A.231P: Initial radial structure follows the self-similar viscously evolving disk solution
+- 2025A&A...698A.231P: T Tauri accretion UV: accreted-mass potential energy released with 100% efficiency as 10^4 K blackbody; no accretion for Herbig model
+- 2025ApJ...992...55T: static physical structure at each radius, 2e5 yr
+- 2026A&A...713A..67X: Independent errors assumed when propagating column density uncertainties into abundance ratios
+- 2021AJ....162...99F: literature model grids (not tailored to a large cavity) apply qualitatively
+- 2022A&A...666A.114S: Ice radical ratios (C2H5:C3H7 and C3H7:C4H9) serve as proxies for gas-phase or grain-surface production rates of propanal and butanal.
+- 2018A&A...617A..28S: Equal gas and dust temperatures; gas-to-dust 100
+- 2025ApJ...988..106H: ISM-like CO:H2 abundance
+- 2024NewA..10902199M: Model is applicable because MM1 temperature is ~150 K and gas density ~2e7 cm^-3
+- 2021A&A...651L...6B: NH = 1.6e22 cm-2 at 60 au from disk model
+- 2020ApJ...895...86G: cosmic ray rate 1.3e-17 s-1; diffusion energy 0.5 times adsorption energy
+- 2018ApJ...865..155C: CO abundance 7e-6 per H; N 7.5e-5 per H fiducial
+- 2024A&A...689L...7D: Shocked SO is created locally and co-moves with the ring.
+- 2023Ap&SS.368...33M: LTE conditions for urea upper limit estimation
+- 2024RAA....24f5008M: The three-phase warm-up model is taken as appropriate because the gas density is 1.3e7 cm-3 and gas temperature above 100 K
+- 2017A&A...608A..96L: One to three magnitudes of visual extinction; dust grain radius 0.1 micron; dust-to-gas 1%
+- 2023Ap&SS.368...44M: Isothermal free-fall collapse phase (n_H from 3x10^3 to 10^7 cm^-3, T_dust from 16 K to 8 K) followed by static warm-up phase (n_H ~ 10^7 cm^-3, T_dust from 8 …
+- 2024RAA....24g5017M: Cloud stage: T=10 K, nH=2e4 cm-3, Av=15, zeta=1.3e-17 s-1
+- 2018ApJ...859..131L: Distance 59.5 pc, PA 155 deg, inclination 8 deg, M*=0.8 Msun
+- 2025ApJ...989....1Z: kappa = 2.3 (nu/230 GHz) cm2/g, Tdust = 20 K; ISM xCO=1e-4 for Ophiuchus
+- 2023MNRAS.525.2229M: Model applicable because dust temperature ~150 K and nH ~2e7 cm^-3
+- 2020ApJ...891..164S: LMC: Z=1/3, gas-to-dust 300, chi_uv=3
+- 2016ApJ...832..110C: molecular-cloud-like initial abundances (Table 2), 1 Myr age
+- 2022A&A...659A.111K: Amides form on cold grain surfaces via addition of hydrocarbon radicals to NH2CO in proportion to simple hydrocarbon abundances, neglecting hot-stage formation…
+
+
+### Limitations the authors admit
+- 2019MNRAS.484L..43Z: LTE may not apply; cold abundance is a lower limit
+- 2020A&A...636A..29W: Physical profile, spherical symmetry, LTE and network inaccuracies may cause column density mismatch.
+- 2018A&A...616A..45S: T_eff cannot be constrained without a gas temperature model, and photodesorption cannot be distinguished from thermal desorption
+- 2025A&A...702A..18D: Stellar spectral index between Band 3 and Band 4 (-0.7 +/- 0.8) is too noisy to distinguish partially thick free-free emission, variability, or a synchrotron component.
+- 2025A&A...702A..18D: Inter-band alignment with VisAlign could not be applied to Bands 7 and 9 because the central star is not detected and the ring morphology differs dramatically from Band 3, requiring reliance on absol…
+- 2025A&A...702A..18D: Diffuse emission near the cavity edge in Band 9 was not subtracted from the forced-photometry measurement, and PDS 70c's flux in Band 7 is affected by confusion with the cavity wall.
+- 2025A&A...702A..18D: The jet flux formula was developed for stellar jets and is extrapolated into the planetary mass regime.
+- 2025A&A...702A..18D: Magnetic disc viscosity estimates neglect external ionisation sources (interstellar UV and cosmic rays) at large radii.
+- 2025A&A...702A..18D: The atomic plasma model depends heavily on extrapolating H- free-free opacities from Gray (2022) (valid up to 10 um and T = 2500–10000 K) to millimetre wavelengths and cooler temperatures (T ~ 1000–2…
+- 2025A&A...702A..18D: Achieving a pre-shock free-fall velocity > 30 km/s at 62 R_Jup requires a minimum planetary mass of 15.7 M_Jup (above the 2 sigma dynamical upper limit of 13.6 M_Jup) and spatially constant mass flux…
+- 2024A&A...691A.180F: Tex fixed to CH3OH value for all species; N_tot uncertain up to factor 2
+- 2024A&A...691A.180F: Static models cannot reproduce all ratios; dynamical models needed
+- 2024ApJ...972..146S: Coarse parameter grid and degeneracy limit unique physical-condition inference
+- 2024ApJ...972..146S: Two isomer ratios do not constrain CRIR adequately
+- 2024ApJ...972..146S: Peak ratios omit temporal variation and source spatial structure
+- 2024ApJ...972..146S: Monotonically increasing temperatures may not represent outburst histories
+- 2024ApJ...972..146S: Exact density and timescale requirements need a dynamical model including disk evolution
+- 2021A&A...647A.118L: Model abundances and column densities uncertain by at least a factor of a few
+- 2021A&A...647A.118L: Equal HNC and HCN photodissociation rates assumed; actual HNC rate may be twice as high
+- 2021A&A...647A.118L: TW Hya short-spacing coverage may affect its radial profile and apparent central component
+- 2021A&A...647A.118L: Full-disk models do not represent transition-disk UV environments
+- 2021A&A...647A.118L: Lupus HNC 1-0 may originate at different radii across the stacked sample
+- 2021A&A...647A.118L: UV penetration and initial C and O abundances complicate a unique temperature diagnostic
+- 2021A&A...647A.118L: Outer-disk lines can be subthermal; LTE inference is insufficient
+- 2021ApJ...910..141T: HC3N peak offset from the Spitzer source not understood at this resolution
+- 2021ApJ...910..141T: Sensitivity may be too low to detect weak CH3OH lines in IRAS 03235 and IRAS 03271
+- 2021ApJ...910..141T: Excitation temperature may be underestimated in the data
+- 2019A&A...629A.146V: Model based on single line for SiO and CS, two for SiS; degeneracy between density and abundance
+- 2024ApJ...977...38B: Initial chemical conditions may affect phase-2 starting abundances; varying them requires rebuilding the training set.
+- 2024ApJ...977...38B: The emulator may smooth posterior structure; finer-grid testing remains necessary.
+- 2024ApJ...977...38B: Kinetic temperature is poorly constrained.
+- 2024ApJ...977...38B: The chemical framework is unsuitable for UV-dominated or shocked regions.
+- 2024ApJ...977...38B: The emulator can extrapolate below the chemical grid's reliable abundance threshold.
+- 2024ApJ...977...38B: Larger regions mix diffuse and dense gas and complicate comparison with previous GMC measurements.
+- 2024ApJ...977...38B: SpectralRadex performs poorly at unrealistically high molecular column densities.
+- 2024ApJ...977...38B: The timing of observable cosmic-ray suppression of star formation is uncertain.
+- 2018A&A...617A.120M: Simple chemical model cannot explain inner DCO+ 5-4 emission; single physical profile adopted
+- 2026A&A...709A.216U: The 1D RT code is static, assumes a smooth spherically symmetric envelope and a blackbody central star, and cannot model 3D substructures (arcs, spirals), stellar phase time-delay effects, or stellar…
+- 2026A&A...709A.216U: The RT code can only include one collision partner (H2, neglecting He) and cannot account for infrared line overlaps with other molecular species (such as C2H2 and HCN overlapping with SiS v=1-0 ro-v…
+- 2026A&A...709A.216U: AFGL 3068 lacks spatially resolved observations, leaving its SiO and SiS abundance profiles and uncertainties unconstrained and biasing the high-density end of the Re vs. gas density trend.
+- 2026A&A...709A.216U: Reported abundance uncertainties do not include uncertainties in the fixed input mass-loss rates and stellar distances, and the heterogeneous multi-telescope dataset introduces calibration and multi-…
+- 2021A&A...655A..80D: 1D model cannot account for 3D asymmetry; true uncertainties much larger than formal ones
+- 2014A&A...562A..26B: 12CO is optically thick so surface density is not directly constrained; profiles accurate only to a factor of a few
+- 2014A&A...562A..26B: Beam comparable to 20 AU hole, so only limits inside 20 AU
+- 2015A&A...579A.114M: C18O emission too weak for further kinematical analysis
+- 2024RAA....24l5009M: Comet ZTF is spatially unresolved in both the ALMA dust continuum images (224.79–242.60 GHz) and the CH3OH integrated intensity maps because the deconvolved source sizes are smaller than the synthesi…
+- 2024RAA....24l5009M: Continuum emission at 1250 MHz and the atomic HI line at 1420 MHz are not detected in the GMRT observations.
+- 2020MNRAS.496.5308S: Only 3-4 transitions per sub-region limit modelling reliability.
+- 2020MNRAS.496.5308S: Rotational diagrams cannot reliably constrain conditions or distinguish two phases from sub-thermal excitation.
+- 2020MNRAS.496.5308S: RADEX temperatures have unconstrained upper bounds.
+- 2020MNRAS.496.5308S: 2.73 K background may be inappropriate at the AGN.
+- 2020MNRAS.496.5308S: Coarse chemical grid makes tabulated values approximate.
+- 2020MNRAS.496.5308S: Sulphur depletion not investigated.
+- 2020MNRAS.496.5308S: Cause of Boltzmann/rotational column-density discrepancy remains uncertain.
+- 2020MNRAS.496.5308S: CS(6-5) cannot cover the SB ring; CS(3-2) SNR drops outside the ring.
+- 2014A&A...570A..28V: RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data
+- 2014A&A...570A..28V: Chemical modelling is preliminary and compares time-dependent models only at one time step
+- 2014A&A...570A..28V: Infrared pumping not considered
+- 2026ApJ..1004..114V: Low spectral resolution of the NIRSpec PRISM data prevents accurate line flux constraints, deblending of H-alpha and [N II], or kinematic confirmation of the ring vs. lens nature.
+- 2026ApJ..1004..114V: Low spatial resolution and low (~3 sigma) significance of the archival ALMA continuum detection prevent determining whether the dust emission originates from the red central core or the blue ring.
+- 2026ApJ..1004..114V: Simple delayed SFH photometric model in bagpipes cannot strongly constrain stellar ages or metallicities.
+- 2026ApJ..1004..114V: Targeting [C II] 158 um with ALMA to kinematically confirm the source is not feasible because at z = 4.0148 it falls at 379 GHz, in the atmospheric gap between ALMA Bands 7 and 8.
+- 2019ApJ...878..113H: Single CO transition cannot break mass-temperature degeneracy
+- 2024ApJ...968L..11G: 2012 data have artifacts severe enough that no images are shown and results should not be trusted on statistical errors alone
+- 2024ApJ...968L..11G: Spatial measurement uncertainties are statistical only; systematics are larger
+- 2024ApJ...968L..11G: Column densities are dominated by systematic uncertainty in excitation temperature
+- 2024ApJ...968L..11G: ACES data are still being processed, so there is no complete census of the broader context
+- 2018ApJ...865..127I: Column densities may be lower limits due to saturation; N(H) highly uncertain; mismatched beams
+- 2017A&A...608A..56G: Single C2H transition gives uncertain abundance; chemical modelling is limited and qualitative
+- 2014Sci...345.1584B: Preliminary LTE model not fully optimized for ALMA; abundance uncertainties exclude free-free contamination and dust property uncertainties
+- 2020A&A...642A.222H: Locations of the l.o.s. clouds are poorly constrained
+- 2019A&A...622A..26G: CF+ and C3H+ lines are weak and contaminated; Galactic center abundances cannot be determined absolutely
+- 2015ApJ...814..143A: Smooth spherical shell model does not reproduce fine structure; infrared pumping only partly included
+- 2017A&A...601A..49B: Only five clean lines, so detection tentative
+- 2017A&A...601A..49B: Models overproduce NH2CHO and CH3CONH2 by more than an order of magnitude
+- 2023MNRAS.523.2887M: ALMA limits do not constrain whether the analogous formation routes operate differently.
+- 2023MNRAS.523.2887M: Methylamine toward N2b is only tentatively detected.
+- 2023MNRAS.523.2887M: G+0.693 DMA emission falls at a local baseline minimum; its upper limit can change by less than a factor of two.
+- 2023MNRAS.523.2887M: DMA chemical production rates are poorly constrained.
+- 2023MNRAS.523.2887M: The dominant early formation mechanism depends on uncertain low initial visual extinction.
+- 2023MNRAS.523.2887M: The G+0.693 models omit shock chemistry and shock-induced mantle release.
+- 2023MNRAS.523.2887M: Neglected internal rotation may matter near 100 GHz for linewidths below 2 km s−1.
+- 2016ApJ...831..101B: Depletion parameterization is somewhat arbitrary; DM Tau inner hole not modelled; outer ring sharpness not matched
+- 2024ApJ...976..258K: X-ray chemistry not included
+- 2024ApJ...976..258K: Outer disk not modelled because of its complex structure
+- 2024ApJ...976..258K: Gaussian ring parameters in DISKFIT are strongly coupled so their errors are unreliable
+- 2025A&A...702A..35D: Uncertainties in the adopted 12C/13C ratios from distance effects, beam size variations, excitation temperature mismatches, isotope-selective photodissociation, and chemical fractionation.
+- 2025A&A...702A..35D: Abundances relative to H2 cannot be reported due to uncertainties in dust opacity.
+- 2025A&A...702A..35D: Uncertainties in excitation temperatures, optical depth, line blending, spatial structure, LTE assumptions, use of 13C isotopologs for NH2CHO, and uniform source-filling assumption for CH3CONH2 may i…
+- 2025A&A...700A.141H: Rest frequencies of the NHD2 lines are probably less accurate than those of the NH2D lines
+- 2025A&A...700A.141H: Static core model neglects core contraction during chemical evolution
+- 2025A&A...700A.141H: Fit uncertainties include only statistical noise
+- 2023NatAs...7..684K: The ACA CS 7-6 observation is essentially unresolved because the 4.78" beam is nearly equal to the radial extent of the gas disk.
+- 2023NatAs...7..684K: The DALI model lacks a smooth transition between the inner cavity and dust ring (having a sharp boundary instead) and does not include the outer dust gap between r ∼ 40 - 150 au in ∆_g/d.
+- 2023NatAs...7..684K: Wedge splicing angles are measured in the image cube plane rather than projected onto the inclined 3D disk plane.
+- 2023NatAs...7..684K: Grain-surface conversion of CO to CO2 ice (reactions 14-16) is not included in the DALI chemical network and is approximated by manually depleting initial H2O, O, and CO abundances; reverse timescale…
+- 2023A&A...669A..90C: Assumption of a constant temperature (T_ex = T_d = 25 K) across the envelope introduces systematic errors of a factor of 3-5 in N_H2, a factor of 2 in N_CO, and a factor of 2-3 in f_D, especially tow…
+- 2023A&A...669A..90C: Presence of a third velocity component (outflow contamination) in the southeastern region of H13CO+ (J=3-2) causes poor two-component fits and large errors in R_D there.
+- 2023A&A...669A..90C: Global uncertainties on zeta_CR are of the same order of magnitude as the derived zeta_CR values.
+- 2023A&A...669A..90C: Limited angular resolution (1.5 arcsec ~ 250 au) means only three or four radial points in the zeta_CR profile are completely independent, preventing exact localization of the CR acceleration shock.
+- 2023A&A...669A..90C: Large optical depths (>1) in the central beam for H13CO+ transitions and unknown dust/gas temperatures make central R_D and f_D values uncertain.
+- 2023A&A...669A..90C: Large-scale interferometric filtering produces negative emission bowls in the center and west regions of DCO+ (J=3-2) and H13CO+ (J=3-2).
+- 2016A&A...592A..76D: Only 16-20 antennas; cannot prove either scenario
+- 2026A&A...712A.201J: Neural network emulator produces outliers when input volume density or column density lies close to the parameter space boundaries.
+- 2026A&A...712A.201J: Reliance on low-J transitions and 0.8'' (~56 pc) spatial resolution blends multiple gas phases within the beam and is less sensitive to high-density clumps than high-J transitions.
+- 2026A&A...712A.201J: Due to limited molecular detections in the innermost CND, physical parameters cannot be derived for the AGN region itself.
+- 2026A&A...712A.201J: Density and temperature diagnostics alone cannot definitively distinguish between jet/outflow-driven ram pressure compression and shock compression from cloud-cloud collisions at the bar-ring interfa…
+- 2026A&A...712A.201J: C2H (N=1-0) hyperfine components are blended and modeled as a single transition in SpectralRadex, leading to larger scatter and poorer reproduction of C2H-related ratios in posterior predictive check…
+- 2026A&A...712A.201J: Having mostly single low-J transitions per species (except HNC and CN) leaves residual degeneracy between density, temperature, and column density.
+- 2018ApJ...854...15H: Significant spatial filtering/missing flux
+- 2018ApJ...854...15H: Hyperfine anomalies limit optical depth estimates
+- 2024NatAs...8..308D: SPH model is simplified and used for qualitative comparison, not a fit
+- 2024NatAs...8..308D: NS detection is tentative
+- 2024NatAs...8..308D: Only a third of the CO flux recovered
+- 2024NatAs...8..308D: Chemical models assume the companion stays close to the AGB star
+- 2024NatAs...8..308D: CN distribution needs 12CN coverage and more sensitive data
+- 2023A&A...674A.125B: Modest spectral resolution (~1 MHz or 1.1-1.3 km/s) of the main array observations limits rest frequency precision and can blend narrow maser components.
+- 2023A&A...674A.125B: Population diagrams assume optically thin LTE emission uniformly filling a 0.08 arcsec aperture and span a restricted energy range for OH, yielding column density uncertainties of ~25% for H2O and >=…
+- 2023A&A...674A.125B: Lack of multi-epoch monitoring across the stellar pulsation cycle prevents testing the predicted phase dependence of the OH/H2O abundance ratio and high-J OH variability.
+- 2023A&A...674A.125B: H2O radiative transfer maser models only include vibrational states up to (0,2,0), (1,0,0), and (0,0,1) and treat ortho and para H2O separately without cross-species line overlap; chemical kinetic mo…
+
+### Settings cards flag as needed but not stated
+- casa version: 5
+- line-free channels for continuum subtraction: 5
+- line-free channels used for continuum subtraction: 4
+- continuum subtraction method and line-free channels: 4
+- continuum subtraction and line-free channels: 4
+- self-calibration solution intervals: 4
+- line-free channels and continuum subtraction details: 3
+- continuum-subtraction line-free channels: 2
+- flux calibrator and flux scale uncertainty: 2
+- clean stopping threshold and masking strategy in tclean: 2
+- self-calibration solution intervals and number of rounds: 2
+- line-free channels and continuum subtraction method: 2
+- casa/pipeline version: 2
+- line-free channel ranges: 2
+- casa version and imaging parameters (weighting, cell, deconvolver, masks): 1
+- which dataset covers which lines and the per-dataset beam: 1
+- flux calibration uncertainty: 1
+- priors/initial values and fixed parameters in madcuba fits: 1
+- how the cold-component n and abundance were converted (extended source size handling): 1
+- how the warm/cold temperature split was chosen in the rotational diagram (e_up=100 k): 1
+- uclchem version and warm-up timescale/heating prescription: 1
+- calibration and imaging details (casa version, robust, masks, continuum subtraction) are all deferr…: 1
+- reduced emoca spectral cubes are not described as released: 1
+- full chemical network files and magickal input not provided: 1
+- formal uncertainties on column densities (fit by eye): 1
+- initial abundances and other chemical model parameters not listed: 1
+- radiative transfer beam size not stated: 1
+- original calibration details, casa version and calibrators (deferred to salinas2017/carney2017): 1
+- channel range and line-free channels for continuum fit: 1
+- image size, cell size and cleaning parameters: 1
+- numeric rms of the cube: 1
+- excitation temperature profile values: 1
+- scale heights h_c for gas and dust: 1
+- distance to hd 163296: 1
+- disk inclination and position angle used in lime and the radial profile: 1
+- model-fitting procedure (by-eye vs. statistical) and parameter uncertainties: 1
+- lime input details such as turbulent linewidth and the exact radial cutoff treatment: 1
+- exact casa version and pipeline version used for initial data calibration: 1
+- exact spectral window frequencies, bandwidths, and channel widths for bands 3, 4, 7, and 9, and whe…: 1
+- pixel cell sizes, image dimensions, and regularisation parameters used in gpuvmem: 1
+
+## Paper excerpts (40 of 135, chosen for detail and spread over fields/years)
+
+### 2019MNRAS.484L..43Z: First detection of the pre-biotic molecule glycolonitrile (HOCH<SUB>2</SUB>CN) in the interstellar medium (2019; astrochemistry, star_formation; archival_reuse)
+- question: Is glycolonitrile (HOCH2CN) present in the ISM toward the Solar-type protostar IRAS16293-2422 B, what are its excitation temperatures and abundances, and can gas-grain chemical modelling reproduce them?
+- step 4: Chemical modelling of abundance
+  - method: UCLCHEM three-phase model (diffuse, pre-stellar collapse, warm-up) with updated HOCH2CN network; zeta varied 1-6 times standard [Chemical modelling: "we vary the cosmic-ray ionisation rate ($\zeta$) from 1 to 6 times the standard value ($\zeta_{\rm std}=1.3\times10^{-17}$ s$^{-1}$)"]
+  - software: UCLCHEM
+  - parameter: Warm: nH=5e8 cm-3, T up to 160 K; cold: nH=6e6 cm-3, T up to 30 K; G0=1 Habing [Chemical modelling: "the gas/grain temperatures increase from 10 K up to either 160 K for the warm component, or to 30 K for the cold envelope"]
+  - assumption: HOCH2CN forms only on grains; ion-neutral rates assumed like CH3NCO [Chemical modelling: "we assume that they are similar to those involving CH$_3$NCO and keep the different branching ratios"]
+  - validation: Compared with observed abundances at dynamical age ~1-2e4 yr [Chemical modelling: "at the dynamical age of I16293B of $\sim$1-2$\times$10$^4$ yrs"]
+- limitation (authors): LTE may not apply; cold abundance is a lower limit [Results: "we cannot rule out the possibility that LTE might not apply"]
+- not stated (card): CASA version and imaging parameters (weighting, cell, deconvolver, masks); line-free channels used for continuum subtraction; which dataset covers which lines and the per-dataset beam; flux calibration uncertainty; priors/initial values and fixed parameters in MADCUBA fits; how the cold-component N and abundance were converted (extended source size handling); how the warm/cold temperature split w…
+
+### 2020A&A...636A..29W: Exploring molecular complexity with ALMA (EMoCA): complex isocyanides in Sgr B2(N) (2020; astrochemistry, star_formation, milky_way_ism; observational_alma_primary)
+- question: What are the column densities and excitation temperatures of cyanides and isocyanides in Sgr B2(N2), and can updated chemical models with a single-stage collapse/warm-up and extinction-dependent cosmic-ray ionization reproduce the NC:CN ra…
+- step 2: Build single-stage physical model of N2
+  - method: Power-law density and temperature profiles with free-fall collapse; density floor 1e4 cm-3; stop at 400 K [5.2 Physical model: "We have chosen to give the density profile a minimum gas-phase density of $10^{4}$ cm$^{-3}$."] [5.2 Physical model: "The collapse is stopped once a temperature of 400 K is reached"]
+  - software: MAGICKAL
+  - parameter: r0=6010 au, n0=1.54e7 cm-3, T0=135.5 K, alpha=1.5, q=0.38, nf=2.74e9 cm-3 [Table 1: "| $r_{0}$ | 6010 au |"]
+  - assumption: alpha from Shu 1977, q from Terebey 1993; COM rotational temperature equals dust temperature [5.2 Physical model: "we assume the rotational temperature measured for COMs at $r_0$ to be equal to the dust temperature at that radius"]
+  - validation: Column density from profile within a factor of two of observed value [7.3: "a value of $\sim$2.5 × 10^24^ cm$^{-2}$ is obtained, which is within a factor of two of the observational value of 1.4 × 10^24^ cm$^{-2}$"]
+- step 3: Run chemical models varying barrier and cosmic-ray ionization rate
+  - method: Seven models: constant zeta 1.3e-17, 1e-16, 3e-14, and Av-dependent zeta = 3.9e-16 Av^-0.6 + 1e-17 with multipliers 3.9e-16/-15/-14; H+CH3NC barrier 1200 vs 3000 K [5.3 Cosmic-ray ionization: "$\zeta = 3.9 \times 10^{-16}(A_{v})^{-0.6} + 10^{-17} s^{-1}$"]
+  - software: MAGICKAL
+  - parameter: H+CH3NC barrier 1200 K (standard) vs 3000 K (Model 2) [5.1: "The standard models presented in this paper use a barrier of 1200 K"]
+  - assumption: New isocyanide reactions and binding energies analogous to cyanides [5.1: "Grain-surface binding energies for and related radicals were chosen to mimic those of the corresponding cyanides"]
+- step 4: Radiative transfer of model abundances and rotational diagrams
+  - method: LTE radiative transfer through spherical model, convolution with Gaussian beam, rotation diagrams with optical depth correction, integration to ~8e4 au [6.4: "We integrate the emission of each molecule only for a radius of $\sim$8 × 10^4^ au, which is the maximum recoverable scale of ALMA in the EMoCA survey."]
+  - software: MAGICKAL
+  - assumption: LTE [6.4: "we then use the LTE approximation to calculate radiative transfer along lines of sight"]
+  - fitting: Gaussian fit to line wings for optical depth correction [6.4: "We correct for the optical depth of lines by fitting the wings of each spectral line to a Gaussian."]
+- result: Model 1 radiative transfer CH3NC/CH3CN = 5.2e-2 ± not stated dimensionless [Column density ratios table: "| CH$_3$NC/CH$_3$CN | 4.7 × 10^−3^ | 5.2 × 10^−2^"]
+- result: Model 4 CH3NC/CH3CN (radiative transfer) = 4.5e-3 ± not stated dimensionless [Column density ratios table: "4.2 × 10^−3^ | 4.5 × 10^−3^"]
+- limitation (authors): Physical profile, spherical symmetry, LTE and network inaccuracies may cause column density mismatch. [7.3: "It is possible that the physical profiles (density and temperature) that are being used in the spectroscopic model are not physically representative of the actual source."]
+- not stated (card): Calibration and imaging details (CASA version, robust, masks, continuum subtraction) are all deferred to Belloche et al. 2016; Reduced EMoCA spectral cubes are not described as released; Full chemical network files and MAGICKAL input not provided; Formal uncertainties on column densities (fit by eye); Initial abundances and other chemical model parameters not listed; Radiative transfer beam size …
+
+### 2018A&A...616A..45S: Exploring DCO<SUP>+</SUP> as a tracer of thermal inversion in the disk around the Herbig Ae star HD 163296 (2018; protoplanetary_disks, astrochemistry; archival_reuse)
+- question: Can a simple 2D chemical model of cold deuteration plus a parametrized warm deuteration channel reproduce the DCO+ J=3-2 emission in the HD 163296 disk, and what do the fitted parameters imply?
+- step 2: Compute DCO+ abundance with simplified cold-deuteration network
+  - method: Analytic 10-reaction network of Murillo+2015 on adopted Mathews+2013 density and temperature structure [2.2 Chemical model: "The DCO$^+$ chemical network involving the CD channel can be boiled down to only ten chemical reactions."]
+  - parameter: Constant ionization rate 1.3e-17 s^-1 [2.2 Chemical model: "The ionization rate ($\zeta$) is constant throughout the disk and equal to$1.3\times10^{-17}$ s$^{-1}$."]
+  - parameter: Standard model X_high=5e-5, T_CO=19 K, radial cutoff 300 AU [3.1 Standard model (CD): "We chose a standard CO abundance model with a constant abundance $X_{\rm high}$=5.0$\times10^{-5}$ at temperatures above an evaporation temperature of $T_{\rm CO}$=19 K."]
+  - assumption: T_dust = T_gas; HD abundance equals the cosmic D/H ~1e-5; X_low = 0.01 X_high [2.3 Implementation: "We assume that the dust temperature ($T_{\rm dust}$) equals the gas temperature ($T_{\rm gas}$), which is a reasonable assumption in the dense regions that we focus on."]
+  - fitting: Parameters adjusted to match the observed profile; no sampler stated [The CD+WD+TI model: "These values are taken to match the inner DCO$^+$ emission at R$\lesssim$ 150 AU."]
+  - validation: Network compared with full chemical models by Murillo+2015 [2.2 Chemical model: "They contrasted their results to a full chemical network including gas-grain balance (freeze-out, thermal desorption, and cosmic-ray-induced photodesorption) confirming the general trend found by the simplified network."]
+- limitation (authors): T_eff cannot be constrained without a gas temperature model, and photodesorption cannot be distinguished from thermal desorption [3.3 The CD+WD+TI model: "The exact value of the parameter $T_{\rm eff}$ cannot be constrained without a gas temperature model and only represents the location of the isothermal surface."]
+- not stated (card): Original calibration details, CASA version and calibrators (deferred to Salinas2017/Carney2017); Channel range and line-free channels for continuum fit; Image size, cell size and cleaning parameters; Numeric rms of the cube; Excitation temperature profile values; Scale heights h_C for gas and dust; Distance to HD 163296; Disk inclination and position angle used in LIME and the radial profile; Mod…
+
+### 2025A&A...702A..18D: Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment (2025; protoplanetary_disks, exoplanets, star_formation; observational_alma_primary)
+- question: What is the radio emission mechanism of the circumplanetary environment around PDS 70c, and why is PDS 70c detected in the sub-millimetre continuum while PDS 70b is not?
+- step 4: Fit parametric CPD SED models (dusty disc, jet, H I free-free, uniform slab, and magnetic disc with metals and H-)
+  - method: Construct analytic and semi-analytic SED models for a dusty viscous CPD, a dusty CPD plus optically thin/thick ionised jet, a viscous CPD with H I free-free emission, a uniform pill-box slab, and a magnetised CPD with metal and H- free-fre… [PDS 70c SED models: "The posterior distributions on the free parameters of our SED models were sampled with the `Nautilus` package (cite: Lange2023MNRAS.525.3181L), which implements nested sampling aided by neuronal networks."] [PDS 70c SED models: "We considered four models for the observed SED. Firstly, we considered only the dust component from the CPD. Secondly, we included an optically thin jet. Thirdly, we included an optically thick jet. Finally, we included free-free emission from the disc itself, using an $\alpha$-constant disc and a magnetic disc. We al…"]
+  - software: Nautilus
+  - parameter: M_p = 4 M_Jup, d = 112.3 pc, orbital radius = 34 au, R_out = 1/3 R_Hill ~ 1.23 au, R_p = R_in = 1 R_Jup, kappa_R = 10 cm^2/g, T_floor = 27 K, mu = 1 [PDS 70c SED models: "We opted for a planetary mass of $M_{\rm p}=4 \, M_{\rm Jup}$, given the upper limit of $4.9 \, M_{\rm Jup}$ (cite: Doi2024ApJ...974L..25D) and the restriction of $4 \, M_{\rm Jup}<M_{\rm p}< 12 \, M_{\rm Jup}$ (cite: Haffert2019NatAs...3..749H)."] [PDS 70c SED models: "PDS 70 is at a distance of $112.3 \, {\rm pc}$ (cite: Gaia2023A&A...674A...1G), and we adopted a planetary orbital radius for PDS 70c of $34 \, {\rm au}$ (cite: Haffert2019NatAs...3..749H), implying an outer CPD radius of $R_{\rm out}=1/3\,\ensuremath{{R_{\textnormal{Hill}}}}\sim 1.23 \, {\rm au}$ (cite: Quillen1998Ap…"]
+  - parameter: Jet spectral index alpha_jet = 0.4 (optically thick) or -0.1 (optically thin); magnetic disc alpha(R) > 10^-5 [PDS 70c SED models: "If the jet is partially optically thick, an upper limit is set on the spectral index with $\alpha_{\rm jet}=0.4$ (cite: Carrasco2016ApJ...821L..16C). In the case of an optically thin jet, $\alpha_{\rm jet}=-0.1$."] [Magnetic disc: "We therefore imposed a lower limit, $\alpha(R) > 10^{-5}$."]
+  - assumption: Dust opacity kappa_mm = 3.4 * zeta * (0.87 mm / lambda) cm^2/g; hydrostatic Gaussian vertical gas profile; LTE ionisation via Saha equation; solar photospheric abundances for H, He, Na, Mg, K without dust depletion; n_i = n_H- = n_e = 0 wh… [Dust component of the CPD: "The dust opacity is $\kappa_{\rm mm}=3.4 \zeta \times \frac{0.87 \rm mm}{\lambda} \, {\rm cm}^{2}/ {\rm g}$ (cite: Andrews2012ApJ...744..162A), and the optical depth $\tau_{\rm mm}=\kappa_{\rm mm} \Sigma / 2$."] [Magnetic disc: "We assumed that the metals are not depleted into dust."]
+  - fitting: Nested sampling aided by neural networks with Nautilus; flat priors in logarithm (log(gamma) and log(zeta) in [-15, 15] for jet model; log(B_ps/G) in [-4, 4] and log(Mdot_p) in [-10, -2] with log-likelihood penalty for R_T < R(T_c=1000 K) … [PDS 70c SED models: "The posterior distributions on the free parameters of our SED models were sampled with the `Nautilus` package (cite: Lange2023MNRAS.525.3181L), which implements nested sampling aided by neuronal networks. We assumed flat priors in logarithm, with very wide boundaries."] [Fitting the data: "We fixed $\alpha=10^{-2}$ and also varied the dust/gas ratio, $\zeta$, using uniform priors with $\log(\gamma)$ and $\log(\zeta)$ between -15 and 15."]
+  - validation: Reproduced tables from Zhu et al. (2018) for boundary layer case in Rayleigh-Jeans approximation prior to applying the model; tested parameter degeneracies on synthetic data [PDS 70c SED models: "Prior to applying this model to PDS 70c, we made sure to reproduce the tables from (cite: Zhu2018MNRAS.479.1850Z) for the boundary layer case (this assumes that the planet accretion luminosity dominates over the central brightness of the planet itself), and in the Rayleigh-Jeans approximation for consistency."] [Dust component of the CPD: "For example, using synthetic data obtained with the parametric model of (cite: Zhu2018MNRAS.479.1850Z), for Bands 3, 4, 7, and 9 with $\dot{M}_{\rm p}=10^{-9} \, M_{\rm Jup}\, {\rm yr}^{-1}$ and $\alpha=10^{-3}$, we obtained the orange corner plot shown in Fig. 5"]
+- step 5: Simulate CPD surface shock emission and test photospheric shock vs CPD surface shock scenarios
+  - method: Fit uniform slab model with fixed R_max = 2 R_Jup to test photospheric shock/accretion funnels; perform two 1D post-shock gas simulations following Aoyama et al. (2018) to compute optical depth and temperature profiles at 300 GHz and 600 G… [Surface shock on the CPD: "To firmly rule out photospheric shocks and accretion funnels, we estimated the temperature and EM needed for a fixed size of $R_{\rm max} = 2\,{R_{\rm Jup}}$ in the uniform slab model."] [Surface shock on the CPD: "To confirm that the post-shock emission on the CPD surface can indeed reproduce the observed radio emission, we performed two simulations of shock-heated gas following (cite: Aoyama2018ApJ...866...84A), whose results are shown in Figs. 15 and 16."]
+  - software: Nautilus
+  - parameter: Pre-shock velocities and densities: (v_0, n_0) = (30 km/s, 10^15 cm^-3) and (50 km/s, 10^12 cm^-3); mean molecular weight mu = 1.35; effective slab radius R_max = 62 R_Jup at 7000 K [Surface shock on the CPD: "These correspond to pre-shock velocities and neutral hydrogen number densities of $(\varv_0\, , n_0)=(30\,{\rm km\,s^{-1}}\, , 10^{15}\, \rm cm^{-3}$) and $(50\,{\rm km\,s^{-1}}\, , 10^{12}\, \rm cm^{-3}$) respectively."] [Surface shock on the CPD: "Using a mean molecular weight of $\mu=1.35$, $\varv_0=30\,{\rm km s^{-1}}$ and $n_0=10^{15} \,{\rm cc^{-1}}$ implies a mass flux of $\mu m_{\rm H} \times n_{0} \times \varv_{0} = 6.75 \times 10^{-3}\,{\rm cm^{-2}\, s^{-1} \,g}$."]
+  - assumption: Pre-shock velocity equals free-fall velocity v_0 = sqrt(2 G M_p / r); spatially constant mass flux falling on both sides of a circular slab [Surface shock on the CPD: "We can estimate the planetary mass required to achieve a pre-shock velocity of $\varv_0>30\,{\rm km\, s^{-1}}$ at $62\,R_{\rm Jup}$, by assuming that $\varv_0$ is the free-fall velocity"] [Surface shock on the CPD: "If this flux is is spatially constant and falls on both sides of a circular slab with a radius of $62\,R_{\rm Jup}$, the mass influx rate within this area is $0.1\, M_{\rm Jup}\,{\rm yr}^{-1}$."]
+  - fitting: Uniform slab fit with fixed R_max = 2 R_Jup or T = 7000 K [Surface shock on the CPD: "To firmly rule out photospheric shocks and accretion funnels, we estimated the temperature and EM needed for a fixed size of $R_{\rm max} = 2\,{R_{\rm Jup}}$ in the uniform slab model."] [Surface shock on the CPD: "A uniform slab at $7000$ K requires a radius of $R_{\rm max}=62\, R_{\rm Jup}$, which is in between the values obtained for the uniform slab models at $10^3$ K and $10^4$ K shown in Fig 11."]
+  - validation: Confirmed simulated post-shock optical depths match uniform slab best-fit values (tau_300GHz ~ 3, tau_600GHz ~ 0.6) [Surface shock on the CPD: "In both cases, the emission at 300 GHz is optically thick ($\tau>1$) but turns over into an optically thin spectrum at 600 GHz ($\tau \sim$ a few times $0.1$). This is also the case for the SED of PDS 70c obtained with the uniform slab model, with a best fit of $\tau_{300\,\rm GHz}\approx 3$ and $\tau_{600 \rm GHz}\ap…"]
+- result: Dust-to-gas ratio upper limit in CPD (fixed alpha = 10^-2 model) = 10^-4.80 ± upper limit dimensionless [Fitting the data: "The inferred upper limits on the dust-to-gas ratio are $10^{-4.80}$ and $10^{-7.05}$ for the models with fixed $\alpha$ and fixed $\dot{M}_{\rm p}$, respectively."]
+- result: Dust-to-gas ratio upper limit in CPD (fixed Mdot_p = 10^-6 M_Jup/yr model) = 10^-7.05 ± upper limit dimensionless [Fitting the data: "The inferred upper limits on the dust-to-gas ratio are $10^{-4.80}$ and $10^{-7.05}$ for the models with fixed $\alpha$ and fixed $\dot{M}_{\rm p}$, respectively."]
+- result: Uniform slab best-fit emission measure (T = 10^3 K) = 1.19e11 ± not stated cm^-6 pc [Fitting the data: "We notice that the values for the EM are smaller compared with the parametric model of (cite: Zhu2018MNRAS.479.1850Z), having the best fit ${\rm EM}=1.19 \times 10^{11} \, {\rm cm}^{-6}\, {\rm pc}$ and ${\rm EM}=1.04 \times 10^{12} \, {\rm cm}^{-6}\, {\rm pc}$ for each case."]
+- result: Uniform slab best-fit emission measure (T = 10^4 K) = 1.04e12 ± not stated cm^-6 pc [Fitting the data: "We notice that the values for the EM are smaller compared with the parametric model of (cite: Zhu2018MNRAS.479.1850Z), having the best fit ${\rm EM}=1.19 \times 10^{11} \, {\rm cm}^{-6}\, {\rm pc}$ and ${\rm EM}=1.04 \times 10^{12} \, {\rm cm}^{-6}\, {\rm pc}$ for each case."]
+- result: Uniform slab best-fit radius R_max (T = 10^3 K) = 0.078 ± not stated au [Fitting the data: "with a best fit size of $R_{\rm max}=0.078 \, {\rm au}$ and $R_{\rm max}=0.025 \, {\rm au}$ for the pill in each case."]
+- result: Uniform slab best-fit radius R_max (T = 10^4 K) = 0.025 ± not stated au [Fitting the data: "with a best fit size of $R_{\rm max}=0.078 \, {\rm au}$ and $R_{\rm max}=0.025 \, {\rm au}$ for the pill in each case."]
+- result: Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 610 G = -5.42 ± upper limit dex(M_Jup yr^-1) [Surface shock on the CPD: "Using the magnetic disc model from Sec. 3.5 with the best fit value of $B_{\rm ps}=610$ G, we obtain an upper limit of $\log \left(\dot{M}_{\rm p}/(M_{\rm Jup}/\rm yr)\right)<-5.42$ using the 3 $\sigma$ flux limit in Band 7."]
+- result: Planetary accretion rate upper limit log(Mdot_p / (M_Jup yr^-1)) for B_ps = 200 G = -5.77 ± upper limit dex(M_Jup yr^-1) [Surface shock on the CPD: "In the case of a smaller magnetic field (for example $B_{\rm ps}=200$ G), the upper limit for the accretion rate diminishes to $\log \left(\dot{M}_{\rm p}/(M_{\rm Jup}/\rm yr)\right)<-5.77$."]
+- limitation (authors): Stellar spectral index between Band 3 and Band 4 (-0.7 +/- 0.8) is too noisy to distinguish partially thick free-free emission, variability, or a synchrotron component. [Imaging, self-calibration and alignment: "Comparing $24\pm5\,\mu$Jy in Band 3 with $18\pm4\,\mu$Jy in Band 4 corresponds to a spectral index of $\alpha = -0.7\pm0.8$, which is too noisy to distinguish partially thick free-free emission (cite: WrightBarlow1975MNRAS.170...41W), variability, or a synchrotron component."]
+- limitation (authors): Inter-band alignment with VisAlign could not be applied to Bands 7 and 9 because the central star is not detected and the ring morphology differs dramatically from Band 3, requiring reliance on absolute pointing accuracy. [Imaging, self-calibration and alignment: "There is no counterpart of the star in Bands 7 or 9 with which to cross-check the inter-band alignment, and the ring appears dramatically different in radius and width compared to Band 3, hampering the application of `VisAlign`. We simply rely on the absolute pointing accuracy, of $\sim$10 mas in Band 7 and $\sim$5 ma…"]
+- limitation (authors): Diffuse emission near the cavity edge in Band 9 was not subtracted from the forced-photometry measurement, and PDS 70c's flux in Band 7 is affected by confusion with the cavity wall. [Point source measurements of PDS 70c: "However its flux density is difficult to measure because of confusion with the cavity wall."]
+- not stated (card): Exact CASA version and pipeline version used for initial data calibration; Exact spectral window frequencies, bandwidths, and channel widths for Bands 3, 4, 7, and 9, and whether spectral lines were flagged before continuum imaging; Pixel cell sizes, image dimensions, and regularisation parameters used in gpuvmem; Exact prior boundaries used in Nautilus for the H II disc and uniform slab model fi…
+
+### 2024A&A...691A.180F: CHEMOUT: CHEMical complexity in star-forming regions of the OUTer Galaxy: IV. ALMA observations of organic species at a galactocentric radius of 23 kpc (2024; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: What are the spatially resolved molecular emission and abundances of organics in the outer-Galaxy star-forming region WB670 at R_GC 23.4 kpc, and do chemical models reproduce them?
+- step 5: Chemical modelling comparison
+  - method: UCLCHEM static grid of 65536 models; compare column density ratios at 1e6 yr; select 50 lowest-MSE models [5.4 Chemical modelling: "the 50 models with the lowest Mean Squared Error (MSE) are chosen."]
+  - software: UCLCHEM
+  - parameter: R=0.5 pc, Av=1 mag, gas-to-dust 100, 12C/13C=10^1.8 [5.4 Chemical modelling: "Each of the models is ran with an edge visual extinction of $A_v=1.0$ mag, and molecular ratios are computed at $10^6$ years."]
+  - assumption: Isothermal constant-density static cloud [5.4 Chemical modelling: "We considered a "static model", namely an isothermal cloud at constant density with a radius of $R=0.5$ pc"]
+  - fitting: Grid sampled over density, T, zeta, F_UV, initial O and C abundances; ranking by MSE [Table: "| Density $n_\mathrm{H}\;(\mathrm{cm}^{-3})$ | $1 \times 10^3$ | $1 \times 10^7$ | log |"]
+  - validation: Test with gas-to-dust ~3000 at low and high density [5.4 Chemical modelling: "In the low density case, the results do not show any significant differences."]
+- result: Best-model temperature range = 20-45 ± not stated K [5.4 Chemical modelling: "temperatures from 20 to 45 K, radiation fields lower than 5 Habing"]
+- limitation (authors): Tex fixed to CH3OH value for all species; N_tot uncertain up to factor 2 [4.2: "$N_{\rm tot}$ can vary up to a factor 2 depending on the species."]
+- limitation (authors): Static models cannot reproduce all ratios; dynamical models needed [5.4 Chemical modelling: "Overall, it is very unlikely to find a model that fits all ratios well."]
+- not stated (card): Clean parameters in GILDAS (iterations, threshold, masks, pixel size, image size); Continuum-free channels and continuum subtraction method; Spectral line extraction regions definition (regions 1-7 are drawn roughly by eye); Exact beam sizes per band; Which spws used for continuum and total bandwidth; UCLCHEM version, network and initial conditions beyond the table; Details of MSE ratio computati…
+
+### 2024ApJ...972..146S: Interstellar Glycolaldehyde, Methyl Formate, and Acetic Acid. II. Chemical Modeling of the Bimodal Abundance Pattern in NGC 6334I (2024; astrochemistry, star_formation; theory_or_simulation_compared_to_alma)
+- question: Which physical conditions reproduce the extreme MF:GA ratios and bimodal abundance pattern in NGC 6334I?
+- step 1: Configure the chemical model
+  - method: Solve coupled gas, grain-surface and bulk-ice rate equations with the G22 final setup and M4 network [Methods: "MAGICKAL (cite: Garrod_2013) is a three-phase model used to calculate and solve the coupled rate equations that govern the chemistry occurring in the gas, grain-surface, and bulk-ice phases."] [Methods: "The chemical network used here is that presented by (cite: G&H23) for their M4 setup"]
+  - software: MAGICKAL
+  - parameter: 749 gas-phase species; 318 grain-surface species and the same number in bulk ice; 22,401 reactions and processes [Methods: "The chemical network includes a total of 749 gas-phase species, and 318 (neutral) grain-surface species, with the same number of species also traced in the bulk ice."] [Methods: "There is a total of 22,401 reactions and processes, including transfer of atoms/molecules between the surface and bulk ice."]
+  - parameter: H surface binding energy 661 K; diffusion barrier 243 K; tunneling barrier width 3.2 Å [Methods: "As per G22, the surface binding energy of atomic H is taken as 661 K and the diffusion barrier as 243 K"] [Methods: "Tunneling rates are used (based on a barrier width of 3.2Å, corresponding to a majority water ice) in cases where those rates exceed the thermal diffusion rates."]
+  - assumption: Bulk diffusion limited to interstitial H and H2; bulk barriers twice surface barriers [Methods: "diffusion within the bulk ice is limited to H and H$_2$, which are assumed to exist in interstitial positions within the ice matrix."] [Methods: "Bulk-ice diffusion rates for H and H$_2$ are based on barriers twice the strength of the surface barriers."]
+  - assumption: Unity sticking coefficient for all species [Methods: "As in G22, the sticking coefficient for all species is unity."]
+- step 2: Generate collapse and warm-up histories
+  - method: Free-fall collapse followed by gas/dust warm-up; test every physical-parameter combination [Physical model: "the first stage represents the isothermal, free-fall collapse of a dense core from an initially diffuse/translucent state, with the gas temperature held constant at 10 K."] [Physical model: "Stage 2 of the physical model involves the gradual warm-up of the gas and dust, while all other physical quantities are held steady (using their final values from stage 1)."]
+  - software: MAGICKAL
+  - parameter: Initial extinction 2 or 3 mag; final n_H from 2×10^6 to 2×10^10 cm^-3, including 6.32×10^7 cm^-3 [Model Grid Parameters: "The initial visual extinction in stage 1 is set at either 2 or 3 mag."] [Model Grid Parameters: "we adopt final hydrogen number densities, $n_{\mathrm{H}}$, from $2\times10^6$ to $2\times10^{10}$ cm$^{-3}$"]
+  - parameter: CRIR 1.30×10^-18 to 1.30×10^-15 s^-1; constant through both stages [Table 1: "$1.30\times10^{-18}$"] [Table 1: "$1.30\times10^{-15}$"]
+  - parameter: Warm-up timescales 2×10^4 to 2×10^6 yr; final temperature 400 K [Model Grid Parameters: "ranging from $2\times10^4$ to $2\times10^6$ yr"] [Physical model: "until they reach a final temperature of 400 K."]
+  - assumption: Uniform grain radius 0.1 micrometre; visual extinction capped at 500 mag [Physical model: "The dust grains are assumed to have a uniform radius of 0.1 $\mu$m, following past models."] [Physical model: "The visual extinction is capped at a value of 500 mag."]
+  - validation: Standard model compared with G22 abundance behavior [Results: "The first of the three models (Fig. [1](#fig:abundances1)) is essentially the same as that presented by G22"]
+- step 3: Extract model abundance ratios
+  - method: Ratio the separate peak stage-2 gas-phase abundances [Matching parameter: "the modeled MF:GA ratio is calculated as the ratio of the peak gas-phase MF abundance to the peak gas-phase GA abundance."]
+  - software: MAGICKAL
+  - assumption: Peak-abundance ratios directly comparable with observed column-density ratios despite no spatial model [Matching parameter: "In the absence of a spatial model of the distribution of the COMs, we therefore assume that the ratio of peak abundances between different molecules should be directly comparable with observed column density ratios."]
+  - validation: Inspect peak-temperature offsets; variation in ratios at different peak times omitted from matching [Comparison of Peak Abundance Values: "the models will necessarily display some variation depending on whether the ratio is taken, for example, at the time/temperature of the MF peak, or that of GA."] [Comparison of Peak Abundance Values: "In the interests of simplicity, this variation is not taken into account in the model comparisons."]
+- step 6: Identify the chemical mechanism and threshold
+  - method: Inspect time-dependent abundances, summed formation/destruction rates and MF:GA versus density for each warm-up timescale [Early Formation Mechanisms: "These rates correspond to the sum of formation and destruction of the same molecule over all phases (i.e. gas, grain-surface and bulk-ice)."] [Density and timescale thresholds for la…: "plots the peak MF:GA ratio produced in the models against the stage-2 gas density"]
+  - software: MAGICKAL
+  - parameter: Critical GA surface-destruction regime approximately 125–160 K [Density and timescale thresholds for la…: "In our model, GA destruction by adsorbed atomic H occurs mainly in the temperature range $\sim$125–160 K"]
+  - assumption: Water-ice trapping exposes MF and GA progressively during desorption [Gas-Phase Split in MF and GA Abundances: "as material is lost from the surface monolayer, material in the bulk ice beneath is exposed, becoming the new surface."]
+  - validation: Assess sensitivity to H sticking and binding assumptions [Density and timescale thresholds for la…: "The use of a temperature-dependent sticking coefficient in the model would therefore be expected to shift the density threshold to a higher value than the present models suggest, likely by a factor of a few."]
+- step 7: Test reaction-barrier sensitivity
+  - method: Reduce H+GA surface/ice activation barriers by 25% and compare MF:GA density curves [Activation-Energy Barrier Testing: "In a set of test models, the activation-energy barriers of the grain-surface/ice reactions of atomic H with glycolaldehyde were reduced by 25%"]
+  - software: MAGICKAL
+  - parameter: Three warm-up timescales; standard CRIR; initial extinction 2 mag [Activation-Energy Barrier Testing: "Three timescales were chosen to evaluate the effect of the lowered reaction barrier, using a setup that adopts the standard $\zeta$-value and an initial $A_{\mathrm{V}}$ of 2."]
+  - assumption: 25% reduction represents approximate calculated variation between functionals [Activation-Energy Barrier Testing: "This value was chosen to correspond to the approximate degree of variation in activation energy barriers for these reactions calculated by (cite: barcia_2018) when adopting different functionals"]
+  - validation: Modest abundance-ratio effect; threshold density essentially unaffected [Activation-Energy Barrier Testing: "This alteration of the GA reaction barriers has a modest and fairly uniform effect on the models tested, especially at densities greater than the threshold value."] [Activation-Energy Barrier Testing: "However, the threshold density itself is essentially unaffected by the change."]
+- result: Standard-model peak MF:GA ratio = ~1.7 ± not stated dimensionless [Results: "The MF:GA ratio is $\sim$1.7."]
+- result: Standard-model MF:AA ratio = 32 ± not stated dimensionless [Cosmic-Ray Ionization Rate, ζ: "The “standard” model (panel J) has a MF:AA ratio of 32"]
+- result: Model (ii) peak gas-phase MF:GA ratio = 140:1 ± not stated dimensionless [Results: "The gas-phase MF:GA ratio in this model is 140:1."]
+- result: Model (iii) peak gas-phase MF:GA ratio = 235:1 ± not stated dimensionless [Results: "The large split in peak gas-phase abundances of MF and GA is retained in this high-density model, with a MF:GA ratio of 235:1."]
+- result: Approximate density–warm-up product at MF:GA upturn = 3 × 10^13 ± not stated cm^-3 yr [Density and timescale thresholds for la…: "a value $n_{\mathrm{H}} t_{\text{wu}} \simeq 3 \times 10^{13}$ cm$^{-3}$yr crudely marks the point at which the upturn begins."]
+- result: GA destruction temperature regime = ~125–160 ± not stated K [Density and timescale thresholds for la…: "In our model, GA destruction by adsorbed atomic H occurs mainly in the temperature range $\sim$125–160 K"]
+- result: Desorption timescale relative to full warm-up timescale = ~17 ± not stated dimensionless [Density and timescale thresholds for la…: "This desorption timescale is shorter by a factor of $\sim$17 compared with the corresponding full warm-up timescale"]
+- result: Maximum MF–GA peak-temperature difference across models = 237 ± not stated K [Comparison of Peak Abundance Values: "The maximum peak-to-peak temperature difference between MF and GA in all our models is 237 K."]
+- limitation (authors): Coarse parameter grid and degeneracy limit unique physical-condition inference [Discussion: "parameter-tuning might produce not only a better match but a substantial change in the underlying parameters due to the degeneracy of the models in reproducing a limited set of observational data."]
+- limitation (authors): Two isomer ratios do not constrain CRIR adequately [Cosmic-Ray Ionization Rates: "these ratios are not sufficient to determine the most likely CRIR for each source."]
+- limitation (authors): Peak ratios omit temporal variation and source spatial structure [Comparison of Peak Abundance Values: "In the interests of simplicity, this variation is not taken into account in the model comparisons."]
+- not stated (card): Numerical initial hydrogen density and initial elemental/chemical abundances for stage 1.; Complete executable M4 network, reaction-rate coefficients and adopted species binding energies.; Exact temperature-versus-time warm-up function and extinction-to-dust-temperature prescription.; MAGICKAL version, numerical solver settings and output sampling used to locate abundance peaks.; Resolution of th…
+
+### 2021A&A...647A.118L: Exploring HNC and HCN line emission as probes of the protoplanetary disk temperature (2021; protoplanetary_disks, astrochemistry; theory_or_simulation_compared_to_alma)
+- question: Can HNC and HCN emission, especially their line ratio, probe disk temperature and other physical and chemical conditions?
+- step 5: Solve chemistry and thermal structure
+  - method: Monte Carlo dust radiative transfer; chemical abundances and non-LTE excitation; iterate heating–cooling balance to self-consistent gas temperature [Physical and chemical models: "DALI first solves the dust continuum radiative transfer based on a Monte Carlo method to obtain the local UV flux and dust temperature"] [Physical and chemical models: "the abundances for chemical species are calculated with a chemical network simulation and are then fed into the non-LTE excitation calculation"]
+  - software: DALI, KIDA
+  - parameter: Initial [C]/[H]=1×10^-4; [O]/[H]=3.5×10^-4; [N]/[H]=1.6×10^-5 [Table 1: "| $\rm [C]/[H]$ | 1$\times 10^{-4}$ | | $\rm [O]/[H]$ | 3.5$\times 10^{-4}$ | | $\rm [N]/[H]$ | 1.6$\times 10^{-5}$ |"]
+  - parameter: HNC+H barrier 200 K; HNC+O barrier 20 K [Chemical network: "we used an updated reaction rate coefficient of HNC+H based on (cite: Graninger2014) with an energy barrier of 200 K"] [Chemical network: "we included the reaction of HNC+O with an energy barrier of 20 K"]
+  - parameter: Grain binding energies: CN 1600 K; HNC and HCN 2050 K [Chemical network: "We used binding energies to grains of 1600 K for CN and 2050 K for HNC and HCN"]
+  - assumption: Steady-state chemistry with initial ISM CNO abundances and ISM C/O [Chemical network: "The chemistry was run in steady-state mode with initial ISM abundances for CNO"] [Chemical network: "thus with the ISM C/O."]
+  - assumption: Chemical model inherited from Cazzoletti2018 except the two HNC-destruction changes [Chemical network: "The entire chemical model is the same as was used for the investigation of CN emission in disks (cite: Cazzoletti2018), except for two changes made relating to the destruction of HNC"]
+  - validation: Iterate to self-consistency; updated network has negligible effects on CN emission [Physical and chemical models: "the final $T_{\rm gas}$ is obtained by iterating the above steps until a self-consistent solution is reached."] [Chemical network: "The updated network has negligible effects on the CN emission."]
+- limitation (authors): Model abundances and column densities uncertain by at least a factor of a few [Chemical network: "Given the uncertainties in individual rate coefficients and physical structure, our model abundances and column densities have uncertainties of at least a factor of a few."]
+- limitation (authors): Equal HNC and HCN photodissociation rates assumed; actual HNC rate may be twice as high [Chemical network: "The same photodissociation rate was used for HCN and HNC; the actural HNC photodissociation rate may be a factor of 2 higher than that of HCN (cite: Aguado2017)."]
+- limitation (authors): TW Hya short-spacing coverage may affect its radial profile and apparent central component [Comparisons to new HNC observations of …: "The data presented here lack the short-spacing baselines that might affect the radial profile, thus future observations are needed to confirm the presence of this central component."]
+- not stated (card): Resolve the TW Hya project-code discrepancy: 2017.1.0156.S in the observation section versus 2017.1.01056.S in the acknowledgements.; TW Hya uvcontsub line-free channels, fit order and spectral-window selections.; tclean cell size, image size, deconvolver, cleaning mask, threshold and iteration limits for both datasets.; Whether primary-beam correction or self-calibration was applied.; TW Hya dep…
+
+### 2021ApJ...910..141T: Carbon-chain Chemistry versus Complex-organic-molecule Chemistry in Envelopes around Three Low-mass Young Stellar Objects in the Perseus Region (2021; star_formation, astrochemistry; archival_reuse)
+- question: Spatial distributions and CH3OH/HC3N abundance ratios in three Perseus low-mass YSOs, compared with Nautilus chemical models to test WCCC vs hot-corino-like chemistry
+- step 5: Run chemical network models of the CH3OH/HC3N ratio
+  - method: Nautilus hot-core model with a slow warm-up stage, varying cosmic-ray ionization rate and C/O ratio [4.1 Chemical network simulations: "We used the chemical network code Nautilus (cite: 2016MNRAS.459.3756R) and a hot-core model with a warm-up stage."] [4.1 Chemical network simulations: "We changed the cosmic ray ionization rate ($\zeta$) and the initial C/O ratio"]
+  - software: Nautilus
+  - parameter: Cosmic-ray rates 1.3e-17, 3.0e-16, 4.0e-14 s^-1 (Models 1-3) [Table 6: "$1.3 \times 10^{-17}$"] [Table 6: "$3.0 \times 10^{-16}$"]
+  - parameter: C/O ratio 0.4 (Models 1-3), 0.5 (Model 4), 1.2 (Model 5) [Table 6 notes: "The C/O ratio of 0.4 corresponds to C$^{+}$ = $7.3 \times 10^{-5}$ and O = $1.76 \times 10^{-4}$"]
+  - parameter: Initial T 10 K rising to 200 K during warm-up [4.1 Chemical network simulations: "The initial temperature is 10 K and rises to 200 K during the warm-up period."]
+  - parameter: Slow warm-up period of 1e6 yr [4.1 Chemical network simulations: "we utilized the model with a slow warm-up period ($1 \times 10^{6}$ yr)"]
+  - assumption: Dust temperature equal to gas temperature [4.1 Chemical network simulations: "The dust temperature is assumed to be equal to the gas temperature."]
+- limitation (authors): HC3N peak offset from the Spitzer source not understood at this resolution [3.1 Results: Spatial distributions: "The origins of such discrepancies are not clear at the current angular resolution."]
+- limitation (authors): Sensitivity may be too low to detect weak CH3OH lines in IRAS 03235 and IRAS 03271 [3.1 Results: Spatial distributions: "The noise levels of the ACA 7-m observations could be too high to detect weak lines of CH$_{3}$OH in IRAS 03235 and IRAS 03271."]
+- limitation (authors): Excitation temperature may be underestimated in the data [3.2 Spectral analyses: "the excitation temperature may be underestimated in our data."]
+- not stated (card): CASA version and pipeline version used for the archival calibration; tclean settings beyond uniform weighting and gridding: deconvolver, niter, threshold, masking, channel width and rest frequency used for the cubes; Line-free channels (or continuum selection) used with IMCONTSUB and whether the continuum comes from a line cube; Velocity range and any clipping used for the moment 0 maps; Primary-…
+
+### 2019A&A...629A.146V: IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS (2019; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the large-scale spatial distribution and radial abundance profiles of SiO, SiS and CS in the envelope of IRC+10216, and what do they say about its mass-loss history and photo-dissociation?
+- step 4: Chemical model of photo-dissociation
+  - method: Gas-phase photo-induced chemistry network (~8000 reactions) with parent abundances updated from step 3 [Chemistry: "The chemical network encompasses about 8 000 gas-phase, photo-induced, and cosmic-ray reactions"]
+  - parameter: cosmic-ray ionisation rate 1.2e-17 s-1; NH/Av 1.5 times lower than classical; initial radius 2e14 cm [Chemistry: "The adopted cosmic-ray ionisation rate of H$_2$ is 1.2$\times$10$^{-17}$ s$^{-1}$ (cite: agu06)."]
+  - assumption: SiS photo-dissociation rate assumed equal to SiO [Chemistry: "In the case of SiS, there are no estimates of its photo-dissociation rate, thus as an educated guess, we assumed the same value than that of SiO."]
+  - validation: Compared fall-off radii with observations and RT results [Chemistry: "these predictions are on average below a factor of 1.5, being the fall-off distances of the chemical models larger than the observational measurements"]
+- limitation (authors): Model based on single line for SiO and CS, two for SiS; degeneracy between density and abundance [Radiative transfer modelling: "our study is based solely on the analysis of just a single line in the cases of SiO and CS, and two lines in the case of SiS"]
+- not stated (card): Continuum-free/line-free channels and continuum subtraction method; Cell size, image size, clean masks and iteration thresholds; Exact azimuthal-average procedure and fit goodness criterion for abundance profiles; Abundance profile values as a function of radius (only in figure); Details of the UVSHORT merging scaling; Spectral window assignments per track and time on source; Radiative transfer c…
+
+### 2024ApJ...977...38B: Neural Network Constraints on the Cosmic-Ray Ionization Rate and Other Physical Conditions in NGC 253 with ALCHEMI Measurements of HCN and HNC (2024; nearby_galaxies, astrochemistry, star_formation; archival_reuse)
+- question: Constrain spatially varying CRIR and molecular gas conditions across the NGC 253 CMZ using HCN, HNC, and a neural-network chemical emulator.
+- step 3: Generate chemical training abundances
+  - method: Run two-phase UCLCHEM models: free-fall collapse followed by 6 Myr cloud chemistry; retain both molecular abundances above 10−12. [Training Dataset: "models the free-fall collapse of a gas cloud with an initial density of 100 cm$^{-3}$ down to the specified density at a fixed temperature of 10 K"] [Training Dataset: "to chemically model the cloud itself over a timescale of 6 Myr."]
+  - software: UCLCHEM
+  - parameter: Temperature: 50–300 K; 15 linear points [Table 2: "| $T_\text{K}$ | Temperature (K) | 50–300 | Linear | 15 |"]
+  - parameter: H2 volume density: 10^3–10^7 cm−3; 20 logarithmic points; buffer 10^2.6–10^7.4 with 24 points [Table 2: "| $n_{\text{H}_2}$ | Volume Density (cm$^{-3}$) | 10$^3$–10$^7$ $(10^{2.6}$–$10^{7.4})$ | Log | 20 (24) |"]
+  - parameter: CRIR: 10–10^7 ζ0; 25 logarithmic points; ζ0 = 1.36×10−17 s−1 [Table 2: "| $\zeta$ | Cosmic Ray Ionization Rate ($\zeta_{0}$$^{a}$) | 10–10$^7$ | Log | 25 |"] [Table 2: "$\zeta_0$ = $1.36\times10^{-17}$ s$^{-1}$"]
+  - parameter: H2 column density: 10^22–10^25 cm−2; 15 logarithmic points; buffer 10^21.6–10^25.4 with 19 points [Table 2: "| $N_{\text{H}_2}$ | H$_{2}$ Column Density (cm$^{-2}$) | 10$^{22}$–$10^{25}$ $(10^{21.6}$–$10^{25.4})$ | Log | 15 (19) |"]
+  - parameter: ∼170,000 initial combinations; ∼115,000 after filtering [Training Dataset: "Including buffer points, which will be discussed later, each initial dataset contains $\sim$170,000 parameter combinations."] [Training Dataset: "leaving $\sim$115,000 data points."]
+  - assumption: Phase 2 inherits phase-1 abundances. [Training Dataset: "phase 2, which uses the calculated abundances inherited from phase 1"]
+  - assumption: Shielded cloud interior: Av = 10 mag; UV = 1 Habing in both phases; UV negligible [Training Dataset: "Here we assume that we are probing the inner, shielded part of the cloud (visual extinction $A_v$ of 10 mag) such that UV radiation (set to 1 Habing in both `UCLCHEM phases`) is negligible."]
+  - assumption: X-ray ionization excluded. [Training Dataset: "X-ray ionization is not included in `UCLCHEM`"]
+  - validation: Filter low-abundance combinations considered dominated by numerical error. [Training Dataset: "Any parameter combinations that result in very low abundances are likely to be dominated by numerical error rather than chemistry (cite: heyl2023)."]
+- step 5: Benchmark emulator accuracy and inference speed
+  - method: Compare held-out chemical abundances and compare neural-network versus UCLCHEM inference in regions 26 and 53. [Training Results: "We compare the neural network model-predicted values against those calculated with `UCLCHEM`"] [Neural Network vs. Chemical Model: "compares the inference algorithm results using `UCLCHEM` and the HCN/HNC neural network for regions 26 and 53"]
+  - software: UCLCHEM, UltraNest, TensorFlow
+  - parameter: Regions 26 and 53 represent outer and inner CMZ. [Neural Network vs. Chemical Model: "which were chosen to represent regions in the outer and inner CMZ, respectively."]
+  - fitting: Compare inferred parameters, uncertainties, and 1D/2D posterior distributions. [Neural Network vs. Chemical Model: "The final inferred parameter values and their uncertainties derived from `UCLCHEM` and our neural network are nearly identical."] [Neural Network vs. Chemical Model: "both the 1D and 2D posterior distributions for the two methods feature very similar shapes and characteristics"]
+  - validation: Mean abundance recovery within 3%; inferred parameters within UCLCHEM uncertainties. [Training Results: "on average, the neural network model is able to recover molecular abundances within 3% of the chemical model’s values."] [Neural Network vs. Chemical Model: "the parameter values inferred by our neural network algorithm are well within the uncertainties obtained from the same analysis with `UCLCHEM`."]
+- step 7: Identify unreliable regional solutions
+  - method: Inspect HCN/HNC abundance ratios, individual abundances, temperature-boundary behavior, and detected excitation ladders to flag UV/shock or low-abundance failures. [High $X_\text{HCN}/X_\text{HNC}$: "The unphysical combination of high $\zeta$ and very low $T_\text{K}$, in addition to anomalously high $X_{\text{HCN}}/X_{\text{HNC}}$ values, indicate that the chemistry included in our model is not well suited to the conditions in these regions."] [Low $X_\text{HCN}$ and $X_\text{HNC}$: "we then look beyond abundance ratios and consider the individual values of $X_{\text{HCN}}$ and $X_{\text{HNC}}$."]
+  - software: UCLCHEM
+  - parameter: 24 regions with X_HCN/X_HNC >4 also have ζ >5×10−13 s−1 [High $X_\text{HCN}/X_\text{HNC}$: "all 24 regions with $X_{\text{HCN}}/X_{\text{HNC}} > 4$ also feature $\zeta > 5\times10^{-13}$ s$^{-1}$."]
+  - parameter: Abundances below 10−12 indicate unreliable chemical solutions. [Low $X_\text{HCN}$ and $X_\text{HNC}$: "the most likely range of parameters yields $X_\text{HCN}$ and $X_\text{HNC}$ values below $10^{-12}$"] [Low $X_\text{HCN}$ and $X_\text{HNC}$: "we determine that parameter results for any regions that correspond to such low abundances are unreliable."]
+  - assumption: Shielded, cosmic-ray-dominated chemistry may fail in diffuse UV-affected or shocked gas. [High $X_\text{HCN}/X_\text{HNC}$: "Since the chemistry in shocked regions is likely not dominated by cosmic-ray ionization, the model presented here may struggle to constrain the parameters in those areas."] [High $X_\text{HCN}/X_\text{HNC}$: "UV radiation is likely impacting the HCN and HNC chemistry."]
+  - validation: Region 1 UCLCHEM/emulator comparison reproduces the low-abundance failure; affected regions lack higher-J detections. [Low $X_\text{HCN}$ and $X_\text{HNC}$: "shows the posterior distributions achieved for region 1 using `UCLCHEM` and the neural network model, demonstrating nearly identical results in this low-abundance region."] [Low $X_\text{HCN}$ and $X_\text{HNC}$: "all low-abundance regions feature four or fewer combined HCN and HNC transitions that meet our S/N criteria"]
+- result: Mean neural-network abundance recovery error = 3 ± not stated % [Training Results: "on average, the neural network model is able to recover molecular abundances within 3% of the chemical model’s values."]
+- result: Neural-network inference time relative to UCLCHEM, region 26 = ∼7 ± not stated % [Neural Network vs. Chemical Model: "The neural network$+$`UltraNest` algorithm completed its explorations of the parameter space in $\sim7$% and $\sim15$% of the time it took for `UCLCHEM`$+$`UltraNest` to do the same for regions 26 and 53, respectively."]
+- result: Neural-network inference time relative to UCLCHEM, region 53 = ∼15 ± not stated % [Neural Network vs. Chemical Model: "The neural network$+$`UltraNest` algorithm completed its explorations of the parameter space in $\sim7$% and $\sim15$% of the time it took for `UCLCHEM`$+$`UltraNest` to do the same for regions 26 and 53, respectively."]
+- result: Regions with X_HCN/X_HNC >4 and ζ >5×10−13 s−1 = 24 ± not stated regions [High $X_\text{HCN}/X_\text{HNC}$: "all 24 regions with $X_{\text{HCN}}/X_{\text{HNC}} > 4$ also feature $\zeta > 5\times10^{-13}$ s$^{-1}$."]
+- limitation (authors): Initial chemical conditions may affect phase-2 starting abundances; varying them requires rebuilding the training set. [Training Dataset: "the abundances used at the beginning of stage 2 may be sensitive to the initial conditions (e.g. UV field, elemental abundances, mode of collapse)"]
+- limitation (authors): The emulator may smooth posterior structure; finer-grid testing remains necessary. [Neural Network vs. Chemical Model: "the 2D posteriors generated when including the neural network model are somewhat smoother than those produced when our algorithm includes `UCLCHEM`."]
+- limitation (authors): Kinetic temperature is poorly constrained. [Parameter Maps: "In general, we do not constrain the kinetic temperature well with our HCN and HNC measurements"]
+- not stated (card): Exact calibrated cube products, spectral channel widths, velocity integration windows, and CubeLineMoment masking settings.; Calibration and imaging versions, visibility weighting, array combination, primary-beam treatment, and final beam matching across transitions.; Adopted distance and hexagonal-grid sky origin, orientation, boundaries, and region masks.; Random linewidth distribution and seed…
+
+### 2018A&A...617A.120M: Tracing the cold and warm physico-chemical structure of deeply embedded protostars: IRAS 16293-2422 vs. VLA 1623-2417 (2018; star_formation, astrochemistry; observational_alma_primary)
+- question: What factors determine the cold and warm chemical structure of two Class 0 protostars, IRAS 16293-2422 and VLA 1623-2417, as seen in key molecular tracers?
+- step 2: Model DCO+ peak position with chemical network
+  - method: Steady-state analytic H2D+/DCO+ network with CO freeze-out drop abundance, passed through RATRAN to synthetic cubes, temperature/density profiles scaled by arbitrary factors [4.1.1: "a simple steady-state, analytic chemical network that accounts for the basic reactions leading to the production and destruction of is used."]
+  - software: RATRAN
+  - parameter: T_sub = 20–40 K, n_de = 1e5–1e8 cm-3, X[CO] = 1e-7–1e-4 [4.1.1: "we explore the parameter ranges of $T_{\rm sub}$ = 20–40 K, $n_{\rm de}$ = 10$^{5}$–10$^{8}$ cm$^{-3}$ and $X[\ce{CO}]$ = 10$^{-7}$ – 10$^{-4}$."]
+  - assumption: cosmic-ray ionization rate 1.26e-17 s-1; ortho-to-para H2 lower limit 1e-3; sources centred on and dominated by A [4.1.1: "The ortho-to-para ratio is set to have a lower limit of 10$^{-3}$ at low temperatures"]
+  - fitting: By-eye fit of radial profile [4.1.1: "A by eye fit of the chemical model to the observations is used to constrain the decrease in the temperature profile"]
+  - validation: Consistency with DCO+ results of VLA 1623 in Murillo et al. 2015 and with line-ratio temperatures [4.1.2: "This temperature is consistent with the chemical modelling of the peak position."]
+- result: Temperature reduction factor, VLA 1623 = 1.5 ± 0.2 dimensionless [4.1.1: "The factor is constrained to be 1.5+/-0.2 for VLA 1623 and 3.0+/-0.2 for IRAS 16293."]
+- result: Temperature reduction factor, IRAS 16293 = 3.0 ± 0.2 dimensionless [4.1.1: "The factor is constrained to be 1.5+/-0.2 for VLA 1623 and 3.0+/-0.2 for IRAS 16293."]
+- limitation (authors): Simple chemical model cannot explain inner DCO+ 5-4 emission; single physical profile adopted [4.1.1: "our simple chemical model cannot fully explain the inner part of the 5–4 emission"]
+- not stated (card): CASA version and calibration/imaging details for VLA 1623 Cycle 0 and Cycle 2 data; Weighting, robust, cell and image size, and CLEAN parameters; Continuum subtraction method and line-free channels; Moment-map integration velocity ranges and masks; Exact RADEX grid ranges and how uncertainties on temperature were derived; Details of by-eye model fitting, including the chemical network settings (i…
+
+### 2026A&A...709A.216U: Charting circumstellar chemistry of carbon-rich asymptotic giant branch stars: III. SiO and SiS abundances (2026; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the circumstellar abundances and radial distributions of SiO, SiS, and their major isotopologues across five carbon stars, how do they compare to chemical models, and is IRC +10 216 representative of the broader carbon star popula…
+- step 4: Run 1D circumstellar chemical models and compare with RT-derived abundance profiles
+  - method: Compute radial chemical abundance profiles for each source using a 1D CSE chemical code with the RATE22 UMIST network, using RT-derived initial abundances for SiO and SiS, and compare resulting radial profiles and e-folding radii with RT r… [Chemical modelling: "We modelled the chemistry in the CSEs of our sources using a circumstellar chemical model based on the `RATE22` update of the UMIST Database for Astrochemistry (cite: Millar_et_al_2024)."] [Chemical modelling: "We ran individual models for each of our sources, with the input physical parameters customised to match their circumstellar properties as modelled in , and set the initial abundances of SiO and SiS to those derived from our RT models for each source."]
+  - software: rate22_cse_code
+  - parameter: Initial abundances of SiO and SiS set to RT best-fit f0 values; CS initial abundance from Paper II; other parent molecules from Agundez et al. (2020) [Chemical modelling: "set the initial abundances of SiO and SiS to those derived from our RT models for each source. The initial abundance of CS was obtained from , and those of other parent molecules were taken from (cite: Agundez_et_al_2020)."]
+  - assumption: Warm condensation/dust temperatures (Tc ~ 1500-1800 K) preventing significant dust depletion [Chemical modelling: "No significant depletion of the gas-phase species onto the dust occurs due to the relatively warm dust temperatures ($T_\mathrm{c}$ $\sim$ 1500-1800 K) that we employ as inputs to the RT models, based on our dust modelling results ."]
+  - validation: Tested including dust-gas interaction/depletion chemistry; tested using the chemical model SiO profile directly inside the RT code for AFGL 3068 [Chemical modelling: "Including dust-gas chemistry in these models, to allow for possible changes in the radial gas-phase abundance distributions of our species due to dust-gas interactions, including depletion onto the dust, did not lead to significantly different abundance profiles."] [Chemical modelling: "To test this, we ran an SiO RT model for AFGL 3068 with the abundance profile predicted by the chemical model, which has a larger $R_\mathrm{e}$ than our original RT model, as can be seen from Fig. 22, instead of a typical Gaussian profile."]
+- limitation (authors): The 1D RT code is static, assumes a smooth spherically symmetric envelope and a blackbody central star, and cannot model 3D substructures (arcs, spirals), stellar phase time-delay effects, or stellar atmospheric absorption/emission bands. [Addressing the ALMA - SD fit mismatch: "the time delay in receiving the stellar light can be different for different $J$ lines, especially if their excitation regions peak at different radii (see e.g. Fig. 16), an effect that cannot be incorporated into our RT models, which are static."]
+- limitation (authors): The RT code can only include one collision partner (H2, neglecting He) and cannot account for infrared line overlaps with other molecular species (such as C2H2 and HCN overlapping with SiS v=1-0 ro-vibrational transitions). [Molecular data: "Our RT code can only take into account one collision partner and hence we have not taken into consideration collisions with other partners, such as He."]
+- limitation (authors): AFGL 3068 lacks spatially resolved observations, leaving its SiO and SiS abundance profiles and uncertainties unconstrained and biasing the high-density end of the Re vs. gas density trend. [SiO: "For AFGL 3068, we only have 4 SD SiO lines available (Fig. [\[fig:AFGL-3068-SiO\]](#fig:AFGL-3068-SiO)), and no spatially resolved observations, leading to neither $f_0$ nor $R_\mathrm{e}$ being properly constrained"]
+- not stated (card): ALMA calibration and imaging parameters (CASA version, weighting, robust parameter, cell size, cleaning thresholds, continuum subtraction) which are deferred to Unnikrishnan et al. (2024, 2025); Specific method/task used to combine ALMA 12m, ACA, and Total Power data for project 2015.1.01271.S (deferred to companion paper); Full stellar and dust parameters (luminosity, effective temperature, dust…
+
+### 2021A&A...655A..80D: ATOMIUM: halide molecules around the S-type AGB star W Aquilae (2021; evolved_stars, astrochemistry; observational_alma_primary)
+- question: What are the abundances and spatial distributions of AlCl and AlF around the S-type AGB star W Aql, and of HCl and HF from PACS, and what do they imply for chemistry and F/Cl enrichment?
+- step 3: HCl and HF abundances from PACS
+  - method: Scale chemical-model radial abundance profile until RT model matches PACS lines without overpredicting non-detections [4.3 Radial distribution of HCl and HF f…: "we find the best fitting model by scaling the radial abundance distribution until the model lines best reproduce the observed data."]
+  - software: RATE12 chemical model
+  - parameter: H35Cl/H37Cl fixed to 2.4 [5.3.1 HCl: "We also fixed the H$^{35}$Cl/H$^{37}$Cl abundance ratio to 2.4"]
+- step 4: Chemistry of AlF and AlCl
+  - method: Extend chemical network with Al reactions, rates from G4 and MESMER RRKM calculations, compare rates with expansion rate [6.5 Chemistry of AlCl and AlF: "we extended the Rate12 chemical model by including reactions describing the chemistry of aluminium"]
+  - software: Gaussian 16, MESMER
+  - validation: Transition state heights adjusted within 6 kJ/mol to match observations [11 Supplementary information: "The rate coefficients for R1 to R6 were adjusted by varying the heights of the transition states within the expected uncertainty of the G4 level of theory (6 kJ mol$^{-1}$)"]
+- result: HF abundance upper limit = <=1e-8 ± not stated relative to H2 [5.3.2 HF: "We find an upper limit on the HF abundance of $\leq1\times 10^{-8}$ relative to $\mathrm{H}_2$."]
+- limitation (authors): 1D model cannot account for 3D asymmetry; true uncertainties much larger than formal ones [5.4 Model uncertainties: "This means that our actual uncertainties are much larger than the formal uncertainties and cannot easily be quantified."]
+- not stated (card): Calibration and combination procedure, CASA version and weighting/robust values; Cell size, image size and continuum subtraction details; Noise levels of the combined cubes; The ALI code is not named or released; Details of the chi-square fitting procedure and grid steps
+
+### 2014A&A...562A..26B: Gas structure inside dust cavities of transition disks: Ophiuchus IRS 48 observed by ALMA (2014; protoplanetary_disks; observational_alma_primary)
+- question: How does the gas surface density behave inside the dust cavity (60 AU) and the inner 20 AU of the transition disk Oph IRS 48, and what is the total gas mass?
+- step 3: Constrain gas surface density and drops by comparing physical-chemical models to CO data
+  - method: Vary Sigma_60AU, delta_60AU, delta_20AU; compare 12CO integrated intensity cut along major axis, total spectrum, and C17O total flux [4.3 Comparison to observations: "The major parameters that are varied are $\Sigma_{\rm 60\, AU, gas}$, $\delta_{\rm 60 \, AU}$ and $\delta_{\rm 20 \, AU}$."]
+  - software: DALI, CASA
+  - parameter: gamma = 1; also tested gamma = 0 and 2; inner radii 15, 20, 25 AU tested [4.4 The slope gamma: "we have also run models with $\gamma=0$ and $\gamma=2$"]
+  - assumption: 2D axisymmetric model; foreground absorption and asymmetries ignored, focus on velocities >=4 km/s from source velocity [4 Analysis: "we will restrict our analysis to 2d axisymmetric models."]
+  - fitting: visual comparison of trial models, no formal sampler [Comparison to observations: "Figure [10](#fig:surfcomp) shows the $^{12}$CO $J=6-5$ integrated intensity cuts along the major axis of the disk for various trial gas distributions."]
+  - validation: Model convolved to ALMA beam checked against simulated ALMA observations in CASA [4.3 Comparison to observations: "The ALMA observations have been simulated using the CASA software by converting the model image to ${\rm (u,v)}$-data according to the observed ${\rm (u,v)}$-coverage"]
+- result: Total gas mass = 1.4e-4 ± factor of a few Msun [4.3 Comparison to observations: "The gas mass[^2] of the representative model is $1.4 \times 10^{-4}$ M$_\odot$."]
+- result: Gas-to-dust mass ratio = ~10 ± considerable dimensionless [4.3 Comparison to observations: "this gives a gas-to-dust mass ratio of about 10."]
+- result: Gas surface density at 60 AU = 3.2e-2 ± not stated g cm-2 [Table 3: "| Surface density profile$^{1}$ | $\gamma$ | 1.0 |"]
+- result: Gas drop inside 60 AU (delta_60AU) = 8e-2 (factor ~12) ± not stated dimensionless [Table 3: "| Gas, 20-60 AU | $\delta_{\rm 60\, AU} = 8 \times 10^{-2}$ |"]
+- result: Gas drop inside 20 AU (delta_20AU) = < 9e-3 (factor >110) ± lower limit dimensionless [4.3.3 The inner 20 AU: "A model with a drop $\delta_{\rm 20\, AU} < 9 \times 10^{-3}$ (factor of $>$110) reproduces the observed dip at the center position."]
+- result: Inner gas radius = 20 ± better than 5 AU [4.5 How well is the 20 AU radius determ…: "We conclude that the drop of the surface density at 20 AU is constrained to better than $\sim$5 AU."]
+- result: Upper limit CO mass of inner disk (10 AU) = 5e23 ± upper limit g [4.6 The presence of an inner gas disk: "The upper limits on the CO mass of an inner disk are $5 \times 10^{23}$ g for a 10 AU disk with $\delta_{\rm 20\, AU} = 8 \times 10^{-3}$"]
+- limitation (authors): 12CO is optically thick so surface density is not directly constrained; profiles accurate only to a factor of a few [4.3 Comparison to observations: "We do not expect that derived surface density profiles are more accurate than a factor of a few."]
+- limitation (authors): Beam comparable to 20 AU hole, so only limits inside 20 AU [4.3.3 The inner 20 AU: "the current data can only set limits on the gas mass inside 20 AU."]
+- not stated (card): Imaging parameters (weighting, robust, cell size, image size, deconvolver, masks) for the CO cubes; Continuum-subtraction line-free channels; Flux calibrator and flux scale uncertainty; Velocity range for integrated intensity and region definition of the cut along major axis; DALI code and input configuration (grid, chemistry, UV field) not released here; fit criterion between models and data is …
+
+### 2015A&A...579A.114M: A low-mass protostar's disk-envelope interface: disk-shadowing evidence from ALMA DCO<SUP>+</SUP> observations of VLA1623 (2015; star_formation, astrochemistry; observational_alma_primary)
+- question: What is the physical and chemical structure of the disk-envelope interface of the Class 0 protostar VLA1623A, as traced by DCO+ (3-2) emission?
+- step 2: Steady-state analytic chemical network for DCO+
+  - method: Simple network with free Tev, nde, X_CO and o/p H2D+ ratio, run on density and temperature profiles [Analysis: "The evaporation temperature $T_{\rm ev}$, desorption density $n_{\rm de}$ and CO abundance $X_{\rm CO}$ are free parameters."]
+  - parameter: Cases a-f of Drop abundance (Tev 30-35 K, nde 7e4-3e6 cm-3, XD 1e-6 to 1e-8) and Tests 1-4 varying density/temperature [Analysis: "We set up 4 tests, including the original profile from (cite: jorgensen2002) referred to as Test 1, by increasing or decreasing by a constant factor either the density or temperature profile."]
+  - assumption: X_HD = 1e-5 relative to hydrogen nuclei; lower limit o/p 1e-3; Tgas = Tdust [Analysis, chemical network and model: "We assume the density profile is equal to the density $n_{\rm \ce{H2}}$ and the abundance of $X_{\rm \ce{HD}}$ = 10$^{-5}$ with respect to the total hydrogen nuclei density $n_{H}$"]
+  - fitting: Manual parameter variation, no sampler [Modeling results, Physical properties: "We set up 4 tests, including the original profile from (cite: jorgensen2002) referred to as Test 1, by increasing or decreasing by a constant factor either the density or temperature profile."]
+  - validation: Comparison with full time-dependent UMIST RATE06 deuterated network [Analysis: "We find that the large network confirms both the general trend found in the simple network"]
+- limitation (authors): C18O emission too weak for further kinematical analysis [Results: "However the emission is too weak, peaking at 7$\sigma$ in the channel map, to carry out further kinematical analysis."]
+- not stated (card): CASA version and imaging parameters (weighting, cleaning, masks, cell/image size) for both datasets; Continuum subtraction method and line-free channels; Which ALMA project code corresponds to which dataset; Reaction network table entries (reactions blank in text) and full RATRAN setup/grid; Exact velocity range used for integrated-intensity maps and radial cut extraction method; Details of the A…
+
+### 2024RAA....24l5009M: ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF) (2024; solar_system, astrochemistry; archival_reuse)
+- question: To study the radio and millimeter wavelength dust continuum emission and volatile molecular / atomic lines (CH3OH and HI) toward Oort cloud non-periodic comet C/2022 E3 (ZTF), and determine the dust production activity, CH3OH abundance, an…
+- step 6: Derive CH3OH production rate, fractional abundance, and formation pathway
+  - method: Calculate production rate Q for each of the 15 transitions using Equation 2 (Drahus et al. 2010), average them, divide by Q(H2O) to get fractional abundance, and compare with Garrod (2019) chemical model. [Section 3.1.3 Production rate of CH3OH …: "After averaging those 15 production rate values, we obtain the final production rate of CH 3 OH towards comet ZTF"] [Section 3.1.3: "After averaging those 15 production rate values, we obtain the final production rate of CH3OH towards comet ZTF is (7.32 ± 0.64) × 1026 molecules s−1."]
+  - parameter: v_exp (half-width at half-maximum of each transition, ~0.75-0.86 km s^-1) [Table 5: "241.700 5(-0,5)–4(-0,4)E, vt = 0 0.76 ± 0.02 (7.25 ± 0.29) × 1026"]
+  - assumption: Q_H2O = 4.8 x 10^28 molecules s^-1 (Schleicher et al. 2023) [Section 3.1.3: "The abundance of CH3OH with respect to H2O towards comet ZTF is 1.52×10−2 (alternatively 1.52%), where the production rate of H2O towards comet ZTF is 4.8×1028 molecules s−1 (Schleicher et al. 2023)."]
+  - validation: Compare production rate with Haser model value from Biver et al. (2024) (8.78 x 10^26 molecules s^-1) [Section 3.1.3: "The production rate of CH3OH towards comet ZTF estimated by Biver et al. (2024) using the Haser model is 8.78 × 1026 molecules s−1, which is very close to our estimated production rate of CH3OH using Equation 2."]
+- result: Average production rate of CH3OH (Q_CH3OH) = 7.32e26 ± ± 0.64e26 molecules s−1 [Abstract: "The production rate of CH3OH towards C/2022 E3 (ZTF) is (7.32 ± 0.64) × 1026 molecules s−1."]
+- result: Fractional abundance of CH3OH with respect to H2O = 1.52 ± not stated % [Abstract: "The fractional abundance of CH3OH with respect to H2O in the coma of the comet is 1.52%."]
+- limitation (authors): Comet ZTF is spatially unresolved in both the ALMA dust continuum images (224.79–242.60 GHz) and the CH3OH integrated intensity maps because the deconvolved source sizes are smaller than the synthesized beam sizes. [Section 3.1.1: "Comet ZTF is not resolved in the frequency ranges of 224.79 GHz to 242.60 GHz as the deconvolved source sizes are smaller than the synthesized beam sizes."]
+- limitation (authors): Continuum emission at 1250 MHz and the atomic HI line at 1420 MHz are not detected in the GMRT observations. [Section 3.2: "After analysing the GMRT data, we did not detect the dust continuum emission from the comet ZTF."]
+- not stated (card): Weighting scheme and Briggs robust parameter in TCLEAN for ALMA continuum and spectral line imaging; Pixel cell size and image dimensions used in TCLEAN; Clean stopping threshold and masking strategy in TCLEAN; Exact channel ranges selected as line-free channels for continuum subtraction and continuum imaging; Exact modified blackbody SED formula and priors used in the Astropy MCMC fit for dust t…
+
+### 2020MNRAS.496.5308S: ALMA observations of CS in NGC 1068: chemistry and excitation (2020; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Disentangle the effects of the AGN and SB on the gas near the centre of NGC 1068.
+- step 8: Generate chemically constrained SLEDs
+  - method: Free-fall collapse followed by fixed-density heating and evolution; convert chemical abundances and extinction to CS column density; pass physical conditions and column density to RADEX. [UCLCHEM: "The first stage allows the cloud to collapse by free-fall until it reaches a specified density, in order to create a high density cloud with self consistent abundances."] [UCLCHEM: "In the second stage the collapse is halted such that the density remains constant and a burst of star formation is simulated by heating the gas up to a specified temperature."]
+  - software: UCLCHEM, RADEX
+  - parameter: Initial density 10 cm^-3; collapse at 10 K; evolution for 10^7 years [UCLCHEM: "an initial density of 10 cm$^{-3}$."] [UCLCHEM: "This collapse is carried out at a fixed temperature of 10 K"]
+  - parameter: Final densities 10^4, 10^5, 10^6 cm^-3; corresponding A_v 10, 20, 50 mag; temperatures 50, 100, 300 K [UCLCHEM: "Final density: $10^4, 10^5, 10^6$ cm$^{-3}$"] [UCLCHEM: "A$_v$: $10, 20, 50$ mag"]
+  - parameter: ζ = 1, 10, 10^2, 10^3 ζ0; 36 models stated [UCLCHEM: "$\zeta$: $1, 10, 10^2, 10^3~\zeta_0$"] [UCLCHEM: "A total of 36 models were run over the following parameter grid, chosen to cover a range of conditions:"]
+  - assumption: Diffuse atomic initial cloud; standard solar metallicity ISM abundances [UCLCHEM: "starting with a cloud of diffuse atomic gas, at standard solar metallicity ISM abundances (cite: abundances)"]
+  - assumption: Collapse-stage ζ0 = 5 × 10^-17 s^-1 [UCLCHEM: "with the standard cosmic ray ionisation rate for molecular hydrogen of $\zeta_0 = 5\times 10^{-17} s^{-1}$ (cite: Williams)."]
+  - assumption: Cloud size varied with density to obtain density-dependent extinction [UCLCHEM: "The initial size of the cloud was also varied in tandem with the density, so as to ensure the resulting cloud had a visual extinction typical of its density"]
+  - assumption: Enhanced cosmic ray ionisation intended to replicate enhanced X-ray flux [UCLCHEM: "the large range of cosmic ray ionisation rates is intended to replicate the effect of an enhanced X-ray flux."]
+- step 9: Select chemical models and compare regions
+  - method: Group predicted SLEDs by ladder shape; select each sub-region's best χ² model within its matching group; estimate filling factors a posteriori and compare with RADEX-only fits. [UCLCHEM: "first splitting the former into 5 groups based on the shapes of their predicted ladders, independently of the physical parameters, labelled A through E."] [UCLCHEM: "Using a standard $\chi^2$ test, the best fitting model from amongst those in the same group as the observations in each sub-region were selected."]
+  - software: UCLCHEM, RADEX
+  - parameter: A, B, C: peaks at CS(2-1), CS(3-2), CS(6-5), respectively [UCLCHEM: "SLEDs in the first three groups are characterised by the transition for which their ladders peak at, CS(2-1), CS(3-2) and CS(6-5) for groups A, B and C respectively."]
+  - parameter: D: CS(3-2) ≈ CS(6-5); E: CS(6-5) ≈ CS(7-6) [UCLCHEM: "In the remaining groups the two brightest transitions have approximately equal emission"] [UCLCHEM: "These transitions are CS(3-2) and CS(6-5) in the case of group D, and CS(6-5) and CS(7-6) in the case of group E."]
+  - assumption: Fit each sub-region independently [UCLCHEM: "no single model is able to match all of the sub-regions either, once again necessitating that each sub-region be fit independently."]
+  - fitting: Shape-group restriction followed by standard χ² selection [UCLCHEM: "Using a standard $\chi^2$ test, the best fitting model from amongst those in the same group as the observations in each sub-region were selected."]
+  - validation: Compare observed SLEDs with coupled-model and RADEX-only SLEDs; RADEX-only often fits better. [UCLCHEM: "In many cases, it appears that the results from using RADEX alone give a better fit to the observations than the coupled models (e.g. for the AGN and CND-S sub-regions)."]
+- result: Coupled-model CND hydrogen density = 10^5 ± not stated cm^-3 [Conclusions: "The modelling also indicates that the CND ($10^5$ cm$^{-3}$) is denser than the SB ring ($10^4$ cm$^{-3}$), and the AGN is the densest sub-region overall ($10^6$ cm$^{-3}$)."]
+- result: Coupled-model SB ring hydrogen density = 10^4 ± not stated cm^-3 [Conclusions: "The modelling also indicates that the CND ($10^5$ cm$^{-3}$) is denser than the SB ring ($10^4$ cm$^{-3}$), and the AGN is the densest sub-region overall ($10^6$ cm$^{-3}$)."]
+- result: Coupled-model AGN hydrogen density = 10^6 ± not stated cm^-3 [Conclusions: "The modelling also indicates that the CND ($10^5$ cm$^{-3}$) is denser than the SB ring ($10^4$ cm$^{-3}$), and the AGN is the densest sub-region overall ($10^6$ cm$^{-3}$)."]
+- result: Coupled-model E Knot and AGN temperature = 100 ± not stated K [UCLCHEM: "Within the CND these results give the E Knot and AGN as the coolest sub-regions (both 100 K)"]
+- result: Coupled-model W Knot temperature = 300 ± not stated K [UCLCHEM: "| W Knot | 300 | 5 | 10 | 14.3 | -8.2 | 1.0 |"]
+- result: Coupled-model CND-N temperature = 300 ± not stated K [UCLCHEM: "| CND-N | 300 | 5 | 10 | 14.3 | -8.2 | 0.5 |"]
+- result: Coupled-model CND-S temperature = 300 ± not stated K [UCLCHEM: "| CND-S | 300 | 5 | 10 | 14.3 | -8.2 | 0.16 |"]
+- result: Coupled-model NSB-a temperature = 100 ± not stated K [UCLCHEM: "| NSB-a | 100 | 4 | 10 | 15.7 | -6.6 | 1.0 |"]
+- result: Coupled-model NSB-b temperature = 100 ± not stated K [UCLCHEM: "| NSB-b | 100 | 4 | 100 | 15.1 | -7.1 | 1.0 |"]
+- result: Coupled-model NSB-c temperature = 300 ± not stated K [UCLCHEM: "| NSB-c | 300 | 4 | 10 | 14.5 | -7.7 | 0.8 |"]
+- result: Coupled-model SSB-a temperature = 100 ± not stated K [UCLCHEM: "| SSB-a | 100 | 4 | 1 | 15.6 | -6.6 | 0.54 |"]
+- result: Coupled-model SSB-b temperature = 100 ± not stated K [UCLCHEM: "| SSB-b | 100 | 4 | 1 | 15.6 | -6.6 | 0.71 |"]
+- result: Coupled-model SSB-c temperature = 100 ± not stated K [UCLCHEM: "| SSB-c | 100 | 4 | 100 | 15.1 | -7.1 | 1.0 |"]
+- result: Coupled-model E Knot and AGN ζ/ζ0 = 1 ± not stated dimensionless [UCLCHEM: "being lower in the E Knot and AGN (1 $\zeta_0$) than in the other sub-regions (10 $\zeta_0$)."]
+- result: Coupled-model other CND sub-regions ζ/ζ0 = 10 ± not stated dimensionless [UCLCHEM: "being lower in the E Knot and AGN (1 $\zeta_0$) than in the other sub-regions (10 $\zeta_0$)."]
+- result: Coupled-model NSB-b and SSB-c ζ/ζ0 = 100 ± not stated dimensionless [UCLCHEM: "with the exception of NSB-b and SSB-c, which have higher rates than any of the other sub-regions (100 $\zeta_0$)."]
+- result: Coupled-model E Knot log10(N_CS [cm^-2]) = 15.3 ± not stated dimensionless [UCLCHEM: "| E Knot | 100 | 5 | 1 | 15.3 | -7.3 | 0.79 |"]
+- result: Coupled-model AGN log10(N_CS [cm^-2]) = 14.1 ± not stated dimensionless [UCLCHEM: "| AGN | 100 | 6 | 1 | 14.1 | -8.8 | 0.35 |"]
+- result: Coupled-model NSB-a log10(N_CS [cm^-2]) = 15.7 ± not stated dimensionless [UCLCHEM: "| NSB-a | 100 | 4 | 10 | 15.7 | -6.6 | 1.0 |"]
+- result: Coupled-model E Knot log10(CS fraction) = -7.3 ± not stated dimensionless [UCLCHEM: "| E Knot | 100 | 5 | 1 | 15.3 | -7.3 | 0.79 |"]
+- result: Coupled-model AGN log10(CS fraction) = -8.8 ± not stated dimensionless [UCLCHEM: "| AGN | 100 | 6 | 1 | 14.1 | -8.8 | 0.35 |"]
+- result: Coupled-model AGN beam filling factor = 0.35 ± not stated dimensionless [UCLCHEM: "| AGN | 100 | 6 | 1 | 14.1 | -8.8 | 0.35 |"]
+- result: Coupled-model CND-S beam filling factor = 0.16 ± not stated dimensionless [UCLCHEM: "| CND-S | 300 | 5 | 10 | 14.3 | -8.2 | 0.16 |"]
+- limitation (authors): Only 3-4 transitions per sub-region limit modelling reliability. [Conclusions: "currently only 3-4 transitions are available for each which limits the reliability of our modelling efforts."]
+- limitation (authors): Rotational diagrams cannot reliably constrain conditions or distinguish two phases from sub-thermal excitation. [Rotation diagram: "Due to the low number of transitions in the rotational diagrams, we are unable to use these results to reliably constrain the conditions in each of the sub-regions."]
+- limitation (authors): RADEX temperatures have unconstrained upper bounds. [RADEX: "We found the upper bound of the temperature in each sub-region to be unconstrained within this temperature range."]
+- not stated (card): Calibration scripts, pipeline/manual status, calibrator identities and any self-calibration procedure.; Imaging task, weighting/robust, deconvolution, image grid, clean mask and stopping threshold.; Continuum-subtraction procedure and channels, or an explicit statement that none was applied.; Exact spectral extraction aperture or pixel sampling for each listed position.; Gaussian-fitting implemen…
+
+### 2014A&A...570A..28V: Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas (2014; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Are the different line intensity ratios within the CND, and between the CND and the SB ring, due to excitation effects (density, temperature) or to a different chemistry?
+- step 8: Chemical modelling and comparison with RADEX column density ratios
+  - method: Run 27 UCL_CHEM gas-grain models (two phases, optional shock) and compare theoretical column density ratios with RADEX-derived ratios at the last time step of Phase II [4 Chemical modelling: "we use the UCL_CHEM model (cite: Viti04; Viti11) to determine the best physical characteristics of each individual component within the CND"] [4 Chemical modelling: "all the analysis and comparisons of the abundances from the chemical models are performed at the last time step of Phase II"]
+  - software: UCL_CHEM
+  - parameter: Phase II temperature 100 K and 200 K [4 Chemical modelling: "(ii) the temperature (100 K and 200 K) during Phase II"]
+  - parameter: Radiation field 1, 10 and 500 Draine [4 Chemical modelling: "we picked three representative values of a low (1 Draine), medium (10 Draine) and high (500 Draine) radiation field"]
+  - parameter: Shock velocity 40 km/s [4 Chemical modelling: "we adopted a representative shock velocity of 40 km s$^{-1}$"]
+  - parameter: Visual extinctions 2 and 10 mag [4 Chemical modelling: "two representative visual extinctions of 2 and 10 mags"]
+  - assumption: Solar-metallicity elemental abundances; cosmic-ray rate used to mimic enhanced X-rays; free-fall collapse in Phase I [4 Chemical modelling: "We have kept fixed the initial elemental abundances at the standard solar metallicity ISM abundances compared to the total number of hydrogen nuclei"] [4 Chemical modelling: "For simplicity we adopt free-fall collapse."]
+  - fitting: Qualitative matching of model and observed log column density ratios; no formal fit [4 Chemical modelling: "This attempt at chemical modelling was preliminary"]
+  - validation: RADEX density limit (>10^4 cm^-3) used to exclude models; ratios compared only at one time step [4 Chemical modelling: "we shall exclude *a priori* all models with a gas density of 10$^4$ cm$^{-3}$ to start with"]
+- limitation (authors): RADEX assumes all transitions sample the same gas, and several ratios use degraded or low-resolution data [3.2 RADEX analysis of the CND: "Of course such modelling is limited by the assumption that all the molecular transitions sample the same gas."]
+- limitation (authors): Chemical modelling is preliminary and compares time-dependent models only at one time step [4 Chemical modelling: "This attempt at chemical modelling was preliminary"]
+- limitation (authors): Infrared pumping not considered [Conclusions: "this analysis did not take into consideration infrared pumping"]
+- not stated (card): ALMA calibration, imaging and reduction details (CASA version, calibrators, weighting, cleaning, continuum subtraction) are only in Paper I; Exact aperture sizes and positions used to extract the line intensities per sub-region; Rms noise levels, beam sizes and the sigma value used for the 3-sigma clipping; Spectroscopic constants and partition function source used in the LTE column densities; Li…
+
+### 2026ApJ..1004..114V: JWST's PEARLS: A Clumpy Ring Galaxy at z = 4.0148 (2026; high_z_galaxies; multi_facility_alma_minor)
+- question: Whether a ring-like galaxy candidate at z_spec = 4.0148 on the periphery of MACS0416 is a high-redshift collisional ring galaxy or a galaxy-galaxy strong gravitational lens.
+- step 3: SED modeling of the CRG, clumps, and nearby companions
+  - method: Fit multi-band HST and JWST photometry using bagpipes with a delayed star-formation history model (with both free redshift and fixed z = 4.0148); subtract foreground galaxy light in F277W using GALFIT to place apertures and fit SEDs of fiv… [4. ANALYSIS: "To determine whether the CRG is a ring galaxy or a case of gravitational lensing, we employ the `bagpipes` software (Carnall et al. 2018) to model the SED of the total galaxy and individual clumps along the ring"] [4. ANALYSIS: "We first consider a case in which the redshift is allowed to vary from 0 _<_ _z_ _<_ 5."]
+  - software: bagpipes, nautilus, GALFIT
+  - parameter: Six delayed SFH parameters: log10(M_*/M_sun), SFR, A_V, system age, metallicity (Z/Z_sun), ionization parameter (U) [4. ANALYSIS: "we employ a delayed star-formation history model in `bagpipes`, consisting of six parameters:"]
+  - parameter: GALFIT single Sersic profile: R_e ~ 0.21'', n ~ 1.2, b/a ~ 0.7 [4. ANALYSIS: "using the `GALFIT` software (Peng et al. 2002) to fit a single S`ersic profile with _R_ _e_ _∼_ 0 _._ 21 _[′′]_, _n_ _∼_ 1 _._ 2, and _b/a_ _∼_ 0 _._ 7 after masking the faint companions."]
+  - assumption: Calzetti et al. (2000) dust attenuation law [4. ANALYSIS: "dust attenuation ( _A_ _V_ ) as characterized in Calzetti et al. (2000)"]
+  - assumption: Flat LCDM cosmology (H0 = 67.7 km s^-1, Omega_0 = 0.31, T_cmb = 2.725 K) [1. INTRODUCTION: "Throughout this work we assume the flat ΛCDM cosmology from the Planck Collaboration et al. (2020) results; _H_ 0 = 67 _._ 7 km s _[−]_ [1], Ω 0 = 0 _._ 31, _T_ cmb = 2 _._ 725 K."]
+  - fitting: Nested sampling via nautilus in bagpipes; redshift prior 0 < z < 5 for blind fit, or fixed z = 4.0148 [4. ANALYSIS: "The photometric fitting is performed using nested sampling, specifically using `nautilus` (Lange 2023), as implemented in `bagpipes` ."] [4. ANALYSIS: "We first consider a case in which the redshift is allowed to vary from 0 _<_ _z_ _<_ 5."]
+  - validation: Comparison of free photometric redshifts of clumps and total system against spectroscopic redshift z_spec = 4.0148 from CANUCS [4. ANALYSIS: "In this scenario, we find agreement between the fitted redshifts of the clumps (3 _._ 89 _< z_ _<_ 4 _._ 19), the fitted redshift of the total system ( _z_ phot = 3 _._ 92 [+0] _−_ 0 _[.]_ _._ [10] 07 [),] [and] [the] [spectroscopic] [redshift] [from] CANUCS ( _z_ spec = 4 _._ 0148)."]
+- result: Total star-formation rate (fixed z = 4.0148) = 140 ± +20/-30 M_sun yr^-1 [abstract: "It has a total SFR = 140 [+20] _−_ 30 [M] _[⊙]_ [yr] _[−]_ [1] [and] [log(] _[M]_ _[∗]_ _[/]_ [M] _[⊙]_ [) = 10] _[.]_ [41] [+0] _−_ 0 _[.]_ _._ [11] 13 [,]"]
+- result: Total stellar mass log10(M_*/M_sun) (fixed z = 4.0148) = 10.41 ± +0.11/-0.13 dex [4. ANALYSIS: "In this case, we find a total star-formation rate (SFR) = 140 _−_ [+20] 30 [M] _[⊙]_ [yr] _[−]_ [1] [and] log 10 ( _M_ _⋆_ _/_ M _⊙_ ) = 10 _._ 41 [+0] _−_ 0 _[.]_ _._ [11] 13 [.]"]
+- result: Total photometric redshift (z_phot, free z fit) = 3.92 ± +0.10/-0.07 dimensionless [4. ANALYSIS: "the fitted redshift of the total system ( _z_ phot = 3 _._ 92 [+0] _−_ 0 _[.]_ _._ [10] 07 [),]"]
+- result: Central component stellar mass log10(M_*/M_sun) (fixed z = 4.0148) = 9.86 ± +0.04/-0.05 dex [Table 1: "Center — 9 _._ 86 [+0] _−_ 0 _[.]_ _._ [04] 05 11 [+2] _−_ 2 1 _._ 36 [+0] _−_ 0 _[.]_ _._ [09] 11 1200 [+200] _−_ 300 0 _._ 24 [+0] _−_ 0 _[.]_ _._ [18] 08"]
+- result: Central component age (fixed z = 4.0148) = 1.2 ± +0.2/-0.3 Gyr [4. ANALYSIS: "the central emission is much older (1 _._ 0 [+0] _−_ 0 _[.]_ _._ [3] 3 [–1] _[.]_ [2] _−_ [+0] 0 _[.]_ _._ [2] 3 [Gyr] [for] [the] [fitted] vs. fixed-redshift models, respectively) than the clumps along the ring"]
+- limitation (authors): Low spectral resolution of the NIRSpec PRISM data prevents accurate line flux constraints, deblending of H-alpha and [N II], or kinematic confirmation of the ring vs. lens nature. [abstract: "to confirm the nature of this source, we require kinematic information via high spectral resolution observations."]
+- limitation (authors): Low spatial resolution and low (~3 sigma) significance of the archival ALMA continuum detection prevent determining whether the dust emission originates from the red central core or the blue ring. [3. RESULTS: "The faint ALMA detection of dust continuum, along with its relatively low spatial resolution, makes it difficult to determine whether the bulk of emission arises from the red component or blue ring."]
+- limitation (authors): Simple delayed SFH photometric model in bagpipes cannot strongly constrain stellar ages or metallicities. [4. ANALYSIS: "We emphasize that for this exercise, we have employed a rather simple photometric model, and as such we cannot place strong constraints on certain parameters (e.g., age, metallicity)."]
+- not stated (card): Exact definition and value of the 'beam factor' (primary beam correction or aperture correction) applied to the ALMA map to obtain the 240 +/- 80 uJy continuum flux density; Method used to extract the ALMA continuum flux density (peak pixel value, aperture photometry, or 2D Gaussian fitting); Gravitational magnification factor from the MACS0416 cluster at the position of the CRG, and whether any …
+
+### 2019ApJ...878..113H: Modeling the Spatial Distribution and Origin of CO Gas in Debris Disks (2019; debris_disks, astrochemistry; archival_reuse)
+- question: Where is the CO gas located in three CO-rich debris disks, and is it primordial or of secondary (cometary) origin?
+- step 3: Thermochemical modelling of primordial and secondary gas and compare to ALMA
+  - method: Thermochemical disk models with double power-law surface density, LIME non-LTE line cubes, simobserve and CASA imaging, fit by varying mass and slopes [Modeling gas of primordial origin: "The model images were processed through the CASA task simobserve to create synthetic visibilities"]
+  - software: LIME, CASA
+  - parameter: primordial mass grid 0.1-35 Earth masses in 5 steps, then 0.1 steps; p1,p2 varied manually in -5 to +5, fine step 0.05 [Modeling gas of primordial origin: "The surface density exponents p$_1$ and p$_2$ were varied manually between -5 and +5 using different step sizes, and then fine-tuned using steps of 0.05."]
+  - assumption: secondary: CO:H2O 1:10 released, gas T = dust T, run to ~2 Myr; primordial: ISM abundances, CR rate 1e-16 s-1, X-ray 1e27 erg/s, 1% dust outside belt [Modeling gas of secondary origin: "we assume that at the start of the simulation CO and H$_2$O are released in a 1:10 ratio"]
+  - fitting: manual grid fit to integrated spectra and channel maps [Modeling gas of primordial origin: "We initially fit the integrated flux by varying the total disk mass in the range 0.1 - 35M$_{\oplus}$ in steps of 5M$_{\oplus}$, to narrow down the mass range."]
+  - validation: compared integrated spectra and channel maps with data [Modeling gas of primordial origin: "The integrated spectra for the best fit models are compared to the $^{12}$CO(2–1) data in Figure [7](#intspec-pa)."]
+- step 4: Estimate CO production rate
+  - method: Production rate ~ (M(t=0) - M(t_f))/t_f from time-dependent chemical models [Modeling gas of secondary origin: "the production rate $\sim (M(t=0) - M(t_f))/t_f$"]
+  - validation: compared with beta Pic and Kral et al. 2018 [Discussion: "Our rates are also in reasonable agreement with (cite: kral2018)"]
+- result: CO masses, primordial models (HD 131835, HD 138813, HD 156623) = 5.0e-3, 4.2e-3, 3.8e-3 ± not stated Earth masses [Modeling gas of primordial origin: "total CO masses of $5.0\times 10^{-3}$,$4.2\times 10^{-3}$ and $3.8\times 10^{-3}$ M$_{\oplus}$"]
+- result: CO masses, cometary models = 4.6e-3, 3.1e-3, 2.45e-3 ± not stated Earth masses [Modeling gas of secondary origin: "The best fit cometary gas masses are $4.6 \times 10^{-3}, 3.1\times 10^{-3}$ and $2.45\times 10^{-3}$ M$_{\oplus}$"]
+- result: CO replenishment rate = 8e-7 ± not stated Earth masses per yr [Modeling gas of secondary origin: "$8\times 10^{-7}$ M$_{\oplus}$ yr$^{-1}$"]
+- limitation (authors): Single CO transition cannot break mass-temperature degeneracy [Modeling gas of primordial origin: "this degeneracy cannot be broken with only one CO transition observed."]
+- not stated (card): CASA version, calibration and imaging parameters (robust, weighting, masks) used for the data (inherited from Lieman-Sifry 2016); Stellar luminosity temperature/disk model details for synthetic LIME setup (grid, photons); Prior ranges and walker initialization for emcee; Thermochemical code availability and exact dust grain parameters; Observing dates, configurations and integration times
+
+### 2024ApJ...968L..11G: A Broad Line-width, Compact, Millimeter-bright Molecular Emission Line Source near the Galactic Center (2024; milky_way_ism, star_formation, astrochemistry, evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the compact, broad-linewidth (FWHM ~160 km/s), millimeter-bright source G0.02467-0.0727 (MUBLO) near the Galactic Center, and which physical scenarios could explain it?
+- step 9: Chemical modelling of SO/CS and SO/SiO ratios
+  - method: Meudon PDR constant-density slabs for line and column density ratios; UCLCHEM time-dependent collapse models for SO/SiO [4.3 Chemical Modeling: "we ran models of a collapsing cloud that varied in final densities, UV irradiation, cosmic ray ionization rate, and temperatures"] [4.3 Chemical Modeling: "We ran Meudon PDR[^2] (cite: LePetit2006) models spanning a range of extinction, cosmic ray ionization rate, density, and UV field"]
+  - software: Meudon PDR, UCLCHEM
+  - parameter: Meudon grid: n_H 2e5 and 2e7 cm^-3, G0 = 1e3, zeta_CR 2e-17 to 2e-14 s^-1, A_V,max 20/200/800 [Table 4: "| FUV radiation field, $G_0$ | – | 10$^3$ | \(3\) |"]
+  - parameter: UCLCHEM grid: final n_H 1e5, 1e6, 1e7 cm^-3; T 15 and 50 K [Table 5: "| $n_\mathrm{H,\,final}$ | cm$^{-3}$ | $10^5, 10^6, 10^7$ |"]
+  - assumption: Sulfur and silicon depletion included [9.2 UCLCHEM models: "evaluating both a model with solar initial abundances and a model with a depletion of a factor 10 for S and 100 for Si"]
+  - validation: Models compared with observed SO/CS intensity ratio and LTE-derived column density ratio [9.1 FUV and CR irradiation models: "The model predictions result in a narrow range of parameters consistent with the observed SO/CS intensity ratio and estimated SO/CS column density ratio"]
+- result: Meudon PDR density and CRIR range matching SO/CS = n_H ~2e7 cm^-3 and 1e-16 < zeta_CR < 5e-15 s^-1 ± not stated cm^-3; s^-1 [9.1 FUV and CR irradiation models: "$n_\mathrm{H}$$\sim$2$\times$10$^7$ $\mathrm{cm}^{-3}$ and 10$^{-16}$$\lesssim$$\zeta_{CR}$$\lesssim$5$\times$10$^{-15}$ s$^{-1}$"]
+- limitation (authors): 2012 data have artifacts severe enough that no images are shown and results should not be trusted on statistical errors alone [2 Observations: "The problems with the 2012 data set are severe enough that we choose not to show any of the images and strongly caution against interpreting the measurements of these data based only on their statistical errors."]
+- limitation (authors): Spatial measurement uncertainties are statistical only; systematics are larger [3.2 Spatial: "all of the spatial measurements are likely affected by systematic errors that are larger"]
+- limitation (authors): Column densities are dominated by systematic uncertainty in excitation temperature [4.1 LTE Modeling: "These estimates are dominated by systematic uncertainty in the excitation temperature, which may be more than an order of magnitude."]
+- not stated (card): tclean parameters actually used (deconvolver, weighting/robust, cell and image size, masks, thresholds, niter) for the ACES, 2012 and 2017 data, beyond 'same as the ALMA pipeline'; Which continuum channels were kept (findcont output) and the continuum-subtraction approach for cubes; How the broad (~160 km/s) lines were separated from the continuum, since line-free channels are hard to define with…
+
+### 2018ApJ...865..127I: Constraints on the Cosmic-Ray Ionization Rate in the z ∼ 2.3 Lensed Galaxies SMM J2135-0102 and SDP 17b from Observations of OH<SUP>+</SUP> and H<SUB>2</SUB>O<… (2018; high_z_galaxies, astrochemistry; observational_alma_primary)
+- question: What are the cosmic-ray ionization rates in lensed z~2.3 SMGs, inferred from OH+ and H2O+ absorption combined with a chemical model?
+- step 4: Infer zeta_H from chemical model grids
+  - method: Compare observed log N(OH+)/N(H) and N(OH+)/N(H2O+) to contours of constant zeta_H/n50 in model grids for several chi_UV/n50 [5.2 Ionization Rates: "we plot contours of constant $\zeta_{\rm H}/n_{50}$ in the parameter space $\log_{10}[N({\rm OH}^+)/N({\rm H})]$ vs. $N({\rm OH}^+)/N({\rm H_2O}^+)$"]
+  - parameter: Z=Zsun, nH=50 cm^-3, chi_UV 0.1-1000 [5.2 Ionization Rates: "so we use the chemical models with $Z=Z_\ensuremath{\odot}$ in our analysis"]
+  - assumption: Metallicity solar; absorption arises in extended low-density halo [5.2 Ionization Rates: "Metallicities in submillimeter galaxies at $z\sim2$ have been estimated to be roughly solar"]
+  - validation: Compared with Galactic diffuse clouds and earlier zeta estimates [6 Discussion: "occupy the same location in $\log_{10}[N({\rm OH}^+)/N({\rm H})]$ vs. $N({\rm OH}^+)/N({\rm H_2O}^+)$ parameter space as Galactic diffuse clouds"]
+- result: zeta_H in extended halos = 1e-16 to 1e-14 ± not stated s^-1 [Summary: "cosmic-ray ionization rates on the order of 10$^{-16}$–10$^{-14}$ s$^{-1}$ in the extended gaseous halos"]
+- limitation (authors): Column densities may be lower limits due to saturation; N(H) highly uncertain; mismatched beams [5.2 Ionization Rates: "any estimate of the hydrogen column density from CH$^+$ will be highly uncertain"]
+- not stated (card): Cell size, image size, and channel width/spectral grid of the cubes; Clean threshold, masks, number of iterations; Self-calibration solution interval and continuum selection; Exact sub-region definitions (NW1-8, SE1-8, N/E/S/W) as apertures; Moving-average window for continuum normalization; Line-free region used for noise estimate; Model grid files and interpolation method for inferring zeta_H; …
+
+### 2017A&A...608A..56G: ALMA imaging of C<SUB>2</SUB>H emission in the disk of <ASTROBJ>NGC 1068</ASTROBJ> (2017; nearby_galaxies, astrochemistry, agn_and_quasars; observational_alma_primary)
+- question: Do the fractional abundances of C2H differ between the starburst ring and the AGN-driven outflow region of NGC 1068, and what chemistry (PDR, shocks, gas-grain) explains them?
+- step 6: Compute fractional abundances X(C2H) and compare with chemical models
+  - method: X = N(C2H)/N(H2) averaged over SB ring and outflow regions; compared with UCL_PDR, UCL_CHEM and parametrized shock model grids [4 The origin of the C2H abundances: "using a set of time-dependent gas-grain chemical models, parametrized shock models, and gas-phase PDR models"]
+  - software: UCL_CHEM, UCL_PDR
+  - parameter: Solar C/O ~0.6; shock velocity ~40 km/s; cosmic-ray ionization 5e-17 s-1 standard [4.1 Chemical models: description: "We assume for all the models a solar C/O abundance ratio $\sim$ 0.6."]
+  - assumption: Cosmic-ray ionization used to mimic X-ray enhancement [4.1 Chemical models: description: "The grid of models we employ from (cite: Vit17) uses the cosmic-ray ionization flux to also simulate an enhancement in X-ray flux."]
+- result: X(C2H) SB ring, Tex=10 K = 1.3e-8 ± 0.7e-8 dimensionless [Table 1: "T$_{\rm ex}$=10 K | $(1.3\pm0.7)\times10^{-8}$ | $(1.6\pm0.8)\times10^{-8}$"]
+- result: X(C2H) outflow, Tex=25 K = 1.1e-7 ± 0.4e-7 dimensionless [Table 1: "T$_{\rm ex}$=25 K | $(9.7\pm4.0)\times10^{-8}$ | $(1.1\pm0.4)\times10^{-7}$"]
+- result: X(C2H) outflow, Tex=50 K = 4.8e-7 ± 2.0e-7 dimensionless [Table 1: "T$_{\rm ex}$=50 K | $(4.3\pm2.0)\times10^{-7}$ | $(4.8\pm2.0)\times10^{-7}$"]
+- limitation (authors): Single C2H transition gives uncertain abundance; chemical modelling is limited and qualitative [4.1 Chemical models: description: "we are aware of the limitations of having observed only one $N$ transition of the C$_2$H multiplet, leading to an uncertain derivation of the fractional abundance"]
+- not stated (card): CASA version and calibrators (flux, bandpass, phase) not given; GILDAS clean parameters (cell size, image size, clean threshold, mask) not given; Exact definitions of the SB ring and outflow regions used for spatial averaging of X(C2H); Dust temperature adopted when converting 349 GHz continuum to M_dust/N(H2); Method/regridding used to degrade the N(H2) map to the C2H resolution; How the 349 GHz…
+
+### 2014Sci...345.1584B: Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide (2014; astrochemistry, star_formation; observational_alma_primary)
+- question: Can a branched alkyl molecule (iso-propyl cyanide) be detected in the ISM, and how does its abundance compare with its straight-chain isomer and with chemical model predictions?
+- step 7: Simulate hot-core chemistry
+  - method: MAGICKAL: free-fall collapse to nH 2e8 cm-3, then static warm-up to 400 K, modified rate equations [Astrochemical numerical simulations: "The first is a free-fall collapse from a total hydrogen density, $n_{\rm H}$, of 3000 to $2 \times 10^8$ cm$^{-3}$."]
+  - software: MAGICKAL
+  - assumption: Radical-site bias favoring secondary carbon; other rates and binding energies identical between isomers [Astrochemical numerical simulations: "All other rates and binding energies are assumed to be identical between the *i*-PrCN and *n*-PrCN forms."]
+  - validation: Compared model peak temperatures with observed rotation temperature and abundance ratios [main text: "This agrees well with the rotation temperatures that we determine from observational data for these molecules."]
+- result: Model i-PrCN/n-PrCN peak ratio = 2.2 ± not stated dimensionless [main text: "they show a slight bias toward *i*-PrCN production (2.2:1), rather than the observed bias toward *n*-PrCN (0.4:1)."]
+- limitation (authors): Preliminary LTE model not fully optimized for ALMA; abundance uncertainties exclude free-free contamination and dust property uncertainties [Line identification and spectral modeli…: "This model has not been fully optimized for ALMA yet but it is already sufficiently reliable to allow for detecting new molecules in the ALMA spectra."]
+- not stated (card): Exact line-free channel ranges used for continuum subtraction; CLEAN parameters (weighting/robust, cell size, image size, masks, threshold); Which spectral line and reference antenna/solint used for self-calibration; Full list and frequencies of i-PrCN and n-PrCN transitions used in population diagrams; Weeds LTE parameters for all other molecules in the preliminary model; Details of free-free co…
+
+### 2020A&A...642A.222H: Sulphur and carbon isotopes towards Galactic centre clouds (2020; milky_way_ism, astrochemistry; multi_facility_alma_minor)
+- question: What are the 32S/34S, 12C/13C and 34S/33S isotope ratios in Galactic centre clouds (+50 km/s Cloud, Sgr B2(N) envelope and line-of-sight clouds), and does the 32S/34S decrease with galactocentric distance continue to the GC?
+- step 4: Assess CS sulphur fractionation
+  - method: Chemical network of Loison et al. (2019) run for the three environments [4.3 Discussion on the validity of using…: "we used the network from Loison et al. (2019) in the +50 km s−1 Cloud, the l.o.s. clouds towards Sgr B2(N) and the envelope of Sgr B2(N)"]
+  - parameter: density 1e5 cm-3, CRIR 7e-16 s-1 for +50 Cloud; density 1e4, CRIR 3e-15 s-1 for Sgr B2 regions [4.3 Discussion on the validity of using…: "we adopted a density of 10 5 cm −3 and a CRIR of ζ H2 = 7 × 10 −16 s −1"]
+- limitation (authors): Locations of the l.o.s. clouds are poorly constrained [3. Sources: "The exact locations of the different velocity components of the l.o.s. clouds towards Sgr B2(N) are not yet fully constrained."]
+- not stated (card): ALMA calibration, CASA version and imaging parameters (deferred to Belloche et al. 2016); Weeds fit details and Thiel (2019) column densities beyond Table 4; Baseline-subtraction and line-free windows for IRAM/APEX spectra; Exact initial conditions and temperatures of chemical models
+
+### 2019A&A...622A..26G: Molecular ion abundances in the diffuse ISM: CF<SUP>+</SUP>, HCO<SUP>+</SUP>, HOC<SUP>+</SUP>, and C<SUB>3</SUB>H<SUP>+</SUP> (2019; milky_way_ism, astrochemistry; observational_alma_primary)
+- question: Can HCO+, HOC+ and CF+ (and C3H+) absorption serve as probes of diffuse molecular hydrogen, and what are their abundances relative to H2 and implications for chemistry?
+- step 6: Steady-state chemical model comparison
+  - method: Analytic steady-state formulae for HOC+/H2O and CF+/HF with Langevin or enhanced capture rates [Chemistry: "the ratios of the HOC$^+$ and H$_2$O abundances at steady state can be written"]
+  - assumption: C+ main carbon carrier and electron source [Chemistry: "We further assume that C$^+$ is the main carrier of carbon and all electrons are provided by C$^+$"]
+- limitation (authors): CF+ and C3H+ lines are weak and contaminated; Galactic center abundances cannot be determined absolutely [Summary and conclusions: "Absolute abundances cannot be determined in the central molecular zone because the relative abundances of the usual H$_2$-tracers (CH, HF, etc) have not been established in this region"]
+- not stated (card): CASA version and calibration/imaging parameters (weighting, cell, masks); Exact line-free channels / continuum level choice per window; Pixels and weights used for averaged spectra; Herschel HF/H2O/CH spectra reduction and velocity alignment; Uncertainty estimation for column densities and fit errors; Parameter values (x_C, f(H2), T) used in chemical model figures
+
+### 2015ApJ...814..143A: The Peculiar Distribution of CH3CN in IRC +10216 Seen by ALMA (2015; evolved_stars, astrochemistry; observational_alma_primary)
+- question: Where is CH3CN distributed in the envelope of IRC +10216 at sub-arcsec resolution, and where is it formed?
+- step 4: Compare with standard gas-phase chemical model
+  - method: Gas-phase network from UMIST and KIDA; initial radius 2e14 cm; N2 abundance 4e-5; cosmic-ray ionization rate 1.2e-17 s-1; clumpy variant [3 Chemical model: "Here we have constructed a standard chemical model using a gas phase reaction network built up from the databases UMIST and KIDA"]
+- result: Chemical model underestimate of CH3CN abundance = > two orders of magnitude ± not stated dimensionless [3 Chemical model: "Our chemical model underestimates the abundance of CH$_3$CN by more than two orders of magnitude"]
+- limitation (authors): Smooth spherical shell model does not reproduce fine structure; infrared pumping only partly included [2 Excitation and radiative transfer mod…: "Our model of a smooth hollow spherical shell does not aim at reproducing these fine details"]
+- not stated (card): Channel ranges used for continuum subtraction; Clean mask/iteration count, weighting, cell and image size; How 30m and ALMA data were merged in GILDAS; CASA version; Description of the LVG code and fitting procedure for the abundance profile (no goodness-of-fit); Phase center coordinates
+
+### 2017A&A...601A..49B: Rotational spectroscopy, tentative interstellar detection, and chemical modeling of N-methylformamide (2017; astrochemistry, star_formation; observational_alma_primary)
+- question: Can improved laboratory rotational spectroscopy of trans N-methylformamide enable its detection toward Sgr B2(N2) in the ALMA EMoCA survey, and how can its abundance relative to related molecules be explained by chemical modelling?
+- step 6: Chemical kinetics modelling
+  - method: MAGICKAL gas-grain model with cold collapse then warm-up 8-400 K, varying activation energies of NH + CO and H + CH3NCO [5 Chemical modelling: "we use the chemical kinetics model *MAGICKAL* (Garrod 2013) with an expanded gas-grain chemical network."]
+  - software: MAGICKAL
+  - parameter: nH = 2e8 cm-3, 8 K minimum dust temperature, intermediate warm-up timescale [5 Chemical modelling: "we use the intermediate warm-up timescale, which generally produces the best match between models and observed abundances"]
+  - assumption: Binding energies 3575 K (CH3NCO) and 6281 K (CH3NHCHO) estimated [5 Chemical modelling: "Binding energy values for CH$_3$NCO and CH$_3$NHCHO are 3575 K and 6281 K, respectively"]
+  - validation: Model abundance ratios compared with observed ratios [5.1 Model results: "Table [\[RTG-tab5\]](#RTG-tab5) shows ratios of the abundances of the main molecules with that of HNCO"]
+- limitation (authors): Only five clean lines, so detection tentative [4.2 Tentative detection of N-methylform…: "Given the small number of clearly detected lines, we consider our detection of CH$_3$NHCHO as tentative rather than secure."]
+- limitation (authors): Models overproduce NH2CHO and CH3CONH2 by more than an order of magnitude [5.1 Model results: "all four models produce an overabundance of NH$_2$CHO and CH$_3$CONH$_2$ by more than an order of magnitude"]
+- not stated (card): Imaging and calibration parameters (CASA version, weighting, spectral extraction position/aperture) not given; only in Belloche et al. 2016; Coordinates and distance of Sgr B2(N2) not given here; Details of the full LTE model of all other molecules needed to remove contamination; Uncertainties on LTE column densities not tabulated; Network files for MAGICKAL not provided
+
+### 2023MNRAS.523.2887M: Rotation-tunnelling spectrum and astrochemical modelling of dimethylamine, CH<SUB>3</SUB>NHCH<SUB>3</SUB>, and searches for it in space (2023; astrochemistry, star_formation, milky_way_ism; archival_reuse)
+- question: Improve DMA spectroscopic predictions, search for DMA toward Sgr B2(N) and G+0.693–0.027, and compare abundance limits with astrochemical models.
+- step 8: Run DMA chemical models
+  - method: Add grain-surface and bulk-ice DMA formation chemistry to a three-phase network; run collapse followed by hot-core warm-up, and separate low-density pre-shock collapse models. [Astrochemical modeling: "To explore the possible chemistry of DMA and its likely yield in the interstellar medium, we adapt the astrochemical models presented by (cite: Garrod22) to include DMA and a selection of related species."] [Astrochemical modeling: "we run collapse models similar to the first stage of the hot-core models, that would correspond to the pre-shock evolution of the dust and gas in G+0.693$-$0.027."]
+  - parameter: Hot-core collapse: nH 3000 → 2 × 10^8 cm−3; AV 3 → 500 mag; dust ∼14.6 → 8 K; gas 10 K [Astrochemical modeling: "relatively diffuse gas ($n_{\mathrm{H}}=3000$ cm$^{-3}$) first collapses to high density ($2 \times 10^{8}$ cm$^{-3}$)"] [Astrochemical modeling: "as the visual extinction increases from 3 to 500 mag., the dust cools from $\sim$14.6 K to 8 K, while the gas temperature is held steady at 10 K during the collapse"]
+  - parameter: Warm-up to 400 K; fast 5 × 10^4 yr, medium 2 × 10^5 yr, slow 1 × 10^6 yr, defined at 200 K [Astrochemical modeling: "the gas and dust temperatures rise monotonically to a maximum of 400 K."] [Astrochemical modeling: "labeled *fast* ($5 \times 10^{4}$ yr), *medium* ($2 \times 10^{5}$ yr), and *slow* ($1 \times 10^{6}$ yr)"]
+  - parameter: Hot-core ζ = ζ0 to 10^1.5 ζ0; ζ0 = 1.3 × 10−17 s−1 [Astrochemical modeling: "ranging from $\zeta = \zeta_{0}$ to $10^{1.5}~\zeta_{0}$, where $\zeta_{0} = 1.3 \times 10^{-17}$ s$^{-1}$."]
+  - parameter: G+0.693 collapse: final nH 2 × 10^4 cm−3; ζ = 100 and 1000 ζ0 [Astrochemical modeling: "ranging from 100$-$1000 $\zeta_{0}$; we run collapse models with $\zeta$ using the two extremes of this range."] [Astrochemical modeling: "the final gas density at the end of the collapse is reduced to $n_{\mathrm{H}} = 2 \times 10^4$ cm$^{-3}$, as inferred by (cite: zeng2020)."]
+  - assumption: Only H and H2 diffuse in bulk ice; other radical reactions require nondiffusive 3-B or PDI mechanisms. [Astrochemical modeling: "Within the bulk ice, diffusive motions are restricted to H and H$_2$ only"] [Astrochemical modeling: "Thus, in the bulk ice, reactions between radicals (i.e. not H) may only occur through the nondiffusive 3-B and PDI mechanisms."]
+  - assumption: DMA surface binding energy 5856 K; direct cosmic-ray-impact desorption excluded [Astrochemical modeling: "The surface binding energies of DMA and used in the model are 5856 K and 5731 K, respectively"] [Astrochemical modeling: "Molecular desorption driven by the direct impingement of cosmic rays on dust grains is not included in the present model"]
+  - validation: Compare molecular abundance ratios with observational detections and upper limits. [Comparison of chemical models with obse…: "As with the observational data themselves, molecular abundance ratios may be the most useful means of comparison between models and observations."]
+- result: Early-stage contribution to total DMA production in the slow warm-up model = around 60% ± not stated percent [Chemical model results: "The early production mechanism for DMA contributes around 60% of total production."]
+- limitation (authors): ALMA limits do not constrain whether the analogous formation routes operate differently. [Sgr B2(N): "This limit is not constraining enough to infer whether or not the formation routes that possibly relate methanol to dimethyl ether and methylamine to dimethylamine operate differently."]
+- limitation (authors): Methylamine toward N2b is only tentatively detected. [Search for DMA toward Sgr B2(N1S) and S…: "As a result, we only claim a tentative detection of methylamine toward Sgr B2(N2b)."]
+- limitation (authors): G+0.693 DMA emission falls at a local baseline minimum; its upper limit can change by less than a factor of two. [Nondetection of dimethylamine toward G+…: "Unfortunately, the predicted emission just appears in a spectral region which shows a local minimum in the data with respect to the adjusted broad band baseline."]
+- not stated (card): ALMA calibration software, version, pipeline/manual procedure, calibrators and flux-scale uncertainty.; ALMA imaging task, weighting/robust, cell size, image dimensions, deconvolution masks and stopping criteria.; Exact line/continuum separation frequency ranges and identities/coordinates of the two added reference positions.; Exact spectral extraction apertures or pixel selections and beam treat…
+
+### 2016ApJ...831..101B: Hydrocarbon Emission Rings in Protoplanetary Disks Induced by Dust Evolution (2016; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Why do C2H (and c-C3H2) emission rings appear at the edge of the mm-dust (pebble) disk in TW Hya and DM Tau, and what physical/chemical conditions (UV field, C/O) are needed to produce them?
+- step 4: Thermo-chemical modelling of rings
+  - method: Three-component dust disk models (inner, sub-mm, UV-dominated), uniform C/O tests, then parametrized C and O depletion; compare simulated N=4-3 emission to observations [5.1 Source Specific Models: "The “best-fit” emission images of for both disks are shown in Fig. [9](#fig:best)."]
+  - software: Du & Bergin thermo-chemical code, Monte Carlo radiative transfer (Dullemond et al. 2002)
+  - parameter: Gas-to-dust mass ratio 100; dust size distribution power law exponent 3.5; cosmic ray rate ~1e-19 s^-1; models sampled at 5 Myr (TW Hya) and 1 Myr (DM Tau) [Physical and Chemical Models: "Thus we have run our models with a rate that is reduced compared to the interstellar medium by two orders of magnitude ($\sim 10^{-19}$ s$^{-1}$, with an attenuation parameter of 96 g/cm$^2$)."]
+  - assumption: Same TW Hya UV field used for both systems; 8:2 astrosilicate:graphite [4 Physical and Chemical Models: "we use the TW Hya radiation field for both systems"]
+  - fitting: Parameters chosen heuristically, no formal fit [Appendix A: "The parameters are chosen heuristically for each disk to investigate what C and O distribution best reproduce the observed C$_2$H observations."]
+  - validation: Predicted emission matches observations within a factor of 1.5; test with 10x higher gas mass [5.1.1 TW Hya: "the predicted emission distribution shown in Fig. [9](#fig:best) matches observations within a factor of 1.5."]
+- limitation (authors): Depletion parameterization is somewhat arbitrary; DM Tau inner hole not modelled; outer ring sharpness not matched [5.1 Source Specific Models: "This parameterization is somewhat arbitrary"]
+- not stated (card): Line-free channels / continuum subtraction method; Self-calibration solution intervals and number of rounds; Image size, cell size, clean threshold, masks; Details of stacking and ring-fitting for position angle and inclination; Chemical network and reaction rate details of the Du & Bergin model; Exact criteria for the 'best-fit' models (no fitting algorithm); Coordinates of targets
+
+### 2024ApJ...976..258K: Chemistry in the GG Tau A Disk: Constraints from H<SUB>2</SUB>D<SUP>+</SUP>, N<SUB>2</SUB>H<SUP>+</SUP>, and DCO<SUP>+</SUP> High Angular Resolution ALMA Obser… (2024; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: Cold molecular chemistry in the GG Tau A triple T Tauri disk: map N2H+, DCO+ and H2D+ (plus 13CS, SO2 limits), derive surface densities and rotation temperatures, and compare with chemical models across cosmic ray ionization rate, C/O rati…
+- step 7: compare observed surface densities with a grid of astrochemical models
+  - method: DNAUTILUS 2.0 1+1D models in a physical ring model (190-290 au) over a grid of C/O, CRI rate, UV flux, settling and initial abundances; best model by lowest reduced chi-square against N2H+ and DCO+ radial surface densities and upper limits [4.3 Grid of Models: "we explored a grid of models utilizing the least squares method"] [4.1 Disk Physical Model: "Our physical model is constructed for a radial range of 190 au to 290 au"]
+  - software: DNAUTILUS
+  - parameter: UV flux at 214 au: 375, 1500, 3000 chi0 [Table: Parameter Space Explored: "375, 1500, 3000"]
+  - parameter: C/O from 0.5 to 1.2 [5.2 Chemical Trends: "different elemental C/O ratios from 0.5 to 1.2 by changing initial O abundances"]
+  - parameter: CRI rate 1e-16 to 1e-20 s-1 [Table: Parameter Space Explored: "$10^{-16}$, $10^{-17}$, $10^{-18}$, $10^{-19}$, $10^{-20}$"]
+  - assumption: Dust temperature equal to gas temperature [4.1 Disk Physical Model: "We have kept the dust temperature equal to the gas temperature"]
+  - assumption: Uniform 0.1 micron grains, no grain growth, dust-to-gas 1e-2 below 1 H and 1e-3 above for settling [4.1 Disk Physical Model: "we considered a uniform grain size of 0.1$\mu m$"] [4.1 Disk Physical Model: "we adjust the $\varepsilon$ to $10^{-3}$ above 1H$_r$, while maintaining the standard $\varepsilon$ of $10^{-2}$ below 1H$_r$"]
+  - assumption: Mean molecular weight 2.37, ring gas mass 0.13 Msun, M* = 1.37 Msun [4.1 Disk Physical Model: "the mean molecular weight of the gas per H nuclei $\mu = 2.37$"] [4.1 Disk Physical Model: "$M_* = 1.37 M_{\odot}$"]
+  - assumption: Cloud phase: 10 K, density 2e4 cm-3, Av = 15 mag, zeta = 1.3e-17 s-1, evolved 1e6 yr before the disk model [4.3 Grid of Models: "gas and dust temperature of 10 K, a total gas density of $2\times10^4$ cm$^{-3}$, a visual extinction of 15 mag and cosmic ray ionization rate of $1.3 \times 10^{-17}$ s$^{-1}$"]
+  - fitting: Reduced chi-square over molecules and radii with 25 degrees of freedom; modelled errors 20%; observed errors from DISKFIT peak surface-density uncertainties [10 Grids of Astrochemical Models: "$\nu$, the number of degrees of freedom is 25"] [10 Grids of Astrochemical Models: "while modelled errors were assumed to be 20% to account for uncertainties in the chemical models"]
+  - validation: Best-fit solution independent of the assumed error size; modelled values for undetected molecules required to stay below their upper limits [10 Grids of Astrochemical Models: "the best-fit solution was found to be independent of this assumption"] [10 Grids of Astrochemical Models: "We ensured that the modelled values for undetected molecules remained below their respective upper limits."]
+- result: Best chemical model reduced chi-square = 2.78 ± not stated dimensionless [4.3 Grid of Models: "($\chi^2_{\text{red}}$ = 2.78)"]
+- result: Best-fit cosmic ray ionization rate = 1e-18 ± not stated s-1 [Table 1: "$10^{-18}$"]
+- result: Best-fit initial C/O ratio = 1.0 ± not stated dimensionless [4.3 Grid of Models: "and an initial C/O ratio of 1.0 are necessary"]
+- limitation (authors): X-ray chemistry not included [5.2 Chemical Trends: "Additionally, our models do not include X-ray chemistry"]
+- limitation (authors): Outer disk not modelled because of its complex structure [5.3 Possible Chemistry in the Outer Disk: "We have not modelled the outer disk due to its complex structure"]
+- not stated (card): Line-free channel ranges used for self-calibration, uvcontsub and the continuum image; Self-calibration solution intervals and per-round gain settings; per-execution flux scale uncertainty; Image sizes, cell sizes in arcsec, channel width of the final cubes, and clean niter/threshold; Keplerian mask thresholds and how the robust=1.0 versus natural/multiscale choice maps to each line; Primary beam…
+
+### 2025A&A...702A..35D: The ALMA-QUARKS survey: Extensive detection of acetamide in multiple high-mass star-forming regions (2025; star_formation, astrochemistry; large_program_or_survey)
+- question: How prevalent is acetamide (CH3CONH2) across hot molecular cores in high-mass star-forming regions, and how do its abundance and formation pathways relate to formamide (NH2CHO)?
+- step 5: Analyze chemical correlation and abundance ratios
+  - method: Normalize NH2CHO and CH3CONH2 column densities to CH3OH, combine with literature sources, fit a power-law correlation, and compare abundance ratios with astrochemical models and laboratory ice simulations [Chemical links between NH2CHO and CH3CO…: "To explore potential chemical connections between CH$_{3}$CONH$_{2}$ and NH$_{2}$CHO, their abundances were normalized to CH$_{3}$OH, a standard reference for COMs in the ISM."] [Chemical links between NH2CHO and CH3CO…: "As shown in Fig. [5](#fig:fig. 5)a, CH$_{3}$CONH$_{2}$ and NH$_{2}$CHO abundances exhibit a strong positive correlation, with a best-fit power law:"]
+  - assumption: 20% uncertainty assumed for literature abundances where not specified [Chemical links between NH2CHO and CH3CO…: "For literature sources, values were adopted from (cite: Cer16), (cite: Bog18), (cite: Jor18), (cite: Bon19), (cite: Lig22), and (cite: Min23), assuming a 20% uncertainty where not specified."]
+  - fitting: Power-law fit between X_CH3OH(CH3CONH2) and X_CH3OH(NH2CHO) [Chemical links between NH2CHO and CH3CO…: "As shown in Fig. [5](#fig:fig. 5)a, CH$_{3}$CONH$_{2}$ and NH$_{2}$CHO abundances exhibit a strong positive correlation, with a best-fit power law:"]
+  - validation: Exclude duplicate NGC 6334I literature data from statistical analysis [Chemical links between NH2CHO and CH3CO…: "Therefore, values from NGC 6334I were excluded from further statistical analysis to avoid duplication."]
+- result: Average NH2CHO/CH3CONH2 column density ratio across the 10 detected HMCs = 5.6 ± +-1.8 dimensionless [Chemical links between NH2CHO and CH3CO…: "The NH$_{2}$CHO/CH$_{3}$CONH$_{2}$ ratios in our sample range from 2.9 to 8.9, with an average of $\sim$5.6 and a standard deviation of $\pm$1.8, exhibiting relatively small variation across sources (Fig. [4](#fig:fig. 4)b)."]
+- result: Power-law slope between X_CH3OH(CH3CONH2) and X_CH3OH(NH2CHO) = 0.86 ± +-0.15 dimensionless [Chemical links between NH2CHO and CH3CO…: "$X_{\rm {CH_3OH}}(\rm {CH_3CONH_2}) = (0.08 \pm 0.07) \times X_{\rm {CH_3OH}}({\rm NH_2CHO})^{(0.86 \pm 0.15)}$"]
+- result: Power-law coefficient between X_CH3OH(CH3CONH2) and X_CH3OH(NH2CHO) = 0.08 ± +-0.07 dimensionless [Chemical links between NH2CHO and CH3CO…: "$X_{\rm {CH_3OH}}(\rm {CH_3CONH_2}) = (0.08 \pm 0.07) \times X_{\rm {CH_3OH}}({\rm NH_2CHO})^{(0.86 \pm 0.15)}$"]
+- limitation (authors): Uncertainties in the adopted 12C/13C ratios from distance effects, beam size variations, excitation temperature mismatches, isotope-selective photodissociation, and chemical fractionation. [Molecular Parameter Calculations: "While this method effectively avoids opacity-related biases, several factors may introduce uncertainties into the observed $^{12}$C/$^{13}$C ratios."]
+- limitation (authors): Abundances relative to H2 cannot be reported due to uncertainties in dust opacity. [Molecular Parameter Calculations: "Abundances relative to H$_{2}$ are not reported due to uncertainties in dust opacity."]
+- limitation (authors): Uncertainties in excitation temperatures, optical depth, line blending, spatial structure, LTE assumptions, use of 13C isotopologs for NH2CHO, and uniform source-filling assumption for CH3CONH2 may introduce systematic uncertainties in der… [Chemical links between NH2CHO and CH3CO…: "While uncertainties in excitation temperatures significantly affect the derived column densities, other contributors include optical depth, line blending, spatial structure, and assumptions of LTE."]
+- not stated (card): Exact celestial coordinates of the offset positions where spectra were extracted for each source (only marked visually as white points in Figure A1); CASA version and calibration/imaging parameters (tclean weighting, robust parameter, continuum subtraction method, array combination method), which are deferred to Liu et al. (2024); Integration velocity ranges used to produce the moment-0 maps in C…
+
+### 2025A&A...700A.141H: Statistical nuclear spin ratios of deuterated ammonia in the pre-stellar core L1544 (2025; astrochemistry, star_formation, milky_way_ism; multi_facility_alma_minor)
+- question: Determine the ortho/para (o/p) nuclear spin ratios of NH2D and NHD2 in the pre-stellar core L1544 and test whether they match statistical weights (proton hop, PH) or full scrambling (FS) predictions
+- step 4: Predict abundance distributions with a gas-grain chemistry model (PH vs FS)
+  - method: pyRate simulations with PH and FS networks; dark cloud phase then dense core phase in concentric shells [Chemistry model: "We assumed that the gas has been processed under low-density ‘dark cloud’ conditions ($n(\rm H_2)=10^4\,\rm cm^{-3}$, $T=10$ K, $A_{\rm V}=5^{\rm mag}$) for half a million years before the ‘dense core’ phase."]
+  - software: pyRate
+  - parameter: Grain radii a = 0.1, 0.2, 0.3 micron [Chemistry model: "The simulations were performed using the grain radii $a=0.1$, 0.2, and $0.3\,\mu$m."]
+  - parameter: Cosmic-ray ionisation rate 0.5, 1, 2, 4, 8 times 1.3e-17 s^-1 [Chemistry model: "We also varied the cosmic-ray ionisation rate, testing the values 0.5,1,2,4, and 8 times $1.3\times10^{-17}\,\rm s^{-1}$."]
+  - parameter: Chemical desorption efficiency constant, 1% of exothermic surface reactions [Chemistry model: "The efficiency of chemical desorption was assumed to be constant, with 1% exothermic surface reactions leading to desorption."]
+  - assumption: Grain material density 2.5 g cm^-3, uniform grain size, dust-to-gas mass ratio 0.01 [Chemistry model: "The dust grains were assumed to have uniform size characterised by the grain radius $a$ and the density of the material $\rho$, assumed to be $2.5\,{\rm g}\,\rm cm^{-3}$."]
+  - validation: Static core model neglects contraction while the chemistry evolves [Simulated spectra: "We think the difference is attributable to the static core model, which neglects the contraction of the core at the same time as the chemistry is evolving."]
+- limitation (authors): Rest frequencies of the NHD2 lines are probably less accurate than those of the NH2D lines [Observed spectra and maps: "This suggests that the rest frequencies of the $\rm NHD_2$ lines are not as accurate as those of the $\rm NH_2D$ lines."]
+- limitation (authors): Static core model neglects core contraction during chemical evolution [Simulated spectra: "We think the difference is attributable to the static core model, which neglects the contraction of the core at the same time as the chemistry is evolving."]
+- limitation (authors): Fit uncertainties include only statistical noise [Core model: "Only the statistical uncertainties based on the noise of the observed spectra are taken into account in this method."]
+- not stated (card): Calibration details of the 2016.1.00240.S ALMA data (CASA version, calibrators, self-calibration, line-free channels) are only in Caselli et al. 2022; ALMA spectral setup, band and baseline range are not given in this paper; pyRate source code, network files and exact output grids are not stated as available; Beam efficiencies for APEX and IRAM are only 'provided by the telescope teams', values n…
+
+### 2023NatAs...7..684K: Azimuthal C/O variations in a planet-forming disk (2023; protoplanetary_disks, astrochemistry; observational_alma_primary)
+- question: How does the gas-phase elemental C/O ratio vary azimuthally in the protoplanetary disk around HD 100546, and what explains the spatial and kinematic asymmetries in CS and SO emission?
+- step 3: Construct baseline axisymmetric 2D physical-chemical disk model (C/O = 0.5)
+  - method: Run a grid of 1728 DALI models to fit the SED for dust mass, constrain maximum gas mass from HD 56 µm and 112 µm upper limits, constrain global [C/H]gas and [O/H]gas from the CO ladder, [CI], C2H upper limits, and CO 3-2 radial profile, an… [3.3.4 Basic fitting procedure: "We begin by fitting the SED using a grid of 1728 models, in which the parameters R gap, ψ, h c, δ dust and ∆ g/d are varied."] [3.3.4 Basic fitting procedure: "[C]/[H] gas and [O]/[H] gas are constrained by modelling the CO ladder, the line profiles of the CO 3-2, CO 6-5 and [CI] transitions, and the radial profile of the CO 3-2 emission from (Walsh et al., 2014)."]
+  - software: DALI
+  - parameter: Table 1 fiducial parameters: R_sub=0.25 au, R_gap=1.0 au, R_cav=13 au, R_out=1000 au, R_c=50 au, M_gas=1.45e-1 M_sun, M_dust=1.12e-3 M_sun, [C/H]gas=1.0e-5, [O/H]gas=2.0e-5, t_chem=5 Myr; [S/H]=10^-9 (13-30 au) and 10^-8 (150-230 au) [3.3.4 Basic fitting procedure: "For this study, we adopt a radially varying sulfur abundance profile, in which [S/H]= 10–9 between 13-30 au and [S/H]= 10–8 between 150-230 au, coincident with prominent millimeter dust rings."] [Table 1: "[C/H] gas Initial carbon abundance (relative to hydrogen) 1.0 × 10–5 (where C/O=0.5)"]
+  - assumption: Interstellar gas-to-dust ratio ∆_g/d = 100; UMIST 06 chemical network (122 species, 1701 reactions); d = 110 pc; L_* = 36 L_sun [3.3.4 Basic fitting procedure: "This is not a tight enough constraint to uniquely determine the gas-to-dust ratio, so from this point on we adopt the interstellar value of ∆ g/d = 100, equivalent to a total gas mass of 1.45 × 10–1 M ⊙ ."] [3.3.3 Chemical network: "The chemical network used in our model is based on a subset of the UMIST 06 (Woodall et al., 2007) network. It consists of 122 species (including neutral and charged PAHs) and 1701 individual reactions."]
+  - fitting: Grid search over 1728 SED models followed by chemical abundance grid fitting against multi-wavelength line fluxes and upper limits [3.3.4 Basic fitting procedure: "We begin by fitting the SED using a grid of 1728 models, in which the parameters R gap, ψ, h c, δ dust and ∆ g/d are varied."]
+  - validation: Verified consistency of best-fit dust mass and C, O abundances with Kama et al. (2016). [3.3.4 Basic fitting procedure: "We find a best fit total dust mass of 1.12 × 10–3 M ⊙, consistent with previous studies (Kama et al., 2016)."]
+- result: Best-fit total dust mass = 1.12e-3 ± not stated M_sun [3.3.4 Basic fitting procedure: "We find a best fit total dust mass of 1.12 × 10–3 M ⊙, consistent with previous studies (Kama et al., 2016)."]
+- result: Maximum total gas mass = < 5.6e-1 ± not stated M_sun [3.3.4 Basic fitting procedure: "We constrain the total gas mass to < 5.6 × 10–1 M ⊙, equivalent to a gas-to-dust ratio of ∆ g/d ≈ 390 (taking into account dust depletion in the inner cavity)."]
+- result: Best-fit global gas-phase C/O ratio (unshadowed region) = 0.5 ± not stated dimensionless [3.3.4 Basic fitting procedure: "C 2 H upper limits presented in (Kama et al., 2016) constrain the global C/O ≲ 1, and we adopt [C/H] gas = 1 × 10–5 for our fiducial model, giving a C/O ratio of 0.5."]
+- limitation (authors): The ACA CS 7-6 observation is essentially unresolved because the 4.78" beam is nearly equal to the radial extent of the gas disk. [1.1 Data & observational findings: "The emission is essentially unresolved, since the beam size (4.78") is almost equal to the radial extent of the gas disk, as traced by CO (Walsh et al., 2017)."]
+- limitation (authors): The DALI model lacks a smooth transition between the inner cavity and dust ring (having a sharp boundary instead) and does not include the outer dust gap between r ∼ 40 - 150 au in ∆_g/d. [1.2 Modelling: "One possible explanation is that our model lacks a smooth transition between the cavity and dust ring, instead having a sharp boundary."]
+- limitation (authors): Wedge splicing angles are measured in the image cube plane rather than projected onto the inclined 3D disk plane. [3.3.5 Modelling azimuthal asymmetries: "Angles are measured in the plane of the cube i.e. they are not projected on to the disk, and as such do not directly correlate to angles measured in the disk plane."]
+- not stated (card): Exact disk inclination and position angle values adopted for image deprojection, Keplerian masking, and DALI raytracing; Specific line-free channel ranges used in uvcontsub for each ACA spectral window; tCLEAN stopping threshold and masking strategy during deconvolution of the ACA cubes; Exact CASA simobserve and simanalyze configuration files and noise/thermal parameters used to simulate the obs…
+
+### 2023A&A...669A..90C: Magnetically regulated collapse in the B335 protostar?. II. Observational constraints on gas ionization and magnetic field coupling (2023; star_formation, astrochemistry; observational_alma_primary)
+- question: To observationally characterize the level of gas ionization at small envelope radii (<= 1000 au) and investigate its relation to the efficiency of magnetic field coupling in the Class 0 protostar B335.
+- step 4: Compute gas ionization fraction (chi_e) and cosmic-ray ionization rate (zeta_CR) maps, and fit radial power-law profiles of zeta_CR
+  - method: Use Caselli et al. (1998) analytical relations (Eqs. 3 and 4) combining R_D, f_D, volume density n_H2 = N_H2 / L, and hydrogenation fraction R_H (from H13CO+ 1-0 and C17O 1-0, Eq. 8); extract radial median profiles of zeta_CR over position… [Ionization fraction and cosmic-ray ioni…: "We followed the method presented in (cite: Caselli1998) to compute $\chi_{\rm e}$ and $\zeta_{\rm CR}$ from $R_{\rm D}$."] [Derivation of the CR ionization rate: "We obtained $R_{\rm H}$ for both velocity components as the column density ratio of H$^{13}$CO$^+$ (J=1-0) to C$^{17}$O (J=1-0), and accounting for $f_{^{12/13}C}$ and $f_{\rm C^{17}O}$:"]
+  - parameter: Core diameter L = 1720 au; break radius r = 270 au; radial profile range 40 to 700 au over position angles 0 <= vartheta <= pi [Derivation of the CR ionization rate: "considering a core diameter, $L$, of 1720 au derived from the C$^{17}$O (J=1-0) emission (cite: Cabedo2021b)."] [Derivation of the CR ionization rate: "As the $\zeta_{\rm CR}$$(r,\vartheta)$ distributions between 40 and 700 au are skewed, for each radius $\bar{r}$ we considered the median value of $\zeta_{\rm CR}$$(\bar{r},\vartheta)$ and estimated the errors using the first and third quartiles."]
+  - assumption: Simple steady-state chemical network of Caselli et al. (1998); uniform line-of-sight core depth L = 1720 au. [Ionization fraction and cosmic-ray ioni…: "While this observational method to measure $\chi_{\rm e}$ of the gas relies on a simple chemical network and a rather strong hypothesis, it is widely used in the literature in dense cores and also toward protostars."]
+  - fitting: Power-law fit zeta_CR(r) proportional to r^s to median radial profiles with errors from first and third quartiles [Derivation of the CR ionization rate: "for each radius $\bar{r}$ we considered the median value of $\zeta_{\rm CR}$$(\bar{r},\vartheta)$ and estimated the errors using the first and third quartiles. We find that the trend of $\zeta_{\rm CR}$ can be parameterized by two independent, decreasing power-law profiles $\zeta_{\rm CR}$$(r)\propto r^{s}$."]
+  - validation: Compared derived zeta_CR radial profiles against FUV extinction depth and X-ray ionization rate models (zeta_X) computed from Rab et al. (2017) T Tauri spectra. [Origin of the ionization: "We therefore estimated the X-ray ionization rate, $\zeta_{\rm X}$, using the spectra described by (cite: Rab2017) for a typical and a flaring T Tauri star, assuming a stellar radius of $2R_\odot$."]
+- result: Ionization fraction chi_e (range) = 1e-6 - 8e-6 ± ~1.5e-6 dimensionless [abstract: "We find large fractions of ionized gas, $\chi_{\rm e}$ $\simeq 1-8 \times 10^{-6}$."]
+- result: Mean ionization fraction chi_e = 2e-6 ± 1.5e-6 dimensionless [Ionization fraction of the gas: "We obtained a mean value of $\chi_{\rm e}$ = $2\times10^{-6}$ for both components. Generally, these values are subject to statistical uncertainties of $\sim1.5\times10^{-6}$."]
+- result: H2 volume density n_H2 = 10^4 - 10^6 ± not stated cm^-3 [Derivation of the CR ionization rate: "With this approximation, we find values of the volume density ranging from $\sim 10^{4}$ in the outer regions, to $\sim 10^{6}$ cm$^{-3}$ at the protostar position."]
+- result: Mean hydrogenation fraction R_H = 2e-7 - 3e-7 ± one order of magnitude smaller than R_H dimensionless [Derivation of the CR ionization rate: "Values of $R_{\rm H}$ are relatively uniform across the source, with mean values between 2 and $3\times 10^{-7}$ for the two velocity components. The statistical uncertainties of these values are generally one order of magnitude smaller than $R_{\rm H}$."]
+- result: Cosmic-ray ionization rate zeta_CR (range) = 10^-16 - 7e-14 ± same order of magnitude as zeta_CR s^-1 [Derivation of the CR ionization rate: "As expected from the values of $\chi_{\rm e}$, $\zeta_{\rm CR}$ increases toward the center, reaching values of 7$\times$10$^{-14}$ s$^{-1}$ at the peak of the dust continuum."]
+- result: Power-law slope of zeta_CR(r) at r < 270 au = -0.96 ± 0.04 dimensionless [Derivation of the CR ionization rate: "At small radii, $r<270$ au, the slope of the power law, $s = -0.96 \pm 0.04$, is compatible with the diffusive regime of CR propagation."]
+- result: Power-law slope of zeta_CR(r) at r > 270 au = -3.77 ± 0.30 dimensionless [Derivation of the CR ionization rate: "However, at $r>270$ au, $\zeta_{\rm CR}$ drops abruptly to $s = -3.77 \pm 0.30$, which cannot be explained by any propagation regime."]
+- limitation (authors): Assumption of a constant temperature (T_ex = T_d = 25 K) across the envelope introduces systematic errors of a factor of 3-5 in N_H2, a factor of 2 in N_CO, and a factor of 2-3 in f_D, especially toward the central peak. [Estimate of the CO depletion in B335: "We estimate that the systematic error is about a factor of 3 to 5, being higher toward the peak position where standard dust properties and conditions of emission may not be met."]
+- limitation (authors): Presence of a third velocity component (outflow contamination) in the southeastern region of H13CO+ (J=3-2) causes poor two-component fits and large errors in R_D there. [Deuteration fraction: "However, these values have the largest associated errors due to the presence of a third velocity component in the line profiles of H$^{13}$CO$^+$ (J=3-2) and should not be totally trusted (see Appendix 8.1)."]
+- limitation (authors): Global uncertainties on zeta_CR are of the same order of magnitude as the derived zeta_CR values. [Derivation of the CR ionization rate: "Considering the systematic uncertainties on n$_{\rm H_{2}}$, and $R_{\rm H}$ we estimate the global uncertainty on $\zeta_{\rm CR}$ values, and find them to be of the same order of magnitude as the $\zeta_{\rm CR}$ values."]
+- not stated (card): Numeric value adopted for the carbon isotopic abundance ratio f_12/13C used in Equations 1 and 8; Exact self-calibration parameters (solution intervals, number of rounds, phase-only vs amplitude+phase); Continuum subtraction procedure and line-free channel ranges (continuum subtraction is implied by figure filenames 'contsub' in Appendix B, but not described in the text); Deconvolver, masking, st…
+
+### 2016A&A...592A..76D: ALMA-resolved salt emission traces the chemical footprint and inner wind morphology of VY Canis Majoris (2016; evolved_stars, astrochemistry; archival_reuse)
+- question: What is the inner-wind density structure of the red supergiant VY CMa, and how do gaseous NaCl and dust interact chemically, as traced by spatially resolved NaCl emission?
+- step 3: Model NaCl gas-grain chemistry
+  - method: Simplified network of accretion, thermal desorption and photodesorption; analytic steady-state solution for T_b = 5000, 10000, 15000 K [4.1.2: "we have decided to study the evolution of the NaCl abundance for three different values of the surface binding energies: 5 000 K, 10 000 K, and 15 000 K."]
+  - parameter: n_H = 1e8 cm^-3 at ~10 R*, S=1, F_FUV Y_PD = 3e5 [4.1.2: "a hydrogen number density of $1\times10^8$ cm$^{-3}$ is reached at $\sim$10 R$_{\star}$"]
+  - assumption: Dust-to-gas mass ratio 0.002; grain sizes 0.005-0.25 micron; solar Cl abundance 3.2e-7 [4.1.1: "For a dust-to-gas mass ratio of 0.002 (cite: Decin2006A&A...456..549D), $K$ is $\sim$2.8$\times10^{-26}$ cm$^{2.5}$ per H atom"]
+  - validation: Compared qualitatively with ALMA detection of NaCl at 1.22'' [Discussion, NaCl gas-grain chemistry: "The ALMA data clearly show gaseous NaCl emission around 1.22$^{\prime\prime}$ in the south-western extension, at a place where also scattering by dust grains peaks"]
+- result: Turn-over T_b/T_d for gaseous fraction = ~50 ± not stated dimensionless [4.1.2: "The turn-over point is around $T_b/T_d \sim 50$"]
+- result: Gaseous NaCl fraction at low dust temperature = ~10% ± not stated percent [4.1.2: "only about 10% of the NaCl abundance resides in the gas phase at low dust temperatures"]
+- limitation (authors): Only 16-20 antennas; cannot prove either scenario [5 Conclusions: "The present data, obtained with only 16–20 ALMA antennas, can not prove the validity of both scenarios"]
+- not stated (card): CASA version and reduction/imaging details (task, weighting, robust, cell, image size, masking, deconvolver); Line-free channels for continuum subtraction; Whether archival SV calibrated products were used as is; Procedure for correcting the 325 GHz blends; Integration limits for moment-zero maps; Dust temperature profile and Y_PD assumptions of the chemical network beyond the quoted ones
+
+### 2026A&A...712A.201J: Physical and chemical conditions of molecular gas in NGC 1068: The nuclear feedback in the circumnuclear disk and starburst ring (2026; nearby_galaxies, agn_and_quasars, star_formation, astrochemistry; archival_reuse)
+- question: Map the physical conditions across the circumnuclear disk and the starburst ring of NGC 1068, test whether the nuclear outflow influences the molecular gas in the ring, and examine whether the heating or the quiescent cloud scenario better…
+- step 2: Generate chemical model grid and train neural network emulator
+  - method: Run two-stage UCLCHEM models (both quiescent and heating scenarios) across a 4D parameter grid, filter out abundances < 10^-15, normalize to (-1, 1), and train a 4-hidden-layer TensorFlow neural network to predict fractional molecular abun… [Bayesian and Neural Network Workflow: "In this work, we employ two types of chemical models: a quiescent cloud model and a heating model."] [Neural Network Architecture: "We constructed a neural network using the TensorFlow package to emulate the chemical modeling calculations."]
+  - software: UCLCHEM, TensorFlow
+  - parameter: 4 inputs: T_K in [30, 300] K (26 log points), n_H2 in [10^3, 10^7] cm^-3 (23 log points), zeta in [1, 10^3] zeta_0 (31 log points), N_H2 in [10^22, 10^25] cm^-2 (26 log points); 481,988 unique combinations [Training Data Set: "This sampling scheme yielded 481,988 unique parameter combinations for our chemical modeling."] [Training Data Set: "| $T_{\mathrm{K}}$$^{a}$ | Temperature (K) | 30-300 | Log | 26 |"]
+  - parameter: Architecture: 4 hidden layers with 2048 nodes each, ReLU activation, MSE loss, early stopping after 20 epochs without validation loss improvement; 80%/10%/10% train/val/test split [Neural Network Architecture: "The architecture includes four hidden layers with 2048 nodes each."] [Neural Network Architecture: "To prevent overfitting, we implemented an early stopping criterion that halts training when the validation loss has not improved over 20 consecutive epochs."]
+  - assumption: Stage 1 freefall collapse from n = 100 cm^-3, T = 10 K, zeta_0 = 1.3e-17 s^-1 over 6 Myr; Stage 2 evolution for 1 Myr at fixed visual extinction A_v = 10 mag [Training Data Set: "In stage 1, a freefall collapse model simulates the conversion of atomic/ionic gas to molecular form under fixed physical conditions: initial density of 100 cm$^{-3}$, temperature of 10 K, with the standard cosmic ray ionization rate for molecular hydrogen of $\zeta_{0}$ = 1.3 x 10$^{-17} s^{-1}$(cite: indriolo2015)."] [Training Data Set: "This stage tracks chemical evolution over 6 Myr, with the final molecular abundances serving as initial conditions for stage 2."]
+  - fitting: Supervised neural network training minimizing mean-squared-error (MSE) loss with early stopping [Neural Network Architecture: "During training, we use a mean-squared-error loss function to quantify the difference between the neural network predictions and the abundances from the training data."]
+  - validation: Evaluated on 10% held-out test set (~40,000 points); reproduces UCLCHEM HNC predictions with mean relative error of 0.35% [Traning Results: "The network reproduces the `UCLCHEM` predictions with a mean relative error of 0.35% and accurately recovers abundance variations spanning approximately eight orders of magnitude."]
+- step 3: Perform hierarchical Bayesian inference coupled with non-LTE radiative transfer
+  - method: Couple neural network chemical abundances with SpectralRadex non-LTE radiative transfer to predict line ratios, and sample the hierarchical Bayesian posterior across 198 hexagonal regions using Nautilus for both heating and quiescent model… [abstract: "We perform hierarchical Bayesian inference that links a non-LTE radiative transfer module (`SpectralRadex`) with chemical modelling."] [Bayesian and Neural Network Workflow: "Bayesian inference is carried out with `Nautilus` (cite: nautilus), which combines neural-network accelerated transport, importance sampling, and ultrafast likelihood approximations."]
+  - software: SpectralRadex, Nautilus
+  - parameter: Observables: m = n - 1 chained log line ratios y_i^obs = ln(r_i) where r_k = I_k / I_{k+1}; Linewidths = 150, 100, and 50 km s^-1 for CND, stellar bar, and starburst ring [Bayesian and Neural Network Workflow: "We adopted linewidths of 150, 100, and 50 km s$^{-1}$ for the CND, stellar bar, and starburst ring, respectively (cite: Scourfield2020)."] [Hierarchical Bayesian model: "To avoid over-weighting specific transitions, we construct $m = n - 1$ ratios in a chain form, where $n$ is the number of transitions detected above 3$\sigma$ in a given region."]
+  - parameter: Hyperparameter priors: mu_n in (3.0, 6.00), mu_T in (1.55, 2.30), mu_N in (22.5, 24.0), mu_zeta in (0.0, 2.0), sigma_error in (0.02, 0.5) [Hierarchical Bayesian model: "| $\mu_{n}$ | (3.0, 6.00) |"] [Hierarchical Bayesian model: "| $\sigma_{\rm error}$ | (0.02, 0.5) |"]
+  - assumption: All transitions optically thin at best-fit parameters; C2H (N=1-0) modeled as a single transition; ensemble of region parameters follows a multivariate Student-t distribution with soft correlation bounds [Hierarchical Bayesian model: "The ensemble of $\boldsymbol{\theta}_i$ is modeled with a multivariate Student-$t$ distribution with location parameter $\boldsymbol{\mu}$ and covariance matrix $\boldsymbol{\Sigma}$, which describes the intrinsic dispersion and correlations of the physical parameters across all regions."] [Posterior predictive check: "In the radiative transfer calculation, we model C$_2$H using the $N = 1$–0 transition as a whole, which does not fully account for the relative excitation of individual hyperfine components."]
+  - fitting: Hierarchical Bayesian nested/importance sampling with Nautilus using multivariate normal likelihood in log-ratio space and additive normal non-statistical error epsilon_i ~ N(0, sigma_error) [Hierarchical Bayesian model: "We therefore adopt a multivariate normal likelihood: $\mathbf{y}_i^{\rm obs} \sim \mathcal{N}(\mathbf{y}_i^{\rm mod},\, \mathbf{C}_i)$, where $\mathbf{y}_i^{\rm mod}$ is the model prediction and $\mathbf{C}_i$ is the covariance matrix derived from measurement uncertainties and ratio propagation."] [Hierarchical Bayesian model: "To account for residual non-statistical effects such as calibration systematics and modelling imperfections, we introduce an additive term in log-ratio space: $\mathbf{y}_i^{\rm obs} = \mathbf{y}_i^{\rm mod} + \boldsymbol{\epsilon}_i$, where $\boldsymbol{\epsilon}_i$ follows a normal distribution with zero mean and gl…"]
+  - validation: Bayesian evidence (log Z) comparison between heating and quiescent models, and posterior predictive checks (PPCs) comparing 16th-84th percentile predicted line ratios against observations [Posterior Results and Model Preference: "The Bayesian evidence (log $\mathcal{Z}$) provides an objective criterion for model selection, as it measures the marginal likelihood averaged over the full parameter space."] [Posterior predictive check: "To assess the goodness of fit of the Bayesian inference, we perform posterior predictive checks (PPCs) for all the sub-regions."]
+- result: Neural network HNC abundance mean relative error = 0.35 ± not stated % [Traning Results: "The network reproduces the `UCLCHEM` predictions with a mean relative error of 0.35% and accurately recovers abundance variations spanning approximately eight orders of magnitude."]
+- result: Bayesian log-evidence (log Z) for heating model in CND-S representative region = -26.13 ± not stated dimensionless [Posterior Results and Model Preference: "In this representative region, the evidence values are $-26.13$ for the heating model and $-28.92$ for the quiescent model."]
+- result: Bayesian log-evidence (log Z) for quiescent model in CND-S representative region = -28.92 ± not stated dimensionless [Posterior Results and Model Preference: "In this representative region, the evidence values are $-26.13$ for the heating model and $-28.92$ for the quiescent model."]
+- result: Mean H2 volume density log10(n_H2) in CND = 4.42 ± 0.31 log(cm^-3) [Physical Properties of the Cloud: "The CND exhibits the highest molecular gas density ($n_{\rm H_2} \approx 10^{4.42 \pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\rm H_2} \approx 10^{4.17 \pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\rm H_2} \approx 10^{3.78 \pm 0.29}$ cm$^{-3}$)."]
+- result: Mean H2 volume density log10(n_H2) in starburst ring = 4.17 ± 0.32 log(cm^-3) [Physical Properties of the Cloud: "The CND exhibits the highest molecular gas density ($n_{\rm H_2} \approx 10^{4.42 \pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\rm H_2} \approx 10^{4.17 \pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\rm H_2} \approx 10^{3.78 \pm 0.29}$ cm$^{-3}$)."]
+- result: Mean H2 volume density log10(n_H2) in stellar bar = 3.78 ± 0.29 log(cm^-3) [Physical Properties of the Cloud: "The CND exhibits the highest molecular gas density ($n_{\rm H_2} \approx 10^{4.42 \pm 0.31}$ cm$^{-3}$), denser than the starburst ring ($n_{\rm H_2} \approx 10^{4.17 \pm 0.32}$ cm$^{-3}$) and the stellar bar ($n_{\rm H_2} \approx 10^{3.78 \pm 0.29}$ cm$^{-3}$)."]
+- result: Mean H2 column density log10(N_H2) in CND = 23.52 ± 0.34 log(cm^-2) [Physical Properties of the Cloud: "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\rm H_2} \approx 10^{23.52 \pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\rm H_2} \approx 10^{23.23 \pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\rm H_2} \approx 10^{22.84 \pm 0.31}$ cm$^{-2}$)."]
+- result: Mean H2 column density log10(N_H2) in starburst ring = 23.23 ± 0.33 log(cm^-2) [Physical Properties of the Cloud: "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\rm H_2} \approx 10^{23.52 \pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\rm H_2} \approx 10^{23.23 \pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\rm H_2} \approx 10^{22.84 \pm 0.31}$ cm$^{-2}$)."]
+- result: Mean H2 column density log10(N_H2) in stellar bar = 22.84 ± 0.31 log(cm^-2) [Physical Properties of the Cloud: "Similar trends are observed in the H$_2$ column density, with the CND showing the highest values ($N_{\rm H_2} \approx 10^{23.52 \pm 0.34}$ cm$^{-2}$), followed by the starburst ring ($N_{\rm H_2} \approx 10^{23.23 \pm 0.33}$ cm$^{-2}$) and the stellar bar ($N_{\rm H_2} \approx 10^{22.84 \pm 0.31}$ cm$^{-2}$)."]
+- result: Mean kinetic temperature T_kin in stellar bar = 140.8 ± 36.6 K [Physical Properties of the Cloud: "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\rm kin} = 140.8 \pm 36.6$ K), substantially exceeding both the CND ($T_{\rm kin} = 82.2 \pm 28.3$ K) and the starburst ring ($T_{\rm kin} = 76.2 \pm 28.1$ K)."]
+- result: Mean kinetic temperature T_kin in CND = 82.2 ± 28.3 K [Physical Properties of the Cloud: "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\rm kin} = 140.8 \pm 36.6$ K), substantially exceeding both the CND ($T_{\rm kin} = 82.2 \pm 28.3$ K) and the starburst ring ($T_{\rm kin} = 76.2 \pm 28.1$ K)."]
+- result: Mean kinetic temperature T_kin in starburst ring = 76.2 ± 28.1 K [Physical Properties of the Cloud: "The kinetic temperature distribution reveals that the stellar bar exhibits the highest mean temperature ($T_{\rm kin} = 140.8 \pm 36.6$ K), substantially exceeding both the CND ($T_{\rm kin} = 82.2 \pm 28.3$ K) and the starburst ring ($T_{\rm kin} = 76.2 \pm 28.1$ K)."]
+- result: Mean cosmic ray ionization rate log(zeta/zeta_0) in CND = 1.95 ± 0.21 dimensionless [Physical Properties of the Cloud: "The CND shows the highest mean value, $\log(\zeta/\zeta_{0}) \approx 1.95 \pm 0.21$, followed by the stellar bar ($1.91 \pm 0.23$) and the SSCs in the starburst ring ($1.88 \pm 0.24$)."]
+- result: Mean cosmic ray ionization rate log(zeta/zeta_0) in stellar bar = 1.91 ± 0.23 dimensionless [Physical Properties of the Cloud: "The CND shows the highest mean value, $\log(\zeta/\zeta_{0}) \approx 1.95 \pm 0.21$, followed by the stellar bar ($1.91 \pm 0.23$) and the SSCs in the starburst ring ($1.88 \pm 0.24$)."]
+- result: Mean cosmic ray ionization rate log(zeta/zeta_0) in starburst ring SSCs = 1.88 ± 0.24 dimensionless [Physical Properties of the Cloud: "The CND shows the highest mean value, $\log(\zeta/\zeta_{0}) \approx 1.95 \pm 0.21$, followed by the stellar bar ($1.91 \pm 0.23$) and the SSCs in the starburst ring ($1.88 \pm 0.24$)."]
+- result: Mean cosmic ray ionization rate log(zeta/zeta_0) in non-SSC molecular clouds = 1.03 ± 0.21 dimensionless [Physical Properties of the Cloud: "The molecular clouds not associated with SSCs show a more pronounced decrease, with an average of $1.03 \pm 0.21$."]
+- limitation (authors): Neural network emulator produces outliers when input volume density or column density lies close to the parameter space boundaries. [Traning Results: "A small number of outliers deviate from the true abundances by several orders of magnitude, and these cases occur mainly when the input volume density ($n_{\mathrm{H_2}}$) or column density ($N_{\mathrm{H_2}}$) lies close to the boundaries of the parameter space (cite: Berhens2024)."]
+- limitation (authors): Reliance on low-J transitions and 0.8'' (~56 pc) spatial resolution blends multiple gas phases within the beam and is less sensitive to high-density clumps than high-J transitions. [Comparisons with Previous Studies: "More importantly, our analysis relies on low-J transitions, which are less sensitive to dense gas than the high-J transitions used in earlier work, consistent with (cite: Josh2022), who showed that low-J HCN is not an effective tracer of high-density material."]
+- limitation (authors): Due to limited molecular detections in the innermost CND, physical parameters cannot be derived for the AGN region itself. [Comparisons with Previous Studies: "Due to the limited number of available molecular constraints in the innermost CND, likely related to the strong ionized outflow (cite: Garcia2014; huang2022; vollmer2022), we do not derive physical parameters for the AGN region."]
+- not stated (card): CASA version and specific calibration/imaging parameters (e.g., tclean weighting/robust, cell size, image size, continuum subtraction method, velocity channel width Delta V); Project code and imaging details for the CO(1-0) and 13CO(1-0) cubes used in Section 5.2.2; Exact hyperparameters of the TensorFlow training (optimizer, learning rate, batch size); Degrees of freedom (nu) for the multivariat…
+
+### 2018ApJ...854...15H: Probing Episodic Accretion in Very Low Luminosity Objects (2018; star_formation, astrochemistry; observational_alma_primary)
+- question: Have VeLLOs experienced recent accretion bursts, as traced by CO snow line positions (N2H+ depletion vs CO isotopologue emission) compared with those expected from current luminosity?
+- step 6: Fit burst luminosity with time-dependent chemical model
+  - method: Adjust DUSTY luminosity so N2H+ peak matches observed radius; quiescent-burst-post-burst chemistry with deuterated network [4.5: "We adjust the luminosity used as an input for the DUSTY simulation so that the temperature profile leads to a N$_2$H$^+$ peak located at a radius $R_{\rm N_2H^+,peak}$"]
+  - software: DUSTY
+  - parameter: X_CO=4e-4, X_N2=1e-4; CO binding energy 1150 K, N2 955 K; burst 100 and 200 yr; post-burst up to 1e5 yr [4.5: "fixed at a constant value of 4 $\times$ 10$^{-4}$ and 1 $\times$ 10$^{-4}$, respectively."]
+  - fitting: Manual adjustment of luminosity [Chemical modeling: "We adjust the luminosity used as an input for the DUSTY simulation so that the temperature profile leads to a N$_2$H$^+$ peak located at a radius $R_{\rm N_2H^+,peak}$ as determined from the observations"]
+  - validation: Modeled profiles convolved with beam and compared with observed abundance profiles [4.5: "We convolve the profiles with a Gaussian of FWHM equal to the FWHM of the beam"]
+- result: Fraction of VeLLOs with past burst = 71% to 86% ± 17% to 13% percent [5.1: "five to six VeLLOs with a past burst out of seven VeLLOs would result in a probability of 71% to 86% with an uncertainty of 17% to 13%"]
+- limitation (authors): Significant spatial filtering/missing flux [3.3: "The negative contours in the N$_2$H$^+$ integrated intensity maps suggest that there is significant missing flux."]
+- limitation (authors): Hyperfine anomalies limit optical depth estimates [4.2.2: "Third, hyperfine anomalies due to non-thermal effects"]
+- not stated (card): Imaging details: robust/weighting beyond natural, cell size for line maps, clean thresholds, masks; CASA version and calibration approach (pipeline vs manual), flux calibrator; Continuum-subtraction line-free channels; Primary beam correction details; Line-integration mask details beyond velocity ranges; Rest frequencies used; Exact DUSTY inputs (central source spectrum, inner radius) and chemica…
+
+### 2024NatAs...8..308D: Chemical tracers of a highly eccentric AGB-main-sequence star binary (2024; evolved_stars, astrochemistry; observational_alma_primary)
+- question: Can anisotropic molecular emission (SiN, SiC, NS), photodissociation signatures and CO density structures around the AGB star W Aql constrain the orbit of its F9 main-sequence companion?
+- step 14: interpret molecular distributions with chemical models
+  - method: Compare observed SiN, SiC, NS, CN, HC3N, SiO, SiS, CS and HCN distributions with published chemical kinetics predictions with and without an F9-like companion [3.6 Chemical modelling: "we reproduce their results for stars with similar wind density to W Aql"]
+  - assumption: Companion treated as a 6000 K black body without chromospheric UV; models assume the companion is always close to the AGB star, which is not true for W Aql [3.6 Chemical modelling: "The companion is approximated by a black body at 6000 K and does not explicitly include chromospheric UV photons."] [3.6.1 SiN and SiC: "An underlying assumption in these models is that the companion star is always close to the AGB star"]
+  - validation: Observed peak SiN abundance compared with the model prediction for a carbon-rich star [3.6.1 SiN and SiC: "is in good agreement with that predicted for a carbon-rich star"]
+- limitation (authors): SPH model is simplified and used for qualitative comparison, not a fit [3.7 Hydrodynamic simulations: "Hence we aim for a qualitative understanding rather than a direct fit to the data."]
+- limitation (authors): NS detection is tentative [3.6.2 NS: "The detection of NS is tentative"]
+- limitation (authors): Only a third of the CO flux recovered [3.4.6 CO: "Although only one third of the flux was recovered by ALMA"]
+- not stated (card): CASA version, calibration route (pipeline or manual), calibrators and flagging for all three configurations; the data come from the ATOMIUM programme so the processing may follow Gottlieb et al. 2022 but this paper does not say so; tclean parameters per line: robust value or other weighting, uv taper, cell size, image size, deconvolver, masks, thresholds, primary beam correction; How the three co…
+
+### 2023A&A...674A.125B: ATOMIUM: Probing the inner wind of evolved O-rich stars with new, highly excited H<SUB>2</SUB>O and OH lines (2023; evolved_stars, astrochemistry, stellar_physics; large_program_or_survey)
+- question: (1) to identify and map the emission and absorption of H2O in several vibrational states, and of OH in Lambda-doubling transitions with similar excitation energies; and (2) to determine the physical conditions and kinematics in gas layers …
+- step 6: Compare observations with H2O radiative transfer maser models and inner-wind chemical kinetic models
+  - method: Examine slab-geometry radiative transfer maser models from Gray et al. (2016) across n(H2O), T_K, and T_dust to identify maser pumping regimes; run updated chemical kinetic models from Gobrecht et al. (2016, 2022) between 1 and 10 R_* at p… [7.2. Highly excited water masers: "We reexamine below the maser slab model outputs to better understand the excitation of the three strongest and most widespread water lines observed in this work, lines 10, 12 and 14 at 259.952, 262.898 and 268.149 GHz (see Table 5)."] [10. Observed OH/H2O abundance ratio and…: "It is thus useful to revisit the chemical model of Gobrecht et al. (2016) using the more recent kinetic rates given in Gobrecht et al. (2022). Our newer calculations for radii between 1 and 10 R ⋆ , before the wind is fully accelerated, predict that for typical Mira-type and semi-regular variables the OH/H 2 O ratio v…"]
+  - parameter: Maser model: 411 ortho and 413 para H2O levels; Chemical model: radii 1-10 R_*, pulsation phases 0.2, 0.5, 1.0 [7.2. Highly excited water masers: "Their models process 411 and 413 levels of ortho and para H 2 O distributed across the first two excited states of the bending mode, (0,1,0) and (0,2,0), the first excited state of both stretching modes, (1,0,0) and (0,0,1), as well as the ground vibrational state."] [10. Observed OH/H2O abundance ratio and…: "Our newer calculations for radii between 1 and 10 R ⋆ , before the wind is fully accelerated, predict that for typical Mira-type and semi-regular variables the OH/H 2 O ratio varies by one to two orders of magnitude at different pulsation phases (0.2, 0.5 and 1.0 in Fig. 25)."]
+  - assumption: Slab geometry; ortho and para H2O treated separately without cross-species line overlap; fractional abundance H2O/H2 = 3e-5 in maser models [7.2. Highly excited water masers: "Ortho and para H 2 O are treated separately and the H 2 abundance is obtained from the H 2 O abundance divided by the fractional abundance of H 2 O/H 2 = 3×10 −5 that is considered in our models."]
+- limitation (authors): Modest spectral resolution (~1 MHz or 1.1-1.3 km/s) of the main array observations limits rest frequency precision and can blend narrow maser components. [3.2. Identification of highly excited w…: "Our main sources of error most probably come from limited spectral resolution, ∼1 MHz, and the stellar velocity uncertainty."]
+- limitation (authors): Population diagrams assume optically thin LTE emission uniformly filling a 0.08 arcsec aperture and span a restricted energy range for OH, yielding column density uncertainties of ~25% for H2O and >=30% for OH. [5.2. Population diagrams, opacity estim…: "Discarding any line in the R Hya diagram for example, does not change significantly the N (H 2 O) estimates and, from random trials we suggest a statistical uncertainty of the column density at the level of ∼25%."]
+- limitation (authors): Lack of multi-epoch monitoring across the stellar pulsation cycle prevents testing the predicted phase dependence of the OH/H2O abundance ratio and high-J OH variability. [10. Observed OH/H2O abundance ratio and…: "However, our current observations, lacking data at different epochs are unable to estimate how the OH/H 2 O ratio varies with the optical phase and if variations match the model predictions."]
+- not stated (card): CASA version, tclean weighting/robust parameters, cell size, image size, and masking parameters for the main array data (deferred to Gottlieb et al. 2022); Exact line-free channel ranges manually selected for ACA continuum subtraction; Calibration and imaging details for the archival Mira datasets (2017.1.00393.S and 2018.1.00749.S)
+
+## All papers in this technique
+
+- 2014A&A...562A..26B (2014): Gas structure inside dust cavities of transition disks: Ophiuchus IRS 48 observed by ALMA
+- 2014A&A...570A..28V (2014): Molecular line emission in NGC 1068 imaged with ALMA. II. The chemistry of the dense molecular gas
+- 2014Sci...345.1584B (2014): Detection of a branched alkyl molecule in the interstellar medium: iso-propyl cyanide
+- 2015A&A...579A.114M (2015): A low-mass protostar's disk-envelope interface: disk-shadowing evidence from ALMA DCO<SUP>+</SUP> observations of VLA1623
+- 2015ApJ...803...70S (2015): ALMA Observations of the IRDC Clump G34.43+00.24 MM3: DNC/HNC Ratio
+- 2015ApJ...810..112O (2015): Double DCO<SUP>+</SUP> Rings Reveal CO Ice Desorption in the Outer Disk Around IM Lup
+- 2015ApJ...814..143A (2015): The Peculiar Distribution of CH3CN in IRC +10216 Seen by ALMA
+- 2016A&A...585A..58V (2016): Resolved gas cavities in transitional disks inferred from CO isotopologs with ALMA
+- 2016A&A...587A..92M (2016): Exploring molecular complexity with ALMA (EMoCA): Alkanethiols and alkanols in Sagittarius B2(N2)
+- 2016A&A...592A..76D (2016): ALMA-resolved salt emission traces the chemical footprint and inner wind morphology of VY Canis Majoris
+- 2016ApJ...825...79S (2016): Survey Observations of a Possible Glycine Precursor, Methanimine (CH2NH)
+- 2016ApJ...831..101B (2016): Hydrocarbon Emission Rings in Protoplanetary Disks Induced by Dust Evolution
+- 2016ApJ...832..110C (2016): The Coupled Physical Structure of Gas and Dust in the IM Lup Protoplanetary Disk
+- 2017A&A...599A..59K (2017): An observational study of dust nucleation in Mira (o Ceti). II. Titanium oxides are negligible for nucleation at high temperatures
+- 2017A&A...599A.101V (2017): Robustness of N<SUB>2</SUB>H<SUP>+</SUP> as tracer of the CO snowline
+- 2017A&A...601A...4A (2017): Growth of carbon chains in IRC +10216 mapped with ALMA
+- 2017A&A...601A..48G (2017): Exploring molecular complexity with ALMA (EMoCA): Simulations of branched carbon-chain chemistry in Sgr B2(N)
+- 2017A&A...601A..49B (2017): Rotational spectroscopy, tentative interstellar detection, and chemical modeling of N-methylformamide
+- 2017A&A...608A..55D (2017): Study of the aluminium content in AGB winds using ALMA. Indications for the presence of gas-phase (Al<SUB>2</SUB>O<SUB>3</SUB>)<SUB>n</SUB>…
+- 2017A&A...608A..56G (2017): ALMA imaging of C<SUB>2</SUB>H emission in the disk of <ASTROBJ>NGC 1068</ASTROBJ>
+- 2017A&A...608A..96L (2017): The ortho-to-para ratio of H<SUB>2</SUB>Cl<SUP>+</SUP>: Quasi-classical trajectory calculations and new simulations in light of new observa…
+- 2017ApJ...835..228T (2017): A Surface Density Perturbation in the TW Hydrae Disk at 95 au Traced by Molecular Emission
+- 2017ApJ...843L...3C (2017): Variable H<SUP>13</SUP>CO<SUP>+</SUP> Emission in the IM Lup Disk: X-Ray Driven Time-dependent Chemistry?
+- 2017ApJ...851L..46M (2017): ALMA Detection of Interstellar Methoxymethanol (CH<SUB>3</SUB>OCH<SUB>2</SUB>OH)
+- 2017MNRAS.469.2230M (2017): Detection of methyl isocyanate (CH<SUB>3</SUB>NCO) in a solar-type protostar
+- 2018A&A...610A..54P (2018): The ALMA-PILS Survey: Formaldehyde deuteration in warm gas on small scales toward IRAS 16293-2422 B
+- 2018A&A...612A.107C (2018): First detection of cyanamide (NH<SUB>2</SUB>CN) towards solar-type protostars
+- 2018A&A...612L..11S (2018): Detection of CI line emission towards the oxygen-rich AGB star omi Ceti
+- 2018A&A...616A..45S (2018): Exploring DCO<SUP>+</SUP> as a tracer of thermal inversion in the disk around the Herbig Ae star HD 163296
+- 2018A&A...617A..28S (2018): Chemistry in disks. XI. Sulfur-bearing species as tracers of protoplanetary disk physics and chemistry: the DM Tau case
+- 2018A&A...617A.120M (2018): Tracing the cold and warm physico-chemical structure of deeply embedded protostars: IRAS 16293-2422 vs. VLA 1623-2417
+- 2018A&A...620L...1G (2018): ALMA detects a radial disk wind in DG Tauri
+- 2018ApJ...854...15H (2018): Probing Episodic Accretion in Very Low Luminosity Objects
+- 2018ApJ...859..131L (2018): The Distribution and Excitation of CH<SUB>3</SUB>CN in a Solar Nebula Analog
+- 2018ApJ...865..127I (2018): Constraints on the Cosmic-Ray Ionization Rate in the z ∼ 2.3 Lensed Galaxies SMM J2135-0102 and SDP 17b from Observations of OH<SUP>+</SUP>…
+- 2018ApJ...865..155C (2018): Constraining Gas-phase Carbon, Oxygen, and Nitrogen in the IM Lup Protoplanetary Disk
+- 2018ApJ...867...94K (2018): Zooming in to Massive Star Birth
+- 2018MNRAS.477..325B (2018): The extremely truncated circumstellar disc of V410 X-ray 1: a precursor to TRAPPIST-1?
+- 2019A&A...622A..26G (2019): Molecular ion abundances in the diffuse ISM: CF<SUP>+</SUP>, HCO<SUP>+</SUP>, HOC<SUP>+</SUP>, and C<SUB>3</SUB>H<SUP>+</SUP>
+- 2019A&A...623A..69M (2019): The ALMA-PILS survey: the first detection of doubly deuterated methyl formate (CHD<SUB>2</SUB>OCHO) in the ISM
+- 2019A&A...623L..13C (2019): The ALMA-PILS survey: First detection of nitrous acid (HONO) in the interstellar medium
+- 2019A&A...624L...5P (2019): The complexity of Orion: an ALMA view. III. The explosion impact
+- 2019A&A...628A..10B (2019): Re-exploring Molecular Complexity with ALMA (ReMoCA): interstellar detection of urea
+- 2019A&A...628A..27B (2019): The complex chemistry of hot cores in Sgr B2(N): influence of cosmic-ray ionization and thermal history
+- 2019A&A...629A.146V (2019): IRC + 10°216 mass loss properties through the study of λ3 mm emission. Large spatial scale distribution of SiO, SiS, and CS
+- 2019A&A...631A.137C (2019): The ALMA-PILS survey: propyne (CH<SUB>3</SUB>CCH) in IRAS 16293-2422
+- 2019ApJ...871..107F (2019): Gas Density Perturbations Induced by One or More Forming Planets in the AS 209 Protoplanetary Disk as Seen with ALMA
+- 2019ApJ...871..251P (2019): ALMA Observations of Ethyl Formate toward Orion KL
+- 2019ApJ...875...96N (2019): Dust Continuum Emission and the Upper Limit Fluxes of Submillimeter Water Lines of the Protoplanetary Disk around HD 163296 Observed by ALMA
+- 2019ApJ...876...72L (2019): Sulfur Chemistry in Protoplanetary Disks: CS and H<SUB>2</SUB>CS
+- 2019ApJ...878..113H (2019): Modeling the Spatial Distribution and Origin of CO Gas in Debris Disks
+- 2019ApJ...883...98Z (2019): Systematic Variations of CO Gas Abundance with Radius in Gas-rich Protoplanetary Disks
+- 2019ESC.....3.2088S (2019): Complex Organic Molecules in Star-Forming Regions of the Magellanic Clouds
+- 2019MNRAS.483..806R (2019): First ALMA maps of HCO, an important precursor of complex organic molecules, towards IRAS 16293-2422
+- 2019MNRAS.483.2014H (2019): Modelling the abundance structure of isocyanic acid (HNCO) towards the low-mass solar type protostar IRAS 16293-2422
+- 2019MNRAS.484L..43Z (2019): First detection of the pre-biotic molecule glycolonitrile (HOCH<SUB>2</SUB>CN) in the interstellar medium
+- 2020A&A...636A..29W (2020): Exploring molecular complexity with ALMA (EMoCA): complex isocyanides in Sgr B2(N)
+- 2020A&A...642A.222H (2020): Sulphur and carbon isotopes towards Galactic centre clouds
+- 2020A&A...644A..84M (2020): The GUAPOS project: G31.41+0.31 Unbiased ALMA sPectral Observational Survey. I. Isomers of C<SUB>2</SUB>H<SUB>4</SUB>O<SUB>2</SUB>
+- 2020ApJ...891..164S (2020): Chemistry and Physics of a Low-metallicity Hot Core in the Large Magellanic Cloud
+- 2020ApJ...895...86G (2020): Identification of Prebiotic Molecules Containing Peptide-like Bonds in a Hot Molecular Core, G10.47+0.03
+- 2020ApJ...898...54T (2020): Chemical Composition in the IRAS 16562-3959 High-mass Star-forming Region
+- 2020ApJ...899...65S (2020): Constraints of the Formation and Abundances of Methyl Carbamate, a Glycine Isomer, in Hot Corinos
+- 2020MNRAS.491..427B (2020): Sulphur-bearing and complex organic molecules in an infrared cold core
+- 2020MNRAS.494.1323D (2020): An ALMA view of SO and SO<SUB>2</SUB> around oxygen-rich AGB stars
+- 2020MNRAS.496.5308S (2020): ALMA observations of CS in NGC 1068: chemistry and excitation
+- 2021A&A...646A...3L (2021): Chemically tracing the water snowline in protoplanetary disks with HCO<SUP>+</SUP>
+- 2021A&A...646A..72H (2021): Resolved molecular line observations reveal an inherited molecular layer in the young disk around TMC1A
+- 2021A&A...647A..10G (2021): Bottlenecks to interstellar sulfur chemistry. Sulfur-bearing hydrides in UV-illuminated gas and grains
+- 2021A&A...647A.118L (2021): Exploring HNC and HCN line emission as probes of the protoplanetary disk temperature
+- 2021A&A...651L...6B (2021): A major asymmetric ice trap in a planet-forming disk. II. Prominent SO and SO<SUB>2</SUB> pointing to C/O &lt; 1
+- 2021A&A...655A..80D (2021): ATOMIUM: halide molecules around the S-type AGB star W Aquilae
+- 2021AJ....162...99F (2021): The Chemical Inventory of the Planet-hosting Disk PDS 70
+- 2021ApJ...906..111T (2021): The TW Hya Rosetta Stone Project. II. Spatially Resolved Emission of Formaldehyde Hints at Low-temperature Gas-phase Formation
+- 2021ApJ...907..108G (2021): Identification of Methyl Isocyanate and Other Complex Organic Molecules in a Hot Molecular Core, G31.41+0.31
+- 2021ApJ...908..108F (2021): Physical and Chemical Structure of the Disk and Envelope of the Class 0/I Protostar L1527
+- 2021ApJ...910..141T (2021): Carbon-chain Chemistry versus Complex-organic-molecule Chemistry in Envelopes around Three Low-mass Young Stellar Objects in the Perseus Re…
+- 2022A&A...659A.111K (2022): Laboratory rotational spectroscopy of acrylamide and a search for acrylamide and propionamide toward Sgr B2(N) with ALMA
+- 2022A&A...659A.158H (2022): First extragalactic detection of a phosphorus-bearing molecule with ALCHEMI: Phosphorus nitride (PN)
+- 2022A&A...660L...6C (2022): The ALMA-PILS survey: First tentative detection of 3-hydroxypropenal (HOCHCHCHO) in the interstellar medium and chemical modeling of the C<…
+- 2022A&A...666A.114S (2022): Toward the limits of complexity of interstellar chemistry: Rotational spectroscopy and astronomical search for n- and i-butanal
+- 2022RAA....22f5021G (2022): Phenol in High-mass Star-forming Regions
+- 2023A&A...669A..90C (2023): Magnetically regulated collapse in the B335 protostar?. II. Observational constraints on gas ionization and magnetic field coupling
+- 2023A&A...674A.125B (2023): ATOMIUM: Probing the inner wind of evolved O-rich stars with new, highly excited H<SUB>2</SUB>O and OH lines
+- 2023A&A...677A..15M (2023): The GUAPOS project. III. Characterization of the O- and N-bearing complex organic molecules content and search for chemical differentiation
+- 2023A&A...677A..76P (2023): Constraining the gas distribution in the PDS 70 disc as a method to assess the effect of planet-disc interactions
+- 2023Ap&SS.368...33M (2023): Identification of interstellar cyanamide towards the hot molecular core G358.93─0.03 MM1
+- 2023Ap&SS.368...44M (2023): Detection of complex nitrogen-bearing molecule ethyl cyanide towards the hot molecular core G10.47 + 0.03
+- 2023MNRAS.523.2887M (2023): Rotation-tunnelling spectrum and astrochemical modelling of dimethylamine, CH<SUB>3</SUB>NHCH<SUB>3</SUB>, and searches for it in space
+- 2023MNRAS.525.2229M (2023): Identification of the simplest sugar-like molecule glycolaldehyde towards the hot molecular core G358.93-0.03 MM1
+- 2023NatAs...7..684K (2023): Azimuthal C/O variations in a planet-forming disk
+- 2024A&A...681A..50W (2024): ATOMIUM: Molecular inventory of 17 oxygen-rich evolved stars observed with ALMA
+- 2024A&A...686A..48N (2024): CON-quest. II. Spatially and spectrally resolved HCN/HCO<SUP>+</SUP> line ratios in local luminous and ultraluminous infrared galaxies
+- 2024A&A...686A.120U (2024): Vertical and radial distribution of atomic carbon in HD 163296
+- 2024A&A...687A.233M (2024): Unveiling the gas phase H<SUB>2</SUB>NCO radical: Laboratory rotational spectroscopy and interstellar searches in the direction of IRAS 162…
+- 2024A&A...687A.299L (2024): Chemistry across dust and gas gaps in protoplanetary disks. Modelling the co-spatial molecular rings in the HD 100546 disk
+- 2024A&A...688A...3H (2024): High-mass star formation across the Large Magellanic Cloud: I. Chemical properties and hot molecular cores observed with ALMA at 1.2 mm
+- 2024A&A...688A.130H (2024): Multi-transition study of methanol towards NGC 1068 with ALMA
+- 2024A&A...689L...7D (2024): Sulfur monoxide (SO) as a shock tracer in protoplanetary disks: Case of AB Aurigae
+- 2024A&A...691A.180F (2024): CHEMOUT: CHEMical complexity in star-forming regions of the OUTer Galaxy: IV. ALMA observations of organic species at a galactocentric radi…
+- 2024ApJ...968L..11G (2024): A Broad Line-width, Compact, Millimeter-bright Molecular Emission Line Source near the Galactic Center
+- 2024ApJ...968L..19F (2024): Deep Search for Phosphine in a Prestellar Core
+- 2024ApJ...972...88L (2024): Exploring the Complex Ionization Environment of the Turbulent DM Tau Disk
+- 2024ApJ...972..146S (2024): Interstellar Glycolaldehyde, Methyl Formate, and Acetic Acid. II. Chemical Modeling of the Bimodal Abundance Pattern in NGC 6334I
+- 2024ApJ...976..258K (2024): Chemistry in the GG Tau A Disk: Constraints from H<SUB>2</SUB>D<SUP>+</SUP>, N<SUB>2</SUB>H<SUP>+</SUP>, and DCO<SUP>+</SUP> High Angular R…
+- 2024ApJ...977...38B (2024): Neural Network Constraints on the Cosmic-Ray Ionization Rate and Other Physical Conditions in NGC 253 with ALCHEMI Measurements of HCN and …
+- 2024ESC.....8..665M (2024): Detection and Chemical Modeling of Complex Prebiotic Molecule Cyanamide in the Hot Molecular Core G31.41 + 0.31
+- 2024JKAS...57..163L (2024): HCN and HNC in the Disk of an Outbursting Young Star, V883 Ori
+- 2024NatAs...8..308D (2024): Chemical tracers of a highly eccentric AGB-main-sequence star binary
+- 2024NewA..10902199M (2024): Detection of possible glycine precursor molecule methylamine towards the hot molecular core G358.93─0.03 MM1
+- 2024RAA....24f5008M (2024): Study of Complex Nitrogen and Oxygen-bearing Molecules toward the High-mass Protostar IRAS 18089─1732
+- 2024RAA....24g5014M (2024): Observation of Complex Organic Molecules Containing Peptide-like Bonds Toward Hot Core G358.93─0.03 MM1
+- 2024RAA....24g5017M (2024): Investigating Sulfur Chemistry in the HD163296 Disk
+- 2024RAA....24l5009M (2024): ALMA and GMRT Studies of Dust Continuum Emission and Spectral Lines Toward Oort Cloud Comet C/2022 E3 (ZTF)
+- 2025A&A...696A...7L (2025): ALMA observations of CH<SUB>3</SUB>COCH<SUB>3</SUB> and the related species CH<SUB>3</SUB>CHO, CH<SUB>3</SUB>OH, and C<SUB>2</SUB>H<SUB>5</…
+- 2025A&A...696A..31G (2025): Shock-induced HCNH<SUP>+</SUP> abundance enhancement in the heart of the starburst galaxy NGC 253 unveiled by ALCHEMI
+- 2025A&A...698A.231P (2025): Vertical CO surfaces as a probe for protoplanetary disk mass and carbon depletion
+- 2025A&A...699A..70H (2025): Investigating the chemical link between H<SUB>2</SUB>CO and CH<SUB>3</SUB>OH within the central molecular zone of NGC 253
+- 2025A&A...699A.361V (2025): JWST Observations of Young protoStars (JOYS): Overview of program and early results
+- 2025A&A...700A.141H (2025): Statistical nuclear spin ratios of deuterated ammonia in the pre-stellar core L1544
+- 2025A&A...702A..18D (2025): Multi-frequency observations of PDS70c: Radio emission mechanisms in the circumplanetary environment
+- 2025A&A...702A..35D (2025): The ALMA-QUARKS survey: Extensive detection of acetamide in multiple high-mass star-forming regions
+- 2025ApJ...988...95D (2025): An ALMA Study of Molecular Complexity in the Hot Core G336.99-00.03 MM1
+- 2025ApJ...988..106H (2025): Grand Design Spiral Arms in the Compact, Embedded Protoplanetary Disk of Haro 6-13
+- 2025ApJ...989....1Z (2025): The ALMA Survey of Gas Evolution of PROtoplanetary Disks (AGE-PRO). I. Program Overview and Summary of First Results
+- 2025ApJ...991...59B (2025): ALMA Observations of Molecular Complexity in the Large Magellanic Cloud: Probing the Star-forming Region N 160
+- 2025ApJ...992...55T (2025): Extended and Compact Ortho-H<SUB>2</SUB>D<SUP>+</SUP> Structures Close to the Moment of Star Formation: Evidence from ALMA-ACA Observations…
+- 2025NatAs...9.1486L (2025): Pristine ices in a planet-forming disk revealed by heavy water
+- 2025PSJ.....6..107N (2025): Improved Carbon and Nitrogen Isotopic Ratios for CH<SUB>3</SUB>CN in Titan's Atmosphere Using ALMA
+- 2026A&A...709A.216U (2026): Charting circumstellar chemistry of carbon-rich asymptotic giant branch stars: III. SiO and SiS abundances
+- 2026A&A...712A.201J (2026): Physical and chemical conditions of molecular gas in NGC 1068: The nuclear feedback in the circumnuclear disk and starburst ring
+- 2026A&A...713A..67X (2026): Local constraints on alcohol-thioalcohol analogs in G35.2N
+- 2026AJ....171..368M (2026): Digging into the Massive Protostar S255IR NIRS3: A Study of Nitrogen-bearing Molecules and Their Prebiotic Chemistry
+- 2026ApJ..1004..114V (2026): JWST's PEARLS: A Clumpy Ring Galaxy at z = 4.0148
+- 2026ApJ..1005..142S (2026): Survival of Molecular Complexity under Recent Supernova Feedback: Detection of Hot Cores in RX J1713.7−3946

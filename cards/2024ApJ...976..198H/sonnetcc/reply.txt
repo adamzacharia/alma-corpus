@@ -1,0 +1,243 @@
+{
+"depth":"full",
+"paper_type":"archival_reuse",
+"paper_type_evidence":[
+{"loc":"2.1 Data","quote":"mapping data of M83 observed with ALMA (cite: Koda2023M83)."},
+{"loc":"2.1 Data","quote":"We refer the readers to (cite: Koda2023M83) for further details on the data processing."}
+],
+"fields":["nearby_galaxies","star_formation"],
+"question":{"value":"Identify molecular clouds over the whole disk of M83 from 12CO(1-0) data and examine their properties, scaling relations, spatial distribution, mass function, cloud-to-cloud velocity dispersion, and the impact of beam dilution on virial parameter and surface density","evidence":[
+{"loc":"1 Introduction","quote":"to examine the cloud properties, distributions, scaling relations, and mass distributions."},
+{"loc":"1 Introduction","quote":"we discuss the impact of beam-dilution (beam filling factor) on the cloud parameters"}
+]},
+"targets":[
+{"name":"M83","details":[
+{"loc":"2.1 Data","quote":"at the assumed distance of M83 (cite: Thim2003M83Distance)"},
+{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"We adopt ${v_{\\mathrm{sys}}}$ of 511 $\\mathrm{km\\ s}^{-1}$ and $i$ of 24$\\ensuremath{^\\circ}$ (cite: Koda2023M83)"}
+],"coordinates":"not stated","redshift_or_distance":"not stated (45.6 pc per 2.09 arcsec beam major axis at the assumed distance)","distance_source":"Thim et al. 2003 (cite: Thim2003M83Distance)"}
+],
+"alma_project_codes":[
+{"code":"2017.1.00079.S","evidence":[{"loc":"Summary","quote":"ADS/JAO. ALMA#2017.1.00079.S."}]}
+],
+"data_settings":[
+{"field":"arrays","value":"12-m array, ACA 7-m array and Total-Power array","evidence":[{"loc":"2.1 Data","quote":"The observations used the main 12-m array and Atacama Compact Array (ACA), i.e., the 7-m short-baseline interferometric array and the Total-Power (TP) single-dish array, to recover the flux."}]},
+{"field":"frequencies_and_spectral_setup","value":"12CO(J=1-0); three cubes prepared at 1, 2 and 5 km/s velocity resolution; the 1 km/s cube adopted","evidence":[
+{"loc":"2.1 Data","quote":"Three data cubes were prepared in (cite: Koda2023M83) with velocity resolutions of 1, 2, and 5"},
+{"loc":"2.1 Data","quote":"We here adopt the one with 1"}
+]},
+{"field":"angular_resolution","value":"Original beam 2.09 x 1.68 arcsec (45.6 pc x 36.7 pc); smoothed to circular beam 2.1 arcsec (~46 pc)","evidence":[
+{"loc":"2.1 Data","quote":"major and minor axes of 2$\\ensuremath{''}$.09 $\\times$ 1$\\ensuremath{''}$.68 in full-width half maximum (FWHM)"},
+{"loc":"2.1 Data","quote":"to achieve a circular beam with an FWHM size of 2$\\ensuremath{''}$.1, corresponding to $\\sim$46 pc"}
+]},
+{"field":"sensitivity","value":"Median rms noise 6.5 mJy per beam; mass sensitivity ~1e4 Msun (3 sigma)","evidence":[
+{"loc":"2.1 Data","quote":"The median noise level across the observed field is 6.5 mJy per beam."},
+{"loc":"abstract","quote":"a mass sensitivity of $\\sim$10$^4$ ${M}_{\\odot}$ (3 $\\sigma$)"}
+]},
+{"field":"pi_or_archival_as_stated","value":"Data from Koda et al. 2023 (cite: Koda2023M83); project 2017.1.00079.S","evidence":[{"loc":"2.1 Data","quote":"mapping data of M83 observed with ALMA (cite: Koda2023M83)."}]}
+],
+"lines_targeted":[
+{"species":"12CO","transition":"J=1-0","rest_frequency":"not stated","evidence":[{"loc":"2.1 Data","quote":"(J=1–0) mapping data of M83 observed with ALMA"}]}
+],
+"other_facilities":[
+{"name":"2MASS Large Galaxy Atlas (via Hirota 2014 rotation curve)","provided":{"value":"Stellar mass distribution used in the adopted rotation curve","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"using the 2MASS Large Galaxy Atlas image (cite: Jarrett20032MASS)"}]}}
+],
+"external_data_from_literature":[
+{"what":{"value":"Calibrated and imaged 12CO(1-0) cubes (12-m + 7-m + TP) at 1, 2, 5 km/s","evidence":[{"loc":"2.1 Data","quote":"Three data cubes were prepared in (cite: Koda2023M83) with velocity resolutions of 1, 2, and 5"}]},"citation":"Koda et al. 2023 (cite: Koda2023M83)"},
+{"what":{"value":"Distance to M83","evidence":[{"loc":"2.1 Data","quote":"at the assumed distance of M83 (cite: Thim2003M83Distance)"}]},"citation":"(cite: Thim2003M83Distance)"},
+{"what":{"value":"Systemic velocity 511 km/s and inclination 24 deg","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"We adopt ${v_{\\mathrm{sys}}}$ of 511 $\\mathrm{km\\ s}^{-1}$ and $i$ of 24$\\ensuremath{^\\circ}$ (cite: Koda2023M83)"}]},"citation":"(cite: Koda2023M83)"},
+{"what":{"value":"Rotation curve of M83","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"we use the rotation curve of (cite: Hirota2014)"}]},"citation":"(cite: Hirota2014)"},
+{"what":{"value":"CO-to-H2 conversion factor 2.0e20 cm^-2 (K km/s)^-1 with He correction 1.36","evidence":[{"loc":"2.3.2 Derived properties","quote":"by applying a CO-to-H$_{2}$ conversion factor of 2.0 $\\times$ 10$^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ in combination with a correction factor of 1.36"}]},"citation":"(cite: Bolatto2013ConversionFactor)"},
+{"what":{"value":"Galactic cloud catalog of S87 (273 clouds) used for scaling-relation comparison","evidence":[{"loc":"Comparison of Galactic cloud catalogs","quote":"The scaling relations of S87 are determined from 273 clouds sampled from the inner Galactic disk"}]},"citation":"(cite: Solomon1987Larson)"},
+{"what":{"value":"R16 Galactic cloud catalog (1064 clouds)","evidence":[{"loc":"Catalogs for comparison","quote":"The R16 catalog contains 1064 clouds with a total cloud mass of"}]},"citation":"(cite: Rice2016)"},
+{"what":{"value":"M17 Galactic cloud catalog (8107 clouds)","evidence":[{"loc":"Catalogs for comparison","quote":"the M17 catalog lists 8107 clouds"}]},"citation":"(cite: MivilleDeschenes2017MWGMC)"}
+],
+"simulations_or_models_as_data":[
+{"value":"Gaussian model clouds (Mcl 0.5-8e5 Msun, alpha_vir 1.5, Sigma 100 Msun/pc2) injected into a ~0.8 kpc2 field of the M83 cube, 40 repeats per setup, to test beam-dilution assumptions","evidence":[
+{"loc":"Source injection test","quote":"Input model clouds are generated by assuming a Gaussian profile in both spatial and velocity directions."},
+{"loc":"Source injection test","quote":"The injection-identification sequence is repeated 40 times for each setup."}
+]}
+],
+"calibration":[],
+"imaging":[
+{"field":"array_combination","value":"TP data converted to visibilities with TP2VIS; 12-m, 7-m and TP visibilities jointly deconvolved in MIRIAD","evidence":[
+{"loc":"2.1 Data","quote":"The calibrated TP array data was converted into interferometric visibilities using the TP2VIS software (cite: Koda2019TP2VIS)."},
+{"loc":"2.1 Data","quote":"Then, the 12-m, 7-m, and TP array visibilities were inverted onto the image plane and jointly deconvolved using the MIRIAD software package (cite: SaultTeubenWright1995MIRIAD)."}
+]},
+{"field":"smoothing","value":"Spatial smoothing of the cube to a circular beam of 2.1 arcsec (~46 pc)","evidence":[{"loc":"2.1 Data","quote":"to achieve a circular beam with an FWHM size of 2$\\ensuremath{''}$.1, corresponding to $\\sim$46 pc"}]},
+{"field":"final_beam","value":"2.09 x 1.68 arcsec original; 2.1 arcsec circular after smoothing","evidence":[{"loc":"2.1 Data","quote":"major and minor axes of 2$\\ensuremath{''}$.09 $\\times$ 1$\\ensuremath{''}$.68 in full-width half maximum (FWHM)"}]},
+{"field":"final_rms","value":"Median 6.5 mJy per beam","evidence":[{"loc":"2.1 Data","quote":"The median noise level across the observed field is 6.5 mJy per beam."}]}
+],
+"inherited":[
+{"what":{"value":"Calibration of the interferometric and single-dish data","evidence":[{"loc":"2.1 Data","quote":"The calibration procedure is described in (cite: Koda2023M83)."}]},"from_reference":"(cite: Koda2023M83)"},
+{"what":{"value":"Further details on data processing (imaging, joint deconvolution)","evidence":[{"loc":"2.1 Data","quote":"We refer the readers to (cite: Koda2023M83) for further details on the data processing."}]},"from_reference":"(cite: Koda2023M83)"},
+{"what":{"value":"Cloud property calculation","evidence":[{"loc":"2.3 Derivation of cloud properties","quote":"calculated in a way similar to the one adopted in (cite: Hirota2018M83)"}]},"from_reference":"(cite: Hirota2018M83)"},
+{"what":{"value":"Extrapolation of moments to the 0 K level","evidence":[{"loc":"2.3.1 Measured properties","quote":"extrapolated to the 0 K level with the procedure of (cite: Rosolowsky2006CPROPS)"}]},"from_reference":"(cite: Rosolowsky2006CPROPS)"},
+{"what":{"value":"Effective radius factor 3.4/sqrt(pi)","evidence":[{"loc":"2.3.2 Derived properties","quote":"is an empirical factor that is determined by S87"}]},"from_reference":"S87 (cite: Solomon1987Larson)"},
+{"what":{"value":"Virial mass definition","evidence":[{"loc":"2.3.2 Derived properties","quote":"Following (cite: BertoldiMcKee1992) virial mass is calculated as"}]},"from_reference":"(cite: BertoldiMcKee1992)"},
+{"what":{"value":"Density profile index k = 1 in the geometrical factor","evidence":[{"loc":"2.3.2 Derived properties","quote":"we adopt $k$=1 to keep consistency with previous studies."}]},"from_reference":"S87"},
+{"what":{"value":"Method for vertical cloud-to-cloud velocity dispersion","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"We adopt a method similar to the one used by (cite: Hernandez2019) to estimate the vertical velocity dispersion of stellar clusters."}]},"from_reference":"(cite: Hernandez2019)"}
+],
+"unstated_but_needed":[
+"Location/DOI of the Koda et al. 2023 1 km/s cube and whether it already includes TP2VIS and the exact MIRIAD parameters (weighting, deconvolver, cell size, masks)",
+"astrodendro min_value, min_delta and min_npix expressed as exact keyword values, and how the SNR cube was built from the noise map",
+"Watershed segmentation settings (markers, connectivity, compactness) in scikit-image",
+"Implementation of the CPROPS-style 0 K extrapolation (software or own code) and the exact bootstrap scheme",
+"Per-cloud L_CO summation boundary and the definition of T_peak when smoothed cubes are used",
+"Fit details for the Mvir-LCO and sigma/sqrt(R)-Sigma least-square fits (weights, which variable on which axis, 2 K split handling)",
+"emcee settings (walkers, steps, burn-in, likelihood form) for the Schechter-like fit and handling of mass bins",
+"Fitting procedure used for the logarithmic spiral arms and arm mask construction",
+"Source-injection details: field coordinates, injection convolution kernel, exact cross-match algorithm",
+"Catalog is said to be available as an electronic table but no access location is given in the paper text"
+],
+"analysis_steps":[
+{"order":1,"goal":"Prepare the 1 km/s cube at a common circular beam","method":{"value":"Adopt the 1 km/s cube of Koda et al. 2023 and smooth spatially to a circular beam","evidence":[
+{"loc":"2.1 Data","quote":"We here adopt the one with 1"},
+{"loc":"2.1 Data","quote":"To avoid complexities associated with the non-circular beam, we smoothed the original data cube in spatial directions"}
+]},"software":[],"key_parameters":[{"value":"Circular beam FWHM 2.1 arcsec (~46 pc)","evidence":[{"loc":"2.1 Data","quote":"to achieve a circular beam with an FWHM size of 2$\\ensuremath{''}$.1, corresponding to $\\sim$46 pc"}]}],"assumptions":[{"value":"Assumed distance of M83 from Thim et al. 2003","evidence":[{"loc":"2.1 Data","quote":"at the assumed distance of M83 (cite: Thim2003M83Distance)"}]}],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"not stated","evidence":[]}},
+{"order":2,"goal":"Build a noise-free noise map","method":{"value":"MIRIAD mossen expected noise map scaled to the median of the measured rms map","evidence":[
+{"loc":"2.1 Data","quote":"to generate a two-dimensional noise distribution expected from the integration time and system noise temperature assigned to visibilities."},
+{"loc":"2.1 Data","quote":"measuring rms noise along the velocity axis at each position in the data cube."}
+]},"software":["MIRIAD"],"key_parameters":[{"value":"Median noise 6.5 mJy per beam","evidence":[{"loc":"2.1 Data","quote":"The median noise level across the observed field is 6.5 mJy per beam."}]}],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Expected and measured maps agree in relative spatial variation but differ in absolute scaling by a few tens of percent","evidence":[{"loc":"2.1 Data","quote":"are discrepant in the absolute scaling by a few tens of percent."}]}},
+{"order":3,"goal":"Construct the signal mask","method":{"value":"Seed regions of SNR>=4, drop regions smaller than 0.6 beam area or confined to one channel, expand to connected voxels with SNR>=2","evidence":[
+{"loc":"2.2 Cloud identification","quote":"first identifying a set of regions that consist of voxels with SNR $\\ge$ 4"},
+{"loc":"2.2 Cloud identification","quote":"then discarding small regions whose spatial extents are less than 0.6 times the beam area"},
+{"loc":"2.2 Cloud identification","quote":"finally expanding the remaining regions to include the morphologically connected surrounding voxels with SNR $\\ge$ 2"}
+]},"software":[],"key_parameters":[],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"not stated","evidence":[]}},
+{"order":4,"goal":"Decompose the masked cube into clouds","method":{"value":"astrodendro leaves only, then watershed segmentation of unassigned voxels","evidence":[
+{"loc":"2.2 Cloud identification","quote":"The masked data cube was decomposed into a set of independent closed surfaces using the"},
+{"loc":"2.2 Cloud identification","quote":"The unassigned voxels to any seed structures are further segmented with the watershed algorithm, using the"}
+]},"software":["astrodendro","scikit-image"],"key_parameters":[
+{"value":"Only voxels with SNR>2 included","evidence":[{"loc":"2.2 Cloud identification","quote":"only voxels with SNR $>2$ are included in the analysis"}]},
+{"value":"Leaf candidates with peak-to-edge SNR contrast <2 discarded","evidence":[{"loc":"2.2 Cloud identification","quote":"candidates with SNR contrasts between their peak and edge-level $<2$ are discarded"}]},
+{"value":"5724 leaves accepted as clouds","evidence":[{"loc":"2.2 Cloud identification","quote":"are accepted as molecular clouds"}]}
+],"assumptions":[{"value":"Only leaves are needed because the 46 pc resolution is only a factor of two below the molecular disk height","evidence":[{"loc":"2.2 Cloud identification","quote":"examining structures larger than individual leaves is unnecessary."}]}],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"About 91 percent of the total CO luminosity sampled as clouds","evidence":[{"loc":"2.2 Cloud identification","quote":"About 91 percent of the total CO luminosity within the mapped area was sampled as molecular clouds"}]}},
+{"order":5,"goal":"Measure basic cloud properties","method":{"value":"Intensity-weighted first moments for centroid; second moments for size and velocity dispersion, extrapolated to 0 K; L_CO summed and extrapolated","evidence":[
+{"loc":"2.3.1 Measured properties","quote":"centroid position and velocity are measured as the intensity-weighted first moments."},
+{"loc":"2.3.1 Measured properties","quote":"extrapolated to the 0 K level with the procedure of (cite: Rosolowsky2006CPROPS)"}
+]},"software":[],"key_parameters":[{"value":"Bootstrap error estimation with 1000 trials","evidence":[{"loc":"2.3.1 Measured properties","quote":"by performing a bootstrap error estimation with 1000 trials."}]}],"assumptions":[],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Flux extrapolation slightly over-corrects in the central 550 pc (f_cl 1.04 +/- 0.03)","evidence":[{"loc":"2.6 Fraction of CO luminosity sampled as GMC","quote":"which indicates that the flux extrapolation is over-correcting the cloud flux by a few percent."}]}},
+{"order":6,"goal":"Derive physical cloud properties","method":{"value":"Deconvolve beam and channel width in quadrature; Reff = 3.4/sqrt(pi) sqrt(sx sy); Mcl from L_CO with alpha_CO; Sigma = Mcl/(pi Reff^2); Mvir = 5 R sigma_v^2/(a1 G); alpha_vir = Mvir/Mcl","evidence":[
+{"loc":"2.3.2 Derived properties","quote":"is an empirical factor that is determined by S87"},
+{"loc":"2.3.2 Derived properties","quote":"Following (cite: BertoldiMcKee1992) virial mass is calculated as"}
+]},"software":[],"key_parameters":[
+{"value":"CO-to-H2 factor 2.0e20 cm^-2 (K km/s)^-1 with He factor 1.36 (alpha_CO 4.4 Msun/(K km/s pc2))","evidence":[{"loc":"2.3.2 Derived properties","quote":"by applying a CO-to-H$_{2}$ conversion factor of 2.0 $\\times$ 10$^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ in combination with a correction factor of 1.36"}]},
+{"value":"Density profile index k = 1","evidence":[{"loc":"2.3.2 Derived properties","quote":"we adopt $k$=1 to keep consistency with previous studies."}]},
+{"value":"225 clouds fail deconvolution and are flagged","evidence":[{"loc":"2.3.2 Derived properties","quote":"Out of the 5724 clouds identified, 225 clouds have"}]}
+],"assumptions":[{"value":"Isolated clouds with simple geometry and density distribution; no support from external pressure and magnetic fields","evidence":[{"loc":"2.3.2 Derived properties","quote":"has a limitation in characterizing the dynamical status of molecular clouds."}]}],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"not stated","evidence":[]}},
+{"order":7,"goal":"Compare with Larson/S87 scaling relations","method":{"value":"Plot sigma_v-Reff, Mvir-LCO, Mcl-Reff and sigma_v/sqrt(R)-Sigma, split clouds at Tpeak 2 K, compare with S87 and Galactic catalogs R16 and M17; least-square fits","evidence":[
+{"loc":"3.2 Scaling relations","quote":"In what follows, we show clouds with $T_{\\mathrm{peak}}>$2 K and $<2$ K as separate subsets"},
+{"loc":"3.2.2 Virial mass-CO luminosity relation","quote":"The least-square fitting to $>2$ K clouds yield"}
+]},"software":[],"key_parameters":[{"value":"Spearman correlation coefficient reported for each relation","evidence":[{"loc":"Summary","quote":"shows an apparent correlation with a correlation coefficient of 0.78"}]}],"assumptions":[{"value":"S87 relations used as reference with Sigma ~200 Msun/pc2 and C = 0.72 km/s pc^-1/2","evidence":[{"loc":"3.2 Scaling relations","quote":"have a constant surface density of"}]}],"fitting":{"value":"Least-square fits; weights and priors not stated","evidence":[{"loc":"3.2.2 Virial mass-CO luminosity relation","quote":"The least-square fitting to $>2$ K clouds yield"}]},"validation":{"value":"Comparison with R16 and M17 Galactic catalogs (Appendix)","evidence":[{"loc":"Comparison of Galactic cloud catalogs","quote":"Here, we extend the examination made in"}]}},
+{"order":8,"goal":"Fit the cloud mass function","method":{"value":"Restricted power-law fit by least squares to the cumulative distribution; Schechter-like fit by emcee MCMC; both above completeness limit; K-S test","evidence":[
+{"loc":"4.2 Cloud mass spectra","quote":"We fitted the power-law form using the cumulative mass distribution function and least-square minimization against the integral form"},
+{"loc":"4.2 Cloud mass spectra","quote":"software library, which implements a Markov chain Monte Carlo method"}
+]},"software":["emcee"],"key_parameters":[
+{"value":"Completeness limit 2e5 Msun; only clouds above it fitted","evidence":[{"loc":"4.2 Cloud mass spectra","quote":"Hereafter, we regard $2\\times10^{5}$ ${M}_{\\odot}$ as the effective completeness limit."}]},
+{"value":"Prior on gamma_exp uniform between -5 and 0; Mu,exp log-uniform between 1e5 and 1e9 Msun","evidence":[{"loc":"4.2 Cloud mass spectra","quote":"is uniform between -5 and 0"}]}
+],"assumptions":[],"fitting":{"value":"emcee MCMC for Schechter-like form; least-square for power law; walkers and steps not stated","evidence":[{"loc":"4.2 Cloud mass spectra","quote":"software library, which implements a Markov chain Monte Carlo method"}]},"validation":{"value":"Two-sample K-S test p-values","evidence":[{"loc":"4.2 Cloud mass spectra","quote":"calculated with the two-sample K-S test for both forms with the null hypothesis that the fitted and observed cumulative mass distributions are drawn from the same distribution."}]}},
+{"order":9,"goal":"Estimate vertical cloud-to-cloud velocity dispersion","method":{"value":"Subtract systemic and circular rotation velocities from each cloud's LOS velocity and take the dispersion of v_res/cos(i) in radial bins, split at 5e5 Msun","evidence":[
+{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"We adopt a method similar to the one used by (cite: Hernandez2019) to estimate the vertical velocity dispersion of stellar clusters."},
+{"loc":"5.2 Vertical cloud-to-cloud velocity dispersion","quote":"The radial bins are configured with a width and increment of 24"}
+]},"software":[],"key_parameters":[
+{"value":"v_sys 511 km/s, inclination 24 deg","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"We adopt ${v_{\\mathrm{sys}}}$ of 511 $\\mathrm{km\\ s}^{-1}$ and $i$ of 24$\\ensuremath{^\\circ}$ (cite: Koda2023M83)"}]},
+{"value":"Rotation curve of Hirota et al. 2014","evidence":[{"loc":"5.1 Method to estimate vertical velocity dispersion of clouds","quote":"we use the rotation curve of (cite: Hirota2014)"}]}
+],"assumptions":[{"value":"In-plane non-circular motions neglected outside the bar","evidence":[{"loc":"5.3 Assessment of the impact of streaming motions","quote":"is that the impact of in-plane non-circular motion is just neglected."}]}],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Levene's test between mass groups and arm vs inter-arm clouds, p<0.05 threshold","evidence":[{"loc":"5.2 Vertical cloud-to-cloud velocity dispersion","quote":"We discard the null hypothesis if the $p$-value of the test is below 0.05."}]}},
+{"order":10,"goal":"Correct for beam dilution (area-filling factor) and test with source injection","method":{"value":"Assume alpha_vir = alpha_vir0 f^-1/2 and Sigma = f Sigma0; select single-component clouds with T_eq > 0.5 K; derive f assuming alpha_vir0 of 1 and 2; verify with injected model clouds","evidence":[
+{"loc":"6.2.1 Criterion to select clouds for filling factor estimation","quote":"we adopt $T_{\\mathrm{eq}}$ $>$ 0.5 K as a criterion to select clouds to estimate"},
+{"loc":"6.2.2 Estimation of intrinsic cloud properties","quote":"1 (virialized clouds) and 2 (loosely gravitationally-bound clouds)."}
+]},"software":[],"key_parameters":[
+{"value":"Injection-identification sequence repeated 40 times per setup","evidence":[{"loc":"Source injection test","quote":"The injection-identification sequence is repeated 40 times for each setup."}]}
+],"assumptions":[
+{"value":"Beam dilution affects Reff but not sigma_v or Mcl","evidence":[{"loc":"6.1 Impact of sampling clouds with a relatively large beam","quote":"we assume that the beam dilution affects the observed cloud radius"}]},
+{"value":"Constant CO-to-H2 conversion factor and H2-dominated cloud masses","evidence":[{"loc":"6.2.2 Estimation of intrinsic cloud properties","quote":"involves the assumptions of a constant CO-to-H$_{2}$ conversion factor and dominance of H$_{2}$ in the cloud masses."}]}
+],"fitting":{"value":"not stated","evidence":[]},"validation":{"value":"Source injection test with model clouds in noise-only and blended setups","evidence":[{"loc":"Source injection test","quote":"which injects model sources with known properties into a portion of the data cube and samples the injected sources via the same identification procedure"}]}}
+],
+"software":[
+{"name":"astrodendro","version":"not stated","used_for":{"value":"Decomposition of the masked cube into leaves","evidence":[{"loc":"2.2 Cloud identification","quote":"The masked data cube was decomposed into a set of independent closed surfaces using the"}]}},
+{"name":"scikit-image","version":"not stated","used_for":{"value":"Watershed segmentation of voxels not assigned to leaves","evidence":[{"loc":"2.2 Cloud identification","quote":"The unassigned voxels to any seed structures are further segmented with the watershed algorithm, using the"}]}},
+{"name":"MIRIAD","version":"not stated","used_for":{"value":"Joint deconvolution of 12-m, 7-m and TP visibilities; mossen for the expected noise map","evidence":[{"loc":"2.1 Data","quote":"jointly deconvolved using the MIRIAD software package (cite: SaultTeubenWright1995MIRIAD)."}]}},
+{"name":"TP2VIS","version":"not stated","used_for":{"value":"Converting calibrated TP data to interferometric visibilities","evidence":[{"loc":"2.1 Data","quote":"The calibrated TP array data was converted into interferometric visibilities using the TP2VIS software (cite: Koda2019TP2VIS)."}]}},
+{"name":"emcee","version":"not stated","used_for":{"value":"MCMC sampling of the Schechter-like mass function fit","evidence":[{"loc":"4.2 Cloud mass spectra","quote":"software library, which implements a Markov chain Monte Carlo method"}]}},
+{"name":"APLpy","version":"not stated","used_for":{"value":"Plotting package named in the acknowledgements","evidence":[{"loc":"Summary","quote":"This research made use of APLpy, an open-source plotting package for Python"}]}},
+{"name":"matplotlib","version":"not stated","used_for":{"value":"not stated","evidence":[]}}
+],
+"results_numeric":[
+{"quantity":"Number of clouds identified","value":"5724","uncertainty":"not stated","units":"clouds","from_step":4,"evidence":[{"loc":"abstract","quote":"allowed us to sample 5724 molecular clouds"}]},
+{"quantity":"Median rms noise","value":"6.5","uncertainty":"not stated","units":"mJy per beam","from_step":2,"evidence":[{"loc":"2.1 Data","quote":"The median noise level across the observed field is 6.5 mJy per beam."}]},
+{"quantity":"Fraction of total CO luminosity sampled as clouds","value":"91","uncertainty":"not stated","units":"percent","from_step":4,"evidence":[{"loc":"2.2 Cloud identification","quote":"About 91 percent of the total CO luminosity within the mapped area was sampled as molecular clouds"}]},
+{"quantity":"Detectable minimum cloud mass in isolation","value":"~3e4","uncertainty":"not stated","units":"Msun","from_step":6,"evidence":[{"loc":"2.6 Fraction of CO luminosity sampled as GMC","quote":"the expected minimum cloud mass would be $\\sim3 \\times 10^{4}$ ${M}_{\\odot}$"}]},
+{"quantity":"Median cloud mass (unweighted)","value":"~1.9e5","uncertainty":"not stated","units":"Msun","from_step":6,"evidence":[{"loc":"abstract","quote":"with a median mass of $\\sim1.9$ $\\times$ $10^5$ ${M}_{\\odot}$"}]},
+{"quantity":"Unweighted and mass-weighted median Tpeak","value":"1.3 and 3.4","uncertainty":"not stated","units":"K","from_step":5,"evidence":[{"loc":"3.1.2 Peak temperature","quote":"The unweighted and mass-weighted median values among all the GMCs are 1.3 K and 3.4 K, respectively"}]},
+{"quantity":"Unweighted median surface density","value":"22","uncertainty":"not stated","units":"Msun pc^-2","from_step":6,"evidence":[{"loc":"3.1.4 Surface density","quote":"The unweighted and mass-weighted median values are 22"}]},
+{"quantity":"Median virial parameter quoted in the abstract","value":"~2.7","uncertainty":"not stated","units":"dimensionless","from_step":6,"evidence":[{"loc":"abstract","quote":"(median ${\\alpha_{\\mathrm{vir}}}$ $\\sim2.7$)"}]},
+{"quantity":"Share of clouds more massive than 1e6 Msun","value":"16","uncertainty":"not stated","units":"percent of clouds","from_step":6,"evidence":[{"loc":"abstract","quote":"Such massive clouds comprise 16 percent of the total clouds in number"}]},
+{"quantity":"Clouds in arm/bar/center mask","value":"498","uncertainty":"not stated","units":"clouds","from_step":7,"evidence":[{"loc":"3.3 Spatial distribution of the clouds","quote":"498 clouds reside in the arm/bar/center mask."}]},
+{"quantity":"Mvir-LCO correlation coefficient (all clouds)","value":"0.78","uncertainty":"not stated","units":"dimensionless","from_step":7,"evidence":[{"loc":"Summary","quote":"shows an apparent correlation with a correlation coefficient of 0.78"}]},
+{"quantity":"Fit of Mvir vs LCO for Tpeak>2 K clouds","value":"Mvir = 114 LCO^0.75","uncertainty":"114 +/- 5; index +/- 0.02","units":"Msun with LCO in K km/s pc^2","from_step":7,"evidence":[{"loc":"3.2.2 Virial mass-CO luminosity relation","quote":"(114 \\pm 5) \\left[ {L}_{\\mathrm{CO}}\\left( \\mathrm{K}\\ \\mathrm{km\\ s}^{-1}\\ \\mathrm{pc}^2\\right) \\right]^{0.75\\pm0.02}"}]},
+{"quantity":"Fit of sigma_v/sqrt(Reff) vs Sigma (all clouds)","value":"0.16 Sigma^0.30","uncertainty":"0.16 +/- 0.01; index +/- 0.01","units":"km s^-1 pc^-1/2 with Sigma in Msun pc^-2","from_step":7,"evidence":[{"loc":"3.2.4 Normalized velocity dispersion-surface density relationship","quote":"(0.16 \\pm 0.01) \\left[ \\Sigma( {M}_{\\odot}\\ \\mathrm{pc}^{-2} ) \\right]^{0.30 \\pm 0.01}"}]},
+{"quantity":"Power-law mass function index (all clouds)","value":"~-1.85","uncertainty":"not stated","units":"dimensionless","from_step":8,"evidence":[{"loc":"4.2 Cloud mass spectra","quote":"The power-law fit gives ${\\gamma_{\\mathrm{PL}}}\\sim -1.85$"}]},
+{"quantity":"Schechter-like mass function index (all clouds)","value":"~-1.57","uncertainty":"not stated","units":"dimensionless","from_step":8,"evidence":[{"loc":"4.2 Cloud mass spectra","quote":"The Schechter-like form yields an index ${\\gamma_{\\mathrm{exp}}}$ of $\\sim-1.57$"}]},
+{"quantity":"Upper cutoff masses (power-law, Schechter-like)","value":"~8.6e6 and ~8.0e6","uncertainty":"not stated","units":"Msun","from_step":8,"evidence":[{"loc":"4.2 Cloud mass spectra","quote":"namely ${M_{\\mathrm{u,PL}}}$ of $\\sim$8.6$\\times$10$^6$ ${M}_{\\odot}$ and ${M_{\\mathrm{u,exp}}}$ of $\\sim$8.0$\\times$10$^6$ ${M}_{\\odot}$"}]},
+{"quantity":"Vertical cloud-to-cloud velocity dispersion at Rgal>100 arcsec (clouds >5e5 Msun and <5e5 Msun)","value":"~8.3 and ~11","uncertainty":"not stated","units":"km s^-1","from_step":9,"evidence":[{"loc":"5.2 Vertical cloud-to-cloud velocity dispersion","quote":"is found to be almost constant around 8.3"}]},
+{"quantity":"Fraction of clouds with observed alpha_vir below 1 (2)","value":"12 (24)","uncertainty":"not stated","units":"percent","from_step":10,"evidence":[{"loc":"6.2.2 Estimation of intrinsic cloud properties","quote":"about 12 (24) percent of the clouds indicate"}]},
+{"quantity":"Fraction of clouds compatible with single-component approximation (Teq>0.5 K)","value":"~57","uncertainty":"not stated","units":"percent","from_step":10,"evidence":[{"loc":"6.2.2 Estimation of intrinsic cloud properties","quote":"($\\sim$57 percent) are compatible with the single-component approximation"}]},
+{"quantity":"Median intrinsic surface density for alpha_vir0 of 1 (2)","value":"~150 (~90)","uncertainty":"spread ~0.3 dex (1 sigma)","units":"Msun pc^-2","from_step":10,"evidence":[{"loc":"6.2.2 Estimation of intrinsic cloud properties","quote":"The median ${\\Sigma_{{0}}}$ is $\\sim$150 ($\\sim90$) for ${\\alpha_{\\mathrm{vir,0}}}$ of 1 (2)"}]}
+],
+"findings_qualitative":[
+{"value":"Massive clouds are concentrated toward the arm, bar and center, while smaller clouds prevail in inter-arm regions","evidence":[{"loc":"abstract","quote":"tend to concentrate toward the arm, bar, and center, while smaller clouds are more prevalent in inter-arm regions."}]},
+{"value":"Clouds with Tpeak>2 K follow S87 relations; Tpeak<2 K clouds, dominant in number, deviate","evidence":[{"loc":"abstract","quote":"clouds, which are dominant in number, deviate significantly."}]},
+{"value":"The power-law index steepens and the upper cutoff mass falls toward the outer disk","evidence":[{"loc":"4.4 Possible origins of the radial variation of mass spectra","quote":"indicating a relative deficit of massive clouds toward the outer disk."}]}
+],
+"claims":[
+{"hypothesis":"A sensitive whole-disk map samples the full range of GMC masses in M83 and shows where the gas mass resides","experiment":"astrodendro plus watershed cloud identification on the 12CO(1-0) cube, 46 pc resolution","result":"5724 clouds with median mass ~1.9e5 Msun; massive clouds hold most CO luminosity and are concentrated in arm, bar and center","finding":"The catalog samples the GMC mass range comparable with Galactic surveys, with mass dominated by a minority of massive clouds","support":"supported","evidence":[{"loc":"abstract","quote":"Such massive clouds comprise 16 percent of the total clouds in number and tend to concentrate toward the arm, bar, and center, while smaller clouds are more prevalent in inter-arm regions."}]},
+{"hypothesis":"M83 clouds follow the S87 scaling relations","experiment":"Compare sigma_v-Reff, Mvir-LCO, Mcl-Reff with S87 splitting at Tpeak 2 K","result":"Tpeak>2 K clouds align with S87; Tpeak<2 K clouds deviate with lower Sigma and higher alpha_vir","finding":"Bright clouds resemble S87 clouds while most (faint) clouds do not without beam dilution correction","support":"partially","evidence":[{"loc":"3.2.1 Linewidth-size relation","quote":"might share the same characteristics as the Galactic clouds sampled by S87."}]},
+{"hypothesis":"Beam dilution explains the high alpha_vir and low Sigma of faint clouds","experiment":"Area-filling factor model with Teq>0.5 K selection and source injection tests","result":"~57 percent of clouds by number and ~90 percent by mass compatible with alpha_vir0 of 1-2; Sigma0 narrow around ~150 (~90) Msun/pc2","finding":"A significant fraction of M83 clouds may be S87-like but beam-diluted; presented as a hypothesis","support":"partially","evidence":[{"loc":"6.3 Implications","quote":"it seems conceivable that a significant fraction of the clouds in M83 is consistent with those studied by S87"}]},
+{"hypothesis":"The cloud mass function steepens and the cutoff mass declines with galactocentric radius","experiment":"Power-law and Schechter-like fits in five radial bins above 2e5 Msun","result":"gamma_PL steepens from -1.3 to -2.0 and the cutoff mass declines; gamma_exp shows no clear trend; K-S tests inconclusive between forms","finding":"Relative deficit of massive clouds in the outer disk in the power-law description","support":"partially","evidence":[{"loc":"4.4 Possible origins of the radial variation of mass spectra","quote":"indicating a relative deficit of massive clouds toward the outer disk."}]},
+{"hypothesis":"Vertical cloud-to-cloud velocity dispersion depends on cloud mass","experiment":"Residual LOS velocity after subtracting rotation, in radial bins, split at 5e5 Msun, Levene test","result":"~8.3 km/s for >5e5 Msun and ~11 km/s for <5e5 Msun clouds outside 2.2 kpc","finding":"Weak mass dependence; more massive clouds are more settled near the plane","support":"supported","evidence":[{"loc":"5.2 Vertical cloud-to-cloud velocity dispersion","quote":"is found to be almost constant around 8.3"}]}
+],
+"reasoning":[
+{"field":"why_this_data","value":"Unprecedented mass sensitivity for a full-disk map of a substantial spiral galaxy","evidence":[{"loc":"1 Introduction","quote":"is unprecedented for such a full-disk mapping of substantial spiral galaxies."}]},
+{"field":"why_this_method","value":"Only leaves were used because larger structures are unnecessary at this resolution relative to the disk height","evidence":[{"loc":"2.2 Cloud identification","quote":"examining structures larger than individual leaves is unnecessary."}]}
+],
+"alternatives_considered_or_rejected":[
+{"value":"Schechter-like form not preferred over the restricted power law because K-S tests gave no clear preference and gamma_exp may be biased","evidence":[{"loc":"4.3 Comparison of the fitted results between the two forms","quote":"As the K-S test gives no clear preference and as we suspect the fitted values"}]}
+],
+"limitations_admitted":[
+{"value":"alpha_vir has limited power to characterise dynamical state","evidence":[{"loc":"2.3.2 Derived properties","quote":"has a limitation in characterizing the dynamical status of molecular clouds."}]},
+{"value":"Mass completeness limit is raised in crowded regions","evidence":[{"loc":"2.6 Fraction of CO luminosity sampled as GMC","quote":"and the mass completeness limit is elevated in crowded regions."}]},
+{"value":"Flux extrapolation over-corrects by a few percent in the center","evidence":[{"loc":"2.6 Fraction of CO luminosity sampled as GMC","quote":"which indicates that the flux extrapolation is over-correcting the cloud flux by a few percent."}]},
+{"value":"Beam-dilution formulation rests on a crude approximation","evidence":[{"loc":"6.1 Impact of sampling clouds with a relatively large beam","quote":"A caveat is that the formulation made here is based on a crude approximation"}]},
+{"value":"In-plane streaming motions neglected in the velocity dispersion estimate","evidence":[{"loc":"5.3 Assessment of the impact of streaming motions","quote":"is that the impact of in-plane non-circular motion is just neglected."}]}
+],
+"referee_caveats_inferred":[
+"A single standard alpha_CO is applied across the disk although the paper cites a radial alpha_CO variation in M83",
+"Reported medians are not consistent across sections (alpha_vir median quoted as 2.4, 2.7 and 3.0; share of clouds above 1e6 Msun quoted as 16 and 13 percent; luminosity share as 60, 50 and 65 percent; f_cl 0.93 in the table versus 91 percent in the text)",
+"The filling-factor correction assumes alpha_vir0 of 1 or 2 and then finds Sigma0 near-constant, which is partly circular",
+"Cloud radii are resolution-limited (Reff 41 pc 16th percentile vs 46 pc beam), so scaling relations of small clouds are affected by the identification algorithm",
+"Mass-function power-law fit uncertainties of 0.00 in the table look too small for a least-squares fit to a cumulative distribution"
+],
+"reproducibility":[],
+"code_released":[],
+"missing_for_reproduction":[
+"Public location of the Koda et al. 2023 processed cubes and their MIRIAD/TP2VIS parameters",
+"Exact astrodendro and watershed parameters in code form",
+"Implementation of moment extrapolation, bootstrap and fits",
+"Access location of the full electronic cloud catalog"
+],
+"estimated_data_volume_inferred":"Large if starting from raw 12-m, 7-m and TP data of a whole-disk mosaic (likely hundreds of GB); small if starting from the published 1 km/s cube",
+"score_inferred":3,
+"score_reason":"Cloud identification recipe and many numeric results are given, but the input cube is a product of a prior paper with processing deferred to it and several algorithm settings are unstated",
+"rediscovery_candidate":false,
+"rediscovery_reason":"Public status of the cube is not stated in the paper and the data reduction and several identification settings are deferred or missing, so the full recipe cannot be redone from the text alone",
+"methods_papers":[
+{"citation":"Koda et al. 2023 (cite: Koda2023M83)","why":"Source of the calibrated and imaged M83 12CO cubes and data processing"},
+{"citation":"Koda et al. 2019 (cite: Koda2019TP2VIS)","why":"TP2VIS conversion of total-power data to visibilities"},
+{"citation":"Rosolowsky and Leroy 2006 (cite: Rosolowsky2006CPROPS)","why":"Moment extrapolation to 0 K"},
+{"citation":"Hirota et al. 2018 (cite: Hirota2018M83)","why":"Cloud property derivation followed here"},
+{"citation":"Hernandez et al. 2019 (cite: Hernandez2019)","why":"Vertical velocity dispersion method"}
+],
+"companion_papers":[
+{"citation":"Koda et al. 2023 (cite: Koda2023M83)","why":"Whole-disk ALMA 12CO(1-0) map of M83 used here"},
+{"citation":"Lee et al. 2024 (cite: Lee2024M83)","why":"Radial variation of alpha_CO in M83 discussed in the text"}
+],
+"related_projects_or_surveys":["ALMA project 2017.1.00079.S","PHANGS-ALMA"]
+}

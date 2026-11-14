@@ -1,0 +1,448 @@
+{
+ "bibcode": "2023ApJ...952...48H",
+ "title": "Big Three Dragons: Molecular Gas in a Bright Lyman-break Galaxy at z = 7.15",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acdd5c",
+ "arxiv_id": "2203.01345",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Investigate the nature and mass of the molecular gas in the bright Lyman-break galaxy B14-65666 at z = 7.1520 using ALMA Band 3 observations of CO(6-5), CO(7-6), and [CI](2-1) and multiwavelength constraints.",
+ "alma_project_codes": [
+  "2018.1.01673.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "41-45 antennas",
+  "angular_resolution": "0.46'' x 0.41'' to 0.52'' x 0.43'' (without uv-taper); 0.78'' x 0.68'' to 0.82'' x 0.72'' (uv-tapered)",
+  "sensitivity": "Continuum: 4.6 uJy/beam (5.3 uJy/beam tapered); CO(6-5): 96 uJy/beam (107 uJy/beam tapered) per 50 km/s; CO(7-6) and [CI](2-1): 78 uJy/beam (93 uJy/beam tapered) per 50 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "UV luminosity L_UV = 2.0 x 10^11 L_sun",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "LUV [L⊙] 2.0 × 1011 B17"
+     }
+    ]
+   },
+   "citation": "Bowler et al. 2017"
+  },
+  {
+   "what": {
+    "value": "[OIII] 88 um and [CII] 158 um luminosities, spectroscopic redshift z = 7.1520 ± 0.0003, SFR, stellar mass, metallicity, and dynamical mass",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "L[OIII] [L⊙] (3.4 ± 0.4) × 109 H19"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "L[CII] [L⊙] (1.1 ± 0.1) × 109 H19"
+     },
+     {
+      "loc": "4.3.5. Upper limit with dynamical mass",
+      "quote": "With a stellar mass obtained from SED fitting (M∗ = 7.7+1.0−0.8 × 108 M⊙; Hashimoto et al. 2019)"
+     }
+    ]
+   },
+   "citation": "Hashimoto et al. 2019"
+  },
+  {
+   "what": {
+    "value": "Total-infrared luminosity L_TIR and dust mass log(M_dust/M_sun) ≈ 6.4 - 7.5",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "LTIR (Td = 40 K, β = 2.0) [L⊙] 4.0 × 1011 S21"
+     },
+     {
+      "loc": "4.3.4. Estimate with dust continuum",
+      "quote": "Combined with the dust mass of the target, log(Mdust/M∗) ≈ 6.4 − 7.5 (Sugahara et al. 2021)"
+     }
+    ]
+   },
+   "citation": "Sugahara et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Local SFGs, AGNs, and U/LIRGs observed with Herschel/SPIRE",
+    "evidence": [
+     {
+      "loc": "Figure 3 caption",
+      "quote": "Small open circles show a compilation of local objects, including SFGs, AGNs, and U/LIRGs observed with Herschel/SPIRE (Kamenetzky et al. 2016)"
+     }
+    ]
+   },
+   "citation": "Kamenetzky et al. 2016"
+  },
+  {
+   "what": {
+    "value": "Observed and IllustrisTNG volume number density of z ~ 3-4 passive galaxies",
+    "evidence": [
+     {
+      "loc": "6. DISCUSSION",
+      "quote": "The observed number density of z ∼ 3 − 4 passive galaxies was recently compiled by Valentino et al. (2020); it is O(10−6) −O(10−5) Mpc−3 at M∗ ≥ 4 × 1010 M⊙."
+     }
+    ]
+   },
+   "citation": "Valentino et al. 2020"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create continuum and line cubes and measure upper limits on continuum and line fluxes",
+   "method": "Image continuum and 50 km/s spectral cubes with natural weighting and uv-tapering (0.40''-0.45''), integrate cubes over -200 to +200 km/s with CASA immoments to produce moment 0 maps, extract spectra in a 1.5'' diameter aperture, and measure 3-sigma upper limits.",
+   "software": [
+    "CASA",
+    "tclean",
+    "immoments"
+   ],
+   "key_parameters": [
+    "velocity range -200 to +200 km s^-1",
+    "velocity resolution 50 km s^-1"
+   ],
+   "assumptions": [
+    "CO emitting region size does not exceed that of [CII] emission (covered by the uv-tapered beam)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Correct line fluxes for CMB and calculate line luminosity upper limits",
+   "method": "Apply CMB correction factor f_CMB using da Cunha et al. (2013) Eq. 32 and convert velocity-integrated flux limits to L_line and L'_line using Solomon et al. (1992) formulas.",
+   "software": [],
+   "key_parameters": [
+    "f_CMB = 0.1 - 0.9 for T_exc = 23 - 80 K"
+   ],
+   "assumptions": [
+    "LambdaCDM cosmology with Omega_m = 0.272, Omega_b = 0.045, Omega_Lambda = 0.728, H_0 = 70.4 km s^-1 Mpc^-1",
+    "T_CMB(z) = (1 + z) x 2.73 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate molecular gas mass using five independent techniques",
+   "method": "Calculate M_mol from (1) mid-J CO upper limits with excitation and metallicity-dependent alpha_CO, (2) [CI](2-1) upper limit with partition function and carbon abundance, (3) [CII] 158 um luminosity with Madden et al. (2020) relation, (4) dust mass and metallicity-dependent DGR, and (5) dynamical mass minus stellar mass.",
+   "software": [],
+   "key_parameters": [
+    "r_61 = 0.28 +0.04/-0.02, r_71 = 0.17 +0.02/-0.02",
+    "alpha_CO = 25 M_sun (K km s^-1 pc^2)^-1 (range 5 - 25 for Z = 0.2 - 0.8 Z_sun)",
+    "DGR ≈ (1.8 - 53) x 10^-4"
+   ],
+   "assumptions": [
+    "X[CI]/X[H2] ~ 1.6 x 10^-5 (and up to 10x higher conversion factor at low Z)",
+    "HII region contribution to [CII] is ~30% and CMB attenuation factor for [CII] is f_CMB = 0.5 - 1.0",
+    "Gas is predominantly in the molecular phase for the dust-based estimate"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain PDR gas density and FUV radiation field using PDR Toolbox",
+   "method": "Compare observed L_[CII]/L_FIR, L_[CII]/L_CO(6-5), L_[CII]/L_CO(7-6), and L_[CII]/L_[CI](2-1) ratios against PDR Toolbox (version wk2020) model grids to constrain hydrogen nuclei density n(H) and incident FUV field G.",
+   "software": [
+    "PDR Toolbox"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Divide optically thin emission luminosities by a factor of 2 for spherical cloud geometry; PDR fraction of [CII] is 70%"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute molecular gas fraction and gas depletion time",
+   "method": "Divide the derived M_mol range by SFR and stellar mass from SED fitting to obtain tau_dep and mu_gas, and compare with high-z literature samples and scaling relations.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "SFR = 200 +82/-38 M_sun yr^-1 and M_* = 7.7 +1.0/-0.8 x 10^8 M_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rest-frame 400 um continuum flux density",
+   "value": "< 15.9",
+   "uncertainty": "3sigma upper limit",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3. ALMA OBSERVATIONS AND DATA REDUCTION",
+     "quote": "The left panel of Fig. 1 shows the nondetection, and by using the uv -tapered image, we place a 3σ upper limit of 15.9 µJy on the continuum flux density."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) velocity-integrated flux (S_line Delta_v)",
+   "value": "< 0.0581",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. CO and [C i] line fluxes",
+     "quote": "From the integrated intensity maps, we obtain the 3σ upper limits on the velocity-integrated flux, Sline∆v, as 0.0581, 0.0546, and 0.0542 Jy km s−1 for CO(6-5), CO(7-6), and [Ci](2-1), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) velocity-integrated flux (S_line Delta_v)",
+   "value": "< 0.0546",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. CO and [C i] line fluxes",
+     "quote": "From the integrated intensity maps, we obtain the 3σ upper limits on the velocity-integrated flux, Sline∆v, as 0.0581, 0.0546, and 0.0542 Jy km s−1 for CO(6-5), CO(7-6), and [Ci](2-1), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) velocity-integrated flux (S_line Delta_v)",
+   "value": "< 0.0542",
+   "uncertainty": "3sigma upper limit",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1. CO and [C i] line fluxes",
+     "quote": "From the integrated intensity maps, we obtain the 3σ upper limits on the velocity-integrated flux, Sline∆v, as 0.0581, 0.0546, and 0.0542 Jy km s−1 for CO(6-5), CO(7-6), and [Ci](2-1), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) line luminosity L_CO(6-5) (uncorrected for CMB)",
+   "value": "< 2.70 x 10^7",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Lline < 2.70 < 2.96 < 2.95"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "Lline and L′line are the line luminosities in units of 107 L⊙ and 109 K km s−1 pc2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) line luminosity L_CO(7-6) (uncorrected for CMB)",
+   "value": "< 2.96 x 10^7",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Lline < 2.70 < 2.96 < 2.95"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) line luminosity L_[CI](2-1) (uncorrected for CMB)",
+   "value": "< 2.95 x 10^7",
+   "uncertainty": "3sigma upper limit",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Lline < 2.70 < 2.96 < 2.95"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) line luminosity L'_CO(6-5) (uncorrected for CMB)",
+   "value": "< 2.55 x 10^9",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L′line < 2.55 < 1.77 < 1.74"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "Lline and L′line are the line luminosities in units of 107 L⊙ and 109 K km s−1 pc2, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) line luminosity L'_CO(7-6) (uncorrected for CMB)",
+   "value": "< 1.77 x 10^9",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L′line < 2.55 < 1.77 < 1.74"
+    }
+   ]
+  },
+  {
+   "quantity": "[CI](2-1) line luminosity L'_[CI](2-1) (uncorrected for CMB)",
+   "value": "< 1.74 x 10^9",
+   "uncertainty": "3sigma upper limit",
+   "units": "K km s^-1 pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L′line < 2.55 < 1.77 < 1.74"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] / L_CO(6-5) (uncorrected for CMB)",
+   "value": "> 41",
+   "uncertainty": "3sigma lower limit",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L[CII]/Lline > 41 > 37 > 37"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] / L_CO(7-6) (uncorrected for CMB)",
+   "value": "> 37",
+   "uncertainty": "3sigma lower limit",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L[CII]/Lline > 41 > 37 > 37"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] / L_[CI](2-1) (uncorrected for CMB)",
+   "value": "> 37",
+   "uncertainty": "3sigma lower limit",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "L[CII]/Lline > 41 > 37 > 37"
+    }
+   ]
+  },
+  {
+   "quantity": "Neutral carbon mass M_CI",
+   "value": "< (2.2 - 59) x 10^6",
+   "uncertainty": "3sigma upper limit",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.2. Estimate with [C i](2-1)",
+     "quote": "we obtain MCI < (2.2 − 59) × 106 M⊙ (3σ)."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_mol (combined constraint)",
+   "value": "(0.05 - 11) x 10^10",
+   "uncertainty": "range",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "By using the (1) [Cii] luminosity, (2) dust mass-to-gas mass ratio, and (3) a dynamical mass estimate, we find that the molecular gas mass (Mmol) is (0.05 − 11) × 1010 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass from [CII] 158 um",
+   "value": "(5.4 - 23) x 10^10",
+   "uncertainty": "range",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3.3. Estimate with [C ii] 158 µm",
+     "quote": "We thus obtain M [CII]mol ≈ (5.4−23)×1010 M⊙, where we include the helium contribution and take into account a standard deviation of 0.14 dex in the relation."
+    }
+   ]
+  },
+  {
+   "quantity": "PDR hydrogen nuclei density log(n(H)/cm^-3)",
+   "value": "1 - 5",
+   "uncertainty": "range",
+   "units": "dex(cm^-3)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2. PDR modelling",
+     "quote": "In Figure 5, the overlapped region of the four luminosity ratios is log(n(H)/cm−3) ∼ 1 − 5 with a moderate FUV radiation field ∼ 102 − 103 G0."
+    }
+   ]
+  },
+  {
+   "quantity": "PDR incident FUV radiation field G",
+   "value": "10^2 - 10^3",
+   "uncertainty": "range",
+   "units": "G_0",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.2. PDR modelling",
+     "quote": "In Figure 5, the overlapped region of the four luminosity ratios is log(n(H)/cm−3) ∼ 1 − 5 with a moderate FUV radiation field ∼ 102 − 103 G0."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas-to-stellar mass ratio (mu_gas)",
+   "value": "0.65 - 140",
+   "uncertainty": "range",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Despite the large uncertauinty in Mmol, we estimate a molecular gas-to-stellar mass ratio (µgas) of 0.65 − 140 and a gas depletion time (τdep) of 2.5 − 550 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas depletion time (tau_dep)",
+   "value": "2.5 - 550",
+   "uncertainty": "range",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Despite the large uncertauinty in Mmol, we estimate a molecular gas-to-stellar mass ratio (µgas) of 0.65 − 140 and a gas depletion time (τdep) of 2.5 − 550 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact channel ranges flagged as line-free when creating the Band 3 continuum map",
+  "Cell size and image dimensions used in CASA tclean",
+  "Stopping criterion or threshold for tclean (or whether maps are dirty images since no signal was detected)"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel ranges used for the Band 3 continuum image",
+  "Exact method used to convert the moment 0 map noise (14.9, 14.0, 13.9 mJy/beam km/s) into the integrated flux 3-sigma upper limits (0.0581, 0.0546, 0.0542 Jy km/s) — appears to multiply 3-sigma point-source rms by ~1.3 beam areas, which is not explicitly written out"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "Single ALMA project code, CASA pipeline version, calibrators, weighting, uv-taper values, velocity binning, integration window, and all analytical conversion equations and external parameters are explicitly stated. Minor ambiguity in how aperture/beam scaling was applied to get the exact 3-sigma integrated flux limits from the moment-0 rms.",
+ "rediscovery_reason": "Public single-project ALMA dataset (2018.1.01673.S) with clear data reduction parameters, straightforward moment-0 upper limit measurements, and explicit analytical equations for gas mass and PDR modeling.",
+ "source_card": "cards/2023ApJ...952...48H/sonnet/card.md"
+}

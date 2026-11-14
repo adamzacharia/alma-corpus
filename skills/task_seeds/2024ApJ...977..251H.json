@@ -1,0 +1,270 @@
+{
+ "bibcode": "2024ApJ...977..251H",
+ "title": "Molecular Gas Mass Measurements of an Active, Starburst Galaxy at z ≍ 2.6 Using ALMA Observations of the [C I], CO, and Dust Emission",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad9021",
+ "arxiv_id": "2411.04290",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the molecular gas mass and ISM excitation conditions of a z=2.57 radio-loud starburst galaxy, as inferred from [CI], CO and dust emission?",
+ "alma_project_codes": [
+  "2018.1.01669.S",
+  "2013.1.00521.S"
+ ],
+ "data": {
+  "bands": "Band 4 and Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "Band 4 0.13x0.12 arcsec; Band 6 0.14x0.13 arcsec",
+  "sensitivity": "Continuum RMS 10 (Band 4) and 11 (Band 6); line RMS ≈0.25 and ≈0.17 mJy per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust temperature 45 (+23/-17) K and SED fit from Falkendal2019; dust flux 1.33±0.16 mJy",
+    "evidence": [
+     {
+      "loc": "3.4 Line ratios",
+      "quote": "dust temperature of $\\Td=45^{+23}_{-17}\\,$K derived from the SED fitting"
+     }
+    ]
+   },
+   "citation": "(cite: Falkendal2019)"
+  },
+  {
+   "what": {
+    "value": "CO(4-3)/CO(1-0) ratio r41=0.46 for SMGs",
+    "evidence": [
+     {
+      "loc": "3.3.2 The CO approach",
+      "quote": "$r_{41}\\equiv\\LineLum{\\COfourthree}/\\LineLum{\\COonezero}=0.46$ (cite: Carilli2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Carilli2013)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 0.8 for starbursts",
+    "evidence": [
+     {
+      "loc": "3.3.2 The CO approach",
+      "quote": "we adopted the value commonly used for starburst galaxies, 0.8 M$_\\odot$/(K$\\cdot$km s$^{-1}$$\\cdot$pc$^2$) (cite: Bolatto2013)"
+     }
+    ]
+   },
+   "citation": "(cite: Bolatto2013)"
+  },
+  {
+   "what": {
+    "value": "[CI] abundance 3e-5 (M82)",
+    "evidence": [
+     {
+      "loc": "3.3.1 The Atomic Carbon approach",
+      "quote": "we adapted the atomic carbon abundance $\\,=\\,3\\times10^{-5}$ as derived by (cite: Weiss2003) for M82"
+     }
+    ]
+   },
+   "citation": "(cite: Weiss2003)"
+  },
+  {
+   "what": {
+    "value": "Dust-to-gas calibration alpha_dust=6.7e19 and eq. 16",
+    "evidence": [
+     {
+      "loc": "3.3.3 The dust emission approach",
+      "quote": "Here we use $\\alphadust=6.7\\cdot10^{19}$ erg s$^{-1}$ Hz$^{-1}$ M$_\\odot$$^{-1}$ and equation (16) in (cite: Scoville2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Scoville2016)"
+  },
+  {
+   "what": {
+    "value": "Comparison compilation of high-z line ratios",
+    "evidence": [
+     {
+      "loc": "3.4 Line ratios",
+      "quote": "the compilation of high-redshift galaxies presented in (cite: Valentino2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Valentino2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and cubes",
+   "method": "tclean with Briggs robust=2, line-free continuum, binned cubes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit continuum components",
+   "method": "2D Gaussian fits with imfit to each component",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract spectra and fit lines",
+   "method": "Elliptical aperture spectrum; Gaussian lines plus first-order polynomial continuum; 1000 Monte Carlo realizations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Moment-0 maps and size",
+   "method": "spectral-cube moment over ±2σ of Gaussian; size from 3σ contour",
+   "software": [
+    "spectral-cube"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive molecular gas mass three ways",
+   "method": "[CI] with LTE Tex, CO(4-3) with r41 and alpha_CO, Band 6 dust with Scoville2016",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CI=3e-5, r41=0.46, alpha_CO=0.8, Td=25 K, alpha_dust=6.7e19, helium factor 1.36"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CI](2-1) integrated flux",
+   "value": "4.04",
+   "uncertainty": "0.30",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3 (line table)",
+     "quote": "4.04 $\\pm$ 0.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 dust host flux",
+   "value": "1.55",
+   "uncertainty": "0.13",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table (continuum)",
+     "quote": "Host galaxy    | flux (mJy)                |  1.55 $\\pm$ 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature from [CI]",
+   "value": "44",
+   "uncertainty": "16",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1 The Atomic Carbon approach",
+     "quote": "$R\\,=\\,0.84\\,\\pm\\,0.20$ and $\\Tex=44\\,\\pm\\,16$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol from [CI]",
+   "value": "3.1e11",
+   "uncertainty": "0.6e11",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1 The Atomic Carbon approach",
+     "quote": "$(3.1\\pm0.6)\\times10^{11}\\text{M\\ensuremath{_\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol from CO(4-3)",
+   "value": "7.3e10",
+   "uncertainty": "0.9e10",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 The CO approach",
+     "quote": "$(7.3\\ \\pm\\ 0.9)\\times10^{10}$M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_mol from Band 6 dust",
+   "value": "2.2e11",
+   "uncertainty": "0.2e11",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.3 The dust emission approach",
+     "quote": "(2.2 $\\pm$ 0.2)$\\times10^{11}$M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6)/CO(4-3) ratio r74",
+   "value": "0.34",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Line ratios",
+     "quote": "$r_{74}=0.34\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(4-3) emission size",
+   "value": "(7.7±0.9)x(4.9±0.9)",
+   "uncertainty": "0.9 kpc",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 Emission line morphology",
+     "quote": "(7.7 $\\pm$ 0.9)$\\times$(4.9 $\\pm$ 0.9) kpc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Spatial extent and orientation of the elliptical extraction aperture",
+  "Exact velocity ranges / channels used in spectral fits and moment maps",
+  "Line-free channels used for imcontsub",
+  "tclean cell size, image size, masks, threshold, niter",
+  "Rest frequencies adopted",
+  "Dust SED/Gamma_RJ value for Td=25 K",
+  "Initial guesses for Gaussian/imfit regions"
+ ],
+ "missing_for_reproduction": [
+  "Aperture geometry",
+  "tclean image parameters",
+  "Gamma_RJ value and luminosity distance details"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Standard CASA workflow and explicit formulas, but aperture and imaging parameters not given.",
+ "rediscovery_reason": "Archive data with explicit formulas and numeric results, though some imaging settings missing.",
+ "source_card": "cards/2024ApJ...977..251H/sonnet/card.md"
+}

@@ -1,0 +1,1183 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024AJ....167...66Y",
+  "title": "Chemistry of Complex Organic Molecules in the V883 Ori Disk Revealed by ALMA Band 3 Observations",
+  "year": 2024,
+  "journal": "The Astronomical Journal",
+  "first_author": "Yamato, Yoshihide",
+  "n_authors": 6,
+  "arxiv_id": "2312.01300",
+  "doi": "10.3847/1538-3881/ad11d9",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00357.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "V883 Ori was observed in Band 3 during ALMA Cycle 8 (project code: 2021.1.00357.S, PI: S. Notsu)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "V883 Ori",
+     "coordinates": {
+      "value": "ICRS 05h38m18.101s, -07d02m26.00s (disk center)",
+      "evidence": [
+       {
+        "loc": "3.1 Spectrum Extraction and Line Identification",
+        "quote": "a central stellar mass of $1.29\\,M_\\odot$, and a distance of 400 pc, based on previous works (cite: Cieza2016; Tobin2023)"
+       },
+       {
+        "loc": "2.2 Calibration and Imaging",
+        "quote": "$\\alpha\\mathrm{(ICRS)}= 05^\\mathrm{h}38^\\mathrm{m}18.101s$, $\\delta\\mathrm{(ICRS)} = -07^\\mathrm{d}02^\\mathrm{m}26.00s$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "400 pc",
+      "evidence": [
+       {
+        "loc": "3.1 Spectrum Extraction and Line Identification",
+        "quote": "a central stellar mass of $1.29\\,M_\\odot$, and a distance of 400 pc, based on previous works (cite: Cieza2016; Tobin2023)"
+       },
+       {
+        "loc": "2.2 Calibration and Imaging",
+        "quote": "$\\alpha\\mathrm{(ICRS)}= 05^\\mathrm{h}38^\\mathrm{m}18.101s$, $\\delta\\mathrm{(ICRS)} = -07^\\mathrm{d}02^\\mathrm{m}26.00s$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "previous works (Cieza2016; Tobin2023)",
+      "evidence": [
+       {
+        "loc": "3.1 Spectrum Extraction and Line Identification",
+        "quote": "a central stellar mass of $1.29\\,M_\\odot$, and a distance of 400 pc, based on previous works (cite: Cieza2016; Tobin2023)"
+       },
+       {
+        "loc": "2.2 Calibration and Imaging",
+        "quote": "$\\alpha\\mathrm{(ICRS)}= 05^\\mathrm{h}38^\\mathrm{m}18.101s$, $\\delta\\mathrm{(ICRS)} = -07^\\mathrm{d}02^\\mathrm{m}26.00s$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the COM inventory, radial distribution, abundance ratios and isotopic (12C/13C, D/H) composition in the outbursting V883 Ori disk as seen in ALMA Band 3?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we present Atacama Large Millimeter/submillimeter Array (ALMA) Band 3 observations of the disk around the young outbursting star V883 Ori"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00357.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "V883 Ori was observed in Band 3 during ALMA Cycle 8 (project code: 2021.1.00357.S, PI: S. Notsu)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3.3 mm, 92 GHz continuum)",
+    "evidence": [
+     {
+      "loc": "2.2 Calibration and Imaging",
+      "quote": "The combined dust continuum image at 3.3 mm (or 92 GHz) was made using the `tclean` task"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "11 SPWs in FDM; one 937.5 MHz continuum SPW (0.488 MHz res.), ten line SPWs of 58.59 or 117.19 MHz bandwidth (0.141 MHz res.)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Band 3 Observations",
+      "quote": "The correlator setup included eleven spectral windows (SPWs) in Frequency Division Mode (FDM), one of which was dedicated to continuum acquisition with a wide bandwidth of 937.5 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH, CH3CHO, CH3OCHO, CH3OCH3, c-C2H4O, CH3COCH3, t-C2H3CHO, s-C2H5CHO and 13C/D isotopologues, OCS, SO2",
+     "transition": "many; see Table of detected transitions",
+     "rest_frequency": "85–98 GHz",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we robustly identified 10 species and their isotopologues: CH$_3$OH, CH$_3$CHO, CH$_3$OCHO, CH$_3$OCH$_3$, $c$-C$_2$H$_4$O, CH$_3$COCH$_3$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "four executions: one compact, three extended",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA Band 3 Observations",
+      "quote": "The observations were carried out in a total of four executions, one with a compact antenna configuration and the other three with an extended antenna configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "41–3396 m (extended); 14–740 m (compact)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2022 Jan. 20 | 41 | 47 | 3.6 | 14–740 | 1.5 | 17.4 | J0423-0120 | J0541-0541"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.3''–0.4'' (line cubes)",
+    "evidence": [
+     {
+      "loc": "2.2 Calibration and Imaging",
+      "quote": "The typical beam size and the RMS noise level were $\\sim0.3\\ensuremath{''}$–$0.4\\ensuremath{''}$ and 0.6–1 mJy beam$^{-1}$, respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "4.7–5.2'' (extended), 17.4'' (compact)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2022 Jan. 20 | 41 | 47 | 3.6 | 14–740 | 1.5 | 17.4 | J0423-0120 | J0541-0541"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "line RMS 0.6–1 mJy/beam; continuum 27 uJy/beam",
+    "evidence": [
+     {
+      "loc": "2.2 Calibration and Imaging",
+      "quote": "The beam size and the RMS noise level were $0.39\\ensuremath{''}\\times0.27\\ensuremath{''}$ (P.A. $= -74\\ensuremath{^\\circ}$) and 27 μJy beam$^{-1}$, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "43, 43, 43 and 47 min per execution",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2021 Nov. 21 | 44 | 43 | 2.2 | 41–3396 | 0.3 | 5.2 | J0423-0120 | J0541-0541"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2021 Nov 21, 21, 22; 2022 Jan 20",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2021 Nov. 22 | 43 | 43 | 3.8 | 41–3396 | 0.3 | 4.7 | J0423-0120 | J0541-0541"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI: S. Notsu, Cycle 8",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "V883 Ori was observed in Band 3 during ALMA Cycle 8 (project code: 2021.1.00357.S, PI: S. Notsu)."
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectroscopic data (frequencies, A coefficients, partition functions) from JPL and CDMS",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "the spectroscopic data of the molecular lines are taken from the Jet Propulsion Spectroscopy (cite: JPL) and the Cologne Database for Molecular Spectroscopy"
+       }
+      ]
+     },
+     "citation": "(cite: JPL); (cite: CDMS1; CDMS2; CDMS3)"
+    },
+    {
+     "what": {
+      "value": "Methyl formate partition function incl. 13C species",
+      "evidence": [
+       {
+        "loc": "Appendix 12.3",
+        "quote": "we used the one calculated by (cite: Favre2014), who fully considered the contributions from torsional (up to $v_t=6$) and vibrational populations."
+       }
+      ]
+     },
+     "citation": "(cite: Favre2014)"
+    },
+    {
+     "what": {
+      "value": "Band 6 CH3OH image used for smoothing comparison and emitting region",
+      "evidence": [
+       {
+        "loc": "3.3 Column Density Retrieval",
+        "quote": "we assumed that the emitting region in Band 3 is the same as that of CH$_3$OH in Band 6 (cite: Tobin2023)."
+       }
+      ]
+     },
+     "citation": "(cite: Tobin2023)"
+    },
+    {
+     "what": {
+      "value": "Comparison abundance ratios for IRAS 16293-2422, Oph-IRS 48, comet 67P/C-G",
+      "evidence": [
+       {
+        "loc": "4.3",
+        "quote": "the warm inner envelopes of the Class 0 protobinary IRAS 16293-2422 A/B (cite: Lykke2017; Jorgensen2018; Manigand2020; Manigand2021)"
+       }
+      ]
+     },
+     "citation": "Lykke2017; Jorgensen2018; Manigand2020; Manigand2021; Brunken2022; Rubin2019; Schuhmann2019"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA staff standard pipeline, then manual self-calibration",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "Initial calibrations were performed by the ALMA staff using the standard ALMA calibration pipeline version 2021.2.0.128."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.2.1.7",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "Common Astronomy Software Applications (cite: CASA) version 6.2.1.7"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "2021.2.0.128",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "standard ALMA calibration pipeline version 2021.2.0.128"
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-0120 / J0538-4405 (bandpass/amplitude)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "2021 Nov. 21 | 44 | 43 | 2.0 | 41–3396 | 0.3 | 5.2 | J0538-4405 | J0541-0541"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% adopted (2.5% 1σ quoted later)",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "We adopt a 10% uncertainty as an absolute flux calibration accuracy"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "compact: 1 phase + 1 amp round; extended concatenated: 2 phase-only + 1 amplitude",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "Two rounds of phase-only self-calibration and one round of amplitude self-calibration were performed on the combined data."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean (parallel mpicasa)",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "The `tclean` task was run in parallel using `mpicasa` implementation."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = 0.5; briggsbwtaper with perchanweightdensity=True",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "`briggsbwtaper` was used with independent weight densities for each channel (i.e., `perchanweightdensity = True`)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "automultithresh; cleaned to 3 x RMS at native channel width",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "All SPWs were cleaned down to 3 $\\times$ RMS with the native channel widths."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "imcontsub in image plane (to mitigate JvM effect)",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "the continuum component is subtracted from these image cubes using the `imcontsub` task"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "identified by visual inspection of dirty cubes; channels not listed",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "to accurately specify the line-free channels by visually inspecting the dirty image cubes"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "RMS measured on images without primary beam correction",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "The RMS noise level was measured on the images without primary beam correction."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "compact and extended data concatenated",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "The extended antenna configuration data were then concatenated and self-calibrated together."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.39''x0.27'' continuum; line 0.36–0.42'' x 0.26–0.31''",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "The beam size and the RMS noise level were $0.39\\ensuremath{''}\\times0.27\\ensuremath{''}$ (P.A. $= -74\\ensuremath{^\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.59–1.1 mJy/beam per SPW",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "10 & 97.979676 & 3839 & 937.036 & 0.244 & 0.75 & 1.5 & 0.36$''$$\\times$0.26$''$  (-73$\\ensuremath{^\\circ}$) & 0.59"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Line identification criteria",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "Following (cite: Jorgensen2020), we set two criteria for the identification of molecular species."
+       }
+      ]
+     },
+     "from_reference": "(cite: Jorgensen2020)"
+    },
+    {
+     "what": {
+      "value": "Radial intensity profile reconstruction from line profile",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "We used an approach similar to that of (cite: Bosman2021) to construct the radial intensity profiles"
+       }
+      ]
+     },
+     "from_reference": "(cite: Bosman2021)"
+    },
+    {
+     "what": {
+      "value": "Disk geometry, stellar mass, distance, systemic velocity, emitting region",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "based on previous works (cite: Cieza2016; Tobin2023)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Cieza2016; Tobin2023)"
+    },
+    {
+     "what": {
+      "value": "LTE spectral model formulation",
+      "evidence": [
+       {
+        "loc": "Appendix 10",
+        "quote": "Following the formulation described in Appendix A of (cite: Yamato2022)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Yamato2022)"
+    },
+    {
+     "what": {
+      "value": "JvM correction",
+      "evidence": [
+       {
+        "loc": "Appendix 7",
+        "quote": "We applied the JvM correction to our data following (cite: Czekala2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Czekala2021)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Self-calibration solution intervals, reference antennas and gain tables",
+    "Line-free channel ranges used for continuum",
+    "MCMC priors and ranges for the spectral fit and the radial profile fit",
+    "Image size and cell size",
+    "Initial/ranges for gamma and likelihood form",
+    "Exact CASA parameter values for automultithresh",
+    "Inclination uncertainty treatment and which executions' flux were aligned"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Self-calibrate and image continuum and line cubes",
+    "method": {
+     "value": "Phase/amp self-cal on line-free continuum, applied to lines; tclean with Briggs 0.5; imcontsub",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "Self-calibration was then performed using the continuum visibilities with the `gaincal` and `applycal` tasks."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust = 0.5, 3 x RMS clean threshold",
+      "evidence": [
+       {
+        "loc": "2.2",
+        "quote": "All SPWs were cleaned down to 3 $\\times$ RMS with the native channel widths."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "JvM effect examined; residual spectrum shows little line left",
+     "evidence": [
+      {
+       "loc": "Appendix 7",
+       "quote": "almost no spectral line component remain in the residual spectrum and the line emission is almost fully recovered in the CLEANed image"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract Keplerian-corrected disk-integrated spectra",
+    "method": {
+     "value": "GoFish integrated_spectrum() over 1.2'' aperture, deprojecting and aligning to systemic velocity",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we use the `integrated_spectrum()` function implemented in the Python package `GoFish`"
+      }
+     ]
+    },
+    "software": [
+     "GoFish"
+    ],
+    "key_parameters": [
+     {
+      "value": "PA 32 deg, i = 38.3 deg, M* = 1.29 Msun, d = 400 pc",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "we assume a position angle (32$^\\circ$) and inclination angle (38.3$^\\circ$) of the disk, a central stellar mass of $1.29\\,M_\\odot$, and a distance of 400 pc"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "emission from the midplane, no vertical extent",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "We also assume that the emission originates from the midplane of the disk, and do not consider the vertical extent of the emission."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Identify molecular species",
+    "method": {
+     "value": "Fit LTE synthetic spectrum; two criteria for robust/tentative identification",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Alternatively, we fitted a synthetic spectrum to the observed spectra to identify each of these features."
+      }
+     ]
+    },
+    "software": [
+     "JPL/CDMS databases"
+    ],
+    "key_parameters": [
+     {
+      "value": "Aul >= 1e-8 s-1, Eu <= 1000 K",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "Only the transitions with an Einstein A coefficient for spontaneous emission of $\\geq10^{-8}$ s$^{-1}$ and an upper state energy of $\\leq1000$ K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "common emitting size, Tex and line width under LTE",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "the model used a common emitting region size, a common excitation temperature, and a common line width under the local thermodynamic equilibrium (LTE) conditions."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "no undetected transitions over-predicted",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Second, no undetected transitions are over-predicted by the synthetic spectrum."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Moment maps and radial profile reconstruction",
+    "method": {
+     "value": "bettermoments zeroth moments within ±3.5 km/s; forward model of line profile to radial intensity with annuli",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "integrating over the velocity range of $\\pm3.5$ km s$^{-1}$ with respect to the source systemic velocity"
+      }
+     ]
+    },
+    "software": [
+     "bettermoments",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "vsys = 4.25 km/s; r0 = 3,5,7,9 au grids combined; smoothed by 0.1'' Gaussian",
+      "evidence": [
+       {
+        "loc": "Appendix 11",
+        "quote": "we employed four fits with different radial grid created with different starting radii ($r_0 = 3, 5, 7, 9$ au)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "midplane emission, local width 0.05 km/s",
+      "evidence": [
+       {
+        "loc": "Appendix 11",
+        "quote": "where 0.05 km s$^{-1}$ was used practically"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee MCMC with each radial intensity as free parameter",
+     "evidence": [
+      {
+       "loc": "Appendix 11",
+       "quote": "The actual fits were conducted by the MCMC algorithm implemented in the `emcee` package"
+      }
+     ]
+    },
+    "validation": {
+     "value": "compared to Band 6 radial profile",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "which is consistent with the higher-resolution Band 6 profile (cite: Tobin2023)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive column densities, Tex",
+    "method": {
+     "value": "Simultaneous LTE fit of all species, excluding tau>0.2 transitions, emitting annulus 0.1''–0.3''",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "The inner and outer radius of the emitting area are fixed to 0.1$''$ and 0.3$''$, respectively."
+      }
+     ]
+    },
+    "software": [
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "24 free parameters; 100 walkers, 15000 steps, 12000 burn-in",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "We run 100 walkers for 15000 steps, and the initial 12000 steps are discarded as burn-in."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, common Tex and line width, Lorentzian broadening gamma",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "an additional parameter $\\gamma$ for line broadening"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "affine-invariant MCMC (emcee); uncertainties 16th/84th percentiles",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We used the affine-invariant Markov Chain Monte Carlo (MCMC) algorithm implemented in the `emcee` Python package"
+      }
+     ]
+    },
+    "validation": {
+     "value": "tau threshold 0.4 gives columns lower by <=~2",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "the resulting column densities are lower by a factor of $\\sim2$ or less"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute abundance, isotopic and isomer ratios and compare",
+    "method": {
+     "value": "Column density ratios vs CH3OH, 12C/13C, D/H compared with IRAS 16293-2422, 67P/C-G",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "Figure [6](#fig:ratio_comparison) compares the column density ratios of COMs with respect to CH$_3$OH in the V883 Ori disk"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "ratios insensitive to absolute flux calibration",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "the column density ratios, from which we discuss the chemistry of COMs in the following sections, are not affected by the absolute flux calibration uncertainty."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.2.1.7",
+    "used_for": {
+     "value": "self-calibration, imaging, imfit, imcontsub",
+     "evidence": [
+      {
+       "loc": "2.2",
+       "quote": "Subsequent self-calibration and imaging were performed using the Common Astronomy Software Applications (cite: CASA) version 6.2.1.7."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian-corrected integrated spectra",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we use the `integrated_spectrum()` function implemented in the Python package `GoFish`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "zeroth moment maps",
+     "evidence": [
+      {
+       "loc": "3.2.1",
+       "quote": "These maps are created using `bettermoments` (cite: bettermoments)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC for spectral fit and radial profile",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We used the affine-invariant Markov Chain Monte Carlo (MCMC) algorithm implemented in the `emcee` Python package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Excitation temperature",
+    "value": "106.7",
+    "uncertainty": "+4.3/-3.8",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "The derived excitation temperature is $106.7_{-3.8}^{+4.3}$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH column density",
+    "value": "3.9e18",
+    "uncertainty": "+0.7/-0.6 e18",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "CH$_3$OH                    | $3.9_{-0.6}^{+0.7} \\times 10^{18}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCHO column density",
+    "value": "7.4e17",
+    "uncertainty": "±0.3e17",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "CH$_3$OCHO                  |"
+     }
+    ]
+   },
+   {
+    "quantity": "Common line width",
+    "value": "0.71",
+    "uncertainty": "+0.07/-0.05",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 3 notes",
+      "quote": "$0.71_{-0.05}^{+0.07}$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCHO/CH3O13CHO",
+    "value": "23",
+    "uncertainty": "±3",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "CH$_3$OCHO/CH$_3$O$^{13}$CHO | 23$_{-3}^{+3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OCHO/13CH3OCHO",
+    "value": "23",
+    "uncertainty": "+3/-2",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "CH$_3$OCHO/$^{13}$CH$_3$OCHO | 23$_{-2}^{+3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH2DOH/CH3OH (upper limit)",
+    "value": "0.0057",
+    "uncertainty": "+0.0018/-0.0015",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.4.2",
+      "quote": "We derived a CH$_2$DOH/CH$_3$OH ratio of $0.0057_{-0.0015}^{+0.0018}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2/OCS",
+    "value": "0.56",
+    "uncertainty": "+0.21/-0.20",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.6",
+      "quote": "The SO$_2$/OCS ratios are measured to be $0.56_{-0.20}^{+0.21}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3CHO/c-C2H4O",
+    "value": "9.2",
+    "uncertainty": "+1.2/-1.1",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "a CH$_3$CHO/$c$-C$_2$H$_4$O ratio of $9.2_{-1.1}^{+1.2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum deconvolved size",
+    "value": "0.23''x0.21''",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.2",
+      "quote": "obtained a deconvolved size of $0.23\\ensuremath{''}\\times0.21\\ensuremath{''}$ (P.A. $= 106\\ensuremath{^\\circ}$)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Ten oxygen-bearing COMs robustly identified; N-bearing COMs deficient",
+    "evidence": [
+     {
+      "loc": "4.5",
+      "quote": "nitrogen-bearing COMs seem to be deficient in the V883 Ori disk compared to those in protostellar envelopes."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the inner emission cavity persist in Band 3 where dust is fainter?",
+    "experiment": "Line profile forward modelling of Keplerian wings",
+    "result": "Radial profiles depressed inside ~40 au, peaking at ~50–60 au",
+    "finding": "Inner cavity likely exists in Band 3 (dust absorption and/or chemical destruction)",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "the inner emission cavity likely exists even in the Band 3 emission as well."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are COM abundances in the disk enhanced relative to protostellar envelopes?",
+    "experiment": "Column density ratios vs CH3OH",
+    "result": "Ratios higher than IRAS 16293-2422 by a factor >~5–10, similar to 67P",
+    "finding": "Efficient (re)formation of COMs in disks",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "We found higher abundance ratios of COMs in the V883 Ori disk compared to those in the warm envelopes of IRAS 16293-2422 by a factor of $\\gtrsim$ 5–10"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is 13C fractionated in disk COMs?",
+    "experiment": "12C/13C from isotopologue column densities",
+    "result": "~20–30 vs ISM ~69",
+    "finding": "Efficient 13C-fractionation of CO",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.4.1",
+      "quote": "The measured $^{12}$C/$^{13}$C ratios are all $\\sim$20–30"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are D/H ratios of COMs similar to IRAS 16293B?",
+    "experiment": "Deuterated/normal column density ratios",
+    "result": "Upper limits lower than IRAS 16293B",
+    "finding": "Possible destruction and reformation of COMs in disks",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.4.2",
+      "quote": "The upper limit of COM D/H ratios obtained in the V883 Ori disk are lower than the ratios in IRAS 16293B."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Band 3 has fainter dust continuum, allowing probing of the inner disk; more species and isotopologues",
+    "evidence": [
+     {
+      "loc": "1",
+      "quote": "This necessitates observations at longer wavelengths, where the dust continuum emission is generally expected to be fainter"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "JvM correction rejected in favor of image-plane continuum subtraction",
+     "evidence": [
+      {
+       "loc": "Appendix 7",
+       "quote": "we mitigate the JvM effect and recover correct flux scale as much as possible by employing the continuum subtraction on the image plane"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Emission only marginally resolved; midplane assumption; CH2DOH spectroscopy uncertain by ~factor 3",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "Although the uncertainties of the reconstructed radial intensity profiles are quite large"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Common Tex and emitting region assumed for all species despite marginal resolution",
+    "Several isotopologue ratios rely on tentative detections",
+    "Tau<0.2 cut and LTE slab model may bias columns",
+    "JvM epsilon ~0.28 makes statistical uncertainties possibly underestimated"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data acknowledged; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2021.1.00357.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Self-cal parameters",
+    "Line-free channels",
+    "MCMC priors",
+    "Custom LTE code not released",
+    "Image/cell size"
+   ],
+   "estimated_data_volume_inferred": "~50-200 GB raw for four executions, 11 SPWs",
+   "score_inferred": 3,
+   "score_reason": "Data and general recipe given, but custom code and several settings (priors, solints, channels) are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Custom LTE fit and radial-profile code unreleased, and several parameters missing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Bosman2021)",
+     "why": "radial profile reconstruction from line profiles"
+    },
+    {
+     "citation": "(cite: Czekala2021)",
+     "why": "JvM correction"
+    },
+    {
+     "citation": "(cite: Yamato2022)",
+     "why": "LTE spectral model formulation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Lee2019)",
+     "why": "Band 7 COM detections in V883 Ori"
+    },
+    {
+     "citation": "(cite: Tobin2023)",
+     "why": "Band 6 water and COM observations"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-PILS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-7f52d4919ee4dd4c3da7969091f9df8f",
+  "batch_id": "msgbatch_01NStQVmhFuPcZUGXVFrSWwc",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:59:54",
+  "usage": {
+   "input_tokens": 63875,
+   "output_tokens": 11032,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.119641,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 89,
+  "quotes_ok": 89,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 87,
+   "stated": 69,
+   "rate": 0.793
+  },
+  "evidence_ok": true
+ }
+}

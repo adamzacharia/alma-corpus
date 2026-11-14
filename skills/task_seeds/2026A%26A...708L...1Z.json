@@ -1,0 +1,399 @@
+{
+ "bibcode": "2026A&A...708L...1Z",
+ "title": "Benchmarking pre-main sequence stellar evolutionary tracks using disk-based dynamical stellar masses",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202558147",
+ "arxiv_id": "2603.03422",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation",
+  "stellar_physics"
+ ],
+ "question": "Compare disk-based dynamical stellar masses with pre-main sequence evolutionary model predictions on the HR diagram to benchmark their predictive power and underlying physics.",
+ "alma_project_codes": [
+  "2011.0.00526.S",
+  "2012.1.00688.S",
+  "2013.1.00395.S",
+  "2018.1.00564.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.1-0.3 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Parent sample of 37 disks in Upper Scorpius and ALMA observations",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "The parent sample comprises 37 disks in the Upper Scorpius region from (cite: Carpenter2025), for which (cite: Zallio_2026) measured dynamical stellar masses modeling ALMA Band 7 $^{12}$CO $J = 3-2$ visibilities."
+     }
+    ]
+   },
+   "citation": "(cite: Carpenter2025)"
+  },
+  {
+   "what": {
+    "value": "Dynamical stellar masses and disk sizes R_90% measured from ALMA Band 7 12CO J=3-2 visibilities",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "The parent sample comprises 37 disks in the Upper Scorpius region from (cite: Carpenter2025), for which (cite: Zallio_2026) measured dynamical stellar masses modeling ALMA Band 7 $^{12}$CO $J = 3-2$ visibilities."
+     },
+     {
+      "loc": "Uncertainties on the dynamical mass measurements due to inclination, stellar mass, and disk size",
+      "quote": "Then, we assign these uncertainties to our observations, as illustrated in Table 1, using the disk sizes reported in (cite: Zallio_2026)."
+     }
+    ]
+   },
+   "citation": "(cite: Zallio_2026)"
+  },
+  {
+   "what": {
+    "value": "Effective temperatures (Teff) and stellar luminosities (L*) from VLT/X-Shooter spectra",
+    "evidence": [
+     {
+      "loc": "Derivation of dynamical and evolutionary model–based stellar masses",
+      "quote": "In addition to these dynamical masses, we derive stellar masses from the HR diagram ($M_{\\star,\\text{HRD}}$) using the effective temperatures $(T_{\\text{eff}})$ and stellar luminosities $(L_\\star)$ presented in Empey et al. (in prep.) for different PMS evolutionary models."
+     }
+    ]
+   },
+   "citation": "Empey et al. (in prep.)"
+  },
+  {
+   "what": {
+    "value": "Pre-main sequence evolutionary tracks",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Specifically, we test the models of (cite: Baraffe2015), (cite: Feiden2016) (non-magnetic and magnetic), PARSEC v2.0 ((cite: Nguyen_2022)), (cite: Siess_2000), and SPOTS ((cite: Somers_2020), with different cold photospheric spot coverages)."
+     }
+    ]
+   },
+   "citation": "(cite: Baraffe2015), (cite: Feiden2016), (cite: Nguyen_2022), (cite: Siess_2000), (cite: Somers_2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select the target sample of Upper Scorpius disks",
+   "method": "Filter the 37 Upper Scorpius disks from (cite: Carpenter2025) and (cite: Zallio_2026) based on Gaia parallax precision, well-constrained rotational profiles, multiplicity, constraint on CO emitting height, consistency of dynamical mass, and availability of VLT/X-Shooter stellar properties.",
+   "software": [
+    "FRAPPE"
+   ],
+   "key_parameters": [
+    "Gaia parallax precision varpi/sigma(varpi) > 10; final sample of 20 sources"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Estimate and assign realistic uncertainties to dynamical stellar masses",
+   "method": "Generate a grid of mcfost radiative transfer models of 12CO J=3-2, transform them into synthetic ALMA visibilities using csalt, fit them with csalt parametric prescription A and emcee, and assign the mean statistical uncertainty per stellar mass and disk size bin (Table 1) to the observed dynamical masses from (cite: Zallio_2026).",
+   "software": [
+    "mcfost",
+    "csalt",
+    "emcee"
+   ],
+   "key_parameters": [
+    "M_star = 1, 0.5, 0.05 M_sun; inclination = 8, 30, 55 deg; R_c = 5, 20, 50 au; integration time ~180 s per disk"
+   ],
+   "assumptions": [
+    "Purely Keplerian rotation (including vertical height of optically thick 12CO layer); gas disk mass = 10^-2 M_star; dust disk mass = 10^-4 M_star"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive evolutionary model-based stellar masses and ages from the HR diagram",
+   "method": "Fit observed effective temperatures and stellar luminosities on the HR diagram across ten PMS evolutionary track grids using Bayesian inference in ysoisochrone, both without a mass prior and with a Gaussian stellar mass prior based on the dynamical mass.",
+   "software": [
+    "ysoisochrone",
+    "seaborn"
+   ],
+   "key_parameters": [
+    "10 evolutionary track grids: Baraffe+15, Feiden+16 (magnetic and non-magnetic), PARSEC v2.0, Siess+2000, and SPOTS (f = 0%, 17%, 34%, 51%, 85%)"
+   ],
+   "assumptions": [
+    "Feiden (2016) magnetic tracks for ages <= 1 Myr were corrected by interpolating data and removing numerical artifact outliers"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare dynamical masses and HR diagram masses across evolutionary models",
+   "method": "Compute the percentage of sources agreeing within 1-sigma (quadratic sum of uncertainties), the median mass ratio <R> = <M_star,dyn / M_star,HRD> for sources in 0.1 < M_star < 1.3 M_sun, and Spearman rank correlation coefficients between relative mass discrepancy and dynamical mass.",
+   "software": [],
+   "key_parameters": [
+    "Mass range 0.1 < M_star < 1.3 M_sun; agreement threshold +/- 1 sigma"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Agreement fraction with dynamical masses for SPOTS f=17% tracks (0.1-1.3 M_sun)",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Figs. 1 and 2 show that the best match with dynamical stellar masses is provided by the SPOTS pre-main sequence tracks with $f=17\\%$ cold spot coverage ($100\\%$ agreement within $\\pm1\\sigma$, where $\\sigma$ is the quadratic sum of the model and dynamical mass uncertainties)"
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for Baraffe (2015) and Feiden (2016) non-magnetic tracks",
+   "value": "93",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The tracks of (cite: Baraffe2015) and (cite: Feiden2016) non-magnetic tracks give almost-identical mass measurements, and the same percentage of agreement ($93\\%$), though both underestimate the dynamical stellar masses by $15\\%$ and $12\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for Feiden (2016) magnetic and SPOTS f=0% tracks",
+   "value": "87",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The SPOTS models with $f=0\\%$ behave similarly to the tracks of (cite: Baraffe2015) and (cite: Feiden2016) non-magnetic (see Fig. 1), and have a percentage of agreement of $87\\%$, similar to that of the (cite: Feiden2016) magnetic tracks."
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for Siess et al. (2000) tracks",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The tracks of (cite: Siess_2000) give an agreement of $80\\%$, worse than (cite: Baraffe2015) and (cite: Feiden2016), but better than those of PARSEC v2.0, and underestimate the dynamical stellar masses by $\\sim26\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for PARSEC v2.0 tracks",
+   "value": "53",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The evolutionary model-based stellar masses from the PARSEC v2.0 tracks show an agreement of $53\\%$ with the masses from disk rotation, lower than what is found for other tracks."
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for SPOTS f=51% tracks",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "When the stellar spot fraction increases (e.g., $f=51\\%$, $f=85\\%$; Fig. 2), the percentage of agreement decreases ($33\\%$ for $f=51\\%$, and $13\\%$ for $f=85\\%$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement fraction with dynamical masses for SPOTS f=85% tracks",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "When the stellar spot fraction increases (e.g., $f=51\\%$, $f=85\\%$; Fig. 2), the percentage of agreement decreases ($33\\%$ for $f=51\\%$, and $13\\%$ for $f=85\\%$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass underestimation by Baraffe (2015) tracks",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Those provided by the tracks of (cite: Baraffe2015), (cite: Feiden2016) non-magnetic, (cite: Siess_2000) and SPOTS with $f=0\\%$ underestimate them by $\\sim15\\%$, $\\sim12\\%$, $\\sim26\\%$, $\\sim10\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass underestimation by Feiden (2016) non-magnetic tracks",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Those provided by the tracks of (cite: Baraffe2015), (cite: Feiden2016) non-magnetic, (cite: Siess_2000) and SPOTS with $f=0\\%$ underestimate them by $\\sim15\\%$, $\\sim12\\%$, $\\sim26\\%$, $\\sim10\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass underestimation by Siess et al. (2000) tracks",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Those provided by the tracks of (cite: Baraffe2015), (cite: Feiden2016) non-magnetic, (cite: Siess_2000) and SPOTS with $f=0\\%$ underestimate them by $\\sim15\\%$, $\\sim12\\%$, $\\sim26\\%$, $\\sim10\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass underestimation by SPOTS f=0% tracks",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "Those provided by the tracks of (cite: Baraffe2015), (cite: Feiden2016) non-magnetic, (cite: Siess_2000) and SPOTS with $f=0\\%$ underestimate them by $\\sim15\\%$, $\\sim12\\%$, $\\sim26\\%$, $\\sim10\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass overestimation by Feiden (2016) magnetic tracks",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "On average, the HR diagram masses derived using the magnetic tracks of (cite: Feiden2016), PARSEC v2.0 ((cite: Nguyen_2022)), and SPOTS ((cite: Somers_2020)) with $f=34\\%$, $51\\%$, $85 \\%$ overestimate the dynamical masses by $\\sim20\\%$, $\\sim21\\%$, $\\sim20\\%$, $\\sim27\\%$, $\\sim32\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass overestimation by PARSEC v2.0 tracks",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "On average, the HR diagram masses derived using the magnetic tracks of (cite: Feiden2016), PARSEC v2.0 ((cite: Nguyen_2022)), and SPOTS ((cite: Somers_2020)) with $f=34\\%$, $51\\%$, $85 \\%$ overestimate the dynamical masses by $\\sim20\\%$, $\\sim21\\%$, $\\sim20\\%$, $\\sim27\\%$, $\\sim32\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass overestimation by SPOTS f=34% tracks",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "On average, the HR diagram masses derived using the magnetic tracks of (cite: Feiden2016), PARSEC v2.0 ((cite: Nguyen_2022)), and SPOTS ((cite: Somers_2020)) with $f=34\\%$, $51\\%$, $85 \\%$ overestimate the dynamical masses by $\\sim20\\%$, $\\sim21\\%$, $\\sim20\\%$, $\\sim27\\%$, $\\sim32\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass overestimation by SPOTS f=51% tracks",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "On average, the HR diagram masses derived using the magnetic tracks of (cite: Feiden2016), PARSEC v2.0 ((cite: Nguyen_2022)), and SPOTS ((cite: Somers_2020)) with $f=34\\%$, $51\\%$, $85 \\%$ overestimate the dynamical masses by $\\sim20\\%$, $\\sim21\\%$, $\\sim20\\%$, $\\sim27\\%$, $\\sim32\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Average mass overestimation by SPOTS f=85% tracks",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "On average, the HR diagram masses derived using the magnetic tracks of (cite: Feiden2016), PARSEC v2.0 ((cite: Nguyen_2022)), and SPOTS ((cite: Somers_2020)) with $f=34\\%$, $51\\%$, $85 \\%$ overestimate the dynamical masses by $\\sim20\\%$, $\\sim21\\%$, $\\sim20\\%$, $\\sim27\\%$, $\\sim32\\%$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median inferred age of Upper Scorpius sample without mass prior across 10 tracks",
+   "value": "6.5",
+   "uncertainty": "3.4",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Age distributions for different evolutionary tracks",
+     "quote": "The median age across the models is $\\sim6.5$ Myr, with a scatter of $\\sim3.4$ Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Median inferred age of Upper Scorpius sample with dynamical mass prior across 10 tracks",
+   "value": "6.8",
+   "uncertainty": "0.8",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "For our sample, we evaluate a median age of $6.8$ Myr, with a scatter of $0.8$ Myr across the ten evolutionary tracks considered."
+    }
+   ]
+  },
+  {
+   "quantity": "Reduction in age scatter across evolutionary tracks when using dynamical mass prior",
+   "value": "77",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "Finally, in Fig. 7, we show that when a prior on the stellar mass is considered for HR diagram fitting, the median inferred ages across different tracks become much more consistent, and the scatter among different evolutionary tracks reduces from $3.4$ Myr to $0.8$ Myr, an improvement $\\gtrsim77\\%$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact values of effective temperature (Teff) and stellar luminosity (L*) and their uncertainties for each target (from Empey et al., in prep.)",
+  "Exact disk sizes (R_90%) for each source (from Zallio et al. 2026) used to assign dynamical mass uncertainties via Table 1",
+  "Full parameters of the mcfost radiative transfer models (e.g., flaring index, scale height, temperature profile, turbulent velocity, CO abundance)",
+  "Details of the interpolation and outlier removal applied to the Feiden (2016) magnetic tracks for ages <= 1 Myr",
+  "Exact ALMA calibration and visibility preparation steps (inherited from Carpenter et al. 2025 and Zallio et al. 2026)"
+ ],
+ "missing_for_reproduction": [
+  "Table of Teff and L* (with uncertainties) from Empey et al. (in prep.), unless included in the GitHub repository",
+  "Disk sizes R_90% for individual targets from Zallio et al. (2026)",
+  "Detailed mcfost parameter files for the uncertainty simulation grid"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "The core HRD fitting and statistical comparison use open-source archived tools (ysoisochrone v1.3.3 on Zenodo) and a dedicated GitHub repository with Table 2 provided in full, though primary inputs (Teff, L* from Empey et al. in prep. and visibilities/fits from Zallio et al. 2026) are inherited from external/in-prep papers.",
+ "rediscovery_reason": "All derived stellar masses (Table 2), uncertainty assignment rules (Table 1), and statistical benchmarks (agreement percentages, median ratios, age scatter) are explicitly tabulated and the analysis code/data are hosted on GitHub and Zenodo.",
+ "source_card": "cards/2026A%26A...708L...1Z/sonnet/card.md"
+}

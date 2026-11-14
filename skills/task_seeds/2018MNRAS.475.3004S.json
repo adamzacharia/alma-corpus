@@ -1,0 +1,240 @@
+{
+ "bibcode": "2018MNRAS.475.3004S",
+ "title": "ALMA observation of the disruption of molecular gas in M87",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty047",
+ "arxiv_id": "1801.01264",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "agn_and_quasars"
+ ],
+ "question": "Is there molecular gas (CO 2-1) in the M87 filament southeast of the nucleus, and how does it relate to the AGN radio lobe and shock?",
+ "alma_project_codes": [
+  "2013.1.00862.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "12m antennae, 34-41 operational",
+  "angular_resolution": "0.7\"",
+  "sensitivity": "0.2 mJy/beam per 50 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Shock pressure map and Mach number >=1.2 from Chandra",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "report the presence of a shock with a Mach number of at least 1.2, driven by the expansion of the 6 cm radio lobe"
+     }
+    ]
+   },
+   "citation": "(cite: million2010b)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) to CO(1-0) flux density ratio of 3.2",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "a CO(2–1) to CO(1–0) flux density ratio of 3.2 (cite: david2014)"
+     }
+    ]
+   },
+   "citation": "(cite: david2014)"
+  },
+  {
+   "what": {
+    "value": "[CII] velocity and dispersion, [OIII]/Hbeta ratios",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "the \\[O iii\\]/H$\\beta$ emission line ratios reported by (cite: werner2013) show a strong decrease with radius"
+     }
+    ]
+   },
+   "citation": "(cite: werner2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce data and image CO(2-1) cube",
+   "method": "CASA reduction, uvcontsub, Briggs imaging, primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Masked-moment velocity and dispersion maps",
+   "method": "3D mask in position-velocity space on 10 km/s binned cube, keeping >3 sigma detections",
+   "software": [
+    "makeplots (Davis)"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas mass",
+   "method": "Mass formula from CO(2-1) integral with Galactic XCO and CO(2-1)/(1-0) ratio",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "XCO = 2e20 cm^-2/(K km/s); ratio 3.2; D_L = 16.1 Mpc; z=0.00436"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare CO and Halpha inside vs outside radio lobe",
+   "method": "Two 9x9\" regions; HST F660N Halpha fluxes; CO 3 sigma upper limit inside",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) total flux",
+   "value": "5.5e-18",
+   "uncertainty": "0.6e-18",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The total flux measured in the CO(2–1) line is $(5.5 \\pm 0.6) \\times 10^{-18}$ erg s$^{-1}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Emission integral S_CO dv",
+   "value": "0.56",
+   "uncertainty": "0.06",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$S_{\\rm CO}\\Delta\\nu = 0.56 \\pm 0.06$ Jy km s$^{-1}$ is the emission integral"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass",
+   "value": "4.7e5",
+   "uncertainty": "0.4e5",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$M_{\\rm H_2}=(4.7 \\pm 0.4) \\times 10^5 M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "LOS velocity",
+   "value": "-129",
+   "uncertainty": "3",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "line-of-sight (LOS) velocity of $v=-129\\pm3$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion",
+   "value": "27",
+   "uncertainty": "3",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "a narrow line width, $\\sigma=27\\pm3$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(2-1) 3 sigma upper limit, inner region",
+   "value": "1.3e-18",
+   "uncertainty": "not stated",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the $3\\sigma$ upper limit on the CO(2–1) flux from the inner region is $1.3\\times10^{-18}$ erg s$^{-1}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha flux inner region",
+   "value": "3.1e-14",
+   "uncertainty": "0.3e-14",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$(3.1\\pm0.3) \\times10^{-14}$ and $(2.5\\pm0.2) \\times 10^{-14}$ erg s$^{-1}$ cm$^{-2}$ nearer and further from the AGN, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Halpha flux outer region",
+   "value": "2.5e-14",
+   "uncertainty": "0.2e-14",
+   "units": "erg s^-1 cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$(3.1\\pm0.3) \\times10^{-14}$ and $(2.5\\pm0.2) \\times 10^{-14}$ erg s$^{-1}$ cm$^{-2}$ nearer and further from the AGN, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Time since shock passage (estimate)",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "we estimate that in this scenario 1.1 Myr have elapsed between the shock passage and the observed destruction of the molecular gas"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, deconvolver, cleaning threshold and mask",
+  "Line-free channel ranges for uvcontsub",
+  "Spectral window/channel setup details and rest frequency used",
+  "Whether the pipeline or manual calibration was used and flux scale uncertainty",
+  "Details of the masked-moment parameters (smoothing kernel) and the flux integration aperture",
+  "How flux error was derived",
+  "Details of HST Halpha reduction, [NII] and stellar light subtraction",
+  "Pointing coordinates of the ALMA field"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, mask, threshold)",
+  "Line-free channel selection",
+  "Flux aperture and error derivation",
+  "HST and VLA/Chandra reduction details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and main recipe are simple, but imaging and flux extraction details are missing.",
+ "rediscovery_reason": "Public data; CO flux, mass, velocity and dispersion are numeric and the recipe is short, though imaging details are missing.",
+ "source_card": "cards/2018MNRAS.475.3004S/sonnet/card.md"
+}

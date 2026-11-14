@@ -1,0 +1,462 @@
+{
+ "bibcode": "2024ApJ...971L..33K",
+ "title": "An HI-absorption-selected Cold Rotating Disk Galaxy at z ≈ 2.193",
+ "year": 2024,
+ "doi": "10.3847/2041-8213/ad65fe",
+ "arxiv_id": "2408.00850",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is the CO(3-2) emitting galaxy DLA-B1228g, associated with the z~2.1929 high-metallicity DLA towards PKS B1228-113, a cold rotating disk or a merger, and what are its kinematics and dynamical mass?",
+ "alma_project_codes": [
+  "2019.1.00373.S"
+ ],
+ "data": {
+  "bands": "Band 3 (redshifted CO(3-2))",
+  "arrays": "not stated",
+  "angular_resolution": "Final cube beam 0.32'' x 0.24'' (PA = -74.4 deg); final continuum image beam 0.29'' x 0.22''",
+  "sensitivity": "Continuum RMS 15 uJy/beam; cube RMS 0.15 mJy/beam per 35 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Original low-resolution ALMA CO(3-2) integrated flux density of 0.726 +/- 0.031 Jy km/s",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "is consistent with the value of $(0.726 \\pm 0.031)$ Jy km s$^{-1}$ obtained from the original low-resolution ALMA CO(3–2) spectrum (cite: Neeleman18; Kanekar20),"
+     }
+    ]
+   },
+   "citation": "Neeleman et al. 2018 (cite: Neeleman18); Kanekar et al. 2020 (cite: Kanekar20)"
+  },
+  {
+   "what": {
+    "value": "VLT SINFONI Halpha image of the field",
+    "evidence": [
+     {
+      "loc": "Stellar properties of DLA-B1228g",
+      "quote": "a Very Large Telescope (VLT) SINFONI H$\\alpha$ image (cite: Neeleman18)."
+     }
+    ]
+   },
+   "citation": "Neeleman et al. 2018 (cite: Neeleman18)"
+  },
+  {
+   "what": {
+    "value": "HST WFC3 F105W detection and position of an object near the field",
+    "evidence": [
+     {
+      "loc": "Stellar properties of DLA-B1228g",
+      "quote": "(cite: Kaur22b) presented an HST-WFC3 image of the field of DLA-B1228g in the F105W filter"
+     }
+    ]
+   },
+   "citation": "Kaur et al. 2022a (cite: Kaur22b)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass from VLA CO(1-0), (1.0 +/- 0.2)e11 x (alpha_CO/4.36) Msun",
+    "evidence": [
+     {
+      "loc": "The dynamical mass of DLA-B1228g",
+      "quote": "For DLA-B1228g, (cite: Kaur22b) used VLA CO(1–0) spectroscopy to obtain a molecular gas mass of"
+     }
+    ]
+   },
+   "citation": "Kaur et al. 2022a (cite: Kaur22b)"
+  },
+  {
+   "what": {
+    "value": "Total SFR from sub-mm continuum of ~100 Msun/yr",
+    "evidence": [
+     {
+      "loc": "Stellar properties of DLA-B1228g",
+      "quote": "the total SFR of the galaxy measured from the sub-mm continuum, $\\approx 100 \\, \\textrm{M}_\\odot$ yr$^{-1}$ (cite: Neeleman18; Klitsch22)"
+     }
+    ]
+   },
+   "citation": "Neeleman et al. 2018 (cite: Neeleman18); Klitsch et al. 2022 (cite: Klitsch22)"
+  },
+  {
+   "what": {
+    "value": "DLA metallicity of -0.22",
+    "evidence": [
+     {
+      "loc": "Can the CO Kinematics be explained by a Major Merger?",
+      "quote": "In passing, we note that the DLA metallicity of $-0.22$ (cite: Akerman05; Neeleman18)"
+     }
+    ]
+   },
+   "citation": "Akerman et al. 2005 (cite: Akerman05); Neeleman et al. 2018 (cite: Neeleman18)"
+  },
+  {
+   "what": {
+    "value": "Local HI mass-size relation used to estimate HI disk diameter",
+    "evidence": [
+     {
+      "loc": "The z ≈ 2.1929 DLA: Disk or CGM?",
+      "quote": "In the local Universe, the Hi diameter of a galaxy of a given Hi mass can be obtained from the Hi mass-size relation (cite: Broeils97; Wang16)."
+     }
+    ]
+   },
+   "citation": "Broeils & Rhee 1997 (cite: Broeils97); Wang et al. 2016 (cite: Wang16)"
+  },
+  {
+   "what": {
+    "value": "Atomic gas makes up ~70% of baryonic mass of star-forming galaxies at z ~ 1.3",
+    "evidence": [
+     {
+      "loc": "The z ≈ 2.1929 DLA: Disk or CGM?",
+      "quote": "In fact, atomic gas has been shown to make up $\\approx 70$% of the baryonic mass of star-forming galaxies at $z \\approx 1.3$ (cite: Chowdhury22c)."
+     }
+    ]
+   },
+   "citation": "Chowdhury et al. 2022a (cite: Chowdhury22c)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate the visibilities",
+   "method": "ALMA pipeline calibration in CASA, manual flagging, then three phase-only and one amplitude-and-phase self-calibration rounds on the QSO continuum",
+   "software": [
+    "CASA",
+    "gaincalR"
+   ],
+   "key_parameters": [
+    "Self-cal continuum imaging with Briggs weighting, robust = -0.5",
+    "Antenna-based gains measured with gaincalR"
+   ],
+   "assumptions": [
+    "The bright mm QSO PKS B1228-113 in the field allows self-calibration of the target field"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Make continuum-subtracted CO(3-2) cubes and choose the final cube",
+   "method": "Apply self-cal gains to the full-resolution CO visibilities, subtract continuum, and make tclean cubes at several velocity resolutions and robust values; pick robust +1 at 35 km/s for modelling",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "Clean threshold 0.5 sigma (per-channel RMS); square mask ~2.5'' x 2.5''",
+    "Final cube: robust +1, 35 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure integrated CO(3-2) flux and size",
+   "method": "Single-component 2-D Gaussian fit with imfit to the velocity-integrated image",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Velocity range -350 to +525 km/s for the integrated image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive velocity field and position-velocity slice",
+   "method": "Fit a Gaussian to the spectrum at each pixel with qubefit and use the mean as velocity; blank below 3 sigma integrated flux; take a PV slice along the major axis from the kinematic model",
+   "software": [
+    "qubefit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit a rotating thin-disk kinematic model",
+   "method": "Bayesian MCMC fit with qubefit of an infinitesimally thin exponential disk with constant rotation velocity and dispersion, convolved with the synthesized beam and compared to the cube",
+   "software": [
+    "qubefit"
+   ],
+   "key_parameters": [
+    "Nine free parameters: centre coordinates, redshift, inclination, PA, v_rot, sigma_v, scale length r_d, peak intensity I_0",
+    "400,000 MCMC chains"
+   ],
+   "assumptions": [
+    "Exponential intensity profile I(r) = I_0 exp(-r/r_d), infinitesimally thin disk",
+    "Rotation velocity and velocity dispersion constant across the disk"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive the dynamical mass",
+   "method": "Spherical-mass formula M_dyn = v^2 R / G with v_circ ~ v_rot, evaluated within R = 2 R_e, with R_e = 1.678 r_d",
+   "software": [],
+   "key_parameters": [
+    "R_e = 3.02 +/- 0.17 kpc; R = 2R_e = 6.04 +/- 0.34 kpc"
+   ],
+   "assumptions": [
+    "Velocity dispersion term neglected: v_circ ~ v_rot = 328 +/- 7 km/s (rotation-dominated)",
+    "Spherical mass distribution; may overestimate by ~20% if mass is disk-like"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Measure HST stellar emission and SFR limit",
+   "method": "Combine HST WFC3 exposures with AstroDrizzle, align to Gaia DR3 with TweakReg, measure F160W flux in a Kron elliptical aperture, derive an SFR upper limit from the F105W non-detection",
+   "software": [
+    "AstroDrizzle",
+    "TweakReg"
+   ],
+   "key_parameters": [
+    "F160W emission area 112 pixels (radius 0.2 arcsec); 2 sigma F105W limit AB 26.5"
+   ],
+   "assumptions": [
+    "Chabrier IMF and local NUV luminosity-SFR relation for the unobscured SFR limit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(3-2) integrated line flux density",
+   "value": "0.73",
+   "uncertainty": "0.12",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The CO(3–2) emission has an integrated line flux density of $(0.73 \\pm 0.12)$ Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size of CO(3-2) emission (2-D Gaussian)",
+   "value": "0.78'' x 0.18'' (6.4 kpc x 1.5 kpc)",
+   "uncertainty": "0.15'' and 0.07''",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The 2-D Gaussian fit to the CO(3–2) emission yields a deconvolved size of $(0.78\\ensuremath{''} \\pm 0.15\\ensuremath{''}) \\times (0.18\\ensuremath{''} \\pm 0.07\\ensuremath{''})$, i.e. a physical size of $\\approx 6.4 \\, {\\rm kpc} \\times 1.5 \\, {\\rm kpc}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux density of PKS B1228-113 in the final continuum image",
+   "value": "24.85",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA Observations and Data Analysis",
+     "quote": "PKS B1228-113 has a flux density of $24.85 \\pm 0.02$ mJy in this image."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation velocity v_rot",
+   "value": "328",
+   "uncertainty": "7",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Kinematic modelling of DLA-B1228g",
+     "quote": "We obtain a rotation velocity of $v_{rot} = 328\\pm7$ km s$^{-1}$, and a velocity dispersion of $\\sigma_{v} = 62\\pm7$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity dispersion sigma_v",
+   "value": "62",
+   "uncertainty": "7",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Kinematic modelling of DLA-B1228g",
+     "quote": "We obtain a rotation velocity of $v_{rot} = 328\\pm7$ km s$^{-1}$, and a velocity dispersion of $\\sigma_{v} = 62\\pm7$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "v_rot / sigma_v",
+   "value": "5.3",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Kinematic modelling of DLA-B1228g",
+     "quote": "the kinematic modelling yields the high ratio $v_{rot}/\\sigma_v = 5.3\\pm0.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxy redshift (kinematic model)",
+   "value": "2.19326",
+   "uncertainty": "0.00007",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$2.19326 \\pm 0.00007$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "66.4",
+   "uncertainty": "2.2",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$66.4\\pm2.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "305.2",
+   "uncertainty": "1.4",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$305.2\\pm1.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity I_0",
+   "value": "3.9",
+   "uncertainty": "+0.7/-0.5",
+   "units": "mJy/beam",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$3.9^{+0.7}_{-0.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk scale length r_d",
+   "value": "1.8",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The dynamical mass of DLA-B1228g",
+     "quote": "For DLA-B1228g, $r_d = 1.8 \\pm 0.1$ kpc, implying an effective radius of $R_e = 3.02 \\pm 0.17$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Reduced chi-square of thin-disk fit",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Kinematic modelling of DLA-B1228g",
+     "quote": "The reduced chi-square of the fit is 1.2, consistent with a good fit."
+    }
+   ]
+  },
+  {
+   "quantity": "Effective radius R_e",
+   "value": "3.02",
+   "uncertainty": "0.17",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The dynamical mass of DLA-B1228g",
+     "quote": "implying an effective radius of $R_e = 3.02 \\pm 0.17$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within R = 6.04 kpc",
+   "value": "1.5e11",
+   "uncertainty": "0.1e11 (fit error only)",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The dynamical mass of DLA-B1228g",
+     "quote": "We obtain a dynamical mass of $(1.5 \\pm 0.1) \\times 10^{11} \\, \\textrm{M}_\\odot$ for DLA-B1228g, within the radius $R = 6.04$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "F160W AB magnitude",
+   "value": "24.5",
+   "uncertainty": "0.1",
+   "units": "AB mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The source has an F160W AB magnitude of $24.5 \\pm0.1$, measured over an elliptical aperture with the Kron radius (cite: Kron80)."
+    }
+   ]
+  },
+  {
+   "quantity": "Offset between F160W centroid and CO kinematic centre",
+   "value": "~0.2'' (~1.5 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "at an offset of $\\approx 0.2\\ensuremath{''}$ (i.e. $\\approx 1.5$ kpc) from the kinematic centre of the CO(3–2) emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on unobscured SFR from F105W",
+   "value": "1.3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Stellar properties of DLA-B1228g",
+     "quote": "This yields an upper limit on the unobscured SFR of $\\approx 1.3~\\textrm{M}_\\odot$ yr$^{-1}$, assuming a Chabrier initial mass function (cite: Chabrier03) and using the local relation between NUV luminosity and the SFR (cite: Kennicutt12)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and ALMA pipeline version used for calibration (only 'casa22; Hunter23' cited)",
+  "Flux, bandpass and phase calibrators and the flux scale uncertainty",
+  "Spectral averaging used for self-calibration, self-calibration solution intervals, and gaincalR settings",
+  "Line-free channels / velocity range used for continuum subtraction and the continuum model, and the rest frequency adopted for CO(3-2)",
+  "tclean deconvolver, gridder, cell size, image size, niter and mask details beyond the 2.5'' x 2.5'' square",
+  "Primary-beam correction treatment for the cube and the QSO-centred pointing",
+  "qubefit priors, likelihood form, number of walkers/steps, burn-in, and how the fit was run on the 35 km/s cube (400,000 'chains' is not defined)",
+  "Exact procedure for the PV slice and the Gaussian-per-pixel velocity and dispersion maps (Figure 4)",
+  "HST photometry aperture details and reduction settings beyond drizzle scale",
+  "Stellar mass and HI mass of the galaxy are not measured, so baryon dominance rests on the CO(1-0) gas mass and an assumed alpha_CO"
+ ],
+ "missing_for_reproduction": [
+  "Calibrator and pipeline/CASA version details",
+  "Self-calibration solution intervals and spectral averaging",
+  "Line-free channels and rest frequency used for continuum subtraction",
+  "qubefit priors, walker/step settings and convergence criteria",
+  "tclean cell/image size and deconvolver choices"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and a clear tclean plus qubefit recipe with numeric results, but calibrators, CASA version, qubefit priors and line-free channels are not given.",
+ "rediscovery_reason": "Data are public, imaging parameters (robust +1, 35 km/s, 0.5 sigma threshold) and the thin-disk model are specified, and the main results (v_rot, sigma_v, M_dyn) are numeric; remaining gaps are fit-setup details.",
+ "source_card": "cards/2024ApJ...971L..33K/sonnet/card.md"
+}

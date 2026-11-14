@@ -1,0 +1,1106 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...644A.119P",
+  "title": "ALMA chemical survey of disk-outflow sources in Taurus (ALMA-DOT). III. The interplay between gas and dust in the protoplanetary disk of DG Tau",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Podio, L.",
+  "n_authors": 12,
+  "arxiv_id": "2011.01081",
+  "doi": "10.1051/0004-6361/202038600",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00846.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "In this paper, we present ALMA Cycle 4 observations of CS and CN molecules in the disk of DG Tau at an unprecedented resolution of $\\sim 0.15\\ensuremath{''}$, or $\\sim 18$ au"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "DG Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "121 ± 2 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "One of the sources targeted in the context of ALMA-DOT is the T Tauri star DG Tau ($d=121\\pm2$ pc, (cite: gaia16; gaia18))."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (gaia16; gaia18)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "One of the sources targeted in the context of ALMA-DOT is the T Tauri star DG Tau ($d=121\\pm2$ pc, (cite: gaia16; gaia18))."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the distribution and abundance of H2CO, CS and CN in the DG Tau protoplanetary disk, and how do they compare with the dust distribution?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to characterize the distribution and abundance of molecules in the protoplanetary disk of DG Tau and to compare them with its dust distribution."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00846.S",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "(project 2016.1.00846.S, PI: L. Podio)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "12 high-resolution (0.122 MHz) SPWs plus one lower resolution (0.977 MHz) continuum SPW also covering CS 5-4",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The correlator setup consists of 12 high-resolution (0.122 MHz) spectral windows (SPWs)"
+     },
+     {
+      "loc": "2.1 Observations",
+      "quote": "one lower resolution spectral window (0.977 MHz) for the continuum also covering the CS $5-4$ line"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "o-H2CO",
+     "transition": "3(1,2)-2(1,1)",
+     "rest_frequency": "225697.775 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "o-H$_2$CO $3_{1,2}-2_{1,1}$ | 225697.775"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "5-4",
+     "rest_frequency": "244935.557 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CS $5-4$ | 244935.557"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "2-1 hyperfine components",
+     "rest_frequency": "226874.1908 MHz (J=5/2-3/2, F=5/2-3/2)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "CN $2-1$, J=5/2-3/2, F=5/2-3/2   | 226874.1908"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA Cycle 4 observations",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "ALMA observations of DG Tau were performed during Cycle 4 in August 2017"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "17 m to 3.7 km",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "with baselines ranging from 17 m to 3.7 km"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~0.15 arcsec (~18 au)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "at an unprecedented resolution of $\\sim 0.15\\ensuremath{''}$, or $\\sim 18$ au"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 0.12 mJy/beam; line rms 0.6-1.7 mJy/beam per channel",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The continuum image has an r.m.s. of $0.12$ mJy/beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "August 2017",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "performed during Cycle 4 in August 2017"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI L. Podio",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper uses ALMA data from project 2016.1.00846.S (PI: L. Podio)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "ALMA 0.87 mm polarimetric map (Bacciotti et al. 2018)",
+     "provided": {
+      "value": "0.87 mm continuum/polarization image used for unsharp masking and comparison",
+      "evidence": [
+       {
+        "loc": "3.2 Dust substructures",
+        "quote": "as well as to that presented by (cite: bacciotti18) at 0.87 mm"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Molecular parameters and partition functions from CDMS",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Molecular parameters from the CDMS database (cite: muller01)."
+       }
+      ]
+     },
+     "citation": "(cite: muller01)"
+    },
+    {
+     "what": {
+      "value": "H2CO ortho/para ratio used for total H2CO column",
+      "evidence": [
+       {
+        "loc": "3.3 Molecular column density",
+        "quote": "based on the o/p ratio estimated by (cite: guzman18a)"
+       }
+      ]
+     },
+     "citation": "(cite: guzman18a)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 2.3 cm2/g at 1.3 mm",
+      "evidence": [
+       {
+        "loc": "4.2 The interplay of gas and dust",
+        "quote": "is assumed to be a global 2.3 $\\rm cm^2\\,g^{-1}$ (cite: beckwith90)"
+       }
+      ]
+     },
+     "citation": "(cite: beckwith90)"
+    },
+    {
+     "what": {
+      "value": "CO snowline ~30 au from ProDiMo disk model",
+      "evidence": [
+       {
+        "loc": "4.2 The interplay of gas and dust",
+        "quote": "at $R_{\\rm CO} \\sim 30$ au, as computed by the thermo-chemical disk model ProDiMo (cite: podio13)"
+       }
+      ]
+     },
+     "citation": "(cite: podio13)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline, standard procedures",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Data reduction was carried out following standard procedures using the ALMA pipeline in CASA 4.7.2."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "using the ALMA pipeline in CASA 4.7.2"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0238+1636 and J0510+1800",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The flux calibration was performed using the quasars J0238+1636 and J0510+1800"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10%",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "obtaining an accuracy of $\\sim 10\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Self-cal on continuum using line-free channels; phase solutions applied to continuum-subtracted SPWs",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Self-calibration was performed on the source continuum emission by combining a selection of line-free channels and applying the phase-solutions to the continuum-subtracted SPWs."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Continuum images and spectral cubes were produced with \"tclean\""
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs parameter 0.5",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "and a Briggs parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "interactive mask until residuals show no appreciable signal",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "using an interactive mask on the visible signal until the residuals show no appreciable signal"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum level estimated from line-free channels adjacent to lines",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The continuum subtraction is performed by estimating the continuum level from the frequency range adjacent to the targeted lines"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "H2CO 0.17x0.13 arcsec; CS 0.13x0.10; CN 0.14x0.12",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$0.13\\ensuremath{''} \\times 0.10\\ensuremath{''}$ ($-9.6\\ensuremath{^\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "continuum 0.12 mJy/beam; lines 0.6-1.7 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "The continuum image has an r.m.s. of $0.12$ mJy/beam."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Column density procedure same as for H2CO",
+      "evidence": [
+       {
+        "loc": "3.3 Molecular column density",
+        "quote": "Here, we followed the same procedure to constrain the column density of CS and CN."
+       }
+      ]
+     },
+     "from_reference": "(cite: podio19)"
+    },
+    {
+     "what": {
+      "value": "Disk ring definition 0.33-0.75 arcsec used for integration",
+      "evidence": [
+       {
+        "loc": "3.3 Molecular column density",
+        "quote": "We integrated the relative emission over the same area as the H$_2$CO (a circular ring extending from $0.33\\ensuremath{''}$ to $0.75\\ensuremath{''}$)"
+       }
+      ]
+     },
+     "from_reference": "(cite: podio19)"
+    },
+    {
+     "what": {
+      "value": "Unsharp masking approach (divide by local variance, subtract smoothed image)",
+      "evidence": [
+       {
+        "loc": "3.2 Dust substructures",
+        "quote": "Similarly to (cite: garufi16), here we first divided the original image by the local variance in each pixel and then subtracted the image smoothed by 60 mas."
+       }
+      ]
+     },
+     "from_reference": "(cite: garufi16)"
+    },
+    {
+     "what": {
+      "value": "Exclusion of dust opacity as cause of inner depression",
+      "evidence": [
+       {
+        "loc": "4.1 The origin of ring-like emission",
+        "quote": "Following (cite: podio19) we exclude that the depression in the H$_2$CO and CS emission is due to dust opacity for $r>20$ au."
+       }
+      ]
+     },
+     "from_reference": "(cite: podio19)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for continuum subtraction and self-calibration",
+    "Self-calibration solution intervals and number of iterations",
+    "tclean cell size, image size, clean threshold, and niter",
+    "Spectral cube channel binning/velocity resolution details beyond Table 1",
+    "Exact phase center/coordinates of DG Tau",
+    "Exact LTE column-density conversion formulas and partition function details",
+    "Procedure for unsharp-masking variance window size",
+    "Gaussian fit method details for ring peak positions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image data",
+    "method": {
+     "value": "ALMA pipeline calibration, self-calibration on continuum, tclean imaging and continuum subtraction",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Data reduction was carried out following standard procedures using the ALMA pipeline in CASA 4.7.2."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "tclean"
+    ],
+    "key_parameters": [
+     {
+      "value": "Briggs robust 0.5",
+      "evidence": [
+       {
+        "loc": "2.1 Observations",
+        "quote": "and a Briggs parameter of 0.5"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make moment maps and radial profiles",
+    "method": {
+     "value": "Moment-0 integrated over Vsys ±3 km/s with 3σ clipping (none for CN); azimuthal averaging of unclipped moment-0 after deprojection",
+     "evidence": [
+      {
+       "loc": "2.2 Data products",
+       "quote": "The radial intensity profiles of the lines and of the 1.3 mm continuum emission are obtained by azimuthally averaging the unclipped moment-0 maps after deprojecting for the disk inclination"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Vsys = +6.24 km/s; PA=135 deg, i=35 deg",
+      "evidence": [
+       {
+        "loc": "2.2 Data products",
+        "quote": "$V_{\\rm sys} = +6.24$ km s$^{-1}$"
+       },
+       {
+        "loc": "Footnote 1",
+        "quote": "We obtain PA$=135\\ensuremath{^\\circ}$ and i$=35\\ensuremath{^\\circ}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fit to peak of radial profile; position uncertainty ~1/5 of beam",
+     "evidence": [
+      {
+       "loc": "3.1 Spatial distribution",
+       "quote": "the position of the intensity peak determined by Gaussian fitting the peak profile is affected by an uncertainty of approximately one-fifth of the nominal resolution imposed by the beam"
+      }
+     ]
+    },
+    "validation": {
+     "value": "10 au offset between H2CO and CS peaks exceeds position uncertainty",
+     "evidence": [
+      {
+       "loc": "3.1 Spatial distribution",
+       "quote": "Therefore, the radial offset between the H$_2$CO and CS emission peaks is real and not due to a resolution effect."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Find dust substructure",
+    "method": {
+     "value": "Unsharp masking of 1.3 mm and 0.87 mm continuum images",
+     "evidence": [
+      {
+       "loc": "3.2 Dust substructures",
+       "quote": "we applied an unsharp masking filter to the continuum image at 1.3 mm as well as to that presented by (cite: bacciotti18) at 0.87 mm"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "smoothing 60 mas",
+      "evidence": [
+       {
+        "loc": "3.2 Dust substructures",
+        "quote": "then subtracted the image smoothed by 60 mas"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with second derivative of intensity profile from Podio et al. 2019 (38-44.5 au)",
+     "evidence": [
+      {
+       "loc": "3.2 Dust substructures",
+       "quote": "is between 38 and 44.5 au, in perfect agreement with the position of the ring revealed by applying unsharp masking"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive molecular column densities",
+    "method": {
+     "value": "Ring-integrated flux (0.33-0.75 arcsec) converted to column density assuming LTE and optically thin emission with CDMS parameters",
+     "evidence": [
+      {
+       "loc": "3.3 Molecular column density",
+       "quote": "converted this integrated flux into column density assuming local thermodynamic equilibrium (LTE) and optically thin emission"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Tex = TK = 20-100 K",
+      "evidence": [
+       {
+        "loc": "3.3 Molecular column density",
+        "quote": "compute the column density of H$_2$CO, CS, and CN for $T_{\\rm ex} = T_{\\rm K} = 20-100$ K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, optically thin, o/p ratio of H2CO from Guzman+18",
+      "evidence": [
+       {
+        "loc": "3.3 Molecular column density",
+        "quote": "based on the o/p ratio estimated by (cite: guzman18a)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Brightness temperature ~1.5 K well below gas temperature, so lines likely optically thin; may be underestimated by a factor of a few",
+     "evidence": [
+      {
+       "loc": "3.3 Molecular column density",
+       "quote": "Thus, we conclude that the observed lines are likely optically thin."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Estimate dust mass of disk and ring",
+    "method": {
+     "value": "Optically thin dust mass from 1.3 mm flux",
+     "evidence": [
+      {
+       "loc": "4.2 The interplay of gas and dust",
+       "quote": "The dust mass of disk and ring can be obtained from the aforementioned fluxes in the assumption of optically thin emission"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Disk flux 0.29 Jy, ring flux 0.04 Jy",
+      "evidence": [
+       {
+        "loc": "4.2 The interplay of gas and dust",
+        "quote": "The flux integrated over this region is 0.29 Jy whereas the ring flux amounts to 0.04 Jy."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "kappa(1.3mm)=2.3 cm2/g, Tdust=20 K, d=121 pc",
+      "evidence": [
+       {
+        "loc": "4.2 The interplay of gas and dust",
+        "quote": "Planck function $B_{\\lambda}(T_{\\rm dust})$ is calculated from an overall dust temperature $T_{\\rm dust}$ of 20 K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit to observed emission gives disk major axis 0.45 arcsec and i=35 deg",
+     "evidence": [
+      {
+       "loc": "4.2 The interplay of gas and dust",
+       "quote": "A Gaussian fit to the observed emission yields a disk major axis of $0.45\\ensuremath{''}$ and a disk inclination $i$ of 35$\\ensuremath{^\\circ}$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "ALMA pipeline calibration and imaging",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "using the ALMA pipeline in CASA 4.7.2"
+      }
+     ]
+    }
+   },
+   {
+    "name": "tclean",
+    "version": "not stated",
+    "used_for": {
+     "value": "continuum images and spectral cubes",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Continuum images and spectral cubes were produced with \"tclean\""
+      }
+     ]
+    }
+   },
+   {
+    "name": "ProDiMo",
+    "version": "not stated",
+    "used_for": {
+     "value": "CO snowline location from literature model (Podio+13)",
+     "evidence": [
+      {
+       "loc": "4.2 The interplay of gas and dust",
+       "quote": "as computed by the thermo-chemical disk model ProDiMo (cite: podio13)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H2CO ring emission peak radius",
+    "value": "~60",
+    "uncertainty": "~3.6 au",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Spatial distribution",
+      "quote": "the H$_2$CO emission peaks at $\\sim 60$ au and extends out to $\\sim 120$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "CS ring emission peak radius",
+    "value": "~70",
+    "uncertainty": "~3 au",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Spatial distribution",
+      "quote": "while the CS emission peaks at $\\sim 70$ au and extends out to $\\sim 130$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "CN emission peak radius",
+    "value": "~80",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Spatial distribution",
+      "quote": "with a peak at $\\sim 80$ au and extending out to $\\sim 500$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "Total H2CO column density",
+    "value": "2.4-8.6e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Molecular column density",
+      "quote": "a total column density of $2.4-8.6 \\times 10^{13}$ cm$^{-2}$ for H$_2$CO"
+     }
+    ]
+   },
+   {
+    "quantity": "CS column density",
+    "value": "1.7-2.5e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Molecular column density",
+      "quote": "and of $1.7 - 2.5 \\times 10^{13}$ cm$^{-2}$ for CS"
+     }
+    ]
+   },
+   {
+    "quantity": "CN column density",
+    "value": "1.9-4.7e13",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Molecular column density",
+      "quote": "a column density of $1.9 - 4.7\\times 10^{13}$ cm$^{-2}$ is estimated"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust ring radius from unsharp masking",
+    "value": "~40",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Dust substructures",
+      "quote": "This technique revealed a ring at $\\sim40$ au in the continuum maps at 0.87 mm and at 1.3 mm"
+     }
+    ]
+   },
+   {
+    "quantity": "Total dust mass",
+    "value": "~120",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 The interplay of gas and dust",
+      "quote": "the total dust mass is $\\sim 120$ M$_{\\oplus}$ and the ring dust mass is $\\approx16\\,{\\rm M_{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Ring dust mass",
+    "value": "~16",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2 The interplay of gas and dust",
+      "quote": "the total dust mass is $\\sim 120$ M$_{\\oplus}$ and the ring dust mass is $\\approx16\\,{\\rm M_{\\oplus}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak brightness temperature of H2CO and CS ring spectra",
+    "value": "~1.5",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Molecular column density",
+      "quote": "the intensity peak of the H$_2$CO $3_{1,2}-2_{1,1}$ and CS $5-4$ integrated spectra is T$_{\\rm B} \\sim 1.5$ K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "H2CO and CS emission come from a disk ring at the edge of the 1.3 mm continuum; CS is displaced outward by ~10 au",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Both H$_2$CO and CS emission originate from a disk ring located at the edge of the 1.3 mm dust continuum."
+     }
+    ]
+   },
+   {
+    "value": "CN arises from an outer, more extended disk/envelope region",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "CN originates from an outermost and more extended disk/envelope region"
+     }
+    ]
+   },
+   {
+    "value": "CS also traces streams possibly accreting onto the disk",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "while CS also probes two streams of material possibly accreting onto the disk"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do H2CO and CS trace the same disk region, linked chemically?",
+    "experiment": "Compare azimuthally averaged radial profiles of the lines",
+    "result": "Both are rings at the mm continuum edge, with CS peak ~10 au further out",
+    "finding": "Molecules are co-spatial and likely chemically linked",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our finding that the CS and H$_2$CO emission is co-spatial in the disk suggests that the two molecules are chemically linked."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there dust substructure related to molecular rings?",
+    "experiment": "Unsharp masking of 1.3 mm and 0.87 mm continuum",
+    "result": "Ring at ~40 au, just outside CO snowline (~30 au), with ~10% flux enhancement",
+    "finding": "Possible change in dust properties outside the CO snowline linked to molecular emission and polarization change",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Unsharp masking reveals a ring of enhanced dust emission at $\\sim 40$ au, which is located just outside the CO snowline ($\\sim 30$ au)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Where does CN emission originate?",
+    "experiment": "Channel maps, radial profile, and spectra integrated over ring and 3 arcsec",
+    "result": "CN barely detected, peak ~80 au extending to ~500 au; spectra affected by envelope",
+    "finding": "CN is outside the dusty disk and likely largely from the envelope",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.3 The chemical origin of detected molecules",
+      "quote": "the detected CN emission is likely to originate mostly from the circumstellar envelope, and only in small part from the UV irradiated outer disk layers"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Unsharp masking used to highlight possible dust substructures",
+    "evidence": [
+     {
+      "loc": "3.2 Dust substructures",
+      "quote": "To highlight the possible presence of dust substructures, we applied an unsharp masking filter"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Dust opacity rejected as the cause of the inner depression for r>20 au",
+     "evidence": [
+      {
+       "loc": "4.1 The origin of ring-like emission",
+       "quote": "we exclude that the depression in the H$_2$CO and CS emission is due to dust opacity for $r>20$ au"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Column densities may be underestimated by a factor of a few if lines are mildly optically thick",
+     "evidence": [
+      {
+       "loc": "3.3 Molecular column density",
+       "quote": "our estimates of the column densities may also be underestimated by a factor of a few"
+      }
+     ]
+    },
+    {
+     "value": "Unsharp-masked ring morphology is uncertain due to the technique's arbitrariness",
+     "evidence": [
+      {
+       "loc": "3.2 Dust substructures",
+       "quote": "the precise morphology of the ring should be interpreted with caution given the arbitrariness of the technique"
+      }
+     ]
+    },
+    {
+     "value": "Excitation temperature must be assumed since only one line per species",
+     "evidence": [
+      {
+       "loc": "3.3 Molecular column density",
+       "quote": "The temperature of the emitting layer has to be assumed as we have only one line per species."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Column densities depend on an assumed temperature range and single-line LTE",
+    "Dust mass assumes uniform kappa and T and is not tied to the ring-enhancement uncertainty",
+    "Ring-like line emission may be affected by continuum over-subtraction, not separated quantitatively",
+    "Link between molecular rings and dust ring is suggestive, not tested with models"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project 2016.1.00846.S cited; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper uses ALMA data from project 2016.1.00846.S (PI: L. Podio)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Cell/image size and clean threshold",
+    "Line-free channel selection",
+    "Self-calibration parameters",
+    "Exact column density formulas and flux integration regions beyond ring radii",
+    "0.87 mm polarization image from Bacciotti+18"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for the Cycle 4 12m dataset with 13 spectral windows",
+   "score_inferred": 3,
+   "score_reason": "Data and main software are stated and the approach is simple, but many imaging and self-calibration parameters are unstated and some inputs are inherited from Podio+19.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe is incomplete; key imaging parameters and inherited choices are unspecified and results are partly qualitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: podio19)",
+     "why": "Earlier H2CO analysis and column density procedure for this source"
+    },
+    {
+     "citation": "(cite: garufi16)",
+     "why": "Unsharp masking technique"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: podio19)",
+     "why": "ALMA-DOT H2CO analysis of DG Tau"
+    },
+    {
+     "citation": "(cite: garufi20b)",
+     "why": "ALMA-DOT study of DG Tau B"
+    },
+    {
+     "citation": "(cite: podio20a)",
+     "why": "ALMA-DOT study of IRAS 04302+2247"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-DOT (ALMA chemical survey of Disk-Outflow sources in Taurus)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ae3e9d48deb98fb2e410bc0b014aa251",
+  "batch_id": "msgbatch_01DqEanefrTucE7zraJQJSEw",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T21:15:38",
+  "usage": {
+   "input_tokens": 21328,
+   "output_tokens": 9819,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.071029,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 79,
+  "quotes_ok": 79,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 59,
+   "rate": 0.702
+  },
+  "evidence_ok": true
+ }
+}

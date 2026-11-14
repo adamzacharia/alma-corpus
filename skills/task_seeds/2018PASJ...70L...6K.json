@@ -1,0 +1,275 @@
+{
+ "bibcode": "2018PASJ...70L...6K",
+ "title": "A high dust emissivity index β for a CO-faint galaxy in a filamentary Lyα nebula at z = 3.1",
+ "year": 2018,
+ "doi": "10.1093/pasj/psy087",
+ "arxiv_id": "1807.07933",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Is the dusty galaxy LAB18.b in the SSA22 Lyα nebula LAB18 a typical DSFG, judged from its molecular gas depletion time and dust emissivity index β?",
+ "alma_project_codes": [
+  "2016.1.01101.S",
+  "2013.1.00704.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO J=4-3, 2.7 and 3 mm continuum); Band 7 850 um from earlier data",
+  "arrays": "not stated",
+  "angular_resolution": "3 mm beam 1.20\"x1.08\"; 2.7 mm beam 1.05\"x0.98\"; CO cube 1.07\"x0.99\"",
+  "sensitivity": "continuum rms 5.9 uJy/beam (3 mm), 8.7 uJy/beam (2.7 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 7 850 um flux density",
+    "evidence": [
+     {
+      "loc": "Dust continuum",
+      "quote": "ALMA Band 7 850 $\\mu$m ((cite: ao18); Matsuda et al. in prep)"
+     }
+    ]
+   },
+   "citation": "(cite: ao18); Matsuda et al. in prep"
+  },
+  {
+   "what": {
+    "value": "SPIRE 250 um flux density and confusion noise",
+    "evidence": [
+     {
+      "loc": "Dust continuum",
+      "quote": "applied a source confusion noise for photometry error (cite: kato16)"
+     }
+    ]
+   },
+   "citation": "(cite: kato16)"
+  },
+  {
+   "what": {
+    "value": "r41 = 0.41 ± 0.07",
+    "evidence": [
+     {
+      "loc": "CO J=4-3 line",
+      "quote": "we adopted luminous submillimetre galaxies (SMGs) median CO $J=4-3$ luminosity to CO $J=1-0$ luminosity ratio of $r_{41}=0.41\\pm0.07$ (cite: bothwell13)"
+     }
+    ]
+   },
+   "citation": "(cite: bothwell13)"
+  },
+  {
+   "what": {
+    "value": "kappa_850 = 3.2 cm2/g",
+    "evidence": [
+     {
+      "loc": "Dust continuum",
+      "quote": "$\\kappa_{850}$ is assumed to be $\\kappa_{850}=3.2$ cm$^{2}$ g$^{-1}$ (cite: demyk17)"
+     }
+    ]
+   },
+   "citation": "(cite: demyk17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO cube",
+   "method": "CASA clean with natural weighting on pipeline-calibrated data; 3 mm and 2.7 mm line-free continuum and continuum-subtracted cube at 80 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "pixel 0.1\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure CO line and flux",
+   "method": "Single Gaussian fit to the spectrum for z_CO; imfit on the integrated map with primary beam correction for flux",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular gas mass",
+   "method": "M_gas = r41 * alpha_CO * L'CO(4-3)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "r41=0.41±0.07, alpha_CO=0.8 (starburst/merger)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit dust SED for T_d, beta, L_IR",
+   "method": "Single-temperature optically thin modified blackbody chi2 fit to SPIRE 250 um, ALMA 850 um, 2.7 mm, 3 mm",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "10% flux calibration error on Band 7"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive SFR, dust mass, GDR, depletion time",
+   "method": "SFR=1.0e-10 L_IR (Kennicutt98, Chabrier IMF); dust mass from 3 mm flux with kappa_850=3.2; tau_dep = M_gas/SFR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa_850 = 3.2 cm2/g"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "z_CO",
+   "value": "3.093",
+   "uncertainty": "0.001",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "systemic $z_{\\rm{CO}}=3.093\\pm0.001$"
+    }
+   ]
+  },
+  {
+   "quantity": "L'CO(4-3)",
+   "value": "2.3e9",
+   "uncertainty": "0.2e9",
+   "units": "K km/s pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$L'_{\\rm{CO(4-3)}}=(2.3\\ \\pm\\ 0.2)\\times10^9$ K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "M_gas",
+   "value": "4.4e9",
+   "uncertainty": "+0.9/-0.6 e9",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$M_{\\rm{gas}} = (4.4^{+0.9}_{-0.6}) \\times 10^9\\, M_{\\rm{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "beta",
+   "value": "2.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$\\beta=2.3 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "T_dust",
+   "value": "31.7",
+   "uncertainty": "4.1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$T_{\\rm{d}}= 31.7 \\pm 4.1$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "L_IR",
+   "value": "2.7e12",
+   "uncertainty": "1.6e12",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$L_{\\rm{IR}}=(2.7\\pm1.6)\\times10^{12}\\,L_{\\rm{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "269",
+   "uncertainty": "158",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "SFR$=269\\pm158$ $M_{\\rm{\\odot}}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass",
+   "value": "4.8e7",
+   "uncertainty": "0.8e7",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$M_{\\rm{d}}=(4.8\\pm0.8)\\times10^{7}\\,M_{\\rm{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "gas-to-dust ratio",
+   "value": "93",
+   "uncertainty": "+19/-14",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$\\delta_{\\rm{GDR}}=93^{+19}_{-14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "tau_dep",
+   "value": "17",
+   "uncertainty": "10",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "DISCUSSION AND SUMMARY",
+     "quote": "$\\tau_{\\rm{dep}}=17\\pm10$ Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "line-free channel ranges used for continuum",
+  "CLEAN threshold, masks and iterations",
+  "imfit regions and fitting setup",
+  "SED fitting code, priors and grid",
+  "rest frequency used for the L'CO conversion",
+  "Band 7 850 um flux density and SPIRE 250 um flux values",
+  "how the 2013.1.00704.S data were reduced"
+ ],
+ "missing_for_reproduction": [
+  "SED photometry values for SPIRE and Band 7",
+  "SED fitting code details",
+  "CLEAN parameters and masks"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Short letter with clear derived quantities and public data, but missing imaging and fitting details and input photometry.",
+ "rediscovery_reason": "Public ALMA data, simple recipe and numeric results (z_CO, L'CO, M_gas, beta), though SED inputs must come from other papers.",
+ "source_card": "cards/2018PASJ...70L...6K/sonnet/card.md"
+}

@@ -1,0 +1,218 @@
+{
+ "bibcode": "2018A&A...616A.100Y",
+ "title": "Stellar masses and disk properties of Lupus young stellar objects traced by velocity-aligned stacked ALMA <SUP>13</SUP>CO and C<SUP>18</SUP>O spectra",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201732196",
+ "arxiv_id": "1804.06272",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Can velocity-aligned stacking of 13CO and C18O (3-2) data from the ALMA Lupus survey yield more detections, dynamical stellar masses, disk orientations and gas masses, and how do gas masses relate to dust masses and accretion rates?",
+ "alma_project_codes": [
+  "2013.1.00220.S"
+ ],
+ "data": {
+  "bands": "0.9 mm continuum (Band 7), simultaneous with 13CO and C18O (3-2)",
+  "arrays": "not stated",
+  "angular_resolution": "~0.34 arcsec typical",
+  "sensitivity": "70 and 67 mJy/beam per channel for 13CO and C18O"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic stellar masses and mass accretion rates",
+    "evidence": [
+     {
+      "loc": "Table notes",
+      "quote": "$M_{\\star,{\\rm spec}}$ is the spectroscopically determined stellar mass from (cite: Alcala14; Alcala17)."
+     }
+    ]
+   },
+   "citation": "(cite: Alcala14; Alcala17)"
+  },
+  {
+   "what": {
+    "value": "Continuum fluxes, source coordinates, continuum PA and inclinations",
+    "evidence": [
+     {
+      "loc": "Method",
+      "quote": "The coordinates are obtained from (cite: Ansdell16)."
+     }
+    ]
+   },
+   "citation": "(cite: Ansdell16; Tazzari17)"
+  },
+  {
+   "what": {
+    "value": "Grids of physical-chemical disk models for gas mass",
+    "evidence": [
+     {
+      "loc": "Measured Stellar Mass and Disk Properties",
+      "quote": "our measurements and the expected $^{13}$CO and C$^{18}$O line luminosities of protoplanetary disks with different masses from models by (cite: Williams14) and (cite: Miotello16)."
+     }
+    ]
+   },
+   "citation": "(cite: Williams14; Miotello16; Miotello17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image 13CO and C18O cubes",
+   "method": "Calibrate with standard cycle-2 script and clean with Briggs weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust +0.5; 0.11 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Grid search with velocity-aligned stacking for M*, PA, i, Vsys",
+   "method": "Shift spectra by projected Keplerian velocities, integrate within 1 arcsec de-projected radius, maximize S/N of Gaussian-weighted integrated intensity; uncertainties from parameter ranges giving consistent line profiles",
+   "software": [],
+   "key_parameters": [
+    "M* 0.1-3 Msun (0.1 steps); PA 0-355 deg (5); i 5-85 deg (5); Vsys 1.7-6.3 km/s (0.1)",
+    "detection: peak >4 sigma and >=3 channels above 3 sigma within 2 sigma Gaussian width"
+   ],
+   "assumptions": [
+    "geometrically thin Keplerian disk; stellar position at continuum center; distances 150/200 pc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure fluxes",
+   "method": "Apply best parameters; stack in radial bins (half-beam steps) to find detected radius (2 sigma); integrate within twice the FWHM line width; apply same to C18O",
+   "software": [],
+   "key_parameters": [
+    "C18O detection above 4 sigma; 20% systematic flux uncertainty"
+   ],
+   "assumptions": [
+    "13CO and C18O trace the same regions"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate disk gas masses",
+   "method": "Compare 13CO and C18O luminosities with Williams & Best 2014 and Miotello+16 grids (luminosity-weighted mean mass); Miotello+17 fitting function for 13CO-only disks",
+   "software": [],
+   "key_parameters": [
+    "face-on vs edge-on fit function split at i=70 deg"
+   ],
+   "assumptions": [
+    "No volatile carbon depletion in the models"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Gas-dust mass correlation",
+   "method": "Bayesian linear fit in log space with errors on both axes, using log of upper limit/measurement as 1 sigma",
+   "software": [
+    "linmix_err"
+   ],
+   "key_parameters": [
+    "disks with dust mass <1e-6 Msun excluded"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "13CO detections",
+   "value": "41 of 88",
+   "uncertainty": "not stated",
+   "units": "disks",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We obtain $^{13}$CO detections in 41 disks and C$^{18}$O detections in 18 disks"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dynamical vs spectroscopic mass difference (16 sources)",
+   "value": "0.15",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "The mean difference between the dynamical and spectroscopic stellar masses in this subsample is 0.15 $M_\\ensuremath{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log gas vs log dust mass",
+   "value": "1.1",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-Dust Ratio and Disk Mass",
+     "quote": "with a slope of 1.1$\\pm$0.5 and a correlation coefficient of 0.8$\\pm$0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of residual gas masses",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-Dust Ratio and Disk Mass",
+     "quote": "measured the standard deviation of the residual gas masses to be 0.9 dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Median gas-to-dust ratio (dust mass >1e-6 Msun)",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Gas-to-Dust Ratio and Disk Mass",
+     "quote": "is relatively flat and has a median of 12"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean inclination difference vs continuum (23 disks)",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Measured Stellar Mass and Disk Properties",
+     "quote": "The mean difference of the disk inclination, $i$, measured from our method and from the continuum emission is 15$^\\circ$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Code for the stacking/alignment and S/N search (not released)",
+  "Exact clean parameters (image size, cell, threshold, masks)",
+  "Continuum subtraction and line-free channels",
+  "Exact outlier-trimming rule for S/N distribution",
+  "Model-grid details for the luminosity-weighted gas mass averaging",
+  "Dust mass conversion details (taken from Ansdell16/Miotello17)"
+ ],
+ "missing_for_reproduction": [
+  "Stacking code",
+  "Detailed clean settings and masks",
+  "Dust mass conversion"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a clear algorithm with parameter grids, but code and some imaging and conversion details are missing.",
+ "rediscovery_reason": "Public data and a clearly described method with numeric results, though code is needed to be rewritten.",
+ "source_card": "cards/2018A%26A...616A.100Y/sonnet/card.md"
+}

@@ -1,0 +1,625 @@
+{
+ "bibcode": "2023A&A...674A.125B",
+ "title": "ATOMIUM: Probing the inner wind of evolved O-rich stars with new, highly excited H<SUB>2</SUB>O and OH lines",
+ "year": 2023,
+ "doi": "10.1051/0004-6361/202245193",
+ "arxiv_id": "2305.03171",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry",
+  "stellar_physics"
+ ],
+ "question": "(1) to identify and map the emission and absorption of H2O in several vibrational states, and of OH in Lambda-doubling transitions with similar excitation energies; and (2) to determine the physical conditions and kinematics in gas layers close to the extended atmosphere in a sample of asymptotic giant branch stars (AGBs) and red supergiants (RSGs).",
+ "alma_project_codes": [
+  "2018.1.00659.L",
+  "2019.2.00234.S",
+  "2017.1.00393.S",
+  "2018.1.00749.S"
+ ],
+ "data": {
+  "bands": "Band 6, Band 7",
+  "arrays": "main ALMA array, Atacama Compact Array (ACA)",
+  "angular_resolution": "0.02-0.05 arcsec (extended), 0.15-0.3 arcsec (mid), 1.0 arcsec (compact), ~7.4x4.3 and 6.9x4.4 arcsec (ACA)",
+  "sensitivity": "0.5-1 mJy/beam (high resolution), ~2 mJy/beam (medium resolution)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source coordinates, mass-loss rates, LSR velocities, pulsation periods, observation dates, and clean beams",
+    "evidence": [
+     {
+      "loc": "2.1. Source sample",
+      "quote": "The source coordinates are obtained from the emission peak of 2D-Gaussian fits to the stellar continuum observed around 241.8 GHz with the ALMA extended configuration, see Table E.2 in Gottlieb et al. (2022)."
+     },
+     {
+      "loc": "2.1. Source sample",
+      "quote": "The mass-loss rates in Table 1 are taken from Gottlieb et al. (2022); they are updated for GY Aql and IRC−10529 because of their revised distances."
+     }
+    ]
+   },
+   "citation": "Gottlieb et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Stellar distances",
+    "evidence": [
+     {
+      "loc": "2.1. Source sample",
+      "quote": "Most of the adopted distances to the Mira and SR variables in Table 1 are extracted from the Gaia DR3 catalog (Gaia collaboration 2022)"
+     }
+    ]
+   },
+   "citation": "Gaia collaboration (2022)"
+  },
+  {
+   "what": {
+    "value": "Revised distances for GY Aql, U Her, and IRC-10529",
+    "evidence": [
+     {
+      "loc": "2.1. Source sample",
+      "quote": "For U Her and IRC−10529 we have also adopted the best distance estimates from Andriantsaralaza et al. (2022)"
+     }
+    ]
+   },
+   "citation": "Andriantsaralaza et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Stellar optical angular diameters (2 R_*)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "( e ) Angular diameter from Table 1 of Montargès et al. (2023)."
+     }
+    ]
+   },
+   "citation": "Montargès et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic rest frequencies for H2O and OH",
+    "evidence": [
+     {
+      "loc": "3.2. Identification of highly excited water lines",
+      "quote": "Using the JPL catalog (Pickett et al. 1998) 5 and the W2020 data base (Furtenbacher et al. 2020) and, limiting ourselves to energy levels up to ∼6500 cm −1 (9400 K), we have searched for all pure rotational or ro-vibrational dipolar electric transitions of water"
+     }
+    ]
+   },
+   "citation": "Pickett et al. (1998); Furtenbacher et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Earlier astronomical OH Lambda-doubling frequency measurements",
+    "evidence": [
+     {
+      "loc": "3.3. The OH radical, spectroscopy background",
+      "quote": "The Λ-doubling frequencies of OH derived from the ALMA observations in this work and in Khouri et al. (2019) are gathered in Table 4."
+     }
+    ]
+   },
+   "citation": "Khouri et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Laboratory rotational spectrum dataset for OH",
+    "evidence": [
+     {
+      "loc": "Appendix A",
+      "quote": "The data set from Drouin (2013) is available in the JPL catalog archive 23 ."
+     }
+    ]
+   },
+   "citation": "Drouin (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and measure line peak flux densities, velocity extents, and rest frequencies",
+   "method": "Extract spectra from image cubes using circular apertures; measure peak flux density and velocity extent between 2.5 sigma line wings; average peak frequencies across stars corrected for systemic LSR velocity to derive rest frequencies.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Aperture diameters: 0.08 arcsec (high), 0.4 arcsec (mid), 4.0 arcsec (low); 2.5 sigma threshold for velocity extent"
+   ],
+   "assumptions": [
+    "Adopted stellar LSR systemic velocities from Table 1"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Improve spectroscopic OH Lambda-doubling rest frequencies",
+   "method": "Combine ALMA OH transition frequencies from this work and Khouri et al. (2019) with the laboratory line list of Drouin (2013) and perform a Dunham fit using SPFIT.",
+   "software": [
+    "SPFIT"
+   ],
+   "key_parameters": [
+    "21 Lambda-doubling parameters for OH plus 5 isotopic breakdown parameters (2 poorly determined parameters out of 97 omitted)"
+   ],
+   "assumptions": [
+    "not stated"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure angular sizes of H2O and OH emitting/absorbing regions and stack weak OH lines",
+   "method": "Determine H2O sizes from geometric mean of max/min radii within 3 sigma contour and azimuthal averaging on moment 0 maps; fit 2D Gaussians to OH moment 0 maps within 3 sigma contour mask in CARTA; stack OH visibilities of four hyperfine transitions aligned in velocity to detect weak high-J OH lines.",
+   "software": [
+    "CARTA",
+    "CASA"
+   ],
+   "key_parameters": [
+    "3 sigma contour threshold for size measurement and CARTA mask"
+   ],
+   "assumptions": [
+    "No beam deconvolution applied to irregular clean image sizes"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit compact H2O maser components and derive brightness temperatures",
+   "method": "Fit 2D Gaussian components to channel maps using AIPS task SAD above 5 sigma threshold, group into maser features, and compute brightness temperatures from channel map peaks and deconvolved Gaussian component sizes.",
+   "software": [
+    "AIPS",
+    "SAD"
+   ],
+   "key_parameters": [
+    "5 sigma extraction threshold; >= 3 neighboring components with ~2 km/s velocity coherence; peak S/N >= 10 for T_Gauss"
+   ],
+   "assumptions": [
+    "Maser emission has a Gaussian angular profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive excitation temperatures, column densities, line opacities, and OH/H2O abundance ratios from population diagrams",
+   "method": "Construct population diagrams from velocity-integrated flux densities in 0.08 arcsec apertures for H2O and OH, perform linear least-squares fits to obtain T_ex (or T_rot) and N, calculate line-center opacities, and compute the N(OH)/N(H2O) ratio.",
+   "software": [],
+   "key_parameters": [
+    "Circular aperture diameter = 0.08 arcsec; at least 6 lines for H2O; exclude masing 268.149 GHz line in AH Sco and IRC+10011"
+   ],
+   "assumptions": [
+    "Optically thin LTE emission uniformly filling a 0.08 arcsec circular aperture; spin degeneracy 3/4 (ortho) and 1/4 (para) for H2O; H2O and OH excited in similar regions; fractional abundance H2O/H2 = 3e-5 when estimating n(H2)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare observations with H2O radiative transfer maser models and inner-wind chemical kinetic models",
+   "method": "Examine slab-geometry radiative transfer maser models from Gray et al. (2016) across n(H2O), T_K, and T_dust to identify maser pumping regimes; run updated chemical kinetic models from Gobrecht et al. (2016, 2022) between 1 and 10 R_* at pulsation phases 0.2, 0.5, and 1.0 to compare with observed OH/H2O ratios.",
+   "software": [],
+   "key_parameters": [
+    "Maser model: 411 ortho and 413 para H2O levels; Chemical model: radii 1-10 R_*, pulsation phases 0.2, 0.5, 1.0"
+   ],
+   "assumptions": [
+    "Slab geometry; ortho and para H2O treated separately without cross-species line overlap; fractional abundance H2O/H2 = 3e-5 in maser models"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Observed rest frequency of H2O line 1 (0,3,0) 8(3,6)-7(4,3)",
+   "value": "222017.31",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "222017.31 1.50 8331 8 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 4 (0,0,1) 14(3,12)-13(4,9)",
+   "value": "236797.0",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "236797.0 i 2.00 9012 1 i TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 6 (1,0,0)-(0,2,0) 7(4,3)-8(5,4)",
+   "value": "252170.56",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "252170.56 2.00 6579 8 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 7 (0,0,1) 3(1,3)-2(2,0)",
+   "value": "254039.75",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "254039.75 2.00 5605 9 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 8 (0,2,0) 14(3,12)-13(4,9)",
+   "value": "254055.18",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "254055.18 2.00 8331 6 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 10 (0,0,0) 13(6,8)-14(3,11)",
+   "value": "259951.87",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "259951.87 2.00 3954 10 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 12 (0,1,0) 7(7,1)-8(6,2)",
+   "value": "262897.87",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "262897.87 1.50 4475 12 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 13 (0,0,0) 21(4,17)-20(7,14)",
+   "value": "266567.52",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "266567.52 2.00 8270 7 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of H2O line 14 (0,2,0) 6(5,2)-7(4,3)",
+   "value": "268148.51",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "268148.51 1.50 6039 15 TW"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=27/2, F=13- - 13+ (line 1)",
+   "value": "221333.34",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 13, 27/2 13 − − 13 + 221333.34 1.50 −0.6893 R Hya, R Aql, S Pav 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=27/2, F=14- - 14+ (line 2)",
+   "value": "221351.17",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 13, 27/2 14 − − 14 + 221351.17 1.50 −0.8575 R Hya, R Aql, S Pav 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=33/2, F=17- - 17+ (line 5)",
+   "value": "236327.29",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 17, 33/2 17 − − 17 + 236327.29 1.50 0.5849 R Hya, R Aql, S Pav 5"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=33/2, F=16- - 16+ (line 6)",
+   "value": "236356.12",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 17, 33/2 16 − − 16 + 236356.12 2.00 −2.0998 R Hya 6"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=29/2, F=14+ - 14- (line 7)",
+   "value": "252123.22",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 14, 29/2 14 + − 14 − 252123.22 1.50 −1.6962 R Hya, R Aql, S Pav 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=29/2, F=15+ - 15- (line 8)",
+   "value": "252141.78",
+   "uncertainty": "1.50",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 14, 29/2 15 + − 15 − 252141.78 1.50 −1.3937 R Hya, R Aql, S Pav 8"
+    }
+   ]
+  },
+  {
+   "quantity": "Observed rest frequency of OH v=0, J=35/2, F=18+ - 18- (line 9)",
+   "value": "265731.67",
+   "uncertainty": "2.00",
+   "units": "MHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "0, 18, 35/2 18 + − 18 − 265731.67 2.00 −0.9819 R Hya 9"
+    }
+   ]
+  },
+  {
+   "quantity": "268.149 GHz H2O peak flux density in AH Sco (0.08 arcsec aperture)",
+   "value": "68974",
+   "uncertainty": "1-4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "AH Sco 8 — — 6 10 — 33 20 9 68974"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "( a ) Typical peak flux density uncertainties are 1−4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "268.149 GHz H2O peak flux density in IRC+10011 (0.08 arcsec aperture)",
+   "value": "1823",
+   "uncertainty": "1-4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "IRC+10011 37 — abso. c 19 49 13 86 100 43 1823"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "( a ) Typical peak flux density uncertainties are 1−4 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "268.149 GHz H2O Gaussian-fit brightness temperature T_Gauss in AH Sco",
+   "value": "9.0e6",
+   "uncertainty": "3.0e6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "AH Sco (9.0±3.0)×10 6 1.1×10 6 ± 20 370 ± 75"
+    }
+   ]
+  },
+  {
+   "quantity": "268.149 GHz H2O Gaussian-fit brightness temperature T_Gauss in IRC+10011",
+   "value": "1.1e5",
+   "uncertainty": "0.3e5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "IRC+10011 (1.1±0.3)×10 5 4.4×10 4 ± 75 1090 ± 70"
+    }
+   ]
+  },
+  {
+   "quantity": "268.149 GHz H2O Gaussian-fit brightness temperature T_Gauss in U Her",
+   "value": "1.2e4",
+   "uncertainty": "0.3e4",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "U Her (1.2±0.3)×10 4 4.2×10 3 ± 70 535 ± 30"
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N(H2O) in AH Sco",
+   "value": "0.6e20",
+   "uncertainty": "~25%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "We derive T ex in the range ∼1000−1500 K for all sources and column densities N (H 2 O) ∼0.6, 2.2, 2.5 and 4.5×10 20 cm −2 in AH Sco, R Hya, S Pav and IRC+10011, respectively."
+    },
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "from random trials we suggest a statistical uncertainty of the column density at the level of ∼25%."
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N(H2O) in R Hya",
+   "value": "2.2e20",
+   "uncertainty": "~25%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "We derive T ex in the range ∼1000−1500 K for all sources and column densities N (H 2 O) ∼0.6, 2.2, 2.5 and 4.5×10 20 cm −2 in AH Sco, R Hya, S Pav and IRC+10011, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N(H2O) in S Pav",
+   "value": "2.5e20",
+   "uncertainty": "~25%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "We derive T ex in the range ∼1000−1500 K for all sources and column densities N (H 2 O) ∼0.6, 2.2, 2.5 and 4.5×10 20 cm −2 in AH Sco, R Hya, S Pav and IRC+10011, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N(H2O) in IRC+10011",
+   "value": "4.5e20",
+   "uncertainty": "~25%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "We derive T ex in the range ∼1000−1500 K for all sources and column densities N (H 2 O) ∼0.6, 2.2, 2.5 and 4.5×10 20 cm −2 in AH Sco, R Hya, S Pav and IRC+10011, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "H2O column density N(H2O) in R Aql",
+   "value": "5.8e20",
+   "uncertainty": "~25%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2. Population diagrams, opacity estimates",
+     "quote": "In R Aql where the dispersion of the data points is larger than in the other four sources we derive N (H 2 O) ∼5.8×10 20 cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "OH column density N(OH) in R Hya",
+   "value": "6.1e18",
+   "uncertainty": ">=30%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "9.2. Population diagrams and opacity estimates",
+     "quote": "We derive T rot ∼2800 and 3000 K and N ∼6.1×10 18 and 4.8×10 18 cm −2 in R Hya and S Pav, respectively."
+    },
+    {
+     "loc": "9.2. Population diagrams and opacity estimates",
+     "quote": "However, tests made with various assumed errors in the observables suggest that N (OH) can vary by at least 30%."
+    }
+   ]
+  },
+  {
+   "quantity": "OH column density N(OH) in S Pav",
+   "value": "4.8e18",
+   "uncertainty": ">=30%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "9.2. Population diagrams and opacity estimates",
+     "quote": "We derive T rot ∼2800 and 3000 K and N ∼6.1×10 18 and 4.8×10 18 cm −2 in R Hya and S Pav, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "OH column density N(OH) in R Aql",
+   "value": "4.3e18",
+   "uncertainty": ">=30%",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "9.2. Population diagrams and opacity estimates",
+     "quote": "In R Aql, T rot is higher, ∼4000 K, and N (OH) ∼4.3×10 18 cm −2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "OH/H2O column density and abundance ratio in R Hya, S Pav, and R Aql",
+   "value": "(0.7-2.8)e-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "From the OH and H 2 O column densities derived with nonmasing transitions in a few sources, we obtain OH/H 2 O abundance ratios of ∼(0.7−2.8)×10 −2 ."
+    },
+    {
+     "loc": "10. Observed OH/H2O abundance ratio and chemical models in the inner wind",
+     "quote": "From the high resolution observation of high-lying energy levels of three AGBs (R Hya, S Pav and R Aql), all performed within a few weeks, and from the population diagram analysis described in Sects. 5.2 and 9.2, we obtain N (OH)/ N (H 2 O) ∼(0.7−2.8)×10 −2 ."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, tclean weighting/robust parameters, cell size, image size, and masking parameters for the main array data (deferred to Gottlieb et al. 2022)",
+  "Exact line-free channel ranges manually selected for ACA continuum subtraction",
+  "Calibration and imaging details for the archival Mira datasets (2017.1.00393.S and 2018.1.00749.S)"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters, self-calibration details, and continuum subtraction channel ranges for the main array cubes (deferred to Gottlieb et al. 2022)",
+  "Exact velocity integration windows used for the population diagram integrated flux densities in Figs. 11 and 24",
+  "Input parameter files for the Gray et al. (2016) radiative transfer maser code and Gobrecht et al. (2022) chemical kinetic network"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "ALMA project codes are clearly stated and standard/enhanced products are archived, aperture sizes and spectroscopic catalogs are well documented, and SPFIT outputs are hosted on CDMS; however, main-array calibration/imaging parameters are deferred to Gottlieb et al. (2022) and exact velocity integration windows for the population diagrams are not tabulated.",
+ "rediscovery_reason": "Public ALMA data (ATOMIUM 2018.1.00659.L and ACA 2019.2.00234.S) with clear quantitative targets (rest frequencies, 0.08 arcsec aperture peak fluxes, brightness temperatures, and LTE population diagram column densities/abundance ratios) that can be directly re-measured from the spectral cubes.",
+ "source_card": "cards/2023A%26A...674A.125B/sonnet/card.md"
+}

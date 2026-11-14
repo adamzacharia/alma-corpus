@@ -1,0 +1,387 @@
+{
+ "bibcode": "2021ApJ...922..206S",
+ "title": "The Detection of a Hot Molecular Core in the Extreme Outer Galaxy",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/ac289b",
+ "arxiv_id": "2109.11123",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "What are the physical and chemical properties of a star-forming core in a Galactic low-metallicity environment in the extreme outer Galaxy, and how do its molecular abundances compare to inner Galactic and LMC hot cores?",
+ "alma_project_codes": [
+  "2017.1.01002.S",
+  "2018.1.00627.S"
+ ],
+ "data": {
+  "bands": "Band 6 (250 GHz), Band 7 (350 GHz)",
+  "arrays": "45-49 antennas (Band 6), 43-44 antennas (Band 7)",
+  "angular_resolution": "0.50'' circular restoring beam (0.026 pc / 5350 au); native 0.39''-0.42'' x 0.49''-0.52'' (Band 6), 0.45''-0.46'' x 0.51''-0.52'' (Band 7)",
+  "sensitivity": "line RMS 0.03-0.04 K (Band 6), 0.07-0.08 K (Band 7); continuum 3sigma uncertainty 0.05 mJy/beam (1200 um), 0.2 mJy/beam (870 um)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic parameters from Cologne Database for Molecular Spectroscopy (CDMS) and JPL database",
+    "evidence": [
+     {
+      "loc": "Spectra",
+      "quote": "Spectral lines are identified with the aid of the Cologne Database for Molecular Spectroscopy (cite: Mul01; Mul05) and the molecular database of the Jet Propulsion Laboratory (cite: Pic98)."
+     },
+     {
+      "loc": "Rotation diagram analysis",
+      "quote": "All the spectroscopic parameters required in the analysis are extracted from the CDMS or JPL database."
+     }
+    ]
+   },
+   "citation": "(cite: Mul01; Mul05), (cite: Pic98)"
+  },
+  {
+   "what": {
+    "value": "Dust mass absorption coefficients of dust grains coated by thin ice mantles at 1200 and 870 um",
+    "evidence": [
+     {
+      "loc": "Column density of H$_2$, dust extinction, and gas mass",
+      "quote": "$\\kappa_{\\nu}$ is the mass absorption coefficient of dust grains coated by thin ice mantles at 1200/870 $\\mu$m as taken from (cite: Oss94) and we here use 1.07 cm$^2$ g$^{-1}$ for 1200 $\\mu$m and 1.90 cm$^2$ g$^{-1}$ for 870 $\\mu$m"
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "Infrared and SED photometric data for WB89-789 SMM1",
+    "evidence": [
+     {
+      "loc": "Hot molecular core and protostar associated with WB89-789 SMM1",
+      "quote": "Figure 7 shows a SED of SMM1, where the data are collected from available databases and literatures (cite: Bra07; Wri10; Yam10)."
+     }
+    ]
+   },
+   "citation": "(cite: Bra07; Wri10; Yam10)"
+  },
+  {
+   "what": {
+    "value": "Molecular abundances of Galactic hot cores NGC7192 FIRS2 and Orion hot core",
+    "evidence": [
+     {
+      "loc": "Molecular abundances: Comparison with Galactic hot cores",
+      "quote": "The data for an intermediate-mass hot core, NGC7192 FIRS2, is adopted from (cite: Fue14)."
+     },
+     {
+      "loc": "Molecular abundances: Comparison with Galactic hot cores",
+      "quote": "The data for a high-mass source, the Orion hot core, is adopted from (cite: Sut95), which is based on the 340 GHz region observations for a 0.027 pc diameter area at the hot core. The abundance of HNCO is taken from (cite: Sch97)."
+     }
+    ]
+   },
+   "citation": "(cite: Fue14), (cite: Sut95), (cite: Sch97)"
+  },
+  {
+   "what": {
+    "value": "Molecular column densities and continuum data for LMC hot cores ST11, ST16, and N113 A1",
+    "evidence": [
+     {
+      "loc": "Molecular abundances: Comparison with LMC hot cores",
+      "quote": "The plotted molecular column densities for LMC hot cores are adopted from (cite: ST16) for ST11, (cite: ST20) for ST16, and (cite: Sew18) fro N113 A1."
+     }
+    ]
+   },
+   "citation": "(cite: ST16), (cite: ST20), (cite: Sew18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and measure continuum flux and source sizes",
+   "method": "Extract spectra and continuum flux from circular apertures (0.50'' and 1.93'' diameter for SMM1; 0.6'' diameter for SMM2) and fit 2D Gaussians to emission images to measure source sizes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Aperture diameters: 0.50'' (0.026 pc) and 1.93'' (0.1 pc) for SMM1; 0.6'' for SMM2"
+   ],
+   "assumptions": [
+    "Distance d = 10.7 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify spectral lines and measure line parameters",
+   "method": "Identify spectral lines using CDMS and JPL databases; fit 1D Gaussian profiles to measure peak brightness temperature, FWHM, LSR velocity, and integrated intensity, or directly integrate over the emission frequency region when Gaussian fits poorly",
+   "software": [],
+   "key_parameters": [
+    "Assumed line width Delta V = 4 km s^-1 for 2sigma upper limits"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive molecular column densities and rotation temperatures",
+   "method": "Perform LTE rotation diagram analysis for molecules with multiple transitions, single-temperature LTE calculation for other molecules, and non-LTE RADEX calculations for selected molecules",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Exclude transitions with large S*mu^2 at E_u < 300 K for CH3OH, CH3CN, HNCO, SO2, and HCOOCH3",
+    "RADEX inputs: n_H2 = 2.1 x 10^7 cm^-3, T_bg = 2.73 K, 10% line intensity uncertainty"
+   ],
+   "assumptions": [
+    "Optically thin condition and LTE for rotation diagram analysis",
+    "Assumed T_rot = 35 K for extended cold molecules, 200 K for compact hot core molecules without rotation diagrams, 36 K for CS/C34S, 39 K for H2CO/HDCO, 166 K for 34SO2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate H2 column density, visual extinction, gas density, mass, and bolometric luminosity",
+   "method": "Calculate N_H2 from optically thin dust continuum emission at 1200 and 870 um and from SED fitting with Robitaille et al. (2007) models; average the two methods to get representative N_H2, n_H2, and gas mass",
+   "software": [],
+   "key_parameters": [
+    "kappa_1200um = 1.07 cm^2 g^-1, kappa_870um = 1.90 cm^2 g^-1, Z = 0.002, T_d = 60 K (SMM1) and 20 K (SMM2)"
+   ],
+   "assumptions": [
+    "Optically thin dust emission, uniform spherical gas distribution of diameter 0.026 pc, N_H2/A_V = 2.9 x 10^21 cm^-2 mag^-1"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate fractional abundances and isotope ratios and compare with Galactic and LMC hot cores",
+   "method": "Normalize molecular column densities by N_H2 and N(CH3OH) for 0.026 pc and 0.1 pc apertures, apply galactocentric isotope ratios to derive main species abundances from isotopologues, and compute correlation coefficients with Galactic and LMC hot cores",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "12C/13C = 150 and 32S/34S = 35 at D_GC = 19 kpc; 30% empirical uncertainty on N_H2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1200 um continuum brightness of WB89-789 SMM1",
+   "value": "11.33",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Column density of H$_2$, dust extinction, and gas mass",
+     "quote": "The continuum brightness of SMM1 is measured to be 11.33 $\\pm$ 0.05 mJy/beam for 1200 $\\mu$m and 28.0 $\\pm$ 0.2 mJy/beam for 870 $\\mu$m (3$\\sigma$ uncertainty)."
+    }
+   ]
+  },
+  {
+   "quantity": "870 um continuum brightness of WB89-789 SMM1",
+   "value": "28.0",
+   "uncertainty": "0.2",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Column density of H$_2$, dust extinction, and gas mass",
+     "quote": "The continuum brightness of SMM1 is measured to be 11.33 $\\pm$ 0.05 mJy/beam for 1200 $\\mu$m and 28.0 $\\pm$ 0.2 mJy/beam for 870 $\\mu$m (3$\\sigma$ uncertainty)."
+    }
+   ]
+  },
+  {
+   "quantity": "Representative H2 column density (N_H2) of WB89-789 SMM1",
+   "value": "1.1e24",
+   "uncertainty": "30%",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Column density of H$_2$, dust extinction, and gas mass",
+     "quote": "In this paper, we use $N_{\\mathrm{H_2}}$ = 1.1 $\\times$ 10$^{24}$ cm$^{-2}$ as a representative value, which corresponds to the average of $N_{\\mathrm{H_2}}$ derived by the dust continuum data and the SED fitting."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "An empirical uncertainty of 30 $\\%$ is assumed for $N_{\\mathrm{H_2}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 number density (n_H2) of WB89-789 SMM1",
+   "value": "2.1e7",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Column density of H$_2$, dust extinction, and gas mass",
+     "quote": "Assuming the source diameter of 0.026 pc and the uniform spherical distribution of gas around a protostar, we estimate the gas number density to be $n_{\\mathrm{H_2}}$ = 2.1 $\\times$ 10$^7$ cm$^{-3}$, where the total gas mass of 13 M$_{\\ensuremath{\\odot}}$ is enclosed."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed gas mass of WB89-789 SMM1 (0.026 pc diameter)",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Column density of H$_2$, dust extinction, and gas mass",
+     "quote": "Assuming the source diameter of 0.026 pc and the uniform spherical distribution of gas around a protostar, we estimate the gas number density to be $n_{\\mathrm{H_2}}$ = 2.1 $\\times$ 10$^7$ cm$^{-3}$, where the total gas mass of 13 M$_{\\ensuremath{\\odot}}$ is enclosed."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity of WB89-789 SMM1 (SED fit)",
+   "value": "8.4e3",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Hot molecular core and protostar associated with WB89-789 SMM1",
+     "quote": "The bolometric luminosity of the source is estimated to be 8.4 $\\times$ 10$^3$ L$_{\\ensuremath{\\odot}}$ based on the SED fitting with the model of (cite: Rob07)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotation temperature in WB89-789 SMM1",
+   "value": "245",
+   "uncertainty": "+4/-4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CH$_3$OH | *245$^{+4}_{-4}$* | *(1.9 $\\pm$ 0.1) $\\times$ 10$^{16}$* | (2.6 $\\pm$ 0.1) $\\times$ 10$^{16}$$^{b}$ | 0.51"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH fractional abundance N(CH3OH)/N_H2 in SMM1 (0.026 pc area)",
+   "value": "3.8e-7",
+   "uncertainty": "1.3e-7",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "CH$_3$OH$^{a}$ | (3.8 $\\pm$ 1.3) $\\times$ 10$^{-7}$ | (1.7 $\\pm$ 0.3) $\\times$ 10$^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 rotation temperature in WB89-789 SMM1",
+   "value": "166",
+   "uncertainty": "+5/-5",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SO$_2$ | *166$^{+5}_{-5}$* | *(1.2 $\\pm$ 0.1) $\\times$ 10$^{15}$* | ... | 0.53"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 fractional abundance N(SO2)/N_H2 in SMM1 (0.026 pc area)",
+   "value": "1.1e-9",
+   "uncertainty": "0.3e-9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "SO$_2$ | (1.1 $\\pm$ 0.3) $\\times$ 10$^{-9}$ | (2.9 $\\pm$ 0.1) $\\times$ 10$^{-10}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH2DOH/CH3OH abundance ratio in SMM1",
+   "value": "0.011",
+   "uncertainty": "0.002",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Fractional abundances and isotope abundance ratios",
+     "quote": "Abundance ratios are derived for several rare isotopologues; we obtain CH$_2$DOH/CH$_3$OH = 0.011 $\\pm$ 0.002, D$_2$CO/HDCO = 0.45 $\\pm$ 0.10, $^{34}$SO/$^{33}$SO = 5 $\\pm$ 1, C$^{34}$S/C$^{33}$S = 2 $\\pm$ 1, and $^{32}$SO$_2$/$^{34}$SO$_2$ = 20 $\\pm$ 4."
+    }
+   ]
+  },
+  {
+   "quantity": "D2CO/HDCO abundance ratio in SMM1",
+   "value": "0.45",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Fractional abundances and isotope abundance ratios",
+     "quote": "Abundance ratios are derived for several rare isotopologues; we obtain CH$_2$DOH/CH$_3$OH = 0.011 $\\pm$ 0.002, D$_2$CO/HDCO = 0.45 $\\pm$ 0.10, $^{34}$SO/$^{33}$SO = 5 $\\pm$ 1, C$^{34}$S/C$^{33}$S = 2 $\\pm$ 1, and $^{32}$SO$_2$/$^{34}$SO$_2$ = 20 $\\pm$ 4."
+    }
+   ]
+  },
+  {
+   "quantity": "1200 um continuum flux of WB89-789-SMM2 (0.6'' region)",
+   "value": "0.60",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Another embedded protostar traced by high-velocity SiO gas",
+     "quote": "A 1200 $\\mu$m continuum flux in a 0.6$''$ diameter region centered at SMM2 is 0.60 $\\pm$ 0.05 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density of WB89-789-SMM2 (Td = 20 K)",
+   "value": "3.2e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Another embedded protostar traced by high-velocity SiO gas",
+     "quote": "Assuming $T_{d}$ = 20 K, we obtain $N_{\\mathrm{H_2}}$ = 3.2 $\\times$ 10$^{23}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "High-velocity SiO outflow velocity shift in WB89-789-SMM2",
+   "value": "25",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Another embedded protostar traced by high-velocity SiO gas",
+     "quote": "The peaks of the shifted emission are located at $V_{sys}$ $\\pm$ 25 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical timescale of EHV SiO outflow in WB89-789-SMM2",
+   "value": ">=2000",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Another embedded protostar traced by high-velocity SiO gas",
+     "quote": "Assuming an outflow velocity of 25 km s$^{-1}$, we estimate a dynamical timescale of EHV flows to be at least 2000 years."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of line-free channels used for continuum imaging and uvcontsub",
+  "TCLEAN deconvolution algorithm (e.g., hogbom, clark, multiscale), stopping threshold, cell size, image size, and masking strategy",
+  "Whether calibration was pipeline or manual, and whether self-calibration was performed",
+  "Velocity integration ranges for moment 0 and moment 1 maps of all species other than SiO"
+ ],
+ "missing_for_reproduction": [
+  "Exact frequency intervals of line-free channels used for continuum imaging and uvcontsub",
+  "TCLEAN imaging parameters (cell size, image size, stopping threshold, deconvolver, masking)",
+  "Partition function values Q(T_rot) used for each molecular species in the rotation diagram and LTE calculations",
+  "Exact CH3CHO transitions and line parameters (CH3CHO is listed in Tables 2, 3, and 4, but omitted from the Appendix A line parameter tables)"
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The paper provides clear target coordinates, extraction apertures, restoring beam size, CASA versions, complete equations, dust opacity constants, assumed temperatures, and extensive appendix tables of measured line parameters, missing only minor TCLEAN/uvcontsub parameters and the Appendix table for CH3CHO.",
+ "rediscovery_reason": "Public ALMA data from two well-specified project codes with a straightforward spectral extraction and LTE rotation diagram recipe and comprehensive numeric tables of line parameters, temperatures, and column densities.",
+ "source_card": "cards/2021ApJ...922..206S/sonnet/card.md"
+}

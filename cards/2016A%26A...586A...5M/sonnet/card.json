@@ -1,0 +1,919 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016A&A...586A...5M",
+  "title": "A detailed view of the gas shell around R Sculptoris with ALMA",
+  "year": 2016,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Maercker, M.",
+  "n_authors": 9,
+  "arxiv_id": "1512.01350",
+  "doi": "10.1051/0004-6361/201527128",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00131.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We analyse $^{12}\\rm{CO}(1-0)$, $^{12}\\rm{CO}(2-1)$, and $^{12}\\rm{CO}(3-2)$ emission, observed with the Atacama Large Millimeter/submillimeter Array (ALMA) during Cycle 0 and complemented by single-dish observations."
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "R Sculptoris (R Scl)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "370 pc",
+      "evidence": [
+       {
+        "loc": "2.1 R Sculptoris",
+        "quote": "We will use 370 pc throughout this paper, noting the high uncertainty in this value."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Knapp et al. 2003; Whitelock et al. 2008 (adopted, highly uncertain)",
+      "evidence": [
+       {
+        "loc": "2.1 R Sculptoris",
+        "quote": "We will use 370 pc throughout this paper, noting the high uncertainty in this value."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the mass and temperature of the gas shell around R Scl, and how did the mass-loss rate evolve during and after the thermal pulse?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to determine the physical properties of the detached gas shell around R Sculptoris, in particular the shell mass and temperature, and to constrain the evolution of the mass-loss rate during and after a thermal pulse."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00131.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of ALMA data from project no. ADS/ JAO.ALMA#2011.0.00131.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (CO 1-0), Band 6 (CO 2-1), Band 7 (CO 3-2)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA early science observations",
+      "quote": "The main target of the observations were the $^{12}\\rm{CO}(1-0)$ line in Band 3, the $^{12}\\rm{CO}(2-1)$ line in Band 6, and the $^{12}\\rm{CO}(3-2)$ line in Band 7."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.27 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "Observations of the $^{12}\\rm{CO}(1-0)$ emission line at 115.27 GHz were carried out between Jan 23 and Jan 25 2012."
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.54 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "Observations of the $^{12}\\rm{CO}(2-1)$ emission line at 230.54 GHz were carried out on Oct 1 2011."
+      }
+     ]
+    },
+    {
+     "species": "12CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.80 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "Observations of the $^{12}\\rm{CO}(3-2)$ emission line at 345.80 GHz were carried out between Oct 3 and Oct 19 2011."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Cycle 0 compact configuration of the main array, pointed mosaics; no ACA",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA early science observations",
+      "quote": "R Scl was observed during ALMA Cycle 0 using the compact configuration of the main array."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "3.8''x2.8'' (1-0), 2.1''x1.7'' (2-1), 1.6''x1.2'' (3-2)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $^{12}\\rm{CO}(2-1)$ | 2.1$''$ $\\times$ 1.7$''$ | 11$''$ | 1.0 | 6.4 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "18'' (1-0), 11'' (2-1), 7'' (3-2)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $^{12}\\rm{CO}(3-2)$ | 1.6$''$ $\\times$ 1.2$''$ | 7$''$ | 0.5 | 16.0 |"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "rms 7.3, 6.4, 16.0 mJy/beam for 1-0, 2-1, 3-2",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| $^{12}\\rm{CO}(1-0)$ | 3.8$''$ $\\times$ 2.8$''$ | 18$''$ | 1.5 | 7.3 |"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "64 min (Band 3), 90 min (Band 6), 155 min (Band 7)",
+    "evidence": [
+     {
+      "loc": "Table 1 (setup)",
+      "quote": "| 7             | 1875.0  | 0.488      | 45            | 155            | 3c454.3        | Neptune  | 331.17:$^{13}$CO(3–2)       |   |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "Band 3: Jan 23-25 2012; Band 6: Oct 1 2011; Band 7: Oct 3-19 2011",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA early science observations",
+      "quote": "Observations of the $^{12}\\rm{CO}(2-1)$ emission line at 230.54 GHz were carried out on Oct 1 2011."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "APEX",
+     "provided": {
+      "value": "New OTF maps of CO(2-1) and CO(3-2) single-dish spectra",
+      "evidence": [
+       {
+        "loc": "2.3 Single-dish observations",
+        "quote": "For the $^{12}\\rm{CO}(2-1)$ and $^{12}\\rm{CO}(3-2)$ transitions we observed two on-the-fly (OTF) maps with APEX."
+       }
+      ]
+     }
+    },
+    {
+     "name": "SEST and IRAM 30m",
+     "provided": {
+      "value": "CO(1-0) single-dish spectra from earlier work",
+      "evidence": [
+       {
+        "loc": "2.3 Single-dish observations",
+        "quote": "For the $^{12}\\rm{CO}(1-0)$ transition we use spectra from the Swedish-ESO submillimeter telescope (cite: olofssonetal1996) and the IRAM 30m telescope (cite: olofssonetal1993a)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Shell radius 19.5'' and width 2'' from dust-scattered light",
+      "evidence": [
+       {
+        "loc": "2.1 R Sculptoris",
+        "quote": "The radius and width of the shell were measured with high precision in images of dust scattered, stellar light, to be 19.5$''$$\\pm$0.5$''$ and 2$''$$\\pm$1$''$"
+       }
+      ]
+     },
+     "citation": "(cite: olofssonetal2010; maerckeretal2014)"
+    },
+    {
+     "what": {
+      "value": "12CO abundance 4.3e-4 relative to H2",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "We assume a fractional abundance of $^{12}$CO of f($^{12}$CO)=$4.3\\times10^{-4}$ relative to H$_2$ (cite: olofssonetal1993a)."
+       }
+      ]
+     },
+     "citation": "(cite: olofssonetal1993a)"
+    },
+    {
+     "what": {
+      "value": "Present-day mass-loss rate ~3e-7 Msun/yr from HCN models",
+      "evidence": [
+       {
+        "loc": "3.3 The recent evolution of the stellar wind",
+        "quote": "The present-day mass-loss rate is estimated to be $\\approx$3$\\times10^{-7}$ $M_{\\odot}$ yr$^{-1}$ based on HCN models (cite: schoieretal2005)."
+       }
+      ]
+     },
+     "citation": "(cite: schoieretal2005)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Data re-reduced with CASA python scripts; SBs calibrated separately then combined",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "The delivered data was re-reduced to improve the data quality using version 4.1 of the Common Astronomy Software Application (*CASA*), making use of python scripts to automate the calibration process."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.1",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "using version 4.1 of the Common Astronomy Software Application (*CASA*)"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto (Band 3), Neptune (Bands 6, 7)",
+     "evidence": [
+      {
+       "loc": "Table 1 (setup)",
+       "quote": "| 3             | 937.5   | 0.244      | 7             | 64             | J0522-364      | Callisto | 101.5: continuum            |   |"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "≈10-20%",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "The absolute calibration uncertainty is $\\approx$10-20%."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "imaging of the CO emission lines was carried out with the CLEAN algorithm using natural weighting and binning the spectra."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "imaging of the CO emission lines was carried out with the CLEAN algorithm using natural weighting and binning the spectra."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Iterative masks with decreasing CLEAN thresholds",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "The complex structures of the CO envelope were masked in an iterative procedure with decreasing thresholds in CLEAN."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Smoothed to 4'' and 1.5 km/s for shell extraction; imsmooth to SD beams for comparison",
+     "evidence": [
+      {
+       "loc": "3.2 The shell emission",
+       "quote": "we smoothed the images to a spatial resolution of 4$''$ and a velocity resolution of 1.5 km s$^{-1}$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "7.3, 6.4, 16.0 mJy/beam",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "the rms is measured in line-free channels in the final reduced images."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Shell radius and expansion velocity used for extraction (19.5'', 14.3 km/s)",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "assuming a shell-radius of 19.5$''$ and an expansion velocity of 14.3 km s$^{-1}$ (cite: maerckeretal2012; maerckeretal2014)."
+       }
+      ]
+     },
+     "from_reference": "(cite: maerckeretal2012; maerckeretal2014)"
+    },
+    {
+     "what": {
+      "value": "Fractional abundance profile exponent a=2.5",
+      "evidence": [
+       {
+        "loc": "3.3 The recent evolution of the stellar wind",
+        "quote": "and a=2.5 (cite: mamonetal1988)"
+       }
+      ]
+     },
+     "from_reference": "(cite: mamonetal1988)"
+    },
+    {
+     "what": {
+      "value": "Radiative transfer code (1D Monte Carlo)",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "we calculated a grid of 1-dimensional radiative transfer models based on the monte-carlo technique (cite: schoierco2001)."
+       }
+      ]
+     },
+     "from_reference": "(cite: schoierco2001)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Phase and other calibrator details, flagging and bandpass solutions",
+    "Exact CLEAN thresholds, cell and image size",
+    "Channel binning and line-free channels",
+    "Molecular data (collisional rates) used in radiative transfer",
+    "Details of shell subtraction normalisation and how SD data beam-matched",
+    "Treatment of ALMA flux scale across SBs",
+    "Model grid for the CSE fits (how the fit was chosen)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Compare ALMA with single-dish to quantify missing flux",
+    "method": {
+     "value": "Smooth ALMA cubes to SD beams with imsmooth and compare spectra to SD spectra",
+     "evidence": [
+      {
+       "loc": "2.4 Interferometer vs. single-dish observations and extended emission",
+       "quote": "Figure [4](#f:sdspec) shows a comparison of observed SD spectra with the equivalent ALMA spectra extracted from maps that were smoothed to the same respective beams using the task *imsmooth* in *CASA*."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Toy CASA simulations of shell, spiral and extended discs reproduce observed images qualitatively",
+     "evidence": [
+      {
+       "loc": "2.4 Interferometer vs. single-dish observations and extended emission",
+       "quote": "Simulations in *CASA*, using the ALMA Cycle 0 compact configuration in the three bands, show that the observed features can indeed be explained"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract shell spectra",
+    "method": {
+     "value": "Extract ring of width ±3'' centred on shell radius in channel maps smoothed to 4'' and 1.5 km/s",
+     "evidence": [
+      {
+       "loc": "3.2 The shell emission",
+       "quote": "the shell emission is extracted from a ring with width $\\pm$3$''$ centred on the shell."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "shell radius 19.5'', v_exp 14.3 km/s",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "assuming a shell-radius of 19.5$''$ and an expansion velocity of 14.3 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit shell mass and temperature",
+    "method": {
+     "value": "Grid of 1D Monte Carlo radiative transfer models, chi2 minimisation on integrated intensities of all transitions",
+     "evidence": [
+      {
+       "loc": "3.2 The shell emission",
+       "quote": "For each model we determine the best-fit model (Fig. [6](#f:shellspec)) by minimising the $\\chi^2$ value"
+      }
+     ]
+    },
+    "software": [
+     "Monte Carlo radiative transfer code (Schöier & Olofsson 2001)"
+    ],
+    "key_parameters": [
+     {
+      "value": "masses 2.5e-3 to 4.75e-3 Msun step 0.25e-3; T 10-290 K step 20 K; Gaussian shell FWHM 2''",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "The grid is calculated for shell-masses between $2.5\\times10^{-3}$ $M_{\\odot}$ to $4.75\\times10^{-3}$ $M_{\\odot}$ in steps of $0.25\\times10^{-3}$ $M_{\\odot}$ and temperatures between 10 K to 290 K in steps of 20 K."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "f(12CO)=4.3e-4, constant temperature, 20% observational uncertainty, distance 370 pc",
+      "evidence": [
+       {
+        "loc": "3.2 The shell emission",
+        "quote": "The temperature is assumed to be constant throughout the shell."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimisation over grid, sigma=20%",
+     "evidence": [
+      {
+       "loc": "3.2 The shell emission",
+       "quote": "$\\sigma_{\\rm{obs,i}}$ is the uncertainty in the observation is assumed to be 20%"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with Olofsson et al. 2015 results from SD and CI",
+     "evidence": [
+      {
+       "loc": "3.2 The shell emission",
+       "quote": "using essentially independent methods (interferometry vs. SD observations and an independent consistency check with CI observations)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Model CSE mass-loss from shell-subtracted SD spectra",
+    "method": {
+     "value": "Convolve best-fit shell model with SD beams, subtract from SD spectra, model residual with constant mass-loss rate radiative transfer",
+     "evidence": [
+      {
+       "loc": "3.3 The recent evolution of the stellar wind",
+       "quote": "we convolved the best-fit model of the shell with the SD beams of the respective transitions (Fig. [7](#f:sdsub), top), and subtract it from the SD observations."
+      }
+     ]
+    },
+    "software": [
+     "Monte Carlo radiative transfer code (Schöier & Olofsson 2001)"
+    ],
+    "key_parameters": [
+     {
+      "value": "a=2.5; T_kin power law beta=-0.85; R0 = 3 stellar radii; velocity 3 to 14.3 km/s",
+      "evidence": [
+       {
+        "loc": "3.3 The recent evolution of the stellar wind",
+        "quote": "The velocity increases gradually from 3 km s$^{-1}$ to 14.3 km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant mass-loss rate, 1/r^2 density, black-body Teff 2300 K, L 5200 Lsun",
+      "evidence": [
+       {
+        "loc": "3.3 The recent evolution of the stellar wind",
+        "quote": "Assuming a constant mass-loss rate results in a 1/$r^2$ density distribution."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Manual fit to SD spectra; model degenerate",
+     "evidence": [
+      {
+       "loc": "3.3 The recent evolution of the stellar wind",
+       "quote": "Finally, the models are very degenerate between the chosen mass-loss rate, half-abundance radius, temperature profile, and velocity profile."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Emitting region sizes consistent with ALMA/SD limits",
+     "evidence": [
+      {
+       "loc": "3.3 The recent evolution of the stellar wind",
+       "quote": "These results are consistent with the limits set by the ALMA and SD data"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.1",
+    "used_for": {
+     "value": "Calibration, CLEAN imaging, imsmooth, simulations",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA early science observations",
+       "quote": "using version 4.1 of the Common Astronomy Software Application (*CASA*)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Shell mass",
+    "value": "4.5e-3",
+    "uncertainty": "±1.5e-3",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 The shell emission",
+      "quote": "The best-fit model gives a shell-mass of $(4.5\\pm1.5)\\times10^{-3}$ $M_{\\odot}$ at a temperature of 50$^{+200}_{-20}$ K."
+     }
+    ]
+   },
+   {
+    "quantity": "Shell temperature",
+    "value": "50",
+    "uncertainty": "+200/-20",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 The shell emission",
+      "quote": "at a temperature of 50$^{+200}_{-20}$ K"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass-loss rate during shell creation",
+    "value": "2.3e-5",
+    "uncertainty": "+1.7/-1.3 e-5",
+    "units": "Msun/yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 The shell emission",
+      "quote": "leads to a mass-loss rate of $(2.3^{+1.7}_{-1.3})\\times10^{-5}$ $M_{\\odot}$ yr$^{-1}$ during the creation of the shell."
+     }
+    ]
+   },
+   {
+    "quantity": "Average post-pulse mass-loss rate",
+    "value": "1.6e-5",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 The recent evolution of the stellar wind",
+      "quote": "using a mass-loss rate of 1.6$\\times10^{-5}$ $M_{\\odot}$ yr$^{-1}$ and a half-abundance radius of 7.2$''$."
+     }
+    ]
+   },
+   {
+    "quantity": "Recent mass-loss rate (IRAM CO 1-0, APEX CO 3-2)",
+    "value": "3.5e-6",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 The recent evolution of the stellar wind",
+      "quote": "a mass-loss rate of 3.5$\\times10^{-6}$ $M_{\\odot}$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total mass lost since last TP",
+    "value": "0.03",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "the total mass lost by R Scl since the onset of the most recent TP is 0.03 $M_{\\odot}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "The shell is entirely filled with gas, not detached",
+    "evidence": [
+     {
+      "loc": "2.4 Interferometer vs. single-dish observations and extended emission",
+      "quote": "Extended emission from $^{12}$CO reaching out to the shell means that the shell is in fact not detached, but instead filled with significant amounts of molecular gas."
+     }
+    ]
+   },
+   {
+    "value": "An additional high-velocity component (±18 km/s) is centred on the star, origin unclear",
+    "evidence": [
+     {
+      "loc": "3.4 An additional velocity component",
+      "quote": "However, it is not clear what the origin of this higher-velocity component is."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is the CO shell around R Scl detached?",
+    "experiment": "Compared multi-scale ALMA CO data to SD spectra and toy simulations",
+    "result": "Extended CO emission fills the shell; CO(1-0) extends almost to the shell",
+    "finding": "The shell is filled, not detached",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "contrary to what was believed so far, the shell around R Scl is entirely filled with gas and as such is not detached,"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Shell mass and temperature",
+    "experiment": "Radiative transfer chi2 grid fit to ALMA shell spectra",
+    "result": "4.5e-3 Msun at 50 K",
+    "finding": "Consistent with SD-based estimates",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 The shell emission",
+      "quote": "The best-fit model gives a shell-mass of $(4.5\\pm1.5)\\times10^{-3}$ $M_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Post-pulse mass-loss declines sharply",
+    "experiment": "Modelled shell-subtracted SD spectra",
+    "result": "Average 1.6e-5 Msun/yr over ~2100 yr",
+    "finding": "Decline is slower than models; total mass lost 0.03 Msun, ~4x classical",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "the derived mass-loss rates imply that the decline in mass-loss rate after the pulse must have been significantly slower than previously assumed, and"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Resolve shell from inner CSE emission with high spatial resolution",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The spatial resolution of the ALMA data allows us to separate the detached shell emission from the extended emission inside the shell."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Cycle 0 lacks ACA, so extended flux is lost; mass-loss modelling degenerate",
+     "evidence": [
+      {
+       "loc": "3.3 The recent evolution of the stellar wind",
+       "quote": "The loss of extended flux in the current ALMA data prevents using these observations to effectively constrain the mass-loss rate evolution"
+      }
+     ]
+    },
+    {
+     "value": "Distance very uncertain",
+     "evidence": [
+      {
+       "loc": "2.1 R Sculptoris",
+       "quote": "Current distance estimates are very uncertain, ranging from 266 pc"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Constant-mass-loss, smooth 1D models applied to a clumpy, spiral CSE",
+    "12CO abundance assumed; shell mass is a lower limit",
+    "Uncertainties on mass-loss rates not given for the CSE fit",
+    "Distance uncertainty scales masses and rates"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA Cycle 0 project cited; SD data from literature and APEX",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of ALMA data from project no. ADS/ JAO.ALMA#2011.0.00131.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Radiative transfer model inputs and molecular data",
+    "APEX and SEST/IRAM spectra",
+    "CLEAN parameters"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Public Cycle 0 data and clear modelling grid, but CLEAN and CSE fit details are lacking.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires SD spectra and a specific RT code; CSE fit is not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: schoierco2001)",
+     "why": "1D Monte Carlo radiative transfer code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: maerckeretal2012)",
+     "why": "Earlier CO(3-2) ALMA analysis of spiral and hydrodynamics"
+    },
+    {
+     "citation": "(cite: maerckeretal2014)",
+     "why": "Dust-scattered light shell properties"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Cycle 2 follow-up of R Scl"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-ae2bbc09bf87acf8471146c20f05229d",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:21",
+  "usage": {
+   "input_tokens": 23663,
+   "output_tokens": 8923,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068885,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 48,
+   "rate": 0.658
+  },
+  "evidence_ok": true
+ }
+}

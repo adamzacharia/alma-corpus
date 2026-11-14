@@ -1,0 +1,654 @@
+{
+ "bibcode": "2025ApJ...988..111I",
+ "title": "The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ade235",
+ "arxiv_id": "2506.08601",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Whether protostellar outflows and jets exist and are spatially resolvable in the low-metallicity outer Galaxy, whether their physical properties resemble inner-Galaxy sources, and how the SiO/CO ratio in the jet compares",
+ "alma_project_codes": [
+  "2022.1.01270.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.87-mm continuum)",
+  "arrays": "42-46 antennas depending on execution; 45 antennas (42 in one execution) for Sh 2–283, 46 for NOMF05-16/19/23, 45 for NOMF05-63",
+  "angular_resolution": "Average line-image beams: Sh 2–283 0.79 x 0.68 arcsec; NOMF05-16 0.61 x 0.50; NOMF05-19 0.60 x 0.49; NOMF05-23 0.61 x 0.50; NOMF05-63 0.60 x 0.51 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Kinematic distance of Sh 2–283 (7.2 kpc), not adopted",
+    "evidence": [
+     {
+      "loc": "2.1 Targets",
+      "quote": "Based on the model A5 in (cite: Reid2014), the kinematic distance of Sh 2–283 is estimated to be 7.2 kpc"
+     }
+    ]
+   },
+   "citation": "(cite: Reid2014)"
+  },
+  {
+   "what": {
+    "value": "Distances and galactocentric distances for NOMF05-16/19/23/63 sources",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "For the other sources, we use the values derived in (cite: Nakagawa2005)."
+     }
+    ]
+   },
+   "citation": "(cite: Nakagawa2005)"
+  },
+  {
+   "what": {
+    "value": "Metallicity of Sh 2–283 (about 30% solar), and 20-30% solar expected for the other regions from a galactocentric distance relation",
+    "evidence": [
+     {
+      "loc": "2.1 Targets",
+      "quote": "The metallicity of Sh 2–283 is estimated to be approximately 30"
+     },
+     {
+      "loc": "2.1 Targets",
+      "quote": "they are expected to be 20-30"
+     }
+    ]
+   },
+   "citation": "(cite: Fer17); (cite: Are21)"
+  },
+  {
+   "what": {
+    "value": "Metallicity-corrected X_CO of 5e20 cm^-2 (K km/s)^-1",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of the morphological and dynamical properties",
+      "quote": "Here, we use a metallicity-corrected $X_\\mathrm{CO}$ of 5 $\\times$ 10$^{20}$ cm$^{-2}$ (K km s$^{-1}$) from (cite: Bol13)."
+     }
+    ]
+   },
+   "citation": "(cite: Bol13)"
+  },
+  {
+   "what": {
+    "value": "Luminosity and Ks magnitude of the LMC hot core ST16 used to scale the luminosity of Sh 2–283–1a SMM1",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of the morphological and dynamical properties",
+      "quote": "we estimate its luminosity by scaling the luminosity of the LMC hot core (ST16) with its"
+     }
+    ]
+   },
+   "citation": "(cite: Shimonishi2021)"
+  },
+  {
+   "what": {
+    "value": "Outflow mass versus luminosity correlation used for a second luminosity estimate",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of the morphological and dynamical properties",
+      "quote": "(cite: Maud2015) performed a statistical study of protostellar outflows and they found correlations between outflow masses and luminosities (see their Figure 5)."
+     }
+    ]
+   },
+   "citation": "(cite: Maud2015)"
+  },
+  {
+   "what": {
+    "value": "AKARI FIS far-infrared upper limit on luminosity",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of the morphological and dynamical properties",
+      "quote": "This value is consistent with the upper limit derived from far-infrared data obtained from the"
+     }
+    ]
+   },
+   "citation": "(cite: Yam10)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters (Q, g_u, frequency, dipole moment, E_u, S) from CDMS",
+    "evidence": [
+     {
+      "loc": "4.3.1 Derivation of molecular column densities",
+      "quote": "are extracted from the Cologne Database for Molecular Spectroscopy (CDMS) (cite: Muller2001; Muller2005)"
+     }
+    ]
+   },
+   "citation": "(cite: Muller2001; Muller2005)"
+  },
+  {
+   "what": {
+    "value": "L1448 SiO jet rotational temperature 100-500 K and N(SiO) = 3e13 cm^-2 from SiO multi-line analysis",
+    "evidence": [
+     {
+      "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+      "quote": "(cite: Nisini2007) derived the rotational temperature of the SiO jet components with the multiwavelength observations."
+     }
+    ]
+   },
+   "citation": "(cite: Nisini2007)"
+  },
+  {
+   "what": {
+    "value": "L1448 CO T_rot = 11 K and N(CO) = 5.7e15 cm^-2, giving N(SiO)/N(CO) = 5e-3",
+    "evidence": [
+     {
+      "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+      "quote": "From these results, the $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ of L1448 is 5 $\\times$ 10$^{-3}$."
+     }
+    ]
+   },
+   "citation": "(cite: Tafalla2010)"
+  },
+  {
+   "what": {
+    "value": "Orion SiO jet sources: N(SiO)/N(CO) range 5.3–88.4e-4, mean 25.5e-4 (LTE, optically thin, T_rot = 150 K)",
+    "evidence": [
+     {
+      "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+      "quote": "The derived $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ ranges 5.3–88.4 $\\times$ 10$^{-4}$ and the averaged $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ is 25.5 $\\times$ 10$^{-4}$."
+     }
+    ]
+   },
+   "citation": "(cite: Dutta2024)"
+  },
+  {
+   "what": {
+    "value": "H2 density of 1e5-1e6 cm^-3 for jet bullets used as RADEX input",
+    "evidence": [
+     {
+      "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+      "quote": "representing the typical gas density of jet bullets (cite: Nisini2007; Lefloch2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Nisini2007; Lefloch2015)"
+  },
+  {
+   "what": {
+    "value": "Sub-thermal excitation can make LTE CO(3-2) mass underestimates by up to 1-2 orders of magnitude",
+    "evidence": [
+     {
+      "loc": "4.1 Comparison of the morphological and dynamical properties",
+      "quote": "showed that CO($J$ = 3–2) with the LTE assumption can underestimate the outflow mass by up to 1–2 orders of magnitude"
+     }
+    ]
+   },
+   "citation": "(cite: Ginsburg2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image the visibilities",
+   "method": "ALMA pipeline calibration in CASA 6.4.1.12, uvcontsub, tclean cubes (Briggs 0.5), one round of phase self-calibration (SMM1 only), impbcor",
+   "software": [
+    "CASA 6.4.1.12",
+    "ALMA pipeline 2022.2.0.64",
+    "uvcontsub",
+    "tclean",
+    "impbcor"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5 for each SPW",
+    "phase self-calibration, one round, 60 s solution interval (Sh 2–283–1a SMM1)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "separate core, outflow and jet velocity components in CO(3-2)",
+   "method": "Core/outflow boundary from FWTM (1.8 x FWHM) of a Gaussian fit to HCO+ J=4-3 at the continuum peak; outflow/jet terminal velocities from emission morphology, line shape, channel-map bullets and a 3 sigma rms cut",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "HCO+ Gaussian fit spectrum from a 0.89'' x 0.70'' elliptical region at the 0.87-mm continuum peak",
+    "CO spectra extracted from a 4.0'' x 10.0'' elliptical region around the continuum peak"
+   ],
+   "assumptions": [
+    "Bullet structures appear near Vobs ~50 km/s, marking the outflow terminal velocity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "map outflow and jet integrated intensity and measure the SiO jet",
+   "method": "Integrate CO channels over each velocity component for maps; for SiO, extract a spectrum from a 0.70'' diameter aperture at the SiO jet peak and fit a Gaussian to define the velocity range",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive outflow and jet dynamical properties",
+   "method": "Dynamical timescale t_d = (L_obs/V_obs)(cos i / sin i); mass M_out = 2 mu_p m_p X_CO integral(T_CO dV); momentum, mass-loss rate, force, energy and kinetic luminosity derived for each lobe",
+   "software": [],
+   "key_parameters": [
+    "mean atomic mass per H atom 1.41",
+    "X_CO = 5e20 cm^-2 (K km/s)^-1, metallicity corrected"
+   ],
+   "assumptions": [
+    "Inclination i = 45 deg to the line of sight",
+    "CO optically thin and in LTE for both outflow and jet",
+    "Median velocity of each component taken as the representative flow velocity"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "estimate the protostar luminosity",
+   "method": "Scale the luminosity of the LMC hot core ST16 by Ks magnitude and distance; cross-check with an outflow mass-luminosity correlation",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Single-band scaling from ST16 (full SED of SMM1 unavailable), large uncertainty acknowledged"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "measure episodic ejection intervals from the PV diagram",
+   "method": "Position-velocity diagram along the flow axis; time interval = inverse of the slope of each spine-like structure (S1-S3)",
+   "software": [],
+   "key_parameters": [
+    "PV cut along the flow axis at position angle 1.1 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "derive CO and SiO column densities and N(SiO)/N(CO) in the jet bullet (LTE)",
+   "method": "Optically thin LTE upper-level column density formula, spectra from a 0.35'' radius circle at the SiO jet peak, spectroscopic data from CDMS, T_rot taken from literature",
+   "software": [
+    "CDMS"
+   ],
+   "key_parameters": [
+    "T_rot(SiO) = 100–500 K and T_rot(CO) = 11 K (L1448 comparison); T_rot = 150 K for both (Orion comparison)"
+   ],
+   "assumptions": [
+    "CO and SiO optically thin and in LTE",
+    "T_rot unknown because only one transition per molecule is detected"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "test the non-LTE effect on N(SiO)/N(CO)",
+   "method": "RADEX non-LTE calculations for SiO(8-7) and CO(3-2) with a grid in kinetic temperature and H2 density",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "n(H2) = 1e5–1e6 cm^-3; background temperature 2.73 K; linewidths 8.5 (SiO) and 9.1 (CO) km/s; peak intensities 0.15 (SiO) and 1.45 (CO) K"
+   ],
+   "assumptions": [
+    "Gas density of jet bullets 1e5-1e6 cm^-3 from literature"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "measure outflows in the other four outer-Galaxy sources",
+   "method": "Same dynamical-property procedure as for Sh 2–283–1a SMM1 with i = 45 deg, spectra from elliptical regions covering each outflow",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Inclination i = 45 deg"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Distance to Sh 2–283 (Gaia EDR3, bias-corrected)",
+   "value": "7.9",
+   "uncertainty": "+1.2/-1.1",
+   "units": "kpc",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2.1 Targets",
+     "quote": "According to the astrometric data of a nearby cluster member (ALS 18674) in the Gaia Early Data Release 3 (cite: Gaia2021; Bra19), the distance to Sh 2–283 is estimated to be 7.9$^{+1.2}_{-1.1}$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflows detected among protostar candidates",
+   "value": "5 of 16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results and Analysis",
+     "quote": "outflows were detected in 5 out of the 16 protostellar candidates"
+    }
+   ]
+  },
+  {
+   "quantity": "Jet bullets in Sh 2–283–1a SMM1",
+   "value": "4 red-shifted, 2 blue-shifted",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 CO outflows and jets",
+     "quote": "We find four jet bullets in the red-shifted side and two in the blue-shifted side."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity of Sh 2–283–1a SMM1",
+   "value": "53.2",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "the systemic velocity of the source (53.2 km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO outflow dynamical timescale (red, blue; text values)",
+   "value": "1.2e4 (red), 1.4e4 (blue)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of the morphological and dynamical properties",
+     "quote": "approximately 1.2 $\\times$ 10$^4$ years for the red lobe and 1.4 $\\times$ 10$^4$ years for the blue lobe"
+    }
+   ]
+  },
+  {
+   "quantity": "CO jet dynamical timescale (red and blue; text values)",
+   "value": "5.0e3",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of the morphological and dynamical properties",
+     "quote": "the dynamical timescale of the jets is approximately 5.0 $\\times$ 10$^3$ years for both the red and blue lobes"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass of outflows (red, blue, total) and jets (red, blue, total), i = 45 deg (lower limits)",
+   "value": "31, 42, 73 and 1.9, 1.9, 3.8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Mass (M$_\\ensuremath{\\odot}$) | 31 | 42 | 73 | 1.9 | 1.9 | 3.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow momentum",
+   "value": "2.8e3",
+   "uncertainty": "not stated",
+   "units": "Msun km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2.8 $\\times$ 10$^{3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total jet momentum",
+   "value": "3.6e2",
+   "uncertainty": "not stated",
+   "units": "Msun km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "3.6 $\\times$ 10$^{2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass loss rate",
+   "value": "6.2e-3",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "6.2 $\\times$ 10$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total jet mass loss rate",
+   "value": "8.2e-4",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "8.2 $\\times$ 10$^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow energy",
+   "value": "1.1e48",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "1.1 $\\times$ 10$^{48}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total jet energy",
+   "value": "3.6e47",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "3.6 $\\times$ 10$^{47}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity of Sh 2–283–1a SMM1 (scaling from ST16)",
+   "value": "6.7e3",
+   "uncertainty": "large uncertainty, not quantified",
+   "units": "Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of the morphological and dynamical properties",
+     "quote": "we obtain 6.7$\\times$ 10$^3$ L$_\\ensuremath{\\odot}$ as the luminosity of Sh 2–283–1a SMM1."
+    }
+   ]
+  },
+  {
+   "quantity": "PV spine slopes and timescales, red side (S1, S2, S3)",
+   "value": "slopes 6.2, 18.8, 33.3 km/s/arcsec; timescales about 6000, 2000, 1100 yr",
+   "uncertainty": "not stated",
+   "units": "km/s/arcsec; yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 The episodic mass-ejection events",
+     "quote": "The slopes of the red-shifted side of S1, S2, and S3 are 6.2, 18.8, and 33.3 km s$^{-1}$ arcsec$^{-1}$, and they correspond to the time scales of approximately 6000, 2000, and 1100 years."
+    }
+   ]
+  },
+  {
+   "quantity": "PV spine slopes and timescales, blue side (S1, S2, S3)",
+   "value": "slopes 6.5, 14.0, 30.0 km/s/arcsec; timescales about 5800, 2700, 1200 yr",
+   "uncertainty": "not stated",
+   "units": "km/s/arcsec; yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 The episodic mass-ejection events",
+     "quote": "For the blue-shifted side of S1, S2, and S3, the slopes are 6.5, 14.0, and 30.0 km s$^{-1}$ arcsec$^{-1}$ and they correspond to the time scales of approximately 5800, 2700, and 1200 years."
+    }
+   ]
+  },
+  {
+   "quantity": "Episodic mass-ejection interval",
+   "value": "1600 average (900–4000 range)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 The episodic mass-ejection events",
+     "quote": "Thus, the time intervals of the episodic mass-ejection events for Sh 2–283–1a SMM1 are predicted to be on average 1600 years (900–4000 years)."
+    }
+   ]
+  },
+  {
+   "quantity": "N(SiO)/N(CO) in jet bullet, LTE, T_rot = 150 K for both",
+   "value": "1.7e-4",
+   "uncertainty": "0.6e-4",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+     "quote": "the derived $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ is 1.7 ($\\pm$ 0.6) $\\times$ 10$^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "N(SiO)/N(CO) in jet bullet, LTE, T_rot(SiO) = 100–500 K and T_rot(CO) = 11 K",
+   "value": "(1.1–3.2)e-4, with N(SiO) = (1.9–5.2)e12 cm^-2 and N(CO) = 2.1e16 cm^-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+     "quote": "Under these assumptions, we derive $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ = (1.1–3.2) $\\times$ 10$^{-4}$, where $N\\mathrm{(SiO)}$ = (1.9–5.2) $\\times$ 10$^{12}$ cm$^{-2}$ and $N\\mathrm{(CO)}$ = 2.1 $\\times$ 10$^{16}$ cm$^{-2}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "N(SiO)/N(CO), RADEX, T_kin = 100–500 K (SiO) and 11 K (CO)",
+   "value": "4.8–48e-4 for n(H2) = 1e5 cm^-3; 0.9–3.4e-4 for n(H2) = 1e6 cm^-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+     "quote": "The resultant $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ ratio is 4.8–48$\\times$10$^{-4}$ with $n(\\mathrm{H_2})$ = 10$^{5}$ cm$^{-3}$, while it is 0.9–3.4$\\times$10$^{-4}$ with $n(\\mathrm{H_2})$ = 10$^{6}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "N(SiO)/N(CO), RADEX, uniform T_kin = 150 K",
+   "value": "6.6e-3 for n(H2) = 1e5 cm^-3; 3.3e-4 for n(H2) = 1e6 cm^-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3.2 Comparison of SiO abundance with nearby sources",
+     "quote": "In this case, the resultant $N\\mathrm{(SiO)}$/$N\\mathrm{(CO)}$ ratio is 6.6$\\times$10$^{-3}$ for $n(\\mathrm{H_2})$ = 10$^{5}$ cm$^{-3}$, and 3.3$\\times$10$^{-4}$ for $n(\\mathrm{H_2})$ = 10$^{6}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass, NOMF05-16–1",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Total | 45 | – | 7.6"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass, NOMF05-23–1",
+   "value": "15",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Total | 15 | – | 1.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass, NOMF05-23–3",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Total | 0.25 | – | 1.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Total outflow mass, NOMF05-63–1",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "Total | 16 | – | 2.7"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for uvcontsub and the continuum image used for self-calibration",
+  "Image size, cell size, deconvolver, masks, niter/threshold and cube velocity resolution/channel width for the tclean cubes",
+  "Whether Sh 2–283–1a SMM1 received different imaging settings from other sources and whether images were smoothed to a common beam",
+  "Final image rms values and the lowest-contour levels (only a factor of ~3 sensitivity drop at field edge is stated)",
+  "How the spectra and integrated-intensity maps were masked and the exact integration limits per lobe and per bullet",
+  "How projected lengths L_obs of outflow and jet lobes were measured, and the exact region used for mass summation",
+  "Outflow-axis definition and slice width for the PV diagram, and how the spine slopes were fitted",
+  "Which rotational temperature (and the exact T_rot pair) is adopted for the headline N(SiO)/N(CO) value, and whether T_rot = 150 K was the baseline",
+  "Treatment of the CO(3-2) optical depth and of the CO abundance X_CO to N(CO) conversion for the jet-bullet column density",
+  "Reason for the 6.7e3 vs 6.6e3 Lsun luminosity values and for the dynamical timescales in Table 4 differing from the text"
+ ],
+ "missing_for_reproduction": [
+  "Cube and image parameters (cell, image size, channel width, masks, thresholds), line-free channels and image rms",
+  "Exact integration velocity limits per lobe, lobe lengths and apertures for mass and timescale",
+  "PV slice width and the procedure for fitting spine slopes",
+  "Final T_rot choice and spectra regions for CO and SiO column densities, and RADEX grid details",
+  "No released scripts or derived products"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and CASA/pipeline versions, Briggs robust and the main equations are given, but cube geometry, masks, line-free channels, region definitions and T_rot choices are missing, and no code is released; key numbers are given in tables.",
+ "rediscovery_reason": "Single Cycle 9 project code (2022.1.01270.S) with named pipeline and CASA versions, standard equations and numeric outputs (masses, timescales, SiO/CO ratios) make a redo of the main results feasible, although public status is not stated and several imaging parameters must be chosen by the reproducer.",
+ "source_card": "cards/2025ApJ...988..111I/sonnet/card.md"
+}

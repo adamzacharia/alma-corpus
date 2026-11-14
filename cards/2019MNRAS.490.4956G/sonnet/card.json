@@ -1,0 +1,965 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.490.4956G",
+  "title": "An ALMA survey of the SCUBA-2 Cosmology Legacy Survey UKIDSS/UDS field: high-resolution dust continuum morphologies and the link between sub-millimetre galaxies and spheroid formation",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Gullberg, B.",
+  "n_authors": 18,
+  "arxiv_id": "1910.01121",
+  "doi": "10.1093/mnras/stz2835",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01528.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Sample Selection",
+    "quote": "Our sample is drawn from an ALMA follow-up study, called AS2UDS (cite: stach19), of the sub-millimetre sources discovered in the SCUBA-2 Cosmology Legacy Survey map of the Ultra Deep Survey field"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "153 AS2UDS SMGs (S/N>8, Cycle 3, 0.18'' resolution) in the SCUBA-2 CLS UDS field",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "median z=2.9±0.1 (photometric)",
+      "evidence": [
+       {
+        "loc": "Sample Selection",
+        "quote": "We therefore select all 153 SMGs which were observed in Cycle 3 (0.18$''$ FWHM) and are detected with S/N $>8$ in the 0.5$''$ tapered maps"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "photometric redshifts from magphys SED fitting (ugne19)",
+      "evidence": [
+       {
+        "loc": "Sample Selection",
+        "quote": "We therefore select all 153 SMGs which were observed in Cycle 3 (0.18$''$ FWHM) and are detected with S/N $>8$ in the 0.5$''$ tapered maps"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the sizes, shapes and light profiles of the 870 um dust continuum in bright SMGs, and do they indicate bar-like structures and spheroid formation?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We measure sizes, shapes and light profiles for the rest-frame far-infrared emission from these luminous star-forming systems"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01528.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "The ALMA data used in this paper were obtained under programs ADS/JAO.ALMA#2015.1.01528.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "receivers tuned to central frequency 344 GHz (870 um continuum)",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "For all the observations, the central frequency of the receivers was tuned to 344 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.18'' FWHM native (Cycle 3); 0.18''-0.35'' across cycles",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "the FWHM of the naturally weighted synthesised beam varies from $0.18\\ensuremath{''}$ to $0.35\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.09-0.34 mJy/beam in 0.5'' tapered maps",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "The noise in these tapered maps varies between $0.09$–$0.34$ mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "40 seconds per source",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "the exposure time of 40 seconds per source is short"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST/CANDELS",
+     "provided": {
+      "value": "F606W, F814W, F125W, F160W imaging for 47 SMGs",
+      "evidence": [
+       {
+        "loc": "Sample Selection",
+        "quote": "This provides F606W, F814W, F125W, and F160W-band observations for 47 of the AS2UDS SMGs that lie in the central region of the UDS."
+       }
+      ]
+     }
+    },
+    {
+     "name": "UKIDSS UDS K-band",
+     "provided": {
+      "value": "K-band images for Sérsic size fits with GALAPAGOS",
+      "evidence": [
+       {
+        "loc": "3.3 Comparison of the dust and rest-frame optical emission",
+        "quote": "we perform a Sérsic fit to the $K$-band images of all of the SMGs in our sample using GALAPAGOS"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Photometric redshifts, SFRs, dust and stellar masses from magphys SED fitting",
+      "evidence": [
+       {
+        "loc": "Multi-wavelength data sets",
+        "quote": "(cite: ugne19) use the extensive multiwavelength imaging of the UDS to estimate the photometric redshifts and physical properties of the complete sample"
+       }
+      ]
+     },
+     "citation": "(cite: ugne19)"
+    },
+    {
+     "what": {
+      "value": "AS2UDS source positions and catalogue",
+      "evidence": [
+       {
+        "loc": "3.1 Sizes measurements from the visibility plane",
+        "quote": "aligning the phase centre of our visibilities with the source positions from (cite: stach19)"
+       }
+      ]
+     },
+     "citation": "(cite: stach19)"
+    },
+    {
+     "what": {
+      "value": "GAMA g-band morphologically classified galaxy axis ratios and Sérsic indices",
+      "evidence": [
+       {
+        "loc": "4.1 Discs, spheroids or bars?",
+        "quote": "to those derived in the $g$-band for the stellar light distributions of a morphologically classified sample of low-redshift galaxies from the GAMA survey (cite: kelvin14)"
+       }
+      ]
+     },
+     "citation": "(cite: kelvin14)"
+    },
+    {
+     "what": {
+      "value": "12CO(3-2) profiles of four ALESS SMGs",
+      "evidence": [
+       {
+        "loc": "4.2 What is the extended dust component?",
+        "quote": "We also overlay the gas emission as inferred from the molecular $^{12}$CO(3–2) emission from four SMGs from ALESS (cite: rivera18)."
+       }
+      ]
+     },
+     "citation": "(cite: rivera18)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard ALMA calibration scripts",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "we used the Common Astronomy Software Application (cite: mcmullin07) version 4.5.3 using the standard ALMA calibration scripts."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.5.3",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "version 4.5.3 using the standard ALMA calibration scripts"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN in CASA",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "The data were imaged using the CLEAN, algorithm in CASA with natural weighting (ROBUST $=2$)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural (robust = 2)",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "natural weighting (ROBUST $=2$)"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "0.5'' FWHM taper for catalogue",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "Hence to construct the catalogue, all of the maps were tapered to 0.5$''$ FWHM."
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "0.03'' per pixel",
+     "evidence": [
+      {
+       "loc": "3.2 Sizes and shape measurements from the image plane",
+       "quote": "at the same pixel scale as our data ($0.03\\ensuremath{''}$ pixel$^{-1}$)"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction, imaging and catalogue construction of AS2UDS",
+      "evidence": [
+       {
+        "loc": "Sample Selection",
+        "quote": "Details of the AS2UDS observations, data reduction and catalog are given in (cite: stach19), although we briefly summarise these here."
+       }
+      ]
+     },
+     "from_reference": "(cite: stach19)"
+    },
+    {
+     "what": {
+      "value": "S/N>8 threshold for size uncertainty <35%",
+      "evidence": [
+       {
+        "loc": "Sample Selection",
+        "quote": "(cite: simpson15b) showed that for a signal-to-noise ratio of S/N $>8$, the uncertainties on the resulting size measurements of sources are $\\lesssim35$%"
+       }
+      ]
+     },
+     "from_reference": "(cite: simpson15b)"
+    },
+    {
+     "what": {
+      "value": "Apparent axis ratio formalism for projected triaxial/disc shapes",
+      "evidence": [
+       {
+        "loc": "4.4.1 Geometrical models",
+        "quote": "We follow the example of (cite: ryden04), where the apparent axis ratio $q$ is given by"
+       }
+      ]
+     },
+     "from_reference": "(cite: ryden04)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image-plane Sérsic fitting code (not named or released), fit algorithm, priors and bounds",
+    "Source of Cycle 3 project/member IDs and which execution blocks",
+    "Details of CASA simulation setups (configuration files, noise, flux distribution)",
+    "Mask/aperture and radial bin choices for stacked profiles",
+    "Fitting method and uncertainties for the two-component stack model",
+    "Cost function used to match axis-ratio distributions in the triaxial grid search",
+    "Photometric redshift/SFR table (Dudzeviciute et al.)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Select sample",
+    "method": {
+     "value": "Cycle 3 AS2UDS SMGs at 0.18'' with S/N>8 in 0.5'' tapered maps gives 153 sources",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "We therefore select all 153 SMGs which were observed in Cycle 3 (0.18$''$ FWHM) and are detected with S/N $>8$ in the 0.5$''$ tapered maps"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Size from uv-amplitude profiles",
+    "method": {
+     "value": "Shift phase centre with fixvis, radially average amplitudes in 75 klambda bins, fit Gaussian and n=1 Sérsic profiles",
+     "evidence": [
+      {
+       "loc": "3.1 Sizes measurements from the visibility plane",
+       "quote": "using the casa task fixvis and then radially averaging the amplitudes in 75 k$\\lambda$ bins"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "uv-range out to 1200 klambda; n=1 with free Reff",
+      "evidence": [
+       {
+        "loc": "3.1 Sizes measurements from the visibility plane",
+        "quote": "we adopt an $n=1$ Sérsic and allow the effective radius as a free parameter and fit the $uv$-amplitude profile for each SMG"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with 1.1 mm sizes of 30 overlap sources (ratio 0.95±0.05); simulated Sérsic profiles in CASA",
+     "evidence": [
+      {
+       "loc": "3.1 Sizes measurements from the visibility plane",
+       "quote": "derive a median ratio of FWHM from Gaussian fits of $0.95\\pm 0.05$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Image-plane 2D Sérsic fits",
+    "method": {
+     "value": "Fit 2D Sérsic convolved with the synthesised beam, free and fixed n=1, returning Reff, b/a, PA, n",
+     "evidence": [
+      {
+       "loc": "3.2 Sizes and shape measurements from the image plane",
+       "quote": "we fit a two dimensional Sérsic surface brightness profile, allowing the effective radius, axial ratio and Sérsic index to vary"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "1000 simulated galaxies: Reff recovered within 20%, axis ratio within 12%, n typical error 22%",
+     "evidence": [
+      {
+       "loc": "3.2 Sizes and shape measurements from the image plane",
+       "quote": "On average we recover the effective radii to within 20% and the axis ratios are recovered within 12% of the value of the input parameters."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Model axis ratio distribution",
+    "method": {
+     "value": "Compare observed b/a with optically thick/thin discs and triaxial models with Gaussian b/a and c/a distributions, uniform viewing angles; two-pass grid search; KS test and AIC",
+     "evidence": [
+      {
+       "loc": "4.4.1 Geometrical models",
+       "quote": "we perform our search for the best-fit model by running through the parameter space twice; first by using a large bin size to cover the full parameter range"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "uniform angle distributions for theta and phi",
+      "evidence": [
+       {
+        "loc": "4.4.1 Geometrical models",
+        "quote": "We assume uniform angle distributions for both $\\theta$ and $\\phi$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "grid search over mode and width parameters",
+     "evidence": [
+      {
+       "loc": "Modelling the axis ratio distribution / Geometrical models",
+       "quote": "we perform our search for the best-fit model by running through the parameter space twice; first by using a large bin size to cover the full parameter range"
+      }
+     ]
+    },
+    "validation": {
+     "value": "KS test and AIC (triaxial 10.8 vs 33.8 thick and 15.2 thin)",
+     "evidence": [
+      {
+       "loc": "4.4.1 Geometrical models",
+       "quote": "for the triaxial case is 10.8. The AIC values for the optical thick and thin cases with uniform viewing angle"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Stack maps to find extended emission",
+    "method": {
+     "value": "Stack in uv plane with STACKER weighted by 1/sigma^2 and in image plane using 10''x10'' thumbnails; fit double n=1 Sérsic",
+     "evidence": [
+      {
+       "loc": "4.3 Stacked emission profiles",
+       "quote": "employ the STACKER library developed for use in CASA to stack the visibilities (cite: lindroos15)"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "STACKER"
+    ],
+    "key_parameters": [
+     {
+      "value": "compact Reff fixed to 0.10''; extended Reff ~0.5''",
+      "evidence": [
+       {
+        "loc": "4.3 Stacked emission profiles",
+        "quote": "For the compact component we fix $R_{\\text{eff}}$ to the value derived above, $0.10\\ensuremath{''}\\pm0.04\\ensuremath{''}$, and for the extended component we adopt $R_{\\text{eff}}$ $\\sim0.5\\ensuremath{''}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Calibrator stack and CASA simulation of a 10x brighter compact n=1 source show no extended emission",
+     "evidence": [
+      {
+       "loc": "4.3 Stacked emission profiles",
+       "quote": "This test show that a compact source with $R_{\\text{eff}}$$= 0.11\\ensuremath{''}$ observed at 0.18$''$ resolution does not show emission on $\\geq0.5\\ensuremath{''}$ scale."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.3",
+    "used_for": {
+     "value": "calibration, imaging, fixvis, simulations",
+     "evidence": [
+      {
+       "loc": "Sample Selection",
+       "quote": "version 4.5.3 using the standard ALMA calibration scripts"
+      }
+     ]
+    }
+   },
+   {
+    "name": "STACKER",
+    "version": "not stated",
+    "used_for": {
+     "value": "stacking visibilities",
+     "evidence": [
+      {
+       "loc": "4.3 Stacked emission profiles",
+       "quote": "employ the STACKER library developed for use in CASA to stack the visibilities"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALAPAGOS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Sérsic fits to K-band images",
+     "evidence": [
+      {
+       "loc": "3.3 Comparison of the dust and rest-frame optical emission",
+       "quote": "using GALAPAGOS ((cite: almaini17)) which takes the PSF into account"
+      }
+     ]
+    }
+   },
+   {
+    "name": "magphys",
+    "version": "high-redshift version",
+    "used_for": {
+     "value": "SED fitting (by ugne19) for redshifts and physical properties",
+     "evidence": [
+      {
+       "loc": "Multi-wavelength data sets",
+       "quote": "using the high-redshift version of magphys (cite: dacunha15; battisti19)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median effective radius (n=1)",
+    "value": "0.10",
+    "uncertainty": "±0.04",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "derive a median effective radius ($R_e$) of $0.10\\ensuremath{''}\\pm0.04\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median Sérsic index (free fit)",
+    "value": "1.00",
+    "uncertainty": "±0.12",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Sizes and shape measurements from the image plane",
+      "quote": "we derive a median $n=1.00\\pm0.12$ and $R_{\\text{eff}}$$=0.11\\ensuremath{''}\\pm 0.01\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Median axis ratio b/a (fixed n)",
+    "value": "0.63",
+    "uncertainty": "±0.02",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Sizes and shape measurements from the image plane",
+      "quote": "a median of $b/a=0.63\\pm0.02$ for the fixed $n$ fit"
+     }
+    ]
+   },
+   {
+    "quantity": "Median Gaussian FWHM from uv fits",
+    "value": "0.25",
+    "uncertainty": "±0.03",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Sizes measurements from the visibility plane",
+      "quote": "we derive a median FWHM size of $0.25\\ensuremath{''} \\pm 0.03\\ensuremath{''}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Extended component fraction of total 870um emission",
+    "value": "13",
+    "uncertainty": "±1",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Stacked emission profiles",
+      "quote": "The extended component accounts for $13\\pm1$% of the total emission."
+     }
+    ]
+   },
+   {
+    "quantity": "Luminosity-weighted effective radius including extended component",
+    "value": "0.15",
+    "uncertainty": "±0.05",
+    "units": "arcsec",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we derive a typical effective radius of $\\simeq0.15\\ensuremath{''}\\pm0.05\\ensuremath{''}$ or $1.2\\pm0.4$ kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "K-band to 870um effective radius ratio",
+    "value": "2.2",
+    "uncertainty": "±0.2",
+    "units": "dimensionless",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "3.3 Comparison of the dust and rest-frame optical emission",
+      "quote": "the $K$-band effective radii are a factor of $2.2\\pm0.2$ larger than the effective radii measured at 870 $\\mu$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit triaxial b/a mode",
+    "value": "0.66",
+    "uncertainty": "±0.02",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$q_{b/a}$      |   0.1–1    | $0.66\\pm0.02$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Axis ratio distribution lacks round sources, matches spheroids but Sérsic index matches discs, consistent with bars",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "the axis ratio distribution of SMGs is most similar to those of spheroid galaxies, while their Sérsic index distribution is most similar to that of disc galaxies."
+     }
+    ]
+   },
+   {
+    "value": "Extended component's luminosity roughly constant with SFR while compact component brightens",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "the size and luminosity of the extended component is roughly constant with total star-formation rate, while the compact component becomes brighter."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are SMG dust continuum morphologies consistent with randomly oriented discs?",
+    "experiment": "Compared b/a distribution with thick/thin disc and triaxial models using KS and AIC",
+    "result": "Discs rejected (KS 0%); triaxial has KS 40% and lowest AIC",
+    "finding": "SMG emission is triaxial with n~1, bar-like",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.4.1 Geometrical models",
+      "quote": "We conclude that the “deficit” in high axis ratios is most likely due to intrinsic triaxial morphologies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there faint extended dust emission around the compact starburst?",
+    "experiment": "Stacked 870um maps in uv and image planes",
+    "result": "Extended component on ~0.5'' scales with 13±1% of flux",
+    "finding": "Extended disc/envelope similar to CO and stellar light",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Stacked emission profiles",
+      "quote": "we also clearly detect faint and extended emission on $\\geq 0.5\\ensuremath{''}$ scales"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do SMG sizes evolve with redshift or flux?",
+    "experiment": "Plotted Reff against z and S870",
+    "result": "Weak decline with z, marginal increase with S870",
+    "finding": "Physical sizes do not evolve strongly",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and Conclusions",
+      "quote": "The weak decline in size we see with redshift suggests that the physical sizes of SMGs do not evolve strongly with redshift"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Cycle 3 0.18'' data with S/N>8 give reliable sizes and shapes",
+    "evidence": [
+     {
+      "loc": "Sample Selection",
+      "quote": "This selection should ensure we can measure robust sizes and shapes for these sources"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Optically thick and thin circular disc models rejected as they need unphysical biased viewing angles",
+     "evidence": [
+      {
+       "loc": "4.4.1 Geometrical models",
+       "quote": "neither of the circular disc models is able to adequately fit the data without invoking assumptions of unphysical viewing angle biases"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution and depth insufficient to directly detect bars; higher resolution needed",
+     "evidence": [
+      {
+       "loc": "Summary and Conclusions",
+       "quote": "to confirm this requires deeper observations to detect the extended components in individual maps, higher resolution imaging ($\\sim0.08\\ensuremath{''}$)"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Bar interpretation inferred indirectly from statistics; 0.18'' resolution cannot resolve bars",
+    "Sérsic index poorly constrained (22% error) at this S/N",
+    "Photometric redshifts used for physical sizes",
+    "Extended component sensitive to assumed fixed Reff and profile shape"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA programme 2015.1.01528.S cited",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "The ALMA data used in this paper were obtained under programs ADS/JAO.ALMA#2015.1.01528.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Image-plane fitting code and settings",
+    "Photometric redshift catalogue (Dudzeviciute et al., submitted)",
+    "Stack fitting details",
+    "Simulation setup"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for Cycle 3 execution blocks covering 153+ fields (rough estimate)",
+   "score_inferred": 3,
+   "score_reason": "Data public and approach clear but fitting code, priors and several settings unstated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete (custom fitting code, redshift table external)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: stach19)",
+     "why": "AS2UDS data reduction and catalogue"
+    },
+    {
+     "citation": "(cite: ryden04)",
+     "why": "apparent axis ratio formalism"
+    },
+    {
+     "citation": "(cite: lindroos15)",
+     "why": "STACKER visibility stacking"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ugne19)",
+     "why": "photometric redshifts and physical properties of AS2UDS SMGs"
+    },
+    {
+     "citation": "(cite: hodge19)",
+     "why": "high-resolution bar and ring structures in SMGs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "AS2UDS",
+    "SCUBA-2 Cosmology Legacy Survey",
+    "CANDELS",
+    "ALESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c56ecfef9d0118fb669455dd29e9692f",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:31",
+  "usage": {
+   "input_tokens": 41176,
+   "output_tokens": 8260,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.083083,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 78,
+   "stated": 45,
+   "rate": 0.577
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:47",
+  "custom_id": "repair-sonnet-9ab5f26cd8425112503fe9fdbfca0cec",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "we perform our search for the best-fit model by running through the parameter space twice; first by using a large bin size to cover the full parameter range"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

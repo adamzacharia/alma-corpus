@@ -1,0 +1,298 @@
+{
+ "bibcode": "2020ApJ...895...74N",
+ "title": "ALMA Observations of Quasar Host Galaxies at z ≃ 4.8",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab8bd3",
+ "arxiv_id": "2003.00525",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "What are the host galaxy properties (dust, dynamical and gas masses, SFR, companions, [C II]-Mg II offsets) of luminous z~4.8 quasars, split into Herschel-detected (FIR-bright) and undetected (FIR-faint)?",
+ "alma_project_codes": [
+  "2016.1.01515.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.19-0.33 arcsec (~2 kpc)",
+  "sensitivity": "continuum rms 2.8e-2 to 6.2e-2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mg II-based redshifts, black hole masses and bolometric luminosities",
+    "evidence": [
+     {
+      "loc": "3.1.1",
+      "quote": "Black Hole masses were taken from T11 and are based on Mg II measurements."
+     }
+    ]
+   },
+   "citation": "Trakhtenbrot et al. 2011 (T11)"
+  },
+  {
+   "what": {
+    "value": "Herschel photometry values and errors",
+    "evidence": [
+     {
+      "loc": "3.1.2 SEDs and SFRs",
+      "quote": "values and errors from N14, with the 250 $\\mu$m flux error corrected as explained above"
+     }
+    ]
+   },
+   "citation": "Netzer et al. 2014 (N14)"
+  },
+  {
+   "what": {
+    "value": "Six quasars from pilot sample, ALMA measurements",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations",
+      "quote": "Previously, in T17, we observed three FIR-bright, and three FIR-faint quasar from our sample using ALMA."
+     }
+    ]
+   },
+   "citation": "(cite: Trakhtenbrot2017)"
+  },
+  {
+   "what": {
+    "value": "SDSS redshifts",
+    "evidence": [
+     {
+      "loc": "3.1.1",
+      "quote": "we also list the SDSS-based redshift determinations published in (cite: Hewett_2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Hewett_2010)"
+  },
+  {
+   "what": {
+    "value": "Literature [CII]-Mg II offsets for z>~6 quasars compilation",
+    "evidence": [
+     {
+      "loc": "3.1.1",
+      "quote": "eight quasars taken from (cite: Decarli2018)"
+     }
+    ]
+   },
+   "citation": "Decarli2018, Willott 2013/2015/2017, Venemans 2012/2016/2017, Mazzucchelli2017, Banados2015, Wang2016"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [CII] cubes",
+   "method": "CLEAN with Briggs weighting; continuum from line-free spw pair; UVCONTSUB on [CII] pair",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum and [CII] fluxes and sizes",
+   "method": "2D Gaussian fits to continuum and zero-moment images (spatial); 1D spectral Gaussian fits as check; aperture photometry for J1447",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compare [CII] and Mg II redshifts",
+   "method": "Velocity offsets between [CII] and Mg II (and SDSS) redshifts; compile with literature quasars",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "[CII] traces systemic redshift"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "FIR SED fits and SFR",
+   "method": "Fit Chary&Elbaz, Magnelli SMG, and gray-body SEDs to ALMA (+Herschel) photometry; integrate 8-1000 micron; SFR = L_FIR/1e10",
+   "software": [],
+   "key_parameters": [
+    "gray-body T = 40,45,50,55,60,70 K; beta = 1.5,1.7 (plus 47 K, 1.6)"
+   ],
+   "assumptions": [
+    "FIR emission dominated by SF-heated dust; Chabrier IMF"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust masses",
+   "method": "Optically thin dust: Md = S D_L^2 / (kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td = 47 K, beta = 1.6, kappa(850um)=0.077 m2/kg"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Dynamical and gas masses",
+   "method": "Mdyn = 9.8e8 D FWHM^2/sin^2 i; dispersion-dominated alternative; Mgas = 100 x Mdust",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "inclined rotating disk; GDR = 100"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Main sequence and BH-host comparison",
+   "method": "Adopt Mstar = 0.4 Mdyn (fgas=0.6); compare SFR-Mstar with Schreiber2015/Tomczak2016 MS; compute MBH/Mstar and growth rates over 50 Myr with eta=0.1",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "radiative efficiency 0.1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean Mg II blueshift relative to [CII] (17 hosts)",
+   "value": "464",
+   "uncertainty": "std 657",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "The average value for $\\Delta v_{{\\rm Mg}\\,\\textsc{ii} }$ is 464 km s$^{-1}$, with a standard deviation of 657 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Mg II offset",
+   "value": "379",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "while the median is found to be at 379 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean offset in compilation incl. literature",
+   "value": "372",
+   "uncertainty": "std 582",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1",
+     "quote": "we found a mean $z_{\\left[{\\rm C}\\,\\textsc{ii}\\right] }\n- z_{{\\rm Mg}\\,\\textsc{ii} }$ of 372 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass range (16 detected)",
+   "value": "2-15e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.4 Dust masses",
+     "quote": "find a range of $M_{dust} \\sim 2-15\\times 10^8 M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dust mass FIR-bright / FIR-faint",
+   "value": "10^9.0 / 10^8.4",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.4 Dust masses",
+     "quote": "with dust masses of $10^{9.0}$ and $10^{8.4}\nM_{\\odot}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean dynamical mass",
+   "value": "9e10",
+   "uncertainty": "0.44 dex mean error",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Dynamical Masses",
+     "quote": "The mean is $9 \\times 10^{10}$ $M_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Companion fraction",
+   "value": "5/18 (28%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1.5 Companion detections",
+     "quote": "our total observed sample of 18 quasars has 5 sources with companions"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean MBH/Mstar",
+   "value": "1/19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.4 SMBH-Host Galaxy Mass Relation",
+     "quote": "We find a mean $M_{BH}/M_{\\star}$ ratio of 1/19"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical-ALMA separation range",
+   "value": "0.005-0.062",
+   "uncertainty": "median error ~11 mas",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.5 Optical Center Separation",
+     "quote": "OS values have a range of 0.005” - 0.062” for our entire sample."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Flux/bandpass/phase calibrator names and pipeline vs manual calibration",
+  "Cleaning threshold, masks, and image size",
+  "Channel width of final cubes and line-free channels used for UVCONTSUB",
+  "Aperture sizes for J1447/J1151 photometry",
+  "Inclination derivation details from axis ratio",
+  "Mg II-based redshifts and L_AGN values needed from T11",
+  "How SED chi2 fits and uncertainties were computed",
+  "Moment-map clipping thresholds"
+ ],
+ "missing_for_reproduction": [
+  "Calibration details and calibrators",
+  "Clean thresholds/masks",
+  "Inclination derivation",
+  "T11 and N14 input values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and the main steps are simple formulas, but imaging details and external inputs are missing.",
+ "rediscovery_reason": "Public data, numeric results from simple flux/line fits and standard formulae.",
+ "source_card": "cards/2020ApJ...895...74N/sonnet/card.md"
+}

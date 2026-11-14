@@ -1,0 +1,254 @@
+{
+ "bibcode": "2018MNRAS.474.4500W",
+ "title": "ALMA and VLA observations of the HD 141569 system",
+ "year": 2018,
+ "doi": "10.1093/mnras/stx3098",
+ "arxiv_id": "1711.07489",
+ "fields": [
+  "debris_disks",
+  "stellar_physics"
+ ],
+ "question": "Is the shallow mm spectral index of the HD 141569 disc real, or is the 9 mm flux contaminated by stellar emission? What is the origin and variability of the 9 mm emission from HD 141569A, B and C?",
+ "alma_project_codes": [
+  "2013.1.00883.S"
+ ],
+ "data": {
+  "bands": "ALMA Band 3 (2.9 mm) archival; VLA Ka band (9 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "ALMA 2.9 mm beam 0.69x0.52 arcsec, PA 56 deg",
+  "sensitivity": "ALMA 24 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA 870 um flux 3800±500 uJy, peak 1740 uJy/beam, beam 0.42x0.34",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| ALMA | 0.87 | $3800\\pm500$ | $1740$ | $0.42\\times0.34$ | $-61.1^{\\circ}$ | Y | (cite: white) |"
+     }
+    ]
+   },
+   "citation": "(cite: white)"
+  },
+  {
+   "what": {
+    "value": "SMA 870 um flux 8200±2400 uJy",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| SMA | 0.87 | $8200\\pm2400$ | $4100$ | $1.66\\times1.16$ | $-82.2^{\\circ}$ | N | (cite: flaherty) |"
+     }
+    ]
+   },
+   "citation": "(cite: flaherty)"
+  },
+  {
+   "what": {
+    "value": "VLA 14A combined flux of B and C: 51±5 uJy",
+    "evidence": [
+     {
+      "loc": "UV Modelling",
+      "quote": "we use $51 \\pm 5~ \\rm\\mu Jy$ reported by (cite: macgregor)"
+     }
+    ]
+   },
+   "citation": "(cite: macgregor)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity index beta_s = 1.8±0.2",
+    "evidence": [
+     {
+      "loc": "Millimetre Spectral Index of the Disc",
+      "quote": "where $\\beta_{s} = 1.8\\pm0.2$ is a power law index for the dust opacity (cite: draine)"
+     }
+    ]
+   },
+   "citation": "(cite: draine)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "CLEAN with natural weighting to 0.5 sigma threshold",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit fluxes and positions in the uv plane",
+   "method": "uvmodelfit point source for VLA; flat-intensity disc for ALMA",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [
+    "Uncertainties: sigma_rms plus 5% (VLA) or 10% (ALMA) calibration, in quadrature"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive mm spectral index and grain size slope q",
+   "method": "Power-law fit F_nu ∝ nu^alpha between 870 um and 2.9 mm; q = (alpha_mm - alpha_pl)/beta_s + 3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "beta_s = 1.8±0.2"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Time-series variability and brightness temperatures",
+   "method": "Split data into ~5 min chunks, uvmodelfit each, compute brightness temperature from flux and stellar radius",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "HD 141569A radius ~1.5 Rsun; M dwarf radius ~ R_Jupiter"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "VLA 16A flux HD 141569A",
+   "value": "52±5 (53±5 in Sect. 3)",
+   "uncertainty": "5",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "a $52\\pm 5~\\mu$Jy point source at the location of HD 141569A"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 16A flux HD 141569B",
+   "value": "149",
+   "uncertainty": "9",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "UV Modelling",
+     "quote": "The best fit flux is $149 \\pm 9~ \\rm\\mu Jy$"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 14A flux HD 141569A (reanalysed)",
+   "value": "82",
+   "uncertainty": "6",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "UV Modelling",
+     "quote": "We find a flux of $82 \\pm 6~ \\rm\\mu Jy$ and $53\\pm 5~\\rm \\mu Jy$ for VLA 14A and VLA 16A"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 2.9 mm flux",
+   "value": "420",
+   "uncertainty": "50",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA Data",
+     "quote": "we find a total flux of $420\\pm 50~\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_mm (ALMA 870 um and 2.9 mm)",
+   "value": "1.81",
+   "uncertainty": "0.20",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Millimetre Spectral Index of the Disc",
+     "quote": "we find $\\alpha_{\\rm mm} = 1.81\\pm 0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "grain size slope q",
+   "value": "2.95",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Millimetre Spectral Index of the Disc",
+     "quote": "This would correspond to a $q = 2.95\\pm 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma upper limit on disc intensity at 9 mm",
+   "value": "≲15",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The VLA 16A Null Detection of the Disc",
+     "quote": "$3\\sigma$ upper limit on the intensity of the disc’s inner edge to be $\\lesssim 15~ \\mu \\rm Jy~beam^{-1}$ at 9 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature HD 141569A",
+   "value": "~5e6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Origin of the 9 mm Emission",
+     "quote": "it would imply a brightness temperature of $\\sim 5 \\times 10^{6}$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature HD 141569B",
+   "value": "6e8",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "M Dwarfs",
+     "quote": "we find brightness temperatures of $6\\times10^{8}$ K and $< 2\\times10^{7}$ K, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Dust temperature used to compute alpha_pl",
+  "Fitting method and uncertainty treatment for alpha_mm from two points",
+  "Starting parameters for uvmodelfit",
+  "Whether VLA data were rebinned or flagged beyond pipeline",
+  "Frequencies used to scale 870 um peak to 9 mm",
+  "Time chunk handling and flagging for light curves",
+  "Stellar radii used in brightness temperature calculation (only partly given)"
+ ],
+ "missing_for_reproduction": [
+  "Dust temperature for alpha_pl",
+  "uvmodelfit starting values",
+  "Flagging details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, standard CASA tools and simple recipe; some parameters unspecified.",
+ "rediscovery_reason": "Public ALMA and VLA data, simple uvmodelfit recipe, numeric fluxes and indices.",
+ "source_card": "cards/2018MNRAS.474.4500W/sonnet/card.md"
+}

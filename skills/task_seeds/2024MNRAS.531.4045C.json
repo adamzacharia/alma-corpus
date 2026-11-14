@@ -1,0 +1,588 @@
+{
+ "bibcode": "2024MNRAS.531.4045C",
+ "title": "WISDOM Project - XXI. Giant molecular clouds in the central region of the barred spiral galaxy NGC 613: a steep size-linewidth relation",
+ "year": 2024,
+ "doi": "10.1093/mnras/stae1394",
+ "arxiv_id": "2405.19709",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Whether giant molecular clouds in and around the nuclear ring of the barred spiral galaxy NGC 613 exhibit a steep size-linewidth relation and enhanced linewidths, and what physical mechanisms drive their dynamical state and properties.",
+ "alma_project_codes": [
+  "2017.1.01671.S"
+ ],
+ "data": {
+  "bands": "Band 3 (~100-115 GHz)",
+  "arrays": "12-m array",
+  "angular_resolution": "0.27'' x 0.20'' (~24 x 18 pc^2) for 12CO(1-0); 0.29'' x 0.21'' (~26 x 19 pc^2) for continuum",
+  "sensitivity": "0.59 mJy beam^-1 (1.10 K) per 2 km s^-1 channel for 12CO(1-0); 6.5 uJy beam^-1 for continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Gas inflow velocities toward the eastern (70 km s^-1) and western (170 km s^-1) sides of the nuclear ring",
+    "evidence": [
+     {
+      "loc": "2.2 Moment maps",
+      "quote": "Indeed, Sato et al. (2021) revealed that the gas inflow velocity toward the eastern side of the nuclear ring from the northeast dust lane (≈ 70 km s−1) is lower than that toward the western side of the nuclear ring from the southwest dust lane (≈ 170 km s−1)."
+     },
+     {
+      "loc": "4.1.2 Large-scale bars and nuclear rings",
+      "quote": "Adopting the gas inflow velocities (𝑉in,east ≈ 70 km s−1 and 𝑉in,west ≈ 170 km s−1) inferred by Sato et al. (2021), the total mass inflow rate along each of the two dust lanes can be estimated as"
+     }
+    ]
+   },
+   "citation": "Sato et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Rotation curve V_c(R) of NGC 613 derived from 12CO(3-2) line observations",
+    "evidence": [
+     {
+      "loc": "4.1.2 Large-scale bars and nuclear rings",
+      "quote": "We took 𝑉c (𝑅) from Audibert et al. (2019), who derived a rotation curve from 12CO(3-2) line observations of NGC 613 assuming the gas is on circular orbits, leading to 𝜅NR ≈ 1.2 km s−1 pc−1 and in turn ℎNR ≈ 14 pc."
+     }
+    ]
+   },
+   "citation": "Audibert et al. (2019)"
+  },
+  {
+   "what": {
+    "value": "Dimensionless bar rotation rate R = R_CR / R_bar = 1.5 +- 0.1 and projected bar radius R_bar = 90.0'' +- 4.0''",
+    "evidence": [
+     {
+      "loc": "4.1.2 Large-scale bars and nuclear rings",
+      "quote": "by adopting the dimensionless bar rotation rate and projected bar radius measured by Seigar et al. (2018): R ≡ 𝑅CR/𝑅bar = 1.5 ± 0.1 (where 𝑅CR is the bar corotation radius and 𝑅bar the deprojected bar half-length) and 𝑅bar = 90′′.0 ± 4′′.0."
+     }
+    ]
+   },
+   "citation": "Seigar et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "GMC property distributions and size-linewidth relations for comparison galaxies (MWd, CMZ, LTGs, ETGs, LMC, M33, M51, NGC 4429, NGC 4526, NGC 5806)",
+    "evidence": [
+     {
+      "loc": "Figure 4 caption",
+      "quote": "The ranges for NGC 613 have been derived in this work, while those for the other objects are from the literature: MWd (Heyer et al. 2009; Rice et al. 2016; Heyer & Dame 2015; and references therein), CMZ (Oka et al. 2001),"
+     },
+     {
+      "loc": "Figure 6 caption",
+      "quote": "Same as the left panel, but with coloured contours encompassing 68% of the distribution of the data points of a number of galaxies (LMC, Wong et al. 2011; M 33, Gratier et al. 2012; M 51, Colombo et al. 2014; NGC 4429, Liu et al. 2021; NGC 4526, Utomo et al. 2015)."
+     }
+    ]
+   },
+   "citation": "Heyer et al. (2009); Rice et al. (2016); Heyer & Dame (2015); Oka et al. (2001); Donovan Meyer et al. (2012); Gratier et al. (2012); Colombo et al. (2014); Rosolowsky et al. (2021); Utomo et al. (2015); Liu et al. (2021); Choi et al. (2023); Wong et al. (2011); Solomon et al. (1987); Kauffmann et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "Basic galaxy characteristics of NGC 613 (coordinates, distance, inclination, position angle, systemic velocity, central molecular gas mass, stellar mass, stellar velocity dispersion, SFR)",
+    "evidence": [
+     {
+      "loc": "1 INTRODUCTION",
+      "quote": "Key characteristics of NGC 613 are summarised in Table 1."
+     }
+    ]
+   },
+   "citation": "de Vaucouleurs et al. (1991); Miyamoto et al. (2017); Tully (1988); Combes et al. (2019); da Silva et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Generate moment maps and define galactic sub-regions",
+   "method": "Smooth-moment masking method: convolve 12CO(1-0) cube spatially with a Gaussian of synthesised beam width and Hanning-smooth spectrally, select pixels > 3x RMS of smoothed cube as mask, apply to original cube to generate moment 0, 1, 2 maps; divide central region into nucleus, arcs, nodes, and dust lanes.",
+   "software": [],
+   "key_parameters": [
+    "Mask threshold = 3x RMS noise of smoothed cube; Nucleus radius <= 180 pc; Arcs velocity dispersion 0 - 25 km s^-1; Nodes velocity dispersion >= 25 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify giant molecular clouds (GMCs)",
+   "method": "Run modified CPROPSTOO algorithm on the central 15'' x 15'' region of the 12CO(1-0) cube to identify 3D cloud structures and classify them as spatially and spectrally resolved or unresolved.",
+   "software": [
+    "cpropstoo"
+   ],
+   "key_parameters": [
+    "high-threshold = 4.5 sigma_rms, low-threshold = 2.0 sigma_rms, minvchan = 2, convexity = 0.65, Delta T_max = 2 sigma_rms = 2.20 K, minarea = 120 to 24 spaxels (step 24)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Calculate GMC physical properties and uncertainties",
+   "method": "Extrapolate moments to infinite sensitivity (T_edge = 0 K), deconvolve spatial beam and spectral channel width to compute cloud radius R_c, observed linewidth sigma_obs,los, gradient-subtracted linewidth sigma_gs,los, CO luminosity L_CO(1-0), gas mass M_gas, and surface density Sigma_gas; estimate uncertainties via 500 bootstrap resamplings.",
+   "software": [
+    "cpropstoo"
+   ],
+   "key_parameters": [
+    "500 bootstrap resamplings; Delta V_chan = 2 km s^-1"
+   ],
+   "assumptions": [
+    "Geometric parameter eta = 1.91; Distance D = 17.5 Mpc; CO-to-molecule conversion factor X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO(1-0) = 4.4 M_sun (K km s^-1 pc^2)^-1)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit size-linewidth and virial mass-gas mass scaling relations",
+   "method": "Compute Spearman rank correlation, fit power-law relations between R_c and sigma_obs,los using Linmix and ODR, compute virial mass M_obs,vir and virial parameter alpha_obs,vir, fit power law between M_obs,vir and M_gas, and evaluate external pressure tracks in Sigma_gas vs sigma_obs,los R_c^-1/2 plane.",
+   "software": [
+    "Linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Geometrical factor b_s = 1/5 assuming homogeneous spherical clouds"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate energetics, timescales, and azimuthal cloud evolution in the nuclear ring",
+   "method": "Calculate bar-driven mass inflow rates, kinetic energy injection rate E_dot_in,total, turbulent energy dissipation rate E_dot_diss, turbulence dissipation timescale t_diss, inter-node travel time t_travel, cloud-cloud collision timescale t_coll, shear timescale t_shear, and characteristic cloud lifetime t_lifetime from azimuthal cloud number drop between nodes.",
+   "software": [],
+   "key_parameters": [
+    "Inflow width W_in = 100 pc; Nuclear ring radius R_NR = 270 pc; Circular velocity V_c,NR = 170 km s^-1; Annulus inner semi-major axis = 240 pc, outer = 385 pc, ellipticity = 0.3"
+   ],
+   "assumptions": [
+    "Gas on circular orbits in nuclear ring; flat rotation curve in outer disc; cloud-cloud velocity dispersion sigma_cc = 10 km s^-1; negligible cloud formation between nodes"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux within nuclear ring (radius <= 6'')",
+   "value": "11.7",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1.1 Data reduction",
+     "quote": "The continuum image has the RMS noise of 6.5 𝜇Jy beam−1 and the flux of the continuum emission within the nuclear ring (radius ≤ 6′′) is 11.7 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Total 12CO(1-0) flux in central 15'' x 15'' region",
+   "value": "512",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 Moment maps",
+     "quote": "The total 12CO(1-0) flux in that region is 512 Jy km s−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of identified GMCs",
+   "value": "356",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Cloud identification",
+     "quote": "As a result, we identify 356 GMCs, 158 of which are both spatially and spectrally resolved, shown in Figure 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of spatially and spectrally resolved GMCs",
+   "value": "158",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Cloud identification",
+     "quote": "As a result, we identify 356 GMCs, 158 of which are both spatially and spectrally resolved, shown in Figure 2."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cloud radius R_c (all resolved GMCs)",
+   "value": "37.8",
+   "uncertainty": "+-0.9",
+   "units": "pc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All (158) 37.8 ± 0.9 7.1 ± 0.7 12.8 ± 0.4 1.25 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean molecular gas mass M_gas (all resolved GMCs)",
+   "value": "7.1",
+   "uncertainty": "+-0.7",
+   "units": "10^6 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All (158) 37.8 ± 0.9 7.1 ± 0.7 12.8 ± 0.4 1.25 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean observed velocity dispersion sigma_obs,los (all resolved GMCs)",
+   "value": "12.8",
+   "uncertainty": "+-0.4",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All (158) 37.8 ± 0.9 7.1 ± 0.7 12.8 ± 0.4 1.25 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass surface density Sigma_gas (all resolved GMCs)",
+   "value": "1.25",
+   "uncertainty": "+-0.09",
+   "units": "10^3 M_sun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "All (158) 37.8 ± 0.9 7.1 ± 0.7 12.8 ± 0.4 1.25 ± 0.09"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cloud gas mass M_gas in Nucleus",
+   "value": "7.7",
+   "uncertainty": "+-2.8",
+   "units": "10^6 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Nucleus (11) 38.3 ± 2.8 7.7 ± 2.8 14.4 ± 2.1 1.29 ± 0.35"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cloud gas mass M_gas in Arcs",
+   "value": "9.3",
+   "uncertainty": "+-1.6",
+   "units": "10^6 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Arcs (48) 39.1 ± 1.6 9.3 ± 1.6 13.5 ± 0.7 1.63 ± 0.20"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cloud gas mass M_gas in Nodes",
+   "value": "7.3",
+   "uncertainty": "+-1.3",
+   "units": "10^6 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Nodes (51) 37.2 ± 1.6 7.3 ± 1.3 13.1 ± 0.8 1.29 ± 0.14"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean cloud gas mass M_gas in Dust lanes",
+   "value": "4.1",
+   "uncertainty": "+-0.6",
+   "units": "10^6 M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Dust lanes (48) 37.0 ± 1.7 4.1 ± 0.6 11.2 ± 0.7 0.78 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass surface density Sigma_gas in Arcs",
+   "value": "1.63",
+   "uncertainty": "+-0.20",
+   "units": "10^3 M_sun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Arcs (48) 39.1 ± 1.6 9.3 ± 1.6 13.5 ± 0.7 1.63 ± 0.20"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean gas mass surface density Sigma_gas in Dust lanes",
+   "value": "0.78",
+   "uncertainty": "+-0.07",
+   "units": "10^3 M_sun pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Dust lanes (48) 37.0 ± 1.7 4.1 ± 0.6 11.2 ± 0.7 0.78 ± 0.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean ratio of gradient-subtracted to observed velocity dispersion (sigma_gs,los / sigma_obs,los)",
+   "value": "0.82",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 Cloud kinematics",
+     "quote": "More than 80% of the clouds (138/158) of NGC 613 have a small difference between the two velocity dispersions (i.e. a ratio between the two velocity dispersions 𝜎gs,los/𝜎obs,los > 0.7, with a mean ratio of 0.82),"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation power-law slope (Linmix)",
+   "value": "0.77",
+   "uncertainty": "+-0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Steep size – linewidth relation",
+     "quote": "The best-fitting slope (0 _._ 77 ± 0 _._ 11) is steeper than that of"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation intercept (Linmix)",
+   "value": "-0.10",
+   "uncertainty": "+-0.18",
+   "units": "dex (km s^-1)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Steep size – linewidth relation, Equation 5",
+     "quote": "−(0 _._ 10 ± 0 _._ 18) _,_ (5)"
+    }
+   ]
+  },
+  {
+   "quantity": "Size-linewidth relation power-law slope (ODR)",
+   "value": "1.58",
+   "uncertainty": "+-0.15",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Steep size – linewidth relation",
+     "quote": "The grey solid line in Figure 6, which shows an even steeper slope, is that from the best-fitting relation derived using the orthogonal distance regression (ODR) algorithm (𝜎obs,los ∝ 𝑅c1.58±0.15)."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass - gas mass power-law slope",
+   "value": "0.94",
+   "uncertainty": "+-0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Cloud virialisation, Equation 11",
+     "quote": "(0 _._ 94 ± 0 _._ 03) log _𝑀_ gas"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter <alpha_obs,vir> (all resolved GMCs)",
+   "value": "1.66",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Cloud virialisation",
+     "quote": "The mean (median) of 𝛼obs,vir is 1.66 (1.58), indicating that on average the clouds are marginally bound (black solid line)."
+    }
+   ]
+  },
+  {
+   "quantity": "Median virial parameter alpha_obs,vir (all resolved GMCs)",
+   "value": "1.58",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Cloud virialisation",
+     "quote": "The mean (median) of 𝛼obs,vir is 1.66 (1.58), indicating that on average the clouds are marginally bound (black solid line)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter in Arcs",
+   "value": "1.39",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Cloud virialisation",
+     "quote": "Among the four regions, clouds in the arcs tend to have smaller virial parameters (mean of 1.39) than those of the other three regions (mean of 1.71 to 1.84)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass inflow rate along eastern dust lane (M_dot_in,east)",
+   "value": "5.8",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "𝑀in,east = ⟨Σgas⟩𝑊in𝑉in,east ≈ 5.8 M⊙ yr−1,"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass inflow rate along western dust lane (M_dot_in,west)",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "𝑀in,west = ⟨Σgas⟩𝑊in𝑉in,west ≈ 14 M⊙ yr−1,"
+    }
+   ]
+  },
+  {
+   "quantity": "Total inflow kinetic energy injection rate (E_dot_in,total)",
+   "value": "1.3e5",
+   "uncertainty": "not stated",
+   "units": "M_sun km^2 s^-2 yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "≈ 1.3 × 105 M⊙ km2 s−2 yr−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Turbulent energy dissipation rate in nuclear ring (E_dot_diss)",
+   "value": "3.4e5",
+   "uncertainty": "not stated",
+   "units": "M_sun km^2 s^-2 yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "𝐸diss ≈ 𝑀NR ⟨𝜎NR⟩3/(2ℎNR) ≈ 3.4 × 105 M⊙ km2 s−2 yr−1, (8)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean turbulence dissipation timescale of nuclear ring GMCs (t_diss)",
+   "value": "3.1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "The turbulence dissipation timescale of a GMC can be estimated as 𝑡diss ∼ 𝑅c/𝜎obs,los (McKee & Ostriker 2007), yielding a range of 1 – 9 Myr and a mean of 3.1 Myr for the nuclear ring clouds of NGC 613."
+    }
+   ]
+  },
+  {
+   "quantity": "Bar pattern speed (Omega_p)",
+   "value": "18.5",
+   "uncertainty": "+-1.3",
+   "units": "km s^-1 kpc^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "This leads to a bar pattern speed Ωp = 𝑉c,NR/R𝑅bar = 18.5 ± 1.3 km s−1 kpc−1."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud travel time between nodes (t_travel)",
+   "value": "5.0",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.2 Large-scale bars and nuclear rings",
+     "quote": "In turn, using Equation 9, this leads to a travel time 𝑡travel ≈ 5.0 Myr, so that the average turbulent dissipation timescale is roughly half the travel time between the two nodes"
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud-cloud collision timescale in nuclear ring (t_coll)",
+   "value": "3.0",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1.3 Other mechanisms inducing the high velocity dispersions of the clouds",
+     "quote": "Overall, this yields 𝑡coll ≈ 3.0 Myr, more than half of the cloud travel time between the nodes (ratio of ≈ 0.6)."
+    }
+   ]
+  },
+  {
+   "quantity": "Shear timescale in nuclear ring (t_shear)",
+   "value": "3.5",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Nuclear ring clouds",
+     "quote": "stant evaluated at the nuclear ring using the aforementioned rotation curve, yielding 𝑡shear ≈ 3.5 Myr."
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic cloud lifetime in nuclear ring (t_lifetime)",
+   "value": "3.7 - 8.1",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Nuclear ring clouds",
+     "quote": "Combined with our estimated travel time, these two fractions of lost clouds yield two characteristic cloud lifetime estimates, that we take as a range, 𝑡lifetime = 3.7 – 8.1 Myr."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency or channel ranges used as line-free channels in UVCONTSUB",
+  "Exact image pixel dimensions (naxis1, naxis2) and deconvolver algorithm (e.g. hogbom vs multiscale) in tclean",
+  "Whether primary beam correction was applied before measuring fluxes and running CPROPSTOO",
+  "Exact spatial polygon/boundary coordinates defining the four sub-regions (nucleus, arcs, nodes, dust lanes) beyond the inner 180 pc radius for the nucleus and approximate velocity dispersion threshold (~25 km s^-1) between arcs and nodes",
+  "Public repository or exact code changes for the WISDOM team's modified version of CPROPSTOO (described in Liu et al. 2021)"
+ ],
+ "missing_for_reproduction": [
+  "Source code for the WISDOM modified version of CPROPSTOO (Liu et al. 2021)",
+  "Exact spatial boundary definitions (masks/polygons) for the four regions (nucleus, arcs, nodes, dust lanes)",
+  "Exact line-free channel ranges used for UVCONTSUB",
+  "Primary beam correction status and exact tclean stopping/masking parameters"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Calibration, imaging parameters (CASA version, robust, pixel size, channel width, sensitivity), and CPROPSTOO input parameters are clearly documented, and the full catalog is published in Table 2. However, the custom modified version of CPROPSTOO is not linked to a public code repository, and exact spatial region polygons and line-free channel ranges are not explicitly specified.",
+ "rediscovery_reason": "Public archival ALMA data (2017.1.01671.S) with well-specified imaging and cloud-identification parameters and clear numeric answer keys (158 resolved GMCs, size-linewidth slope 0.77 +- 0.11, mean virial parameter 1.66).",
+ "source_card": "cards/2024MNRAS.531.4045C/sonnet/card.md"
+}

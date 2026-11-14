@@ -1,0 +1,437 @@
+{
+ "bibcode": "2024MNRAS.527.1444A",
+ "title": "ATCA study of Small Magellanic Cloud supernova remnant 1E 0102.2-7219",
+ "year": 2024,
+ "doi": "10.1093/mnras/stad3300",
+ "arxiv_id": "2310.16533",
+ "fields": [
+  "nearby_galaxies",
+  "milky_way_ism",
+  "other"
+ ],
+ "question": "What are the radio continuum morphology, spectral index, polarisation, magnetic field strength, and interstellar environment (HI and CO) of the young Small Magellanic Cloud supernova remnant 1E 0102.2–7219?",
+ "alma_project_codes": [
+  "2018.1.01031.S",
+  "2017.A.00054.S"
+ ],
+ "data": {
+  "bands": "3 mm",
+  "arrays": "12-m array, 7-m ACA, and 12-m total power array",
+  "angular_resolution": "2.46 x 1.93 arcsec^2, PA 0.73 deg (~0.6 pc) for 3 mm continuum; 6.87 x 6.56 arcsec^2, PA 39.09 deg (~2 pc) for 12CO (J=2-1)",
+  "sensitivity": "RMS of 31 um (typo in paper for uJy/beam) for 3 mm continuum; ~66 mK at 0.5 km/s for 12CO (J=2-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ASKAP HI data cube of the SMC",
+    "evidence": [
+     {
+      "loc": "2.2 Hi observations",
+      "quote": "The Hi data used in this study are from Pingel et al. (2022)."
+     }
+    ]
+   },
+   "citation": "Pingel et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "HST [O III] image of E0102",
+    "evidence": [
+     {
+      "loc": "2.4 HST observations",
+      "quote": "Information about these HST observations and their data reduction are detailed in Blair et al. (2000)."
+     }
+    ]
+   },
+   "citation": "Blair et al. (2000)"
+  },
+  {
+   "what": {
+    "value": "MUSE [Fe XIV] image and post-shock electron density ne = 14.8 cm^-3",
+    "evidence": [
+     {
+      "loc": "2.5 MUSE observations",
+      "quote": "All details regarding these MUSE observations and their data reduction are found in Vogt et al. (2017)."
+     },
+     {
+      "loc": "3.5 Magnetic fields in E0102",
+      "quote": "and electron density _𝑛_ _𝑒_ = 14.8 cm [−][3] for the post-shock gas (Vogt et al. 2017)"
+     }
+    ]
+   },
+   "citation": "Vogt et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "ALMA ACA + Total Power 12CO (J=2-1) data cube",
+    "evidence": [
+     {
+      "loc": "2.6 ALMA observations",
+      "quote": "The whole dataset, beyond the region used in this study, has been published by Tokuda et al. (2021)."
+     }
+    ]
+   },
+   "citation": "Tokuda et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Literature radio continuum flux densities of E0102 from MOST, ASKAP, and ATCA (408 to 16700 MHz)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "408 0.650 MOST Maggi et al. (2019)"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "960 0.402 ASKAP Joseph et al. (2019)"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "4790 0.112 ATCA Amy & Ball (1993)"
+     }
+    ]
+   },
+   "citation": "Maggi et al. (2019), Joseph et al. (2019), Amy & Ball (1993)"
+  },
+  {
+   "what": {
+    "value": "Foreground Milky Way rotation measure contribution (+23 rad m^-2)",
+    "evidence": [
+     {
+      "loc": "3.4 Rotation measure",
+      "quote": "The foreground contribution of the MW is about +23 rad m [−][2] according to Mao et al. (2008), based on a _𝑅𝑀_ study of polarised background sources that are behind the SMC."
+     }
+    ]
+   },
+   "citation": "Mao et al. (2008)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Determine SNR expansion centre and radio/X-ray radii",
+   "method": "Apply Minkowski tensor analysis tool BANANA to 5500 MHz, 9000 MHz, and Chandra broadband images, smoothing the line density map with a 40-pixel diameter circle. Extract 16 radial profiles in 22.5 deg segments using miriad cgslice and measure radius at the 3-sigma contour cutoff.",
+   "software": [
+    "BANANA",
+    "miriad (cgslice)"
+   ],
+   "key_parameters": [
+    "40-pixel smoothing circle; 16 radial profiles of 30 arcsec length every 22.5 deg; 3-sigma cutoff (200 uJy/beam at 5500 MHz; 6e-7 counts/pixel/s for Chandra)"
+   ],
+   "assumptions": [
+    "Distance to SMC of 60 kpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated radio continuum flux densities (including ALMA 108 GHz) and fit spectral index",
+   "method": "Extract integrated flux density from radio continuum images (MWA, ASKAP, ATCA, ALMA) by summing pixel brightnesses above 5-sigma local background noise within the SNR area (excluding unrelated point sources) using miriad imfit and Findlay (1966) eq. 24. Fit a power-law weighted least-squares model to flux density vs. frequency (excluding ALMA due to missing short spacings), and create a resolved spectral index map from 2100, 5500, and 9000 MHz ATCA images.",
+   "software": [
+    "miriad (imfit, regrid, convol, maths)",
+    "aegean"
+   ],
+   "key_parameters": [
+    "5-sigma pixel brightness threshold; regridded to 0.3 x 0.3 arcsec^2 pixel size and smoothed to 2.7 x 2.6 arcsec^2 resolution for spectral index map"
+   ],
+   "assumptions": [
+    "Pure power-law radio spectrum S_nu propto nu^alpha; flux density errors < 10%; ALMA 108 GHz flux excluded from fit due to missing short spacings"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate fractional polarisation, rotation measure, and magnetic field strength",
+   "method": "Compute fractional polarisation maps at 5500 and 9000 MHz (5x5 arcsec^2 beam) using miriad impol. Convolve Q and U maps to 4 arcsec resolution and compute RM and intrinsic polarisation angles where polarised S/N >= 10-sigma using rmcalc. Estimate equipartition magnetic field using Urošević et al. (2018) and Arbutina et al. (2012) models, and derive line-of-sight and total shell magnetic field from RM gradient fit and depolarisation in the north-east shell.",
+   "software": [
+    "miriad (impol)",
+    "DRAO export software package (rmcalc)",
+    "eqp calculator"
+   ],
+   "key_parameters": [
+    "10-sigma S/N threshold in polarised intensity for RM; equipartition inputs: alpha = 0.61, theta = 0.36 arcmin, kappa = 0, S_5500MHz = 0.131 Jy, f = 0.84; RM equation inputs: dl = 5.3 pc, n_e = 14.8 cm^-3, foreground MW RM = +23 rad m^-2"
+   ],
+   "assumptions": [
+    "Faraday-thin intermixed synchrotron emitting and Faraday rotating plasma (factor of 2 in RM); intrinsic synchrotron polarisation of 71%; compression ratio of 3.7 (combined compression and enhancement factor 4.8)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Examine HI and ALMA CO morphology around E0102",
+   "method": "Construct velocity channel maps, integrated intensity map (160.1-168.9 km/s), and position-velocity diagram of ASKAP HI data, and construct a peak temperature map of ALMA 12CO (J=2-1) line emission overlaid with ATCA 5500 MHz contours.",
+   "software": [],
+   "key_parameters": [
+    "HI velocity channel integration every 3.9 km/s from 188.5 to 153.3 km/s; HI integrated map over 160.1-168.9 km/s; PV slice Dec -72d01m42.9s to -72d02m02.1s"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA 108000 MHz integrated flux density of E0102",
+   "value": "0.009",
+   "uncertainty": "< 10%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "108000 0.009 ALMA This work"
+    },
+    {
+     "loc": "3.2 Spectral index",
+     "quote": "We also estimate that the corresponding radio flux density errors are below 10 per cent as examined in our previous work (Filipović et al. 2022; Bozzetto et al. 2023)."
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 2100 MHz integrated flux density of E0102",
+   "value": "0.220",
+   "uncertainty": "< 10%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2100 0.220 ATCA This work"
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 5500 MHz integrated flux density of E0102",
+   "value": "0.131",
+   "uncertainty": "< 10%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "5500 0.131 ATCA This work"
+    }
+   ]
+  },
+  {
+   "quantity": "ATCA 9000 MHz integrated flux density of E0102",
+   "value": "0.083",
+   "uncertainty": "< 10%",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "9000 0.083 ATCA This work"
+    }
+   ]
+  },
+  {
+   "quantity": "9000 MHz flux density of central bar-like feature",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the 9000 MHz image we detect a central feature that has a flux density of 4.3 mJy"
+    },
+    {
+     "loc": "3.1.4 Central region",
+     "quote": "Another interesting feature that we detect exclusively in our 9000 MHz image is a horizontal bridge or bar-like feature in the central region with a measured flux density of 4.3 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatially integrated radio spectral index of E0102",
+   "value": "-0.61",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The spectral index for the entire remnant is −0 _._ 61 ± 0 _._ 01."
+    },
+    {
+     "loc": "3.2 Spectral index",
+     "quote": "The best power-law weighted least-squares fit is shown (thick black line), with the spatially integrated spectral index ⟨ _𝛼_ ⟩ = −0 _._ 61±0 _._ 01 [11]"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean resolved spectral index across E0102",
+   "value": "-0.54",
+   "uncertainty": "0.11",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Spectral index image",
+     "quote": "The mean value of the spectral index across the entire SNR is −0 _._ 54 ± 0 _._ 11."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean radio continuum radius of E0102 (at 5500 MHz)",
+   "value": "21.4 (6.2)",
+   "uncertainty": "1.3 (0.4)",
+   "units": "arcsec (pc)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 Centre and radius calculation",
+     "quote": "with an average of 21 _._ 4 ± 01 _._ 3 arcsec (6 _._ 2 ± 0 _._ 4 pc) for the entire SNR."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean X-ray radius of E0102",
+   "value": "20.5 (5.1)",
+   "uncertainty": "0.8 (0.2)",
+   "units": "arcsec (pc)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1.1 Centre and radius calculation",
+     "quote": "with an average of 20 _._ 5 ± 0 _._ 8 arcsec (5 _._ 1 ± 0 _._ 2 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fractional polarisation at 5500 MHz",
+   "value": "7",
+   "uncertainty": "1",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The mean fractional polarisation for 1E 0102.2–7219 is 7 ± 1 and 12 ± 2 per cent for 5500 and 9000 MHz, respectively."
+    },
+    {
+     "loc": "3.3 Polarisation",
+     "quote": "We estimate a mean fractional polarisation of 7 ± 1 per cent at 5500 MHz and 12 ± 2 per cent at 9000 MHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean fractional polarisation at 9000 MHz",
+   "value": "12",
+   "uncertainty": "2",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The mean fractional polarisation for 1E 0102.2–7219 is 7 ± 1 and 12 ± 2 per cent for 5500 and 9000 MHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on fractional polarisation towards central region (9000 MHz) and bridge-like structure (5500 MHz)",
+   "value": "4 (9000 MHz) and 2 (5500 MHz)",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Polarisation",
+     "quote": "We did not detect any significant polarisation towards the bridge-like structure and the central region, with upper limits of 2 and 4 per sent for 5500 and 9000 MHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotation measure at outer edge of north-eastern shell",
+   "value": "1000",
+   "uncertainty": "25",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4 Rotation measure",
+     "quote": "We notice that all _𝑅𝑀_ values are positive, with a maximum of almost 1000 ± 25 rad m [−][2] at the outer edge of the bright north-eastern shell"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation measure at centre of north-eastern shell (corrected for MW foreground)",
+   "value": "+531",
+   "uncertainty": "5",
+   "units": "rad m^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.5 Magnetic fields in E0102",
+     "quote": "The resulting _𝑅𝑀_ in the centre is +531 ± 5 rad m [−][2], corrected for the foreground contribution of the MW."
+    }
+   ]
+  },
+  {
+   "quantity": "Equipartition magnetic field strength (electron-only model, kappa = 0)",
+   "value": "65",
+   "uncertainty": "5",
+   "units": "uG",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We estimate the line-of-sight magnetic field strength in the direction of 1E 0102.2–7219 of ∼44 _𝜇_ G with an equipartition field of 65 ± 5 _𝜇_ G."
+    },
+    {
+     "loc": "3.5 Magnetic fields in E0102",
+     "quote": "Using the Urošević et al. (2018) model [14], the mean equipartition field over the whole E0102 remnant is 65 ± 5 _𝜇_ G, with an estimated minimum energy of _𝐸_ min = 1×10 [49] erg."
+    }
+   ]
+  },
+  {
+   "quantity": "Line-of-sight / total shell magnetic field strength from RM and depolarisation",
+   "value": "~44 (uniform 16.7, random 27.5)",
+   "uncertainty": "not stated",
+   "units": "uG",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.5 Magnetic fields in E0102",
+     "quote": "This high depolarisation here requires a random magnetic field component of 27.5 _𝜇_ G, using the above calculated 16.7 _𝜇_ G as the uniform component. In this case, we would have a total magnetic field in the shell of ∼44 _𝜇_ G."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio surface brightness at 1 GHz (Sigma_1GHz)",
+   "value": "9.17e-20 (also written 9.7e-20 in Section 4.2.1)",
+   "uncertainty": "not stated",
+   "units": "W m^-2 Hz^-1 sr^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.2.4 Surface Brightness and Luminosity",
+     "quote": "Comparing a previous Σ–D diagram (Urošević 2022, 2020; Pavlović et al. 2018, their fig. 3) and our values, D = ∼13 pc and Σ 1 GHz = 9 _._ 17 × 10 [−][20] W m [−][2] Hz [−][1] sr [−][1] for E0102 (see Table 3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio luminosity at 1 GHz (L_1GHz)",
+   "value": "1.4e17",
+   "uncertainty": "not stated",
+   "units": "W Hz^-1",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.2.4 Surface Brightness and Luminosity",
+     "quote": "Finally, we note that E0102 has a _𝐿_ 1 GHz [18] of 1.4×10 [17] W Hz [−][1]"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Velocity range integrated or searched to generate the peak temperature map of 12CO (J=2-1) in Figure 13",
+  "Exact region polygon used to integrate the SNR flux density in imfit/aegean and which point sources were masked",
+  "Exact MWA project/survey source and reduction parameters for the 76-227 MHz flux density measurements"
+ ],
+ "missing_for_reproduction": [
+  "Velocity range used to generate the ALMA 12CO (J=2-1) peak temperature map (Fig. 13)",
+  "Exact spatial region and point-source exclusion mask used for integrated flux density summation in imfit/aegean",
+  "Details of the MWA sub-band observations (76-227 MHz) used in Table 2"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "All primary datasets (ALMA, ATCA, ASKAP, Chandra, HST, MUSE) are archival/public with project codes and ObsIDs stated, and standard pipeline products or well-documented tasks (CASA pipeline, miriad, CIAO, BANANA, rmcalc) were used. Minor deductions for unstated integration velocity range in the CO peak temperature map, unstated MWA data provenance, and unspecified aperture masks for flux integration.",
+ "rediscovery_reason": "All ATCA and ALMA project codes are public, the ALMA 3 mm continuum measurement uses standard archive pipeline products as-is, and the main results (flux densities, spectral index, radii, fractional polarisation, rotation measure, and magnetic field strengths) are concrete numeric values.",
+ "source_card": "cards/2024MNRAS.527.1444A/sonnet/card.md"
+}

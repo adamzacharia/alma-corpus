@@ -1,0 +1,936 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021AJ....161..238W",
+  "title": "The Anatomy of an Unusual Edge-on Protoplanetary Disk. I. Dust Settling in a Cold Disk",
+  "year": 2021,
+  "journal": "The Astronomical Journal",
+  "first_author": "Wolff, Schuyler G.",
+  "n_authors": 10,
+  "arxiv_id": "2103.02665",
+  "doi": "10.3847/1538-3881/abeb1d",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00771.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we present multi-epoch HST and Keck scattered light images, and an ALMA 1.3 mm continuum map for the remarkably flat edge-on protoplanetary disk SSTC2DJ163131.2-242627"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "Oph163131 (2MASS J16313124-2426281)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "147 pc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance of 147 pc for this source."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "Oph163131 sits closest to the Eastern streamer of Ophiuchus (L1689) for which the authors provide a distance of $147.3 \\pm 3.4 \\, pc$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Ortiz-Leon et al. 2017 VLBA parallax of L1689 (cite: 2017ApJ...834..141O)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "We adopt a distance of 147 pc for this source."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "Oph163131 sits closest to the Eastern streamer of Ophiuchus (L1689) for which the authors provide a distance of $147.3 \\pm 3.4 \\, pc$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the geometry, dust properties and degree of dust settling of the edge-on disk Oph163131, from joint radiative transfer modeling of HST scattered light and ALMA 1.3 mm continuum?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We model the 0.8 $\\mu$m and 1.3 mm images in separate MCMC runs to investigate the geometry and dust properties of the disk using the MCFOST radiative transfer code."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00771.S",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Continuum Map",
+       "quote": "(Project 2016.1.00771.S, PI: Duchêne)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "We obtained ALMA band 6 continuum data (1.3 mm)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "beam 0.23'' x 0.13''",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "The ALMA continuum map (beam size of 0.23$''$ x 0.13$''$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "rms 0.134 mJy",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "with a 3$\\sigma$ cut (with an rms of 0.134 mJy)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI Duchêne",
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "(Project 2016.1.00771.S, PI: Duchêne)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HST ACS/WFC3",
+     "provided": {
+      "value": "Scattered light images in F475W, F606W, F814W",
+      "evidence": [
+       {
+        "loc": "2.1 HST Scattered Light Images",
+        "quote": "Scattered light images of the Oph163131 disk were obtained using HST ACS in both the F814W and F606W broadband filters on March 4th, 2012"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Keck NIRC2",
+     "provided": {
+      "value": "2.2 micron AO image (not modeled)",
+      "evidence": [
+       {
+        "loc": "2.2 Keck Image",
+        "quote": "we obtained a $K'$ ($2.124 \\, \\mu m$) image of Oph163131 with the NIRC2 instrument"
+       }
+      ]
+     }
+    },
+    {
+     "name": "CARMA",
+     "provided": {
+      "value": "2.6 mm continuum upper limit for SED",
+      "evidence": [
+       {
+        "loc": "2.4 CARMA Detection",
+        "quote": "Oph163131 was observed in the 2.6 mm continuum with the Combined Array for Research in Millimeter Astronomy (CARMA) under project cf0024"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Literature SED photometry (Table 3) incl. ALMA Band 7 flux 124.8 ± 2.4 mJy",
+      "evidence": [
+       {
+        "loc": "2.3 ALMA Continuum Map",
+        "quote": "They reported an integrated flux of 124.8 $\\pm$ 2.4 mJy which is included in the SED shown in Appendix [7]"
+       }
+      ]
+     },
+     "citation": "Cox et al. 2017 (cite: 2017ApJ...851...83C) and others in Table 3"
+    },
+    {
+     "what": {
+      "value": "Ophiuchus K3.5-K5.5 star catalogue used for Teff 4500 K and L 0.96 Lsun",
+      "evidence": [
+       {
+        "loc": "3.1 Stellar Properties",
+        "quote": "derive average values of 4500 K and 0.96 $L_{\\odot}$ for the temperature and luminosity"
+       }
+      ]
+     },
+     "citation": "(cite: 2005AJ....130.1733W; 2011AJ....142..140E)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA continuum data reduction and results",
+      "evidence": [
+       {
+        "loc": "2.3 ALMA Continuum Map",
+        "quote": "A full description of the ALMA continuum data reduction processes and results is presented in (cite: 2020arXiv200806518V)"
+       }
+      ]
+     },
+     "from_reference": "Villenave et al. 2020 (cite: 2020arXiv200806518V)"
+    },
+    {
+     "what": {
+      "value": "Covariance-based likelihood framework for 2D disk images",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "In (cite: 2017ApJ...851...56W) we detail how to expand this to 2D disk observations"
+       }
+      ]
+     },
+     "from_reference": "Wolff et al. 2017 (cite: 2017ApJ...851...56W)"
+    },
+    {
+     "what": {
+      "value": "Dust settling prescription",
+      "evidence": [
+       {
+        "loc": "3.2 MCFOST Disk Model",
+        "quote": "We use the (cite: 2009A&A...496..597F) prescription for settling"
+       }
+      ]
+     },
+     "from_reference": "Fromang & Nelson 2009"
+    },
+    {
+     "what": {
+      "value": "Stellar spectral type and dynamical mass from Paper II",
+      "evidence": [
+       {
+        "loc": "3.1 Stellar Properties",
+        "quote": "In Paper II, we report mid-resolution optical and IR spectroscopy for Oph163131 and compare to template spectral libraries to arrive at a spectral type of K4-5"
+       }
+      ]
+     },
+     "from_reference": "Flores et al. in prep (Paper II)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA calibration details, CASA version, robust weighting and imaging parameters (deferred to Villenave et al. 2020)",
+    "Aperture used for photometry",
+    "Stellar parameters fixed in MCFOST beyond Teff/L (mass, spectral inputs)",
+    "Gas-to-dust ratio",
+    "Dust-to-model flux normalisation details and mask definitions",
+    "Amplitude of global covariance and exact analytic autocorrelation function form",
+    "Downsampling procedure for ALMA to HST resolution",
+    "Fixed minimum/maximum grain parameters beyond stated"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure ALMA continuum flux and geometry",
+    "method": {
+     "value": "Aperture photometry in CASA with 3 sigma cut; imfit for comparison; profiles along major/minor axes",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Continuum Map",
+       "quote": "we perform aperture photometry in the CASA software package with a 3$\\sigma$ cut (with an rms of 0.134 mJy)"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "10% flux error",
+      "evidence": [
+       {
+        "loc": "2.3 ALMA Continuum Map",
+        "quote": "where we have assumed a conservative flux error of 10%"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with imfit integrated flux of ~47 mJy",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Continuum Map",
+       "quote": "this is consistent with the integrated flux value of $\\sim 47$ mJy provided by the CASA imfit package"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Individual MCMC fits to F814W and ALMA images",
+    "method": {
+     "value": "MCFOST models convolved with Tiny Tim PSF or ALMA Gaussian beam, normalised to observed flux, recentred, chi-square log-likelihood on pixels >3 sigma",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "we first generate a synthetic image with MCFOST at the specified wavelength, convolve this model with an instrumental PSF, normalize the model to the sum of the observed disk signal"
+      }
+     ]
+    },
+    "software": [
+     "MCFOST",
+     "emcee",
+     "mcfost-python",
+     "Tiny Tim"
+    ],
+    "key_parameters": [
+     {
+      "value": "parallel-tempered, 2 temperatures, 50 walkers; 2000 iterations (F814W), 1000 (ALMA); burn-in 100",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "For both initial runs we use a parallel-tempered sampler with 2 temperatures and 50 walkers."
+       }
+      ]
+     },
+     {
+      "value": "Free: i, H0, dust mass, gamma, beta, p, alpha, Rc; fixed distance 147 pc, Rin 1 au, Rout 191 au",
+      "evidence": [
+       {
+        "loc": "3.2 MCFOST Disk Model",
+        "quote": "The disk is assumed to be at a distance of 147 pc with an inner radius fixed at 1 au and an outer radius of 191 au."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Single species amorphous olivine, non-porous grains, a = 0.03-1000 micron, 70 log bins",
+      "evidence": [
+       {
+        "loc": "3.2 MCFOST Disk Model",
+        "quote": "with a particle size distribution described by a power law extending from $a$ = 0.03 - 1000 $\\mu$m in size"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Uniform priors except uniform in cos i and log-uniform for dust mass and alpha; ranges in Table 2",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We use uniform priors for all parameters except for the inclination (uniform in $\\cos{i}$), and the dust mass and viscosity parameter where log-uniform priors are used."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Effective sample size from integrated autocorrelation time",
+     "evidence": [
+      {
+       "loc": "4.1 Scattered Light Image",
+       "quote": "We compute an effective sample size (ESS) for each parameter to test the convergence of the chain."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Joint covariance-based MCMC",
+    "method": {
+     "value": "Gaussian likelihood with covariance C = diag noise + global covariance from residual autocorrelation of 1000 models from individual runs; ALMA downsampled to HST resolution; p fixed at 3.5",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We generate an autocorrelation map by selecting 1000 models drawn from the MCMC chain, computing the observation - model residuals, and autocorrelating those residuals."
+      }
+     ]
+    },
+    "software": [
+     "emcee",
+     "MCFOST",
+     "mcfost-python"
+    ],
+    "key_parameters": [
+     {
+      "value": "2 temperatures, 50 walkers, 2000 iterations, burn-in 250; covariance cutoff at 8 pixels",
+      "evidence": [
+       {
+        "loc": "3.3",
+        "quote": "with a cutoff outside of 8 pixels to make computations of $C_{i,j}$ tractable"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Same priors as individual fits with p fixed",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "For the combined MCMC run we keep this value fixed at 3.5 to further limit parameter degeneracies."
+      }
+     ]
+    },
+    "validation": {
+     "value": "ESS test; only inclination and gamma unconstrained (ESS 8 and 20)",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "only the inclination and surface density exponent remain unconstrained with ESS values of 8 and 20, respectively"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compare models with SED and Keck image; derive scale heights and Stokes numbers",
+    "method": {
+     "value": "Compare representative models A, B, C to SED and 2.2 micron profiles; compute temperature-derived scale height and Stokes numbers",
+     "evidence": [
+      {
+       "loc": "5.3 Vertical Structure",
+       "quote": "we compute the Stokes numbers for Models A, B and C following (cite: 2016SSRv..205...41B)"
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "mu = 2.3; material density 1.8 g/cm3",
+      "evidence": [
+       {
+        "loc": "5.3 Vertical Structure",
+        "quote": "we assume a reduced mass, $\\mu$ of 2.3"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-check with CO-derived temperature in Paper II",
+     "evidence": [
+      {
+       "loc": "5.3 Vertical Structure",
+       "quote": "We find that the vertical extent of the gas matches the HST scattered light observations"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MCFOST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer disk models",
+     "evidence": [
+      {
+       "loc": "3.2 MCFOST Disk Model",
+       "quote": "The MCFOST radiative transfer code (cite: 2006A&A...459..797P; 2009A&A...498..967P) was used to construct synthetic SEDs"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "Parallel-tempered affine-invariant MCMC",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "we employ a parallel-tempered Monte Carlo Markov Chain approach using the `emcee` package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "mcfost-python",
+    "version": "not stated",
+    "used_for": {
+     "value": "Interface to MCFOST, data parsing, goodness-of-fit",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We couple this with the `mcfost-python` package developed by our team to interface with MCFOST"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Aperture photometry and imfit",
+     "evidence": [
+      {
+       "loc": "2.3 ALMA Continuum Map",
+       "quote": "we perform aperture photometry in the CASA software package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Tiny Tim",
+    "version": "not stated",
+    "used_for": {
+     "value": "Simulated HST PSF",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "we use a simulated Tiny Tim PSF"
+      }
+     ]
+    }
+   },
+   {
+    "name": "DrizzlePac",
+    "version": "not stated",
+    "used_for": {
+     "value": "Re-drizzle ACS exposures",
+     "evidence": [
+      {
+       "loc": "2.1 HST Scattered Light Images",
+       "quote": "the MAST data products were re-drizzled using the DrizzlePac python package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "ALMA 1.3 mm flux density",
+    "value": "44.8",
+    "uncertainty": "4.5",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "we find a flux density of 44.8 $\\pm$ 4.5 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Deconvolved major axis FWHM",
+    "value": "1.22",
+    "uncertainty": "0.01",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.3 ALMA Continuum Map",
+      "quote": "deconvolved disk major axis FWHM of 1.22 $\\pm$ 0.01 arcsec"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination (ALMA-only posterior)",
+    "value": "87.31",
+    "uncertainty": "+0.31/-0.30",
+    "units": "deg",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table paramresults",
+      "quote": "$87.31^{+0.31}_{-0.30}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination (adopted)",
+    "value": "~87",
+    "uncertainty": "1",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "5 Discussion",
+      "quote": "we find an inclination of $\\sim 87 \\pm 1^{\\circ}$ is most probable"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass log M (ALMA-only)",
+    "value": "-3.8",
+    "uncertainty": "+0.1/-0.1",
+    "units": "log Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table paramresults",
+      "quote": "$-3.8^{+0.1}_{-0.1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "mm scale heights at 100 au, Models A,B,C",
+    "value": "3.3, 4.2, 0.3",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3",
+      "quote": "$h_{1mm}$ = 3.3, 4.2, 0.3 au, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk outer radius (HST)",
+    "value": "191",
+    "uncertainty": "8",
+    "units": "au",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.1 HST Scattered Light Images",
+      "quote": "arrive at a value of $191 \\pm 8$ au"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Disk is flared but vertically thin; some dust settling is required to reconcile scattered light and mm datasets; midplane colder than expected.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "some degree of dust settling is required to reproduce the vertically thin profile and lack of apparent flaring"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can a single smooth tapered disk model fit both scattered light and ALMA continuum?",
+    "experiment": "Separate chi-square and joint covariance MCMC runs with MCFOST",
+    "result": "Individual fits good; joint fit gives worse fit and bimodal dust mass posterior",
+    "finding": "Model lacks complexity; more complex radial structure likely",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "It is apparent that the simple disk model we have employed here lacks sufficient complexity to explain both datasets simultaneously."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is dust settled in Oph163131?",
+    "experiment": "Compare apparent vertical extent in scattered light and mm; alpha posterior",
+    "result": "Low alpha values ruled out; mm scale heights smaller than 0.8 micron",
+    "finding": "Some degree of settling required",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "some degree of settling is certainly required to explain the variation in the apparent dust scale height"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Covariance likelihood to combine datasets with different noise and sensitivities without biasing the fit",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "to leverage the information inherent in both datasets without preferentially biasing the fit towards one image or the other"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Keck image and other HST filters excluded from fitting",
+     "evidence": [
+      {
+       "loc": "3.2 MCFOST Disk Model",
+       "quote": "We chose not to include the Keck image in the modeling because of the image artifacts"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Midplane thermal emission not vertically resolved; smooth tapered density model too simple",
+     "evidence": [
+      {
+       "loc": "5.3",
+       "quote": "since the vertical height of the disk in the ALMA data is not resolved"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Model fits are degenerate; posteriors often hit prior edges",
+    "Fitting image-plane CLEAN map rather than visibilities",
+    "Joint fit has ESS of 8 for inclination",
+    "Flux normalisation marginalised so absolute mass poorly constrained"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "mcfost-python code public on GitHub; ALMA project cited",
+    "evidence": [
+     {
+      "loc": "3.3",
+      "quote": "The code is publicly available on Github."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "mcfost-python at github.com/swolff9/mcfost-python",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "mcfost-python (https://github.com/swolff9/mcfost-python)"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "ALMA calibration/imaging details (in Villenave et al. 2020)",
+    "MCFOST version and parameter files",
+    "Covariance function analytic form"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw ALMA (single Band 6 continuum project) plus HST/Keck images",
+   "score_inferred": 3,
+   "score_reason": "Methods are described and code public, but ALMA reduction is deferred and MCFOST setup is only partly specified; compute-heavy (~4 months CPU).",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA reduction is not given here and the modeling is very expensive and requires non-ALMA data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Wolff et al. 2017 (cite: 2017ApJ...851...56W)",
+     "why": "Covariance-based MCMC framework"
+    },
+    {
+     "citation": "Pinte et al. 2006 (cite: 2006A&A...459..797P)",
+     "why": "MCFOST"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Villenave et al. 2020 (cite: 2020arXiv200806518V)",
+     "why": "ALMA continuum reduction of edge-on disk sample"
+    },
+    {
+     "citation": "Flores et al. in prep (Paper II)",
+     "why": "CO gas and temperature structure"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "HST edge-on disk program GO 12514 and GO 13643"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-2477265fe712b3f77523dccb811569be",
+  "batch_id": "msgbatch_0184TVS5zAE5RP75JHcHhf4m",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:28:58",
+  "usage": {
+   "input_tokens": 44297,
+   "output_tokens": 7445,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.082128,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 57,
+  "quotes_ok": 57,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 80,
+   "stated": 44,
+   "rate": 0.55
+  },
+  "evidence_ok": true
+ }
+}

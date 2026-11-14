@@ -1,0 +1,313 @@
+{
+ "bibcode": "2026A&A...707A.240C",
+ "title": "Observations of the temporal evolution of Saturn's stratosphere following the Great Storm of 2010─2011: II. Latitudinal distribution of CO and stratospheric winds",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202557032",
+ "arxiv_id": "2601.20359",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "Assess whether Saturn's 2010-2011 stratospheric beacon perturbed the CO distribution and measure how the vortex perturbed the stratospheric wind regime.",
+ "alma_project_codes": [
+  "2011.0.00808.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "17, 16, and 18 antennas",
+  "angular_resolution": "2.04\" x 1.34\" (PA -9.9 deg)",
+  "sensitivity": "6.5 mJy/beam per 244 kHz channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Seasonal altitude-latitude thermal field retrieved from Cassini/CIRS measurements",
+    "evidence": [
+     {
+      "loc": "Thermal fields",
+      "quote": "For the SMA data from March 2010, we use the seasonal altitude-latitude thermal field retrieved from Cassini/CIRS measurements presented in (cite: Fletcher2018b)."
+     }
+    ]
+   },
+   "citation": "(cite: Fletcher2018b)"
+  },
+  {
+   "what": {
+    "value": "Temperatures retrieved from beacon-specific observations on January 27, 2012, and beacon western drift",
+    "evidence": [
+     {
+      "loc": "Thermal fields",
+      "quote": "(ii) temperatures retrieved as a function of altitude, latitude, and longitude from beacon-specific observations carried out on January 27, 2012, by (cite: Fletcher2012b)."
+     }
+    ]
+   },
+   "citation": "(cite: Fletcher2012b)"
+  },
+  {
+   "what": {
+    "value": "Physical vertical profile of CO from a ~220-year-old comet impact",
+    "evidence": [
+     {
+      "loc": "Background composition and CO distribution model",
+      "quote": "we choose to adopt the physical profile of (cite: Cavalie2010) derived from atmospheric transport following a comet impact occurring $\\sim$220 years before the observations"
+     }
+    ]
+   },
+   "citation": "(cite: Cavalie2010)"
+  },
+  {
+   "what": {
+    "value": "Line broadening parameters for NH3, PH3, and CO",
+    "evidence": [
+     {
+      "loc": "Radiative transfer model",
+      "quote": "We have computed the line broadening parameters following (cite: Fletcher2007) for NH$_3$, (cite: Levy1993; Levy1994) for PH$_3$, and (cite: Dick2009) for CO."
+     }
+    ]
+   },
+   "citation": "(cite: Fletcher2007), (cite: Levy1993; Levy1994), (cite: Dick2009)"
+  },
+  {
+   "what": {
+    "value": "2018 ALMA stratospheric wind measurements of Saturn",
+    "evidence": [
+     {
+      "loc": "Stratospheric winds during the storm",
+      "quote": "The measurements confirm the presence of the broad prograde equatorial jet initially detected by (cite: Benmahi2022; Benmahi2025) in the stratosphere."
+     }
+    ]
+   },
+   "citation": "(cite: Benmahi2022; Benmahi2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, concatenate, and image ALMA visibility data",
+   "method": "Calibrate bandpass, gain, phase, and flux; rescale uv distances and amplitudes of Jan 22 data to match Jan 14 apparent size and total flux; concatenate measurement sets; perform self-calibration, visibility continuum subtraction, and multiscale clean.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "multiscale scale 1\" for limb spectral data"
+   ],
+   "assumptions": [
+    "No line emission in the rings"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract limb spectra and remove residual baseline ripples",
+   "method": "Apply pointing offset correction (+0.27\" RA, +0.33\" Dec for ALMA), extract spectra along the 1-bar planetary limb oversampling the synthesized beam by a factor of 4, and remove standing waves using sine waves or polynomial fits.",
+   "software": [],
+   "key_parameters": [
+    "beam oversampling factor of 4; pointing offset +0.27\" RA, +0.33\" Dec (ALMA); primary beam correction factor 1.25 (SMA)"
+   ],
+   "assumptions": [
+    "Limb defined as the 1-bar level"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model radiative transfer and derive CO meridional distribution",
+   "method": "Use a 3D line-by-line radiative transfer model with Cassini/CIRS thermal fields and scale a 220-year-old comet impact vertical profile to fit limb spectra and derive CO mole fraction at 0.3 mbar.",
+   "software": [],
+   "key_parameters": [
+    "N=30 spectral points for SMA, N=100 for ALMA; selection threshold chi^2/N < 9 (and < 4)"
+   ],
+   "assumptions": [
+    "Tropospheric CO (1.2 ppb) is neglected; temperatures expanded isothermally upward of 0.2 mbar"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Retrieve stratospheric winds from Doppler shifts of ALMA limb spectra",
+   "method": "Fit a parametrized analytical function to observed CO lines within +/-1.5 MHz of the line peak to measure Doppler shifts, subtract beam-convolved planet rotation, and deproject line-of-sight velocities to zonal wind speeds.",
+   "software": [],
+   "key_parameters": [
+    "Fitting frequency range within +/- 1.5 MHz of line peak; sub-Earth latitude 15.1 deg N"
+   ],
+   "assumptions": [
+    "Systematic uncertainty of ~50 m/s caused by spectral baseline removal"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total planet continuum flux on January 14, 2012 (ALMA)",
+   "value": "978",
+   "uncertainty": "14",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "January 2012 ALMA observations",
+     "quote": "There is a small difference remaining on total planet flux between the two dates: 978$\\pm$14 Jy on January 14 versus 951$\\pm$12 Jy on January 22, both after selfcalibration."
+    }
+   ]
+  },
+  {
+   "quantity": "Total planet continuum flux on January 22, 2012 (ALMA)",
+   "value": "951",
+   "uncertainty": "12",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "January 2012 ALMA observations",
+     "quote": "There is a small difference remaining on total planet flux between the two dates: 978$\\pm$14 Jy on January 14 versus 951$\\pm$12 Jy on January 22, both after selfcalibration."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO mole fraction at 0.3 mbar in March 2010 (SMA, chi^2/N < 9)",
+   "value": "1.7e-7",
+   "uncertainty": "1.2e-7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Prestorm meridional distribution",
+     "quote": "We can then only derive a mean CO mole fraction at the 0.3 mbar level, i.e., where the contribution function peaks, of (1.7$\\pm$1.2)$\\times 10^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO mole fraction at 0.3 mbar in January 2012 (ALMA, chi^2/N < 9)",
+   "value": "1.7e-7",
+   "uncertainty": "0.7e-7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The average CO mole fraction implied by the adopted and rescaled 220-year-old-comet-impact vertical profile is (1.7$\\pm$0.7)$\\times 10^{-7}$ at 0.3 mbar, i.e., where the contribution functions peak."
+    },
+    {
+     "loc": "CO meridional distribution in January 2012",
+     "quote": "The CO mole fraction at 0.3 mbar is (1.7$\\pm$0.7)$\\times 10^{-7}$, when using the pointings for which the best fit satisfies $\\chi^2/N$$<$9 and excluding those affected by ring shadowing."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean CO mole fraction at 0.3 mbar in January 2012 (ALMA, chi^2/N < 4)",
+   "value": "1.4e-7",
+   "uncertainty": "0.8e-7",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CO meridional distribution in January 2012",
+     "quote": "When using a more restrictive criterion of $\\chi^2/N$$<$4 to compute the mean CO mole fraction at 0.3 mbar, we find (1.4$\\pm$0.8)$\\times 10^{-7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Prograde jet velocity at 50 deg S",
+   "value": "135",
+   "uncertainty": "60",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "We can identify two prograde jets, centered around 50$^\\circ$S and 40$^\\circ$S, with speeds of 135$\\pm$60 m.s$^{-1}$ and 210$\\pm$60 m.s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Prograde jet velocity at 40 deg S",
+   "value": "210",
+   "uncertainty": "60",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "We can identify two prograde jets, centered around 50$^\\circ$S and 40$^\\circ$S, with speeds of 135$\\pm$60 m.s$^{-1}$ and 210$\\pm$60 m.s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Equatorial prograde jet slowing relative to 2018",
+   "value": "100 to 200",
+   "uncertainty": "not stated",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The equatorial prograde jet is 100 to 200 m.s$^{-1}$ slower, and broader in latitude, than in quiescent conditions."
+    }
+   ]
+  },
+  {
+   "quantity": "Beacon anticyclonic wind peak speed on eastern limb (33-47 deg N)",
+   "value": "60",
+   "uncertainty": "15",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "The peaks are symmetric in speed with values of 60$\\pm$15 m.s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Retrograde flow speed on western limb (30-45 deg N)",
+   "value": "-50",
+   "uncertainty": "20",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "On the opposite limb, the winds are tentatively found retrograde with an average speed of -50$\\pm$20 m.s$^{-1}$ between 30$^\\circ$N and 45$^\\circ$N."
+    }
+   ]
+  },
+  {
+   "quantity": "Prograde jet velocity at 50-67 deg N",
+   "value": "140",
+   "uncertainty": "45",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "A broad 140$\\pm$45 m.s$^{-1}$ prograde jet, not seen in the thermal wind of (cite: Fletcher2012b) but evident as very strong windshear in Fig. 4 of (cite: Fletcher2018b), extends from 50$^\\circ$N to 67$^\\circ$N."
+    }
+   ]
+  },
+  {
+   "quantity": "Retrograde polar jet peak velocity at 74 deg N",
+   "value": "-220",
+   "uncertainty": "80",
+   "units": "m.s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Stratospheric winds during the storm",
+     "quote": "except a narrower retrograde jet that is located around 74$^\\circ$N with a peak velocity of -220$\\pm$80 m.s$^{-1}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Visibility weighting scheme (e.g., Briggs robust parameter) used during ALMA imaging",
+  "Image pixel/cell size and image dimensions for ALMA and SMA cubes",
+  "Self-calibration solution intervals and number of iterations for ALMA data",
+  "Exact list of multiscale clean scales used for continuum imaging",
+  "Specific parameters of the sine wave / polynomial fits used for baseline ripple removal on each extracted spectrum"
+ ],
+ "missing_for_reproduction": [
+  "Proprietary/in-house 3D radiative transfer code (Cavalié et al. 2019) and wind retrieval code (Cavalié et al. 2021)",
+  "2D/3D Cassini/CIRS temperature grids from Fletcher et al. (2012b, 2018b) formatted for the radiative transfer model",
+  "Exact polynomial/sine baseline subtraction parameters per limb position",
+  "Detailed CASA self-calibration and clean scripts (masks, cell size, weighting, multiscale parameters)"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "The ALMA data are public (Cycle 0 project 2011.0.00808.S) and the high-level methodology and key numerical results are clearly presented, but reproduction requires in-house radiative transfer and wind-retrieval codes, external Cassini/CIRS thermal grids, and manual per-spectrum baseline ripple fitting parameters that are not released.",
+ "rediscovery_reason": "Public Cycle 0 ALMA data with clear numeric targets (zonal wind velocities as a function of latitude and mean limb CO abundance); an agent could independently image the cube, extract limb spectra, and measure the Doppler shift profile to rediscover the equatorial jet slowing and high-latitude jets without needing the proprietary radiative transfer code.",
+ "source_card": "cards/2026A%26A...707A.240C/sonnet/card.md"
+}

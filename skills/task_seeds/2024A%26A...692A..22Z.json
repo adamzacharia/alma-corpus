@@ -1,0 +1,591 @@
+{
+ "bibcode": "2024A&A...692A..22Z",
+ "title": "ASW<SUP>2</SUP>DF: Census of the obscured star formation in a galaxy cluster in formation at z = 2.2",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202451379",
+ "arxiv_id": "2410.10169",
+ "fields": [
+  "high_z_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "Census of dust-obscured star-forming galaxies in the Spiderweb protocluster: ALMA 1.2 mm number counts, overdensity, spatial distribution relative to HAEs and CO emitters, and single-dish multiplicity",
+ "alma_project_codes": [
+  "2021.1.00435.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.2 mm), six contiguous fields, each an 87-pointing mosaic covering 1' x 3'",
+  "arrays": "not stated",
+  "angular_resolution": "average 0.49'' x 0.34'' (Fields 1-3); 0.87'' x 0.60'' (Fields 4-6)",
+  "sensitivity": "1 sigma rms 40.3-57.1 uJy across the six fields"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HAE catalogue and density map method",
+    "evidence": [
+     {
+      "loc": "5.2 Spatial correlation between different populations",
+      "quote": "The adopted method and the constructed HAE density map are identical to those of (cite: Shimakawa2018b)."
+     }
+    ]
+   },
+   "citation": "(cite: Shimakawa2018b)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) emitter catalogue with alpha_CO assignment per source",
+    "evidence": [
+     {
+      "loc": "5.2 Spatial correlation between different populations",
+      "quote": "Following (cite: Jin2021), we assign different $\\alpha_{\\rm CO}$ values for each source individually"
+     }
+    ]
+   },
+   "citation": "(cite: Jin2021)"
+  },
+  {
+   "what": {
+    "value": "Average ALESS SED used for flux conversion between wavelengths and to 850 um for SFRs",
+    "evidence": [
+     {
+      "loc": "4.3 Number counts",
+      "quote": "We adopt an average spectral energy distribution from a sample of ALESS SMGs (cite: da_Cunha2015), and assume a redshift of 2.2"
+     }
+    ]
+   },
+   "citation": "(cite: da_Cunha2015)"
+  },
+  {
+   "what": {
+    "value": "General-field cumulative number counts used as the baseline for overdensity",
+    "evidence": [
+     {
+      "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+      "quote": "We adopt the recent results from the ALMACAL (cite: Chen2023a) and GOODS-ALMA (cite: Franco2018; Gomez2022) surveys"
+     }
+    ]
+   },
+   "citation": "(cite: Chen2023a); (cite: Franco2018); (cite: Gomez2022)"
+  },
+  {
+   "what": {
+    "value": "General-field best-fitting curve for ADF22/SSA22-style overdensity comparison",
+    "evidence": [
+     {
+      "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+      "quote": "We compare our number counts with the fitting curve of general fields given in (cite: Umehata2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Umehata2018)"
+  },
+  {
+   "what": {
+    "value": "LABOCA SMG fluxes and positions",
+    "evidence": [
+     {
+      "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+      "quote": "reported 16 SMGs detected by APEX LABOCA"
+     }
+    ]
+   },
+   "citation": "(cite: Dannerbauer2014)"
+  },
+  {
+   "what": {
+    "value": "SFR-to-850 um linear relation",
+    "evidence": [
+     {
+      "loc": "5.2 Spatial correlation between different populations",
+      "quote": "then derive the SFR for each source based on the linear relation from (cite: Cowie2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Cowie2017)"
+  },
+  {
+   "what": {
+    "value": "Average cosmic SFR density for comparison",
+    "evidence": [
+     {
+      "loc": "5.2 Spatial correlation between different populations",
+      "quote": "being around 14 times that of the average cosmic SFR density (cite: Madau2014)"
+     }
+    ]
+   },
+   "citation": "(cite: Madau2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and image the six mosaics in continuum",
+   "method": "ALMA pipeline/archive scripts for calibration, then CASA tclean mosaic imaging with MFS over the four SPWs, cleaned to 3 sigma",
+   "software": [
+    "CASA",
+    "tclean",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "mosaic gridder, hogbom deconvolver, Briggs robust 0.5",
+    "multi-frequency synthesis over four SPWs"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "estimate the map noise",
+   "method": "'fixed' method: standard deviation of the whole non-PB-corrected image after sigma clipping; compared with 'individual' sliding-box noise maps from SEP, AEGEAN, SoFiA",
+   "software": [
+    "SEP",
+    "AEGEAN",
+    "SoFiA"
+   ],
+   "key_parameters": [
+    "individual method: 100x100 pixel box, step of one pixel",
+    "only pixels with primary beam response above 50 percent"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "extract sources and build the main and supplementary catalogues",
+   "method": "SEP, AEGEAN and SoFiA run on the non-PB-corrected map at >4 sigma with the 'fixed' noise; plus independent visual inspection; 47 sources detected by all three codes form the main catalogue (categories A and B)",
+   "software": [
+    "SEP",
+    "AEGEAN",
+    "SoFiA"
+   ],
+   "key_parameters": [
+    "minarea = 5 contiguous pixels above 4 sigma (linker.minPixels = 5 in SoFiA)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "measure purity from negative detections",
+   "method": "p = (N_pos - N_neg)/N_pos per S/N bin, negative peaks found by running the same extraction on the sign-inverted map",
+   "software": [
+    "SEP",
+    "AEGEAN",
+    "SoFiA"
+   ],
+   "key_parameters": [
+    "S/N range 3.5-5.5, 'fixed' noise"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "measure source fluxes",
+   "method": "peak flux on PB-corrected images; elliptical Gaussian fit; elliptical aperture photometry (2 x synthesized beam)",
+   "software": [
+    "astropy.modeling",
+    "photutils"
+   ],
+   "key_parameters": [
+    "Gaussian fit on a cutout of 5 x major axis; amplitude, axial ratio and position angle free",
+    "Gaussian-fit flux uncertainty from 1000 iterations at random positions"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "derive completeness and flux boosting by Monte Carlo injection",
+   "method": "inject point-like artificial sources convolved with the synthesized beam into the PB-corrected image, convert to PB-uncorrected, re-run extraction and flux measurement, compare recovered to input",
+   "software": [
+    "SEP",
+    "photutils",
+    "astropy.modeling"
+   ],
+   "key_parameters": [
+    "20 sources per bin, normal random flux, random positions with PB response > 0.5 and separations of at least 1 arcsec",
+    "recovered if extracted within 1 arcsec of the injected position"
+   ],
+   "assumptions": [
+    "artificial sources are point-like (conservative choice)"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "compute effective area and differential/cumulative number counts",
+   "method": "each source contributes xi = p/(A_eff C); summed per flux bin for dN/dS and above S0 for N(>S); effective area from local noise (fixed noise divided by PB response)",
+   "software": [],
+   "key_parameters": [
+    "uncertainties from 1000 resamplings of source fluxes with their measured flux and 1 sigma noise; median and 1 sigma dispersion adopted",
+    "Gaussian-fit fluxes used for the counts; aperture fluxes give consistent results"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "quantify the DSFG overdensity relative to general fields",
+   "method": "ratio of cumulative number counts in Spiderweb to literature general-field counts (ALMACAL, GOODS-ALMA) in five log flux bins 0.25-1.69 mJy; also simple surface densities above 0.23 mJy",
+   "software": [],
+   "key_parameters": [
+    "1.1 mm counts converted to 1.2 mm with factor 1.29"
+   ],
+   "assumptions": [
+    "ALESS average SED at z = 2.2 for the wavelength conversion"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "compare spatial distributions of DSFGs, HAEs and CO emitters",
+   "method": "5th-neighbour density maps, per-field surface-density excess normalised by the footprint mean, cumulative distributions with distance to the Spiderweb galaxy, and 2D Kolmogorov-Smirnov tests",
+   "software": [],
+   "key_parameters": [
+    "CO matching radius 2-6 arcsec scaled by ATCA beams; HAE matching radius 1 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 10,
+   "goal": "derive dust-based gas masses and compare with CO gas masses",
+   "method": "gas mass from Rayleigh-Jeans dust luminosity (Gaussian-fit fluxes), compared with CO(1-0)-based masses for the 13 matched sources",
+   "software": [],
+   "key_parameters": [
+    "alpha_CO 0.8 (starburst) and 3.6 (star-forming), also tested as single values for all sources"
+   ],
+   "assumptions": [
+    "dust temperature 25 K, beta = 2, gas-to-dust mass ratio 105 (as printed)"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "derive SFRs, SFR densities and group properties",
+   "method": "convert 1.2 mm fluxes to 850 um via ALESS SED, SFR from the Cowie et al. linear relation; SFR density for several assumed volumes; depletion time from SFR and dust-based gas mass",
+   "software": [],
+   "key_parameters": [
+    "volumes: 120 cMpc line of sight over ~20 arcmin^2 (48 cMpc^2); 2 Mpc sphere; ~400 kpc sphere"
+   ],
+   "assumptions": [
+    "volume choice drives the SFR density"
+   ]
+  },
+  {
+   "order": 12,
+   "goal": "compare ALMA with single-dish LABOCA/AzTEC detections",
+   "method": "sum ALMA fluxes inside each single-dish beam, scale single-dish fluxes to 1.2 mm, and compute the ratio and multiplicity",
+   "software": [],
+   "key_parameters": [
+    "AzTEC beam FWHM 30 arcsec"
+   ],
+   "assumptions": [
+    "single-dish fluxes scaled to 1.2 mm with the same SED method as in Sec. 4.3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1 sigma rms noise range across the six fields",
+   "value": "40.3-57.1",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the final maps in the six fields reach the 1$\\sigma$ rms noise in a range of $40.3-57.1\\,\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "median ratio of 'individual' to 'fixed' noise (SEP and AEGEAN)",
+   "value": "~0.984",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Noise estimation",
+     "quote": "The median ratio of the results of SEP and AEGEAN is both $\\sim$ 0.984"
+    }
+   ]
+  },
+  {
+   "quantity": "sources in main catalogue (all three codes, fixed noise, >4 sigma)",
+   "value": "47",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Source extraction",
+     "quote": "all three codes produced the same catalog containing 47 detections"
+    }
+   ]
+  },
+  {
+   "quantity": "tentative sources in supplementary catalogue",
+   "value": "21",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Source extraction",
+     "quote": "we obtain a supplementary catalog including 21 tentative sources in total"
+    }
+   ]
+  },
+  {
+   "quantity": "purity at S/N = 4 ('fixed' method)",
+   "value": "~0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Source extraction",
+     "quote": "The purity reaches $\\sim0.9$ at a threshold of S/N=4"
+    }
+   ]
+  },
+  {
+   "quantity": "completeness thresholds",
+   "value": "80% at ~0.3 mJy; 100% at ~0.6 mJy",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.1 Completeness and flux boosting",
+     "quote": "reaching 80% and 100% completeness at around 0.3 mJy and 0.6 mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "total effective survey area",
+   "value": "19.3 at noise of 120 uJy",
+   "uncertainty": "not stated",
+   "units": "arcmin^2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2 Effective area",
+     "quote": "reach the maximum of 19.3 arcmin$^2$ at the noise of 120 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm to 1.2 mm flux conversion factor S_1.1mm/S_1.2mm",
+   "value": "1.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.3 Number counts",
+     "quote": "to be 1.29, identical to that in (cite: Umehata2018) by using a modified black body model"
+    }
+   ]
+  },
+  {
+   "quantity": "number density of ALMA sources in Spiderweb vs general fields",
+   "value": "2.1 (Spiderweb) vs 1.0 (general fields)",
+   "uncertainty": "0.3 (Spiderweb); 0.4 (general fields)",
+   "units": "arcmin^-2",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+     "quote": "We obtain a number density of $\\rho\\sim2.1\\pm0.3\\,\\rm arcmin^{-2}$ in the field of the Spiderweb protocluster"
+    }
+   ]
+  },
+  {
+   "quantity": "overdensity of the entire Spiderweb field vs Umehata et al. fitted field curve",
+   "value": "2.08",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+     "quote": "obtain an overdensity of 2.08 in the entire Spiderweb field"
+    }
+   ]
+  },
+  {
+   "quantity": "overdensity factor around the Spiderweb galaxy in radii <150, 150-300, 300-450, 450-600, 600-750, 750-900, 900-1050 kpc",
+   "value": "3.5, 2.4, 2.8, 4.0, 1.6, 1.3, 1.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.1 Overdensity of DSFGs detected by ALMA",
+     "quote": "we measured the overdensity factor around the Spiderweb galaxy of 3.5, 2.4, 2.8, 4.0, 1.6, 1.3 and 1.4 in radii of"
+    }
+   ]
+  },
+  {
+   "quantity": "2D K-S probability that HAEs and DSFGs share a distribution",
+   "value": "0.084",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "the probability of them being drawn from the same distribution is 0.084"
+    }
+   ]
+  },
+  {
+   "quantity": "2D K-S probability that DSFGs and CO emitters share a distribution",
+   "value": "62.3%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "ALMA-detected DSFGs and CO emitters have a rather high probability (62.3%"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA sources confirmed as CO emitters (of 43 in the COALAS footprint)",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "We find that 13 ALMA sources are confirmed as CO emitters by cross-matching these two populations"
+    }
+   ]
+  },
+  {
+   "quantity": "DSFGs in main catalogue that are HAEs within 1 arcsec",
+   "value": "10 of 47 (20 percent)",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "10 of 47 DSFGs in our main catalog are HAEs within a matching radius of 1 arcsec"
+    }
+   ]
+  },
+  {
+   "quantity": "dust-based gas masses of ALMA sources",
+   "value": "2.0-27.3e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "we derive the gas masses of our ALMA sources to be $2.0-27.3\\times10^{10}\\,{\\rm M}_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR density over 120 cMpc line of sight",
+   "value": "1.78",
+   "uncertainty": "0.35",
+   "units": "Msun yr^-1 cMpc^-3",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "we obtain an SFR density to be $1.78\\pm0.35\\,{\\rm M}_\\odot\\,\\rm{yr}^{-1}\\rm{cMpc}^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR density in a 2 Mpc sphere",
+   "value": "58.21",
+   "uncertainty": "11.41",
+   "units": "Msun yr^-1 cMpc^-3",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "5.2 Spatial correlation between different populations",
+     "quote": "we obtain a SFR density to be $58.21\\pm11.41\\,{\\rm M}_\\odot\\,\\rm{yr}^{-1}\\rm{cMpc}^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "total SFR of groups SW-GE1 and SW-GE2",
+   "value": "2688 and 806",
+   "uncertainty": "385 and 121",
+   "units": "Msun yr^-1",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "5.3 DSFGs related to the evolution of the Spiderweb protocluster",
+     "quote": "We calculate the total SFR of these two groups to be $2688\\pm385$ and $806\\pm121\\,{\\rm M}_\\odot\\,\\rm{yr}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "depletion time of ALMA-detected DSFGs",
+   "value": "340",
+   "uncertainty": "48",
+   "units": "Myr",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "5.3 DSFGs related to the evolution of the Spiderweb protocluster",
+     "quote": "the depletion time is estimated to be $340\\pm48$ Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "multiplicity fraction of LABOCA sources",
+   "value": "~57%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "5.4 Comparison between ALMA and single-dish observations",
+     "quote": "indicating a multiplicity fraction of $\\sim$57%"
+    }
+   ]
+  },
+  {
+   "quantity": "median ratio of summed ALMA flux to single-dish flux (LABOCA; AzTEC)",
+   "value": "0.62; 0.60",
+   "uncertainty": "0.12; 0.04",
+   "units": "dimensionless",
+   "from_step": 12,
+   "evidence": [
+    {
+     "loc": "5.4 Comparison between ALMA and single-dish observations",
+     "quote": "The median ratios for the LABOCA sources and AzTEC sources are $0.62\\pm0.12$ and $0.60\\pm0.04$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA version used for tclean (only a CASA citation and the pipeline version are given)",
+  "Whether the archive calibration scripts were run unmodified or with extra flagging, and the specific bad baselines flagged",
+  "tclean parameters beyond gridder/deconvolver/robust: niter, cleaning mask, threshold per field, image size, phase centres of the 87 pointings",
+  "Channel ranges excluded around CO(7-6) and CI(2-1) and at SPW edges for the continuum",
+  "How the C2 and C4 execution blocks in Field 4 were combined in one tclean run (weighting/uv ranges)",
+  "Full SoFiA and AEGEAN configuration beyond the key parameters in Table 1; how the 2D noise maps were produced inside each code",
+  "Bin edges and bin centres used for the differential counts; how the flux-boosting correction was applied to the counts",
+  "Which alpha_CO (0.8 or 3.6) was assigned to each CO emitter and the CO luminosities themselves (from COALAS catalogue)",
+  "Gas-to-dust ratio is printed as 105; the intended value should be confirmed with the authors",
+  "Literature positions and fluxes of HAEs, CO emitters, LABOCA and AzTEC sources and the general-field counts used for the overdensity baseline",
+  "Volume and distance definitions for the SFR densities (line-of-sight lengths are chosen, not derived)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and full tclean parameter set (mask, niter, threshold, image size, phase centres)",
+  "Public data status is not stated in the paper",
+  "Machine-readable catalogues or scripts are not stated as released",
+  "Literature catalogues (HAEs, CO emitters, LABOCA/AzTEC, general-field counts) must be gathered from other papers",
+  "Bin definitions and correction details for the differential counts"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, array configs, spectral setup, robust, tclean mode, noise method, source-finder parameters and the Monte Carlo recipe are given and the catalogue is tabulated, but the CASA version, clean masks/thresholds, channel selection and several literature inputs are missing.",
+ "rediscovery_reason": "The paper does not state that the data are public, but Cycle 8 data from a named project code are likely out of the proprietary period; the recipe (continuum imaging, noise, extraction, Monte Carlo counts) is mostly complete and results are tabulated numerically.",
+ "source_card": "cards/2024A%26A...692A..22Z/sonnet/card.md"
+}

@@ -1,0 +1,439 @@
+{
+ "bibcode": "2025PASJ...77..616I",
+ "title": "Cloud-cloud collisions in the Antennae galaxies: Does high-speed collision suppress star formation?",
+ "year": 2025,
+ "doi": "10.1093/pasj/psaf028",
+ "arxiv_id": "2503.17951",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How the star formation rate on a sub-kpc scale and the star formation efficiency of a colliding GMC depend on cloud-cloud collision velocity and GMC mass across the Antennae galaxies",
+ "alma_project_codes": [
+  "2018.1.00272.S"
+ ],
+ "data": {
+  "bands": "Band 3 (115 GHz)",
+  "arrays": "12 m array, ACA 7 m array and Total Power array",
+  "angular_resolution": "synthesized beam 0''.72 x 0''.56 (76 pc x 60 pc at 22 Mpc), PA -87.3 deg",
+  "sensitivity": "rms ~0.63 mJy/beam (~0.14 K)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum-subtracted H-alpha flux map of the Antennae from MUSE",
+    "evidence": [
+     {
+      "loc": "2.2 Continuum-subtracted Halpha",
+      "quote": "We used a continuum-subtracted H$\\alpha$ flux map of the Antennae galaxies created by (cite: Weilbacher+18) to derive the SFR."
+     }
+    ]
+   },
+   "citation": "Weilbacher+18 (cite: Weilbacher+18)"
+  },
+  {
+   "what": {
+    "value": "Background-subtracted MIPS 24 um image",
+    "evidence": [
+     {
+      "loc": "2.4 Infrared",
+      "quote": "For the MIPS 24$\\ensuremath{\\mu}m$ data, we used a background subtracted image created by (cite: Maeda+24)."
+     }
+    ]
+   },
+   "citation": "Maeda+24 (cite: Maeda+24)"
+  },
+  {
+   "what": {
+    "value": "Distance to the Antennae, 22 Mpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The Antennae galaxies are nearby (22Mpc; (cite: Schweizer+08))"
+     }
+    ]
+   },
+   "citation": "Schweizer+08 (cite: Schweizer+08)"
+  },
+  {
+   "what": {
+    "value": "H-alpha extinction correction with 24 um, coefficient 0.031 +/- 0.006",
+    "evidence": [
+     {
+      "loc": "3.1 SFR derived from Halpha, FUV and 24um flux",
+      "quote": "where $L({\\mathrm{24\\>\\ensuremath{\\mu}m}})$ refers to $\\nu_{\\mathrm{24\\>\\ensuremath{\\mu}m}}L_{\\mathrm{24\\>\\ensuremath{\\mu}m}}$ (cite: Calzetti+07)."
+     }
+    ]
+   },
+   "citation": "Calzetti+07 (cite: Calzetti+07)"
+  },
+  {
+   "what": {
+    "value": "H-alpha luminosity to SFR conversion factor",
+    "evidence": [
+     {
+      "loc": "3.1 SFR derived from Halpha, FUV and 24um flux",
+      "quote": "Using the conversion factor obtained by (cite: Murphy+11), the surface density of SFR is derived as"
+     }
+    ]
+   },
+   "citation": "Murphy+11 (cite: Murphy+11)"
+  },
+  {
+   "what": {
+    "value": "FUV+24 um SFR surface density calibration",
+    "evidence": [
+     {
+      "loc": "3.1 SFR derived from Halpha, FUV and 24um flux",
+      "quote": "(cite: Leroy+08)."
+     }
+    ]
+   },
+   "citation": "Leroy+08 (cite: Leroy+08)"
+  },
+  {
+   "what": {
+    "value": "GALEX count-rate to intensity conversion factor and A_FUV = 0.41 mag",
+    "evidence": [
+     {
+      "loc": "2.3 Far ultraviolet (FUV)",
+      "quote": "We also corrected for the Galactic extinction using $A_{\\mathrm{FUV}}=0.41$mag estimated by (cite: Leroy+19)."
+     }
+    ]
+   },
+   "citation": "Leroy+19 (cite: Leroy+19)"
+  },
+  {
+   "what": {
+    "value": "Convolution kernels to match angular resolution between images",
+    "evidence": [
+     {
+      "loc": "3.1 SFR derived from Halpha, FUV and 24um flux",
+      "quote": "we convolved MUSE H$\\alpha$ and GALEX FUV images using the kernel derived by (cite: Aniano+11)"
+     }
+    ]
+   },
+   "citation": "Aniano+11 (cite: Aniano+11)"
+  },
+  {
+   "what": {
+    "value": "Dust model (U_min, gamma grid on P24-R71 plane) used for the model-based cirrus estimate",
+    "evidence": [
+     {
+      "loc": "3.2.2 Model based method",
+      "quote": "We also estimated the IR cirrus contribution using the dust model by (cite: DraineLi07)."
+     }
+    ]
+   },
+   "citation": "DraineLi07 (cite: DraineLi07)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO range reported for the Antennae, 1.1 to 6.54 Msun (K km/s pc^2)^-1",
+    "evidence": [
+     {
+      "loc": "4.2 Derivation of physical properties of the GMCs",
+      "quote": "The values of $\\alpha_{\\mathrm{CO}}$ in the Antennae galaxies are reported to range from $1.1$ to $6.54$$M_\\odot$(Kkms$^{-1}$pc$^2$)$^{-1}$ (cite: Wilson+03; Zhu+03; He+24)"
+     }
+    ]
+   },
+   "citation": "Wilson+03; Zhu+03; He+24"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "build combined 12m+7m+TP CO(1-0) cube",
+   "method": "uvcontsub, concatenate 12 m and 7 m pointings, tclean mosaic with Briggs weighting, multiscale then single-scale CLEAN with automasking, feather with TP, primary-beam correct",
+   "software": [
+    "CASA 6.5.2",
+    "tclean",
+    "uvcontsub"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5",
+    "pixel 0.''13, ~5.1 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "derive SFR surface density map from H-alpha + 24 um",
+   "method": "H-alpha luminosity corrected with 0.031 L(24um), converted to Sigma_SFR with the Murphy+11 factor; all images matched to 24 um resolution (~6 arcsec = 600 pc); FUV+24um used as a cross-check",
+   "software": [],
+   "key_parameters": [
+    "images convolved with Aniano+11 kernels to MIPS 24 um resolution and regridded"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "remove IR cirrus from the 24 um flux",
+   "method": "Empirical: subtract stellar continuum with a 5000 K blackbody scaled by 2MASS Ks, scale cirrus 24/5.8 um ratio (mode in outer-region apertures) by 5.8 um dust intensity; model-based Draine & Li check",
+   "software": [],
+   "key_parameters": [
+    "cirrus 24/5.8 um ratio taken as the mode of the ratio in outer-region apertures"
+   ],
+   "assumptions": [
+    "stellar continuum longer than ~2 um approximated by a 5000 K blackbody",
+    "PAH abundance fixed at 4.6% in the model-based method"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "identify GMCs in the CO cube",
+   "method": "Rosolowsky & Leroy (2006) significant-emission mask, then PYCPROPS decomposition (local maxima, watershed with compactness parameter)",
+   "software": [
+    "PYCPROPS",
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "mask h = 5 sigma, l = 2 sigma, sigma = 0.14 K",
+    "delta = 2 sigma",
+    "compactness = 0.001",
+    "sigdiscont = 0.0, specfriends = 0, friends = 0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "measure GMC mass, radius and line width",
+   "method": "PYCPROPS extrapolated, beam- and channel-deconvolved moments; luminosity mass M_mol = alpha_CO times summed brightness",
+   "software": [
+    "PYCPROPS"
+   ],
+   "key_parameters": [
+    "alpha_CO = 4.36 Msun (K km/s pc^2)^-1, single value for the whole region"
+   ],
+   "assumptions": [
+    "distance 22 Mpc",
+    "2D Gaussian surface brightness, eta ~1.18 in R = eta sqrt(sigma_maj sigma_min)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "estimate collision velocity and typical mass per aperture",
+   "method": "Hexagon apertures (300 pc side) centred every 300 pc; median GMC mass per aperture; v_col = sqrt(3 sum (v_los - mean)^2 / N) over GMCs in the aperture",
+   "software": [],
+   "key_parameters": [
+    "876 apertures in total, 1-27 GMCs each",
+    "apertures with a single GMC excluded; keep N_ap f_CCC > 0.1 per Myr (560 apertures)"
+   ],
+   "assumptions": [
+    "GMCs move randomly in 3-dimensional space within the aperture"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "relate Sigma_SFR to v_col and GMC mass",
+   "method": "Plot Sigma_SFR of each aperture against <M_mol> and v_col, overall and by region; also <M_mol> divided into five bins",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "estimate star formation efficiency per collision",
+   "method": "SFR = eps_CCC <M_mol> N_ap f_CCC with f_CCC = sigma_c v_col n_ap, sigma_c = pi (2<R>)^2; solve for eps_CCC",
+   "software": [],
+   "key_parameters": [
+    "line-of-sight depth l = 600 pc"
+   ],
+   "assumptions": [
+    "eps_CCC is the product of the star-forming-collision fraction and the converted gas fraction; the two cannot be separated"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "test robustness to delta, compactness and aperture size",
+   "method": "Repeat the main plots with delta = 1.5 and 2.5, compactness = 0.1 and 0.00001, and aperture sides of 200 and 400 pc",
+   "software": [
+    "PYCPROPS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Synthesized beam of the CO(1-0) cube",
+   "value": "0''.72 x 0''.56 (76 pc x 60 pc), PA -87.3 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 12CO(1-0)",
+     "quote": "The resulting synthesized beam size is $0''.72\\times0''.56$ which corresponds to a physical scale of 76pc $\\times$ 60pc at 22Mpc, with a position angle of $-87^\\circ.3$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO cube rms noise",
+   "value": "~0.63 mJy/beam (~0.14 K)",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 12CO(1-0)",
+     "quote": "The rms noise is $\\sim0.63$mJybeam$^{-1}$, corresponding to $\\sim0.14$K."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical empirical IR-cirrus 24/5.8 um dust intensity ratio",
+   "value": "2.1",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 Empirical method",
+     "quote": "is $2.1 \\pm 0.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of GMCs identified",
+   "value": "1759",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 GMCs in the Antennae galaxies",
+     "quote": "We identified 1759 GMCs in the Antennae galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Median GMC mass, radius, line width",
+   "value": "M_mol ~10^6.5 Msun, R ~60 pc, sigma_v ~10 km/s",
+   "uncertainty": "not stated",
+   "units": "Msun; pc; km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 GMCs in the Antennae galaxies",
+     "quote": "with the median value of $M_{\\mathrm{mol}}\\sim 10^{6.5}$$M_\\odot$, $R\\sim60$pc, and $\\sigma_v\\sim10$kms$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of apertures; number kept for analysis",
+   "value": "876 total; 560 with N_ap f_CCC > 0.1 per Myr",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Aperture analysis",
+     "quote": "Out of 876 apertures, 560 apertures meet this criterion."
+    }
+   ]
+  },
+  {
+   "quantity": "Collision velocity range across the Antennae",
+   "value": "~10-150",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Aperture analysis",
+     "quote": "The Antennae galaxies exhibit a wide range of the collision velocity of $\\sim10$–$150$kms$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR range across the Antennae",
+   "value": "~0.01-1",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/kpc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3 SFR in the Antennae galaxies",
+     "quote": "Antennae galaxies show a wide range of $\\Sigma_{\\mathrm{SFR}}\\sim0.01$–$1$$M_\\odot$yr$^{-1}$kpc$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "IR cirrus fraction at 24 um in active overlap region",
+   "value": "~10%-20%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 Model based method",
+     "quote": "The resulting IR cirrus contribution in the active overlap region is not large ($\\sim10$%–$20$%)"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation efficiency per collision eps_CCC",
+   "value": "0.001-0.03 (0.1%-3.0%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "7 Star formation efficiency for a colliding GMC",
+     "quote": "The $\\epsilon_{\\mathrm{CCC}}$ is estimated to be $0.001$–$0.03$ (0.1%–3.0%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation coefficients of eps_CCC with v_col per mass range",
+   "value": "-0.72 to -0.45",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "7 Star formation efficiency for a colliding GMC",
+     "quote": "the correlation coefficients for each mass range are $-0.72$ to $-0.45$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of GMCs for delta = 1.5 and 2.5",
+   "value": "2243 and 1415",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Effects of Parameter Choices",
+     "quote": "If we use $\\delta=$1.5 and 2.5 instead of $\\delta=2.0$, 2243 and 1415 GMCs are identified, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which execution blocks / member OUS were used and how the EA ARC calibrated visibilities were produced (pipeline or manual, CASA version of calibration)",
+  "Line-free channels and polynomial order for uvcontsub",
+  "Image size, phase centre, mosaic gridder and spw/velocity range of the cube; velocity start and channel grid",
+  "tclean niter, thresholds, automasking parameters and uv-taper (if any)",
+  "Feathering parameters (SD scale factor, uv cut) and TP cube provenance",
+  "Exact definition of each GMC's line-of-sight velocity (centroid or peak) used in the v_col formula",
+  "Origin and orientation of the hexagon aperture grid and how Sigma_SFR is averaged within an aperture",
+  "Bin edges for the five <M_mol> bins used in Figures 11b and 13b",
+  "PYCPROPS version and any remaining default parameters",
+  "Positions of the outer apertures used to measure the cirrus 24/5.8 um ratio and region boundaries of the four sub-regions",
+  "Region definitions (active/non-active overlap, nuclear, arm-like) as coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Exact calibrated products (EA ARC) and line-free channel choice for uvcontsub",
+  "Image size, phase centre, CLEAN thresholds and feathering parameters",
+  "Definition of per-GMC velocity and aperture grid origin",
+  "Region masks for the four sub-regions and bin edges for mass bins",
+  "No catalogue of GMCs or apertures is stated as released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA data are public and the cloud-finding and aperture recipe is mostly specified with numeric results, but calibration provenance, line-free channels, mask details and region definitions are missing, and the SFR maps depend on several other archives.",
+ "rediscovery_reason": "The CO(1-0) archival data are public and the GMC identification and aperture/v_col recipe are specified with numbers (1759 GMCs, 876 apertures, v_col 10-150 km/s), so the ALMA-derived core results can be redone, though full SFR comparison needs several other archives.",
+ "source_card": "cards/2025PASJ...77..616I/sonnet/card.md"
+}

@@ -1,0 +1,190 @@
+{
+ "bibcode": "2020AJ....160..270F",
+ "title": "On the Accuracy of the ALMA Flux Calibration in the Time Domain and across Spectral Windows",
+ "year": 2020,
+ "doi": "10.3847/1538-3881/abbe1a",
+ "arxiv_id": "2010.02186",
+ "fields": [
+  "instrumentation",
+  "star_formation"
+ ],
+ "question": "How accurate is the ALMA pipeline flux calibration between epochs and across spectral windows, tested with stable YSO calibrators in Band 7 ACA data?",
+ "alma_project_codes": [
+  "2018.1.00917.S",
+  "2019.1.00475.S"
+ ],
+ "data": {
+  "bands": "Band 7 (343.5 GHz)",
+  "arrays": "ACA stand-alone, twelve 7m antennas",
+  "angular_resolution": "~4 arcsec (~1750 au)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA calibrator catalog fluxes and spectral indices (queried April 2020)",
+    "evidence": [
+     {
+      "loc": "3.2 Grid Calibrator Flux updates",
+      "quote": "We thus queried the flux of each grid calibrator in April 2020 and compared its flux and spectral index with the values used by the pipeline"
+     }
+    ]
+   },
+   "citation": "ALMA calibrator catalog (not cited as a paper)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum per calibrator and epoch",
+   "method": "Dirty cubes, sigma-clipped spectra in 3 arcsec aperture, uv-plane point-source fit with flat spectral index",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "YSO calibrators stable in flux and spectral index"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Compute relative flux calibration factors",
+   "method": "MCF = mean flux over 7 epochs divided by epoch flux; rFCF = average of 4 MCFs",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "YSO calibrators stable to ~3-5% from JCMT monitoring"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Test grid calibrator catalog update",
+   "method": "Compare original pipeline vs April 2020 catalog fluxes, rescale visibilities, recompute MCFs and rFCFs",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure spectral-window relative calibration error",
+   "method": "Per-spw normalized MCFs; Gaussian fits to scatter histograms; power-law fit vs frequency; Monte Carlo of 16 normalized MCFs repeated 10000 times",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Width of distribution is sum of two uncorrelated random errors; systematic frequency-dependent terms negligible"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Std dev of rFCFs (original pipeline)",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Calibration",
+     "quote": "We find the YSO rFCFs have a standard deviation of $14\\%$ and range of $45\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of rFCFs (original)",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum Calibration",
+     "quote": "We find the YSO rFCFs have a standard deviation of $14\\%$ and range of $45\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Std dev of rFCFs after catalog update",
+   "value": "9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Grid Calibrator Flux updates",
+     "quote": "the rFCFs overall now have a standard deviation of 9% and range of 26%"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of rFCFs after update",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 Grid Calibrator Flux updates",
+     "quote": "the rFCFs overall now have a standard deviation of 9% and range of 26%"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative calibration accuracy using YSO calibrators",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Best Practices",
+     "quote": "This strategy allows us to reach a relative flux calibration accuracy of $\\sim 3\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Relative flux calibration error between spectral windows",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Calibration across spectral windows",
+     "quote": "A Gaussian fit to the red histogram has a width of $\\sigma=0.8\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Probability of epoch-2 slope from random errors across seven epochs",
+   "value": "~16",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Calibration across spectral windows",
+     "quote": "or $\\sim16\\%$ for seven"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Sigma-clipping threshold for continuum extraction",
+  "Point-source fit software/task and error treatment",
+  "Weighting of the Monte Carlo and Gaussian fits (binning of histograms)",
+  "Whether self-calibration was applied to YSO calibrators (section text empty)",
+  "Exact updated flux.csv values used for rescaling",
+  "Which flux scale details were used for spw-by-spw analysis"
+ ],
+ "missing_for_reproduction": [
+  "Sigma-clipping parameters",
+  "Point-source fitting details",
+  "Self-calibration description"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple recipe with tables of numbers but missing fit and clipping details.",
+ "rediscovery_reason": "Data likely public, recipe simple, numeric results in tables.",
+ "source_card": "cards/2020AJ....160..270F/sonnet/card.md"
+}

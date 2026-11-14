@@ -1,0 +1,380 @@
+{
+ "bibcode": "2023ApJ...948...88W",
+ "title": "Star Formation and Molecular Gas Diagnostics with Mid- and Far-infrared Emission",
+ "year": 2023,
+ "doi": "10.3847/1538-4357/acc316",
+ "arxiv_id": "2212.00180",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "How do mid-infrared (MIR) spectral features from 5–35 μm and infrared photometry from 3.4–250 μm correlate with star formation rate (SFR) and molecular gas (CO)?",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00886.L",
+  "2018.1.01651.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "15\" (Gaussian PSF FWHM of convolved CO maps)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Convolved 15\" CO J=(2-1) maps and error maps from PHANGS-ALMA and HERACLES compilation",
+    "evidence": [
+     {
+      "loc": "2.3. CO Mapping",
+      "quote": "These CO maps have been convolved to a Gaussian point-spread function (PSF) with FWHM of 15″."
+     }
+    ]
+   },
+   "citation": "Leroy et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Central metallicities, metallicity gradients, R_25, and nuclear classifications",
+    "evidence": [
+     {
+      "loc": "2.5. Additional Measurements",
+      "quote": "We determine metallicities for our apertures using the central values and gradients from the Kobulnicky & Kewley (2004; KK04) calibration found in Moustakas et al. (2010)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Notes. Metallicity, gradient, and R 25 : Moustakas et al. (2010), inclinations, position angles, and distances: Murphy et al. 2018, nuclear designations: Moustakas et al. 2010 cross-checked and supplemented by Murphy et al. (2018)"
+     }
+    ]
+   },
+   "citation": "Moustakas et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Galaxy inclinations, position angles, distances, and nuclear classifications",
+    "evidence": [
+     {
+      "loc": "2.5. Additional Measurements",
+      "quote": "We use nuclear classifications from Murphy et al. (2018) and Moustakas et al. (2010) to identify apertures that include an active galactic nucleus (AGN)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "inclinations, position angles, and distances: Murphy et al. 2018"
+     }
+    ]
+   },
+   "citation": "Murphy et al. (2018)"
+  },
+  {
+   "what": {
+    "value": "Heliocentric systemic velocities",
+    "evidence": [
+     {
+      "loc": "2.7. MIR Spectral Fitting",
+      "quote": "We input heliocentric systemic velocities from the Lyon"
+     }
+    ]
+   },
+   "citation": "Makarov et al. (2014)"
+  },
+  {
+   "what": {
+    "value": "PSF convolution kernels",
+    "evidence": [
+     {
+      "loc": "2.4. Convolution and Aperture Corrections",
+      "quote": "To ensure matched extractions for the photometry, we convolve each IRAC, WISE, MIPS, and PACS image to a Gaussian PSF with FWHM of 15″ matched to the CO maps using convolution kernels from Aniano et al. (2011)."
+     }
+    ]
+   },
+   "citation": "Aniano et al. (2011)"
+  },
+  {
+   "what": {
+    "value": "CO-to-H2 conversion factor deviations in NGC 3184, NGC 3351, and NGC 6946",
+    "evidence": [
+     {
+      "loc": "4.2. CO-to-H 2 Conversion Factor",
+      "quote": "these regions are in NGC 3184, NGC 3351, and NGC 6946, which have α CO lower than the Milky Way value by 0.39, 0.79, and 1.04 dex, respectively (determined using dust as a tracer; Sandstrom et al. 2013)."
+     }
+    ]
+   },
+   "citation": "Sandstrom et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Define overlapping IRS apertures and extract spectra and CO/IR photometry",
+   "method": "Define 154 polygonal apertures from the spatial overlap of Spitzer-IRS SL, SH, and LH modules; convolve IRAC, WISE, MIPS, and PACS photometry to 15\" FWHM to match the CO J=(2-1) maps; perform background subtraction outside R_25 with a 3σ mask; extract average IRS spectra, photometry, and CO J=(2-1) intensities and errors in the apertures; exclude AGN nuclei and regions lacking neon detections.",
+   "software": [
+    "Astropy",
+    "NumPy",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "15\" FWHM Gaussian PSF; S/N > 3 for CO detections; 154 total apertures (112 SF regions, 67 with CO S/N > 3)"
+   ],
+   "assumptions": [
+    "Constant 10% uncertainty on measured surface brightness in each aperture for all photometric bands; no extended source or IRS aperture corrections applied"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit MIR spectral features in SL, SH, and LH spectra",
+   "method": "Fit SL spectra using PAHFIT with no attenuation fitting. Fit SH spectra using custom FARAMIR routine (linear continuum subtraction between 10–15 μm and 15–18.2 μm, Drude profiles for PAHs including 4 Drude components for the 11.3 μm complex, and Gaussian profiles for lines). Fit LH spectra by cropping ±1 μm around H2 S(0), [S III] 33.5 μm, and [Si II] 34.8 μm, subtracting a linear continuum, and fitting Gaussians. Estimate SH and LH uncertainties with 500 Monte Carlo trials and apply a 3σ residual detection threshold.",
+   "software": [
+    "PAHFIT",
+    "FARAMIR"
+   ],
+   "key_parameters": [
+    "500 Monte Carlo trials; 3σ residual amplitude detection threshold; initial feature wavelengths and FWHMs in Table 2"
+   ],
+   "assumptions": [
+    "MIR dust attenuation is minimal and not fit in PAHFIT; linear dust continuum in SH and LH spectral windows"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Decompose IRAC4 8 μm and WISE3 12 μm bands via synthetic photometry",
+   "method": "Stitch SL (5.2–14.7 μm) and continuum-adjusted SH (14.7–16.4 μm) spectra, decompose SL spectra into PAH, dust continuum, starlight, and line components using PAHFIT, and perform synthetic photometry to measure fractional contributions to IRAC4 8 μm and WISE3 12 μm.",
+   "software": [
+    "PAHFIT",
+    "synphot"
+   ],
+   "key_parameters": [
+    "120 non-AGN spectra; SL 5.2–14.7 μm stitched with SH 14.7–16.4 μm"
+   ],
+   "assumptions": [
+    "Appended 14.7–16 μm SH spectral segment is treated as continuum"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive reference Σ_SFR and TIR and compute correlations with CO and Σ_SFR",
+   "method": "Calculate TIR using Eq. (1) and reference Σ_SFR from [Ne II] 12.8 μm, [Ne III] 15.6 μm, and KK04 metallicity using Eq. (2). Compute Spearman rank correlation coefficients (ρ_s) and fit logarithmic power laws log10(Y) = m log10(X) + b via ordinary least squares with 500 Monte Carlo perturbation and bootstrap resampling trials.",
+   "software": [
+    "SciPy",
+    "NumPy"
+   ],
+   "key_parameters": [
+    "500 Monte Carlo + bootstrap trials; subsample split at physical area 0.4 kpc^2"
+   ],
+   "assumptions": [
+    "CO J=(2-1) surface brightness used directly as reference molecular gas tracer without applying a CO-to-H2 conversion factor"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spearman correlation coefficient between H2 S(1) and CO J=(2-1)",
+   "value": "0.91",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "H 2 S(1) 0.91 ± 0.04 0.13 ± 0.03 0.75 ± 0.06 −2.01 ± 0.07 53"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of CO J=(2-1) vs H2 S(1)",
+   "value": "0.75",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "H 2 S(1) 0.91 ± 0.04 0.13 ± 0.03 0.75 ± 0.06 −2.01 ± 0.07 53"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between PAH 12.0 μm SL and CO J=(2-1)",
+   "value": "0.91",
+   "uncertainty": "±0.03",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PAH 12.0 μm SL 0.91 ± 0.03 0.16 ± 0.02 0.81 ± 0.05 −1.00 ± 0.06 67"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between PAH 7.7 μm SL and CO J=(2-1)",
+   "value": "0.87",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PAH 7.7 μm SL 0.87 ± 0.04 0.19 ± 0.02 0.79 ± 0.06 0.26 ± 0.06 67"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of CO J=(2-1) vs PAH 7.7 μm SL",
+   "value": "0.79",
+   "uncertainty": "±0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "PAH 7.7 μm SL 0.87 ± 0.04 0.19 ± 0.02 0.79 ± 0.06 0.26 ± 0.06 67"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of CO J=(2-1) vs Σ PAH 17 μm",
+   "value": "1.19",
+   "uncertainty": "±0.21",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Σ PAH 17μm 0.85 ± 0.07 0.33 ± 0.08 1.19 ± 0.21 −1.63 ± 0.28 36"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between [S III] 18.7 μm and Σ_SFR",
+   "value": "0.94",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "[S III ] 18.7 μm 0.94 ± 0.02 0.18 ± 0.04 1.13 ± 0.08 0.74 ± 0.11 109"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope m of Σ_SFR vs [S III] 18.7 μm",
+   "value": "1.13",
+   "uncertainty": "±0.08",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "[S III ] 18.7 μm 0.94 ± 0.02 0.18 ± 0.04 1.13 ± 0.08 0.74 ± 0.11 109"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law intercept b of Σ_SFR vs [S III] 18.7 μm",
+   "value": "0.74",
+   "uncertainty": "±0.11",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "[S III ] 18.7 μm 0.94 ± 0.02 0.18 ± 0.04 1.13 ± 0.08 0.74 ± 0.11 109"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between [S III] 33.5 μm and Σ_SFR",
+   "value": "0.93",
+   "uncertainty": "±0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "[S III ] 33.5 μm 0.93 ± 0.04 0.19 ± 0.06 1.07 ± 0.11 0.73 ± 0.17 110"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between Total [S III] and Σ_SFR",
+   "value": "0.95",
+   "uncertainty": "±0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Total [S III ] 0.95 ± 0.02 0.15 ± 0.02 1.10 ± 0.06 1.05 ± 0.08 108"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between Σ_SFR and CO J=(2-1)",
+   "value": "0.45",
+   "uncertainty": "±0.12",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "SFR 0.45 ± 0.12 0.34 ± 0.03 0.40 ± 0.11 −1.68 ± 0.11 67"
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional contribution to IRAC4 8 μm from PAHs",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.8. Synthetic Photometry",
+     "quote": "The median fractional contribution to IRAC4 from PAHs is found to be 78%, that from continuum about 19%, and that from lines about 4%."
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional contribution to WISE3 12 μm from PAHs",
+   "value": "38",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.8. Synthetic Photometry",
+     "quote": "The median fractional contribution from PAHs to WISE3 is 38%, that from continuum is 58%, and that from lines is about 4%."
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional contribution to WISE3 12 μm from dust continuum",
+   "value": "58",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.8. Synthetic Photometry",
+     "quote": "The median fractional contribution from PAHs to WISE3 is 38%, that from continuum is 58%, and that from lines is about 4%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact source code and parameter boundary constraints for the custom FARAMIR fitting routine",
+  "Exact continuum anchor wavelengths between 10 and 15 μm and between 15 and 18.2 μm used for linear continuum subtraction in FARAMIR"
+ ],
+ "missing_for_reproduction": [
+  "Source code for the custom FARAMIR SH spectral fitting routine",
+  "Exact parameter bounds (wavelength and fractional FWHM tolerances) used in FARAMIR"
+ ],
+ "reproducibility_score": 85,
+ "score_reason": "All input datasets are public, the polygon aperture vertices and all extracted spectral/photometric/CO intensities are provided in a machine-readable table, and the statistical correlation and fitting equations are explicitly specified; only the custom FARAMIR code is not publicly linked.",
+ "rediscovery_reason": "All datasets and the complete machine-readable table of aperture vertices and extracted intensities are public, and the main results are numeric correlation coefficients and power-law calibrations (e.g., the [S III] SFR calibration) that can be directly reproduced.",
+ "source_card": "cards/2023ApJ...948...88W/sonnet/card.md"
+}

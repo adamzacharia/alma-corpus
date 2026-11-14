@@ -1,0 +1,1349 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021A&A...656A..46M",
+  "title": "ALCHEMI, an ALMA Comprehensive High-resolution Extragalactic Molecular Inventory. Survey presentation and first results from the ACA array",
+  "year": 2021,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Martín, S.",
+  "n_authors": 35,
+  "arxiv_id": "2109.08638",
+  "doi": "10.1051/0004-6361/202141567",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00161.L",
+   "2018.1.00162.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "This article describes the ALMA Comprehensive High-resolution Extragalactic Molecular Inventory (ALCHEMI) Large Program."
+   },
+   {
+    "loc": "1.3 The ALCHEMI survey",
+    "quote": "The ALMA Comprehensive High-resolution Extragalactic Molecular Inventory (ALCHEMI) is an ALMA large program whose aim is to obtain the most complete spatially resolved unbiased molecular inventory towards a starburst environment."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 253 CMZ",
+     "coordinates": {
+      "value": "00h47m33.26s, -25d17m17.7s (ICRS phase center)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The nominal phase center of the observations is $\\alpha=00^h47^m33.26^s$, $\\delta=-25^\\circ17'17.7''$ (ICRS)."
+       },
+       {
+        "loc": "abstract",
+        "quote": "1.6$''$ ($\\sim 28$ pc) resolution"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "1.6'' ~ 28 pc (implies ~3.5 Mpc); distance not explicitly given",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The nominal phase center of the observations is $\\alpha=00^h47^m33.26^s$, $\\delta=-25^\\circ17'17.7''$ (ICRS)."
+       },
+       {
+        "loc": "abstract",
+        "quote": "1.6$''$ ($\\sim 28$ pc) resolution"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the molecular richness of the central molecular zone of NGC 253, probed by an unbiased ALMA spectral scan, and what do ACA 15'' spectra reveal about its chemistry, vibrational emission, organics and isotopic ratios?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Unveiling the molecular richness of the central region of the prototypical nearby starburst galaxy NGC 253 at an unprecedented combination of sensitivity, spatial resolution, and frequency coverage."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00161.L",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "as part of the Cycle 5 Large Program 2017.1.00161.L."
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00162.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The survey was subsequently extended to Band 5 during ALMA Cycle 6 (project code 2018.1.00162.S)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 3, 4, 5, 6, 7",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "with ALMA in frequency Bands 3, 4, 6, and 7 as part of the Cycle 5 Large Program 2017.1.00161.L."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "84.2-373.2 GHz, 47 tunings each with four 1.875 GHz spectral windows; native resolution 0.977 MHz",
+    "evidence": [
+     {
+      "loc": "2.1 Frequency setup",
+      "quote": "The full data set results in a rest-frequency coverage between 84.2 and 373.2 GHz, with 47 individual tunings, each composed of four 1.875 GHz spectral windows from two receiver sidebands."
+     },
+     {
+      "loc": "2.1 Frequency setup",
+      "quote": "The native spectral resolution was 0.977 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array and ACA 7 m (Morita) array",
+    "evidence": [
+     {
+      "loc": "1.3 The ALCHEMI survey",
+      "quote": "includes data obtained with both the main (12 m) and Morita (ACA 7 m) arrays."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.6'' common beam (12m+7m); 15'' for ACA-only; 4'' for Band 3 12m compact",
+    "evidence": [
+     {
+      "loc": "3.2 Imaging",
+      "quote": "Data were imaged with a common restoring beam of $4''$ and $15''$, respectively, for these two compact array configurations."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "15''",
+    "evidence": [
+     {
+      "loc": "2.3 Maximum recoverable scales",
+      "quote": "ALCHEMI targeted an MRS of $15''$ across its entire frequency coverage."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Target 50, 50, 40, 30, 30 mK in 10 km/s channels (Bands 3-7); ACA rms 1.8-19.4 mJy/beam, average 7.8",
+    "evidence": [
+     {
+      "loc": "2.2 Sensitivity",
+      "quote": "The targeted brightness temperature sensitivity of the survey was 50, 50, 40, 30, and 30 mK in 10 $\\rm km\\,s^{-1}$ channels across ALMA Bands 3, 4, 5, 6, and 7, respectively."
+     },
+     {
+      "loc": "4 ACA Data",
+      "quote": "sensitivities range between 1.8 and 19.4 mJy beam$^{-1}$ across the survey, with an average RMS of 7.8 mJy beam$^{-1}$ and a median of 7.5 mJy beam$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "101.5 hours total, 38.8 h with 12 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "A total of 101.5 hours of integration time on source were acquired, 38.8 hours of which were obtained with the 12 m array."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel",
+     "provided": {
+      "value": "High-frequency continuum used to fit the dust temperature",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum emission",
+        "quote": "The dust temperature was fit to the data in Fig. [5](#fig.continuumSED) using Herschel observations (with no aperture correction applied) at high frequencies"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Dust mass opacity kappa0=0.1 cm2/g at 250 GHz",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum emission",
+        "quote": "$\\kappa_{0}=$ 0.1 cm$^{2}$ g$^{-1}$ and $\\nu_{0}=$250 GHz (cite: Cao2019)"
+       }
+      ]
+     },
+     "citation": "(cite: Cao2019)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic parameters from CDMS and JPL catalogs",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "are extracted from the CDMS (cite: Muller2001; Muller2005; Endres2016) and JPL (cite: Pickett1998) catalogs."
+       }
+      ]
+     },
+     "citation": "(cite: Muller2001; Muller2005; Endres2016; Pickett1998)"
+    },
+    {
+     "what": {
+      "value": "Galactic hot-core Sgr B2(N) L_vib/L_IR = 4.2e-8",
+      "evidence": [
+       {
+        "loc": "5.2 Vibrational emission",
+        "quote": "that of $4.2\\times10^{-8}$ measured towards the Galactic Center hot core Sgr B2(N)"
+       }
+      ]
+     },
+     "citation": "(cite: Rolffs2011)"
+    },
+    {
+     "what": {
+      "value": "Galactic Center GMC and hot core COM abundances relative to methanol",
+      "evidence": [
+       {
+        "loc": "5.3 Organic Molecules",
+        "quote": "in the context of the Galactic Center GMCs observed by (cite: Requena-Torres2006) and the Galactic hot cores from (cite: Ikeda2001)"
+       }
+      ]
+     },
+     "citation": "(cite: Requena-Torres2006; Ikeda2001)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA calibration pipeline for all but a couple of scheduling blocks; calibration by ALMA staff",
+     "evidence": [
+      {
+       "loc": "3 Data calibration, equalization, and imaging",
+       "quote": "Calibration and data quality assessment were performed by ALMA staff. For all but a couple of scheduling blocks the ALMA calibration pipeline was used."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Various quasars e.g. J0006-0623, J0522-3627, J2258-2758 (Table 3)",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "J0006$-$0623"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "15% conservative absolute flux uncertainty recommended",
+     "evidence": [
+      {
+       "loc": "8.2 Absolute Flux Calibration Uncertainty",
+       "quote": "we recommend the usage of a conservative 15% uncertainty for the absolute flux calibration within the ALCHEMI image cubes"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Not applied; flux self-calibration via overlapping channels used for amplitude scaling instead",
+     "evidence": [
+      {
+       "loc": "3.4 Self-calibration",
+       "quote": "the data in this article and the data that will initially be publicly released from this ALMA large program will not include self-calibration."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean per spectral window, then imsmooth",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "the CASA task *tclean* was used to produce image cubes of each tuning spectral windows."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "hogbom",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "The *hogbom* deconvolver function was used for all spectral windows."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "Briggs robust 0.5 for most; some tunings use 0.4, 0.25, 0.0, -2.0 with uvrange cuts",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "Robust (Briggs) weighting was used with a robust parameter of 0.5 for most spectral windows."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "7m: 0.4 arcsec; 12m and 12m+7m: 0.15 arcsec",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "7m Array observations used $cell=0.4$ arcsec and $imsize=[320,320]$ pixels for all frequency bands"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "7m: [320,320]; 12m: [800,800],[800,720],[720,648],[640,512],[640,512] for Bands 3-7",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "imsize=$\\[800,800\\], \\[800,720\\], \\[720,648\\], \\[640,512\\], and \\[640,512\\] for Bands 3 through 7, respectively"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Automasking; threshold from pre-determined line-free rms for windows with strong lines, else nsigma=2",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "For spectral windows which did not contain strong spectral lines, the *tclean* parameter *nsigma=2* was set, and the *threshold* parameter was left unset."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Per-pixel image-plane subtraction with STATCONT, sigma-clipping with default parameter",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum subtraction",
+       "quote": "Sigma-clipping continuum determination was used with the default parameter (cite: Sanchez-Monge2018)."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12m+7m combined cubes for Bands 4-7; ACA-only cubes at 15''",
+     "evidence": [
+      {
+       "loc": "2.2 Sensitivity",
+       "quote": "Combined (12m compact plus extended configurations in Band 3 or 12-m plus 7-m array data for higher frequency bands"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "imsmooth to circular Gaussian beam of 1.6''; bin to ~8-9 km/s channels",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "Post-imaging convolution using the CASA task *imsmooth* was therefore performed to produce final image cubes with a fixed Gaussian circular beam of $1.6''$."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "1.6'' (28 pc); 15'' for ACA",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "a common final spatial resolution of $1.6''$ (28 pc) was selected"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.18-5.0 mJy/beam (mean 1.4, median 1.0) in 8-9 km/s channels",
+     "evidence": [
+      {
+       "loc": "2.2 Sensitivity",
+       "quote": "the flux density RMS noise ranges from 0.18 to 5.0 mJy beam$^{-1}$, with average flux density sensitivity of 1.4 mJy beam$^{-1}$ and median of 1.0 mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Flux self-calibration technique using overlapping tunings",
+      "evidence": [
+       {
+        "loc": "3.1.1 Overlapping channels alignment",
+        "quote": "This technique, originally developed for other ALMA spectral scans, is referred to as “flux self-calibration” (cite: Sakamoto2021)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Sakamoto2021)"
+    },
+    {
+     "what": {
+      "value": "Continuum determination with STATCONT",
+      "evidence": [
+       {
+        "loc": "3.3 Continuum subtraction",
+        "quote": "continuum emission was statistically derived from each individual spectral window using STATCONT (cite: Sanchez-Monge2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sanchez-Monge2018)"
+    },
+    {
+     "what": {
+      "value": "LTE fitting method with MADCUBA",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "using MADCUBA[^3] (cite: Martin2019a)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Martin2019a)"
+    },
+    {
+     "what": {
+      "value": "Source size of 5'' assumed from higher-resolution observations",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "we assumed a circular Gaussian equivalent source size of $5''$, based on available higher resolution observations (cite: Meier2015; Martin2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Meier2015; Martin2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Explicit line-free channels or STATCONT settings per spectral window",
+    "Exact MADCUBA fit settings (algorithm options, mask choices per molecule)",
+    "CASA version used for processing",
+    "tclean threshold values per spectral window",
+    "Distance to NGC 253 adopted",
+    "Observing dates and per-execution details",
+    "Pixel/spectral window data selection for line subsets used in each species fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Equalize relative flux scale across tunings",
+    "method": {
+     "value": "Solve r_ij=a_i/a_j from overlapping channel amplitude ratios at TH2 position with least squares and mean(a_i)=1; apply via gencal",
+     "evidence": [
+      {
+       "loc": "3.1.1 Overlapping channels alignment",
+       "quote": "We used the constraint mean(a$_i$) = 1 to set the overall scale of the solutions, resulting in the flux self-calibration rescaling factors listed in Table [2](#tab.observingsetup)."
+      }
+     ]
+    },
+    "software": [
+     "CASA gencal"
+    ],
+    "key_parameters": [
+     {
+      "value": "Reference position TH2 alpha=00h47m33.182s, delta=-25d17m17.148s (J2000)",
+      "evidence": [
+       {
+        "loc": "3.1.1 Overlapping channels alignment",
+        "quote": "The spectra extracted from the TH2 position ($\\alpha_{J2000}=00^h47^m33.182^s$, $\\delta_{J2000}=-25^\\circ17'17.148''$; (cite: Lenc2006))"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Reference emission compact and non-variable",
+      "evidence": [
+       {
+        "loc": "3.1.1 Overlapping channels alignment",
+        "quote": "as long as it is reasonably spatially compact and presents no time variability over the observation period."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Continuum-level alignment with third-order polynomial gave 2.5% scatter in residual factors",
+     "evidence": [
+      {
+       "loc": "3.1.2 Continuum level alignment",
+       "quote": "we find that the standard deviation of the new scaling factors is $2.5\\%$ across all bands"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image cubes and subtract continuum",
+    "method": {
+     "value": "Bin to common velocity resolution, tclean each spectral window, convolve to common beam, subtract continuum per pixel with STATCONT",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "all measurement sets were binned to a common velocity scale."
+      }
+     ]
+    },
+    "software": [
+     "CASA tclean",
+     "CASA imsmooth",
+     "STATCONT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Binning 3, 5, 6, 8, 10 MHz for Bands 3-7; robust 0.5 mostly",
+      "evidence": [
+       {
+        "loc": "3.2 Imaging",
+        "quote": "binning to frequency resolutions of 3, 5, 6, 8, and 10 MHz for Bands 3, 4, 5, 6, and 7, respectively"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Per-pixel continuum estimation tested; continuum overestimated in noisy regions",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum subtraction",
+       "quote": "we observe that the continuum appears slightly overestimated in the regions of spectra with higher noise levels."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit continuum SED",
+    "method": {
+     "value": "Grey-body dust plus free-free and synchrotron fitted to STATCONT continuum at the analysis pixel, with Herschel at high frequencies",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum emission",
+       "quote": "fits well to a grey-body with dust temperature $T_d=42\\pm1$ K, mass $M_d=8.0\\pm0.2\\times10^5$ M$_\\odot$, emissivity $\\beta=1.9$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "kappa0=0.1 cm2/g at 250 GHz; T_e=1e4 K; SFR=2.5 Msun/yr",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum emission",
+        "quote": "plus a free-free component to account for the lower frequency emission with SFR=2.5 M$_\\odot$ yr$^{-1}$ and $T_e=10^4$ K (cite: DeZotti2019)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Beta=1.9 emissivity law",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum emission",
+        "quote": "emissivity $\\beta=1.9$ (i.e., $S\\propto\\nu^{3.9}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Perez-Beaupuits 2018 cold component of 37 K and mass 1e6 Msun",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum emission",
+       "quote": "finding good agreement with the cold component fit of 37 K by (cite: Perez-Beaupuits2018)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Measure line contribution to continuum",
+    "method": {
+     "value": "Average continuum-subtracted flux divided by total average flux per band",
+     "evidence": [
+      {
+       "loc": "4.1.1 Line contribution",
+       "quote": "we calculated the average flux density over the continuum subtracted spectrum and divided it by the observed average flux density (continuum plus line emission) over the same band."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Arp 220 28% result",
+     "evidence": [
+      {
+       "loc": "4.1.1 Line contribution",
+       "quote": "The 40-GHz-wide spectral scan at 1.3 mm toward the ULIRG Arp 220, reported a line contribution to the total observed flux of $\\sim28$%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Extract 15'' spectrum and fit LTE model per species",
+    "method": {
+     "value": "Extract spectrum from the pixel at average of peak positions of 16 bright moment 0 maps; fit single-Gaussian LTE synthetic spectra per molecule with all transitions at once",
+     "evidence": [
+      {
+       "loc": "4.2.1 Selected sample position",
+       "quote": "The spectra analyzed in this article were extracted from the pixel at position $\\alpha_{J2000}=00^h47^m33.10^s$, $\\delta_{J2000}=-25^\\circ17'18.1''$"
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Source size 5'' (10'' for 12C16O); fixed v_LSR=230 km/s, FWHM=150 km/s, Tex=15 K when unconstrained",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "parameters were fixed to $v_{LSR}=230$ $\\rm km\\,s^{-1}$  and $\\Delta~v_{1/2}=150$ $\\rm km\\,s^{-1}$"
+       },
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "the excitation temperature was set to $T_{ex}$=15 K"
+       }
+      ]
+     },
+     {
+      "value": "Detection criterion: all unblended transitions above 5 sigma in model detected and fit converged",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "A species has been considered detected if all the detectable transitions above $5~\\sigma$ (according to the LTE model), which are not blended with brighter transitions, are detected in our data."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, single Gaussian component, column density linear in source solid angle",
+      "evidence": [
+       {
+        "loc": "4.2.2 Line identification and LTE modeling",
+        "quote": "the modeling described here will consider a single Gaussian emission profile"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MADCUBA least-squares fit; only statistical uncertainties reported",
+     "evidence": [
+      {
+       "loc": "4.2.2 Line identification and LTE modeling",
+       "quote": "reported uncertainties do not include calibration uncertainties but statistical uncertainty on the fit to the spectra."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residuals inspected against full-spectrum model; non-LTE deviations identified; extra criteria for new detections",
+     "evidence": [
+      {
+       "loc": "9.1 Fitting details of newly detected species",
+       "quote": "any bright emission line predicted by the LTE model should be consistent with the observed spectra and no big outliers should be present."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive isotopic ratios and opacity effects",
+    "method": {
+     "value": "Column density ratios of isotopologue pairs; effect of source size tested on HCO+; CN hyperfine multi-component LTE models",
+     "evidence": [
+      {
+       "loc": "5.4 Isotopic ratios",
+       "quote": "Table [6](#tab.isotopicratios) shows the isotopic ratios derived from the column densities fitted to all detected isotopologue pairs"
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA"
+    ],
+    "key_parameters": [
+     {
+      "value": "CO isotopologues recalculated for 10'' source size",
+      "evidence": [
+       {
+        "loc": "5.4 Isotopic ratios",
+        "quote": "the emission of $^{13}$CO and C$^{18}$O fits were recalculated for an equivalent source size of $10''$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with literature ratios in Table 8",
+     "evidence": [
+      {
+       "loc": "5.4 Isotopic ratios",
+       "quote": "Table [8](#tab.isotopicratiosliterature) compiles all isotopic ratios reported in the literature towards NGC 253."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Vibrational emission and proto-SSC fraction",
+    "method": {
+     "value": "Gaussian fits to v2=1f transitions, L_vib/L_IR compared with Sgr B2(N) value",
+     "evidence": [
+      {
+       "loc": "5.2.2 Vibrational emission as tracer",
+       "quote": "Assuming that vibrational emission is mostly contributed by Sgr B2(N)-like hot cores, this comparison results in a $\\sim3\\%$ level"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "line width 150 km/s; LTE Tex=300 K for display",
+      "evidence": [
+       {
+        "loc": "Table notes",
+        "quote": "considers a line width of 150 $\\rm km\\,s^{-1}$, similar to that fitted to most rotational transitions."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "L_IR = 2.1e10 Lsun",
+      "evidence": [
+       {
+        "loc": "1.2 NGC 253",
+        "quote": "$L_{\\rm IR}=2.1\\times10^{10}\\,L_\\odot$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent with Rico-Villas 2020 ~3%",
+     "evidence": [
+      {
+       "loc": "5.2.2 Vibrational emission as tracer",
+       "quote": "this estimate is consistent with the contribution from proto-SSCs of $\\sim 3\\%$ derived by (cite: Rico-Villas2020)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Organic abundances relative to methanol",
+    "method": {
+     "value": "C2H5OH and HCOOH relative to CH3OH; H2 from C18O with 18O/16O=100 and CO/H2~8e-5",
+     "evidence": [
+      {
+       "loc": "5.3 Organic Molecules",
+       "quote": "assuming $\\rm ^{18}O/^{16}O=100$ (as derived in Sect. [5.4.2](#sec.isotopologuesOxygen)) and CO/H$_2\\sim 8\\times10^{-5}$ (cite: Frerking1982), which yields $N_{\\rm H_2}=3.1\\times10^{23}~\\rm cm^{-2}$"
+      }
+     ]
+    },
+    "software": [
+     "MADCUBA"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Factor of 2 uncertainty in H2",
+      "evidence": [
+       {
+        "loc": "5.3 Organic Molecules",
+        "quote": "We included a conservative factor of 2 uncertainty in the H$_2$ determination"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with GC GMCs and hot cores",
+     "evidence": [
+      {
+       "loc": "5.3 Organic Molecules",
+       "quote": "The comparison in Fig. [12](#fig.complexmolecules) shows that the averaged abundances towards NGC 253 are on the high end of GMC measurements"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "tclean imaging, imsmooth, imstat, gencal",
+     "evidence": [
+      {
+       "loc": "3.2 Imaging",
+       "quote": "the CASA task *tclean* was used to produce image cubes of each tuning spectral windows."
+      }
+     ]
+    }
+   },
+   {
+    "name": "STATCONT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Per-pixel continuum determination and subtraction",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum subtraction",
+       "quote": "using STATCONT (cite: Sanchez-Monge2018) to derive and subtract the continuum on a per pixel basis from each image cube."
+      }
+     ]
+    }
+   },
+   {
+    "name": "MADCUBA",
+    "version": "6.0 (07/05/2018)",
+    "used_for": {
+     "value": "LTE line identification and fitting",
+     "evidence": [
+      {
+       "loc": "footnote 3",
+       "quote": "MADCUBA VERSION 6.0 (07/05/2018)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astroquery",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extract calibrator information from the ALMA archive",
+     "evidence": [
+      {
+       "loc": "Table 3 notes",
+       "quote": "Information in this table extracted from the ALMA archive using `a`stroquery (cite: Ginsburg2019)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Appendix analysis and diagrams",
+     "evidence": [
+      {
+       "loc": "footnote 4",
+       "quote": "Analysis and diagrams in these appendices make extensive use of `a`stropy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of species detected (firm or tentative)",
+    "value": "78",
+    "uncertainty": "not stated",
+    "units": "species",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.2.2 Line identification and LTE modeling",
+      "quote": "only 78 species are considered firmly or tentatively detected, accounting for 1790 transitions"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust temperature",
+    "value": "42",
+    "uncertainty": "1",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum emission",
+      "quote": "dust temperature $T_d=42\\pm1$ K, mass $M_d=8.0\\pm0.2\\times10^5$ M$_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass",
+    "value": "8.0e5",
+    "uncertainty": "0.2e5",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Continuum emission",
+      "quote": "mass $M_d=8.0\\pm0.2\\times10^5$ M$_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "Line contribution to continuum, 50 GHz bins",
+    "value": "5.3 to 36.6",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| $325-375$ | 2488 | 909 | 36.6 | 6.5 |"
+     }
+    ]
+   },
+   {
+    "quantity": "12C/13C from bright high dipole moment species (weighted)",
+    "value": "22",
+    "uncertainty": "2",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4.1 Carbon",
+      "quote": "is $22\\pm2$."
+     }
+    ]
+   },
+   {
+    "quantity": "16O/18O from HCO+",
+    "value": "100",
+    "uncertainty": "20",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4.2 Oxygen",
+      "quote": "Our $\\rm ^{16}O/^{18}O$ ratio of $100\\pm20$ measured with HCO$^+$"
+     }
+    ]
+   },
+   {
+    "quantity": "16O/18O from 13CO/13C18O",
+    "value": "520",
+    "uncertainty": "60",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "| $520\\pm60$     | $^{13}$CO/ $^{13}$C$^{18}$O |"
+     }
+    ]
+   },
+   {
+    "quantity": "14N/15N weighted average",
+    "value": "170",
+    "uncertainty": "20",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4.3 Nitrogen",
+      "quote": "are consistent with a weighted average of $170\\pm20$"
+     }
+    ]
+   },
+   {
+    "quantity": "32S/34S (CS)",
+    "value": "9.7",
+    "uncertainty": "0.5",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4.4 Sulfur",
+      "quote": "ratios measured with both CS and SO ($9.7\\pm0.5$ and $14\\pm4$, respectively)"
+     }
+    ]
+   },
+   {
+    "quantity": "28Si/29Si",
+    "value": "9",
+    "uncertainty": "2",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4.5 Silicon",
+      "quote": "the ratio $\\rm ^{28}Si/^{29}Si$=$9\\pm2$"
+     }
+    ]
+   },
+   {
+    "quantity": "L_vib/L_IR from HCN 3-2 v2=1f",
+    "value": "1.4e-9",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table vibLuminosities",
+      "quote": "| HCN $3-2$ | 267.199 | $53\\pm11$ | 8.5 | $6.08\\pm0.07$ | $120\\pm20$ | 28.9 | 1.4 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Proto-SSC contribution to IR luminosity",
+    "value": "~3",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.2.2 Vibrational emission as tracer",
+      "quote": "this comparison results in a $\\sim3\\%$ level as a proxy to the contribution from proto-SSCs to the global infrared luminosity in NGC 253."
+     }
+    ]
+   },
+   {
+    "quantity": "C2H5OH/CH3OH abundance",
+    "value": "1.1e-1",
+    "uncertainty": "0.4e-1",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.3 Organic Molecules",
+      "quote": "abundances of $\\rm C_2H_5OH$ ($1.1\\pm0.4\\times10^{-1}$) and HCOOH ($2.8\\pm1.0\\times10^{-2}$) relative to CH$_3$OH"
+     }
+    ]
+   },
+   {
+    "quantity": "N_H2 toward the sample position",
+    "value": "3.1e23",
+    "uncertainty": "factor of 2",
+    "units": "cm^-2",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "5.3 Organic Molecules",
+      "quote": "which yields $N_{\\rm H_2}=3.1\\times10^{23}~\\rm cm^{-2}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "First extragalactic detections of C2H5OH, HOCN, HC3HO and several rare isotopologues",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We report the first extragalactic detections of C$_2$H$_5$OH, HOCN, HC$_3$HO, and several rare isotopologues."
+     }
+    ]
+   },
+   {
+    "value": "Vibrationally excited HCN, HNC and HC3N detected at low resolution but not HCO+",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "while we do not detect it for HCO$^+$."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does a wideband ACA spectral scan of the NGC 253 CMZ reveal a rich molecular inventory?",
+    "experiment": "LTE modelling per species of the 15'' spectrum at 125-373 GHz",
+    "result": "78 species detected plus recombination lines",
+    "finding": "Rich chemistry detectable even at 15'' resolution; includes first extragalactic detections",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We model the molecular emission assuming local thermodynamic equilibrium with 78 species detected."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is vibrational emission a proxy for proto-SSC contribution and indicative of carbon-rich chemistry?",
+    "experiment": "Measured vibrational HCN, HNC, HCO+ and L_vib/L_IR compared with Sgr B2(N)",
+    "result": "HCO+ vibrational not detected; ~3% contribution",
+    "finding": "High temperature carbon-rich chemistry suggested; tentative proxy",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We suggest high temperature conditions in these regions driving a seemingly \"carbon-rich\" chemistry"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do isotopic ratios in NGC 253 reflect multiple ISM components?",
+    "experiment": "Column density ratios of isotopologue pairs",
+    "result": "High dipole moment species agree with Galactic CMZ; 13C18O-derived ratios factor ~5 larger",
+    "finding": "Multiple components with different nucleosynthesis enrichment",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "confirming the existence of multiple ISM components within NGC 253 with different degrees of nucleosynthesis enrichment."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are organic molecule abundances like Galactic GMCs or hot cores?",
+    "experiment": "C2H5OH and HCOOH relative to CH3OH compared with Galactic Center GMCs and hot cores",
+    "result": "On the high end of GMCs, similar to hot cores",
+    "finding": "Hot-core chemistry may contribute significantly",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Summary and conclusions",
+      "quote": "the global abundances in the central starburst environment in NGC 253 may be significantly contributed by hot core chemistry."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Per-species LTE modelling is more robust than per-transition identification and handles blending",
+    "evidence": [
+     {
+      "loc": "4.2.2 Line identification and LTE modeling",
+      "quote": "Therefore, line identification is done per molecule and not per transition, which is more robust and makes use of the broad frequency coverage in this work."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "uv-plane continuum subtraction rejected as inefficient for 188 cubes",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum subtraction",
+       "quote": "it would be inefficient to subtract the continuum in the $uv$ plane from the individual 188 data cubes constituting the ALCHEMI measurement set."
+      }
+     ]
+    },
+    {
+     "value": "Two-component Gaussian fit not used as it adds little significance",
+     "evidence": [
+      {
+       "loc": "4.2.2 Line identification and LTE modeling",
+       "quote": "the use of a multi-Gaussian fit to the overall spectrum adds little significance to the results"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Calibration uncertainty not included in fit uncertainties; line flux scaling anomalies in some tunings",
+     "evidence": [
+      {
+       "loc": "3.1 Flux calibration accuracy",
+       "quote": "only the statistical uncertainty in the fits due the noise in the spectra are considered and not the absolute flux calibration uncertainty mentioned above"
+      }
+     ]
+    },
+    {
+     "value": "STATCONT continuum subtraction not optimal for lines near noise level",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum subtraction",
+       "quote": "continuum subtraction is seen not to be optimal for spectral lines close to the noise level."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-component LTE with assumed 5'' source size makes column densities and ratios model dependent",
+    "Opacity and source-size degeneracy affects isotopic ratios by up to a factor of 2",
+    "Single sample position at 15'' averages multiple components",
+    "Many fixed parameters (Tex, v, width) for faint species",
+    "Continuum per-pixel subtraction can bias faint lines"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data to be publicly released from the ALMA large program (without self-calibration)",
+    "evidence": [
+     {
+      "loc": "3.4 Self-calibration",
+      "quote": "the data that will initially be publicly released from this ALMA large program will not include self-calibration."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Per-species MADCUBA input files and masks",
+    "Exact CASA version and pipeline version",
+    "Per-spw tclean thresholds",
+    "Distance adopted"
+   ],
+   "estimated_data_volume_inferred": "Very large (hundreds of GB to TB for full survey; ACA subset ~tens of GB)",
+   "score_inferred": 5,
+   "score_reason": "Imaging and calibration are well described and data are public, but MADCUBA fitting is human-supervised with many unrecorded choices and the raw volume is large.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Large dataset and human-supervised LTE fitting with unstated per-species choices make exact redo difficult, though numeric results exist."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Sakamoto2021)",
+     "why": "Flux self-calibration technique using overlapping tunings"
+    },
+    {
+     "citation": "(cite: Martin2019a)",
+     "why": "MADCUBA LTE fitting"
+    },
+    {
+     "citation": "(cite: Sanchez-Monge2018)",
+     "why": "STATCONT continuum determination"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Martin2019)",
+     "why": "Higher-resolution CO isotopologue ratios in NGC 253"
+    },
+    {
+     "citation": "(cite: Rico-Villas2020)",
+     "why": "Vibrational HC3N and proto-SSCs in NGC 253"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALCHEMI (2017.1.00161.L, 2018.1.00162.S)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-2cc7c58e2b58f9da1877bf649143874b",
+  "batch_id": "msgbatch_0184TVS5zAE5RP75JHcHhf4m",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:28:57",
+  "usage": {
+   "input_tokens": 110357,
+   "output_tokens": 13834,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.180134,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 103,
+  "quotes_ok": 103,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 14,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 99,
+   "stated": 76,
+   "rate": 0.768
+  },
+  "evidence_ok": true
+ }
+}

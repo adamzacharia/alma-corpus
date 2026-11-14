@@ -1,0 +1,1364 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...699A..70H",
+  "title": "Investigating the chemical link between H<SUB>2</SUB>CO and CH<SUB>3</SUB>OH within the central molecular zone of NGC 253",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Huang, K.-Y.",
+  "n_authors": 6,
+  "arxiv_id": "2505.16255",
+  "doi": "10.1051/0004-6361/202554156",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00161.L",
+   "2018.1.00162.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "imaging of the NGC 253 central molecular zone (CMZ) from the ALCHEMI Large Program"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 253 CMZ (eight GMCs: 1a, 2b, 3, 4, 6, 7, 8a, 9a; GMC 5 and 10 excluded)",
+     "coordinates": {
+      "value": "phase center ICRS 00h47m33.26s, -25d17m17.7s; GMC positions in Table 1",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "The nominal phase center of the observations is $\\alpha(\\rm ICRS)$ = 00$^h$47$^m$33$^s$.26, $\\delta(\\rm ICRS)$ = $-25^\\circ$17$^\\prime$17$^{\\prime\\prime}.7$."
+       },
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "beam-sized ($1.^{\\prime\\prime}$6 or 28 pc) structures"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated (1.6 arcsec corresponds to 28 pc)",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "The nominal phase center of the observations is $\\alpha(\\rm ICRS)$ = 00$^h$47$^m$33$^s$.26, $\\delta(\\rm ICRS)$ = $-25^\\circ$17$^\\prime$17$^{\\prime\\prime}.7$."
+       },
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "beam-sized ($1.^{\\prime\\prime}$6 or 28 pc) structures"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Investigate the physical and chemical properties traced by CH3OH and H2CO in NGC 253 and whether the two species are chemically linked",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The aim of the current study is to investigate both the physical and chemical properties traced by and in the nearby starburst galaxy, NGC 253, and investigate whether the two species are chemically linked."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00161.L",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "ALCHEMI is an ALMA Large Program (project code 2017.1.00161.L and 2018.1.00162.S)"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00162.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "ALCHEMI is an ALMA Large Program (project code 2017.1.00161.L and 2018.1.00162.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALCHEMI covers Bands 3, 4, 5, 6 and 7 (84.2 to 373.2 GHz rest frequency)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "with rest-frequency coverage from 84.2 to 373.2 GHz, corresponding to the ALMA frequency Bands 3, 4, 5, 6, and 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Spectral scan 84.2-373.2 GHz; cube spectral resolution ~10 km/s; common mapped area 50 x 20 arcsec (850 x 340 pc) at PA 65 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "A common rectangular area with a size of $50^{\\prime\\prime} \\times 20^{\\prime\\prime}$ ($850\\times340$ pc) at a position angle of $65^\\circ$ was imaged to cover the central nuclear region in NGC 253."
+     },
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "The angular and spectral resolution of the image cubes generated from these measurements were $1.^{\\prime\\prime}6$ (cite: ALCHEMI_main_2021) and $\\sim10$ km s$^{-1}$, respectively."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CH3OH (E- and A-)",
+     "transition": "39 transitions in several groups (e.g. near 96.74, 157.26, 165.07 GHz); see paper table",
+     "rest_frequency": "96.739360 to 358.605800 GHz (from paper table)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "From the ALCHEMI data, we extracted the spectral cubes of NGC 253 for the selected 39 transitions"
+      }
+     ]
+    },
+    {
+     "species": "H2CO (o- and p-)",
+     "transition": "10 transitions, e.g. 2_12 - 1_11",
+     "rest_frequency": "140.839500 GHz for 2_12 - 1_11; the 10 transitions span 140.8 to 365.4 GHz (from paper table)",
+     "evidence": [
+      {
+       "loc": "3 Molecular line emission",
+       "quote": "the 96.7 GHz transition group and $2_{12} - 1_{11}$ transition as representative cases for each species"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m Array and Atacama Compact Array (ACA), combined",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "after combining the 12 m Array and Atacama Compact Array (ACA) measurements at all frequencies"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "1.6 arcsec (~28 pc)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "The angular and spectral resolution of the image cubes generated from these measurements were $1.^{\\prime\\prime}6$ (cite: ALCHEMI_main_2021) and $\\sim10$ km s$^{-1}$, respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "15 arcsec (common to all frequencies)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "A common maximum recoverable angular scale of $15^{\\prime\\prime}$ was achieved after combining the 12 m Array and Atacama Compact Array (ACA) measurements at all frequencies."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CH3OH collisional excitation rates (Dagdigian 2023) from EMAA",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."
+       }
+      ]
+     },
+     "citation": "(cite: Dagdigian_2023)"
+    },
+    {
+     "what": {
+      "value": "H2CO collisional excitation rates from LAMDA",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."
+       }
+      ]
+     },
+     "citation": "(cite: H2CO_mole_data)"
+    },
+    {
+     "what": {
+      "value": "CH3OH frequencies and spectroscopic parameters from the JPL catalogue",
+      "evidence": [
+       {
+        "loc": "Table notes (CH3OH transitions)",
+        "quote": "Frequencies and spectroscopic parameters have been extracted from the JPL catalogue (cite: Pickett+1998)."
+       }
+      ]
+     },
+     "citation": "(cite: Pickett+1998)"
+    },
+    {
+     "what": {
+      "value": "H2CO frequencies and spectroscopic parameters from CDMS",
+      "evidence": [
+       {
+        "loc": "Table notes (H2CO transitions)",
+        "quote": "Frequencies and spectroscopic parameters have been extracted from CDMS (cite: Muller+2005; Endres+2016)."
+       }
+      ]
+     },
+     "citation": "(cite: Muller+2005; Endres+2016)"
+    },
+    {
+     "what": {
+      "value": "H2 column densities for GMC 3 to 7 from the 220 GHz continuum, rescaled by 0.63 to the 1.6 arcsec beam",
+      "evidence": [
+       {
+        "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+        "quote": "To derive the methanol and formaldehyde abundances, we used the H$_2$ column densities from (cite: Mangum+2019)."
+       },
+       {
+        "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+        "quote": "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."
+       }
+      ]
+     },
+     "citation": "(cite: Mangum+2019)"
+    },
+    {
+     "what": {
+      "value": "N_H2 = (3-10)e22 cm^-2 for GMC 1a, 2b, 8a, 9a (not rescaled)",
+      "evidence": [
+       {
+        "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+        "quote": "For these regions, we used $N_{H2}=(3-10)\\times10^{22}$ cm$^{-2}$ (see their Figure 4c)."
+       }
+      ]
+     },
+     "citation": "(cite: Harada+2022)"
+    },
+    {
+     "what": {
+      "value": "HNCO and SiO column densities and filling factors used for comparison abundances",
+      "evidence": [
+       {
+        "loc": "Appendix Abundances",
+        "quote": "we used the column densities of HNCO and SiO from (cite: Huang+2023) and of the S-bearing species from (cite: Bouvier+2024)"
+       }
+      ]
+     },
+     "citation": "(cite: Huang+2023)"
+    },
+    {
+     "what": {
+      "value": "S-bearing species (OCS, H2CS, H2S, CS) column densities and filling factors used for comparison abundances",
+      "evidence": [
+       {
+        "loc": "Appendix Abundances",
+        "quote": "we used the column densities of HNCO and SiO from (cite: Huang+2023) and of the S-bearing species from (cite: Bouvier+2024)"
+       }
+      ]
+     },
+     "citation": "(cite: Bouvier+2024)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Moment images masked below 3 sigma (channel-based) via CubeLineMoment spectral and spatial masks",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "images masked below a $3\\sigma$ threshold (channel-based)"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12 m Array and ACA combined",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "after combining the 12 m Array and Atacama Compact Array (ACA) measurements at all frequencies"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.6 arcsec (circular 1.6 x 1.6 arcsec used in abundance step)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "The angular and spectral resolution of the image cubes generated from these measurements were $1.^{\\prime\\prime}6$ (cite: ALCHEMI_main_2021) and $\\sim10$ km s$^{-1}$, respectively."
+      },
+      {
+       "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+       "quote": "versus $1.6'' \\times 1.6''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data acquisition, calibration and imaging of the ALCHEMI cubes",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "Full details regarding the data acquisition, calibration, and imaging are described in (cite: ALCHEMI_main_2021)."
+       }
+      ]
+     },
+     "from_reference": "(cite: ALCHEMI_main_2021)"
+    },
+    {
+     "what": {
+      "value": "Cube resolution of 1.6 arcsec",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "$1.^{\\prime\\prime}6$ (cite: ALCHEMI_main_2021)"
+       }
+      ]
+     },
+     "from_reference": "(cite: ALCHEMI_main_2021)"
+    },
+    {
+     "what": {
+      "value": "CubeLineMoment tool for extracting integrated line intensities",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "(cite: Mangum+2019) to extract integrated spectral-line intensities from our data cubes"
+       }
+      ]
+     },
+     "from_reference": "(cite: Mangum+2019)"
+    },
+    {
+     "what": {
+      "value": "Beam filling factors for HNCO, SiO and S-bearing species taken from earlier non-LTE analyses",
+      "evidence": [
+       {
+        "loc": "Appendix Abundances",
+        "quote": "we applied the beam filling factor derived for each region and each species from the non-LTE analyses performed in (cite: Huang+2023) and (cite: Bouvier+2024)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Huang+2023); (cite: Bouvier+2024)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALCHEMI imaging and calibration details (CASA version, robust, cell size, deconvolver, continuum subtraction, line-free channels, primary-beam correction) are only in the ALCHEMI main paper",
+    "Which ALCHEMI spectral-window cubes contain each of the 39 CH3OH and 10 H2CO transitions and how they were smoothed to a common 1.6 arcsec beam",
+    "Aperture used to extract integrated intensities at each GMC (white circles in Fig. 1): size and exact extraction method",
+    "CubeLineMoment settings: which bright line was the velocity tracer per cube, spatial mask settings, velocity integration limits",
+    "How the 3 sigma per-channel noise and the intensity uncertainties used in the chi-squared were computed (including any flux-calibration error term)",
+    "RADEX settings: line width, background temperature, treatment of opacity and how line widths were set from the data",
+    "Nautilus settings: number of live points, stopping criterion, number of posterior samples, and how best-fit values and uncertainties were summarised (median, percentiles)",
+    "Numerical N_H2 values per GMC from Mangum+2019 Table 5 and how X range was bounded from the N_H2 range",
+    "How the source size theta_S in the beam filling factor relates to the fitted eta_ff"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "extract integrated line intensities at GMC positions",
+    "method": {
+     "value": "CubeLineMoment spectral and spatial masks give moment 0, 1, 2 maps masked below 3 sigma; transitions selected by SNR and contamination criteria",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "to extract integrated spectral-line intensities from our data cubes"
+      },
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "(1) the transition needs to be bright enough, specifically with signal-to-noise ratio (SNR) greater than 3; and (2) no significant contamination from other molecule(s) involved."
+      }
+     ]
+    },
+    "software": [
+     "CubeLineMoment"
+    ],
+    "key_parameters": [
+     {
+      "value": "Moment images masked below 3 sigma (channel-based)",
+      "evidence": [
+       {
+        "loc": "2 Observations and data analysis",
+        "quote": "images masked below a $3\\sigma$ threshold (channel-based)"
+       }
+      ]
+     },
+     {
+      "value": "GMC 5 (absorption) and GMC 10 (non-detections) excluded; 8 GMCs kept",
+      "evidence": [
+       {
+        "loc": "3 Molecular line emission",
+        "quote": "As a result, we do not discuss these two regions (GMCs 5 and 10) any further."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Blended lines modelled separately and summed to compare with the measured blended intensity of each group",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "for each blending group, we model the integrated intensities of the transitions that make up the blending group separately, sum up the emission from each of these lines"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested impact of contaminating lines (SO2, NH2OH, NH2CN) on derived parameters: unchanged within uncertainties",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "We have tested the impact of these contaminants on our derivation of physical parameters performed in Section 4 and found that the derived physical parameters are unchanged within the uncertainties in each parameter fit."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "convert integrated intensities to K km/s",
+    "method": {
+     "value": "I(K) = 13.59 (300 GHz / nu)^2 / (theta_max theta_min) I(Jy), with Gaussian beam axes",
+     "evidence": [
+      {
+       "loc": "3 Molecular line emission",
+       "quote": "We convert the integrated emission from Jy beam$^{-1}$ km s$^{-1}$ to K km s$^{-1}$ using the following expression"
+      },
+      {
+       "loc": "3 Molecular line emission",
+       "quote": "$\\theta_{max}$ and $\\theta_{min}$ are the major and minor axes, respectively, of our Gaussian beam"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "non-LTE radiative transfer fit of physical conditions",
+    "method": {
+     "value": "RADEX via SpectralRadex coupled with Nautilus sampler; fit n_H2, T_kin, column densities of both spin isomers and beam filling factor per GMC",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "for Bayesian posterior and evidence estimation."
+      },
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."
+      }
+     ]
+    },
+    "software": [
+     "RADEX",
+     "SpectralRadex",
+     "Nautilus"
+    ],
+    "key_parameters": [
+     {
+      "value": "Priors (Table 2): n_H2 1e2-1e8 cm^-3 log-uniform; T_kin 10-800 K uniform; column densities 1e12-1e18 cm^-2 log-uniform; eta_ff 0-1 uniform",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "$10^{2}-10^{8}$"
+       },
+       {
+        "loc": "Table 2",
+        "quote": "$10-800$"
+       },
+       {
+        "loc": "Table 2 caption",
+        "quote": "Prior ranges adopted for our parameter space explored in the"
+       }
+      ]
+     },
+     {
+      "value": "T_kin outside the collisional-rate grid (3-250 K CH3OH, 10-300 K H2CO) is clamped to the nearest grid temperature",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "uses the minimum or maximum kinetic temperature at which collisional excitation rates are provided"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gaussian intensity uncertainties",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "We also assume that the uncertainty on our measured intensities is Gaussian"
+       }
+      ]
+     },
+     {
+      "value": "Beam filling factor eta_ff = theta_S^2 / (theta_MB^2 + theta_S^2)",
+      "evidence": [
+       {
+        "loc": "4 Non-LTE radiative transfer modeling analysis",
+        "quote": "the beam filling factor ($\\eta_{ff}=\\frac{\\theta^{2}_{S}}{\\theta^{2}_{MB}+\\theta^{2}_{S}}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Nautilus sampler; uniform or log-uniform priors; likelihood exp(-chi^2/2)",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "We assume priors of uniform or log-uniform distribution within the determined ranges"
+      },
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "our likelihood is given by $P(\\theta | d) \\sim \\exp(-\\frac{1}{2}\\chi^2),$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared old (Rabli and Flower 2010) and new (Dagdigian 2023) CH3OH rates: the E/A ratio range changes from 0.85-2.84 to 0.25-1.26; Nautilus gave results indistinguishable from UltraNest",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "With the (cite: CH3OH_mol_data_2010) rates, the average range for the best EAR was 0.85–2.84 whilst with the (cite: Dagdigian_2023) rates, the range is 0.25–1.26."
+      },
+      {
+       "loc": "Footnote 6",
+       "quote": "while providing indistinguishable results."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "check for sub-thermal excitation",
+    "method": {
+     "value": "Compare collisional and radiative excitation rates using fitted opacity, density and temperature in each GMC",
+     "evidence": [
+      {
+       "loc": "4.1 Properties of the gas as traced by CH3OH and H2CO",
+       "quote": "we compared the collisional and radiative excitation rate (cite: Goldsmith+2012) based on the on-the-spot measurements of opacity, gas density, and gas temperature in each GMC."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "derive CH3OH and H2CO abundances",
+    "method": {
+     "value": "Divide column densities by H2 column densities from Mangum+2019 (rescaled by 0.63; GMC 1a, 2b, 8a, 9a from Harada+2022), both scaled by the fitted beam filling factor; E- and A- (or o- and p-) combined",
+     "evidence": [
+      {
+       "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+       "quote": "we rescaled their H$_2$ column densities to match our angular resolution"
+      },
+      {
+       "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+       "quote": "we applied a beam filling factor to the scaled H$_2$ column densities for each region"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Rescaling factor 0.63 for Mangum+2019 N_H2",
+      "evidence": [
+       {
+        "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+        "quote": "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "E- and A- (and o- and p-) column densities are equal within uncertainties so abundances are derived for both forms together",
+      "evidence": [
+       {
+        "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+        "quote": "we derived X$_{\\rm{CH3OH}}$ for both forms together"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "compare with shock tracers and interpret E/A ratio",
+    "method": {
+     "value": "Compare n_H2, T_kin and abundances with HNCO, SiO and S-bearing species from earlier ALCHEMI fits; interpret E-/A- column density ratio (EAR) as a probe of formation temperature",
+     "evidence": [
+      {
+       "loc": "5.1 Do methanol and formaldehyde trace the same gas as SiO and HNCO?",
+       "quote": "we compare the gas characteristics as traced by these two molecules with our and results"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "EAR is fixed at the time of methanol formation; in thermal equilibrium EAR is set by the spin temperature",
+      "evidence": [
+       {
+        "loc": "5.4 The E/A Ratio in NGC 253 as a probe of methanol formation and destruction",
+        "quote": "Hence the ratio of these two isomers should be fixed at the time of the formation of methanol"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CubeLineMoment",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extract integrated intensities and moment 0/1/2 maps with spectral and spatial masks",
+     "evidence": [
+      {
+       "loc": "2 Observations and data analysis",
+       "quote": "to extract integrated spectral-line intensities from our data cubes"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE radiative transfer code",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "We use the radiative transfer code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SpectralRadex",
+    "version": "not stated",
+    "used_for": {
+     "value": "Python package used to run RADEX",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "via the Python package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Nautilus",
+    "version": "not stated",
+    "used_for": {
+     "value": "Sampler for Bayesian posterior and evidence estimation",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "for Bayesian posterior and evidence estimation."
+      }
+     ]
+    }
+   },
+   {
+    "name": "UltraNest",
+    "version": "not stated",
+    "used_for": {
+     "value": "Sampler used in earlier ALCHEMI studies; compared with Nautilus",
+     "evidence": [
+      {
+       "loc": "Footnote 6",
+       "quote": "while providing indistinguishable results."
+      }
+     ]
+    }
+   },
+   {
+    "name": "JPL catalogue",
+    "version": "not stated",
+    "used_for": {
+     "value": "CH3OH frequencies and spectroscopic parameters",
+     "evidence": [
+      {
+       "loc": "Table notes (CH3OH transitions)",
+       "quote": "Frequencies and spectroscopic parameters have been extracted from the JPL catalogue (cite: Pickett+1998)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CDMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "H2CO frequencies and spectroscopic parameters",
+     "evidence": [
+      {
+       "loc": "Table notes (H2CO transitions)",
+       "quote": "Frequencies and spectroscopic parameters have been extracted from CDMS (cite: Muller+2005; Endres+2016)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "EMAA database",
+    "version": "not stated",
+    "used_for": {
+     "value": "CH3OH collisional excitation rates",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "These rates were obtained from the Excitation of Molecules and Atoms for Astrophysics"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CH3OH T_kin range across GMCs",
+    "value": "10.59-87.5",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$10.59-87.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH T_kin, GMC 1a",
+    "value": "76.06",
+    "uncertainty": "+11.44/-9.69",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$76.06^{+11.44}_{-9.69}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH T_kin, GMC 2b",
+    "value": "11.14",
+    "uncertainty": "+0.57/-0.55",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$11.14^{+0.57}_{-0.55}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH log n_H2 range across GMCs",
+    "value": "4.11-7.11",
+    "uncertainty": "not stated",
+    "units": "log(cm^-3)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$4.11-7.11$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH beam filling factor range",
+    "value": "0.07-0.92",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$0.07-0.92$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH E-/A- column density ratio (best) range across GMCs",
+    "value": "0.25-1.26",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (CH3OH Bayesian results)",
+      "quote": "$0.25-1.26$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO T_kin, GMC 4",
+    "value": "266.73",
+    "uncertainty": "+316.23/-122.64",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (H2CO Bayesian results)",
+      "quote": "$266.73^{+316.23}_{-122.64}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO T_kin, GMC 3",
+    "value": "129.71",
+    "uncertainty": "+49.30/-32.99",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (H2CO Bayesian results)",
+      "quote": "$129.71^{+49.30}_{-32.99}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO T_kin, all GMCs lower bound",
+    "value": ">=67.23",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (H2CO Bayesian results)",
+      "quote": "$\\geq67.23$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO beam filling factor range",
+    "value": "0.04-0.67",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (H2CO Bayesian results)",
+      "quote": "$0.04-0.67$"
+     }
+    ]
+   },
+   {
+    "quantity": "CH3OH abundance range X(CH3OH)",
+    "value": "4.0e-10 to 1.4e-7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "Overall, we derive X$_{\\rm{CH3OH}}$ in the range $4.0\\times 10^{-10} - 1.4 \\times 10^{-7}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO abundance range X(H2CO)",
+    "value": "1.4e-10 to 1.4e-6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "For X$_{\\rm{H2CO}}$, the range is $1.4\\times 10^{-10} - 1.4\\times10^{-6}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Rescaling factor applied to Mangum+2019 N_H2",
+    "value": "0.63",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CH3OH and H2CO trace distinct environments: H2CO low density and high T_kin, CH3OH high density and low T_kin",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "H$_2$CO traces low volume density and high kinetic temperatures, while CH$_3$OH traces high volume density and low kinetic temperatures."
+     }
+    ]
+   },
+   {
+    "value": "CH3OH abundance shows a radial gradient; H2CO abundance is constant but poorly constrained",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "while the CH$_3$OH abundance shows a radial gradient from low to high values within the NGC 253 CMZ"
+     }
+    ]
+   },
+   {
+    "value": "Only about half of CH3OH transitions are sub-thermally excited; most H2CO transitions are sub-thermal",
+    "evidence": [
+     {
+      "loc": "4.1 Properties of the gas as traced by CH3OH and H2CO",
+      "quote": "We find that overall only about half of the transitions may be undergoing sub-thermal excitation conditions."
+     },
+     {
+      "loc": "4.1 Properties of the gas as traced by CH3OH and H2CO",
+      "quote": "Surprisingly the majority of transitions possess sub-thermal excitation conditions."
+     }
+    ]
+   },
+   {
+    "value": "Derived column densities are 1-2 orders of magnitude above earlier LTE values that assumed a filling factor of 1",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison with existing measurements",
+      "quote": "This discrepancy can be explained by the fact that their LTE analysis assumed a filling factor of 1."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CH3OH and H2CO trace the same physical gas and are chemically linked",
+    "experiment": "Non-LTE RADEX plus Nautilus fits of 39 CH3OH and 10 H2CO ALCHEMI transitions in eight GMCs",
+    "result": "CH3OH: T_kin about 11-30 K (76 K in GMC 1a) and high density; H2CO: T_kin >~100 K and n_H2 ~1e4 cm^-3",
+    "finding": "The two molecules trace distinct physical environments and are not directly chemically linked",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "H$_2$CO traces low volume density and high kinetic temperatures, while CH$_3$OH traces high volume density and low kinetic temperatures."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CH3OH and H2CO trace the same gas as the shock tracers SiO and HNCO",
+    "experiment": "Compare n_H2, T_kin and abundances with ALCHEMI SiO, HNCO and S-bearing species fits",
+    "result": "CH3OH is 2-3 orders of magnitude denser than SiO and colder than HNCO; CH3OH resembles H2CS and OCS",
+    "finding": "CH3OH is not a fast-shock tracer; it may trace slow shocks or post-shock gas",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.1 Do methanol and formaldehyde trace the same gas as SiO and HNCO?",
+      "quote": "The stark differences in physical properties as traced by SiO and CH$_3$OH lead us to exclude methanol as a tracer of fast shocks."
+     }
+    ]
+   },
+   {
+    "hypothesis": "H2CO forms on ices together with CH3OH",
+    "experiment": "Compare gas conditions and non-thermal desorption scenario for H2CO and CH3OH",
+    "result": "H2CO is absent from the cold component traced by CH3OH and its abundance stays constant across GMCs",
+    "finding": "H2CO is mainly formed in the gas phase",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1 Properties of the gas as traced by CH3OH and H2CO",
+      "quote": "We therefore suggest that the H$_2$CO we observe is mainly formed in the gas phase"
+     }
+    ]
+   },
+   {
+    "hypothesis": "CH3OH abundance varies with position in the CMZ",
+    "experiment": "Derive abundances from fitted column densities and published N_H2",
+    "result": "Distinct abundance gap between inner GMCs 3, 4, 6 and outer GMCs with outer regions richer in methanol",
+    "finding": "Inner GMCs may be at a younger evolutionary stage",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.3 Methanol and formaldehyde abundances",
+      "quote": "there is a distinct gap in abundance between the inner (3, 4 and 6) and outer (1a, 2b, 7, 8a, 9a) GMCs, with the outer regions being richer in methanol"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The CH3OH E/A ratio records its formation history",
+    "experiment": "Compare fitted E-/A- column density ratios per GMC with thermal-equilibrium expectations",
+    "result": "EAR below 1 in most GMCs and above 1 in GMCs 3, 4 and 6",
+    "finding": "Most CH3OH formed on cold ices; inner GMCs may have gas-phase formation at higher temperature, or EAR may be reset by proton exchange",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.4 The E/A Ratio in NGC 253 as a probe of methanol formation and destruction",
+      "quote": "However, for the inner GMCs (3, 4 and 6), the EAR is $>$ 1."
+     },
+     {
+      "loc": "5.4 The E/A Ratio in NGC 253 as a probe of methanol formation and destruction",
+      "quote": "This may suggest that methanol has formed in the gas phase at higher temperatures."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALCHEMI gives a wide spectral scan of the CMZ with many transitions per species",
+    "evidence": [
+     {
+      "loc": "2 Observations and data analysis",
+      "quote": "With wide and thorough spectral scanning across the CMZ of NGC 253, ALCHEMI provides a comprehensive molecular view of its nucleus."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Many transitions over a wide range of excitation energy allow non-LTE modelling to constrain the gas",
+    "evidence": [
+     {
+      "loc": "4 Non-LTE radiative transfer modeling analysis",
+      "quote": "Given the plethora of transitions we have measured for both species, spanning a wide range in excitation energy, radiative transfer analysis can be used to properly constrain the gas physical characteristics."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Older CH3OH collisional rates (Rabli and Flower 2010) gave a higher EAR range (0.85-2.84) and lower T_kin in GMC 1a (~36 K); the Dagdigian 2023 rates were adopted",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "With the (cite: CH3OH_mol_data_2010) rates, the average range for the best EAR was 0.85–2.84 whilst with the (cite: Dagdigian_2023) rates, the range is 0.25–1.26."
+      }
+     ]
+    },
+    {
+     "value": "GMC 5 (absorption, needs background-continuum radiative transfer) and GMC 10 (few detections) excluded",
+     "evidence": [
+      {
+       "loc": "3 Molecular line emission",
+       "quote": "Such a modeling effort is beyond the scope of the present study."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "H2CO abundances and parameters are poorly constrained",
+     "evidence": [
+      {
+       "loc": "abstract",
+       "quote": "The H$_2$CO abundances are constant, though poorly constrained"
+      }
+     ]
+    },
+    {
+     "value": "Derived EAR depends on the choice of CH3OH collisional rates",
+     "evidence": [
+      {
+       "loc": "4 Non-LTE radiative transfer modeling analysis",
+       "quote": "The choice of the rates used for thus seem more critical if one aims to derive the EAR."
+      }
+     ]
+    },
+    {
+     "value": "Very high H2CO temperatures in GMC 4 and 6 are not well constrained",
+     "evidence": [
+      {
+       "loc": "5.1 Do methanol and formaldehyde trace the same gas as SiO and HNCO?",
+       "quote": "although not very well constrained"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Beam filling factor, column density and density are degenerate; uncertainty on eta_ff propagates into the abundances, which are given only as wide ranges",
+    "N_H2 comes from two different studies with different resolution; the 0.63 rescaling and the unscaled (3-10)e22 range add systematic error",
+    "Intensity uncertainties and the line-width treatment in RADEX are not described",
+    "H2CO T_kin in GMC 4 and 6 sits against the prior or grid edge, so 'high temperature' there is weakly constrained",
+    "Low T_kin from CH3OH sub-thermal excitation could bias the density-temperature degeneracy",
+    "Single-component models for each GMC may blend several velocity or temperature components"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "CubeLineMoment is available on GitHub (keflavich/cube-line-extractor)",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "https://github.com/keflavich/cube-line-extractor"
+      }
+     ]
+    },
+    {
+     "value": "Integrated intensity tables for all transitions toward the GMCs released on Zenodo",
+     "evidence": [
+      {
+       "loc": "Table notes (CH3OH transitions)",
+       "quote": "are available as a machine-readable table"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "ALCHEMI calibration and imaging recipe (only in the ALCHEMI main paper)",
+    "GMC extraction aperture size, CubeLineMoment settings and per-channel noise values",
+    "Nautilus and RADEX run settings (live points, line width, background temperature)",
+    "Numerical N_H2 values used for each GMC",
+    "Posterior summary statistic definition"
+   ],
+   "estimated_data_volume_inferred": "ALCHEMI cubes covering Bands 3-7 for the needed transitions: roughly tens to hundreds of GB; the released Zenodo intensity table alone is small (MB)",
+   "score_inferred": 3,
+   "score_reason": "ALCHEMI data are the public large program and the Zenodo intensity table plus stated priors, likelihood, collisional rates and sampler allow rerunning the RADEX fits; but the cube processing, aperture, sampler settings and N_H2 values are not fully given.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "The paper's integrated intensities are released, the RADEX plus Nautilus recipe is mostly specified, and the main results are numeric (T_kin, n_H2, column densities, EAR, abundances); full reproduction from cubes would need the ALCHEMI paper."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: ALCHEMI_main_2021)",
+     "why": "Describes ALCHEMI data acquisition, calibration and imaging"
+    },
+    {
+     "citation": "(cite: Mangum+2019)",
+     "why": "CubeLineMoment and the source of the H2 column densities"
+    },
+    {
+     "citation": "(cite: Holdship+2021_SpectralRadex)",
+     "why": "SpectralRadex package"
+    },
+    {
+     "citation": "(cite: Dagdigian_2023)",
+     "why": "CH3OH collisional excitation rates"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Huang+2023)",
+     "why": "HNCO and SiO non-LTE analysis in the same ALCHEMI data, used for comparison"
+    },
+    {
+     "citation": "(cite: Bouvier+2024)",
+     "why": "S-bearing species analysis used for comparison"
+    },
+    {
+     "citation": "(cite: Humire+2022)",
+     "why": "LTE analysis of CH3OH in NGC 253 with maser candidates, compared with"
+    },
+    {
+     "citation": "(cite: Harada+2022)",
+     "why": "N_H2 values for outer GMCs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALCHEMI (ALMA Comprehensive High-resolution Extragalactic Molecular Inventory), 2017.1.00161.L and 2018.1.00162.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025A%26A...699A..70H",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:23:55",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 101,
+  "quotes_ok": 101,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 13,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 102,
+   "stated": 63,
+   "rate": 0.618
+  },
+  "evidence_ok": true
+ }
+}

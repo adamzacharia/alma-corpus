@@ -1,0 +1,908 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...834L..16U",
+  "title": "ALMA Reveals Strong [C II] Emission in a Galaxy Embedded in a Giant Lyα Blob at z = 3.1",
+  "year": 2017,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Umehata, Hideki",
+  "n_authors": 24,
+  "arxiv_id": "1701.00043",
+  "doi": "10.3847/2041-8213/834/2/L16",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00159.S",
+   "2013.1.00704.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We report the result from observations conducted with the Atacama Large Millimeter/submillimeter Array (ALMA) to detect [CII] 158 $\\mu$m fine structure line emission from galaxies embedded in one of the most spectacular Ly$\\alpha$ blobs"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "SSA22-LAB1 (LAB1-ALMA1, ALMA2, ALMA3, C11, K1, S1)",
+     "coordinates": {
+      "value": "ALMA3: 22:17:26.11 +00:12:32.4 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LAB1-ALMA3 | 22:17:26.11 | +00:12:32.4 | $3.0993\\pm0.0004$ | [CII] 158 $\\mu$m | 1 |"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "SSA22-LAB1 (hereafter LAB1, (cite: 2000ApJ...532..170S)) is a giant LAB discovered in the $z=3.1$ SSA22 proto-cluster region"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=3.0993±0.0004 (ALMA3)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LAB1-ALMA3 | 22:17:26.11 | +00:12:32.4 | $3.0993\\pm0.0004$ | [CII] 158 $\\mu$m | 1 |"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "SSA22-LAB1 (hereafter LAB1, (cite: 2000ApJ...532..170S)) is a giant LAB discovered in the $z=3.1$ SSA22 proto-cluster region"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "[CII] line, this work",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| LAB1-ALMA3 | 22:17:26.11 | +00:12:32.4 | $3.0993\\pm0.0004$ | [CII] 158 $\\mu$m | 1 |"
+       },
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "SSA22-LAB1 (hereafter LAB1, (cite: 2000ApJ...532..170S)) is a giant LAB discovered in the $z=3.1$ SSA22 proto-cluster region"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do the dusty star-forming galaxies and other galaxies embedded in the giant Lyα blob SSA22-LAB1 at z=3.1 emit [CII] 158 µm, and what does the [CII]/IR and [CII]/[NII] ratio imply about their ISM?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Of three dusty star-forming galaxies previously discovered by ALMA 860 $\\mu$m dust continuum survey toward SSA22-LAB1, we detected the [CII] line from one, LAB1-ALMA3"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00159.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "as a part of an ALMA cycle-2 program (ID: 2013.1.00159.S; PI: Umehata)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00704.S",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "One program (ID. 2013.1.00704.S; PI. Matsuda) covered the redshifted [NII] 205 $\\mu$m transition line"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 8 ([CII]); Band 7 ([NII] and continuum)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "We observed LAB1 with ALMA in band 8 as a part of an ALMA cycle-2 program"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "FDM spectral scan, two windows: 461.03–462.78 and 462.91–464.66 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The incomplete observation resulted in frequency coverage of 461.03–462.78 GHz and 462.91–464.66 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[CII]",
+     "transition": "158 µm 2P3/2→2P1/2",
+     "rest_frequency": "1900.537 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "targeting the [CII] 158 $\\mu$m transition ($\\nu_{\\rm rest}=1900.537$ GHz"
+      }
+     ]
+    },
+    {
+     "species": "[NII]",
+     "transition": "205 µm",
+     "rest_frequency": "1461.131 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "$\\nu_{\\rm rest}=1461.131$ GHz, redshifted to 356.37 GHz, at $z=3.100$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C34-5",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The array configuration was C34-5 and the baseline lengths were 21–784 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "21–784 m",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The array configuration was C34-5 and the baseline lengths were 21–784 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.27x0.26 arcsec (full cube); 0.53x0.52 arcsec (tapered)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "has a typical synthesized beam FWHM of $0^{\\prime\\prime}.27\\times0^{\\prime\\prime}.26$ (P.A. 46 deg)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "3.5 mJy/beam per 80 km/s channel (tapered band 8 cube)",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The typical rms level is $\\approx$ 3.5 mJy beam$^{-1}$ at the phase center per 80 km s$^{-1}$ channel in the tapered cube."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "4.5 minutes",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "The on-source time was 4.5 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "16 June 2015",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "Observations were carried out on 16 June 2015"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST STIS",
+     "provided": {
+      "value": "optical image for comparison",
+      "evidence": [
+       {
+        "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+        "quote": "$HST$ STIS optical image[^2] ((cite: 2003ApJ...599...92C))"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "860 µm continuum sources and flux density S860=0.73±0.05 mJy for ALMA3",
+      "evidence": [
+       {
+        "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+        "quote": "$S_{\\rm 860 \\mu m}=0.73\\pm0.05$ mJy ((cite: 2016ApJ...832...37G))"
+       }
+      ]
+     },
+     "citation": "(cite: 2016ApJ...832...37G)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopic redshift of ALMA3 from Hβ and [OIII]",
+      "evidence": [
+       {
+        "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+        "quote": "reported a redshift of $z=3.1000\\pm0.0003$ on the basis of H$\\beta$ and [OIII] $\\lambda$5007 lines"
+       }
+      ]
+     },
+     "citation": "(cite: 2015ApJ...799...38K)"
+    },
+    {
+     "what": {
+      "value": "Average ALESS SMG template for LIR",
+      "evidence": [
+       {
+        "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+        "quote": "derived using an average SMG template from the ALESS survey ((cite: 2014MNRAS.438.1267S))"
+       }
+      ]
+     },
+     "citation": "(cite: 2014MNRAS.438.1267S)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 4.4.0",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The data were processed with the Common Astronomy Software Application (casa) ver. 4.4.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Ceres (amplitude); J2148+0657 (bandpass and phase)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Ceres was observed for amplitude calibration, and the quasar J2148+0657 was utilized for bandpass and phase calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean, natural weighting",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The cube was first created with the natural weighting using the casa task, clean."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "outertaper = 0.5 arcsec",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "adopting the taper parameter, outertaper = 0.5 arcsec"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.53x0.52 arcsec PA -70 deg (tapered)",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "which has a typical synthesized beam, $0^{\\prime\\prime}.53\\times0^{\\prime\\prime}.52$ (P.A. $-70$ deg)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "3.5 mJy/beam per 80 km/s channel; continuum 0.8 mJy/beam",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The \"dirty\" map has a rms level of 0.8 mJy beam$^{-1}$ at the phase center"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Band 7 data/[NII] analysis and rest-frame 210 µm continuum",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "(Y. Matsuda et al. in preparation)"
+       }
+      ]
+     },
+     "from_reference": "Y. Matsuda et al. in preparation"
+    }
+   ],
+   "unstated_but_needed": [
+    "Band 7 calibration and imaging details",
+    "Clean threshold, mask, cell and image size",
+    "Which channels were line-free for continuum",
+    "Exact virial mass formula and factors",
+    "Details of Gaussian fit and uncertainty method",
+    "LIR template scaling details"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Make cubes and continuum",
+    "method": {
+     "value": "clean cube with natural weighting, plus tapered version; tapered continuum from line-free channels",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "we created a \"tapered\" continuum map at 463 GHz, using the line-free channels."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "outertaper = 0.5 arcsec",
+      "evidence": [
+       {
+        "loc": "2 Observations and data reduction",
+        "quote": "adopting the taper parameter, outertaper = 0.5 arcsec"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure [CII] line and size",
+    "method": {
+     "value": "Gaussian fit to spectrum; 2D elliptical Gaussian fit to tapered map",
+     "evidence": [
+      {
+       "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+       "quote": "A gaussian fit to the line has $z=3.0993\\pm0.0004$ with FWHM $275\\pm30$ km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian line profile; 2D elliptical Gaussian",
+     "evidence": [
+      {
+       "loc": "Results, [CII] 158 μm in LAB1-ALMA3",
+       "quote": "A gaussian fit to the line has $z=3.0993\\pm0.0004$ with FWHM $275\\pm30$ km s$^{-1}$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "redshift compared with Kubo et al. optical redshift",
+     "evidence": [
+      {
+       "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+       "quote": "hence our measurement is consistent"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive LIR and dynamical mass",
+    "method": {
+     "value": "LIR from ALESS average SMG template scaled to 860 µm flux; isotropic virial mass from line width and [CII] size",
+     "evidence": [
+      {
+       "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+       "quote": "using an isotropic virial estimator (e.g., (cite: 2010ApJ...724..233E)) on the basis of the line width and [CII] size"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "cosmology Om=0.3, OL=0.7, H0=70",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "we adopt a cosmology with $\\Omega_{\\rm m}=0.3, \\Omega_\\Lambda=0.7$, and H$_0$=70 km s$^{-1}$ Mpc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "LIR range 0.2-1.5e12 from varying templates noted",
+     "evidence": [
+      {
+       "loc": "Results, [CII] 158 μm in LAB1-ALMA3",
+       "quote": "estimated it in the range $L_{\\rm IR}\\approx(0.2-1.5)\\times10^{12} L_\\odot$ using varying templates."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Upper limits for [NII] and other galaxies",
+    "method": {
+     "value": "3σ upper limits integrating cube over 300 km/s at source positions (or ALMA3 line width); [NII] 3σ point-source limit from tapered maps",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "we integrated the cube at the position in literatures over $300$ km s$^{-1}$ velocity range, and obtain 3$\\sigma$ upper limits."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.4.0",
+    "used_for": {
+     "value": "data processing and clean imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "The data were processed with the Common Astronomy Software Application (casa) ver. 4.4.0"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "ALMA3 redshift",
+    "value": "3.0993",
+    "uncertainty": "0.0004",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$z=3.0993\\pm0.0004$ with FWHM $275\\pm30$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CII] FWHM",
+    "value": "275",
+    "uncertainty": "30",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "FWHM $275\\pm30$ km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CII] integrated flux",
+    "value": "16.8",
+    "uncertainty": "2.1",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$I_\\textsc{[Cii]}=16.8\\pm2.1$ Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "L[CII]",
+    "value": "5.7e9",
+    "uncertainty": "0.7e9",
+    "units": "Lsun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$L_\\textsc{[Cii]}=(5.7\\pm0.7) \\times10^{9} L_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "LIR",
+    "value": "5.8e11",
+    "uncertainty": "0.4e11",
+    "units": "Lsun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$L_{\\rm IR}\\approx5.8\\pm0.4\\times10^{11} L_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "L[CII]/LIR",
+    "value": "0.010",
+    "uncertainty": "0.001",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$L_\\textsc{[Cii]}/L_{\\rm IR}\\approx0.010\\pm0.001$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dynamical mass",
+    "value": "1.0e11",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$M_{\\rm dyn, vir}\\sim 1.0\\times10^{11} M_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CII] deconvolved size",
+    "value": "0.62x0.55 arcsec (4.8x4.3 kpc)",
+    "uncertainty": "0.11, 0.10 arcsec",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "deconvolved FWHM of ($0^{\\prime\\prime}.62\\pm0^{\\prime\\prime}.11)\\times(0^{\\prime\\prime}.55\\pm0^{\\prime\\prime}.10$)"
+     }
+    ]
+   },
+   {
+    "quantity": "L[CII]/L[NII] lower limit",
+    "value": ">55",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "$L_\\textsc{[Cii]}/L_\\textsc{[Nii]}>55$"
+     }
+    ]
+   },
+   {
+    "quantity": "[CII] upper limit ALMA1/ALMA2",
+    "value": "<2.3",
+    "uncertainty": "3σ",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 No [CII] emission from the remaining LAB1 members",
+      "quote": "$I_\\textsc{[Cii]}<2.3$ Jy km s$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "[CII] emission is spatially resolved with complex velocity field, not a simple rotating disk",
+    "evidence": [
+     {
+      "loc": "3.1 [CII] 158 µm in LAB1-ALMA3",
+      "quote": "The [CII] velocity map (Fig. 2b) also shows complexity, which is not likely to be produced by a simple rotating disk."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do LAB1 member galaxies show [CII] emission?",
+    "experiment": "Band 8 spectral scan of LAB1",
+    "result": "Only ALMA3 detected; ALMA1, ALMA2 and three UV/optical galaxies undetected",
+    "finding": "[CII] is detected from one of three dusty galaxies",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "No line emission was detected, associated with the other ALMA continuum sources"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is ALMA3 [CII]/IR high relative to IR-luminous galaxies?",
+    "experiment": "Compare L[CII]/LIR with [CII] deficit trend",
+    "result": "ratio ≈0.01, ~order of magnitude higher",
+    "finding": "Different ISM conditions, e.g. extended star formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Discussion and Summary",
+      "quote": "ALMA3 shows approximately an order of magnitude higher ratio"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What causes strong [CII]?",
+    "experiment": "Use L[CII]/L[NII]>55 vs models",
+    "result": "favors sub-solar metallicity, PDRs, possible shocks",
+    "finding": "Origin possibly linked to the LAB environment, but uncertain",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The relatively strong [CII] emission may be caused by abundant photodissociation regions and sub-solar metallicity, or by shock heating."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Doubly ionized nitrogen effect deemed unlikely because ALMA3 is dust detected",
+     "evidence": [
+      {
+       "loc": "4 Discussion and Summary",
+       "quote": "This effect is unlikely to be significant in ALMA3 because it is detected in dust continuum."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Incomplete observation: only two of four spectral windows executed; ALMA1/2 lack spectroscopic redshifts",
+     "evidence": [
+      {
+       "loc": "2 Observations and data reduction",
+       "quote": "Among four planned spectral windows, only two were actually executed."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Very short 4.5 min integration, modest S/N",
+    "LIR uncertain by a factor of several from template choice",
+    "Upper limits for ALMA1/2 assume unknown redshift",
+    "Single detected source limits statistics on the environment link"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project IDs given in acknowledgments",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2013.1.00159.S, ADS/JAO.ALMA#2013.1.00704.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Clean parameters beyond weighting/taper",
+    "Band 7 processing details (in preparation paper)",
+    "Virial mass coefficient"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear basic imaging, but sparse imaging parameters and band 7 details deferred to unpublished work.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, short recipe, numeric results (flux, luminosity, redshift) can be redone."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2010ApJ...724..233E)",
+     "why": "isotropic virial mass estimator"
+    },
+    {
+     "citation": "(cite: 2014MNRAS.438.1267S)",
+     "why": "SMG template for LIR"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2016ApJ...832...37G)",
+     "why": "ALMA 860 µm survey of SSA22-LAB1"
+    },
+    {
+     "citation": "(cite: 2015ApJ...799...38K)",
+     "why": "spectroscopic redshift of ALMA3"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA 860 µm survey of LABs (Geach et al. 2016)",
+    "ALESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-37578a2ff906580e150448faa77034db",
+  "batch_id": "msgbatch_01WbqPdMnjczpmiQDeBe3Du5",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:47:09",
+  "usage": {
+   "input_tokens": 13924,
+   "output_tokens": 7567,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.052366,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 10,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 37,
+   "rate": 0.561
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:50:40",
+  "custom_id": "repair-sonnet-fbca03b6eb8b3f734d8439d04d9683d0",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "A gaussian fit to the line has $z=3.0993\\pm0.0004$ with FWHM $275\\pm30$ km s$^{-1}$."
+   },
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "estimated it in the range $L_{\\rm IR}\\approx(0.2-1.5)\\times10^{12} L_\\odot$ using varying templates."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

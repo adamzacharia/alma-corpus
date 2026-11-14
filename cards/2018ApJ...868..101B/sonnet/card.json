@@ -1,0 +1,643 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...868..101B",
+  "title": "ALMA Polarimetry of Sgr A*: Probing the Accretion Flow from the Event Horizon to the Bondi Radius",
+  "year": 2018,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Bower, Geoffrey C.",
+  "n_authors": 13,
+  "arxiv_id": "1810.07317",
+  "doi": "10.3847/1538-4357/aae983",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00764.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present here multi-epoch ALMA Band 6 (230 GHz) polarimetry of Sgr A*."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "Sgr A*",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "8.1 kpc",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "1 R_S \\approx 10 \\mu as$ for a distance of 8.1 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the linear and circular polarization and Faraday rotation measure of Sgr A* at 1.3 mm, and how do they vary in time, as a probe of the accretion flow?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Millimeter polarimetry of Sgr A* probes the linearly polarized emission region on a scale of ~10 Schwarzschild radii"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00764.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.00764.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm), full polarization continuum",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "ALMA observed Sgr A* in Band 6 (1.3 mm wavelength) in full polarimetric continuum mode on three epochs"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 SPWs, 2 GHz each, 64 channels; centers 223.96, 225.96, 239.96, 241.96 GHz",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The SPW center frequencies are 223.96 GHz, 225.96 GHz, 239.96 GHz, and 241.96 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~1 arcsec (natural weighting)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "naturally-weighted synthesized beam sizes $\\sim 1$ arcsec"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "~3 h in epochs 1 and 2; ~5 h over 7 h in epoch 3",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Approximately three hours of observations were obtained in epochs 1 and 2."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "3 Mar 2016, 3 May 2016, 13 Aug 2016",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 03 Mar 2016 | 0936 – 1314 |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Historical RM measurements of Sgr A* (BIMA+JCMT, SMA) used in structure function",
+      "evidence": [
+       {
+        "loc": "Table 4",
+        "quote": "Historical Measurements of Rotation Measure"
+       }
+      ]
+     },
+     "citation": "not stated"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipelines with standard a priori and calculated calibrations",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Data reduction was performed in CASA using pipelines that applied standard *a priori* and calculated calibrations."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Titan (epochs 1, 2); J1751+0939 monitoring extrapolated, 2.4 Jy (epoch 3)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Absolute flux calibration was set by observations of the moon Titan in epochs 1 and 2."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~20% in epoch 3",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "estimated flux density of 2.4 Jy, constant across all SPWs, with an accuracy of $\\sim 20\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Baselines shorter than 50 kλ rejected",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We rejected all baselines shorter than $50 k\\lambda$ in order to eliminate any extended structure around Sgr A*."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~1 arcsec natural-weighted",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "naturally-weighted synthesized beam sizes $\\sim 1$ arcsec"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [],
+   "unstated_but_needed": [
+    "CASA version",
+    "Pipeline version",
+    "Imaging parameters (cell, size, clean settings)",
+    "Polarization calibration procedure details (leakage, D-terms, angle)",
+    "Time-binning and fitting weighting for RM fits",
+    "Structure function binning"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure Stokes I,Q,U,V",
+    "method": {
+     "value": "Image-domain point-source fits per SPW and per time slice; position fixed from Stokes I for Q,U,V",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Fits in the Stokes Q, U, and V domains were obtained with the point-source position fixed at the fitted peak of the Stokes I image."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "baselines <50 kλ rejected",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "We rejected all baselines shorter than $50 k\\lambda$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent with visibility-domain point-source fits",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "These image-domain results are consistent with point-source fits obtained in the visibility domain."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit rotation measure",
+    "method": {
+     "value": "Fit chi = chi_0 + RM lambda^2 to position angle per epoch and per time slice",
+     "evidence": [
+      {
+       "loc": "3.1 Inter-Epoch",
+       "quote": "$\\chi = \\chi_0 + RM \\lambda^2,$"
+      }
+     ]
+    },
+    "software": [
+     "MATLAB"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Calibrators observed in same way to set systematic limits",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "We use calibrator results in this Section to set limits on systematic errors on LP fraction, CP fraction, and rotation measure."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "RM variability structure function",
+    "method": {
+     "value": "SF^2(tau)=<(RM(t+tau)-RM(t))^2> within epochs and over epoch-averaged plus archival RMs",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We analyze variability in the RM using the structure function"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration pipelines and imaging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Data reduction was performed in CASA using pipelines"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MATLAB",
+    "version": "not stated",
+    "used_for": {
+     "value": "Listed in software section; use not stated",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "CASA, MATLAB"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "RM epoch 1",
+    "value": "-7.83",
+    "uncertainty": "0.10",
+    "units": "1e5 rad m^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$-7.83 \\pm  0.10$"
+     }
+    ]
+   },
+   {
+    "quantity": "RM epoch 2",
+    "value": "-4.77",
+    "uncertainty": "0.07",
+    "units": "1e5 rad m^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$-4.77 \\pm  0.07$"
+     }
+    ]
+   },
+   {
+    "quantity": "RM epoch 3",
+    "value": "-2.90",
+    "uncertainty": "0.11",
+    "units": "1e5 rad m^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$-2.90 \\pm  0.11$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean circular polarization",
+    "value": "-1.1",
+    "uncertainty": "0.2",
+    "units": "%",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "We find a mean CP of $\\approx -1.1 \\pm 0.2$%."
+     }
+    ]
+   },
+   {
+    "quantity": "RM change across epochs",
+    "value": "4.93",
+    "uncertainty": "not stated",
+    "units": "1e5 rad m^-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the change $\\delta {\\rm RM} = 4.93 \\times 10^5 {\\rm\\ rad\\ m^{-2}}$ across the three epochs is detected at a $5 \\sigma$ threshold"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No characteristic RM variability timescale between hours and decades; RM anticorrelated with polarized flux",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "we do not identify any characteristic time scale between hours and decades for variability of the RM"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Mean RM of Sgr A* remains consistent with historical values",
+    "experiment": "Three-epoch ALMA Band 6 RM fits",
+    "result": "RM -7.8 to -2.9e5 rad/m^2",
+    "finding": "Consistent with RIAF accretion flow, Mdot~1e-8 Msun/yr",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The results confirm a mean rotation measure, ${\\rm RM} \\approx -5 \\times 10^5 {\\rm\\ rad\\ m^{-2}}$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "RM varies in time",
+    "experiment": "Compare epochs and intra-epoch fits against calibrator systematics",
+    "result": "Variability from hours to months",
+    "finding": "First detection of RM variability",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Variability is observed for the first time in the RM on time scales that range from hours to months."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CP handedness is stable",
+    "experiment": "Measure Stokes V",
+    "result": "Mean -1.1±0.2%, same sign as earlier",
+    "finding": "Stable handedness",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the handedness remains unchanged from that observed in past centimeter- and millimeter-wavelength detections"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Largest fitted RMs are suspect due to phase wrap, poor fits and calibration errors at low polarization",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "The largest fitted values of the RM are suspect for three reasons"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Only three epochs, undersampled long timescales",
+    "Systematic limits from calibrators with possibly intrinsic RM",
+    "Polarization leakage calibration not detailed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version and exact polarization calibration steps",
+    "Fitting weights and uncertainties",
+    "Archival RM data provenance"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for three epochs",
+   "score_inferred": 3,
+   "score_reason": "Data identified with project code, recipe simple but calibration details missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Public status not stated and calibration details insufficient."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "2016ApJ...824..132N",
+     "why": "ALMA polarimetry science verification accuracy"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "Event Horizon Telescope"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-774ea9b36b95c3619dac67708125b23f",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:10",
+  "usage": {
+   "input_tokens": 29582,
+   "output_tokens": 4190,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051139,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 33,
+  "quotes_ok": 33,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 58,
+   "stated": 23,
+   "rate": 0.397
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,601 @@
+{
+ "bibcode": "2024ApJ...963..103G",
+ "title": "The ALMA View of Positive Black Hole Feedback in the Dwarf Galaxy Henize 2─10",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad1b62",
+ "arxiv_id": "2401.02486",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "What are the properties, kinematics, and excitation conditions of the submillimeter continuum and molecular gas in the immediate vicinity of the central massive black hole in the dwarf starburst galaxy Henize 2–10, and how do they relate to positive BH feedback?",
+ "alma_project_codes": [
+  "2011.0.00348.S",
+  "2012.1.00413.S",
+  "2015.1.01569.S",
+  "2016.1.00027.S",
+  "2016.1.00492.S",
+  "2019.1.01641.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "0.18\" x 0.14\" (251 GHz), 0.55\" x 0.32\" (99 GHz), ~0.3\" (CO 3-2), ~0.45\" x 0.30\" (CO 1-0)",
+  "sensitivity": "12.4 uJy beam^-1 (251 GHz), 27.7 uJy beam^-1 (340 GHz), 10 uJy beam^-1 (99 GHz), 1.03 mJy beam^-1 per 1.693 km s^-1 (CO 1-0), 1.00 mJy beam^-1 per 1.693 km s^-1 (CO 3-2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "1.4 GHz LBA continuum image and flux density of the BH",
+    "evidence": [
+     {
+      "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+      "quote": "we include measurements from the literature including 1.4 GHz data from the LBA (Reines & Deller 2012)"
+     }
+    ]
+   },
+   "citation": "Reines & Deller 2012"
+  },
+  {
+   "what": {
+    "value": "5 and 8 GHz VLA flux densities of the BH",
+    "evidence": [
+     {
+      "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+      "quote": "5 and 8 GHz data from the VLA (Reines et al. 2011)"
+     }
+    ]
+   },
+   "citation": "Reines et al. 2011"
+  },
+  {
+   "what": {
+    "value": "15, 22, and 33 GHz VLA flux densities of the BH and dust absorption coefficient kappa_nu = 1.3 cm^2 g^-1 at 340 GHz",
+    "evidence": [
+     {
+      "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+      "quote": "as well as 15, 22, and 33 GHz data from the VLA (Costa et al. 2021)."
+     },
+     {
+      "loc": "3.2.6. The Western Star Forming Region",
+      "quote": "We adopted a dust absorption coefficient of κ ν = 1 . 3 cm 2 g − 1 at 340 GHz (Costa et al. 2021)"
+     }
+    ]
+   },
+   "citation": "Costa et al. 2021"
+  },
+  {
+   "what": {
+    "value": "Central metallicity 12 + [O/H] approx 9.0 (Z = 0.044) from MUSE spectroscopy",
+    "evidence": [
+     {
+      "loc": "3.2.3. Molecular Gas in the Vicinity of the BH",
+      "quote": "Through simultaneous linefitting on multiple lines, they found that the metallicity in the central region was super-solar, with 12 + [O / H] ≈ 9 . 0, corresponding to Z = 0 . 044."
+     }
+    ]
+   },
+   "citation": "Cresci et al. 2017"
+  },
+  {
+   "what": {
+    "value": "HI total intensity of 1.52 +/- 0.05 Jy beam^-1 km s^-1 and systemic velocity V_sys = 873 km s^-1",
+    "evidence": [
+     {
+      "loc": "3.2.6. The Western Star Forming Region",
+      "quote": "In this region, the total intensity of H I was 1.52 ± 0.05 Jy beam − 1 km s − 1 , leading to a corresponding column density N(H I ) at (1.51 ± 0.05) × 10 18 cm − 2"
+     },
+     {
+      "loc": "Figure 6 caption",
+      "quote": "the systemic velocity of the galaxy, V sys = 873 km s − 1 (Kobulnicky et al. 1995)."
+     }
+    ]
+   },
+   "citation": "Kobulnicky et al. 1995"
+  },
+  {
+   "what": {
+    "value": "Dust temperature T_d = 29 K",
+    "evidence": [
+     {
+      "loc": "3.2.6. The Western Star Forming Region",
+      "quote": "and the dust temperature of 29 K (Santangelo et al. 2009)."
+     }
+    ]
+   },
+   "citation": "Santangelo et al. 2009"
+  },
+  {
+   "what": {
+    "value": "HST images, STIS slit position (PA = 100 deg, width = 0.2\"), and definitions of regions 5 and 6",
+    "evidence": [
+     {
+      "loc": "3.2.2. Position-Velocity Diagram",
+      "quote": "Schutte & Reines (2022) used HST /STIS spectroscopy, employing a long slit centered on the BH with a width of 0 ′′ . 2 and a position angle of 100 ◦ aligned with the ionized filament seen in H α imaging."
+     },
+     {
+      "loc": "Figure 7 caption",
+      "quote": "Regions 5 and 6 from Schutte & Reines (2022) are presented as rectangles with the HST slit position for the ionized gas outflow (Schutte & Reines 2022)."
+     }
+    ]
+   },
+   "citation": "Schutte & Reines 2022"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA continuum and spectral line visibilities",
+   "method": "Run scriptForPI.py, flag bad antennas, subtract continuum with uvcontsub (order 1), image cubes and continuum with tclean (hogbom, briggsbwtaper/perchanweightdensity for lines; MFS/mtmfs nterms=3 for continuum), and smooth cubes with imsmooth.",
+   "software": [
+    "CASA",
+    "scriptForPI.py",
+    "uvcontsub",
+    "tclean",
+    "mstransform",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "uvcontsub fit order = 1; tclean threshold = 2 sigma; velocity frame = BARY; continuum SPW channel width = 15.625 MHz; low-Band 3 nterms = 3; Band 3 split frequency = 110 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Align astrometry of ALMA images and cubes to the 2MASS frame",
+   "method": "Match the local maximum of the BH in the 251 GHz ALMA continuum image to the BH center in the 2MASS-aligned 1.4 GHz LBA continuum image and apply the spatial shift to all ALMA products.",
+   "software": [],
+   "key_parameters": [
+    "Delta RA = 0.0735\" West, Delta DEC = 0.095\" North"
+   ],
+   "assumptions": [
+    "251 GHz local maximum corresponds to the 1.4 GHz LBA radio core of the BH"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure sub-mm continuum flux densities and fit the 1.4–340 GHz SED of the BH",
+   "method": "Convolve all ALMA continuum images to 0.55\" x 0.32\" with imsmooth, perform elliptical aperture photometry on the BH, estimate RMS noise with AIPS RMSD, measure adjacent 340 GHz sources with PyBDSF, and fit 1.4–340 GHz SED models using R nls and confint2.",
+   "software": [
+    "CASA",
+    "imsmooth",
+    "AIPS",
+    "RMSD",
+    "PyBDSF",
+    "R",
+    "nls",
+    "confint2"
+   ],
+   "key_parameters": [
+    "Convolved beam / aperture size = 0.55\" x 0.32\", PA = -64.0 deg; AIPS RMSD rejection > 3 sigma within 150 pixels"
+   ],
+   "assumptions": [
+    "33 GHz VLA flux density excluded from fit due to weather decorrelation; free-free spectral index = -0.1, dust spectral index = 4 in tested multi-component models"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Generate moment maps and position-velocity diagrams of molecular gas",
+   "method": "Create masks on non-PB-corrected cubes using 3D-Barolo (Duchamp algorithm) with primary S/N = 5 and secondary S/N = 3, multiply PB-corrected cubes by masks to get moment 0, 1, 2 maps, and extract PVDs along PA = 100 deg to measure velocity gradients.",
+   "software": [
+    "3D-Barolo"
+   ],
+   "key_parameters": [
+    "3D-Barolo primary S/N = 5, secondary S/N = 3; PVD PA = 100 deg, bin width = 0.3\" (CO 3-2) and 0.45\" (CO 1-0), velocity gradient range = -0.4\" to 0.8\" (CO 3-2) and -0.5\" to 0.85\" (CO 1-0) above 3 sigma"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Isolate molecular gas in the BH vicinity and derive its H2 mass",
+   "method": "Generate restricted moment maps within 852.1–904.6 km s^-1, define the BH vicinity ellipse, measure mean velocities and CO luminosity L'_CO, and convert to M_H2 using a metallicity-dependent alpha_CO range.",
+   "software": [
+    "3D-Barolo"
+   ],
+   "key_parameters": [
+    "Velocity range = 852.1–904.6 km s^-1; ellipse center = RA 08h36m15.108s, Dec -26d24m34.343s, size = 2.97\" x 0.79\" (128 pc x 34 pc), PA = 80.34 deg (or 83.34 deg in Table 3)"
+   ],
+   "assumptions": [
+    "alpha_CO = 0.6 to 4.3 M_sun (K km s^-1 pc^2)^-1 based on central metallicity 12 + [O/H] approx 9.0 (Z = 0.044); d = 9 Mpc"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute spatially resolved CO (3-2)/(1-0) line ratio map R_31",
+   "method": "Convolve CO (1-0) and CO (3-2) cubes to a common 0.45\" x 0.30\" beam using imsmooth and compute pixel-by-pixel ratio R_31 = (nu_32 / nu_10)^-2 (I_CO(3-2) / I_CO(1-0)).",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "Common beam size = 0.45\" x 0.30\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Estimate H2 column density, optical extinction A_V, dust mass, and gas-to-dust ratio in the western star-forming region",
+   "method": "Measure CO (1-0) intensity between regions 5 and 6 to derive N(H2) and A_V (combining with VLA N(HI)), and measure 340 GHz continuum flux in region 6 to calculate dust mass and compare with H2 mass.",
+   "software": [
+    "3D-Barolo"
+   ],
+   "key_parameters": [
+    "CO (3-2) channel map velocity range = 864.1–887.8 km s^-1; 3D-Barolo primary S/N = 5, secondary S/N = 3"
+   ],
+   "assumptions": [
+    "X_CO = (0.28–2) x 10^20 cm^-2 (K km s^-1)^-1; uniform HI distribution with N(HI) = (1.51 +/- 0.05) x 10^18 cm^-2; A_V = 4.81 x 10^-22 (N(HI) + 2N(H2)); kappa_340GHz = 1.3 cm^2 g^-1; T_d = 29 K; D = 9 Mpc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "BH 99 GHz continuum flux density",
+   "value": "140",
+   "uncertainty": "14",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The measured flux densities of the BH are 140 ± 14, 134 ± 21, 29 ± 46, and 57 ± 48 µ Jy at 99, 113, 251, and 340 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "BH 113 GHz continuum flux density",
+   "value": "134",
+   "uncertainty": "21",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The measured flux densities of the BH are 140 ± 14, 134 ± 21, 29 ± 46, and 57 ± 48 µ Jy at 99, 113, 251, and 340 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "BH 251 GHz continuum flux density",
+   "value": "29",
+   "uncertainty": "46",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The measured flux densities of the BH are 140 ± 14, 134 ± 21, 29 ± 46, and 57 ± 48 µ Jy at 99, 113, 251, and 340 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "BH 340 GHz continuum flux density",
+   "value": "57",
+   "uncertainty": "48",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The measured flux densities of the BH are 140 ± 14, 134 ± 21, 29 ± 46, and 57 ± 48 µ Jy at 99, 113, 251, and 340 GHz, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Source A 340 GHz continuum flux density",
+   "value": "125",
+   "uncertainty": "80",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "Their flux densities were measured as 125 ± 80 and 342 ± 130 µ Jy for the sources A and B, respectively, using PyBDSF (Mohan & Rafferty 2015)."
+    }
+   ]
+  },
+  {
+   "quantity": "Source B 340 GHz continuum flux density",
+   "value": "342",
+   "uncertainty": "130",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "Their flux densities were measured as 125 ± 80 and 342 ± 130 µ Jy for the sources A and B, respectively, using PyBDSF (Mohan & Rafferty 2015)."
+    }
+   ]
+  },
+  {
+   "quantity": "BH radio-to-submm spectral index alpha_nth",
+   "value": "-0.52",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The one-component model with non-thermal emission provided a meaningful solution, with the best-fit model of S = (1349 ± 217) ν − 0 . 52 ± 0 . 06 µ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "BH SED normalization S_0,nth",
+   "value": "1349",
+   "uncertainty": "217",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. Continuum Emission and Radio SED of the Black Hole",
+     "quote": "The one-component model with non-thermal emission provided a meaningful solution, with the best-fit model of S = (1349 ± 217) ν − 0 . 52 ± 0 . 06 µ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "CO (3-2) velocity gradient near BH",
+   "value": "-5.8",
+   "uncertainty": "not stated",
+   "units": "km s^-1 arcsec^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2. Position-Velocity Diagram",
+     "quote": "The resulting weighted mean velocity (red squares in Figure 5), determined above 3 σ with a bin width of 0 ′′ . 3 (where σ = 1 . 0 mJy beam − 1 (1.693 km s − 1 ) − 1 , yielded a velocity gradient of − 5 . 8 km s − 1 ′′− 1 ."
+    }
+   ]
+  },
+  {
+   "quantity": "CO (1-0) velocity gradient near BH",
+   "value": "-4.6",
+   "uncertainty": "not stated",
+   "units": "km s^-1 arcsec^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2. Position-Velocity Diagram",
+     "quote": "resulting in a similar velocity gradient of − 4 . 6 km s − 1 ′′− 1 )."
+    }
+   ]
+  },
+  {
+   "quantity": "BH vicinity molecular gas structure size",
+   "value": "2.97 x 0.79 (128 x 34)",
+   "uncertainty": "not stated",
+   "units": "arcsec (pc)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Major & minor axes | 2.′′97×0.′′79 (≈128 pc×34 pc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity in BH vicinity (CO 1-0)",
+   "value": "880.2",
+   "uncertainty": "4.7",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "880.2 ± 4.7 km s−1 in CO (1–0)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity in BH vicinity (CO 3-2)",
+   "value": "880.3",
+   "uncertainty": "5.9",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "880.3 ± 5.9 km s−1 in CO (3–2)"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity in BH vicinity (HCO+ 3-2)",
+   "value": "875.3",
+   "uncertainty": "6.2",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "875.3 ± 6.2 km s−1 in HCO+ (3–2)"
+    }
+   ]
+  },
+  {
+   "quantity": "CO luminosity L'_CO in BH vicinity",
+   "value": "3.56e5",
+   "uncertainty": "not stated",
+   "units": "K km s^-1 pc^2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.3. Molecular Gas in the Vicinity of the BH",
+     "quote": "Our estimated CO luminosity is L ′ CO = 3 . 56 × 10 5 K km s − 1 pc 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 in BH vicinity",
+   "value": "0.21-1.53e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.2.3. Molecular Gas in the Vicinity of the BH",
+     "quote": "results in an estimated molecular gas mass of M H 2 = (0 . 21 − 1 . 53) × 10 6 M ⊙ ."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "H2 mass | (0.21–1.53)×106 M⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "CO line ratio R_31 at eastern BH outflow interface",
+   "value": "2.7",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.5. Shocked Molecular Clouds from the BH Outflow",
+     "quote": "The line ratio at this interface is R 31 = 2 . 7 ± 0 . 2, while the region defined as the BH vicinity excluding this interface has R 31 = 1 . 3 ± 0 . 1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO line ratio R_31 in BH vicinity excluding eastern interface",
+   "value": "1.3",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.5. Shocked Molecular Clouds from the BH Outflow",
+     "quote": "The line ratio at this interface is R 31 = 2 . 7 ± 0 . 2, while the region defined as the BH vicinity excluding this interface has R 31 = 1 . 3 ± 0 . 1."
+    }
+   ]
+  },
+  {
+   "quantity": "CO line ratio R_31 at western dark cloud boundary (region 5)",
+   "value": "2.5",
+   "uncertainty": "0.7",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2.5. Shocked Molecular Clouds from the BH Outflow",
+     "quote": "Additionally, we detect a high line ratio (R 31 = 2 . 5 ± 0 . 7) to the west of the BH at the boundary of a dark cloud of gas and dust (region 5 in Figure 7)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO (1-0) integrated intensity W_CO(1-0) between regions 5 and 6",
+   "value": "788.2",
+   "uncertainty": "57.4",
+   "units": "K km s^-1",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "The total intensity of the CO (1–0) line within the span of regions 5 and 6 is measured as W CO(1 − 0) = 788 . 2 ± 57 . 4 K km s − 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas column density N(H2) between regions 5 and 6",
+   "value": "(2.21 +/- 0.16)e22 to (1.58 +/- 0.12)e23",
+   "uncertainty": "stated in range",
+   "units": "cm^-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "resulting in an estimated molecular gas column density of N(H 2 ) = (2 . 21 ± 0 . 16) × 10 22 − (1 . 58 ± 0 . 12) × 10 23 cm − 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical extinction A_V between regions 5 and 6",
+   "value": "21-152",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "This calculation yields a range of A V ∼ 21 − 152 mag."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical extinction A_V in eastern star-forming region",
+   "value": "7-51",
+   "uncertainty": "not stated",
+   "units": "mag",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "On the other hands, the optical extinction is estimated to be A V ∼ 7 − 51 for the eastern star forming region"
+    }
+   ]
+  },
+  {
+   "quantity": "340 GHz continuum flux density of region 6",
+   "value": "610.6",
+   "uncertainty": "30.0",
+   "units": "uJy",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "The measured flux density at 340 GHz is S 340 GHz = 610 . 6 ± 30 . 0 µ Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass in region 6",
+   "value": "2.37e3",
+   "uncertainty": "0.12e3",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "resulting in a calculated dust mass of (2 . 37 ± 0 . 12) × 10 3 M ⊙ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass M_H2 in region 6",
+   "value": "(7.79 +/- 0.15)e4 to (5.65 +/- 0.11)e5",
+   "uncertainty": "stated in range",
+   "units": "M_sun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "The associated molecular mass is M H 2 = (7 . 79 ± 0 . 15) × 10 4 − (5 . 65 ± 0 . 11) × 10 5 M odot depending on the α CO ."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-molecular gas mass ratio in region 6",
+   "value": "1:33 to 1:238",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2.6. The Western Star Forming Region",
+     "quote": "Consequently, the dust to molecular gas mass ratio falls within the range of 1:33–238"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Table 2 is missing from page 5 of the paper text, which omits the exact line-free channels, image sizes, cell sizes, velocity spacings, Briggs robust values, rest frequencies, and several beam sizes and RMS noises.",
+  "Specific antennas flagged during manual flagging.",
+  "Exact coordinates and dimensions of the aperture boxes used for regions 5 and 6 and the eastern interface."
+ ],
+ "missing_for_reproduction": [
+  "Table 2 (missing on page 5), which contains line-free channels, cell sizes, image sizes, velocity channel spacings, and Briggs robust parameters for all continuum and line images.",
+  "List of manually flagged bad antennas for each of the six ALMA projects.",
+  "Exact coordinates and box dimensions for regions 5, 6, and the eastern outflow interface region."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "All ALMA archival project codes, software versions (CASA 6.5.1), astrometric shifts, and analysis equations are clearly stated, and aperture/ellipse geometries for the BH and BH vicinity are well specified. However, Table 2 is missing from page 5 of the text, which removes the exact tclean robust parameters, cell sizes, velocity spacings, and line-free channel ranges needed for an exact reproduction from visibilities.",
+ "rediscovery_reason": "All six ALMA datasets are public in the archive, the main claims rely on quantitative continuum photometry, SED fitting, CO luminosity/mass, and CO (3-2)/(1-0) line ratios in well-defined regions, and the overall workflow is well documented despite the missing Table 2.",
+ "source_card": "cards/2024ApJ...963..103G/sonnet/card.md"
+}

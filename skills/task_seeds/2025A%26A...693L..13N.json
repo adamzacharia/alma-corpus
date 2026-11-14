@@ -1,0 +1,539 @@
+{
+ "bibcode": "2025A&A...693L..13N",
+ "title": "Dense gas scaling relations at kiloparsec scales across nearby galaxies with the ALMA ALMOND and IRAM 30 m EMPIRE surveys",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453208",
+ "arxiv_id": "2412.10506",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How HCN/CO (dense gas fraction proxy) and SFR/HCN (dense gas star formation efficiency proxy) depend on local stellar surface density, molecular gas surface density and dynamical equilibrium pressure across 31 nearby galaxies from ALMOND and EMPIRE",
+ "alma_project_codes": [
+  "2012.1.00650.S",
+  "2013.1.01161.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00230.S",
+  "2017.1.00392.S",
+  "2017.1.00766.S",
+  "2017.1.00815.S",
+  "2017.1.00886.L",
+  "2018.1.01171.S",
+  "2018.1.01651.S",
+  "2018.A.00062.S",
+  "2019.2.00134.S",
+  "2021.1.00740.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMOND: Morita Atacama Compact Array (ACA); EMPIRE: IRAM 30 m",
+  "angular_resolution": "HCN linear resolution median 1.47 kpc, 16-84% range 1.09-1.76 kpc",
+  "sensitivity": "a few mK (ALMOND and EMPIRE comparable)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCN data for ALMOND and EMPIRE galaxies",
+    "evidence": [
+     {
+      "loc": "Data and methods",
+      "quote": "We used the HCN data presented in (cite: Jimenez-Donaire2019) and (cite: Neumann2023a)."
+     }
+    ]
+   },
+   "citation": "Jimenez-Donaire2019 (EMPIRE); Neumann2023a (ALMOND)"
+  },
+  {
+   "what": {
+    "value": "PHANGS-ALMA CO(2-1) maps (ALMOND galaxies); EMPIRE CO(1-0) and PAWS (EMPIRE galaxies)",
+    "evidence": [
+     {
+      "loc": "Table of sample, notes",
+      "quote": "(13) Archival CO observations from PHANGS–ALMA (cite: Leroy2021b) for ALMOND galaxies, and EMPIRE (cite: Jimenez-Donaire2019), PAWS (cite: Schinnerer2013) for EMPIRE galaxies."
+     }
+    ]
+   },
+   "citation": "Leroy2021b; Jimenez-Donaire2019; Schinnerer2013"
+  },
+  {
+   "what": {
+    "value": "FUV and 22 micron SFR maps from the z0MGS atlas",
+    "evidence": [
+     {
+      "loc": "Star formation rate",
+      "quote": "These maps were taken from the z0MGS atlas (cite: Leroy2019)"
+     }
+    ]
+   },
+   "citation": "Leroy2019"
+  },
+  {
+   "what": {
+    "value": "Dust-corrected Spitzer 3.6 micron stellar mass maps",
+    "evidence": [
+     {
+      "loc": "Stellar mass",
+      "quote": "We used the dust-corrected maps from (cite: Querejeta2015)"
+     }
+    ]
+   },
+   "citation": "Querejeta2015"
+  },
+  {
+   "what": {
+    "value": "Galaxy distances and inclinations",
+    "evidence": [
+     {
+      "loc": "Table of sample, notes",
+      "quote": "(4) distance (cite: Anand2021), and (5) inclination angle (cite: Lang2020)."
+     }
+    ]
+   },
+   "citation": "Anand2021; Lang2020"
+  },
+  {
+   "what": {
+    "value": "Gas velocity dispersion sigma_gas,z = 15 km/s",
+    "evidence": [
+     {
+      "loc": "Dynamical equilibrium pressure",
+      "quote": "$\\sigma_{\\rm gas, z}=\\SI{15}{\\km\\per\\s}$ (cite: Sun2018)"
+     }
+    ]
+   },
+   "citation": "Sun2018"
+  },
+  {
+   "what": {
+    "value": "HCN literature compilation of 31 surveys from cloud to high-z scales",
+    "evidence": [
+     {
+      "loc": "Gao–Solomon relation",
+      "quote": "We placed ALMOND and EMPIRE in the context of a literature compilation that comprises 31 HCN surveys spanning from the Milky Way to the high-redshift universe."
+     }
+    ]
+   },
+   "citation": "Appendix 6 references (e.g. Wu2010, Usero2015, Jimenez-Donaire2019, Neumann2023a, Beslic2024)"
+  },
+  {
+   "what": {
+    "value": "Metallicity from global mass-metallicity relation with fixed radial gradient of -0.1",
+    "evidence": [
+     {
+      "loc": "Conversion factors (appendix)",
+      "quote": "These use a global mass-metallicity relation (cite: Sanchez2019) and employ a radial metallicity relation with a fixed gradient of −0.1"
+     }
+    ]
+   },
+   "citation": "Sanchez2019; Sanchez2014; Sun2020a"
+  },
+  {
+   "what": {
+    "value": "Constant IR-to-SFR conversion factor C_IR = 1.48e-10 Msun/yr/Lsun",
+    "evidence": [
+     {
+      "loc": "Footnote 6",
+      "quote": "$\\ensuremath{C_\\mathrm{IR}}=\\SI{1.48e-10}{M\\ensuremath{_\\odot}\\per\\year\\perL\\ensuremath{_\\odot}}$ (cite: Murphy2011)"
+     }
+    ]
+   },
+   "citation": "Murphy2011"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "homogenise HCN and CO maps and integrate intensities",
+   "method": "Convolve supporting data to the HCN resolution, sample on a half-beam hexagonal grid and integrate HCN and CO over a velocity window set by the CO emission",
+   "software": [
+    "PyStructure"
+   ],
+   "key_parameters": [
+    "Velocity mask from 4-sigma CO peaks expanded into adjacent 2-sigma channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "derive SFR, stellar mass surface density and dynamical equilibrium pressure",
+   "method": "SFR from FUV+22 micron z0MGS maps; Sigma_star from Spitzer 3.6 micron; P_DE from the weight of the ISM in the galaxy potential",
+   "software": [],
+   "key_parameters": [
+    "sigma_gas,z = 15 km/s"
+   ],
+   "assumptions": [
+    "Stellar mass-to-light ratio 0.6 Msun/Lsun at 3.6 micron",
+    "Typical disc flattening ratio to get stellar scale heights from scale lengths (value not stated)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "convert CO and HCN to molecular and dense gas quantities",
+   "method": "CO(2-1) scaled to CO(1-0) with a Sigma_SFR-dependent R21; Sigma_mol from variable alpha_CO; fixed alpha_CO and alpha_HCN for reference conversions",
+   "software": [],
+   "key_parameters": [
+    "R21 = 0.65 (Sigma_SFR / 1.8e-2 Msun/yr/kpc^2)^0.125, clipped to 0.35-1.0",
+    "alpha_CO^var = alpha_CO^fix (Z/Zsun)^-1.5 (max(Sigma_star,100)/100)^-0.25"
+   ],
+   "assumptions": [
+    "alpha_CO^fix = 4.35 Msun pc^-2 (K km/s)^-1",
+    "alpha_HCN = 15 Msun pc^-2 (K km/s)^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "stack HCN and CO spectra in environment bins",
+   "method": "Per-galaxy spectral stacking of HCN and CO in logarithmic bins of Sigma_star, Sigma_mol and P_DE, with 3-sigma upper limits where HCN is undetected",
+   "software": [
+    "PyStacker"
+   ],
+   "key_parameters": [
+    "Ten bins per galaxy from fixed minima Sigma_star = 30, Sigma_mol = 5 Msun/pc^2, P_DE = 1e4 K/cm^3 up to each galaxy maximum",
+    "Centre-versus-disc stacks exclude the centres and use nine bins"
+   ],
+   "assumptions": [
+    "CO reference velocity (higher S/N than HCN) sets the stacking velocity for each position"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "fit scaling relations of HCN/CO and SFR/HCN against environment",
+   "method": "Linear fit in log-log space, log10 Y = b + m (log10 X - x0), to all stacks of all galaxies including limits",
+   "software": [
+    "LinMix"
+   ],
+   "key_parameters": [
+    "x0 = {2.4, 1.4, 5.0} for Sigma_star, Sigma_mol, P_DE"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "compile Gao-Solomon relation across literature",
+   "method": "Place ALMOND and EMPIRE in a 31-survey literature compilation; compute median SFR/HCN, SFE_dense, depletion time and epsilon_ff for subsamples",
+   "software": [],
+   "key_parameters": [
+    "Dense gas freefall time 0.8 Myr for n_H2 about 3e3 cm^-3"
+   ],
+   "assumptions": [
+    "Constant C_IR = 1.48e-10 Msun/yr/Lsun to convert SFR to L_IR"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "compare galaxy centres with discs and AGN with non-AGN centres",
+   "method": "Centre defined as the central beam-size aperture; medians and percentiles of HCN/CO and SFR/HCN in centre, disc, AGN and non-AGN centres",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "check consistency of ALMOND and EMPIRE HCN",
+   "method": "Compare spectra, voxel-by-voxel brightness temperatures and integrated intensities of the three overlapping galaxies after homogenising resolution",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median SFR/HCN, full literature sample",
+   "value": "1.3e-07",
+   "uncertainty": "1-sigma scatter 0.52 dex",
+   "units": "Msun/yr per (K km/s pc^2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gao–Solomon relation",
+     "quote": "we find a median SFR/HCN of $\\SI{1.3e-07}{M\\ensuremath{_\\odot}\\per\\year}\\,(\\SI{}{\\kkms\\square\\parsec})^{-1}$ with a 1-sigma scatter of $\\SI{0.52}{\\dex}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFE_dense and dense gas depletion time, full literature sample",
+   "value": "SFE_dense 8.9e-09 per yr; tau_dep 112 Myr",
+   "uncertainty": "not stated",
+   "units": "yr^-1; Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gao–Solomon relation",
+     "quote": "we find a median $\\ensuremath{\\text{SFE}_{\\text{dense}}}\\approx \\SI{8.9e-09}{\\per\\year}$, or equivalently a median dense gas depletion time of $\\ensuremath{\\tau_\\mathrm{dep}^\\mathrm{dense}}\\approx \\SI{112}{\\mega\\year}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median star formation efficiency per freefall time of dense gas",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gao–Solomon relation",
+     "quote": "we obtain a median $\\ensuremath{\\epsilon_\\mathrm{ff}^\\mathrm{dense}}\\approx\\SI{0.7}{\\percent}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Scatter of SFR/HCN: entire galaxies versus clouds",
+   "value": "0.27 (entire galaxies); 0.70 (clouds)",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gao–Solomon relation",
+     "quote": "(entire galaxy; $\\sigma=\\SI{0.27}{\\dex}$) to small scales (clouds; $\\sigma=\\SI{0.70}{\\dex}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "log10 SFR/HCN median, ALMOND & EMPIRE (16th, 50th, 84th percentiles)",
+   "value": "(-7.14, -6.84, -6.44)",
+   "uncertainty": "not stated",
+   "units": "log10 [Msun/yr / (K km/s pc^2)]",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$(-7.14,-6.84,-6.44)$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/CO vs Sigma_star fit (x0 = 2.4): slope m, intercept b, scatter, Pearson r",
+   "value": "m = 0.55; b = -1.71; sigma = 0.21; r = 0.77",
+   "uncertainty": "m: 0.03; b: 0.01",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.55$ $(0.03)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-1.71$ $(0.01)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$0.77$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/CO vs Sigma_mol fit (x0 = 1.4): slope m, intercept b, scatter, Pearson r",
+   "value": "m = 0.65; b = -1.79; sigma = 0.23; r = 0.70",
+   "uncertainty": "m: 0.05; b: 0.02",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.65$ $(0.05)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-1.79$ $(0.02)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$0.70$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/CO vs P_DE/kB fit (x0 = 5.0): slope m, intercept b, scatter, Pearson r",
+   "value": "m = 0.48; b = -1.81; sigma = 0.22; r = 0.76",
+   "uncertainty": "m: 0.04; b: 0.02",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.48$ $(0.04)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-1.81$ $(0.02)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$0.76$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR/HCN vs Sigma_star fit (x0 = 2.4): slope m, intercept b, scatter, Pearson r",
+   "value": "m = -0.61; b = -6.84; sigma = 0.28; r = -0.70",
+   "uncertainty": "m: 0.04; b: 0.02",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$-0.61$ $(0.04)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-6.84$ $(0.02)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-0.70$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR/HCN vs Sigma_mol fit (x0 = 1.4): slope m, intercept b, scatter, Pearson r",
+   "value": "m = -0.67; b = -6.77; sigma = 0.34; r = -0.56",
+   "uncertainty": "m: 0.08; b: 0.02",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$-0.67$ $(0.08)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-6.77$ $(0.02)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-0.56$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR/HCN vs P_DE/kB fit (x0 = 5.0): slope m, intercept b, scatter, Pearson r",
+   "value": "m = -0.55; b = -6.73; sigma = 0.34; r = -0.66",
+   "uncertainty": "m: 0.05; b: 0.03",
+   "units": "dimensionless (log-log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$-0.55$ $(0.05)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-6.73$ $(0.03)$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$-0.66$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median HCN/CO in galaxy centres versus discs",
+   "value": "centres 0.045; discs 0.013",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dense gas ratios in galaxy centres",
+     "quote": "typically have high HCN/CO (median of $0.045$"
+    },
+    {
+     "loc": "Dense gas ratios in galaxy centres",
+     "quote": "compared to the discs (median of $0.013$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median SFR/HCN in galaxy centres versus discs",
+   "value": "centres 7.8e-8; discs 1.3e-7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr/pc^2 per (K km/s)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dense gas ratios in galaxy centres",
+     "quote": "low SFR/HCN (median of $\\SI{7.8e-8}{M\\ensuremath{_\\odot}\\per\\year\\per\\square\\parsec}"
+    },
+    {
+     "loc": "Dense gas ratios in galaxy centres",
+     "quote": "compared to the disc median of $\\SI{1.3e-7}{M\\ensuremath{_\\odot}\\per\\year\\per\\square\\parsec}"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/CO enhancement in AGN centres relative to non-AGN centres",
+   "value": "about 50 percent higher, not significant at 1-sigma",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Dense gas ratios in galaxy centres",
+     "quote": "We find that active centres have 50 % higher HCN/CO and lower SFRs"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0) integrated intensity NGC 628, ALMOND versus EMPIRE",
+   "value": "41.6 (ALMOND); 39.5 (EMPIRE)",
+   "uncertainty": "7.3; 10.7",
+   "units": "K km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "EMPIRE versus ALMOND",
+     "quote": "$41.6 \\pm \\SI{7.3}{\\kkms}$, $39.5 \\pm \\SI{10.7}{\\kkms}$ in NGC 628"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0) integrated intensity NGC 2903, ALMOND versus EMPIRE",
+   "value": "427.8 (ALMOND); 495.7 (EMPIRE)",
+   "uncertainty": "47.5; 143.5",
+   "units": "K km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "EMPIRE versus ALMOND",
+     "quote": "$427.8 \\pm \\SI{47.5}{\\kkms}$, $495.7 \\pm \\SI{143.5}{\\kkms}$ in NGC 2903"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN(1-0) integrated intensity NGC 4321, ALMOND versus EMPIRE",
+   "value": "475.0 (ALMOND); 570.2 (EMPIRE)",
+   "uncertainty": "34.6; 84.8",
+   "units": "K km/s",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "EMPIRE versus ALMOND",
+     "quote": "$475.0 \\pm \\SI{34.6}{\\kkms}$, $570.2 \\pm \\SI{84.8}{\\kkms}$ in NGC 4321"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version, calibration and imaging recipe, weighting and deconvolution settings for the ALMOND ACA HCN cubes (all deferred to Neumann2023a)",
+  "HCN and CO noise estimation and uncertainty propagation for integrated intensities and stacks",
+  "Versions and parameter settings of PyStructure and PyStacker (hexagonal grid construction, beam matching, stacking velocity window)",
+  "LinMix settings (number of chains, iterations, priors, how upper limits are encoded)",
+  "Value of the stellar disc flattening ratio and stellar scale lengths used for rho_star",
+  "Effective radii and mass-metallicity zero point used for the metallicity estimate",
+  "How AGN and bar flags are applied beyond the quoted catalogues, and how the centre aperture is defined in pixels",
+  "Per-study conversions used to build the 31-survey HCN literature compilation (only partly given in Appendix 6)"
+ ],
+ "missing_for_reproduction": [
+  "ALMOND HCN cube calibration and imaging are in Neumann2023a, not in this paper",
+  "LinMix and stacking run-time settings not given in the text",
+  "Disc flattening ratio and some metallicity inputs not given",
+  "Appendix 6 gives only a source list for the HCN literature compilation"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Derived data products, scripts and numeric fit tables are public, but raw calibration and imaging are inherited from earlier papers and tool settings are incomplete",
+ "rediscovery_reason": "Public HCN and CO products and released scripts allow redoing the stacking and linear fits; main results are numeric (Table 1 slopes and intercepts)",
+ "source_card": "cards/2025A%26A...693L..13N/sonnet/card.md"
+}

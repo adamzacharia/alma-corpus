@@ -1,0 +1,563 @@
+{
+ "bibcode": "2024ApJ...961...71F",
+ "title": "The Extended [C II] under Construction? Observation of the Brightest High-z Lensed Star-forming Galaxy at z = 6.2",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad0f95",
+ "arxiv_id": "2303.07513",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Can [C ii] 158 um be detected to confirm the spectroscopic redshift of the strongly lensed z~6.2 galaxy MACS0308-zD1, and what do its [C ii] line components, dust continuum non-detection and ISM properties show?",
+ "alma_project_codes": [
+  "2021.1.00143.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "Cube beams 1.31x0.73, 0.94x0.68, 1.11x0.78, 1.03x0.73 arcsec for tunings 1-4",
+  "sensitivity": "Cube rms 0.27 mJy/beam per 30 km/s bin (varies by up to a factor 2.4 between tunings); continuum rms 8.9 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source-plane analysis: photometric redshift 6.21, bright clump radius r = 27 pc, Sigma_SFR ~ 900 Msun/yr/kpc^2, magnification mu ~ 20, SFR_UV = 3+/-1 (zD1.1) and 7+/-2 (diffuse)",
+    "evidence": [
+     {
+      "loc": "Target: MACS0308-zD1",
+      "quote": "The bright clump was found to have a radius of $r=27\\,\\rm{pc}$ in its source plane"
+     },
+     {
+      "loc": "Dust-obscured Star-Formation Activity",
+      "quote": "applying a magnification factor of $\\mu\\sim20$ (cite: Welch2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Welch2023)"
+  },
+  {
+   "what": {
+    "value": "Identification of the target as the brightest image (MACS0308-c4.3) of a triply imaged z>6 galaxy",
+    "evidence": [
+     {
+      "loc": "Target: MACS0308-zD1",
+      "quote": "which originally given the ID of MACS0308-c4.3 in (cite: Acebron2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Acebron2018)"
+  },
+  {
+   "what": {
+    "value": "Photometric redshift estimate z_ph ~ 6.2-6.3 and apparent brightness m_AB = 23.0 mag",
+    "evidence": [
+     {
+      "loc": "Target: MACS0308-zD1",
+      "quote": "an estimated photometric redshift of $z_{\\rm ph}\\sim6.2 - 6.3$ (cite: Salmon2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Salmon2020)"
+  },
+  {
+   "what": {
+    "value": "Local-galaxy SFR-L[CII] relation and high-z no-evolution relation used for comparison",
+    "evidence": [
+     {
+      "loc": "SFR-[C ii] correlation",
+      "quote": "consistent with the SFR-$L_{\\rm [CII]}$ relation derived in the local galaxies (cite: delooze2014)"
+     }
+    ]
+   },
+   "citation": "(cite: delooze2014); (cite: Schaerer2020)"
+  },
+  {
+   "what": {
+    "value": "[C II]-deficit relations used for comparison",
+    "evidence": [
+     {
+      "loc": "SFR-[C ii] correlation",
+      "quote": "but deviates from the “\\[C ii\\]-deficit” relation suggested in some of the previous studies (cite: Harikane2020; Liang2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Harikane2020; Liang2023)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image a line-search cube from all four tunings",
+   "method": "tclean cube with natural weighting, 30 km/s channels, 0.1 arcsec pixels, 30x30 arcsec image; deconvolution to 3x rms with niter 500",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting; 30 km/s binning; 0.1 arcsec pixel; 30x30 arcsec image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Detect [C ii] and measure the spectroscopic redshift",
+   "method": "Search for the line using the rest-frame UV position as a spatial prior",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Line frequency 263.6995 +/- 0.004 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image the dust continuum and derive an IR luminosity limit",
+   "method": "Multi-frequency-synthesis continuum image excluding the spw with [C ii]; 3 sigma upper limit from pixel rms; modified blackbody to L_IR; SFR_IR and obscured fraction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Dust temperature 45 K (also 60 K and 80 K tested), beta = 1.8, mu = 20"
+   ],
+   "assumptions": [
+    "Dust emission co-spatial with the galaxy; dust temperature is the major uncertainty"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract [C ii] moment-0 map, spectrum and total flux",
+   "method": "Iterative moment-0 and masked spectrum extraction until the channel range converges; total flux from 2D Gaussian fit with imfit",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Mask: pixels >2 sigma in the moment-0 map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Decompose the [C ii] line into narrow and broad components",
+   "method": "Least-squares two-component Gaussian fit to the integrated 1-D spectrum; component moment-0 maps from separate frequency ranges",
+   "software": [],
+   "key_parameters": [
+    "Narrow map 263.62-263.72 GHz; broad map 263.73-263.92 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive L[CII], molecular gas mass and gas surface density",
+   "method": "L[CII] to M_H2 with the Zanella et al. method; Sigma_H2 assuming the clump radius r = 27 pc",
+   "software": [],
+   "key_parameters": [
+    "Lensing magnification mu = 22 applied to the Table values (except flux densities)"
+   ],
+   "assumptions": [
+    "Narrow [C ii] associated with the UV-bright clump of radius 27 pc"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare with SFR-L[CII] relations and test virial and outflow interpretations",
+   "method": "Place zD1.1 on the SFR-L[CII] plane using SFR_UV = 3+/-1 and negligible SFR_IR; virial velocity dispersion sqrt(GM/3r) for the narrow component",
+   "software": [],
+   "key_parameters": [
+    "M_H2 = 5.1e8 Msun, r = 27 pc"
+   ],
+   "assumptions": [
+    "Virial equilibrium for the narrow component"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spectroscopic redshift",
+   "value": "6.2078",
+   "uncertainty": "0.0002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "MACS0308-zD1 at $z=6.2078\\pm0.0002$"
+    }
+   ]
+  },
+  {
+   "quantity": "[C ii] observed line frequency",
+   "value": "263.6995",
+   "uncertainty": "0.004",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Imaging data cube",
+     "quote": "at a frequency of $263.6995\\pm0.004\\,{\\rm GHz}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cube rms per 30 km/s bin",
+   "value": "0.27",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Imaging data cube",
+     "quote": "The average pixel-by-pixel RMS was $0.27\\,\\rm{mJy/beam}$ for $30\\,\\rm{km/s}$ bin."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum rms",
+   "value": "8.9",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Imaging continuum map",
+     "quote": "a final pixel-by-pixel RMS of $8.9\\,\\rm{\\mu Jy/beam}$"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma rest-frame 158 um continuum upper limit",
+   "value": "<27",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Continuum",
+     "quote": "as $<27\\,\\rm{\\mu Jy}$, adopting $3\\times$ the pixel-by-pixel RMS."
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma L_IR upper limit, image plane (T = 45 K, beta = 1.8)",
+   "value": "<1.9e10",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Continuum",
+     "quote": "of the observed infrared (IR) luminosity of $<1.9\\times10^{10}\\,\\rm{L_{\\odot}}$ in the image plane"
+    }
+   ]
+  },
+  {
+   "quantity": "3 sigma L_IR upper limit, source plane (mu = 20)",
+   "value": "<9.5e8",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust Continuum",
+     "quote": "This means $L_{\\rm IR}<9.5\\times10^{8}\\,\\rm{L_{\\odot}}$ in the source plane assuming $\\mu=20$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-obscured SFR upper limit (T = 45 K)",
+   "value": "<0.1",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust-obscured Star-Formation Activity",
+     "quote": "an extremely low dust-obscured star-formation rate of ${\\rm SFR_{IR}}<0.1\\,\\rm{M_{\\odot}\\,yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-obscured fraction of star formation (T = 45 K)",
+   "value": "<3%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "and a low dust-obscured fraction of $<3\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "De-magnified L_IR upper limit for T = 60 K",
+   "value": "5.5e9",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust-obscured Star-Formation Activity",
+     "quote": "the de-magnified $3\\,\\sigma$ upper limit IR luminosity is $5.5\\times10^{9}\\,\\rm{L_{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "De-magnified L_IR upper limit for T = 80 K",
+   "value": "8.0e9",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Dust-obscured Star-Formation Activity",
+     "quote": "we find $8.0\\times10^{9}\\,\\rm{L_{\\odot}}$ and $0.8\\,\\rm{M_{\\odot}\\,yr^{-1}}$ for de-magnified"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow [C ii] FWHM",
+   "value": "110",
+   "uncertainty": "19",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Narrow [C ii] Emission Component",
+     "quote": "which has a velocity FWHM of $110\\pm19\\,\\rm{km/s}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad [C ii] FWHM",
+   "value": "233",
+   "uncertainty": "19",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Broader [C ii] Emission Component",
+     "quote": "has a velocity FWHM of $233\\pm19\\,\\rm{km/s}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Velocity offset of broad relative to narrow [C ii]",
+   "value": "-80",
+   "uncertainty": "20",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Broader [C ii] Emission Component",
+     "quote": "$\\Delta v = -80\\pm20\\,\\rm{km/s}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow [C ii] moment-0 significance",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Narrow [C ii] Emission Component",
+     "quote": "The moment-0 image of the narrow \\[C ii\\] component shows a $6\\,\\sigma$ detection."
+    }
+   ]
+  },
+  {
+   "quantity": "Broad [C ii] moment-0 significance",
+   "value": "~4.2",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Broader [C ii] Emission Component",
+     "quote": "shows a $\\sim$4.2 $\\sigma$ detection"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad component redshift",
+   "value": "6.2058",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$6.2058\\pm0.0005$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total f_[CII] x mu",
+   "value": "0.62",
+   "uncertainty": "0.18",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.62\\pm0.18$"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow f_[CII] x mu",
+   "value": "0.37",
+   "uncertainty": "0.10",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.37\\pm0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad f_[CII] x mu",
+   "value": "0.30",
+   "uncertainty": "0.09",
+   "units": "Jy km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.30\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total L[CII] (corrected for mu = 22)",
+   "value": "2.96e7",
+   "uncertainty": "0.79e7",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$2.96\\pm0.79\\times 10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow L[CII]",
+   "value": "1.67e7",
+   "uncertainty": "0.45e7",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.67\\pm0.45\\times10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad L[CII]",
+   "value": "1.35e7",
+   "uncertainty": "0.45e7",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.35\\pm0.45\\times10^{7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total M_H2",
+   "value": "9.05e8",
+   "uncertainty": "0.81e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$9.05\\pm0.81\\times 10^{8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow M_H2",
+   "value": "5.05e8",
+   "uncertainty": "0.45e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$5.05\\pm0.45\\times 10^{8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad M_H2",
+   "value": "4.05e8",
+   "uncertainty": "0.40e8",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$4.05\\pm0.40\\times 10^{8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "log Sigma_H2 of the narrow component for r = 27 pc",
+   "value": "5.34",
+   "uncertainty": "0.09",
+   "units": "log(Msun/pc^2)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Molecular Gas Mass",
+     "quote": "${\\rm log}\\,[\\Sigma_{\\rm H2}\\,{\\rm/(M_{\\odot}\\,pc^{2})}]=5.34\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial line-of-sight velocity dispersion of the narrow component",
+   "value": "167",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "[C ii] outflow or another structure?",
+     "quote": "$\\sqrt{{\\rm G} M/3r} = 167\\,\\rm{km/s}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration pipeline version and any manual flagging done by EA-ARC; which calibrators were used and flux-scale uncertainty",
+  "Whether continuum was subtracted from the cube and how; deconvolver, masking and the exact tclean parameter set (the continuum task name is blank in the text)",
+  "How the four tunings with different beams were combined into one cube (common beam, restoring beam, spw selection)",
+  "Rest frequency used for [C ii] and the L[CII] formula",
+  "Aperture or spectral extraction region used for the integrated spectrum and for imfit; how flux uncertainties were derived",
+  "Initial guesses and error treatment of the two-component Gaussian least-squares fit",
+  "Source of the magnification mu = 22 used in the Table (text also uses mu ~ 20) and how it was applied per component",
+  "[C ii]-to-H2 conversion coefficients taken from Zanella et al. and the Sigma_H2 area definition",
+  "SFR_UV values and the L_IR integration range / CMB correction used for the dust limit",
+  "Observing dates and member OUS identifiers"
+ ],
+ "missing_for_reproduction": [
+  "Calibration pipeline version, flagging and calibrator details",
+  "Full tclean parameter set (deconvolver, mask, restoring beam handling when combining tunings)",
+  "Extraction regions and fit initial conditions for the spectrum and two-Gaussian fit",
+  "Origin of mu = 22 and the L[CII] and M_H2 conversion formulae",
+  "Observing dates and OUS identifiers"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code, array configuration, imaging cell/size/weighting/channel width and measured numbers are given, but calibration details, regions, fit setup and the magnification and gas-mass conversion are missing",
+ "rediscovery_reason": "A single named project 2021.1.00143.S (cycle 8, so likely public by now), a short imaging recipe and numeric results (z, FWHMs, fluxes, continuum limit) allow redoing the main measurements",
+ "source_card": "cards/2024ApJ...961...71F/sonnet/card.md"
+}

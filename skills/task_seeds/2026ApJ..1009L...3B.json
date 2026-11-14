@@ -1,0 +1,595 @@
+{
+ "bibcode": "2026ApJ..1009L...3B",
+ "title": "Searching for Embedded Protoplanets with the Keck/NIRC2 Vortex Coronagraph: Confirmation of a Core-accretion Planet in the Narrow Gap of the Elias 2-24 Disk",
+ "year": 2026,
+ "doi": "10.3847/2041-8213/ae9bb6",
+ "arxiv_id": "2609.23122",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Assess whether embedded protoplanets in seven young stars hosting protoplanetary disks with substructures (gaps, cavities) can be directly detected with the Keck/NIRC2 vortex coronagraph.",
+ "alma_project_codes": [
+  "2013.1.00498.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar distances from Gaia DR3 and Hipparcos, stellar ages, spectral types, and WISE W1/W2 photometry used to estimate L' and Ms magnitudes",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": ": Keck/NIRC2 Vortex observations. $L'$ magnitudes are estimated via logarithmic interpolation between WISE W1 and W2 bands. The $M_s$ magnitude of PDS 70 is approximated using the WISE W2 band."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Table notes: (1) (cite: GaiaDR3); (2) (cite: Garufi2020); (3) (cite: Alcala2017); (4) (cite: Cutri2012); (5) (cite: Oberg2021); (6) (cite: Torres2006); (7) (cite: vanLeeuwen2007); (8) (cite: Torres2008); (9) (cite: Zurlo2020); (10) (cite: Cieza2019); (11) (cite: Esplin2018); (12) (cite: Andrews2018); (13) (cite: Ricci2010); (14) (cite: Orellana2012); (15) (cite: Muller2018); (16) (cite: Pecaut2016)."
+     }
+    ]
+   },
+   "citation": "(cite: GaiaDR3; Garufi2020; Alcala2017; Cutri2012; Oberg2021; Torres2006; vanLeeuwen2007; Torres2008; Zurlo2020; Cieza2019; Esplin2018; Andrews2018; Ricci2010; Orellana2012; Muller2018; Pecaut2016)"
+  },
+  {
+   "what": {
+    "value": "Previous astrometry and L'-band contrast of Elias 2-24 b from VLT/NACO and re-analysis",
+    "evidence": [
+     {
+      "loc": "Elias 2-24",
+      "quote": "(cite: Jorquera2021) reported a separation of $0.411\\pm0.008^{\\prime\\prime}$ and a position angle of $302.1\\pm1.1^\\circ$ (possibly the uncertainties presented for the astrometric position included only the errors on the fit and are likely underestimated), while (cite: Pinte2023b) derived a separation of $0.37\\pm0.04^{\\prime\\prime}$ and a position angle of $298.4\\pm4.6^\\circ$."
+     },
+     {
+      "loc": "Characterization of Elias 2-24 b",
+      "quote": "(cite: Jorquera2021) measured an $L'$-band contrast of $8.81\\pm0.12$ mag, while (cite: Pinte2023b) obtained a value of $8.78^{+0.98}_{-0.48}$ mag."
+     }
+    ]
+   },
+   "citation": "(cite: Jorquera2021; Pinte2023b)"
+  },
+  {
+   "what": {
+    "value": "Disk inclination (23.6 deg), position angle (43.4 deg), stellar mass (0.78 +0.35/-0.13 M_sun), and interstellar extinction (A_V = 8.7 mag, A_L' = 0.5 mag) for Elias 2-24",
+    "evidence": [
+     {
+      "loc": "Elias 2-24",
+      "quote": "Adopting a disk inclination of $23.6^\\circ$ and a position angle of $43.4^\\circ$ (cite: Cieza2017), together with a stellar mass of $0.78^{+0.35}_{-0.13}$ M~$\\odot$~ (cite: Andrews2018), we infer a predicted motion of $6.2^{+2.2}_{-1.1}$$^\\circ$."
+     },
+     {
+      "loc": "Characterization of Elias 2-24 b",
+      "quote": "As reported in (cite: Cieza2021), Elias 2-24 has an extinction of $A_V=8.7$ mag, corresponding to $0.5$ mag in the $L'$ band."
+     }
+    ]
+   },
+   "citation": "(cite: Cieza2017; Andrews2018; Cieza2021)"
+  },
+  {
+   "what": {
+    "value": "Hydrodynamical model mass predictions (0.41 and 1.72 M_Jup) for the planet carving the gap in Elias 2-24",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Adopting the mass predictions from the hydrodynamical models of (cite: Zhang2018), we then estimate accretion rates for two masses: 0.41 and 1.72 M~Jup~."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Pre-process raw Keck/NIRC2 vortex coronagraph frames and subtract stellar PSF via PCA-ADI and RDI",
+   "method": "Apply dark-field and flat-field corrections, bad pixel interpolation in a 5x5 box, geometrical distortion correction, PCA-based sky subtraction, image registration via speckle cross-correlation, and stellar PSF removal using annular and full-frame PCA-ADI as well as PCA-RDI and median-filtered de-rotation.",
+   "software": [
+    "VIP"
+   ],
+   "key_parameters": [
+    "Bad pixel replacement box: 5x5 neighboring box",
+    "Annular PCA parameters: 0.2-FWHM parallactic angle threshold, 1-FWHM inner mask, 15-pixel (0.15 arcsec) wide annuli",
+    "Pixel scale: 9.971 mas pixel^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive astrometry and photometry of detected point sources using NEGFC",
+   "method": "Negative Fake Companion (NEGFC) technique using unocculted stellar PSF models to measure separation, position angle, and flux ratio relative to the host star.",
+   "software": [
+    "VIP"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Compute 5-sigma contrast curves and planetary mass detection limits",
+   "method": "Compute 5-sigma contrast curves across multiple numbers of PCs taking the deepest contrast at each separation, accounting for small-sample statistics with a t-distribution, and convert contrasts to planet mass limits using evolutionary models.",
+   "software": [
+    "AppleFy",
+    "VIP"
+   ],
+   "key_parameters": [
+    "Detection threshold: 5 sigma"
+   ],
+   "assumptions": [
+    "Gaussian noise with t-distribution for small-sample statistics; system ages and distances from Table 1 (1 Myr upper limit for Elias 2-24); ATMO-NEQ-STRONG 2023 models."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test common proper motion, background false alarm probability, and orbital motion of Elias 2-24 b",
+   "method": "Compare 2018 and 2020 Keck astrometry against static background hypothesis, compute proper-motion False Alarm Probability (FAP) using a synthetic star sample from the Besancon Galaxy Model, and estimate expected Keplerian orbital displacement by 2026.",
+   "software": [
+    "Besancon Galaxy Model"
+   ],
+   "key_parameters": [
+    "Besancon query: distances 0-50 kpc, radius 5 arcmin around Elias 2-24, apparent L' = 15-17 mag, FoV = 2.6 arcsec"
+   ],
+   "assumptions": [
+    "Circular orbit coplanar with the disk (inclination = 23.6 deg, PA = 43.4 deg) and stellar mass = 0.78 +0.35/-0.13 M_sun; interstellar extinction A_V = 8.7 mag."
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Characterize the evolutionary mass, effective temperature, and mass accretion rate of Elias 2-24 b",
+   "method": "Convert L' contrast to absolute L' magnitude correcting for distance and extinction, compare with 1 Myr isochrones of ATMO-NEQ-STRONG 2023, AMES-COND, AMES-DUSTY, and BEX (coldest/warm, hot, hottest start) evolutionary models, and interpolate circumplanetary disk accretion models of Zhu (2015).",
+   "software": [
+    "completo21"
+   ],
+   "key_parameters": [
+    "Inner circumplanetary disk radius: 2 R_Jup; planet masses tested for accretion rate: 0.41, 1.72, and 3.0 M_Jup"
+   ],
+   "assumptions": [
+    "Age = 1 Myr, distance = 139.3 pc, A_V = 8.7 mag (A_L' = 0.5 mag, equal for star and planet), evolutionary models neglect accretion luminosity."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Separation of Elias 2-24 b (2018.468 epoch)",
+   "value": "394",
+   "uncertainty": "+/-31",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We confirm the planetary candidate around Elias 2-24, previously proposed in the literature, at a separation of $394\\pm31$ mas ($54.9\\pm4.3$ au) and a position angle of $298.8\\pm3.2^\\circ$, within the narrow gap of the protoplanetary disk."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $2018.468$ | $394\\pm31$ | $298.8\\pm3.2$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical separation of Elias 2-24 b (2018.468 epoch)",
+   "value": "54.9",
+   "uncertainty": "+/-4.3",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We confirm the planetary candidate around Elias 2-24, previously proposed in the literature, at a separation of $394\\pm31$ mas ($54.9\\pm4.3$ au) and a position angle of $298.8\\pm3.2^\\circ$, within the narrow gap of the protoplanetary disk."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of Elias 2-24 b (2018.468 epoch)",
+   "value": "298.8",
+   "uncertainty": "+/-3.2",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We confirm the planetary candidate around Elias 2-24, previously proposed in the literature, at a separation of $394\\pm31$ mas ($54.9\\pm4.3$ au) and a position angle of $298.8\\pm3.2^\\circ$, within the narrow gap of the protoplanetary disk."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $2018.468$ | $394\\pm31$ | $298.8\\pm3.2$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation of Elias 2-24 b (2020.415 epoch)",
+   "value": "351",
+   "uncertainty": "+/-30",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "We re-detected the source at a separation of $351\\pm30$ mas and a position angle of $294.3\\pm4.8^\\circ$."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $2020.415$ | $351\\pm30$ | $294.3\\pm4.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of Elias 2-24 b (2020.415 epoch)",
+   "value": "294.3",
+   "uncertainty": "+/-4.8",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "We re-detected the source at a separation of $351\\pm30$ mas and a position angle of $294.3\\pm4.8^\\circ$."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| $2020.415$ | $351\\pm30$ | $294.3\\pm4.8$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak detection significance of Elias 2-24 b in 2018 annular PCA (27 PCs)",
+   "value": "3.85",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "In the annular PCA case, the significance exceeds $3\\sigma$ for more than 6 subtracted PCs and reaches a maximum of $3.85\\sigma$ (SNR of 4.49) for 27 PCs, while the full-frame PCA reduction yield a peak significance of $3.69\\sigma$ (SNR of 4.28) for 6 PCs."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak detection significance of Elias 2-24 b in 2020 PCA (5 PCs)",
+   "value": "2.82",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "The companion was recovered with a lower significance, peaking at $2.82\\sigma$ (SNR of 3.11) for 5 PCs, in the 2020 epoch."
+    }
+   ]
+  },
+  {
+   "quantity": "Rejection significance of static background hypothesis for Elias 2-24 b",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "The comparison between the expected position of a background source, shown as a blue square, and the position of the candidate, shown as a purple circle, shows that the candidate is incompatible with the static background hypothesis at the 3.2$\\sigma$ confidence level."
+    }
+   ]
+  },
+  {
+   "quantity": "False alarm probability (FAP) of background star within 2.6 arcsec FoV",
+   "value": "1.50e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "Considering a field of view of $2.6^{\\prime\\prime}$, we derive a FAP of $1.50\\cdot10^{-4}$, corresponding to a $3.6\\sigma$ significance."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted orbital angular motion of Elias 2-24 b between 2018 epoch and 1 June 2026",
+   "value": "6.2",
+   "uncertainty": "+2.2/-1.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Elias 2-24",
+     "quote": "Adopting a disk inclination of $23.6^\\circ$ and a position angle of $43.4^\\circ$ (cite: Cieza2017), together with a stellar mass of $0.78^{+0.35}_{-0.13}$ M~$\\odot$~ (cite: Andrews2018), we infer a predicted motion of $6.2^{+2.2}_{-1.1}$$^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "L'-band contrast of Elias 2-24 b",
+   "value": "9.86",
+   "uncertainty": "+0.53/-0.87",
+   "units": "mag",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Characterization of Elias 2-24 b",
+     "quote": "We derive an $L'$ contrast for Elias 2-24 b of $9.86^{+0.53}_{-0.87}$ mag by estimating the flux ratio between the companion and the host star as described in Section [2](#sec:obs_red)."
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute L' magnitude of Elias 2-24 b",
+   "value": "10.08",
+   "uncertainty": "+0.53/-0.87",
+   "units": "mag",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Characterization of Elias 2-24 b",
+     "quote": "Assuming that the star and the planet experience the same extinction, we derive an absolute $L'$ magnitude of $10.08^{+0.53}_{-0.87}$ mag for Elias 2-24 b."
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (ATMO-NEQ-STRONG 2023)",
+   "value": "2.54",
+   "uncertainty": "+1.66/-0.66",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Characterization of Elias 2-24 b",
+     "quote": "First, we adopted the ATMO-NEQ-STRONG 2023 models (cite: Chabrier2023), which assume a non-equilibrium atmosphere with strong vertical mixing and a high initial luminosity (\"hot-start\" scenario), deriving a mass of $2.54^{+1.66}_{-0.66}$ M~Jup~ and an effective temperature of $1315^{+357}_{-165}$ K."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| ATMO-NEQ-STRONG 2023 | $2.54^{+1.66}_{-0.66}$ | $1315^{+357}_{-165}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Effective temperature of Elias 2-24 b (ATMO-NEQ-STRONG 2023)",
+   "value": "1315",
+   "uncertainty": "+357/-165",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| ATMO-NEQ-STRONG 2023 | $2.54^{+1.66}_{-0.66}$ | $1315^{+357}_{-165}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (AMES-COND)",
+   "value": "3.84",
+   "uncertainty": "+0.99/-2.03",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AMES-COND | $3.84^{+0.99}_{-2.03}$ | $1517^{+249}_{-325}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass upper limit of Elias 2-24 b (AMES-DUSTY)",
+   "value": "<=3.97",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AMES-DUSTY | $\\lesssim3.97$ | $\\lesssim1608$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-COND coldest/warm start)",
+   "value": "13.84",
+   "uncertainty": "+1.91/-1.08",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-COND (coldest/warm start) | $13.84^{+1.91}_{-1.08}$ | $1667^{+339}_{-200}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-COND hot start)",
+   "value": "4.89",
+   "uncertainty": "+3.97/-1.50",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-COND (hot start) | $4.89^{+3.97}_{-1.50}$ | $1505^{+378}_{-186}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-COND hottest start)",
+   "value": "3.70",
+   "uncertainty": "+2.58/-1.07",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-COND (hottest start) | $3.70^{+2.58}_{-1.07}$ | $1474^{+345}_{-184}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-DUSTY coldest/warm start)",
+   "value": "13.13",
+   "uncertainty": "+2.43/-1.35",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-DUSTY (coldest/warm start) | $13.13^{+2.43}_{-1.35}$ | $1536^{+434}_{-244}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-DUSTY hot start)",
+   "value": "3.81",
+   "uncertainty": "+4.44/-1.41",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-DUSTY (hot start) | $3.81^{+4.44}_{-1.41}$ | $1359^{+472}_{-212}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Evolutionary mass of Elias 2-24 b (BEX-DUSTY hottest start)",
+   "value": "2.93",
+   "uncertainty": "+2.91/-1.03",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BEX-DUSTY (hottest start) | $2.93^{+2.91}_{-1.03}$ | $1331^{+436}_{-202}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted upper mass range of Elias 2-24 b from hot-start dusty/non-equilibrium models",
+   "value": "1.9-4.0",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Comparing the derived photometry with 1 Myr isochrones, we infer a mass between 1.9 and 4.0 M~Jup~ for Elias 2-24 b, without considering accretion effects, in agreement with estimates considering the properties of the gap and planet-disk interactions."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "Based on its observed luminosity, we infer an upper mass limit in the range of 1.9-4.0 M~Jup~ (Table [3](#masses)), ruling out the higher-mass solutions."
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass times accretion rate (M_p * M_dot) for Elias 2-24 b",
+   "value": "2.78e-6",
+   "uncertainty": "not stated",
+   "units": "M_Jup^2 yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Comparing our estimate for the absolute magnitude of Elias 2-24 b (in Section [4](#sec:characterization)) with the models of (cite: Zhu2015), and assuming an inner circumplanetary disk radius of 2 R~Jup~, we derive $M_p\\dot{M}=2.78\\cdot10^{-6}$ M~Jup~$^2$ yr$^{-1}$ through logarithmic interpolation."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate of Elias 2-24 b (for M_p = 0.41 M_Jup)",
+   "value": "6.77e-6",
+   "uncertainty": "not stated",
+   "units": "M_Jup yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Adopting the mass predictions from the hydrodynamical models of (cite: Zhang2018), we then estimate accretion rates for two masses: 0.41 and 1.72 M~Jup~. The resulting accretion rates are $6.77\\cdot10^{-6}$ and $1.61\\cdot10^{-6}$ M~Jup~ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate of Elias 2-24 b (for M_p = 1.72 M_Jup)",
+   "value": "1.61e-6",
+   "uncertainty": "not stated",
+   "units": "M_Jup yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "Adopting the mass predictions from the hydrodynamical models of (cite: Zhang2018), we then estimate accretion rates for two masses: 0.41 and 1.72 M~Jup~. The resulting accretion rates are $6.77\\cdot10^{-6}$ and $1.61\\cdot10^{-6}$ M~Jup~ yr$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass accretion rate of Elias 2-24 b (for M_p = 3.0 M_Jup)",
+   "value": "9.26e-7",
+   "uncertainty": "not stated",
+   "units": "M_Jup yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We also use the (cite: Zhu2015) models to estimate the accretion rate for a mass of 3.0 M~Jup~, corresponding to our central evolutionary mass estimate, deriving a value of $\\dot{M}=9.26\\cdot10^{-7}$ M~Jup~ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "5-sigma mass detection limits across the survey (at >= 0.25 arcsec)",
+   "value": "1-11",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "For all the systems in the survey, the $5\\sigma$ detection limits reach sensitivities down to 1-11 M~Jup~ at separations $\\gtrsim$ 0.25$^{\\prime\\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "5-sigma mass detection limits for Elias 2-24 (between ~12 and 370 au)",
+   "value": "1.4-4.9",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Detection limits",
+     "quote": "The deepest contrast is achieved for Elias 2-24, where we reach $5\\sigma$ detection limits of $\\sim1.4$–$4.9$ M~Jup~ between $\\sim12$ and $370$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Separation of background star north of PDS 70",
+   "value": "2.531",
+   "uncertainty": "+/-0.041",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "PDS 70",
+     "quote": "We derive for it a separation of $2.531\\pm0.041^{\\prime\\prime}$ and a position angle of $13.87\\pm0.87^\\circ$."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of background star north of PDS 70",
+   "value": "13.87",
+   "uncertainty": "+/-0.87",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "PDS 70",
+     "quote": "We derive for it a separation of $2.531\\pm0.041^{\\prime\\prime}$ and a position angle of $13.87\\pm0.87^\\circ$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which specific ALMA 1.3 mm continuum image/product from project 2013.1.00498.S (e.g., Cieza et al. 2017 ODISEA image vs archival pipeline product) was used for the overlay in Figure 1",
+  "Exact versions of VIP and AppleFy used in the custom reduction pipeline",
+  "Details of the MCMC priors, number of walkers, and steps in mcmc_negfc_sampling()"
+ ],
+ "missing_for_reproduction": [
+  "Custom VIP-based pipeline scripts and frame-rejection criteria for unocculted PSF frames",
+  "Exact MCMC configuration (priors, steps, walkers) used in VIP mcmc_negfc_sampling()",
+  "Specific FITS file or reduction parameters for the ALMA 2013.1.00498.S 1.3 mm continuum image plotted in Figure 1"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Public Keck/NIRC2 (programs H284 and C249) and ALMA (2013.1.00498.S) archival data are identified, open-source packages (VIP, AppleFy) and key annular PCA parameters are stated, and numeric results/contrast tables are complete; however, custom pipeline scripts, frame selection details, and exact MCMC priors are not released.",
+ "rediscovery_reason": "The primary scientific results (astrometry, contrast, 5-sigma contrast curves, and evolutionary mass estimates of Elias 2-24 b) are numeric and derived from public Keck/NIRC2 archival datasets using standard open-source tools (VIP, AppleFy).",
+ "source_card": "cards/2026ApJ..1009L...3B/sonnet/card.md"
+}

@@ -1,0 +1,239 @@
+{
+ "bibcode": "2019MNRAS.484L..43Z",
+ "title": "First detection of the pre-biotic molecule glycolonitrile (HOCH<SUB>2</SUB>CN) in the interstellar medium",
+ "year": 2019,
+ "doi": "10.1093/mnrasl/slz002",
+ "arxiv_id": "1901.02576",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Is glycolonitrile (HOCH2CN) present in the ISM toward the Solar-type protostar IRAS16293-2422 B, what are its excitation temperatures and abundances, and can gas-grain chemical modelling reproduce them?",
+ "alma_project_codes": [
+  "2011.0.00007.SV",
+  "2012.1.00712.S",
+  "2013.1.00061.S",
+  "2013.1.00352.S",
+  "2015.1.01193.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, and 6",
+  "arrays": "not stated",
+  "angular_resolution": "beam sizes 1.42\" to 1.85\"",
+  "sensitivity": "line rms 2-4 mJy km/s (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N(H2)=2.8e25 cm-2 for warm component",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "An H$_2$ column density of N(H$_2$)=2.8$\\times$10$^{25}$ cm$^{-2}$ was adopted from (cite: martin-domenech_detection_2017)"
+     }
+    ]
+   },
+   "citation": "(cite: martin-domenech_detection_2017)"
+  },
+  {
+   "what": {
+    "value": "N(H2)=1.5e23 cm-2 for cold envelope",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "an H$_2$ column density of N(H$_2$)=1.5$\\times$10$^{23}$ cm$^{-2}$ was adopted using the envelope profile constrained by (cite: crimier2010)"
+     }
+    ]
+   },
+   "citation": "(cite: crimier2010)"
+  },
+  {
+   "what": {
+    "value": "HOCH2CN spectroscopy from CDMS based on laboratory work",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "we have used the spectroscopic parameters from the Cologne Database for Molecular Spectroscopy (CDMS)"
+     }
+    ]
+   },
+   "citation": "(cite: muller_cologne_2001; muller_cologne_2005; endres_cologne_2016); lab work (cite: margules_submillimeter_2017)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image archival data, extract spectra",
+   "method": "Standard calibration scripts and CASA; uv-plane continuum subtraction; spectra extracted in a 1.6\" diameter circle at I16293B",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify HOCH2CN lines and fit LTE synthetic spectra",
+   "method": "MADCUBA-SLIM synthetic LTE spectra with opacity, manual adjustment then MADCUBA-AUTOFIT; two temperature components",
+   "software": [
+    "MADCUBA",
+    "CDMS"
+   ],
+   "key_parameters": [
+    "Free: Ntot, Tex, VLSR, linewidth; cold component linewidth fixed to 1 km/s; warm source size 0.5\", cold >20\""
+   ],
+   "assumptions": [
+    "LTE"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Rotational diagram and abundances",
+   "method": "Two linear least-squares fits to E_up<=100 K and >=100 K lines assuming optically thin emission; divide by adopted N(H2)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "N(H2)=2.8e25 (warm), 1.5e23 cm-2 (cold)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Chemical modelling of abundance",
+   "method": "UCLCHEM three-phase model (diffuse, pre-stellar collapse, warm-up) with updated HOCH2CN network; zeta varied 1-6 times standard",
+   "software": [
+    "UCLCHEM"
+   ],
+   "key_parameters": [
+    "Warm: nH=5e8 cm-3, T up to 160 K; cold: nH=6e6 cm-3, T up to 30 K; G0=1 Habing"
+   ],
+   "assumptions": [
+    "HOCH2CN forms only on grains; ion-neutral rates assumed like CH3NCO"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Tex cold component",
+   "value": "24",
+   "uncertainty": "±8",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "cold component (with $T_{\\rm ex}$=24$\\pm$8$\\,$K; see green lines)"
+    }
+   ]
+  },
+  {
+   "quantity": "Tex warm component",
+   "value": "158",
+   "uncertainty": "±38",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "warm component (with $T_{\\rm ex}$=158$\\pm$38$\\,$K; red lines)"
+    }
+   ]
+  },
+  {
+   "quantity": "Trot cold / warm",
+   "value": "39 / 156",
+   "uncertainty": "±7 / ±27",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "are 39$\\pm$7$\\,$K and 156$\\pm$27$\\,$K"
+    }
+   ]
+  },
+  {
+   "quantity": "Ntot cold",
+   "value": "8.5e13",
+   "uncertainty": "±2.6e13",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$N_{\\rm tot}$=(8.5$\\pm$2.6)$\\times$10$^{13}$$\\,$cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Ntot warm",
+   "value": "1.8e15",
+   "uncertainty": "±0.1e15",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "$N_{\\rm tot}$=(1.8$\\pm$0.1)$\\times$10$^{15}$$\\,$cm$^{-2}$ for the cold and warm components"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance warm",
+   "value": "6.5e-11",
+   "uncertainty": "±0.6e-11",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "yielding an HOCH$_2$CN abundance of (6.5$\\pm$0.6)$\\times$10$^{-11}$ for the warm component"
+    }
+   ]
+  },
+  {
+   "quantity": "Abundance cold (lower limit)",
+   "value": "6e-10",
+   "uncertainty": "±2e-10",
+   "units": "relative to H2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The resulting HOCH$_2$CN abundance for the cold component is therefore (6$\\pm$2)$\\times$10$^{-10}$."
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CH2CN upper limit (3 sigma)",
+   "value": "<=1.7e14",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "3$\\sigma$ upper limit $N_{\\rm tot}$ $\\leq$1.7$\\times$10$^{14}$$\\,$cm$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and imaging parameters (weighting, cell, deconvolver, masks)",
+  "line-free channels used for continuum subtraction",
+  "which dataset covers which lines and the per-dataset beam",
+  "flux calibration uncertainty",
+  "priors/initial values and fixed parameters in MADCUBA fits",
+  "how the cold-component N and abundance were converted (extended source size handling)",
+  "how the warm/cold temperature split was chosen in the rotational diagram (E_up=100 K)",
+  "UCLCHEM version and warm-up timescale/heating prescription"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and imaging settings",
+  "MADCUBA fit setup details",
+  "UCLCHEM version and input files"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and software named, but processing and fit settings are sparse and rely on a prior paper.",
+ "rediscovery_reason": "Data public, numeric results (Tex, N, abundances); recipe moderately complete.",
+ "source_card": "cards/2019MNRAS.484L..43Z/sonnet/card.md"
+}

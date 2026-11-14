@@ -1,0 +1,237 @@
+{
+ "bibcode": "2018ApJ...861...91H",
+ "title": "ALMA Observations of Polarized 872 μm Dust Emission from the Protostellar Systems VLA 1623 and L1527",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac6ec",
+ "arxiv_id": "1805.08792",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What mechanism produces the 872 um polarized dust emission in young protostellar disks (VLA 1623, L1527): magnetically aligned grains, self-scattering, or radiative-flux alignment?",
+ "alma_project_codes": [
+  "2015.1.00084.S"
+ ],
+ "data": {
+  "bands": "Band 7 (872 um), LO 343.5 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "~0.12-0.2 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA 1.3 mm continuum of VLA 1623 used for proper motion",
+    "evidence": [
+     {
+      "loc": "4.2 Structure of the VLA 1623 System",
+      "quote": "By combining the data from ALMA 1.3 mm continuum observations from (cite: mu13) with ours"
+     }
+    ]
+   },
+   "citation": "Murillo et al. 2013 (cite: mu13)"
+  },
+  {
+   "what": {
+    "value": "L1527 disk temperature profile from CO isotopologues",
+    "evidence": [
+     {
+      "loc": "4.1 Polarization of the disk emission",
+      "quote": "the radial temperature profile of the disk of L1527 has been estimated from observations of optically thick $^{13}$CO($J=2-1$) and C$^{18}$O($J=2-1$) emission"
+     }
+    ]
+   },
+   "citation": "van 't Hoff et al. 2018 (cite: van18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image Stokes I,Q,U,V",
+   "method": "clean in four Stokes with multiscale after phase-only self-cal; natural and Briggs weightings",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = -2 for high-resolution VLA 1623 image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make PI, PA and fraction maps",
+   "method": "immath: PI=sqrt(Q^2+U^2), debiased; masked below 5 sigma in PI and 3 sigma in I",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure source sizes and fluxes",
+   "method": "image-plane elliptical Gaussian fits deconvolved from beam, in I and PI; CB disk by subtracting Aa/Ab model from visibilities, tapering and fitting",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Test polarization angle vs disk minor axis",
+   "method": "PI-weighted mean angle within 0.1 arcsec of PI peak; KS and Anderson-Darling tests vs uniform offsets",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate optical depth and disk stability",
+   "method": "Brightness temperature from peak surface brightness compared with kinetic temperature; Toomre Q for the circumbinary disk from optically thin mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa = 10 (nu/1 THz)^beta cm2/g, beta=1, gas-to-dust 100, Td = 30 K, central mass 0.15 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Spectral index of VLA 1623A and B",
+   "value": "2.30",
+   "uncertainty": "0.45",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "is approximately $\\alpha \\sim 2.30 \\pm 0.45$ assuming a 10% absolute calibration uncertainty at each of the two bands"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 1623CBdisk flux density",
+   "value": "~1",
+   "uncertainty": "1096 +/- 46 mJy (Table 2 fit)",
+   "units": "Jy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "We find that the material has a flux density of $\\sim$ 1 Jy and an extent of roughly $2.2\\ensuremath{''} \\times 1.2\\ensuremath{''}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Polarization angle offset probability from uniform",
+   "value": "P <~ 2e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "$P \\lesssim 2 \\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak brightness temperature VLA 1623Aa,Ab,B / L1527",
+   "value": "60-70 / 45",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Polarization of the disk emission",
+     "quote": "$\\sim$ 60-70 K, while that associated with L1527 is $\\sim$ 45 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Aa-Ab separation",
+   "value": "0.21 (~30 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "($\\rho = 0.21\\ensuremath{''} \\sim 30$ au)"
+    }
+   ]
+  },
+  {
+   "quantity": "Toomre Q of circumbinary disk at 85 au",
+   "value": "~1.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Formation of the VLA 1623AabB System",
+     "quote": "the value of the $Q$ parameter is $\\sim$ 1.8 at a distance of 85 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Circumbinary disk mass",
+   "value": "~0.03",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Formation of the VLA 1623AabB System",
+     "quote": "$M_d \\sim 0.03$ M~$\\odot$~"
+    }
+   ]
+  },
+  {
+   "quantity": "Proper motion of VLA 1623W (RA, Dec)",
+   "value": "-14.9, -23.4",
+   "uncertainty": "7, 7",
+   "units": "mas/yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.2 Structure of the VLA 1623 System",
+     "quote": "$\\mu_{\\alpha}\\cos \\delta &=& -14.9 \\pm 7 \\textrm{ mas yr}^{-1}\\\\"
+    }
+   ]
+  },
+  {
+   "quantity": "Polarization angle of L1527 minus minor axis",
+   "value": "6.5",
+   "uncertainty": "0.8",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| L1527 | 98.3 $\\pm$ 0.6 | 91.8 $\\pm$ 0.6 | 6.5 $\\pm$ 0.8 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "multiscale scale values",
+  "clean thresholds and masks",
+  "self-calibration iterations and whether applied before polarization calibration",
+  "cell and image sizes",
+  "how Band 6 and Band 7 data were matched for the spectral index",
+  "proper motion fitting method",
+  "how minor axis PAs were derived for each source",
+  "line-free handling not needed; continuum spw flagging not stated"
+ ],
+ "missing_for_reproduction": [
+  "multiscale scales, cell/image size, clean thresholds",
+  "exact Band 6 data matching for spectral index and proper motion",
+  "Minor axis PA derivation"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a standard CASA recipe, but key clean parameters are missing.",
+ "rediscovery_reason": "Public data, recipe mostly specified, numeric results (fluxes, angles, offsets) available.",
+ "source_card": "cards/2018ApJ...861...91H/sonnet/card.md"
+}

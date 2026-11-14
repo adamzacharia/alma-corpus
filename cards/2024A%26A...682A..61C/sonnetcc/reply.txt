@@ -1,0 +1,334 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "In this study, we combine new ALMA band 3 and archival band 6 observations to characterize the dust content and infall rate of a 4,000 au arc-like structure infalling onto"}
+],
+"fields": ["star_formation", "protoplanetary_disks"],
+"question": {
+"value": "Is the 4,000 au arc around the class I source M512 an infalling streamer, and what are its dust opacity index, grain properties, dust mass and mass-infall rate from dual-band (B3+B6) continuum?",
+"evidence": [
+{"loc": "abstract", "quote": "In this study, we combine new ALMA band 3 and archival band 6 observations to characterize the dust content and infall rate of a 4,000 au arc-like structure infalling onto"},
+{"loc": "abstract", "quote": "We measure for the first time spectral index maps and derive a dust opacity index profile along a streamer."}
+]
+},
+"targets": [
+{
+"name": "M512 ([MGM2012] 512, IRAS 05377-0733)",
+"details": [
+{"loc": "1 Introduction", "quote": "RA $=$ 05h40m13.789s, Dec $=$ -07d32m16.02s"},
+{"loc": "1 Introduction", "quote": "In this work, we assume d = 420 pc."},
+{"loc": "1 Introduction", "quote": "based on the Gaia DR3 parallax p"}
+],
+"coordinates": "RA = 05h40m13.789s, Dec = -07d32m16.02s",
+"redshift_or_distance": "d = 420 pc (Lynds 1641, Orion A)",
+"distance_source": "Gaia DR3 parallax (Gaia2022); consistent with VLBI estimate for Orion Nebula Cluster (Menten2007)"
+}
+],
+"alma_project_codes": [
+{"code": "2019.1.01813.S", "evidence": [{"loc": "2 Observations", "quote": "M512 was observed with ALMA in B6 on 2019/11/27 (2019.1.01813.S, PI: van Terwisga, S.)"}]},
+{"code": "2019.1.00951.S", "evidence": [{"loc": "2 Observations", "quote": "and on 2019/12/12 (2019.1.00951.S, PI: Grant, S.)"}]},
+{"code": "2022.1.00126.S", "evidence": [{"loc": "2 Observations", "quote": "(program 2022.1.00126.S, PI: Wendeborn, J.)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (new) and Band 6 (archival)", "evidence": [{"loc": "1 Introduction", "quote": "Here, we present new ALMA Band 3 (B3) observations M512 and combine them with archival ALMA Band 6 (B6) data to constrain the dust properties and mass of the extended structure."}]},
+{"field": "frequencies_and_spectral_setup", "value": "Representative frequencies used: B6 230 GHz, B3 100 GHz", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "where the ALMA B6 and B3 representative frequecies are $\\nu_2 = 230$ GHz, $\\nu_1 = 100$ GHz"}]},
+{"field": "angular_resolution", "value": "B6 programs: ~1.14 arcsec", "evidence": [{"loc": "2 Observations", "quote": "Both programs achieved a resolution of approximately 1.14"}]},
+{"field": "max_recoverable_scale", "value": "B6: roughly 11.7 arcsec (reported)", "evidence": [{"loc": "2 Observations", "quote": "a reported maximum recoverable scale of roughly 11.7"}]},
+{"field": "sensitivity", "value": "Final peak S/N 355 (B3 image) and 218 (B6 image)", "evidence": [{"loc": "2 Observations", "quote": "The final peak signal-to-noise ratio of the B3 image is 355, and it is 218 for the B6 one."}]},
+{"field": "observing_dates", "value": "B6: 2019/11/27 and 2019/12/12; B3: 2023/01/16", "evidence": [{"loc": "2 Observations", "quote": "M512 was observed with ALMA in B6 on 2019/11/27"}, {"loc": "2 Observations", "quote": "taken on 2023/01/16 (program 2022.1.00126.S, PI: Wendeborn, J.)"}]},
+{"field": "pi_or_archival_as_stated", "value": "B3 new (PI Wendeborn); B6 archival (PIs van Terwisga, Grant)", "evidence": [{"loc": "2 Observations", "quote": "(2019.1.01813.S, PI: van Terwisga, S.) and on 2019/12/12 (2019.1.00951.S, PI: Grant, S.)"}, {"loc": "1 Introduction", "quote": "combine them with archival ALMA Band 6 (B6) data"}]}
+],
+"lines_targeted": [
+{"species": "C18O", "transition": "J = 2-1", "rest_frequency": "not stated", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "In this section, we analyse the C$^{18}$O J=2-1 transition already presented in (cite: grant2021)."}]},
+{"species": "DCO+", "transition": "not stated", "rest_frequency": "216.11 GHz", "evidence": [{"loc": "2 Observations", "quote": "the same arc-like structure is clearly detected in DCO+ (216.11 GHz) and N$_2$D+ (231.32 GHz)"}]},
+{"species": "N2D+", "transition": "not stated", "rest_frequency": "231.32 GHz", "evidence": [{"loc": "2 Observations", "quote": "the same arc-like structure is clearly detected in DCO+ (216.11 GHz) and N$_2$D+ (231.32 GHz)"}]}
+],
+"other_facilities": [
+{"name": "Gaia DR3", "provided": {"value": "Parallax giving distance of ~420 pc to M512", "evidence": [{"loc": "1 Introduction", "quote": "based on the Gaia DR3 parallax p"}]}},
+{"name": "WISE", "provided": {"value": "Multi-epoch photometry classifying M512 as an outbursting source (from Park2021)", "evidence": [{"loc": "abstract", "quote": "M512 has been classified as an outbursting source with multi-epoch WISE photometry"}]}},
+{"name": "SofI (NIR spectroscopy)", "provided": {"value": "Near-infrared spectra behind the stellar parameters of M512 (Caratti2012)", "evidence": [{"loc": "Table 1 caption", "quote": "Stellar parameters of M512 as reported by (cite: Caratti2012), based on its spectral energy distribution and SofI near-infrared spectra."}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Stellar parameters of M512 (SpT, Teff, R*, M* = 0.15 Msun, L* = 0.9 Lsun), used as inputs for TIPSY and temperature profile", "evidence": [{"loc": "Table 1 caption", "quote": "Stellar parameters of M512 as reported by (cite: Caratti2012), based on its spectral energy distribution and SofI near-infrared spectra."}]}, "citation": "(cite: Caratti2012)"},
+{"what": {"value": "C18O J=2-1 cube of program 2019.1.00951.S, previously presented", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "In this section, we analyse the C$^{18}$O J=2-1 transition already presented in (cite: grant2021)."}]}, "citation": "(cite: grant2021)"},
+{"what": {"value": "Distance from Gaia DR3 parallax", "evidence": [{"loc": "1 Introduction", "quote": "based on the Gaia DR3 parallax p"}]}, "citation": "(cite: Gaia2022)"},
+{"what": {"value": "Dust absorption opacity kappa_1.3mm = 0.4 g/cm2 for ISM-like grains (DSHARP)", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "Assuming DSHARP dust properties (cite: Birnstiel2018)"}, {"loc": "5.2 Mass constraints and infall rate", "quote": "is $\\kappa_{1.3mm} = 0.4$ g/cm$^{-2}$."}]}, "citation": "(cite: Birnstiel2018)"},
+{"what": {"value": "ALMA systematic flux calibration uncertainty of 5% (1 sigma) in B3 and B6", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "systematic calibration uncertainty on B3 and B6 fluxes of 1$\\sigma$ = 5%"}]}, "citation": "(cite: Remijan2019)"},
+{"what": {"value": "Radial dust temperature profile for spherical dusty envelopes, T(r) = 38 K (L/Lsun)^0.2 (r/100 au)^-0.4", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "we can use to a first approximation the radial temperature profile that (cite: Motte2001) derived for spherical dusty envelopes"}]}, "citation": "(cite: Motte2001)"},
+{"what": {"value": "Outburst classification of M512 from multi-epoch WISE 3.4 and 4.6 micron photometry", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "However, M512 has been classified as a bursting source based on multi-epoch WISE"}]}, "citation": "(cite: Park2021)"}
+],
+"simulations_or_models_as_data": [
+{"value": "TIPSY analytical streamline (ballistic infall) models fitted to the C18O moment-one map and position-velocity diagram", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "We overplot a TIPSY fit model to the moment-one map in Fig.[2](#fig:moment1) to show how the arc-like feature around M512 is consistent with the infall of material."}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Initial calibration by ALMA staff with the Cycle 9 ALMA pipeline (B3); B6 calibrated by ALMA staff; further flagging and phase self-calibration by the authors", "evidence": [{"loc": "2 Observations", "quote": "The B3 data were initially calibrated by ALMA staff using the Cycle 9 ALMA interferometric pipeline (cite: Hunter2023) within Common Astronomical Software Applications (CASA; version 6.4.1-12)."}, {"loc": "2 Observations", "quote": "The B6 data were instead calibrated by the ALMA staff using CASA version 5.6.1-8 for both programs."}]},
+{"field": "casa_version", "value": "Authors' further reduction: CASA 6.2.1.7; ALMA staff: 6.4.1-12 (B3), 5.6.1-8 (B6)", "evidence": [{"loc": "2 Observations", "quote": "We carried out further data reduction and calibration steps in both bands using CASA version 6.2.1.7."}, {"loc": "2 Observations", "quote": "The B6 data were instead calibrated by the ALMA staff using CASA version 5.6.1-8 for both programs."}]},
+{"field": "archive_products_used_as_is", "value": "No: ALMA-staff calibrated data were further flagged, phase-centre shifted and self-calibrated", "evidence": [{"loc": "2 Observations", "quote": "We carried out further data reduction and calibration steps in both bands using CASA version 6.2.1.7."}]},
+{"field": "flux_calibrator", "value": "J0423-0120 (bandpass and flux calibrator, B3 program); phase calibrator J0542-0913", "evidence": [{"loc": "2 Observations", "quote": "The bandpass and flux calibrator is J0423-0120, the phase calibrator is J0542-0913"}]},
+{"field": "flux_scale_uncertainty", "value": "1 sigma = 5% systematic on B3 and B6 fluxes; amplitude offsets between execution blocks none above 3%", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "systematic calibration uncertainty on B3 and B6 fluxes of 1$\\sigma$ = 5%"}, {"loc": "2 Observations", "quote": "we checked for potential offsets among the visibility amplitudes of different execution blocks and found none above 3%"}]},
+{"field": "self_calibration", "value": "Three rounds of phase-only self-cal per execution block: round 1 solint inf (combine scans, gaintype G); rounds 2 and 3 combine spws, solints 60 s and 10 s, gaintype T; ~15% peak S/N improvement", "evidence": [{"loc": "2 Observations", "quote": "In the second and third rounds, we combined the spectral windows of each block, shortened the solution intervals to 60 and 10 seconds, respectively, and set gaintype $=$ \"T\""}, {"loc": "2 Observations", "quote": "The selfcalibration yielded peak S/N improvements of about 15% as the phase of the visibilities were already well constrained."}]}
+],
+"imaging": [
+{"field": "task", "value": "tclean with pbcor = True", "evidence": [{"loc": "2 Observations", "quote": "Since the emission is extended, we ran the *tclean* routine setting *pbcor = True*, in order to correct for the primary beam attenuation."}]},
+{"field": "deconvolver", "value": "hogbom with Briggs weighting", "evidence": [{"loc": "2 Observations", "quote": "We deconvolved the images using the \"hogbom\" algorithm (cite: hogbom74) with the \"briggs\" weighting scheme"}]},
+{"field": "weighting_robust", "value": "robust = 1 (several tried; robust = 0.5 used by grant2021)", "evidence": [{"loc": "2 Observations", "quote": "We have finally carried out the analysis on images with robust $=$ 1"}]},
+{"field": "uv_taper", "value": "uvtaper applied to give similar beams in both bands (1.5 x 1.2 arcsec, PA = 72 deg); taper values not stated", "evidence": [{"loc": "2 Observations", "quote": "we used a *uvtaper* to weight the visibilities in order to obtain similar synthesized beams for the two bands (1.5$''$ x 1.2$''$,"}]},
+{"field": "cell_size", "value": "0.2 arcsec (84 au; one seventh of the synthesized beam)", "evidence": [{"loc": "2 Observations", "quote": "a pixel size of 0.2$''$ (84 au at the distance of M512, one seventh of the synthesized beam)"}]},
+{"field": "image_size", "value": "300 pixels", "evidence": [{"loc": "2 Observations", "quote": "and an image size of 300 pixels"}]},
+{"field": "masking", "value": "Manual mask of inner disc and streamer; CLEAN down to 1.5 times the image rms; C18O cube masked manually channel by channel", "evidence": [{"loc": "2 Observations", "quote": "we manually masked the emission, comprising of both the bright inner disc and the extended streamer, and CLEANed down to 1.5 times the image rms"}, {"loc": "3 Streamer's kinematics", "quote": "During the cleaning, we masked the emission manually, channel-by-channel, in order to capture its complex morphology."}]},
+{"field": "line_free_channels", "value": "Spectral lines masked out by flagging of the continuum data; channel ranges not stated", "evidence": [{"loc": "2 Observations", "quote": "additional flagging was applied when necessary, i.e. to mask out all spectral lines"}]},
+{"field": "primary_beam_correction", "value": "pbcor = True in tclean", "evidence": [{"loc": "2 Observations", "quote": "Since the emission is extended, we ran the *tclean* routine setting *pbcor = True*, in order to correct for the primary beam attenuation."}]},
+{"field": "smoothing", "value": "Images smoothed to common 1.6 arcsec resolution", "evidence": [{"loc": "2 Observations", "quote": "Finally, we smoothed the images to the same resolution of 1.6$''$"}]}
+],
+"inherited": [
+{"what": {"value": "Details of the B6 observations are in the earlier papers", "evidence": [{"loc": "2 Observations", "quote": "We refer the reader to (cite: grant2021) and (cite: vanterwisga2022) for further details"}]}, "from_reference": "(cite: grant2021); (cite: vanterwisga2022)"},
+{"what": {"value": "Smoothing scale of 1.6 arcsec set from the 3 sigma emission width recovered earlier at robust = 0.5", "evidence": [{"loc": "2 Observations", "quote": "roughly equal to the width of the extended emission at 3$\\sigma$ level recovered by (cite: grant2021) with robust = 0.5 (see their Fig. 13)"}]}, "from_reference": "(cite: grant2021), Fig. 13"},
+{"what": {"value": "C18O imaging uses the same scheme as the continuum", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "We imaged the spectral cube containing the line's spectral window with the same scheme of the continuum dataset."}]}, "from_reference": "same scheme as the continuum dataset of this paper (Sect. 2)"},
+{"what": {"value": "TIPSY streamline code used for the kinematic analysis", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "(TIPSY, Gupta et al., subm.)"}]}, "from_reference": "Gupta et al., subm."},
+{"what": {"value": "Radial temperature profile for dusty envelopes", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "we can use to a first approximation the radial temperature profile that (cite: Motte2001) derived for spherical dusty envelopes"}]}, "from_reference": "(cite: Motte2001)"},
+{"what": {"value": "Optically thin dust mass formula", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "the dust mass of the observed streamer can be derived as (cite: Hildebrand1983)"}]}, "from_reference": "(cite: Hildebrand1983)"},
+{"what": {"value": "Inner-region dust mass from usual protoplanetary disk assumptions (20 K, kappa_1.3mm = 2.25 g/cm2)", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "considering usual assumptions for protoplanetary disks to derive the mass of the inner region (e.g. (cite: Andrews2013), (cite: Pascucci2016), (cite: Ansdell2016))"}]}, "from_reference": "(cite: Andrews2013); (cite: Pascucci2016); (cite: Ansdell2016)"}
+],
+"unstated_but_needed": [
+"Spectral-window and channel selection used for the B3 and B6 continuum images (line-free channels and effective continuum frequencies/bandwidths).",
+"Per-band uvtaper values and the exact tclean parameters (niter, threshold in Jy, gridder, specmode, pblimit) used to reach the common 1.5 x 1.2 arcsec beam.",
+"The manual CLEAN masks and the pbcor/pblimit cut applied before computing alpha and beta pixel by pixel.",
+"Parameters of the manually tuned logarithmic spiral and the aperture centres, plus how apertures were placed and counted.",
+"Self-calibration reference antenna, minimum S/N, and per-execution-block solution tables.",
+"TIPSY code and its configuration (inclination, position angle, initial velocity and position); the code is cited only as submitted work, so the TIPSY fit parameters are not reproducible.",
+"C18O cube channel width and velocity range, and the rms used for the kinematic analysis.",
+"Which dust masses use which temperature (per aperture vs. fixed) and how the 245 +/- 25 Earth-mass uncertainty maps to the quoted 10% flux calibration error.",
+"Flux density of the streamer per band (total and per bin) that enters the mass; only the compact Gaussian fluxes are tabulated."
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Further calibration and self-calibration of the visibilities",
+"method": {"value": "Flag lines in each execution block, channel-average spws, locate the emission peak with tclean + imfit, shift the phase centre with fixvis, check amplitude offsets between blocks, then three rounds of phase-only self-calibration with gaincal/applycal", "evidence": [{"loc": "2 Observations", "quote": "Next, we used the *fixvis* function to shift the phase center to the position of the peak of M512 at the epoch of every observation."}, {"loc": "2 Observations", "quote": "We computed the phase corrections on the continuum spectral windows of each execution block using *gaincal* and applied them with *applycal*."}]},
+"software": ["CASA 6.2.1.7", "tclean", "imfit", "fixvis", "gaincal", "applycal"],
+"key_parameters": [
+{"value": "Round 1: solint = inf, scans combined within each execution block, gaintype G", "evidence": [{"loc": "2 Observations", "quote": "In the first round, we set the solution interval of *gaincal* to *inf*, combined the scans within each execution block and set gaintype $=$ \"G\""}]},
+{"value": "Rounds 2 and 3: spws combined, solint 60 s and 10 s, gaintype T", "evidence": [{"loc": "2 Observations", "quote": "In the second and third rounds, we combined the spectral windows of each block, shortened the solution intervals to 60 and 10 seconds, respectively, and set gaintype $=$ \"T\""}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "No amplitude offsets above 3% between execution blocks; ~15% peak S/N improvement; no further gain from shorter solution intervals", "evidence": [{"loc": "2 Observations", "quote": "We did not find any appreciable improvement in the noise and signal-to-noise properties for phase-only selfcalibration steps with even smaller time intervals."}]}
+},
+{
+"order": 2,
+"goal": "Image B3 and B6 continuum at matched resolution",
+"method": {"value": "tclean with Hogbom deconvolution, Briggs robust = 1, pbcor, manual masks, uvtaper to match beams, then smoothing to a common beam", "evidence": [{"loc": "2 Observations", "quote": "Since the emission is extended, we ran the *tclean* routine setting *pbcor = True*, in order to correct for the primary beam attenuation."}]},
+"software": ["CASA tclean"],
+"key_parameters": [
+{"value": "robust = 1, pixel 0.2 arcsec, 300 pixels, CLEAN to 1.5 x rms", "evidence": [{"loc": "2 Observations", "quote": "We have finally carried out the analysis on images with robust $=$ 1"}, {"loc": "2 Observations", "quote": "and an image size of 300 pixels"}]},
+{"value": "uvtaper to a common ~1.5 x 1.2 arcsec beam, then smoothing to 1.6 arcsec", "evidence": [{"loc": "2 Observations", "quote": "Finally, we smoothed the images to the same resolution of 1.6$''$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "A number of robust choices were tried to balance resolution and sensitivity", "evidence": [{"loc": "2 Observations", "quote": "we tried a number of \"robust\" parameter choices to find the optimal balance between resolution and sensitivity"}]}
+},
+{
+"order": 3,
+"goal": "Test infall kinematics of the arc with C18O",
+"method": {"value": "Make a C18O moment-one map and PV diagram; fit analytical infall trajectories with TIPSY over a range of systemic velocities", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "We analysed the spectral cube with the *Trajectory of Infalling Particles in Streamers around Young stars* (TIPSY, Gupta et al., subm.)."}, {"loc": "3 Streamer's kinematics", "quote": "obtained using pvextractor (cite: Ginsburg2016)"}]},
+"software": ["TIPSY", "pvextractor", "CASA tclean"],
+"key_parameters": [
+{"value": "Central mass 0.15 Msun; v_sys explored 2.9 to 3.9 km/s", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "we explored a range of systemic velocities consistent with the observed C$^{18}$O spectral line, between 2.9 and 3.9 km/s"}, {"loc": "3 Streamer's kinematics", "quote": "For the former, we set to 0.15 M$_{\\odot}$, as reported in Table [1](#tab:m512)."}]},
+{"value": "PV path width equal to the beam, 1.6 arcsec", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "The width of the selected path is equivalent to the beam, 1.6$''$."}]}
+],
+"assumptions": [
+{"value": "Parcel of gas feels only the gravity of the central source; inner envelope and streamer mass not included", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "TIPSY solves analytical kinematics equations for an infalling parcel of gas that feels the gravity of a central source from (cite: Mendoza2009)"}]}
+],
+"fitting": {"value": "Analytical streamline model overplotted on the moment-one map and PVD; fit method not stated", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "We overplot a TIPSY fit model to the moment-one map in Fig.[2](#fig:moment1) to show how the arc-like feature around M512 is consistent with the infall of material."}]},
+"validation": {"value": "TIPSY velocities compared with observed PVD", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "The TIPSY model is consistent with the radial velocities of the observed emission."}]}
+},
+{
+"order": 4,
+"goal": "Make spectral-index maps and remove the compact inner emission",
+"method": {"value": "Compute alpha per pixel from the smoothed B3 and B6 maps, fit and subtract a 2D Gaussian to the inner region, recompute alpha for the streamer; cross-check in the uv plane with a point-source subtraction", "evidence": [{"loc": "4.1 Spectral index maps", "quote": "Using the ALMA B3 and B6 maps, we calculate the spectral index $\\alpha$ at each pixel in our smoothed maps."}, {"loc": "4.1 Spectral index maps", "quote": "We fit a 2D Gaussian to the inner region in the image plane."}]},
+"software": ["CASA uvmodelfit"],
+"key_parameters": [
+{"value": "Inner Gaussian extends 1.4 arcsec (2 sigma, 574 au)", "evidence": [{"loc": "4.1 Spectral index maps", "quote": "The compact emission extends for 1.4$''$ (2$\\sigma$, 574 au)"}]},
+{"value": "uv-plane check: uvmodelfit point source, 16.1 mJy in B6 and 2.6 mJy in B3", "evidence": [{"loc": "8 Compact emission modelling", "quote": "a total integrated flux density of 16.1 mJy in B6 and 2.6 mJy in B3"}]}
+],
+"assumptions": [
+{"value": "Optically thin dust and Rayleigh-Jeans: beta = alpha - 2", "evidence": [{"loc": "4 Spectral index", "quote": "in the optically thin regime and if the Rayleigh-Jeans (RJ) approximation holds, $\\beta = \\alpha-2$"}]}
+],
+"fitting": {"value": "2D Gaussian fit in the image plane; point-source fit to visibilities with uvmodelfit", "evidence": [{"loc": "8 Compact emission modelling", "quote": "We have used the *uvmodelfit* CASA routine to fit a point source component to the visibilities"}]},
+"validation": {"value": "Image-plane and uv-plane analyses give consistent alpha_S and beta", "evidence": [{"loc": "8 Compact emission modelling", "quote": "both azimuthally averaged spectral indices are consistent with what found in the image plane"}]}
+},
+{
+"order": 5,
+"goal": "Derive dust opacity spectral index profile along the streamer",
+"method": {"value": "Place circular apertures along a manually tuned logarithmic spiral, measure B3 and B6 flux per bin, correct for non-Rayleigh-Jeans Planck ratio with an assumed T(r), and compute beta and alpha with statistical errors", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "we use a logarithmic spiral with manually-tuned parameters to adapt it to the shape of the extended emission"}, {"loc": "4.2 Dust opacity index profile", "quote": "each aperture contains roughly 160 pixels"}]},
+"software": [],
+"key_parameters": [
+{"value": "Representative frequencies 230 GHz (B6) and 100 GHz (B3)", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "where the ALMA B6 and B3 representative frequecies are $\\nu_2 = 230$ GHz, $\\nu_1 = 100$ GHz"}]},
+{"value": "T(r) = 38 K (L/Lsun)^0.2 (r/100 au)^-0.4, giving 21 to 8 K over 600 to 4,000 au", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "This equation yields temperatures in a range of 21 to 8 K across the scales of the streamer, that is 600 to 4,000 au."}]}
+],
+"assumptions": [
+{"value": "Dust heated mainly by irradiation from the central source", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "If we assume that the main heating mechanism for the dust is the irradiation from the central source"}]},
+{"value": "Streamer lies in the plane of the sky for projected distances", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "We note that these distances from the central source assume the streamer lays in the plane of the sky."}]},
+{"value": "Exact temperature assumed, so beta error equals alpha statistical error; systematic calibration 5% on top", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "We consider the same error for $\\beta$ since we assume an exact value for the temperature in Eq."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Fixed temperatures of 21 K or 8 K change beta by less than 10%", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "the $\\beta$ measured with both fixed temperatures only changes by $<$10% with respect to the one obtained using the temperature profile"}]}
+},
+{
+"order": 6,
+"goal": "Estimate dust masses of the streamer and the inner region",
+"method": {"value": "Optically thin Hildebrand mass M = d^2 F / (kappa B(T)) summed in bins of pixels above 3 sigma assigned to the nearest aperture on the spiral, with T from the temperature profile", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "For each selected aperture on the spiral, we assign each pixel above the 3$\\sigma$ threshold to the closest aperture center, measure the total flux in the bin so defined"}]},
+"software": [],
+"key_parameters": [
+{"value": "d = 420 pc", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "We consider a distance of 420 pc"}]},
+{"value": "Streamer: DSHARP kappa_1.3mm = 0.4 g/cm2; inner region: T = 20 K, kappa_1.3mm = 2.25 g/cm2", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "is $\\kappa_{1.3mm} = 0.4$ g/cm$^{-2}$."}, {"loc": "5.2 Mass constraints and infall rate", "quote": "a temperature of 20 K and an absorption opacity $\\kappa_{1.3mm} =$ 2.25 g/cm$^{-2}$"}]}
+],
+"assumptions": [
+{"value": "DSHARP opacity for ISM-like spectral index with n(a) proportional to a^-3.5", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "a typical power-law $n(a) \\propto a^{-3.5}$"}]},
+{"value": "Quoted mass uncertainties reflect only a 10% flux calibration error; inner-region mass may be off by up to ~5 because it is optically thick", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "The reported uncertainties on the derived masses only reflect the dominant flux calibration error of 10%."}, {"loc": "5.2 Mass constraints and infall rate", "quote": "mass estimations for the inner region can be wrong by a factor up to $\\sim$5"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Alternative DIANA or solar-system opacities would lower the masses by up to a factor 3 to 10, but the streamer-to-disk mass ratio is unchanged", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "We point out that consistent choices of opacities imply the same ratio between the streamer and the disk's mass."}]}
+},
+{
+"order": 7,
+"goal": "Derive the mass infall rate",
+"method": {"value": "Free-fall time from 4000 au onto the 0.15 Msun star (~50 kyr) divided into the gas mass from the dust mass and dust-to-gas ratio", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "a particle with null initial velocity would fall from 4000 au onto the 0.15 $M_{\\odot}$ protostar in roughly 50 kyr"}]},
+"software": [],
+"key_parameters": [
+{"value": "Dust-to-gas ratio 0.01; free-fall time ~50 kyr", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "Thus, assuming the whole streamer will infall onto the inner system, and a typical dust-to-gas ratio of 0.01, the total mass infall rate"}]}
+],
+"assumptions": [
+{"value": "Whole streamer falls onto the inner system; rate is an upper estimate", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "the infall rate may be lower if the streamer will not interact in its entirety with the inner protoplanetary disk"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Free-fall estimate consistent with TIPSY infall time", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "This estimate is consistent with the TIPSY outputs ran in Sect."}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.2.1.7 (authors); 6.4.1-12 and 5.6.1-8 (ALMA staff calibration)", "used_for": {"value": "Further data reduction, calibration, imaging", "evidence": [{"loc": "2 Observations", "quote": "We carried out further data reduction and calibration steps in both bands using CASA version 6.2.1.7."}]}},
+{"name": "ALMA interferometric pipeline (Cycle 9)", "version": "Cycle 9", "used_for": {"value": "Initial B3 calibration by ALMA staff", "evidence": [{"loc": "2 Observations", "quote": "The B3 data were initially calibrated by ALMA staff using the Cycle 9 ALMA interferometric pipeline (cite: Hunter2023)"}]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Imaging with Hogbom deconvolution, Briggs weighting, pbcor", "evidence": [{"loc": "2 Observations", "quote": "Since the emission is extended, we ran the *tclean* routine setting *pbcor = True*, in order to correct for the primary beam attenuation."}]}},
+{"name": "imfit", "version": "not stated", "used_for": {"value": "Gaussian fit to locate the emission peak", "evidence": [{"loc": "2 Observations", "quote": "First, we imaged the channel-averaged visibilities with the *tclean* CASA task and fitted a Gaussian with *imfit* to identify the emission peak."}]}},
+{"name": "fixvis", "version": "not stated", "used_for": {"value": "Shift phase centre to the peak of M512 at each epoch", "evidence": [{"loc": "2 Observations", "quote": "Next, we used the *fixvis* function to shift the phase center to the position of the peak of M512 at the epoch of every observation."}]}},
+{"name": "gaincal / applycal", "version": "not stated", "used_for": {"value": "Phase-only self-calibration", "evidence": [{"loc": "2 Observations", "quote": "We computed the phase corrections on the continuum spectral windows of each execution block using *gaincal* and applied them with *applycal*."}]}},
+{"name": "uvmodelfit", "version": "not stated", "used_for": {"value": "Point-source fit to visibilities for the uv-plane check", "evidence": [{"loc": "8 Compact emission modelling", "quote": "We have used the *uvmodelfit* CASA routine to fit a point source component to the visibilities"}]}},
+{"name": "TIPSY", "version": "not stated", "used_for": {"value": "Analytical infall trajectory models for C18O kinematics", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "We analysed the spectral cube with the *Trajectory of Infalling Particles in Streamers around Young stars* (TIPSY, Gupta et al., subm.)."}]}},
+{"name": "pvextractor", "version": "not stated", "used_for": {"value": "Position-velocity diagram along the infall trajectory", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "obtained using pvextractor (cite: Ginsburg2016)"}]}}
+],
+"results_numeric": [
+{"quantity": "Mean dust opacity index beta along streamer", "value": "1.62", "uncertainty": "0.04", "units": "dimensionless", "from_step": 5, "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "We find a mean $\\beta = 1.62 \\pm 0.04$ along the whole structure."}]},
+{"quantity": "Spectral index of the streamer alpha_S", "value": "~3.2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.1 Spectral index maps", "quote": "We observe a spectral index of approximately $\\alpha_{S}\\sim3.2$ along the entire streamer"}]},
+{"quantity": "Spectral index of the inner ~600 au region", "value": "~2", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.1 Spectral index maps", "quote": "the spectral index is approximately $\\alpha\\sim2$"}]},
+{"quantity": "Optical depth of the streamer in B6", "value": "< 0.05", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "4.1 Spectral index maps", "quote": "we derive $\\tau = -\\ln(1 - I_{\\nu}/B_{\\nu}(T)) < 0.05$ in B6 along the full arc"}]},
+{"quantity": "Streamer dust mass", "value": "245", "uncertainty": "25", "units": "Earth masses", "from_step": 6, "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "M$_{dust}^{streamer} =$ 245 $\\pm$ 25 M$_{\\oplus}$"}]},
+{"quantity": "Inner-region dust mass", "value": "58", "uncertainty": "6", "units": "Earth masses", "from_step": 6, "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "we obtain M$_{dust}^{inner} =$ 58 $\\pm$ 6 M$_{\\oplus}$"}]},
+{"quantity": "Total mass infall rate", "value": "1.5e-6", "uncertainty": "not stated", "units": "Msun/yr", "from_step": 7, "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "is $\\dot M$ = 1.5 $\\cdot$ 10$^{-6}$ M$_{\\odot}$/yr."}]},
+{"quantity": "Free-fall (infall) timescale from 4000 au", "value": "~50", "uncertainty": "not stated", "units": "kyr", "from_step": 7, "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "a particle with null initial velocity would fall from 4000 au onto the 0.15 $M_{\\odot}$ protostar in roughly 50 kyr"}]},
+{"quantity": "Dust temperature range along the streamer", "value": "21 to 8", "uncertainty": "not stated", "units": "K", "from_step": 5, "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "This equation yields temperatures in a range of 21 to 8 K across the scales of the streamer"}]},
+{"quantity": "Compact-emission Gaussian integrated flux density, B3", "value": "2.8", "uncertainty": "0.1", "units": "mJy", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "2.8 $\\pm$ 0.1"}]},
+{"quantity": "Compact-emission Gaussian integrated flux density, B6", "value": "19.4", "uncertainty": "0.2", "units": "mJy", "from_step": 4, "evidence": [{"loc": "Table 3", "quote": "19.4 $\\pm$ 0.2"}]},
+{"quantity": "uv-plane azimuthally averaged spectral index alpha_S", "value": "3.1", "uncertainty": "0.1", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "8 Compact emission modelling", "quote": "$\\alpha_S = 3.1 \\pm 0.1$, and $\\beta = 1.55 \\pm 0.05$"}]},
+{"quantity": "uv-plane beta", "value": "1.55", "uncertainty": "0.05", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "8 Compact emission modelling", "quote": "$\\alpha_S = 3.1 \\pm 0.1$, and $\\beta = 1.55 \\pm 0.05$"}]},
+{"quantity": "Final peak S/N of the B3 image", "value": "355", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "2 Observations", "quote": "The final peak signal-to-noise ratio of the B3 image is 355, and it is 218 for the B6 one."}]},
+{"quantity": "Final peak S/N of the B6 image", "value": "218", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "2 Observations", "quote": "The final peak signal-to-noise ratio of the B3 image is 355, and it is 218 for the B6 one."}]}
+],
+"findings_qualitative": [
+{"value": "C18O moment-one map shows a velocity progression from low to high velocity toward the protostar, consistent with infall", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "it is characterized by a progression from lower to higher velocities when approaching the protostar from afar"}]},
+{"value": "The same arc is detected in DCO+ and N2D+, but these lines are not spectrally resolved so were not used for kinematics", "evidence": [{"loc": "2 Observations", "quote": "These lines are not spectrally resolved and thus could not be used in our kinematic analysis"}]},
+{"value": "Compact inner region is optically thick; streamer is optically thin", "evidence": [{"loc": "6 Conclusions", "quote": "The streamer is optically thin with $\\alpha_{S}\\sim3.2$ along the whole structure."}]}
+],
+"claims": [
+{
+"hypothesis": "Is the arc-like structure around M512 consistent with infalling motion onto the protostar?",
+"experiment": "Fit TIPSY analytical infall trajectories to the C18O J=2-1 moment-one map and PV diagram over v_sys = 2.9 to 3.9 km/s",
+"result": "Data consistent with infall for all explored v_sys; material only loosely bound for v_sys of about 3.7 km/s or more; infall time about 50 kyr",
+"finding": "The arc is tentatively an infalling streamer",
+"support": "partially",
+"evidence": [{"loc": "3 Streamer's kinematics", "quote": "The available data is consistent with infall for velocities in the explored range of v$_{sys}$"}, {"loc": "3 Streamer's kinematics", "quote": "We thus tentatively suggest that the arc-like structure detected around M512 is an infalling streamer."}]
+},
+{
+"hypothesis": "Does the streamer host ISM-like or grown dust?",
+"experiment": "Dual-band B3/B6 spectral index in apertures along the streamer, corrected for non-RJ temperatures",
+"result": "alpha_S about 3.2 and mean beta = 1.62 +/- 0.04, robust to fixed T of 21 or 8 K",
+"finding": "Dust is consistent with ISM-like, small grains",
+"support": "supported",
+"evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "We find a mean $\\beta = 1.62 \\pm 0.04$ along the whole structure."}, {"loc": "5.1 Streamer's dust properties", "quote": "Thus, the $\\beta = 1.6$ measured along the streamer of M512 is consistent with the properties of ISM-like dust grains."}]
+},
+{
+"hypothesis": "Does the streamer carry a dust mass comparable to or larger than the inner disk region?",
+"experiment": "Optically thin mass from B6 flux with DSHARP opacity and temperature profile for the streamer; 20 K and 2.25 cm2/g for the inner region",
+"result": "Streamer 245 +/- 25 Earth masses vs inner 58 +/- 6 Earth masses (flux-calibration error only)",
+"finding": "The streamer mass seems to exceed or be comparable to the inner region mass",
+"support": "partially",
+"evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "we find that the mass of the streamer seems to exceed or be comparable to the mass of the inner region"}, {"loc": "5.2 Mass constraints and infall rate", "quote": "M$_{dust}^{streamer} =$ 245 $\\pm$ 25 M$_{\\oplus}$"}]
+},
+{
+"hypothesis": "What mass infall rate does the streamer imply for M512?",
+"experiment": "Free-fall time from 4000 au onto 0.15 Msun with dust-to-gas 0.01 applied to the streamer mass",
+"result": "Mdot = 1.5e-6 Msun/yr over about 50 kyr, assuming the whole streamer falls in",
+"finding": "High infall rate that could drive disk substructures or outbursts, if all material is captured",
+"support": "partially",
+"evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "is $\\dot M$ = 1.5 $\\cdot$ 10$^{-6}$ M$_{\\odot}$/yr."}, {"loc": "5.2 Mass constraints and infall rate", "quote": "the infall rate may be lower if the streamer will not interact in its entirety with the inner protoplanetary disk"}]
+},
+{
+"hypothesis": "What is the origin of the streamer: flyby stripping, cloudlet capture, or outflow cavity wall?",
+"experiment": "Qualitative comparison of morphology, timescales and masses with each scenario, plus Gaia proper-motion check of a nearby class II YSO",
+"result": "Flyby timescales and spatial extent do not match; outflow cavity wall unlikely for a class I very low mass star",
+"finding": "Cloudlet capture favoured; flyby and outflow only tentatively discarded",
+"support": "partially",
+"evidence": [{"loc": "5.3 Origins and frequency", "quote": "The flyby scenario is thus hard to reconcile with our observations."}, {"loc": "5.3 Origins and frequency", "quote": "we reinforce our suggestion that the arc-like structure around M512 is an infalling streamer, possibly caused by a cloudlet capture event"}]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "New B3 data were designed to get the 3 mm flux of the extended emission seen at 1.3 mm, at similar resolution", "evidence": [{"loc": "2 Observations", "quote": "These were designed to retrieve the 3 mm continuum flux of the extended emission around M512, first reported by (cite: grant2021) at 1.3 mm, with a similar resolution."}]},
+{"field": "why_this_method", "value": "Temperature-corrected beta because the Rayleigh-Jeans approximation fails at low T", "evidence": [{"loc": "4.2 Dust opacity index profile", "quote": "We thus introduce a correction to the simple $\\alpha = \\beta - 2$ case for the low temperatures which would otherwise artificially lower the derived $\\beta$"}]},
+{"field": "how_they_decided_enough", "value": "Self-calibration stopped when shorter solution intervals gave no appreciable improvement", "evidence": [{"loc": "2 Observations", "quote": "We did not find any appreciable improvement in the noise and signal-to-noise properties for phase-only selfcalibration steps with even smaller time intervals."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Stellar flyby stripping (2MASS J05401156-0730409) judged hard to reconcile; not completely ruled out", "evidence": [{"loc": "9 Any flyby candidates?", "quote": "we suggest that a flyby of M512 with 2MASS J05401156-0730409 appears harder to reconcile with the observed extended and massive arc than the streamer scenario, but cannot be completely ruled out at this stage"}]},
+{"value": "Outflow cavity wall emission tentatively discarded", "evidence": [{"loc": "5.3 Origins and frequency", "quote": "We thus tentatively discard this scenario."}]}
+],
+"limitations_admitted": [
+{"value": "Streamer length is a lower limit because interferometric filtering may remove larger-scale emission", "evidence": [{"loc": "2 Observations", "quote": "We note that that the length of the streamer, as observed in this study, is to be considered a lower limit since the interferometric observations might have filtered out larger-scale emission."}]},
+{"value": "Inner-region mass may be wrong by up to a factor ~5 because the emission is optically thick", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "mass estimations for the inner region can be wrong by a factor up to $\\sim$5"}]},
+{"value": "Inner disk geometry, mass and system velocity are uncertain, limiting the kinematic interpretation", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "both the mass and system velocity are uncertain"}]},
+{"value": "Dust opacity choice could change masses by up to a factor ten", "evidence": [{"loc": "5.2 Mass constraints and infall rate", "quote": "Thus the mass derived through them would be up to ten times lower both for the streamer and the inner disk."}]}
+],
+"referee_caveats_inferred": [
+"Kinematic support for infall rests on one unpublished code (TIPSY) with a loosely constrained v_sys and a point-mass assumption, so 'consistent with infall' does not exclude rotation or outflow.",
+"Mass and beta depend on an assumed envelope temperature profile (Motte and Andre) and a single DSHARP opacity; dust-to-gas ratio of 0.01 and whole-streamer infall make the infall rate an upper estimate.",
+"B3 and B6 have different uv coverage and recoverable scales; the first uv bin shows beta ~2, so flux filtering may bias alpha in the outer arc.",
+"Mass uncertainty (+/-25 Earth masses) includes only the 10% flux calibration error, not opacity, temperature or Gaussian-subtraction systematics."
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "B6 data described as archival; B3 program 2022.1.00126.S listed with no public-release statement", "evidence": [{"loc": "1 Introduction", "quote": "combine them with archival ALMA Band 6 (B6) data"}, {"loc": "Acknowledgements", "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2019.1.01813.S, ADS/JAO.ALMA#2019.1.00951.S, ADS/JAO.ALMA#2022.1.00126.S."}]},
+{"field": "products_in_archive", "value": "Initial calibration performed by ALMA staff with the pipeline; authors did additional steps", "evidence": [{"loc": "2 Observations", "quote": "The B3 data were initially calibrated by ALMA staff using the Cycle 9 ALMA interferometric pipeline"}]}
+],
+"code_released": [
+{"value": "TIPSY cited as submitted work (Gupta et al., subm.); release not stated", "evidence": [{"loc": "3 Streamer's kinematics", "quote": "(TIPSY, Gupta et al., subm.)"}]}
+],
+"missing_for_reproduction": [
+"TIPSY code and fit settings",
+"Per-band uvtaper values, line-free channel selection and CLEAN masks",
+"Logarithmic spiral and aperture definitions",
+"Per-band streamer fluxes entering the mass estimate",
+"Statement that the B3 data are public"
+],
+"estimated_data_volume_inferred": "Three ALMA measurement sets (one B3, two B6): raw tens of GB, calibrated MS plus imaging a few tens of GB",
+"score_inferred": 3,
+"score_reason": "Continuum recipe (self-cal solints, tclean robust, pixel size, taper target beam, formulas for beta and mass, opacity, temperature) is fairly complete and results are numeric, but masks, tapers, spiral and TIPSY are not given and B3 public status is not stated.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "B3 public status is not stated, and manual masks, a hand-tuned spiral and the unreleased TIPSY code block an exact redo, although the continuum alpha/beta/mass chain is largely reproducible.",
+"methods_papers": [
+{"citation": "(cite: Hunter2023)", "why": "Cycle 9 ALMA interferometric pipeline used for initial B3 calibration"},
+{"citation": "(cite: grant2021)", "why": "B6 observations and C18O data, plus the earlier robust = 0.5 extended emission width"},
+{"citation": "(cite: vanterwisga2022)", "why": "B6 program 2019.1.01813.S (SODA survey) observational details"}
+],
+"companion_papers": [
+{"citation": "(cite: grant2021)", "why": "First report of the extended emission around M512"},
+{"citation": "(cite: vanterwisga2022)", "why": "Survey of Orion Disks with ALMA that includes M512"}
+],
+"related_projects_or_surveys": ["Survey of Orion Disks with ALMA (SODA)"]
+}

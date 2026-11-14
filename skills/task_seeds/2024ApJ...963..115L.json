@@ -1,0 +1,542 @@
+{
+ "bibcode": "2024ApJ...963..115L",
+ "title": "The ALMaQUEST Survey. XII. Dense Molecular Gas as Traced by HCN and HCO<SUP>+</SUP> in Green Valley Galaxies",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad18b9",
+ "arxiv_id": "2401.05976",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "Is the low molecular-gas star formation efficiency of green valley galaxies (relative to main sequence galaxies with similar CO-traced molecular gas fractions) due to a lack of dense gas (f_dense) or to a low star formation efficiency of the dense gas (SFE_dense)?",
+ "alma_project_codes": [
+  "2019.1.01178.S",
+  "2015.1.01225.S",
+  "2017.1.01093.S",
+  "2018.1.00541.S",
+  "2018.1.00558.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "Synthesized beam FWHM ~2.5 arcsec (1.2-1.5 kpc)",
+  "sensitivity": "Line cube rms ~0.087 to 0.152 mJy/beam (channels binned to 30-50 km/s)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Global stellar mass and SFR of the 5 targets (Table 1) from the Pipe3D value-added catalog",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Values are taken from value-added catalog (cite: san18) in the SDSS DR15 release (cite: aqu19)."
+     }
+    ]
+   },
+   "citation": "(cite: san18); (cite: aqu19)"
+  },
+  {
+   "what": {
+    "value": "CO(1-0) data reduction, maps and spectra from the ALMaQUEST survey",
+    "evidence": [
+     {
+      "loc": "2 Sample and Observations",
+      "quote": "Details on the CO(1-0) data reduction and properties are described in the main survey paper (cite: lin20)"
+     },
+     {
+      "loc": "2 Sample and Observations",
+      "quote": "The CO spectra from the previous program (cite: lin20) are also overplotted for comparison."
+     }
+    ]
+   },
+   "citation": "(cite: lin20)"
+  },
+  {
+   "what": {
+    "value": "EMPIRE resolved HCN/HCO+/CO and SFR measurements (9 galaxies) compared in the dense-gas SK relation",
+    "evidence": [
+     {
+      "loc": "3.1 Dense gas Schmidt-Kennicutt Relation",
+      "quote": "we also plot the EMPIRE sample (magenta points), which consists of 9 galaxies with resolved measurements ($\\sim$1-2 kpc scale resolution) from (cite: jim19)"
+     }
+    ]
+   },
+   "citation": "(cite: jim19)"
+  },
+  {
+   "what": {
+    "value": "Literature global SFR and gas luminosities for post-starburst, early-type, star-forming, starburst galaxies and star-forming subregions (Figures 12-13)",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison with previous studies in the literature",
+      "quote": "including EMPIRE galaxies (cite: jim19), post-starburst galaxies (cite: row15; fre18; fre23), early-type galaxies (cite: cro12), star-forming and starbursting galaxies (cite: gao04), and subregions in star-forming galaxies (cite: use15)"
+     }
+    ]
+   },
+   "citation": "(cite: jim19); (cite: row15; fre18; fre23); (cite: cro12); (cite: gao04); (cite: use15)"
+  },
+  {
+   "what": {
+    "value": "Metallicity diagnostic (O3N2) used to justify fixed conversion factors",
+    "evidence": [
+     {
+      "loc": "2 Sample and Observations",
+      "quote": "the spaxel-based metallicities, computed using the O3N2 diagnostic (cite: pet04; kew08), exhibit median values ranging from 8.69 to 8.76 for each galaxy"
+     }
+    ]
+   },
+   "citation": "(cite: pet04; kew08)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate the Band 3 data",
+   "method": "Standard ALMA pipeline in CASA",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image HCN and HCO+ cubes",
+   "method": "tclean with Briggs weighting, user-specified image center, 0.5 arcsec pixels and a 2.5 arcsec restoring beam to match MaNGA; lines imaged separately; channels binned to 30-50 km/s",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5",
+    "channel binning 30 to 50 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Build integrated intensity maps and total line intensities",
+   "method": "immoments on the cubes, integrating a hand-set velocity range without clipping; total intensities from summing spaxels within 1.5 Re",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [
+    "velocity range set by hand to match the line profile, no clipping",
+    "1.5 Re aperture from the Pipe3D catalog"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Convert line luminosities to gas masses",
+   "method": "Constant alpha_CO for CO and constant alpha_HCN and alpha_HCO+ for the dense gas",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "alpha_CO = 4.35 Msun (K km/s pc^2)^-1, includes helium and heavier elements",
+    "alpha_HCN = alpha_HCO+ = 10 Msun (K km/s pc^2)^-1, fixed because dense-gas conversion factors are unexplored at kpc scales",
+    "Fixed factor fair because metallicity within 0.07 dex of solar"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive spaxel SFR and stellar mass surface densities from MaNGA",
+   "method": "Pipe3D value-added products; Balmer-decrement extinction correction, Halpha-to-SFR (Kennicutt 1998, Salpeter IMF), per-spaxel normalisation by inclination-corrected physical area",
+   "software": [
+    "Pipe3D"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "intrinsic H-alpha/H-beta = 2.86, Milky Way extinction curve with Rv = 3.1",
+    "Salpeter IMF",
+    "H-alpha in star-forming spaxels is purely from star formation; SFR in retired spaxels is an upper limit"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Apply S/N cuts and classify spaxels",
+   "method": "S/N cuts on emission lines, BPT classification, and Halpha EW cuts to define star-forming, retired and other spaxels",
+   "software": [],
+   "key_parameters": [
+    "S/N > 3 for H-alpha and H-beta, > 2 for [OIII] and [NII], > 2.5 for CO, HCN, HCO+",
+    "retired: H-alpha EW < 3 A and S/N > 3 in H-alpha"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Resolved relations: dense-gas SK relation, SFE_mol vs f_dense and SFE_dense, sSFR dependences",
+   "method": "Spaxel-by-spaxel Pearson correlations for all spaxel types, ODR fit of the star-forming spaxels of 7815-12705 as reference line, comparison with EMPIRE; sSFR decomposed into SFE x f_dense x f_mol",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Test for artificial correlations from shared denominators/numerators",
+   "method": "Generate synthetic datasets by shuffling Sigma_mol and Sigma_dense (and Sigma_mol and Sigma_SFR), 500 trials each; repeat on the central half of the Sigma_SFR range",
+   "software": [],
+   "key_parameters": [
+    "500 trials; Sigma_SFR range -3 < log10 Sigma_SFR < -1.5 for the restricted test"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Check S/N effects and compare global properties with literature samples",
+   "method": "Repeat SK correlations with an upper S/N(CO) limit of 10; compare global SFR vs L_CO/L_HCN/L_HCO+ and L_HCN/L_CO with literature samples",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Global HCN-to-CO flux ratio (range over 5 galaxies)",
+   "value": "0.02-0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2 Sample and Observations",
+     "quote": "The global HCN-to-CO and $\\rm HCO^{+}$-to-CO flux ratios are measured to be 0.02-0.05 and 0.03-0.05, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Global HCO+-to-CO flux ratio (range over 5 galaxies)",
+   "value": "0.03-0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2 Sample and Observations",
+     "quote": "The global HCN-to-CO and $\\rm HCO^{+}$-to-CO flux ratios are measured to be 0.02-0.05 and 0.03-0.05, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Line cube rms noise",
+   "value": "0.087 to 0.152",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2 Sample and Observations",
+     "quote": "The rms noise of the spectral line data cubes ranges from $\\sim$ 0.087 to 0.152 mJy/beam."
+    }
+   ]
+  },
+  {
+   "quantity": "7815-12705 total intensities I_CO / I_HCN / I_HCO+ within 1.5 Re",
+   "value": "32.27729 / 0.74242 / 0.85672",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "7815-12705 | 0.47 | 0.0148 | 0.0154 | 32.27729 | 0.74242 | 0.85672 | 8.75 | 7.34 | 7.40"
+    }
+   ]
+  },
+  {
+   "quantity": "8081-9101 total intensities I_CO / I_HCN / I_HCO+ within 1.5 Re",
+   "value": "18.95202 / 0.54407 / 0.51363",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8081-9101 | 0.24 | 0.0224 | 0.0174 | 18.95202 | 0.54407 | 0.51363 | 8.65 | 7.34 | 7.31"
+    }
+   ]
+  },
+  {
+   "quantity": "8081-12703 total intensities I_CO / I_HCN / I_HCO+ within 1.5 Re",
+   "value": "7.75231 / 0.23821 / 0.15411",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8081-12703 | -1.23 | 0.0135 | 0.0167 | 7.75231 | 0.23821 | 0.15411 | 7.84 | 6.55 | 6.36"
+    }
+   ]
+  },
+  {
+   "quantity": "8083-6101 total intensities I_CO / I_HCN / I_HCO+ within 1.5 Re",
+   "value": "17.38613 / 0.55128 / 0.42021",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8083-6101 | -1.12 | 0.0139 | 0.0112 | 17.38613 | 0.55128 | 0.42021 | 8.25 | 6.98 | 6.86"
+    }
+   ]
+  },
+  {
+   "quantity": "8950-12705 total intensities I_CO / I_HCN / I_HCO+ within 1.5 Re",
+   "value": "24.11672 / 0.30664 / 0.75681",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8950-12705 | -1.10 | 0.0227 | 0.0201 | 24.11672 | 0.30664 | 0.75681 | 8.04 | 6.37 | 6.76"
+    }
+   ]
+  },
+  {
+   "quantity": "7815-12705 log10 L_CO / L_HCN / L_HCO+ within 1.5 Re",
+   "value": "8.75 / 7.34 / 7.40",
+   "uncertainty": "not stated",
+   "units": "log10(L/Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "7815-12705 | 0.47 | 0.0148 | 0.0154 | 32.27729 | 0.74242 | 0.85672 | 8.75 | 7.34 | 7.40"
+    }
+   ]
+  },
+  {
+   "quantity": "8081-9101 log10 L_CO / L_HCN / L_HCO+ within 1.5 Re",
+   "value": "8.65 / 7.34 / 7.31",
+   "uncertainty": "not stated",
+   "units": "log10(L/Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8081-9101 | 0.24 | 0.0224 | 0.0174 | 18.95202 | 0.54407 | 0.51363 | 8.65 | 7.34 | 7.31"
+    }
+   ]
+  },
+  {
+   "quantity": "8081-12703 log10 L_CO / L_HCN / L_HCO+ within 1.5 Re",
+   "value": "7.84 / 6.55 / 6.36",
+   "uncertainty": "not stated",
+   "units": "log10(L/Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8081-12703 | -1.23 | 0.0135 | 0.0167 | 7.75231 | 0.23821 | 0.15411 | 7.84 | 6.55 | 6.36"
+    }
+   ]
+  },
+  {
+   "quantity": "8083-6101 log10 L_CO / L_HCN / L_HCO+ within 1.5 Re",
+   "value": "8.25 / 6.98 / 6.86",
+   "uncertainty": "not stated",
+   "units": "log10(L/Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8083-6101 | -1.12 | 0.0139 | 0.0112 | 17.38613 | 0.55128 | 0.42021 | 8.25 | 6.98 | 6.86"
+    }
+   ]
+  },
+  {
+   "quantity": "8950-12705 log10 L_CO / L_HCN / L_HCO+ within 1.5 Re",
+   "value": "8.04 / 6.37 / 6.76",
+   "uncertainty": "not stated",
+   "units": "log10(L/Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "8950-12705 | -1.10 | 0.0227 | 0.0201 | 24.11672 | 0.30664 | 0.75681 | 8.04 | 6.37 | 6.76"
+    }
+   ]
+  },
+  {
+   "quantity": "Median metallicity (O3N2) per galaxy",
+   "value": "8.69 to 8.76",
+   "uncertainty": "not stated",
+   "units": "12+log(O/H)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2 Sample and Observations",
+     "quote": "exhibit median values ranging from 8.69 to 8.76 for each galaxy"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, SFE_mol vs SFE_dense (all spaxels, HCN and HCO+)",
+   "value": "0.93-0.95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "as indicated by the high correlation coefficients (0.93-0.95) even when all types of spaxels are considered together"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, SFE_mol vs f_dense (real data)",
+   "value": "0.1-0.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "which is slightly greater than the correlation of the real datasets ($r = 0.1-0.3$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Pearson r of 500 shuffled datasets, SFE_mol vs f_dense (HCN, HCO+)",
+   "value": "0.36 (HCN), 0.34 (HCO+)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "The median Pearson correlation coefficient $r$ from 500 trials is increased to $r = 0.36$ and $r = 0.34$ using the synthesized data for HCN and $\\rm HCO^{+}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Pearson r of 500 shuffled datasets, SFE_mol vs SFE_dense (HCN, HCO+)",
+   "value": "~0.87 (HCN), 0.85 (HCO+)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "the median correlation coefficients from 500 trials are already found to be high, $\\sim$ 0.87 and 0.85 for the case of HCN and $\\rm HCO^{+}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r for SFE_mol vs SFE_dense in -3 < log Sigma_SFR < -1.5: real data (HCN, HCO+)",
+   "value": "0.85 (HCN), 0.84 (HCO+)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "the correlations for the real datasets are 0.85 (HCN) and 0.84 ($\\rm HCO^{+}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r for SFE_mol vs SFE_dense in -3 < log Sigma_SFR < -1.5: synthesized data (HCN, HCO+)",
+   "value": "0.70 (HCN), 0.65 (HCO+)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Is the molecular gas SFE dependent on the dense gas SFE?",
+     "quote": "those for the synthesized datasets are 0.70 (HCN) and 0.65 ($\\rm HCO^{+}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Correlation of sSFR with SFE_mol and SFE_dense",
+   "value": "~0.8-0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5 Summary",
+     "quote": "we find that sSFR is best correlated with the $\\rm SFE_{\\rm mol}$ and $\\rm SFE_{\\rm dense}$ (with correlation coefficients $\\sim$ 0.8-0.9)"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r of CO-based SK relation (MS star-forming spaxels) before and after S/N(CO) <= 10 limit",
+   "value": "0.8 reduced to 0.6 (HCN 0.5, HCO+ 0.7)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.1 Scatter in Schmidt-Kennicutt relations",
+     "quote": "The Pearson correlation coefficient of the CO-based SK relation is found to reduce from 0.8 to 0.6, becoming comparable to the values for HCN (0.5) and $\\rm HCO^{+}$(0.7)."
+    }
+   ]
+  },
+  {
+   "quantity": "SFE_dense offset between GV and MS at given Sigma_dense",
+   "value": "nearly an order of magnitude",
+   "uncertainty": "S/N-cut uncertainties less than 40%",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.1 Scatter in Schmidt-Kennicutt relations",
+     "quote": "This difference is nearly an order of magnitude at a given $\\Sigma_{\\rm dense}$, significantly larger than the uncertainties (less than 40%) associated with the S/N ratio cuts."
+    }
+   ]
+  },
+  {
+   "quantity": "Suppression of SFE_mol in the 3 GV galaxies relative to the 2 MS galaxies (global)",
+   "value": "factor of ~10",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "2 Sample and Observations",
+     "quote": "their SFE$_{\\rm mol}$ is suppressed by a factor of $\\sim$10"
+    }
+   ]
+  },
+  {
+   "quantity": "Range of SFE_dense in the sample",
+   "value": "spanning two orders of magnitude",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.1 Scatter in Schmidt-Kennicutt relations",
+     "quote": "the wide range of $\\rm SFE_{\\rm dense}$ found in this work, spanning two orders of magnitude"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version",
+  "Flux, bandpass and phase calibrators and whether any manual flagging or archive products were used as is",
+  "Line-free channels and the continuum subtraction method (uvcontsub or imcontsub) for the HCN/HCO+ cubes",
+  "tclean deconvolver, image size, masking/threshold/niter, primary beam correction, and how the 2.5 arcsec restoring beam was applied",
+  "Velocity ranges (set by hand) used for each integrated intensity map, and the per-galaxy channel widths in the 30-50 km/s range",
+  "How the ALMA maps were regridded and matched to the MaNGA spaxel grid, and how spaxel S/N for the lines was computed",
+  "ODR fit parameters (fitted slopes/intercepts) and the Pearson r values per panel are only in figures",
+  "Exact CO(1-0) data products (which of the ALMaQUEST projects/products) and their reduction details beyond the reference to lin20",
+  "Shuffling procedure details for the 500 trials (which spaxels, in which group)"
+ ],
+ "missing_for_reproduction": [
+  "CASA version, calibrators and flagging for 2019.1.01178.S",
+  "Imaging masks, thresholds, image size, line-free channels and continuum subtraction",
+  "Per-galaxy velocity ranges and channel widths for moment maps",
+  "The ALMaQUEST CO(1-0) cubes/maps and Pipe3D spaxel tables must be obtained separately; spaxel matching and shuffling details are not given",
+  "Numerical correlation coefficients and ODR fit parameters per galaxy are given only in figure panels"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA program code, band, configuration, tclean robust/pixel/beam, alpha factors, S/N and EW cuts and Table 2 numbers are given, but calibration details, masks, line-free channels, velocity ranges, regridding and the CO/MaNGA data processing are not, and many results exist only in figures.",
+ "rediscovery_reason": "ALMA Band 3 data and MaNGA/Pipe3D catalog are survey/archive products with a project code given, the imaging recipe is mostly specified, and the main results (integrated intensities, luminosities, Pearson r, shuffling tests) are numeric; CO data from ALMaQUEST must be fetched separately.",
+ "source_card": "cards/2024ApJ...963..115L/sonnet/card.md"
+}

@@ -1,0 +1,476 @@
+{
+ "bibcode": "2021MNRAS.505.4838L",
+ "title": "ALMA Lensing Cluster Survey: a strongly lensed multiply imaged dusty system at z ≥ 6",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab191",
+ "arxiv_id": "2101.01740",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Characterise the physical properties and dust production rate of an intrinsically faint, strongly lensed, quintuply-imaged dusty galaxy MACS0600-z6 at z = 6.07 near the end of cosmic reionisation.",
+ "alma_project_codes": [
+  "2018.1.00035.L"
+ ],
+ "data": {
+  "bands": "Band 6 (~1.2 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "2.21'' x 1.99''",
+  "sensitivity": "80 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Public RELICS photometric redshift catalogue",
+    "evidence": [
+     {
+      "loc": "Observation and Data Analysis",
+      "quote": "The foreground source was identified in the public RELICS catalogue (cite: Salmon2020) and assigned a photometric redshift of $\\rm{z_{phot}}$=0.82$^{+0.28}_{-0.40}$."
+     }
+    ]
+   },
+   "citation": "(cite: Salmon2020)"
+  },
+  {
+   "what": {
+    "value": "Stacked spectrum of 81 Lyman Break Galaxies used for spectroscopic redshift fitting",
+    "evidence": [
+     {
+      "loc": "Spectroscopic follow-up",
+      "quote": "We determined the spectroscopic redshift by fitting our observed spectra with a stacked spectra coming from 81 LBGs (cite: Jones2012)."
+     }
+    ]
+   },
+   "citation": "(cite: Jones2012)"
+  },
+  {
+   "what": {
+    "value": "Herschel/SPIRE 3-sigma upper limit at 250 um",
+    "evidence": [
+     {
+      "loc": "Physical Properties",
+      "quote": "Including *Herschel*/SPIRE 3$\\sigma$upper limit(13.9mJy/$\\mu$ at 250$\\mu$m), we can rule out T$_{dust}\\geq$85K (Sun et al. in prep)."
+     }
+    ]
+   },
+   "citation": "Sun et al. in prep"
+  },
+  {
+   "what": {
+    "value": "[C II] 158 um emission line detections, redshift z = 6.07, and line flux ratios",
+    "evidence": [
+     {
+      "loc": "Lens models and multiple images",
+      "quote": "\\[CII\\]158$\\mu$m emission lines at $z=6.07$ are detected in all images of this system that are covered by ALMA’s FOV: the arc, z6.3b and z6.4, strengthening further the adopted lensing configuration"
+     },
+     {
+      "loc": "Lens models and multiple images",
+      "quote": "More extensive details on these detections are given in a companion paper (Fujimoto et al., submitted)."
+     }
+    ]
+   },
+   "citation": "Fujimoto et al., submitted"
+  },
+  {
+   "what": {
+    "value": "Comparison sample of spectroscopically confirmed galaxies at z ~ 6-7",
+    "evidence": [
+     {
+      "loc": "Physical Properties",
+      "quote": "We can compare the above results for MACS0600-z6 to similar spectroscopically confirmed galaxies at $z\\sim$6-7 (either a detection or upper limit) in the literature ((cite: Schaerer2015), (cite: Kanekar2013), (cite: Ouchi2013), (cite: Marrone2018), (cite: Bradac2017), (cite: Knudsen2016), (cite: Smit2018))."
+     }
+    ]
+   },
+   "citation": "(cite: Schaerer2015), (cite: Kanekar2013), (cite: Ouchi2013), (cite: Marrone2018), (cite: Bradac2017), (cite: Knudsen2016), (cite: Smit2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract ALMA 1.2 mm continuum fluxes and identify sources",
+   "method": "Identify sources with SNR >= 4 on the 2'' uv-tapered mosaic and extract peak and integrated fluxes on a line-free / emission-line subtracted 1.2 mm image using CASA imfit.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "SNR >= 4 detection threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract multi-wavelength optical/NIR/IRAC photometry and deblend overlapping sources",
+   "method": "Search within 2'' radius on HST RELICS images, build catalogues with SExtractor in dual-image mode on PSF-matched images, and deblend overlapping sources (foreground, arc, z6.3a, z6.3b) using Sersic profile modelling with GALFIT on WFC3-NIR, ACS, and IRAC images.",
+   "software": [
+    "SExtractor",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "DETECT_THRESH = 2 sigma; ANALYSIS_THRESH = 2 sigma; DETECT_MINAREA = 5 px",
+    "Error bars measured in 0.4'' radius circle on residual image; upper limits in 0.4'' (HST), 0.8'' (HAWK-I), 1.2'' (IRAC) radius apertures"
+   ],
+   "assumptions": [
+    "Sersic profile for GALFIT modelling"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate photometric redshifts",
+   "method": "Template-based SED fitting using HYPERZ for the foreground source and multiple images.",
+   "software": [
+    "HYPERZ"
+   ],
+   "key_parameters": [
+    "0 < z < 8 (or z in [0.0:3.0] for foreground); 0.0 < A_v < 3.0 mag"
+   ],
+   "assumptions": [
+    "Chabrier IMF, solar metallicity templates from Bruzual & Charlot (2003), empirical SEDs from Coleman et al. (1980), starburst templates from Kinney et al. (1996), and Calzetti (2000) reddening law"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Construct cluster lens models, identify multiple images, and compute magnifications and UV-FIR offset",
+   "method": "Build three independent cluster mass models using GLAFIC, LENSTOOL, and Light-Traces-Mass (LTM) constrained by 9 other secure multiply-imaged systems (5 with MUSE redshifts) to predict multiple image positions and magnification factors, and measure UV-to-FIR spatial offset.",
+   "software": [
+    "GLAFIC",
+    "LENSTOOL",
+    "LTM"
+   ],
+   "key_parameters": [
+    "Three to four dark matter halos for parametric models"
+   ],
+   "assumptions": [
+    "Pseudo isothermal elliptical mass distributions and empirical scaling relations for parametric models; dark matter follows smoothed luminosity-weighted galaxy distribution for LTM"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Confirm spectroscopic redshift and measure Ly-alpha upper limit with Gemini/GMOS",
+   "method": "Reduce Gemini-North/GMOS spectra using Gemini IRAF package, extract spectrum in 1.5 x seeing diameter aperture, bin by factor of 30 in spectral direction, fit with stacked spectrum of 81 LBGs via chi^2 minimization, and inspect 2D spectra for Ly-alpha emission.",
+   "software": [
+    "Gemini IRAF package"
+   ],
+   "key_parameters": [
+    "1.5 x seeing diameter extraction aperture; spectral binning factor of 30; redshift search range z = 0 to z = 8"
+   ],
+   "assumptions": [
+    "Magnification factor mu = 31 for intrinsic EW upper limit"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive intrinsic physical properties, galaxy size, stellar age, and SN dust production rate",
+   "method": "Fit SEDs with MAGPHYS for dust-detected images (arc and z6.3b) and BAGPIPES for remaining images, measure UV slope beta, compute intrinsic size on z6.4 following Oesch et al. (2010), estimate stellar age from Balmer Break amplitude (F160W vs 4.5 um), and compute dust mass produced per core-collapse supernova.",
+   "software": [
+    "MAGPHYS",
+    "BAGPIPES"
+   ],
+   "key_parameters": [
+    "BAGPIPES: constant SFH, stellar mass 10^6 to 10^12 M_sun, age 0.0 Gyr to age of Universe at z=6.07"
+   ],
+   "assumptions": [
+    "H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7",
+    "LTM model magnifications; dust temperature T_dust = 30 K (also tested 35 K for IRX and 85 K upper limit) and dust emissivity beta = 2.0; Chabrier IMF"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.2 mm peak flux of MACS0600-arc (S^peak_1.2mm)",
+   "value": "366",
+   "uncertainty": "+/-62",
+   "units": "uJy.beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observation and Data Analysis",
+     "quote": "By extracting the flux on a line-free image at 1.2mm using the CASA *imfit* task, the peak flux is $\\rm{S^{peak}_{1.2mm}}$=366$\\pm$62 $\\rm{\\mu Jy.beam^{-1}}$ and the integrated flux is $\\rm{S^{int}_{1.2mm}}$=484$\\pm$135 $\\mu$Jy on an emission line subtracted image."
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm integrated flux of MACS0600-arc (S^int_1.2mm)",
+   "value": "484",
+   "uncertainty": "+/-135",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observation and Data Analysis",
+     "quote": "By extracting the flux on a line-free image at 1.2mm using the CASA *imfit* task, the peak flux is $\\rm{S^{peak}_{1.2mm}}$=366$\\pm$62 $\\rm{\\mu Jy.beam^{-1}}$ and the integrated flux is $\\rm{S^{int}_{1.2mm}}$=484$\\pm$135 $\\mu$Jy on an emission line subtracted image."
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm peak flux of MACS0600-z6.3b (f_peak)",
+   "value": "226",
+   "uncertainty": "+/-63",
+   "units": "uJy.beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Lens models and multiple images",
+     "quote": "In the ALMA data, z6.3b also shows a faint dust detection with a S/N$\\sim$3.5 ($\\rm{f_{peak}=226\\pm63 \\mu Jy.beam^{-1}}$ as measured with imfit)."
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm flux ratio between z6.3b and MACS0600-arc",
+   "value": "0.62",
+   "uncertainty": "+0.33/-0.24",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Lens models and multiple images",
+     "quote": "The 1.2mm flux ratio between 1.3b and the arc is 0.62$^{+0.33}_{-0.24}$ in excellent agreement with ratios observed in the near infrared and with the predicted lens-model magnifications (see below)."
+    }
+   ]
+  },
+  {
+   "quantity": "Photometric redshift of MACS0600-arc (z_photo)",
+   "value": "6.68",
+   "uncertainty": "+0.24/-0.67",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Observation and Data Analysis",
+     "quote": "Allowing a larger redshift range, the MACS0600-arc data provides a solution at $z_{photo}$=$6.68^{+0.24}_{-0.67}$ with an extinction $\\rm{A_v}$=0.5mag, broadly consistent with the spectroscopic value (Figure 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "LTM magnification of MACS0600-arc (mu)",
+   "value": "31",
+   "uncertainty": "+10/-9",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| arc | 2.2 $^{+ 1.3 }_{- 0.9 }$ | 4.5 $^{+ 3.4 }_{- 3.1 }$ | 6.1 $^{+ 7.6}_{- 1.9 }$ | $-$1.6$\\pm$0.1 | 31 $^{+10}_{-9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LTM magnification of MACS0600-z6.3b (mu)",
+   "value": "13",
+   "uncertainty": "+3/-2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| z6.3b | 1.1 $^{+ 0.6 }_{- 0.5 }$ | 5.1 $^{+ 4.2 }_{- 3.2 }$ | 5.9 $^{+ 3.5}_{- 2.8 }$ | $-$1.7$\\pm$0.3 | 13 $^{+3}_{-2}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Physical offset between FIR continuum and UV continuum",
+   "value": "<0.4",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Lens models and multiple images",
+     "quote": "In the image plan we measured an observed offset of 0.24$''$ and 0.35$''$ respectively for z6.3b and the arc. Accounting for the magnification, we estimate a physical offset of $<$0.4 kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Gemini/GMOS Lyman-break spectroscopic redshift (z_spec)",
+   "value": "6.19",
+   "uncertainty": "+0.06/-0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Spectroscopic follow-up",
+     "quote": "The best fit is found at $z_{spec}$=6.19$^{+0.06}_{-0.16}$, consistent with both the photometric redshift and the \\[CII\\]158$\\mu$m emission line detected in the ALMA data."
+    }
+   ]
+  },
+  {
+   "quantity": "2-sigma Ly-alpha luminosity upper limit L(Ly-alpha, 2sigma)",
+   "value": "<2.4e42",
+   "uncertainty": "not stated",
+   "units": "erg/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Spectroscopic follow-up",
+     "quote": "no emission line is detected in any of the 3 images allowing us to place a firm upper limit on the Ly-$\\alpha$ luminosity in this $z\\sim$6 system at L(Ly-$\\alpha$, 2$\\sigma$) $<$ 2.4$\\times$10$^{42}$ erg/s, corresponding to a rest-frame EW of $<$113Å /$\\mu$ and EW<3.6Å assuming a magnification factor of $\\mu$=31."
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing-corrected Ly-alpha rest-frame equivalent width upper limit (for mu=31)",
+   "value": "<3.6",
+   "uncertainty": "not stated",
+   "units": "Angstrom",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Spectroscopic follow-up",
+     "quote": "no emission line is detected in any of the 3 images allowing us to place a firm upper limit on the Ly-$\\alpha$ luminosity in this $z\\sim$6 system at L(Ly-$\\alpha$, 2$\\sigma$) $<$ 2.4$\\times$10$^{42}$ erg/s, corresponding to a rest-frame EW of $<$113Å /$\\mu$ and EW<3.6Å assuming a magnification factor of $\\mu$=31."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean lensing-corrected stellar mass (M_star)",
+   "value": "2.9e9",
+   "uncertainty": "+11.5e9/-2.3e9",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on the spectral energy distribution, we infer lensing-corrected stellar and dust masses of $\\rm{2.9^{+11.5}_{-2.3}\\times10^9}$ and $\\rm{4.8^{+4.5}_{-3.4}\\times10^6}$ $\\rm{M_{\\odot}}$ respectively"
+    },
+    {
+     "loc": "Physical Properties",
+     "quote": "the mean stellar mass is 2.9$^{+11.5}_{-2.3}\\times$10$^9$M$_{\\odot}$, the mean SFR is 9.7$^{+23.0}_{-6.6}$M$_{\\odot}$/yr and the mean dust mass (computed only from images MACS0600-arc and MACS0600-z6.3b) is 4.8$^{+4.5}_{-3.4}$ $\\times$10$^6$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean lensing-corrected dust mass (M_dust, for T_dust = 30 K)",
+   "value": "4.8e6",
+   "uncertainty": "+4.5e6/-3.4e6",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Based on the spectral energy distribution, we infer lensing-corrected stellar and dust masses of $\\rm{2.9^{+11.5}_{-2.3}\\times10^9}$ and $\\rm{4.8^{+4.5}_{-3.4}\\times10^6}$ $\\rm{M_{\\odot}}$ respectively"
+    },
+    {
+     "loc": "Physical Properties",
+     "quote": "the mean stellar mass is 2.9$^{+11.5}_{-2.3}\\times$10$^9$M$_{\\odot}$, the mean SFR is 9.7$^{+23.0}_{-6.6}$M$_{\\odot}$/yr and the mean dust mass (computed only from images MACS0600-arc and MACS0600-z6.3b) is 4.8$^{+4.5}_{-3.4}$ $\\times$10$^6$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean lensing-corrected star formation rate (SFR)",
+   "value": "9.7",
+   "uncertainty": "+22.0/-6.6 (+23.0/-6.6 in text)",
+   "units": "M_sun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "a star formation rate of $\\rm{9.7^{+22.0}_{-6.6} M_{\\odot} yr^{-1}}$, an intrinsic size of $\\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\\pm$100 Myr."
+    },
+    {
+     "loc": "Physical Properties",
+     "quote": "the mean stellar mass is 2.9$^{+11.5}_{-2.3}\\times$10$^9$M$_{\\odot}$, the mean SFR is 9.7$^{+23.0}_{-6.6}$M$_{\\odot}$/yr and the mean dust mass (computed only from images MACS0600-arc and MACS0600-z6.3b) is 4.8$^{+4.5}_{-3.4}$ $\\times$10$^6$M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average UV continuum slope (beta)",
+   "value": "-1.66",
+   "uncertainty": "+/-0.08",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Physical Properties",
+     "quote": "We measure the UV slopes of all images from the best SED-fit and find an average $\\beta$=$-$1.66$\\pm$0.08."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic galaxy size (half-light radius)",
+   "value": "0.54",
+   "uncertainty": "+0.26/-0.14",
+   "units": "kpc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "a star formation rate of $\\rm{9.7^{+22.0}_{-6.6} M_{\\odot} yr^{-1}}$, an intrinsic size of $\\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\\pm$100 Myr."
+    },
+    {
+     "loc": "Physical Properties",
+     "quote": "After correcting for magnification, we find an intrinsic size of 0$''$ 10 corresponding to 0.54$^{+0.26}_{-0.14}$ kpc at $z\\sim$6.07"
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity-weighted stellar age",
+   "value": "200",
+   "uncertainty": "+/-100",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "a star formation rate of $\\rm{9.7^{+22.0}_{-6.6} M_{\\odot} yr^{-1}}$, an intrinsic size of $\\rm{0.54^{+0.26}_{-0.14}}$ kpc, and a luminosity-weighted age of 200$\\pm$100 Myr."
+    },
+    {
+     "loc": "Physical Properties",
+     "quote": "Following the methodology discussed in (cite: Roberts-Borsani2020), we estimate an age of 200$\\pm$100 Myr, indicative of a formation redshift of $z\\rm{_{form}}$=7.2$^{+0.8}_{-0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Formation redshift (z_form)",
+   "value": "7.2",
+   "uncertainty": "+0.8/-0.6",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Physical Properties",
+     "quote": "Following the methodology discussed in (cite: Roberts-Borsani2020), we estimate an age of 200$\\pm$100 Myr, indicative of a formation redshift of $z\\rm{_{form}}$=7.2$^{+0.8}_{-0.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass produced per core-collapse supernova",
+   "value": "0.3",
+   "uncertainty": "+0.5/-0.2",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Physical Properties",
+     "quote": "Assuming a Chabrier (cite: Chabrier2003) IMF for the production rate of SNe, for the measured dust mass and stellar age, each SN would have produced 0.3$^{+0.5}_{-0.2}$ M$_{\\odot}$ of dust."
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic UV absolute magnitude (M_uv)",
+   "value": "-19.9",
+   "uncertainty": "+/-0.15",
+   "units": "mag",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion and Conclusion",
+     "quote": "Such intrinsically faint sources ($M_{uv}$=-19.9$\\pm$0.15) emitting light during the Epoch of Reionisation are considered to be dominant contributors to the cosmic reionisation of hydrogen"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral window frequencies, channel widths, and line-free channel ranges used to create the emission-line subtracted 1.2 mm continuum image",
+  "ALMA array configuration and baseline lengths",
+  "tclean parameters (cell size, image size, stopping threshold, masking, primary beam correction)",
+  "Full lens model parameter files and multiple-image constraint lists (deferred to a separate paper in preparation)",
+  "Dust mass opacity coefficient (kappa_nu) assumed in the modified blackbody/MAGPHYS dust mass calculation"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA line-free channel selection used to produce the emission-line subtracted 1.2 mm continuum mosaic",
+  "Complete gravitational lens mass model parameters and multiple-image constraint lists for GLAFIC, LENSTOOL, and LTM",
+  "PSF kernels used for HST/VLT/Spitzer PSF matching and GALFIT fitting",
+  "Exact dust opacity coefficient (kappa_nu) used in the T_dust = 30 K, beta = 2.0 dust mass calculation"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "ALMA data reduction (pipeline v5.6.1-8, natural weighting, 2'' uv-taper, imfit) and multi-wavelength photometry (Table 3) are clearly reported, and standard public SED fitting codes (MAGPHYS, BAGPIPES, HYPERZ) are used, but the detailed cluster lens models and ALMA line-subtraction channel ranges are deferred to companion papers.",
+ "rediscovery_reason": "The ALMA Large Program data (2018.1.00035.L) and HST/VLT/Spitzer archival data are public, the 1.2 mm continuum flux extraction with CASA imfit on a 2'' uv-tapered natural-weighted mosaic is straightforward to replicate, and the paper provides explicit photometry and magnification tables to reproduce the SED fits.",
+ "source_card": "cards/2021MNRAS.505.4838L/sonnet/card.md"
+}

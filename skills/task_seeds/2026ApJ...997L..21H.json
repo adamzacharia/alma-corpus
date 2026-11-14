@@ -1,0 +1,384 @@
+{
+ "bibcode": "2026ApJ...997L..21H",
+ "title": "A Millimeter Methanol Maser Ring Tracing the Deceleration of the Heat Wave Powered by the Massive Protostellar Accretion Outburst in G358.93─0.03 MM1",
+ "year": 2026,
+ "doi": "10.3847/2041-8213/ae32f6",
+ "arxiv_id": "2512.24380",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "How do the millimeter CH3OH maser rings excited during the accretion outburst in G358.93-0.03 MM1 evolve in size and intensity over time to trace the propagation and deceleration of the outburst-driven heat wave?",
+ "alma_project_codes": [
+  "2018.A.00031.T",
+  "2019.1.00768.S"
+ ],
+ "data": {
+  "bands": "1.3 mm (199-221 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.025'' x 0.021'' (24 mas ≈ 160 au) to 0.366'' x 0.311'' for ALMA; up to 0.619'' x 0.403'' for SMA",
+  "sensitivity": "1.3 to 251 mJy beam^-1 per channel for ALMA cubes; 85 to 900 mJy beam^-1 for SMA cubes"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "6.668 GHz (vt=0) CH3OH maser spot positions across 5 VLBI epochs",
+    "evidence": [
+     {
+      "loc": "Maser morphology at highest resolution",
+      "quote": "Two cm maser lines of $A$-type CH$_3$OH were observed within a few days of this image, 6.668 GHz ($v_{t}$=0) with VLBI (cite: Burns2023)"
+     },
+     {
+      "loc": "Maser fitting results",
+      "quote": "Also shown in Fig. 3b are measurements of the diameter of the distribution of 6.7 GHz maser spots fit to 5 epochs of VLBI images by (cite: Burns2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Burns2020; Burns2023)"
+  },
+  {
+   "what": {
+    "value": "20.97062 GHz (vt=1) CH3OH maser spot positions from the Karl G. Jansky Very Large Array",
+    "evidence": [
+     {
+      "loc": "Maser morphology at highest resolution",
+      "quote": "and 20.97062 GHz ($v_{t}$=1) with the Karl G. Jansky Very Large Array (cite: Bayandina2022), and those spots all lie inside the ring of strongest 217 GHz maser emission."
+     }
+    ]
+   },
+   "citation": "(cite: Bayandina2022)"
+  },
+  {
+   "what": {
+    "value": "Maser transition rest frequencies and upper level energies from CDMS and Muller et al.",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "Table notes: $^{a}$ Uncertainty in final digit(s) given in parentheses. $^{b}$ References: (1) CDMS (cite: CDMS2016), (2) (cite: Muller2004)"
+     }
+    ]
+   },
+   "citation": "(cite: CDMS2016; Muller2004)"
+  },
+  {
+   "what": {
+    "value": "Maser flare inception time t0 = 2019.0479",
+    "evidence": [
+     {
+      "loc": "Maser fitting results",
+      "quote": "assuming $R$=0 at $t$=$t_0$=2019.0479 corresponding to the maser flare inception (cite: Sugiyama19) yields $m$ = 0.39$\\pm$0.06."
+     }
+    ]
+   },
+   "citation": "(cite: Sugiyama19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure exponential decay timescales of the 199 and 217 GHz maser lines",
+   "method": "Fit exponential decay curves to the peak intensities and integrated flux densities of the 199 and 217 GHz maser lines across epochs",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Exponential decay of maser intensity over time"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit circular rings to maser spots in the highest resolution ALMA cubes",
+   "method": "Independently fit several maser spots around the ring in three high-resolution ALMA epochs (2019.451, 2019.538, 2019.552) and fit those positions with a circle accounting for position uncertainties",
+   "software": [
+    "SciPy",
+    "scipy.odr"
+   ],
+   "key_parameters": [
+    "6 to 8 maser spots per epoch"
+   ],
+   "assumptions": [
+    "Maser spots trace a circular ring",
+    "Distance of 6.75 kpc to convert angular diameter to au"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform 2-component Gaussian fitting on smoothed ALMA and SMA cubes and infer ring diameters",
+   "method": "Smooth higher-resolution ALMA cubes to match lower-resolution epochs (SMA beam for 217 GHz; 2019.286 ALMA beam for 199 GHz epoch 2019.552), fit two fixed-beam Gaussians per channel using CASA imfit, filter fits by residual and R.A. separation criteria, and take the 90th percentile chord length as the ring diameter",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Component size and position angle fixed to synthesized beamsize",
+    "Peak absolute intensity in 2-component fit residual < 0.4 times that of single-component fit",
+    "Integrated absolute flux in 2-component fit residual < 0.6 times that of single-component fit",
+    "Separation of fitted components in right ascension between 0.09'' and 0.40''",
+    "Diameter taken as 90th percentile of separations; uncertainty from 80th and 100th percentiles added in quadrature with theta / median SNR"
+   ],
+   "assumptions": [
+    "Ring-like structure was pervasive in time across epochs"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit power-law expansion model to maser ring diameters over time",
+   "method": "Fit a fractional power law R = a(t - t0)^m to the inferred diameters from the 2-component fits of the millimeter maser images, and compare with 6.7 GHz VLBI maser spot diameters",
+   "software": [],
+   "key_parameters": [
+    "t0 = 2019.0479",
+    "50000 Monte Carlo trial fits with bootstrap resampling"
+   ],
+   "assumptions": [
+    "R = 0 at t = t0 = 2019.0479 (maser flare inception)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "199 GHz maser peak intensity e-folding decay time",
+   "value": "19.7",
+   "uncertainty": "0.38",
+   "units": "days",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Exponential decay into thermal emission",
+     "quote": "Both millimeter maser lines (199 and 217 GHz) decayed exponentially (Fig. 3a), with fitted $e$-folding times of 19.7$\\pm$0.38 and 61.7$\\pm$7.4 days, respectively, for their peak intensities, and 20.0$\\pm$0.5 and 44.9$\\pm$8.5 days for their integrated flux densities."
+    }
+   ]
+  },
+  {
+   "quantity": "217 GHz maser peak intensity e-folding decay time",
+   "value": "61.7",
+   "uncertainty": "7.4",
+   "units": "days",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Exponential decay into thermal emission",
+     "quote": "Both millimeter maser lines (199 and 217 GHz) decayed exponentially (Fig. 3a), with fitted $e$-folding times of 19.7$\\pm$0.38 and 61.7$\\pm$7.4 days, respectively, for their peak intensities, and 20.0$\\pm$0.5 and 44.9$\\pm$8.5 days for their integrated flux densities."
+    }
+   ]
+  },
+  {
+   "quantity": "199 GHz maser integrated flux density e-folding decay time",
+   "value": "20.0",
+   "uncertainty": "0.5",
+   "units": "days",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Exponential decay into thermal emission",
+     "quote": "Both millimeter maser lines (199 and 217 GHz) decayed exponentially (Fig. 3a), with fitted $e$-folding times of 19.7$\\pm$0.38 and 61.7$\\pm$7.4 days, respectively, for their peak intensities, and 20.0$\\pm$0.5 and 44.9$\\pm$8.5 days for their integrated flux densities."
+    }
+   ]
+  },
+  {
+   "quantity": "217 GHz maser integrated flux density e-folding decay time",
+   "value": "44.9",
+   "uncertainty": "8.5",
+   "units": "days",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Exponential decay into thermal emission",
+     "quote": "Both millimeter maser lines (199 and 217 GHz) decayed exponentially (Fig. 3a), with fitted $e$-folding times of 19.7$\\pm$0.38 and 61.7$\\pm$7.4 days, respectively, for their peak intensities, and 20.0$\\pm$0.5 and 44.9$\\pm$8.5 days for their integrated flux densities."
+    }
+   ]
+  },
+  {
+   "quantity": "Ring diameter from circle fit (217.2992 GHz, epoch 2019.451)",
+   "value": "0.336",
+   "uncertainty": "0.047",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.451 | 217.2992 | 8 | 0.336$\\pm$0.047 | 2270$\\pm$310 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring linear diameter from circle fit (217.2992 GHz, epoch 2019.451)",
+   "value": "2270",
+   "uncertainty": "310",
+   "units": "AU",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.451 | 217.2992 | 8 | 0.336$\\pm$0.047 | 2270$\\pm$310 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring diameter from circle fit (217.2992 GHz, epoch 2019.538)",
+   "value": "0.335",
+   "uncertainty": "0.051",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.538 | 217.2992 | 6 | 0.335$\\pm$0.051 | 2265$\\pm$345 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ring diameter from circle fit (199.5748 GHz, epoch 2019.552)",
+   "value": "0.289",
+   "uncertainty": "0.081",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.552 | 199.5748 | 7 | 0.289$\\pm$0.081 | 1950$\\pm$550 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (199.5749 GHz, epoch 2019.196)",
+   "value": "0.138",
+   "uncertainty": "+0.014/-0.013",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.196 | 199.5749 | 7 | $0.138^{+0.014}_{-0.013}$ | $930^{+100}_{-90}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (217.2992 GHz, epoch 2019.196)",
+   "value": "0.155",
+   "uncertainty": "+0.026/-0.032",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.196 | 217.2992 | 11 | $0.155^{+0.026}_{-0.032}$ | $1050^{+180}_{-220}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (199.5749 GHz, epoch 2019.286)",
+   "value": "0.180",
+   "uncertainty": "+0.015/-0.014",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.286 | 199.5749 | 21 | $0.180^{+0.015}_{-0.014}$ | $1210^{+100}_{-100}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (217.2992 GHz, epoch 2019.451)",
+   "value": "0.276",
+   "uncertainty": "+0.008/-0.017",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.451 | 217.2992 | 17 | $0.276^{+0.008}_{-0.017}$ | $1860^{+50}_{-120}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (217.2992 GHz, epoch 2019.538)",
+   "value": "0.264",
+   "uncertainty": "+0.014/-0.022",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.538 | 217.2992 | 22 | $0.264^{+0.014}_{-0.022}$ | $1780^{+100}_{-150}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (199.5749 GHz, epoch 2019.552)",
+   "value": "0.244",
+   "uncertainty": "+0.014/-0.013",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.552 | 199.5749 | 10 | $0.244^{+0.014}_{-0.013}$ | $1650^{+100}_{-90}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred diameter from 2-component fit (217.2992 GHz, epoch 2019.747)",
+   "value": "0.270",
+   "uncertainty": "+0.008/-0.012",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| 2019.747 | 217.2992 | 16 | $0.270^{+0.008}_{-0.012}$ | $1820^{+60}_{-80}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law index m of millimeter maser expansion (R = a(t - t0)^m)",
+   "value": "0.39",
+   "uncertainty": "0.06",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Fitting the angular extent of the millimeter masers versus time yields a power law of index 0.39$\\pm$0.06, which also reproduces the observed extent of the 6.7 GHz masers in the first VLBI epoch of (cite: Burns2020)."
+    },
+    {
+     "loc": "Maser fitting results",
+     "quote": "Fitting the inferred diameters from the 2-component fits to the millimeter maser images using a fractional power law, $R=a(t-t_0)^m$, assuming $R$=0 at $t$=$t_0$=2019.0479 corresponding to the maser flare inception (cite: Sugiyama19) yields $m$ = 0.39$\\pm$0.06."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean radial expansion velocity of millimeter maser ring",
+   "value": "0.01",
+   "uncertainty": "not stated",
+   "units": "c",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "the diameter of the ring increased by $\\gtrsim$60% (from $\\approx$1100 to $\\approx$1800 au in the 217 GHz line) over 200 days, consistent with an average radial propagation rate of $\\approx$0.01c, while the maser intensity declined exponentially."
+    },
+    {
+     "loc": "Propagation of the heat wave",
+     "quote": "Based on the millimeter maser data, the extent of the maser emission increased by $\\gtrsim$60% ($\\sim$1100 au to $\\sim$1800 au in the 217 GHz line), corresponding to a mean radial expansion velocity of 0.01$c$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and ALMA pipeline versions used for data reduction",
+  "Self-calibration solution intervals, number of iterations, and whether amplitude self-calibration was performed in addition to phase self-calibration",
+  "Deconvolution parameters (e.g., tclean deconvolver, pixel cell size, image size, stopping threshold, and masking strategy)",
+  "Details of continuum subtraction for the spectral line cubes (e.g., task used and line-free channel selection)",
+  "Exact coordinates of the phase center and astrometric shift values applied to the SMA cubes"
+ ],
+ "missing_for_reproduction": [
+  "Raw or calibrated SMA visibility data and the exact astrometric shift values applied from Brogan et al. (2019)",
+  "Initial position coordinates in each channel of epoch 2019.451 used to seed CASA imfit",
+  "Exact self-calibration parameters (solution intervals, SNR thresholds, reference antennas) and tclean imaging parameters (cell size, image size, stopping thresholds, continuum subtraction ranges)",
+  "Channel selection criteria for the 6-8 spots used in the high-resolution scipy.odr circle fits"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "ALMA project codes, observing epochs, frequencies, channel widths, weighting schemes, beamsizes, and the step-by-step 2-component fitting and filtering criteria are clearly documented. However, reproducing the full time-series requires non-ALMA (SMA) cubes from Brogan et al. (2019), unstated initial spot coordinates per channel, and unstated self-calibration and tclean imaging parameters.",
+ "rediscovery_reason": "The ALMA data (2018.A.00031.T and 2019.1.00768.S) are public in the archive, the main scientific results are well-defined quantitative measurements (ring diameters across epochs, e-folding decay timescales, and the expansion power-law index m = 0.39 +/- 0.06), and the CASA imfit / scipy.odr methodology is specified with explicit quantitative acceptance criteria.",
+ "source_card": "cards/2026ApJ...997L..21H/sonnet/card.md"
+}

@@ -1,0 +1,422 @@
+{
+ "bibcode": "2021MNRAS.507.1886F",
+ "title": "Probing the kinematics and chemistry of the hot core Mon R2 IRS 3 using ALMA observations",
+ "year": 2021,
+ "doi": "10.1093/mnras/stab2216",
+ "arxiv_id": "2107.14532",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "protoplanetary_disks"
+ ],
+ "question": "What is the physical, kinematical, and chemical structure of the massive protostellar hot core Mon R2 IRS 3 at high spatial resolution?",
+ "alma_project_codes": [
+  "2015.1.00453.S",
+  "2016.1.00813.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.1 mm and 1.2 mm)",
+  "arrays": "12m array (36 antennas)",
+  "angular_resolution": "Continuum: 1.010\"x0.676\" (1.2mm), 0.946\"x0.634\" (1.1mm); Lines: ~1.16\"x0.94\" to 1.3\"x1.0\"",
+  "sensitivity": "Continuum rms: 0.87 mJy/beam (1.2mm), 0.85 mJy/beam (1.1mm); Line rms: 0.102 to 0.211 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N(13CO) = (1.1 +/- 0.2) x 10^17 cm^-2 from NIR absorption lines towards IRS 3 A",
+    "evidence": [
+     {
+      "loc": "Continuum images",
+      "quote": "(cite: Dungee2018) estimated N($^{13}$CO)=(1.1$\\pm$0.2)$\\times$10$^{17}$ cm$^{-2}$ based on the absorption NIR lines towards IRS 3 A."
+     }
+    ]
+   },
+   "citation": "(cite: Dungee2018)"
+  },
+  {
+   "what": {
+    "value": "Masses of the NIR protostars A, B, and C (25-37 M_sun)",
+    "evidence": [
+     {
+      "loc": "Moment maps",
+      "quote": "(cite: Preibisch2002) provided an estimation of the masses of the NIR protostars. Assuming that the NIR sources A, B and C are driving the toroid rotation, the stellar mass would be 25-37 M$_\\odot$."
+     }
+    ]
+   },
+   "citation": "(cite: Preibisch2002)"
+  },
+  {
+   "what": {
+    "value": "Molecular abundances for Orion and NGC 7129-IRS 2",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "We have adopted the molecular abundances for Orion and NGC 7129$-$IRS 2 reported by (cite: Fuente2014)."
+     }
+    ]
+   },
+   "citation": "(cite: Fuente2014)"
+  },
+  {
+   "what": {
+    "value": "Molecular abundances for AFGL 2591 VLA 3",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Data for AFGL 2591 VLA 3 have been taken from (cite: Gieser2019)."
+     }
+    ]
+   },
+   "citation": "(cite: Gieser2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Construct continuum images, measure fluxes, fit 2D Gaussians, and derive dust/gas mass and H2 column density",
+   "method": "Average line-free channels, merge visibilities of 247+257 GHz (1.2mm) and 262+272 GHz (1.1mm), fit two 2D Gaussians to the 1.1mm image, and apply a gray-body model to calculate mass and H2 column density.",
+   "software": [
+    "CASA",
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "Briggs weighting robust=0.5"
+   ],
+   "assumptions": [
+    "D = 778 pc",
+    "k_1.1mm = 0.0078 cm^2 g^-1, gas-to-dust ratio = 100, T_dust = 200 K"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and identify molecular lines",
+   "method": "Extract interferometric spectra towards IRS 3 A and IRS 3 B and identify transitions above 4 sigma integrated intensity using CDMS and JPL spectroscopic catalogs.",
+   "software": [
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "Detection limit = 4 sigma in integrated intensity"
+   ],
+   "assumptions": [
+    "32S/34S = 22.5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Analyze spatial distribution and gas kinematics using moment maps and PV diagrams",
+   "method": "Compute zeroth-moment (integrated intensity) and first-moment (intensity-weighted velocity) maps, and extract Position-Velocity (PV) diagrams perpendicular to and along the reflection nebula axis to compare with Keplerian and solid-body rotation curves.",
+   "software": [
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "Reflection nebula direction P.A. ~ 40 deg; systemic velocity v_sys ~ 9 km s^-1"
+   ],
+   "assumptions": [
+    "Total stellar mass M_stars = 40 M_sun and inclination angle i = 45 deg for Keplerian comparison"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive rotation temperatures, molecular column densities, and fractional abundances",
+   "method": "Apply the rotation diagram technique to SO2 and CH3OH lines to determine T_rot and column densities; fit LTE synthetic spectra at T_k = 129 K and 170 K for remaining species; compute abundances relative to N(H2).",
+   "software": [
+    "CLASS/GILDAS"
+   ],
+   "key_parameters": [
+    "T_k = 129 K and T_k = 170 K; upper limit linewidth = 4 km s^-1 and T_b < 3 x rms in 1 km s^-1 channel"
+   ],
+   "assumptions": [
+    "Local Thermodynamic Equilibrium (LTE), N(H2) = 2.6 x 10^23 cm^-2, 12C/13C = 60, 16O/18O = 550, solar S/H = 1.5 x 10^-5"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.1 mm total continuum flux S(1.1mm)",
+   "value": "168",
+   "uncertainty": "25",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "Total fluxes are S(1.1mm)= 168$\\pm$25 mJy and S(1.2mm)= 135$\\pm$6 mJy, which implies a spectral index, $\\alpha$=3.7$\\pm$3.3, consistent with the emission being dominated by dust thermal emission."
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm total continuum flux S(1.2mm)",
+   "value": "135",
+   "uncertainty": "6",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "Total fluxes are S(1.1mm)= 168$\\pm$25 mJy and S(1.2mm)= 135$\\pm$6 mJy, which implies a spectral index, $\\alpha$=3.7$\\pm$3.3, consistent with the emission being dominated by dust thermal emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum spectral index alpha",
+   "value": "3.7",
+   "uncertainty": "3.3",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "Total fluxes are S(1.1mm)= 168$\\pm$25 mJy and S(1.2mm)= 135$\\pm$6 mJy, which implies a spectral index, $\\alpha$=3.7$\\pm$3.3, consistent with the emission being dominated by dust thermal emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas and dust mass of Mon R2 IRS 3",
+   "value": "0.14",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "Adopting T$_{\\rm dust}$ = 200 K (see Sect. 4), we derive a total mass of $\\sim$0.14 M$_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm Gaussian peak flux of IRS 3 A",
+   "value": "88.5",
+   "uncertainty": "0.3",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting material",
+     "quote": "| 06:07:47.85 | $-$06:22:56.27 | 1.09(0.01) | 0.82(0.01) | 65.6(0.6) | 88.5(0.3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.1 mm Gaussian peak flux of IRS 3 B",
+   "value": "25.9",
+   "uncertainty": "0.3",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Supporting material",
+     "quote": "| 06:07:47.87 | $-$06:22:55.43 | 1.30(0.01) | 0.60(0.01) | 68.1(0.6) | 25.9(0.3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Separation between IRS 3 A and IRS 3 B",
+   "value": "0.65",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The continuum image at 1.1mm shows two components, IRS 3 A and IRS 3 B, that are separated by $\\sim$0.65$\"$."
+    }
+   ]
+  },
+  {
+   "quantity": "Averaged H2 column density towards IRS 3 A N(H2)",
+   "value": "2.6e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum images",
+     "quote": "We adopt the flux and the half power full size of the brightest Gaussian to estimate the averaged H$_2$ column density towards IRS 3 A, N(H$_2$)$\\sim$2.6$\\times$10$^{23}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 rotation temperature T_rot",
+   "value": "175",
+   "uncertainty": "+15/-16",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Chemical content",
+     "quote": "We obtained T$_{rot}$ = 175$_{-16}^{+15}$ K and N(SO$_2$)=3.4$_{-0.5}^{+0.6}$ $\\times$ 10$^{16}$ cm$^{-2}$ using the three SO$_2$ lines observed towards IRS 3 A (see Table 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density N(SO2)",
+   "value": "3.4e16",
+   "uncertainty": "+0.6e16/-0.5e16",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Chemical content",
+     "quote": "We obtained T$_{rot}$ = 175$_{-16}^{+15}$ K and N(SO$_2$)=3.4$_{-0.5}^{+0.6}$ $\\times$ 10$^{16}$ cm$^{-2}$ using the three SO$_2$ lines observed towards IRS 3 A (see Table 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH rotation temperature T_rot",
+   "value": "129",
+   "uncertainty": "+10/-9",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Chemical content",
+     "quote": "A slightly lower value of the rotation temperature, T$_{rot}$ = 129$_{-9}^{+10}$ K, and N(CH$_3$OH)=1.1$_{-0.2}^{+0.3}$ $\\times$ 10$^{17}$ cm$^{-2}$, are found using the methanol lines."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH column density N(CH3OH) (from text)",
+   "value": "1.1e17",
+   "uncertainty": "+0.3e17/-0.2e17",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Chemical content",
+     "quote": "A slightly lower value of the rotation temperature, T$_{rot}$ = 129$_{-9}^{+10}$ K, and N(CH$_3$OH)=1.1$_{-0.2}^{+0.3}$ $\\times$ 10$^{17}$ cm$^{-2}$, are found using the methanol lines."
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 fractional abundance",
+   "value": "1.3e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The most abundant S-bearing species is SO$_2$ with an abundance of $\\sim$ 1.3$\\times$10$^{-7}$, and $\\chi$(SO/SO$_2$) $\\sim$ 0.29."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "| SO$_2$$^*$ | ... | 3.4$\\times$10$^{16}$ | 6.0 | 1.3$\\times$10$^{-7}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N(SO)/N(SO2) ratio",
+   "value": "0.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The most abundant S-bearing species is SO$_2$ with an abundance of $\\sim$ 1.3$\\times$10$^{-7}$, and $\\chi$(SO/SO$_2$) $\\sim$ 0.29."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "The N(SO)/N(SO$_2$) ratio is $\\sim$0.29 in IRS 3 A similar to that observed in the Orion hot core and AFGL 2591 VLA 3"
+    }
+   ]
+  },
+  {
+   "quantity": "SO column density N(SO) at T_k=170 K",
+   "value": "1.0e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| SO | 8.0$\\times$10$^{15}$ | 1.0$\\times$10$^{16}$ | 7.0 | 3.8$\\times$10$^{-8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "OCS column density N(OCS) at T_k=170 K",
+   "value": "2.5e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| OCS | 3.0$\\times$10$^{15}$ | 2.5$\\times$10$^{15}$ | 6.0 | 9.6$\\times$10$^{-9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CS column density N(H2CS) at T_k=170 K",
+   "value": "8.0e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| H$_2$CS | 9.0$\\times$10$^{13}$ | 8.0$\\times$10$^{13}$ | 4.0 | 3.1$\\times$10$^{-10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO column density N(CH3OCHO) at T_k=170 K",
+   "value": "3.0e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| CH$_3$OCHO | 2.5$\\times$10$^{15}$ | 3.0$\\times$10$^{15}$ | 4.0 | 1.1$\\times$10$^{-8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCH3 column density N(CH3OCH3) at T_k=170 K",
+   "value": "1.1e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "| CH$_3$OCH$_3$ | 8.0$\\times$10$^{14}$ | 1.1$\\times$10$^{15}$ | 4.0 | 4.2$\\times$10$^{-9}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCN)/N(HCO+) lower limit",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Chemical content",
+     "quote": "Our limit indicates that N(HCN)/N(HCO$^+$)$\\sim$8."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges selected as line-free for continuum imaging and continuum subtraction",
+  "Whether continuum subtraction (e.g. uvcontsub) was applied to visibilities prior to line imaging",
+  "Imaging task (clean vs tclean), deconvolver, stopping threshold, cell size, image size, and masking parameters in CASA",
+  "Aperture or single-pixel extraction details for extracting spectra towards IRS 3 A and IRS 3 B",
+  "Specific package or routine within CLASS/GILDAS (e.g., WEEDS) used to compute synthetic LTE spectra",
+  "Velocity integration intervals and clipping thresholds used to construct 0th and 1st moment maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel selections for line-free continuum averaging and whether uv-plane continuum subtraction was performed",
+  "CASA imaging parameters (clean/tclean thresholds, masks, cell sizes, image dimensions)",
+  "Exact beam/aperture definition used to extract the 1D spectra towards IRS 3 A and IRS 3 B",
+  "Source size or beam filling factor assumed in the CLASS/GILDAS LTE synthetic spectrum and rotational diagram calculations",
+  "Velocity ranges and sigma-clipping thresholds used for 0th and 1st moment maps and PV diagram slice widths"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Standard ALMA pipeline calibration (CASA 4.7) and clear spectral window/beam tables are provided, and LTE/rotational diagram analyses are straightforward, but specific imaging parameters, line-free channel definitions, spectral extraction apertures, and LTE source-size assumptions are omitted.",
+ "rediscovery_reason": "Public archival ALMA data (2015.1.00453.S) with well-defined quantitative targets: 1.1 mm and 1.2 mm continuum fluxes, 2D Gaussian component parameters for IRS 3 A and B, rotational temperatures for SO2 and CH3OH, and LTE column densities for 16 molecular species.",
+ "source_card": "cards/2021MNRAS.507.1886F/sonnet/card.md"
+}

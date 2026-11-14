@@ -1,0 +1,647 @@
+{
+ "bibcode": "2025ApJ...987...61R",
+ "title": "Resolved ALMA [C II] 158 μm Observations at Cosmic Noon: Interstellar Medium Structure and Dynamics of the Starbursting QSO SDSS J1000",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/add9a1",
+ "arxiv_id": "2504.07325",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Investigate the interstellar medium structure, photodissociation region properties, and dynamics of the starbursting quasar SDSS J1000 at Cosmic Noon (z = 1.8275) using spatially resolved ALMA Band 9 [C II] 158 μm and dust continuum observations.",
+ "alma_project_codes": [
+  "2015.1.01362.S",
+  "2016.1.00463.S",
+  "2021.1.00705.S",
+  "2021.1.00246.S"
+ ],
+ "data": {
+  "bands": "Band 9",
+  "arrays": "12-m array (42 and 40 antennas)",
+  "angular_resolution": "0.20 × 0.17 arcsec (1.7 × 1.4 kpc) for line; 0.19 × 0.16 arcsec (1.6 × 1.4 kpc) for continuum",
+  "sensitivity": "2 mJy/beam/ch (1-σ, 50 km/s channel) for line cube; 0.7 Jy km/s/beam for moment-0; 0.3 mJy/beam (1-σ) for continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spitzer/MIPS 24 and 70 μm fluxes (70 μm = 7 ± 2 mJy)",
+    "evidence": [
+     {
+      "loc": "2.3. Archival Continuum Observations and Data",
+      "quote": "Finally, we used (observed frame) 24 and 70 μm fluxes from Spitzer/mips for sed modeling, from Sanders et al. (2007)"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "70 7_ ±_ 2 mips"
+     }
+    ]
+   },
+   "citation": "Sanders et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "Herschel/PACS (100 μm = 24 ± 4 mJy, 160 μm = 73 ± 9 mJy) and SPIRE (250 μm = 85 ± 5 mJy, 350 μm = 69 ± 8 mJy, 500 μm = 35 ± 7 mJy) Point Source Catalog fluxes",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Herschel/pacs and spire data from their respective Herschel Point Source Catalogs: Marton et al. (2017) and Schulz et al. (2017)."
+     }
+    ]
+   },
+   "citation": "Marton et al. (2017); Schulz et al. (2017)"
+  },
+  {
+   "what": {
+    "value": "MAMBO-2/IRAM 1.2 mm (1200 μm) flux density of 4.8 ± 1.0 mJy",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "Sdss j1000 was selected based on its high 1.2 mm brightness (4 _._ 8 _±_ 1 _._ 0 mJy) in the Mambo-2/iram survey of the Cosmos field (Bertoldi et al. 2007)."
+     }
+    ]
+   },
+   "citation": "Bertoldi et al. (2007)"
+  },
+  {
+   "what": {
+    "value": "IRAM 30 m CO (2-1), (4-3), (5-4), (6-5) line observations, Bolocam 1100 μm flux (5.6 ± 1.9 mJy), and total molecular gas mass M_m = 4.5 × 10^10 M_sun",
+    "evidence": [
+     {
+      "loc": "1. INTRODUCTION",
+      "quote": "In addition, Aravena et al. (2008) observed four CO lines, (2–1), (4– 3), (5–4) and (6–5), with the Iram 30 m telescope"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "bolocam data is from Aravena et al. (2008)."
+     },
+     {
+      "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+      "quote": "We adopt _M_ _m_ = 4 _._ 5 _×_ 10 [10] for the total molecular gas mass in j1000 derived by Aravena et al. (2008) using a value for the observed CO intensity to molecular gas mass conversion factor _α_ _CO_ = 0 _._ 8 M _⊙_ (K km s _[−]_ [1] pc [2] ) _[−]_ [1] ."
+     }
+    ]
+   },
+   "citation": "Aravena et al. (2008)"
+  },
+  {
+   "what": {
+    "value": "CSO/ZEUS-1 [C II] line flux of 78 ± 18 Jy km s^-1",
+    "evidence": [
+     {
+      "loc": "4.1. Extended flux: Resolved Out Emission or Low Surface Brightness?",
+      "quote": "The Zeus-1 detection of [Cii] from sdss j1000 (Stacey et al. 2010) found significantly higher line flux than detected in our Alma imaging (78 _±_ 18 Jy km s _[−]_ [1] and 37 _._ 7 _±_ 3 _._ 3 Jy km s _[−]_ [1], respectively)."
+     }
+    ]
+   },
+   "citation": "Stacey et al. (2010)"
+  },
+  {
+   "what": {
+    "value": "Total system mass (1.5 × 10^11 M_sun) and stellar masses of J1000 (7.9 × 10^10 M_sun) and satellite (7.4 × 10^10 M_sun)",
+    "evidence": [
+     {
+      "loc": "4.2. Confirmation of Physically Associated Satellite",
+      "quote": "and the mass of the system derived by Liu et al. (2019), 1 _._ 5 _·_ 10 [11] M _⊙_, we calculate _t_ _dyn_ _∼_ 400 Myr."
+     },
+     {
+      "loc": "4.4. Detailed Analysis of Masses",
+      "quote": "This is compatible with stellar mass estimates from Liu et al. (2019), who finds stellar mass = 7 _._ 9 _·_ 10 [10] M _⊙_ for sdss j1000 and 7 _._ 4 _·_ 10 [10] M _⊙_ for the satellite."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce Herschel/PACS [O I] 63 μm spectroscopy and measure line flux",
+   "method": "Reduce PACS nod cycles in HIPE, extract central spaxel spectrum with point-source correction, subtract continuum, fit Gaussian profile, and integrate flux over Δλ = 2 × FWHM",
+   "software": [
+    "HIPE v12.1.0"
+   ],
+   "key_parameters": [
+    "oversample=2 (spectral resolution 103 km s^-1); integration window Δλ = 2 × FWHM"
+   ],
+   "assumptions": [
+    "Point-source approximation (only central spaxel considered)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure ALMA [C II] line and 158 μm continuum fluxes, sizes, and spectra",
+   "method": "Create moment-0 and moment-1 maps by stacking line channels, fit 2D Gaussians to cleaned images, integrate flux in circular apertures for main and satellite sources, and measure off-source aperture RMS scaled by sqrt(n_beams)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Circular aperture diameters: 1.45 arcsec (main [CII]), 0.35 arcsec (satellite [CII]), 1.05 arcsec (main continuum), 0.4 arcsec (satellite continuum)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Model the far-IR to mm dust SED to derive L_FIR, SFR, and dust mass",
+   "method": "Fit multi-wavelength continuum photometry (70 to 3038 μm) with a modified blackbody model using mercurius",
+   "software": [
+    "mercurius"
+   ],
+   "key_parameters": [
+    "Photometry from 70 μm to 3038 μm (Table 1); FIR integrated over 42.5–122.5 μm, TIR over 8–1000 μm"
+   ],
+   "assumptions": [
+    "Optically thin modified blackbody dust emission with κ_ν ∝ ν^β and CMB temperature correction at z = 1.8275; point-source photometry"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit 3D rotating disk kinematic model to ALMA visibilities and derive dynamical mass",
+   "method": "Initialize spectral weights with initweights (dowtsp=True), fit continuum on line-free channels with UVModelFit, and fit 10-parameter rotating disk model to visibilities using UVModelDisk (KinMS + Galario + PyMultiNest)",
+   "software": [
+    "CASA",
+    "UVModelFit",
+    "initweights",
+    "UVModelDisk",
+    "PyMultiNest",
+    "KinMS",
+    "Galario",
+    "tclean"
+   ],
+   "key_parameters": [
+    "dowtsp=True; fixed continuum parameters (RA offset 0, Dec offset 0, FWHM 0.22 arcsec, flux density 52.7 mJy); 10 varied disk parameters with priors in Table 2"
+   ],
+   "assumptions": [
+    "2D Gaussian spatial brightness profile for disk and continuum; arctan asymptotic rotation curve; constant continuum in frequency; flat rotation curve M(r) = r V^2 / G for dynamical mass"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model global and spatially resolved PDR conditions (n, G) and [C II]/FIR relation",
+   "method": "Apply ionized gas and optical depth corrections to [C II] and [O I] luminosities, fit global line and FIR ratios with PDR Toolbox wk2020 models, and map spatially resolved [C II]/FIR and FUV field G across J1000",
+   "software": [
+    "PDR Toolbox (PDRT)"
+   ],
+   "key_parameters": [
+    "wk2020 model grid (A_V = 7, Z = 1); 1σ pixel masks at L_[CII] > 1.3 × 10^8 L_sun/px and L_FIR > 5 × 10^10 L_sun/px; fixed n = 10^4 cm^-3 for resolved G map"
+   ],
+   "assumptions": [
+    "[C II] luminosity multiplied by 3/4 (25% ionized gas contribution); [O I] 63 μm luminosity multiplied by 2 (optically thick spherical clouds); constant dust temperature across source; Kennicutt (1998) SFR-L_FIR relation"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive neutral gas cloud radius, mass, number of clouds, and filling factors",
+   "method": "Combine PDR-derived density and FUV field with observed [C II] intensity and literature CO molecular gas mass in a spherical cloud toy model (Wolfire et al. 1990)",
+   "software": [],
+   "key_parameters": [
+    "n_H = 6 × 10^3 cm^-3, G = 5 × 10^3 G_0, M_m = 4.5 × 10^10 M_sun, α_CO = 0.8 M_sun (K km s^-1 pc^2)^-1, I_CII = 10^-3 erg s^-1 cm^-2 sr^-1, R = 0.456 arcsec = 3.85 kpc, N_H = 4 × 10^21 cm^-2"
+   ],
+   "assumptions": [
+    "Identical uniform-density spherical clouds illuminated externally by uniform FUV field G; n_H ~ n_H2; solar abundances"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Herschel/PACS [O I] 63 μm line flux (J1000)",
+   "value": "29",
+   "uncertainty": "± 9 (statistical) ± 12% (calibration)",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2. Herschel [O I] Line Observation",
+     "quote": "This yields a line flux of 29 _±_ 9 Jy km s _[−]_ [1] including only statistical uncertainty,"
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] 63 μm line luminosity (J1000)",
+   "value": "9.8e9",
+   "uncertainty": "± 3.7e9",
+   "units": "L_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3. PDR model",
+     "quote": "and the [Oi] 63 μm luminosity = (9 _._ 8 _±_ 3 _._ 7) _·_ 10 [9] L _⊙_"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 158 μm integrated line flux (J1000 main)",
+   "value": "37.7",
+   "uncertainty": "± 3.3",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "For the main source’s 1 _[′′]_ _._ 45 and calculate a to [Cii] flux, we use a diameter = tal line flux of 37 _._ 7 _±_ 3 _._ 3 Jy km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 158 μm line luminosity (J1000 main)",
+   "value": "5.1e9",
+   "uncertainty": "± 0.4e9",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "[Cii] luminosity (5 _._ 1 _±_ 0 _._ 4) _×_ 10 [9] L _⊙_"
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] 158 μm integrated line flux (satellite)",
+   "value": "2.3",
+   "uncertainty": "± 0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We extract the [Cii] flux for the satellite using a circular aperture of 0 _[′′]_ _._ 35 and detect it at 4 _σ_ significance with a flux of 2 _._ 3 _±_ 0 _._ 6 Jy km s _[−]_ [1] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 158 μm continuum flux density (J1000 main)",
+   "value": "55.6",
+   "uncertainty": "± 1.8",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "Using a circular aperture of 1 _[′′]_ _._ 05, we measure the main source’s continuum flux density = 55 _._ 6 _±_ 1 _._ 8 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Rest-frame 158 μm continuum flux density (satellite)",
+   "value": "3.5",
+   "uncertainty": "± 0.7",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We also mea _[′′]_ _._ 4 sure the integrated flux density for the satellite in a 0 diameter aperture to be 3 _._ 5 _±_ 0 _._ 7 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "2D Gaussian FWHM of continuum emission (J1000 main)",
+   "value": "0.216",
+   "uncertainty": "± 0.006",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "The 2-D Gaussians of best fit to the cleaned images have fwhms 0 _[′′]_ _._ 216 _±_ 0 _[′′]_ _._ 006 for the continuum and 0 _[′′]_ _._ 43 _±_ 0 _[′′]_ _._ 04 for the line emission."
+    }
+   ]
+  },
+  {
+   "quantity": "2D Gaussian FWHM of [C II] line emission (J1000 main)",
+   "value": "0.43",
+   "uncertainty": "± 0.04",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "The 2-D Gaussians of best fit to the cleaned images have fwhms 0 _[′′]_ _._ 216 _±_ 0 _[′′]_ _._ 006 for the continuum and 0 _[′′]_ _._ 43 _±_ 0 _[′′]_ _._ 04 for the line emission."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial offset between dust continuum peak and [C II] peak",
+   "value": "0.04",
+   "uncertainty": "± 0.02",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "Leveraging the sensitivity of our continuum and spec _[′′]_ _._ 04 _±_ 0 _[′′]_ _._ 02 tral line maps, we identify a spatial offset of 0 between the dust continuum peak and the peak of [Cii] line emission."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift of J1000 main component",
+   "value": "1.82825",
+   "uncertainty": "± 0.00002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3. RESULTS",
+     "quote": "We clearly recover a doublehorned spectral profile for j1000 offset by +80 km s _[−]_ [1] relative to the previously reported redshift of _z_ = 1 _._ 8275 and report a [Cii] redshift of _z_ = 1 _._ 82825 _±_ 0 _._ 00002."
+    }
+   ]
+  },
+  {
+   "quantity": "[C II] redshift of satellite galaxy",
+   "value": "1.82821",
+   "uncertainty": "± 0.00040",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2. Confirmation of Physically Associated Satellite",
+     "quote": "tecting its [Cii] line at redshift _z_ = 1 _._ 82821 _±_ 0 _._ 00040,"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR luminosity (L_FIR)",
+   "value": "7.2e12",
+   "uncertainty": "± 0.3e12",
+   "units": "L_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. SED analysis",
+     "quote": "With this model, we find fir [2] luminosity = (7 _._ 2 _±_ 0 _._ 3) _·_ 10 [12] L _⊙_, star-formation rate = 1640 _±_ 80 M _⊙_ yr _[−]_ [1], and dust mass = (1 _._ 8 _±_ 0 _._ 1) _·_ 10 [9] M _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR)",
+   "value": "1640",
+   "uncertainty": "± 80",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. SED analysis",
+     "quote": "With this model, we find fir [2] luminosity = (7 _._ 2 _±_ 0 _._ 3) _·_ 10 [12] L _⊙_, star-formation rate = 1640 _±_ 80 M _⊙_ yr _[−]_ [1], and dust mass = (1 _._ 8 _±_ 0 _._ 1) _·_ 10 [9] M _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (M_dust)",
+   "value": "1.8e9 (1.4e9 in Section 4.4)",
+   "uncertainty": "± 0.1e9",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1. SED analysis",
+     "quote": "With this model, we find fir [2] luminosity = (7 _._ 2 _±_ 0 _._ 3) _·_ 10 [12] L _⊙_, star-formation rate = 1640 _±_ 80 M _⊙_ yr _[−]_ [1], and dust mass = (1 _._ 8 _±_ 0 _._ 1) _·_ 10 [9] M _⊙_ ."
+    },
+    {
+     "loc": "4.4. Detailed Analysis of Masses",
+     "quote": "Wefoundadustmassof(1 _._ 4 _±_ 0 _._ 1) _·_ 10 [9] M _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas velocity dispersion (σ)",
+   "value": "56.8",
+   "uncertainty": "+2.6 / -2.2",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Gas velocity dispersion (_ρσ_) [km/s] 10-700 Log 56_._8+2_._6 _−_2_._2"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model [C II] brightness FWHM",
+   "value": "0.456",
+   "uncertainty": "+0.012 / -0.011",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Brightness fwhm [arcsec] 0.05-1 Log 0_._456+0_._012 _−_0_._011"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotational velocity (v_max)",
+   "value": "351",
+   "uncertainty": "+25 / -19",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Maximum Rotational Velocity [km s_−_1] 100-1000 Log 351+25 _−_19"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination angle",
+   "value": "36.5",
+   "uncertainty": "+2.6 / -2.9",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Inclination angle [deg] 20-70 Sin 36_._5+2_._6 _−_2_._9"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "28.9",
+   "uncertainty": "± 1.1",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Position angle [deg] 10-100 Uniform 28_._9_ ±_ 1_._1"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk model total [C II] flux",
+   "value": "28.1",
+   "uncertainty": "+0.8 / -0.7",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Total Flux[Jy km s_−_1] 25-35 Log 28_._1+0_._8 _−_0_._7"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk rotation-to-dispersion ratio (v/σ)",
+   "value": "6.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "the [Cii] emission is contained within a compact, dynamically cold disk with _v/σ_ = 6 _._ 2, consistent with the IllustrisTNG50 cosmological simulation."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within [C II] FWHM (3.8 kpc)",
+   "value": "1.14e11",
+   "uncertainty": "± 0.10e11",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4. Detailed Analysis of Masses",
+     "quote": "Our disk model finds that the fwhm of [Cii] brightness is 0 _[′′]_ _._ 45 _±_ 0 _[′′]_ _._ 04or3 _._ 8 _±_ 0 _._ 3kpc. Usingthisasaradius, weestimate a dynamical mass of (1 _._ 14 _±_ 0 _._ 10) _·_ 10 [11] M _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within JWST radius (8.4 kpc)",
+   "value": "2.5e11",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.4. Detailed Analysis of Masses",
+     "quote": "If we assume that the flat rotation curve extends totheJwstradiusof8.4kpc,thedynamicalmasswould be _∼_ 2 _._ 5 _·_ 10 [11] M _⊙_ ."
+    }
+   ]
+  },
+  {
+   "quantity": "PDR gas density (n)",
+   "value": "6e3",
+   "uncertainty": "± 0.3 dex",
+   "units": "cm^-3",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4. [C ii ]/FIR Map",
+     "quote": "In this paper we adopt the solution at _n_ = 6 _×_ 10 [3] cm _[−]_ [3], and _G_ = 5 _×_ 10 [3] _G_ 0, with uncertainties _∼_ 0 _._ 3 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "PDR incident FUV radiation field strength (G)",
+   "value": "5e3",
+   "uncertainty": "± 0.3 dex",
+   "units": "G_0",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4. [C ii ]/FIR Map",
+     "quote": "In this paper we adopt the solution at _n_ = 6 _×_ 10 [3] cm _[−]_ [3], and _G_ = 5 _×_ 10 [3] _G_ 0, with uncertainties _∼_ 0 _._ 3 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of resolved [C II]/FIR vs Σ_SFR",
+   "value": "-0.61",
+   "uncertainty": "± 0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4. [C ii ]/FIR Map",
+     "quote": "We find that sdss j1000 has a power-law slope of _−_ 0 _._ 61 _±_ 0 _._ 08, and Pound & Wolfire (2023)’s pdr model grids (which assume a plane-parallel geometry) have a power-law slope of _−_ 0 _._ 80 _±_ 0 _._ 05"
+    }
+   ]
+  },
+  {
+   "quantity": "Beam area filling factor (ϕ_A)",
+   "value": "4.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+     "quote": "Using our toy model we derive a beam filling factor _ϕ_ _A_ = 4 _._ 2, a cloud radius, _r_ _CO_ = 3 _._ 4 pc _×_ ( _α_ _CO_ _/_ 0 _._ 8), and a [Cii] line emitting shell depth of Δ _r_ _∼_ 4 _._ 0 _×_ 10 [21] cm _[−]_ [2] _/n_ _H_ = 0 _._ 22 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular cloud CO core radius (r_CO)",
+   "value": "3.4 × (α_CO / 0.8)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+     "quote": "Using our toy model we derive a beam filling factor _ϕ_ _A_ = 4 _._ 2, a cloud radius, _r_ _CO_ = 3 _._ 4 pc _×_ ( _α_ _CO_ _/_ 0 _._ 8), and a [Cii] line emitting shell depth of Δ _r_ _∼_ 4 _._ 0 _×_ 10 [21] cm _[−]_ [2] _/n_ _H_ = 0 _._ 22 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Total neutral cloud radius including PDR surface",
+   "value": "3.5 (3.6 in Appendix B)",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+     "quote": "The cloud radius including the pdr surface is 3.5 pc which is somewhat smaller than those inferred through CO measurements of nearby galaxies"
+    },
+    {
+     "loc": "B. MODELING CLOUD SIZE AND EMISSION FILLING FACTORS",
+     "quote": "The total cloud radius is: _r_ _cloud_ = _r_ _CO_ + Δ _r_ = 3 _._ 6 pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Individual cloud total mass",
+   "value": "5.2e4 × (α_CO / 0.8)^3",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+     "quote": "The total mass of each individual cloud, including the molecular core and the photodissociated surface is 5 _._ 2 _×_ 10 [4] M _⊙_ _×_ ( _α_ _CO_ _/_ 0 _._ 8) [3] ."
+    }
+   ]
+  },
+  {
+   "quantity": "Cloud volume filling factor (ϕ_vol)",
+   "value": "0.077",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Neutral Gas Cloud Parameters: cloud radius and numbers, volume, and area filling factors",
+     "quote": "There are _∼_ 10 [6] clouds in an emission region of volume 2 _._ 3 _×_ 10 [11] pc [3], so the cloud volume filling factor is _ϕ_ _vol_ = 0 _._ 077%."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral window frequency ranges and line-free channel ranges used for UVContSub and continuum imaging",
+  "tclean deconvolution parameters (stopping threshold, niter, masking strategy, deconvolver)",
+  "Whether primary beam correction was applied to the ALMA images",
+  "Reduction/extraction details for archival ALMA programs 2016.1.00463.S, 2021.1.00705.S, and 2021.1.00246.S continuum fluxes",
+  "Dust opacity normalization (kappa_0 at reference frequency) used in mercurius SED fitting"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral channel ranges used for continuum subtraction and line cube integration",
+  "Reduction/measurement details for the three archival ALMA continuum flux densities in Table 1",
+  "tclean stopping criteria and masking details",
+  "Dust opacity normalization assumed in mercurius"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "All ALMA, Herschel, and JWST datasets are public with explicit project/ObsID codes, software versions (CASA 5.4.0-68, pipeline 42030, HIPE v12.1.0) and key imaging/modeling parameters (pixel size, channel width, robust, aperture sizes, UVModelDisk priors, and analytical cloud equations) are thoroughly documented; minor deductions for unstated channel ranges and archival continuum extraction details.",
+ "rediscovery_reason": "Public ALMA data with clearly specified calibration, imaging, aperture photometry, visibility-plane disk modeling (UVModelDisk priors/posteriors in Table 2), and analytical PDR cloud equations that yield concrete numeric results.",
+ "source_card": "cards/2025ApJ...987...61R/sonnet/card.md"
+}

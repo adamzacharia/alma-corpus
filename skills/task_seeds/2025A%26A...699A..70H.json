@@ -1,0 +1,390 @@
+{
+ "bibcode": "2025A&A...699A..70H",
+ "title": "Investigating the chemical link between H<SUB>2</SUB>CO and CH<SUB>3</SUB>OH within the central molecular zone of NGC 253",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554156",
+ "arxiv_id": "2505.16255",
+ "fields": [
+  "nearby_galaxies",
+  "astrochemistry"
+ ],
+ "question": "Investigate the physical and chemical properties traced by CH3OH and H2CO in NGC 253 and whether the two species are chemically linked",
+ "alma_project_codes": [
+  "2017.1.00161.L",
+  "2018.1.00162.S"
+ ],
+ "data": {
+  "bands": "ALCHEMI covers Bands 3, 4, 5, 6 and 7 (84.2 to 373.2 GHz rest frequency)",
+  "arrays": "12 m Array and Atacama Compact Array (ACA), combined",
+  "angular_resolution": "1.6 arcsec (~28 pc)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CH3OH collisional excitation rates (Dagdigian 2023) from EMAA",
+    "evidence": [
+     {
+      "loc": "4 Non-LTE radiative transfer modeling analysis",
+      "quote": "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."
+     }
+    ]
+   },
+   "citation": "(cite: Dagdigian_2023)"
+  },
+  {
+   "what": {
+    "value": "H2CO collisional excitation rates from LAMDA",
+    "evidence": [
+     {
+      "loc": "4 Non-LTE radiative transfer modeling analysis",
+      "quote": "The collisional excitation rates used for are from (cite: Dagdigian_2023) while the rates are from (cite: H2CO_mole_data)."
+     }
+    ]
+   },
+   "citation": "(cite: H2CO_mole_data)"
+  },
+  {
+   "what": {
+    "value": "CH3OH frequencies and spectroscopic parameters from the JPL catalogue",
+    "evidence": [
+     {
+      "loc": "Table notes (CH3OH transitions)",
+      "quote": "Frequencies and spectroscopic parameters have been extracted from the JPL catalogue (cite: Pickett+1998)."
+     }
+    ]
+   },
+   "citation": "(cite: Pickett+1998)"
+  },
+  {
+   "what": {
+    "value": "H2CO frequencies and spectroscopic parameters from CDMS",
+    "evidence": [
+     {
+      "loc": "Table notes (H2CO transitions)",
+      "quote": "Frequencies and spectroscopic parameters have been extracted from CDMS (cite: Muller+2005; Endres+2016)."
+     }
+    ]
+   },
+   "citation": "(cite: Muller+2005; Endres+2016)"
+  },
+  {
+   "what": {
+    "value": "H2 column densities for GMC 3 to 7 from the 220 GHz continuum, rescaled by 0.63 to the 1.6 arcsec beam",
+    "evidence": [
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "To derive the methanol and formaldehyde abundances, we used the H$_2$ column densities from (cite: Mangum+2019)."
+     },
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."
+     }
+    ]
+   },
+   "citation": "(cite: Mangum+2019)"
+  },
+  {
+   "what": {
+    "value": "N_H2 = (3-10)e22 cm^-2 for GMC 1a, 2b, 8a, 9a (not rescaled)",
+    "evidence": [
+     {
+      "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+      "quote": "For these regions, we used $N_{H2}=(3-10)\\times10^{22}$ cm$^{-2}$ (see their Figure 4c)."
+     }
+    ]
+   },
+   "citation": "(cite: Harada+2022)"
+  },
+  {
+   "what": {
+    "value": "HNCO and SiO column densities and filling factors used for comparison abundances",
+    "evidence": [
+     {
+      "loc": "Appendix Abundances",
+      "quote": "we used the column densities of HNCO and SiO from (cite: Huang+2023) and of the S-bearing species from (cite: Bouvier+2024)"
+     }
+    ]
+   },
+   "citation": "(cite: Huang+2023)"
+  },
+  {
+   "what": {
+    "value": "S-bearing species (OCS, H2CS, H2S, CS) column densities and filling factors used for comparison abundances",
+    "evidence": [
+     {
+      "loc": "Appendix Abundances",
+      "quote": "we used the column densities of HNCO and SiO from (cite: Huang+2023) and of the S-bearing species from (cite: Bouvier+2024)"
+     }
+    ]
+   },
+   "citation": "(cite: Bouvier+2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "extract integrated line intensities at GMC positions",
+   "method": "CubeLineMoment spectral and spatial masks give moment 0, 1, 2 maps masked below 3 sigma; transitions selected by SNR and contamination criteria",
+   "software": [
+    "CubeLineMoment"
+   ],
+   "key_parameters": [
+    "Moment images masked below 3 sigma (channel-based)",
+    "GMC 5 (absorption) and GMC 10 (non-detections) excluded; 8 GMCs kept"
+   ],
+   "assumptions": [
+    "Blended lines modelled separately and summed to compare with the measured blended intensity of each group"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "convert integrated intensities to K km/s",
+   "method": "I(K) = 13.59 (300 GHz / nu)^2 / (theta_max theta_min) I(Jy), with Gaussian beam axes",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "non-LTE radiative transfer fit of physical conditions",
+   "method": "RADEX via SpectralRadex coupled with Nautilus sampler; fit n_H2, T_kin, column densities of both spin isomers and beam filling factor per GMC",
+   "software": [
+    "RADEX",
+    "SpectralRadex",
+    "Nautilus"
+   ],
+   "key_parameters": [
+    "Priors (Table 2): n_H2 1e2-1e8 cm^-3 log-uniform; T_kin 10-800 K uniform; column densities 1e12-1e18 cm^-2 log-uniform; eta_ff 0-1 uniform",
+    "T_kin outside the collisional-rate grid (3-250 K CH3OH, 10-300 K H2CO) is clamped to the nearest grid temperature"
+   ],
+   "assumptions": [
+    "Gaussian intensity uncertainties",
+    "Beam filling factor eta_ff = theta_S^2 / (theta_MB^2 + theta_S^2)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "check for sub-thermal excitation",
+   "method": "Compare collisional and radiative excitation rates using fitted opacity, density and temperature in each GMC",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "derive CH3OH and H2CO abundances",
+   "method": "Divide column densities by H2 column densities from Mangum+2019 (rescaled by 0.63; GMC 1a, 2b, 8a, 9a from Harada+2022), both scaled by the fitted beam filling factor; E- and A- (or o- and p-) combined",
+   "software": [],
+   "key_parameters": [
+    "Rescaling factor 0.63 for Mangum+2019 N_H2"
+   ],
+   "assumptions": [
+    "E- and A- (and o- and p-) column densities are equal within uncertainties so abundances are derived for both forms together"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "compare with shock tracers and interpret E/A ratio",
+   "method": "Compare n_H2, T_kin and abundances with HNCO, SiO and S-bearing species from earlier ALCHEMI fits; interpret E-/A- column density ratio (EAR) as a probe of formation temperature",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "EAR is fixed at the time of methanol formation; in thermal equilibrium EAR is set by the spin temperature"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3OH T_kin range across GMCs",
+   "value": "10.59-87.5",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$10.59-87.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH T_kin, GMC 1a",
+   "value": "76.06",
+   "uncertainty": "+11.44/-9.69",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$76.06^{+11.44}_{-9.69}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH T_kin, GMC 2b",
+   "value": "11.14",
+   "uncertainty": "+0.57/-0.55",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$11.14^{+0.57}_{-0.55}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH log n_H2 range across GMCs",
+   "value": "4.11-7.11",
+   "uncertainty": "not stated",
+   "units": "log(cm^-3)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$4.11-7.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH beam filling factor range",
+   "value": "0.07-0.92",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$0.07-0.92$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH E-/A- column density ratio (best) range across GMCs",
+   "value": "0.25-1.26",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (CH3OH Bayesian results)",
+     "quote": "$0.25-1.26$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO T_kin, GMC 4",
+   "value": "266.73",
+   "uncertainty": "+316.23/-122.64",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (H2CO Bayesian results)",
+     "quote": "$266.73^{+316.23}_{-122.64}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO T_kin, GMC 3",
+   "value": "129.71",
+   "uncertainty": "+49.30/-32.99",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (H2CO Bayesian results)",
+     "quote": "$129.71^{+49.30}_{-32.99}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO T_kin, all GMCs lower bound",
+   "value": ">=67.23",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (H2CO Bayesian results)",
+     "quote": "$\\geq67.23$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO beam filling factor range",
+   "value": "0.04-0.67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table (H2CO Bayesian results)",
+     "quote": "$0.04-0.67$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance range X(CH3OH)",
+   "value": "4.0e-10 to 1.4e-7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+     "quote": "Overall, we derive X$_{\\rm{CH3OH}}$ in the range $4.0\\times 10^{-10} - 1.4 \\times 10^{-7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2CO abundance range X(H2CO)",
+   "value": "1.4e-10 to 1.4e-6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+     "quote": "For X$_{\\rm{H2CO}}$, the range is $1.4\\times 10^{-10} - 1.4\\times10^{-6}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Rescaling factor applied to Mangum+2019 N_H2",
+   "value": "0.63",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Derivation of H2CO and CH3OH abundances",
+     "quote": "This resulted in multiplying their $N_{H2}$ by a factor of 0.63."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALCHEMI imaging and calibration details (CASA version, robust, cell size, deconvolver, continuum subtraction, line-free channels, primary-beam correction) are only in the ALCHEMI main paper",
+  "Which ALCHEMI spectral-window cubes contain each of the 39 CH3OH and 10 H2CO transitions and how they were smoothed to a common 1.6 arcsec beam",
+  "Aperture used to extract integrated intensities at each GMC (white circles in Fig. 1): size and exact extraction method",
+  "CubeLineMoment settings: which bright line was the velocity tracer per cube, spatial mask settings, velocity integration limits",
+  "How the 3 sigma per-channel noise and the intensity uncertainties used in the chi-squared were computed (including any flux-calibration error term)",
+  "RADEX settings: line width, background temperature, treatment of opacity and how line widths were set from the data",
+  "Nautilus settings: number of live points, stopping criterion, number of posterior samples, and how best-fit values and uncertainties were summarised (median, percentiles)",
+  "Numerical N_H2 values per GMC from Mangum+2019 Table 5 and how X range was bounded from the N_H2 range",
+  "How the source size theta_S in the beam filling factor relates to the fitted eta_ff"
+ ],
+ "missing_for_reproduction": [
+  "ALCHEMI calibration and imaging recipe (only in the ALCHEMI main paper)",
+  "GMC extraction aperture size, CubeLineMoment settings and per-channel noise values",
+  "Nautilus and RADEX run settings (live points, line width, background temperature)",
+  "Numerical N_H2 values used for each GMC",
+  "Posterior summary statistic definition"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALCHEMI data are the public large program and the Zenodo intensity table plus stated priors, likelihood, collisional rates and sampler allow rerunning the RADEX fits; but the cube processing, aperture, sampler settings and N_H2 values are not fully given.",
+ "rediscovery_reason": "The paper's integrated intensities are released, the RADEX plus Nautilus recipe is mostly specified, and the main results are numeric (T_kin, n_H2, column densities, EAR, abundances); full reproduction from cubes would need the ALCHEMI paper.",
+ "source_card": "cards/2025A%26A...699A..70H/sonnet/card.md"
+}

@@ -1,0 +1,993 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019A&A...628A..95M",
+  "title": "Observational constraints on dust disk sizes in tidally truncated protoplanetary disks in multiple systems in the Taurus region",
+  "year": 2019,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Manara, C. F.",
+  "n_authors": 19,
+  "arxiv_id": "1907.03846",
+  "doi": "10.1051/0004-6361/201935964",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01164.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Here we present and analyze disk structures around ten multiple stellar systems that were included in an unbiased, high spatial resolution survey performed with ALMA of 32 protoplanetary disks in the Taurus star-forming region."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "Ten multiple systems in Taurus (T Tau, UY Aur, RW Aur, DK Tau, HK Tau, CIDA 9, DH Tau, V710 Tau, HN Tau, UZ Tau)",
+     "coordinates": {
+      "value": "per-component RA/Dec in the fit table (e.g. T Tau N 04:21:59.4 +19:32:06.18)",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Distances are obtained by inverting the Gaia parallax when the uncertainty on the parallax is less than 10% of the measured parallax."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "131 pc to 171 pc",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Distances are obtained by inverting the Gaia parallax when the uncertainty on the parallax is less than 10% of the measured parallax."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR2 parallaxes",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "Distances are obtained by inverting the Gaia parallax when the uncertainty on the parallax is less than 10% of the measured parallax."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do dust disks in multiple stellar systems in Taurus have smaller sizes and sharper outer edges than disks around single stars, and are the dust radius to separation ratios consistent with tidal truncation predictions?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The dust radii of disks around multiple stellar systems are smaller than those around single stars in the same stellar mass range and in the same region."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00164.S",
+     "evidence": [
+      {
+       "loc": "2 Sample and observations",
+       "quote": "The survey of disk structures in Taurus (program 2016.1.00164.S, PI Herczeg)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "Our sample was observed with ALMA in Band 6 in 2017 August–September."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "continuum spw centered at 218 and 233 GHz, 1.875 GHz each, mean 225.5 GHz",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "The continuum spectral windows were centered at 218 and 233 GHz, each with a bandwidth of 1.875 GHz, for an averaged frequency of 225.5 GHz"
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.12 arcsec typical beam (~15-20 au)",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "These images have a typical beam size of 0.12$^{\\prime\\prime}$ and continuum rms of 50 $\\mu$Jy beam$^{-1}$."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms 50 uJy/beam",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "These images have a typical beam size of 0.12$^{\\prime\\prime}$ and continuum rms of 50 $\\mu$Jy beam$^{-1}$."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "~8-10 min per target",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "Each target was observed for $\\sim 8-10$ min."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 August-September",
+    "evidence": [
+     {
+      "loc": "2.2 Observations and data reduction",
+      "quote": "Our sample was observed with ALMA in Band 6 in 2017 August–September."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Program PI Herczeg (authors' own snapshot survey)",
+    "evidence": [
+     {
+      "loc": "2 Sample and observations",
+      "quote": "The survey of disk structures in Taurus (program 2016.1.00164.S, PI Herczeg)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR2",
+     "provided": {
+      "value": "parallaxes/distances to components",
+      "evidence": [
+       {
+        "loc": "2.1 Sample",
+        "quote": "The stellar luminosities are then rescaled to the distance obtained from the parallaxes measured by the Gaia satellite"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Spectral types and luminosities of targets",
+      "evidence": [
+       {
+        "loc": "2.1 Sample",
+        "quote": "We use the spectral type and the luminosity of the target, when available, derived by (cite: HH14)."
+       }
+      ]
+     },
+     "citation": "(cite: HH14)"
+    },
+    {
+     "what": {
+      "value": "Dynamical masses for T Tau Sa/Sb, UZ Tau E, HN Tau A",
+      "evidence": [
+       {
+        "loc": "2.1 Sample",
+        "quote": "The dynamical mass estimate is also assumed for UZ Tau E (cite: simon00) and HN Tau A (cite: simon17)"
+       }
+      ]
+     },
+     "citation": "(cite: schaefer14; kohler16; simon00; simon17)"
+    },
+    {
+     "what": {
+      "value": "Dust radii and profile fits of 12 smooth single-star disks used as comparison sample",
+      "evidence": [
+       {
+        "loc": "4 Results",
+        "quote": "In a companion paper, (cite: long19) have used our same analysis strategy to determine the intensity profile of the dust emission in the 12 smooth single disks"
+       }
+      ]
+     },
+     "citation": "(cite: long19)"
+    },
+    {
+     "what": {
+      "value": "Gas-to-dust radius ratio of 2 from Lupus disks",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "The latter factor was chosen based on the median value obtained through the observation of disks in the Lupus star-forming region with ALMA (cite: ansdell18)."
+       }
+      ]
+     },
+     "citation": "(cite: ansdell18)"
+    },
+    {
+     "what": {
+      "value": "Numerical tidal truncation results fitted for b, c parameters",
+      "evidence": [
+       {
+        "loc": "10.1",
+        "quote": "Now we calculate *b* and *c* by fitting the numerical results from (cite: AL94)"
+       }
+      ]
+     },
+     "citation": "(cite: AL94)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "phase and amplitude self-calibration applied after standard calibration",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "phase and amplitude self-calibrations were applied to our targets to maximize the image signal-to-noise ratio after the standard calibration procedure."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "The continuum images were then created with the CASA task *tclean*, using Briggs weighting with a robust parameter of 0.5."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs, robust = 0.5",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "using Briggs weighting with a robust parameter of 0.5"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "~0.12 arcsec",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "These images have a typical beam size of 0.12$^{\\prime\\prime}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "50 uJy/beam",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "continuum rms of 50 $\\mu$Jy beam$^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction and calibration details, observing conditions and calibrators",
+      "evidence": [
+       {
+        "loc": "2.2 Observations and data reduction",
+        "quote": "The observing conditions and calibrators for individual targets can be found in Table 2 of (cite: long19), where the details of the data reduction and calibration are described."
+       }
+      ]
+     },
+     "from_reference": "(cite: long19)"
+    },
+    {
+     "what": {
+      "value": "Stellar properties derived as in earlier work",
+      "evidence": [
+       {
+        "loc": "2.1 Sample",
+        "quote": "The stellar properties are obtained as in (cite: long19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: long19)"
+    },
+    {
+     "what": {
+      "value": "Disk radius definitions (95% and 68% flux radii)",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "Following (cite: tazzari17), (cite: tripathi17), and (cite: trapman19) among others, we defined the disk radius"
+       }
+      ]
+     },
+     "from_reference": "(cite: tazzari17; tripathi17; trapman19)"
+    },
+    {
+     "what": {
+      "value": "Gaussian ring profiles for CIDA 9A and UZ Tau E",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "Following (cite: long18), we used a single Gaussian ring profile for CIDA 9A"
+       }
+      ]
+     },
+     "from_reference": "(cite: long18)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass from evolutionary tracks as in Pascucci",
+      "evidence": [
+       {
+        "loc": "2.1 Sample",
+        "quote": "as in (cite: pascucci16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: pascucci16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Priors and parameter bounds for the MCMC fits",
+    "Initial walker positions and exact convergence criterion",
+    "Visibility weights rescaling procedure details (factor sqrt(3.5) applied)",
+    "Exact calibrators, self-calibration solution intervals and CASA version (deferred to Long et al. 2019)",
+    "Number of uv-averaged channels and any uv-range cut",
+    "Reynolds numbers adopted (three values not listed in main text)",
+    "Whether the 1.33 mm flux in radii uses the fitted profile extrapolated to infinity",
+    "Cell size, image size, and masks"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Derive stellar properties and distances",
+    "method": {
+     "value": "Gaia DR2 parallaxes for distances; spectral type to Teff, with luminosity, to masses via evolutionary tracks",
+     "evidence": [
+      {
+       "loc": "2.1 Sample",
+       "quote": "combine this with the distance corrected stellar luminosity to infer the stellar masses using the evolutionary models by (cite: baraffe15) and the nonmagnetic models by (cite: feiden16)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit continuum visibilities of each disk",
+    "method": {
+     "value": "Sum of axisymmetric model visibilities per component, power law with exponential cutoff (Gaussian rings for CIDA 9A, UZ Tau E); visibilities averaged per spw to one channel",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "To fit the continuum visibilities of a multiple system made of $M$ components, we computed the total model visibilities as the sum of the visibilities of the individual components"
+      }
+     ]
+    },
+    "software": [
+     "Galario",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "150 walkers, ~20000 steps (1 disk); 200 walkers, >25000 steps (2 disks); 400 walkers, 31000 steps (UZ Tau)",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "typically we used 150 walkers and $\\sim$20000 steps for the cases where only one disk is detected (8 parameters), 200 walkers and more than 25000 steps for the cases where two disks are detected (16 parameters)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "axisymmetric brightness profile, independent geometry per disk",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "each disk is modeled with an independent brightness profile and geometry"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee ensemble MCMC with Gaussian likelihood; medians of posterior, 16th-84th percentile uncertainties; last 3000-10000 steps used",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "We explored the parameter space using the Markov chain Monte Carlo (MCMC) ensemble sampler `emcee` (cite: emcee) and we adopted a Gaussian likelihood"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi2 ~3.5 (6.4 for T Tau), attributed to CASA weights underestimated; uncertainties corrected; R_eff compared with Gaussian and Nuker profile fits",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "We verified that the values of $R_{\\rm eff,dust}$ obtained with this functional form are compatible with those obtained using a Gaussian function"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compute dust radii and flux",
+    "method": {
+     "value": "R_disk,dust enclosing 95% and R_eff,dust enclosing 68% of flux; uncertainties from 1000 chains",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "The uncertainties on these values are obtained by calculating the radii and the flux with the values obtained with 1000 different chains"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Compare multiples with single smooth disks",
+    "method": {
+     "value": "Two-sided K-S tests on radii, gamma1 and gamma2 distributions vs. singles from Long et al. 2019",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "We perform also the Kolmogorov–Smirnov (K-S) two-sided test for the null hypothesis that the samples of dust radii around single stars and around primary stars in multiple systems are drawn from the same continuous distribution."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Repeated excluding CIDA 9A and UZ Tau E",
+     "evidence": [
+      {
+       "loc": "4.1",
+       "quote": "This same result is found when excluding the two disks around primary stars showing substructures (CIDA 9A and UZ Tau E)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Relative disk inclinations",
+    "method": {
+     "value": "Spherical law of cosines with fitted inclinations and position angles",
+     "evidence": [
+      {
+       "loc": "4.3",
+       "quote": "We computed the relative inclination of the disks in each system using the spherical law of cosines"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compare radii/separation with tidal truncation",
+    "method": {
+     "value": "Analytic truncation radius from Artymowicz & Lubow fit (Roche lobe times b e^c + 0.88 mu^0.01); derive minimum eccentricity for i=0 or coplanar orbit, with truncation radius = dust radius or 2x dust radius",
+     "evidence": [
+      {
+       "loc": "5.2",
+       "quote": "We thus explore here the eccentricities that would be derived using the measured dust disk radii as a value for the truncation radius"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "three Reynolds numbers; gas radius = 2 x dust radius",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "using an estimate of the gas disk radii that is two times larger than the dust radii"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Coplanar disks and orbit for the theoretical truncation radius; apoastron gives minimum eccentricity",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "This is a lower limit to the real eccentricity of the orbit"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "tclean continuum imaging (Briggs, robust 0.5)",
+     "evidence": [
+      {
+       "loc": "2.2 Observations and data reduction",
+       "quote": "The continuum images were then created with the CASA task *tclean*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Galario",
+    "version": "not stated",
+    "used_for": {
+     "value": "computing model visibilities",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "We used `Galario` (cite: tazzari18) to compute the model visibilities"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC sampling of model parameters",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "Markov chain Monte Carlo (MCMC) ensemble sampler `emcee` (cite: emcee)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "APLpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "plotting",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of APLpy, an open-source plotting package for Python"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median R_disk,dust of disks in multiple systems (primaries / secondaries)",
+    "value": "21 / 15",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "the median value of the dust radii distribution ($R_{\\rm disk,dust}$=21 au and $R_{\\rm disk,dust}$=15 au, respectively)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median R_disk,dust of smooth single disks",
+    "value": "34",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "is smaller in multiple systems than in single systems ($R_{\\rm disk,dust}$=34 au)"
+     }
+    ]
+   },
+   {
+    "quantity": "K-S p-value radii singles vs primaries",
+    "value": "<1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "The results exclude this hypothesis with p-values$<10^{-5}$"
+     }
+    ]
+   },
+   {
+    "quantity": "K-S p-value gamma2 singles vs multiples",
+    "value": "<1e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "with p-values$<10^{-5}$ when performing a K-S test of the two distributions"
+     }
+    ]
+   },
+   {
+    "quantity": "UZ Tau E R_disk,dust",
+    "value": "86.3",
+    "uncertainty": "+0.26/-0.42",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table fits_res",
+      "quote": "| UZ Tau E   | 04:32:43.1 | +25:52:30.63 | 0.4424$_{-0.0022}^{+0.0011}$ | 57.9$_{-0.29}^{+0.14}$ | 0.6588$_{-0.0032}^{+0.0020}$ | 86.3$_{-0.42}^{+0.26}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of disk pairs requiring e>0.5 (i=0, dust radius as truncation)",
+    "value": "9 of 11",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "quite high ($e>0.5$ in 9/11 cases) assuming the truncation radius to be equal to the dust disk radius"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Disks around secondaries are statistically smaller than primaries and singles; outliers T Tau S and HK Tau B",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "Two main outliers are however present: T Tau S and HK Tau B."
+     }
+    ]
+   },
+   {
+    "value": "No clear correlation of disk flux with projected separation in this sample",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "We do not find a clear correlation between the two components"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Disks in multiple systems are smaller than disks around single stars",
+    "experiment": "Visibility fits of 1.3 mm continuum and K-S comparison with smooth single disks",
+    "result": "Median R_disk,dust 21 au (primaries) vs 34 au (singles); p<1e-5",
+    "finding": "Dust disks in multiples are smaller",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we demonstrated that the disks around stars in multiple systems are smaller than in single systems in a statistically significant way"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Disk outer edges in multiples are sharper",
+    "experiment": "Compare gamma2 exponent distributions",
+    "result": "gamma2 larger in multiples, p<1e-5",
+    "finding": "Steeper outer edge, plausibly tidal truncation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "disks around multiple stellar systems present a statistically significant sharper outer edge in the dust emission"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Measured dust radii are consistent with tidal truncation predictions",
+    "experiment": "Compare R/a_p with analytic truncation models and derive minimum eccentricities",
+    "result": "e>0.5 in 9/11 cases if dust radius is truncation radius; reasonable if gas radius is 2x dust",
+    "finding": "Consistent only with high eccentricities or gas radii twice dust radii",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "when assuming that the gas disk radii, which directly trace the dynamical truncation, are twice as large as the dust disk radii, the values of the eccentricity for the orbits are more reasonable"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Disks in a multiple system are coplanar",
+    "experiment": "Relative inclinations from fitted inclination and PA",
+    "result": "Only UZ Tau and UY Aur near 0 deg, others large",
+    "finding": "Most disk pairs not coplanar",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "Their finding that most disks in binary systems are not coplanar is reinforced here by our resolved observations"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Power law with exponential cutoff chosen for better outer cutoff description than a Gaussian, one fewer parameter than Nuker, and comparability with Long et al.",
+    "evidence": [
+     {
+      "loc": "3 Analysis",
+      "quote": "it has one less parameter than the Nuker profile, and the power-law exponent is not related to the exponential cutoff as it is in the similarity solution"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Gaussian, Nuker and self-similar profiles were considered; Gaussian and Nuker radii found compatible",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "both the $R_{\\rm eff,dust}$ and $R_{\\rm disk,dust}$ values are compatible with the results obtained using a Nuker profile"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Uncertainties likely underestimated; gamma2 and T Tau S, UY Aur B, HN Tau B poorly constrained; no gas data",
+     "evidence": [
+      {
+       "loc": "3 Analysis",
+       "quote": "These uncertainties are likely underestimated."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Comparison sample of singles is small (12) and processed in a companion paper",
+    "K-S p-values with tiny values may be affected by correlated or non-independent samples and underestimated errors",
+    "Dust optical depth and drift effects confound size comparison",
+    "Projected separation used as proxy for semimajor axis",
+    "Assumed gas/dust ratio of 2 taken from isolated Lupus disks"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA program 2016.1.00164.S cited; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00164.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration details and self-cal parameters (in Long et al. 2019)",
+    "MCMC priors",
+    "Single-star comparison profiles from Long et al. 2019"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB for 32-target snapshot survey (10 systems used)",
+   "score_inferred": 3,
+   "score_reason": "Method and sampler are described, but calibration, priors, and comparison sample live in companion papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Calibration and comparison sample details are deferred to Long et al. 2019 and priors are not given."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: tazzari18)",
+     "why": "Galario visibility modelling"
+    },
+    {
+     "citation": "(cite: AL94)",
+     "why": "tidal truncation theory"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: long19)",
+     "why": "Survey data reduction, single-disk comparison sample"
+    },
+    {
+     "citation": "(cite: long18)",
+     "why": "Substructured disks including CIDA 9A and UZ Tau E fits"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Taurus disk structure survey (2016.1.00164.S)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-705dc27a065da1edd1aff28e25a5fcb3",
+  "batch_id": "msgbatch_01MY66sGvKajpLU4bUBXRVRf",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:58:17",
+  "usage": {
+   "input_tokens": 42802,
+   "output_tokens": 8561,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086213,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 62,
+  "quotes_ok": 62,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2016.1.00164.S"
+  ],
+  "obscore_codes_not_in_card": [
+   "2016.1.01164.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 50,
+   "rate": 0.595
+  },
+  "evidence_ok": true
+ }
+}

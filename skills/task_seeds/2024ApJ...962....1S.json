@@ -1,0 +1,357 @@
+{
+ "bibcode": "2024ApJ...962....1S",
+ "title": "Molecular Outflow in the Reionization-epoch Quasar J2054-0005 Revealed by OH 119 μm Observations",
+ "year": 2024,
+ "doi": "10.3847/1538-4357/ad0df5",
+ "arxiv_id": "2307.02104",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Does the z=6.04 quasar J2054-0005 host a molecular outflow traced by OH 119 μm, and how strong is it relative to star formation?",
+ "alma_project_codes": [
+  "2021.1.01305.S",
+  "2019.1.00672.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12 m array, 41-46 antennas",
+  "angular_resolution": "0.205\"x0.176\" continuum; 0.204\"x0.174\" OH cube (~1 kpc)",
+  "sensitivity": "13 μJy/beam continuum; 0.13 mJy/beam per 35 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Total molecular gas mass (3-6)e10 Msun",
+    "evidence": [
+     {
+      "loc": "5.3 Suppression of star formation",
+      "quote": "$M_\\mathrm{mol}=(3\\mathrm{-}6)\\times10^{10}M_\\ensuremath{\\odot}$ by (cite: Dec22)"
+     }
+    ]
+   },
+   "citation": "(cite: Dec22)"
+  },
+  {
+   "what": {
+    "value": "Dynamical mass 7.2e10 Msun from [CII], inclination 24 deg",
+    "evidence": [
+     {
+      "loc": "5.4 Gas escaping into the IGM",
+      "quote": "$M_\\mathrm{dyn}\\approx7.2\\times10^{10}M_\\ensuremath{\\odot}$ (cite: Wan13)"
+     }
+    ]
+   },
+   "citation": "(cite: Wan13)"
+  },
+  {
+   "what": {
+    "value": "OH outflow properties of comparison quasars and DSFGs (radii, continuum sizes, LIR)",
+    "evidence": [
+     {
+      "loc": "5.4 Mdot-LIR relation",
+      "quote": "based on Figure 2 in (cite: But23)"
+     }
+    ]
+   },
+   "citation": "(cite: But23); (cite: Spi20a)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature Td=50±2 K and LIR~1.3e13 Lsun",
+    "evidence": [
+     {
+      "loc": "4.1 Outflow mass",
+      "quote": "$T_\\mathrm{d}=50\\pm2~\\mathrm{K}$; (cite: Has19)"
+     }
+    ]
+   },
+   "citation": "(cite: Has19)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and OH cube",
+   "method": "tclean with hogbom, briggs 0.5, auto-multithresh; LSB for continuum, USB for OH without continuum subtraction; cubes smoothed to 35 km/s",
+   "software": [
+    "CASA",
+    "tclean",
+    "imageconcat"
+   ],
+   "key_parameters": [
+    "robust=0.5; 2σ threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux and position",
+   "method": "imfit 2D Gaussian within 0.5\" of brightest pixel; flux in r<0.5\"",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit OH profile",
+   "method": "Least-squares fit of two double-Gaussians (absorption outflow + emission systemic); doublet separation fixed at 521 km/s, equal peaks and FWHMs; constant continuum",
+   "software": [
+    "Python scipy.optimize.curve_fit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive outflow mass and rate",
+   "method": "Optical depth, LTE OH column density from equivalent width, N_H2 via abundance, thin shell M=mu mH N_H Omega r^2, Mdot=M v/r; empirical relation as check",
+   "software": [],
+   "key_parameters": [
+    "Tex=50 K, Q≈19, [OH]/[H2]=5e-7, f=0.3, r_out=2 kpc, v_out=669 km/s"
+   ],
+   "assumptions": [
+    "OH abundance 5e-7 chosen as compromise and to match the empirical relation"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Resolved OH spectra",
+   "method": "Extract spectra from 0.1\"x0.1\" regions and double-Gaussian fit each",
+   "software": [
+    "scipy"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "AGN fraction, LIR, SFR via SED",
+   "method": "CIGALE SED fitting with delayed SFH, DL07 dust, Fritz AGN, solar/2 metallicity, two torus inclinations",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "SFR=1.40e-10 L'IR (Chabrier)"
+   ],
+   "assumptions": [
+    "Gas-phase metallicity half solar; AGN torus optical depth 2"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Mdot-LIR scaling relation with literature sample",
+   "method": "Power-law fit of Mdot vs LIR for 8 DSFGs and 3 quasars",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex=50 K, [OH]/[H2]=5e-7 for all sources"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum flux density (r<0.5\")",
+   "value": "5.723",
+   "uncertainty": "0.009",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "$S_\\nu(r<0.5\\ensuremath{''})=5.723\\pm0.009~\\mathrm{mJy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption center velocity",
+   "value": "-669",
+   "uncertainty": "87",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Center velocity $v_\\mathrm{cen}$ \\[$\\mathrm{km~s^{-1}}$\\] | $-669\\pm87$ | $65\\pm15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption FWHM",
+   "value": "1052",
+   "uncertainty": "234",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "FWHM line width \\[$\\mathrm{km~s^{-1}}$\\] | $1052\\pm234$ | $306\\pm55$"
+    }
+   ]
+  },
+  {
+   "quantity": "v98",
+   "value": "-1574",
+   "uncertainty": "35",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$v_{98}=-1574\\pm35~\\mathrm{km~s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "USB continuum from fit",
+   "value": "6.175",
+   "uncertainty": "0.092",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$S_\\mathrm{cont}=6.175\\pm0.092~\\mathrm{mJy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass (LTE)",
+   "value": "4.9e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Mass $M_\\mathrm{out}$ \\[$M_\\odot$\\] | $4.9\\times10^9$ | $4.5\\times10^9$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate (LTE)",
+   "value": "1700",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Mass outflow rate $\\dot{M}_\\mathrm{out}$ \\[$M_\\odot~\\mathrm{yr^{-1}}$\\] | $1700$ | $1500$"
+    }
+   ]
+  },
+  {
+   "quantity": "OH column density",
+   "value": "7.5e15",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Column density $N_\\mathrm{OH}~[\\mathrm{cm^{-2}}]$ | $7.5\\times10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loading factor",
+   "value": "2.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Mass loading factor $\\eta$ | $2.2$ | $1.9$"
+    }
+   ]
+  },
+  {
+   "quantity": "LIR",
+   "value": "1.34e13",
+   "uncertainty": "0.17e13",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "$L_\\mathrm{IR}=(1.34\\pm0.17)\\times10^{13}~L_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN fraction of LIR",
+   "value": "0.59",
+   "uncertainty": "0.08",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "$f_\\mathrm{AGN}=0.59\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR",
+   "value": "770",
+   "uncertainty": "180",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.1",
+     "quote": "$\\mathrm{SFR}=770\\pm180~M_\\odot~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdot-LIR slope k",
+   "value": "1.61",
+   "uncertainty": "0.40",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "$k=1.61\\pm0.40$ and $m=-16.4\\pm5.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape velocity",
+   "value": "780",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "$v_\\mathrm{esc}(R)\\approx\\sqrt{2GM_\\mathrm{dyn}/R}\\approx780~\\mathrm{km~s^{-1}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels/velocity ranges and fitting initial guesses for curve_fit",
+  "Exact tclean parameters (cell, image size, niter, automask thresholds)",
+  "Which spectral extraction mask (>3σ continuum) exact definition",
+  "CASA and pipeline versions",
+  "CIGALE module parameter grids and version",
+  "Fitting data for Mdot-LIR relations (values for comparison sources, regression method)",
+  "Self-calibration status"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean parameters and CASA version",
+  "Line fitting initial conditions and aperture mask",
+  "CIGALE parameter grids",
+  "Comparison-sample values for scaling relation"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Recipe is mostly clear with numeric tables, but several imaging and fitting details are missing.",
+ "rediscovery_reason": "Cycle 8 data should be archival, the recipe is mostly complete, and the results are numeric (Table 2 and Table 3).",
+ "source_card": "cards/2024ApJ...962....1S/sonnet/card.md"
+}

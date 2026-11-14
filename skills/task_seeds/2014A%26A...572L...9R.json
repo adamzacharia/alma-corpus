@@ -1,0 +1,187 @@
+{
+ "bibcode": "2014A&A...572L...9R",
+ "title": "ALMA sub-mm maser and dust distribution of VY Canis Majoris",
+ "year": 2014,
+ "doi": "10.1051/0004-6361/201425024",
+ "arxiv_id": "1409.5497",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "Where do the 658, 321 and 325 GHz water masers lie relative to the star VY CMa and its dust continuum, and do they match excitation model predictions?",
+ "alma_project_codes": [
+  "2011.0.00011.SV"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "16–20 12 m antennas",
+  "angular_resolution": "continuum beams 0.22\"x0.13\" (321/325 GHz), 0.11\"x0.06\" (658 GHz); maser beams 0.18\"x0.09\" and 0.088\"x0.044\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust and wind density/velocity profiles for VY CMa used in maser excitation model",
+    "evidence": [
+     {
+      "loc": "Maser modelling",
+      "quote": "based upon the density and velocity profiles obtained for VY CMa by Decin et al. (2006)"
+     }
+    ]
+   },
+   "citation": "Decin et al. 2006"
+  },
+  {
+   "what": {
+    "value": "Collisional rate coefficients for H2O-H2",
+    "evidence": [
+     {
+      "loc": "Maser modelling",
+      "quote": "We adopted the latest quantal rate coefficients (Daniel et al. 2011)"
+     }
+    ]
+   },
+   "citation": "Daniel et al. 2011; Neufeld 2010"
+  },
+  {
+   "what": {
+    "value": "Literature continuum flux densities for comparison",
+    "evidence": [
+     {
+      "loc": "Observations and data processing",
+      "quote": "We compared the total continuum flux densities with literature values (Fu et al 2012; Kamiński et al. 2013; Muller et al. 2007; Shinnaga et a. 2004)."
+     }
+    ]
+   },
+   "citation": "Fu et al 2012; Kamiński et al. 2013; Muller et al. 2007; Shinnaga et al. 2004"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate and self-calibrate",
+   "method": "Standard ALMA calibration with Pallas flux scale, J0522-3627 bandpass, J0648-3044 phase reference; self-cal on brightest maser channel",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image continuum and masers",
+   "method": "Natural-weighted continuum; continuum-subtracted maser cubes with robust=0.5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "measure maser and continuum positions",
+   "method": "2D Gaussian fits per channel; components >3σ (321, 325) or >4σ (658), at least three successive channels",
+   "software": [
+    "AIPS sad"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "excitation modelling of maser conditions",
+   "method": "Collisional excitation, radiative decay, escape-probability trapping with steep velocity gradient; negative optical depth contours vs T and n(H2)",
+   "software": [],
+   "key_parameters": [
+    "N(H2O)/(dv/dz) = 10^17 cm^-2 per km/s"
+   ],
+   "assumptions": [
+    "Unsaturated limit"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "VY–C separation",
+   "value": "328",
+   "uncertainty": "±1",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "VY CMa continuum and maser morphology",
+     "quote": "**VY** is 328$\\pm$1 mas from **C** at PA –33$^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak continuum flux of VY at 321 GHz",
+   "value": "71.7",
+   "uncertainty": "σrms 0.9",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "VY CMa continuum and maser morphology",
+     "quote": "**C** and **VY** had peak flux densities of 133.9 and 71.7 ($\\sigma_{\\mathrm{rms}}$ 0.9) mJy beam$^{-1}$ at 321 GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Maser peak brightness 321 GHz",
+   "value": "426.6",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data processing",
+     "quote": "321 GHz: 426.6 Jy beam$^{-1}$, S/N 2010"
+    }
+   ]
+  },
+  {
+   "quantity": "J0648-3044 flux at 316.093 GHz",
+   "value": "0.433",
+   "uncertainty": "±0.008",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and data processing",
+     "quote": "was $0.433\\pm0.008$ Jy at reference frequency 316.093 GHz, spectral index $\\alpha$ $-0.80\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Maser outer rims (658, 321, 325 GHz)",
+   "value": "~200, 500, 600",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "VY CMa continuum and maser morphology",
+     "quote": "whilst the outer rims are at $\\sim$ 200, 500, and 600 mas"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size and cell size",
+  "Clean threshold, mask and iteration details",
+  "Exact self-calibration solution intervals and iterations",
+  "Which channels were line-free",
+  "CASA version",
+  "Exact component lists/flagging"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, clean)",
+  "Self-cal details",
+  "Component tables"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and stated key choices, but several imaging and selfcal details missing.",
+ "rediscovery_reason": "Public SV data, numeric positions and separations can be checked, though recipe is partly incomplete.",
+ "source_card": "cards/2014A%26A...572L...9R/sonnet/card.md"
+}

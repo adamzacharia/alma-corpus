@@ -1,0 +1,238 @@
+{
+ "bibcode": "2017A&A...603A..92V",
+ "title": "Magnetically aligned dust and SiO maser polarisation in the envelope of the red supergiant VY Canis Majoris",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201730735",
+ "arxiv_id": "1703.02084",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What do the linear and circular polarization of SiO lines and of the dust continuum from VY CMa reveal about the magnetic field and dust alignment in its envelope?",
+ "alma_project_codes": [
+  "2011.0.00011.S"
+ ],
+ "data": {
+  "bands": "Band 5 (163-211 GHz)",
+  "arrays": "13 antennas used",
+  "angular_resolution": "lines ~0.8x0.3 arcsec; continuum ~0.5x0.2 arcsec",
+  "sensitivity": "continuum rms 0.1 mJy/beam; line rms ~3.8 mJy/beam (spw 3,4), ~1.4 mJy/beam (spw 2)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 7/9 continuum structure and clump C size, dust analysis",
+    "evidence": [
+     {
+      "loc": "Dust polarization of clump C",
+      "quote": "Taking the dust mass derived from our measured fluxes, the size of clump C from OG+15, and assuming a gas-to-dust ratio of $100$"
+     }
+    ]
+   },
+   "citation": "O'Gorman et al. 2015 (cite: OGorman2015)"
+  },
+  {
+   "what": {
+    "value": "SiO Einstein A coefficients and energies",
+    "evidence": [
+     {
+      "loc": "SiO emission",
+      "quote": "along with their transition energy and Einstein $A$ coefficients (cite: Muller2001)"
+     }
+    ]
+   },
+   "citation": "(cite: Muller2001)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image full-Stokes data",
+   "method": "Standard ALMA calibration plus polarization calibration, self-cal on SiO maser, imaging in Stokes I,Q,U,V",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "line robust 0.5; continuum robust -0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum fluxes and polarization",
+   "method": "Deconvolve star and clump C; derive fractional polarization and EVPA",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract SiO spectra and polarization",
+   "method": "Spectra of Stokes I, linear fraction, EVPA and V at the peak intensity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive maser magnetic field from circular polarization",
+   "method": "Zeeman: B ≈1.3 Pc cosθ, and fit V = z B cosθ dI/dν",
+   "software": [],
+   "key_parameters": [
+    "maser linewidth ~1 km/s; z≈1500 s^-1 G^-1"
+   ],
+   "assumptions": [
+    "Zeeman origin of circular polarization; field reversals at Vlsr~15 and 30 km/s"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Lower limit of field for grain alignment",
+   "method": "Compare Larmor timescale with gas-dust timescale (Hoang & Lazarian 2009)",
+   "software": [],
+   "key_parameters": [
+    "a=0.1 micron, s=0.5, Td=Tg=100 K, n_g≈9e9 cm^-3"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Clump C flux at 178 GHz",
+   "value": "94",
+   "uncertainty": "9",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "$94\\pm9$ mJy for clump C"
+    }
+   ]
+  },
+  {
+   "quantity": "Star flux at 178 GHz",
+   "value": "36",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "we measure a total flux of $36\\pm3$ mJy for the star"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum EVPA",
+   "value": "8",
+   "uncertainty": "4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "The average (non-rotated) electric vector position angle (EVPA) is $8\\pm4^\\circ$ (East of North)"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum continuum fractional polarization",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Dust continuum",
+     "quote": "The maximum fractional polarization is $\\sim3\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Max linear polarization 29SiO v=1",
+   "value": "28.6",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| 170.328$^{b}$  | $J=4-3, v=1$ | 1779    | $2.484\\times          | 7.4       | 28.6              | 0.9                 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field from circular polarization, B/cosθ",
+   "value": "0.85",
+   "uncertainty": "not stated",
+   "units": "G",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SiO maser polarization",
+     "quote": "We thus find $B/\\cos{\\theta} \\approx 0.85$ G."
+    }
+   ]
+  },
+  {
+   "quantity": "B cosθ from dI/dν fit",
+   "value": "~2.4",
+   "uncertainty": "not stated",
+   "units": "G",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "SiO maser polarization",
+     "quote": "$B\\cos{\\theta}\\sim2.4$ G"
+    }
+   ]
+  },
+  {
+   "quantity": "Minimum field for dust alignment in clump C",
+   "value": ">13",
+   "uncertainty": "not stated",
+   "units": "mG",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Dust polarization of clump C",
+     "quote": "we find $B>13$ mG"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump C dust mass",
+   "value": ">1.2e-3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "the estimated clump C dust mass is $>1.2\\times10^{-3}$ M$_\\odot$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA tasks and parameters for imaging (cell size, image size, masks, deconvolver, niter)",
+  "Line-free channel ranges for continuum",
+  "Reference antenna and self-calibration solution intervals",
+  "Method of two-component deconvolution for clump C and star fluxes",
+  "Aperture used for the extended SiO v=0 spectra",
+  "Debiasing of polarized intensity and thresholds"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks)",
+  "Details of two-component fit",
+  "Calibration memo contents",
+  "Aperture definitions for extended SiO emission"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public SV data and clear analytic formulas, but imaging and extraction details are largely deferred to a memo or unstated.",
+ "rediscovery_reason": "Public SV data, numeric results (fluxes, EVPA, polarization fractions, B estimates) with described recipe.",
+ "source_card": "cards/2017A%26A...603A..92V/sonnet/card.md"
+}

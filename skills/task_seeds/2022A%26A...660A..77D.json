@@ -1,0 +1,344 @@
+{
+ "bibcode": "2022A&A...660A..77D",
+ "title": "Stellar feedback in M83 as observed with MUSE. I. Overview, an unprecedented view of the stellar and gas kinematics and evidence of outflowing gas",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142315",
+ "arxiv_id": "2202.01738",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How do the kinematics of stars, ionised gas, and molecular gas compare in M83 at ~20 pc scales, and what is the fraction and ionisation mechanism of diffuse ionised gas and central outflow/inflow structures?",
+ "alma_project_codes": [
+  "2013.1.01161.S",
+  "2015.1.00121.S",
+  "2016.1.00386.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "2.14'' (50 pc)",
+  "sensitivity": "rms brightness temperature sensitivity of 0.17 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance of M83 (4.89 Mpc)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "M83 (also known in the literature as NGC 5236) is a nearby spiral galaxy, at a distance of 4.89 Mpc (cite: jacobs09)."
+     }
+    ]
+   },
+   "citation": "(cite: jacobs09)"
+  },
+  {
+   "what": {
+    "value": "Effective radius, stellar mass, SFR, main sequence offset, and molecular depletion time of M83; PHANGS-ALMA CO(2-1) data products",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The galaxy has a stellar mass $\\log_{10} M_\\star = 10.53 M_\\odot$ (cite: leroy21) and hosts a nuclear starburst ring (cite: sersic65; buta93; calzetti04; knapen10; comeron10), resulting in a high star formation rate (SFR = 4.2 $M_\\odot$ yr$^{-1}$, (cite: leroy21))."
+     },
+     {
+      "loc": "Dataset overview and MUSE data reduction",
+      "quote": "The data are described in detail in (cite: leroy21), and the data reduction in (cite: leroy21_pipeline)."
+     }
+    ]
+   },
+   "citation": "(cite: leroy21)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1)-to-CO(1-0) line ratio R_21 = 0.65",
+    "evidence": [
+     {
+      "loc": "Dataset overview and MUSE data reduction",
+      "quote": "Using Eq. (1) in (cite: sun20) and assuming a CO(2–1)-to-CO(1–0) line ratio $R_{21} = 0.65$ (cite: denbrok21_alma; leroy21_subm) and a standard Galactic CO-to-H2 conversion factor $\\alpha_{\\rm CO} = 4.35$ $M_\\odot$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$, these values corresponds to a cold gas surface density of $\\simeq 30$ and 170 $M_\\odot$ pc$^{-2}$."
+     }
+    ]
+   },
+   "citation": "(cite: denbrok21_alma; leroy21_subm)"
+  },
+  {
+   "what": {
+    "value": "Ionising photon flux log Q(H^0) = 47.56 photons s^-1 for an O9.5 class V star",
+    "evidence": [
+     {
+      "loc": "H ii region identification and fraction of DIG",
+      "quote": "We determined this low luminosity threshold using the models of (cite: martins05) (Table 1 in their work), which predict an ionising photon flux $\\log Q(H^0) = 47.56$ photons s$^{-1}$ for a O9.5 class V star."
+     }
+    ]
+   },
+   "citation": "(cite: martins05)"
+  },
+  {
+   "what": {
+    "value": "Fast shock models and slow shock models for BPT diagram comparison",
+    "evidence": [
+     {
+      "loc": "BPT diagram analysis",
+      "quote": "The black grid corresponds to the fast shock models of (cite: allen08)."
+     },
+     {
+      "loc": "BPT diagram analysis",
+      "quote": "The blue grid displays the slow shock models described in (cite: farage10) and (cite: rich11)."
+     }
+    ]
+   },
+   "citation": "(cite: allen08), (cite: farage10), (cite: rich11)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce MUSE observations and assemble the 26-pointing mosaic",
+   "method": "Standard ESO MUSE pipeline reduction, sky subtraction with 'subtract-model', exposure alignment, and pointing alignment to HST B-band mosaic registered to Gaia DR2",
+   "software": [
+    "ESO MUSE pipeline",
+    "muse_scibasic",
+    "muse_create_sky",
+    "muse_scipost",
+    "muse_exp_align",
+    "muse_exp_combine",
+    "PAMPELMUSE"
+   ],
+   "key_parameters": [
+    "subtract-model sky subtraction method; Moffat PSF fit"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive stellar, ionised gas, and molecular gas kinematics and fit 2D rotation models",
+   "method": "Voronoi binning and PPXF fitting for stellar continuum; single and double Gaussian fitting (with BIC selection) for H-alpha in continuum-subtracted cube; PHANGS-ALMA mom1/mom2 maps and Gaussian fits to CO spectra; 2D double-Plummer rotation curve fitting with MocKinG",
+   "software": [
+    "PPXF",
+    "scipy curve_fit",
+    "MocKinG"
+   ],
+   "key_parameters": [
+    "Stellar Voronoi S/N ~ 250 in 5025-5065 A, fit range 4600-8740 A (excluding 7220-8507 A)",
+    "H-alpha Voronoi S/N ~ 20, fit window 22 A (+/- 500 km s^-1)",
+    "2D kinematic fit angular sector of inclusion = 67.5 degrees around major axis with cosine weighting"
+   ],
+   "assumptions": [
+    "CO(2-1)-to-CO(1-0) line ratio R_21 = 0.65 and alpha_CO = 4.35 M_sun pc^-2 (K km s^-1)^-1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate dust extinction, separate HII regions from DIG, and perform BPT diagram analysis",
+   "method": "Compute E(B-V) from H-beta/H-alpha ratio using PYNEB and compare with ALMA CO surface density; separate HII regions and DIG using ASTRODENDRO and [SII]/H-alpha cut; analyse BPT emission line ratios against star formation limits and shock models",
+   "software": [
+    "PYNEB",
+    "ASTRODENDRO"
+   ],
+   "key_parameters": [
+    "ASTRODENDRO min leaf size = 4.3 pixels (0.86''), min_delta = 0, SB threshold = 1.23e-15 erg s^-1 cm^-2 arcsec^-2; alternative cut [SII] 6716,31/H-alpha = 0.29"
+   ],
+   "assumptions": [
+    "Intrinsic H-alpha/H-beta = 2.863 (case B recombination, T_e = 10^4 K, n_e = 100 cm^-3) and Cardelli et al. (1989) extinction law; T_e ~ 10000 K and n_e = 10^3 cm^-3 for H-alpha luminosity threshold"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar disk inclination (model A)",
+   "value": "20.3",
+   "uncertainty": "0.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis of the stellar velocity field",
+     "quote": "The best-fit inclination $incl$=20.3$\\pm$0.1${\\ensuremath{^\\circ}}$ is in excellent agreement with the one of 21${\\ensuremath{^\\circ}}$ listed by (cite: gadotti19), the position angle $PA$=223.1$\\pm$0.1${\\ensuremath{^\\circ}}$ is also very close to the one of 227${\\ensuremath{^\\circ}}$ found by (cite: sheth10) and the systemic velocity $v_{\\rm syst} = 514.2$ km s$^{-1}$ is only 6 km s$^{-1}$ higher than the one from LEDA (cite: paturel03; makarov14)."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar disk position angle (model A)",
+   "value": "223.1",
+   "uncertainty": "0.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis of the stellar velocity field",
+     "quote": "The best-fit inclination $incl$=20.3$\\pm$0.1${\\ensuremath{^\\circ}}$ is in excellent agreement with the one of 21${\\ensuremath{^\\circ}}$ listed by (cite: gadotti19), the position angle $PA$=223.1$\\pm$0.1${\\ensuremath{^\\circ}}$ is also very close to the one of 227${\\ensuremath{^\\circ}}$ found by (cite: sheth10) and the systemic velocity $v_{\\rm syst} = 514.2$ km s$^{-1}$ is only 6 km s$^{-1}$ higher than the one from LEDA (cite: paturel03; makarov14)."
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar heliocentric systemic velocity (model A)",
+   "value": "514.2",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Analysis of the stellar velocity field",
+     "quote": "The best-fit inclination $incl$=20.3$\\pm$0.1${\\ensuremath{^\\circ}}$ is in excellent agreement with the one of 21${\\ensuremath{^\\circ}}$ listed by (cite: gadotti19), the position angle $PA$=223.1$\\pm$0.1${\\ensuremath{^\\circ}}$ is also very close to the one of 227${\\ensuremath{^\\circ}}$ found by (cite: sheth10) and the systemic velocity $v_{\\rm syst} = 514.2$ km s$^{-1}$ is only 6 km s$^{-1}$ higher than the one from LEDA (cite: paturel03; makarov14)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO disk inclination (model alpha)",
+   "value": "35.0",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematic fitting",
+     "quote": "| $incl^{(2)}$ \\[$^{\\circ}$\\]                | 20.3        | 20.0  | 20.1  | 19.9  | 37.9    |         |         |         |         | 35.0       |           |            |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO heliocentric systemic velocity (model alpha)",
+   "value": "512.7",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematic fitting",
+     "quote": "| $v_{\\rm syst}^{(3)}$ \\[km s$^{-1}$\\]       | 514.2       | 513.4 | 513.0 | 512.8 | 513.8   | 513.9   | 518.0   | 513.3   | 516.1   | 512.7      | 512.5     | 512.9      |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO disk position angle (model alpha)",
+   "value": "225.0",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematic fitting",
+     "quote": "| $PA^{(6)}$ \\[$^{\\circ}$\\]                  | 223.1       | 223.0 | 223.0 | 222.9 | 225.8   | 225.8   | 225.9   | 225.8   | 225.9   | 225.0      | 225.0     | 224.8      |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass of redshifted CO gas blobs in feature C",
+   "value": "4e6",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematics of the central starburst region",
+     "quote": "Using our adopted conversion factors, the redshifted blobs would have equivalent surface densities of 70 – 200 $M_\\odot~\\mathrm{pc}^{-2}$ and a total mass of $4\\times 10^6~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "Equivalent surface density of redshifted CO gas blobs in feature C",
+   "value": "70 - 200",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Kinematics of the central starburst region",
+     "quote": "Using our adopted conversion factors, the redshifted blobs would have equivalent surface densities of 70 – 200 $M_\\odot~\\mathrm{pc}^{-2}$ and a total mass of $4\\times 10^6~M_\\odot$."
+    }
+   ]
+  },
+  {
+   "quantity": "DIG fraction (H-alpha surface brightness cut)",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "H ii region identification and fraction of DIG",
+     "quote": "By inverting the H ii mask obtained from the dendrogram, we found an (extinction corrected) DIG fraction $f_{\\rm DIG} = F(H\\alpha)_{\\rm DIG}/F(H\\alpha)_{\\rm TOT} \\sim$ 13%."
+    }
+   ]
+  },
+  {
+   "quantity": "DIG fraction ([S II]/H-alpha cut)",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "H ii region identification and fraction of DIG",
+     "quote": "We recovered a (reddening corrected) $f_{\\rm DIG} \\sim$ 20%; also in this case correcting for the diffuse emission coincident with H ii regions has a negligible impact ($\\lesssim 0.01 \\%$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Radial variation of DIG fraction",
+   "value": "0.8 - 46",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "H ii region identification and fraction of DIG",
+     "quote": "The resulting $f_{\\rm DIG}$ ratio is shown in black in Fig. [7](#fig:fdig_vs_r); we see that the DIG contribution to the total luminosity varies between 0.8% and 46%, peaking in the interarm region."
+    }
+   ]
+  },
+  {
+   "quantity": "Photoionisation fraction of H-alpha flux in H II regions",
+   "value": "99.8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "BPT diagram analysis",
+     "quote": "We observe that, as expected, in H ii regions SF accounts for most of the H$\\alpha$ flux (99.8% of the flux originates from regions where photoionisation is the dominant mechanism), whereas bins classified as DIG have a mixed contribution from both photoionisation-dominated regions (accounting for 94.9% of the flux) and shock-dominated regions (accounting for the remaining 5.1%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Photoionisation fraction of H-alpha flux in DIG",
+   "value": "94.9",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "BPT diagram analysis",
+     "quote": "We observe that, as expected, in H ii regions SF accounts for most of the H$\\alpha$ flux (99.8% of the flux originates from regions where photoionisation is the dominant mechanism), whereas bins classified as DIG have a mixed contribution from both photoionisation-dominated regions (accounting for 94.9% of the flux) and shock-dominated regions (accounting for the remaining 5.1%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Shock fraction of H-alpha flux in DIG",
+   "value": "5.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "BPT diagram analysis",
+     "quote": "We observe that, as expected, in H ii regions SF accounts for most of the H$\\alpha$ flux (99.8% of the flux originates from regions where photoionisation is the dominant mechanism), whereas bins classified as DIG have a mixed contribution from both photoionisation-dominated regions (accounting for 94.9% of the flux) and shock-dominated regions (accounting for the remaining 5.1%)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spatial coordinates and aperture sizes used to extract and fit the redshifted CO gas blobs in feature C",
+  "Specific PHANGS-ALMA data release version used for M83 CO(2-1) cube and moment maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact list of excluded exposures from archival MUSE programmes 097.B-0899(B) and 097.B-0640(A)",
+  "Exact WCS offset table derived from matching MUSE whitelight images to HST B-band clusters",
+  "Exact spatial masks/apertures used to measure the redshifted CO blobs in feature C"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Raw ESO MUSE and ALMA data are public and PHANGS-ALMA products are published; analysis steps, software, and key parameters (Voronoi S/N, ASTRODENDRO thresholds, MocKinG models) are well documented, though custom scripts and exact pointing offset tables are not released.",
+ "rediscovery_reason": "Public ESO and ALMA/PHANGS data with clear quantitative answer keys (2D kinematic parameters in Table 2, f_DIG fractions, BPT photoionisation/shock fractions, and CO blob masses).",
+ "source_card": "cards/2022A%26A...660A..77D/sonnet/card.md"
+}

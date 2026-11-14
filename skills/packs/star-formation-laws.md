@@ -1,0 +1,2424 @@
+# Evidence pack: Star formation laws and depletion times (`star-formation-laws`)
+
+Scope: relating gas surface density to SFR, depletion times
+
+Built from 418 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2012-2026.
+Matcher (regex over analysis steps): `kennicutt|schmidt|depletion time|star formation efficiency|\bsfe\b|t_?dep|resolved star formation law|sigma_?sfr|σ_?sfr`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- high_z_galaxies: 258
+- nearby_galaxies: 158
+- star_formation: 137
+- agn_and_quasars: 101
+- milky_way_ism: 33
+- galaxy_clusters_and_sz: 22
+- astrochemistry: 14
+- cosmology: 9
+- transients: 7
+- protoplanetary_disks: 4
+- solar_system: 1
+- other: 1
+
+### Software named in the matched steps
+- cigale: 11
+- casa: 9
+- magphys: 9
+- emcee: 8
+- pipe3d: 7
+- scikit-learn: 5
+- scipy: 5
+- linmix: 4
+- galfit: 4
+- radmc-3d: 3
+- agnfitter: 3
+- numpy: 3
+- astropy: 3
+- ramses: 2
+- python: 2
+- asurv: 2
+- starburst99: 2
+- astrodendro: 2
+- mopex: 2
+- hyperz: 2
+- lenstool: 2
+- cmcirsed: 2
+- idl hastrom: 2
+- python (astropy, numpy, scipy, uncertainties): 1
+- casa gaussfit: 1
+- polaris: 1
+- duras2017 sed code: 1
+- fortesfit: 1
+- diskmint: 1
+- fast: 1
+- mcfost: 1
+- fargo: 1
+- scipy.optimize.leastsq: 1
+- r survdiff (via python): 1
+- tclean: 1
+- radmc3d: 1
+- dustpy: 1
+- mpdaf: 1
+- sextractor: 1
+- astropy.convolution: 1
+
+### Fitting methods (most common phrasings)
+- chi2 minimisation; Monte Carlo for Mdust error: 1
+- Orthogonal distance regression of log Sigma_SFR vs log([C II]/FIR): 1
+- Power-law slope of [C II]/FIR vs Sigma_SFR fitted before and after the f_CII correction: 1
+- gas mass ratios by Monte Carlo sampling, 1e6 samples, median and 68% interval: 1
+- linear regression in log space; KS test for size ratio populations: 1
+- Empirical function fitted to all z<0.4 samples, scatter 0.5 dex: 1
+- Uncertainty by error propagation from the uncertainties of the raw curves: 1
+- SFR the only free parameter of Yun & Carilli SED model: 1
+- AGNfitter Bayesian MCMC used as a cross-check: 1
+- Bayesian fit with probabilistic priors on accretion disc and AGN dust luminosity from the X-ray luminosity; marginalise…: 1
+- Spearman rank correlation; p tests no correlation.: 1
+- Kendall’s tau evaluated for xCOLD GASS depletion-time trends: 1
+- Template matching without SED scaling: 1
+- Constrain turbulence from the infrared SED near 100 μm.: 1
+- Bayesian linear regression (Kelly 2007) via linmix: 1
+- FAST SED fit to griz/3.6/4.5 um photometry used to calibrate the mass-to-light ratio: 1
+- Visual comparison of few alpha values: 1
+- Monte Carlo sampling of independent Gaussian uncertainty distributions of the observed properties: 1
+- CIGALE fitting with parameters of Donevski et al. 2020; priors not stated: 1
+- Monte Carlo integration over input uncertainties: 1
+- MLP regression with identical architecture to Bluck et al. (2019b); targets Sigma_SFR or Delta Sigma_SFR; loss/optimize…: 1
+- Fitted 3, 15, and 33 GHz flux densities above 3-sigma to measure radio spectral indices for validation.: 1
+- Least-squares Gaussian profile fitting via scipy.optimize.leastsq: 1
+- Bayesian MCMC linear regression (Linmix, 10^4 models), Orthogonal Distance Regression (ODR), bivariate survival analysi…: 1
+- Two-temperature SED fit with Li & Draine model for Cloverleaf (details not stated): 1
+- Linear regression and Spearman rank correlation test: 1
+- Power-law fitting to nearby cloud CMF for 1 < M < 50 M_sun and 1 < M < 20 M_sun; Kernel Density Estimation (KDE) for si…: 1
+- linear fit with fixed slope; priors/sampler not stated: 1
+- MCMC sampling using Foreman-Mackey et al. (2013) Python implementation: 1
+- Grid comparison of 3 Dustpy/RADMC3D models (Model 1, 2, 3) against observed ring/gap intensity ratios, Gaussian FWHMs, …: 1
+- chi^2 fits; beta not constrained: 1
+- MCMC linear regression in log-log space (with slope fixed to zero and slope free): 1
+- MCMC linear fit of alpha_CO vs T_dust evaluated with an F-test: 1
+- Bayesian inference within CIGALE; sampler and priors beyond the listed ranges not stated: 1
+- Gaussian line fits: 1
+- Inclination = mean of fitted-ellipse values unaffected by PSF or structure; uncertainty = standard deviation: 1
+- Orthogonal distance regression (priors/likelihood not applicable); MARS for multi-slope breaks: 1
+- Single-Gaussian fit to average core spectra in DCN and N2H+: 1
+- Bayesian linear regression with linmix, accounting for errors on both variables and upper limits on L'CO: 1
+- Elliptical model fitting in uv space: 1
+
+### Validation checks used
+- Agrees with radio SFR: 1
+- Radio 3 GHz SFR and CO(5-4)-SFR checks: 1
+- Compared with earlier SDP.81 estimates and the ALESS median T_dust; resolved fit repeated on Cleaned images gives consi…: 1
+- Check with CO(5-4) as gas tracer gives t_dep = 1-30 Myr; mock tests show CO(3-2) north concentration is physical: 1
+- Compared with Smith et al. 2017 trend and other high-z resolved studies; isolated outlying low-ratio pixels judged lens…: 1
+- Corrected slope -0.55 +/- 0.02 matches the thermal-saturation prediction (-0.5); uncorrected slope 0.65 +/- 0.01 is in …: 1
+- estimates compared across five methods; paper says CO(1-0) observations are needed: 1
+- Compared with Bauermeister+13 and Lagos+11 models: 1
+- Adding O/H to the matching changes Delta Sigma_SFR by ~0.01 dex, negligible: 1
+- Definition acknowledged as somewhat subjective; authors state the conclusions are insensitive to it: 1
+- Robustness of the SFE conclusion checked against a lower alpha_CO: 1
+- Relation compared with the full MaNGA sample; conclusions re-checked excluding fully-quenched spaxels: 1
+- SF_h and SF_m Sigma_sSFR profiles compared with Blu20b, derived from the full MaNGA DR15 sample: 1
+- Alternative central definition R < 1.0 Re changes the fractions but not the relative ordering of categories: 1
+- [CII] SFRs used as confirmation: 1
+- Tested out-of-the-grid control models with Bonnor-Ebert profile, M = 3, seeds S3 and S4, and varied f_acc: 1
+- Verified that POLARIS recovers about 96% of the total RADMC-3D emission from the box at 1.3 mm: 1
+- Cross-check with PdBI CO(2-1) upper limit extrapolated to CO(1-0) (<0.18 Jy km/s): 1
+- Gas fraction stays <10% for lower stellar mass; Band 7 gives consistent ISM mass: 1
+- Radio spectral-index and flux-ratio checks for synchrotron contamination of the ALMA flux: 1
+- Compared with SFR(FIR); AGN photoionisation noted as an upper-limit caveat on SFR(Halpha): 1
+- Compare with literature SMGs/quasars and Sargent2014 main-sequence relations.: 1
+- Repeat excluding local PG QSOs: ρ = 0.404, p = 2.21e-3.: 1
+- Trend persists if HCN used for dense gas mass: 1
+- All grid offsets explored; integrated depletion times compared with dense parts of resolved relations: 1
+- Compare with xCOLD GASS, ALLSMOG, HRS and ATLAS3D; distinguish Virgo and field subsamples: 1
+- Only qualitative; authors note need for higher statistics: 1
+- Qualitative morphology comparison: 1
+- Checked consistency of IR SED templates with HST optical flux measurements and compared IR-derived SFR with H-alpha SFR: 1
+- Compared derived M_gas, gas fraction, and depletion timescale against GRB/SLSN host samples and star-forming galaxy sca…: 1
+- Settling models improve the ~100 μm SED; mass estimates are insensitive to tested alpha_v choices.: 1
+- Compared with KS and Bigiel08 relations: 1
+- free-Td fits for two Herschel sources set 90 K and 120 K: 1
+- 2-D screen approximation justified by bending angles of about 2 μrad: 1
+- Younger template changes mean stellar mass by at most 8%; more modern SFR method gives similar results: 1
+- Compared models with h1mm=0.70 and 2.15 AU and no settling: 1
+- Agrees with D08 for Δt_SF = 0.6 Myr: 1
+- SFR range cross-checked with modified blackbody + Kennicutt98 relation (cited): 1
+- Toomre upper limits marginally consistent with Jeans lower limits: 1
+- [CII]-based SFR (246 Msun/yr) consistent within 0.4 dex scatter with UV+IR SFR; UV+IR adopted: 1
+
+### Key parameters and settings (bibcode: value)
+- 2018ApJ...868...75S: alpha fixed at 2; Umax = 10^6
+- 2020MNRAS.494.5542R: Uniform magnification adopted for 160 um to 1.3 mm continuum; Herschel 160-500 um emission assumed to follow the Band 8 surface brightness distribution
+- 2020MNRAS.494.5542R: Resolved test of T_dust fixed to 60 K and 80 K, fitting only the normalization
+- 2020MNRAS.494.5542R: FIR-bright region defined as Sigma_SFR >= 50 Msun/yr/kpc^2
+- 2020MNRAS.494.5542R: R31 = 0.78 +/- 0.27; alpha_CO = 1.0
+- 2020MNRAS.494.5542R: n_e = 1.1e-4 n; phi_PAH = 0.5 in the photoelectric heating rate
+- 2020MNRAS.494.5542R: f_CII computed per pixel from CO(5-4) S/N >= 3 pixels using the Bothwell 2013 conversion and alpha_CO from CR18
+- 2025A&A...694A.218B: alpha_850 = 7.3 +/- 0.1e12 W/Hz/Msun
+- 2025A&A...694A.218B: alpha_CO = 0.8 (x1.36 for helium) and 3.8 +/- 0.1
+- 2025A&A...694A.218B: r41 = L'CO(1-0)/L'CO(4-3) ~ 1.0
+- 2025A&A...694A.218B: alpha_CI = 16.2 +/- 0.4
+- 2025A&A...694A.218B: thin dust Td=40.23 K, beta=1.85; thick dust Td=57.57 K, beta=1.93
+- 2025A&A...694A.218B: [CI]-based depletion times used because they are least reliant on conversions
+- 2020MNRAS.492.6027E: Intrinsic Halpha/Hbeta = 2.85; Milky Way extinction curve
+- 2020MNRAS.492.6027E: Salpeter IMF for Sigma_SFR
+- 2020MNRAS.492.6027E: Matching tolerances: 0.1 dex in Sigma_star, 0.1 dex in total stellar mass, 0.1 in R/Re; typically several hundred controls per spaxel
+- 2020MNRAS.492.6027E: Reference set drawn from all DR15 star-forming spaxels (not ALMaQUEST), inclination b/a > 0.34
+- 2020MNRAS.492.6027E: Median Delta Sigma_SFR within 0.5 Re > 0.2 dex (SFR elevated by at least 50 per cent)
+- 2020MNRAS.492.6027E: Control pool: ALMaQUEST spaxels with -0.5 < Delta Sigma_SFR < 0.5 and b/a > 0.34
+- 2020MNRAS.492.6027E: alpha_CO reduced by a factor of two (0.3 dex) as an illustrative variation
+- 2024ApJ...964..120P: R_V = 3.1 Milky Way extinction curve
+- 2024ApJ...964..120P: BPT limited to S/N > 2 for all required emission lines
+- 2024ApJ...964..120P: Star-forming spaxels: BPT star-forming and Halpha EW > 6 A
+- 2024ApJ...964..120P: Retired spaxels: S/N > 2 and EW < 3 A in Halpha
+- 2024ApJ...964..120P: D4000 < 1.45 calibration limit; fully-quenched: S/N < 2 in Halpha or D4000 > 1.45
+- 2024ApJ...964..120P: 0.18 Re (~0.8 kpc) radial steps out to 1.5 Re (~7 kpc at z = 0.03)
+- 2024ApJ...964..120P: Shaded height = standard error of the mean at each radial bin
+- 2024ApJ...964..120P: Combined-driver band -0.15 < Delta f_gas - Delta SFE < 0.15, about twice the typical uncertainty
+- 2024ApJ...964..120P: A bin counts as equally driven when Delta f_gas - Delta SFE is zero or its uncertainty encompasses +-0.15
+- 2025A&A...701A.219N: Clump mass M = [500, 1000] M_sun, radius R = 0.383 pc (~0.4 pc), initial temperature = 10 K
+- 2025A&A...701A.219N: Mach number M = [7, 10], normalized mass-to-flux ratio mu = [3, 10, 100], turbulent seeds = [1, 2], 3 orthogonal projections (x, y, z)
+- 2025A&A...701A.219N: Sink formation threshold n_thre = 10^9 cm^-3, native resolution ~40 AU, accretion luminosity factor f_acc = 0.1, stopping SFE = ~15% (M500) and ~30% (M1000)
+- 2025A&A...701A.219N: Wavelength = 1.3 mm (231.1 GHz), reference distance = 5.2 kpc
+- 2018A&A...612A..29B: Tdust=52+-5 K
+- 2020MNRAS.492.3194S: stellar: Bruzual & Charlot library, delayed exponential SFH, ages 0.001-1 Gyr, timescales 0.01-2 Gyr, A_V < 10 mag
+- 2020MNRAS.492.3194S: star-formation dust emission: Dale et al. one-parameter template sequence (0-4)
+- 2020MNRAS.492.3194S: Calzetti extinction curve, intrinsic Halpha/Hbeta = 2.86
+- 2024ApJ...964...95S: Speagle2014: log(SFR) = (0.84−0.026τuniv)log(Mstar)−(6.51−0.11τuniv), τuniv in Gyr.
+- 2020MNRAS.496.2155Z: Gaussian KDE of point density in log space
+- 2020MNRAS.496.2155Z: xCOLD GASS running bins: 33 galaxies; half-bin shifts; median and 16th/84th quantiles
+- 2020MNRAS.496.2155Z: Cluster centre: NGC1399 (FCC213)
+- 2020MNRAS.496.2155Z: Surface-density errors include rms and 10% calibration errors
+- 2025ApJ...995...98D: Best-fit alpha_v = 10−3 from SED; test alpha_v = 10−4, 10−3, 10−2
+- 2015ApJ...813...45L: beta=1.5; 50K model beta=2
+- 2025PSJ.....6..286M: Line-of-sight steps of 1 km; chord length 8000 km
+- 2025PSJ.....6..286M: ν_STP = 29.06×10^-5 (1 + 7.7×10^-3/λ²), with λ in μm
+- 2025PSJ.....6..286M: Loschmidt’s number 2.687×10^19 particles per cm³; STP 273.15 K and 1 atmosphere
+- 2021ApJ...909L..29D: mass-to-light ratio 0.83; stellar mass uncertainty 0.3 dex; SFR uncertainty 0.15 dex
+- 2016ApJ...816...25P: Schmidt number 1.5
+- 2020ApJS..251...14H: SFE 0.1-0.75
+- 2015MNRAS.449..715W: k_nu = 0.04 cm2 g-1 (nu/505 GHz)^1.75
+- 2015ApJ...809...93D: 1 mm particles; initial dust-to-gas 0.9%; T = 221 (r/AU)^-1/2 K; 1 Msun star
+- 2023MNRAS.524.1775H: k_IR = 1.2e-10 Msun/yr/Lsun; k_UV = 7.1e-10 Msun/yr/(erg/s/Hz); C_Kroupa = 1.08
+- 2023MNRAS.524.1775H: t_age = 0.71 Gyr at the source redshift with the adopted cosmology; starburst threshold 3x main sequence
+- 2023MNRAS.524.1775H: lambda = 0, 0.5, 1.0, 2.0; return fraction rho = 0.4; 10000 Monte Carlo draws, 16th and 84th percentiles
+- 2024A&A...687A.288G: AGN torus component added (Fritz et al. 2006)
+- 2024A&A...687A.288G: median radio slope assumed for sources lacking a second radio detection (q_TIR)
+- 2024A&A...687A.288G: final state z_f = z_spec - Delta z, M*_f = M* + M(H2)
+- 2020MNRAS.493L..39E: alpha_CO = 4.3 Msun pc^-2 (K km s^-1)^-1
+- 2020MNRAS.493L..39E: Control matching tolerance 0.1 dex (0.1 R/Re for radius); normal SFR defined as -0.5 < Delta Sigma_SFR < 0.5
+- 2020MNRAS.493L..39E: Five random training samples containing 50% of the data, validated on the remainder
+- 2025ApJ...979..217S: nu = 3 GHz, beam area = 0.26 kpc^2
+- 2025ApJ...979..217S: Channel width = 3 km s^-1
+- 2025ApJ...979..217S: GMM components = 1 and 2; Linmix MCMC iterations = 10^4
+- 2025ApJ...979..217S: Statistical significance threshold: rho > 0.30 and p-value < 0.03 (weak: 0.30-0.40, moderate: 0.40-0.60, strong: > 0.60)
+- 2025ApJ...987...77J: Low-mass cutoff = 3 M_sun; CMF power-law index Gamma = -1.00 and -1.35; initial pool size = 10^6 cores; 5000 repetitions per cloud; 10^6 iterations for Taurus+…
+- 2021MNRAS.500.3667S: nu_0 = 3 THz (100 um) where tau = 1; beta = 2 fixed for HS 0810+2554; H1413+117 photometry > 300 GHz scaled by 0.8 for neighbour confusion
+- 2021MNRAS.500.3667S: inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723)
+- 2026MNRAS.546ag167S: Modified blackbody parameters: beta = 1.6, T_dust = 47 K
+- 2021ApJ...918...76C: T_d = (25, 40, 100) K; nu_0 = 340 GHz; kappa_0 = 1.3 cm^2 g^-1; beta = alpha_dust - 2 = 2
+- 2021ApJ...918...76C: Dust-to-gas ratio = 1:100 (also tested 1:300)
+- 2021A&A...650A.117N: Briggs robust = 2.0
+- 2025MNRAS.538.2358S: Dustpy: r = 1-300 au (300 log cells), R_c = 160 au, gamma = 1, r_p = 42, 69, 101 au, A_1 = 1, A_2 = 5, A_3 = 3, alpha = 10^-4 or 10^-3, v_frag = 1 or 10 m s^-1…
+- 2017ApJ...837..182O: beta = 2.0; mid-IR slope alpha = 2.25
+- 2021ApJ...921...97J: T_CMB = 21.5 K at z = 6.9; T_1 = 23.6 K, T_2 = 62.5 K
+- 2021ApJ...921...97J: F-test p-value < 0.05 for alpha_CO vs T_dust slope
+- 2026ApJ..1003..206S: age 20-500 Myr, tau 20-2000 Myr; optional late starburst in last 20 Myr producing up to 10% of stellar mass
+- 2026ApJ..1003..206S: modified Calzetti attenuation: slope varied by +-0.2, A_V 0-15
+- 2026ApJ..1003..206S: nebular emission with n_e = 100 cm^-3, log U = -4 to -2
+- 2026ApJ..1003..206S: Casey 2012 dust: T_dust 30-60 K, beta_em 1.6-2.0, alpha_MIR fixed at 2.0
+- 2021MNRAS.500.3802H: signal detection threshold > 3 sigma; 300 km s^-1 velocity range for non-detections (S/N < 3)
+- 2021MNRAS.500.3802H: xCOLD GASS control matching: 0.3 dex box in SFR and M_*, i > 50 deg, non-AGN, random 80% subsampling
+- 2021MNRAS.500.3802H: 25 re-binning grid offsets (5 in RA x 5 in Dec, 0 - 0.8 x bin size) to scale spaxels to sigma_PSF (~2'', ~1 kpc)
+- 2021MNRAS.500.3802H: SAMI control selection boxes: 0.6 x 0.7 dex in SFR-M_* around low-M_* (<10) and high-M_* (>10) outflow-types
+- 2026A&A...707A.144S: R21 = 0.7; alpha_CO(1-0) = 4.35 Msun pc^-2 (K km/s)^-1
+- 2026A&A...707A.144S: Halpha/Paα = 8.6, Halpha/Paβ = 17.6; Kennicutt2012 calibration with Kroupa IMF
+- 2026A&A...707A.144S: A_K from SINFONI Brδ and Brγ maps, range 0.95±0.60 to 1.98±1.29 mag
+- 2026A&A...707A.144S: Mean and error bars from the mean absolute deviation for log Sigma_H2 and log Sigma_SFR per merger stage
+- 2026A&A...711A.239S: Prestellar core lifetime t_cores = 1.2 Myr; protostellar core lifetime t_cores = 0.5 Myr (also tested 0.3 Myr); cloud mass uncertainty = 11%
+- 2026A&A...711A.239S: Mean velocity offset V_DCN - V_N2H+ ~ 0.16 km s^-1 used to correct N2H+-only core velocities
+- 2019MNRAS.488.1180S: beta=1.6, Td=47 K (30-50 K range for uncertainty)
+- 2021A&A...645A..33B: L_IR uncertainty 0.1 dex (Herschel plus sub-mm) or 0.3 dex (no Herschel); literature QSOs 0.2 dex on L_IR and 0.1 dex on L'CO
+- 2026MNRAS.546f2269R: extraction box = 1.0'' x 0.3'', r_out = 1.0'' (~5 kpc) [or 7'' (~34 kpc) including diffuse component], C = 3
+- 2012ApJ...760L..25E: Sigma_SFR = 3.2e-3 I24 + 8.1e-2 IFUV; 3 sigma SFR threshold 0.018 Msun/yr; A_FUV = 8.24 E(B-V)
+- 2022MNRAS.510.4998Z: log(SFR / Msun Myr^-1) = log(Lbol / ergs s^-1) - 37.41; SFR(H40alpha) / (Msun Myr^-1) = 3.008 x 10^-3 * [L(H40alpha) / (Jy km/s kpc^2)]; threshold SFR >= 5 Msu…
+- 2022A&A...665A...3J: R_e is half of the FWHM size; Sigma_SFR = SFR / (2 * pi * R_e^2)
+- 2022A&A...665A...3J: Dark matter factor = 0.8 in M_dyn,2Re; 20% uncertainty added to M_gas,dust for metallicity variations; kappa from Jones et al. (2013)
+- 2025A&A...696A..83A: Modified blackbody with beta = 2 and T_dust = 30 K
+- 2025A&A...696A..83A: Aperture diameter 0.18 arcsec, center spacing 0.09 arcsec
+- 2019ApJ...887...88E: Sigma_mol completeness ~4 Msun/pc2 (3 sigma, 10 km/s)
+- 2022A&A...663A..61P: Pixel sizes: 150 pc (fiducial), 200 pc, 300 pc, 500 pc, 1 kpc
+- 2022A&A...663A..61P: Detection fraction threshold > 60% per Sigma_* bin, applied independently per environment (removes ~20% of all 150 pc pixels, ~38% of disk pixels, <5% of other…
+- 2022A&A...663A..61P: Centering values: <log Sigma_*> = 8.11, <log Sigma_mol> = 7.25, <log Sigma_SFR> = -2.48
+- 2022A&A...663A..61P: 4 MCMC chains, 2000 iterations + 2000 burn-in iterations per chain, NUTS sampler
+- 2024MNRAS.52710201E: Intrinsic Halpha/Hbeta = 2.85 with Milky Way extinction curve
+- 2024MNRAS.52710201E: Salpeter to Chabrier factor 0.61
+- 2024MNRAS.52710201E: epsilon_ff = 0.015
+- 2024MNRAS.52710201E: f_g,P = 0.33 (median in extended ALMaQUEST)
+- 2024MNRAS.52710201E: clumping factor 5
+- 2025A&A...700A.123M: 1.5 kpc hexagonal regions
+- 2025A&A...700A.123M: h = 100 pc; rho_cloud = Sigma_cloud / 2h
+- 2025A&A...700A.123M: Keep regions with f_comp > 0.5 and cloud-scale Sigma_mol > 20 Msun pc^-2, giving 841 regions in 67 galaxies
+- 2019A&A...624A..81M: X_[CI] = 3e-5; helium correction 1.36
+- 2022MNRAS.512..686E: r_CO = 0.17 r_25, z_CO = 0.01 r_25
+- 2022MNRAS.512..686E: X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO = 4.3 M_sun (K km s^-1 pc^-2)^-1)
+- 2018ApJ...856..121G: minor merger timescale 0.49±0.24 Gyr; mean 1.2 mergers of ratio 6.5
+- 2021ApJ...907...62R: Halo build-up timescale 45 Myr, about half the gas depletion time
+- 2024MNRAS.533.2966Q: lambda_0 = 102.8 um, L_t = 1e12 Lsun, eta = -0.068
+- 2024MNRAS.533.2966Q: SFR = 1.48e-10 L_IR
+- 2024MNRAS.533.2966Q: S(1.3mm) >= 13.0 mJy threshold
+- 2018ApJ...858...90G: M/L = 352 Msun/pc2 per MJy/sr at 3.6um
+- 2020MNRAS.498.1560J: alpha_CO 4.0-4.2 (Tacconi route); 3.3-6.0 (xCOLD GASS route)
+- 2020MNRAS.498.1560J: Tacconi18 comparison limited to within +/-0.05 of the sample redshift range, CO-based measurements only
+- 2024A&A...687A.293Q: radial bin width 500 pc; at least 50% of spiral and interarm pixels within the PHANGS-ALMA field of view
+- 2024A&A...687A.293Q: SFE bootstrap within error bars, 10 000 realisations
+- 2024A&A...687A.293Q: Sigma_atom = 2.0e-2 x I_HI cos i (M_sun pc^-2, I_HI in K km/s), includes 1.36 factor
+- 2025A&A...696A.202S: Total protocluster mass used for t_dep: ~2820 Msun (dust-based)
+- 2025A&A...696A.202S: Mean free-fall time of V-shape cores ~13.6 kyr
+- 2021A&A...654A..90L: IR integration range = 8-1000 um; dust emissivity index beta = 1.8 for MBB test; radio spectral index alpha_r measured from 1.4/3/5.5/100 GHz data or fixed to …
+- 2022MNRAS.510.3734D: 4 degrees of freedom for optically thin two-component SED; 3 degrees of freedom for optically thick single-component SED; integration range 8-1000 um
+- 2022MNRAS.510.3734D: z_f = 4.8 (Salpeter), 5.5 (Chabrier), 7 (top-heavy); SB burst duration = 200 Myr observed at 40%; grain growth parameter = 700 to 15,000; effective radius = 1.…
+- 2024A&A...691A.248L: Gaussian MS scatter sigma_dist = 0.3 dex for mean-to-median correction; gamma = 1.1 fixed in Eq. 13
+- 2024A&A...691A.248L: Integration limit M*_lim = 3e9 Msun (and 1.7e8, 1.7e9, 1.7e10 Msun for Magnelli et al. 2020 comparison); C = 0.53 in Eq. 22; 100 Monte Carlo error realisations
+- 2017MNRAS.472.1239B: 150 arcsec source radius, background annulus 450-500 arcsec
+- 2023ApJ...945...42B: T_e = 10^4 K, alpha_NT = 0.84, nu = 93 GHz, 10% dust correction, 30% SFR uncertainty
+- 2023ApJ...945...42B: epsilon_0 = 1%, T_kin = 45 K, b = 0.4, beta -> infinity, phi = 0.35, n_SF(Fixed) = 10^4.5 cm^-3, alpha_PL = 1.0 to 2.3 (best-fit 1.9)
+- 2024ApJ...962...88V: main sequence: Delta SFMS > -0.5 dex; green valley: -1.0 < Delta SFMS <= -0.5 dex; red cloud: Delta SFMS <= -1.0 dex
+- 2024ApJ...962...88V: pixels from 30 galaxies with 5 sigma global CO detections and i < 70 deg
+- 2024ApJ...962...88V: pixels at r < 0.5 Re rejected for LINER/AGN galaxies to avoid contamination; SFR removed at r < 0.5 Re in profiles
+- 2024ApJ...962...88V: central vs outer split at r = Re for NNA galaxies; r = 1.2 Re for the nuclear-activity comparison
+- 2013ApJ...770...13W: Td=47 K, beta=1.6
+- 2026ApJ..1003..219W: Core mass 500 M⊙; radius 0.1 pc; central object 40 M⊙
+- 2022MNRAS.516..861T: Star formation region areas: HST UV-band area for 8 BCGs, inner 3 kpc radius for remaining BCGs, 1 kpc radius for Fluetsch galaxies with SFR > 20 M_sun/yr, RC3…
+- 2024ApJ...977L..46B: T_d = 47 K, beta = 1.6, integration over 8-1000 um
+- 2019PASJ...71...40T: 7 arcsec aperture, aperture correction 2.57
+- 2019PASJ...71...40T: alphaCO=4.36 f_metal; f_metal=1.1 at logM=11, 1.4 at 10.5; upper limits 5 sigma with 400 km/s
+- 2020MNRAS.499.5241C: dust emissivity index beta = 1.8 fixed
+- 2020MNRAS.499.5241C: upper limits for non-detections: 5 x r.m.s. of the tapered image
+- 2024ApJ...968...15L: Regions below 3 sigma_rms masked
+- 2022MNRAS.512.1522D: significance threshold p < 0.05; gas velocity dispersion sigma_g = 8 km s^-1; axis ratios q = 1 (spherical) or q = 0.8 (ETGs) and 0.27 (spirals)
+- 2022MNRAS.512.1522D: 12 candidate features: stellar mass, effective radius, inclination, SFR, sSFR, SFE, Sigma_H2,1kpc, M_H2, mu_*, Sigma_H2,1kpc/mu_*, beam size in pc, beam size i…
+- 2025MNRAS.541.1276Z: 21 micron dendrogram: min_npix = 1 beam area, min_value = 3 sigma_rms, min_delta = 3 sigma_rms
+- 2025MNRAS.541.1276Z: M_ecl,min = 5 Msun; M_ecl,up ~ 1e9 Msun; SFE = 1.4%; beta = 1.82 from fitted cluster mass function
+- 2025ApJS..280...33Y: star formation efficiency 50%
+- 2025A&A...700A.285W: a=0.04, b=-0.93, theta in [0,3pi]
+- 2019ApJS..244...40L: inconsistent prior-z threshold Delta z > 0.15 * (1+z); SED-excess outlier threshold S_OBS / S_SED > 1.77 (5 sigma); photo-z range z = 0 to 8
+- 2022MNRAS.510.4976A: R_e = mean of deconvolved major and minor axes FWHM / 2; galaxy-averaged Sigma_SFR = (0.5 * SFR_IR) / (pi * R_e^2); peak Sigma_SFR = SFR_IR(peak) / (pi * a * b…
+- 2025ApJ...990..166D: drizzled to 0.06''/pixel; Halpha maps 80 x 80 pixels
+- 2025ApJ...990..166D: [NII] contamination scaling ~1.3 (J1448+1010) and ~0.6 (J2258+2313)
+- 2025ApJ...990..166D: non-detections plotted as 3 sigma upper limits
+- 2017MNRAS.468L..87C: line width 50 km/s; solid angle 0.044 arcsec^2
+- 2023A&A...671A...3J: HI-deficiency threshold def_HI,M* > 0.3
+- 2023A&A...671A...3J: 18 radial vectors; angular offsets from 0 deg to 180 deg
+- 2024ApJ...970...75Z: Grid size = 10 arcsec x 10 arcsec (3.3 kpc x 3.3 kpc), cell size = 1 arcsec x 1 arcsec (0.330 kpc), detection threshold = 3 rms per pixel, number of valid data…
+- 2024ApJ...970...75Z: r_SB = 900 pc; N = 82 total points (31 for r < r_SB, 51 for r > r_SB)
+- 2025MNRAS.538....1Z: Outlier rejection for alpha_c > 2.5 (3 points excluded)
+- 2017ApJ...844..123F: Redshift fixed (QSO z for composites, 2.5 otherwise)
+- 2023MNRAS.523.4654T: same fiducial beta = 2.14 +/- 0.17; Monte Carlo includes point-source parameter uncertainties
+- 2017ApJ...850...54C: 5 Myr star formation timescale
+- 2022A&A...659A..46B: L(Halpha) >= 10^37 erg s^-1, r_eq(Halpha) >= 50 pc, surface brightness limit Sigma(Halpha) = 3 x 10^-17 erg s^-1 cm^-2
+- 2022A&A...659A..46B: matching resolutions: 0.70'' (NGC 4429), 0.86'' (NGC 4459), 0.86'' (NGC 4476), 1.14''x0.76'' (NGC 4526); pixel size 1.2''; S/N >= 5; central <= 2'' masked
+- 2024ApJ...963..115L: 500 trials; Sigma_SFR range -3 < log10 Sigma_SFR < -1.5 for the restricted test
+- 2022MNRAS.512.2371H: 3sigma continuum contour mask A_cont; 300 km s^-1 assumed linewidth for SWIRE7 3sigma upper limit
+- 2025A&A...694A.171M: T_dust = 47 K, beta = 1.6
+- 2025A&A...694A.171M: L_FIR = 0.75 L_TIR for the adopted model
+- 2021A&A...654A...8N: Disk area from deconvolved UV size 28.6'' x 14.0'' (43 x 21 kpc) used for average Sigma_SFR
+- 2021A&A...654A...8N: a = 1.4; sigma = 10 km/s for gas unaffected by the jet; R_inner=4.2 kpc, R_outer=11.8 kpc; v_c 366 and 378 km/s
+- 2025ApJ...985...14L: alpha_CO,MW^1-0 = 4.35 Msun pc^-2 (K km/s)^-1
+- 2025ApJ...985...14L: f(Z) = (Z/Zsun)^-1.5 metallicity-dependent term
+- 2025ApJ...985...14L: Emissivity term alpha_CO^1-0 ~ Sigma_star^-0.25 for Sigma_star > 100 Msun pc^-2
+- 2025ApJ...985...14L: R21 = 0.65 (Sigma_SFR / 0.018 Msun/yr/kpc2)^0.125, min 0.35, max 1.0
+- 2025ApJ...985...14L: Sigma_SFR from H-alpha + WISE 22 um (default); GALEX FUV + WISE 22 um where H-alpha missing; WISE 22 um alone in a handful of cases
+- 2021Galax...9..115D: Gray-body emissivity index beta = 2 (fixed)
+- 2024A&A...681A.110W: Across-MS comparison: −0.2 < ΔMS < 0.2; MS-to-SB comparison: ΔMS ∼0 to ∼0.8
+- 2018ApJ...860..103S: f_H2 = 0.03-0.12 initial; t_dep = 0.7-1.3 Gyr
+- 2022MNRAS.514.5035L: 3 sigma detection threshold for Halpha and Hbeta
+- 2022MNRAS.514.5035L: S/N > 3 threshold for Halpha and CO; radial annuli width = 200 pc, step = 100 pc
+- 2026MNRAS.552g1615S: alpha_CO,MW(1-0) = 4.35 Msun (K km/s pc^2)^-1
+- 2026MNRAS.552g1615S: Metallicity factor (Z/Zsun)^-1.5; R21 depends on Sigma_SFR
+- 2026MNRAS.552g1615S: 1 sigma confidence intervals from 1000 Monte Carlo simulations
+- 2019ApJ...876...99S: beta fixed at 1.6
+- 2023A&A...678A.183N: Box sizes: 200, 400, 800, 1600, 2800, 3200 pc (Cosmic Snake) and 200, 400, 800, 1600, 3200, 6400 pc (A521)
+- 2023A&A...678A.183N: ALMA S/N thresholds (100% fidelity): 4.4 sigma in single channel; 4.0 sigma (Cosmic Snake) or 3.6 sigma (A521) in two adjacent channels
+- 2023A&A...678A.183N: Circular aperture diameters: 200, 400, 800, 1200, 1400 pc (Cosmic Snake) and 400, 800, 1600, 3200, 6400 pc (A521)
+- 2025ApJ...985..243B: A galaxy enters a subsample only if its pixel count on that side of the threshold exceeds the number of pixels in the synthesized beam
+- 2025ApJ...985..243B: Low-Sigma_SFR stack: 11 of 15 galaxies; high-Sigma_SFR stack: 9 of 15
+- 2016PASJ...68..103F: Td 50-70 K, beta=1.7, kappa0=0.005 cm/g at 231 GHz
+- 2020PASJ...72L...6H: Host SFR = 5–15 M⊙ yr−1
+- 2020PASJ...72L...6H: Use regions above 2σ in the CO(1–0) velocity-integrated intensity map
+- 2020PASJ...72L...6H: SFE = SFR/Mgas
+- 2025PASJ...77..616I: images convolved with Aniano+11 kernels to MIPS 24 um resolution and regridded
+- 2025PASJ...77..616I: line-of-sight depth l = 600 pc
+- 2021ApJ...909...84U: alpha_CO from Equation (7) of Genzel15 using 12+log(O/H) on the Pettini04 scale
+- 2021ApJ...909...84U: alpha_CO = 2.58 Msun (K km/s pc^2)^-1
+- 2024A&A...689A.122B: c_j = 1.018, 1.068, 0.402 for 70, 160, 250 micron
+- 2024A&A...689A.122B: alpha_CO from 4.2 (centre) to 20 (outskirts)
+- 2024A&A...689A.122B: R21 scales as Sigma_SFR^0.15
+- 2017A&A...599A.134S: IR8=8; bootstrap uncertainties
+- 2020MNRAS.499.5136C: Modified blackbody: T_dust=40 K; β=1.5
+- 2020MNRAS.499.5136C: Asymmetric uncertainty −0.2 dex, +0.4 dex on L_FIR, SFR_IR and total SFR
+- 2024A&A...682A..24A: MS prescription of Schreiber et al. (2015); comparison samples restricted to the stellar mass range of REBELS
+- 2024A&A...682A..24A: REBELS bins 6.4<z<7.0 and 7.0<z<7.8; ALPINE bins 4.3<z<4.7 and 5.0<z<6.0; six bins at lower z; MS galaxies at 10^9.75 Msun
+- 2019ApJ...884L..33L: CO S/N > 2; Sigma_* > 1e7 Msun kpc^-2; S/N>3 strong lines, >2 weak lines
+- 2020ApJ...895...21I: upper limit SFR <~5e-4 Msun/yr for Butterfly and Serpent
+- 2025A&A...693L..13N: R21 = 0.65 (Sigma_SFR / 1.8e-2 Msun/yr/kpc^2)^0.125, clipped to 0.35-1.0
+- 2025A&A...693L..13N: alpha_CO^var = alpha_CO^fix (Z/Zsun)^-1.5 (max(Sigma_star,100)/100)^-0.25
+- 2025A&A...693L..13N: Dense gas freefall time 0.8 Myr for n_H2 about 3e3 cm^-3
+- 2020ApJ...905...86S: SFR = 1.49e-10 L_IR
+- 2025A&A...698A.204H: beta = 1.8, dust temperature free
+- 2022A&A...668A..45L: MCMC settings: 2000 steps, 4 chains; systematic uncertainties: 0.1 dex on log v_out, 0.3 dex on log M_out, log M_dot_out, log eta, and log(M_out/R_out)
+- 2025PASA...42..140S: area from the number of pixels containing 100% of the flux per region
+- 2019MNRAS.485.2092C: Metallicities normalised to MW-mass z~0 galaxy (Mstar=5.7e10)
+- 2021ApJ...909..181L: Include [C I] non-detections with CO (4-3) detections for galaxies with log(M_star/M_sun) > 9.5 using 3 sigma upper limits.
+- 2023A&A...676A..67W: Mean CO-derived cluster mass = 4.8 x 10^5 M_sun; mean bubble lifetime = 3.6 Myr; average SFR in ALMA FoV = 2.5 M_sun yr^-1; bubble merger fraction = 30%; basel…
+- 2024MNRAS.528.6768H: ΔMS = log(SFR_tot) − log(SFR_MS(M*))
+- 2024MNRAS.528.6768H: log SFE_expected [yr^-1] = 0.29 × ΔMS + 0.04 + (−9.12)
+- 2024MNRAS.528.6768H: Disc aperture: circular annulus from 1 kpc to NSA r-band effective radius; sum SFR and H2 spaxels over the same region
+- 2024MNRAS.528.6768H: Central 1 kpc: median SFE spaxel value; ALMaQUEST H2 maps re-binned to MaNGA grid
+- 2019MNRAS.487.4305S: KDM eps_ff=0.015; SFK eps_ff=0.0045, b=0.4, beta_mag to infinity
+- 2022ApJ...930...32C: Fixed parameters: alpha_MIR = 2, lambda_0 = 200 um; Free parameters: beta, L_IR (8-1000 um), T_dust, lambda_peak; mass-weighted T_dust = 25 K for M_gas
+- 2026ApJ..1001..131C: Temperature correction B_nu(850,25K)/B_nu(850,T_dust): 0.77 (195616), 1.06 (209435)
+- 2020A&A...643A..78M: 0.2 dex uncertainties for PHANGS data
+- 2025ApJ...995..151Y: cos i correction; helium factor 1.36
+- 2019MNRAS.486..560S: Reference template M10; also P08, E11 MS/SB, CE01, DH02, S18 (R_SB=1, 4)
+- 2022MNRAS.515.1751W: β_IR = 1.5 fixed; T_dust = 50 K fixed for sources with only upper limits; self-consistent opacity model (plus optically thin and fixed λ_0 = 200 μm variants)
+- 2024ApJ...970...30M: r41 = 0.63 +/- 0.44 (normal, negative values excluded); alpha_CO uniform 0.8-6.1
+- 2023ApJ...948...88W: 500 Monte Carlo + bootstrap trials; subsample split at physical area 0.4 kpc^2
+- 2024ApJ...976...88L: log Upsilon = 0.195 (F336W-F125W) - 1.187, floor -1
+- 2024ApJ...976...88L: SFR = 5.53e-42 L_Halpha
+- 2018MNRAS.481.1976Z: SFR = 1e-10 L_IR (Kennicutt 1998); SK relation dispersion 0.2 dex
+- 2020MNRAS.496..875R: L_FIR integrated between 8 and 1000 um; continuum observed at ~845-880 um
+- 2025ApJ...987...61R: wk2020 model grid (A_V = 7, Z = 1); 1σ pixel masks at L_[CII] > 1.3 × 10^8 L_sun/px and L_FIR > 5 × 10^10 L_sun/px; fixed n = 10^4 cm^-3 for resolved G map
+- 2018MNRAS.475.1288S: DeltaBIC>2 for AGN component; 10^5 bootstrap draws
+- 2022ApJ...934..173S: EW(Halpha) = 14 Angstrom division cut
+- 2022ApJ...934..173S: S/N > 3 in Halpha, Hbeta, [OIII]5007, and [SII]6717,31 for Sigma_SFR
+- 2026A&A...707A..77H: minimum r_out = 1.49 kpc for CO (half the ALMA beam major axis); minimum 0.72 kpc for MUSE phases (half the MUSE PSF FWHM)
+- 2026A&A...707A..77H: r_out is the distance of each bin centre to the SE nucleus
+- 2020ApJ...902..112B: T_d [K] = (34.6 +/- 0.3) + (3.94 +/- 0.26)(z-2); alternative fixed T_d of 35 K or 50 K
+- 2025ApJ...993..111W: log(SFR [M⊙ yr−1])=log(LIR [erg/s])−43.41.
+- 2018ApJ...861L..18U: K=1.04e-1 (FUV), 1.04e-1 (NUV), 3.77e-3 (12um), 2.97e-3 (24um)
+- 2024MNRAS.535.2538Z: 0.5 arcsec pixels smaller than the ALMA beam; pixels not independent, handled via Zabel2020 approach
+- 2017MNRAS.465.4390B: average of (T=47K, beta=1.6) and (T=41K, beta=1.95)
+- 2023MNRAS.525.5831K: Einstein coefficient A_10 = 7.93 x 10^-8 s^-1, excitation factor Q_10 = 0.48, carbon abundance X_[CI] = 3.0 x 10^-5
+- 2025ApJ...989..115T: r32/10 = 0.58 +/- 0.10 and r43/10 = 0.30 +/- 0.08
+- 2025ApJ...989..115T: alpha_CO = 3.6 (massive MS galaxies) and 1.0 (SMGs/compact starbursts)
+- 2017ApJ...845...50N: annulus r_inner 0.25 pc, r_outer 3 pc
+- 2021ApJ...909...12G: Iterative variable α_CO(Σ_CO) convergence threshold of 0.1 using Eq. 31 of Bolatto et al. (2013)
+- 2026A&A...712A.227E: MaStars_sLOG stellar library in pyPipe3D
+- 2026A&A...709A..14Z: Sigma_SFR = 0.05 to > 500 M_sun yr^-1 kpc^-2 for SLED models; T_d = 20 K and 30 K for dust SED templates
+- 2018MNRAS.481.1016G: SFE of 1% and 3% used to match GMC and cluster mass limits
+- 2022ApJ...926..159I: H0 = 71 km s^-1 Mpc^-1, Omega_M = 0.27, Omega_Lambda = 0.73
+- 2025A&A...699A.183H: 1,000 iterations per fit, 50 walkers, first 100 discarded as burn-in
+- 2018ApJ...861....7F: dt = depletion time (~640 and 210 Myr) or ~1.0 Gyr
+- 2020A&A...635A.119C: A_V 0-5 in steps of 0.01; Calzetti law; BC03 templates
+- 2025A&A...695A..23S: GAEA quasars: L_bol > 3e46 erg/s at z>6, evolution over ~4e7 yr Eddington time
+- 2022ApJ...929..100K: L(H_alpha)_corr = L(H_alpha)_obs + 0.39 x 10^13 L(1.4GHz); SFR = L(H_alpha)_corr / 10^41.27
+- 2023MNRAS.521.5508H: r_2,1 = 0.88+-0.07, r_3,1 = 0.69+-0.12, r_4,1 = 0.52+-0.14, r_5,1 = 0.37+-0.15
+- 2024ApJ...972..147C: 10,000 resamplings; 2 sigma gas cut
+- 2024ApJ...961...42T: Measurements at 1.5 kpc scale across all 65 galaxies
+- 2018Natur.558..260Z: starburst starts ~z~3 (2 Gyr after Big Bang), reaches 1e11 Msun one Gyr later, then ceases
+- 2020A&A...641A.155V: includes sources with L_IR>=10^8.5 Lsun and Flag=0.5 upper limits; excludes AGN-dominated galaxies and QSOs
+- 2020MNRAS.496.5243H: Pixel analysis: S/N = 4 cut on the 33 GHz image; pixels binned to 1.0 x 1.0 arcsec
+- 2026MNRAS.545f1980W: disk-edge-on_yes_fraction <= 0.5; SFMS matching tolerances: delta_z = 0.005, delta_M* = 0.1 dex, delta_Sigma_5 = 0.1 dex (minimum 5 galaxies); outlier clipping…
+- 2017ApJ...836L...2B: disk diameter ~0.6''; b/a = 0.6
+- 2021A&A...649A..31H: Displayed ΣSFR values use FIR luminosity.
+- 2025A&A...695L..15F: Sigma_SFR = SFR/A with A the intrinsic emitting area from the fit
+- 2021A&A...656A..60A: aperture radius 0.75'' = 34 pc
+- 2025A&A...699L..11V: Historic SFR ∼5×10−6 M⊙ yr−1
+- 2019ApJ...872..117G: q_PAH 0.4–4.6%, Umin 0.7–25, gamma 0.0–0.8; Umax=1e6, alpha=2
+- 2021A&A...655A..42S: reference samples recalibrated to metallicity-dependent alpha_CO for comparison
+- 2025A&A...701A.234Z: z = 2.5 reference redshift for SFMS scaling
+- 2017ApJ...835..278S: t_gas=35 Myr, t_over=5 Myr, t_star=10 Myr, lambda=400 pc, beta=1
+- 2022A&A...661A.136G: Target smoothing resolution = CO(1-0) beam (1.1'' x 1.0'')
+- 2026A&A...707A.121G: Ring molecular-gas and SFR fractions relative to host-galaxy totals
+- 2017A&A...604A.117C: T=50 K, beta=2.0; alpha_CO=0.8; r43/10=0.6; SFR divided by 1.8 for Chabrier
+- 2021A&A...646A..26B: T_d = 45 K for SFR_IR; velocity-integrated rms scales as sqrt(line width)
+- 2020A&A...641A.151S: F_tot/F_25" = 2.0±0.3 at 70 um
+- 2025MNRAS.540.2623P: Cosine apodisation kernel, central 70% of image untapered
+- 2025MNRAS.540.2623P: Hi maps cropped to CO or SFR field of view
+- 2019ApJ...881...63N: kappa=2.64 m2/kg at 125 um; T_dust=47 K
+- 2022A&A...657A..25N: 5 rings of width 800 pc from 0 to 4 kpc; Kennicutt (1998) conversion factor 1.26e41 erg s^-1 per M_sun yr^-1
+- 2026A&A...706A.345K: K_IR = 1.73e-10 Msun/yr/Lsun
+- 2017ApJ...851...18L: Only spaxels with S/N(CO) > 2 shown in KS relation; Galaxy 3 bulge excluded from correlations due to AGN
+- 2024A&A...692A.146B: alpha_HCN/alpha_CO = 3.2 applied to modeled HCN/CO
+- 2017ApJ...842L..21N: 105 templates × 10^4 amplitudes (0–100)
+- 2021MNRAS.507.3998P: r_31 = 0.42 +- 0.07, r_21 = 0.76 +- 0.09, alpha_CO = 3.6 M_sun (K km s^-1 pc^2)^-1
+- 2026ApJ..1004...22F: t_depl = 5 x 10^8 yr, Mdot_gas,in = 100 Msun yr^-1, R = 0.46, r_Z = 0 to 0.5
+- 2026ApJ..1004...22F: Stochastic SFH parameters: alpha_PSD = 2, sigma_MS = 0.1, 0.3, 0.6 dex, tau_break = 5, 50, 200 Myrs
+- 2020MNRAS.499.4940Z: Systematic uncertainty of about 30 per cent from the IMF high-mass shape
+- 2024ApJS..271....2H: mu_FUV = 27.25 AB mag/arcsec^2 threshold, equal to Sigma_SFR = 3e-4 Msun/yr/kpc^2
+- 2020ApJ...902..113I: Measurements used include the directly detected CO(2-1) sources from the blind search
+- 2024MNRAS.527.6867A: t_depl=M_gas/SFR
+- 2021A&A...656A.133Q: 1 kpc hexagon spacing, 1.5 kpc resolution
+- 2020MNRAS.496.4405H: L_IR integrated 8 to 1000 um in the Kennicutt definition
+- 2024MNRAS.531..815L: Masks built from 1.7'' IRAC 3.6 micron images, convolved and rebinned to 6''
+- 2018NatAs...2...56Z: beta=1.8 (1.5 alternative); nu0=c/100 um
+- 2020PASJ...72...29O: z = 3.150; D_L = 26951.9 Mpc; nu_rest([C II]) = 1900.5 GHz
+- 2024MNRAS.535.1533B: Pixel thresholds: > 3 sigma in CO or dust and > 1 sigma in the other
+- 2022ApJ...941...47S: Optical depth correction factor = 2; inclination = 84.3 deg; distance = 31.1 Mpc
+- 2025ApJ...987..142J: F-test significance alpha = 0.10; S/N > 3 applied after the F-test
+- 2022MNRAS.511.1303V: f = 0.44 (differential dust attenuation factor, also tested f = 0.7); lambda = 3727 A
+- 2026A&A...707A.252K: V_c = 386 km/s, r = 1.07 kpc
+- 2020MNRAS.495.3840M: alpha_CO = 4.4 Msun (K km/s pc2)^-1 including helium factor 1.36; inclination 50.2 deg
+- 2025MNRAS.544.4014Z: Sigma_SFR = 3.8e-3 x I_21um (MJy/sr), in Msun/yr/kpc^2
+- 2020ApJS..247...61F: SFR = 4.5e-42 L(Halpha) [erg/s]
+- 2026ApJ..1000..159M: SFR averaging timescales = 10 Myr and 100 Myr
+- 2021MNRAS.502.3021R: Back-warming correction factor = 0.2; age scale factor = 13
+- 2021A&A...645A.120F: X_[CI]=3e-5, Q10=0.48, A10=7.93e-8 s^-1
+- 2025ApJ...985L...8U: constant t_dep = 0.5 and 0.25 Gyr (first model)
+- 2018ApJ...867...92S: alpha_CO = 1.3 (alternative 4.36) Msun/(K km/s pc^2)
+- 2025A&A...693A.237I: Rest-frame EW_Lya obtained by multiplying observed-frame EW_Lya by (1 + z)^-1
+- 2017ApJ...844L..10S: beta = 1.8
+- 2020MNRAS.499..193K: Molecular gas: CO(2-1)/CO(1-0)=0.7, alpha_CO=4.4 Msun pc^-2/(K km/s) including helium
+- 2019ApJ...882..137P: TNG100 f_H=0.76; T_SF=1000 K; Sigma_SFR,MW=0.004 Msun/yr/kpc^2
+- 2021A&A...652A..30S: Schreiber18 templates with Td=25 K and Td=40-50 K; R_SB=1
+- 2025ApJ...987L...2H: SFR = 14.5 +/- 3 Msun/yr (30% error adopted), R_UV = 0.26 kpc, log M* = 8.29
+- 2021ApJ...908...54W: 30% mass return to ISM in constant-t_dep model; none in varying model
+- 2025ApJ...994....4A: Common FWHM for three lines; wavelength offset limited to +/-5 A; doublet ratios fixed to 3
+- 2026A&A...705A..39P: RandomForestRegressor, 200 trees, 80/20 train/test split
+- 2024A&A...692A..22Z: volumes: 120 cMpc line of sight over ~20 arcmin^2 (48 cMpc^2); 2 Mpc sphere; ~400 kpc sphere
+- 2018MNRAS.476.4383D: emissivity index fixed to 2.0; L_FIR integrated 3-1100 um
+- 2020Natur.584..201R: SFR conversion 1.48e-10 Msun/(yr Lsun), Kroupa IMF
+- 2024A&A...684A..33K: 25-60% of IR luminosity attributed to star formation for SFR
+- 2019ApJ...880...92J: kappa_lambda = 2.92e5 (lambda/um)^-2 cm^2/g
+- 2021NatAs...5..319P: FIR integration range lambda in [8 - 1000] um
+- 2025A&A...701A..85K: Component sizes from 2D Gaussian FWHM of the model; effective radius taken as HWHM
+- 2020A&A...642A.155Z: radio spectral index alpha = -0.8
+- 2020ApJ...901...79A: z bins 0.4-1.0, 1.0-2.0, 2.0-3.0
+- 2017ApJ...851..145M: T_d = 35 K, beta_IR = 1.5
+- 2017ApJ...834..135T: w=0.6, eta~1, Mgas/SFR uncertainty ±0.24 dex
+- 2019ApJ...882..136A: starburst log(delta_MS)>0.4; passive <-0.4
+
+
+### Assumptions (bibcode: value)
+- 2018ApJ...868...75S: same excitation and same dust SED for both galaxies
+- 2020MNRAS.494.5542R: Optically thin dust emission; uniform T_dust and beta; Salpeter IMF; CMB effects negligible (<=0.1 K, <=0.1 dex)
+- 2020MNRAS.494.5542R: alpha_CO = 1.0 from CO kinematic studies of z=2-3 DSFGs, consistent with dynamical mass constraints
+- 2020MNRAS.494.5542R: PDR surface temperature taken as the gas temperature in the [C II]-emitting layer; [C II] optically thin; dense gas above critical density
+- 2025A&A...694A.218B: the galaxies are likely starbursts with optically thick dust, so thin and thick dust models are both run
+- 2025A&A...694A.218B: systematic error from r41 = 1.0 is unaccounted for
+- 2025A&A...694A.218B: SCUBA-2 850 um flux scaled by the ALMA 870 um flux to split the two galaxies
+- 2025A&A...694A.218B: for quenching estimate: constant SFE, all gas converted to stars, no gas replenishment
+- 2017MNRAS.470.3775V: For CO-unresolved galaxies, CO radius = optical Petrosian radius / 1.6
+- 2020MNRAS.492.6027E: Salpeter initial mass function
+- 2020MNRAS.492.6027E: Matching in O/H and R/Re mitigates dependences of alpha_CO on metallicity and galactocentric radius
+- 2020MNRAS.492.6027E: Fixed alpha_CO; a variable alpha_CO would steepen the SFE correlation and flatten the f_H2 correlation
+- 2024ApJ...964..120P: Salpeter IMF
+- 2024ApJ...964..120P: Cosmology H0 = 70 km/s/Mpc, Omega_m = 0.3, Omega_Lambda = 0.7
+- 2024ApJ...964..120P: Sigma_SFR of AGN-contaminated and retired spaxels is inferred from D4000, trading accuracy for completeness
+- 2013A&A...559A..29C: Td=65 K (SMG), 50 K (QSO); k~nu^1.5; Salpeter IMF; alpha_CO=0.6 with factor 2 systematic
+- 2025A&A...701A.219N: Ideal MHD, uniform initial cloud density, uniform initial magnetic field along z-axis, feedback only from accretion luminosity (no outflows or HII regions), no…
+- 2025A&A...701A.219N: Dust opacity k_1.3 = 0.005 g cm^-2 including a gas-to-dust mass ratio of 100; log(L/M) = 1.20 log(SFE) + 3.28
+- 2018A&A...612A..29B: Sigma_SFR=25 Msun/yr/kpc^2 for Narayanan model
+- 2018A&A...612A..29B: alpha_CO=0.8 (SB-like)
+- 2018A&A...612A..29B: fiducial stellar mass 4.5e11 Msun
+- 2020MNRAS.492.3194S: Chabrier initial mass function
+- 2020MNRAS.492.3194S: ALMA 870 and 1100 um emission is dominated by dust-obscured star formation (no significant synchrotron)
+- 2020MNRAS.492.3194S: Global star formation unchanged over the past 100 Myr, so Halpha and FIR SFRs are comparable
+- 2024ApJ...964...95S: Comparison obscured-quasar LAGN from X-rays with Duras2020 luminosity-dependent bolometric correction.
+- 2015ApJ...813..118M: alpha_HCO+ ≈ 10, alpha_CO ≈ 4.3 Msun/(K km/s pc^2); mean 33 GHz thermal fraction 79%
+- 2020MNRAS.496.2155Z: Depletion time is molecular gas surface density divided by SFR surface density
+- 2020MNRAS.496.2155Z: SMSD used as a proxy for morphology
+- 2018A&A...615A..94F: Distance 3.6 kpc; spherical clump with density contrast 10; stopped at SFE 15%
+- 2021ApJ...915...46C: Cosmological parameters H0 = 70 km s^-1, Omega_0 = 0.3, Omega_lambda = 0.7
+- 2021ApJ...915...46C: Chary & Elbaz (2001) luminosity-dependent IR SED templates without scaling
+- 2021ApJ...915...46C: Kennicutt (1998) conversion SFR(M_sun yr^-1) = 1.7 x 10^-10 L_IR / L_sun
+- 2021ApJ...915...46C: CO velocity width = 180 km s^-1
+- 2021ApJ...915...46C: Metallicity-dependent alpha_CO from harmonic mean of Genzel et al. (2012) and Bolatto et al. (2013): alpha_CO = 15 M_sun (K km s^-1 pc^2)^-1 for region A (12+l…
+- 2021ApJ...915...46C: H-alpha SFR = 2.65 M_sun yr^-1 used for M_gas-SFR and depletion timescale comparison
+- 2025ApJ...995...98D: Schmidt number ~1; vertically integrated grain-size distributions remain fixed at each radius
+- 2025ApJ...995...98D: Gas-phase heating and cooling omitted; gas temperature from thermal equilibrium with dust grains
+- 2018ApJ...863..193V: SFR uncertainty factor of two; Salim07 UV calibration (Chabrier IMF)
+- 2015ApJ...813...45L: z=2 for sources without redshift
+- 2025PSJ.....6..286M: 2-D screens perpendicular to the line of sight
+- 2025PSJ.....6..286M: Neglect seasonal haze effects at the probed altitudes and observing wavelengths
+- 2025PSJ.....6..286M: Applying isobar distortions to bending-angle fields introduces undetectable errors over small temperature ranges
+- 2021ApJ...909L..29D: 11 Gyr simple stellar population, solar metallicity, Salpeter IMF
+- 2016ApJ...816...25P: Inclination ~47 deg
+- 2020ApJS..251...14H: each leaf collapses on a freefall time
+- 2015MNRAS.449..715W: gas-to-dust ratio 100
+- 2015MNRAS.448.2224C: current mass ~4x the mass at 10 Gyr; 1:1 1G:2G
+- 2015ApJ...809...93D: Schmidt number Sc=1; Epstein drag; no dust feedback
+- 2019ApJ...876..130H: gas fraction of unity, dust-to-gas 1/90, global dust temperature, Kennicutt98 IR SFR calibration with Chabrier IMF
+- 2019ApJ...876..130H: gas disk dominates over stellar component; radius = HWHM of ALMA emission along major axis
+- 2023MNRAS.524.1775H: Dust temperature 46 K for L_IR
+- 2023MNRAS.524.1775H: Chabrier (2003) IMF, 0.1-300 Msun
+- 2023MNRAS.524.1775H: Constant SFR and no other gain or loss of gas for the depletion time
+- 2023MNRAS.524.1775H: Extrapolation of relations calibrated to z~6
+- 2024A&A...687A.288G: Chabrier IMF; flat LCDM with Omega_m=0.3, Omega_Lambda=0.7, h=0.7
+- 2018ApJ...863..129S: alpha_HCN(1-0)=10; constant T_dust = 25 K for Sigma_H2
+- 2018ApJ...863..129S: n_dense=2.8e5 cm^-3, eps_SF=0.28%
+- 2020MNRAS.493L..39E: Constant alpha_CO
+- 2020MNRAS.493L..39E: Milky Way extinction curve and intrinsic Halpha/Hbeta = 2.85
+- 2020MNRAS.493L..39E: Matching in O/H and R/Re mitigates metallicity- and radius-dependent alpha_CO variations
+- 2025ApJ...979..217S: Electron temperature T_e = 10^4 K, non-thermal spectral index alpha_NT = -0.85, Kroupa IMF, continuous SF over 100 Myr
+- 2025ApJ...979..217S: CO(2->1)/(1->0) = 0.85 +/- 0.02; alpha_CO = 1.1 M_sun (K km s^-1 pc^2)^-1
+- 2025ApJ...979..217S: Linewidth is turbulently broadened; beam filling factor = 1; constant scale height H = 100 pc
+- 2015ApJ...806..260F: Td = 45 ± 5 K; Milky Way-like dust opacities
+- 2025ApJ...987...77J: Star-forming efficiency SFE = 30% (m_star^max ~ 0.3 * M_core^max); M_gas^bound approximates M_gas^dense; Gao-Solomon relation scaled upward by factor 2.7.
+- 2025ApJ...987...77J: Largest possible stellar mass m_up = 150 M_sun or 100 M_sun; SFE = 30%; largest probable core mass = m_up / SFE (500 M_sun or 333 M_sun); total core mass in se…
+- 2017MNRAS.468.4205K: upper limits treated as detections in the fits (so fits are upper limits)
+- 2021MNRAS.500.3667S: Salpeter IMF with Kennicutt (1998) conversion SFR = L_IR / (5.8e9 L_sun); dust mass opacity kappa_850 = 0.077 m^2 kg^-1; flat LambdaCDM (H0 = 67.8 km/s/Mpc, Om…
+- 2021MNRAS.500.3667S: Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554
+- 2026MNRAS.546ag167S: Chabrier initial mass function
+- 2026MNRAS.546ag167S: Point-source emission originates from the unresolved quasar component while extended emission is heated solely by star formation
+- 2015ApJ...799...11X: X_CO = 3e20; CO(6-5)/CO(2-1) brightness temperature ratio 0.72; T_e=1e4 K; alpha_nth=1.2
+- 2021ApJ...918...76C: Optically thin dust emission at 340 GHz, kappa_0 = 1.3 cm^2 g^-1 at 340 GHz, T_d = (25, 40, 100) K, dust-to-gas ratio of 1:100
+- 2018ApJ...855L..25K: eps_core = 0.5; steady SFR; Salpeter CMF 1-240 Msun; mm continuum is complete protostellar core census
+- 2021A&A...650A.117N: z = 0.1606, H_0 = 68 km s^-1 Mpc^-1, Omega_M = 0.31, Omega_Lambda = 0.69
+- 2021A&A...650A.117N: SFR(M_sun yr^-1) = 10^-10 (L_IR / L_sun)
+- 2025MNRAS.538.2358S: Stellar mass = 1 M_sun, static gas disc mass = 0.1 M_sun, initial gas-to-dust ratio = 100, initial grain size 0.1-1 um (MMSN), Toomre Q > 2, local gas-to-dust …
+- 2018ApJ...862...64S: Salpeter IMF; BzK and ULIRG CO SLEDs
+- 2014ApJ...790..160S: alpha_CO = 0.86 Msun (K km/s pc^2)^-1, 0.5 dex error; outflow assumes L'(3-2)/L'(1-0)=1
+- 2017ApJ...837..182O: Total IR luminosity due to star formation; Salpeter IMF; Kennicutt (1998) calibration
+- 2017ApJ...837..182O: Salpeter IMF; IR luminosity from star formation
+- 2021ApJ...921...97J: GDMR = 100 for dust-based M_gas; Kroupa IMF with 0.2% O-type stars (10^49-51 erg over 5 Myr) and 7% supernova progenitors (10-40 M_sun, 10^51 erg each, <=1% ef…
+- 2026ApJ..1003..206S: solar metallicity
+- 2026ApJ..1003..206S: Chabrier initial mass function; flat LCDM with H0 = 70, Omega_M = 0.3
+- 2026ApJ..1003..206S: L_IR integrated over rest-frame 8-1000 um; SFR from L_IR following Kennicutt & Evans 2012
+- 2019MNRAS.485.1595P: Galactic alpha_CO=4.6 Msun (K km/s pc^2)^-1 for depletion times
+- 2021MNRAS.500.3802H: Standard LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m0 = 0.3, Omega_Lambda = 0.7 and Chabrier (2003) IMF
+- 2021MNRAS.500.3802H: Variable alpha_CO from Accurso et al. (2017) using Pettini & Pagel (2004) metallicity calibration from 3'' SAMI apertures and MAGPHYS M_* and SFR
+- 2021MNRAS.500.3802H: SFR = 7.9 x 10^-42 L[Halpha_cor,mask]
+- 2021MNRAS.500.3802H: Leroy et al. (2013) relation used to convert Sigma_SFR into Sigma_CO,H2 for SAMI controls
+- 2021MNRAS.500.3802H: Inclination correction factor 1/cos(i) from GAMA SersicCatAllv07 ellipticity
+- 2026A&A...707A.144S: Galactic alpha_CO appropriate (not ULIRG-like) for the sample; metallicity gradient effect 20-30% at r<5 kpc
+- 2026A&A...707A.144S: Flux uncertainties ~10% for ALMA and ~15-20% for NICMOS
+- 2026A&A...707A.144S: Upper limits and non-detections excluded
+- 2014A&A...562A..67G: Cosmology H0=67, Om=0.32, OL=0.68; 1 arcsec=6.6 kpc
+- 2026A&A...711A.239S: Prestellar lifetime = 1.2 Myr and protostellar lifetime = 0.5 Myr
+- 2019MNRAS.488.1180S: Chabrier IMF; 8-1000um LIR; SFR = LIR/1e10 Lsun
+- 2021A&A...645A..33B: Starburst-like alpha_CO ~0.8 because ~80% of targets are in merging systems
+- 2021A&A...645A..33B: For J1433+0227 and J1015+0020 gas mass from average GDR ~180
+- 2026MNRAS.546f2269R: Constant average volume density in a cone or sphere (C = 3); blueshifted component moves directly along observer line of sight; alpha_CO = 0.8; gas density = 1…
+- 2022MNRAS.510.4998Z: Well-sampled Kroupa & Weidner (2003) IMF and steady-state massive star birth/death for SFR >= 5 Msun Myr^-1 (Lbol >= 10^4.5 Lsun); molecular clump masses taken…
+- 2019PASJ...71...44H: Weidner13 mmax-Mecl relation
+- 2019ApJ...882..107R: solar metallicity, GDR(Zsun) ~ 90; Chabrier IMF; Calzetti law, A_V up to 5
+- 2019ApJ...882..107R: dust temperature and IMF do not vary within each source
+- 2022A&A...665A...3J: Elliptical emission geometry
+- 2022A&A...665A...3J: T_exc,CI = T_d,thick; spherical geometry for dust volume density rho; high-J CO(4-3) velocity width and 1mm dust continuum size trace the same region
+- 2025A&A...696A..83A: E(B-V)_star/E(B-V)_gas = 0.44
+- 2025A&A...696A..83A: CO-based Sigma_mol profile used because CO extends farther than [CI]
+- 2019ApJ...887...88E: Fixed inclination 70 deg
+- 2022A&A...663A..61P: Inclination correction factor cos(i) using galaxy inclinations from Lang et al. (2020)
+- 2022A&A...663A..61P: Single normalization C_norm and common intrinsic dispersion sigma_intr across all environments
+- 2024MNRAS.52710201E: Relative importances are only valid for the fixed feature set (sum to one)
+- 2024MNRAS.52710201E: Flat rotation curve (beta = 0)
+- 2013ApJ...767..132H: Standard starburst SFR conversion (Kennicutt 1998)
+- 2025A&A...700A.123M: Sound speed c_s = 0.3 km/s (20 K) for the turbulent Mach number
+- 2025A&A...700A.123M: Fixed 150 pc beam FWHM scale and fixed scale height h = 100 pc for the representative cloud
+- 2019A&A...624A..81M: LTE, optically thin, Q21 = 0.5; cosmology H0=70, OmegaM=0.3, OmegaL=0.7; Kroupa IMF
+- 2022MNRAS.512..686E: CO(1-0) emission follows a 3D exponential profile in r and z
+- 2022MNRAS.512..686E: Milky Way CO-to-H2 conversion factor applies, and 70 um emission traces star formation with negligible AGN contamination
+- 2024A&A...689A.220T: Fit excludes stacked results
+- 2014MNRAS.445.1412Z: Calzetti curve K(Ha)=3.33, K(Hb)=4.60; spherical uniform density; T=1e4 K
+- 2020MNRAS.493.2872C: Only compact (filtered) CO is counted in Sigma_gas, assuming diffuse CO belongs to gas not forming massive stars
+- 2016MNRAS.457.4536W: 30% global SFE upper limit for clouds
+- 2018ApJ...856..121G: GDR = 90; N_H/A_V = 2.2e21 cm^-2 mag^-1; DL07 optically thin dust
+- 2018ApJ...856..121G: FIR size traces final stellar mass location; depletion time from Toft et al. 2014
+- 2021ApJ...907...62R: 0.87 mm flux ratio between N and S representative of the SED peak for splitting SFR
+- 2021ApJ...907...62R: alpha_CO = 1.0 in Msun (K km/s pc^-2)^-1 (scaled as alpha_CO/1.0)
+- 2021ApJ...907...62R: Ground-state OH+ column representative of total OH+; halo hydrogen mass 5% of total gas mass, uncertain by a factor of a few
+- 2024MNRAS.533.2966Q: Kroupa IMF
+- 2024MNRAS.533.2966Q: LambdaCDM with H0 = 70, Omega_M = 0.3, Omega_Lambda = 0.7
+- 2024MNRAS.533.2966Q: alpha_CO = 1 alternative scaling for gas masses
+- 2018ApJ...858...90G: alpha_CO = 4.3, alpha_HCN = 10 Msun pc-2 (K km/s)-1, include helium
+- 2020MNRAS.498.1560J: 0.42 dex systematic uncertainty on SFR
+- 2020MNRAS.498.1560J: r21 = 0.8 (observed range 0.4 to 1.2 across AGN samples)
+- 2024A&A...687A.293Q: SFE defined for molecular gas only, SFE = Sigma_SFR/Sigma_mol = 1/tau_dep
+- 2024A&A...687A.293Q: Optically thin 21 cm emission; inclinations from the PHANGS sample table
+- 2015Natur.519..327W: constant CO-to-gas conversion X(CO); ±0.4 dex scatter
+- 2025A&A...696A.202S: 45 deg average inclination; V-shape gas with no confirmed inflow onto a central mass may overestimate depletion
+- 2019ApJ...880..157D: Reflected quasar light ignored
+- 2021A&A...654A..90L: Kennicutt (1998) SFR calibration converted to Chabrier (2003) IMF by subtracting 0.23 dex; optically thin dust with beta = 1.8 for MBB test; no radio variabili…
+- 2024ApJ...976..201F: IMF difference handled by a factor of 1.5 (Kennicutt+2012)
+- 2015MNRAS.453L..83M: L_IR accurate to ±0.3 dex from SED template range, included in analysis; Chabrier IMF
+- 2020A&A...635A...2S: Star formation efficiency 30%, so 20 Msun core forms B-type star
+- 2017MNRAS.469.4683C: delta_GDR ~ 120 from 12+log(O/H)=8.53; Kennicutt 1998 L_IR-SFR, Chabrier IMF
+- 2017MNRAS.469.4683C: MS: R51=0.23, alpha_CO=4.87; SB: R51=0.6, alpha_CO=1
+- 2022MNRAS.510.3734D: Fixed emissivity index beta = 2.0; dust mass absorption coefficient kappa_168um = 1.7 m^2 kg^-1; Kennicutt & Evans (2012) SFR conversion with Kroupa (2003) IMF
+- 2022MNRAS.510.3734D: Milky Way GDR = 160 (with beta = 1.8, T_d = 25 K, kappa_850 = 0.077 m^2 kg^-1, kappa_ISM = 4.8 x 10^-4 m^2 kg^-1, equal HI and H2 plus Helium); zero dark matte…
+- 2024A&A...691A.248L: Kennicutt (1998a) L_IR-to-SFR_IR conversion (L_IR = 5.8e9 * SFR_IR) and Daddi et al. (2004) L_UV-to-SFR_UV conversion (SFR_UV = 2.17e-10 * L_UV)
+- 2024A&A...691A.248L: Double log-normal R_SB distribution parameters from S15 (sigma_MS = sigma_SB = 0.31 dex, f_SB = 3.3%, B_SB = 5.3, f_miss = 0%, x_0 = 0.87); effective radii Re(…
+- 2017MNRAS.472.1239B: WISE 22 micron conversion same as Spitzer 24 micron
+- 2023ApJ...945...42B: Fixed half line-of-sight cloud depth R = 100 pc for all galaxies to estimate volume density rho = Sigma_mol / R
+- 2023ApJ...945...42B: Unmagnetized gas (beta -> infinity, B = 0 G) and mixed compressive/solenoidal turbulent forcing (b = 0.4)
+- 2023ApJ...945...42B: Observational estimates of epsilon_ff = t_ff / t_dep are sensitive to the theoretical definition of epsilon_ff
+- 2024ApJ...962...88V: Galaxies with no detected nuclear activity are classed as star-forming (SF)
+- 2026ApJ..1003..219W: Simple free-fall collapse
+- 2019ApJ...887...74F: kappa_1THz=20 cm2/g; lambda_Edd=1; L'CO(5-4)/L'CO(3-2)=0.7
+- 2022MNRAS.516..861T: Cold gas surface density is approximated by molecular gas surface density Sigma_H2 alone
+- 2024ApJ...977L..46B: Mm continuum treated as cold dust to compute IR luminosity, dust mass and SFR_IR
+- 2013A&A...558A.124C: M=3.6e6 Msun, d=1" ~ 50 pc, v=100 km/s
+- 2019PASJ...71...40T: [NII] correction from mass-metallicity relation; A_Halpha systematic 0.32 mag
+- 2019PASJ...71...40T: Field-like CO excitation, no environmental dependence
+- 2020MNRAS.499.5241C: Chabrier IMF
+- 2020MNRAS.499.5241C: template-based dust temperature uncertainty of about 5 K
+- 2024ApJ...968...15L: LambdaCDM with H0=70, OmegaL=0.7, OmegaM=0.3
+- 2024ApJ...968...15L: L_TIR-L'CO relation has 0.2 dex scatter
+- 2024ApJ...968...15L: Spatially varying gas-to-dust conversion factor is not modelled
+- 2018A&A...616A.171P: All L_IR produced in central 300-1000 pc; 248 GHz scales with L_IR
+- 2022MNRAS.512.1522D: Constant gas velocity dispersion sigma_g ~ 8 km s^-1 across galaxies; for WISDOM sources, mean gas surface density within R_e is estimated using total H2 mass …
+- 2022MNRAS.512.1522D: Log-linear relations between non-parametric morphology indicators and physical parameters.
+- 2025MNRAS.541.1276Z: embedded phase duration 5.1 Myr from NGC 628 assumed valid for five galaxies
+- 2025MNRAS.541.1276Z: typical electron density about 1 cm^-3 from the equation (likely underestimate, up to about 100 cm^-3)
+- 2025MNRAS.541.1276Z: all stars in a cloud form in a population of embedded clusters
+- 2015ApJ...815L...8U: SFR = 1.0e-10 LIR/Lsun (Kennicutt 1998), Chabrier IMF
+- 2025ApJS..280...33Y: total velocity dispersion ~0.4-0.8 km/s from literature high-mass prestellar cores
+- 2016A&A...586A.124G: Kennicutt98 relation for SFR
+- 2020ApJ...900...37E: T_dust=47±3 K, beta=1.6±0.1, kappa=0.77(nu/352GHz)^beta cm2/g
+- 2015ApJ...815..103B: alpha_HCN=10, alpha_CO=4.35, Murphy et al. 2011 TIR-to-SFR
+- 2019ApJS..244...40L: Flat LambdaCDM cosmology (H_0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_0 = 0.7), Chabrier (2003) IMF, energy balance between UV/optical dust attenuation and I…
+- 2022MNRAS.510.4976A: Opacity law kappa(nu) = 0.077 * (nu / 352 GHz)^beta m^2 kg^-2 with dust emissivity index beta = 1.6
+- 2022MNRAS.510.4976A: T_dust = AGN dust temperature from Shanks et al. (2021) when available, otherwise 35 K for WHDF sources, and 47 K for z>6 quasars
+- 2022MNRAS.510.4976A: Chabrier IMF and SFR_IR / (M_sun yr^-1) = 1.49e-10 * (L_IR / L_sun)
+- 2022MNRAS.510.4976A: Eddington limit lower bound Sigma_SFR ~ 650 M_sun yr^-1 kpc^-2 assuming gas fraction f_gas = 1 and dust-to-gas ratio f_dg = 1/90
+- 2025ApJ...990..166D: direct image representative of source morphology
+- 2025ApJ...990..166D: Chabrier IMF
+- 2017MNRAS.468L..87C: CO(2-1)/CO(1-0) = 0.8; tau_dep = 2 Gyr, 0.2 Gyr, 20 Myr
+- 2024ApJ...970...75Z: D_L = 72.1 Mpc (0.338 kpc/arcsec); inclination i = 45 deg; R_21 = 0.7; alpha_CO = 4.2 (+1.961/-1.341) M_sun (K km s^-1 pc^2)^-1 for log(M_*/M_sun) = 10.5; radi…
+- 2024ApJ...970...75Z: Constant error on Sigma_H2 and Sigma_SFR equal to the rms noise of each regridded map; error on SB_PAH obtained by convolving rms noise of regridded MIRI map w…
+- 2013ApJ...778..179W: Salpeter IMF; SFR from Kennicutt 1998 L_IR relation; L_X,SF from Lehmer 2010
+- 2025MNRAS.538....1Z: H13CO+ is optically thin so intensity is directly proportional to column density
+- 2019A&A...621A..27F: SFR = 1.72e-10 L_IR_SF, Salpeter IMF then /1.5 to Kroupa
+- 2020MNRAS.496..598C: Cold FIR component originates from star formation
+- 2024A&A...682A..54T: Chabrier IMF
+- 2017ApJ...844..123F: Constant dust temperature, local thermal equilibrium
+- 2023MNRAS.523.4654T: Chabrier IMF in the TIR to SFR conversion
+- 2023MNRAS.523.4654T: gas-to-dust ratio of 54.2 +/- 9.3 applied uniformly
+- 2024ApJ...961....2K: 1 mm flux density normalised to equal the SFR, i.e. sub-mm distribution traces star formation
+- 2024ApJ...961....2K: 6 GHz magnification used as a rough proxy where no high-resolution 1 mm image exists (PJ022633, PJ112713, PJ133634, PJ160722)
+- 2024ApJ...961....2K: Fiducial stellar masses 10^10.5-10^11 Msun at z = 2.5 because no stellar masses are measured
+- 2017ApJ...850...54C: Kroupa IMF
+- 2022A&A...659A..46B: [NII]/Halpha = 0.78 when spectroscopy unavailable; Halpha/Hbeta ~ 5 for NGC 4429 and NGC 4476; A(Halpha) = 3.01 x A(g) for NGC 4459 and 4477; Kennicutt (1998a)…
+- 2022A&A...659A..46B: X_CO = 2.3 x 10^20 cm^-2/(K km s^-1), R_21 = 0.65, R_31 = 0.31, and mean dust attenuation corrections
+- 2024ApJ...963..115L: intrinsic H-alpha/H-beta = 2.86, Milky Way extinction curve with Rv = 3.1
+- 2024ApJ...963..115L: Salpeter IMF
+- 2024ApJ...963..115L: H-alpha in star-forming spaxels is purely from star formation; SFR in retired spaxels is an upper limit
+- 2014ApJ...796...84R: alpha_CO=0.8 Msun (K km/s pc^2)^-1 for gas mass (R10)
+- 2024ApJ...974..150W: Stellar radius 1 AU, colour temperature 4000 K; infall 5e-3 Msun/yr onto 15 Msun
+- 2019ApJ...881..124M: Td=45 K, β=1.5, κ850=0.077 m^2/kg
+- 2022MNRAS.512.2371H: SFR_IR approximates total SFR; for FLS02-S A_cont equals the CO(3-2) emitting region; for FLS02 system SFR_IR is apportioned between N and S by relative contin…
+- 2025A&A...694A.171M: Optically thin dust; fixed T_dust and beta from literature
+- 2025A&A...694A.171M: Cosmology H0=67.8, OmegaM=0.3, OmegaL=0.7
+- 2017PASJ...69...83M: R32/10=2 in CND; Mvir=1040 σ R, size ~30 pc
+- 2021A&A...654A...8N: Kroupa IMF
+- 2021A&A...654A...8N: Unperturbed dispersion sigma=10 km/s, similar to other massive spirals
+- 2025ApJ...985...14L: alpha_CO assumed fixed within each region when averaging
+- 2025ApJ...985...14L: Sigma_SFR estimators match VLT/MUSE gold-standard maps to ~0.1 dex accuracy
+- 2015A&A...584A..78C: 1.3 mm flux corresponds to redshift-independent IR luminosity for 0.5<z<15; SFR from Kennicutt & Evans 2012
+- 2018ApJ...867..140L: T_dust = 41 K, beta = 1.5, bolometric factor 1.91, Kennicutt 1998 SFR
+- 2018ApJ...867..140L: mu = 10.9; inclination average <v_rot> = pi/2 v_obs
+- 2021Galax...9..115D: Fiducial uncertainties of 20% on L_bol and L_FIR, and 30% on stellar mass following Circosta et al. (2019)
+- 2021Galax...9..115D: Linear L_FIR - SFR calibration of Kennicutt (1998) after subtracting AGN fraction
+- 2021Galax...9..115D: AGN bolometric corrections from Duras et al. (2020) and BH accretion efficiency eta = 0.3
+- 2022MNRAS.514.5035L: Intrinsic Balmer decrement (Halpha/Hbeta)_init = 2.86 for case B recombination at T = 10^4 K (Osterbrock & Ferland 2006)
+- 2022MNRAS.514.5035L: Fitzpatrick (1986) reddening curve k(lambda) and Kennicutt & Evans (2012) log(SFR) = log(L_Halpha) - 41.27 conversion with D = 18.7 Mpc
+- 2026MNRAS.552g1615S: Kroupa (2001) IMF
+- 2026MNRAS.552g1615S: Milky Way CO-to-H2 calibration scaled with metallicity; CO(2-1)/CO(1-0) from local ISM relation of den Brok 2025
+- 2015MNRAS.452...54M: Local S-K relation; solar metallicity foreground
+- 2019ApJ...876...99S: kappa_125um = 18.75 cm2/g; Salpeter IMF with Kennicutt 1998 SFR
+- 2023A&A...678A.183N: Radial bin E(B-V) extinction correction applied based on where the majority of pixels of the box lies
+- 2025ApJ...985..243B: [CII] luminosity traces SFR via the Lagache et al. relation; the threshold depends on this calibration choice
+- 2016PASJ...68..103F: Lbol ≈ LFIR
+- 2020PASJ...72L...6H: Host M* = 5 × 10^10 M⊙
+- 2020PASJ...72L...6H: Galactic αCO = 4.3 M⊙ (K km s−1 pc²)−1
+- 2025PASJ...77..616I: eps_CCC is the product of the star-forming-collision fraction and the converted gas fraction; the two cannot be separated
+- 2014A&A...568A..92M: Xco thin ~0.449 (T=35.9 K, [CO/H2]=1e-4) lower limit; Xco=5 upper limit
+- 2018ApJ...867L..29W: Chabrier IMF; H0=70, OmegaM=0.3, OmegaL=0.7
+- 2018ApJ...867L..29W: MS relation at z=2.5 from Schreiber et al. 2015
+- 2021ApJ...909...84U: R21 = CO(2-1)/CO(1-0) flux ratio of 2 (Milky Way like)
+- 2021ApJ...909...84U: alpha_CO includes a 36% mass contribution of helium
+- 2021ApJ...909...84U: Flat cosmology with Omega_M = 0.3, Omega_Lambda = 0.7, H0 = 70 km/s/Mpc; Chabrier IMF
+- 2024A&A...690L..16J: R_[CI] = 0.3 +/- 0.1
+- 2024A&A...690L..16J: T_exc = T_dust,thick
+- 2024A&A...690L..16J: r_31 = 0.84 +/- 0.26
+- 2024A&A...690L..16J: alpha_CO = 3.6 or 0.4
+- 2019ApJ...882....5W: Constant X_CO; no inclination correction; NGC 7469 nucleus excluded
+- 2019ApJ...882....5W: alpha+beta~0.3, Sigma_gas/Sigma_total~0.5, g_galaxy/g~0.05-0.2
+- 2020ApJ...903..145L: alpha_CO = 4.35 Msun (K km/s pc^2)^-1; Salpeter IMF
+- 2024A&A...689A.122B: constant X_HCN = 10 Msun (K km/s pc^2)^-1 (Gao & Solomon 2004)
+- 2024A&A...689A.122B: constant X_HCN, alpha_CO and R21 prescriptions of earlier steps
+- 2014ApJ...792...34O: Dwarf-galaxy T_dust=27.6 K, beta=1.5; Salpeter IMF; cosmology (0.3,0.7,0.7)
+- 2017A&A...599A.134S: Single T_dust=40 K for all galaxies; Kennicutt 1998 SFR conversion; Salpeter IMF
+- 2020MNRAS.499.5136C: Kennicutt:2012 SFR relations; kroupa:01 IMF
+- 2019ApJ...884L..33L: alpha_CO = 4.3; Salpeter IMF; Rv = 4.5
+- 2020ApJ...895...21I: Case B, T=10,000 K, ne=100 cm^-3, Halpha/Hbeta=2.86; SFR constant over 10 Myr
+- 2020ApJ...895...21I: Galactic alpha_CO; possibly higher (3x, ~9x with metallicity scaling)
+- 2025A&A...693L..13N: alpha_CO^fix = 4.35 Msun pc^-2 (K km/s)^-1
+- 2025A&A...693L..13N: alpha_HCN = 15 Msun pc^-2 (K km/s)^-1
+- 2025A&A...693L..13N: Constant C_IR = 1.48e-10 Msun/yr/Lsun to convert SFR to L_IR
+- 2016A&A...586L...7B: Chabrier IMF; magnification 5.7
+- 2020ApJ...905...86S: alpha_CO = 0.8 Msun (K km/s pc^2)^-1 for SPT sources
+- 2020ApJ...905...86S: Sensitivity tested by doubling f_AGN limits and raising CO-based outflow rates by 0.5 dex
+- 2025A&A...698A.204H: Chabrier IMF; SFR_IR = 1.40e-10 L_IR
+- 2016PASJ...68...20S: alpha_CO = 0.8 for the U/LIRG comparison data
+- 2022A&A...668A..45L: SFR from L_IR (after removing AGN fraction alpha_AGN) using Kennicutt & Evans (2012) relation with Kroupa & Weidner (2003) IMF; SNe momentum and energy from Ki…
+- 2025PASA...42..140S: distances 19.57, 18.63, 17.69 Mpc; inclinations 55.4, 28.6, 29.5 deg
+- 2025PASA...42..140S: SFE compared at fixed Sigma_H2 between bar and non-bar regions
+- 2015ApJ...810..133I: H0=70, OmegaM=0.3, OmegaL=0.7
+- 2019MNRAS.485.2092C: Gas dominated by molecular gas at z=2
+- 2021ApJ...909..181L: [C I] line width for non-detections equals CO (4-3) line width.
+- 2024A&A...692A.215C: Chabrier IMF; flat LCDM Om=0.3, OL=0.7
+- 2024A&A...692A.215C: alpha_CO depends on metallicity (Genzel 2015)
+- 2016MNRAS.455.2745K: negligible HI in the centre
+- 2023A&A...676A..67W: Instantaneous star formation efficiency of 1%; negligible cluster mass loss from stellar ejections or winds/SNe
+- 2024MNRAS.528.6768H: Expected SFE follows the Saintonge main-sequence-offset relation; normalization uses un-barred galaxies within ±0.3 dex of the main sequence
+- 2015ApJ...810...91H: kappa_d(125 um)=2.64±0.29 m^2/kg, beta=1.5, T_dust=30-40 K
+- 2019MNRAS.487.4305S: Zero magnetic field in SFK
+- 2022ApJ...930...32C: General opacity model with tau = 1 at lambda_rest = 200 um; CMB heating correction included; Chabrier IMF; Planck cosmology (H_0 = 67.7 km s^-1 Mpc^-1, Omega_l…
+- 2026ApJ..1001..131C: alpha_nu = 6.7 +/- 1.7e19 erg/s/Hz/Msun; 25 K calibration
+- 2026ApJ..1001..131C: Photon index 1.4 for X-ray; radio spectral index -0.8
+- 2017ApJ...849...90S: Td = 20 and 100 K; X_CO = 0.8e20; Te = 5000 K; d = 10.8 Mpc
+- 2020A&A...643A..78M: SFR_Paα = 4.0e-41 L_Paα; intrinsic Hα/Paα 0.116
+- 2025ApJ...995..151Y: X_CO = 2e20 cm^-2 [K km/s]^-1; alpha_CO = 4.35
+- 2025ApJ...995..151Y: Constant mass-to-light ratio 0.35 Msun/Lsun
+- 2013MNRAS.431L..88H: L'CO(2-1)=L'CO(1-0); alpha=0.8
+- 2019MNRAS.486..560S: Old stellar heating neglected, so SFRs are conservative upper values
+- 2019MNRAS.486..560S: Lambda-CDM H0=70, Om=0.3, OL=0.7; Salpeter IMF
+- 2022MNRAS.515.1751W: κ_ν,ref = 8.94 cm^2 g^-1 at λ_ref = 158 μm; clustering factor C = 1; Chabrier (2003) IMF for dust yields; Kennicutt & Evans (2012) SFR conversions
+- 2024ApJ...970...30M: Lower alpha_CO limit is the QSO/SMG value of Carilli & Walter 2013; upper limit set by the kinematic (dynamical mass) argument; no additional CO lines to const…
+- 2019AJ....157..131B: alpha_HCN ≈ 10, alpha_CO ≈ 7 M_sun (K km/s pc^2)^-1; distance 22 Mpc
+- 2023ApJ...948...88W: CO J=(2-1) surface brightness used directly as reference molecular gas tracer without applying a CO-to-H2 conversion factor
+- 2024ApJ...976...88L: Constant alpha_CO = 4.35 Msun (K km/s pc^2)^-1, or variable alpha_CO from Bolatto+13 eq. 31 iterated until change <0.1%
+- 2024ApJ...976...88L: Krumholz+18 fiducial parameters; P*/m* = 3000 km/s for Faucher-Giguere model
+- 2018MNRAS.481.1976Z: Chabrier IMF; flat LCDM with Om = 0.3, OL = 0.7, H0 = 70
+- 2020MNRAS.496..875R: LambdaCDM H0 = 70, Om = 0.3, OL = 0.7; Chabrier IMF
+- 2020MNRAS.496..875R: 0.5 dex systematic error from FIR SED template choice added in quadrature
+- 2020MNRAS.496..875R: SFR scaled from Salpeter to Chabrier by dividing by 1.7
+- 2025ApJ...987...61R: [C II] luminosity multiplied by 3/4 (25% ionized gas contribution); [O I] 63 μm luminosity multiplied by 2 (optically thick spherical clouds); constant dust te…
+- 2022ApJ...934..173S: eDIG is negligible in high EW(Halpha) (>14 Angstrom) group and non-negligible in low EW(Halpha) group; Cardelli et al. (1989) extinction curve, intrinsic Halph…
+- 2026A&A...707A..77H: Optically thick outflow tau ~ 1 and L_bol ~ L_IR when assessing radiation pressure
+- 2026A&A...707A..77H: Energetics treated as order-of-magnitude estimates because alpha_CO is highly uncertain
+- 2019ApJ...876..112R: linear mapping 160-um to SFR; no AGN contribution; universal IMF
+- 2020ApJ...902..112B: Dust emissivity index beta_d = 1.6; light-weighted dust temperatures; CMB effect included
+- 2025ApJ...993..111W: Depletion times assume no gas inflow or outflow.
+- 2025ApJ...993..111W: Dust masses for target and field SMGs use the same MBB assumptions.
+- 2020ApJ...888...44C: Chabrier IMF; Kennicutt conversions
+- 2024MNRAS.535.2538Z: Same XCO and constants as for global H2 masses; distance to Fornax (20 Mpc) for Halpha luminosity
+- 2024MNRAS.535.2538Z: Halpha and CO are assumed co-spatial everywhere, CO undetected because column density is below detection limit
+- 2017MNRAS.465.4390B: kappa0=0.045 m2/kg at 250 GHz
+- 2023MNRAS.525.5831K: LambdaCDM cosmology with H_0 = 67.8 km s^-1 Mpc^-1 and Omega_m = 0.308
+- 2023MNRAS.525.5831K: Neglect H I gas component (M_gas = M_H2,[CI])
+- 2025ApJ...989..115T: Flat Lambda-CDM with Omega_m=0.3, Omega_Lambda=0.7, H0=70
+- 2021ApJ...909...12G: Solar metallicity for variable α_CO; HI surface density Σ_HI = 5 M_sun pc^-2; stellar velocity dispersion σ_* ≈ 0.5 sqrt(π G l_* Σ_*) with l_* = R_1/2,* / 1.76…
+- 2026A&A...712A.227E: LambdaCDM cosmology with H_0 = 70 km s^-1 Mpc^-1, Omega_m = 0.30, Omega_Lambda = 0.70; Chabrier (2003) IMF
+- 2026A&A...712A.227E: alpha_CO includes a factor of 1.36 for heavy elements; 12+log(O/H) capped at 8.8 for Accurso et al. (2017) prescription
+- 2018MNRAS.475..492K: median SFR from set of template spectra
+- 2021ApJ...910...89B: Kroupa IMF, Kennicutt & Evans scaling relations
+- 2021ApJ...910...89B: H0 = 70 km/s/Mpc, Omega_M = 0.3, Omega_Lambda = 0.7
+- 2026A&A...709A..14Z: Pseudo CO(2-1) derived using R32 = 0.50 in SLED plot for galaxies lacking CO(2-1); Valentino2020b CO(5-4)-L_IR relation; Kennicutt2021 L_IR-SFR relation
+- 2018MNRAS.481.1016G: Fractal dimension D2 = α+2 ≈ 1.5 for ISM
+- 2022ApJ...926..159I: HCO+ emission is thermalized and optically thick at J=2-1 and J=1-0; conversion factor alpha_HCO+ = 2-5 M_sun (K km s^-1 pc^2)^-1; SFR (M_sun yr^-1) = 4.5 x 10…
+- 2025A&A...699A.183H: Halpha SFR with A_Halpha = 0.82 x A_V(Balmer); distance 3.5 Mpc for mJy to erg/s/Hz
+- 2018ApJ...861....7F: constant SFR, no radial motions of stars
+- 2020A&A...635A.119C: Solar metallicity; four SFHs (B, E, Sb, C)
+- 2025A&A...695A..23S: Chabrier IMF
+- 2022ApJ...929..100K: Global H alpha + 1.4 GHz extinction correction prescription holds for 3.0" (~1 kpc) apertures; fixed alpha_CO = 1.7 M_sun (K km s^-1 pc^2)^-1
+- 2025ApJ...988..162D: Radially varying alpha_CO (Bolatto2013/Sun2022); alpha_CO(1-0)=4.35 for sensitivity estimate
+- 2018Natur.560..613T: Sigma_SFR traced by 860 μm flux scaled to total SFR
+- 2023MNRAS.521.5508H: alpha_[CI] = 17.0 M_sun (K km s^-1 pc^2)^-1, alpha_CO = 4.0 M_sun (K km s^-1 pc^2)^-1 (including 1.36 helium factor)
+- 2023MNRAS.521.5508H: T_dust = 35 K, beta = 2, kappa_nu = kappa_* (nu/nu_*)^beta with kappa_* = 10.41 cm^2 g^-1 at nu_* = 1900 GHz
+- 2024ApJ...972..147C: SFR maps scaled to TIR total SFR (Kroupa IMF); gas maps scaled by CO line ratios
+- 2019ApJ...870...39V: Gas in an inclined disk with inclination from 3DBAROLO
+- 2023ApJ...942...25F: CO-to-H2 conversion factor = 4 M_sun (K km s^-1 pc^2)^-1
+- 2023ApJ...942...25F: Flat cosmology with h = 0.7 and Omega_m = 0.3
+- 2024ApJ...961...42T: Standard MW alpha_CO of 4.35 (6.7 for alpha_CO(2-1)) Msun (K km/s pc^2)^-1
+- 2018Natur.558..260Z: Kennicutt-Schmidt law; exponentially fading primordial inflow; outflows
+- 2020A&A...641A.155V: Gas mass from M_dust with metallicity-dependent gas-to-dust ratio log(delta_GDR)=10.54-0.99x(12+log(O/H)); starbursts supersolar (delta_GDR~30); Sigma_SFR=SFR/…
+- 2024A&A...685A..80Z: constant SFR
+- 2019Natur.569..519K: H-alpha SFR calibration of Murphy et al. 2011, Kroupa IMF, 20% uncertainty
+- 2020MNRAS.496.5243H: 12CO 2-1/1-0 ratio 0.8; ULIRG alpha_CO
+- 2017ApJ...836L...2B: Axisymmetric thin disk; dark matter negligible
+- 2021A&A...649A..31H: Thermal balance and [C ii] as dominant neutral-gas coolant motivate the comparison.
+- 2025A&A...695L..15F: SFR from L_IR following Kennicutt & Evans 2012; M_gas = M_d x gas-to-dust ratio 200
+- 2018ApJ...864..120M: xi = 8e-11 erg; M* = 1.6e4 (Q/1e51) Msun
+- 2021A&A...656A..60A: alpha_CO=4.36, r31=0.27, 45% missing flux correction, inclination 57 deg, Calzetti extinction
+- 2025A&A...699L..11V: Apply historic SFR to observed total cloud area
+- 2019ApJ...872..117G: SFR_IR from LIR via Kennicutt98 for Chabrier IMF; LIR integrated 8–1000 um
+- 2021A&A...655A..42S: differential lensing assumed not too severe, so ratios cancel mu
+- 2025A&A...701A.234Z: SFMS normalization and redshift evolution from Schreiber et al. (2015)
+- 2025A&A...701A.234Z: Field galaxy scaling relations µ_gas(z, M_*, R_SB) and τ_gas(z, M_*, R_SB) from Liu et al. (2019)
+- 2022A&A...661A.136G: z = 0.0206467; D_L = 87.2 Mpc; area-weighted average 12+log(O/H) ~ 8.12; alpha_CO = 60 M_sun (K km s^-1 pc^-2)^-1 (range 10 - 110); Case B recombination; Calze…
+- 2026A&A...707A.121G: Treat early-type rings separately because their dynamics may differ from spiral-galaxy rings
+- 2017A&A...604A.117C: alpha_CO=0.8 Msun (K km/s pc2)^-1
+- 2021A&A...646A..26B: UV magnitude error bars assumed symmetric and equal to the larger error
+- 2024ApJ...976...70L: SFRs divided by 1.6 to convert Salpeter to Chabrier IMF
+- 2016ApJ...828...50K: c_s = 0.2 km/s (10 K)
+- 2020A&A...641A.151S: alpha_CO=1.1, solar metallicity, CO(2-1)/CO(1-0)=3
+- 2019ApJ...881...63N: Optically thin dust; Kennicutt98 SFR relation with Chabrier IMF
+- 2022A&A...657A..25N: Milky Way attenuation law with k(6563 A)/R_V = 0.74
+- 2026A&A...706A.345K: Cosmology H0=70, Om=0.3, OL=0.7; Chabrier IMF
+- 2022AJ....164...43S: Spherical symmetry for free-fall time calculation
+- 2022AJ....164...43S: Shear-induced cloud-cloud collision model with random spatial distribution of clouds on adjacent circular orbits
+- 2017ApJ...842L..21N: Chabrier IMF
+- 2021MNRAS.507.3998P: CO excitation ladder of Daddi et al. (2015) and conversion factor alpha_CO = 3.6 M_sun (K km s^-1 pc^2)^-1 (with alternative alpha_CO = 1.8 giving a 0.5 scalin…
+- 2026ApJ..1004...22F: Z_sun ~ 0.014, AGB yields for 1-7 Msun (Dell'Agli et al. 2019), SNe II yields for 7-120 Msun (Limongi & Chieffi 2018)
+- 2017ApJ...834....6S: Free-free emission dominates 110 GHz
+- 2020MNRAS.499.4940Z: H0 = 70 km/s/Mpc, Omega_M = 0.3, Omega_Lambda = 0.7
+- 2024ApJS..271....2H: Salpeter IMF; Thilker (2007) Type 1/Type 2 XUV classification
+- 2018ApJ...856...72O: Salpeter IMF, Kennicutt 1998 calibration, ALESS SED for all components
+- 2020ApJ...902..113I: Model predictions taken at z = 1.43, the mean redshift of CO(2-1) in Band 3
+- 2024MNRAS.527.6867A: [CII]-to-gas conversion from (cite: zanella2018).
+- 2025ApJ...989...66V: Weight equals total pressure in equilibrium
+- 2018ApJ...854L...4R: Maximal AGN scenario: all 5.8-8.0 um emission from AGN
+- 2020MNRAS.496.4405H: Hosts follow the Kennicutt law
+- 2025A&A...695A.163B: Compare Chabrier IMF, R=0.41, with Salpeter IMF, R=0.27, through inherited models.
+- 2017ApJ...838..146L: normal IMF
+- 2023MNRAS.521.3348N: alpha_CO = 4.3 M_sun pc^-2 (K km s^-1)^-1, R_21 = 0.64, alpha_HCN = 14 M_sun pc^-2 (K km s^-1)^-1
+- 2018NatAs...2...56Z: kappa_d(850um)=0.07 m2/kg, isothermal dust, Chabrier IMF with Kennicutt 1998 SFR
+- 2020PASJ...72...29O: Flat cosmology with Omega_m = 0.3, Omega_Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1
+- 2020PASJ...72...29O: Case B recombination Ly-alpha/H-alpha intensity ratio of 8.7; Kennicutt (1998) SFR(H-alpha) and SFR(FIR) calibrations; [C II]/FIR = 10^-2.5 (or scatter 10^-3.6…
+- 2024MNRAS.535.1533B: alpha_CO = 4.0 M_sun (K km s^-1 pc^2)^-1; IR luminosity-to-SFR conversion factor = 1.73 x 10^-10 M_sun yr^-1 / L_sun (Salpeter 1-100 M_sun IMF)
+- 2018MNRAS.476..122V: Galactic X_CO
+- 2022ApJ...941...47S: CO(1-0) optical depth correction of 2 (cite: Hughes2017) and CO-to-H2 conversion from Eq. 3 of (cite: Bolatto2013)
+- 2025ApJ...987..142J: Z = 2 Zsun; distance of M83 from Saha06
+- 2018A&A...616A.110E: local GDR-metallicity relation holds at all redshifts; M_Chabrier=M_Salpeter/1.7
+- 2022MNRAS.511.1303V: Chabrier (2003) IMF (conversion factor 1.77 from Salpeter); stacked FIR SED dust temperature 43 +/- 5 K; Calzetti (2000) and Reddy et al. (2015) reddening curv…
+- 2026A&A...707A.252K: Chabrier IMF; SFR ~ 10^-10 L_IR [L_odot]; alpha_CO = 0.8 (with error incorporating range 0.8-4.0); helium contribution of 36%; CO(6-5) to CO(1-0) ratio from Ya…
+- 2019MNRAS.483.4586F: alpha_CO: 0.8 ULIRGs, 1.2 LIRGs, 4.4 others
+- 2018MNRAS.478.1170C: Td=30 K, beta=1.5; total SFR ~ SFR_UV unless continuum detected
+- 2020ApJS..247...61F: f-factor 0.44 (likely upper limit on LHalpha); Calzetti and SMC reddening
+- 2026ApJ..1000..159M: ISM gas is dominated by molecular gas (M_gas ≃ M_mol)
+- 2019A&A...623A..66B: R21=0.7; X_CO = 2e20 cm^-2/(K km/s) with helium; Sigma_H2 = 4.2 I_1-0
+- 2021MNRAS.502.3021R: Luminosity-to-mass ratio for proto-stars = 10^3 L_sun M_sun^-1; proto-star timescale ~ 10^5 yr; gas removal timescale ~ 10^7 yr
+- 2016ApJ...827L..32B: delta_GDR ~100 from MZR, Z=8.57
+- 2021A&A...645A.120F: Tdust=40 K for the continuum cross-check; X_[CI]=1e-5 for region A
+- 2025ApJ...985L...8U: Closed box, no net inflow or outflow, no external gas supply exceeding outflow
+- 2017MNRAS.465.3461Z: E(B-V)=0.4 constant attenuation correction; spherical uniform-density HII regions
+- 2020ApJ...905L..23M: Nearby CO complex mass (1.2e6 Msun) taken as the mass of the cloud NGC 4725 B formed from; 100 pc gas layer thickness
+- 2024ApJ...977L...6F: Metallicity-dependent CO-to-H2 conversion factor
+- 2020NatAs...4..670A: L_CO(7-6)/L_CO(1-0)=0.24; ULIRG X_CO (Downes1998)
+- 2020NatAs...4..670A: LAB6.1 fraction of FIR luminosity follows 1.2 mm continuum
+- 2016A&A...586A..45S: clump radius ~20 pc
+- 2020ApJ...899..165A: E(B-V)=0.05 mag, extinction correction negligible
+- 2017ApJ...844L..10S: mBB underestimates L_FIR by ~20%; corrected; SFR from Kennicutt98
+- 2020ApJ...890..171J: Chabrier IMF; qIR=2.4
+- 2024A&A...691A.153L: Intrinsic Hα/Hβ = 2.86 (Case B, T_e = 10^4 K, n_e = 10^2-10^3 cm^-3); Cardelli et al. (1989) attenuation law; Chabrier (2003) IMF; Kennicutt & Evans (2012) SFR…
+- 2020MNRAS.499..193K: CO dispersion scaled to ~1 kpc scale height with sigma ∝ L^1/2
+- 2019ApJ...882..137P: Dust abundance D_MW = Z/Zsun
+- 2020ApJ...892...42H: T_dust = 40 K; SFR = 1.72e-10 L_FIR (Kennicutt98) scaled to Chabrier
+- 2026A&A...706A.285C: Gas-to-dust mass ratio of 100 for Sigma_Md to gas mass surface density
+- 2026A&A...706A.285C: T_CMB(z=6.5)=20.5 K in the optically thick theoretical relation
+- 2020ApJ...889....9M: Chabrier IMF; Balmer decrement dust correction
+- 2018PASJ...70L...6K: kappa_850 = 3.2 cm2/g
+- 2021A&A...652A..30S: Salpeter IMF; H0=70, Om=0.3, OL=0.7
+- 2025ApJ...987L...2H: Global-galaxy Kennicutt-Schmidt relation applies at z = 14
+- 2016ApJ...832...37G: Cool dust traces dense ISM (Scoville et al. 2015); SFR scales linearly with gas surface density (Wong & Blitz 2002)
+- 2021ApJ...908..192S: Gas-to-dust ratio 100 for depletion times; Scoville rest-frame 850 luminosity conversion for low-dust-ratio gas fractions
+- 2025ApJ...994....4A: E(B-V)_stellar/E(B-V)_nebular = 0.83; Kennicutt (1998) SFR relation modified for Chabrier IMF
+- 2020MNRAS.497.2771M: LCDM H0=70, OmegaM=0.3, OmegaL=0.7; Chabrier IMF; alpha_CO 4.6 (B,D) and 0.8 (mergers)
+- 2018ApJ...859...12G: remaining FIR fraction originates from the annulus
+- 2022A&A...664A..63X: Helium correction factor of 1.36; PP04 metallicity scale with 0.15 dex uncertainty; RJ-tail parameters: beta = 1.8, T_d = 25 K, alpha_850 = 6.7e19 erg s^-1 Hz^…
+- 2026A&A...705A..39P: Uniform spherical clouds, 40 shells; GOW chemistry; CR rate from depletion time
+- 2017ApJ...835..286I: Average ALESS SMG SED from Swinbank+14; Chabrier IMF; Kennicutt 1998
+- 2020MNRAS.498.4192F: SFRs normalized to a Chabrier IMF.
+- 2024A&A...692A..22Z: volume choice drives the SFR density
+- 2017ApJ...835...98U: z=3.0 for ADF22.2 and ADF22.5 lacking zspec
+- 2021MNRAS.506..514K: Kennicutt (1998) [OII]-to-SFR calibration without dust correction
+- 2025A&A...693A.309S: Dust opacity kappa from Jones et al. 2013, spherical symmetry, R_e from the dust continuum
+- 2018MNRAS.476.4383D: kappa_850=0.077 m^2/kg; Kroupa IMF with Kennicutt & Evans SFR conversion
+- 2020Natur.584..201R: source morphology the same at all infrared photometric points, so the 160 micron magnification applies to L_IR; infrared emission is thermal dust heated by you…
+- 2024A&A...684A..33K: Dynamical masses taken at face value ('if the dynamical masses are reliable')
+- 2019ApJ...880...92J: dust and gas sizes similar
+- 2021NatAs...5..319P: Chabrier (2003) IMF, dividing Kennicutt (1998) conversion by a factor 1.7
+- 2025A&A...701A..85K: Plotted errors do not include size uncertainties
+- 2025A&A...695L..18M: All central dust heating attributed to star formation (upper limit if AGN contributes)
+- 2017ApJ...849..154S: sources at cluster redshift; Chabrier IMF
+- 2025A&A...693A..17D: M_stars from SFR_UV x 10 Myr (dust-corrected with beta_UV), Chabrier IMF, kappa_UV from BPASS binaries at 0.5 Zsun
+- 2017ApJ...851..145M: CMB contribution removed; [CII] line contamination negligible
+- 2020ApJ...898...33C: Chabrier IMF; magnification 5.8
+- 2025A&A...695A...6P: Case B Halpha/Hbeta=2.86
+- 2018ApJ...854...97D: T_dust=47 K
+- 2021ApJ...908..146C: SFR conversion with Kennicutt (1998) formula, after correction to Chabrier IMF
+- 2018ApJ...864...38L: Chabrier IMF; Sigma_SFR = (1/2 SFR)/(1/4 pi d^2)
+- 2020A&A...643A...6C: Case B recombination, Chabrier IMF, one-fifth solar metallicity
+- 2024MNRAS.52710221P: Calzetti extinction law with R_v = 4.05
+- 2017ApJ...850..170O: M_dense = 10 L'_HCN(1-0)
+- 2019ApJ...887..183Z: Planck cosmology H0=68, OmegaLambda=0.69; Chabrier IMF
+- 2023ApJ...952...48H: SFR = 200 +82/-38 M_sun yr^-1 and M_* = 7.7 +1.0/-0.8 x 10^8 M_sun
+- 2016ApJ...833...68A: Td=25 K, beta=1.8, delta_GDR=200 for MAGPHYS masses
+- 2020MNRAS.496.4358I: SFR sensitive to the assumed IMF
+- 2017A&A...606A..17M: optically thick starburst, solar metallicity; cirrus heating ignored
+- 2017ApJ...842L..16L: Sigma_SFR = 2e3 Msun/yr/kpc^2; Chabrier IMF
+- 2020ApJ...892..145Z: Salpeter IMF; L_FIR = L_IR/1.9
+- 2016ApJ...833...12R: T_dust = 25 K (20-30 K for uncertainty); gas-to-dust ratio 100
+- 2018ApJ...869L..22W: optically thin dust emission; Kennicutt & Evans 2012 SFR calibration
+- 2020A&A...643A...8G: AGN contribution to L_IR small
+- 2016PASJ...68...82Y: Tdust 20-35 K (ALMA4: 20-30 K), beta=1.5
+- 2020A&A...641L...6D: disk diameter = a, height 1 kpc, inclination 90 deg
+- 2017ApJ...834..135T: current SFR maintained; outflow rate comparable to SFR (eta~1)
+- 2020MNRAS.494.3828D: half of gas available to form stars
+- 2019ApJ...887..144J: 20% dark matter in dynamical gas mass; T_ex=30 K for [CI]
+- 2018ApJ...863L..29D: T_dust=30-50 K
+- 2017A&A...608A.138G: alpha_CO=0.8 (DSFG/ULIRG) or 3.6 (low-z/cluster); R71=R81~0.39, R31~0.56
+- 2019ApJ...883...81S: single M/L, alpha_CO=1, single 270um-to-SFR conversion with SFR~400 Msun/yr
+- 2019ApJ...877L..23P: Chabrier IMF; H0=70, Om=0.3, OL=0.7
+- 2019ApJ...877L..38R: SFR from total IR luminosity with Kennicutt (1998) conversion; Chabrier IMF
+- 2016ApJ...828...56W: Salpeter IMF
+- 2017MNRAS.471.4155K: Michalowski 2010 SMG SED, bolometric ~2x a 35 K modified blackbody
+- 2017ApJ...846..108C: Chabrier IMF; alpha_CO=0.8; Halpha not extinction corrected
+- 2019ApJ...882...10N: Td = 30-50 K, beta = 1.2-2.0; 0.5 dex scatter on SFR_CII
+- 2017ApJ...850....1R: alpha_CO = 0.8 Msun (K km/s pc2)^-1; r51=0.39
+- 2016MNRAS.457L.122H: H0=70, OmegaM=0.30, OmegaL=0.70
+- 2018Natur.553..178S: Chabrier IMF
+- 2017A&A...605A..42C: Td 25-45 K; Kennicutt & Evans FIR-SFR
+- 2018ApJ...863L..16M: L'CO(3-2)/L'CO(1-0)=0.56; constant SFR for depletion time
+- 2018MNRAS.479..703C: Atomic H negligible; constant SFR, no replenishment
+- 2019A&A...625A..96K: beta=2.0; SFR=9.5e-11 LIR (Kennicutt, Chabrier IMF); Bruzual & Charlot models
+- 2018MNRAS.477.4380S: Chabrier IMF; H0=72, Om=0.27
+- 2016ApJ...833..195W: z=2; Chary & Elbaz 2001 SED; Kennicutt 1998 SFR conversion
+- 2019MNRAS.489..427I: Same SED as W; alpha_CO=0.8
+- 2016ApJ...832..114M: SFR = 1.0e-10 L_IR (Kennicutt, Chabrier IMF); gas fraction 0.3-0.8
+
+
+### Limitations the authors admit
+- 2018ApJ...868...75S: Thin-disk approximation may underestimate Mdyn; many trials unphysical so no lower limit on alpha_CO
+- 2020MNRAS.494.5542R: CO(3-2) has low S/N and must be interpreted carefully
+- 2020MNRAS.494.5542R: Agreement of the PDR models with line ratios is largely due to large systematic uncertainties on CO(3-2) and CO(10-9) reconstructions
+- 2020MNRAS.494.5542R: Semi-infinite uniform-density slab models are likely too simplistic for a clumpy ISM
+- 2020MNRAS.494.5542R: Low surface-brightness CO(10-9) component could be a modelling artifact
+- 2020MNRAS.494.5542R: T_dust from rest-frame 160-350 um is limited because the data lie on the Rayleigh-Jeans tail
+- 2025A&A...694A.218B: Stellar masses of the dark galaxies are uncertain because based on one-band IRAC photometry
+- 2025A&A...694A.218B: Unaccounted systematic error from assuming r41 = 1.0
+- 2025A&A...694A.218B: CO(1-0) observations needed to constrain gas masses better
+- 2017MNRAS.470.3775V: alpha_CO is the major uncertainty in gas masses
+- 2020MNRAS.492.6027E: Fixed alpha_CO is probably an over-estimate for starbursting and central spaxels, which may overstate the gas fraction role
+- 2020MNRAS.492.6027E: Central starburst definition is somewhat subjective
+- 2020MNRAS.492.6027E: Sample is small
+- 2024ApJ...964..120P: Sigma_SFR for AGN-contaminated and retired spaxels is D4000-inferred and should be interpreted with caution
+- 2024ApJ...964..120P: f_gas profile of SF_l galaxies cannot be determined precisely because of many CO non-detections
+- 2024ApJ...964..120P: Small sample limits identification of the origin of multi-mode drivers
+- 2024ApJ...964..120P: Constant alpha_CO may be wrong in the inner 1 kpc
+- 2013A&A...559A..29C: Inclination poorly constrained, so mass is poorly constrained
+- 2025A&A...701A.219N: Simulations only include feedback from accretion luminosity, omitting protostellar outflows/jets and HII regions.
+- 2025A&A...701A.219N: The SQUALO single-temperature prescription (T_f = 40 K, range 20-60 K for L/M > 10) was not designed for L/M > 100 L_sun/M_sun, causing systematic mass overestimation (by a factor ~2) in the most evo…
+- 2025A&A...701A.219N: All synthetic clumps are placed at a single distance (5.2 kpc, the farthest in SQUALO, corresponding to ~7000 AU or ~0.036 pc linear resolution), whereas real SQUALO clumps span 2.0 to 5.5 kpc, biasi…
+- 2025A&A...701A.219N: Simulations model isolated uniform spherical clumps in boxes without large-scale filamentary inflow or external dynamics, limiting the ability to reproduce compact d_max,2D distributions or clumps wi…
+- 2025A&A...701A.219N: Sink particle merging is not allowed in the RAMSES prescription, so sink numbers can never decrease, and lack of tracer particles prevents tracking individual fragments across time steps.
+- 2018A&A...612A..29B: Outflow mass estimates are order of magnitude given chain of assumptions (alpha_CO, excitation).
+- 2020MNRAS.492.3194S: Sample limited to sources with existing FIR and Halpha detections, so all lie on or above the star-forming main sequence
+- 2020MNRAS.492.3194S: Effects of outflows could occur below the resolution of the data (a few kpc) or on long timescales
+- 2020MNRAS.492.3194S: ID2 FIR flux may be partly synchrotron contaminated
+- 2024ApJ...964...95S: Sample selection may favor intense starbursts.
+- 2024ApJ...964...95S: Warm graybody dust may miss the diffuse cold ISM and underestimate total dust mass.
+- 2024ApJ...964...95S: Reported dust-mass uncertainties omit the full uncertainty in adopted κ850μm.
+- 2024ApJ...964...95S: Stellar masses are more uncertain for the four objects with substantial optical-NIR AGN emission.
+- 2024ApJ...964...95S: Comparison of stellar and dynamical masses deferred to future work.
+- 2015ApJ...813..118M: Only three regions; nuclear HCN cut off by bandpass; single-component fit poor for Enuc. 2
+- 2020MNRAS.496.2155Z: Sample biased towards higher-mass, star-forming galaxies
+- 2020MNRAS.496.2155Z: Six Paper I detections lack inclusion in this study
+- 2020MNRAS.496.2155Z: FCC290 has only partial MUSE coverage
+- 2020MNRAS.496.2155Z: BPT boundaries and composite Hα contributions are uncertain
+- 2020MNRAS.496.2155Z: FCC312 MUSE mosaic gap causes a local depletion-time overestimate
+- 2020MNRAS.496.2155Z: FCC290 feedback lifetime and separation may be biased by insufficient resolution and blending
+- 2020MNRAS.496.2155Z: Poor statistics and projected distances prevent isolating the cluster-location effect
+- 2020MNRAS.496.2155Z: Comparisons with B08 differ in CO transition, conversion factor, SFR tracer, sample and resolution
+- 2018A&A...615A..94F: Fragment numbers are lower limits due to large missing flux and pointing offsets
+- 2018A&A...615A..94F: Mass estimates are likely upper limits for warm fragments; simulations use single spherical clumps
+- 2021ApJ...915...46C: The CO-to-H2 conversion factor is difficult to estimate and not well established in the low-metallicity regime.
+- 2021ApJ...915...46C: A comparable galaxy sample in the same stellar mass range did not exist for comparing M_gas.
+- 2021ApJ...915...46C: The upper limit on the molecular gas mass fraction (mu_gas) could not constrain the redshift trend effectively.
+- 2025ApJ...995...98D: Gas-phase heating and cooling omitted; gas masses may be underestimated by up to ~2.
+- 2025ApJ...995...98D: Inside ≲40 AU, optical thickness makes surface densities lower limits.
+- 2025ApJ...995...98D: Dust composition can shift mass by ~5; omitted ice-mantle opacity effects could increase dust mass by ~20%.
+- 2025ApJ...995...98D: Axisymmetry neglects observed spiral arms; simple drift calculation is only an order-of-magnitude consistency estimate.
+- 2025ApJ...995...98D: The dust-dynamics test smooths away low-level structures and is not an independent surface-density inference.
+- 2018ApJ...863..193V: The cavity is poorly defined and may not be real
+- 2018ApJ...863..193V: HST images manually aligned, so small-scale offsets between gas and UV may be missed
+- 2015ApJ...813...45L: Dust temperature unconstrained for most sources; L_BB and SFR uncertain by orders of magnitude
+- 2025PSJ.....6..286M: ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening
+- 2025PSJ.....6..286M: ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated
+- 2025PSJ.....6..286M: GCM and ALMA forward-model inputs differ in vertical treatment
+- 2025PSJ.....6..286M: Best combined fit is driven by the poorer-fitting egress lightspot; untested wind shapes may fit better
+- 2025PSJ.....6..286M: Longitudinal symmetry excludes possible localized atmospheric events
+- 2025PSJ.....6..286M: HASI lacks temporal and latitudinal resolution
+- 2025PSJ.....6..286M: Omitting methane overestimates bending angles by roughly 0.5% under the stated 1.5% methane assumption
+- 2025PSJ.....6..286M: Mid-event arcs are not reproduced by any tested forward model
+- 2021ApJ...909L..29D: Higher-z similarity is inconclusive because of small sample and selection effects
+- 2021ApJ...909L..29D: Sample is not complete in SFR because of the SWIRE MIPS limit
+- 2021ApJ...909L..29D: 24 um SFR method is known to overestimate SFRs at high redshift
+- 2016ApJ...816...25P: Central peak could not be reproduced; unresolved source added ad hoc
+- 2016ApJ...816...25P: Opacity values uncertain to a factor of a few
+- 2020ApJS..251...14H: Completeness assumes point sources and does not capture extended emission; masses uncertain by factor ~2
+- 2015MNRAS.449..715W: Mass estimates uncertain due to cloud boundary definition and a factor ~2 systematics; gas temperature measured only for G0.253
+- 2015MNRAS.448.2224C: Upper limits depend on X_CO, which may be overestimated by up to an order of magnitude
+- 2019ApJ...876..130H: Single dust temperature assumed across sources, affecting Sigma_SFR maps
+- 2019ApJ...876..130H: Interpretations require kinematic confirmation; small sample
+- 2023MNRAS.524.1775H: Sources only marginally resolved at current resolution
+- 2023MNRAS.524.1775H: Resolution precludes distinguishing disc rotation from other scenarios
+- 2023MNRAS.524.1775H: Outflow size and gas conditions are uncertain, so outflow rates are quite uncertain
+- 2023MNRAS.524.1775H: alpha_[CII] calibrated at lower redshift; large uncertainty
+- 2024A&A...687A.288G: Single-line redshifts are less certain; RSN-361 second line is tentative
+- 2024A&A...687A.288G: Stellar mass and main-sequence position are uncertain because UV/optical is obscured
+- 2024A&A...687A.288G: Evolution model is simplistic and ignores quenching and accretion
+- 2024A&A...687A.288G: Small sample does not allow comparison of double-peak fraction with other selections
+- 2018ApJ...863..129S: Possible synchrotron contamination of 110 GHz SFR (~25%); absolute values uncertain due to conversion factors
+- 2020MNRAS.493L..39E: Sample is not representative in mass or volume, so no fit to the rSFMS is reported
+- 2020MNRAS.493L..39E: Constant alpha_CO adopted although it is likely lower in spaxels with enhanced Delta Sigma_SFR
+- 2020MNRAS.493L..39E: Dense molecular gas is not included
+- 2025ApJ...979..217S: Assuming a fixed non-thermal spectral index (alpha_NT = -0.85) can locally overestimate the thermal fraction (reaching 0.85 in one hexagon in NGC 5257) and introduces ~20% SFR variation.
+- 2025ApJ...979..217S: At 500 pc spatial resolution, beam smearing, galactic rotation, and blending of multiple GMCs or intercloud gas can broaden measured linewidths and affect turbulent pressure estimates.
+- 2025ApJ...979..217S: Turbulent pressure calculations assume a constant scale height of 100 pc and a beam filling factor of 1 rather than modeling the vertical gas density distribution.
+- 2025ApJ...979..217S: Current observations lack the angular resolution and radio SED sensitivity in diffuse regions to separate thermal and non-thermal components everywhere or resolve individual 100 pc GMCs.
+- 2015ApJ...806..260F: ALMA [NII] low S/N and missing significant flux; derived values are lower limits
+- 2025ApJ...987...77J: Hydrogen radio recombination lines (H41alpha) used to subtract free-free emission in ALMA-IMF 1.3 mm images may have maser effects in some regions.
+- 2025ApJ...987...77J: Four ALMA-IMF fields (G327.29, G328.25, G351.77, and G353.41) have insufficient (< 5%) short baselines to recover scales larger than 0.1 pc, causing missing flux and potential underestimation of M_co…
+- 2025ApJ...987...77J: The spatial resolution used (0.03 pc) is coarser than the native resolutions of ALMA-IMF and HGBS, so extracted 'cores' (radii 0.04–0.23 pc, median 0.1 pc) are larger than cores defined at <= 0.01 pc…
+- 2025ApJ...987...77J: Why the theoretical galactic-scale SFR-m_star^max relation from Yan et al. (2017) is applicable on the spatial scale of individual molecular clouds is not yet understood and could be a coincidence.
+- 2017MNRAS.468.4205K: alpha_CO is the biggest systematic uncertainty and may differ in AGN
+- 2017MNRAS.468.4205K: AGN fitted relations are upper limits since most points are upper limits
+- 2021MNRAS.500.3667S: Sample is small (7 objects) and heterogeneous, probing different CO rotational transitions that trace different gas temperatures and regions.
+- 2021MNRAS.500.3667S: 2D reconstructed velocity and dispersion maps are affected by beam-smearing, and two sources only use 3 velocity channels.
+- 2021MNRAS.500.3667S: Single-temperature SED fits may underestimate total dust mass if a colder diffuse ISM dust component is present.
+- 2021MNRAS.500.3667S: PG 1115+080 and HS 0810+2554 continuum are only marginally resolved in the radial/tangential direction, requiring size estimates from the minor axis and simulation-based corrections.
+- 2026MNRAS.546ag167S: Single-epoch MgII virial black hole masses may be overestimated in light of recent GRAVITY results.
+- 2026MNRAS.546ag167S: The S/N of the host galaxy emission in J2317-1033 and J2345-1104 is insufficient to accurately constrain the Spergel index or point-source continuum fraction in Band 5 without fixing the index.
+- 2026MNRAS.546ag167S: Compact nuclear star formation may contribute to the unresolved central component, making the inferred AGN contribution an upper limit.
+- 2026MNRAS.546ag167S: Direct stellar mass measurements are unavailable due to the bright optical quasar glare, and applying the local CO Tully-Fisher relation at z~2 is subject to zero-point evolution (-0.41 dex offset).
+- 2015ApJ...799...11X: Interferometer misses extended emission; dust and gas masses are lower limits
+- 2015ApJ...799...11X: CO conversion factors are very uncertain
+- 2021ApJ...918...76C: The new 33 GHz VLA observations suffer from significant decorrelation due to weather and low declination (-26 deg), so the 33 GHz flux densities must be treated as lower limits and excluded from SED …
+- 2021ApJ...918...76C: Significant flux calibration discrepancies exist between the 2004 AJ314 / 2016 16B-067 VLA maps and the 1995 AK0400 maps (~2x higher at 5 GHz and ~1.4x lower at 15 GHz), requiring ad hoc adjustments …
+- 2021ApJ...918...76C: Forcing a 0.3'' circular restoring beam results in significant super-resolution in the declination direction for the 5 GHz map (native 0.620'' x 0.248'') and modest/moderate super-resolution for the …
+- 2021ApJ...918...76C: Q_Lyc, stellar mass, and A_V estimates are lower limits because ionizing photons can be absorbed by dust and both radio and Pa-alpha fluxes are lower limits; dust temperatures are unmeasured and dust…
+- 2018ApJ...855L..25K: Dust temperature assumption is the largest uncertainty (up to factor ~2); MIREX has zero-point offsets, saturation and MIR-source contamination.
+- 2021A&A...650A.117N: Scheduled ALMA Band 9 observations could not be performed due to weather constraints.
+- 2021A&A...650A.117N: The faint ATCA 5.5 GHz extended emission near the GRB site is at the ~5 sigma level, so there is no guarantee that it is real and it is too faint to split in time or frequency.
+- 2021A&A...650A.117N: Small angular sizes (< 0.2''), faintness, and strong host foreground emission prevent MUSE from clarifying the nature of individual clumps C-G and K-M.
+- 2021A&A...650A.117N: Low S/N in the outskirts of the galaxy prevents measuring E(B-V)_host, EW(Halpha), or a secure SFR at the GRB explosion site.
+- 2021A&A...650A.117N: Apparent lower metallicity in region B and high velocity dispersions (~60 km s^-1) in the outskirts could be affected by low-number statistics or low S/N.
+- 2025MNRAS.538.2358S: The innermost region (within 1-2 beam sizes, < 0.1 arcsec) has larger uncertainties due to angular resolution limits and Frankenstein fitting artifacts.
+- 2025MNRAS.538.2358S: The maximum grain size in the dust evolution models scales linearly with the assumed gas surface density (0.1 M_sun); if the gas mass were an order of magnitude lower (as in Sturm et al. 2023), lower…
+- 2025MNRAS.538.2358S: The Band 3 rms noise (5.4 uJy beam^-1) is comparable to the extrapolated intensity (~5 uJy beam^-1) of the Band 6/7 Lagrangian structures if their spectral index is 3.0.
+- 2025MNRAS.538.2358S: The ~3 au radial shift of the B101 ring peak between Bands 7 and 3 is smaller than the angular resolution (5.5 au), preventing robust conclusions on radial drift vs optical depth effects.
+- 2018ApJ...862...64S: Small field and low-number statistics; field comparison selection not equivalent
+
+### Settings cards flag as needed but not stated
+- casa version: 16
+- flux calibrator and flux scale uncertainty: 9
+- casa version and pipeline version: 8
+- line-free channels and continuum subtraction method: 8
+- self-calibration solution intervals: 5
+- continuum subtraction and line-free channels: 5
+- flux scale uncertainty: 5
+- primary-beam correction details: 5
+- line-free channels used for continuum: 4
+- image size and cell size: 4
+- line-free channels and continuum subtraction: 4
+- line-free channels used for continuum subtraction: 4
+- line-free channel ranges for continuum subtraction: 4
+- whether self-calibration was applied: 4
+- casa version and pipeline version used for calibration and imaging: 3
+- flux calibration uncertainty: 3
+- line-free channels for continuum subtraction: 3
+- cprops parameters: 3
+- primary beam correction details: 3
+- cell and image size: 3
+- flux calibrators and flux scale uncertainty: 3
+- rest frequencies used for the lines: 3
+- line-free channels used for uvcontsub: 3
+- line-free channel ranges for uvcontsub: 3
+- continuum-subtraction method and line-free channels: 3
+- briggs robust value, cell size, image size, clean threshold and masks: 2
+- self-calibration usage: 2
+- exact uv-taper parameters: 2
+- target coordinates: 2
+- flux-scale uncertainty: 2
+- continuum subtraction method and line-free channels: 2
+- line-free channel ranges used for continuum: 2
+- casa version and whether the pipeline or manual scripts were used: 2
+- clean threshold, masking, image size and cell size: 2
+- self-calibration not mentioned: 2
+- clean threshold, masks, cell and image size: 2
+- cell size, image size, clean threshold and masks: 2
+- flux calibrator and flux-scale uncertainty: 2
+- clean mask, threshold, cell and image size: 2
+- clean threshold, mask, cell and image size: 2
+
+## Paper excerpts (40 of 418, chosen for detail and spread over fields/years)
+
+### 2018ApJ...868...75S: Concurrent Starbursts in Molecular Gas Disks within a Pair of Colliding Galaxies at z = 1.52 (2018; high_z_galaxies; observational_alma_primary)
+- question: What are the molecular gas, dynamics, alpha_CO, gas-to-dust ratio and star formation conditions of the two interacting galaxies in the z=1.52 starburst PACS-787?
+- step 2: Dust mass, LIR and SFR
+  - method: Draine & Li dust model fit to MIR-FIR SED, SFR from Kennicutt & Evans [2.2: "the total FIR luminosity is log L = 12.83 ± 0.04 (units of L ⊙ )"]
+  - parameter: alpha fixed at 2; Umax = 10^6 [2.2: "An index α, fixed at a value of 2"]
+  - fitting: chi2 minimisation; Monte Carlo for Mdust error [2.2: "Monte Carlo simulations are used to assess the error on M dust"]
+  - validation: Agrees with radio SFR [2.2: "This rate is in good agreement with that derived from the radio emission (3 and 5 GHz)"]
+- step 6: Per-galaxy gas, SFR, depletion time
+  - method: Split total gas by CO(5-4) ratio and SFR by 1.28mm continuum ratio; tau=Mgas/SFR [6.2: "under the assumption that the ratio (1.10 ± 0.08) of the continuum emission at λ rest = 505.5 µ m, detected by ALMA, reflects the ratio in SFR."]
+  - assumption: same excitation and same dust SED for both galaxies [6.1: "This assumes that the excitation states of the two galaxies are the same."]
+  - validation: Radio 3 GHz SFR and CO(5-4)-SFR checks [6.2: "As an independent check, we measure the SFR from the radio flux at 3 GHz"]
+- result: SFR total = 991 ± +96/-87 Msun/yr [2.2: "total SFR = 991 −+96 87 M ⊙ yr −1"]
+- result: Dust mass log = 9.2 ± 0.06 log Msun [2.2: "log M dust = 9.2 ± 0.06 M ⊙"]
+- result: Mgas East/West = 4.4e10 / 3.2e10 ± 0.6e10 / 0.4e10 Msun [6.1: "4.4 ± 0.6 × 10 10 M ⊙ (East) and 3.2 ± 0.4 × 10 10"]
+- result: Depletion time East/West = 85 / 67 ± 14 / 10 Myr [6.2: "time scale of 85 ± 14 (67 ± 10) Myrs"]
+- limitation (authors): Thin-disk approximation may underestimate Mdyn; many trials unphysical so no lower limit on alpha_CO [5.5: "we cannot place a reliable lower limit on the value of α CO"]
+- not stated (card): clean parameters (cell size, image size, mask, threshold, niter); CASA version; line-free channels used for continuum; how rms and velocity ranges chosen; Band 3 and 2012.1.00952.S data usage; flux calibrator flux density values; uvmodelfit/GILDAS settings; priors for the realizations of Mdyn beyond Gaussian errors; how Mdyn was combined with fc distribution
+
+### 2020MNRAS.494.5542R: Full of Orions: a 200-pc mapping of the interstellar medium in the redshift-3 lensed dusty star-forming galaxy SDP.81 (2020; high_z_galaxies, milky_way_ism; observational_alma_primary)
+- question: Map the ISM of the lensed z=3.042 DSFG SDP.81 at ~200 pc resolution: spatial distribution of FIR continuum, CO and [C II]; gas cooling budget; PDR conditions (FUV field, density, surface temperature) and the origin of the [C II]/FIR deficit
+- step 5: Fit the dust SED and derive L_FIR, T_dust and SFR
+  - method: Optimally-thin modified black body fitted to ALMA Bands 4/6/7/8 and Herschel PACS/SPIRE photometry; resolved fit of T_dust only on Bands 6, 7, 8 source-plane maps; SFR from the Kennicutt (1998) relation [4.1.1 Global dust SED: "and an optically-thin modified black-body SED"] [4.1.2 Resolved dust SED: "We therefore adopt $\beta=1.8$ derived from the spatially-integrated SED fit, and fit for $T_\mathrm{dust}$ only."]
+  - parameter: Uniform magnification adopted for 160 um to 1.3 mm continuum; Herschel 160-500 um emission assumed to follow the Band 8 surface brightness distribution [Table 1 caption: "for our analysis, we assume all the 160 to 500-$\mu$m emission to follow the Band 8 surface brightness distribution."]
+  - parameter: Resolved test of T_dust fixed to 60 K and 80 K, fitting only the normalization [4.1.2 Resolved dust SED: "We do this by fixing $T_\mathrm{dust}$ to 60 and 80 K, respectively, and optimizing for the normalization ($\propto M_\mathrm{dust}$) only."]
+  - parameter: FIR-bright region defined as Sigma_SFR >= 50 Msun/yr/kpc^2 [4.1.1 Global dust SED: "we will refer to the region with $\Sigma_\mathrm{SFR}\geq 50$ M$_\odot$ yr$^{-1}$ kpc$^{-2}$ as the *FIR-bright region*"]
+  - assumption: Optically thin dust emission; uniform T_dust and beta; Salpeter IMF; CMB effects negligible (<=0.1 K, <=0.1 dex) [4.1.1 Global dust SED: "we consider the CMB effects to be negligible for SDP.81"] [4.1.1 Global dust SED: "the CMB effect on $T_\mathrm{dust}$ is $\leq0.1$ K, while the inferred $L_\mathrm{FIR}$ is biased by $\leq$0.1 dex"]
+  - validation: Compared with earlier SDP.81 estimates and the ALESS median T_dust; resolved fit repeated on Cleaned images gives consistent results [4.1.2 Resolved dust SED: "Repeating the SED-fitting on the Cleaned Bands 6, 7 and 8 images (thus eliminating any lens-modelling systematics) yields results consistent with the source-plane analysis."]
+- step 7: Resolved molecular gas depletion time
+  - method: Sigma_H2 from the CO(3-2) map via R31 and alpha_CO; t_dep = Sigma_H2 / Sigma_SFR; cross-check with CO(5-4) and R51 [4.2.3 Gas depletion time across the sou…: "We estimate the molecular gas surface density $\Sigma_\mathrm{H_2}$ using the CO(3–2) line map."] [4.2.3 Gas depletion time across the sou…: "adopting $R_{51}=0.32\pm0.05$ from the (cite: Bothwell2013) CO SLED survey"]
+  - parameter: R31 = 0.78 +/- 0.27; alpha_CO = 1.0 [4.2.3 Gas depletion time across the sou…: "We adopt $R_{31}$ from (cite: Sharon2016) who found a mean $R_{31}=0.78\pm0.27$ for a sample of $z\sim2$ sub-millimeter galaxies"]
+  - assumption: alpha_CO = 1.0 from CO kinematic studies of z=2-3 DSFGs, consistent with dynamical mass constraints [4.2.3 Gas depletion time across the sou…: "$\alpha_\mathrm{CO}=1.0$ inferred by (cite: CR18) from CO kinematic studies of $z=2-3$ DSFGs"]
+  - validation: Check with CO(5-4) as gas tracer gives t_dep = 1-30 Myr; mock tests show CO(3-2) north concentration is physical [4.2.3 Gas depletion time across the sou…: "we find a $t_\mathrm{dep}=1-30$ Myr, confirming the extremely short gas depletion time"]
+- step 8: Measure the global and resolved [C II]/FIR ratio and its slope with Sigma_SFR
+  - method: Ratio of source-plane [C II] and FIR luminosities, globally and per 200 pc pixel; log-log slope vs Sigma_SFR by orthogonal distance regression [4.3 [CII]/FIR ratio and deficit: "using orthogonal distance regression, similar to the slope of $-0.7$ derived by (cite: Lamarche2018) for SDP.11"]
+  - fitting: Orthogonal distance regression of log Sigma_SFR vs log([C II]/FIR) [4.3 [CII]/FIR ratio and deficit: "using orthogonal distance regression"]
+  - validation: Compared with Smith et al. 2017 trend and other high-z resolved studies; isolated outlying low-ratio pixels judged lens-modelling artifacts [4.3 [CII]/FIR ratio and deficit: "these are likely lens-modelling artifacts"]
+- step 10: Test mechanisms behind the [C II]/FIR deficit
+  - method: Compare reduced photoelectric heating (Wolfire 2003), AGN X-ray influence and C+ thermal saturation (Munoz & Oh 2016, with correction f_CII for the gas fraction traced by [C II]) against the resolved maps [5.4 What drives the [CII]/FIR deficit i…: "we consider the following mechanisms: (1) thermal saturation of the \[C ii\] fine-structure levels; (2) reduced gas heating due to positive grain charging; (3) AGN contribution."]
+  - parameter: n_e = 1.1e-4 n; phi_PAH = 0.5 in the photoelectric heating rate [5.4.1 Reduced photoelectric heating: "Assuming $n_e=1.1\times10^{-4}\,n$ and $\phi_\mathrm{PAH}=0.5$"]
+  - parameter: f_CII computed per pixel from CO(5-4) S/N >= 3 pixels using the Bothwell 2013 conversion and alpha_CO from CR18 [5.4.3 C+ thermal saturation: "by using the (cite: Bothwell2013) conversion factor and $\alpha_\mathrm{CO}$ from (cite: CR18)"]
+  - assumption: PDR surface temperature taken as the gas temperature in the [C II]-emitting layer; [C II] optically thin; dense gas above critical density [5.4.3 C+ thermal saturation: "This allows us to take the PDR surface temperature $T_\mathrm{PDR}$ as indicative of the gas temperature in the \[C ii\]-emitting regions."]
+  - fitting: Power-law slope of [C II]/FIR vs Sigma_SFR fitted before and after the f_CII correction [5.4.3 C+ thermal saturation: "we obtain a best-fitting power-law slope of $=-0.55\pm0.02$"]
+  - validation: Corrected slope -0.55 +/- 0.02 matches the thermal-saturation prediction (-0.5); uncorrected slope 0.65 +/- 0.01 is in tension [5.4.3 C+ thermal saturation: "in line with the (cite: MunozOh2016) prediction"]
+- result: Dust temperature (global SED) = 35 ± 4 K [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: Dust emissivity index beta = 1.8 ± 0.3 dimensionless [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: FIR luminosity (8-1000 um, magnification-corrected) = 2.4e12 ± 0.5e12 Lsun [4.1.1 Global dust SED: "We obtain $T_\mathrm{dust}=35\pm4$ K and $\beta=1.8\pm0.3$ and a (magnification-corrected) FIR luminosity (8-1000 $\mu$m) $L_\mathrm{FIR}=(2.4\pm0.5)\times10^{12}$ L$_\odot$."]
+- result: Star-formation rate = 410 ± 90 Msun/yr [4.1.1 Global dust SED: "which yields SFR = 410$\pm$90 M$_\odot$ yr$^{-1}$."]
+- result: Spatially integrated [C II]/FIR luminosity ratio = 1.5e-3 ± 0.3e-3 dimensionless [4.3 [CII]/FIR ratio and deficit: "FIR luminosity ratio of $(1.5 \pm 0.3)\times 10^{-3}$"]
+- result: [C II]/FIR slope vs Sigma_SFR = -0.75 ± 0.01 dimensionless [4.3 [CII]/FIR ratio and deficit: "slope of $-0.75\pm0.01$, using orthogonal distance regression"]
+- result: Molecular gas depletion time range (CO(3-2) tracer) = ~1 Myr (south) to ~20 Myr (north) ± ~33 per cent relative (R31 uncertainty) Myr [4.2.3 Gas depletion time across the sou…: "from $\sim1$ Myr in the south to $\sim20$ Myr in the north"]
+- result: Gas depletion time from CO(5-4) check = 1-30 ± not stated Myr [4.2.3 Gas depletion time across the sou…: "we find a $t_\mathrm{dep}=1-30$ Myr"]
+- result: Resolved [C II]/FIR minimum in FIR-bright clumps = ~(2-3)e-4 ± not stated dimensionless [4.3 [CII]/FIR ratio and deficit: "down to $\sim(2-3)\times10^{-4}$ in the two FIR-bright clumps"]
+- result: [C II]/FIR slope after f_CII correction = -0.55 ± 0.02 dimensionless [5.4.3 C+ thermal saturation: "we obtain a best-fitting power-law slope of $=-0.55\pm0.02$"]
+- result: [C II]/FIR slope without f_CII correction = 0.65 (as printed alpha) ± 0.01 dimensionless [5.4.3 C+ thermal saturation: "yields $\alpha=0.65\pm0.01$"]
+- result: Mean f_CII (fraction of gas traced by [C II]) = 0.32 ± 16 (as printed) dimensionless [5.4.3 C+ thermal saturation: "we obtain a mean $f_\mathrm{[CII]}=0.32\pm16$"]
+- result: Source-plane X-ray luminosity if all XMM flux is from a northern-clump AGN = ~2e44 ± not stated erg/s [5.4.2 AGN effects: "we find a source-plane X-ray luminosity $L_\mathrm{0.5-8.0~keV}\simeq2\times10^{44}$ erg s$^{-1}$ (uncorrected for obscuration)"]
+- limitation (authors): CO(3-2) has low S/N and must be interpreted carefully [3.3.3 CO(3-2) emission: "it must be interpreted carefully"]
+- limitation (authors): Agreement of the PDR models with line ratios is largely due to large systematic uncertainties on CO(3-2) and CO(10-9) reconstructions [6 Conclusions: "We emphasise that the agreement between the observed line ratios and the simplistic PDR models is largely due to significant systematic uncertainties on the CO(3–2) and CO(10–9) source reconstructions."]
+- limitation (authors): Semi-infinite uniform-density slab models are likely too simplistic for a clumpy ISM [5.4.1 Caveats and limitations: "Our semi-infinite, uniform-density slab models (even after adjusting for multi-side illumination) are likely too simplistic"]
+- not stated (card): The lens-modelling code itself is not named or stated as public; its regularization form (R_s), the converged lambda_S values and the optimizer settings are not given; Full lens mass model parameters (SIE and shear values) are only referenced to R15a; Flux, bandpass and phase calibrators, and any self-calibration, for the Band 3, Band 8 and LBC data are not given; CASA tasks and parameters used f…
+
+### 2025A&A...694A.218B: Revealing the hidden cosmic feast: A z = 4.3 galaxy group hosting two optically dark, efficiently star-forming galaxies (2025; high_z_galaxies; observational_alma_primary)
+- question: Discovery of a compact galaxy group (CGG-z4) at z=4.3 hosting two optically/NIR dark galaxies, and the star formation and ISM properties of its members
+- step 8: Derive gas masses, gas fractions and depletion times
+  - method: gas mass from 850 um dust luminosity (thin and thick dust), from CO(4-3) converted to CO(1-0) with alpha_CO 0.8 and 3.8, and from [CI](1-0) with alpha_CI; depletion time = Mgas/SFR [Gas mass estimates: "We used an $\alpha_{850}$ value of $7.3\pm0.1\times10^{12}\,\rm W\, Hz^{-1}\, M_{\odot}^{-1}$, such that M$_{\rm gas}=\rm L_{850}/\alpha_{850}$."] [Gas mass estimates: "The ratio M$_{\rm gas}$/SFR approximates the gas depletion timescale, which is the inverse of the star formation efficiency (SFE)."]
+  - software: Python (Astropy, NumPy, SciPy, uncertainties)
+  - parameter: alpha_850 = 7.3 +/- 0.1e12 W/Hz/Msun [Gas mass estimates: "We used an $\alpha_{850}$ value of $7.3\pm0.1\times10^{12}\,\rm W\, Hz^{-1}\, M_{\odot}^{-1}$, such that M$_{\rm gas}=\rm L_{850}/\alpha_{850}$."]
+  - parameter: alpha_CO = 0.8 (x1.36 for helium) and 3.8 +/- 0.1 [Gas mass estimates: "we used the canonical value for star-bursting high-$z$ SMGs of $\alpha_{\rm CO}=0.8\,\rm [M_{\odot}\, pc^{-2}\, (K\, km\, s^{-1})^{-1}]$"] [Gas mass estimates: "Multiplying by a factor $\times1.36$ to account for the contribution from helium"]
+  - parameter: r41 = L'CO(1-0)/L'CO(4-3) ~ 1.0 [Gas mass estimates: "therefore, we obtained the ratio r$_{\rm L^{\prime}41}=\rm L^{\prime}_{\rm CO(1-0)}/L^{\prime}_{\rm CO(4-3)}\sim1.0$"]
+  - parameter: alpha_CI = 16.2 +/- 0.4 [Gas mass estimates: "giving us a value of $\alpha_{\rm CI}=16.2 \pm 0.4 \,\rm [M_{\odot}\, pc^{-2}\, (K\, km\, s^{-1})^{-1}]$ for SMGs"]
+  - parameter: thin dust Td=40.23 K, beta=1.85; thick dust Td=57.57 K, beta=1.93 [Gas mass estimates: "The values we found for the thin dust model are: $\rm T_{\rm d}=40.23^{+2.92}_{-2.82}\,\rm K$, $\beta=1.85^{+0.16}_{-0.15}$"]
+  - assumption: the galaxies are likely starbursts with optically thick dust, so thin and thick dust models are both run [Gas mass estimates: "CGG-z4.a and CGG-z4.b are likely starbursts with optically thick dust emission."]
+  - assumption: systematic error from r41 = 1.0 is unaccounted for [Gas mass estimates: "We note that there is a systematic error in using a value of r$_{\rm L^{\prime}41}=1.0$ that is unaccounted for."]
+  - assumption: SCUBA-2 850 um flux scaled by the ALMA 870 um flux to split the two galaxies [Gas mass estimates: "By scaling the SCUBA-2 $850\,\rm \mu m$ flux by the ALMA $870\,\rm \mu m$ flux for CGG-z4.a and CGG-z4.b"]
+  - fitting: gas mass ratios by Monte Carlo sampling, 1e6 samples, median and 68% interval [Table 3: "the gas mass ratios are estimated through Monte Carlo sampling, generating $10^{6}$ samples and taking their median and $68\%$ confidence interval"]
+  - validation: estimates compared across five methods; paper says CO(1-0) observations are needed [Gas mass estimates: "To constrain the estimates of M$_{\rm gas}$ better, observations of the $115\,\rm GHz$ CO(1-0) line are needed."]
+- step 10: Compare depletion times, line ratios and halo mass with literature and simulations
+  - method: compare depletion times (from [CI]) with field scaling relations normalised to z=4.3 and log M*=10.67, with SPT2349-56 and z>4 SMGs; compare halo mass to merger-tree curves and TNG300 BCG progenitors [Gas depletion times: "normalized to a redshift of $z=4.3$ and $\rm log(M_{\star}[M_{\odot}])=10.67$"] [Comparison with simulations: "for the most massive progenitor of present-day clusters in a cluster halo merger tree, we find that CGG-z4 is expected to grow into a Virgo- or Coma-like cluster over the next 10 billion years"]
+  - parameter: [CI]-based depletion times used because they are least reliant on conversions [Gas depletion times: "since it is the estimate least reliant on conversions that could have systematic uncertainties"]
+  - assumption: for quenching estimate: constant SFE, all gas converted to stars, no gas replenishment [Onset of quenching: "Under the assumption that their SFE is constant, all the gas is converted into stars, and there is no gas replenishment"]
+- result: CO(5-4)/CO(4-3) flux ratio CGG-z4.a = 1.52 ± 0.24 dimensionless [Gas mass estimates: "we find that they have values of $1.52\pm0.24$ and $1.41\pm0.36$"]
+- result: CO(5-4)/CO(4-3) flux ratio CGG-z4.b = 1.41 ± 0.36 dimensionless [Gas mass estimates: "we find that they have values of $1.52\pm0.24$ and $1.41\pm0.36$"]
+- result: Dust temperature, thin model = 40.23 ± +2.92/-2.82 K [Gas mass estimates: "The values we found for the thin dust model are: $\rm T_{\rm d}=40.23^{+2.92}_{-2.82}\,\rm K$, $\beta=1.85^{+0.16}_{-0.15}$"]
+- result: Dust temperature, thick model = 57.57 ± +10.36/-11.53 K [Gas mass estimates: "for the thick dust model, these are: $\rm T_{\rm d}=57.57^{+10.36}_{-11.53}\,\rm K$, $\beta=1.93^{+0.27}_{-0.16}$"]
+- result: log gas mass CGG-z4.a, thin dust = 11.29 ± +0.12/-0.16 log(Msun) [Table 3: "| CGG-z4.a | $11.29^{+0.12}_{-0.16}$ | $11.07^{+0.15}_{-0.24}$ | $10.51^{+0.04}_{-0.04}$ | $11.05^{+0.04}_{-0.04}$ | $11.14^{+0.09}_{-0.11}$ |"]
+- result: log gas mass CGG-z4.a, thick dust = 11.07 ± +0.15/-0.24 log(Msun) [Table 3: "| CGG-z4.a | $11.29^{+0.12}_{-0.16}$ | $11.07^{+0.15}_{-0.24}$ | $10.51^{+0.04}_{-0.04}$ | $11.05^{+0.04}_{-0.04}$ | $11.14^{+0.09}_{-0.11}$ |"]
+- result: log gas mass CGG-z4.a, alpha_CO=0.8 = 10.51 ± +/-0.04 log(Msun) [Table 3: "| CGG-z4.a | $11.29^{+0.12}_{-0.16}$ | $11.07^{+0.15}_{-0.24}$ | $10.51^{+0.04}_{-0.04}$ | $11.05^{+0.04}_{-0.04}$ | $11.14^{+0.09}_{-0.11}$ |"]
+- result: log gas mass CGG-z4.a, alpha_CO=3.8 = 11.05 ± +/-0.04 log(Msun) [Table 3: "| CGG-z4.a | $11.29^{+0.12}_{-0.16}$ | $11.07^{+0.15}_{-0.24}$ | $10.51^{+0.04}_{-0.04}$ | $11.05^{+0.04}_{-0.04}$ | $11.14^{+0.09}_{-0.11}$ |"]
+- result: log gas mass CGG-z4.a, [CI] = 11.14 ± +0.09/-0.11 log(Msun) [Table 3: "| CGG-z4.a | $11.29^{+0.12}_{-0.16}$ | $11.07^{+0.15}_{-0.24}$ | $10.51^{+0.04}_{-0.04}$ | $11.05^{+0.04}_{-0.04}$ | $11.14^{+0.09}_{-0.11}$ |"]
+- result: log gas mass CGG-z4.b, thin dust = 10.99 ± +0.12/-0.17 log(Msun) [Table 3: "| CGG-z4.b | $10.99^{+0.12}_{-0.17}$ | $10.77^{+0.15}_{-0.24}$ | $10.28^{+0.05}_{-0.06}$ | $10.82^{+0.05}_{-0.06}$ | $<10.66$ |"]
+- result: log gas mass CGG-z4.b, thick dust = 10.77 ± +0.15/-0.24 log(Msun) [Table 3: "| CGG-z4.b | $10.99^{+0.12}_{-0.17}$ | $10.77^{+0.15}_{-0.24}$ | $10.28^{+0.05}_{-0.06}$ | $10.82^{+0.05}_{-0.06}$ | $<10.66$ |"]
+- result: log gas mass CGG-z4.b, alpha_CO=0.8 = 10.28 ± +0.05/-0.06 log(Msun) [Table 3: "| CGG-z4.b | $10.99^{+0.12}_{-0.17}$ | $10.77^{+0.15}_{-0.24}$ | $10.28^{+0.05}_{-0.06}$ | $10.82^{+0.05}_{-0.06}$ | $<10.66$ |"]
+- result: log gas mass CGG-z4.b, alpha_CO=3.8 = 10.82 ± +0.05/-0.06 log(Msun) [Table 3: "| CGG-z4.b | $10.99^{+0.12}_{-0.17}$ | $10.77^{+0.15}_{-0.24}$ | $10.28^{+0.05}_{-0.06}$ | $10.82^{+0.05}_{-0.06}$ | $<10.66$ |"]
+- result: log gas mass CGG-z4.b, [CI] (2 sigma upper limit) = <10.66 ± not stated log(Msun) [Table 3: "| CGG-z4.b | $10.99^{+0.12}_{-0.17}$ | $10.77^{+0.15}_{-0.24}$ | $10.28^{+0.05}_{-0.06}$ | $10.82^{+0.05}_{-0.06}$ | $<10.66$ |"]
+- result: Gas depletion time CGG-z4.a, thin / thick / aCO=0.8 / aCO=3.8 / [CI] = 140 / 84 / 23 / 80 / 99 ± 44 / 36 / 2 / 9 / 23 Myr [Table 3: "| CGG-z4.a | $140^{+44}_{-44}$ | $84^{+36}_{-36}$ | $23^{+2}_{-2}$ | $80^{+9}_{-9}$ | $99^{+23}_{-23}$ |"]
+- result: Gas depletion time CGG-z4.b, thin / thick / aCO=0.8 / aCO=3.8 / [CI] = 140 / 84 / 27 / 94 / <69 ± 46 / 37 / 4 / 15 / not stated Myr [Table 3: "| CGG-z4.b | $140^{+46}_{-46}$ | $84^{+37}_{-37}$ | $27^{+4}_{-4}$ | $94^{+15}_{-15}$ | $<69$ |"]
+- result: Gas mass ratio Mgas/M* CGG-z4.a, thin / thick / aCO=0.8 / aCO=3.8 / [CI] = 1.7 / 1.0 / 0.3 / 1.0 / 1.2 ± +3.6/-0.9 ; +2.2/-0.6 ; +0.6/-0.1 ; +2.1/-0.5 ; +2.5/-0.6 dimensionless [Table 3: "| CGG-z4.a | $1.7^{+3.6}_{-0.9}$ | $1.0^{+2.2}_{-0.6}$ | $0.3^{+0.6}_{-0.1}$ | $1.0^{+2.1}_{-0.5}$ | $1.2^{+2.5}_{-0.6}$ |"]
+- result: Gas mass ratio Mgas/M* CGG-z4.b, thin / thick / aCO=0.8 / aCO=3.8 / [CI] = 1.7 / 1.0 / 0.3 / 1.2 / <2.3 ± +3.4/-0.9 ; +2.1/-0.6 ; +0.6/-0.2 ; +2.3/-0.6 ; not stated dimensionless [Table 3: "| CGG-z4.b | $1.7^{+3.4}_{-0.9}$ | $1.0^{+2.1}_{-0.6}$ | $0.3^{+0.6}_{-0.2}$ | $1.2^{+2.3}_{-0.6}$ | $<2.3$ |"]
+- limitation (authors): Stellar masses of the dark galaxies are uncertain because based on one-band IRAC photometry [Stellar mass: "A caveat is that the inferred stellar masses are prone to be uncertain as they are based on one-band photometry."]
+- limitation (authors): Unaccounted systematic error from assuming r41 = 1.0 [Gas mass estimates: "We note that there is a systematic error in using a value of r$_{\rm L^{\prime}41}=1.0$ that is unaccounted for."]
+- limitation (authors): CO(1-0) observations needed to constrain gas masses better [Gas mass estimates: "To constrain the estimates of M$_{\rm gas}$ better, observations of the $115\,\rm GHz$ CO(1-0) line are needed."]
+- not stated (card): CASA and pipeline version; whether any manual flagging or extra calibration was done; flux, bandpass and phase calibrators and flux-scale uncertainty; Exact settings of the 'established pipeline' (uvfits conversion, weights, SPW combination) that live in Jin et al. 2019, 2022 and 2024a; Line-free channel ranges used for the continuum and the exact uv_fit setup per source (including positions used…
+
+### 2017MNRAS.470.3775V: VALES I: the molecular gas content in star-forming dusty H-ATLAS galaxies up to z = 0.35 (2017; nearby_galaxies, high_z_galaxies; large_program_or_survey)
+- question: What is the molecular gas content, size, star-formation law and star-formation efficiency of dusty H-ATLAS star-forming galaxies at z<0.35, measured via ALMA CO(1-0)?
+- step 5: Size comparison and Schmidt-Kennicutt relation
+  - method: Deconvolved CO sizes via gaussfit; Petrosian radii ratio; surface densities over two-sided disk area 2 pi R_FWHM^2; HI estimated via Zhang+09; linear regressions [3.3 The Schmidt-Kennicutt relation: "dividing the measured values by the area of a two-sided disk (2π R FWHM 2 )"]
+  - software: CASA gaussfit
+  - assumption: For CO-unresolved galaxies, CO radius = optical Petrosian radius / 1.6 [3.3 The Schmidt-Kennicutt relation: "we used the Petrosian optical radius divided by the mean R P,Opt /R P,CO = 1.6 ratio found for our galaxies"]
+  - fitting: linear regression in log space; KS test for size ratio populations [3.2 Correlations between L IR and L ′ CO: "We compute a linear regression (in log scale) to the"]
+- step 6: Star formation efficiency and gas fraction
+  - method: SFE = SFR/M_H2, empirical arctan parametrisation vs L_IR (Eqn 7); f_H2 = M_H2/(M_H2+M*) with M_H2/M* = tau x sSFR [3.4 Star formation efficiency: "We define the star formation efficiency as SFE = SFR/M H2"]
+  - fitting: Empirical function fitted to all z<0.4 samples, scatter 0.5 dex [3.4 Star formation efficiency: "This function has a scatter of σ = 0.5 dex."]
+  - validation: Compared with Bauermeister+13 and Lagos+11 models [3.5 Evolution of the molecular gas frac…: "the two black curves show semi-analytic prescriptions for galaxy formation and evolution of the molecular ISM computed by Lagos et al. (2011),"]
+- result: L_IR vs L'CO slope (B/D detected) = 0.95 ± 0.04 dimensionless [3.2 Correlations between L IR and L′CO: "log[L IR / L⊙] = (0.95 ± 0.04) × log L CO′ /[K km s−1 pc2] + (2.0 ± 0.4)."]
+- result: Optical-to-CO Petrosian radius ratio (21 resolved) = 1.6 ± 0.5 (scatter) dimensionless [3.1 Morphological description: "the mean and scatter of the R P,Opt /R P,CO distribution are 1.6 ± 0.5"]
+- result: Global Schmidt-Kennicutt slope (combined samples) = 1.26 ± 0.02 dimensionless [abstract: "log[Σ SFR / (M⊙ yr−1 kpc−2)] = (1.26 ± 0.02) × log[Σ M H2 / (M⊙ pc−2)] − (3.6 ± 0.2)."]
+- result: Median SFE of transition-zone sources = 8.5 ± 0.1 Gyr^-1 [3.4 Star formation efficiency: "with a median of 8.5 ± 0.1 Gyr−1"]
+- limitation (authors): alpha_CO is the major uncertainty in gas masses [3.2 Correlations between L IR and L′CO: "The major uncertainty in our molecular gas mass estimates originates from the assumption of the αCO conversion factor."]
+- not stated (card): Which CASA task/parameters for flagging and the exact spectral window layout per execution block; Clean mask definitions and sigma used for 3-sigma threshold (rms estimation region); Line-free channel definitions and whether continuum subtraction was done; Details of the Monte-Carlo and linear regression method (fitter, weights, treatment of limits); Exact ALMA flux scale uncertainty; How the Gau…
+
+### 2020MNRAS.492.6027E: The ALMaQUEST Survey - II. What drives central starbursts at z ∼ 0? (2020; nearby_galaxies; observational_alma_primary)
+- question: Are central starbursts at z~0 driven primarily by enhanced star formation efficiency or by increased gas fractions?
+- step 1: Build MaNGA spaxel maps of Sigma_star, Sigma_SFR and O/H
+  - method: Use public PIPE3D DR15 products; correct line fluxes for extinction, compute Sigma_SFR from Halpha luminosity, compute O/H with the O3N2 calibration, inclination-correct radii and surface densities; keep star-forming spaxels [2.1 MaNGA: "Metallicities are also computed by us using the extinction corrected emission line fluxes with the Marino et al. (2013) O3N2 calibration."] [2.1 MaNGA: "we only use MaNGA spaxels that are classified as star forming according to the Kauffmann et al. (2003) diagnostic criteria"]
+  - software: PIPE3D
+  - parameter: Intrinsic Halpha/Hbeta = 2.85; Milky Way extinction curve [2.1 MaNGA: "an intrinsic H$\alpha$/H$\beta$ = 2.85"]
+  - parameter: Salpeter IMF for Sigma_SFR [2.1 MaNGA: "assuming a Salpeter initial mass function (to be consistent with the PIPE3D products)"]
+  - assumption: Salpeter initial mass function [2.1 MaNGA: "assuming a Salpeter initial mass function (to be consistent with the PIPE3D products)"]
+- step 3: Compute Delta Sigma_SFR offsets from the resolved SFMS with control spaxels
+  - method: Offset in log Sigma_SFR from the median of control spaxels drawn from all star-forming DR15 spaxels, matched in Sigma_star, total stellar mass and R/Re [2.3 Offsets from local scaling relations: "all of which are computed in log space relative to the median of their control spaxels"] [2.3 Offsets from local scaling relations: "is drawn from the rSFMS reference sample, matched within 0.1 dex in $\Sigma_{\star}$, 0.1 dex in total stellar mass (of the host galaxy) and 0.1 in $R/R_e$"]
+  - parameter: Matching tolerances: 0.1 dex in Sigma_star, 0.1 dex in total stellar mass, 0.1 in R/Re; typically several hundred controls per spaxel [2.3 Offsets from local scaling relations: "with typically several hundred control spaxels identified for each spaxel"]
+  - parameter: Reference set drawn from all DR15 star-forming spaxels (not ALMaQUEST), inclination b/a > 0.34 [2.3 Offsets from local scaling relations: "a set of reference spaxels, used to define the rSFMS, is selected from all star-forming spaxels in the DR15 (not just those in the ALMaQUEST sample)"]
+  - validation: Adding O/H to the matching changes Delta Sigma_SFR by ~0.01 dex, negligible [2.3 Offsets from local scaling relations: "we tested the impact of including O/H in the matching parameters and find a systematic increase in $\Delta \Sigma_{\rm SFR}$ of $\sim$0.01 dex, which is negligible"]
+- step 4: Select the 12 central starburst galaxies
+  - method: Azimuthally averaged Delta Sigma_SFR profiles (sliding bin of width 0.5 R/Re, centres stepped by 0.1 R/Re) inspected for median Delta Sigma_SFR within 0.5 Re above 0.2 dex [2.4 Central starburst sample selection: "by taking median values within a sliding bin of width 0.5 $R/R_e$. The bin centres are incremented by 0.1 $R/R_e$ in each iteration."] [2.4 Central starburst sample selection: "In practice, this was implemented by requiring the median $\Delta \Sigma_{\rm SFR}$ within 0.5 $R_e$ exceeds 0.2 dex."]
+  - parameter: Median Delta Sigma_SFR within 0.5 Re > 0.2 dex (SFR elevated by at least 50 per cent) [2.4 Central starburst sample selection: "In practice, this was implemented by requiring the median $\Delta \Sigma_{\rm SFR}$ within 0.5 $R_e$ exceeds 0.2 dex."]
+  - validation: Definition acknowledged as somewhat subjective; authors state the conclusions are insensitive to it [2.4 Central starburst sample selection: "Whilst this is a somewhat subjective definition of central starburst, the exact definition does not affect our conclusions."]
+- step 5: Compute Delta SFE and Delta f_H2 offsets
+  - method: Delta SFE is the offset in Sigma_SFR from control spaxels matched in Sigma_H2, stellar mass, R/Re and O/H; Delta f_H2 is the offset in Sigma_H2 at fixed Sigma_star with matching in stellar mass, R/Re and O/H; controls from ALMaQUEST spaxel… [2.3 Offsets from local scaling relations: "matched within 0.1 dex in $\Sigma_{\rm H_2}$, 0.1 dex in total stellar mass (of the host galaxy), 0.1 in $R/R_e$ and 0.1 dex in O/H"] [2.3 Offsets from local scaling relations: "Specifically, $\Delta f_{\rm H_2}$ is computed as the offset of $\Sigma_{\rm H_2}$ at fixed $\Sigma_{\star}$, with additional spaxel matching in total stellar mass of the host galaxy (within 0.1 dex), $R/R_e$ (within 0.1) and O/H (within 0.1 dex)."]
+  - parameter: Control pool: ALMaQUEST spaxels with -0.5 < Delta Sigma_SFR < 0.5 and b/a > 0.34 [2.3 Offsets from local scaling relations: "spaxels from the ALMaQUEST sample with $-0.5 <$ $\Delta \Sigma_{\rm SFR}$ $<0.5$ and galaxy b/a$>0.34$"]
+  - assumption: Matching in O/H and R/Re mitigates dependences of alpha_CO on metallicity and galactocentric radius [2.3 Offsets from local scaling relations: "These matching criteria will mitigate dependences of $\alpha_{CO}$ on metallicity and galactocentric radius"]
+- step 6: Compare central averages and radial profiles of Delta SFE and Delta f_H2
+  - method: Median Delta f_H2 vs median Delta SFE within 0.5 Re per galaxy; azimuthally averaged Delta SFE and Delta f_H2 profiles with a sliding 0.1 R/Re bin, colour-coded by global Delta SFR; examine effect of a factor-of-two lower alpha_CO [3.1 Results from spatially averaged pro…: "the median $\Delta f_{\rm H_2}$ and median $\Delta$SFE within 0.5 $R_e$ for our starburst sample"] [3.1 Results from spatially averaged pro…: "we again use a sliding bin of width 0.1 $R/R_e$ to generate the $\Delta$SFE and $\Delta f_{\rm H_2}$ profiles and colour code by global $\Delta$SFR"]
+  - parameter: alpha_CO reduced by a factor of two (0.3 dex) as an illustrative variation [3.1 Results from spatially averaged pro…: "If we again suppose that $\alpha_{CO}$ may be reduced by a factor of two (0.3 dex) in the centres of these starburst galaxies"]
+  - validation: Robustness of the SFE conclusion checked against a lower alpha_CO [3.1 Results from spatially averaged pro…: "We conclude that the evidence for enhanced SFEs in our starburst sample is robust to assumptions on the conversion factor."]
+- step 7: Spaxel-by-spaxel correlation of Delta Sigma_SFR with Delta SFE and Delta f_H2
+  - method: Correlate Delta Sigma_SFR against Delta SFE and Delta f_H2 for all 5278 spaxels in the starburst sample; compare steepness, scatter and significance with a Pearson test [3.2 Results from spaxel correlations: "for all 5278 spaxels in our starburst sample, the correlation between $\Delta \Sigma_{\rm SFR}$ and $\Delta$SFE (upper panel) and $\Delta f_{\rm H_2}$ (lower panel)"] [3.2 Results from spaxel correlations: "is both steeper, tighter and more significant (based on a Pearson correlation test) than the relation with $\Delta f_{\rm H_2}$"]
+  - assumption: Fixed alpha_CO; a variable alpha_CO would steepen the SFE correlation and flatten the f_H2 correlation [3.2 Results from spaxel correlations: "The correlation between $\Delta \Sigma_{\rm SFR}$ and $\Delta$SFE would be even steeper for a variable conversion factor"]
+- step 8: Test for metal dilution with Delta O/H
+  - method: Delta O/H is the difference of log O/H from the median of other star-forming spaxels matched in Sigma_star, R/Re and total stellar mass; examine profiles and Delta O/H vs Delta Sigma_SFR colour-coded by Delta SFE [4 Discussion: "we compute the difference of its log O/H from the median of all other star-forming spaxels matched in $\Sigma_{\star}$, $R/R_e$ and total stellar mass"]
+- result: Star-forming spaxels in the 12 central starburst galaxies = 10,765 ± not stated spaxels [2.4 Central starburst sample selection: "There are a total of 10,765 star-forming spaxels in the 12 central starburst galaxies that comprise our sample"]
+- result: Starburst-sample spaxels with Sigma_H2 measurements (used for Delta SFE and Delta f_H2) = 5278 ± not stated spaxels [2.4 Central starburst sample selection: "of which 5278 spaxels also have $\Sigma_{\rm H_2}$ measurements"]
+- result: Star-forming spaxels in all of DR15 passing the MaNGA cuts = ~1.5 million ± not stated spaxels [2.1 MaNGA: "There are $\sim$ 1.5 million star-forming spaxels in all of DR15 that fulfill these criteria."]
+- result: Starburst galaxies with signs of merger features = 3 of 12 (8156-3701, 8615-3703, 8081-9101); 25 percent ± not stated galaxies [2.4 Central starburst sample selection: "with only three (8156-3701, 8615-3703 and 8081-9101) showing signs of merger features"]
+- result: Median central Delta Sigma_SFR of the two weakest central starbursts = ~0.2 ± not stated dex [2.4 Central starburst sample selection: "Whilst two of the galaxies exhibit fairly modest central enhancements with median central $\Delta \Sigma_{\rm SFR}$ $\sim 0.2$ dex, the remaining 10 all show enhancesments of at least a factor of two."]
+- result: Offset above global SFMS of the two strongest SFE outliers (8156-3701, 8081-3704) = ~0.7 ± not stated dex [3.2 Results from spaxel correlations: "they also lie $\sim$ 0.7 dex above the global SFMS"]
+- result: Delta SFE of the high-Delta Sigma_SFR cloud of spaxels above the dashed line = > 0.7 ± not stated dex [3.2 Results from spaxel correlations: "as indicated by the cloud of points above the dashed line with $\Delta$SFE $>$ 0.7"]
+- result: Typical Delta O/H profile deviations = < 0.05 ± not stated dex [4 Discussion: "The $\Delta$O/H profiles are relatively flat, with deviations typically $<$ 0.05 dex."]
+- result: Systematic change in Delta Sigma_SFR from adding O/H to the matching = ~0.01 ± not stated dex [2.3 Offsets from local scaling relations: "find a systematic increase in $\Delta \Sigma_{\rm SFR}$ of $\sim$0.01 dex, which is negligible"]
+- limitation (authors): Fixed alpha_CO is probably an over-estimate for starbursting and central spaxels, which may overstate the gas fraction role [3.1 Results from spatially averaged pro…: "our assumption of a fixed $\alpha_{CO}$ may over-estimate the role of gas fraction from these centrally averaged values"]
+- limitation (authors): Central starburst definition is somewhat subjective [2.4 Central starburst sample selection: "Whilst this is a somewhat subjective definition of central starburst"]
+- limitation (authors): Sample is small [4 Discussion: "Although the sample is still small, the results suggest that metal-poor gas inflows from either merger-driven, or secular events can trigger starbursts."]
+- not stated (card): ALMA band, spectral setup, velocity resolution and integration times per project; CASA version, pipeline vs manual calibration, flux calibrator and self-calibration (all deferred to Lin et al. in prep); CLEAN/tclean parameters: weighting, robust, deconvolver, masking, continuum subtraction, line-free channels; How the CO moment-0 maps and their noise were made and how the S/N >= 3 per spaxel was …
+
+### 2024ApJ...964..120P: The ALMaQUEST Survey. XIII. Understanding Radial Trends in Star Formation Quenching via the Relative Roles of Gas Availability and Star Formation Efficiency (2024; nearby_galaxies; large_program_or_survey)
+- question: How do radial profiles of star formation, gas fraction and star formation efficiency change as galaxies move from the star-forming main sequence toward the green valley, and which driver (f_gas or SFE) dominates the suppression of sSFR at …
+- step 1: Derive Sigma_star and Sigma_SFR from MaNGA Pipe3D
+  - method: Use Pipe3D spaxel stellar mass and extinction-corrected Halpha (Balmer decrement) converted to SFR, with spaxel area and inclination correction [Star Formation Tracers: MaNGA: "we utilize the spaxel-based stellar mass and SFR measurements from `Pipe3D`, taking into account the physical area of the spaxel and applying an inclination correction."] [Star Formation Tracers: MaNGA: "The extinction-corrected H$\alpha$ luminosity is converted to the SFR using the calibration provided by (cite: Ken98)."]
+  - software: Pipe3D
+  - parameter: R_V = 3.1 Milky Way extinction curve [Star Formation Tracers: MaNGA: "The correction is based on a Milky Way extinction curve with a standard reddening parameter $R_{V}$ of 3.1 (cite: Car89)."]
+  - assumption: Salpeter IMF [Introduction: "A Salpeter initial mass function (cite: Sal55) is assumed in this work."]
+  - assumption: Cosmology H0 = 70 km/s/Mpc, Omega_m = 0.3, Omega_Lambda = 0.7 [Introduction: "$H_\mathrm{0}$ = 70 km s$^{-1}$ Mpc$^{-1}$, $\Omega_\mathrm{m}$ = 0.3, and $\Omega_\mathrm{\Lambda}$ = 0.7."]
+- step 2: Classify spaxels and assign Sigma_sSFR for non-star-forming and quenched spaxels
+  - method: BPT plus Halpha EW cuts define star-forming, AGN-contaminated, retired and fully-quenched spaxels; for non-star-forming spaxels with D4000 < 1.45 Sigma_sSFR is read from the median Sigma_sSFR-D4000 relation built from star-forming spaxels … [Star Formation Tracers: MaNGA: "We first construct the $\Sigma_\mathrm{sSFR}$-D4000 relation for our sample using star-forming spaxels from the 34 non-starburst star forming galaxies."] [Star Formation Tracers: MaNGA: "Then, we convert the $\Sigma_\mathrm{sSFR}$ to $\Sigma_\mathrm{SFR}$ by multiplying it with the $\Sigma_{\ast}$ value of these spaxels."]
+  - parameter: BPT limited to S/N > 2 for all required emission lines [Star Formation Tracers: MaNGA: "Our BPT analysis is limited to spaxels with a signal-to-noise ratio (S/N) greater than 2 for all required emission lines."]
+  - parameter: Star-forming spaxels: BPT star-forming and Halpha EW > 6 A [Star Formation Tracers: MaNGA: "are defined as those satisfying both the BPT star-forming criteria and an H$\alpha$ equivalent width (EW) greater than 6Å (cite: San20; San21)"]
+  - parameter: Retired spaxels: S/N > 2 and EW < 3 A in Halpha [Star Formation Tracers: MaNGA: "are identified as those having S/N $>$ 2 and EW $<$ 3 Å in H$\alpha$ (cite: Lin22)"]
+  - parameter: D4000 < 1.45 calibration limit; fully-quenched: S/N < 2 in Halpha or D4000 > 1.45 [Star Formation Tracers: MaNGA: "Therefore, we only utilize the $\Sigma_\mathrm{sSFR}$-D4000 calibration for spaxels with D4000 $<$ 1.45."] [Star Formation Tracers: MaNGA: "as those having S/N $<$ 2 in H$\alpha$ or D4000 $>$ 1.45"]
+  - assumption: Sigma_SFR of AGN-contaminated and retired spaxels is inferred from D4000, trading accuracy for completeness [Star Formation Tracers: MaNGA: "some accuracy is traded for completeness"]
+  - validation: Relation compared with the full MaNGA sample; conclusions re-checked excluding fully-quenched spaxels [Star Formation Tracers: MaNGA: "is consistent with that derived from the full MaNGA sample (cite: Blu20a; Tho22)"] [Star Formation Tracers: MaNGA: "we have verified that our conclusions remain qualitatively consistent even when excluding the fully-quenched spaxels"]
+- step 5: Build radial profiles of Sigma_SFR, Sigma_star, Sigma_H2, Sigma_sSFR, f_gas and SFE
+  - method: Deproject using inclination and position angle; take the median of all valid spaxels (measured, inferred or upper limits) in each deprojected annulus; median of individual profiles per subset [Radial Profiles of $\Sigma_{\ast}$, $\S…: "is considered to deproject the geometries of the galaxies"] [Radial Profiles of $\Sigma_{\ast}$, $\S…: "The radial quantities are determined by calculating the median value"]
+  - parameter: 0.18 Re (~0.8 kpc) radial steps out to 1.5 Re (~7 kpc at z = 0.03) [Radial Profiles of $\Sigma_{\ast}$, $\S…: "The radial profile is sampled with a 0.18 $R_\mathrm{e}$ ($\sim$ 0.8 kpc) steps within 1.5 $R_\mathrm{e}$"]
+  - parameter: Shaded height = standard error of the mean at each radial bin [Radial Profiles of $\Sigma_{\ast}$, $\S…: "The height of the shaded regions represents the standard error of the mean at each radial bin."]
+  - validation: SF_h and SF_m Sigma_sSFR profiles compared with Blu20b, derived from the full MaNGA DR15 sample [Radial Profiles of $f_\mathrm{gas}$, SF…: "The comparison validates that the $\Sigma_\mathrm{sSFR}$ trends of the ALMaQUEST sample"]
+- step 6: Quantify the relative role of f_gas and SFE via Delta f_gas - Delta SFE
+  - method: For each SF_m and SF_l galaxy, compute the deviation of Sigma_sSFR, f_gas and SFE from the SF_h median at each radial bin, then take Delta f_gas - Delta SFE (positive = primarily SFE-driven, negative = primarily f_gas-driven) [Relative Importance of $f_\mathrm{gas}$…: "Similarly, we compute the radial $\Delta$$f_\mathrm{gas}$ and $\Delta$SFE using the same approach."] [Relative Importance of $f_\mathrm{gas}$…: "specifically the value of the expression $\Delta$$f_\mathrm{gas}$$-$$\Delta$SFE"]
+  - parameter: Combined-driver band -0.15 < Delta f_gas - Delta SFE < 0.15, about twice the typical uncertainty [Relative Importance of $f_\mathrm{gas}$…: "The limit of $\pm$0.15 is approximately twice the typical uncertainty of the $\Delta$$f_\mathrm{gas}$$-$$\Delta$SFE profiles."]
+  - fitting: Uncertainty by error propagation from the uncertainties of the raw curves [Relative Importance of $f_\mathrm{gas}$…: "is determined through error propagation from the uncertainties of the raw curves."]
+- step 7: Classify individual galaxies and tally drivers by radial range
+  - method: Visually classify the 22 quenching galaxies as single-mode or multiple-driver from the Delta profiles; histogram the drivers over 198 azimuthal bins, split into central (R < 0.5 Re, 66 bins) and disk (R > 0.5 Re, 132 bins) [Relative Importance of $f_\mathrm{gas}$…: "we undertake a visual classification of galaxies into two distinct groups based on the number of dominant factors influencing star formation within their galactic disks."] [Relative Importance of $f_\mathrm{gas}$…: "illustrates the distribution of the different drivers across 198 azimuthal bins in the 22 quenching galaxies."]
+  - parameter: A bin counts as equally driven when Delta f_gas - Delta SFE is zero or its uncertainty encompasses +-0.15 [Relative Importance of $f_\mathrm{gas}$…: "or when the associated uncertainty encompasses $\pm$0.15, the region is considered to be equally influenced by both drivers."]
+  - validation: Alternative central definition R < 1.0 Re changes the fractions but not the relative ordering of categories [Relative Importance of $f_\mathrm{gas}$…: "We have evaluated our results using an alternative definition of the center as $R$ $<$ 1.0$R_\mathrm{e}$."]
+- result: Fully-quenched spaxel fixed value = -12 ± not stated log(Sigma_sSFR/yr^-1) [Star Formation Tracers: MaNGA: "the fully-quenched spaxels are artificially assigned to a fixed value of log($\Sigma_\mathrm{sSFR}$/yr$^{-1}$) $=$ $-$12"]
+- result: Median log Sigma_sSFR of star-forming spaxels at D4000 = 1.45 = -10.7 ± not stated log(yr^-1) [Star Formation Tracers: MaNGA: "with a median value of -10.7"]
+- result: Fraction of spaxels with a valid Sigma_SFR = ~98 ± not stated percent [Star Formation Tracers: MaNGA: "ensures that $\sim$ 98% of spaxels have a valid $\Sigma_\mathrm{SFR}$ value"]
+- result: Median log SFE of SF_h galaxies = -9.5 to -9.0 ± not stated log(yr^-1) [Radial Profiles of $f_\mathrm{gas}$, SF…: "The median log(SFE/yr$^{-1}$) for SF$_{h}$ galaxies ranges from approximately $-$9.5 to $-$9.0"]
+- result: Disk SFE offset of SF_m below SF_h = 0.2 ± not stated dex [Radial Profiles of $f_\mathrm{gas}$, SF…: "While the disk SFE of SF$_{m}$ is lower than that of SF$_{h}$ by only 0.2 dex"]
+- result: SFE suppression of SF_l relative to SF_h = at least an order of magnitude ± not stated dimensionless [Radial Profiles of $f_\mathrm{gas}$, SF…: "is significantly suppressed by at least an order of magnitude compared to normal star-forming galaxies"]
+- result: cSB Sigma_sSFR enhancement over SF_h (innermost region / R > 0.75 Re) = ~0.5 / ~0.3 ± not stated dex [Radial Profiles of $f_\mathrm{gas}$, SF…: "cSB galaxies exhibit an enhancement in $\Sigma_\mathrm{sSFR}$ of approximately 0.5 dex in the innermost region and a consistently smaller enhancement of approximately 0.3 dex in the $R$ $>$ 0.75 $R_\mathrm{e}$ regime."]
+- result: Single-mode galaxies (4 SF_m, 6 SF_l; 1 f_gas-driven, 9 SFE-driven) = 10 ± not stated galaxies [Relative Importance of $f_\mathrm{gas}$…: "we identify 10 galaxies (4 SF$_{m}$ and 6 SF$_{l}$; 1 $f_\mathrm{gas}$-driven and 9 SFE-driven) categorized as being driven by a single mode"]
+- result: Multiple-driver galaxies (7 SF_m, 5 SF_l) = 12 ± not stated galaxies [Relative Importance of $f_\mathrm{gas}$…: "and 12 galaxies (7 SF$_{m}$ and 5 SF$_{l}$) classified as being influenced by multiple modes"]
+- result: All radial bins: SFE-dominated fraction = ~51 ± not stated percent [Relative Importance of $f_\mathrm{gas}$…: "SFE emerges as the dominant factor, accounting for approximately 51% in determining the $\Sigma_\mathrm{sSFR}$."]
+- result: All radial bins: equal f_gas and SFE fraction / f_gas-driven fraction = ~40 / 9 ± not stated percent [Relative Importance of $f_\mathrm{gas}$…: "constituting approximately 40%, while cases primarily driven by $f_\mathrm{gas}$ account for only 9%"]
+- result: Central region (R < 0.5 Re, 66 bins): SFE-driven / combined / f_gas-driven = 66 / 29 / 5 ± not stated percent [Relative Importance of $f_\mathrm{gas}$…: "with SFE driving 66% of radial regions, the combination of $f_\mathrm{gas}$ and SFE playing a significant role in 29% of the regions, and $f_\mathrm{gas}$ being the primary driver in 5% of cases"]
+- result: Disk region (R > 0.5 Re, 132 bins): combined / SFE-driven / f_gas-driven = 47 / 43 / 10 ± not stated percent [Relative Importance of $f_\mathrm{gas}$…: "$f_\mathrm{gas}$ and SFE are equally important in driving star formation in 47% of the radial bins"]
+- limitation (authors): Sigma_SFR for AGN-contaminated and retired spaxels is D4000-inferred and should be interpreted with caution [Star Formation Tracers: MaNGA: "Thus, the $\Sigma_\mathrm{SFR}$ values of these spaxels should be interpreted with caution."]
+- limitation (authors): f_gas profile of SF_l galaxies cannot be determined precisely because of many CO non-detections [Radial Profiles of $f_\mathrm{gas}$, SF…: "we are not able to precisely quantifying their $f_\mathrm{gas}$ profile due to a significant number of CO non-detections"]
+- limitation (authors): Small sample limits identification of the origin of multi-mode drivers [Relative Importance of $f_\mathrm{gas}$…: "Given the small size of our sample in this work, it is challenging to pinpoint the exact underlying origin of the multiple-mode drivers"]
+- not stated (card): ALMA band, array configurations, integration times, sensitivities and observing dates (all deferred to Lin20); CASA version, calibration and imaging recipe (task, weighting, robust, cell size, masking, deconvolution) for the CO cubes; How CO integrated intensity maps were made from the cubes and how they were matched to the MaNGA spaxel grid and PSF; Per-galaxy rms noise of the CO cubes used for …
+
+### 2013A&A...559A..29C: Strongly star-forming rotating disks in a complex merging system at z = 4.7 as revealed by ALMA (2013; high_z_galaxies, agn_and_quasars; archival_reuse)
+- question: Do the QSO host and the SMG in BR1202-0725 at z=4.7 show regularly rotating disks or merger-disturbed kinematics in [CII], and what are their dynamical masses and BH-host relation?
+- step 3: Derive SFR and gas mass
+  - method: SED fit for LFIR, Kennicutt relation, [CII] calibration, CO-based gas mass [2 Star formation rate and gas mass: "SFR = 1.73\times 10^{-10} (L_{FIR}/L_\odot)\, M_\odot/yr"]
+  - assumption: Td=65 K (SMG), 50 K (QSO); k~nu^1.5; Salpeter IMF; alpha_CO=0.6 with factor 2 systematic [2 Star formation rate and gas mass: "T$_d$ = 65 K for the SMG and T$_d$ = 50 K for the QSO"]
+  - fitting: SFR the only free parameter of Yun & Carilli SED model [2 Star formation rate and gas mass: "the latter depends on the SFR, which is the only free parameter of our SED fit"]
+  - validation: [CII] SFRs used as confirmation [2 Star formation rate and gas mass: "considered the values based on \[CII\] just as a confirmation of the very high SFR"]
+- result: Molecular mass SMG / QSO = 4.6 / 3.2 (1e10) ± 1.7 / 1.2 Msun [2 Star formation rate and gas mass: "$M_{CO} = (4.6\pm 1.7)\times 10^{10}$$\mathrm{M}_{\odot}$"]
+- result: SFR from LFIR SMG / QSO = 2600 / 3200 ± not stated Msun/yr [2 Star formation rate and gas mass: "one obtains $\sim 2600$ and $\sim 3200$ M$_{\odot}$ yr$^{-1}$ for the SMG and QSO"]
+- limitation (authors): Inclination poorly constrained, so mass is poorly constrained [4.1 The submillimeter galaxy BR1202 Nor…: "the inclination cannot be well constrained from the data"]
+- not stated (card): Exact CASA version and calibration script; Channel ranges identified as line-free; CLEAN threshold, masks, iterations; Parameter priors/bounds and MCMC chain settings; Spectroastrometry velocity cuts defining blue/red channels; Disk model code not released; Exact SED fitting details
+
+### 2025A&A...701A.219N: The Rosetta Stone project: III. ALMA synthetic observations of fragmentation in high-mass star-forming clumps (2025; star_formation; theory_or_simulation_compared_to_alma)
+- question: How do the initial conditions of a high-mass clump (mass, turbulence, magnetic field) and its environment affect the fragmentation properties observed with ALMA at ~7000 AU scales?
+- step 1: Run RMHD simulations of high-mass clump fragmentation
+  - method: 3D radiative magnetohydrodynamical simulations under ideal MHD using adaptive mesh refinement finite-volume code RAMSES with self-gravity, accretion luminosity radiation, turbulence, magnetic fields, and sink particles [Setup: Simulations and radiative transf…: "Our simulations solve the three-dimensional equations for the conservation of gas mass, momentum, total energy, and radiation total energy, as well as the evolution of the magnetic field under the assumption of ideal MHD."] [Setup: Simulations and radiative transf…: "In these models, which are computed by means of the adaptive mesh refinement finite-volume code RAMSES ((cite: 2002A&A...385..337T); (cite: 2006A&A...457..371F)), individual forming stars are represented by sink particles ((cite: 2014MNRAS.445.4015B)) that form self-consistently above a threshold of $n_{thre} = 10^9$ …"]
+  - software: RAMSES
+  - parameter: Clump mass M = [500, 1000] M_sun, radius R = 0.383 pc (~0.4 pc), initial temperature = 10 K [Setup: Simulations and radiative transf…: "These values correspond to clump masses of 500 and 1000 M$_\odot$, a radius of $\sim 0.4$ pc (e.g., (cite: 2014MNRAS.443.1555U), (cite: 2017MNRAS.470.3882T), (cite: 2021MNRAS.504.2742E)), and a temperature of 10 K"] [Table 1: "$R$ (pc) [0.383]"]
+  - parameter: Mach number M = [7, 10], normalized mass-to-flux ratio mu = [3, 10, 100], turbulent seeds = [1, 2], 3 orthogonal projections (x, y, z) [Table 1: "Seed [1, 2] $M$ (M$_\odot$) [500, 1000] $R$ (pc) [0.383] $\mu$ [3, 10, 100] $\mathcal{M}$ [7, 10]"] [Setup: Simulations and radiative transf…: "For each time step, three orthogonal projections are analyzed. These are fixed for all realizations, and correspond to actual projections in the sky along the $x$, $y$, and $z$ axes."]
+  - parameter: Sink formation threshold n_thre = 10^9 cm^-3, native resolution ~40 AU, accretion luminosity factor f_acc = 0.1, stopping SFE = ~15% (M500) and ~30% (M1000) [Setup: Simulations and radiative transf…: "individual forming stars are represented by sink particles ((cite: 2014MNRAS.445.4015B)) that form self-consistently above a threshold of $n_{thre} = 10^9$ cm$^{-3}$."] [Comparison with numerical models: "the numerical computation - native at a numerical resolution of $\sim40$ AU (Paper I)"]
+  - assumption: Ideal MHD, uniform initial cloud density, uniform initial magnetic field along z-axis, feedback only from accretion luminosity (no outflows or HII regions), no sink merging [Setup: Simulations and radiative transf…: "As initial condition, the magnetic field is uniform and oriented along the $z$-axis."] [Setup: Simulations and radiative transf…: "As anticipated above, this first suite of simulations has been developed including feedback in the form of radiation from luminosity accretion."]
+  - validation: Tested out-of-the-grid control models with Bonnor-Ebert profile, M = 3, seeds S3 and S4, and varied f_acc [Fragmentation level: "To further characterize potential relationships between the number of identified fragments and the initial conditions of clump collapse, we also use a suite of out-of-the-grid control models."]
+- step 2: Perform radiative transfer to produce 1.3 mm dust continuum sky models and L/M evolutionary indicator
+  - method: Thermal Monte Carlo dust temperature calculation and ray-tracing radiative transfer at 1.3 mm (and Spitzer/Herschel bands in Paper II) using RADMC-3D (and POLARIS for f_acc control tests) [Setup: Simulations and radiative transf…: "As a first step in the post-processing, we run the previously saved snapshots of our simulations through the radiative transfer code RADMC-3D ((cite: 2012ascl.soft02015D))."] [The necessity of having an end-to-end f…: "As a first test, we change $f_{\textrm{acc}}$ in the radiative transfer calculations, using the POLARIS code (cite: Reissl+2016; Reissl+2018) to calculate the temperature and the resulting intensity maps."]
+  - software: RADMC-3D, POLARIS
+  - parameter: Wavelength = 1.3 mm (231.1 GHz), reference distance = 5.2 kpc [Setup: Simulations and radiative transf…: "The source is located at a heliocentric distance of 5.2 kpc ((cite: 2021A&A...646A..74M))."] [Setup: Simulations and radiative transf…: "We focus on the radiative post-processed dust continuum emission maps at 1.3 mm as the one displayed in Fig. 2 (b)."]
+  - assumption: Dust opacity k_1.3 = 0.005 g cm^-2 including a gas-to-dust mass ratio of 100; log(L/M) = 1.20 log(SFE) + 3.28 [Setup: Simulations and radiative transf…: "The flux is here computed with the same opacity assumption in use for the reference observation, i.e. $k_{1.3}=0.005\,\mathrm{g}\,\mathrm{cm}^{-2}$ ((cite: 1993A&A...279..577P)), that already includes a gas-to-dust mass ratio of 100."] [Setup: Simulations and radiative transf…: "$\log(L/M) = 1.20_{-0.02}^{+0.02} \log(\text{SFE}) +3.28_{-0.03}^{+0.03}\,.$"]
+  - validation: Verified that POLARIS recovers about 96% of the total RADMC-3D emission from the box at 1.3 mm [The necessity of having an end-to-end f…: "Before running the test, we have ensured that outputs from the two codes are comparable: POLARIS recovers about 96% of the total RADMC-3D emission from the box at 1.3 mm."]
+- limitation (authors): Simulations only include feedback from accretion luminosity, omitting protostellar outflows/jets and HII regions. [Setup: Simulations and radiative transf…: "As anticipated above, this first suite of simulations has been developed including feedback in the form of radiation from luminosity accretion."]
+- limitation (authors): The SQUALO single-temperature prescription (T_f = 40 K, range 20-60 K for L/M > 10) was not designed for L/M > 100 L_sun/M_sun, causing systematic mass overestimation (by a factor ~2) in the most evolved synthetic clumps. [Physical properties of the fragments: "As a consequence, the reference temperature of 40 K was not conceived to represent clumps with $L/M > 100$ L$_\odot$/M$_\odot$."]
+- limitation (authors): All synthetic clumps are placed at a single distance (5.2 kpc, the farthest in SQUALO, corresponding to ~7000 AU or ~0.036 pc linear resolution), whereas real SQUALO clumps span 2.0 to 5.5 kpc, biasing minimum separation d_min,2D and mass … [Physical properties of the fragments: "While the synthetic clumps are all located at the same distance from the observer, SQUALO clumps are distributed across $13$ different distances, resulting in observations at varying resolutions."]
+- not stated (card): Exact antenna configuration files (.cfg) used in CASA simobserve to represent the 10-12 antennas of the 7m array and 47 antennas of the 12m array; Exact mosaic pointing pattern and number of pointings for the 7m and 12m array execution blocks; Image size (imsize) in pixels used in tclean; Exact formula or mapping rule for how the tclean noise threshold is automatically set according to the source…
+
+### 2018A&A...612A..29B: Molecular outflow and feedback in the obscured quasar XID2028 revealed by ALMA (2018; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Is there a molecular (CO) outflow and what are the gas content, depletion time and disc kinematics in the obscured QSO XID2028, which hosts a massive ionised outflow?
+- step 4: Extrapolate CO(1-0) flux from SLEDs
+  - method: Scale CO(5-4) with average SLEDs of ULIRGs, SMGs, BzK; compare with Narayanan and Bournaud models [2.4 Estimating the CO(1-0) flux: "the CO(1-0) flux extrapolated from the CO(5-4) measurement varies within a factor of 3, depending on the assumed SLED"]
+  - assumption: Sigma_SFR=25 Msun/yr/kpc^2 for Narayanan model [2.4 Estimating the CO(1-0) flux: "adopting $\Sigma_{\rm SFR}$=25 M$_\odot$ yr$^{-1}$ kpc$^{-2}$"]
+  - validation: Cross-check with PdBI CO(2-1) upper limit extrapolated to CO(1-0) (<0.18 Jy km/s) [2.4 Estimating the CO(1-0) flux: "we obtain an upper limit of I$_{\rm CO(1-0), 4\ensuremath{''}}<0.18$ Jy km s$^{-1}$"]
+- step 6: Derive gas masses, gas fraction, depletion time
+  - method: ISM mass from Rayleigh-Jeans continuum (Scoville 2016) with Tdust from SED fit; CO mass with alpha_CO=0.8; mu=Mgas/Mstar; tdepl=Mgas/SFR [5 Gas consumption: "the gas depletion timescale (t$_{\rm depl}$=M$_{\rm gas}$/SFR)"]
+  - software: Duras2017 SED code, AGNfitter
+  - parameter: Tdust=52+-5 K [5 Gas consumption: "We inferred a dust temperature T$_{\rm dust}$=52$\pm5$ K"]
+  - assumption: alpha_CO=0.8 (SB-like) [5 Gas consumption: "we adopted a SB-like luminosity-to-gas-mass conversion factor, $\alpha_{\rm CO}$=0.8"]
+  - assumption: fiducial stellar mass 4.5e11 Msun [Appendix A.1: "we consider as fiducial stellar mass value M$_\star$=$4.5\times10^{11}$ M$_\odot$"]
+  - fitting: AGNfitter Bayesian MCMC used as a cross-check [Appendix A.1: "We also ran the publicly available fully Bayesian Markov Chain Monte Carlo SED fitting algorithm *AGNfitter*"]
+  - validation: Gas fraction stays <10% for lower stellar mass; Band 7 gives consistent ISM mass [Appendix A.1: "the gas fraction would remain $<10$% if we consider the lower limit of our estimate of the stellar mass"]
+- result: Tdust = 52 ± 5 K [Table 2: "T$_{\rm dust}$ (K) | 52$\pm5$"]
+- result: Gas mass from CO = 1.1e10 ± 0.5e10 Msun [5 Gas consumption: "M$_{\rm gas,CO}\sim1.1\pm0.5\times10^{10}$ M$_\odot$"]
+- result: ISM mass from 1.3 mm continuum = 1.7e10 ± 10% Msun [5 Gas consumption: "M$_{\rm ISM}$=1.7$\times10^{10}$ M$_\odot$ (with a 10% uncertainty from the Band 6 continuum flux measurement)"]
+- result: Depletion timescale = 40-75 ± not stated Myr [5 Gas consumption: "We inferred t$_{\rm depl} \sim40-75$ Myr using the CO and dust-fit derived gas masses"]
+- result: Molecular gas fraction = <5 ± not stated % [Table 2: "$\mu_{\rm mol}$ | $<5$%"]
+- limitation (authors): Outflow mass estimates are order of magnitude given chain of assumptions (alpha_CO, excitation). [6 High velocity molecular gas: "We stress that the two values suffer from large uncertainties, given the chain of assumptions employed"]
+- not stated (card): Briggs robust value, cell size, image size, clean threshold and masks; Exact velocity range/channel selection used for continuum subtraction of the CO cube; Details of the uvmodelfit starting parameters; Exact SLED-extrapolation ratios (r51 etc.) used for CO(1-0) flux; Flux correction and noise estimates for the Band 3 and Band 7 snapshot datasets and how they were imaged; 3D-BAROLO ring setup an…
+
+### 2020MNRAS.492.3194S: KASHz: No evidence for ionised outflows instantaneously suppressing star formation in moderate luminosity AGN at z ∼ 1.4-2.6 (2020; agn_and_quasars, high_z_galaxies; archival_reuse)
+- question: Is there a spatial anti-correlation between ionised outflows ([O III]) and star formation (traced by Halpha and rest-frame FIR) in eight z=1.4-2.6 moderate-luminosity AGN, and is Halpha a reliable star-formation tracer in these hosts?
+- step 4: Derive FIR luminosity, stellar mass and SFR(FIR) from SED fitting
+  - method: Bayesian SED template fitting of UV to submm photometry (including the ALMA fluxes) with four components, then SFR(FIR) from L_IR,SF with the Kennicutt & Evans 2012 calibration [2.4 SED fitting and sample properties: "The multi-wavelength SEDs of the targets were modelled using the Bayesian SED code `FortesFit` (cite: Fortes). Four SED components were used in the modelling:"] [2.4 SED fitting and sample properties: "we estimate star formation rates (SFR(FIR)) using the calibration from (cite: Kennicutt12)"]
+  - software: FortesFit
+  - parameter: stellar: Bruzual & Charlot library, delayed exponential SFH, ages 0.001-1 Gyr, timescales 0.01-2 Gyr, A_V < 10 mag [2.4 SED fitting and sample properties: "with a star-formation history modelled as a delayed exponential with a range of ages (0.001-1 Gyr) and exponential timescales (0.01-2 Gyr)"] [2.4 SED fitting and sample properties: "A variable screen extinction following a Milky Way law was applied (A$_{\rm V}<$ 10 mag)."]
+  - parameter: star-formation dust emission: Dale et al. one-parameter template sequence (0-4) [2.4 SED fitting and sample properties: "following the one-parameter template sequence (0–4) from (cite: dale14)"]
+  - assumption: Chabrier initial mass function [1 Introduction: "assume a (cite: Chabrier03) initial mass function (IMF)"]
+  - assumption: ALMA 870 and 1100 um emission is dominated by dust-obscured star formation (no significant synchrotron) [2.4 SED fitting and sample properties: "we argue that the ALMA 870 and 1100 $\mu$m emission provides a good tracer of the dust dust obscured star formation in these sources."]
+  - fitting: Bayesian fit with probabilistic priors on accretion disc and AGN dust luminosity from the X-ray luminosity; marginalised posteriors; sampler not stated [2.4 SED fitting and sample properties: "Probabilistic priors were used to constrain the luminosity of the accretion disc and AGN dust emission components based on the X-ray luminosity."]
+  - validation: Radio spectral-index and flux-ratio checks for synchrotron contamination of the ALMA flux [2.4 SED fitting and sample properties: "For the radio-quiet sources, this is supported by the fact that the sub-mm fluxes (Table [\[Table:Sample_ALMA\]](#Table:Sample_ALMA)) would imply unrealistic (highly inverted) spectral indices of $\alpha>0.4$ if they arose from synchrotron emission."]
+- step 6: Derive Halpha SFR with and without dust correction
+  - method: Convert Halpha luminosity to SFR with Kennicutt & Evans 2012; correct with the Balmer decrement where narrow Hbeta is available (ID3, ID5, ID8) [3.1.2 Dust-corrections: "To estimate SFR(H$\alpha$) we converted from the measured L$_{\rm H\alpha}$ by using the calibration from (cite: Kennicutt12)."] [3.1.2 Dust-corrections: "The preferred approach to constrain this is to measure the nebular dust attenuation (A$_{\rm V,HII}$) using the Balmer decrement (cite: Reddy15)."]
+  - parameter: Calzetti extinction curve, intrinsic Halpha/Hbeta = 2.86 [3.1.2 Dust-corrections: "We assume the (cite: Calzetti00) extinction curve and an intrinsic H$\alpha$/H$\beta$ ratio of 2.86"]
+  - assumption: Global star formation unchanged over the past 100 Myr, so Halpha and FIR SFRs are comparable [4.2 Comparison of star-formation rates …: "we assume that the global star formation has not changed significantly in the past 100 Myr ($\sim$ 1 dynamical time)"]
+  - validation: Compared with SFR(FIR); AGN photoionisation noted as an upper-limit caveat on SFR(Halpha) [4.2 Comparison of star-formation rates …: "the SFR(H$\alpha$) should be considered an upper limit on the SFR, due to possible photo-ionisation from the AGN"]
+- result: Median ratio SFR(FIR)/SFR(Halpha), no dust correction = 14.5 (range about 2.5-65) ± not stated dimensionless [4.2 Comparison of star-formation rates …: "the median ratio of the two SFR tracers is SFR(FIR)/SFR(H$_{\alpha}$)=14.5, with a range of $\approx$2.5–65"]
+- result: Halpha dust-correction factors (ID3, ID5, ID8) = 1.5-18 ± not stated dimensionless [3.1.2 Dust-corrections: "These correction factors are 1.5 – 18"]
+- result: SFR(FIR)/SFR(Halpha corrected) for ID3 = 12 ± not stated dimensionless [4.2 Comparison of star-formation rates …: "Even after the dust correction, the SFR(H$\alpha$) of ID3 is a factor of 12 lower than SFR(FIR)."]
+- limitation (authors): Sample limited to sources with existing FIR and Halpha detections, so all lie on or above the star-forming main sequence [4.5 Implications of our results: "it is limited to sources with existing detections in FIR and H$\alpha$ emission, resulting in all of the sources lying on, or above, the ‘main sequence’ of star formation"]
+- limitation (authors): Effects of outflows could occur below the resolution of the data (a few kpc) or on long timescales [4.5 Implications of our results: "However, impact from these outflows could be occurring on spatial scales below those to which we are sensitive (i.e., $<$a few kiloparsec)"]
+- limitation (authors): ID2 FIR flux may be partly synchrotron contaminated [2.4 SED fitting and sample properties: "some contamination to the ALMA flux for this single source does not influence our main conclusions in this work"]
+- not stated (card): Width (uv-taper FWHM) of the Gaussian taper used for each IFU-matched ALMA map; tclean parameters: niter, threshold, cell size, image size, mask definition, deconvolver, number of channels or spectral windows used for the continuum; Which spectral windows and bandwidth went into each continuum image, and any line-free channel selection; ALMA array configurations, observing dates and flux calibrat…
+
+### 2024ApJ...964...95S: Physical Properties of Hyperluminous, Dust-obscured Quasars at z ∼ 3: Multiwavelength Spectral Energy Distribution Analysis and Cold Gas Content Revealed by AL… (2024; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Physical properties and cold gas content of 16 Hot DOGs at z ∼ 3; their role in massive galaxy and SMBH coevolution.
+- step 10: Calculate starburst offsets, depletion times, and SFE
+  - method: Use Speagle2014 for ΔMS = SFR/SFRMS; tdepl = MH2/SFR; observational SFE = LIR/L′CO(1-0). [Star formation rate and star formation …: "we can estimate the offset of our Hot DOGs from the main sequence $\Delta_{\rm MS}$ = $\rm {SFR}\,/\,\rm {SFR}_{\rm MS}$ relation."] [Star formation rate and star formation …: "With the molecular gas masses and SFRs, we derived the gas depletion timescale $t_{\rm depl}\,=\,M_{\rm H_2}\,/\,\rm {SFR}$."]
+  - parameter: Speagle2014: log(SFR) = (0.84−0.026τuniv)log(Mstar)−(6.51−0.11τuniv), τuniv in Gyr. [Star formation rate and star formation …: "\log({\rm SFR}/{\rm M}_{\ensuremath{\odot}}~{\rm yr}^{-1}) &=(0.84-0.026\times \tau_{\rm univ})\log(M_{\star}/{\rm M}_{\ensuremath{\odot}})"] [Star formation rate and star formation …: "& \qquad -(6.51-0.11\times \tau_{\rm univ})\, ,"]
+  - validation: Compare with literature SMGs/quasars and Sargent2014 main-sequence relations. [Star formation rate and star formation …: "the compiled samples of SMGs and unobscured and obscured quasars from (cite: Perna2018)."] [Star formation rate and star formation …: "The SFEs exhibit a tight correlation with $L_{\rm IR}$ for both MS galaxies (cite: Sargent2014) and SMGs."]
+- step 11: Test SFE dependence on AGN luminosity
+  - method: Combine Hot DOGs, obscured quasars, WISSH quasars, and PG QSOs; calculate Spearman rank correlation of SFE and LAGN. [Star formation rate and star formation …: "We plot the relation between SFE and ${L_{\rm AGN}}$ for Hot DOGs and obscured quasars in Figure [7](#fig:correlation)."] [Star formation rate and star formation …: "We also included WISE-SDSS selected hyper-luminous (WISSH) quasars from (cite: Bischetti2021) and PG QSOs from (cite: Shangguan2020)."]
+  - assumption: Comparison obscured-quasar LAGN from X-rays with Duras2020 luminosity-dependent bolometric correction. [Star formation rate and star formation …: "The AGN bolometric luminosities of the obscured quasars from (cite: Perna2018) is calculated from their X-ray luminosities, assuming a luminosity-dependent bolometric correction from (cite: Duras2020)."]
+  - fitting: Spearman rank correlation; p tests no correlation. [Star formation rate and star formation …: "The Spearman’s rank correlation coefficient $\rho$ = 0.532 (p = 3.55e-8), where p is the probability of the null hypothesis that a correlation does not exist."]
+  - validation: Repeat excluding local PG QSOs: ρ = 0.404, p = 2.21e-3. [Star formation rate and star formation …: "When excluding the PG QSOs given that they are in local Universe, the $\rho$ deceases to 0.404 with p = 2.21e-3."]
+- result: Median main-sequence SFR offset = 6.12 ± +5.1/-2.9 dimensionless [Summary and Conclusion: "$\Delta_{\rm MS}\,\sim\,6.12^{+5.1}_{-2.9}$"]
+- result: Median gas depletion timescale = 39 ± +85/-28 Myr [Summary and Conclusion: "The gas depletion timescales, 39$_{-28}^{+85}$ Myr are remarkably short."]
+- result: Median SFE = 297 ± +659/-195 K km s−1 pc−2 [Summary and Conclusion: "the average SFE of $\sim\,297_{-195}^{+659}\,\rm K\,\rm km\,\rm s^{-1}$ $\rm pc^{-2}$"]
+- result: SFE–LAGN Spearman coefficient, all four quasar samples = 0.532 ± not stated dimensionless [Star formation rate and star formation …: "The Spearman’s rank correlation coefficient $\rho$ = 0.532 (p = 3.55e-8)"]
+- result: SFE–LAGN null-correlation p-value, all four quasar samples = 3.55e-8 ± not stated dimensionless [Star formation rate and star formation …: "The Spearman’s rank correlation coefficient $\rho$ = 0.532 (p = 3.55e-8)"]
+- result: SFE–LAGN Spearman coefficient, excluding PG QSOs = 0.404 ± not stated dimensionless [Star formation rate and star formation …: "When excluding the PG QSOs given that they are in local Universe, the $\rho$ deceases to 0.404 with p = 2.21e-3."]
+- result: SFE–LAGN null-correlation p-value, excluding PG QSOs = 2.21e-3 ± not stated dimensionless [Star formation rate and star formation …: "When excluding the PG QSOs given that they are in local Universe, the $\rho$ deceases to 0.404 with p = 2.21e-3."]
+- limitation (authors): Sample selection may favor intense starbursts. [Gas-to-dust ratio: "therefore may be biased toward the most intense starbursting systems"]
+- limitation (authors): Warm graybody dust may miss the diffuse cold ISM and underestimate total dust mass. [Gas-to-dust ratio: "The estimated $T_{\rm dust}\sim$ 45 K may trace a warmer dust component associated with photodissociation regions by starbursts, instead of the diffuse ISM with temperature below 30 K which represents the bulk of the dust mass"]
+- not stated (card): CASA and observatory pipeline versions.; Exact spectral-window frequencies, channel widths, bandwidths, and final cube channelization for each source.; Continuum-free channels and uvcontsub fitting order.; Imaging task, deconvolver, cell size, image dimensions, cleaning masks, and stopping thresholds.; Primary-beam correction and treatment of observations from multiple dates.; Moment-0 integratio…
+
+### 2015ApJ...813..118M: Microwave Continuum Emission and Dense Gas Tracers in NGC 3627: Combining Jansky VLA and ALMA Observations (2015; nearby_galaxies, star_formation; observational_alma_primary)
+- question: How do free-free continuum (33 and 94.5 GHz) and dense gas tracers (HCN, HCO+ J=1-0) compare on ~90 pc scales in three regions of NGC 3627, and how do dense gas fraction and star formation efficiency relate?
+- step 4: Dense gas fraction and SFE
+  - method: Convolve to CO beam, take peak in 15 arcsec aperture; dense gas mass from HCO+ / total from CO; SFR from 33 GHz thermal luminosity [3.3 Dense Gas Fractions: "The dense molecular gas fraction is taken to be the mass ratio of dense molecular gas traced by the $J=1\rightarrow0$ transition of HCO$^{+}$ to the total molecular gas"]
+  - software: CASA
+  - assumption: alpha_HCO+ ≈ 10, alpha_CO ≈ 4.3 Msun/(K km/s pc^2); mean 33 GHz thermal fraction 79% [3.3 Dense Gas Fractions: "$\alpha_{\rm CO} \approx 4.3$ M${_\odot}\,{\rm (K\,km\,s^{-1}\,pc^{2})}^{-1}$"]
+  - validation: Trend persists if HCN used for dense gas mass [3.3 Dense Gas Fractions: "the trend observed in the top panel of Figure [5](#fig:dgas) would persist even if we instead used the HCN-derived dense gas mass"]
+- limitation (authors): Only three regions; nuclear HCN cut off by bandpass; single-component fit poor for Enuc. 2 [2.5 Line Imaging and Photometry: "the detection of HCN towards the nucleus is cut off by the bandpass at a radial velocity of $v_\mathrm{LSRK} \approx 800\mathrm{\,km\,s^{-1}}$"]
+- not stated (card): Line-free channels for uvcontsub; ALMA array configuration, baselines, and time on source; CASA version; Image size and cell size; Clean masks and thresholds; Velocity ranges for moment 0 integration; SFR calibration formula and how L33 converts to SFR; Monte Carlo details for velocity dispersion errors; Unit conversion from Jy/beam to K km/s for HCO+, HCN, CO
+
+### 2020MNRAS.496.2155Z: AlFoCS + Fornax3D: resolved star formation in the Fornax cluster with ALMA and MUSE (2020; star_formation, nearby_galaxies, milky_way_ism; archival_reuse)
+- question: Do 9 Fornax cluster galaxies follow traditional star formation relations, and how do depletion times vary within galaxies and with galaxy properties?
+- step 5: Measure resolved star formation relations and depletion times
+  - method: Bin both maps to ALMA beam size over every grid origin; combine resulting relations; divide pixelwise median gas and SFR maps to obtain depletion times. [Summary: "The resulting surface density maps are binned to the ALMA beam size using a flexible binning method, for which we use a grid that we repeatedly move by one pixel until all possible positions are covered."] [Summary: "We combine the resulting maps into one star formation relation for each galaxy."]
+  - parameter: Gaussian KDE of point density in log space [Results: "the colour of the marker indicates the density of the data around the point in log space."] [Results: "These densities were calculated using a Gaussian kernel density estimation (KDE)."]
+  - assumption: Depletion time is molecular gas surface density divided by SFR surface density [Introduction: "The depletion time ($t_\text{dep}$) is the ratio of the molecular gas surface density and the star formation rate"]
+  - validation: All grid offsets explored; integrated depletion times compared with dense parts of resolved relations [Obtaining the $\Sigma_{{\text{H}_2}} - …: "To account for this, we create a separate map for each possible starting point, effectively shifting the grid up/down and sideways until each possibility is covered."] [The star formation relation in the Forn…: "correspond very well with the densest areas in the star formation relations of the individual galaxies"]
+- step 7: Compare depletion times with galaxy properties and reference samples
+  - method: Compare galaxy depletion times with stellar mass, SMSD, and projected cluster-centric distance; recalibrate literature molecular masses to the same X_CO prescription. [Relations with other parameters: "Here we test whether this variation depends on other variables, i.e. stellar mass, morphology, and (projected) location within the cluster."] [Relations with other parameters: "Where necessary, we recalibrate the literature data to share the same X$_\text{CO}$ prescription we use to estimate M$_{\text{H}_2}$ in our Fornax sample"]
+  - parameter: xCOLD GASS running bins: 33 galaxies; half-bin shifts; median and 16th/84th quantiles [Relations with other parameters: "The solid grey lines indicate the median and 16$^{\text{th}}$ and 84$^{\text{th}}$ quantiles of the xCOLD GASS data"] [Relations with other parameters: "each containing an equal number of (33) galaxies, where each bin is shifted by half a bin size with respect to the previous one."]
+  - parameter: Cluster centre: NGC1399 (FCC213) [Relations with other parameters: "distance from the cluster centre, defined here as the brightest cluster galaxy (BCG) NGC1399 (FCC213)."]
+  - parameter: Surface-density errors include rms and 10% calibration errors [Relations with other parameters: "Uncertainties are a combination of the error on the molecular gas surface density and the error on the star formation rate surface density (in both cases the rms error and a 10% calibration error)."]
+  - assumption: SMSD used as a proxy for morphology [Relations with other parameters: "A galaxy’s SMSD is a crude measure of its radial mass profile, and can therefore be interpreted as a proxy for its morphology."]
+  - fitting: Kendall’s tau evaluated for xCOLD GASS depletion-time trends [Relation with stellar mass: "the Kendall’s tau value is $\sim$0.21 with a corresponding p-value of $\sim4.7 \times 10^{-7}$"] [Relation with stellar mass surface dens…: "the Kendall’s tau value is $\sim$0.23 with a corresponding p-value of $\sim8.5 \times 10^{-8}$"]
+  - validation: Compare with xCOLD GASS, ALLSMOG, HRS and ATLAS3D; distinguish Virgo and field subsamples [Summary: "field galaxies from xCOLD GASS (cite: Saintonge2017), ALLSMOG (cite: Cicone2017), the HRS (cite: Boselli2010; Boselli2014b), and ATLAS$^{3\text{D}}$ (cite: Cappellari2011; Young2011)."] [Relations with other parameters: "The ATLAS$^{3\text{D}}$ and HRS samples are split into field galaxies (filled markers) and galaxies located in the Virgo cluster (open markers)."]
+- result: FCC90 stellar-body depletion time = ∼0.5 ± not stated Gyr [FCC90: "are distributed around $\sim$0.5 Gyr instead."]
+- result: FCC90 tail-to-body depletion-time ratio = ≳10 ± not stated dimensionless [FCC90: "In the gas tail, on the other hand, depletion times are $\gtrsim10$ times longer."]
+- result: FCC179 spiral-arm depletion time = <2 ± not stated Gyr [Spiral arm vs. interarm regions: "which have more efficient star formation ($t_\text{dep}$$<$2 Gyr) than the interarm regions ($\sim$3 - 4 Gyr)."]
+- result: FCC179 interarm depletion time = ∼3 - 4 ± not stated Gyr [Spiral arm vs. interarm regions: "which have more efficient star formation ($t_\text{dep}$$<$2 Gyr) than the interarm regions ($\sim$3 - 4 Gyr)."]
+- result: xCOLD GASS depletion-time–stellar-mass Kendall’s tau = ∼0.21 ± not stated dimensionless [Relation with stellar mass: "the Kendall’s tau value is $\sim$0.21 with a corresponding p-value of $\sim4.7 \times 10^{-7}$"]
+- result: xCOLD GASS depletion-time–stellar-mass p-value = ∼4.7 × 10^-7 ± not stated dimensionless [Relation with stellar mass: "the Kendall’s tau value is $\sim$0.21 with a corresponding p-value of $\sim4.7 \times 10^{-7}$"]
+- result: xCOLD GASS depletion-time–SMSD Kendall’s tau = ∼0.23 ± not stated dimensionless [Relation with stellar mass surface dens…: "the Kendall’s tau value is $\sim$0.23 with a corresponding p-value of $\sim8.5 \times 10^{-8}$"]
+- result: xCOLD GASS depletion-time–SMSD p-value = ∼8.5 × 10^-8 ± not stated dimensionless [Relation with stellar mass surface dens…: "the Kendall’s tau value is $\sim$0.23 with a corresponding p-value of $\sim8.5 \times 10^{-8}$"]
+- limitation (authors): Sample biased towards higher-mass, star-forming galaxies [The sample: "As F3D targeted only the brightest galaxies ($m_B < 15$), and AlFoCS is mostly IR selected, the sample is likely biased towards higher-mass, star forming galaxies."]
+- limitation (authors): Six Paper I detections lack inclusion in this study [The sample: "6 galaxies detected in Paper I are not included here: the large spiral FCC121 (NGC1365), the edge-on spiral FCC67 (NGC1351A), and four dwarf galaxies with disturbed molecular gas reservoirs."]
+- limitation (authors): FCC290 has only partial MUSE coverage [H$\alpha$ data: "An exception is FCC290, which was only observed partially"]
+- not stated (card): Per-galaxy CO image filenames, exact synthesized beams, and moment-map noise maps.; Manual calibration scripts, calibrator identities, flagging, and flux-scale procedure from Paper I.; Continuum-subtraction task, fit order, and line-free channel selections.; CLEAN stopping thresholds, image dimensions, interactive masks, and masked-moment thresholds and smoothing.; Per-galaxy metallicities, their…
+
+### 2018A&A...615A..94F: Fragmentation properties of massive protocluster gas clumps: an ALMA study (2018; star_formation; observational_alma_primary)
+- question: What regulates fragmentation (magnetic field vs turbulence) in massive, young protocluster clumps, as probed by the fragment population in 278 GHz continuum and compared with MHD simulations?
+- step 4: Correlate fragment and clump properties
+  - method: Compare number, masses, separations with clump T, mass, sigma_nth, Mach number, SFE [5.1: "We have searched for possible relations between the properties of the fragment population in Table [\[tab_averages\]](#tab_averages), and the physical parameters of the parent clumps"]
+  - validation: Only qualitative; authors note need for higher statistics [5.1: "all the conclusions drawn in this Section should be corroborated by a higher statistics"]
+- step 5: Compare with MHD simulations
+  - method: RAMSES runs with mu=2 and 200 (130), converted via RADMC-3D to dust continuum, CASA-simulated, same fragment criteria [5.3: "we have calculated the properties of the fragments using the same criteria adopted for the real images"]
+  - software: RAMSES, RADMC-3D, CASA
+  - assumption: Distance 3.6 kpc; spherical clump with density contrast 10; stopped at SFE 15% [5.2: "we have decided to analyse the simulations stopped at a SFE of $15\%$"]
+  - validation: Qualitative morphology comparison [5.2: "our main aim is to compare the overall morphology of the real and synthetic images"]
+- limitation (authors): Fragment numbers are lower limits due to large missing flux and pointing offsets [Conclusions: "The number of fragments is likely a lower limit given the huge amount of missing flux in most of the sources."]
+- limitation (authors): Mass estimates are likely upper limits for warm fragments; simulations use single spherical clumps [4.1: "In these cases, our mass estimates are likely upper limits."]
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; Weighting/robust, cell and image size, deconvolver and masks; Line-free channels and spectral setup; Dust opacity law value and frequency scaling (only referenced to Fontani 2016); Noise rms per map; Self-calibration usage; Exact GILDAS MAPPING procedure for fragment flux integration
+
+### 2021ApJ...915...46C: ALMA Host Galaxy Observation of the Off-axis Gamma-Ray Burst XRF 020903 (2021; transients, high_z_galaxies; observational_alma_primary)
+- question: Whether the submillimeter/millimeter radio properties (dust continuum, CO emission, molecular gas mass, and gas depletion timescale) of the off-axis GRB XRF 020903 host galaxy resemble those of classical GRB host galaxies, supporting an id…
+- step 3: Derive IR luminosity and star formation rate from dust continuum
+  - method: Apply target redshift to luminosity-dependent IR SED templates from Chary & Elbaz (2001) to constrain L_IR from continuum flux/limits, then convert L_IR to SFR using Kennicutt (1998) [IR Luminosity and Star Formation Rate (…: "Based on (cite: wang12), a redshift to a template IR SED was applied to these results. We referred to the SED library provided by (cite: chary01), which is luminosity-dependent ($2\times10^8$ to $4\times10^{13} L_\ensuremath{\odot}$) based on a locally calibrated luminosity-dust temperature relation and does not enabl…"] [IR Luminosity and Star Formation Rate (…: "Using the SFR conversion of star-forming galaxies, SFR($M_\ensuremath{\odot}$ yr$^{-1})=1.7\times10^{-10} L_{\rm IR}/L_\ensuremath{\odot}$ (cite: kennicutt98), we obtained the 3$\sigma$ upper limit of the SFR as $<2.2$ ($M_\ensuremath{\odot}$ yr$^{-1}$)."]
+  - assumption: Cosmological parameters H0 = 70 km s^-1, Omega_0 = 0.3, Omega_lambda = 0.7 [Introduction: "In Sections 4 and 5, we present the results of the continuum and CO line observations and discuss their properties, respectively, based on using the following cosmological parameters: $H_{0}$=70 $\rm {km\ s^{-1}}$, $\Omega_{0}=0.3$, and $\Omega_{\lambda}=0.7$."]
+  - assumption: Chary & Elbaz (2001) luminosity-dependent IR SED templates without scaling [IR Luminosity and Star Formation Rate (…: "We referred to the SED library provided by (cite: chary01), which is luminosity-dependent ($2\times10^8$ to $4\times10^{13} L_\ensuremath{\odot}$) based on a locally calibrated luminosity-dust temperature relation and does not enable SED scaling."]
+  - assumption: Kennicutt (1998) conversion SFR(M_sun yr^-1) = 1.7 x 10^-10 L_IR / L_sun [IR Luminosity and Star Formation Rate (…: "Using the SFR conversion of star-forming galaxies, SFR($M_\ensuremath{\odot}$ yr$^{-1})=1.7\times10^{-10} L_{\rm IR}/L_\ensuremath{\odot}$ (cite: kennicutt98), we obtained the 3$\sigma$ upper limit of the SFR as $<2.2$ ($M_\ensuremath{\odot}$ yr$^{-1}$)."]
+  - fitting: Template matching without SED scaling [IR Luminosity and Star Formation Rate (…: "We referred to the SED library provided by (cite: chary01), which is luminosity-dependent ($2\times10^8$ to $4\times10^{13} L_\ensuremath{\odot}$) based on a locally calibrated luminosity-dust temperature relation and does not enable SED scaling."]
+  - validation: Checked consistency of IR SED templates with HST optical flux measurements and compared IR-derived SFR with H-alpha SFR [IR Luminosity and Star Formation Rate (…: "Moreover, the templates with $L_{\rm IR} <1.3\times10^{10} L_\ensuremath{\odot}$ are also consistent with optical flux measurements (the blue line in the Figure [3](#020903temp))."] [IR Luminosity and Star Formation Rate (…: "This estimation is consistent with the measurement (2.65$M_{\ensuremath{\odot}}$ yr$^{-1}$) using $H_{\alpha}$ or rather small (cite: ghost)."]
+- step 4: Derive CO luminosity, molecular gas mass, gas fraction, and gas depletion timescale
+  - method: Calculate L'_CO upper limit using Solomon & Vanden Bout (2005) equation, convert to M_gas using metallicity-dependent and Galactic alpha_CO factors, and compute gas depletion timescale t_depl = M_gas / SFR [Molecular Gas Mass: "The luminosity of CO was estimated based on the equation ($L'_{\rm CO} = 3.25 \times 10^{7}S_{\rm CO}\Delta\nu\nu_{obs}^{-2}D_{L}^{2}(1+z)^{-3}$) described by (cite: solomon05), where $L'_{\rm CO}$ is in K km s$^{-1}$ pc$^{2}, S_{\rm CO}\Delta\nu$ is the velocity-integrated intensity in Jy km s$^{-1}$, $\nu_{\rm obs}$…"] [Molecular Gas Mass: "The upper limit of the molecular gas mass of the XRF 020903 host galaxy was derived from $M_{gas}=\alpha_{\rm CO}L'_{\rm CO(1-0)}$, where $\alpha_{\rm CO}$ is the CO-to-H$_{2}$ conversion factor, including the contribution of the helium mass."]
+  - assumption: CO velocity width = 180 km s^-1 [Molecular Gas Mass: "Because the CO(1-0) line was not detected from the ALMA observation of the XRF 020903 host galaxy, we derived the upper limit of the CO luminosity by assuming a velocity width of 180 km s$^{-1}$ (Table [1](#tab))."]
+  - assumption: Metallicity-dependent alpha_CO from harmonic mean of Genzel et al. (2012) and Bolatto et al. (2013): alpha_CO = 15 M_sun (K km s^-1 pc^2)^-1 for region A (12+log(O/H) = 8.1) and alpha_CO = 9.6 for regions B, C, D (12+log(O/H) ~ 8.2); Galac… [Molecular Gas Mass: "Therefore, we adopted the harmonic mean of the recipes of (cite: genzel12) and Bolatto et al. (2013), similar to (cite: hatsukade20). The converted upper limits of the gas mass were $M_{\rm gas}<3.9\times10^{9}$ $M_{\ensuremath{\odot}}$ with $\alpha_{\rm CO}=15$ $M_\ensuremath{\odot}$ (K km s$^{-1}$ pc$^2$) for region…"] [Molecular Gas Mass: "The smaller upper limit of $M_{\rm gas}<1.1\times10^{9}$ was estimated by applying the galactic conversion factor of $\alpha_{\rm CO}$=4.4 (cite: bolatto13b)."]
+  - assumption: H-alpha SFR = 2.65 M_sun yr^-1 used for M_gas-SFR and depletion timescale comparison [Molecular Gas Mass-SFR, Gas Fraction, a…: "The SFR of XRF 020903 estimated using the $H_{\alpha}$ line as 2.65 $M_{\ensuremath{\odot}}$ yr$^{-1}$ (cite: ghost), was used."]
+  - validation: Compared derived M_gas, gas fraction, and depletion timescale against GRB/SLSN host samples and star-forming galaxy scaling relations [Molecular Gas Mass: "We compared the molecular gas mass of the XRF 020903 with other GRB and SLSN samples reported by (cite: hatsukade20) as a function of redshift (Figure [5](#mgas2mstar), top) and stellar mass (Figure [5](#mgas2mstar), bottom)."]
+- result: XRF 020903 IR luminosity from Band 6 (3-sigma upper limit) = <1.3e10 ± 3sigma upper limit L_sun [IR Luminosity and Star Formation Rate (…: "As shown in Figure [3](#020903temp), we constrained the 3$\sigma$ upper limits of IR luminosity for the XRF 020903 host galaxy with the Band 6 observation as $L_{\rm IR} <1.3\times10^{10} L_\ensuremath{\odot}$."]
+- result: XRF 020903 SFR from Band 6 IR luminosity (3-sigma upper limit) = <2.2 ± 3sigma upper limit M_sun yr^-1 [IR Luminosity and Star Formation Rate (…: "Using the SFR conversion of star-forming galaxies, SFR($M_\ensuremath{\odot}$ yr$^{-1})=1.7\times10^{-10} L_{\rm IR}/L_\ensuremath{\odot}$ (cite: kennicutt98), we obtained the 3$\sigma$ upper limit of the SFR as $<2.2$ ($M_\ensuremath{\odot}$ yr$^{-1}$)."]
+- result: XRF 020903 IR luminosity from Band 3 (3-sigma upper limit) = <1.28e11 ± 3sigma upper limit L_sun [Table 1: "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\times10^{11}$ | $<$21.7 | $<2.6\times10^{8}$ | $<1.1\times10^{9}$ | This work | | |"]
+- result: XRF 020903 SFR from Band 3 IR luminosity (3-sigma upper limit) = <21.7 ± 3sigma upper limit M_sun yr^-1 [Table 1: "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\times10^{11}$ | $<$21.7 | $<2.6\times10^{8}$ | $<1.1\times10^{9}$ | This work | | |"]
+- result: XRF 020903 CO(1-0) luminosity (upper limit) = <2.6e8 ± 3sigma upper limit K km s^-1 pc^2 [Table 1: "| XRF 020903 | 0.251 | 97.2 | $<$0.032 | $<1.28\times10^{11}$ | $<$21.7 | $<2.6\times10^{8}$ | $<1.1\times10^{9}$ | This work | | |"]
+- result: XRF 020903 molecular gas mass for burst site region A (alpha_CO = 15) = <3.9e9 ± 3sigma upper limit M_sun [Molecular Gas Mass: "The converted upper limits of the gas mass were $M_{\rm gas}<3.9\times10^{9}$ $M_{\ensuremath{\odot}}$ with $\alpha_{\rm CO}=15$ $M_\ensuremath{\odot}$ (K km s$^{-1}$ pc$^2$) for region A and $M_{\rm gas}<2.5\times10^{9}$ $M_{\ensuremath{\odot}}$ with $\alpha_{\rm CO}=9.6$ (K km s$^{-1}$ pc$^2$) for regions B, C, and …"]
+- result: XRF 020903 molecular gas mass for regions B, C, and D (alpha_CO = 9.6) = <2.5e9 ± 3sigma upper limit M_sun [Molecular Gas Mass: "The converted upper limits of the gas mass were $M_{\rm gas}<3.9\times10^{9}$ $M_{\ensuremath{\odot}}$ with $\alpha_{\rm CO}=15$ $M_\ensuremath{\odot}$ (K km s$^{-1}$ pc$^2$) for region A and $M_{\rm gas}<2.5\times10^{9}$ $M_{\ensuremath{\odot}}$ with $\alpha_{\rm CO}=9.6$ (K km s$^{-1}$ pc$^2$) for regions B, C, and …"]
+- result: XRF 020903 molecular gas mass for Galactic conversion factor (alpha_CO = 4.4) = <1.1e9 ± 3sigma upper limit M_sun [Molecular Gas Mass: "The smaller upper limit of $M_{\rm gas}<1.1\times10^{9}$ was estimated by applying the galactic conversion factor of $\alpha_{\rm CO}$=4.4 (cite: bolatto13b)."]
+- result: GRB 050709 IR luminosity = <5.97e9 ± 3sigma upper limit L_sun [Table 1: "| GRB 050709 | 0.1606 | 233.0 | $<$0.05 | $<5.97\times10^{9}$ | $<$1.0 | $-$ | $-$ | This work | | |"]
+- result: GRB 050709 SFR = <1.0 ± 3sigma upper limit M_sun yr^-1 [Table 1: "| GRB 050709 | 0.1606 | 233.0 | $<$0.05 | $<5.97\times10^{9}$ | $<$1.0 | $-$ | $-$ | This work | | |"]
+- limitation (authors): The CO-to-H2 conversion factor is difficult to estimate and not well established in the low-metallicity regime. [Molecular Gas Mass: "In the low-metallicity range, the conversion factor estimation becomes difficult, because the estimation methods have not yet been established."]
+- limitation (authors): A comparable galaxy sample in the same stellar mass range did not exist for comparing M_gas. [Molecular Gas Mass: "A comparable sample in the same stellar mass range did not exist."]
+- limitation (authors): The upper limit on the molecular gas mass fraction (mu_gas) could not constrain the redshift trend effectively. [Molecular Gas Mass-SFR, Gas Fraction, a…: "Although the upper limit of $\mu_{\rm gas}$ could not constrain the trend effectively, the limit of $t_{\rm depl}$ was consistent with the results of most of GRB samples (e.g., GRB 980703, GRB 021211, GRB 031203, GRB 050826, GRB 060814, GRB 070306, GRB 071021, GRB 081109A, GRB 110918A), and one of SLSN, PTF10tpz."]
+- not stated (card): ALMA project codes for the archival GRB host galaxy continuum observations re-evaluated in Table 1 (GRB 050401, GRB 050915A, GRB 070802, GRB 081221, GRB 111123A, GRB 120624B, GRB 130606A); Exact cell size, image size, and cleaning thresholds/masking used in TCLEAN for XRF 020903 and GRB 050709; Continuum subtraction procedure (if any) before creating the CO(1-0) velocity-integrated map; Reason fo…
+
+### 2025ApJ...995...98D: DiskMINT: Self-consistent Thermochemical Disk Models with Radially Varying Gas and Dust—Application to the Massive, CO-Rich Disk of IM Lup (2025; protoplanetary_disks; archival_reuse)
+- question: Infer the mass and surface density distribution of the IM Lup disk with self-consistent thermochemical models.
+- step 4: Solve settled vertical structure
+  - method: Iterate dust radiative transfer, dust-gas thermal equilibrium, gas hydrostatic equilibrium, and steady-state dust diffusion. [Vertical distribution: dust settling: "we go through iterations including solving radiative transfer with `RADMC3D` to estimate $T_{\rm dust}(a)$, thermal equilibrium to estimate $T_{\rm gas}$, vertical hydrostatic equilibrium to estimate $\rho_{\rm gas}$, and the dust diffusive equation to estimate $\rho_{\rm dust}(a)$."]
+  - software: DiskMINT, RADMC-3D
+  - parameter: Best-fit alpha_v = 10−3 from SED; test alpha_v = 10−4, 10−3, 10−2 [Results for Structured Model: "we also find the best-fit value for the turbulent parameter $\alpha_{\rm v} = 10^{-3}$ based on the SED fitting"] [Effect of dust settling: "apply dust settling with three different $\alpha_{\rm v} = 10^{-4}, 10^{-3}, 10^{-2}$,"]
+  - assumption: Schmidt number ~1; vertically integrated grain-size distributions remain fixed at each radius [Vertical distribution: dust settling: "${\rm Sc}$ is the Schmidt number assumed to be $\sim 1$ (cite: fromang_n_Nelson_settling_2009)."] [Vertical distribution: dust settling: "the overall dust size distribution at each radius and the vertically integrated (surface) densities for each size, $\Sigma_{\rm dust}(a, r)$ – are kept fixed."]
+  - assumption: Gas-phase heating and cooling omitted; gas temperature from thermal equilibrium with dust grains [Omission of gas cooling: "Specifically, gas-phase heating and cooling mechanisms are omitted and $T_{\rm gas}$ is computed from the thermal equilibrium with dust grains of different sizes"]
+  - fitting: Constrain turbulence from the infrared SED near 100 μm. [alpha_v: "It is constrained from the infrared SED at $\sim 100\,{\rm\mu m}$, and we use the best-fit $\alpha_{\rm v} \sim 10^{-3}$ from the structured model."]
+  - validation: Settling models improve the ~100 μm SED; mass estimates are insensitive to tested alpha_v choices. [Effect of dust settling: "We find that the models with dust settling (green, red, and purple lines) match the SED better at $\lambda \sim 100\,{\rm\mu m}$,"] [Effect of dust settling: "We also find that neither the $M_{\rm dust}$ nor $M_{\rm gas}$ estimates are sensitive to the choice of $\alpha_{\rm v}$,"]
+- result: Structured turbulence parameter = 10−3 ± not stated dimensionless [Results for Structured Model: "we also find the best-fit value for the turbulent parameter $\alpha_{\rm v} = 10^{-3}$ based on the SED fitting"]
+- result: Gas-mass range in settling sensitivity tests = 0.025 - 0.056 ± not stated M_sun [Effect of dust settling: "We find the best-fit $\varepsilon = 0.007-0.016$ with $M_{\rm gas}= 0.025 - 0.056\,M_\odot$,"]
+- limitation (authors): Gas-phase heating and cooling omitted; gas masses may be underestimated by up to ~2. [Omission of gas cooling: "Specifically, gas-phase heating and cooling mechanisms are omitted"]
+- limitation (authors): Inside ≲40 AU, optical thickness makes surface densities lower limits. [The optically thick inner disk and fain…: "the dust and gas become optically thick inside $\lesssim 40\,{\rm AU}$, hence what we derive within is a lower limit to the surface density."]
+- not stated (card): Exact observed continuum images, C18O cubes, product filenames, and versioned download locations.; Photometric measurements, uncertainties, source citations for individual SED points, and multi-epoch averaging procedure.; Observed-data calibration, self-calibration, continuum subtraction, spectral channelization, weighting, masks, and noise estimates.; Annular widths, radial sampling, image cente…
+
+### 2018ApJ...863..193V: Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248 (2018; galaxy_clusters_and_sz, nearby_galaxies, star_formation; observational_alma_primary)
+- question: What are the mass, morphology, kinematics, origin and star formation of the molecular gas in the RXCJ1504 BCG, and how does it relate to an X-ray cavity?
+- step 7: Compute local SFRs from HST FUV and fit star formation law
+  - method: FUV count rates in regions scaled to global SFR; fit Sigma_SFR = A (Sigma_H2/100)^N in log space [4.3 Star Formation Along the Filament: "Thus the SFR within each region is the ratio of its UV count rate to the total UV count rate multiplied by the global SFR."]
+  - software: linmix
+  - assumption: SFR uncertainty factor of two; Salim07 UV calibration (Chabrier IMF) [4.3 Star Formation Along the Filament: "Throughout this work we take the SFR uncertainty to be a factor of two"]
+  - fitting: Bayesian linear regression (Kelly 2007) via linmix [4.3 Star Formation Along the Filament: "The fits were conducted in log space using the linmix package in Python, which employs the Bayesian approach to linear regression described in (cite: Kelly07)."]
+  - validation: Compared with KS and Bigiel08 relations [4.3 Star Formation Along the Filament: "The linear scaling measured between $\Sigma_{\rm SFR}$ and $\Sigma_{{\rm H}_2}$ in spiral galaxies (cite: Bigiel08) has also been plotted in Fig."]
+- result: Star formation law fit, all gas: A and N = A=0.58, N=0.64 ± A ±0.11, N ±0.18 dimensionless [4.3 Star Formation Along the Filament: "Fitting this SF law to the entire gas distribution yields $A=0.58\pm0.11$ and $N=0.64\pm0.18$."]
+- result: Star formation law fit, central gas: A and N = A=0.23, N=1.18 ± A ±0.13, N ±0.37 dimensionless [4.3 Star Formation Along the Filament: "gives $A=0.23\pm0.13$ and $N=1.18\pm0.37$"]
+- result: Gas consumption time = 1.4e8 ± not stated yr [4.3 Star Formation Along the Filament: "will be consumed in $1.4\ensuremath{\times 10^{8}}\rm\; yr$."]
+- limitation (authors): The cavity is poorly defined and may not be real [4.1 Gas Origin: "The feature identified as a potential cavity is poorly defined, so it is not clear if it is a real cavity."]
+- limitation (authors): HST images manually aligned, so small-scale offsets between gas and UV may be missed [3.5 Spatial Correlation with UV Emission: "Spatial offsets between the molecular gas and young stars could be present, but would be missed due to this manual alignment."]
+- not stated (card): Line-free channels and continuum-subtraction order for uvcontsub; Clean masks, threshold, niter, cell and image size; Self-calibration solution intervals; Exact HST data sets and pipeline products, and manual shifts beyond those quoted; Regions (polygon and extraction boxes) definitions for spectra and SFR; Flux calibrator and flux scale uncertainty; Extraction details of the Chandra surface brig…
+
+### 2015ApJ...813...45L: Radio Jet Feedback and Star Formation in Heavily Obscured, Hyperluminous Quasars at Redshifts ∼ 0.5-3. I. ALMA Observations (2015; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: How much cool dust emission / star formation accompanies highly obscured, radio-powerful WISE-selected quasars at z~0.5-3, as measured with ALMA 870 um snapshot photometry?
+- step 3: Fit SEDs (AGN torus + modified blackbody + stellar) and derive SFRs
+  - method: parametric AGN MIR component plus greybody at fixed T=30,50,90,120 K, beta=1.5 (2 for 50 K); SFR from Kennicutt conversion [5.2.2 Three-Component SED Fits: "We have made four fits to each source, each with a different temperature for the BB component."]
+  - parameter: beta=1.5; 50K model beta=2 [5.2.2 Three-Component SED Fits: "For $\beta$ we have selected a value of 1.5"]
+  - assumption: z=2 for sources without redshift [5.2.2 Three-Component SED Fits: "For the four sources without measured redshift we assume $z = 2$."]
+  - validation: free-Td fits for two Herschel sources set 90 K and 120 K [5.2.2 Three-Component SED Fits: "we have adopted the two dust temperature values which have fitted W1500-0649 and W2059-3541 successfully: 90 K (rounding up from 89 K) and 120 K"]
+- result: SFR range from BB fits (detected) = 13.5-25700 ± not stated Msun/yr [5.2.2 Three-Component SED Fits: "the corresponding SFR range is 13.5–25700 $M_{\odot}$ ${\rm yr}^{-1}$"]
+- limitation (authors): Dust temperature unconstrained for most sources; L_BB and SFR uncertain by orders of magnitude [5.2 Spectral Energy Distribution Fits: "is uncertain by 2-3 dex without measurements at the FIR peak of the dust SED."]
+- not stated (card): CASA version and calibration/imaging procedure (pipeline vs manual, weighting, cleaning); Region used for imfit and how upper limits were set (3 sigma assumed?); Rest-frame Gamma_RJ/Gamma_0 values and temperature-scaled constant for 30 K and 90 K ISM masses; Fitting code and parameter priors for the AGN+BB+stellar fits; photometry weighting; Redshift-tied details of k-correction templates
+
+### 2025PSJ.....6..286M: Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics (2025; solar_system; observational_alma_primary)
+- question: Which ALMA-derived or GCM zonal wind profiles reproduce the resolved occultation light distributions around Titan?
+- step 8: Simulate resolved occultation images
+  - method: Calculate refractivity, integrate along chords, derive bending angles from phase-delay gradients, trace stellar rays and convolve with a PSF [Forward modeling of a stellar occultati…: "We calculate the refractivity through $N_2$ gas at standard temperature and pressure, then scale that refractivity by the ratio of the actual number density to Loschmidt’s number"] [Forward modeling of a stellar occultati…: "Calculate bending angles from the gradient of the phase delay screen"]
+  - parameter: Line-of-sight steps of 1 km; chord length 8000 km [Forward modeling of a stellar occultati…: "We use step sizes of 1 km and a chord length of 8000 km, since number densities at distances of 4000 km (and beyond) from Titan’s center are negligible."]
+  - parameter: ν_STP = 29.06×10^-5 (1 + 7.7×10^-3/λ²), with λ in μm [Forward modeling of a stellar occultati…: "\nu_{STP} = 29.06 \times 10^{-5} (1 + \frac{7.7 \times 10^{-3}}{\lambda^2})"] [Forward modeling of a stellar occultati…: "where $\lambda$ is the wavelength in $\mu$m"]
+  - parameter: Loschmidt’s number 2.687×10^19 particles per cm³; STP 273.15 K and 1 atmosphere [Forward modeling of a stellar occultati…: "Standard Temperature and Pressure: 273.15 K and 1 atmosphere"] [Forward modeling of a stellar occultati…: "Loschmidt’s number ($N_{LOS}$) is $2.687 \times 10^{19}$ particles per cm$^3$."]
+  - assumption: 2-D screens perpendicular to the line of sight [Forward modeling of a stellar occultati…: "Approximate Titan and its atmosphere as 2-D screens perpendicular to the observer’s line of sight"]
+  - assumption: Neglect seasonal haze effects at the probed altitudes and observing wavelengths [Forward modeling of a stellar occultati…: "While we considered the effect of Titan’s seasonally variable haze, we determined the effect was negligible due to the high altitudes that are probed by occultations and the wavelength range that the occultation was observed in."]
+  - assumption: Applying isobar distortions to bending-angle fields introduces undetectable errors over small temperature ranges [Forward modeling of a stellar occultati…: "Although isobars and isopycnals are not identical, applying the isobar distortions to the bending angle fields over small temperature ranges gives undetectable errors."]
+  - validation: 2-D screen approximation justified by bending angles of about 2 μrad [Forward modeling of a stellar occultati…: "the bending angles we detect are only about 2 $\mu$rad, so that each detectable ray essentially travels straight through Titan’s atmosphere."]
+- limitation (authors): ALMA rubidium-maser cable-routing error likely introduced an unknown frequency shift and slight spectral broadening [ALMA wind retrieval: "an error in the cable routing of the ALMA rubidium maser at the time of our observations, which is likely to have introduced an erroneous and unknown frequency shift in our observations"]
+- limitation (authors): ALMA winds are not vertically resolved; equatorial-jet contributions cannot be isolated [Comparison between GCM, occultation, an…: "As the ALMA wind profile is not vertically resolved, isolating the contribution of the equatorial jet from the contributions of winds at lower altitudes that contribute more heavily to the CH$_3$CN profile is not possible."]
+- limitation (authors): GCM and ALMA forward-model inputs differ in vertical treatment [Comparison between GCM, occultation, an…: "the implementations of ALMA and GCM profiles into our forward model varied slightly due to GCM simulations being altitudinally resolved while ALMA retrieved wind speeds are averaged over an altitude contribution function"]
+- not stated (card): ALMA project identifier and dataset identifiers.; Antenna configuration, baselines, on-source integration time and complete spectral-window/channel layout.; CASA and calibration-script versions, detailed flagging and calibrator identities.; Phase self-calibration solution intervals, iteration count and solution-selection criteria.; Exact line-free channels used for the polynomial continuum subtra…
+
+### 2021ApJ...909L..29D: A CO Survey of SpARCS Star-forming Brightest Cluster Galaxies: Evidence for Uniformity in BCG Molecular Gas Processing across Cosmic Time (2021; galaxy_clusters_and_sz, high_z_galaxies; observational_alma_primary)
+- question: How common is molecular gas in star-forming SpARCS BCGs at 0.2<z<1.2, and do their gas mass versus sSFR correlations match those of low-redshift cooling-flow BCGs
+- step 6: derive stellar masses and SFRs
+  - method: Stellar mass from IRAC 3.6 um rest-frame K-band luminosity with a template K-correction and a calibrated mass-to-light ratio; SFR from MIPS 24 um luminosity using Kennicutt (1998) eq. 4 [Stellar Masses and Star Formation Rates: "We determine a mass-to-light ratio of 0.83 by comparing our sample of"] [Stellar Masses and Star Formation Rates: "using (cite: kennicutt1998_SFR) Equation 4 based on the luminosity at"]
+  - software: FAST
+  - parameter: mass-to-light ratio 0.83; stellar mass uncertainty 0.3 dex; SFR uncertainty 0.15 dex [Stellar Masses and Star Formation Rates: "We take the scatter in this relation (0.3 dex) as the uncertainty in the stellar masses."] [Stellar Masses and Star Formation Rates: "We take the scatter of 0.15 dex described in (cite: kennicutt1998_SFR) to be the uncertainty in the SFRs."]
+  - assumption: 11 Gyr simple stellar population, solar metallicity, Salpeter IMF [Stellar Masses and Star Formation Rates: "adopting an 11 Gyr simple stellar population with solar metallicity and a Salpeter Initial Mass Function (IMF;"]
+  - fitting: FAST SED fit to griz/3.6/4.5 um photometry used to calibrate the mass-to-light ratio [Stellar Masses and Star Formation Rates: "SED fit using FAST (cite: kriek2018FAST)"]
+  - validation: Younger template changes mean stellar mass by at most 8%; more modern SFR method gives similar results [Stellar Masses and Star Formation Rates: "changes the average stellar mass values by at most 8%."] [Stellar Masses and Star Formation Rates: "We achieve similar results with more modern SFR methods such as that of (cite: Rieke_2009)."]
+- result: Stellar mass-to-light ratio = 0.83 ± 0.3 dex scatter dimensionless [Stellar Masses and Star Formation Rates: "We determine a mass-to-light ratio of 0.83 by comparing our sample of"]
+- limitation (authors): Higher-z similarity is inconclusive because of small sample and selection effects [Direct comparison with lower-redshift B…: "but this is inconclusive due to the small sample size and potential selection effects from limited sensitivity."]
+- limitation (authors): Sample is not complete in SFR because of the SWIRE MIPS limit [Stellar Masses and Star Formation Rates: "our sample is not complete in SFR"]
+- limitation (authors): 24 um SFR method is known to overestimate SFRs at high redshift [Stellar Masses and Star Formation Rates: "We note that this method is known to overestimate SFRs, particularly at high redshifts"]
+- not stated (card): tclean/clean parameters: niter, threshold, masking, spectral channel width per source (only an unlabeled table column), and whether imaging used the pipeline cubes or custom runs; Method and line-free channels used for continuum subtraction (uvcontsub or image-plane); Flux, bandpass and phase calibrators and any manual flagging beyond the pipeline; Pipeline version and whether the archive pipelin…
+
+### 2016ApJ...816...25P: Dust and Gas in the Disk of HL Tauri: Surface Density, Dust Settling, and Dust-to-gas Ratio (2016; protoplanetary_disks; observational_alma_primary)
+- question: What are the dust surface density, ring/gap masses, grain-size variation, dust settling (alpha) and gas-to-dust ratio in the HL Tau disk, from radiative transfer modelling of the ALMA Band 3, 6 and 7 continuum data?
+- step 5: Constrain dust settling (alpha)
+  - method: Compare 2D models with different alpha (diffusive settling, Fromang & Nelson eq. 19) to the ALMA image gap contrast over azimuth [Degree of dust settling: "produces the best agreement with most of the observed features in the ALMA image, with rings that are well separated at all azimuthal angles."]
+  - software: MCFOST
+  - parameter: Schmidt number 1.5 [Radiative transfer model: "$S_c$ is the Schmidt number, which we fix to 1.5."]
+  - assumption: Inclination ~47 deg [Degree of dust settling: "Because the disk is inclined by $\sim$ 47$^\circ$"]
+  - fitting: Visual comparison of few alpha values [Degree of dust settling: "A small value of the millimeter dust scale height, $h_{1\,\!\mathrm{mm}}$ = 0.70 AU, equivalent to $\alpha = 3\times 10^{-4}$ produces the best agreement with most of the observed features in the ALMA image"]
+  - validation: Compared models with h1mm=0.70 and 2.15 AU and no settling [Degree of dust settling: "The model with $h_{1\,\!\mathrm{mm}}=2.15$ AU reproduces this behavior but does not provide a strong enough contrast in the other rings."]
+- result: Alpha from settling = 3e-4 ± not stated dimensionless [Degree of dust settling: "$h_{1\,\!\mathrm{mm}}$ = 0.70 AU, equivalent to $\alpha = 3\times 10^{-4}$"]
+- result: Gas-to-dust ratio in midplane at 100 AU (dust to 3 mm) = ~6 ± not stated dimensionless [Discussion - a coherent model for the H…: "the gas-to-dust mass ratio in the disk midplane is $\approx 6$ at a radius of 100 AU"]
+- limitation (authors): Central peak could not be reproduced; unresolved source added ad hoc [Building a model of the HL Tau disk: "we could not reproduce the compact and peaked emission at the position of the star"]
+- limitation (authors): Opacity values uncertain to a factor of a few [Surface density profile and radial conc…: "should be considered with an uncertainty of a factor a few"]
+- not stated (card): Exact CLEAN parameters (robust, cell, image size, masks, niter) for continuum; CASA version; Ring/gap positions and inclination/PA used; Line-free channels and continuum subtraction for CO/HCO+; Exact modified CASA simulator code; Stopping criteria for the settling alpha search and the grid of alpha values; Opacity calculation and dust optical constants details beyond those cited; Central source …
+
+### 2020ApJS..251...14H: CMZoom. II. Catalog of Compact Submillimeter Dust Continuum Sources in the Milky Way's Central Molecular Zone (2020; milky_way_ism, star_formation; multi_facility_alma_minor)
+- question: Which compact sources (<10'', ~0.4 pc) exist in the 1.3 mm SMA CMZoom continuum maps of the Central Molecular Zone, what are their properties and completeness, and what do they imply for CMZ star formation potential?
+- step 5: Maximum SFR potential and missed massive-star precursors
+  - method: Sum eps*m/tff over leaves; IMF sampling (Kroupa) weighted by 1-P(m) for missing massive precursors [5.3 High-Mass Star Precursor Completene…: "We then average the number of massive ($\geq 8$ M$_\odot$) stars for 1000 iterations of each leaf mass bin."]
+  - parameter: SFE 0.1-0.75 [5.3 High-Mass Star Precursor Completene…: "a star formation efficiencies ranging between 0.1-0.75"]
+  - assumption: each leaf collapses on a freefall time [5.2 Maximum Star Formation Potential of…: "assuming each compact source in our catalog collapses on a freefall time and forms stars with an assumed star formation efficiency"]
+- result: Maximum SFR potential CMZ = 0.08 - 2.20 ± not stated Msun/yr [5.2 Maximum Star Formation Potential of…: "the maximum star formation potential of the CMZ is between 0.08 - 2.20M$_\odot$ yr$^{-1}$"]
+- result: Maximum SFR potential excluding Sgr B2 = 0.04 - 0.47 ± not stated Msun/yr [5.2 Maximum Star Formation Potential of…: "or, excluding Sgr B2, between 0.04 - 0.47M$_\odot$ yr$^{-1}$"]
+- result: Missed massive-star precursors = <~1% ± not stated percent [5.3 High-Mass Star Precursor Completene…: "which we find to be $\lessapprox1$% (if we assume a star formation efficiency of 0.75)"]
+- limitation (authors): Completeness assumes point sources and does not capture extended emission; masses uncertain by factor ~2 [3.2 Source Recovery and Simulated Obser…: "These mass completeness estimates account only for the observational biases in observing point-source-like emission"]
+- not stated (card): Exact dendrogram parameter values in the appendix-referenced setup (min_value, min_npix, min_delta numeric values beyond 3 MJy/sr scaling); Access/processing of CMZoom SMA maps from Dataverse versus Paper I imaging details; Simulated observation antenna configuration, integration time and weather settings; Herschel temperature map not yet published (in prep.); Exact point-source flux values and m…
+
+### 2015MNRAS.449..715W: Tracing the conversion of gas into stars in Young Massive Cluster Progenitors (2015; milky_way_ism, star_formation; multi_facility_alma_minor)
+- question: Are four extreme quiescent Galactic centre clouds gravitationally bound YMC progenitors, and is their gas distribution compact enough to form an Arches-like cluster?
+- step 4: Mass surface density profiles and comparison with Sgr B2 and Arches
+  - method: Enclosed mass in circular apertures; BGPS fluxes converted to mass with Kauffmann et al. relation at 20 K; stellar mass from UCHII OB stars with Kroupa IMF correction; SFE factor 1/3 [Discussion: "The dust temperature is assumed to be 20 K"]
+  - parameter: k_nu = 0.04 cm2 g-1 (nu/505 GHz)^1.75 [Discussion: "k_{\nu} = 0.04 \rm ~ cm^{2} ~ g^{-1} \left(\frac{\nu}{505 ~ GHz}\right)^{1.75}"]
+  - assumption: gas-to-dust ratio 100 [Discussion: "Note that this contains the explicit assumption that the gas-to-dust ratio is 100."]
+- result: Total stellar mass in Sgr B2 from 25 UCHII sources = ~3.5e3 ± not stated Msun [Discussion: "Taking all 25 sources in (cite: Gaume), we estimate a total stellar mass of $\sim$ 3.5 x 10$^{3}$ M$_{\odot}$."]
+- limitation (authors): Mass estimates uncertain due to cloud boundary definition and a factor ~2 systematics; gas temperature measured only for G0.253 [Dust Mass: "We note that these mass estimates are necessarily uncertain due to the ambiguity involved in defining a distinct cloud area"]
+- not stated (card): Coefficient k in the virial mass formula; ALMA calibration, imaging and feathering details (deferred to Rathborne et al. 2014b); Hanning smoothing and CASA fit procedure details for spectra; How cloud boundaries were drawn on the column-density maps; Aperture centres and radial bins for profiles
+
+### 2015MNRAS.448.2224C: Constraining globular cluster formation through studies of young massive clusters - V. ALMA observations of clusters in the Antennae (2015; star_formation, nearby_galaxies; archival_reuse)
+- question: Do young massive clusters in the Antennae (50-200 Myr) contain the large molecular gas reservoirs required by AGB-type multiple-population GC formation scenarios?
+- step 4: Toy model of expected gas mass in AGB scenario
+  - method: Compute 2G mass from 1:1 ratio and SFE=1/3, divide gas over 50 Myr window with SF timescale [Toy model: "if we adopt a standard star-formation efficiency for this cluster of SFE=$1/3$ (e.g. (cite: Lada:2003p2573)), this means that M$_{gas}^{\text{2G}}=7.5\times10^5$ M$_{\odot}$"]
+  - assumption: current mass ~4x the mass at 10 Gyr; 1:1 1G:2G [Toy model: "assume that the current mass of the cluster is $\sim4$ times more massive than it will be in $\sim10$ Gyr"]
+  - validation: Agrees with D08 for Δt_SF = 0.6 Myr [Summary of the toy model and comparison…: "a good agreement is achieved between D08 model and our “toy model", if one adopts a relatively short $\Delta t^{\text{2G}}_{SF}$ of 0.6 Myr."]
+- limitation (authors): Upper limits depend on X_CO, which may be overestimated by up to an order of magnitude [Conclusions: "We note, however, that the adopted $X_\text{CO}$ may be overestimated by up to an order of magnitude"]
+- not stated (card): Calibration, CASA version and imaging parameters (all deferred to Whitmore et al. 2014); How the spectrum rms was measured (channel range, line-free channels); Configuration, time on source, sensitivity; Details of binning to 10/20 km/s
+
+### 2015ApJ...809...93D: Observational Signatures of Planets in Protoplanetary Disks I. Gaps Opened by Single and Multiple Young Planets in Disks (2015; protoplanetary_disks; theory_or_simulation_compared_to_alma)
+- question: Are gaps opened by one or several planets in protoplanetary disks broadly consistent with observed gaps/cavities in transitional disks at NIR and mm wavelengths?
+- step 1: 2D two-fluid hydro simulations
+  - method: FARGO with dust fluid, planets on fixed circular orbits, no accretion, alpha=0.001, 256x256 cells, 1-500 AU [2.1 Hydrodynamical Gas+Dust Simulations: "The simulations have 256 grid cells in both radial (1-500 AU) and azimuthal ($2\pi$) directions."]
+  - software: FARGO
+  - parameter: 1 mm particles; initial dust-to-gas 0.9%; T = 221 (r/AU)^-1/2 K; 1 Msun star [2.1 Hydrodynamical Gas+Dust Simulations: "We further assume a radial temperature distribution $T = 221 (r/{\rm AU})^{-1/2}$ K"]
+  - assumption: Schmidt number Sc=1; Epstein drag; no dust feedback [2.1 Hydrodynamical Gas+Dust Simulations: "No feedback from the dust on the gas is considered since gas-to-dust mass ratio is always much larger than 1 in our simulations."]
+- result: Big-grain gap density contrast, models with Mp>=1MJ = >~1e9 ± lower limit (hard floor) dimensionless [Table 2: "$\gtrsim10^9$"]
+- not stated (card): Whitney MCRT code version and input parameter files; Hydro floor value for big-grain surface density; Stellar luminosity; Inclined-image azimuthal averaging details
+
+### 2019ApJ...876..130H: ALMA Reveals Potential Evidence for Spiral Arms, Bars, and Rings in High-redshift Submillimeter Galaxies (2019; high_z_galaxies; observational_alma_primary)
+- question: Does sub-kpc-resolution 870 um continuum imaging of ALESS SMGs reveal substructure (clumps, bars, rings, spiral arms), and what does it imply for star formation rate density relative to the Eddington limit?
+- step 4: Build Sigma_SFR maps
+  - method: Scale SED-derived total SFR by per-beam fraction of total 870 um flux; galaxy-average = 0.5xSFR/(pi Re^2) [3.3 Star formation rate surface density…: "galaxy-averaged values calculated using the half-light radii as 0.5$\times$SFR/($\pi$R$_{e}^{2}$)"]
+  - validation: SFR range cross-checked with modified blackbody + Kennicutt98 relation (cited) [3.3 Star formation rate surface density…: "instead using simple modified blackbody fits with, e.g., the (cite: Kennicutt1998) IR SFR relation (re-scaled to the (cite: Chabrier2003) IMF) returns the same results"]
+- step 5: Compare to Eddington limit
+  - method: Estimate optical depth from peak intensity and MAGPHYS dust T; adopt optically thick Eddington flux of Andrews & Thompson, convert to SFR density, compare with Sigma_SFR and local U/LIRGs [4.1 The intensity of the star formation: "we derive a lower limit on the Eddington-limited $\Sigma_{\mathrm{SFR}}$ of $\sim$650 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$"]
+  - assumption: gas fraction of unity, dust-to-gas 1/90, global dust temperature, Kennicutt98 IR SFR calibration with Chabrier IMF [4.1 The intensity of the star formation: "Assuming the same dust-to-gas ratio as above (1/90) and adopting a gas fraction of unity as the most extreme scenario"]
+- step 6: Velocity dispersion constraints (Jeans, Toomre)
+  - method: Jeans length equal to largest clump size gives lower limit; Toomre Q<1 with flat-rotation-curve epicyclic frequency gives upper limit; gas surface density from global Sigma_SFR [4.3 Evidence for interaction, bars, rin…: "we derive upper limits for the one-dimensional velocity dispersion of the potentially barred sources of $\sigma_{\rm r} \lesssim$ 70–160 km s$^{-1}$"]
+  - assumption: gas disk dominates over stellar component; radius = HWHM of ALMA emission along major axis [4.3 Evidence for interaction, bars, rin…: "Here we assume that the gas disk dominates over the stellar component."]
+  - validation: Toomre upper limits marginally consistent with Jeans lower limits [4.3 Evidence for interaction, bars, rin…: "these Toomre-based upper limits are consistent, albeit marginally, with the lower limits derived from equating the sizes of the largest ‘clumps’ observed to the Jeans length"]
+- result: Eddington-limited Sigma_SFR lower limit = ~650 ± not stated Msun/yr/kpc^2 [4.1 The intensity of the star formation: "lower limit on the Eddington-limited $\Sigma_{\mathrm{SFR}}$ of $\sim$650 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$"]
+- result: Peak Sigma_SFR at 0.07" for ALESS 9.1 = 547 ± +102/-93 Msun/yr/kpc^2 [Table 4: "| ALESS 9.1 | 102$^{+27}_{-32}$ | 547$^{+102}_{-93}$ | 575$^{+116}_{-108}$ |"]
+- result: Toomre velocity dispersion upper limits = <70–160 ± not stated km/s [Table 5: "| ALESS 76.1 | $>$100 | $<$160 |"]
+- limitation (authors): Single dust temperature assumed across sources, affecting Sigma_SFR maps [4.1 The intensity of the star formation: "One important caveat in the above analysis is the previously stated assumption of a single dust temperature across the sources."]
+- limitation (authors): Interpretations require kinematic confirmation; small sample [Summary: "a larger sample size is important for moving beyond the handful of submillimeter-brightest sources studied here"]
+- not stated (card): multi-scale clean scale values; clean threshold/niter and mask definitions per source; image size and cell size; weighting and taper details for 0.07" and 0.05" maps; the SFR values for each source needed for Sigma_SFR maps (da Cunha et al. in prep); dust-to-gas ratio source (referred to as 'same as above' but not given); Toomre/Jeans calculation details (gas surface density conversion, kappa); g…
+
+### 2023MNRAS.524.1775H: The ALMA REBELS Survey: discovery of a massive, highly star-forming, and morphologically complex ULIRG at z = 7.31 (2023; high_z_galaxies; observational_alma_primary)
+- question: Characterise the ISM, morphology, kinematics, star formation and possible merger or outflow of REBELS-25, a massive dusty ULIRG in the EoR, and ask whether it can evolve into a high-z quiescent galaxy
+- step 8: Derive SFR (UV+IR and [CII]) and gas depletion time
+  - method: SFR_tot = k_IR L_IR + k_UV L_nu,UV; second SFR from De Looze [CII] relation; t_depl = M_H2 / SFR_tot [3.5 Star formation: "We calculate the total star formation rate for the galaxy using UV to trace unobscured star formation and IR to trace obscured star formation"] [3.5 Star formation: "Under these assumptions, $t_{\rm depl, {\rm H}_{2}} = M_{{\rm H}_{2},\mbox{[C{\sc ii}]}{}} / {\rm SFR}_{\rm tot}"]
+  - parameter: k_IR = 1.2e-10 Msun/yr/Lsun; k_UV = 7.1e-10 Msun/yr/(erg/s/Hz); C_Kroupa = 1.08 [3.5 Star formation: "where $k_{\rm IR} = 1.2\times 10^{-10} \mbox{M$_\odot$}\mbox{${\rm yr}$}^{-1} \mbox{L$_\odot$}^{-1}$"] [3.5 Star formation: "where $C_{\rm Kroupa} = 1.08$ is a factor to convert from a (cite: KroupaWeidner2003) IMF to a (cite: Chabrier2003) IMF"]
+  - assumption: Dust temperature 46 K for L_IR [2.3 Source identification and properties: "This flux density is then corrected for the CMB contribution, under the assumption of a dust temperature of 46 K"]
+  - assumption: Chabrier (2003) IMF, 0.1-300 Msun [1 Introduction: "We also adopt a (cite: Chabrier2003) initial mass function (IMF) for a mass range of $0.1 - 300 \mbox{M$_\odot$}{}$."]
+  - assumption: Constant SFR and no other gain or loss of gas for the depletion time [3.5 Star formation: "assuming a constant star formation rate and no other gain or loss of molecular gas mass"]
+  - validation: [CII]-based SFR (246 Msun/yr) consistent within 0.4 dex scatter with UV+IR SFR; UV+IR adopted [3.5 Star formation: "this value is consistent with our measurement of the SFR from IR and UV"] [3.5 Star formation: "We thus adopt the SFR as calculated from the UV and IR emission"]
+- step 10: Compare SFR and depletion time with main-sequence relations
+  - method: Evaluate Speagle2014, a refit Topping-style relation with constant-SFH masses (log SFR = 0.82 log M* - 5.93) and Khusanova2021 (log SFR = 0.66 log M* - 5.1) at REBELS-25's stellar mass; Liu2019 for depletion time [4.2 Main sequence comparison: "The best-fitting main-sequence of (cite: Speagle2014) is"] [4.2 Main sequence comparison: "we determine a main sequence of the form"]
+  - parameter: t_age = 0.71 Gyr at the source redshift with the adopted cosmology; starburst threshold 3x main sequence [4.2 Main sequence comparison: "which at $z \sim \zciitwodp{}$ is 0.71 Gyr with our adopted cosmology"] [4.2 Main sequence comparison: "if we take a threshold of three times in excess of that predicted by the main-sequence (cite: Elbaz2018)"]
+  - assumption: Extrapolation of relations calibrated to z~6 [4.2 Main sequence comparison: "our application of these relations represents an extrapolation of these data under the assumption that the trends observed out to $z \sim 6$ will continue to hold at higher redshift"]
+  - validation: Classification as starburst is tentative and depends on main sequence and stellar mass chosen [4.2 Main sequence comparison: "such a classification must be seen as very tentative"]
+- step 11: Model the future evolution of REBELS-25
+  - method: Exponentially declining SFR with constant star formation efficiency eps = SFR(0)/M_H2(0), outflow Mdot_out = lambda SFR, no inflow; Monte Carlo over input uncertainties [4.4 The fate of REBELS-25: "we assume an exponentially declining SFR, with fixed star formation efficiency, $\varepsilon$, set by the observed SFR and molecular gas mass at $t = 0$"] [4.4 The fate of REBELS-25: "We consider four scenarios for the strength of the outflow: $\lambda =0, 0.5, 1.0$ and $2.0$."]
+  - parameter: lambda = 0, 0.5, 1.0, 2.0; return fraction rho = 0.4; 10000 Monte Carlo draws, 16th and 84th percentiles [4.4 The fate of REBELS-25: "is the fraction of gas returned to the interstellar medium via stellar feedback (primarily supernovae and stellar winds)"] [4.4 The fate of REBELS-25: "we calculate the 16th and 84th percentiles of the values of SFR and stellar mass from the evolutionary tracks"]
+  - fitting: Monte Carlo sampling of independent Gaussian uncertainty distributions of the observed properties [4.4 The fate of REBELS-25: "Specifically we create 10000 sets of initial properties, which are randomly sampled from independent Gaussian uncertainty distributions"]
+  - validation: Tracks compared with observed z~4 quiescent galaxies and the other REBELS galaxies; non-parametric stellar mass does not change result qualitatively [4.4 The fate of REBELS-25: "but would not qualitatively alter our result"]
+- result: Total SFR (UV + IR) = 199 ± +101/-63 Msun/yr [5 Conclusions: "We determine a UV + IR star formation rate of $199^{+101}_{-63}$ M$_\odot$ $\mbox{${\rm yr}$}^{-1}$"]
+- result: IR (obscured) SFR = 185 ± +101/-63 Msun/yr [5 Conclusions: "traced by IR emission ($185^{+101}_{-63}$ M$_\odot$ $\mbox{${\rm yr}$}^{-1}$)"]
+- result: UV (unobscured) SFR = 14 ± +/- 3 Msun/yr [5 Conclusions: "as traced by UV ($14 \pm 3$ M$_\odot$ $\mbox{${\rm yr}$}^{-1}$)"]
+- result: [CII]-based SFR = 246 ± +/- 35 Msun/yr [3.5 Star formation: "we calculate ${\rm SFR}_{\mbox{[C{\sc ii}]}{}} = \mbox{$246 \pm 35$}{} \mbox{M$_\odot$}{\rm yr}^{-1}$"]
+- result: Molecular gas depletion time = 0.3 ± +0.3/-0.2 Gyr [5 Conclusions: "this gives a short depletion time of $t_{\rm depl, {\rm H}_{2}} = \mbox{$0.3^{+0.3}_{-0.2} $}{}$ Gyr"]
+- result: Speagle2014 main-sequence SFR at REBELS-25 stellar mass = 49 (measured SFR is about four times this) ± not stated Msun/yr [4.2 Main sequence comparison: "this translates to a prediction of ${\rm SFR}_{\rm MS} = \mbox{$ 49 $}{}~$ M$_\odot$yr$^{-1}$"]
+- result: Stellar mass at gas exhaustion in constant-SFR case = log(M*/Msun) = 10.8 at z ~ 5.8 ± not stated dex(Msun) [4.4 The fate of REBELS-25: "REBELS-25 would deplete its molecular gas by $z \sim 5.8$ and have a total stellar mass of $\log \left( M_{*} / \mbox{M$_\odot$}\right) = 10.8$"]
+- result: Constant inflow needed to reach median / maximum z~4 quiescent stellar mass = ~25 / ~1000 ± not stated Msun/yr [4.4 The fate of REBELS-25: "a constant inflow rate of $\sim25~\mbox{M$_\odot$}\mbox{${\rm yr}$}^{-1}$ would be required, and to reach the maximum stellar mass a constant inflow of $\sim1000~\mbox{M$_\odot$}\mbox{${\rm yr}$}^{-1}$ would be required"]
+- limitation (authors): Sources only marginally resolved at current resolution [3.2 Morphology: "However, we caution that the sources are only marginally resolved at the current angular resolution of the data."]
+- limitation (authors): Resolution precludes distinguishing disc rotation from other scenarios [3.3 Kinematics: "the resolution of the data preclude us from distinguishing between this and other scenarios"]
+- limitation (authors): Outflow size and gas conditions are uncertain, so outflow rates are quite uncertain [5 Conclusions: "due to the difficulty of determining the size of the outflow these numbers are quite uncertain"]
+- not stated (card): Numeric [CII] redshift (given only as a macro in the text supplied) and the exact REBELS cube channel width and velocity zero point; Spectral range of the secondary component and exact line-free channel ranges used for continuum imaging and continuum subtraction; Cell size, image size, number of iterations, deconvolver and automasking parameters for tclean; Whether and how C-1, C-2 and C-4 data w…
+
+### 2024A&A...687A.288G: Dark progenitors and massive descendants: A first ALMA perspective of radio-selected near-IR-dark galaxies in the COSMOS field (2024; high_z_galaxies; observational_alma_primary)
+- question: What are the spectroscopic redshifts, physical properties, molecular gas content and line kinematics of nine radio-selected NIR-dark galaxies in COSMOS, and could they be progenitors of massive passive z~3 galaxies?
+- step 8: SED fitting for physical properties
+  - method: CIGALE with BC03 stellar populations, delayed-style exponentially declining SFH plus bursts, Charlot and Fall attenuation, Draine 2014 dust, Fritz 2006 torus, with redshift fixed to spec-z; SFR from L_IR (Kennicutt 2012) [3.5 SED-Fitting: "we include the stellar emission through the stellar population libraries by (cite: Bruzual_03), combined through an exponentially declining star formation history with random bursts of star formation."] [3.5 SED-Fitting: "The stellar attenuation is modeled following (cite: Charlot_00), while the dust thermal emission is included in the templates through the (cite: Draine_14) models."]
+  - software: CIGALE
+  - parameter: AGN torus component added (Fritz et al. 2006) [3.5 SED-Fitting: "by adding a dusty torus component as modeled by (cite: Fritz_06)"]
+  - parameter: median radio slope assumed for sources lacking a second radio detection (q_TIR) [3.5 SED-Fitting: "we assume the median slope computed on the rest of the sample"]
+  - assumption: Chabrier IMF; flat LCDM with Omega_m=0.3, Omega_Lambda=0.7, h=0.7 [1 Introduction: "we assume a (cite: Chabrier_03) Initial Mass Function (IMF) and a flat $\Lambda$CDM cosmology with $[\Omega_m,\Omega_\Lambda,h]=[0.3,0.7,0.7]$"]
+  - fitting: CIGALE fitting with parameters of Donevski et al. 2020; priors not stated [3.5 SED-Fitting: "For all the models, we employ the parameters used by (cite: Donevski_20) in the analysis of their sample of DSFGs with CIGALE."]
+  - validation: f_AGN = 0 for all targets; q_TIR in 2.45-2.55 consistent with star-forming galaxies [3.5 SED-Fitting: "CIGALE reports a $f_{\rm AGN}=0$ for all our targets"] [3.5 SED-Fitting: "We obtain that all the $q_{\rm TIR}$ are in the range \[2.45,2.55\]"]
+- step 10: Depletion time and evolutionary path
+  - method: tau_D = M(H2)/SFR; constant-SFR toy model evolving z and M* until gas exhausted, uncertainties by Monte Carlo; compared with massive passive z~3 galaxies of Schreiber et al. 2018 [4.4 Possible evolutionary path: "we assume that the SFR will stay constant inside our sources until all the gas mass is converted into stars"]
+  - parameter: final state z_f = z_spec - Delta z, M*_f = M* + M(H2) [4.4 Possible evolutionary path: "$z_f=z_{\rm spec} - \Delta z$ and $M_{\star, f}=M_\star + M_{\rm H_2}$"]
+  - fitting: Monte Carlo integration over input uncertainties [4.4 Possible evolutionary path: "we consider all the uncertainties on the involved quantities through a MonteCarlo integration"]
+  - validation: Overlap with massive passive galaxies at z~3 [4.4 Possible evolutionary path: "we can notice a significant overlap between the two populations"]
+- result: Median log(M*) = 11.0 ± 0.1 log(Msun) [Table 4: "$11.0\pm0.1$"]
+- result: Median log(SFR) = 2.6 ± 0.1 log(Msun/yr) [Table 4: "$2.6\pm0.1$"]
+- result: Median log(L_IR) = 12.6 ± 0.1 log(Lsun) [Table 4: "$12.6\pm0.1$"]
+- result: Median A_V = 4.5 ± 0.4 mag [Table 4: "$4.5\pm0.4$"]
+- result: Median depletion time = 263 ± 86 Myr [Table 4: "$263\pm86$"]
+- result: Depletion time range of sample = 80-300 ± not stated Myr [4.3 Gas mass and depletion time: "The galaxies in our sample have values in the range $80-300$ Myr."]
+- result: q_TIR range = 2.45-2.55 ± not stated dimensionless [3.5 SED-Fitting: "We obtain that all the $q_{\rm TIR}$ are in the range \[2.45,2.55\]"]
+- result: AGN fraction f_AGN from CIGALE = 0 ± not stated dimensionless [3.5 SED-Fitting: "CIGALE reports a $f_{\rm AGN}=0$ for all our targets"]
+- limitation (authors): Single-line redshifts are less certain; RSN-361 second line is tentative [Redshift estimation: "It is important to notice how these redshifts based on a single detected line are clearly more uncertain than those relying on a double detection."]
+- limitation (authors): Stellar mass and main-sequence position are uncertain because UV/optical is obscured [4.2 Analysis of the physical properties: "the location on the main sequence strongly relies on the estimated stellar mass, that is quite uncertain for our targets"]
+- limitation (authors): Evolution model is simplistic and ignores quenching and accretion [4.4 Possible evolutionary path: "Clearly, this model does not account for any quenching mechanism"]
+- not stated (card): tclean parameters for continuum and cube imaging (cell size, image size, deconvolver, niter, threshold, masks); Which channels were masked as line-contaminated for continuum imaging and uvcontsub; Whether the 'first cleaning' cube used for line search was cleaned and to what threshold; CASA pipeline version, calibrators and flux scale uncertainty; Exact rest frequencies and the CO/[CI] redshift g…
+
+### 2018ApJ...863..129S: Spatially Resolved Dense Molecular Gas Excitation in the Nearby LIRG VV 114 (2018; nearby_galaxies, star_formation, astrochemistry; observational_alma_primary)
+- question: How does dense molecular gas excitation, star formation efficiency and chemistry vary across the AGN, starburst and shocked Overlap regions of the merging LIRG VV 114?
+- step 3: Measure aperture fluxes and Sigma_dense, SFE, f_dense
+  - method: Fluxes in eleven 3'' apertures; M_dense = alpha_HCN L'_HCN(1-0) [5.2: "$\Sigma_{\rm dense}$ is calculated by dividing the dense gas mass ($M_{\rm dense}$) by the aperture area."]
+  - assumption: alpha_HCN(1-0)=10; constant T_dust = 25 K for Sigma_H2 [5.3: "assuming a constant $T_{\rm dust}$ of 25 K"]
+  - validation: Tested alternate SFR tracer (8.4 GHz) and conversion factors [5.3: "since the general trend does not change regardless of the employed SFR tracer or adopted conversion factor"]
+- step 4: Fit Sigma_SFR vs flux slopes and compare turbulence-regulated model
+  - method: Log-log slope fits excluding Region 1; Krumholz & McKee turbulence-regulated model grid in Mach number and mean density over SFE_H2 vs f_dense [5.1: "We estimate the slope by fitting all the data points except Region 1"]
+  - assumption: n_dense=2.8e5 cm^-3, eps_SF=0.28% [5.3: "we assume $n_{\rm dense}$ = 2.8 $\times$ 10$^5$ cm$^{-3}$ and $\epsilon_{\rm SF}$ = 0.28%"]
+  - validation: Density threshold model rejected via correlation coefficient -0.55 [5.3: "VV 114 data do not show such a positive linear correlation (the correlation coefficient is -0.55)"]
+- result: HNC(1–0)/HCN(1–0) at E0 = 0.85 ± 0.23 dimensionless [4.3: "The HNC (1–0)/HCN (1–0) line ratio at E0 is 0.85 $\pm$ 0.23"]
+- result: HCN(4–3)/CS(7–6) at E0 = 4.9 ± 1.3 dimensionless [4.3: "The HCN (4–3)/CS (7–6) ratio is 4.9 $\pm$ 1.3 at the AGN position of VV 114 (E0)."]
+- result: Slope Sigma_SFR vs HCN(1–0) flux = 2.03 ± 0.18 dimensionless [5.1: "are 2.03 $\pm$ 0.18, 0.83 $\pm$ 0.07, 0.65 $\pm$ 0.04, 1.69 $\pm$ 0.67, 1.30 $\pm$ 0.16, and 0.84 $\pm$ 0.14"]
+- result: Slope vs HCN(4–3) flux = 0.65 ± 0.04 dimensionless [5.1: "2.03 $\pm$ 0.18, 0.83 $\pm$ 0.07, 0.65 $\pm$ 0.04"]
+- result: M_dense Region 6 = 1.8e8 ± 0.2e8 Msun [5.2: "$M_{\rm dense}$ = (1.8 $\pm$ 0.2) $\times$ 10$^8$ $M_{\odot}$ (Region 6)"]
+- result: Mach number Overlap vs eastern nucleus = ~5 vs ~2 ± not stated dimensionless [5.3: "(${\mathcal M}$ $\sim$ 5 and $\bar{n}$ $\sim$ 10$^{4.0}$ cm$^{-3}$) relative to the eastern nucleus (${\mathcal M}$ $\sim$ 2"]
+- result: Dynamical mass E0 = 9.3e7 ± not stated Msun [3.2: "$M_{\rm dyn}$ of 9.3 $\times$ 10$^7$ $M_{\odot}$ assuming the inclination of 90$^\circ$"]
+- limitation (authors): Possible synchrotron contamination of 110 GHz SFR (~25%); absolute values uncertain due to conversion factors [5.3: "The absolute values are uncertain because of the assumed conversion factors to derive the surface densities and the assigned SFR tracer."]
+- not stated (card): Line-free channel ranges for continuum subtraction per spw; Which dataset uses natural vs briggs beyond Table 1, and image/cell sizes; Clean thresholds, masks, deconvolver; Flux-integration method for apertures and uncertainty treatment; Fitting method for slopes and rotation diagrams (regression, error weighting); Mach number/density grid ranges for turbulence model; Details of Sigma_SFR and Sig…
+
+### 2020MNRAS.493L..39E: The ALMaQUEST survey - III. Scatter in the resolved star-forming main sequence is primarily due to variations in star formation efficiency (2020; nearby_galaxies, star_formation; large_program_or_survey)
+- question: Which spaxel-level parameters drive the absolute star formation rate surface density and its scatter around the resolved star forming main sequence (gas fraction vs star formation efficiency)?
+- step 2: Derive Sigma_H2, Sigma_SFR, Sigma_star and O/H maps
+  - method: CO luminosity converted to Sigma_H2 with constant alpha_CO; Sigma_SFR from extinction-corrected Halpha; O/H from O3N2; Sigma_star from PIPE3D; surface densities inclination corrected [2 Data: "CO luminosities are converted to molecular gas surface densities"] [2 Data: "are computed from H$\alpha$ luminosities, a technique that has been shown to reproduce the UV and IR SFRs well in IFU data (Catalan-Torrecilla et al. 2015)"]
+  - software: PIPE3D
+  - parameter: alpha_CO = 4.3 Msun pc^-2 (K km s^-1)^-1 [2 Data: "via a constant conversion factor $\alpha_{CO}$ = 4.3 M$_{\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$"]
+  - assumption: Constant alpha_CO [2 Data: "via a constant conversion factor"]
+  - assumption: Milky Way extinction curve and intrinsic Halpha/Hbeta = 2.85 [2 Data: "and a Milky Way extinction curve (Cardelli, Clayton & Mathis 1989)"]
+  - validation: Halpha SFR technique cited as reproducing UV and IR SFRs in IFU data [2 Data: "a technique that has been shown to reproduce the UV and IR SFRs well in IFU data (Catalan-Torrecilla et al. 2015)"]
+- step 3: Compute offsets from control spaxels
+  - method: Compute Delta Sigma_SFR relative to the rSFMS of ~1.2 million MaNGA DR15 star-forming spaxels, and Delta SFE and Delta f_H2 relative to control spaxels with normal SFRs matched in several parameters [2 Data: "of all ($\sim$ 1.2 million) star forming spaxels in the MaNGA DR15 at fixed $\Sigma_{\star}$ (matched within 0.1 dex)"] [2 Data: "that are matched in $\Sigma_{\rm H_2}$ (within 0.1 dex), $R/R_e$ (within 0.1 $R/R_e$), O/H (within 0.1 dex) and total stellar mass (within 0.1 dex)"]
+  - parameter: Control matching tolerance 0.1 dex (0.1 R/Re for radius); normal SFR defined as -0.5 < Delta Sigma_SFR < 0.5 [2 Data: "relative to a set of control spaxels with normal SFRs ($-0.5 <$ $\Delta \Sigma_{\rm SFR}$ $<0.5$)"]
+  - assumption: Matching in O/H and R/Re mitigates metallicity- and radius-dependent alpha_CO variations [2 Data: "Matching in O/H and $R/R_e$ mitigates metallicity and radius dependent $\alpha_{CO}$ variations"]
+- step 4: Rank parameters by Pearson correlation
+  - method: Pearson correlation coefficient between each of six spaxel-based variables and Sigma_SFR or Delta Sigma_SFR [3 Results: "we perform a simple correlation assessment in which we compute the Pearson correlation coefficient"] [3 Results: "we quantify $\rho$ for $\Sigma_{\star}$, $\Sigma_{\rm H_2}$, $f_{\rm H_2}$, SFE, $\Delta$SFE and $\Delta f_{\rm H_2}$"]
+  - validation: Compared with ANN ranking [3 Results: "the results of the correlation analysis are in good qualitative agreement with the ranks obtained from the more complex ANN approach"]
+- step 5: Rank parameters with an artificial neural network
+  - method: Non-linear regression with an ANN (MLPregresser), same six inputs, performance quantified by improvement over random (IOR) [3 Results: "we perform a non-linear regression with an artificial neural network (ANN), utilising MLPregresser from the scikit-learn package (Pedregosa et al. 2011)"] [3 Results: "Briefly, the mean square error of the network-predicted values to the truth values are computed in each case, and the improvement in performance over a random variable is quantified."]
+  - software: scikit-learn
+  - parameter: Five random training samples containing 50% of the data, validated on the remainder [3 Results: "we train on five randomly selected input samples (containing 50% of the data) and validate on the remainder of the sample in each case"]
+  - fitting: MLP regression with identical architecture to Bluck et al. (2019b); targets Sigma_SFR or Delta Sigma_SFR; loss/optimizer not stated [3 Results: "adopting an identical architecture as in Bluck et al. (2019b)"]
+  - validation: Stability tested over five random training samples, typical variance ~1% [3 Results: "To test the stability of the network"] [3 Results: "with a typical variance of only $\sim$ 1%"]
+- result: Constant CO-to-H2 conversion factor adopted = 4.3 ± not stated Msun pc^-2 (K km s^-1)^-1 [2 Data: "via a constant conversion factor $\alpha_{CO}$ = 4.3 M$_{\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$"]
+- result: Typical ANN variance across five training samples = ~1% ± not stated percent [3 Results: "with a typical variance of only $\sim$ 1%"]
+- limitation (authors): Sample is not representative in mass or volume, so no fit to the rSFMS is reported [3 Results: "it is not a representative (e.g. in mass or volume) sample"]
+- limitation (authors): Constant alpha_CO adopted although it is likely lower in spaxels with enhanced Delta Sigma_SFR [4 Summary and Discussion: "Throughout this work we have adopted a constant"]
+- limitation (authors): Dense molecular gas is not included [4 Summary and Discussion: "a potentially important omission in our study is the role of dense molecular gas"]
+- not stated (card): ALMA bands, array configurations, spectral setups, integration times and observing dates for the four projects; CASA version, calibration and imaging recipe, and how the CO moment maps were made (clean parameters, masking, continuum subtraction); How the 2.5 arcsec resolution matching was done (tapering or convolution) and the CO map noise/S/N definition; CO(1-0) to Sigma_H2 conversion details be…
+
+### 2025ApJ...979..217S: The Arp 240 Galaxy Merger: A Detailed Look at the Molecular Kennicutt─Schmidt Star Formation Law on Subkiloparsec Scales (2025; nearby_galaxies, star_formation; archival_reuse)
+- question: How does the molecular Kennicutt-Schmidt (mK-S) star formation law behave on 500 pc scales across different surface brightness and morphological regimes in the early-stage luminous infrared galaxy merger Arp 240?
+- step 3: Derive Star Formation Rate surface density (Sigma_SFR) from 3 GHz radio continuum
+  - method: Calculate SFR from 3 GHz luminosity using the Murphy et al. (2012) prescription (Eq. 1) and divide by the beam area (0.26 kpc^2) to obtain Sigma_SFR. [Radio Continuum and Star Formation Rates: "To estimate SFR, we adopted the prescription outlined in (cite: Murphy_2012), for radio continuum emission:"] [Radio Continuum and Star Formation Rates: "To calculate $\Sigma_{\mathrm{SFR}}$, we divided the SFR of each hexagon by the area of the beam, 0.26 kpc$^2$."]
+  - parameter: nu = 3 GHz, beam area = 0.26 kpc^2 [Radio Continuum and Star Formation Rates: "where $\nu$ = 3 GHz, $L_{\nu}$ is the luminosity of each region at 3 GHz and $T_{\mathrm{e}}$ is the electron temperature, which we have assumed to be 10$^{\mathrm{4}}$ K (cite: Murphy_2011)."] [Radio Continuum and Star Formation Rates: "To calculate $\Sigma_{\mathrm{SFR}}$, we divided the SFR of each hexagon by the area of the beam, 0.26 kpc$^2$."]
+  - assumption: Electron temperature T_e = 10^4 K, non-thermal spectral index alpha_NT = -0.85, Kroupa IMF, continuous SF over 100 Myr [Radio Continuum and Star Formation Rates: "where $\nu$ = 3 GHz, $L_{\nu}$ is the luminosity of each region at 3 GHz and $T_{\mathrm{e}}$ is the electron temperature, which we have assumed to be 10$^{\mathrm{4}}$ K (cite: Murphy_2011)."] [Radio Continuum and Star Formation Rates: "The prescription is based on Starburst99 models (cite: Leitherer_1999), which assume a Kroupa initial mass function (IMF) (cite: Kroupa_2001) and continuous SF over a 100 Myr timescale (cite: Murphy_2012)."]
+  - fitting: Fitted 3, 15, and 33 GHz flux densities above 3-sigma to measure radio spectral indices for validation. [Radio Continuum and Star Formation Rates: "To validate the use of Equation [\[eq_sfr\]](#eq_sfr) for Arp 240, we calculated the spectral indices between 3 GHz and 33 GHz for the high surface brightness regions in both galaxies. This was done by fitting the data from all three frequency bands, selecting emission above a 3-$\sigma$ threshold."]
+  - validation: Checked 3-33 GHz spectral index maps, 3 GHz thermal fraction maps, and far-infrared-radio correlation parameter q_IR = 2.56 +/- 0.04 against Starburst99 and star-forming galaxy expectations. [Radio Continuum and Star Formation Rates: "Following (cite: Murphy_2011), we used the integrated total infrared luminosity and derived a value of q$_{\mathrm{IR}}$ =2.56 $\pm$ 0.04, which is consistent with the results of (cite: Murphy_2011) for a star-forming galaxy."]
+- step 4: Derive molecular gas surface density (Sigma_H2), SFE, and depletion time (t_d)
+  - method: Extract CO(2-1) line profiles per hexagon, sum over channels multiplied by 3 km s^-1 channel width, convert to L'_CO(1-0), multiply by alpha_CO to get M_H2, divide by beam area in pc^2 for Sigma_H2, and compute SFE = Sigma_SFR / Sigma_H2 a… [CO (2->1) Luminosity and Sigma_H2: "To calculate $S_{CO}\Delta v$, we directly applied the grid to the data cubes and extracted the line profile for each hexagon. We then summed over all channels, multiplying by the channel width of 3 km s$^{-1}$."] [CO (2->1) Luminosity and Sigma_H2: "Lastly, we calculate $\Sigma_{\mathrm{H_2}}$ by dividing M$_{\mathrm{H_2}}$ by the area of the synthesized beam, expressed in pc$^2$."]
+  - parameter: Channel width = 3 km s^-1 [CO (2->1) Luminosity and Sigma_H2: "We then summed over all channels, multiplying by the channel width of 3 km s$^{-1}$."]
+  - assumption: CO(2->1)/(1->0) = 0.85 +/- 0.02; alpha_CO = 1.1 M_sun (K km s^-1 pc^2)^-1 [CO (2->1) Luminosity and Sigma_H2: "To transform our measurements of CO ($2\rightarrow1$) to CO ($1\rightarrow0$), we used the average ratio reported by (cite: He_2019) for Arp 240, CO ($2\rightarrow1$)/($1\rightarrow0$) = 0.85 $\pm$ 0.02."] [CO (2->1) Luminosity and Sigma_H2: "To calculate the molecular gas mass, we adopted an $\alpha_{CO}$ value of $1.1$ M$_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$, which is typically used for LIRGs and is close to the values reported by (cite: He_2019) for the brightest regions in CO ($2\rightarrow1$) in Arp 240."]
+- step 5: Measure molecular gas linewidth, turbulent pressure (P_turb), free-fall time (t_ff), and SFE per free-fall time (epsilon_ff)
+  - method: Fit single or multiple Gaussian profiles to CO(2-1) spectra in each hexagon using scipy.optimize.leastsq to obtain average sigma linewidth <sigma>, then compute P_turb/k_B (Eq. 6), t_ff (Eq. 8), and epsilon_ff (Eq. 9). [Linewidth: "We identified the number of peaks within each hexagon and modeled them by fitting multiple Gaussian profiles to the spectral-line velocity components. The linewidth of each component was determined by fitting these profiles using $\tt{scipy.optimize.leastsq}$ in Python (cite: SciPy)."] [Linewidth: "For hexagons with multiple components, as shown in the right panel of Figure [6](#fig:lnwith-fit), we use the average of these sigma values to represent the linewidth."]
+  - software: Python, scipy.optimize.leastsq
+  - assumption: Linewidth is turbulently broadened; beam filling factor = 1; constant scale height H = 100 pc [Turbulent Pressure: "Assuming the linewidth is turbulently broadened, we utilized the methodology outlined by (cite: Sun2018) to calculate the mean turbulent pressure of the ISM within our hexagonal apertures, represented as P$_{\mathrm{turb}}$:"] [Turbulent Pressure: "We do not attempt to undertake this modeling; instead, we simplify our calculations by assuming a beam filling factor of 1 and adopting a constant scale height of 100 pc throughout our analysis (cite: Leroy_2008; Wilson_2019)."]
+  - fitting: Least-squares Gaussian profile fitting via scipy.optimize.leastsq [Linewidth: "The linewidth of each component was determined by fitting these profiles using $\tt{scipy.optimize.leastsq}$ in Python (cite: SciPy)."]
+  - validation: Visually inspected the spectral profile and Gaussian fit of the broadest central peaks. [Linewidth: "We visually inspected the profile and the fit of each of these peaks."]
+- step 6: Evaluate distributions and fit the mK-S law slope globally and by morphological component
+  - method: Compute skewness and fit 1- and 2-component Gaussian Mixture Models (evaluated with AIC and BIC) to Log Sigma_H2 and Log Sigma_SFR distributions; fit power-law slope N of Log(Sigma_SFR) vs Log(Sigma_H2) using ODR, Linmix (with and without … [Slope Determination: "Moreover, we applied the Akaike Information Criterion (AIC; (cite: Akaike_74)) and the Bayesian Information Criterion (BIC; (cite: Schwarz_78)) to evaluate the fitting of Gaussian Mixture Models (GMMs) to our data."] [Slope Determination: "We used three different fitting algorithms for determining the slope, allowing a comparative analysis of the relation $\Sigma_{\mathrm{SFR}}$- $\Sigma_{\mathrm{H_2}}$ in Arp 240. These methods include Orthogonal Distance Regression (ODR; (cite: ODR)), which minimizes the orthogonal distances from the data points to th…"]
+  - software: Python, scikit-learn, Linmix, ASURV
+  - parameter: GMM components = 1 and 2; Linmix MCMC iterations = 10^4 [Slope Determination: "In the right panels of Figure [10](#fig:skew_hist), we display the AIC and BIC indices for Log $\Sigma_{\mathrm{H_2}}$ and Log $\Sigma_{\mathrm{SFR}}$, using models with one and two Gaussian components."] [Slope Determination: "For $\tt{Linmix}$, the software executes 10$^4$ models using its built-in Markov Chain Monte Carlo (MCMC) routine."]
+  - fitting: Bayesian MCMC linear regression (Linmix, 10^4 models), Orthogonal Distance Regression (ODR), bivariate survival analysis (ASURV), and Gaussian Mixture Models (scikit-learn). [Slope Determination: "We used the $\tt{GaussianMixture}$ function from $\tt{scikit-learn}$ in Python (cite: scikit-learn) to compute these values."] [Slope Determination: "For $\tt{Linmix}$, the software executes 10$^4$ models using its built-in Markov Chain Monte Carlo (MCMC) routine."]
+  - validation: Cross-validated slopes across ODR, Linmix (overlap only and with upper limits), and ASURV. [mK-S Law as a Function of Location: "The slopes were fitted using $\tt{Linmix}$ to account for measurement uncertainties, and ODR was used for cross-validation to ensure the robustness of our results."]
+- step 7: Quantify correlations between star formation and kinematic properties and map intensity gradients
+  - method: Compute non-parametric Spearman's rank correlation coefficients (rho and p-value) at 16th, 50th, and 84th percentiles between Sigma_H2, Sigma_SFR, SFE and <sigma>, P_turb; compute normalized intensity gradient vectors for CO(2-1) and radio… [Star Formation and Molecular Gas Kinema…: "Given this non-normality, we utilize the Spearman’s $\rho$ statistic to quantify the correlations."] [Discussion: "Indeed, our observations reveal that variations in the intensity of the SFR and molecular gas tracers are not entirely coupled. This is illustrated in Figure [14](#fig:contours), where we explicitly plot the intensity gradients of both tracers."]
+  - parameter: Statistical significance threshold: rho > 0.30 and p-value < 0.03 (weak: 0.30-0.40, moderate: 0.40-0.60, strong: > 0.60) [Star Formation and Molecular Gas Kinema…: "We consider a correlation to be statistically significant if $\rho$ $>$ 0.30 and its corresponding p-value $<$ 0.03. Correlations with $\rho$ values between 0.30 and 0.40 are classified as weak, those between 0.40 and 0.60 as moderate, and those greater than 0.60 as strong."]
+  - validation: Reported 16th, 50th, and 84th percentiles of Spearman's rho and p-values. [Star Formation and Molecular Gas Kinema…: "Additionally, the complete table, including the 16th, 50th, and 84th percentiles, is available in Tables [2](#tab:correlation_system), [\[tab:correlation_ngc5258\]](#tab:correlation_ngc5258) and [\[tab:correlation_ngc5257\]](#tab:correlation_ngc5257) in Apendix [7](#Apendix_tables)."]
+- result: mK-S law slope N for Arp 240 (Total, Linmix with upper limits) = 0.52 ± 0.17 dimensionless [Abstract: "In Arp 240, N is sub-linear at 0.52 $\pm$ 0.17."]
+- result: mK-S law slope N for NGC 5257 (Linmix with upper limits) = 0.52 ± 0.16 dimensionless [Abstract: "For NGC 5257 and NGC 5258, N is 0.52 $\pm$ 0.16 and 0.75 $\pm$ 0.15, respectively."]
+- result: mK-S law slope N for NGC 5258 (Linmix with upper limits) = 0.75 ± 0.15 dimensionless [Abstract: "For NGC 5257 and NGC 5258, N is 0.52 $\pm$ 0.16 and 0.75 $\pm$ 0.15, respectively."]
+- result: mK-S law slope N for NGC 5258 Southern Arm (Linmix) = 0.86 ± 0.18 dimensionless [Table 1: "| Southern Arm | 1.00 $\pm$ 0.28 | 0.86 $\pm$ 0.18 |"]
+- result: mK-S law slope N for NGC 5257 Nucleus (Linmix) = 0.98 ± 0.14 dimensionless [Table 1: "| Nucleus | 1.04 $\pm$ 0.39 | 0.98 $\pm$ 0.14 |"]
+- result: mK-S law slope N for NGC 5257 Northeastern Arm (Linmix) = 0.15 ± 0.09 dimensionless [Table 1: "| Northeastern Arm | 0.18 $\pm$ 0.28 | 0.15 $\pm$ 0.09 |"]
+- result: mK-S law slope N for NGC 5257 Southwestern Arm (Linmix) = 0.28 ± 0.18 dimensionless [Table 1: "| Southwestern Arm | 0.55 $\pm$ 0.32 | 0.28 $\pm$ 0.18 |"]
+- result: Maximum Sigma_SFR in NGC 5258 (southern spiral arm) = 4.22 ± 0.23 M_sun yr^-1 kpc^-2 [Radio Continuum and Star Formation Rates: "The brightest hexagon in NGC 5258, located in the southern spiral arm, has a $\Sigma_{\mathrm{SFR}}$ of 4.22 $\pm$ 0.23 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 1.08 M$_{\odot}$ yr$^{-1}$), while the maximum value for NGC 5257 is found in the nucleus and has a $\Sigma_{\mathrm{SFR}}$ of 3.61 $\pm$ 0.20 M$_{\odot}$ yr$^…"]
+- result: Maximum Sigma_SFR in NGC 5257 (nucleus) = 3.61 ± 0.20 M_sun yr^-1 kpc^-2 [Radio Continuum and Star Formation Rates: "The brightest hexagon in NGC 5258, located in the southern spiral arm, has a $\Sigma_{\mathrm{SFR}}$ of 4.22 $\pm$ 0.23 M$_{\odot}$ yr$^{-1}$ kpc$^{-2}$ (SFR = 1.08 M$_{\odot}$ yr$^{-1}$), while the maximum value for NGC 5257 is found in the nucleus and has a $\Sigma_{\mathrm{SFR}}$ of 3.61 $\pm$ 0.20 M$_{\odot}$ yr$^…"]
+- result: Maximum Sigma_H2 in NGC 5258 = 5.67e2 ± 0.29e2 M_sun pc^-2 [CO (2->1) Luminosity and Sigma_H2: "For NGC 5258, the brightest hexagon in $\Sigma_{\mathrm{H_2}}$ corresponds to the brightest hexagon in $\Sigma_{\mathrm{SFR}}$ in the southern spiral arm, and has a value of (5.67 $\pm$ 0.29) $\times$ 10$^2$ M$_\odot$ pc$^{-2}$."]
+- result: Maximum Sigma_H2 in NGC 5257 (nucleus) = 5.49e2 ± 0.28e2 M_sun pc^-2 [CO (2->1) Luminosity and Sigma_H2: "In NGC 5257, the highest concentrations of H$_2$ are located in the nucleus with a peak hexagon of (5.49 $\pm$ 0.28) $\times$ 10$^2$ M$_\odot$ pc$^{-2}$."]
+- result: Median SFE in NGC 5258 = 7.24e-9 ± 0.22e-9 yr^-1 [Star formation Efficiency and Gas Deple…: "In NGC 5258, 67$\%$ of hexagons (43 out of 64) in the southern spiral arm exceed the galaxy’s median SFE of (7.24 $\pm$ 0.22) $\times$ 10$^{-9}$ yr$^{-1}$ (t$_d$ $\sim$ 0.14 Gyr)."]
+- result: Median SFE in NGC 5257 = 1.00e-8 ± 0.26e-8 yr^-1 [Star formation Efficiency and Gas Deple…: "The median SFE for NGC 5257 is (1.00 $\pm$ 0.26) $\times$ 10$^{-8}$ yr$^{-1}$ (t$_d$ $\sim$ 0.10 Gyr) ."]
+- result: Median CO(2-1) linewidth in NGC 5258 = 24.72 ± 0.64 km s^-1 [Linewidth: "The median linewidths are 24.72 $\pm$ 0.64 km s$^{\mathrm{-1}}$ for NGC 5258 and 22.06 $\pm$ 1.13 km s$^{\mathrm{-1}}$ for NGC 5257."]
+- result: Median CO(2-1) linewidth in NGC 5257 = 22.06 ± 1.13 km s^-1 [Linewidth: "The median linewidths are 24.72 $\pm$ 0.64 km s$^{\mathrm{-1}}$ for NGC 5258 and 22.06 $\pm$ 1.13 km s$^{\mathrm{-1}}$ for NGC 5257."]
+- result: Median turbulent pressure P_turb in NGC 5258 = 1.20e6 ± 0.20e6 K cm^-3 [Turbulent Pressure: "NGC 5258 has a median value of (1.20 $\pm$ 0.20) $\times$ 10$^6$ K cm$^{-3}$; while the median for NGC 5257 is (6.11 $\pm$ 0.11) $\times$ 10$^5$ K cm$^{-3}$."]
+- result: Median turbulent pressure P_turb in NGC 5257 = 6.11e5 ± 0.11e5 K cm^-3 [Turbulent Pressure: "NGC 5258 has a median value of (1.20 $\pm$ 0.20) $\times$ 10$^6$ K cm$^{-3}$; while the median for NGC 5257 is (6.11 $\pm$ 0.11) $\times$ 10$^5$ K cm$^{-3}$."]
+- result: Median SFE per free-fall time (epsilon_ff) in NGC 5258 = 25 ± not stated % [Free-Fall Time and SFE per Free-Fall Ti…: "The median value of $\epsilon_{\mathrm{ff}}$ for NGC 5258 is 25%, whereas NGC 5257 exhibits a higher median of 42%."]
+- result: Median SFE per free-fall time (epsilon_ff) in NGC 5257 = 42 ± not stated % [Free-Fall Time and SFE per Free-Fall Ti…: "The median value of $\epsilon_{\mathrm{ff}}$ for NGC 5258 is 25%, whereas NGC 5257 exhibits a higher median of 42%."]
+- result: Spearman's rho for Sigma_SFR vs P_turb (entire system, 50th percentile) = 0.43 ± +0.02/-0.03 dimensionless [Star Formation and Molecular Gas Kinema…: "The right column of Figure [13](#fig:SFR_kin) shows that $\Sigma_{\mathrm{SFR}}$ has a moderate positive correlation with turbulent pressure, with a $\rho$-value of 0.43, indicating that SFR increases as turbulent pressure rises."]
+- result: Spearman's rho for SFE vs P_turb (entire system, 50th percentile) = -0.43 ± +0.03/-0.03 dimensionless [Star Formation and Molecular Gas Kinema…: "Conversely, SFE negatively correlates with turbulent pressure, as indicated by a $\rho$-value of -0.43."]
+- limitation (authors): Assuming a fixed non-thermal spectral index (alpha_NT = -0.85) can locally overestimate the thermal fraction (reaching 0.85 in one hexagon in NGC 5257) and introduces ~20% SFR variation. [Radio Continuum and Star Formation Rates: "Nevertheless, there is one region in NGC 5257 where the thermal fraction reaches an unusually high value of 0.85, which appears unrealistic."]
+- limitation (authors): At 500 pc spatial resolution, beam smearing, galactic rotation, and blending of multiple GMCs or intercloud gas can broaden measured linewidths and affect turbulent pressure estimates. [Linewidth: "At 500 pc scales, rotation and the blending of individual velocity profiles (e.g., from giant molecules clouds (GMC) or associations of GMCs) are expected to influence the observed linewidths."]
+- limitation (authors): Turbulent pressure calculations assume a constant scale height of 100 pc and a beam filling factor of 1 rather than modeling the vertical gas density distribution. [Turbulent Pressure: "We do not attempt to undertake this modeling; instead, we simplify our calculations by assuming a beam filling factor of 1 and adopting a constant scale height of 100 pc throughout our analysis (cite: Leroy_2008; Wilson_2019)."]
+- not stated (card): Deconvolver, Briggs robust weighting, and uv-taper used specifically for the ALMA CO(2-1) tclean imaging (stated for VLA, not explicitly confirmed whether identical for ALMA beyond restoringbeam and cell size); Whether continuum subtraction (e.g., uvcontsub) was performed on the ALMA CO(2-1) visibilities and which line-free channels were used; Primary beam correction settings for both ALMA and VL…
+
+### 2015ApJ...806..260F: Band-9 ALMA Observations of the [N II] 122 μm Line and FIR Continuum in Two High-z galaxies. (2015; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the nature (star formation vs AGN) and spatial distribution of [NII] 122 µm and rest-frame 122 µm continuum emission in SMMJ02399 and the Cloverleaf, and why is ALMA's [NII] flux lower than ZEUS-1's?
+- step 5: FIR luminosity, dust mass and FIR SFR
+  - method: Scale total LFIR by component 122 µm flux ratio; dust mass from Li & Draine model at Td=45 K; Kennicutt 1998 SFR [5.2 FIR Luminosity, Dust Mass, and Obsc…: "using the component-to-total flux-density ratio for each component, as observed in our ALMA continuum observations, to scale the total FIR luminosity"]
+  - assumption: Td = 45 ± 5 K; Milky Way-like dust opacities [5.2 FIR Luminosity, Dust Mass, and Obsc…: "assuming a dust temperature of 45 ± 5 K"]
+  - fitting: Two-temperature SED fit with Li & Draine model for Cloverleaf (details not stated) [5.2 FIR Luminosity, Dust Mass, and Obsc…: "we determine dust temperatures of 130 K and 33 K respectively for the warm and cold dust components"]
+  - validation: L1 scaled LFIR agrees with AGN contribution (~50%) from Lutz et al. 2005 [5.2 FIR Luminosity, Dust Mass, and Obsc…: "our scaled FIR luminosity for L1 agrees with previous estimates of the AGN contribution to the total FIR luminosity (~50%)"]
+- limitation (authors): ALMA [NII] low S/N and missing significant flux; derived values are lower limits [Table 4: "Since the ALMA observations resolved out significant flux, the derived values should be considered lower limits."]
+- not stated (card): clean mask and number of iterations / threshold in each cube; channel width and velocity binning used for imaging cubes; exact spw and channel ranges for continuum fit; aperture definitions for integrated fluxes and spectra; which flux model for Neptune/Titan; robust-weighted and tapering uv values; [NII] rest frequency adopted; CASA version used for calibration
+
+### 2025ApJ...987...77J: Why is the Star Formation Rate Proportional to Dense Gas Mass? (2025; star_formation, milky_way_ism; archival_reuse)
+- question: Why is the star formation rate linearly proportional to the dense molecular gas mass (the Gao-Solomon relation), and can this proportionality be explained by deterministic relationships between the gravitationally bound gas mass, the mass …
+- step 4: Determine the scaling relation between M_core^max and M_gas^bound and connect it to the Gao-Solomon SFR relation
+  - method: Perform linear regression in log-log space between M_core^max and M_gas^bound for the 23 clouds (and excluding 4 outliers with missing flux); combine with SFE = 30% and the theoretical SFR-m_star^max relation from Yan et al. (2017) to infe… [3.3. Mass correlation between most mass…: "With a linear regression of all the cloud sample, one can obtain the correlation"] [4.1. Connection to the star formation r…: "For a star-forming cloud, given the measurement of"]
+  - assumption: Star-forming efficiency SFE = 30% (m_star^max ~ 0.3 * M_core^max); M_gas^bound approximates M_gas^dense; Gao-Solomon relation scaled upward by factor 2.7. [4.1. Connection to the star formation r…: "Intriguingly, we found that if assuming a constant star-forming efficiency (SFE) of"] [4.1. Connection to the star formation r…: "In this work, we followed Lada et al. (2012) to adjust the ordinary Gao-Solomon relation upward, by multiplying a constant factor 2.7."]
+  - fitting: Linear regression and Spearman rank correlation test [3.3. Mass correlation between most mass…: "with a Spearman coefficient of 0.83 and a p-value of 7.8"]
+  - validation: Tested robustness by excluding four distant clouds affected by missing flux (G327.29, G328.25, G351.77, G353.41) and comparing SFR^theory against observational SFRs from YSO counts and IRAS luminosities. [3.3. Mass correlation between most mass…: "We found that by excluding these four sources from our sample, the power-law index becomes 0.55, which is ~10% steeper than that derived from the whole sample; the correlation becomes more robust with the Spearman correlation coefficient of 0.96"] [D. COMPARISON BETWEEN SFR^THEORY AND SF…: "Figure 10 shows the comparison between SFR^theory and SFR^observation."]
+- step 5: Test whether observed M_core^max values are consistent with random (stochastic) sampling of the CMF
+  - method: Fit the CMF of nearby clouds at the high-mass end; run Monte Carlo simulations drawing n(M > 3 M_sun) cores from a power-law CMF (pool of 10^6 cores) 5000 times per cloud (and 10^6 iterations for Taurus+Perseus combined), comparing simulat… [4.2. Indication of a non-stochastic sam…: "By repeating steps 3 and 4 for 5000 times, we can account for the stochastic nature of the random sampling."] [4.2. Indication of a non-stochastic sam…: "Here, we use a Monte Carlo simulation, using 10^6 iterations, to test the likelihood of a cloud containing so many cores but no cores exceeding 41.1 M_⊙."]
+  - parameter: Low-mass cutoff = 3 M_sun; CMF power-law index Gamma = -1.00 and -1.35; initial pool size = 10^6 cores; 5000 repetitions per cloud; 10^6 iterations for Taurus+Perseus test [4.2. Indication of a non-stochastic sam…: "We generate a sample of cores with mass distribution following the CMF (Equation 8) described by a power-law exponent Γ (Γ = −1.0 and Γ = −1.35) and a low-mass cutoff as 3 M_⊙, yielding a sample set of 10^6 cores."] [4.2. Indication of a non-stochastic sam…: "By repeating steps 3 and 4 for 5000 times, we can account for the stochastic nature of the random sampling."]
+  - assumption: Largest possible stellar mass m_up = 150 M_sun or 100 M_sun; SFE = 30%; largest probable core mass = m_up / SFE (500 M_sun or 333 M_sun); total core mass in set C cannot exceed SFE * M_gas^bound. [4.2. Indication of a non-stochastic sam…: "In this work, we tested the two assumptions: (1) the largest possible stellar mass (m_up) is 150 M_⊙ (c.f. Koen 2006), and (2) m_up is 100 M_⊙ (c.f. Weidner & Kroupa 2004); in both cases, the largest probable core mass is assumed to be m_up/SFE M_⊙, where SFE=30%."] [4.2. Indication of a non-stochastic sam…: "If the overall core masses in set C does not exceed SFE × M_gas^bound, we accept set C and proceed to the next step."]
+  - fitting: Power-law fitting to nearby cloud CMF for 1 < M < 50 M_sun and 1 < M < 20 M_sun; Kernel Density Estimation (KDE) for simulated M_core^max distributions [Figure 4 caption: "Two power-law fittings with mass ranges of 1 < M < 50 M_⊙ and 1 < M < 20 M_⊙ are adopted."] [4.2. Indication of a non-stochastic sam…: "The resulting distribution of M_core^max is analyzed using a kernel density estimation (KDE) plot (see Figure 5)."]
+  - validation: Evaluated potential systematic overestimation in n(M > 3 M_sun) for Taurus and showed that reducing N to match the median simulated M_core^max requires unrealistically small N (6 to 13 vs observed 48) and does not resolve the large scatter. [4.2. Indication of a non-stochastic sam…: "To match the simulated median M_core^max with the observed value through random sampling, the values of n(M > 3M_⊙) need to be 6 for Γ = −1.0 and 12 for Γ = −1.35 under the 150/SFE M_⊙ core mass limit case, and to be 6 for Γ = −1.0 and 13 for Γ = −1.35 respectively under the 100/SFE M_⊙ core mass limit case."]
+- result: Slope of log(M_core^max) vs log(M_gas^bound) relation (all clouds, Method Two) = 0.506 ± not stated dimensionless [3.3. Mass correlation between most mass…: "log( _M_ core [max] _[/M]_ _[⊙]_ [) = 0] _[.]_ [506 log(] _[M]_ [ bound] gas _/M_ _⊙_ ) _−_ 0 _._ 32"]
+- result: Intercept of log(M_core^max) vs log(M_gas^bound) relation (all clouds, Method Two) = -0.32 ± not stated dimensionless [3.3. Mass correlation between most mass…: "log( _M_ core [max] _[/M]_ _[⊙]_ [) = 0] _[.]_ [506 log(] _[M]_ [ bound] gas _/M_ _⊙_ ) _−_ 0 _._ 32"]
+- result: Spearman correlation coefficient for M_core^max vs M_gas^bound (all clouds, Method Two) = 0.83 ± not stated dimensionless [3.3. Mass correlation between most mass…: "with a Spearman coefficient of 0.83 and a p-value of 7.8 × 10^-7 that is much lower than 0.001."]
+- result: Standard deviation of linear regression residual for M_core^max vs M_gas^bound (all clouds, Method Two) = 0.29 ± not stated dex [Figure 2 caption: "The standard deviation of linear regression residual σ is 0.29 and the gray-shaded region corresponds to the regimes with 95% confidence interval."]
+- result: Slope of log(M_core^max) vs log(M_gas^bound) relation (outliers excluded, Method Two) = 0.55 ± not stated dimensionless [3.3. Mass correlation between most mass…: "We found that by excluding these four sources from our sample, the power-law index becomes 0.55, which is ~10% steeper than that derived from the whole sample; the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even t…"]
+- result: Spearman correlation coefficient for M_core^max vs M_gas^bound (outliers excluded, Method Two) = 0.96 ± not stated dimensionless [3.3. Mass correlation between most mass…: "the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even tighter as 0.21."]
+- result: Standard deviation of linear regression residual for M_core^max vs M_gas^bound (outliers excluded, Method Two) = 0.21 ± not stated dex [3.3. Mass correlation between most mass…: "the correlation becomes more robust with the Spearman correlation coefficient of 0.96 and the standard deviation of linear regression residual σ becomes even tighter as 0.21."]
+- result: Slope of SFR^theory vs M_gas^bound relation (all clouds) = 1.03 ± not stated dimensionless [4.1. Connection to the star formation r…: "The black dashed line shows a linear regression of all the data points, yielding a slope of 1.03 across all clouds."]
+- result: Slope of SFR^theory vs M_gas^bound relation (outliers excluded) = 1.11 ± +0.10/-0.10 dimensionless [4.1. Connection to the star formation r…: "slightly steeper slope of 1 _._ 11"]
+- result: Standard deviation of observed nearby cloud points from linear regression in M_core^max vs M_gas^bound = 0.077 ± not stated dex [4.2. Indication of a non-stochastic sam…: "In Figure 5, the standard deviation of the observed points from a linear regression line is 0.077."]
+- limitation (authors): Hydrogen radio recombination lines (H41alpha) used to subtract free-free emission in ALMA-IMF 1.3 mm images may have maser effects in some regions. [2.2. ALMA-IMF observation dataset: "A caveat is that the hydrogen radio recombination lines may have maser effect in some regions"]
+- limitation (authors): Four ALMA-IMF fields (G327.29, G328.25, G351.77, and G353.41) have insufficient (< 5%) short baselines to recover scales larger than 0.1 pc, causing missing flux and potential underestimation of M_core^max. [3.3. Mass correlation between most mass…: "As mentioned by Ginsburg et al. (2022), there are four fields, G327.29, G328.25, G351.77, and G353.41 with insufficient (< 5%) short baselines to recover scales larger than 0.1 pc."]
+- limitation (authors): The spatial resolution used (0.03 pc) is coarser than the native resolutions of ALMA-IMF and HGBS, so extracted 'cores' (radii 0.04–0.23 pc, median 0.1 pc) are larger than cores defined at <= 0.01 pc in recent high-resolution ALMA studies. [3.1. The most massive core: "We note that the spatial resolutions we are using are coarser than the native resolutions in the ALMA-IMF and HGBS data."]
+- not stated (card): Reason why 3 out of the 15 ALMA-IMF star-forming regions are absent from the 12 distant clouds in Table 1 (e.g., W43-MM1/MM2/MM3 and W51-E/IRS2 are listed separately in Table 3 as 15 fields, but combined into W43 and W51 in Table 1, while one other ALMA-IMF region is missing entirely); Exact spatial boundaries or polygon masks used to define each molecular cloud before computing the N-PDF; Resolu…
+
+### 2017MNRAS.468.4205K: ALMA observations of cold molecular gas in AGN hosts at z ∼ 1.5 - evidence of AGN feedback? (2017; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Does the presence of an AGN affect the molecular gas content and star formation efficiency of its host galaxy at z~1.5, compared with matched non-AGN galaxies?
+- step 6: Compare AGN and non-AGN relations
+  - method: survival two-sample test (survdiff); linear fits to AGN with slope fixed to MS slope, upper limits taken as detections, in L'CO-LIR, MH2-SFR, tdep-SFR, fgas-sSFR [Observed relations for AGNs: "While deriving the correlations for AGNs, we kept the slope of the linear function to be equal to that of the MS relations for ease of comparison with the non-AGN sample."]
+  - software: R survdiff (via python)
+  - assumption: upper limits treated as detections in the fits (so fits are upper limits) [Observed relations for AGNs: "We also stress here that the derived line for AGNs is itself an upper limit since most of the data points used to fit this correlation are upper limits."]
+  - fitting: linear fit with fixed slope; priors/sampler not stated [Observed relations for AGNs: "While deriving the correlations for AGNs, we kept the slope of the linear function to be equal to that of the MS relations for ease of comparison with the non-AGN sample."]
+  - validation: p-value 0.008 from survival test [Observed relations for AGNs: "we obtain a $p$-value of 0.008 i.e. a \>99% probability that our AGN sample has a different distribution"]
+- result: AGN MH2-SFR intercept (slope 0.81) = 8.90 ± 0.35 dex [Observed relations for AGNs: "Log ~M_{H_{2}} [M_{\odot}] = 0.81\cdot Log ~SFR [M_{\odot}/yr] + (8.90\pm0.35)"]
+- result: AGN L'CO-LIR intercept (slope 0.81) = 0.25 ± 0.35 dex [Observed relations for AGNs: "Log ~L^{\prime}_{CO}[L{\odot}] = 0.81\cdot Log ~L_{IR}[L{\odot}] + (0.25\pm0.35)"]
+- result: Survival test p-value = 0.008 ± not stated dimensionless [Observed relations for AGNs: "we obtain a $p$-value of 0.008"]
+- limitation (authors): alpha_CO is the biggest systematic uncertainty and may differ in AGN [Molecular mass from CO: "$\mathrm{\alpha_{CO}}$ presents the biggest systematic uncertainty in molecular gas measurements using CO"]
+- limitation (authors): AGN fitted relations are upper limits since most points are upper limits [Observed relations for AGNs: "the derived line for AGNs is itself an upper limit since most of the data points used to fit this correlation are upper limits"]
+- not stated (card): Number of clean iterations, threshold and masking; Cell size and exact channel ranges used for moment-0 maps; Which channels were used for continuum/line separation (continuum undetected); Flux calibrator and calibration uncertainty; Details of the survdiff test grouping and how censored data were treated in the fits; Exact aperture centers and MPFIT initial guesses; Details of the stacking of no…
+
+### 2021MNRAS.500.3667S: The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2 (2021; agn_and_quasars, high_z_galaxies, star_formation; observational_alma_primary)
+- question: What are the intrinsic dust morphology, CO line morphology and kinematics, and star formation properties of z ~ 2 quasar host galaxies, and how do they relate to galaxy compaction and quenching?
+- step 4: Fit SEDs to derive dust temperatures, FIR/IR luminosities, SFRs, SFR surface densities, Eddington limits, and dust masses
+  - method: MCMC fitting of an optically thick modified blackbody (plus warm dust component for 2 sources and radio power-law where applicable) to sub-mm and ancillary photometry, followed by analytical conversions to L_FIR, L_IR, SFR, Sigma_SFR, and … [Dust properties: "We apply a Markov Chain Monte Carlo (MCMC) analysis using the Python implementation (cite: Foreman-Mackey:2013) to infer the marginalised posterior distributions for each free parameter and the integrated FIR luminosity."] [Dust properties: "We convert this to total infrared luminosity (8 to 1000 $\upmu$m) using a colour correction factor of 1.91 (i.e. $L_{\rm IR} = 1.91\times L_{\rm FIR}$) given by (cite: Dale:2001)"]
+  - software: emcee
+  - parameter: nu_0 = 3 THz (100 um) where tau = 1; beta = 2 fixed for HS 0810+2554; H1413+117 photometry > 300 GHz scaled by 0.8 for neighbour confusion [Dust properties: "where $\tau(\nu)=(\nu/\nu_0)^{\beta}$ and $\nu_0$ is the frequency at which the dust opacity is unity, which we assume to be rest-frame 3 THz (100 $\upmu$m)"] [Dust properties: "We fix $\beta$ to a value of 2, as 1.5 cannot produce a satisfactory fit to the data"]
+  - assumption: Salpeter IMF with Kennicutt (1998) conversion SFR = L_IR / (5.8e9 L_sun); dust mass opacity kappa_850 = 0.077 m^2 kg^-1; flat LambdaCDM (H0 = 67.8 km/s/Mpc, Omega_M = 0.31, Omega_Lambda = 0.69) [Introduction: "Throughout, we assume the (cite: Planck:2016) instance of a flat $\Lambda$CDM cosmology with $H_{0}= 67.8~$km s$^{-1}$ Mpc$^{-1}$, $\Omega_{\rm M}=0.31$ and $\Omega_{\Lambda}=0.69$."] [Dust properties: "We convert this to a star formation rate (SFR; M$_{\odot}$ yr$^{-1}$ ) assuming a Salpeter initial mass function with the conversion factor of (cite: Kennicutt:1998),"]
+  - fitting: MCMC sampling using Foreman-Mackey et al. (2013) Python implementation [Dust properties: "We apply a Markov Chain Monte Carlo (MCMC) analysis using the Python implementation (cite: Foreman-Mackey:2013) to infer the marginalised posterior distributions for each free parameter and the integrated FIR luminosity."]
+  - validation: Tested two-component dust models and compared with Stefan-Boltzmann law relation against DSFG control samples using Kendall rank correlation test [Dust properties: "We attempted fitting two-component models to our SEDs but, as most are sparsely sampled, the uncertainties on the mass of the cold component was very large and encompasses the masses derived with a single temperature fit."] [Comparison with dusty star-forming gala…: "A Kendall rank test (cite: Kendall:1945) for correlation between dust size and temperature yields a coefficient of $\tau=-0.37$ with a significance of $p=0.04$ (where $p=0.05$ is often taken as significant)."]
+- step 5: Derive molecular gas luminosities, dynamical masses, gas mass, gas fraction, and depletion timescale
+  - method: Integrate reconstructed source-plane CO line cubes to get intrinsic line luminosities; compute dynamical mass from 2*R_eff and inclination-corrected maximum velocity; convert CO(3-2) luminosity of HS 0810+2554 to gas mass and depletion time [Molecular gas properties: "We convert our line flux densities to luminosities ($L_{\rm CO}$ and $L^{\prime}_{\rm CO}$) with relations as given by (cite: Solomon:2005)."] [Molecular gas properties: "From the reconstructed line emission, we estimate the enclosed dynamical mass of the galaxies, assuming"]
+  - parameter: inclination i = 45 +/- 15 deg where axis ratio is unconstrained (RX J0911+0551, PG 1115+080, WFI J2033-4723) [Molecular gas properties: "Where we do not have a reliable constraint on the axis ratio due to a lack of radial resolution (i.e. RX J0911+0551, PG 1115+080 and WFI J2033$-$4723) we assume an inclination angle of $45\pm15$ deg, corresponding to axis ratios of 0.5 to 0.9."]
+  - assumption: Circular velocity traces gas rotation in a disc; alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1 for HS 0810+2554 [Molecular gas properties: "This method assumes that the circular velocity accurately traces the gas rotation, ignoring the effect of a non-spherical gravitational potential and turbulent pressure."] [Intensity of star formation: "We assume $\alpha_{\rm CO}=0.8$ M$_{\odot}$ (K km s$^{-1}$ pc$^{2}$)$^{-1}$, as is often assumed for dusty starbursts, to convert $L^{\prime}_{\rm CO}$ to total gas mass ($M_{\rm gas}$)."]
+- result: Star formation rate surface density Sigma_SFR (WFI J2026-4536) = 4500 ± +1700/-1700 M_sun yr^-1 kpc^-2 [Intensity of star formation: "| WFI J2026$-$4536 | $19.6\pm0.8$ | $0.19\pm0.02$ | $0.61\pm0.02$ | $63^{+4}_{-3}$ | – | $1.8^{+0.1}_{-0.1}$ | $3.1^{+1.7}_{-1.5}\times10^{12}$ | $1010^{+60}_{-50}$ | $4500^{+1700}_{-1700}$ | $3.9^{+0.1}_{0.1}\times10^7$ |"]
+- result: Molecular gas mass M_gas (HS 0810+2554) = 2.1e9 ± 0.1e9 M_sun [Intensity of star formation: "For this object we find $M_{\rm gas}=(2.1\pm0.1)\times10^9$"]
+- result: Gas fraction f_gas (HS 0810+2554) = 0.06 ± 0.04 dimensionless [Abstract: "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence."]
+- result: Gas depletion timescale t_dep (HS 0810+2554) = 50 ± 40 Myr [Abstract: "For the one system where we probe the bulk of the gas reservoir, we find a gas fraction of just $0.06\pm0.04$ and a depletion timescale of $50\pm40$ Myr, suggesting it is transitioning into quiescence."]
+- limitation (authors): Sample is small (7 objects) and heterogeneous, probing different CO rotational transitions that trace different gas temperatures and regions. [Summary of the sample, observations and…: "As a result, this sample is heterogeneous, and the observations probe different CO line transitions"]
+- limitation (authors): 2D reconstructed velocity and dispersion maps are affected by beam-smearing, and two sources only use 3 velocity channels. [Molecular gas properties: "However, these 2-dimensional maps may be strongly affected by beam-smearing, which can misguide interpretation of the dynamics of the systems (velocity dispersion in particular, e.g. (cite: Lelli:2010))."]
+- limitation (authors): Single-temperature SED fits may underestimate total dust mass if a colder diffuse ISM dust component is present. [Dust properties: "Note that, if the temperature of dust in the diffuse ISM is much lower than the effective dust temperature for quasar hosts, the dust masses derived for of our sample could be underestimated."]
+- not stated (card): CASA version and pipeline version used for calibration and imaging; Table 2 (summary of spectral line observations) and Table lens_models are referenced in the text but missing from the manuscript/markdown; Exact channel widths and frequency ranges of the line-free spectral windows used for continuum subtraction and self-calibration; Pixel size and image dimensions used for CLEAN imaging and sour…
+
+### 2026MNRAS.546ag167S: Under the glare of a luminous quasar, the FIR continuum is still an excellent tracer of the ISM down to the central kiloparsec (2026; agn_and_quasars, high_z_galaxies, star_formation; observational_alma_primary)
+- question: Whether far-infrared continuum emission measured on galaxy-wide scales in luminous z=2 quasar hosts is primarily attributable to ongoing star formation or significantly enhanced by quasar-heated dust.
+- step 3: Construct FIR SEDs, derive IR luminosities and SFRs, and evaluate the CO-FIR relation
+  - method: Compare decomposed extended and nuclear fluxes across Bands 5, 7, and 9 with modified blackbody models and Lyu et al. (2017) quasar templates; compute L'_CO(5-4), convert to L_TIR via Daddi et al. (2015) and to SFR via Kennicutt & Evans (2… [Results / SDSS J1236+0500 / Continuum: "the flux, along with bands 5 and 7, is consistent with a thermal spectrum (i.e., modified black body with $\beta=1.6$ and T=47 K), well above the standard quasar template (cite: Lyu2017b)"] [Results / Presence of star formation in…: "Inferring the SFRs using the CO (J=5–4) luminosities of the extended components for the three quasars and the CO (J=5–4) – L$_{IR}$ relation (cite: Daddi2015) with its uncertainty, the total infrared luminosities of 7.3, 1.5 and 1.35 (units of 10$^{12}$ L$_{\odot}$) are found and correspond to SFRs of 975$\pm200$, 232…"]
+  - parameter: Modified blackbody parameters: beta = 1.6, T_dust = 47 K [Results / SDSS J1236+0500 / Continuum: "the flux, along with bands 5 and 7, is consistent with a thermal spectrum (i.e., modified black body with $\beta=1.6$ and T=47 K)"]
+  - assumption: Chabrier initial mass function [Introduction: "We assume a Chabrier initial mass function for estimates of mass and star formation rate."]
+  - assumption: Point-source emission originates from the unresolved quasar component while extended emission is heated solely by star formation [Results / CO - FIR relation: "In both panels, we assumed that the point source emission originates from the unresolved component of the quasar, while the extended component is assigned to the heating solely due to star formation."]
+  - validation: Comparison of SFRs derived independently from resolved Band 5 continuum, unresolved Band 7 continuum, and extended CO(5-4) emission [Results / Presence of star formation in…: "Then we compare the SFRs based on the FIR continuum luminosity with the CO (J=5–4) luminosity in Figure [2](#fig:sfr_comp)."]
+- result: CO(5-4) luminosity L'_CO (J1236+0500) = 1.98e10 ± not stated K km s^-1 pc^2 [Table 2: "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"]
+- result: SFR from CO(5-4) (J1236+0500) = 975 ± +-200 M_sun yr^-1 [Table 2: "SFR (CO J=5–4) | 975$\pm$200 | 232$\pm$55 | 181$\pm$53 | $M_{\odot}$ yr$^{-1}$"]
+- result: SFR from Band 5 continuum (J1236+0500) = 953 ± +-208 M_sun yr^-1 [Table 2: "SFR (Band 5) | 953$\pm$208 | 104$\pm$29 | 149$\pm$50 | $M_{\odot}$ yr$^{-1}$"]
+- result: CO(5-4) luminosity L'_CO (J2317-1033) = 0.47e10 ± not stated K km s^-1 pc^2 [Table 2: "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"]
+- result: SFR from CO(5-4) (J2317-1033) = 232 ± +-55 M_sun yr^-1 [Table 2: "SFR (CO J=5–4) | 975$\pm$200 | 232$\pm$55 | 181$\pm$53 | $M_{\odot}$ yr$^{-1}$"]
+- result: SFR from Band 5 continuum (J2317-1033) = 104 ± +-29 M_sun yr^-1 [Table 2: "SFR (Band 5) | 953$\pm$208 | 104$\pm$29 | 149$\pm$50 | $M_{\odot}$ yr$^{-1}$"]
+- result: CO(5-4) luminosity L'_CO (J2345-1104) = 0.37e10 ± not stated K km s^-1 pc^2 [Table 2: "L$'_{CO J=5-4}$ | 1.98e10 | 0.47e10 | 0.37e10 | K km s$^{-1}$ pc$^{2}$"]
+- result: SFR from CO(5-4) (J2345-1104) = 181 ± +-53 M_sun yr^-1 [Table 2: "SFR (CO J=5–4) | 975$\pm$200 | 232$\pm$55 | 181$\pm$53 | $M_{\odot}$ yr$^{-1}$"]
+- result: SFR from Band 5 continuum (J2345-1104) = 149 ± +-50 M_sun yr^-1 [Table 2: "SFR (Band 5) | 953$\pm$208 | 104$\pm$29 | 149$\pm$50 | $M_{\odot}$ yr$^{-1}$"]
+- result: Best-fit AGN contribution coefficient to CO(5-4) = 0.12 ± +-0.04 dimensionless [Results / CO - FIR relation / Quasar in…: "we choose to use the value of $0.12\pm0.04$ as our best assessment on the quasar contribution to CO (J=5-4) for a given IR luminosity among our bright QSO targets."]
+- limitation (authors): Single-epoch MgII virial black hole masses may be overestimated in light of recent GRAVITY results. [Method / Targets: "We recognize that these may be overestimates given the recent results from GRAVITY (cite: Abuter2024) and discuss the implications which do not impact our analysis of the ISM properties of their hosts."]
+- limitation (authors): The S/N of the host galaxy emission in J2317-1033 and J2345-1104 is insufficient to accurately constrain the Spergel index or point-source continuum fraction in Band 5 without fixing the index. [Results / Luminous quasars in typical s…: "Based on (cite: Tan2024a), the signal-to-noise of the host is insufficient to accurately determine the Spergel or effective Sersic indices for these two sources."]
+- limitation (authors): Compact nuclear star formation may contribute to the unresolved central component, making the inferred AGN contribution an upper limit. [Results / CO - FIR relation / Quasar in…: "We understand that there may be compact components due to star formation which may not have been accounted for in the model of the extended component. Thus, our results are likely to be an upper limit on the quasar contribution."]
+- not stated (card): CASA pipeline version used for the Cycle 11 Band 9 data reduction; Exact frequency/channel ranges excluded for CO(5-4) when constructing the Band 5 continuum visibilities; Specific relative visibility weighting applied during CASA 'concat' of high and low resolution Band 5 datasets; Image pixel cell size, image dimensions, and spectral channel width of the cubes input to 3D-Barolo and 1D spectral…
+
+### 2015ApJ...799...11X: ALMA Observations of Warm Dense Gas in NGC 1614—Breaking of the Star Formation Law in the Central Kiloparsec (2015; nearby_galaxies, star_formation, agn_and_quasars; observational_alma_primary)
+- question: What is the structure of warm dense gas and dust in the central kpc of the LIRG NGC 1614, is there a Compton-thick AGN, and does the Kennicutt-Schmidt law hold on ~100 pc scales?
+- step 4: Derive Sigma_gas and Sigma_SFR and test Kennicutt-Schmidt law
+  - method: Sigma_gas from CO(6-5) via calibrated relation; Sigma_SFR from thermal/nonthermal 8.4 GHz via Murphy2012; Spearman rank correlations in 3x3 pixel cells [4.2: "individual cells ($\rm 3\time 3$ pixels, pixel=0$''$089) in the ring"]
+  - software: Starburst99
+  - assumption: X_CO = 3e20; CO(6-5)/CO(2-1) brightness temperature ratio 0.72; T_e=1e4 K; alpha_nth=1.2 [4.2: "assuming a brightness temperature ratio of 0.72 between CO (6-5) and CO (2-1)"]
+  - validation: Compared with Kennicutt1998b relation [Discussion, Relation Between Warm Dense…: "the $\rm \Sigma_{SFR}$ vs. $\rm \Sigma_{Gas}$ relation is systematically above that for local starbursts (cite: Kennicutt1998b), indicating a higher star formation efficiency (SFE)."]
+- result: Median CO(6-5)/CO(2-1) brightness temperature ratio = 0.72 ± not stated dimensionless [4.1: "with a median brightness temperature ratio of 0.72"]
+- result: Spearman correlation Sigma_SFR,nth vs Sigma_gas = rho = 0.81, p = 1.6e-5 ± not stated dimensionless [4.2: "($\rm \rho =0.81$ and $\rm p = 1.6\times 10^{-5}$)"]
+- limitation (authors): Interferometer misses extended emission; dust and gas masses are lower limits [3.2: "therefore the dust and gas mass derived from these observations are lower limits"]
+- limitation (authors): CO conversion factors are very uncertain [4.3: "these conversion factors are very uncertain and are the major error sources for the molecular gas mass estimates"]
+- not stated (card): Briggs robust value, cell size, image size, clean threshold and masks; Line-free channels and continuum channel ranges for UVcontsub; Bandpass/phase calibrator details besides QSO 0423-013, self-cal solution intervals; Aperture definitions for channel-by-channel flux photometry; Herschel PACS/SPIRE SED photometry (Chu et al. in prep) and Lu2014b CO fluxes unpublished; Knot identification and fitt…
+
+### 2021ApJ...918...76C: Toward a More Complex Understanding of Natal Super Star Clusters with Multiwavelength Observations (2021; star_formation, nearby_galaxies; archival_reuse)
+- question: Disentangle individual natal super star clusters in He 2-10 at ~0.3'' resolution using multiwavelength radio, submillimeter, and infrared observations to assess their ionizing photon rates, extinction, masses, and star formation efficienci…
+- step 4: Calculate dust masses, gas masses, total cluster masses, and instantaneous mass ratios (star formation efficiencies)
+  - method: Use SED-modeled 340 GHz dust flux density (S_dust,fit) to compute dust mass M_d = L_nu / (4 pi kappa_nu B_nu(T_d)) for T_d = (25, 40, 100) K; multiply by gas-to-dust ratio to get M_gas, add M_fit for total mass, and compute instantaneous m… [Submillimeter Emission, Dust Mass, and …: "With S$_{dust,fit}$, we calculate the specific luminosity, L$_{\nu}$, and then the dust mass, M$_d$, is $$\begin{equation} \textrm{M}_d = \frac{\textrm{L}_{\nu}}{4\pi\,\kappa_{\nu}\,\textrm{B}_{\nu}(\textrm{T}_d)}, \end{equation}$$"] [Submillimeter Emission, Dust Mass, and …: "Adopting a dust-to-gas ratio of 1:100 (cite: Wilson:2008) and assuming M$_{fit}$ is the stellar contribution to the total mass, the knots have total masses between 0.5 – 1.1 $\times$ 10$^5$ $\textrm{M}_{\odot}$ for T$_d$ = 100 K."]
+  - parameter: T_d = (25, 40, 100) K; nu_0 = 340 GHz; kappa_0 = 1.3 cm^2 g^-1; beta = alpha_dust - 2 = 2 [Submillimeter Emission, Dust Mass, and …: "we adopt a range of dust temperatures of T$_d$ = (25, 40, 100) K"] [Submillimeter Emission, Dust Mass, and …: "where $\nu$ = $\nu_o$ in this case and $\beta = \alpha_{dust} - 2$. We adopt $\kappa_o$ = 1.3 cm$^2$ g$^{-1}$ at $\nu_o$ = 340 GHz (cite: Whitcomb:1981; Hildebrand:1983)"]
+  - parameter: Dust-to-gas ratio = 1:100 (also tested 1:300) [Submillimeter Emission, Dust Mass, and …: "Adopting a dust-to-gas ratio of 1:100 (cite: Wilson:2008)"] [Star Formation Efficiency: "for example, a dust-to-gas ratio of 1:300 yields IMR $\sim$45 – 72$\%$ for T$_d$ = 100 K and IMR $\sim$ 14 – 33$\%$ for T$_d$ = 25 K."]
+  - assumption: Optically thin dust emission at 340 GHz, kappa_0 = 1.3 cm^2 g^-1 at 340 GHz, T_d = (25, 40, 100) K, dust-to-gas ratio of 1:100 [Submillimeter Emission, Dust Mass, and …: "We adopt $\kappa_o$ = 1.3 cm$^2$ g$^{-1}$ at $\nu_o$ = 340 GHz (cite: Whitcomb:1981; Hildebrand:1983) but note that the uncertainty can be as large as a factor of 2."] [Submillimeter Emission, Dust Mass, and …: "Adopting a dust-to-gas ratio of 1:100 (cite: Wilson:2008) and assuming M$_{fit}$ is the stellar contribution to the total mass"]
+  - validation: Compared estimated free-free fraction at 340 GHz (48 - 68%) with previous estimate (45 - 64%) from (cite: Hirashita:2013). [Submillimeter Emission, Dust Mass, and …: "Comparing the modeled dust emission, S$_{dust,fit}$ to the measured flux density at 340 GHz, we estimate that 48 – 68$\%$ of the 340 GHz flux density is due to free-free emission. This agrees with other estimates from (cite: Hirashita:2013)"]
+- result: Free-free fraction of 340 GHz flux density = 48 - 68 ± not stated % [Submillimeter Emission, Dust Mass, and …: "Comparing the modeled dust emission, S$_{dust,fit}$ to the measured flux density at 340 GHz, we estimate that 48 – 68$\%$ of the 340 GHz flux density is due to free-free emission."]
+- result: Dust mass M_d range across knots (at T_d = 100 K) = 0.1 - 0.3 ± not stated 10^3 M_sun [Summary: "In Section [\[sec:dustmass\]](#sec:dustmass), we estimate the dust content associated with the knots from the SED models to be 0.1 – 0.3 $\times$ 10$^3$ $\textrm{M}_{\odot}$ at 100K."]
+- result: Total cluster mass range (T_d = 100 K, dust-to-gas ratio 1:100) = 0.5 - 1.1 ± not stated 10^5 M_sun [Submillimeter Emission, Dust Mass, and …: "Adopting a dust-to-gas ratio of 1:100 (cite: Wilson:2008) and assuming M$_{fit}$ is the stellar contribution to the total mass, the knots have total masses between 0.5 – 1.1 $\times$ 10$^5$ $\textrm{M}_{\odot}$ for T$_d$ = 100 K."]
+- result: Instantaneous mass ratio (IMR) / SFE range (T_d = 100 K, 1:100 dust-to-gas ratio) = 71 - 88 ± not stated % [Star Formation Efficiency: "For T$_d$ = 100 K, the IMR is between $\sim$71 – 88$\%$ for the radio knots; for colder dust (25 K), the IMR is $\sim$32 – 60$\%$."]
+- result: Instantaneous mass ratio (IMR) / SFE range (T_d = 25 K, 1:100 dust-to-gas ratio) = 32 - 60 ± not stated % [Star Formation Efficiency: "For T$_d$ = 100 K, the IMR is between $\sim$71 – 88$\%$ for the radio knots; for colder dust (25 K), the IMR is $\sim$32 – 60$\%$."]
+- limitation (authors): The new 33 GHz VLA observations suffer from significant decorrelation due to weather and low declination (-26 deg), so the 33 GHz flux densities must be treated as lower limits and excluded from SED fitting. [New VLA Observations: "High frequency observing is sensitive to the weather conditions, and given the low declination of the source, we believe the data suffer from significant decorrelation. Thus, the flux densities reported here are treated as a lower limit thorough this work."]
+- limitation (authors): Significant flux calibration discrepancies exist between the 2004 AJ314 / 2016 16B-067 VLA maps and the 1995 AK0400 maps (~2x higher at 5 GHz and ~1.4x lower at 15 GHz), requiring ad hoc adjustments to the 5 and 15 GHz fluxes and uncertain… [Source Extraction and Photometry: "We find that for any given size of aperture, our 2004 AJ314 5 GHz map is $\sim$2$\times$ higher in flux density than the 1995 AK0400 5 GHz map, which was previously noted by (cite: Reines:2011)."]
+- limitation (authors): Forcing a 0.3'' circular restoring beam results in significant super-resolution in the declination direction for the 5 GHz map (native 0.620'' x 0.248'') and modest/moderate super-resolution for the 8 GHz and 113 GHz maps. [Source Extraction and Photometry: "For C-band, this is a significant super-resolution of the data in the declination direction."]
+- not stated (card): Exact spectral window and line-free channel selections used to image the ALMA 113, 250, and 340 GHz continuum maps; Whether ALMA projects 2015.1.01569.S and 2016.1.00027.S were combined for the 113 GHz continuum map or if only 2016.1.00027.S was used (Table 2 lists only 2016.1.00027); Image cell sizes, image dimensions, deconvolution algorithms, and clean stopping thresholds used in CASA tclean; …
+
+### 2018ApJ...855L..25K: Core Emergence in a Massive Infrared Dark Cloud: A Comparison between Mid-IR Extinction and 1.3 mm Emission (2018; star_formation, milky_way_ism; observational_alma_primary)
+- question: How does the presence of 1.3 mm continuum emitting dense structures (cores) depend on the local mass surface density from MIR extinction in IRDC G28.37+0.07, and what dense gas fraction and star formation efficiency per free-fall time foll…
+- step 5: Estimate star formation efficiency per free-fall time
+  - method: Turbulent Core Model: t_*f/t_ff = 0.42 for Mc=5 Msun, M_cl=1e4 Msun; eps_ff from f_dg and eps_core [4.2 Star Formation Rates: "Under these two conditions, $t_{*f}/\bar{t}_{\rm ff,cl}\rightarrow0.42$."]
+  - assumption: eps_core = 0.5; steady SFR; Salpeter CMF 1-240 Msun; mm continuum is complete protostellar core census [4.2 Star Formation Rates: "Assuming the SFR is steady and the CMF is evenly populated"]
+  - validation: compared with Orion Nebula Cluster eps_ff [4.2 Star Formation Rates: "about a factor of two larger than the value estimate inside the half-mass radius of the Orion Nebula Cluster"]
+- result: star formation efficiency per free-fall time = 0.11 ± +0.06/-0.041 (0.17 and 0.069 quoted) dimensionless [4.2 Star Formation Rates: "$\epsilon_{\rm ff}=0.11^{0.17}_{0.069}$"]
+- limitation (authors): Dust temperature assumption is the largest uncertainty (up to factor ~2); MIREX has zero-point offsets, saturation and MIR-source contamination. [3.3 Dense Gas Fraction: "Systematic variations arising from the choice of dust temperature are up to a factor of almost two and are the most significant source of uncertainty"]
+- not stated (card): Clean threshold, number of iterations and masks; Exact uv-taper parameters; Calibration pipeline/CASA version; Which pixels were flagged as MIR-bright sources (visual list); Rebinning and regridding procedure to MIREX grid; Mosaic phase centers/coordinates
+
+### 2021A&A...650A.117N: The host galaxy of the short GRB 050709 (2021; transients, nearby_galaxies, star_formation; multi_facility_alma_minor)
+- question: Characterize the physical properties (star formation rate, metallicity, gas kinematics, excitation mechanisms, merger history) of the host galaxy of short GRB 050709 and constrain late-time radio emission.
+- step 1: Reduce and image ALMA 1.3 mm continuum data and derive SFR upper limit
+  - method: Combine two ALMA Band 6 execution blocks in CASA tclean, measure 5 sigma rms upper limit at phase center, and convert to SFR upper limit using redshifted and renormalized Chary & Elbaz (2001) IR SED templates and the Kennicutt (1998) relat… [3.3. ALMA millimeter observations: "Using the standard infrared SED library of Chary & Elbaz (2001), we translated the 1.3 mm flux upper limit into an SFR upper limit."] [3.3. ALMA millimeter observations: "The infrared luminosities (i.e., L IR ) of these renormalized templates were then converted into SFRs using the standard SFR( M ⊙ yr − 1 ) = 10 − 10 ( L IR / L ⊙ ) relation from Kennicutt (1998)."]
+  - software: CASA, tclean
+  - parameter: Briggs robust = 2.0 [3.3 ALMA millimeter observations: "combining both runs (Briggs robust parameter = 2.0)"]
+  - assumption: z = 0.1606, H_0 = 68 km s^-1 Mpc^-1, Omega_M = 0.31, Omega_Lambda = 0.69 [1. Introduction: "Throughout this paper, we adopt a flat cosmological model with H 0 = 68 km s − 1 Mpc − 1 , Ω M = 0.31, and Ω Λ = 0.69 (Planck Collaboration XIII 2016)."]
+  - assumption: SFR(M_sun yr^-1) = 10^-10 (L_IR / L_sun) [3.3. ALMA millimeter observations: "The infrared luminosities (i.e., L IR ) of these renormalized templates were then converted into SFRs using the standard SFR( M ⊙ yr − 1 ) = 10 − 10 ( L IR / L ⊙ ) relation from Kennicutt (1998)."]
+  - validation: Comparison with Spitzer 24 um SFR upper limit [3.3. ALMA millimeter observations: "From this analysis, we inferred SFR < 4.5 M ⊙ yr − 1 , in agreement with the Spitzer data (Sect. 3.1)."]
+- result: ALMA 1.3 mm continuum flux density (5 sigma upper limit) = < 55 ± not stated µJy beam^-1 [3.3 ALMA millimeter observations: "a 5σ rms upper limit of 55 µJy beam"]
+- result: Star formation rate upper limit from ALMA 1.3 mm = < 4.5 ± not stated M_⊙ yr^-1 [3.3. ALMA millimeter observations: "From this analysis, we inferred SFR < 4.5 M ⊙ yr − 1 , in agreement with the Spitzer data (Sect. 3.1)."]
+- result: Median SFR of renormalized templates at ALMA 1.3 mm limit = 1.6 ± not stated M_⊙ yr^-1 [3.3. ALMA millimeter observations: "This can, however, be considered as a very conservative upper limit as the median SFR of these renormalized templates is ∼1.6 M ⊙ yr − 1 ."]
+- limitation (authors): Scheduled ALMA Band 9 observations could not be performed due to weather constraints. [3.3. ALMA millimeter observations: "Unfortunately, due to weather constraints observations in band 9 could not be performed despite being scheduled."]
+- limitation (authors): The faint ATCA 5.5 GHz extended emission near the GRB site is at the ~5 sigma level, so there is no guarantee that it is real and it is too faint to split in time or frequency. [3.2. ATCA radio-continuum observations: "We conclude that there may be some extended emission at the GRB explosion site at the 5σ level. This is too faint to perform a more detailed analysis (e.g., splitting in time or frequency). It does not look like a spurious source, but at the S/N level at which we detect it there is no guarantee that it is real."]
+- limitation (authors): Small angular sizes (< 0.2''), faintness, and strong host foreground emission prevent MUSE from clarifying the nature of individual clumps C-G and K-M. [4.1. The nature of objects C-G and K-M: "While the HST image seems to provide compelling evidence that these are star-forming regions, young luminous stellar clusters, or background (foreground) galaxies, their individual nature cannot be clarified with certainty using the MUSE data cube."]
+- not stated (card): CASA tclean cell size, image size, and deconvolver settings for ALMA imaging; Relative data weights applied when combining the C40-6 and C40-3 ALMA execution blocks; Exact emission line profile fitting procedure/code used to extract line fluxes, velocities, and velocity dispersions from the gas-phase MUSE cube
+
+## All papers in this technique
+
+- 2012ApJ...760L..25E (2012): Giant Molecular Clouds and Star Formation in the Tidal Molecular Arm of NGC 4039
+- 2013A&A...558A.124C (2013): ALMA observations of feeding and feedback in nearby Seyfert galaxies: an AGN-driven outflow in NGC 1433
+- 2013A&A...559A..29C (2013): Strongly star-forming rotating disks in a complex merging system at z = 4.7 as revealed by ALMA
+- 2013ApJ...767..132H (2013): ALMA Observations of SPT-discovered, Strongly Lensed, Dusty, Star-forming Galaxies
+- 2013ApJ...770...13W (2013): Redshift 6.4 Host Galaxies of 10<SUP>8</SUP> Solar Mass Black Holes: Low Star Formation Rate and Dynamical Mass
+- 2013ApJ...778..179W (2013): An ALMA Survey of Submillimeter Galaxies in the Extended Chandra Deep Field-South: The AGN Fraction and X-Ray Properties of Submillimeter G…
+- 2013MNRAS.431L..88H (2013): Physical conditions of the gas in an ALMA [C ii]-identified submillimetre galaxy at z = 4.44.
+- 2014A&A...562A..67G (2014): ALMA reveals a warm and compact starburst around a heavily obscured supermassive black hole at z = 4.75
+- 2014A&A...568A..92M (2014): Herschel-ATLAS and ALMA. HATLAS J142935.3-002836, a lensed major merger at redshift 1.027
+- 2014ApJ...783...84S (2014): The Evolution of Interstellar Medium Mass Probed by Dust Emission: ALMA Observations at z = 0.3-2
+- 2014ApJ...790..160S (2014): ALMA Observations of a Candidate Molecular Outflow in an Obscured Quasar
+- 2014ApJ...792...34O (2014): ALMA Observation of 158 μm [C II] Line and Dust Continuum of a z = 7 Normally Star-forming Galaxy in the Epoch of Reionization
+- 2014ApJ...796...84R (2014): ALMA Imaging of Gas and Dust in a Galaxy Protocluster at Redshift 5.3: [C II] Emission in "Typical" Galaxies and Dusty Starbursts ≈1 Billio…
+- 2014MNRAS.445.1412Z (2014): Two physical regimes for the giant H II regions and giant molecular clouds in the Antennae galaxies
+- 2015A&A...584A..78C (2015): ALMA constraints on the faint millimetre source number counts and their contribution to the cosmic infrared background
+- 2015ApJ...798...31A (2015): Suppression of Star Formation in NGC 1266
+- 2015ApJ...799...11X (2015): ALMA Observations of Warm Dense Gas in NGC 1614—Breaking of the Star Formation Law in the Central Kiloparsec
+- 2015ApJ...806..260F (2015): Band-9 ALMA Observations of the [N II] 122 μm Line and FIR Continuum in Two High-z galaxies.
+- 2015ApJ...809...93D (2015): Observational Signatures of Planets in Protoplanetary Disks I. Gaps Opened by Single and Multiple Young Planets in Disks
+- 2015ApJ...810...91H (2015): Optical-Infrared Properties of Faint 1.3 mm Sources Detected with ALMA
+- 2015ApJ...810..133I (2015): Compact Starbursts in z ∼ 3-6 Submillimeter Galaxies Revealed by ALMA
+- 2015ApJ...813...45L (2015): Radio Jet Feedback and Star Formation in Heavily Obscured, Hyperluminous Quasars at Redshifts ∼ 0.5-3. I. ALMA Observations
+- 2015ApJ...813..118M (2015): Microwave Continuum Emission and Dense Gas Tracers in NGC 3627: Combining Jansky VLA and ALMA Observations
+- 2015ApJ...815..103B (2015): Dense Gas Fraction and Star-formation Efficiency Variations in the Antennae Galaxies
+- 2015ApJ...815L...8U (2015): ALMA Deep Field in SSA22: A Concentration of Dusty Starbursts in a z = 3.09 Protocluster Core
+- 2015MNRAS.448.2224C (2015): Constraining globular cluster formation through studies of young massive clusters - V. ALMA observations of clusters in the Antennae
+- 2015MNRAS.449..715W (2015): Tracing the conversion of gas into stars in Young Massive Cluster Progenitors
+- 2015MNRAS.452...54M (2015): The assembly of `normal' galaxies at z ∼ 7 probed by ALMA
+- 2015MNRAS.453L..83M (2015): ALMA and Herschel reveal that X-ray-selected AGN and main-sequence galaxies have different star formation rate distributions
+- 2015Natur.519..327W (2015): A dusty, normal galaxy in the epoch of reionization
+- 2016A&A...586A..45S (2016): Star formation efficiency along the radio jet in Centaurus A
+- 2016A&A...586A.124G (2016): The mysterious morphology of MRC0943-242 as revealed by ALMA and MUSE
+- 2016A&A...586L...7B (2016): An ALMA view of the interstellar medium of the z = 4.77 lensed starburst SPT-S J213242-5802.9
+- 2016ApJ...816...25P (2016): Dust and Gas in the Disk of HL Tauri: Surface Density, Dust Settling, and Dust-to-gas Ratio
+- 2016ApJ...819...82S (2016): Properties of the Interstellar Medium in Star-Forming Galaxies at z ~ 1.4 Revealed with ALMA
+- 2016ApJ...823...26E (2016): High Star Formation Rates in Turbulent Atomic-dominated Gas in the Interacting Galaxies IC 2163 and NGC 2207
+- 2016ApJ...827L..32B (2016): Sub-kiloparsec ALMA Imaging of Compact Star-forming Galaxies at z ~ 2.5: Revealing the Formation of Dense Galactic Cores in the Progenitors…
+- 2016ApJ...828...50K (2016): The Molecular Clouds Fueling A 1/5 Solar Metallicity Starburst
+- 2016ApJ...828...56W (2016): Discovery of a Galaxy Cluster with a Violently Starbursting Core at z = 2.506
+- 2016ApJ...832...37G (2016): ALMA Observations of Lyα Blob 1: Halo Substructure Illuminated from Within
+- 2016ApJ...832..114M (2016): SPT0346-52: Negligible AGN Activity in a Compact, Hyper-starburst Galaxy at z = 5.7
+- 2016ApJ...833...12R (2016): VLA and ALMA Imaging of Intense Galaxy-wide Star Formation in z ∼ 2 Galaxies
+- 2016ApJ...833...68A (2016): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Continuum Number Counts, Resolved 1.2 mm Extragalactic Background, and Proper…
+- 2016ApJ...833..112S (2016): Gas Fraction and Depletion Time of Massive Star-forming Galaxies at z ~ 3.2: No Change in Global Star Formation Process out to z &gt; 3
+- 2016ApJ...833..195W (2016): The SXDF-ALMA 2-arcmin<SUP>2</SUP> Deep Survey: Stacking Rest-frame Near-infrared Selected Objects
+- 2016MNRAS.455.2745K (2016): ALMA probes the molecular gas reservoirs in the changing-look Seyfert galaxy Mrk 590
+- 2016MNRAS.457.4536W (2016): Comparing young massive clusters and their progenitor clouds in the Milky Way
+- 2016MNRAS.457L.122H (2016): ALMA resolves extended star formation in high-z AGN host galaxies
+- 2016PASJ...68...20S (2016): Spatially resolved radio-to-far-infrared SED of the luminous merger remnant NGC 1614 with ALMA and VLA
+- 2016PASJ...68...82Y (2016): SXDF-ALMA 2 arcmin<SUP>2</SUP> deep survey: Resolving and characterizing the infrared extragalactic background light down to 0.5 mJy
+- 2016PASJ...68..103F (2016): A massive dense gas cloud close to the nucleus of the Seyfert galaxy NGC 1068
+- 2017A&A...599A.134S (2017): The ALMA Redshift 4 Survey (AR4S). I. The massive end of the z = 4 main sequence of galaxies
+- 2017A&A...600A.139H (2017): The impact of a massive star cluster on its surrounding matter in the Antennae overlap region
+- 2017A&A...602A..11P (2017): ALMA reveals starburst-like interstellar medium conditions in a compact star-forming galaxy at z 2 using [CI] and CO
+- 2017A&A...602L...9M (2017): On the Kennicutt-Schmidt scaling law of submillimetre galaxies
+- 2017A&A...604A.117C (2017): Planck's dusty GEMS. IV. Star formation and feedback in a maximum starburst at z = 3 seen at 60-pc resolution
+- 2017A&A...605A..42C (2017): Extended ionised and clumpy gas in a normal galaxy at z = 7.1 revealed by ALMA
+- 2017A&A...606A..17M (2017): An ALMA survey of submillimetre galaxies in the COSMOS field: Physical properties derived from energy balance spectral energy distribution …
+- 2017A&A...608A.138G (2017): The ALMA Frontier Fields Survey. III. 1.1 mm emission line identifications in Abell 2744, MACSJ 0416.1-2403, MACSJ 1149.5+2223, Abell 370, …
+- 2017ApJ...834....6S (2017): Merger-induced Shocks in the Nearby LIRG VV 114 through Methanol Observations with ALMA
+- 2017ApJ...834..135T (2017): Bulge-forming Galaxies with an Extended Rotating Disk at z ~ 2
+- 2017ApJ...835...98U (2017): ALMA Deep Field in SSA22: Source Catalog and Number Counts
+- 2017ApJ...835..174S (2017): Spatially resolved CO SLED of the Luminous Merger Remnant NGC 1614 with ALMA
+- 2017ApJ...835..278S (2017): Physical Properties of Molecular Clouds at 2 pc Resolution in the Low-metallicity Dwarf Galaxy NGC 6822 and the Milky Way
+- 2017ApJ...835..286I (2017): Extremely Red Submillimeter Galaxies: New z ≳ 4-6 Candidates Discovered using ALMA and Jansky VLA
+- 2017ApJ...836L...2B (2017): ALMA [C II] 158 μm Detection of a Redshift 7 Lensed Galaxy behind RXJ1347.1-1145
+- 2017ApJ...837..182O (2017): ALMACAL II: Extreme Star Formation Rate Densities in Dusty Starbursts Revealed by ALMA 20 mas Resolution Imaging
+- 2017ApJ...838..146L (2017): ALMA Observations of the Interaction of a Radio Jet with Molecular Gas in Minkowski's Object
+- 2017ApJ...842L..16L (2017): ALMA [N II] 205 μm Imaging Spectroscopy of the Interacting Galaxy System BRI 1202-0725 at Redshift 4.7
+- 2017ApJ...842L..21N (2017): ALMA Observations of Gas-rich Galaxies in z ∼ 1.6 Galaxy Clusters: Evidence for Higher Gas Fractions in High-density Environments
+- 2017ApJ...844..123F (2017): The Circumgalactic Medium of Submillimeter Galaxies. II. Unobscured QSOs within Dusty Starbursts and QSO Sightlines with Impact Parameters …
+- 2017ApJ...844L..10S (2017): An Imperfectly Passive Nature: Bright Submillimeter Emission from Dust-obscured Star Formation in the z = 3.717 “Passive” System, ZF 20115
+- 2017ApJ...845...50N (2017): A Multi-wavelength Study of the Turbulent Central Engine of the Low-mass AGN Hosted by NGC 404
+- 2017ApJ...846..108C (2017): A Spatially Resolved Study of Cold Dust, Molecular Gas, H II Regions, and Stars in the z = 2.12 Submillimeter Galaxy ALESS67.1
+- 2017ApJ...849...90S (2017): Evolution of Molecular Clouds in the Superwind Galaxy NGC 1808 Probed by ALMA Observations
+- 2017ApJ...849..154S (2017): ALMA Pinpoints a Strong Overdensity of U/LIRGs in the Massive Cluster XCS J2215 at z = 1.46
+- 2017ApJ...850....1R (2017): Rise of the Titans: A Dusty, Hyper-luminous “870 μm Riser” Galaxy at z ∼ 6
+- 2017ApJ...850...54C (2017): ALMA CO(3-2) Observations of Star-forming Filaments in a Gas-poor Dwarf Spheroidal Galaxy
+- 2017ApJ...850..170O (2017): High Dense Gas Fraction in Intensely Star-forming Dusty Galaxies
+- 2017ApJ...851...18L (2017): SDSS-IV MaNGA-resolved Star Formation and Molecular Gas Properties of Green Valley Galaxies: A First Look with ALMA and MaNGA
+- 2017ApJ...851..145M (2017): ALMA Reveals Metals yet No Dust within Multiple Components in CR7
+- 2017MNRAS.465.3461Z (2017): Kinematics of the ionized and molecular gas in nearby luminous infrared interacting galaxies
+- 2017MNRAS.465.4390B (2017): The discovery of gas-rich, dusty starbursts in luminous reddened quasars at z ∼ 2.5 with ALMA
+- 2017MNRAS.468.4205K (2017): ALMA observations of cold molecular gas in AGN hosts at z ∼ 1.5 - evidence of AGN feedback?
+- 2017MNRAS.468L..87C (2017): New ALMA constraints on the star-forming interstellar medium at low metallicity: a 50 pc view of the blue compact dwarf galaxy SBS 0335-052
+- 2017MNRAS.469.4683C (2017): ALMA constraints on star-forming gas in a prototypical z = 1.5 clumpy galaxy: the dearth of CO(5-4) emission from UV-bright clumps
+- 2017MNRAS.470.3775V (2017): VALES I: the molecular gas content in star-forming dusty H-ATLAS galaxies up to z = 0.35
+- 2017MNRAS.471.4155K (2017): The evolving far-IR galaxy luminosity function and dust-obscured star formation rate density out to z≃5.
+- 2017MNRAS.472.1239B (2017): Tests of star formation metrics in the low-metallicity galaxy NGC 5253 using ALMA observations of H30α line emission
+- 2017PASJ...69...83M (2017): ALMA multiline observations toward the central region of NGC 613
+- 2018A&A...612A..29B (2018): Molecular outflow and feedback in the obscured quasar XID2028 revealed by ALMA
+- 2018A&A...615A..94F (2018): Fragmentation properties of massive protocluster gas clumps: an ALMA study
+- 2018A&A...616A.110E (2018): Starbursts in and out of the star-formation main sequence
+- 2018A&A...616A.171P (2018): Spatially resolved cold molecular outflows in ULIRGs
+- 2018A&A...617A..82B (2018): The WISSH quasars project. V. ALMA reveals the assembly of a giant galaxy around a z = 4.4 hyper-luminous QSO
+- 2018ApJ...853..149S (2018): Revisiting the Extended Schmidt Law: The Important Role of Existing Stars in Regulating Star Formation
+- 2018ApJ...854...97D (2018): An ALMA [C II] Survey of 27 Quasars at z &gt; 5.94
+- 2018ApJ...854L...4R (2018): Cospatial Star Formation and Supermassive Black Hole Growth in z ∼ 3 Galaxies: Evidence for In Situ Co-evolution
+- 2018ApJ...855L..25K (2018): Core Emergence in a Massive Infrared Dark Cloud: A Comparison between Mid-IR Extinction and 1.3 mm Emission
+- 2018ApJ...856...72O (2018): An Extreme Protocluster of Luminous Dusty Starbursts in the Early Universe
+- 2018ApJ...856..118H (2018): Molecular Gas Reservoirs in Cluster Galaxies at z = 1.46
+- 2018ApJ...856..121G (2018): Starburst to Quiescent from HST/ALMA: Stars and Dust Unveil Minor Mergers in Submillimeter Galaxies at z ∼ 4.5
+- 2018ApJ...856L..12N (2018): Molecular Emission from a Galaxy Associated with a z ∼ 2.2 Damped Lyα Absorber
+- 2018ApJ...856L..23K (2018): Massive, Absorption-selected Galaxies at Intermediate Redshifts
+- 2018ApJ...858...90G (2018): Dense Gas, Dynamical Equilibrium Pressure, and Star Formation in Nearby Star-forming Galaxies
+- 2018ApJ...859...12G (2018): The Dust and [C II] Morphologies of Redshift ∼4.5 Sub-millimeter Galaxies at ∼200 pc Resolution: The Absence of Large Clumps in the Interst…
+- 2018ApJ...860..103S (2018): Molecular Gas Contents and Scaling Relations for Massive, Passive Galaxies at Intermediate Redshifts from the LEGA-C Survey
+- 2018ApJ...861....7F (2018): ALMA 26 Arcmin<SUP>2</SUP> Survey of GOODS-S at One Millimeter (ASAGAO): Average Morphology of High-z Dusty Star-forming Galaxies in an Exp…
+- 2018ApJ...861L..18U (2018): Star Formation Efficiency per Free-fall Time in nearby Galaxies
+- 2018ApJ...862...64S (2018): Deciphering the Activity and Quiescence of High-redshift Cluster Environments: ALMA Observations of Cl J1449+0856 at z = 2
+- 2018ApJ...863..129S (2018): Spatially Resolved Dense Molecular Gas Excitation in the Nearby LIRG VV 114
+- 2018ApJ...863..193V (2018): Molecular Gas Filaments and Star-forming Knots Beneath an X-Ray Cavity in RXC J1504-0248
+- 2018ApJ...863L..16M (2018): The “Cosmic Seagull”: A Highly Magnified Disk-like Galaxy at z ≃ 2.8 behind the Bullet Cluster
+- 2018ApJ...863L..21K (2018): A 50 pc Scale View of Star Formation Efficiency across NGC 628
+- 2018ApJ...863L..29D (2018): Witnessing Galaxy Assembly at the Edge of the Reionization Epoch
+- 2018ApJ...864...38L (2018): CO (7-6), [C I] 370 μm, and [N II] 205 μm Line Emission of the QSO BRI 1335-0417 at Redshift 4.407
+- 2018ApJ...864..120M (2018): ALMA Observations toward the Starburst Dwarf Galaxy NGC 5253. I. Molecular Cloud Properties and Scaling Relations
+- 2018ApJ...867...92S (2018): The Molecular Gas Content and Fuel Efficiency of Starbursts at z ∼ 1.6 with ALMA
+- 2018ApJ...867..140L (2018): Resolving Star Formation on Subkiloparsec Scales in the High-redshift Galaxy SDP.11 Using Gravitational Lensing
+- 2018ApJ...867L..29W (2018): Revealing the Environmental Dependence of Molecular Gas Content in a Distant X-Ray Cluster at z = 2.51
+- 2018ApJ...868...75S (2018): Concurrent Starbursts in Molecular Gas Disks within a Pair of Colliding Galaxies at z = 1.52
+- 2018ApJ...869L..22W (2018): No Evidence for Enhanced [O III] 88 μm Emission in a z ∼ 6 Quasar Compared to Its Companion Starbursting Galaxy
+- 2018MNRAS.474.4039M (2018): ALMA + VLT observations of a damped Lyman-α absorbing galaxy: massive, wide CO emission, gas-rich but with very low SFR
+- 2018MNRAS.475..248C (2018): VALES - IV. Exploring the transition of star formation efficiencies between normal and starburst galaxies using APEX/SEPIA Band-5 and ALMA …
+- 2018MNRAS.475..492K (2018): ALMACAL - III. A combined ALMA and MUSE survey for neutral, molecular, and ionized gas in an H I-absorption-selected system
+- 2018MNRAS.475.1288S (2018): Identifying the subtle signatures of feedback from distant AGN using ALMA observations and the EAGLE hydrodynamical simulations
+- 2018MNRAS.476..122V (2018): An ALMA view of star formation efficiency suppression in early-type galaxies after gas-rich minor mergers
+- 2018MNRAS.476.4383D (2018): Modelling high-resolution ALMA observations of strongly lensed highly star-forming galaxies detected by Herschel
+- 2018MNRAS.477.4380S (2018): Testing star formation laws in a starburst galaxy at redshift 3 resolved with ALMA
+- 2018MNRAS.478.1170C (2018): Kiloparsec-scale gaseous clumps and star formation at z = 5-7
+- 2018MNRAS.479..703C (2018): Merger-driven star formation activity in Cl J1449+0856 at z = 1.99 as seen by ALMA and JVLA
+- 2018MNRAS.481.1016G (2018): Connecting young star clusters to CO molecular gas in NGC 7793 with ALMA-LEGUS
+- 2018MNRAS.481.1631B (2018): Obscured star formation in bright z ≃ 7 Lyman-break galaxies
+- 2018MNRAS.481.1976Z (2018): The [C II] emission as a molecular gas mass tracer in galaxies at low and high redshifts
+- 2018NatAs...2...56Z (2018): A dusty star-forming galaxy at z = 6 revealed by strong gravitational lensing
+- 2018Natur.553..178S (2018): Rotation in [C II]-emitting gas in two galaxies at a redshift of 6.8
+- 2018Natur.558..260Z (2018): Stellar populations dominated by massive stars in dusty starburst galaxies across cosmic time
+- 2018Natur.560..613T (2018): The gravitationally unstable gas disk of a starburst galaxy 12 billion years ago
+- 2018PASJ...70L...6K (2018): A high dust emissivity index β for a CO-faint galaxy in a filamentary Lyα nebula at z = 3.1
+- 2019A&A...621A..27F (2019): Massive galaxies on the road to quenching: ALMA observations of powerful high redshift radio galaxies
+- 2019A&A...623A..66B (2019): ALMA CO(2-1) observations in the XUV disk of M83
+- 2019A&A...624A..81M (2019): Quenching by gas compression and consumption. A case study of a massive radio galaxy at z = 2.57
+- 2019A&A...625A..96K (2019): Using ALMA to resolve the nature of the early star-forming large-scale structure PLCK G073.4-57.5
+- 2019AJ....157..131B (2019): Kiloparsec-Scale Variations in the Star Formation Efficiency of Dense Gas: The Antennae Galaxies (NGC 4038/39)
+- 2019ApJ...870...39V (2019): ALMA Observations of the Molecular Gas in the Elliptical Galaxy NGC 3557
+- 2019ApJ...872..117G (2019): Confirming Herschel Candidate Protoclusters from ALMA/VLA CO Observations
+- 2019ApJ...874...53B (2019): Environmental Effect on the Interstellar Medium in Galaxies across the Cosmic Web at z = 0.73
+- 2019ApJ...876...99S (2019): Star Formation and ISM Properties in the Host Galaxies of Three Far-infrared Luminous Quasars at z ∼ 6
+- 2019ApJ...876..112R (2019): Strong Far-ultraviolet Fields Drive the [C II]/Far-infrared Deficit in z ∼ 3 Dusty, Star-forming Galaxies
+- 2019ApJ...876..130H (2019): ALMA Reveals Potential Evidence for Spiral Arms, Bars, and Rings in High-redshift Submillimeter Galaxies
+- 2019ApJ...877L..23P (2019): The Main Sequence at z ∼ 1.3 Contains a Sizable Fraction of Galaxies with Compact Star Formation Sizes: A New Population of Early Post-star…
+- 2019ApJ...877L..38R (2019): Active Galactic Nuclei in Dusty Starbursts at z = 2: Feedback Still to Kick in
+- 2019ApJ...880...92J (2019): Spatially Resolved Water Emission from Gravitationally Lensed Dusty Star-forming Galaxies at z ∼ 3
+- 2019ApJ...880..157D (2019): ALMA and HST Kiloparsec-scale Imaging of a Quasar-galaxy Merger at Z ≈ 6.2
+- 2019ApJ...881...63N (2019): An ALMA Multiline Survey of the Interstellar Medium of the Redshift 7.5 Quasar Host Galaxy J1342+0928
+- 2019ApJ...881..124M (2019): Resolved UV and [C II] Structures of Luminous Galaxies within the Epoch of Reionization
+- 2019ApJ...881..147S (2019): Positive and Negative Feedback of AGN Outflows in NGC 5728
+- 2019ApJ...882....5W (2019): The Kennicutt-Schmidt Law and Gas Scale Height in Luminous and Ultraluminous Infrared Galaxies
+- 2019ApJ...882...10N (2019): Resolved [C II] Emission from z &gt; 6 Quasar Host-Companion Galaxy Pairs
+- 2019ApJ...882..107R (2019): ALMA 200 pc Resolution Imaging of Smooth Cold Dusty Disks in Typical z ∼ 3 Star-forming Galaxies
+- 2019ApJ...882..136A (2019): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Evolution of the Molecular Gas in CO-selected Galaxies
+- 2019ApJ...882..137P (2019): The ALMA Spectroscopic Survey in the HUDF: the Molecular Gas Content of Galaxies and Tensions with IllustrisTNG and the Santa Cruz SAM
+- 2019ApJ...883...81S (2019): Evidence for Inside-out Galaxy Growth and Quenching of a z ∼ 2 Compact Galaxy From High-resolution Molecular Gas Imaging
+- 2019ApJ...884L..33L (2019): The ALMaQUEST Survey: The Molecular Gas Main Sequence and the Origin of the Star-forming Main Sequence
+- 2019ApJ...885L..21M (2019): How to Fuel an AGN: Mapping Circumnuclear Gas in NGC 6240 with ALMA
+- 2019ApJ...887...74F (2019): ALMA Reveals a Gas-rich, Maximum Starburst in the Hyperluminous, Dust-obscured Quasar W0533-3401 at z ∼ 2.9
+- 2019ApJ...887...88E (2019): Star Formation Efficiencies at Giant Molecular Cloud Scales in the Molecular Disk of the Elliptical Galaxy NGC 5128 (Centaurus A)
+- 2019ApJ...887..144J (2019): Discovery of Four Apparently Cold Dusty Galaxies at z = 3.62-5.85 in the COSMOS Field: Direct Evidence of Cosmic Microwave Background Impac…
+- 2019ApJ...887..183Z (2019): On the Gas Content, Star Formation Efficiency, and Environmental Quenching of Massive Galaxies in Protoclusters at z ≈ 2.0-2.5
+- 2019ApJS..244...40L (2019): Automated Mining of the ALMA Archive in the COSMOS Field (A<SUP>3</SUP>COSMOS). I. Robust ALMA Continuum Photometry Catalogs and Stellar Ma…
+- 2019MNRAS.483.4586F (2019): Cold molecular outflows in the local Universe and their feedback effect on galaxies
+- 2019MNRAS.485.1595P (2019): Multiphase circumgalactic medium probed with MUSE and ALMA
+- 2019MNRAS.485.2092C (2019): Suppressed CO emission and high G/D ratios in z = 2 galaxies with sub-solar gas-phase metallicity
+- 2019MNRAS.486..560S (2019): Passive galaxies in the early Universe: ALMA confirmation of z ∼ 3-5 candidates in the CANDELS GOODS-South field
+- 2019MNRAS.487.4305S (2019): Testing star formation laws on spatially resolved regions in a z ≈ 4.3 starburst galaxy
+- 2019MNRAS.487.4856M (2019): The kiloparsec-scale gas kinematics in two star-forming galaxies at z ∼ 1.47 seen with ALMA and VLT-SINFONI
+- 2019MNRAS.488.1180S (2019): No signs of star formation being regulated in the most luminous quasars at z ∼ 2 with ALMA
+- 2019MNRAS.489..427I (2019): Hyperluminous starburst gives up its secrets
+- 2019Natur.569..519K (2019): Fast and inefficient star formation due to short-lived molecular clouds and rapid feedback
+- 2019PASJ...71...40T (2019): Environmental impacts on molecular gas in protocluster galaxies at z ∼ 2
+- 2019PASJ...71...44H (2019): Formation of high-mass stars in an isolated environment in the Large Magellanic Cloud
+- 2020A&A...633A..68D (2020): GRB 190114C in the nuclear region of an interacting galaxy. A detailed host analysis using ALMA, the HST, and the VLT
+- 2020A&A...635A...2S (2020): Physical properties of the star-forming clusters in NGC 6334. A study of the continuum dust emission with ALMA
+- 2020A&A...635A.119C (2020): Extended Hα over compact far-infrared continuum in dusty submillimeter galaxies. Insights into dust distributions and star-formation rates …
+- 2020A&A...641A.151S (2020): Molecular gas in the central region of NGC 7213
+- 2020A&A...641A.155V (2020): CO emission in distant galaxies on and above the main sequence
+- 2020A&A...641L...6D (2020): Discovery of molecular gas fueling galaxy growth in a protocluster at z = 1.7
+- 2020A&A...642A.155Z (2020): GOODS-ALMA: Optically dark ALMA galaxies shed light on a cluster in formation at z = 3.5
+- 2020A&A...643A...5D (2020): The ALPINE-ALMA [C II] survey. Molecular gas budget in the early Universe as traced by [C II]
+- 2020A&A...643A...6C (2020): The ALPINE-ALMA [CII] survey. Small Lyα-[CII] velocity offsets in main-sequence galaxies at 4.4 &lt; z &lt; 6
+- 2020A&A...643A...8G (2020): The ALPINE-ALMA [CII] survey. The nature, luminosity function, and star formation history of dusty galaxies up to z ≃ 6
+- 2020A&A...643A..30F (2020): GOODS-ALMA: The slow downfall of star formation in z = 2-3 massive galaxies
+- 2020A&A...643A..78M (2020): VALES. VII. Molecular and ionized gas properties in the pressure balanced interstellar medium of starburst galaxies at z ∼ 0.15
+- 2020ApJ...888...44C (2020): Unveiling Sizes of Compact AGN Hosts with ALMA
+- 2020ApJ...889....9M (2020): GASP. XXII. The Molecular Gas Content of the JW100 Jellyfish Galaxy at z ∼ 0.05: Does Ram Pressure Promote Molecular Gas Formation?
+- 2020ApJ...890...24V (2020): The Properties of the Interstellar Medium of Galaxies across Time as Traced by the Neutral Atomic Carbon [C I]
+- 2020ApJ...890..171J (2020): The Redshift and Star Formation Mode of AzTEC2: A Pair of Massive Galaxies at z = 4.63
+- 2020ApJ...892...42H (2020): ALMA CO Observations of the Host Galaxies of Long-duration Gamma-Ray Bursts. I. Molecular Gas Scaling Relations
+- 2020ApJ...892..145Z (2020): ALMA Imaging of the CO (7-6) Line Emission in the Submillimeter Galaxy LESS 073 at z = 4.755
+- 2020ApJ...895...21I (2020): ALMA Observations of the Molecular Clouds in NGC 625
+- 2020ApJ...897L..30M (2020): The High Molecular Gas Content, and the Efficient Conversion of Neutral into Molecular Gas, in Jellyfish Galaxies
+- 2020ApJ...898...33C (2020): ALMA [{N} {II}] 205 μm Imaging Spectroscopy of the Lensed Submillimeter Galaxy ID 141 at Redshift 4.24
+- 2020ApJ...899..165A (2020): Local Starburst Conditions and Formation of GRB 980425/SN 1998bw within a Collisional Ring
+- 2020ApJ...900...37E (2020): Detecting and Characterizing Young Quasars. I. Systemic Redshifts and Proximity Zone Measurements
+- 2020ApJ...901...79A (2020): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: The Nature of the Faintest Dusty Star-forming Galaxies
+- 2020ApJ...902..112B (2020): The ALMA Spectroscopic Survey Large Program: The Infrared Excess of z = 1.5-10 UV-selected Galaxies and the Implied High-redshift Star Form…
+- 2020ApJ...902..113I (2020): The ALMA Spectroscopic Survey in the Hubble Ultra Deep Field: Constraining the Molecular Content at log(M<SUB>*</SUB>/M<SUB>☉</SUB>) ∼ 9.5 …
+- 2020ApJ...903..145L (2020): ALMaQUEST. IV. The ALMA-MaNGA QUEnching and STar Formation (ALMaQUEST) Survey
+- 2020ApJ...905...86S (2020): Ubiquitous Molecular Outflows in z &gt; 4 Massive, Dusty Galaxies. II. Momentum-driven Winds Powered by Star Formation in the Early Universe
+- 2020ApJ...905L..23M (2020): Where's the Dust?: The Deepening Anomaly of Microwave Emission in NGC 4725 B
+- 2020ApJS..247...61F (2020): The ALPINE-ALMA [C II] Survey: Multiwavelength Ancillary Data and Basic Physical Measurements
+- 2020ApJS..251...14H (2020): CMZoom. II. Catalog of Compact Submillimeter Dust Continuum Sources in the Milky Way's Central Molecular Zone
+- 2020MNRAS.491.4724F (2020): A3COSMOS: the dust attenuation of star-forming galaxies at z = 2.5-4.0 from the COSMOS-ALMA archive
+- 2020MNRAS.492.3194S (2020): KASHz: No evidence for ionised outflows instantaneously suppressing star formation in moderate luminosity AGN at z ∼ 1.4-2.6
+- 2020MNRAS.492.6027E (2020): The ALMaQUEST Survey - II. What drives central starbursts at z ∼ 0?
+- 2020MNRAS.493.2872C (2020): The lifecycle of molecular clouds in nearby star-forming disc galaxies
+- 2020MNRAS.493L..39E (2020): The ALMaQUEST survey - III. Scatter in the resolved star-forming main sequence is primarily due to variations in star formation efficiency
+- 2020MNRAS.494.3828D (2020): An ALMA survey of the SCUBA-2 CLS UDS field: physical properties of 707 sub-millimetre galaxies
+- 2020MNRAS.494.5542R (2020): Full of Orions: a 200-pc mapping of the interstellar medium in the redshift-3 lensed dusty star-forming galaxy SDP.81
+- 2020MNRAS.495.3840M (2020): A large amount of diffuse molecular gases in the bar of the strongly barred galaxy NGC 1300: cause of the low star formation efficiency
+- 2020MNRAS.496..598C (2020): Linking the small-scale relativistic winds and the large-scale molecular outflows in the z = 1.51 lensed quasar HS 0810+2554
+- 2020MNRAS.496..875R (2020): The ALPINE-ALMA [C II] Survey: on the nature of an extremely obscured serendipitous galaxy
+- 2020MNRAS.496.2155Z (2020): AlFoCS + Fornax3D: resolved star formation in the Fornax cluster with ALMA and MUSE
+- 2020MNRAS.496.4358I (2020): ALMA unveils wider environment of distant red protocluster core
+- 2020MNRAS.496.4405H (2020): Far-infrared star formation rates of six GRB host galaxies with ALMA
+- 2020MNRAS.496.5243H (2020): Is this an early stage merger? A case study on molecular gas and star formation properties of Arp 240
+- 2020MNRAS.497.2771M (2020): VALES VI: ISM enrichment in star-forming galaxies up to z ∼ 0.2 using <SUP>12</SUP>CO(1-0), <SUP>13</SUP>CO(1-0), and C<SUP>18</SUP>O(1-0) …
+- 2020MNRAS.498.1560J (2020): High molecular gas content and star formation rates in local galaxies that host quasars, outflows, and jets
+- 2020MNRAS.498.4109J (2020): Gas and star formation from HD and dust emission in a strongly lensed galaxy
+- 2020MNRAS.498.4192F (2020): ALMA characterizes the dust temperature of z ∼ 5.5 star-forming galaxies
+- 2020MNRAS.499..193K (2020): Measuring the mixing scale of the ISM within nearby spiral galaxies
+- 2020MNRAS.499.4940Z (2020): Unravelling the enigmatic ISM conditions in Minkowski's object
+- 2020MNRAS.499.5136C (2020): Missing [C II] emission from early galaxies
+- 2020MNRAS.499.5241C (2020): A kpc-scale-resolved study of unobscured and obscured star formation activity in normal galaxies at z = 1.5 and 2.2 from ALMA and HiZELS
+- 2020NatAs...4..670A (2020): Infalling gas in a Lyman-α blob
+- 2020Natur.584..201R (2020): A dynamically cold disk galaxy in the early Universe
+- 2020PASJ...72...29O (2020): ALMA band 8 observations of DLA 2233+131 at z = 3.150
+- 2020PASJ...72L...6H (2020): Spatially resolved molecular gas properties of host galaxy of Type I superluminous supernova SN 2017egm
+- 2021A&A...645A..33B (2021): The WISSH quasars project. IX. Cold gas content and environment of luminous QSOs at z ∼ 2.4-4.7
+- 2021A&A...645A.120F (2021): ALMA and MUSE observations reveal a quiescent multi-phase circumgalactic medium around the z ≃ 3.6 radio galaxy 4C 19.71
+- 2021A&A...646A..26B (2021): A puzzling non-detection of [O III] and [C II] from a z ≈ 7.7 galaxy observed with ALMA
+- 2021A&A...649A..31H (2021): Kiloparsec view of a typical star-forming galaxy when the Universe was ∼1 Gyr old. I. Properties of outflow, halo, and interstellar medium
+- 2021A&A...650A.117N (2021): The host galaxy of the short GRB 050709
+- 2021A&A...652A..30S (2021): The emergence of passive galaxies in the early Universe
+- 2021A&A...654A...8N (2021): Jet-driven AGN feedback on molecular gas and low star-formation efficiency in a massive local spiral galaxy with a bright X-ray halo
+- 2021A&A...654A..90L (2021): SUPER. V. ALMA continuum observations of z ∼ 2 AGN and the elusive evidence of outflows influencing star formation
+- 2021A&A...655A..42S (2021): Molecular gas budget and characterization of intermediate-mass star-forming galaxies at z ≈ 2-3
+- 2021A&A...656A..60A (2021): Black hole feeding and star formation in NGC 1808
+- 2021A&A...656A.133Q (2021): Stellar structures, molecular gas, and star formation across the PHANGS sample of nearby galaxies
+- 2021ApJ...907...62R (2021): Rise of the Titans: Gas Excitation and Feedback in a Binary Hyperluminous Dusty Starburst Galaxy at z ∼ 6
+- 2021ApJ...908...15S (2021): Dust, Gas, and Metal Content in Star-forming Galaxies at z ∼ 3.3 Revealed with ALMA and Near-IR Spectroscopy
+- 2021ApJ...908...54W (2021): ALMA Measures Rapidly Depleted Molecular Gas Reservoirs in Massive Quiescent Galaxies at z ∼ 1.5
+- 2021ApJ...908..146C (2021): ALMA Lensing Cluster Survey: An ALMA Galaxy Signposting a MUSE Galaxy Group at z = 4.3 Behind "El Gordo"
+- 2021ApJ...908..192S (2021): ALMA 1.3 mm Survey of Lensed Submillimeter Galaxies Selected by Herschel: Discovery of Spatially Extended SMGs and Implications
+- 2021ApJ...909...12G (2021): Systematic Difference between Ionized and Molecular Gas Velocity Dispersions in z ∼ 1-2 Disks and Local Analogs
+- 2021ApJ...909...84U (2021): Internal Structure of Molecular Gas in a Main-sequence Galaxy With a UV Clump at z = 1.45
+- 2021ApJ...909..181L (2021): Revisited Cold Gas Content with Atomic Carbon [C I] in z = 2.5 Protocluster Galaxies
+- 2021ApJ...909L..29D (2021): A CO Survey of SpARCS Star-forming Brightest Cluster Galaxies: Evidence for Uniformity in BCG Molecular Gas Processing across Cosmic Time
+- 2021ApJ...910...89B (2021): The Physical Drivers of the Luminosity-weighted Dust Temperatures in High-redshift Galaxies
+- 2021ApJ...915...46C (2021): ALMA Host Galaxy Observation of the Off-axis Gamma-Ray Burst XRF 020903
+- 2021ApJ...918...76C (2021): Toward a More Complex Understanding of Natal Super Star Clusters with Multiwavelength Observations
+- 2021ApJ...921...97J (2021): Molecular Line Observations in Two Dusty Star-forming Galaxies at z = 6.9
+- 2021Galax...9..115D (2021): Multi-Wavelength Study of a Proto-BCG at z = 1.7
+- 2021MNRAS.500.3667S (2021): The rocky road to quiescence: compaction and quenching of quasar host galaxies at z ∼ 2
+- 2021MNRAS.500.3802H (2021): Centrally concentrated molecular gas driving galactic-scale ionized gas outflows in star-forming galaxies
+- 2021MNRAS.502.3021R (2021): Vibrationally excited HC<SUB>3</SUB>N emission in NGC 1068: tracing the recent star formation in the starburst ring
+- 2021MNRAS.506..514K (2021): H<SUB>2</SUB> molecular gas absorption-selected systems trace CO molecular gas-rich galaxy overdensities
+- 2021MNRAS.507.3998P (2021): An ALMA view of 11 dusty star-forming galaxies at the peak of cosmic star formation history
+- 2021NatAs...5..319P (2021): A titanic interstellar medium ejection from a massive starburst galaxy at redshift 1.4
+- 2022A&A...657A..25N (2022): Radial profiles of lensed z ∼ 1 galaxies on sub-kiloparsec scales
+- 2022A&A...659A..46B (2022): A Virgo Environmental Survey Tracing Ionised Gas Emission (VESTIGE). XII. Ionised gas emission in the inner regions of lenticular galaxies
+- 2022A&A...661A.136G (2022): The molecular gas resolved by ALMA in the low-metallicity merging dwarf galaxy Haro 11
+- 2022A&A...663A..61P (2022): Variations in the Σ<SUB>SFR</SUB> ‒ Σ<SUB>mol</SUB> ‒ Σ<SUB>⋆</SUB> plane across galactic environments in PHANGS galaxies
+- 2022A&A...664A..63X (2022): Starbursts with suppressed velocity dispersion revealed in a forming cluster at z = 2.51
+- 2022A&A...665A...3J (2022): Diagnosing deceivingly cold dusty galaxies at 3.5 &lt; z &lt; 6: A substantial population of compact starbursts with high infrared optical …
+- 2022A&A...668A..45L (2022): Physics of ULIRGs with MUSE and ALMA: The PUMA project. IV. No tight relation between cold molecular outflow rates and AGN luminosities
+- 2022AJ....164...43S (2022): Molecular Cloud Populations in the Context of Their Host Galaxy Environments: A Multiwavelength Perspective
+- 2022ApJ...926..159I (2022): ALMA Sub-arcsecond-resolution 183 GHz H<SUB>2</SUB>O and Dense Molecular Line Observations of Nearby Ultraluminous Infrared Galaxies
+- 2022ApJ...929..100K (2022): Multiwavelength and Multi-CO View of the Minor Merger Driven Star Formation in the Nearby LIRG NGC 3110
+- 2022ApJ...930...32C (2022): Searching Far and Long. I. Pilot ALMA 2 mm Follow-up of Bright Dusty Galaxies as a Redshift Filter
+- 2022ApJ...934..173S (2022): The ALMaQUEST Survey. VIII. What Causes the Discrepancy in the Velocity between the CO and Hα Rotation Curves in Galaxies?
+- 2022ApJ...941...47S (2022): A Molecular Gas Ring Hidden in the Sombrero Galaxy
+- 2022MNRAS.510.3734D (2022): A high-resolution investigation of the multiphase ISM in a galaxy during the first two billion years
+- 2022MNRAS.510.4976A (2022): The nature of sub-millimetre galaxies II: an ALMA comparison of SMG dust heating mechanisms
+- 2022MNRAS.510.4998Z (2022): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - IV. Radio recombination lines and evolution of star formation e…
+- 2022MNRAS.511.1303V (2022): The ALPINE-ALMA [C II] survey: Investigation of 10 galaxies at z 4.5 with [O II] and [C II] line emission - ISM properties and [O II]-SFR r…
+- 2022MNRAS.512..686E (2022): AGN impact on the molecular gas in galactic centres as probed by CO lines
+- 2022MNRAS.512.1522D (2022): WISDOM Project - X. The morphology of the molecular ISM in galaxy centres and its dependence on galaxy structure
+- 2022MNRAS.512.2371H (2022): Unveiling the main sequence to starburst transition region with a sample of intermediate redshift luminous infrared galaxies
+- 2022MNRAS.514.5035L (2022): WISDOM project - XI. Star formation efficiency in the bulge of the AGN-host Galaxy NGC 3169 with SITELLE and ALMA
+- 2022MNRAS.515.1751W (2022): Dual constraints with ALMA: new [O III] 88-μm and dust-continuum observations reveal the ISM conditions of luminous LBGs at z 7
+- 2022MNRAS.516..861T (2022): Molecular flows in contemporary active galaxies and the efficacy of radio-mechanical feedback
+- 2023A&A...671A...3J (2023): VERTICO. III. The Kennicutt-Schmidt relation in Virgo cluster galaxies
+- 2023A&A...676A..67W (2023): Quantifying the energetics of molecular superbubbles in PHANGS galaxies
+- 2023A&A...678A.183N (2023): Resolved Kennicutt-Schmidt law in two strongly lensed star-forming galaxies at redshift 1
+- 2023ApJ...942...25F (2023): The State of the Molecular Gas in Post-starburst Galaxies
+- 2023ApJ...945...42B (2023): Does the HCN/CO Ratio Trace the Star-forming Fraction of Gas? I. A Comparison with Analytical Models of Star Formation
+- 2023ApJ...948...88W (2023): Star Formation and Molecular Gas Diagnostics with Mid- and Far-infrared Emission
+- 2023ApJ...952...48H (2023): Big Three Dragons: Molecular Gas in a Bright Lyman-break Galaxy at z = 7.15
+- 2023MNRAS.521.3348N (2023): The ALMOND survey: molecular cloud properties and gas density tracers across 25 nearby spiral galaxies with ALMA
+- 2023MNRAS.521.5508H (2023): Bright extragalactic ALMA redshift survey (BEARS) III: detailed study of emission lines from 71 Herschel targets
+- 2023MNRAS.523.4654T (2023): Spatially resolved dust properties and quasar-galaxy decomposition of a hyper-luminous infrared galaxy at z = 4.4
+- 2023MNRAS.524.1775H (2023): The ALMA REBELS Survey: discovery of a massive, highly star-forming, and morphologically complex ULIRG at z = 7.31
+- 2023MNRAS.525.5831K (2023): Faint [C I](1-0) emission in z ∼ 3.5 radio galaxies
+- 2024A&A...681A.110W (2024): A<SUP>3</SUP>COSMOS: Dissecting the gas content of star-forming galaxies across the main sequence at 1.2 ≤ z &lt; 1.6
+- 2024A&A...682A..24A (2024): The ALMA Reionization Era Bright Emission Line Survey: The molecular gas content of galaxies at z 7
+- 2024A&A...682A..54T (2024): HYPERION. Interacting companion and outflow in the most luminous z &gt; 6 quasar
+- 2024A&A...684A..33K (2024): The cold molecular gas in z ≳ 6 quasar host galaxies
+- 2024A&A...685A..80Z (2024): Unveiling [C II] clumps in a lensed star-forming galaxy at z ∼ 3.4
+- 2024A&A...687A.288G (2024): Dark progenitors and massive descendants: A first ALMA perspective of radio-selected near-IR-dark galaxies in the COSMOS field
+- 2024A&A...687A.293Q (2024): Do spiral arms enhance star formation efficiency?
+- 2024A&A...689A.122B (2024): The properties and kinematics of HCN emission across the closest starburst galaxy NGC 253 observed with ALMA
+- 2024A&A...689A.220T (2024): HYPERION: Coevolution of supermassive black holes and galaxies at z &gt; 6 and the build-up of massive galaxies
+- 2024A&A...689A.283L (2024): ALMA reveals a dust-obscured galaxy merger at cosmic noon
+- 2024A&A...690L..16J (2024): A photo-z cautionary tale: Redshift confirmation of COSBO-7 at z = 2.625
+- 2024A&A...691A.153L (2024): GA-NIFS: JWST/NIRSpec IFS view of the z ∼ 3.5 galaxy GS5001 and its close environment at the core of a large-scale overdensity
+- 2024A&A...691A.248L (2024): The role of stellar mass in the cosmic history of star formation as seen by Herschel and ALMA
+- 2024A&A...692A..22Z (2024): ASW<SUP>2</SUP>DF: Census of the obscured star formation in a galaxy cluster in formation at z = 2.2
+- 2024A&A...692A.146B (2024): Does the HCN/CO ratio trace the star-forming fraction of gas?: II. Variations in CO and HCN emissivity
+- 2024A&A...692A.215C (2024): Molecular gas budget of strongly magnified low-mass star-forming galaxies at cosmic noon
+- 2024ApJ...961....2K (2024): PASSAGES: The Wide-ranging, Extreme Intrinsic Properties of Planck-selected, Lensed Dusty Star-forming Galaxies
+- 2024ApJ...961...42T (2024): Star Formation Efficiency in Nearby Galaxies Revealed with a New CO-to-H<SUB>2</SUB> Conversion Factor Prescription
+- 2024ApJ...962...88V (2024): The EDGE-CALIFA Survey: Molecular Gas and Star Formation Activity across the Green Valley
+- 2024ApJ...963..115L (2024): The ALMaQUEST Survey. XII. Dense Molecular Gas as Traced by HCN and HCO<SUP>+</SUP> in Green Valley Galaxies
+- 2024ApJ...964...18C (2024): Resolved Measurements of the CO-to-H<SUB>2</SUB> Conversion Factor in 37 Nearby Galaxies
+- 2024ApJ...964...95S (2024): Physical Properties of Hyperluminous, Dust-obscured Quasars at z ∼ 3: Multiwavelength Spectral Energy Distribution Analysis and Cold Gas Co…
+- 2024ApJ...964..120P (2024): The ALMaQUEST Survey. XIII. Understanding Radial Trends in Star Formation Quenching via the Relative Roles of Gas Availability and Star For…
+- 2024ApJ...968...15L (2024): JWST and ALMA Discern the Assembly of Structural and Obscured Components in a High-redshift Starburst Galaxy
+- 2024ApJ...970...30M (2024): First Constraints on the Interstellar Medium Conditions of a Low-mass, Highly Obscured z = 4.27 Main-sequence Galaxy
+- 2024ApJ...970...75Z (2024): The Resolved Star Formation Law in NGC 7469 from JWST, ALMA, and VLA
+- 2024ApJ...972..147C (2024): Comparisons between Resolved Star Formation Rate and Gas Tracers in the Strongly Lensed Galaxy SDSS J0901+1814 at Cosmic Noon
+- 2024ApJ...974..150W (2024): Accretion and Outflow in Orion-KL Source I
+- 2024ApJ...974..243N (2024): Measuring 60 pc-scale Star Formation Rate of the Nearby Seyfert Galaxy NGC 1068 with ALMA, HST, VLT/MUSE, and VLA
+- 2024ApJ...976...70L (2024): The ALMA-CRISTAL Survey: Spatially Resolved Star Formation Activity and Dust Content in 4 &lt; z &lt; 6 Star-forming Galaxies
+- 2024ApJ...976...88L (2024): Disk Turbulence and Star Formation Regulation in High-z Main-sequence Analog Galaxies
+- 2024ApJ...976..201F (2024): Constraining Quasar Feedback from Analysis of the Hydrostatic Equilibrium of the Molecular Gas in Their Host Galaxies
+- 2024ApJ...977L...6F (2024): The Impact of Shear on Disk Galaxy Star Formation Rates
+- 2024ApJ...977L..46B (2024): [C II] Properties and Far-infrared Variability of a z = 7 Blazar
+- 2024ApJS..271....2H (2024): The PHANGS-AstroSat Atlas of Nearby Star-forming Galaxies
+- 2024MNRAS.527.6867A (2024): Cold dust and low [O III]/[C II] ratios: an evolved star-forming population at redshift 7
+- 2024MNRAS.52710201E (2024): The ALMaQUEST Survey XI: a strong but non-linear relationship between star formation and dynamical equilibrium pressure
+- 2024MNRAS.52710221P (2024): Enhanced star formation and metallicity deficit in the USS 1558-003 forming protocluster at z = 2.53
+- 2024MNRAS.528.6768H (2024): The ALMaQUEST Survey XIV: do radial molecular gas flows affect the star-forming ability of barred galaxies?
+- 2024MNRAS.531..815L (2024): The recent star formation histories of nearby galaxies on resolved scales
+- 2024MNRAS.533.2966Q (2024): ALMA follow-up of 3000 red-Herschel galaxies: the nature of extreme submillimetre galaxies
+- 2024MNRAS.535.1533B (2024): A novel high-z submm galaxy efficient line survey in ALMA Bands 3 through 8 - an ANGELS pilot
+- 2024MNRAS.535.2538Z (2024): A resolved, multiwavelength study of gas-rich dwarf galaxies in the Fornax cluster using MUSE, MeerKAT, and ALMA
+- 2025A&A...693A..17D (2025): Unveiling dust, molecular gas, and high star-formation efficiency in extremely UV bright star-forming galaxies at z ∼ 2.1─3.6
+- 2025A&A...693A.237I (2025): The ALMA-CRISTAL Survey: Spatial extent of [CII] line emission in star-forming galaxies at z = 4−6
+- 2025A&A...693A.309S (2025): Behind the dust veil: A panchromatic view of an optically dark galaxy at z = 4.82
+- 2025A&A...693L..13N (2025): Dense gas scaling relations at kiloparsec scales across nearby galaxies with the ALMA ALMOND and IRAM 30 m EMPIRE surveys
+- 2025A&A...694A.171M (2025): The host galaxies of radio-loud quasars at z &gt; 5 with ALMA
+- 2025A&A...694A.218B (2025): Revealing the hidden cosmic feast: A z = 4.3 galaxy group hosting two optically dark, efficiently star-forming galaxies
+- 2025A&A...695A...6P (2025): GA-NIFS: Multiphase analysis of a star-forming galaxy at z ∼ 5.5
+- 2025A&A...695A..23S (2025): Molecular gas and dust properties in z &gt; 7 quasar hosts
+- 2025A&A...695A.163B (2025): ALMACAL: XIII. Evolution of the CO luminosity function and the molecular gas mass density out to z ∼ 6
+- 2025A&A...695L..15F (2025): Spatially resolved dust properties over 50 kpc in a hyperluminous galaxy merger at z = 4.6
+- 2025A&A...695L..18M (2025): ALMA 360 parsec, high-frequency observations reveal warm dust in the center of a z = 6.9 quasar
+- 2025A&A...696A..83A (2025): Deep kiloparsec view of the molecular gas in a massive star-forming galaxy at cosmic noon
+- 2025A&A...696A.202S (2025): ALMA-IMF: XVIII. The assembly of a star cluster: Dense N<SUB>2</SUB>H<SUP>+</SUP> (1─0) kinematics in the massive G351.77 protocluster
+- 2025A&A...698A.204H (2025): An ALMA spectroscopic survey of the Planck high-redshift object PLCK G073.4−57.5 confirms two protoclusters
+- 2025A&A...698A.296R (2025): The impact of spiral arms on the star formation life cycle
+- 2025A&A...699A.183H (2025): Spatially resolved spectrophotometric SED modeling of NGC 253's central molecular zone: I. Star formation in extragalactic giant molecular …
+- 2025A&A...699L..11V (2025): The CHIMERA Survey: The first CO detection in Leo T, the lowest mass known galaxy still hosting cold molecular gas
+- 2025A&A...700A.123M (2025): Reconciling extragalactic star formation efficiencies with theory: Insights from PHANGS
+- 2025A&A...700A.285W (2025): Gravitational torques from lopsided young stellar component sustain high black hole accretion rates in NGC 4593
+- 2025A&A...701A..85K (2025): Early galaxy evolution: The complex interstellar medium distribution of the z ∼ 7 galaxy A1689-zD1
+- 2025A&A...701A.219N (2025): The Rosetta Stone project: III. ALMA synthetic observations of fragmentation in high-mass star-forming clumps
+- 2025A&A...701A.234Z (2025): Noema formIng Cluster survEy (NICE): A census of star formation and cold gas properties in massive protoclusters at 1.5 &lt; z &lt; 4
+- 2025ApJ...979..217S (2025): The Arp 240 Galaxy Merger: A Detailed Look at the Molecular Kennicutt─Schmidt Star Formation Law on Subkiloparsec Scales
+- 2025ApJ...985...14L (2025): Cloud-scale Gas Properties, Depletion Times, and Star Formation Efficiency per Freefall Time in PHANGS─ALMA
+- 2025ApJ...985..243B (2025): The ALMA-CRISTAL Survey: Weak Evidence for Star-formation-driven Outflows in z ∼ 5 Main-sequence Galaxies
+- 2025ApJ...985L...8U (2025): ADF22-WEB: Detection of a Molecular Gas Reservoir in a Massive Quiescent Galaxy Located in a z ≍ 3 Protocluster Core
+- 2025ApJ...987...61R (2025): Resolved ALMA [C II] 158 μm Observations at Cosmic Noon: Interstellar Medium Structure and Dynamics of the Starbursting QSO SDSS J1000
+- 2025ApJ...987...77J (2025): Why is the Star Formation Rate Proportional to Dense Gas Mass?
+- 2025ApJ...987..142J (2025): A JWST/MIRI View of the Interstellar Medium in M83. I. Resolved Molecular Hydrogen Properties, Star Formation, and Feedback
+- 2025ApJ...987L...2H (2025): Dissecting the Massive Pristine, Neutral Gas Reservoir of a Remarkably Bright Galaxy at z = 14.179
+- 2025ApJ...988..135M (2025): The Physical Properties and Morphologies of Faint Dusty Star-forming Galaxies Identified with JWST
+- 2025ApJ...988..162D (2025): Constraining Resolved Extragalactic R<SUB>21</SUB> Variation with Well-calibrated ALMA Observations
+- 2025ApJ...989...66V (2025): Modeling the Mass Distribution and Gravitational Potential of Nearby Disk Galaxies: Implications for the Interstellar Medium Dynamical Equi…
+- 2025ApJ...989..115T (2025): ALMA Lensing Cluster Survey: Physical Characterization of Near-infrared-dark Intrinsically Faint ALMA Sources at z = 2─4
+- 2025ApJ...990..166D (2025): Quenching through Tidal Gas Removal: Molecular Gas and Star Formation in Tidal Tails of z ∼ 0.7 Post-starburst Galaxies
+- 2025ApJ...990..221M (2025): Spatially and Dynamically Extended Molecular Gas in Stephan's Quintet Revealed by ALMA CO(1─0) Total Power Mapping
+- 2025ApJ...993..111W (2025): A Multiwavelength Study of ELAN Environments (AMUSE<SUP>2</SUP>): The Impact of Dense Environment on Massive Dusty Star-forming Galaxies at…
+- 2025ApJ...994....4A (2025): Enhanced Gas-phase Metallicities and Suppressed Outflows for Galaxies in a Rich Cluster Core at Cosmic Noon
+- 2025ApJ...995...98D (2025): DiskMINT: Self-consistent Thermochemical Disk Models with Radially Varying Gas and Dust—Application to the Massive, CO-Rich Disk of IM Lup
+- 2025ApJ...995..151Y (2025): Molecular Gas and Star Formation in Dwarf Galaxies Observed by the Atacama Large Millimeter/submillimeter Array
+- 2025ApJS..280...33Y (2025): The ALMA-QUARKS Survey. III. Clump-to-core Fragmentation and Searches for High-mass Starless Cores
+- 2025MNRAS.538....1Z (2025): ATOMS: ALMA Three-millimeter Observations of massive Star-forming regions - XX. Probability distribution function of integrated intensity f…
+- 2025MNRAS.538.2358S (2025): High angular resolution evidence of dust traps from deep ALMA Band 3 observations of LkCa15
+- 2025MNRAS.540.2396S (2025): MeerKAT discovery of an infalling cold gas tail on to the nearby barred spiral galaxy, NGC 5643
+- 2025MNRAS.540.2623P (2025): Exploring the potential for kinematically colder H I component as a tracer for star-forming gas in nearby galaxies
+- 2025MNRAS.541.1276Z (2025): The most massive star clusters in molecular clouds: insights from the integrated cloud-wide initial mass function (ICIMF) theory
+- 2025MNRAS.544.4014Z (2025): Connecting star formation in the Milky Way and nearby galaxies ─ I. Comparability of molecular cloud physical properties
+- 2025PASA...42..140S (2025): Probing the resolved K-S relation in nearby galaxies: Insights from UVIT and ALMA observations
+- 2025PASJ...77..616I (2025): Cloud-cloud collisions in the Antennae galaxies: Does high-speed collision suppress star formation?
+- 2025PSJ.....6..286M (2025): Zonal Winds in Titan's Middle Atmosphere from a Stellar Occultation Observed with Keck Adaptive Optics
+- 2026A&A...705A..39P (2026): High-z [OI] emission lines: COLDSIM simulations and ALMA observations
+- 2026A&A...705A..81K (2026): Resolving the molecular gas emission of the z ∼ 2.5─2.8 starburst galaxies SPT 0125-47 and SPT 2134-50
+- 2026A&A...706A.285C (2026): Infrared emission from z ∼ 6.5 quasar host galaxies: a direct estimate of dust physical properties
+- 2026A&A...706A.345K (2026): Evolution of the infrared luminosity function and its corresponding dust-obscured star formation rate density out to z ∼ 6
+- 2026A&A...707A..77H (2026): Massive dusty multiphase outflow in local merger shows no sign of slowing on kiloparsec scales
+- 2026A&A...707A.121G (2026): Molecular gas and star formation in central rings across nearby galaxies
+- 2026A&A...707A.144S (2026): Spatially resolved star formation relations in local luminous infrared galaxies along the complete merger sequence
+- 2026A&A...707A.252K (2026): Detailed lens modeling and kinematics of the submillimeter galaxy G09v1.97: An analysis of CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP>, …
+- 2026A&A...709A..14Z (2026): Gas excitation of post-SB galaxies at 0.6 &lt; z &lt; 1.3
+- 2026A&A...711A.239S (2026): ALMA-IMF: XXI. N<SUB>2</SUB>H<SUP>+</SUP> kinematics in the G012.80 protocluster: Evidence of filament rotation and evolution
+- 2026A&A...712A.227E (2026): ALMA CO-CAVITY: I. Resolved molecular gas in void galaxies
+- 2026ApJ..1000..159M (2026): Low Dust Mass and High Star Formation Efficiency at z &gt; 12 from Deep ALMA Observations
+- 2026ApJ..1001..131C (2026): MAGAZ3NE: Far-IR and Radio Insights into the Nature and Properties of Ultramassive Galaxies at z ≳ 3
+- 2026ApJ..1003...52D (2026): Molecular Gas Excitation in z ∼ 0.7 Gas-rich Poststarburst Galaxies from SQuIGG<inline-formula> <mml:math><mml:mover><mml:mrow><mml:mi>L</m…
+- 2026ApJ..1003..206S (2026): The Identification of Two JWST/NIRCam-dark Starburst Galaxies at z = 6.6 with ALMA
+- 2026ApJ..1003..219W (2026): The Keplerian Disk, Envelope, and Streamers Surrounding an Early O-type Protostar in the Sagittarius C Cloud of the Central Molecular Zone
+- 2026ApJ..1004...22F (2026): The ALPINE─CRISTAL─JWST Survey: The Fast Metal Enrichment of Massive Galaxies at z ∼ 5
+- 2026MNRAS.545f1980W (2026): SDSS-ALMA Legacy Value Archival Gas Exploration (SALVAGE) ─ I. Global star formation is governed by central (not global) molecular gas
+- 2026MNRAS.546ag167S (2026): Under the glare of a luminous quasar, the FIR continuum is still an excellent tracer of the ISM down to the central kiloparsec
+- 2026MNRAS.546f2269R (2026): The link between galaxy merger, radio jet expansion, and molecular outflow in the ULIRG IRAS 00183−7111
+- 2026MNRAS.552g1615S (2026): The efficient star-forming regions of stripped-envelope supernovae

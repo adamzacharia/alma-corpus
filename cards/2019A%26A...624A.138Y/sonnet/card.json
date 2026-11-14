@@ -1,0 +1,1290 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019A&A...624A.138Y",
+  "title": "CO, H<SUB>2</SUB>O, H<SUB>2</SUB>O<SUP>+</SUP> line and dust emission in a z = 3.63 strongly lensed starburst merger at sub-kiloparsec scales",
+  "year": 2019,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Yang, C.",
+  "n_authors": 25,
+  "arxiv_id": "1903.00273",
+  "doi": "10.1051/0004-6361/201833876",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2013.1.00358.S",
+   "2015.1.01320.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "Using the Atacama Large Millimeter/submillimeter Array (ALMA), we report high angular-resolution observations of the redshift $z$ =3.63 galaxy *H*-ATLAS J083051.0+013224 (G09v1.97)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "G09v1.97 (H-ATLAS J083051.0+013224)",
+     "coordinates": {
+      "value": "RA 08:30:51.156, Dec +01:32:24.35 (Band 4 phase center)",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The central observing coordinates (J2000) are RA 08:30:51.156 and DEC $+$01:32:24.35 for the Band 4 observations"
+       },
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The redshift $z$ = 3.632 corresponds to a luminosity distance of $D_\\mathrm{L}$ = 32724 Mpc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 3.632",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The central observing coordinates (J2000) are RA 08:30:51.156 and DEC $+$01:32:24.35 for the Band 4 observations"
+       },
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The redshift $z$ = 3.632 corresponds to a luminosity distance of $D_\\mathrm{L}$ = 32724 Mpc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "CO(6-5) central frequency from this work",
+      "evidence": [
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The central observing coordinates (J2000) are RA 08:30:51.156 and DEC $+$01:32:24.35 for the Band 4 observations"
+       },
+       {
+        "loc": "Observations and Data Reduction",
+        "quote": "The redshift $z$ = 3.632 corresponds to a luminosity distance of $D_\\mathrm{L}$ = 32724 Mpc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the spatial and kinematic structure, dust and gas content (CO, H2O, H2O+) of the lensed SMG G09v1.97 at sub-kpc scales in the source plane, and is it a merger?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Here we present ALMA observations of the dust continuum, CO, H~2~O, and H$_2$O$^+$ line emission in G09v1.97 at spatial resolutions of $\\lesssim$ 0.4$''$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.01320.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "in the project ADS/JAO.ALMA#2015.1.01320.S (PI: A. Omont)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00358.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "ADS/JAO.ALMA#2013.1.00358.S, PI: S. Eales"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 4 (2 mm) and Band 7 (0.87 mm continuum)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "was observed in the 2 mm atmospheric window (Band 4) with the Atacama Large Millimeter/submillimeter Array (ALMA)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 4: four SPWs of 1875 MHz, 147.146–150.064 and 159.278–162.819 GHz; 128 channels of 15.6 MHz (~30 km/s)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "In each spectral window, there are 128 frequency channels giving a resolution of 15.6 MHz ($\\sim$ 30  km s$^{-1}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "6-5",
+     "rest_frequency": "149.207 GHz (sky)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "${\\mathrm{CO}}(6\\text{--}5)$ at 149.207 GHz"
+      }
+     ]
+    },
+    {
+     "species": "para-H2O",
+     "transition": "2_11-2_02",
+     "rest_frequency": "161.946 GHz (sky)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "para-H~2~O($2_{11}\\text{--}2_{02}$) (H~2~O($2_{11}\\text{--}2_{02}$) hereafter) at 161.946 GHz"
+      }
+     ]
+    },
+    {
+     "species": "H2O+",
+     "transition": "2_02-1_11 and 2_11-2_02",
+     "rest_frequency": "742.1 and 742.3 GHz (rest)",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "at the rest-frequency of 742.1 GHz and H$_2$O$^+$($2_{11}\\text{--}2_{02}$) $_{(5/2-3/2)}$ at the rest-frequency of 742.3 GHz"
+      }
+     ]
+    },
+    {
+     "species": "H2(18)O",
+     "transition": "2_11-2_02",
+     "rest_frequency": "745.320 GHz (rest)",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "rest-frame 745.320 GHz H$_2^{18}$O($2_{11}\\text{--}2_{02}$) line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C36-5, baselines 15 m to ~1462 m (Band 4)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations were performed with the ALMA C36-5 configuration, which provides baselines from 15 m up to about 1462 m"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.3''–0.4'' Band 4; 0.19''x0.12'' Band 7",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "yielding a synthesis beam of 0.19$''$$\\times$0.12$''$ (PA = 60$^\\circ$)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.21 mJy/beam in 50 km/s channel (Band 4)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The root mean square (RMS) of the data reaches 0.21 mJy beam$^{-1}$ in a 50  km s$^{-1}$ channel width."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "73.8 min Band 4 (36.8 min x2); 3.1 min Band 7",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "amounting to a total of 73.8 min on-source time"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "04-Aug-2016 and 25-Aug-2016 (Band 4); 01-Sep-2015 (Band 7)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations were performed on 01-Sep-2015 in good weather conditions"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Band 4 PI A. Omont; Band 7 archival, PI S. Eales",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We have also included in this study ALMA Band 7 continuum archive data of G09v1.97"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Keck-II/NIRC2",
+     "provided": {
+      "value": "Ks-band image to locate foreground deflectors",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum and Emission Line Images",
+        "quote": "superimposed on the *Keck*-II/NIRC2 $\\mathit{Ks}$-band image"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST",
+     "provided": {
+      "value": "F110W image confirming compound lens",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum and Emission Line Images",
+        "quote": "also confirms such a compound lens configuration"
+       }
+      ]
+     }
+    },
+    {
+     "name": "WHT ACAM",
+     "provided": {
+      "value": "deflector redshifts",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum and Emission Line Images",
+        "quote": "redshifts obtained from the William Herschel Telescope (WHT) ACAM spectroscopy"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Previous SMA 880 um lens model magnification mu = 6.9±0.6 and structure",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "With a magnification factor of $\\mu$ = $6.9\\pm0.6$, estimated from 880 $\\mu$m dust continuum observations with the SMA"
+       }
+      ]
+     },
+     "citation": "(cite: 2013ApJ...779...25B)"
+    },
+    {
+     "what": {
+      "value": "IRAM 30m/NOEMA line fluxes and CO(1-0) based gas mass, CO excitation",
+      "evidence": [
+       {
+        "loc": "3.2 Integrated Spectra",
+        "quote": "comparable to those obtained with the IRAM 30-meter telescope and NOEMA"
+       }
+      ]
+     },
+     "citation": "(cite: 2016A&A...595A..80Y; 2017A&A...608A.144Y)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA calibration pipelines with minor flagging",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "Both datasets were calibrated using the ALMA calibration pipelines, with only minor flagging required."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "using `tclean` within `CASA`[^3] version 5.1.1"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Band 4: J0750+1231 and J0854+2006; Band 7: J0510+1800",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The flux calibrators were J0750+1231 and J0854+2006."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "5% Band 4; 10% Band 7",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The absolute flux calibration uncertainty in Band 7 is 10%."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "Iterative phase-only self-calibration until S/N stopped improving; similar for Band 7",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We then performed several iterations of phase-only self-calibration until the S/N stopped improving."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean in CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "imaged and `CLEAN`ed using `tclean` within `CASA`[^3] version 5.1.1"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "MS-MFS, nterms=2",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "combined by using the `MS-MFS` algorithm (cite: 2011A&A...532A..71R) with multiple Taylor terms `nterms=2`"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "robust −0.5 continuum; −0.2 CO; 0.5 H2O and H2O+",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "$-$ 0.2 for the CO emission, and  0.5 for the H~2~O and H$_2$O$^+$ emission"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "continuum from line-free channels subtracted from cubes",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "After subtracting the dust continuum for the line emission data cube"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "CO 0.37x0.35'' PA64; H2O 0.38x0.36''; H2O+ 0.40x0.36''; 2mm cont 0.32x0.28''; 0.87mm 0.19x0.12''",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "0.32$\\times$0.28"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Lens model approach: SIE deflectors as in earlier SMA parametric model",
+      "evidence": [
+       {
+        "loc": "4 Lens Modeling",
+        "quote": "Similar to the parametric lens model in (cite: 2013ApJ...779...25B), the two foreground deflectors (G1 and G2, see Fig. [1](#fig:g09-image)) are assumed to be singular isothermal ellipsoid (SIE)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2013ApJ...779...25B)"
+    },
+    {
+     "what": {
+      "value": "sl_fit lens inversion method incl. treatment of beam and correlated noise",
+      "evidence": [
+       {
+        "loc": "4 Lens Modeling",
+        "quote": "The lens model is based on the `sl_fit` lens inversion code, following the method described in (cite: 2011ApJ...738..125G)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2011ApJ...738..125G)"
+    },
+    {
+     "what": {
+      "value": "CO(6-5)/CO(1-0) ratio assumed for gas masses",
+      "evidence": [
+       {
+        "loc": "5.4 Intrinsic properties",
+        "quote": "taking the same ${\\mathrm{CO}}(6\\text{--}5)$ to ${\\mathrm{CO}}(1\\text{--}0)$ ratio for R and B as in (cite: 2017A&A...608A.144Y)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017A&A...608A.144Y)"
+    },
+    {
+     "what": {
+      "value": "SFR calibration from LIR",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "the calibration of the far-IR star formation rate ($\\mathit{SFR}$) from (cite: 2012ARA&A..50..531K)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2012ARA&A..50..531K; 2011ApJ...737...67M)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Number of tclean iterations, thresholds, masks and cell/image sizes",
+    "Self-calibration solution intervals and number of rounds",
+    "Line-free channel selection",
+    "Uv-range or taper settings",
+    "Source-plane flux-binning details and MCMC chain length/convergence",
+    "Details of the modified blackbody SED fit (fitted data points, priors, two-temperature split)",
+    "Deflector optical positions used for priors",
+    "Exact PyAutoLens and 3DBarolo settings"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and line cubes",
+    "method": {
+     "value": "Pipeline-calibrated data cleaned with tclean, MS-MFS continuum, phase-only self-cal, continuum subtraction",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The calibrated data were then imaged and `CLEAN`ed using `tclean` within `CASA`[^3] version 5.1.1"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust −0.5 / −0.2 / 0.5; nterms=2",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "$-$ 0.2 for the CO emission, and  0.5 for the H~2~O and H$_2$O$^+$ emission"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit integrated line spectra",
+    "method": {
+     "value": "Multi-Gaussian (B, Rb, Rr) fit of spectra; H2O and H2O+ widths fixed to CO values",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "we fix the linewidths of the B, Rb, and Rr components to be that found for the components of the ${\\mathrm{CO}}(6\\text{--}5)$ line"
+      }
+     ]
+    },
+    "software": [
+     "MPFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Levenberg-Marquardt least squares; three Gaussians since two left residuals",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "Therefore, we fitted the lines with three Gaussian components."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared total fluxes with IRAM 30m/NOEMA; no missing flux",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "indicating that there is no missing flux in the ALMA data of G09v1.97"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Lens model from dust continuum",
+    "method": {
+     "value": "Joint fit of 1.94 and 0.87 mm images with two SIE deflectors and two exponential-profile source components; image-plane fit",
+     "evidence": [
+      {
+       "loc": "4.1 Fitting the dust continuum emission",
+       "quote": "we used the 1.94 and 0.87 mm dust continuum images (Fig. [1](#fig:g09-image)) to constrain simultaneously the mass distribution (SIE model) of G1 and G2 and the dust emission"
+      }
+     ]
+    },
+    "software": [
+     "sl_fit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Priors: Einstein radii uniform [0.1,1.1'']; axis ratios Normal(0.5,0.2); source positions uniform ±0.2''; source axis ratio uniform [0.1,0.9]; Reff Normal(0.1'',0.03'') in [0,0.2'']",
+      "evidence": [
+       {
+        "loc": "4.1 Fitting the dust continuum emission",
+        "quote": "The prior on both Einstein radii is uniform in the range $[0.1\\ensuremath{''},1.1\\ensuremath{''}]$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Both source components have constant magnification across SED; deflectors at z=0.626 and 1.002",
+      "evidence": [
+       {
+        "loc": "4.1 Fitting the dust continuum emission",
+        "quote": "each of the two background components has a constant magnification across its entire far-IR spectral energy distribution (SED)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC Metropolis-Hastings; median and 68% intervals",
+     "evidence": [
+      {
+       "loc": "4 Lens Modeling",
+       "quote": "implementing the standard Metropolis-Hastings algorithm"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residuals <2.5 sigma; PyAutoLens pixelized reconstruction converged to same model",
+     "evidence": [
+      {
+       "loc": "4.1 Fitting the dust continuum emission",
+       "quote": "The analysis converges to the same lens model and reconstructs a source galaxy with the same global structure as the double-disk model"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Source-plane line cube reconstruction",
+    "method": {
+     "value": "Cube binned into 10 velocity bins of 105 km/s (−478 to 467); fixed mass model; one elliptical exponential per bin; H2O+ in 2 bins",
+     "evidence": [
+      {
+       "loc": "4.2 Fitting the CO and H2O Line Emission",
+       "quote": "the data cube was binned into 10 velocity channel bins of 105  km s$^{-1}$ from $-$478 to 467 km s$^{-1}$"
+      }
+     ]
+    },
+    "software": [
+     "sl_fit"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO and H2O emission identical up to flux normalization",
+      "evidence": [
+       {
+        "loc": "4.2 Fitting the CO and H2O Line Emission",
+        "quote": "we assume that, up to a normalizing flux constant, the emission is identical between the ${\\mathrm{CO}}(6\\text{--}5)$ and H~2~O($2_{11}\\text{--}2_{02}$) lines"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Same priors as continuum model; 10x7 parameters",
+     "evidence": [
+      {
+       "loc": "4.2 Fitting the CO and H2O Line Emission",
+       "quote": "We thus fit for the 10$\\times$7 parameters defining the source emission"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Image-plane moment maps and per-channel residuals; image vs source-plane moment maps match",
+     "evidence": [
+      {
+       "loc": "5.2 Kinematic structure",
+       "quote": "The moment maps from the image and source plane match very well, suggesting that our lens model is robust."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Morphology and kinematics in source plane",
+    "method": {
+     "value": "Three-disk IMFIT of CO moment-0 map; inclination from axis ratio with q0=0.2; 3DBarolo tilted-ring test; PV diagrams",
+     "evidence": [
+      {
+       "loc": "5.1 Morphology",
+       "quote": "we performed a fit to the 0$^{\\rm th}$ moment map of ${\\mathrm{CO}}(6\\text{--}5)$ in the source plane with a disk model using `IMFIT`"
+      }
+     ]
+    },
+    "software": [
+     "IMFIT",
+     "3DBarolo"
+    ],
+    "key_parameters": [
+     {
+      "value": "q0 = 0.2",
+      "evidence": [
+       {
+        "loc": "5.1 Morphology",
+        "quote": "Choosing a typical value of $q_0=0.2$ for disk galaxies"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "R and B are thin disks",
+      "evidence": [
+       {
+        "loc": "5.1 Morphology",
+        "quote": "Assuming that both R and B are thin disks, the inclination angle can be derived"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimization; bootstrap uncertainties of 10%",
+     "evidence": [
+      {
+       "loc": "5.1 Morphology",
+       "quote": "Using bootstrap resampling, the uncertainties from the fit are determined with uncertainties of 10%."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Residuals <1% of emission",
+     "evidence": [
+      {
+       "loc": "5.1 Morphology",
+       "quote": "maximum differences are less than 1% of the emission"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive LIR, SFR, gas mass",
+    "method": {
+     "value": "Split total LIR among B, G, R with modified blackbody (beta=2), LIR proportional to CO(6-5) luminosity for R and B; 50% extra uncertainty; SFR = 1.4e-10 LIR; gas mass from CO(6-5)/CO(1-0)",
+     "evidence": [
+      {
+       "loc": "5.4 Intrinsic properties",
+       "quote": "We can decompose the total $L_{\\mathrm{IR}}$ into three parts using a modified black-body model ($\\beta$ = 2), for B, G, and R"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "S0.87/S1.94 = 26 for R and B; 5.4 for bridge",
+      "evidence": [
+       {
+        "loc": "5.4 Intrinsic properties",
+        "quote": "for which we assume a similar ratio, $S_\\mathrm{0.87}$/$S_\\mathrm{1.94}$ = 26"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1",
+    "used_for": {
+     "value": "calibration pipeline, tclean imaging, gaincal self-cal",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "using `tclean` within `CASA`[^3] version 5.1.1"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MPFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian fits of line spectra",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "Levenberg-Marquardt least-square minimization code `MPFIT`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "sl_fit",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC lens inversion",
+     "evidence": [
+      {
+       "loc": "4 Lens Modeling",
+       "quote": "The lens model is based on the `sl_fit` lens inversion code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PyAutoLens",
+    "version": "not stated",
+    "used_for": {
+     "value": "pixelized source reconstruction as a test",
+     "evidence": [
+      {
+       "loc": "4.1 Fitting the dust continuum emission",
+       "quote": "This has been further tested with `PyAutoLens`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "IMFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "disk fits to source-plane moment-0",
+     "evidence": [
+      {
+       "loc": "5.1 Morphology",
+       "quote": "with a disk model using `IMFIT`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "3DBarolo",
+    "version": "not stated",
+    "used_for": {
+     "value": "tilted-ring fit to source-plane CO cube",
+     "evidence": [
+      {
+       "loc": "5.1 Morphology",
+       "quote": "using $^\\mathrm{3D}$`Barolo`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "subtracting foreground galaxies in Ks and F110W",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum and Emission Line Images",
+       "quote": "after subtracting the foreground galaxies with `GALFIT`"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total magnification (dust)",
+    "value": "10.3",
+    "uncertainty": "0.5",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$\\mu_{\\rm tot}$ = $10.3\\pm 0.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "Compact dust Reff",
+    "value": "0.63",
+    "uncertainty": "0.15",
+    "units": "kpc",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$R_{\\rm eff,\\,1}$ = $0.63 \\pm 0.15\\, {\\rm kpc}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Extended dust Reff",
+    "value": "1.37",
+    "uncertainty": "0.05",
+    "units": "kpc",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$R_{\\rm eff,\\,2}$ = $1.37 \\pm 0.05\\, {\\rm kpc}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Einstein radius G1",
+    "value": "0.39",
+    "uncertainty": "±0.01",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "Einstein radius of $0.39\\ensuremath{''} ^{+0.01}_{-0.01}$ for G1"
+     }
+    ]
+   },
+   {
+    "quantity": "Einstein radius G2",
+    "value": "0.63",
+    "uncertainty": "±0.01",
+    "units": "arcsec",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "$0.63\\ensuremath{''}^{+0.01}_{-0.01}$ for the more distant G2"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(6-5) total line flux components B/Rb/Rr",
+    "value": "2.2 / 6.0 / 4.8",
+    "uncertainty": "0.2 / 1.3 / 1.2",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$2.2\\pm0.2$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2(18)O line flux",
+    "value": "0.5",
+    "uncertainty": "0.1",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.2 Integrated Spectra",
+      "quote": "we observe a 5-$\\sigma$ emission line with an integrated flux of $0.5\\pm0.1$ Jy  km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 4 continuum flux",
+    "value": "8.8",
+    "uncertainty": "0.5",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$8.8\\pm0.5$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 7 continuum flux",
+    "value": "106.6",
+    "uncertainty": "10.7",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$106.6\\pm10.7$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Semi-major half-light radius R and B",
+    "value": "1.2 and 0.4",
+    "uncertainty": "10%",
+    "units": "kpc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "of 1.2 kpc and 0.4 kpc, are separated by a projected distance of 0.18$''$ (1.3 kpc)"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclinations R, B",
+    "value": "82, 66",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.1",
+      "quote": "we infer inclinations for R and B of 82$^\\circ$ and 66$^\\circ$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "LIR of B",
+    "value": "(4.0±2.0)e12",
+    "uncertainty": "2.0e12",
+    "units": "Lsun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$L_{\\mathrm{IR}}$$_\\mathrm{,\\,B}$ = (4.0$\\pm$2.0)$\\times$10$^{12}$ $L_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "LIR of R",
+    "value": "(6.3±3.1)e12",
+    "uncertainty": "3.1e12",
+    "units": "Lsun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$L_{\\mathrm{IR}}$$_\\mathrm{,\\,R}$ = (6.3$\\pm$3.1)$\\times$10$^{12}$ $L_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR B and R",
+    "value": "600 and 900",
+    "uncertainty": "±300 / ±400",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "$\\mathit{SFR}_\\mathrm{B}$ = (6$\\pm$3)$\\times$10$^{2}$ $M_\\odot$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass R and B",
+    "value": "5e10 and 4e10",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "about 5$\\times$10$^{10}$ and 4$\\times$10$^{10}$ $M_\\odot$, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Bridge dust temperature",
+    "value": "17 (+9/−4)",
+    "uncertainty": "+9/-4",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "$T_{\\mathrm{d}}$ = $17^{+9}_{-4}$ K"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO(6-5), H2O and H2O+ line profiles and spatial distributions are strikingly similar",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The observed line profiles of the ${\\mathrm{CO}}(6\\text{--}5)$, H~2~O($2_{11}\\text{--}2_{02}$), and $J_\\mathrm{up}$ = 2 H$_2$O$^+$ lines are strikingly similar."
+     }
+    ]
+   },
+   {
+    "value": "First detection at high z of H2(18)O(2_11-2_02) at 5 sigma",
+    "evidence": [
+     {
+      "loc": "6 Summary",
+      "quote": "we also present the first 5-$\\sigma$ detection of H$_2^{18}$O($2_{11}\\text{--}2_{02}$)"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is G09v1.97 a merger or a single clumpy rotating disk?",
+    "experiment": "Source-plane reconstruction, PV diagrams, 3DBarolo rotating-disk fit",
+    "result": "Rotating disk model fails; R and B overlap spatially in PV; bridge gas",
+    "finding": "Two gas-rich merging galaxies in pre-coalescence",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Morphology",
+      "quote": "Therefore, we conclude that the system is made of two compact merging galaxies with a small separation."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do dust and gas differ in structure?",
+    "experiment": "Two-component dust model vs CO/H2O reconstruction",
+    "result": "Compact + extended dust disks; cold dust peaks between two gas components",
+    "finding": "Cold ISM concentrated in the interaction region",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Summary",
+      "quote": "The cold dust emission peaks in between the two gas components."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the LIR–line luminosity correlation hold at sub-kpc scales?",
+    "experiment": "Compare L_CO/L_IR and L_H2O/L_IR for B and R",
+    "result": "Ratios consistent with SMGs and local ULIRGs",
+    "finding": "H2O lines trace SFR down to sub-kpc scales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "showing that the tight correlation still holds down to sub-kpc scales in such starbursts"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Image-plane fit used because sl_fit lacks uv-plane fitting; high uv coverage assumed sufficient",
+    "evidence": [
+     {
+      "loc": "4 Lens Modeling",
+      "quote": "Since our ALMA data has such sufficiently high uv-plane coverage and S/N, we safely assume that any information loss in the source plane as a result of our image-plane analysis is negligible."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "N2H+(8-7) identification of 745 GHz line rejected in favor of H2(18)O",
+     "evidence": [
+      {
+       "loc": "3.2 Integrated Spectra",
+       "quote": "However, we rule out this identification for the following reasons."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Source-plane uncertainties may be underestimated; mass-sheet degeneracy not explored",
+     "evidence": [
+      {
+       "loc": "Appendix",
+       "quote": "the uncertainties of $\\mu$ (and on the intrinsic source flux and size) do not account for the effect of mass-sheet degeneracy"
+      }
+     ]
+    },
+    {
+     "value": "No spatially resolved photometry for B, G, R so large LIR uncertainties",
+     "evidence": [
+      {
+       "loc": "5.4",
+       "quote": "We acknowledge that there could be large uncertainties because there is no spatially resolved photometry for B, G, and R."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Image-plane lens fitting with CLEANed images rather than visibilities",
+    "Parametric one-exponential source per velocity bin may miss structure",
+    "LIR split among B, G, R relies on assumed CO-LIR proportionality and SED ratios",
+    "Mass model from continuum only; deflector profile fixed isothermal"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Band 7 described as archive data; both projects cited by code",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We have also included in this study ALMA Band 7 continuum archive data of G09v1.97"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "sl_fit code availability not stated",
+    "Clean parameters and masks",
+    "Self-cal details",
+    "Lens model posterior chains"
+   ],
+   "estimated_data_volume_inferred": "~50–150 GB raw for two Band 4 and one Band 7 execution",
+   "score_inferred": 3,
+   "score_reason": "Public data and clear lens priors, but imaging details, self-cal settings and code access are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Results rely on specialised unreleased lens code and incomplete processing details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2011ApJ...738..125G)",
+     "why": "sl_fit lens inversion method"
+    },
+    {
+     "citation": "(cite: 2013ApJ...779...25B)",
+     "why": "earlier SMA lens model of G09v1.97"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2017A&A...608A.144Y)",
+     "why": "CO excitation and gas properties of G09v1.97"
+    },
+    {
+     "citation": "(cite: 2016A&A...595A..80Y)",
+     "why": "H2O and H2O+ in H-ATLAS lensed SMGs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "H-ATLAS",
+    "SMA 880 um observations of G09v1.97"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-0c8a6a03398dd60be6ad09fbf455cfb7",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:59",
+  "usage": {
+   "input_tokens": 48035,
+   "output_tokens": 11925,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.108267,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 95,
+  "quotes_ok": 95,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 89,
+   "stated": 66,
+   "rate": 0.742
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,1151 @@
+{
+ "bibcode": "2025MNRAS.538.3001T",
+ "title": "ALMA observations of dual quasars: evidence of rich and diverse molecular gas environments",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf416",
+ "arxiv_id": "2407.09399",
+ "fields": [
+  "agn_and_quasars"
+ ],
+ "question": "Are the host galaxies of five closely-separated dual quasars (z=0.4-0.8) more molecular-gas depleted than single quasars and inactive star-forming galaxies, and how is the CO gas distributed and moving in each pair?",
+ "alma_project_codes": [
+  "2021.1.01233.S"
+ ],
+ "data": {
+  "bands": "Band 4 (12-m antennas)",
+  "arrays": "12-m array, 41-48 antennas",
+  "angular_resolution": "Beam 0.32x0.24 to 0.89x0.66 arcsec (natural weighting; Table 1 column 6, per-target)",
+  "sensitivity": "Line sensitivity 0.559-0.679 mJy/beam (Table 1); per-channel (10 km/s) rms ~1e-4 Jy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "R21 = 0.62 excitation correction (average of low-z PG quasars)",
+    "evidence": [
+     {
+      "loc": "Gas masses and fractions",
+      "quote": "adopted from the average results of low-z PG quasars (cite: shangguan2020alma)"
+     }
+    ]
+   },
+   "citation": "(cite: shangguan2020alma)"
+  },
+  {
+   "what": {
+    "value": "alpha_CO = 3.1 conversion factor",
+    "evidence": [
+     {
+      "loc": "Gas masses and fractions",
+      "quote": "we adopt $\\alpha_{\\mathrm{CO}}=3.1$, again following (cite: shangguan2020alma)"
+     }
+    ]
+   },
+   "citation": "(cite: shangguan2020alma)"
+  },
+  {
+   "what": {
+    "value": "Best-fit scaling relation coefficients for the molecular gas-to-stellar mass ratio of star-forming galaxies",
+    "evidence": [
+     {
+      "loc": "Do dual quasars show signs of gas depletion?",
+      "quote": "We apply their best-fit results $A=0.06$, $B=-3.33$, $F=0.65$, $C=0.51$, $D=-0.41$ to the function."
+     }
+    ]
+   },
+   "citation": "(cite: tacconi2020evolution)"
+  },
+  {
+   "what": {
+    "value": "Main-sequence sSFR definition used for the SFMS curve",
+    "evidence": [
+     {
+      "loc": "Do dual quasars show signs of gas depletion?",
+      "quote": "the sSFR of SFMS galaxies is defined in (cite: speagle2014highly)"
+     }
+    ]
+   },
+   "citation": "(cite: speagle2014highly)"
+  },
+  {
+   "what": {
+    "value": "Single-quasar CO comparison samples (PG quasars z<0.1)",
+    "evidence": [
+     {
+      "loc": "Do dual quasars show signs of gas depletion?",
+      "quote": "The comparison samples include single PG quasars at $z<0.1$ (cite: shangguan2020alma)"
+     }
+    ]
+   },
+   "citation": "(cite: shangguan2020alma); also (cite: molina2023lack), (cite: husemann2017integral), (cite: xia2012molecular), (cite: krips2012co), (cite: jarvis2020high)"
+  },
+  {
+   "what": {
+    "value": "Total masses assumed for comparison quasars lacking stellar masses",
+    "evidence": [
+     {
+      "loc": "Do dual quasars show signs of gas depletion?",
+      "quote": "(cite: krips2012co) and (cite: xia2012molecular) lack stellar mass measurements for individual sources."
+     }
+    ]
+   },
+   "citation": "(cite: krips2012co); (cite: xia2012molecular)"
+  },
+  {
+   "what": {
+    "value": "Archival optical properties of the dual quasars (BH masses, host decomposition) from earlier papers",
+    "evidence": [
+     {
+      "loc": "SDSS J1214+0102",
+      "quote": "The image decomposition resolved a distinct host galaxy for each quasar (cite: silverman2020dual)"
+     }
+    ]
+   },
+   "citation": "(cite: silverman2020dual); (cite: tang2021optical)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Split line and continuum visibilities",
+   "method": "Split calibrated MS into emission-line and continuum windows; estimate line FWHM from a spectral profile; stack remaining spectrum to measure continuum",
+   "software": [
+    "CASA split",
+    "casaviewer"
+   ],
+   "key_parameters": [
+    "FWHM estimated with spectral profile tool in casaviewer",
+    "Continuum from spectra excluding +/-5xFWHM of the line, found negligible"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make integrated CO(2-1) (M0) maps",
+   "method": "Split a window of width 2xFWHM centred on the line and run tclean in mfs mode with Multiscale deconvolver and natural weighting; make two M0 versions (one centred on each source) in double detections",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "Briggs robust = 2 (natural), chosen to maximize sensitivity",
+    "Multiscale deconvolver",
+    "mfs for the line follows Akins et al. 2022; map in Jy/beam"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure line flux, position and size on the M0 map",
+   "method": "Pre-estimate center, size and peak with casaviewer 2D fit, then fit with imfit to get the integrated line flux in Jy; physical sizes from imfit; non-detections assigned 3 sigma_bkg upper limits in one beam, assumed unresolved",
+   "software": [
+    "CASA imfit",
+    "casaviewer"
+   ],
+   "key_parameters": [
+    "Upper limit = 3 sigma_bkg in one beam; sigma_bkg is the std of the residual map"
+   ],
+   "assumptions": [
+    "Non-detections are unresolved"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Make cubes, moment maps and 1D spectra; fit line profiles",
+   "method": "tclean cube with 10 km/s channels; M1/M2 via immoments over about 2xFWHM keeping pixels >~3 sigma; spectra from elliptical aperture, noise spectrum as median of four offset apertures; fit single or double-peaked Gaussian and keep the better; derive W50 and S/N",
+   "software": [
+    "CASA tclean",
+    "CASA immoments",
+    "lmfit"
+   ],
+   "key_parameters": [
+    "Channel width 10 km/s",
+    "Noise apertures offset 40-50 pixels up, down, left, right of the source",
+    "S/N = model peak over noise std within +/-2xW50"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive CO luminosity and molecular gas mass",
+   "method": "L'CO(2-1) from integrated flux with the Solomon et al. formula using Delta v = 2xFWHM; convert to CO(1-0) with R21 and to H2 mass with alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "R21 = 0.62, alpha_CO = 3.1 Msun/(K km/s pc^2)",
+    "Delta v = 2 x FWHM of the emission line (the tclean mfs width)"
+   ],
+   "assumptions": [
+    "Flat LCDM, Omega_Lambda=0.7, Omega_m=0.3, H0=70 km/s/Mpc",
+    "R21 range seen in PG quasars 0.49-0.90 (0.99 from Carilli & Walter)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive stellar masses from host photometry",
+   "method": "GALIGHT 2D decomposition of HSC images gives host magnitudes (point sources removed) in five bands; CIGALE SED fit gives M*; merged hosts (J0847, J1416) get one M* for both",
+   "software": [
+    "GALIGHT",
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "Delayed SFH, stellar population, dust attenuation, dust re-emission and nebular emission modules"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Compare gas fractions with the star-forming main sequence and compute SB/SFMS/QS probabilities",
+   "method": "Sum M_molgas and M* per pair; evaluate Tacconi et al. 2020 scaling relation at each redshift (deltaMS=0, +/-1, logM*=10.7); combine measurement and systematic uncertainties using split normal PDFs; integrate probabilities in three regions",
+   "software": [],
+   "key_parameters": [
+    "A=0.06, B=-3.33, F=0.65, C=0.51, D=-0.41",
+    "Systematics R21 = 0.62 +0.28/-0.13 and alpha_CO = 3.1 +1.2/-2.3 (converted to 1 sigma by halving the 95% bounds)"
+   ],
+   "assumptions": [
+    "PDF follows a split normal distribution"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare CO luminosities of dual and single quasars",
+   "method": "Logrank (Mantel-Cox) test with upper limits against the Molina et al. 2023 PG sample",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "Test a rotating-disk model for J1214+0102N",
+   "method": "3DBarolo ring-model fit to the cube with J1214S masked out; then dynamical mass from VROT and imfit major axis, and residual gas mass from Mdyn - M*",
+   "software": [
+    "3DBarolo",
+    "DUCHAMP"
+   ],
+   "key_parameters": [
+    "SNRCUT=7, GROWTHCUT=4, MINCHANNELS=4",
+    "NRADII=7, RADSEP=0.187; XPOS, YPOS and PA fixed to imfit results; VROT, VDISP, INC, Z0 free",
+    "Initial guesses VROT=200, VDISP=40, INC=71, Z0=0"
+   ],
+   "assumptions": [
+    "Mdyn = Mgas + M*; factor 1.5 on the major axis; q0 = 0.2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(2-1) detections above 5 sigma",
+   "value": "8 of 10 quasars",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Among the ten quasars of the five pairs, eight have line detections exceeding $5\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J0847N",
+   "value": "172",
+   "uncertainty": "14",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$172\\pm14$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J0847S",
+   "value": "252",
+   "uncertainty": "18",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$252\\pm18$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J1214N",
+   "value": "508",
+   "uncertainty": "29",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$508\\pm29$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J1214S",
+   "value": "340",
+   "uncertainty": "60",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$340\\pm60$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J1416W (Table value; Section 4 text gives 237)",
+   "value": "273",
+   "uncertainty": "13",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$273\\pm13$"
+    },
+    {
+     "loc": "SDSS J1416+0033",
+     "quote": "with $W_{50} = 237 \\pm 13$ km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J2209N",
+   "value": "260",
+   "uncertainty": "40",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$260\\pm40$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J2209S",
+   "value": "340",
+   "uncertainty": "40",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$340\\pm40$"
+    }
+   ]
+  },
+  {
+   "quantity": "W50 J2337N",
+   "value": "128",
+   "uncertainty": "8",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$128\\pm8$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J0847N",
+   "value": "9.49",
+   "uncertainty": "0.09",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.49\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J0847S",
+   "value": "9.51",
+   "uncertainty": "0.11",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.51\\pm0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J1214N",
+   "value": "9.75",
+   "uncertainty": "0.04",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.75\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J1214S",
+   "value": "9.49",
+   "uncertainty": "0.04",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.49\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J1416W",
+   "value": "9.46",
+   "uncertainty": "0.07",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.46\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J2209N",
+   "value": "8.91",
+   "uncertainty": "0.17",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$8.91\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J2209S",
+   "value": "9.13",
+   "uncertainty": "0.07",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.13\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "log L'CO(2-1) J2337N",
+   "value": "9.34",
+   "uncertainty": "0.06",
+   "units": "K km/s pc^2 (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.34\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J0847N",
+   "value": "10.19",
+   "uncertainty": "0.09",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.19\\pm0.09$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J0847S",
+   "value": "10.20",
+   "uncertainty": "0.11",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.20\\pm0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J1214N",
+   "value": "10.45",
+   "uncertainty": "0.04",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.45\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J1214S",
+   "value": "10.19",
+   "uncertainty": "0.04",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.19\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J1416W",
+   "value": "10.16",
+   "uncertainty": "0.07",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.16\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J2209N",
+   "value": "9.61",
+   "uncertainty": "0.17",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.61\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J2209S",
+   "value": "9.83",
+   "uncertainty": "0.07",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$9.83\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J2337N",
+   "value": "10.04",
+   "uncertainty": "0.06",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$10.04\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J1416E upper limit",
+   "value": "<9.11",
+   "uncertainty": "not stated",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$<9.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas J2337S upper limit",
+   "value": "<9.43",
+   "uncertainty": "not stated",
+   "units": "Msun (log)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$<9.43$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_CO(2-1) J1416E upper limit (3 sigma)",
+   "value": "<0.26",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$<0.26$"
+    }
+   ]
+  },
+  {
+   "quantity": "S_CO(2-1) J2337S upper limit (3 sigma)",
+   "value": "<0.31",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$<0.31$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J0847N",
+   "value": "19.6%",
+   "uncertainty": "4.2%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$19.6\\pm4.2\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J0847S",
+   "value": "20.2%",
+   "uncertainty": "4.9%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$20.2\\pm4.9\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J1214N",
+   "value": "84.5%",
+   "uncertainty": "8.5%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$84.5\\pm8.5\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J1214S",
+   "value": "34.8%",
+   "uncertainty": "3.6%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$34.8\\pm3.6\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J1416W",
+   "value": "20.7%",
+   "uncertainty": "3.2%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$20.7\\pm3.2\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J2209N",
+   "value": "34.6%",
+   "uncertainty": "13.7%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$34.6\\pm13.7\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J2209S",
+   "value": "18.2%",
+   "uncertainty": "2.8%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$18.2\\pm2.8\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas J2337N",
+   "value": "97.3%",
+   "uncertainty": "12.4%",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$97.3\\pm12.4\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas total J0847 pair",
+   "value": "10.50",
+   "uncertainty": "0.07",
+   "units": "Msun (log)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.50\\pm0.07$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas total J1214 pair",
+   "value": "10.64",
+   "uncertainty": "0.03",
+   "units": "Msun (log)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.64\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas total J1416 pair",
+   "value": "10.20",
+   "uncertainty": "0.06",
+   "units": "Msun (log)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.20\\pm0.06$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas total J2209 pair",
+   "value": "10.03",
+   "uncertainty": "0.08",
+   "units": "Msun (log)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.03\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "log M_molgas total J2337 pair",
+   "value": "10.14",
+   "uncertainty": "0.05",
+   "units": "Msun (log)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$10.14\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas^dual J0847",
+   "value": "39.5%",
+   "uncertainty": "+22.0/-26.8",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$39.5^{+22.0}_{-26.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas^dual J1214",
+   "value": "56.1%",
+   "uncertainty": "+18.4/-28.5",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$56.1^{+18.4}_{-28.5}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas^dual J1416",
+   "value": "22.8%",
+   "uncertainty": "+10.0/-13.3",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$22.8^{+10.0}_{-13.3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas^dual J2209",
+   "value": "22.2%",
+   "uncertainty": "+8.2/-11.9",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$22.2^{+8.2}_{-11.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "mu_molgas^dual J2337",
+   "value": "13.9%",
+   "uncertainty": "+6.7/-8.6",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$13.9^{+6.7}_{-8.6}$"
+    }
+   ]
+  },
+  {
+   "quantity": "P_mu (SB, SFMS, QS) J0847",
+   "value": "1.95, 85.94, 12.10",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "1.95, 85.94, 12.10"
+    }
+   ]
+  },
+  {
+   "quantity": "P_mu (SB, SFMS, QS) J1214",
+   "value": "30.75, 65.23, 4.02",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "30.75, 65.23, 4.02"
+    }
+   ]
+  },
+  {
+   "quantity": "P_mu (SB, SFMS, QS) J1416",
+   "value": "0.02, 90.27, 9.70",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.02, 90.27, 9.70"
+    }
+   ]
+  },
+  {
+   "quantity": "P_mu (SB, SFMS, QS) J2209",
+   "value": "0.00, 91.83, 8.17",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.00, 91.83, 8.17"
+    }
+   ]
+  },
+  {
+   "quantity": "P_mu (SB, SFMS, QS) J2337",
+   "value": "0.00, 70.16, 29.84",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.00, 70.16, 29.84"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J0847 (merged host)",
+   "value": "10.90",
+   "uncertainty": "0.21",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.90\\pm0.21$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J1214N",
+   "value": "10.52",
+   "uncertainty": "0.17",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.52\\pm0.17$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J1214S",
+   "value": "10.65",
+   "uncertainty": "0.12",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.65\\pm0.12$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J1416 (merged host)",
+   "value": "10.84",
+   "uncertainty": "0.15",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.84\\pm0.15$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J2209N",
+   "value": "10.07",
+   "uncertainty": "0.08",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.07\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J2209S",
+   "value": "10.57",
+   "uncertainty": "0.13",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.57\\pm0.13$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J2337N",
+   "value": "10.05",
+   "uncertainty": "0.25",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.05\\pm0.25$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass J2337S",
+   "value": "10.94",
+   "uncertainty": "0.20",
+   "units": "Msun (log)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Optical measurements",
+     "quote": "$10.94\\pm0.20$"
+    }
+   ]
+  },
+  {
+   "quantity": "Logrank test p-value, L'CO dual vs Molina et al. PG quasars",
+   "value": "0.50",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Do dual quasars show signs of gas depletion?",
+     "quote": "the test yielded a p-value of 0.50"
+    }
+   ]
+  },
+  {
+   "quantity": "CO offset of J0847S from optical center",
+   "value": "1.2 arcsec (8.2 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec / kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "SDSS J0847-0013",
+     "quote": "This offset is 1.2$''$ in angular separation and 8.2 kpc in projected physical distance."
+    }
+   ]
+  },
+  {
+   "quantity": "3DBarolo inclination J1214N",
+   "value": "75.4",
+   "uncertainty": "not stated",
+   "units": "degrees",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "The inclination angle finally converges to 75.4 degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "3DBarolo rotation velocity J1214N",
+   "value": "~225",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "The best-fit results suggest an almost constant `VROT` $\\sim$ 225 km/s from inner to outer rings."
+    }
+   ]
+  },
+  {
+   "quantity": "3DBarolo velocity dispersion J1214N (inner to outer)",
+   "value": "32 to 4",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "the velocity dispersion decreases roughly linearly from 32km/s for the innermost ring to 4km/s for the second outermost ring"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass J1214N",
+   "value": "~10^10.84",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "we obtained $M_{\\mathrm{dyn}}\\sim 10^{10.84}~\\mathrm{M_{\\odot}}$ for J1214+0102N"
+    }
+   ]
+  },
+  {
+   "quantity": "Implied total gas mass J1214N (Mdyn - M*)",
+   "value": "~10^10.56",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "this will leave $M_{\\mathrm{gas}} \\sim 10^{10.56} M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO-derived fraction of total gas mass J1214N",
+   "value": "~77.6%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "J1214+0102N: Merger or disk?",
+     "quote": "which thus takes $\\sim 77.6\\%$ of the total gas mass"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean cell size, image size, niter, threshold and mask definition",
+  "Multiscale scale list",
+  "Exact spectral windows and channel ranges used for the line window and for the continuum (per source)",
+  "Flux, bandpass and phase calibrators and flux-scale uncertainty",
+  "Whether any self-calibration or uv-range/taper was applied",
+  "Primary-beam correction before imfit and flux extraction",
+  "Rest frequency used for CO J=2-1 and the velocity frame",
+  "Elliptical aperture sizes for the 1D spectra and noise spectra; imfit initial parameters and fit region",
+  "Initial guesses and bounds for lmfit single/double-Gaussian fits",
+  "CIGALE module parameter grids and the HSC bands/filters used for the SED fit",
+  "Exact split normal combination procedure for the three uncertainty terms",
+  "Per-source 3DBarolo parameter file beyond the listed values (e.g. FREE, WFUNC, NORM, FIT mode)",
+  "Precise relation between listed beams/rms and delivered MS (EB-level weighting)"
+ ],
+ "missing_for_reproduction": [
+  "tclean cell/image size, niter, threshold, mask and Multiscale scales",
+  "Exact line/continuum channel selections and the manually chosen FWHM per source",
+  "Aperture definitions for spectra and imfit initial conditions",
+  "CIGALE parameter grids and HSC photometry used for stellar masses",
+  "3DBarolo full parameter file",
+  "Reprocessed products only in journal supplementary material"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archive data, CASA version, weighting, line windows and conversion constants are given and numeric tables are complete, but imaging parameters (cell, size, niter, masks), manual FWHM choices and SED-fit settings are missing, and there are small internal inconsistencies.",
+ "rediscovery_reason": "Data are public, the recipe (tclean mfs over 2xFWHM, imfit, R21=0.62, alpha_CO=3.1) is mostly specified and the main results (flux, L'CO, M_molgas) are numeric; stellar masses must be taken from the paper.",
+ "source_card": "cards/2025MNRAS.538.3001T/sonnet/card.md"
+}

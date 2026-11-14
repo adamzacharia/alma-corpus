@@ -1,0 +1,1130 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...850...83F",
+  "title": "Demonstrating a New Census of Infrared Galaxies with ALMA (DANCING-ALMA). I. FIR Size and Luminosity Relation at z = 0-6 Revealed with 1034 ALMA Sources",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Fujimoto, Seiji",
+  "n_authors": 4,
+  "arxiv_id": "1703.02138",
+  "doi": "10.3847/1538-4357/aa93e6",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2011.0.00097.S",
+   "2011.0.00294.S",
+   "2012.1.00076.S",
+   "2012.1.00090.S",
+   "2012.1.00173.S",
+   "2012.1.00245.S",
+   "2012.1.00307.S",
+   "2012.1.00326.S",
+   "2012.1.00523.S",
+   "2012.1.00756.S",
+   "2012.1.00775.S",
+   "2012.1.00869.S",
+   "2012.1.00979.S",
+   "2012.1.00983.S",
+   "2013.1.00034.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00205.S",
+   "2013.1.00208.S",
+   "2013.1.00566.S",
+   "2013.1.00668.S",
+   "2013.1.00718.S",
+   "2013.1.00781.S",
+   "2013.1.00884.S",
+   "2013.1.00999.S",
+   "2013.1.01292.S",
+   "2015.1.00039.S",
+   "2015.1.00137.S",
+   "2015.1.00540.S",
+   "2015.1.00664.S",
+   "2015.1.01495.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 Data",
+    "quote": "we make full use of ALMA archival data in cycles $0-3$ that became public by 2017 July."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "1034 ALMA continuum sources in HUDF, HFF, COSMOS, SXDS, GOODS-S archival maps",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "photometric redshifts z=0-6; median z_med=2.36",
+      "evidence": [
+       {
+        "loc": "2.1 Data",
+        "quote": "We collect 1627 continuum maps in Band 6/7 from the ALMA archival data in the regions of HUDF, HFF, Cosmic Evolution Survey (COSMOS; (cite: scoville2007))"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "photometric redshifts from optical-NIR catalogs",
+      "evidence": [
+       {
+        "loc": "2.1 Data",
+        "quote": "We collect 1627 continuum maps in Band 6/7 from the ALMA archival data in the regions of HUDF, HFF, Cosmic Evolution Survey (COSMOS; (cite: scoville2007))"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the relation between rest-frame FIR effective radius and FIR luminosity of ALMA-detected dusty galaxies at z=0-6, and how does it evolve with redshift and compare with UV/optical sizes?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We analyze this large dataset to investigate the $R_{\\rm e(FIR)}-L_{\\rm FIR}$ relation and the $R_{\\rm e(FIR)}$ evolution by a systematic $uv$-visibility based technique."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.1.00097.S",
+     "evidence": [
+      {
+       "loc": "Table 1 (map list)",
+       "quote": "| 1 | 2011.1.00097.S | COSMOSLowz$\\_$64$\\_$0 | 0.88 | 342 (7) | 21$-$384 |"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00999.S",
+     "evidence": [
+      {
+       "loc": "Table 1 (map list)",
+       "quote": "| 1615 | 2013.1.00999.S | Abell$\\_$2744$\\_$0 | 1.14 | 263 (6) | 15$-$820 |"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00664.S",
+     "evidence": [
+      {
+       "loc": "Table 1 (map list)",
+       "quote": "| 1592 | 2015.1.00664.S | KMOS3DCOS4-10347 | 1.13 | 265 (6) | 15$-$460 |"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6/7 continuum, cycles 0-3",
+    "evidence": [
+     {
+      "loc": "2.1 Data",
+      "quote": "We collect 1627 continuum maps in Band 6/7 from the ALMA archival data"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.18''x0.18'' to 4.08''x1.07''",
+    "evidence": [
+     {
+      "loc": "2.2 Data Reduction",
+      "quote": "achieve angular resolutions of $0.18\\ensuremath{''}\\times 0.18\\ensuremath{''}$$-$$4.08\\ensuremath{''}\\times1.07\\ensuremath{''}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "0.01-1.4 mJy/beam before primary beam correction",
+    "evidence": [
+     {
+      "loc": "2.2 Data Reduction",
+      "quote": "the sensitivities of 0.01$-$1.4 mJy beam$^{-1}$ before the primary beam corrections"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA archive data public by 2017 July",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "1627 Atacama Large Millimeter/submillimeter Array (ALMA) 1-mm band maps that become public by 2017 July"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "HST (3D-HST and other optical-NIR catalogs)",
+     "provided": {
+      "value": "Optical-NIR counterparts, photometric redshifts, stellar masses, UV/optical sizes and morphology",
+      "evidence": [
+       {
+        "loc": "3.6 Optical and NIR Counterpart",
+        "quote": "We search the optical-NIR counterparts for the ALL5S and the ALL10S sources."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Optical-NIR catalogs (photometry, photz, Mstar) for SXDS, GOODS-S, HUDF, COSMOS, HFF",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "| GOODS-S Wide | (cite: santini2015) | $H<27.4$ $(0.17\\ensuremath{''})$ |"
+       }
+      ]
+     },
+     "citation": "santini2015; ilbert2013; momcheva2016; castellano2016"
+    },
+    {
+     "what": {
+      "value": "Lensing magnification factors for HFF sources",
+      "evidence": [
+       {
+        "loc": "3.6 Optical and NIR Counterpart",
+        "quote": "magnification factors that are obtained from (cite: castellano2016)"
+       }
+      ]
+     },
+     "citation": "castellano2016"
+    },
+    {
+     "what": {
+      "value": "HST/ALMA astrometric offset correction in GOODS-S (-80 mas, +260 mas)",
+      "evidence": [
+       {
+        "loc": "3.6 Optical and NIR Counterpart",
+        "quote": "we apply the corrections of $\\Delta\\alpha$ = $-80$ mas and $\\Delta\\delta$ = $+260$ mas (cite: rujopakarn2016)"
+       }
+      ]
+     },
+     "citation": "rujopakarn2016"
+    },
+    {
+     "what": {
+      "value": "HST rest-frame UV/optical sizes for comparison",
+      "evidence": [
+       {
+        "loc": "5.2",
+        "quote": "We cross-match the OC10S sources with the 3D-HST sources whose $R_{\\rm e}$ values are measured with the HST/$J$- and $H$-bands in (cite: vanderwel2012)."
+       }
+      ]
+     },
+     "citation": "vanderwel2012; shibuya2015"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Scripts provided by the ALMA observatory (flagging, bandpass, gain/flux); extra flagging where needed",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "These major steps are performed with the scripts provided by the ALMA observatory."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.2.0 to 4.7.2",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "we use the CASA versions from 4.2.0 to 4.7.2."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN with boxit-defined boxes, 4 iterations",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "We repeat 1)-3) for four times, changing from the 50$\\sigma_{\\rm d}$ level to the 20$\\sigma_{\\rm d}$, 10$\\sigma_{\\rm d}$, and 5$\\sigma_{\\rm d}$ levels in the step 1)."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "performing the CLEAN algorithm down to the depth of the 3$\\sigma_{\\rm d}$ level with the natural weighting in the CLEAN boxes."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "CLEAN boxes around peaks >=50,20,10,5 sigma_d",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "making CLEAN boxes with the boxit task for the peak pixels given in the step 1)"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "HUDF projects combined with concat; weights recomputed with statwt",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "we combine these two data sets with the concat task."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Data reduction done in the same manner as earlier work",
+      "evidence": [
+       {
+        "loc": "2.2 Data Reduction",
+        "quote": "Basically, the data is reduced in the same manner as (cite: fujimoto2016)"
+       }
+      ]
+     },
+     "from_reference": "(cite: fujimoto2016)"
+    },
+    {
+     "what": {
+      "value": "Beta=1.8 for modified blackbody",
+      "evidence": [
+       {
+        "loc": "3.6 Optical and NIR Counterpart",
+        "quote": "we assume $\\beta=1.8$ (cite: chapin2009)"
+       }
+      ]
+     },
+     "from_reference": "(cite: chapin2009)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Which exact archival projects/maps entered the sample (full 1627-map table is only online)",
+    "Cell size and image size for CLEAN",
+    "Line-free channel ranges and how line channels were identified in the three line projects",
+    "uvmultifit initial-value and fit settings details",
+    "Perturbation-method and power-law fit algorithm details (fit method, priors)",
+    "Completeness threshold values per sub-dataset",
+    "Photometric-redshift catalogs per source and flux-scale uncertainties",
+    "Binning details for Td-L_FIR relation fit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Reduce archival ALMA data and make continuum maps",
+    "method": {
+     "value": "Archive calibration scripts, extra flagging, CLEAN with boxes, natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "We perform Fourier transformations for the reduced $uv$-data to create \"dirty\" continuum maps."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "CLEAN to 3 sigma_d in boxes around >=50,20,10,5 sigma_d peaks",
+      "evidence": [
+       {
+        "loc": "2.2 Data Reduction",
+        "quote": "performing the CLEAN algorithm down to the depth of the 3$\\sigma_{\\rm d}$ level with the natural weighting in the CLEAN boxes."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "[CII] contamination by chance negligible (~1-2% of sources, <=10% of continuum)",
+      "evidence": [
+       {
+        "loc": "2.2 Data Reduction",
+        "quote": "Therefore, we assume that the second case is negligible in our statistical results"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract sources",
+    "method": {
+     "value": "SExtractor on maps before PB correction; peak >=5 sigma_f in regions with >50% sensitivity; imfit total flux >=10 sigma_f for ALL10S",
+     "evidence": [
+      {
+       "loc": "3.1 Source Detection",
+       "quote": "We then select only the sources with $S^{\\rm peak}_{\\rm obs}\\geq5\\sigma_{\\rm f}$ to make a 5$\\sigma$-peak catalog."
+      }
+     ]
+    },
+    "software": [
+     "SExtractor",
+     "CASA imfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian in image plane (imfit)",
+     "evidence": [
+      {
+       "loc": "3.1 Source Detection",
+       "quote": "The total flux densities are measured with the imfit task in CASA that carries out the fitting routine with the 2D Gaussian model on the image plane."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure flux and size in uv plane",
+    "method": {
+     "value": "uvmultifit with symmetric exponential disk (n=1), positions fixed, imfit values as initial guesses; Re=0.826 FWHM; visual flagging",
+     "evidence": [
+      {
+       "loc": "3.2 Flux and Size Measurement",
+       "quote": "The fitting result of the FWHM values are converted to the $R_{\\rm e}$ values via the relation of $R_{\\rm e}=0.826\\,{\\rm FWHM}$ in the case of $n=1$"
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Sersic n=1 exponential disk",
+      "evidence": [
+       {
+        "loc": "3.2 Flux and Size Measurement",
+        "quote": "Here we adopt a symmetric exponential disk model."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "uv-visibility fitting; flag=0 reliable results only",
+     "evidence": [
+      {
+       "loc": "3.2 Flux and Size Measurement",
+       "quote": "We use only the results with flag = 0 in the following analyses in this paper."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with previous ALMA flux/size measurements",
+     "evidence": [
+      {
+       "loc": "3.4",
+       "quote": "Our size measurements are also consistent with the majority of the previous ALMA results within the $\\sim$ 1$-$2 $\\sigma$ errors"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Correct biases with Monte-Carlo simulations",
+    "method": {
+     "value": "Inject 26,600 artificial sources into uv data of 10 representative maps; fit linear input-output relations in 3 SNR bins",
+     "evidence": [
+      {
+       "loc": "3.3 Simulation and Correction",
+       "quote": "we create $26,600$ artificial sources with the uniform distribution of the total fluxes in the $5\\sigma_{\\rm f}-45\\sigma_{\\rm f}$ levels"
+      }
+     ]
+    },
+    "software": [
+     "uvmultifit"
+    ],
+    "key_parameters": [
+     {
+      "value": "sizes 0.04''-3.0''; random positions within 10'' radius; SNR bins 5-10, 10-20, 20-30",
+      "evidence": [
+       {
+        "loc": "3.3 Simulation and Correction",
+        "quote": "we divide our simulation results into three bins with the output peak signal to noise ratio (SNR) of 5$-$10, 10$-$20, and 20$-$30."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "S_in = A0 S_out + A1; Re_in = B0 Re_out + B1",
+     "evidence": [
+      {
+       "loc": "3.3 Simulation and Correction",
+       "quote": "$A_{0}, A_{1}, \n B_{0},$ and $B_{1}$ are the free parameters."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Selection completeness and measurement completeness maps; completeness thresholds",
+     "evidence": [
+      {
+       "loc": "3.5",
+       "quote": "we define the completeness threshold in each sub-dataset."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Identify counterparts and derive L_FIR, SFR, Mstar",
+    "method": {
+     "value": "Nearest optical-NIR source within 1.0'' ; L_FIR from modified blackbody; SFR from Murphy+11",
+     "evidence": [
+      {
+       "loc": "3.6",
+       "quote": "we define the optical-NIR counterparts as the optical-NIR sources that locate within a search radius of $1\\ensuremath{''}$0 from our ALMA source centers."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "beta=1.8, Td=35 K, CMB effect included",
+      "evidence": [
+       {
+        "loc": "3.6",
+        "quote": "we assume $\\beta=1.8$ (cite: chapin2009) and $T_{\\rm d}=35$ K (cite: kovacs2006; coppin2008)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Chabrier IMF; flat cosmology Om=0.3, OL=0.7, H0=70",
+      "evidence": [
+       {
+        "loc": "3.7",
+        "quote": "In this paper, we assume the (cite: chabrier2003) initial mass function (IMF)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Td-L_FIR relation test showed results consistent within 1 sigma",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We thus conclude that our assumption of $T_{\\rm d}=35$ K does not produce the significant systematics"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Fit Re(FIR)-L_FIR relation and redshift evolution",
+    "method": {
+     "value": "Power law R_e=R0 (L/L0)^alpha above completeness thresholds; Spearman test; errors by 1000 Gaussian perturbations; alpha fixed to fit R0 per redshift bin",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We generate 1000 data sets of the $R_{\\rm e (FIR)}$ and $L_{\\rm FIR}$ for the ALL10S and OC10S sources based on the random perturbations"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "redshift bins 0-1, 1-2, 2-4, 4-6; L0 = Schechter L* at z~3",
+      "evidence": [
+       {
+        "loc": "4.2",
+        "quote": "We select the $L_{0}$ value to the best-fit Schechter parameter $L_{*}$ at $z\\sim3$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Power-law fit with perturbation method (Curran 2014) for 1 sigma errors",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We estimate the 1$\\sigma$-error range of the power-law function by the perturbation method (cite: curran2014)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested without AGNs, potential lensed sources, cycle 0/1 data; no completeness threshold; Band 6 vs 7 for CMB effect",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "We thus conclude that the $R_{\\rm e(FIR)}-L_{\\rm FIR}$ relation is unchanged by the contaminations of the AGNs, the lensed sources, and the early ALMA cycles."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare with UV/optical sizes and classify mergers",
+    "method": {
+     "value": "Compare with Shibuya+15 and van der Wel+12 sizes; major merger pair selection within 2.5'' with dz<1 and Mstar>10%; CNN morphology catalog",
+     "evidence": [
+      {
+       "loc": "5.5",
+       "quote": "i) selecting the optical-NIR objects that are located within an offset of $2.5\\ensuremath{''}$ from the OC5S-mmT source centers"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "KS tests; extended 6'' radius check",
+     "evidence": [
+      {
+       "loc": "5.5",
+       "quote": "We identify no additional OS5S-mmT sources that have the major merger pairs with an extended radius of 6$''$"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.2.0 to 4.7.2",
+    "used_for": {
+     "value": "Reduction, CLEAN, imfit, concat, statwt, boxit",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "we use the CASA versions from 4.2.0 to 4.7.2."
+      }
+     ]
+    }
+   },
+   {
+    "name": "SExtractor",
+    "version": "2.5.0",
+    "used_for": {
+     "value": "Source extraction",
+     "evidence": [
+      {
+       "loc": "3.1 Source Detection",
+       "quote": "with sextractor version 2.5.0 (cite: bertin1996)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmultifit",
+    "version": "not stated",
+    "used_for": {
+     "value": "uv-visibility flux and size fitting",
+     "evidence": [
+      {
+       "loc": "3.2 Flux and Size Measurement",
+       "quote": "We perform uvmultifit ((cite: marti2014)) that is a simultaneous fitting tool for multiple objects on $uv$-visibility."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of sources in ALL5S",
+    "value": "1034",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Source Detection",
+      "quote": "We obtain 1034 sources in the 5$\\sigma$-peak catalog."
+     }
+    ]
+   },
+   {
+    "quantity": "Number of sources in ALL10S",
+    "value": "780",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Source Detection",
+      "quote": "we select 780 sources with total flux densities"
+     }
+    ]
+   },
+   {
+    "quantity": "Median redshift (OC5S-mmT)",
+    "value": "2.36",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Redshift Distribution",
+      "quote": "The median redshift is estimated to be $z_{\\rm med}=2.36$"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha (all redshifts) in Re(FIR) ∝ L_FIR^alpha",
+    "value": "0.28",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "the $\\alpha^{\\rm FIR}$ value is estimated to be 0.28 $\\pm$ 0.07"
+     }
+    ]
+   },
+   {
+    "quantity": "alpha at z=2-4",
+    "value": "0.23",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "We obtain $\\alpha^{\\rm FIR} = 0.23\\,\\pm\\,0.07$."
+     }
+    ]
+   },
+   {
+    "quantity": "Starburst fraction, all redshifts",
+    "value": "~52",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.7",
+      "quote": "With the redshift bins all together, the starburst fraction is $\\sim$52%."
+     }
+    ]
+   },
+   {
+    "quantity": "Major merger fraction (early/mid-stage) in OC5S-mmT",
+    "value": "27 (15/56)",
+    "uncertainty": "not stated",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5.5",
+      "quote": "We find that 27% ($=$15/56) of the OC5S-mmT sources have the major merger pairs."
+     }
+    ]
+   },
+   {
+    "quantity": "Median ALMA-HST offset",
+    "value": "0.24",
+    "uncertainty": "not stated",
+    "units": "arcsec",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.4",
+      "quote": "the median value of the individual scatters is estimated to be $0.24\\ensuremath{''}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Re(FIR) at fixed L_FIR decreases toward high redshift, like UV/optical sizes",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "shows that $R_{\\rm e(FIR)}$ at a fixed $L_{\\rm FIR}$ decreases toward high redshifts"
+     }
+    ]
+   },
+   {
+    "value": "Re(FIR) generally smaller than Re(UV) and Re(Opt.)",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "we conclude that the $R_{\\rm e(FIR)}$ values are generally smaller than the $R_{\\rm e(UV)}$ and $R_{\\rm e(Opt.)}$ values"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Re(FIR) correlates with L_FIR across z=0-6",
+    "experiment": "uv-plane size measurement of ALMA archival sources with completeness corrections; power-law fit",
+    "result": "alpha=0.28±0.07, >99% significance",
+    "finding": "Positive size-luminosity relation with slope similar to UV",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The best-fit power-law function, $R_{\\rm e(FIR)}\\propto\\,L_{\\rm FIR}^{\\alpha}$, provides $\\alpha=0.28\\pm0.07$"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dusty starbursts are more compact than their UV/optical extent",
+    "experiment": "Compare Re(FIR) with Re(UV/Opt.) statistically and for 53 individual sources",
+    "result": "Re(FIR) <~ Re(UV), Re(Opt.)",
+    "finding": "Dusty starbursts occur in compact regions",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "This trend would indicate that the dusty starbursts take place in the compact regions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Dusty starbursts are triggered only by major mergers",
+    "experiment": "Pair-based and CNN morphology classification of HST images",
+    "result": "~30-40% classified as major mergers",
+    "finding": "Other mechanisms also trigger dusty starbursts",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.5",
+      "quote": "We thus conclude that the dusty starbursts are triggered not only by the major mergers but also the other mechanism(s)."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Archive sample gives large statistics and homogeneous analysis across redshift",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "A homogeneous measurement based on a large dataset is required to compare the different redshift samples and determine the $R_{\\rm e(FIR)}$ evolution."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Td-L_FIR relation instead of fixed Td=35 K; rejected since results consistent",
+     "evidence": [
+      {
+       "loc": "4.2",
+       "quote": "we adopt the $L_{\\rm FIR}$ values estimated by $T_{\\rm d}=35$ K in the following analyses."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Sample not complete at fixed stellar mass",
+     "evidence": [
+      {
+       "loc": "3.7",
+       "quote": "our ALMA sources are not the complete sample at a fixed $M_{\\rm star}$."
+      }
+     ]
+    },
+    {
+     "value": "Size measurement unreliable for compact/faint sources in low-resolution maps",
+     "evidence": [
+      {
+       "loc": "3.5",
+       "quote": "We cannot obtain the reliable size measurements for the compact and/or faint sources in the low-resolution observations."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single dust temperature and photometric redshifts bias L_FIR",
+    "Heterogeneous target selection in archival programs",
+    "Exponential-disk assumption and Gaussian-based completeness",
+    "Low-resolution maps may bias sizes"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Public ALMA archive data",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "1627 Atacama Large Millimeter/submillimeter Array (ALMA) 1-mm band maps that become public by 2017 July"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging cell/image sizes",
+    "Completeness threshold values",
+    "Photometric catalogs matching per source",
+    "Line-channel masks"
+   ],
+   "estimated_data_volume_inferred": "Multi-TB (~30 ALMA projects, 1627 maps)",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clear recipe, but heavy volume and many unstated parameters; results are numeric.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Very large data volume and incomplete imaging and selection details make full reproduction impractical."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: fujimoto2016)",
+     "why": "Data reduction approach"
+    },
+    {
+     "citation": "(cite: marti2014)",
+     "why": "uvmultifit tool"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": [
+    "3D-HST",
+    "ALESS",
+    "HUDF",
+    "Hubble Frontier Fields",
+    "COSMOS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c70900e2fd6f4e7f5123d86636a7754a",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:32",
+  "usage": {
+   "input_tokens": 50220,
+   "output_tokens": 9211,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.096881,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 68,
+  "quotes_ok": 68,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2011.1.00097.S"
+  ],
+  "obscore_codes_not_in_card": [
+   "2011.0.00097.S",
+   "2011.0.00294.S",
+   "2012.1.00076.S",
+   "2012.1.00090.S",
+   "2012.1.00173.S",
+   "2012.1.00245.S",
+   "2012.1.00307.S",
+   "2012.1.00326.S",
+   "2012.1.00523.S",
+   "2012.1.00756.S",
+   "2012.1.00775.S",
+   "2012.1.00869.S",
+   "2012.1.00979.S",
+   "2012.1.00983.S",
+   "2013.1.00034.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00205.S",
+   "2013.1.00208.S",
+   "2013.1.00566.S",
+   "2013.1.00668.S",
+   "2013.1.00718.S",
+   "2013.1.00781.S",
+   "2013.1.00884.S",
+   "2013.1.01292.S",
+   "2015.1.00039.S",
+   "2015.1.00137.S",
+   "2015.1.00540.S",
+   "2015.1.01495.S"
+  ],
+  "codes_printed_but_missing": [
+   "2011.0.00097.S",
+   "2011.0.00294.S",
+   "2012.1.00076.S",
+   "2012.1.00090.S",
+   "2012.1.00173.S",
+   "2012.1.00245.S",
+   "2012.1.00307.S",
+   "2012.1.00326.S",
+   "2012.1.00523.S",
+   "2012.1.00756.S",
+   "2012.1.00775.S",
+   "2012.1.00869.S",
+   "2012.1.00979.S",
+   "2012.1.00983.S",
+   "2013.1.00034.S",
+   "2013.1.00118.S",
+   "2013.1.00151.S",
+   "2013.1.00173.S",
+   "2013.1.00205.S",
+   "2013.1.00208.S",
+   "2013.1.00566.S",
+   "2013.1.00668.S",
+   "2013.1.00718.S",
+   "2013.1.00781.S",
+   "2013.1.00884.S",
+   "2013.1.01292.S",
+   "2015.1.00039.S",
+   "2015.1.00137.S",
+   "2015.1.00540.S",
+   "2015.1.01495.S"
+  ],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 53,
+   "rate": 0.616
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,1694 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2023MNRAS.526.5401C",
+  "title": "An ALMA Survey of M-dwarfs in the Beta Pictoris Moving Group with two new debris disc detections",
+  "year": 2023,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Cronin-Coltsmann, Patrick F.",
+  "n_authors": 7,
+  "arxiv_id": "2310.15255",
+  "doi": "10.1093/mnras/stad3083",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.01583.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "This paper presents a survey of M-dwarf stars in the young and nearby Beta Pictoris Moving Group with ALMA at Band 7"
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "BPMG M-dwarf survey sample (36 stars in the scientific sample)",
+     "coordinates": {
+      "value": "not stated (Gaia DR3 stellar locations used; per-star values not listed)",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "The observation sample of 39 stars was selected in 2017 for ALMA Cycle 5 based on these criteria"
+       },
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "With these constraints our scientific sample is 36 M-dwarf hosts."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "Per-star distances in Table 1 (about 10 to 100 pc)",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "The observation sample of 39 stars was selected in 2017 for ALMA Cycle 5 based on these criteria"
+       },
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "With these constraints our scientific sample is 36 M-dwarf hosts."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 parallaxes (some from literature)",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "The observation sample of 39 stars was selected in 2017 for ALMA Cycle 5 based on these criteria"
+       },
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "With these constraints our scientific sample is 36 M-dwarf hosts."
+       }
+      ]
+     }
+    },
+    {
+     "name": "GJ 2006 A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "35 pc",
+      "evidence": [
+       {
+        "loc": "3.1 GJ 2006 AB",
+        "quote": "have parallax ($28.55 \\pm 0.04$ and $28.59 \\pm 0.04$ mas, 35 pc)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 parallax",
+      "evidence": [
+       {
+        "loc": "3.1 GJ 2006 AB",
+        "quote": "have parallax ($28.55 \\pm 0.04$ and $28.59 \\pm 0.04$ mas, 35 pc)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "AT Mic A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "9.9 pc (Table 1)",
+      "evidence": [
+       {
+        "loc": "3.1 AT Mic AB",
+        "quote": "Gaia DR3 measures the parallaxes for the AT Mic binary of 100.79$\\pm$0.07 mas and 101.97$\\pm$0.08 mas"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 parallax (authors judge these parallaxes possibly untrustworthy)",
+      "evidence": [
+       {
+        "loc": "3.1 AT Mic AB",
+        "quote": "Gaia DR3 measures the parallaxes for the AT Mic binary of 100.79$\\pm$0.07 mas and 101.97$\\pm$0.08 mas"
+       }
+      ]
+     }
+    },
+    {
+     "name": "GSC 07396-00759",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "71.8 pc",
+      "evidence": [
+       {
+        "loc": "3.1 GSC 07396-00759",
+        "quote": "has parallax $13.92 \\pm 0.02$ mas and distance 71.8 pc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia DR3 parallax",
+      "evidence": [
+       {
+        "loc": "3.1 GSC 07396-00759",
+        "quote": "has parallax $13.92 \\pm 0.02$ mas and distance 71.8 pc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Are M-dwarf debris discs intrinsically less common than around earlier types, or just hard to detect at the wavelengths and sensitivities of earlier far-IR surveys? Tested with an ALMA Band 7 survey of BPMG M-dwarfs.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "It has been questioned whether M-dwarf discs are simply less common than earlier types, or whether the low detection rate derives from the wavelengths and sensitivities available to those studies."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01583.S",
+     "evidence": [
+      {
+       "loc": "2.1 Observation Sample",
+       "quote": "The sample was observed under project 2017.1.01583.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7 (0.87 mm, 345 GHz)",
+    "evidence": [
+     {
+      "loc": "2.2 Observation Details",
+      "quote": "All new observations were performed by ALMA Band 7 (0.87 mm, 345 GHz) under project 2017.1.01583.S."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four windows centred on 347.937, 335.937, 334.042 and 346.042 GHz; 2 GHz bandwidth with 128 channels each, except the last (346.042 GHz) with 1.875 GHz and 3840 channels",
+    "evidence": [
+     {
+      "loc": "2.2 Observation Details",
+      "quote": "The spectral setup for all observations comprised four windows centred on 347.937, 335.937, 334.042 and 346.042 GHz with bandwidth 2 GHz and 128 channels for all but the last with width 1.875 GHz and 3840 channels."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=3-2",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "The last window was used to search for CO gas via the J=3-2 emission line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m array, 43 to 49 antennas per execution (Table 2)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 2MASS J05195327+0617258 | 16.13 | 43 | 15.1 - 782.1 | 4.4 |"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "C43-1, C43-2 and C43-3, chosen by stellar distance",
+    "evidence": [
+     {
+      "loc": "2.2 Observation Details",
+      "quote": "The observations were spread across configurations C43-1, C43-2, and C43-3 depending on stellar distance to retain sensitivity to a similar physical scale and avoid resolving out disc emission."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "Minimum 15.0-15.1 m; maximum 313.7 to 783.5 m depending on observation (Table 2)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "15.1 - 783.5"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "15.0 - 313.7"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "Beam semi-major axis 0.485 to 1.110 arcsec across the sample (Table 3)",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "Beam size is the major-axis of the observation beam."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "MRS 4.2 to 7.4 arcsec across observations (Table 2)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "MRS is maximum recoverable scale and PWV is mean precipitable waver vapour."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "Per-star image RMS about 23 to 85 uJy/beam (Table 3); stacked image of 21 non-detections RMS 10 uJy/beam",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "RMS is the ALMA image root mean square noise as taken from a region surrounding the GAIA DR3 expected stellar location."
+     },
+     {
+      "loc": "2.3 Initial image analysis",
+      "quote": "The stacked image is thus constituted of the remaining 21 observations and has an RMS of 1$\\sigma$ = 10 $\\mu$Jy / beam."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "About 15 minutes per star (Table 2 lists 12.09 to 30.47 min integration time)",
+    "evidence": [
+     {
+      "loc": "5.2 Detection rate in context",
+      "quote": "Our sample has been observed for approximately 15 minutes per star with ALMA Band 7"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "April to September 2018 (Table 2, dd.mm.yy)",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "19.04.18"
+     },
+     {
+      "loc": "Table 2",
+      "quote": "06.09.18"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "New observations proposed for ALMA Cycle 5 by the authors' team; PI not stated",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "In this paper we present observations of the BPMG M-dwarf sample with ALMA."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Gaia DR3",
+     "provided": {
+      "value": "Stellar positions (phase-centre check and photometry locations), parallaxes/distances, multiplicity and astrometric excess noise",
+      "evidence": [
+       {
+        "loc": "3.1 Gaia DR3 parallaxes and binary implications",
+        "quote": "The third data release of the Gaia satellite (cite: Gaia22) has improved our astrometric knowledge of our candidate sample"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SIMBAD",
+     "provided": {
+      "value": "Spectral types for Table 1",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "Spectral types for this table were taken from SIMBAD (cite: SIMBAD) unless otherwise noted with an asterisk"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel PACS",
+     "provided": {
+      "value": "Literature far-IR excess for TYC 7443-1102-1 (Tanner20); Herschel DEBRIS survey used as comparison sample",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "it was later noted to have an infrared excess in Herschel PACS (cite: Tanner20)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar spectral types and luminosity estimates from the Pecaut13 dwarf colour and temperature sequence table for asterisked entries",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "For asterisk noted properties we make estimates using the online"
+       }
+      ]
+     },
+     "citation": "(cite: Pecaut13)"
+    },
+    {
+     "what": {
+      "value": "GSC 07396-00759 disc parameters (flux, radius) taken from the earlier ALMA analysis",
+      "evidence": [
+       {
+        "loc": "2.3 Initial image analysis",
+        "quote": "parameters for GSC 07396-00759 are taken from (cite: Coltsmann22)"
+       }
+      ]
+     },
+     "citation": "(cite: Coltsmann22)"
+    },
+    {
+     "what": {
+      "value": "AU Mic disc radius (40 au) used for the AU Mic entry in the sample",
+      "evidence": [
+       {
+        "loc": "2.3 Initial image analysis",
+        "quote": "the radius measurement for AU Mic is taken from (cite: MacGregor13)"
+       }
+      ]
+     },
+     "citation": "(cite: MacGregor13)"
+    },
+    {
+     "what": {
+      "value": "Background galaxy number-count model used to predict number of sources within 10 arcsec",
+      "evidence": [
+       {
+        "loc": "2.3 Initial image analysis",
+        "quote": "The galaxy number count model of (cite: Popping20) can be used to estimate the expected number of galaxies with a flux of at least 0.5 mJy beam"
+       }
+      ]
+     },
+     "citation": "(cite: Popping20)"
+    },
+    {
+     "what": {
+      "value": "AT Mic AB orbital period 209 yr, semi-major axis 3.18 arcsec (31 au), e = 0.26",
+      "evidence": [
+       {
+        "loc": "3.1 AT Mic AB",
+        "quote": "(cite: Malkov12) provide an orbital period of 209 yr with a semi-major axis of 3.18 arcsec, corresponding to 31 au"
+       }
+      ]
+     },
+     "citation": "(cite: Malkov12)"
+    },
+    {
+     "what": {
+      "value": "Binary-separation dependence of disc detection rate (halved below 25 au, zero for 25-135 au)",
+      "evidence": [
+       {
+        "loc": "3.1 Gaia DR3 parallaxes and binary implications",
+        "quote": "(cite: Yelverton19) find that disc detection rate is more than halved in comparison to single stars when binary separation is less than 25 au"
+       }
+      ]
+     },
+     "citation": "(cite: Yelverton19)"
+    },
+    {
+     "what": {
+      "value": "BPMG F-star disc detection rate 9/12 (75%) used as comparison",
+      "evidence": [
+       {
+        "loc": "5.2 Detection rate in context",
+        "quote": "(cite: Pawellek21) measure a 9/12 (75%) detection rate for F star discs in the BPMG"
+       }
+      ]
+     },
+     "citation": "(cite: Pawellek21)"
+    },
+    {
+     "what": {
+      "value": "DEBRIS M, G, K detection rates (2/89 for M) used as comparison",
+      "evidence": [
+       {
+        "loc": "5.2 Detection rate in context",
+        "quote": "The DEBRIS survey detected just 2/89"
+       }
+      ]
+     },
+     "citation": "(cite: Sibthorpe18)"
+    },
+    {
+     "what": {
+      "value": "Predicted ALMA Band 7 detection rates for DEBRIS-like M-dwarf discs (4.3 to 15.8%)",
+      "evidence": [
+       {
+        "loc": "5.2 Detection rate in context",
+        "quote": "to attain a detection rate of 4.3$\\pm$0.9% to 15.8$\\pm$0.5%, entirely consistent with our observations"
+       }
+      ]
+     },
+     "citation": "(cite: Luppe20)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "PHOENIX synthetic photometry and blackbody disc models fitted with multinest to get stellar and disc SED parameters",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "this method uses synthetic photometry of PHOENIX (cite: 2013A&A...553A...6H) and blackbody disc models, and"
+      }
+     ]
+    },
+    {
+     "value": "One million sets of four synthetic debris disc detections (radius 10-100 au, fractional luminosity 1e-7 to 1e-3) used to test completeness-adjusted rate",
+     "evidence": [
+      {
+       "loc": "5.1 Survey sensitivity and detection fraction",
+       "quote": "To investigate these effects we generated one million sets of four synthetic debris disc detections"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Provided ALMA pipeline script",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "The raw data were calibrated with the provided ALMA pipeline script in CASA version 5.1.2-4 (cite: CASA)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.2-4",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "The raw data were calibrated with the provided ALMA pipeline script in CASA version 5.1.2-4 (cite: CASA)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN algorithm in CASA",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "All images were generated with the CLEAN algorithm in CASA."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Natural weighting (no robust value stated)",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "shows naturally weighted images of the observational sample generated with the CLEAN algorithm in CASA"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "1 and 2 arcsec tapers used for visual inspection for extended emission",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "The sample was also visually inspected with 1 and 2 arcsec"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA, used for the CO J=3-2 search",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "also checked in these observations by producing CLEAN continuum-subtracted images with the"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Primary-beam-corrected CLEAN images used for serendipitous source search",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "were identified in the primary beam-corrected CLEAN images"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Beam semi-major axis 0.485 to 1.110 arcsec (Table 3)",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "Beam size is the major-axis of the observation beam."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "About 23 to 85 uJy/beam per star (Table 3)",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "RMS is the ALMA image root mean square noise as taken from a region surrounding the GAIA DR3 expected stellar location."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Stellar photosphere flux estimation by SED model-atmosphere fitting",
+      "evidence": [
+       {
+        "loc": "2.3 Initial image analysis",
+        "quote": "Stellar fluxes are estimated by fitting model atmospheres to photometry as outlined in (cite: Yelverton19)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Yelverton19)"
+    },
+    {
+     "what": {
+      "value": "Disc SED fitting procedure for fractional luminosity-temperature models",
+      "evidence": [
+       {
+        "loc": "3.3 GSC 07396-00759",
+        "quote": "More details on the SED fitting procedure can be found in (cite: Yelverton19)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Yelverton19)"
+    },
+    {
+     "what": {
+      "value": "In-depth ALMA analysis and disc radius fitting of GSC 07396-00759",
+      "evidence": [
+       {
+        "loc": "3.3 GSC 07396-00759",
+        "quote": "An in-depth analysis of the ALMA data for this disc is presented in (cite: Coltsmann22)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Coltsmann22)"
+    },
+    {
+     "what": {
+      "value": "Small-number binomial uncertainty method for detection rates",
+      "evidence": [
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "We derive an uncertainty on this using the uncertainty in small number binomial statistics method set out in the appendix of (cite: Burgasser03)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Burgasser03)"
+    },
+    {
+     "what": {
+      "value": "Sample selection from literature BPMG membership lists",
+      "evidence": [
+       {
+        "loc": "2.1 Observation Sample",
+        "quote": "These sources were used for the sample selection: (cite: Binks16; Malo13; Shkolnik12; Schlieder10; Lepine09; Zuckerman01)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Binks16; Malo13; Shkolnik12; Schlieder10; Lepine09; Zuckerman01)"
+    },
+    {
+     "what": {
+      "value": "Disc radius versus host luminosity plot of mm-resolved discs",
+      "evidence": [
+       {
+        "loc": "5.3 Radii in context",
+        "quote": "we plot the mm-wave radii of all mm resolved debris discs against the host luminosity, as first presented in (cite: Matra18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Matra18)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image size, cell size, CLEAN threshold, number of iterations and masks for the natural-weighted CLEAN images",
+    "Which spectral windows/channels were used for continuum imaging and the line-free channels and polynomial order used in uvcontsub for the CO search",
+    "Flux calibrator and flux-scale uncertainty for each execution",
+    "uvmodelfit starting parameters and how its flux uncertainty relates to image RMS",
+    "Exact region used to measure RMS and the 3 sigma detection criterion definition",
+    "Which stellar epoch/proper-motion propagation was used for the Gaia DR3 positions at the ALMA observation date",
+    "Details of the SED fitting inputs (photometry, priors, grain model) and the grid of fractional luminosity-temperature models used in Figure 6",
+    "Exact completeness calculation (grid, how a disc flux is mapped to per-observation sensitivity)",
+    "Stellar luminosities and photometry per star (only final luminosities listed in Table 1)",
+    "Whether the archive-delivered or re-run pipeline calibration was used and its pipeline version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and average visibilities",
+    "method": {
+     "value": "Provided ALMA pipeline script in CASA, then time and channel averaging for continuum imaging",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "The raw data were calibrated with the provided ALMA pipeline script in CASA version 5.1.2-4 (cite: CASA)."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "30 s averaging and two channels per spectral window",
+      "evidence": [
+       {
+        "loc": "2.2 Observation Details",
+        "quote": "To reduce the data volume the visibilities were averaged in 30 second intervals and down to two channels per spectral window for the continuum imaging."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Make continuum images and inspect for extended emission",
+    "method": {
+     "value": "Naturally weighted CLEAN images; additional 1 and 2 arcsec uv tapers inspected visually",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "shows naturally weighted images of the observational sample generated with the CLEAN algorithm in CASA"
+      },
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "The sample was also visually inspected with 1 and 2 arcsec"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure point-source flux at each Gaia DR3 stellar position",
+    "method": {
+     "value": "Point-source model fit to visibilities with CASA uvmodelfit at the Gaia DR3 location; offsets fixed except for detections and near-detections",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "We do not allow the offset parameters to vary in these fits to avoid fitting to nearby non-stellar point sources except in the cases of detections and near detections"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Stars separated by less than the beam are listed as one with the mean of two uvmodelfit fluxes",
+      "evidence": [
+       {
+        "loc": "Table 3",
+        "quote": "Systems where the on-sky separation is less than the beam size are listed as one with the mean flux of the two"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "uvmodelfit fluxes consistent with fluxes measured directly from the images",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "are consistent with fluxes measured directly from the images."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate stellar photosphere flux and derive mm excess",
+    "method": {
+     "value": "SED fitting of model atmospheres to photometry (Yelverton19 method) to predict 880 um stellar flux; subtract from measured flux to get excess; 3 sigma criterion for detection",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "Stellar fluxes are estimated by fitting model atmospheres to photometry as outlined in (cite: Yelverton19)"
+      },
+      {
+       "loc": "6 Conclusion",
+       "quote": "We note two of our observations come close to our 3$\\sigma$ criterion for detection."
+      }
+     ]
+    },
+    "software": [
+     "PHOENIX",
+     "multinest"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "multinest fit of PHOENIX photosphere plus blackbody disc models to photometry; priors not stated",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "this method uses synthetic photometry of PHOENIX (cite: 2013A&A...553A...6H) and blackbody disc models, and"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Check detections for stellar flares",
+    "method": {
+     "value": "Split observations into individual scans, re-image and check flux variance over time",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "The observations were split into their individual scans and re-imaged to check for variance of the flux along the time baseline of the observations."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "No evidence for flaring was found",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "No evidence for flaring was found."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Search for 12CO J=3-2 emission",
+    "method": {
+     "value": "Continuum-subtracted CLEAN images made with uvcontsub, searched at the stellar location and near the expected stellar radial velocity",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "also checked in these observations by producing CLEAN continuum-subtracted images with the"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "No CO emission found in any observation",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "No CO emission was found in any observation."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Stack non-detections for a mean upper limit",
+    "method": {
+     "value": "Stack images of 21 non-detections with the star within 0.5 arcsec of the phase centre; read flux at centre and RMS",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "A stacked image was also made from the non-detections in which the star is expected to lay within 0.5 arcsec of the phase centre."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Identify serendipitous background sources",
+    "method": {
+     "value": "Search primary-beam-corrected CLEAN images within 10 arcsec of phase centre for sources of at least 5 sigma; compare to galaxy number counts",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "Serendipitous sources within 10 arcsec of the phase centre whose flux reached at least 5$\\sigma$ were identified in the primary beam-corrected CLEAN images"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Detected counts consistent with Popping20 galaxy number-count model",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "The expected number of background sources is $12^{+4}_{-10}$, consistent with our detections."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Constrain disc fractional luminosity and temperature for detections",
+    "method": {
+     "value": "Fit SED/dust models to get fractional luminosity-temperature distribution, then restrict by disc radius (resolved radius or beam-size upper limit) converted to a mm grain temperature",
+     "evidence": [
+      {
+       "loc": "3.3 GSC 07396-00759",
+       "quote": "These models must be compatible with the SED of the disc but do not take into account resolution effects or radial information derived from the image of the disc."
+      }
+     ]
+    },
+    "software": [
+     "multinest"
+    ],
+    "key_parameters": [
+     {
+      "value": "GJ 2006 A radius limit 34 au gives T lower limit 25 K; AT Mic A radius limit 10 au gives T lower limit 40 K; GSC 07396-00759 radius 70.2 au gives T of 20 K",
+      "evidence": [
+       {
+        "loc": "3.3 GJ 2006 A",
+        "quote": "we can place a lower limit on the mm grain temperature of 25 K"
+       },
+       {
+        "loc": "3.3 AT Mic A",
+        "quote": "we can place a lower limit on the mm grain temperature of 40 K"
+       },
+       {
+        "loc": "3.3 GSC 07396-00759",
+        "quote": "with a resolved radius of 70.2 au the mm dust grains would have a temperature of 20 K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Unresolved discs: beam semi-major axis sets an upper limit on disc radius",
+      "evidence": [
+       {
+        "loc": "3.3 GJ 2006 A",
+        "quote": "The beam size of the observation sets an upper limit on the radius of the disc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Model distributions from the Yelverton19 SED fitting; sampler and priors not stated here",
+     "evidence": [
+      {
+       "loc": "3.3 GSC 07396-00759",
+       "quote": "More details on the SED fitting procedure can be found in (cite: Yelverton19)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Compute detection rate and completeness-adjusted rate",
+    "method": {
+     "value": "Count detections in the 36-star sample; for each detection compute completeness (fraction of observations that would have detected that disc flux), divide and sum; binomial small-number uncertainties; test with one million synthetic detection sets",
+     "evidence": [
+      {
+       "loc": "5.1 Survey sensitivity and detection fraction",
+       "quote": "if that disc flux were present for each observation, what fraction of the observations would have significantly detected it?"
+      },
+      {
+       "loc": "5.1 Survey sensitivity and detection fraction",
+       "quote": "To investigate these effects we generated one million sets of four synthetic debris disc detections"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Synthetic discs: radius uniform 10-100 au, fractional luminosity log-uniform 1e-7 to 1e-3, host luminosity drawn from sample without replacement",
+      "evidence": [
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "Within each set each disc had a radius selected randomly from between 10 and 100 au with linearly spaced probability and a fractional luminosity selected randomly from between $10^{-3}$ and $10^{-7}$ with logarithimically spaced probability."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Large assumptions about the underlying M-dwarf disc population in the synthetic test",
+      "evidence": [
+       {
+        "loc": "5.1 Survey sensitivity and detection fraction",
+        "quote": "This process has made large assumptions about the underlying M-dwarf disc population"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Synthetic completeness-adjusted rate 29.9 +12.3/-8.9 % not significantly above observed; implies observed uncertainties underestimated",
+     "evidence": [
+      {
+       "loc": "5.1 Survey sensitivity and detection fraction",
+       "quote": "While the synthetic rate is not significantly larger than the observed fraction, its greater uncertainty does imply that the uncertainties on the observed completeness adjusted detection rate are indeed likely underestimated."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.2-4",
+    "used_for": {
+     "value": "Pipeline calibration, CLEAN imaging, uvmodelfit photometry, uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "The raw data were calibrated with the provided ALMA pipeline script in CASA version 5.1.2-4 (cite: CASA)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvmodelfit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Fitting point-source models to visibilities at Gaia DR3 positions for photometry",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "To extract photometry point source models were fit to the visibilities using the CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "uvcontsub",
+    "version": "not stated",
+    "used_for": {
+     "value": "Continuum subtraction before CO J=3-2 search",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "also checked in these observations by producing CLEAN continuum-subtracted images with the"
+      }
+     ]
+    }
+   },
+   {
+    "name": "multinest",
+    "version": "not stated",
+    "used_for": {
+     "value": "Deriving best-fit star and disc parameters in SED fits",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "to derive best-fit star and disc parameters."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHOENIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Synthetic stellar photospheric photometry in SED fits",
+     "evidence": [
+      {
+       "loc": "2.3 Initial image analysis",
+       "quote": "this method uses synthetic photometry of PHOENIX (cite: 2013A&A...553A...6H) and blackbody disc models, and"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SIMBAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Spectral types in Table 1",
+     "evidence": [
+      {
+       "loc": "2.1 Observation Sample",
+       "quote": "Spectral types for this table were taken from SIMBAD (cite: SIMBAD) unless otherwise noted with an asterisk"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "GJ 2006 A flux at stellar location (880 um)",
+    "value": "390",
+    "uncertainty": "33",
+    "units": "uJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 GJ 2006 A",
+      "quote": "A flux of 390$\\pm$33 $\\mu$Jy beam$^{-1}$ is measured at the stellar location"
+     }
+    ]
+   },
+   {
+    "quantity": "GJ 2006 A mm excess after stellar subtraction",
+    "value": "385",
+    "uncertainty": "33",
+    "units": "uJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 GJ 2006 A",
+      "quote": "leaves a mm excess of 385$\\pm$33$\\,\\mu$Jy beam$^{-1}$, remaining at 11$\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "GJ 2006 A disc radius upper limit",
+    "value": "<34",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.3 GJ 2006 A",
+      "quote": "a beam semi-major axis of 0.96 arcsec sets a radius upper limit of 34 au"
+     }
+    ]
+   },
+   {
+    "quantity": "GJ 2006 A fractional luminosity range",
+    "value": "~2e-5 to 1e-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.3 GJ 2006 A",
+      "quote": "Limited to these models the fractional luminosity likely ranges from $\\sim$2$\\times10^{-5}$-$1\\times10^{-3}$."
+     }
+    ]
+   },
+   {
+    "quantity": "AT Mic A flux at stellar location (880 um)",
+    "value": "319",
+    "uncertainty": "27",
+    "units": "uJy/beam",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 AT Mic A",
+      "quote": "A flux of 319$\\pm$27 $\\mu$Jy beam$^{-1}$ is measured at the stellar location of this observation"
+     }
+    ]
+   },
+   {
+    "quantity": "AT Mic A mm excess after stellar subtraction",
+    "value": "265",
+    "uncertainty": "27",
+    "units": "uJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 AT Mic A",
+      "quote": "Subtracting the expected stellar flux of 70 $\\mu$Jy beam$^{-1}$ from the measured flux leaves a mm excess of 265$\\pm$27$\\,\\mu$Jy beam$^{-1}$, reaching 8$\\sigma$."
+     }
+    ]
+   },
+   {
+    "quantity": "AT Mic A disc radius upper limit",
+    "value": "<10",
+    "uncertainty": "not stated",
+    "units": "au",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.3 AT Mic A",
+      "quote": "a beam semi-major axis of 1 arcsec sets a radius upper limit of 10 au"
+     }
+    ]
+   },
+   {
+    "quantity": "AT Mic A fractional luminosity range",
+    "value": "~5e-6 to 5e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.3 AT Mic A",
+      "quote": "Limited to these models the fractional luminosity likely ranges from $\\sim$5$\\times10^{-6}$-$5\\times10^{-5}$."
+     }
+    ]
+   },
+   {
+    "quantity": "AT Mic B mm excess after stellar subtraction (not significant)",
+    "value": "65",
+    "uncertainty": "27",
+    "units": "uJy/beam",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.2 AT Mic B",
+      "quote": "the remaining mm-wave excess of $65 \\pm 27$ $\\mu$Jy beam$^{-1}$ does not reach 3$\\sigma$ for this observation"
+     }
+    ]
+   },
+   {
+    "quantity": "GSC 07396-00759 integrated mm flux and disc radius",
+    "value": "1.84 mJy; 70.2 au",
+    "uncertainty": "0.22 mJy; 4.4 au",
+    "units": "mJy; au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 GSC 07396-00759",
+      "quote": "The disc has an integrated mm flux of 1.84$\\pm$0.22 mJy and a radius of 70.2$\\pm$4.4 au"
+     }
+    ]
+   },
+   {
+    "quantity": "GSC 07396-00759 fractional luminosity range",
+    "value": "~1e-4 to 5e-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "3.3 GSC 07396-00759",
+      "quote": "Limited to these models, the fractional luminosity likely ranges from $\\sim 1\\times10^{-4}$-$5\\times10^{-3}$."
+     }
+    ]
+   },
+   {
+    "quantity": "TYC 7443-1102-1 field background source flux densities",
+    "value": "2.20 and 0.44",
+    "uncertainty": "0.05 each",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 TYC 7443-1102-1",
+      "quote": "have integrated flux densities of 2.20$\\pm$0.05 mJy and 0.44$\\pm$0.05 mJy respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked non-detections: 3 sigma upper limit on mean mm excess",
+    "value": "24",
+    "uncertainty": "not stated",
+    "units": "uJy/beam",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "calculate a 3$\\sigma$ upper limit on the mean mm-wave excess of 24 $\\mu$Jy beam$^{-1}$ for those stars."
+     }
+    ]
+   },
+   {
+    "quantity": "Stacked image central flux",
+    "value": "12",
+    "uncertainty": "RMS 10 uJy/beam",
+    "units": "uJy/beam",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "2.3 Initial image analysis",
+      "quote": "No significant flux is found at the centre of the stacked image with a measurement of 12 $\\mu$Jy / beam"
+     }
+    ]
+   },
+   {
+    "quantity": "Disc detection rate (4 of 36)",
+    "value": "11.1",
+    "uncertainty": "+7.4/-3.3",
+    "units": "percent",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.1 Survey sensitivity and detection fraction",
+      "quote": "Of these systems we have four significant detections, GSC 07396-00759, GJ 2006 A, AT Mic A and AU Mic. This makes our detection rate 4/36 or 11.1%."
+     }
+    ]
+   },
+   {
+    "quantity": "Completeness-adjusted detection rate",
+    "value": "23.1 (8.3/36)",
+    "uncertainty": "+8.3/-5.3 in Discussion (abstract and Conclusion print -5.5)",
+    "units": "percent",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.1 Survey sensitivity and detection fraction",
+      "quote": "Dividing through by these completion fractions and summing results in our completeness adjusted detection fraction: 8.3/36 or 23.1%."
+     }
+    ]
+   },
+   {
+    "quantity": "Completeness fractions for the four detections",
+    "value": "GSC 07396-00759 36/36; GJ 2006 A 33/36; AU Mic 33/36; AT Mic A 7/36",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.1 Survey sensitivity and detection fraction",
+      "quote": "GJ 2006 A: 33/36; and AU Mic: 33/36; AT Mic A: 7/36, i.e. only seven of our observations were sensitive enough to have detected an AT Mic A-like disc."
+     }
+    ]
+   },
+   {
+    "quantity": "Synthetic completeness-adjusted detection rate (median)",
+    "value": "29.9",
+    "uncertainty": "+12.3/-8.9",
+    "units": "percent",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "5.1 Survey sensitivity and detection fraction",
+      "quote": "The median of this distribution with its distance to the 16th and 84th percentiles was 29.9$^{+12.3}_{-8.9}$%."
+     }
+    ]
+   },
+   {
+    "quantity": "Background sources identified",
+    "value": "11 (expected 12 +4/-10)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "Finally, we identify 11 background sources, likely sub-mm galaxies, of which one is resolved."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "None of the three new or confirmed disc hosts shows stellar flaring or 12CO J=3-2 emission",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "We confirm that none of these stars show evidence of stellar flaring and none of the discs show evidence of $^{12}$CO J=3-2 emission."
+     }
+    ]
+   },
+   {
+    "value": "TYC 7443-1102-1 field is contaminated by two background sources; no disc is claimed",
+    "evidence": [
+     {
+      "loc": "6 Conclusion",
+      "quote": "We identify the observation of TYC 7443-1102-1 as severely contaminated by two of these background galaxies."
+     }
+    ]
+   },
+   {
+    "value": "HD 155555 C near-detection judged likely noise; AT Mic B excess not significant",
+    "evidence": [
+     {
+      "loc": "3.2 HD 155555 C",
+      "quote": "we rule the flux measurement to likely be the result of noise."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "M-dwarf debris discs are intrinsically less common than around earlier-type stars",
+    "experiment": "ALMA Band 7 survey of 36 BPMG M-dwarfs including AU Mic; compare detection rates with DEBRIS G/K and ALMA predictions",
+    "result": "4/36 = 11.1% (23.1% completeness adjusted), consistent with DEBRIS G and K rates",
+    "finding": "M-dwarf discs are not significantly less common than earlier types; detection needs longer wavelength and higher sensitivity",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We conclude that this detection rate is consistent with the detection rate of discs around G and K type stars"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Unresolved sub-mm excesses exist at M-dwarfs in the sample",
+    "experiment": "Point-source photometry at Gaia DR3 positions, stellar-flux subtraction, flare and CO checks",
+    "result": "11 sigma excesses at GJ 2006 A (385 uJy/beam) and AT Mic A (265 uJy/beam, 8 sigma)",
+    "finding": "Likely two new unresolved debris discs around GJ 2006 A and AT Mic A",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we detect two new sub-mm excesses that likely constitute unresolved debris discs around GJ 2006 A and AT Mic A"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The BPMG M-dwarf detection rate matches the high BPMG F-star rate",
+    "experiment": "Compare with Pawellek21 BPMG F-type rate, raw and completeness-corrected",
+    "result": "Our rate is seven times lower than the F-type rate and still about three times lower when completeness-corrected",
+    "finding": "Difference may reflect host luminosity or an unusual property of the F-type sample; not resolved",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.2 Detection rate in context",
+      "quote": "our detection rate is seven times lower than the F-type rate."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Sub-mm excesses could be stellar flares or CO-bearing gas discs",
+    "experiment": "Re-image individual scans; continuum-subtracted CO J=3-2 search",
+    "result": "No flaring and no CO emission found",
+    "finding": "Excesses are consistent with debris dust, not flares",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "2.3 Initial image analysis",
+      "quote": "No evidence for flaring was found."
+     }
+    ]
+   },
+   {
+    "hypothesis": "A debris disc can exist in a binary with 25-135 au separation (AT Mic A)",
+    "experiment": "Compare unresolved AT Mic A excess and Malkov12 orbit with Yelverton19 binary-separation result",
+    "result": "Disc radius < 10 au; binary semi-major axis 31 au",
+    "finding": "First such binary detection, but uncertain whether Yelverton19 conclusions extend to M dwarfs",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.3 AT Mic A",
+      "quote": "would make this disc the first binary system to have a detected debris disc where the binary separation is between 25 and 135 au"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "BPMG chosen for youth to maximise disc detections; single Band 7 observation because about ten detections expected",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "For this reason, if a survey were to be optimised to recover as many disc detections as possible, a sample of young stars should be selected."
+     },
+     {
+      "loc": "2.2 Observation Details",
+      "quote": "We anticipated of order ten detections (i.e. many non-detections), so did not aim to also obtain spectral information by observing with more than one band."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Configurations chosen by stellar distance to keep a similar physical-scale sensitivity and avoid resolving out emission",
+    "evidence": [
+     {
+      "loc": "2.2 Observation Details",
+      "quote": "The observations were spread across configurations C43-1, C43-2, and C43-3 depending on stellar distance to retain sensitivity to a similar physical scale and avoid resolving out disc emission."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "TYC 7443-1102-1 sub-mm sources considered as a debris disc but rejected as background galaxies; Herschel PACS excess also attributed to contamination",
+     "evidence": [
+      {
+       "loc": "3.2 TYC 7443-1102-1",
+       "quote": "Therefore, we conclude that these mm-wave sources are most likely not associated with the star and constitute background galaxies."
+      }
+     ]
+    },
+    {
+     "value": "HD 155555 C 2-3 sigma flux considered as excess but judged noise",
+     "evidence": [
+      {
+       "loc": "3.2 HD 155555 C",
+       "quote": "we rule the flux measurement to likely be the result of noise."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Sample judged sufficient despite later growth of known BPMG membership",
+    "evidence": [
+     {
+      "loc": "2.1 Observation Sample",
+      "quote": "While observing more targets always provides better statistics, our sample is sufficient for our purposes here."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Completeness-adjusted rate is dominated by AT Mic A and its uncertainties are likely underestimated",
+     "evidence": [
+      {
+       "loc": "5.1 Survey sensitivity and detection fraction",
+       "quote": "the uncertainties on the completeness adjusted detection rate are likely underestimated"
+      }
+     ]
+    },
+    {
+     "value": "No far-IR photometry so SED and temperature are poorly constrained",
+     "evidence": [
+      {
+       "loc": "3.3 GJ 2006 A",
+       "quote": "With a lack of far-IR photometry it is difficult to constrain an SED and model temperature"
+      }
+     ]
+    },
+    {
+     "value": "Single-band data give no spectral information",
+     "evidence": [
+      {
+       "loc": "2.2 Observation Details",
+       "quote": "so did not aim to also obtain spectral information by observing with more than one band."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Detection rate rests on 4 detections, one of which (AU Mic) was not observed in this survey",
+    "AT Mic A 0.13 arcsec offset from the stellar position and unreliable Gaia parallaxes weaken the disc identification",
+    "Abstract and Conclusion quote -5.5 for the completeness-adjusted uncertainty while the Discussion gives -5.3",
+    "Sample was selected in 2017 and is incomplete compared with the later-enlarged BPMG membership"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data available from the ALMA archive under project 2017.1.01583.S",
+    "evidence": [
+     {
+      "loc": "Data Availability",
+      "quote": "The data underlying this article are available in http://almascience.nrao.edu/aq/, and can be accessed with ALMA project ID: 2017.1.01583.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CLEAN parameters (image size, cell size, threshold, masks)",
+    "Flux calibrator and flux-scale uncertainty",
+    "SED fit inputs, priors and the fractional luminosity-temperature model grid",
+    "Completeness calculation details",
+    "uvmodelfit settings"
+   ],
+   "estimated_data_volume_inferred": "About 33 Band 7 executions of roughly 15 minutes each; likely tens of GB raw, a few GB of calibrated measurement sets",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clear point-source photometry recipe with numeric detection fluxes, but imaging parameters, SED/temperature grid and completeness details are not given.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public ALMA data, simple point-source flux measurements at Gaia positions and numeric excess values (GJ 2006 A 385 uJy/beam, AT Mic A 265 uJy/beam) can be redone; the SED modelling parts are harder."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Yelverton19)",
+     "why": "Stellar SED fitting and disc fractional luminosity-temperature procedure"
+    },
+    {
+     "citation": "(cite: Burgasser03)",
+     "why": "Small-number binomial uncertainty method for detection rates"
+    },
+    {
+     "citation": "(cite: Coltsmann22)",
+     "why": "In-depth ALMA analysis and radius fitting of the GSC 07396-00759 disc"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Pawellek21)",
+     "why": "BPMG F-star disc detection rate used as comparison"
+    },
+    {
+     "citation": "(cite: Sibthorpe18)",
+     "why": "Herschel DEBRIS FGK detection rates used as comparison"
+    },
+    {
+     "citation": "(cite: Luppe20)",
+     "why": "Predicted ALMA detection rates for M-dwarf discs"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Herschel DEBRIS survey",
+    "Beta Pictoris Moving Group membership surveys",
+    "ALMA Cycle 5 project 2017.1.01583.S"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2023MNRAS.526.5401C",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T08:04:55",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 130,
+  "quotes_ok": 130,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 19,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 122,
+   "stated": 91,
+   "rate": 0.746
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-30T08:04:55",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "Point-source model fit in the uv plane; priors and likelihood not stated"
+   }
+  ],
+  "dropped_items": []
+ }
+}

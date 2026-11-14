@@ -1,0 +1,1105 @@
+OpenAI Codex v0.165.0-alpha.1.2
+--------
+workdir: C:\Users\adama\Desktop\Quasar-main
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a183bd-b1d9-7203-97b5-acb7feffb77b
+--------
+user
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (smbh-gas-dynamics) ===
+---
+name: alma-smbh-gas-dynamics
+description: "Measure supermassive (and intermediate-mass) black hole masses from ALMA circumnuclear molecular gas kinematics: forward-model a CO line cube as a thin disk orbiting a point mass plus an MGE stellar potential (KinMS, KinMS_MCMC/GAStimator, emcee, AdaMet, dynesty, downhill simplex), with systematic-error budgets for distance, stellar M/L, gas mass, warps and turbulence. Also covers the quick alternatives seen in ALMA papers (CO line-width relation, CNN estimators, lens central-image limits) and the high-z M_BH/M_dyn comparison. Use when planning or checking a CO-dynamical M_BH measurement, judging whether the sphere of influence is resolved, choosing priors, noise rescaling and error budget, or reviewing someone else's M_BH fit. Built from 35 ALMA papers (2013-2025), about 25 on-topic."
+---
+
+# Supermassive black hole masses from molecular gas dynamics
+
+Fits a model of a thin, rotating molecular gas disk in the combined potential of a central point mass and the
+host's stars (and sometimes the gas itself) directly to an ALMA CO cube, and reads M_BH off the Keplerian rise
+in the innermost velocities. The mistakes that matter most: (1) **not resolving the sphere of influence**, which
+turns M_BH into a quantity set by the stellar mass model and Gamma or M/L rather than by the data
+(2020MNRAS.496.4061D, 2018MNRAS.473.3818D); (2) **treating chi^2 as if pixels were independent**, which gives
+error bars that are far too small unless the noise is rescaled (2019ApJ...883..193N, 2024ApJ...975..179C);
+(3) **forgetting that M_BH scales linearly with the adopted distance**, which in several papers is the largest
+single error term (2025ApJ...992..211N, 2019ApJ...881...10B).
+
+> Always report: tracer, beam and channel width, the radius where the BH dominates compared with the beam, the
+> stellar mass model (band, MGE, dust correction), which parameters were free and their priors, the likelihood
+> and noise rescaling, sampler and chain length, the fit region, and a separate systematic error budget
+> (distance, mass model, gas mass, turbulence model, warp). The cards often cannot recover these (see Pitfalls).
+
+Counts below marked "pack count" are my own count of the paper excerpts in the evidence pack after dropping
+off-topic papers; counts marked "aggregate" are the pack's software and settings aggregates.
+
+## When to use
+
+- A nearby early-type or spiral galaxy with a regular, dusty circumnuclear CO disk and an HST image for the
+  stellar mass model: the core use case. Nine papers in the pack do a full cube fit for M_BH (pack count):
+  2016ApJ...823...51B, 2018MNRAS.473.3818D, 2019ApJ...881...10B, 2019ApJ...883..193N, 2020ApJ...892...68N,
+  2020MNRAS.496.4061D, 2024ApJ...975..179C, 2025ApJ...992..211N, 2025MNRAS.541.2540Z.
+- Low-mass and intermediate-mass BHs in dwarfs when sub-parsec resolution is available (2020MNRAS.496.4061D:
+  5.5e5 Msun in NGC 404 from a 0.051" x 0.026" beam).
+- Revisiting an earlier intermediate-resolution M_BH with longer baselines (2025MNRAS.541.2540Z,
+  2025ApJ...992..211N, 2019ApJ...881...10B compares with its Cycle 2 fits).
+- Feasibility and target selection: compute the angular sphere of influence theta_SoI = G M_BH / (sigma_*^2 D)
+  and keep targets with theta_SoI > 0.01" (2024MNRAS.527.9343L), then estimate time for S/N = 5 per beam in
+  10 km/s channels with the ALMA Observing Tool (2024MNRAS.527.9343L found about 70 days, 80 days and 100 years
+  for three maser galaxies).
+- Fixing M_BH from a prior measurement and fitting inflow or radial motions around it
+  (2025A&A...700A.285W fixes log M_BH = 6.65 and fits radial velocities in 20 bins).
+
+## When not to use
+
+| Situation | Use instead |
+|---|---|
+| Galaxy-scale rotation curves, inclination, PA, dispersion or M_dyn of the whole disk | the `galaxy-3d-kinematics` skill (3DBarolo, tilted rings, M_dyn estimators) |
+| High-z quasar hosts at kpc resolution: you only get M_dyn, not M_BH. Papers compare a virial M_BH (Mg II or C IV) with M_dyn = 1.16e5 v_circ^2 D, v_circ = 0.75 FWHM / sin i (2016ApJ...816...37V, 2018PASJ...70...36I, 2018ApJ...854...97D with i = 55 deg; 2017ApJ...845..138S from a rotation curve) | `galaxy-3d-kinematics` for M_dyn; quote M_BH from the optical/NIR paper |
+| Gas only marginally resolved, no Keplerian rise | report an upper limit or treat M_BH as prior-dominated (2020MNRAS.496.4061D); 2013ApJ...770...13W only predicts M_BH from a line-width sigma via M-sigma |
+| A quick number from an unresolved CO profile | the W50-inclination relation with Monte Carlo errors (2024ApJ...977..238B: log M_BH = 7.66 +0.21/-0.15); label it a scaling-relation estimate, not a dynamical mass |
+| A strongly lensed source behind a massive elliptical | central-image non-detection in a lens model gives a lower limit (2015PASJ...67...72T: M_BH > 3e8 Msun; 2015ApJ...811..115W: log M_BH >~ 8.5 preferred; 2017ApJ...843L..35W) |
+| Many galaxies, need a fast estimate | CNNs trained on simulated PVDs or moment-1 maps (2025A&A...693A.311P), but the authors say the scatter is not a physical uncertainty and the simulations lack bars, clumps and misalignments |
+| Water masers at sub-pc | VLBI maser disks; ALMA 321 GHz maser papers in the pack use M_BH as an input, not an output (2013ApJ...768L..38H, 2024PASJ...76..340K) |
+
+Off-topic papers in the pack (regex matched "M_BH" but no gas-dynamical measurement): 2017ApJ...849...91M,
+2020ApJ...897L..14Y, 2018A&A...617A..82B (single-epoch virial masses), 2019A&A...621A..83S (stellar M-sigma),
+2019ApJ...879..117K, 2019ApJ...887...74F, 2020ApJ...891...64F, 2016ApJ...827...81I, 2019ApJ...872...69P,
+2020ApJ...898...75I, 2020A&AT...31..423B. They are not used for recommendations below.
+
+## Steps
+
+1. **Check that the sphere of influence is resolvable.** Goal: know before fitting whether the data can
+   measure M_BH. Method: R_SoI = G M_BH / sigma_*^2 from a prior M_BH (M-sigma) and the literature sigma_*;
+   also R_eq, the radius where enclosed stellar mass equals M_BH (`mge_radial_mass` in JAM). 2025MNRAS.541.2540Z
+   reports R_eq / R_beam of about 1.6 and calls its data the first to resolve the SoI of NGC 1574;
+   2024ApJ...975..179C quotes r_SOI = 0.12" with a 0.30" x 0.16" beam. If the beam is several times larger than
+   R_SoI, expect a prior-dominated result (2020MNRAS.496.4061D, 2016ApJ...823...51B).
+2. **Calibrate and image the CO cube.** Goal: a cube with the finest beam that still has S/N per channel.
+   Method (from cards): CASA `uvcontsub` on line-free channels (2018MNRAS.473.3818D; 2020ApJ...892...68N uses a
+   power law over the line-free bandwidth, CASA 5.1.1), continuum self-calibration applied to the line SPW
+   (2025ApJ...992..211N), `tclean` with Briggs robust 0.5 in most papers (see table). 2025MNRAS.541.2540Z chose
+   its weighting "after some trials" so the SoI stays resolved while keeping S/N. Combine long and short
+   baseline tracks so that the extended disk is not resolved out (2020MNRAS.496.4061D images the long-baseline
+   tracks and all tracks separately). Software: CASA.
+3. **Build the stellar mass model.** Goal: the extended-mass circular velocity. Method: Multi-Gaussian Expansion
+   (MGE) of an HST image, deprojected, scaled by a free M/L, circular velocity from `mge_vcirc` /
+   `mge_circular_velocity` (2020ApJ...892...68N, 2025MNRAS.541.2540Z, 2025ApJ...992..211N,
+   2019ApJ...883..193N). Correct for dust: 2019ApJ...881...10B builds dust-corrected MGEs and its M_BH spans
+   (2.059-2.276)e9 Msun across models D1-D4; 2025MNRAS.541.2540Z uses `mge_fit_sectors_regularized` with a
+   TinyTim PSF. Software: mgefit, JAM/JamPy, TinyTim.
+4. **Model the gas surface brightness.** Goal: the flux weighting of the model cube. Method: an exponential disk
+   (2019ApJ...883..193N, 2025MNRAS.541.2540Z; 2018MNRAS.473.3818D adds truncations and a plateau), or the
+   observed moment-0 map deconvolved with 10 iterations of Richardson-Lucy (2019ApJ...881...10B,
+   2024ApJ...975..179C), or SkySampler clouds drawn from the image (2020MNRAS.496.4061D, 2025ApJ...992..211N,
+   which also tries two Gaussians: 2.34e9 vs 2.50e9 Msun).
+5. **Forward-model the cube.** Goal: a model cube on the data grid. Method: thin disk, circular orbits,
+   v_c^2(r) = G M_BH / r + v_*^2(r) (+ v_gas^2 if the gas mass matters), Gaussian line profiles with a turbulent
+   sigma, convolved with the synthesized beam on an oversampled grid, then rebinned. Free parameters, typically
+   9 to 13: M_BH, M/L (or Gamma), x_c, y_c, i, PA, v_sys, sigma_turb, flux normalisation, plus disk shape or
+   warp terms (2019ApJ...881...10B, 2016ApJ...823...51B, 2025ApJ...992..211N nine; 2025MNRAS.541.2540Z eleven;
+   2020ApJ...892...68N thirteen). Software: KinMS / KinMSpy, or a custom code (2019ApJ...881...10B,
+   2024ApJ...975..179C; their code is not released).
+6. **Fit.** Goal: posteriors for M_BH and M/L. Method: chi^2 likelihood over a fit region around the nucleus,
+   noise rescaled for correlated pixels, log-uniform prior on M_BH, an MCMC or nested sampler (table below).
+   Two-step fits are common: a wide region first, then a small central region (2018MNRAS.473.3818D 160x160 then
+   64x64 pixels; 2020ApJ...892...68N 4"x4" then 1"x1").
+7. **Compare with no-BH and too-large-BH models and inspect residuals.** See Verification checks.
+8. **Build a systematic error budget.** Goal: separate statistical and systematic errors. Method: refit with
+   all free parameters while changing one assumption at a time (oversampling, block averaging, fit region,
+   central gas hole, radial flow, turbulence profile, distance, gas mass) and add positive and negative shifts
+   in quadrature (2019ApJ...881...10B: +-2.7e8 Msun, about 12%). Report statistical and systematic separately,
+   as 2024ApJ...975..179C (7.26 +0.43/-0.48 stat +0.55/-1.00 sys e8 Msun) and 2025ApJ...992..211N
+   (2.50 +-0.37 stat +-0.8 sys e9 Msun) do.
+9. **Place on scaling relations.** Compare with M-sigma, M-M_bulge or M-M_* (2024ApJ...975..179C runs a
+   10,000-iteration Monte Carlo offset test for six relic galaxies; 2025MNRAS.541.2540Z).
+
+## Parameter defaults and ranges
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| CO line | CO(2-1) | CO(2-1), CO(3-2) | 9 full-fit papers (pack count) | CO(3-2) in 2018MNRAS.473.3818D; CO(2-1) in 2019ApJ...881...10B, 2025MNRAS.541.2540Z |
+| Imaging weight | Briggs robust 0.5 | natural to robust 1.0 | 6 of 8 cards checked use 0.5 | 2019ApJ...881...10B, 2024ApJ...975..179C, 2018MNRAS.473.3818D, 2016ApJ...823...51B, 2025ApJ...992..211N; robust 1.0 in 2025MNRAS.541.2540Z; natural in 2019ApJ...883..193N |
+| Channel width | about 10-20 km/s | 2 to 20 km/s | cards | 10.2 km/s (2019ApJ...881...10B), 19.9 km/s (2024ApJ...975..179C), 20.1 km/s (2016ApJ...823...51B), 2 km/s (2020MNRAS.496.4061D) |
+| Beam | 0.1"-0.3" | 0.042" x 0.030" to 0.32" x 0.23" | cards | 2020ApJ...892...68N, 2016ApJ...823...51B, 2025MNRAS.541.2540Z (0.078" x 0.070") |
+| Oversampling of model grid | s >= 4 | 4-6 | 2 | M_BH stable for s >= 4 (2019ApJ...881...10B); s = 6 (2024ApJ...975..179C) |
+| Block averaging before chi^2 | 4x4 or 5x5 pixels | none to 5x5 | 3 | 2019ApJ...881...10B, 2024ApJ...975..179C, 2016ApJ...823...51B |
+| Fit region | central ~1" | 0.25" radius to 1.55" box | 6 | r_fit = 1" (2019ApJ...881...10B); R_fit = 1.5" ellipse (2024ApJ...975..179C); 0.25" (2020MNRAS.496.4061D); 1.55" box (2019ApJ...883..193N) |
+| M_BH prior | uniform in log M_BH | log 4.0-6.9 (dwarf) to 4.8-9.8 | 5 | 2018MNRAS.473.3818D, 2020MNRAS.496.4061D, 2020ApJ...892...68N, 2024ApJ...975..179C, 2025ApJ...992..211N |
+| M/L or Gamma prior | flat; Gaussian when stellar kinematics constrain it | Gamma ~ N(0.61, 0.11) | 1 | 2020MNRAS.496.4061D |
+| Inclination prior | flat over MGE-allowed range, or Gaussian | N(37, 3) deg | 3 | 2020ApJ...892...68N, 2020MNRAS.496.4061D; 2018MNRAS.473.3818D cross-checks flat in sin i |
+| sigma_turb | free, constant | fixed 2.2 to 24.7 km/s | 5 | 12.9 (2020MNRAS.496.4061D), 11.3 (2025MNRAS.541.2540Z), fixed 2.2 (2018MNRAS.473.3818D), 24.7 (2016ApJ...823...51B); sigma_turb / v_c = 0.030 (2019ApJ...881...10B) |
+| Noise rescaling | multiply rms by (2N)^(1/4) | N = 12,112 to 76,014 pixels | 4 | 2020MNRAS.496.4061D (factor 12.47), 2025ApJ...992..211N, 2019ApJ...883..193N, 2025MNRAS.541.2540Z |
+| Chain length | 1e5-3e5 steps, 10-20% burn-in | 3e4 to 3e6 | 5 | 1e5 / 10% (2018MNRAS.473.3818D), 3e5 / 10% (2020MNRAS.496.4061D), 2e5 / 1e4 (2025MNRAS.541.2540Z), 1e5 / 20% (2025ApJ...992..211N), 3e6 / 20% (2020ApJ...892...68N) |
+| Quoted interval | 68% and 99% (or 3 sigma) | 68/99, 16/84 + 0.2/99.8, 68/99.7, Delta chi^2 < 9 | 5 | 2018MNRAS.473.3818D, 2020ApJ...892...68N, 2024ApJ...975..179C, 2019ApJ...883..193N |
+| Gas mass in potential | include or test | negligible to 4e8 Msun | 3 | included (2020MNRAS.496.4061D); tested (2024ApJ...975..179C); two gas masses (2019ApJ...883..193N) |
+
+## Software
+
+From the pack aggregates (counts are matched analysis steps, not papers):
+
+- **KinMS** (aggregate 6; plus KinMS_MCMC 2, KinMS_fitter 1, KinMSpy_MCMC 1): forward-models the cube from a
+  surface brightness profile and circular velocity curve (2018MNRAS.473.3818D, 2019ApJ...883..193N,
+  2020MNRAS.496.4061D, 2020ApJ...892...68N, 2025A&A...700A.285W, 2025ApJ...992..211N, 2025MNRAS.541.2540Z).
+  This is the WISDOM and MBHBM* project toolchain.
+- **SkySampler** (aggregate 3): samples gas clouds from the observed intensity map (2020MNRAS.496.4061D,
+  2025A&A...700A.285W, 2025ApJ...992..211N).
+- **Samplers**: GAStimator Gibbs MCMC with adaptive stepping (aggregate 1; 2025MNRAS.541.2540Z; same method in
+  2018MNRAS.473.3818D, 2020MNRAS.496.4061D), emcee (aggregate 1; 2020ApJ...892...68N), AdaMet (aggregate 1;
+  2025ApJ...992..211N), dynesty nested sampling (aggregate 1; 2024ApJ...975..179C), mpfit then a grid
+  (aggregate 1; 2019ApJ...883..193N), downhill simplex (IDL amoeba in 2016ApJ...823...51B; custom in
+  2019ApJ...881...10B).
+- **Stellar mass model**: MGE (`mge_fit_sectors_regularized` and TinyTim for the HST PSF in
+  2025MNRAS.541.2540Z), JAM `mge_vcirc` (aggregate 2; 2020ApJ...892...68N, 2025MNRAS.541.2540Z), JamPy
+  (2025ApJ...992..211N), MGE for an enclosed stellar mass (2020ApJ...898...75I uses it to subtract M_* and M_BH
+  from M_dyn, an off-topic use).
+- **Richardson-Lucy deconvolution** of the CO intensity map: IRAF STSDAS `lucy` (2019ApJ...881...10B),
+  scikit-image (2024ApJ...975..179C).
+- **Lens route**: Glee (aggregate 3) and glafic (2015ApJ...811..115W, 2017ApJ...843L..35W, 2015PASJ...67...72T).
+- **ML route**: Keras CNNs (aggregate 2; 2025A&A...693A.311P).
+- **Planning**: ALMA Observing Tool (2024MNRAS.527.9343L).
+
+## Pitfalls
+
+- **Unresolved Keplerian rise.** 2020MNRAS.496.4061D says it does not resolve the Keplerian increase, so the
+  result depends on the stellar mass model and Gamma, and it advises caution on its low Gamma.
+  2016ApJ...816...37V: inclination and peak velocity cannot be separated at its resolution.
+- **Central gas hole.** If CO is missing inside R_SoI, M_BH becomes sensitive to stellar mass modelling
+  (2018MNRAS.473.3818D).
+- **Correlated pixels.** The residual "is not equivalent to" chi^2 (2019ApJ...883..193N); chi^2_nu is
+  underestimated after down-sampling (2024ApJ...975..179C); beam correlations neglected (2020MNRAS.496.4061D).
+  2016ApJ...823...51B tried a covariance matrix and it failed; 2018MNRAS.473.3818D uses an analytic covariance
+  in its central fit. Without rescaling, posteriors are too narrow.
+- **Distance.** M_BH is proportional to the angular size distance (2019ApJ...881...10B,
+  2024MNRAS.527.9343L). 2025ApJ...992..211N: 69.3 vs 46.4 Mpc gives about 30% in M_BH, its dominant error;
+  2019ApJ...881...10B: other distances put M_BH at (2.0-3.8)e9 Msun; 2025MNRAS.541.2540Z leaves its 10%
+  distance error out of the budget. State the distance and scale M_BH if it changes.
+- **Poor fits still return a best value.** 2016ApJ...823...51B had chi^2_nu = 4.4 and could not derive
+  meaningful confidence limits (only "about (4-8)e8 Msun"); 2019ApJ...881...10B notes chi^2_nu = 1.179 is not
+  formally acceptable. Inadequate warp, turbulence or surface brightness models are the usual causes.
+- **Turbulence model.** In 2016ApJ...823...51B M_BH moved from 6.02e8 (free flat sigma_turb = 24.7 km/s) to
+  8.0e8 Msun (sigma_turb = 10 km/s).
+- **Warps and non-circular motion.** Most fits assume circular orbits in a thin disk (2019ApJ...883..193N,
+  2020ApJ...892...68N, 2025MNRAS.541.2540Z, 2025ApJ...992..211N). Model warps explicitly when the PA or i
+  twists (2024ApJ...975..179C tilted ring and linear twist, 2025MNRAS.541.2540Z linear PA warp).
+- **Missing flux.** Without short baselines, gas masses are lower limits (2019ApJ...883..193N); combine
+  configurations (2020MNRAS.496.4061D).
+- **Dust and M/L gradients.** A spatially uniform M/L is usually assumed (2019ApJ...881...10B,
+  2025MNRAS.541.2540Z); 2018MNRAS.473.3818D fits separate inner and outer M/L.
+- **Unreported settings.** The cards often lack line-free channel ranges for `uvcontsub` (listed 9 times in the
+  pack's not-stated aggregate), clean masks and thresholds, sampler settings (dynesty live points in
+  2024ApJ...975..179C; mpfit grid spacing in 2019ApJ...883..193N), and some modelling codes are unpublished
+  (2019ApJ...881...10B, 2024ApJ...975..179C). Record all of these for your own fit.
+- **High-z M_BH/M_dyn.** Not gas-dynamical BH masses. Inclination is the dominant unknown and is often left out
+  of the error (2016ApJ...816...37V); M_BH systematics up to about 0.4 dex (2020A&A...637A..84P); low
+  resolution may overestimate M_dyn (2018ApJ...854...97D).
+
+## Verification checks
+
+What papers did:
+
+- **No-BH and too-large-BH models.** Show PVDs for the best fit, M_BH = 0 and a too-large M_BH
+  (2020MNRAS.496.4061D: no BH and >~1e6 Msun both fail; 2020ApJ...892...68N).
+- **Residual maps.** Velocity-field and moment residuals, plus major- and minor-axis PVDs
+  (2025ApJ...992..211N: |V_residual| <~ 15 km/s across the disk; 2025MNRAS.541.2540Z).
+- **Model comparison by BIC.** Flat disk vs tilted ring vs linear twist, excluding Delta BIC >= +10
+  (2024ApJ...975..179C); one- vs two-component warp (2025MNRAS.541.2540Z).
+- **Reduced chi^2.** Values in the pack: 0.867 (2025ApJ...992..211N), 1.159 (2024ApJ...975..179C), 1.16
+  (2020ApJ...892...68N), 1.179 (2019ApJ...881...10B), 2.14 (2025MNRAS.541.2540Z, improved from 2.37).
+- **Numerical convergence.** Oversampling until M_BH stops changing (2019ApJ...881...10B); full-resolution vs
+  block-averaged fits agree (2016ApJ...823...51B).
+- **Fit-region and sampler cross-checks.** Refit within 1", rerun with emcee, flat priors in sin i and cos PA
+  (2018MNRAS.473.3818D: same M_BH, errors about 1.5 times larger); inner and outer cubes give consistent
+  parameters (2025A&A...700A.285W).
+- **Mass-model tests.** Vary M/L (2019ApJ...883..193N tried 0.05, 0.5 and 5.0 with negligible change), gas
+  mass, dust correction (2019ApJ...881...10B), surface brightness model (2025ApJ...992..211N).
+- **Scaling relations.** Compare with M-sigma and M-M_* (2024ApJ...975..179C, 2025MNRAS.541.2540Z).
+
+What a careful referee adds:
+
+- Ask for R_SoI or R_eq in beams and the smallest radius probed by the PVD (2025MNRAS.541.2540Z gives
+  R_min / R_eq = 0.37). If R_SoI is below the beam, the M_BH posterior should be shown against its prior.
+- Check that the noise rescaling or covariance treatment is stated, and that statistical and systematic errors
+  are quoted separately.
+- Check the distance used and whether its error is in the budget.
+- Check that the gas fit region excludes outflows or absorption (2019ApJ...883..193N has both in NGC 1275).
+
+## Source cards
+
+Full list with titles: `references/sources.md`. Most informative for this technique:
+
+- 2019ApJ...881...10B: precision M_BH in NGC 3258, full systematic error budget, oversampling test.
+- 2024ApJ...975..179C: warped disk, dynesty, BIC model selection, stat vs sys split.
+- 2025MNRAS.541.2540Z: WISDOM, SoI resolved, GAStimator, noise rescaling, warp.
+- 2025ApJ...992..211N: KinMS + SkySampler + AdaMet, distance as dominant systematic.
+- 2020MNRAS.496.4061D: intermediate-mass BH, sub-pc beam, priors, prior-dominated caveat.
+- 2018MNRAS.473.3818D: KinMS_MCMC two-step fit, central hole, emcee cross-check.
+- 2020ApJ...892...68N: emcee, 13 parameters, systematics tests, PVD checks.
+- 2019ApJ...883..193N: mpfit plus grid, Delta chi^2 < 9 errors, M/L insensitivity.
+- 2016ApJ...823...51B: failure case, poor fits and turbulence dependence.
+- 2024MNRAS.527.9343L: SoI target selection and observing time.
+- 2025A&A...700A.285W: inner/outer KinMS fits with M_BH fixed.
+- 2025A&A...693A.311P: CNN M_BH estimates.
+- 2024ApJ...977..238B: W50-inclination relation.
+- 2015ApJ...811..115W, 2015PASJ...67...72T: lens central-image limits.
+- 2020A&A...637A..84P, 2017ApJ...845..138S: high-z M_BH-M_dyn comparisons.
+
+=== EVIDENCE PACK (smbh-gas-dynamics) ===
+# Evidence pack: Supermassive black hole masses from gas dynamics (`smbh-gas-dynamics`)
+
+Scope: nuclear molecular gas kinematics to weigh central black holes
+
+Built from 35 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2013-2025.
+Matcher (regex over analysis steps): `black hole mass|smbh mass|\bm_?bh\b|gas[- ]dynamical|sphere of influence`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- agn_and_quasars: 34
+- nearby_galaxies: 19
+- high_z_galaxies: 15
+- astrochemistry: 2
+- galaxy_clusters_and_sz: 1
+- cosmology: 1
+
+### Software named in the matched steps
+- kinms: 6
+- glee: 3
+- skysampler: 3
+- kinms_mcmc: 2
+- jam mge_vcirc: 2
+- keras: 2
+- iraf stsdas lucy: 1
+- custom modeling code: 1
+- scikit-image: 1
+- dynesty: 1
+- jam: 1
+- idl: 1
+- mpfit: 1
+- kinms_fitter: 1
+- tinytim: 1
+- gastimator: 1
+- mge_fit_sectors_regularized: 1
+- kinmspy_mcmc: 1
+- emcee: 1
+- pypeit: 1
+- ppxf: 1
+- adamet: 1
+- jampy: 1
+- glafic: 1
+- mge: 1
+- idl amoeba: 1
+- alma observing tool: 1
+
+### Fitting methods (most common phrasings)
+- chi^2 downhill simplex; at least nine free parameters (M_BH, Upsilon_H, x_c, y_c, i, Gamma, v_sys, sigma_turb, f_0); un…: 1
+- Likelihood exp(-chi2/2); dynesty nested sampling; flat priors (log-uniform for M_BH); 68% and 99.7% intervals: 1
+- Priors on structural parameters from HST fit used for ALMA fit: 1
+- chi2-like residual (obs-model)^2/rms^2; errors from residual < 9+chi2_min after rms scaled by (2N_dof)^(1/4): 1
+- MCMC, position likelihood Gaussian: 1
+- MCMC with Gibbs sampling and adaptive stepping; log-likelihood -chi2/2 plus log priors; final chain 300,000 steps with …: 1
+- MCMC, uniform priors, 30,000 samples: 1
+- bootstrap on chi2 minimisation: 1
+- MCMC with Gibbs sampling and adaptive stepping; chi2 log-likelihood with analytic covariance matrix; 100,000 steps, 10%…: 1
+- chi2 with diagonal covariance, rescaled by 1/sqrt(2N), N=36376 pixels: 1
+- chi2 minimization; 14th/86th percentiles as 1 sigma: 1
+- emcee affine-invariant ensemble sampler; chi^2 likelihood; medians of posteriors with 16/84% (1 sigma) and 0.2/99.8% (3…: 1
+- 100 mock spectra; 16th/84th percentiles: 1
+- Adaptive Metropolis MCMC (AdaMet), chi2 likelihood, uniform priors over ranges in Table 5: 1
+- Linear continuum + Gaussian Mg II + Fe II template: 1
+- RMSE loss, Adam optimizer; output normalised by max M_BH: 1
+- chi^2 with noise from block-averaged blank regions (0.3 mJy/beam); covariance matrix attempt failed: 1
+
+### Validation checks used
+- oversampling factor tests (stable for s>=4); comparison with Cycle 2 fits: 1
+- each test refit with all free parameters: 1
+- Compared flat disk, tilted ring, linear twist models via BIC: 1
+- Comparison with Dye+2014 model; also modeled with glafic with similar results: 1
+- M/L varied 0.05, 0.5, 5.0; two gas masses; missing mass estimate 2e7 Msun: 1
+- rms image offset ~0.015'' for power-law models: 1
+- Results unaffected by 30-40% source size uncertainty and by satellite galaxy: 1
+- PVDs and velocity-field residuals; models with no BH or >1e6 Msun fail: 1
+- Gaussian cross-section distribution compared with IR SED requirement: 1
+- Inner and outer best-fit parameters consistent: 1
+- Cross-checks with emcee; refit within 1 arcsec; flat priors in sin i and cos PA; residuals check: 1
+- compared with non-parametric gas distribution, two-component warp (BIC), PVD and velocity-map residuals, reduced chi2 v…: 1
+- Inclination uncertainty not included in M_dyn errors: 1
+- Compared with luminosity-matched SDSS sample (1000 random draws): 1
+- reduced chi2 1.16; PVD compared with no-BH and overly large BH models; systematics tests on mass model, AGN, distance, …: 1
+- Compared with drift over 424 days vs earlier epoch and with NGC 4258: 1
+- Two Lbol methods agree: 1
+- moment-map, PVD and spectrum comparisons, velocity residuals, minor-axis PVD, alternative models: 1
+- Errors from i = 26 and 48 deg: 1
+- CO-based SFR consistent with SED SFR: 1
+- Compared with M_BH–sigma relation of Kormendy13: 1
+- Uncertainty ~0.3 dex dominated by Mstar color variation: 1
+- Compared with Mdot_BH and nuclear mass flow: 1
+- RMSE, R^2 and mean relative error on 5000-sample test sets; RE vs each parameter: 1
+- Compared with literature M-sigma, reverberation and FPBH masses: 1
+- Compared full-resolution chi^2, PVD fits, HST mass profile: 1
+- Compared with local SMBH mass distribution: 1
+
+### Key parameters and settings (bibcode: value)
+- 2019ApJ...881...10B: CO surface brightness map from 10 iterations of Richardson-Lucy deconvolution
+- 2019ApJ...881...10B: fit region 415 spatial pixels x 94 channels = 39010 data points; spectral range 2310-3273 km/s
+- 2019ApJ...881...10B: distance D_L=35.8 and 28.0 Mpc for +-1 sigma
+- 2024ApJ...975..179C: oversampling s=6; R_fit=1.5"; q_ell=0.54; PA 132.8 deg; 43 channels; intrinsic flux map from 10 Lucy iterations
+- 2017ApJ...843L..35W: core radius uniform prior max 0.065 arcsec; SMBH mass lognormal prior 7.1-9.9 in log10 M
+- 2019ApJ...883..193N: fitting area 1.55x1.55 arcsec, 4687-5580 km/s, 129x129x47 pixels, natural-weighted cube
+- 2015ApJ...811..115W: MCMC chain length 5x10^5
+- 2020MNRAS.496.4061D: log MBH prior uniform 4.0-6.9; Gamma Gaussian (0.61, 0.11); inclination Gaussian (37, 3); noise scaled by (2N)^(1/4)=12.47 with N=12,112
+- 2020A&AT...31..423B: N=8192, M_torus=0.01 M_BH
+- 2025A&A...700A.285W: outer: 0.23'' cube; inner: 1.1''x1.1'' cutout at 40 mas; M_BH fixed log 6.65
+- 2018MNRAS.473.3818D: gas velocity dispersion fixed at 2.2 km/s; flat priors, log-flat for MBH 4.8-9.8
+- 2025MNRAS.541.2540Z: chain of 2e5 steps, first 1e4 discarded as burn-in; 11 free parameters
+- 2016ApJ...816...37V: D=1.5x deconvolved size; i=25, 50 deg; 55 deg and 3±1 kpc for J2348–3054
+- 2020ApJ...892...68N: flat priors, M_BH flat in log space; inclination free over MGE-allowed range
+- 2019A&A...621A..83S: eta=0.1; Lbol=6.7 LX(2-10keV); Lbol=90 L[OIII]
+- 2025ApJ...992..211N: 10^5 MCMC iterations, 20% burn-in; log-scale MBH; chi2 uncertainties rescaled by (2N)^0.25 with N=76,014
+- 2016ApJ...827...81I: n_H2 = 1e6 cm^-3, log(Hx/nH) = -27.5, c_s ~1 km/s, Toomre Q=1
+- 2018PASJ...70...36I: vcirc=0.75 FWHM/sin i; D=1.5 a_maj
+- 2016ApJ...823...51B: Free: M_BH, Upsilon, x, y, v_sys, i, Gamma, f0, sigma_turb params
+- 2019ApJ...879..117K: 3 sigma upper limits for FIR-undetected; LEQ defined as lambda_Edd<0.2
+
+
+### Assumptions (bibcode: value)
+- 2019ApJ...881...10B: spatially uniform M/L; gas disk mass not included; thin, cold disk with no asymmetric drift
+- 2019ApJ...881...10B: M_BH proportional to adopted angular size distance
+- 2024ApJ...975..179C: constant turbulent dispersion sigma_0; gas mass negligible; same inclination as stellar oblate shape
+- 2024ApJ...975..179C: H-K=0.2 mag from SSP models; total galaxy luminosity/mass as upper bounds on bulge
+- 2017ApJ...843L..35W: Cored elliptical power-law mass with central point mass and external shear; Chabrier IMF
+- 2019ApJ...883..193N: axisymmetric potential, circular motion, exponential gas disk, uniform dispersion
+- 2015ApJ...811..115W: SMBH at mass centroid; uniform prior on log M_BH [6.5, 9.5]
+- 2020MNRAS.496.4061D: circular orbits, thin disc, constant velocity dispersion, no dark matter
+- 2020A&AT...31..423B: M_BH ~ 1e7 Msun initially; M_gas ~ 1e5 Msun
+- 2013ApJ...768L..38H: Black hole mass 1.7e6 Msun; Keplerian rotation
+- 2018MNRAS.473.3818D: circular motion; distance 16.5 Mpc
+- 2025MNRAS.541.2540Z: circular orbits; mass from SMBH and stars only; constant M/L; constant sigma_gas; distance 19.7 Mpc; diagonal covariance
+- 2016ApJ...816...37V: Thin inclined disk; gas-to-dust ratio ~100
+- 2017ApJ...849...91M: Eddington luminosity L_Edd = 1.3e38 M_BH; L_bol = 5.15 lambda L3000
+- 2013ApJ...770...13W: Gaussian, no inclination correction
+- 2020ApJ...892...68N: thin axisymmetric disk, circular orbits, constant velocity dispersion
+- 2020ApJ...897L..14Y: Bolometric correction 5.15
+- 2024PASJ...76..340K: M_BH = 1.5e8 Msun; drift due to gravitational acceleration
+- 2019A&A...621A..83S: accretion efficiency 0.1
+- 2025ApJ...992..211N: circular orbits, thin disc, constant velocity dispersion, D = 69.3 Mpc
+- 2017ApJ...845..138S: Dynamical mass taken as bulge mass for local ratio
+- 2019ApJ...887...74F: kappa_1THz=20 cm2/g; lambda_Edd=1; L'CO(5-4)/L'CO(3-2)=0.7
+- 2020ApJ...898...75I: H2 dominates gas mass in CND; hydrogen nuclei fraction 71%; no dark matter
+- 2016ApJ...827...81I: Dense gas uniformly distributed in CND; r_out = HWHM of H2 1-0 S(1) disk; uncertainty set by M_dense/M_BH
+- 2018PASJ...70...36I: Mdyn used as surrogate for M*; Eddington-limited accretion for BH mass of two quasars
+- 2018A&A...617A..82B: accretion efficiency 0.1
+- 2024MNRAS.527.9343L: M_BH ∝ D when rescaling masses to updated distances
+- 2024MNRAS.527.9343L: Homogeneous molecular gas within the central beam
+- 2018ApJ...854...97D: inclination 55 deg; Eddington-limited accretion
+- 2024ApJ...977..238B: Inclination from HST ellipse fit
+
+
+### Limitations the authors admit
+- 2019ApJ...881...10B: Model not a formally acceptable fit (chi^2_nu=1.179); correlated noise; local irregularities in velocity/dispersion fields
+- 2019ApJ...881...10B: Distance disagreements among estimates imply M_BH may lie in (2.0-3.8)e9 Msun
+- 2024ApJ...975..179C: Relatively low S/N; chi2_nu underestimated because adjacent down-sampled pixels not independent
+- 2024ApJ...975..179C: Systematic uncertainty in gas mass likely underestimated
+- 2017ApJ...843L..35W: ~50% of data flagged due to antenna problems
+- 2017ApJ...843L..35W: Conjugate points cause degeneracies; position uncertainties overestimated
+- 2019ApJ...883..193N: Missing flux from lack of short baselines, so masses are lower limits
+- 2019ApJ...883..193N: Residual is not a true chi2 because neighbouring pixels are correlated; modelling assumptions simple
+- 2015ApJ...811..115W: Fluxes of A, B, C not used owing to differential magnification (~30-50%)
+- 2020MNRAS.496.4061D: Keplerian rise not resolved; result depends on stellar mass model and Gamma
+- 2020MNRAS.496.4061D: Low Gamma should be treated with caution; beam correlations neglected
+- 2020A&AT...31..423B: Work in progress
+- 2025A&A...700A.285W: Torque method unvalidated by simulations, configuration likely unstable
+- 2025A&A...700A.285W: Mass of young component is poorly constrained from single UV band; closed-box and alpha_CO assumptions
+- 2020A&A...637A..84P: Poor angular resolution prevents constraining Mdyn for most; thin-disc assumption too simple for some perturbed systems; MBH systematics up to ~0.4 dex
+- 2013ApJ...768L..38H: Beam too large to measure brightness temperature or resolve kinematics
+- 2018MNRAS.473.3818D: Central gas hole makes SMBH mass sensitive to stellar mass modelling
+- 2025MNRAS.541.2540Z: Circular-orbit assumption with mild non-circular motions; distance uncertainty (10%) not included in budget
+- 2016ApJ...816...37V: Inclination and peak rotation velocity cannot be independently determined at current resolution
+- 2016ApJ...816...37V: FIR/TIR luminosities strongly model dependent; more photometry needed
+- 2017ApJ...849...91M: High-z sample biased to high luminosities
+- 2013ApJ...770...13W: Source only marginally resolved; intrinsic size poorly constrained and inclination unknown
+- 2013ApJ...770...13W: L_FIR uncertainties exclude dust temperature uncertainty
+- 2020ApJ...892...68N: Tilted-ring uncertainties likely underestimated; distance systematics large
+- 2020ApJ...897L..14Y: Black hole mass uncertainty excludes scaling-relation systematics of up to ~0.5 dex
+- 2020ApJ...897L..14Y: Large uncertainties and a broad PDF for x_HI prevent solid conclusions
+- 2024PASJ...76..340K: Red component decomposition not unique; drift versus growth ambiguous; first epoch had poorer uv coverage
+- 2019A&A...621A..83S: Distance uncertain; warped or non-coplanar disks cannot be constrained; outer CO velocity field sparse
+- 2025ApJ...992..211N: Distance uncertainty (69.3 vs 46.4 Mpc) gives ~30% systematic in MBH, dominant error
+- 2017ApJ...845..138S: Inclination derived from only two successful rings; real uncertainty may be much larger
+- 2019ApJ...887...74F: Limited depth and resolution prevent distinguishing disk, merger and outflow
+- 2019ApJ...887...74F: Dust mass depends strongly on the adopted kappa
+- 2015PASJ...67...72T: Core radius and velocity dispersion highly degenerate; BH mass and core radius degenerate
+- 2020ApJ...898...75I: Dominance of H2 in the CND is assumed; HI/HII may contribute
+- 2020ApJ...898...75I: RADEX assumes single homogeneous medium though real structure is complex; single transition limits Tex
+- 2020ApJ...891...64F: Lens model poorly constrained; magnification uncertain by a factor of a few
+- 2016ApJ...827...81I: Small, inhomogeneous samples; tentative results; fixed eta and uncertainties not fully included
+- 2016ApJ...827...81I: Most CNDs unresolved so Sigma_dense not measured
+- 2025A&A...693A.311P: One network per galaxy; simulations lack bars, clumps and misalignments; uncertainties not physical
+- 2018PASJ...70...36I: Mdyn has large unconstrained systematic uncertainty; sources only marginally resolved
+- 2018A&A...617A..82B: Inclinations and sizes of marginally resolved sources are uncertain, affecting dynamical masses
+- 2016ApJ...823...51B: Models are poor fits (chi2_nu 4.4); warp, sigma_turb and surface brightness models inadequate; no meaningful confidence intervals
+- 2024MNRAS.527.9343L: Fluxes and masses for NGC 1194 and NGC 3393 are lower limits due to FoV; uncertainties exclude systematics
+- 2024MNRAS.527.9343L: Spectral indices may be biased since resolution not matched to VLA
+- 2018ApJ...854...97D: Low angular resolution means sizes are tentative and dynamical masses may be overestimated
+- 2019ApJ...879..117K: Small LEQ sample; quasars not a complete sample
+- 2019ApJ...879..117K: Alternative explanations (episodic super-Eddington accretion) possible
+- 2019ApJ...872...69P: Fundamental plane is a rough jet estimator; large ALMA beams may overestimate fluxes
+- 2024ApJ...977..238B: Original-resolution cube has insufficient per-pixel emission; detection only after rebinning to 12.9 km/s
+
+### Settings cards flag as needed but not stated
+- line-free channel ranges for uvcontsub: 2
+- line-free channels and continuum subtraction method: 2
+- clean thresholds, mask definitions and multiscale scales for tclean: 1
+- line-free channel selection for uv continuum subtraction: 1
+- whether archival calibrated products or a re-run of the pipeline was used for cycle 2 data: 1
+- details of the cycle 2 data processing (in the earlier paper): 1
+- specifics of the fitting code (custom; not released) and starting guesses for the simplex: 1
+- ring-radius and v_ext initialization details: 1
+- source of the cycle 2+4 relative weighting/flux scaling in the combined imaging: 1
+- line-free channel ranges used for continuum subtraction: 1
+- clean threshold, mask, niter and image size: 1
+- calibrator list beyond flux (bandpass, phase) and any self-calibration: 1
+- dynesty settings (live points, stopping criterion): 1
+- dynamical modeling code is unpublished (available only on request): 1
+- exact down-sampling alignment and noise estimation regions per channel: 1
+- distance-dependent assumptions (m_bh scales linearly with distance): 1
+- line-free channels and channel range for uvcontsub: 1
+- image size and cell size: 1
+- clean mask and iteration/threshold details: 1
+- calibration pipeline vs manual and casa calibration version: 1
+- locations of the conjugate points: 1
+- sampler and prior details for glee fits: 1
+- which calibrator was bandpass: 1
+- velocity range used for integrated co map: 1
+- image sizes, cell sizes, cleaning thresholds and masks for tclean: 1
+- self-calibration solution parameters and reference model: 1
+- exact reduction of archival 2013.1.01102.s data: 1
+- mpfit settings and grid spacing for the smbh search: 1
+- mge fit parameters and gaussian components: 1
+- target coordinates: 1
+- clean parameters (weighting, robust, deconvolver, mask) for archival images: 1
+- co line velocity ranges and line-free channels for continuum subtraction: 1
+- exact archival image products used: 1
+- glee code availability and mcmc sampler details/burn-in: 1
+- rest frequencies of lines: 1
+- how the e region and flux-extraction apertures were defined: 1
+- line-free channels used for uvcontsub and continuum imaging: 1
+- image size and cube velocity range/imaging details, mask definition, casa version: 1
+- which tracks form the 'three long baseline tracks' and their execution blocks/uv-tapering parameters: 1
+- moment mask threshold: 1
+
+## Paper excerpts (35 of 35, chosen for detail and spread over fields/years)
+
+### 2019ApJ...881...10B: A Precision Measurement of the Mass of the Black Hole in NGC 3258 from High-resolution ALMA Observations of Its Circumnuclear Disk (2019; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the mass of the supermassive black hole in NGC 3258, measured to high precision by fitting gas-dynamical models to high-resolution ALMA CO(2-1) kinematics, and how do dust extinction, disk warping and distance affect it?
+- step 4: Fit flat-disk gas-dynamical models to the data cube
+  - method: Forward model of thin flat disk in BH + extended mass potential, Gaussian line profiles, beam convolution on oversampled grid (s=4), chi^2 fit to the cube over block-averaged 5x5 pixel cells within r_fit=1'' [4.1.1 Method: "Models are optimized by $\chi^2$ minimization using a downhill simplex minimization method (cite: pre92) by fitting the calculated cubes directly to the ALMA data cube."]
+  - software: IRAF STSDAS LUCY, custom modeling code
+  - parameter: CO surface brightness map from 10 iterations of Richardson-Lucy deconvolution [4.1.1 Method: "applied ten iterations of the IRAF STSDAS Richardson-Lucy deconvolution (cite: ric72; luc74) task `LUCY` using the elliptical Gaussian synthesized beam."]
+  - parameter: fit region 415 spatial pixels x 94 channels = 39010 data points; spectral range 2310-3273 km/s [4.1.1 Method: "The block-averaged fitting region used to compute $\chi^2$ contains 415 spatial pixels and 94 frequency channels, for a total of 39010 data points."]
+  - assumption: spatially uniform M/L; gas disk mass not included; thin, cold disk with no asymmetric drift [4.1.1 Method: "We assume a spatially uniform $M/L$ ratio in our model calculations."]
+  - fitting: chi^2 downhill simplex; at least nine free parameters (M_BH, Upsilon_H, x_c, y_c, i, Gamma, v_sys, sigma_turb, f_0); uniform or Gaussian radial sigma_turb [4.1.1 Method: "These basic models employ at least nine free parameters: the black hole mass $M_\mathrm{BH}$, the stellar $H$-band $M/L$ ratio $\Upsilon_H$"]
+  - validation: oversampling factor tests (stable for s>=4); comparison with Cycle 2 fits [4.1.2 Flat disk model results: "we find that the best-fitting BH mass converges to stable values for $s\geq 4$"]
+- step 7: Systematic error budget tests
+  - method: Vary oversampling, block averaging, number of rings, fitting region, central CO hole, radial flow, turbulent pressure, distance (+-1 sigma), peculiar velocity; combine positive and negative terms in quadrature [4.5 Additional tests and error budget: "we separately combined in quadrature the positive and negative $\Delta \ensuremath{M_\mathrm{BH}}$ contributions listed above"]
+  - parameter: distance D_L=35.8 and 28.0 Mpc for +-1 sigma [4.5 Additional tests and error budget: "(i.e., $D_L=35.8$ and 28.0 Mpc, corresponding to angular scales of 170 and 133 pc arcsec$^{-1}$, respectively)"]
+  - assumption: M_BH proportional to adopted angular size distance [4.5 Additional tests and error budget: "the inferred BH mass should in principle be directly proportional to the assumed angular size distance"]
+  - validation: each test refit with all free parameters [4.5 Additional tests and error budget: "After optimizing over all free parameters, we obtain best-fit BH masses that are $\Delta \ensuremath{M_\mathrm{BH}}= \pm 2.7\times10^8$ $M_\odot$ (or about 12%)"]
+- result: M_BH range across dust-corrected MGE flat-disk models D1-D4 = (2.059-2.276)e9 ± not stated Msun [4.1.2 Flat disk model results: "The parameters for their best-fit model cubes converge to a range of values $\ensuremath{M_\mathrm{BH}}=(2.059-2.276)\times10^9$ $M_\odot$"]
+- result: Mean sigma_turb/v_c = 0.030 ± not stated dimensionless [4.5 Additional tests and error budget: "a mean value $\langle\ensuremath{\sigma_\mathrm{turb}}/v_\mathrm{c}\rangle = 0.030$ averaged over the disk surface"]
+- limitation (authors): Model not a formally acceptable fit (chi^2_nu=1.179); correlated noise; local irregularities in velocity/dispersion fields [4.4 Monte Carlo error analysis: "the final $\ensuremath{\chi^2_\nu}= 1.179$ for model F1 indicates that the model is not formally an acceptable fit to the data"]
+- limitation (authors): Distance disagreements among estimates imply M_BH may lie in (2.0-3.8)e9 Msun [4.5 Additional tests and error budget: "the $M_\mathrm{BH}$ may plausibly lie in the range $(2.0-3.8)\times 10^9$ $M_\odot$ based on these other distance estimates"]
+- not stated (card): Clean thresholds, mask definitions and multiscale scales for tclean; Line-free channel selection for uv continuum subtraction; Whether archival calibrated products or a re-run of the pipeline was used for Cycle 2 data; Details of the Cycle 2 data processing (in the earlier paper); Specifics of the fitting code (custom; not released) and starting guesses for the simplex; Ring-radius and v_ext init…
+
+### 2024ApJ...975..179C: Modeling ALMA Observations of the Warped Molecular Gas Disk in the Red Nugget Relic Galaxy NGC 384 (2024; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the supermassive BH mass and stellar M/L in the compact relic galaxy NGC 384 from warped-disk molecular gas dynamics, and does it lie on the BH scaling relations?
+- step 3: Fit gas-dynamical warped disk model to data cube
+  - method: Thin disk circular orbits in BH + stellar potential; i linear and Gamma exponential with radius; forward-model cube convolved with beam, 4x4 down-sampling, elliptical fitting region [3: "we assume the molecular gas follows circular orbits in a thin disk."]
+  - software: dynesty, scikit-image
+  - parameter: oversampling s=6; R_fit=1.5"; q_ell=0.54; PA 132.8 deg; 43 channels; intrinsic flux map from 10 Lucy iterations [3: "with a projected semi-major axis of $\mathcal{R}_\mathrm{fit} = 1\ensuremath{''}{5}$, an axis ratio $q_\mathrm{ell} = 0.54$"]
+  - assumption: constant turbulent dispersion sigma_0; gas mass negligible; same inclination as stellar oblate shape [3: "We treat the gas mass as negligible, although this assumption is tested"]
+  - fitting: Likelihood exp(-chi2/2); dynesty nested sampling; flat priors (log-uniform for M_BH); 68% and 99.7% intervals [3: "Flat priors are sampled for each parameter uniformly in linear space, except for $M_{\mathrm{BH}}$, which is sampled uniformly in logarithmic space."]
+  - validation: Compared flat disk, tilted ring, linear twist models via BIC [5.2: "We exclude models that have $\Delta$BIC $\geq+10$"]
+- step 5: Compare with BH scaling relations
+  - method: Compute L_H, L_K, M_star; compare M_BH to relations; Monte Carlo offset test for six relic galaxies (10,000 iterations) [4.2: "We repeat this process 10,000 times"]
+  - assumption: H-K=0.2 mag from SSP models; total galaxy luminosity/mass as upper bounds on bulge [4.2: "$H-K=0.2$ mag from SSP models (cite: Vazdekis2010)"]
+- result: M_BH = 7.26e8 ± +0.43/-0.48 (1σ stat), +0.55/-1.00 (sys) Msun [abstract: "$M_{\mathrm{BH}}$ $= (7.26^{+0.43}_{-0.48}$ \[$1\sigma$ statistical\] $^{+0.55}_{-1.00}$ \[systematic\])$\times 10^8$ $M_\odot$"]
+- result: M/L_H = 1.34 ± ±0.01 stat ±0.02 sys Msun/Lsun [abstract: "$M/L_H = 1.34\pm0.01$ \[$1\sigma$ statistical\] $\pm0.02$ \[systematic\] $M_\odot/L_\odot$"]
+- result: BH sphere of influence radius = 0.12 arcsec (31 pc) ± not stated arcsec [4.1: "is $r_\mathrm{SOI} = 0\ensuremath{''}{12}$ (31 pc) for our fiducial model"]
+- result: Total H-band luminosity = 6.13e10 ± not stated Lsun [4.2: "finding $L_H = 6.13\times10^{10}\ L_\odot$"]
+- result: Stellar mass = 8.22e10 ± not stated Msun [4.2: "finding $M_{\star} = 8.22\times10^{10}\ M_\odot$"]
+- result: Reduced chi2 of fiducial model = 1.159 ± not stated dimensionless [5.1: "with $\chi^2 = 7511.1$ and $\chi^2_\nu = 1.159$"]
+- result: Inclination i0 / i1 = 52.6 / 59.8 ± ±0.4 / ±0.3 deg [Table 2: "${52.6}$ | $\pm0.4$"]
+- limitation (authors): Relatively low S/N; chi2_nu underestimated because adjacent down-sampled pixels not independent [Footnote 4: "would translate to fewer degrees of freedom and higher estimates of $\chi^2_\nu$"]
+- limitation (authors): Systematic uncertainty in gas mass likely underestimated [2.2.1: "We likely underestimate the total systematic uncertainties in the gas mass"]
+- not stated (card): Line-free channel ranges used for continuum subtraction; CLEAN threshold, mask, niter and image size; Calibrator list beyond flux (bandpass, phase) and any self-calibration; Dynesty settings (live points, stopping criterion); Dynamical modeling code is unpublished (available only on request); Exact down-sampling alignment and noise estimation regions per channel; Distance-dependent assumptions (M…
+
+### 2017ApJ...843L..35W: ALMA Observations of the Gravitational Lens SDP.9 (2017; high_z_galaxies; observational_alma_primary)
+- question: What are the ALMA Band 6 continuum and CO(6-5) morphology of the lensed SMG SDP.9, what is the lens mass model, and can the central image be detected to constrain the SMBH mass?
+- step 3: Fit lens light in HST
+  - method: Two cored power-law profiles plus point source with linked centroids; then fix light and fit arcs for mass model [3 Lens Model: "The best fit comes from a combination two cored power-law profiles and a point source with their centroids linked"]
+  - software: Glee
+  - parameter: core radius uniform prior max 0.065 arcsec; SMBH mass lognormal prior 7.1-9.9 in log10 M [3 Lens Model: "The core radius is given a uniform prior with a maximum extent of 0.065$''$"]
+  - assumption: Cored elliptical power-law mass with central point mass and external shear; Chabrier IMF [3 Lens Model: "We assume a cored elliptical power-law mass distribution with a central point mass (representing the SMBH) and external shear."]
+  - fitting: Priors on structural parameters from HST fit used for ALMA fit [3 Lens Model: "we first fit to the extended arcs in the *HST* data and use the constraints on the structural parameters as priors"]
+  - validation: Comparison with Dye+2014 model; also modeled with glafic with similar results [3 Lens Model: "We have also modeled the ALMA constraints with glafic (cite: oguri2010) and obtained similar results."]
+- limitation (authors): ~50% of data flagged due to antenna problems [2.1 ALMA Data: "We note that $\sim$50 % of the data are flagged"]
+- limitation (authors): Conjugate points cause degeneracies; position uncertainties overestimated [3 Lens Model: "The use of conjugate points leads to degeneracies in the lens model"]
+- not stated (card): Line-free channels and channel range for uvcontsub; Image size and cell size; Clean mask and iteration/threshold details; Calibration pipeline vs manual and CASA calibration version; Locations of the conjugate points; Sampler and prior details for Glee fits; Which calibrator was bandpass; Velocity range used for integrated CO map
+
+### 2019ApJ...883..193N: The ALMA Discovery of the Rotating Disk and Fast Outflow of Cold Molecular Gas in NGC 1275 (2019; agn_and_quasars, nearby_galaxies, galaxy_clusters_and_sz; observational_alma_primary)
+- question: What are the morphology and kinematics of the cold molecular gas in the inner kpc to ~30 pc of NGC 1275, how is the AGN fed, what do the blue-shifted absorption features imply, and what is the SMBH mass from gas dynamics?
+- step 7: Fit gas disk kinematics for SMBH mass
+  - method: KinMS models with circular velocity from MGE_circular_velocity, exponential disk; mpfit minimization then grid search over M_BH and inclination [5 Black Hole Mass: "We first searched for a set of parameters to minimize the difference between the observed data and the model by using `mpfit` that is developed in `IDL`."]
+  - software: KinMS, mpfit, JAM, IDL
+  - parameter: fitting area 1.55x1.55 arcsec, 4687-5580 km/s, 129x129x47 pixels, natural-weighted cube [5 Black Hole Mass: "thus $129\times129\times47$ pixels"]
+  - assumption: axisymmetric potential, circular motion, exponential gas disk, uniform dispersion [5 Black Hole Mass: "assuming an axisymmetric potential and circular motion"]
+  - fitting: chi2-like residual (obs-model)^2/rms^2; errors from residual < 9+chi2_min after rms scaled by (2N_dof)^(1/4) [5 Black Hole Mass: "we judge the error by allowing all parameters that realize residuals less than $9+\chi_{\rm min}^{2}$"]
+  - validation: M/L varied 0.05, 0.5, 5.0; two gas masses; missing mass estimate 2e7 Msun [5 Black Hole Mass: "We confirm this by giving three different $M/L_{I}$ values, $0.05$, $0.50$ and $5.00$ to see negligible difference"]
+- result: SMBH mass (gas 4e8 Msun) = 1.1e9 ± +0.3/-0.5 e9 Msun [5 Black Hole Mass: "$M_{\rm BH}=(1.1 ^{+0.3}_{-0.5})\times10^{9}M_{\ensuremath{\odot}}$ and inclination of $46^{+11}_{-6}$ deg"]
+- result: SMBH mass (gas 5e7 Msun) = 1.2e9 ± +0.1/-0.6 e9 Msun [5 Black Hole Mass: "$M_{\rm BH}=(1.2^{+0.1}_{-0.6}) \times10^{9}M_{\ensuremath{\odot}}$ and inclination of $45^{+14}_{-5}$ deg"]
+- limitation (authors): Missing flux from lack of short baselines, so masses are lower limits [4.1 Filaments: "Note that the estimated mass should be a lower limit since the total emissions cannot be recovered because of the lack of short interferometric baselines."]
+- limitation (authors): Residual is not a true chi2 because neighbouring pixels are correlated; modelling assumptions simple [5 Black Hole Mass: "This residual is useful to judge the fitting results but is not equivalent to the $\chi^{2}$, as the neighboring pixels in the observed cube are correlated."]
+- not stated (card): Image sizes, cell sizes, cleaning thresholds and masks for tclean; Line-free channel ranges for uvcontsub; Self-calibration solution parameters and reference model; Exact reduction of archival 2013.1.01102.S data; mpfit settings and grid spacing for the SMBH search; MGE fit parameters and Gaussian components; Target coordinates
+
+### 2015ApJ...811..115W: The Innermost Mass Distribution of the Gravitational Lens SDP.81 from ALMA Observations (2015; high_z_galaxies, agn_and_quasars; archival_reuse)
+- question: Can the non-detection of the demagnified central image of lens SDP.81 in ALMA long-baseline CO maps constrain the lens galaxy's inner mass profile and SMBH mass?
+- step 3: Fit lens mass models to image positions
+  - method: Cored power-law (R_core 0.08'' or 0.15'' priors) and composite stellar+NFW models, plus SMBH point mass and external shear, using positions of three source features [3.3 Lens Mass Modeling: "We try two models for the mass distribution of the lens galaxy: a cored elliptical power-law mass distribution, and a composite model with separate stellar and dark matter components."]
+  - software: Glee
+  - parameter: MCMC chain length 5x10^5 [3.3 Lens Mass Modeling: "we first sample $L_{\rm pos}\times Q$ via MCMC of chain length $5\times10^5$, and then weight these samples by $L_{\rm flux}$"]
+  - assumption: SMBH at mass centroid; uniform prior on log M_BH [6.5, 9.5] [3.3.1 Cored Elliptical Power-Law Model: "We assume that the SMBH is located at the center of the mass distribution and adopt a uniform prior on its logarithmic mass"]
+  - fitting: MCMC, position likelihood Gaussian [Lens Mass Modeling: "In practice, we first sample $L_{\rm pos}\times Q$ via MCMC of chain length $5\times10^5$, and then weight these samples by $L_{\rm flux}$."]
+  - validation: rms image offset ~0.015'' for power-law models [4.1 Lens Modeling Results: "we can reproduce the observed image positions with an rms offset between the observed and predicted image positions of $\sim 0.015\ensuremath{''}$"]
+- step 4: Constrain SMBH mass from central image non-detection
+  - method: Weight samples by Gaussian non-detection likelihood on predicted flux of E = flux of D times mu_E/mu_D, for CO 5-4, 8-7, 10-9; mu ratio from mock three-clump source [3.3 Lens Mass Modeling: "predicted flux density of image E that is obtained by multiplying the observed integrated flux density of image D with the modeled magnification ratio $\mu_{E}/\mu_{D}$"]
+  - software: Glee
+  - validation: Results unaffected by 30-40% source size uncertainty and by satellite galaxy [3.3 Lens Mass Modeling: "Additional tests show that our results are unaffected by moderate ($\sim 30-40$%) uncertainties in the assumed source sizes."]
+- result: Stellar M/L = 1.1 ± +0.1/-0.1 Msun/Lsun [4.1 Lens Modeling Results: "The predicted stellar mass-to-light (M/L) ratio is $1.1^{+0.1}_{-0.1}~\mathrm{M}_{\odot}~\mathrm{L}_{\odot}^{-1}$"]
+- result: log(M_BH/Msun) preferred (R_core=0.15'') = >~8.5 ± not stated dex [abstract: "a black hole mass of $\mathrm{\log(M_{BH}/M_{\odot})} \gtrsim 8.5$ is preferred"]
+- result: Dark matter fraction within Einstein radius = ~50 ± not stated percent [4.1 Lens Modeling Results: "The dark matter fraction within the Einstein radius is $\sim50$%"]
+- limitation (authors): Fluxes of A, B, C not used owing to differential magnification (~30-50%) [3.1 Constraints From the Multiple Images: "we do not use the fluxes of these images as constraints due to the high uncertainty from differential magnification"]
+- not stated (card): CLEAN parameters (weighting, robust, deconvolver, mask) for archival images; CO line velocity ranges and line-free channels for continuum subtraction; Exact archival image products used; Glee code availability and MCMC sampler details/burn-in; Rest frequencies of lines; How the E region and flux-extraction apertures were defined
+
+### 2020MNRAS.496.4061D: Revealing the intermediate-mass black hole at the heart of the dwarf galaxy NGC 404 with sub-parsec resolution ALMA observations (2020; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the mass of the intermediate-mass black hole in NGC 404 once the molecular gas contribution to the potential is included, using sub-parsec ALMA CO(2-1) kinematics plus stellar kinematics?
+- step 5: Forward-model gas kinematics to measure BH mass
+  - method: KinMS with KinMS_MCMC fit to the high-res cube within 0.25" (3.7 pc); circular rotation, constant dispersion, BH point mass plus stars (Gamma prior) plus gas [4 Molecular gas kinematic modelling: "To do this we concentrate on the molecular gas disc/torus within a radius of 0$.\!\!^{\prime\prime}$25 (or $\approx$3.7 pc) from the centre of NGC 404."]
+  - software: KinMS, KinMS_MCMC, SKYSAMPLER
+  - parameter: log MBH prior uniform 4.0-6.9; Gamma Gaussian (0.61, 0.11); inclination Gaussian (37, 3); noise scaled by (2N)^(1/4)=12.47 with N=12,112 [4.4 Bayesian analysis: "this equates to increasing the RMS by a factor of 12.47"]
+  - assumption: circular orbits, thin disc, constant velocity dispersion, no dark matter [4.3 Gas kinematics: "In this work we assume that the molecular gas is in circular motion"]
+  - fitting: MCMC with Gibbs sampling and adaptive stepping; log-likelihood -chi2/2 plus log priors; final chain 300,000 steps with 10% burn-in; median and 68%/99% CLs [4.4 Bayesian analysis: "the best chain is run (with a fixed step size) for 300,000 steps (with a 10% burn-in)"]
+  - validation: PVDs and velocity-field residuals; models with no BH or >1e6 Msun fail [4.4 Bayesian analysis: "a model without an IMBH cannot provide a good fit to our data, nor can a BH of mass $\raisebox{-0.6ex}{$\,\stackrel{\raisebox{-.2ex}{$\textstyle >$}}{\sim}\,$}10^6$ M$_{\odot}$"]
+- result: Gas-kinematic BH mass = 5.5e5 ± +4.1/-3.8 (99% CL) Msun [4.4 Bayesian analysis: "with a mass of 5.5$^{+4.1}_{-3.8}\times$10$^5$ M$_{\odot}$ (at the 99% CL)"]
+- result: Gas disc inclination (fit) = 37.1 ± -0.46,+0.57 (68%) deg [Table (fit parameters): "| Inclination ($^\circ$) | $N$($\mu$=37, $\sigma$=3) | 37.1 | $-$ 0.46, + 0.57 | $-$ 1.76, + 1.61 |"]
+- result: Gas velocity dispersion = 12.9 ± ±0.9 (68%) km/s [Table (fit parameters): "| Gas velocity dispersion ($\sigma$; km s$^{-1}$) | 0.0 | $\xrightarrow[]{\rm uniform}$ | 20.0 | 12.9 | $-$ $\pm$0.9 | $-$ 2.7, + 3.6 |"]
+- limitation (authors): Keplerian rise not resolved; result depends on stellar mass model and Gamma [4.5 Uncertainties: "given that we do not resolve the Keplerian increase of the circular velocity around the BH"]
+- limitation (authors): Low Gamma should be treated with caution; beam correlations neglected [5.4 Stellar mass normalisation: "We therefore suggest that the low $\Gamma$ value should be treated with caution."]
+- not stated (card): Line-free channels used for uvcontsub and continuum imaging; Image size and cube velocity range/imaging details, mask definition, CASA version; Which tracks form the 'three long baseline tracks' and their execution blocks/uv-tapering parameters; Moment mask threshold; Exact MCMC step sizes, convergence criterion and KinMS settings; Exact pixel selection for N=12,112 and radial range of fit; Inter…
+
+### 2020A&AT...31..423B: Interpretation of ALMA velocity map for the obscuring torus in NGC1068 (2020; agn_and_quasars; theory_or_simulation_compared_to_alma)
+- question: Can an N-body dynamical model of a self-gravitating clumpy torus reproduce the ALMA velocity map of the NGC1068 torus and give the SMBH mass?
+- step 1: Set up N-body torus
+  - method: Clouds on orbits with random orbital elements, inclinations in [0, pi/4], evolved with mutual gravity until equilibrium [Dynamical model of a dusty torus: "It means that inclinations ($i$) of all clouds are in the range \[$0,\pi/4$\]."]
+  - parameter: N=8192, M_torus=0.01 M_BH [Dynamical model of a dusty torus: "demonstrate the result for $M_{torus}=0.01 M_{BH}$"]
+  - assumption: M_BH ~ 1e7 Msun initially; M_gas ~ 1e5 Msun [Dynamical model of a dusty torus: "with the suggestion that SMBH mass is $M_{BH} \approx 10^7 M_\odot$"]
+  - validation: Gaussian cross-section distribution compared with IR SED requirement [Dynamical model of a dusty torus: "This distribution obeys the Gaussian law and satisfies the obscuration condition"]
+- limitation (authors): Work in progress [Introduction: "Here we present the work in progress using the dynamical model of the torus for an explanation of the ALMA observations"]
+- not stated (card): The actual ALMA velocity map data and which moment-1 product was used; N-body code, integrator and simulation duration; Values of the Euler angles beyond the ~35 deg inclination; Quantitative goodness-of-fit between model and observed map; How the SMBH mass of 5e6 Msun was derived
+
+### 2025A&A...700A.285W: Gravitational torques from lopsided young stellar component sustain high black hole accretion rates in NGC 4593 (2025; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: What secular mechanism drives high SMBH accretion rates in NGC 4593, from kpc-scale gas down to the SMBH sphere of influence?
+- step 5: Fit molecular gas kinematics
+  - method: KinMS forward modelling with arctan rotation curve, black hole mass, and radial motions in 20 bins; outer and inner cubes fitted separately; inflow rate from v_rad [3.5 Molecular gas kinematic modelling: "we employ the Kinematic Molecular Simulation (KinMS) routines from (cite: Davis:2013), specifically the `KinMS_fitter`"]
+  - software: KinMS, KinMS_fitter, skySampler
+  - parameter: outer: 0.23'' cube; inner: 1.1''x1.1'' cutout at 40 mas; M_BH fixed log 6.65 [3.5 Molecular gas kinematic modelling: "the ‘inner’ region is modelled using a $1.1\ensuremath{''} \times 1.1\ensuremath{''}$ cutout cube at a resolution of $b_{\rm maj} = 40\,{\rm mas}$"]
+  - fitting: MCMC, uniform priors, 30,000 samples [3.5 Molecular gas kinematic modelling: "we assumed uniform priors with sensible boundaries, and ran 30,000 samples"]
+  - validation: Inner and outer best-fit parameters consistent [3.5 Molecular gas kinematic modelling: "the best-fitting kinematic parameters, listed in Table [1](#tbl:KinMS_results), are consistent with each other"]
+- limitation (authors): Torque method unvalidated by simulations, configuration likely unstable [3.7.2 Torques from the young stellar co…: "First, the configuration is likely unstable over time."]
+- limitation (authors): Mass of young component is poorly constrained from single UV band; closed-box and alpha_CO assumptions [3.6.2 Mass of the young stellar compone…: "Thus, we were limited to a flux measurement in the F330W filter."]
+- not stated (card): CASA tclean parameters (cell, image size, mask, niter, threshold), line-free channels, and rest frequency; ALMA calibration/pipeline version and flux calibrator details for both programs; Whether CASA was used for the joint imaging of the combined cube; KinMS_fitter prior ranges, number of walkers and burn-in; skySampler settings; Aperture and masks used to measure total CO flux and M_mol; Spiral…
+
+### 2020A&A...637A..84P: The ALMA view of the high-redshift relation between supermassive black holes and their host galaxies (2020; high_z_galaxies, agn_and_quasars; archival_reuse)
+- question: What is the relation between BH mass and host-galaxy dynamical mass at 2<z<7 when dynamical masses come from full kinematical modelling of the cold gas rather than virial estimates?
+- step 7: Fit M_BH-M_dyn relation and Gamma(z)
+  - method: Fixed slope 1.01 from de Nicola+2019, fit normalisation alpha with bootstrap (10^4 iterations) [8: "we performed the fit assuming fixed slope $\beta = 1.01\pm 0.07$ as found by (cite: DML2019), and the normalisation $\alpha$ as the only free parameter."]
+  - fitting: bootstrap on chi2 minimisation [8: "we executed the fit adopting the bootstrap method on the standard $\chi^2$ minimisation."]
+- result: Normalisation alpha of log MBH = alpha + 1.01(log Mdyn - 10.8) = 9.4 ± 0.3 dimensionless [8: "$$\begin{equation} \alpha = 9.4 \pm 0.3. \end{equation}$$"]
+- limitation (authors): Poor angular resolution prevents constraining Mdyn for most; thin-disc assumption too simple for some perturbed systems; MBH systematics up to ~0.4 dex [10: "it is still very challenging to infer the dynamical mass due to the poor angular resolution and sensitivity of current observations."]
+- not stated (card): Which ALMA band/spectral windows and line-free channel ranges per source; Exact array configurations, observing dates and exposure times; CASA/pipeline version; Per-source cleaning thresholds, masks, number of iterations; Priors on sin(beta) beyond chi2 curve cut; exact data-model convolution PSF handling; Initial guesses for the Gaussian line fits; LSF value for each dataset (only given for J092…
+
+### 2013ApJ...768L..38H: Submillimeter H<SUB>2</SUB>O Maser in Circinus Galaxy—a New Probe for the Circumnuclear Region of Active Galactic Nuclei (2013; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Is there 321 GHz H2O maser emission in the Circinus galaxy, and how does it compare with the known 22 GHz maser?
+- step 3: Estimate radius of high-velocity feature
+  - method: Keplerian v∝r^-0.5 scaling from the Greenhill disk model [4.3 Possible Detection of High-velocity…: "it is located at a radius of $\sim$ 0.018 pc"]
+  - assumption: Black hole mass 1.7e6 Msun; Keplerian rotation [4.3 Possible Detection of High-velocity…: "for a 1.7 $\times$ 10$^6$ $M_{\ensuremath{\odot}}\;$black hole"]
+- result: Radius of high-velocity feature = ~0.018 ± not stated pc [4.3 Possible Detection of High-velocity…: "it is located at a radius of $\sim$ 0.018 pc"]
+- limitation (authors): Beam too large to measure brightness temperature or resolve kinematics [4.1 Origin: "The synthesized beam size of our observation was too large to determine if the detected 321 GHz H$_{2}$O$\;$emission is thermal emission or maser"]
+- not stated (card): CASA version; Line-free channel ranges; Clean threshold, cell and image size, masking; Flux density of Titan model and phase-reference solutions; Which antennas/baselines and any flagging; Number of channels averaged or velocity resolution of images; Details of Gaussian fits
+
+### 2018MNRAS.473.3818D: WISDOM Project - III. Molecular gas measurement of the supermassive black hole mass in the barred lenticular galaxy NGC4429 (2018; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the mass of the supermassive black hole in the barred lenticular galaxy NGC4429, measured from 12CO(3-2) molecular gas kinematics?
+- step 3: Fit gas kinematics for SMBH mass
+  - method: KinMS forward model + MCMC, circular rotation, exponential disc with truncations and plateau; two-step fit (160x160 px then central 64x64 px with covariance) [4.2.1 Fitting process: "we adopt a two-step fitting process. We initially fit a 160 $\times$ 160 pixel$^2$ area that roughly covers the entire molecular gas disc"]
+  - software: KinMS, KinMS_MCMC
+  - parameter: gas velocity dispersion fixed at 2.2 km/s; flat priors, log-flat for MBH 4.8-9.8 [4.2.1 Fitting process: "The prior on the SMBH mass was flat in log-space, with the mass allowed to vary between log$_{10}(\frac{M_{\rm BH}}{\mathrm{M}_{\odot}})$ = 4.8 and 9.8."]
+  - assumption: circular motion; distance 16.5 Mpc [4.1.2: "In this work we always assume that the gas is in circular motion"]
+  - fitting: MCMC with Gibbs sampling and adaptive stepping; chi2 log-likelihood with analytic covariance matrix; 100,000 steps, 10% burn-in; median and 68/99% CL [4.2: "We utilise a MCMC method with Gibbs sampling and adaptive stepping to explore the parameter space."]
+  - validation: Cross-checks with emcee; refit within 1 arcsec; flat priors in sin i and cos PA; residuals check [4.3.3: "We recovered the same best-fit SMBH mass and $M$/$L$, with increased uncertainties as expected (by a factor of $\approx$1.5 in this case)."]
+- result: SMBH mass = 1.5e8 ± ±0.1 (random, 99% CL), +0.15/-0.35 (systematic) e8 Msun [abstract: "a mass of (1.5$\pm0.1^{+0.15}_{-0.35}$) $\times$10$^8$ M$_{\odot}$ for the SMBH in NGC4429"]
+- result: Inclination = 66.80 ± ±0.04 (68%) deg [Table fittable: "Inclination ($i$; $^\circ$) | 66.5 | $\rightarrow$ | 89.0 | 66.80"]
+- result: Central V-band M/L = 6.59 ± ±0.05 (68%) Msun/Lsun,V [Table fittable: "Inner stellar $M$/$L$ ($\Psi_{\rm cent}$; M$_{\odot}$/L$_{\odot,V}$) | 1.0 | $\rightarrow$ | 10.0 | 6.59"]
+- result: Outer V-band M/L (400 pc) = 8.25 ± -0.03/+0.02 Msun/Lsun,V [Table fittable: "Outer Stellar $M$/$L$ ($\Psi_{\rm outer}$; M$_{\odot}$/L$_{\odot,V}$)$^*$ | 1.0 | $\rightarrow$ | 10.0 | 8.25"]
+- result: Kinematic position angle = 93.20 ± ±0.03 (68%) deg [Table fittable: "Kinematic position angle ($\phi_{\rm kin}$; $^\circ$) | 0.0 | $\rightarrow$ | 359.0 | 93.20"]
+- limitation (authors): Central gas hole makes SMBH mass sensitive to stellar mass modelling [4 METHOD & RESULTS: "due to the central hole in the gas distribution, any SMBH mass estimate will be sensitive to errors in our stellar mass modelling"]
+- not stated (card): Line-free channels used for uvcontsub; Clean niter/mask details and CASA version; MCMC code KinMS_MCMC not yet published (Davis et al. in prep.); Exact MGE fitting masks and PSF details for HST/SDSS; Rest frequency adopted
+
+### 2025MNRAS.541.2540Z: WISDOM Project─XXV. Improving the CO-dynamical supermassive black hole mass measurement in the galaxy NGC 1574 using high spatial resolution ALMA observations (2025; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the SMBH mass of NGC 1574 when high-resolution ALMA CO(2-1) data that spatially resolve the sphere of influence are forward-modelled, and how does it compare with the earlier intermediate-resolution measurement?
+- step 5: Forward-model the data cube to derive M_BH
+  - method: KinMS forward model of exponential gas disc in circular velocity from MGE stars + point-mass SMBH, linear PA warp, constant sigma_gas; fit with GAStimator MCMC to the full unmasked cube [3 Dynamical modelling: "the simulated data cube is fitted to the observed data cube using GASTIMATOR[^6], a Markov chain Monte Carlo (MCMC) Gibbs sampler"]
+  - software: KinMS, GAStimator, mge_fit_sectors_regularized, JAM mge_vcirc, TinyTim
+  - parameter: chain of 2e5 steps, first 1e4 discarded as burn-in; 11 free parameters [3.4 Results: "using an MCMC chain of $2\times10^5$ steps. We discard the first $10^4$ steps as the burn-in"]
+  - assumption: circular orbits; mass from SMBH and stars only; constant M/L; constant sigma_gas; distance 19.7 Mpc; diagonal covariance [3.2 Mass model: "We assume that the gas particles are in circular motions when deriving the gas kinematics from the input mass distribution."]
+  - fitting: chi2 with diagonal covariance, rescaled by 1/sqrt(2N), N=36376 pixels [3 Dynamical modelling: "where $N=36376$ is the number of pixels with detected emission"]
+  - validation: compared with non-parametric gas distribution, two-component warp (BIC), PVD and velocity-map residuals, reduced chi2 vs previous model [3.4 Results: "Our new best-fitting model has $\chi_\mathrm{r}^2=2.14$, while the previous model of (cite: Ruffa_2023) has $\chi_\mathrm{r}^2=2.37$"]
+- result: SMBH mass = (6.2±1.2)e7 (log M_BH = 7.79) ± 1 sigma ±1.2e7; log ±0.08 Msun [3.4 Results: "We obtain a best-fitting SMBH mass $M_\mathrm{BH}=(6.2\pm1.2)\times10^7$ M$_\odot$"]
+- result: Stellar M/L (F606W) = 7.13 ± -0.62/+0.75 Msun/Lsun,F606W [3.4 Results: "a F606W-band $M/L$ of ${7.13}_{-0.62}^{+0.75}$"]
+- result: Inner PA = 326.0 ± -1.8/+1.9 deg [Table 2: "Inner position angle (degree) | $300$ – $380$ | $326.0$ | $-1.8$, $+1.9$"]
+- result: Outer PA = 39.0 ± ±1.6 deg [Table 2: "Outer position angle (degree) | $0$ – $70$ | $39.0$ | $\pm\,1.6$"]
+- result: Inclination = 26.7 ± -1.4/+1.3 deg [Table 2: "Inclination (degree) | $10$ – $40$ | $26.7$ | $-1.4$, $+1.3$"]
+- result: Gas velocity dispersion = 11.3 ± -1.0/+1.1 km/s [Table 2: "Velocity dispersion ( km s$^{-1}$) | $5$ – $40$ | $11.3$ | $-1.0$, $+1.1$"]
+- result: Exponential scale length = 0.55 ± ±0.03 arcsec [Table 2: "Scale length (arcsec) | $0.1$ – $1.2$ | $0.55$ | $\pm\,0.03$"]
+- result: Reduced chi2 of best-fit model = 2.14 ± not stated dimensionless [3.4 Results: "Our new best-fitting model has $\chi_\mathrm{r}^2=2.14$"]
+- limitation (authors): Circular-orbit assumption with mild non-circular motions; distance uncertainty (10%) not included in budget [4.1 Main uncertainties: "we choose not to include in the SMBH mass uncertainty budget the $10\%$ uncertainty introduced by the distance"]
+- not stated (card): Prior distributions beyond the uniform search ranges, and the Gibbs sampler settings (step sizes, number of chains); Which channels were identified as line-free for uvcontsub; Clean mask definition and niter limits for tclean; Exact tclean parameters beyond weighting and threshold (e.g. gridder, PB limit, number of channels); Pipeline version used by the archive scripts; Whether primary-beam corr…
+
+### 2016ApJ...816...37V: Bright [C II] and Dust Emission in Three z &gt; 6.6 Quasar Host Galaxies Observed by ALMA (2016; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the [C II] and FIR dust properties, kinematics and dynamical masses of three z>6.6 VIKING quasar hosts, and how do they relate to the quasars' black holes?
+- step 6: Estimate dynamical masses and compare M_BH to M_dyn
+  - method: M_dyn=1.16e5 v_circ^2 D with v_circ=0.75 FWHM/sin(i), i from axis ratio; compare with Kormendy & Ho relation [4.6 Dynamical mass estimates: "$M_\mathrm{dyn}=1.16\times10^5 v_\mathrm{circ}^2 D$ $M_\ensuremath{\odot}$"]
+  - parameter: D=1.5x deconvolved size; i=25, 50 deg; 55 deg and 3±1 kpc for J2348–3054 [4.6 Dynamical mass estimates: "For the unresolved emission in the host of J2348–3054 we assume an extent of $3\pm1$ kpc."]
+  - assumption: Thin inclined disk; gas-to-dust ratio ~100 [4.6 Dynamical mass estimates: "If we take the local gas-to-dust mass ratio of $\sim$100 (cite: dra07)"]
+  - validation: Inclination uncertainty not included in M_dyn errors [4.6 Dynamical mass estimates: "The uncertainty in these dynamical masses does not include the uncertainties in the inclination angle."]
+- result: Dynamical masses (J2348, J0109, J0305) = 7.2e10, 1.4e11, 4.1e10 ± 3.6e10, 0.4e11, 0.5e10 Msun [4.6 Dynamical mass estimates: "we calculate a dynamical mass of $(7.2\pm3.6)\times10^{10}$ $M_\ensuremath{\odot}$, $(1.4\pm0.4)\times10^{11}$ $M_\ensuremath{\odot}$, and $(4.1\pm0.5)\times10^{10}$ $M_\ensuremath{\odot}$"]
+- result: Mean M_BH/M_dyn at 1e11 Msun = 1.9% (median 1.3%) vs local 0.49% ± not stated percent [4.6 Dynamical mass estimates: "We find a mean of 1.9% and a median of 1.3%, compared to the local value of $0.49^{+0.06}_{-0.05}$%."]
+- limitation (authors): Inclination and peak rotation velocity cannot be independently determined at current resolution [4.4.1 Dynamical Modeling: "with the current data we cannot independently determine the inclination angle and the peak velocity and thus, ultimately, the dynamical mass."]
+- limitation (authors): FIR/TIR luminosities strongly model dependent; more photometry needed [3.1 [CII] and FIR emission: "Additional far-infrared photometry is required to better constrain the shape of the infrared continuum and thus $L_{\mathrm{FIR}}$ and $L_{\mathrm{TIR}}$."]
+- not stated (card): Exact CASA version and calibration/flagging details; Clean threshold, mask, niter, cell and image size; Which channels were treated as line-free and the velocity binning of cubes; Tilted-ring model parameters beyond those given (position angle, inclination grid, scale height, dispersion); Details of line-luminosity and SFR conversions (e.g. formulae for L_[CII]); Selection and values of literatur…
+
+### 2017ApJ...849...91M: Physical Properties of 15 Quasars at z ≳ 6.5 (2017; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: What are the physical properties (black hole masses, accretion rates, CIV blueshifts, FeII/MgII, near zone sizes, [CII]/IR luminosities) of the 15 known quasars at z>~6.5, including six newly discovered from Pan-STARRS1?
+- step 2: Black hole masses and Eddington ratios
+  - method: Fit power law + Balmer continuum + FeII template + MgII Gaussian by chi2; Vestergaard & Osmer 2009 virial relation; Shen08 bolometric correction [5.6 Black Hole Masses: "We derive the mass of the black hole following (cite: VestergaardOsmer09):"]
+  - assumption: Eddington luminosity L_Edd = 1.3e38 M_BH; L_bol = 5.15 lambda L3000 [5.6 Black Hole Masses: "\frac{L_{\mathrm{bol}}}{\mathrm{erg\, s^{-1}}} = 5.15 \times \frac{\lambda L_{\lambda,3000}}{\mathrm{erg\, s^{-1}}}"]
+  - fitting: chi2 minimization; 14th/86th percentiles as 1 sigma [5.5 Mg II and Fe II emission modeling: "We consider the 14th and 86th interquartiles of the $\chi^{2}$ distribution as our 1$\sigma$ confidence levels."]
+  - validation: Compared with luminosity-matched SDSS sample (1000 random draws) [5.6 Black Hole Masses: "we repeat this trial for 1000 times"]
+- result: Mean log L_bol/L_Edd, z>~6.5 quasars = -0.41 ± scatter 0.44 dex [5.6 Black Hole Masses: "$\langle \mathrm{log} (L_{\mathrm{bol}}/L_{\mathrm{Edd}}) \rangle$=-0.41, with a scatter of 0.34 and 0.44"]
+- limitation (authors): High-z sample biased to high luminosities [6 Discussion and Conclusions: "We also note that the high$-$redshift sample is biased towards higher luminosities"]
+- not stated (card): ALMA data are only used via the Decarli et al. in prep [CII] redshifts; no ALMA calibration or imaging given; NOEMA line-fit windows and continuum map procedure not detailed; Exact SED/spectrum fitting window adjustments for sky lines not given
+
+### 2013ApJ...770...13W: Redshift 6.4 Host Galaxies of 10<SUP>8</SUP> Solar Mass Black Holes: Low Star Formation Rate and Dynamical Mass (2013; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the star formation rates, [C II] properties and dynamical masses of the host galaxies of two z=6.4 quasars with ~1e8 Msun black holes?
+- step 5: Compare black hole mass to dynamical mass
+  - method: Convert FWHM to sigma and use local M_BH-sigma relation of Gultekin et al. 2009 to predict M_BH [3.3 [C ii] dynamics and spatial extent: "Based on the local relationship (Gultekin et al. 2009) a galaxy with $\sigma=80$ km s$^{-1}$ would be expected to have $M_{\rm BH} \approx 3 \times 10^6 \,{\rm M}_\odot$"]
+  - assumption: Gaussian, no inclination correction [3.3 [C ii] dynamics and spatial extent: "equivalent to $\sigma=80 \pm 8$ km s$^{-1}$ for a Gaussian and ignoring any inclination correction"]
+- result: Predicted M_BH from sigma=80 km/s = ~3e6 ± not stated Msun [3.3 [C ii] dynamics and spatial extent: "would be expected to have $M_{\rm BH} \approx 3 \times 10^6 \,{\rm M}_\odot$, a factor of 25 lower"]
+- limitation (authors): Source only marginally resolved; intrinsic size poorly constrained and inclination unknown [3.3 [C ii] dynamics and spatial extent: "The intrinsic source size is not well constrained as it is only marginally resolved"]
+- limitation (authors): L_FIR uncertainties exclude dust temperature uncertainty [3.1 Far-infrared luminosity: "uncertainties on $L_{\rm FIR}$ (and inferred SFR) only include the flux measurement uncertainties, not that of the dust temperature."]
+- not stated (card): Imaging weighting/robust, deconvolution and cleaning parameters; CASA version and calibration script/flux model for Uranus; Exact channel ranges for line, wings, and continuum spectral windows; Method and aperture for the 3.4 sigma continuum flux measurement and spectral extraction; How [C II] flux integration and line luminosity conversion were done; Fit details for the Gaussian plus constant sp…
+
+### 2020ApJ...892...68N: The MBHBM<SUB>⋆</SUB> Project. I. Measurement of the Central Black Hole Mass in Spiral Galaxy NGC 3504 Using Molecular Gas Kinematics (2020; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the mass of the central supermassive black hole in NGC 3504, measured from 12CO(2-1) molecular gas kinematics, and is it consistent with BH-galaxy scaling relations?
+- step 4: KinMS dynamical modelling for M_BH
+  - method: 13-parameter MCMC fit of simulated cube to data, circular velocity from MGE + point-mass BH; first fit on 4"x4" with 1e5 iterations, then 1"x1" fit with 3e6 iterations, 20% burn-in, velocity channels -200 to 200 km/s [5.3 Fitting Process: "The total number of iterations are set to be $3\times10^6$ and the first 20% of iterations are considered as the burn-in phases"]
+  - software: KinMSpy_MCMC, emcee, JAM mge_vcirc
+  - parameter: flat priors, M_BH flat in log space; inclination free over MGE-allowed range [5.3 Fitting Process: "the prior on the $M_{\rm BH}$ was flat in log-space"]
+  - assumption: thin axisymmetric disk, circular orbits, constant velocity dispersion [5.4 Uncertainty Sources: "we assume the gas in NGC 3504 is in purely circular motion"]
+  - fitting: emcee affine-invariant ensemble sampler; chi^2 likelihood; medians of posteriors with 16/84% (1 sigma) and 0.2/99.8% (3 sigma) [5.4 Model Results: "We choose the best-fit parameters that are the medians of the parameter posterior PDFs."]
+  - validation: reduced chi2 1.16; PVD compared with no-BH and overly large BH models; systematics tests on mass model, AGN, distance, non-circular motions, dispersion profile, resolution [5.4 Model Results: "The reduced chi-square ($\chi^2_{\rm red}$) for the best fit is 1.16, indicating a good fit."]
+- result: M_BH (KinMS, combined cube) = 1.02e7 ± +0.18/-0.15 (3 sigma) Msun [5.4 Model Results: "$M_{\rm BH}=1.02^{+0.18}_{-0.15}\times10^7$$M_{\odot}$"]
+- result: H-band M/L = 0.66 ± +1.44/-0.65 Msun/Lsun [abstract: "$M/L_{\rm H}=0.66^{+1.44}_{-0.65}$"]
+- result: reduced chi2 of best fit = 1.16 ± not stated dimensionless [5.4 Model Results: "is 1.16, indicating a good fit"]
+- limitation (authors): Tilted-ring uncertainties likely underestimated; distance systematics large [6.2 Results: "we assume uniform errors for the velocities, the confidence intervals are therefore likely underestimated"]
+- not stated (card): Imaging parameters (tclean weighting/robust, cell size, image size, deconvolver, channel width of cubes); How the two configurations were combined (concat, weights) and any self-calibration; Line-free channels used for continuum fitting and power-law order; Exact CASA version used for imaging and whether pipeline was re-run; Dust mass and nuclear structure analysis come from unpublished paper; Re…
+
+### 2020ApJ...897L..14Y: Pōniuā'ena: A Luminous z = 7.5 Quasar Hosting a 1.5 Billion Solar Mass Black Hole (2020; agn_and_quasars, high_z_galaxies, cosmology; multi_facility_alma_minor)
+- question: Discover a z~7.5 quasar, measure its black hole mass, constrain early SMBH growth and the IGM neutral fraction, and get a [CII] systemic redshift and host properties with ALMA
+- step 4: Black hole mass from the NIR spectrum
+  - method: Pseudo-continuum plus two-component Gaussian Mg II and C IV fits; M_BH from the Vestergaard & Osmer relation [4 A 1.5 Billion Solar Mass Black Hole: "We estimate the black mass based on the bolometric luminosity and the FWHM of the Mg II line by adopting the local empirical relation from (cite: vestergaard09)."]
+  - software: PypeIt
+  - assumption: Bolometric correction 5.15 [4 A 1.5 Billion Solar Mass Black Hole: "assuming a bolometric correction factor of 5.15 (cite: richards06)"]
+  - fitting: 100 mock spectra; 16th/84th percentiles [4 A 1.5 Billion Solar Mass Black Hole: "All uncertainties are then estimated based on the 16th and 84th percentile of the distribution."]
+- result: Black hole mass = 1.5e9 ± 0.2e9 (excl. up to ~0.5 dex systematic) Msun [4 A 1.5 Billion Solar Mass Black Hole: "The black hole mass is derived to be $M_{\rm BH}=(1.5\pm0.2)\times10^{9}$ $M_{\odot}$"]
+- result: Mg II FWHM = 3247 ± 188 km/s [4 A 1.5 Billion Solar Mass Black Hole: "FWHM = $3247\pm188$ km s$^{-1}$"]
+- limitation (authors): Black hole mass uncertainty excludes scaling-relation systematics of up to ~0.5 dex [4 A 1.5 Billion Solar Mass Black Hole: "could be up to $\sim0.5$ dex"]
+- limitation (authors): Large uncertainties and a broad PDF for x_HI prevent solid conclusions [5 Constraint on the IGM Neutral Fraction: "it is difficult to draw solid conclusions because of the large uncertainties (and the broad PDF) on the value of $\langle x\rm_{HI}\rangle$"]
+- not stated (card): ALMA spectral windows, frequencies and channelization; Flux, bandpass and phase calibrators and flux-scale uncertainty; Imaging task, weighting/robust, cell and image size; Continuum-subtraction and line-free channels; Aperture or fitting method for the continuum flux and the [CII] line flux; Conversion from line flux to L_[CII]; Continuum-fit region and details of the Mg II/Fe II fit windows; Ex…
+
+### 2024PASJ...76..340K: Sub-parsec-scale jet-driven water maser with possible gravitational acceleration in the radio galaxy NGC 1052 (2024; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Is the 321-GHz H2O emission in NGC 1052 a maser (brightness temperature, size, variability), and what do its velocity structure, drift and spatial distribution say about the jet-torus region?
+- step 6: Derive drift, acceleration and maser distance
+  - method: Velocity change of B1 over 14 days gives g; r = sqrt(GM/g) [4.2 Velocity drift: "$r = \sqrt{GM_{\rm BH}/g} = 0.072$ pc or $5000 \ R_{\rm s}$"]
+  - assumption: M_BH = 1.5e8 Msun; drift due to gravitational acceleration [4.2 Velocity drift: "If the velocity drift is ascribed to gravitational acceleration of the SMBH that weighs $M_{\rm BH} = 1.5 \times 10^8$ M$_{\Sol}$"]
+  - validation: Compared with drift over 424 days vs earlier epoch and with NGC 4258 [4.2 Velocity drift: "Since the drift rate in 424 days is significantly smaller than that in 14 days, it is unlikely to identify the 1333 km s$^{-1}$ component as B1."]
+- result: Blue component velocity drift = 127 ± 13 km/s/yr [4.2 Velocity drift: "B1 maser component showed the velocity drift of $127 \pm 13$ km s$^{-1}$ yr$^{-1}$ or acceleration of $g = 4.0 \times 10^{-3}$ m s$^{-2}$."]
+- result: Maser distance from SMBH = 0.072 pc (5000 Rs) ± not stated pc [4.2 Velocity drift: "$r = \sqrt{GM_{\rm BH}/g} = 0.072$ pc or $5000 \ R_{\rm s}$"]
+- result: Red component drift (weighted mean velocity) = 164 ± 37 km/s/yr [4.2 Velocity drift: "The change of weighted mean velocity corresponds to $164 \pm 37$ km s$^{-1}$ yr$^{-1}$"]
+- limitation (authors): Red component decomposition not unique; drift versus growth ambiguous; first epoch had poorer uv coverage [3.1 Line profiles: "The decompositions are not unique, especially in the red component consisting of complex sub-components."]
+- not stated (card): Line-free channels / continuum definition for BB4 continuum subtraction; tclean cell size, image size, niter, threshold, mask; Self-calibration solution intervals; Initial values and ranges for Gaussian/Lorentzian nls decomposition; Table of observation log contents (rms values) not in text; Details of the uv-distance Gaussian fitting method and 99% confidence band; 2022-05-12 spectrum from earli…
+
+### 2019A&A...621A..83S: Outflows in the inner kiloparsec of NGC 1566 as revealed by molecular (ALMA) and ionized gas (Gemini-GMOS/IFU) kinematics (2019; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Do the molecular (ALMA CO J:2-1) and ionized (Gemini-GMOS/IFU) gas kinematics in the inner kpc of NGC 1566 show outflows and/or streaming inflows rather than only rotation and bar perturbations, and how large are the associated mass flow r…
+- step 8: Estimate SMBH mass, Lbol and accretion rate
+  - method: pPXF sigma_* into Gultekin 2009 M-sigma; Lbol from X-ray and [O III], mean adopted; mdot = Lbol/(c^2 eta) [Bolometric luminosity and accretion, in…: "$$\begin{equation} \label{accrateeq} \dot{m}=\frac{L_{Bol}}{c^{2}\eta} \end{equation}$$"]
+  - software: pPXF
+  - parameter: eta=0.1; Lbol=6.7 LX(2-10keV); Lbol=90 L[OIII] [Bolometric luminosity and accretion, in…: "($\rm L_{Bol}=6.7\times L_{X(2-10keV)}$)"]
+  - assumption: accretion efficiency 0.1 [Bolometric luminosity and accretion, in…: "is typically taken to be 0.1"]
+  - validation: Two Lbol methods agree [Bolometric luminosity and accretion, in…: "These two methods thus give relatively consistent values for $\rm L_{Bol}$"]
+- result: Stellar velocity dispersion = 116 ± 9 km/s [Mass of the SMBH in NGC 1566: "$\sigma_{\star}=116\pm9$ km s$^{-1}$"]
+- result: SMBH mass = 1.3e7 ± 0.6e7 Msun [Mass of the SMBH in NGC 1566: "$M_{BH}=1.3\pm0.6\times10^{7}~[M_{\odot}]$"]
+- result: Adopted Lbol = 2.7e34 ± 1.3e34 W [Bolometric luminosity and accretion, in…: "$\rm L_{Bol} = (2.7\pm1.3)\times10^{34}~[W]$"]
+- result: SMBH accretion rate = 4.8e-5 ± 2.3e-5 Msun/yr [Bolometric luminosity and accretion, in…: "$\dot{m}=(4.8\pm2.3)\times10^{-5}~[M_{\odot}yr^{-1}]$"]
+- limitation (authors): Distance uncertain; warped or non-coplanar disks cannot be constrained; outer CO velocity field sparse [Modeling Observed Velocities: Molecular…: "cannot be constrained by us due to the limited resolution, the sparse velocity field, and the lack of a reliable circular rotation model for the galaxy"]
+- not stated (card): Line-free channel ranges and continuum subtraction method for the CO cube; Cell size, image size, deconvolution settings, masks/clean threshold; Flux scale uncertainty and any self-calibration; Calibrator flux density for Pictor A; Exact apertures and Gaussian fit details for nuclear spectrum decomposition; Details of the Kinemetry global optimization (modified code unreleased); Finlez PhD bar pe…
+
+### 2025ApJ...992..211N: Revisiting the Supermassive Black Hole Mass of NGC 7052 Using High Spatial Resolution Molecular Gas Observed with ALMA (2025; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the SMBH mass and stellar I-band M/L of NGC 7052 from 12CO(2-1) kinematics at 0.3 arcsec resolution, with an improved stellar plus molecular gas mass model?
+- step 6: Dynamical model fit of MBH and M/L
+  - method: KinMS forward-model of the 3D cube; gas distribution from SkySampler or two Gaussians; circular velocity from mge_circular_velocity; 9 free parameters [4.1 KINMS tool: "Thus, our adopted KINMS models consist of nine free parameters, as listed in Table [5](#tab:mcmc-results)."]
+  - software: KinMS, SkySampler, JamPy, AdaMet
+  - parameter: 10^5 MCMC iterations, 20% burn-in; log-scale MBH; chi2 uncertainties rescaled by (2N)^0.25 with N=76,014 [4.3 Bayesian inference and priors: "The MCMC chains consisted of $10^5$ iterations, with the initial 20% discarded as a burn-in phase."]
+  - assumption: circular orbits, thin disc, constant velocity dispersion, D = 69.3 Mpc [4.1 KINMS tool: "we assumed that the $^{12}$CO(2$-$1) gas circulates around the galaxy center in circular orbits"]
+  - fitting: Adaptive Metropolis MCMC (AdaMet), chi2 likelihood, uniform priors over ranges in Table 5 [4.3 Bayesian inference and priors: "The adaptive Metropolis algorithm (cite: Haario01), implemented within a Bayesian framework using the ADAMET[^11] package (cite: Cappellari13a)"]
+  - validation: moment-map, PVD and spectrum comparisons, velocity residuals, minor-axis PVD, alternative models [4.4 Results: "Our best-fit KINMS model with SKYSAMPLER provides $|V_{\rm residual}| \lesssim 15$ km s$^{-1}$ ($\lesssim$4%) across the CND"]
+- result: MBH (SkySampler) = 2.50e9 ± ±0.37e9 (stat), ±0.8e9 (sys) Msun [abstract: "$(2.50 \pm 0.37 \, [{\rm statistical}] \pm 0.8 \, [{\rm systematic}]) \times10^9$ M$_{\odot}$"]
+- result: M/L F814W (SkySampler) = 4.08 ± ±0.23 (stat), ±0.4 (sys) Msun/Lsun [abstract: "$4.08 \pm 0.23\, [{\rm statistical}] \pm 0.4 \, [{\rm systematic}]$ M$_{\odot}$/L$_\odot$$_{,I}$"]
+- result: MBH (two Gaussians) = 2.34e9 ± +0.39/-0.52 e9 Msun [4.4 Results: "$M_{\rm BH}$ $=(2.34^{+0.39}_{-0.52})\times10^9$ M$_{\odot}$"]
+- result: Inclination (SkySampler) = 73.49 ± +0.42/-0.44 deg [Table 5: "$i$ ($^\circ$) | 42 $\rightarrow$ 89.9 | 73.49 | +0.42,$-$0.44"]
+- result: Position angle (SkySampler) = 63.90 ± +0.50/-0.51 deg [Table 5: "$\Gamma$ ($^\circ$) | 0 $\rightarrow$ 360 | 63.90 | +0.50,$-$0.51"]
+- result: Reduced chi2 (SkySampler) = 0.867 ± not stated dimensionless [4.4 Results: "corresponding to a reduced chi-squared of $\chi^2_{\rm red, min} = 0.867$"]
+- limitation (authors): Distance uncertainty (69.3 vs 46.4 Mpc) gives ~30% systematic in MBH, dominant error [4.5.1 Distances: "This discrepancy results in a systematic uncertainty of $\sim$30% in $M_{\rm BH}$"]
+- not stated (card): Line-free channel ranges for uvcontsub; Self-calibration solution intervals and number of rounds; Cleaning niter/threshold details and exact tclean parameters; Rest-frame velocity convention details and exact cube channel start; Exact MGE fit settings and masks; SkySampler/KinMS settings beyond those given (e.g. initial guesses); The continuum flux in text (29.1 mJy) differs from Table 1 (24.9 mJ…
+
+### 2017ApJ...845..138S: Gas Dynamics of a Luminous z = 6.13 Quasar ULAS J1319+0950 Revealed by ALMA High-resolution Observations (2017; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the gas dynamics, dynamical mass and black hole to host mass ratio of the z=6.13 quasar J1319+0950 from high-resolution [C II] and dust continuum imaging?
+- step 5: Derive M_dyn, M_BH and mass ratio
+  - method: M_dyn from V_c at 3.2 kpc; M_BH from Mg II width and L3000 via Shen & Liu; compare with local ratio from Kormendy & Ho [3.2.3 M_BH-M_dyn relation: "The derived $M_{\rm BH}$/$M_{\rm dyn}$ ratio is 0.020, which is about 4 times higher than the present-day $M_{\rm BH}$/$M_{\rm bulge}$ ratio"]
+  - assumption: Dynamical mass taken as bulge mass for local ratio [3.2.3 M_BH-M_dyn relation: "calculated taking our dynamical mass as the bulge mass by Equation 11 in (cite: Ho2013)"]
+  - fitting: Linear continuum + Gaussian Mg II + Fe II template [Discussion, M_BH-M_dyn relation: "we fit the Gemini NIRI spectrum of ULAS J1319+0950 (cite: Mortlock2009) with a linear continuum, a Gaussian for Mg II line, and an ultraviolet Fe II template based on (cite: Shen2012)"]
+  - validation: Errors from i = 26 and 48 deg [Discussion, M_BH-M_dyn relation: "And as a sequence, the $M_{\rm BH}$/$M_{\rm dyn}$ ratio would be 0.013 and 0.033, which are 2 and 7 times higher than the local values."]
+- result: Dynamical mass within 3.2 kpc = 13.4 ± +7.8/-5.3 1e10 Msun [abstract: "13.4$_{-5.3}^{+7.8}$ $\times 10^{10}\,M_{\odot}$"]
+- result: M_BH = 2.7e9 ± 0.6e9 Msun [3.2.3 M_BH-M_dyn relation: "is (2.7 $\pm$ 0.6) $\times$ 10$^{9} M_{\odot}$"]
+- result: M_BH/M_dyn = 0.020 ± +0.013/-0.007 dimensionless [abstract: "0.020$_{-0.007}^{+0.013}$"]
+- limitation (authors): Inclination derived from only two successful rings; real uncertainty may be much larger [3.2.2 Rotation curve: "the inclination angle ($i$) is calculated as the weighted mean of only two successful $i(R)$ values."]
+- not stated (card): Cycle 0 execution blocks and calibration details; Image size, cell size, cleaning threshold and mask; Line-free channels for continuum subtraction; Rest-frame velocity zero point and moment-map pixel handling; How M_dyn is computed from V_c (formula, e.g. M = V^2 R/G); Initial values for ROTCUR fit; Continuum bandwidth/frequency
+
+### 2019ApJ...887...74F: ALMA Reveals a Gas-rich, Maximum Starburst in the Hyperluminous, Dust-obscured Quasar W0533-3401 at z ∼ 2.9 (2019; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: What are the molecular gas, dust, stellar and SMBH properties of the hyperluminous obscured quasar W0533-3401, and is it a gas-rich maximum starburst in a transition phase toward an unobscured quasar?
+- step 5: Dust mass, gas-to-dust ratio, SFR, depletion time, BH properties
+  - method: Optically thin M_dust equation; f_gas, SFR from SED and from CO(5-4)-FIR relation; t_depl = M_gas/SFR; M_BH from L_AGN with Eddington ratio 1; Mdot_BH from L_AGN with eta/(1-eta)=0.1 [4.4 Rapid growth of both the stellar co…: "adopting $\frac{\eta}{1-\eta}=0.1$"]
+  - assumption: kappa_1THz=20 cm2/g; lambda_Edd=1; L'CO(5-4)/L'CO(3-2)=0.7 [4.3 Stellar mass and star formation rate: "by taking $L'_{\rm CO(5-4)}/L'_{\rm CO(3-2)}=0.7$"]
+  - validation: CO-based SFR consistent with SED SFR [4.3 Stellar mass and star formation rate: "which is generally consistent with the best-fit SED result"]
+- result: Dust mass = 8.9e7 ± 1.6e7 Msun [Table 4: "| $M_{\rm dust}$ | (8.9 $\pm$ 1.6) $\times 10^{7}$ | $M_\odot$ | \(11\) |"]
+- result: Gas-to-dust ratio = 944 ± 77 dimensionless [4.2 Dust properties: "$\delta_{\rm GDR} = 944\pm77$"]
+- result: Gas fraction = 0.71 ± not stated dimensionless [4.3 Stellar mass and star formation rate: "$f_{\rm gas}=M_{\rm H_2}/(M_{\rm H_2}+M_\star)=0.71$"]
+- result: Gas depletion time = 12-28 ± not stated Myr [4.3 Stellar mass and star formation rate: "We infer $t_{\rm depl}\sim 12-28$ Myr"]
+- result: BH mass growth rate = 49 ± not stated Msun/yr [4.4 Rapid growth of both the stellar co…: "We infer ${\dot{M}}_{\rm BH}$ = 49 $M_\odot$ yr$^{-1}$"]
+- result: M_BH/M_star (lambda_Edd=1) = 0.063 ± not stated dimensionless [4.4 Rapid growth of both the stellar co…: "($M_{\rm BH}/M_\star=0.063$)"]
+- limitation (authors): Limited depth and resolution prevent distinguishing disk, merger and outflow [4.1 CO(3-2) line emission: "due to limited depth and resolution, we cannot make a solid conclusion"]
+- limitation (authors): Dust mass depends strongly on the adopted kappa [4.2 Dust properties: "the largest uncertainty can arise from the adopted $\kappa_{\nu_{\rm rest}}$ value"]
+- not stated (card): tclean parameters: cell size, image size, deconvolver, threshold, masking, niter; line-free channels and continuum subtraction method; CASA version and pipeline version; moment-map thresholds and aperture used for line flux and spectrum extraction; 3DBarolo settings beyond rings and width (free parameters, normalization, fit mask); bayesed sampler and likelihood details (forthcoming version not p…
+
+### 2015PASJ...67...72T: High-resolution ALMA observations of SDP.81. I. The innermost mass profile of the lensing elliptical galaxy probed by 30 milli-arcsecond images (2015; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What is the innermost mass profile and central SMBH mass of the foreground elliptical lensing SDP.81, derived from lens modeling of 30 mas ALMA images?
+- step 6: Constrain SMBH mass from central image non-detection
+  - method: Add point mass 1e7–1e9 Msun with r_core fixed to 150 mas; compute S_cent/S_tot vs M_BH; compare with 3σ limit [4 Discussions and conclusions: "A point mass with $M_\mathrm{BH} = 10^7$ to $10^9\,M_{\Sol}$ is placed at the position of the AGN and $r_\mathrm{core}$ is fixed to the stellar core radius of $150$ mas"]
+  - software: GLAFIC
+  - validation: Compared with M_BH–sigma relation of Kormendy13 [4 Discussions and conclusions: "using the local correlation (cite: Kormendy13) is $M_\mathrm{BH} = (1 \pm 0.1) \times 10^9$ $M_{\Sol}$"]
+- result: Lower limit on BH mass (r_core=150 mas) = > 3e8 ± not stated Msun [4 Discussions and conclusions: "the ALMA non-detection places a constraint to the black hole mass of $M_\mathrm{BH} > 3 \times 10^8\,M_{\Sol}$"]
+- result: BH mass from M–sigma = 1e9 ± 0.1e9 Msun [4 Discussions and conclusions: "$M_\mathrm{BH} = (1 \pm 0.1) \times 10^9$ $M_{\Sol}$"]
+- limitation (authors): Core radius and velocity dispersion highly degenerate; BH mass and core radius degenerate [3.1 Methods and results: "Note that the core radius ($r_\mathrm{core}$) and velocity dispersion ($\sigma_v$) of the isothermal ellipsoid are highly degenerate."]
+- not stated (card): ALMA imaging/calibration settings (tclean parameters, robust, CASA version) are deferred to other papers; Exact positions and fluxes of the 46 identified knots; Initial parameter values and MCMC settings (chain length, priors) for GLAFIC; Fixed reference position of the non-thermal source; Mass-to-light ratio uncertainty treatment
+
+### 2020ApJ...898...75I: ALMA Observations of Multiple CO and C Lines toward the Active Galactic Nucleus of NGC 7469: An X-Ray-dominated Region Caught in the Act (2020; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: Does the [C I](1-0) to CO/13CO line ratio at ~100 pc scale distinguish the AGN (XDR) from the starburst ring in NGC 7469, and what are the gas conditions and CO/CI-to-H2 conversion factors?
+- step 7: Stellar mass and conversion factors
+  - method: HST color-based M/L with MGE deprojection; Mmol = Mdyn - Mstar - MBH; alpha = Mmol/L' [4.2 Impact on H2 mass measurements: "Then we obtained a total molecular mass as $M_{\rm mol} = M_{\rm dyn}-M_\star-M_{\rm BH}$"]
+  - software: MGE
+  - assumption: H2 dominates gas mass in CND; hydrogen nuclei fraction 71%; no dark matter [4.2 Impact on H2 mass measurements: "we provisionally assume the dominance of H$_2$ (or molecular gas) in the mass budget of the region of our interest."]
+  - validation: Uncertainty ~0.3 dex dominated by Mstar color variation [4.2 Impact on H2 mass measurements: "which are then $\sim 0.3$ dex"]
+- result: Stellar mass within r=0.19'' = 1.3e8 ± ~0.2 dex Msun [4.2 Impact on H2 mass measurements: "The enclosed $M_\star$ within the $r = 0\ensuremath{''}.19$ is $1.3 \times 10^8~M_\odot$."]
+- result: Total molecular mass within r<=0.19'' = 9.5e7 ± not stated Msun [4.2 Impact on H2 mass measurements: "we derive the total gas mass at $r \leq 0\ensuremath{''}.19$ as $M_{\rm mol} = 9.5 \times 10^7~M_\odot$"]
+- result: alpha_CO = 4.1 ± ~0.3 dex Msun (K km/s pc^2)^-1 [4.2 Impact on H2 mass measurements: "$\alpha_{\rm CO}$ = 4.1 $M_\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$ and $\alpha_{\rm CI}$ = 4.4"]
+- result: alpha_CI = 4.4 ± ~0.3 dex Msun (K km/s pc^2)^-1 [4.2 Impact on H2 mass measurements: "$\alpha_{\rm CI}$ = 4.4 $M_\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$"]
+- result: X_CO and X_CI = 1.9e20 and 2.1e20 ± ~0.3 dex cm^-2 (K km/s)^-1 [4.2 Impact on H2 mass measurements: "$X_{\rm CO} = 1.9 \times 10^{20}$ cm$^{-2}$ (K km s$^{-1}$)$^{-1}$ and $X_{\rm CI} = 2.1 \times 10^{20}$"]
+- limitation (authors): Dominance of H2 in the CND is assumed; HI/HII may contribute [4.2 Impact on H2 mass measurements: "One big assumption is about the dominant phase of the circumnuclear gas in terms of mass."]
+- limitation (authors): RADEX assumes single homogeneous medium though real structure is complex; single transition limits Tex [4.1.2 Non-LTE perspective: "we need to assume that all lines observed are emitted from the same volume, although as we revealed in § 3 the real structures are quite complex"]
+- not stated (card): Line-free channels used for continuum subtraction and rms; clean threshold, masking, niter and image size; Whether Band 7 compact-configuration data exclusion detail and flagging beyond pipeline; Exact aperture/spectrum extraction procedure and Gaussian-fit initial guesses; 3DBarolo settings (mask, normalization, weighting) beyond ring geometry; MGE fitting details and HST stellar mass profile (d…
+
+### 2020ApJ...891...64F: Truth or Delusion? A Possible Gravitational Lensing Interpretation of the Ultraluminous Quasar SDSS J010013.02+280225.8 at z = 6.30 (2020; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Is the resolved quadruple ALMA 1-mm continuum structure of the z=6.30 quasar J0100+2802 due to strong gravitational lensing or to multiple star-forming regions, and how would lensing change its BH mass?
+- step 5: Correct M_BH for magnification
+  - method: Apply magnification to UV luminosity in Mg II virial estimator [4 Discussion: "If we apply the total magnification correction to the UV luminosity in Equation [\[eq:Mbh\]](#eq:Mbh), the intrinsic $M_{\rm BH}$ estimate is decreased by a factor of $\sim$17.3."]
+- result: Total magnification of HST emission = ~450 ± factor of a few dimensionless [3.2 Comparison with HST: "our fiducial mass model predicts the total magnification factor of $\sim450$ for the quadruple images in the HST map"]
+- limitation (authors): Lens model poorly constrained; magnification uncertain by a factor of a few [4 Discussion: "our estimate of the total magnification factor should be uncertain by a factor of a few or so"]
+- not stated (card): Spectral window line-free channel selection; Cell size and image size; Exact tclean parameters (niter, gain, mask settings); glafic fitting setup details and best-fit SIE parameters (other than Einstein radius and e); How the 0.8'' aperture flux and peak positions were measured; Details of simobserve configuration and noise
+
+### 2016ApJ...827...81I: Do Circumnuclear Dense Gas Disks Drive Mass Accretion onto Supermassive Black Holes? (2016; nearby_galaxies, agn_and_quasars; multi_facility_alma_minor)
+- question: Is the mass of dense molecular gas (from HCN(1-0)) in ~100 pc circumnuclear disks correlated with the black hole mass accretion rate in Seyfert galaxies, and does the scale of the gas matter?
+- step 5: compare with SN-driven accretion model
+  - method: Reduced Kawakatu & Wada equation for uniform disk; r_in,eff = max[r_X, r_Q]; Mdot_acc compared to Mdot_BH and Mdot_BH+Mdot_wind for four sources [Comparison with observations: "Using these two radii, we regard the *effective* innermost radius as $r_{\rm in,eff} = {\rm max}[r_{\rm X}, r_{\rm Q}]$."]
+  - parameter: n_H2 = 1e6 cm^-3, log(Hx/nH) = -27.5, c_s ~1 km/s, Toomre Q=1 [Comparison with observations: "A gas volume density of $n_{\rm H_2} = 10^6$ cm$^{-3}$"]
+  - assumption: Dense gas uniformly distributed in CND; r_out = HWHM of H2 1-0 S(1) disk; uncertainty set by M_dense/M_BH [Comparison with observations: "we simply assume that the dense gas is uniformly distributed within a CND"]
+  - validation: Compared with Mdot_BH and nuclear mass flow [Other components of the mass budget$-$g…: "both NGC 7469 and NGC 4051 show good agreement of $\dot{M}_{\rm CND} \sim \dot{M}_{\rm nuclear}$"]
+- result: log Mdot_acc NGC 7469 = -1.20 ± 0.30 log Msun/yr [Table 4: "| NGC 7469 | 30.8 | 2.2 | 0.84 | 1.19/260 | 2 | 6.0$\times$10$^{-9}$ | -1.20$\pm$0.30 | -1.22 | 5 |"]
+- limitation (authors): Small, inhomogeneous samples; tentative results; fixed eta and uncertainties not fully included [Other components of the mass budget$-$g…: "our results are tentative due to the small sample size, and are based on simplified assumptions"]
+- limitation (authors): Most CNDs unresolved so Sigma_dense not measured [Comparison with observations: "most of the CNDs are not resolved spatially at the HCN($1-0$) emission line, so we cannot measure $\Sigma_{\rm dense}$ directly"]
+- not stated (card): Velocity ranges for moment-0 integration for NGC 4579 and NGC 7469; Line-free channels and continuum selection for NGC 4579 and NGC 7469; Image size and cell size for NGC 4579 cube; NGC 7469 ALMA data processing (unpublished); linmix_err random seed and convergence checks; How upper limits were handled in the Spearman correlation; Exact references for SFR and wind rates per source (numbered refs …
+
+### 2025A&A...693A.311P: The Galaxy Activity, Torus, and Outflow Survey (GATOS): VI. Black hole mass estimation using machine learning (2025; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Can supervised CNNs trained on simulated gas-disk cubes estimate black hole masses from ALMA CO(3-2) position-velocity diagrams or first-moment maps of seven GATOS Seyferts?
+- step 4: Train one CNN per galaxy and input type
+  - method: Keras CNN regression, RMSE loss, Adam lr 1e-4, batch 128, 2000 epochs, best validation epoch, dropout 20% on dense2 [4.4 ML architecture: "We trained our models during 2000 epochs and took the weights of the epoch with the lowest RMSE on the validation set."] [4.4 ML architecture: "The training was made with a mini-batch size of 128 images."]
+  - software: Keras
+  - fitting: RMSE loss, Adam optimizer; output normalised by max M_BH [4.4 ML architecture: "We used an initial learning rate of 0.0001 and the Adam optimizer (cite: adamopt)."]
+  - validation: RMSE, R^2 and mean relative error on 5000-sample test sets; RE vs each parameter [5.1 Reliability of ML models: "The RMSE values are at worst 0.0367 and the $R^2$ are all above 0.946"]
+- step 5: Infer M_BH from observations
+  - method: 10^5 MC-dropout predictions per galaxy give a probability distribution [5.2 M_BH estimations results: "We made $10^{5}$ predictions per galaxy. The observed scatter on the $M_{\mathrm{BH}}$ predictions comes from the MC dropout."]
+  - software: Keras
+  - validation: Compared with literature M-sigma, reverberation and FPBH masses [5.2 M_BH estimations results: "For the seven galaxies in our sample, the $M_{\mathrm{BH}}$ predicted by our models is coherent with previous estimations."]
+- result: log M_BH NGC 4388 (PVD) = 7.18 ± 0.16 log(Msun) [Table 5: "NGC4388 | 7.18 $\pm$ 0.16 | 6.61 $\pm$ 0.02"]
+- result: log M_BH NGC 5643 (moment map) = 6.99 ± 0.02 log(Msun) [Table 5: "NGC5643 | 6.13 $\pm$ 0.10 | 6.99 $\pm$ 0.02"]
+- result: log M_BH NGC 6300 (moment map) = 6.39 ± 0.01 log(Msun) [Table 5: "NGC6300 | 7.15 $\pm$ 0.12 | 6.39 $\pm$ 0.01"]
+- result: worst test RMSE = 0.0367 ± not stated normalised [5.1 Reliability of ML models: "The RMSE values are at worst 0.0367 and the $R^2$ are all above 0.946"]
+- limitation (authors): One network per galaxy; simulations lack bars, clumps and misalignments; uncertainties not physical [7 Conclusion: "a key limitation of this work is that we trained and applied the NNs on one galaxy at a time."]
+- not stated (card): ALMA project codes, calibration and imaging details (CASA version, robust, beam, rms) for the cubes; Which ALMA cubes/products were used and how they were obtained; Moment-map clipping thresholds and PVD slit width and position angle; Distances adopted per galaxy; Parameter ranges for the uniform sampling of simulations (only best-fit values tabulated); Random seeds, number of dropout inferences'…
+
+### 2018PASJ...70...36I: Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with ALMA (2018; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the star formation properties, sizes, dynamical masses and black hole-host mass relation of low-luminosity (M1450 > -25) quasar hosts at z >~ 6, compared with optically luminous quasars?
+- step 7: Dynamical mass and comparison with MS and MBH-Mdyn
+  - method: Thin-disk Mdyn=1.16e5 vcirc^2 D; i from axis ratio; compare with nu2GC and local relation [4.3: "$i$ = cos$^{-1}$($a_{\rm min}$/$a_{\rm maj}$)"]
+  - parameter: vcirc=0.75 FWHM/sin i; D=1.5 a_maj [4.3: "$v_{\rm circ}$ = 0.75 FWHM$_{\rm [C\,\emissiontype{II}]}$/$\sin i$"]
+  - assumption: Mdyn used as surrogate for M*; Eddington-limited accretion for BH mass of two quasars [4.3: "hereafter we use the above $M_{\rm dyn}$ as a surrogate for $M_*$"]
+- result: Mdyn = (1.4-8.2)e10 ± not stated Msun [abstract: "$\simeq (1.4-8.2) \times 10^{10}~M_\odot$"]
+- result: ODR fit of log L[CII]/LFIR vs log LFIR = intercept 3.84, slope -0.56 ± 0.57, 0.05 dimensionless [4.1: "\log_{\rm 10} L_{\rm [C\,\emissiontype{II}]}/L_{\rm FIR} = (3.84 \pm 0.57) - (0.56 \pm 0.05) ~\log_{\rm 10} L_{\rm FIR}"]
+- limitation (authors): Mdyn has large unconstrained systematic uncertainty; sources only marginally resolved [4.3: "Keeping the existence of such large *unconstrained* systematic uncertainty in mind"]
+- not stated (card): Line-free channel selection and velocity ranges for moment-0 maps; Clean mask, threshold and iteration settings; image size; CASA task parameters for imfit (regions, initial guesses); Dust-temperature SED details for the gray body integration and L_FIR band definition; Gas-to-dust ratio value used; Details of nu2GC selection and M_BH from Onoue et al.; Which archive products or scripts were used …
+
+### 2018A&A...617A..82B: The WISSH quasars project. V. ALMA reveals the assembly of a giant galaxy around a z = 4.4 hyper-luminous QSO (2018; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: What are the host galaxy and environment properties of the hyper-luminous QSO J1015+0020 at z~4.4, and how do SMBH and host galaxy growth compare?
+- step 5: Black hole mass from CIV
+  - method: Fit 1300-1700 A with power law plus two Gaussians; single-epoch relation of Vestergaard06 with Coatman17 blueshift correction [5.1: "we fit the spectral region between 1300 Å and 1700 Å with a model consisting of a power law to reproduce the continuum emission"]
+- step 7: Growth timescales
+  - method: t_acc=M_BH/Macc, t_SFR=Mdyn/SFR, exponential t_Edd and t_tau [5.2: "A basic estimate of the present $M_{\rm BH}$ growth timescale can be derived as the ratio $t_{\rm acc} = M_{\rm BH}/\dot{M}_{\rm acc}$"]
+  - assumption: accretion efficiency 0.1 [5.2: "once assumed a standard accretion efficiency $\epsilon=0.1$"]
+- result: M_BH = 5.7e9 ± +3.4/-2.1 e9 Msun [5.1: "$5.7^{+3.4}_{-2.1}\times10^9$ M$_\odot$"]
+- result: Eddington ratio = 0.23 ± +0.14/-0.09 dimensionless [5.1: "$\lambda_{\rm Edd} = 0.23^{+0.14}_{-0.09}$"]
+- result: Macc = 30 ± 7 Msun/yr [5.2: "$\dot{M}_{\rm acc}=30\pm7$ M$_\odot$ yr$^{-1}$"]
+- limitation (authors): Inclinations and sizes of marginally resolved sources are uncertain, affecting dynamical masses [5.1: "inclination estimates of marginally resolved sources (such as J1015$+$0020 and CompA), detected at moderate signal-to-noise ratio, can be altered by non-circular beam shapes."]
+- not stated (card): Which spw/channels define the line-free continuum and cleaning threshold/mask; Primary beam correction details and flux scale uncertainty; SED fitting code, templates and priors; Aperture/region definitions and fitting software for 2D Gaussians; Orthogonal regression implementation; Whether self-calibration was applied
+
+### 2016ApJ...823...51B: Toward Precision Black Hole Masses with ALMA: NGC 1332 as a Case Study in Molecular Disk Dynamics (2016; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Can ALMA CO(2-1) kinematics of the NGC 1332 circumnuclear disk, at 0.3'' resolution, constrain the central black hole mass, and what limits the measurement?
+- step 5: Fit models to data cube
+  - method: chi^2 minimization with amoeba on 4x4 block-averaged cube; 49 pixels x 52 channels = 2548 data points; grids over fixed M_BH [4.4 Model Optimization: "We fit models using the `amoeba` downhill simplex method implemented in IDL."]
+  - software: IDL amoeba
+  - parameter: Free: M_BH, Upsilon, x, y, v_sys, i, Gamma, f0, sigma_turb params [4.1 Method: "Free parameters in the model include $M_\mathrm{BH}$ and $\Upsilon$, the $x$ and $y$ centroid positions of the BH, the systemic velocity $v_\mathrm{sys}$"]
+  - fitting: chi^2 with noise from block-averaged blank regions (0.3 mJy/beam); covariance matrix attempt failed [4.4 Model Optimization: "The RMS noise level in the $4\times4$ block-averaged data is 0.3 mJy beam$^{-1}$"]
+  - validation: Compared full-resolution chi^2, PVD fits, HST mass profile [5.1 Initial tests: "the results for the best-fitting parameters were virtually identical to the block-averaged fits"]
+- result: Best flat-sigma M_BH = 6.02e8 ± not meaningful (chi2_nu=4.40) Msun [5.2 Model fits with flat sigma_turb: "The best-fitting model with flat $\sigma_\mathrm{turb}$ is found at $\ensuremath{M_\mathrm{BH}}= 6.02\times10^8$ ${M}_{\odot}$."]
+- result: Best-fit flat sigma_turb = 24.7 ± not stated km/s [5.2 Model fits with flat sigma_turb: "$\Upsilon_R = 7.25$ and $\ensuremath{\sigma_\mathrm{turb}}= 24.7$ km s$^{-1}$"]
+- result: Disk inclination = 83-84 ± not stated deg [5.2 Model fits with flat sigma_turb: "inclination $i = 83\ensuremath{^\circ}-84\ensuremath{^\circ}$"]
+- result: Systemic velocity = 1559 ± ±1 km/s [5.2 Model fits with flat sigma_turb: "$\ensuremath{v_\mathrm{sys}}= 1559\pm1$ km s$^{-1}$"]
+- result: Provisional BH mass range = ~(4-8)e8 ± not rigorous Msun [5.5 Final Results: "point to a BH mass that is likely to be in the range $\sim(4-8)\times10^8$ ${M}_{\odot}$"]
+- result: BH mass with sigma_turb=10 km/s = 8.0e8 ± not stated Msun [5.2 Model fits with flat sigma_turb: "For $\ensuremath{\sigma_\mathrm{turb}}=10$ km s$^{-1}$, the best-fitting BH mass is $8.0\times10^8$ ${M}_{\odot}$."]
+- result: Gaussian sigma_turb model chi2 (M_BH=0) = 7499.7 for 2538 dof ± not stated dimensionless [5.3 Model fits with other sigma_turb pr…: "the best-fitting $\chi^2$ value in this case is 7499.7 for 2538 degrees of freedom"]
+- limitation (authors): Models are poor fits (chi2_nu 4.4); warp, sigma_turb and surface brightness models inadequate; no meaningful confidence intervals [5.5 Final Results: "We are unable to derive meaningful confidence limits on $M_\mathrm{BH}$"]
+- not stated (card): Line-free channels and continuum subtraction method; Clean threshold, masking and deconvolver for tclean; Actual coordinates of NGC 1332; Starting parameters and bounds for the amoeba fits; Initial values of the amoeba fits; The elliptical fitting region definition in detail; HST dataset ID; Kinemetry code settings
+
+### 2024MNRAS.527.9343L: WISDOM project - XVIII. Molecular gas distributions and kinematics of three megamaser galaxies (2024; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Which megamaser galaxies are suitable targets for cross-checking maser and cold molecular gas SMBH mass measurements, and what are their molecular gas distributions and kinematics?
+- step 1: Select maser candidate sample
+  - method: Apply criteria on SoI angular radius, HST dust disc regularity and declination to maser parent sample [2.1 Candidate selection: "SMBH SoI angular radius $\theta_{\rm SoI} \equiv R_{\rm SoI} / D >0.01\ensuremath{''}$, where the SMBH SoI physical radius $R_{\rm SoI} \equiv{\rm G}M_\mathrm{BH}/\sigma_\star^2$"]
+  - assumption: M_BH ∝ D when rescaling masses to updated distances [2.1 Candidate selection: "$M_{\rm BH}\propto D$ for all dynamical mass measurements, where $D$ is the galaxy distance"]
+- step 7: Estimate observing time needed for SMBH mass measurement
+  - method: Take central peak pixel, assume homogeneous gas, target beam ~ theta_SoI, S/N=5 per beam in 10 km/s channels, use ALMA OT [4 Potential for SMBH Mass Measurements: "Requiring a signal-to-noise ratio $S/N=5$ per synthesised beam and $10$ km s$^{-1}$ channels, we estimate using the ALMA Observing Tool (OT)"]
+  - software: ALMA Observing Tool
+  - assumption: Homogeneous molecular gas within the central beam [4 Potential for SMBH Mass Measurements: "assume a homogeneous molecular gas distribution within it"]
+- result: Required observing time NGC 1194 = ≈70 ± not stated days [4 Potential for SMBH Mass Measurements: "we estimate using the ALMA Observing Tool (OT) that the observations would require a total observing time of $\approx70$ days."]
+- result: Required observing time NGC 3393 = ≈100 ± not stated years [4 Potential for SMBH Mass Measurements: "results in a total of $\approx100$ years."]
+- result: Required observing time NGC 5765B = ≈80 ± not stated days [4 Potential for SMBH Mass Measurements: "results in a total of $\approx80$ days."]
+- limitation (authors): Fluxes and masses for NGC 1194 and NGC 3393 are lower limits due to FoV; uncertainties exclude systematics [Table 3 footnote: "likely do not cover the full molecular gas extent of NGC 1194 and NGC 3393."]
+- limitation (authors): Spectral indices may be biased since resolution not matched to VLA [3.4 NGC 3393 continuum: "These could lead to a bias in the spectral indices estimated."]
+- not stated (card): Which spectral channels were line-free for continuum subtraction and continuum imaging; Manual clean mask shapes and iteration counts, multiscale scales; Per-track calibrators and flux scale used; Exact imaging image sizes; Fitting order and method for the spectral index power law; Which tracks/execution blocks combined per target and relative weighting; Details of ALMA Observing Tool inputs for …
+
+### 2018ApJ...854...97D: An ALMA [C II] Survey of 27 Quasars at z &gt; 5.94 (2018; high_z_galaxies, agn_and_quasars; large_program_or_survey)
+- question: What are the [C II] line and FIR dust continuum properties (luminosity, width, size, dynamical mass) of a homogeneous sample of z>5.94 quasar host galaxies?
+- step 6: Dynamical masses and BH mass limits
+  - method: Disk formula M_dyn=G^-1 R (0.75 FWHM/sin i)^2 with i=55 deg; isothermal alternative; minimum M_BH from Eddington with L_bol from 1450 A [5.4: "$$M_{\rm dyn}= G^{-1}\,R_{\rm [CII]}\,(0.75\,{\rm FWHM} /\sin i)^2.$$"]
+  - assumption: inclination 55 deg; Eddington-limited accretion [5.4: "If we assume an inclination of $i=55^\circ$ (cite: willott15)"]
+- result: Host dynamical mass range = 2e10 to 2e11 ± not stated Msun [abstract: "Basic estimates of the dynamical masses of the host galaxies give masses between $2\times10^{10}$ and $2\times10^{11}$ M$_\odot$"]
+- result: Minimum BH mass range = (0.3-3)e9 ± not stated Msun [5.5: "We derive lower limits on the black hole masses of $M_{\rm BH}^{\rm min}$=$(0.3-3)\times 10^9$ M$_\odot$."]
+- result: BH-to-host mass ratio for high S/N sources = >0.03 ± not stated dimensionless [5.5: "have a mass ratio of $>$0.03, i.e., $>$15 times higher than the value observed in the local universe"]
+- limitation (authors): Low angular resolution means sizes are tentative and dynamical masses may be overestimated [4.2: "suggesting that our [C ii] size estimates are only tentative"]
+- not stated (card): Line-free channel ranges used for continuum maps; Exact MCMC code, chain length, widths of Gaussian priors on flux; Clean iteration limits and image size/cell size; Flux calibrator and flux scale uncertainty; Values of y (70/160 um ratio) assumed in the [CII]-SFR correction; Exact box mask definitions and region for 2D fit; Continuum flux density measurement method at 158 um and the continuum siz…
+
+### 2019ApJ...879..117K: High Star Formation Rates of Low Eddington Ratio Quasars at z ≳ 6 (2019; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Do z~6 quasars with low Eddington ratios have high host-galaxy star formation rates, as expected if SMBH growth precedes prolonged star formation?
+- step 5: compare with literature quasars and simulation
+  - method: Compute LFIR, Lbol, MBH, lambda_Edd, SFR for literature z>~6 quasars from single ~250 GHz flux; compare to Smidt18 track [4.1 FIR Excess of IMS J2204+0112: "the $L_{\rm FIR}$ values were derived in the same manner as IMS J2204+0112 using the FIR continuum flux densities at $\sim250$ GHz in the literature"]
+  - parameter: 3 sigma upper limits for FIR-undetected; LEQ defined as lambda_Edd<0.2 [4.1 FIR Excess of IMS J2204+0112: "For FIR-undetected quasars, we used 3$\sigma$ detection limits on FIR flux densities"]
+- result: LFIR/Lbol = 0.8 ± not stated dimensionless [4.1 FIR Excess of IMS J2204+0112: "IMS J2204+0112 has the highest $L_{\rm FIR}/L_{\rm bol}$ value of 0.8"]
+- limitation (authors): Small LEQ sample; quasars not a complete sample [5 Summary: "Since the number of low-$\lambda_{\rm Edd}$ quasars used in the discussion is small, enlarging the sample is necessary to see the validity of our suggestion."]
+- limitation (authors): Alternative explanations (episodic super-Eddington accretion) possible [4.2 SMBH Activity and Star Formation: "leaving a possibility that high-redshift quasar evolution is much more diverse than the simple picture we discussed earlier."]
+- not stated (card): CASA version used by the ALMA pipeline and pipeline version; Whether the pipeline continuum images used any specific weighting/robust or cleaning; IMFIT region and initial parameters; Flux calibrator flux values and absolute flux scale uncertainty; Exact Lbol and MBH derivation inputs for the literature quasars (L3000, FWHM); Fitting of lambda_Edd-dependent trend (red dotted line) method; Binning…
+
+### 2019ApJ...872...69P: AGN Torus Detectability at Submillimeter Wavelengths: What to Expect from ALMA Continuum Data (2019; nearby_galaxies, agn_and_quasars; multi_facility_alma_minor)
+- question: Can the dusty AGN torus be detected at sub-mm wavelengths with ALMA continuum data, given contamination by synchrotron jet emission?
+- step 2: Predict jet flux ratio at sub-mm
+  - method: Extrapolate Bonchi13 fundamental plane to 100, 353, 666 GHz with alpha in [-0.5,-0.7], L_X 1e42-1e46, MBH 1e6-1e9 [2.2 Jet contribution: "spectral indexes for local AGN (cite: Condon2002; Sadler2014) of $\alpha$=\[–0.5,–0.7\], X-ray luminosity of L$\rm{_{[2-10keV]}}$=\[10$^{42}$,10$^{46}$\] erg s$^{-1}$"]
+- result: Median jet log(F/F_X) at 666 GHz = -6.06 ± 10-90%: -7.51 to -4.61 dimensionless [Table (detectability): "666GHz/450$\rm{\mu m}$ | $-$6.06 \[$-$7.51, $-$4.61\]"]
+- limitation (authors): Fundamental plane is a rough jet estimator; large ALMA beams may overestimate fluxes [4 Discussion: "the fundamental plane is a rough estimator of the sub-mm contribution of the jet"]
+- not stated (card): ALMA flux extraction details (Gaussian fit region, per-project calibration versions, archive product versions); Torus parameter grid sampling and distributions used for the Monte Carlo histograms; xspec model-table conversion details (deferred to Esparza-Arredondo et al. in prep.); Exact ALMA exposure-time-calculator inputs (configuration, PWV, bandwidth); Line-free/continuum channel selection fo…
+
+### 2024ApJ...977..238B: SAUNAS. II. Discovery of Cross-shaped X-Ray Emission and a Rotating Circumnuclear Disk in the Supermassive S0 Galaxy NGC 5084 (2024; nearby_galaxies, agn_and_quasars; multi_facility_alma_minor)
+- question: What is the multi-wavelength structure of the S0 galaxy NGC 5084 (X-ray halo, circumnuclear disk, radio lobes) and what formation scenario explains it?
+- step 4: Derive SMBH mass
+  - method: Apply Smith et al. 2021 W50-inclination relation, propagating uncertainties of relation, inclination and spectra with Monte Carlo [3.3 ALMA CO(2-1) emission line observat…: "The uncertainties in their fitted relation are propagated using the Monte Carlo simulations, together with those in the inclination of the disk"]
+  - assumption: Inclination from HST ellipse fit [3.3 ALMA CO(2-1) emission line observat…: "together with those in the inclination of the disk (see Sec. [3.2](#subsec:results_hst))"]
+  - validation: Compared with local SMBH mass distribution [4.1 Main formation scenarios: "The measured SMBH mass is compatible with the SMBH mass distribution in the local Universe"]
+- result: log10 M_BH/Msun = 7.66 ± +0.21/-0.15 dex [3.3 ALMA CO(2-1) emission line observat…: "A total mass of $\log_{10}\left( \frac{M_{\rm BH}}{M_{\odot}} \right) = 7.66^{+0.21}_{-0.15}$ is determined for the SMBH of NGC 5084."]
+- limitation (authors): Original-resolution cube has insufficient per-pixel emission; detection only after rebinning to 12.9 km/s [3.3 ALMA CO(2-1) emission line observat…: "Initial inspection of the calibrated cube did not show sufficient emission per spaxel at the original spectral resolution of 1.3 km s$^{-1}$."]
+- not stated (card): ALMA CASA/pipeline version and whether the archive or ARI-L cube was used for the quoted numbers; Beam, rms, image size and cell size of the cube; Continuum subtraction and line-free channels; Exact region and mask used when summing spectra, and what the 95% confidence masking threshold is relative to; Distance of the HST ellipse reference points (SAODS9 selection) not reproducible exactly; Incli…
+
+## All papers in this technique
+
+- 2013ApJ...768L..38H (2013): Submillimeter H<SUB>2</SUB>O Maser in Circinus Galaxy—a New Probe for the Circumnuclear Region of Active Galactic Nuclei
+- 2013ApJ...770...13W (2013): Redshift 6.4 Host Galaxies of 10<SUP>8</SUP> Solar Mass Black Holes: Low Star Formation Rate and Dynamical Mass
+- 2015ApJ...811..115W (2015): The Innermost Mass Distribution of the Gravitational Lens SDP.81 from ALMA Observations
+- 2015PASJ...67...72T (2015): High-resolution ALMA observations of SDP.81. I. The innermost mass profile of the lensing elliptical galaxy probed by 30 milli-arcsecond im…
+- 2016ApJ...816...37V (2016): Bright [C II] and Dust Emission in Three z &gt; 6.6 Quasar Host Galaxies Observed by ALMA
+- 2016ApJ...823...51B (2016): Toward Precision Black Hole Masses with ALMA: NGC 1332 as a Case Study in Molecular Disk Dynamics
+- 2016ApJ...827...81I (2016): Do Circumnuclear Dense Gas Disks Drive Mass Accretion onto Supermassive Black Holes?
+- 2017ApJ...843L..35W (2017): ALMA Observations of the Gravitational Lens SDP.9
+- 2017ApJ...845..138S (2017): Gas Dynamics of a Luminous z = 6.13 Quasar ULAS J1319+0950 Revealed by ALMA High-resolution Observations
+- 2017ApJ...849...91M (2017): Physical Properties of 15 Quasars at z ≳ 6.5
+- 2018A&A...617A..82B (2018): The WISSH quasars project. V. ALMA reveals the assembly of a giant galaxy around a z = 4.4 hyper-luminous QSO
+- 2018ApJ...854...97D (2018): An ALMA [C II] Survey of 27 Quasars at z &gt; 5.94
+- 2018MNRAS.473.3818D (2018): WISDOM Project - III. Molecular gas measurement of the supermassive black hole mass in the barred lenticular galaxy NGC4429
+- 2018PASJ...70...36I (2018): Subaru High-z Exploration of Low-Luminosity Quasars (SHELLQs). III. Star formation properties of the host galaxies at z ≳ 6 studied with AL…
+- 2019A&A...621A..83S (2019): Outflows in the inner kiloparsec of NGC 1566 as revealed by molecular (ALMA) and ionized gas (Gemini-GMOS/IFU) kinematics
+- 2019ApJ...872...69P (2019): AGN Torus Detectability at Submillimeter Wavelengths: What to Expect from ALMA Continuum Data
+- 2019ApJ...879..117K (2019): High Star Formation Rates of Low Eddington Ratio Quasars at z ≳ 6
+- 2019ApJ...881...10B (2019): A Precision Measurement of the Mass of the Black Hole in NGC 3258 from High-resolution ALMA Observations of Its Circumnuclear Disk
+- 2019ApJ...883..193N (2019): The ALMA Discovery of the Rotating Disk and Fast Outflow of Cold Molecular Gas in NGC 1275
+- 2019ApJ...887...74F (2019): ALMA Reveals a Gas-rich, Maximum Starburst in the Hyperluminous, Dust-obscured Quasar W0533-3401 at z ∼ 2.9
+- 2020A&A...637A..84P (2020): The ALMA view of the high-redshift relation between supermassive black holes and their host galaxies
+- 2020A&AT...31..423B (2020): Interpretation of ALMA velocity map for the obscuring torus in NGC1068
+- 2020ApJ...891...64F (2020): Truth or Delusion? A Possible Gravitational Lensing Interpretation of the Ultraluminous Quasar SDSS J010013.02+280225.8 at z = 6.30
+- 2020ApJ...892...68N (2020): The MBHBM<SUB>⋆</SUB> Project. I. Measurement of the Central Black Hole Mass in Spiral Galaxy NGC 3504 Using Molecular Gas Kinematics
+- 2020ApJ...897L..14Y (2020): Pōniuā'ena: A Luminous z = 7.5 Quasar Hosting a 1.5 Billion Solar Mass Black Hole
+- 2020ApJ...898...75I (2020): ALMA Observations of Multiple CO and C Lines toward the Active Galactic Nucleus of NGC 7469: An X-Ray-dominated Region Caught in the Act
+- 2020MNRAS.496.4061D (2020): Revealing the intermediate-mass black hole at the heart of the dwarf galaxy NGC 404 with sub-parsec resolution ALMA observations
+- 2024ApJ...975..179C (2024): Modeling ALMA Observations of the Warped Molecular Gas Disk in the Red Nugget Relic Galaxy NGC 384
+- 2024ApJ...977..238B (2024): SAUNAS. II. Discovery of Cross-shaped X-Ray Emission and a Rotating Circumnuclear Disk in the Supermassive S0 Galaxy NGC 5084
+- 2024MNRAS.527.9343L (2024): WISDOM project - XVIII. Molecular gas distributions and kinematics of three megamaser galaxies
+- 2024PASJ...76..340K (2024): Sub-parsec-scale jet-driven water maser with possible gravitational acceleration in the radio galaxy NGC 1052
+- 2025A&A...693A.311P (2025): The Galaxy Activity, Torus, and Outflow Survey (GATOS): VI. Black hole mass estimation using machine learning
+- 2025A&A...700A.285W (2025): Gravitational torques from lopsided young stellar component sustain high black hole accretion rates in NGC 4593
+- 2025ApJ...992..211N (2025): Revisiting the Supermassive Black Hole Mass of NGC 7052 Using High Spatial Resolution Molecular Gas Observed with ALMA
+- 2025MNRAS.541.2540Z (2025): WISDOM Project─XXV. Improving the CO-dynamical supermassive black hole mass measurement in the galaxy NGC 1574 using high spatial resolutio…
+
+codex
+# Codex review: smbh-gas-dynamics
+VERDICT: FIX
+## Findings
+- SR-01 | high | attribution | “Papers compare a virial M_BH (Mg II or C IV)” | The pack identifies Eddington-limited BH estimates for two quasars in 2018PASJ...70...36I and minimum BH masses from Eddington luminosity in 2018ApJ...854...97D, not virial measurements. | Distinguish virial estimates, Eddington-based estimates and lower limits for each cited sample.
+- SR-02 | medium | attribution | “Briggs robust 0.5 in most papers”; “6 of 8 cards checked” | The supplied pack does not provide those robust values or that tally. Its 2020ApJ...892...68N card explicitly lists weighting/robust among unstated imaging parameters. | Remove the prevalence claim and unsupported weighting entries; describe weighting selection as general guidance.
+- SR-03 | medium | attribution | “Channel width … 2 to 20 km/s”; beam dimensions and range | The cited excerpts do not supply the listed channel widths or most beam dimensions. The channel range also excludes its own 20.1 km/s example. | Retain only dimensions and widths explicitly recoverable from this pack; mark remaining values unavailable and recompute ranges.
+- SR-04 | medium | attribution | “R_eq / R_beam … 1.6”; “R_min / R_eq = 0.37” | Neither ratio appears in the 2025MNRAS.541.2540Z pack entry. The 0.30″ × 0.16″ beam attributed to 2024ApJ...975..179C is likewise absent; only its 0.12″ sphere-of-influence radius is supplied. | Remove unsupported ratios and beam dimensions while retaining supported qualitative resolution statements.
+- SR-05 | medium | attribution | “power law … CASA 5.1.1”; “continuum self-calibration applied to the line SPW” | The pack does not establish that CASA version or the self-calibration transfer procedure. The 2020ApJ...892...68N card flags the exact imaging CASA version and continuum-fitting details as unstated; 2025ApJ...992..211N does not specify transfer to the line SPW. | Remove these paper-specific assertions or label the procedures as general recommendations requiring dataset-specific verification.
+- SR-06 | medium | attribution | “central-image non-detection … gives a lower limit … 2017ApJ...843L..35W” | That pack entry describes lens fitting and priors but supplies no BH lower-limit result. | Cite only the two pack entries that actually report limits; describe the 2017 paper as lens modelling without asserting an established limit.
+- SR-07 | high | science | “not resolving the sphere of influence … turns M_BH into a quantity set by … M/L rather than by the data” | This makes prior domination automatic. The 2020MNRAS.496.4061D pack reports an unresolved Keplerian rise and mass-model dependence, but also states that no-BH and overly massive-BH models fail. | State that insufficient resolution increases degeneracy and model dependence; assess information gain and prior sensitivity before classifying a result as prior-dominated or an upper limit.
+- SR-08 | high | science | “error bars … too small unless the noise is rescaled” | Scalar inflation is presented as the necessary remedy for correlated pixels. The pack instead includes analytic covariance treatment in 2018MNRAS.473.3818D and explicitly notes neglected correlations in 2020MNRAS.496.4061D. Inflation does not reconstruct covariance. | Present covariance modelling and empirical inflation as distinct approaches; explain their limitations and avoid applying both corrections automatically.
+- SR-09 | medium | science | “68% and 99% (or 3 sigma)” | A 99% interval is not a Gaussian 3σ interval. The pack distinguishes 68/99% in 2018MNRAS.473.3818D and 2020MNRAS.496.4061D from 68/99.7% in 2024ApJ...975..179C. | Preserve each paper’s stated probability level; specify credible versus confidence intervals and avoid equating 99% with 3σ.
+- SR-10 | medium | omission | “M_BH > 3e8 Msun”; “log M_BH >~ 8.5 preferred” | The lens limits omit decisive model conditions: 2015PASJ...67...72T fixes the core radius to 150 mas; 2015ApJ...811..115W associates the preferred bound with a 0.15″ core. The former explicitly flags BH–core-radius degeneracy. | Attach core-model assumptions to each limit and warn that central-image non-detection does not yield a model-independent BH bound.
+- SR-11 | medium | omission | “Many galaxies, need a fast estimate … CNNs” | The pack’s 2025A&A...693A.311P limitation is “One network per galaxy”; the skill retains simulation limitations but omits this restriction. | State that each galaxy requires its own training setup; do not present the demonstrated method as a transferable estimator for arbitrary galaxies.
+- SR-12 | medium | omission | “estimate time for S/N = 5 … with the ALMA Observing Tool” | The cited planning calculation assumes homogeneous gas within the central beam and a target beam approximately equal to θ_SoI (2024MNRAS.527.9343L, step 7). Neither condition accompanies the recommendation. | Include both assumptions and require a central surface-brightness estimate at the proposed resolution.
+- SR-13 | medium | omission | “Gas mass … include or test” | The skill omits the explicit warning that gas-mass systematic uncertainty is likely underestimated in 2024ApJ...975..179C. A single included/tested gas mass does not establish a sufficient uncertainty budget. | Require sensitivity tests over plausible gas-mass distributions and conversion uncertainties; retain the paper’s warning.
+- SR-14 | medium | usability | “Noise rescaling … (2N)^(1/4)” | The table leaves N undefined. The pack uses N_dof in 2019ApJ...883..193N and detected-emission pixel counts in 2025MNRAS.541.2540Z, despite fitting the full unmasked cube. | Define the counting convention for each example and require an explicit selection mask/count; do not substitute total cube size automatically.
+- SR-15 | medium | usability | “Fit region … 0.25″ radius to 1.55″ box” | This mixes radii and full widths and excludes the 1.5″ semi-major-axis ellipse in 2024ApJ...975..179C. The pack also includes a preliminary 4″ × 4″ fit in 2020ApJ...892...68N. | Separate final and preliminary regions; specify shape and whether each dimension is a radius, semi-axis or full width.
+- SR-16 | medium | usability | “theta_SoI = G M_BH / (sigma_*^2 D)”; “M_dyn = 1.16e5 v_circ^2 D” | The angular expression returns radians with consistent length units, whereas the threshold is in arcseconds. The mass expression requires velocity in km/s and physical diameter in kpc; D elsewhere denotes galaxy distance. | Give explicit units and the radians-to-arcseconds conversion; rename the dynamical-mass diameter variable.
+
+## Notes
+The nine full-cube-fit papers and named software aggregate counts are supported.
+Much of the modelling workflow and several systematic checks are accurately reproduced.
+Unsupported observing settings should not become literature-derived defaults.
+Absence from this pack means unverified here, not necessarily false in the full paper.
+tokens used
+69,060
+# Codex review: smbh-gas-dynamics
+VERDICT: FIX
+## Findings
+- SR-01 | high | attribution | “Papers compare a virial M_BH (Mg II or C IV)” | The pack identifies Eddington-limited BH estimates for two quasars in 2018PASJ...70...36I and minimum BH masses from Eddington luminosity in 2018ApJ...854...97D, not virial measurements. | Distinguish virial estimates, Eddington-based estimates and lower limits for each cited sample.
+- SR-02 | medium | attribution | “Briggs robust 0.5 in most papers”; “6 of 8 cards checked” | The supplied pack does not provide those robust values or that tally. Its 2020ApJ...892...68N card explicitly lists weighting/robust among unstated imaging parameters. | Remove the prevalence claim and unsupported weighting entries; describe weighting selection as general guidance.
+- SR-03 | medium | attribution | “Channel width … 2 to 20 km/s”; beam dimensions and range | The cited excerpts do not supply the listed channel widths or most beam dimensions. The channel range also excludes its own 20.1 km/s example. | Retain only dimensions and widths explicitly recoverable from this pack; mark remaining values unavailable and recompute ranges.
+- SR-04 | medium | attribution | “R_eq / R_beam … 1.6”; “R_min / R_eq = 0.37” | Neither ratio appears in the 2025MNRAS.541.2540Z pack entry. The 0.30″ × 0.16″ beam attributed to 2024ApJ...975..179C is likewise absent; only its 0.12″ sphere-of-influence radius is supplied. | Remove unsupported ratios and beam dimensions while retaining supported qualitative resolution statements.
+- SR-05 | medium | attribution | “power law … CASA 5.1.1”; “continuum self-calibration applied to the line SPW” | The pack does not establish that CASA version or the self-calibration transfer procedure. The 2020ApJ...892...68N card flags the exact imaging CASA version and continuum-fitting details as unstated; 2025ApJ...992..211N does not specify transfer to the line SPW. | Remove these paper-specific assertions or label the procedures as general recommendations requiring dataset-specific verification.
+- SR-06 | medium | attribution | “central-image non-detection … gives a lower limit … 2017ApJ...843L..35W” | That pack entry describes lens fitting and priors but supplies no BH lower-limit result. | Cite only the two pack entries that actually report limits; describe the 2017 paper as lens modelling without asserting an established limit.
+- SR-07 | high | science | “not resolving the sphere of influence … turns M_BH into a quantity set by … M/L rather than by the data” | This makes prior domination automatic. The 2020MNRAS.496.4061D pack reports an unresolved Keplerian rise and mass-model dependence, but also states that no-BH and overly massive-BH models fail. | State that insufficient resolution increases degeneracy and model dependence; assess information gain and prior sensitivity before classifying a result as prior-dominated or an upper limit.
+- SR-08 | high | science | “error bars … too small unless the noise is rescaled” | Scalar inflation is presented as the necessary remedy for correlated pixels. The pack instead includes analytic covariance treatment in 2018MNRAS.473.3818D and explicitly notes neglected correlations in 2020MNRAS.496.4061D. Inflation does not reconstruct covariance. | Present covariance modelling and empirical inflation as distinct approaches; explain their limitations and avoid applying both corrections automatically.
+- SR-09 | medium | science | “68% and 99% (or 3 sigma)” | A 99% interval is not a Gaussian 3σ interval. The pack distinguishes 68/99% in 2018MNRAS.473.3818D and 2020MNRAS.496.4061D from 68/99.7% in 2024ApJ...975..179C. | Preserve each paper’s stated probability level; specify credible versus confidence intervals and avoid equating 99% with 3σ.
+- SR-10 | medium | omission | “M_BH > 3e8 Msun”; “log M_BH >~ 8.5 preferred” | The lens limits omit decisive model conditions: 2015PASJ...67...72T fixes the core radius to 150 mas; 2015ApJ...811..115W associates the preferred bound with a 0.15″ core. The former explicitly flags BH–core-radius degeneracy. | Attach core-model assumptions to each limit and warn that central-image non-detection does not yield a model-independent BH bound.
+- SR-11 | medium | omission | “Many galaxies, need a fast estimate … CNNs” | The pack’s 2025A&A...693A.311P limitation is “One network per galaxy”; the skill retains simulation limitations but omits this restriction. | State that each galaxy requires its own training setup; do not present the demonstrated method as a transferable estimator for arbitrary galaxies.
+- SR-12 | medium | omission | “estimate time for S/N = 5 … with the ALMA Observing Tool” | The cited planning calculation assumes homogeneous gas within the central beam and a target beam approximately equal to θ_SoI (2024MNRAS.527.9343L, step 7). Neither condition accompanies the recommendation. | Include both assumptions and require a central surface-brightness estimate at the proposed resolution.
+- SR-13 | medium | omission | “Gas mass … include or test” | The skill omits the explicit warning that gas-mass systematic uncertainty is likely underestimated in 2024ApJ...975..179C. A single included/tested gas mass does not establish a sufficient uncertainty budget. | Require sensitivity tests over plausible gas-mass distributions and conversion uncertainties; retain the paper’s warning.
+- SR-14 | medium | usability | “Noise rescaling … (2N)^(1/4)” | The table leaves N undefined. The pack uses N_dof in 2019ApJ...883..193N and detected-emission pixel counts in 2025MNRAS.541.2540Z, despite fitting the full unmasked cube. | Define the counting convention for each example and require an explicit selection mask/count; do not substitute total cube size automatically.
+- SR-15 | medium | usability | “Fit region … 0.25″ radius to 1.55″ box” | This mixes radii and full widths and excludes the 1.5″ semi-major-axis ellipse in 2024ApJ...975..179C. The pack also includes a preliminary 4″ × 4″ fit in 2020ApJ...892...68N. | Separate final and preliminary regions; specify shape and whether each dimension is a radius, semi-axis or full width.
+- SR-16 | medium | usability | “theta_SoI = G M_BH / (sigma_*^2 D)”; “M_dyn = 1.16e5 v_circ^2 D” | The angular expression returns radians with consistent length units, whereas the threshold is in arcseconds. The mass expression requires velocity in km/s and physical diameter in kpc; D elsewhere denotes galaxy distance. | Give explicit units and the radians-to-arcseconds conversion; rename the dynamical-mass diameter variable.
+
+## Notes
+The nine full-cube-fit papers and named software aggregate counts are supported.
+Much of the modelling workflow and several systematic checks are accurately reproduced.
+Unsupported observing settings should not become literature-derived defaults.
+Absence from this pack means unverified here, not necessarily false in the full paper.

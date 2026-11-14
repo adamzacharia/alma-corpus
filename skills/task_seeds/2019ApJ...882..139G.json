@@ -1,0 +1,246 @@
+{
+ "bibcode": "2019ApJ...882..139G",
+ "title": "The Atacama Large Millimeter/submillimeter Array Spectroscopic Survey in the Hubble Ultra Deep Field: CO Emission Lines and 3 mm Continuum Sources",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab3105",
+ "arxiv_id": "1903.09161",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "How to reliably search for emission lines and continuum sources in the ASPECS-LP 3 mm cube, and what are the resulting CO line and 3 mm continuum samples and 3 mm number counts",
+ "alma_project_codes": [
+  "2016.1.00324.L"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm), 84.176-114.928 GHz",
+  "arrays": "not stated",
+  "angular_resolution": "1.5''x1.31'' (high freq) to 2.05''x1.68'' (low freq)",
+  "sensitivity": "continuum rms 3.8 uJy/beam in deepest region"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ASPECS-Pilot band 3 data and source list for comparison",
+    "evidence": [
+     {
+      "loc": "2.1 Survey design",
+      "quote": "The details about the ASPECS-Pilot observations were presented in (cite: Walter2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Walter2016)"
+  },
+  {
+   "what": {
+    "value": "1.1 mm number counts compiled for extrapolation to 3 mm",
+    "evidence": [
+     {
+      "loc": "5.3 3 mm number counts",
+      "quote": "We make use of the results obtained by (cite: Franco2018), which takes the number counts of several published studies"
+     }
+    ]
+   },
+   "citation": "(cite: Franco2018)"
+  },
+  {
+   "what": {
+    "value": "3 mm number counts from ALMA archive for comparison",
+    "evidence": [
+     {
+      "loc": "5.3 3 mm number counts",
+      "quote": "We also compare our number counts with the observed 3 mm number counts presented by (cite: Zavala2018)."
+     }
+    ]
+   },
+   "citation": "(cite: Zavala2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image 3 mm cube and continuum",
+   "method": "Pipeline plus own scripts; tclean natural weighting, per-channel beams, 7.813 MHz channels; continuum by collapsing all channels",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Compare line search algorithms",
+   "method": "Run LineSeeker, FindClump, MF3D on simulated cubes with injected lines and on real cube; compare S/N",
+   "software": [
+    "LineSeeker",
+    "FindClump",
+    "MF3D",
+    "simobserve",
+    "SExtractor",
+    "scikit-learn"
+   ],
+   "key_parameters": [
+    "Gaussian kernel sigma_GK 0-19 (LineSeeker); top-hat N=1-9 (FindClump); spatial kernels FWHM 0-4'' (MF3D)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate fidelity",
+   "method": "Fidelity = 1 - N_neg/N_pos using negative lines per kernel; erf function fit to negative S/N histogram; select Fidelity>=0.9",
+   "software": [
+    "LineSeeker"
+   ],
+   "key_parameters": [
+    "Fidelity >= 0.9"
+   ],
+   "assumptions": [
+    "Negative lines are produced by noise only; noise symmetric around 0"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute completeness",
+   "method": "Inject 5000 Gaussian point-source lines (50 per iteration) into real cube; recovered if Fidelity>=0.9; for continuum inject 10,000 point sources, recovered at S/N>=4.6",
+   "software": [
+    "LineSeeker"
+   ],
+   "key_parameters": [
+    "peaks 0-2 mJy/beam, FWHM 0-~1000 km/s, 84.2-114.2 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Characterise detected lines and identify transitions",
+   "method": "Gaussian profile fit with MCMC to PB-corrected spectra; resolved if voxel S/N>=2 flux >=10% above central; identify via NIR counterpart redshifts",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive 3 mm number counts and compare with extrapolations",
+   "method": "N(S_i)=(1/A) sum P_i/C_i with bins of 0.25 dex in logS, fidelity and PB-corrected completeness; compare with synchrotron extrapolations and 1.1 mm counts scaled to 3 mm",
+   "software": [],
+   "key_parameters": [
+    "Area A = 1.46e-3 deg2"
+   ],
+   "assumptions": [
+    "Modified blackbody, beta=1.5-2.0, T=25-40 K, z=2.5, CMB effects"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of emission lines with Fidelity>=0.9",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 Detected emission lines",
+     "quote": "We present all the 16 emission–line candidates for which the condition of ${\\rm Fidelity}\\geq0.9$ is fulfilled."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of continuum sources with Fidelity>=0.9",
+   "value": "6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "We identified six continuum source candidates with a ${\\rm Fidelity}\\geq0.9$."
+    }
+   ]
+  },
+  {
+   "quantity": "S/N ratio FindClump/LineSeeker",
+   "value": "1.00",
+   "uncertainty": "+0.06/-0.04",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Lines detected from Simulations",
+     "quote": "the ratio between the S/N obtained with FindClump and LineSeeker is of $1.00^{+0.06}_{-0.04}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median FWHM of secure lines",
+   "value": "331",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.1 The distribution of emission line widths",
+     "quote": "the secure positive lines have a flat FWHM distribution and a median value of $\\approx331{{\\rm \\thinspace km\\thinspace s}^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cumulative 3 mm counts, 17.78-31.62 uJy bin",
+   "value": "5940",
+   "uncertainty": "+2579/-1995",
+   "units": "deg^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| 17.78–31.62 | -1.625 | 3 | 5940 | 1995 | 2579 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean beta of continuum sources (T=35 K)",
+   "value": "1.6",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 3 mm number counts",
+     "quote": "average value $\\beta=1.6\\pm0.2$ obtained for our continuum sources when assuming a dust temperature of 35 K"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm flux of ASPECS-LP-3mm.C01",
+   "value": "32.5",
+   "uncertainty": "3.8",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 7",
+     "quote": "$32.5 \\pm 3.8$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number and settings of LineSeeker S/N thresholds and DBSCAN parameters",
+  "tclean cell size, image size and mask details",
+  "Flux calibrators and flux scale uncertainty",
+  "MCMC sampler, priors and likelihood for Gaussian line fits",
+  "Which channels removed for continuum image",
+  "Details of mosaic PB correction (Decarli2019)",
+  "Dust SED extrapolation code and details for number counts"
+ ],
+ "missing_for_reproduction": [
+  "Detailed imaging parameters",
+  "Decarli2019 mosaic and PB details",
+  "MCMC fit setup",
+  "FindClump and MF3D code availability"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and public LineSeeker code with detailed method, but imaging and calibration details are sparse and rely on companion papers.",
+ "rediscovery_reason": "Data are public, the search recipe is described and the results (line and continuum source lists, counts) are numeric.",
+ "source_card": "cards/2019ApJ...882..139G/sonnet/card.md"
+}

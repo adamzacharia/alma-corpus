@@ -1,0 +1,559 @@
+{
+ "bibcode": "2022MNRAS.516..861T",
+ "title": "Molecular flows in contemporary active galaxies and the efficacy of radio-mechanical feedback",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac2168",
+ "arxiv_id": "2207.14326",
+ "fields": [
+  "agn_and_quasars",
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Understand the relative efficacy of radio, quasar, and starburst feedback over a range of active galaxy types by comparing molecular gas flows in cluster central galaxies (BCGs) to those in local active galaxies.",
+ "alma_project_codes": [
+  "2012.1.00837.S",
+  "2011.0.00374.S",
+  "2015.1.00623.S",
+  "2012.1.00988.S",
+  "2013.1.01302.S",
+  "2016.1.01269.S",
+  "2011.0.00735.S",
+  "2015.1.01198.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Reference sample of 45 local galaxies with gaseous outflows and their outflow, AGN, and star formation properties",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "The (cite: fluetsch18) sample of 45 galaxies with gaseous outflows lies within redshifts of $z<0.2$, providing a good reference sample to compare to central galaxies."
+     },
+     {
+      "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+      "quote": "We adopted star formation rates in BCGs listed in Table [\\[tab:bcg_properties\\]](#tab:bcg_properties), and the remaining star formation rates were taken from (cite: fluetsch18)."
+     }
+    ]
+   },
+   "citation": "(cite: fluetsch18)"
+  },
+  {
+   "what": {
+    "value": "IRAM observations of NGC 1275",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "We have included NGC 1275, the central galaxy in the Perseus cluster, observed with the IRAM telescope (cite: salome11)."
+     }
+    ]
+   },
+   "citation": "(cite: salome11)"
+  },
+  {
+   "what": {
+    "value": "Single-dish molecular gas mass measurements for comparison",
+    "evidence": [
+     {
+      "loc": "Flow masses",
+      "quote": "Therefore, we compared our molecular gas mass measurements with molecular gas masses obtained from single-dish observations (cite: edge01) using the same CO-to-H$_2$ conversion factor as ours to quantify the missing flux in our observations."
+     }
+    ]
+   },
+   "citation": "(cite: edge01)"
+  },
+  {
+   "what": {
+    "value": "Photometric nuclear X-ray luminosities (2-10 keV) for BCGs",
+    "evidence": [
+     {
+      "loc": "Flow momentum flux vs $L_{\\rm AGN}/c$",
+      "quote": "(cite: russell13) estimated the nuclear X-ray luminosities ($L_{\\rm nuc}$) in the $2-10$ keV energy range using photometric and spectroscopic methods. For those systems, we adopted their photometric value for $L_{\\rm nuc}$."
+     }
+    ]
+   },
+   "citation": "(cite: russell13)"
+  },
+  {
+   "what": {
+    "value": "X-ray cavity mechanical power measurements for BCGs",
+    "evidence": [
+     {
+      "loc": "Gas Flows and Mechanical Power",
+      "quote": "Cavity power measurements were taken from the literature (cite: birzan12; hl15; mcdonald15; vantyghem18; calzadilla19)."
+     }
+    ]
+   },
+   "citation": "(cite: birzan12; hl15; mcdonald15; vantyghem18; calzadilla19)"
+  },
+  {
+   "what": {
+    "value": "BCG star formation rates",
+    "evidence": [
+     {
+      "loc": "Star Formation",
+      "quote": "We adopt BCG star formation rates (SFR) from (cite: mcdonald18) who used several methods to estimate the SFRs."
+     }
+    ]
+   },
+   "citation": "(cite: mcdonald18)"
+  },
+  {
+   "what": {
+    "value": "Star formation rate for RXCJ0821",
+    "evidence": [
+     {
+      "loc": "Star Formation",
+      "quote": "The SFR measurement for RXCJ0821 is taken from (cite: odea08)."
+     }
+    ]
+   },
+   "citation": "(cite: odea08)"
+  },
+  {
+   "what": {
+    "value": "Blue band diameters for Fluetsch galaxies",
+    "evidence": [
+     {
+      "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+      "quote": "We used blue band diameters from the RC3 - Third Reference Catalog of Bright Galaxies (cite: corwin94) and estimated areas assuming elliptical shape."
+     }
+    ]
+   },
+   "citation": "RC3 (cite: corwin94)"
+  },
+  {
+   "what": {
+    "value": "Effective radius of 17 kpc for Phoenix cluster BCG",
+    "evidence": [
+     {
+      "loc": "Fate of the Outflowing Gas",
+      "quote": "To obtain an approximation to the escape velocity for the Phoenix cluster BCG, we adopt the value 17 kpc from (cite: mcdonald12a)."
+     }
+    ]
+   },
+   "citation": "(cite: mcdonald12a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract pixel-by-pixel spectra and measure flow velocities",
+   "method": "Extract spectra in beam-sized regions centered on each pixel in the entire emission region, fit with a 1-Gaussian model, and compute flux-weighted average speed along spatially extended filaments or clumps within flow regions (also compare with 1- or 2-Gaussian fits to total emission region following Fluetsch et al.).",
+   "software": [
+    "LMFIT",
+    "python"
+   ],
+   "key_parameters": [
+    "> 3 sigma detection threshold evaluated with 1000 Monte Carlo iterations"
+   ],
+   "assumptions": [
+    "0.3 dex uncertainty in velocity"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure projected flow sizes",
+   "method": "Image the data cube over the velocity ranges observed in the filament and measure projected length from the BCG nucleus to the most distant part of the filament, averaging when multiple filaments are present.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Off-nuclear filaments represent molecular gas flows"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate total and flow molecular gas masses",
+   "method": "Extract spectra from flow regions and from a region enclosing all detected CO emission, convert CO(2-1) or CO(3-2) integrated flux densities to CO(1-0) using empirical line ratios, and convert integrated CO(1-0) flux density to molecular gas mass.",
+   "software": [],
+   "key_parameters": [
+    "I_CO(2-1)/I_CO(1-0) = 3.2; I_CO(3-2)/I_CO(1-0) = 7.2"
+   ],
+   "assumptions": [
+    "H0 = 70 km s^-1 Mpc^-1, Omega_M = 0.3, Omega_lambda = 0.7",
+    "X_CO,Gal = 2 x 10^20 cm^-2 (K km s^-1)^-1 for all BCGs except Phoenix, where X_CO = 0.4 x 10^20 cm^-2 (K km s^-1)^-1 is adopted"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute mass flow rates, momenta, momentum fluxes, kinetic energy fluxes, and lifting factors",
+   "method": "Compute mass flow rate as M_flow / (R / v), flow momentum as M_flow * v, momentum flux as M_dot * v, kinetic energy flux as 0.5 * M_dot * v^2, and lifting factor as M_flow * R_flow / P_drive; compare with AGN radiative luminosity (L_AGN = 10 * L_nuc) and X-ray cavity mechanical power.",
+   "software": [],
+   "key_parameters": [
+    "X-ray bolometric correction factor kappa = 10"
+   ],
+   "assumptions": [
+    "Mechanical power from X-ray cavities E = 4PV divided by buoyancy time represents driving power for BCGs; P_SFR = 2.5 x 10^41 SFR for starbursts"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze star formation laws, mass loading factors, and Kennicutt-Schmidt relation",
+   "method": "Calculate mass loading factor eta = M_dot / SFR, fit linear regressions in log(SFR) vs log(M_tot / 10^9 M_sun) for BCGs and Fluetsch galaxies, and compute surface densities Sigma_SFR and Sigma_H2 to fit the Kennicutt-Schmidt relation.",
+   "software": [],
+   "key_parameters": [
+    "Star formation region areas: HST UV-band area for 8 BCGs, inner 3 kpc radius for remaining BCGs, 1 kpc radius for Fluetsch galaxies with SFR > 20 M_sun/yr, RC3 blue-band elliptical areas for remaining Fluetsch galaxies"
+   ],
+   "assumptions": [
+    "Cold gas surface density is approximated by molecular gas surface density Sigma_H2 alone"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate escape velocities and escaped gas fractions",
+   "method": "Model galaxy gravitational potential with a Hernquist profile to calculate escape velocity v_esc, and integrate CO spectrum above positive and below negative v_esc relative to total flow integrated intensity.",
+   "software": [],
+   "key_parameters": [
+    "Scale radius relation R_e ~ 1.8153a; R_e = 17 kpc for Phoenix"
+   ],
+   "assumptions": [
+    "Hernquist gravitational potential using stellar mass M; empirical R_e-M_star relation adjusted by 65 percent"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean BCG flow speed",
+   "value": "173",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Flow velocities",
+     "quote": "BCG flow speeds lie in the range 50–300 km s$^{-1}$ with a mean of 173 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average molecular flow size in BCGs",
+   "value": "12",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Flow sizes",
+     "quote": "The average molecular flow size is $\\sim$12 kpc in BCGs."
+    }
+   ]
+  },
+  {
+   "quantity": "BCG molecular flow mass range (excluding NGC 5044 and NGC 4696)",
+   "value": "0.3-12 x 10^9",
+   "uncertainty": "0.31 dex",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Flow masses",
+     "quote": "BCG molecular flow masses lie between 0.3–12 $\\times 10^{9}$ M$_{\\odot}$ apart from the much smaller masses in NGC 5044 and NGC4696 of 10$^{7.7}$ M$_{\\odot}$ and 10$^{7.5}$ M$_{\\odot}$, respectively."
+    },
+    {
+     "loc": "Measurement uncertainties",
+     "quote": "Thus the average error on the mass of the outflow may be as large as 0.31 dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Average total molecular gas mass in BCGs",
+   "value": "10^10",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Flow masses",
+     "quote": "By comparison, the average total molecular gas mass in BCGs is $\\sim$10$^{10}$ M$_\\odot$, while it is 5$\\times 10^9$ M$_\\odot$ in AGN and 3$\\times 10^9$ M$_\\odot$ in composite and starburst galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "Average flow momentum in BCGs",
+   "value": "2.3 x 10^50",
+   "uncertainty": "not stated",
+   "units": "g cm s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Momentum",
+     "quote": "The flow momenta in BCGs lies between 10$^{49}$–10$^{50}$ g cm s$^{-1}$ with an average of 2.3$\\times$10$^{50}$ g cm s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of P_drive vs M_dot linear regression for BCGs",
+   "value": "0.42",
+   "uncertainty": "0.25",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Gas Flows and Mechanical Power",
+     "quote": "Using the mechanical powers as $P_{\\rm drive}$ for BCGs in the relationship between $P_{\\rm drive}$ and $\\dot{M}$ using linear regression gives a slope and intercept of 0.42$\\pm$0.25 and 0.97$\\pm$0.40 $M_\\odot$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log(SFR) vs log(M_tot/10^9 M_odot) for BCGs",
+   "value": "1.13",
+   "uncertainty": "0.26",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+     "quote": "The values of parameters ($a$, $b$, $\\Delta a$, $\\Delta b$) for BCGs and Fluetsch galaxies are (1.13, 0.23, 0.26, 0.24) and (1.66, 0.67, 0.43, 0.23), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Intercept of log(SFR) vs log(M_tot/10^9 M_odot) for BCGs",
+   "value": "0.23",
+   "uncertainty": "0.24",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+     "quote": "The values of parameters ($a$, $b$, $\\Delta a$, $\\Delta b$) for BCGs and Fluetsch galaxies are (1.13, 0.23, 0.26, 0.24) and (1.66, 0.67, 0.43, 0.23), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-Schmidt power-law slope for all galaxies (Sigma_SFR vs Sigma_H2)",
+   "value": "1.34",
+   "uncertainty": "0.17",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+     "quote": "$\\Sigma_{\\rm SFR} = 10^{-3.09\\pm0.49} \\Sigma_{\\rm H_2}^{1.34\\pm0.17},$"
+    }
+   ]
+  },
+  {
+   "quantity": "Kennicutt-Schmidt normalization log10 coefficient for all galaxies",
+   "value": "-3.09",
+   "uncertainty": "0.49",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Does Radio-mode Feedback Suppress Star Formation?",
+     "quote": "$\\Sigma_{\\rm SFR} = 10^{-3.09\\pm0.49} \\Sigma_{\\rm H_2}^{1.34\\pm0.17},$"
+    }
+   ]
+  },
+  {
+   "quantity": "2A0335+096 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "8.31, 8.59, 2, 153, 17",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2A0335+096 | 0.0346 | 8.31 | 8.59 | 2 | 153 | 17 | 43.949 | $<40.80$ | 0.47 | 11.73 | [a] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abell 1664 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.56, 9.87, 6.3, 579, 341",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Abell 1664 | 0.128 | 9.56 | 9.87 | 6.3 | 579 | 341 | 44.04 | $<41.50$ | 13.18 | 11.1 | [b] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abell 1795 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.36, 9.52, 8.3, 191, 54",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Abell 1795 | 0.063 | 9.36 | 9.52 | 8.3 | 191 | 54 | 43.133 | $<41.24$ | 3.47 | 11.84 | [c] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abell 1835 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "10, 10.6, 12, 61, 52",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Abell 1835 | 0.252 | 10 | 10.6 | 12 | 61 | 52 | 45 | $<42.78$ | 117.49 | 10.57 | [d] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abell 2597 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "10, 10.3, 15, 61, 42",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Abell 2597 | 0.0821 | 10 | 10.3 | 15 | 61 | 42 | 44.278 | $<41.73$ | 3.98 | 11.51 | [e] |"
+    }
+   ]
+  },
+  {
+   "quantity": "PKS0745-191 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.7, 9.89, 4.1, 50, 63",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| PKS0745-191 | 0.1028 | 9.7 | 9.89 | 4.1 | 50 | 63 | 45.7 | 42.11 | 13.49 | 11.71 | [f] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Phoenix flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "10.5, 11.1, 21.4, 332, 501",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Phoenix | 0.596 | 10.5 | 11.1 | 21.4 | 332 | 501 | 45.85 | 44.37 | 616.6 | 12.48 | [g] |"
+    }
+   ]
+  },
+  {
+   "quantity": "RXCJ1504 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.7, 10.4, 18, 108, 30",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| RXCJ1504 | 0.216902 | 9.7 | 10.4 | 18 | 108 | 30 | 44.96 | 42.66 | 85.11 | 11.7 | [h] |"
+    }
+   ]
+  },
+  {
+   "quantity": "RXCJ0821 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "10.21, 10.32, 4, 28, 72",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| RXCJ0821 | 0.109 | 10.21 | 10.32 | 4 | 28 | 72 | 44.4 | $<41.14$ | 37 | 11.06 | [i] |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC5044 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "7.4, 7.56, 2.8, 167, 2",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NGC5044 | 0.00928 | 7.4 | 7.56 | 2.8 | 167 | 2 | 42.78 | 39.70 | 0.22 | 11.38 | [j] |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC4696 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "7.52, 7.95, 4, 222, 2",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NGC4696 | 0.00987 | 7.52 | 7.95 | 4 | 222 | 2 | 43.11 | $<39.67$ | 0.16 | 11.79 | [k] |"
+    }
+   ]
+  },
+  {
+   "quantity": "RXCJ1539 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.51, 10.11, 23, 203, 29",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| RXCJ1539 | 0.075766 | 9.51 | 10.11 | 23 | 203 | 29 | 42.76 |  | 1.86 | 11.36 | [k] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Abell S1101 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.03, 9.06, 8.3, 160, 21",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Abell S1101 | 0.05639 | 9.03 | 9.06 | 8.3 | 160 | 21 | 44.89 | $<40.99$ | 1 |  | [k] |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC1275 flow properties (log M_flow, log M_tot, R_flow, v_flow, M_dot_flow)",
+   "value": "9.02, 9.68, 33.3, 117, 17",
+   "uncertainty": "not stated",
+   "units": "log(M_odot), log(M_odot), kpc, km s^-1, M_odot yr^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| NGC1275 | 0.01756 | 9.02 | 9.68 | 33.3 | 117 | 17 | 43.9 | 42.71 | 70.79 | 11.38 | [l,m] |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which specific CO transition (1-0, 2-1, or 3-2) and ALMA band was used for each individual BCG in the sample",
+  "Which datasets underwent self-calibration and the self-calibration parameters (solution intervals, rounds)",
+  "Line-free frequency channels used for UVCONTSUB continuum subtraction",
+  "Image cube parameters in CLEAN (pixel/cell size, channel width, image dimensions, cleaning threshold/masking, synthesized beam sizes, and exact rms noise per target)",
+  "Exact spatial coordinates/polygons defining the 'flow' (filament/clump) vs 'non-flow' regions for each BCG (referenced as being in Appendix 1, which is not present in the main text)",
+  "References corresponding to [a]-[m] in Table 1"
+ ],
+ "missing_for_reproduction": [
+  "Exact spatial regions/masks (polygons or coordinates) used to separate 'flow' (filament/clump) emission from 'non-flow' (nuclear) emission for each BCG",
+  "Specific CO transition and spectral window setup used per BCG",
+  "CLEAN imaging parameters (cell size, channel width, cleaning threshold, masks, beam size) and UVCONTSUB channel ranges for each target",
+  "Details of which targets were self-calibrated and with what parameters",
+  "Exact star-formation region areas measured from HST UV images for the eight BCGs"
+ ],
+ "reproducibility_score": 62,
+ "score_reason": "All ALMA project codes are listed and public, CASA versions and weighting (Briggs robust=2) are stated, and the physical formulas, conversion factors, and per-target derived quantities (Table 1) are explicitly provided. However, target-level imaging parameters, continuum-subtraction channel ranges, and the exact spatial regions defining the filamentary flows (deferred to an appendix not included in the text) are missing.",
+ "rediscovery_reason": "All archival ALMA datasets are public with project codes explicitly given, the analysis pipeline from CO cubes to flow masses, velocities, sizes, and scaling relations is straightforward, and Table 1 provides complete target-by-target numeric answer keys.",
+ "source_card": "cards/2022MNRAS.516..861T/sonnet/card.md"
+}

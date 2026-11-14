@@ -1,0 +1,2148 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...976..258K",
+  "title": "Chemistry in the GG Tau A Disk: Constraints from H<SUB>2</SUB>D<SUP>+</SUP>, N<SUB>2</SUB>H<SUP>+</SUP>, and DCO<SUP>+</SUP> High Angular Resolution ALMA Observations",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Kashyap, Parashmoni",
+  "n_authors": 20,
+  "arxiv_id": "2407.07238",
+  "doi": "10.3847/1538-4357/ad815c",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2021.1.00342.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "2 Observations",
+    "quote": "The GG Tau A system (ICRS 04:32:30.3460, 17:31:40.642) was observed as part of the ALMA project #2021.1.00342.S (PI: Liton Majumdar)"
+   },
+   {
+    "loc": "abstract",
+    "quote": "using ALMA Band 7 observations"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "GG Tau A",
+     "coordinates": {
+      "value": "ICRS 04:32:30.3460, 17:31:40.642 (as printed)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The GG Tau A system (ICRS 04:32:30.3460, 17:31:40.642) was observed as part of the ALMA project"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "is located at a distance of 150 pc (cite: Gaia2016; Gaia2018) from us in the Taurus-Auriga star-forming region"
+       },
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the distance of 150 pc determined from Gaia"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "150 pc",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The GG Tau A system (ICRS 04:32:30.3460, 17:31:40.642) was observed as part of the ALMA project"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "is located at a distance of 150 pc (cite: Gaia2016; Gaia2018) from us in the Taurus-Auriga star-forming region"
+       },
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the distance of 150 pc determined from Gaia"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: Gaia2016; Gaia2018)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The GG Tau A system (ICRS 04:32:30.3460, 17:31:40.642) was observed as part of the ALMA project"
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "is located at a distance of 150 pc (cite: Gaia2016; Gaia2018) from us in the Taurus-Auriga star-forming region"
+       },
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the distance of 150 pc determined from Gaia"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Cold molecular chemistry in the GG Tau A triple T Tauri disk: map N2H+, DCO+ and H2D+ (plus 13CS, SO2 limits), derive surface densities and rotation temperatures, and compare with chemical models across cosmic ray ionization rate, C/O ratio and stellar UV flux",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We investigated cold molecular chemistry in the triple stellar T Tauri disk GG Tau A, which harbours a massive gas and dust ring and an outer disk, using ALMA Band 7 observations."
+     },
+     {
+      "loc": "abstract",
+      "quote": "We compared the derived quantities with model predictions across different cosmic ray ionization (CRI) rates, carbon-to-oxygen (C/O) ratios, and stellar UV fluxes."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2021.1.00342.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "was observed as part of the ALMA project #2021.1.00342.S (PI: Liton Majumdar)"
+      },
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO ALMA$\\#$2021.1.00342.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "using ALMA Band 7 observations"
+     },
+     {
+      "loc": "Table: Spectral setup",
+      "quote": "Spectral Setup of the ALMA Band 7 Observations of GG Tau A"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Six spectral windows (SPW 25, 27, 29, 31, 33, 35) between about 358 and 372.7 GHz; SPW 25 centred at 358.0 GHz (1875 MHz wide, 3840 channels) used for continuum, the others 117 or 59 MHz wide targeting the lines",
+    "evidence": [
+     {
+      "loc": "Table: Spectral setup",
+      "quote": "Spectral Setup of the ALMA Band 7 Observations of GG Tau A"
+     },
+     {
+      "loc": "2.1 Data Reduction",
+      "quote": "a continuum image was generated for a spectral window with a central frequency of 358 GHz, utilizing the line-free channels"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "N2H+",
+     "transition": "4-3",
+     "rest_frequency": "372.6724808 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "spatially resolved emission from N$_2$H$^+$ (4-3) and DCO$^+$ (5-4)"
+      },
+      {
+       "loc": "Table: Properties of the Lines Observed",
+       "quote": "372.6724808"
+      }
+     ]
+    },
+    {
+     "species": "DCO+",
+     "transition": "5-4",
+     "rest_frequency": "360.1697783 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "spatially resolved emission from N$_2$H$^+$ (4-3) and DCO$^+$ (5-4)"
+      },
+      {
+       "loc": "Table: Properties of the Lines Observed",
+       "quote": "360.1697783"
+      }
+     ]
+    },
+    {
+     "species": "o-H2D+",
+     "transition": "1(1,0)-1(1,1)",
+     "rest_frequency": "372.4213558 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "upper limits for o-H$_2$D$^+$ (1(1,0)-1(1,1)), $^{13}$CS (8-7), and SO$_2$ 19(4,16)-19(3,17)"
+      },
+      {
+       "loc": "Table: Properties of the Lines Observed",
+       "quote": "372.4213558"
+      }
+     ]
+    },
+    {
+     "species": "13CS",
+     "transition": "8-7",
+     "rest_frequency": "369.9085505 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "upper limits for o-H$_2$D$^+$ (1(1,0)-1(1,1)), $^{13}$CS (8-7), and SO$_2$ 19(4,16)-19(3,17)"
+      },
+      {
+       "loc": "Table: Properties of the Lines Observed",
+       "quote": "369.9085505"
+      }
+     ]
+    },
+    {
+     "species": "SO2",
+     "transition": "19(4,16)-19(3,17)",
+     "rest_frequency": "359.7706846 GHz",
+     "evidence": [
+      {
+       "loc": "1 Introduction",
+       "quote": "upper limits for o-H$_2$D$^+$ (1(1,0)-1(1,1)), $^{13}$CS (8-7), and SO$_2$ 19(4,16)-19(3,17)"
+      },
+      {
+       "loc": "Table: Properties of the Lines Observed",
+       "quote": "359.7706846"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "47 antennas, two executions (antenna diameter / array type not stated)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The observations were made over two executions using 47 antennas with baselines ranging from 14 m to 456 m for a total on-source integration time of 2.7 hours."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "14 m to 456 m",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "using 47 antennas with baselines ranging from 14 m to 456 m"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.8-0.9 arcsec; spectral resolution 0.1 km/s",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "we achieved a spectral resolution of 0.1 km/s and an angular resolution of 0.8-0.9"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "14.6 mJy/beam (N2H+), 5.6 mJy/beam (DCO+), 16.7 mJy/beam (H2D+)",
+    "evidence": [
+     {
+      "loc": "2.1 Data Reduction",
+      "quote": "and a typical sensitivity of 14.6 mJy/beam for N$_2$H$^+$"
+     },
+     {
+      "loc": "2.1 Data Reduction",
+      "quote": "with a sensitivity of 5.6 mJy/beam"
+     },
+     {
+      "loc": "2.1 Data Reduction",
+      "quote": "the noise (16.7 mJy/beam) is higher as the atmospheric transmission is degraded at this high frequency"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2.7 hours total on-source",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "for a total on-source integration time of 2.7 hours"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Project 2021.1.00342.S, PI Liton Majumdar",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "ALMA project #2021.1.00342.S (PI: Liton Majumdar)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "NOEMA",
+     "provided": {
+      "value": "Archival/published visibilities of N2H+ (1-0), DCO+ (1-0) (Phuong et al. 2021) and DCO+ (3-2) (Phuong et al. 2018) used as lower-excitation constraints in the DISKFIT multi-transition fit",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "the interferometric visibilities obtained with NOEMA for N$_2$H$^+$ (1-0) and DCO$^+$ (1-0) from (cite: Phuong2021), and the DCO$^+$ (3-2) from (cite: Phuong2018)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gaia",
+     "provided": {
+      "value": "Distance of 150 pc adopted for GG Tau A",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the distance of 150 pc determined from Gaia"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "NOEMA N2H+ (1-0) and DCO+ (1-0) visibilities",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "the interferometric visibilities obtained with NOEMA for N$_2$H$^+$ (1-0) and DCO$^+$ (1-0) from (cite: Phuong2021)"
+       }
+      ]
+     },
+     "citation": "(cite: Phuong2021)"
+    },
+    {
+     "what": {
+      "value": "NOEMA DCO+ (3-2) data",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "and the DCO$^+$ (3-2) from (cite: Phuong2018)"
+       }
+      ]
+     },
+     "citation": "(cite: Phuong2018)"
+    },
+    {
+     "what": {
+      "value": "Low-level NOEMA detection of 13CS (2-1), implying a surface density of 3e11 cm-2 for Trot = 15 K, compared with the new upper limit",
+      "evidence": [
+       {
+        "loc": "3.2 Results",
+        "quote": "a low energy transition reported by (cite: Phuong2021)"
+       }
+      ]
+     },
+     "citation": "(cite: Phuong2021)"
+    },
+    {
+     "what": {
+      "value": "Fixed physical-model parameters (stellar mass, ring radii, temperatures, power-law indices) rescaled to 150 pc",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "All the fixed values are taken from (cite: Guilloteau1999; Dutrey2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Guilloteau1999; Dutrey2014)"
+    },
+    {
+     "what": {
+      "value": "Ring gas mass Mg = 0.13 Msun",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "the mass contained in the circumtertiary ring, $M_{g} = 0.13 M_{\\odot}$ (cite: Guilloteau1999; Andrews2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Guilloteau1999; Andrews2014)"
+    },
+    {
+     "what": {
+      "value": "Elemental initial abundances for the cloud model",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "(1) (cite: Wakelam2008); (2) (cite: Jenkins2009); (3) (cite: Reboussin2015)"
+       }
+      ]
+     },
+     "citation": "(cite: Wakelam2008; Jenkins2009; Reboussin2015; Graedel1982; Neufeld2005; Majumdar2017)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "DNAUTILUS 2.0 gas-grain chemical model grid (1+1D) over C/O, CRI rate, UV flux, settling and initial abundances (atomic reset vs 1e6 yr cloud inheritance), run on the ring",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Model and Network",
+       "quote": "is used to compute the 1+1D chemical composition in the ring of GG Tau A"
+      },
+      {
+       "loc": "4.3 Grid of Models",
+       "quote": "we explored a grid of models utilizing the least squares method"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The observed data were initially calibrated with CASA, the Common Astronomy Software Applications package (version 6.4.1.12) pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 6.4.1.12",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "the Common Astronomy Software Applications package (version 6.4.1.12) pipeline"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J0423-0120 (also bandpass); phase calibrators J0510+1800 and J0440+1437",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "Calibration procedures involved bandpass and flux calibration, with the quasar source J0423-0120 utilized for this purpose."
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "Phase calibration was conducted using the sources J0510+1800 and J0440+1437."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "Five rounds of continuum self-phase calibration per execution, solutions applied to the whole dataset",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "five rounds of continuum self-phase calibration were performed for each execution, selecting line-free channels carefully"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The self-calibration solutions were then applied to the entire dataset."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA tclean",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "We constructed the images from our visibility dataset in `tclean` task in CASA"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "hogbom for N2H+ and DCO+ and the continuum; multiscale for the weaker lines including H2D+",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "using `hogbom` deconvolving algorithm with `briggs` weighting (robust=1.0)"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "we have used `multiscale` deconvolver with `scales = [0,5,15,25]` $\\times$ pixels"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "briggs robust = 1.0 for the line cubes (N2H+, DCO+); natural for weak lines; briggs robust = 0 for the continuum image",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "using `hogbom` deconvolving algorithm with `briggs` weighting (robust=1.0)"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "We adopted the `natural` weighting scheme to enhance the signal-to-noise ratio for the weak lines."
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "the process utilized the `briggs` weighting scheme with the robust parameter set to 0"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "One-seventh of the beam size per pixel (for the multiscale/weak-line imaging)",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "where each pixel corresponds to one-seventh of the beam size"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "Keplerian masks from keplerian_mask.py: M* = 1.37 Msun, i = 37 deg, PA = 278 deg, radii 1 to 3.5 arcsec",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The masks used during cleaning were generated with the `keplerian_mask.py` tool"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "with the geometric parameters $M_{*}$ = $1.37 M_{\\odot}$, i = 37$^{\\circ}$, and PA = 278$^{\\circ}$"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "confined within inner and outer radii of 1$''$ and 3.5$''$ respectively"
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "scales = [0,5,15,25] x pixels (weak lines incl. H2D+)",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "`scales = [0,5,15,25]` $\\times$ pixels where each pixel corresponds to one-seventh of the beam size"
+      }
+     ]
+    },
+    "continuum_subtraction": {
+     "value": "First-order polynomial fit to continuum channels with uvcontsub",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "by fitting a first-order polynomial to the continuum channels using `uvcontsub` task in CASA"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Two executions with identical spectral setups combined with concat (no multi-array combination stated)",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The data with the identical spectral setups from both executions were then combined using the `concat` task in CASA."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "N2H+: 0.93 x 0.77 arcsec at PA 68.76 deg; DCO+: 0.91 x 0.73 arcsec at PA 99.20 deg",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "This yielded an angular resolution of $0.93'' \\times 0.77''$ at Position Angle (PA) $68.76^\\circ$"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "we achieved an angular resolution of $0.91'' \\times 0.73''$ at PA $99.20^\\circ$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "14.6 mJy/beam (N2H+), 5.6 mJy/beam (DCO+), 16.7 mJy/beam (H2D+)",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "and a typical sensitivity of 14.6 mJy/beam for N$_2$H$^+$"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "with a sensitivity of 5.6 mJy/beam"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "the noise (16.7 mJy/beam) is higher"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Keplerian-mask geometry (M*, inclination, PA, radii) taken from earlier work and rescaled to 150 pc",
+      "evidence": [
+       {
+        "loc": "2.1 Data Reduction",
+        "quote": "(values rescaled from (cite: Guilloteau1999) for a distance of 150 pc)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Guilloteau1999)"
+    },
+    {
+     "what": {
+      "value": "DISKFIT parametric disk model similar to the earlier GG Tau A CO model",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "The disk model is similar to that used in (cite: Phuong2020)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Phuong2020)"
+    },
+    {
+     "what": {
+      "value": "DISKFIT visibility-fitting tool",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the DISKFIT tool from (cite: Pietu2007)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pietu2007)"
+    },
+    {
+     "what": {
+      "value": "Matched-filter detection technique",
+      "evidence": [
+       {
+        "loc": "2.2 Observational Results",
+        "quote": "We further verified our detections with the matched filtering technique (cite: loomis2018detecting)."
+       }
+      ]
+     },
+     "from_reference": "(cite: loomis2018detecting)"
+    },
+    {
+     "what": {
+      "value": "Midplane and atmospheric temperature power laws in the chemical physical model",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "constrained in previous studies by (cite: Dutrey2014) and (cite: Guilloteau1999) respectively"
+       }
+      ]
+     },
+     "from_reference": "(cite: Dutrey2014; Guilloteau1999)"
+    },
+    {
+     "what": {
+      "value": "Vertical temperature structure prescription",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "The vertical temperature structure is adopted from (cite: Dartois2003) and (cite: Williams2014)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Dartois2003; Williams2014)"
+    },
+    {
+     "what": {
+      "value": "Surface density power-law index gamma = 1.4",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "The power law index $\\gamma$ is taken to be 1.4 following (cite: Dutrey2014)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Dutrey2014)"
+    },
+    {
+     "what": {
+      "value": "DNAUTILUS 2.0 chemical network updates",
+      "evidence": [
+       {
+        "loc": "4.2 Chemical Model and Network",
+        "quote": "by incorporating all the updates from DNAUTILUS 2.0 outlined in (cite: Kotomi2024)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Kotomi2024)"
+    },
+    {
+     "what": {
+      "value": "Molecular-cloud inheritance conditions for the disk model",
+      "evidence": [
+       {
+        "loc": "4.3 Grid of Models",
+        "quote": "is based on detailed discussions from (cite: Wakelam2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Wakelam2019)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges used for self-calibration, uvcontsub and the continuum image",
+    "Self-calibration solution intervals and per-round gain settings; per-execution flux scale uncertainty",
+    "Image sizes, cell sizes in arcsec, channel width of the final cubes, and clean niter/threshold",
+    "Keplerian mask thresholds and how the robust=1.0 versus natural/multiscale choice maps to each line",
+    "Primary beam correction and whether a uv-taper or smoothing was applied",
+    "Velocity range for the disk-integrated flux integral (chosen by visual inspection)",
+    "DISKFIT starting values, parameter bounds and exact Gaussian-ring parameterisation files; IMAGER KEPLER command settings",
+    "How the NOEMA visibilities (Phuong 2018, 2021) were obtained and weighted in the joint fit",
+    "DNAUTILUS 2.0 network and reaction-rate files, elapsed-time output grid, and the radial points used to compute chi2_red"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "calibrate, self-calibrate and image the line cubes and continuum",
+    "method": {
+     "value": "CASA pipeline calibration; five rounds of continuum self-phase calibration per execution; recentre with fixvis on an ellipse-fitted disk centre; concat of executions; first-order uvcontsub; tclean with Keplerian masks",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "five rounds of continuum self-phase calibration were performed for each execution, selecting line-free channels carefully"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "we fitted the continuum structure with an ellipse, and both executions were recentered to the disk center using the `fixvis` task in CASA"
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "by fitting a first-order polynomial to the continuum channels using `uvcontsub` task in CASA"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "keplerian_mask"
+    ],
+    "key_parameters": [
+     {
+      "value": "tclean hogbom, briggs robust = 1.0 for N2H+ and DCO+; multiscale scales [0,5,15,25] pixels with natural weighting for weak lines",
+      "evidence": [
+       {
+        "loc": "2.1 Data Reduction",
+        "quote": "using `hogbom` deconvolving algorithm with `briggs` weighting (robust=1.0)"
+       },
+       {
+        "loc": "2.1 Data Reduction",
+        "quote": "We adopted the `natural` weighting scheme to enhance the signal-to-noise ratio for the weak lines."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Keplerian mask geometry M* = 1.37 Msun, i = 37 deg, PA = 278 deg rescaled to 150 pc",
+      "evidence": [
+       {
+        "loc": "2.1 Data Reduction",
+        "quote": "with the geometric parameters $M_{*}$ = $1.37 M_{\\odot}$, i = 37$^{\\circ}$, and PA = 278$^{\\circ}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Disk-centre offset between the two executions checked",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The offset between the disk centers in the two executions was only"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "make integrated-intensity maps and radial intensity profiles",
+    "method": {
+     "value": "Moment-0 maps with bettermoments using the Keplerian masks and no intensity threshold; azimuthally averaged radial profiles with GoFish in annuli of 1/4 beam major axis",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "The integrated intensity maps were generated by collapsing the image cubes along the velocity axis while applying the Keplerian masks used for cleaning."
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "by dividing the disk radial range into a series of annular rings with a width 1/4th of the beam major axis and averaging the emission for each ring"
+      }
+     ]
+    },
+    "software": [
+     "bettermoments",
+     "GoFish"
+    ],
+    "key_parameters": [
+     {
+      "value": "No intensity threshold for pixel inclusion in moment maps",
+      "evidence": [
+       {
+        "loc": "2.2 Observational Results",
+        "quote": "We did not use any intensity threshold criteria to decide the inclusion of pixels while generating the moment map."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Radial profiles also made without Keplerian masking for comparison",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We have also shown the radial profiles for all the transitions generated without keplerian masking"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "measure disk-integrated line flux, width and peak velocity",
+    "method": {
+     "value": "Shift-and-stack Keplerian deprojected spectrum with GoFish integrated_spectrum (120-550 au), Gaussian fit with scipy curve_fit, flux from numpy.trapz over a velocity range chosen by eye",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We employed the shifting and stacking technique using the `integrated_spectrum` function in the `GoFish` package (cite: GoFish) to generate a disk-integrated spectrum."
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We have done a Gaussian fit to the observed spectrum using the `scipy.optimize.curve_fit`"
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "over a velocity range determined by visual inspection"
+      }
+     ]
+    },
+    "software": [
+     "GoFish",
+     "scipy",
+     "numpy"
+    ],
+    "key_parameters": [
+     {
+      "value": "Radial range 120 to 550 au; shifted to systemic velocity 6.4 km/s",
+      "evidence": [
+       {
+        "loc": "2.2 Observational Results",
+        "quote": "The radial range for generating the integrated spectrum is between 120 au and 550 au."
+       },
+       {
+        "loc": "2.2 Observational Results",
+        "quote": "Velocities for each pixel were shifted to the systemic one, 6.4 km/s"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Single Gaussian fit with scipy.optimize.curve_fit; FWHM = 2 sqrt(2 ln 2) sigma",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We have done a Gaussian fit to the observed spectrum using the `scipy.optimize.curve_fit` to determine the peak intensity and the velocity at which the peak occurs."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Stacked spectra peak at the systemic velocity, confirming the detections",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "are peaking at the systemic velocity, $v_{\\text{LSRK}}$ of 6.4 km/s, confirming the detections"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "verify detections with a matched filter",
+    "method": {
+     "value": "Cross-correlate observed visibilities with model visibilities from the Keplerian masks using VISIBLE",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "we cross-correlate observed visibility with modelled visibility derived from the Keplerian masks used during cleaning"
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We utilized a package called `VISIBLE` (cite: loomis2018visible) for this task."
+      }
+     ]
+    },
+    "software": [
+     "VISIBLE"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Filter response 43 sigma (N2H+) and 20 sigma (DCO+) at 6.4 km/s",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "we found a filter response of 43 $\\sigma$, and for DCO$^+$ (5-4), it is 20 $\\sigma$ at the systemic velocity of 6.4 km/s"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "fit visibilities with a parametric disk model for geometry, surface density and temperature",
+    "method": {
+     "value": "DISKFIT least-squares fit to visibilities of a flared Keplerian disk with two-Gaussian surface density and power-law rotation temperature; stage 1 per-line geometry, stage 2 geometry fixed to the averaged values and 9 remaining parameters fitted, jointly with NOEMA transitions",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "we perform a least-square fit to the observed visibilities to adjust an empirical parametric disk model to the data, using the DISKFIT tool from (cite: Pietu2007)"
+      },
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "In the first stage, geometric parameters are individually fitted for every observed transition."
+      },
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "The model thus has 15 possible parameters, 6 due to geometry and 9 to represent the molecular distribution and excitation conditions"
+      }
+     ]
+    },
+    "software": [
+     "DISKFIT",
+     "IMAGER",
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "Surface density as the sum of two Gaussians truncated to 150-550 au; temperature a power law defined by T250 and exponent q",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "we represented the radial surface density profiles for each molecule by the sum of two Gaussians, truncated to inner and outer radii of 150 and 550 au, respectively"
+       },
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "The rotation temperature is assumed to be a simple power law, defined by its value at 250 au, $T_{250}$ and exponent $q$."
+       }
+      ]
+     },
+     {
+      "value": "H2D+: same adopted geometry, constant T = 15 K, uniform surface density 150-450 au",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "a constant temperature of 15 K, and a uniform surface density between 150 and 450 au"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Boltzmann level populations, temperature power law in radius",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "The model assumes level populations are governed by a Boltzmann law, with the temperature being a power law of radius."
+       }
+      ]
+     },
+     {
+      "value": "Same vertical distribution for all molecules; constant intrinsic line width with radius",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "Molecules are assumed to follow the same vertical distribution for simplicity."
+       },
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "we assume that the intrinsic line width remains constant with radius"
+       }
+      ]
+     },
+     {
+      "value": "Distance 150 pc",
+      "evidence": [
+       {
+        "loc": "3.1 DiskFit modelling",
+        "quote": "using the distance of 150 pc determined from Gaia"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Modified Levenberg-Marquardt least squares on visibilities; error bars from the covariance matrix",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "A least square minimization is performed on the different visibilities using a modified Levenberg-Marquardt algorithm."
+      },
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "Error bars are derived from the covariance matrix."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Best-fit radial profile imaged from model visibilities and Kepler-deprojected, compared with the data",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "where the best fit radial profile (reconstructed by imaging the model visibilities and applying the Kepler deprojection) is compared with the data"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "derive disk-averaged LTE surface densities and upper limits",
+    "method": {
+     "value": "Optically thin LTE column density from the integrated flux with Boltzmann partition correction; nested sampling for the posterior; 3 sigma upper limits for undetected molecules over 150-450 au",
+     "evidence": [
+      {
+       "loc": "9 Simple LTE Approach",
+       "quote": "We explore the likely ranges of disk-averaged surface density using nested sampling"
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "for an integration area between radius 150 au and 450 au and a line width of 0.55 km/s"
+      }
+     ]
+    },
+    "software": [
+     "dynesty"
+    ],
+    "key_parameters": [
+     {
+      "value": "Trot fixed to 12 K (N2H+), 16 K (DCO+), 15 K (undetected)",
+      "evidence": [
+       {
+        "loc": "9 Simple LTE Approach",
+        "quote": "The rotation temperatures for N$_2$H$^+$ and DCO$^+$ were set at 12 K and 16 K, respectively. A value of 15 K was used for the undetected molecules."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE (disk densities high compared with critical densities); optically thin for upper limits; ortho-to-para ratio thermalised for total H2D+",
+      "evidence": [
+       {
+        "loc": "9 Simple LTE Approach",
+        "quote": "where we assume local thermodynamic equilibrium (LTE) considering the disk densities are relatively high compared to critical densities for the studied transitions"
+       },
+       {
+        "loc": "3.2 Results",
+        "quote": "while assuming optically thin emission"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "dynesty nested sampling, log-normal priors on NT between 1e5 and 1e18 cm-2, median as best fit with 16th/84th percentile errors",
+     "evidence": [
+      {
+       "loc": "9 Simple LTE Approach",
+       "quote": "while assuming log-normal priors for both the molecules in the range $10^5 <$ N$_{\\text{T}} < 10^{18}$ cm$^{-2}$"
+      },
+      {
+       "loc": "9 Simple LTE Approach",
+       "quote": "We consider the median of the posterior as the best-fit value, while the 16th and 84th percentile values account for the $1 \\sigma$ uncertainties."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Peak-opacity estimate shows optically thin approximation costs at most about 22%",
+     "evidence": [
+      {
+       "loc": "9 Simple LTE Approach",
+       "quote": "This indicates a peak line opacity of about 0.47, leading to a $\\sim 22$% opacity correction at most."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "compare observed surface densities with a grid of astrochemical models",
+    "method": {
+     "value": "DNAUTILUS 2.0 1+1D models in a physical ring model (190-290 au) over a grid of C/O, CRI rate, UV flux, settling and initial abundances; best model by lowest reduced chi-square against N2H+ and DCO+ radial surface densities and upper limits",
+     "evidence": [
+      {
+       "loc": "4.3 Grid of Models",
+       "quote": "we explored a grid of models utilizing the least squares method"
+      },
+      {
+       "loc": "4.1 Disk Physical Model",
+       "quote": "Our physical model is constructed for a radial range of 190 au to 290 au"
+      }
+     ]
+    },
+    "software": [
+     "DNAUTILUS"
+    ],
+    "key_parameters": [
+     {
+      "value": "UV flux at 214 au: 375, 1500, 3000 chi0",
+      "evidence": [
+       {
+        "loc": "Table: Parameter Space Explored",
+        "quote": "375, 1500, 3000"
+       }
+      ]
+     },
+     {
+      "value": "C/O from 0.5 to 1.2",
+      "evidence": [
+       {
+        "loc": "5.2 Chemical Trends",
+        "quote": "different elemental C/O ratios from 0.5 to 1.2 by changing initial O abundances"
+       }
+      ]
+     },
+     {
+      "value": "CRI rate 1e-16 to 1e-20 s-1",
+      "evidence": [
+       {
+        "loc": "Table: Parameter Space Explored",
+        "quote": "$10^{-16}$, $10^{-17}$, $10^{-18}$, $10^{-19}$, $10^{-20}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Dust temperature equal to gas temperature",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "We have kept the dust temperature equal to the gas temperature"
+       }
+      ]
+     },
+     {
+      "value": "Uniform 0.1 micron grains, no grain growth, dust-to-gas 1e-2 below 1 H and 1e-3 above for settling",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "we considered a uniform grain size of 0.1$\\mu m$"
+       },
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "we adjust the $\\varepsilon$ to $10^{-3}$ above 1H$_r$, while maintaining the standard $\\varepsilon$ of $10^{-2}$ below 1H$_r$"
+       }
+      ]
+     },
+     {
+      "value": "Mean molecular weight 2.37, ring gas mass 0.13 Msun, M* = 1.37 Msun",
+      "evidence": [
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "the mean molecular weight of the gas per H nuclei $\\mu = 2.37$"
+       },
+       {
+        "loc": "4.1 Disk Physical Model",
+        "quote": "$M_* = 1.37 M_{\\odot}$"
+       }
+      ]
+     },
+     {
+      "value": "Cloud phase: 10 K, density 2e4 cm-3, Av = 15 mag, zeta = 1.3e-17 s-1, evolved 1e6 yr before the disk model",
+      "evidence": [
+       {
+        "loc": "4.3 Grid of Models",
+        "quote": "gas and dust temperature of 10 K, a total gas density of $2\\times10^4$ cm$^{-3}$, a visual extinction of 15 mag and cosmic ray ionization rate of $1.3 \\times 10^{-17}$ s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Reduced chi-square over molecules and radii with 25 degrees of freedom; modelled errors 20%; observed errors from DISKFIT peak surface-density uncertainties",
+     "evidence": [
+      {
+       "loc": "10 Grids of Astrochemical Models",
+       "quote": "$\\nu$, the number of degrees of freedom is 25"
+      },
+      {
+       "loc": "10 Grids of Astrochemical Models",
+       "quote": "while modelled errors were assumed to be 20% to account for uncertainties in the chemical models"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Best-fit solution independent of the assumed error size; modelled values for undetected molecules required to stay below their upper limits",
+     "evidence": [
+      {
+       "loc": "10 Grids of Astrochemical Models",
+       "quote": "the best-fit solution was found to be independent of this assumption"
+      },
+      {
+       "loc": "10 Grids of Astrochemical Models",
+       "quote": "We ensured that the modelled values for undetected molecules remained below their respective upper limits."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "6.4.1.12",
+    "used_for": {
+     "value": "Pipeline calibration, fixvis, concat, uvcontsub, tclean, exportuvfits",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The observed data were initially calibrated with CASA, the Common Astronomy Software Applications package (version 6.4.1.12) pipeline."
+      },
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "We constructed the images from our visibility dataset in `tclean` task in CASA"
+      }
+     ]
+    }
+   },
+   {
+    "name": "keplerian_mask",
+    "version": "not stated",
+    "used_for": {
+     "value": "Keplerian cleaning masks and moment-map masks",
+     "evidence": [
+      {
+       "loc": "2.1 Data Reduction",
+       "quote": "The masks used during cleaning were generated with the `keplerian_mask.py` tool"
+      }
+     ]
+    }
+   },
+   {
+    "name": "bettermoments",
+    "version": "not stated",
+    "used_for": {
+     "value": "Integrated intensity (moment 0) maps",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "we employed `bettermoments` python package (cite: 2018RNAAS...2c.173T)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GoFish",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radial profiles and shift-and-stack integrated spectra",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "with the help of `radial_profile` function in `GoFish` python package (cite: GoFish)"
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "using the `integrated_spectrum` function in the `GoFish` package (cite: GoFish)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy.optimize.curve_fit",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gaussian fit to the stacked spectrum",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We have done a Gaussian fit to the observed spectrum using the `scipy.optimize.curve_fit`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "numpy.trapz",
+    "version": "not stated",
+    "used_for": {
+     "value": "Disk-integrated flux density of the line",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We used `numpy.trapz` function to calculate the disk-integrated flux density of the line signal"
+      }
+     ]
+    }
+   },
+   {
+    "name": "VISIBLE",
+    "version": "not stated",
+    "used_for": {
+     "value": "Matched-filter detection check",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "We utilized a package called `VISIBLE` (cite: loomis2018visible) for this task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "IMAGER",
+    "version": "not stated",
+    "used_for": {
+     "value": "UVFITS analysis and the KEPLER deprojection command",
+     "evidence": [
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "for subsequent analysis with the IMAGER program"
+      },
+      {
+       "loc": "2.2 Observational Results",
+       "quote": "The `KEPLER` command in IMAGER is similar to the `GoFish` package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DISKFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Visibility-plane parametric disk model fit",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "using the DISKFIT tool from (cite: Pietu2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "dynesty",
+    "version": "not stated",
+    "used_for": {
+     "value": "Nested sampling of disk-averaged surface densities",
+     "evidence": [
+      {
+       "loc": "9 Simple LTE Approach",
+       "quote": "The Python package utilized to sample the posterior distribution is `dynesty` (cite: speagle2020dynesty)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DNAUTILUS",
+    "version": "2.0",
+    "used_for": {
+     "value": "Gas-grain astrochemical models of the ring",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Model and Network",
+       "quote": "is used to compute the 1+1D chemical composition in the ring of GG Tau A by incorporating all the updates from DNAUTILUS 2.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "numpy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "N2H+ (4-3) disk-integrated flux",
+    "value": "1570",
+    "uncertainty": "40",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table: Properties of the Lines Observed",
+      "quote": "1570 $\\pm$ 40"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ (5-4) disk-integrated flux",
+    "value": "290",
+    "uncertainty": "20",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table: Properties of the Lines Observed",
+      "quote": "290 $\\pm$ 20"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ (4-3) line width (FWHM of Gaussian fit)",
+    "value": "0.55",
+    "uncertainty": "0.01",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table: Properties of the Lines Observed",
+      "quote": "0.55 $\\pm$ 0.01"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ (5-4) line width (FWHM of Gaussian fit)",
+    "value": "0.46",
+    "uncertainty": "0.01",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table: Properties of the Lines Observed",
+      "quote": "0.46 $\\pm$ 0.01"
+     }
+    ]
+   },
+   {
+    "quantity": "Matched-filter response N2H+ (4-3)",
+    "value": "43",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.2 Observational Results",
+      "quote": "we found a filter response of 43 $\\sigma$"
+     }
+    ]
+   },
+   {
+    "quantity": "Matched-filter response DCO+ (5-4)",
+    "value": "20",
+    "uncertainty": "not stated",
+    "units": "sigma",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "2.2 Observational Results",
+      "quote": "for DCO$^+$ (5-4), it is 20 $\\sigma$ at the systemic velocity of 6.4 km/s"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination from N2H+ (4-3) DISKFIT",
+    "value": "36.5",
+    "uncertainty": "0.4",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Geometric parameters",
+      "quote": "36.5 $\\pm$ 0.4"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination from DCO+ (5-4) DISKFIT",
+    "value": "37.0",
+    "uncertainty": "0.4",
+    "units": "deg",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Geometric parameters",
+      "quote": "37.0 $\\pm$ 0.4"
+     }
+    ]
+   },
+   {
+    "quantity": "Keplerian velocity at 100 au from N2H+ (4-3)",
+    "value": "3.61",
+    "uncertainty": "0.03",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Geometric parameters",
+      "quote": "3.61 $\\pm$ 0.03"
+     }
+    ]
+   },
+   {
+    "quantity": "Keplerian velocity at 100 au from DCO+ (5-4)",
+    "value": "3.54",
+    "uncertainty": "0.03",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Geometric parameters",
+      "quote": "3.54 $\\pm$ 0.03"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ rotation temperature at 250 au (T250)",
+    "value": "12.2",
+    "uncertainty": "0.7",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "12.2 $\\pm$ 0.7"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ rotation temperature at 250 au (T250)",
+    "value": "16.0",
+    "uncertainty": "1.2",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "16.0 $\\pm$ 1.2"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ temperature exponent q",
+    "value": "-0.32",
+    "uncertainty": "0.19",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "-0.32 $\\pm$ 0.19"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ temperature exponent q",
+    "value": "0.39",
+    "uncertainty": "0.15",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "0.39 $\\pm$ 0.15"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ peak surface density N1 (DISKFIT)",
+    "value": "22",
+    "uncertainty": "8",
+    "units": "1e11 cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "22 $\\pm$ 8"
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ peak surface density N2 (DISKFIT)",
+    "value": "12",
+    "uncertainty": "2",
+    "units": "1e11 cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "12 $\\pm$ 2"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ peak surface density N1 (DISKFIT)",
+    "value": "2.8",
+    "uncertainty": "0.6",
+    "units": "1e11 cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "2.8 $\\pm$ 0.6"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ peak surface density N2 (DISKFIT)",
+    "value": "5.3",
+    "uncertainty": "1.0",
+    "units": "1e11 cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: Best fit parameters",
+      "quote": "5.3 $\\pm$ 1.0"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ inner ring peak radius",
+    "value": "210",
+    "uncertainty": "50",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "The inner ring peaks at $210 \\pm 50$ au within the continuum ring region"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ outer ring peak radius",
+    "value": "375",
+    "uncertainty": "10",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "the more intense outer ring peaks at $375 \\pm 10$ au in the outer disk"
+     }
+    ]
+   },
+   {
+    "quantity": "o-H2D+ 3 sigma upper limit surface density (DISKFIT)",
+    "value": "2.1e10",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.1 DiskFit modelling",
+      "quote": "This gives the 3$\\sigma$ upper limit on o- to be $2.1 \\times 10^{10}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Total H2D+ 3 sigma upper limit surface density at 15 K (from ortho value)",
+    "value": "6.3e12",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 Results",
+      "quote": "At 15 K, the 3$\\sigma$ upper limit on the total surface density, derived from the ortho- value, is $6.3 \\times 10^{12}$ cm$^{-2}$."
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ disk-averaged surface density (LTE)",
+    "value": "1.19e12",
+    "uncertainty": "0.04e12",
+    "units": "cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: Disk averaged surface densities",
+      "quote": "$(1.19 \\pm 0.04) \\times 10^{12}$"
+     }
+    ]
+   },
+   {
+    "quantity": "DCO+ disk-averaged surface density (LTE)",
+    "value": "1.27e11",
+    "uncertainty": "0.08e11",
+    "units": "cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: Disk averaged surface densities",
+      "quote": "$(1.27 \\pm 0.08) \\times 10^{11}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total H2D+ disk-averaged surface density upper limit (LTE)",
+    "value": "7.48e12",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2 Results",
+      "quote": "an upper limit on total (summation of both ortho and para species) surface density of $7.48 \\times 10^{12}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "13CS disk-averaged surface density upper limit (LTE)",
+    "value": "1.12e12",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: Disk averaged surface densities",
+      "quote": "$<1.12 \\times 10^{12}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2 disk-averaged surface density upper limit (LTE)",
+    "value": "2.46e16",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: Disk averaged surface densities",
+      "quote": "$<2.46 \\times 10^{16}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best chemical model reduced chi-square",
+    "value": "2.78",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Grid of Models",
+      "quote": "($\\chi^2_{\\text{red}}$ = 2.78)"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit cosmic ray ionization rate",
+    "value": "1e-18",
+    "uncertainty": "not stated",
+    "units": "s-1",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$10^{-18}$"
+     },
+     {
+      "loc": "abstract",
+      "quote": "Our best model requires a low cosmic ray ionization rate of $10^{-18}$ s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit initial C/O ratio",
+    "value": "1.0",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Grid of Models",
+      "quote": "and an initial C/O ratio of 1.0 are necessary"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "N2H+ emission peaks near the ring outer edge while DCO+ shows a double-peaked radial profile, one peak near the ring inner edge and one in the outer disk",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The radial intensity profile of shows most emission near the ring outer edge, while exhibits double peaks, one near the ring inner edge and the other in the outer disk."
+     }
+    ]
+   },
+   {
+    "value": "The cold-chemistry ions are most sensitive to the cosmic ray ionization rate; stellar UV flux and C/O have minimal impact on the three ions",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "while stellar UV flux and C/O ratios have minimal impact on these three ions"
+     }
+    ]
+   },
+   {
+    "value": "Best model fails to match the low derived temperatures of 12 to 16 K, well below the CO freezing temperature",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "However, it fails to match the low temperatures derived from and , 12 to 16 K, which are much lower than the CO freezing temperature."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are N2H+ (4-3) and DCO+ (5-4) detected, and the other targeted lines not, in the GG Tau A disk?",
+    "experiment": "Band 7 imaging, moment maps, stacked spectra, matched filtering",
+    "result": "Matched-filter responses of 43 sigma and 20 sigma; no detection of o-H2D+, 13CS and SO2",
+    "finding": "N2H+ and DCO+ are spatially resolved; the other three give upper limits",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "2.2 Observational Results",
+      "quote": "Clear detections of N$_2$H$^+$ (4-3) and DCO$^+$ (5-4) are observed"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What temperatures do the N2H+ and DCO+ emitting regions have?",
+    "experiment": "DISKFIT multi-transition visibility fit combining ALMA and NOEMA lines",
+    "result": "T250 = 12.2 +/- 0.7 K (N2H+) and 16.0 +/- 1.2 K (DCO+)",
+    "finding": "Both molecules trace regions much colder and closer to the midplane than chemical models predict",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.5 Temperature Trends",
+      "quote": "are best represented by average temperatures of 12 K and 16 K"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does DCO+ show a double-ring radial structure?",
+    "experiment": "Radial profiles of moment maps and Keplerian-deprojected brightness",
+    "result": "Inner peak at 210 +/- 50 au, brighter outer peak at 375 +/- 10 au",
+    "finding": "DCO+ forms through different pathways in the ring and the outer disk",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "Our radial distribution of DCO$^+$ (5-4) emission reveals an atypical partially overlapping double ring structure."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which parameters control the cold chemistry of the three ions?",
+    "experiment": "DNAUTILUS grid over CRI rate, C/O ratio and UV flux, compared with observed surface densities",
+    "result": "Best match at CRI 1e-18 s-1 and C/O 1.0; UV flux has no impact",
+    "finding": "A sub-interstellar cosmic ray ionization rate is required in the dense ring",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Cold molecular chemistry, affecting , , and abundances, is most sensitive to CRI rates"
+     },
+     {
+      "loc": "abstract",
+      "quote": "Our best model requires a low cosmic ray ionization rate of $10^{-18}$ s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What does the o-H2D+ non-detection imply?",
+    "experiment": "DISKFIT and LTE upper limits compared with the best-model prediction",
+    "result": "3 sigma upper limit on o-H2D+ of 2.1e10 cm-2 (total H2D+ below 6.3e12 cm-2 at 15 K)",
+    "finding": "Ionization is lower than the standard interstellar rate in the midplane, and detection should be possible with longer integration",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 Conclusions",
+      "quote": "The non-detection of o-H$_2$D$^+$ (1(1,0)-1(1,1)) suggests that ionization is much lower than the standard interstellar rate in the disk-midplane due to its very high density."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "GG Tau A is massive, dense and cold, an ideal candidate for cold chemistry",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "Given its substantial mass, high density (which should ease the detection of weak molecular lines), and low temperature, GG Tau A emerges as an ideal candidate for unravelling the intricacies of cold molecular chemistry within a protoplanetary disk."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Visibility-plane DISKFIT gives accurate geometry, multi-transition temperatures and consistent errors",
+    "evidence": [
+     {
+      "loc": "3.1 DiskFit modelling",
+      "quote": "This approach allows an accurate derivation of the geometrical parameters."
+     },
+     {
+      "loc": "3.1 DiskFit modelling",
+      "quote": "It also allows for consistent estimates of the errors on the disk parameters"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "N2H+ distribution can be fit nearly as well by a single Gaussian or a truncated power law; temperature unaffected",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "the N$_2$H$^+$ distribution can almost equally well be represented by a single Gaussian or a truncated power law"
+      }
+     ]
+    },
+    {
+     "value": "Line width as a power law of radius gave a non-significant change and was not adopted",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "fitting line width as a power law instead suggests a small but non-significant decrease of intrinsic line width with radius"
+      }
+     ]
+    },
+    {
+     "value": "Spin-state chemistry was not included in DNAUTILUS because it would require extensive benchmarking",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical Model and Network",
+       "quote": "we chose not to do so"
+      }
+     ]
+    },
+    {
+     "value": "Reset (atomic initial abundances) versus inheritance (1e6 yr cloud) scenarios explored; inheritance gave the best fit",
+     "evidence": [
+      {
+       "loc": "Table: Parameter Space Explored notes",
+       "quote": "In the reset scenario, we have taken our initial abundances in atomic forms"
+      },
+      {
+       "loc": "4.3 Grid of Models",
+       "quote": "is an inheritance disk model with initial abundances characterized from a starless dense molecular cloud"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Best chemical model is the one with the lowest reduced chi-square",
+    "evidence": [
+     {
+      "loc": "10 Grids of Astrochemical Models",
+      "quote": "The best-fit model is the one with the lowest $\\chi^2_{\\text{red}}$ value."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "No grain growth and perfectly spherical grains in the chemical model",
+     "evidence": [
+      {
+       "loc": "5.2 Chemical Trends",
+       "quote": "One limitation of our model is the absence of a grain growth mechanism and the assumption that grains are perfectly spherical."
+      }
+     ]
+    },
+    {
+     "value": "X-ray chemistry not included",
+     "evidence": [
+      {
+       "loc": "5.2 Chemical Trends",
+       "quote": "Additionally, our models do not include X-ray chemistry"
+      }
+     ]
+    },
+    {
+     "value": "Outer disk not modelled because of its complex structure",
+     "evidence": [
+      {
+       "loc": "5.3 Possible Chemistry in the Outer Disk",
+       "quote": "We have not modelled the outer disk due to its complex structure"
+      }
+     ]
+    },
+    {
+     "value": "Gaussian ring parameters in DISKFIT are strongly coupled so their errors are unreliable",
+     "evidence": [
+      {
+       "loc": "3.1 DiskFit modelling",
+       "quote": "so their error bars should be treated with caution"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Detection of the weak lines rests on moment maps made with Keplerian masks and a visually chosen velocity range; masking bias is only partly tested with unmasked profiles.",
+    "Excitation temperatures from the NOEMA plus ALMA joint fit depend on the cross-calibration of different datasets, which is not discussed.",
+    "The chemical grid is coarse (a few discrete values per parameter) and the best model still disagrees with the observed temperatures by about 10 K, so the CRI inference is model dependent.",
+    "The ring physical model (power-law structure, fixed 150 pc scaling, sigma = 0.5) is partly assumed, and the ortho-to-para correction for total H2D+ assumes thermalisation."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact line-free channel selections, self-calibration parameters and tclean cleaning thresholds",
+    "DISKFIT and IMAGER scripts and starting parameters; no analysis code released",
+    "NOEMA visibilities (Phuong 2018, 2021) must be obtained separately",
+    "DNAUTILUS 2.0 network files and the full grid outputs"
+   ],
+   "estimated_data_volume_inferred": "Two Band 7 executions with 47 antennas and six spectral windows (up to 3840 channels); roughly 20-60 GB raw, plus separate NOEMA data for the joint fit",
+   "score_inferred": 3,
+   "score_reason": "ALMA project code is given and imaging/self-calibration steps are partly described with numeric results, but key imaging settings, line-free channels, DISKFIT/IMAGER inputs, NOEMA data and the chemical network are not published.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the data are public, and the DISKFIT, NOEMA and DNAUTILUS parts of the recipe cannot be redone from what is printed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Pietu et al. 2007 (cite: Pietu2007)",
+     "why": "DISKFIT visibility-plane disk model fitting tool"
+    },
+    {
+     "citation": "Loomis et al. 2018 (cite: loomis2018detecting)",
+     "why": "Matched-filter detection technique"
+    },
+    {
+     "citation": "Majumdar et al. 2017 (cite: Majumdar2017)",
+     "why": "Original DNAUTILUS gas-grain model"
+    },
+    {
+     "citation": "Taniguchi et al. 2024 (cite: Kotomi2024)",
+     "why": "DNAUTILUS 2.0 updates including deuterium chemistry"
+    },
+    {
+     "citation": "Teague 2019 (cite: GoFish)",
+     "why": "GoFish radial profile and stacking package"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Phuong et al. 2018 (cite: Phuong2018)",
+     "why": "NOEMA DCO+ (3-2) data and earlier temperature assumption"
+    },
+    {
+     "citation": "Phuong et al. 2021 (cite: Phuong2021)",
+     "why": "NOEMA N2H+ (1-0), DCO+ (1-0) and 13CS (2-1) data"
+    },
+    {
+     "citation": "Dutrey et al. 2014 (cite: Dutrey2014)",
+     "why": "Disk temperature structure and hot spot"
+    },
+    {
+     "citation": "Guilloteau et al. 1999 (cite: Guilloteau1999)",
+     "why": "Disk mass and geometry used in the physical model"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MAPS (Molecules with ALMA at Planet-forming Scales), cited for N2H+ comparison"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2024ApJ...976..258K",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-29T12:08:27",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 204,
+  "quotes_ok": 204,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 30,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 126,
+   "stated": 105,
+   "rate": 0.833
+  },
+  "evidence_ok": true
+ }
+}

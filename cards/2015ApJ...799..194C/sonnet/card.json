@@ -1,0 +1,843 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015ApJ...799..194C",
+  "title": "An ALMA Survey of Submillimeter Galaxies in the Extended Chandra Deep Field South: Near-infrared Morphologies and Stellar Sizes",
+  "year": 2015,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Chen, Chian-Chou",
+  "n_authors": 22,
+  "arxiv_id": "1412.0668",
+  "doi": "10.1088/0004-637X/799/2/194",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00294.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We analyse *HST* WFC3/$H_{160}$-band observations of a sample of 48 ALMA-detected submillimeter galaxies (SMGs) in the Extended Chandra Deep Field South field, to study their stellar morphologies and sizes."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "ALESS SMGs in ECDFS (48 MAIN sample)",
+     "coordinates": {
+      "value": "per-source RA/Dec in Table 1 (from Hodge et al. 2013)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "a flux-limited sample of 126 submillimeter sources in the $0.5^{\\circ} \\times 0.5^{\\circ}$ Extended *Chandra* Deep Field South (ECDFS)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "photometric z, mean z = 2.1 for z = 1-3 SMGs",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "a flux-limited sample of 126 submillimeter sources in the $0.5^{\\circ} \\times 0.5^{\\circ}$ Extended *Chandra* Deep Field South (ECDFS)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "photometric redshifts from Simpson et al. 2014 (hyperz)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "a flux-limited sample of 126 submillimeter sources in the $0.5^{\\circ} \\times 0.5^{\\circ}$ Extended *Chandra* Deep Field South (ECDFS)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the rest-frame optical/near-IR stellar morphologies, Sérsic indices and sizes of ALMA-identified SMGs, and are they mergers or disks?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "to study their stellar morphologies and sizes"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "ALMA Cycle 0 Band 7 (870 um)",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "We have undertaken an ALMA Cycle 0 band 7 (870 $\\mu$m) study of the first large sample of submillimeter sources"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST/WFC3 H160",
+     "provided": {
+      "value": "Deep H160 imaging of 48 ALESS SMGs (15 pointings, 2 orbits each; PID 12866) plus CANDELS/HUDF09 images",
+      "evidence": [
+       {
+        "loc": "2.1 Hubble Space Telescope Observations",
+        "quote": "There were 15 pointings and the exposure time was two orbits per pointing."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer/IRAC 3.6 um",
+     "provided": {
+      "value": "Astrometric reference frame for HST images",
+      "evidence": [
+       {
+        "loc": "2.1 Hubble Space Telescope Observations",
+        "quote": "we aligned the $H_{160}$-band images to the 3.6-$\\mu$m image of the full ECDFS from *Spitzer*/IRAC"
+       }
+      ]
+     }
+    },
+    {
+     "name": "MUSYC catalog",
+     "provided": {
+      "value": "Comparison field galaxy sample with photometric redshifts",
+      "evidence": [
+       {
+        "loc": "2.3 Non-SMG comparison sample",
+        "quote": "We exploit the Multi-wavelength Survey by Yale-Chile (MUSYC) catalog"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ALESS MAIN/SUPPLEMENTARY catalogs and ALMA positions/fluxes",
+      "evidence": [
+       {
+        "loc": "2 Sample, Observations, and Data Reduction",
+        "quote": "The full ALESS sample was presented in (cite: Hodge:2013lr), which defined a robust “MAIN” catalog of 99 SMGs"
+       }
+      ]
+     },
+     "citation": "(cite: Hodge:2013lr)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshifts of ALESS SMGs",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "we give the photometric redshifts derived by (cite: Simpson:2014aa)"
+       }
+      ]
+     },
+     "citation": "(cite: Simpson:2014aa)"
+    },
+    {
+     "what": {
+      "value": "250-870 um photometry used to derive LIR",
+      "evidence": [
+       {
+        "loc": "2.2 Our sample",
+        "quote": "we used the 250–870 $\\mu$m photometry from (cite: Swinbank:2014ul) to derive infrared luminosities"
+       }
+      ]
+     },
+     "citation": "(cite: Swinbank:2014ul)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA data reduction, source catalog and positional errors taken from ALESS papers",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "sky positions in right ascension (R.A.) and declination (Dec.), both J2000, adopted from (cite: Hodge:2013lr)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Hodge:2013lr)"
+    },
+    {
+     "what": {
+      "value": "Common astrometric frame (IRAC 3.6 um)",
+      "evidence": [
+       {
+        "loc": "2.1 Hubble Space Telescope Observations",
+        "quote": "the common astrometric frame adopted in (cite: Simpson:2014aa)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Simpson:2014aa)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA reduction details (CASA version, imaging) not given; relies on Hodge et al. 2013",
+    "HST exposure-level reduction parameters for AstroDrizzle",
+    "Exact SExtractor configuration beyond detection threshold",
+    "GALFIT masks and initial guesses per source",
+    "Details of visual classification consensus procedure"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Astrometric alignment and source extraction of HST images",
+    "method": {
+     "value": "Align H160 images to IRAC 3.6 um via SExtractor catalogs; extract sources with 16 connected 1-sigma pixels, MAG_AUTO fluxes",
+     "evidence": [
+      {
+       "loc": "2.1 Hubble Space Telescope Observations",
+       "quote": "set the detection threshold to be 16 connecting 1 $\\sigma$ pixels. We adopted the automatic aperture magnitudes (MAG_AUTO) for the flux measurements."
+      }
+     ]
+    },
+    "software": [
+     "SExtractor"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Random 3.6 um vs H160 offsets show no systematic offset, scatter ~0.16 arcsec",
+     "evidence": [
+      {
+       "loc": "2.1 Hubble Space Telescope Observations",
+       "quote": "we found no systematic offset and a scatter of $\\sim$ 0$\\ensuremath{''}$16 in both R.A. and Dec."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Visual morphological classification",
+    "method": {
+     "value": "Four team members classified H160 morphologies into disk, spheroid, irregular, unresolved, unclassified plus interaction/companion tags; median fractions with bootstrapped errors",
+     "evidence": [
+      {
+       "loc": "3.1 Visual Classifications",
+       "quote": "we derived from their classifications the median fraction of all main morphological classes as well as the bootstrapped errors"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with Kartaltepe et al. 2012 classifications and a comparison field sample",
+     "evidence": [
+      {
+       "loc": "4.1 Visual Classifications",
+       "quote": "We compare our classifications to those from (cite: Kartaltepe:2012aa)"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Sérsic profile fitting",
+    "method": {
+     "value": "2D Sérsic fits of each H160 component with GALFIT using TinyTim/stacked-star PSFs, SExtractor-based masks, iteratively varied mask scaling R=3-6; index fixed to 1 or 4 for ~15% of components",
+     "evidence": [
+      {
+       "loc": "3.2 galfit",
+       "quote": "we fixed the Sérsic index to either 1 or 4 (depending on the prefered index early in the iteration process) on a small number of components."
+      }
+     ]
+    },
+    "software": [
+     "GALFIT",
+     "TinyTim",
+     "SExtractor"
+    ],
+    "key_parameters": [
+     {
+      "value": "PSF oversampling factor of 3 for TinyTim",
+      "evidence": [
+       {
+        "loc": "3.2 galfit",
+        "quote": "The PSF profiles were modelled with a pixel resolution three times higher than that of the original *HST* images (oversampling factor of 3)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "GALFIT chi-squared minimisation with sigma maps; CANDELS/HUDF09 sigma scaled by ~40-50% to give unit variance",
+     "evidence": [
+      {
+       "loc": "3.2 galfit",
+       "quote": "derived correction factors of typically $\\sim$ 40–50%"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Noise added to high chi2 systems gave consistent solutions; fixed-n sources do not change conclusions",
+     "evidence": [
+      {
+       "loc": "4.2 Sérsic index and Effective Radius",
+       "quote": "by adding noises into the thumbnails for these high $\\chi^2_\\nu$ systems and rerunning the galfit analysis we found consistent best fit solutions"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Median sizes, Sérsic index and positional offsets",
+    "method": {
+     "value": "Median r_e and n for components with H160<=24 mag, bootstrapped errors; H160-ALMA offsets and intrinsic scatter",
+     "evidence": [
+      {
+       "loc": "4.2 Sérsic index and Effective Radius",
+       "quote": "if we only take components that have $H_{160} \\leq$ 24, which should be complete for measured sizes up to $\\sim$ 15 kpc"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Every H160 component overlapping the ALMA beam is a counterpart; mean z = 2.1 for size selection line",
+      "evidence": [
+       {
+        "loc": "4.2 Sérsic index and Effective Radius",
+        "quote": "In this analysis we have assumed that every $H_{160}$-band component which overlaps the ALMA synthesized beam is a counterpart of the ALESS SMG."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Repeated using only the H1 component of each SMG; medians unchanged",
+     "evidence": [
+      {
+       "loc": "4.2 Sérsic index and Effective Radius",
+       "quote": "We found the median $r_e$ and $n$ unchanged"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "SExtractor",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source extraction, photometry, segmentation masks",
+     "evidence": [
+      {
+       "loc": "2.1 Hubble Space Telescope Observations",
+       "quote": "We used SExtractor (cite: Bertin:1996zr) to extract sources from our *HST* imaging"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALFIT",
+    "version": "3.0.5",
+    "used_for": {
+     "value": "Sérsic surface-brightness fitting",
+     "evidence": [
+      {
+       "loc": "3.2 galfit",
+       "quote": "using the most recent version of GALFIT (v3.0.5, (cite: Peng:2010aa))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TinyTim",
+    "version": "not stated",
+    "used_for": {
+     "value": "Model PSFs for new WFC3 data",
+     "evidence": [
+      {
+       "loc": "3.2 galfit",
+       "quote": "we first used TinyTim (cite: Krist:2011aa)**, a standard PSF simulation software package for *HST*,** to model the PSF profiles"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AstroDrizzle",
+    "version": "not stated",
+    "used_for": {
+     "value": "HST pipeline drizzling",
+     "evidence": [
+      {
+       "loc": "2.1 Hubble Space Telescope Observations",
+       "quote": "The data were processed through the standard pipeline reduction using AstroDrizzle."
+      }
+     ]
+    }
+   },
+   {
+    "name": "hyperz",
+    "version": "not stated",
+    "used_for": {
+     "value": "Photometric redshifts of ALESS SMGs",
+     "evidence": [
+      {
+       "loc": "2.2 Our sample",
+       "quote": "derived using the SED fitting code hyperz (cite: Bolzonella:2000aa)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "General analysis (acknowledged)",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H160 detection rate of SMGs",
+    "value": "79",
+    "uncertainty": "17%",
+    "units": "percent",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "In total we detected 38 SMGs[^2], with a detection rate of 79 $\\pm$ 17%."
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction with disturbed morphology (z=1-3)",
+    "value": "82",
+    "uncertainty": "9%",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Visual Classifications",
+      "quote": "the percentage of SMGs with disturbed morphologies, meaning they are either irregular or have an interaction tag, is 82 $\\pm$ 9%."
+     }
+    ]
+   },
+   {
+    "quantity": "Comparison field disturbed fraction",
+    "value": "48",
+    "uncertainty": "6%",
+    "units": "percent",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Visual Classifications",
+      "quote": "we found that only 48 $\\pm$ 6% of the comparison far-infrared-faint field sample have disturbed morphologies"
+     }
+    ]
+   },
+   {
+    "quantity": "Median Sérsic index (H160<=24)",
+    "value": "1.2",
+    "uncertainty": "0.3",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2 Sérsic index and Effective Radius",
+      "quote": "the median $n$ for those $H_{160}$-band components with $H_{160} \\leq$ 24 mag is 1.2 $\\pm$ 0.3"
+     }
+    ]
+   },
+   {
+    "quantity": "Median effective radius (H160<=24)",
+    "value": "4.4",
+    "uncertainty": "+1.1/-0.5",
+    "units": "kpc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Sérsic index and Effective Radius",
+      "quote": "we obtained a median $r_e$ of 4.4$^{+1.1}_{-0.5}$ kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Intrinsic scatter of H160-ALMA offset",
+    "value": "0.40",
+    "uncertainty": "0.05",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.3 Positional Offsets",
+      "quote": "We also measured an average intrinsic scatter of $0.40\\ensuremath{''}\\pm0.05\\ensuremath{''}$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [],
+  "claims": [
+   {
+    "hypothesis": "Are SMGs mainly undisturbed disks or mergers in stellar light?",
+    "experiment": "Visual classification of H160 images of 29 SMGs at z=1-3 versus a field comparison sample",
+    "result": "82±9% irregular or interacting versus 48±6% in the field",
+    "finding": "Most SMGs have disturbed stellar morphologies despite disk-like Sérsic indices",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find that 82 $\\pm$ 9% of the $H_{160}$-band detected SMGs at $z =$ 1–3 appear to have disturbed morphologies"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are dusty star-forming regions co-located with the stellar light?",
+    "experiment": "Compare GALFIT component positions with ALMA 870 um positions",
+    "result": "Scatter 0.40±0.05 arcsec versus expected 0.24 arcsec",
+    "finding": "Dust and stellar emission are displaced",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.3 Positional Offsets",
+      "quote": "The measured scatter for the ALESS SMGs is $0.4\\ensuremath{''}\\pm0.05\\ensuremath{''}$, significantly larger than the expected value, $0.24\\ensuremath{''}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are z=2-3 SMGs progenitors of z~2 quiescent galaxies?",
+    "experiment": "Compare SMG sizes and Sérsic indices with literature quiescent galaxies",
+    "result": "SMGs larger with lower n",
+    "finding": "A major structural transformation, likely via mergers, is needed",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "suggesting a major transformation of the stellar light profile is needed in the quenching processes"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Non-parametric CAS/Gini/M20 cannot separate irregulars from disks, motivating visual classification plus GALFIT",
+    "evidence": [
+     {
+      "loc": "3 Methodology",
+      "quote": "This caveat on non-parametric analysis motivates the need to first conduct a visual inspection of the morphology of SMGs"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Size bias toward small r_e near the detection limit; counterpart assumption lacks redshift confirmation",
+     "evidence": [
+      {
+       "loc": "4.2 Sérsic index and Effective Radius",
+       "quote": "there is a size bias toward smaller $r_e$ when detecting components close to the detection limit"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Visual classification is subjective and not blind to the SMG status",
+    "H160 at z>2 samples rest-frame UV, so the morphological K-correction matters",
+    "Photometric redshifts uncertain for several sources",
+    "The merger conclusion is indirect; there is no kinematic test"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "HST data from program 12866 and CANDELS/HUDF09; ALMA data acknowledged as 2011.1.00294.S",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.1.00294.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Per-source GALFIT masks and starting parameters",
+    "Visual classification individual results",
+    "ALMA positions come from Hodge et al. 2013, which must be obtained separately"
+   ],
+   "estimated_data_volume_inferred": "~5-20 GB (HST images; ALMA only used via catalog)",
+   "score_inferred": 3,
+   "score_reason": "HST data are public and the Table 1 results are given, but the visual classification is subjective and the GALFIT setup is only partly specified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA data are used only through a published catalogue; the main results come from HST and a subjective visual classification."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Peng:2010aa)",
+     "why": "GALFIT"
+    },
+    {
+     "citation": "(cite: Hodge:2013lr)",
+     "why": "ALESS ALMA survey catalog"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Simpson:2014aa)",
+     "why": "ALESS photometric redshifts"
+    },
+    {
+     "citation": "(cite: Swinbank:2014ul)",
+     "why": "ALESS SEDs and infrared luminosities"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALESS",
+    "LESS",
+    "CANDELS",
+    "HUDF09",
+    "MUSYC"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-b943d815a15c856b5fc5903bcd770ce4",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:21",
+  "usage": {
+   "input_tokens": 52959,
+   "output_tokens": 6583,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086481,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 43,
+  "quotes_ok": 43,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2011.0.00294.S"
+  ],
+  "codes_printed_but_missing": [
+   "2011.1.00294.S"
+  ],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 72,
+   "stated": 33,
+   "rate": 0.458
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T00:34:47",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": [
+   {
+    "list": "data.alma_project_codes",
+    "reason": "code not printed in the paper",
+    "item": {
+     "code": "2011.0.00294.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.1.00294.S."
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

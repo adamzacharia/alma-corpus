@@ -1,0 +1,691 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...614A..17B",
+  "title": "Modelling the carbon AGB star R Sculptoris. Constraining the dust properties in the detached shell based on far-infrared and sub-millimeter observations",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Brunner, M.",
+  "n_authors": 5,
+  "arxiv_id": null,
+  "doi": "10.1051/0004-6361/201732065",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00131.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2.2 Continuum observations from ALMA",
+    "quote": "The ALMA observations are hence not used for constraining our radiative transfer models of the star, shell, or present-day mass loss, but are merely used to verify the spatial origin of the LABOCA observations"
+   }
+  ],
+  "science": {
+   "fields": [
+    "evolved_stars"
+   ],
+   "targets": [
+    {
+     "name": "R Scl",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "370 pc",
+      "evidence": [
+       {
+        "loc": "1. Introduction",
+        "quote": "We adopt a distance of 370 pc, which is derived from the P – L relationship for semi-regular variables"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "P-L relationship for semi-regular variables (Knapp et al. 2003)",
+      "evidence": [
+       {
+        "loc": "1. Introduction",
+        "quote": "We adopt a distance of 370 pc, which is derived from the P – L relationship for semi-regular variables"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust properties in the detached shell of R Scl, and how do they affect the SED and the derived dust shell mass?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We study the properties of dust grains in the detached shell around the carbon AGB star R Scl and aim to quantify the influence of the dust grain properties on the shape of the spectral energy distribution (SED) and the derived dust shell mass."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00131.S",
+     "evidence": [
+      {
+       "loc": "2.2 Continuum observations from ALMA",
+       "quote": "The ALMA observations were taken during ALMA Early Science in Cycle 0 (ADS/JAO.ALMA#2011.0.00131.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 3, 6, and 7",
+    "evidence": [
+     {
+      "loc": "2.2 Continuum observations from ALMA",
+      "quote": "with 16 antennas in the main array in ALMA Bands 3, 6, and 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "main array, 16 antennas, Cycle 0",
+    "evidence": [
+     {
+      "loc": "2.2 Continuum observations from ALMA",
+      "quote": "with 16 antennas in the main array in ALMA Bands 3, 6, and 7"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Herschel PACS/SPIRE",
+     "provided": {
+      "value": "FIR photometry at 70, 160, 250, 350, 500 µm",
+      "evidence": [
+       {
+        "loc": "2.1 Spectral energy distribution towards R Scl",
+        "quote": "We additionally included Herschel/PACS photometry at 70 and 160 µm, and Herschel/SPIRE photometry at 250, 350 and 500 µm"
+       }
+      ]
+     }
+    },
+    {
+     "name": "APEX/LABOCA",
+     "provided": {
+      "value": "870 µm map, archival data re-reduced with CRUSH",
+      "evidence": [
+       {
+        "loc": "2.3 APEX/LABOCA observations",
+        "quote": "The data were re-reduced using CRUSH (Kovács 2008)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Optical to 100 µm photometry (Kerschbaum & Hron 1994, IRAS) for the SED",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "0.44 0.16 0.20 Kerschbaum & Hron (1994)"
+       }
+      ]
+     },
+     "citation": "Kerschbaum & Hron (1994); IRAS"
+    },
+    {
+     "what": {
+      "value": "Optical constants of amorphous carbon",
+      "evidence": [
+       {
+        "loc": "3.6 Dust properties",
+        "quote": "used the optical constants derived by Suh (2000), unless otherwise mentioned."
+       }
+      ]
+     },
+     "citation": "Suh (2000)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "ALMA Band 7 convolved with the LABOCA beam and subtracted from the LABOCA map",
+     "evidence": [
+      {
+       "loc": "2.3 APEX/LABOCA observations",
+       "quote": "We convolved the ALMA Band 7 observations with the LABOCA beam, and subtracted the emission from the LABOCA map."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Details of the ALMA observations",
+      "evidence": [
+       {
+        "loc": "2.2 Continuum observations from ALMA",
+        "quote": "for more details on the observations, we refer to Maercker et al. 2012, 2016"
+       }
+      ]
+     },
+     "from_reference": "Maercker et al. 2012, 2016"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA calibration and imaging details and continuum flux extraction method",
+    "CASA version",
+    "Band 7 continuum image used for stellar subtraction",
+    "Opacity tables and grid steps for MCMax"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit stellar blackbody",
+    "method": {
+     "value": "Grid of blackbodies fit by chi-square to SED points shorter than 4 µm",
+     "evidence": [
+      {
+       "loc": "3.3 Stellar parameters and contribution",
+       "quote": "we calculated a small grid of black bodies with varying T eff,⋆ and L ⋆ to determine the best-fitting parameters to our observational data, shorter than 4 µm"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Distance 370 pc",
+      "evidence": [
+       {
+        "loc": "3.3 Stellar parameters and contribution",
+        "quote": "The best-fitting parameters are T eff,⋆ = 2250 K and L ⋆ = 7000 L ⊙ for a distance of D = 370 pc."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "ALMA points reproduced by stellar contribution alone",
+     "evidence": [
+      {
+       "loc": "3.3 Stellar parameters and contribution",
+       "quote": "It is evident that the ALMA observations do not represent any detached-shell contribution but are reproduced by the stellar contribution alone."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Model wind and shell SED, fit mass-loss and shell mass",
+    "method": {
+     "value": "MCMax radiative transfer grids of 50-150 models, chi-square minimisation, then fine scaled grid of 1000 models for shell mass and 1σ error",
+     "evidence": [
+      {
+       "loc": "3.8 Model grid and refinement",
+       "quote": "we calculated MCMax radiative transfer model grids with typical sizes of 50–150 models and varying step sizes"
+      }
+     ]
+    },
+    "software": [
+     "MCMax"
+    ],
+    "key_parameters": [
+     {
+      "value": "Grain size 0.1 µm, density 1.8 g cm-3, condensation temperature 1500 K, Suh (2000) optical constants",
+      "evidence": [
+       {
+        "loc": "3.6 Dust properties",
+        "quote": "We adopted a grain size of 0.1 µm and a grain density of 1.8 g cm −3"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Optically thin dust, full gas-dust coupling",
+      "evidence": [
+       {
+        "loc": "3.2 General assumptions and modelling strategy",
+        "quote": "We assumed that the dust emission is optically thin."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi-square minimisation; scaling factor 0.05 to 2 in 1000 steps; 1σ confidence interval",
+     "evidence": [
+      {
+       "loc": "3.8 Model grid and refinement",
+       "quote": "multiplied the shell spectrum by a scaling factor, ranging from 0.05 to 2 in 1000 steps"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with Schöier et al. (2005)",
+     "evidence": [
+      {
+       "loc": "4.1 Best-fitting standard model for present-day wind and detached shell",
+       "quote": "our best-fitting shell mass is consistent with their published (3.2 ± 2.0) × 10 −5 M ⊙"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Vary dust properties",
+    "method": {
+     "value": "Repeat fits for different optical constants, MgS/SiC mixtures, large grains, DHS and fluffy grains",
+     "evidence": [
+      {
+       "loc": "4.2 Changing the dust grain properties",
+       "quote": "We explore the effect on the model SED of the assumed optical constants, grain composition, grain size, and geometrical grain model."
+      }
+     ]
+    },
+    "software": [
+     "MCMax",
+     "DDSCAT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MCMax",
+    "version": "not stated",
+    "used_for": {
+     "value": "Monte Carlo dust radiative transfer SED models",
+     "evidence": [
+      {
+       "loc": "3.1 SED models with MCMax",
+       "quote": "We used the Monte Carlo dust radiative transfer code MCMax (Min et al. 2009)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CRUSH",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reduction of LABOCA data",
+     "evidence": [
+      {
+       "loc": "2.3 APEX/LABOCA observations",
+       "quote": "The data were re-reduced using CRUSH (Kovács 2008)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DDSCAT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Opacities of the example fluffy aggregate grain",
+     "evidence": [
+      {
+       "loc": "Figure 11 caption",
+       "quote": "used for calculating opacities with DDSCAT (Draine & Flatau 1994)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Detached shell dust mass (best fit)",
+    "value": "2.9e-5",
+    "uncertainty": "0.3e-5",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "a detached shell dust mass of (2.9 ± 0.3) × 10 −5 M ⊙"
+     }
+    ]
+   },
+   {
+    "quantity": "Present-day dust mass-loss rate",
+    "value": "2e-10",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "a present-day dust mass-loss rate of 2 × 10 −10 M ⊙ yr −1"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar effective temperature",
+    "value": "2250",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.3 Stellar parameters and contribution",
+      "quote": "T eff,⋆ = 2250 K and L ⋆ = 7000 L ⊙"
+     }
+    ]
+   },
+   {
+    "quantity": "Shell mass with DHS grains",
+    "value": "1.3e-5",
+    "uncertainty": "0.2e-5",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.4 Grain geometry",
+      "quote": "the best-fitting detached-shell mass is (1.3 ± 0.2) × 10 −5 M ⊙"
+     }
+    ]
+   },
+   {
+    "quantity": "LABOCA map rms",
+    "value": "4.5",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.3 APEX/LABOCA observations",
+      "quote": "The final map has an rms noise of 4.5 mJy"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "A significant sub-millimeter excess cannot be reproduced by any model and is likely not thermal",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find a significant sub-millimeter excess that cannot be reproduced by any of the models, but is most likely not of thermal origin."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "How do dust properties affect shell mass and SED?",
+    "experiment": "MCMax model grids varying opacities, composition, grain size and geometry",
+    "result": "Grain size dominates SED shape; geometry most affects shell mass (DHS needs 40% of mass)",
+    "finding": "Grain geometry is the largest uncertainty in dust return",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the size of the grains dominates the shape of the SED, while the estimated dust shell mass is most strongly affected by the geometry of the dust grains"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Cold dust explanation for the sub-mm excess rejected (needs T<5 K)",
+     "evidence": [
+      {
+       "loc": "4.3 Sub-millimeter excess",
+       "quote": "This corresponds to temperatures lower than 5 K (Fig. 12)."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Present-day mass-loss rate is poorly constrained and should be interpreted with care",
+     "evidence": [
+      {
+       "loc": "3.4 Present-day wind description",
+       "quote": "The determined value for the present-day mass-loss rate should therefore be interpreted with some care."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Chi-square values are high (3.7) and the sub-mm excess is excluded from the fit",
+    "1D spherical model ignores shell clumpiness"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival LABOCA data retrieved; ALMA data from Cycle 0 project",
+    "evidence": [
+     {
+      "loc": "2.3 APEX/LABOCA observations",
+      "quote": "We retrieved archival data of R Scl observed with LABOCA"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "ALMA flux extraction details",
+    "MCMax input files"
+   ],
+   "estimated_data_volume_inferred": "Small for ALMA continuum; LABOCA archival data tens of GB or less",
+   "score_inferred": 3,
+   "score_reason": "The SED data are tabulated and the modelling is well described, but ALMA processing is deferred to other papers.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA plays a minor role; the main results are from MCMax modelling with incompletely specified inputs."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Min et al. 2009",
+     "why": "MCMax code"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Maercker et al. 2012, 2016",
+     "why": "Source of the ALMA observations"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-468a716c4e123be85a3a635be3a3d9a0",
+  "batch_id": "msgbatch_012LjuhFAoRkm5pHBCLF3RxG",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:12:55",
+  "usage": {
+   "input_tokens": 27402,
+   "output_tokens": 4686,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.051438,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 35,
+  "quotes_ok": 35,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 66,
+   "stated": 27,
+   "rate": 0.409
+  },
+  "evidence_ok": true
+ }
+}

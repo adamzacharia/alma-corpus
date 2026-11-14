@@ -1,0 +1,609 @@
+{
+ "bibcode": "2024A&A...682A..55M",
+ "title": "High-resolution ALMA observations of compact discs in the wide-binary system Sz 65 and Sz 66",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202347135",
+ "arxiv_id": "2402.01903",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Whether compact protoplanetary discs around the wide-binary stars Sz 65 and Sz 66 exhibit substructures on spatial scales of ~4 au",
+ "alma_project_codes": [
+  "2018.1.00271.S",
+  "2017.1.00569.S",
+  "2018.1.01458.S",
+  "2019.1.01135.S",
+  "2015.1.00222.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "45 antennas (2018.1.00271.S)",
+  "angular_resolution": "0''.026 × 0''.018 (continuum); 0''.101 × 0''.079 (tapered 12CO)",
+  "sensitivity": "13 μJy/beam (continuum); 1.9 mJy/beam km/s or 1.81 mJy/beam.km/s (12CO cube, 1 km/s channels); 10 mJy/beam.km/s (unthresholded moment 0)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses of 0.76 ± 0.18 M_sun for Sz 65 and 0.31 ± 0.04 M_sun for Sz 66 from X-shooter spectroscopy",
+    "evidence": [
+     {
+      "loc": "2. Sz 65 and Sz 66",
+      "quote": "Based on an analysis of X-shooter spectroscopy, stellar masses of 0.76 ± 0.18 M⊙ were calculated for Sz 65 and 0.31 ± 0.04 M⊙ for Sz 66 (Alcalá et al. 2014, 2017)."
+     }
+    ]
+   },
+   "citation": "Alcalá et al. (2014, 2017)"
+  },
+  {
+   "what": {
+    "value": "Gaia distances of 153.0 ± 0.6 pc for Sz 65 and 154.4 ± 0.6 pc for Sz 66",
+    "evidence": [
+     {
+      "loc": "2. Sz 65 and Sz 66",
+      "quote": "Their Gaia distances are very similar, 153.0 ± 0.6 pc for Sz 65 and 154.4 ± 0.6 pc for Sz 66 (Bailer-Jones et al. 2021)"
+     }
+    ]
+   },
+   "citation": "Bailer-Jones et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "ALMA Band 7 (890 μm) continuum fluxes of 64.49 ± 0.32 mJy (Sz 65) and 14.78 ± 0.29 mJy (Sz 66) used for spectral index calculation",
+    "evidence": [
+     {
+      "loc": "2. Sz 65 and Sz 66",
+      "quote": "The discs were previously observed as part of the Lupus survey with ALMA at 890 μm (angular resolution ~ 0''.30), where continuum fluxes of 64.49 ± 0.32 and 14.78 ± 0.29 mJy were measured (Ansdell et al. 2016)"
+     },
+     {
+      "loc": "5.1. Continuum emission",
+      "quote": "For Sz 65, the flux measured in Band 7 (890 μm) by Ansdell et al. (2016) was 64.5 mJy, which gives a spectral index α = 2.3 ± 0.3"
+     }
+    ]
+   },
+   "citation": "Ansdell et al. (2016)"
+  },
+  {
+   "what": {
+    "value": "Radial brightness temperature profiles of DSHARP survey discs and CX Tau for comparison",
+    "evidence": [
+     {
+      "loc": "6.2. DSHARP sample comparison",
+      "quote": "The top panel in Figure 13 compares the TB (R) profile for Sz 65 and Sz 66 with the DSHARP sample and CX Tau (Facchini et al. 2019)."
+     }
+    ]
+   },
+   "citation": "Andrews et al. (2018a,b), Facchini et al. (2017, 2019)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Align, self-calibrate, concatenate, and image continuum and 12CO datasets",
+   "method": "Individual phase/amplitude self-calibration in CASA, Gaussian fit to align phase centres to J2000 15h39m27.750s -34d46m17.692s, concatenation of 4 continuum datasets and 2 CO datasets, and Hogbom CLEAN with Briggs robust=0.0 (plus 0''.07 uv taper and Keplerian masking for CO)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.0 (also tested -2.0 and 2), uv taper = 0''.07 for CO, channel width = 768 kHz (1 km/s) for CO, solint = 30s (2019.1.01135), solint = 120s (2017.1.00569), applymode = 'calonly' (2018.1.00271, 2018.1.01458)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure image-plane continuum and CO fluxes, disc geometry, radial profiles, R90 sizes, spectral indices, and dust masses",
+   "method": "2D Gaussian fitting in the image plane for PA and inclination, deprojecting and azimuthally averaging surface brightness for 1D profiles and cumulative 90% flux radii (R90), integrating moment 0 maps above 3σ, combining with Band 7 fluxes for spectral index, and computing optically thin dust mass",
+   "software": [
+    "CASA",
+    "Astropy"
+   ],
+   "key_parameters": [
+    "3σ contour threshold for integrated continuum flux and moment map creation"
+   ],
+   "assumptions": [
+    "Optically thin thermal dust emission, distance d = 153 pc (Sz 65) and 154.4 pc (Sz 66), midplane temperature T = 20 K, dust opacity κ_ν = 0.1 (ν/10^12 Hz)^β cm^2 g^-1 with β = 1.0, 10% flux calibration uncertainty"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Non-parametric visibility modelling of 1D radial continuum brightness profiles",
+   "method": "Fit deprojected real visibilities in logarithmic brightness space using frank (log-normal method), testing hyperparameter variations and phase centre offsets",
+   "software": [
+    "frank"
+   ],
+   "key_parameters": [
+    "Maximum radius R_max = 2'', number of collocation points N = 300, hyperparameter α = 1.2 (also tested α = 1.05, 1.30), wsmooth varied, phase centre shift grid up to ±5 mas (best shift dRA +1 mas, dDec -4 mas)"
+   ],
+   "assumptions": [
+    "Axisymmetric 1D disc brightness distribution; power spectrum prior applied to log(I_ν)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Kinematic modelling of 12CO (2-1) rotation velocity maps",
+   "method": "Create peak velocity maps from the 1.0 km/s cube above 3σ using bettermoments, and fit Keplerian rotation models (with an elevated flared emission surface for Sz 65, flat for Sz 66) using eddy MCMC",
+   "software": [
+    "bettermoments",
+    "eddy"
+   ],
+   "key_parameters": [
+    "robust = 0.0 cube, 1.0 km/s spectral resolution, 3σ threshold; for Sz 65 final fit: fixed inclination = 63.76◦, M_* = 0.76 M_sun, d = 153.1 pc; for Sz 66 fit: fixed M_* = 0.31 M_sun, d = 156.0 pc"
+   ],
+   "assumptions": [
+    "Keplerian rotation; for Sz 65 an azimuthally symmetric elevated emission surface z(r) = z0 * (r/1'')^ψ * exp(-(r/r_taper)^q_taper)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Probabilistic modelling of binary tidal truncation radii",
+   "method": "Compute probability distributions P(R_t) of equilibrium tidal truncation radii using the Pichardo et al. (2005) semi-analytical formula and Torres (1999) deprojection via Monte Carlo sampling of orbital parameters",
+   "software": [],
+   "key_parameters": [
+    "10^6 Monte Carlo realizations per case; uniform eccentricity priors [0.0, 0.7] and [0.0, 0.9]; mass ratio q = M_Sz65 / M_Sz66 (and inverted for Sz 66)"
+   ],
+   "assumptions": [
+    "Disc midplane lies on the binary orbital plane; uniform eccentricity distribution; sin(i) orbital inclination distribution"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate upper limit on gap-opening planet mass in Sz 65 and compare brightness temperature profiles with DSHARP",
+   "method": "Apply the Lodato et al. (2019) Hill-radius gap-width scaling relation to the frank gap/ring locations in Sz 65, and compute radial brightness temperature T_B(R) profiles to compare against DSHARP and CX Tau",
+   "software": [],
+   "key_parameters": [
+    "Gap minimum at r = 20 au, ring peak at 24 au, gap width ∆ = 4 au, scaling constant k = 4.5 - 8, stellar mass M_* = 0.76 M_sun"
+   ],
+   "assumptions": [
+    "Low disc viscosity (α < 0.01); gap width scales with planet Hill radius"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Sz 65 1.3 mm continuum integrated flux density",
+   "value": "28.0 (or 28)",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "The integrated flux density measured within a 3σ contour is 28.0 mJy."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "mm flux (mJy) 28 ± 3 6 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 continuum peak intensity",
+   "value": "1.34",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "The peak in emission is 1.34 mJy/beam, which for the image rms of 13 μJy/beam gives a signal-to-noise ratio of 95 for this observation."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 dust disc radius R90",
+   "value": "27",
+   "uncertainty": "4",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "R 90 for the continuum is 27 ± 4 au, and for the CO gas, it is 142 ± 15 au around Sz 65."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "R 90 dust (au) 27 ± 4 16 ± 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 12CO gas disc radius R90",
+   "value": "142",
+   "uncertainty": "15",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "R 90 for the continuum is 27 ± 4 au, and for the CO gas, it is 142 ± 15 au around Sz 65."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "R 90 gas (au) 142 ± 15 48 ± 15"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 R_gas / R_dust ratio",
+   "value": "5.3",
+   "uncertainty": "0.9",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "The ratio of R gas / R dust for Sz 65 is 5.3 ± 0.9."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 disc inclination (image plane Gaussian fit)",
+   "value": "63",
+   "uncertainty": "1",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "A Gaussian fit to the emission in the image plane gives a position angle on the sky of 110 ± 0.5 o, a major axis FWHM of 229 ± 3 milliarcsecond and a minor axis FWHM 103 ± 1 milliarcsecond, corresponding to an inclination on the sky of 63 ± 1 o ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Inclination (degrees) 63 ± 1 68 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 disc position angle (image plane Gaussian fit)",
+   "value": "110.0",
+   "uncertainty": "0.5 (or 1)",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "A Gaussian fit to the emission in the image plane gives a position angle on the sky of 110 ± 0.5 o, a major axis FWHM of 229 ± 3 milliarcsecond and a minor axis FWHM 103 ± 1 milliarcsecond"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Position angle (degrees) 110.0 ± 1 80.0 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 spectral index α (Band 6 to Band 7)",
+   "value": "2.3",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "For Sz 65, the flux measured in Band 7 (890 μm) by Ansdell et al. (2016) was 64.5 mJy, which gives a spectral index α = 2.3 ± 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 dust mass estimate",
+   "value": "16.1",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "With these inputs, we calculate a dust mass estimate of 16.1 M⊕"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 1.3 mm continuum integrated flux density",
+   "value": "14.4 (in text) / 6 (in Table 2)",
+   "uncertainty": "1 (in Table 2)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "The integrated flux density is 14.4 mJy, with a peak value of 0.55 mJy/beam, giving a peak signal-to-noise ratio of 39."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "mm flux (mJy) 28 ± 3 6 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 continuum peak intensity",
+   "value": "0.55",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "The integrated flux density is 14.4 mJy, with a peak value of 0.55 mJy/beam, giving a peak signal-to-noise ratio of 39."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 dust disc radius R90",
+   "value": "16",
+   "uncertainty": "4",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "We find 16 ± 4 au and 47 ± 15 au in Sz 66."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "R 90 dust (au) 27 ± 4 16 ± 4"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 12CO gas disc radius R90",
+   "value": "48 (or 47)",
+   "uncertainty": "15",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The observations show that Sz 66 is very compact: 90% of the flux is contained within 16 au, and 90% of the molecular gas flux lies within 48 au."
+    },
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "We find 16 ± 4 au and 47 ± 15 au in Sz 66."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "R 90 gas (au) 142 ± 15 48 ± 15"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 R_gas / R_dust ratio",
+   "value": "2.9",
+   "uncertainty": "1.0",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3.1. Measurements from the image plane",
+     "quote": "For Sz 66, the ratio is lower at 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 disc inclination (image plane Gaussian fit)",
+   "value": "67.8 (or 68)",
+   "uncertainty": "1",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "A Gaussian fit to the image plane returns a best fit with a position angle 80.0 o and a shape of 116 mas x 43.8 mas FWHM, corresponding to an inclination of 67.8 o ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Inclination (degrees) 63 ± 1 68 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 disc position angle (image plane Gaussian fit)",
+   "value": "80.0",
+   "uncertainty": "1",
+   "units": "degrees",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "A Gaussian fit to the image plane returns a best fit with a position angle 80.0 o and a shape of 116 mas x 43.8 mas FWHM, corresponding to an inclination of 67.8 o ."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Position angle (degrees) 110.0 ± 1 80.0 ± 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 spectral index α (Band 6 to Band 7)",
+   "value": "2.2",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "Ansdell et al. (2016) measured a flux at 890 μm of 14.78 mJy, which led us to calculate α = 2.2 ± 0.3."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 dust mass estimate",
+   "value": "3.4",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.1. Continuum emission",
+     "quote": "With Equation 1, this gives a dust mass estimate for Sz 66 of 3.4 M⊕ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 12CO moment 0 integrated flux",
+   "value": "629",
+   "uncertainty": "not stated",
+   "units": "mJy/beam.km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2. 12CO (2-1) emission",
+     "quote": "In the moment 0 map, the integrated flux measured from pixels above 3σ around Sz 65 is 629 mJy/beam.km/s, with a peak brightness of 61 mJy/beam.km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 12CO moment 0 integrated flux",
+   "value": "382",
+   "uncertainty": "not stated",
+   "units": "mJy/beam.km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2. 12CO (2-1) emission",
+     "quote": "Around Sz 66, an integrated flux of 382 mJy/beam.km/s is measured and the peak lies at 74.3 mJy/beam.km/s."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 dust gap minimum location",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.3.2. Non-parametric visibility fitting",
+     "quote": "The local brightness minimum in the visibility fitting model is at a deprojected separation of 20 au, and the peak brightness of the exterior ring is at 24 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 exterior dust ring peak location",
+   "value": "24",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.3.2. Non-parametric visibility fitting",
+     "quote": "The local brightness minimum in the visibility fitting model is at a deprojected separation of 20 au, and the peak brightness of the exterior ring is at 24 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 gap-to-ring brightness difference",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.3.2. Non-parametric visibility fitting",
+     "quote": "The brightness difference between these two locations is 8%."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 kinematic stellar mass",
+   "value": "0.77",
+   "uncertainty": "0.01",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.3. Analysis of the molecular gas disc",
+     "quote": "Through this modelling, we also obtained a kinematic constraint on the stellar mass of Sz 65 of M∗ = 0.77 ± 0.01 M⊙."
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 65 12CO emission surface aspect ratio z0",
+   "value": "0.0342 (or 0.03)",
+   "uncertainty": "+0.0003/-0.0003",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.3. Analysis of the molecular gas disc",
+     "quote": "This modelling achieves a best-fit value of the aspect ratio constant z0=0.03 (see Figure A3 for the MCMC results)."
+    },
+    {
+     "loc": "Appendix",
+     "quote": "z0 = 0.0342 +0.0003 0.0003"
+    }
+   ]
+  },
+  {
+   "quantity": "Sz 66 12CO kinematic inclination",
+   "value": "38.4599 (or 38)",
+   "uncertainty": "+0.2284/-0.2387",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3.3. Analysis of the molecular gas disc",
+     "quote": "This fitting procedure finds an inclination value for the 12CO gas disc of 38◦, which is significantly different from that derived from images of the dust disc, which was found to be 68◦."
+    },
+    {
+     "loc": "Appendix",
+     "quote": "inc = 38.4599 +0.2284 0.2387"
+    }
+   ]
+  },
+  {
+   "quantity": "Most likely predicted tidal truncation radius R_t for Sz 65",
+   "value": "276",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3.4. Tidal truncation",
+     "quote": "Sz 65 has a most likely predicted truncation radius of 276 au, which is also much larger than the measured R 90, which is 161 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Most likely predicted tidal truncation radius R_t for Sz 66",
+   "value": "195",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3.4. Tidal truncation",
+     "quote": "In Figure 12, Sz 66 is expected to be the more compact disc, with its most likely truncation radius found at 195 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on planet mass in Sz 65 gap",
+   "value": "0.04-0.2",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "6.1. Evidence of substructure in the high-resolution observations of Sz 65 and Sz 66",
+     "quote": "When we account for variation in k, this means that an upper limit on the mass of a planet found is 0.04-0.2 M Jup, for the brightness variation we observe."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact cell (pixel) size and image dimensions (imsize) used in clean for both continuum and 12CO cubes",
+  "Exact solution intervals (solint) and number of rounds for phase self-calibration of projects 2018.1.00271 and 2018.1.01458",
+  "Exact channel ranges flagged as line-containing when averaging line-free channels for continuum",
+  "Parameters used to generate the Keplerian mask during 12CO cleaning",
+  "Continuum subtraction task and polynomial order (e.g. uvcontsub) used before imaging 12CO",
+  "Exact value of the wsmooth hyperparameter used in the final frank fits",
+  "Priors, number of walkers, and number of steps used in the eddy MCMC fitting"
+ ],
+ "missing_for_reproduction": [
+  "Exact self-calibration solution intervals and iteration sequence for the two long-baseline projects (2018.1.00271.S and 2018.1.01458.S)",
+  "CLEAN imaging parameters: cell size, image dimensions, stopping threshold/niter, and Keplerian mask parameters",
+  "Exact wsmooth hyperparameter value used in frank fits"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All five ALMA project codes, the common phase centre coordinates, weighting/taper parameters, and analysis packages (CASA, frank, eddy, bettermoments) are clearly specified, along with key frank and eddy parameters; minor deductions for missing self-cal solints on the long-baseline EBs, CLEAN pixel/masking parameters, and internal text typos on Sz 66 flux.",
+ "rediscovery_reason": "All five ALMA datasets are public in the archive, the data reduction and visibility/kinematic modelling recipes use standard open-source tools (CASA, frank, eddy, bettermoments), and the main findings (Sz 65 gap at 20 au, ring at 24 au, R90 sizes, and kinematic stellar mass) are quantitative.",
+ "source_card": "cards/2024A%26A...682A..55M/sonnet/card.md"
+}

@@ -1,0 +1,646 @@
+{
+"depth": "full",
+"paper_type": "large_program_or_survey",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We used observations from the ALMA-IMF large program"}
+],
+"fields": ["star_formation"],
+"question": {
+"value": "Measure the core mass function (CMF) of the evolved W33-Main protocluster and compare it with CMFs from other Galactic star-forming regions, including other ALMA-IMF fields",
+"evidence": [
+{"loc": "abstract", "quote": "We aimed to measure the CMF in the evolved W33-Main star-forming protocluster to compare it with CMF recently obtained in other Galactic star-forming regions, including the ones included in the ALMA-IMF program."}
+]
+},
+"targets": [
+{
+"name": "W33-Main (G012.80)",
+"details": [
+{"loc": "Observations and data reduction", "quote": "The W33-Main field was centred on the 18$^{\\rm h}$14$^{\\rm m}$13.370s, $-$17$^\\circ$55$'$45.200$''$"},
+{"loc": "The G012.80 region", "quote": "A parallax study of this complex by (cite: Immer2013) located the W33 complex in the Scutum spiral arm, in the first quadrant of the Galaxy, at a distance of 2.40$^{+0.17}_{-0.15}$ kpc."},
+{"loc": "The global Core Mass Function in W33-Main", "quote": "For W33-Main, we adopted a 2.4 kpc value for the distance"}
+],
+"coordinates": "18h14m13.370s, -17d55m45.200s (J2000), field centre",
+"redshift_or_distance": "2.4 kpc (parallax 2.40 +0.17/-0.15 kpc)",
+"distance_source": "Parallax study of the W33 complex by Immer et al. 2013; adopted value discussed in I14"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.01355.L", "evidence": [
+{"loc": "Acknowledgements", "quote": "This article makes use of the ALMA data ADS/JAO.ALMA#2017.1.01355.L."}
+]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (3 mm) and Band 6 (1.3 mm)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Both the 12 m and 7 m antennas of the interferometer were used in bands 3 and 6 respectively at 3 mm and 1.3 mm"}
+]},
+{"field": "arrays", "value": "ALMA 12m and 7m mosaics (67 and 27 pointings at 1.3 mm; 13 and 5 pointings at 3 mm); this paper's core extraction uses 12m-only images", "evidence": [
+{"loc": "Observations and data reduction", "quote": "mosaics were performed by the ALMA 12m and 7m arrays, respectively composed of 67 (12m) and 27 (7m) pointings at 1.3mm and 13 (12m) and 5 (7m) pointings at 3 mm."},
+{"loc": "abstract", "quote": "observed by the ALMA 12m only antennas"}
+]},
+{"field": "configurations", "value": "12m (42 antennas) in C43-2 / C43-4 / C43-1 configurations (TM1 long-baseline, TM2 short-baseline) plus 7m (10 antennas)", "evidence": [
+{"loc": "Table 1 notes", "quote": "C43-2, C43-4, C43-1 and 7M refers to the observation time using respectively the 12m (42 antennas) and 7m (10 antennas)."},
+{"loc": "Table 1 notes", "quote": "The long- and short-baseline observations are denoted TM1 and TM2, respectively."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Four spws in Band 3 (3.7 GHz total) and eight in Band 6 (2.9 GHz total), re-divided into smaller windows centred on individual lines", "evidence": [
+{"loc": "Observations and data reduction", "quote": "A total of four and eight spectral windows (spw) were set up respectively in bands 3 and 6, for total bandwidths of respectively 3.7 GHz and 2.9 GHz."}
+]},
+{"field": "angular_resolution", "value": "~1 arcsec, ~2400 au at 2.4 kpc", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The angular resolution is of the order of 1$''$, enabling the detection of structures of 2400 au size."}
+]},
+{"field": "max_recoverable_scale", "value": "~6.6 arcsec at 1.3 mm and ~9.9 arcsec at 3 mm (12m data)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "For the 12m data, the maximum recoverable scales are $\\sim$6.6$\\ensuremath{''}$ at 1.3 mm and $\\sim$9.9$''$ at 3 mm"}
+]},
+{"field": "sensitivity", "value": "1 sigma = 0.20 mJy/beam (1.3 mm) and 0.26 mJy/beam (3 mm), used for the 5 sigma cleaning threshold; bsens maps detect cores down to ~2 Msun at 5 sigma", "evidence": [
+{"loc": "Data reduction", "quote": "with 1$\\sigma$ = 0.20 mJy beam$^{-1}$ at 1.3 mm and 1$\\sigma$ = 0.26 mJy beam$^{-1}$ at 3 mm"},
+{"loc": "Data reduction", "quote": "allowing the detection of cores with masses down to $\\sim2$ $M_{\\odot }$ at 5$\\sigma$"}
+]},
+{"field": "observing_dates", "value": "December 2017 to December 2018 (whole ALMA-IMF program)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "Between December 2017 and December 2018, as part of the ALMA-IMF"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA-IMF Large Program 2017.1.01355.L (PIs Motte, Ginsburg, Louvet, Sanhueza); the paper uses the ALMA-IMF consortium's delivered continuum images and line cubes", "evidence": [
+{"loc": "Observations and data reduction", "quote": "PIs: Motte, Ginsburg, Louvet, Sanhueza"},
+{"loc": "Data reduction", "quote": "The W33-Main data that we used correspond to the continuum images and line cubes delivered by G22 and C23 respectively."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "2-1", "rest_frequency": "not stated", "evidence": [
+{"loc": "abstract", "quote": "The lines we analysed are CO (2–1), SiO (5–4)"}
+]},
+{"species": "SiO", "transition": "5-4", "rest_frequency": "not stated", "evidence": [
+{"loc": "abstract", "quote": "The lines we analysed are CO (2–1), SiO (5–4)"}
+]},
+{"species": "N2H+", "transition": "v=0, J=1-0", "rest_frequency": "not stated", "evidence": [
+{"loc": "Data reduction", "quote": "N$_{2}$H$^+$ (1–0) in Band 3, later used to study the filamentary structure of the region"}
+]},
+{"species": "H41alpha (and He41alpha+C41alpha blend)", "transition": "H41alpha recombination line", "rest_frequency": "92.034 GHz (spw central frequency used for free-free estimate)", "evidence": [
+{"loc": "Free-free contamination", "quote": "The contribution from the free-free to the continuum emission at 92.034 GHz was first estimated using the H41$\\alpha$ recombination line"},
+{"loc": "Data reduction", "quote": "H41$\\alpha$ and {He41$\\alpha$+C41$\\alpha$} in Band 3, later used to study the free-free emission"}
+]}
+],
+"other_facilities": [
+{"name": "APEX ATLASGAL (LABOCA 870 um) and SABOCA 350 um", "provided": {"value": "Far-infrared/submm maps used as inputs to PPMAP dust temperature fitting", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "two APEX observations (the ATLASGAL one at 870 $\\mu$m with the LABOCA receiver"}
+]}},
+{"name": "Herschel Hi-GAL (PACS, SPIRE)", "provided": {"value": "70, 160 and 500 um maps used in PPMAP", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "observations at 70, 160, and 500 $\\mu$m"}
+]}},
+{"name": "SOFIA/HAWC+", "provided": {"value": "89 and 214 um maps used in PPMAP", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "two SOFIA/HAWC+ maps at 89 and 214 $\\mu$m"}
+]}},
+{"name": "MGPS90 (Mustang-2 Galactic Plane Survey pilot) and BGPS", "provided": {"value": "Single-dish data merged with ALMA-IMF 3 mm and 1.3 mm maps for the spectral index map", "evidence": [
+{"loc": "Free-free contamination", "quote": "merged with the pilot of the Mustang-2 Galactic Plane Survey (MGPS90, (cite: Ginsburg2020)) at 3 mm"},
+{"loc": "Free-free contamination", "quote": "the Bolocam Galactic Plane Survey (BGPS, (cite: Aguirre2011), (cite: Ginsburg2013)) at 1.3 mm."}
+]}},
+{"name": "2MASS and WISE", "provided": {"value": "Near/mid-IR point sources used to look for Class I/II and other young stellar objects", "evidence": [
+{"loc": "2MASS and WISE all-sky surveys", "quote": "2MASS operates between 1.235 $\\mu$m and 2.159 $\\mu$m, and WISE between 3.4 $\\mu$m and 22 $\\mu$m."}
+]}},
+{"name": "Spitzer/IRAC GLIMPSE", "provided": {"value": "3.6-8.0 um point sources used to search for young stellar objects", "evidence": [
+{"loc": "GLIMPSE Galactic Plane survey", "quote": "GLIMPSE I imaged at wavelengths 3.6, 4.5, 5.8 and 8.0 $\\mu$m using the IRAC instrument"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "Distance to W33-Main (2.4 kpc)", "evidence": [
+{"loc": "The G012.80 region", "quote": "A parallax study of this complex by (cite: Immer2013) located the W33 complex in the Scutum spiral arm, in the first quadrant of the Galaxy, at a distance of 2.40$^{+0.17}_{-0.15}$ kpc."}
+]}, "citation": "Immer2013 (parallax), see also I14 (Immer2014)"},
+{"what": {"value": "[Ne II] 12.81 um emission map used with H41alpha to define H II region zones", "evidence": [
+{"loc": "H II regions", "quote": "emission at 12.81 $\\rm \\mu$m presented by (cite: Beilis2022)"}
+]}, "citation": "Beilis et al. 2022 (cite: Beilis2022)"},
+{"what": {"value": "Dust opacity per unit gas+dust mass at 1.3 mm, 0.01 (+0.005/-0.0033) cm2 g-1", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "we adopted the value of 0.01$^{+0.005}_{-0.0033}$ cm$^2$ g$^{-1}$ from (cite: Ossenkopf1994)"}
+]}, "citation": "Ossenkopf & Henning 1994 (cite: Ossenkopf1994); errorbars as in Pouteau2022"},
+{"what": {"value": "PPMAP dust temperature products for ALMA-IMF fields", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "The systematic application of PPMAP to regions observed by the ALMA-IMF program is ongoing and is the object of Dell’Ova et al., in prep."}
+]}, "citation": "Dell’Ova et al., in prep."},
+{"what": {"value": "Free-free subtracted 1.3 mm 'pure dust' continuum map and H41alpha-based free-free estimates", "evidence": [
+{"loc": "Free-free contamination", "quote": "Galván-Madrid et al., (in prep.) provide the details on how such calculations were used to produce ‘pure’ dust, free-free subtracted maps of continuum emission at 1.3 mm."}
+]}, "citation": "Galván-Madrid et al., in prep."},
+{"what": {"value": "Automatic methyl formate hot core search giving 4 hot core candidates", "evidence": [
+{"loc": "Identification of hot cores", "quote": "This procedure provided a list of 4 hot core candidates in W33-Main."}
+]}, "citation": "Bonfand et al., in prep."},
+{"what": {"value": "Continuum images (bsens, cleanest) and line cubes of W33-Main", "evidence": [
+{"loc": "Data reduction", "quote": "The W33-Main data that we used correspond to the continuum images and line cubes delivered by G22 and C23 respectively."}
+]}, "citation": "G22 (Ginsburg2022), C23 (Cunningham2023)"},
+{"what": {"value": "Catalogued masers, star cluster and O-type star in the field", "evidence": [
+{"loc": "2MASS and WISE all-sky surveys", "quote": "the point sources catalogued by (cite: Messineo2015): one star cluster, one O-type star, two water masers and one methanol maser."}
+]}, "citation": "Messineo et al. 2015 (cite: Messineo2015)"}
+],
+"simulations_or_models_as_data": [
+{"value": "About 800 synthetic Gaussian sources (FWHM 1.3 arcsec) injected into a getsf background image of the 1.3 mm bsens map to measure completeness", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "We then injected $\\sim$800 synthetic sources over this background image."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "Automatic CASA pipeline developed by the ALMA-IMF consortium (described in G22)", "evidence": [
+{"loc": "Data reduction", "quote": "developed by the ALMA-IMF consortium and fully described in G22 was used to produce two continuum"}
+]},
+{"field": "casa_version", "value": "CASA 6.2", "evidence": [
+{"loc": "Data reduction", "quote": "An automatic CASA 6.2 pipeline"}
+]},
+{"field": "archive_products_used_as_is", "value": "No: uses ALMA-IMF consortium reprocessed continuum images and line cubes (G22, C23), corrected for system temperature and spectral normalisation", "evidence": [
+{"loc": "Data reduction", "quote": "The ALMA consortium corrected these data for system temperature and spectral normalisation following the problems detected in data from cycle 3 to 7"}
+]},
+{"field": "self_calibration", "value": "Self-calibration applied to continuum data, details in G22; noise reduction up to ~46% in Band 3", "evidence": [
+{"loc": "Data reduction", "quote": "because of the extended emission in this field, self-calibration of the data was necessary to achieve the requested sensitivity for continuum images."},
+{"loc": "Data reduction", "quote": "This calibration phase resulted in a significant noise reduction of up to $\\sim 46\\%$, for Band 3."}
+]},
+{"field": "flux_scale_uncertainty", "value": "10% for ALMA (adopted in PPMAP, from G22)", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "10% for ALMA (G22) observations"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean within the ALMA-IMF pipeline", "evidence": [
+{"loc": "Data reduction", "quote": "The cleaning was done using the `TCLEAN` task of CASA."}
+]},
+{"field": "deconvolver", "value": "Multi-scale clean; continuum start model used for cubes", "evidence": [
+{"loc": "Data reduction", "quote": "The use of the multi-scale option as well as the use of a continuum start model on the cubes improved the cleaning, especially on the extended emission."}
+]},
+{"field": "continuum_subtraction", "value": "cleanest continuum maps made by removing line-contaminated channels (Find_Continuum routine by Todd Hunter); bsens maps keep all spws", "evidence": [
+{"loc": "Data reduction", "quote": "we removed channels contaminated by line emission"}
+]},
+{"field": "line_free_channels", "value": "More than 80% of the continuum bandwidth used for the W33-Main cleanest maps (channel list in G22)", "evidence": [
+{"loc": "Data reduction", "quote": "To produce these maps for the W33-Main field, more than 80% of the continuum bandwidth was used"}
+]},
+{"field": "primary_beam_correction", "value": "Uncorrected 1.3 mm bsens image for source detection; primary-beam-corrected images for size and flux measurements", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "We then used the primary beam corrected version of this image to measure the cores’ size and estimate their flux."}
+]},
+{"field": "smoothing", "value": "Free-free subtraction map made at the 3 mm angular resolution; spectral index map made at minimum common beam of bands 3 and 6", "evidence": [
+{"loc": "Free-free contamination", "quote": "performed at the 3 mm angular resolution"},
+{"loc": "Free-free contamination", "quote": "That map was built from bands 3 and 6 continuum maps at their minimum common beam"}
+]},
+{"field": "final_beam", "value": "~1 arcsec (1.1 x 0.7 arcsec at 1.3 mm from Table 1)", "evidence": [
+{"loc": "Observations and data reduction", "quote": "The angular resolution is of the order of 1$''$"}
+]}
+],
+"inherited": [
+{"what": {"value": "Self-calibration details and imaging pipeline", "evidence": [
+{"loc": "Data reduction", "quote": "Complete information about the self-calibration of the data can be found in G22."}
+]}, "from_reference": "G22 (Ginsburg2022, ALMA-IMF Paper II)"},
+{"what": {"value": "Source filtering criteria (goodness/significance, S/N, ellipticity)", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "and in line with what was done by (cite: Pouteau2022), compact sources for which i) the goodness and significance factor (defined in (cite: Menshchikov2021a)) are less than 1"}
+]}, "from_reference": "Pouteau2022 (Paper III)"},
+{"what": {"value": "Gext2D cross-check of the getsf catalog", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "Following the work done by (cite: Pouteau2022), we also used the"}
+]}, "from_reference": "Pouteau2022"},
+{"what": {"value": "Spectral index map construction", "evidence": [
+{"loc": "Free-free contamination", "quote": "(cite: DiazGonzalez2023), see their Equation 2"}
+]}, "from_reference": "DiazGonzalez2023"},
+{"what": {"value": "Hot core identification procedure", "evidence": [
+{"loc": "Identification of hot cores", "quote": "We independently followed the procedure described in Paper IV by (cite: Brouillet2022)."}
+]}, "from_reference": "Brouillet2022 (Paper IV)"},
+{"what": {"value": "Outflow search method", "evidence": [
+{"loc": "Search for outflows", "quote": "Here we followed the same method as presented in e.g. (cite: Nony2023)."}
+]}, "from_reference": "Nony2023 (Paper V)"},
+{"what": {"value": "PPMAP configuration (resolution, highpass filter, optical-depth correction)", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "Dell’Ova et al. followed the procedure first introduced by (cite: Motte2018Nat) for a number of parameters."}
+]}, "from_reference": "Dell’Ova et al., in prep.; Motte2018Nat"},
+{"what": {"value": "Small-scale temperature replacement within cores", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "First, following (cite: Pouteau2022), we replaced the temperature distribution within cores by 2D gaussian"}
+]}, "from_reference": "Pouteau2022"},
+{"what": {"value": "Core mass formula (optically thick correction)", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "we used the formula in (cite: Motte2018Nat) and (cite: Pouteau2022) to our core sample"}
+]}, "from_reference": "Motte2018Nat; Pouteau2022"},
+{"what": {"value": "Power-law fitting method for CMF slope", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "Like (cite: Pouteau2022), we used the Alstott fitting method ((cite: Alstott2014), using a Maximum Likelihood Estimate approach)"}
+]}, "from_reference": "Pouteau2022; Alstott2014"},
+{"what": {"value": "Bootstrap procedure for slope and uncertainty", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "This procedure is fully described in (cite: Pouteau2023)."}
+]}, "from_reference": "Pouteau2023 (Paper VI)"}
+],
+"unstated_but_needed": [
+"getsf run parameters beyond the maximum source size (detection thresholds, filtering scales, number of scales)",
+"tclean parameters for the delivered images (robust weighting, cell size, image size, masks, multiscale scales) are only in G22/C23",
+"Self-calibration solution intervals and the exact line-free channel list for the cleanest maps",
+"H41alpha LTE free-free calculation inputs (electron temperature, line width treatment) and the delivered pure-dust map: both in Galvan-Madrid et al. in prep",
+"Full PPMAP setup (temperature grid, highpass wavelengths, dilution parameter, optical-depth correction) and the delivered temperature map: in Dell'Ova et al. in prep",
+"Per-core mean temperatures and uncertainties used in the mass formula",
+"Exact line transitions and rest frequencies of CH3OCHO, CH3CN, CH3OH, C2H5CN and H2CS used for hot core detection, and how the 2 sigma detection was measured",
+"Criteria for visual outflow association (subjective eye inspection), and how monopolar/bipolar counts were decided",
+"Solid angle of beam and flux values per core for mass calculation (Table lists fluxes but not masses or temperatures)",
+"Mass-driven uncertainty sigma per core and bootstrap random seeds"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Define H II region, surroundings and rest-of-cloud zones",
+"method": {"value": "Use 5 sigma and 1 sigma contours of H41alpha and [Ne II] emission to divide the field into three zones", "evidence": [
+{"loc": "H II regions", "quote": "we defined everything that lies within the 5$\\sigma$ contours of the H41$\\alpha$ emission"},
+{"loc": "H II regions", "quote": "Finally, outside these $\\sigma$ contours, we defined ‘the rest of the cloud’ without significant influence of free-free emission."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared H41alpha with continuum and [Ne II] morphology and with the structures of I14", "evidence": [
+{"loc": "H II regions", "quote": "we found a broad correlation of the H41$\\alpha$ emission with the 3 and 1.3 mm continuum emission on the one hand and the Ne II emission on the other hand"}
+]}
+},
+{
+"order": 2,
+"goal": "Extract compact continuum sources",
+"method": {"value": "Run getsf on the 1.3 mm bsens 12m image (not primary-beam corrected) for detection, then measure sizes and fluxes on primary-beam-corrected images (1.3 and 3 mm bsens and cleanest); filter by getsf goodness and significance, S/N and ellipticity", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "we used the 1.3 mm `bsens` 12m array image, uncorrected for primary beam effects for the detection of compact continuum sources."},
+{"loc": "Extraction of compact sources", "quote": "After application of these criteria, the filtered *getsf* catalog contains 94 sources."}
+]},
+"software": ["getsf", "Gext2D"],
+"key_parameters": [
+{"value": "Maximum source size set to three times the beam size (geometric mean of major and minor axes) in each image", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "is set to three times the beam size (geometric average of its major and minor extents) in each of the images"}
+]},
+{"value": "First catalog of 101 sources before filtering", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "After running *getsf*, we obtained a first catalog of 101 sources."}
+]}
+],
+"assumptions": [
+{"value": "Sources must be relatively round emission peaks; very elongated or complex structures are not compact cores", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "If a structure is too elongated or has a very complex shape, it is unlikely to be a compact core."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Cross-check with Gext2D extraction: more than 75% of sources matched", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "we also used the *Gext2D* method, and found that more than 75$\\%$ of the sources have a match with those extracted by *getsf*"}
+]}
+},
+{
+"order": 3,
+"goal": "Measure catalog completeness",
+"method": {"value": "Inject synthetic Gaussian sources into the getsf background image, re-extract with the same parameters and compare injected and recovered mass and position", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "We ran the extraction algorithm *getsf* on all these synthetic images with the same parameter as for the observations."}
+]},
+"software": ["getsf"],
+"key_parameters": [
+{"value": "~800 sources in ten log-spaced mass bins between 0.15 and 3.0 Msun; Gaussian profile with FWHM 1.3 arcsec (3000 au)", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "These synthetic sources were split into ten bins of mass, logarithmically spaced between 0.15 and 3.0 $M_{\\odot}$."},
+{"loc": "Extraction of compact sources", "quote": "FWHM of 1.3$''$ ie. 3000 au at 2.4 kpc"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Five series of simulations with different source locations to dilute grid effects and estimate error bars", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "We performed five series of completeness simulations, varying the location of synthetic sources to dilute the effects of the chosen grid and to allow to estimate the error bars."}
+]}
+},
+{
+"order": 4,
+"goal": "Identify and correct free-free contaminated cores",
+"method": {"value": "Flag cores within 1 sigma contours of H41alpha or [Ne II]; check with a band 3-6 spectral index map; build a 'pure dust' 1.3 mm map by estimating free-free from H41alpha under LTE and extrapolating to 1.3 mm; remove cores with negative pure-dust signal and correct fluxes of contaminated and uncertain cores", "evidence": [
+{"loc": "Free-free contamination", "quote": "was first estimated using the H41$\\alpha$ recombination line under the LTE assumption, and then extrapolated to 1.3 mm wavelength using an optically thin emission of $I_{ff,\\nu} \\propto \\nu^{-0.1}$"},
+{"loc": "Free-free contamination", "quote": "We call them ‘free-free dominated’ and hence remove them from our final core catalog."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Spectral index thresholds: below 0.5 free-free dominated, 0.5 to 2.0 contaminated, above 2.0 dust dominated (where 3 mm emission above 3 sigma)", "evidence": [
+{"loc": "Free-free contamination", "quote": "Below 0.5 is where the 1.3 mm emission is expected to be dominated by the free-free emission. Between 0.5 and 2.0 is where it should be contaminated by the free-free emission."}
+]},
+{"value": "Result: 10 free-free dominated (removed), 7 uncertain, 18 contaminated cores", "evidence": [
+{"loc": "Free-free contamination", "quote": "we identified 10 free-free dominated cores (which are in the following study removed from our core catalog), 7 free-free ‘uncertain’ cores and 18 free-free contaminated cores."}
+]}
+],
+"assumptions": [
+{"value": "H41alpha free-free estimate under LTE; optically thin free-free emission scaling as nu^-0.1 between 3 and 1.3 mm", "evidence": [
+{"loc": "Free-free contamination", "quote": "under the LTE assumption"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Line-based flagging (35 cores) recovered by spectral index map (17 dominated plus 18 contaminated); pure-dust ratio compared with spectral index", "evidence": [
+{"loc": "Free-free contamination", "quote": "we found that 17 cores are located inside the free-free dominated parts and 18 inside the contaminated parts of the map, recovering the 35 sources listed based on line emission."}
+]}
+},
+{
+"order": 5,
+"goal": "Remove or correct line-contaminated cores",
+"method": {"value": "Subtract CO(2-1) from the 1.3 mm bsens map, re-run getsf with the same parameters, remove sources that vanish (outflow knots) and use cleanest fluxes for sources that survive but lie in outflow lobes", "evidence": [
+{"loc": "Line contamination", "quote": "we subtracted the CO (2–1) line (the brightest line in our dataset) from the `bsens` map at 1.3 mm and performed a new *getsf* extraction on this specific data product"}
+]},
+"software": ["getsf"],
+"key_parameters": [
+{"value": "4 sources removed as CO-dominated; 4 kept with cleanest flux densities", "evidence": [
+{"loc": "Line contamination", "quote": "In summary, among the 94 sources of our *getsf* filtered catalog, we removed 10 free-free dominated and 4 CO emission-dominated sources."},
+{"loc": "Line contamination", "quote": "Our final *getsf* catalog hence contains 80 cores."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Classify cores as pre- or protostellar",
+"method": {"value": "Hot cores: at least three COM lines detected at 2 sigma toward a core; outflows: eye inspection of CO and SiO blue/red integrated maps plus moment 1, moment 2, SO and PV diagrams; Class I association from WISE; define scenario A (21 protostellar) and B (37 protostellar)", "evidence": [
+{"loc": "Identification of hot cores", "quote": "We considered that the cores where at least three of these lines were simultaneously detected were ‘hot core candidates’."},
+{"loc": "Search for outflows", "quote": "We also generated and used complementary maps: moment 1 (central velocity in km/s) and moment 2 (velocity dispersion in km/s), SO integrated intensity maps, and we produced PV-diagrams to confirm or infirm our detections."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Outflow velocity ranges: ambient within +-5 km/s of vlsr = 37 km/s; blue [12;32] km/s and red [42;62] km/s", "evidence": [
+{"loc": "Search for outflows", "quote": "$\\pm~5$ km s$^{-1}$ around W33-Main $v_{lsr} = 37$ km s$^{-1}$ for the ‘ambient gas’, and \\[12;32\\] km s$^{-1}$ and \\[42;62\\] km s$^{-1}$ for the blue- and red-shifted components."}
+]},
+{"value": "COM search at 2 sigma for CH3OCHO, CH3CN, CH3OH, C2H5CN and H2CS in named spectral windows", "evidence": [
+{"loc": "Identification of hot cores", "quote": "we searched for 2$\\sigma$ detections of methyl formate (CH$_3$OCHO, in spectral window 0 of Band 6)"}
+]},
+{"value": "Scenario A: 21 protostellar (26%) and 59 prestellar; scenario B: 37 protostellar (46%) and 43 prestellar", "evidence": [
+{"loc": "Search for outflows", "quote": "in scenario A, only the 21 cores mentioned in the previous paragraph are considered protostellar (26% of the sample), and the 59 others are prestellar."},
+{"loc": "Search for outflows", "quote": "resulting in 37 protostellar cores (46% of the sample) and 43 prestellar ones"}
+]}
+],
+"assumptions": [
+{"value": "A hot core is a sufficient but not necessary condition for a protostellar core; presence of an outflow indicates a protostellar object", "evidence": [
+{"loc": "Identification of hot cores", "quote": "which would be a sufficient but not necessary condition to put them in the protostellar category"},
+{"loc": "Search for outflows", "quote": "The presence of an outflow around a compact source is usually considered as a tracer of the presence of a protostellar object."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Hot core list cross-checked with independent automatic search (Bonfand et al., in prep.) giving the same 4 candidates; COM line forests checked in Band 6 spws 6 and 7", "evidence": [
+{"loc": "Identification of hot cores", "quote": "This procedure led us to identify the same 4 hot core candidates toward sources $\\#1$, $\\#2$, $\\#7$ and $\\#13$."}
+]}
+},
+{
+"order": 7,
+"goal": "Derive dust temperature map",
+"method": {"value": "PPMAP SED fitting of eight single-dish and interferometric maps from 70 um to 1.3 mm, giving column-density-weighted dust temperature at 2.5 arcsec; correct for optical depth at 70 um; replace temperature within cores by 2D Gaussians (mean core temperature +4 K protostellar, -2 K prestellar)", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "We estimated the dust temperature in W33-Main using the Point Process MAPping procedure (hereafter PPMAP, (cite: Marsh2015))."},
+{"loc": "The dust temperature in W33-Main", "quote": "increased of 4 K for protostellar cores to take into acount internal heating, and decreased of 2 K for prestellar ones"}
+]},
+"software": ["PPMAP"],
+"key_parameters": [
+{"value": "Flat prior on log(T); fixed beta = 1.8 with +-0.2 explored; kappa_300 = 0.1 cm2 g-1 per gas+dust mass", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "a flat prior was used for log$(T)$, and a fixed value of 1.8 was used for the spectral emissivity index prior"},
+{"loc": "The dust temperature in W33-Main", "quote": "a value of $\\kappa_{300} = 0.1$ cm$^2$ g$^{-1}$ for the dust opacity per unit (gas + dust) at 300 $\\mu$m was adopted"}
+]},
+{"value": "Eight modified blackbody components between 21 and 39 K; output resolution 2.5 arcsec; flux uncertainties 15% LABOCA, 20% SABOCA, 10% PACS, 7% SPIRE, 20% HAWC+, 10% ALMA", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "we first used eight modified black body components between 21 and 39 K to fit the observations"},
+{"loc": "The dust temperature in W33-Main", "quote": "First, PPMAP products were generated with an expected angular resolution of 2.5$''$."}
+]}
+],
+"assumptions": [
+{"value": "Optical-depth correction applied a posteriori raised the maximum field temperature from 39 K to 44 K; for the cores the correction was not applied before the small-scale replacement", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "it resulted in an increase of the maximum temperature in our field from 39 K to 44 K"}
+]}
+],
+"fitting": {"value": "Bayesian PPMAP fit of modified blackbody building blocks with a dilution factor prior", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "In this Bayesian procedure, the spectral energy distribution from the dust emission is described by a combination of modified blackbody functions at given temperatures and given spectral emissivity indices."}
+]},
+"validation": {"value": "Average of 27 +-3.5 K compared with M22 evolved regions and with earlier Herschel PPMAP, I14 and NH3 temperatures", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "The average value of 27 $\\pm$ 3.5 K is in agreement with that provided by M22 for evolved regions."}
+]}
+},
+{
+"order": 8,
+"goal": "Convert 1.3 mm flux densities to core masses",
+"method": {"value": "Optically thick mass formula using integrated and peak 1.3 mm flux, beam solid angle, kappa at 1.3 mm and core-averaged dust temperature; flux from cleanest for line-contaminated and hot core candidates, free-free corrected where needed, bsens otherwise", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "This equation assumes that thermal dust emission at 1.3 mm is optically thick ($\\tau_{\\rm 1.3mm} \\gtrsim 1$)"},
+{"loc": "The global Core Mass Function in W33-Main", "quote": "For the 47 remaining sources , it is given by our `bsens` dataset."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "d = 2.4 kpc; kappa_1.3mm = 0.01 (+0.005/-0.0033) cm2 g-1", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "we adopted the value of 0.01$^{+0.005}_{-0.0033}$ cm$^2$ g$^{-1}$ from (cite: Ossenkopf1994)"},
+{"loc": "The global Core Mass Function in W33-Main", "quote": "For W33-Main, we adopted a 2.4 kpc value for the distance"}
+]}
+],
+"assumptions": [
+{"value": "Dust opacity per unit gas+dust mass from Ossenkopf & Henning 1994; optical thickness correction applicable to the 10 densest cores (5 to 10% mass increase)", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "This correction results in a 5 to 10$\\%$ increase of the masses of these 10 cores."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Test with a uniform 27 K temperature gave masses from 0.03 to 28.2 Msun and CMF slope compatible with the non-uniform one", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "using a uniform dust temperature equal to the average of Fig. [10](#fig:ppmap), $T_{\\rm dust}$ = 27 K, the core masses range from $0.03~M_{\\odot}$ to $28.2~M_{\\odot}$"}
+]}
+},
+{
+"order": 9,
+"goal": "Fit the global CMF high-mass slope",
+"method": {"value": "Maximum-likelihood power-law fit (Alstott method) of the cumulative CMF above the 1 Msun completeness; then bootstrap of 5000 resampled core samples with Gaussian mass perturbation and EMG fit to the histogram of slopes", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "Like (cite: Pouteau2022), we used the Alstott fitting method ((cite: Alstott2014), using a Maximum Likelihood Estimate approach), and obtained a first estimate: $\\alpha = -1.43 \\pm 0.06$"},
+{"loc": "The global Core Mass Function in W33-Main", "quote": "5000 core samples were generated from the observed core sample."}
+]},
+"software": ["Alstott power-law fitting method"],
+"key_parameters": [
+{"value": "Fit above completeness 1 Msun (best lower mass limit also estimated by the fit); 2000 randomly generated CMFs for mass-driven uncertainty (~0.06) plus fit uncertainty (~0.02)", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "It was obtained by performing the fit over 2000 CMFs randomly generated from individual core masses"},
+{"loc": "The global Core Mass Function in W33-Main", "quote": "The fit uncertainty was generally on the order of $\\sigma \\simeq 0.02$ estimated from the associated $\\chi^2$ value."}
+]},
+{"value": "Bootstrap: each core mass drawn from a normal distribution centred on its mass with standard deviation equal to half the mass sigma", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "The center of this distribution is the core mass value, and its standard deviation value was equal to half the $\\sigma$ value associated to a core mass mentioned in the previous paragraph."}
+]}
+],
+"assumptions": [
+{"value": "CMF high-mass end follows a single power law N(>=logM) proportional to M^alpha", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "We note that if we don’t apply flux correction for the 18 free-free ‘contaminated’ cores we are changing the value from $\\alpha = -1.44^{+0.16}_{-0.22}$ to $\\alpha = -1.30^{+0.14}_{-0.19}$, that is consistent with the Salpeter slope."}
+]}
+],
+"fitting": {"value": "Maximum likelihood (Alstott et al. 2014); histogram of bootstrap slopes fitted with an Exponentially Modified Gaussian whose peak gives the best slope; uncertainties from +-1 sigma around the peak", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "All histograms are then fitted by an Exponentially Modified Gaussian (EMG), whose peak locates the best fit value for each core sample"}
+]},
+"validation": {"value": "Sensitivity tests: without free-free flux correction slope -1.30; also without correction for uncertain cores -1.22; uniform T of 27 K gives -1.28", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "The resulting CMF has a slope value of $\\alpha = -1.28^{+0.14}_{-0.22}$"}
+]}
+},
+{
+"order": 10,
+"goal": "Fit pre- and protostellar CMFs",
+"method": {"value": "Repeat the MLE and bootstrap fits on prestellar and protostellar sub-samples for scenarios A and B", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "We used the bootstrap procedure again, with resulting, final slope values $\\alpha = -1.69^{+0.20}_{-0.31}$ for the prestellar cores and $\\alpha = -1.04^{+0.15}_{-0.31}$ for the protostellar ones"}
+]},
+"software": ["Alstott power-law fitting method"],
+"key_parameters": [
+{"value": "First MLE estimates in scenario A: prestellar -1.67 +-0.06; protostellar -1.06 +-0.08", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "We found first estimates for slope values of $\\alpha = -1.67 \\pm 0.06$ for the prestellar cores, and $\\alpha = -1.06 \\pm 0.08$ for the protostellar ones"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "Same as step 9 (MLE plus 5000-sample bootstrap)", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "We used the bootstrap procedure again"}
+]},
+"validation": {"value": "Scenario B gives similar results; temperature offsets of -2/+4 K do not change slopes significantly; authors warn about small samples", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "The numbers we obtained for scenario B were not substantially different, with bootstrap values $\\alpha = -1.75^{+0.24}_{-0.42}$, $\\alpha = -1.25^{+0.17}_{-0.33}$."},
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "All these results were obtained on relatively small samples, and should be treated with caution."}
+]}
+},
+{
+"order": 11,
+"goal": "Compare core number and mass across H II zones",
+"method": {"value": "Count cores, area fraction and enclosed mass in the three zones; compare maximum core mass and protostellar fraction; relate to column density", "evidence": [
+{"loc": "A tentative global view on star formation in W33-Main", "quote": "we found 12 cores in the H II regions (representing 2.5% of the 1.3 mm map in surface, and containing approximately 700 $M_\\odot$)"},
+{"loc": "A tentative global view on star formation in W33-Main", "quote": "12 cores in their surroundings (2%, 700 $M_\\odot$), and 56 cores in the rest of the cloud (95.5%, 10700 $M_\\odot$)"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "6.2", "used_for": {"value": "ALMA-IMF automatic calibration/imaging pipeline producing continuum images and line cubes", "evidence": [
+{"loc": "Data reduction", "quote": "An automatic CASA 6.2 pipeline"}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Cleaning of continuum and line images", "evidence": [
+{"loc": "Data reduction", "quote": "The cleaning was done using the `TCLEAN` task of CASA."}
+]}},
+{"name": "Find_Continuum (Todd Hunter)", "version": "not stated", "used_for": {"value": "Identify and remove line-contaminated channels for cleanest continuum maps", "evidence": [
+{"loc": "Data reduction", "quote": "Using the `Find_Continuum` routine developed by Todd Hunter"}
+]}},
+{"name": "getsf", "version": "not stated", "used_for": {"value": "Extraction of compact sources and catalogue completeness tests", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "After running *getsf*, we obtained a first catalog of 101 sources."}
+]}},
+{"name": "Gext2D", "version": "not stated", "used_for": {"value": "Cross-check source extraction", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "we also used the *Gext2D* method, and found that more than 75$\\%$ of the sources have a match with those extracted by *getsf*"}
+]}},
+{"name": "PPMAP", "version": "not stated", "used_for": {"value": "Dust temperature and column density maps from multi-wavelength data", "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "We estimated the dust temperature in W33-Main using the Point Process MAPping procedure (hereafter PPMAP, (cite: Marsh2015))."}
+]}},
+{"name": "Alstott et al. power-law fitting method", "version": "not stated", "used_for": {"value": "Maximum likelihood power-law fits to the CMF", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "we used the Alstott fitting method ((cite: Alstott2014), using a Maximum Likelihood Estimate approach)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "Sources in first getsf catalog", "value": "101", "uncertainty": "not stated", "units": "sources", "from_step": 2, "evidence": [
+{"loc": "Extraction of compact sources", "quote": "After running *getsf*, we obtained a first catalog of 101 sources."}
+]},
+{"quantity": "Sources in filtered getsf catalog", "value": "94", "uncertainty": "not stated", "units": "sources", "from_step": 2, "evidence": [
+{"loc": "Extraction of compact sources", "quote": "After application of these criteria, the filtered *getsf* catalog contains 94 sources."}
+]},
+{"quantity": "90% completeness mass limit", "value": "1.0", "uncertainty": "+-0.2", "units": "Msun", "from_step": 3, "evidence": [
+{"loc": "Complementary Figure and Table", "quote": "We estimated a $90\\%$ global completeness level of $1.0 \\pm 0.2~\\rm M_{\\odot}$ for the *getsf* catalog"}
+]},
+{"quantity": "Final core catalogue size", "value": "80", "uncertainty": "not stated", "units": "cores", "from_step": 5, "evidence": [
+{"loc": "Line contamination", "quote": "Our final *getsf* catalog hence contains 80 cores."}
+]},
+{"quantity": "Number of cores with outflows", "value": "20 (9 monopolar, 9 bipolar, 2 multipolar)", "uncertainty": "not stated", "units": "cores", "from_step": 6, "evidence": [
+{"loc": "Search for outflows", "quote": "we found 20 cores with outflows, of which 9 monopolar, 9 bipolar and 2 multipolar"}
+]},
+{"quantity": "Hot core candidates", "value": "4 (cores #1, #2, #7, #13)", "uncertainty": "not stated", "units": "cores", "from_step": 6, "evidence": [
+{"loc": "Identification of hot cores", "quote": "This procedure led us to identify the same 4 hot core candidates toward sources $\\#1$, $\\#2$, $\\#7$ and $\\#13$."}
+]},
+{"quantity": "Average dust temperature of the field", "value": "27", "uncertainty": "+-3.5", "units": "K", "from_step": 7, "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "The temperatures vary from 20 to 55 K. The average value of 27 $\\pm$ 3.5 K is in agreement with that provided by M22 for evolved regions."}
+]},
+{"quantity": "Mean temperature of hot core candidates #1 and #2", "value": "55 K (core #1) and 49 K (core #2)", "uncertainty": "+-10 K each", "units": "K", "from_step": 7, "evidence": [
+{"loc": "The dust temperature in W33-Main", "quote": "we found temperatures of 55$\\pm$10 K for core $\\#$1 and 49$\\pm$10 K for core $\\#$2"}
+]},
+{"quantity": "Core mass range", "value": "0.03 to 13.2", "uncertainty": "not stated", "units": "Msun", "from_step": 8, "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "We measured core masses from 0.03 $M_{\\odot}$ to 13.2 $M_{\\odot}$."}
+]},
+{"quantity": "Global CMF slope, first MLE estimate", "value": "-1.43", "uncertainty": "+-0.06", "units": "dimensionless", "from_step": 9, "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "and obtained a first estimate: $\\alpha = -1.43 \\pm 0.06$"}
+]},
+{"quantity": "Global CMF slope, bootstrap (final)", "value": "-1.44", "uncertainty": "+0.16/-0.22", "units": "dimensionless", "from_step": 9, "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "The resulting, final slope value for the global CMF in W33-Main is $\\alpha = -1.44^{+0.16}_{-0.22}$"}
+]},
+{"quantity": "Global CMF slope without free-free flux correction for the 18 contaminated cores", "value": "-1.30", "uncertainty": "+0.14/-0.19", "units": "dimensionless", "from_step": 9, "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "to $\\alpha = -1.30^{+0.14}_{-0.19}$, that is consistent with the Salpeter slope"}
+]},
+{"quantity": "Global CMF slope with uniform T = 27 K", "value": "-1.28", "uncertainty": "+0.14/-0.22", "units": "dimensionless", "from_step": 9, "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "The resulting CMF has a slope value of $\\alpha = -1.28^{+0.14}_{-0.22}$"}
+]},
+{"quantity": "Prestellar CMF slope, scenario A (bootstrap)", "value": "-1.69", "uncertainty": "+0.20/-0.31", "units": "dimensionless", "from_step": 10, "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "final slope values $\\alpha = -1.69^{+0.20}_{-0.31}$ for the prestellar cores"}
+]},
+{"quantity": "Protostellar CMF slope, scenario A (bootstrap)", "value": "-1.04", "uncertainty": "+0.15/-0.31", "units": "dimensionless", "from_step": 10, "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "$\\alpha = -1.04^{+0.15}_{-0.31}$ for the protostellar ones"}
+]},
+{"quantity": "Prestellar and protostellar CMF slopes, scenario B (bootstrap)", "value": "-1.75 (prestellar) and -1.25 (protostellar)", "uncertainty": "+0.24/-0.42 and +0.17/-0.33", "units": "dimensionless", "from_step": 10, "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "with bootstrap values $\\alpha = -1.75^{+0.24}_{-0.42}$, $\\alpha = -1.25^{+0.17}_{-0.33}$."}
+]},
+{"quantity": "Cores in H II regions / surroundings / rest of cloud", "value": "12 / 12 / 56", "uncertainty": "not stated", "units": "cores", "from_step": 11, "evidence": [
+{"loc": "A tentative global view on star formation in W33-Main", "quote": "12 cores in their surroundings (2%, 700 $M_\\odot$), and 56 cores in the rest of the cloud (95.5%, 10700 $M_\\odot$)"}
+]}
+],
+"findings_qualitative": [
+{"value": "Core masses are low across the field (maximum ~13 Msun)", "evidence": [
+{"loc": "abstract", "quote": "We also found that the cores’ masses were rather low (maximum mass of $\\sim$13 $M_\\odot$)."}
+]},
+{"value": "Scenario where turbulent cores individually collapse is ruled out in W33-Main", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "is ruled out in W33-Main, because i) we see a break in the slope of the CMF fit between the prestellar and protostellar phase"}
+]},
+{"value": "Star formation proceeds more efficiently in the central H II regions, attributed to compression fronts", "evidence": [
+{"loc": "A tentative global view on star formation in W33-Main", "quote": "It seems that the increased star formation efficiency in the central regions is favored by the creation of compression fronts associated with the H II regions."}
+]}
+],
+"claims": [
+{"hypothesis": "W33-Main is an evolved protocluster", "experiment": "Identify H II regions from H41alpha and [Ne II], and filaments and outflows from N2H+, CO and SiO", "result": "Three H II regions within the field; extended N2H+ filaments and outflows", "finding": "W33-Main is evolved in the ALMA-IMF sense", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We confirmed the ‘evolved’ status of W33-Main by identifiying three H II regions within the field"}
+]},
+{"hypothesis": "The CMF of an evolved protocluster differs from top-heavy CMFs of young ones", "experiment": "getsf core census on 1.3 mm bsens map, PPMAP temperatures, MLE and bootstrap power-law fit", "result": "alpha = -1.44 +0.16/-0.22 above ~1 Msun, 80 cores", "finding": "Global CMF is slightly steeper than but consistent with Salpeter, in contrast with young regions", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "obtaining $\\alpha = -1.44^{+0.16}_{-0.22}$, slightly steeper but consistent with the Salpeter index"},
+{"loc": "abstract", "quote": "Our results differ from those found in less evolved young star-forming regions by the ALMA-IMF program."}
+]},
+{"hypothesis": "Pre- and protostellar CMFs differ", "experiment": "Split cores by hot core, outflow and Class I criteria (scenarios A and B) and fit each CMF", "result": "Prestellar alpha = -1.69 +0.20/-0.31, protostellar alpha = -1.04 +0.15/-0.31 (scenario A)", "finding": "Prestellar CMF steeper than Salpeter and protostellar CMF slightly top-heavy; small samples", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "We found the prestellar CMF to be steeper than a Salpeter-like distribution, and the protostellar CMF to be slightly top heavy."},
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "All these results were obtained on relatively small samples, and should be treated with caution."}
+]},
+{"hypothesis": "H II regions influence core formation and masses", "experiment": "Count cores and masses in H II regions, surroundings and the rest of the cloud", "result": "12 cores in 2.5% of the area, 12 in 2%, 56 in 95.5%; maximum mass ~7 Msun in H II regions versus ~13 Msun elsewhere", "finding": "Higher proportion of cores in H II regions and surroundings, and low maximum core masses across the field", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We found a higher proportion of cores within the H II regions and their surroundings than in the rest of the field."}
+]},
+{"hypothesis": "Star formation in W33-Main follows a clump-fed scenario with stellar feedback", "experiment": "Compare pre- and protostellar mass distributions and zone statistics with W43 results", "result": "Excess of massive protostellar cores, no massive prestellar cores, low core masses", "finding": "Results could be compatible with a clump-fed scenario in an evolved cloud under feedback", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "We found that star formation in W33-Main could be compatible with a ‘clump-fed’ scenario of star formation in an evolved cloud characterized by stellar feedback in the form of H II regions"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "1.3 mm bsens 12m image chosen for source detection because it has the best sensitivity and resolution and the least free-free contamination", "evidence": [
+{"loc": "Extraction of compact sources", "quote": "As it is the image with the best sensitivity, resolution and the least contamination by free-free emission, we used the 1.3 mm `bsens` 12m array image"}
+]},
+{"field": "why_this_method", "value": "Bootstrap used because the core sample is small", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "Because the number of cores in our *getsf* catalog is small, we then used a bootstrap procedure to better estimate the most probable slope value and its associated uncertainty."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Two pre/protostellar scenarios: A (21 protostellar) and B (37 protostellar, adding cores whose outflow association is unclear)", "evidence": [
+{"loc": "Search for outflows", "quote": "We hence decided to study two scenarios: in scenario A"}
+]},
+{"value": "CMF recomputed without free-free flux corrections and with uniform temperature to test sensitivity", "evidence": [
+{"loc": "The global Core Mass Function in W33-Main", "quote": "Without any flux correction for free-free contamination, we would have found a slightly top-heavy CMF."}
+]}
+],
+"limitations_admitted": [
+{"value": "Small samples; results should be treated with caution", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "All these results were obtained on relatively small samples, and should be treated with caution."}
+]},
+{"value": "Outflow search difficult in H II regions and surroundings, so nature of many cores unclear", "evidence": [
+{"loc": "Search for outflows", "quote": "Our search for outflows was particularly difficult in the H II regions and their surroundings"}
+]},
+{"value": "Same prescriptions as Pouteau2022 applied to sub-samples gave inconclusive outcomes", "evidence": [
+{"loc": "Prestellar vs. protostellar CMFs", "quote": "yielded a too broad variety of outcomes to be conclusive"}
+]}
+],
+"referee_caveats_inferred": [
+"Slope depends on the free-free flux correction (-1.44 vs -1.30 vs -1.22) and on a core-by-core temperature recipe tied to unpublished PPMAP products",
+"Pre/protostellar split relies on subjective eye inspection of outflows and on scenario choice; sub-samples are small",
+"Mass formula uses a single kappa (Ossenkopf) and an optically thick assumption only for the densest cores",
+"Several key inputs are 'in prep.' papers, so the chain cannot be audited from this paper alone"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Galvan-Madrid et al. in prep free-free subtracted 1.3 mm map and H41alpha products",
+"Dell'Ova et al. in prep PPMAP temperature map and per-core temperatures",
+"getsf configuration beyond maximum size and exact images used",
+"Core masses and temperatures per core (Table gives fluxes only)",
+"Outflow association decisions are visual and not scripted"
+],
+"estimated_data_volume_inferred": "Delivered ALMA-IMF continuum images and line cubes for one field are a few GB; raw measurement sets for the 12m and 7m mosaics in Bands 3 and 6 would be hundreds of GB; single-dish and IR maps are small.",
+"score_inferred": 2,
+"score_reason": "Core catalogue (positions and fluxes) is tabulated and methods are described, but temperature maps, free-free corrections and calibration details depend on unpublished or companion papers",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are linked to ALMA project 2017.1.01355.L, but the paper does not state public availability and critical inputs (PPMAP temperatures, pure-dust maps) come from in-prep papers, so the CMF slopes cannot be redone from the paper alone.",
+"methods_papers": [
+{"citation": "Ginsburg2022 (G22, ALMA-IMF Paper II)", "why": "Continuum image pipeline, self-calibration, bsens and cleanest maps"},
+{"citation": "Cunningham2023 (C23, ALMA-IMF Paper VII)", "why": "Line cube pipeline"},
+{"citation": "Motte2022 (M22, ALMA-IMF Paper I)", "why": "Program description and evolutionary classification"},
+{"citation": "Menshchikov2021a (getsf)", "why": "Source extraction method"},
+{"citation": "Pouteau2022 (Paper III)", "why": "Core filtering, mass and temperature prescriptions, CMF fitting"},
+{"citation": "Pouteau2023 (Paper VI)", "why": "Bootstrap fitting procedure"},
+{"citation": "Nony2023 (Paper V)", "why": "Outflow and pre/protostellar classification method"},
+{"citation": "Brouillet2022 (Paper IV)", "why": "Hot core identification procedure"},
+{"citation": "Motte2018Nat", "why": "Mass formula and PPMAP-based temperature procedure"}
+],
+"companion_papers": [
+{"citation": "Louvet et al., subm.", "why": "Global core population of all 15 ALMA-IMF protoclusters"},
+{"citation": "Galván-Madrid et al., in prep.", "why": "H41alpha free-free maps and pure-dust continuum"},
+{"citation": "Dell’Ova et al., in prep.", "why": "PPMAP temperature maps of ALMA-IMF fields"},
+{"citation": "Bonfand et al., in prep.", "why": "Hot core search"},
+{"citation": "Towner et al., subm.; Valeille-Manet et al., in prep.", "why": "SiO and CO outflow searches in all ALMA-IMF fields"}
+],
+"related_projects_or_surveys": ["ALMA-IMF Large Program", "W43-MM1, MM2 and MM3 (ALMA-IMF)", "ATLASGAL", "Hi-GAL", "GLIMPSE", "BGPS", "MGPS90"]
+}

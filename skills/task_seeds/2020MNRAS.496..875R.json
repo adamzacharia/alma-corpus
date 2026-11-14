@@ -1,0 +1,489 @@
+{
+ "bibcode": "2020MNRAS.496..875R",
+ "title": "The ALPINE-ALMA [C II] Survey: on the nature of an extremely obscured serendipitous galaxy",
+ "year": 2020,
+ "doi": "10.1093/mnras/staa1546",
+ "arxiv_id": "2002.00961",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Nature of a serendipitous, optically dark galaxy (Gal-A): is the ALMA Band 7 line [CII] at z~4.6 or a high-J CO line at z~2.2, and what are its SFR and stellar mass",
+ "alma_project_codes": [
+  "2017.1.00428.L"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "45 antennas",
+  "angular_resolution": "synthesized beam 1.08\" x 0.85\" at P.A. = -80 deg",
+  "sensitivity": "typical rms of 0.6 mJy/beam per channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS2015 photometric redshifts of the foreground galaxies Gal-B and Gal-C",
+    "evidence": [
+     {
+      "loc": "2.3 Multi-wavelength photometry of Gal-A",
+      "quote": "Gal-B, that in the COSMOS2015 catalogue (cite: Laigle16) has a photometric redshift"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle16)"
+  },
+  {
+   "what": {
+    "value": "Deblended IRAC fluxes of Gal-B and Gal-C from the Rainbow catalogue used as first guess for GALFIT",
+    "evidence": [
+     {
+      "loc": "2.3 Multi-wavelength photometry of Gal-A",
+      "quote": "using their optical positions and deblended fluxes from *Rainbow* as a first guess"
+     }
+    ]
+   },
+   "citation": "(cite: Perez08; Barro11a; Barro11b)"
+  },
+  {
+   "what": {
+    "value": "SED shape used to derive L_FIR from the continuum flux",
+    "evidence": [
+     {
+      "loc": "2.4 Analysis of the serendipitous source",
+      "quote": "assuming a shape of its SED from (cite: Magdis12), and normalizing its flux to"
+     }
+    ]
+   },
+   "citation": "(cite: Magdis12)"
+  },
+  {
+   "what": {
+    "value": "L_CO-L_FIR empirical relations and compiled literature galaxy sample",
+    "evidence": [
+     {
+      "loc": "3.1 On the nature of the serendipitous source",
+      "quote": "the respective best-fitting lines on the individual data are also shown (solid lines, (cite: Liu15))"
+     }
+    ]
+   },
+   "citation": "(cite: Liu15)"
+  },
+  {
+   "what": {
+    "value": "Main-sequence relations at z=2.2 and z=4.6",
+    "evidence": [
+     {
+      "loc": "3.2 Estimate of the stellar mass",
+      "quote": "we show the MS relations, assuming a Chabrier IMF"
+     }
+    ]
+   },
+   "citation": "(cite: Speagle14)"
+  },
+  {
+   "what": {
+    "value": "ALPINE sample ages and E_s(B-V) distribution",
+    "evidence": [
+     {
+      "loc": "3.2 Estimate of the stellar mass",
+      "quote": "between 0 and 0.5 (cite: Faisst19)"
+     }
+    ]
+   },
+   "citation": "(cite: Faisst19)"
+  },
+  {
+   "what": {
+    "value": "Protocluster PCI J1001+0220 at z=4.57 and its membership criteria",
+    "evidence": [
+     {
+      "loc": "4 Discussion",
+      "quote": "massive proto-cluster of galaxies PCI J1001+0220 located at $z=4.57$ in the COSMOS field (cite: Lemaux18)"
+     }
+    ]
+   },
+   "citation": "(cite: Lemaux18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the cube and identify the serendipitous source",
+   "method": "Calibrate with standard ALMA pipeline in CASA, image with tclean, inspect the cube and find a more significant emission offset ~6 arcsec from the ALPINE target",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "threshold 3 sigma_rms from the dirty image; natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract the spectrum and fit the line profile",
+   "method": "Spectrum from a circular region 2 arcsec wide including the 2 sigma moment-0 contours, Gaussian fit with the CASA viewer spectral profile tool",
+   "software": [
+    "CASA viewer"
+   ],
+   "key_parameters": [
+    "circular region 2\" wide, including the 2 sigma contours of the moment-0 map"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Separate continuum and line and measure fluxes",
+   "method": "imcontsub with line-free channels to get continuum map and continuum-subtracted cube; moment-0 from consecutive channels above 1 sigma_spec; imfit on a region keeping pixels above 2 sigma",
+   "software": [
+    "CASA imcontsub",
+    "CASA immoments",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "moment-0 channels: consecutive channels above 1 sigma_spec (rms of the line spectrum)"
+   ],
+   "assumptions": [
+    "Source unresolved, peak flux taken as total flux"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive L_FIR, SFR and line luminosities for the three line identifications",
+   "method": "L_FIR(8-1000 um) from an assumed SED shape normalised to the continuum flux; SFR from Kennicutt relation scaled to Chabrier; line luminosity from the Solomon relation",
+   "software": [],
+   "key_parameters": [
+    "L_FIR integrated between 8 and 1000 um; continuum observed at ~845-880 um"
+   ],
+   "assumptions": [
+    "LambdaCDM H0 = 70, Om = 0.3, OL = 0.7; Chabrier IMF",
+    "0.5 dex systematic error from FIR SED template choice added in quadrature",
+    "SFR scaled from Salpeter to Chabrier by dividing by 1.7"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure multi-wavelength photometry of Gal-A",
+   "method": "Fixed 1.4 arcsec aperture photometry in each band; Ks flux via SExtractor deblending; IRAC deblending with GALFIT treating Gal-B and Gal-C as point sources, then aperture photometry on residuals",
+   "software": [
+    "SExtractor",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "IRAC aperture corrections: divide by 0.61, 0.59, 0.49, 0.45 (3.6 to 8.0 um)"
+   ],
+   "assumptions": [
+    "IRAC SED fit uses fluxes between deblended (lower) and blended (higher) values"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Fit the SED for stellar mass, SFR, age and attenuation",
+   "method": "LePHARE with BC03 templates, Calzetti attenuation, constant/exponentially declining/delayed SFHs, two metallicities, at z=4.6 and z=2.2; 1000 Monte Carlo perturbed SEDs",
+   "software": [
+    "LePHARE",
+    "MAGPHYS"
+   ],
+   "key_parameters": [
+    "SFHs: constant, exponentially declining (tau = 0.1,0.3,1,3 Gyr), delayed (tau = 0.1,0.5,1,3 Gyr)",
+    "Metallicity solar and 0.2 solar; Calzetti law with E_s(B-V) 0 to 0.7 in steps of 0.05"
+   ],
+   "assumptions": [
+    "Perturbed fluxes drawn from a Gaussian centred on the measured flux with sigma equal to the measured rms"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare with empirical relations to constrain the line identification and position on the main sequence",
+   "method": "Place Gal-A on the L_CO-L_FIR relations of Liu et al. (rescaling L_FIR to 40-400 um), on the L_[CII]-L_FIR relation, and on the Speagle et al. main sequence at z=2.2 and 4.6",
+   "software": [],
+   "key_parameters": [
+    "L_FIR(8-1000)/L_FIR(40-400) ~ 1.4 on average"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Estimate the dynamical mass",
+   "method": "Rotating disk formula from the line FWHM and size from the 2D Gaussian major axis; cross-check with 3D-BAROLO on the continuum-subtracted cube",
+   "software": [
+    "3D-BAROLO"
+   ],
+   "key_parameters": [
+    "sin(i) = 0.45 and 1; size = 1.06 +/- 0.04 arcsec (7.09 +/- 0.27 kpc at z~4.6)"
+   ],
+   "assumptions": [
+    "Source unresolved; size taken as FWHM of the major axis of the fitted 2D Gaussian"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Line FWHM",
+   "value": "308",
+   "uncertainty": "34",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Identification of the serendipitous source",
+     "quote": "of $308 \\pm 34$ km/s and a peak frequency at $\\mathrm{\\nu_{peak}} = 340.76$ GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Line peak frequency",
+   "value": "340.76",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 Identification of the serendipitous source",
+     "quote": "of $308 \\pm 34$ km/s and a peak frequency at $\\mathrm{\\nu_{peak}} = 340.76$ GHz"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density S_cont",
+   "value": "245",
+   "uncertainty": "24",
+   "units": "uJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "We obtain $\\mathrm{S_{cont}} = 245 \\pm 24$ $\\mu$Jy and $\\mathrm{S_{line}\\Delta v = 1.19 \\pm 0.11}$ Jy km/s for the continuum and the line, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated line flux S_line dv",
+   "value": "1.19",
+   "uncertainty": "0.11",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "We obtain $\\mathrm{S_{cont}} = 245 \\pm 24$ $\\mu$Jy and $\\mathrm{S_{line}\\Delta v = 1.19 \\pm 0.11}$ Jy km/s for the continuum and the line, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Implied redshift if [CII] / CO(9-8) / CO(10-9)",
+   "value": "4.577 / 2.043 / 2.381",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "$z_\\mathrm{gal} = 4.577$, $z_\\mathrm{gal} = 2.043$ and $z_\\mathrm{gal} = 2.381$"
+    }
+   ]
+  },
+  {
+   "quantity": "log(L_FIR/Lsun), [CII] case",
+   "value": "11.38",
+   "uncertainty": "0.5",
+   "units": "dex(Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "We obtain $\\mathrm{log(L_{FIR}/L{_\\odot})}=11.38\\pm0.5$ in case of"
+    }
+   ]
+  },
+  {
+   "quantity": "log(L_FIR/Lsun), CO(9-8) and CO(10-9) cases",
+   "value": "11.44 and 11.42",
+   "uncertainty": "0.5",
+   "units": "dex(Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "$\\mathrm{log(L_{FIR}/L{_\\odot})}=11.44\\pm0.5$ for CO(9-8), and $\\mathrm{log(L_{FIR}/L{_\\odot})}=11.42\\pm0.5$ for CO(10-9) emissions"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from L_FIR",
+   "value": "24 to 28",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "Following Eq. (4) in (cite: Kennicutt98), these FIR luminosities translate into SFRs ranging from 24 to 28"
+    }
+   ]
+  },
+  {
+   "quantity": "Line luminosities log(L_[CII]), log(L_CO(9-8)), log(L_CO(10-9))",
+   "value": "8.88, 8.04, 8.20",
+   "uncertainty": "0.04",
+   "units": "dex(Lsun)",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4 Analysis of the serendipitous source",
+     "quote": "$\\mathrm{log(L_{CO}/L{_\\odot})}=8.04\\pm0.04$ for CO(9-8) and $\\mathrm{log(L_{CO}/L{_\\odot})}=8.20\\pm0.04$ for CO(10-9)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(L_[CII]/L_FIR)",
+   "value": "~ -2.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "luminosity ratio of $\\mathrm{log(L_{[CII]}/L_{FIR})} \\sim -2.5$, consistent with the average value for local star-forming galaxies (SFGs)"
+    }
+   ]
+  },
+  {
+   "quantity": "Ks-band AB magnitude",
+   "value": "24.8",
+   "uncertainty": "0.5",
+   "units": "mag (AB)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.3 Multi-wavelength photometry of Gal-A",
+     "quote": "with an AB magnitude $K_s = (24.8 \\pm 0.5$)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(M*/Msun) at z=4.6",
+   "value": "9.7",
+   "uncertainty": "0.2",
+   "units": "dex(Msun)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "from the stellar mass of Gal-A (i.e. log$\\mathrm{(M_{*}/M_{\\odot})} = 9.7 \\pm 0.2$)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(M*/Msun) at z=2.2",
+   "value": "9.1",
+   "uncertainty": "0.2 (Table 2)",
+   "units": "dex(Msun)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.3 Estimate of the dynamical mass",
+     "quote": "At $z=2.2$, Gal-A should have $\\mathrm{log(M_{*}/M{_\\odot})}=9.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar attenuation E_s(B-V) at z=4.6",
+   "value": "~0.4",
+   "uncertainty": "0.1 (Table 2)",
+   "units": "mag",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.2 Estimate of the stellar mass",
+     "quote": "while Gal-A has $E_s(B-V)\\sim0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "Age from SED fitting at z=4.6",
+   "value": "~70",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5 Summary and Conclusions",
+     "quote": "an age of $\\sim70$ Myrs from Montecarlo simulations on the SED-fitting procedure"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from FIR luminosity at z~4.6",
+   "value": "~24",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Summary and Conclusions",
+     "quote": "we compute an SFR $\\sim 24$ $\\mathrm{M_{\\odot}/yr}$ from the FIR luminosity"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass M_dyn sin^2(i), disk formula (z=4.6 and z=2.2)",
+   "value": "4.4e10 and 5.6e10",
+   "uncertainty": "25%",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Estimate of the dynamical mass",
+     "quote": "sin^2(i) = 4.4 \\times 10^{10}}$ $\\mathrm{M_{\\odot}}$ and $5.6 \\times 10^{10}$ $\\mathrm{M_{\\odot}}$ for $z = 4.6$ and $z=2.2$ respectively, with a 25% uncertainty"
+    }
+   ]
+  },
+  {
+   "quantity": "log(M_dyn/Msun) from 3D-BAROLO (z=4.6 and z=2.2)",
+   "value": "10.4 and 10.5",
+   "uncertainty": "1.0",
+   "units": "dex(Msun)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.3 Estimate of the dynamical mass",
+     "quote": "We find $\\mathrm{log(M_{dyn}/M_{\\odot}) = 10.4\\pm1.0}$ for $z=4.6$ and $\\mathrm{log(M_{dyn}/M_{\\odot}) = 10.5\\pm1.0}$ for $z=2.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial radius of the halo (if Gal-A at z~4.6)",
+   "value": "39-45",
+   "uncertainty": "not stated",
+   "units": "kpc",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "we obtain $\\mathrm{R_H \\sim 39-45}$ kpc"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters: cell size, image size, niter, mask, spw/channel selection, spectral resolution of the cube",
+  "Which channels are line-free (channel range passed to imcontsub) and which consecutive channels were summed for the moment-0 map",
+  "Region definition used for IMFIT and the pixel/region geometry used for the 2 arcsec spectrum",
+  "Primary-beam correction and whether archive/pipeline products or a re-reduction were used",
+  "Specific Magdis et al. (2012) SED template (redshift-dependent) and cosmology-dependent luminosity distances used per case",
+  "Per-filter systematic errors and LePHARE configuration inherited from Faisst et al. (2019); MAGPHYS configuration",
+  "3D-BAROLO input parameters (ring geometry, initial inclination/PA, fixed vs free parameters) and fit details",
+  "Aperture, rms and PSF choices for GALFIT deblending of the IRAC maps beyond what is described",
+  "Flux density adopted for the flux calibrator and the absolute flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters, channel selections and region definitions",
+  "Flux calibrator flux density and exact pipeline version",
+  "Magdis et al. SED template choice per redshift and LePHARE/MAGPHYS configuration",
+  "3D-BAROLO setup",
+  "Optical/IR photometric maps and rms apertures (public COSMOS data but not specified in a recipe)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "ALMA project code, observing setup, CASA version and calibrators are given and the key numbers are reported, but imaging parameters, region choices, SED-fit configuration and 3D-BAROLO setup are missing.",
+ "rediscovery_reason": "Data come from an ALMA Large Program in the archive and the main numeric results (flux, FWHM, L_FIR, L_line) can be redone with a simple recipe, though exact settings are unstated; data availability itself is not stated in the paper.",
+ "source_card": "cards/2020MNRAS.496..875R/sonnet/card.md"
+}

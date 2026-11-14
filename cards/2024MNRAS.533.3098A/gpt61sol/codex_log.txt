@@ -1,0 +1,417 @@
+e the inferred dust mass?",
+      "experiment": "Compare optically thin, fixed-65 μm and free-λ_thick MBB fits, then assess [O iii] self-absorption.",
+      "result": "Fixed-65 μm parameters agree within 1σ; free λ_thick permits lower mass but is poorly constrained; likely λ_thick ≲90 μm.",
+      "finding": "Moderate optical depth changes little, while strong galaxy-integrated opacity is disfavoured but not fully excluded.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "A fixed transition wavelength $\\lambda_\\mathrm{thick}$",
+          "quote": "both the dust mass and other fitting parameters are consistent with the equivalent parameters obtained from optically thin models within $1\\sigma$."
+        },
+        {
+          "loc": "A varying transition wavelength $\\lambda_\\mathrm{thick}$",
+          "quote": "the fit is unconstrained at the shortest wavelengths where we rely on just an upper limit in ALMA Band 9."
+        },
+        {
+          "loc": "Optically Thickness of REBELS-25",
+          "quote": "the true value of the transition wavelength is likely $\\lambda_\\mathrm{thick} \\lesssim 90\\,\\mu$m."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Can supernovae alone explain the dust reservoir, or does grain growth contribute?",
+      "experiment": "Infer required SN yields and compare with opacity/IMF alternatives and evidence for a dense, metal-rich ISM.",
+      "result": "The fiducial dust reservoir requires y ≈ 0.7 +2.3/−0.4 M⊙/SN.",
+      "finding": "Grain growth through accretion and coagulation is an appealing additional mechanism, supported indirectly.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Supernova Dust Production",
+          "quote": "the dust yield per SN $y$ is calculated as $y = 84 \\times (M_\\mathrm{dust} / M_\\star) \\approx 0.7_{-0.4}^{+2.3} \\mathrm{M}_\\odot/\\mathrm{SN}$."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "We argue that both the high dust mass and steep $\\beta_\\mathrm{IR}$ inferred for REBELS-25 may be indicative of grain growth through metal accretion and coagulation taking place in its ISM"
+        },
+        {
+          "loc": "The Dust Mass and Emissivity Index of REBELS-25",
+          "quote": "the relation between the dust emissivity index and physical properties of dust grains remains nebulous."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Is the steep β_IR an artefact of optical-depth assumptions or individual long-wavelength measurements?",
+      "experiment": "Vary optical-depth treatment and omit Band 3 or Band 4 from the fit.",
+      "result": "Omission tests remain consistent within uncertainties; optical-depth variants preserve a steep β_IR.",
+      "finding": "The steep emissivity index is robust to these tested choices.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Optically Thin Dust",
+          "quote": "if we omit either the Band 3 or Band 4 datapoint from the MBB fit, we recover a dust emissivity index that is consistent with the fiducial value"
+        },
+        {
+          "loc": "Dust Emissivity Indices across Cosmic Time",
+          "quote": "the steep dust emissivity index we infer for REBELS-25 is robust against assumptions regarding the optical depth."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Can fixing β_IR bias inferred dust properties when wavelength coverage is short?",
+      "experiment": "Refit five literature galaxies with fixed β_IR = 1.5 and 2.5.",
+      "result": "|ΔBIC| < 2.5 despite temperature decreases of 12–45 K, mass increases of 0.34–0.76 dex and luminosity decreases of 0.20–0.55 dex.",
+      "finding": "Equally acceptable fixed-β fits can yield substantial systematic errors.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "The Need for Probing the Rayleigh-Jeans Tail",
+          "quote": "Applying the Bayesian Information Criterion (BIC), the fits are statistically indistinguishable ($|\\Delta\\mathrm{BIC}| < 2.5$)."
+        },
+        {
+          "loc": "The Need for Probing the Rayleigh-Jeans Tail",
+          "quote": "inferred dust temperatures decrease by a systematic $\\Delta T_\\mathrm{dust} = 12 - 45\\,$K, dust masses increase by $\\Delta \\log(M_\\mathrm{dust}/M_\\odot) = 0.34 - 0.76\\,$dex and infrared luminosities decrease by $\\Delta \\log(L_\\mathrm{IR}/L_\\odot) = 0.20 - 0.55\\,$dex"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Which additional ALMA bands efficiently constrain z ∼ 7 dust SEDs?",
+      "experiment": "Fit noisy mock MBB photometry across six band combinations at S/N = 4 and 8.",
+      "result": "High-S/N four-band setups recover the dust parameters; adding Band 4 improves emissivity constraints, while S/N = 4 remains poor.",
+      "finding": "Bands [4,6,8,9] provide an efficient balance of peak and Rayleigh-Jeans coverage.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "A Comparison of Multi-band ALMA setups",
+          "quote": "With a four-band setup, including either Bands 3 or 4, in addition to Bands 6, 8 and 9, we can accurately recover the dust mass, temperature and emissivity index provided the S/N is sufficiently high."
+        },
+        {
+          "loc": "A Comparison of Multi-band ALMA setups",
+          "quote": "We here recommend a setup of Bands \\[4, 6, 8, 9\\] given the balance between the decreasing flux towards longer wavelengths and the sensitivity of the ALMA bands."
+        },
+        {
+          "loc": "Bands 4, 6, 8 and 9 at S/N = 4",
+          "quote": "the simulated constraints on the dust SED are significantly poorer given this lower signal-to-noise ratio, despite utilizing a four-band setup."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Six-band coverage samples the SED peak and Rayleigh-Jeans tail to constrain mass, temperature and emissivity together.",
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "spanning rest-frame $50-350\\,\\mu$m – enabling simultaneous constraints on its dust mass ($M_\\mathrm{dust}$), temperature ($T_\\mathrm{dust}$) and emissivity index ($\\beta_\\mathrm{IR}$) via modified blackbody fitting."
+        },
+        {
+          "loc": "The Need for Probing the Rayleigh-Jeans Tail",
+          "quote": "two ingredients are crucial for an accurate measurement of the emissivity index: 1) a measurement sampling the Rayleigh-Jeans tail of the dust emission, and 2) a measurement sampling the peak of the dust SED."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Natural weighting maximizes sensitivity; tapered peak photometry avoids resolution-dependent flux loss and noise-sensitive integrated measurements; broad β_IR priors preserve discovery space.",
+      "evidence": [
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "using natural weighting to optimize the continuum sensitivity"
+        },
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "peak flux densities tend to be more robust against the inclusion of noise peaks when the signal-to-noise ratio of the data is modest"
+        },
+        {
+          "loc": "Constraining Dust SEDs with Mock ALMA Observations",
+          "quote": "it will have the side effect of limiting one’s discovery space to dust emissivity indices more in line with the canonical $\\beta_\\mathrm{IR} \\sim 1.5 - 2$."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Select the first taper with converged peak flux; check peak/integrated agreement and alternative photometry; mock S/N = 8 adopted because S/N = 4 is insufficient.",
+      "evidence": [
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "We choose to adopt the peak flux density at the lowest tapering (that is, in the highest resolution image) where the flux measurement converges to a constant value"
+        },
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "We verify that, at sufficiently coarse $uv$-tapers, the peak and integrated flux densities agree within the uncertainties."
+        },
+        {
+          "loc": "Constraining Dust SEDs with Mock ALMA Observations",
+          "quote": "a lower S/N = 4 per band is generally not sufficient in order to obtain tight constraints on the dust parameters"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Fixed λ_thick = 65 μm and freely varying λ_thick compared with optically thin dust.",
+      "evidence": [
+        {
+          "loc": "Optically Thick Dust",
+          "quote": "we re-fit the dust SED of REBELS-25 with either a fixed transition wavelength $\\lambda_\\mathrm{thick}$ where $\\tau_\\nu = 1$"
+        },
+        {
+          "loc": "Optically Thick Dust",
+          "quote": "or by freely varying this wavelength during the fitting process"
+        }
+      ]
+    },
+    {
+      "value": "Optically thin model retained as fiducial because opacity remains uncertain and for consistency with high-redshift literature.",
+      "evidence": [
+        {
+          "loc": "Optically Thickness of REBELS-25",
+          "quote": "In light of these prevailing unknowns, as well as for consistency with the general high-redshift literature, we proceed with our optically thin model as the fiducial one."
+        }
+      ]
+    },
+    {
+      "value": "Top-heavy IMF modestly lowers the required supernova yield.",
+      "evidence": [
+        {
+          "loc": "Supernova Dust Production",
+          "quote": "this yield only modestly reduces the need for efficient dust production in SNe compared to a fiducial Chabrier IMF."
+        }
+      ]
+    },
+    {
+      "value": "A common taper and aperture photometry give consistent results.",
+      "evidence": [
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "We note that our results do not change when we adopt a common UV-taper $\\gtrsim1.5\\ensuremath{''}$ across all bands."
+        },
+        {
+          "loc": "Target, Observations and Flux Density Measurements",
+          "quote": "Furthermore, we find consistent results when performing aperture photometry on either the naturally-weighted or tapered images."
+        }
+      ]
+    },
+    {
+      "value": "Band 3 offers marginally better leverage at fixed S/N, but Band 4 is preferred for observing efficiency.",
+      "evidence": [
+        {
+          "loc": "A Comparison of Multi-band ALMA setups",
+          "quote": "the longer lever arm provided by Band 3 results in marginally better constraints when employing a setup consisting of Bands \\[3, 6, 8\\] compared to \\[4, 6, 8\\], assuming a fixed S/N."
+        },
+        {
+          "loc": "A Comparison of Multi-band ALMA setups",
+          "quote": "detecting dust continuum emission is much easier in Band 4, and as such it is likely to be the more efficient choice"
+        }
+      ]
+    },
+    {
+      "value": "Informative β_IR priors cannot substitute for high-S/N multi-band observations.",
+      "evidence": [
+        {
+          "loc": "Constraining Dust SEDs with Mock ALMA Observations",
+          "quote": "a more informative prior should not be regarded as an adequate substitute for high-S/N, multi-band observations."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Band 9 provides only an upper limit, leaving the free-opacity fit unconstrained at short wavelengths.",
+      "evidence": [
+        {
+          "loc": "A varying transition wavelength $\\lambda_\\mathrm{thick}$",
+          "quote": "the fit is unconstrained at the shortest wavelengths where we rely on just an upper limit in ALMA Band 9."
+        }
+      ]
+    },
+    {
+      "value": "The size-based optical-depth estimate assumes spherical, homogeneous dust.",
+      "evidence": [
+        {
+          "loc": "A varying transition wavelength $\\lambda_\\mathrm{thick}$",
+          "quote": "this estimate relies on the assumption of a spherical and homogeneous dust distribution."
+        }
+      ]
+    },
+    {
+      "value": "Dense optically thick clumps cannot be definitively excluded.",
+      "evidence": [
+        {
+          "loc": "Optically Thickness of REBELS-25",
+          "quote": "However, we can not definitively rule out the presence of dense, optically thick clumps within REBELS-25."
+        }
+      ]
+    },
+    {
+      "value": "MBB temperature need not equal a physical dust temperature in the galaxy.",
+      "evidence": [
+        {
+          "loc": "Methods",
+          "quote": "dust temperatures obtained from MBB-fitting do not necessarily constitute an accurate representation of any physical dust temperature within the galaxy"
+        }
+      ]
+    },
+    {
+      "value": "True dust opacity depends on unknown high-redshift dust composition.",
+      "evidence": [
+        {
+          "loc": "Methods",
+          "quote": "the true dust opacity depends on its chemical composition – which is inherently unknown at high redshift"
+        }
+      ]
+    },
+    {
+      "value": "Grain coagulation could increase emissivity and cause an overestimated dust mass.",
+      "evidence": [
+        {
+          "loc": "The Dust Mass and Emissivity Index of REBELS-25",
+          "quote": "such coagulated grains will thus be more luminous than standard dust grains given a fixed total dust mass, and may hence cause the observationally inferred dust mass to be overestimated."
+        }
+      ]
+    },
+    {
+      "value": "The link between emissivity index and grain properties remains uncertain.",
+      "evidence": [
+        {
+          "loc": "The Dust Mass and Emissivity Index of REBELS-25",
+          "quote": "the relation between the dust emissivity index and physical properties of dust grains remains nebulous."
+        }
+      ]
+    },
+    {
+      "value": "Cross-study comparisons are affected by fitting differences; high-redshift samples are small and biased to bright objects.",
+      "evidence": [
+        {
+          "loc": "Dust Emissivity Indices across Cosmic Time",
+          "quote": "comparing fitted dust emissivity indices among different studies is complicated by the variety of fitting techniques utilized in the literature."
+        },
+        {
+          "loc": "Dust Emissivity Indices across Cosmic Time",
+          "quote": "studies of dust properties at $z\\gtrsim6$ remain limited to small numbers of the brightest objects."
+        }
+      ]
+    },
+    {
+      "value": "Equal-S/N mocks are a general case; forecasting a particular target requires its existing S/N and approximate temperature.",
+      "evidence": [
+        {
+          "loc": "Constraining Dust SEDs with Mock ALMA Observations",
+          "quote": "the simulations presented below show only a general case."
+        },
+        {
+          "loc": "Constraining Dust SEDs with Mock ALMA Observations",
+          "quote": "Accurately forecasting the expected constraints on $\\beta_\\mathrm{IR}$ for any particular galaxy requires considering the S/N of previously taken observations, as well as obtaining a rough estimate of its dust temperature"
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Five detections and one upper limit constrain an effective single-temperature SED; they do not uniquely establish grain composition or a grain-growth mechanism.",
+    "The optical-depth argument depends on unresolved geometry and the assumption that gas and dust are well-mixed.",
+    "Metallicity, density and co-spatiality support partly relies on studies still in preparation.",
+    "Absolute flux-scale errors and cross-band covariance need explicit treatment before interpreting the precision of β_IR.",
+    "The mock tests generate and fit optically thin MBBs, so they do not test recovery under more complex dust-temperature or opacity structures."
+  ],
+  "reproducibility": [
+    {
+      "field": "data_public_as_stated",
+      "value": "All ALMA data used are available via the ALMA science archive.",
+      "evidence": [
+        {
+          "loc": "Data Availability",
+          "quote": "All ALMA data used in this work are available via the ALMA science archive"
+        }
+      ]
+    }
+  ],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Calibration versions from QA2 reports and the additional Band 4 flagging recipe.",
+    "Complete continuum channel selections and imaging commands.",
+    "Exact per-band taper settings and photometry implementation.",
+    "MBB fitting code, likelihood, Band 9 upper-limit handling and flux-calibration error model.",
+    "MCMC configuration and convergence diagnostics.",
+    "IR-luminosity integration limits.",
+    "High-resolution continuum masks and supporting analysis details delegated to companion work.",
+    "Mock observing frequencies and random seeds."
+  ],
+  "estimated_data_volume_inferred": "not stated",
+  "score_inferred": 6,
+  "score_reason": "6/10: public project identifiers, six-band photometry, an explicit MBB equation and priors enable an independent approximate analysis; exact calibration, imaging and statistical reproduction requires missing settings and inherited details.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "The data are explicitly public and the main results are numeric, but the supplied recipe omits the likelihood, upper-limit treatment and processing details needed for a sufficiently specified reproduction.",
+  "methods_papers": [
+    {
+      "citation": "(cite: algera2024)",
+      "why": "Inherited MBB framework, fitting equation and temperature prior."
+    },
+    {
+      "citation": "(cite: dacunha2013)",
+      "why": "CMB heating and observing-background corrections."
+    },
+    {
+      "citation": "(cite: weingartner2001)",
+      "why": "Adopted Milky Way dust opacity."
+    },
+    {
+      "citation": "(cite: mohanrafferty2015)",
+      "why": "Cited for 2D Gaussian continuum photometry; software name is absent from the supplied text."
+    },
+    {
+      "citation": "(cite: casa2022)",
+      "why": "Common Astronomy Software Applications calibration environment."
+    },
+    {
+      "citation": "(cite: foreman-mackey2013)",
+      "why": "Cited for MCMC fitting; a specific sampler or package is not named."
+    },
+    {
+      "citation": "(cite: inoue2020)",
+      "why": "Relation between transition wavelength, dust mass, radius and emissivity index."
+    },
+    {
+      "citation": "(cite: michalowski2015)",
+      "why": "Supernova dust-yield framework and top-heavy IMF alternative."
+    },
+    {
+      "citation": "(cite: devis2019)",
+      "why": "Local gas-to-dust-ratio–metallicity relation."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: algera2024)",
+      "why": "Earlier Band 8 and dual-band dust analysis."
+    },
+    {
+      "citation": "(cite: hygate2023)",
+      "why": "Redshift, earlier continuum size, gas mass and related characterization."
+    },
+    {
+      "citation": "(cite: rowland2024)",
+      "why": "High-resolution Band 6 observations used for continuum-size analysis."
+    },
+    {
+      "citation": "H. Algera et al. (in prep)",
+      "why": "Further high-resolution continuum and [O iii] analysis details."
+    },
+    {
+      "citation": "A. Hygate et al. (in prep)",
+      "why": "CO(7-6) measurements and PDR density modelling."
+    },
+    {
+      "citation": "L. Rowland et al. in prep and M. Stefanon et al. in prep",
+      "why": "JWST/NIRSpec gas-phase metallicity."
+    },
+    {
+      "citation": "L. Sommovigo & H. Algera et al. in prep",
+      "why": "Interpretation of fitted MBB temperature and dust-mass biases."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Reionization Era Bright Emission Line Survey (REBELS)"
+  ]
+}
+tokens used
+81,620

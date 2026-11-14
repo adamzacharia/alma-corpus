@@ -1,0 +1,393 @@
+{
+ "bibcode": "2022PASJ...74.1429T",
+ "title": "Central concentration of warm and dense molecular gas in a strongly lensed submillimeter galaxy at z = 6",
+ "year": 2022,
+ "doi": "10.1093/pasj/psac082",
+ "arxiv_id": "2209.15226",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "Investigate the physical properties and spatial distribution of warm and dense molecular gas and ionized gas kinematics in the multi-phase ISM of the strongly lensed submillimeter galaxy G09-83808 at z = 6.02.",
+ "alma_project_codes": [
+  "2019.1.01307.S"
+ ],
+ "data": {
+  "bands": "Band 5 (1.5 mm) and Band 8 (0.6 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.87'' x 0.77'' (CO(12-11) at robust = 2.0); 0.66'' x 0.59'' (CO(12-11) at robust = 0.5)",
+  "sensitivity": "0.02 Jy beam^-1 km s^-1 in CO(12-11) integrated intensity map; 0.45 mJy/beam per 100 km s^-1 in [O III] 88 um cube; 0.13 mJy/beam per 100 km s^-1 in [N II] 205 um cube"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Foreground lens galaxy redshift z = 0.776",
+    "evidence": [
+     {
+      "loc": "Lens modeling",
+      "quote": "We assume that the mass distribution of the foreground lens galaxy, which is situated at $z=0.776$ (cite: Fudamoto2017), follows a singular isothermal ellipsoid with external shear"
+     }
+    ]
+   },
+   "citation": "(cite: Fudamoto2017)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1), CO(5-4), and CO(6-5) line observations and fluxes for G09-83808",
+    "evidence": [
+     {
+      "loc": "Physical properties of highly excited gas",
+      "quote": "In the modeling, we incorporate, in addition to the CO(12-11) line detected in this work, the CO(2-1) (Zavala et al. in prep), CO(5-4), and CO(6-5) (cite: Fudamoto2017; Zavala2018) lines detected in G09-83808 (Table [\\[COdata\\]](#COdata))."
+     },
+     {
+      "loc": "Physical properties of highly excited gas",
+      "quote": "to6pt (1) (cite: Zavala2022), (2) (cite: Zavala2018), (3) (cite: Fudamoto2017)."
+     }
+    ]
+   },
+   "citation": "(cite: Fudamoto2017; Zavala2018; Zavala2022)"
+  },
+  {
+   "what": {
+    "value": "Dynamical mass M_dyn = 5 x 10^10 M_sun (including 1 sigma error) and previous redshift z = 6.0269 +/- 0.0006",
+    "evidence": [
+     {
+      "loc": "Physical properties of highly excited gas",
+      "quote": "A constraint that we set is that the molecular gas mass must not exceed the dynamical mass ($M_{\\mathrm{dyn}}=5\\times 10^{10}\\,M_\\odot$ including $1\\sigma$ error; (cite: Zavala2018))."
+     },
+     {
+      "loc": "Channel maps of the [O ] 88 um and [N ] 205 um emission",
+      "quote": "about $\\SI{-100}{km.s^{-1}}$ shift from the previous value ($z=6.0269\\pm0.0006$; (cite: Zavala2018))."
+     }
+    ]
+   },
+   "citation": "(cite: Zavala2018)"
+  },
+  {
+   "what": {
+    "value": "CO(6-5)-normalized CO SLEDs of local starburst galaxies, local AGNs, and average of 4 quasars at 6 < z < 7",
+    "evidence": [
+     {
+      "loc": "Heating source of CO(12-11) emission",
+      "quote": "Figure 8 shows CO(6-5)-normalized CO SLEDs of G09-83808, local starburst galaxies, local AGNs (cite: Mashian2015; Rosenberg2015), and average of 4 quasars at $6<z<7$ (cite: Carniani2019; Li2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Mashian2015; Rosenberg2015; Carniani2019; Li2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create CO(12-11) channel maps and integrated intensity map, and [O III] 88 um and [N II] 205 um channel maps",
+   "method": "Clean channel maps at 100 km s^-1 resolution using the 1.5 mm continuum clean mask, and integrate CO(12-11) over -250 to +250 km s^-1 relative to systemic redshift z = 6.0244.",
+   "software": [],
+   "key_parameters": [
+    "Spectral resolution = 100 km s^-1, Briggs robust = 2.0, integration range = -250 to +250 km s^-1"
+   ],
+   "assumptions": [
+    "Systemic redshift z = 6.0244 +/- 0.0003"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Source-plane reconstruction of CO(12-11) integrated intensity map",
+   "method": "Parametric gravitational lens modeling in the cleaned image plane inside the clean mask region with foreground lens parameters fixed from 1.5 mm continuum modeling.",
+   "software": [
+    "GLAFIC"
+   ],
+   "key_parameters": [
+    "Free parameters: xy-position, total flux Sdv, and effective radius R_e; fixed parameters: Sersic index n = 1, axis ratio q = 0.93, position angle theta_q = 108 deg"
+   ],
+   "assumptions": [
+    "Foreground lens at z = 0.776 follows a singular isothermal ellipsoid (SIE) with external shear; background source at z = 6.02 has an exponential disk (Sersic n = 1) profile."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Source-plane reconstruction and kinematic analysis of [O III] 88 um and [N II] 205 um channel maps",
+   "method": "Reconstruct individual 100 km s^-1 channel maps in the source plane using circular Gaussian (n = 0.5) or point source models, and fit a single Gaussian to the reconstructed [O III] 88 um line profile to measure systemic redshift.",
+   "software": [
+    "GLAFIC"
+   ],
+   "key_parameters": [
+    "Sersic index n = 0.5 (circular Gaussian), point source for -200 km s^-1 channel of [N II] 205 um, two circular Gaussian sources for +100 km s^-1 channel of [O III] 88 um"
+   ],
+   "assumptions": [
+    "Circular Gaussian source profile (n = 0.5) or point source"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Non-LTE radiative transfer modeling of the CO SLED and evaluation of dust attenuation",
+   "method": "Two-component 1D non-LTE radiative transfer modeling of galaxy-integrated CO(2-1), CO(5-4), CO(6-5), and CO(12-11) fluxes using RADEX, plus analytical estimation of dust extinction on CO(12-11).",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Expanding sphere geometry, dV = 400 km s^-1, background temperature = 19.2 K (CMB at z = 6.02); search ranges: T_kin = 20-700 K, log(n_H2/cm^-3) = 2-6.7, log(N_CO/cm^-2) = 16-20.5"
+   ],
+   "assumptions": [
+    "Differential magnification across CO transitions is negligible; molecular gas mass <= M_dyn (5 x 10^10 M_sun); L_CO(13-12) < L_CO(12-11) for both components; T_kin,cold < 100 K; dust attenuation model uses lambda_0 = 150 um and beta = 2.5."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CO(12-11) peak line flux (north-west arc)",
+   "value": "0.19",
+   "uncertainty": "0.02",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and imaging",
+     "quote": "where the peak line fluxes and noise levels are $0.19\\pm0.02\\:\\mathrm{Jy\\:beam^{-1}\\:km\\:s^{-1}}\\ (7.8\\sigma)$ and $0.15\\pm0.02\\:\\mathrm{Jy\\:beam^{-1}\\:km\\:s^{-1}}\\ (6.0\\sigma)$ in the north-west and south-east arcs, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(12-11) peak line flux (south-east arc)",
+   "value": "0.15",
+   "uncertainty": "0.02",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations and imaging",
+     "quote": "where the peak line fluxes and noise levels are $0.19\\pm0.02\\:\\mathrm{Jy\\:beam^{-1}\\:km\\:s^{-1}}\\ (7.8\\sigma)$ and $0.15\\pm0.02\\:\\mathrm{Jy\\:beam^{-1}\\:km\\:s^{-1}}\\ (6.0\\sigma)$ in the north-west and south-east arcs, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(12-11) intrinsic effective radius R_e (angular)",
+   "value": "0.08",
+   "uncertainty": "+0.05/-0.03",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Integrated intensity map of the CO(12-11) emission",
+     "quote": "The intrinsic effective radius of the CO(12-11) emission is determined to be $R_e=0.08^{+0.05}_{-0.03}\\ \\mathrm{arcsec}$, corresponding to $0.49^{+0.29}_{-0.19}\\ \\mathrm{kpc}$ at $z=6.02$, after correction of the lensing effect."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(12-11) intrinsic effective radius R_e,CO (physical)",
+   "value": "0.49",
+   "uncertainty": "+0.29/-0.19",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "A source-plane reconstruction reveals that the region of the CO(12-11) emission is compact ($R_\\mathrm{{e, CO}}=0.49^{+0.29}_{-0.19}\\,\\mathrm{kpc}$) and roughly coincides with that of the dust continuum."
+    },
+    {
+     "loc": "Integrated intensity map of the CO(12-11) emission",
+     "quote": "The intrinsic effective radius of the CO(12-11) emission is determined to be $R_e=0.08^{+0.05}_{-0.03}\\ \\mathrm{arcsec}$, corresponding to $0.49^{+0.29}_{-0.19}\\ \\mathrm{kpc}$ at $z=6.02$, after correction of the lensing effect."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(12-11) total magnification factor mu_CO(12-11)",
+   "value": "9.3",
+   "uncertainty": "+7.2/-1.7",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Integrated intensity map of the CO(12-11) emission",
+     "quote": "The total magnification factor, given by the ratio between the total flux densities in the image and source plane, is calculated to be $\\mu_{\\mathrm{CO(12-11)}}=9.3^{+7.2}_{-1.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic redshift z (from [O III] 88 um reconstructed profile)",
+   "value": "6.0244",
+   "uncertainty": "0.0003",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Channel maps of the [O ] 88 um and [N ] 205 um emission",
+     "quote": "Based on the single gaussian fit to the reconstructed profile of the \\[O \\] $88\\:\\ensuremath{\\mu}m$ line, the redshift is determined to be $z=6.0244\\pm0.0003$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] 88 um total magnification factor (from channel map reconstructions)",
+   "value": "8.4",
+   "uncertainty": "1.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "And the total magnification factors of \\[O \\] $88\\:\\ensuremath{\\mu}m$ and \\[N \\] $205\\:\\ensuremath{\\mu}m$ emissions which are obtained by the source reconstructions for each channel map are $8.4\\pm1.1$ and $8\\pm3$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "[N II] 205 um total magnification factor (from channel map reconstructions)",
+   "value": "8",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "And the total magnification factors of \\[O \\] $88\\:\\ensuremath{\\mu}m$ and \\[N \\] $205\\:\\ensuremath{\\mu}m$ emissions which are obtained by the source reconstructions for each channel map are $8.4\\pm1.1$ and $8\\pm3$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Warm molecular gas kinetic temperature T_kin",
+   "value": "320",
+   "uncertainty": "170",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Non-local thermodynamic equilibrium radiative transfer modeling of CO spectral-line energy distribution reveals that most of the CO(12-11) emission comes from a warm (kinetic temperature of $T_{\\mathrm{kin}}=320\\pm170\\:$ K) and dense ($\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$) gas"
+    },
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "The results are $T_{\\textrm{kin}}=55\\pm16$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=3.5\\pm0.5$ for the cold component and $T_{\\textrm{kin}}=320\\pm170$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$ for the warm component."
+    }
+   ]
+  },
+  {
+   "quantity": "Warm molecular gas density log(n_H2/cm^-3)",
+   "value": "5.4",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Non-local thermodynamic equilibrium radiative transfer modeling of CO spectral-line energy distribution reveals that most of the CO(12-11) emission comes from a warm (kinetic temperature of $T_{\\mathrm{kin}}=320\\pm170\\:$ K) and dense ($\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$) gas"
+    },
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "The results are $T_{\\textrm{kin}}=55\\pm16$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=3.5\\pm0.5$ for the cold component and $T_{\\textrm{kin}}=320\\pm170$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$ for the warm component."
+    }
+   ]
+  },
+  {
+   "quantity": "Cold molecular gas kinetic temperature T_kin",
+   "value": "55",
+   "uncertainty": "16",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "The results are $T_{\\textrm{kin}}=55\\pm16$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=3.5\\pm0.5$ for the cold component and $T_{\\textrm{kin}}=320\\pm170$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$ for the warm component."
+    }
+   ]
+  },
+  {
+   "quantity": "Cold molecular gas density log(n_H2/cm^-3)",
+   "value": "3.5",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties of highly excited gas",
+     "quote": "The results are $T_{\\textrm{kin}}=55\\pm16$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=3.5\\pm0.5$ for the cold component and $T_{\\textrm{kin}}=320\\pm170$ K, $\\log(n_{\\mathrm{H2}}/\\mathrm{cm^{-3}})=5.4\\pm0.6$ for the warm component."
+    }
+   ]
+  },
+  {
+   "quantity": "Luminosity ratio L_CO(12-11) / L_CO(6-5)",
+   "value": "1.1",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The luminosity ratio in G09-83808 is estimated to be $L_\\mathrm{{CO(12-11)}} / L_\\mathrm{{CO(6-5)}}=1.1\\pm0.2$."
+    },
+    {
+     "loc": "Heating source of CO(12-11) emission",
+     "quote": "The high ratio of $L_\\mathrm{{CO(12-11)}} / L_\\mathrm{{CO(6-5)}}=1.1\\pm0.2$ in G09-83808 agrees better with those in local AGNs and $6<z<7$ quasars than those in local starburst galaxies."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] 88 um luminosity fraction of sub-component a",
+   "value": "13",
+   "uncertainty": "2",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics of ionized gas",
+     "quote": "The **a** and **b** sub-components account for $13\\pm 2\\:$% and $12\\pm 2\\:$% of the total \\[O \\] $88\\:\\ensuremath{\\mu}m$ luminosity, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "[O III] 88 um luminosity fraction of sub-component b",
+   "value": "12",
+   "uncertainty": "2",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics of ionized gas",
+     "quote": "The **a** and **b** sub-components account for $13\\pm 2\\:$% and $12\\pm 2\\:$% of the total \\[O \\] $88\\:\\ensuremath{\\mu}m$ luminosity, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on L_[OIII]/L_IR for sub-component a",
+   "value": "6.4e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics of ionized gas",
+     "quote": "From the non-detection ($<3\\sigma$) of the sub-components in the dust continuum, the lower limits of the $L_{\\mathrm{[OIII]}}/L_{\\mathrm{IR}}$ ratios are derived to be $6.4\\times 10^{-3}$ and $4.9\\times 10^{-3}$ for sub-components **a** and **b**, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower limit on L_[OIII]/L_IR for sub-component b",
+   "value": "4.9e-3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Kinematics of ionized gas",
+     "quote": "From the non-detection ($<3\\sigma$) of the sub-components in the dust continuum, the lower limits of the $L_{\\mathrm{[OIII]}}/L_{\\mathrm{IR}}$ ratios are derived to be $6.4\\times 10^{-3}$ and $4.9\\times 10^{-3}$ for sub-components **a** and **b**, respectively"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and imaging task (e.g., tclean) used to produce the channel maps",
+  "Continuum subtraction method and line-free channel selection for CO(12-11), [O III] 88 um, and [N II] 205 um",
+  "Pixel cell size, image size, and cleaning stopping threshold",
+  "Exact foreground lens parameters (SIE velocity dispersion/Einstein radius, position, ellipticity, external shear) determined from the 1.5 mm continuum in Paper I",
+  "Table of CO line fluxes (Table COdata is referenced in text but missing from the rendered document)",
+  "Assumed CO abundance ratio [CO]/[H2] or alpha_CO conversion factor used to link RADEX column density to the dynamical mass constraint"
+ ],
+ "missing_for_reproduction": [
+  "Exact foreground lens model parameters (SIE Einstein radius, position, axis ratio, PA, external shear) from Paper I (Tadaki et al. 2022)",
+  "Exact spatial coordinates of the 1.5 mm clean mask polygon used to restrict GLAFIC fitting and flux integration",
+  "Table of galaxy-integrated CO(2-1), CO(5-4), CO(6-5), and CO(12-11) line fluxes (Table COdata is missing from the text)",
+  "Exact prescription converting RADEX N_CO and source size into total molecular gas mass for the M_gas <= M_dyn constraint"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project code (2019.1.01307.S), open-source analysis tools (GLAFIC, RADEX), key model assumptions, and Monte Carlo error estimation procedures are clearly described, and Appendix 2 provides thorough validation of the size measurement. However, essential inputs such as the foreground lens parameters, clean mask definition, and basic imaging parameters are deferred to Paper I, and the CO line flux table is omitted from the text.",
+ "rediscovery_reason": "Public single-target ALMA dataset (2019.1.01307.S) with clear quantitative outcomes (CO(12-11) integrated flux, source-plane effective radius R_e, magnification factor, systemic redshift, and RADEX temperature/density) that can be reproduced once combined with the lens model parameters from Paper I (Tadaki et al. 2022).",
+ "source_card": "cards/2022PASJ...74.1429T/sonnet/card.md"
+}

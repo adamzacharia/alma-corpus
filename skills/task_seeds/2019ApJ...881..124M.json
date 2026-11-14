@@ -1,0 +1,291 @@
+{
+ "bibcode": "2019ApJ...881..124M",
+ "title": "Resolved UV and [C II] Structures of Luminous Galaxies within the Epoch of Reionization",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab2f81",
+ "arxiv_id": "1903.08171",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What causes the differences in Lyα EW between two luminous z=6.5 LAEs (VR7, MASOSA): differences in SFR, dust content, age, metallicity; and are luminous LAEs multi-component systems?",
+ "alma_project_codes": [
+  "2017.1.01451.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "natural ≈0.4''; tapered 0.64''x0.61'' (VR7), Briggs 0.47''x0.40''",
+  "sensitivity": "continuum rms 6 µJy/beam; 0.08-0.10 mJy/beam in 18 km/s channels (natural weighting)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Compilation of z≈6-7 galaxies with ALMA [CII], UV and IR measurements",
+    "evidence": [
+     {
+      "loc": "Appendix compilation",
+      "quote": "we compile a sample of spectroscopically confirmed galaxies at $z\\approx6-7$ for which the \\[Cii\\] line and adjacent continuum has been observed with ALMA"
+     }
+    ]
+   },
+   "citation": "Ota2014; Inoue2016; Matthee2017ALMA; Carniani2018; Pentericci2016; Smit2017 and others"
+  },
+  {
+   "what": {
+    "value": "Local [CII]-SFR relation",
+    "evidence": [
+     {
+      "loc": "5",
+      "quote": "Our results are compared to relations between \\[Cii\\] luminosity and SFR based on observations of galaxies in the local Universe (cite: DeLooze2014)."
+     }
+    ]
+   },
+   "citation": "(cite: DeLooze2014)"
+  },
+  {
+   "what": {
+    "value": "Spitzer IRAC magnitudes of MASOSA",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "MASOSA has *Spitzer*/IRAC magnitudes $[3.6]=24.0\\pm0.1$ and $[4.5]=24.6\\pm0.2$ (cite: Laigle2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle2016)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA cubes and continuum",
+   "method": "CASA clean with natural weighting + 650 kλ taper for detectability; Briggs robust 0.5 for resolved analysis",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "2-channel averaging, ~18 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "HST photometry, UV slope and sizes",
+   "method": "1.2'' aperture photometry in F110W/F160W with Lyα correction; imfit exponential profile fits on F160W",
+   "software": [
+    "imfit",
+    "Swarp"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Continuum limits and IR luminosity/obscured SFR",
+   "method": "1σ limits from tapered continuum; optically thin greybody 8-1000 µm, CMB-corrected, Kennicutt SFR_IR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Td=45 K, β=1.5, κ850=0.077 m^2/kg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Integrated [CII] properties of VR7 and MASOSA limit",
+   "method": "Bootstrap (1000 perturbations) of 1D spectrum for z and FWHM; CASA imfit elliptical Gaussian on collapsed PB-corrected cube; MASOSA limit from rms and fake-source injection (500 positions)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "VR7 collapse 252.285-252.519 GHz (-20 to -320 km/s wrt Lyα)"
+   ],
+   "assumptions": [
+    "MASOSA conservative limit assumes 200 km/s width and ~0.7'' beam"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Resolved [CII] morphology, moments, PV, resolved UV/[CII] ratio",
+   "method": "High-res Briggs cube; moment maps 0-3; PV diagrams with CASA impv, 1.5'' slit; SFR_UV/SFR_[CII] maps using Kennicutt and De Looze",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Place on [CII]-SFR relation and infer metallicity",
+   "method": "Compile and homogenise literature sample; compare with De Looze relation; Vallini2015 for metallicity",
+   "software": [
+    "TOPCAT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "VR7 integrated [CII] flux",
+   "value": "447",
+   "uncertainty": "±42",
+   "units": "mJy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "This results in a total flux of $447\\pm42$ mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 L[CII]",
+   "value": "4.76e8",
+   "uncertainty": "±0.44e8",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "translates in a \\[Cii\\] luminosity $4.76\\pm0.44 \\times10^8$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 [CII] redshift",
+   "value": "6.5285",
+   "uncertainty": "+0.0007/-0.0004",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$z_{\\rm [CII]} = 6.5285^{+0.0007}_{-0.0004}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 [CII] FWHM",
+   "value": "200",
+   "uncertainty": "+48/-32",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "$v_{\\rm FWHM, [CII]} = 200^{+48}_{-32}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "MASOSA L[CII] 1σ limit",
+   "value": "<0.22e8",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| L$_{\\rm [CII], CASA}$/10$^8$ L$_{\\odot}$ | $4.76\\pm0.44$ | $<0.22$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 L_IR (Td=45K)",
+   "value": "<2.6e10",
+   "uncertainty": "1σ limit",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "limiting L$_{\\rm IR, T=45K} < 2.6\\times10^{10}$ L$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 SFR_UV",
+   "value": "54",
+   "uncertainty": "+3/-2",
+   "units": "Msun/yr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "SFR$_{\\rm UV} = 54^{+3}_{-2}$ M$_{\\odot}$ yr$^{-1}$ for VR7"
+    }
+   ]
+  },
+  {
+   "quantity": "MASOSA UV slope β",
+   "value": "-1.06",
+   "uncertainty": "+0.68/-0.72",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "a red UV slope $\\beta=-1.06^{+0.68}_{-0.72}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 two UV components separation",
+   "value": "1.88 kpc (0.35'')",
+   "uncertainty": "±0.07 kpc",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "two components separated by $0.35\\pm0.01''$ ($1.88\\pm0.07$ kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 dynamical mass /sin^2 i",
+   "value": "3.0 (upper, major axis)",
+   "uncertainty": "+0.7/-0.6",
+   "units": "1e10 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "M$_{\\rm dyn}$/(sin $i$)$^2 = 1.4^{+0.4}_{-0.3} - 3.0^{+0.7}_{-0.6} \\times10^{10}$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "VR7 mean SFR_UV/SFR_[CII]",
+   "value": "1.3",
+   "uncertainty": "±0.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.4",
+     "quote": "with a mean ratio $1.3\\pm0.1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, threshold, masks and cell/image size",
+  "Line-free channels and continuum-subtraction method",
+  "Flux calibration uncertainty and any self-calibration",
+  "Exact spectrum extraction aperture for 1D spectra",
+  "Fitting procedure/priors for two-component Gaussian and imfit uncertainties",
+  "Number of UV-tapered/channel parameters for PV and moment map cuts",
+  "Rest frequency used for [CII] and moment-map thresholds"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (masks, thresholds, image size, cell)",
+  "Spectrum extraction apertures",
+  "Sampler/fit details for line fits",
+  "Compilation reductions tables partly rely on literature values"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main recipe clear with CASA version and weighting, but many imaging and extraction details missing and several analysis steps inherited.",
+ "rediscovery_reason": "ALMA data are archival-accessible (2017.1.01451.S, ALMA data likely public by now) and main results (fluxes, limits) are numeric, though some details are unstated.",
+ "source_card": "cards/2019ApJ...881..124M/sonnet/card.md"
+}

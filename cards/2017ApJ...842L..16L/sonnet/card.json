@@ -1,0 +1,919 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...842L..16L",
+  "title": "ALMA [N II] 205 μm Imaging Spectroscopy of the Interacting Galaxy System BRI 1202-0725 at Redshift 4.7",
+  "year": 2017,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Lu, Nanyao",
+  "n_authors": 12,
+  "arxiv_id": "1706.03018",
+  "doi": "10.3847/2041-8213/aa77fc",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00388.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the results from Atacama Large Millimeter/submillimeter Array (ALMA) imaging in the [N ii] 205$\\,\\mu{\\rm m}$ fine-structure line (hereafter [N ii]) and the underlying continuum of BRI 1202-0725"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "BRI 1202-0725 (QSO, SMG, LAE1, LAE2)",
+     "coordinates": {
+      "value": "QSO 12h05m23s13, -7d42'32.8\" (J2000, Table 1)",
+      "evidence": [
+       {
+        "loc": "Analysis and Discussion",
+        "quote": "At $z = 4.694$, the luminosity distance is 44,172 Mpc and 1$''$ corresponds to 6.6 kpc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z = 4.695 (QSO), 4.692-4.693 (SMG); D_L = 44,172 Mpc at z=4.694",
+      "evidence": [
+       {
+        "loc": "Analysis and Discussion",
+        "quote": "At $z = 4.694$, the luminosity distance is 44,172 Mpc and 1$''$ corresponds to 6.6 kpc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "cosmology (flat, Omega_M=0.27, H0=71) from measured redshift",
+      "evidence": [
+       {
+        "loc": "Analysis and Discussion",
+        "quote": "At $z = 4.694$, the luminosity distance is 44,172 Mpc and 1$''$ corresponds to 6.6 kpc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Use [N II] 205 um to CO(7-6) flux ratio to constrain dust temperature, FIR luminosity, SFR and gas depletion in the QSO and SMG of BRI 1202-0725 at z=4.7",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The ratio of the [N ii] flux to the existing CO (7$-$6) flux is used to constrain the dust temperature ($T_{\\rm dust}$) for a more accurate determination of the FIR luminosity $L_{\\rm FIR}$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00388.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00388.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "BRI 1202-0725 was observed in ALMA Band 6 in the time division mode."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 SPWs of 1875 MHz; one on [N II] at ~256.6 GHz, three continuum at 254.6, 240.6, 238.6 GHz; 128 channels, 31.25 MHz (~36.5 km/s)",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "Each SPW has 128 channels with an effective resolution of 31.25 MHz ($\\sim$36.5 km s$^{-1}$)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "[N II]",
+     "transition": "205 um fine-structure",
+     "rest_frequency": "1461.13 GHz",
+     "evidence": [
+      {
+       "loc": "INTRODUCTION",
+       "quote": "the flux of the [N ii] 205$\\,\\mu{\\rm m}$ line (1461.13 GHz; hereafter as [NII])"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1 to 310.2 m (first execution), 15.1 to 460.0 m (second)",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "the second on March 13, 2016 using 38 antennas and baselines ranging from 15.1 to 460.0 meters."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.0\" x 0.8\" PA 75 deg (natural); 0.7\" x 0.6\" (robust=0)",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "resulting in a synthesized beam of 1.0$''$$\\times$0.8$''$ (full width at half maximum; FWHM) at a position angle (PA) of 75$^\\circ$ (N to E) for both continuum and line data."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum rms ~34 uJy/beam; line rms ~0.3 mJy/beam per 100 km/s channel",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "with an r.m.s. noise of $\\sim$0.3 mJy beam$^{-1}$ in individual channels."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2 executions, 20.3 min each on target",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "The observation consisted of 2 independent executions, each with a 20.3 min on-target integration."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "January 8, 2016 and March 13, 2016",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "The first was executed on January 8, 2016 using 37 antennas"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO(7-6) line fluxes used for L_CO(7-6)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$^{i}$ Based on the line fluxes in Salomé et al. (2012)."
+       }
+      ]
+     },
+     "citation": "Salomé et al. 2012"
+    },
+    {
+     "what": {
+      "value": "[C II] line fluxes used for L_[CII]",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "$^{j}$ Based on the line fluxes in Wagg et al. (2012)."
+       }
+      ]
+     },
+     "citation": "Wagg et al. 2012"
+    },
+    {
+     "what": {
+      "value": "Local (U)LIRG and high-z sample line ratios vs C(60/100) used for calibration",
+      "evidence": [
+       {
+        "loc": "Dust Continuum",
+        "quote": "for the local (U)LIRGs and high-$z$ galaxies used in Lu15."
+       }
+      ]
+     },
+     "citation": "Lu et al. 2015 (Lu15)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA 4.5.3 data reduction; calibrators J1229+0230 and J1159-0940",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "The data reduction was carried out with the Common Astronomy Software Applications (CASA) 4.5.3"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.5.3",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "The data reduction was carried out with the Common Astronomy Software Applications (CASA) 4.5.3"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "ALMA flux uncertainties exclude absolute calibration uncertainty",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "The ALMA flux uncertainties cited do not include the absolute calibration uncertainty."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting; Briggs robust = 0 for enhanced resolution",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "we also cleaned the data using the Briggs weighting (with *robust* $= 0$) to lower the sidelobes"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.0\"x0.8\" PA 75 (natural)",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "resulting in a synthesized beam of 1.0$''$$\\times$0.8$''$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "34 uJy/beam continuum; 0.3 mJy/beam per channel",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "is $\\sim$34 $\\mu$Jy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SFR from L_CO(7-6), C(60/100) calibration and dual-line method",
+      "evidence": [
+       {
+        "loc": "Star Formation Properties",
+        "quote": "Following Lu15, the SFR inferred from $L_{\\rm CO(7-6)}$ is 5.1 $(6.9) \\times 10^3$"
+       }
+      ]
+     },
+     "from_reference": "Lu et al. 2015 (Lu15)"
+    },
+    {
+     "what": {
+      "value": "Molecular gas mass from rest-frame 850 um flux",
+      "evidence": [
+       {
+        "loc": "Star Formation Properties",
+        "quote": "Following Scoville et al. (2016), we estimated the molecular gas mass"
+       }
+      ]
+     },
+     "from_reference": "Scoville et al. 2016"
+    }
+   ],
+   "unstated_but_needed": [
+    "Continuum-subtraction method and line-free channels",
+    "Clean threshold, mask, cell and image size",
+    "Flux calibrator flux values and which was used for which role",
+    "Modified blackbody SED fit details and photometry used",
+    "Exact conversions of C(60/100) to Tdust",
+    "Self-calibration not mentioned"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and [N II] cube",
+    "method": {
+     "value": "Clean with natural weighting; also robust=0 for enhanced resolution",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "the final images were cleaned using the natural weighting"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "100 km/s channels",
+      "evidence": [
+       {
+        "loc": "Observations and Results",
+        "quote": "The final [N ii] spectral cube has a velocity channel width of 100  km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure [N II] flux and size",
+    "method": {
+     "value": "Extract spectra in elliptical apertures, fit single Gaussian plus constant; 2D Gaussian fit to image and deconvolve beam",
+     "evidence": [
+      {
+       "loc": "[N ii] Line Emission",
+       "quote": "we fit to their spectrum a single Gaussian profile plus a constant to derive the line flux."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fits",
+     "evidence": [
+      {
+       "loc": "Analysis and Discussion, [N ii] Line Emission",
+       "quote": "For the QSO and SMG, we fit to their spectrum a single Gaussian profile plus a constant to derive the line flux."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure continuum flux",
+    "method": {
+     "value": "2D Gaussian fit to each galaxy after masking others",
+     "evidence": [
+      {
+       "loc": "Dust Continuum",
+       "quote": "by fitting a 2d Gaussian to the galaxy image in Fig. 1a after temporarily masking out the other galaxies."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian",
+     "evidence": [
+      {
+       "loc": "Analysis and Discussion, Dust Continuum",
+       "quote": "We derive the total continuum flux density of a galaxy by fitting a 2d Gaussian to the galaxy image in Fig. 1a after temporarily masking out the other galaxies."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive C(60/100) and Tdust",
+    "method": {
+     "value": "Intersect [C II]/CO(7-6) and [N II]/CO(7-6) ratios with least-squares bisector fit to local (U)LIRGs; average values",
+     "evidence": [
+      {
+       "loc": "Dust Continuum",
+       "quote": "The black line in each plot is a least-squares bisector fit (Isobe et al. 1990) to the local (U)LIRGs of detections only, excluding the AGNs"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "uncertainty on C(60/100) ~0.15",
+      "evidence": [
+       {
+        "loc": "Dust Continuum",
+        "quote": "We set the uncertainty of these FIR colors to the horizontal scatter w.r.t. the black line in the [N ii] plot, i.e., $\\sim$0.15."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "beta = 1.8",
+      "evidence": [
+       {
+        "loc": "Dust Continuum",
+        "quote": "Assuming $\\beta = 1.8$ (Planck Collaboration et al. 2011)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Least-squares bisector",
+     "evidence": [
+      {
+       "loc": "Analysis and Discussion, Dust Continuum",
+       "quote": "The black line in each plot is a least-squares bisector fit (Isobe et al. 1990) to the local (U)LIRGs of detections only, excluding the AGNs"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Two independent line ratios agree within scatter",
+     "evidence": [
+      {
+       "loc": "Dust Continuum",
+       "quote": "The difference between these values is smaller than the scatter (0.15 to 0.2) in these plots."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit SED and derive L_FIR",
+    "method": {
+     "value": "Modified blackbody with Tdust=43 K, beta=1.8 fixed",
+     "evidence": [
+      {
+       "loc": "Dust Continuum",
+       "quote": "after fixing $T_{\\rm dust}$ at 43 K and $\\beta$ at 1.8"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Modified blackbody, T and beta fixed",
+     "evidence": [
+      {
+       "loc": "Analysis and Discussion, Dust Continuum",
+       "quote": "Our best modified-blackbody SED fits for the QSO and SMG separately, after fixing $T_{\\rm dust}$ at 43 K and $\\beta$ at 1.8, are also shown in Fig. 4."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Similar SED from CO(7-6) continuum plus C(60/100)",
+     "evidence": [
+      {
+       "loc": "Dust Continuum",
+       "quote": "We note that similar SED fits would be obtained by using only the continuum flux from the CO (7$-$6) observation and our adopted $C(60/100)$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive SFR, SF size, gas mass, depletion time",
+    "method": {
+     "value": "SFR from L_CO(7-6) (Chabrier IMF); Sigma_SFR from C(60/100) and Tdust correlations; d from Sigma_SFR; Mgas from 850 um flux",
+     "evidence": [
+      {
+       "loc": "Star Formation Properties",
+       "quote": "The face-on FWHM diameter, $d$, of the SF region can be estimated via $\\Sigma_{\\rm SFR} = (\\frac{1}{2}\\,{\\rm SFR})/({\\frac{1}{4}}\\pi\\,d^2)$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Sigma_SFR = 2e3 Msun/yr/kpc^2; Chabrier IMF",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "assuming $\\Sigma_{\\rm SFR} = 2,000\\,M_{\\odot}$ yr$^{-1}$ kpc$^{-2}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Two Sigma_SFR correlations give comparable estimates",
+     "evidence": [
+      {
+       "loc": "Star Formation Properties",
+       "quote": "these two independent correlations give comparable estimates for $\\Sigma_{\\rm SFR}$"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.3",
+    "used_for": {
+     "value": "Data reduction and cleaning",
+     "evidence": [
+      {
+       "loc": "Observations and Results",
+       "quote": "The data reduction was carried out with the Common Astronomy Software Applications (CASA) 4.5.3"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Tdust (QSO and SMG)",
+    "value": "43",
+    "uncertainty": "±2",
+    "units": "K",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our best estimated $T_{\\rm dust}$ equals $43\\ (\\pm 2)$ K for both galaxies"
+     }
+    ]
+   },
+   {
+    "quantity": "[N II] flux QSO",
+    "value": "1.01",
+    "uncertainty": "±0.02",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "1.01 ($\\pm 0.02$)"
+     }
+    ]
+   },
+   {
+    "quantity": "[N II] flux SMG",
+    "value": "0.99",
+    "uncertainty": "±0.02",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "0.99 ($\\pm 0.02$)"
+     }
+    ]
+   },
+   {
+    "quantity": "L_FIR QSO (SMG)",
+    "value": "2.3 (2.4)e13",
+    "uncertainty": "±18%",
+    "units": "Lsun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Dust Continuum",
+      "quote": "is $2.3$ $(2.4) \\times 10^{13}\\,L_{\\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR QSO (SMG)",
+    "value": "5.1 (6.9)e3",
+    "uncertainty": "30%",
+    "units": "Msun/yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "has a SFR of 5.1 $(6.9) \\times 10^3\\,M_{\\odot}$ yr$^{-1}$ ($\\pm$ 30%)"
+     }
+    ]
+   },
+   {
+    "quantity": "[N II] deconvolved major axis QSO (SMG)",
+    "value": "9 (14)",
+    "uncertainty": "not stated",
+    "units": "kpc",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "[N ii] Line Emission",
+      "quote": "The de-convolved major axes correspond to $\\sim$14 and 9 kpc for the SMG and QSO, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum S(256 GHz) QSO (SMG)",
+    "value": "7.58 (7.20)",
+    "uncertainty": "±0.01",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "7.58 ($\\pm 0.01$)"
+     }
+    ]
+   },
+   {
+    "quantity": "SF diameter QSO (SMG)",
+    "value": "1.3 (1.5)",
+    "uncertainty": "not stated",
+    "units": "kpc",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star Formation Properties",
+      "quote": "the resulting $d = 1.3$ (1.5) kpc for the QSO (SMG)"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas depletion time QSO (SMG)",
+    "value": "10 (7)e7",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star Formation Properties",
+      "quote": "The gas depletion time $\\tau_{\\rm gas} \\approx$ 10 (7) $\\times 10^7$ years for the QSO (SMG)."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "[N II] emission is more extended than continuum and [C II]; QSO [N II] marginally resolved into 3 peaks suggesting tidal interaction",
+    "evidence": [
+     {
+      "loc": "Observations and Results",
+      "quote": "The relative positions of (ii) and (iii) are suggestive of tidal interaction or gas connection between the member galaxies."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is [N II] more extended than dust continuum in the QSO and SMG?",
+    "experiment": "Gaussian fits to [N II] and continuum images",
+    "result": "[N II] major axes 9 and 14 kpc; continuum unresolved",
+    "finding": "[N II] is much more diffuse than dust or [C II]",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "[N ii] Line Emission",
+      "quote": "Therefore, the [N ii] emission is much more extended (or diffuse) than the dust or [C ii]emission in these galaxies."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does L_CO(7-6) trace SFR in these galaxies?",
+    "experiment": "Compare L_CO(7-6)/L_FIR with local (U)LIRGs using Tdust=43 K",
+    "result": "log ratio -4.54 and -4.42 vs local -4.61, within ~1.5 sigma",
+    "finding": "Consistent with local (U)LIRGs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Dust Continuum",
+      "quote": "These values agree with the average of $-4.61$ for our local (U)LIRG sample to within $\\sim$1.5$\\sigma$"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "AGN sample too small for firm conclusion on AGN segregation; Mgas uncertain by factor ~2",
+     "evidence": [
+      {
+       "loc": "Star Formation Properties",
+       "quote": "The formal uncertainty for $M_{\\rm gas}$ is about a factor of 2."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Tdust depends on local-sample calibration and fixed beta",
+    "SED fit poorly constrained at peak",
+    "Archival Pavesi et al. data gave different [N II] fluxes, not reconciled in detail"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration and imaging details beyond weighting",
+    "SED photometry list and fit procedure",
+    "Lu15 calibration relations"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB raw (two short Band 6 executions)",
+   "score_inferred": 3,
+   "score_reason": "Short letter; ALMA project code and CASA version given, but imaging and SED details are sparse and rely on Lu15.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe depends on external calibration relations from Lu15 and unspecified SED details."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Lu et al. 2015 (Lu15)",
+     "why": "Dual-line method for SFR and C(60/100)"
+    },
+    {
+     "citation": "Scoville et al. 2016",
+     "why": "Gas mass from 850 um flux"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Pavesi et al. 2016",
+     "why": "Independent analysis of archival ALMA [N II] data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Cycle-3 ALMA snapshot survey of 8 ULIRGs and 4 LIRGs at 4<z<5.5"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-963b1efbc96b8b92eff1dc5c0a52bb51",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:36",
+  "usage": {
+   "input_tokens": 13940,
+   "output_tokens": 7184,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.050466,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 56,
+  "quotes_ok": 56,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 42,
+   "rate": 0.575
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:57",
+  "custom_id": "repair-sonnet-cdde5a4ac2c3ae4d741913c5df69add4",
+  "fixed": [
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "For the QSO and SMG, we fit to their spectrum a single Gaussian profile plus a constant to derive the line flux."
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "We derive the total continuum flux density of a galaxy by fitting a 2d Gaussian to the galaxy image in Fig. 1a after temporarily masking out the other galaxies."
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "The black line in each plot is a least-squares bisector fit (Isobe et al. 1990) to the local (U)LIRGs of detections only, excluding the AGNs"
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "Our best modified-blackbody SED fits for the QSO and SMG separately, after fixing $T_{\\rm dust}$ at 43 K and $\\beta$ at 1.8, are also shown in Fig. 4."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

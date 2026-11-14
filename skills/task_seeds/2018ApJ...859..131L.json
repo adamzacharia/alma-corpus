@@ -1,0 +1,191 @@
+{
+ "bibcode": "2018ApJ...859..131L",
+ "title": "The Distribution and Excitation of CH<SUB>3</SUB>CN in a Solar Nebula Analog",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aac169",
+ "arxiv_id": "1805.01458",
+ "fields": [
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the distribution, column density and excitation of CH3CN in the TW Hya disk, and do disk chemistry models imply in situ formation sufficient to explain it and cometary abundances?",
+ "alma_project_codes": [
+  "2016.1.01046.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "1.05\" x 0.83\" (beam ~50-60 AU)",
+  "sensitivity": "~3.2 mJy/beam per 0.2 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "TW Hya density and temperature structure constrained by SED and HD",
+    "evidence": [
+     {
+      "loc": "3.3 Comparison to chemical models",
+      "quote": "The assumed density and temperature structures, constrained by the TW Hya SED and previous HD observations (cite: Bergin_2013) in (cite: Cleeves_2015)"
+     }
+    ]
+   },
+   "citation": "Cleeves_2015"
+  },
+  {
+   "what": {
+    "value": "Inclination 7 deg and PA 155 deg for deprojection",
+    "evidence": [
+     {
+      "loc": "2.2 Results",
+      "quote": "using an inclination of 7$\\degree$ and PA of 155$\\degree$ (cite: Qi_2004; Andrews_2012; Andrews_2016)"
+     }
+    ]
+   },
+   "citation": "Qi_2004; Andrews_2012; Andrews_2016"
+  },
+  {
+   "what": {
+    "value": "Spectral line data and rotational constants from SLAIM",
+    "evidence": [
+     {
+      "loc": "3.1 Disk-averaged analysis",
+      "quote": "Values for these rotational constants and all other spectral line data were taken from the Spectral Line Atlas of Interstellar Molecules (SLAIM)"
+     }
+    ]
+   },
+   "citation": "Remijan_2007"
+  },
+  {
+   "what": {
+    "value": "Cometary CH3CN/H2O abundance 7e-5 to 3e-4",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "cometary CH$_3$CN abundances 7$\\times$10$^{-5}$–3$\\times$10$^{-4}$ (cite: Mumma_2011)"
+     }
+    ]
+   },
+   "citation": "Mumma_2011"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Detect lines by matched filtering",
+   "method": "C18O cube used as filter on CH3CN spectral windows with VISIBLE",
+   "software": [
+    "CLEAN",
+    "VISIBLE"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image transitions and extract fluxes",
+   "method": "Image each line, Keplerian mask convolved with beam (105 AU) to extract spectra, integrate 2.1-3.7 km/s, bootstrap uncertainty",
+   "software": [
+    "CLEAN",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Rotational diagram fit (disk-averaged and radial)",
+   "method": "LTE rotational diagram with optical depth correction, likelihood fit by MCMC",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE excitation; solid angle of beam-convolved Keplerian mask"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare to chemical model",
+   "method": "Run model with/without grain-surface reactions, RADMC-3D radiative transfer, simulate ALMA with vis_sample, repeat rotational diagram analysis",
+   "software": [
+    "RADMC-3D",
+    "vis_sample"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance 59.5 pc, PA 155 deg, inclination 8 deg, M*=0.8 Msun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk-averaged CH3CN column density",
+   "value": "1.45e12",
+   "uncertainty": "+0.19/-0.15 e12",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "disk-averaged column density of N$_T$=1.45$^{+0.19}_{-0.15}\\times10^{12}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged rotational temperature",
+   "value": "32.7",
+   "uncertainty": "+3.9/-3.4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "T$_{rot}$=32.7$^{+3.9}_{-3.4}$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Radial NT profile range",
+   "value": "5 to 0.9e12",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The observed N$_T$ profile decreases with radius from 5 to 0.9$\\times10^{12}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Model disk-averaged NT and Trot",
+   "value": "1.49e12 cm^-2; 36.6 K",
+   "uncertainty": "not stated",
+   "units": "cm^-2; K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "N$_T$=1.49$\\times$10$^{12}$ cm$^{-2}$ and rotational temperature of T$_{rot}$=36.6 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum-subtraction details",
+  "Image size, cell size, clean threshold and masks",
+  "Self-calibration solution intervals",
+  "Assumed linewidth Δv in rotational diagram",
+  "Chemical model code and inputs not public; full network not given",
+  "Whether pipeline calibration or manual scripts used"
+ ],
+ "missing_for_reproduction": [
+  "Chemical model code and exact setup",
+  "Imaging parameters, line-free channels",
+  "Assumed linewidth"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and recipe mostly described and public tools used, but chemical model and several imaging details are missing.",
+ "rediscovery_reason": "Public data, rotational diagram analysis numeric and well specified, though model comparison is hard to redo.",
+ "source_card": "cards/2018ApJ...859..131L/sonnet/card.md"
+}

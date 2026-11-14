@@ -1,0 +1,302 @@
+{
+ "bibcode": "2019MNRAS.488.5029H",
+ "title": "Star-formation rates of two GRB host galaxies at z ∼ 2 and a [C II] deficit observed with ALMA",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz2034",
+ "arxiv_id": "1908.01541",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the dust-obscured SFRs of two GRB host galaxies at z~2 once rest-frame FIR is measured, and is their [C II]/FIR ratio unusual?",
+ "alma_project_codes": [
+  "2017.1.00337.S"
+ ],
+ "data": {
+  "bands": "Band 9 (070521); Bands 8 and 9 (080207)",
+  "arrays": "not stated",
+  "angular_resolution": "Beam 590x450 mas (070521 B9); 940x550 mas (080207 B8); 510x440 mas (080207 B9)",
+  "sensitivity": "rms 0.45, 0.10, 1.4 mJy/beam (070521 B9, 080207 B8, 080207 B9)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Optical-to-MIR photometry of the 070521 host",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| $^{a}$                       | J       | 1.59$\\pm$0.58     | Keck/NIRC            | (cite: Perley2013a) |"
+     }
+    ]
+   },
+   "citation": "(cite: Perley2013a)"
+  },
+  {
+   "what": {
+    "value": "Multiband photometry of the 080207 host (Herschel, Spitzer, HST, ground)",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "| 153.94$^{a}$                | 160um        | 5900$\\pm$1400      | *Herschel*/PACS      | (cite: Hunt2014)      |"
+     }
+    ]
+   },
+   "citation": "(cite: Hunt2011; Hunt2014; Svensson2012)"
+  },
+  {
+   "what": {
+    "value": "VLA 5.23 GHz radio fluxes and radio SFRs",
+    "evidence": [
+     {
+      "loc": "2.1 GRB 070521 host",
+      "quote": "The radio SFR$_{\\rm radio}$ is 817$\\pm$300 $M_{\\odot}$ yr$^{-1}$ calculated by a conversion formula by (cite: Murphy2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Perley2013b)"
+  },
+  {
+   "what": {
+    "value": "[C II]/FIR comparison galaxy sample compiled from literature up to z~3",
+    "evidence": [
+     {
+      "loc": "5.3.1",
+      "quote": "The comparison sample is compiled from literature up to $z\\sim3$"
+     }
+    ]
+   },
+   "citation": "(cite: Cormier2010; Ivison2010; Malhotra2001; Stacey2010; Sargsyan2012; ...)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux/size",
+   "method": "CASA CLEAN continuum images from line-free ranges, natural weighting; imfit to get fluxes and sizes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting; 50 km/s velocity bins"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract [CII] line flux",
+   "method": "Continuum-removed spectrum; Gaussian fit for velocity offset; integrate over +-125 km/s; imfit shows point source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "SED fitting for SFR, dust and stellar properties",
+   "method": "MAGPHYS high-z version energy-balance SED fit to UV-FIR photometry; photometry beyond ~500 um and radio excluded",
+   "software": [
+    "MAGPHYS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF; Bruzual & Charlot models; Charlot & Fall attenuation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive LFIR and surface densities",
+   "method": "LFIR from LTIR via log ratio 0.24; Sigma = L/(pi r^2) with r = deconvolved FWHM/2 of band 8 major axis",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "LFIR integrated over rest-frame 40-120 um"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare with main sequence and [CII] deficit samples",
+   "method": "Place hosts on SFR-M* main sequence (Whitaker2014) and in L[CII]/LFIR vs LFIR, Sigma_FIR, LCO/LFIR planes; check afterglow contamination by extrapolating radio flux",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Afterglow spectral slopes alpha=-1/2 to 1/3 (Sari1998)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "FIR continuum flux, 070521 (band 9)",
+   "value": "3.58",
+   "uncertainty": "0.45",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| FIR continuum flux (mJy) | 3.58$\\pm$0.45 | 11.9$\\pm$1.7 | 3.37$\\pm$0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR continuum flux, 080207 band 9",
+   "value": "11.9",
+   "uncertainty": "1.7",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| FIR continuum flux (mJy) | 3.58$\\pm$0.45 | 11.9$\\pm$1.7 | 3.37$\\pm$0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR continuum flux, 080207 band 8",
+   "value": "3.37",
+   "uncertainty": "0.18",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| FIR continuum flux (mJy) | 3.58$\\pm$0.45 | 11.9$\\pm$1.7 | 3.37$\\pm$0.18 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] line flux, 080207",
+   "value": "4.4",
+   "uncertainty": "1.2",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Emission-line flux (Jy km s$^{-1}$) | \\- | 4.4$\\pm$1.2$^{d}$ | $<$0.28$^{e}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] velocity offset",
+   "value": "155",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Observation and data reduction",
+     "quote": "The velocity offset between \\[C ii\\] 158$\\mu$m and optical emission lines is 155 km s$^{-1}$ measured by a Gaussian fitting."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR 070521 host",
+   "value": "49.85",
+   "uncertainty": "+72.33/-2.86",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SFR ($M_{\\odot}$ yr$^{-1}$) | 49.85$^{+72.33}_{-2.86}$ | 123.40$^{+25.19}_{-21.78}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR 080207 host",
+   "value": "123.40",
+   "uncertainty": "+25.19/-21.78",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SFR ($M_{\\odot}$ yr$^{-1}$) | 49.85$^{+72.33}_{-2.86}$ | 123.40$^{+25.19}_{-21.78}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass 080207 host",
+   "value": "1.70e11",
+   "uncertainty": "+0.08/-0.35 e11",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Stellar mass ($M_{\\odot}$) | (4.49$^{+2.12}_{-0.02}$)$\\times 10^{10}$ | (1.70$^{+0.08}_{-0.35}$)$\\times 10^{11}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR luminosity 080207 host",
+   "value": "1.05e12",
+   "uncertainty": "+-0.13e12",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| FIR luminosity ($L_{\\odot}$)$^{a}$ | (3.50$^{+4.62}_{-0.55}) \\times 10^{11}$ | $(1.05^{+0.13}_{-0.13}) \\times 10^{12}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] 158um luminosity 080207",
+   "value": "7.85e8",
+   "uncertainty": "2.14e8",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "|  158 $\\mu$m luminosity ($L_{\\odot}$) | \\- | (7.85$\\pm 2.14$)$\\times 10^{8}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "L[CII]/LFIR 080207",
+   "value": "7.5e-4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The luminosity ratio of \\[C  ii\\] 158$\\mu$m to FIR is 7.5$\\times 10^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass 080207 host",
+   "value": "5.45e8",
+   "uncertainty": "+3.61/-1.80 e8",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| Dust mass ($M_{\\odot}$) | (1.52$^{+1.34}_{-0.76}$) $\\times 10^{8}$ | (5.45$^{+3.61}_{-1.80}$) $\\times 10^{8}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN threshold, mask, cell and image size, niter",
+  "MAGPHYS priors/library details and exact photometry treatment for 070521 (flux ladder, redshift fixing)",
+  "Continuum subtraction method for the line cube",
+  "Flux calibration uncertainty and any ALMA flux scale error added",
+  "Observed 080207 band 9 on-source time inconsistent (8 vs 5 min)",
+  "How L[CII] was derived from flux and how Sigma_FIR comparison samples were homogenised",
+  "Target coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters",
+  "MAGPHYS settings",
+  "Comparison sample compilation details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and standard tools, but imaging and SED fit details are sparse.",
+ "rediscovery_reason": "Public data, numeric fluxes and SFRs can be redone with CASA and MAGPHYS, though some settings are missing.",
+ "source_card": "cards/2019MNRAS.488.5029H/sonnet/card.md"
+}

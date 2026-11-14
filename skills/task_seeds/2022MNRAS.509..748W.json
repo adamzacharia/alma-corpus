@@ -1,0 +1,456 @@
+{
+ "bibcode": "2022MNRAS.509..748W",
+ "title": "ALMA observations of the Extended Green Object G19.01-0.03 - I. A Keplerian disc in a massive protostellar system",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab2973",
+ "arxiv_id": "2110.06262",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "What are the kinematic properties, centimetre-millimetre SED, disc stability, and nature of the central source(s) in the massive protostellar system G19.01–0.03 MM1?",
+ "alma_project_codes": [
+  "2013.1.00812.S"
+ ],
+ "data": {
+  "bands": "Band 7 (1.05 mm)",
+  "arrays": "12m array (37 antennas)",
+  "angular_resolution": "0.52'' x 0.35'' (PA 88.4 deg) for continuum; ~0.4''",
+  "sensitivity": "0.25 mJy beam^-1 (continuum); 3.0 mJy beam^-1 (wideband spectral line median); 7.2 mJy beam^-1 (narrow spw CH3OH line)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SMA 1.3 mm (275 +/- 7 mJy) and CARMA 3.4 mm (27 +/- 3 mJy) continuum flux densities for SED modelling, and SMA 12CO(2-1) outflow data",
+    "evidence": [
+     {
+      "loc": "SED modelling of MM1",
+      "quote": "The SED, presented in Figure [4](#fig:sed), includes our new VLA 1.21 cm and 5.01 cm and ALMA 1.05 mm data along with the SMA 1.3 mm and CARMA 3.4 mm datapoints from (cite: cyganowski11a)."
+     },
+     {
+      "loc": "Table 4",
+      "quote": "| 3.4 mm$^{e}$ | 88.0 | $27\\pm3$ | $1.5-36.5$ |"
+     },
+     {
+      "loc": "Table 4",
+      "quote": "| 1.3 mm$^{e}$ | 225.1 | $275\\pm7$ | $7-88$ |"
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski11a)"
+  },
+  {
+   "what": {
+    "value": "NH3 LSRK velocity and Galactic rotation curve parameters used to estimate the near kinematic distance of 4.0 +/- 0.3 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Throughout, we adopt a near kinematic distance of $4.0\\pm0.3$ kpc, estimated from the NH$_{3}$ LSRK velocity from (cite: cyganowski13) and the Galactic rotation curve parameters from (cite: reid14)."
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski13) and (cite: reid14)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature range of T_dust = 100-130 K and bolometric luminosity ~10^4 L_sun",
+    "evidence": [
+     {
+      "loc": "Disc properties and stability",
+      "quote": "On this sizescale, for temperatures $T_{\\mathrm{dust}}=100-130$ K (cite: cyganowski11a), we calculate dust optical depths $\\tau_{\\mathrm {dust}}$ $\\sim$ $0.09-0.12$ and a gas mass M$_{\\mathrm{gas}}$ $\\sim$ $5.4-7.2$ M$_{\\odot}$ for MM1."
+     },
+     {
+      "loc": "The Nature of MM1",
+      "quote": "The bolometric luminosity of G19.01–0.03 MM1 is $\\sim$10$^{4}$ L$_{\\odot}$ (cite: cyganowski11a)."
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski11a)"
+  },
+  {
+   "what": {
+    "value": "JPL and CDMS molecular spectroscopic catalogues",
+    "evidence": [
+     {
+      "loc": "Compact molecular line emission towards MM1",
+      "quote": "We use the JPL (cite: jpl) and CDMS (cite: cdms) catalogues to identify the observed molecular lines."
+     }
+    ]
+   },
+   "citation": "(cite: jpl) and (cite: cdms)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum source structures and properties",
+   "method": "Dendrogram extraction on the ALMA 1.05 mm continuum image out to the 30% primary beam response level, and 2D Gaussian fitting on ALMA and VLA continuum images",
+   "software": [
+    "astrodendro",
+    "CASA (IMFIT)"
+   ],
+   "key_parameters": [
+    "I_min = 5 sigma_rms = 1.25 mJy beam^-1, Delta I_min = 1 sigma_rms = 0.25 mJy beam^-1, n_pix = 25 pixels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular line transitions and map velocity gradients",
+   "method": "Cross-match observed lines with JPL and CDMS catalogues, generate LTE synthetic spectra with CLASS/Weeds to confirm detections, compute moment 1 maps, and measure velocity gradient position angles from the slope connecting most blue-shifted and red-shifted positions",
+   "software": [
+    "GILDAS / CLASS (Weeds)"
+   ],
+   "key_parameters": [
+    "19 lines in broad spws + 1 narrow-band CH3OH line; 3 lines with extended emission excluded from disc PA and inclination averages"
+   ],
+   "assumptions": [
+    "LTE conditions with hot core rotational temperatures > 100 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit 6.7 GHz Class II CH3OH maser positions and ring geometry",
+   "method": "Fit 2D Gaussian point sources to each channel with >5 sigma maser detection using CASA IMFIT, then fit an ellipse to the maser positions",
+   "software": [
+    "CASA (IMFIT)"
+   ],
+   "key_parameters": [
+    ">5 sigma detection criterion per channel; point source fit with axes and PA fixed to synthesised beam"
+   ],
+   "assumptions": [
+    "Maser emission is unresolved in each channel; circular symmetry assumed when estimating inclination of the maser ring"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate disc inclination angle and model position-velocity (PV) diagrams",
+   "method": "Fit 2D Gaussians to moment 0 maps of 17 compact lines and 1.05 mm continuum to derive inclination i assuming circular symmetry; compare theoretical PV models of a thin Keplerian disc + freefall infall against observed PV diagrams sliced perpendicular to the outflow",
+   "software": [],
+   "key_parameters": [
+    "i = 40 deg, R_out = 2000 AU (or 3500 AU for extended lines), R_in = 1700 AU (fixed to beamsize)"
+   ],
+   "assumptions": [
+    "Thin circumstellar disc with circular symmetry in Keplerian rotation and freefall infall; d = 4.0 kpc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model centimetre-millimetre SED of MM1",
+   "method": "Re-image VLA 1.21 cm with uv-range > 20 klambda and split VLA 5.01 cm into two halves (6.00 cm and 4.30 cm); measure fluxes with 2D Gaussian fits; fit a two-component model (single-temperature modified greybody dust + uniform sphere Bremsstrahlung HC HII region) to 6 datapoints",
+   "software": [],
+   "key_parameters": [
+    "7 model parameters: n_e, R_e, T_e, theta_d, T_d, beta, tau_1.3mm; 6 independent flux datapoints (6.00 cm, 4.30 cm, 1.21 cm, 3.4 mm, 1.3 mm, 1.05 mm)"
+   ],
+   "assumptions": [
+    "Uniform sphere geometry for HC HII region; single-temperature modified greybody for dust; flux calibration uncertainties of 5% (VLA), 10% (ALMA), 15% (SMA, CARMA)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive disc gas mass and evaluate gravitational stability",
+   "method": "Calculate isothermal dust-derived gas mass with optical depth correction from the 1.05 mm integrated flux density, then compute the disc-to-star mass ratio M_d / M_*",
+   "software": [],
+   "key_parameters": [
+    "S_nu = 303.1 mJy, T_b = 10.9 K, T_dust = 100-130 K"
+   ],
+   "assumptions": [
+    "Isothermal dust emission, d = 4.0 kpc, gas-to-dust mass ratio R = 100, kappa_1.05mm = 1.45 cm^2 g^-1, stability threshold M_d / M_* = 0.1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "MM1 ALMA 1.05 mm continuum peak intensity (astrodendro)",
+   "value": "266.3",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| ALMA 1.05 mm | 285.115 | MM1 | 18:25:44.782 | -12:22:45.92 | $266.3$ | $303.1$ | $1.15 \\times 0.84~[78.7]$ | $4600\\times3360$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 ALMA 1.05 mm continuum integrated flux (astrodendro)",
+   "value": "303.1",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| ALMA 1.05 mm | 285.115 | MM1 | 18:25:44.782 | -12:22:45.92 | $266.3$ | $303.1$ | $1.15 \\times 0.84~[78.7]$ | $4600\\times3360$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 ALMA 1.05 mm continuum deconvolved size (astrodendro)",
+   "value": "1.15 x 0.84 (4600 x 3360 AU), PA 78.7 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec (au)",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| ALMA 1.05 mm | 285.115 | MM1 | 18:25:44.782 | -12:22:45.92 | $266.3$ | $303.1$ | $1.15 \\times 0.84~[78.7]$ | $4600\\times3360$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "MM1 ALMA 1.05 mm continuum integrated flux (2D Gaussian fit)",
+   "value": "313.1",
+   "uncertainty": "0.5",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| 1.05 mm | 285.12 | $313.1\\pm0.5$ | $19-508$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CM1 VLA 1.21 cm peak intensity",
+   "value": "0.271",
+   "uncertainty": "0.006",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| VLA 1.21 cm | 24.806 | CM1 | 18:25:44.7821 | -12:22:45.913 | $0.271\\pm0.006$ | $0.295\\pm0.011$ | $<0.13 \\times <0.03$ | $<520 \\times<120$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CM1 VLA 1.21 cm integrated flux",
+   "value": "0.295",
+   "uncertainty": "0.011",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| VLA 1.21 cm | 24.806 | CM1 | 18:25:44.7821 | -12:22:45.913 | $0.271\\pm0.006$ | $0.295\\pm0.011$ | $<0.13 \\times <0.03$ | $<520 \\times<120$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CM1 VLA 5.01 cm peak intensity",
+   "value": "0.029",
+   "uncertainty": "0.005",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| VLA 5.01 cm | 5.987 | CM1 | 18:25:44.773 | -12:22:46.00 | $0.029\\pm0.005$ | $0.038\\pm0.011$ | $0.4 \\times 0.32 ~[75]$ | $1600\\times1280$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CM1 VLA 5.01 cm integrated flux",
+   "value": "0.038",
+   "uncertainty": "0.011",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| VLA 5.01 cm | 5.987 | CM1 | 18:25:44.773 | -12:22:46.00 | $0.029\\pm0.005$ | $0.038\\pm0.011$ | $0.4 \\times 0.32 ~[75]$ | $1600\\times1280$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Positional offset of VLA 5.01 cm emission from ALMA 1.05 mm peak",
+   "value": "0.16 (~640 AU)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "Interestingly, the 5.01 cm emission is offset to the southwest by $\\sim$0.16$''$ ($\\sim$640 AU), $\\sim$2.4$\\times$ the absolute positional uncertainty of the 5.01 cm data (estimated as 10 per cent of the geometric mean of the synthesised beam)."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean position angle of molecular line velocity gradient",
+   "value": "78.0",
+   "uncertainty": "8.0",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Compact molecular line emission towards MM1",
+     "quote": "For the 16 lines in Figure [3](#fig:mom1) shown to have compact emission (excluding the 3 with more extended emission) and the narrow-band CH$_{3}$OH line in Figure [4](#fig:masers)a, we find a mean position angle of $78.0 \\pm 8.0 ^{\\circ}$ (with standard error), in agreement with the position angle of MM1 from the 1.05 mm continuum of $78.7^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Angle between candidate disc PA and bipolar outflow PA",
+   "value": "96.5",
+   "uncertainty": "9.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Compact molecular line emission towards MM1",
+     "quote": "The position angle of the candidate disc is $96.5\\pm9.4^{\\circ}$ from that of the outflow, consistent with a perpendicular orientation and the observation of a disc-outflow system."
+    }
+   ]
+  },
+  {
+   "quantity": "6.7 GHz CH3OH maser ring fitted ellipse size",
+   "value": "0.151 x 0.072 (~600 x 290 AU), PA ~80 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec x arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6.7 GHz methanol masers",
+     "quote": "An ellipse fitted to the maser positions (excluding the outlier with large uncertainties in Figure [4](#fig:masers)b) has a size of $0.151\\ensuremath{''}\\times0.072\\ensuremath{''}\\sim 600 \\times 290$ AU (major $\\times$ minor axis) and a position angle of $\\sim80^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination angle from 17 molecular lines (median)",
+   "value": "38 (range 19-64)",
+   "uncertainty": "10",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematic Modelling of MM1",
+     "quote": "The inclination angles calculated for these 17 lines range from $i=19-64^{\\circ}$, with a median of $i=38^{\\circ}$ and a standard deviation of 10$^{\\circ}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination angle from 1.05 mm dust continuum",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Kinematic Modelling of MM1",
+     "quote": "The equivalent calculation for $i$ using the deconvolved 1.05 mm source size from Table [\\[tab:leaves\\]](#tab:leaves) yields $i=43^{\\circ}$ for the dust emission, in reasonable agreement with the median value of 38$^{\\circ}$ from the lines."
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass M_enc (within R_out = 2000 AU for i = 40 deg)",
+   "value": "40-70",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Kinematic modelling shows the data are well described by models that include a disc in Keplerian rotation and infall, with an enclosed mass of $40-70$ M$_{\\odot}$ (within a 2000 AU outer radius) for a disc inclination angle of $i=40^{\\circ}$, of which $5.4-7.2$ M$_{\\odot}$ is attributed to the disc."
+    }
+   ]
+  },
+  {
+   "quantity": "Centimetre-wavelength spectral index (6.00 cm to 4.30 cm)",
+   "value": "1.5",
+   "uncertainty": "1.1",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED modelling of MM1",
+     "quote": "The centimetre-wavelength spectral index calculated from these datapoints, $\\alpha_{\\rm 6.00cm-4.30cm}=1.5\\pm1.1$ (S$_{\\nu}$ $\\propto$ $\\nu^{\\alpha}$), is consistent with moderately optically thick free-free emission from a hypercompact (HC) H ii region or ionised jet (cite: moscadelli16; purser16; yang19)."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit HC HII region radius R_e",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED modelling of MM1",
+     "quote": "The best-fitting model, shown in Figure [4](#fig:sed), has an H ii region radius R$_e$=33 AU (cite: cyganowski11b), an electron temperature of 9700 K, and an electron density of 8.6$\\times$10$^{5}$ cm$^{-3}$; the dust component is optically thick at millimetre wavelengths ($\\tau_{\\mathrm{1.3mm}}$=7), with a diameter of 1140 AU, $\\beta$=2.0, and T$_d$=69 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Best-fit dust emissivity index beta",
+   "value": "2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "SED modelling of MM1",
+     "quote": "The best-fitting model, shown in Figure [4](#fig:sed), has an H ii region radius R$_e$=33 AU (cite: cyganowski11b), an electron temperature of 9700 K, and an electron density of 8.6$\\times$10$^{5}$ cm$^{-3}$; the dust component is optically thick at millimetre wavelengths ($\\tau_{\\mathrm{1.3mm}}$=7), with a diameter of 1140 AU, $\\beta$=2.0, and T$_d$=69 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc gas mass M_gas (for T_dust = 100-130 K)",
+   "value": "5.4-7.2",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Disc properties and stability",
+     "quote": "On this sizescale, for temperatures $T_{\\mathrm{dust}}=100-130$ K (cite: cyganowski11a), we calculate dust optical depths $\\tau_{\\mathrm {dust}}$ $\\sim$ $0.09-0.12$ and a gas mass M$_{\\mathrm{gas}}$ $\\sim$ $5.4-7.2$ M$_{\\odot}$ for MM1."
+    }
+   ]
+  },
+  {
+   "quantity": "Central stellar mass M_* (M_enc - M_d)",
+   "value": "33-65",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Disc properties and stability",
+     "quote": "For MM1, attributing the $M_{\\mathrm{gas}}$ estimated above to the disc and estimating the stellar mass as $M_{\\ast}=M_{\\mathrm{enc}}-M_{d}\\simeq33-65$ M$_{\\odot}$, we find $M_{d}/M_{\\ast}\\sim0.08-0.22$."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc-to-star mass ratio M_d / M_*",
+   "value": "0.08-0.22",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Disc properties and stability",
+     "quote": "For MM1, attributing the $M_{\\mathrm{gas}}$ estimated above to the disc and estimating the stellar mass as $M_{\\ast}=M_{\\mathrm{enc}}-M_{d}\\simeq33-65$ M$_{\\odot}$, we find $M_{d}/M_{\\ast}\\sim0.08-0.22$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency/channel ranges flagged as line-free to construct the ~1.6 GHz ALMA pseudo-continuum dataset",
+  "Self-calibration solution intervals, number of iterations, and whether amplitude self-calibration was performed in addition to phase self-calibration for ALMA continuum",
+  "Imaging cell size, image pixel dimensions, and cleaning stopping thresholds / masking strategy for ALMA continuum and spectral line cubes",
+  "Whether continuum subtraction in the uv-plane (e.g. uvcontsub) was applied to the ALMA spectral line cubes before imaging",
+  "Exact LTE synthetic spectrum parameters (column densities, excitation temperatures, linewidths, source size) used in CLASS/Weeds for line identification",
+  "Velocity ranges and intensity thresholds used when computing moment 0 and moment 1 maps for the 20 molecular lines",
+  "Exact slice width and central coordinates used to extract the position-velocity (PV) diagrams"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel/frequency masks used to define the ~1.6 GHz line-free continuum bandwidth",
+  "Self-calibration solution intervals, number of rounds, and clean masking details for ALMA and VLA",
+  "Custom scripts used for the analytical PV curve generation and the two-stage 7-parameter SED grid fitting"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Observing setups, calibration pipeline versions, robust weighting parameters, astrodendro parameters, rest frequencies, and analytical equations for PV and dust mass are all clearly stated. However, self-calibration parameters, line-free channel masks, and custom PV/SED fitting scripts are not released, and PV fitting is done by eye.",
+ "rediscovery_reason": "Public archival ALMA data (2013.1.00812.S) and VLA data (13B-359) with well-defined numeric targets (continuum fluxes, source sizes via astrodendro and IMFIT, line velocity gradient PAs, isothermal gas mass, and enclosed mass constraints).",
+ "source_card": "cards/2022MNRAS.509..748W/sonnet/card.md"
+}

@@ -1,0 +1,404 @@
+{
+ "bibcode": "2021NatAs...5..586Y",
+ "title": "Compact pebbles and the evolution of volatiles in the interstellar comet 2I/Borisov",
+ "year": 2021,
+ "doi": "10.1038/s41550-021-01336-w",
+ "arxiv_id": "2104.13545",
+ "fields": [
+  "solar_system",
+  "protoplanetary_disks"
+ ],
+ "question": "Characterize the dust particle properties (size, porosity, mass loss rate) and pre-perihelion CO gas production in the interstellar comet 2I/Borisov to understand its formation and volatile evolution.",
+ "alma_project_codes": [
+  "2019.A.00002.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 4, 6, and 7",
+  "arrays": "not stated",
+  "angular_resolution": "Band 7: 1.08\" x 0.84\", Band 6: 1.53\" x 1.31\", Band 4: 2.84\" x 2.09\", Band 3: 4.05\" x 2.83\"",
+  "sensitivity": "RMS in 3.4\"x2.3\" beam: 25 uJy (Band 7), 15 uJy (Band 6), 7 uJy (Band 4), 6 uJy (Band 3)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Water production rate Q(H2O) = (10.7 +/- 1.2) x 10^26 s^-1 on 01 December 2019 and ~30 kg s^-1 around perihelion",
+    "evidence": [
+     {
+      "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+      "quote": "Using a water production rate $Q({\\rm H_2O})=(10.7\\pm1.2)\\times10^{26}\\,{\\rm s}^{-1}$ on 01 December 2019 (see ref.(cite: xing2020)), we derive a CO/H$_2$O mixing ratio of $(31\\pm8)\\%$."
+     },
+     {
+      "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+      "quote": "Around perihelion, the water production rate is ${\\sim\\,}$30$\\,{\\rm kg}\\,{\\rm s}^{-1}$ (see ref.(cite: xing2020))"
+     }
+    ]
+   },
+   "citation": "ref.(cite: xing2020)"
+  },
+  {
+   "what": {
+    "value": "CO outflow velocity of 0.47 km s^-1 derived from spectrally resolved CO observations on 15-16 December 2019",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "so we adopted an outflow velocity of 0.47$\\,{\\rm km}\\,{\\rm s}^{-1}$, derived from spectrally resolved CO observations by Cordiner et al.(cite: Cordiner2020) on 15–16 December 2019."
+     }
+    ]
+   },
+   "citation": "Cordiner et al.(cite: Cordiner2020)"
+  },
+  {
+   "what": {
+    "value": "Dust velocity of 3 m s^-1 for mm-sized particles around perihelion and geometrical albedo p_V = 0.04",
+    "evidence": [
+     {
+      "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+      "quote": "Adopting a dust velocity of 3$\\,{\\rm m}\\,{\\rm s}^{-1}$ for mm-sized particles around perihelion (ref.(cite: Cremonese2020))"
+     },
+     {
+      "loc": "Methods",
+      "quote": "By taking $\\rho_d=\\rho_{\\rm CD}\\approx2,650\\,{\\rm kg}\\,{\\rm m}^{-3}$, $v_d=3\\,{\\rm m}\\,{\\rm s}^{-1}$, $\\langle a\\rangle=1\\,{\\rm mm}$, and $p_V=0.04$ (ref. (cite: Cremonese2020; Kim2020))"
+     }
+    ]
+   },
+   "citation": "ref.(cite: Cremonese2020; Kim2020)"
+  },
+  {
+   "what": {
+    "value": "Nucleus upper-limit radius r_n = 0.4 km",
+    "evidence": [
+     {
+      "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+      "quote": "(with $r_n=0.4\\,{\\rm km}$ for the nucleus radius; see ref.(cite: Hui2020))"
+     }
+    ]
+   },
+   "citation": "ref.(cite: Hui2020)"
+  },
+  {
+   "what": {
+    "value": "Dielectric functions for amorphous silicate dust and amorphous carbon dust",
+    "evidence": [
+     {
+      "loc": "Methods",
+      "quote": "We take the dielectric functions of Draine & Lee(cite: Draine:1984zt) for amorphous silicate dust and of Li & Greenberg (cite: Li1997) for amorphous carbon dust."
+     }
+    ]
+   },
+   "citation": "Draine & Lee(cite: Draine:1984zt); Li & Greenberg (cite: Li1997)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure multi-band ALMA dust continuum flux and noise",
+   "method": "Convolve all four continuum images with a fixed resolution element of 3.4\" x 2.3\", integrate total flux within one FWHM of the resolution element at the image center, and estimate RMS by averaging RMS measurements within one beam at multiple locations near the center.",
+   "software": [
+    "CASA",
+    "CASA viewer statistic"
+   ],
+   "key_parameters": [
+    "Convolved beam FWHM = 3.4\" x 2.3\""
+   ],
+   "assumptions": [
+    "Nucleus thermal contribution is negligible (at most 3.73, 1.65, 0.64, and 0.36 uJy in Bands 7, 6, 4, 3 for r_n <= 0.4 km and Bond albedo 0.04)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model dust thermal SED and derive dust particle size, porosity, mass, and mass loss rate",
+   "method": "Use Mie theory combined with Bruggeman effective medium theory to compute absorption cross sections C_abs(a, lambda), solve radiative equilibrium for grain temperature T(a, r_h), compute model flux density for single-sized grains and Divine-type size distributions, and derive mass loss rate from beam crossing time.",
+   "software": [],
+   "key_parameters": [
+    "Divine-type distribution: alpha = 3.5, a_min = 1 um, a_max = 1 cm, peak a_p = 1 mm (area-weighted peak a_p' = 2.3 mm)",
+    "Single effective dust size ~ 5 mm"
+   ],
+   "assumptions": [
+    "Spherical grains; mass mixing ratio m_carb/m_sil = 0.5; compact dust density rho_CD = 2650 kg m^-3 (or porous P = 0.80 with rho_CD = 530 kg m^-3); dust velocity v_d = 3 m s^-1; nucleus bulk density = 500 kg m^-3 and radius r_n = 0.4 km."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract and model CO J=3-2 and J=2-1 emission to derive CO production rate, temperature, and CO/H2O ratio",
+   "method": "Extract CO spectra from emission peak positions, model simultaneously with a spherically symmetric LTE coma radiative transfer model subject to solar photolysis, account for interferometric spatial filtering via CASA simobserve, and combine with literature H2O production rate.",
+   "software": [
+    "CASA",
+    "simobserve"
+   ],
+   "key_parameters": [
+    "Same hour angle, observation duration, and C43-2 array configuration in simobserve"
+   ],
+   "assumptions": [
+    "Spherically symmetric coma in LTE expanding at constant outflow velocity of 0.47 km s^-1; H2O production rate Q(H2O) = (10.7 +/- 1.2) x 10^26 s^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure optical coma reflectivity slope, Af rho, and optical dust mass loss rates from VLT/FORS2",
+   "method": "Process FORS2 images in ESO MIDAS, calibrate photometry against Pan-STARRS and SDSS stars, measure magnitudes in a 5\" radius circular aperture, convert R magnitudes to Af rho, and compute order-of-magnitude Q(dust).",
+   "software": [
+    "ESO MIDAS"
+   ],
+   "key_parameters": [
+    "Aperture radius = 5\""
+   ],
+   "assumptions": [
+    "rho_d = 2650 kg m^-3, v_d = 3 m s^-1, mean dust size <a> = 1 mm, geometrical albedo p_V = 0.04"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 7 (350 GHz) dust continuum flux",
+   "value": "94",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "7 | 350 | 41 | 3.4$\\times$2.3 | 94 | 25 | 3.8"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 (236 GHz) dust continuum flux",
+   "value": "44",
+   "uncertainty": "15",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "6 | 236 | 34 | 3.4$\\times$2.3 | 44 | 15 | 2.9"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 4 (139 GHz) dust continuum flux",
+   "value": "21",
+   "uncertainty": "7",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "4 | 139 | 55 | 3.4$\\times$2.3 | 21 | 7 | 3.0"
+    }
+   ]
+  },
+  {
+   "quantity": "Band 3 (106 GHz) dust continuum flux",
+   "value": "8",
+   "uncertainty": "6",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3 | 106 | 72 | 3.4$\\times$2.3 | 8 | 6 | 1.3"
+    }
+   ]
+  },
+  {
+   "quantity": "Compact dust particle radius lower limit (a)",
+   "value": ">= 1",
+   "uncertainty": "not stated",
+   "units": "mm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "We found that very large, “pebble”-like *compact* particles of radii $a\\lower.5ex\\hbox{$\\buildrel > \\over \\sim$}1\\,{\\rm mm}$ are required to reproduce the ALMA photometry."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust equilibrium temperature at r_h = 2.01 au",
+   "value": "197",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "The dust particles attain an equilibrium temperature of $T\\approx 197\\,{\\rm K}$ at ${r_h}=2.01\\,{\\rm au}$ and their emission spectra are blackbody-like (see Methods)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass within ALMA beam (single size a ~ 5 mm)",
+   "value": "2.81e8",
+   "uncertainty": "not stated",
+   "units": "kg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "Assuming an effective dust size of ${\\sim\\,}$5$\\,{\\rm mm}$, we obtained a total dust mass loss of $\\approx2.81\\times10^{8}\\,{\\rm kg}$ within the ALMA beam (see Fig. [2](#fig:sedmod))."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass within ALMA beam (Divine-type size distribution peaking at a_p = 1 mm)",
+   "value": "2.57e8",
+   "uncertainty": "not stated",
+   "units": "kg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "Similar results were obtained if we considered the Divine-type dust size distribution which peaks at $a_p=1\\,{\\rm mm}$ and requires a total dust mass loss of $\\approx2.57\\times10^{8}\\,{\\rm kg}$ (see Methods)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA dust mass loss rate Q(dust)",
+   "value": "~200",
+   "uncertainty": "not stated",
+   "units": "kg s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "we obtained a beam crossing time $\\tau$ ${\\sim\\,}1.36\\times10^{6}\\,{\\rm s}$, in turn, a dust mass loss rate $Q({\\rm dust})\\sim200\\,{\\rm kg}\\,{\\rm s}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass lost between discovery and perihelion",
+   "value": "2.0e9",
+   "uncertainty": "not stated",
+   "units": "kg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "We therefore adopted a constant dust production rate of 200$\\,{\\rm kg}\\,{\\rm s}^{-1}$ and obtained the total mass loss of $2.0\\times 10^{9}\\,{\\rm kg}$ during the period between the discovery and the arrival at the perihelion."
+    }
+   ]
+  },
+  {
+   "quantity": "Eroded surface layer thickness of nucleus",
+   "value": ">= 2",
+   "uncertainty": "not stated",
+   "units": "m",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "we find that a layer of at least 2$\\,{\\rm m}$ was eroded from 2I/Borisov’s surface since it entered the inner Solar system in late August 2019 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO J=3-2 line flux",
+   "value": "4.8",
+   "uncertainty": "1.2",
+   "units": "mJy km s^-1 beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "The integrated CO line flux is $\\int{S_{\\nu}}dv=4.8\\pm1.2$ mJy km s$^{-1}$ beam$^{-1}$ for CO $J=3-2$ (which corresponds to a $4\\sigma$ detection significance)"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated CO J=2-1 line flux",
+   "value": "2.8",
+   "uncertainty": "1.0",
+   "units": "mJy km s^-1 beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "and $\\int{S_{\\nu}}dv=2.8\\pm1.0$ mJy km s$^{-1}$ beam$^{-1}$ for $J=2-1$ ($2.8\\sigma$ significance)."
+    }
+   ]
+  },
+  {
+   "quantity": "CO production rate Q(CO)",
+   "value": "3.3e26",
+   "uncertainty": "0.8e26",
+   "units": "s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "The best-fitting model gives $Q({\\rm CO})=(3.3\\pm0.8)\\times10^{26}\\,{\\rm s}^{-1}$ and $T\\approx23\\,{\\rm K}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO gas temperature T",
+   "value": "23",
+   "uncertainty": "13-181 (1 sigma range)",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "The best-fitting model gives $Q({\\rm CO})=(3.3\\pm0.8)\\times10^{26}\\,{\\rm s}^{-1}$ and $T\\approx23\\,{\\rm K}$. However, the temperature is not well constrained by the observations, with a ($1\\sigma$) error range of ${\\sim\\,}$13–181$\\,{\\rm K}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CO/H2O mixing ratio (pre-perihelion)",
+   "value": "31",
+   "uncertainty": "8",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "Using a water production rate $Q({\\rm H_2O})=(10.7\\pm1.2)\\times10^{26}\\,{\\rm s}^{-1}$ on 01 December 2019 (see ref.(cite: xing2020)), we derive a CO/H$_2$O mixing ratio of $(31\\pm8)\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust-to-gas ratio (chi_2I)",
+   "value": ">= 3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "Our ALMA observations indicate that the dust mass loss rate is $\\lower.5ex\\hbox{$\\buildrel > \\over \\sim$}200 \\,{\\rm kg}\\,{\\rm s}^{-1}$, in turn, the dust-to-gas ratio of 2I/Borisov is $\\chi_{\\rm 2I} \\lower.5ex\\hbox{$\\buildrel > \\over \\sim$}3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Optical dust coma reflectivity slope S'",
+   "value": "9",
+   "uncertainty": "5",
+   "units": "%/100 nm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Pebbles and volatile evolution in the interstellar comet 2I/Borisov",
+     "quote": "Our spectroscopic and multi-band photometric observations with FORS show that the dust coma of 2I/Borisov appears slightly redder than the Sun in the optical with an average reflectivity $S^{\\prime}=(9\\pm5)\\%/100\\,{\\rm nm}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean parameters: cell size, image size, deconvolver, stopping threshold, and masking strategy",
+  "Details of how the native Band 3 image (beam 4.05\" x 2.83\") was convolved to a smaller resolution element of 3.4\" x 2.3\" (whether imsmooth targetres or kernel convolution was used)",
+  "Continuum subtraction parameters and line-free channel ranges for the CO spectral cubes",
+  "Exact number and coordinates of off-center beam locations used to calculate the mean RMS in CASA viewer",
+  "Beam size and aperture/pixel extraction details for the CO J=3-2 and J=2-1 spectra",
+  "Specific radiative transfer code name (e.g., SUBLIME) used for the CO coma modeling"
+ ],
+ "missing_for_reproduction": [
+  "Exact tclean imaging parameters (cell size, image size, stopping criterion, masking)",
+  "Exact procedure/task used to convolve the images with the 3.4\" x 2.3\" resolution element",
+  "Custom Mie + Bruggeman dust thermal emission modeling code and input solar spectrum file",
+  "Radiative transfer code used for CO coma modeling"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "ALMA project code, CASA/pipeline versions, weighting, common resolution element, and analytical dust equations are clearly stated, though minor imaging/smoothing details and the custom dust/CO radiative transfer scripts are not publicly released.",
+ "rediscovery_reason": "Public single-target ALMA dataset with clear numeric answer keys (four continuum fluxes, two CO line fluxes, dust mass, and CO production rate) and analytical dust thermal emission equations given explicitly in Methods.",
+ "source_card": "cards/2021NatAs...5..586Y/sonnet/card.md"
+}

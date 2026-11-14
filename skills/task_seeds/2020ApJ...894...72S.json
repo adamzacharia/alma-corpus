@@ -1,0 +1,209 @@
+{
+ "bibcode": "2020ApJ...894...72S",
+ "title": "Atacama Compact Array Measurements of the Molecular Mass in the NGC 5044 Cooling-flow Group",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab879c",
+ "arxiv_id": "2004.01717",
+ "fields": [
+  "galaxy_clusters_and_sz",
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "How much molecular gas is in NGC 5044, how is it distributed in clouds and on which scales, and where are the absorbing clouds relative to the AGN, using ACA 7m+TP CO(2-1) data",
+ "alma_project_codes": [
+  "2011.0.00735.S",
+  "2016.1.00533.S",
+  "2016.2.00134.S",
+  "2017.1.00784.S"
+ ],
+ "data": {
+  "bands": "Band 6; four 185 MHz spectral windows",
+  "arrays": "ALMA 12m (cycle 0 and 4), ACA 7m, ACA total power",
+  "angular_resolution": "7m beam 6.9x5.1 arcsec; TP 28.4 arcsec",
+  "sensitivity": "rms 1.8 mJy/beam (7m), 12 (TP) in 10 km/s channels"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Cycle 0 ALMA cloud catalog (24 clouds)",
+    "evidence": [
+     {
+      "loc": "3.5",
+      "quote": "has been analyzed by (cite: David2014-jn) who detected 24 clouds"
+     }
+    ]
+   },
+   "citation": "(cite: David2014-jn)"
+  },
+  {
+   "what": {
+    "value": "Hot gas density model and temperature 0.8 keV",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "We adapt the power-law model of the hot gas density distribution from Eq. (2) in (cite: David2017-ig)"
+     }
+    ]
+   },
+   "citation": "(cite: David2017-ig)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image 7m and TP cubes and combine",
+   "method": "tclean multiscale on 7m; sdimaging on TP; feather combination",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "10 km/s channels, robust 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit spectrum and derive molecular masses",
+   "method": "Three-Gaussian fit within 15 arcsec; masses from Galactic X_CO via moment maps and masked moments",
+   "software": [],
+   "key_parameters": [
+    "moment maps over -550 to 300 km/s; S/N>=5 for moment 1,2"
+   ],
+   "assumptions": [
+    "X_CO = 2e20 cm^-2 (K km/s)^-1; CO(2-1)/(1-0)=3.2; D_L=31.2 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Detect molecular clouds",
+   "method": "CLUMPFIND on 7m cube with 10 km/s binning; inverted cube for false detection test",
+   "software": [
+    "CLUMPFIND"
+   ],
+   "key_parameters": [
+    "5 sigma threshold, 3 sigma step"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Cloud sizes and virial parameter",
+   "method": "imfit on cloud moment maps, alpha=5R sigma^2/(GM)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Characterize AGN absorption lines",
+   "method": "Image 12m extended data with robust -2, baselines >1000 klambda; Gaussian fits; column density and virial mass",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 42 K, surface filling factor 1"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total molecular mass within 15 arcsec (three Gaussians)",
+   "value": "10.3e7",
+   "uncertainty": "0.2e7",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "$\\SI{10.3(2)e7}{M_\\odot}$, $\\SI{9.5(12)e7}{M_\\odot}$, and $\\SI{10.0(1)e7}{M_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass within 6 arcsec",
+   "value": "4.2e7",
+   "uncertainty": "0.1e7",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "obtained a (projected) mass of $\\SI{4.2(1)e7}{M_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of CLUMPFIND clouds",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.4",
+     "quote": "which results in 8 detected clouds"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean virial parameter",
+   "value": "8.6",
+   "uncertainty": "3.4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "$\\alpha = \\num{8.6(34)}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Absorption line velocities",
+   "value": "255.5 and 264.7",
+   "uncertainty": "0.3, 0.4",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$\\num{255.5(3)}$ | $\\num{6.6(3)}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density of absorbers",
+   "value": "1.5e20",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.6",
+     "quote": "N_{\\mathrm{H_2}} = \\SI{1.5e20}{cm^{-2}}"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges for uvcontsub and imcontsub",
+  "Image cell size and image size",
+  "Self-calibration solution intervals",
+  "Aperture centre coordinates",
+  "Details of the masked-moment method and Gaussian fitting settings",
+  "Which data selections for the uv-filtered mass vs scale test"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels",
+  "Cell/image sizes",
+  "Self-cal solints",
+  "Exact fitting setups"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging parameters mostly given, but several details missing and some internal inconsistencies.",
+ "rediscovery_reason": "Public data, fairly complete imaging recipe, numeric masses and cloud properties.",
+ "source_card": "cards/2020ApJ...894...72S/sonnet/card.md"
+}

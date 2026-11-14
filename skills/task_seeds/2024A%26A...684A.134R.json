@@ -1,0 +1,304 @@
+{
+ "bibcode": "2024A&A...684A.134R",
+ "title": "Correlation between accretion rate and free-free emission in protoplanetary disks. A multiwavelength analysis of central mm/cm emission in transition disks",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348387",
+ "arxiv_id": "2401.05798",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the nature of the central mm/cm emission close to the star in transition disks (thermal dust vs free-free from a jet or wind), and does it correlate with accretion, X-ray luminosity or mass-loss properties?",
+ "alma_project_codes": [
+  "2012.1.00158.S",
+  "2012.1.00182.S",
+  "2012.1.00303.S",
+  "2012.1.00799.S",
+  "2013.1.00157.S",
+  "2013.1.00670.S",
+  "2015.1.00425.S",
+  "2015.1.00806.S",
+  "2015.1.00889.S",
+  "2015.1.00979.S",
+  "2015.1.01353.S",
+  "2016.1.00340.S",
+  "2016.1.00344.S",
+  "2016.1.01042.S",
+  "2017.1.00492.S",
+  "2017.1.00884.S",
+  "2017.1.00885.S",
+  "2017.1.00987.S",
+  "2017.1.01419.S",
+  "2017.1.01678.S",
+  "2018.1.00028.S",
+  "2018.1.00532.S",
+  "2018.1.00618.S",
+  "2018.1.01309.S",
+  "2018.1.01716.S",
+  "2019.1.00579.S"
+ ],
+ "data": {
+  "bands": "Band 7 and 6 (1 mm), Band 4 and 3 (3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Centimeter flux densities of the targets (VLA/ATCA/GBT)",
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "References for literature data: 1) (cite: 2022GreavesMason), 2) (cite: 2015Wright), 3) (cite: 2015Casassus), 4) (cite: 2014Rodriguez)"
+     }
+    ]
+   },
+   "citation": "Greaves & Mason 2022; Wright 2015; Casassus 2015; Rodriguez 2014; Zapata 2017; Osorio 2014; Macias 2017; Marino 2015; Ubach 2012"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosities, accretion luminosities, accretion rates, X-ray luminosities (references 1-6)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The last column reports the references for the luminosity, accretion luminosity, accretion rates, and X-ray luminosity."
+     }
+    ]
+   },
+   "citation": "Vioque 2018; Wichittanakom 2020; Francis & van der Marel 2020; Manara 2023; Dionatos 2019; Ryspaeva 2023"
+  },
+  {
+   "what": {
+    "value": "Outer disk inclinations",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The inclination of the outer disks are from (cite: 2020FrancisAndVDMarel)"
+     }
+    ]
+   },
+   "citation": "Francis & van der Marel 2020"
+  },
+  {
+   "what": {
+    "value": "Class 0-I radio jet 3.6 cm luminosities for comparison",
+    "evidence": [
+     {
+      "loc": "3.3 Properties of the jet emission",
+      "quote": "fluxes of radio jets observed at 3.6 cm in a sample of younger Class 0-I disks ((cite: 2018Anglada))"
+     }
+    ]
+   },
+   "citation": "Anglada et al. 2018"
+  },
+  {
+   "what": {
+    "value": "TW Hya and LkCa 15 central-emission spectral indices and accretion rates",
+    "evidence": [
+     {
+      "loc": "Properties of the jet emission",
+      "quote": "(cite: 2021Macias) reported a the spectral index of the central emission of $\\alpha_\\text{inner}=0.65\\pm0.05$"
+     }
+    ]
+   },
+   "citation": "Macias 2021; Facchini 2020; Venuti 2019; Manara 2023"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum",
+   "method": "tclean on pipeline-calibrated data with per-image weighting chosen to maximize inner-disk S/N",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust between 0.5 and -1.0, or natural/uniform/superuniform"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure inner and outer disk flux densities",
+   "method": "2D Gaussian imfit for inner flux; aperture photometry above 3 rms for total; outer = total minus inner; 5 rms upper limits",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "upper limit of 5 times the rms if no detection at 3 rms and cavity resolved"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive spectral indices",
+   "method": "Linear fit of log F vs log nu; curve_fit if >2 points, else two-point; for GG Tau, HD100546, HD142527 extrapolate 1 mm dust to 3 mm and give interval [alpha_extrap, alpha_3mm-cm]",
+   "software": [
+    "scipy curve_fit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "1 mm emission dominated by thermal dust for extrapolation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate inner-disk dust masses",
+   "method": "Optically thin blackbody dust mass formula using Band 6/7 flux, R_id upper limit = beam size",
+   "software": [],
+   "key_parameters": [
+    "kappa = 10 cm2/g at 1000 GHz, beta = 1.0, flaring angle 0.02, R_subl = 0.07 sqrt(L*)"
+   ],
+   "assumptions": [
+    "optically thin emission, no scattering"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test free-free luminosity vs L_acc and L_X",
+   "method": "Pearson correlation between free-free luminosity (from mm flux) and accretion/X-ray luminosity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compute ionized mass loss rate and correlate with accretion rate",
+   "method": "Reynolds jet model equation; linmix regression of Mdot_i vs Mdot",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [
+    "T = 1e4 K, nu_m = 40 GHz, theta_min/theta_maj = 0.5, v_jet = 140 (M*/0.5 Msun)^0.5 km/s, jet inclination = outer disk inclination"
+   ],
+   "assumptions": [
+    "central emission is jet free-free emission"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "median alpha_outer",
+   "value": "~2.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Results",
+     "quote": "with a median value of $\\sim2.6$"
+    }
+   ]
+  },
+  {
+   "quantity": "inner dust mass range",
+   "value": "0.004 to 1.37",
+   "uncertainty": "highly uncertain",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Inner-disk dust masses",
+     "quote": "The millimeter inner disk dust masses estimated in this way range between $0.004 M_\\oplus$ and $1.37 M_\\oplus$."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, free-free luminosity vs L_acc",
+   "value": "0.49",
+   "uncertainty": "0.28 (p=0.10)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "pearson correlation coefficient $r=0.49\\pm0.28$, p-value $p=0.10$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, free-free luminosity vs L_X",
+   "value": "-0.09",
+   "uncertainty": "0.37 (p=0.82)",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "pearson correlation coefficient $r=-0.09\\pm0.37$, p-value $p=0.82$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson r, Mdot_i vs Mdot",
+   "value": "0.86",
+   "uncertainty": "0.17 (p=0.0009)",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "pearson correlation coefficient, $r =0.86 \\pm 0.17$ and p-value $p=0.0009$"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law slope of Mdot_i vs Mdot",
+   "value": "0.62",
+   "uncertainty": "0.21",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "10^{-4.47 \\pm 1.53} \\left(\\frac{\\dot M}{\\text{M}_\\odot \\text{yr}^{-1}} \\right)^{0.62\\pm 0.21}"
+    }
+   ]
+  },
+  {
+   "quantity": "median Mdot_i/Mdot",
+   "value": "0.019",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3",
+     "quote": "with a median ratio of 0.019"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_inner HD142527",
+   "value": "[0.66,1.63] (mean 1.14)",
+   "uncertainty": "interval",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| HD142527 | $2.13\\pm0.86$ | $1.59 \\pm 0.04$ | $\\sim0.66$ | $[0.66,1.63](1.14)^{*}$ | $3.24\\pm0.20$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which ALMA execution blocks/configurations were used for each project and spectral windows used for continuum",
+  "Mask, niter, threshold and cell/image size for tclean",
+  "Aperture radius used for total flux photometry",
+  "Fit function details for imfit (initial guesses, region)",
+  "Exact data used to compute the correlations (luminosity definitions for free-free luminosity and frequency)",
+  "Flux values for Table 1 SR24S etc. whether primary beam corrected",
+  "Priors/settings of linmix"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters (masks, niter, cell, size)",
+  "aperture radii for photometry",
+  "exact free-free luminosity definition",
+  "literature cm flux tables"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear recipe but many imaging details unstated and literature data needed.",
+ "rediscovery_reason": "Public archival data, simple flux/spectral index analysis with numeric results.",
+ "source_card": "cards/2024A%26A...684A.134R/sonnet/card.md"
+}

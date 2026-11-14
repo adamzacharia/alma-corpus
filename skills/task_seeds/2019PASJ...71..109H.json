@@ -1,0 +1,284 @@
+{
+ "bibcode": "2019PASJ...71..109H",
+ "title": "Detections of [O III] 88 μm in two quasars in the reionization epoch",
+ "year": 2019,
+ "doi": "10.1093/pasj/psz094",
+ "arxiv_id": "1811.00030",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Is [OIII] 88 um detectable in z~6 quasars, and what are their [OIII]/[CII] ratios and [OIII]/L_TIR deficit behaviour?",
+ "alma_project_codes": [
+  "2017.1.01195.S"
+ ],
+ "data": {
+  "bands": "Band 8",
+  "arrays": "not stated",
+  "angular_resolution": "0.38x0.34 arcsec (J2054); 0.69x0.60 arcsec (J2310) continuum",
+  "sensitivity": "continuum rms 67 (106) uJy/beam; line cube 0.6 (0.8) mJy/beam per 30 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[CII] luminosities, sizes, FWHM and ALMA 262 GHz continuum",
+    "evidence": [
+     {
+      "loc": "3.5 Luminosity Ratios",
+      "quote": "the [Cii] luminosity of $3.3\\pm0.5\\times10^{9}$ $L_{\\rm \\odot}$ ($8.7\\pm1.4\\times10^{9}$ $L_{\\rm \\odot}$) in (cite: wang2013)"
+     }
+    ]
+   },
+   "citation": "(cite: wang2013)"
+  },
+  {
+   "what": {
+    "value": "Herschel 350 um photometry of J2054-0005",
+    "evidence": [
+     {
+      "loc": "3.4 Dust SED",
+      "quote": "obtained with Herschel 350 $\\mu$m data ((cite: leipski2013))"
+     }
+    ]
+   },
+   "citation": "(cite: leipski2013)"
+  },
+  {
+   "what": {
+    "value": "MAMBO 250 and 99 GHz photometry",
+    "evidence": [
+     {
+      "loc": "3.4 Dust SED",
+      "quote": "and MAMBO 250 GHz data ((cite: wang2008)), respectively"
+     }
+    ]
+   },
+   "citation": "(cite: wang2008)"
+  },
+  {
+   "what": {
+    "value": "ALMA 91.5 GHz photometry of J2310+1855",
+    "evidence": [
+     {
+      "loc": "3.4 Dust SED",
+      "quote": "and ALMA 91.5 GHz ((cite: feruglio2018)), respectively"
+     }
+    ]
+   },
+   "citation": "(cite: feruglio2018)"
+  },
+  {
+   "what": {
+    "value": "Literature [OIII]/L_TIR compilations (DGS, SHINING, spirals, SMGs, z>7 objects)",
+    "evidence": [
+     {
+      "loc": "3.5 Luminosity Ratios",
+      "quote": "taken from the Herschel DGS ((cite: cormier2015)) and SHINING ((cite: herrera-camus2018a)) samples"
+     }
+    ]
+   },
+   "citation": "(cite: cormier2015; herrera-camus2018a; brauher2008; zhang2018; hashimoto2019a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image data",
+   "method": "CASA pipeline calibration, CLEAN natural weighting, uvcontsub for line cube, collapse off-line channels for continuum",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux and size",
+   "method": "imfit with 2D Gaussian",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure [OIII] flux, size, redshift, FWHM",
+   "method": "Moment image over line range, imfit 2D Gaussian; spectrum extracted from >3 sigma region",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Integration 481.7-482.6 GHz (J2054), 484.1-485.0 GHz (J2310)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit dust SED for Td, beta, L_TIR, SFR_IR",
+   "method": "Optically thin modified blackbody with CMB correction fit to Herschel, ALMA, MAMBO photometry; chi2; integrate 8-1000 um",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin single-temperature dust; Kroupa IMF 0.1-100 Msun; dust emission star-formation powered (upper limit on SFR)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Astrometry comparison with SDSS",
+   "method": "Recalibrate SDSS z-band with Gaia DR2 via IRAF ccmap/ccsetwcs; positions by imexam",
+   "software": [
+    "IRAF"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Luminosity ratios and SFR comparison",
+   "method": "Compute L[OIII]/L_TIR and L[OIII]/L[CII]; compare SFR_OIII (De Looze ULIRG relation) with SFR_IR",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Flat LCDM, Om=0.272, H0=70.4"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L[OIII] J2054-0005",
+   "value": "6.79e9",
+   "uncertainty": "0.61e9",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "luminosity [$10^{9}$ $L_{\\rm \\odot}$] | $6.79\\pm0.61$ | $2.44\\pm0.61$"
+    }
+   ]
+  },
+  {
+   "quantity": "L[OIII] J2310+1855",
+   "value": "2.44e9",
+   "uncertainty": "0.61e9",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "luminosity [$10^{9}$ $L_{\\rm \\odot}$] | $6.79\\pm0.61$ | $2.44\\pm0.61$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] flux",
+   "value": "3.79 (J2054); 1.38 (J2310)",
+   "uncertainty": "0.34; 0.34",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 [Oiii]",
+     "quote": "the total line flux is estimated to be $3.79\\pm0.34$ Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII] FWHM",
+   "value": "282 (J2054); 333 (J2310)",
+   "uncertainty": "17; 72",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 [Oiii]",
+     "quote": "the FWHM value of $282\\pm17$ km s$^{-1}$ ($333\\pm72$ km s$^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 87 um rest",
+   "value": "10.35 (J2054); 24.89 (J2310)",
+   "uncertainty": "0.15; 0.21",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$S_{\\rm \\nu,87}$ [mJy] | 10.35 $\\pm$ 0.15 | 24.89 $\\pm$ 0.21"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature",
+   "value": "50 (J2054); 37 (J2310)",
+   "uncertainty": "2; 1",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$T_{\\rm d}$ [K] | $50\\pm2$ | $37\\pm1$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_TIR",
+   "value": "1.3e13 (J2054); 1.9e13 (J2310)",
+   "uncertainty": "+0.2/-0.2; +0.2/-0.1 e13",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.3^{+0.2}_{-0.2}$ | $1.9^{+0.2}_{-0.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[OIII]/[CII] luminosity ratio",
+   "value": "2.1 (J2054); 0.3 (J2310)",
+   "uncertainty": "0.4; 0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5.2",
+     "quote": "we obtain the line luminosity ratio of $2.1\\pm0.4$ ($0.3\\pm0.1$)"
+    }
+   ]
+  },
+  {
+   "quantity": "log(L[OIII]/L_TIR)",
+   "value": "-3.3 (J2054); -4.0 (J2310)",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.5.1",
+     "quote": "log ($L_{\\rm [OIII]}$/$L_{\\rm TIR}$) $=-3.3\\pm0.1$ and $-4.0\\pm0.1$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image sizes, cell sizes, and clean thresholds/masks",
+  "Line-free channels used for continuum and uvcontsub",
+  "Continuum frequency range used for final photometry beyond SPW2/3",
+  "Exact spectral extraction aperture and line fitting function details",
+  "SED fit priors/grid and how L_TIR uncertainties were derived",
+  "Flux scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (image/cell size, threshold, masks)",
+  "Line-free channel ranges",
+  "SED fit details and uncertainty derivation",
+  "Literature compilations for Figure 3"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps given, but imaging parameters and SED fitting details are missing; results are numeric.",
+ "rediscovery_reason": "Archival ALMA data from one project, simple imfit-based measurements and numeric results; some details missing.",
+ "source_card": "cards/2019PASJ...71..109H/sonnet/card.md"
+}

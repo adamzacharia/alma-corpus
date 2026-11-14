@@ -1,0 +1,465 @@
+{
+ "bibcode": "2022MNRAS.515..543C",
+ "title": "FAUST VI. VLA1623-2417 B: a new laboratory for astrochemistry around protostars on 50 au scale",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1802",
+ "arxiv_id": "2206.13339",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "What is the molecular complexity (specifically iCOM emission from CH3OH, HCOOCH3, and related species) and its physical and kinematic origin around the protostars in the VLA1623-2417 multiple system on a 50 au scale?",
+ "alma_project_codes": [
+  "2018.1.01205.L"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.45'' x 0.36'' (PA=+96 deg) for Setup 1; 0.46'' x 0.43'' (PA=-80 deg) for Setup 2 (~0.4'', ~50 au)",
+  "sensitivity": "~1-2 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "0.9 mm dust continuum map at ~0.2'' resolution and disk axis/size measurements",
+    "evidence": [
+     {
+      "loc": "Continuum emission",
+      "quote": "Comparing the present continuum images with those obtained at 0.9 mm in 2016 by (cite: Harris2018) using a higher angular resolution ($\\sim$0.2$''$; see the zoom-in insets of Fig. 1), proper motion is suggested."
+     },
+     {
+      "loc": "Kinematics: on the origin of chemical enriched gas in VLA1623 A+B",
+      "quote": "According to the high-angular resolution continuum measurements from (cite: Harris2018), the VLA1623 B disk inclination derived from the ratio between the observed minor and major axes is 74$\\ensuremath{^\\circ}$."
+     }
+    ]
+   },
+   "citation": "(cite: Harris2018)"
+  },
+  {
+   "what": {
+    "value": "Protostellar mass of VLA1623 B (1.7 M_sun) and total mass of A1+A2 (0.2-0.4 M_sun)",
+    "evidence": [
+     {
+      "loc": "Kinematics: on the origin of chemical enriched gas in VLA1623 A+B",
+      "quote": "The protostellar mass is 1.7 $M_{\\rm \\ensuremath{\\odot}}$ (cite: Ohashi2022), and the two CH$_3$OH peaks are located at $\\pm$ 6–7 km s$^{-1}$ with respect to the systemic velocity."
+     },
+     {
+      "loc": "Kinematics: on the origin of chemical enriched gas in VLA1623 A+B",
+      "quote": "From line and continuum analysis, the total A1+A2 mass ranges from 0.2 $M_{\\rm \\ensuremath{\\odot}}$ to 0.4 $M_{\\rm \\ensuremath{\\odot}}$ (cite: Murillo2013disk; Harris2018; Ohashi2022)."
+     }
+    ]
+   },
+   "citation": "(cite: Murillo2013disk; Harris2018; Ohashi2022)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity of +3.8 km s^-1",
+    "evidence": [
+     {
+      "loc": "Methanol and methyl formate emission",
+      "quote": "The A protostar spectra are well consistent with the systemic velocity of +3.8 km s$^{-1}$ (cite: Nara2006), and are $\\sim$4 km s$^{-1}$ broad."
+     }
+    ]
+   },
+   "citation": "(cite: Nara2006)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters and CH3OH-H2 collisional coefficients",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Spectroscopic parameters of CH$_{\\rm 3}$OH, NH$_2$CHO, and CH$_3$OCH$_3$ are from (cite: Xu1997), (cite: Xu2008), (cite: Moti2012), and (cite: Endres2009), retrieved from the CDMS database (cite: Muller2005)."
+     },
+     {
+      "loc": "Physical properties: LTE and LVG analysis",
+      "quote": "For the LVG analysis toward the B protostar we use the CH$_{3}$OH-H$_{2}$ collisional coefficients computed by (cite: Rabli2010) for temperatures up to 200 K, and provided by the BASECOL database (cite: Dubernet2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Xu1997), (cite: Xu2008), (cite: Moti2012), (cite: Endres2009), (cite: Muller2005), (cite: Kleiner1996), (cite: Ilyushin2009), (cite: Pickett1998), (cite: Rabli2010), (cite: Dubernet2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure protostar continuum positions and proper motion",
+   "method": "2D fitting of the 1.2 mm dust continuum emission and positional comparison with 2016 0.9 mm continuum images from Harris et al. (2018)",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract molecular spectra, measure line fluxes, and create integrated intensity maps",
+   "method": "Extract spectra at the continuum positions of protostars A and B, resample/smooth in velocity, and integrate emission over defined velocity intervals; consider lines with S/N >= 5 detected and derive 3-sigma upper limits otherwise",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [
+    "S/N >= 5 detection threshold; 3-sigma upper limits; velocity resolution 1.2 km/s (smoothed to 6 or 8 km/s for weak lines); integration intervals: A (-3, +7 km/s), B (-11, +13 km/s or -16, +19 km/s for CH3OH; -22, +32 km/s and -20, +29 km/s for HCOOCH3)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Non-LTE LVG radiative transfer analysis of CH3OH in VLA1623 B",
+   "method": "Run grids of non-LTE LVG models for the 5 CH3OH transitions with J <= 15 (E_u = 45-190 K) and simultaneously fit CH3OH-A and CH3OH-E line intensities",
+   "software": [],
+   "key_parameters": [
+    "Grid ranges: T_kin = 50 to 200 K, n_H2 = 10^7 to 10^11 cm^-3, N(CH3OH) = 10^15 to 10^18 cm^-2"
+   ],
+   "assumptions": [
+    "H2 ortho-to-para ratio equal to 3; CH3OH-H2 collisional coefficients from Rabli & Flower (2010); 10% calibration uncertainty propagated with spectral rms"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "LTE Rotational Diagram and line profile fitting for CH3OH, HCOOCH3, and other iCOMs",
+   "method": "Construct LTE rotational diagrams for CH3OH in sources A and B; fit line profiles using GILDAS-Weeds to derive column densities for HCOOCH3 and upper limits for CH3CHO, NH2CHO, and CH3OCH3",
+   "software": [
+    "IRAM-GILDAS",
+    "GILDAS-Weeds"
+   ],
+   "key_parameters": [
+    "Filling factor for VLA1623 B ranges from 7 x 10^-2 to 0.41"
+   ],
+   "assumptions": [
+    "LTE population and optically thin lines; for HCOOCH3 and upper limits, assume same line profiles as CH3OH and same T_rot derived from CH3OH LTE analysis (177 K for B, 50-135 K for A)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Kinematic analysis and estimation of Keplerian emitting radii",
+   "method": "Map red- and blue-shifted CH3OH emission, construct Position-Velocity (PV) diagram along the disk equatorial plane of VLA1623 B, and calculate Keplerian radii from velocity shifts, disk inclinations, and protostellar masses",
+   "software": [
+    "IRAM-GILDAS"
+   ],
+   "key_parameters": [
+    "Velocity integration ranges for channel maps: B (-11 to +14 km/s, or -16 to +24 km/s for 20_3,17-20_2,18 A), A (-2 to +7 km/s); velocity shifts: +/- 6-7 km/s for B, +/- 2 km/s for A1"
+   ],
+   "assumptions": [
+    "Inclined Keplerian disk; for B: disk inclination = 74 deg, protostellar mass = 1.7 M_sun, d = 131 pc; for A1: disk inclination = 47 deg, protostellar mass = 0.1-0.2 M_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Proper motion shift of VLA1623 B (Delta alpha)",
+   "value": "+0.2",
+   "uncertainty": "not stated",
+   "units": "ms",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "For B the shift in position is $\\Delta\\alpha$ = +0.2 ms and $\\Delta\\delta$ = –68 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Proper motion shift of VLA1623 B (Delta delta)",
+   "value": "-68",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Continuum emission",
+     "quote": "For B the shift in position is $\\Delta\\alpha$ = +0.2 ms and $\\Delta\\delta$ = –68 mas."
+    }
+   ]
+  },
+  {
+   "quantity": "Total proper motion of VLA1623 A and B (2016 to 2018-2020)",
+   "value": "210",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "A proper motion of about 210 mas for both the A and B objects is clearly seen by comparing the present continuum image with that obtained at 0.9 mm in 2016 by (cite: Harris2018)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 4(2,3)-3(1,2) E integrated flux (VLA1623 A)",
+   "value": "16.3",
+   "uncertainty": "2.3",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CH$_{\\rm 3}$OH 4$_{\\rm 2,3}$–3$_{\\rm 1,2}$ E | 218440.063 | 45 | 36 | –4.3 | 13.9 | 16.3(2.3) | 66.5(3.8)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 4(2,3)-3(1,2) E integrated flux (VLA1623 B)",
+   "value": "66.5",
+   "uncertainty": "3.8",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CH$_{\\rm 3}$OH 4$_{\\rm 2,3}$–3$_{\\rm 1,2}$ E | 218440.063 | 45 | 36 | –4.3 | 13.9 | 16.3(2.3) | 66.5(3.8)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 5(1,4)-4(1,3) A integrated flux (VLA1623 A)",
+   "value": "32.0",
+   "uncertainty": "2.3",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CH$_{\\rm 3}$OH 5$_{\\rm 1,4}$–4$_{\\rm 1,3}$ A | 243915.788 | 50 | 44 | –4.2 | 15.5 | 32.0(2.3) | 77.2(3.9)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 5(1,4)-4(1,3) A integrated flux (VLA1623 B)",
+   "value": "77.2",
+   "uncertainty": "3.9",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CH$_{\\rm 3}$OH 5$_{\\rm 1,4}$–4$_{\\rm 1,3}$ A | 243915.788 | 50 | 44 | –4.2 | 15.5 | 32.0(2.3) | 77.2(3.9)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 20(3,17)-20(2,18) A integrated flux (VLA1623 B)",
+   "value": "34.4",
+   "uncertainty": "2.9",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "CH$_{\\rm 3}$OH 20$_{\\rm 3,17}$–20$_{\\rm 2,18}$ A | 246074.605 | 537 | 164 | –4.1 | 73.7 | $\\leq$ 6.2 | 34.4(2.9)$^{\\rm c}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3 233.2 GHz blend integrated flux (VLA1623 B)",
+   "value": "36.9",
+   "uncertainty": "6.2",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCOOCH$_{\\rm 3}$ 19$_{\\rm 17,2}$–18$_{\\rm 17,1}$ E | 233212.773 | 123 | 78 | –3.7 | 48.0 | $\\leq$ 18.2$^{\\rm f}$ | 36.9(6.2)$^{\\rm f}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3 247.0 GHz blend integrated flux (VLA1623 B)",
+   "value": "90.0",
+   "uncertainty": "5.3",
+   "units": "mJy beam^-1 km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "HCOOCH$_{\\rm 3}$ 20$_{\\rm 9,11}$–19$_{\\rm 9,10}$ E | 247040.650 | 177 | 82 | –3.7 | 42.5 | $\\leq$ 22.8$^{\\rm h}$ | 90.0(5.3)$^{\\rm h}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LVG emitting size of CH3OH in VLA1623 B",
+   "value": "0.11-0.34 (14-45)",
+   "uncertainty": "1 sigma range",
+   "units": "arcsec (au)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "LVG analysis of the CH$_3$OH lines towards VLA1623–2417 B indicates a size of 0.11$''$–0.34$''$ (14-45 au), a column density $N$(CH$_{3}$OH) = 10$^{16}$–10$^{17}$ cm$^{-2}$, kinetic temperature $\\geq$ 170 K, and volume density $\\geq$ 10$^{8}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "LVG column density N(CH3OH) in VLA1623 B",
+   "value": "10^16 - 10^17",
+   "uncertainty": "1 sigma range",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "LVG analysis of the CH$_3$OH lines towards VLA1623–2417 B indicates a size of 0.11$''$–0.34$''$ (14-45 au), a column density $N$(CH$_{3}$OH) = 10$^{16}$–10$^{17}$ cm$^{-2}$, kinetic temperature $\\geq$ 170 K, and volume density $\\geq$ 10$^{8}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "LVG kinetic temperature T_kin in VLA1623 B",
+   "value": ">= 170",
+   "uncertainty": "1 sigma limit",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "LVG analysis of the CH$_3$OH lines towards VLA1623–2417 B indicates a size of 0.11$''$–0.34$''$ (14-45 au), a column density $N$(CH$_{3}$OH) = 10$^{16}$–10$^{17}$ cm$^{-2}$, kinetic temperature $\\geq$ 170 K, and volume density $\\geq$ 10$^{8}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "LVG volume density n_H2 in VLA1623 B",
+   "value": ">= 10^8",
+   "uncertainty": "1 sigma limit",
+   "units": "cm^-3",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "LVG analysis of the CH$_3$OH lines towards VLA1623–2417 B indicates a size of 0.11$''$–0.34$''$ (14-45 au), a column density $N$(CH$_{3}$OH) = 10$^{16}$–10$^{17}$ cm$^{-2}$, kinetic temperature $\\geq$ 170 K, and volume density $\\geq$ 10$^{8}$ cm$^{-3}$."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE rotational temperature T_rot of CH3OH in VLA1623 B",
+   "value": "177",
+   "uncertainty": "8",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties: LTE and LVG analysis",
+     "quote": "For source B the fit provides a column density $N_{\\rm tot}$ = 2.2$\\pm$0.2 $\\times 10^{15}$ cm$^{-2}$ (not corrected for the filling factor), and a rotational temperature of 177$\\pm$8 K."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density N_tot(CH3OH) in VLA1623 B (beam-averaged)",
+   "value": "2.2e15",
+   "uncertainty": "0.2e15",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties: LTE and LVG analysis",
+     "quote": "For source B the fit provides a column density $N_{\\rm tot}$ = 2.2$\\pm$0.2 $\\times 10^{15}$ cm$^{-2}$ (not corrected for the filling factor), and a rotational temperature of 177$\\pm$8 K."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE rotational temperature T_rot of CH3OH in VLA1623 A1",
+   "value": "<= 135",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "An LTE approach is used for VLA1623–2417 A1, given the limited $E_{\\rm u}$ range, and yields $T_{\\rm rot}$ $\\leq$ 135 K."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density N_tot(CH3OH) in VLA1623 A (beam-averaged, T_rot = 50-135 K)",
+   "value": "0.6-6 x 10^14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CH$_{3}$OH | 50–135$^a$ | 0.6–6 $\\times 10^{14}$ | 177(8) | 22(2) $\\times 10^{14}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density N(HCOOCH3) in VLA1623 B (beam-averaged)",
+   "value": "8e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Physical properties: LTE and LVG analysis",
+     "quote": "More specifically, the total column density is obtained by fitting the line profiles using the GILDAS–Weeds tool (cite: Maret2011), finding $N_{\\rm HCOOCH_3}$ = 8 $\\times$ 10$^{14}$ cm$^{-2}$ and $\\leq$ 2–3 $\\times$ 10$^{14}$ cm$^{-2}$ (not corrected for filling factor effects) for sources B and A, respectively (see Table 3)."
+    }
+   ]
+  },
+  {
+   "quantity": "LTE column density N(HCOOCH3) in VLA1623 B (corrected for filling factor)",
+   "value": "1-2 x 10^16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary and conclusions",
+     "quote": "Assuming the same gas conditions derived from methanol emission, we obtain a total column density (corrected for filling factor) $N_{\\rm HCOOCH_3}$ = 1-2 $\\times$ 10$^{16}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HCOOCH3 / CH3OH abundance ratio in VLA1623 B",
+   "value": "~0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Complex organics around VLA1623-2417 B",
+     "quote": "Assuming both species are emitted from the same region, the HCOOCH$_3$/CH$_3$OH abundance ratio, derived from the column densities (not corrected for the filling factor, Table 3), is $\\sim$ 0.4."
+    }
+   ]
+  },
+  {
+   "quantity": "Keplerian radius of CH3OH ring in VLA1623 B",
+   "value": "33",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Assuming a chemically enriched ring within the accretion disk, close to the centrifugal barrier, its radius is calculated to be 33 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Keplerian radius of CH3OH ring in VLA1623 A1",
+   "value": "12-24",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The methanol spectra towards A1 are somewhat narrower ($\\sim$ 4 km s$^{-1}$), implying a radius of 12–24 au."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Specific line-free channel ranges used for continuum extraction, self-calibration, and continuum subtraction",
+  "Self-calibration solution intervals, number of phase/amplitude rounds, and application to line cubes",
+  "Exact cleaning parameters (pixel/cell size, image dimensions, stopping threshold, masking strategy, and deconvolver algorithm)",
+  "Method for combining multiple array configurations (e.g., 12m array configurations and ACA if used)"
+ ],
+ "missing_for_reproduction": [
+  "The private LVG code described in Ceccarelli et al. (2003)",
+  "Exact self-calibration parameters and line-free channel selections",
+  "Exact tclean imaging parameters (cell size, thresholds, masking)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Target coordinates, spectral windows, rest frequencies, velocity integration intervals, smoothing resolutions, and LTE/kinematic assumptions are explicitly tabulated and described. Minor deductions for unstated imaging/self-calibration parameters and use of an non-public LVG code.",
+ "rediscovery_reason": "The ALMA Large Program 2018.1.01205.L data are public, spectral extraction apertures and velocity integration intervals are explicitly specified in Table 1, and the main results (line fluxes, LTE rotational temperatures, column densities, and Keplerian radii) are quantitative and straightforward to verify.",
+ "source_card": "cards/2022MNRAS.515..543C/sonnet/card.md"
+}

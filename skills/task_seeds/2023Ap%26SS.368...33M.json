@@ -1,0 +1,506 @@
+{
+ "bibcode": "2023Ap&SS.368...33M",
+ "title": "Identification of interstellar cyanamide towards the hot molecular core G358.93─0.03 MM1",
+ "year": 2023,
+ "doi": "10.1007/s10509-023-04192-4",
+ "arxiv_id": "2305.05578",
+ "fields": [
+  "astrochemistry",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Can the amide-like molecule cyanamide (NH2CN) and urea (NH2CONH2) be detected towards the hot molecular core G358.93–0.03 MM1, and what are the column density, rotational temperature, fractional abundance, and formation pathways of NH2CN?",
+ "alma_project_codes": [
+  "2019.1.00768.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "42 antennas",
+  "angular_resolution": "0.508'' x 0.454'' at 1.37 mm (range 0.494''–0.508'' x 0.454''–0.456'')",
+  "sensitivity": "16.40 to 28.23 microJy (continuum RMS)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to G358.93–0.03 of 6.75 (+0.37/-0.68) kpc, luminosity ~7.660x10^3 L_odot, total gas mass 167±12 M_odot, V_LSR = –16.5 km s^-1, and dust spectral index beta ~ 1.7",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The high-mass star-formation region G358.93–0.03 is located at a distance of 6.75$\\,{}\\,^{\\,+0.37}_{\\,-0.68}$ kpc from the earth (cite: re14; bro19)."
+     },
+     {
+      "loc": "Identification of the towards the G358.93–0.03 MM1",
+      "quote": "The systematic velocity of G358.93–0.03 MM1 was –16.5 km s$^{-1}$ (cite: bro19)."
+     },
+     {
+      "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+      "quote": "We used the dust spectral index $\beta$ $\\sim$ 1.7 (cite: bro19)."
+     }
+    ]
+   },
+   "citation": "(cite: re14; bro19)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature T_d = 150 K for G358.93–0.03 MM1",
+    "evidence": [
+     {
+      "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+      "quote": "We take the dust temperature $T_d$ to be 150 K (cite: chen20), $\\mu_H = 1.41$, and $Z = 0.01$ (cite: cox00)."
+     }
+    ]
+   },
+   "citation": "(cite: chen20)"
+  },
+  {
+   "what": {
+    "value": "Gas density of the warm inner region of G358.93–0.03 MM1 of ~2x10^7 cm^-3",
+    "evidence": [
+     {
+      "loc": "Rotational diagram analysis of",
+      "quote": "The LTE assumption was appropriate for the G358.93–0.03 MM1 because the gas density of the warm inner region of the hot core was $\\sim$2$\times$10$^{7}$ cm$^{-3}$ (cite: ste21)."
+     }
+    ]
+   },
+   "citation": "(cite: ste21)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters and S*mu^2 values of NH2CN from the JPL molecular database",
+    "evidence": [
+     {
+      "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+      "quote": "$^{\\dagger}$–The values of the S$\\mu^{2}$ were taken from the JPL molecular database (cite: pic98)."
+     }
+    ]
+   },
+   "citation": "(cite: pic98)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters for urea from the Cologne Database for Molecular Spectroscopy (CDMS)",
+    "evidence": [
+     {
+      "loc": "Searching of urea () towards the G358.93–0.03 MM1",
+      "quote": "For searching the emission lines of , we used the Cologne Database for Molecular Spectroscopy (CDMS) spectroscopic molecular database (cite: mu05)."
+     }
+    ]
+   },
+   "citation": "(cite: mu05)"
+  },
+  {
+   "what": {
+    "value": "NH2CN column densities, excitation temperatures, H2 column densities, and abundances in other astronomical sources",
+    "evidence": [
+     {
+      "loc": "Discussion: Comparison with other sources",
+      "quote": "Here we compare the observed abundance of in G358.93–0.03 MM1 and other hot molecular cores, galaxies, high and low-mass protostars, and molecular clouds"
+     }
+    ]
+   },
+   "citation": "(cite: man22a), (cite: cu86), (cite: nu00), (cite: mar06), (cite: pa17), (cite: cou18), (cite: bel20), (cite: zh18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities and image sub-millimeter continuum and spectral cubes",
+   "method": "Calibrate raw ALMA Band 6 data with the ALMA pipeline in CASA, split target visibilities with MSTRANSFORM, image four continuum windows with TCLEAN (HOGBOM deconvolver), subtract continuum with UVCONTSUB, image spectral cubes with TCLEAN (SPECMODE = CUBE), and apply primary beam correction with IMPBCOR.",
+   "software": [
+    "CASA 5.4.1",
+    "CARTA"
+   ],
+   "key_parameters": [
+    "DECONVOLVER = HOGBOM, SPECMODE = CUBE, Perley-Butler 2017 flux scale"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities and derive H2 column density and dust optical depth for MM1",
+   "method": "Fit 2D Gaussian to G358.93–0.03 MM1 continuum images at four frequencies using CASA IMFIT, then calculate H2 column density and dust optical depth from the peak flux densities assuming optically thin dust emission.",
+   "software": [
+    "CASA 5.4.1"
+   ],
+   "key_parameters": [
+    "Frequencies: 216.90, 218.31, 220.11, and 220.56 GHz"
+   ],
+   "assumptions": [
+    "Optically thin dust emission, dust temperature T_d = 150 K, mean atomic mass per hydrogen mu_H = 1.41, dust-to-gas mass ratio Z = 0.01",
+    "Dust opacity law kappa_nu = 0.90*(nu/230 GHz)^beta cm^2 g^-1 with beta ~ 1.7 (giving kappa_nu = 0.814, 0.823, 0.835, 0.838 cm^2 g^-1), and Rayleigh-Jeans approximation 1 Jy beam^-1 = 118 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Extract MM1 spectrum, identify NH2CN lines, and fit Gaussian line profiles",
+   "method": "Extract spectra from a 0.781'' circular aperture centered on G358.93–0.03 MM1, identify NH2CN rotational transitions using the CASSIS Line Analysis module and JPL spectroscopic database, and fit Gaussian profiles to measure line parameters.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Circular aperture diameter = 0.781'', V_LSR = –16.5 km s^-1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Map spatial distribution and measure emitting region sizes of NH2CN",
+   "method": "Generate integrated intensity maps of non-blended NH2CN transitions using CASA IMMOMENTS and fit 2D Gaussians with CASA IMFIT to compute deconvolved emitting region sizes.",
+   "software": [
+    "CASA 5.4.1"
+   ],
+   "key_parameters": [
+    "6 non-blended transitions at 218.394, 219.875, 219.893, 219.914, 220.126, and 220.127 GHz"
+   ],
+   "assumptions": [
+    "Deconvolved source size given by theta_S = sqrt(theta_50^2 - theta_beam^2)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate NH2CN rotational temperature, column density, and fractional abundance via rotational diagram analysis",
+   "method": "Fit a linear rotational diagram to ln(N_u/g_u) versus E_u for four selected non-blended NH2CN transitions using the ROTATIONAL DIAGRAM module in CASSIS, and divide N(NH2CN) by N(H2) to obtain the fractional abundance.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Partition function Q(T_rot) = 1730.290 (75 K), 5730.062 (150 K), 17902.30 (300 K); 4 transitions used: 11(1,11)–10(1,10) V=1, 11(0,11)–10(0,10) V=0, 11(2,9)–10(2,8) V=0, 11(3,9)–10(3,8) V=0"
+   ],
+   "assumptions": [
+    "Observed NH2CN rotational lines are optically thin and in Local Thermodynamic Equilibrium (LTE), justified by inner core density ~2x10^7 cm^-3"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare NH2CN abundance with chemical models and search for urea (NH2CONH2)",
+   "method": "Compare observed NH2CN fractional abundance against other sources and three-phase warm-up chemical models from literature, and perform LTE spectral modelling using CDMS to derive an upper limit on the urea column density and NH2CONH2/NH2CN ratio.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "LTE conditions for urea upper limit estimation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum integrated flux of G358.93–0.03 MM1 at 216.90 GHz (1.38 mm)",
+   "value": "61.72",
+   "uncertainty": "±3.7",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 216.90 | 1.38 | 61.72$\\pm$3.7 | 50.60$\\pm$1.9 | 0.507$\times$0.456 | 22.12 | 88.879 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux of G358.93–0.03 MM1 at 216.90 GHz (1.38 mm)",
+   "value": "50.60",
+   "uncertainty": "±1.9",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 216.90 | 1.38 | 61.72$\\pm$3.7 | 50.60$\\pm$1.9 | 0.507$\times$0.456 | 22.12 | 88.879 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux of G358.93–0.03 MM1 at 218.31 GHz (1.37 mm)",
+   "value": "72.31",
+   "uncertainty": "±3.8",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 218.31 | 1.37 | 72.31$\\pm$3.8 | 56.83$\\pm$1.8 | 0.508$\times$0.454 | 16.40 | 87.515 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux of G358.93–0.03 MM1 at 218.31 GHz (1.37 mm)",
+   "value": "56.83",
+   "uncertainty": "±1.8",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 218.31 | 1.37 | 72.31$\\pm$3.8 | 56.83$\\pm$1.8 | 0.508$\times$0.454 | 16.40 | 87.515 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux of G358.93–0.03 MM1 at 220.11 GHz (1.36 mm)",
+   "value": "72.12",
+   "uncertainty": "±3.5",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 220.11 | 1.36 | 72.12$\\pm$3.5 | 61.35$\\pm$2.0 | 0.497$\times$0.455 | 28.23 | 89.169 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux of G358.93–0.03 MM1 at 220.11 GHz (1.36 mm)",
+   "value": "61.35",
+   "uncertainty": "±2.0",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 220.11 | 1.36 | 72.12$\\pm$3.5 | 61.35$\\pm$2.0 | 0.497$\times$0.455 | 28.23 | 89.169 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux of G358.93–0.03 MM1 at 220.56 GHz (1.35 mm)",
+   "value": "77.91",
+   "uncertainty": "±4.2",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 220.56 | 1.35 | 77.91$\\pm$4.2 | 69.42$\\pm$2.2 | 0.494$\times$0.454 | 22.22 | 86.827 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak flux of G358.93–0.03 MM1 at 220.56 GHz (1.35 mm)",
+   "value": "69.42",
+   "uncertainty": "±2.2",
+   "units": "mJy beam^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Observations and data reduction",
+     "quote": "| 220.56 | 1.35 | 77.91$\\pm$4.2 | 69.42$\\pm$2.2 | 0.494$\times$0.454 | 22.22 | 86.827 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average H2 column density towards G358.93–0.03 MM1",
+   "value": "1.25x10^24",
+   "uncertainty": "±0.11x10^24",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "The estimated column density of hydrogen towards the G358.93–0.03 MM1 was (1.25$\\pm$0.11)$\times$10$^{24}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average dust optical depth towards G358.93–0.03 MM1",
+   "value": "0.0475",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "The average dust optical depth was 0.0475."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(1,11)–10(1,10) V=1 at 218.394 GHz",
+   "value": "10.457",
+   "uncertainty": "±1.21",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 218.394 | 11(1,11)–10(1,10), V = 1 | 148.33 | 1.05$\times$10$^{-3}$ |   3.459 | 199.330 | 3.358$\\pm$0.18 | –16.51$\\pm$0.21 | 10.457$\\pm$1.21 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(1,11)–10(1,10) V=0 at 218.461 GHz (blended)",
+   "value": "47.415",
+   "uncertainty": "±0.22",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 218.461 | 11(1,11)–10(1,10), V = 0 |   77.40 | 1.08$\times$10$^{-3}$ |   8.663 | 612.666 | 8.310$\\pm$0.35 | –16.50$\\pm$0.12 | 47.415$\\pm$0.22 | Blended with |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(2,10)–10(2,9) V=0 at 219.875 GHz",
+   "value": "18.059",
+   "uncertainty": "±0.22",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 219.875 | 11(2,10)–10(2,9), V = 0 | 121.29 | 1.07$\times$10$^{-3}$ |   6.266 | 198.970 | 3.534$\\pm$0.13 | –16.49$\\pm$0.94 | 18.059$\\pm$0.22 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(0,11)–10(0,10) V=0 at 219.893 GHz",
+   "value": "18.732",
+   "uncertainty": "±0.11",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 219.893 | 11(0,11)–10(0,10), V = 0 |   63.32 | 1.11$\times$10$^{-3}$ |   6.228 | 205.927 | 3.696$\\pm$0.28 | –16.51$\\pm$0.82 | 18.732$\\pm$0.11 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(2,9)–10(2,8) V=0 at 219.914 GHz",
+   "value": "17.249",
+   "uncertainty": "±0.51",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 219.914 | 11(2,9)–10(2,8), V = 0 | 121.29 | 1.07$\times$10$^{-3}$ |   6.025 | 198.996 | 3.728$\\pm$0.25 | –16.52$\\pm$0.23 | 17.249$\\pm$0.51 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(3,9)–10(3,8) V=0 at 220.126 GHz",
+   "value": "28.392",
+   "uncertainty": "±0.26",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 220.126 | 11(3,9)–10(3,8), V = 0 | 193.72 | 1.04$\times$10$^{-3}$ |   6.861 | 579.630 | 4.508$\\pm$0.17 | –16.52$\\pm$0.29 | 28.392$\\pm$0.26 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated intensity of NH2CN 11(3,8)–10(3,7) V=0 at 220.127 GHz",
+   "value": "28.389",
+   "uncertainty": "±0.29",
+   "units": "K km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Estimation of hydrogen () column density and dust optical depth ($\\tau_\\nu$) towards the G358.93–0.03 MM1",
+     "quote": "| 220.127 | 11(3,8)–10(3,7), V = 0 | 193.72 | 10.4$\times$10$^{-3}$ |   6.861 | 579.624 | 4.506$\\pm$0.36 | –16.49$\\pm$0.17 | 28.389$\\pm$0.29 | Non blended |"
+    }
+   ]
+  },
+  {
+   "quantity": "Emitting region size of NH2CN transitions towards G358.93–0.03 MM1",
+   "value": "0.496–0.513",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spatial distribution of towards the G358.93–0.03 MM1",
+     "quote": "The emitting regions of were found to be in the range of 0.496$^{\\prime\\prime}$–0.513$^{\\prime\\prime}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of NH2CN towards G358.93–0.03 MM1",
+   "value": "5.9x10^14",
+   "uncertainty": "±2.5x10^14",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Using the rotational diagram model, the derived column density of towards the G358.93–0.03 MM1 was (5.9$\\pm$2.5)$\times$10$^{14}$ cm$^{-2}$ with a rotational temperature of 100.6$\\pm$30.4 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature of NH2CN towards G358.93–0.03 MM1",
+   "value": "100.6",
+   "uncertainty": "±30.4",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Using the rotational diagram model, the derived column density of towards the G358.93–0.03 MM1 was (5.9$\\pm$2.5)$\times$10$^{14}$ cm$^{-2}$ with a rotational temperature of 100.6$\\pm$30.4 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance of NH2CN with respect to H2 towards G358.93–0.03 MM1",
+   "value": "4.72x10^-10",
+   "uncertainty": "±2.0x10^-10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The derived fractional abundance of towards the G358.93–0.03 MM1 with respect to was (4.72$\\pm$2.0)$\times$10$^{-10}$, which is very similar to the existent three-phase warm-up chemical model abundances of ."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density of urea (NH2CONH2) towards G358.93–0.03 MM1",
+   "value": "<=1.2x10^13",
+   "uncertainty": "±0.8x10^13",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Searching of urea () towards the G358.93–0.03 MM1",
+     "quote": "We estimated the upper limit column density of was $\\leq$(1.2$\\pm$0.8)$\times$10$^{13}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit column density ratio of NH2CONH2/NH2CN towards G358.93–0.03 MM1",
+   "value": "0.020",
+   "uncertainty": "±0.016",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Searching of urea () towards the G358.93–0.03 MM1",
+     "quote": "Furthermore, we calculated the upper limit of the and column density ratios towards the G358.93–0.03 MM1 as 0.020$\\pm$0.016."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Visibility weighting scheme and robust parameter in TCLEAN for both continuum and spectral cube imaging",
+  "Image cell size, image dimensions (in pixels), and cleaning stopping thresholds/niter in TCLEAN",
+  "Line-free channel selection used for continuum imaging and UVCONTSUB, and polynomial order in UVCONTSUB",
+  "Whether self-calibration was performed on the bright continuum/maser emission",
+  "Exact velocity or channel ranges integrated in IMMOMENTS for each NH2CN transition",
+  "Spectral RMS noise per channel in the final data cubes",
+  "Assumed excitation temperature, line width (FWHM), and specific transitions used to derive the LTE upper limit for urea (NH2CONH2)"
+ ],
+ "missing_for_reproduction": [
+  "TCLEAN weighting/robust parameter, cell size, image size, and cleaning threshold",
+  "Line-free channel ranges used for UVCONTSUB and continuum imaging",
+  "Channel/velocity integration ranges used in IMMOMENTS",
+  "Exact LTE model parameters (assumed T_ex, FWHM, source size, and target transition frequencies) used to compute the urea upper limit"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Public archival ALMA data with a single project code and single observing date, explicit CASA version (5.4.1) and pipeline tasks, exact extraction aperture coordinates and diameter (0.781''), and standard rotational diagram equations; however, TCLEAN imaging parameters (robust weighting, cell size), UVCONTSUB line-free channels, and urea upper-limit assumptions are omitted.",
+ "rediscovery_reason": "The raw ALMA data (2019.1.00768.S) are public and modest in volume, the target extraction aperture on MM1 is explicitly specified, and the main results (continuum fluxes, H2 column density, NH2CN Gaussian line fits, T_rot, and N(NH2CN)) are concrete numeric values derived via standard analytical equations.",
+ "source_card": "cards/2023Ap%26SS.368...33M/sonnet/card.md"
+}

@@ -1,0 +1,1796 @@
+# Evidence pack: Outflow mass, momentum and energy (`outflow-energetics`)
+
+Scope: outflow masses, momentum, energy, dynamical ages, inclination correction, mass-loading
+
+Built from 198 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2013-2026.
+Matcher (regex over analysis steps): `outflow (?:mass|momentum|energ|force|rate|propert|parameter)|mass[- ]loss rate.*outflow|outflow.*(?:energetics|dynamical time)|mass outflow rate|jet (?:mass|momentum)`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 87
+- nearby_galaxies: 76
+- agn_and_quasars: 76
+- high_z_galaxies: 35
+- astrochemistry: 26
+- milky_way_ism: 25
+- protoplanetary_disks: 10
+- evolved_stars: 9
+- stellar_physics: 6
+- transients: 3
+- galaxy_clusters_and_sz: 2
+- exoplanets: 1
+
+### Software named in the matched steps
+- casa: 7
+- 3dbarolo: 4
+- emcee: 3
+- pyneb: 2
+- gandalf: 1
+- lmfit (python): 1
+- lime: 1
+- asurv: 1
+- pystan: 1
+- mappings (analytic abundance function): 1
+- iraf: 1
+- temden: 1
+- pymultinest: 1
+- multinest: 1
+- idl: 1
+- kinms_mcmc: 1
+- kinms: 1
+- dysmalpy: 1
+- barolo: 1
+- calcu: 1
+- ppxf: 1
+- lzifu: 1
+- bpass: 1
+- moka3d: 1
+- cloudy: 1
+- homerun: 1
+- splatalogue: 1
+- cdms: 1
+- madcuba (slim): 1
+- pft code: 1
+- splatalogue database for astronomical spectroscopy (sdas): 1
+- radex: 1
+- starburst99: 1
+
+### Fitting methods (most common phrasings)
+- Numerical solution for the inclination and widest-point position that reproduce observed length-to-width ratio and x_O …: 1
+- broken power law dM/dv ~ v^-gamma; R^2 reported: 1
+- NaI model fitted per Voronoi bin with python lmfit; [SII] amplitudes re-fitted with lmfit keeping GandALF kinematics fi…: 1
+- Log-linear fit with Monte Carlo resampling of uncertainties; intrinsic dispersion ~0.15 dex: 1
+- Power law with intrinsic scatter fit to combined samples (method details not stated): 1
+- emcee ensemble MCMC; single Gaussian with free amplitude, mean, sigma vs double Gaussian with the same three parameters…: 1
+- multiple Gaussian components per clump spectrum: 1
+- analytic solution: 1
+- Linear fit to log(Mdot_j) vs log(M_Env) and log(F_CO) vs log(L_bol) and log(M_env): 1
+- Monte Carlo over outflow direction on the cone surface; 16th-84th percentiles: 1
+- Spearman-rank correlation test and least-squares fitting for L_bol/M_clump vs F_out,tot and M_dot_acc,tot, and for t_dy…: 1
+- Power-law fit to mass spectra m(v) ∝ v^-gamma: 1
+- Beam-convolved 2D Gaussian fit to integrated high-velocity channel maps: 1
+- MCMC linear bisector fit with intrinsic scatter and normal noise distribution in PyStan; best fit from median and 16th-…: 1
+- Hβ intensity is the only free parameter after tying its kinematics to [O III].: 1
+- Linear fit to radius evolution to infer outflow launch time $t_0$, and broadband SED fit with cooling break: 1
+- chi2 minimization over grid: 1
+- Single Gaussian fit to averaged MALT90 HNCO spectrum to measure 1D velocity dispersion for turbulent energy estimate: 1
+- Linear trend fit to Delta tau_dyn vs tau_dyn for recent northern ejecta: 1
+- MultiNest; free v0, tau0, sigma_v; log-uniform priors 10^0-10^3.5 km/s for v0 and sigma_v, 10^-8-10^0 for tau0: 1
+- Grid search chi^2 minimisation (Eq. 10 of Paper I) with uncertainties from the Lampton et al. (1976) criterion: 1
+- Markov Chain Monte Carlo (MCMC) Bayesian posterior exploration using KINMS_MCMC: 1
+- Analytical calculation from broad wing Gaussian fit and uv size upper limit: 1
+- Gaussian (chi-square) fits of single and double Gaussian to the C1 spectrum; sampler and priors not stated: 1
+- MCMC simultaneous fit of [O II] and [S II] doublets for electron density: 1
+- MCMC; median and standard deviation of posteriors: 1
+- Two power laws fit to mass spectra: 1
+- 3D tilted ring model fitting in Barolo: 1
+- Subtracted double-Gaussian fit of the main [CII] line profile to isolate wing emission.: 1
+- ppxf stellar continuum fit followed by up to 2 Gaussians + linear residual continuum selected via BIC: 1
+- Non-negative least squares without regularization in HOMERUN minimizing reduced-chi2 loss function L_min; 3D spaxel-by-…: 1
+- Linear fit in log-log; sampler/likelihood not stated: 1
+- Separate linear regression on blue-shifted and red-shifted position-velocity centroid slopes: 1
+- Elliptical Gaussian fit to lobes: 1
+- Gaussian fits to spectra: 1
+- SLIM-MADCUBA line profile fit; sampler not stated: 1
+- Outflow sizes fit with CASA: 1
+- linear fit forced through zero: 1
+
+### Validation checks used
+- Compared with massive protostellar outflows in the solar neighbourhood; flow-mass-related values flagged as lower limit…: 1
+- Consistent with AKARI FIS upper limit and with the outflow mass-luminosity correlation: 1
+- alpha_CO systematic uncertainty discussed (factor 2.4 lower, 5.5 higher): 1
+- Spearman and Pearson both show no significant correlation: 1
+- Compared with literature outflow values from low- to high-mass protostars: 1
+- Optical-depth corrected CO mass agrees with SiO mass with abundance enhancement and with earlier SO/CS/HCN: 1
+- R^2 of fits in Table 5: 1
+- Repeat with ULIRG conversion factor; main results do not change significantly.: 1
+- Also derive outflow properties without extinction correction.: 1
+- Evaluate both CO conversion factors and extinction-corrected/uncorrected ionized properties.: 1
+- Compare total derived properties with other AGN and theoretical kinetic powers.: 1
+- Mass rate compared with earlier resolved CO study and MUSE integrated-spectrum results: 1
+- Compared with published low-z momentum and energy; may overestimate momentum by ~30% and energy by ~70%, no systematic …: 1
+- Correlation of the thin-to-published ratio with outflow velocity checked with v84 and v50 as well, consistent within un…: 1
+- Four methods agree at about factor-of-two level; uncertainties probably underestimated by systematics: 1
+- Conclusions checked against factor-of-two change in f_AGN, CO outflow rate offset and lower characteristic velocity: 1
+- Escape velocities agree with simple estimates from CO or [CII] line widths and point-like mass profiles; typical uncert…: 1
+- Scenario III rates compared with RA22 for the same QSO2s: 1
+- Compared with empirical Mdot-L_bol relation of Fiore et al. 2017 and literature coupling efficiencies: 1
+- Using Olberg et al. Tex and velocity ranges gives 3.6e-2 Msun, similar to their 0.03 Msun: 1
+- Dense tracers (CO 6-5, HCN, HCO+) p-v diagrams confirm outflow; compared with SFR and AGN power: 1
+- Authors note the Delta BIC = 10 choice is not perfect and report Delta BIC values for transparency: 1
+- Compared with literature outflow rates and mass-loading factors and with FIRE-1/FIRE-2 predictions: 1
+- scatter as rms of data about relation (0.37 dex molecular, 0.91 dex ionised): 1
+- compared with spherical-wind Panagia & Felli Mdot: 1
+- Compared with two-Gaussian maximum-velocity method giving 180 Msun/yr: 1
+- varying T_ex in [100, 1000] K changes M_out by only ~20%: 1
+- Compared total combined gas mass (9.3 +/- 2.8 M_sun or 5.9 +/- 2.8 M_sun) with VN15 total nebular mass estimate (15 +/-…: 1
+- Compare SO-derived mass with the CO non-detection mass upper limit: 1
+- Theoretical rate 1.5×10^-6 M_Jup yr^-1 agrees with outflow-based estimate: 1
+- Within a factor of four of the continuum-derived mass: 1
+- compared with MWC349A and eta Carinae: 1
+- Order-of-magnitude estimates only: 1
+- Compared F_CO values from combined maps (FOV ~ 40'') with those derived from ACA-only maps (FOV ~ 60''), finding change…: 1
+- Compared with Bolatto et al. 2013 and Zschaechner et al. 2018 outflow rates: 1
+- Tested excitation temperature range 10 to 60 K, finding CO column densities agree within a factor of 1.5.: 1
+- Compared knot timescales estimated using individual v_knot versus lobe mean velocity v_lobe = <v_knot>, finding good ag…: 1
+- Compared with Paper I and survey values: 1
+- Tested biases using 3D biconical outflow simulations, subtraction of Gaussian fits to disk rotation, alternative maximu…: 1
+- Monitor MCMC convergence by checking effective sample size N_eff = N_iter / tau_int > 10.: 1
+
+### Key parameters and settings (bibcode: value)
+- 2025ApJ...988..111I: mean atomic mass per H atom 1.41
+- 2025ApJ...988..111I: X_CO = 5e20 cm^-2 (K km/s)^-1, metallicity corrected
+- 2018ApJ...859...35G: mass-weighted mean outflow velocity of red and blue wings; no inclination correction
+- 2021A&A...645A.142A: Opening angle measured at the 3 sigma outer emission contour
+- 2021A&A...645A.142A: Outflow C uses the statistical average inclination 57.3 deg
+- 2021A&A...645A.142A: Corrected length l_corr = l_measured / sin(i)
+- 2021A&A...645A.142A: Dynamical time t_dyn = l_corr / |V_max_corr|
+- 2021A&A...645A.142A: Distance 3.25 kpc
+- 2021A&A...645A.142A: Systemic velocity excluded by +/-2.5 sigma of a Gaussian fit to APEX CO(3-2) for MM1 (sigma = 5.2 km/s); +/-1.5 sigma for MM2 outflow C
+- 2021A&A...645A.142A: Two temperature cases: T = 20 K with tau_corr = 3.5, and RADEX temperatures with tau_corr = 8.2
+- 2021A&A...645A.142A: Inclination corrections 1/cos(i), 1/cos^2(i), sin(i)/cos^2(i) for P, E, F
+- 2017ApJ...849...25L: Inclination 70 deg (MM6), 0 deg (MM7/G), 45 deg (MM8/F)
+- 2021A&A...645A..21G: Assumed Galactic-conversion molecular-mass uncertainty ~30%.
+- 2021A&A...645A..21G: M_[O iii] normalization 4.0×10^7 M_⊙; luminosity normalization 10^44 erg/s; density normalization 1000 cm^-3.
+- 2021A&A...645A..21G: ΔD = slice size 2.4″ ~192 pc.
+- 2021A&A...645A..21G: Bolometric correction L_bol/L_14–195 keV =7.42.
+- 2026A&A...707A..77H: detection threshold A_G/N_G > 3
+- 2026A&A...707A..77H: [SII] ratio R constrained to 0.44 to 1.45; electron density below 50 cm^-3 treated as an upper limit of 50 cm^-3
+- 2026A&A...707A..77H: NaI optical depth ratio tau_0,blue = 2 tau_0,red; NaI y = 0.9, a_Na = -5.69, b_dust = -0.95
+- 2026A&A...707A..77H: minimum r_out = 1.49 kpc for CO (half the ALMA beam major axis); minimum 0.72 kpc for MUSE phases (half the MUSE PSF FWHM)
+- 2026A&A...707A..77H: r_out is the distance of each bin centre to the SE nucleus
+- 2020ApJ...905...86S: v_out = v84 (velocity above which 84% of absorption occurs)
+- 2020ApJ...905...86S: R_out = r_dust, effective radius of the rest-frame ~100 um dust emission (lens reconstruction for SPT, PACS for low-z)
+- 2020ApJ...905...86S: T_ex = 100 K
+- 2020ApJ...905...86S: [OH/H] = 2.5e-6
+- 2020ApJ...905...86S: f_cov = 0.3 (rescales Mdot_thin linearly, absorbed in intercept b)
+- 2020ApJ...905...86S: SFR = 1.49e-10 L_IR
+- 2020ApJ...905...86S: r_max/r = 10; r = r_dust (circularized effective dust size from lens reconstruction)
+- 2025A&A...699A..83A: Scenario I v_out = average of mean redshifted and mean blueshifted residual velocities (absolute values), 50-100 km/s
+- 2025A&A...699A..83A: Scenario II v_out = velocity cut above the maximum modelled rotation velocity
+- 2025A&A...699A..83A: Scenario III uses the same velocity cut as Scenario II for the blue and red wings
+- 2025A&A...699A..83A: CO(2-1) at original 0.2'' resolution, except J1010 where CO(3-2) was used
+- 2025A&A...699A..83A: r_out = maximum distance from the nucleus of the high-velocity gas contours
+- 2025A&A...699A..83A: eta = Mdot_out / SFR (scenario II); eps_AGN = Edot_out / L_bol; eps_jet = Edot_out / P_jet
+- 2013ApJ...774...39A: [12CO]/[H2]=1e-4; inclination 30 deg
+- 2014A&A...567A.125G: R_out~1.5" (100 pc), V_out~100 km/s for CND
+- 2025ApJ...985..243B: Narrow FWHM 80-400 km/s, broad FWHM 400-1500 km/s
+- 2025ApJ...985..243B: Both components centered within +/-200 km/s of systemic; broad FWHM at least 1.2 x narrow FWHM
+- 2025ApJ...985..243B: R_out = 6 kpc
+- 2025ApJ...985..243B: Median sample SFR = 52 Msun/yr used for the full-stack eta_m
+- 2019A&A...628A.118B: v_mol~1000 km/s, k~2
+- 2017ApJ...841..130A: S at 349.5 GHz, D=48.5 kpc, T=6420 K, v=148 km/s, varphi=75 deg, x0=1, mu=1, theta0=0.5 rad, numax=1e13 Hz
+- 2021ApJ...908..235I: R_out = 3.5, 6.4, 5.1 kpc for blobs A-C
+- 2021ApJ...908..235I: X_C+ = 1.4e-4, T_ex = 200 K, n_crit ~3e3 cm^-3
+- 2024ApJ...974...18C: Emitting volume in a shell of radius 0.1R: f_A = 1, f_V = 0.36
+- 2024ApJ...974...18C: gamma_m = 2, p = 2.8
+- 2024ApJ...974...18C: epsilon_e = 0.1, epsilon_B = 0.2
+- 2024ApJ...974...18C: Viewing angles 0.1, 0.26, 0.52, 0.79, 1.05, 1.57 rad
+- 2024ApJ...974...18C: f_A = f_V = 1 (theta_j = 1/Gamma); alternative fixed opening angle theta_j = 10 deg with energy multiplied by 4 Gamma^2 (1 - cos theta_j)
+- 2024ApJ...974...18C: epsilon_B from the cooling break between 3e-4 and 0.005 depending on viewing angle
+- 2021MNRAS.500.5500B: N(CO) = 2.4x10^16 cm^-2; area ~0.63 pc^2; kinematic duration = 5.6x10^4 yr
+- 2017MNRAS.465..834Z: Tex = 50 K, filling factor 1
+- 2024ApJ...971L..15Y: Integrated SO flux 13±3 mJy km s^-1
+- 2024ApJ...971L..15Y: Dynamical time ~100 yr
+- 2024ApJ...971L..15Y: Midplane temperature 15 K; Sigma_g=10 g cm^-2 at 42 au
+- 2021ApJ...912...21E: For LGRB SNe: epsilon_e = epsilon_B = 0.1, p = 2.5, E_SN = 10^52 erg, v_ej = 8 x 10^3 km s^-1, n = 10 and 100 cm^-3
+- 2024AJ....167...72D: 3sigma threshold; channels near systemic velocity removed
+- 2024AJ....167...72D: Jet width taken as transverse beam size b_m
+- 2019ApJ...881...43K: Cone opening ~60 deg, axis perpendicular to disk, i=78 deg, theta 48-108 deg
+- 2020ApJ...903..119L: Uncertainties estimated as 2 km s^-1 for velocities (3x channel width) and 0''.5 for lengths (half angular resolution)
+- 2016ApJ...832..158Z: Tex = 15 K and 50 K; inclination 40 deg for momentum/energy
+- 2022A&A...668A..45L: |v_min| = 180-450 km s^-1; |v_max| = 300-800 km s^-1
+- 2022A&A...668A..45L: Median values for 3-sigma upper limits: <v_out> = 390 km s^-1, <R_out> = 0.52 kpc
+- 2022A&A...668A..45L: MCMC settings: 2000 steps, 4 chains; systematic uncertainties: 0.1 dex on log v_out, 0.3 dex on log M_out, log M_dot_out, log eta, and log(M_out/R_out)
+- 2024A&A...690A.277M: Integrated [S II] spectrum in a nuclear aperture of diameter 2″.
+- 2024A&A...690A.277M: Vout approximately 200 km s^-1: maximum measured blueshifted outflow velocity.
+- 2024A&A...690A.277M: Rout = 2″ (340 pc); σ approximately 250 km s^-1.
+- 2024A&A...690A.277M: Literature AGN luminosities: 5 × 10^43 and 1 × 10^44 erg s^-1.
+- 2021A&A...649A..31H: κ[CII]≈1.5 M⊙ L⊙−1.
+- 2021A&A...649A..31H: Explored nH=0.1–10^5 cm−3, T=10–10^4 K, 12+log10(O/H)=7–9.
+- 2024A&A...683A.169W: dR = half of the extraction aperture size, 0.7 kpc
+- 2024A&A...683A.169W: v_ion = |dv| + sigma_v
+- 2015ApJ...811L...4Z: Tex = 10 K; D = 150 pc; radial velocity 5 km/s; size 1''; angle 30 deg
+- 2025A&A...701A.120P: Blue side <−300 km s−1; vout≈770 km s−1, 95th velocity percentile; Rout=quasar CO half-light radius.
+- 2019A&A...630A..59B: v_out=|Delta v|+FWHM_broad/2; R_out~3.5 kpc
+- 2018Sci...361.1016S: f_cov ~0.8, R ~600 pc, v = 440 km/s
+- 2026ApJ...998..111C: Fixed $\nu_p=2.9$ GHz (with 0.6 GHz RMS propagated into errors), $p=2.16$, $\epsilon_B = 10^{-3}$, launch time $t_0=622$ days
+- 2022NatAs...6..275K: Source radii R and ages Delta_t in Tables 1 and 3
+- 2026ApJ..1001..161H: mean molecular weight 2.8; [CO/H2] = 1e-4; inclination 57.3 deg
+- 2026ApJ..1001..161H: time span 19000 yr; circle diameter 5.6 kpc; Galactic radius 15 kpc
+- 2019A&A...632A..61G: disk radius 4-5 pc, torus radius 5-6 pc, PA=113, i=-80, 5 pc FWHM beam
+- 2021MNRAS.503...77W: Blue-shifted integration range 29 - 42 km s^-1 and red-shifted 43 - 56 km s^-1 for overview map; individual lobe velocity ranges in Table 4
+- 2019A&A...632A.101T: H2/CO = 1.2e4; mu = 2.8
+- 2023A&A...673A..46B: X-ray wind: mu = 1.2, Omega/4pi = 0.5, R_min = 2 G M_BH / v^2, accretion efficiency eta = 0.1, M_BH ~ 10^8 M_sun
+- 2023A&A...673A..46B: Molecular outflow: tau_dyn = R / v_out; alpha_CO = 2.1 ± 1.2 M_sun (K km s^-1 pc^2)^-1 (and 0.8 ± 1.2 for Fig. 17 comparison)
+- 2024A&A...689A.163L: Adopted M_HCN = 1-6e7 Msun
+- 2024A&A...689A.163L: Outflow velocity ~250 km/s and size 30 pc
+- 2024A&A...689A.163L: Outflow velocity 50 km/s, size 30 pc
+- 2021NatAs...5..319P: R_OF = R_eff,ALMA = 1.54 kpc; v_max = (v_broad - v_narrow) + 2*sigma_broad = 634 km s^-1 (or v_mol,b = 179 km s^-1 for conservative tidal scenario)
+- 2021NatAs...5..319P: j_[OII] = 1.641 x 10^-21 erg s^-1 cm^-3
+- 2024ApJ...970....9B: log Q=57.2 photons/s
+- 2015A&A...580A...1M: r = 0.3 kpc, v = 200 km/s, tau_dyn ~1.5e6 yr; v_turb ~ FWHM ~100 km/s
+- 2024A&A...689A.145S: kappa_[CII] = 1.5 Msun/Lsun; R = 2.63 kpc (projected aperture short side); mean inclination 57.3 deg
+- 2017ApJ...843...18V: R_out = 7 kpc, V_out = 1000 km/s
+- 2019A&A...632L...7J: gamma=-1; dR/R_CONT=3,19,10; R_IN=0.07 kpc; chi_H2O~1e-6
+- 2024ApJ...972..115C: Line wings -40 to -12 km/s (blue) and -2 to 20 km/s (red); systemic velocity -7.6 km/s; 3 sigma threshold with sigma = 0.2 K
+- 2024ApJ...972..115C: Tex = 260 K, beam filling factor 1, X(CS) = 1.2e-7
+- 2024ApJ...972..115C: MM3 H II region size 3.3'' x 2.5'' from Gaussian fit; Te = 1e4 K, ne = 3e6 cm-3; geometrical thickness as in density model
+- 2018ApJ...868...95M: V_OF ~1600 km/s, l_OF = 400 pc
+- 2023A&A...680A.110C: Fixed T_0 = 10^4 K, psi = 10 deg, y_m(t) from Eq. 6, mu = 1.67e-24 g; grid ranges theta_0 = 3-50 deg, r_0 = 50-300 au, Lambda = 10^-10 to 10^-7 M_sun yr^-1 / (…
+- 2017MNRAS.468.3266R: temperatures 20 and 50 K; extent 7300 au (17.5")
+- 2022MNRAS.510.4485R: 10^5 - 10^6 point-like sources; R_max = 300 pc, v_max = 200 km s^-1 for outflow
+- 2024A&A...686A..46E: r31 = 0.7; X_CO = 2e20 mol cm-2 (K km/s)-1; between 0.4" and 5"
+- 2024A&A...686A..46E: Cardelli extinction law, R_V=3.1; intrinsic Ha/Hb=3.1; mu=1.4; central pixel r = half pixel size
+- 2021ApJ...914...36I: v_out = FWHM_wing / 2 = 499 +/- 113 km s^-1; R_out < 1.3 kpc (half of 3 sigma wing FWHM limit)
+- 2024ApJ...972..116I: X_C+ = 1.4e-4, T_ex = 200 K, high density limit (n >> n_crit ~ 3e3 cm^-3), R_out = 1.5 kpc, V_out = FWHM/2
+- 2019A&A...631A..78S: z=6.236, R=11.5 kpc (2"), v=493 km/s
+- 2017ApJ...841..110S: V0=164 km/s, R0=80", r_in=6", f_CO=1.3e-3
+- 2017ApJ...834..135T: w=0.6, eta~1, Mgas/SFR uncertainty ±0.24 dex
+- 2024A&A...689A.339G: 5-channel binned CO cube; 6.3 km s−1 channels
+- 2024A&A...689A.339G: Exclude central channels contaminated by cloud emission or missing extended emission
+- 2019MNRAS.490.5860S: tau fixed to 5; annular width 0.075''
+- 2020ApJ...905...25G: Blue lobes alone; multiply by 2 for both lobes
+- 2019ApJ...873...73Z: 12CO/H2 = 1e-4, 2.34e-24 g per H2, outflow length 15"
+- 2023ApJ...942...25F: Outflow distance r = 1 arcsec (460 pc), velocity v = 100 km s^-1, flux fraction = 15% of total CO flux
+- 2026A&A...705A..51D: NGC: c2 flux inside 0.6 arcsec; Mrk: c2 flux inside 2.3 arcsec; MCG: both components in double-peak region
+- 2026A&A...705A..51D: MCG V_out: mean absolute component-velocity difference relative to preferred CND model
+- 2022A&A...665A.107T: v_out,blue = -490 km/s, v_out,red = 535 km/s (98% integrated wing flux velocity); R_out,blue = 0.6 kpc, R_out,red = 0.3 kpc (or R_out ~ 1 kpc clean beam for lo…
+- 2026MNRAS.546f2269R: extraction box = 1.0'' x 0.3'', r_out = 1.0'' (~5 kpc) [or 7'' (~34 kpc) including diffuse component], C = 3
+- 2025ApJ...990L..31B: Omega~1/2 (opening angle ~120 deg), f~1, r_of = beam radius in centre
+- 2018MNRAS.473.1909G: v_outfl ~500 km/s; R_outfl ~1.9 kpc
+- 2025ApJ...990..173C: Systemic velocity 41.2 km/s; innermost +/-1 km/s excluded
+- 2019A&A...632A..33A: R_out=0.28'' (~23 pc), v_out=300 km/s, r31=0.82, D_L=17.2 Mpc
+- 2021ApJ...907L..41L: Jet mass-flux ~10^-6 M_sun yr^-1; sideways speed ~10 km s^-1
+- 2021ApJ...907L..41L: Wind magnetic field required for Mdot_in~3×10^-6 M_sun yr^-1
+- 2018ApJ...865..131L: X_CO=1e-4; [12CO]/[13CO]=62; mu_H2=2.8; 5 sigma cut; T_ex 9.9-38.2 K
+- 2026MNRAS.549ag781K: aperture radius = 1.5 arcsec, maximum Gaussians = 2, [O III]5007:[O III]4959 = 3:1
+- 2023A&A...673A.116K: R_out = 7.5 kpc (AzTEC-3), R_out = 2.3 kpc (BRI0952, lensing corrected with mu = 3); v_outf = 0.5 x FWHM_broad
+- 2024ApJ...976..201F: alpha_CO = 0.8 for outflow mass; rates computed with R_out = 1 kpc and alpha_CO = 3.1 (cone) or ULIRG-like alpha_CO and Delta R = 200 pc (shell)
+- 2025A&A...695A...6P: n_e=200 cm^-3, Z=0.5 Zsun, R_out~2 kpc (ionized), 1.3 kpc (neutral)
+- 2017ApJ...851..126V: v = 400 km/s (V10), R = 1.6 kpc, M = 3.3e9 Msun
+- 2024ApJ...971..187A: Excitation temperatures of 10, 20 and 30 K; average CO column density used
+- 2018ApJ...863..143C: R from RA=16:52:58.900, Dec=02.24.03.950; R=0.5 kpc for C1; sigma_R = 0.3 kpc
+- 2020ApJ...904...78S: closest knot 1.35'' from the protostar; V_flow ~ 10 km/s
+- 2019ApJ...886...14F: smoothing kernel 9 ch (=1.8 km/s); outflow inclination 30-70 deg
+- 2026A&A...707A.376C: MOKA3D conical outflow maximum extension = 5 arcsec (~470 pc), PA = 235 deg; energetics radial extent Delta R = 284 pc (~3")
+- 2021ApJ...907...62R: Halo build-up timescale 45 Myr, about half the gas depletion time
+- 2024ApJ...962....1S: Tex=50 K, Q≈19, [OH]/[H2]=5e-7, f=0.3, r_out=2 kpc, v_out=669 km/s
+- 2024ApJ...966..117X: mu=1.4, Tbg=2.7 K, 1 sigma threshold for synthetic ALMA
+- 2018ApJ...856..143I: V = 500 km/s, R ~ 80 pc
+- 2021A&A...648A..41V: opening angle at 1000 AU projected distance; cloud-velocity channels excluded
+- 2016ApJ...821L...3T: Tex = 17 K; i = 60 deg
+- 2026A&A...706A.227G: v = 160 km/s, mu = 1.36, L_AGN = 1e12 Lsun
+- 2023MNRAS.522.6123Z: Flux ratios R ~ 15 (at 4.7 and 8.2 GHz) and R ~ 6 (at 44 and 237 GHz); outflow velocity ~1000 km s^-1
+- 2025A&A...700A..22O: v_out between 200 and 300 km/s (300 for the limit); r_out about 1 kpc (one beam); sigma = 85 km/s
+- 2025ApJ...987..197H: [HC3N/H2]=5e-9; mu_H=2.8; inclination 53.7 deg
+- 2017A&A...608A..38O: R = 0.5 kpc, v = 300 km/s
+- 2021ApJ...907...94C: B = 9.4 mG
+- 2020A&A...633A.127F: V = 160 km/s projected, d ~ 100 pc
+- 2024A&A...689A.347G: r = 50 pc; accretion efficiency 0.1; bolometric correction 10
+- 2020A&A...633A..90G: v_out~500 km/s, R_out~6 kpc
+- 2024A&A...682A..54T: R 2.4-5.5 kpc; v_out=560 km/s
+- 2026AJ....172...75M: B_pos,u = 1.7 mG; M_out = 54 M_sun and 10 M_sun; v_rot = 2.4 km s^-1; V_A = 2.5 km s^-1; density power-law index n = 0 and 1.5; pseudo-disk radius R ~ 2500 AU;…
+- 2019A&A...627A..53H: shell thickness 200 pc (20-500 pc range); X_CO = 2e20
+- 2021ApJ...907..108G: Outflow velocity taken as maximum outflow velocity relative to 97 km/s LSR; SiO blue/red lobe velocities 23 and 33 km/s
+- 2018A&A...615A.141B: abundances CH3CN 1e-8; SiO 1e-8 to 1e-7; t_dyn ~6e3 yr
+- 2026ApJ..1004...39I: r ∼200–500 pc; v ∼200–500 km s−1; dynamical time r/v
+- 2020A&A...641A.124L: V_wind=400 km/s; R_wind=half beam size
+- 2026ApJ..1000..312Z: R_out([CII]) = 3.0 kpc; BAL R_out 1-100 pc; v_BAL = 2.5e4 km/s; T ~ 100–1000 K; n >> n_crit
+- 2025SciA...11.6953M: 12CO excitation temperature 30 K
+- 2025SciA...11.6953M: Wind velocity 500 km/s; f = 3
+- 2020MNRAS.496..394R: Tex=100 K, [H2/CO]=1e4, optically thin wings
+- 2020ApJ...890...29F: R_in=100 pc, v=50 km/s
+- 2025A&A...693A.174E: Outflow velocity ~200 km/s, radius ~0.5'' (88 pc)
+- 2025MNRAS.539.3808U: Blue lobe -51.8 to -46.4 km/s; red lobe -36.2 to -27.3 km/s
+- 2025MNRAS.539.3808U: Outflow inclination ~46 deg to the plane of the sky
+- 2020A&A...634L..12D: Tex = 50 K; 12CO/13CO = 65
+- 2016ApJ...827...72S: Conversion factor 8.8 Msun (K km/s)^-1 pc^-2; S/N > 6
+- 2024A&A...684L..11G: projected velocity 217±14 km/s; radius 52 pc
+- 2026A&A...706A.328L: V_sys = 45.5 km/s
+- 2020A&A...633A.126B: K = 5.07e-10 Msun s K-1 km-1
+- 2020A&A...640A.104A: narrow wind inclination i=70 deg; precession angle ~15 deg
+- 2025A&A...699A.382M: v_exp = largest velocity offset 1.68±0.14 km/s, inclination-corrected to 2.2±0.4 km/s
+- 2021PASJ...73..205T: v_sys = 2 km s^-1; X_CO = 2 x 10^20 (K km s^-1)^-1 cm^-2
+- 2025A&A...702A..27P: Blue velocity range: 87.6 - 96.0 km s^-1; Red velocity range: 102 - 108 km s^-1; Excluded range: 97.2 - 102.0 km s^-1; Systemic velocity: 101 km s^-1; Outflow …
+- 2016ApJ...832..142Z: v_w 150 km/s (lower), 180 km/s (upper); alpha_CO 0.34 to 0.8
+- 2021MNRAS.508.4639Z: v_out^r ~ 3.5 km s^-1, v_out^b ~ 3.8 km s^-1, v_gas^r ~ 1.0 km s^-1, v_gas^b ~ 1.1 km s^-1, lambda_max ~ 0.40 pc, R = 0.40 +/- 0.05 pc, Delta v ~ 1.46 km s^-1
+- 2024ApJ...966..192S: core density 1.0e4 cm^-3 (rho_core ~4.7e-20 g cm^-3); outflow length ~8500 au, width ~1600 au; v_out ~3 km/s; i ~70 deg
+- 2019A&A...628A..65A: v_out = 100 km/s, R_out = 35 pc
+- 2021ApJ...910..148M: X(CO) = 1e-4, Eu/k = 16.59 K, Tex = 20 K, pixels above 3 sigma
+- 2024ApJ...961..228S: Outflow area: intensity > 0.5 K km/s; v_sys = 4 km/s; i_out = i_ring
+- 2018ApJ...864L...1G: R_out = 2.0±0.1 kpc (offset 0.28±0.02″)
+- 2025ApJ...991...45D: V_j = 125 km/s; W_j ~ 0.29 arcsec
+- 2024ApJ...963...72O: Tex = 40 K, mu = 2.8, X_CO=1e-4, d=405.7 pc
+- 2025A&A...695A.236L: Tex 30-70 K
+- 2026AJ....172..108L: Velocity integration ranges: -15 to 5 km s^-1 (blueshifted) and 15 to 35 km s^-1 (redshifted)
+
+
+### Assumptions (bibcode: value)
+- 2025ApJ...988..111I: Inclination i = 45 deg to the line of sight
+- 2025ApJ...988..111I: CO optically thin and in LTE for both outflow and jet
+- 2025ApJ...988..111I: Median velocity of each component taken as the representative flow velocity
+- 2025ApJ...988..111I: Single-band scaling from ST16 (full SED of SMM1 unavailable), large uncertainty acknowledged
+- 2018ApJ...859...35G: alpha_CO = 0.8 Msun (K km/s pc^2)^-1, 100% molecular; tidal components 3.6
+- 2018ApJ...859...35G: Pdot_sum ~ 20 L_AGN/c + 3.5 L*/c; Edot_sum = 0.05 L_AGN + 0.02 L*
+- 2021A&A...645A.142A: Symmetric biconical outflow geometry for the initial ranges; pencil-like morphology for the final ranges
+- 2021A&A...645A.142A: Lower-bound temperature of 20 K for the first mass estimate
+- 2017ApJ...849...25L: Vw~500 km/s, Mw/Macc~0.1, fent=0.25; SiO abundance enhanced x10 (MM7/MM8) and x40 (MM6); CO opacity correction from HH 46/47
+- 2021A&A...645A..21G: Galactic α_CO =4.35 M_⊙ [K km s^-1 pc^2]^-1; CO(1-0)/CO(2-1) brightness-temperature ratio =1.
+- 2021A&A...645A..21G: Alternative ULIRG α_CO =0.8 M_⊙ [K km s^-1 pc^2]^-1.
+- 2021A&A...645A..21G: C =1; equal-density ionizing clouds.
+- 2021A&A...645A..21G: NLR [O/H] =9.0; solar [O/H] ~8.86.
+- 2021A&A...645A..21G: Fully ionized gas; electron temperature 10^4 K.
+- 2021A&A...645A..21G: Use outflowing masses and deprojected outflow velocities.
+- 2021A&A...645A..21G: Radiation momentum rate = L_bol/c.
+- 2026A&A...707A..77H: Metallicity for the outflow taken from the quiescent line components because strong-line metallicities cannot be applied to shock/LINER-like gas; [O/H]_sun = 8…
+- 2026A&A...707A..77H: Quoted ionized masses are lower limits because of the electron density floor
+- 2026A&A...707A..77H: Optically thick outflow tau ~ 1 and L_bol ~ L_IR when assessing radiation pressure
+- 2026A&A...707A..77H: Energetics treated as order-of-magnitude estimates because alpha_CO is highly uncertain
+- 2020ApJ...905...86S: Mean mass per hydrogen atom 1.4 (includes helium)
+- 2020ApJ...905...86S: Optically thin absorption gives a hard lower bound on the outflow rate
+- 2020ApJ...905...86S: Joint distribution is not a true joint probability since methods are not independent
+- 2020ApJ...905...86S: alpha_CO = 0.8 Msun (K km/s pc^2)^-1 for SPT sources
+- 2020ApJ...905...86S: Sensitivity tested by doubling f_AGN limits and raising CO-based outflow rates by 0.5 dex
+- 2020ApJ...905...86S: Galaxy mass from molecular gas mass assuming a typical DSFG gas fraction; outflowing gas at distance equal to dust size; no further acceleration or deceleration
+- 2020ApJ...905...86S: All escaping material enters the CGM; the quasar CGM range is an approximate upper bound for the DSFGs
+- 2025A&A...699A..83A: alpha_CO = 0.8 Msun (K km/s pc^2)^-1 with R_12 = 1
+- 2025A&A...699A..83A: alpha_CO uncertainty 0.8 +/- 0.5 included in mass errors
+- 2025A&A...699A..83A: Time-averaged thin expelled shell geometry; projected v_out and r_out (no outflow-angle correction applied)
+- 2025A&A...699A..83A: J1347 and J1356: scenarios I and III not measured, literature values adopted
+- 2013ApJ...774...39A: Optically thin; lower limits
+- 2014A&A...567A.125G: multi-conical uniformly filled outflow; coplanar with disk; X_CO ~1/4 of MW
+- 2025ApJ...985..243B: C+ abundance per hydrogen atom 1.4e-4
+- 2025ApJ...985..243B: Gas density equal to the critical density; gas temperature 100 K
+- 2019A&A...628A.118B: alpha_CO = 0.8 Msun (K km/s pc^2)^-1; L'CO3-2/L'CO1-0 from systemic emission
+- 2017ApJ...841..130A: isothermal, constant-velocity outflow; model 1 fully ionized conical, model 2 with recombinations qx=-0.2
+- 2019ApJ...871...37H: alpha_CO,ULIRG=0.8 adopted; thin 0.34 and MW 4.3 as bounds
+- 2021ApJ...908..235I: high density limit n >> n_crit, giving a lower limit on M_out
+- 2021ApJ...908..235I: 70% of [C II] arises from PDRs (factor 0.7)
+- 2021ApJ...908..235I: projection correction averages to unity over all angles; entire extended structure assumed to be outflow
+- 2024ApJ...974...18C: Kinetic energy dominated by hot protons, correction xi = 1 + 1/epsilon_e
+- 2024ApJ...974...18C: Launch time delta t = 0 days
+- 2021MNRAS.500.5500B: Cosmic [CO/H2] abundance X_CO = 10^-4; distance d = 6 kpc
+- 2017MNRAS.465..834Z: 12CO/H2 = 1e-4, 12CO/13CO = 62
+- 2014ApJ...785...44M: gas to dust ratio 100; R_e=2 kpc encloses half the mass; v_c=400 km/s
+- 2024ApJ...971L..15Y: Optically thin emission and local thermal equilibrium
+- 2024ApJ...971L..15Y: Temperature 30-300 K; SO/H2 =10^-7 - 10^-6
+- 2024ApJ...971L..15Y: Protostellar relation Mdot_out~0.1 Mdot_acc applies to planet-driven outflows
+- 2021ApJ...912...21E: Peak luminosity extrapolates back in time as L_nu,pk proportional to t^-1 for optically thin SLSN emission
+- 2025A&A...700L..11S: CO excitation conditions are common between the many extended density structures
+- 2017MNRAS.464L..75F: spherical geometry, distance 5 kpc, stellar parameters from Dougherty et al. 2010
+- 2019ApJ...872....2R: Central mass 4e6 Msun, distance 8.5 kpc, flat mass profile
+- 2013ApJ...763..120C: [CII]/H = 1.4e-4; conical or bi-conical geometry; n >> n_c
+- 2024AJ....167...72D: CO-to-H2 abundance ratio X_CO ~ 10^-4 and excitation temperature T_ex ~ 50 K in the outflow; conservative error of 40%
+- 2024AJ....167...72D: Excitation temperature T_ex ~ 150 K within the jet; CO abundance ratio X_CO ~ 4 x 10^-4; mean molecular weight mu_H2 = 2.8; shock compression factor = 1/3; con…
+- 2024AJ....167...72D: Optically thin CO and SiO emission for X_SiO/X_CO (treated as lower limit since tau_SiO > tau_CO)
+- 2024AJ....167...72D: Stellar radius R_* ~ 2 R_sun and protostellar mass M_* = 0.1 M_sun for Mdot_acc
+- 2019ApJ...881...43K: Launch in the disk plane; flow perpendicular to bar plane; constant X_CO; two cases: no acceleration after launch, or constant outflow rate
+- 2020ApJ...903..119L: LTE and optically thin CO line wing emission; excitation temperature approximated by dust temperature
+- 2020ApJ...903..119L: CO-to-H2 abundance = 10^-4; mean molecular mass m_H2 = 2.72 m_H; uncorrected for inclination
+- 2020ApJ...903..119L: Ratio of mass accretion rate to wind mass ejection rate k = 3; wind velocity v_w = 500 km s^-1
+- 2016ApJ...832..158Z: CO abundance 1e-4 relative to H2; 2.34e-24 g per H2; beam filling factor 1
+- 2022A&A...668A..45L: Cosmology: Omega_Lambda = 0.7, Omega_M = 0.3, H_0 = 70 km s^-1 Mpc^-1
+- 2022A&A...668A..45L: Line luminosity ratio r_21 = L'_CO(2-1)/L'_CO(1-0) = 0.91 and ULIRG CO-to-H2 conversion factor alpha_CO = 0.78 M_sun (K km s^-1 pc^2)^-1
+- 2022A&A...668A..45L: Constant mass outflow rate over dynamical time t = R_out / v_out (volume density proportional to R^-2)
+- 2022A&A...668A..45L: Average isotropic inclination corrections for sample means: 1/<sin(i)> = 1.27 for velocity, 1/<cos(i)> = 2 for radius, unity for dynamical time
+- 2022A&A...668A..45L: Truncated isothermal sphere for escape velocity with <M_dyn> = 3.9e10 M_sun, r = 1 kpc, truncation radius = 2 * <R_e> = 4 kpc
+- 2022A&A...668A..45L: SFR from L_IR (after removing AGN fraction alpha_AGN) using Kennicutt & Evans (2012) relation with Kroupa & Weidner (2003) IMF; SNe momentum and energy from Ki…
+- 2024A&A...690A.277M: Case B coefficient 3.03 × 10^-14 cm^3 s^-1; Te = 10^4 K.
+- 2024A&A...690A.277M: Expanding spherical shell accelerated at the nucleus.
+- 2021A&A...649A..31H: Optically thin [C ii]; negligible background emission.
+- 2021A&A...649A..31H: H0-dominated collisional excitation; 36% helium, μ=1.36.
+- 2021A&A...649A..31H: Maximal excitation: T≫91 K and n≫ncrit∼10^3 cm−3; solar metallicity.
+- 2021A&A...649A..31H: MAPPINGS C/H–O/H relation renormalized to depleted Galactic ISM at Orion oxygen abundance.
+- 2024A&A...683A.169W: T_e ~ 15000 K
+- 2024A&A...683A.169W: n_e = 500 cm^-3 fiducial
+- 2024A&A...683A.169W: L_bol from infrared AGN luminosity with conversion factor 6
+- 2015ApJ...811L...4Z: H2/CO abundance ~1e4; mean molecular weight 2.8; optically thin, LTE
+- 2014ApJ...797...90S: X20=1 for outflow; outflow axis perpendicular to nuclear disk; same inclination as disk
+- 2025A&A...701A.120P: Outflow interpretation; r41=0.87; αCO=0.5 M_sun (K km s−1 pc²)−1.
+- 2019A&A...630A..59B: optically thin [CII], n>>n_crit, X_C+~1e-4, T=200 K, 0.7 PDR fraction
+- 2018MNRAS.480.4991G: Tex 60-180 K
+- 2018Sci...361.1016S: Tex = Tdust = 100 K; OH/H2 = 5e-6; mu = 1.36
+- 2021AN....342.1160P: alpha_CO = 0.8 Msun/(K km/s pc^2) for outflow
+- 2026ApJ...998..111C: Spherical outflow geometry and $\epsilon_B \approx 10^{-3}$
+- 2022NatAs...6..275K: Ballistic expansion at the present expansion speed of the low-velocity gas
+- 2018MNRAS.478.3674R: Temperatures 20 and 50 K; no inclination correction
+- 2026ApJ..1001..161H: Fingers isotropic with the same 3D velocity; differences in projected extent and radial velocity arise from inclination
+- 2026ApJ..1001..161H: Biases from missing flux, distance, constant temperature and constant H2/CO ratio
+- 2026ApJ..1001..161H: Simplified: size of the Galaxy, constant star formation rate with galactocentric distance, rough dynamical timescale
+- 2019A&A...632A..61G: axisymmetric, constant-density gas
+- 2021MNRAS.503...77W: Local thermodynamic equilibrium (LTE), optically thin SiO emission, and outflows parallel to the plane of the sky
+- 2021MNRAS.503...77W: Excitation temperature T_ex = 30 K
+- 2021MNRAS.503...77W: Mean molecular weight mu = 2.8 and fractional SiO abundance X_SiO = 10^-8
+- 2021MNRAS.503...77W: Driving source systemic velocity v_lsr = 40 km s^-1
+- 2023A&A...673A..46B: Cosmology: H0 = 67.8 km s^-1 Mpc^-1, Omega_Lambda = 0.692, Omega_M = 0.308
+- 2023A&A...673A..46B: Maximum coupling efficiency of ~10% for star formation feedback
+- 2024A&A...689A.163L: HCN 3-2/1-0 temperature ratio of 0.3
+- 2024A&A...689A.163L: Conversion valid for gravitationally bound gas, mass overestimated if clumps are non self-gravitating (factor ~5 reduction considered)
+- 2024A&A...689A.163L: N_OH ~ 1e17 cm^-2, x_OH = 2e-6 relative to H2, mean particle mass 2.3 m_H
+- 2021NatAs...5..319P: L'_CO(2-1)/L'_CO(1-0) = 0.85 and alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1
+- 2021NatAs...5..319P: Ionized gas T_e = 10^4 K, n_e = 300 cm^-3, solar metallicity, no dust attenuation correction
+- 2024ApJ...970....9B: mu=1.4, global covering Omega=0.2
+- 2024ApJ...970....9B: C+ abundance 1.4e-4 per H, T=200 K, n>>n_crit (lower limit)
+- 2015Natur.527...70P: Knots travel at constant velocity from launch; inclination unknown
+- 2015A&A...580A...1M: turbulence represented by line FWHM present throughout the outflow
+- 2024A&A...689A.145S: Optically thin [C ii], negligible background, collisions dominated by atomic hydrogen, maximal excitation (T >> 90 K, n >> 1e3 cm^-3) and solar abundance; mass…
+- 2017ApJ...843...18V: ULIRG-like alpha_CO = 0.8; luminosity distance 933 Mpc
+- 2018A&A...614A..58B: Outflow gas expelled from disk; gas ejected with negligible rotation
+- 2019A&A...632L...7J: emission negligible; aperture and R_CONT/R_IN ratios unity; CO redshift as rest frame
+- 2020ApJ...899..112S: R21 = 0.62 and alpha_CO = 0.8 for outflow mass
+- 2024ApJ...972..115C: CS optically thin in the line wings; emission at systemic velocity and filtered emission missed, so values are lower bounds
+- 2024ApJ...972..115C: Optically thin dust (gravitational energy a lower bound if thick); ideal gas for thermal energy; MM7 and MM9 excluded for lack of C33S coverage
+- 2018ApJ...868...95M: alpha_HCN = 0.24–10, alpha_CO = 0.8–4.6
+- 2018ApJ...868...95M: Inclination 80 deg
+- 2023A&A...680A.110C: Mono-polar thermal jet during VLA monitoring; standard spherical scaling (n propto r^-2, T_0, v_0, x_0, theta_0 independent of r); pyramidal geometry valid for…
+- 2017MNRAS.468.3266R: Not corrected for inclination; kinematic age is a lower limit
+- 2022MNRAS.510.4485R: Pure circular motion for the baseline model; spatially constant intrinsic velocity dispersion; optically thin LTE gas with T_ex = 50 K giving X_CO = 2.5 x 10^1…
+- 2024A&A...686A..46E: Galactic X_CO since no merger and not IR luminous; helium included
+- 2024A&A...686A..46E: Broad component is outflow; n_H ~ n_e
+- 2021ApJ...914...36I: Constant outflow; high-density limit (n >> n_crit ~ 3 x 10^3 cm^-3); PDR fraction = 0.7; X_C+ = 1.4 x 10^-4; T_ex = 200 K; total multi-phase outflow rate ~3x (…
+- 2024ApJ...972..116I: Wing is due to outflow (symmetric wing disfavors unseen companions); 70% of [CII] from neutral PDRs; constant outflow velocity
+- 2013ApJ...775L..31S: inclination 45 degrees
+- 2013Natur.499..450B: outflow inclination from cone of 60° opening angle centered on i=78°
+- 2024A&A...691A.153L: Intrinsic Hα/Hβ = 2.86 (Case B, T_e = 10^4 K, n_e = 10^2-10^3 cm^-3); Cardelli et al. (1989) attenuation law; Chabrier (2003) IMF; Kennicutt & Evans (2012) SFR…
+- 2019A&A...631A..78S: X_C+=1.4e-4, T=200 K, n>>ncrit~3e3 cm^-3, constant outflow velocity
+- 2017ApJ...841..110S: Main-sequence mass <=8 Msun; central star ~0.61 Msun; D=1.5 kpc
+- 2017ApJ...834..135T: current SFR maintained; outflow rate comparable to SFR (eta~1)
+- 2024A&A...689A.339G: Local thermodynamic equilibrium; optically thin CO
+- 2024A&A...689A.339G: 70 K and 140 K
+- 2024A&A...689A.339G: Mean molecular weight 2.76; CO abundance XCO=10−4
+- 2019MNRAS.490.5860S: Case B recombination; constant ne within SINFONI FOV
+- 2020ApJ...905...25G: Optically thin SiO; Boltzmann distribution; T_ex=250 K
+- 2020ApJ...905...25G: N(SiO)/N(H2)=10^-7
+- 2019ApJ...873...73Z: Inclination correction with i=20 deg; correction factors 10 (mass), 8 (momentum) from low-mass outflow
+- 2023ApJ...942...25F: Outflowing component contains 15% of the CO (1-0)-inferred molecular gas mass; fraction of stellar mass within central 1 arcsec is 0.17 from HST F625W profile
+- 2026A&A...705A..51D: Mass outflow rate constant over time
+- 2026A&A...705A..51D: Outflow inclinations: NGC 57.7 degrees; Mrk 66.5 degrees; MCG 74 degrees
+- 2026A&A...705A..51D: Mrk outflow requires trailing arms; MCG outflow close to CND plane
+- 2022A&A...665A.107T: Time-averaged expelled shells or clumps geometry (Rupke et al. 2005); PDR parameters T = 200 K, X_C+ = 10^-4, n >> n_crit; L_bol = 3.13 x 10^47 erg s^-1.
+- 2026MNRAS.546f2269R: Constant average volume density in a cone or sphere (C = 3); blueshifted component moves directly along observer line of sight; alpha_CO = 0.8; gas density = 1…
+- 2013A&A...558A.124C: M=3.6e6 Msun, d=1" ~ 50 pc, v=100 km/s
+- 2025ApJ...990L..31B: PDR excitation, T=200 K, density >> critical
+- 2019A&A...632A..66O: v = 600 km/s, sigma = 510 km/s
+- 2016A&A...593A..92B: Outflow gas comes from the disk; mass-loss rate constant
+- 2025ApJ...990..173C: Excitation temperature 20 K; 12CO abundance 0.5e-4 relative to H2
+- 2025ApJ...990..173C: Spherical core; theta_w,esc = 32 deg for Case 3 in this step
+- 2019A&A...632A..33A: Galactic alpha_CO=4.36 (upper limit) or 1/4 of this for galaxy centres
+- 2021ApJ...907L..41L: Wind magnetic pressure confines sideways jet and bow-shock expansion
+- 2018ApJ...865..131L: 13CO optically thin; outflow inclination 66 deg; T_ex=9.9 K where 13CO is undetected
+- 2020A&A...633A.134L: alpha_CO(1-0)=0.8 Msun/(K km/s pc^2)
+- 2020A&A...633A.134L: constant outflow rate since -R_out/v_out
+- 2026MNRAS.549ag781K: Solar metallicity of the gas; broad Gaussian component represents outflowing gas
+- 2023A&A...673A.116K: PDR conditions: X_C+ = 1.4 x 10^-4, T = 200 K, n >> n_crit
+- 2024ApJ...976..201F: Non-circular motion in PG 2130+099 treated as outflow to bound the maximum AGN feedback; PG 0923+129 excluded as spiral-driven
+- 2014ApJ...789L...4T: inclination 20-40 deg (0 = plane of the sky)
+- 2014A&A...572A..40E: Outflow perpendicular to nuclear disk, i_outfl~20 deg
+- 2025A&A...695A...6P: [CII] k at T=1e4 K, n_H=1e4 cm^-3 (lower limit)
+- 2017A&A...605A..28D: average particle mass 3e-24 g
+- 2024ApJ...971..187A: CO abundance 1e-4 relative to H2
+- 2024ApJ...971..187A: Optical depth correction tau = 5 for self-absorbed CO near systemic velocity
+- 2024ApJ...971..187A: Inclination 80 deg, determined geometrically from the northern red opening angle and presence of red and blue components
+- 2018ApJ...863..143C: Outflow alpha_CO of 2.1±1.2 used where [CI] not detected
+- 2020ApJ...904...78S: Knots travel at constant speed after ejection
+- 2019ApJ...886...14F: kappa_1.3mm = 1 cm2/g; dust-to-gas 3.0e-3; Tdust = 20 K
+- 2020ApJ...901..151S: X_CO=0.5e20, alpha_CO=1; cylindrical outflow, constant velocity, uniform density
+- 2026A&A...707A.376C: Outflowing gas is fully ionized by the AGN (dust-free AGN clouds, dusty SF clouds with equal metallicity); constant flux density over time in each spaxel
+- 2021ApJ...907...62R: Ground-state OH+ column representative of total OH+; halo hydrogen mass 5% of total gas mass, uncertain by a factor of a few
+- 2024ApJ...962....1S: OH abundance 5e-7 chosen as compromise and to match the empirical relation
+- 2024ApJ...966..117X: optically thin, LTE
+- 2018ApJ...856..143I: HCO+-to-H2 abundance ~1e-8; Mdense = 10 x HCN J=1-0 luminosity; lines thermalized and optically thick
+- 2021A&A...648A..41V: mu=2.76, X_CO=1e-4, Tbg=2.7 K, outflow perpendicular to disk, optically thin
+- 2016ApJ...821L...3T: Tex=17 K minimizes mass; mass underestimation factor of 3; inclination 60 deg
+- 2020A&A...641A.151S: alpha_CO=1.1 Msun pc^-2 (K km/s)^-1
+- 2026A&A...706A.227G: Entire nuclear source is expanding at 160 km/s although only the mid-IR photosphere is probed
+- 2023MNRAS.522.6123Z: SE hotspot contributes ~90% of total observed 1.4 GHz flux density and is Doppler boosted by factor delta = 2
+- 2025A&A...700A..22O: alpha_CO = 0.89 for the outflow mass; true outflow mass assumed not much lower than the upper limit
+- 2025ApJ...987..197H: Constant HC3N abundance relative to H2; optically thin
+- 2017A&A...608A..38O: optically thin, LTE, alpha_CO = 0.25 at Tex 29 K, spherical outflow
+- 2021ApJ...907...94C: Sphere of radius 12 arcsec (5000 au)
+- 2021ApJ...907...94C: Orion-KL complex mass ~100 M_sun from Bally2020
+- 2017MNRAS.468.3694C: T_ex=30 K, X_CO=1e-4, X_H2CO=1e-8, v_LSR=35 km/s, no inclination correction
+- 2020A&A...633A.127F: Wind starts at the jet-ISM impact point; values are lower limits due to projection
+- 2024A&A...689A.347G: Initial CCI typical of the late AGN build-up branch (NGC 613, CCI=+0.82); Sigma_200 and outflow rate constant during transition
+- 2020A&A...633A..90G: n>n_crit, X_C+=1.4e-4, T=60-200 K, 70% of [C II] from PDRs, optically thin
+- 2024A&A...682A..54T: PDR L[CII]-to-gas mass conversion
+- 2026AJ....172...75M: Solid-body rotation and spherical moment of inertia for energy ratios; transitions localized on a fixed-radius disk (R ~ 2500 AU) for centroid velocity slope; …
+- 2019A&A...627A..53H: X_CO = 2e20 cm^-2 (K km/s pc^2)^-1 for outflowing gas; lower limit 1.6e19
+- 2021ApJ...907..108G: Same abundance 1.0e-8 and excitation temperature 20 K for SiO and HCN; distance 7.9 kpc, with values for 3.7 kpc given in parentheses
+- 2021A&A...655A..25Z: alpha_CO = 0.3 (optically thin) and 0.8 (thick) Msun (K km/s pc^2)^-1
+- 2026ApJ..1004...39I: Conditional interpretation of shell geometry as spatially resolved outflow.
+- 2020A&A...641A.124L: All HF in ground state; HF abundance 3.5e-8
+- 2026ApJ..1000..312Z: X_C+ = 1e-4; mu = 1.4; broad component primarily AGN-driven
+- 2025SciA...11.6953M: 12CO emission optically thin in a velocity range free of 13CO and C18O; 12CO/H2 = 1e-4, mean atomic weight 1.36; outflow momentum conserved from the wind; no i…
+- 2018ApJ...853L..28B: LTE, low optical depth, alpha_HCN≥0.24, alpha_CO=0.8, T_bg=2.73 K, inclination 53.5 deg, outflow perpendicular to disk
+- 2020MNRAS.496..394R: inclination i<=62.5 deg from Cabrit; no inclination correction applied in table
+- 2019ApJ...886...15T: XCO = 7e20 cm-2 (K km/s)-1, 12CO(2-1)/(1-0)=1.0, inclination 30–70 deg
+- 2025A&A...693A.174E: L(11.3 um) multiplied by two to match PAHFIT-derived SFRs; R5 mass treated as upper limit to the outflow mass
+- 2025MNRAS.539.3808U: MM1a is the driving source of the outflow
+- 2019MNRAS.489.1927S: cone axis at 45 deg to line of sight; alpha_CO^out = 2.1 (range 0.8-3.4)
+- 2020A&A...634L..12D: Steady flow; LTE
+- 2020ApJ...890..149T: uniformly filled spherical/conical outflow; factor ~3 uncertainty
+- 2026A&A...706A.328L: SiO abundance ~1e-8; inclination 57.3 deg; jet mass-loss to accretion ratio 0.3
+- 2026A&A...706A.328L: For position 7 the red lobe is assumed to have the same N_r and A_r as the blue lobe
+- 2016ApJ...823...68S: Outflow perpendicular to disk; height 1 kpc
+- 2020A&A...633A.126B: Tex = 30 K; CO abundance 8.3e-5 relative to H2
+- 2017ApJ...847...92H: d=436 pc, T=20 K, optically thin, no inclination correction
+- 2020A&A...640A.104A: X(CO) lower by ~5 than Galactic for turbulent gas
+- 2024ApJ...974..195Z: Te = 10^4 K; n(He)/n(H)=0.1; n_e from L_bol and U
+- 2025A&A...699A.382M: chi(CO)~1e-4, mu_g=2.3, 16O/18O=560, inclination 40±10 deg, d=163 pc
+- 2018MNRAS.475L..52S: inclination 45 deg, CO(2-1)/CO(1-0) ratio unity, alpha_CO = 0.8 Msun (K km/s pc^2)^-1
+- 2021PASJ...73..205T: Inclination angle i = 30-70 deg (0 deg for plane of sky); X_CO conversion factor provides a lower limit to M_lobe
+- 2019ApJ...886L...4Z: All ions H+, total mass 1.4x hydrogen mass
+- 2020ApJ...896...43W: CO-to-H2 factor 0.8 Msun (K km/s pc^2)^-1; inclination from LIME models
+- 2025ApJ...992L...7S: relatively constant density; velocity perpendicular to galaxy plane in maximal case
+- 2025A&A...702A..27P: LTE excitation temperature T_ex = 20 K, abundance ratio [CO/H2] = 10^-4, mean molecular weight mu_H2 = 2.72, distance = 6.2 kpc
+- 2016ApJ...832..142Z: outflow cone perpendicular to disk inclination of 65 deg
+- 2021MNRAS.508.4639Z: Spherical clump (a2 = 1), power-law density index p ~ 1.77, optically thin H13CO+ (1-0) and high-velocity HCO+ (1-0) wings, equal and constant excitation tempe…
+- 2016A&A...587A.145B: Tex = 100 K, CO/H2 = 1e-4, inclination 20 deg
+- 2020ApJ...896...36T: Inclination 45-60 deg for dynamical time
+- 2024ApJ...966..192S: C_D = 1; CO abundance 1e-4; mean molecular weight 2.8; LTE; T_ex = 50-200 K; outflow mass scaled up to ~1e-2 Msun to account for missing low-velocity gas
+- 2019A&A...628A..65A: X = 2e20 cm-2 (K km/s)-1, CO(1-0)/CO(2-1) brightness ratio 1
+- 2021ApJ...910..148M: Disk inclination i = 45 deg; LTE; optically thin; Tex = 20 K
+- 2019ApJ...887..209A: Systemic velocities from C18O Gaussian fits; S68Nb1 assumed same as S68Nc1
+- 2021A&A...656A..45M: outflow ejected at same time as jets (3 Myr), v_OUT=2000 km/s
+- 2024ApJ...961..228S: mu = 2.8; X_CO = 2.0e20; protostellar mass 1 Msun for Keplerian; constant mass loss rate
+- 2018ApJ...864L...1G: M_H2 = 0.34 L'CO (optically thin); thermalized CO; velocities not deprojected
+- 2020ApJ...890..129K: Tgas 70 K, inclination 50 deg
+- 2018ApJ...866..141K: inclination i = 45 deg; tau ~10 for wing
+- 2025ApJ...991...45D: mu_H2 = 2.8; jet unresolved so width set by PSF
+- 2019MNRAS.483.4586F: alpha_CO = 0.8 Msun/(K km/s pc^2); CO thermalised and optically thick so L'CO(3-2)=L'CO(2-1)=L'CO(1-0)
+- 2020ApJ...889...43Z: Inclination ~80 deg for SMA1
+- 2017A&A...604A..60B: outflow inclination ~45 deg
+- 2024ApJ...963...72O: Column density varies within 20% for Tex 20-50 K
+- 2018PASJ...70L...1M: [C]/[H2]~1.5e-3; [12CO]/[13CO]=60; spherical expansion
+- 2021A&A...649A.139I: mu=2.8, 25% helium; distance 3.6 kpc
+- 2018MNRAS.473..879P: Tex=50 K, filling factor 1, 12CO/H2=1e-4, 12CO/13CO=62
+- 2025A&A...695A.236L: H2CO abundance 1e-10; no inclination correction
+- 2018A&A...616A.171P: alpha_CO=0.78 Msun/(K km/s pc^2), r21=0.91; 0.4 dex uncertainty
+- 2023ApJ...956L..35Z: Tex 30 K, H2/CO 1e4, 120 km/s range
+- 2016ApJ...828..100F: SiO 2-1 optically thin; outflow temperature >= 15 K; wind speed 300 km/s; mass loading 0.1-0.3
+- 2024ApJ...967..133S: 4–6 Myr duration of the 93 GHz-bright phase
+- 2018ApJ...867..111Z: alpha_CO = 1-2 Msun (K km/s pc^2)^-1 applies to outflow
+- 2020ApJ...904..158L: LTE; 28SiO v=1 optically thick; same Tex for 28SiO and 29SiO
+- 2026AJ....172..108L: Typical jet/wind velocity V_w ~ 150 km s^-1; ratio of wind mass-loss rate to mass accretion rate M_dot_w / M_dot_acc ~ 0.1; entrainment efficiency f_ent = 0.25
+- 2019Natur.574..643R: alpha = 0.34 Msun (K km/s pc2)^-1, conservative, optically thin outflow
+- 2020ApJ...899L..10F: Inclination 30 and 70 deg; Tex = 20 K; [12CO/H2] = 1e-4; LTE
+- 2024ApJ...969L...6Z: Outflow mass accumulates through episodic ejection during clustered outbursts of duration Delta t
+- 2026ApJ..1003...26O: XO=3e-4, Te=1e4 K, fV=1/3, all O in O2+, He singly ionized
+
+
+### Limitations the authors admit
+- 2025ApJ...988..111I: Flow-mass-related properties are lower limits because of missing flux and lower sensitivity at the field edge
+- 2025ApJ...988..111I: Red jet extends to the field edge where sensitivity is about 3 times lower, so some flow may be missed
+- 2025ApJ...988..111I: Inclination unknown (45 deg assumed)
+- 2025ApJ...988..111I: LTE CO(3-2) may underestimate masses by 1-2 orders of magnitude; lower-J CO needed
+- 2025ApJ...988..111I: Luminosity from one infrared band with large uncertainty
+- 2025ApJ...988..111I: Other four sources: jets not detected, attributed to insufficient sensitivity
+- 2018ApJ...859...35G: Systematic uncertainty in outflow mass from alpha_CO
+- 2018ApJ...859...35G: Extreme obscuration may hide AGN; mid-IR decomposition may be biased
+- 2021A&A...645A.142A: Excluding near-systemic channels makes derived properties of outflows A and B lower limits
+- 2021A&A...645A.142A: Inclination angles dominate the error budget
+- 2017ApJ...849...25L: Core dust temperatures poorly known; masses uncertain mainly through Td
+- 2021A&A...645A..21G: Large-scale faint CO emission could not be modelled with BAROLO; velocity extrapolation and brightness-based identification were used.
+- 2021A&A...645A..21G: CO conversion factor poorly constrained; molecular masses depend on α_CO and line ratio.
+- 2021A&A...645A..21G: Electron density is the largest ionized-mass uncertainty; [S II] can give lower densities than auroral/transauroral diagnostics.
+- 2021A&A...645A..21G: Intrinsic spiral-arm asymmetry could affect the inferred gas deficit.
+- 2021A&A...645A..21G: Spiral-arm masses exclude nuclear regions containing much of the molecular mass.
+- 2021A&A...645A..21G: Wind model assumes spherical symmetry and omits ISM resistance.
+- 2026A&A...707A..77H: Ionized outflow masses are lower limits due to the electron density floor
+- 2026A&A...707A..77H: alpha_CO in outflows is highly uncertain, so energetics are order-of-magnitude estimates
+- 2026A&A...707A..77H: Outflow presence in the NW nucleus is uncertain
+- 2020ApJ...905...86S: Broad applicability of the empirical outflow-rate formulae is questionable
+- 2020ApJ...905...86S: Uncertainties likely underestimated due to systematics in assumptions
+- 2020ApJ...905...86S: Upper limits on outflow properties cannot be set for the 3 sources without unambiguous outflows
+- 2020ApJ...905...86S: Sample is not cleanly selected or complete
+- 2025A&A...699A..83A: Higher CO(3-2) dispersions can be due to beam smearing from the coarser CO(3-2) beam
+- 2025A&A...699A..83A: Physical conditions (Tex, density) cannot be derived from a single line ratio
+- 2025A&A...699A..83A: Outflow velocities and radii are projected values because the outflow angle is uncertain
+- 2025A&A...699A..83A: Scenarios I and III cannot be done accurately for the mergers J1347 and J1356
+- 2025A&A...699A..83A: Small sample sizes limit the regression tests
+- 2025A&A...699A..83A: MEGARA ionized data are seeing-limited (~1.1'') compared with ALMA (~0.2'')
+- 2013ApJ...774...39A: Masses are lower limits (optically thin, Tex uncertain, missing large-scale flux)
+- 2014A&A...567A.125G: Outflow rate is a lower limit due to limited velocity coverage
+- 2014A&A...567A.125G: Resolution does not resolve kinematics of inner r~50 pc
+- 2025ApJ...985..243B: Conservative merger removal limits the S/N gain from stacking
+- 2025ApJ...985..243B: Delta BIC = 10 threshold is not ideal for outflow fitting
+- 2025ApJ...985..243B: Centroid uncertainties were not explicitly included in the main analysis
+- 2025ApJ...985..243B: The x3 multi-phase factor is calibrated on local galaxies and may not apply at z ~ 5
+- 2019A&A...628A.118B: Gas masses depend strongly on alpha_CO; large uncertainties on tau_dep and tau_SF
+- 2017ApJ...841..130A: Planned ALMA sensitivity not reached, so nebula undetected
+- 2017ApJ...841..130A: Central-object size is an upper limit; flux systematics from differing beams and nebular contamination
+- 2019ApJ...871...37H: Outflow properties depend on poorly constrained assumptions (alpha_CO, electron density, geometry)
+- 2019ApJ...871...37H: Outflow geometry/inclination not constrained
+- 2021ApJ...908..235I: The nature of the extended structure cannot be identified with current data
+- 2021ApJ...908..235I: Outflow mass is a lower limit and rates measured at only three positions
+- 2021ApJ...908..235I: Extended [C II] in negative velocity channels needs deeper observations to confirm
+- 2021ApJ...908..235I: SFR estimates are upper limits because AGN contamination is neglected
+- 2024ApJ...974...18C: Chandra spectra have too few counts to constrain the spectral shape
+- 2024ApJ...974...18C: Inferred Gamma depends on the assumed jet launch date
+- 2021MNRAS.500.5500B: Large angular distance (~4 deg) to the ALMA TP off position caused spectral ripples that were not removed in post-processing.
+- 2021MNRAS.500.5500B: Fainter arcs of the ring are not detected in 13CO J=2-1 due to limited sensitivity.
+- 2021MNRAS.500.5500B: ACA is likely missing a fraction of the extended 225 GHz radio continuum flux because its largest angular scale is ~1/3 that of the ATCA 750B configuration at 5.5 GHz.
+- 2021MNRAS.500.5500B: Moderate velocity resolution (1.3 km s^-1, sampling the ring across only seven channels) and contamination in the 28.2 and 29.5 km s^-1 channels limit detailed kinematic analysis and cause significan…
+- 2021MNRAS.500.5500B: Excitation analysis is restricted to single-dish data (providing only average values affected by beam dilution) due to the lack of interferometric CO J=3-2 observations, and RADEX assumes a homogeneo…
+- 2021MNRAS.500.5500B: The molecular ring mass estimate is strongly affected by uncertainties in the X_CO abundance factor, which could be lower in C- and O-deficient LBV nebulae.
+- 2021MNRAS.500.5500B: The kinematic duration and average mass-loss rate of the ring are loose limits because the ring width is unresolved (conservatively set to the 7 arcsec ACA beam) and constant expansion velocity with …
+- 2017MNRAS.465..834Z: Outflow quantities are lower limits because optical depth correction cannot be applied; face-on geometry makes age uncertain
+- 2014ApJ...785...44M: Emission-only data cannot distinguish inflow from outflow
+- 2014ApJ...785...44M: XCO is the prime mass uncertainty
+- 2024ApJ...971L..15Y: Low SNR may create the apparent knot structure
+- 2024ApJ...971L..15Y: Launching radius is challenging to estimate and assumed roughly
+- 2024ApJ...971L..15Y: Physical origin of the outflow tilt is unclear
+- 2024ApJ...971L..15Y: Higher-upper-state-energy transitions needed for robust molecular abundances
+- 2024ApJ...971L..15Y: Narrow SO linewidth needs further modeling
+- 2024ApJ...971L..15Y: Possession of the strong magnetic fields needed for launching is not trivial
+- 2024ApJ...971L..15Y: Circumplanetary-disk mm comparison uses modeling of the PDS 70 system
+- 2021ApJ...912...21E: Short phased-VLA observation duration (~40 min per source) is prohibitively small for detecting intermittent FRBs.
+- 2021ApJ...912...21E: ALMA 100 GHz observations are less constraining for obscured star formation rates and late-time off-axis jet afterglows because synchrotron emission peaks at lower (GHz) frequencies on these timescal…
+- 2021ApJ...912...21E: CLOUDY models start at t > 1 yr in the source frame, so 100 GHz free-free transparency timescales shorter than 1 yr (1+z) rely on extrapolations.
+- 2021ApJ...912...21E: Seven ALMA-observed SLSNe (LSQ14bdq, SN2015bn, SN2016ard, SN2017jan, SN2018ibb, SN2018hti, SN2018lfe) are expected to still be optically thick to free-free absorption at 100 GHz at the time of observ…
+- 2025A&A...700L..11S: ISM contamination in CO forced exclusion of channels
+- 2025A&A...700L..11S: LIME model covers only a small fraction of the outflow
+- 2025A&A...700L..11S: Full 3D model of the extended material not possible because of its geometrical complexity
+- 2025A&A...700L..11S: Cluster membership and distance are uncertain
+- 2025A&A...700L..11S: Spectral indices of individual continuum components are unavailable
+- 2017MNRAS.464L..75F: Bipolar outflow versus rotating disc origin of H41alpha cannot be distinguished; filaments need more sensitive follow-up
+- 2014ApJ...790..160S: Outflow quantities order-of-magnitude; XCO and line ratio uncertain
+- 2019ApJ...872....2R: Second epoch used only for detection check because of poor data quality; densities are lower limits
+- 2013ApJ...763..120C: Lya-2 line truncated by spectral coverage; luminosity and redshift uncertain
+- 2013ApJ...763..120C: Resolution insufficient to distinguish bridge from blending
+- 2024AJ....167...72D: 1.3 mm dust continuum emission may be optically thick in the central core region of extremely young protostars, so derived envelope masses represent lower limits.
+- 2024AJ....167...72D: The 2 km s^-1 velocity resolution is insufficient to probe the kinematics and geometry of resolved disks or to obtain Gaussian fits to C18O lines.
+- 2024AJ....167...72D: The parabolic outflow shell model is only suitable for objects with well-defined outflow shells that are distinguishable from ambient material or multiple outflows.
+- 2024AJ....167...72D: The TM1/TM2 primary beam (~40'') does not cover the full spatial extent of some outflows, and interferometric observations suffer from missing flux, optical depth, and temperature uncertainties.
+- 2024AJ....167...72D: Jet widths are not spatially resolved even at ~0.38'' x 0.35'' resolution, requiring the transverse beam size to be adopted as the jet width.
+- 2024AJ....167...72D: SiO (5-4) and CO (2-1) can be optically thick in dense knots, making SiO-to-CO abundance ratios and jet mass-loss rates lower limits.
+- 2019ApJ...881...43K: CO(3-2) field of view is small and surface brightness sensitivity is low, so its outflow values are lower limits
+- 2020ApJ...903..119L: Low-velocity and/or weak outflows may be missed due to confusion with ambient CO gas around dense cores, potentially contributing to the high fraction of unipolar outflows.
+- 2020ApJ...903..119L: Outflow parameters (v_max, lambda_max, M_out, P_out, E_out, etc.) are lower limits due to sensitivity limits, confusion with nearby outflows or line-of-sight emission, CO optical depth, failure of CO…
+- 2020ApJ...903..119L: Difference in inter-knot timescales (Delta t_knot) compared to W43-MM1 could be affected by spatial resolution differences (~4000-7500 AU vs ~2400 AU) or nonconsecutive Hubble Wedge features in evolv…
+- 2020ApJ...903..119L: Current data cannot distinguish between converging flows, large-scale collapse, or undetected low-mass protostars for SiO emission regions lacking CO velocity shears.
+- 2016ApJ...832..158Z: Specific angular momentum is only an upper limit; envelope model is over-simplified; CO depletion neglected
+- 2022A&A...668A..45L: Observations measure only projected velocities along the line of sight, missing high-velocity gas moving in the plane of the sky and low-projected-velocity outflowing gas (|v| < v_min) that overlaps …
+- 2022A&A...668A..45L: Due to limited S/N in individual velocity channels, R_out cannot be measured channel-by-channel.
+- 2022A&A...668A..45L: Individual target outflow radii and velocities cannot be corrected for inclination because outflow inclination angles relative to the line of sight and disk are unknown for most of the sample.
+- 2022A&A...668A..45L: Defining v_max where the integrated map S/N peaks may exclude diffuse high-velocity emission below 3 sigma, potentially underestimating v_out.
+- 2022A&A...668A..45L: Uncertainties on M_dot_out are dominated by the uncertain CO-to-H2 conversion factor (alpha_CO, up to 0.7 dex) and assumed outflow geometry (factor of 3 between constant-rate vs constant-density sphe…
+- 2022A&A...668A..45L: Herschel/PACS OH 119 um spectra have a large beam (~20 arcsec, extracted from 9.4"x9.4" spaxel) that blends both nuclei in interacting systems.
+- 2024A&A...690A.277M: Central approximately 0.7″ stellar kinematics cannot be fitted accurately because AGN emission dilutes stellar absorption.
+- 2024A&A...690A.277M: The minimum cluster size of 50 spaxels is arbitrary.
+- 2024A&A...690A.277M: The Hβ outflow component is buried beneath a broad component with FWHM approximately 1600 km s^-1.
+- 2021A&A...649A..31H: Cannot independently constrain G0 and nH without an additional PDR line.
+- 2021A&A...649A..31H: Projected outflow velocities are likely lower limits.
+- 2021A&A...649A..31H: Conservative maximal-excitation solar-metallicity conversion produces lower-limit outflow masses; metallicity may be lower.
+- 2021A&A...649A..31H: Original UV–[C ii] offset remains unexplained by Gaia check.
+- 2021A&A...649A..31H: Dust extent and halo classification depend on sensitivity; observational halo definition also depends on galaxy-to-beam size.
+- 2021A&A...649A..31H: Halo heating mechanisms remain uncertain; inflow shock heating cannot be constrained.
+- 2024A&A...683A.169W: ALMA data are used only for a dust position; detailed ALMA analysis deferred
+- 2024A&A...683A.169W: NIRSpec FoV is only sensitive to central clumps, not extended diffuse emission or the jet hot spots
+- 2024A&A...683A.169W: Outflow mass is uncertain because it scales inversely with n_e
+- 2024A&A...683A.169W: The systemic redshift from [C I] is uncertain because of the large ALMA beam and faint flux
+- 2015ApJ...811L...4Z: Deeper observations are needed to refine the kinematic interpretation
+- 2014ApJ...797...90S: Mass estimates depend on uncertain X_CO; may be an order of magnitude lower if optically thin
+- 2025A&A...701A.120P: Gas-mass uncertainties omit conversion-factor systematics.
+- 2025A&A...701A.120P: Stellar mass has quasar-subtraction and limited-filter systematics; quoted aperture-flux errors exclude potential systematic errors.
+- 2025A&A...701A.120P: Ring parameters are correlated; kinematic uncertainties omit geometry uncertainty and are underestimated.
+- 2025A&A...701A.120P: Current S/N and resolution cannot investigate potential radial motions.
+- 2025A&A...701A.120P: Spherical mass distribution oversimplifies the companion; quasar virial estimates have large resolution-related uncertainties.
+- 2025A&A...701A.120P: Tidal analysis uses difficult-to-verify simplifying assumptions; projection and unknown outer mass budgets limit interpretation.
+- 2025A&A...701A.120P: Available information cannot distinguish merger and outflow origins.
+- 2019A&A...630A..59B: Interferometric data may miss extended diffuse emission; stacking dilutes orientations
+
+### Settings cards flag as needed but not stated
+- casa version: 9
+- line-free channels and continuum subtraction method: 8
+- primary beam correction details: 7
+- flux scale uncertainty: 7
+- self-calibration solution intervals: 6
+- line-free channels for continuum subtraction: 6
+- self-calibration solution intervals and number of iterations: 6
+- continuum subtraction and line-free channels: 5
+- line-free channels used for continuum subtraction: 5
+- continuum subtraction method and line-free channels: 4
+- primary beam correction: 3
+- line-free channels used for continuum: 3
+- flux calibration uncertainty: 3
+- cell size and image size: 3
+- line-free channel ranges: 3
+- image size and cell size: 3
+- self-calibration status: 3
+- moment-map clipping thresholds: 3
+- casa version and whether pipeline or manual calibration: 3
+- clean threshold and iteration count: 2
+- rms noise of images: 2
+- line-free channel ranges for continuum subtraction: 2
+- casa version and calibration/pipeline details: 2
+- line-free channel ranges for continuum: 2
+- line-free channel selection for continuum: 2
+- casa version used: 2
+- self-cal solution intervals: 2
+- self-calibration use: 2
+- casa version and pipeline version: 2
+- casa version and whether the pipeline or manual calibration was used: 2
+- self-calibration, if any: 2
+- continuum-subtraction line-free channels: 2
+- primary-beam correction and flux-scale uncertainty: 2
+- flux calibrator and flux scale uncertainty: 2
+- line-free channels and continuum subtraction: 2
+- line-free channels used for uvcontsub and the continuum image used for self-calibration: 1
+- image size, cell size, deconvolver, masks, niter/threshold and cube velocity resolution/channel wid…: 1
+- whether sh 2–283–1a smm1 received different imaging settings from other sources and whether images …: 1
+- final image rms values and the lowest-contour levels (only a factor of ~3 sensitivity drop at field…: 1
+- how the spectra and integrated-intensity maps were masked and the exact integration limits per lobe…: 1
+
+## Paper excerpts (40 of 198, chosen for detail and spread over fields/years)
+
+### 2025ApJ...988..111I: The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy (2025; star_formation, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: Whether protostellar outflows and jets exist and are spatially resolvable in the low-metallicity outer Galaxy, whether their physical properties resemble inner-Galaxy sources, and how the SiO/CO ratio in the jet compares
+- step 4: derive outflow and jet dynamical properties
+  - method: Dynamical timescale t_d = (L_obs/V_obs)(cos i / sin i); mass M_out = 2 mu_p m_p X_CO integral(T_CO dV); momentum, mass-loss rate, force, energy and kinetic luminosity derived for each lobe [4.1 Comparison of the morphological and…: "the outflow mass ($M_{\rm{out}}$) is derived by using the following equation"] [4.1 Comparison of the morphological and…: "$t_{\rm{d}}$ can be derived using the projected outflow length and velocity as follows"]
+  - parameter: mean atomic mass per H atom 1.41 [4.1 Comparison of the morphological and…: "where $\mu_p$ is mean atomic mass per H atom (1.41)"]
+  - parameter: X_CO = 5e20 cm^-2 (K km/s)^-1, metallicity corrected [4.1 Comparison of the morphological and…: "Here, we use a metallicity-corrected $X_\mathrm{CO}$ of 5 $\times$ 10$^{20}$ cm$^{-2}$ (K km s$^{-1}$) from (cite: Bol13)."]
+  - assumption: Inclination i = 45 deg to the line of sight [4.1 Comparison of the morphological and…: "$i$ is the inclination angle with respect to the line of sight and we here assume 45$^{\circ}$."]
+  - assumption: CO optically thin and in LTE for both outflow and jet [4.1 Comparison of the morphological and…: "With assuming that CO emission in both the outflow and jet components are optically thin and under the condition of the local thermodynamic equilibrium (LTE)"]
+  - assumption: Median velocity of each component taken as the representative flow velocity [4.1 Comparison of the morphological and…: "with the assumption of the median flow velocity of each velocity component as the representative flow velocity of the CO($J$ = 3–2) outflows"]
+  - validation: Compared with massive protostellar outflows in the solar neighbourhood; flow-mass-related values flagged as lower limits (missing flux, edge sensitivity, LTE) [4.1 Comparison of the morphological and…: "These dynamical properties are similar to those of massive protostellar sources detected in the solar neighborhood (cite: Beuther2002; Wu2004; Maud2015)."]
+- step 5: estimate the protostar luminosity
+  - method: Scale the luminosity of the LMC hot core ST16 by Ks magnitude and distance; cross-check with an outflow mass-luminosity correlation [4.1 Comparison of the morphological and…: "we estimate its luminosity by scaling the luminosity of the LMC hot core (ST16) with its"] [4.1 Comparison of the morphological and…: "Using this correlation, the luminosity of Sh 2–283–1a SMM1 is estimated to be about 10$^3$ to 10$^5$ L$_{\ensuremath{\odot}}$."]
+  - assumption: Single-band scaling from ST16 (full SED of SMM1 unavailable), large uncertainty acknowledged [4.1 Comparison of the morphological and…: "Note that this is an estimation from only one infrared data and the obtained value would have large uncertainty."]
+  - validation: Consistent with AKARI FIS upper limit and with the outflow mass-luminosity correlation [4.1 Comparison of the morphological and…: "The estimated luminosity by two different methods is consistent with each other"]
+- result: CO outflow dynamical timescale (red, blue; text values) = 1.2e4 (red), 1.4e4 (blue) ± not stated yr [4.1 Comparison of the morphological and…: "approximately 1.2 $\times$ 10$^4$ years for the red lobe and 1.4 $\times$ 10$^4$ years for the blue lobe"]
+- result: CO jet dynamical timescale (red and blue; text values) = 5.0e3 ± not stated yr [4.1 Comparison of the morphological and…: "the dynamical timescale of the jets is approximately 5.0 $\times$ 10$^3$ years for both the red and blue lobes"]
+- result: Mass of outflows (red, blue, total) and jets (red, blue, total), i = 45 deg (lower limits) = 31, 42, 73 and 1.9, 1.9, 3.8 ± not stated Msun [Table 4: "Mass (M$_\ensuremath{\odot}$) | 31 | 42 | 73 | 1.9 | 1.9 | 3.8"]
+- result: Total outflow momentum = 2.8e3 ± not stated Msun km/s [Table 4: "2.8 $\times$ 10$^{3}$"]
+- result: Total jet momentum = 3.6e2 ± not stated Msun km/s [Table 4: "3.6 $\times$ 10$^{2}$"]
+- result: Total outflow mass loss rate = 6.2e-3 ± not stated Msun/yr [Table 4: "6.2 $\times$ 10$^{-3}$"]
+- result: Total jet mass loss rate = 8.2e-4 ± not stated Msun/yr [Table 4: "8.2 $\times$ 10$^{-4}$"]
+- result: Total outflow energy = 1.1e48 ± not stated erg [Table 4: "1.1 $\times$ 10$^{48}$"]
+- result: Total jet energy = 3.6e47 ± not stated erg [Table 4: "3.6 $\times$ 10$^{47}$"]
+- result: Luminosity of Sh 2–283–1a SMM1 (scaling from ST16) = 6.7e3 ± large uncertainty, not quantified Lsun [4.1 Comparison of the morphological and…: "we obtain 6.7$\times$ 10$^3$ L$_\ensuremath{\odot}$ as the luminosity of Sh 2–283–1a SMM1."]
+- limitation (authors): Flow-mass-related properties are lower limits because of missing flux and lower sensitivity at the field edge [4.1 Comparison of the morphological and…: "Hence, the dynamical properties of the outflows and jets related to their flow mass (e.g., mass, momentum, energy) discussed below can be considered as lower limits."]
+- limitation (authors): Red jet extends to the field edge where sensitivity is about 3 times lower, so some flow may be missed [3.1 CO outflows and jets: "Consequently, some flow components may be missed in the outer regions of the observations."]
+- limitation (authors): Inclination unknown (45 deg assumed) [4.1 Comparison of the morphological and…: "Although the inclination angle of Sh 2–283–1a SMM1 is unknown"]
+- not stated (card): Line-free channels used for uvcontsub and the continuum image used for self-calibration; Image size, cell size, deconvolver, masks, niter/threshold and cube velocity resolution/channel width for the tclean cubes; Whether Sh 2–283–1a SMM1 received different imaging settings from other sources and whether images were smoothed to a common beam; Final image rms values and the lowest-contour levels (o…
+
+### 2018ApJ...859...35G: The Dual Role of Starbursts and Active Galactic Nuclei in Driving Extreme Molecular Outflows (2018; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What drives the most extreme molecular outflows in local ULIRGs: AGN, starburst, or both?
+- step 3: Derive gas masses and outflow rates
+  - method: M_OF from L'_CO with alpha_CO; Mdot = M_OF v_OF/R_OF; R_OF half the red-blue peak separation; momentum and energy fluxes [4.1: "We assume the radius of the outflow ($R_{\rm OF}$) to be half the separation of the peaks of the red and blue emission peak"]
+  - parameter: mass-weighted mean outflow velocity of red and blue wings; no inclination correction [4.1: "We use the mass-weighted outflow velocity, averaged between the red and blue outflow wings, as the representative outflow velocity $v_{\rm OF}$."]
+  - assumption: alpha_CO = 0.8 Msun (K km/s pc^2)^-1, 100% molecular; tidal components 3.6 [4.1: "assuming $\alpha_{\rm CO}$$\sim 0.8$ $M_{\odot}$(K km s$^{-1}$ pc$^{-2}$)$^{-1}$$$ to calculate the outflow mass"]
+  - validation: alpha_CO systematic uncertainty discussed (factor 2.4 lower, 5.5 higher) [4.1: "The value of $\alpha_{\rm CO}$$$ can be lower by a factor of $\sim 2.4$ or higher by a factor of $\sim 5.5$"]
+- step 6: Compare outflow momentum and energy with AGN and starburst predictions; test correlations
+  - method: Compare Pdot_OF and Edot_OF with L_AGN/c, L*/c, predicted sums; Spearman correlations [5.1.1: "We detect no significant correlation between the outflow momentum flux and $L_{*}/c$ and $L_{\rm IR}/c$"]
+  - assumption: Pdot_sum ~ 20 L_AGN/c + 3.5 L*/c; Edot_sum = 0.05 L_AGN + 0.02 L* [5.1.2: "$\dot E_{\rm sum} = 0.05 L_{\rm AGN} + 0.02 L_{*}$"]
+  - validation: Spearman and Pearson both show no significant correlation [Footnote 7: "We did not recover significant correlations using either diagnostic."]
+- result: IRAS 20100-4156 mass outflow rate = 672 ± not stated Msun/yr [Table 4: "IRAS 20100$-$4156 & $0.129$ & $9.85$ & $12.63$ & $0.14$& $45.35$ & $347$ & $672$"]
+- result: IRAS 03158+4227 mass outflow rate = 350 ± not stated Msun/yr [Table 4: "IRAS 03158+4227 & $0.134$ & $9.75$ & $12.6$ & $0.43$ & $45.82$ & $306$ & $350$"]
+- result: Momentum boost IRAS 20100 = 53 ± not stated L_AGN/c [5.1.1: "we observe a high momentum boost ($\dot P \sim 53 L_{\rm AGN}/c$)"]
+- limitation (authors): Systematic uncertainty in outflow mass from alpha_CO [4.1: "we emphasize that there is a systematic uncertainty in the outflow mass, momentum flux, and energy flux due to $\alpha_{\rm CO}$"]
+- limitation (authors): Extreme obscuration may hide AGN; mid-IR decomposition may be biased [4.2.5: "we cannot rule out more luminous and deeply buried AGN with their dust torus completely obscured by cooler molecular gas"]
+- not stated (card): Exact line-free channel ranges used for uvcontsub and continuum; Clean threshold and iteration count; Full extraction apertures/FWZI definitions and Gaussian-fit initial guesses for iterative wing determination; CIGALE module parameter grids; Mid-IR fitting wavelength range and template spectra; Mass-weighted velocity calculation details and v_OF values per source; Photometry used for SFR/L_IR de…
+
+### 2021A&A...645A.142A: Continuity of accretion from clumps to Class 0 high-mass protostars in SDC335 (2021; star_formation, milky_way_ism; archival_reuse)
+- question: Identify and analyse the protostellar-driven molecular outflows in SDC335 and use them to refine the properties (accretion rates, evolutionary stage) of the young massive protostars
+- step 4: Constrain outflow inclination angles and derive corrected lengths, velocities and dynamical times
+  - method: Cabrit and Bertout biconical cases from the 3 sigma opening angle, then a pencil-like morphology and observed length-to-width ratio to narrow the range; lengths, velocities, momentum, energy and flux corrected by trigonometric factors [3.2.1 Inclination angles: "we assume each outflow has a symmetric biconical geometry, following (cite: CabritBertout86)"] [3.2.2 Further consideration of the outf…: "we find inclination angle ranges of between 53 and 76$^{\circ}$ for outflow A and 59 and 79$^{\circ}$ for outflow B which can provide the observed $LWR_O$."]
+  - parameter: Opening angle measured at the 3 sigma outer emission contour [3.2.1 Inclination angles: "the outer emission contour at 3$\sigma$"]
+  - parameter: Outflow C uses the statistical average inclination 57.3 deg [3.2.1 Inclination angles: "we use, instead, the commonly adopted statistical average value of $i =57.3^{\circ}$."]
+  - parameter: Corrected length l_corr = l_measured / sin(i) [3.2.4 Derived properties: "The corrected length is calculated as $l_{corr}=l_{measured}/\sin(i)$ for inclination angle $i$."]
+  - parameter: Dynamical time t_dyn = l_corr / |V_max_corr| [3.2.4 Derived properties: "Finally, $t_{dyn}$, the dynamical age of the outflow is calculated as $t_{dyn}=l_{corr}/|V_{max_{corr}}|$."]
+  - assumption: Symmetric biconical outflow geometry for the initial ranges; pencil-like morphology for the final ranges [3.2.2 Further consideration of the outf…: "we instead propose an alternate morphology to limit the inclination angle ranges of these outflows."]
+  - fitting: Numerical solution for the inclination and widest-point position that reproduce observed length-to-width ratio and x_O within +/-10% [Appendix B: "we can solve numerically the range of $i$ and $x$ values that will return a $LWR$ matching our observed values"] [Appendix B: "we consider values of $i$ and $x$ which return both an $x_O$ and $LWR_O$ within $\pm 10\%$ of our observed values."]
+- step 7: Compute outflow mass, momentum, energy and momentum flux from ALMA CO
+  - method: Sum of CO emission above 3 x RMS per channel converted to temperature and mass per voxel, then momentum, energy and annular momentum flux, corrected for inclination [3.2.4 Derived properties: "For our calculations with the CO ALMA data, we define mass within the outflow, $M_{out}$ in units of M$_{\odot}$, as:"] [3.2.4 Derived properties: "for all pixels with an intensity greater than or equal to three times the RMS per channel"]
+  - parameter: Distance 3.25 kpc [3.2.4 Derived properties: "and D is this distance to SDC335 (3.25kpc)"]
+  - parameter: Systemic velocity excluded by +/-2.5 sigma of a Gaussian fit to APEX CO(3-2) for MM1 (sigma = 5.2 km/s); +/-1.5 sigma for MM2 outflow C [3.2.4 Derived properties: "We fit a Gaussian to this spectrum, centred at the $V_{lsr}$ and exclude emission from channels $\pm2.5\times$ the variance, $\sigma$, of this Gaussian fit."] [3.2.4 Derived properties: "Instead we use $\pm1.5\sigma$ sufficient to avoid self absorption artefacts in the CO data"]
+  - parameter: Two temperature cases: T = 20 K with tau_corr = 3.5, and RADEX temperatures with tau_corr = 8.2 [3.2.4 Derived properties: "We calculate the mass both with a lower bound temperature $T$ of 20K and a literature value for $\tau_{corr}$ of 3.5 (cite: CabritBertout92)"] [3.2.4 Derived properties: "with a $\tau_{corr}$ factor of 8.2 based upon our estimated $^{12}$CO optical depth."]
+  - parameter: Inclination corrections 1/cos(i), 1/cos^2(i), sin(i)/cos^2(i) for P, E, F [3.2.4 Derived properties: "the values of $P_{CO}$, $E_{CO}$, and $F_{CO}$ are corrected by the factors $1/\cos(i)$, $1/\cos ^2(i)$ and $\sin(i)/\cos ^2(i)$, respectively"]
+  - assumption: Lower-bound temperature of 20 K for the first mass estimate [3.2.4 Derived properties: "We calculate the mass both with a lower bound temperature $T$ of 20K and a literature value for $\tau_{corr}$ of 3.5 (cite: CabritBertout92)"]
+  - validation: Compared with literature outflow values from low- to high-mass protostars [3.2.4 Derived properties: "with the SDC335 outflows A and B typically having amongst the highest values compared to published sources"]
+- result: Opening angle of outflow A blue lobe = ~14 ± not stated deg [3.2.1 Inclination angles: "We find that the opening angle, $\theta_{max}$, of the blue-shifted part of outflow A is $\sim 14^{\circ}$"]
+- result: Observed length-to-width ratios of outflows A and B = 3.5 (A), 3.0 (B) ± not stated dimensionless [3.2.2 Further consideration of the outf…: "Outflows A and B have observed length-to-width ratios of 3.5 and 3.0, respectively"]
+- result: Inclination ranges adopted for outflows A and B = 53-76 (A), 59-79 (B) ± range deg [3.2.2 Further consideration of the outf…: "we find inclination angle ranges of between 53 and 76$^{\circ}$ for outflow A and 59 and 79$^{\circ}$ for outflow B which can provide the observed $LWR_O$."]
+- result: Gaussian sigma of APEX CO(3-2) spectrum toward MM1 = 5.2 ± not stated km/s [3.2.4 Derived properties: "The fitted $\sigma$ was found to be 5.2kms$^{-1}$."]
+- result: Outflow dynamical times = few x 10^3 ± not stated yr [4.2 Evolutionary Status of SDC335: "This is also corroborated by the short dynamical times of these outflows ($\rm{few}\times 10^3$yr)"]
+- limitation (authors): Excluding near-systemic channels makes derived properties of outflows A and B lower limits [3.2.4 Derived properties: "Excluding these velocity channels means our derived properties are lower limits for outflows A and B."]
+- limitation (authors): Inclination angles dominate the error budget [4.1 Cloud infall and protostellar accre…: "As the inclination angles of the observed outflow are the dominant factor in the error budget of these calculations"]
+- not stated (card): CASA version and whether the archive pipeline or a manual script was used for reprocessing; Imaging parameters for the Band 7 and Band 3 cubes: tclean (or equivalent) weighting and robust, cell size, image size, deconvolver, masks, thresholds, primary-beam correction, and how 12-m and 7-m data were combined (joint deconvolution or feathering); Line-free channels and fit order for continuum subtra…
+
+### 2017ApJ...849...25L: ALMA Reveals Sequential High-mass Star Formation in the G9.62+0.19 Complex (2017; star_formation; observational_alma_primary)
+- question: Does stellar feedback from evolved Hii regions trigger or shape sequential high-mass star formation in the adjacent G9.62 clump, based on its cores, outflows and fragmentation?
+- step 4: Outflow mass, momentum, energy and accretion rates
+  - method: Per-channel optically thin masses from SiO and CO; inclination corrections; accretion rate from outflow force [3.3 Molecular outflows: "we calculated the outflow masses (M), momentum (P) and kinetic energy (E) in each velocity channel assuming optically thin emission"]
+  - parameter: Inclination 70 deg (MM6), 0 deg (MM7/G), 45 deg (MM8/F) [3.3 Molecular outflows: "Therefore, we take 45$\ensuremath{^\circ}$ as the inclination angle for MM8/F."]
+  - assumption: Vw~500 km/s, Mw/Macc~0.1, fent=0.25; SiO abundance enhanced x10 (MM7/MM8) and x40 (MM6); CO opacity correction from HH 46/47 [3.3 Molecular outflows: "We assume a typical jet/wind velocity of $V_w \sim 500$ km s$^{-1}$ (cite: lam95)."]
+  - validation: Optical-depth corrected CO mass agrees with SiO mass with abundance enhancement and with earlier SO/CS/HCN [3.3 Molecular outflows: "The outflow mass of MM8/F derived from SiO (5-4) is now consistent with outflow mass derived from CO (2-1) by applying optical depth correction."]
+- step 6: Mass-velocity diagrams
+  - method: Per-channel outflow mass vs velocity fit with linear or broken power laws, slopes and break velocities tabulated [4.3 Mass-velocity diagrams of outflows: "We calculate the outflow masses in each velocity channel and present the mass-velocity diagrams of the molecular outflows associated with MM6, MM7/G and MM8/F"]
+  - fitting: broken power law dM/dv ~ v^-gamma; R^2 reported [4.3 Mass-velocity diagrams of outflows: "A broken power law, $dM(v) / dv \propto v^{-\gamma}$ usually exhibits in the mass-velocity diagrams of molecular outflows"]
+  - validation: R^2 of fits in Table 5 [Table 5: "Flow Velocity intervals | a or $\gamma$ | R$^{2}$"]
+- result: Mass accretion rates MM6, MM7/G, MM8/F = 3.9e-4, 5.7e-5, 2.2e-3 ± not stated Msun/yr [3.3 Molecular outflows: "The total mass accretion rates for MM6, MM7/G, MM8/F are about 3.9$\times10^{-4}$, 5.7$\times10^{-5}$ and 2.2$\times10^{-3}$ M$_{\ensuremath{\odot}}$ yr$^{-1}$."]
+- result: MM6 outflow dynamical timescale = 8.5e3 ± not stated yr [3.3 Molecular outflows: "we can derive a dynamic timescale of $t_{dyn}=\frac{L}{V_{char}}=8.5\times10^{3}$ yr"]
+- limitation (authors): Core dust temperatures poorly known; masses uncertain mainly through Td [4.1 ALMA 1.3 mm continuum: "The main uncertainties of masses come from the determination of T$_{d}$."]
+- not stated (card): CASA version and tclean/clean parameters (weighting, robust, cell, image size, deconvolver, masks); Line-free channels used for continuum and continuum subtraction method; Self-calibration solution intervals; Velocity ranges integrated for outflow lobes and noise clipping; Dust-mass equations A1-A2 for cores and how flux used; Fitting method for mass-velocity broken power laws; Primary beam corre…
+
+### 2021A&A...645A..21G: Multiphase feedback processes in the Sy2 galaxy NGC 5643 (2021; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Investigate the AGN-driven outflow in the cold molecular and ionized gas phases of NGC 5643.
+- step 9: Derive molecular outflow masses
+  - method: Convert outflow CO(2-1) fluxes to molecular mass using Solomon05 methodology, including He. [Spatially resolved outflow properties: "For the outflowing molecular gas mass we use the CO(2-1) fluxes."] [Spatially resolved outflow properties: "We used the methodology by (cite: Solomon05) to estimate the molecular gas mass that includes a correction factor (36%) to include the He mass."]
+  - parameter: Assumed Galactic-conversion molecular-mass uncertainty ~30%. [Spatially resolved outflow properties: "The assumed uncertainty of the molecular gas mass using the Galactic conversion factor is $\sim$30% (e.g. (cite: Bolatto13))."]
+  - assumption: Galactic α_CO =4.35 M_⊙ [K km s^-1 pc^2]^-1; CO(1-0)/CO(2-1) brightness-temperature ratio =1. [Spatially resolved outflow properties: "we took the Galactic conversion factor ($\alpha_{\rm CO}=$M$_{gas}$/L$_{CO}^{'}$=4.35 M$_{\ensuremath{\odot}}$\[K km s$^{-1}$ pc$^2$\]$^{-1}$; (cite: Bolatto13)) and a the CO(1-0)/CO(2-1) brightness temperature ratio of one."]
+  - assumption: Alternative ULIRG α_CO =0.8 M_⊙ [K km s^-1 pc^2]^-1. [CO-to-H$_2$ conversion factor: "ULIRGs factor; $\alpha_{\rm CO}$=0.8 M$_{\ensuremath{\odot}}$\[K km s$^{-1}$ pc$^2$\]$^{-1}$; (cite: Bolatto13)"]
+  - validation: Repeat with ULIRG conversion factor; main results do not change significantly. [CO-to-H$_2$ conversion factor: "We find that the main results of this work do not change significantly by using different CO-to-H$_2$ conversion factors."]
+- step 10: Derive ionized outflow masses
+  - method: Apply Fiore17 [O iii] luminosity/electron-density mass estimator to extinction-corrected outflow components; multiply M_[O iii] by 3. [Spatially resolved outflow properties: "we used the extinction-corrected \[O iii\] luminosities of the outflowing component and derived electron densities using the same methodology as in (cite: Fiore17)"] [Spatially resolved outflow properties: "We finally assumed that the total ionized gas mass is $3\times M_{\rm [O\,III]}$ (cite: Fiore17)."]
+  - parameter: M_[O iii] normalization 4.0×10^7 M_⊙; luminosity normalization 10^44 erg/s; density normalization 1000 cm^-3. [Spatially resolved outflow properties: "\rm M_{\rm \rm out}^{\rm [O\,III]} = 4.0\times 10^{7}~\rm M_\odot \left(\frac{C}{10^{\rm O/H}} \right)\left(\frac{\rm L_{[O\,III]~{\rm out}}}{10^{44}~{\rm erg/s}} \right)\left(\frac{n_{\rm e}}{1000~{\rm cm^{-3}}} \right)^{-1}"]
+  - assumption: C =1; equal-density ionizing clouds. [Spatially resolved outflow properties: "This last parameter can be approximated as C$=$1 under the assumption that all ionizing gas clouds have the same density (see e.g. (cite: Cano12) for further details)."]
+  - assumption: NLR [O/H] =9.0; solar [O/H] ~8.86. [Spatially resolved outflow properties: "For the oxygen abundance we used the median value of \[O/H\]$=$9.0 derived for the NLR of NGC 5643 (cite: Storchi-Bergmann98)."] [Spatially resolved outflow properties: "10$^{\rm [O/H]}$ is the oxygen abundance in solar units (\[O/H\]$_\odot\sim$8.86; (cite: Centeno08))"]
+  - assumption: Fully ionized gas; electron temperature 10^4 K. [Spatially resolved outflow properties: "Note that this estimate also assumes a fully ionized gas with an electron temperature of 10$^4$ K."]
+  - validation: Also derive outflow properties without extinction correction. [Observed outflow properties: "Here we also derived the various outflow properties profiles (see Fig. [19](#c1)) without taking into account the extinction correction."]
+- step 11: Calculate outflow rates, power and momentum
+  - method: Calculate Mdot = M_out v_out/ΔD, kinetic power = 0.5 Mdot v_out², and momentum rate = Mdot v_out; report spatial profiles and integrated properties. [Spatially resolved outflow properties: "\dot{\rm M}_{\rm out} = \left(\frac{\rm M_{\rm out}~v_{\rm out}}{\Delta D} \right)"] [Spatially resolved outflow properties: "\dot{\rm E}^{\rm kin} = \frac{1}{2}~\dot{\rm M}_{\rm out}~v^2_{\rm out}"]
+  - parameter: ΔD = slice size 2.4″ ~192 pc. [Spatially resolved outflow properties: "$\Delta$D is the size of our slices (2.4$''$$\sim$192 pc)."]
+  - assumption: Use outflowing masses and deprojected outflow velocities. [Spatially resolved outflow properties: "where M$_{out}$ is the outflowing mass, $v_{out}$ is the outflowing velocity"] [Spatially resolved outflow properties: "we can calculate their deprojected non-circular velocities"]
+  - validation: Evaluate both CO conversion factors and extinction-corrected/uncorrected ionized properties. [CO-to-H$_2$ conversion factor: "we also estimate the molecular gas outflow properties using a lower CO-to-H$_2$ conversion factor"] [Observed outflow properties: "Here we also derived the various outflow properties profiles (see Fig. [19](#c1)) without taking into account the extinction correction."]
+- step 13: Assess AGN and jet driving
+  - method: Derive L_bol from Swift/BAT; compare outflow momentum with L_bol/c, estimate jet power from 1.4 GHz luminosity, and compare with other AGN. [Integrated Outflow Properties: "We calculated the bolometric luminosity using the intrinsic 14-195 keV Swift/BAT luminosity from (cite: Ricci17)"] [Integrated Outflow Properties: "the radiation momentum rate expected for the AGN in NGC 5643 ($\dot{P}_{AGN}=$L$_{bol}$/c$=$2.72$\times$10$^{33}$ dyne)."]
+  - parameter: Bolometric correction L_bol/L_14–195 keV =7.42. [Integrated Outflow Properties: "a fixed bolometric correction (L$_{\rm bol}$/L$_{14-195~{\rm keV}}$=7.42; (cite: Bernete19))."]
+  - assumption: Radiation momentum rate = L_bol/c. [Integrated Outflow Properties: "$\dot{P}_{AGN}=$L$_{bol}$/c$=$2.72$\times$10$^{33}$ dyne"]
+  - validation: Compare total derived properties with other AGN and theoretical kinetic powers. [Integrated Outflow Properties: "a comparison between the total derived properties for NGC 5643 and the properties for other AGN (e.g. (cite: Fiore17) and (cite: Baron19))."] [Integrated Outflow Properties: "the values derived in this work (see also Appendix [11](#appendixD)) for the molecular and ionized outflow of NGC 5643 are in good agreement with those theoretical values reported by (cite: Hopkins10) and (cite: Costa18)."]
+- result: Total molecular outflow mass, Galactic α_CO = 5.2×10^7 ± ±1.6×10^7 M_⊙ [Spatially resolved outflow properties: "| Molecular gas outflow mass (M$_{\odot}$) | (3.5$\pm1.0$)$\times$10$^7$ | (1.8$\pm0.5$)$\times$10$^7$ | (5.2$\pm1.6$)$\times$10$^7$ |"]
+- result: Eastern molecular outflow mass, Galactic α_CO = 3.5×10^7 ± ±1.0×10^7 M_⊙ [Spatially resolved outflow properties: "| Molecular gas outflow mass (M$_{\odot}$) | (3.5$\pm1.0$)$\times$10$^7$ | (1.8$\pm0.5$)$\times$10$^7$ | (5.2$\pm1.6$)$\times$10$^7$ |"]
+- result: Western molecular outflow mass, Galactic α_CO = 1.8×10^7 ± ±0.5×10^7 M_⊙ [Spatially resolved outflow properties: "| Molecular gas outflow mass (M$_{\odot}$) | (3.5$\pm1.0$)$\times$10$^7$ | (1.8$\pm0.5$)$\times$10$^7$ | (5.2$\pm1.6$)$\times$10$^7$ |"]
+- result: Total extinction-corrected ionized outflow mass = 8.5×10^4 ± +1.6/-0.7 ×10^4 M_⊙ [Spatially resolved outflow properties: "| Ionized gas outflow mass (M$_{\odot}$) | (4.2$\pm_{0.4}^{1.4}$)$\times$10$^4$ | (4.3$\pm_{0.3}^{0.2}$)$\times$10$^4$ | (8.5$\pm_{0.7}^{1.6}$)$\times$10$^4$ |"]
+- result: Total molecular outflow mass rate, Galactic α_CO = 50.9 ± ±15.3 M_⊙ yr^-1 [Spatially resolved outflow properties: "| Molecular gas outflow mass rate (M$_{\odot}$ yr$^{-1}$) | 38.0$\pm11.4$ | 12.9$\pm3.9$ | 50.9$\pm15.3$ |"]
+- result: Total extinction-corrected ionized outflow mass rate = 0.14 ± +0.03/-0.01 M_⊙ yr^-1 [Spatially resolved outflow properties: "| Ionized gas outflow mass rate (M$_{\odot}$ yr$^{-1}$) | 0.06$\pm_{0.01}^{0.02}$ | 0.08$\pm0.01$ | 0.14$\pm_{0.01}^{0.03}$ |"]
+- result: Total molecular outflow kinetic power, Galactic α_CO = 1.0×10^42 ± ±0.3×10^42 erg s^-1 [Spatially resolved outflow properties: "| Molecular gas outflow kinematic power (erg s$^{-1}$) | (8.6$\pm2.6$)$\times$10$^{41}$ | (1.5$\pm0.4$)$\times$10$^{41}$ | (1.0$\pm0.3$)$\times$10$^{42}$ |"]
+- result: Total extinction-corrected ionized outflow kinetic power = 1.2×10^40 ± +0.2/-0.1 ×10^40 erg s^-1 [Spatially resolved outflow properties: "| Ionized gas outflow kinematic power (erg s$^{-1}$) | (5.1$\pm_{0.4}^{1.2}$)$\times$10$^{39}$ | (6.9$\pm_{0.7}^{0.5}$)$\times$10$^{39}$ | (1.2$\pm_{0.1}^{0.2}$)$\times$10$^{40}$ |"]
+- result: Total molecular outflow momentum rate, Galactic α_CO = 7.2×10^34 ± ±2.2×10^34 dyne [Spatially resolved outflow properties: "| Molecular gas outflow momentum (dyne) | (6.0$\pm1.8$)$\times$10$^{34}$ | (1.2$\pm0.4$)$\times$10$^{34}$ | (7.2$\pm2.2$)$\times$10$^{34}$ |"]
+- result: Total extinction-corrected ionized outflow momentum rate = 4.2×10^32 ± +0.7/-0.4 ×10^32 dyne [Spatially resolved outflow properties: "| Ionized gas outflow momentum (dyne) | (1.8$\pm_{0.2}^{0.5}$)$\times$10$^{32}$ | (2.4$\pm0.2$)$\times$10$^{32}$ | (4.2$\pm_{0.4}^{0.7})\times$10$^{32}$ |"]
+- result: Molecular-to-ionized outflow mass ratio, Galactic α_CO = ~600 ± not stated dimensionless [Spatially resolved outflow properties: "The outflowing gas masses are however larger for the molecular phase than for the ionized, with a ratio between them of $\sim$600 (110 for a ULIRG $\alpha_{\rm CO}$)"]
+- result: Molecular-to-ionized outflow mass-rate ratio, Galactic α_CO = 360 ± not stated dimensionless [Conclusions: "Thus, the molecular phase dominates the outflow mass and outflow mass rate, with ratios between 600 (110) and 360 (70) over the ionized one."]
+- result: Total molecular outflow mass, ULIRG α_CO = 9.6×10^6 ± ±2.9×10^6 M_⊙ [CO-to-H$_2$ conversion factor: "| Molecular gas outflow mass (M$_{\odot}$) | (6.4$\pm1.9$)$\times$10$^6$ | (3.2$\pm1.0$)$\times$10$^6$ | (9.6$\pm2.9$)$\times$10$^6$ |"]
+- result: Total molecular outflow mass rate, ULIRG α_CO = 9.4 ± ±2.8 M_⊙ yr^-1 [CO-to-H$_2$ conversion factor: "| Molecular gas outflow mass rate (M$_{\odot}$ yr$^{-1}$) | 7.0$\pm2.1$ | 2.4$\pm0.7$ | 9.4$\pm2.8$ |"]
+- result: Total molecular outflow kinetic power, ULIRG α_CO = 1.9×10^41 ± ±0.6×10^41 erg s^-1 [CO-to-H$_2$ conversion factor: "| Molecular gas outflow kinematic power (erg s$^{-1}$) | (1.6$\pm0.5$)$\times$10$^{41}$ | (2.7$\pm0.8$)$\times$10$^{40}$ | (1.9$\pm0.6$)$\times$10$^{41}$ |"]
+- result: Total molecular outflow momentum rate, ULIRG α_CO = 1.3×10^34 ± ±0.4×10^34 dyne [CO-to-H$_2$ conversion factor: "| Molecular gas outflow momentum (dyne) | (1.1$\pm0.3$)$\times$10$^{34}$ | (2.3$\pm0.7$)$\times$10$^{33}$ | (1.3$\pm0.4$)$\times$10$^{34}$ |"]
+- result: Total ionized outflow mass without extinction correction = 2.8×10^4 ± +0.4/-0.2 ×10^4 M_⊙ [Observed outflow properties: "| Ionized gas outflow mass (M$_{\odot}$) | (2.1$\pm_{0.1}^{0.3}$)$\times$10$^4$ | (0.7$\pm0.1$)$\times$10$^4$ | (2.8$\pm_{0.2}^{0.4}$)$\times$10$^4$ |"]
+- result: Total ionized outflow mass rate without extinction correction = 0.04 ± ±0.01 M_⊙ yr^-1 [Observed outflow properties: "| Ionized gas outflow mass rate (M$_{\odot}$ yr$^{-1}$) | 0.03$\pm0.01$ | 0.01$\pm0.01$ | 0.04$\pm0.01$ |"]
+- result: AGN bolometric luminosity calculated from Swift/BAT = 8.14×10^43 ± not stated erg s^-1 [Integrated Outflow Properties: "For the AGN luminosity of NGC 5643 (L$_{bol}$=8.14$\times10^{43}$ erg s$^{-1}$; (cite: Ricci17))"]
+- result: AGN radiation momentum rate = 2.72×10^33 ± not stated dyne [Integrated Outflow Properties: "$\dot{P}_{AGN}=$L$_{bol}$/c$=$2.72$\times$10$^{33}$ dyne"]
+- result: Molecular wind momentum load, Galactic α_CO = ~27 ± not stated dimensionless [Integrated Outflow Properties: "the wind momentum load ($\dot{P}_{out}/\dot{P}_{AGN}$) for the molecular and ionized outflow phases are $\sim$27 ($\sim$5 for a ULIRG $\alpha_{\rm CO}$) and $<1$"]
+- result: Molecular wind momentum load, ULIRG α_CO = ~5 ± not stated dimensionless [Integrated Outflow Properties: "the wind momentum load ($\dot{P}_{out}/\dot{P}_{AGN}$) for the molecular and ionized outflow phases are $\sim$27 ($\sim$5 for a ULIRG $\alpha_{\rm CO}$) and $<1$"]
+- result: Ionized wind momentum load = <1 ± not stated dimensionless [Integrated Outflow Properties: "the wind momentum load ($\dot{P}_{out}/\dot{P}_{AGN}$) for the molecular and ionized outflow phases are $\sim$27 ($\sim$5 for a ULIRG $\alpha_{\rm CO}$) and $<1$"]
+- result: Jet power relative to molecular outflow kinetic power = ~2–10 ± not stated dimensionless [Integrated Outflow Properties: "we find that the jet power is $\sim$2–10$\times$P$_{\rm kin}^{ \rm \:molecular}$ and $\sim$160$\times$P$_{\rm kin}^{ \rm \:ionized}$."]
+- result: Jet power relative to ionized outflow kinetic power = ~160 ± not stated dimensionless [Integrated Outflow Properties: "we find that the jet power is $\sim$2–10$\times$P$_{\rm kin}^{ \rm \:molecular}$ and $\sim$160$\times$P$_{\rm kin}^{ \rm \:ionized}$."]
+- limitation (authors): Large-scale faint CO emission could not be modelled with BAROLO; velocity extrapolation and brightness-based identification were used. [CO(2-1) data — Individual regions: "Since we could not model the large-scale faint emission with BAROLO, we extrapolated the velocity field when possible to identify the galaxy disk emission line in the fitted kinematic components."]
+- limitation (authors): CO conversion factor poorly constrained; molecular masses depend on α_CO and line ratio. [CO-to-H$_2$ conversion factor: "the CO-to-H$_2$ conversion factor is poorly constrained for Seyfert galaxies."]
+- limitation (authors): Electron density is the largest ionized-mass uncertainty; [S II] can give lower densities than auroral/transauroral diagnostics. [Spatially resolved outflow properties: "The largest source of uncertainty in this measure is related to the electron density (see e.g. (cite: Harrison18))."]
+- not stated (card): ALMA calibration software/version, calibrators, flux-scale uncertainty and any self-calibration inherited from Herrero18.; Exact reduced ALMA cube identifier or download location; calibration and imaging scripts if starting from visibilities.; ALMA image pixel size, dimensions, cleaning thresholds/masks, primary-beam treatment and compact/extended array-combination procedure.; Exact coordinates a…
+
+### 2026A&A...707A..77H: Massive dusty multiphase outflow in local merger shows no sign of slowing on kiloparsec scales (2026; nearby_galaxies; archival_reuse)
+- question: Can an outflow identification method that uses MUSE stellar kinematics to define the quiescent gas in the ALMA CO(1-0) line profiles reveal the properties, multiphase structure and dust content of the outflow in the ULIRG merger IRAS20100-…
+- step 6: Derive ionized and neutral atomic outflow masses and velocities from MUSE
+  - method: Ionized mass from Halpha and [OIII] luminosities scaled by electron density from the [SII] ratio; neutral mass from NaI doublet absorption fit with an optical-depth model, column density and covering fraction [4.2 Ionized gas tracers: "We calculated the electron densities for each bin from the ratio between the \[SII\]$\lambda$6716 and \[SII\]$\lambda$6731 emission lines"] [9 Sodium absorption line fitting: "From the hydrogen column density, we can calculate the outflowing neutral atomic gas mass in each bin as"]
+  - software: lmfit (python), GandALF
+  - parameter: detection threshold A_G/N_G > 3 [4.2 Ionized gas tracers: "We set our threshold for a detection at $A_\mathrm{G}/N_\mathrm{G} > 3$"]
+  - parameter: [SII] ratio R constrained to 0.44 to 1.45; electron density below 50 cm^-3 treated as an upper limit of 50 cm^-3 [4.2 Ionized gas tracers: "to lie within 0.44 and 1.45"] [4.2 Ionized gas tracers: "We accounted for this by treating electron densities below $50\,\mathrm{cm^{-3}}$ as upper limits with value $50\,\mathrm{cm^{-3}}$ in our calculations"]
+  - parameter: NaI optical depth ratio tau_0,blue = 2 tau_0,red; NaI y = 0.9, a_Na = -5.69, b_dust = -0.95 [9 Sodium absorption line fitting: "so we set $\tau_\mathrm{0,blue} = 2\tau_\mathrm{0,red}$ for this fit."] [9 Sodium absorption line fitting: "we adopt values of $y=0.9$, $a_\mathrm{Na}=-5.69$, and $b_\mathrm{dust}=-0.95$ respectively from (cite: SavageSodiumAbundance1996) and (cite: rupkeOutflowsInfraredLuminousStarbursts2005)."]
+  - assumption: Metallicity for the outflow taken from the quiescent line components because strong-line metallicities cannot be applied to shock/LINER-like gas; [O/H]_sun = 8.77 [4.3 Outflow ionization state and metall…: "We used the quiescent line components to derive metallicities for the outflow in each bin"] [4.3 Outflow ionization state and metall…: "we adopted a value of 8.77, to be consistent with (cite: dopitaChemicalAbundancesHighredshift2016)"]
+  - assumption: Quoted ionized masses are lower limits because of the electron density floor [4.2 Ionized gas tracers: "As a result, the global outflow masses we obtained should be treated as the lower limits for the actual outflow masses."]
+  - fitting: NaI model fitted per Voronoi bin with python lmfit; [SII] amplitudes re-fitted with lmfit keeping GandALF kinematics fixed [9 Sodium absorption line fitting: "We can then construct the intensity profile with properly modeled NaI doublet absorption using Eq. [\[eq:intensity_sodium\]](#eq:intensity_sodium), and fit the resulting model to the MUSE data in each Voronoi bin."] [4.2 Ionized gas tracers: "python package to re-fit the amplitudes of both main and wing components for both lines"]
+- step 7: Compute mass outflow rates, energetics and depletion time
+  - method: Per-bin Mdot = M v / r summed over bins; momentum rate = Mdot v, kinetic power = Mdot v^2 / 2; depletion time = M_mol / Mdot_mol; coupling efficiency and momentum transfer compared with theoretical injection from star formation [5.2 Outflow mass and mass rate: "Summing over the contributions from all bins, we obtain the total outflow mass rates without assuming a specific geometry of the outflow."] [5.3 Outflow energetics: "its momentum rate ($\dot{p}_\mathrm{out}=\dot{M}_\mathrm{out}v_\mathrm{out}$) and kinetic power ($\dot{E}_\mathrm{kin,out}=\dot{M}_\mathrm{out}v_\mathrm{out}^2/2$)"]
+  - parameter: minimum r_out = 1.49 kpc for CO (half the ALMA beam major axis); minimum 0.72 kpc for MUSE phases (half the MUSE PSF FWHM) [5.2 Outflow mass and mass rate: "of 1.49 kpc which corresponds to half the major axis"] [5.2 Outflow mass and mass rate: "of 0.72 kpc, equivalent to half the FWHM of the MUSE PSF for these observations."]
+  - parameter: r_out is the distance of each bin centre to the SE nucleus [5.2 Outflow mass and mass rate: "where $r_\mathrm{out}$ is the distance of each bin center to the SE nucleus."]
+  - assumption: Optically thick outflow tau ~ 1 and L_bol ~ L_IR when assessing radiation pressure [5.3 Outflow energetics: "assuming an optically thick outflow ($\tau \approx 1$) and $L_\mathrm{bol} \approx L_\mathrm{IR}$."]
+  - assumption: Energetics treated as order-of-magnitude estimates because alpha_CO is highly uncertain [5.3 Outflow energetics: "Due to this, the comparisons and derived efficiencies in this section should be considered as order-of-magnitude estimates."]
+  - validation: Mass rate compared with earlier resolved CO study and MUSE integrated-spectrum results [5.2 Outflow mass and mass rate: "find almost exactly the same mass outflow rate in their resolved study of CO(1-0) emission in IRAS20100-4156"]
+- result: Characteristic outflow velocities (SE blue side: molecular, neutral, ionized high-velocity) = 160 / 360 / 430 ± not stated km/s [5.1 Outflow velocity structure: "The cold molecular gas has the lowest characteristic velocity with 160 km/s, followed by the neutral atomic phase with 360 km/s, and the ionized phase with 430 km/s"]
+- result: SE neutral atomic outflow mass = 51e7 ± +/-12e7 (Table 4) Msun [4.4 Neutral atomic gas: "At $51\times10^7M_\odot$, the neutral outflow phase carries about five times the mass of the ionized phase traced by H$\alpha$ emission"]
+- result: Cold molecular mass outflow rate = 700 ± +/-200 (Table 4) Msun/yr [5.2 Outflow mass and mass rate: "The cold molecular phase contributes by far the most to the total mass outflow rate with 700 $M_\odot$/yr."]
+- result: Ionized outflow mass rate (Halpha), all bins vs high-velocity bins = 11 vs 10 ± not stated Msun/yr [5.2 Outflow mass and mass rate: "($10\,M_\odot$/yr compared to $11\,M_\odot$/yr)"]
+- result: Mass loading factor of the molecular outflow = 3.5 ± not stated dimensionless [5.2 Outflow mass and mass rate: "This mass rate corresponds to a mass loading factor $\eta = \dot{M}_\mathrm{out,H_2}/\mathrm{SFR}$ of 3.5"]
+- result: Momentum rate of the cold molecular outflow = 8.1e35 ± not stated dyn [5.3 Outflow energetics: "We find a momentum rate of $8.1\times10^{35}\,\mathrm{dyn}$ and a kinetic power of $7.8\times10^{42}\,\mathrm{erg/s}$ for the cold molecular phase of the outflow."]
+- result: Kinetic power of the cold molecular outflow = 7.8e42 ± not stated erg/s [5.3 Outflow energetics: "We find a momentum rate of $8.1\times10^{35}\,\mathrm{dyn}$ and a kinetic power of $7.8\times10^{42}\,\mathrm{erg/s}$ for the cold molecular phase of the outflow."]
+- result: Total kinetic power, all phases = 12e42 ± not stated erg/s [5.3 Outflow energetics: "The total kinetic power of the outflow is $12\times10^{42}\,\mathrm{erg/s}$"]
+- result: Total momentum rate, all phases = 10e35 ± not stated dyn [5.3 Outflow energetics: "The total momentum rate of the outflow across all phases is $10\times10^{35}\,\mathrm{dyn}$"]
+- result: Coupling efficiency required for a starburst-driven outflow = ~9% ± not stated percent [5.3 Outflow energetics: "this would require a coupling efficiency of $\sim9\%$ for a starburst driven outflow"]
+- result: Molecular gas depletion timescale = 16 ± not stated Myr [5.5 Molecular gas depletion time: "We find a depletion timescale of 16 Myr"]
+- limitation (authors): Ionized outflow masses are lower limits due to the electron density floor [4.2 Ionized gas tracers: "As a result, the global outflow masses we obtained should be treated as the lower limits for the actual outflow masses."]
+- limitation (authors): alpha_CO in outflows is highly uncertain, so energetics are order-of-magnitude estimates [5.3 Outflow energetics: "For cold molecular gas in outflows, $\alpha_\mathrm{CO}$ is highly uncertain"]
+- not stated (card): tclean parameters for the CO(1-0) cube: weighting and robust value, deconvolver, niter, threshold, masking, gridder, field/spw selection, output channel grid and velocity range; Line-free channels and polynomial order used in uvconsub continuum subtraction; Whether the archive calibration/pipeline products were used as-is or re-calibrated, and the flux/bandpass/phase calibrators; Noise estimate f…
+
+### 2020ApJ...905...86S: Ubiquitous Molecular Outflows in z &gt; 4 Massive, Dusty Galaxies. II. Momentum-driven Winds Powered by Star Formation in the Early Universe (2020; high_z_galaxies; observational_alma_primary)
+- question: What are the physical properties (outflow rates, mass loading, energetics, escape fractions) of the molecular outflows found in z>4 SPT DSFGs from OH 119 um absorption, and what drives them (star formation vs AGN)?
+- step 2: Adopt outflow geometry and energetics definitions
+  - method: Time-averaged thin shell, n ~ r^-2, constant outflow rate; Mdot = 4 pi R^2 mu m_H N_H v/R; pdot = Mdot v; Edot = 0.5 Mdot v^2 [2.1 Assumed Outflow Geometry: "in which a mass-conserving outflow with constant outflow rate expands following a density profile $n \propto r^{-2}$"] [2.1 Assumed Outflow Geometry: "where the expression for kinetic power assumes negligible contribution from turbulent (i.e. non-bulk) sources."]
+  - parameter: v_out = v84 (velocity above which 84% of absorption occurs) [2.1 Assumed Outflow Geometry: "We take the characteristic velocity to be $v_{84}$, the velocity above which 84% of the absorption occurs."]
+  - parameter: R_out = r_dust, effective radius of the rest-frame ~100 um dust emission (lens reconstruction for SPT, PACS for low-z) [2.1 Assumed Outflow Geometry: "the effective radius of the dust emission at rest-frame"]
+  - assumption: Mean mass per hydrogen atom 1.4 (includes helium) [2.1 Assumed Outflow Geometry: "$\overline{\mu} = 1.4$ the mean mass per hydrogen atom"]
+  - validation: Compared with published low-z momentum and energy; may overestimate momentum by ~30% and energy by ~70%, no systematic difference in Mdot [4.4 Outflow Momentum and Energetics: "we may be overestimating the outflow momentum and energy by $\sim$30 and 70%, respectively, while we find no systematic difference in the mass outflow rates"]
+- step 3: Optically thin outflow rate and empirical correction versus vmax
+  - method: Compute minimum OH column density under optically thin absorption, integrate tau*v over v < -200 km/s, then fit a log-linear correction of Mdot_thin to published rates as a function of vmax [3.1 Simple Optically-Thin Model: "Under the assumption that the absorption is optically thin, the minimum column density of OH molecules"] [3.1 Simple Optically-Thin Model: "Here we calculate the integrated optical depth over velocities more blueshifted than"]
+  - parameter: T_ex = 100 K [3.1 Simple Optically-Thin Model: "We assume an excitation temperature $T_\mathrm{ex} = 100$ K as found in literature OH studies"]
+  - parameter: [OH/H] = 2.5e-6 [3.1 Simple Optically-Thin Model: "We adopt an OH abundance $[\mathrm{OH}/\mathrm{H}]=2.5 \times 10^{-6}$, as commonly assumed in the literature"]
+  - parameter: f_cov = 0.3 (rescales Mdot_thin linearly, absorbed in intercept b) [3.1 Simple Optically-Thin Model: "we adopt a covering fraction $\ensuremath{f_{\mathrm{cov}}}= 0.3$, the average value determined for the low-redshift reference sample"]
+  - assumption: Optically thin absorption gives a hard lower bound on the outflow rate [3.1 Simple Optically-Thin Model: "this calculation does at least provide a hard lower bound on the true outflow rate"]
+  - fitting: Log-linear fit with Monte Carlo resampling of uncertainties; intrinsic dispersion ~0.15 dex [3.1 Simple Optically-Thin Model: "determining uncertainties on the fit using the same Monte Carlo resampling method we use for all outflow rate techniques."] [3.1 Simple Optically-Thin Model: "The analysis indicates an intrinsic dispersion of $\sim$0.15 dex around the best-fit relation"]
+  - validation: Correlation of the thin-to-published ratio with outflow velocity checked with v84 and v50 as well, consistent within uncertainties [3.1 Simple Optically-Thin Model: "we obtain results consistent within the uncertainties from $v_{84}$ and $v_{50}$ as well"]
+- step 6: Combine methods into joint outflow rate
+  - method: Equal combination of the Monte Carlo trials of the four methods gives Mdot_joint, adopted as best estimate [3.4 Summary and Method Comparison: "We also show a joint distribution of the outflow rates created by equally combining the Monte Carlo trials from each method."]
+  - assumption: Joint distribution is not a true joint probability since methods are not independent [3.4 Summary and Method Comparison: "While this should not be considered a true joint probability distribution of the outflow rates"]
+  - validation: Four methods agree at about factor-of-two level; uncertainties probably underestimated by systematics [3.4 Summary and Method Comparison: "suggest that we are able to estimate the outflow rates for our sources at about the factor-of-two level."]
+- step 7: Derive masses, mass loading, depletion times, momentum and energy and compare with literature and theory limits
+  - method: Compute Mout, pdot, Edot and eta=Mdot/SFR; compare with L_AGN, L_SF momentum and energy coupling limits and with low-z samples; fit power law of Mdot vs SFR to combined samples [4.4 Outflow Momentum and Energetics: "Meanwhile, a continuous starburst can generate a maximum of"] [4.2 Molecular Outflow Rate Scaling Rela…: "Fitting a power-law to the combined samples, we find a best-fit relationship"]
+  - parameter: SFR = 1.49e-10 L_IR [1 Introduction: "SFR$= 1.49 \times 10^{-10}"]
+  - assumption: alpha_CO = 0.8 Msun (K km/s pc^2)^-1 for SPT sources [4.3 Outflow Masses and Depletion Times: "For the SPT sample, we assume $\ensuremath{\alpha_{\rm{CO}}}= 0.8$"]
+  - assumption: Sensitivity tested by doubling f_AGN limits and raising CO-based outflow rates by 0.5 dex [4.2 Molecular Outflow Rate Scaling Rela…: "We also detail changes to our interpretation that would result from doubling our present upper limits on"]
+  - fitting: Power law with intrinsic scatter fit to combined samples (method details not stated) [4.2 Molecular Outflow Rate Scaling Rela…: "an additional intrinsic scatter on the outflow rates of $\approx$0.25 dex"]
+  - validation: Conclusions checked against factor-of-two change in f_AGN, CO outflow rate offset and lower characteristic velocity [4.4 Outflow Momentum and Energetics: "our conclusions are also not changed in the event that our present limits on"]
+- step 8: Estimate escape fractions of outflowing gas
+  - method: Assume outflow mass versus velocity proportional to equivalent width versus velocity (excluding systemic absorption) and compare with galaxy escape velocity from a truncated isothermal sphere [4.5 Fate of the Outflowing Gas: "assuming the outflowing mass as a function of velocity is directly proportional to the equivalent width as a function of velocity"] [4.5 Fate of the Outflowing Gas: "To estimate the galaxy escape velocity for each source, we assume a spherical isothermal mass distribution truncated at a maximum radius"]
+  - parameter: r_max/r = 10; r = r_dust (circularized effective dust size from lens reconstruction) [4.5 Fate of the Outflowing Gas: "we take $r$ to be the circularized effective size of the dust emission from our lensing reconstructions"]
+  - assumption: Galaxy mass from molecular gas mass assuming a typical DSFG gas fraction; outflowing gas at distance equal to dust size; no further acceleration or deceleration [4.5 Fate of the Outflowing Gas: "assuming a typical gas fraction for DSFGs at these redshifts (cite: aravena16)"] [4.5 Fate of the Outflowing Gas: "we also assume that the outflowing gas is no longer being accelerated"]
+  - validation: Escape velocities agree with simple estimates from CO or [CII] line widths and point-like mass profiles; typical uncertainty ~40% [4.5 Fate of the Outflowing Gas: "we estimate typical uncertainties on the galaxy escape velocities of $\approx$40%"]
+- step 9: Compare escaping outflow mass and metals with CGM budgets
+  - method: Sum outflow mass above the escape velocity (below halo escape velocity), assume solar metallicity for metal mass, compare with cool CGM gas and metal mass of z~2-3 quasar hosts [4.6 Implications for Circumgalactic Med…: "under the simplifying assumption that the molecular outflows have approximately solar metallicity"]
+  - assumption: All escaping material enters the CGM; the quasar CGM range is an approximate upper bound for the DSFGs [4.6 Implications for Circumgalactic Med…: "We assume all of this material enters the CGM"]
+- result: Joint outflow rate, SPT0418-47 = 150 ± +80/-60 Msun/yr [Table 1: "150$\,^{+80}_{-60}$"]
+- result: Joint outflow rate, SPT0441-46 = 190 ± +110/-80 Msun/yr [Table 1: "190$\,^{+110}_{-80}$"]
+- result: Joint outflow rate, SPT0459-58 = 590 ± +190/-170 Msun/yr [Table 1: "590$\,^{+190}_{-170}$"]
+- result: Joint outflow rate, SPT0544-40 = 520 ± +160/-120 Msun/yr [Table 1: "520$\,^{+160}_{-120}$"]
+- result: Joint outflow rate, SPT2048-55 = 250 ± +60/-90 Msun/yr [Table 1: "250$\,^{+60}_{-90}$"]
+- result: Joint outflow rate, SPT2132-58 = 390 ± +310/-100 Msun/yr [Table 1: "390$\,^{+310}_{-100}$"]
+- result: Joint outflow rate, SPT2311-54 = 790 ± +770/-280 Msun/yr [Table 1: "790$\,^{+770}_{-280}$"]
+- result: Joint outflow rate, SPT2319-55 = 380 ± +130/-100 Msun/yr [Table 1: "380$\,^{+130}_{-100}$"]
+- result: Range of molecular outflow rates = 150-800 ± not stated Msun/yr [abstract: "We find molecular outflow rates 150–800"]
+- result: Minimum optically thin outflow rates, SPT sample = 5-120 ± not stated Msun/yr [3.1 Simple Optically-Thin Model: "$5-120$ $\rm{M}_\odot$/yr for the SPT sample"]
+- result: vmax correction slope m = -6.4e-4 ± +1.8/-1.7 (e-4) (km/s)^-1 [3.1 Simple Optically-Thin Model: "$m = -6.4^{+1.8}_{-1.7} \times 10^{-4}$"]
+- result: vmax correction intercept b = 0.91 ± +0.07/-0.06 dimensionless [3.1 Simple Optically-Thin Model: "$b = 0.91^{+0.07}_{-0.06}$"]
+- result: Mdot-SFR power law (log Mdot = a log SFR + c) = slope 0.72, intercept 0.5 ± 0.05 (slope), 0.1 (intercept) dimensionless [4.2 Molecular Outflow Rate Scaling Rela…: "= (0.72\pm0.05)\log(\rm{SFR}) + (0.5\pm0.1)$"]
+- result: Intrinsic scatter of Mdot-SFR relation = ~0.25 ± not stated dex [4.2 Molecular Outflow Rate Scaling Rela…: "an additional intrinsic scatter on the outflow rates of $\approx$0.25 dex"]
+- result: Outflow mass range, SPT sample = log Mout/Msun = 8.6-9.1 ± not stated dex(Msun) [4.3 Outflow Masses and Depletion Times: "molecular outflow masses in the range $\log \ensuremath{M_{\mathrm{out}}}/\ensuremath{\rm{M}_\odot}= 8.6-9.1$"]
+- result: Outflow fraction of total molecular gas mass = 1-10% ± not stated percent [4.3 Outflow Masses and Depletion Times: "the molecular outflows in our sample contain 1–10% of the total molecular gas masses of the galaxies"]
+- result: Depletion times (outflow and star formation) = ~10-100 ± not stated Myr [4.3 Outflow Masses and Depletion Times: "both depletion times are very short, $\sim$10–100 Myr"]
+- result: Typical uncertainty on pdot and Edot = ~0.4 ± not stated dex [Table 1: "We estimate typical uncertainties on $\dot{p}_{\mathrm{out}}$ and $\dot{E}_{\mathrm{out}}$ of $\sim$0.4 dex."]
+- result: Maximum momentum boost relative to L_SF/c = ~2 ± not stated dimensionless [4.4 Outflow Momentum and Energetics: "with maximum momentum boosts of $\sim$2 compared to the luminosity due to star formation"]
+- result: Galaxy escape velocities = ~400-1000 (median ~700) ± ~40% km/s [4.5 Fate of the Outflowing Gas: "We find escape velocities for our sources ranging from $\sim$400–1000"]
+- result: Typical galaxy escape fraction of outflowing gas = ~20% (range 0-50% in sample) ± large percent [4.5 Fate of the Outflowing Gas: "We find typical galaxy escape fractions $\sim$20% with large variation within the sample."]
+- result: Outflow contribution to cool CGM mass = <~1-10% ± not stated percent [4.6 Implications for Circumgalactic Med…: "a small fraction $\lesssim$1–10% of the total cool CGM mass"]
+- limitation (authors): Broad applicability of the empirical outflow-rate formulae is questionable [3 Outflow Rate Estimates: "we caution that the broad applicability of these formulae is questionable."]
+- limitation (authors): Uncertainties likely underestimated due to systematics in assumptions [3.4 Summary and Method Comparison: "We emphasize that for both samples these uncertainties are likely underestimated due to systematics in many of the assumptions"]
+- limitation (authors): Upper limits on outflow properties cannot be set for the 3 sources without unambiguous outflows [3 Outflow Rate Estimates: "It is essentially not possible to set upper limits on the outflow properties for the remaining 3 sources"]
+- not stated (card): Fitting software, priors and sampler for the log-linear, linear and power-law fits (only 'Monte Carlo resampling' is described); PLS implementation (package, scaling of inputs, cross-validation scheme, number of components finally used); Actual measured OH spectral quantities (v50, v84, vmax, EW) for each SPT source; they sit in Paper I and the GitHub tables; Lens-model sizes r_dust, magnificatio…
+
+### 2025A&A...699A..83A: Molecular gas excitation and outflow properties of obscured quasars at z ∼ 0.1 (2025; agn_and_quasars, nearby_galaxies; archival_reuse)
+- question: Do six obscured quasars (QSO2s) at z~0.1 show localised CO excitation (R32 = CO(3-2)/CO(2-1)) and molecular outflows, and are the outflow energetics better tied to AGN radiation or to compact radio jets?
+- step 8: Outflow masses, radii, velocities and mass rates in three scenarios
+  - method: Scenario I: all gas not reproduced by the rotation model; Scenario II: moment 0 of channels above the modelled rotation velocities; Scenario III: rotation removed by channel re-shuffling, high-velocity wings integrated in the residual spec… [3.5 Molecular outflow properties: "we assume that all the molecular gas that cannot be reproduced with our rotating disc model is outflowing."] [3.5 Molecular outflow properties: "selecting only channels above the rotation velocities modelled with"]
+  - software: 3DBarolo, CASA
+  - parameter: Scenario I v_out = average of mean redshifted and mean blueshifted residual velocities (absolute values), 50-100 km/s [3.5 Molecular outflow properties: "calculated as the average of the mean redshifted and the mean blueshifted velocity residuals"]
+  - parameter: Scenario II v_out = velocity cut above the maximum modelled rotation velocity [3.5 Molecular outflow properties: "The outflow velocity, $v_{\rm out}$, is defined as the velocity cut above the maximum rotation velocity"]
+  - parameter: Scenario III uses the same velocity cut as Scenario II for the blue and red wings [3.5 Molecular outflow properties: "using the same velocity cut as in Scenario II"]
+  - parameter: CO(2-1) at original 0.2'' resolution, except J1010 where CO(3-2) was used [3.5 Molecular outflow properties: "The only exception is for J1010, in which CO(3-2) was used because it has better spatial resolution"]
+  - parameter: r_out = maximum distance from the nucleus of the high-velocity gas contours [3.5 Molecular outflow properties: "These radii correspond to the maximum distances from the nucleus measured for the high-velocity gas shown with contours in Figure"]
+  - assumption: alpha_CO = 0.8 Msun (K km/s pc^2)^-1 with R_12 = 1 [3.5 Molecular outflow properties: "We adopted the conservative value of $\alpha_{\rm CO}$ = 0.8, commonly used to derive outflow masses"]
+  - assumption: alpha_CO uncertainty 0.8 +/- 0.5 included in mass errors [Table 4 notes: "is included in the mass error estimates"]
+  - assumption: Time-averaged thin expelled shell geometry; projected v_out and r_out (no outflow-angle correction applied) [3.5 Molecular outflow properties: "For a time-averaged thin expelled shell geometry (cite: rupke05)"] [3.5 Molecular outflow properties: "The outflow velocities and radii we reported for the three scenarios correspond to the projected values"]
+  - assumption: J1347 and J1356: scenarios I and III not measured, literature values adopted [3.5 Molecular outflow properties: "we did not measure the outflow fluxes as described in scenarios I and III because they are ongoing mergers"]
+  - validation: Scenario III rates compared with RA22 for the same QSO2s [3.5 Molecular outflow properties: "similar to the measurements reported by RA22 for the same QSO2s"]
+- step 9: Outflow energetics, jet power and coupling efficiencies
+  - method: Kinetic power Edot = 0.5 Mdot v_out^2; P_jet from 1.4 GHz VLA flux and spectral index via the Birzan et al. relation; compare with L_bol and P_jet; mass loading eta = Mdot/SFR [4.1 Energetics of the molecular outflows: "we computed the kinetic power of the outflows ($\dot{E}_{\rm out}$=0.5$\dot{M}_{\rm out}$$v_{\rm out}^2$)"] [4.1 Energetics of the molecular outflows: "The values of $P_{\rm jet}$ were computed using the 1.4 GHz VLA fluxes and spectral indices corresponding to the HR data from (cite: jarvis19) and applying the $L_{\rm 1.4GHz}\times P_{\rm jet}$ relation of (cite: birzan08), as in AA23."]
+  - parameter: eta = Mdot_out / SFR (scenario II); eps_AGN = Edot_out / L_bol; eps_jet = Edot_out / P_jet [3.5 Molecular outflow properties: "The mass loading factors, defined as $\eta = \dot{M}_{\rm out}$/SFR, for scenario II"]
+  - validation: Compared with empirical Mdot-L_bol relation of Fiore et al. 2017 and literature coupling efficiencies [4.1 Energetics of the molecular outflows: "our $\dot{M}_{\rm out}$ values lie below the (cite: fiore17) empirical relation, even when we consider the least conservative scenario I."]
+- result: Cold molecular outflow radii = 0.65-2.4 ± not stated kpc [3.5 Molecular outflow properties: "The cold molecular outflow radii range between 0.65$<r_{\rm out}<$2.4 kpc."]
+- result: Scenario I outflow velocities = 50-100 ± not stated km/s [3.5 Molecular outflow properties: "These velocities are in the range 50$<v_{\rm out}<$100 km s$^{-1}$"]
+- result: Scenario II velocity cut = 180-300 ± not stated km/s [3.5 Molecular outflow properties: "the high velocity maps were created considering emission above/below $v_{\rm out}$=180-300 km s$^{-1}$"]
+- result: Scenario I outflow mass fraction and rate = M_out/M_H2 ~0.6-8%; Mdot 8-148 ± not stated % and Msun/yr [3.5 Molecular outflow properties: "Considering scenario I, we measure outflow masses that correspond to $\sim$0.6-8% of the total molecular gas mass of the QSO2s, and outflow rates in the range 8$<$$\dot{M}_{\rm out}$$<$148"]
+- result: Scenario II outflow mass fraction and rate = M_out/M_H2 = 0.8-2.6%; Mdot 5-63 ± not stated % and Msun/yr [3.5 Molecular outflow properties: "From scenario II we derive outflow mass fractions of $M_{\rm out}/M_{\rm H_2}$=0.8-2.6%, and 5$<$$\dot{M}_{\rm out}$$<$63"]
+- result: Scenario III outflow mass fraction and rate = M_out/M_H2 <~1%; Mdot 5-32 ± not stated % and Msun/yr [3.5 Molecular outflow properties: "the outflowing mass fractions are $\lesssim$1% of the total molecular gas and 5$<$$\dot{M}_{\rm out}$$<$32"]
+- result: Scenario III Mdot excluding J1347 = 5-16 ± not stated Msun/yr [4.1 Energetics of the molecular outflows: "The mass outflow rates that we derive from the most conservative scenario III if we exclude the radio-loud QSO2 J1347, are $\dot{M}_{\rm out}$=5-16"]
+- result: Mdot_out across all three scenarios = 5-150 ± not stated Msun/yr [5 Conclusions: "we found values ranging from $\dot{M}_{\rm out}$=5-150"]
+- result: J1010 Mdot_out scenario II = 5.2 ± +/-3.6 Msun/yr [Table 4: "J1010 | II | 0.34$\pm$0.03 | 300 | 1.0 | 1.8 | 3.1$\pm$2.1 | 5.2$\pm$3.6"]
+- result: J1100 Mdot_out scenario II = 14.4 ± +/-9.7 Msun/yr [Table 4: "J1100 | II | 2.7$\pm$0.1 | 180 | 1.3 | 2.4 | 26$\pm$17.5 | 14.4$\pm$9.7"]
+- result: J1347 Mdot_out scenario II = 62.9 ± +/-50 Msun/yr [Table 4: "J1347 | II | 0.9$\pm$0.2 | 300 | 0.29 | 0.65 | 13.2$\pm$10.5 | 62.9$\pm$50"]
+- result: J1356 Mdot_out scenario II = 26.2 ± +/-18 Msun/yr [Table 4: "J1356 | II | 0.89$\pm$0.07 | 300 | 0.58 | 1.3 | 12.9$\pm$9 | 26.2$\pm$18"]
+- result: J1430 Mdot_out scenario II = 41.0 ± +/-27.9 Msun/yr [Table 4: "J1430 | II | 2.4$\pm$0.1 | 300 | 0.75 | 1.2 | 16.0$\pm$10.9 | 41.0$\pm$27.9"]
+- result: J1509 Mdot_out scenario II = 19.2 ± +/-13.9 Msun/yr [Table 4: "J1509 | II | 1.52$\pm$0.15 | 240 | 1.1 | 2.1 | 17.9$\pm$12.9 | 19.2$\pm$13.9"]
+- result: Mass loading factor eta (scenario II) = 0.2 to 3.4 ± not stated dimensionless [3.5 Molecular outflow properties: "with measured values ranging from $\eta \sim$ 0.2 to 3.4"]
+- result: Outflow kinetic power range = 6.4e39 to 1.2e43 ± not stated erg/s [4.1 Energetics of the molecular outflows: "are in the range of 6.4$\times 10^{39}<\dot{E}_{\rm out}<1.2 \times 10^{43}$ erg s$^{-1}$"]
+- result: Radiative coupling efficiency eps_AGN (scenario II) = 1e-6 to 1e-4 (0.0001-0.01%) ± not stated dimensionless [4.1 Energetics of the molecular outflows: "($10^{-6}<\epsilon_{\rm AGN}<10^{-4}$ if we only consider scenario II; 0.0001-0.01%)"]
+- result: Jet coupling efficiency eps_jet (scenario II) = 0.001 to 0.035 (0.1-3.5%) ± not stated dimensionless [4.1 Energetics of the molecular outflows: "are in the range 0.001$<\epsilon_{\rm jet}<$0.035 (0.1-3.5%)"]
+- limitation (authors): Higher CO(3-2) dispersions can be due to beam smearing from the coarser CO(3-2) beam [3.1 Moment maps of the CO(3-2) emission: "We note that higher velocity dispersions measured in CO(3-2) can be due to beam smearing, as these observations have coarser resolution then the CO(2-1) data."]
+- limitation (authors): Physical conditions (Tex, density) cannot be derived from a single line ratio [4.3 Global versus localised physical co…: "we are unable to infer the physical conditions ($T_{\rm ex}$ and density) of the gas using only one molecular line ratio"]
+- limitation (authors): Outflow velocities and radii are projected values because the outflow angle is uncertain [3.5 Molecular outflow properties: "The outflow velocities and radii we reported for the three scenarios correspond to the projected values, since the determination of the outflow angle is uncertain."]
+- not stated (card): CASA and pipeline version used for each archival CO(3-2) project, and whether archive-delivered products or a re-run pipeline were used; tclean parameters: deconvolver, niter/threshold, masks, cell size, image size, spectral gridding and weighting beyond robust=0.5; Line-free channels used in UVCONTSUB for each CO(3-2) dataset; Exact common beam sizes used for convolving CO(2-1) to CO(3-2) for ea…
+
+### 2013ApJ...774...39A: ALMA Observations of the HH 46/47 Molecular Outflow (2013; star_formation; observational_alma_primary)
+- question: What are the morphology, kinematics and entrainment mechanism of the HH 46/47 molecular outflow, as seen in high-resolution ALMA CO(1-0) data?
+- step 3: Outflow mass, momentum, energy
+  - method: Sum over channels with >3 sigma emission, optically thin CO, for Tex = 15, 50, 100 K, with and without inclination correction [Outflow Mass, Momentum and Energy: "over the velocity range where we detect outflow emission with intensity greater than $3\sigma$"]
+  - parameter: [12CO]/[H2]=1e-4; inclination 30 deg [Outflow Mass, Momentum and Energy: "assuming an abundance ratio of $[^{12}$CO$]/[$H$_2] = 10^{-4}$, as in (cite: Olberg+92)"]
+  - assumption: Optically thin; lower limits [Table 1: "Estimates are obtained assuming emission is optically thin. Values should be treated as lower limits."]
+  - validation: Using Olberg et al. Tex and velocity ranges gives 3.6e-2 Msun, similar to their 0.03 Msun [Outflow Mass, Momentum and Energy: "we obtain a total outflow mass of $3.6 \times 10^{-2}$ M$_{\ensuremath{\odot}}$, similar to the value of 0.03 M$_{\ensuremath{\odot}}$ obtained by Olberg et al."]
+- result: Red lobe momentum (Tex=50 K) = ~0.5 ± not stated Msun km/s [Outflow Mass, Momentum and Energy: "Assuming $T_{ex} = 50$ K, the momentum of the red lobe is $\sim 0.5$ M$_{\ensuremath{\odot}}$ km s$^{-1}$"]
+- limitation (authors): Masses are lower limits (optically thin, Tex uncertain, missing large-scale flux) [Outflow Mass, Momentum and Energy: "We thus estimate the mass assuming the line is optically thin, and warn that our masses are very likely underestimated, by a factor of few or even as much as an order of magnitude"]
+- not stated (card): CASA version and calibration approach (manual vs pipeline); Clean threshold, weighting/robust, deconvolver and mosaic gridding details; Flux scale uncertainty; Cloud LSR velocity adopted for v_out (about 5 km/s); Line-free channels and continuum subtraction (none described); Primary beam correction; Exact p-v cut widths and positions; Method of fitting the parabola and p-v model
+
+### 2014A&A...567A.125G: Molecular line emission in NGC 1068 imaged with ALMA. I. An AGN-driven outflow in the dense molecular gas (2014; nearby_galaxies, agn_and_quasars, astrochemistry; observational_alma_primary)
+- question: How are the dense molecular gas distribution, kinematics and line ratios in NGC 1068 related to AGN fueling and feedback, and does the AGN drive a molecular outflow?
+- step 6: Estimate outflow mass, rate and energetics
+  - method: Integrate CO(3-2) outside residual velocity range [-50,+50] km/s; dM/dt = 3 V_out M_mol/R_out tan(alpha); coplanar outflow tan(alpha)=1/tan(i); also L_kin and momentum flux [6.1.2 Mass outflow rate: "The mass ($M_{\rm mol}$) has been calculated from the CO(3–2) data cube, after subtraction of the projected rotation curve"]
+  - parameter: R_out~1.5" (100 pc), V_out~100 km/s for CND [6.1.2 Mass outflow rate: "The average projected radial extent of the outflow in the CND is $R_{\rm out}\sim1.5\ensuremath{''}$ (100 pc)"]
+  - assumption: multi-conical uniformly filled outflow; coplanar with disk; X_CO ~1/4 of MW [6.1.2 Mass outflow rate: "If we assume that the outflow is coplanar with the main disk, $\tan(\alpha)=1/\tan(i)$"]
+  - validation: Dense tracers (CO 6-5, HCN, HCO+) p-v diagrams confirm outflow; compared with SFR and AGN power [6.2 The molecular outflow in dense gas …: "An inspection of this figure shows that the outflow signatures identified in CO(3–2) out to radii $r \sim 400$ pc are echoed in CO(6–5), HCN(4–3), and HCO$^+$(4–3)"]
+- result: CND mass load rate of molecular outflow (coplanar) = 63 ± +21/-37 Msun/yr [6.1.2 Mass outflow rate: "then $\mathrm{d}M/\mathrm{d}t\sim63^{+21}_{-37}$ M$_{\ensuremath{\odot}}$ yr$^{-1}$"]
+- result: Molecular outflow mass in CND = 1.8e7 ± +0.6/-1.1 e7 Msun [6.1.2 Mass outflow rate: "$M_{\rm mol} \sim 1.8^{+0.6}_{-1.1} \times 10^7$ M$_{\ensuremath{\odot}}$ for the CND"]
+- result: Bow-shock arc outflow rate = 6 ± +2/-3.6 Msun/yr [6.1.2 Mass outflow rate: "gives $\mathrm{d}M/\mathrm{d}t \sim 6^{+2}_{-3.6}$ M$_{\ensuremath{\odot}}$ yr$^{-1}$"]
+- result: Kinetic luminosity of CND outflow = 5e41 ± +1.7/-3 e41 erg/s [6.3 The powering source: "$L_{\rm kin}\sim 5^{+1.7}_{-3}\times10^{41}$ erg s$^{-1}$"]
+- limitation (authors): Outflow rate is a lower limit due to limited velocity coverage [6.2 The molecular outflow in dense gas …: "should be taken as a lower limit"]
+- limitation (authors): Resolution does not resolve kinematics of inner r~50 pc [8 Summary and conclusions: "we cannot spatially resolve the kinematics of the dense molecular gas in the inner $r\sim50$ pc"]
+- not stated (card): Which GILDAS tasks, cleaning algorithm, mask, cell and image size were used; CASA version and calibration script details; flagging; Line-free channels used for continuum; Self-calibration solution interval and iterations; Kinemetry mask/clipping and handling of outliers beyond the listed ellipses; Details of velocity-field (moment 1) construction beyond 5 sigma clipping; BayesClumpy priors for pa…
+
+### 2025ApJ...985..243B: The ALMA-CRISTAL Survey: Weak Evidence for Star-formation-driven Outflows in z ∼ 5 Main-sequence Galaxies (2025; high_z_galaxies; observational_alma_primary)
+- question: Do z ~ 5 main-sequence galaxies show star-formation-driven outflows, searched for as broad [CII] components in stacked spectra of non-merging CRISTAL galaxies?
+- step 5: Fit single and double Gaussians and test with BIC
+  - method: Fit single-Gaussian and constrained narrow+broad double-Gaussian models to each composite and compare via Delta BIC = BIC_single - BIC_double; broad component accepted if Delta BIC > 10, outflow properties measured if > 0 [Line fitting: "we fit two models to the \[CII\] emission line, using the Markov Chain Monte Carlo (MCMC) ensemble sampler"] [Line fitting: "we will measure outflow properties if the $\Delta{\rm BIC}$ $>$ 0, but require $\Delta{\rm BIC}$ $>$ 10 to securely reject the null hypothesis"]
+  - software: emcee
+  - parameter: Narrow FWHM 80-400 km/s, broad FWHM 400-1500 km/s [Line fitting: "The narrow FWHM is constrained to be between 80 km s$^{-1}$ and 400 km s$^{-1}$ and the broad FWHM is constrained to be between 400 km s$^{-1}$ and 1500 km s$^{-1}$"]
+  - parameter: Both components centered within +/-200 km/s of systemic; broad FWHM at least 1.2 x narrow FWHM [Line fitting: "The central wavelengths of both lines are constrained to be within $\pm$ 200 km s$^{-1}$ of the systemic redshift"] [Line fitting: "The broad FWHM is constrained to be at least 1.2 $\times$ the narrow FWHM (cite: carniani24)"]
+  - fitting: emcee ensemble MCMC; single Gaussian with free amplitude, mean, sigma vs double Gaussian with the same three parameters per component under the bounds above; BIC = chi^2 + k log n; walkers, steps and explicit priors not stated [Line fitting: "The first is a simple single-Gaussian model with free parameters amplitude, mean and sigma."] [Line fitting: "Measured as BIC $=$ $\chi^2+k\log{n}$"]
+  - validation: Authors note the Delta BIC = 10 choice is not perfect and report Delta BIC values for transparency [Line fitting: "For full transparency we include the measured $\Delta{\rm BIC}$ values with our results"]
+- step 10: Derive outflow mass, mass outflow rate and mass-loading factor
+  - method: Atomic outflow mass from the broad-component [CII] luminosity (Hailey-Dunsheath relation), Mdot_out = v_out M_out / R_out, and eta_m = Mdot_out / SFR; a conservative variant counts only channels where the broad component is at least half t… [Mass outflow rate: "To derive the mass of the outflowing material, we consider the entire broad component of the fit for consistency with"] [Mass-loading factor: "$\eta_m$ $=$ $\dot{M}_{\rm out}/$SFR"]
+  - parameter: R_out = 6 kpc [Mass outflow rate: "We adopt $R_{\rm out}$ $=$ 6 kpc"]
+  - parameter: Median sample SFR = 52 Msun/yr used for the full-stack eta_m [Mass-loading factor: "we adopt the median SFR of the sample, 52 M$_\odot$ yr$^{-1}$"]
+  - assumption: C+ abundance per hydrogen atom 1.4e-4 [Mass outflow rate: "We assume a C$^+$ abundance per hydrogen atom of $X_{C^+}$ $=$ 1.4 $\times$ 10$^{-4}$"]
+  - assumption: Gas density equal to the critical density; gas temperature 100 K [Mass outflow rate: "and a gas temperature of 100 K (cite: ginolfi20)"]
+  - validation: Compared with literature outflow rates and mass-loading factors and with FIRE-1/FIRE-2 predictions [Mass-loading factor: "Theoretical predictions from the FIRE-1 (cite: muratov15) and FIRE-2 (cite: pandya21) simulations are indicated by the dashed gray and black lines"]
+- result: Delta BIC, full-sample stack (method 4) = 17 ± not stated dimensionless [Global stacks: "we find $\Delta{\rm BIC}$ $=$ 17 for the composite"]
+- result: FWHM_narrow, full-sample stack = 232 ± 13 km/s [Global stacks: "FWHM$_{\rm narrow}$ $=$ 232 $\pm$ 13 km s$^{-1}$ and FWHM$_{\rm broad}$ $=$ 501 $\pm$ 62 km s$^{-1}$"]
+- result: FWHM_broad, full-sample stack = 501 ± 62 km/s [Global stacks: "FWHM$_{\rm narrow}$ $=$ 232 $\pm$ 13 km s$^{-1}$ and FWHM$_{\rm broad}$ $=$ 501 $\pm$ 62 km s$^{-1}$"]
+- result: Atomic mass outflow rate, full sample = 26 ± 11 Msun/yr [Conclusions: "We find a mass outflow rate of $\dot{M}_{\rm out}$ $=$ 26 $\pm$ 11 M$_\odot$ yr$^{-1}$"]
+- result: Total mass outflow rate (x3 multi-phase factor), full sample = 78 ± 33 Msun/yr [Mass outflow rate: "yielding total outflow rates of $\dot{M}_{\rm out}$ $=$ 78 $\pm$ 33 M$_\odot$ yr$^{-1}$ for the full sample"]
+- result: Mass-loading factor eta_m, full sample = 0.49 ± 0.20 dimensionless [Mass-loading factor: "This gives a mass-loading factor of $\eta_m$ $=$ 0.49 $\pm$ 0.20"]
+- result: Mass-loading factor with x3 multi-phase factor, full sample = 1.48 ± 0.61 dimensionless [Mass-loading factor: "this would give $\eta_m$ $=$ 1.48 $\pm$ 0.61"]
+- result: Mass-loading factor eta_m, high-Sigma_SFR sample = 0.48 ± 0.18 dimensionless [Mass-loading factor: "we find a similar mass-loading factor of $\eta_m$ $=$ 0.48 $\pm$ 0.18"]
+- limitation (authors): Conservative merger removal limits the S/N gain from stacking [Removing potential mergers from the sam…: "While this approach limits the S/N improvement achieved by stacking, it is a necessary concession"]
+- limitation (authors): Delta BIC = 10 threshold is not ideal for outflow fitting [Line fitting: "We note that this choice of $\Delta{\rm BIC}$ $=$ 10 is not a perfect one in the context of fitting outflows (cite: chu24)"]
+- limitation (authors): Centroid uncertainties were not explicitly included in the main analysis [Spectral extraction: "We note that uncertainties on the emission centroids were not explicitly included in our analysis."]
+- not stated (card): CASA version and calibration/pipeline route used for the combined re-processing (only 'combined ... re-processed consistently' is given); tclean parameters for the natural-weighted cubes: cell size, image size, niter/threshold, masking, deconvolver, primary-beam correction, uv range; How the continuum was subtracted (fit order, line-free channels); Per-source [CII] FWHM, line centroids and the Le…
+
+### 2019A&A...628A.118B: The gentle monster PDS 456. Kiloparsec-scale molecular outflow and its implications for QSO feedback (2019; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: Does the hyper-luminous radio-quiet QSO PDS 456, which hosts a powerful UFO, have a kpc-scale molecular outflow, and what are its energetics relative to energy-conserving expansion?
+- step 3: Extended outflow clumps mass and outflow rate
+  - method: Integrate >3 sigma emission in 4 contiguous channels over -1000 to -250 km/s; Mdot=M v98/R [Extended outflow: "obtained by integrating the emission detected at $>3\sigma$ in each 30 km s$^{-1}$ spectral channel, for at least four contiguous channels"]
+  - assumption: alpha_CO = 0.8 Msun (K km/s pc^2)^-1; L'CO3-2/L'CO1-0 from systemic emission [Extended outflow: "a luminosity-to-gas-mass conversion factor $\alpha_{\rm CO} = 0.8$ $M_\odot$ (K km s$^{-1}$ pc$^2$)$^{-1}$"]
+  - fitting: multiple Gaussian components per clump spectrum [Extended outflow: "We model the spectrum of each extended clump with multiple Gaussian components"]
+- step 6: Scaling relations with L_Bol
+  - method: Fit parabolic function to molecular and ionised outflow rates of a literature compilation including PDS 456; derive momentum boost relation [Discussion: "we fit the molecular data with a parabolic function defined as:"]
+  - parameter: v_mol~1000 km/s, k~2 [Discussion: "we assume $v_{\rm mol}\sim1000$ km s$^{-1}$ and $k\sim2$ (cite: Fiore17)"]
+  - validation: scatter as rms of data about relation (0.37 dex molecular, 0.91 dex ionised) [Discussion: "with an associated scatter of $\sim0.37$ dex, computed as the rms of the molecular data points with respect to the relation"]
+- result: Extended outflow Mdot = 50 ± [45-55] Msun/yr [Table 1: "$50[45-55]$"]
+- result: Molecular parabolic fit parameters = alpha=-0.11, beta=0.80, gamma=1.78, L0=10^44.03 erg/s ± scatter 0.37 dex dimensionless [Discussion: "$\alpha_{\rm mol} = -0.11$, $\beta_{\rm mol} = 0.80$, $\gamma_{\rm mol} = 1.78$ and $L_{\rm 0, mol}=10^{44.03}$ erg s$^{-1}$"]
+- limitation (authors): Gas masses depend strongly on alpha_CO; large uncertainties on tau_dep and tau_SF [Discussion: "We note that the estimate of the molecular gas masses strongly depends on the assumption on $\alpha_{\rm CO}$."]
+- not stated (card): Clean mask definitions and iteration counts; Pipeline version and exact flagging; Priors, optimiser and initial guesses for the Gaussian pixel-by-pixel decomposition; 3DBarolo parameter settings (ring widths, fit options); Method for deriving v98 and clump selection details; Fitting method for the parabolic scaling relations; SFR from SED fit (Vignali in prep.) is not reproducible; Exact L'CO1-0 …
+
+### 2017ApJ...841..130A: The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA (2017; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the nature of the radio/sub-mm emission from the LBV RMC 127's central object and outer nebula, and what does it imply for wind geometry, mass-loss rate and nebular shaping?
+- step 6: collimated ionized wind models and mass-loss rate
+  - method: Reynolds (1986) models 1 and 2 solved for jet width index epsilon from alpha, then Mdot from Reynolds equation [4.1 Collimated stellar wind models: "The mass-loss rate can be written in a general form that takes into account all these parameters (cite: 1986Reynolds)"]
+  - parameter: S at 349.5 GHz, D=48.5 kpc, T=6420 K, v=148 km/s, varphi=75 deg, x0=1, mu=1, theta0=0.5 rad, numax=1e13 Hz [4.1 Collimated stellar wind models: "Here we assume $\varphi=75\,\rm \deg$ (thus $i=15\,\rm \deg$)."] [4.1 Collimated stellar wind models: "A reasonable value for $\nu_{max}$ seems to be $10^{13}$ Hz."]
+  - assumption: isothermal, constant-velocity outflow; model 1 fully ionized conical, model 2 with recombinations qx=-0.2 [Table 2: "model 1 (isothermal, constant velocity, fully ionized conical outflow) and for model 2 (isothermal, constant velocity, well-collimated outflow with recombinations)"]
+  - fitting: analytic solution [4.1 Collimated stellar wind models: "Knowing the spectral index $\alpha$ of the wind, it is possible to determine how the jet width varies with distance (parameter $\varepsilon$)"]
+  - validation: compared with spherical-wind Panagia & Felli Mdot [4.1 Collimated stellar wind models: "The mass-loss rate can be a factor of two or more smaller than in the spherical case"]
+- result: jet width index epsilon (Model 1) = 1.34 ± +0.15/-0.12 dimensionless [Table 2: "| $\varepsilon$ | 1.34$^{+0.15}_{-0.12}$ | 1.03$^{+0.13}_{-0.10}$ |"]
+- result: mass-loss normalization C1 (x1e-6 Msun/yr) = 9.4 ± +2.6/-2.0 1e-6 Msun/yr [4.1 Collimated stellar wind models: "$C_1 = 9.4^{+2.6}_{-2.0}$ and $C_2 = 8.5^{+2.3}_{-1.8}$"]
+- result: mass-loss normalization C2 (x1e-6 Msun/yr) = 8.5 ± +2.3/-1.8 1e-6 Msun/yr [4.1 Collimated stellar wind models: "$C_1 = 9.4^{+2.6}_{-2.0}$ and $C_2 = 8.5^{+2.3}_{-1.8}$"]
+- result: spherical-wind mass-loss rate = 2.1e-5 ± 0.4e-5 Msun/yr [4.1 Collimated stellar wind models: "($2.1\pm0.4\times10^{-5} \,\rm M\odot\,yr^{-1}$)"]
+- limitation (authors): Planned ALMA sensitivity not reached, so nebula undetected [2.1 ALMA observation and data reduction: "The proposed sensitivity of $40\,\mu{\rm Jy}\,{\rm beam^{-1}}$ could not be achieved"]
+- limitation (authors): Central-object size is an upper limit; flux systematics from differing beams and nebular contamination [3.1 The ATCA and ALMA maps: "Hence, the size provided above must be considered an upper limit."]
+- not stated (card): tclean/clean parameters (cell, image size, niter, threshold, masks); how peak/central flux densities were extracted (position, box); spectral-window flagging that yields 7.5 GHz usable bandwidth; weighted fit method for the power law and the grey-body fitting procedure and priors; SED photometry values used; ATCA calibration details and robust-free parameters for 17/23 GHz; the offline WVR contin…
+
+### 2019ApJ...871...37H: Molecular and Ionized Gas Phases of an AGN-driven Outflow in a Typical Massive Galaxy at z ≈ 2 (2019; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the extent, mass and energetics of the molecular and ionized phases of the AGN-driven outflow in zC400528 at z=2.39, and can the outflow quench the galaxy?
+- step 4: Outflow masses
+  - method: Gaussian fits to spectra from apertures in residual cube; mass with ULIRG alpha_CO=0.8 [The molecular gas mass in the outflow: "we measure CO(3-2) flux densities with Gaussian fits to the spectra in the residual cube extracted from the circular and elliptical apertures"]
+  - assumption: alpha_CO,ULIRG=0.8 adopted; thin 0.34 and MW 4.3 as bounds [The molecular gas mass in the outflow: "In this paper we adopt the ULIRG-like conversion factor ($\alpha_{\rm CO,ULIRG}$)"]
+- step 5: Mass outflow rate and energetics
+  - method: Average approach Mdot=M v/R with R=4.2 kpc, v=450 km/s; P=Mdot v; E=0.5 Mdot v^2 [Molecular mass outflow rate: "In this paper we use the *average* approach"]
+  - validation: Compared with two-Gaussian maximum-velocity method giving 180 Msun/yr [Molecular mass outflow rate: "we calculate a mass loss rate of $\dot{M}_{\rm out}=180$ M$_{\odot}$ yr$^{-1}$"]
+- result: Total molecular outflow mass (ULIRG alpha_CO) = 3.36e9 ± range 1.42-18.06e9 for other alpha_CO Msun [Table 1: "| 4 | $0.184\pm0.029$ | 3.36 $(1.42-18.06)$ | | | |"]
+- result: Molecular mass outflow rate = 256 ± range 108.8-1376 Msun/yr [Table 2: "| Molecular$^{a}$ | 3.36 $(1.42-18.06)$ | 256 $(108.8-1376.0)$ | 7.2 $(3.1-38.7)$ | 1.6 $(0.68-8.6)$ |"]
+- result: Outflow depletion time = 4.7e8 ± not stated yr [Molecular mass outflow rate: "\tau_{\rm dep,out}\approx4.7\times10^8~{\rm yr}"]
+- result: Molecular mass loading factor = 1.7 ± not stated dimensionless [Mass and energetics: "($\eta_{\rm mol}=1.7$)"]
+- result: Momentum boost = ~3 ± not stated dimensionless [Energetics of the molecular outflow: "the momentum boost is $\dot{P}_{\rm out,mol}/(L_{\rm AGN,bol}/c)\approx3$"]
+- limitation (authors): Outflow properties depend on poorly constrained assumptions (alpha_CO, electron density, geometry) [Mass and energetics: "these results depend on assumptions of the properties of the outflow gas that are not yet fully constrained"]
+- limitation (authors): Outflow geometry/inclination not constrained [Molecular mass outflow rate: "we do not have enough information to constrain the geometry of the outflow"]
+- not stated (card): Exact apertures and positions of outflow regions 1-4 (only in Figure 7); imfit region definitions and fitting initial guesses per channel; Whether continuum was subtracted (none detected) and line-free channels; Data weights and calibration versions (CASA/pipeline version); Cell size, image size and clean threshold; Details of Gaussian fits to aperture spectra; Whether the B-balance halo mass and…
+
+### 2021ApJ...908..235I: Subaru High-z Exploration of Low-luminosity Quasars (SHELLQs). XII. Extended [C II] Structure (Merger or Outflow) in a z = 6.72 Red Quasar (2021; agn_and_quasars, high_z_galaxies; observational_alma_primary)
+- question: Is the highest-redshift red quasar (z = 6.72) in a merger-driven to outflow-driven transition: what are its FIR continuum and extended [C II] properties, and is the extended [C II] structure companion/merging galaxies or a cold AGN-driven …
+- step 8: Estimate outflow mass, rate, kinetic power and momentum load for blobs A-C
+  - method: Mdot_out = M_out v_out / R_out with v_out = |dv| + FWHM/2; M_out from L_[CII] under the high-density limit (lower limit); kinetic power and momentum load from the standard formulae [Cold neutral outflows?: "We define the outflow rate as $\dot{M}_{\rm out} = M_{\rm out} v_{\rm out}/R_{\rm out}$"] [Cold neutral outflows?: "For $v_{\rm out}$, we adopt $|\Delta v| + {\rm FWHM}/2$"]
+  - parameter: R_out = 3.5, 6.4, 5.1 kpc for blobs A-C [Cold neutral outflows?: "as 3.5, 6.4, and 5.1 kpc for the blobs A–C, respectively."]
+  - parameter: X_C+ = 1.4e-4, T_ex = 200 K, n_crit ~3e3 cm^-3 [Cold neutral outflows?: "we adopt $X_{\rm C^+} = 1.4 \times 10^{-4}$ and $T_{\rm ex} = 200$ K"] [Cold neutral outflows?: "the line critical density ($\sim 3 \times 10^3$ cm$^{-3}$)"]
+  - assumption: high density limit n >> n_crit, giving a lower limit on M_out [Cold neutral outflows?: "we here assume the high density limit ($n \gg n_{\rm crit}$) to provide a"]
+  - assumption: 70% of [C II] arises from PDRs (factor 0.7) [Cold neutral outflows?: "The factor 0.7 in the first parenthesis indicates a typical fraction of"]
+  - assumption: projection correction averages to unity over all angles; entire extended structure assumed to be outflow [Cold neutral outflows?: "the average of this factor over all angles is unity."] [Cold neutral outflows?: "by assuming that the extended structure is formed fully due to cold outflows."]
+  - validation: varying T_ex in [100, 1000] K changes M_out by only ~20% [Cold neutral outflows?: "varying $T_{\rm ex} \in [100, 1000]$ K changes the inferred $M_{\rm out}$ by only $\sim 20\%$."]
+- result: Total atomic outflow mass (blobs A-C) = 9.0e8 ± 0.9e8 Msun [Cold neutral outflows?: "the total atomic outflow mass and outflow rate are $M_{\rm out,A-C} = 9.0 \pm 0.9) \times 10^8~M_\odot$ and $\dot{M}_{\rm out,A-C} = 97 \pm 15$ $M_\odot$ yr$^{-1}$, respectively."]
+- result: Total atomic outflow rate (blobs A-C, lower limit) = 97 ± 15 Msun/yr [Cold neutral outflows?: "the total atomic outflow mass and outflow rate are $M_{\rm out,A-C} = 9.0 \pm 0.9) \times 10^8~M_\odot$ and $\dot{M}_{\rm out,A-C} = 97 \pm 15$ $M_\odot$ yr$^{-1}$, respectively."]
+- result: Black hole accretion rate = ~12.5 ± not stated Msun/yr [Cold neutral outflows?: "($\dot{M}_{\rm BH} \sim 12.5~M_\odot$ yr$^{-1}$)"]
+- result: Possible total outflow rate including molecular phase = >~300 ± not stated Msun/yr [Cold neutral outflows?: "$\dot{M}_{\rm tot} \gtrsim 300~M_\odot$ yr$^{-1}$"]
+- limitation (authors): The nature of the extended structure cannot be identified with current data [abstract: "Although it is not practical to identify the nature of this extended structure"]
+- limitation (authors): Outflow mass is a lower limit and rates measured at only three positions [Cold neutral outflows?: "As our computation provided a lower limit on $M_{\rm out}$, and we measured rates only at the three selected positions"]
+- limitation (authors): Extended [C II] in negative velocity channels needs deeper observations to confirm [[C II] line emission: "but deeper observations are required to confirm its existence"]
+- not stated (card): tclean parameters: cell size, image size, niter, deconvolver, robust (only 'natural' given), masking and clean threshold for the final images; Whether the archive/pipeline calibration was used as delivered or manually reprocessed, and any extra flagging; Spectral window setup, channel widths before averaging, and the exact line-free channel ranges used for the continuum; Whether the continuum map…
+
+### 2024ApJ...974...18C: The Peculiar Radio Evolution of the Tidal Disruption Event ASASSN-19bt (2024; transients; multi_facility_alma_minor)
+- question: Radio evolution of the TDE ASASSN-19bt, tested against an off-axis relativistic jet or a spherical non-relativistic outflow
+- step 6: Derive outflow properties for a non-relativistic spherical outflow
+  - method: Equipartition formulae for R, E, B, Ne and n_ext using F_p and nu_p of each epoch, with nu_p identified with nu_a [4.1 Non-Relativistic Outflow: "In our analysis, we associate $\nu_p$ with $\nu_a$ and assume $\nu_m < \nu_a$."] [4.1 Non-Relativistic Outflow: "we can determine the physical properties of the outflow using the procedures outlined in (cite: Barniol_Duran_2013)"]
+  - parameter: Emitting volume in a shell of radius 0.1R: f_A = 1, f_V = 0.36 [4.1 Non-Relativistic Outflow: "we assume that the emitting volume of the outflow is confined to a spherically-symmetric shell of radius $0.1R$, implying $f_A = 1$ and $f_V = \frac{4}{3}(1-0.9^3) \approx 0.36$."]
+  - parameter: gamma_m = 2, p = 2.8 [4.1 Non-Relativistic Outflow: "In our analysis we set the minimum Lorentz factor $\gamma_m=2$"] [4.1 Non-Relativistic Outflow: "With $p=2.8$, the expressions for the radius and energy are given by (cite: Barniol_Duran_2013)"]
+  - parameter: epsilon_e = 0.1, epsilon_B = 0.2 [4.1 Non-Relativistic Outflow: "we adopt the typical value of $\epsilon_e=0.1$ (cite: Panaitescu_2002) and fix $\epsilon_B = 0.2$, which is motivated by the observed location of the cooling break at 132 days"]
+  - assumption: Kinetic energy dominated by hot protons, correction xi = 1 + 1/epsilon_e [4.1 Non-Relativistic Outflow: "we thus incorporate the extra energy carried by the hot protons using the correction factor $\xi =1+\epsilon_e^{-1}$ to the total energy"]
+- step 7: Derive outflow properties for an off-axis relativistic jet
+  - method: Generalised equipartition model of Matsumoto & Piran, with equations updated for non-equipartition epsilon_B and hot protons, solved per epoch for Gamma at fixed viewing angles [4.2 Relativistic Jet from an Arbitrary …: "We examined the possibility of a relativistic jet in ASASSN-19bt by employing the model outlined in (cite: matsumoto)."] [4.2 Relativistic Jet from an Arbitrary …: "We solve for $\Gamma$ in each epoch using the same procedure outlined (cite: matsumoto)."]
+  - parameter: Viewing angles 0.1, 0.26, 0.52, 0.79, 1.05, 1.57 rad [4.2 Relativistic Jet from an Arbitrary …: "$\theta_\text{obs} = 0.1,0.26,0.52,0.79,1.05,1.57$"]
+  - parameter: f_A = f_V = 1 (theta_j = 1/Gamma); alternative fixed opening angle theta_j = 10 deg with energy multiplied by 4 Gamma^2 (1 - cos theta_j) [4.2 Relativistic Jet from an Arbitrary …: "We initially set the jet area and volume filling factors to be $f_A=f_V=1$."] [4.2 Relativistic Jet from an Arbitrary …: "we impose an intermediate jet opening angle of $\theta_{j} = 10^\circ$"]
+  - parameter: epsilon_B from the cooling break between 3e-4 and 0.005 depending on viewing angle [4.2 Relativistic Jet from an Arbitrary …: "the observed location of the cooling break implies $3\times 10^{-4} < \epsilon_B < 0.005$ depending on the viewing angle"]
+  - assumption: Launch time delta t = 0 days [4.2 Relativistic Jet from an Arbitrary …: "As in §[3.1](#sec:cool), we take the launch time to be $\delta t=0$ days."]
+- result: log R (non-relativistic), delta t = 49 d = 15.30 ± +0.05/-0.04 log cm [Table 3: "15.30 $^{+ 0.05 }_{- 0.04 }$"]
+- result: log R (non-relativistic), delta t = 1377 d = 17.42 ± +0.03/-0.02 log cm [Table 3: "17.42 $^{+ 0.03 }_{- 0.02 }$"]
+- result: log E (non-relativistic), delta t = 49 d = 46.40 ± +0.05/-0.04 log erg [Table 3: "46.40 $^{+ 0.05 }_{- 0.04 }$"]
+- result: log E (non-relativistic), delta t = 1377 d = 49.57 ± +0.04/-0.03 log erg [Table 3: "49.57 $^{+ 0.04 }_{- 0.03 }$"]
+- result: beta (non-relativistic), delta t = 49 d = 0.016 ± +0.002/-0.001 dimensionless [Table 3: "0.016 $^{+ 0.002 }_{- 0.001 }$"]
+- result: beta (non-relativistic), delta t = 1377 d = 0.074 ± +0.006/-0.004 dimensionless [Table 3: "0.074 $^{+ 0.006 }_{- 0.004 }$"]
+- result: Radius growth law, all epochs = R proportional to t^1.3 ± not stated dimensionless [4.1 Non-Relativistic Outflow: "Including all epochs, the radius expands at a rate of $R\propto t^{1.3}$"]
+- result: Radius growth law, 2019 epochs (delta t = 49-186) = R proportional to t^2.3 ± not stated dimensionless [4.1 Non-Relativistic Outflow: "follow a much steeper trend of $R\propto t^{2.3}$"]
+- result: Energy growth law (non-relativistic) = E proportional to t^2.2 ± not stated dimensionless [4.1 Non-Relativistic Outflow: "increasing more than three orders of magnitude as $E\propto t^{2.2}$ over the full four years of observation"]
+- result: Magnetic field radial profile (non-relativistic) = B(r) proportional to r^-0.8 early, r^-1 late ± not stated dimensionless [4.1 Non-Relativistic Outflow: "We find that the magnetic field decays with increasing distance as $B(r)\propto r^{-0.8}$ at early times and as $B(r)\propto r^{-1}$ at late times."]
+- result: Jet Lorentz factor Gamma, theta_obs = 1.57, delta t = 49 d = 25.7 ± +1.6/-1.9 dimensionless [Table 3: "25.7 $^{+ 1.6 }_{- 1.9 }$"]
+- result: Jet Lorentz factor Gamma, theta_obs = 1.57, delta t = 1377 d = 8.3 ± +0.4/-0.4 dimensionless [Table 3: "8.3 $^{+ 0.4 }_{- 0.4 }$"]
+- result: Jet log E, theta_obs = 1.57, delta t = 1377 d = 51.91 ± +0.02/-0.03 log erg [Table 3: "51.91 $^{+ 0.02 }_{- 0.03 }$"]
+- result: Jet log E_wide, theta_obs = 1.57, delta t = 1377 d = 52.05 ± +0.06/-0.07 log erg [Table 3: "52.05 $^{+ 0.06 }_{- 0.07 }$"]
+- result: Jet Lorentz factor for most off-axis viewing angles = 10-20 ± not stated dimensionless [4.2 Relativistic Jet from an Arbitrary …: "All viewing angles yield a solution where the jet propagates at nearly light speed with $\Gamma\sim10-20$ for the most off-axis viewing angles."]
+- result: Jet Lorentz factor deceleration = Gamma proportional to t^-1 before re-brightening; t^-0.2 after ± not stated dimensionless [4.2 Relativistic Jet from an Arbitrary …: "We find that the jet slows as $\Gamma\propto t^{-1}$. After the radio re-brightening, we find that $\Gamma$ exhibits a weaker decay where $\Gamma\propto t^{-0.2}$."]
+- result: Late-time energy for theta_j = 10 deg jet = approximately 1e52 ± not stated erg [4.2 Relativistic Jet from an Arbitrary …: "then remains constant at $E\sim 10^{52} \ \text{erg}$ at later times."]
+- limitation (authors): Chandra spectra have too few counts to constrain the spectral shape [2.3 X-rays: Chandra X-ray Observatory: "Due to the low-number statistics, we cannot statistically constrain the spectral shape and both thermal and non-thermal models are statistically acceptable."]
+- limitation (authors): Inferred Gamma depends on the assumed jet launch date [4.2 Relativistic Jet from an Arbitrary …: "We note that $\Gamma$ is dependent on the inferred launch date of the jet"]
+- not stated (card): ALMA imaging recipe: clean task, weighting/robust, cell size, image size, masking, uv range, spectral windows and bandwidth used for the continuum; ALMA beam sizes, image rms and integration time per execution block, and how the upper limit on 2019 June 20 was defined (sigma level); Whether the pipeline products were used as delivered or manually re-flagged, and the flux density assumed for J0519…
+
+### 2021MNRAS.500.5500B: A warm molecular ring in AG Car: composing the mass-loss puzzle (2021; evolved_stars, stellar_physics, astrochemistry, milky_way_ism; observational_alma_primary)
+- question: Confirm and characterize the spatial distribution, kinematics, physical parameters, and origin of the molecular gas around the luminous blue variable star AG Car.
+- step 6: Estimate total molecular gas mass and average mass-loss rate of the ring
+  - method: Compute molecular gas mass from RADEX average CO column density, source area, and CO abundance via Eq. 5, and divide by the kinematic duration of the ring outflow to get the average mass-loss rate. [Estimate of the ring mass: "We can use the average CO column density derived with RADEX to provide a crude estimate of the mass of the ring."] [Estimate of the ring mass: "Adopting a cosmic \[CO/H$_2$\] abundance of $X_\mathrm{CO} = 10^{-4}$ and considering that the ring subtends an area of about $\sim0.63$ pc$^2$ at $d=6$ kpc, we obtain a total mass of 2.7 $\pm$ 0.9 $\mathrm{M}_{\ensuremath{\odot}}$, a result comparable with molecular gas masses found in other LBVN: in $\eta$ Car, the …"]
+  - parameter: N(CO) = 2.4x10^16 cm^-2; area ~0.63 pc^2; kinematic duration = 5.6x10^4 yr [Physical parameters of the gas: "We find that the model that best fits the observations is that with $T_\mathrm{k}$ = 50 K, $N(\mathrm{CO})$ = 2.4$\times10^{16}$ cm$^{-2}$ and $n\mathrm{(H_2)}$ = 1.3$\times10^3$ cm$^{-3}$."] [Mass loss history of AG Car: "For $v_\mathrm{exp}=3.5$ km s$^{-1}$, we obtain an approximate duration of $5.6\times10^4$ years."]
+  - assumption: Cosmic [CO/H2] abundance X_CO = 10^-4; distance d = 6 kpc [Estimate of the ring mass: "Adopting a cosmic \[CO/H$_2$\] abundance of $X_\mathrm{CO} = 10^{-4}$ and considering that the ring subtends an area of about $\sim0.63$ pc$^2$ at $d=6$ kpc, we obtain a total mass of 2.7 $\pm$ 0.9 $\mathrm{M}_{\ensuremath{\odot}}$, a result comparable with molecular gas masses found in other LBVN: in $\eta$ Car, the …"]
+  - validation: Compared total combined gas mass (9.3 +/- 2.8 M_sun or 5.9 +/- 2.8 M_sun) with VN15 total nebular mass estimate (15 +/- 4.5 M_sun). [Mass loss history of AG Car: "The total combined mass of ionised and molecular gas thus adds up to $9.3\pm2.8\,\mathrm{M}_{\ensuremath{\odot}}$ (or $5.9\pm2.8 \,\mathrm{M}_{\ensuremath{\odot}}$ if we take our estimate)."] [Mass loss history of AG Car: "This agrees again, within uncertainties, with the value proposed by VN15 ($15\pm4.5\,\mathrm{M}_{\ensuremath{\odot}}$), who adopted a gas-to-dust ratio of $\sim40$ to estimate the contribution of neutral gas."]
+- result: Total molecular gas mass in the ring = 2.7 ± 0.9 M_sun [Abstract: "The total mass of molecular gas in the ring is $2.7\pm0.9$ M$_{\ensuremath{\odot}}$."]
+- result: Average mass-loss rate that produced the molecular ring = 4.8e-5 ± 1.6e-5 M_sun yr^-1 [Mass loss history of AG Car: "The average mass-loss rate that produced the molecular ring is thus $\dot M = (4.8\pm1.6)\times10^{-5}\,\mathrm{M}_{\ensuremath{\odot}}$ yr$^{-1}$, but it could be substantially higher if the structure is more compact than the ACA beam."]
+- limitation (authors): Large angular distance (~4 deg) to the ALMA TP off position caused spectral ripples that were not removed in post-processing. [ALMA observations: "Such a large angular distance between the target and the off position caused ripples in the spectra, which we did not attempt to remove in post-processing, since their amplitude is negligible with respect to the brightness of the spectral lines from our target."]
+- limitation (authors): Fainter arcs of the ring are not detected in 13CO J=2-1 due to limited sensitivity. [CO and 13CO emission: "In the $^{13}$CO $J=2\rightarrow1$ integrated intensity map (not shown), only the lobes of the structure are visible, with an S/N ratio slightly above 5 $\sigma$."]
+- limitation (authors): ACA is likely missing a fraction of the extended 225 GHz radio continuum flux because its largest angular scale is ~1/3 that of the ATCA 750B configuration at 5.5 GHz. [Radio continuum emission: "We note, though, that the LAS (largest angular scale) of ACA at 225 GHz is about 1/3 of the LAS of ATCA 750B configuration at 5.5 GHz, so it is very likely that we are missing a fraction of the extended flux."]
+- not stated (card): CLEAN weighting scheme and robust parameter used for ACA line cubes and continuum imaging; Pixel cell size and image dimensions for ACA and feathered cubes; CLEAN stopping threshold and masking strategy; Frequency ranges or channels used for UV continuum subtraction; Exact frequency and bandwidth of the two continuum spectral windows; Exact value of the Helium correction factor (f_He) used in Equ…
+
+### 2017MNRAS.465..834Z: The ALMA early science view of FUor/EXor objects - I. Through the looking-glass of V2775 Ori (2017; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: What are the disc and circumstellar outflow/envelope properties of the FUor V2775 Ori as seen in ALMA band 6 continuum and CO isotopologue lines?
+- step 5: Outflow mass, momentum, energy
+  - method: Perez et al. (2015) formalism on 12CO and 13CO per channel, summed over velocity; lower limits (no optical depth correction) [3.6 Outflow gas parameters: "The values presented are then lower limits of these quantities."]
+  - parameter: Tex = 50 K, filling factor 1 [3.6 Outflow gas parameters: "has a value of T ex = 50 K in this analysis. The beam filling factor is assumed to be 1."]
+  - assumption: 12CO/H2 = 1e-4, 12CO/13CO = 62 [3.6 Outflow gas parameters: "an abundance of the 12 CO relative to H 2 of 10 −4"]
+- result: Total 12CO outflow mass = 12.3e-3 ± not stated Msun [Table 3: "Total 9.0 12.3 60.0 310"]
+- limitation (authors): Outflow quantities are lower limits because optical depth correction cannot be applied; face-on geometry makes age uncertain [3.6 Outflow gas parameters: "As the disc is almost face-on, the uncertainties on these values are high."]
+- not stated (card): Robust/weighting, cell and image size, clean threshold and masks; Line-free channels for continuum subtraction; Whether pipeline calibration was standard; flux scale uncertainty; Channel width of the final cubes and velocity ranges of moment integration beyond Table 2; Region for outflow mass calculation and noise clipping; Which phase calibrators applied to which epoch
+
+### 2014ApJ...785...44M: A 10<SUP>10</SUP> Solar Mass Flow of Molecular Gas in the A1835 Brightest Cluster Galaxy (2014; galaxy_clusters_and_sz, nearby_galaxies; observational_alma_primary)
+- question: Does radio-mechanical AGN feedback in the Abell 1835 BCG affect its molecular gas, e.g. by driving a molecular outflow?
+- step 4: Estimate outflow rate and disk dynamics
+  - method: Outflow mass divided by buoyant rise or gas travel time; Toomre Q, pressure and scale height analytic estimates [5.3 A Radio-AGN Driving a Molecular Out…: "We estimate it by dividing the mass of the outflowing molecular gas by either the time for the bubbles to rise by buoyancy"]
+  - assumption: gas to dust ratio 100; R_e=2 kpc encloses half the mass; v_c=400 km/s [5.4 Dynamics of the Central Molecular G…: "We have also scaled the circular velocity at that radius to $400~\rm km~s^{-1}$."]
+- result: Outflow rate = ~200-300 ± not stated Msun/yr [5.3 A Radio-AGN Driving a Molecular Out…: "They imply an outflow rate of $\sim 200-300 ~\rm M_\odot ~yr^{-1}$."]
+- result: Toomre Q = 0.43 ± not stated dimensionless [5.4 Dynamics of the Central Molecular G…: "\approx0.43"]
+- result: Dynamical pressure = 1.7e-8 ± not stated dyne cm^-2 [5.4 Dynamics of the Central Molecular G…: "$$\begin{equation} p_{\rm dyn}={\pi\over2} G\Sigma_g^2\approx1.7\times10^{-8}{\rm dyne}~\rm cm^{-2}."]
+- limitation (authors): Emission-only data cannot distinguish inflow from outflow [5.1 Bipolar Outflow or Inflow of Molecu…: "the ALMA observations alone cannot discriminate with certainty between inflow and outflow."]
+- limitation (authors): XCO is the prime mass uncertainty [The CO to H2 Conversion Factor: "is the prime uncertainty in our mass estimates."]
+- not stated (card): Line-free channels and continuum-subtraction method/order; Clean threshold, cell and image size; How the CO(3-2) mass or CO(1-0) wing integration velocity ranges were chosen; Grid box positions for spectra; Luminosity distance value used in mass equation; Flux calibration uncertainty; Details of the 2D Gaussian central-emission subtraction
+
+### 2024ApJ...971L..15Y: Outflow Driven by a Protoplanet Embedded in the TW Hya Disk (2024; protoplanetary_disks, exoplanets; archival_reuse)
+- question: Does localized SO emission trace an outflow driven by an embedded protoplanet in the TW Hya disk?
+- step 6: Derive SO and total outflow masses
+  - method: Convert integrated SO J=8_7 - 7_6 flux to SO mass and averaged column density; convert SO mass to total gas mass using SO/H2 [Dynamical Parameters: "we estimated the total mass of SO molecules to be $(1-4) \times 10^{20}\ {\rm g}$ and the averaged SO column density of $(1-4) \times 10^{12}\ {\rm cm^{-2}}$"] [Dynamical Parameters: "To convert the SO mass to the total gas mass of the outflow $M_{\rm out}$, it is necessary to assume the SO/H$_2$ ratio in the outflow."]
+  - parameter: Integrated SO flux 13±3 mJy km s^-1 [Dynamical Parameters: "($13\pm3\ {\rm mJy\ \rm km\ s^{-1}}$)"]
+  - assumption: Optically thin emission and local thermal equilibrium [Dynamical Parameters: "Assuming that the emission is optically thin and local thermal equilibrium is valid"]
+  - assumption: Temperature 30-300 K; SO/H2 =10^-7 - 10^-6 [Dynamical Parameters: "for a temperature range of $30-300$ K"] [Dynamical Parameters: "Overall, it would be reasonable to assume the SO/H$_2$ ratio in the outflow lies in $10^{-7} - 10^{-6}$."]
+  - validation: Compare SO-derived mass with the CO non-detection mass upper limit [Dynamical Parameters: "This is consistent with the mass obtained by SO."]
+- step 8: Calculate outflow dynamical quantities
+  - method: Mdot_out=M_out/t_dyn; momentum=M_out v_out; momentum supply rate=Mdot_out v_out [Dynamical Parameters: "the mass-lass rate of the outflow $\dot{M}_{\rm out} \equiv M_{\rm out}/t_{\rm dyn}$"] [Dynamical Parameters: "In addition, we estimated the momentum $M_{\rm out} v_{\rm out}$ and momentum supply rate $\dot{M}_{\rm out} v_{\rm out}$."]
+  - parameter: Dynamical time ~100 yr [Dynamical Parameters: "The trajectory modeling suggests that the dynamical time scale, or the time since ejection of the most distant knot, is $\sim100$ yr."]
+- step 10: Estimate and compare the accretion rate
+  - method: Convert mass-loss rate to planetary mass-accretion rate; evaluate the theoretical accretion prescription [Mass-accretion rate and luminosity: "Assuming that this relation is valid in the case of planet-driven outflows, the mass-accretion rate of the protoplanet $\dot{M}_{p, \rm acc}$ is found to be $3\times10^{-7}-1\times10^{-5}\ M_{\rm Jup}\ {\rm yr}^{-1}$."] [Mass-accretion rate and luminosity: "\dot{M}_{p, \rm acc} = 0.29 \left( \frac{h_p}{r_p} \right)^{-2} \left( \frac{M_p}{M_\star} \right)^{4/3} \Sigma_g r_p^2 \Omega_p,"]
+  - parameter: Midplane temperature 15 K; Sigma_g=10 g cm^-2 at 42 au [Mass-accretion rate and luminosity: "Using the measured midplane gas temperature of $15$ K and $\Sigma_g$ of $10\ {\rm g\ cm^{-2}}$ at a radius of 42 au (cite: cala21)"]
+  - assumption: Protostellar relation Mdot_out~0.1 Mdot_acc applies to planet-driven outflows [Mass-accretion rate and luminosity: "$\dot{M}_{\rm out} \sim 0.1 \dot{M}_{\rm acc}$, where $\dot{M}_{\rm acc}$ is the mass-accretion rate of a protostar (cite: ball16)."] [Mass-accretion rate and luminosity: "Assuming that this relation is valid in the case of planet-driven outflows"]
+  - validation: Theoretical rate 1.5×10^-6 M_Jup yr^-1 agrees with outflow-based estimate [Mass-accretion rate and luminosity: "we obtain $\dot{M}_{\rm acc} = 1.5 \times 10^{-6}\ M_{\rm Jup}\ {\rm yr}^{-1}$, which is consistent with our estimation."]
+- result: Total SO molecular mass = (1-4) × 10^20 ± not stated g [Dynamical Parameters: "we estimated the total mass of SO molecules to be $(1-4) \times 10^{20}\ {\rm g}$"]
+- result: Averaged SO column density = (1-4) × 10^12 ± not stated cm^-2 [Dynamical Parameters: "the averaged SO column density of $(1-4) \times 10^{12}\ {\rm cm^{-2}}$"]
+- result: SO-derived total outflow mass M_out = 3×10^-6-1×10^-4 ± not stated M_Jup [Dynamical Parameters: "With this bound of SO/H$_2$, we can estimate $M_{\rm out}$ to be $3\times10^{-6}-1\times10^{-4}\ M_{\rm Jup}$."]
+- result: Dynamical time used for mass-loss estimate = ~100 ± not stated yr [Dynamical Parameters: "The trajectory modeling suggests that the dynamical time scale, or the time since ejection of the most distant knot, is $\sim100$ yr."]
+- result: Outflow mass-loss rate = 3×10^-8-1×10^-6 ± not stated M_Jup yr^-1 [Dynamical Parameters: "is estimated to be $3\times10^{-8}-1\times10^{-6}\ M_{\rm Jup}\ {\rm yr}^{-1}$."]
+- result: Outflow momentum = 2×10^-5 - 6×10^-4 ± not stated M_Jup km s^-1 [Dynamical Parameters: "| Momentum | $M_{\rm out} v_{\rm out}$ | $2\times10^{-5} - 6\times10^{-4}$ | $M_{\rm Jup}\ \rm km\ s^{-1}$ |"]
+- result: Outflow momentum supply rate = 2×10^-7 - 6×10^-6 ± not stated M_Jup km s^-1 yr^-1 [Dynamical Parameters: "| Momentum supply rate | $\dot{M}_{\rm out} v_{\rm out}$ | $2\times10^{-7} - 6\times10^{-6}$ | $M_{\rm Jup}\ \rm km\ s^{-1}{\rm yr}^{-1}$ |"]
+- result: Outflow-inferred planetary mass-accretion rate = 3×10^-7-1×10^-5 ± not stated M_Jup yr^-1 [Mass-accretion rate and luminosity: "the mass-accretion rate of the protoplanet $\dot{M}_{p, \rm acc}$ is found to be $3\times10^{-7}-1\times10^{-5}\ M_{\rm Jup}\ {\rm yr}^{-1}$."]
+- result: Evaluated theoretical mass-accretion rate = 1.5 × 10^-6 ± not stated M_Jup yr^-1 [Mass-accretion rate and luminosity: "we obtain $\dot{M}_{\rm acc} = 1.5 \times 10^{-6}\ M_{\rm Jup}\ {\rm yr}^{-1}$, which is consistent with our estimation."]
+- limitation (authors): Low SNR may create the apparent knot structure [Outflow trajectory model: "there are several peaks similar to the “knots” of protostellar outflows although we note that this could be due to the low signal-to-noise ratio."]
+- limitation (authors): Launching radius is challenging to estimate and assumed roughly [Outflow-driving source: "It is challenging to estimate $R_l$, however, we roughly assume $R_l\sim6R_{\rm Jup}$ by following (cite: quil98)"]
+- limitation (authors): Physical origin of the outflow tilt is unclear [Tilted outflow axis: "The physical origin of this tilt is unclear."]
+- not stated (card): CASA and pipeline versions, calibration-script identity, and flux calibrators.; Spectral-window selection, continuum channels, continuum bandwidth, and whether/how continuum subtraction was performed.; Self-calibration reference antenna, solution combination, gain-selection criteria, and application settings.; Image pixel scale, image dimensions, exact manual mask, deconvolution algorithm, and pr…
+
+### 2021ApJ...912...21E: Late-time Radio and Millimeter Observations of Superluminous Supernovae and Long Gamma-Ray Bursts: Implications for Central Engines, Fast Radio Bursts, and Obs… (2021; transients, star_formation; observational_alma_primary)
+- question: Search for late-time non-thermal synchrotron radio and millimeter emission from superluminous supernovae (SLSNe) and long gamma-ray bursts (LGRBs) to constrain central engines (magnetar wind nebulae, off-axis relativistic jets), non-relati…
+- step 4: Constrain non-relativistic SN ejecta outflows
+  - method: Place limits on shock velocity and progenitor mass-loss rate for SLSNe using Chevalier (1998) synchrotron self-absorption model, and model spherical SN outflow light curves for LGRBs using Barniol Duran & Giannios (2015) and Kathirgamaraju… [Supernovae Ejecta: "In the context of a shock interaction from the non-relativistic, quasi-spherical SN ejecta, we place limits on the shock velocity and mass-loss rate for each SLSN following the prescription of (cite: Chevalier1998) and assuming that the date of each observation corresponds to the peak luminosity"] [Supernovae Ejecta: "For the LGRBs in our sample, we place constraints on emission from associated supernovae following the prescriptions of (cite: Barniol2015) and (cite: Kath2016)."]
+  - parameter: For LGRB SNe: epsilon_e = epsilon_B = 0.1, p = 2.5, E_SN = 10^52 erg, v_ej = 8 x 10^3 km s^-1, n = 10 and 100 cm^-3 [Supernovae Ejecta: "We assume typical values of $\epsilon_e = \epsilon_B = 0.1$ and $p=2.5$."] [Supernovae Ejecta: "In Figure [4](#fig:grb_sn), we plot representative light curves for external number densities of $n=10$ and $n=100 \ \rm cm^{-3}$ and a fiducial supernova energy of $10^{52}$ erg, typical of broad-line Ic SNe associated with GRBs (cite: Mazzali2014)."]
+  - assumption: Peak luminosity extrapolates back in time as L_nu,pk proportional to t^-1 for optically thin SLSN emission [Supernovae Ejecta: "We also consider the possibility that the emission from each event may have peaked at earlier times, by extrapolating the peak luminosity back in time assuming $L_{\nu,\rm pk} \propto t^{-1}$ (cite: Berger2002), and assuming that the emission is optically thin at the time of observations."]
+- limitation (authors): Short phased-VLA observation duration (~40 min per source) is prohibitively small for detecting intermittent FRBs. [Phased VLA Observations: "Thus, while we are sensitive to the low energy range of FRBs (from FRB 121102), given the intermittent nature of FRB 121102, the short duration of our observations ($\approx 40$ min per source) is prohibitively small."]
+- limitation (authors): ALMA 100 GHz observations are less constraining for obscured star formation rates and late-time off-axis jet afterglows because synchrotron emission peaks at lower (GHz) frequencies on these timescales. [Obscured Star Formation: "For the remaining SLSNe in our sample, the radio-inferred SFR limits exceed the optically-inferred rates by factors of $\approx 2-5.2\times 10^3$ (Table [\[tab:master\]](#tab:master)), where the high end is driven primarily by the ALMA 100 GHz observations, which are less constraining in this context."]
+- limitation (authors): CLOUDY models start at t > 1 yr in the source frame, so 100 GHz free-free transparency timescales shorter than 1 yr (1+z) rely on extrapolations. [Magnetar Wind Nebulae: "Finally, we report upper limits on $t_{\rm ff, 100GHz}$ for eight sources where $t_{\rm ff, 100GHz} > 1 \rm{yr}$ $(1+z)$, as the `CLOUDY` models start from $t > 1$ yr in the source frame and these results are thus based on extrapolations."]
+- not stated (card): Exact CASA version used for VLA processing and ALMA archival pipeline products; Exact ALMA array configurations and baseline ranges for the 2017 and 2019 campaigns; Exact pixel interpolation/regridding method used when median-combining ALMA images of different pixel scales (0.04-0.2 arcsec) and beam sizes for stacking; Exact fraction of magnetar spin-down power assumed to be deposited into ionizi…
+
+### 2025A&A...700L..11S: Stephenson 2 DFK 52: Discovery of an exotic red supergiant in the massive stellar cluster RSGC2 (2025; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What are the circumstellar gas and dust structure and mass-loss history of the red supergiant DFK 52 in RSGC2, from continuum, 12CO, 13CO and SiO emission?
+- step 6: Scale the LIME model to the total detached outflow mass
+  - method: LIME model (15% of total line flux) scaled to estimate the cumulative mass of detached high-velocity components, then compared with the continuum-derived mass [Molecular emission: "the model can be scaled to provide a very rough estimate of the cumulative mass in the detached high-velocity components surrounding DFK 52"] [Molecular emission: "Doing so offers a total mass of ${\sim}$0.35 $M_{\odot}$"]
+  - software: LIME
+  - assumption: CO excitation conditions are common between the many extended density structures [Molecular emission: "If we assume the excitation conditions of CO are common between the many extended density structures"]
+  - validation: Within a factor of four of the continuum-derived mass [Molecular emission: "which is within a factor of four agreement with the estimate obtained from the continuum flux"]
+- result: Total mass of detached high-velocity components from scaled LIME model = ~0.35 ± not stated Msun [Molecular emission: "Doing so offers a total mass of ${\sim}$0.35 $M_{\odot}$"]
+- limitation (authors): ISM contamination in CO forced exclusion of channels [Observations: "A common feature across all ALMA observations of RSGC2 was a significant amount of contamination from the interstellar medium (ISM) in CO."]
+- limitation (authors): LIME model covers only a small fraction of the outflow [Molecular emission: "Because the LIME model was constructed to fit only a small fraction of the observed outflow at a specific position angle, it reproduces 15% of the total line flux."]
+- limitation (authors): Full 3D model of the extended material not possible because of its geometrical complexity [Details of the 3D radiative transfer mo…: "a full 3D model of the extended material is not yet possible due to the very high degree of geometrical complexity"]
+- not stated (card): CASA version and ALMA pipeline version; Names of the two 12m array configurations and the ACA execution details (dates, number of antennas, on-source time); Weights and scaling used for the antenna-specific weighting when combining 12m and ACA data; Which channels were excluded for ISM contamination and which were line-free for the continuum; Cell size, image size, masks, cleaning threshold, deco…
+
+### 2017MNRAS.464L..75F: ALMA observations of the supergiant B[e] star Wd1-9 (2017; stellar_physics, star_formation; observational_alma_primary)
+- question: What are the millimetre continuum and recombination-line properties of the supergiant B[e] star Wd1-9, what do they imply for its mass loss, and does it resemble MWC349A or eta Carinae?
+- step 5: derive mass-loss rate
+  - method: outflow velocity ~100 km/s from line width, with mm and radio fluxes and the Dougherty et al. emission model [Discussion: "we calculate a current mass-loss rate of Ṁ$\sim$ 6.4${\times}10^{-5}(d/5kpc)^ {1.5}$"]
+  - assumption: spherical geometry, distance 5 kpc, stellar parameters from Dougherty et al. 2010 [footnote 3: "Stellar parameters are those taken from (cite: dough10) and spherical geometry is assumed."]
+  - validation: compared with MWC349A and eta Carinae [Discussion: "the wind parameters for Wd1-9 are broadly comparable to those of MWC349A"]
+- result: mass-loss rate = 6.4e-5 (d/5kpc)^1.5 ± not stated Msun/yr [Discussion: "we calculate a current mass-loss rate of Ṁ$\sim$ 6.4${\times}10^{-5}(d/5kpc)^ {1.5}$"]
+- limitation (authors): Bipolar outflow versus rotating disc origin of H41alpha cannot be distinguished; filaments need more sensitive follow-up [Discussion: "we caution that further observations will be required to unambiguously distinguish between both options."]
+- not stated (card): Robust weighting details beyond R0, nterms for MFS; Channel ranges of the line and line-free continuum; Image size, cell size, clean threshold and masks; CASA version; Gaussian fit regions and procedure for compact source subtraction; Which spectral window held the line (identified only by frequency range); Stellar parameters and formulae for the mass-loss rate calculation; Flux scale uncertainty…
+
+### 2014ApJ...790..160S: ALMA Observations of a Candidate Molecular Outflow in an Obscured Quasar (2014; agn_and_quasars, nearby_galaxies; observational_alma_primary)
+- question: What are the morphology, kinematics and mass of molecular gas in the obscured quasar SDSS J1356+1026, and is there a molecular outflow related to the known ionized outflow?
+- step 6: Outflow energetics
+  - method: r=0.3 kpc, v=500 km/s, M=7e7; Mdot=3Mv/r for volume-filling outflow [5.2.1 Properties of the Molecular Outfl…: "If the outflow is continuous and volume filling inside a sphere or cone with a constant velocity, the mass outflow rate is $\dot{M}=3Mv/r \approx 350$ $M_{\odot}$ yr$^{-1}$"]
+  - validation: Order-of-magnitude estimates only [5.2.1 Properties of the Molecular Outfl…: "These quantities are only order of magnitude estimates."]
+- result: Mass outflow rate (volume filling) = 350 ± not stated Msun/yr [5.2.1 Properties of the Molecular Outfl…: "$\dot{M}=3Mv/r \approx 350$ $M_{\odot}$ yr$^{-1}$"]
+- result: Outflow kinetic luminosity = 3e43 ± not stated erg/s [5.2.1 Properties of the Molecular Outfl…: "$\dot{E}_{\rm{kin}} \approx 3\times10^{43}$ ergs s$^{-1}$"]
+- result: Momentum boost = 3 ± not stated dimensionless [5.2.2 AGN or Star Formation Driven Outf…: "with a momentum boost of $\dot{p}/(\ensuremath{L_{\mathrm{bol}}}/c)\approx$ 3"]
+- limitation (authors): Outflow quantities order-of-magnitude; XCO and line ratio uncertain [5.2.1 Properties of the Molecular Outfl…: "First, the $X_{\rm{CO}}$ factor in the context of an outflow is uncertain."]
+- not stated (card): Exact clean parameters (cell size, image size, niter, masks, spectral-line channel ranges for CO 3-2); Line-free channel ranges for CO(3-2) 300 GHz continuum check; Aperture sizes/centres for flux extraction; Kinematic fitting details of 2D Gaussian per channel; Herschel photometry values (Petric et al. in prep.); Exact formulae for outflow energetics and Kennicutt SFR conversion; HST astrometric…
+
+### 2019ApJ...872....2R: ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP> (2019; milky_way_ism; archival_reuse)
+- question: Is there extreme high-velocity blue-shifted ionized gas within the inner parsec of Sgr A*, and does it indicate a jet or wind-driven outflow?
+- step 4: Assess boundness and outflow rates
+  - method: Escape velocity for 4e6 Msun BH combined with literature proper motions; momentum deposition rate for jet (gamma~2.7) or wind (1250 km/s) outflow [4.3 Mass Outflow Rate: "Adopting a Lorentz factor of $\gamma\sim2.7$ for the mildly relativistic jet"]
+  - assumption: Central mass 4e6 Msun, distance 8.5 kpc, flat mass profile [4.1 Unbound Mini-cavity: "the mass profile of the inner parsec is flat as derived from stellar kinematics (cite: fritz16)"]
+- result: Jet mass outflow rate (mini-cavity) = 1.8e-7 ± not stated Msun/yr [4.3 Mass Outflow Rate: "a mass outflow rate of $1.8\times10^{-7}$ M$_{\odot}$ year$^{-1}$ would satisfy a jet origin"]
+- result: Wind mass-loss rate = 4e-5 ± not stated Msun/yr [4.3 Mass Outflow Rate: "the required mass-loss rate is $4\times10^{-5}$ M$_{\odot}$ yr$^{-1}$"]
+- result: Escape velocity at 0.09 pc projected = ~620 ± not stated km/s [4.1 Unbound Mini-cavity: "the escape velocity at a *projected* distance of 0.09 pc (2$.\!\!^{\prime\prime}$2) is then $\sim$ 620 km s$^{-1}$"]
+- limitation (authors): Second epoch used only for detection check because of poor data quality; densities are lower limits [2 Observations and Data Reduction: "Due to the relatively poor data quality of the second epoch, we chose to use the first (July 12/13) dataset only"]
+- not stated (card): Line-free channels for continuum subtraction; Self-calibration solution intervals and reference antenna; Cell size, image size, deconvolver, masking and clean threshold; How the coordinate shift of +61/-123 mas was derived and which reference dataset; Flux calibrator and flux-scale details; Gaussian fitting details and the line-fit procedure; Origin of the 'size' deconvolution choice and uncertai…
+
+### 2013ApJ...763..120C: The Anatomy of an Extreme Starburst within 1.3 Gyr of the Big Bang Revealed by ALMA (2013; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What do the [CII] 158um line and dust continuum images of the BRI 1202-0725 group (SMG, quasar, two Lya emitters) reveal about gas dynamics, outflow and the Lya galaxies?
+- step 4: Derive quasar outflow rate and power
+  - method: [CII] wing luminosity (+220 to +500 km/s) converted to atomic mass, conical outflow, size 1.5'' [Analysis: "assuming an abundance ratio of $\rm [CII]/H = 1.4\times 10^{-4}$ (Savage & Sembach 1996)"]
+  - assumption: [CII]/H = 1.4e-4; conical or bi-conical geometry; n >> n_c [Analysis: "Assuming a simplified conical or bi-conical outflow geometry and a size of 1.5$''$ (=10 kpc)"]
+- result: Outflow rate lower limit = >80 ± not stated Msun/yr [4.2 Quasar outflow: "we infer a lower limit on the outflow rate of $\rm \dot{M}_{outfl} > 80 M_{\odot}~ yr^{-1}$"]
+- result: Outflowing atomic gas mass = >2.9e8 ± not stated Msun [4.2 Quasar outflow: "M_{outfl}(atomic) > 2.9\times 10^8 M_{\odot}"]
+- limitation (authors): Lya-2 line truncated by spectral coverage; luminosity and redshift uncertain [Results: "Hence, we do not know the full velocity extent nor total luminosity of the \[CII\] emission for Ly$\alpha$-2"]
+- limitation (authors): Resolution insufficient to distinguish bridge from blending [Discussion: "Unfortunately, the current resolution is insufficient to distinguish between a true bridge, or simply blurring"]
+- not stated (card): Number of CLEAN iterations, masks, cell and image size; Which channels were line-free and used as continuum; Self-cal reference model and number of iterations; Gaussian fitting procedure for spectra; Conversion factors for FIR luminosity to SFR beyond reference to Carilli & Walter 2013; CLOUDY model parameters in detail; Spectrum extraction apertures
+
+### 2024AJ....167...72D: ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Molecular Jets and Episodic Accretion in Protostars (2024; star_formation, astrochemistry, protoplanetary_disks; observational_alma_primary)
+- question: To explore episodic accretion mechanisms, the origin of gas-phase SiO in molecular jets, and the chronologies of episodic ejection events in protostars in the Orion Molecular Cloud.
+- step 4: Calculate CO outflow mass, momentum, and outflow force (F_CO)
+  - method: Convert beam-averaged CO emission above 3sigma in each velocity channel (excluding channels near V_sys) into channel mass M_k, sum momentum P = sum(M_k V_k), and divide by dynamical time T_dyn,out = R_CO / V_CO,max with inclination correct… [3.4. Outflow Force: "Outflow force F CO was calculated from the beam-averaged CO emission across the whole velocity range above 3 σ on each lobe (blue and red) separately. To avoid contamination from ambient material, we removed a few channels near the systemic velocity after inspecting channel maps."] [3.4 Outflow Force: "T dyn,out is the length of the jet divided by the velocity of the outflow. Outflow force F CO was calculated from the beam-averaged CO emission across the whole velocity range above 3 σ on each lobe (blue and red) separately."]
+  - parameter: 3sigma threshold; channels near systemic velocity removed [3.4. Outflow Force: "Outflow force F CO was calculated from the beam-averaged CO emission across the whole velocity range above 3 σ on each lobe (blue and red) separately. To avoid contamination from ambient material, we removed a few channels near the systemic velocity after inspecting channel maps."]
+  - assumption: CO-to-H2 abundance ratio X_CO ~ 10^-4 and excitation temperature T_ex ~ 50 K in the outflow; conservative error of 40% [3.4. Outflow Force: "We assumed a CO-to-H 2 abundance ratio of X CO ∼ 10 − 4 in the outflow for a excitation temperature of T ex ∼ 50 K."] [3.4. Outflow Force: "Since the above information could not be recovered simultaneously from the present observations, we assume a conservative error of 40% in all plots in the subsequent sections."]
+  - validation: Compared F_CO values from combined maps (FOV ~ 40'') with those derived from ACA-only maps (FOV ~ 60''), finding changes only by factors of 1 to 1.5 [3.4. Outflow Force: "We also compared the present F CO values with those derived from ACA maps (FOV ∼ 60 ′′ ), and we see only changes by factors of 1 to 1.5 from the smaller primary beam values."]
+- step 6: Derive jet mass-loss rate (Mdot_j), jet kinetic luminosity (L_j,kin), SiO-to-CO abundance ratio (X_SiO/X_CO), and mass accretion rate (Mdot_acc)
+  - method: Integrate CO over jet velocities defined by SiO velocity range, convert peak emission of knots nearest to the continuum into beam-averaged N_CO, compute Mdot_j = (1/3) mu_H2 m_H (N_CO / X_CO) V_j,cor b_m, L_j,kin = (1/2) Mdot_j V_j,cor^2, … [3.6. Jet Mass-Loss Rate and Kinetic Lum…: "Next, nearest to the continuum we choose the peak emission from the knots in CO maps integrated over likely jet velocities."] [3.6. Jet Mass-Loss Rate and Kinetic Lum…: "Thus, ˙ M j can be expressed as: ˙ M j = 1 3 µ H 2 m H N CO X CO V j,cor b m , (4)"]
+  - parameter: Jet width taken as transverse beam size b_m [3.6. Jet Mass-Loss Rate and Kinetic Lum…: "Since the jet widths are not spatially resolved even at the high spatial resolution achieved, the beam size b m is taken to be the jet width."]
+  - assumption: Excitation temperature T_ex ~ 150 K within the jet; CO abundance ratio X_CO ~ 4 x 10^-4; mean molecular weight mu_H2 = 2.8; shock compression factor = 1/3; conservative error of 40% [3.6. Jet Mass-Loss Rate and Kinetic Lum…: "The peak emission is converted into beam-averaged CO column density N CO assuming a specific excitation temperature of T ex ∼ 150 K within the jet. N CO is utilized to obtain the H 2 column density N H 2 for a CO abundance ratio, X CO = N CO / N H 2 ( ∼ 4 × 10 − 4 , Glassgold et al. 1991)."] [3.6. Jet Mass-Loss Rate and Kinetic Lum…: "where µ H 2 = 2.8 is the mean molecular weight and m H is the mass of a hydrogen atom."]
+  - assumption: Optically thin CO and SiO emission for X_SiO/X_CO (treated as lower limit since tau_SiO > tau_CO) [4.3. Origin of gas-phase SiO: "Assuming optically thin CO and SiO emission, we measure the X SiO /X CO for all the SiO emitting jet sources from the innermost knots (B1 and R1 knots) and plot thse values as a function of jet mass-loss rate in Figure 9."]
+  - assumption: Stellar radius R_* ~ 2 R_sun and protostellar mass M_* = 0.1 M_sun for Mdot_acc [4.4. Accretion and Ejection Process: "For these calculations, we assume a stellar radius of R ∗ ∼ 2R ⊙ (Stahler 1988)."] [4.4. Accretion and Ejection Process: "Specifically, we consider an average mass of M ∗ = 0.1 M ⊙ for all the objects to estimate ˙ M acc ."]
+  - fitting: Linear fit to log(Mdot_j) vs log(M_Env) and log(F_CO) vs log(L_bol) and log(M_env) [4.4.2. Jet mass-loss: dependence on lum…: "A linear fit reveals a correlation as, log( ˙ M j ) = (0 . 47 ± 0 . 27) log( M Env ) − (6 . 27 ± 0 . 11) (8)"] [4.5. Correlation between outflow force …: "Linear fitting to all the young sources provides a correlation: log( F CO ) = (1 . 03 ± 0 . 09) log( L bol ) − (5 . 70 ± 0 . 15) . (12)"]
+- result: Bipolar jet mass-loss rate range (Mdot_j) = (0.08 - 5.5) x 10^-6 ± 40% M_sun yr^-1 [4.1.2. Molecular jets and protostellar …: "The objects with SiO jets exhibit small to high bipolar mass-loss rates ranging from (0.08 - 5.5) × 10 − 6 M ⊙ yr − 1 (including both blue and redshifted lobes)."]
+- result: SiO-to-CO abundance ratio in jets (X_SiO/X_CO) = 5 x 10^-4 to 10^-2 ± not stated dimensionless [4.3. Origin of gas-phase SiO: "From our observations, we see that SiO jets tend tohave X SiO /X CO in the range ∼ 5 × 10 − 4 to 10 − 2 ."]
+- result: Ratio of mass-loss to mass-accretion rate (Mdot_j / Mdot_acc) = 0.003 to 2.1 ± not stated dimensionless [4 Discussion: "0.003toantheseestimateaverageto 2.1."]
+- result: Slope of log(Mdot_j) vs log(M_Env) = 0.47 ± 0.27 dimensionless [4.4.2. Jet mass-loss: dependence on lum…: "log( ˙ M j ) = (0 . 47 ± 0 . 27) log( M Env ) − (6 . 27 ± 0 . 11) (8)"]
+- result: Slope of log(F_CO) vs log(L_bol) = 1.03 ± 0.09 dimensionless [4.5. Correlation between outflow force …: "log( F CO ) = (1 . 03 ± 0 . 09) log( L bol ) − (5 . 70 ± 0 . 15) . (12)"]
+- result: Slope of log(F_CO) vs log(M_env) = 2.02 ± 0.89 dimensionless [4.5. Correlation between outflow force …: "log( F CO ) = (2 . 02 ± 0 . 89) log( M env ) − (5 . 20 ± 0 . 31) . (13)"]
+- limitation (authors): 1.3 mm dust continuum emission may be optically thick in the central core region of extremely young protostars, so derived envelope masses represent lower limits. [3.1. 1.3 mm Continuum: "For an extremely young protostar, the 1.3 mm emission could be optically thick, especially in the central core region. Hence, this emission may represent a lower limit to the total dust column density from the inner envelope around the protostars."]
+- limitation (authors): The 2 km s^-1 velocity resolution is insufficient to probe the kinematics and geometry of resolved disks or to obtain Gaussian fits to C18O lines. [3.2. Systemic Velocity from C 18 O: "In most cases, C 18 O spread only over 2-3 channels (one channel corresponding to velocity resolution ∼ 2.0 km s − 1 ), making it challenging to get a reasonable Gaussian fit."]
+- limitation (authors): The parabolic outflow shell model is only suitable for objects with well-defined outflow shells that are distinguishable from ambient material or multiple outflows. [3.3. Physical Structure of outflow: "Here, we note that this model is suitable only for those objects that have well-defined outflow shells, i.e., outflow walls that are well distinguished from the ambient material or outflows of multiple sources."]
+- not stated (card): Complete ALMA calibration and imaging parameters (CASA version, tclean weighting/robust, deconvolver, masking, uv-tapering, continuum subtraction method, and array combination weights), which are deferred to Dutta et al. (2020); Tables 2 and 3, which are referenced in the text as containing the measured per-source continuum, outflow, and jet parameters but are omitted from the manuscript text; Ex…
+
+### 2019ApJ...881...43K: The Molecular Outflow in NGC 253 at a Resolution of Two Parsecs (2019; nearby_galaxies, milky_way_ism; observational_alma_primary)
+- question: How much molecular gas is in a non-disk (outflow) component in the center of NGC 253, and what are the molecular mass outflow rate, kinetic energy and momentum?
+- step 5: Derive outflow rate, energy and momentum
+  - method: Per-voxel rate m/(ds/v), binned by ejection time or distance; deprojected by cone geometry; E=0.5 m v^2, P=m v [4.3 Mass outflow rate: "we calculate the outflow rate $\dot{m}_i$ of the gas that was ejected at time $t_{{\mathrm{eject}},i}$ over the time interval $\Delta t_{\mathrm{cross},i}$"]
+  - parameter: Cone opening ~60 deg, axis perpendicular to disk, i=78 deg, theta 48-108 deg [4.3 Mass outflow rate: "the range of effective inclination of outflowing gas can be anywhere between $\theta = 48^\circ$ and $\theta = 108^\circ$"]
+  - assumption: Launch in the disk plane; flow perpendicular to bar plane; constant X_CO; two cases: no acceleration after launch, or constant outflow rate [4.3 Mass outflow rate: "we assume that the projected direction of flow is perpendicular the the central plane of the bar and that CO emission traces the mass with a constant conversion factor"]
+  - fitting: Monte Carlo over outflow direction on the cone surface; 16th-84th percentiles [4.3 Mass outflow rate: "We use a Monte Carlo approach to derive the errors introduced by deprojection"]
+  - validation: Compared with Bolatto et al. 2013 and Zschaechner et al. 2018 outflow rates [4.3 Mass outflow rate: "is consistent with this number using an independent and a more complete methodology than the original work"]
+- result: Outflow rate, constant-rate case, CO(1-0) = 29 ± +0.48/-0.35 dex Msun/yr [4.3: "29 M$_\odot$ yr$^{-1}$($^{+0.48}_{-0.35}$ dex), 39 M$_\odot$ yr$^{-1}$($^{+0.49}_{-0.34}$ dex)"]
+- result: Outflow rate, constant-rate case, CO(2-1) = 39 ± +0.49/-0.34 dex Msun/yr [4.3: "29 M$_\odot$ yr$^{-1}$($^{+0.48}_{-0.35}$ dex), 39 M$_\odot$ yr$^{-1}$($^{+0.49}_{-0.34}$ dex)"]
+- result: Outflow rate within past 1 Myr, CO(1-0) = 14 ± +0.25/-0.29 dex Msun/yr [4.3: "the *average* outflow rates are 14 M$_\odot$ yr$^{-1}$($^{+0.25}_{-0.29}$ dex), 20 M$_\odot$ yr$^{-1}$($^{+0.27}_{-0.37}$ dex)"]
+- result: Mass loading factor = 5.4-23.5 ± not stated dimensionless [4.3: "This results in a mass loading factor $\eta = \dot{M}_\mathrm{out} / \dot{M}_\mathrm{SFR}$ in the range $\eta \sim 5.4-23.5$."]
+- result: Outflow kinetic energy within 340 pc, CO(1-0) = 2.5e54 ± +0.96/-0.65 dex erg [4.4: "the kinetic energies amount to $2.5 \times 10^{54}$ erg ($^{+0.96}_{-0.65}$ dex) in CO(1–0)"]
+- result: Outflow momentum within 340 pc, CO(1-0) = 4.8e8 ± +0.48/-0.35 dex Msun km/s [4.4: "$4.8 \times 10^8$ M$_\odot$ km s$^{-1}$($^{+0.48}_{-0.35}$ dex) in CO(1–0)"]
+- limitation (authors): CO(3-2) field of view is small and surface brightness sensitivity is low, so its outflow values are lower limits [4.3: "The measurements in CO(3–2) should thus be interpreted as a lower limit"]
+- not stated (card): Line-free channel ranges for continuum subtraction; CO(1-0) and CO(2-1) data cubes (imaging parameters are only in earlier papers); Exact moment-mask and clean-mask definitions and the removed spiral-arm regions; Region definitions for the western superbubble and the disk-co-spatial component; Cone geometry and Monte Carlo details (number of draws, launch-site treatment); Exact feather parameters…
+
+### 2020ApJ...903..119L: The ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES). II. Molecular Outflows in the Extreme Early Stages of Protocluster Formation (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: Identify molecular outflows and study their properties, episodicity, accretion history, and feedback impact in extremely early evolutionary stages of high-mass star and protocluster formation.
+- step 2: Compute outflow physical parameters and protostellar accretion rates
+  - method: Calculate CO column density, outflow mass, momentum, energy, dynamical timescale, outflow rate, luminosity, and mechanical force from combined (12m+7m+TP) primary-beam-corrected CO 2-1 data using Equations A1-A8. Derive protostellar accret… [3.1. Outflow Detection: "After defining outflows following the procedure, we use the 12 m, 7 m, and TP combined data to compute outflow parameters."] [3.2. Outflow Parameters: "Following the approach delineated in Li et al. (2019a) (see Appendix A), we estimated the main physical parameters of each outflow, including the mass ( _M_ out ), momentum ( _P_ out ), energy ( _E_ out ), dynamical timescale ( _t_ dyn ), outflow rate ( _M_ [˙] out ), outflow energy rate (also known as outflow luminos…"]
+  - assumption: LTE and optically thin CO line wing emission; excitation temperature approximated by dust temperature [A. ESTIMATE OF OUTFLOW PARAMETERS: "In this work, we assume that CO emission is optically thin in the line wing and that the dust temperature approximate the excitation temperature of outflow gas (see Table 1), and adopt the CO-to-H 2 abundance of 10 _[−]_ [4], � COH 2 � = 10 [4] (Blake et al. 1987), and mean molecular mass per hydrogen molecule _m_ H 2…"]
+  - assumption: CO-to-H2 abundance = 10^-4; mean molecular mass m_H2 = 2.72 m_H; uncorrected for inclination [A. ESTIMATE OF OUTFLOW PARAMETERS: "In this work, we assume that CO emission is optically thin in the line wing and that the dust temperature approximate the excitation temperature of outflow gas (see Table 1), and adopt the CO-to-H 2 abundance of 10 _[−]_ [4], � COH 2 � = 10 [4] (Blake et al. 1987), and mean molecular mass per hydrogen molecule _m_ H 2…"] [3.2. Outflow Parameters: "Since the inclination angle of the outflow axes is not known, the outflow parameters and accretion rate have not been corrected for their inclination for all of outflows."]
+  - assumption: Ratio of mass accretion rate to wind mass ejection rate k = 3; wind velocity v_w = 500 km s^-1 [3.2. Outflow Parameters: "We assume a ratio of _k_ = _M_ acc _/M_ w = 3 between the mass accretion rate and the mass ejection rate (Tomisaka 1998; Shu et al. 2000)."] [3.2. Outflow Parameters: "The wind velocity _v_ w is adopted to be 500 km s _[−]_ [1], which ranges from a few km s _[−]_ [1] to over 1000 km s _[−]_ [1] in young stellar objects (YSOs; Bally 2016)."]
+  - fitting: Spearman-rank correlation test and least-squares fitting for L_bol/M_clump vs F_out,tot and M_dot_acc,tot, and for t_dyn vs M_core [Figure 5 caption: "The correlation coefficient is 0.66 between _L_ bol _/M_ clump and _F_ out _,_ tot in the Spearman-rank correlation test. The solid black line is the least-squares fitting result log( _F_ out _,_ tot ) = 0 _._ 8log( _L_ bol _/M_ clump ˙ ) _−_ 3"] [Figure 6 caption: "The Spearman-rank correlation test returns a correlation with a coefficient of 0.51. The solid red line is the best least-squares fitting result with log( _t_ dyn ) = 0 _._ 32log( _M_ core )+3 _._ 74."]
+  - validation: Tested excitation temperature range 10 to 60 K, finding CO column densities agree within a factor of 1.5. [A. ESTIMATE OF OUTFLOW PARAMETERS: "A range of excitation temperatures, from 10 to 60 K, has been used to calculate the column density in order to understand the effect of excitation temperatures on the CO column density."] [A. ESTIMATE OF OUTFLOW PARAMETERS: "The estimated CO column density agree within a factor of 1.5 in this temperature range, which indicates that the CO column density dose not significantly depend on the temperature."]
+- step 3: Measure episodic ejection knot dynamical timescales
+  - method: Visually follow contours in CO PV diagrams along outflow axes to define projected distance (lambda_knot) and velocity (v_knot) of emission knots, and compute dynamical timescales t_knot = lambda_knot / v_knot and inter-knot time spans Delt… [4.2.3. Episodic Ejection: "We visually follow contours in the PV-diagram to define the velocity and the projected distance of detected knots (see Figure 2)."] [4.2.3. Episodic Ejection: "We visually follow contours in the PV-diagram to define the velocity and the projected distance of detected knots (see Figure 2)."]
+  - parameter: Uncertainties estimated as 2 km s^-1 for velocities (3x channel width) and 0''.5 for lengths (half angular resolution) [4.2.3. Episodic Ejection: "Uncertainties are conservatively estimated as 2 km s _[−]_ [1] for velocities (3 times of channel width), and 0 _[′′]_ _._ 5 for lengths (about half of angular resolution)."]
+  - validation: Compared knot timescales estimated using individual v_knot versus lobe mean velocity v_lobe = <v_knot>, finding good agreement. [4.2.3. Episodic Ejection: "we find that the two results agree very well"]
+- result: Outflow mass (M_out) range = 0.001 to 0.32 ± not stated M_sun [3.2. Outflow Parameters: "The outflow masses range from 0.001 to 0.32 _M_ _⊙_, with a mean mass of 0.044 _M_ _⊙_ (Figure 4 and Table 2)."]
+- result: Mean outflow mass (M_out) = 0.044 ± not stated M_sun [3.2. Outflow Parameters: "The outflow masses range from 0.001 to 0.32 _M_ _⊙_, with a mean mass of 0.044 _M_ _⊙_ (Figure 4 and Table 2)."]
+- result: Outflow dynamical timescale (t_dyn) range = 0.1e4 to 3.2e4 ± not stated yr [3.2. Outflow Parameters: "The estimated outflow dynamical timescales range from 0.1 _×_ 10 [4] to 3.2 _×_ 10 [4] yr."]
+- result: Outflow ejection rate (M_dot_out) range = 2.4e-7 to 5.0e-5 ± not stated M_sun yr^-1 [3.2. Outflow Parameters: "We used the outflow mass and dynamical time to estimate the outflow ejection rates, which are between 2.4 _×_ 10 _[−]_ [7] and 5.0 _×_ 10 _[−]_ [5] _M_ _⊙_ yr _[−]_ [1] ."]
+- result: Outflow momentum (P_out) range = 0.2e-2 to 3.4 ± not stated M_sun km s^-1 [3.2. Outflow Parameters: "The outflow momenta range from 0.2 _×_ 10 _[−]_ [2] to 3.4 _M_ _⊙_ km s _[−]_ [1] ."]
+- result: Outflow energy (E_out) range = 0.4e42 to 1.2e45 ± not stated erg [3.2. Outflow Parameters: "The outflow energies are between 0.4 _×_ 10 [42] and 1.2 _×_ 10 [45] erg."]
+- result: Outflow luminosity (L_out) range = 0.2e31 to 2.1e34 ± not stated erg s^-1 [3.2. Outflow Parameters: "The outflow luminosity can be estimated by dividing the outflow energy by the outflow dynamical timescale, _L_ out = _E_ out _/t_ dyn, which are in the range of 0.2 _×_ 10 [31] and 2.1 _×_ 10 [34] erg s _[−]_ [1] ."]
+- result: Outflow mechanical force (F_out) range = 0.3e-6 to 9.8e-4 ± not stated M_sun km s^-1 yr^-1 [3.2. Outflow Parameters: "The outflow mechanical force is computed using the outflow momentum and dynamical timescale, _F_ out = _P_ out _/t_ dyn, which is between 0.3 _×_ 10 _[−]_ [6] and 9.8 _×_ 10 _[−]_ [4] _M_ _⊙_ km s _[−]_ [1] yr _[−]_ [1] ."]
+- result: Protostellar accretion rate (M_dot_acc) range = 2.0e-9 to 3.8e-6 ± not stated M_sun yr^-1 [3.2. Outflow Parameters: "The derived accretion rate ranges from 2.0 _×_ 10 _[−]_ [9] to 3.8 _×_ 10 _[−]_ [6] _M_ _⊙_ yr _[−]_ [1], with a mean value of 4.9 _×_ 10 _[−]_ [7] _M_ _⊙_ yr _[−]_ [1] ."]
+- result: Mean protostellar accretion rate (M_dot_acc) = 4.9e-7 ± not stated M_sun yr^-1 [3.2. Outflow Parameters: "The derived accretion rate ranges from 2.0 _×_ 10 _[−]_ [9] to 3.8 _×_ 10 _[−]_ [6] _M_ _⊙_ yr _[−]_ [1], with a mean value of 4.9 _×_ 10 _[−]_ [7] _M_ _⊙_ yr _[−]_ [1] ."]
+- result: Knot dynamical timescale (t_knot) range = 6e2 to 2.5e4 ± not stated yr [4.2.3. Episodic Ejection: "The estimated dynamical timescales of knot range from 6 _×_ 10 [2] to 2.5 _×_ 10 [4] yr, with the mean and median value of 8.6 _×_ 10 [3] and 6.6 _×_ 10 [3] yr, respectively (see Table 4)."]
+- result: Time span between consecutive knots (Delta t_knot) range = 3.6e2 to 7.2e3 ± not stated yr [4.2.3. Episodic Ejection: "To study the time span between consecutive ejection events, we compute the timescale difference between knots, _△t_ knot = _t_ knot _,i_ +1 - _t_ knot _,i_, which ranges from 3.6 _×_ 10 [2] to 7.2 _×_ 10 [3] yr, with a mean value of 4.4 _×_ 10 [3] yr."]
+- result: Mean time span between consecutive knots (Delta t_knot) = 4.4e3 ± not stated yr [4.2.3. Episodic Ejection: "To study the time span between consecutive ejection events, we compute the timescale difference between knots, _△t_ knot = _t_ knot _,i_ +1 - _t_ knot _,i_, which ranges from 3.6 _×_ 10 [2] to 7.2 _×_ 10 [3] yr, with a mean value of 4.4 _×_ 10 [3] yr."]
+- limitation (authors): Low-velocity and/or weak outflows may be missed due to confusion with ambient CO gas around dense cores, potentially contributing to the high fraction of unipolar outflows. [3.1. Outflow Detection: "Therefore, we might fail to identify some low-velocity and/or weak outflows because their emission can be confused with the ambient gas. We cannot completely rule out the possibility that this bias contributes to the high fraction of unipolar outflows."]
+- limitation (authors): Outflow parameters (v_max, lambda_max, M_out, P_out, E_out, etc.) are lower limits due to sensitivity limits, confusion with nearby outflows or line-of-sight emission, CO optical depth, failure of CO to trace low-density gas, and uncorrect… [3.1. Outflow Detection: "Note that both _v_ max and _λ_ max estimated here should be considered as lower limits because the outflow emission is limited by the sensitivity of the observations, can be confused by nearby outflows and/or line-of-sight emission that is not associated with the natal cloud, and these parameters have not been correct…"]
+- limitation (authors): Difference in inter-knot timescales (Delta t_knot) compared to W43-MM1 could be affected by spatial resolution differences (~4000-7500 AU vs ~2400 AU) or nonconsecutive Hubble Wedge features in evolved clustered environments. [4.2.3. Episodic Ejection: "Given the different spatial resolutions between the two studies, we cannot fully rule out the possibility that the different _△t_ knot is due to the effect of spatial resolutions as higher spatial resolutions help to resolve more individual knots."]
+- not stated (card): Tables 1, 2, and 3 (clump properties, beam sizes, dust temperatures, distances, core masses, and individual outflow parameters), which are referenced in the text but omitted from the provided manuscript; Exact rest frequencies of the 10 targeted molecular transitions and spectral window setups; Exact tclean parameters (deconvolver, cell size, image size, stopping threshold, masking, multiscale sc…
+
+### 2016ApJ...832..158Z: ALMA Cycle 1 Observations of the HH46/47 Molecular Outflow: Structure, Entrainment, and Core Impact (2016; star_formation; observational_alma_primary)
+- question: How much mass, momentum and energy does the HH 46/47 outflow carry once CO optical depth is corrected, how is it entrained, and can it disperse its parent core?
+- step 3: Compute outflow mass, momentum, energy
+  - method: LTE column density per channel with opacity correction; velocity cuts exclude cloud; max column density chosen where several isotopologues detected [3.7: "At the pixels where more than one CO isotopologues are detected, we choose the highest column density calculated from these CO isotopologues."]
+  - parameter: Tex = 15 K and 50 K; inclination 40 deg for momentum/energy [3.7: "we will calculate the mass and other properties of the outflow using two typical values of $T_{\mathrm{ex}}$, 15 K and 50 K."]
+  - assumption: CO abundance 1e-4 relative to H2; 2.34e-24 g per H2; beam filling factor 1 [3.7: "We adopt an abundance of $^{12}\mbox{CO}$ of $10^{-4}$ relative to $\mbox{H}_2$, and a gas mass of $2.34 \times 10^{-24}$ g per $\mbox{H}_2$ molecules."]
+  - fitting: Power-law fit to mass spectra m(v) ∝ v^-gamma [3.7: "We fit the combined mass spectra with power laws in a form of $m(v)\propto v^{-\gamma}$"]
+  - validation: Compared with Paper I and survey values [3.7: "are similar to those measured in Paper I with ALMA cycle 0 data."]
+- result: Total outflow mass (Tex=15 K) = 1.6 ± not stated Msun [3.7: "the measured total mass of the CO outflow is 1.6 $M_\odot$"]
+- result: Total momentum (inclination corrected) = 1.9 ± not stated Msun km/s [3.7: "the total momentum is 1.9 $M_\odot~\mbox{km s}^{-1}$ (after correcting for inclination)"]
+- result: Total energy (inclination corrected) = 3.9e43 ± not stated erg [3.7: "the total energy is $3.9\times 10^{43}$ erg (after correcting for inclination)"]
+- result: Mass spectrum slope, red lobe = -3.43 ± 0.04 dimensionless [3.7: "We found a slope of $\gamma=-3.43\pm0.04$ for the red-shifted outflow"]
+- result: Mass spectrum slope, blue lobe = -2.78 ± 0.11 dimensionless [3.7: "a slope of $\gamma=-2.78\pm0.11$ for the blue-shifted outflow"]
+- limitation (authors): Specific angular momentum is only an upper limit; envelope model is over-simplified; CO depletion neglected [4.4: "We note that the measured specific angular momentum is only an upper limit"]
+- not stated (card): CASA version and calibration/pipeline details; Self-calibration and flux scale uncertainty; Line-free channels and continuum subtraction method; Cell size, image size, clean threshold; Total power and feather scaling parameters; Exact pixel regions for outflow sub-regions; Visually fitted model parameters (no fitting code or algorithm given)
+
+### 2022A&A...668A..45L: Physics of ULIRGs with MUSE and ALMA: The PUMA project. IV. No tight relation between cold molecular outflow rates and AGN luminosities (2022; nearby_galaxies, agn_and_quasars, star_formation; observational_alma_primary)
+- question: Determine the prevalence, properties, driving mechanisms (starburst vs. AGN, momentum- vs. energy-driven), and feedback effects of spatially resolved cold molecular outflows in nearby ULIRGs, and compare CO(2-1) outflow properties with OH …
+- step 3: Define outflow velocity ranges and measure outflow sizes, velocities, masses, and energetics
+  - method: Define [v_min, v_max] for blue and red wings where centroids deviate from rotation and integrated map S/N peaks; fit beam-convolved 2D Gaussian to integrated high-velocity maps to get R_out; extract spectrum within observed R_out and integ… [4.5. Measurements of the outflow proper…: "Outflow size : to measure the outflow radius, we fit a 2D Gaussian model to the high-velocity maps, obtained integrating the flux over the high-velocity channels (see bottom left panel in Fig. 3), separately for the blue and red part."] [4.5 Measurements of the outflow propert…: "we extract the central spectrum from a radius equal to the observed _R_ _out_ (not deconvolved from the beam) and we integrate the flux in the highvelocity channels between _v_ _min_ and _v_ _max_"]
+  - parameter: |v_min| = 180-450 km s^-1; |v_max| = 300-800 km s^-1 [4.4. Outflow velocity range definition: "The _v_ _min_ values are in the range | _v_ _min_ | = 180 − 450 km s [−][1] ."] [4.4. Outflow velocity range definition: "The _v_ _max_ values are in the range | _v_ _max_ | = 300 − 800 km s [−][1] ."]
+  - parameter: Median values for 3-sigma upper limits: <v_out> = 390 km s^-1, <R_out> = 0.52 kpc [4.5. Measurements of the outflow proper…: "where ⟨ _v_ _out_ ⟩ = 390 km s [−][1] and ⟨ _R_ _out_ ⟩ = 0.52 kpc are the median outflow velocity and radius of our sample."]
+  - assumption: Cosmology: Omega_Lambda = 0.7, Omega_M = 0.3, H_0 = 70 km s^-1 Mpc^-1 [1. Introduction: "Throughout this work, we assume a cosmological model with Ω λ = 0.7, Ω M = 0.3, and _H_ 0 = 70 km s [−][1] Mpc [−][1] ."]
+  - assumption: Line luminosity ratio r_21 = L'_CO(2-1)/L'_CO(1-0) = 0.91 and ULIRG CO-to-H2 conversion factor alpha_CO = 0.78 M_sun (K km s^-1 pc^2)^-1 [4.5. Measurements of the outflow proper…: "We convert the CO(2-1) luminosity to CO(1-0) luminosity using _r_ 21 = _L_ CO(2-1) [′] [/] _[L]_ CO(1-0) [′] [=] [0][.][91] [(][Bolatto] [et] [al.] [2013b][).] [Then] [we] multiply it by the ULIRGs-like CO-to-H 2 conversion factor α= 0.78 M ⊙ /(K km s [−][1] pc [2] ), to obtain the outflow molecular (H 2 ) gas mass _M…"]
+  - assumption: Constant mass outflow rate over dynamical time t = R_out / v_out (volume density proportional to R^-2) [4.5. Measurements of the outflow proper…: "We note that this formula corresponds to the assumption that the outflow has started at a point in the past (− _t_ = − _R_ _out_ / _v_ _out_ ) and has continued with a constant _M_ [˙] _out_ (Rupke et al. 2005b; Veilleux et al. 2005; Lutz et al. 2020)."]
+  - assumption: Average isotropic inclination corrections for sample means: 1/<sin(i)> = 1.27 for velocity, 1/<cos(i)> = 2 for radius, unity for dynamical time [4.5.1. Inclination corrections: "Following Law et al. (2009), who considered the average for a collection of objects oriented isotropically in space, the average correction for the velocities is 1/ ⟨sin( _i_ )⟩ = 1/0.79 = 1.27. Analogously, we calculated the average correction for the radius: 1/ ⟨cos( _i_ )⟩ = 2."] [4.5.1. Inclination corrections: "However, the average inclination correction for the dynamical time ( _t_ _dyn_ = _R_ _out_ / _v_ _out_ ∝ _M_ _out_ / _M_ [˙] _out_ ) is unity (see Cicone et al. 2015)."]
+  - assumption: Truncated isothermal sphere for escape velocity with <M_dyn> = 3.9e10 M_sun, r = 1 kpc, truncation radius = 2 * <R_e> = 4 kpc [5.3.3 Outflow launching mechanism: "which is assumed to be a truncated isothermal sphere (e.g. Veilleux et al. 2005). We use equation (7) in Arribas et al. (2014) to estimate the average escape velocity for our sample at the average outflow radius _r_ = 1 kpc."] [5.3.4. Escape fractions: "As truncating radius we assume two times the average effective radius ⟨ _R_ _e_ ⟩ = 2 kpc (Perna et al. 2022)."]
+  - fitting: Beam-convolved 2D Gaussian fit to integrated high-velocity channel maps [4.5. Measurements of the outflow proper…: "To take into account the beam size and obtain the ‘intrinsic radius’, we convolve our model with a 2D Gaussian with the shape of the ALMA beam, and we fit this ‘convolved model’ to the maps."]
+  - validation: Tested biases using 3D biconical outflow simulations, subtraction of Gaussian fits to disk rotation, alternative maximum velocity definitions (v_max,FWHM and v_max,FW10), and comparisons with Lutz et al. (2020) and Fluetsch et al. (2019). [4.5.2. Caveats: Methods to measure outf…: "To test how much this effect could affect our measurements of the outflow properties, we consider 3D models of biconical outflows based on the models presented by Bae & Woo (2016)."] [4.5.2 Caveats: Methods to measure outfl…: "we consider 3D models of biconical outflows based on the models presented by Bae & Woo (2016)."]
+- step 5: Perform statistical two-sample tests and MCMC linear bisector fits for outflow scaling relations
+  - method: Compare outflow parameter distributions across AGN/SB and merger/interacting subsamples using survival analysis two-sample tests (Gehan, Logrank, Peto-Prentice) in ASURV; fit linear bisector relations between outflow properties, SFR, and v… [5.2.2. Outflow quantities: "To test whether two samples have different distributions, we perform a Two Sample test using the survival analysis package ASURV (Feigelson & Nelson 1985) which allows us to take into account upper limits."] [5.3.3. Outflow launching mechanism: "We fit a linear relation between these two quantities using the Monte Carlo Markov-Chain (MCMC) implementation PyStan"]
+  - software: ASURV, PyStan
+  - parameter: MCMC settings: 2000 steps, 4 chains; systematic uncertainties: 0.1 dex on log v_out, 0.3 dex on log M_out, log M_dot_out, log eta, and log(M_out/R_out) [4.5.2. Caveats: Methods to measure outf…: "For the outflow velocity, we estimate a typical uncertainty of 0.1 dex, while for _M_ _out_ and _M_ [˙] _out_ we adopt a typical uncertainty of 0.3 dex."] [Appendix B: Bisector fit methodology: "We run the algorithm for 2000 steps with 4 chains as ‘burn-in’ phase."]
+  - assumption: SFR from L_IR (after removing AGN fraction alpha_AGN) using Kennicutt & Evans (2012) relation with Kroupa & Weidner (2003) IMF; SNe momentum and energy from Kim & Ostriker (2015) and Leitherer et al. (1999) [5.3.2. Outflow energetics: "The SFR has been estimated from the IR luminosity, using the Kennicutt & Evans (2012) relation (with Kroupa & Weidner (2003) initial mass function (IMF)) after removing the fraction of luminosity associated with the AGN (α _AGN_ )."] [5.3 Outflow energetics: "The SFR has been estimated from the IR luminosity, using the Kennicutt & Evans (2012) relation (with Kroupa & Weidner (2003) initial mass function (IMF)) after removing the fraction of luminosity associated with the AGN (α _AGN_ )."]
+  - fitting: MCMC linear bisector fit with intrinsic scatter and normal noise distribution in PyStan; best fit from median and 16th-84th percentiles of posterior [Appendix B: Bisector fit methodology: "Considering two generic quantities _x_ and _y_, we fit a linear relation between them using the Monte Carlo Markov-Chain (MCMC) implementation PyStan [5] . We assume that the noise is normal distributed."] [Appendix B: Bisector fit methodology: "We derive the best fit values and the corresponding 1σ uncertainties from the median and the 16th-84th percentiles, respectively, of the marginalised posterior distributions of the parameters."]
+  - validation: Monitor MCMC convergence by checking effective sample size N_eff = N_iter / tau_int > 10. [Appendix B: Bisector fit methodology: "We check that the number of effective samples is > 10, which indicate that the algorithm has converged (Gelman et al. 2004)."]
+- result: Outflow detection rate in nuclei with log L_IR/L_sun > 11.8 = 77 ± ±7 % [5.2.1. Outflow detection rate and direc…: "We detect an outflow, defined as high-velocity (| _v_ | - 300 km s [−][1] ) CO(2-1) emission which deviates from the main rotation, in 20/26 of the nuclei with log _L_ _IR_ / _L_ ⊙ - 11.8 (77 ± 7% [1] )."]
+- result: Outflow detection rate in starburst-dominated nuclei (log L_IR/L_sun > 11.8) = 93 ± ±4 % [5.2.1. Outflow detection rate and direc…: "The percentage of detections in SB (93 ± 4%, 14/15) is higher than in AGN (55 ± 14%, 6/11)."]
+- result: Outflow detection rate in AGN-dominated nuclei (log L_IR/L_sun > 11.8) = 55 ± ±14 % [5.2.1. Outflow detection rate and direc…: "The percentage of detections in SB (93 ± 4%, 14/15) is higher than in AGN (55 ± 14%, 6/11)."]
+- result: Mean inclination-corrected outflow velocity (v_out) = 485 ± ±16 km s^-1 [5.1. Mean outflow properties: "We measure projected outflow velocities of ∼ 260 − 490 km s [−][1], with a mean outflow velocity (corrected for inclination) of 485±16 km s [−][1] ."]
+- result: Mean inclination-corrected outflow radius (R_out) = 1.07 ± ±0.08 kpc [Table 6: "mean: 485 ± 16 1.07 ± 0.08 10 ± 2 78 ± 16"]
+- result: Observed outflow radius range (R_out) = 0.17-0.94 ± not stated kpc [5.1. Mean outflow properties: "Outflow radii are in the range 0.17-0.94 kpc and the mean inclination-corrected outflow radius is 1.1±0.1 kpc."]
+- result: Mean molecular outflow mass (M_out) = 10 ± ±2 10^7 M_sun [5.1. Mean outflow properties: "The outflow masses are between 1−35×10 [7] M ⊙, with an average of (10±2)×10 [7] M ⊙ ."]
+- result: Mean molecular mass outflow rate (M_dot_out) = 78 ± ±16 M_sun yr^-1 [5.1. Mean outflow properties: "The mass outflow rates are in the range 6 − 302 M ⊙ yr [−][1], with an average outflow rate of 78 ± 16 M ⊙ yr [−][1] ."]
+- result: Mass-loading factor range (eta = M_dot_out / SFR) = 0.1-1 ± not stated dimensionless [abstract: "mass-loading factors η = _M_ [˙] _out_ / _S FR_ = 0.1−1, and an average outflow mass escape fraction of 45±6%."]
+- result: Outflow dynamical time range (t_dyn = R_out / v_out) = 0.45-2.77 ± not stated Myr [5.1. Mean outflow properties: "We find molecular outflow dynamical times ( _t_ _dyn_ = _R_ _out_ / _v_ _out_ ) in the range 0.45 − 2.77 Myr. The mean _t_ _dyn_, based on the mean observed _R_ _out_ and _v_ _out_, is 1.37 Myr"]
+- result: Median molecular outflow depletion time (t_dep = M(H2)_tot / M_dot_out) = 75 ± range 15-644 Myr [5.1. Mean outflow properties: "The outflow depletion times ( _t_ _dep_ = _M_ ( _H_ 2 ) _tot_ / _M_ [˙] _out_ ) in our sample are in the range 15 − 644 Myr, with a median of 75 Myr."]
+- result: Mean ratio of mass outflow rate to total IR luminosity (M_dot_out / L_IR) = 3.8e-11 ± ±0.6e-11 M_sun yr^-1 L_sun^-1 [5.2.2. Outflow quantities: "The average for the total sample is _M_ _out_ / _L_ _IR_ = (3.8 ± 0.6) × 10 [−][11] M ⊙ _yr_ [−][1] _L_ ⊙ [−][1] ."]
+- result: Mean outflow mass escape fraction (<f_esc>) = 45 ± ±6 % [5.3.3 Outflow launching mechanism: "will escape to the circumgalactic medium, with mean escape fraction ⟨ _f_ _esc_ ⟩ = 45 ± 6%."]
+- result: Mean escape mass outflow rate (<M_dot_esc>) = 40 ± ±10 M_sun yr^-1 [5.3.4. Escape fractions: "The escape outflow rates are in the range 1-173 M ⊙ yr [−][1], with an average ⟨ _M_ [˙] _esc_ ⟩ = 40 ± 10 M ⊙ yr [−][1] ."]
+- result: Slope of log L_out vs log SFR relation = 1.3 ± ±0.05 dimensionless [5.3.2. Outflow energetics: "log _L_ _out_ [erg s [−][1] ] = (39.4±0.08)+(1.3±0.05) log _S FR_ [M ⊙ yr [−][1] ]."]
+- result: Slope of log eta vs log v_out relation (alpha) = -1.43 ± ±0.28 dimensionless [5.3.3. Outflow launching mechanism: "The best linear bisector fit gives a slope α = −1.43 ± 0.28 (σ _intr_ = 0.35)."]
+- result: Slope of log v_out vs log SFR relation = 0.25 ± ±0.01 dimensionless [5.3.3. Outflow launching mechanism: "log _v_ _out_ ∝ (0.25 ± 0.01) · log _S FR_ ."]
+- result: Slope of log(M_out/R_out) vs log v_out relation = 2.61 ± ±0.25 dimensionless [5.3.3. Outflow launching mechanism: "The best linear bisector fit relation has a slope of 2.61 ± 0.25, which implies α = −0.39."]
+- limitation (authors): Observations measure only projected velocities along the line of sight, missing high-velocity gas moving in the plane of the sky and low-projected-velocity outflowing gas (|v| < v_min) that overlaps with disk rotation. [4.4. Outflow velocity range definition: "One caveat of our analysis is that since we are observing projected velocities, we are not sensitive to high velocity gas in the plane of the sky. Additionally, with our method we are not considering outflowing gas with low projected velocities, that is with velocities _v_ such that _v_ _min_ ( _blue_ ) < _v_ < _v_ _m…"]
+- limitation (authors): Due to limited S/N in individual velocity channels, R_out cannot be measured channel-by-channel. [4.5. Measurements of the outflow proper…: "Due to the limited S/N of the single channels, it is not possible to measure the radius in each channel, which would give a more accurate measurement to derive the mass outflow rate."]
+- limitation (authors): Individual target outflow radii and velocities cannot be corrected for inclination because outflow inclination angles relative to the line of sight and disk are unknown for most of the sample. [4.5.1. Inclination corrections: "We do not attempt to correct the outflow radii and velocities of the single targets for the inclination, since this information is not available for all objects."]
+- not stated (card): CASA version and pipeline version used for calibration and imaging (deferred to Pereira-Santaella et al. 2021); Deconvolver, weighting scheme/robust parameter, cell size, image size, and cleaning thresholds used in ALMA imaging (deferred to Pereira-Santaella et al. 2021); Solution intervals and S/N thresholds for the five phase and one amplitude self-calibration rounds on 13451+1232; Exact line-f…
+
+### 2024A&A...690A.277M: Gas flows in the central region of the Seyfert galaxy NGC 4593 with MUSE (2024; nearby_galaxies, agn_and_quasars; multi_facility_alma_minor)
+- question: Stellar kinematics, ionised gas flows, AGN feeding and feedback around the nucleus of NGC 4593.
+- step 6: Estimate ionised outflow mass
+  - method: Fit outflow Hβ intensity with [O III] kinematics fixed; use integrated broad [S II] emission to estimate density; apply the Rose et al. Hβ mass estimator. [Physical properties of the outflowing g…: "To measure the H$\beta$ line flux and hence obtain its luminosity, we first tied its kinematics to those of \[O III\]$\,\lambda$5007 to reduce the uncertainties."] [Physical properties of the outflowing g…: "Using this spectrum and the flux of the broad-components that we fitted, we obtained an electron density of $n_{\rm e}= 400\,{\rm cm}^3$."]
+  - parameter: Integrated [S II] spectrum in a nuclear aperture of diameter 2″. [Physical properties of the outflowing g…: "We thus constructed an integrated \[S II\] spectrum within a diameter of $2\ensuremath{''}$, centred on the galaxy nucleus (see Fig. [7](#fig:7)) as shown in (cite: sanders2015mosdef)."]
+  - assumption: Case B coefficient 3.03 × 10^-14 cm^3 s^-1; Te = 10^4 K. [Physical properties of the outflowing g…: "is the effective Case B coefficient (we adopted $\mathrm {3.03 \times 10 ^{-14}\,cm^{3}\,s^{-1}}$), which corresponds to an electron temperature $T_{\rm e} = 10^4\,{\rm K}$ (cite: osterbrock2006astrophysics)"]
+  - fitting: Hβ intensity is the only free parameter after tying its kinematics to [O III]. [Physical properties of the outflowing g…: "We then fitted the emission line profile leaving the intensity as the only free parameter"] [Physical properties of the outflowing g…: "To measure the H$\beta$ line flux and hence obtain its luminosity, we first tied its kinematics to those of \[O III\]$\,\lambda$5007 to reduce the uncertainties."]
+- step 7: Calculate outflow rate and energetics
+  - method: Use Ṁ = Mout Vout / Rout; kinetic power = Ṁout(Vout² + 3σ²)/2; divide kinetic power by AGN bolometric luminosity for coupling efficiency. [Physical properties of the outflowing g…: "\dot{M} = \frac{M_{\rm out} {V_{\rm out}}}{R_{\rm out}}~,"] [Physical properties of the outflowing g…: "\dot{E}_{\rm kin} = \frac{\dot{M}_{\rm out}}{2} (V_{\rm out}^2 + 3\sigma^2),"]
+  - parameter: Vout approximately 200 km s^-1: maximum measured blueshifted outflow velocity. [Physical properties of the outflowing g…: "where $V_{\rm out}$ is the outflow velocity, which we estimated as the maximum velocity that we measured for the outflowing gas."] [Physical properties of the outflowing g…: "In this case it is $\sim200$ km s$^{-1}$, derived from the blue-shifted broad-components shown in the middle panel of Fig. [4](#Fig.4)."]
+  - parameter: Rout = 2″ (340 pc); σ approximately 250 km s^-1. [Physical properties of the outflowing g…: "The outflow radius, $R_{\rm out}$, was estimated to be 2$''$ (340 pc) from the nucleus, as measured from the right panel of Fig. [4](#Fig.4)."] [Physical properties of the outflowing g…: "where $\sigma$ is the average velocity dispersion of the outflow measured from the right panel of Fig. [4](#Fig.4), of $\sim250$ km s$^{-1}$."]
+  - parameter: Literature AGN luminosities: 5 × 10^43 and 1 × 10^44 erg s^-1. [Physical properties of the outflowing g…: "the bolometric luminosity of the AGN, $\mathrm{5\times10^{43}\,erg\,s^{-1}}$, obtained from 2-10 keV X-ray observations of the galaxy ((cite: vasudevan2009simultaneous))."] [Physical properties of the outflowing g…: "(cite: ruschel2021agnifs) reported an AGN luminosity of $\mathrm{1\times10^{44}\,erg\,s^{-1}}$ based on more recent hard X-ray observations."]
+  - assumption: Expanding spherical shell accelerated at the nucleus. [Physical properties of the outflowing g…: "We adopted a model of an expanding spherical shell assumed to be accelerated at the nucleus (cite: kraemer2020mass)."]
+- result: Outflow Hβ luminosity lower limit = 4.7×10^39 ± not stated erg s^-1 [Physical properties of the outflowing g…: "As a result, the H$\beta$ luminosity that we measure, $4.7\times10^{39}$ erg s$^{-1}$, and all the derived quantities are lower limits."]
+- result: Electron density = 400 ± not stated cm^-3 [Discussion: "In the case of NGC 4593, the values of the outflow radius and the electron density are $\sim340$ pc and 400 cm$^{-3}$, respectively"]
+- result: Ionised outflow mass = ≥1.589×10^35 ± not stated kg [Physical properties of the outflowing g…: "Using this electron density, we measure a total mass of the outflow of $M_{\rm out}\geq 1.589\times 10^{35}$ kg which corresponds to $0.799\times 10^5 \,M_{\ensuremath{\odot}}$."]
+- result: Ionised outflow mass-loss rate = ≥0.048 ± not stated M⊙ yr^-1 [Discussion: "The value that we estimate from the MUSE observations is $\dot{M} \geq 0.048 \,M_{\odot}\,{\rm yr}^{-1}$, which is consistent with the empirical relation."]
+- result: Outflow kinetic power = ≥4.09×10^39 ± not stated erg s^-1 [abstract: "We estimate a mass outflow rate and kinetic power of ${\dot{M}}\geq {0.048 \,M_\odot\,{{\rm yr}^{-1}} }$ and ${\dot{E}_{\text{kin}}} \geq 4.09 \times 10^{39} \, \text{erg} \, \text{s}^{-1}$."]
+- result: Coupling efficiency = ≥8.18×10^-5 ± not stated dimensionless [Physical properties of the outflowing g…: "Considering these two values we thus derive a coupling efficiency of $\geq 8.18\times 10^{-5}$."]
+- limitation (authors): Central approximately 0.7″ stellar kinematics cannot be fitted accurately because AGN emission dilutes stellar absorption. [Stellar kinematics: "We were unable to accurately fit the stellar kinematics in the central $\sim 0.7\ensuremath{''}$ (120 pc) of the galaxy"]
+- limitation (authors): The minimum cluster size of 50 spaxels is arbitrary. [MUSE data processing: "The number of 50 spaxels is arbitrary."]
+- not stated (card): ALMA calibrated visibility or delivered image identifiers and whether archive products were used unchanged.; ALMA calibration procedure, software versions and any self-calibration.; ALMA imaging weights, deconvolution settings, beam axes, pixel scale and primary-beam treatment.; CO(1-0) continuum subtraction, velocity integration limits, noise and contour levels.; Numerical HST–ALMA astrometric s…
+
+### 2021A&A...649A..31H: Kiloparsec view of a typical star-forming galaxy when the Universe was ∼1 Gyr old. I. Properties of outflow, halo, and interstellar medium (2021; high_z_galaxies; observational_alma_primary)
+- question: Kiloparsec-scale ISM, outflow, and extended [C ii] emission properties of HZ4 at z≈5.5.
+- step 8: Convert broad [C ii] luminosity to outflow mass
+  - method: Evaluate density-, temperature-, and metallicity-dependent κ[CII]; multiply broad-component luminosity by conservative κ[CII]≈1.5. [Outflows: evidence for an outflow along…: "we first need to estimate the atomic gas mass in the outflow based on the \[C ii\] luminosity of the broad Gaussian component."] [Outflows: evidence for an outflow along…: "$M_{\rm H}=\kappa_{\rm [CII]}\times L_{\rm[CII]}$"]
+  - software: MAPPINGS (analytic abundance function)
+  - parameter: κ[CII]≈1.5 M⊙ L⊙−1. [Outflows: evidence for an outflow along…: "assume $\kappa_{\rm [CII]}\approx1.5$ (i.e., maximal excitation and solar metallicity)."] [Using the [C ii] luminosity in the outf…: "\kappa_{\rm [CII]}~(M_{\odot}~L_{\odot}^{-1})"]
+  - parameter: Explored nH=0.1–10^5 cm−3, T=10–10^4 K, 12+log10(O/H)=7–9. [Outflows: evidence for an outflow along…: "the neutral gas density ($0.1\leq n_{\rm H} \leq 10^5$ cm$^{-3}$), temperature ($10 \leq T \leq 10^{4}$ K), and metallicity ($7\leq12+log_{10}({\rm O/H})\leq9$)."]
+  - assumption: Optically thin [C ii]; negligible background emission. [Using the [C ii] luminosity in the outf…: "from collisional excitation in the optically thin limit and negligible background emission"]
+  - assumption: H0-dominated collisional excitation; 36% helium, μ=1.36. [Using the [C ii] luminosity in the outf…: "We have assumed a standard composition for the gas of 36% helium ($\mu=1.36$)."] [Using the [C ii] luminosity in the outf…: "for gas where the collisional excitation of C$^{+}$ is dominated by hydrogen atoms (H$^0$)."]
+  - assumption: Maximal excitation: T≫91 K and n≫ncrit∼10^3 cm−3; solar metallicity. [Outflows: evidence for an outflow along…: "In the case of maximal excitation ($T\gg91$ K, $n\gg n_{\rm crit}\sim10^{3}$ cm$^{-3}$) and gas with solar metallicity, the mass-to-light ratio is $\kappa_{\rm [CII]}\approx1.5$."]
+  - assumption: MAPPINGS C/H–O/H relation renormalized to depleted Galactic ISM at Orion oxygen abundance. [Using the [C ii] luminosity in the outf…: "following the analytic function from the MAPPINGS photoionization code (cite: rhc_nicholls17)"] [Using the [C ii] luminosity in the outf…: "This function has been renormalized to obtain the measured local Galactic depleted ISM carbon abundance (cite: rhc_gerin15) when using the oxygen gas-phase abundance of the Orion nebula (cite: rhc_sd11)."]
+  - validation: Explore κ dependence; half-solar or one-tenth-solar metallicity increases κ by factors ≈3 or ≈27. [Outflows: evidence for an outflow along…: "If the metallicity of the gas decreases to half or one tenth solar, then $\kappa_{\rm [CII]}$ increases approximately by a factor $\times3$ or $\times27$, respectively."]
+- result: Region 1 neutral outflow mass = ≈1.2×10^8 ± not stated M⊙ [Outflows: evidence for an outflow along…: "This results in a neutral gas mass in the outflow of $M_{\rm out,1}\approx1.2\times10^{8}$ M$_{\odot}$ and $M_{\rm out,2}\approx8.5\times10^{7}$ M$_{\odot}$ for regions 1 and 2 respectively."]
+- result: Region 2 neutral outflow mass = ≈8.5×10^7 ± not stated M⊙ [Outflows: evidence for an outflow along…: "This results in a neutral gas mass in the outflow of $M_{\rm out,1}\approx1.2\times10^{8}$ M$_{\odot}$ and $M_{\rm out,2}\approx8.5\times10^{7}$ M$_{\odot}$ for regions 1 and 2 respectively."]
+- limitation (authors): Cannot independently constrain G0 and nH without an additional PDR line. [ISM properties: the relationship betwee…: "Unfortunately, to independently constrain $G_{0}$ and $n_{\rm H}$, it is necessary to have observations of at least one additional PDR line (e.g., one of the \[O i\] transitions)."]
+- limitation (authors): Projected outflow velocities are likely lower limits. [Outflows: evidence for an outflow along…: "These velocities are most likely lower limits as we are not considering projection effects."]
+- limitation (authors): Conservative maximal-excitation solar-metallicity conversion produces lower-limit outflow masses; metallicity may be lower. [Outflows: evidence for an outflow along…: "This effectively represents a lower limit to the amount of gas in the outflow traced by the \[C ii\] line emission (cite: rhc_veilleux20)."]
+- not stated (card): Calibration pipeline/manual workflow, flagging choices, calibration scripts, and absolute flux-scale uncertainty.; Spectral-window bandwidths, native channelization, and continuum channel selections.; Whether and how continuum was subtracted from the line cube.; tclean cell size, image size, multiscale scales, automasking thresholds, and spectral regridding settings.; Exact aperture coordinates a…
+
+### 2024A&A...683A.169W: JWST discovers an AGN ionization cone but only weak radiatively driven feedback in a powerful z ≈ 3.5 radio-loud AGN (2024; agn_and_quasars, high_z_galaxies; multi_facility_alma_minor)
+- question: How do jet and radiative (quasar-mode) feedback affect the warm ionized ISM of the z~3.5 radio-loud AGN 4C+19.71, studied with JWST NIRSpec IFU line-ratio diagnostics and outflow estimates (ALMA Band 8 only locates the dust)
+- step 7: estimate ionized outflow mass, rate, energetics and coupling efficiency
+  - method: Red and blue components of the nuclear spectrum taken as outflowing clouds; M_ion from Halpha luminosity, Mdot = M v / dR, momentum flux and kinetic luminosity, efficiency = L_kin / L_bol [4.3 Inefficient quasar-driven outflow a…: "we focus on the red and blue components (Table [1](#tab:1Demission_kine) and [4](#tab:emissionline)) and assume them to be the redshifted and blueshifted outflow clouds"] [4.3 Inefficient quasar-driven outflow a…: "We report the summation of the red and blue components as the estimated total outflow rate."]
+  - parameter: dR = half of the extraction aperture size, 0.7 kpc [4.3 Inefficient quasar-driven outflow a…: "For the distance $\Delta R$, we use half of the physical size of the extraction aperture, $0.7\,$kpc."]
+  - parameter: v_ion = |dv| + sigma_v [4.3 Inefficient quasar-driven outflow a…: "For the velocity, we use the $v_{\rm ion} = |\Delta v|+\sigma_{v}$ (cite: Rupke_2013; Vayner_2023Q3D_2)."]
+  - assumption: T_e ~ 15000 K [4.3 Inefficient quasar-driven outflow a…: "We assume an electron temperature $T_{e}\simeq15\,000\,$K"]
+  - assumption: n_e = 500 cm^-3 fiducial [4.3 Inefficient quasar-driven outflow a…: "We use the fiducial value $n_{e}=500\,\mathrm{cm^{-3}}$ from (cite: Nesvadba_2017b)."]
+  - assumption: L_bol from infrared AGN luminosity with conversion factor 6 [4.3 Inefficient quasar-driven outflow a…: "the bolometric luminosity of 4C+19.71 is estimated to be $L_{\rm bol}\sim2.5\times10^{47}\,\mathrm{erg\,s^{-1}}$"]
+  - validation: Sensitivity checked by using n_e from the observed [S II] ratio (efficiency becomes ~1e-7) and by raising the speed by a factor of three [E Estimation of electron density: "If we nevertheless use $n_{e}$ based on our estimation, the radiative coupling efficiency becomes $\sim10^{-7}$"]
+- result: Outflow velocities of red and blue components relative to central = 334, -386 ± not stated km/s [4.3 Inefficient quasar-driven outflow a…: "$\Delta v_{\rm red}=334\,\mathrm{km\,s^{-1}}$ and $\Delta v_{\rm blue}=-386\,\mathrm{km\,s^{-1}}$"]
+- result: Ionized outflow mass (red, blue) = 1e5, 1e6 ± not stated Msun [4.3 Inefficient quasar-driven outflow a…: "we find $M_{\rm ion} = 10^5$ and $10^6$ M$_\odot$ for the red and blue components, respectively."]
+- result: Total ionized outflow rate = 2 ± not stated Msun/yr [4.3 Inefficient quasar-driven outflow a…: "This gives a total $\dot{M}_{\rm ion}$ of $2\,\mathrm{M_{\odot}\,yr^{-1}}$."]
+- result: Outflow momentum flux and kinetic luminosity = 1.5e34 dyne, 8.0e41 erg/s ± not stated dyne; erg/s [4.3 Inefficient quasar-driven outflow a…: "We calculate values for $\dot{P}_{\rm ion}^{\text {outflow }}$ and $L_{\rm ion}^{\text{kinetic}}$ of $1.5\times10^{34}\,\mathrm{dyne}$ and $8.0\times10^{41}\,\mathrm{erg\,s^{-1}}$, respectively."]
+- result: Bolometric luminosity of 4C+19.71 = ~2.5e47 ± not stated erg/s [4.3 Inefficient quasar-driven outflow a…: "the bolometric luminosity of 4C+19.71 is estimated to be $L_{\rm bol}\sim2.5\times10^{47}\,\mathrm{erg\,s^{-1}}$"]
+- result: Radiative coupling efficiency L_kin/L_bol (fiducial n_e) = ~1e-5 ± not stated dimensionless [4.3 Inefficient quasar-driven outflow a…: "is $\sim 10^{-5}$"]
+- result: Radiative coupling efficiency using observed [S II]-based n_e = ~1e-7 ± not stated dimensionless [E Estimation of electron density: "the radiative coupling efficiency becomes $\sim10^{-7}$"]
+- limitation (authors): ALMA data are used only for a dust position; detailed ALMA analysis deferred [2 4C+19.71, observation and data proces…: "A detailed analysis of the ALMA observations is beyond the scope of this paper and will be presented in a forthcoming paper."]
+- limitation (authors): NIRSpec FoV is only sensitive to central clumps, not extended diffuse emission or the jet hot spots [4.3 Inefficient quasar-driven outflow a…: "Our NIRSpec IFU data is only sensitive to the central clumps, $\lesssim20\,$kpc, but not to extended diffuse emission."]
+- limitation (authors): Outflow mass is uncertain because it scales inversely with n_e [4.3 Inefficient quasar-driven outflow a…: "One of the main uncertainties is the estimation of $M_{\text {ion}}$, which is inversely proportional to $n_{e}$."]
+- not stated (card): Which ALMA archive product (pipeline continuum image, version, calibration/imaging parameters) provided the 400.3 GHz image, its rms and the beam parameters; ALMA continuum peak flux density and S/N (only S/N~10 and beam ~0.2 arcsec are given); q3dfit configuration: initial guesses, line-width and velocity bounds, continuum model per spaxel, how spaxel fits were visually selected; Exact aperture …
+
+### 2015ApJ...811L...4Z: Origin and Kinematics of the Eruptive Flow from XZ Tau Revealed by ALMA (2015; star_formation; observational_alma_primary)
+- question: What are the kinematics and origin of the eruptive bubble-like molecular flow from the multiple system XZ Tau, and which component drives it?
+- step 3: Outflow mass, energy and dynamical age
+  - method: Optically thin LTE mass equation; dynamical age = size/velocity x tan(theta) [Results and Discussion: "Assuming that the $^{12}$CO(1-0) line emission is optically thin and in Local Thermodynamic Equilibrium, we estimate the outflow mass using the following equation"]
+  - parameter: Tex = 10 K; D = 150 pc; radial velocity 5 km/s; size 1''; angle 30 deg [Results and Discussion: "Taking a radial velocity for the CO of 5 ${\,{\textnormal{km}}\,{\textnormal{s}}^{-1}}$"]
+  - assumption: H2/CO abundance ~1e4; mean molecular weight 2.8; optically thin, LTE [Results and Discussion: "where we used 2.8 as mean molecular weight, and X$_\frac{H_2}{CO}$ is the abundance ratio between the molecular hydrogen and the carbon monoxide ($\sim$$10^4$"]
+  - validation: Compared dynamical age with the 34 yr age of the optical bubble [Results and Discussion: "with the smaller value close to the estimated age of 34 years for the bubble by the time the ALMA data was taken."]
+- result: Collimated outflow mass = 3e-7 ± not stated Msun [Results and Discussion: "We then estimate a mass for the molecular collimated outflow powered by XZ Tau A of approximately 3 $\times$ $10^{-7}$ M$_\odot$."]
+- result: Kinetic energy = 3e37 ± not stated erg [Results and Discussion: "We also estimated a kinetic energy of 3 $\times$ 10$^{37}$ ergs."]
+- result: Dynamical age range = 33-266 ± not stated yr [Results and Discussion: "This implies an age estimate between 33 and 266 years"]
+- limitation (authors): Deeper observations are needed to refine the kinematic interpretation [Results and Discussion: "Deeper observations are needed to refine our kinematic interpretation for this rotating and expanding structure."]
+- not stated (card): CASA version and calibration script details; Clean mask, threshold, niter, cell and image size; Continuum subtraction and line-free channels; Outflow lobe sizes and integrated intensities used for the mass; Procedure to derive the kinetic energy; PV cut width and extraction details; Flux scale uncertainty
+
+### 2014ApJ...797...90S: An Infrared-luminous Merger with Two Bipolar Molecular Outflows: ALMA and SMA Observations of NGC 3256 (2014; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: What are the structure of the molecular gas around the two merger nuclei of NGC 3256, and the nature and driver of its high-velocity molecular gas (outflows)?
+- step 5: High-velocity gas flux, mass, outflow rate
+  - method: Integrate channels offset >~224 km/s from Vsys; split mass between nuclei via blueshifted fractions; outflow rate = mass / (extent / deprojected velocity) [3.3.3: "The mass of high-velocity molecular gas associated with each nucleus is estimated to be $6.3\times10^7 \mbox{$X_{20}$}\, \mbox{$M_\odot$}$ for the northern nucleus"]
+  - assumption: X20=1 for outflow; outflow axis perpendicular to nuclear disk; same inclination as disk [5.1.2: "We assumed for this the outflow axis to have the same inclination as the northern nuclear disk"]
+  - validation: Rejected continuum-subtraction error, line blending and correlator response as origin of wings [3.3.5: "We regard our detection of these high-velocity emission components as robust for the following reasons."]
+- result: Northern outflow mass outflow rate = 60 X20 ± lower limit Msun/yr [5.1.2: "We estimate the outflow rate from the northern nucleus to be $\dot{M}_{N} \approx 60 \mbox{$X_{20}$}$ $M_\odot$ yr$^{-1}$."]
+- result: Southern outflow mass outflow rate (i=80 deg) = 50 X20 ± not stated Msun/yr [5.2.4: "estimated to be $\dot{M}_{S} \approx 50 \mbox{$X_{20}$}$ and $25 \mbox{$X_{20}$}$ $M_\odot$ yr$^{-1}$ for $i_{\rm S, outflow} = 80\ensuremath{^\circ}$ and 70$^\circ$"]
+- result: High-velocity molecular gas mass = 8.8e7 X20 ± not stated Msun [3.3.3: "$8.8\times10^7 \mbox{$X_{20}$}\, \mbox{$M_\odot$}$ from the high-velocity CO(1–0) line flux"]
+- result: Southern outflow maximum deprojected velocity (i=80 deg) = 2600 ± not stated km/s [5.2.3 Inclination Correction: "as large as 2600 km s$^{-1}$ ($= 450\, \mbox{km s$^{-1}$}/\cos 80\ensuremath{^\circ}$)"]
+- limitation (authors): Mass estimates depend on uncertain X_CO; may be an order of magnitude lower if optically thin [7 Discussion and Conclusions: "Because most outflow parameters in Table 8 depend on $X_{20}$, followup studies on the physical and chemical properties of the high-velocity gas are highly desired."]
+- not stated (card): Line-free channel ranges for continuum and per-line continuum subtraction; Clean thresholds, masks, cell and image sizes, number of iterations; Self-calibration (if any) and flagging details; Exact moment-map cutoffs; Velocity-field fitting method and software for p.a./inclination; Gaussian spectral fit details and aperture definitions; Whether the CASA pipeline or manual scripts were used
+
+### 2025A&A...701A.120P: ALMA survey of a massive node of the Cosmic Web at z ∼ 3: II. A dynamically cold and massive disk galaxy in the proximity of a hyper-luminous quasar (2025; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Characterize the massive rotating disk MQN01-QC near QSO CTS G18.01 and test the origin of the quasar host's blueshifted CO(4–3) emission.
+- step 16: Estimate a conditional molecular outflow rate
+  - method: Treat half the broad CO component as outflow; derive molecular mass and Mdot=Mout vout/Rout; calculate gas-depletion and star-formation timescales. [Origin of the blueshifted emission of t…: "$\dot{M}_{\rm H2} = (M_{\rm H2}^{\rm out} v_{\rm out})/R_{\rm out}$"] [Origin of the blueshifted emission of t…: "We therefore take into account only half of broad line luminosity."]
+  - parameter: Blue side <−300 km s−1; vout≈770 km s−1, 95th velocity percentile; Rout=quasar CO half-light radius. [Origin of the blueshifted emission of t…: "We consider only the blueside of the broad component at velocities of $<-300\,{\rm km\,s^{-1}}$"] [Origin of the blueshifted emission of t…: "$v_{\rm out}\simeq770\,{\rm km\,s^{-1}}$ as the 95th percentile of the cumulative velocity distribution of the broad line component"]
+  - assumption: Outflow interpretation; r41=0.87; αCO=0.5 M_sun (K km s−1 pc²)−1. [Origin of the blueshifted emission of t…: "The CO(4–3) blue wing may indeed trace outflowing gas from the front side of the quasar host."] [Origin of the blueshifted emission of t…: "a CO(4–3)-to-CO(1–0) line luminosity ratio of $r_{41} = 0.87$ (cite: CarilliWalter2013), and a conservative $\alpha_{\rm CO} = 0.5\,M_{\astrosun}\,({\rm K\,km\,s^{-1}\,pc^{2}})^{-1}$."]
+  - validation: Compare with published ionized outflow, molecular-outflow velocities and empirical AGN-wind relation; origin remains ambiguous. [Origin of the blueshifted emission of t…: "This value places the outflow along the empirical relation for AGN winds (cite: Fiore+2017; Bischetti+2019b)"] [Origin of the blueshifted emission of t…: "we cannot rule out any of the two alternative scenarios (i.e., merger or outflow) with the available information."]
+- result: Conditional molecular outflow rate = ≃1.7 × 10^3 ± not stated (αCO/0.5) M_sun yr−1 [Origin of the blueshifted emission of t…: "$\dot{M}_{\rm H2} \simeq 1.7\times10^{3}\,(\alpha_{\rm CO}/0.5)\,M_{\astrosun}\,{\rm yr^{-1}}$."]
+- result: Conditional outflow depletion timescale = ≃20 ± not stated Myr [Origin of the blueshifted emission of t…: "$\tau_{\rm dep}=M_{\rm H2}/\dot{M}_{\rm H2} \simeq 20\,{\rm Myr}$"]
+- result: Quasar gas-consumption timescale through star formation = ≃150 ± not stated Myr [Origin of the blueshifted emission of t…: "$\tau_{\rm SF} = M_{\rm H2}/{\rm SFR_{IR}}\simeq 150\,{\rm Myr}$"]
+- limitation (authors): Gas-mass uncertainties omit conversion-factor systematics. [Molecular gas mass and dust characteris…: "the reported uncertainties on molecular gas masses do not take into account systematic uncertainties on the assumed conversion factors."]
+- limitation (authors): Stellar mass has quasar-subtraction and limited-filter systematics; quoted aperture-flux errors exclude potential systematic errors. [Stellar mass estimation of MQN01-QC fro…: "considering the photometric systematic uncertainties originating from the quasar light subtraction and the lack of flux measurements from other filters."]
+- not stated (card): Exact line-free channel ranges for continuum imaging and imcontsub.; Complete tclean calls, including image dimensions, spectral frame and velocity convention, clean iteration limit, and mask centers.; Explicit final cleaned-cube spectral grid; 25 km s−1 is specified for the initial dirty cube.; Detailed band 6 mosaic acquisition, calibration and imaging recipe deferred to Paper I.; Noise-estimat…
+
+### 2019A&A...630A..59B: Widespread QSO-driven outflows in the early Universe (2019; agn_and_quasars, high_z_galaxies; archival_reuse)
+- question: Do high-z QSOs show faint broad [CII] wings tracing cold outflows, detectable by stacking archival ALMA [CII] data?
+- step 6: Outflow mass, rate, power, momentum load
+  - method: Hailey-Dunsheath10 mass relation; Mdot=v M/R; Edot=0.5 Mdot v^2; momentum load vs L_AGN/c [Discussion: "$$\dot{M}_{\rm out} = \frac{v_{\rm out} \times M_{\rm out}}{R_{\rm out}}$$"]
+  - parameter: v_out=|Delta v|+FWHM_broad/2; R_out~3.5 kpc [Discussion: "$v_{\rm out}= |\Delta v_{\rm broad}| + \rm FWHM_{[CII]}^{broad}/2$"]
+  - assumption: optically thin [CII], n>>n_crit, X_C+~1e-4, T=200 K, 0.7 PDR fraction [Discussion: "we consider a conservative $X_{\rm C^+}\sim10^{-4}$ and a gas temperature of 200 K, both typical of PDRs"]
+  - validation: Assuming T from 100 to 1000 K changes mass by only 20% [Discussion: "Assuming a temperature from 100 K to 1000 K would imply a variation of only 20% in the resulting gas mass."]
+- result: Outflowing neutral gas mass = 3.7e8 ± 0.7e8 Msun [Discussion: "$M_{\rm out} = (3.7\pm0.7) \times10^8$ M$_\odot$"]
+- result: Mass outflow rate, whole stack = 100 ± 20 Msun/yr [Discussion: "$\dot{M}_{\rm out} = 100\pm20$ M$_\odot$ yr$^{-1}$"]
+- limitation (authors): Interferometric data may miss extended diffuse emission; stacking dilutes orientations [Conclusions: "we cannot exclude that additional, more extended emission is present but missed by the interferometric data used for the stacking."]
+- not stated (card): List of the 48 QSOs with per-source flux scaling/calibration corrections (table not in text); Exact clean threshold and iteration count per source; Which sources were calibrated manually vs pipeline; Exact aperture definition/centering and handling of channels with partial coverage; Initial guesses for the Gaussian fits; How the 100 empty positions were chosen; Fruchter&Hook-based cube regridding…
+
+### 2018MNRAS.480.4991G: ALMA imaging of the nascent planetary nebula IRAS 15103-5754 (2018; evolved_stars; observational_alma_primary)
+- question: What are the morphology and kinematics of the circumstellar structure of the nascent PN IRAS 15103-5754, and what physical processes operate at the beginning of the PN phase?
+- step 5: CO and HCO+ outflow masses
+  - method: LTE optically thin CO(2-1) and (3-2) for high-velocity gas (>30 km/s); HCO+ outflow mass assuming abundance 1e-7 [3.3.1 A biconical outflow: "Assuming LTE and optically thin emission in both CO transitions for the high-velocity gas, we obtain a total mass of 0.03 − 0.10 M ⊙ for the outflow"]
+  - assumption: Tex 60-180 K [3.3.2 A high-density outflow: "assuming excitation temperatures 60-180 K"]
+  - validation: Could not obtain consistent Tex from CO(3-2)/CO(2-1), suggesting non-LTE [3.3.1 A biconical outflow: "We could not obtain consistent values of excitation temperatures from the ratio CO(3-2)/CO(2-1) at different velocities"]
+- result: CO high-velocity outflow mass = 0.03-0.10 ± not stated Msun [3.3.1 A biconical outflow: "we obtain a total mass of 0.03 − 0.10 M ⊙ for the outflow"]
+- result: HCO+ outflow mass = 0.02-0.04 ± not stated Msun [3.3.2 A high-density outflow: "We obtain an estimate of 0.02-0.04 M ⊙ for the HCO [+] outflow"]
+- limitation (authors): Mass and mass-loss estimates are very uncertain; distance is a single uncertain literature estimate [3.1 Continuum emission: "our estimates of mass and mass-loss rate are very uncertain, as they depend on several parameters that are not well constrained"]
+- limitation (authors): Torus model too simple for close reproduction; no detailed fit [3.2 Line emission: an expanding torus: "Our model of HCO [+] emission is only intended as an illustration of the general geometric characteristics of the torus"]
+- not stated (card): cell size and image size; clean masks, threshold and number of iterations; line-free channel ranges for continuum; self-calibration solution intervals and number of iterations; flux scale uncertainty; uv-range/taper details beyond the 300 kilolambda cut; free parameter values (density, HCO+ profile exponents) of the torus model; fitting procedure used for the biconical model (done by eye?); metho…
+
+### 2018Sci...361.1016S: Fast molecular outflow from a dusty star-forming galaxy in the early Universe (2018; high_z_galaxies; observational_alma_primary)
+- question: Is there a molecular (OH) outflow from the lensed dusty star-forming galaxy SPT2319-55 at z=5.3, and how large is its mass outflow rate relative to the SFR?
+- step 5: Derive mass outflow rate
+  - method: Optically thin OH column density from wind equivalent width, converted to H2, then thin-shell Mdot = 4 pi R^2 f_cov mu m_H N_H v/R; also scaled via empirical Weq-Mdot correlation [Mass Outflow Rate Determination: "We used the time-averaged thin-shell approximation of (cite: rupke05) to calculate the molecular mass outflow rate"]
+  - parameter: f_cov ~0.8, R ~600 pc, v = 440 km/s [Mass Outflow Rate Determination: "the wind material is at a typical distance comparable to the galaxy continuum-emitting size, $\sim$600 pc, and use the mean wind velocity 440 km s$^{-1}$"]
+  - assumption: Tex = Tdust = 100 K; OH/H2 = 5e-6; mu = 1.36 [Mass Outflow Rate Determination: "We assume $T_{\rm{ex}} = \ensuremath{T_{\rm{dust}}}= 100$ K as found for high-velocity OH winds in the literature"]
+  - validation: Uncertainty at least factor 2, up to 10 acknowledged [Mass Outflow Rate Determination: "We stress again that both estimates carry large systematic uncertainties of at least a factor of 2, possibly rising to a factor of 10"]
+- result: Minimum mass outflow rate (optically thin) = 60 ± not stated Msun/yr [main text: "we find a minimum mass outflow rate $\ensuremath{\dot M_{\rm{out}}}\gtrsim 60$ $\rm{M}_\odot$ yr$^{-1}$"]
+- result: Likely mass outflow rate = 510 ± factor ≥2 systematic Msun/yr [main text: "is $\ensuremath{\dot M_{\rm{out}}}\sim 510$ $\rm{M}_\odot$ yr$^{-1}$"]
+- result: Outflow mass = 7e8 ± not stated Msun [Mass Outflow Rate Determination: "the total outflow mass is $\sim7\times10^8$ $\rm{M}_\odot$"]
+- result: Escape fraction = ~10% ± not stated percent [main text: "$\sim$10% of the outflowing material will escape SPT2319$-$55"]
+- limitation (authors): Mass outflow rates highly uncertain (optical depth, geometry, OH abundance) [Mass Outflow Rate Determination: "The mass outflow rates derived in this section should be considered highly uncertain."]
+- limitation (authors): Bimodal lens solution [Lens Model Parameters: "There is a bimodal solution in the lens parameters"]
+- not stated (card): CASA version used by the pipeline; Imaging task and cleaning parameters (threshold, masks, cell and image size); Exact channel ranges used for continuum vs OH in imaging; Lens model MCMC sampler, priors and parameter values; Aperture region definition and spectral fit procedure/priors; Flux calibrator flux density and absolute flux uncertainty; Lens modelling code is not publicly named/released b…
+
+## All papers in this technique
+
+- 2013A&A...558A.124C (2013): ALMA observations of feeding and feedback in nearby Seyfert galaxies: an AGN-driven outflow in NGC 1433
+- 2013ApJ...763..120C (2013): The Anatomy of an Extreme Starburst within 1.3 Gyr of the Big Bang Revealed by ALMA
+- 2013ApJ...774...39A (2013): ALMA Observations of the HH 46/47 Molecular Outflow
+- 2013ApJ...774L...7M (2013): ALMA Observations of the Massive Molecular Outflow G331.512-0.103
+- 2013ApJ...775L..31S (2013): ALMA Observations of the IRDC Clump G34.43+00.24 MM3: Hot Core and Molecular Outflows
+- 2013Natur.499..450B (2013): Suppression of star formation in the galaxy NGC 253 by a starburst-driven molecular wind
+- 2014A&A...567A.125G (2014): Molecular line emission in NGC 1068 imaged with ALMA. I. An AGN-driven outflow in the dense molecular gas
+- 2014A&A...572A..40E (2014): Outflow of hot and cold molecular gas from the obscured secondary nucleus of NGC 3256: closing in on feedback physics
+- 2014ApJ...784...78R (2014): Massive Molecular Gas Flows in the A1664 Brightest Cluster Galaxy
+- 2014ApJ...785...44M (2014): A 10<SUP>10</SUP> Solar Mass Flow of Molecular Gas in the A1835 Brightest Cluster Galaxy
+- 2014ApJ...789L...4T (2014): ALMA Observations of a High-density Core in Taurus: Dynamical Gas Interaction at the Possible Site of a Multiple Star Formation
+- 2014ApJ...790..160S (2014): ALMA Observations of a Candidate Molecular Outflow in an Obscured Quasar
+- 2014ApJ...797...90S (2014): An Infrared-luminous Merger with Two Bipolar Molecular Outflows: ALMA and SMA Observations of NGC 3256
+- 2015A&A...580A...1M (2015): The fast molecular outflow in the Seyfert galaxy IC 5063 as seen by ALMA
+- 2015ApJ...798...31A (2015): Suppression of Star Formation in NGC 1266
+- 2015ApJ...811L...4Z (2015): Origin and Kinematics of the Eruptive Flow from XZ Tau Revealed by ALMA
+- 2015ApJ...812...59O (2015): Geometric and Kinematic Structure of the Outflow/Envelope System of L1527 Revealed by Subarcsecond-resolution Observation of CS
+- 2015ApJ...815..106H (2015): Sgr B2(N): A Bipolar Outflow and Rotating Hot Core Revealed by ALMA
+- 2015Natur.527...70P (2015): Episodic molecular outflow in the very young protostellar cluster Serpens South
+- 2016A&A...587A.145B (2016): A young bipolar outflow from IRAS 15398-3359
+- 2016A&A...593A..92B (2016): Further ALMA observations and detailed modeling of the Red Rectangle
+- 2016ApJ...821L...3T (2016): An Ordered Bipolar Outflow from a Massive Early-stage Core
+- 2016ApJ...823...68S (2016): Gas Dynamics and Outflow in the Barred Starburst Galaxy NGC 1808 Revealed with ALMA
+- 2016ApJ...827...72S (2016): The Detection of a Hot Molecular Core in the Large Magellanic Cloud with ALMA
+- 2016ApJ...828..100F (2016): Outflow Detection in a 70 μm Dark High-Mass Core
+- 2016ApJ...832..142Z (2016): The Molecular Wind in the Nearest Seyfert Galaxy Circinus Revealed by ALMA
+- 2016ApJ...832..158Z (2016): ALMA Cycle 1 Observations of the HH46/47 Molecular Outflow: Structure, Entrainment, and Core Impact
+- 2017A&A...600A.139H (2017): The impact of a massive star cluster on its surrounding matter in the Antennae overlap region
+- 2017A&A...604A..60B (2017): Exploring molecular complexity with ALMA (EMoCA): Detection of three new hot cores in Sagittarius B2(N)
+- 2017A&A...605A..28D (2017): The extended molecular envelope of the asymptotic giant branch star π<SUP>1</SUP> Gruis as seen by ALMA. I. Large-scale kinematic structure…
+- 2017A&A...608A..38O (2017): Properties of the molecular gas in the fast outflow in the Seyfert galaxy IC 5063
+- 2017ApJ...834..135T (2017): Bulge-forming Galaxies with an Extended Rotating Disk at z ~ 2
+- 2017ApJ...841..110S (2017): The Coldest Place in the Universe: Probing the Ultra-cold Outflow and Dusty Disk in the Boomerang Nebula
+- 2017ApJ...841..130A (2017): The Luminous Blue Variable RMC 127 as Seen with ALMA and ATCA
+- 2017ApJ...843...18V (2017): Quasar Feedback in the Ultraluminous Infrared Galaxy F11119+3257: Connecting the Accretion Disk Wind with the Large-scale Molecular Outflow
+- 2017ApJ...847...92H (2017): ALMA Observations of Dust Polarization and Molecular Line Emission from the Class 0 Protostellar Source Serpens SMM1
+- 2017ApJ...849...25L (2017): ALMA Reveals Sequential High-mass Star Formation in the G9.62+0.19 Complex
+- 2017ApJ...851..126V (2017): Galactic-scale Feedback Observed in the 3C 298 Quasar Host Galaxy
+- 2017MNRAS.464L..75F (2017): ALMA observations of the supergiant B[e] star Wd1-9
+- 2017MNRAS.465..834Z (2017): The ALMA early science view of FUor/EXor objects - I. Through the looking-glass of V2775 Ori
+- 2017MNRAS.468.3266R (2017): The ALMA early science view of FUor/EXor objects - III. The slow and wide outflow of V883 Ori
+- 2017MNRAS.468.3694C (2017): Simultaneous low- and high-mass star formation in a massive protocluster: ALMA observations of G11.92-0.61<SUP>★</SUP>
+- 2018A&A...614A..58B (2018): High-resolution observations of IRAS 08544-4431. Detection of a disk orbiting a post-AGB star and of a slow disk wind
+- 2018A&A...615A.141B (2018): Accelerating infall and rotational spin-up in the hot molecular core G31.41+0.31
+- 2018A&A...616A.171P (2018): Spatially resolved cold molecular outflows in ULIRGs
+- 2018ApJ...853L..28B (2018): Fast, Collimated Outflow in the Western Nucleus of Arp 220
+- 2018ApJ...856..143I (2018): ALMA Multiple-transition Observations of High-density Molecular Tracers in Ultraluminous Infrared Galaxies
+- 2018ApJ...859...35G (2018): The Dual Role of Starbursts and Active Galactic Nuclei in Driving Extreme Molecular Outflows
+- 2018ApJ...863..143C (2018): ALMA [C I]<SUP>3</SUP> P <SUB>1</SUB>-<SUP>3</SUP> P <SUB>0</SUB> Observations of NGC 6240: A Puzzling Molecular Outflow, and the Role of O…
+- 2018ApJ...864L...1G (2018): Violent Quenching: Molecular Gas Blown to 1000 km s<SUP>-1</SUP> during a Major Merger
+- 2018ApJ...865..131L (2018): High-resolution ALMA Study of the Proto-brown-dwarf Candidate L328-IRS
+- 2018ApJ...866..141K (2018): Extremely Dense Cores Associated with Chandra Sources in Ophiuchus A: Forming Brown Dwarfs Unveiled?
+- 2018ApJ...867..111Z (2018): Spatially Resolved <SUP>12</SUP>CO(2-1)/<SUP>12</SUP>CO(1-0) in the Starburst Galaxy NGC 253: Assessing Optical Depth to Constrain the Mole…
+- 2018ApJ...867..165B (2018): Dense Molecular Filaments Feeding a Starburst: ALMA Maps of CO(3-2) in Henize 2-10
+- 2018ApJ...868...95M (2018): ALMA Observations of HCN and HCO<SUP>+</SUP> Outflows in the Merging Galaxy NGC 3256
+- 2018MNRAS.473..879P (2018): The ALMA early science view of FUor/EXor objects - IV. Misaligned outflows in the complex star-forming environment of V1647 Ori and McNeil'…
+- 2018MNRAS.473.1909G (2018): ALMA suggests outflows in z ∼ 5.5 galaxies
+- 2018MNRAS.475L..52S (2018): Imaging the molecular outflows of the prototypical ULIRG NGC 6240 with ALMA
+- 2018MNRAS.478.3674R (2018): ALMA survey of circumstellar discs in the young stellar cluster IC 348
+- 2018MNRAS.480.4991G (2018): ALMA imaging of the nascent planetary nebula IRAS 15103-5754
+- 2018PASJ...70L...1M (2018): ALMA [C I] observations toward the central region of Seyfert galaxy NGC 613
+- 2018Sci...361.1016S (2018): Fast molecular outflow from a dusty star-forming galaxy in the early Universe
+- 2019A&A...627A..53H (2019): The Close AGN Reference Survey (CARS). A massive multi-phase outflow impacting the edge-on galaxy HE 1353-1917
+- 2019A&A...628A..65A (2019): Nuclear molecular outflow in the Seyfert galaxy NGC 3227
+- 2019A&A...628A.118B (2019): The gentle monster PDS 456. Kiloparsec-scale molecular outflow and its implications for QSO feedback
+- 2019A&A...630A..59B (2019): Widespread QSO-driven outflows in the early Universe
+- 2019A&A...631A..78S (2019): A spectral stacking analysis to search for faint outflow signatures in z ∼ 6 quasars
+- 2019A&A...632A..33A (2019): ALMA captures feeding and feedback from the active galactic nucleus in NGC 613
+- 2019A&A...632A..61G (2019): ALMA images the many faces of the <ASTROBJ>NGC 1068</ASTROBJ> torus and its surroundings
+- 2019A&A...632A..66O (2019): ALMA observations of PKS 1549-79: a case of feeding and feedback in a young radio quasar
+- 2019A&A...632A.101T (2019): Chemical and kinematic structure of extremely high-velocity molecular jets in the Serpens Main star-forming region
+- 2019A&A...632L...7J (2019): Detection of a high-redshift molecular outflow in a primeval hyperstarburst galaxy
+- 2019ApJ...871...37H (2019): Molecular and Ionized Gas Phases of an AGN-driven Outflow in a Typical Massive Galaxy at z ≈ 2
+- 2019ApJ...872....2R (2019): ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP>
+- 2019ApJ...873...73Z (2019): An Ordered Envelope-Disk Transition in the Massive Protostellar Source G339.88-1.26
+- 2019ApJ...881...43K (2019): The Molecular Outflow in NGC 253 at a Resolution of Two Parsecs
+- 2019ApJ...886...14F (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. I. The Formation of High-mass Stars and Pillars in the N159E-Papillon Ne…
+- 2019ApJ...886...15T (2019): An ALMA View of Molecular Filaments in the Large Magellanic Cloud. II. An Early Stage of High-mass Star Formation Embedded at Colliding Clo…
+- 2019ApJ...886L...4Z (2019): Discovery of a Photoionized Bipolar Outflow toward the Massive Protostar G45.47+0.05
+- 2019ApJ...887..209A (2019): Protostellar Evolution in Serpens Main: Possible Origin of Disk-size Diversity
+- 2019MNRAS.483.4586F (2019): Cold molecular outflows in the local Universe and their feedback effect on galaxies
+- 2019MNRAS.489.1927S (2019): Testing the blast-wave AGN feedback scenario in MCG-03-58-007
+- 2019MNRAS.490.5860S (2019): The multiphase gas structure and kinematics in the circumnuclear region of NGC 5728
+- 2019Natur.574..643R (2019): A 100-kiloparsec wind feeding the circumgalactic medium of a massive compact galaxy
+- 2020A&A...633A..90G (2020): The ALPINE-ALMA [C II] survey: Star-formation-driven outflows and circumgalactic enrichment in the early Universe
+- 2020A&A...633A.126B (2020): The dynamically young outflow of the Class 0 protostar Cha-MMS1
+- 2020A&A...633A.127F (2020): A CO molecular gas wind 340 pc away from the Seyfert 2 nucleus in ESO 420-G13 probes an elusive radio jet
+- 2020A&A...633A.134L (2020): Molecular outflows in local galaxies: Method comparison and a role of intermittent AGN driving
+- 2020A&A...633L...4H (2020): Molecular gas inflows and outflows in ultraluminous infrared galaxies at z ∼ 0.2 and one QSO at z = 6.1
+- 2020A&A...634L..12D (2020): ALMA reveals a large structured disk and nested rotating outflows in DG Tauri B
+- 2020A&A...640A.104A (2020): ALMA resolves the remarkable molecular jet and rotating wind in the extremely radio-quiet galaxy NGC 1377
+- 2020A&A...641A.124L (2020): Etching glass in the early Universe: Luminous HF and H<SUB>2</SUB>O emission in a QSO-SMG pair at z = 4.7
+- 2020A&A...641A.151S (2020): Molecular gas in the central region of NGC 7213
+- 2020ApJ...889...43Z (2020): Dense Cores, Filaments, and Outflows in the S255IR Region of High-mass Star Formation
+- 2020ApJ...890...29F (2020): Multiphase Gas Flows in the Nearby Seyfert Galaxy ESO428-G014. Paper I
+- 2020ApJ...890..129K (2020): Detection of Irregular, Submillimeter Opaque Structures in the Orion Molecular Clouds: Protostars within 10,000 yr of Formation?
+- 2020ApJ...890..149T (2020): The Molecular Gas in the NGC 6240 Merging Galaxy System at the Highest Spatial Resolution
+- 2020ApJ...896...36T (2020): ALMA Observations of Giant Molecular Clouds in M33. I. Resolving Star Formation Activities in the Giant Molecular Filaments Possibly Formed…
+- 2020ApJ...896...43W (2020): Arp 220: New Observational Insights into the Structure and Kinematics of the Nuclear Molecular Disks and Surrounding Gas
+- 2020ApJ...899..112S (2020): AGN Feedback and Star Formation of Quasar Host Galaxies: Insights from the Molecular Gas
+- 2020ApJ...899L..10F (2020): A Low-velocity Bipolar Outflow from a Deeply Embedded Object in Taurus Revealed by the Atacama Compact Array
+- 2020ApJ...901..151S (2020): Molecular Gas Outflow in the Starburst Galaxy NGC 1482
+- 2020ApJ...903..119L (2020): The ALMA Survey of 70 μm Dark High-mass Clumps in Early Stages (ASHES). II. Molecular Outflows in the Extreme Early Stages of Protocluster …
+- 2020ApJ...904...78S (2020): Constraining the Chemical Signatures and the Outburst Mechanism of the Class 0 Protostar HOPS 383
+- 2020ApJ...904..158L (2020): ALMA Observations and Modeling of the Rotating Outflow in Orion Source I
+- 2020ApJ...905...25G (2020): Multidirectional Mass Accretion and Collimated Outflows on Scales of 100-2000 au in Early Stages of High-mass Protostars
+- 2020ApJ...905...86S (2020): Ubiquitous Molecular Outflows in z &gt; 4 Massive, Dusty Galaxies. II. Momentum-driven Winds Powered by Star Formation in the Early Universe
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2021A&A...645A..21G (2021): Multiphase feedback processes in the Sy2 galaxy NGC 5643
+- 2021A&A...645A.142A (2021): Continuity of accretion from clumps to Class 0 high-mass protostars in SDC335
+- 2021A&A...648A..41V (2021): Outflows, envelopes, and disks as evolutionary indicators in Lupus young stellar objects
+- 2021A&A...649A..31H (2021): Kiloparsec view of a typical star-forming galaxy when the Universe was ∼1 Gyr old. I. Properties of outflow, halo, and interstellar medium
+- 2021A&A...649A.139I (2021): Multiple molecular outflows and fragmentation in the IRDC core G34.43+00.24 MM1
+- 2021A&A...655A..25Z (2021): The IBISCO survey. I. Multiphase discs and winds in the Seyfert galaxy Markarian 509
+- 2021A&A...656A..45M (2021): AGN feeding and feedback in Fornax A. Kinematical analysis of the multi-phase ISM
+- 2021AN....342.1160P (2021): CO kinematics unveil outflows plausibly driven by a young jet in the gigahertz peaked radio core of NGC 6328
+- 2021ApJ...907...62R (2021): Rise of the Titans: Gas Excitation and Feedback in a Binary Hyperluminous Dusty Starburst Galaxy at z ∼ 6
+- 2021ApJ...907...94C (2021): The Explosion in Orion-KL as Seen by Mosaicking the Magnetic Field with ALMA
+- 2021ApJ...907..108G (2021): Identification of Methyl Isocyanate and Other Complex Organic Molecules in a Hot Molecular Core, G31.41+0.31
+- 2021ApJ...907L..41L (2021): First Detection of Interaction between a Magnetic Disk Wind and an Episodic Jet in a Protostellar System
+- 2021ApJ...908..235I (2021): Subaru High-z Exploration of Low-luminosity Quasars (SHELLQs). XII. Extended [C II] Structure (Merger or Outflow) in a z = 6.72 Red Quasar
+- 2021ApJ...910..148M (2021): Revealing a Centrally Condensed Structure in OMC-3/MMS 3 with ALMA High-resolution Observations
+- 2021ApJ...912...21E (2021): Late-time Radio and Millimeter Observations of Superluminous Supernovae and Long Gamma-Ray Bursts: Implications for Central Engines, Fast R…
+- 2021ApJ...914...36I (2021): Subaru High-z Exploration of Low-luminosity Quasars (SHELLQs). XIII. Large-scale Feedback and Star Formation in a Low-luminosity Quasar at …
+- 2021MNRAS.500.5500B (2021): A warm molecular ring in AG Car: composing the mass-loss puzzle
+- 2021MNRAS.503...77W (2021): Star formation in 'the Brick': ALMA reveals an active protocluster in the Galactic centre cloud G0.253+0.016
+- 2021MNRAS.508.4639Z (2021): ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions-VI. On the formation of the 'L' type filament in G286.21+0.17
+- 2021NatAs...5..319P (2021): A titanic interstellar medium ejection from a massive starburst galaxy at redshift 1.4
+- 2021PASJ...73..205T (2021): ALMA view of the Galactic super star cluster RCW 38 at 270 au resolution
+- 2022A&A...665A.107T (2022): Black hole and host galaxy growth in an isolated z ∼ 6 QSO observed with ALMA
+- 2022A&A...668A..45L (2022): Physics of ULIRGs with MUSE and ALMA: The PUMA project. IV. No tight relation between cold molecular outflow rates and AGN luminosities
+- 2022MNRAS.510.4485R (2022): The AGN fuelling/feedback cycle in nearby radio galaxies - IV. Molecular gas conditions and jet-ISM interaction in NGC 3100
+- 2022NatAs...6..275K (2021): Observational identification of a sample of likely recent common-envelope events
+- 2023A&A...673A..46B (2023): Another X-ray UFO without a momentum-boosted molecular outflow. ALMA CO(1-0) observations of the galaxy pair IRAS 05054+1718
+- 2023A&A...673A.116K (2023): Exploring the environment, magnetic fields, and feedback effects of massive high-redshift galaxies with [C II]
+- 2023A&A...680A.110C (2023): Radio outburst from a massive (proto)star. II. A portrait in space and time of the expanding radio jet from S255IR NIRS 3
+- 2023ApJ...942...25F (2023): The State of the Molecular Gas in Post-starburst Galaxies
+- 2023ApJ...956L..35Z (2023): One, Two, Three ... An Explosive Outflow in IRAS 12326-6245 Revealed by ALMA
+- 2023MNRAS.522.6123Z (2023): Revisiting the Dragonfly galaxy - I. High-resolution ALMA and VLA observations of the radio hotspots in a hyper-luminous infrared galaxy at…
+- 2024A&A...682A..54T (2024): HYPERION. Interacting companion and outflow in the most luminous z &gt; 6 quasar
+- 2024A&A...683A.169W (2024): JWST discovers an AGN ionization cone but only weak radiatively driven feedback in a powerful z ≈ 3.5 radio-loud AGN
+- 2024A&A...684L..11G (2024): A spectacular galactic scale magnetohydrodynamic powered wind in ESO 320-G030
+- 2024A&A...686A..46E (2024): AGN feedback in the Local Universe: Multiphase outflow of the Seyfert galaxy NGC 5506
+- 2024A&A...689A.145S (2024): The ALMA-CRISTAL survey: Discovery of a 15 kpc-long gas plume in a z = 4.54 Lyman-α blob
+- 2024A&A...689A.163L (2024): The fountain of the luminous infrared galaxy Zw049.057 as traced by its OH megamaser
+- 2024A&A...689A.339G (2024): Confirming the explosive dispersal outflow in DR21 with ALMA
+- 2024A&A...689A.347G (2024): Deciphering the imprint of active galactic nucleus feedback in Seyfert galaxies: Nuclear-scale molecular gas deficits
+- 2024A&A...690A.277M (2024): Gas flows in the central region of the Seyfert galaxy NGC 4593 with MUSE
+- 2024A&A...691A.153L (2024): GA-NIFS: JWST/NIRSpec IFS view of the z ∼ 3.5 galaxy GS5001 and its close environment at the core of a large-scale overdensity
+- 2024AJ....167...72D (2024): ALMA Survey of Orion Planck Galactic Cold Clumps (ALMASOP): Molecular Jets and Episodic Accretion in Protostars
+- 2024ApJ...961..228S (2024): Ring Gap Structure around Class I Protostar WL 17
+- 2024ApJ...962....1S (2024): Molecular Outflow in the Reionization-epoch Quasar J2054-0005 Revealed by OH 119 μm Observations
+- 2024ApJ...963...72O (2024): Revealing Multiple Nested Molecular Outflows with Rotating Signatures in HH270mms1-A with ALMA
+- 2024ApJ...966..117X (2024): Disk Wind Feedback from High-mass Protostars. III. Synthetic CO Line Emission
+- 2024ApJ...966..192S (2024): Multiple Outflows around a Single Protostar IRAS 15398−3359
+- 2024ApJ...967..133S (2024): Hidden Gems on a Ring: Infant Massive Clusters and Their Formation Timeline Unveiled by ALMA, HST, and JWST in NGC 3351
+- 2024ApJ...969L...6Z (2024): M17 MIR: A Massive Star Is Forming via Episodic Mass Accretion
+- 2024ApJ...970....9B (2024): Multiphase Black Hole Feedback and a Bright [C II] Halo in a LoBAL Quasar at z ∼ 6.6
+- 2024ApJ...971..187A (2024): High-resolution Study of the Outflow Activity and Chemical Environment of Chamaeleon-MMS1
+- 2024ApJ...971L..15Y (2024): Outflow Driven by a Protoplanet Embedded in the TW Hya Disk
+- 2024ApJ...972..115C (2024): MagMaR III—Resisting the Pressure, Is the Magnetic Field Overwhelmed in NGC6334I?
+- 2024ApJ...972..116I (2024): Merging Gas-rich Galaxies That Harbor Low-luminosity Twin Quasars at z = 6.05: A Promising Progenitor of the Most Luminous Quasars
+- 2024ApJ...974...18C (2024): The Peculiar Radio Evolution of the Tidal Disruption Event ASASSN-19bt
+- 2024ApJ...974..195Z (2024): The Galaxy Activity, Torus, and Outflow Survey (GATOS). IV. Exploring Ionized Gas Outflows in Central Kiloparsec Regions of GATOS Seyferts
+- 2024ApJ...976..201F (2024): Constraining Quasar Feedback from Analysis of the Hydrostatic Equilibrium of the Molecular Gas in Their Host Galaxies
+- 2025A&A...693A.174E (2025): Molecular gas stratification and disturbed kinematics in the Seyfert galaxy MCG-05-23-16 revealed by JWST and ALMA
+- 2025A&A...695A...6P (2025): GA-NIFS: Multiphase analysis of a star-forming galaxy at z ∼ 5.5
+- 2025A&A...695A.236L (2025): Erosion of a dense molecular core by a strong outflow from a massive protostar
+- 2025A&A...699A..83A (2025): Molecular gas excitation and outflow properties of obscured quasars at z ∼ 0.1
+- 2025A&A...699A.382M (2025): FAUST: XXV. A potential new molecular outflow in [BHB2007] 11
+- 2025A&A...700A..22O (2025): The changing impact of radio jets as they evolve: The view from the cold gas
+- 2025A&A...700L..11S (2025): Stephenson 2 DFK 52: Discovery of an exotic red supergiant in the massive stellar cluster RSGC2
+- 2025A&A...701A.120P (2025): ALMA survey of a massive node of the Cosmic Web at z ∼ 3: II. A dynamically cold and massive disk galaxy in the proximity of a hyper-lumino…
+- 2025A&A...702A..27P (2025): Revisiting G29.862─0.0044: A jet cavity disrupted by an outflow in a likely young stellar object wide binary system
+- 2025ApJ...985..243B (2025): The ALMA-CRISTAL Survey: Weak Evidence for Star-formation-driven Outflows in z ∼ 5 Main-sequence Galaxies
+- 2025ApJ...987..197H (2025): The ALMA-ATOMS Survey: Exploring Protostellar Outflows in HC<SUB>3</SUB>N
+- 2025ApJ...988..111I (2025): The Detection of Spatially Resolved Protostellar Outflows and Episodic Jets in the Outer Galaxy
+- 2025ApJ...990..173C (2025): LZ-STAR Survey: Low-metallicity Star Formation Survey of Sh2-284. I. Ordered Massive Star Formation in the Outer Galaxy
+- 2025ApJ...990L..31B (2025): ALMA Reveals Bright Circumgalactic Emission and a Biconical Outflow in z ∼ 6.4 Quasar PSOJ183+05
+- 2025ApJ...991...45D (2025): Molecular Jets from an Evolved Protostar: Insights from JWST-ALMA Synergy
+- 2025ApJ...992L...7S (2025): Characterization of Two Cool Galaxy Outflow Candidates Using Mid-infrared Emission from Polycyclic Aromatic Hydrocarbons
+- 2025MNRAS.539.3808U (2025): Physical properties and gas kinematics of massive star forming region G328.24−0.55
+- 2025SciA...11.6953M (2025): A misaligned protostellar disk fed by gas streamers in a barred spiral-like massive dense core
+- 2025Univ...11..333D (2025): Jets in Low-Mass Protostars
+- 2026A&A...705A..51D (2026): NGC 6860, Mrk 915, and MCG -01-24-012: II. Inflowing and outflowing cold molecular gas and the connection with ionized gas in Seyfert galax…
+- 2026A&A...706A.227G (2026): The CON-quasar stage of IRAS 07251−0248 E
+- 2026A&A...706A.328L (2026): Silicon monoxide in the filamentary infrared dark cloud G035.39-00.33: An ALMA view
+- 2026A&A...707A..77H (2026): Massive dusty multiphase outflow in local merger shows no sign of slowing on kiloparsec scales
+- 2026A&A...707A.376C (2026): MIRACLE: II. Unveiling the multiphase gas interplay in the circumnuclear region of NGC 1365 via multicloud modeling
+- 2026AJ....172...75M (2026): ALMA Observations of Magnetic Fields in the Massive Star-forming Region IRAS 18360-0537
+- 2026AJ....172..108L (2026): Formation of a Protostellar Multiple System via Rotational Fragmentation
+- 2026ApJ...998..111C (2026): Continued Rapid Radio Brightening of the Tidal Disruption Event AT2018hyz
+- 2026ApJ..1000..312Z (2026): A Potential Link between Nuclear Winds and Cold Gas Outflows on Kiloparsec Scales in Reionization-era Quasars
+- 2026ApJ..1001..161H (2026): The ALMA-QUARKS Survey: Evidence of an Explosive Molecular Outflow in IRAS 15520─5234
+- 2026ApJ..1003...26O (2026): The SOMA Atomic Outflow Survey. I. An Atomic O I and Highly Ionized O III Outflow from Massive Protostar G11.94-00.62
+- 2026ApJ..1004...39I (2026): Spectrally and Spatially Resolved (Sub)Millimeter HCN-to-HCO<SUP>+</SUP> Flux Ratios in Nearby Ultraluminous Infrared Galaxies
+- 2026MNRAS.546f2269R (2026): The link between galaxy merger, radio jet expansion, and molecular outflow in the ULIRG IRAS 00183−7111
+- 2026MNRAS.549ag781K (2026): GOALS-JWST: resolved multiphase molecular gas in IRAS 20551-4250 using JWST and ALMA

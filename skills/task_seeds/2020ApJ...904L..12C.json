@@ -1,0 +1,385 @@
+{
+ "bibcode": "2020ApJ...904L..12C",
+ "title": "Detection of Dynamical Instability in Titan's Thermospheric Jet",
+ "year": 2020,
+ "doi": "10.3847/2041-8213/abc688",
+ "arxiv_id": "2106.01911",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "Is Titan's thermospheric equatorial jet temporally variable? Map the 3D wind field with ALMA in May 2017 and compare with a reanalysis of the August 2016 data",
+ "alma_project_codes": [
+  "2016.A.00014.S",
+  "2015.1.01023.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12 m main array, 46 antennas (2017)",
+  "angular_resolution": "≈0.24 x 0.19 arcsec (natural weighting, 2017)",
+  "sensitivity": "RMS ≈2 mJy/beam/MHz (2017)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Mean emission altitudes of the limb emission: CH3CN 345 km, HC3N 710 km, HNC 990 km",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "CH$_3$CN emission is from a mean altitude of $\\bar{z}=345$ km, HC$_3$N from $\\bar{z}=710$ km and HNC from $\\bar{z}=990$ km"
+     }
+    ]
+   },
+   "citation": "(cite: lel19)"
+  },
+  {
+   "what": {
+    "value": "Molecular abundance and temperature in each model cell, from limb retrievals",
+    "evidence": [
+     {
+      "loc": "Wind Velocity Retrievals",
+      "quote": "an abundance, and a temperature (the latter two quantities were obtained from the limb retrievals of (cite: cor19))"
+     }
+    ]
+   },
+   "citation": "(cite: cor19)"
+  },
+  {
+   "what": {
+    "value": "Molecular line rest frequencies (systematic uncertainty 0.3 m/s CH3CN, 2-8 m/s HC3N, 7 m/s HNC)",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "0.3 m $\\rm{s}^{-1}$ for CH$_3$CN, 2–8 m $\\rm{s}^{-1}$ for HC$_3$N and 7 m $\\rm{s}^{-1}$ for HNC (cite: pic98; mul01)"
+     }
+    ]
+   },
+   "citation": "(cite: pic98; mul01)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "continuum subtraction and imaging",
+   "method": "Continuum-subtract with low-order polynomials, then image with tclean into cubes in Titan's rest frame",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "pixel size 0.025 arcsec; threshold twice the RMS noise per channel; mask diameter 1.3 arcsec",
+    "cubes in the rest frame of Titan's center-of-mass"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "match 2016 and 2017 resolution",
+   "method": "Convolve both epochs to common circular beams defined in km at Titan",
+   "software": [],
+   "key_parameters": [
+    "1670 km (CH3CN), 1570 km (HC3N), 1600 km (HNC)"
+   ],
+   "assumptions": [
+    "Titan geocentric distance 9.75 au (2016) and 9.21 au (2017)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "line-of-sight Doppler velocity maps",
+   "method": "Extract a spectrum per pixel, fit emission lines with Gaussians for the Doppler shift; for HC3N and CH3CN fit 3 MHz windows around the line cores with a constant offset; average three CH3CN lines",
+   "software": [
+    "atmWindMapGaussFit"
+   ],
+   "key_parameters": [
+    "constant additive intensity offset to remove the pseudo-continuum from broad line wings",
+    "maps masked to total signal-to-noise > 10"
+   ],
+   "assumptions": [
+    "Limb emission optically thin and thermally broadened, so the Gaussian Doppler shift gives the line-of-sight wind"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "deconvolve to intrinsic zonal wind profiles",
+   "method": "3D grid of 100 km cubic cells with wind, abundance, temperature; radiative transfer along the line of sight, convolve to beam, centroid velocity per pixel, fit Gaussian v(latitude) profile with vmax, FWHM, phi0",
+   "software": [
+    "atmWindMapGaussFit",
+    "MPFIT"
+   ],
+   "key_parameters": [
+    "three free parameters: peak wind speed vmax, Gaussian FWHM, latitudinal offset phi0"
+   ],
+   "assumptions": [
+    "Titan obliquity of 26 degrees toward the observer",
+    "v(latitude) profile does not vary with height for each molecule",
+    "1D Gaussian latitudinal profile"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "test jet instability",
+   "method": "Apply the Rayleigh-Kuo criterion (beta - Uyy < 0) to the fitted HNC latitudinal wind profile",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HNC mean absolute Doppler shift 2016",
+   "value": "265",
+   "uncertainty": "±11",
+   "units": "m/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Doppler Mapping",
+     "quote": "resulting in a mean absolute Doppler shift of $265\\pm11$ m $\\rm{s}^{-1}$ in 2016 and $142\\pm6$ m $\\rm{s}^{-1}$ in 2017 (averaged over the east and west limbs)"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC mean absolute Doppler shift 2017",
+   "value": "142",
+   "uncertainty": "±6",
+   "units": "m/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Doppler Mapping",
+     "quote": "resulting in a mean absolute Doppler shift of $265\\pm11$ m $\\rm{s}^{-1}$ in 2016 and $142\\pm6$ m $\\rm{s}^{-1}$ in 2017 (averaged over the east and west limbs)"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC equatorial wind speed, West, 2017",
+   "value": "-157",
+   "uncertainty": "±5",
+   "units": "m/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the equatorial wind speed was slightly faster in the West ($-157\\pm5$ m $\\rm{s}^{-1}$) than the East ($129\\pm6$ m $\\rm{s}^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC equatorial wind speed, East, 2017",
+   "value": "129",
+   "uncertainty": "±6",
+   "units": "m/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the equatorial wind speed was slightly faster in the West ($-157\\pm5$ m $\\rm{s}^{-1}$) than the East ($129\\pm6$ m $\\rm{s}^{-1}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN vmax 2016 (z=345 km)",
+   "value": "254",
+   "uncertainty": "±4",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254\\pm4$ | $-13\\pm1$ | $88\\pm3$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN vmax 2017 (z=345 km)",
+   "value": "185",
+   "uncertainty": "±3",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$185\\pm3$ | $-11\\pm1$ | $91\\pm3$"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N vmax 2016 (z=710 km)",
+   "value": "341",
+   "uncertainty": "±2",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$341\\pm2$ | $-2\\pm1$ | $91\\pm1$"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N vmax 2017 (z=710 km)",
+   "value": "225",
+   "uncertainty": "±2",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$225\\pm2$ | $-1\\pm1$ | $93\\pm2$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC vmax 2016 (z=990 km)",
+   "value": "373",
+   "uncertainty": "±6",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$373\\pm6$ | $0\\pm1$ | $70\\pm2$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC vmax 2017 (z=990 km)",
+   "value": "196",
+   "uncertainty": "±2",
+   "units": "m/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$196\\pm2$ | $3\\pm1$ | $101\\pm2$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN Gaussian FWHM 2016 / 2017",
+   "value": "88 / 91",
+   "uncertainty": "±3 / ±3",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$254\\pm4$ | $-13\\pm1$ | $88\\pm3$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$185\\pm3$ | $-11\\pm1$ | $91\\pm3$"
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N Gaussian FWHM 2016 / 2017",
+   "value": "91 / 93",
+   "uncertainty": "±1 / ±2",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$341\\pm2$ | $-2\\pm1$ | $91\\pm1$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$225\\pm2$ | $-1\\pm1$ | $93\\pm2$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC Gaussian FWHM 2016 / 2017",
+   "value": "70 / 101",
+   "uncertainty": "±2 / ±2",
+   "units": "degrees",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$373\\pm6$ | $0\\pm1$ | $70\\pm2$"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "$196\\pm2$ | $3\\pm1$ | $101\\pm2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Drop in peak deconvolved zonal wind speed, CH3CN",
+   "value": "27",
+   "uncertainty": "±1",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "the peak deconvolved zonal wind speed ($v_{max}$) dropped by $27\\pm1$% during the 9-month period"
+    }
+   ]
+  },
+  {
+   "quantity": "Drop in peak deconvolved zonal wind speed, HC3N",
+   "value": "34",
+   "uncertainty": "±1",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "A larger drop was observed for HC$_3$N ($34\\pm1$%) and larger-still for HNC ($47\\pm1$%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Drop in peak deconvolved zonal wind speed, HNC",
+   "value": "47",
+   "uncertainty": "±1",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "A larger drop was observed for HC$_3$N ($34\\pm1$%) and larger-still for HNC ($47\\pm1$%)."
+    }
+   ]
+  },
+  {
+   "quantity": "Average velocity uncertainty in masked regions, HNC 2016 / 2017",
+   "value": "19.6 / 7.5",
+   "uncertainty": "not stated",
+   "units": "m/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "HNC (2016): 19.6 m $\\rm{s}^{-1}$, HNC (2017): 7.5 m $\\rm{s}^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration route (pipeline vs manual), CASA version used for calibration, and the flux, bandpass and phase calibrators",
+  "How Titan's ephemeris motion was handled in calibration and imaging (ephemeris table, spectral frame, tclean phasecenter/specmode settings)",
+  "Execution blocks / scheduling blocks used for each epoch and any data flagged",
+  "Order of the polynomial and the exact line-free channel/frequency ranges for continuum subtraction",
+  "tclean settings not given: niter, gridder, image size, deconvolver, primary-beam correction and spectral regridding of channels",
+  "Definition of the signal-to-noise used for the >10 mask and initial guesses and bounds for the Gaussian line fits",
+  "Rest frequencies adopted for each transition and for the three CH3CN K-components",
+  "Abundance and temperature profiles from the cor19 limb retrievals and the lel19 wind contribution functions needed for the 3D model",
+  "Initial parameters, weights and convergence criteria of the MPFIT wind-profile fit; how the line-core Gaussian offsets map to the model",
+  "Flux scale and absolute calibration uncertainties"
+ ],
+ "missing_for_reproduction": [
+  "Calibration details and calibrator list",
+  "Line-free channel ranges and polynomial order for continuum subtraction",
+  "Full tclean parameter set and Titan ephemeris handling",
+  "Limb-retrieval abundance and temperature profiles from cor19 and contribution functions from lel19",
+  "Fit initial conditions and rest frequencies per transition"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Archive data for 2016, released fitting code and a numeric results table exist, but calibration, tclean and line-free settings are not given and key inputs come from cor19 and lel19.",
+ "rediscovery_reason": "2016 data are archival, code is on Zenodo and the main results (vmax, FWHM) are tabulated; 2017 data public status is not stated in the paper.",
+ "source_card": "cards/2020ApJ...904L..12C/sonnet/card.md"
+}

@@ -1,0 +1,435 @@
+{
+ "bibcode": "2025AJ....169..230H",
+ "title": "The Infrared-bright SW Knots in the Complex Ejecta of VY CMa",
+ "year": 2025,
+ "doi": "10.3847/1538-3881/adbbf1",
+ "arxiv_id": "2503.01995",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "Determine the ages, 3D kinematics, morphology, and mass estimates of the infrared-bright SW knots in the complex ejecta of the red hypergiant VY CMa by combining ALMA 12CO and continuum observations with HST proper motions and 2 to 12 micron infrared fluxes.",
+ "alma_project_codes": [
+  "2021.1.01054.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.2'' (0.25 arcsec FWHM Gaussian beam in 12CO data)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Proper motions of the SW knots measured from 1999 and 2005 HST images",
+    "evidence": [
+     {
+      "loc": "Proper Motions and Ages",
+      "quote": "The proper motions were measured as described in (cite: RMH2007) from HST images in 1999 and 2005."
+     }
+    ]
+   },
+   "citation": "(cite: RMH2007)"
+  },
+  {
+   "what": {
+    "value": "Heliocentric Doppler velocities of the knots measured from two K I emission lines in HST/STIS spectra",
+    "evidence": [
+     {
+      "loc": "The Line of Sight Velocities and Motion Relative to the Star",
+      "quote": "The Heliocentric Doppler or line of sight velocities of the knots measured from the two K I emission lines in the HST/STIS spectra (cite: RMH2021) are listed in Table 3."
+     }
+    ]
+   },
+   "citation": "(cite: RMH2021)"
+  },
+  {
+   "what": {
+    "value": "Distance of 1.15 kpc, stellar LSR velocity of 22 +- 1 km s^-1, and star coordinates",
+    "evidence": [
+     {
+      "loc": "The Line of Sight Velocities and Motion Relative to the Star",
+      "quote": "To derive these values, we adopt the distance of 1.15 kpc and an LSR velocity of 22$\\pm$1 km s$^{-1}$ for VY CMa, as discussed in (cite: RMH2024)."
+     },
+     {
+      "loc": "Table A1",
+      "quote": "The star is at x 453.51, y 457.23 (7:22:58.32, -25:46:03.01 (cite: RMH2024)); the scale is 0.04$''$/pixel."
+     }
+    ]
+   },
+   "citation": "(cite: RMH2024)"
+  },
+  {
+   "what": {
+    "value": "Near-infrared (2 to 5 um) and mid-infrared (10 um) observations, dust temperature (~200 K), and lower limit on dust and total mass (M_dust > 5x10^-5 M_sun, M_tot > 10^-2 M_sun)",
+    "evidence": [
+     {
+      "loc": "The Dust Properties and Mass Estimates",
+      "quote": "In addition to the HST observations, the SW knots have been observed at near-infrared wavelengths from 2 to $5~\\ensuremath{\\mu}m$ by (cite: Shenoy13), in the $10~\\ensuremath{\\mu}m$ band by (cite: Gordon), and in the mm continuum (this paper)."
+     },
+     {
+      "loc": "The Dust Properties and Mass Estimates",
+      "quote": "They estimated a lower limit for the dust mass of M$_{dust}$ $>$ $5 \\times 10^{-5}$M$_{\\odot}$, or M$_{tot}$ $>$ $10^{-2}$M$_{\\odot}$ with a gas-to-dust ratio of 200."
+     }
+    ]
+   },
+   "citation": "(cite: Shenoy13), (cite: Gordon)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify SW knots in 12CO channel maps and apply un-sharp masking",
+   "method": "Apply an un-sharp masking code to the 12CO image cube and sum three channels corresponding to the velocities of the respective knots to compare with HST images.",
+   "software": [],
+   "key_parameters": [
+    "3 summed channels per image; 0.04''/pixel scale"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract 12CO line profiles and measure LSR radial velocities of the SW knots",
+   "method": "Extract single-pixel spectra (in Jy/beam) at the x,y pixel coordinates of each knot in the 12CO cube, measure the LSR velocity from the peak in each line profile and uncertainty from the FWHM, and compare with HST/STIS K I velocities corrected to the LSR frame.",
+   "software": [],
+   "key_parameters": [
+    "Single-pixel extraction (0.04'' pixel size vs 0.25'' FWHM beam)"
+   ],
+   "assumptions": [
+    "Solar motion correction from Heliocentric to LSR at VY CMa's position is -17.8 km s^-1 (following Schonrich, Binney & Dehnen 2010)."
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive knot ages, 3D velocities, orientations, and deprojected distances",
+   "method": "Estimate ages directly from HST proper motions (arcsec/yr) and angular distance from the star in 1999; combine proper motions with 12CO LSR velocities relative to the star to compute transverse velocity, total 3D velocity, projection angle relative to the plane of the sky, and deprojected distance.",
+   "software": [],
+   "key_parameters": [
+    "Reference epoch 1999 for ages and distances"
+   ],
+   "assumptions": [
+    "Distance to VY CMa = 1.15 kpc and stellar LSR velocity = 22 +- 1 km s^-1."
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare observed 2021.96 12CO knot positions with expected positions from proper motions",
+   "method": "Extrapolate 1999.2 HST angular distances over the 22.8 yr baseline using measured proper motions and compare with the observed 2021.96 12CO angular distances from the star.",
+   "software": [],
+   "key_parameters": [
+    "Time baseline = 22.8 yrs (1999.2 to 2021.96); CO position uncertainty <= 0.04 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Estimate dust and total mass of the S-arc and SW knots from 249 GHz continuum flux",
+   "method": "Measure the 249 GHz continuum flux density in the S-arc contour and calculate the dust mass and total mass following the method of O'Gorman et al. (2015) and Humphreys et al. (2024), then combine with the NIR/MIR mass lower limit for knots SW-A and S-D.",
+   "software": [],
+   "key_parameters": [
+    "Continuum frequency = 249 GHz; integration area = 0.35 arcsec^2; angular distance from star = 1.93''"
+   ],
+   "assumptions": [
+    "Optically thin mm continuum emission, dust temperature T = 150 K, and gas-to-dust ratio of 200."
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Age of knot S-D",
+   "value": "290",
+   "uncertainty": "-60,+119",
+   "units": "years",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| S-D  | 0.00296 $\\pm$ 0.00080 | -152           | 0.86     | 290 $\\pm$ -60,+119       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of knot SW-A",
+   "value": "226",
+   "uncertainty": "-24,+32",
+   "units": "years",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SW-A | 0.00424 $\\pm$ 0.00052 | -101           | 0.96     | 226 $\\pm$ -24,+32        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of knot SW-B",
+   "value": "332",
+   "uncertainty": "-87,+185",
+   "units": "years",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SW-B | 0.00373 $\\pm$ 0.00133 | -137           | 1.24     | 332 $\\pm$ -87,+185       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of knot S-E1",
+   "value": "236",
+   "uncertainty": "-52,+123",
+   "units": "years",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| S-E1 | 0.00408 $\\pm$ 0.00129 | -117           | 0.99     | 236$^{a}$ $\\pm$ -52,+123 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Age of knot S-E2",
+   "value": "197",
+   "uncertainty": "-47,+81",
+   "units": "years",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| S-E2 | 0.00584 $\\pm$ 0.00175 | -129           | 1.14     | 197 $\\pm$ -47,+81        |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of knot S-D",
+   "value": "40.3",
+   "uncertainty": "4.5",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S-D   | 65.1$\\pm$0.6     | 47.3             | 40.3$\\pm$4.5           | +7          |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of knot SW-A",
+   "value": "25.0",
+   "uncertainty": "4",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SW-A  | 48.0$\\pm$0.9     | 30.2             | 25.0$\\pm$4             | +5          |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of knot SW-B",
+   "value": "12.4",
+   "uncertainty": "5",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SW-B  | 63.5$\\pm$0.7     | 45.7             | 12.4$\\pm$5             | +33         |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of knot S-E1",
+   "value": "18.7",
+   "uncertainty": "9",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S-E1  | 53.0$\\pm$0.2     | 35.2             | 18.7$\\pm$9             | +17.5       |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of knot S-E2",
+   "value": "17.5",
+   "uncertainty": "7",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S-E2  | 53.2$\\pm$0.7     | 35.4             | 17.5$\\pm$7             | +17.9       |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO LSR velocity of S-arc",
+   "value": "15.0",
+   "uncertainty": "8",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| S-arc | ...              | ...              | 15.0$\\pm$8             | ...         |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total velocity of knot S-D",
+   "value": "24",
+   "uncertainty": "6",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| S-D   | 16 $\\pm$ 4.4 | 18 $\\pm$ 4.5       | 24 $\\pm$ 6  | +48 $\\pm$ 10.7  | 1476       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total velocity of knot SW-A",
+   "value": "23",
+   "uncertainty": "5",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| SW-A  | 23 $\\pm$ 2.8 | 3 $\\pm$ 4          | 23 $\\pm$ 5  | +7.4 $\\pm$ 9.8  | 1112       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total velocity of knot SW-B",
+   "value": "22",
+   "uncertainty": "8",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| SW-B  | 20 $\\pm$ 7.2 | -10 $\\pm$ 5        | 22 $\\pm$ 8  | -26.5 $\\pm$ 14  | 1593       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total velocity of knot S-E1",
+   "value": "22",
+   "uncertainty": "11",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| S-E1  | 22 $\\pm$ 7.0 | -3 $\\pm$ 9         | 22 $\\pm$ 11 | -7.8 $\\pm$ 23   | 1148       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total velocity of knot S-E2",
+   "value": "32",
+   "uncertainty": "12",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| S-E2  | 32 $\\pm$ 9.5 | -4.5 $\\pm$ 7       | 32 $\\pm$ 12 | -8.0 $\\pm$ 12.3 | 1323       |"
+    }
+   ]
+  },
+  {
+   "quantity": "Positional offset (observed 12CO minus expected from proper motion) in 22.8 yrs",
+   "value": "0.11 to 0.27",
+   "uncertainty": "0.04",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| S-D | 0.86 | 1.04 | 0.93 | 0.11 |"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "| S-E2 | 1.14 | 1.55 | 1.28 | 0.27 |"
+    },
+    {
+     "loc": "Table 5",
+     "quote": "The uncertainty in the CO positions is $\\leq$ 0.04 arcsec or approximnately 1 pixel."
+    }
+   ]
+  },
+  {
+   "quantity": "249-GHz continuum flux density of S-arc feature",
+   "value": "1.146",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Dust Properties and Mass Estimates",
+     "quote": "The flux density of the emission feature in the 249-GHz continuum associated with the S-arc, is 1.146 mJy in 0.35 arcsec$^{2}$, i.e. the blue contour in the middle panel of Figure 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of S-arc feature from 249-GHz continuum",
+   "value": "5.6e-5",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Dust Properties and Mass Estimates",
+     "quote": "At a distance of $1.93\\ensuremath{''}$ from the star and a temperature of 150K, we get M$_d \\approx 5.6\\times 10^{-5}$ M$_\\odot$ and total mass $1.1\\times 10^{-2}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total mass of S-arc feature from 249-GHz continuum",
+   "value": "1.1e-2",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Dust Properties and Mass Estimates",
+     "quote": "At a distance of $1.93\\ensuremath{''}$ from the star and a temperature of 150K, we get M$_d \\approx 5.6\\times 10^{-5}$ M$_\\odot$ and total mass $1.1\\times 10^{-2}$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined total mass of the SW knots",
+   "value": "> 2.1e-2",
+   "uncertainty": "not stated",
+   "units": "M_odot",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Dust Properties and Mass Estimates",
+     "quote": "Thus, the mm continuum mass estimate is largely in addition to the mass lower limit derived from the NIR and MIR emission, yielding a total mass for the SW knots of M$_{tot}$ $>$ 2.1 $\\times$ 10$^{-2}$ M$_{\\odot}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA calibration and imaging parameters (CASA version, weighting, robust parameter, self-calibration, continuum subtraction), which are deferred to Singh et al. (2023) and Humphreys et al. (2024).",
+  "Exact parameters and algorithm of the un-sharp masking code applied to the 12CO image cube.",
+  "Exact dust opacity (kappa_nu) value and gas-to-dust ratio assumed in the O'Gorman et al. (2015) / Humphreys et al. (2024) dust mass formula (though a gas-to-dust ratio of 200 is implied by the ratio of M_tot = 1.1e-2 M_sun to M_d = 5.6e-5 M_sun)."
+ ],
+ "missing_for_reproduction": [
+  "ALMA data reduction and imaging scripts or exact tclean parameters (deferred to Singh et al. 2023 and Humphreys et al. 2024).",
+  "Un-sharp masking code and filter parameters applied to the 12CO cube.",
+  "Exact contour definition (flux level or polygon coordinates) for the 0.35 arcsec^2 region used to measure the 1.146 mJy continuum flux of the S-arc.",
+  "Exact dust opacity value used in the O'Gorman et al. (2015) mass conversion formula."
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The downstream analysis (pixel coordinates for spectrum extraction, velocity corrections, kinematic formulas, and continuum flux measurement) is very clearly tabulated and straightforward to reproduce once the calibrated/imaged cubes are in hand, but all ALMA calibration and imaging details and the dust opacity formula are deferred to earlier papers.",
+ "rediscovery_reason": "Public ALMA data (2021.1.01054.S) and explicit pixel/sky coordinates allow direct re-measurement of the 12CO knot velocities, positional offsets, and 249 GHz S-arc continuum flux and mass.",
+ "source_card": "cards/2025AJ....169..230H/sonnet/card.md"
+}

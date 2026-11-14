@@ -1,0 +1,521 @@
+{
+ "bibcode": "2024ApJ...977L..36H",
+ "title": "Detailed Study of Stars and Gas in a z = 8.3 Massive Merger with Extreme Dust Conditions",
+ "year": 2024,
+ "doi": "10.3847/2041-8213/ad9741",
+ "arxiv_id": "2408.12310",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "What are the resolved physical properties, star formation histories, and ISM conditions of the z = 8.312 massive galaxy MACS0416-Y1, and what drives its extreme dust temperature?",
+ "alma_project_codes": [
+  "2019.1.00343.S"
+ ],
+ "data": {
+  "bands": "Band 7 (B7), Band 8 (B8)",
+  "arrays": "not stated",
+  "angular_resolution": "0.84 x 0.63 arcsec^2, PA = 72 deg (Band 8)",
+  "sensitivity": "5 μJy beam^-1 (B7), 68 μJy beam^-1 (B8)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 7 (353 GHz) data and continuum mean size, 353 GHz continuum emission, 260 GHz upper limit, and [O III] 88 μm line luminosity (0.66 ± 0.16 Jy km s^-1)",
+    "evidence": [
+     {
+      "loc": "2.3. ALMA Data Reduction and Analysis",
+      "quote": "We use all the data presented in Table 1 of Y. Tamura et al. (2023) to reproduce the contours of the continuum emission in ALMA Band 7 (B7) at 353 GHz (Figure 1)."
+     },
+     {
+      "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+      "quote": "We perform a fit of the cold dust spectral energy distribution (SED) using the continuum emission detected at 465 and 353 GHz from Y. Tamura et al. (2019) and the stringent 3σ upper limit at 200 GHz from T. J. L. C. Bakx et al. (2020)."
+     },
+     {
+      "loc": "3.2. Physical Properties with Emission Line Ratios",
+      "quote": "We use the L [O III]λ88 μm = 0.66 ± 0.16 Jy km s −1 from Y. Tamura et al. (2019)."
+     }
+    ]
+   },
+   "citation": "Y. Tamura et al. (2019), Y. Tamura et al. (2023)"
+  },
+  {
+   "what": {
+    "value": "3σ upper limit at 200 GHz (Band 3)",
+    "evidence": [
+     {
+      "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+      "quote": "We perform a fit of the cold dust spectral energy distribution (SED) using the continuum emission detected at 465 and 353 GHz from Y. Tamura et al. (2019) and the stringent 3σ upper limit at 200 GHz from T. J. L. C. Bakx et al. (2020)."
+     }
+    ]
+   },
+   "citation": "T. J. L. C. Bakx et al. (2020)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass estimated using [C II] dynamical decomposition and lower-frequency radio observations",
+    "evidence": [
+     {
+      "loc": "3.1. Resolved SFRs and Histories",
+      "quote": "Given the multiwavelength observations of MACS0416-Y1 and taking the estimate of molecular gas mass (estimated using [C II ] dynamical decomposition) from G. C. Jones et al. (2024b)"
+     },
+     {
+      "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+      "quote": "MACS0416-Y1 also has shallow observations at lower frequencies (see also G. C. Jones et al. 2024b)."
+     }
+    ]
+   },
+   "citation": "G. C. Jones et al. (2024b)"
+  },
+  {
+   "what": {
+    "value": "Cluster-scale gravitational lens model for MACS0416",
+    "evidence": [
+     {
+      "loc": "2.4. Lens Modeling",
+      "quote": "For the magnification estimate, we use the cluster-scale lens model presented in G. Rihtaršič et al. (2024), constructed with public lens modeling software Lenstool (E. Jullo et al. 2007)."
+     }
+    ]
+   },
+   "citation": "G. Rihtaršič et al. (2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce JWST NIRCam imaging and extract resolved clump and halo photometry",
+   "method": "Reduce NIRCam data using modified STScI pipeline, align to HST ACS, drizzle to 0.04'' pixel scale, detect sources, and fit 3 point sources (clumps) + 1 Sérsic profile (halo) in 7''x7'' cutouts across 6 bands",
+   "software": [
+    "calwebb_detector1",
+    "Grizli",
+    "Photutils",
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "jwst_0916.pmap CRDS_CTX, 0.04'' pixel scale, 7'' x 7'' cutouts"
+   ],
+   "assumptions": [
+    "Three clumps modeled as point sources (and later Sérsic profiles for radii of clumps 1 and 3), halo modeled as Sérsic profile; magnification μ = 1.60 +0.01/-0.02"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Reduce JWST NIRSpec prism spectroscopy and extract emission line fluxes",
+   "method": "Stage 1 JWST pipeline reduction followed by msaexp for wavelength calibration, background subtraction, Gaussian spatial profile extraction of 1D spectrum, spline continuum subtraction, and emission line fitting",
+   "software": [
+    "JWST pipeline",
+    "msaexp"
+   ],
+   "key_parameters": [
+    "R = 100 prism spectra, two three-shutter slits"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image ALMA Band 7 and Band 8 continuum and measure Band 8 flux density and size",
+   "method": "Image science archive calibrated visibilities in B7 (353 GHz) and B8 (465 GHz) using CASA tclean, and perform a 2D Gaussian fit on the B8 continuum image",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "natural weighting, 3σ cleaning threshold, multifrequency synthesis mode in all line-free channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate gravitational lensing magnification",
+   "method": "Evaluate magnification at target position using cluster-scale lens model constructed with Lenstool constrained by 303 multiple images with spectroscopic redshifts",
+   "software": [
+    "Lenstool"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Fit cold dust SED to ALMA continuum detections and upper limits",
+   "method": "Fit a Modified Blackbody (MBB) function plus nonthermal radio contribution to detections at 465 and 353 GHz and forced to reach the 3σ upper limit at 200 GHz, at fixed dust temperatures (T_dust = 60 K and 80 K)",
+   "software": [
+    "EMCEE"
+   ],
+   "key_parameters": [
+    "T_dust fixed at 60 K and 80 K; MCMC with 20 chains, 2000 trials, burn-in phase of ~100"
+   ],
+   "assumptions": [
+    "k_0 = 0.45 cm^2 g^-1 at 250 GHz (Beelen et al. 2006), T_0 = 2.73 K for CMB heating/background, Chabrier (2003) IMF, continuum mean size from Tamura et al. (2023), nonthermal radio contribution following Algera et al. (2021)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Perform optical-NIR SED and spectrophotometric fitting to infer stellar population properties and SFHs",
+   "method": "Fit resolved and integrated photometry with DENSE BASIS (nonparametric SFH), and fit integrated NIRCam photometry + scaled NIRSpec spectrum with Bagpipes (double power-law and Iyer et al. 2019 nonparametric SFHs)",
+   "software": [
+    "DENSE BASIS",
+    "Bagpipes"
+   ],
+   "key_parameters": [
+    "Fixed z = 8.31 in Bagpipes; parameter ranges and priors listed in Table A1"
+   ],
+   "assumptions": [
+    "Calzetti et al. (2000) dust attenuation curve, Chabrier (2003) IMF"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Derive ISM physical properties and AGN diagnostics from optical and FIR emission line ratios",
+   "method": "Correct emission lines for dust using Hβ/Hδ and Calzetti law, deblend [O III]λ4363 from Hγ, compute T_e([O III]), ξ_ion, electron density (with PyNeb and ALMA [O III] 88 μm), oxygen abundance, ionization parameter, and compare line ratios on O32-R23, R2-R3, and [O III]λ4363 diagnostic diagrams",
+   "software": [
+    "PyNeb",
+    "MAPPINGS"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Calzetti et al. (2000) extinction law, Case B recombination Hβ/Hδ = 3.78 for T_e = 1.6 x 10^4 K, T_e = 18000 ± 4000 K in PyNeb, solar oxygen abundance 12 + log(O/H) = 8.6"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 8 (465 GHz) continuum flux density",
+   "value": "254",
+   "uncertainty": "± 81",
+   "units": "μJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3. ALMA Data Reduction and Analysis",
+     "quote": "We analyze the new continuum emission in B8 at 465 GHz, and by performing a 2D Gaussian fit, we derive a flux density of 254 ± 81 μJy and a peak flux of 199 ± 34 μJy (6σ detection)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 8 (465 GHz) continuum peak flux",
+   "value": "199",
+   "uncertainty": "± 34",
+   "units": "μJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3. ALMA Data Reduction and Analysis",
+     "quote": "We analyze the new continuum emission in B8 at 465 GHz, and by performing a 2D Gaussian fit, we derive a flux density of 254 ± 81 μJy and a peak flux of 199 ± 34 μJy (6σ detection)."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 8 continuum source size",
+   "value": "0.52 x 0.21",
+   "uncertainty": "± 0.39 x ± 0.31",
+   "units": "arcsec^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3. ALMA Data Reduction and Analysis",
+     "quote": "The source is barely resolved with a size of (0.52 ± 0.39) × (0.21 ± 0.31) arcsec 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Gravitational lensing magnification (μ)",
+   "value": "1.60",
+   "uncertainty": "+0.01/-0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "2.4. Lens Modeling",
+     "quote": "The magnification of MACS0416-Y1 derived from the lens model is m = 1.60 -+ 0.020.01 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature (T_dust)",
+   "value": "60-80",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+     "quote": "Therefore, the dust temperature of MACS0416-Y1 may be in the range 60−80 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing-uncorrected dust mass (μM_dust) at T_dust = 60 K",
+   "value": "2.8e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+     "quote": "Figure 2(c) shows the best-fitting model with T dust = 60 K, resulting in β = 2.6 and μM dust = 2.8 × 10 5 M e, and μSFR = 78 M e yr −1 (adopting a Chabrier initial mass function, IMF; G. Chabrier 2003)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index (β) at T_dust = 60 K",
+   "value": "2.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+     "quote": "Figure 2(c) shows the best-fitting model with T dust = 60 K, resulting in β = 2.6 and μM dust = 2.8 × 10 5 M e, and μSFR = 78 M e yr −1 (adopting a Chabrier initial mass function, IMF; G. Chabrier 2003)."
+    }
+   ]
+  },
+  {
+   "quantity": "Lensing-uncorrected dust mass (μM_dust) at T_dust = 80 K",
+   "value": "3.4e5",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+     "quote": "The bestfitting model with T dust = 80 K, having β = 2.3 and μM dust = 3.4 × 10 5 M e, yields μSFR = 167 M e yr −1"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index (β) at T_dust = 80 K",
+   "value": "2.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "2.5. Cold Dust Spectral Energy Distribution Fitting",
+     "quote": "The bestfitting model with T dust = 80 K, having β = 2.3 and μM dust = 3.4 × 10 5 M e, yields μSFR = 167 M e yr −1"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated effective radius (R_e)",
+   "value": "1.19",
+   "uncertainty": "± 0.05",
+   "units": "kpc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Integrated photometry 1.19 ± 0.05 9.0 ± 0.07 1.5 ± 0.04 7.86 ± 0.07 0.39 ± 0.04 0.18 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated stellar mass (log M*/M_sun) from DENSE BASIS",
+   "value": "9.0",
+   "uncertainty": "± 0.07",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Integrated photometry 1.19 ± 0.05 9.0 ± 0.07 1.5 ± 0.04 7.86 ± 0.07 0.39 ± 0.04 0.18 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated SFR (log SFR) from DENSE BASIS",
+   "value": "1.5",
+   "uncertainty": "± 0.04",
+   "units": "log(M_sun yr^-1)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Integrated photometry 1.19 ± 0.05 9.0 ± 0.07 1.5 ± 0.04 7.86 ± 0.07 0.39 ± 0.04 0.18 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump 1 stellar mass (log M*/M_sun)",
+   "value": "8.6",
+   "uncertainty": "± 0.3",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Clump 1 0.31 ± 0.05 8.6 ± 0.3 0.2 ± 0.5 7.89 ± 0.50 0.52 ± 0.3 0.31 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump 2 stellar mass (log M*/M_sun)",
+   "value": "7.6",
+   "uncertainty": "± 0.3",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Clump 2 < 0.2 7.6 ± 0.3 − 0.4 ± 0.3 7.68 ± 0.42 0.19 ± 0.13 0.27 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump 3 stellar mass (log M*/M_sun)",
+   "value": "8.2",
+   "uncertainty": "± 0.2",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Clump 3 0.31 ± 0.08 8.2 ± 0.2 0.2 ± 0.3 7.94 ± 0.45 0.21 ± 0.14 0.26 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Halo stellar mass (log M*/M_sun)",
+   "value": "9.4",
+   "uncertainty": "± 0.1",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Halo 1.48 ± 0.54 9.4 ± 0.1 0.8 ± 0.5 7.78 ± 0.51 0.36 ± 0.2 0.27 ± 0.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated stellar mass (log M*/M_sun) from Bagpipes dblplaw SFH",
+   "value": "8.88",
+   "uncertainty": "± 0.08",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "dblplaw SFH 8.88 ± 0.08 1.84 ± 0.08 8.11 ± 0.26 0.59 ± 009 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation efficiency (log SFR/M_H2)",
+   "value": "-8.49",
+   "uncertainty": "± 0.24",
+   "units": "log(yr^-1)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "3.1. Resolved SFRs and Histories",
+     "quote": "we measure the star formation efficiency (SFE) of the integrated galaxy as log SFR / M H 2 = - 8.49  0.24 yr - 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-phase metallicity 12 + log(O/H) from emission lines",
+   "value": "7.76",
+   "uncertainty": "± 0.03",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Using NIRSpec prism spectroscopy, we measure metallicity, 12 + log (O / H) = 7.76  0.03, ionization parameter, log U = - 2.48  0.03, and electron temperature T e = 18000 ± 4000 K."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Flux [Ne III ]3868 9.9 ± 1.0 Z (12+log(O/H)) 7.76 ± 0.03"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron temperature T_e([O III])",
+   "value": "17634",
+   "uncertainty": "± 3900",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2. Physical Properties with Emission Line Ratios",
+     "quote": "Following D. C. Nicholls et al. (2020), we measure T e ([O III ]) = 17634 ± 3900 K."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Flux [O II ] 3727+3729 37.8 ± 1.0 T e 17634 ± 3900"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionization parameter log U(O32)",
+   "value": "-2.48",
+   "uncertainty": "± 0.30",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "R3 0.83 ± 0.01 log U(O32) −2.48 ± 0.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Ionization parameter log U(Ne3O2)",
+   "value": "-3.10",
+   "uncertainty": "± 0.30",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "R2 0.19 ± 0.02 log U(Ne3O2) −3.10 ± 0.30"
+    }
+   ]
+  },
+  {
+   "quantity": "Electron density (n_e)",
+   "value": "100 (<350)",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2. Physical Properties with Emission Line Ratios",
+     "quote": "Using PyNeb, assuming electron temperature T e = 18000 ± 4000 K as derived from line ratio [O III ]λ4960, 5008/[O III ]λ4363, we estimate ≠ = 100 cm −3, with an upper limit of <350 cm −3 (Figure 3(d))."
+    }
+   ]
+  },
+  {
+   "quantity": "Hydrogen ionizing photon production efficiency (log ξ_ion)",
+   "value": "25.34",
+   "uncertainty": "± 0.21",
+   "units": "log(erg^-1 s^-1)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "3.2. Physical Properties with Emission Line Ratios",
+     "quote": "We also measure the hydrogen ionizing photon production efficiency of MACS0416-Y1 following the procedure described in A. Harshan et al. (2024) and find log ξ ion = 25.34 ± 0.21 ergs −1 s −1"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency ranges of line-free channels excluded during ALMA Band 7 and Band 8 continuum imaging",
+  "Cell size, image size, and masking parameters used in CASA tclean",
+  "Exact CASA task or software package used to perform the 2D Gaussian fit on the ALMA Band 8 continuum image",
+  "Exact coordinates (RA, Dec) of MACS0416-Y1 and the fitted central coordinates of the three clumps and halo",
+  "Exact numeric value of the continuum mean size from Tamura et al. (2023) used for A_gal in the cold dust MBB optical depth equation"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA project codes from Table 1 of Tamura et al. (2023) (must be looked up in the external paper)",
+  "Exact channel ranges masked as line-free in ALMA Band 7 and Band 8 tclean imaging",
+  "Pixel scale and image size for ALMA tclean",
+  "Fitted coordinates of the three clumps and halo used as fixed priors in GALFIT",
+  "Extracted 6-band flux densities and uncertainties for the resolved clumps and integrated galaxy (plotted in Figure 1e/2c, but not tabulated)"
+ ],
+ "reproducibility_score": 7,
+ "score_reason": "Both JWST (MAST DOI provided) and ALMA (project 2019.1.00343.S plus Tamura et al. 2023 archival projects) data are public, software versions and key SED/MCMC priors are explicitly tabulated, and MBB equations are given in full. Score is held back slightly because intermediate photometry tables and exact GALFIT clump coordinates/ALMA channel masks are not explicitly tabulated.",
+ "rediscovery_reason": "The ALMA Band 8 continuum detection (254 ± 81 μJy, rms 68 μJy/beam) from public project 2019.1.00343.S and the subsequent 2-parameter EMCEE Modified Blackbody dust SED fit are straightforward, well-specified numeric targets for an automated agent.",
+ "source_card": "cards/2024ApJ...977L..36H/sonnet/card.md"
+}

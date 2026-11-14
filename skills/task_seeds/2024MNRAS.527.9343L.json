@@ -1,0 +1,346 @@
+{
+ "bibcode": "2024MNRAS.527.9343L",
+ "title": "WISDOM project - XVIII. Molecular gas distributions and kinematics of three megamaser galaxies",
+ "year": 2024,
+ "doi": "10.1093/mnras/stad3675",
+ "arxiv_id": "2311.15447",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Which megamaser galaxies are suitable targets for cross-checking maser and cold molecular gas SMBH mass measurements, and what are their molecular gas distributions and kinematics?",
+ "alma_project_codes": [
+  "2016.1.01553.S",
+  "2015.1.00086.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "CO beams 0.30x0.23\", 0.56x0.45\", 0.47x0.28\"",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Maser SMBH masses, distances and sigma_star for the parent sample",
+    "evidence": [
+     {
+      "loc": "2.1 Candidate selection",
+      "quote": "We use the compilation of SMBH mass measurements of (cite: vdBosch2016ApJ831.134) as our starting point, including all maser measurements in their Tables 2 and 3."
+     }
+    ]
+   },
+   "citation": "(cite: vdBosch2016ApJ831.134)"
+  },
+  {
+   "what": {
+    "value": "VLA 8.4 and 4.9 GHz fluxes of NGC 3393 components",
+    "evidence": [
+     {
+      "loc": "4.2 NGC 3393 continuum",
+      "quote": "Combining our measurements with those of (cite: Koss+2015ApJ807.149) at $8.4$ and $4.9$ GHz, we fit power laws"
+     }
+    ]
+   },
+   "citation": "(cite: Koss+2015ApJ807.149)"
+  },
+  {
+   "what": {
+    "value": "Maser VLBI astrometry used as galaxy centres",
+    "evidence": [
+     {
+      "loc": "3.1 ALMA observations",
+      "quote": "We used the astrometry from the existing VLBI observations to define the centre of each galaxy"
+     }
+    ]
+   },
+   "citation": "(cite: Kuo+2011ApJ727.20); (cite: Kondratko+2008ApJ678.87); (cite: Gao+2016ApJ817.128)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select maser candidate sample",
+   "method": "Apply criteria on SoI angular radius, HST dust disc regularity and declination to maser parent sample",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "M_BH ∝ D when rescaling masses to updated distances"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Calibrate and image ALMA CO(2-1) cubes and continuum",
+   "method": "Pipeline calibration; uvcontsub; tclean multiscale with interactive masks; primary beam correction",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 2.0, 10 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Make moment maps, spectra and PVDs",
+   "method": "Smoothed-cube mask (1.5 RMS threshold), hole/island filling, applied to unsmoothed PB-corrected cube; PVD with 2\" mock slit along kinematic major axis",
+   "software": [
+    "scikit-image",
+    "pafit",
+    "CARTA"
+   ],
+   "key_parameters": [
+    "Fill holes < 2 beams; remove islands < 1 beam"
+   ],
+   "assumptions": [
+    "No covariance between adjacent channels"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive integrated fluxes and molecular gas masses",
+   "method": "Sum masked spectra; uncertainty from RMS of masked sums over line-free channels; mass from CO(2-1) flux with R21=1 and alpha_CO=4.3",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "R21 = 1; alpha_CO = 4.3 Msun pc-2 (K km/s)-1 including heavy elements; adopted distances"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure 230-GHz continuum sources and spectral indices",
+   "method": "2D Gaussian fits with imfit; power-law SED fit with VLA fluxes for NGC 3393",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Reduce JCMT spectra and compare with ALMA",
+   "method": "ORAC-DR in Starlink, rebin to 10 km/s, linear baseline, S=15.6 T_A*/eta_A with eta_A=0.52",
+   "software": [
+    "Starlink",
+    "ORAC-DR"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Estimate observing time needed for SMBH mass measurement",
+   "method": "Take central peak pixel, assume homogeneous gas, target beam ~ theta_SoI, S/N=5 per beam in 10 km/s channels, use ALMA OT",
+   "software": [
+    "ALMA Observing Tool"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Homogeneous molecular gas within the central beam"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NGC 1194 CO(2-1) integrated flux (ALMA)",
+   "value": "6.1",
+   "uncertainty": "0.1",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO integrated flux$^1$ (Jy km s$^{-1}$) | $6.1\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1194 molecular gas mass",
+   "value": "5.3e7",
+   "uncertainty": "0.1e7",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Integrated molecular gas mass$^2$ (M$_\\odot$) | $(5.3\\pm0.1)\\times10^7$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3393 CO(2-1) integrated flux",
+   "value": "81.8",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO integrated flux$^1$ (Jy km s$^{-1}$) | $81.8\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3393 molecular gas mass",
+   "value": "5.14e8",
+   "uncertainty": "0.02e8",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Integrated molecular gas mass$^2$ (M$_\\odot$) | $(5.14\\pm0.02)\\times10^8$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5765B CO(2-1) integrated flux",
+   "value": "216.2",
+   "uncertainty": "0.4",
+   "units": "Jy km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "CO integrated flux$^1$ (Jy km s$^{-1}$) | $216.2 \\pm 0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5765B molecular gas mass",
+   "value": "6.94e9",
+   "uncertainty": "0.01e9",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "Integrated molecular gas mass$^2$ (M$_\\odot$) | $(6.94\\pm0.01)\\times10^9$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1194 nuclear 230-GHz flux",
+   "value": "1.73",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Flux (mJy) | $1.73\\pm0.04$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3393 nucleus spectral index",
+   "value": "-0.18",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Spectral index | $-0.18\\pm0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3393 SW source spectral index",
+   "value": "-0.8",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "Spectral index | $-0.8\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 3393 JCMT CO(2-1)/CO(3-2) ratio",
+   "value": "1.8",
+   "uncertainty": "0.5",
+   "units": "K/K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "JCMT CO(2-1)/CO(3-2) (K/K)         |       $1.8\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5765B JCMT CO(2-1)/CO(3-2) ratio",
+   "value": "2.02",
+   "uncertainty": "0.22",
+   "units": "K/K",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "JCMT CO(2-1)/CO(3-2) (K/K)         |      $2.02\\pm0.22$"
+    }
+   ]
+  },
+  {
+   "quantity": "Required observing time NGC 1194",
+   "value": "≈70",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4 Potential for SMBH Mass Measurements",
+     "quote": "we estimate using the ALMA Observing Tool (OT) that the observations would require a total observing time of $\\approx70$ days."
+    }
+   ]
+  },
+  {
+   "quantity": "Required observing time NGC 3393",
+   "value": "≈100",
+   "uncertainty": "not stated",
+   "units": "years",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4 Potential for SMBH Mass Measurements",
+     "quote": "results in a total of $\\approx100$ years."
+    }
+   ]
+  },
+  {
+   "quantity": "Required observing time NGC 5765B",
+   "value": "≈80",
+   "uncertainty": "not stated",
+   "units": "days",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4 Potential for SMBH Mass Measurements",
+     "quote": "results in a total of $\\approx80$ days."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which spectral channels were line-free for continuum subtraction and continuum imaging",
+  "Manual clean mask shapes and iteration counts, multiscale scales",
+  "Per-track calibrators and flux scale used",
+  "Exact imaging image sizes",
+  "Fitting order and method for the spectral index power law",
+  "Which tracks/execution blocks combined per target and relative weighting",
+  "Details of ALMA Observing Tool inputs for the time estimates (PWV, array, etc.)"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channel ranges",
+  "Manual clean masks",
+  "Calibrator and flux scale details",
+  "Final data products only on request"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data and clearly stated imaging parameters (robust, channel width, clean depth, CASA version); manual masks and channel selection are unspecified, but results are simple integrated quantities.",
+ "rediscovery_reason": "Public ALMA data, a mostly complete imaging recipe and numeric outputs (fluxes, masses, continuum fluxes) that can be reproduced.",
+ "source_card": "cards/2024MNRAS.527.9343L/sonnet/card.md"
+}

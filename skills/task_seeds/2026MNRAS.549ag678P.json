@@ -1,0 +1,441 @@
+{
+ "bibcode": "2026MNRAS.549ag678P",
+ "title": "AT 2024wpp: an extremely luminous fast ultraviolet transient powered by accretion onto a black hole",
+ "year": 2026,
+ "doi": "10.1093/mnras/stag678",
+ "arxiv_id": "2601.03337",
+ "fields": [
+  "transients",
+  "stellar_physics"
+ ],
+ "question": "What are the multi-wavelength observational properties, energy source, and progenitor system of the extremely luminous fast ultraviolet transient AT 2024wpp?",
+ "alma_project_codes": [
+  "2023.1.01730.T"
+ ],
+ "data": {
+  "bands": "Band 3, Band 5, and Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "rms 20-33 uJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Pre-explosion host galaxy photometry from DECam Legacy Survey, WISE, and GALEX",
+    "evidence": [
+     {
+      "loc": "Host galaxy properties",
+      "quote": "Photometry of the host is taken from Legacy Survey Tractor forced photometry on pre-explosion images from DECam in the $griz$ filters, from WISE (cite: Wright+2010) in the (mid-IR) W1 and W2 filters, and from the GALEX archive (cite: Bianchi+2017)."
+     }
+    ]
+   },
+   "citation": "Dey+2019; Wright+2010; Bianchi+2017"
+  },
+  {
+   "what": {
+    "value": "Light curves, spectra, blackbody parameters, and CSM density profiles of comparison transients (AT 2018cow, CSS161010, AT 2022tsd, MUSSES2020j, SN 2018gep, SN 2020bvc, SN 2008D, SN 2017egm, AT 2019cmw, SN 2021csp, ASASSN-14li, SN 2006jc, SN 2024fyq, SN 2023ixf)",
+    "evidence": [
+     {
+      "loc": "UV/Optical Light Curve",
+      "quote": "Data for the comparison objects are obtained from (cite: Perley+2019) (AT 2018cow), (cite: Gutierrez+2024) (CSS161010), (cite: Ho+2023tsd) (AT 2022tsd), and (cite: Jiang+2022) (MUSSES2020j; we apply an approximate extra $k$-correction of 1 mag to convert their observed $r$-band light curve to rest-frame $g$-band)."
+     },
+     {
+      "loc": "Ultraviolet Spectroscopic Analysis",
+      "quote": "which compares the COS spectrum of AT 2024wpp to three other fast and luminous blue transients observed with HST at FUV wavelengths: SN 2021csp (Icn, from (cite: Perley+2022)), SN 2023iuc (Ibn), and ASASSN-14li (TDE, from (cite: Cenko+2016))."
+     }
+    ]
+   },
+   "citation": "Perley+2019; Gutierrez+2024; Ho+2023tsd; Jiang+2022; Ho+2019; Ho+2020bvc; Modjaz+2009; Zhu+2023; Wise+2026; Perley+2022; Cenko+2016; Maeda+2022; BaerWay+2025; Zimmerman+2024; Coppejans+2020"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure radio and millimeter continuum flux densities",
+   "method": "Download ALMA QA2 pipeline-calibrated images and report QA2 peak flux density and rms (verified with imtool); reduce VLA data with CASA VLA pipeline and VLA Imaging Pipeline and measure flux density and rms using pwkit/imtool",
+   "software": [
+    "CASA",
+    "VLA Imaging Pipeline",
+    "ALMA pipeline",
+    "pwkit/imtool"
+   ],
+   "key_parameters": [
+    "VLA sub-bands of 0.5 GHz, 1 GHz, or 2 GHz as well as full receiver bandwidth"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Model radio/millimeter SEDs and derive shock and CSM properties",
+   "method": "Fit a soft broken power-law to radio+ALMA SEDs at six epochs (30, 41, 66, 103, 119, 177 rest-frame days) to find peak flux and peak frequency, then infer shock radius, magnetic field, total energy, shock speed, and ambient electron density using synchrotron self-absorption (SSA) equations",
+   "software": [],
+   "key_parameters": [
+    "beta_1 = +1.17, beta_2 = -0.90, s = 1.5",
+    "Factor of 1.37 correction applied to 27d X and Ku measurements in first epoch SED"
+   ],
+   "assumptions": [
+    "Nonthermal power-law electron energy distribution with p = 3, volume filling factor f = 0.5, and equipartition epsilon_B = epsilon_e = 1/3",
+    "10% overall flux calibration uncertainty and interstellar scintillation modulations included"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct UVOIR light curves and fit blackbody evolution",
+   "method": "Perform image subtraction and forced/aperture/PSF photometry across UVOIR facilities, apply empirical filter offsets and Galactic extinction correction, interpolate light curves using polynomial fits and local regression, and fit Planck functions to co-eval SEDs from 2 to 111 rest-frame days",
+   "software": [
+    "HEAsoft",
+    "uvotsource",
+    "uvotimsum",
+    "SWARP",
+    "sep",
+    "SExtractor",
+    "ASTROMETRY.NET",
+    "SFFT",
+    "mirar",
+    "EsoReflex",
+    "AstroDrizzle",
+    "ccdproc"
+   ],
+   "key_parameters": [
+    "t_0 = MJD 60578.40",
+    "10% systematic error term included in SED fits; PS1 y-band after 16 rest-frame days excluded"
+   ],
+   "assumptions": [
+    "Cosmology: Omega_M = 0.3, Omega_Lambda = 0.7, H_0 = 70 km s^-1 Mpc^-1; Galactic E(B-V) = 0.026 mag; zero host extinction"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Analyze X-ray spectrum and light curve",
+   "method": "Extract Swift/XRT count rates using Swift team online tools, fit a power-law spectrum to the first ten days of observations, and convert count rates to unabsorbed 0.3-10 keV fluxes using WebPIMMS",
+   "software": [
+    "WebPIMMS"
+   ],
+   "key_parameters": [
+    "Conversion factor = 4.865e-11 erg cm^-2 per count"
+   ],
+   "assumptions": [
+    "Milky Way N_H = 2.7e20 cm^-2 and intrinsic host N_H = 6.3e20 cm^-2"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Analyze UV and optical spectroscopy of transient",
+   "method": "Reduce ground-based and HST COS/STIS spectra, rescale to interpolated photometry, measure narrow ISM absorption equivalent widths via Gaussian fits or direct integration, fit damped Lyman-alpha profile, and measure late-time H and He emission line profiles",
+   "software": [
+    "DBSP-DRP",
+    "PypeIt",
+    "UCSC spectral pipeline",
+    "SimSpec",
+    "PyRAF",
+    "LPipe",
+    "numpy",
+    "scipy",
+    "astropy",
+    "matplotlib",
+    "lacosmic",
+    "ccdproc"
+   ],
+   "key_parameters": [
+    "UV+optical spectrum binned to R approx 200 (1400 km s^-1)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive host galaxy physical properties from SED and IFU spectroscopy",
+   "method": "Fit UV-to-MIR host galaxy photometry with prospector (using FSPS and dynesty) after removing nebular line contributions, and fit Gaussian profiles to continuum-subtracted KCWI IFU emission lines to derive Balmer decrement, SFR, and gas-phase metallicity",
+   "software": [
+    "prospector",
+    "FSPS",
+    "dynesty"
+   ],
+   "key_parameters": [
+    "7 arcsec radius aperture for VLT, NTT, and UVOT host photometry; 2x FWHM elliptical aperture for KCWI host spectrum"
+   ],
+   "assumptions": [
+    "Chabrier IMF, Calzetti dust attenuation model, delayed-tau SFH (t * exp(-t/tau)), fixed stellar metallicity log(Z/Z_sun) = -0.6 from mass-metallicity relation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at MJD 60615.0892",
+   "value": "1300",
+   "uncertainty": "22",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-11-01 02:08:29 | 60615.0892 | 3 | 97.5 | 1300 $\\pm$ 22"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 5 (202.95 GHz) flux density at MJD 60612.1203",
+   "value": "483",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-10-29 02:53:14 | 60612.1203 | 5 | 202.95 | 483 $\\pm$ 25"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 (343.5 GHz) flux density at MJD 60613.1507",
+   "value": "281",
+   "uncertainty": "24",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-10-30 03:37:00 | 60613.1507 | 7 | 343.5 | 281 $\\pm$ 24"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at MJD 60622.0470",
+   "value": "1130",
+   "uncertainty": "22",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-11-08 01:07:44 | 60622.0470 | 3 | 97.5 | 1130 $\\pm$ 22"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 5 (202.95 GHz) flux density at MJD 60622.0648",
+   "value": "465",
+   "uncertainty": "31",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-11-08 01:33:23 | 60622.0648 | 5 | 202.95 | 465 $\\pm$ 31"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 (343.5 GHz) flux density at MJD 60622.1065",
+   "value": "302",
+   "uncertainty": "24",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-11-08 02:33:19 | 60622.1065 | 7 | 343.5 | 302 $\\pm$ 24"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at MJD 60650.0330",
+   "value": "344",
+   "uncertainty": "20",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-12-06 00:47:31 | 60650.0330 | 3 | 97.5 | 344 $\\pm$ 20"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 5 (202.95 GHz) flux density at MJD 60650.0503",
+   "value": "161",
+   "uncertainty": "33",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-12-06 01:12:28 | 60650.0503 | 5 | 202.95 | 161 $\\pm$ 33"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 7 (343.5 GHz) flux density at MJD 60650.1383",
+   "value": "100",
+   "uncertainty": "24",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2024-12-06 03:19:08 | 60650.1383 | 7 | 343.5 | 100 $\\pm$ 24"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA Band 3 (97.5 GHz) flux density at MJD 60691.8814",
+   "value": "91",
+   "uncertainty": "25",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "2025-01-16 21:09:14 | 60691.8814 | 3 | 97.5 | 91 $\\pm$ 25"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio SED peak frequency at 30.5 rest-frame days",
+   "value": "59.4",
+   "uncertainty": "+4.2/-4.3",
+   "units": "GHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio evolution",
+     "quote": "| 30.5$^{+0.8}_{-3.5}$ | 59.4$^{+4.2}_{-4.3}$ | 1837$^{+130}_{-130}$ | 11.58$^{ +0.75}_{ -0.71}$ | 3.35$^{+0.23}_{-0.24}$ | 2.9$^{+0.3}_{-0.2}$ | 0.14$^{+0.01}_{-0.01}$ | 98300$^{+27800}_{-21300}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Forward shock velocity from 30.5 to 119.3 rest-frame days",
+   "value": "0.14 to 0.26",
+   "uncertainty": "not stated",
+   "units": "c",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Radio evolution",
+     "quote": "| 30.5$^{+0.8}_{-3.5}$ | 59.4$^{+4.2}_{-4.3}$ | 1837$^{+130}_{-130}$ | 11.58$^{ +0.75}_{ -0.71}$ | 3.35$^{+0.23}_{-0.24}$ | 2.9$^{+0.3}_{-0.2}$ | 0.14$^{+0.01}_{-0.01}$ | 98300$^{+27800}_{-21300}$ |"
+    },
+    {
+     "loc": "Radio evolution",
+     "quote": "| 119.3$^{+0.1}_{-0.1}$ | 5.0$^{+1.4}_{-1.2}$ | 577$^{ +84}_{ -59}$ | 80.24$^{+28.38}_{-16.02}$ | 0.32$^{+0.09}_{-0.08}$ | 8.6$^{+3.5}_{-1.9}$ | 0.26$^{+0.09}_{-0.05}$ | 266$^{ +429}_{ -186}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak bolometric luminosity log10(L) at 2.10 rest-frame days",
+   "value": "45.21",
+   "uncertainty": "+0.10/-0.08",
+   "units": "log10(erg s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| 60580.68 | 2.10 | $45.21^{+0.10}_{-0.08}$ | $15.00^{+0.03}_{-0.03}$ | $4.62^{+0.04}_{-0.03}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum photospheric radius log10(R) at 5.21 rest-frame days",
+   "value": "15.14",
+   "uncertainty": "+0.02/-0.02",
+   "units": "log10(cm)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| 60584.05 | 5.21 | $45.08^{+0.05}_{-0.06}$ | $15.14^{+0.02}_{-0.02}$ | $4.52^{+0.03}_{-0.02}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total radiated UVOIR energy",
+   "value": "1.0e51",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Blackbody Evolution",
+     "quote": "From integrating the bolometric light curve, we infer a total radiated energy of $1.0\\times10^{51}\\,$erg."
+    }
+   ]
+  },
+  {
+   "quantity": "X-ray photon index (first 10 days)",
+   "value": "1.7",
+   "uncertainty": "+0.3/-0.3",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "XRT",
+     "quote": "We found that the data are well described by a power law with index $\\Gamma=1.7^{+0.3}_{-0.3}$ (90% confidence)."
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy damped Lyman-alpha neutral hydrogen column density",
+   "value": "6.5e20",
+   "uncertainty": "0.4e20",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Ultraviolet Spectroscopic Analysis",
+     "quote": "The broad Lyman-$\\alpha$ feature (the blue wing of which is cut off by geocoronal contamination) is well-fit by a damped Lyman-$\\alpha$ profile and indicates a hydrogen column through the host of (6.5 $\\pm$ 0.4) $\\times$ $10^{20}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Late-time H and He blueshifted emission component velocity offset",
+   "value": "-6600",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Spectroscopic Evolution",
+     "quote": "the H$\\alpha$ line in particular shows a clear double-peaked profile, with one component peaking at or near the systemic redshift and another peaking at a relative blueshift of $\\Delta v = -$6600 km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Host galaxy stellar mass log10(M_*)",
+   "value": "8.96",
+   "uncertainty": "0.06",
+   "units": "log10(M_sun)",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "log$_{10}$$M_*$ | $M_\\odot$ | 8.96 $\\pm$ 0.06"
+    }
+   ]
+  },
+  {
+   "quantity": "Volumetric rate of 18cow-like LFBOTs (z < 0.1)",
+   "value": "0.9-12.5",
+   "uncertainty": "95% confidence interval",
+   "units": "yr^-1 Gpc^-3",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Constraints on the rate of 18cow-like and 24wpp-like transients",
+     "quote": "Assuming that all LFBOTs in this volume were successfully classified, this corresponds to a rate (95% confidence interval) of 0.9–12.5 yr$^{-1}$ Gpc$^{-3}$, or about 0.001–0.01% of the core-collapse supernova rate ($10^5$ yr$^{-1}$ Gpc$^{-3}$; (cite: Perley+2020))."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA CASA and pipeline versions used for QA2 processing",
+  "ALMA array configurations, baselines, time on source, and synthesized beam sizes for each Band 3/5/7 epoch",
+  "Exact tclean imaging parameters (weighting/robust, cell size, image size) used by the ALMA pipeline"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python scripts used for light curve polynomial/local regression interpolation and blackbody fitting",
+  "Monte Carlo broken power-law fitting script and exact scintillation modulation values applied to each radio frequency/epoch",
+  "Specific prospector prior distributions for the host galaxy SED fit"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "All ALMA and VLA flux densities are explicitly tabulated in Table 4, ALMA measurements come directly from archive QA2 products, and the analytical equations (SSA from Chrimes+2024b, diffusion mass, X-ray ionization criteria from Govreen-Segal+2025) are fully specified, though custom fitting scripts are not released.",
+ "rediscovery_reason": "ALMA QA2 continuum images are directly available in the ALMA archive under 2023.1.01730.T, all radio/mm flux densities are tabulated, and the broken power-law SSA shock parameter derivations and UVOIR blackbody fits have clear numerical answer keys.",
+ "source_card": "cards/2026MNRAS.549ag678P/sonnet/card.md"
+}

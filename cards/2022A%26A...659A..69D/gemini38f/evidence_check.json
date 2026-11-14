@@ -1,0 +1,1326 @@
+{
+ "summary": {
+  "quotes": 103,
+  "quotes_ok": 77,
+  "quote_pass_rate": 0.748,
+  "quotes_too_long": 3,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 92,
+   "stated": 63,
+   "rate": 0.685
+  },
+  "evidence_ok": false
+ },
+ "failed_quotes": [
+  {
+   "path": "science.targets[1].coordinates.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].redshift_or_distance.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].distance_source.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[3].what.evidence[0]",
+   "loc": "Table 2",
+   "quote": "N(CH3OH) (cm^-2): (1.0 +/- 0.2) x 10^19 (cite: Jorgensen2018); (1.3 +/- 0.4) x 10^19 (cite: Manigand2020)",
+   "ratio": 0.627,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].method.evidence[1]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "Line strengths were evaluated taking a dipole moment function with two non-vanishing constant components along the x and z axes of the molecule-fixed axis system such that the xz plane remains parallel to the COH group. The values are mu_x=-1.37 and mu_z=0.8956 D",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "The values are mu_x=-1.37 and mu_z=0.8956 D as reported by (cite: Amano1981).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].validation.evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "A comparison between the present spectroscopic database and a previously available line list is shown in Table [tbl:comp_dtb].",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].key_parameters[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "These are assumed to be lines that have tau>0.1 either at Tex=50 or 300 K at N=1.3x10^17 cm^-2 (initial rough estimate of the column density of CHD2OH).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Two runs of MCMC are executed. The first has 300 walkers for each parameter with each walker taking 250 steps... The second has 300 walkers for each parameter with each taking 1000 steps",
+   "ratio": 0.625,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "specifically: Tex in [50,400] K and N in [10^13,10^18] cm^-2 (the log-prior function is set to infinity outside of these ranges).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].assumptions[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The code accounts for optical depth by considering the Sobolev or the large velocity gradient (LVG) approximation: N_up; op. thick = N_up; op. thin x beta, where beta = (1-e^-tau)/tau",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].fitting.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The walkers undertake the default “stretch moves” of EMCEE (cite: GoodmanWeare2010). The negative likelihood function being minimized is: -1/2 x sum_{nu_line} sum (I_observed - I_model)^2",
+   "ratio": 0.812,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].method.evidence[0]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "CHD2OH / CH3OH = 3 (D/H)_CH3OH^2",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N(CH3OH) (cm^-2) : (1.0 +/- 0.2) x 10^19; (1.3 +/- 0.4) x 10^19",
+   "ratio": 0.845,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[1]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "CHD2OH / CH3OH = 3 (D/H)_CH3OH^2",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[4].validation.evidence[0]",
+   "loc": "7 Integrated intensity maps details",
+   "quote": "Fig. 16 displays the “classical” (non-VINE) integrated intensity map, in which a constant vLSR of 2.7 km s^-1 is applied... This panel can be compared to the VINE map of the same line in Fig. 2.",
+   "ratio": 0.771,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[0].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Tex (K) : 90.0 +/- 9",
+   "ratio": 0.833,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[1].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N (cm^-2) : (1.78 +/- 0.36) x 10^17",
+   "ratio": 0.844,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[2].evidence[0]",
+   "loc": "Table 2",
+   "quote": "D/H of CH3OH (w/ stat. corr.) : (7.7 +/- 1.2) x 10^-2",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[3].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Tex (K) : 127 +/- 13",
+   "ratio": 0.0,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[4].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N (cm^-2) : (2.22 +/- 0.44) x 10^17",
+   "ratio": 0.712,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[5].evidence[0]",
+   "loc": "Table 2",
+   "quote": "D/H of CH3OH (w/ stat. corr.) : (7.5 +/- 1.1) x 10^-2",
+   "ratio": 0.772,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[6].evidence[0]",
+   "loc": "4.1 Deuteration in IRAS 16293-2422",
+   "quote": "(D/H)_CH2DOH = CHD2OH / CH2DOH approx 25.1 +/- 7.5 %",
+   "ratio": 0.761,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[2].evidence[0]",
+   "loc": "4.4 Comparison to cometary measurements",
+   "quote": "Fig. 6 shows the cometary D/H ratio of D2O, CHD2OH, NH2D, and HDS are significantly (at least one order of magnitude) lower than that in I16293B.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[0].evidence[0]",
+   "loc": "5 Conclusions",
+   "quote": "The best-fitting LTE parameters of CHD2OH are N=(1.78+/-0.36)x10^17 cm^-2 and Tex=90.0+/-9 K towards a one-beam offset position from IRAS 16293-2422 B... Towards a (slightly more than) one-beam offset position from IRAS 16293-2422 A... N=(2.22+/-0.44)x10^17 cm^-2 and Tex=127+/-13 K",
+   "ratio": 0.539,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[1].evidence[0]",
+   "loc": "3.1 Line profiles",
+   "quote": "However, the model assumptions (e.g., LTE with a single Tex) have much higher uncertainties and so do the data themselves (calibration uncertainty of 5%)... pessimistic errors of 10% and 20% on Tex and N, respectively, are adopted",
+   "ratio": 0.723,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  }
+ ],
+ "unsupported_facts": [],
+ "codes": [
+  {
+   "code": "2013.1.00278.S",
+   "well_formed": true,
+   "in_text": true,
+   "in_obscore": true
+  }
+ ],
+ "numeric_problems": [],
+ "all_quotes": [
+  {
+   "path": "paper_type_evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "IRAS 16293-2422 was the target of the large unbiased Protostellar Interferometric Line Survey (PILS; project-id: 2013.1.00278.S, PI: Jes K. Jørgensen) carried out with ALMA in Cycle 2",
+   "ratio": 0.989,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].coordinates.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The coordinates of this position are RA, Dec (J2000) of 16h32m22.58s, -24d28'32.80''.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].coordinates.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The coordinates of this position are RA, Dec (J2000) of 16h32m22.58s, -24d28'32.80''.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].redshift_or_distance.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The coordinates of this position are RA, Dec (J2000) of 16h32m22.58s, -24d28'32.80''.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[0].distance_source.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].coordinates.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].coordinates.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].redshift_or_distance.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].redshift_or_distance.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].distance_source.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The secondary focus of this publication is a (slightly more than) one-beam offset position from source A in the NE direction (0.6'' or 85 au away from the dust peak of A)... with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20''",
+   "ratio": 0.741,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "science.targets[1].distance_source.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "IRAS 16293-2422 is a frequently studied, well-characterized nearby (141 pc; (cite: Dzib2018)) low-mass protostellar system.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "science.question.evidence[0]",
+   "loc": "abstract",
+   "quote": "Accurate quantification of the column density of di-deuterated methanol is a key missing puzzle piece in the otherwise thoroughly constrained family of D-bearing methanol in the deeply embedded low-mass protostellar system and astrochemical template source IRAS 16293-2422.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "science.question.evidence[1]",
+   "loc": "1 Introduction",
+   "quote": "In this paper, new accurate spectroscopic data (Sect. 2.2) are used to firmly quantify the availability of CHD2OH in IRAS 16293-2422 A and B (hereafter, I16293A and I16293B, respectively) on the basis of ALMA-PILS observations",
+   "ratio": 0.948,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.alma_project_codes[0].evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "IRAS 16293-2422 was the target of the large unbiased Protostellar Interferometric Line Survey (PILS; project-id: 2013.1.00278.S, PI: Jes K. Jørgensen) carried out with ALMA in Cycle 2",
+   "ratio": 0.989,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.bands.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "These data cover the 329-363 GHz frequency range (ALMA Band 7)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.frequencies_and_spectral_setup.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "These data cover the 329-363 GHz frequency range (ALMA Band 7) at a spatial resolution of ~0.5''",
+   "ratio": 0.979,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.frequencies_and_spectral_setup.evidence[1]",
+   "loc": "2.1 Observations",
+   "quote": "The data were obtained at a spectral resolution of 0.2 km s^-1 (0.244 MHz)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[0].evidence[0]",
+   "loc": "abstract",
+   "quote": "ALMA-PILS observations in the 329-363 GHz range are used to identify 105 unique, non-blended, optically thin line frequencies of CHD2OH for synthetic spectral fitting.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[0].evidence[1]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "The (nearly) optically thin 348.710 GHz line of CHD2OH is highly promising in this regard",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[0].evidence[2]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Fig. 4 shows the integrated intensity map of the optically thick 334.056 GHz line of CHD2OH.",
+   "ratio": 0.906,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.lines_targeted[1].evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Consequently, the rest frequency of this line in every pixel is found by first determining the rest frequency of the bright methanol transition at 337.519 GHz, thereby determining a velocity map of IRAS 16293-2422",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.arrays.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "The observations are a combination of the 12m array and the 7m Atacama Compact Array (ACA)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.angular_resolution.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "at a spatial resolution of ~0.5'' (70 au; the applied uniform circular restoring beam).",
+   "ratio": 0.977,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.max_recoverable_scale.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "hence sampling extended structures up to ~13'' (~2 000 au; largest recoverable size).",
+   "ratio": 0.948,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.sensitivity.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "reached a sensitivity of sigma=8-10 mJy beam^-1 channel^-1 (or 4-5 mJy beam^-1 km s^-1).",
+   "ratio": 0.994,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.pi_or_archival_as_stated.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "IRAS 16293-2422 was the target of the large unbiased Protostellar Interferometric Line Survey (PILS; project-id: 2013.1.00278.S, PI: Jes K. Jørgensen) carried out with ALMA in Cycle 2 as presented in an extensive series of papers.",
+   "ratio": 0.991,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[0].what.evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "The results of the global line position analysis of (cite: Coudert2021) were used to build a spectroscopic database for CHD2OH.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[1].what.evidence[0]",
+   "loc": "4.3 Comparison to experimental data",
+   "quote": "Fig. 6 shows the D/H ratio of formaldehyde and methanol in the hot corino of I16293B in comparison to experimental results of (cite: Nagaoka2005; Nagaoka2007; Hidaka2009).",
+   "ratio": 0.96,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[2].what.evidence[0]",
+   "loc": "4.4 Comparison to cometary measurements",
+   "quote": "Fig. 6 also includes the seven D-bearing molecules measured with the Rosetta Orbiter Spectrometer for Ion and Neutral Analysis (ROSINA; (cite: Balsiger2007)) instrument aboard the ESA Rosetta spacecraft",
+   "ratio": 0.966,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[2].what.evidence[1]",
+   "loc": "4.4 Comparison to cometary measurements",
+   "quote": "(cite: Paquette2021) reported the measurements of the D/H ratio in 25 cometary dust particles that were obtained with the Cometary Secondary Ion Mass Analyser (COSIMA; (cite: Kissel2007))",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "data.external_data_from_literature[3].what.evidence[0]",
+   "loc": "Table 2",
+   "quote": "N(CH3OH) (cm^-2): (1.0 +/- 0.2) x 10^19 (cite: Jorgensen2018); (1.3 +/- 0.4) x 10^19 (cite: Manigand2020)",
+   "ratio": 0.627,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "processing.calibration.flux_scale_uncertainty.evidence[0]",
+   "loc": "3.1 Line profiles",
+   "quote": "However, the model assumptions (e.g., LTE with a single Tex) have much higher uncertainties and so do the data themselves (calibration uncertainty of 5%).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.continuum_subtraction.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Once this single position spectrum is extracted from the continuum-subtracted (based on methodology described in (cite: Jorgensen2016)) data cube, it is analyzed with custom-made Python scripts.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "processing.imaging.final_beam.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "at a spatial resolution of ~0.5'' (70 au; the applied uniform circular restoring beam).",
+   "ratio": 0.977,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[0].what.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "The full details about the data set and its reduction are available in (cite: Jorgensen2016).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[1].what.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "extracted from the continuum-subtracted (based on methodology described in (cite: Jorgensen2016)) data cube",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[2].what.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "A Doppler shift by vLSR=2.7 km s^-1 determined for this position is applied (cite: Jorgensen2011).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[2].what.evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "with coordinates RA, Dec (J2000) of 16h32m22.90s, -24d28'36.20'' and vLSR=0.8 km s^-1.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[3].what.evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "This method was developed by (cite: Calcutt2018a) and produces so-called Velocity-corrected INtegrated emission (VINE) maps.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "processing.inherited[4].what.evidence[0]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "As presented in appendix B of (cite: Manigand2019), the number of indistinguishable combinations with i deuterium atoms at n potential sites in a specific functional group is the statistical correction",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].method.evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "The results of the global line position analysis of (cite: Coudert2021) were used to build a spectroscopic database for CHD2OH. All rotation-torsion lines within and between the first three torsional states, 0 <= vt <= 2, were computed up to J=26.",
+   "ratio": 0.97,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[0].method.evidence[1]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "Line strengths were evaluated taking a dipole moment function with two non-vanishing constant components along the x and z axes of the molecule-fixed axis system such that the xz plane remains parallel to the COH group. The values are mu_x=-1.37 and mu_z=0.8956 D",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "The values are mu_x=-1.37 and mu_z=0.8956 D as reported by (cite: Amano1981).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[1]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "LOGSTR0 and LOGSTR1 are two dimensionless constants both set to -9.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].key_parameters[0].evidence[2]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "A minimum value of 10 kHz was selected for the calculated error (ERR).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].assumptions[0].evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "It should be noted that the vibrational contribution to the partition function is negligible, because the vibrational modes are above 1000 cm^-1.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[0].validation.evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "A comparison between the present spectroscopic database and a previously available line list is shown in Table [tbl:comp_dtb].",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].method.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "This check for blending is done through visual inspection; and all lines that have any level of blending are removed from further synthetic spectrum fitting. Then, optically thick lines of CHD2OH are removed from further synthetic spectrum fitting.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].method.evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "After the removal of blended and optically thick lines, 105 unique line frequencies remain that are used for synthetic spectral fitting",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].key_parameters[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "These are assumed to be lines that have tau>0.1 either at Tex=50 or 300 K at N=1.3x10^17 cm^-2 (initial rough estimate of the column density of CHD2OH).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].assumptions[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The computation is performed under the local thermal equilibrium (LTE) approximation.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[1].validation.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Next, the observed spectrum is investigated at all covered rest frequencies of CHD2OH lines with the reference spectrum overlaid.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 4,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Finally, synthetic spectral fitting for CHD2OH is carried out with a newly developed routine based on the Markov chain Monte Carlo (MCMC) Python package EMCEE",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 17,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].method.evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Two runs of MCMC are executed. The first has 300 walkers for each parameter with each walker taking 250 steps... The second has 300 walkers for each parameter with each taking 1000 steps",
+   "ratio": 0.625,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Several parameters are fixed: beam size of 0.5'', source size of 0.5'', and line full width half-maximum (FWHM) of 1 km s^-1.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 17,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "specifically: Tex in [50,400] K and N in [10^13,10^18] cm^-2 (the log-prior function is set to infinity outside of these ranges).",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].key_parameters[0].evidence[2]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "All other input parameters are kept the same; only FWHM is changed to 2.2 km s^-1 as deduced from previous analysis of this position",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].assumptions[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The code accounts for optical depth by considering the Sobolev or the large velocity gradient (LVG) approximation: N_up; op. thick = N_up; op. thin x beta, where beta = (1-e^-tau)/tau",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].fitting.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The walkers undertake the default “stretch moves” of EMCEE (cite: GoodmanWeare2010). The negative likelihood function being minimized is: -1/2 x sum_{nu_line} sum (I_observed - I_model)^2",
+   "ratio": 0.812,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[2].validation.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The output of the second MCMC run is checked for convergence and high values of acceptance ratios. For the second MCMC run of the CHD2OH computation, the mean acceptance fraction of the 300 walkers is 70%",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].method.evidence[0]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "CHD2OH / CH3OH = 3 (D/H)_CH3OH^2",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].method.evidence[1]",
+   "loc": "Table 2",
+   "quote": "D/H of CH3OH (w/ stat. corr.)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N(CH3OH) (cm^-2) : (1.0 +/- 0.2) x 10^19; (1.3 +/- 0.4) x 10^19",
+   "ratio": 0.845,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].key_parameters[0].evidence[1]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "CHD2OH / CH3OH = 3 (D/H)_CH3OH^2",
+   "ratio": 0.8,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].assumptions[0].evidence[0]",
+   "loc": "8 Statistical corrections to abundance ratios for D/H ratio derivations",
+   "quote": "The probability of a deuterium atom replacing a hydrogen atom at a specific location in a certain functional group (-XHn) is a statistically independent event.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[3].validation.evidence[0]",
+   "loc": "3.1 Line profiles",
+   "quote": "To investigate this further, MCMC models for fixed temperatures of 150 and 300 K were ran while varying the column density.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[4].method.evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Consequently, the rest frequency of this line in every pixel is found by first determining the rest frequency of the bright methanol transition at 337.519 GHz, thereby determining a velocity map of IRAS 16293-2422 (fig. 4 of (cite: Calcutt2018a)). This method was developed by (cite: Calcutt2018a) and produces so-called Velocity-corrected INtegrated emission (VINE) maps.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": true
+  },
+  {
+   "path": "analysis_steps[4].key_parameters[0].evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Here, the integration is performed over 25 spectral bins, corresponding to a ~5 km s^-1 range, which is mostly sufficient to encompass the entire line profile near both sources.",
+   "ratio": 0.989,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[4].assumptions[0].evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Consequently, the rest frequency of this line in every pixel is found by first determining the rest frequency of the bright methanol transition at 337.519 GHz, thereby determining a velocity map of IRAS 16293-2422",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "analysis_steps[4].validation.evidence[0]",
+   "loc": "7 Integrated intensity maps details",
+   "quote": "Fig. 16 displays the “classical” (non-VINE) integrated intensity map, in which a constant vLSR of 2.7 km s^-1 is applied... This panel can be compared to the VINE map of the same line in Fig. 2.",
+   "ratio": 0.771,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "software[0].used_for.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "Finally, synthetic spectral fitting for CHD2OH is carried out with a newly developed routine based on the Markov chain Monte Carlo (MCMC) Python package EMCEE (cite: ForemanMackey2013)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 17,
+   "too_long": false
+  },
+  {
+   "path": "software[1].used_for.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "The code behind the LTE model is based on the formalisms used in CASSIS.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "software[2].used_for.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "where beta = ( 1-e^-tau ) / tau ((cite: Sobolev1960; Castor1970; Elitzur1992); as in RADEX, p.42-44 of (cite: vanderTak2007)).",
+   "ratio": 0.931,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[0].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Tex (K) : 90.0 +/- 9",
+   "ratio": 0.833,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[1].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N (cm^-2) : (1.78 +/- 0.36) x 10^17",
+   "ratio": 0.844,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[2].evidence[0]",
+   "loc": "Table 2",
+   "quote": "D/H of CH3OH (w/ stat. corr.) : (7.7 +/- 1.2) x 10^-2",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[3].evidence[0]",
+   "loc": "Table 2",
+   "quote": "Tex (K) : 127 +/- 13",
+   "ratio": 0.0,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[4].evidence[0]",
+   "loc": "Table 2",
+   "quote": "N (cm^-2) : (2.22 +/- 0.44) x 10^17",
+   "ratio": 0.712,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[5].evidence[0]",
+   "loc": "Table 2",
+   "quote": "D/H of CH3OH (w/ stat. corr.) : (7.5 +/- 1.1) x 10^-2",
+   "ratio": 0.772,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[6].evidence[0]",
+   "loc": "4.1 Deuteration in IRAS 16293-2422",
+   "quote": "(D/H)_CH2DOH = CHD2OH / CH2DOH approx 25.1 +/- 7.5 %",
+   "ratio": 0.761,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "results_numeric[7].evidence[0]",
+   "loc": "4.1 Deuteration in IRAS 16293-2422",
+   "quote": "Di-deuterated molecular D/H ratios span 10-33% with a mean of 20.7+/-6.2%.",
+   "ratio": 0.973,
+   "ok": true,
+   "matched_in": "pdf",
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[0].evidence[0]",
+   "loc": "abstract",
+   "quote": "Di-deuterated molecules consistently have higher D/H ratios than their mono-deuterated counterparts in all low-mass protostars, which may be a natural consequence of H-D substitution reactions as seen in laboratory experiments.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[1].evidence[0]",
+   "loc": "abstract",
+   "quote": "Deuteration in IRAS 16293-2422 is not higher than in other low-mass star-forming regions (L483, SVS13-A, NGC 1333-IRAS2A, -IRAS4A, and -IRAS4B).",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[2].evidence[0]",
+   "loc": "4.4 Comparison to cometary measurements",
+   "quote": "Fig. 6 shows the cometary D/H ratio of D2O, CHD2OH, NH2D, and HDS are significantly (at least one order of magnitude) lower than that in I16293B.",
+   "ratio": 0.899,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "findings_qualitative[2].evidence[1]",
+   "loc": "abstract",
+   "quote": "The Solar System’s natal cloud, as traced by comet 67P/Churyumov–Gerasimenko, may have had a lower initial abundance of D, been warmer than the cloud of IRAS 16293-2422, or been partially reprocessed.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "claims[0].evidence[0]",
+   "loc": "5 Conclusions",
+   "quote": "The best-fitting LTE parameters of CHD2OH are N=(1.78+/-0.36)x10^17 cm^-2 and Tex=90.0+/-9 K towards a one-beam offset position from IRAS 16293-2422 B... Towards a (slightly more than) one-beam offset position from IRAS 16293-2422 A... N=(2.22+/-0.44)x10^17 cm^-2 and Tex=127+/-13 K",
+   "ratio": 0.539,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "claims[1].evidence[0]",
+   "loc": "4.2 Comparison to other low-mass protostars with CHD2OH detections",
+   "quote": "However, Fig. 5 does not yield enough evidence to support I16293B being abnormally deuterium-rich among low-mass protostars.",
+   "ratio": 0.9,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "claims[2].evidence[0]",
+   "loc": "4.1 Deuteration in IRAS 16293-2422",
+   "quote": "Within error bars, all five values agree, implying the same level of deuteration in all di-deuterated species relative to their mono-deuterated variants.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "claims[2].evidence[1]",
+   "loc": "4.3 Comparison to experimental data",
+   "quote": "Rather, it seems that this is a natural consequence of H-D substitution reactions on grain-surfaces at cold temperatures.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.why_this_data.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "These data cover the 329-363 GHz frequency range (ALMA Band 7) at a spatial resolution of ~0.5'' (70 au; the applied uniform circular restoring beam). This allows for sources A and B to be studied individually",
+   "ratio": 0.99,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.why_this_method.evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "This position is favorable for spectral analysis as it displays narrow lines, which reduces blending, and probes the hot dense inner hot corino around source B, while avoiding self-absorption and strong dust absorption on source.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.alternatives_considered_or_rejected[0].evidence[0]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "However, it does not properly account for flat-topped line profiles of optically thick lines, therefore being most-suitable for the analysis of optically thin lines.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.alternatives_considered_or_rejected[1].evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "Di-deuterated methanol CHD2OH is a non-rigid species displaying a large amplitude internal rotation of its methyl group.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 17,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[0].evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "This allows for sources A and B to be studied individually; however, this is not enough to spatially separate A1 from A2.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[1].evidence[0]",
+   "loc": "3.1 Line profiles",
+   "quote": "However, the model assumptions (e.g., LTE with a single Tex) have much higher uncertainties and so do the data themselves (calibration uncertainty of 5%)... pessimistic errors of 10% and 20% on Tex and N, respectively, are adopted",
+   "ratio": 0.723,
+   "ok": false,
+   "matched_in": null,
+   "page": null,
+   "too_long": false
+  },
+  {
+   "path": "reasoning.limitations_admitted[2].evidence[0]",
+   "loc": "3.2 Integrated intensity maps",
+   "quote": "Around source A it is still hard to compute an accurate integrated intensity and therefore, the shown map should be interpreted with caution",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 5,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.data_public_as_stated.evidence[0]",
+   "loc": "abstract",
+   "quote": "A spectroscopic dataset for astrophysical purposes is built for CHD2OH and made publicly available to facilitate accurate characterization of this species in astrochemical surveys.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 1,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.data_public_as_stated.evidence[1]",
+   "loc": "2.1 Observations",
+   "quote": "IRAS 16293-2422 was the target of the large unbiased Protostellar Interferometric Line Survey (PILS; project-id: 2013.1.00278.S, PI: Jes K. Jørgensen)",
+   "ratio": 0.987,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.products_in_archive.evidence[0]",
+   "loc": "2.1 Observations",
+   "quote": "project-id: 2013.1.00278.S",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 2,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.code_released[0].evidence[0]",
+   "loc": "2.2 Spectroscopy of CHD2OH",
+   "quote": "The line list is published as an electronic Table at the Centre de Données astronomiques de Strasbourg (CDS) with association to this A&A article.",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 3,
+   "too_long": false
+  },
+  {
+   "path": "reproducibility.code_released[0].evidence[1]",
+   "loc": "2.3 Spectral analysis",
+   "quote": "synthetic spectral fitting for CHD2OH is carried out with a newly developed routine based on the Markov chain Monte Carlo (MCMC) Python package EMCEE (cite: ForemanMackey2013)",
+   "ratio": 1.0,
+   "ok": true,
+   "matched_in": "fulltext",
+   "page": 17,
+   "too_long": false
+  }
+ ]
+}

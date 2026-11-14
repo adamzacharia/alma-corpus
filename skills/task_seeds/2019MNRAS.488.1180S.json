@@ -1,0 +1,273 @@
+{
+ "bibcode": "2019MNRAS.488.1180S",
+ "title": "No signs of star formation being regulated in the most luminous quasars at z ∼ 2 with ALMA",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz1746",
+ "arxiv_id": "1906.04290",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies"
+ ],
+ "question": "Is star formation in hosts of the most luminous z~2 quasars enhanced or suppressed (regulated), as judged from the intrinsic SFR distribution from ALMA 850um continuum?",
+ "alma_project_codes": [
+  "2017.1.00102.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "12 m array, 40 antennas",
+  "angular_resolution": "~0.9 arcsec average major beam (7.5 kpc at z=2)",
+  "sensitivity": "requested 0.12 mJy/beam (3 sigma); achieved mean ~0.09 mJy/beam; flux error ~0.1 mJy"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quasar sample and bolometric luminosities from SDSS DR7 quasar catalog",
+    "evidence": [
+     {
+      "loc": "2.1 Sample selection",
+      "quote": "We draw our sample from the Sloan Digital Sky Survey (SDSS) DR7 quasar catalog (cite: Schneider:2010; Shen:2011), with $\\delta<+15$ deg."
+     }
+    ]
+   },
+   "citation": "(cite: Schneider:2010; Shen:2011)"
+  },
+  {
+   "what": {
+    "value": "Median host stellar mass log M*=11.1 (range 10.5-11.5) adopted for the sample",
+    "evidence": [
+     {
+      "loc": "4.1 The intrinsic SFR distribution of luminous quasars",
+      "quote": "reporting a median stellar mass of $\\log \\ensuremath{M_\\ast}\\,/ M_\\odot=11.1$, which we here adopt as the average $M_\\ast$ of our sample."
+     }
+    ]
+   },
+   "citation": "(cite: Mechtley:2016)"
+  },
+  {
+   "what": {
+    "value": "AGN SED templates (standard, WDD, HDD)",
+    "evidence": [
+     {
+      "loc": "3.1 AGN spectral energy distribution",
+      "quote": "we use a simple approach by fitting with a library of SEDs consisting of the three AGN SED temples provided in (cite: Lyu:2017)"
+     }
+    ]
+   },
+   "citation": "(cite: Xu:2015; Lyu:2017)"
+  },
+  {
+   "what": {
+    "value": "MBB parameters beta=1.6, Td=47 K",
+    "evidence": [
+     {
+      "loc": "3.2 FIR luminosities and Star formation rates",
+      "quote": "We fix the emissivity index to $\\beta=1.6$ and the dust temperature to $T_{\\rm d}=47$ K (cite: Beelen:2006)"
+     }
+    ]
+   },
+   "citation": "(cite: Beelen:2006)"
+  },
+  {
+   "what": {
+    "value": "MS galaxy IR SED template at z~2",
+    "evidence": [
+     {
+      "loc": "3.2 FIR luminosities and Star formation rates",
+      "quote": "The second approach uses a characteristic IR SED template of MS galaxies at $z\\sim 2$ as provided in (cite: Bethermin:2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Bethermin:2015; Magdis:2012)"
+  },
+  {
+   "what": {
+    "value": "Hickox et al. model SFR distribution (mean 2.58, dispersion 0.31) and Magneticum simulation SFRs at z=2",
+    "evidence": [
+     {
+      "loc": "4.3 Comparison with models",
+      "quote": "Their SFR distribution has a mean of 2.58 and a dispersion of 0.31."
+     }
+    ]
+   },
+   "citation": "(cite: Hickox:2014; Hirschmann:2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure 850um fluxes and sizes",
+   "method": "Fit point-source or Gaussian (if resolved >3 sigma) models directly to visibilities",
+   "software": [
+    "CASA",
+    "GILDAS"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Black hole mass and bolometric luminosity from SDSS spectra",
+   "method": "Multi-Gaussian + power-law + Fe template fits to Mg II and C IV; virial MBH from Mg II; Lbol = 3.2 L3000",
+   "software": [
+    "MPFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Estimate AGN contribution at 850um",
+   "method": "Chi2 fit of three AGN templates (standard, WDD, HDD; only normalisation free) to UV-mid-IR photometry; best template subtracted from ALMA luminosity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Host galaxy negligible in UV-mid-IR; ALMA and Herschel excluded from fit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive LIR and SFR",
+   "method": "Modified blackbody normalised to AGN-subtracted 850um flux; alternative MS-galaxy SED template; Kennicutt conversion",
+   "software": [],
+   "key_parameters": [
+    "beta=1.6, Td=47 K (30-50 K range for uncertainty)"
+   ],
+   "assumptions": [
+    "Chabrier IMF; 8-1000um LIR; SFR = LIR/1e10 Lsun"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit log-normal SFR distribution and compare with MS and models",
+   "method": "Bayesian log-normal fit; Monte Carlo with Td~N(47,6 K), 1000 realisations; Shapiro-Wilk test; KS test vs Magneticum; MS from Speagle 2014 at assumed M*",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Host log M* = 11.1 (10.5-11.5) from Mechtley 2016"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detections at 850um",
+   "value": "19/20 (16 at >5 sigma)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.2 ALMA Observations",
+     "quote": "In total 19 of the 20 targets are detected at $850\\mu$m at more than $3\\sigma$ at the optical QSO position, 16 of them at more than $5\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log SFR (MBB, Td=47 K)",
+   "value": "2.15",
+   "uncertainty": "0.11",
+   "units": "log Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MBB ($T_{\\rm d}=47$ K)         |   $2.15\\pm0.11$    |    $0.49\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR dispersion (MBB, Td=47 K)",
+   "value": "0.49",
+   "uncertainty": "0.08",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MBB ($T_{\\rm d}=47$ K)         |   $2.15\\pm0.11$    |    $0.49\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log SFR (MS template)",
+   "value": "1.89",
+   "uncertainty": "0.11",
+   "units": "log Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "MS galaxy template             |   $1.89\\pm0.11$    |    $0.49\\pm0.08$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR range (MBB)",
+   "value": "35-1513",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 The intrinsic SFR distribution of luminous quasars",
+     "quote": "The SFRs span a range of $35-1513\\, M_\\odot$ yr$^{-1}$, with a median value of $180\\, M_\\odot$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "AGN contribution to L850",
+   "value": "3-59% (median 14%)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 FIR luminosities and Star formation rates",
+     "quote": "we find an AGN contribution to $L_{850\\mu\\mathrm{m}}$ in the range of $3-59\\%$, with a median value of 14%."
+    }
+   ]
+  },
+  {
+   "quantity": "KS p-values vs Magneticum",
+   "value": "0.14 (single Td), 0.46 (Td distribution)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Comparison with models",
+     "quote": "a Kolmogorov-Smirnov test gives p-values of $p_{\\rm KS}=0.14$ and $p_{\\rm KS}=0.46$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman r, SFR vs log Lbol",
+   "value": "-0.48 (p=0.03)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\log\\, L_{\\rm bol}$                    | $-0.48$ | 0.03  | $-0.35$ |   0.03"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number and selection of uv-fit components for the extra sources in the beam",
+  "Phase/flux/bandpass calibrators and flux-scale uncertainty",
+  "Details of the shallow clean (weighting, cell size, masks) for the displayed images",
+  "Exact AGN SED extrapolation to 850um and normalisation procedure for the AGN contribution",
+  "Bayesian log-normal fit priors (Oliphant 2006 approach) details",
+  "Treatment of non-detections in the log-normal fit"
+ ],
+ "missing_for_reproduction": [
+  "Calibrator details and exact uv-fit procedure",
+  "SED fitting normalisation details",
+  "Hickox and Magneticum model outputs (Magneticum not public in paper)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple measurements and tabulated results but uv-fitting and AGN subtraction details sparse.",
+ "rediscovery_reason": "Data are from an ALMA archive project; recipe is simple and results are numeric (fluxes, SFRs, distribution parameters).",
+ "source_card": "cards/2019MNRAS.488.1180S/sonnet/card.md"
+}

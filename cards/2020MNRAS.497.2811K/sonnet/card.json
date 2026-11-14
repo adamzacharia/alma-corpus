@@ -1,0 +1,1062 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.497.2811K",
+  "title": "Survey of planetesimal belts with ALMA: gas detected around the Sun-like star HD 129590",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Kral, Quentin",
+  "n_authors": 5,
+  "arxiv_id": "2005.05841",
+  "doi": "10.1093/mnras/staa2038",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.00704.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we carried out a survey of 10 stars with predicted high likelihoods of secondary CO detection using ALMA in band 6."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "HD 129590",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "136.0 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HD 129590 | $5.8 \\times 10^{-3}$ | 136.0 | G1V | 3.0 | 1.3 | 5810 | 0.98 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "GAIA DR2 (Table 1 note)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HD 129590 | $5.8 \\times 10^{-3}$ | 136.0 | G1V | 3.0 | 1.3 | 5810 | 0.98 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HD 121191",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "132.1 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HD 121191 | $2.4 \\times 10^{-3}$ | 132.1 | A5V | 7.2 | 1.6 | 7690 | 1.9 |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "GAIA DR2 (Table 1 note)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| HD 121191 | $2.4 \\times 10^{-3}$ | 132.1 | A5V | 7.2 | 1.6 | 7690 | 1.9 |"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HD 106906, HD 114082, HD 117214, HD 143675, HD 15745, HD 191089, HD 69830, HR 4796A",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "12.6-139.2 pc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "References: From (cite: 2017MNRAS.469..521K) updated with GAIA DR2 distances (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "GAIA DR2",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "References: From (cite: 2017MNRAS.469..521K) updated with GAIA DR2 distances (cite: 2016A&A...595A...1G; 2018A&A...616A...1G)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Do debris discs around later-type stars host secondary CO/CN gas, and what are the dust and gas properties of 10 planetesimal-belt systems?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We looked for continuum emission of mm-dust as well as gas emission (CO and CN transitions)."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00704.S",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observing configuration",
+       "quote": "as part of the cycle 5 project 2017.1.00704.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observing configuration",
+      "quote": "Our sample of 10 stars were targeted by ALMA in band 6"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4 SPWs: two continuum at 243.1 and 245.1 GHz (128 channels, 2 GHz each); CO 2-1 and CN 2-1 SPWs with 488.281 kHz channels, 3840 channels",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observing configuration",
+      "quote": "two of which focused on observing the dust continuum with 128 channels centered at 243.1 and 245.1 GHz (bandwidth of 2 GHz each)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observing configuration",
+       "quote": "targeted the CO J=2-1 line at 230.538 GHz"
+      }
+     ]
+    },
+    {
+     "species": "CN",
+     "transition": "N=2-1 (strongest hyperfine ~226.875 GHz)",
+     "rest_frequency": "~227 GHz",
+     "evidence": [
+      {
+       "loc": "2.4 Gas observations",
+       "quote": "close to the strongest CN transition (where the Einstein coefficient is the highest around 226.875 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15-500 m, 43 antennas",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observing configuration",
+      "quote": "The observations were carried out using 43 antennas with baselines ranging from 15 to 500 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "~1.5 arcsec",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "due to the limited resolution of our observations ($\\sim 1.5$ arcsec)"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "7 April to 12 August 2018",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observing configuration",
+      "quote": "between $7^{\\rm th}$ April and $12^{\\rm th}$ August 2018"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar parameters, fractional luminosities and SEDs for the sample",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "References: From (cite: 2017MNRAS.469..521K) updated with GAIA DR2 distances"
+       }
+      ]
+     },
+     "citation": "(cite: 2017MNRAS.469..521K)"
+    },
+    {
+     "what": {
+      "value": "JCMT 850 micron flux of HD 15745 (12±1.4 mJy)",
+      "evidence": [
+       {
+        "loc": "4.1.6 HD 15745",
+        "quote": "Extrapolating the observed JCMT flux for HD 15745 at 850 $\\mu$m ($12\\pm1.4$ mJy) to 1.27 mm"
+       }
+      ]
+     },
+     "citation": "(cite: 2017MNRAS.470.3606H)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observing configuration",
+       "quote": "The pipeline provided by ALMA was used to apply calibrations and extract the calibrated visibilities."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10%",
+     "evidence": [
+      {
+       "loc": "2.3 Dust continuum observations",
+       "quote": "flux calibration uncertainties (10%) added in quadrature"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.3 Dust continuum observations",
+       "quote": "We then used the CLEAN algorithm to image the data using natural weightings."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub in CASA, avoiding line channels",
+     "evidence": [
+      {
+       "loc": "2.4 Gas observations",
+       "quote": "using the task `uvcontsub` in CASA), avoiding channels around the line frequencies"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Gas MCMC radiative transfer method",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "was already used in (cite: 2018arXiv181108439K) to fit the \\[CI\\] fine structure line at 609.14$\\mu$m in HD 131835"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2018arXiv181108439K)"
+    },
+    {
+     "what": {
+      "value": "Temperature exponents fixed to 0, double power law profile",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "we fixed them to 0 (cite: 2016MNRAS.461..845K)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2016MNRAS.461..845K)"
+    },
+    {
+     "what": {
+      "value": "mu=14",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "To be consistent with previous studies, we assume $\\mu=14$."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017MNRAS.469..521K; 2018arXiv181108439K)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels for continuum and uvcontsub",
+    "CASA version and pipeline version",
+    "Image size, cell size, clean threshold",
+    "Flux, bandpass and phase calibrators",
+    "MCMC priors ranges and burn-in length",
+    "Velocity binning of cubes and masks used for fluxes",
+    "Stellar models for non-LTE fluorescence and electron density grid"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image continuum and measure fluxes",
+    "method": {
+     "value": "Combine four SPWs excluding CO line channels, CLEAN with natural weighting, integrate flux in ellipse where S/N >~2",
+     "evidence": [
+      {
+       "loc": "2.3 Dust continuum observations",
+       "quote": "we removed the channels close to the CO J=2-1 line and summed the four spectral windows to obtain a continuum image at $\\sim$ 1.27mm"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "2-D Gaussian fit for resolution check",
+    "method": {
+     "value": "imfit on continuum images",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "We use the CASA function `imfit` to find the best fit parameters of a 2-D Gaussian to our continuum images."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "integrated fluxes checked against Table values",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "verified that all integrated fluxes are consistent with values listed in Table"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit dust ring geometry and mass",
+    "method": {
+     "value": "Gaussian ring model, RADMC-3D images at 1.27 mm fit to dirty images with MCMC",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "We fit the dirty images (i.e. not cleaned) directly, which is closest to fitting the visibilities"
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "100 walkers, 1000 steps after burn-in",
+      "evidence": [
+       {
+        "loc": "3.1.2",
+        "quote": "The MCMC simulations were run with 100 walkers and for 1000 steps after the burn-in period."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "size distribution index -3.5, max grain 1 cm, min = blowout size, astrosilicates 2.7 g/cm3, kappa~1.3 cm2/g",
+      "evidence": [
+       {
+        "loc": "3.1.2",
+        "quote": "a mass-weighted mean opacity of $\\kappa \\sim 1.3$ cm$^2$g$^{-1}$ at 1.27 mm"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee, uniform priors, likelihood exp(-chi2/2) over dirty-beam-convolved pixels",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "We assume uniform priors and the posterior distributions of our parameters are given by the product of the prior distribution function and the likelihood function"
+      }
+     ]
+    },
+    "validation": {
+     "value": "HR 4796A compared to Kennedy et al. 2018 band 7 results",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "This is consistent with the results by (cite: 2018MNRAS.475.4924K), who did a similar analysis with ALMA data at higher resolution in band 7."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Extract CO/CN moment maps, spectra and fluxes",
+    "method": {
+     "value": "uvcontsub cubes, moment-0 integrated over ±20 km/s refined per source, upper limits 3 sigma",
+     "evidence": [
+      {
+       "loc": "2.4 Gas observations",
+       "quote": "integrated the cubes in velocity between $\\pm20$km/s"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit gas disc with LTE radiative transfer MCMC",
+    "method": {
+     "value": "Gaussian ring gas model, RADMC-3D CO cubes vs dirty cubes, per channel",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We then produce dirty cubes (i.e. without cleaning the images) around the CO line and use RADMC-3D to produce CO model cubes"
+      }
+     ]
+    },
+    "software": [
+     "RADMC-3D",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "100 walkers, ~10,000 steps; 2.667 channels per resolution element",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "we run the simulations with 100 walkers and for $\\sim$10,000 steps"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE, mu=14, axisymmetric",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "we first assume that CO is in local thermal equilibrium (LTE)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "free: R0, DeltaR, Sigma0, T0, v*, i, PA, offsets",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "The free parameters of this gas model are thus $R_0$, $\\Delta R$, $\\Sigma_0$, $T_0$, $v_\\star$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "HD 121191 compared to Moor et al. 2017",
+     "evidence": [
+      {
+       "loc": "3.2.2",
+       "quote": "We compare our results on the CO detection in HD 121191 to (cite: 2017ApJ...849..123M)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Non-LTE CO and CN masses",
+    "method": {
+     "value": "Optically thin non-LTE with fluorescence, scan over electron density and Tk 10-250 K, take min/max",
+     "evidence": [
+      {
+       "loc": "3.2.2 Fit with an MCMC radiative transfer model",
+       "quote": "To account for our lack of knowledge of the temperature and electron density in each system, we assume wide ranges for both and then give a mass range estimate computed as being the minimum and maximum values reached on these plots"
+      }
+     ]
+    },
+    "software": [
+     "LAMDA database"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "collision rates from Dickinson & Richards 1975, Allison & Dalgarno 1971",
+      "evidence": [
+       {
+        "loc": "3.2.2",
+        "quote": "The CO/electron collision rates where taken from (cite: 1975JPhB....8.2846D)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Derive planetesimal CO ice fraction and HCN/CO",
+    "method": {
+     "value": "Steady-state gas vs dust production using Matra et al. 2017 Eq. 2 and 2018 Eq. 3",
+     "evidence": [
+      {
+       "loc": "4.5.1",
+       "quote": "we assume that the production rate of gas and dust are at steady state and compare them to get the CO mass fraction"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "no shielding",
+      "evidence": [
+       {
+        "loc": "4.5.2",
+        "quote": "assuming no shielding and where we derived the level populations"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "imaging, uvcontsub, imfit",
+     "evidence": [
+      {
+       "loc": "3.1.1",
+       "quote": "We use the CASA function `imfit`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADMC-3D",
+    "version": "not stated",
+    "used_for": {
+     "value": "dust and CO model images/cubes",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "The RADMC-3D code (cite: 2012ascl.soft02015D) is then used to compute images"
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC fitting",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "we use the emcee module"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHOENIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "stellar spectrum fit for HD 69830",
+     "evidence": [
+      {
+       "loc": "4.4",
+       "quote": "we fit a PHOENIX stellar spectrum (cite: 2013A&A...553A...6H)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "HD 129590 CO flux",
+    "value": "0.056",
+    "uncertainty": "0.014",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| HD 129590 | $1.61 \\times 1.16$ | 81.9 | 1.52 | $0.056 \\pm 0.014$"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 129590 CO mass (non-LTE)",
+    "value": "2.1e-5 - 1.3e-4",
+    "uncertainty": "range",
+    "units": "M_earth",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "we find that (the optically thin) mass range is $2.1\\times10^{-5}$ - $1.3\\times10^{-4}$ M$_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 121191 CO flux",
+    "value": "0.21",
+    "uncertainty": "0.02",
+    "units": "Jy km/s",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "$0.21 \\pm 0.02$"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 121191 gas ring radius",
+    "value": "22",
+    "uncertainty": "+2/-3",
+    "units": "au",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "$R_0 = 22^{+2}_{-3}$ au"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 121191 CO mass LTE",
+    "value": "2.3e-3",
+    "uncertainty": "+2.3/-0.9 e-3",
+    "units": "M_earth",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2.2",
+      "quote": "$2.3^{+2.3}_{-0.9} \\times 10^{-3}$ M$_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 129590 dust ring radius",
+    "value": "74.2",
+    "uncertainty": "+6.1/-5.9",
+    "units": "au",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| HD 129590 | $74.2^{+6.1}_{-5.9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HD 129590 dust mass",
+    "value": "0.39",
+    "uncertainty": "±0.02",
+    "units": "M_earth",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.39^{+0.02}_{-0.02}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HCN/CO outgassing ratio HD 129590",
+    "value": "<2.4",
+    "uncertainty": "upper limit",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.5.2",
+      "quote": "$<2.4$% for HD 129590 and $<0.46$% for HD 121191"
+     }
+    ]
+   },
+   {
+    "quantity": "HR 4796A CO ice fraction",
+    "value": "<1.9",
+    "uncertainty": "upper limit",
+    "units": "percent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.5.1",
+      "quote": "HR 4796A ($<$1.9%)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "First CO detection around a G-type star; HD 121191 CO lies inside the planetesimal belt, possibly due to shielding and viscous spreading",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we detect CO for the first time around the young 10-16 Myr old G1V star HD 129590"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Gas can be detected around Sun-like stars",
+    "experiment": "Band 6 CO 2-1 survey of 10 debris discs",
+    "result": "CO flux 0.056±0.014 Jy km/s, S/N~4-9 around HD 129590",
+    "finding": "First CO around a G-type star, mass 2-10e-5 Mearth",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The gas seems colocated with its planetesimal belt and its total mass is likely between $2-10 \\times 10^{-5}$ M$_\\oplus$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "CO in HD 121191 is colocated with the planetesimals",
+    "experiment": "MCMC fit of CO cube",
+    "result": "gas at ~22 au vs dust at ~52 au",
+    "finding": "CO closer in, consistent with shielding and spreading",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "find that the CO lies much closer-in than the planetesimals in the system"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Exocomets resemble Solar System comets in CO content",
+    "experiment": "Upper limits on CO mass converted to ice fractions",
+    "result": "HD 114082 <1.6%, HR 4796A <1.9%",
+    "finding": "some systems below Solar System comet range",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.5.1",
+      "quote": "the CO content in HD 114082 ($<$1.6%) and HR 4796A ($<$1.9%) is already below the range"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Targets chosen as bright discs with late spectral types and highest predicted CO detectability",
+    "evidence": [
+     {
+      "loc": "2.1 Observed sample",
+      "quote": "we prioritised systems with late spectral types (which have less detections so far) and bright debris discs"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "CO near HD 114082 attributed to a line-of-sight cloud rather than circumstellar gas",
+     "evidence": [
+      {
+       "loc": "2.4 Gas observations",
+       "quote": "might be due to a cloud on the line of sight"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Dust masses have large systematic uncertainties from arbitrary composition; HD 129590 gas unconstrained by MCMC",
+     "evidence": [
+      {
+       "loc": "3.1.2",
+       "quote": "it should be understood that it has large systematic uncertainties"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Low S/N (~4) CO detection for HD 129590",
+    "Low resolution limits geometry",
+    "Non-LTE masses depend on wide assumed density and temperature ranges",
+    "Astrometric offsets possibly calibration artefacts"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data in ALMA archive",
+    "evidence": [
+     {
+      "loc": "Data availability",
+      "quote": "The data underlying this article are available in the ALMA archive: ADS/JAO.ALMA#2017.1.00704.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters",
+    "Calibration details",
+    "MCMC priors and non-LTE grid ranges",
+    "Custom MCMC wrapper code"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for 10 targets",
+   "score_inferred": 5,
+   "score_reason": "Public data and clear model description, but many imaging and fitting settings are missing and the gas fits need weeks of CPU.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, numeric results (fluxes, masses, radii); continuum and CO flux are redoable."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2018arXiv181108439K)",
+     "why": "gas MCMC method"
+    },
+    {
+     "citation": "(cite: 2018ApJ...853..147M)",
+     "why": "non-LTE and HCN/CO method"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2017MNRAS.469..521K)",
+     "why": "CO detectability predictions and sample"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Lieman-Sifry et al. 2016 ALMA survey",
+    "Moor et al. 2017"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4b6ad80eb02a96ece7d08f38cf105024",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:46",
+  "usage": {
+   "input_tokens": 38480,
+   "output_tokens": 7897,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.078572,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 1,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 88,
+   "stated": 48,
+   "rate": 0.545
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:46",
+  "custom_id": "repair-sonnet-cb516ef2d1093f04a7e2114c649f68de",
+  "fixed": [
+   {
+    "path": "analysis_steps[5].method.evidence[0]",
+    "old": "we then give a mass range estimate computed as being the minimum and maximum values reached on these plots",
+    "new": "To account for our lack of knowledge of the temperature and electron density in each system, we assume wide ranges for both and then give a mass range estimate computed as being the minimum and maximum values reached on these plots"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

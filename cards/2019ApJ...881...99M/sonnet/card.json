@@ -1,0 +1,792 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...881...99M",
+  "title": "Solar Chromospheric Temperature Diagnostics: A Joint ALMA-Hα Analysis",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Molnar, Momchil E.",
+  "n_authors": 7,
+  "arxiv_id": "1906.08896",
+  "doi": "10.3847/1538-4357/ab2ba3",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.01129.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present the first high-resolution, simultaneous observations of the solar chromosphere in the optical and millimeter wavelength ranges, obtained with ALMA and the IBIS instrument at the Dunn Solar Telescope."
+   }
+  ],
+  "science": {
+   "fields": [
+    "sun"
+   ],
+   "targets": [
+    {
+     "name": "Plage, network and fibrils in NOAA AR 12651",
+     "coordinates": {
+      "value": "E04, N11 (solar disk)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The center of the target region was at E04, N11 at the time of the observations ($\\mu = 0.96$ or heliocentric angle of 16$^{\\circ}$)."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "mu = 0.96 (heliocentric angle 16 deg)",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The center of the target region was at E04, N11 at the time of the observations ($\\mu = 0.96$ or heliocentric angle of 16$^{\\circ}$)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How does the ALMA Band 3 brightness temperature relate to the H-alpha core width as a chromospheric temperature diagnostic, and what physical mechanism explains the relation?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we concentrate on the comparison between the brightness temperature observed in ALMA Band 3 (3 mm; 100 GHz) and the core width of the H$\\alpha$ 6563 Å line"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01129.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/NRAO.ALMA#2016.1.01129.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (2.8-3.3 mm, 92-108 GHz)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Processing",
+      "quote": "The data analyzed here were obtained in Band 3 (2.8-3.3 mm, 92-108 GHz) in the interval 17:19 to 18:53 UT."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "H I",
+     "transition": "H-alpha (IBIS)",
+     "rest_frequency": "6563 Å",
+     "evidence": [
+      {
+       "loc": "2.1 DST/IBIS Observations",
+       "quote": "180 interleaved scans of H$\\alpha$ 6563, Ca II 8542, and Na I D1 5896 Å"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "C40-3, max baseline 460 m nominal, 396 m actual",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Processing",
+      "quote": "The ALMA data were obtained with the array in configuration C40-3 with a maximum baseline of 460 m. However, due to antenna issues, during these observations the maximum baseline was 396 m."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "restoring beam 1.75'' x 1.91''; ~2.0''",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Processing",
+      "quote": "the restoring beam size of the ALMA image, as calculated in CLEAN, is 1.75$''$ x 1.91$''$ in the x-y directions"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "eight intervals of ~593 s on target with 145 s phase calibrator gaps",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA Observations and Processing",
+      "quote": "dwelled for approximately 593 seconds on the target followed by a 145 second gap for observations of a phase calibrator."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "April 23, 2017, 17:19-18:53 UT",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We obtained a coordinated set of observations between ALMA and the Dunn Solar Telescope (cite: 1991AdSpR..11..139D) on April 23, 2017."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "DST/IBIS",
+     "provided": {
+      "value": "H-alpha, Ca II 8542, Na I D1 spectral scans",
+      "evidence": [
+       {
+        "loc": "2.1 DST/IBIS Observations",
+        "quote": "The lines were scanned with 29, 27, and 24 spectral sampling points, respectively"
+       }
+      ]
+     }
+    },
+    {
+     "name": "SDO/HMI",
+     "provided": {
+      "value": "continuum images for IBIS alignment and magnetic field maps",
+      "evidence": [
+       {
+        "loc": "2.1 DST/IBIS Observations",
+        "quote": "using the nearest-in-time HMI continuum intensity images in order to precisely map the IBIS spectral data onto a regular, fixed spatial grid"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ALMA single-dish full-disk",
+     "provided": {
+      "value": "background emission for feathering and absolute calibration",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA Observations and Processing",
+        "quote": "single-dish observations that scan the full disk were taken nearly simultaneously with the interferometer array"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Quiet-Sun central disk brightness temperature of 7300 K used for absolute calibration",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA Observations and Processing",
+        "quote": "the brightness temperature in the central region of the disk (diameter 190 arcsec) was equal to 7300 K, as determined by (cite: 2017SoPh..292...88W)"
+       }
+      ]
+     },
+     "citation": "(cite: 2017SoPh..292...88W)"
+    },
+    {
+     "what": {
+      "value": "SRPM 1D atmosphere models (B to P, Q) as RH input",
+      "evidence": [
+       {
+        "loc": "4 Synthetic Spectral Diagnostics with RH",
+        "quote": "We chose the 1D Solar Radiation Physical Modeling (SRPM from now on) models (cite: 2011JGRD..11620108F) as input for our work."
+       }
+      ]
+     },
+     "citation": "(cite: 2011JGRD..11620108F)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "RH synthesis from SRPM models B-P, Q and VAL C",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "We also included the heritage quiet Sun VAL C model for comparison (cite: 1981ApJS...45..635V)."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard CASA calibration, then self-calibration per interval",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "After applying the standard radio interferometer data calibration procedures using CASA (cite: 2012ASPC..461..849P)"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "absolute temperature accurate to 2-5%",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "provides an absolute temperature accurate to 2-5% (cite: 2017SoPh..292...88W)"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "per 10-minute interval, average clean image used to remove phase variations in individual images",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "For each 10 minutes observation interval, an average (clean) image is generated and then used to remove the random phase variations in the individual images within that observing interval."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "feathering with full-disk single-dish image in CASA",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "Through the feathering process provided in CASA, we combine the two datasets covering the full range of spatial scales."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.75'' x 1.91''",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "the restoring beam size of the ALMA image, as calculated in CLEAN, is 1.75$''$ x 1.91$''$ in the x-y directions"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Absolute calibration and single-dish full-disk data",
+      "evidence": [
+       {
+        "loc": "2.2 ALMA Observations and Processing",
+        "quote": "was equal to 7300 K, as determined by (cite: 2017SoPh..292...88W)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017SoPh..292...88W)"
+    },
+    {
+     "what": {
+      "value": "H-alpha core width measurement technique",
+      "evidence": [
+       {
+        "loc": "3.1 IBIS Line Widths",
+        "quote": "We calculated the width of the line core following the technique described in (cite: 2009A&A...503..577C)"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2009A&A...503..577C)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean/CLEAN parameters (weighting, robust, cell, niter) for ALMA images",
+    "Self-calibration solution intervals and reference model details",
+    "Feather parameters and single-dish image scaling details",
+    "IBIS calibration and HMI destretch parameters",
+    "RH setup details beyond a 4-level hydrogen atom",
+    "Alignment procedure between ALMA and IBIS",
+    "CASA version"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and self-calibrate ALMA data, feather with full-disk",
+    "method": {
+     "value": "Standard CASA calibration, per-interval self-calibration, feathering with single-dish, normalised to 7300 K",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "we apply a self-calibration technique."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure H-alpha core width",
+    "method": {
+     "value": "Width of line profile at half line depth, with depth defined relative to intensity at ±1.0 Å",
+     "evidence": [
+      {
+       "loc": "3.1 IBIS Line Widths",
+       "quote": "we measure the separation of the line profile wings at half of the line depth, defined as the difference between the line minimum and the intensity at $\\pm$ 1.0 Å from the core position"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "second-order polynomial to line core for minimum",
+     "evidence": [
+      {
+       "loc": "3.1 IBIS Line Widths",
+       "quote": "were determined through fitting of a second-order polynomial to the line core"
+      }
+     ]
+    },
+    "validation": {
+     "value": "width errors about 0.005 Å",
+     "evidence": [
+      {
+       "loc": "3.1 IBIS Line Widths",
+       "quote": "the errors in the line width were determined to be about 0.005 Å"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Match resolution, align and correlate",
+    "method": {
+     "value": "Convolve IBIS with elliptical Gaussian 1.95'' x 2.03'', bin ALMA in time by 8 maps, align, 2D histogram, Pearson r and orthogonal distance regression",
+     "evidence": [
+      {
+       "loc": "3.3 Comparison",
+       "quote": "Because of the scatter present in both measurements, we perform an orthogonal distance regression (cite: 1990ApJ...364..104I) to find the best linear fit between the two parameters."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Forward model with RH",
+    "method": {
+     "value": "Synthesize H-alpha and 3 mm intensity from SRPM and VAL C models with 4-level hydrogen with PRD for Ly-alpha, Ly-beta, H-alpha; compare to observed correlation",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "The RH calculations were done using a 4-level (including continuum) hydrogen atom with the Ly-alpha, Ly-beta and Balmer-alpha transitions treated under partial redistribution (PRD)"
+      }
+     ]
+    },
+    "software": [
+     "RH"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "1D hydrostatic semi-empirical atmospheres; mm radiation in Rayleigh-Jeans approximation",
+      "evidence": [
+       {
+        "loc": "4 Synthetic Spectral Diagnostics with RH",
+        "quote": "The emergent millimetric radiation was calculated from the synthetic intensity under the Rayleigh-Jeans approximation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "model points compared with observed correlation",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "coincide well with the observational data for models B to P"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA calibration, imaging (CLEAN), feathering",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA Observations and Processing",
+       "quote": "Through the feathering process provided in CASA, we combine the two datasets covering the full range of spatial scales."
+      }
+     ]
+    }
+   },
+   {
+    "name": "RH",
+    "version": "not stated",
+    "used_for": {
+     "value": "forward radiative transfer synthesis",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "we utilized the RH code (cite: 2001ApJ...557..389U) to synthesize observables"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Pearson correlation between T_B and H-alpha width",
+    "value": "0.84",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Comparison",
+      "quote": "with a Pearson correlation coefficient of 0.84"
+     }
+    ]
+   },
+   {
+    "quantity": "ODR fit: H-alpha width vs T",
+    "value": "0.533 + 6.12e-5 T",
+    "uncertainty": "not stated",
+    "units": "Å (T in K)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Comparison",
+      "quote": "The best fit equation is $0.533 + 6.12\\times10^{-5}\\;T$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean T_B of FOV",
+    "value": "~8600",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.2 ALMA Band 3 Intensity",
+      "quote": "The overall average $T_B$ for our field is $\\sim$ 8600 K"
+     }
+    ]
+   },
+   {
+    "quantity": "Thermal broadening for 6000 to 12000 K",
+    "value": "0.025",
+    "uncertainty": "not stated",
+    "units": "Å",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Comparison",
+      "quote": "would only be expected to increase the line width by 0.025 Å"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Bright fibril-like structures are seen in on-disk ALMA images, contrary to Rutten (2017) prediction of dark fibrils",
+    "evidence": [
+     {
+      "loc": "3.2 ALMA Band 3 Intensity",
+      "quote": "we identify them as bright (hence hot) features, rather than dark, strong fibrils"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is ALMA 3 mm T_B correlated with H-alpha core width?",
+    "experiment": "Pixelwise comparison of resolution-matched maps",
+    "result": "Pearson r = 0.84; linear fit",
+    "finding": "Strong correlation; width is a temperature proxy over 6500-12000 K",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Comparison",
+      "quote": "The correlation is very strong across the full range in temperature present in our FOV"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is H-alpha width broadening thermal Doppler?",
+    "experiment": "Compare ALMA T range with width variation",
+    "result": "0.025 Å expected vs ~0.3 Å observed",
+    "finding": "Thermal broadening cannot explain it",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "is only about 0.025 Å, an order of magnitude smaller than the observed variation of 0.3 Å"
+     }
+    ]
+   },
+   {
+    "hypothesis": "A shared dependence on n=2 hydrogen population drives the correlation",
+    "experiment": "RH synthesis on SRPM models",
+    "result": "Models B to P reproduce the trend; n2 rises with hotter models",
+    "finding": "Both diagnostics depend on n2 via Ly-alpha flux",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4 Synthetic Spectral Diagnostics with RH",
+      "quote": "We hypothesize that the underlying physical mechanism for the correlation"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "3D MHD models (BIFROST) not used because they do not reproduce correct chromospheric line widths",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "they do not reproduce the correct width of chromospheric lines"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "1D hydrostatic models and 1D radiative transfer for H-alpha",
+     "evidence": [
+      {
+       "loc": "4 Synthetic Spectral Diagnostics with RH",
+       "quote": "The SRPM models have shortcomings as they are 1D, hydro-static, semi-empirical models"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Mechanism is argued from a few 1D models, not tested directly",
+    "Single field, single day, near disk center",
+    "Alignment with ALMA tuned on the same images used for correlation",
+    "No uncertainties on fit parameters"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project cited in acknowledgments; public availability not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/NRAO.ALMA#2016.1.01129.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "IBIS data access",
+    "CLEAN and self-cal parameters",
+    "Single-dish data details"
+   ],
+   "estimated_data_volume_inferred": "tens to hundreds of GB (ALMA solar time series) plus IBIS data",
+   "score_inferred": 3,
+   "score_reason": "Concise processing description with missing parameters; IBIS data needed.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires non-ALMA IBIS data and underspecified solar ALMA processing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2009A&A...503..577C)",
+     "why": "H-alpha width technique"
+    },
+    {
+     "citation": "(cite: 2017SoPh..292...88W)",
+     "why": "single-dish full-disk and absolute calibration"
+    }
+   ],
+   "companion_papers": [],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-dea8ff97fe07c091f37be71749bb0bc4",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 16865,
+   "output_tokens": 6338,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.049161,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 45,
+  "quotes_ok": 45,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 69,
+   "stated": 35,
+   "rate": 0.507
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:10",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "orthogonal distance regression, linear"
+   }
+  ],
+  "dropped_items": []
+ }
+}

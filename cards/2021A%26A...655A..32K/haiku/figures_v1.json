@@ -1,0 +1,866 @@
+{
+ "notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 2,
+    "shows": "ALMA 1.3 mm continuum of V838 Mon with labelled components M, B and clump (left), and the residual after subtracting Gaussian fits to M and B (right), with fitted FWHM ellipses and restoring beam.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from M centre",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from M centre",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "µJy/beam"
+     }
+    ],
+    "roles": [
+     "data",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Residual map after subtracting Gaussian components M and B checks whether the remaining emission (clump) is left over from the fit.",
+    "readable_values": [
+     "approx. peak ~400 µJy/beam at M",
+     "approx. clump offset -100 mas RA, +35 mas Dec",
+     "approx. 600 au and 225 au reference circles"
+    ],
+    "caption_quote": "Left: ALMA map at 1.3 mm with all discussed sources labeled. Right: Residual emission after subtracting Gaussian fits to components M and B.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "spectrum",
+    "panels": 3,
+    "shows": "ALMA spectrum over the full CO emission region showing labelled molecular lines (SO, SO2, H2S, SiS, CO 2-1, 13CO 2-1, AlOH, C18O) marked at the systemic velocity.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO 2-1 peak 0.14 Jy at 230.5 GHz",
+     "approx. SiO 5-4 peak 0.14 Jy at 217.1 GHz",
+     "approx. SO 6-4... blend peak 0.06 Jy at 219.9 GHz"
+    ],
+    "caption_quote": "It represents the entire emission region of CO. Main identified features are labeled and marked with dashed lines at frequencies corresponding to the systemic velocity.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "moment_map",
+    "panels": 6,
+    "shows": "Total intensity maps of CO, SiO, SO, AlOH(+13CO), SO2+H2S blend and all lines combined, with white 3-sigma contours and grey continuum contours; a 750 au reference circle marks the emission extent.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "mJy/beam"
+     },
+     {
+      "axis": "colour (all lines)",
+      "quantity": "arbitrary flux scale",
+      "units": "arbitrary"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO peak ~800 mJy/beam",
+     "approx. SiO peak ~1200 mJy/beam",
+     "approx. reference circle 750 au and inner 180 au"
+    ],
+    "caption_quote": "Total intensity maps of the molecular emission in V838 Mon. White contour is drawn at the 3σ noise level of each map.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "channel_maps",
+    "panels": 6,
+    "shows": "Uniform-weighting total intensity maps of CO and SiO (and other lines) with continuum contours, showing the spatial extent of molecular emission around V838 Mon.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO colour scale up to 800 mJy/beam",
+     "approx. SiO colour scale up to 1200 mJy/beam"
+    ],
+    "caption_quote": "The same as in Fig. 3 but for CO and SiO at uniform weighting of visibilities.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 5,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Small cropped image showing a fragment of a molecular emission map with continuum contours; the figure's full first-moment maps are not visible in this crop.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "First-moment maps of unblended molecular lines. White contours show total intensity of the given line.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 6,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "Second-moment (velocity dispersion) maps of CO and SiO, with the third panel overlaying SO2+H2S blend contours in cyan on the SiO dispersion map.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "velocity dispersion",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO dispersion up to 90 km/s",
+     "approx. SiO dispersion up to 100 km/s"
+    ],
+    "caption_quote": "Second-moment maps for molecular lines of CO 2–1 and SiO 5–4. White contours show total intensity of the given line.",
+    "reproduction_target": false,
+    "crop_ok": true,
+    "renumbered_from": 7
+   },
+   {
+    "number": 7,
+    "kind": "spectrum",
+    "panels": 1,
+    "shows": "Temporal changes in optical atomic line profiles (H-alpha, RbI 7800, CaI 6572, KI 7698) from 2005, 2009, 2012 and 2020 spectra, with systemic velocity and SiO maser velocity marked.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "heliocentric velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalised flux (arbitrarily offset)",
+      "units": "arbitrary"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 0,
+    "validation_check": "",
+    "readable_values": [
+     "approx. SiO maser velocity about 70 km/s",
+     "approx. H-alpha inverse P Cygni turnover about 37 km/s"
+    ],
+    "caption_quote": "The vertical lines mark the velocity of the SiO maser (or the supposed stellar systemic velocity; 53 km s−1 LSR or 71 km s−1 in the heliocentric frame)",
+    "reproduction_target": false,
+    "crop_ok": true,
+    "renumbered_from": 8
+   },
+   {
+    "number": 9,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Observed ALMA band 6 continuum map (left) compared with the simulated continuum map (right) at the same colour scale, contour levels and resolution.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "µJy/beam"
+     }
+    ],
+    "roles": [
+     "data",
+     "simulation"
+    ],
+    "supports_step": 4,
+    "validation_check": "Checks whether the simulated dust continuum model reproduces the observed morphology of components M, B and clump.",
+    "readable_values": [
+     "approx. peak ~400 µJy/beam in both observed and simulated maps"
+    ],
+    "caption_quote": "Comparison of observed (left) and simulated (right) maps of continuum emission in ALMA band 6. Both images are displayed with the same color scale, contour levels, and angular resolution.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 10
+   },
+   {
+    "number": 10,
+    "kind": "model_vs_data",
+    "panels": 1,
+    "shows": "Observed photometric SED points (after and before 2010) compared with the model SED curve of V838 Mon, from optical to millimetre wavelengths.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density F_nu",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares the model SED with observed fluxes; the paper notes that dust opacity uncertainties exceed the discrepancies.",
+    "readable_values": [
+     "approx. 1.3 mm point 2e-3 Jy",
+     "approx. peak model flux ~50 Jy near 20 µm"
+    ],
+    "caption_quote": "Comparison of the observed (points) and simulated (line) SED. Uncertainties in dust opacities are much larger than the apparent discrepancies between the observations and the simulation.",
+    "reproduction_target": true,
+    "crop_ok": true,
+    "renumbered_from": 11
+   }
+  ],
+  "dropped": [
+   {
+    "number": 6,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "First-moment (centroid LSR velocity) maps of CO, SiO and SO with total intensity and continuum contours, showing velocity fields of the molecular envelope.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "centroid LSR velocity",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO velocities 0 to 100 km/s across envelope with redshifted patch near 200 km/s",
+     "approx. SiO range -50 to 200 km/s"
+    ],
+    "caption_quote": "First-moment maps of unblended molecular lines. White line at the colorbar marks the stellar (systemic) velocity of V838 Mon.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "schematic",
+    "panels": 1,
+    "shows": "3D model of dust density distribution in V838 Mon in 2019 shown in the sky plane, with grid points coloured by local dust density over a 2000 au cube.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "x",
+      "units": "au"
+     },
+     {
+      "axis": "y",
+      "quantity": "y",
+      "units": "au"
+     },
+     {
+      "axis": "colour",
+      "quantity": "dust density",
+      "units": "g cm-3"
+     }
+    ],
+    "roles": [
+     "model",
+     "simulation"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. colour scale 1.0e-19 to 1.6e-16 g cm-3"
+    ],
+    "caption_quote": "3D model of dust distribution in V838 Mon in 2019. Model grid points are represented by semi-transparent spheres whose size and color correspond to local dust density.",
+    "reproduction_target": false,
+    "crop_ok": true
+   }
+  ]
+ },
+ "checks": {
+  "figures": 9,
+  "caption_quotes_ok": 9,
+  "renumbered": [
+   6,
+   7,
+   9,
+   10
+  ],
+  "dropped_duplicates": 2,
+  "cropped_without_note": [
+   8,
+   11
+  ],
+  "unknown_numbers": [],
+  "bad_crops": [
+   4,
+   5
+  ],
+  "validation_figures": 3,
+  "reproduction_targets": 3,
+  "rows": [
+   {
+    "number": 1,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 2,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 3,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 4,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": false,
+    "values_unlabelled": []
+   },
+   {
+    "number": 5,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": false,
+    "values_unlabelled": []
+   },
+   {
+    "number": 6,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 7,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 9,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 1.0,
+    "crop_ok": true,
+    "values_unlabelled": []
+   },
+   {
+    "number": 10,
+    "known_figure": true,
+    "caption_quote_ok": true,
+    "ratio": 0.995,
+    "crop_ok": true,
+    "values_unlabelled": []
+   }
+  ]
+ },
+ "raw_notes": {
+  "figures": [
+   {
+    "number": 1,
+    "kind": "moment_map",
+    "panels": 2,
+    "shows": "ALMA 1.3 mm continuum of V838 Mon with labelled components M, B and clump (left), and the residual after subtracting Gaussian fits to M and B (right), with fitted FWHM ellipses and restoring beam.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset from M centre",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset from M centre",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "µJy/beam"
+     }
+    ],
+    "roles": [
+     "data",
+     "residual"
+    ],
+    "supports_step": 1,
+    "validation_check": "Residual map after subtracting Gaussian components M and B checks whether the remaining emission (clump) is left over from the fit.",
+    "readable_values": [
+     "approx. peak ~400 µJy/beam at M",
+     "approx. clump offset -100 mas RA, +35 mas Dec",
+     "approx. 600 au and 225 au reference circles"
+    ],
+    "caption_quote": "Left: ALMA map at 1.3 mm with all discussed sources labeled. Right: Residual emission after subtracting Gaussian fits to components M and B.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 2,
+    "kind": "spectrum",
+    "panels": 3,
+    "shows": "ALMA spectrum over the full CO emission region showing labelled molecular lines (SO, SO2, H2S, SiS, CO 2-1, 13CO 2-1, AlOH, C18O) marked at the systemic velocity.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "frequency",
+      "units": "GHz"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO 2-1 peak 0.14 Jy at 230.5 GHz",
+     "approx. SiO 5-4 peak 0.14 Jy at 217.1 GHz",
+     "approx. SO 6-4... blend peak 0.06 Jy at 219.9 GHz"
+    ],
+    "caption_quote": "It represents the entire emission region of CO. Main identified features are labeled and marked with dashed lines at frequencies corresponding to the systemic velocity.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 3,
+    "kind": "moment_map",
+    "panels": 6,
+    "shows": "Total intensity maps of CO, SiO, SO, AlOH(+13CO), SO2+H2S blend and all lines combined, with white 3-sigma contours and grey continuum contours; a 750 au reference circle marks the emission extent.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "mJy/beam"
+     },
+     {
+      "axis": "colour (all lines)",
+      "quantity": "arbitrary flux scale",
+      "units": "arbitrary"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO peak ~800 mJy/beam",
+     "approx. SiO peak ~1200 mJy/beam",
+     "approx. reference circle 750 au and inner 180 au"
+    ],
+    "caption_quote": "Total intensity maps of the molecular emission in V838 Mon. White contour is drawn at the 3σ noise level of each map.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 4,
+    "kind": "channel_maps",
+    "panels": 6,
+    "shows": "Uniform-weighting total intensity maps of CO and SiO (and other lines) with continuum contours, showing the spatial extent of molecular emission around V838 Mon.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "mJy/beam"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO colour scale up to 800 mJy/beam",
+     "approx. SiO colour scale up to 1200 mJy/beam"
+    ],
+    "caption_quote": "The same as in Fig. 3 but for CO and SiO at uniform weighting of visibilities.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 5,
+    "kind": "moment_map",
+    "panels": 1,
+    "shows": "Small cropped image showing a fragment of a molecular emission map with continuum contours; the figure's full first-moment maps are not visible in this crop.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "not labelled"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [],
+    "caption_quote": "First-moment maps of unblended molecular lines. White contours show total intensity of the given line.",
+    "reproduction_target": false,
+    "crop_ok": false
+   },
+   {
+    "number": 6,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "First-moment (centroid LSR velocity) maps of CO, SiO and SO with total intensity and continuum contours, showing velocity fields of the molecular envelope.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "centroid LSR velocity",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO velocities 0 to 100 km/s across envelope with redshifted patch near 200 km/s",
+     "approx. SiO range -50 to 200 km/s"
+    ],
+    "caption_quote": "First-moment maps of unblended molecular lines. White line at the colorbar marks the stellar (systemic) velocity of V838 Mon.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 7,
+    "kind": "moment_map",
+    "panels": 3,
+    "shows": "Second-moment (velocity dispersion) maps of CO and SiO, with the third panel overlaying SO2+H2S blend contours in cyan on the SiO dispersion map.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "velocity dispersion",
+      "units": "km/s"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 2,
+    "validation_check": "",
+    "readable_values": [
+     "approx. CO dispersion up to 90 km/s",
+     "approx. SiO dispersion up to 100 km/s"
+    ],
+    "caption_quote": "Second-moment maps for molecular lines of CO 2–1 and SiO 5–4. White contours show total intensity of the given line.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 8,
+    "kind": "spectrum",
+    "panels": 1,
+    "shows": "Temporal changes in optical atomic line profiles (H-alpha, RbI 7800, CaI 6572, KI 7698) from 2005, 2009, 2012 and 2020 spectra, with systemic velocity and SiO maser velocity marked.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "heliocentric velocity",
+      "units": "km/s"
+     },
+     {
+      "axis": "y",
+      "quantity": "normalised flux (arbitrarily offset)",
+      "units": "arbitrary"
+     }
+    ],
+    "roles": [
+     "data"
+    ],
+    "supports_step": 0,
+    "validation_check": "",
+    "readable_values": [
+     "approx. SiO maser velocity about 70 km/s",
+     "approx. H-alpha inverse P Cygni turnover about 37 km/s"
+    ],
+    "caption_quote": "The vertical lines mark the velocity of the SiO maser (or the supposed stellar systemic velocity; 53 km s−1 LSR or 71 km s−1 in the heliocentric frame)",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 9,
+    "kind": "schematic",
+    "panels": 1,
+    "shows": "3D model of dust density distribution in V838 Mon in 2019 shown in the sky plane, with grid points coloured by local dust density over a 2000 au cube.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "x",
+      "units": "au"
+     },
+     {
+      "axis": "y",
+      "quantity": "y",
+      "units": "au"
+     },
+     {
+      "axis": "colour",
+      "quantity": "dust density",
+      "units": "g cm-3"
+     }
+    ],
+    "roles": [
+     "model",
+     "simulation"
+    ],
+    "supports_step": 4,
+    "validation_check": "",
+    "readable_values": [
+     "approx. colour scale 1.0e-19 to 1.6e-16 g cm-3"
+    ],
+    "caption_quote": "3D model of dust distribution in V838 Mon in 2019. Model grid points are represented by semi-transparent spheres whose size and color correspond to local dust density.",
+    "reproduction_target": false,
+    "crop_ok": true
+   },
+   {
+    "number": 10,
+    "kind": "model_vs_data",
+    "panels": 2,
+    "shows": "Observed ALMA band 6 continuum map (left) compared with the simulated continuum map (right) at the same colour scale, contour levels and resolution.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "RA offset",
+      "units": "mas"
+     },
+     {
+      "axis": "y",
+      "quantity": "Dec offset",
+      "units": "mas"
+     },
+     {
+      "axis": "colour",
+      "quantity": "flux density",
+      "units": "µJy/beam"
+     }
+    ],
+    "roles": [
+     "data",
+     "simulation"
+    ],
+    "supports_step": 4,
+    "validation_check": "Checks whether the simulated dust continuum model reproduces the observed morphology of components M, B and clump.",
+    "readable_values": [
+     "approx. peak ~400 µJy/beam in both observed and simulated maps"
+    ],
+    "caption_quote": "Comparison of observed (left) and simulated (right) maps of continuum emission in ALMA band 6. Both images are displayed with the same color scale, contour levels, and angular resolution.",
+    "reproduction_target": true,
+    "crop_ok": true
+   },
+   {
+    "number": 11,
+    "kind": "model_vs_data",
+    "panels": 1,
+    "shows": "Observed photometric SED points (after and before 2010) compared with the model SED curve of V838 Mon, from optical to millimetre wavelengths.",
+    "axes": [
+     {
+      "axis": "x",
+      "quantity": "wavelength",
+      "units": "µm"
+     },
+     {
+      "axis": "y",
+      "quantity": "flux density F_nu",
+      "units": "Jy"
+     }
+    ],
+    "roles": [
+     "data",
+     "model"
+    ],
+    "supports_step": 4,
+    "validation_check": "Compares the model SED with observed fluxes; the paper notes that dust opacity uncertainties exceed the discrepancies.",
+    "readable_values": [
+     "approx. 1.3 mm point 2e-3 Jy",
+     "approx. peak model flux ~50 Jy near 20 µm"
+    ],
+    "caption_quote": "Comparison of the observed (points) and simulated (line) SED. Uncertainties in dust opacities are much larger than the apparent discrepancies between the observations and the simulation.",
+    "reproduction_target": true,
+    "crop_ok": true
+   }
+  ]
+ }
+}

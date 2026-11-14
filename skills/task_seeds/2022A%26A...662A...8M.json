@@ -1,0 +1,481 @@
+{
+ "bibcode": "2022A&A...662A...8M",
+ "title": "ALMA-IMF. I. Investigating the origin of stellar masses: Introduction to the Large Program and first results",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202141677",
+ "arxiv_id": "2112.08182",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Investigate the origin of the initial mass function (IMF) of stars and whether the core mass function (CMF) varies with cloud characteristics and evolutionary stage across 15 massive Galactic protoclusters.",
+ "alma_project_codes": [
+  "2017.1.01355.L",
+  "2013.1.01365.S",
+  "2015.1.01273.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) and Band 3 (3 mm)",
+  "arrays": "12 m array, 7 m (ACA) array, and Total Power Array (only 12 m array analyzed here)",
+  "angular_resolution": "0.35''x0.27'' to 1.09''x0.70'' at 1.3 mm (1350-2690 au, median 2100±400 au); 0.28''x0.27'' to 1.52''x1.30'' at 3 mm (1800±500 au)",
+  "sensitivity": "Continuum: 0.061-0.65 mJy/beam (cleanest) and 0.063-0.74 mJy/beam (bsens) at 1.3 mm; 0.031-0.26 mJy/beam (cleanest) and 0.024-0.24 mJy/beam (bsens) at 3 mm. Cubes: 0.6-1 K at 1.3 mm and 1.4-3.0 K at 3 mm at 1 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Catalog of the 200 most massive APEX/ATLASGAL clumps, Galactic coordinates, IR-bright/IR-quiet evolutionary stages, and 870 μm integrated fluxes",
+    "evidence": [
+     {
+      "loc": "The most massive protocluster clouds of the Milky Way",
+      "quote": "From the catalog of (cite: csengeri17b), which contains the 200 most massive APEX/ATLASGAL clumps, we identified the most massive protocluster clouds of the Milky Way"
+     },
+     {
+      "loc": "The most massive protocluster clouds of the Milky Way",
+      "quote": "Their Galactic coordinates, evolutionary stage, and integrated flux at $870\\;\\mu$m are taken from (cite: csengeri17b)."
+     }
+    ]
+   },
+   "citation": "(cite: csengeri17b)"
+  },
+  {
+   "what": {
+    "value": "Clump sizes (geometric mean of beam-deconvolved major and minor FWHM axes of Gaussian fits)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Sizes correspond to the geometric mean of the beam-deconvolved major and minor FWHM axes of Gaussian fits made in (cite: csengeri14)."
+     }
+    ]
+   },
+   "citation": "(cite: csengeri14)"
+  },
+  {
+   "what": {
+    "value": "V_LSR values for W51, W43, and G012.80",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "The $\\mbox{$V_{\\rm LSR}$}$ values are taken from the high-density gas studies by (cite: wienen15) and (cite: ginsburg15) for W51, (cite: nguyen13) for W43, and (cite: immer14) for G012.80."
+     }
+    ]
+   },
+   "citation": "(cite: wienen15), (cite: ginsburg15), (cite: nguyen13), (cite: immer14)"
+  },
+  {
+   "what": {
+    "value": "Trigonometric parallax and kinematic distances to the target protoclusters",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "References for the distance to the Sun: (1) (cite: sato10); (2) (cite: zhang14); (3) (cite: csengeri17b); (4) (cite: sanna14); (5) (cite: immer13); (6) this paper."
+     },
+     {
+      "loc": "The most massive protocluster clouds of the Milky Way",
+      "quote": "We here modify the distances of three ATLASGAL clumps of [\\[appendixtab:timea-table\\]](#appendixtab:timea-table) using recent improvements made by the BeSSeL project (cite: reid14)."
+     }
+    ]
+   },
+   "citation": "(cite: sato10), (cite: zhang14), (cite: csengeri17b), (cite: sanna14), (cite: immer13), (cite: reid14)"
+  },
+  {
+   "what": {
+    "value": "Core catalogs (~700 cores extracted from cleanest 1.3 mm continuum images)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Section [4](#s:highlights) details the evolutionary stages of the ALMA-IMF protocluster clouds and investigates their core content from catalogs presented in a second companion paper, Paper III (cite: louvet22)."
+     },
+     {
+      "loc": "Population of cores in the ALMA-IMF protoclusters",
+      "quote": "In Paper III, (cite: louvet22) extracted sources from the `cleanest` continuum images (see definition in Sect. [3.2](#s:dataset)) and identified about 840 compact sources."
+     }
+    ]
+   },
+   "citation": "Paper III (cite: louvet22)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select sample of 15 massive Galactic protoclusters and estimate central clump and cloud masses from ATLASGAL 870 μm data",
+   "method": "Apply distance (2-5.5 kpc), Galactic longitude (excluding 355° < l < 5°), and 870 μm flux (>25 Jy, plus W43-MM3 and G328.25) criteria to the Csengeri et al. (2017) ATLASGAL catalog, rebalance for IR-quiet vs IR-bright stages, and compute optically thin dust masses using Eq. (1).",
+   "software": [],
+   "key_parameters": [
+    "d = 2 - 5.5 kpc; S^int_870μm > 25 Jy"
+   ],
+   "assumptions": [
+    "Optically thin thermal dust emission; κ_870μm = 0.0185 cm^2 g^-1; gas-to-dust ratio = 100; T_dust = 20 K (IR-quiet / Young), 25 K (Intermediate), 30 K (IR-bright / Evolved)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Produce 1.3 mm and 3 mm continuum mosaics (bsens and cleanest) and preliminary spectral line cubes",
+   "method": "Combine 12 m array configurations and image with tclean using Briggs robust = 0 in the ALMA-IMF reduction pipeline, producing bsens (all channels) and cleanest (line-free channels) continuum mosaics as well as line cubes.",
+   "software": [
+    "ALMA-IMF reduction pipeline",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0; spectral index α = 3.5; central frequencies ν_B6 = 228.965 GHz, ν_B3 = 100.713 GHz; FOV down to 15% primary beam sensitivity"
+   ],
+   "assumptions": [
+    "Spectral index α = 3.5 corresponding to optically thin dust emission with emissivity index β = 1.5"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Classify protocluster evolutionary stages (Young, Intermediate, Evolved) using 1.3 mm / 3 mm flux ratios and H41α free-free surface density",
+   "method": "Integrate 1.3 mm and 3 mm bsens continuum fluxes over A_1.3mm to compute S^cloud_1.3mm / S^cloud_3mm, integrate H41α cubes clipped at 5σ to derive free-free continuum flux surface density Σ^free-free_H41α via Eq. (2), and visually inspect three-color (1.3 mm, 3 mm, H41α) images.",
+   "software": [],
+   "key_parameters": [
+    "H41α clipping threshold = 5σ; ν_0 = 92.034 GHz"
+   ],
+   "assumptions": [
+    "Local thermodynamical equilibrium (LTE); T_e = 8000 K; N_He/N_H = 0.08; cloud dust emissivity index β = 1.8"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract compact cores, compute core masses and sizes, and analyze core population properties",
+   "method": "Extract sources from cleanest 1.3 mm continuum images using getsf (Paper III), exclude free-free emission peaks, compute individual and cumulative core masses using Eq. (3), compare with thermal Bonnor-Ebert mass Eq. (4), and test correlation between cloud mass and maximum core mass using Spearman's rank correlation.",
+   "software": [
+    "getsf"
+   ],
+   "key_parameters": [
+    "Bright core flux threshold = 400 mJy * (3.9 kpc / d)^2"
+   ],
+   "assumptions": [
+    "Optically thin thermal dust emission; κ_1.3mm = 0.01 cm^2 g^-1; gas-to-dust ratio = 100; T_dust = 20 K for most cores and T_dust = 75 K for the 10 brightest cores; gas-to-star conversion efficiency = 50% for high-mass star precursors (>16 M_sun)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Quantify gas mass concentration from clouds (1 pc) to clumps/filaments (0.1 pc) to cores (0.01 pc)",
+   "method": "Integrate 1.3 mm flux over the imaged cloud area (excluding regions dominated by free-free emission as traced by H41α) to compute recovered mass M^recovered_1.3mm at T_dust = 20 K, and compute mass ratios M^recovered_1.3mm / M^cloud_870μm, M^cores_1.3mm / M^recovered_1.3mm, and M^cores_1.3mm / M^cloud_870μm.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_dust = 20 K and κ_1.3mm = 0.01 cm^2 g^-1 for M^recovered_1.3mm across all evolutionary stages"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Demonstrate cloud kinematics in G353.41 and hot core COM line richness in G351.77",
+   "method": "Fit a single Gaussian to the isolated hyperfine satellite of N2H+ (1-0) (J F1 F = 1 0 1 -> 0 1 2 at ~93.176 GHz) in G353.41 to map centroid velocity and velocity width; extract full Band 3 and Band 6 spectra toward the brightest hot core in G351.77 (IRAS 17233-3606) and inspect bright cores for COM transitions.",
+   "software": [],
+   "key_parameters": [
+    "N2H+ (1-0) isolated satellite frequency ~93.176 GHz"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total noncontiguous imaged area at 1.3 mm",
+   "value": "~53",
+   "uncertainty": "not stated",
+   "units": "pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "ALMA-IMF imaged a total noncontiguous area of $\\sim$53 pc$^2$, covering extreme, nearby protoclusters of the Milky Way."
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "ALMA mosaics cover total noncontiguous areas of $\\sim$53 pc$^2$ at 1.3 mm and $\\sim$122 pc$^2$ at 3 mm in the typical yet extreme environments of the Milky Way clusters in formation (see [1](#fig:overview))."
+    }
+   ]
+  },
+  {
+   "quantity": "Total noncontiguous imaged area at 3 mm",
+   "value": "~122",
+   "uncertainty": "not stated",
+   "units": "pc^2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Conclusion",
+     "quote": "ALMA mosaics cover total noncontiguous areas of $\\sim$53 pc$^2$ at 1.3 mm and $\\sim$122 pc$^2$ at 3 mm in the typical yet extreme environments of the Milky Way clusters in formation (see [1](#fig:overview))."
+    }
+   ]
+  },
+  {
+   "quantity": "Protocluster cloud mass range (M^cloud_870μm)",
+   "value": "2.5 - 32.7",
+   "uncertainty": "not stated",
+   "units": "10^3 M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We observed 15 massive ($2.5-33\\times 10^3~\\mbox{$M_\\odot$}$), nearby ($2-5.5$ kpc) protoclusters that were selected to span relevant early protocluster evolutionary stages."
+    },
+    {
+     "loc": "Table 4",
+     "quote": "| W51-E | $2.6 \\times 2.4$ | $4.2 \\times 3.9$ | 278.9 | 32.7 | 2.2 | 1, two HCH ii $+$ H ii | IR-bright $\\rightarrow$ I |"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear spatial resolution at 1.3 mm (median)",
+   "value": "2100",
+   "uncertainty": "400",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA-IMF data set",
+     "quote": "Listed in [\\[tab:concentration\\]](#tab:concentration), the 1.3 mm spatial resolution ranges from 1 350 au to 2 690 au, with a median value and standard deviation of $2\\,100\\pm{400}$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear spatial resolution at 3 mm (mean)",
+   "value": "1800",
+   "uncertainty": "500",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA-IMF data set",
+     "quote": "As for the 3 mm images, they have on average a slightly better spatial resolution of $1\\,800\\pm{500}$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "3σ point-like core mass sensitivity in 1.3 mm bsens images (median)",
+   "value": "0.18",
+   "uncertainty": "range 0.09 to 0.5",
+   "units": "M_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA-IMF data set",
+     "quote": "The 1.3 mm `bsens` images allow the detection of point-like cores down to the $3\\,\\sigma$ sensitivity level of $0.09~\\mbox{$M_\\odot$}$ to $0.5~\\mbox{$M_\\odot$}$, with a median of $\\sim$0.18$~\\mbox{$M_\\odot$}$, corresponding to a point-source sensitivity of $\\sim$7$\\times10^{22}$ cm$^{-2}$ in column density."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean 1.3 mm to 3 mm flux ratio (S^cloud_1.3mm / S^cloud_3mm) for Young clouds",
+   "value": "11",
+   "uncertainty": "3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Evolutionary stage of the ALMA-IMF protoclusters",
+     "quote": "Their mean flux ratio, $S^{\\rm cloud}_{\\rm 1.3\\,mm}/S^{\\rm cloud}_{\\rm 3\\,mm} \\simeq 11$ with a $1\\,\\sigma$ dispersion of $\\pm{3}$, is smaller than the theoretical one, $20$."
+    }
+   ]
+  },
+  {
+   "quantity": "1.3 mm to 3 mm flux ratio (S^cloud_1.3mm / S^cloud_3mm) for Evolved clouds",
+   "value": "1.3",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Evolutionary stage of the ALMA-IMF protoclusters",
+     "quote": "low 1.3 mm-to-3 mm flux ratios, $S^{\\rm cloud}_{\\rm 1.3\\,mm}/S^{\\rm cloud}_{\\rm 3\\,mm} \\simeq 1.3$ with a dispersion of $\\pm{0.4}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free flux surface density (Σ^free-free_H41α) for Young protoclusters (median)",
+   "value": "0.05",
+   "uncertainty": "0.04",
+   "units": "Jy pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Evolutionary stage of the ALMA-IMF protoclusters",
+     "quote": "Young protoclusters are barely detected in H$41\\alpha$, with flux surface densities of their free-free emission two orders of magnitude smaller than those measured for Evolved clouds, median $\\Sigma^{\\rm free-free}_{\\rm H41\\alpha} \\simeq 0.05\\rm ~Jy\\,pc^{-2}$ with a dispersion of $\\pm 0.04~\\rm Jy\\,pc^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free flux surface density (Σ^free-free_H41α) for Intermediate protoclusters (median)",
+   "value": "0.5",
+   "uncertainty": "0.3",
+   "units": "Jy pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Evolutionary stage of the ALMA-IMF protoclusters",
+     "quote": "The flux surface densities of the free-free continuum emission of Intermediate protocluster clouds, median $\\Sigma^{\\rm free-free}_{\\rm H41\\alpha}=0.5 \\rm ~Jy\\,pc^{-2}$ with a $1\\,\\sigma$ dispersion of $\\pm 0.3~\\rm Jy\\,pc^{-2}$, is about ten times lower than that of Evolved protocluster clouds"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free flux surface density (Σ^free-free_H41α) for Evolved protoclusters",
+   "value": "4",
+   "uncertainty": "2",
+   "units": "Jy pc^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Evolutionary stage of the ALMA-IMF protoclusters",
+     "quote": "Considering the IR-bright sources, we observe that G333.60, G010.62, W51-IRS2, and G012.80 all have strong flux surface densities, $\\Sigma^{\\rm free-free}_{\\rm H41\\alpha} \\simeq 4~\\rm Jy\\,pc^{-2}$ with a $1\\,\\sigma$ dispersion of $\\pm 2~\\rm Jy\\,pc^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of compact sources and thermal dust cores in cleanest 1.3 mm catalog",
+   "value": "~840 sources (~700 cores, 694 summed across Table 5)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The ALMA-IMF catalog contains $\\sim$700 cores that span a mass range of $\\sim$0.15 $\\mbox{$M_\\odot$}$ to $\\sim$250 $\\mbox{$M_\\odot$}$ at a typical size of $\\sim$2 100 au."
+    },
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "In Paper III, (cite: louvet22) extracted sources from the `cleanest` continuum images (see definition in Sect. [3.2](#s:dataset)) and identified about 840 compact sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Core mass range",
+   "value": "0.15 - 250",
+   "uncertainty": "factor of a few absolute, ~50% relative",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "Their masses span more than three decades, from $\\sim$0.15$~\\mbox{$M_\\odot$}$ to $\\sim$250 $\\mbox{$M_\\odot$}$"
+    },
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "We estimated the absolute values of the core masses to be uncertain by a factor of a few, and the relative values between cores to be uncertain by $\\sim$50%."
+    }
+   ]
+  },
+  {
+   "quantity": "Core deconvolved size (median and range)",
+   "value": "2100 (range 700 - 12000)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "Cores have deconvolved sizes ranging from $\\sim$700 au to $\\sim$12 000 au, with a median value of $\\sim$2 100 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Surface number density of cores",
+   "value": "12.9",
+   "uncertainty": "1.6",
+   "units": "pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "Moreover, these provide a roughly homogeneous surface number density of cores, which is with our $\\sim$0.15 $\\mbox{$M_\\odot$}$ point mass sensitivity and $\\sim$2100 au resolution of $\\sim$12.9 cores per pc$^2$ with a $1\\,\\sigma$ dispersion of $\\pm1.6$ cores per pc$^2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman's rank correlation coefficient (ρ_s) between host cloud mass and most massive core mass",
+   "value": "0.65 (p = 0.009)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "Based on the Spearman’s rank correlation coefficient (cite: cohen88), we find a strong correlation ($\\rho_s$ = 0.65 and a low probability, $p=0.009$, for no correlation) between the mass of the host clouds and the most massive core in each of them."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of high-mass star precursor cores (M > 16 M_sun)",
+   "value": "79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Population of cores in the ALMA-IMF protoclusters",
+     "quote": "Within the ALMA-IMF clouds, we found 79 cores that have masses larger than 16 $\\mbox{$M_\\odot$}$ and could represent the precursors of high-mass stars, assuming a gas-to-star conversion factor of $50\\%$ for these cores."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass concentration from cloud to clumps/filaments (M^recovered_1.3mm / M^cloud_870μm, median)",
+   "value": "22",
+   "uncertainty": "13",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Distribution of gas mass from cloud to cores",
+     "quote": "The $M^{\\rm recovered}_{\\rm 1.3\\,mm}/M^{\\rm cloud}_{\\rm 870\\,\\mu m}$ ratio measures the percentage of the cloud mass preferentially located within dense filaments and cores. This ratio covers a wide range of values with a median of $\\simeq$22% and a $1\\,\\sigma$ dispersion of $\\pm13\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass concentration from clumps/filaments to cores (M^cores_1.3mm / M^recovered_1.3mm, median)",
+   "value": "22",
+   "uncertainty": "13",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Distribution of gas mass from cloud to cores",
+     "quote": "Similar values for the median and dispersion are observed for the concentration of clump or filament mass within cores: $M^{\\rm cores}_{\\rm 1.3\\,mm}/M^{\\rm recovered}_{\\rm 1.3\\,mm} \\simeq 22\\%$ and $1\\,\\sigma \\simeq \\pm13\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass concentration from cloud to cores (M^cores_1.3mm / M^cloud_870μm, median)",
+   "value": "4.1",
+   "uncertainty": "2.6",
+   "units": "%",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Distribution of gas mass from cloud to cores",
+     "quote": "Moreover the concentration of the gas mass of clouds into cores, independent of any interferometric filtering, displays values similarly dispersed around its median: $M^{\\rm cores}_{\\rm 1.3\\,mm}/M^{\\rm cloud}_{\\rm 870\\,\\mu m}\\simeq4.1\\%$ and $1\\sigma\\simeq \\pm2.6\\%$, corresponding to a relative dispersion of 0.6."
+    }
+   ]
+  },
+  {
+   "quantity": "N2H+ (1-0) filament velocity components in G353.41",
+   "value": "-18, -16, -14",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas kinematics in massive molecular clouds",
+     "quote": "The first one, at $-18~\\mbox{km~s$^{-1}$}$, crosses the cloud from southeast to northwest. The second one, at $-16~\\mbox{km~s$^{-1}$}$, presents a “V” shape from northeast to the center region and finally northwest and the last one, at $-14~\\mbox{km~s$^{-1}$}$, extends from northeast to center."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA and ALMA pipeline versions used for calibration and imaging (delegated to Paper II, Ginsburg et al. 2022)",
+  "Self-calibration parameters, deconvolver, multiscale scales, cell size, image size, and masking parameters in tclean (delegated to Paper II)",
+  "Exact frequency ranges of the line-free channels used to build the cleanest continuum images (delegated to Paper II)",
+  "Exact velocity integration windows used for the H41alpha recombination line cubes in each of the 15 protoclusters",
+  "Exact getsf configuration parameters and criteria used to exclude free-free contaminated sources (delegated to Paper III, Louvet et al. 2022)",
+  "Spatial masks defining the areas where free-free emission dominates when subtracting free-free contamination from S^recovered_1.3mm"
+ ],
+ "missing_for_reproduction": [
+  "Detailed imaging, self-calibration, and line-free channel selection parameters (residing in Paper II, Ginsburg et al. 2022, and the GitHub repository)",
+  "Detailed getsf source extraction parameters, individual core flux catalogs, and free-free source rejection criteria (residing in Paper III, Louvet et al. 2022)",
+  "Exact velocity integration ranges for the H41alpha line in each of the 15 clouds and the spatial masks used to exclude free-free dominated areas from 1.3 mm recovered flux measurements"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Publicly released ALMA data, public reduction pipeline on GitHub, public continuum FITS products, and explicit analytic equations for mass and free-free calculations; however, this overview paper delegates the exact imaging parameters to Paper II and the core extraction catalog/parameters to Paper III.",
+ "rediscovery_reason": "All raw data and reduced continuum mosaics are public, the reduction pipeline is on GitHub, and key quantitative results (1.3mm/3mm flux ratios, H41alpha free-free surface densities, evolutionary classifications, and cloud-to-core mass concentration ratios) are explicitly tabulated and well-suited for automated reproduction.",
+ "source_card": "cards/2022A%26A...662A...8M/sonnet/card.md"
+}

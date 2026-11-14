@@ -1,0 +1,236 @@
+{
+ "bibcode": "2015A&A...582L...5R",
+ "title": "An ALMA survey for disks orbiting low-mass stars in the TW Hya Association",
+ "year": 2015,
+ "doi": "10.1051/0004-6361/201527031",
+ "arxiv_id": "1509.04589",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Do low-mass (M-type) members of the ~8 Myr TW Hya Association retain cold dust and molecular gas disks?",
+ "alma_project_codes": [
+  "2013.1.00457.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "average 1.5x0.8 arcsec beam, 40-80 AU",
+  "sensitivity": "0.05 mJy/beam continuum; 5 mJy/beam per 0.6 km/s channel in CO"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass of TWA 34, 0.08 Msun",
+    "evidence": [
+     {
+      "loc": "3.1 TWA 34: CO Detection",
+      "quote": "where $M_*$ is the mass of the star, 0.08 $M_\\odot$ (cite: Baraffe:2015)"
+     }
+    ]
+   },
+   "citation": "(cite: Baraffe:2015)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa = 1.15 cm2/g",
+    "evidence": [
+     {
+      "loc": "Results",
+      "quote": "where we adopt $\\kappa_\\nu = 1.15$ cm$^2$/g (see (cite: Rodriguez:2010) and references therein)"
+     }
+    ]
+   },
+   "citation": "(cite: Rodriguez:2010)"
+  },
+  {
+   "what": {
+    "value": "Proper motions of TWA 34 from PPMXL",
+    "evidence": [
+     {
+      "loc": "3.2 TWA 34: System Velocity",
+      "quote": "using the proper motions listed in PPMXL (cite: Roeser:2010)"
+     }
+    ]
+   },
+   "citation": "(cite: Roeser:2010)"
+  },
+  {
+   "what": {
+    "value": "Average UVW velocity of the TWA",
+    "evidence": [
+     {
+      "loc": "3.2 TWA 34: System Velocity",
+      "quote": "average velocity of the TWA ($-9.87$, $-18.06$, $-4.52$ km/s; (cite: Malo:2013))"
+     }
+    ]
+   },
+   "citation": "(cite: Malo:2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum fluxes and limits",
+   "method": "Gaussian fit to cleaned primary-beam-corrected images; 3-sigma limits from 3x RMS",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust masses",
+   "method": "Optically thin M_dust = F D^2 / (kappa B(T))",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "kappa=1.15 cm2/g, T_dust=40 K"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit TWA 34 CO line profile",
+   "method": "Parametric Keplerian profile fit to integrated spectrum; outer radius from v_d^2=GM/R_d",
+   "software": [],
+   "key_parameters": [
+    "q=0.5, p_d=0.1 fixed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Estimate gas mass",
+   "method": "Optically thin 13CO upper limit prescription",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "12C:13C=89, CO:H2=1e-4, T~40 K"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "TWA 34 continuum flux",
+   "value": "0.54",
+   "uncertainty": "0.06",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| TWA 34 | 10:28:45 | -28:30:37 | M5 | 1.35 | 2.75 | Y | $47.0\\pm5.6$ | $0.54\\pm0.06$ | 2.5 | 4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "TWA 32 continuum flux",
+   "value": "2.10",
+   "uncertainty": "0.05",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$2.10\\pm0.05$ | 15.8 | 3, 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO integrated intensity TWA 34",
+   "value": "0.34",
+   "uncertainty": "0.03",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 TWA 34: CO Detection",
+     "quote": "an integrated intensity of $0.34\\pm0.03$ Jy km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (LSR)",
+   "value": "2.3",
+   "uncertainty": "0.1",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 TWA 34: CO Detection",
+     "quote": "a systemic velocity of $2.3\\pm0.1$ km/s in the LSR frame"
+    }
+   ]
+  },
+  {
+   "quantity": "v_d",
+   "value": "2.49",
+   "uncertainty": "0.09",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 TWA 34: CO Detection",
+     "quote": "$v_d$ of $2.49\\pm0.09$km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "CO disk outer radius",
+   "value": "~11",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 TWA 34: CO Detection",
+     "quote": "We thereby estimate the CO disk orbiting TWA 34 is $\\sim$11 AU in radius."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass TWA 34",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1 TWA 34: CO Detection",
+     "quote": "We estimate a gas mass of $\\sim$0.2 $M_E$"
+    }
+   ]
+  },
+  {
+   "quantity": "Barycentric systemic velocity TWA 34",
+   "value": "13.3",
+   "uncertainty": "0.1",
+   "units": "km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2 TWA 34: System Velocity",
+     "quote": "this velocity corresponds to $13.3\\pm0.1$ km/s"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA clean parameters (cell, image size, masks, threshold, deconvolver)",
+  "Line-free channels and continuum subtraction method",
+  "Gaussian-fit procedure and fitting region",
+  "SED photometry and blackbody fitting details",
+  "Fitting method/uncertainty treatment for the line profile",
+  "Moment-map construction parameters",
+  "Array configurations and observing dates"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "Line-free channels",
+  "SED data and fitting details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple recipe with few imaging details but numeric tables given.",
+ "rediscovery_reason": "Data are from a Cycle 2 project and flux/dust-mass/CO results are numeric and simple to redo.",
+ "source_card": "cards/2015A%26A...582L...5R/sonnet/card.md"
+}

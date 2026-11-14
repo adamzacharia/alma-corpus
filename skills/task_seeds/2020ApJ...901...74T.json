@@ -1,0 +1,298 @@
+{
+ "bibcode": "2020ApJ...901...74T",
+ "title": "Structural Evolution in Massive Galaxies at z ∼ 2",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abaf4a",
+ "arxiv_id": "2009.01976",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Where does star formation occur in massive (M*>1e11) star-forming galaxies at z~2 (FIR vs optical/mass size), and how will these galaxies change their size and central mass?",
+ "alma_project_codes": [
+  "2017.1.01027.S",
+  "2012.1.00245.S",
+  "2012.1.00983.S",
+  "2013.1.00205.S",
+  "2013.1.00566.S",
+  "2013.1.00884.S",
+  "2015.1.00242.S",
+  "2016.1.01079.S"
+ ],
+ "data": {
+  "bands": "Band 7 (345 GHz, ~870 um)",
+  "arrays": "not stated",
+  "angular_resolution": "high 0.2-0.3''; intermediate 0.8-1.0''; low 3.3-3.5''",
+  "sensitivity": "rms 60±7 uJy (high), 61±6 uJy (intermediate), 174±29 uJy (low-res)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HST F160W Sersic structural parameters (Re, n, q, PA)",
+    "evidence": [
+     {
+      "loc": "2.3 Optical structure",
+      "quote": "(cite: 2012ApJS..203...24V; 2014ApJ...788...28V; 2014ApJ...788...11L)"
+     }
+    ]
+   },
+   "citation": "(cite: 2012ApJS..203...24V; 2014ApJ...788...28V; 2014ApJ...788...11L)"
+  },
+  {
+   "what": {
+    "value": "Half-mass radii from stellar mass maps for 26 of 58 galaxies",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "For our sample, 26 of 58 massive SFGs have measurements of the half-mass radius from (cite: 2014ApJ...788...11L)."
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJ...788...11L)"
+  },
+  {
+   "what": {
+    "value": "SMG sizes (AS2UDS) for comparison",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "153 of 706 SMGs have robust size measurements from ALMA 0.18$''$-resolution observations (cite: 2019MNRAS.490.4956G)."
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.490.4956G)"
+  },
+  {
+   "what": {
+    "value": "3D-HST catalog, grism redshifts, photometry",
+    "evidence": [
+     {
+      "loc": "2.1 Sample selection",
+      "quote": "We use the 3D-HST catalog including multi-wavelength photometry from ultraviolet to near-infrared and grism redshifts (cite: 2014ApJS..214...24S; 2016ApJS..225...27M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2014ApJS..214...24S; 2016ApJS..225...27M)"
+  },
+  {
+   "what": {
+    "value": "Mass-size relations of SFGs/QGs (CANDELS/3D-HST and COSMOS-DASH)",
+    "evidence": [
+     {
+      "loc": "5.2",
+      "quote": "in the combined sample of the CANDELS/3D-HST survey (cite: 2014ApJ...788...28V; 2014ApJS..214...24S; 2016ApJS..225...27M) and the COSMOS-DASH survey (cite: 2019ApJ...880...57M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019ApJ...880...57M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select mass-limited SFG sample",
+   "method": "3D-HST catalog; z=1.9-2.6, log M*>11 from FAST SED fits, UVJ selection for SFGs",
+   "software": [
+    "FAST"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Chabrier IMF, Bruzual & Charlot models, Calzetti attenuation, exponentially declining SFHs"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Image continuum at three resolutions and measure detections/flux densities",
+   "method": "tclean images with different uv selection, robust and taper; S/N from intermediate-res, total flux from low-res",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure FIR sizes via visibility fitting",
+   "method": "Fit elliptical/circular Gaussian and exponential disk (n=1) models to visibilities",
+   "software": [
+    "UVMULTIFIT"
+   ],
+   "key_parameters": [
+    "Only S/N>10 sources (62) used for size discussion"
+   ],
+   "assumptions": [
+    "Disk model: axis ratio and PA fixed to Gaussian values"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Check missing extended flux",
+   "method": "Compare visibility vs image flux; stack model-subtracted visibilities for compact and extended subsamples and image with taper",
+   "software": [
+    "STACKER",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare FIR size with optical, mass and Halpha sizes; correlations",
+   "method": "Ratios of effective radii (16th/84th percentiles); Spearman rank tests vs galaxy properties",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Derive spatially resolved mass/SFR and project structural evolution",
+   "method": "Deproject Sersic profiles (Abel transform), scale HST to M* and ALMA to SFR, compute M1kpc and Re after adding new stellar mass SFR*tau*beta",
+   "software": [],
+   "key_parameters": [
+    "tau_SF = 0, 300, 600 Myr (and -300 Myr)"
+   ],
+   "assumptions": [
+    "beta=0.6 mass loss for Chabrier IMF; current SFR and its spatial distribution constant"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detected galaxies at S/N>5",
+   "value": "74 of 85 (62 at S/N>10)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "We detect the 870 $\\mu$m continuum emission from 74 of 85 galaxies at S/N$>$5, 62 of which have S/N$>$10"
+    }
+   ]
+  },
+  {
+   "quantity": "Median 870 um flux density",
+   "value": "1.8 (range 0.4-6.9)",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "The median flux density is $S_\\mathrm{image}=$1.8 mJy in the range from 0.4 mJy to 6.9 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio R_e,opt/R_e,FIR",
+   "value": "2.3",
+   "uncertainty": "+1.9/-1.0",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "the effective radius in the FIR is smaller by a factor of 2.3$^{+1.9}_{-1.0}$ than that in the optical"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio R_e,mass/R_e,FIR",
+   "value": "1.9",
+   "uncertainty": "+1.9/-0.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "the effective radius in the FIR is still by a factor of 1.9$^{+1.9}_{-0.9}$ smaller than the half-mass radius"
+    }
+   ]
+  },
+  {
+   "quantity": "Visibility/image flux ratio, exponential disk",
+   "value": "0.98",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$S_\\mathrm{visibility}/S_\\mathrm{image}=$0.93 in the Gaussian and $S_\\mathrm{visibility}/S_\\mathrm{image}=$0.98 in the disk model"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation of size ratio with gas fraction",
+   "value": "0.46",
+   "uncertainty": "p<0.001",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.5",
+     "quote": "$\\rho_\\mathrm{spearman}=$0.46 and $p<0.001$ for gas mass fraction"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction reaching log M1kpc>10.5 at 300 Myr",
+   "value": "22 of 58 (~38%)",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "22 ($\\sim$38%) of 58 massive SFGs have a dense core with $\\log (M_\\mathrm{1kpc}/M_\\ensuremath{\\odot})>10.5$ at $\\tau_\\mathrm{SF}=$ 300 Myr"
+    }
+   ]
+  },
+  {
+   "quantity": "Change in Re and M* in 300 Myr",
+   "value": "Re decreases 14%, M* increases 28%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2",
+     "quote": "the effective radius is decreased, on average, by 14% in 300 Myr while the stellar mass is increased by 28%"
+    }
+   ]
+  },
+  {
+   "quantity": "Detection rate with modified UVJ",
+   "value": "94% (73/78)",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2",
+     "quote": "The detection rate in the updated SFG sample increases from 87% to 94%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration/flagging details; whether pipeline or manual",
+  "Calibrator and flux scale uncertainties",
+  "Spectral window setup and continuum bandwidth",
+  "Cell size and image size for tclean",
+  "Treatment of archival data from different projects (frequency/resolution differences)",
+  "UVMULTIFIT starting values, bounds and fit procedure details",
+  "Number of mock simulations processing details; SED fitting constraints on tau and age",
+  "Exact SFR uncertainty and 870 um gas-mass conversion parameters used"
+ ],
+ "missing_for_reproduction": [
+  "CASA version and calibration details",
+  "Imaging cell/image size",
+  "UVMULTIFIT initial conditions",
+  "HST Sersic and mass-map catalogs from external papers",
+  "Gas-mass calibration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and tables with sizes, with partially specified imaging and fitting, but calibration and fit details are missing and external HST inputs are required.",
+ "rediscovery_reason": "Data public, imaging parameters mostly given and results are numeric (size ratios, detection counts, Table sizes).",
+ "source_card": "cards/2020ApJ...901...74T/sonnet/card.md"
+}

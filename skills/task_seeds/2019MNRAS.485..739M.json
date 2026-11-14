@@ -1,0 +1,338 @@
+{
+ "bibcode": "2019MNRAS.485..739M",
+ "title": "Asymmetric mid-plane gas in ALMA images of HD 100546",
+ "year": 2019,
+ "doi": "10.1093/mnras/stz426",
+ "arxiv_id": "1902.07506",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the dust and gas masses, gas-to-dust ratio, azimuthal asymmetry and radial grain-size trends in the HD 100546 disc, using new Band 6 continuum, 13CO and first-detected C18O plus archival Band 7 continuum?",
+ "alma_project_codes": [
+  "2015.1.01600.S",
+  "2011.0.00863.S"
+ ],
+ "data": {
+  "bands": "Band 6 (new, 1.3 mm); Band 7 (archival, 867 um)",
+  "arrays": "not stated",
+  "angular_resolution": "1.05x0.77 arcsec continuum",
+  "sensitivity": "continuum rms 0.5 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "dust opacity kappa(1.3mm)=1.15 cm2/g for amax=1 mm, and opacity indices beta",
+    "evidence": [
+     {
+      "loc": "5.1.1 Dust Mass",
+      "quote": "Assuming a maximum grain size $a_{\\rm max}$ = 1 mm yields $\\kappa_{1.3 \\rm mm}$ = 1.15 $\\rm cm^{2}g^{-1}$ (cite: Draine2006)."
+     }
+    ]
+   },
+   "citation": "(cite: Draine2006)"
+  },
+  {
+   "what": {
+    "value": "ISM ratio CO/C18O ~ 550",
+    "evidence": [
+     {
+      "loc": "5.1.2 Gas Mass",
+      "quote": "CO/C$^{18}\\rm O \\sim$ 550 (cite: Wilson1994)"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1994)"
+  },
+  {
+   "what": {
+    "value": "13CO/C18O = 8 ISM ratio",
+    "evidence": [
+     {
+      "loc": "5.2 Radial Flux Profiles",
+      "quote": "the isotopic ratio $^{13}$CO/C$^{18}$O=8 based on ISM values (cite: Wilson1999)"
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1999)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate and image",
+   "method": "CASA 4.7.0 calibration, self-cal, CLEAN with briggs robust=0.5, uvcontsub, immoments",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust=0.5; channels with >3 sigma signal summed"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Determine geometry and centre of emission",
+   "method": "Minor axis from systemic-velocity channel; elliptical Gaussian fit with PA prior for inclination; image- and uv-plane centre fits",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Dust mass",
+   "method": "Optically thin flux-to-mass relation within 3 sigma contour",
+   "software": [],
+   "key_parameters": [
+    "T = 20-40 K; amax = 1 mm; kappa = 1.15 cm2/g"
+   ],
+   "assumptions": [
+    "dn/da ∝ a^-3.5"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Gas mass and g/d",
+   "method": "Optically thin LTE C18O (2-1) mass, ISM abundances, over range of T; g/d from T=20 K masses",
+   "software": [],
+   "key_parameters": [
+    "CO/H2 ~1e-4; CO/C18O ~550; minimum at 20 K"
+   ],
+   "assumptions": [
+    "ISM C18O abundance, no isotope-selective photodissociation or freeze-out"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Asymmetry: density vs temperature",
+   "method": "Flux ratios of 60-degree segments on opposite sides; required density or temperature change; Toomre Q",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Radial profiles and extent",
+   "method": "Deproject (i=43, PA=144) and azimuthally average; noise from off-source polynomial fits; edge where flux < 2x noise",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "Spectral and opacity index radial profile",
+   "method": "Azimuthally averaged 867 um and 1.3 mm profiles, beta from d log F - d log B over d log nu",
+   "software": [],
+   "key_parameters": [
+    "T(R)=T100 (R/R100)^0.5, T100=25 K"
+   ],
+   "assumptions": [
+    "p=3.5 size distribution; optically thin"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.3 mm continuum flux",
+   "value": "492",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "The integrated continuum flux in the 1.3 mm image of 492 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "13CO (2-1) integrated flux",
+   "value": "12.872",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "The $^{13}$CO (2-1) integrated flux is measured at 12.872 Jy kms$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O (2-1) integrated flux",
+   "value": "2.948",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "an integrated flux of 2.948 Jy kms$^{-1}$ for the (2-1) transition"
+    }
+   ]
+  },
+  {
+   "quantity": "position angle",
+   "value": "144",
+   "uncertainty": "2.4",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "The average value of the two is $144\\pm 2.4^\\circ$ which we adopt henceforth."
+    }
+   ]
+  },
+  {
+   "quantity": "inclination",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "We adopt an average inclination of $43^{\\circ}$ for all further analysis."
+    }
+   ]
+  },
+  {
+   "quantity": "systemic velocity",
+   "value": "5.42",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Results",
+     "quote": "giving 5.42 kms$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass",
+   "value": "4.1e-4 (40 K) to 9.6e-4 (20 K)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.1.1 Dust Mass",
+     "quote": "4.1$\\times 10^{-4}~$M$_{\\odot}$ for $T$= 40 K, and 9.6$\\times 10^{-4}~$M$_{\\odot}$ for $T$= 20 K"
+    }
+   ]
+  },
+  {
+   "quantity": "minimum gas mass (T=20 K)",
+   "value": "0.018",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.2 Gas Mass",
+     "quote": "giving a minimum disc gas mass of 0.018 M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "gas-to-dust ratio",
+   "value": "19",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.3 Gas To Dust Ratio",
+     "quote": "we calculate a g/d for HD 100546 of $\\approx$ 19"
+    }
+   ]
+  },
+  {
+   "quantity": "outer radius continuum / 13CO / C18O",
+   "value": "286 / 385 / 297",
+   "uncertainty": "11",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Radial Flux Profiles",
+     "quote": "detected as far out as 385$\\pm$11 au"
+    }
+   ]
+  },
+  {
+   "quantity": "SW/NE brightness ratio, outer disc C18O",
+   "value": "1.27",
+   "uncertainty": "0.18",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3.1 Density Scenario",
+     "quote": "the brightness ratio is 1.27$\\pm$0.18"
+    }
+   ]
+  },
+  {
+   "quantity": "minimum Toomre Q",
+   "value": "~24 at ~80 au",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.3.1 Density Scenario",
+     "quote": "Q(R) for this disc reaches a minimum $\\sim 24$ at $\\sim$80 au"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O optical depth maximum",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.2 Radial Flux Profiles",
+     "quote": "with $\\tau \\le$ 0.68"
+    }
+   ]
+  },
+  {
+   "quantity": "inner spectral index",
+   "value": "2.1, rising by ~0.3 outward",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.4 Spectral Index",
+     "quote": "begins in the inner disc with a value of 2.1 and steadily rises with radius by $\\Delta \\alpha_{\\rm mm} \\approx$ 0.3"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "self-calibration solution intervals, number of rounds, and which continuum channels",
+  "CLEAN threshold, masks, cell and image size",
+  "line-free channels for uvcontsub",
+  "Band 7 calibration and imaging details (robust, flux scale)",
+  "how the uvcontsub-based uniform disc fit was actually done",
+  "CO excitation/partition details for the gas-mass temperature range",
+  "flux calibrator flux density and flux-scale uncertainty"
+ ],
+ "missing_for_reproduction": [
+  "self-cal parameters",
+  "CLEAN parameters",
+  "exact flux used in mass calculation",
+  "segment definitions detail"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and main steps are described, but many imaging and self-calibration parameters are missing.",
+ "rediscovery_reason": "Public data, numeric results (fluxes, masses, g/d) are well defined, though imaging details are partly missing.",
+ "source_card": "cards/2019MNRAS.485..739M/sonnet/card.md"
+}

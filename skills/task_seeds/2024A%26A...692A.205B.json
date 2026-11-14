@@ -1,0 +1,423 @@
+{
+ "bibcode": "2024A&A...692A.205B",
+ "title": "The putative center in NGC 1052",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202450898",
+ "arxiv_id": "2501.08685",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "To investigate the area of jet acceleration and collimation and the magnetic field in the innermost region of the bipolar jet in the nearby LINER galaxy NGC 1052 with the highest available angular resolution.",
+ "alma_project_codes": [
+  "2016.1.01290.V"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "EHT array (ALMA as a phased array, IRAM 30 m, JCMT, SMA, SPT)",
+  "angular_resolution": "50 microarcseconds (half the angular EHT resolution)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to NGC 1052 (19.23 ± 0.14 Mpc)",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "The nearby (19.23 ± 0.14 Mpc; Tully et al. 2013) lowluminosity AGN (LLAGN) NGC 1052 serves as a bridge between accretion dominated sources (e.g., Sgr A ∗ ) and jet-dominated sources (e.g., M 87, 3C84, or Cyg A)."
+     }
+    ]
+   },
+   "citation": "Tully et al. 2013"
+  },
+  {
+   "what": {
+    "value": "Supermassive black hole mass of NGC 1052 (≃10^8.2 M_sun)",
+    "evidence": [
+     {
+      "loc": "1. Introduction",
+      "quote": "It hosts a supermassive black hole (SMBH) of ≃10 8.2 M ⊙ (Woo & Urry 2002)."
+     }
+    ]
+   },
+   "citation": "Woo & Urry 2002"
+  },
+  {
+   "what": {
+    "value": "Multi-frequency VLBA observations from April 4, 2017, 2D-cross correlation shift parameters, and stacked 15, 22, and 43 GHz VLBA jet width measurements and broken power-law collimation profile",
+    "evidence": [
+     {
+      "loc": "2.3. VLBA observations",
+      "quote": "The properties of the observations and the data reduction procedures are presented in detail in Baczko et al. (2022), while basic map parameters for the 22 and 43 GHz maps used in this publication are listed in Table 1."
+     },
+     {
+      "loc": "3.1. Aligning images from 1.5 to 86 GHz.",
+      "quote": "The VLBA maps had been aligned using 2D-cross correlation according to Baczko et al. (2022) to shift clean maps and model components of the VLBA observations."
+     },
+     {
+      "loc": "Figure 5 caption",
+      "quote": "Jet width of stacked 15, 22, and 43 GHz VLBA images reported in Baczko et al. (2022) and 230 GHz (EHT 2017)."
+     }
+    ]
+   },
+   "citation": "Baczko et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "ALMA-array flux density of NGC 1052 (0.4 Jy) and spectral index (~ -1 at 220 GHz) at the time of EHT observations",
+    "evidence": [
+     {
+      "loc": "2.1. EHT observation",
+      "quote": "This is due to particularly low brightness of the source at the time of the EHT observations (0.4 Jy reported by the ALMA-array; Goddi et al. 2021)"
+     },
+     {
+      "loc": "4.1. The spectral shape of A15",
+      "quote": "This is larger than the negative spectral index of ∼− 1 at 220 GHz reported by Goddi et al. (2021)"
+     }
+    ]
+   },
+   "citation": "Goddi et al. 2021"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract EHT 230 GHz visibility amplitudes and fit source size and brightness temperature",
+   "method": "Incoherent averaging of visibility amplitudes on JCMT-SMA and ALMA-SPT baselines and fitting a circular Gaussian model to the visibilities",
+   "software": [
+    "EHT-HOPS",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Circular Gaussian model"
+   ],
+   "assumptions": [
+    "Uncertainties dominated by absolute flux density calibration uncertainties"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model GMVA 86 GHz and VLBA 1.6-43 GHz maps with 2D Gaussian components",
+   "method": "Fit circular 2D-Gaussian Modelfit components in Difmap to the GMVA (6 components) and VLBA maps",
+   "software": [
+    "Difmap"
+   ],
+   "key_parameters": [
+    "6 circular Gaussian components for 86 GHz GMVA"
+   ],
+   "assumptions": [
+    "Conservative uncertainties on model component width equal to 1/5th of the beam size and on component position equal to 1/10th of the beam size"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Align multi-frequency images from 1.5 to 86 GHz and cross-identify components",
+   "method": "Apply 2D-cross correlation shifts from Baczko et al. (2022) to VLBA maps, then align 43 GHz and 86 GHz by identifying the central 86 GHz component with component A15 at 43 GHz, deriving an additional shift of (0.098, 0.176) mas in DEC and RA",
+   "software": [],
+   "key_parameters": [
+    "Shift of (0.098 and 0.176) mas in DEC and RA between 43 GHz and 86 GHz"
+   ],
+   "assumptions": [
+    "The central brightest feature in 43 GHz maps (A15) coincides with the central engine and the 86 GHz and 230 GHz compact emission, and free-free absorption from the torus is negligible above 43 GHz"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit synchrotron self-absorption (SSA) continuum spectrum of central component A15",
+   "method": "Fit a basic synchrotron self-absorption spectrum (Eq. 1 and 2, Türler et al. 1999) to flux densities of component A15 at 22, 43, 86, and 230 GHz",
+   "software": [],
+   "key_parameters": [
+    "4 free parameters: optically thin spectral index (alpha_thin), optically thick spectral index (alpha_thick), peak frequency (nu_m), and peak brightness (S_m)"
+   ],
+   "assumptions": [
+    "At 22 GHz, the central component is a blend of A15 and B6 at 43 GHz, so A15 flux density at 22 GHz is 50% of the component flux density (17.5 mJy) with 50% uncertainty; 15% flux density uncertainty at 43, 86, and 230 GHz"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Estimate magnetic field strength at A15 and extrapolate to the event horizon",
+   "method": "Calculate brightness temperature and SSA magnetic field at A15 assuming equipartition, and extrapolate to 1 R_S assuming radial power-law dependencies (poloidal B ~ d^-2 or toroidal-to-poloidal transition)",
+   "software": [],
+   "key_parameters": [
+    "nu_m = 130 GHz, S_m = 1.75 Jy, size = 43 microarcseconds (distance d = 21.5 or 22 microarcseconds)"
+   ],
+   "assumptions": [
+    "Equipartition between magnetic field and non-thermal electrons; cosmological redshift and Doppler factor neglected; SMBH mass 10^8.2 M_sun and distance 19.23 Mpc; purely poloidal B ~ d^-2 or toroidal B ~ d^-1 switching to poloidal at 2 R_S"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain central region size and compare with jet collimation profile",
+   "method": "Combine 230 GHz EHT size perpendicular to jet axis with 86 GHz GMVA resolution limit along jet axis, and compare EHT width at upper limit distance of 50 microarcseconds with stacked 15, 22, and 43 GHz VLBA jet width profiles from Baczko et al. (2022)",
+   "software": [],
+   "key_parameters": [
+    "GMVA resolution limit of half the beam size (35 microarcseconds); upper limit on distance of A15 to center = 50 microarcseconds (half EHT resolution)"
+   ],
+   "assumptions": [
+    "Distance of 19.23 Mpc and SMBH mass of 10^8.2 M_sun for conversion to Schwarzschild radii R_S"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "EHT 230 GHz total compact flux density",
+   "value": "0.35",
+   "uncertainty": "0.05",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1. EHT observation",
+     "quote": "The final visibility amplitude and ( u , v) coverage is shown in Fig. 1, providing a total compact flux density of 0.35 ± 0.05 Jy."
+    }
+   ]
+  },
+  {
+   "quantity": "EHT 230 GHz circular Gaussian size (FWHM) of central region perpendicular to jet axes",
+   "value": "43",
+   "uncertainty": "6",
+   "units": "µas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1. EHT observation",
+     "quote": "The visibilities are consistent with a circular Gaussian model with a full width at half maximum (FWHM) of 43 µas, resulting in a brightness temperature estimate of T b = (4.7 ± 0.8) × 10 9 K and a circularGaussiansizeestimateof(43±6) µas"
+    }
+   ]
+  },
+  {
+   "quantity": "EHT 230 GHz observed brightness temperature",
+   "value": "4.7e9",
+   "uncertainty": "0.8e9",
+   "units": "K",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1. EHT observation",
+     "quote": "The visibilities are consistent with a circular Gaussian model with a full width at half maximum (FWHM) of 43 µas, resulting in a brightness temperature estimate of T b = (4.7 ± 0.8) × 10 9 K and a circularGaussiansizeestimateof(43±6) µas"
+    }
+   ]
+  },
+  {
+   "quantity": "GMVA 86.2 GHz peak brightness",
+   "value": "0.63",
+   "uncertainty": "not stated",
+   "units": "Jy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GMVA 86.2 2.05 1.4 0.63 0.81 0.33 0.07 −6.7 450:1"
+    }
+   ]
+  },
+  {
+   "quantity": "GMVA 86.2 GHz total recovered flux density",
+   "value": "0.81",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "GMVA 86.2 2.05 1.4 0.63 0.81 0.33 0.07 −6.7 450:1"
+    }
+   ]
+  },
+  {
+   "quantity": "GMVA 86 GHz central feature (A15) flux density",
+   "value": "664",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1. Aligning images from 1.5 to 86 GHz.",
+     "quote": "The new GMVA image is core-dominated, as is the first 3 mm image of NGC 1052 (Baczko et al. 2016a), with about 80% of the total flux density inside the innermost unresolved feature, corresponding to 664 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "GMVA 86 GHz central component Gaussian modelfit major axis",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "µas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3. Combined size of the central region",
+     "quote": "The Gaussian modelfit to the GMVA images yields a circular component with a major axis of 20 µas and a brightness temperature of 2.95 × 10 11 K."
+    }
+   ]
+  },
+  {
+   "quantity": "GMVA 86 GHz central component Gaussian modelfit brightness temperature",
+   "value": "2.95e11",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3. Combined size of the central region",
+     "quote": "The Gaussian modelfit to the GMVA images yields a circular component with a major axis of 20 µas and a brightness temperature of 2.95 × 10 11 K."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA fit peak frequency (nu_m) of component A15",
+   "value": "126",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2. Continuum spectrum of A15",
+     "quote": "This results in a peak frequency at 126 GHz with 1.75 Jy peak brightness, a thin spectral index of α thin = −3.7, and a thick spectral index α thick = 3.3, which exceeds the limit of 2.5 for SSA 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA fit peak brightness (S_m) of component A15",
+   "value": "1.75",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2. Continuum spectrum of A15",
+     "quote": "This results in a peak frequency at 126 GHz with 1.75 Jy peak brightness, a thin spectral index of α thin = −3.7, and a thick spectral index α thick = 3.3, which exceeds the limit of 2.5 for SSA 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA fit optically thin spectral index (alpha_thin) of component A15",
+   "value": "-3.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2. Continuum spectrum of A15",
+     "quote": "This results in a peak frequency at 126 GHz with 1.75 Jy peak brightness, a thin spectral index of α thin = −3.7, and a thick spectral index α thick = 3.3, which exceeds the limit of 2.5 for SSA 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "SSA fit optically thick spectral index (alpha_thick) of component A15",
+   "value": "3.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2. Continuum spectrum of A15",
+     "quote": "This results in a peak frequency at 126 GHz with 1.75 Jy peak brightness, a thin spectral index of α thin = −3.7, and a thick spectral index α thick = 3.3, which exceeds the limit of 2.5 for SSA 2 ."
+    }
+   ]
+  },
+  {
+   "quantity": "Brightness temperature at spectral turnover (130 GHz) for component A15",
+   "value": "6.9e10",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. The spectral shape of A15",
+     "quote": "Assuming a turn-over at 130 GHz, a peak brightness of 1.75 Jy, and a size equivalent to the EHT size of 43 µas, we obtained T B = 6.9 × 10 10 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field strength at component A15 (at distance 22 microarcseconds)",
+   "value": "1.25",
+   "uncertainty": "not stated",
+   "units": "Gauss",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Furthermore, we estimated the magnetic field to be 1.25 Gauss at a distance of 22 µas from the central engine by fitting a synchrotron-self absorption spectrum to the innermost emission feature, which shows a spectral turn-over at ∼130 GHz."
+    },
+    {
+     "loc": "4.1. The spectral shape of A15",
+     "quote": "On this basis, we deduced a magnetic field of ∼1.25 G within these inner 43 µas."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper limit on magnetic field strength at the event horizon (1 R_S) assuming purely poloidal field",
+   "value": "2.6e4",
+   "uncertainty": "not stated",
+   "units": "Gauss",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Assuming a purely poloidal magnetic field, this implies an upper limit on the magnetic field strength at the event horizon of 2.6 × 10 4 Gauss, which is consistent with previous measurements."
+    },
+    {
+     "loc": "4.1. The spectral shape of A15",
+     "quote": "Assuming a purely poloidal magnetic field with B ∝ d −2 , with d being the distance to the center, we obtained an upper limit on the magnetic field at the event horizon ( 1 R S distance to the central engine) of B SSA = 2.6 × 10 4 G."
+    }
+   ]
+  },
+  {
+   "quantity": "Magnetic field strength at 1 R_S assuming toroidal-to-poloidal change at 2 R_S",
+   "value": "392",
+   "uncertainty": "not stated",
+   "units": "Gauss",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1. The spectral shape of A15",
+     "quote": "Meanwhile, a change from a toroidal B-field distribution ( B ∝ d −1 ) to a poloidal at a distance of 2 R S to the central engine results in a lower estimate of B SSA = 392 G at 1 R S ."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined size of central region (transverse x parallel to jet axis)",
+   "value": "43 x 35",
+   "uncertainty": "not stated",
+   "units": "µas",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Combined size of the central region",
+     "quote": "Combining this with the EHT size estimate perpendicular to the jet axis allows us to estimate the size of the central region to (43 × 35) µas, corresponding to ∼(280 × 230) R S , transversally and parallel to the jet axis."
+    }
+   ]
+  },
+  {
+   "quantity": "Combined size of central region in Schwarzschild radii (transverse x parallel to jet axis)",
+   "value": "280 x 230",
+   "uncertainty": "not stated",
+   "units": "R_S",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3. Combined size of the central region",
+     "quote": "Combining this with the EHT size estimate perpendicular to the jet axis allows us to estimate the size of the central region to (43 × 35) µas, corresponding to ∼(280 × 230) R S , transversally and parallel to the jet axis."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact software versions for CASA, EHT-HOPS, AIPS, Difmap, ParselTongue, eht-imager, and DiFX",
+  "Exact coherent/incoherent averaging time intervals and SNR thresholds used in EHT-HOPS to extract the final visibilities on JCMT-SMA and ALMA-SPT baselines",
+  "Self-calibration solution intervals and CLEAN windowing/stopping criteria in Difmap for the 86 GHz GMVA imaging",
+  "Exact numerical values of the 2D cross-correlation shifts between the 1.6, 5.0, 8.4, 15, 22, and 43 GHz VLBA images inherited from Baczko et al. (2022)",
+  "Exact proportionality constant and formula used in the equipartition SSA magnetic field calculation (deferred to Baczko et al. 2016b)"
+ ],
+ "missing_for_reproduction": [
+  "Calibrated EHT 230 GHz visibility data (uvfits) for NGC 1052 are not explicitly linked in the Data Availability section",
+  "Manual flagging tables and self-calibration steps in Difmap for the 86 GHz GMVA raw data reduction",
+  "Exact numerical values of the 2D cross-correlation shifts between the VLBA bands (inherited from Baczko et al. 2022)",
+  "Exact algebraic expression and proton-to-electron energy ratio used for the equipartition SSA magnetic field calculation (referred to Baczko et al. 2016b)"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The modelfit component tables across all VLBA/GMVA bands and the 86 GHz clean map are publicly hosted on CDS and Zenodo, and the EHT 230 GHz Gaussian fit and SSA equations are simple and well-specified; however, the calibrated EHT visibilities are not directly linked, GMVA imaging involved heavy manual flagging in Difmap, and the exact magnetic field formula is deferred to an earlier paper.",
+ "rediscovery_reason": "The component flux densities and positions are published in the paper and on CDS/Zenodo, and the main numeric results (EHT Gaussian size, brightness temperature, SSA turnover parameters, and magnetic field bounds) can be directly reproduced from the published tables and visibility amplitudes.",
+ "source_card": "cards/2024A%26A...692A.205B/sonnet/card.md"
+}

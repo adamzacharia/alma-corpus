@@ -1,0 +1,337 @@
+{
+ "bibcode": "2016ApJ...827..142B",
+ "title": "ALMA Observations of Circumstellar Disks in the Upper Scorpius OB Association",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/827/2/142",
+ "arxiv_id": "1605.05772",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How do disk dust masses (and CO emission) of low-mass stars in Upper Sco at 5-11 Myr compare with younger Taurus disks, and how do they depend on stellar mass?",
+ "alma_project_codes": [
+  "2013.1.00395.S",
+  "2011.0.00966.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.88 mm)",
+  "arrays": "12 m array",
+  "angular_resolution": "~0.55\" (Cycle 0); 0.34\" (Cycle 2)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Taurus 0.89 mm flux catalog, scaled to 0.88 mm with S∝ν^2.4",
+    "evidence": [
+     {
+      "loc": "6.2 Relative Dust Masses",
+      "quote": "we use the 0.89 mm flux densities, scaled to our mean wavelength of 0.88 mm assuming $S_{\\nu}\\propto\\nu^{2.4}$"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews2013)"
+  },
+  {
+   "what": {
+    "value": "Disk classification and spectral types of Upper Sco stars",
+    "evidence": [
+     {
+      "loc": "2 Stellar Sample",
+      "quote": "Spectral types were taken from (cite: Luhman2012), with an assumed uncertainty of $\\pm$1 subclass."
+     }
+    ]
+   },
+   "citation": "(cite: Luhman2012)"
+  },
+  {
+   "what": {
+    "value": "Flux 218.76±0.81 mJy for 2MASS J16042165-2130284",
+    "evidence": [
+     {
+      "loc": "4.1 Continuum Fluxes",
+      "quote": "we adopt a flux of $218.76\\pm0.81$ mJy measured by (cite: Zhang2014) using a 1$\\overset{''}{.}$5 radius circular aperture."
+     }
+    ]
+   },
+   "citation": "(cite: Zhang2014)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Visibility error rescaling",
+   "method": "Grid visibilities in uv, scale sigma to empirical scatter per SPW/polarization; apply median scale factor of cells with ≥10 visibilities",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux densities",
+   "method": "uvmodelfit point source; elliptical Gaussian if BIC favors at 3σ; aperture photometry for two cavity sources; uvmultifit for fields with secondary sources",
+   "software": [
+    "CASA uvmodelfit",
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "detection if flux >3× uncertainty; non-detections refit at fixed expected position (2MASS + PPMXL proper motions)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure CO J=3-2 line fluxes",
+   "method": "uvcontsub, then aperture photometry on clean components+residuals, with per-source velocity range and optimal aperture; 5σ detection threshold; 0.3\" aperture over -1.5 to 10.5 km/s for non-detections",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "uncertainty = std of 20 random apertures"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust masses",
+   "method": "Optically thin isothermal M_d = S d^2/(κ B(T_d))",
+   "software": [],
+   "key_parameters": [
+    "upper limits = 3σ plus any positive flux"
+   ],
+   "assumptions": [
+    "κ=2.3 cm2/g at 230 GHz, ∝ν^0.4; T_d=25 K (L*/Lsun)^0.25; d=145±20 pc"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Dust mass vs stellar mass relation",
+   "method": "Cox proportional hazards test for correlation; Bayesian linear regression with censoring (Kelly 2007)",
+   "software": [
+    "R"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Stack debris/evolved transitional non-detections",
+   "method": "Images with 0.4\" circular beam centered on stellar position, noise-weighted mean; 4 stars with offset sources excluded",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "median dust temperature 18 K"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Compare Upper Sco with Taurus",
+   "method": "Compare Mdust/M* using log-rank and Peto-Peto tests and Kaplan-Meier mean estimates, with Taurus from Andrews2013 rescaled to 0.88 mm",
+   "software": [
+    "R"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Constrain CO non-detections",
+   "method": "Brightness-temperature dilution and optically thin column density analysis (Mangum & Shirley 2015)",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "T_CO ≥20 K, inclination 60°, gas-to-dust 100, CO/H2 = 7e-5, disk radius 43.5 au"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum detections, primordial disks",
+   "value": "53 of 75",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Of the 75 primordial disks in the sample, 53 are detected in the dust continuum and 26 in CO."
+    }
+   ]
+  },
+  {
+   "quantity": "CO >5σ detections, primordial disks",
+   "value": "26 of 75",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Of the 75 primordial disks in the sample, 53 are detected in the dust continuum and 26 in CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Debris/evolved transitional continuum detections",
+   "value": "5 of 31",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "Of the 31 disks classified as debris/evolved transitional disks, 5 are detected in the continuum and none in CO."
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust-M* slope",
+   "value": "1.67",
+   "uncertainty": "±0.37",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Stellar Mass Dependence",
+     "quote": "$\\log (M_{\\mathrm{dust}}/M_{\\oplus}) = (1.67\\pm0.37)\\log(M_*/M_{\\odot}) + (0.76\\pm0.21)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust-M* intercept",
+   "value": "0.76",
+   "uncertainty": "±0.21",
+   "units": "log M_earth",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Stellar Mass Dependence",
+     "quote": "$\\log (M_{\\mathrm{dust}}/M_{\\oplus}) = (1.67\\pm0.37)\\log(M_*/M_{\\odot}) + (0.76\\pm0.21)$"
+    }
+   ]
+  },
+  {
+   "quantity": "Intrinsic scatter",
+   "value": "0.69",
+   "uncertainty": "±0.08",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Stellar Mass Dependence",
+     "quote": "with an intrinsic scatter of $0.69\\pm0.08$ dex"
+    }
+   ]
+  },
+  {
+   "quantity": "Median detected dust mass",
+   "value": "0.52",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1 Primordial Disk Dust Masses",
+     "quote": "detected dust masses range from 0.17 to 126 $M_{\\oplus}$, with a median of 0.52 $M_{\\oplus}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log(Mdust/M*) Taurus",
+   "value": "-4.44",
+   "uncertainty": "±0.05",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Relative Dust Masses",
+     "quote": "$\\langle\\log(M_{\\mathrm{dust}}/M_*)\\rangle = -4.44 \\pm 0.05$ in Taurus"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean log(Mdust/M*) Upper Sco",
+   "value": "-5.08",
+   "uncertainty": "±0.08",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Relative Dust Masses",
+     "quote": "$\\langle\\log(M_{\\mathrm{dust}}/M_*)\\rangle = -5.08 \\pm 0.08$ in Upper Sco"
+    }
+   ]
+  },
+  {
+   "quantity": "Difference Taurus-Upper Sco",
+   "value": "0.64",
+   "uncertainty": "±0.09",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Relative Dust Masses",
+     "quote": "$\\Delta\\langle\\log(M_{\\mathrm{dust}}/M_*)\\rangle = 0.64\\pm0.09$ (Taurus-Upper Sco)"
+    }
+   ]
+  },
+  {
+   "quantity": "Stacked debris disk dust mass 3σ upper limit",
+   "value": "0.06",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Debris/Evolved Transitional Disks",
+     "quote": "find a $3\\sigma$ upper limit to the dust mass of 0.06 $M_{\\oplus}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO optical depth 5σ upper limit",
+   "value": "0.28",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.2 The Relationship between Gas and Dust",
+     "quote": "$\\tau_{\\mathrm{CO}}=0.28$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO emitting radius upper limit",
+   "value": "~40",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "6.2 The Relationship between Gas and Dust",
+     "quote": "sets an upper limit on $R_{\\mathrm{CO}}$ of $\\sim$40 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (weighting, robust, cell, image size, clean threshold/masks) for images and CO cubes",
+  "CASA version used",
+  "Priors/sampler settings of the Kelly (2007) fit",
+  "Details of how Taurus stellar masses and upper limits entered Kaplan-Meier tests",
+  "Deconvolution details for clean-component aperture photometry",
+  "Final rms and beam per source"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters",
+  "CASA version",
+  "Fit priors",
+  "Taurus catalog values must be fetched from Andrews2013"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Tables of fluxes and masses allow checking, but imaging and fitting details are sparse.",
+ "rediscovery_reason": "Public archival data, clear recipe for flux fits and dust masses, numeric results.",
+ "source_card": "cards/2016ApJ...827..142B/sonnet/card.md"
+}

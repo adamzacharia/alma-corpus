@@ -1,0 +1,284 @@
+{
+ "bibcode": "2018ApJ...868...95M",
+ "title": "ALMA Observations of HCN and HCO<SUP>+</SUP> Outflows in the Merging Galaxy NGC 3256",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aae82a",
+ "arxiv_id": "1810.04821",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "astrochemistry"
+ ],
+ "question": "Is dense gas (HCN, HCO+) present in the molecular outflows of the merging galaxy NGC 3256, and how do outflow line ratios and physical conditions differ from the nuclei and between the AGN-hosting southern and starburst northern outflows?",
+ "alma_project_codes": [
+  "2015.1.00993.S",
+  "2015.1.00714.S",
+  "2011.0.00525.S"
+ ],
+ "data": {
+  "bands": "Band 3 for HCN/HCO+ (1–0); CO(2–1) Cycle 3 archival; CO(1–0) and CO(3–2) Cycle 0 archival",
+  "arrays": "45 twelve meter antennas",
+  "angular_resolution": "2.1\" x 1.7\" (360 x 460 pc); beam-matched to 2.1\"",
+  "sensitivity": "~0.2 mJy/beam per 30 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Radio peaks used to define North- and South-Nucleus positions",
+    "evidence": [
+     {
+      "loc": "2 ALMA data",
+      "quote": "We define North-Nucleus and South-Nucleus (stars in Figures) as the peaks of the radio emission (cite: Neff+03)."
+     }
+    ]
+   },
+   "citation": "Neff+03"
+  },
+  {
+   "what": {
+    "value": "54%/46% split of red-shifted CO between southern and northern outflow",
+    "evidence": [
+     {
+      "loc": "Discussion, OF-Red",
+      "quote": "we assume 54$\\%$ and 46$\\%$ of the red-shifted components arise from the southern and northern nucleus, respectively (cite: Sakamoto+14)"
+     }
+    ]
+   },
+   "citation": "Sakamoto+14"
+  },
+  {
+   "what": {
+    "value": "SFR ~6 Msun/yr within ~3\" of the southern nucleus from IR SED fitting",
+    "evidence": [
+     {
+      "loc": "3.2 Outflow Properties",
+      "quote": "We adopt SFR of $\\sim6$ M$_{\\odot}$ yr$^{-1}$ [^4] for the $\\sim3.0\\ensuremath{''}$ region around the southern nucleus, which is derived from infrared SED fitting (cite: Lira+08)."
+     }
+    ]
+   },
+   "citation": "Lira+08"
+  },
+  {
+   "what": {
+    "value": "Inclination of 80 deg for de-projecting outflow velocity",
+    "evidence": [
+     {
+      "loc": "3.2 Outflow Properties",
+      "quote": "assuming an inclination of 80$^\\circ$ (cite: Sakamoto+14)"
+     }
+    ]
+   },
+   "citation": "Sakamoto+14"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cubes",
+   "method": "Continuum subtraction and tclean with automasking; beam-matched, uv-clipped (>18 kλ) cubes for all CO and dense gas lines",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "30 km/s channels, Briggs robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify outflow components and measure fluxes",
+   "method": "Moment 0 maps over extreme velocity ranges; integrate nuclei over channels with S/N>3; 3 sigma upper limits for non-detections",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Southern share of CO(1-0) at OF-Red set by blue flux ratio, giving ~5 Jy km/s"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive outflow masses, rates and power",
+   "method": "Mass = alpha x luminosity; age = l/V; Mdot = M/age; kinetic power; compare with supernova power 7e41 x SFR",
+   "software": [],
+   "key_parameters": [
+    "V_OF ~1600 km/s, l_OF = 400 pc"
+   ],
+   "assumptions": [
+    "alpha_HCN = 0.24–10, alpha_CO = 0.8–4.6",
+    "Inclination 80 deg"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute line ratios",
+   "method": "Ratios in brightness temperature of CO 2-1/1-0, 3-2/1-0, HCN/CO, HCO+/CO, HCN/HCO+ in each region and velocity channel",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Non-LTE RADEX modelling with Bayesian likelihood",
+   "method": "Single-phase RADEX grid fit to five line fluxes for North-Nucleus, South-Nucleus, South-OF-Blue",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Tkin 5–6300 K, nH2 1e1–1e7 cm-3, NCO 1e12–1e22 cm-2, FF 1e-5–1, abundance ratios 1e-7–1e-3"
+   ],
+   "assumptions": [
+    "Tbg 2.73 K, FWHM 150 km/s, [CO/H2]=1e-4"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "R_HCO+/CO at South-OF-Blue",
+   "value": "0.20",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| South-OF-Blue | 1.2$\\pm$0.2 | 1.3$\\pm$0.2 | 0.13$\\pm$0.04 | 0.20$\\pm$0.04 | 0.68$\\pm$0.24 |"
+    }
+   ]
+  },
+  {
+   "quantity": "R_HCO+/CO at South-Nucleus",
+   "value": "0.08",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| South-Nucleus | 0.9$\\pm$0.1 | 0.7$\\pm$0.1 | 0.05$\\pm$0.01 | 0.08$\\pm$0.01 | 0.60$\\pm$0.08 |"
+    }
+   ]
+  },
+  {
+   "quantity": "R_32/10 at South-OF-Blue",
+   "value": "1.3",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "larger in the southern outflow (0.20$\\pm$0.04 and 1.3$\\pm$0.2, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "R_32/10 at South-Nucleus",
+   "value": "0.7",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "than in the southern nucleus (0.08$\\pm$0.01, 0.7$\\pm$0.1, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern outflow molecular mass (CO)",
+   "value": "100–260e5",
+   "uncertainty": "range from alpha_CO",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm dense}$ or $M_{\\rm mol}$ \\[$10^5~$M$_{\\odot}$\\] | 2.8–120 | 100–260"
+    }
+   ]
+  },
+  {
+   "quantity": "Southern outflow dense gas mass (HCN)",
+   "value": "2.8–120e5",
+   "uncertainty": "range from alpha_HCN",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$M_{\\rm dense}$ or $M_{\\rm mol}$ \\[$10^5~$M$_{\\odot}$\\] | 2.8–120 | 100–260"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow rate (HCN; CO)",
+   "value": "1–48; 40–104",
+   "uncertainty": "range",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$\\dot{M}$ \\[$M_{\\odot}$ yr$^{-1}$\\] | 1–48 | 40–104"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow age",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$Age$ \\[Myr\\] | 0.25"
+    }
+   ]
+  },
+  {
+   "quantity": "Tkin South-OF-Blue (1 sigma)",
+   "value": "33–254",
+   "uncertainty": "1 sigma range",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| South-OF-Blue | 33 - 254 | $10^{4.3}$ - $10^{6.2}$ | $10^{16.6}$ - $10^{17.7}$ | 0.0006 - 0.0055 |"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from dense gas in outflow",
+   "value": "0.003–0.14",
+   "uncertainty": "range",
+   "units": "Msun/yr",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "6.1 South-OF-Blue",
+     "quote": "we estimate $SFR$ = 0.003-0.14 \\[M$_\\odot$ yr$^{-1}$\\] from dense gas mass associated with outflow"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact line-free channels used for uvcontsub",
+  "Image size and cell size",
+  "Clean thresholds and mask parameters",
+  "Spectral setup/rest frequencies and windows",
+  "Details of CO(2-1) channel width and uv-clip for CO data",
+  "Priors and grid sampling for the Bayesian RADEX analysis",
+  "How beam-matching and region apertures were applied for flux measurement",
+  "Source of the SFR-dense gas mass relation used"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels and image grid parameters",
+  "Bayesian prior/grid details",
+  "Aperture definitions for flux extraction"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and many parameters stated, but line-free channels, imaging grids and Bayesian details missing.",
+ "rediscovery_reason": "Public ALMA data, imaging recipe mostly given, and results are numeric line ratios and fluxes.",
+ "source_card": "cards/2018ApJ...868...95M/sonnet/card.md"
+}

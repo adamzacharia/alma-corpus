@@ -1,0 +1,333 @@
+{
+ "bibcode": "2025ApJ...993..120H",
+ "title": "Early Planet Formation in Embedded Disks (eDisk). XVII. A Compact but Structured Keplerian Disk and Large-scale Streamers Revealed in the Class I Protostellar System IRAS 04169+2702",
+ "year": 2025,
+ "doi": "10.3847/1538-4357/ade684",
+ "arxiv_id": "2506.16569",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Does the Class I protostar IRAS 04169+2702 host a Keplerian disk with substructure, and what is the nature of the large-scale spiral structures around it (streamers vs outflow)?",
+ "alma_project_codes": [
+  "2019.1.00261.L"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm); VLA Q, K, C",
+  "arrays": "not stated",
+  "angular_resolution": "~0.05'' (8 au) in SBLB continuum; LB-only 0.044''x0.034''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Bolometric luminosity 1.4 Lsun and Tbol 161 K",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "re-calculated its bolometric luminosity and temperature to be 1.4 $L_{\\odot}$ and 161 K, respectively"
+     }
+    ]
+   },
+   "citation": "(cite: 2023ApJ...951....8O)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature scaling relation T=43 K (L/Lsun)^0.25 (R/50 au)^-0.5",
+    "evidence": [
+     {
+      "loc": "3.1.1 ALMA",
+      "quote": "$T_{\\rm dust}$ $=$ 43 K ($L_{\\rm bol}$/$L_{\\odot}$)$^{0.25}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2020ApJ...890..130T; 2022ApJ...929...76S)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Self-calibrate and image ALMA data",
+   "method": "Pipeline calibration, iterative phase and amplitude self-calibration on SB then SBLB, tclean imaging of SB, SBLB, LB-only",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 2.0/0.5/0.0 for continuum SB/SBLB/LB"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum disk size, inclination, peaks",
+   "method": "Elliptical Gaussian fitting; inclination from axis ratio cos^-1(min/maj); separate Gaussian fits of two peaks",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "geometrically thin disk"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust and disk mass",
+   "method": "Optically thin isothermal dust mass formula with kappa=2.25 cm2/g at 225 GHz, T=20 K and 61 K, gas-to-dust 100",
+   "software": [],
+   "key_parameters": [
+    "kappa = (nu/100 GHz)^beta, beta=1 giving 2.25 cm2/g"
+   ],
+   "assumptions": [
+    "gas-to-dust ratio 100; d=156 pc; optically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Proper-motion correct VLA vs ALMA and fit radio SED",
+   "method": "Proper motion from I04166 imfit centers applied to I04169; two power-law (dust + free-free) fit of 1.3 mm to 6 cm fluxes",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure kinematics with PV fitting",
+   "method": "SLAM ridge and edge methods on LB-only PV diagrams of 12CO, 13CO, C18O along major axis, high-velocity ranges only, single power-law rotation curve",
+   "software": [
+    "SLAM"
+   ],
+   "key_parameters": [
+    "Vsys 6.9 km/s, inclination 43 deg; thresholds 5σ (12CO, C18O), 6σ (13CO)"
+   ],
+   "assumptions": [
+    "p fixed to 0.5 for 12CO mass; final mass is mean of ridge and edge"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Characterize streamers vs outflow",
+   "method": "Moment 0/1/2/8/9 maps and channel maps; compare velocity dispersion of 12CO, 13CO, C18O",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Deconvolved continuum disk FWHM (LB-only)",
+   "value": "0.22'' x 0.16'' (34 x 25 au), PA 140 deg",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "for the LB-only image, they are 0.22$''$ $\\times$ 0.16$''$ (34 au $\\times$ 25 au) and 140$\\ensuremath{^\\circ}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "43",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "estimate the disk inclination angle to be 43$\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Flux density within 3σ, LB-only",
+   "value": "91.71",
+   "uncertainty": "2.02",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "92.19 $\\pm$ 1.64 and 91.71 $\\pm$ 2.02 mJy, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Projected separation of two continuum peaks",
+   "value": "0.11 (17 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "The projected separation of the two peaks is 0.11$''$ (17 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass (T=20 K / 61 K)",
+   "value": "67 / 18",
+   "uncertainty": "not stated",
+   "units": "Earth masses",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "the dust masses of the protostellar disk are derived to be 67 and 18 $M_{\\ensuremath{\\oplus}}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature from Tobin/Sheehan relation",
+   "value": "61",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 ALMA",
+     "quote": "the dust temperature of I04169 is derived to be 61 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust spectral index, entire disk",
+   "value": "2.848",
+   "uncertainty": "0.040",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Disk Substructure",
+     "quote": "the spectral index is $\\alpha_{\\rm dust}$ $=$ 2.848 $\\pm$ 0.040"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust spectral index, central region",
+   "value": "2.323",
+   "uncertainty": "0.332",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Disk Substructure",
+     "quote": "$\\alpha_{\\rm dust}$ $=$ 2.323 $\\pm$ 0.332"
+    }
+   ]
+  },
+  {
+   "quantity": "Free-free spectral index, entire disk",
+   "value": "0.166",
+   "uncertainty": "0.094",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Disk Substructure",
+     "quote": "$\\alpha_{\\rm free}$ $=$ 0.166 $\\pm$ 0.094"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass, ridge method",
+   "value": "0.766",
+   "uncertainty": "0.059",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "0.766 $\\pm$ 0.059 $M_{\\odot}$ in the ridge method and 2.007 $\\pm$ 0.071 $M_{\\odot}$ in the edge method"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass, edge method",
+   "value": "2.007",
+   "uncertainty": "0.071",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "0.766 $\\pm$ 0.059 $M_{\\odot}$ in the ridge method and 2.007 $\\pm$ 0.071 $M_{\\odot}$ in the edge method"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted protostellar mass (mean)",
+   "value": "1.312",
+   "uncertainty": "0.044",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "which is 1.312 $\\pm$ 0.044 $M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotation index p, 13CO (ridge / edge)",
+   "value": "1.012 / 0.933",
+   "uncertainty": "0.058 / 0.074",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "The index $p$ is derived as 1.012 $\\pm$ 0.058 in the ridge method and 0.933 $\\pm$ 0.074 in the edge method."
+    }
+   ]
+  },
+  {
+   "quantity": "Keplerian radius range",
+   "value": "18-24",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "The Keplerian radius is expected to be somewhere between 18 and 24 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity",
+   "value": "6.9",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Kinematics",
+     "quote": "we use 6.9 km s$^{-1}$ as the systemic velocity in this paper"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method for line cubes",
+  "Self-calibration solution intervals and masks",
+  "tclean cell size, image size, deconvolver, masks and thresholds",
+  "SLAM fitting settings (PV cut width, thresholds for ridge/edge, outer radius range)",
+  "Details of the two-component SED fit (fitting code, initial values, fixed alpha_free)",
+  "Which VLA flux scale and region definitions were used for central vs entire disk",
+  "Exact velocity channels used for moment maps"
+ ],
+ "missing_for_reproduction": [
+  "Line-free channels / continuum subtraction",
+  "SLAM parameter settings",
+  "SED fit details",
+  "tclean image parameters (cell, size, masks)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and scripts with clear numeric results, but key imaging, SLAM and SED fit settings are deferred to companion papers or unstated.",
+ "rediscovery_reason": "Public eDisk data, public scripts, SLAM public, and numeric results (mass, spectral index, dust mass) available.",
+ "source_card": "cards/2025ApJ...993..120H/sonnet/card.md"
+}

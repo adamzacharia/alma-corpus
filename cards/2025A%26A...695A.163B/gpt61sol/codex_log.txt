@@ -1,0 +1,473 @@
+librator fields instead of one contiguous area."
+        }
+      ]
+    },
+    {
+      "value": "Depletion times approximately constant above z∼2 and increasing toward z=0.",
+      "evidence": [
+        {
+          "loc": "Census of the baryon cycle",
+          "quote": "At redshifts above $z\\sim 2$, we find a relatively constant depletion timescale"
+        },
+        {
+          "loc": "Census of the baryon cycle",
+          "quote": "The depletion timescale increases from $z\\sim 2$ to $z=0$"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Can independent calibrator fields alleviate cosmic variance?",
+      "experiment": "Estimate per-transition cosmic variance with Driver and Keenan prescriptions.",
+      "result": "Cosmic variance below 5%, at least ∼5× lower than comparison surveys.",
+      "finding": "ALMACAL-22 strongly mitigates cosmic variance through independent sightlines.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Cosmic variance",
+          "quote": "ALMACAL$-22$ has the lowest cosmic variance seen to date by at least a factor $\\sim 5\\times$, reaching values lower than 5%."
+        },
+        {
+          "loc": "Cosmic variance",
+          "quote": "The main reason that ALMACAL$-22$ has such low values of cosmic variance is that the survey comprises many independent calibrator fields instead of one contiguous area."
+        }
+      ]
+    },
+    {
+      "hypothesis": "How do CO LF parameters evolve with redshift?",
+      "experiment": "Construct CO LFs and fit Schechter functions with fixed faint-end slope.",
+      "result": "Normalisation decreases; characteristic luminosity increases to z∼2.",
+      "finding": "The CO LF evolves across cosmic time.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We found an evolution of the Schechter parameters of the CO LF with redshift."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The normalisation factor, $\\Phi^{*}_{\\text{CO}}$, decreases with redshift."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "The characteristic luminosity, defined as the knee of the luminosity function, shows an increasing trend from the local Universe to $z\\sim2$"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Does ALMACAL reproduce previous cosmic molecular gas density estimates?",
+      "experiment": "Integrate CO LFs with constant αCO and compare with previous surveys.",
+      "result": "Higher low-redshift estimates and slight tension toward lower density at z≥1.",
+      "finding": "Broad agreement includes redshift-dependent differences.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "The molecular gas mass density reported by ALMACAL$-22$ shows higher values than previous observations in the lower redshift bins ($z\\lesssim1$)."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "It presents a slight tension at higher redshift ($z\\geq1$), where ALMACAL$-22$ finds lower values"
+        },
+        {
+          "loc": "Cosmic variance",
+          "quote": "the ALMACAL results are consistent with previous surveys; however, the uncertainties due to cosmic variance are not displayed."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Are results robust to the model-based transition assignments?",
+      "experiment": "Repeat LF and density estimates assigning the lowest possible J.",
+      "result": "Lowest-J estimates match probabilistic results; uncertainties differ.",
+      "finding": "The paper interprets this agreement as validation of model-based redshift estimates.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Lowest$-J$ possible",
+          "quote": "These estimates match the previous results using the redshift probability calculator built from the semi-analytical model, `SHARK-2`"
+        },
+        {
+          "loc": "Lowest$-J$ possible",
+          "quote": "The main difference is the uncertainty, which is larger for the estimates derived using a probabilistic approach."
+        },
+        {
+          "loc": "Lowest$-J$ possible",
+          "quote": "it is a conservative way to validate the use of models to estimate redshifts based on more complex CO line ratios"
+        }
+      ]
+    },
+    {
+      "hypothesis": "Does the updated molecular gas history preserve earlier baryon-cycle conclusions?",
+      "experiment": "Combine the updated density fit with literature atomic, stellar and SFR density models.",
+      "result": "Density-ratio evolution remains consistent, with smaller molecular gas content.",
+      "finding": "Previous baryon-cycle conclusions remain broadly consistent.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Overall, we report consistency with their claims regarding the evolution of the density ratios, though with smaller molecular gas content"
+        },
+        {
+          "loc": "Census of the baryon cycle",
+          "quote": "At redshifts above $z\\sim 2$, we find a relatively constant depletion timescale"
+        },
+        {
+          "loc": "Census of the baryon cycle",
+          "quote": "The depletion timescale increases from $z\\sim 2$ to $z=0$"
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Use many ALMA calibrator fields to alleviate cosmic variance.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "This paper aims to alleviate the limitation introduced by cosmic variance when estimating the molecular gas mass density by exploiting ALMA calibrator data"
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "SoFiA2 handles numerous cubes with varying noise; probabilistic transition assignments retain redshift ambiguity.",
+      "evidence": [
+        {
+          "loc": "Line search",
+          "quote": "Detecting emission lines in more than $10^3$ cubes with significant noise variations is challenging."
+        },
+        {
+          "loc": "Line search",
+          "quote": "To address this, we use the source-finding algorithm SoFiA2 (cite: westmeierSOFIAAutomatedParallel2021), to identify potential candidates."
+        },
+        {
+          "loc": "Probabilistic approach",
+          "quote": "This method allows us to account for the uncertainty in identifying the exact $J$ transition."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Select sensitivity consistent with theory, reject zero-completeness cubes, and fit only above luminosity limits.",
+      "evidence": [
+        {
+          "loc": "ALMACAL$-22$ and sample selection",
+          "quote": "Only observations with noise levels consistent with theoretical sensitivity were selected."
+        },
+        {
+          "loc": "Completeness",
+          "quote": "Ultimately, we kept 1107 cubes, removing 401 cubes with zero completeness."
+        },
+        {
+          "loc": "Schechter fits",
+          "quote": "We only include bins where the median luminosity exceeds the calculated luminosity limit"
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Threshold finder considered; smooth and clip selected.",
+      "evidence": [
+        {
+          "loc": "Source searching algorithm",
+          "quote": "offering two different algorithms: a simple threshold finder and the smooth and clip (S+C) finder."
+        },
+        {
+          "loc": "Source searching algorithm",
+          "quote": "We chose the smooth and clip (S+C) algorithm to identify sources"
+        }
+      ]
+    },
+    {
+      "value": "Use all plausible transition probabilities rather than only the highest-probability transition.",
+      "evidence": [
+        {
+          "loc": "Probabilistic approach",
+          "quote": "Instead of simply selecting the $J-$transition with the highest probability for each detection, we adopted a more comprehensive approach."
+        },
+        {
+          "loc": "Probabilistic approach",
+          "quote": "We included all plausible $J$ transitions, each weighted according to the probabilities evaluated by `SHARK-2`."
+        }
+      ]
+    },
+    {
+      "value": "Lowest-J assignments tested as an alternative.",
+      "evidence": [
+        {
+          "loc": "Lowest$-J$ possible",
+          "quote": "We now explore the conservative approach of assuming the lowest$-J$ CO transition detectable for all sources."
+        }
+      ]
+    },
+    {
+      "value": "Unreliable sparse-photometry redshifts rejected in favour of the probabilistic approach.",
+      "evidence": [
+        {
+          "loc": "Existing spectroscopic and photometric data",
+          "quote": "For the remaining objects, there are fewer than five photometric bands available, resulting in broad photo$-z$ probability distributions that cannot reliably estimate the redshift or assign a redshift probability greater than $10\\%$."
+        },
+        {
+          "loc": "Existing spectroscopic and photometric data",
+          "quote": "For these cases, we keep the redshift probability described earlier"
+        }
+      ]
+    },
+    {
+      "value": "[C ii] contamination tested; maximum two interlopers do not change overall results.",
+      "evidence": [
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "We also explored the possibility that we are detecting other lines than CO, particularly the bright \\[C ii\\] emission line"
+        },
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "even if two of them in the high-redshift bin were removed, it would not affect the overall results, as the values in that bin are lower limits."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Single-line detections leave most redshifts probabilistic.",
+      "evidence": [
+        {
+          "loc": "Redshift estimation",
+          "quote": "Ultimately, we did not identify any potential transitions in these fields, so we are reliant on detections of one emission line."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "We emphasise the need for additional telescope time to confirm the redshift of our sources"
+        }
+      ]
+    },
+    {
+      "value": "Poisson errors and high-J transition misclassification affect sparse bright-end bins.",
+      "evidence": [
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "One significant factor is the Poisson error, particularly in bins with very few objects ($\\lesssim 5$)"
+        },
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "the redshift uncertainties, particularly in converting high$-J$ CO transitions into CO(1–0), could lead to the misclassification of transitions."
+        }
+      ]
+    },
+    {
+      "value": "Uneven sensitivity and incomplete understanding of completeness/reliability uncertainties.",
+      "evidence": [
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "Another uncertainty stems from the uneven sensitivity of the data cubes."
+        },
+        {
+          "loc": "Possible biases and uncertainties",
+          "quote": "we still allow for the possibility that some uncertainties are not fully understood."
+        }
+      ]
+    },
+    {
+      "value": "Faint-end data insufficient to fit slope; fixed slope may be inappropriate at low redshift.",
+      "evidence": [
+        {
+          "loc": "Schechter fits",
+          "quote": "due to the limited number of data points at the faint end, we adopted a fixed slope at $\\alpha = -0.2$"
+        },
+        {
+          "loc": "Comparison with other observations",
+          "quote": "the assumption of a fixed faint slope at $\\alpha =-0.2$ may not be appropriate"
+        }
+      ]
+    },
+    {
+      "value": "Highest-redshift Schechter fit weakly constrained; molecular gas density is a lower limit.",
+      "evidence": [
+        {
+          "loc": "Schechter fits",
+          "quote": "The highest redshift panel contains only one data point above the luminosity limit with significant statistical weight."
+        },
+        {
+          "loc": "Comparison with other observations",
+          "quote": "none of the individual measurements is completely above the luminosity limit, so we provide a lower limit."
+        }
+      ]
+    },
+    {
+      "value": "Broad profiles may be unresolved blends.",
+      "evidence": [
+        {
+          "loc": "Final catalogue",
+          "quote": "there are a few sources with a FWHM $\\gtrsim 1000$ km/s, such as J0334-4008.4, most likely explained by blended sources for which the achieved resolution is insufficient to resolve them."
+        }
+      ]
+    },
+    {
+      "value": "Driver cosmic variance prescription does not account for luminosity-moment variance.",
+      "evidence": [
+        {
+          "loc": "Cosmic variance",
+          "quote": "it does not take into account the variance in luminosity moments since they use galaxies in a restricted range of magnitude at $z\\sim 0$."
+        }
+      ]
+    },
+    {
+      "value": "Lowest-J method may overestimate molecular gas content.",
+      "evidence": [
+        {
+          "loc": "Lowest$-J$ possible",
+          "quote": "As a result, we may be over-estimating the molecular gas content through this approach."
+        }
+      ]
+    },
+    {
+      "value": "Constant αCO changes all inferred masses and densities linearly.",
+      "evidence": [
+        {
+          "loc": "Molecular gas mass density",
+          "quote": "A different constant value affects our results linearly."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Agreement with SHARK-2 predictions is not a fully independent test because SHARK-2 also supplies most transition probabilities.",
+    "Resolve the stated pruning RMS <0.01 mJy/channel versus mean cube sensitivity ∼0.78 mJy/channel before implementing selection.",
+    "Distinguish 401 initial fields, 299 independent survey sightlines and 46 fields containing detections.",
+    "Several appendix entries have S/N below the stated >4 catalogue cut; source identifiers also repeat.",
+    "The molecular-density integration phrase 'up to the luminosity limit' needs explicit numerical bounds and direction.",
+    "Table 2 luminosity units conflict with the positive pc² power used in the luminosity equation; retain printed values and seek clarification.",
+    "The supplied CO(6–5) rest frequency and excitation-factor convention require verification within the source materials before encoding an answer key.",
+    "The highest-redshift fitted parameters should not be treated as comparably constrained to lower-redshift bins.",
+    "The <5% cosmic variance claim depends on field-independence assumptions and the adopted prescriptions."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "No ALMA project codes or exact measurement-set manifest in the supplied paper.",
+    "No explicit public-access statement or retrieval location for the final cubes, correction grids or analysis products.",
+    "No released analysis code or complete software environment stated.",
+    "Detailed pipeline and sample definitions are inherited from earlier ALMACAL papers.",
+    "Missing full SoFiA2 configuration, injection realizations and completeness/fidelity products.",
+    "Missing numerical SHARK-2 prior grids and counterpart/calibrator redshift inputs.",
+    "Missing excitation-factor uncertainties, Monte Carlo distributions and random seeds.",
+    "Missing numerical accessible-volume grids and redshift-dependent luminosity integration limits.",
+    "Missing fit likelihoods, optimizer details and parameter bounds.",
+    "Source positions and adopted source-by-source redshift probabilities are absent from the supplied catalogue."
+  ],
+  "estimated_data_volume_inferred": "Large multi-field cube dataset; final subset size cannot be estimated reliably. The >30 TB figure describes the full ALMACAL survey, not the analyzed subset.",
+  "score_inferred": 5,
+  "score_reason": "Moderate reproducibility: substantial imaging, detection and statistical methodology plus numeric answer keys, but no exact data manifest, executable configuration, prior grids or analysis code.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Numeric results are available, but the supplied text does not explicitly establish public access to the analyzed products and leaves essential recipe inputs unspecified.",
+  "methods_papers": [
+    {
+      "citation": "(cite: oteoALMACALExploitingALMA2016)",
+      "why": "ALMACAL calibration and imaging pipeline."
+    },
+    {
+      "citation": "(cite: casateamCASACommonAstronomy2022)",
+      "why": "CASA visibility reweighting and imaging."
+    },
+    {
+      "citation": "(cite: westmeierSOFIAAutomatedParallel2021)",
+      "why": "SoFiA2 source finder."
+    },
+    {
+      "citation": "(cite: serraATLAS3DProjectXIII2012)",
+      "why": "Smooth and clip algorithm."
+    },
+    {
+      "citation": "(cite: serraSOFIAFlexibleSource2015)",
+      "why": "SoFiA predecessor."
+    },
+    {
+      "citation": "(cite: brammerEAZYFastPublic2008)",
+      "why": "EAZY photometric redshift fitting."
+    },
+    {
+      "citation": "(cite: solomonMolecularInterstellarMedium1997)",
+      "why": "CO flux-to-luminosity conversion."
+    },
+    {
+      "citation": "(cite: boogaardALMASpectroscopicSurvey2020)",
+      "why": "Empirical high-J to CO(1–0) conversion factors."
+    },
+    {
+      "citation": "(cite: decarliALMASPECTROSCOPICSURVEY2016)",
+      "why": "Shifted independent luminosity bin methodology."
+    },
+    {
+      "citation": "(cite: gehrelsConfidenceLimitsSmall1986)",
+      "why": "Small-number Poisson confidence intervals."
+    },
+    {
+      "citation": "(cite: schechterAnalyticExpressionLuminosity1976)",
+      "why": "Schechter luminosity function."
+    },
+    {
+      "citation": "(cite: boogaardNOEMAMolecularLine2023)",
+      "why": "Fixed faint-end slope approach."
+    },
+    {
+      "citation": "(cite: madauCosmicStarFormationHistory2014)",
+      "why": "Functional form for molecular gas density evolution."
+    },
+    {
+      "citation": "(cite: walterEvolutionBaryonsAssociated2020)",
+      "why": "Density evolution fit, compiled CO observations and baryon-cycle models."
+    },
+    {
+      "citation": "(cite: driverQuantifyingCosmicVariance2010)",
+      "why": "Cosmic variance formula adapted to conical surveys."
+    },
+    {
+      "citation": "(cite: keenanBiasesCosmicVariance2020)",
+      "why": "Mean-brightness-temperature cosmic variance cross-check."
+    },
+    {
+      "citation": "(cite: lagosQuenchingMassiveGalaxies2024)",
+      "why": "SHARK-2 galaxy model used for transition probabilities."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "(cite: bolloALMACALXIIData2024a)",
+      "why": "ALMACAL-22 data release, pruning and processing details."
+    },
+    {
+      "citation": "(cite: hamanowiczALMACALVIIIPilot2022)",
+      "why": "ALMACAL-CO pilot; inherited statistical, classification, redshift and volume methods."
+    },
+    {
+      "citation": "(cite: zwaanALMACALSurveyingUniverse2022)",
+      "why": "ALMACAL survey description."
+    },
+    {
+      "citation": "(cite: bonatoALMACALIVCatalogue2018a)",
+      "why": "Calibrator catalogue underlying redshift checks."
+    },
+    {
+      "citation": "Weng et al., in preparation",
+      "why": "Calibrator classifications and redshift information."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "ALMACAL-22",
+    "ALMACAL-CO",
+    "ASPECS",
+    "COLDz",
+    "PHIBSS",
+    "PHIBSS2",
+    "HDFN",
+    "VLASPECS",
+    "xCOLD GASS",
+    "A3COSMOS",
+    "REBELS"
+  ]
+}
+tokens used
+92,213

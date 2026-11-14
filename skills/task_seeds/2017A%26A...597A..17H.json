@@ -1,0 +1,240 @@
+{
+ "bibcode": "2017A&A...597A..17H",
+ "title": "A search for pre- and proto-brown dwarfs in the dark cloud Barnard 30 with ALMA",
+ "year": 2017,
+ "doi": "10.1051/0004-6361/201628510",
+ "arxiv_id": "1712.06400",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "What is the nature of the 30 APEX/LABOCA sub-mm cores in Barnard 30, and are some of them proto- or pre-brown dwarfs, formed by which mechanism?",
+ "alma_project_codes": [
+  "2012.0.00542.S"
+ ],
+ "data": {
+  "bands": "Band 7 (880 um, avg 340.8 GHz)",
+  "arrays": "34 antennas (north), 32 and 33 (south), 12 m",
+  "angular_resolution": "North 0.93\"x0.50\" (PA=111); South 0.95\"x0.48\" (PA=-63.5)",
+  "sensitivity": "continuum rms 0.12-0.26 mJy/beam; ~0.13 mJy average"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "LABOCA source catalog, fluxes, sizes, and ancillary multiwavelength photometry/limiting magnitudes",
+    "evidence": [
+     {
+      "loc": "2.3 Complementary data",
+      "quote": "The data are fully described in BGH16."
+     }
+    ]
+   },
+   "citation": "Barrado2016 (BGH16)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity tables used for kappa",
+    "evidence": [
+     {
+      "loc": "4.1 ALMA detections",
+      "quote": "interpolating from the tables of (cite: Ossenkopf1994) for the case of thin ice mantles and a density of 10$^6$ cm$^{-3}$."
+     }
+    ]
+   },
+   "citation": "Ossenkopf1994"
+  },
+  {
+   "what": {
+    "value": "Planck dust temperature maps (17-21 K)",
+    "evidence": [
+     {
+      "loc": "4.1 ALMA detections",
+      "quote": "show temperature values between 17 and 21 K in the B30 region"
+     }
+    ]
+   },
+   "citation": "Planck2014"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and CO(3-2) and detect sources",
+   "method": "CLEAN imaging with Briggs robust 2, primary-beam corrected; detections in 5 of 30 pointings, all unresolved",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive masses from continuum",
+   "method": "Optically thin dust emission mass M = S D^2/(B(Td) kappa)",
+   "software": [],
+   "key_parameters": [
+    "Td = 15 K; kappa = 0.01715 cm2/g at 340.8 GHz; D = 400 pc"
+   ],
+   "assumptions": [
+    "conservative Td of 15 K; gas-to-dust 100; thin ice mantles at 1e6 cm-3; uncertainty factor of four"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Find IR counterparts and classify via SEDs",
+   "method": "1\" search radius counterpart match; SED classification with IRAC colors, Lbol and Tbol; BT-SETTL for LB14 star mass",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Test gravitational stability and collapse of the three pre-BD core candidates",
+   "method": "Compare LABOCA densities with Bonnor-Ebert critical density; compare ALMA masses with expectation from r^-2 profile inside the ALMA beam",
+   "software": [],
+   "key_parameters": [
+    "T = 15 K; ALMA beam radius 140 AU; core formation efficiency ~30%"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA detections",
+   "value": "5 of 30 (17%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1 ALMA detection rate",
+     "quote": "we have only detected 5 out of 30 sources, corresponding to a detection rate of 17%."
+    }
+   ]
+  },
+  {
+   "quantity": "LB14 flux density",
+   "value": "44.0",
+   "uncertainty": "±0.5 (2-sigma)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1.1 LB14",
+     "quote": "35$\\pm$14 mJy versus 44.0$\\pm$0.5 mJy, assuming 2-$\\sigma$ errors"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA masses of detections (15 K)",
+   "value": "0.9 to 67",
+   "uncertainty": "factor of four",
+   "units": "M_Jup",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "with estimated masses between 0.9 and 67 M$_{\\rm Jup}$"
+    }
+   ]
+  },
+  {
+   "quantity": "LB14 disk mass",
+   "value": "43 (20 K), 24 (30 K)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1.1 LB14",
+     "quote": "We estimate a disk mass of 43 M$_{\\rm Jup}$ for 20 K, or 24 M$_{\\rm Jup}$ for 30 K."
+    }
+   ]
+  },
+  {
+   "quantity": "LB19 Lbol and Tbol",
+   "value": "1.2 Lsun; ~235 K",
+   "uncertainty": "not stated",
+   "units": "Lsun; K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.2 LB19",
+     "quote": "we obtain a $L_{\\rm bol}$ of 1.2 $L_{\\odot}$ and a temperature of $T_{\\rm bol}$ $\\sim$ 235 K"
+    }
+   ]
+  },
+  {
+   "quantity": "LB08 Lbol limit",
+   "value": "<0.08",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.3 Nature of ALMA detections",
+     "quote": "We estimate L$_{bol}$ $<$0.08 L$_{\\odot}$ and T$_{bol}$ $>$ 54 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "LB31 Lbol limit",
+   "value": "<0.05",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5.3 Nature of ALMA detections",
+     "quote": "we can estimate L$_{bol}$ $<$0.05 L$_{\\odot}$ and T$_{bol}$ $>$ 21 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Final central-object masses (30% of LABOCA + ALMA)",
+   "value": "~41 (LB08), ~17 (LB10), ~26 (LB31)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 Nature of ALMA detections",
+     "quote": "we obtain $\\sim$41 M$_{\\rm Jup}$ (LB08), $\\sim$17 M$_{\\rm Jup}$ (LB10), and $\\sim$26 M$_{\\rm Jup}$ (LB31)"
+    }
+   ]
+  },
+  {
+   "quantity": "Expected ALMA-beam masses for r^-2 profile",
+   "value": "~3, 1, 2 (LB08, LB10, LB31)",
+   "uncertainty": "factor of 4",
+   "units": "M_Jup",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.3 Nature of ALMA detections",
+     "quote": "The estimated masses are $\\sim$3, 1, and 2 M$_{\\rm Jup}$ for LB08, LB10 and LB31, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Number of clean iterations, thresholds, masks, cell and image size",
+  "Self-calibration solution intervals and number of rounds",
+  "Continuum channel selection and line-free channels (CO contamination)",
+  "How flux densities and uncertainties were measured (point-source fit vs peak)",
+  "Details of the ALMA-missing-flux calculation (LABOCA flux scaling)",
+  "Moment map and channel settings for CO",
+  "Bolometric luminosity/temperature SED integration method"
+ ],
+ "missing_for_reproduction": [
+  "CLEAN parameters and masks",
+  "self-calibration details",
+  "flux extraction method",
+  "SED integration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data identifiable and recipe simple (mass formula), but imaging and flux measurement details missing.",
+ "rediscovery_reason": "Archive data, simple recipe, numeric fluxes and masses in tables.",
+ "source_card": "cards/2017A%26A...597A..17H/sonnet/card.md"
+}

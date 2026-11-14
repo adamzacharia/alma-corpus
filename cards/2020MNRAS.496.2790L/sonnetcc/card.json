@@ -1,0 +1,1790 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020MNRAS.496.2790L",
+  "title": "ATOMS: ALMA Three-millimeter Observations of Massive Star-forming regions - I. Survey description and a first look at G9.62+0.19",
+  "year": 2020,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Liu, Tie",
+  "n_authors": 45,
+  "arxiv_id": "2006.01549",
+  "doi": "10.1093/mnras/staa1577",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.00685.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "has observed 146 active star forming regions with ALMA Band 3"
+   },
+   {
+    "loc": "abstract",
+    "quote": "the observations, data analysis, and example science of the"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "G9.62+0.19 (I18032-2032, ATOMS source 108)",
+     "coordinates": {
+      "value": "RA 18:06:14.99, Dec -20:31:35.4 (sample table, ID 108)",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "which is an active high-mass star forming region located at a distance of 5.2$_{-0.6}^{+0.6}$ kpc (cite: san09)"
+       },
+       {
+        "loc": "Table of ATOMS sample",
+        "quote": "18:06:14.99 | -20:31:35.4"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "5.2 (+0.6/-0.6) kpc",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "which is an active high-mass star forming region located at a distance of 5.2$_{-0.6}^{+0.6}$ kpc (cite: san09)"
+       },
+       {
+        "loc": "Table of ATOMS sample",
+        "quote": "18:06:14.99 | -20:31:35.4"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: san09)",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "which is an active high-mass star forming region located at a distance of 5.2$_{-0.6}^{+0.6}$ kpc (cite: san09)"
+       },
+       {
+        "loc": "Table of ATOMS sample",
+        "quote": "18:06:14.99 | -20:31:35.4"
+       }
+      ]
+     }
+    },
+    {
+     "name": "ATOMS sample of 146 massive star-forming clumps",
+     "coordinates": {
+      "value": "per-source coordinates in the sample table",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The distances of the sample clouds range from 0.4 kpc to 13.0 kpc with a mean value of 4.5 kpc."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "0.4 to 13.0 kpc, mean 4.5 kpc",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The distances of the sample clouds range from 0.4 kpc to 13.0 kpc with a mean value of 4.5 kpc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "parameters adopted from (cite: Urquhart2018) for 122 clumps and (cite: Faundez2004) for the rest",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The distances of the sample clouds range from 0.4 kpc to 13.0 kpc with a mean value of 4.5 kpc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Survey paper: map the spatial distribution of dense gas tracers in Galactic massive clumps, study stellar feedback and characterize filaments; G9.62+0.19 used as a case study",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "aiming to systematically investigate the spatial distribution of various dense gas tracers in a large sample of Galactic massive clumps, to study the roles of stellar feedback in star formation, and to characterize filamentary structures inside massive clumps"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00685.S",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "with band 3 (Project ID: 2019.1.00685.S; PI: Tie Liu)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (3 mm), dual polarization",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The observations employed the Band 3 receivers in dual-polarization mode."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "8 SPWs covering 11 lines: SPWs 1-6 are 58.59 MHz wide (0.2-0.4 km/s resolution), SPWs 7-8 are 1875 MHz wide (~3 km/s)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "Eight spectral windows (SPWs) were configured to cover 11 commonly-used lines including the dense gas tracers"
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "Two wide SPWs, each one having 1875 MHz bandwidth"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "H13CN",
+     "transition": "1-0",
+     "rest_frequency": "86.339918 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "H$^{13}$CN | 1-0 | 86.339918"
+      }
+     ]
+    },
+    {
+     "species": "H13CO+",
+     "transition": "1-0",
+     "rest_frequency": "86.754288 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "H$^{13}$CO$^+$ | 1-0 | 86.754288"
+      }
+     ]
+    },
+    {
+     "species": "CCH",
+     "transition": "1-0",
+     "rest_frequency": "87.316898 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "CCH | 1-0 | 87.316898"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "2-1",
+     "rest_frequency": "86.84696 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "SiO | 2-1 | 86.84696"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "1-0",
+     "rest_frequency": "88.631847 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "HCN | 1-0 | 88.631847"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "1-0",
+     "rest_frequency": "89.188526 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "HCO$^+$ | 1-0 | 89.188526"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "2(1,1)-1(1,0)A",
+     "rest_frequency": "97.582798 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "CH$_3$OH | 2(1,1)-1(1,0)A | 97.582798"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "2-1",
+     "rest_frequency": "97.980953 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "CS | 2-1 | 97.980953"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "3(2)-2(1)",
+     "rest_frequency": "99.29987 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "SO | 3(2)-2(1) | 99.29987"
+      }
+     ]
+    },
+    {
+     "species": "H recombination line",
+     "transition": "H40alpha",
+     "rest_frequency": "99.022952 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "H$_{40\\alpha}$ | 99.022952"
+      }
+     ]
+    },
+    {
+     "species": "HC3N",
+     "transition": "11-10",
+     "rest_frequency": "100.07639 GHz",
+     "evidence": [
+      {
+       "loc": "Table spws",
+       "quote": "HC$_3$N | 11-10 | 100.07639"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "two wide SPWs of 1875 MHz each used for continuum and line scan",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "are used for continuum emission and line scan survey"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "ACA (7 m) and 12-m array",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "with both the Atacama Compact 7 m Array (ACA; Morita Array) and the 12-m array"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "12-m array C43-2 or C43-3",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "the 12-m array (C43-2 or C43-3 configurations)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "12-m ~1.2''-1.9'' (G9.62+0.19 continuum beam 1.56''x1.38''); ACA ~13.1''-13.8''",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The angular resolution and maximum recovering angular scale for the 12-m array observations are $\\sim1.2\\ensuremath{''}-1.9\\ensuremath{''}$ and $\\sim14.5\\ensuremath{''}-20.3\\ensuremath{''}$, respectively."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "12-m ~14.5''-20.3'' (sensitive to scales smaller than ~20''); ACA ~53.8''-76.2'' (smaller than ~60'')",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "These ACA and 12-m array observations are sensitive to angular scales smaller than $\\sim60\\ensuremath{''}$ and $\\sim20\\ensuremath{''}$, respectively."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "12-m 3.7 to 9.6 mJy/beam per 0.122 MHz channel across the survey; G9.62+0.19 continuum 1 sigma 0.2 mJy (12-m) and 4 mJy (ACA)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The obtained sensitivity in 12-m array observations ranges from 3.7 to 9.6 mJy beam per 0.122 MHz channel."
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "reaches a 1$\\sigma$ rms noise of 0.2 mJy in a synthesized beam of 1.56$\\ensuremath{''}\\times1.38\\ensuremath{''}$ (P.A.=87.62$\\ensuremath{^\\circ}$)"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "typical 12-m ~3 minutes, typical ACA ~8 minutes per source",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The typical 12-m array time on source is $\\sim$ 3 minutes, while typical ACA observing time per source is $\\sim$ 8 minutes."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "late September to mid November 2019; G9.62+0.19: ACA 1 and 13 October 2019 (two executions), 12-m 31 October 2019",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "were conducted from late September to mid November 2019"
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "were conducted on the 1st and 13th October, 2019, with two executions."
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "The 12-m array observations of G9.62+0.19 were conducted on the 31st October, 2019."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Own project, PI Tie Liu (single-pointing observations)",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "with band 3 (Project ID: 2019.1.00685.S; PI: Tie Liu)"
+     },
+     {
+      "loc": "ALMA Observations",
+      "quote": "We conducted single-pointing observations with ALMA."
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Parent sample: CS J=2-1 survey of UC HII region candidates (SEST)",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The ATOMS sample of 146 sources were selected from the CS $J=2-1$ survey of (cite: Bronfman1996)"
+       }
+      ]
+     },
+     "citation": "(cite: Bronfman1996)"
+    },
+    {
+     "what": {
+      "value": "Basic clump parameters (distance, T_dust, L_bol, M_clump, radius) for 122 clumps with ATLASGAL and HiGAL counterparts",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The basic parameters for these 122 clumps are adopted from (cite: Urquhart2018)."
+       }
+      ]
+     },
+     "citation": "(cite: Urquhart2018)"
+    },
+    {
+     "what": {
+      "value": "Basic clump parameters for the remaining clumps",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "The basic parameters for the remaining clumps are adopted from (cite: Faundez2004)."
+       }
+      ]
+     },
+     "citation": "(cite: Faundez2004)"
+    },
+    {
+     "what": {
+      "value": "Distance to G9.62+0.19 of 5.2 kpc",
+      "evidence": [
+       {
+        "loc": "The sample of ATOMS",
+        "quote": "located at a distance of 5.2$_{-0.6}^{+0.6}$ kpc (cite: san09)"
+       }
+      ]
+     },
+     "citation": "(cite: san09)"
+    },
+    {
+     "what": {
+      "value": "Critical density and effective excitation density of the lines",
+      "evidence": [
+       {
+        "loc": "Table spws",
+        "quote": "The critical density and effective excitation density are from (cite: Shirley2015)."
+       }
+      ]
+     },
+     "citation": "(cite: Shirley2015)"
+    },
+    {
+     "what": {
+      "value": "Electron temperature ~6760 K for the free-free estimate",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "An electron temperature of $\\sim$6760 K is adopted, which is derived from the electron temperature gradient in the Galactic disk (cite: Quireza2006)."
+       }
+      ]
+     },
+     "citation": "(cite: Quireza2006)"
+    },
+    {
+     "what": {
+      "value": "12 dense cores in G9.62+0.19 with total mass ~400 Msun at average dust temperature 35 K",
+      "evidence": [
+       {
+        "loc": "Fraction of line fluxes from filaments and cores",
+        "quote": "(cite: Liu2017) identified 12 dense cores in G9.62+0.19."
+       },
+       {
+        "loc": "Fraction of line fluxes from filaments and cores",
+        "quote": "assuming an average dust temperature of 35 K (cite: Liu2017)"
+       }
+      ]
+     },
+     "citation": "(cite: Liu2017)"
+    },
+    {
+     "what": {
+      "value": "Median L'mol-to-M_dense conversion factors for CS 2-1, CS 7-6, HCN 1-0, HCN 3-2 (20, 39, 16, 19 Msun per K km/s pc2)",
+      "evidence": [
+       {
+        "loc": "Fraction of line fluxes from filaments and cores",
+        "quote": "found that the median conversion factors from line luminosity to dense gas masses"
+       }
+      ]
+     },
+     "citation": "(cite: Wu2010)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "CASA 5.6",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Calibration and imaging were carried out using the CASA software package version 5.6 (cite: McMullin2007)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.27'' pixel size (as used in the FellWalker source extraction)",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "The minimum number of contiguous pixels (pixel size=0.27"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "moment maps made with a 3 sigma cutoff; line integration over 1.5 to 6.5 km/s",
+     "evidence": [
+      {
+       "loc": "Moment maps in 12-m array observations",
+       "quote": "The moment maps were constructed from the data after imposing a cutoff of 3$\\sigma$."
+      },
+      {
+       "loc": "Moment maps in 12-m array observations",
+       "quote": "we integrate their intensity in the same velocity interval that is from 1.5 to 6.5 km s$^{-1}$ above a threshold of 3$\\sigma$."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "continuum visibilities built from line-free channels; channel ranges not given",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "We construct continuum visibility data using the line-free spectral channels for G9.62+0.19."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "ACA and 12-m calibrated and imaged separately, not combined for the science case study; a feather test (HCO+, H13CO+) was shown in Figure 4",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The ACA data and 12-m array data were calibrated and imaged separately."
+      },
+      {
+       "loc": "ALMA Observations",
+       "quote": "we simply combine the 12-m array data and ACA data of G9.62+0.19 in Fourier space with the CASA task"
+      },
+      {
+       "loc": "ALMA Observations",
+       "quote": "Hence, in this paper, the ACA data and 12-m array data were not combined for the case study of G9.62+0.19"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "maps smoothed and re-gridded to a common resolution and pixel size before PCA",
+     "evidence": [
+      {
+       "loc": "Principal component analysis",
+       "quote": "These maps are firstly smoothed and re-gridded to ensure that they have the same resolution and pixel size."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "12-m continuum 1.56''x1.38'' (PA 87.62 deg); lines 1.9''x1.7'' (SPWs 1-6) and 1.6''x1.4'' (SPWs 7-8); ACA continuum 17.23''x9.46''",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The typical synthesized beam is 1.9$\\ensuremath{''}\\times1.7\\ensuremath{''}$ for lines at lower band (SPWs 1-6)"
+      },
+      {
+       "loc": "ALMA Observations",
+       "quote": "reaches a 1$\\sigma$ rms noise of 0.2 mJy in a synthesized beam of 1.56$\\ensuremath{''}\\times1.38\\ensuremath{''}$ (P.A.=87.62$\\ensuremath{^\\circ}$)"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "12-m: continuum 0.2 mJy; lines ~8 mJy/beam per 0.122 MHz channel (SPWs 1-4), ~10 mJy/beam (SPWs 5-6), ~3 mJy/beam (wide SPWs); ACA continuum 4 mJy",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The 1$\\sigma$ rms noise is about 8 mJy beam$^{-1}$ at SPWs 1-4 per 0.122 MHz channel."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Properties of the 3 mm continuum sources in G9.62+0.19 (not re-derived)",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "Since the properties of all the continuum sources have been well discussed in (cite: Liu2017), we will not derive any other parameters from the 3 mm continuum emission in this work."
+       }
+      ]
+     },
+     "from_reference": "(cite: Liu2017)"
+    },
+    {
+     "what": {
+      "value": "Source extraction algorithm (FellWalker in Starlink CUPID)",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "we apply the FellWalker algorithm in the Starlink CUPID package (cite: Berry2007; Berry2015), for source extraction"
+       }
+      ]
+     },
+     "from_reference": "(cite: Berry2007; Berry2015)"
+    },
+    {
+     "what": {
+      "value": "Minimum core size definition of half a synthesized beam",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "which was used to define the smallest structures, i.e., \"cores\" (cite: Sanhueza2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sanhueza2019)"
+    },
+    {
+     "what": {
+      "value": "Free-free contribution from line-to-continuum ratio of the recombination line",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "by deriving the line-to-continuum intensity ratio (cite: Condon2016; Liu2019)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Condon2016; Liu2019)"
+    },
+    {
+     "what": {
+      "value": "PCA procedure",
+      "evidence": [
+       {
+        "loc": "Principal component analysis",
+        "quote": "following a provider similar to that adopted in these previous works"
+       }
+      ]
+     },
+     "from_reference": "(cite: Lo2009; Jones2012; Jones2013; Spezzano2017; Nagy2019)"
+    },
+    {
+     "what": {
+      "value": "HOG analysis procedure and definitions of r, V and AM",
+      "evidence": [
+       {
+        "loc": "Histogram of oriented gradients analysis",
+        "quote": "we performed a HOGs analysis on the integrated intensity maps of various gas tracers following the procedure in (cite: Soler2019)"
+       },
+       {
+        "loc": "Histogram of oriented gradients analysis",
+        "quote": "The definitions of these parameters are given in (cite: Soler2019)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Soler2019)"
+    },
+    {
+     "what": {
+      "value": "Conversion of line flux to line luminosity",
+      "evidence": [
+       {
+        "loc": "Fraction of line fluxes from filaments and cores",
+        "quote": "We can convert the total flux densities of these lines into their line luminosity following (cite: Solomon1997)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Solomon1997)"
+    },
+    {
+     "what": {
+      "value": "Proper ACA plus 12-m data combination deferred to a later paper",
+      "evidence": [
+       {
+        "loc": "ALMA Observations",
+        "quote": "We will more properly combine the ACA data and 12-m array data in future studies and discuss the data combination issue in a forthcoming paper (Wang et al. 2020, in preparation)."
+       }
+      ]
+     },
+     "from_reference": "Wang et al. 2020, in preparation"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA calibration route (pipeline vs manual) and pipeline version; calibrators and flux-scale uncertainty",
+    "tclean parameters: weighting and robust, deconvolver, niter and threshold, cell and image size, masking, uv taper",
+    "Which channels were considered line-free for the continuum and how the line cubes were continuum subtracted",
+    "Channel width and velocity resolution of the line cubes actually imaged, and primary-beam correction",
+    "Whether ACA data were imaged with the same parameters as the 12-m data and how the ACA 2D Gaussian fits were bounded",
+    "How the integrated-intensity maps were smoothed and re-gridded for PCA and HOG (common beam, pixel size, regions, noise handling), and the HOG kernel/gradient settings",
+    "FellWalker configuration beyond the 3 sigma threshold and 12-pixel minimum (e.g. noise estimate, merging parameters)",
+    "Spectral extraction apertures for the H40alpha and SiO spectra and the Gaussian-fit initial guesses",
+    "Exact free-free formula (line-to-continuum ratio equation, line frequency, helium abundance) used for Table continuumpara",
+    "Sky region or polygon used for the filament mask (1% of peak 3 mm contour) and how total fluxes were summed"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image ACA and 12-m data separately",
+    "method": {
+     "value": "Calibrated and imaged separately in CASA; continuum visibilities built from line-free channels; line cubes imaged for SPWs 1-8",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The ACA data and 12-m array data were calibrated and imaged separately."
+      },
+      {
+       "loc": "ALMA Observations",
+       "quote": "We construct continuum visibility data using the line-free spectral channels for G9.62+0.19."
+      }
+     ]
+    },
+    "software": [
+     "CASA 5.6"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Test flux recovery of 12-m data versus ACA and a combined image",
+    "method": {
+     "value": "Feathered 12-m and ACA data of G9.62+0.19 for HCO+ and H13CO+ and compared spectra and integrated maps",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "we simply combine the 12-m array data and ACA data of G9.62+0.19 in Fourier space with the CASA task"
+      }
+     ]
+    },
+    "software": [
+     "CASA feather"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "12-m alone recovers more than 90% of HCO+ and H13CO+ flux; integrated maps nearly identical to combined",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "We found that 12-m array data alone has recovered more than 90% of the flux in both H$^{13}$CO$^{+}$ and HCO$^{+}$ emission."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Extract 3 mm continuum cores",
+    "method": {
+     "value": "FellWalker clump finding on the 3 mm continuum, then 2D Gaussian fit with beam deconvolution",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "The detected sources were fitted with a 2D Gaussian profile and de-convolved with the beam size."
+      }
+     ]
+    },
+    "software": [
+     "Starlink CUPID FellWalker"
+    ],
+    "key_parameters": [
+     {
+      "value": "detection threshold 3 sigma",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "Source extraction was conducted in regions above a threshold of 3$\\sigma$."
+       }
+      ]
+     },
+     {
+      "value": "minimum 12 contiguous pixels (half the synthesized beam)",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "was set at 12, equaling to those contained in half of the synthesized beam"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian profile fitted to detected sources",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "The detected sources were fitted with a 2D Gaussian profile and de-convolved with the beam size."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested larger minimum pixel numbers 16 and 25; results unchanged",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "We also tested FellWalker with larger minimum number (16 and 25) of contiguous pixels and found that the results were not changed."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate free-free contribution to the 3 mm continuum",
+    "method": {
+     "value": "Fitted H40alpha spectra with Gaussians and used the line-to-continuum ratio to estimate free-free emission for B, MM1/C, MM11/D",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "radio recombination line (RRL) to estimate the contribution of free-free emission in continuum by deriving the line-to-continuum intensity ratio"
+      },
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "The spectra were fitted with gaussian profiles"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Electron temperature ~6760 K from the Galactic-disk gradient",
+      "evidence": [
+       {
+        "loc": "Filaments and dense cores",
+        "quote": "An electron temperature of $\\sim$6760 K is adopted, which is derived from the electron temperature gradient in the Galactic disk (cite: Quireza2006)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian profiles to source-averaged H40alpha spectra",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "The spectra were fitted with gaussian profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with earlier work that suggested free-free dominance; no independent cm-wave check",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "is dominated by free-free emission, as suggested in previous works"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit ACA clump emission and make 12-m moment maps",
+    "method": {
+     "value": "2D Gaussian fits to ACA integrated-intensity maps within the 20% contour; 12-m moment 0, 1 and 2 maps over 1.5-6.5 km/s with 3 sigma cutoff",
+     "evidence": [
+      {
+       "loc": "Gas clumps in ACA observations of G9.62+0.19",
+       "quote": "We performed 2D Gaussian fitting in the gas emission regions bounded by the 20% contour of their peak values."
+      },
+      {
+       "loc": "Moment maps in 12-m array observations",
+       "quote": "The moment maps were constructed from the data after imposing a cutoff of 3$\\sigma$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "velocity interval 1.5 to 6.5 km/s, chosen from the H13CO+ line width to avoid outflow contamination",
+      "evidence": [
+       {
+        "loc": "Moment maps in 12-m array observations",
+        "quote": "This velocity interval is chosen based on the line width of H$^{13}$CO$^{+}$ to avoid contamination from outflow emission."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian fits (ACA); Gaussian fits to spectra giving Vlsr ~4 km/s and width ~5 km/s for H13CO+",
+     "evidence": [
+      {
+       "loc": "Moment maps in 12-m array observations",
+       "quote": "From gaussian fits to the spectra, we find a systemic velocity of $\\sim$4 km s$^{-1}$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "12-m recovers more than 92% of the ACA H13CO+ flux",
+     "evidence": [
+      {
+       "loc": "Moment maps in 12-m array observations",
+       "quote": "The 12-m array observation recovers more than 92% of H$^{13}$CO$^{+}$ flux in ACA observations."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Characterise widespread narrow SiO emission",
+    "method": {
+     "value": "Extracted SiO spectra averaged over 5'' at nine positions and fitted single or double Gaussians",
+     "evidence": [
+      {
+       "loc": "Widespread shocked gas emission",
+       "quote": "The SiO spectra were obtained by averaging over 5$\\ensuremath{''}$ area at each position."
+      },
+      {
+       "loc": "Widespread shocked gas emission",
+       "quote": "Spectra at positions 1, 4 and 9 can be well fitted with a single gaussian profile, while spectra at positions 2, 3, 7, and 8 are better fitted with two gaussians including one narrow component and one broad component."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian profiles (one or two components)",
+     "evidence": [
+      {
+       "loc": "Widespread shocked gas emission",
+       "quote": "We fit the spectra with gaussian profiles"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Principal component analysis of integrated-intensity maps",
+    "method": {
+     "value": "PCA on the integrated emission maps of ten molecules (smoothed, re-gridded, pixel values exported to SPSS)",
+     "evidence": [
+      {
+       "loc": "Principal component analysis",
+       "quote": "We performed PCA on the integrated emission maps of various gas tracers"
+      },
+      {
+       "loc": "Principal component analysis",
+       "quote": "We then export their pixel values to SPSS software platform"
+      }
+     ]
+    },
+    "software": [
+     "SPSS"
+    ],
+    "key_parameters": [
+     {
+      "value": "components with eigenvalues larger than 0.5 retained (PCs 1-3)",
+      "evidence": [
+       {
+        "loc": "Principal component analysis",
+        "quote": "We identified three main principal components (or PCs 1-3) that have eigenvalues larger than 0.5."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-checked against the HOG results, with the same molecule groups showing strongest correlations",
+     "evidence": [
+      {
+       "loc": "Histogram of oriented gradients analysis",
+       "quote": "Molecules in the same group defined by the PCA analysis in Figure [14](#PCA-plt) show the strongest correlations in the HOGs analysis."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Histogram of oriented gradients analysis",
+    "method": {
+     "value": "HOG on integrated-intensity maps giving r, V and AM for each pair of tracers; relative-orientation histograms between continuum and lines in the filament region",
+     "evidence": [
+      {
+       "loc": "Histogram of oriented gradients analysis",
+       "quote": "Three statistical evaluation parameters are derived: mean resultant vector length ($r$), the projected Rayleigh statistic ($V$), and the alignment measurement ($AM$)."
+      },
+      {
+       "loc": "Histogram of oriented gradients analysis",
+       "quote": "We only performed HOGs analysis in the massive filament region."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistency with the PCA groups",
+     "evidence": [
+      {
+       "loc": "Histogram of oriented gradients analysis",
+       "quote": "The HOGs analysis is also consistent with the previous PCA analysis."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Fraction of line flux from the dense filament",
+    "method": {
+     "value": "Ratio of 12-m integrated intensity inside the filament mask (1% of peak 3 mm contour) to ACA 2D-Gaussian total integrated intensity, over 1.5-6.5 km/s",
+     "evidence": [
+      {
+       "loc": "Fraction of line fluxes from filaments and cores",
+       "quote": "measured within the massive filament region that is bounded by the 1% of peak flux density contour"
+      },
+      {
+       "loc": "Fraction of line fluxes from filaments and cores",
+       "quote": "We did not perform 2D Gaussian fitting on 12-m array data because the massive filament is far from a 2D Gaussian shape."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D Gaussian for ACA only",
+     "evidence": [
+      {
+       "loc": "Fraction of line fluxes from filaments and cores",
+       "quote": "are derived from a 2D gaussian fitting"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Ratios correlate with the HOG AM values",
+     "evidence": [
+      {
+       "loc": "Fraction of line fluxes from filaments and cores",
+       "quote": "There is a clear trend between the ratios and the $AM$ values."
+      }
+     ]
+    }
+   },
+   {
+    "order": 10,
+    "goal": "Line luminosity and conversion to dense-core mass",
+    "method": {
+     "value": "Converted total ACA line fluxes to line luminosities and divided the ~400 Msun total core mass by them",
+     "evidence": [
+      {
+       "loc": "Fraction of line fluxes from filaments and cores",
+       "quote": "We can convert the total flux densities of these lines into their line luminosity following (cite: Solomon1997)."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Total core mass ~400 Msun from earlier work at average dust temperature 35 K; distance 5.2 kpc",
+      "evidence": [
+       {
+        "loc": "Fraction of line fluxes from filaments and cores",
+        "quote": "assuming an average dust temperature of 35 K (cite: Liu2017)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.6",
+    "used_for": {
+     "value": "calibration and imaging; feather combination test",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Calibration and imaging were carried out using the CASA software package version 5.6 (cite: McMullin2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "FellWalker (Starlink CUPID)",
+    "version": "not stated",
+    "used_for": {
+     "value": "source extraction in the 3 mm continuum",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "we apply the FellWalker algorithm in the Starlink CUPID package (cite: Berry2007; Berry2015), for source extraction"
+      }
+     ]
+    }
+   },
+   {
+    "name": "XCLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "line identification and LTE spectral simulation of MM8/F (illustration only)",
+     "evidence": [
+      {
+       "loc": "Chemical differentiation among dense cores",
+       "quote": "We will identify spectral line transitions using the eXtended CASA Line Analysis Software Suite (cite: Moller2017)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SPSS",
+    "version": "not stated",
+    "used_for": {
+     "value": "principal component analysis",
+     "evidence": [
+      {
+       "loc": "Principal component analysis",
+       "quote": "We then export their pixel values to SPSS software platform"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of continuum components found by FellWalker in G9.62+0.19",
+    "value": "6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Filaments and dense cores",
+      "quote": "we identified six main components in the 3 mm continuum emission of G9.62+0.19"
+     }
+    ]
+   },
+   {
+    "quantity": "3 mm flux density of HII region B and free-free flux",
+    "value": "S_nu = 437 mJy; S_free-free = 359 mJy",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table continuumpara",
+      "quote": "4.6 | 437 | 359"
+     }
+    ]
+   },
+   {
+    "quantity": "3 mm flux density of MM1/C and free-free flux",
+    "value": "S_nu = 32.6 mJy; S_free-free = 32 mJy",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table continuumpara",
+      "quote": "8.17 | 32.6 | 32"
+     }
+    ]
+   },
+   {
+    "quantity": "3 mm flux density of MM11/D and free-free flux",
+    "value": "S_nu = 98.8 mJy; S_free-free = 73 mJy",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table continuumpara",
+      "quote": "71.6 | 98.8 | 73"
+     }
+    ]
+   },
+   {
+    "quantity": "H13CO+ systemic velocity of G9.62+0.19",
+    "value": "~4",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Moment maps in 12-m array observations",
+      "quote": "From gaussian fits to the spectra, we find a systemic velocity of $\\sim$4 km s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Width of the narrow SiO components",
+    "value": "2 to 6",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Widespread shocked gas emission",
+      "quote": "The line widths of the narrow components range from 2 km s$^{-1}$ to 6 km s$^{-1}$."
+     }
+    ]
+   },
+   {
+    "quantity": "PCA variance fraction of PC1, PC2, PC3",
+    "value": "73.62, 9.40, 6.22",
+    "uncertainty": "not stated",
+    "units": "per cent",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Principal component analysis",
+      "quote": "These three PCs describe 73.62, 9.40 and 6.22 per cent, respectively, of the variance in the data."
+     }
+    ]
+   },
+   {
+    "quantity": "HOG r, V, AM for HC3N versus H13CN",
+    "value": "r = 0.43, V = 1770, AM = 0.61",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Histogram of oriented gradients analysis",
+      "quote": "The strongest correlation occurs between HC$_3$N and H$^{13}$CN with $r$ of 0.43, $V$ of 1770 and $AM$ of 0.61."
+     }
+    ]
+   },
+   {
+    "quantity": "HOG r, V, AM for HC3N versus 3 mm continuum",
+    "value": "r = 0.32, V = 1138, AM = 0.53",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Histogram of oriented gradients analysis",
+      "quote": "The $r$, $V$ and $AM$ for the HC$_3$N and 3 mm continuum correlation are 0.32, 1138 and 0.53, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "HOG r, V, AM for SiO versus 3 mm continuum",
+    "value": "r = 0.08, V = 119, AM = 0.32",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Histogram of oriented gradients analysis",
+      "quote": "The $r$, $V$ and $AM$ for the SiO and 3 mm continuum correlation are 0.08, 119 and 0.32, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, H13CN",
+    "value": "0.42",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "15.3 | 32.3 | 13.5 | 0.42"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, H13CO+",
+    "value": "0.29",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "15.0 | 38.1 | 11.2 | 0.29"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, CCH",
+    "value": "0.23",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "13.0 | 38.7 | 8.7 | 0.23"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, SiO",
+    "value": "0.22",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "10.3 | 20.7 | 4.6 | 0.22"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, HCN",
+    "value": "0.18",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "12.1 | 46.4 | 8.5 | 0.18"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, HCO+",
+    "value": "0.17",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "23.6 | 89.3 | 15.3 | 0.17"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, CH3OH",
+    "value": "0.59",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "10.6 | 17.2 | 10.1 | 0.59"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, CS",
+    "value": "0.23",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "53.9 | 166.3 | 38.1 | 0.23"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, SO",
+    "value": "0.31",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "28.8 | 62.2 | 19.4 | 0.31"
+     }
+    ]
+   },
+   {
+    "quantity": "12-m to ACA flux ratio, HC3N",
+    "value": "0.51",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Table lineflux",
+      "quote": "34.5 | 70.2 | 35.9 | 0.51"
+     }
+    ]
+   },
+   {
+    "quantity": "Line luminosities of H13CN, H13CO+, HCN, HCO+ (1-0)",
+    "value": "10, 5, 29, 19",
+    "uncertainty": "not stated",
+    "units": "K km/s pc^2 (paper writes K km^-1 pc^2)",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Fraction of line fluxes from filaments and cores",
+      "quote": "The line luminosity of the J=1-0 transitions of H$^{13}$CN, H$^{13}$CO$^+$, HCN and HCO$^+$ of the G9.62+0.19 clump are 10, 5, 29 and 19 K km$^{-1}$ pc$^2$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "L'mol-to-M_cores conversion factors for H13CN, H13CO+, HCN, HCO+ (1-0)",
+    "value": "about 40, 80, 14, 21",
+    "uncertainty": "not stated",
+    "units": "Msun (K km/s pc^2)^-1",
+    "from_step": 10,
+    "evidence": [
+     {
+      "loc": "Fraction of line fluxes from filaments and cores",
+      "quote": "Therefore, the conversion factors L$^{\\prime}_{mol}$-to-M$_{cores}$ in G9.62+0.19 are about 40, 80, 14, and 21"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "H13CN, HC3N, SO and CH3OH reveal the dense cores and filament and resemble the 3 mm continuum",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "SO, CH$_3$OH, H$^{13}$CN and HC$_3$N show similar morphologies in their spatial distributions and reveal well the dense cores."
+     }
+    ]
+   },
+   {
+    "value": "Hii region B has carved a cavity in the molecular clump and shows velocity gradients indicating expansion",
+    "evidence": [
+     {
+      "loc": "Extended gas emission",
+      "quote": "indicating that the Hii region \"B\" is expanding into its surrounding molecular gas and is reshaping its natal clump"
+     }
+    ]
+   },
+   {
+    "value": "CCH-to-H13CO+ and H13CN-to-H13CO+ ratios enhanced at the Hii region/filament interface, interpreted as PDR",
+    "evidence": [
+     {
+      "loc": "Tracers for photodissociation regions",
+      "quote": "The enhanced CCH-to-H$^{13}$CO$^+$ intensity ratio is likely caused by the PDR of the Hii region “B\"."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do the commonly used dense-gas tracers CS 2-1, HCN 1-0 and HCO+ 1-0 trace dense structures in a bound clump?",
+    "experiment": "Compared ACA total line flux with 12-m flux inside the continuum-defined filament, plus PCA and HOG comparison of the maps",
+    "result": "Only 17-23% of the HCN, CS and HCO+ flux (and CCH 23%) comes from the dense filament; PCA/HOG place them with extended gas",
+    "finding": "These lines mostly trace extended low-density gas, not dense cores, in G9.62+0.19",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "less than 25% of their emission is from dense cores"
+     },
+     {
+      "loc": "Fraction of line fluxes from filaments and cores",
+      "quote": "In contrast, only less than 25% of the fluxes of CCH, HCN, CS and HCO$^+$ are from the dense filament region."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which tracers best follow dense cores and filaments?",
+    "experiment": "PCA and HOG relative to the 3 mm continuum",
+    "result": "SO, CH3OH, H13CN and HC3N group together and align with the continuum (HC3N highest)",
+    "finding": "These four lines are good dense-core and filament tracers",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "SO, CH$_3$OH, H$^{13}$CN and HC$_3$N show similar morphologies in their spatial distributions and reveal well the dense cores."
+     },
+     {
+      "loc": "Histogram of oriented gradients analysis",
+      "quote": "As shown in Table [\\[HOGpara\\]](#HOGpara), HC$_3$N shows highest similarity with the 3 mm continuum emission."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What produces the widespread narrow SiO emission?",
+    "experiment": "Gaussian fits of SiO spectra at nine positions and Moment 2 map",
+    "result": "Narrow components (2-6 km/s) away from outflows; positions 7 and 8 show a ~5 km/s projected velocity difference",
+    "finding": "Slow shocks from large-scale colliding flows or Hii regions are the likely cause (inferred, not tested directly)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "SiO shows widespread narrow emission, which is likely caused by slow shocks generated by large-scale colliding flows and Hii regions"
+     },
+     {
+      "loc": "Widespread shocked gas emission",
+      "quote": "This velocity difference indicates that the two elongated structures associated with positions 7 and 8 could be related to large-scale colliding flows that induce low-velocity shocks."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does stellar feedback from the Hii region B reshape the natal clump?",
+    "experiment": "Moment 0/1 maps of CCH, H13CO+, H13CN, SO, HC3N and SiO around region B",
+    "result": "Cavity in molecular emission, SW-NE velocity gradient with more redshifted gas near B, low-velocity SiO around the Hii regions",
+    "finding": "Expansion of Hii region B reshapes the clump and may account for sequential high-mass star formation",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Stellar feedback from an expanding Hii region has greatly reshaped the natal clump, significantly changed the spatial distribution of gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the 3 mm continuum of the Hii regions dominated by free-free emission?",
+    "experiment": "H40alpha line-to-continuum ratio with Te ~6760 K",
+    "result": "Free-free is 359 of 437 mJy (B), 32 of 32.6 mJy (MM1/C) and 73 of 98.8 mJy (MM11/D)",
+    "finding": "Continuum of B, MM1/C and MM11/D is dominated by free-free; other sources negligible",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Filaments and dense cores",
+      "quote": "is dominated by free-free emission, as suggested in previous works"
+     },
+     {
+      "loc": "Filaments and dense cores",
+      "quote": "The free-free emission in other sources is negligible."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "ALMA needed to separate cores from filaments in distant clumps at <0.1 pc, which needs <2'' resolution",
+    "evidence": [
+     {
+      "loc": "The role of filaments in star formation",
+      "quote": "Only with ALMA, such a systemic high-resolution observational study is possible."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "PCA and HOG used to quantify similarities and differences in the spatial distribution of tracers",
+    "evidence": [
+     {
+      "loc": "Similarities and differences in the spatial distributions of gas tracers",
+      "quote": "we could figure out the best tracers for different structures inside molecular clouds, e.g., filaments, dense cores and extended cloud envelopes."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "ACA and 12-m data combination (feather) was tested but not used; proper combination deferred to a later paper",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "Hence, in this paper, the ACA data and 12-m array data were not combined for the case study of G9.62+0.19"
+      }
+     ]
+    },
+    {
+     "value": "FellWalker with larger minimum pixel numbers (16, 25) gave unchanged results",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "We also tested FellWalker with larger minimum number (16 and 25) of contiguous pixels and found that the results were not changed."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "12-m data alone judged sufficient for the tracer-distribution analysis",
+    "evidence": [
+     {
+      "loc": "ALMA Observations",
+      "quote": "The 12-m array data alone are good enough for this purpose."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Combined data still lack zero-spacing (Total Power) information, so missing flux remains",
+     "evidence": [
+      {
+       "loc": "ALMA Observations",
+       "quote": "The combined data, however, also suffer a non trivial missing flux problem without zero-spacing information from Total-Power (TP) observations."
+      }
+     ]
+    },
+    {
+     "value": "No cm-wavelength continuum for all targets to remove free-free; electron temperature uncertain",
+     "evidence": [
+      {
+       "loc": "Filaments and dense cores",
+       "quote": "Higher electron temperature will lead to higher free-free emission contributions."
+      }
+     ]
+    },
+    {
+     "value": "Analysis applies only to G9.62+0.19",
+     "evidence": [
+      {
+       "loc": "The sample of ATOMS",
+       "quote": "is only applicable to this particular source."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single source case study: the dense-gas-tracer conclusions (<25% from filament) are not demonstrated for the 146-source sample",
+    "Flux ratio uses a 2D Gaussian ACA total versus a 12-m sum in a continuum-defined mask; differing missing-flux and geometry may bias the ratios",
+    "Filament mask is defined from the continuum, which contains free-free emission in parts, and the ratio depends on the 1% contour choice",
+    "No uncertainties are given for ratios, HOG statistics, luminosities and conversion factors",
+    "Optical depth of HCN, HCO+ and CS is argued qualitatively, not measured in this paper",
+    "Shock origin of narrow SiO is argued from kinematics only"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "tclean imaging parameters and cube/continuum definitions",
+    "Calibration route and product versions",
+    "Masks and apertures for filament flux sums and spectra",
+    "HOG and PCA preprocessing details (common beam, regions, gradient kernel)",
+    "Free-free calculation formula and inputs"
+   ],
+   "estimated_data_volume_inferred": "G9.62+0.19 alone (two ACA executions plus one 12-m execution, 8 SPWs): roughly tens of GB raw; full 146-source survey several TB",
+   "score_inferred": 3,
+   "score_reason": "Project code, CASA version, array setup, line list, extraction thresholds and many numeric results are given, but imaging parameters, masks and the HOG/PCA preprocessing are not, and public availability of the data is not stated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe and analysis settings are too incomplete to redo, and data availability is not stated in the paper."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Soler2019)",
+     "why": "HOG analysis method and statistic definitions"
+    },
+    {
+     "citation": "(cite: Berry2007; Berry2015)",
+     "why": "FellWalker source extraction"
+    },
+    {
+     "citation": "(cite: Moller2017)",
+     "why": "XCLASS line identification and modelling"
+    },
+    {
+     "citation": "(cite: McMullin2007)",
+     "why": "CASA software"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Liu2017)",
+     "why": "earlier ALMA study of G9.62+0.19 whose core properties and outflows are reused"
+    },
+    {
+     "citation": "(cite: Liu2020)",
+     "why": "companion work on star formation scaling relations with the ATOMS ACA data"
+    },
+    {
+     "citation": "Wang et al. 2020, in preparation",
+     "why": "ACA plus 12-m data combination"
+    },
+    {
+     "citation": "Peng, Y.-P. et al., 2020, in preparation",
+     "why": "detailed chemical analysis of G9.62+0.19"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "MALT90",
+    "Orion B",
+    "EMPIRE",
+    "ALMA_IMF",
+    "ALMAGAL"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2020MNRAS.496.2790L",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T07:49:57",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 151,
+  "quotes_ok": 151,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 22,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 110,
+   "stated": 85,
+   "rate": 0.773
+  },
+  "evidence_ok": true
+ }
+}

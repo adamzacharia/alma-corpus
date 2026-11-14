@@ -1,0 +1,637 @@
+{
+ "bibcode": "2026A&A...713A..67X",
+ "title": "Local constraints on alcohol-thioalcohol analogs in G35.2N",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202661403",
+ "arxiv_id": "2609.20671",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Whether the purely O-bearing alcohol ratio CH3OH/C2H5OH and the O/S alcohol-thioalcohol analog ratios CH3OH/CH3SH and C2H5OH/C2H5SH remain locally stable across selected positions within G35.2N and how they compare with other chemically rich environments and chemical models.",
+ "alma_project_codes": [
+  "2021.1.00713.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "12 m array",
+  "angular_resolution": "0.29'' x 0.28'' (PA = 29.0 deg) for continuum image",
+  "sensitivity": "0.36 mJy beam^-1 (C-5 continuum), 0.27 mJy beam^-1 (Fig. 1 continuum), ~10 mJy beam^-1 per channel (C-5 line cubes)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Spectroscopic line lists and parameters for CH3OH, 13CH3OH, CH3SH, C2H5OH, and C2H5SH from CDMS",
+    "evidence": [
+     {
+      "loc": "Molecular identification",
+      "quote": "The spectroscopic information for CH$_3$OH, CH$_3$SH, C$_2$H$_5$OH, and C$_2$H$_5$SH was taken from the Cologne Database for Molecular Spectroscopy (CDMS; (cite: Muller2001; Muller2005))"
+     }
+    ]
+   },
+   "citation": "CDMS; (cite: Muller2001; Muller2005)"
+  },
+  {
+   "what": {
+    "value": "ALMA-based molecular column densities and abundance ratios for Orion KL, Sgr B2(N2), G31.41+0.31 core and shock, and IRAS 16293-2422 B",
+    "evidence": [
+     {
+      "loc": "Column densities and abundance ratios",
+      "quote": "References: (1) this work; (2) (cite: Tercero2018); (3) (cite: Belloche2025); (4) (cite: Mininni2023); (5) (cite: Lopez2024); (6) (cite: Jorgensen2018); (7) (cite: Drozdovskaya2018); (8) (cite: Drozdovskaya2019); (9) (cite: Lopez2025)."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "The observational ratios were recalculated from the molecular column densities reported in the studies listed in Table [\\[tab:comparison_sample\\]]."
+     }
+    ]
+   },
+   "citation": "(cite: Tercero2018; Belloche2025; Mininni2023; Lopez2024; Jorgensen2018; Drozdovskaya2018; Drozdovskaya2019; Lopez2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and identify molecular transitions at target positions",
+   "method": "Extract spectra at common positions MM3-pos, MM4-pos, MM5-pos (plus MM3-peak and MM4-peak for comparison) from C-5 spectral-line cubes and compare with CDMS synthetic spectra to identify transitions",
+   "software": [
+    "GILDAS",
+    "CLASS/Weeds"
+   ],
+   "key_parameters": [
+    "Robust identification criterion: >= 3 spectrally independent unblended or marginally blended features with peak intensity > 3 sigma reproduced simultaneously by a single LTE model"
+   ],
+   "assumptions": [
+    "Only transitions from the ground vibrational state are considered"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model spectra under LTE to derive excitation temperatures and column densities",
+   "method": "Fit synthetic LTE spectra to observed unblended/minimally blended transitions using CLASS/Weeds and refine with CLASS/ADJUST, keeping theta, Delta V, and V_LSR fixed while varying T_ex and N_t; derive total CH3OH column density from 13CH3OH",
+   "software": [
+    "GILDAS",
+    "CLASS/Weeds",
+    "CLASS/ADJUST"
+   ],
+   "key_parameters": [
+    "Fixed V_LSR = 32.0 km s^-1; fixed theta = deconvolved continuum size; fixed Delta V = average linewidth from bright unblended lines; free parameters: T_ex and N_t"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE)",
+    "12C/13C = 50 to convert 13CH3OH column density to total CH3OH column density",
+    "Partition functions for C2H5OH and C2H5SH include both trans and gauche conformers"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute local abundance ratios and compare with literature sources and chemical models",
+   "method": "Calculate column density ratios (CH3OH/C2H5OH, CH3OH/CH3SH, C2H5OH/C2H5SH, CH3SH/C2H5SH) from unrounded column densities and compare with recalculated ALMA literature ratios and Garrod (2022) warm-up chemical models",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Independent errors assumed when propagating column density uncertainties into abundance ratios"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Map spatial distributions and check shock diagnostics toward MM4-pos",
+   "method": "Construct integrated-intensity (moment 0) maps of target species and moment 0 and moment 1 maps of shock tracers H2CO and SO, and check SiO J=5-4 peak intensity at MM4-pos",
+   "software": [],
+   "key_parameters": [
+    "3 sigma detection threshold for SiO J = 5 - 4"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "13CH3OH excitation temperature at MM3-pos",
+   "value": "120",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 120$\\pm$20 | 3.6(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH column density at MM3-pos",
+   "value": "3.6e16",
+   "uncertainty": "1.1e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 120$\\pm$20 | 3.6(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted total CH3OH column density at MM3-pos",
+   "value": "1.8e18",
+   "uncertainty": "4e17",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$OH$^{\\rm b}$ | – | 1.8(18)$\\pm$4(17) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH excitation temperature at MM3-pos",
+   "value": "110",
+   "uncertainty": "30",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 110$\\pm$30 | 1.7(16)$\\pm$4(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH column density at MM3-pos",
+   "value": "1.7e16",
+   "uncertainty": "4e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 110$\\pm$30 | 1.7(16)$\\pm$4(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH excitation temperature at MM3-pos",
+   "value": "120",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$20 | 5.7(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH column density at MM3-pos",
+   "value": "5.7e16",
+   "uncertainty": "1.1e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$20 | 5.7(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH excitation temperature at MM3-pos",
+   "value": "110",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d}$ | 110$\\pm$20 | 3.3(15)$\\pm$6(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH column density at MM3-pos",
+   "value": "3.3e15",
+   "uncertainty": "6e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d}$ | 110$\\pm$20 | 3.3(15)$\\pm$6(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH excitation temperature at MM4-pos",
+   "value": "110",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 110$\\pm$20 | 4.0(16)$\\pm$8(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH column density at MM4-pos",
+   "value": "4.0e16",
+   "uncertainty": "8e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 110$\\pm$20 | 4.0(16)$\\pm$8(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted total CH3OH column density at MM4-pos",
+   "value": "2.0e18",
+   "uncertainty": "4e17",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$OH$^{\\rm b}$ | – | 2.0(18)$\\pm$4(17) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH excitation temperature at MM4-pos",
+   "value": "100",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 100$\\pm$20 | 1.9(16)$\\pm$4(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH column density at MM4-pos",
+   "value": "1.9e16",
+   "uncertainty": "4e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 100$\\pm$20 | 1.9(16)$\\pm$4(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH excitation temperature at MM4-pos",
+   "value": "120",
+   "uncertainty": "30",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$30 | 6.4(16)$\\pm$8(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH column density at MM4-pos",
+   "value": "6.4e16",
+   "uncertainty": "8e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$30 | 6.4(16)$\\pm$8(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH excitation temperature at MM4-pos (tentative)",
+   "value": "92",
+   "uncertainty": "19",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d,e}$ | 92$\\pm$19 | 2.4(15)$\\pm$4(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH column density at MM4-pos (tentative)",
+   "value": "2.4e15",
+   "uncertainty": "4e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d,e}$ | 92$\\pm$19 | 2.4(15)$\\pm$4(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH excitation temperature at MM5-pos",
+   "value": "110",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 110$\\pm$20 | 5.3(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH column density at MM5-pos",
+   "value": "5.3e16",
+   "uncertainty": "1.1e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $^{13}$CH$_3$OH | 110$\\pm$20 | 5.3(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Adopted total CH3OH column density at MM5-pos",
+   "value": "2.7e18",
+   "uncertainty": "5e17",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$OH$^{\\rm b}$ | – | 2.7(18)$\\pm$5(17) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH excitation temperature at MM5-pos",
+   "value": "110",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 110$\\pm$20 | 2.6(16)$\\pm$5(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH column density at MM5-pos",
+   "value": "2.6e16",
+   "uncertainty": "5e15",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| CH$_3$SH | 110$\\pm$20 | 2.6(16)$\\pm$5(15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH excitation temperature at MM5-pos",
+   "value": "120",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$20 | 8.5(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH column density at MM5-pos",
+   "value": "8.5e16",
+   "uncertainty": "1.1e16",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$OH$^{\\rm c}$ | 120$\\pm$20 | 8.5(16)$\\pm$1.1(16) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH excitation temperature at MM5-pos",
+   "value": "100",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d}$ | 100$\\pm$20 | 4.6(15)$\\pm$9(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5SH column density at MM5-pos",
+   "value": "4.6e15",
+   "uncertainty": "9e14",
+   "units": "cm^-2",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| C$_2$H$_5$SH$^{\\rm d}$ | 100$\\pm$20 | 4.6(15)$\\pm$9(14) |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/C2H5OH ratio at MM3-pos",
+   "value": "32",
+   "uncertainty": "9",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM3-pos | 32$\\pm$9 | 110$\\pm$30 | 17$\\pm$5 | 5.2$\\pm$1.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/CH3SH ratio at MM3-pos",
+   "value": "110",
+   "uncertainty": "30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM3-pos | 32$\\pm$9 | 110$\\pm$30 | 17$\\pm$5 | 5.2$\\pm$1.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH/C2H5SH ratio at MM3-pos",
+   "value": "17",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM3-pos | 32$\\pm$9 | 110$\\pm$30 | 17$\\pm$5 | 5.2$\\pm$1.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH/C2H5SH ratio at MM3-pos",
+   "value": "5.2",
+   "uncertainty": "1.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM3-pos | 32$\\pm$9 | 110$\\pm$30 | 17$\\pm$5 | 5.2$\\pm$1.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/C2H5OH ratio at MM4-pos",
+   "value": "31",
+   "uncertainty": "8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM4-pos | 31$\\pm$8 | 110$\\pm$30 | 27$\\pm$5$^{\\rm a}$ | 8$\\pm$2$^{\\rm a}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/CH3SH ratio at MM4-pos",
+   "value": "110",
+   "uncertainty": "30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM4-pos | 31$\\pm$8 | 110$\\pm$30 | 27$\\pm$5$^{\\rm a}$ | 8$\\pm$2$^{\\rm a}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH/C2H5SH ratio at MM4-pos (tentative)",
+   "value": "27",
+   "uncertainty": "5",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM4-pos | 31$\\pm$8 | 110$\\pm$30 | 27$\\pm$5$^{\\rm a}$ | 8$\\pm$2$^{\\rm a}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH/C2H5SH ratio at MM4-pos (tentative)",
+   "value": "8",
+   "uncertainty": "2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM4-pos | 31$\\pm$8 | 110$\\pm$30 | 27$\\pm$5$^{\\rm a}$ | 8$\\pm$2$^{\\rm a}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/C2H5OH ratio at MM5-pos",
+   "value": "32",
+   "uncertainty": "8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM5-pos | 32$\\pm$8 | 100$\\pm$30 | 19$\\pm$4 | 5.7$\\pm$1.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH/CH3SH ratio at MM5-pos",
+   "value": "100",
+   "uncertainty": "30",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM5-pos | 32$\\pm$8 | 100$\\pm$30 | 19$\\pm$4 | 5.7$\\pm$1.6 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| MM5-pos | 32$\\pm$8 | 100$\\pm$30 | 19$\\pm$4 | 5.7$\\pm$1.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "C2H5OH/C2H5SH ratio at MM5-pos",
+   "value": "19",
+   "uncertainty": "4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM5-pos | 32$\\pm$8 | 100$\\pm$30 | 19$\\pm$4 | 5.7$\\pm$1.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3SH/C2H5SH ratio at MM5-pos",
+   "value": "5.7",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| MM5-pos | 32$\\pm$8 | 100$\\pm$30 | 19$\\pm$4 | 5.7$\\pm$1.6 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact sky coordinates (RA, Dec) of the five spectral-extraction positions (MM3-pos, MM4-pos, MM5-pos, MM3-peak, MM4-peak) and whether spectra were extracted from a single pixel or averaged over an aperture",
+  "Synthesized beam sizes and position angles for each of the four C-5 spectral-line cubes",
+  "Exact numerical values of the fixed deconvolved continuum source sizes (theta) and fixed linewidths (Delta V) adopted at MM3-pos, MM4-pos, and MM5-pos in the LTE modeling",
+  "Frequency ranges of the line-free channels selected for continuum construction and continuum subtraction",
+  "Imaging cell size, image dimensions, and stopping threshold used in tclean/YCLEAN",
+  "Rest frequencies and transitions used to construct the H2CO and SO moment maps, and velocity integration ranges for all moment 0 and moment 1 maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates (RA, Dec) and extraction aperture definition for MM3-pos, MM4-pos, MM5-pos, MM3-peak, and MM4-peak",
+  "Numerical values of the fixed source size (theta) and linewidth (Delta V) adopted at each position in CLASS/Weeds",
+  "Synthesized beam dimensions for the four C-5 spectral windows",
+  "Exact frequency intervals chosen for continuum subtraction"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Raw ALMA data and supplementary figures are public, calibration/imaging software and parameters (CASA 6.4.1-12, robust=0.5, 6s self-cal, YCLEAN) are stated, and all modeled transitions are tabulated in Appendix A. However, the exact coordinates of the extraction positions and the fixed source size and linewidth values used in the LTE modeling are not explicitly tabulated.",
+ "rediscovery_reason": "Public ALMA dataset (2021.1.00713.S) with short integration time (1.5 min on-source in C-5), clear spectroscopic line lists in Appendix A, and concrete numeric column densities and abundance ratios as target answer keys, though extraction coordinates must be read from Figure 1b.",
+ "source_card": "cards/2026A%26A...713A..67X/sonnet/card.md"
+}

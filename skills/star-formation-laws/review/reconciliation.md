@@ -1,0 +1,23 @@
+# Reconciliation: star-formation-laws
+- SR-01 | FIXED | Recounted unique bibcodes in pack assumption/parameter lines: ULIRG-like 0.8-1.1 is 7 (all seven listed), Galactic 4.3-4.87 is 15 (2025ApJ...988..162D excluded); count method stated in Step 3 and table.
+- SR-02 | FIXED | parameters.md: 2025ApJ...988..162D moved to its own row, radially varying alpha_CO for the analysis, 4.35 only for the sensitivity estimate (pack line 1035).
+- SR-03 | FIXED | Verification: 0.2 dex attributed only to 2026ApJ..1001..131C (three dust-based estimators, pack line 977); 2024A&A...692A.215C now "generally consistent" with r31/r41 scatter caveat (lines 803, 805).
+- SR-04 | FIXED | Software table states counts are name frequencies; scikit-learn KS use only 2019ApJ...887...88E (other excerpted mention is off-topic clustering, 2020A&A...635A...2S); astropy and reproject split, reproject has no paper assignment; Step 2 no longer says astropy/reproject regridding.
+- SR-05 | FIXED | Step 4 and table now separate beam resolution, aperture radius and sampling: 43 pc pixels to 1.7 kpc resolution (2025ApJ...988..162D), 34 pc is an aperture radius.
+- SR-06 | REJECTED | Claims are verbatim in the cards Codex did not see: 2017A&A...602L...9M card step 4 ("linear least squares fits ... through the binned data points", slope fixed to unity) and step 3 (SFR/(2 pi R^2), M_gas/(2 pi R^2)); 2019ApJ...882....5W card step 4 (double power law, break free, "bootstrapped 10000 times"); 2018ApJ...861L..18U card step 3 (compare eps_ff across three H prescriptions). Kept, now labelled "card" with step.
+- SR-07 | FIXED | Pitfall now says "a substantial systematic" with the paper-specific estimates (additional systematic, factor >= 2, about 50%) and notes the pack does not rank it.
+- SR-08 | FIXED | Table row renamed "Reported SFR uncertainty (paper-specific, not a floor)" with 20% / +-0.3 dex / factor 2; added a paragraph requiring a tracer-specific error budget.
+- SR-09 | FIXED | Lensing pitfall: tracer-specific mu where constrained, otherwise propagate differential-magnification uncertainty and label the shared-mu assumption (2016A&A...586L...7B; 2013ApJ...767..132H flagged as shared-mu).
+- SR-10 | FIXED | parameters.md: 2020A&A...641A.151S ratio labelled as flux ratio S21dv/S10dv = 3 (pack line 1003), L' ratio 0.75 given.
+- SR-11 | FIXED | Step 6 recommendation now states which axis carries limits, that linmix censors the dependent variable (general practice), and that selection truncation needs modelling separately (2020A&A...641A.155V, 2025ApJ...995..151Y); S/N pitfall and referee check updated.
+- SR-12 | FIXED | Step 2 split into free-free/recombination (33 GHz, H30alpha, 110 GHz with synchrotron caveat), PAH (8 um) and far-IR dust (160 um) categories.
+- SR-13 | FIXED | parameters.md X_CO row says X_CO has no helium and helium sits in the mass coefficient; added 2025ApJ...995..151Y X_CO -> 4.35 incl. He row, a helium note, and a Step 3 line to apply 1.36 once.
+- SR-14 | FIXED | Step 3 adds a provenance/circularity safeguard (2014ApJ...790..160S SFR from KS law, 2019MNRAS.485.2092C gas from assumed SFE, 2019ApJ...876..130H gas from Sigma_SFR); pitfall and referee check added.
+- SR-15 | FIXED | H-alpha bullet requires the nebular attenuation prescription and uncertainty, cites the residual factor 3+-1 (2020A&A...635A.119C) and f = 0.44 upper-limit caveat (2020ApJS..247...61F), and an obscured-tracer cross-check.
+- SR-16 | FIXED | Global compact bullet now defines Sigma_SFR = f_SFR SFR/A and Sigma_gas = f_gas M_gas/A, notes a continuum half-light radius need not enclose half the gas; table row notes f_gas often unstated.
+- SR-17 | FIXED | Added size-validation bullet (deconvolve, propagate area error, keep limits when unresolved) citing 2014A&A...562A..67G, 2013ApJ...770...13W, 2017ApJ...844..123F; referee check added.
+- SR-18 | FIXED | Added overlapping-samples bullet in Step 4 (offset grids, 6'' on 3'' pixels, 200 pc apertures on a 100 pc grid) requiring covariance or block resampling; pitfall added.
+- SR-19 | FIXED | Step 6 and Pitfalls add parent-selection biases: PACS selection (2020A&A...641A.155V), N2 selection (2025ApJ...994....4A).
+- SR-20 | FIXED | 650 Msun/yr/kpc^2 labelled model-dependent with its assumptions (optically thick, gas fraction 1, dust-to-gas 1/90, one dust temperature; pack line 137/446).
+- SR-21 | FIXED | Step 7 gives t_dep[yr] = 1e6 Sigma_mol/Sigma_SFR and t_dep[Gyr] = 1e-3 Sigma_mol/Sigma_SFR for Msun/pc^2 and Msun/yr/kpc^2.
+- SR-22 | FIXED | Every calibration in Step 2 and parameters.md now carries units where the pack gives them (4.5e-42 with erg/s) and "units not in pack" otherwise, with the PAH intercept flagged as unit-dependent; referee check added.

@@ -1,0 +1,350 @@
+{
+ "bibcode": "2020ApJ...891...48H",
+ "title": "A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/ab711e",
+ "arxiv_id": "2001.11040",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the dust substructures, spectral index variations, optical depths and gas cavity of the GM Aur disk at high resolution in Bands 4 and 6?",
+ "alma_project_codes": [
+  "2017.1.01151.S",
+  "2018.1.01230.S"
+ ],
+ "data": {
+  "bands": "Band 4 (2.1 mm) and Band 6 (1.1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "57x34 mas (2.1 mm), 45x25 mas (1.1 mm), 107x83 mas (HCO+)",
+  "sensitivity": "rms 0.012 mJy/beam (2.1 mm), 0.01 mJy/beam (1.1 mm), 1.2 mJy/beam per 0.25 km/s channel (HCO+)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Midplane dust temperature model from SED and resolved mm modeling, used for optical depths",
+    "evidence": [
+     {
+      "loc": "4.2.1. Constraints on optical depths",
+      "quote": "midplane dust temperatures derived in Mac´ıas et al. (2018) through radiative transfer modeling of GM Aur’s SED and resolved millimeter continuum observations."
+     }
+    ]
+   },
+   "citation": "Macías et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Stellar mass 1.32 Msun",
+    "evidence": [
+     {
+      "loc": "4.2.2. Constraints on dust grain sizes",
+      "quote": "a stellar mass of 1.32 M ⊙ (Andrews et al. 2018a)"
+     }
+    ]
+   },
+   "citation": "Andrews et al. 2018a"
+  },
+  {
+   "what": {
+    "value": "DSHARP dust opacities",
+    "evidence": [
+     {
+      "loc": "4.2.2. Constraints on dust grain sizes",
+      "quote": "we adopt the default “DSHARP dust opacities” described in Birnstiel et al. (2018)"
+     }
+    ]
+   },
+   "citation": "Birnstiel et al. 2018"
+  },
+  {
+   "what": {
+    "value": "Gas temperature structure from McClure et al. 2016 for comparison with HCO+ brightness temperature",
+    "evidence": [
+     {
+      "loc": "5.2. Constraints on the HCO + distribution and temperature",
+      "quote": "Using a linear interpolation of the two-dimensional temperature structures from McClure et al. (2016) and Mac´ıas et al. (2018)"
+     }
+    ]
+   },
+   "citation": "McClure et al. 2016"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, align and self-calibrate, then image continuum",
+   "method": "ALMA pipeline, fixvis/fixplanets alignment, self-cal, tclean multiscale imaging in each band",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Band 4 robust 0, Band 6 robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Radial profiles and spectral index",
+   "method": "Deproject images, azimuthally average, smooth 1.1 mm to 2.1 mm resolution, compute alpha = log(I1/I0)/log(nu1/nu0)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "P.A. = 57.17 deg, i = 53.21 deg, 1 au bins"
+   ],
+   "assumptions": [
+    "Distance 159 pc; ~10% flux calibration uncertainty per band"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit axisymmetric surface brightness models in uv plane",
+   "method": "Delta function + Gaussian rings parametrization, vis_sample synthetic visibilities, MCMC, 21 free parameters",
+   "software": [
+    "vis_sample",
+    "emcee",
+    "CASA"
+   ],
+   "key_parameters": [
+    "96 walkers, 20,000 steps, 10,000 burn-in; weights scaled down by 2.667"
+   ],
+   "assumptions": [
+    "Axisymmetric, geometrically thin"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Optical depth and grain size constraints",
+   "method": "tau_nominal = -ln(1 - I/B(T)); beta from tau ratio; emergent intensity with scattering via analytic slab approximation",
+   "software": [
+    "dsharp_opac"
+   ],
+   "key_parameters": [
+    "p = 3.5, 2.5, 1.5; a_min = 0.1 um; Td = 30 K (B40), 18 K (B84)"
+   ],
+   "assumptions": [
+    "Midplane temperature from Macías et al. 2018; DSHARP opacities; gas-to-dust ratio 100 for Toomre Q"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test B84 geometry with radiative transfer",
+   "method": "RADMC-3D models: flat, thick, warped rings, imaged with CASA and plotted in polar deprojection",
+   "software": [
+    "RADMC-3D",
+    "vis_sample",
+    "CASA"
+   ],
+   "key_parameters": [
+    "512 radial cells, 1024 poloidal cells, 64 azimuthal cells, 10^8 photon packages; parameters in Table 4"
+   ],
+   "assumptions": [
+    "p = 3.5, a_max = 1 mm; vertically isothermal"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "HCO+ emission height and kinematics",
+   "method": "Quadratic-fit velocity map with bettermoments, fit Keplerian flared-surface model with eddy",
+   "software": [
+    "bettermoments",
+    "eddy",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Fit radii 0.2-2 arcsec; 48 walkers, 3500 steps, 500 burn-in"
+   ],
+   "assumptions": [
+    "Keplerian rotation; PA, inclination, offsets fixed to continuum values"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "HCO+ integrated flux and brightness temperature",
+   "method": "Keplerian-mask integrated intensity; peak brightness temperature map without continuum subtraction; power-law fit",
+   "software": [
+    "CASA",
+    "scipy"
+   ],
+   "key_parameters": [
+    "Integration range -1.25 to 12.75 km/s; fit over R = 30-350 au"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.1 mm continuum flux",
+   "value": "264.1",
+   "uncertainty": "±0.8 (excl. ~10% calibration)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "264 . 1 ± 0 . 8"
+    }
+   ]
+  },
+  {
+   "quantity": "2.1 mm continuum flux",
+   "value": "54.8",
+   "uncertainty": "±0.7 (excl. ~10% calibration)",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "54 . 8 ± 0 . 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk-averaged spectral index 1.1-2.1 mm",
+   "value": "2.7",
+   "uncertainty": "±0.2",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2. Continuum spectral index",
+     "quote": "the disk-averaged spectral index between 1.1 and 2.1 mm is α = 2 . 7 ± 0 . 2"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak nominal optical depth B40 and B84 at 1.1 mm",
+   "value": "0.94 and 0.70",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2.1. Constraints on optical depths",
+     "quote": "( τ nominal = 0 . 94 and 0 . 70, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination from 1.1 mm fit",
+   "value": "53.20",
+   "uncertainty": "±0.01",
+   "units": "degree",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "53 . 20 ± 0 . 01"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ emission height z0",
+   "value": "0.127",
+   "uncertainty": "±0.002",
+   "units": "arcsec",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0 . 127 ± 0 . 002"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ flaring index psi",
+   "value": "0.81",
+   "uncertainty": "±0.03",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "0 . 81 ± 0 . 03"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass from HCO+ kinematics",
+   "value": "1.206",
+   "uncertainty": "±0.004",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "1 . 206 ± 0 . 004"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ brightness temperature T100",
+   "value": "26.9",
+   "uncertainty": "±3 (+10% flux calibration)",
+   "units": "K",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2. Constraints on the HCO + distribution and temperature",
+     "quote": "T 100 = 26 . 9 ± 3 and q = 0 . 43 ± 0 . 01"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ temperature power-law index q",
+   "value": "0.43",
+   "uncertainty": "±0.01",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "5.2. Constraints on the HCO + distribution and temperature",
+     "quote": "T 100 = 26 . 9 ± 3 and q = 0 . 43 ± 0 . 01"
+    }
+   ]
+  },
+  {
+   "quantity": "Central unresolved flux within 100 mas",
+   "value": "0.28 (1.1 mm), 0.09 (2.1 mm)",
+   "uncertainty": "±0.02 each",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "6.2. Origin of the central compact emission",
+     "quote": "0 . 28 ± 0 . 02 mJy at 1.1 mm and 0 . 09 ± 0 . 02 mJy at 2.1 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ integrated flux",
+   "value": "6960",
+   "uncertainty": "±60",
+   "units": "mJy km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "6960 ± 60"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels flagged for Band 6 continuum",
+  "Self-calibration solution intervals and number of iterations",
+  "Gaussian taper parameters for the HCO+ cube",
+  "CLEAN thresholds and image size/cell size",
+  "Exact visibility binning and weight handling code for the MCMC fits",
+  "Which data reduction scripts were used (not released)"
+ ],
+ "missing_for_reproduction": [
+  "Self-cal solution intervals",
+  "Taper values for HCO+",
+  "Image size and cell size",
+  "Scripts for modeling not released"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and the modeling approach is well described with priors and MCMC settings, but several imaging and self-cal parameters and the thermal model inputs are missing.",
+ "rediscovery_reason": "Public data and a described recipe with numeric results (fluxes, spectral index, table of fit parameters), though some settings are unstated.",
+ "source_card": "cards/2020ApJ...891...48H/sonnet/card.md"
+}

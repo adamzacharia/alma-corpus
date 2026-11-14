@@ -1,0 +1,976 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.482.3443B",
+  "title": "Deep ALMA search for CO gas in the HD 95086 debris disc",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Booth, Mark",
+  "n_authors": 10,
+  "arxiv_id": "1811.00412",
+  "doi": "10.1093/mnras/sty2993",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00612.S",
+   "2013.1.00773.S",
+   "2016.A.00021.T"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "Observations",
+    "quote": "HD 95086 was first observed by two ALMA programmes in cycle 2: #2013.1.00773.S (PI: Su; hereafter referred to as data set A) and #2013.1.00612.S (PI: Booth; hereafter referred to as data set B)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks"
+   ],
+   "targets": [
+    {
+     "name": "HD 95086",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "86.4±0.2 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HD 95086 is located at a distance of 86.4$\\pm$0.2 pc (cite: gaia18)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Gaia (cite: gaia18)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HD 95086 is located at a distance of 86.4$\\pm$0.2 pc (cite: gaia18)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there CO gas in the HD 95086 debris disc, and is its level consistent with second-generation production rather than primordial gas?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this paper we conduct a deep search for CO gas in the system HD 95086"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00773.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "#2013.1.00773.S (PI: Su; hereafter referred to as data set A)"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00612.S",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "#2013.1.00612.S (PI: Booth; hereafter referred to as data set B)"
+      }
+     ]
+    },
+    {
+     "code": "2016.A.00021.T",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "under a directors discretionary time proposal: #2016.A.00021.T (PI: Ho)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 3, 6, 7",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we search for CO emission lines in bands 3, 6 and 7"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "3840 channels per line window; 0.63 km/s (band 6, band 3), 0.42 km/s (band 7)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "with one spectral window, which has 3840 channels of width 0.63 km s$^{-1}$ or 0.49 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CO $J$=2-1 line (which has a rest frequency of 230.538 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=1-0",
+     "rest_frequency": "115.271 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CO $J$=1-0 line (which has a rest frequency of 115.271 GHz)"
+      }
+     ]
+    },
+    {
+     "species": "CO",
+     "transition": "J=3-2",
+     "rest_frequency": "345.796 GHz",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CO $J$=3-2 line (which has a rest frequency of 345.796 GHz)"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Band 6: compact configuration",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the observations were taken in band 6 whilst the array was in a compact configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 6 1.5x1.3\"; band 3 1.9x1.7\"; band 7 0.8x0.5\"",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The angular resolution is $1.5\\times1.3\\ensuremath{''}$ for both data sets."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "RMS per channel: band 6 combined 0.38 mJy/beam; band 3 2.2; band 7 4.8",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "the data cube of the combined data has an RMS per spectral channel of 0.38 mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Band 6 combined 9.1 h; band 3 55 min; band 7 6 min",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The total on-source observation time for the combined data sets is 9.1 hours."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The band 3 data were for a total on-source observing time of 55 minutes."
+     },
+     {
+      "loc": "Observations",
+      "quote": "The band 7 data were for a total on-source observing time of 6 minutes"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Su (A), Booth (B), Ho DDT (band 3/7)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "#2013.1.00773.S (PI: Su; hereafter referred to as data set A)"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Disc inclination ~31 deg and PA ~98 deg",
+      "evidence": [
+       {
+        "loc": "3.1 CO J=2-1 analysis",
+        "quote": "which are found to be around 31$\\ensuremath{^\\circ}$ and 98$\\ensuremath{^\\circ}$ respectively (cite: su17a)"
+       }
+      ]
+     },
+     "citation": "(cite: su17a)"
+    },
+    {
+     "what": {
+      "value": "Stellar radial velocities 17±2 and 10.1±1.2 km/s",
+      "evidence": [
+       {
+        "loc": "3.1 CO J=2-1 analysis",
+        "quote": "used Hipparcos astrometry to determine a radial velocity of 10.1$\\pm$1.2 km s$^{-1}$"
+       }
+      ]
+     },
+     "citation": "(cite: moor13; madsen02)"
+    },
+    {
+     "what": {
+      "value": "Stellar distance and luminosity from Gaia",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "with a luminosity of $L_\\star=6.63\\pm0.03$ L$_\\odot$ (cite: gaia18)"
+       }
+      ]
+     },
+     "citation": "(cite: gaia18)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA pipeline mode",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We reduced both data sets using `casa` version 4.7.2 in pipeline mode."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We reduced both data sets using `casa` version 4.7.2 in pipeline mode."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CLEAN",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We then inverted the visibilities using `CLEAN` to create the data cube using natural weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "using natural weighting to optimise the signal to noise ratio"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub on line-free parts of spectral window",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We subtracted the continuum from each data set using `uvcontsub` by fitting to the parts of the spectral window that do not include the line."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Continuum images smoothed to 2.5\" for spectral index map",
+     "evidence": [
+      {
+       "loc": "4 Resolved spectral index map",
+       "quote": "We smooth them all to a consistent 2.5$''$ resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Further observation details and continuum analysis of data sets A and B",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Further details of the observations along with analysis of the continuum data can be found in (cite: su17a)."
+       }
+      ]
+     },
+     "from_reference": "(cite: su17a)"
+    },
+    {
+     "what": {
+      "value": "Spectro-spatial filtering technique",
+      "evidence": [
+       {
+        "loc": "3.1 CO J=2-1 analysis",
+        "quote": "if we make use of spatial and spectral filters as (cite: matra15; matra17a) have done for Fomalhaut"
+       }
+      ]
+     },
+     "from_reference": "(cite: matra15; matra17a)"
+    },
+    {
+     "what": {
+      "value": "Band 7 data discussed in detail elsewhere",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "is discussed in detail in (cite: zapata18)"
+       }
+      ]
+     },
+     "from_reference": "(cite: zapata18)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channel ranges for uvcontsub and fit order",
+    "CLEAN cell size, image size, masks and threshold",
+    "Whether Hanning smoothing was applied in the pipeline",
+    "Exact continuum spectral windows used for the spectral index images",
+    "Arkenberg et al. PHOENIX model details (in prep.)",
+    "Details of the curve-fitting routine used",
+    "Belt radius and width used in the CO+CO2 fraction calculation"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image CO cubes",
+    "method": {
+     "value": "Pipeline calibration, uvcontsub, natural-weighted CLEAN cubes",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We reduced both data sets using `casa` version 4.7.2 in pipeline mode."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Spectro-spatial filtering",
+    "method": {
+     "value": "Shift each pixel's spectrum by Keplerian radial velocity (M*~1.6 Msun, i=31, PA=98) and sum over continuum region, for both rotation senses",
+     "evidence": [
+      {
+       "loc": "3.1 CO J=2-1 analysis",
+       "quote": "Shifting the spectra in each pixel by the negative of its assigned radial velocity relative to that of the star and then summing spatially across the region where the continuum is detected"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Pixels with continuum SNR >=10 summed for unshifted spectrum",
+      "evidence": [
+       {
+        "loc": "3.1 CO J=2-1 analysis",
+        "quote": "summing over all pixels with a signal-to-noise ratio of at least 10 in the continuum image"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Gas Keplerian with same inclination and PA as dust disc",
+      "evidence": [
+       {
+        "loc": "3.1 CO J=2-1 analysis",
+        "quote": "We assume the gas disc has the same inclination and position angle as the dust disc"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fit to filtered spectrum; errors from covariance matrix",
+     "evidence": [
+      {
+       "loc": "3.1 CO J=2-1 analysis",
+       "quote": "The uncertainties on these values are calculated from the square root of the diagonal of the covariance matrix output by the curve fitting algorithm."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked in both data sets separately; false-positive probability ~8%",
+     "evidence": [
+      {
+       "loc": "3.1 CO J=2-1 analysis",
+       "quote": "The probability of one of these containing noise of at least this level is roughly 8%"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Upper limits for CO 3-2 and 1-0",
+    "method": {
+     "value": "Same analysis on band 7 and band 3 data; 3 sigma limits at stellar velocity assuming 2-1 line width",
+     "evidence": [
+      {
+       "loc": "3.2 CO J=3-2 analysis",
+       "quote": "we are only able to place a 3$\\sigma$ upper limit of 190 mJy km s$^{-1}$ at the stellar velocity"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Convert line flux to CO mass",
+    "method": {
+     "value": "Molecular excitation code of Matra et al., PHOENIX stellar UV, electron density 1e-4 to 1e10 cm-3, Tkin 10-250 K",
+     "evidence": [
+      {
+       "loc": "5.1 Gas production within the disc",
+       "quote": "we use electron densities between 10$^{-4}$ and 10$^{10}$ cm$^{-3}$ and kinetic temperatures between 10 and 250 K"
+      }
+     ]
+    },
+    "software": [
+     "PHOENIX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Collisional partners are electrons (second generation gas)",
+      "evidence": [
+       {
+        "loc": "5.1 Gas production within the disc",
+        "quote": "assumed to be electrons for a second generation gas production scenario"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to Kral et al. model prediction ~6e-6 Mearth",
+     "evidence": [
+      {
+       "loc": "5.1 Gas production within the disc",
+       "quote": "This results in a predicted CO mass of $\\sim6\\times10^{-6}$ M$_\\oplus$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Resolved spectral index map",
+    "method": {
+     "value": "Seven naturally-weighted CLEAN continuum images smoothed to 2.5\", per-pixel power-law fit",
+     "evidence": [
+      {
+       "loc": "4 Resolved spectral index map",
+       "quote": "Then for each pixel we fit a power law to get the spectral index and its uncertainty"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Draine06 astrosilicate approximations for size distribution slope",
+      "evidence": [
+       {
+        "loc": "5.4 Size distribution",
+        "quote": "By using the analytic approximations of (cite: draine06), which assume an astrosilicate composition"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Pipeline reduction, uvcontsub, CLEAN imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We reduced both data sets using `casa` version 4.7.2 in pipeline mode."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "Acknowledged as used in the research",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This research made use of Astropy, a community-developed core Python package for Astronomy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHOENIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Stellar atmosphere model for UV field",
+     "evidence": [
+      {
+       "loc": "5.1 Gas production within the disc",
+       "quote": "modelled using a PHOENIX stellar atmosphere model"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CO J=2-1 integrated line flux",
+    "value": "9.5",
+    "uncertainty": "3.6",
+    "units": "mJy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we find an integrated line flux of 9.5$\\pm$3.6 mJy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO line velocity",
+    "value": "8.5",
+    "uncertainty": "0.2",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "8.5$\\pm$0.2 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO mass",
+    "value": "(1.4–13)e-6",
+    "uncertainty": "not stated",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "CO mass of (1.4–13)$\\times 10^{-6}$ M$_\\oplus$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO+CO2 ice mass fraction",
+    "value": "5.7-35.7",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.1 Gas production within the disc",
+      "quote": "This results in a CO+CO$_2$ mass fraction in the exocomets of 5.7-35.7%"
+     }
+    ]
+   },
+   {
+    "quantity": "CO J=3-2 3sigma upper limit",
+    "value": "190",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 CO J=3-2 analysis",
+      "quote": "3$\\sigma$ upper limit of 190 mJy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO J=1-0 3sigma upper limit",
+    "value": "46",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 CO J=1-0 analysis",
+      "quote": "The 3$\\sigma$ upper limit of 46 mJy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mean disc spectral index",
+    "value": "2.41",
+    "uncertainty": "0.12",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Resolved spectral index map",
+      "quote": "results in a spectral index of 2.41$\\pm$0.12"
+     }
+    ]
+   },
+   {
+    "quantity": "Bright source peak spectral index",
+    "value": "3.6",
+    "uncertainty": "0.3",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 Resolved spectral index map",
+      "quote": "with a peak at 3.6$\\pm$0.3"
+     }
+    ]
+   },
+   {
+    "quantity": "Grain size distribution slope",
+    "value": "3.27",
+    "uncertainty": "0.07",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.4 Size distribution",
+      "quote": "size distribution slope of 3.27$\\pm$0.07"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Gas appears to move towards us on the East side; northern side of the disc is the near side",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "then we can say that the South side of the disc and the planet are inclined away from us and the North side is the near side"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "CO gas is present in the HD 95086 disc",
+    "experiment": "Spectro-spatial filtering of band 6 CO 2-1 data",
+    "result": "Peak 4.3±1.4 mJy at 8.5 km/s, 3.05 sigma, ~8% false-positive probability",
+    "finding": "Tentative CO detection",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.1 CO J=2-1 analysis",
+      "quote": "low enough that we consider this a tentative detection"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Gas is second-generation rather than primordial",
+    "experiment": "Convert flux to CO mass and compare with collisional-cascade model",
+    "result": "Mass (1.4-13)e-6 Mearth vs predicted ~6e-6",
+    "finding": "Consistent with collisional cascade",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Gas production within the disc",
+      "quote": "we conclude that our observations are consistent with this model of gas produced through the collisional cascade"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The bright compact continuum source is a background galaxy",
+    "experiment": "CO limit at its location and spectral index map",
+    "result": "No CO concentration; spectral index 3.6±0.3 vs 2.41±0.12",
+    "finding": "Supports unrelated background source",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.3 Nature of the compact continuum sources",
+      "quote": "does back-up the earlier claims of this source being an unrelated background source"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Spectro-spatial filtering boosts SNR for low-SNR CO emission",
+    "evidence": [
+     {
+      "loc": "3.1 CO J=2-1 analysis",
+      "quote": "we can attempt to increase the SNR by taking into account the velocity and shifting the spectra in each pixel"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "A 4.6 sigma CO 3-2 line at 2.3 km/s judged noise, not associated with disc",
+     "evidence": [
+      {
+       "loc": "3.2 CO J=3-2 analysis",
+       "quote": "All this strongly suggests that this line is not associated with the disc and so is most likely just noise."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Detection is tentative and needs further observations",
+     "evidence": [
+      {
+       "loc": "3.1 CO J=2-1 analysis",
+       "quote": "further observations are clearly required to determine for sure whether any CO is present in this system"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "3 sigma significance with a posteriori choice of velocity window",
+    "Assumed Keplerian velocity and dust geometry for gas",
+    "Wide CO mass range from unknown excitation conditions"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA data acknowledged by project code; public status not explicitly stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data:"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CLEAN parameters",
+    "Line-free channel selection",
+    "Custom filtering code not released",
+    "PHOENIX/excitation code inputs"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB",
+   "score_inferred": 3,
+   "score_reason": "Data and main steps described, but imaging parameters and code are missing and the result is low-significance.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe lacks key parameters and the main result is a marginal detection depending on custom code."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: matra15; matra17a)",
+     "why": "Spectro-spatial filtering and CO mass conversion"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: su17a)",
+     "why": "Continuum analysis of the same band 6 data"
+    },
+    {
+     "citation": "(cite: zapata18)",
+     "why": "Earlier CO limits and band 7 data"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f43ca5dec03de0cbacfbfdeb87b8fbab",
+  "batch_id": "msgbatch_01NyPpV8KwpU3YmZSqJaEUmN",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:14:29",
+  "usage": {
+   "input_tokens": 16560,
+   "output_tokens": 7414,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.054236,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 63,
+  "quotes_ok": 63,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 42,
+   "rate": 0.568
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:17",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "Power-law least squares with covariance errors"
+   }
+  ],
+  "dropped_items": []
+ }
+}

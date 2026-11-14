@@ -1,0 +1,438 @@
+{
+ "bibcode": "2022A&A...668A.109N",
+ "title": "N-bearing complex organics toward high-mass protostars. Constant ratios pointing to formation in similar pre-stellar conditions across a large mass range",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243788",
+ "arxiv_id": "2208.11128",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Study six N-bearing complex organic molecules (CH3CN, HNCO, NH2CHO, C2H5CN, C2H3CN, CH3NH2) and CH3OH in 37 line-rich high-mass protostars to determine excitation temperatures, column density ratios, and formation conditions across low- and high-mass protostars.",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "Band 6 (~1 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.5'' to 1.5'' (~1'' angular resolution; ~1000-5000 au)",
+  "sensitivity": "Continuum rms 0.5 to 13.0 mJy beam^-1; Line rms 0.11 to 0.56 K"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source distances for 35 sources",
+    "evidence": [
+     {
+      "loc": "Additional tables",
+      "quote": "$^{\\rm (a)}$ Distance to the source. All from (cite: Mege2021), except for sources G305.2017+00.2072A1 and G323.7399-00.2617B2 that are from (cite: Lumsden2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Mege2021)"
+  },
+  {
+   "what": {
+    "value": "Source distances and bolometric luminosities for select sources",
+    "evidence": [
+     {
+      "loc": "Additional tables",
+      "quote": "$^{\\rm (a)}$ Distance to the source. All from (cite: Mege2021), except for sources G305.2017+00.2072A1 and G323.7399-00.2617B2 that are from (cite: Lumsden2013)."
+     },
+     {
+      "loc": "Additional tables",
+      "quote": "$^{\\rm (d)}$ Bolometric luminosities from (cite: Elia2017) for all sources except 61559, G305.2017+00.2072A1, G323.7399-00.2617B2 and G343.1261-00.0623 that are from (cite: Lumsden2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Lumsden2013)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosities for 32 sources",
+    "evidence": [
+     {
+      "loc": "Additional tables",
+      "quote": "$^{\\rm (d)}$ Bolometric luminosities from (cite: Elia2017) for all sources except 61559, G305.2017+00.2072A1, G323.7399-00.2617B2 and G343.1261-00.0623 that are from (cite: Lumsden2013)."
+     }
+    ]
+   },
+   "citation": "(cite: Elia2017)"
+  },
+  {
+   "what": {
+    "value": "Sun's distance to the Galactic Center (8.05 kpc)",
+    "evidence": [
+     {
+      "loc": "Additional tables",
+      "quote": "$^{\\rm (b)}$ Distances to the galactic center calculated using Sun’s distance to the galactic center as 8.05 kpc from (cite: Honma2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Honma2015)"
+  },
+  {
+   "what": {
+    "value": "Galactocentric isotope ratio relations for 16O/18O and 12C/13C",
+    "evidence": [
+     {
+      "loc": "Spectral modeling",
+      "quote": "The isotopologue ratios of $^{16}$O/$^{18}$O and $^{12}$C/$^{13}$C are calculated using the equations in (cite: Wilson1994) and (cite: Milam2005) and the distances to the galactic center presented in Table [\\[tab:source_features\\]](#tab:source_features)."
+     }
+    ]
+   },
+   "citation": "(cite: Wilson1994); (cite: Milam2005)"
+  },
+  {
+   "what": {
+    "value": "Column densities of COMs in low- and high-mass protostars from literature for comparison",
+    "evidence": [
+     {
+      "loc": "Additionalplots",
+      "quote": "The values for literature sources are taken from the references given in Table [\\[tab:refs\\]](#tab:refs)."
+     }
+    ]
+   },
+   "citation": "(cite: Calcutt2018); (cite: Ligterink2017); (cite: Nazari2021); (cite: Lopez2017); (cite: Ligterink2021); (cite: Bogelund2019); (cite: Cernicharo2016); (cite: Bogelund2019AFGL); (cite: Law2021); (cite: Molet2019); (cite: Gorai2020); (cite: Colzi2021); (cite: Ligterink2020); (cite: Belloche2016); (cite: Belloche2017); (cite: Zeng2018); (cite: Manigand2020); (cite: Coutens2016); (cite: Jorgensen2018); (cite: vanGelder2020); (cite: Lee2019); (cite: Jacobsen2019); (cite: Bogelund2018)"
+  },
+  {
+   "what": {
+    "value": "Fitted relations between NH2CHO and HNCO column densities and abundances",
+    "evidence": [
+     {
+      "loc": "NH$_2$CHO versus HNCO",
+      "quote": "Red shows the fit to the column densities of these two molecules towards the high-mass star forming region NGC 6334I ((cite: Ligterink2020)). Orange shows the same from (cite: Law2021) for the massive star forming region G10.6-0.4."
+     },
+     {
+      "loc": "NH$_2$CHO versus HNCO",
+      "quote": "Blue, pink and black are the fits to the abundances of NH$_2$CHO and HNCO with respect to $N_{\\rm H_{2}}$ from (cite: Lopez2015), (cite: Quenard2018) and (cite: Colzi2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Ligterink2020); (cite: Law2021); (cite: Lopez2015); (cite: Quenard2018); (cite: Colzi2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select sample of 37 line-rich hot molecular cores and extract single-pixel spectra",
+   "method": "Select sources from ~200 publicly available ALMAGAL pipeline products (beam 0.5''-1.5'') where CH3CN 12_7-11_7 is detected at ~2.5-3 sigma, excluding sources with very blended lines; extract spectrum from the peak pixel of the CH3CN 12_4-11_4 moment zero map (1 beam off-source for 787212).",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "beam size between 0.5'' and 1.5''",
+    "CH3CN 12_7-11_7 detection threshold ~2.5-3 sigma"
+   ],
+   "assumptions": [
+    "CH3CN 12_4-11_4 traces the overall N-bearing COM emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit LTE synthetic spectra to derive column densities, excitation temperatures, and FWHMs",
+   "method": "Use CASSIS assuming LTE with a single velocity component. Apply chi^2 grid fitting for species with relatively unblended lines (C2H3CN, C2H5CN, some CH3^18OH) and fit-by-eye for blended species (HN^13CO, CH3^13CN, NH2CHO, CH3NH2, ^13CH3OH, most CH3^18OH). Fit blending contaminants (C2H3CN, NH2CN, C2H5OH) prior to fitting NH2CHO.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Grid N: 10^13 to 10^17 cm^-2 in steps of 0.1 dex; Grid T_ex: 10 to 300 K in steps of 10 K; Grid FWHM: 3 to 11 km s^-1 in steps of 0.1 km s^-1",
+    "Fixed T_ex when not fitted: fixed to T_ex of CH3^13CN (~150 K if CH3^13CN not fitted), or 90 K for CH3NH2 (60 K for G345.5043+00.3480)",
+    "Vibrational correction factors: 1.5 at 300 K for NH2CHO; 1.3174 to 2.1318 for C2H5CN at T_ex >= 120 K; ignored (<1.1) for CH3CN"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), single velocity component, and beam dilution factor of unity"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Convert isotopologue column densities to main isotopologues (CH3CN, HNCO, CH3OH)",
+   "method": "Multiply column densities of CH3^13CN, HN^13CO, and CH3^18OH (or ^13CH3OH) by Galactocentric-distance-dependent 12C/13C and 16O/18O ratios; when isotopologues are undetected, blended, or optically thicker than weak main lines, fit the weakest clearly detected (S/N > 3) main line (e.g., CH3CN 12_10-11_10).",
+   "software": [],
+   "key_parameters": [
+    "Sun's Galactocentric distance = 8.05 kpc; typical distance uncertainty = 0.5 kpc; 12C/13C = 34 to 70 (error 6-12); 16O/18O = 188 to 525 (error 75-116)"
+   ],
+   "assumptions": [
+    "Isotopologue ratios follow the linear Galactocentric gradient relations of Wilson & Rood (1994) and Milam et al. (2005); y-intercept uncertainty is omitted from error propagation"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute column density correlations, power-law fits, and spread factors across low- and high-mass protostars",
+   "method": "Calculate Pearson's r correlation coefficients in log10 space between column densities (excluding ^13CH3OH-derived methanol sources); fit power-law between NH2CHO and HNCO; compute error-weighted mean and 1-sigma spread factor (10^dex) of log10 column density ratios combining ALMAGAL and literature low/high-mass sources (excluding upper/lower limits and Sgr B2(N2)).",
+   "software": [],
+   "key_parameters": [
+    "N_H2 = 10^23 cm^-2 assumed to normalize literature abundance fits in NH2CHO vs HNCO comparison"
+   ],
+   "assumptions": [
+    "Emitting areas of the two species in a ratio are assumed equal (prior to physical structure corrections)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Model pre-stellar timescale scatter using a chemical toy model and compare ratios with Garrod et al. (2022) models",
+   "method": "Compare observed column density ratios with peak gas-phase abundances from Garrod et al. (2022) warm-up models; parameterize pre-stellar ice abundance growth between 10^5 and 10^6 yr as X_i = A_i (t / 10^6 yr)^alpha_i to infer the spread in pre-stellar timescales (t / t_bar) from the observed spread in abundance ratios.",
+   "software": [],
+   "key_parameters": [
+    "alpha values: CH3CN = 3.7, C2H5CN = 3.0, CH3OH = 2.3, HNCO = 3.9, C2H3CN = 4.0, CH3NH2 = 1.3; pre-stellar timescale range 10^5 to 10^6 yr"
+   ],
+   "assumptions": [
+    "Column density ratios equal pre-stellar ice abundance ratios; pre-stellar temperature is constant at ~10 K and density increases from ~10^3 to ~10^8 cm^-3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Detection fraction of CH3OH, CH3CN, and HNCO",
+   "value": "100",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "CH$_3$OH, CH$_3$CN and HNCO are detected in all sources in our sample, whereas C$_2$H$_3$CN and CH$_3$NH$_2$ are (tentatively) detected in ${\\sim} 78\\%$ and ${\\sim} 32\\%$ of the sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Detection fraction of C2H3CN",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "CH$_3$OH, CH$_3$CN and HNCO are detected in all sources in our sample, whereas C$_2$H$_3$CN and CH$_3$NH$_2$ are (tentatively) detected in ${\\sim} 78\\%$ and ${\\sim} 32\\%$ of the sources."
+    }
+   ]
+  },
+  {
+   "quantity": "Detection fraction of CH3NH2 (12 of 37 sources)",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Detection statistics",
+     "quote": "From the molecules shown in Fig. [4](#fig:detections), CH$_3$NH$_{2}$ is the least (tentatively) detected molecule, in only 12 sources (in ${\\sim} 32\\%$ of the sources)."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of hot species (NH2CHO)",
+   "value": ">250",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find three groups of species when comparing their excitation temperatures: hot (NH$_2$CHO; $T_{\\rm ex} \\gtrsim 250$ K), warm (C$_2$H$_3$CN, HN$^{13}$CO and CH$_3^{13}$CN; 100 K $\\lesssim T_{\\rm ex} \\lesssim 250$ K) and cold species (CH$_3$OH and CH$_3$NH$_2$; $T_{\\rm ex} \\lesssim 100$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature range of warm species (C2H3CN, HN13CO, CH313CN)",
+   "value": "100-250",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find three groups of species when comparing their excitation temperatures: hot (NH$_2$CHO; $T_{\\rm ex} \\gtrsim 250$ K), warm (C$_2$H$_3$CN, HN$^{13}$CO and CH$_3^{13}$CN; 100 K $\\lesssim T_{\\rm ex} \\lesssim 250$ K) and cold species (CH$_3$OH and CH$_3$NH$_2$; $T_{\\rm ex} \\lesssim 100$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Excitation temperature of cold species (CH318OH, CH3NH2)",
+   "value": "<100",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We find three groups of species when comparing their excitation temperatures: hot (NH$_2$CHO; $T_{\\rm ex} \\gtrsim 250$ K), warm (C$_2$H$_3$CN, HN$^{13}$CO and CH$_3^{13}$CN; 100 K $\\lesssim T_{\\rm ex} \\lesssim 250$ K) and cold species (CH$_3$OH and CH$_3$NH$_2$; $T_{\\rm ex} \\lesssim 100$ K)."
+    }
+   ]
+  },
+  {
+   "quantity": "Pearson correlation coefficient r_P between C2H5CN and CH3CN column densities",
+   "value": "0.94",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Column densities",
+     "quote": "C$_{2}$H$_5$CN and CH$_3$CN are found to have the tightest correlation with $r_{\\rm P}$ of 0.94."
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law exponent y in N(NH2CHO) = 199 * N(HNCO)^y",
+   "value": "0.79",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "NH$_2$CHO versus HNCO",
+     "quote": "In the top panel the data points are presented and a simple curve of the form $N_{\\rm{NH_{2}CHO}} = 199 \\times N_{\\rm{HNCO}}^{0.79}$ is fitted to the column densities."
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio C2H5CN/CH3CN (All sources)",
+   "value": "0.1736",
+   "uncertainty": "spread factor 1.66",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| C$_2$H$_5$CN/CH$_3$CN     | 1.45    | 1.40 | 1.63  | 1.66 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| C$_2$H$_5$CN/CH$_3$CN     | 0.1672  | 0.1071 | 0.1859 | 0.1736 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio C2H3CN/CH3CN (All sources)",
+   "value": "0.0514",
+   "uncertainty": "spread factor 2.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| C$_2$H$_3$CN/CH$_3$CN     | 1.66    | –    | 2.02  | 2.04 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| C$_2$H$_3$CN/CH$_3$CN     | 0.0447  | –      | 0.0528 | 0.0514 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio HNCO/CH3CN (All sources)",
+   "value": "2.4217",
+   "uncertainty": "spread factor 2.04",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| HNCO/CH$_3$CN             | 1.84    | 3.83 | 1.93  | 2.04 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| HNCO/CH$_3$CN             | 2.7236  | 2.0746 | 2.4525 | 2.4217 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio NH2CHO/CH3OH (All sources)",
+   "value": "0.0016",
+   "uncertainty": "spread factor 3.20",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| NH$_2$CHO/CH$_3$OH        | 3.15    | 2.58 | 3.05  | 3.20 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| NH$_2$CHO/CH$_3$OH        | 0.0014  | 0.0003 | 0.0017 | 0.0016 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio NH2CHO/HNCO (All sources)",
+   "value": "0.1112",
+   "uncertainty": "spread factor 3.05",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| NH$_2$CHO/HNCO            | 2.31    | 2.57 | 3.03  | 3.05 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| NH$_2$CHO/HNCO            | 0.0607  | 0.0405 | 0.1150 | 0.1112 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio CH3NH2/CH3OH (All sources)",
+   "value": "0.0016",
+   "uncertainty": "spread factor 1.71",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| CH$_3$NH$_2$/CH$_3$OH     | 1.66    | –    | 1.71  | 1.71 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| CH$_3$NH$_2$/CH$_3$OH     | 0.0016  | –      | 0.0016 | 0.0016 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Weighted mean column density ratio CH3CN/CH3OH (All sources)",
+   "value": "0.0076",
+   "uncertainty": "spread factor 2.19",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Going from low- to high-mass protostars",
+     "quote": "| CH$_3$CN/CH$_3$OH         | 2.05    | 1.49 | 2.17  | 2.19 |"
+    },
+    {
+     "loc": "Additional tables",
+     "quote": "| CH$_3$CN/CH$_3$OH         | 0.0085  | 0.0034 | 0.0081 | 0.0076 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Inferred spread in pre-stellar timescales (t / t_bar)",
+   "value": "1.5-2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Observed scatter",
+     "quote": "This figure shows that the scatter in column density ratios of some species can be explained by a factor ${\\sim} 1.5-2$ spread in the pre-stellar timescales of the low- and high-mass protostars."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Continuum subtraction method and line-free channel selection used on the extracted spectra or cubes",
+  "Velocity integration ranges used to construct the CH3CN 12_4-11_4 moment zero maps for peak pixel identification",
+  "Exact transitions and upper energy levels of CH3^18OH and ^13CH3OH used in the spectral fitting (missing from Table 4)",
+  "Exact values of A_i (ice abundance at 10^6 yr) adopted in the chemical toy model after manual adjustment for CH3CN and CH3NH2"
+ ],
+ "missing_for_reproduction": [
+  "Exact line list and spectroscopic parameters used for CH3^18OH and ^13CH3OH (omitted from Table 4)",
+  "Details of continuum baseline subtraction applied to the extracted spectra before CASSIS modeling",
+  "Subjective visual judgment criteria used in the fit-by-eye procedure for blended species and contaminant pre-fitting (NH2CN, C2H5OH)",
+  "Exact modified values of A_i for CH3CN and CH3NH2 used in the chemical toy model plots (Fig. 45)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The paper uses standard public archival pipeline products (2019.1.00195.L) as-is, and provides exact extraction coordinates, beam sizes, RMS values, source velocities, isotope ratios, vibrational correction factors, line lists (for N-bearing species), and complete per-source fit tables. Reproducibility is slightly limited by the reliance on manual 'fit-by-eye' spectral modeling in CASSIS for blended species and the omission of the methanol line list from Table 4.",
+ "rediscovery_reason": "The ALMA pipeline data products are public in the archive, the exact sky coordinates for single-pixel spectrum extraction are tabulated for all 37 sources, and the main results (per-source LTE column densities, excitation temperatures, Pearson correlations, and ratio spread factors) are fully numeric.",
+ "source_card": "cards/2022A%26A...668A.109N/sonnet/card.md"
+}

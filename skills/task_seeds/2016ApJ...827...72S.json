@@ -1,0 +1,332 @@
+{
+ "bibcode": "2016ApJ...827...72S",
+ "title": "The Detection of a Hot Molecular Core in the Large Magellanic Cloud with ALMA",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/827/1/72",
+ "arxiv_id": "1606.02823",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Does the high-mass YSO ST11 in the LMC host a hot molecular core, and how do its molecular abundances compare with Galactic hot cores?",
+ "alma_project_codes": [
+  "2012.1.01108.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5\" x 0.5\" (0.12 pc) at 338 GHz",
+  "sensitivity": "RMS ~0.13–0.21 K per channel (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Orion KL spectral line data for comparison rotation diagram",
+    "evidence": [
+     {
+      "loc": "4.2 Rotation diagram",
+      "quote": "The Orion data is obtained with the 20$\\ensuremath{''}$ beam size ($\\sim$0.04 pc at the Orion region) and adopted from (cite: Schi97)."
+     }
+    ]
+   },
+   "citation": "(cite: Schi97)"
+  },
+  {
+   "what": {
+    "value": "LMC isotope ratios 12C/13C=49, 16O/17O=3400, 32S/34S=15",
+    "evidence": [
+     {
+      "loc": "5.2 Molecular abundances",
+      "quote": "We use the following isotope abundances for ST11; $^{12}$C/$^{13}$C = 49, $^{16}$O/$^{17}$O = 3400, and $^{32}$S/$^{34}$S = 15, according to (cite: Wan09)"
+     }
+    ]
+   },
+   "citation": "(cite: Wan09)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity of grains with thin ice mantles",
+    "evidence": [
+     {
+      "loc": "4.4 Column density of H2",
+      "quote": "We use the mass absorption coefficient of dust grains coated by thin ice mantles as presented in (cite: Oss94)."
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "Galactic hot core abundances (Orion, W3(H2O), G34.3+0.15)",
+    "evidence": [
+     {
+      "loc": "Table 5",
+      "quote": "$^b$(cite: Ziu91; Sut95; Schi97), also see $\\S$ [5.2](#sec_X_mol); $^c$(cite: Hel97); $^d$(cite: Mac96)"
+     }
+    ]
+   },
+   "citation": "(cite: Ziu91; Sut95; Schi97; Hel97; Mac96)"
+  },
+  {
+   "what": {
+    "value": "LMC elemental abundances",
+    "evidence": [
+     {
+      "loc": "5.2.1 CO",
+      "quote": "\\[C/H\\]$_{\\mathrm{LMC}}$ = 1.2 $\\times$ 10$^{-4}$ and \\[O/H\\]$_{\\mathrm{LMC}}$ = 2.3 $\\times$ 10$^{-4}$ (cite: Kor02)"
+     }
+    ]
+   },
+   "citation": "(cite: Kor02)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and continuum",
+   "method": "Spectra and continuum flux taken from a 0.5\" diameter circular region at the 840 um continuum peak after uvcontsub",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line parameters",
+   "method": "Single Gaussian fit per line (double Gaussian for blended NO); CO by visual estimate and direct integration 230–285 km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Rotation diagram for SO2 isotopologues",
+   "method": "Optically thin LTE rotation diagram, straight-line fit of ln(Nu/gu) vs Eu/k",
+   "software": [
+    "CDMS",
+    "JPL catalog"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin, LTE"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Column densities of other molecules",
+   "method": "LTE optically thin with Trot fixed; upper limits with FWHM 6 km/s",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Same region as SO2; Trot = 100 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "H2 column density and gas mass from dust continuum",
+   "method": "Optically thin dust emission, N_H2 = (F/Omega)/(2 kappa B(Td) Z mu mH)",
+   "software": [],
+   "key_parameters": [
+    "F/Omega = 0.34 Jy/beam in 0.5\" aperture"
+   ],
+   "assumptions": [
+    "Td = 40 K, Z = 0.0027, mu = 1.41, Ossenkopf & Henning ice-coated opacity"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "SED luminosity and stellar mass",
+   "method": "Integrate interpolated SED 1–1000 um; Robitaille Online SED Fitter on 2–840 um data excluding SPIRE 350/500",
+   "software": [
+    "Online SED Fitter"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Distance to ST11 equals LMC distance"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Fractional abundances vs Galactic hot cores",
+   "method": "N(X)/N(H2) with LMC isotope ratios; Galactic sources re-estimated with local ISM ratios",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Outflow parameters from CO(3-2) wings",
+   "method": "Blue wing 230.5–240.5 km/s, red wing 265.5–285.5 km/s; mass from CO intensity conversion factor; timescale from 0.24 pc / 20 km/s",
+   "software": [],
+   "key_parameters": [
+    "Conversion factor 8.8 Msun (K km/s)^-1 pc^-2; S/N > 6"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "SO2 rotational temperature",
+   "value": "190",
+   "uncertainty": "±5 (2 sigma)",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SO$_2$        | 190 $\\pm$ 5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "34SO2 rotational temperature",
+   "value": "95",
+   "uncertainty": "±7",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| $^{34}$SO$_2$ | 95 $\\pm$ 7  |"
+    }
+   ]
+  },
+  {
+   "quantity": "SO2 column density",
+   "value": "8.4e15",
+   "uncertainty": "±0.3e15",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| SO$_2$         |  190$^{*}$  | 8.4 $\\pm$ 0.3 $\\times$ 10$^{15}$$^{*}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density",
+   "value": "4.5e23",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Column density of H2",
+     "quote": "we estimate $N_{H_2}$ = 4.5 $\\times$ 10$^{23}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass",
+   "value": "115",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 Column density of H2",
+     "quote": "This H$_2$ column density corresponds to the total gas mass of 115 M$_{\\ensuremath{\\odot}}$ in the line of sight."
+    }
+   ]
+  },
+  {
+   "quantity": "Bolometric luminosity",
+   "value": "5e5",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5 Luminosity and stellar mass",
+     "quote": "The bolometric luminosity of ST11 is estimated to be 5 $\\times$ 10$^5$ L$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar mass",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5 Luminosity and stellar mass",
+     "quote": "The estimated stellar mass of ST11 in the best-fit model is 50 M$_{\\ensuremath{\\odot}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH abundance upper limit",
+   "value": "<8e-10",
+   "uncertainty": "2 sigma limit",
+   "units": "N(X)/N(H2)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| CH$_3$OH      | $<$8 $\\times$ 10$^{-10}$          |"
+    }
+   ]
+  },
+  {
+   "quantity": "NO abundance",
+   "value": "2.0e-8",
+   "uncertainty": "±0.6e-8",
+   "units": "N(X)/N(H2)",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NO            | 2.0 $\\pm$ 0.6 $\\times$ 10$^{-8}$  |"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass",
+   "value": "74",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.3 Molecular outflows",
+     "quote": "The derived outflow mass is $M_{\\mathrm{out}}$ = 74 M$_{\\ensuremath{\\odot}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical timescale (upper limit)",
+   "value": "~1e4",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "5.3 Molecular outflows",
+     "quote": "we can roughly estimate an upper limit on the dynamical timescale of the outflow, which is about 10$^4$ years"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "tclean/clean parameters (weighting, robust, deconvolver, masking, image size, cell size)",
+  "line-free channels used for uvcontsub and local baseline",
+  "self-calibration use, flux scale uncertainty",
+  "how the 359 GHz continuum band was defined and its bandwidth",
+  "exact SED-fitter model set/settings",
+  "how the 840 um flux of 23.2 mJy was converted from the 0.34 Jy/beam",
+  "on-source times (Table 1 time column is empty)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters and masks",
+  "Line-free channels and baseline treatment",
+  "Full SED fitter settings",
+  "Per-line integration times"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Data public and analysis mostly explicit with tabulated line parameters, but imaging details are missing.",
+ "rediscovery_reason": "Public data, Gaussian line fits and rotation diagrams with numeric results are redoable from Table 1 recipes.",
+ "source_card": "cards/2016ApJ...827...72S/sonnet/card.md"
+}

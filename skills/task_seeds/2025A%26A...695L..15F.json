@@ -1,0 +1,393 @@
+{
+ "bibcode": "2025A&A...695L..15F",
+ "title": "Spatially resolved dust properties over 50 kpc in a hyperluminous galaxy merger at z = 4.6",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202453214",
+ "arxiv_id": "2502.10503",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the spatially resolved dust properties (mass, emissivity index, emitting area, temperature) across the ~50 kpc W2246-0526 hot DOG merger system, and what heats the dust in the hot DOG, streams and companions?",
+ "alma_project_codes": [
+  "2013.1.00576.S",
+  "2015.1.00883.S",
+  "2016.1.00668.S",
+  "2017.1.00899.S",
+  "2018.1.00119.S",
+  "2018.1.00333.S",
+  "2019.1.00219.S",
+  "2021.1.00726.S"
+ ],
+ "data": {
+  "bands": "Bands 3-10, eight datasets (rest-frame ~60 to ~600 um)",
+  "arrays": "ALMA 12-m array, multiple cycles",
+  "angular_resolution": "Native beams 0.54x0.46 to 0.35x0.30 arcsec (without uv-taper); homogenised to a common circular 1.0 arcsec beam",
+  "sensitivity": "Continuum rms of collapsed datasets from 0.007 to 1.36 mJy/beam (Table 1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity kappa_850um = 0.0968 kg^-1 m^2 at nu_0 = 352.7 GHz, following Scoville et al. 2014",
+    "evidence": [
+     {
+      "loc": "Observations and analysis",
+      "quote": "Following (cite: scoville2014) and assuming a gas-to-dust ratio of"
+     },
+     {
+      "loc": "Observations and analysis",
+      "quote": "we adopt $\\kappa_0=\\kappa_{850\\upmu\\mathrm{m}}=0.0968\\ \\mathrm{kg}^{-1} \\mathrm{m}^2$ and $\\nu_0 = 352.7$ GHz (850$\\upmu\\mathrm{m}$)"
+     }
+    ]
+   },
+   "citation": "(cite: scoville2014)"
+  },
+  {
+   "what": {
+    "value": "Hot DOG metallicity ~0.5 Zsun, used to justify gas-to-dust ratio 200",
+    "evidence": [
+     {
+      "loc": "Observations and analysis",
+      "quote": "given that the metallicity in the hot DOG is $\\sim0.5$ Z$_{\\odot}$ (cite: fernandez2024)"
+     }
+    ]
+   },
+   "citation": "(cite: fernandez2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "calibrate the ALMA data",
+   "method": "Reduce and calibrate each dataset with CASA using standard data reduction procedures",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "image the continuum at a common 1.0 arcsec resolution",
+   "method": "tclean continuum imaging of line-free channels with Hogbom cleaning, Briggs weighting and a uv-taper, restored to a common circular beam",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "robust = 2.0 (Briggs)",
+    "uv-taper 0.8 arcsec; restoring beam circular FWHM 1.0 arcsec",
+    "clean threshold 2 x rms of each cube; circular mask radius 7 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "fit a modified blackbody to the integrated central beam (hot DOG) with all eight datasets",
+   "method": "Fit the modified blackbody of Eq. 1 (area A, T_d, M_d, beta free; CMB contrast term included) to the eight central-beam fluxes",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Flat priors 1e-2<A<33 kpc^2, 12.6<T_d<300 K, 1e6<M_d<1e10 Msun, 1<beta<3"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio 200 (hot DOG metallicity ~0.5 Zsun); kappa_850um = 0.0968 kg^-1 m^2 at 352.7 GHz",
+    "Flat LCDM, H0 = 70 km/s/Mpc, Omega_M = 0.3; lower T limit set by T_CMB at z=4.601"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "derive resolved dust parameter maps pixel by pixel",
+   "method": "Fit the same modified blackbody to every pixel with emission in the four datasets with extended detections (rest-frame 149 to 357 um)",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "Same flat priors on A, T_d, M_d, beta as the central-beam fit",
+    "Upper limit on A set by the beam area"
+   ],
+   "assumptions": [
+    "Same gas-to-dust ratio (200), kappa_850um and cosmology as step 3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "derive optical depth, IR luminosity, SFR surface density and star formation efficiency maps",
+   "method": "tau at rest-frame 158 um from Eq. 3; L_3-1100um by integrating each pixel's modified blackbody; SFR from L_IR; Sigma_SFR = SFR/A; SFE = SFR/M_gas",
+   "software": [],
+   "key_parameters": [
+    "Sigma_SFR = SFR/A with A the intrinsic emitting area from the fit"
+   ],
+   "assumptions": [
+    "SFR from L_IR following Kennicutt & Evans 2012; M_gas = M_d x gas-to-dust ratio 200"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "estimate the SFR of the extended component and compare with theory",
+   "method": "Integrate the luminosity outside the central 2 arcsec region to get the extended SFR; compare central L_IR and Sigma_SFR with the Eddington limit for starbursts and with quasar heating predictions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Central beam dust emissivity index beta",
+   "value": "1.74",
+   "uncertainty": "±0.08",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\beta=1.74\\pm0.08$, $M_d=0.84_{-0.19}^{+0.20}\\times10^8 M_{\\odot}$, $T_d=109_{-15}^{+24}$ K, and $A=0.90_{-0.38}^{+0.60}$ kpc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central beam dust mass M_d",
+   "value": "0.84e8",
+   "uncertainty": "+0.20/-0.19 (x10^8)",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\beta=1.74\\pm0.08$, $M_d=0.84_{-0.19}^{+0.20}\\times10^8 M_{\\odot}$, $T_d=109_{-15}^{+24}$ K, and $A=0.90_{-0.38}^{+0.60}$ kpc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central beam dust temperature T_d",
+   "value": "109",
+   "uncertainty": "+24/-15",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\beta=1.74\\pm0.08$, $M_d=0.84_{-0.19}^{+0.20}\\times10^8 M_{\\odot}$, $T_d=109_{-15}^{+24}$ K, and $A=0.90_{-0.38}^{+0.60}$ kpc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central beam emitting area A",
+   "value": "0.90",
+   "uncertainty": "+0.60/-0.38",
+   "units": "kpc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "with $\\beta=1.74\\pm0.08$, $M_d=0.84_{-0.19}^{+0.20}\\times10^8 M_{\\odot}$, $T_d=109_{-15}^{+24}$ K, and $A=0.90_{-0.38}^{+0.60}$ kpc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central beam optical depth tau at rest-frame 158 um",
+   "value": "0.39",
+   "uncertainty": "+0.26/-0.18",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$0.39_{-0.18}^{+0.26}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated 3-1100 um luminosity of the central beam modified blackbody",
+   "value": "6.4e13",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "results in a $L_{3-1100\\upmu\\mathrm{m}}=6.4\\times10^{13}\\ L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central beam flux densities (63, 88, 123, 149, 155, 211, 357, 572 um)",
+   "value": "51.0, 29.6, 12.5, 7.4, 7.3, 2.7, 0.40, 0.068",
+   "uncertainty": "±0.8, ±0.6, ±0.3, ±0.2, ±0.2, ±0.1, ±0.04, ±0.037",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The corresponding fluxes are presented in Table"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak dust temperature at the hot DOG (resolved maps)",
+   "value": "~110",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The peak temperature at the location of the hot DOG, $\\sim$ 110 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature at radius ~8 kpc",
+   "value": "~40 at ~8 kpc",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The dust temperature drops to $\\sim$ 40 K at a radius of $\\sim$ 8 kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust temperature in the connecting streams",
+   "value": "30-40",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The dust in the connecting streams between the host and companion galaxies is at temperatures between $30-40$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Total dust mass of the whole system",
+   "value": "5.1e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "The system contains an estimated total mass of dust of $5.1\\times10^8M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust emissivity index range in resolved maps",
+   "value": "~1.4-2.0",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The dust emissivity index $\\beta$ takes values between $\\sim$ 1.4–2.0."
+    }
+   ]
+  },
+  {
+   "quantity": "Physical emitting area per pixel",
+   "value": "~500 pc^2 to ~1 kpc^2",
+   "uncertainty": "not stated",
+   "units": "pc^2 to kpc^2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The physical areas of emission vary between $\\sim$ 500 pc$^2$ and $\\sim$ 1 kpc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Areal filling factor of dust",
+   "value": "3% or smaller",
+   "uncertainty": "upper limit",
+   "units": "percent",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "implying areal filling factors of dust of 3$\\%$ or smaller"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum star formation efficiency",
+   "value": "10^-7.25",
+   "uncertainty": "not stated",
+   "units": "yr^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "reaching values as high as $10^{-7.25}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sigma_SFR required to reproduce the central luminosity",
+   "value": "~1e4",
+   "uncertainty": "not stated",
+   "units": "Msun yr^-1 kpc^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "we would require a $\\Sigma_{SFR}\\sim10^4\\ M_{\\odot}\\ \\mathrm{yr}^{-1}\\ \\mathrm{kpc}^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR in the extended component",
+   "value": "~800",
+   "uncertainty": "not stated",
+   "units": "Msun yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "We also estimate the SFR in the extended component to be $\\sim800\\ M_{\\odot}\\ \\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas depletion time of companions C2 and C3",
+   "value": "<100",
+   "uncertainty": "upper limit",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "while their SFE correspond to molecular gas depletion times of less than 100 Myr"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the pipeline or manual calibration was used for each of the eight datasets, and the CASA version used for calibration",
+  "Flux, bandpass and phase calibrators, absolute flux-scale uncertainties, and whether any flux uncertainty was added to the fit",
+  "Self-calibration, if any, and the spectral windows and line-free channel ranges used for each continuum",
+  "Cell size and image size for tclean, and whether primary-beam correction was applied",
+  "How the central-beam flux densities in Table 1 were measured (aperture or single pixel, and how the uncertainties were derived)",
+  "The pixel selection threshold for 'every pixel with emission' and how the per-pixel flux uncertainty was set",
+  "emcee settings: likelihood form, number of walkers, steps, burn-in, convergence test, and how best-fit values and uncertainties were taken from the posterior",
+  "How the Kennicutt & Evans 2012 conversion was applied (IMF, scaling) and how the CMB term was computed",
+  "Whether the 2013.1.00576.S data, listed in the acknowledgements but not in Table 1, were used",
+  "Luminosity distance value used (cosmology H0=70, Omega_M=0.3 given)"
+ ],
+ "missing_for_reproduction": [
+  "Per-dataset calibration choices, calibrators and flux-scale uncertainties",
+  "Line-free channel selection, cell and image size, primary-beam correction",
+  "Central-beam flux extraction method and per-pixel fitting threshold and error model",
+  "emcee configuration and likelihood",
+  "Analysis code (no release stated)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project codes and nearly all tclean settings, priors, opacity and cosmology are given, and the central-beam numbers are tabulated; but calibration details, flux extraction, pixel selection and MCMC settings are missing, and the resolved maps are only shown as figures.",
+ "rediscovery_reason": "ALMA projects are listed by code, the imaging recipe and fit model with priors are specified, and results are numeric (central-beam beta, M_d, T_d, A and luminosity); data public status is inferred from the archive projects.",
+ "source_card": "cards/2025A%26A...695L..15F/sonnet/card.md"
+}

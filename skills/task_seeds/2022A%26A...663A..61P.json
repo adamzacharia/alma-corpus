@@ -1,0 +1,529 @@
+{
+ "bibcode": "2022A&A...663A..61P",
+ "title": "Variations in the Σ<SUB>SFR</SUB> ‒ Σ<SUB>mol</SUB> ‒ Σ<SUB>⋆</SUB> plane across galactic environments in PHANGS galaxies",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142832",
+ "arxiv_id": "2203.11971",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "Test the universality of the 2D star-forming plane relating star formation rate surface density, stellar mass surface density, and molecular gas surface density across different galactic environments at 150 pc spatial resolution.",
+ "alma_project_codes": [
+  "2013.1.01161.S",
+  "2015.1.00925.S",
+  "2015.1.00956.S",
+  "2017.1.00886.L"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12m, 7m, and total power antennas",
+  "angular_resolution": "1.0'' - 1.5''",
+  "sensitivity": "molecular gas surface density maps have a typical uncertainty of ~1.2 M_sun pc^-2 at 150 pc resolution"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Global galaxy parameters, distances, and orientations",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "Our sample is summarized in Table [\\[tab:sample\\]](#tab:sample) where we use the global parameters from (cite: Leroy2021b), which leveraged the distance compilation of (cite: Anand2021) and the galaxy orientations determined by (cite: Lang2020)."
+     }
+    ]
+   },
+   "citation": "(cite: Leroy2021b); (cite: Anand2021); (cite: Lang2020)"
+  },
+  {
+   "what": {
+    "value": "Morphological environmental masks (disks, spiral arms, rings, bars, centers)",
+    "evidence": [
+     {
+      "loc": "Environmental masks",
+      "quote": "We used the environmental masks described in (cite: Querejeta2021) to morphologically classify the different environments of each galaxy and label them as disks, spiral arms, rings, bars and centers."
+     }
+    ]
+   },
+   "citation": "(cite: Querejeta2021)"
+  },
+  {
+   "what": {
+    "value": "Gas-phase metallicity gradients and 2D maps",
+    "evidence": [
+     {
+      "loc": "ALMA CO mapping",
+      "quote": "Metallicity gradients are measured from the gas-phase abundances in  regions, as explained in (cite: Kreckel2020) and (cite: Santoro2021)."
+     },
+     {
+      "loc": "What drives the environmental variations we see?",
+      "quote": "Gas-phase metallicity; $[Z/H]_{\\rm gas}$, modeled from emission-line measurements in the MUSE data, allowing for azimuthal variations, as detailed in (cite: Williams2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Kreckel2020); (cite: Santoro2021); (cite: Williams2021)"
+  },
+  {
+   "what": {
+    "value": "eMILES SSP templates",
+    "evidence": [
+     {
+      "loc": "Stellar mass surface density maps",
+      "quote": "We used templates from the eMILES (cite: Vazdekis2010; Vazdekis2012) database, assuming a (cite: Chabrier2003) IMF and BaSTI isochrone (cite: Pietrinferni2004) with a Galactic abundance pattern."
+     }
+    ]
+   },
+   "citation": "(cite: Vazdekis2010; Vazdekis2012)"
+  },
+  {
+   "what": {
+    "value": "Milky Way E(B-V) values",
+    "evidence": [
+     {
+      "loc": "Stellar mass surface density maps",
+      "quote": "we correct the full mosaic for Milky Way extinction assuming a (cite: Cardelli89) extinction law and the $E(B{-}V)$ values obtained from the NASA"
+     }
+    ]
+   },
+   "citation": "(cite: Schlafly2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Derive molecular gas surface density maps from PHANGS-ALMA CO(2-1) products",
+   "method": "Use PHANGS-ALMA v4.0 broad-masked CO(2-1) integrated intensity maps, apply S/N > 1 cut at native resolution, and convert to molecular gas mass surface density using a metallicity-dependent alpha_CO prescription and a fixed CO(2-1)-to-CO(1-0) ratio.",
+   "software": [],
+   "key_parameters": [
+    "S/N cut > 1 for ALMA CO intensity"
+   ],
+   "assumptions": [
+    "alpha_CO = 4.35 (Z / Z_sun)^(-1.6) M_sun pc^-2 (K km s^-1)^-1",
+    "CO(2-1)-to-CO(1-0) ratio R_21 = 0.65"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Construct stellar mass surface density maps from VLT MUSE cubes",
+   "method": "Correct MUSE mosaics for Milky Way extinction, Voronoi bin to S/N ~ 35 in 5300-5500 A, fit SSP templates in 4850-7000 A using pPXF within the PHANGS-MUSE DAP, reconstruct stellar mass maps from template weights, and mask foreground star velocity outliers.",
+   "software": [
+    "ESOREX",
+    "pymusepipe",
+    "PHANGS DAP",
+    "GIST",
+    "pPXF"
+   ],
+   "key_parameters": [
+    "Voronoi bin minimum S/N ~ 35 in 5300-5500 Angstrom",
+    "Fitting wavelength range 4850-7000 Angstrom with 13 logarithmically spaced ages and 6 metallicity bins"
+   ],
+   "assumptions": [
+    "Cardelli et al. (1989) Milky Way extinction law and Calzetti et al. (2000) extragalactic attenuation law",
+    "eMILES templates with Chabrier (2003) IMF and BaSTI isochrones"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct star formation rate surface density maps from VLT MUSE emission lines",
+   "method": "Fit single Gaussian profiles to emission lines in each pixel, deredden Halpha using Balmer decrement, remove AGN/LINER pixels via BPT diagram, remove and spatially redistribute DIG emission using [S II]/Halpha, apply S/N cuts, and convert corrected Halpha flux to SFR.",
+   "software": [
+    "PHANGS DAP"
+   ],
+   "key_parameters": [
+    "S/N > 3 for Halpha and S/N > 1 for Hbeta; pixels with C_HII <= 0 or Halpha_obs/Hbeta_obs < 2.86 treated as nondetections"
+   ],
+   "assumptions": [
+    "Case B recombination Halpha_corr / Hbeta_corr = 2.86 (T = 10^4 K, n_e = 100 cm^-3) and O'Donnell (1994) extinction law (k_alpha = 2.52, k_beta = 3.66, R_V = 3.1)",
+    "Calzetti (2013) SFR calibration: SFR / (M_sun yr^-1) = 5.5e-42 Halpha_corr / (erg s^-1), scaled to a Kroupa (2001) universal IMF"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Match spatial resolution, rebin across spatial scales, correct for inclination, and apply environmental masks and detection fraction cuts",
+   "method": "Convolve maps to common 150 pc resolution, rebin MUSE and ALMA maps to 150, 200, 300, 500, and 1000 pc pixels, apply cos(i) inclination correction, classify pixels into environments (disk, spiral arm, bar, ring, center) using Querejeta et al. (2021) masks, and restrict each environment to Sigma_* bins where both Sigma_SFR and Sigma_mol have > 60% detection fraction.",
+   "software": [],
+   "key_parameters": [
+    "Pixel sizes: 150 pc (fiducial), 200 pc, 300 pc, 500 pc, 1 kpc",
+    "Detection fraction threshold > 60% per Sigma_* bin, applied independently per environment (removes ~20% of all 150 pc pixels, ~38% of disk pixels, <5% of other environments)"
+   ],
+   "assumptions": [
+    "Inclination correction factor cos(i) using galaxy inclinations from Lang et al. (2020)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit the 2D star-forming plane across galactic environments using hierarchical Bayesian linear regression and compare against 1D rKS model",
+   "method": "Center log Sigma_SFR, log Sigma_*, and log Sigma_mol by fixed full-sample means and fit log Sigma_SFR,i = C_*,i log Sigma_* + C_mol,i log Sigma_mol + C_norm using hierarchical Bayesian linear regression in PyMC3 with a single common C_norm and intrinsic scatter sigma_intr across environments. Compare 2D plane model to 1D rKS model using leave-one-out (LOO) cross-validation.",
+   "software": [
+    "PyMC3"
+   ],
+   "key_parameters": [
+    "Centering values: <log Sigma_*> = 8.11, <log Sigma_mol> = 7.25, <log Sigma_SFR> = -2.48",
+    "4 MCMC chains, 2000 iterations + 2000 burn-in iterations per chain, NUTS sampler"
+   ],
+   "assumptions": [
+    "Single normalization C_norm and common intrinsic dispersion sigma_intr across all environments"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Correlate single-galaxy environmental plane slopes with local physical and stellar population parameters",
+   "method": "Select 8 galaxies satisfying environmental and detection criteria, fit C_*, C_mol, and C_norm per environment within each galaxy, compute environmental averages of 13 physical parameters, and compute the overall average weighted Pearson correlation coefficient <rho> with 50 Monte Carlo perturbations for uncertainties.",
+   "software": [
+    "PyMC3"
+   ],
+   "key_parameters": [
+    "Galaxy selection criteria: >= 3 environments, has bar and spiral arms, < 50% pixels removed by detection threshold (yields 8 galaxies with log M_* >= 10.6)",
+    "50 Monte Carlo simulations per galaxy for correlation uncertainty"
+   ],
+   "assumptions": [
+    "Typical stellar scale height h_* = 300 pc for free-fall time calculation; atomic gas neglected in mid-plane hydrostatic pressure P_h"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "C_* slope (Disk, 150 pc)",
+   "value": "0.17",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Disk | $0.17\\pm 0.02$ | $0.87\\pm 0.01$ | 18977 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (Disk, 150 pc)",
+   "value": "0.87",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Disk | $0.17\\pm 0.02$ | $0.87\\pm 0.01$ | 18977 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (Disk, 150 pc)",
+   "value": "18977",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Disk | $0.17\\pm 0.02$ | $0.87\\pm 0.01$ | 18977 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_* slope (Spiral arm, 150 pc)",
+   "value": "0.45",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Sp. arm | $0.45\\pm 0.02$ | $0.89\\pm 0.01$ | 15743 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (Spiral arm, 150 pc)",
+   "value": "0.89",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Sp. arm | $0.45\\pm 0.02$ | $0.89\\pm 0.01$ | 15743 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (Spiral arm, 150 pc)",
+   "value": "15743",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Sp. arm | $0.45\\pm 0.02$ | $0.89\\pm 0.01$ | 15743 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_* slope (Bar, 150 pc)",
+   "value": "-0.41",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Bar | $-0.41\\pm 0.01$ | $0.83\\pm 0.01$ | 7286 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (Bar, 150 pc)",
+   "value": "0.83",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Bar | $-0.41\\pm 0.01$ | $0.83\\pm 0.01$ | 7286 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (Bar, 150 pc)",
+   "value": "7286",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Bar | $-0.41\\pm 0.01$ | $0.83\\pm 0.01$ | 7286 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_* slope (Ring, 150 pc)",
+   "value": "-0.08",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Ring | $-0.08\\pm 0.02$ | $1.01\\pm 0.01$ | 7399 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (Ring, 150 pc)",
+   "value": "1.01",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Ring | $-0.08\\pm 0.02$ | $1.01\\pm 0.01$ | 7399 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (Ring, 150 pc)",
+   "value": "7399",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Ring | $-0.08\\pm 0.02$ | $1.01\\pm 0.01$ | 7399 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_* slope (Center, 150 pc)",
+   "value": "0.20",
+   "uncertainty": "0.05",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Center | $0.20\\pm 0.05$ | $0.88\\pm 0.04$ | 587 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (Center, 150 pc)",
+   "value": "0.88",
+   "uncertainty": "0.04",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Center | $0.20\\pm 0.05$ | $0.88\\pm 0.04$ | 587 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (Center, 150 pc)",
+   "value": "587",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Center | $0.20\\pm 0.05$ | $0.88\\pm 0.04$ | 587 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_* slope (All environments, 150 pc)",
+   "value": "-0.04",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| All | $-0.04\\pm 0.01$ | $0.92\\pm 0.01$ | 49992 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "C_mol slope (All environments, 150 pc)",
+   "value": "0.92",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| All | $-0.04\\pm 0.01$ | $0.92\\pm 0.01$ | 49992 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of pixels N_pix (All environments, 150 pc)",
+   "value": "49992",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| All | $-0.04\\pm 0.01$ | $0.92\\pm 0.01$ | 49992 | |"
+    }
+   ]
+  },
+  {
+   "quantity": "Centered normalization C_norm (150 pc)",
+   "value": "-0.01",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Additionally to the above parameters, we obtain $C_{\\rm norm}= -0.01$ and an overall intrinsic dispersion $\\sigma_{\\rm intr} \\approx 0.63$ dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Absolute normalization C_hat_norm (150 pc)",
+   "value": "-8.83",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star-forming plane across galactic environments at 150 pc resolution",
+     "quote": "After correcting for the centering of the data (Eq. [\\[eq:C2real\\]](#eq:C2real)), this value of $C_{\\rm norm}$ implies an absolute normalization $\\hat{C}_{\\rm norm}$ of $-8.83$."
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic depletion time (150 pc)",
+   "value": "1.5",
+   "uncertainty": "not stated",
+   "units": "Gyr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Star-forming plane across galactic environments at 150 pc resolution",
+     "quote": "This value represents a characteristic depletion time of ${\\sim}1.5$ Gyr, well within the range of values reported in (cite: Querejeta2021)."
+    }
+   ]
+  },
+  {
+   "quantity": "Overall intrinsic dispersion sigma_intr (150 pc)",
+   "value": "0.63",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Additionally to the above parameters, we obtain $C_{\\rm norm}= -0.01$ and an overall intrinsic dispersion $\\sigma_{\\rm intr} \\approx 0.63$ dex."
+    }
+   ]
+  },
+  {
+   "quantity": "Overall Pearson correlation <rho> between C_mol and <tau / t_ff>",
+   "value": "0.77",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What drives the environmental variations we see?",
+     "quote": "For this reason, we focus on the following high-$\\rho$ parameter,  $\\langle \\tau / t_{\\rm ff} \\rangle$ ($\\langle \\rho \\rangle \\sim 0.77$)."
+    },
+    {
+     "loc": "Summary",
+     "quote": "We find a strong correlation of $C_{\\rm mol}$ with depletion time and H$\\alpha$ velocity dispersion ($\\langle \\rho \\rangle \\sim 0.77$ and $0.72$, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Overall Pearson correlation <rho> between C_mol and <sigma_Halpha>",
+   "value": "0.72",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "We find a strong correlation of $C_{\\rm mol}$ with depletion time and H$\\alpha$ velocity dispersion ($\\langle \\rho \\rangle \\sim 0.77$ and $0.72$, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Overall Pearson correlation <rho> between C_* and <log SFE>",
+   "value": "0.68",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "What drives the environmental variations we see?",
+     "quote": "Nevertheless, we still see a correlation of $C_{\\star}$ with $\\log \\mathrm{SFE}$ ($\\langle \\rho \\rangle \\sim 0.68$)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact bin width in log(Sigma_*) used to compute the 60% detection fraction thresholds for each environment",
+  "Exact numerical values of the lower/upper log(Sigma_*) cutoffs resulting from the 60% detection fraction cut for each galactic environment",
+  "Exact radial metallicity gradient parameters per galaxy used to compute the fiducial metallicity-dependent alpha_CO maps",
+  "Exact World Coordinate System (WCS) grid parameters and interpolation/rebinning scheme used when aligning and rebinning MUSE and ALMA maps to 150-1000 pc pixel grids"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python scripts used for rebinning the aligned ALMA/MUSE maps, computing the detection fraction cuts, and running the PyMC3 hierarchical Bayesian regression",
+  "Exact Sigma_* bin edges and resulting per-environment Sigma_* threshold values used for the 60% detection fraction cut",
+  "High-level PHANGS-MUSE DAP data products (Sigma_*, DIG-corrected Sigma_SFR, and metallicity maps) if not reconstructing them from raw VLT/MUSE cubes"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The Bayesian hierarchical model (equations, centering constants, hyperpriors, priors, sampler, chain counts) and physical prescriptions (alpha_CO, R_21, SFR conversion, extinction laws, S/N cuts) are documented in detail, and PHANGS-ALMA v4.0 products and Querejeta+2021 masks are public. However, the analysis scripts and exact Sigma_* cut boundaries for each environment are not released with the paper.",
+ "rediscovery_reason": "Uses public PHANGS-ALMA DR1 (v4.0) CO(2-1) maps, environmental masks, and PHANGS-MUSE data products, provides explicit equations, priors, and centering constants for the PyMC3 regression, and reports exact numerical slopes and pixel counts per environment in Table 2 as an answer key.",
+ "source_card": "cards/2022A%26A...663A..61P/sonnet/card.md"
+}

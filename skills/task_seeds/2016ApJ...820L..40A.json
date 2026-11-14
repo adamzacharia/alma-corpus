@@ -1,0 +1,180 @@
+{
+ "bibcode": "2016ApJ...820L..40A",
+ "title": "Ringed Substructure and a Gap at 1 au in the Nearest Protoplanetary Disk",
+ "year": 2016,
+ "doi": "10.3847/2041-8205/820/2/L40",
+ "arxiv_id": "1603.09352",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the TW Hya disk show ringed substructure in 870 um continuum at ~1 AU resolution, and what could cause it?",
+ "alma_project_codes": [
+  "2015.1.00686.S",
+  "2011.1.00399.S",
+  "2013.1.00198.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "36, 31, 34 antennas (new); 16, 25, 34 antennas (archival)",
+  "angular_resolution": "24x18 mas (robust 0) and 30 mas circular",
+  "sensitivity": "RMS ~35 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Broken power-law dust surface density prescription used in model",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "we employed a broken power-law dust surface density prescription (cite: hogerheijde16)"
+     }
+    ]
+   },
+   "citation": "(cite: hogerheijde16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and combine data",
+   "method": "Calibrate each execution, combine new and archival visibilities, phase-only self-cal",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make continuum images",
+   "method": "Multi-scale multi-frequency CLEAN at 345.9 GHz; two weightings",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0 (24x18 mas) and robust 0.5 + taper (30 mas)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Radial profile and geometry",
+   "method": "Deproject to polar coordinates, azimuthally average; fit ellipses to rings/gap to get inclination and PA; compare azimuthal profiles",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Representative radiative transfer model",
+   "method": "RADMC-3D model following Andrews 2012 with broken power-law, inner dust belt, truncation at 2.4 AU; gives temperature profile",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "Gaussian belt width 0.4 AU"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inner unresolved source flux",
+   "value": "0.93",
+   "uncertainty": "0.04",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "unresolved ($<$0.5 AU in radius) $0.93\\pm0.04$ mJy source"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "7",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "an inclination of $7\\pm3$$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Major axis position angle",
+   "value": "155",
+   "uncertainty": "12",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "a major axis position angle of $155\\pm12$$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner bright ring radius",
+   "value": "2.4",
+   "uncertainty": "not stated",
+   "units": "AU",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "a bright ring that peaks at 2.4 AU"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark annulus at 1 AU depth",
+   "value": ">=30% brightness reduction",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "we find at least a 30% brightness reduction"
+    }
+   ]
+  },
+  {
+   "quantity": "Median fractional azimuthal deviation",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "the median fractional deviation is only 7%"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Cell size, image size, and CLEAN mask",
+  "Multiscale scales and clean threshold/iterations",
+  "Line-free channels excised",
+  "Self-calibration solution interval and reference",
+  "Flux calibrator fluxes/scale uncertainty",
+  "Details of azimuthal averaging and ellipse fits",
+  "RADMC-3D model parameters (masses, radii, opacities, gas-to-dust)",
+  "Distance adopted"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, scales)",
+  "Self-cal solint",
+  "Ring/gap fitting procedure",
+  "RADMC-3D input parameters"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Data public and key settings (robust, beam, CASA version) given, but many imaging and analysis details missing.",
+ "rediscovery_reason": "Public data, a recoverable imaging recipe, and numeric ring radii and geometry results.",
+ "source_card": "cards/2016ApJ...820L..40A/sonnet/card.md"
+}

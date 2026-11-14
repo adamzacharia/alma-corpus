@@ -1,0 +1,1376 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.485.4359S",
+  "title": "WISDOM project - IV. A molecular gas dynamical measurement of the supermassive black hole mass in NGC 524",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Smith, Mark D.",
+  "n_authors": 9,
+  "arxiv_id": "1903.03124",
+  "doi": "10.1093/mnras/stz625",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00466.S",
+   "2016.2.00053.S",
+   "2017.1.00391.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present high angular resolution ($0.3\\ensuremath{''}$ or $37\\,\\mathrm{pc}$) Atacama Large Millimeter/sub-millimeter Array (ALMA) observations of the CO(2-1) line emission from a central disc in the early-type galaxy NGC 524."
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "NGC 524",
+     "coordinates": {
+      "value": "01h24m47.7448s, +9d32m20.119s (continuum peak)",
+      "evidence": [
+       {
+        "loc": "2 NGC 524",
+        "quote": "Throughout this paper we adopt a distance to NGC 524 of $23.3\\pm2.3\\,\\mathrm{Mpc}$, as used in other studies, derived using the surface brightness fluctuation distance of (cite: Tonry+2001ApJ546.681)"
+       },
+       {
+        "loc": "3.3 Continuum data",
+        "quote": "centred at $01^\\rmn{h}24^\\rmn{m}47.7448s$, $+\\,9\\degree32^\\prime20.119\\ensuremath{''}$"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "23.3±2.3 Mpc",
+      "evidence": [
+       {
+        "loc": "2 NGC 524",
+        "quote": "Throughout this paper we adopt a distance to NGC 524 of $23.3\\pm2.3\\,\\mathrm{Mpc}$, as used in other studies, derived using the surface brightness fluctuation distance of (cite: Tonry+2001ApJ546.681)"
+       },
+       {
+        "loc": "3.3 Continuum data",
+        "quote": "centred at $01^\\rmn{h}24^\\rmn{m}47.7448s$, $+\\,9\\degree32^\\prime20.119\\ensuremath{''}$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "SBF distance of Tonry+2001 with Cepheid zero-point of Freedman+2001",
+      "evidence": [
+       {
+        "loc": "2 NGC 524",
+        "quote": "Throughout this paper we adopt a distance to NGC 524 of $23.3\\pm2.3\\,\\mathrm{Mpc}$, as used in other studies, derived using the surface brightness fluctuation distance of (cite: Tonry+2001ApJ546.681)"
+       },
+       {
+        "loc": "3.3 Continuum data",
+        "quote": "centred at $01^\\rmn{h}24^\\rmn{m}47.7448s$, $+\\,9\\degree32^\\prime20.119\\ensuremath{''}$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the SMBH mass of NGC 524 from forward-modelling the ALMA CO(2-1) molecular gas kinematics, and how do it compare with the stellar dynamical value and the M-sigma relation?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "By forward-modelling the observations, we obtain an estimate of the SMBH mass of $4.0^{+3.5}_{-2.0}\\times 10^8\\,$M$_\\odot$, where the uncertainties are at the $3\\sigma$ level."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00466.S",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "Data were taken as part of the WISDOM project’s observing programmes 2015.1.00466.S (PI: Onishi), 2016.2.00053.S (PI: Liu) and 2017.1.00391.S (PI: North)."
+      }
+     ]
+    },
+    {
+     "code": "2016.2.00053.S",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "Data were taken as part of the WISDOM project’s observing programmes 2015.1.00466.S (PI: Onishi), 2016.2.00053.S (PI: Liu) and 2017.1.00391.S (PI: North)."
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00391.S",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "Data were taken as part of the WISDOM project’s observing programmes 2015.1.00466.S (PI: Onishi), 2016.2.00053.S (PI: Liu) and 2017.1.00391.S (PI: North)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "One line spectral window at ~1 km/s resolution over ~2500 km/s; three 2 GHz continuum windows",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "at a velocity resolution of $\\approx\\,1\\mathrm{\\,km\\,s^{-1}}$ over a bandwidth of $\\approx2500\\mathrm{\\,km\\,s^{-1}}$."
+     },
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "Three additional spectral windows were positioned to observe the continuum emission, each with a bandwidth of $2\\,\\mathrm{GHz}$"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "a spectral window was positioned to observe the redshifted $J=2$ to $J=1$ transition of $^\\mathrm{12}$CO"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m array and 7-m ACA",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "using both the $12$-m array and $7$-m Atacama Compact Array (ACA; also known as the Morita array)."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "12-m: 15 m to 1.3 km; ACA: 9 to 48 m",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "The $12$-m data span baselines from $15\\,\\mathrm{m}$ to $1.3\\,\\mathrm{km}$"
+     },
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "The ACA observations, on shorter baselines from $9$ to $48\\,\\mathrm{m}$"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "0.35\" x 0.3\" at PA 64 deg (line cube)",
+    "evidence": [
+     {
+      "loc": "3.2 Line data",
+      "quote": "The synthesised beam achieved was $0.35\\ensuremath{''}\\times0.3\\ensuremath{''}$ at a position angle of $64\\degree$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "29 arcsec",
+    "evidence": [
+     {
+      "loc": "3.2 Line data",
+      "quote": "gives a maximum recoverable scale of $29\\ensuremath{''}$."
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "0.5 mJy/beam in 15 km/s channels; 1.1 mJy/beam in 2 km/s channels; 0.1 mJy/beam continuum",
+    "evidence": [
+     {
+      "loc": "3.2 Line data",
+      "quote": "The sensitivity achieved in the $15\\,\\mathrm{km\\,s}^{-1}$ channels is $0.5\\,\\mathrm{mJy\\,beam^{-1}}$."
+     },
+     {
+      "loc": "3.3 Continuum data",
+      "quote": "with a sensitivity of $0.1\\,\\mathrm{mJy\\,beam^{-1}}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2.2 h (12-m), 0.3 h (ACA)",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "The total on-source time achieved was 2.2 hours with the $12$-m array and 0.3 hours with the ACA."
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "12-m: 26 Mar 2016, 17 Jul 2016, 2 May 2017, 16 Sep 2018; ACA: 25 Jun 2017",
+    "evidence": [
+     {
+      "loc": "3.1 Observations and data reduction",
+      "quote": "were taken in four tracks on the 26th March 2016, 17th July 2016, 2nd May 2017, and 16th September 2018."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM 30-m",
+     "provided": {
+      "value": "Single-dish CO spectra used to compare recovered flux, and total H2 mass",
+      "evidence": [
+       {
+        "loc": "3.2 Line data",
+        "quote": "comparing the integrated spectrum derived from our data with that of the IRAM 30-m telescope single-dish observations of (cite: Young+2011MNRAS414.940)"
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST",
+     "provided": {
+      "value": "WFPC2 F814W image for MGE; F555W and F814W images for extinction correction",
+      "evidence": [
+       {
+        "loc": "4.2 Stellar mass",
+        "quote": "multi-Gaussian expansion (cite: Emsellem+1994A&A285.723; Cappellari2002MNRAS333.400) of a HST Wide Field Planetary Camera 2 (WFPC2) F814W image at small radii"
+       }
+      ]
+     }
+    },
+    {
+     "name": "MDM 1.3-m",
+     "provided": {
+      "value": "Ground-based I-band image for MGE at large radii",
+      "evidence": [
+       {
+        "loc": "4.2 Stellar mass",
+        "quote": "a ground-based $I$-band image from the MDM observatory’s 1.3-m McGraw-Hill Telescope at large radii"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "MGE stellar light model of NGC 524 (Table 3)",
+      "evidence": [
+       {
+        "loc": "4.2 Stellar mass",
+        "quote": "This MGE model was originally reported in Table B1 of (cite: Cappellari+2006MNRAS366.1126) and is reproduced in Table [3](#tab_MGE) of this work."
+       }
+      ]
+     },
+     "citation": "(cite: Cappellari+2006MNRAS366.1126)"
+    },
+    {
+     "what": {
+      "value": "Distance 23.3 Mpc",
+      "evidence": [
+       {
+        "loc": "2 NGC 524",
+        "quote": "we adopt a distance to NGC 524 of $23.3\\pm2.3\\,\\mathrm{Mpc}$"
+       }
+      ]
+     },
+     "citation": "(cite: Tonry+2001ApJ546.681), (cite: Freedman+2001ApJ553.47)"
+    },
+    {
+     "what": {
+      "value": "Dust disc inclination 20±5 deg",
+      "evidence": [
+       {
+        "loc": "4.5 SMBH mass",
+        "quote": "the dust disc seen in HST images was also found to lie at an inclination of $20\\pm5\\degree$ (cite: Cappellari+2006MNRAS366.1126)"
+       }
+      ]
+     },
+     "citation": "(cite: Cappellari+2006MNRAS366.1126)"
+    },
+    {
+     "what": {
+      "value": "Previous stellar dynamical SMBH mass 8.3e8 Msun, M/L_I=5.8",
+      "evidence": [
+       {
+        "loc": "2 NGC 524",
+        "quote": "$M_\\mathrm{BH} = 8.3 ^{+2.7} _{-1.3} \\times 10^8\\,\\mathrm{M_\\odot}$"
+       }
+      ]
+     },
+     "citation": "(cite: Krajnovic+2009MNRAS399.1839)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard ALMA pipeline; combined with CASA",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "The data were calibrated using the standard ALMA pipeline, and combined using the `Common Astronomy Software Applications` (cite: McMullin+2007ASPC376.127) package."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean with multi-frequency synthesis for continuum",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum data",
+       "quote": "we create a continuum image using the multi-frequency synthesis option of the `TCLEAN` task in `CASA`."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs robust = -1 (line); robust = -2 (continuum)",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "Baselines were weighted by the Briggs scheme with a robust parameter $-1$"
+      },
+      {
+       "loc": "3.3 Continuum data",
+       "quote": "We use Briggs weighting with a robust parameter of -2"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.1 arcsec",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "The pixel size adopted was $0.1\\ensuremath{''}$"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "800x800 px",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| Image size (px) | $800\\times800$ | $800\\times800$ |"
+      }
+     ]
+    },
+    "masking": {
+     "value": "Manually-defined mask per channel, interactive cleaning",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "The cube was cleaned interactively using a manually-defined mask to encompass regions of emission in each channel."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Linear fit to line-free channels at both ends of line spw, subtracted in uv with uvcontsub",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "a linear fit was made to the line-free channels at both ends of the line spectral window and was subtracted from the *uv* plane using the `CASA` task `uvcontsub`."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "12-m and ACA data combined in CASA",
+     "evidence": [
+      {
+       "loc": "3.1 Observations and data reduction",
+       "quote": "combined using the `Common Astronomy Software Applications` (cite: McMullin+2007ASPC376.127) package."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.35\"x0.3\" (line); 0.3\"x0.2\" (continuum)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| Synthesised beam     |   $0.3\\ensuremath{''}\\times0.2\\ensuremath{''}$    |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "0.5 mJy/beam (15 km/s); 1.0-1.1 mJy/beam (2 km/s); 0.1 mJy/beam continuum",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "reaching a sensitivity of $1.1\\,\\mathrm{mJy\\,beam}^{-1}$"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Modelling procedure (KinMS MCMC forward modelling, covariance matrix of pixel correlations)",
+      "evidence": [
+       {
+        "loc": "4 Model fitting",
+        "quote": "This procedure is discussed in detail in (cite: Davis+2017MNRAS468.4675), so we provide only a brief outline here."
+       }
+      ]
+     },
+     "from_reference": "(cite: Davis+2017MNRAS468.4675)"
+    },
+    {
+     "what": {
+      "value": "Chi-squared rescaling of log-likelihood",
+      "evidence": [
+       {
+        "loc": "4.3.2 Chi-squared uncertainties",
+        "quote": "to achieve the same effect we need to scale the log-likelihood, as done by (cite: Mitzkus+2017MNRAS464.4789)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Mitzkus+2017MNRAS464.4789), (cite: vandenBosch+2009MNRAS398.1117)"
+    },
+    {
+     "what": {
+      "value": "Smooth-masking method for moment maps",
+      "evidence": [
+       {
+        "loc": "3.2 Line data",
+        "quote": "These were made using the smooth-masking method (cite: Dame2011arXiv1101.1499)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Dame2011arXiv1101.1499)"
+    },
+    {
+     "what": {
+      "value": "First-order extinction correction prescription",
+      "evidence": [
+       {
+        "loc": "4.7.3 Mass model",
+        "quote": "we can make a first-order correction using the prescription of (cite: Cappellari+2002ApJ578.787)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Cappellari+2002ApJ578.787)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Smooth-masking clip threshold and cube-smoothing details for moment maps",
+    "Line-free channel ranges for uvcontsub",
+    "CLEAN threshold, niter, and deconvolver used",
+    "Flux calibrator and flux-scale uncertainty",
+    "CASA/pipeline versions",
+    "Initial values, adaptive step settings and acceptance fraction for KinMS_MCMC",
+    "Mask used to define the fitted region in the cube and the number of pixels N",
+    "Details of the covariance matrix computation",
+    "Mask and thresholds used for ridge-finding and kinemetry settings",
+    "Rest frequency adopted and systemic velocity used for cube centring"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image line cubes and continuum",
+    "method": {
+     "value": "uvcontsub, Briggs-weighted cleaning to 15 and 2 km/s cubes; tclean MFS continuum; imfit of the nuclear source",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "The remaining line data were imaged into an RA-Dec-velocity cube with a channel width of $15\\,\\mathrm{km\\,s^{-1}}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "robust -1 (line), -2 (continuum), 0.1\" pixels",
+      "evidence": [
+       {
+        "loc": "3.2 Line data",
+        "quote": "Baselines were weighted by the Briggs scheme with a robust parameter $-1$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared integrated spectrum to IRAM 30-m and argued ACA recovers extended flux",
+     "evidence": [
+      {
+       "loc": "3.2 Line data",
+       "quote": "we conclude that it is likely that almost all flux has been recovered."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Build stellar mass model",
+    "method": {
+     "value": "MGE from Cappellari+2006, deprojected at disc inclination, multiplied by constant M/L; central unresolved component excluded; circular velocity from Cappellari 2002 Eq. 12",
+     "evidence": [
+      {
+       "loc": "4.2 Stellar mass",
+       "quote": "From this 3D light distribution, a mass distribution is obtained by multiplying by a spatially-constant mass-to-light ratio ($M/L$), another parameter included in our MCMC fit."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Constant M/L across disc; central MGE component is AGN; negligible dark matter",
+      "evidence": [
+       {
+        "loc": "4.7.3 Mass model",
+        "quote": "we can assume a negligible dark matter contribution over so small a fraction of the galaxy’s volume."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested extinction-corrected MGE, inclusion of central component, ISM mass",
+     "evidence": [
+      {
+       "loc": "4.7.3 Mass model",
+       "quote": "We find that the SMBH mass is unchanged within our uncertainties, and therefore dust extinction is not a significant effect."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit gas velocity dispersion",
+    "method": {
+     "value": "Initial fit on 2 km/s cube; dispersion then fixed for 15 km/s cube fits",
+     "evidence": [
+      {
+       "loc": "4.4 Gas velocity dispersion",
+       "quote": "We thus opt to perform an initial fit using our cube with $2\\,\\mathrm{km\\,s^{-1}}$ channels, finding the best-fitting velocity dispersion, and then fixing this value"
+      }
+     ]
+    },
+    "software": [
+     "KinMS",
+     "KinMS_MCMC"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Spatially invariant dispersion, small perturbation",
+      "evidence": [
+       {
+        "loc": "4.4 Gas velocity dispersion",
+        "quote": "We assume that this dispersion is spatially invariant, and only a small linear perturbation on the circular velocity field."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Forward-model cube with MCMC to get SMBH mass",
+    "method": {
+     "value": "KinMS forward model of the central 6.4\"x6.4\" with Gibbs-sampling MCMC, chi-squared with covariance matrix; truncated exponential gas disc; fit SMBH mass, M/L, scale length, truncation radius, flux, PA, inclination, offsets",
+     "evidence": [
+      {
+       "loc": "4.3 Bayesian parameter estimation",
+       "quote": "We use the Gibbs sampling MCMC code `KinMS_MCMC`[^4] with adaptive stepping to explore the parameter space."
+      }
+     ]
+    },
+    "software": [
+     "KinMS",
+     "KinMS_MCMC"
+    ],
+    "key_parameters": [
+     {
+      "value": "chain length 3e5 steps, first 10% burn-in",
+      "evidence": [
+       {
+        "loc": "4.3 Bayesian parameter estimation",
+        "quote": "The final chain length is $3\\times10^5$ steps, with the first $10\\%$ discarded as a burn-in phase."
+       }
+      ]
+     },
+     {
+      "value": "fit region 6.4\"x6.4\" (720 pc)",
+      "evidence": [
+       {
+        "loc": "4.3.1 Pixel–to–pixel correlations",
+        "quote": "We therefore only fit the central $6.4\\ensuremath{''}\\times6.4\\ensuremath{''}$ ($720\\,\\mathrm{pc}\\times720\\,\\mathrm{pc}$) region of our cube."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Thin axisymmetric disc, circular motions, distance 23.3 Mpc, inclination fixed to 20 deg",
+      "evidence": [
+       {
+        "loc": "4.5 SMBH mass",
+        "quote": "we re-run the fit with a fixed inclination of $20\\degree$, adopted from the above arguments."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Likelihood lnP = -chi2/2 with chi2 divided by sqrt(2N); uniform priors (log-uniform for SMBH mass) within physical limits; circularised MGE used to free inclination",
+     "evidence": [
+      {
+       "loc": "4.3 Bayesian parameter estimation",
+       "quote": "Samples are then drawn from the posterior distribution described by the the log-likelihood function $\\ln P=-\\sfrac{\\chi^2}{2}$."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Bootstrapping 16 half-cube subsets with MPFIT gave consistent values and uncertainties",
+     "evidence": [
+      {
+       "loc": "4.6 Fit uncertainties",
+       "quote": "The best-fitting values are consistent with those estimated by the MCMC procedure, and the uncertainty estimates are reassuringly very similar."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Add inclination uncertainty",
+    "method": {
+     "value": "For each MCMC model draw inclination from Gaussian (3 sigma width 5 deg) and rescale mass and M/L via M proportional to (v/sin i)^2; take median and 99.7% interval",
+     "evidence": [
+      {
+       "loc": "4.8 Discussion",
+       "quote": "For each model in the final MCMC chain, we draw an inclination from a Gaussian distribution with a $3\\sigma$ width of $5\\degree$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Inclination 20±5 deg from dust disc and tilted-ring fit",
+      "evidence": [
+       {
+        "loc": "4.7.2 Inclination",
+        "quote": "we adopt as the inclination uncertainty at $20\\degree$ the representative value of $\\pm5\\degree$ quoted by (cite: Cappellari+2006MNRAS366.1126)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Non-parametric gas distribution with SkySampler",
+    "method": {
+     "value": "Sample summed CLEAN components (zeroth moment) as particles passed to KinMS via inClouds, deprojected within MCMC; rerun fixed-inclination fit",
+     "evidence": [
+      {
+       "loc": "5 SkySampler",
+       "quote": "We thus supply these particles to `KinMS` using the `inClouds` variable"
+      }
+     ]
+    },
+    "software": [
+     "SkySampler",
+     "KinMS"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Non-axisymmetric gas not significant to the potential",
+      "evidence": [
+       {
+        "loc": "5 SkySampler",
+        "quote": "As long as this (non-axisymmetric) gas distribution is not a significant contributor to the total mass distribution, the assumption of axisymmetry for the potential will remain valid."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with parametric fit (chi2_red 1.82 vs 1.84)",
+     "evidence": [
+      {
+       "loc": "5.1 Application to NGC 524",
+       "quote": "Our best-fitting model has $\\chi^2_\\mathrm{red}=1.82$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Test non-circular motions",
+    "method": {
+     "value": "Residual velocity field, ridge-finding of residual spiral, MCMC with radial velocity term, kinemetry harmonic and tilted-ring fits, MCMC with PA fixed to kinemetry value",
+     "evidence": [
+      {
+       "loc": "6.2.2 Higher-order terms",
+       "quote": "we fit higher order harmonics to ellipses at the fixed inclination and position angle determined by our MCMC model."
+      }
+     ]
+    },
+    "software": [
+     "Kinemetry",
+     "KinMS_MCMC"
+    ],
+    "key_parameters": [
+     {
+      "value": "radial velocity prior ±100 km/s",
+      "evidence": [
+       {
+        "loc": "6.2.1 First-order term",
+        "quote": "that we constrain within priors of $\\pm100\\,\\mathrm{km\\,s^{-1}}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "CO in thin disc, q0=0",
+      "evidence": [
+       {
+        "loc": "6.2.2 Higher-order terms",
+        "quote": "the intrinsic axial ratio is $q_0=0$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "SMBH mass unchanged with radial term or warp",
+     "evidence": [
+      {
+       "loc": "6.2.2 Higher-order terms",
+       "quote": "There is no significant change of the best-fitting SMBH mass, nor of its uncertainties."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration combination, uvcontsub, tclean, imfit",
+     "evidence": [
+      {
+       "loc": "3.3 Continuum data",
+       "quote": "We fit this source with a Gaussian using the `CASA` task `imfit`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "KinMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Forward-modelling simulated cubes",
+     "evidence": [
+      {
+       "loc": "4 Model fitting",
+       "quote": "we forward-model the observed data cube using the `Kinematic Molecular Simulation (KinMS)` tool[^3]"
+      }
+     ]
+    }
+   },
+   {
+    "name": "KinMS_MCMC",
+    "version": "not stated",
+    "used_for": {
+     "value": "Gibbs-sampling MCMC fits",
+     "evidence": [
+      {
+       "loc": "4.3 Bayesian parameter estimation",
+       "quote": "We use the Gibbs sampling MCMC code `KinMS_MCMC`[^4] with adaptive stepping"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MPFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Chi-squared minimisation for bootstrap subsamples",
+     "evidence": [
+      {
+       "loc": "4.6 Fit uncertainties",
+       "quote": "we minimise the $\\chi^2$ defined in Equation [\\[eq_chisq\\]](#eq_chisq) using `MPFIT`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "LMFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Chi-squared minimisation with extinction-corrected MGE",
+     "evidence": [
+      {
+       "loc": "4.7.3 Mass model",
+       "quote": "we only perform a chi-squared minimisation using `LMFIT`[^5]"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SkySampler",
+    "version": "not stated",
+    "used_for": {
+     "value": "Sampling CLEAN-component gas distribution into particles",
+     "evidence": [
+      {
+       "loc": "5 SkySampler",
+       "quote": "Our cube sampling code is implemented in Python in the software package `SkySampler`[^6]."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Kinemetry",
+    "version": "not stated",
+    "used_for": {
+     "value": "Harmonic expansion of velocity field",
+     "evidence": [
+      {
+       "loc": "6.2.2 Higher-order terms",
+       "quote": "Using the `Kinemetry` package[^8] of (cite: Krajnovic+2006MNRAS366.787)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Ridge-finding algorithm (Steger 1998)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Trace peaks of residual velocity spiral",
+     "evidence": [
+      {
+       "loc": "6.1 Observed velocity field",
+       "quote": "using the ridge-finding algorithm[^7] of (cite: Steger1998IEEE20.113), to trace the peaks of the residual image."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SMBH mass (fixed inclination, formal 3 sigma)",
+    "value": "4.0e8",
+    "uncertainty": "+1.6/-1.5 e8",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 SMBH mass",
+      "quote": "Our best-fitting SMBH mass is thus $4.0^{+1.6}_{-1.5}\\times10^8\\,\\mathrm{M_\\odot}$ ($3\\sigma$ formal uncertainties) with a reduced $\\chi^2$ of $\\chi^2_\\mathrm{red} = 1.84$."
+     }
+    ]
+   },
+   {
+    "quantity": "SMBH mass including inclination uncertainty (3 sigma)",
+    "value": "4.0e8",
+    "uncertainty": "+3.5/-2.0 e8",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.8 Discussion",
+      "quote": "Our resulting SMBH mass measurement is then $4.0^{+3.5}_{-2.0}\\times 10^8\\,$M$_\\odot$, where the uncertainty given is at the $3\\sigma$ level."
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar M/L_I (fixed inclination)",
+    "value": "5.7",
+    "uncertainty": "±0.3 (3 sigma)",
+    "units": "Msun/Lsun,I",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 SMBH mass",
+      "quote": "Our best-fitting mass-to-light ratio is $5.7\\pm0.3\\,\\mathrm{\\mathrm{M_\\odot}/L_{\\odot,I}}$ ($3\\sigma$ formal uncertainties)."
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar M/L_I including inclination",
+    "value": "5.7",
+    "uncertainty": "+3.9/-1.9",
+    "units": "Msun/Lsun,I",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.8 Discussion",
+      "quote": "we derive that $M/L_I = 5.7^{+3.9}_{-1.9}\\,$M$_\\odot$/L$_{\\odot,I}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Gas velocity dispersion",
+    "value": "9.3",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.4 Gas velocity dispersion",
+      "quote": "The best-fitting velocity dispersion is then $9.3\\,\\mathrm{km\\,s^{-1}}$, fixed in all subsequent MCMC runs."
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum integrated flux (1.3 mm)",
+    "value": "8.3",
+    "uncertainty": "±0.1",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.3 Continuum data",
+      "quote": "It has an integrated flux of $8.3\\pm0.1\\,\\mathrm{mJy}$."
+     }
+    ]
+   },
+   {
+    "quantity": "SMBH mass with SkySampler gas distribution (fixed inclination)",
+    "value": "4.6e8",
+    "uncertainty": "+1.8/-1.3 e8",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.1 Application to NGC 524",
+      "quote": "The resulting SMBH mass at fixed inclination is $M_\\mathrm{BH} = 4.6^{+1.8}_{-1.3} \\times 10^8\\,$M$_\\odot$ ($3\\sigma$ formal uncertainties)."
+     }
+    ]
+   },
+   {
+    "quantity": "Disc position angle",
+    "value": "39.6",
+    "uncertainty": "±1",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of MCMC results",
+      "quote": "| Position angle ($\\degree$)                                                                             | $\\phantom{0.}0\\;\\rightarrow\\;359$               | 39.9         | 39.6         | $\\pm1$          |"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination from circularised MGE fit",
+    "value": "15",
+    "uncertainty": "+8/-5",
+    "units": "deg",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 SMBH mass",
+      "quote": "we find an inclination of $15\\degree^{+8\\degree}_{-5\\degree}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Sphere of influence radius",
+    "value": "36 pc (0.31\")",
+    "uncertainty": "not stated",
+    "units": "pc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.5 SMBH mass",
+      "quote": "This yields a sphere of influence radius of $36\\,\\mathrm{pc}$ ($0.31\\ensuremath{''}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak spiral velocity residual",
+    "value": "15",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 Non-circular motions",
+      "quote": "A very clear spiral feature can be seen in the residuals, extending from the central hole with a peak amplitude of $\\approx15\\,\\mathrm{km\\,s^{-1}}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Truncation radius (fixed inclination)",
+    "value": "0.51",
+    "uncertainty": "±0.07",
+    "units": "arcsec",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table of MCMC results",
+      "quote": "| Truncation radius ($\\ensuremath{''}$)                                                                  | $\\phantom{0.}0\\;\\rightarrow\\;\\phantom{0}10$     | 0.53         | 0.52         | $\\pm0.07$       | $\\phantom{0.}0\\;\\rightarrow\\;\\phantom{0}10$ | 0.51             | $\\pm0.07$        |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO disc is dynamically relaxed, rotating around a compact 1.3 mm continuum source identified as the AGN, with a central hole slightly larger than the SMBH sphere of influence",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "There is a hole at the centre of the disc slightly larger than the SMBH sphere of influence."
+     }
+    ]
+   },
+   {
+    "value": "Velocity-field distortion is explained by either a PA warp or radial flow; neither changes the SMBH mass",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "An azimuthal distortion of the observed velocity field is found to be due to either a position angle warp or radial gas flow over the inner $2.5\\ensuremath{''}$."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Can the SMBH mass of NGC 524 be measured from ALMA molecular gas kinematics despite a central gas hole?",
+    "experiment": "KinMS forward-modelling with MCMC of the CO(2-1) cube, adding inclination uncertainty",
+    "result": "M_BH = 4.0 +3.5/-2.0 e8 Msun (3 sigma)",
+    "finding": "A measurement is obtained but with large uncertainties dominated by inclination and the hole",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.8 Discussion",
+      "quote": "However, the uncertainties on our mass are larger than other CO dynamical measurements."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the molecular gas measurement consistent with the stellar dynamical mass and the M-sigma relation?",
+    "experiment": "Compare with Krajnovic+2009 and McConnell & Ma 2013",
+    "result": "About half the stellar value; very similar to M-sigma prediction 3.6e8",
+    "finding": "Consistent within 3 sigma uncertainties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.8 Discussion",
+      "quote": "This mass is approximately half that found by (cite: Krajnovic+2009MNRAS399.1839) using stellar dynamics, but these results are consistent within the $3\\sigma$ confidence intervals."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the SMBH mass robust against the assumed gas distribution?",
+    "experiment": "Re-fit with SkySampler non-parametric gas distribution",
+    "result": "M_BH = 4.6 +1.8/-1.3 e8 Msun, chi2_red 1.82",
+    "finding": "No significant change in mass",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "7 Conclusions",
+      "quote": "We found no significant change in the best-fitting SMBH mass, but this method will be useful for analysing future observations with complex gas distributions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do non-circular motions bias the SMBH mass?",
+    "experiment": "Radial flow MCMC term, kinemetry harmonic expansion, PA warp test",
+    "result": "No significant radial flow; warp could increase mass by at most 0.08 dex; no significant change in fits",
+    "finding": "Spiral feature is a position angle warp or radial flow with negligible effect on mass",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "6.2.2 Higher-order terms",
+      "quote": "The position angle warp could thus, at most, increase our SMBH mass by $0.08\\,$dex."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Directly sampling the observed gas distribution avoids ever more complex parametric models for gas with holes and rings",
+    "evidence": [
+     {
+      "loc": "5 SkySampler",
+      "quote": "either select arbitrarily complex models, adding free parameters until the gas distributions are well-described, or use the observed gas distributions as inputs to our models"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Archimedean or logarithmic spiral parametrisation of residuals rejected as not matching data",
+     "evidence": [
+      {
+       "loc": "6.1 Observed velocity field",
+       "quote": "We initially attempted to parameterise the spiral pattern and fit it with an additional velocity term with a phase described by an Archimedean or logarithmic spiral, but such fits do not match the data."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Central hole means no Keplerian rise observed; mass relies on stellar mass model",
+     "evidence": [
+      {
+       "loc": "4.7.3 Mass model",
+       "quote": "Since the molecular gas disc has a central hole, we do not capture the Keplerian increase of the rotation velocities where the SMBH dominates the mass distribution."
+      }
+     ]
+    },
+    {
+     "value": "Model chi2 exceeds expectation, indicating unexplained features",
+     "evidence": [
+      {
+       "loc": "4.8 Discussion",
+       "quote": "We in fact find our best fitting model has a larger $\\chi^2$, indicating there are features in the data unexplained by our relatively simple model."
+      }
+     ]
+    },
+    {
+     "value": "Distance uncertainty (~10%) not included in the systematic error",
+     "evidence": [
+      {
+       "loc": "4.7.1 Distance",
+       "quote": "but since this is a simple normalisation, we follow standard practice and do not include it in our systematic uncertainty."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Inclination is essentially unconstrained by CO; fixed to dust value drives result",
+    "Rescaling chi2 by sqrt(2N) is ad hoc",
+    "Fit restricted to 6.4\" region, with no use of larger-scale data",
+    "Constant M/L and neglect of dark matter assumed"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Archival ALMA programme codes given; acknowledged data use",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2015.1.00466.S, ADS/JAO.ALMA#2016.2.00053.S, ADS/JAO.ALMA#2017.1.00391.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "KinMS, KinMS_MCMC and SkySampler available on GitHub",
+     "evidence": [
+      {
+       "loc": "footnote 6",
+       "quote": "<https://github.com/Mark-D-Smith/KinMS-skySampler>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Line-free channel ranges",
+    "CLEAN parameters",
+    "Mask for fitting region",
+    "Initial MCMC settings",
+    "Software versions"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for 12-m plus ACA execution blocks across three projects; imaged cubes are ~2 GB",
+   "score_inferred": 4,
+   "score_reason": "Public data, open code, and detailed model description, but imaging and calibration details are partly omitted.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public, fitting recipe with priors and fixed inputs is detailed, and main results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Davis+2017MNRAS468.4675)",
+     "why": "Detailed description of the MCMC modelling procedure"
+    },
+    {
+     "citation": "(cite: Davis+2013MNRAS429.534)",
+     "why": "KinMS tool"
+    },
+    {
+     "citation": "(cite: Mitzkus+2017MNRAS464.4789)",
+     "why": "Chi-squared rescaling"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Davis+2013Nature494.328)",
+     "why": "First WISDOM CO SMBH measurement (NGC 4526)"
+    },
+    {
+     "citation": "(cite: Davis+2018MNRAS473.3818)",
+     "why": "WISDOM NGC 4429 with a central gas hole"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "WISDOM",
+    "ATLAS3D"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c8a93de8116a642f10e9566d4a70d0da",
+  "batch_id": "msgbatch_01LHB5XbVgqRG7wRXLZoxNAj",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:24:41",
+  "usage": {
+   "input_tokens": 32953,
+   "output_tokens": 14035,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.103734,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 101,
+  "quotes_ok": 101,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 12,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 100,
+   "stated": 73,
+   "rate": 0.73
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:35:18",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[2].fitting",
+    "old_value": "See step 4"
+   },
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "Monte Carlo propagation"
+   },
+   {
+    "path": "analysis_steps[5].fitting",
+    "old_value": "Same MCMC as step 4"
+   }
+  ],
+  "dropped_items": []
+ }
+}

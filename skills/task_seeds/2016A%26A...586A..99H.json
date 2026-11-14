@@ -1,0 +1,257 @@
+{
+ "bibcode": "2016A&A...586A..99H",
+ "title": "Steepening of the 820 μm continuum surface brightness profile signals dust evolution in TW Hydrae's disk",
+ "year": 2016,
+ "doi": "10.1051/0004-6361/201527754",
+ "arxiv_id": "1512.05553",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What is the radial surface-brightness profile and dust surface density of the 820 um continuum in TW Hya's disk, and does it show signatures of grain growth and drift?",
+ "alma_project_codes": [
+  "2011.0.00340.S",
+  "2011.0.00399.S"
+ ],
+ "data": {
+  "bands": "340.S: 804–837 um (348–373 GHz); 399.S: 867–898 um (334–346 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.45\"x0.37\" (340.S), uniform weighting",
+  "sensitivity": "0.50 mJy/beam (340.S); 0.59 mJy/beam (399.S)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Midplane temperature profile (q0=2.6, q1=0.26, R0=7 au)",
+    "evidence": [
+     {
+      "loc": "3 Model fitting",
+      "quote": "We follow the midplane temperature as calculated by Andrews et al. (2012), which reproduces the observed SED."
+     }
+    ]
+   },
+   "citation": "(cite: andrews2012)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity 3.4 cm2/g at 365.5 GHz and Sigma_10au = 0.39 g/cm2",
+    "evidence": [
+     {
+      "loc": "3 Model fitting",
+      "quote": "we adopt the same value as employed by Andrews et al. (2012), $\\kappa_{365.5}=3.4$ cm$^2$ g$^{-1}$ (dust)."
+     }
+    ]
+   },
+   "citation": "(cite: andrews2012)"
+  },
+  {
+   "what": {
+    "value": "Position angle 155 deg and inclination 6 deg",
+    "evidence": [
+     {
+      "loc": "2 Observations and data reduction",
+      "quote": "Adopting a position angle for the (projected) disk’s major axis of $155^\\circ$ (east of north) and an inclination of $+6^\\circ$ (cite: qi2013; rosenfeld2012)"
+     }
+    ]
+   },
+   "citation": "(cite: qi2013; rosenfeld2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate continuum",
+   "method": "Verify calibration, iterative self-calibration down to 60 s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Deproject and bin visibilities",
+   "method": "Average real and imaginary visibilities in 41 radial bins of deprojected baseline length",
+   "software": [],
+   "key_parameters": [
+    "PA 155 deg, i = 6 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit parametrized disk models to binned real visibilities",
+   "method": "Model intensity I=B(T)(1-exp(-tau)), Hankel transform by summation with 0.1 au step; single and broken power-law Sigma(R)",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "4 or 6 free parameters; fixed Sigma_10au=0.39, kappa=3.4, q0=2.6, q1=0.26, R0=7 au"
+   ],
+   "assumptions": [
+    "Constant dust opacity 3.4 cm2/g; geometrically thin, vertically isothermal; cos i ~ 1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain gaps in the disk",
+   "method": "Add Gaussian gap at 20 au to the two-slope model; scan widths and depths, reoptimize other parameters; exclude models with chi2 increase by factor two",
+   "software": [],
+   "key_parameters": [
+    "Gap centered at 20 au"
+   ],
+   "assumptions": [
+    "Gap width of 5 Hill radii for planet mass conversion"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Inner slope p0 (broken power law)",
+   "value": "0.53",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$p_0$ | $0.70 \\pm 0.01$ | $0.53 \\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outer slope p1",
+   "value": "8.0",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$p_1$ | | $8.0 \\pm 0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "Break radius",
+   "value": "47.1",
+   "uncertainty": "0.2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$R_{\\rm break}$ (au) | | $47.1 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inner radius (broken)",
+   "value": "4.07",
+   "uncertainty": "0.03",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$R_{\\rm in}$ (au) | $4.44\\pm 0.02$ | $4.07 \\pm 0.03$"
+    }
+   ]
+  },
+  {
+   "quantity": "Single power law p0 and Rout",
+   "value": "p0=0.70, Rout=55.7",
+   "uncertainty": "0.01, 0.1",
+   "units": "dimensionless, au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Model fitting",
+     "quote": "($p_0=0.70\\pm 0.01$ vs 0.75) and outer radius ($R_{\\rm out}=55.7\\pm 0.1$ au vs 60 au"
+    }
+   ]
+  },
+  {
+   "quantity": "chi2 single vs broken",
+   "value": "1437 vs 283",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Model fitting",
+     "quote": "with respective $\\chi^2$ values of 1437 and 283"
+    }
+   ]
+  },
+  {
+   "quantity": "T0 (broken)",
+   "value": "26.7",
+   "uncertainty": "0.2",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$T_0$ (K) | $28.4\\pm 0.2$ | $26.7 \\pm 0.2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depth",
+   "value": "2.1 at 4.1 au; 0.57 at 47 au",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Model fitting",
+     "quote": "The optical depth drops from 2.1 at 4.1 au to 0.57 at 47 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Excluded empty-gap FWHM at 20 au",
+   "value": ">6.6",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 The presence of unseen gaps",
+     "quote": "models with gaps that are entirely empty with FWHM widths of more than 6.6 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated flux 340.S",
+   "value": "1.7",
+   "uncertainty": "not stated",
+   "units": "Jy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2 Observations and data reduction",
+     "quote": "Integrated fluxes of 1.7 Jy (340.S) and 1.3 Jy (399.S) are found."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging/cleaning parameters (cell, image size, masking) for Fig. 1",
+  "Line-free channel selection and spectral windows used for continuum",
+  "Self-calibration intermediate solints and reference antenna",
+  "MCMC settings: number of walkers, steps, burn-in, priors",
+  "Weighting of visibility averaging and bin centers",
+  "Flux scale uncertainty and handling of the two datasets' flux calibration",
+  "Details of gap-model grid (widths, depths)"
+ ],
+ "missing_for_reproduction": [
+  "MCMC configuration and priors",
+  "Imaging and self-cal details",
+  "Exact binning weights/errors"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear model with a table of parameters, but MCMC settings and calibration details are missing.",
+ "rediscovery_reason": "Data are public, model is explicit and results are numeric (slopes, break radius).",
+ "source_card": "cards/2016A%26A...586A..99H/sonnet/card.md"
+}

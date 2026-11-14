@@ -1,0 +1,453 @@
+{
+"depth": "light",
+"paper_type": "multi_facility_alma_minor",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Here we present a study of the JWST/NIRSpec data of the most distant, spectroscopically confirmed galaxy observed to date"},
+{"loc": "Observations", "quote": "Dedicated far-infrared follow-up observations with ALMA were carried out to search for the"}
+],
+"fields": ["high_z_galaxies"],
+"question": {"value": "Reanalyse the JWST/NIRSpec prism spectrum of GS-z14 to measure its H I column density from the damped Lyman-alpha profile and combine it with published ALMA [O III]-88um, [C II]-158um and dust-continuum constraints to determine the gas content, gas fraction and dust-to-gas ratio", "evidence": [
+{"loc": "Introduction", "quote": "In this Letter, we reanalyze the JWST/NIRSpec Prism spectrum of GS-z14 in the context of its H i gas content, corroborated by recent far-infrared line emission and continuum measurements."}
+]},
+"targets": [
+{"name": "JADES-GS-z14-0 (GS-z14)", "details": [
+{"loc": "Introduction", "quote": "The line-redshift was thus confirmed to be at $z=14.1796\\pm 0.0006$"},
+{"loc": "Introduction", "quote": "This is also used to infer cosmological parameters such as the luminosity distance to GS-z14 and age of the Universe with the"}
+], "coordinates": "not stated", "redshift_or_distance": "z = 14.1796 +/- 0.0006 (from [O III]-88um); abstract quotes z=14.179", "distance_source": "[O III]-88um line redshift from ALMA (Carniani24b; Schouws24); Planck18 cosmology with Astropy for luminosity distance"}
+],
+"alma_project_codes": [
+{"code": "2023.A.00037.S", "evidence": [{"loc": "Observations", "quote": "Prog. ID: 2023.A.00037.S, PI: Schouws"}]},
+{"code": "2024.A.00007.S", "evidence": [{"loc": "Observations", "quote": "Prog. ID: 2024.A.00007.S, PI: Schouws"}]}
+],
+"data_settings": [
+{"field": "pi_or_archival_as_stated", "value": "ALMA programs 2023.A.00037.S ([O III]-88um) and 2024.A.00007.S ([C II]-158um), PI Schouws; results taken from earlier papers", "evidence": [
+{"loc": "Observations", "quote": "Prog. ID: 2023.A.00037.S, PI: Schouws"},
+{"loc": "Observations", "quote": "Prog. ID: 2024.A.00007.S, PI: Schouws"}
+]}
+],
+"lines_targeted": [
+{"species": "[O III]", "transition": "88 um", "rest_frequency": "not stated", "evidence": [
+{"loc": "Observations", "quote": "\\[O iii\\]-$88\\mu$m is detected at $>6\\sigma$ with a line luminosity $L_{\\rm [OIII]} = (2.0\\pm 0.5)\\times 10^{8}\\,L_\\odot$ (cite: Schouws24; Carniani24b)."}
+]},
+{"species": "[C II]", "transition": "158 um", "rest_frequency": "not stated", "evidence": [
+{"loc": "Observations", "quote": "Deep ALMA observations targeting the \\[C ii\\]-$158\\mu$m line, however, resulted in a non-detection at a limit $<6\\times 10^{7}\\,L_\\odot$ (cite: Schouws25)"}
+]}
+],
+"other_facilities": [
+{"name": "JWST/NIRSpec prism (MSA, Prog. ID 1287)", "provided": {"value": "Prism spectrum 0.6-5.3 um, R=30-300, 9.3 h on source, used for the Lyman-alpha damping-wing (DLA) fit", "evidence": [
+{"loc": "Observations", "quote": "The data were obtained using the NIRSpec (cite: Jakobsen22) Micro-Shutter Assembly (cite: Ferruit22), with three-shutter slitlets (Prog. ID 1287, PI: Luetzgendorf)."},
+{"loc": "Observations", "quote": "This sequence (about 2.33 h total integration) was repeated four times, for a final on-source time of 9.3 h."}
+]}},
+{"name": "JWST/NIRCam imaging (JADES, FRESCO, JADES Origins Field)", "provided": {"value": "Multi-band imaging used for forcepho photometry that scales the spectrum", "evidence": [
+{"loc": "Observations", "quote": "Multi-band JWST/NIRCam imaging was obtained as part of the JWST Advanced Deep Extragalactic Survey (cite: Eisenstein23a)"}
+]}},
+{"name": "JWST/MIRI", "provided": {"value": "7.7 um detection implying strong nebular emission lines", "evidence": [
+{"loc": "Observations", "quote": "GS-z14 has further been detected in $7.7\\mu$m imaging with JWST/MIRI (cite: Helton24)"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "SFR = 14.5 +/- 3 Msun/yr and log(M*/Msun) = 8.29 +0.09/-0.10 from prospector SED modelling (Chabrier IMF)", "evidence": [
+{"loc": "Observations", "quote": "Throughout this work, we adopt the spectral and physical galaxy measurements reported in (cite: Carniani24b)."}
+]}, "citation": "(cite: Carniani24b)"},
+{"what": {"value": "z = 14.1796 +/- 0.0006 systemic redshift from [O III]-88um", "evidence": [
+{"loc": "Analysis and results", "quote": "The significant detection of the far-infrared \\[O iii\\]-$88\\mu$m emission line reveals the systemic redshift to be $z=14.1796\\pm 0.0006$ (cite: Carniani24b; Schouws24)."}
+]}, "citation": "(cite: Carniani24b; Schouws24)"},
+{"what": {"value": "[O III]-88um luminosity (2.0 +/- 0.5)e8 Lsun", "evidence": [
+{"loc": "Observations", "quote": "\\[O iii\\]-$88\\mu$m is detected at $>6\\sigma$ with a line luminosity $L_{\\rm [OIII]} = (2.0\\pm 0.5)\\times 10^{8}\\,L_\\odot$ (cite: Schouws24; Carniani24b)."}
+]}, "citation": "(cite: Schouws24; Carniani24b)"},
+{"what": {"value": "[C II]-158um non-detection limit < 6e7 Lsun", "evidence": [
+{"loc": "Observations", "quote": "resulted in a non-detection at a limit $<6\\times 10^{7}\\,L_\\odot$ (cite: Schouws25)"}
+]}, "citation": "(cite: Schouws25)"},
+{"what": {"value": "Molecular gas mass upper bound M_mol < 10^9.2 Msun from [C II]", "evidence": [
+{"loc": "Analysis and results", "quote": "substantially higher than the previously reported upper bound inferred on the (molecular) gas mass, $M_{\\rm mol} < 10^{9.2}\\,M_\\odot$ (cite: Schouws25)"}
+]}, "citation": "(cite: Schouws25)"},
+{"what": {"value": "Dust mass upper bound < 1e6 Msun from the far-infrared continuum", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "the upper bound on the dust mass $<10^{6}\\,M_\\odot$ from the far-infrared continuum (cite: Schouws24)"}
+]}, "citation": "(cite: Schouws24)"},
+{"what": {"value": "UV half-light radius R_UV = 0.26 kpc and Sersic index 1 from forcepho; lensing magnification mu = 1.17", "evidence": [
+{"loc": "Observations", "quote": "The fiducial `forcepho` model yields a half-light semi-major axis of $R_{\\rm UV} = 0.26$ kpc and a Sérsic index of 1."},
+{"loc": "Observations", "quote": "is estimated to be only $\\mu=1.17$ (cite: Carniani24a)"}
+]}, "citation": "(cite: Carniani24a)"},
+{"what": {"value": "Absolute UV magnitude M_UV = -20.81 +/- 0.16 mag", "evidence": [
+{"loc": "Analysis and results", "quote": "With an absolute UV magnitude, $M_{\\rm UV} = -20.81\\pm 0.16$ mag (cite: Carniani24a)"}
+]}, "citation": "(cite: Carniani24a)"},
+{"what": {"value": "Visual attenuation A_V = 0.25 +/- 0.10 from full SED and line modelling", "evidence": [
+{"loc": "Analysis and results", "quote": "the visual attenuation $A_V = 0.25\\pm 0.10$ inferred from the full spectro-photometric modeling of the SED and line emission for GS-z14 (cite: Carniani24b)"}
+]}, "citation": "(cite: Carniani24b)"},
+{"what": {"value": "Dynamical mass log(M_dyn/Msun) = 9.0 +/- 0.2 within the [O III] region", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "($\\log (M_{\\rm dyn}/M_\\odot) = 9.0\\pm 0.2$) and the non-detection of the \\[C ii\\]-$158\\mu$m emission line (cite: Carniani24b; Schouws25)"}
+]}, "citation": "(cite: Carniani24b; Schouws25)"},
+{"what": {"value": "Metallicity-dependent [C II]-to-H I conversion", "evidence": [
+{"loc": "Analysis and results", "quote": "we consider the metallicity-dependent relation converting the \\[C ii\\]-$158\\mu$m line luminosity into a H i gas mass (cite: Heintz21)"}
+]}, "citation": "(cite: Heintz21)"},
+{"what": {"value": "Global Kennicutt-Schmidt relations (molecular and total gas)", "evidence": [
+{"loc": "Analysis and results", "quote": "we consider the Kennicutt-Schmidt relation (cite: Kennicutt12), universally connecting the SFR and gas surface density."}
+]}, "citation": "(cite: Kennicutt12)"},
+{"what": {"value": "[O III]-to-metal-mass calibration log(M_Z/L_[OIII]) = -1.0 +/- 0.2 for L_[OIII]/L_[CII] > 3", "evidence": [
+{"loc": "Analysis and results", "quote": "such that $\\log (M_Z / L_{\\rm [OIII]}) = -1.0\\pm 0.2$ for $L_{\\rm [OIII]} / L_{\\rm [CII]}>3$"}
+]}, "citation": "(cite: Heintz23_mz)"},
+{"what": {"value": "Gamma-ray burst sightline compilation of A_V/N_HI and MW/SMC/LMC averages for comparison", "evidence": [
+{"loc": "Analysis and results", "quote": "We compare this to equivalent measures from the compilation of $\\gamma$-ray burst sightlines through high-redshift ($z=1.7-6.3$) star-forming galaxies presented in (cite: Heintz23_GRB)"}
+]}, "citation": "(cite: Heintz23_GRB); (cite: Konstantopoulou24)"},
+{"what": {"value": "SMC-like reddening curve", "evidence": [
+{"loc": "Analysis and results", "quote": "requires $A_V = 0.3$ mag for a SMC-like reddening curve (cite: Gordon03)"}
+]}, "citation": "(cite: Gordon03)"},
+{"what": {"value": "Nebular continuum parameters T = 20,000 K and n_e = 1e2 cm^-3", "evidence": [
+{"loc": "Analysis and results", "quote": "assuming $T = 20,000$ K and $n_e = 10^2$ cm$^{-3}$ from (cite: Schirmer16)"}
+]}, "citation": "(cite: Schirmer16)"},
+{"what": {"value": "Solar oxygen abundance 12+log(O/H) = 8.69 and Z_sun,ref = 0.018", "evidence": [
+{"loc": "Analysis and results", "quote": "a solar oxygen abundance of $12+\\log ({\\rm O/H})_\\odot = 8.69$; (cite: Asplund09)"}
+]}, "citation": "(cite: Asplund09)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Analytical model of the star formation history and physical properties of GS-z14, used for comparison (predicts dust-to-gas mass ratio 10^-3.5)", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "particularly predicts a low dust-to-gas mass ratio of $10^{-3.5}$"}
+]}
+],
+"calibration": [],
+"imaging": [],
+"inherited": [
+{"what": {"value": "Flux correction applied to the reduced NIRSpec spectrum to match forcepho photometry", "evidence": [
+{"loc": "Observations", "quote": "Following (cite: Carniani24a), we apply a flux correction factor to the reduced spectrum"}
+]}, "from_reference": "(cite: Carniani24a)"},
+{"what": {"value": "Photometry used to scale the spectrum from forcepho Sersic modelling", "evidence": [
+{"loc": "Observations", "quote": "The photometry implicitly used in this article (to scale the spectrum) was obtained by modeling the galaxy with a Sérsic profile,"}
+]}, "from_reference": "as described in (cite: Carniani24a)"},
+{"what": {"value": "JWST NIRCam data reduction", "evidence": [
+{"loc": "Observations", "quote": "The data reduction is outlined in (cite: Rieke23; Eisenstein23a; Eisenstein23b)."}
+]}, "from_reference": "(cite: Rieke23; Eisenstein23a; Eisenstein23b)"},
+{"what": {"value": "Voigt-profile DLA model with approximation of Tepper-Garcia", "evidence": [
+{"loc": "Analysis and results", "quote": "We model the DLA absorption with a Voigt profile following (cite: Heintz24_z54), using the approximation from (cite: TepperGarcia06)"}
+]}, "from_reference": "(cite: Heintz24_z54); (cite: TepperGarcia06)"},
+{"what": {"value": "SFR, stellar mass and other galaxy properties adopted from prospector SED fitting", "evidence": [
+{"loc": "Observations", "quote": "Throughout this work, we adopt the spectral and physical galaxy measurements reported in (cite: Carniani24b)."}
+]}, "from_reference": "(cite: Carniani24b)"},
+{"what": {"value": "ALMA data reduction and line measurements are taken from the original ALMA papers", "evidence": [
+{"loc": "Observations", "quote": "Deep ALMA observations targeting the \\[C ii\\]-$158\\mu$m line, however, resulted in a non-detection at a limit $<6\\times 10^{7}\\,L_\\odot$ (cite: Schouws25)"}
+]}, "from_reference": "(cite: Schouws24; Carniani24b); (cite: Schouws25)"}
+],
+"unstated_but_needed": [
+"Priors and bounds for log N_HI, x_HI and beta_UV in the dynesty fit, and the nested-sampling settings (live points, stopping criterion)",
+"Wavelength range of the prism spectrum used in the fit and how the 'full spectrum' chi^2 and BIC were counted (degrees of freedom, error treatment)",
+"Which version of the NIRSpec reduction and which spectral extraction were used (spectrum is on Zenodo but pipeline version not stated)",
+"Exact Kennicutt-Schmidt relations (coefficients, slopes, adopted CO-to-H2 factor) for the molecular and total gas surface densities",
+"How the spherical H I mass was computed from N_HI and R_HI = 3 R_UV (explicit formula, mean molecular weight)",
+"All ALMA observing setups, calibration, imaging and the [O III]/[C II]/continuum measurements themselves (not reprocessed here; only published values from other papers are used)",
+"Method used to derive the A_V = 0.3 mag from the slope (fit procedure and wavelength range)"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Flux-correct the NIRSpec prism spectrum to the NIRCam photometry",
+"method": {"value": "Apply a wavelength-dependent polynomial correction to the reduced spectrum so that it matches the forcepho photometry, to correct slit losses and flux-calibration uncertainty", "evidence": [
+{"loc": "Observations", "quote": "This effectively takes into account and corrects for potential slit losses and/or uncertainties in the overall flux calibration."}
+]},
+"software": ["forcepho"],
+"key_parameters": [
+{"value": "F_corr = F_red x (0.18 x lambda(um) + 1)", "evidence": [
+{"loc": "Observations", "quote": "using a simple polynomial $F_{\\rm corr} = F_{\\rm red} \\times (0.18\\times \\lambda(\\mu{\\rm m}) + 1)$"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 2, "goal": "Fit the DLA Lyman-alpha damping wing for N_HI",
+"method": {"value": "Voigt-profile DLA plus IGM x_HI absorption on a power-law rest-UV continuum, convolved with the spectral resolution at each step; free parameters log N_HI, x_HI, beta_UV at fixed DLA redshift z = 14.1796", "evidence": [
+{"loc": "Analysis and results", "quote": "convolve the best-fit model with the spectral resolution at each step during the optimization"},
+{"loc": "Analysis and results", "quote": "We assume that the rest-frame UV continuum can be approximated by a smooth power-law function"}
+]},
+"software": ["dynesty", "Astropy"],
+"key_parameters": [
+{"value": "Fixed DLA redshift z = 14.1796; sampled parameters log N_HI, x_HI, beta_UV", "evidence": [
+{"loc": "Analysis and results", "quote": "assuming a fixed DLA redshift of $z=14.1796$"}
+]}
+],
+"assumptions": [
+{"value": "IGM expected to be fully neutral at z ~ 14", "evidence": [
+{"loc": "Analysis and results", "quote": "which we expect to be fully neutral at $z\\approx 14$"}
+]},
+{"value": "Smooth power-law rest-UV continuum; more complex shapes or Lya emission do not significantly affect N_HI", "evidence": [
+{"loc": "Analysis and results", "quote": "Introducing more complex spectral shapes or prominent Ly$\\alpha$ emission does not significantly affect the derived $N_{\\rm HI}$ (cite: Heintz24_DLA)"}
+]}
+],
+"fitting": {"value": "dynesty nested sampling; priors not stated", "evidence": [
+{"loc": "Analysis and results", "quote": "nested sampling (cite: Speagle20) to sample the posteriors of the parameters"}
+]},
+"validation": {"value": "Compared with IGM-only and nebular-continuum models using reduced chi^2 and BIC (step 3)", "evidence": [
+{"loc": "Analysis and results", "quote": "Additionally, the difference in Bayesian Information Criteria between the models $\\Delta \\rm BIC = 82$ indicates a strong statistical preference for the IGM+DLA model"}
+]}},
+{"order": 3, "goal": "Test alternative continuum models against the DLA model",
+"method": {"value": "Fit an IGM-only model (x_HI = 1) and a purely nebular two-photon continuum model, and compare chi^2_nu and BIC with the IGM+DLA fit", "evidence": [
+{"loc": "Analysis and results", "quote": "We also compare the DLA model to a purely nebular continuum model, dominated by the two-photon ($2\\gamma$) emission at rest-frame UV wavelengths"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Nebular model T = 20,000 K, n_e = 1e2 cm^-3", "evidence": [
+{"loc": "Analysis and results", "quote": "assuming $T = 20,000$ K and $n_e = 10^2$ cm$^{-3}$ from (cite: Schirmer16)"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "chi^2_nu 1.23 (DLA), 1.69 (IGM only), 1.53 (nebular); Delta BIC = 82", "evidence": [
+{"loc": "Analysis and results", "quote": "This matches well the slope of the spectrum, but the strong UV turnover is inconsistent with the data ($\\chi_\\nu^2 = 1.53$)."}
+]}},
+{"order": 4, "goal": "Convert N_HI to a total H I gas mass",
+"method": {"value": "Assume a spherical gas distribution with half-mass radius 3x the rest-UV size and use the line-of-sight N_HI", "evidence": [
+{"loc": "Analysis and results", "quote": "For a spherically distributed gas, this yields an H i gas mass of $M_{\\rm HI} = 5\\times 10^{9}\\,M_\\odot$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "R_HI ~ 3 x R_UV, with R_UV = 0.26 kpc", "evidence": [
+{"loc": "Analysis and results", "quote": "assume that the half-mass radius of the neutral gas is $\\sim 3\\times$ the rest-frame UV size (cite: Fujimoto20; Fudamoto22)"}
+]}
+],
+"assumptions": [
+{"value": "Spherical geometry (admitted to be an over-simplification, high covering factor argued)", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "While a spherical geometry is an over-simplification, the high detection rate of DLA around galaxies at $z>10$ (cite: Heintz25) almost certainly implies a high covering factor"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Cross-checked against Kennicutt-Schmidt gas mass (step 6)", "evidence": [
+{"loc": "Analysis and results", "quote": "this estimate is consistent with the bulk of the interstellar medium (ISM) in GS-z14 being in the form of H i"}
+]}},
+{"order": 5, "goal": "Upper bound on H I mass from the [C II] non-detection",
+"method": {"value": "Apply the metallicity-dependent [C II]-to-H I conversion calibrated on gamma-ray burst sightlines to the [C II] luminosity limit", "evidence": [
+{"loc": "Analysis and results", "quote": "we derive an upper bound of $M_{\\rm HI} < 10^{9.9}\\,M_\\odot$ ($3\\sigma$)"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "[C II] limit L < 6e7 Lsun; metallicity Z/Zsun = 0.17", "evidence": [
+{"loc": "Observations", "quote": "resulted in a non-detection at a limit $<6\\times 10^{7}\\,L_\\odot$ (cite: Schouws25)"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}},
+{"order": 6, "goal": "Gas mass from SFR surface density and Kennicutt-Schmidt relation",
+"method": {"value": "Compute Sigma_SFR = SFR_UV / (2 pi R_UV^2), apply the global Kennicutt-Schmidt relations to get molecular and total gas surface densities and masses within the star-forming region, then f_gas = M_gas/(M* + M_gas)", "evidence": [
+{"loc": "Analysis and results", "quote": "We determine the star-formation rate surface density as $\\Sigma_{\\rm SFR} = {\\rm SFR}_{\\rm UV} / 2\\pi R^2_{\\rm UV}$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "SFR = 14.5 +/- 3 Msun/yr (30% error adopted), R_UV = 0.26 kpc, log M* = 8.29", "evidence": [
+{"loc": "Analysis and results", "quote": "(assuming an inflated $30\\%$ error on the SFR)"}
+]}
+],
+"assumptions": [
+{"value": "Global-galaxy Kennicutt-Schmidt relation applies at z = 14", "evidence": [
+{"loc": "Analysis and results", "quote": "following the global-galaxy Kennicutt-Schmidt relation"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared with M_H2 upper bound from [C II] and with DLA-derived M_HI", "evidence": [
+{"loc": "Analysis and results", "quote": "which we convert to a molecular gas mass of $\\log (M_{\\rm H_2}/M_\\odot) = 9.2\\pm 0.3$ within the star-forming region"}
+]}},
+{"order": 7, "goal": "Gas mass from the [O III]-based metal mass",
+"method": {"value": "Convert L_[OIII] to metal mass with the calibration from Heintz23_mz, then divide by metallicity Z/Zsun x Z_sun,ref to obtain gas mass", "evidence": [
+{"loc": "Analysis and results", "quote": "The metal mass in the ISM is defined as $M_Z = M_{\\rm gas}\\times Z/Z_\\odot \\times Z_{\\rm \\odot,ref}$ with $Z_{\\rm \\odot,ref} = 0.018$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "log(M_Z/L_[OIII]) = -1.0 +/- 0.2 for L_[OIII]/L_[CII] > 3", "evidence": [
+{"loc": "Analysis and results", "quote": "such that $\\log (M_Z / L_{\\rm [OIII]}) = -1.0\\pm 0.2$ for $L_{\\rm [OIII]} / L_{\\rm [CII]}>3$"}
+]}
+],
+"assumptions": [
+{"value": "Oxygen abundance log(O/H) = 7.92 (Z/Zsun = 0.17; solar 12+log(O/H) = 8.69)", "evidence": [
+{"loc": "Analysis and results", "quote": "the metallicity quantified as an oxygen abundance, $\\log ({\\rm O/H}) = 7.92$"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Result described as consistent with the other gas mass estimates", "evidence": [
+{"loc": "Analysis and results", "quote": "which implies a total gas mass of $\\sim 10^{9.8}\\,M_\\odot$ when taking the metallicity of GS-z14 into account, consistent with the above estimates"}
+]}},
+{"order": 8, "goal": "Line-of-sight dust-to-gas ratio A_V/N_HI",
+"method": {"value": "Derive A_V from the observed rest-UV slope assuming an intrinsic beta_UV = -3 and an SMC-like reddening curve, divide by N_HI from the DLA fit, and compare with GRB sightlines and MW/SMC/LMC averages", "evidence": [
+{"loc": "Analysis and results", "quote": "Assuming a steep, intrinsic power-law with $\\beta_{\\rm UV} = -3$ requires $A_V = 0.3$ mag for a SMC-like reddening curve (cite: Gordon03)"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Intrinsic beta_UV = -3; A_V = 0.3 mag", "evidence": [
+{"loc": "Analysis and results", "quote": "This quantity is effectively the maximum allowed amount of dust in the line-of-sight that will extinguish the light"}
+]}
+],
+"assumptions": [
+{"value": "SMC-like reddening curve; intrinsic slope beta_UV = -3 (A_V is an upper limit)", "evidence": [
+{"loc": "Analysis and results", "quote": "for a SMC-like reddening curve (cite: Gordon03) to match the observed rest-frame UV spectral slope"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Consistent with SED-modelling A_V = 0.25 +/- 0.10 from Carniani24b", "evidence": [
+{"loc": "Analysis and results", "quote": "This upper bound is also consistent with the visual attenuation $A_V = 0.25\\pm 0.10$"}
+]}}
+],
+"software": [
+{"name": "dynesty", "version": "not stated", "used_for": {"value": "Nested sampling of log N_HI, x_HI and beta_UV posteriors", "evidence": [
+{"loc": "Analysis and results", "quote": "nested sampling (cite: Speagle20) to sample the posteriors of the parameters"}
+]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Cosmological parameters such as luminosity distance and age of the Universe", "evidence": [
+{"loc": "Introduction", "quote": "This is also used to infer cosmological parameters such as the luminosity distance to GS-z14 and age of the Universe with the"}
+]}},
+{"name": "forcepho", "version": "not stated", "used_for": {"value": "Sersic-profile modelling of NIRCam photometry used to scale the spectrum (from Carniani24a)", "evidence": [
+{"loc": "Observations", "quote": "The photometry implicitly used in this article (to scale the spectrum) was obtained by modeling the galaxy with a Sérsic profile,"}
+]}},
+{"name": "prospector", "version": "not stated", "used_for": {"value": "SED modelling that gave the adopted SFR and stellar mass (from Carniani24b)", "evidence": [
+{"loc": "Observations", "quote": "taking into account the full multi-wavelength spectroscopic and imaging data obtained for GS-z14"}
+]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "Astropy (cite: Astropy), Matplotlib (cite: Matplotlib), Numpy (cite: Numpy)"}
+]}},
+{"name": "Numpy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [
+{"loc": "Software", "quote": "Astropy (cite: Astropy), Matplotlib (cite: Matplotlib), Numpy (cite: Numpy)"}
+]}}
+],
+"results_numeric": [
+{"quantity": "H I column density log(N_HI/cm^-2)", "value": "22.27", "uncertainty": "+0.08/-0.09", "units": "dex (cm^-2)", "from_step": 2, "evidence": [
+{"loc": "abstract", "quote": "we determine a substantial neutral atomic hydrogen (H i) column density, $\\log (N_{\\rm HI} / {\\rm cm^{-2}}) = 22.27^{+0.08}_{-0.09}$"}
+]},
+{"quantity": "IGM neutral fraction x_HI", "value": "> 0.41", "uncertainty": "1 sigma from the 68% highest density interval", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "Analysis and results", "quote": "$x_{\\rm HI} > 0.41$ ($1\\sigma$ from the $68\\%$ highest density interval)"}
+]},
+{"quantity": "UV slope beta_UV", "value": "-1.93", "uncertainty": "0.08", "units": "dimensionless", "from_step": 2, "evidence": [
+{"loc": "Analysis and results", "quote": "and $\\beta_{\\rm UV} = -1.93\\pm 0.08$"}
+]},
+{"quantity": "Reduced chi^2 of IGM+DLA fit", "value": "1.23", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Analysis and results", "quote": "compared to $\\chi_\\nu^2 = 1.23$ for the fit with a DLA component"}
+]},
+{"quantity": "Reduced chi^2 of IGM-only fit", "value": "1.69", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Analysis and results", "quote": "provides a statistically worse fit to the data with $\\chi_\\nu^2 = 1.69$"}
+]},
+{"quantity": "Reduced chi^2 of nebular continuum model", "value": "1.53", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Analysis and results", "quote": "but the strong UV turnover is inconsistent with the data ($\\chi_\\nu^2 = 1.53$)"}
+]},
+{"quantity": "Delta BIC (IGM-only vs IGM+DLA)", "value": "82", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [
+{"loc": "Analysis and results", "quote": "the difference in Bayesian Information Criteria between the models $\\Delta \\rm BIC = 82$"}
+]},
+{"quantity": "H I gas mass from DLA (spherical)", "value": "5e9", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [
+{"loc": "Analysis and results", "quote": "For a spherically distributed gas, this yields an H i gas mass of $M_{\\rm HI} = 5\\times 10^{9}\\,M_\\odot$"}
+]},
+{"quantity": "H I mass upper bound from [C II] non-detection", "value": "< 10^9.9", "uncertainty": "3 sigma", "units": "Msun", "from_step": 5, "evidence": [
+{"loc": "Analysis and results", "quote": "we derive an upper bound of $M_{\\rm HI} < 10^{9.9}\\,M_\\odot$ ($3\\sigma$)"}
+]},
+{"quantity": "SFR surface density log(Sigma_SFR)", "value": "1.5", "uncertainty": "0.30", "units": "Msun yr^-1 kpc^-2 (dex)", "from_step": 6, "evidence": [
+{"loc": "Analysis and results", "quote": "yields $\\log (\\Sigma_{\\rm SFR} / M_{\\odot}\\,{\\rm yr}^{-1}\\,{\\rm kpc}^{-2}) = 1.5\\pm 0.30$"}
+]},
+{"quantity": "Molecular gas surface density log(Sigma_H2)", "value": "3.6", "uncertainty": "0.3", "units": "Msun pc^-2 (dex)", "from_step": 6, "evidence": [
+{"loc": "Analysis and results", "quote": "This implies a molecular gas surface density of $\\log (\\Sigma_{\\rm H_2} / M_{\\odot}\\,{\\rm pc}^{-2}) = 3.6\\pm 0.3$"}
+]},
+{"quantity": "Molecular gas mass log(M_H2)", "value": "9.2", "uncertainty": "0.3", "units": "Msun (dex)", "from_step": 6, "evidence": [
+{"loc": "Analysis and results", "quote": "which we convert to a molecular gas mass of $\\log (M_{\\rm H_2}/M_\\odot) = 9.2\\pm 0.3$ within the star-forming region"}
+]},
+{"quantity": "Total gas surface density log(Sigma_gas)", "value": "4.2", "uncertainty": "0.3", "units": "Msun pc^-2 (dex)", "from_step": 6, "evidence": [
+{"loc": "Analysis and results", "quote": "predicts a higher total gas surface density $\\log (\\Sigma_{\\rm gas} / M_{\\odot}\\,{\\rm pc}^{-2}) = 4.2\\pm 0.3$"}
+]},
+{"quantity": "Total gas mass log(M_gas)", "value": "9.8", "uncertainty": "0.3", "units": "Msun (dex)", "from_step": 6, "evidence": [
+{"loc": "abstract", "quote": "the total gas mass of GS-z14 is of the order $\\log (M_{\\rm gas} / M_\\odot) = 9.8\\pm 0.3$"}
+]},
+{"quantity": "Gas mass fraction f_gas", "value": ">~ 0.9", "uncertainty": "not stated", "units": "dimensionless", "from_step": 6, "evidence": [
+{"loc": "Analysis and results", "quote": "Taken at face value, this implies a large gas fraction $f_{\\rm gas} = M_{\\rm gas} / (M_\\star + M_{\\rm gas}) \\gtrsim 0.9$."}
+]},
+{"quantity": "Total metal mass M_Z", "value": "2.0e7", "uncertainty": "0.6e7", "units": "Msun", "from_step": 7, "evidence": [
+{"loc": "Analysis and results", "quote": "This yields a total metal mass in the ISM of $M_Z = (2.0\\pm 0.6)\\times 10^{7}\\,M_\\odot$"}
+]},
+{"quantity": "Upper limit visual extinction A_V", "value": "0.3", "uncertainty": "not stated", "units": "mag", "from_step": 8, "evidence": [
+{"loc": "Analysis and results", "quote": "requires $A_V = 0.3$ mag for a SMC-like reddening curve (cite: Gordon03)"}
+]},
+{"quantity": "Dust-to-gas ratio A_V/N_HI", "value": "1.3e-23", "uncertainty": "0.6e-23", "units": "mag cm^2", "from_step": 8, "evidence": [
+{"loc": "Analysis and results", "quote": "This yields a dust-to-gas ratio of $A_V/N_{\\rm HI} = (1.3\\pm 0.6)\\times 10^{-23}$ mag cm$^{2}$."}
+]},
+{"quantity": "Gas-phase metallicity range from dust-to-gas relation", "value": "-1.95 < [M/H] < -1.15", "uncertainty": "not stated", "units": "dex", "from_step": 8, "evidence": [
+{"loc": "Analysis and results", "quote": "indicate a gas-phase metallicity of $-1.95 < {\\rm [M/H]} < -1.15$"}
+]}
+],
+"findings_qualitative": [
+{"value": "The [O III]-88um emission arises from the central star-forming region and is not a reliable tracer of the total baryonic matter", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "this line transition is arguably not a reliable tracer of the total baryonic matter in the galaxy"}
+]},
+{"value": "The DLA gas is argued to be more pristine than the central star-forming region", "evidence": [
+{"loc": "Discussion and conclusions", "quote": "we determined that the metallicity of the DLA is lower than that of the central star-forming region"}
+]},
+{"value": "The dust-to-gas ratio is consistent with the most metal-poor GRB sightlines", "evidence": [
+{"loc": "Analysis and results", "quote": "It is evident that GS-z14 has a relatively low dust-to-gas ratio, consistent with the most metal-poor"}
+]}
+],
+"claims": [
+{"hypothesis": "Does the NIRSpec prism spectrum of GS-z14 show a DLA with a substantial H I column density?", "experiment": "Voigt-profile DLA plus power-law continuum fit with dynesty at fixed z = 14.1796, compared with IGM-only and nebular models", "result": "log N_HI = 22.27 +0.08/-0.09; IGM+DLA chi^2_nu 1.23 vs 1.69 (IGM only) and 1.53 (nebular); Delta BIC = 82", "finding": "A strong DLA with high N_HI is present and statistically preferred", "support": "supported", "evidence": [
+{"loc": "Analysis and results", "quote": "the difference in Bayesian Information Criteria between the models $\\Delta \\rm BIC = 82$ indicates a strong statistical preference for the IGM+DLA model"}
+]},
+{"hypothesis": "Is the total gas mass of GS-z14 large, despite the low gas fraction previously inferred from ALMA?", "experiment": "Three independent estimates: H I mass from N_HI, Kennicutt-Schmidt relation from Sigma_SFR, and the metal-mass route from [O III]", "result": "M_HI = 5e9 Msun; log M_gas = 9.8 +/- 0.3 (KS); M_Z = (2.0 +/- 0.6)e7 Msun giving ~10^9.8 Msun", "finding": "Total gas mass ~10^9.8 Msun and f_gas >~ 0.9, with the ISM mostly H I", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "This implies a substantial gas mass fraction, $f_{\\rm gas} \\gtrsim 0.9$ and that the bulk of the interstellar medium (ISM) is in the form of H i."}
+]},
+{"hypothesis": "Is the derived gas mass compatible with the [C II]-158um non-detection?", "experiment": "Convert the [C II] limit to an H I mass using the metallicity-dependent relation", "result": "M_HI < 10^9.9 Msun (3 sigma) vs M_HI from DLA = 5e9 Msun", "finding": "The gas mass is consistent with the [C II] non-detection when the scaling is applied to the neutral gas", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "We show that the derived gas mass is fully consistent with the non-detection of"}
+]},
+{"hypothesis": "Is the absorbing gas more pristine than the star-forming regions probed by [O III]?", "experiment": "Derive A_V from the UV slope and divide by N_HI; compare to GRB sightlines and local galaxies", "result": "A_V/N_HI = (1.3 +/- 0.6)e-23 mag cm^2; implied -1.95 < [M/H] < -1.15", "finding": "The line-of-sight gas has a low dust-to-gas ratio and lower metallicity than the emission-line value", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "further indicates that the absorbing gas is more pristine than the central, star-forming regions probed by the"}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Combine JWST DLA measurement with the ALMA far-infrared constraints to probe the full baryonic matter budget", "evidence": [
+{"loc": "Observations", "quote": "Here we examine the constraints delivered from the far-infrared line transitions in context of the H i column density and physical properties to probe the full baryonic matter budget of GS-z14."}
+]},
+{"field": "why_this_method", "value": "A smooth power-law continuum is adequate because more complex shapes do not change N_HI at high column density", "evidence": [
+{"loc": "Analysis and results", "quote": "Introducing more complex spectral shapes or prominent Ly$\\alpha$ emission does not significantly affect the derived $N_{\\rm HI}$ (cite: Heintz24_DLA)"}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "IGM-only (x_HI = 1) absorption model gave a worse fit than IGM+DLA", "evidence": [
+{"loc": "Analysis and results", "quote": "provides a statistically worse fit to the data with $\\chi_\\nu^2 = 1.69$"}
+]},
+{"value": "Purely nebular two-photon continuum model rejected because the UV turnover is inconsistent with the data", "evidence": [
+{"loc": "Analysis and results", "quote": "This matches well the slope of the spectrum, but the strong UV turnover is inconsistent with the data ($\\chi_\\nu^2 = 1.53$)."}
+]}
+],
+"limitations_admitted": [
+{"value": "H I mass from N_HI depends heavily on the assumed geometry", "evidence": [
+{"loc": "Analysis and results", "quote": "However, this estimate of $M_{\\rm HI}$ from the DLA $N_{\\rm HI}$ is heavily dependent on the assumed geometry of the system."}
+]},
+{"value": "A_V is only an upper bound on the dust in the line of sight", "evidence": [
+{"loc": "Analysis and results", "quote": "This quantity is effectively the maximum allowed amount of dust in the line-of-sight that will extinguish the light"}
+]}
+],
+"referee_caveats_inferred": [
+"Gas mass fraction rests on a single-sightline N_HI, an assumed R_HI = 3 R_UV and spherical geometry; the three gas-mass routes are not fully independent (all use the same R_UV, SFR and metallicity)",
+"Conclusions quote log M_gas = 9.5 +/- 0.3 and f_gas ~ 0.7-0.9 while the abstract and results give 9.8 +/- 0.3 and >~ 0.9; the numbers are not reconciled",
+"No ALMA data are reprocessed; all far-infrared constraints depend on other papers, so the ALMA contribution cannot be checked here",
+"Priors and the continuum/IGM model details of the dynesty fit are not given, and A_V relies on an assumed intrinsic slope of -3 and an SMC curve"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "JWST data from MAST; prism spectrum posted on Zenodo; ALMA public status not stated", "evidence": [
+{"loc": "Observations", "quote": "The data were obtained from the Mikulski Archive for Space Telescopes at the Space Telescope Science Institute"},
+{"loc": "footnote 1", "quote": "Available at <https://doi.org/10.5281/zenodo.12578542>"}
+]}
+],
+"code_released": [],
+"missing_for_reproduction": [
+"Priors and sampler settings for the DLA fit",
+"Explicit Kennicutt-Schmidt coefficients and H I mass formula",
+"ALMA line fluxes and limits are quoted from other papers; no reprocessing recipe here",
+"Pipeline version for the NIRSpec reduction"
+],
+"estimated_data_volume_inferred": "Small: one 1-D prism spectrum (kB-MB) for the main fit; ALMA data not reprocessed",
+"score_inferred": 3,
+"score_reason": "The main spectral fit can be redone from the public Zenodo prism spectrum, and numeric results are given, but priors, K-S coefficients and mass formulas are missing and the ALMA inputs are taken from other papers.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Recipe is incomplete (priors, K-S relations, geometry formulas) and the ALMA measurements are inherited from other papers, so the key numbers cannot be rebuilt solely from this text.",
+"methods_papers": [
+{"citation": "(cite: Carniani24a)", "why": "Original NIRSpec spectrum, forcepho photometry, flux correction and galaxy size and magnification"},
+{"citation": "(cite: Heintz24_z54)", "why": "Voigt-profile DLA fitting method followed here"},
+{"citation": "(cite: Heintz21)", "why": "Metallicity-dependent [C II]-to-H I conversion"},
+{"citation": "(cite: Heintz23_mz)", "why": "[O III] luminosity to metal mass calibration"}
+],
+"companion_papers": [
+{"citation": "(cite: Carniani24b)", "why": "ALMA [O III] detection, SED modelling and physical properties of GS-z14"},
+{"citation": "(cite: Schouws24)", "why": "ALMA [O III]-88um and dust continuum observations of GS-z14"},
+{"citation": "(cite: Schouws25)", "why": "Deep ALMA [C II]-158um non-detection and molecular gas limit"}
+],
+"related_projects_or_surveys": [
+"JADES (JWST Advanced Deep Extragalactic Survey)",
+"FRESCO",
+"JADES Origins Field",
+"JWST programs 1210, 1287, 3215",
+"ALMA 2023.A.00037.S",
+"ALMA 2024.A.00007.S"
+]
+}

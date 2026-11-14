@@ -1,0 +1,175 @@
+{
+ "bibcode": "2016PASJ...68....6A",
+ "title": "New detections of Galactic molecular absorption systems toward ALMA calibrator sources",
+ "year": 2016,
+ "doi": "10.1093/pasj/psv110",
+ "arxiv_id": "1510.05004",
+ "fields": [
+  "milky_way_ism",
+  "astrochemistry"
+ ],
+ "question": "Do ALMA calibrator spectra in the archive contain Galactic molecular absorption lines, and what do HCO/H13CO+ ratios imply about the diffuse ISM?",
+ "alma_project_codes": [
+  "2011.0.00217.S",
+  "2011.0.00259.S",
+  "2011.0.00351.S",
+  "2011.0.00524.S",
+  "2011.0.00531.S",
+  "2011.0.00733.S"
+ ],
+ "data": {
+  "bands": "Bands 3, 6 and 7",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HCO and H13CO+ column densities toward previous HCO-absorption sightlines",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "compared with the values measured on the lines-of-sight of the sources toward which HCO absorption was previously detected ((cite: Liszt+14))"
+     }
+    ]
+   },
+   "citation": "(cite: Liszt+14)"
+  },
+  {
+   "what": {
+    "value": "PDR column densities for comparison",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "along with the values in several PDRs ((cite: Schilke+01); (cite: Gerin+09))"
+     }
+    ]
+   },
+   "citation": "(cite: Schilke+01); (cite: Gerin+09)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "select calibrators",
+   "method": "Select 36 archive calibrators by Cycle 0 availability, >0.2 Jy continuum, <1 MHz resolution FDM",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "make cubes and re-do bandpass",
+   "method": "CLEAN cubes from calibrated visibilities; flag and interpolate absorbing bandpass channels, reapply bandpass",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "normalize and fit lines",
+   "method": "Continuum subtraction, divide by continuum, Gaussian fit for velocity, FWHM, depth",
+   "software": [
+    "CASA IMCONTSUB",
+    "CASA IMMATH"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "derive optical depths and column densities",
+   "method": "tau from line/continuum ratio; N from Greaves & Nyman formula with Gaussian integrated tau",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Tex = 2.73 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "compare N(HCO)/N(H13CO+) with PDRs",
+   "method": "Compare ratios with literature PDR and diffuse sightline values",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "N(HCO)/N(H13CO+) toward J1717-337",
+   "value": "24",
+   "uncertainty": "±4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "are $24 \\pm 4$ and $23 \\pm 7$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "N(HCO)/N(H13CO+) toward NRAO530",
+   "value": "23",
+   "uncertainty": "±7",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "are $24 \\pm 4$ and $23 \\pm 7$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CO Tex toward J1604-446 (rotation diagram)",
+   "value": "6.2",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "the $T_{\\mathrm{ex}}$ of the main CO component is calculated to be 6.2 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CO total column density J1604-446 main component",
+   "value": "1.1e16",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table notes",
+     "quote": "the total column density and $T_{\\mathrm{ex}}$ of the main CO component are determined to be $1.1 \\times 10^{16}$ cm$^{-2}$ and 6.2 K"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, channel width and velocity resolution of cubes",
+  "Clean mask and threshold",
+  "Continuum-channel selection for IMCONTSUB",
+  "Which spectral windows/EBs per source and CASA version",
+  "Beam size / extraction aperture for spectra",
+  "Fitting method for Gaussians and error budget details",
+  "Coordinates of targets"
+ ],
+ "missing_for_reproduction": [
+  "Full imaging parameters",
+  "Spectral window and execution block lists",
+  "Exact continuum channel choices"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple analysis, but imaging details and CASA version missing.",
+ "rediscovery_reason": "Public archival data, simple recipe, numeric ratios.",
+ "source_card": "cards/2016PASJ...68....6A/sonnet/card.md"
+}

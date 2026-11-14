@@ -1,0 +1,1123 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...883..193N",
+  "title": "The ALMA Discovery of the Rotating Disk and Fast Outflow of Cold Molecular Gas in NGC 1275",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Nagai, H.",
+  "n_authors": 16,
+  "arxiv_id": "1905.06017",
+  "doi": "10.3847/1538-4357/ab3e6e",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.01102.S",
+   "2017.1.01257.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA observations of the CO(2-1), HCN(3-2), and HCO$^{+}$(3-2) lines in the nearby radio galaxy / brightest cluster galaxy (BCG) of NGC 1275 with the spatial resolution of $\\sim20$ pc."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "nearby_galaxies",
+    "galaxy_clusters_and_sz"
+   ],
+   "targets": [
+    {
+     "name": "NGC 1275 (3C 84)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=0.017; 0.1 arcsec = 34.4 pc (H0=70.5, OmegaM=0.27, OmegaL=0.73)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The Perseus cluster is a nearby (z=0.017) cluster of galaxies and has been the subject of extensive research over years at all wavelengths."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At the 3C 84 distance, $0.1\\ensuremath{''}$ corresponds to 34.4 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "redshift with stated cosmology",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The Perseus cluster is a nearby (z=0.017) cluster of galaxies and has been the subject of extensive research over years at all wavelengths."
+       },
+       {
+        "loc": "1 Introduction",
+        "quote": "At the 3C 84 distance, $0.1\\ensuremath{''}$ corresponds to 34.4 pc."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the morphology and kinematics of the cold molecular gas in the inner kpc to ~30 pc of NGC 1275, how is the AGN fed, what do the blue-shifted absorption features imply, and what is the SMBH mass from gas dynamics?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We discuss the relation of the AGN feeding with cold accretion, the origin of blue-shifted absorption, and estimate of black hole mass using the molecular gas dynamics."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01257.S",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "which was approved as the project code of 2017.1.01257.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01102.S",
+     "evidence": [
+      {
+       "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+       "quote": "we also reduced archival data which observed NGC 1275 as the phase calibrator (Project ID: 2013.1.01102.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+      "quote": "The observations were done in ALMA Band 6 ($\\lambda=$1.3 mm) with 47 antennas"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "CO: 1920 ch at 0.977 MHz (~1.3 km/s) in LSB, 64 ch in USB; HCN/HCO+: 1920 ch (~1.1 km/s) in USB",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+      "quote": "with 1920 channels per spw (0.977 MHz channels resolution or $\\sim$1.3 km/s velocity resolution)"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| CO(2-1) | 230.538 |"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "3-2",
+     "rest_frequency": "265.886 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| HCN(3-2) | 265.886 |"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "3-2",
+     "rest_frequency": "267.558 GHz",
+     "evidence": [
+      {
+       "loc": "Table 3",
+       "quote": "| HCO$^{+}$(3-2) | 267.558 |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "extended C43-7 (compact C43-4 not presented)",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+      "quote": "This paper presents the results from the observations with the extended configuration."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "92.1 m to 2.5 km",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+      "quote": "The maximum and minimum baseline lengths are 2.5 km and 92.1 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "CO natural 0.144x0.077 arcsec; Briggs 0.110x0.048 arcsec",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| CO(2-1) | $0.144\\ensuremath{''}\\times0.077\\ensuremath{''}$ at $4.0\\ensuremath{^\\circ}$ |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "1.8 arcsec (CO), 1.5 arcsec (HCN/HCO+)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$1.8\\ensuremath{''}$ (610 pc)"
+     }
+    ]
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "45 min (CO), 39 min (HCN/HCO+)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| CO(2-1) | 45 | 47 | J0237+2848 | J0313+4120 | 100 K |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2017 Nov 27 (CO) and Nov 28 (HCN/HCO+)",
+    "evidence": [
+     {
+      "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+      "quote": "on 2017 November 27 and 2017 November 28 for the CO(2-1) and HCN(3-2)/HCO$^{+}$(3-2), respectively"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST WFPC2 F814W",
+     "provided": {
+      "value": "archival I-band image for stellar mass MGE model",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "We use *HST* $I$-band archival image taken with the F814W filter on Wide Field Planetary Camera 2 to model the stellar mass component."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Inner filament total gas mass 1.8e9 Msun used for missing-flux estimate",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "total gas mass of the inner filament of $1.8\\times10^{9}~M_{\\ensuremath{\\odot}}$ (cite: Lim2008)"
+       }
+      ]
+     },
+     "citation": "(cite: Lim2008)"
+    },
+    {
+     "what": {
+      "value": "Bondi accretion rate 7.4e-5 Msun/yr",
+      "evidence": [
+       {
+        "loc": "4.1 Filaments",
+        "quote": "The resultant Bondi accretion rate was $7.4\\times10^{-5}M_{\\ensuremath{\\odot}}$ yr$^{-1}$"
+       }
+      ]
+     },
+     "citation": "(cite: Fujita2016)"
+    },
+    {
+     "what": {
+      "value": "Stellar velocity dispersion 250 km/s and M_BH 10^8.61 Msun giving SoI of 60 pc",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "Using the stellar dispersion velocity of $250$ km s$^{-1}$ and $M_{\\rm BH}$ of $10^{8.61}M_{\\ensuremath{\\odot}}$ (cite: Bettoni2003)"
+       }
+      ]
+     },
+     "citation": "(cite: Bettoni2003)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA Pipeline plus extra manual delay calibration and self-calibration",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "we calibrated the residual delay using the CASA task `gaincal` with `gaintype=K`."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 5.1.1-5",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The data were processed at EA-ARC with the CASA 5.1.1-5 and ALMA Pipeline version 40896."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "ALMA Pipeline version 40896",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The data were processed at EA-ARC with the CASA 5.1.1-5 and ALMA Pipeline version 40896."
+      }
+     ]
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "bandpass calibrator J0237+2848; flux from JAO interpolation (spectral index -0.63) of Band 3 and 7 measurements",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The referenced flux was derived with the interpolation (power-law spectral index of $-0.63$) from measurements in Bands 3 and 7 on 2017 November 27."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "phase self-cal per integration time, amplitude per scan, on NGC 1275 continuum",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The phase and amplitude self-calibration were done per integration time and scan, respectively."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "tclean, non-interactive",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "Deconvolution was done with the CLEAN algorithm using the CASA task `tclean` non-interactively."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural and Briggs robust 0.5",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "we show images with both naturally weighting and Briggs weighting (cite: Briggs1995) of robust parameter 0.5."
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "uvcontsub, first order, line-free channels",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The continuum emission was identified at line-free channels with the fitting order of one using the CASA task `uvcontsub`."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "20 km/s channels, nearest interpolation",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "Images were created with the velocity resolution of 20 km/s with the “nearest\" interpolation in frequency."
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "see Table 2 (e.g., CO natural 0.144x0.077 arcsec)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| HCN(3-2) | $0.129\\ensuremath{''}\\times0.076\\ensuremath{''}$ at $12.1\\ensuremath{^\\circ}$ |"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "off-position image rms ~1 mJy; spectral-dynamic-range limited uncertainty 5.5-6.8 mJy",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "These uncertainties dominate the off-position image rms of $\\sim1$ mJy"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "SMBH dynamical modelling procedure",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "by following a standard procedure as described in (cite: Onishi2017; Davis2017; Davis2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Onishi2017; Davis2017; Davis2018)"
+    },
+    {
+     "what": {
+      "value": "Error scaling of chi2 by (2N_dof)^(1/4)",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "we follow the approach of (cite: vandenBosch2009) to conservatively increase the $\\Delta\\chi^{2}$ level"
+       }
+      ]
+     },
+     "from_reference": "(cite: vandenBosch2009)"
+    },
+    {
+     "what": {
+      "value": "H2 mass via Solomon & Vanden Bout equations (3) and (4)",
+      "evidence": [
+       {
+        "loc": "4.2 Inner Gas Disk",
+        "quote": "We calculate the total H$_{2}$ gas mass using equations (3) and (4) in (cite: Solomon2005)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Solomon2005)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Image sizes, cell sizes, cleaning thresholds and masks for tclean",
+    "Line-free channel ranges for uvcontsub",
+    "Self-calibration solution parameters and reference model",
+    "Exact reduction of archival 2013.1.01102.S data",
+    "mpfit settings and grid spacing for the SMBH search",
+    "MGE fit parameters and Gaussian components",
+    "Target coordinates"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate, correct delays and self-calibrate",
+    "method": {
+     "value": "ALMA pipeline then gaincal gaintype=K residual delay correction and phase/amplitude self-cal on bright continuum",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "Thus, we performed self-calibration using the continuum emission of NGC 1275 in both phase and amplitude."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Subtract continuum and image cubes",
+    "method": {
+     "value": "uvcontsub order 1 then tclean with natural and Briggs 0.5 weighting at 20 km/s",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The continuum emission was identified at line-free channels with the fitting order of one using the CASA task `uvcontsub`."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residual rms in line-free spws ~0.9 mJy below estimated sigma_T",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The measured rms is about 0.9 mJy, which is smaller than $\\sigma_{\\rm T}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Estimate spectral dynamic range uncertainty",
+    "method": {
+     "value": "D_spec = I_BP/sigma_BP, sigma_T = I_T/D_spec propagated into spectra",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "we can estimate the spectral dynamic range $D_{\\rm spec}$ as $D_{\\rm spec}=I_{\\rm BP}/\\sigma_{\\rm BP}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "consistent with dynamic range 1000 in the ALMA handbook",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The estimated spectral dynamic range is nearly consistent with the demonstrated spectral dynamic range of $1000$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive H2 gas mass and accretion rates",
+    "method": {
+     "value": "Solomon & Vanden Bout CO luminosity to mass; accretion rate M/t_dyn and M/tau",
+     "evidence": [
+      {
+       "loc": "4.2 Inner Gas Disk",
+       "quote": "Here we get the CO(2-1) integrated flux density of 40 Jy$\\cdot$km s$^{-1}$ within the central $1\\ensuremath{''}$ with a velocity FWHM of 400  km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "CO(2-1)/CO(1-0) = 1; alpha_CO = 4.8 (alternative 0.6-0.8); thin disk h=0.1r; v~25 km/s",
+      "evidence": [
+       {
+        "loc": "4.2 Inner Gas Disk",
+        "quote": "We assumed the CO(2-1)-to-CO(1-0) ratio of one and the CO luminosity-to-H$_{2}$ mass conversion factor in our Galaxy"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "compared with accretion rate from bolometric luminosity within factor of two",
+     "evidence": [
+      {
+       "loc": "4.2 Inner Gas Disk",
+       "quote": "within a factor of two"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Absorption optical depth and column density",
+    "method": {
+     "value": "tau from 40 mJy absorption against 7 Jy continuum; LTE, covering factor 1, Tex 100 K, HCN/H2 = 1e-9",
+     "evidence": [
+      {
+       "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+       "quote": "Under the assumption of the local thermodynamic equilibrium and a covering factor of 1, we obtain the H$_{2}$ column density of $2.3\\times10^{22}$ cm$^{-2}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "HCN-H2 abundance 1e-9",
+      "evidence": [
+       {
+        "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+        "quote": "Here we assume a HCN-H$_{2}$ abundance ratio of $10^{-9}$ (cite: Smith2014)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "spectra on continuum-unsubtracted images and archival data",
+     "evidence": [
+      {
+       "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+       "quote": "To check that these features are not an artifact caused by the process of continuum subtraction, we also show the spectrum measured on the continuum unsubtracted images"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Model stellar mass with MGE",
+    "method": {
+     "value": "MGE fit to HST F814W image with TinyTim PSF, masking AGN and dust region, uniform M/L",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "fit the luminosity distribution by using the PSF and the procedure `mge_fit_sectors_regularized`"
+      }
+     ]
+    },
+    "software": [
+     "MGE_fit_sectors",
+     "TinyTim"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Fit gas disk kinematics for SMBH mass",
+    "method": {
+     "value": "KinMS models with circular velocity from MGE_circular_velocity, exponential disk; mpfit minimization then grid search over M_BH and inclination",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "We first searched for a set of parameters to minimize the difference between the observed data and the model by using `mpfit` that is developed in `IDL`."
+      }
+     ]
+    },
+    "software": [
+     "KinMS",
+     "mpfit",
+     "JAM",
+     "IDL"
+    ],
+    "key_parameters": [
+     {
+      "value": "fitting area 1.55x1.55 arcsec, 4687-5580 km/s, 129x129x47 pixels, natural-weighted cube",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "thus $129\\times129\\times47$ pixels"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "axisymmetric potential, circular motion, exponential gas disk, uniform dispersion",
+      "evidence": [
+       {
+        "loc": "5 Black Hole Mass",
+        "quote": "assuming an axisymmetric potential and circular motion"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2-like residual (obs-model)^2/rms^2; errors from residual < 9+chi2_min after rms scaled by (2N_dof)^(1/4)",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "we judge the error by allowing all parameters that realize residuals less than $9+\\chi_{\\rm min}^{2}$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "M/L varied 0.05, 0.5, 5.0; two gas masses; missing mass estimate 2e7 Msun",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "We confirm this by giving three different $M/L_{I}$ values, $0.05$, $0.50$ and $5.00$ to see negligible difference"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "5.1.1-5",
+    "used_for": {
+     "value": "calibration, uvcontsub, tclean imaging",
+     "evidence": [
+      {
+       "loc": "2 OBSERVATIONS and DATA ANALYSIS",
+       "quote": "The data were processed at EA-ARC with the CASA 5.1.1-5 and ALMA Pipeline version 40896."
+      }
+     ]
+    }
+   },
+   {
+    "name": "KinMS",
+    "version": "not stated",
+    "used_for": {
+     "value": "kinematic modelling of molecular gas disk",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "By utilizing the `KinMS`, we take observational effects such as beam smearing and velocity resolution into account"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MGE_fit_sectors",
+    "version": "not stated",
+    "used_for": {
+     "value": "MGE fit of HST I-band image",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "contained in the `MGE_fit_sectors` IDL package[^3] of (cite: Cappellari2002)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "JAM (MGE_circular_velocity)",
+    "version": "not stated",
+    "used_for": {
+     "value": "circular velocity curve",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "`MGE_circular_velocity` procedure contained in the `JAM` package of (cite: Cappellari2008)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "mpfit",
+    "version": "not stated",
+    "used_for": {
+     "value": "best-fit parameter search",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "by using `mpfit` that is developed in `IDL`"
+      }
+     ]
+    }
+   },
+   {
+    "name": "TinyTim",
+    "version": "6.3",
+    "used_for": {
+     "value": "HST PSF",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "The *HST* PSF for this observation was estimated by using TinyTim Version 6.3 (cite: Krist2011)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "H2 gas mass of inner disk (alpha_CO=4.8)",
+    "value": "~4e8",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Inner Gas Disk",
+      "quote": "obtain $\\sim4\\times10^{8}~M_{\\ensuremath{\\odot}}$"
+     }
+    ]
+   },
+   {
+    "quantity": "H2 column density of absorber",
+    "value": "2.3e22",
+    "uncertainty": "not stated",
+    "units": "cm^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+      "quote": "we obtain the H$_{2}$ column density of $2.3\\times10^{22}$ cm$^{-2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Absorption optical depth",
+    "value": "0.0057",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+      "quote": "yielding the optical depth of 0.0057"
+     }
+    ]
+   },
+   {
+    "quantity": "SMBH mass (gas 4e8 Msun)",
+    "value": "1.1e9",
+    "uncertainty": "+0.3/-0.5 e9",
+    "units": "Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5 Black Hole Mass",
+      "quote": "$M_{\\rm BH}=(1.1 ^{+0.3}_{-0.5})\\times10^{9}M_{\\ensuremath{\\odot}}$ and inclination of $46^{+11}_{-6}$ deg"
+     }
+    ]
+   },
+   {
+    "quantity": "SMBH mass (gas 5e7 Msun)",
+    "value": "1.2e9",
+    "uncertainty": "+0.1/-0.6 e9",
+    "units": "Msun",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "5 Black Hole Mass",
+      "quote": "$M_{\\rm BH}=(1.2^{+0.1}_{-0.6}) \\times10^{9}M_{\\ensuremath{\\odot}}$ and inclination of $45^{+14}_{-5}$ deg"
+     }
+    ]
+   },
+   {
+    "quantity": "Disk accretion timescale",
+    "value": "~4e7 (r/100pc)(v/25 km/s)^-1",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Inner Gas Disk",
+      "quote": "\\tau\\sim4\\times10^{7}\\times\\left[\\frac{r}{\\rm 100~pc}\\right]\\left[\\frac{v}{\\rm25~km~s^{-1}}\\right]^{-1} {\\rm yr}"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold accretion rate of disk",
+    "value": "1-2 (for 5-7e7 Msun) and 10 (for 4e8 Msun)",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2 Inner Gas Disk",
+      "quote": "we get $\\dot{M}_{\\rm gas}=1$-$2~M_{\\odot}$ yr$^{-1}$ and $\\dot{M}_{\\rm gas}=10~M_{\\odot}$ yr$^{-1}$, respectively"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Filaments A-E cannot be represented by a single infalling stream, consistent with chaotic cold accretion",
+    "evidence": [
+     {
+      "loc": "3.1 The CO(2-1) Line",
+      "quote": "seems to be hardly reproduced by a single stream of infalling gas since all the components are not aligned in the same position angle"
+     }
+    ]
+   },
+   {
+    "value": "Blue-shifted HCN/HCO+ absorption by 300-600 km/s against the jet suggests outflowing gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The absorption features are blue-shifted from the systemic velocity by $\\sim$300-600 km s$^{-1}$, suggesting the presence of outflowing gas"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is there a massive rotating cold gas disk in the central 100 pc?",
+    "experiment": "Imaging of CO(2-1), HCN(3-2), HCO+(3-2) at ~20 pc resolution",
+    "result": "Velocity gradient ~±250 km/s at PA~70 deg; H2 mass ~4e8 Msun",
+    "finding": "A rotating molecular disk exists, with axis roughly aligned with the jet",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Within the central 100 pc, we detected a rotational disk of the molecular gas whose mass is $\\sim10^{8}~M_{\\ensuremath{\\odot}}$."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is cold accretion more important than hot (Bondi) accretion?",
+    "experiment": "Crude accretion rate estimates from gas mass and timescales",
+    "result": "Mdot > 0.1 Msun/yr (kpc) and 1-10 Msun/yr (disk) versus Bondi 7.4e-5",
+    "finding": "Cold accretion can dominate",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A crude estimate suggests that the accretion rate of the cold gas can be higher than that of hot gas."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are there outflowing absorbers?",
+    "experiment": "Spectra at the continuum peak, checked without continuum subtraction and in archival data",
+    "result": "Absorption at 4600-4900 km/s, >3 sigma HCN and >4 sigma HCO+; marginal in archive",
+    "finding": "Likely jet-cloud interaction or CND outflow",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "3.2 The HCN(3-2) and HCO+(3-2) Lines",
+      "quote": "The significance is more than $3\\sigma$ and $4\\sigma$ at the deepest absorption channels for HCN(3-2) and HCO$^{+}$(3-2), respectively."
+     }
+    ]
+   },
+   {
+    "hypothesis": "What is the SMBH mass from molecular gas dynamics?",
+    "experiment": "KinMS disk modelling of the CO cube with MGE stellar mass",
+    "result": "M_BH ~1.1e9 Msun",
+    "finding": "Agrees with warm H2 dynamics, disagrees with virial BLR mass",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusion",
+      "quote": "The measured SMBH is $1\\times10^{9}~M_{\\ensuremath{\\odot}}$, which agrees with the dynamical measurement using the warm H$_{2}$ gas but disagrees with the virial mass estimate using broad emission lines."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "High-resolution ALMA needed to resolve inner kpc to <50 pc scale",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "High resolution observations of the cold molecular gas with ALMA are key to uncovering the missing link between the outer kpc and the inner $\\lesssim50$ pc"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "alpha_CO = 0.6-0.8 considered, giving 5-7e7 Msun",
+     "evidence": [
+      {
+       "loc": "4.2 Inner Gas Disk",
+       "quote": "we obtain the total gas mass of $\\sim$5-7$\\times10^{7} M_{\\ensuremath{\\odot}}$"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Missing flux from lack of short baselines, so masses are lower limits",
+     "evidence": [
+      {
+       "loc": "4.1 Filaments",
+       "quote": "Note that the estimated mass should be a lower limit since the total emissions cannot be recovered because of the lack of short interferometric baselines."
+      }
+     ]
+    },
+    {
+     "value": "Residual is not a true chi2 because neighbouring pixels are correlated; modelling assumptions simple",
+     "evidence": [
+      {
+       "loc": "5 Black Hole Mass",
+       "quote": "This residual is useful to judge the fitting results but is not equivalent to the $\\chi^{2}$, as the neighboring pixels in the observed cube are correlated."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Accretion rates are crude order-of-magnitude estimates with large alpha_CO uncertainty",
+    "SMBH error from rescaled residuals, not a proper chi2 or MCMC; inclination hits search limit",
+    "Absorption significance only 3-4 sigma and marginal in archive",
+    "Self-calibration on a variable source may affect line and absorption fluxes"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Project codes cited; archival data identified",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.0.01257.S and ADS/JAO.ALMA#2013.1.01102.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (cell, size, masks)",
+    "Self-cal details",
+    "Line-free channel selection",
+    "Fitting grid details"
+   ],
+   "estimated_data_volume_inferred": "~100-300 GB raw for the two extended-configuration EBs; plus archival data",
+   "score_inferred": 3,
+   "score_reason": "Public data and a clear modelling approach, but imaging, self-cal and fitting details are partly unstated.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Data are public, the processing and the modelling are largely described, and results (gas mass, M_BH) are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Onishi2017; Davis2017; Davis2018)",
+     "why": "SMBH dynamical modelling procedure"
+    },
+    {
+     "citation": "(cite: vandenBosch2009)",
+     "why": "error scaling of chi2"
+    },
+    {
+     "citation": "(cite: Cappellari2002)",
+     "why": "MGE fitting"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Lim2008)",
+     "why": "previous CO observations of filaments"
+    },
+    {
+     "citation": "(cite: Scharwachter2013)",
+     "why": "warm H2 disk kinematics and BH mass"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-e6d2c061e0bf2addb9fe6935010c96a1",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:15",
+  "usage": {
+   "input_tokens": 37280,
+   "output_tokens": 11273,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.094252,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 78,
+  "quotes_ok": 78,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2017.0.01257.S"
+  ],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 86,
+   "stated": 59,
+   "rate": 0.686
+  },
+  "evidence_ok": true
+ }
+}

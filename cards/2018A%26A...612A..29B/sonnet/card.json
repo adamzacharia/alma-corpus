@@ -1,0 +1,1387 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018A&A...612A..29B",
+  "title": "Molecular outflow and feedback in the obscured quasar XID2028 revealed by ALMA",
+  "year": 2018,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Brusa, M.",
+  "n_authors": 32,
+  "arxiv_id": "1712.04505",
+  "doi": "10.1051/0004-6361/201731641",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00137.S",
+   "2015.1.00299.S",
+   "2016.1.00171.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We imaged, with ALMA and ARGOS/LUCI, the molecular gas and dust and stellar continuum in XID2028, which is an obscured quasi-stellar object (QSO) at z=1.593"
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "XID2028",
+     "coordinates": {
+      "value": "RA=10:02:11.28, Dec=+01:37:06.64 (J2000)",
+      "evidence": [
+       {
+        "loc": "2 ALMA observations of XID2028",
+        "quote": "The phase centre of the dataset was set to the Hubble Space Telescope (HST) position of the QSO nucleus (RA=10:02:11.29, DEC=+01:37:06.67)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The target is XID2028 (z=1.5930), originally discovered in the XMM-COSMOS survey"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=1.5930; 1'' ~ 8.5 kpc",
+      "evidence": [
+       {
+        "loc": "2 ALMA observations of XID2028",
+        "quote": "The phase centre of the dataset was set to the Hubble Space Telescope (HST) position of the QSO nucleus (RA=10:02:11.29, DEC=+01:37:06.67)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The target is XID2028 (z=1.5930), originally discovered in the XMM-COSMOS survey"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "spectroscopic redshift from narrow optical lines in X-shooter spectrum (Perna et al. 2015)",
+      "evidence": [
+       {
+        "loc": "2 ALMA observations of XID2028",
+        "quote": "The phase centre of the dataset was set to the Hubble Space Telescope (HST) position of the QSO nucleus (RA=10:02:11.29, DEC=+01:37:06.67)."
+       },
+       {
+        "loc": "Introduction",
+        "quote": "The target is XID2028 (z=1.5930), originally discovered in the XMM-COSMOS survey"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there a molecular (CO) outflow and what are the gas content, depletion time and disc kinematics in the obscured QSO XID2028, which hosts a massive ionised outflow?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Detection of a molecular outflow and a measurement of the associated mass outflow rate is needed to estimate the true energetics of the outflow process and its impact on the host galaxy."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00299.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2015.1.00299.S (PI: Brusa), #2015.1.00137.S (PI: Scoville), and #20015.1.00171.S (PI: Daddi)."
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00137.S",
+     "evidence": [
+      {
+       "loc": "2.3 Other CO transitions from PdBI and ALMA",
+       "quote": "as part of the programme 2015.1.00137.S (PI: N. Scoville)"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00171.S",
+     "evidence": [
+      {
+       "loc": "2.3 Other CO transitions from PdBI and ALMA",
+       "quote": "as part of the programme 2015.1.00171.S (PI: E. Daddi)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (main); Band 3 and Band 7 snapshots from other programmes",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations of XID2028",
+      "quote": "XID2028 was observed during ALMA Cycle 3 with the 12 m array in Band 6 for a total time on source of 3.5 hrs."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Two FDM SPWs (1875 MHz, 3.9 MHz channels, ~5 km/s) at 222.24 and ~239.5 GHz; two TDM SPWs of 2 GHz for continuum; total 7.5 GHz",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations of XID2028",
+      "quote": "The spectral set-up covers a total bandwidth of 7.5 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=5-4",
+     "rest_frequency": "576.268 GHz",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "CO J=5-4 transition ($\\nu_{\\rm rest}$=576.268 GHz; hereafter: CO(5-4))"
+      }
+     ]
+    },
+    {
+     "species": "HCN",
+     "transition": "7-6",
+     "rest_frequency": "620.304 GHz",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "$\\nu_{\\rm rest}$=620.304 GHz and $\\nu_{\\rm rest}$=624.208 GHz, respectively"
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "7-6",
+     "rest_frequency": "624.208 GHz",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "$\\nu_{\\rm rest}$=620.304 GHz and $\\nu_{\\rm rest}$=624.208 GHz, respectively"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array, 38 antennas",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations of XID2028",
+      "quote": "The array included 38 antennas with a maximum baseline of 704 m."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "maximum baseline 704 m",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations of XID2028",
+      "quote": "The array included 38 antennas with a maximum baseline of 704 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "continuum beam 0.54''x0.45'' (PA 86 deg); CO(5-4) beam 0.54''x0.43''",
+    "evidence": [
+     {
+      "loc": "2.1 1.3 mm continuum",
+      "quote": "The clean beam of the observation is $0.54\\ensuremath{''}\\times0.45\\ensuremath{''}$ with a position angle"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "continuum visibility noise 7.5 uJy",
+    "evidence": [
+     {
+      "loc": "2.1 1.3 mm continuum",
+      "quote": "for a detection significance of 19$\\sigma$ when the visibility noise of 7.5 $\\mu$Jy is considered"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "3.5 hrs (Band 6)",
+    "evidence": [
+     {
+      "loc": "2 ALMA observations of XID2028",
+      "quote": "for a total time on source of 3.5 hrs"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Band 6 own programme (PI Brusa); Band 3 (PI Daddi) and Band 7 (PI Scoville) snapshots from archive",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "A careful scrutiny of the ALMA archive and an open collaboration with the PIs of the programmes allowed us to make the best use of ALMA data."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "LBT LUCI1/LUCI2 with ARGOS",
+     "provided": {
+      "value": "Ks-band high-resolution imaging (PSF ~0.27'')",
+      "evidence": [
+       {
+        "loc": "3 LBT data and NIR imaging",
+        "quote": "The average PSF derived from Gaussian fits of stars around the QSO is $\\sim0.27\\ensuremath{''}$."
+       }
+      ]
+     }
+    },
+    {
+     "name": "PdBI",
+     "provided": {
+      "value": "CO(3-2) and CO(2-1) measurements (Brusa et al. 2015b)",
+      "evidence": [
+       {
+        "loc": "2.3 Other CO transitions from PdBI and ALMA",
+        "quote": "For the CO(3-2) transition, instead, we measured a flux in the 2 mm band of I$_{\\rm CO(3-2)}$=1.23$\\pm$0.25 Jy km s$^{-1}$."
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLT X-shooter / SINFONI",
+     "provided": {
+      "value": "[O III] outflow, redshift, narrow Halpha map",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "has been independently confirmed by X-shooter slit spectroscopy (cite: Brusa2015; Perna2015) and SINFONI IFU observations (cite: Cresci2015)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "HST ACS",
+     "provided": {
+      "value": "rest-frame U-band image, nucleus position",
+      "evidence": [
+       {
+        "loc": "3 LBT data and NIR imaging",
+        "quote": "in the right panel we show the HST image obtained with the Advanced Camera for Surveys (ACS)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Multiwavelength COSMOS2015 photometry (UV to Herschel/SPIRE) used in SED fit",
+      "evidence": [
+       {
+        "loc": "5 Gas consumption",
+        "quote": "photometry from the COSMOS2015 catalogue of (cite: Laigle2016)"
+       }
+      ]
+     },
+     "citation": "(cite: Laigle2016)"
+    },
+    {
+     "what": {
+      "value": "PdBI CO(3-2) and CO(2-1) fluxes",
+      "evidence": [
+       {
+        "loc": "2.3 Other CO transitions from PdBI and ALMA",
+        "quote": "we reported for XID2028 a 3$\\sigma$ upper limit for the CO(2-1) line from the PdBI observation at 3 mm of I$_{\\rm CO(2-1)} <$0.53 Jy km s$^{-1}$."
+       }
+      ]
+     },
+     "citation": "(cite: B15_PDBI)"
+    },
+    {
+     "what": {
+      "value": "Stellar mass, SFR, ionised outflow and neutral outflow rates",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "integrated stellar mass from SED fitting (see (cite: Perna2015) and Appendix A.1)"
+       }
+      ]
+     },
+     "citation": "(cite: Perna2015); (cite: Cresci2015)"
+    },
+    {
+     "what": {
+      "value": "Average CO SLEDs of ULIRGs, SMGs, BzK, Milky Way, Mrk 231",
+      "evidence": [
+       {
+        "loc": "2.4 Estimating the CO(1-0) flux",
+        "quote": "average CO excitation ladders of ULIRGs (cite: Papadopoulos2012), SMGs (cite: Bothwell2013), and BzK galaxies (cite: Daddi2015)"
+       }
+      ]
+     },
+     "citation": "Papadopoulos2012; Bothwell2013; Daddi2015; Fixsen1999; Vanderwerf2010"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Model CO SLEDs from Narayanan & Krumholz 2014 (Eq. 19) and Bournaud et al. 2015 simulations",
+     "evidence": [
+      {
+       "loc": "2.4 Estimating the CO(1-0) flux",
+       "quote": "We show as green open circles the intensity ratios predicted following Equation 19 of (cite: Narayanan2014)"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "The data were calibrated using the ALMA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.7 (imaging)",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "Images were created using the common astronomy software applications package (CASA v4.7; (cite: McMullin2007))."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "J1058+0133 (bandpass and flux); J0948+0022 gain",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "The quasar J1058+0133 (with a flux of 3 Jy at 222.24 GHz) was used for bandpass and absolute flux calibration"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "about 10%",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "which yields an absolute flux accuracy of about 10% at the observed frequency"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2.1 1.3 mm continuum",
+       "quote": "We first reconstructed a continuum image with the CASA task clean"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Briggs weighting (robust not stated); natural weighting for high-velocity tail maps",
+     "evidence": [
+      {
+       "loc": "2.1 1.3 mm continuum",
+       "quote": "weighting the visibilities with the Briggs scheme to maximise the spatial resolution"
+      },
+      {
+       "loc": "6 High velocity molecular gas",
+       "quote": "we used the natural weighting scheme to construct these maps to maximise the sensitivity"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "continuum from TDM SPWs: 224-225.5 GHz and 236.5-238.2 GHz",
+     "evidence": [
+      {
+       "loc": "2.1 1.3 mm continuum",
+       "quote": "we collapsed the line free channels in the two TDM spectral windows (in the ranges 224-225.5 GHz and 236.5-238.2 GHz)"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.54''x0.45'' continuum; 0.54''x0.43'' CO(5-4)",
+     "evidence": [
+      {
+       "loc": "2.2 CO(5-4) emission line",
+       "quote": "The clean beam of the observation is $0.54\\ensuremath{''}\\times0.43\\ensuremath{''}$."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Redshift z=1.5930 from narrow optical lines, SED-based SFR and stellar mass",
+      "evidence": [
+       {
+        "loc": "Footnote 2",
+        "quote": "The systemic redshift is based on the narrow components detected in the H$\\alpha$, \\[N II\\] and \\[O III\\] lines seen in the X-shooter spectrum"
+       }
+      ]
+     },
+     "from_reference": "(cite: Perna2015)"
+    },
+    {
+     "what": {
+      "value": "ISM mass from dust continuum following Scoville recipe",
+      "evidence": [
+       {
+        "loc": "5 Gas consumption",
+        "quote": "Following the prescriptions of (cite: Scoville2016) an estimate of the ISM mass can be obtained from the dust continuum flux"
+       }
+      ]
+     },
+     "from_reference": "(cite: Scoville2016)"
+    },
+    {
+     "what": {
+      "value": "CO line luminosity calculation",
+      "evidence": [
+       {
+        "loc": "2.2 CO(5-4) emission line",
+        "quote": "Following (cite: Solomon1997), the measured CO(5-4) flux translates into a line luminosity"
+       }
+      ]
+     },
+     "from_reference": "(cite: Solomon1997)"
+    },
+    {
+     "what": {
+      "value": "Dynamical fitting of velocity field",
+      "evidence": [
+       {
+        "loc": "4 A fast rotating molecular disc",
+        "quote": "We fit the observed velocity and velocity dispersion field with the dynamical fitting routine of (cite: Cresci2009)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Cresci2009)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Briggs robust value, cell size, image size, clean threshold and masks",
+    "Exact velocity range/channel selection used for continuum subtraction of the CO cube",
+    "Details of the uvmodelfit starting parameters",
+    "Exact SLED-extrapolation ratios (r51 etc.) used for CO(1-0) flux",
+    "Flux correction and noise estimates for the Band 3 and Band 7 snapshot datasets and how they were imaged",
+    "3D-BAROLO ring setup and parameters",
+    "Duras2017 SED fit configuration",
+    "Calibration of outflow mass rate formula (geometry)"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Measure 1.3 mm continuum",
+    "method": {
+     "value": "Clean image with Briggs weighting of line-free TDM channels, then Gaussian fit to visibilities",
+     "evidence": [
+      {
+       "loc": "2.1 1.3 mm continuum",
+       "quote": "We then estimated the continuum flux by fitting with a Gaussian function the visibilities of the continuum dataset (via the CASA task `uvmodelfit`)."
+      }
+     ]
+    },
+    "software": [
+     "CASA clean",
+     "uvmodelfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Visibility noise 7.5 uJy; flux 142 uJy",
+      "evidence": [
+       {
+        "loc": "2.1 1.3 mm continuum",
+        "quote": "We measured a continuum flux of 142 $\\mu$Jy for a detection significance of 19$\\sigma$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fit in uv plane",
+     "evidence": [
+      {
+       "loc": "2.1 1.3 mm continuum",
+       "quote": "fitting with a Gaussian function the visibilities of the continuum dataset"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Measure CO(5-4) flux and size",
+    "method": {
+     "value": "Continuum-subtracted cube; spectrum from polygonal region; Gaussian uvmodelfit in -800 to 800 km/s",
+     "evidence": [
+      {
+       "loc": "2.2 CO(5-4) emission line",
+       "quote": "We then estimated the line flux by fitting with a Gaussian function the visibilities of the continuum-subtracted dataset (using the CASA task `uvmodelfit`), in the same velocity range as above."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "uvmodelfit"
+    ],
+    "key_parameters": [
+     {
+      "value": "velocity range -800 to 800 km/s; 20 km/s binning for spectrum",
+      "evidence": [
+       {
+        "loc": "2.2 CO(5-4) emission line",
+        "quote": "integrated over the velocity range \\[-800$\\div$800 km s$^{-1}$\\] around the expected line frequency"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "z=1.5930 for velocity conversion",
+      "evidence": [
+       {
+        "loc": "2.2 CO(5-4) emission line",
+        "quote": "The redshift of the narrow component of the rest-frame optical emission lines (z=1.5930) was adopted to convert the frequency to velocity space"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Single Gaussian line fit, FWHM~500 km/s, reduced chi2 2.27",
+     "evidence": [
+      {
+       "loc": "2.2 CO(5-4) emission line",
+       "quote": "the fit with a single Gaussian component returns FWHM$\\sim$500 km s$^{-1}$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit low-J CO fluxes in PdBI/ALMA Band 3 data with fixed CO(5-4) spatial parameters",
+    "method": {
+     "value": "uv-plane model fit using position and FWHM from CO(5-4)",
+     "evidence": [
+      {
+       "loc": "2.3 Other CO transitions from PdBI and ALMA",
+       "quote": "We performed the measurement in uv space, where the model of the source is convolved with the beam"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Extrapolate CO(1-0) flux from SLEDs",
+    "method": {
+     "value": "Scale CO(5-4) with average SLEDs of ULIRGs, SMGs, BzK; compare with Narayanan and Bournaud models",
+     "evidence": [
+      {
+       "loc": "2.4 Estimating the CO(1-0) flux",
+       "quote": "the CO(1-0) flux extrapolated from the CO(5-4) measurement varies within a factor of 3, depending on the assumed SLED"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Sigma_SFR=25 Msun/yr/kpc^2 for Narayanan model",
+      "evidence": [
+       {
+        "loc": "2.4 Estimating the CO(1-0) flux",
+        "quote": "adopting $\\Sigma_{\\rm SFR}$=25 M$_\\odot$ yr$^{-1}$ kpc$^{-2}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cross-check with PdBI CO(2-1) upper limit extrapolated to CO(1-0) (<0.18 Jy km/s)",
+     "evidence": [
+      {
+       "loc": "2.4 Estimating the CO(1-0) flux",
+       "quote": "we obtain an upper limit of I$_{\\rm CO(1-0), 4\\ensuremath{''}}<0.18$ Jy km s$^{-1}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive kinematics of molecular disc",
+    "method": {
+     "value": "Velocity field with immoments, Cresci2009 dynamical fit, and 3D-BAROLO tilted-ring fit",
+     "evidence": [
+      {
+       "loc": "4 A fast rotating molecular disc",
+       "quote": "We then used $^{3D}$BAROLO (3D-Based Analysis of Rotating Object via Line Observations), a tool for fitting 3D tilted-ring models to emission-line data cubes"
+      }
+     ]
+    },
+    "software": [
+     "immoments",
+     "3D-BAROLO"
+    ],
+    "key_parameters": [
+     {
+      "value": "inclination 30 deg assumed in BAROLO (20, 40 for spectra)",
+      "evidence": [
+       {
+        "loc": "4 A fast rotating molecular disc",
+        "quote": "Assuming an inclination angle of 30 deg, we retrieved an intrinsic rotation velocity of $\\sim$420 km s$^{-1}$."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "rotating disc interpretation",
+      "evidence": [
+       {
+        "loc": "4 A fast rotating molecular disc",
+        "quote": "a rotating gas disc remains the most probable interpretation for the detected velocity gradient"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Tilted-ring model",
+     "evidence": [
+      {
+       "loc": "A fast rotating molecular disc in XID2028?",
+       "quote": "We then used $^{3D}$BAROLO (3D-Based Analysis of Rotating Object via Line Observations), a tool for fitting 3D tilted-ring models to emission-line data cubes"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Dynamical mass from BAROLO (~8e10) comparable to independent estimate (~6e10)",
+     "evidence": [
+      {
+       "loc": "4 A fast rotating molecular disc",
+       "quote": "The dynamical mass within the observed CO emission is M$_{\\rm dyn}\\sim8\\times10^{10}$ M$_\\odot$, which is comparable to our independent estimate."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive gas masses, gas fraction, depletion time",
+    "method": {
+     "value": "ISM mass from Rayleigh-Jeans continuum (Scoville 2016) with Tdust from SED fit; CO mass with alpha_CO=0.8; mu=Mgas/Mstar; tdepl=Mgas/SFR",
+     "evidence": [
+      {
+       "loc": "5 Gas consumption",
+       "quote": "the gas depletion timescale (t$_{\\rm depl}$=M$_{\\rm gas}$/SFR)"
+      }
+     ]
+    },
+    "software": [
+     "Duras2017 SED code",
+     "AGNfitter"
+    ],
+    "key_parameters": [
+     {
+      "value": "Tdust=52+-5 K",
+      "evidence": [
+       {
+        "loc": "5 Gas consumption",
+        "quote": "We inferred a dust temperature T$_{\\rm dust}$=52$\\pm5$ K"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "alpha_CO=0.8 (SB-like)",
+      "evidence": [
+       {
+        "loc": "5 Gas consumption",
+        "quote": "we adopted a SB-like luminosity-to-gas-mass conversion factor, $\\alpha_{\\rm CO}$=0.8"
+       }
+      ]
+     },
+     {
+      "value": "fiducial stellar mass 4.5e11 Msun",
+      "evidence": [
+       {
+        "loc": "Appendix A.1",
+        "quote": "we consider as fiducial stellar mass value M$_\\star$=$4.5\\times10^{11}$ M$_\\odot$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "AGNfitter Bayesian MCMC used as a cross-check",
+     "evidence": [
+      {
+       "loc": "Appendix A.1",
+       "quote": "We also ran the publicly available fully Bayesian Markov Chain Monte Carlo SED fitting algorithm *AGNfitter*"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Gas fraction stays <10% for lower stellar mass; Band 7 gives consistent ISM mass",
+     "evidence": [
+      {
+       "loc": "Appendix A.1",
+       "quote": "the gas fraction would remain $<10$% if we consider the lower limit of our estimate of the stellar mass"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Detect and quantify high-velocity CO outflow",
+    "method": {
+     "value": "Natural-weighted flux maps at |v|>350 km/s; spectrum from region around blue outflow with noise spectra for significance; Gaussian fits; mass with alpha_CO and flux",
+     "evidence": [
+      {
+       "loc": "6 High velocity molecular gas",
+       "quote": "We constructed flux maps of the blue tail of the line (\\[v$<$ -350 km s$^{-1}$\\]; blue tail) and the red tail of the line (\\[v$>$ 350 km s$^{-1}$\\]; red tail)"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "outflow scale 10 kpc, velocity 700 km/s",
+      "evidence": [
+       {
+        "loc": "6 High velocity molecular gas",
+        "quote": "Assuming a spatial scale of 10 kpc and an outflow velocity of 700 km s$^{-1}$ as inferred from our data"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "alpha_CO=0.13-0.8; uniform density",
+      "evidence": [
+       {
+        "loc": "6 High velocity molecular gas",
+        "quote": "in the hypothesis of uniform density in the emitting region"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fits to outflow spectrum",
+     "evidence": [
+      {
+       "loc": "High velocity molecular gas tracing an extended molecular outflow",
+       "quote": "assuming a Gaussian function with FWHM=280 (260) km s$^{-1}$ (blue curves in Fig. [8](#Xshooter))"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with three noise spectra from random regions of same shape; extraction avoiding central beam gives same significance",
+     "evidence": [
+      {
+       "loc": "6 High velocity molecular gas",
+       "quote": "We checked that the significance of the detection does not change if we extract the outflow spectrum avoiding the central beam."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7",
+    "used_for": {
+     "value": "imaging, uvmodelfit, immoments",
+     "evidence": [
+      {
+       "loc": "2 ALMA observations of XID2028",
+       "quote": "Images were created using the common astronomy software applications package (CASA v4.7; (cite: McMullin2007))."
+      }
+     ]
+    }
+   },
+   {
+    "name": "3D-BAROLO",
+    "version": "not stated",
+    "used_for": {
+     "value": "3D tilted-ring fits of CO cube",
+     "evidence": [
+      {
+       "loc": "4 A fast rotating molecular disc",
+       "quote": "a tool for fitting 3D tilted-ring models to emission-line data cubes"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GALFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "fits to LUCI K-band image",
+     "evidence": [
+      {
+       "loc": "3 LBT data and NIR imaging",
+       "quote": "Single component model fits to the LUCI image performed with GALFIT"
+      }
+     ]
+    }
+   },
+   {
+    "name": "AGNfitter",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC SED fitting",
+     "evidence": [
+      {
+       "loc": "Appendix A.1",
+       "quote": "We also ran the publicly available fully Bayesian Markov Chain Monte Carlo SED fitting algorithm *AGNfitter*"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Duras et al. 2017 SED code",
+    "version": "not stated",
+    "used_for": {
+     "value": "multicomponent SED fit for Tdust",
+     "evidence": [
+      {
+       "loc": "5 Gas consumption",
+       "quote": "applying the multicomponent SED fitting code of (cite: Duras2017)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "1.3 mm continuum flux of nucleus",
+    "value": "142",
+    "uncertainty": "7.5",
+    "units": "uJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "S$_{\\rm cont, nucleus}$ ($\\mu$Jy) | 142$\\pm7.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "Continuum deconvolved FWHM",
+    "value": "0.30",
+    "uncertainty": "0.05",
+    "units": "arcsec",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "FWHM (deconvolved, $''$) | 0.30$''$$\\pm$0.05$''$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(5-4) line intensity",
+    "value": "0.77",
+    "uncertainty": "0.03",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$I_{\\rm CO(5-4)}$ (Jy km s$^{-1}$) | 0.77$\\pm$0.03"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(5-4) line luminosity log L'",
+    "value": "9.63",
+    "uncertainty": "0.05",
+    "units": "K km/s pc^2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "2.2 CO(5-4) emission line",
+      "quote": "logL’$_{\\rm CO(5-4)}$/(K km s$^{-1}$ pc$^2$)=9.63$\\pm0.05$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(2-1) flux (ALMA Band 3)",
+    "value": "0.35",
+    "uncertainty": "0.12",
+    "units": "Jy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "2.3 Other CO transitions from PdBI and ALMA",
+      "quote": "I$_{\\rm CO(2-1)}$=0.35$\\pm$0.12 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Band 7 850um continuum",
+    "value": "0.85",
+    "uncertainty": "0.32",
+    "units": "mJy",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "2.3 Other CO transitions from PdBI and ALMA",
+      "quote": "S$_{\\rm cont,850\\mu m}$=0.85$\\pm$0.32 mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Tdust",
+    "value": "52",
+    "uncertainty": "5",
+    "units": "K",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "T$_{\\rm dust}$ (K) | 52$\\pm5$"
+     }
+    ]
+   },
+   {
+    "quantity": "Rotation velocity (3D-BAROLO, i=30)",
+    "value": "~420",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4 A fast rotating molecular disc",
+      "quote": "we retrieved an intrinsic rotation velocity of $\\sim$420 km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass from CO",
+    "value": "1.1e10",
+    "uncertainty": "0.5e10",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5 Gas consumption",
+      "quote": "M$_{\\rm gas,CO}\\sim1.1\\pm0.5\\times10^{10}$ M$_\\odot$"
+     }
+    ]
+   },
+   {
+    "quantity": "ISM mass from 1.3 mm continuum",
+    "value": "1.7e10",
+    "uncertainty": "10%",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5 Gas consumption",
+      "quote": "M$_{\\rm ISM}$=1.7$\\times10^{10}$ M$_\\odot$ (with a 10% uncertainty from the Band 6 continuum flux measurement)"
+     }
+    ]
+   },
+   {
+    "quantity": "Depletion timescale",
+    "value": "40-75",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5 Gas consumption",
+      "quote": "We inferred t$_{\\rm depl} \\sim40-75$ Myr using the CO and dust-fit derived gas masses"
+     }
+    ]
+   },
+   {
+    "quantity": "Molecular gas fraction",
+    "value": "<5",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\mu_{\\rm mol}$ | $<5$%"
+     }
+    ]
+   },
+   {
+    "quantity": "High-velocity CO flux (blue+red)",
+    "value": "0.11",
+    "uncertainty": "0.023",
+    "units": "Jy km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 High velocity molecular gas",
+      "quote": "I$_{\\rm CO(5-4),blue+red}=0.11\\pm0.023$ Jy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Molecular outflow mass rate",
+    "value": "50-350",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 High velocity molecular gas",
+      "quote": "we estimate an average mass outflow rate $\\dot{M}_{gas,out}\\sim 50-350$ M$_\\odot$ yr$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total outflow rate",
+    "value": "500-800",
+    "uncertainty": "not stated",
+    "units": "Msun/yr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "6 High velocity molecular gas",
+      "quote": "the total mass rate of the outflowing gas would therefore be $\\dot{M}_{out, tot}\\sim500-800$ M$_\\odot$ yr$^{-1}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Continuum shows a nucleus plus a NE plume, possibly a minor merger or tidal tail.",
+    "evidence": [
+     {
+      "loc": "2.1 1.3 mm continuum",
+      "quote": "clearly resolved into a central source (‘nucleus’) and a fainter feature extending towards the north-east direction (‘plume’)"
+     }
+    ]
+   },
+   {
+    "value": "Blue CO tail is co-spatial with the ionised [OIII] outflow.",
+    "evidence": [
+     {
+      "loc": "6 High velocity molecular gas",
+      "quote": "the blue tail of the CO(5-4) is co-spatial with the observed \\[O III\\] blue emission ascribed to outflowing warm ionised gas"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does XID2028 host a fast-rotating compact molecular disc?",
+    "experiment": "Velocity field, Cresci2009 fit and 3D-BAROLO on CO(5-4)",
+    "result": "Gradient -200 to 200 km/s; Vrot~420 km/s at i=30; Mdyn~6-8e10 Msun",
+    "finding": "Rotating disc is the most probable interpretation, though resolution is limiting",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4 A fast rotating molecular disc",
+      "quote": "The angular resolution of our data is not enough to unambiguously interpret the observed velocity gradient as due to disc rotation."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the gas content of XID2028 low, with short depletion time?",
+    "experiment": "CO SLED extrapolation and Rayleigh-Jeans continuum gas masses",
+    "result": "Mgas~1-2e10 Msun; fraction <5%; tdepl 40-75 Myr",
+    "finding": "Atypical gas consumption, possibly from feedback",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This translates into a very low gas fraction ($<5$%) and depletion timescales of 40-75 Myr"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is there a molecular outflow coincident with the ionised outflow?",
+    "experiment": "High-velocity CO flux maps and spectrum from outflow region",
+    "result": "~4.5 sigma blue, 2.5 sigma red, co-spatial with [OIII]",
+    "finding": "Signature of galaxy-scale molecular outflow; total outflow 500-800 Msun/yr",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "6 High velocity molecular gas",
+      "quote": "If confirmed by deeper data, this would be the first time that, at high redshift, an outflow in both the molecular and ionised components has been resolved"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Follow-up of PdBI CO(3-2) detection with high-resolution imaging of dust and CO to test feedback and search for molecular outflow",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "These two reasons motivated our ALMA follow-up observations for dust continuum and high-resolution imaging of CO transitions."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Minor merger for high-velocity red emission and velocity gradient; rejected for blue emission and disc kinematics",
+     "evidence": [
+      {
+       "loc": "6 High velocity molecular gas",
+       "quote": "However, this minor merger scenario would not explain the high velocity blueshifted gas observed in the opposite direction with respect to the nucleus."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Outflow mass estimates are order of magnitude given chain of assumptions (alpha_CO, excitation).",
+     "evidence": [
+      {
+       "loc": "6 High velocity molecular gas",
+       "quote": "We stress that the two values suffer from large uncertainties, given the chain of assumptions employed"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Outflow detection is only ~2.5-4.5 sigma",
+    "Stellar mass uncertain by factor of ~2-5 affecting gas fraction",
+    "alpha_CO and SLED choice dominate gas mass uncertainty",
+    "Low-J CO from low-resolution data with noise-boosting issues"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA programmes cited by code; archival snapshot programmes",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "A careful scrutiny of the ALMA archive and an open collaboration with the PIs of the programmes"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Imaging parameters (robust, cell, size, threshold)",
+    "BAROLO configuration",
+    "SED fitting details and COSMOS photometry ingestion",
+    "Outflow mass-rate formula details"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for the Band 6 dataset plus small snapshots",
+   "score_inferred": 3,
+   "score_reason": "Data are archival and measurements simple (uvmodelfit, fluxes), but imaging and many derived-quantity settings are unstated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Key imaging parameters and external SED/outflow inputs are missing, and the outflow detection is marginal."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Scoville2016)",
+     "why": "dust continuum ISM mass recipe"
+    },
+    {
+     "citation": "(cite: Barolo)",
+     "why": "3D-BAROLO tool"
+    },
+    {
+     "citation": "(cite: Narayanan2014)",
+     "why": "SLED model"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: B15_PDBI)",
+     "why": "PdBI CO(3-2) detection of XID2028"
+    },
+    {
+     "citation": "(cite: Cresci2015)",
+     "why": "SINFONI ionised outflow"
+    },
+    {
+     "citation": "(cite: Perna2015)",
+     "why": "X-shooter data and SED parameters"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "XMM-COSMOS",
+    "COSMOS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-618a05b55d465293d98926d7c098f6ad",
+  "batch_id": "msgbatch_0189fokNPcwNRTAVPFdjJZr4",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:57:33",
+  "usage": {
+   "input_tokens": 35278,
+   "output_tokens": 12988,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.100824,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 100,
+  "quotes_ok": 100,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2015.1.00171.S"
+  ],
+  "obscore_codes_not_in_card": [
+   "2016.1.00171.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 15,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 97,
+   "stated": 71,
+   "rate": 0.732
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T02:53:13",
+  "custom_id": "repair-sonnet-a5a40bfd0010b715f1de7c4463676ee7",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "We then used $^{3D}$BAROLO (3D-Based Analysis of Rotating Object via Line Observations), a tool for fitting 3D tilted-ring models to emission-line data cubes"
+   },
+   {
+    "path": "analysis_steps[6].fitting.evidence[0]",
+    "old": null,
+    "new": "assuming a Gaussian function with FWHM=280 (260) km s$^{-1}$ (blue curves in Fig. [8](#Xshooter))"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,846 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...889..155W",
+  "title": "Observations of the Orion Source I Disk and Outflow Interface",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Wright, Melvyn",
+  "n_authors": 7,
+  "arxiv_id": "1912.08862",
+  "doi": "10.3847/1538-4357/ab5864",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00123.S",
+   "2013.1.00546.S",
+   "2016.1.00165.S",
+   "2017.1.00497.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We imaged the continuum and molecular line emission from Orion Source I (SrcI) with up to 30 mas (12 AU) resolution at 43, 99, 223, and 340 GHz"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Orion Source I (SrcI)",
+     "coordinates": {
+      "value": "RA = 05:35:14.513, DEC = -05:22:30.576 (image center)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Kleinmann-Low Nebula in Orion, at a distance 415 pc (cite: Menten2007; Kim2008; Kounkel2018)"
+       },
+       {
+        "loc": "3 THE SRC I DISK",
+        "quote": "to an image center at RA = 05:35:14.513, DEC = -05:22:30.576 used in the following figures."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "415 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Kleinmann-Low Nebula in Orion, at a distance 415 pc (cite: Menten2007; Kim2008; Kounkel2018)"
+       },
+       {
+        "loc": "3 THE SRC I DISK",
+        "quote": "to an image center at RA = 05:35:14.513, DEC = -05:22:30.576 used in the following figures."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Menten2007; Kim2008; Kounkel2018",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The Kleinmann-Low Nebula in Orion, at a distance 415 pc (cite: Menten2007; Kim2008; Kounkel2018)"
+       },
+       {
+        "loc": "3 THE SRC I DISK",
+        "quote": "to an image center at RA = 05:35:14.513, DEC = -05:22:30.576 used in the following figures."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust opacity structure of the Orion SrcI disk and the molecular distributions (NaCl, H2O, AlO, SiO, SiS, SO, SO2) in the disk and outflow, and what chemistry do they imply?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We use continuum images with 30 mas (12 AU) resolution to probe the dust opacity across the disk."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.00497.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 99 | 2017.1.00497.S | 2017-10-12 | 158 | 45$\\times$36 at PA 47 | 40 - 16200 |"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00165.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 224 | 2016.1.00165.S | 2017-09-19 | 44 | 39$\\times$19 at PA 66 | 40 - 10500 |"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00546.S",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "(ADS/JAO.ALMA#2013.1.00546.S)"
+      }
+     ]
+    },
+    {
+     "code": "2012.1.00123.S",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 350 | 2012.1.00123.S | 2014-07-26 | 24 | 276$\\times$260 at PA 85 | 30 - 730 |"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (99 GHz), Band 6 (223 GHz), Band 7 (340 GHz) plus JVLA 43 GHz",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "The 223 GHz (ALMA Band 6; B6) and 340 GHz (ALMA Band 7; B7) observations and calibration are described in (cite: Ginsburg2018)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "99 GHz: 4 spectral windows, each 1.875 GHz bandwidth, 960 channels",
+    "evidence": [
+     {
+      "loc": "99 GHz",
+      "quote": "included 4 spectral windows, each with a bandwidth of 1.875 GHz and 960 spectral channels"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "NaCl",
+     "transition": "v=1, J=18-17",
+     "rest_frequency": "232.51 GHz",
+     "evidence": [
+      {
+       "loc": "Salt Emission",
+       "quote": "The 232 GHz NaCl $v=1$, $J=18-17$ line is less attenuated"
+      }
+     ]
+    },
+    {
+     "species": "AlO",
+     "transition": "N=6-5",
+     "rest_frequency": "229.69387 GHz",
+     "evidence": [
+      {
+       "loc": "AlO",
+       "quote": "We mapped the AlO N=6-5 line at 229.69387 GHz"
+      }
+     ]
+    },
+    {
+     "species": "SiS",
+     "transition": "not stated",
+     "rest_frequency": "217.817 GHz",
+     "evidence": [
+      {
+       "loc": "SiS",
+       "quote": "show three-color images of the 217.817 GHz SiS line"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "v=0, J=5-4",
+     "rest_frequency": "217.10498 GHz",
+     "evidence": [
+      {
+       "loc": "SiO",
+       "quote": "SiO $v=0$, $J=5-4$ emission at 217.10498 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "99 GHz beam 45x36 mas; 223 GHz 39x19 mas; 340 GHz 26x11 mas",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 340 | 2016.1.00165.S | 2017-11-08 | 45 | 26$\\times$11 at PA 58 | 90 - 12900 |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "99 GHz 158 min; 224 GHz 44 min; 340 GHz 45 min",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 99 | 2017.1.00497.S | 2017-10-12 | 158 | 45$\\times$36 at PA 47 | 40 - 16200 |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "99 GHz on 2017 Oct 12 and 17",
+    "evidence": [
+     {
+      "loc": "99 GHz",
+      "quote": "ALMA observations at 99 GHz (Band 3; B3) on 2017 Oct 12 and 17"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "JVLA",
+     "provided": {
+      "value": "43 GHz continuum and SiO maser self-calibration data",
+      "evidence": [
+       {
+        "loc": "43 GHz",
+        "quote": "The spectral setup for the 43 GHz JVLA observations included 16 wideband windows"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Observations and calibration of 223 and 340 GHz data",
+      "evidence": [
+       {
+        "loc": "223 and 340 GHz",
+        "quote": "observations and calibration are described in (cite: Ginsburg2018)"
+       }
+      ]
+     },
+     "citation": "Ginsburg2018"
+    },
+    {
+     "what": {
+      "value": "SrcI proper motion Dx=6.3, Dy=-4.2 mas/yr",
+      "evidence": [
+       {
+        "loc": "3 THE SRC I DISK",
+        "quote": "Src I is moving at Dx=6.3, Dy=-4.2 mas/yr (cite: Goddi2011)"
+       }
+      ]
+     },
+     "citation": "Goddi2011"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Observatory-supplied scripts; 223/340 GHz not self-calibrated",
+     "evidence": [
+      {
+       "loc": "99 GHz",
+       "quote": "The data were calibrated using observatory supplied scripts."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~10% per band",
+     "evidence": [
+      {
+       "loc": "Spectral Index Distribution",
+       "quote": "Uncertainties in the spectral indices are dominated by the absolute flux calibration accuracy of $\\sim$10% for each frequency band."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "43 GHz self-calibrated on SiO v=1 maser; 99, 223, 340 GHz not self-calibrated",
+     "evidence": [
+      {
+       "loc": "43 GHz",
+       "quote": "The data were self-calibrated using a strong SiO $v=1$, $J=1-0$ maser feature"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "MIRIAD; CLEAN and Maximum Entropy",
+     "evidence": [
+      {
+       "loc": "3 THE SRC I DISK",
+       "quote": "We used both CLEAN and Maximum Entropy algorithms to image the JVLA and ALMA data."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "Only 12m array data used for mosaics",
+     "evidence": [
+      {
+       "loc": "223 and 340 GHz",
+       "quote": "We used only the ALMA 12m array data in these images to filter out the large scale structure"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "Convolved to 30 and 50 mas",
+     "evidence": [
+      {
+       "loc": "3 THE SRC I DISK",
+       "quote": "We convolved the continuum images to a common resolution of 30 mas and 50 mas resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "99 GHz 45x36 mas",
+     "evidence": [
+      {
+       "loc": "99 GHz",
+       "quote": "We made images with the synthesized beam width 45 $\\times$ 36 mas"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Continuum rms 4 K, 3 K, 7 K, 6 K",
+     "evidence": [
+      {
+       "loc": "Spectral Index Distribution",
+       "quote": "The RMS noise levels on the continuum images are 4 K, 3 K, 7 K, and 6 K, respectively"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "223 and 340 GHz observations and calibration",
+      "evidence": [
+       {
+        "loc": "223 and 340 GHz",
+        "quote": "observations and calibration are described in (cite: Ginsburg2018)"
+       }
+      ]
+     },
+     "from_reference": "Ginsburg2018"
+    }
+   ],
+   "unstated_but_needed": [
+    "CLEAN parameters (robust, niter, masks, cell and image size)",
+    "Maximum Entropy settings",
+    "Continuum channel selection / line-free channels",
+    "Gaussian fit procedure for Table 2",
+    "CASA version of observatory scripts",
+    "Whether the 43 GHz image shift was applied uniformly"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image and align continuum",
+    "method": {
+     "value": "CLEAN/MaxEnt imaging in MIRIAD, convolve to 30/50 mas, align 43 GHz image to 99 GHz with imdiff",
+     "evidence": [
+      {
+       "loc": "3 THE SRC I DISK",
+       "quote": "We aligned the 43 GHz image with the 99 GHz image using MIRIAD task *imdiff*"
+      }
+     ]
+    },
+    "software": [
+     "MIRIAD"
+    ],
+    "key_parameters": [
+     {
+      "value": "shifts 9 mas in RA and -2 mas in DEC",
+      "evidence": [
+       {
+        "loc": "3 THE SRC I DISK",
+        "quote": "The parameters adjusted were shifts 9 mas in RA and -2 mas in DEC"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Spectral index maps",
+    "method": {
+     "value": "Spectral index from continuum brightness ratios, clipped at 5% of peak",
+     "evidence": [
+      {
+       "loc": "Spectral Index Distribution",
+       "quote": "the images were clipped at 5% of the peak for the spectral index calculation"
+      }
+     ]
+    },
+    "software": [
+     "MIRIAD"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Least squares fit 43-340 GHz at selected positions",
+     "evidence": [
+      {
+       "loc": "Spectral Index Distribution",
+       "quote": "A least squares fit from 43 to 340 Ghz to the spectral index at the central position gives 1.6 +/- 0.1"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Flux-scale error propagated into spectral index",
+     "evidence": [
+      {
+       "loc": "Spectral Index Distribution",
+       "quote": "A multiplicative error in the flux ratio is an additive error in the spectral index of +0.15 and -0.18 in the 340/99 GHz spectral index image"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Disk size and inclination",
+    "method": {
+     "value": "Gaussian fits to continuum images; inclination lower limit from axis ratio assuming thin circular disk",
+     "evidence": [
+      {
+       "loc": "Disk Structure",
+       "quote": "If we assume that the disk is circular and infinitesimally thin, we can set a lower limit on its inclination angle."
+      }
+     ]
+    },
+    "software": [
+     "MIRIAD"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Disk circular and infinitesimally thin",
+      "evidence": [
+       {
+        "loc": "Disk Structure",
+        "quote": "If we assume that the disk is circular and infinitesimally thin"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Line maps of molecules",
+    "method": {
+     "value": "Channel maps of NaCl, H2O, AlO, SiO, SiS, SO, SO2 compared with continuum and spectral index",
+     "evidence": [
+      {
+       "loc": "SiS",
+       "quote": "Figure 14 compares the 217.817 GHz SiS line with SiO and emission in 2 $\\rm km~s^{-1}$ velocity channels."
+      }
+     ]
+    },
+    "software": [
+     "MIRIAD"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MIRIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Imaging and analysis of all data",
+     "evidence": [
+      {
+       "loc": "Observations and Data Reduction",
+       "quote": "The MIRIAD software package (cite: Sault1995) was used to image and analyze all the data in this paper."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "Observatory-supplied calibration scripts",
+     "evidence": [
+      {
+       "loc": "223 and 340 GHz",
+       "quote": "The data were calibrated using the observatory-supplied CASA scripts."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Spectral index at disk center (43-340 GHz fit)",
+    "value": "1.6",
+    "uncertainty": "0.1",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Spectral Index Distribution",
+      "quote": "gives 1.6 +/- 0.1, whereas at the ends of the disk the fitted spectral index is 3.4 +/- 0.3."
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral index at disk ends",
+    "value": "3.4",
+    "uncertainty": "0.3",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Spectral Index Distribution",
+      "quote": "gives 1.6 +/- 0.1, whereas at the ends of the disk the fitted spectral index is 3.4 +/- 0.3."
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination lower limit, 400 K contour",
+    "value": "79",
+    "uncertainty": "1",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Disk Structure",
+      "quote": "79$\\pm$1$^{\\circ}$ measured at the 400 K contour (99 $\\times$ 19 AU)"
+     }
+    ]
+   },
+   {
+    "quantity": "U-line rest frequency",
+    "value": "354.4945",
+    "uncertainty": "not stated",
+    "units": "GHz",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Unidentified line emission along outflow axis",
+      "quote": "the rest frequency of the U-line is 354.4945 GHz"
+     }
+    ]
+   },
+   {
+    "quantity": "Integrated continuum flux at 340 GHz",
+    "value": "630",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "340 & 0.03 , 58$^\\circ$ & 0.234 , -37.4$^\\circ$ $^\\circ$ & 630"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Salt emission is found where dust is optically thin; molecules other than NaCl originate primarily in the bipolar outflow, whose base corotates with the disk.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "All other molecules that we have mapped – H$_2$O, AlO, SiO, SiS, SO, and SO$_2$ – appear to originate primarily in the bipolar outflow."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Dust opacity varies across the SrcI disk",
+    "experiment": "Spectral index maps from 43-340 GHz at 30 mas",
+    "result": "Spectral index ~2 in the midplane, ~3 at edges",
+    "finding": "Midplane optically thick, edges optically thin",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The continuum spectral index ranges from $\\sim$2 along the midplane of the disk to $\\sim$3 along the edges"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Salt traces the disk velocity field where dust is thin",
+    "experiment": "NaCl line maps compared with spectral index images",
+    "result": "NaCl lies in the surface layers with large spectral index gradient",
+    "finding": "NaCl is a tracer of the disk velocity field; rotational temperatures may be underestimated",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Salt Emission",
+      "quote": "Salt emission is found in the dust layer at the surface of SrcI where there is a large spectral index gradient."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Outflow chemistry is shaped by grain destruction and gas-phase reactions",
+    "experiment": "Maps of H2O, AlO, SiO, SiS, SO, SO2",
+    "result": "SiS filamentary at outflow edges; others in outflow",
+    "finding": "Si and Al released from grains form SiO and AlO; SiS forms via SO and SO2",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The molecular distributions suggest that Si and Al released from dust grains in the disk react with oxygen derived from H$_2$O to form SiO and AlO"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "SO and SO2 distributions are over-resolved; the U-line remains unidentified.",
+     "evidence": [
+      {
+       "loc": "SO and SO2",
+       "quote": "The SO and distributions are over-resolved in these ALMA observations."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Chemical interpretation is qualitative, with no modeling",
+    "Imaging parameters not given",
+    "Optical depth and temperature assumptions are loosely stated"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes listed, but public status not stated",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Table 1 provides a summary of the observations, including project codes."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CLEAN and MaxEnt parameters",
+    "Line-free channels",
+    "JVLA calibration details",
+    "Gaussian fit details"
+   ],
+   "estimated_data_volume_inferred": "Several hundred GB across four ALMA projects plus JVLA",
+   "score_inferred": 3,
+   "score_reason": "Data are identified, but imaging parameters are missing and results are largely qualitative.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging recipe incomplete and main results mostly qualitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sault1995",
+     "why": "MIRIAD software"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Ginsburg2018",
+     "why": "Observations and calibration of 223/340 GHz data"
+    },
+    {
+     "citation": "Ginsburg2019",
+     "why": "NaCl and KCl lines identified in the disk"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-522f6c15724e98b41cb495d23a8156af",
+  "batch_id": "msgbatch_019tkxrSMSycdCyGZ7TKqURk",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:08:31",
+  "usage": {
+   "input_tokens": 13041,
+   "output_tokens": 6461,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.045953,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 54,
+  "quotes_ok": 54,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 4,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [
+   "2013.1.005446.S"
+  ],
+  "numeric_results": 5,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 65,
+   "stated": 34,
+   "rate": 0.523
+  },
+  "evidence_ok": true
+ }
+}

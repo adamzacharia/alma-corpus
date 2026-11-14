@@ -1,0 +1,503 @@
+{
+ "bibcode": "2023MNRAS.523.4970N",
+ "title": "Resolving the binary components of the outbursting protostar HBC 494 with ALMA",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1614",
+ "arxiv_id": "2305.15647",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Resolve the substructure/asymmetry in the disk of the outbursting protostar HBC 494 to determine its nature and examine the surrounding gas kinematics at small and large scales.",
+ "alma_project_codes": [
+  "2016.1.00630.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "40 12-m antennas (both nights)",
+  "angular_resolution": "0.142 arcsec (first night); 0.027 arcsec (second night); 41.2 x 29.8 mas (combined continuum)",
+  "sensitivity": "~0.034 mJy/beam (continuum); 1.9, 3.6, and 2.6 mJy/beam for 12CO, 13CO, and C18O respectively"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to HBC 494 of 414±7 pc",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "HBC 494 is a Class I protostar, located in the Orion molecular cloud at a distance of 414±7 pc (Menten et al. 2007)"
+     }
+    ]
+   },
+   "citation": "Menten et al. 2007"
+  },
+  {
+   "what": {
+    "value": "Sample of 14 resolved FUors and EXors and Class 0/I systems for dust mass vs radius comparison",
+    "evidence": [
+     {
+      "loc": "4.2 Disk sizes and masses",
+      "quote": "The dust mass vs radius comparison between HBC 494 N and HBC 494 S, a sample of 14 resolved FUors and EXors (extracted from Hales et al. 2020) and Class 0/I systems (Tobin et al. 2020), can be seen in figure 8."
+     },
+     {
+      "loc": "Figure 8 caption",
+      "quote": "To generate this plot, we obtained data from Kóspál et al. (2017); Hales et al. (2018); Cieza et al. (2018); Takami et al. (2019); Cruz-Sáenz de Miera et al. (2019); Pérez et al. (2020); Hales et al. (2020)."
+     }
+    ]
+   },
+   "citation": "Kóspál et al. (2017); Hales et al. (2018); Cieza et al. (2018); Takami et al. (2019); Cruz-Sáenz de Miera et al. (2019); Pérez et al. (2020); Hales et al. (2020); Tobin et al. (2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate, self-calibrate, concatenate, and image 1.3 mm continuum visibilities",
+   "method": "Fix visibilities phase center, perform 1 iteration of self-calibration on each night's dataset, concatenate short and long baseline measurement sets using concat, and synthesize final continuum image with tclean.",
+   "software": [
+    "CASA",
+    "casatasks",
+    "casatools",
+    "tclean",
+    "concat"
+   ],
+   "key_parameters": [
+    "Phase center: J2000 05h40m27.448s -07d27m29.65s; Briggs robust = 0.5; pixel scale = 1.5 mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Characterize continuum disk properties (fluxes, sizes, position angles, inclinations) and radial profiles",
+   "method": "Fit 2D Gaussians to the resolved binary components in the continuum image using CASA imfit, derive disk inclinations from the deconvolved aspect ratios, and extract radial brightness profiles in elliptical apertures.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "RMS measured in a circular region with a radius of 225 mas without emission"
+   ],
+   "assumptions": [
+    "Disks are circular when face-on and elliptical when inclined"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Estimate dust and gas masses of the two circumstellar disks",
+   "method": "Compute dust mass from integrated 1.3 mm continuum flux density using the optically thin isothermal dust emission formula, and multiply by gas-to-dust ratio for gas mass.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin dust emission, distance d = 414 pc, isothermal dust temperature T_dust = 20 K, gas-to-dust mass ratio M_gas/M_dust = 100, dust opacity kappa_nu = 10 (nu / 10^12 Hz) cm^2 g^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Continuum subtraction, spectral line imaging, and moment/channel map analysis at large (8000 au) and small (150 au) scales",
+   "method": "Fix phase center, subtract continuum in uv-plane with uvcontsub, image 12CO, 13CO, and C18O cubes with tclean, and generate channel maps, moment 0 and moment 1 maps, spectral profiles, and spatial cuts before and after continuum subtraction.",
+   "software": [
+    "CASA",
+    "uvcontsub",
+    "tclean",
+    "imstat"
+   ],
+   "key_parameters": [
+    "Briggs robust = 0.5; Hogbom deconvolver; pixel scale = 6 mas; spectral widths: 1 km/s (12CO) and 0.3 km/s (13CO, C18O); velocity ranges: -6 to 18 km/s (total / 12CO, excluding 1 to 5 km/s for cloud contamination), 0 to 11 km/s (13CO, C18O)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Projected separation between HBC 494 N and HBC 494 S",
+   "value": "0.18 (75)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "The projected separation between the two sources is 0′′.18 (75 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "Unprojected separation between HBC 494 N and HBC 494 S (assuming quasi-coplanar)",
+   "value": "0.24 (99)",
+   "uncertainty": "not stated",
+   "units": "arcsec (au)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Binary formation and alignment",
+     "quote": "Assuming they are quasi-coplanar, with the same PA, the unprojected separation would be ∼0′′.24 (99 au)."
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N continuum integrated flux density",
+   "value": "105.17 (105.2 in Table 2)",
+   "uncertainty": "± 1.89 (± 1.9 in Table 2)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "The integrated fluxes for “N” and “S” are 105.17 ± 1.89 mJy and 21.06 ± 0.63 mJy, respectively."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Flux density (mJy) 105.2 ± 1.9 21.1 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S continuum integrated flux density",
+   "value": "21.06 (21.1 in Table 2)",
+   "uncertainty": "± 0.63 (± 0.6 in Table 2)",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "The integrated fluxes for “N” and “S” are 105.17 ± 1.89 mJy and 21.06 ± 0.63 mJy, respectively."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Flux density (mJy) 105.2 ± 1.9 21.1 ± 0.6"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N continuum peak flux",
+   "value": "22.96 (23.0 in Table 2)",
+   "uncertainty": "± 0.35 (± 0.4 in Table 2)",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "The peak fluxes are 22.96 ± 0.35 mJy/beam and 8.71 ± 0.21 mJy/beam for the primary and secondary sources, respectively."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Peak flux (mJy / beam) 23.0 ± 0.4 8.7 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S continuum peak flux",
+   "value": "8.71 (8.7 in Table 2)",
+   "uncertainty": "± 0.21 (± 0.2 in Table 2)",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "The peak fluxes are 22.96 ± 0.35 mJy/beam and 8.71 ± 0.21 mJy/beam for the primary and secondary sources, respectively."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Peak flux (mJy / beam) 23.0 ± 0.4 8.7 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N deconvolved major axis FWHM",
+   "value": "84.00 (84.0 in Table 2)",
+   "uncertainty": "± 1.82 (± 1.8 in Table 2)",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "For the primary component, we find a major axis FWHM of 84.00 ± 1.82 mas and a minor axis of 66.94 ± 1.50 mas (34.8 ± 0.7 × 27.8 ± 0.6 au), with a position angle of 70.01 ± 4.46 deg (values deconvolved from the beam)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Major axis (mas) 84.0 ± 1.8 64.6 ± 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N deconvolved minor axis FWHM",
+   "value": "66.94 (66.9 in Table 2)",
+   "uncertainty": "± 1.50 (± 1.5 in Table 2)",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "For the primary component, we find a major axis FWHM of 84.00 ± 1.82 mas and a minor axis of 66.94 ± 1.50 mas (34.8 ± 0.7 × 27.8 ± 0.6 au), with a position angle of 70.01 ± 4.46 deg (values deconvolved from the beam)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Minor axis (mas) 66.9 ± 1.5 46.0 ± 1.9"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N deconvolved major axis FWHM (physical)",
+   "value": "34.8",
+   "uncertainty": "± 0.7",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Major axis (au) 34.8 ± 0.7 26.7 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N deconvolved minor axis FWHM (physical)",
+   "value": "27.8",
+   "uncertainty": "± 0.6",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Minor axis (au) 27.8 ± 0.6 19.9 ± 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N position angle",
+   "value": "70.01 (70.0 in Table 2)",
+   "uncertainty": "± 4.46 (± 4.5 in Table 2)",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "with a position angle of 70.01 ± 4.46 deg (values deconvolved from the beam)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Position angle (deg) 70.0 ± 4.5 65.4 ± 5.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S deconvolved major axis FWHM",
+   "value": "64.60 (64.6 in Table 2)",
+   "uncertainty": "± 2.49 (± 2.5 in Table 2)",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "For the secondary, the major axis FWHM is 64.60 ± 2.49 mas and the minor axis FWHM is 45.96 ± 1.89 mas (26.7 ± 1.0 × 19.9 ± 0.8 au), and the position angle is 65.38 ± 5.32 deg."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Major axis (mas) 84.0 ± 1.8 64.6 ± 2.5"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S deconvolved minor axis FWHM",
+   "value": "45.96 (46.0 in Table 2)",
+   "uncertainty": "± 1.89 (± 1.9 in Table 2)",
+   "units": "mas",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "For the secondary, the major axis FWHM is 64.60 ± 2.49 mas and the minor axis FWHM is 45.96 ± 1.89 mas (26.7 ± 1.0 × 19.9 ± 0.8 au), and the position angle is 65.38 ± 5.32 deg."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Minor axis (mas) 66.9 ± 1.5 46.0 ± 1.9"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S deconvolved major axis FWHM (physical)",
+   "value": "26.7",
+   "uncertainty": "± 1.0",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Major axis (au) 34.8 ± 0.7 26.7 ± 1.0"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S deconvolved minor axis FWHM (physical)",
+   "value": "19.9",
+   "uncertainty": "± 0.8",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Minor axis (au) 27.8 ± 0.6 19.9 ± 0.8"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S position angle",
+   "value": "65.38 (65.4 in Table 2)",
+   "uncertainty": "± 5.32 (± 5.3 in Table 2)",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "and the position angle is 65.38 ± 5.32 deg."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Position angle (deg) 70.0 ± 4.5 65.4 ± 5.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N inclination",
+   "value": "37.16 (37.2 in Table 2)",
+   "uncertainty": "± 2.36 (± 2.4 in Table 2)",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "It resulted in 37.16 ± 2.36 degrees inclination for HBC 494 N"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Inclination (deg) 37.2±2.4 44.7±3.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S inclination",
+   "value": "44.65 (44.7 in Table 2)",
+   "uncertainty": "± 3.27 (± 3.3 in Table 2)",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "44.65 ± 3.27 for HBC 494 S"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Inclination (deg) 37.2±2.4 44.7±3.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N dust mass",
+   "value": "1.43 (1.4 in Table 2)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "we get dust masses of 1.43 𝑀Jup (HBC 494 N) and 0.29 𝑀Jup (HBC 494 S)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Dust mass (𝑀Jup ) 1.4 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S dust mass",
+   "value": "0.29 (0.3 in Table 2)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "we get dust masses of 1.43 𝑀Jup (HBC 494 N) and 0.29 𝑀Jup (HBC 494 S)."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Dust mass (𝑀Jup ) 1.4 0.3"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 N gas mass",
+   "value": "143.46 (143.5 in Table 2)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "Following the standard gas-to-dust mass ratio of 100, we report disk gas masses estimations of 143.46 𝑀Jup for HBC 494 N, and 28.68 𝑀Jup for HBC 494 S."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Gas mass (𝑀Jup ) 143.5 28.7"
+    }
+   ]
+  },
+  {
+   "quantity": "HBC 494 S gas mass",
+   "value": "28.68 (28.7 in Table 2)",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum analysis",
+     "quote": "Following the standard gas-to-dust mass ratio of 100, we report disk gas masses estimations of 143.46 𝑀Jup for HBC 494 N, and 28.68 𝑀Jup for HBC 494 S."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "Gas mass (𝑀Jup ) 143.5 28.7"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination difference (Delta i) between HBC 494 N and S",
+   "value": "7.5",
+   "uncertainty": "± 4.1",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Binary formation and alignment",
+     "quote": "The HBC 494 disks have similar inclinations (Δ𝑖 = 7.5 ± 4.1 degrees) and similar PAs (Δ𝑃𝐴 = 4.6 ± 7.0 degrees)."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle difference (Delta PA) between HBC 494 N and S",
+   "value": "4.6",
+   "uncertainty": "± 7.0",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.3 Binary formation and alignment",
+     "quote": "The HBC 494 disks have similar inclinations (Δ𝑖 = 7.5 ± 4.1 degrees) and similar PAs (Δ𝑃𝐴 = 4.6 ± 7.0 degrees)."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution interval (solint), whether phase-only or amplitude+phase, and clean masking details.",
+  "Exact line-free channels and polynomial order used in uvcontsub.",
+  "Deconvolver, image size, and stopping threshold/niter used for continuum tclean.",
+  "Beam sizes for the spectral line cubes (both large-scale and small-scale).",
+  "Whether the line imaging used the concatenated dataset or individual baseline configurations for the large-scale (8000 au) vs small-scale (150 au) analyses."
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration parameters (solution interval, calibration mode, reference antenna, clean threshold/masking).",
+  "Exact channel ranges used for continuum fitting in uvcontsub.",
+  "Whether the large-scale (8000 au) line cubes were imaged from the short-baseline dataset alone or the concatenated dataset, and their synthesized beam sizes."
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "Raw data are public, CASA version and core imaging/fitting tasks (tclean, concat, uvcontsub, imfit) and key parameters (robust=0.5, pixel scales, velocity ranges, dust mass formula and constants) are explicitly stated; slight deductions for missing self-calibration solint and uvcontsub channel selection details.",
+ "rediscovery_reason": "Public ALMA data (2016.1.00630.S) with a straightforward imaging + CASA imfit + analytical dust mass recipe yielding clear, high-SNR numeric results for the binary separation, disk fluxes, deconvolved sizes, inclinations, and masses.",
+ "source_card": "cards/2023MNRAS.523.4970N/sonnet/card.md"
+}

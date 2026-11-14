@@ -1,0 +1,263 @@
+{
+ "bibcode": "2017AJ....154...24R",
+ "title": "ALMA Observations of the Young Substellar Binary System 2M1207",
+ "year": 2017,
+ "doi": "10.3847/1538-3881/aa78a0",
+ "arxiv_id": "1706.03708",
+ "fields": [
+  "star_formation",
+  "protoplanetary_disks"
+ ],
+ "question": "Do the brown dwarf 2M1207A and its planetary-mass companion 2M1207b host dust and gas disks, and what are their sizes and masses?",
+ "alma_project_codes": [
+  "2013.1.01016.S"
+ ],
+ "data": {
+  "bands": "Band 7 (about 338 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.42'' x 0.35'' (22 x 18 au) in continuum",
+  "sensitivity": "continuum rms 26 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust opacity 3.4 cm2/g at 338 GHz",
+    "evidence": [
+     {
+      "loc": "4 Analysis of the dust continuum emission",
+      "quote": "dust opacity $\\kappa_{\\nu} = 3.4$ cm$^2$ g$^{-1}$ at a frequency of 338 GHz (cite: Beckwith:1990)"
+     }
+    ]
+   },
+   "citation": "(cite: Beckwith:1990)"
+  },
+  {
+   "what": {
+    "value": "Dust temperature relation T ~ 22 (L/Lsun)^0.16 K",
+    "evidence": [
+     {
+      "loc": "4 Analysis of the dust continuum emission",
+      "quote": "$T_{\\rm{vdP}} \\approx 22 (L_{\\star}/L_\\odot)^{0.16}$ K"
+     }
+    ]
+   },
+   "citation": "(cite: vanderPlas:2016)"
+  },
+  {
+   "what": {
+    "value": "2M1207b luminosity ~1.5e-4 Lsun",
+    "evidence": [
+     {
+      "loc": "4 Analysis of the dust continuum emission",
+      "quote": "$L_{\\star,\\rm{2Mb}} \\approx 1.5 \\times 10^{-4} L_\\odot$ (cite: Skemer:2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Skemer:2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux",
+   "method": "clean imaging and imfit Gaussian fit; upper limit at 2M1207b from 3 sigma assuming point source",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive dust masses",
+   "method": "Optically thin M=F d^2/(kappa B(T)); optically thick limit gives radius limit",
+   "software": [
+    "RADMC-3D"
+   ],
+   "key_parameters": [
+    "T_dust ~ 8 K"
+   ],
+   "assumptions": [
+    "d = 52.8 pc, kappa = 3.4 cm2/g at 338 GHz"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit CO visibilities for disk structure and dynamical mass",
+   "method": "Parametric disk model, RADMC-3D channel maps sampled at the uv positions, chi2 fit in visibility space",
+   "software": [
+    "DiskJockey",
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "gamma = 1; q between 0 and 3/4; gamma_e <= 2"
+   ],
+   "assumptions": [
+    "distance prior 52.8 ± 1.0 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Test tidal truncation",
+   "method": "Monte Carlo of truncation radius from projected separation and mass ratio, using Artymowicz & Lubow fits for alpha 0.1-0.0001, uniform orbital priors",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "2M1207b orbit possibly in the disk plane"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "2M1207A continuum flux density at 0.89 mm",
+   "value": "620",
+   "uncertainty": "67",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum image",
+     "quote": "The flux density from the disk is $620 \\pm 67$ $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "2M1207b 3 sigma flux upper limit",
+   "value": "78",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Continuum image",
+     "quote": "The $3\\sigma$ upper limit for the flux density at 0.89 mm is 78 $\\mu$Jy"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO J=3-2 integrated flux of 2M1207A",
+   "value": "71.0",
+   "uncertainty": "8.4",
+   "units": "mJy km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2 CO J = 3 - 2",
+     "quote": "velocity-integrated total flux of $71.0 \\pm 8.4$ mJy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "2M1207b dust mass upper limit",
+   "value": "<0.013 M_earth (~1.1 M_Moon)",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Analysis of the dust continuum emission",
+     "quote": "$M_{\\rm{dust},\\rm{2Mb}} < 0.013~M_\\oplus \\approx 1.1~M_{\\rm{Moon}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "2M1207A dust mass",
+   "value": "~0.1",
+   "uncertainty": "not stated",
+   "units": "M_earth",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4 Analysis of the dust continuum emission",
+     "quote": "the dust mass for the detected 2M1207A disk is $M_{\\rm{dust},\\rm{2MA}} \\approx 0.1~M_\\oplus$"
+    }
+   ]
+  },
+  {
+   "quantity": "Characteristic radius of CO disk",
+   "value": "9.4",
+   "uncertainty": "1.5",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Characteristic radius (au) | 9.4 $\\pm$ 1.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass of 2M1207A",
+   "value": "60",
+   "uncertainty": "+80/-20",
+   "units": "M_Jup",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Analysis of the CO emission",
+     "quote": "$M_\\ast = 60^{+80}_{-20}\\,M_{\\rm{Jup}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "35",
+   "uncertainty": "+20/-15",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Disk inclination (${}^\\circ$) | 35$^{+20}_{-15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "174",
+   "uncertainty": "12",
+   "units": "deg",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Disk position angle$^{a}$ (${}^\\circ$) | 174 $\\pm$ 12"
+    }
+   ]
+  },
+  {
+   "quantity": "Current physical separation (coplanar assumption)",
+   "value": "42",
+   "uncertainty": "+19/-2",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "6.2 Properties of the 2M1207A disk",
+     "quote": "we derived an estimate of $42^{+19}_{-2}$ au for the current separation"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum-subtraction details",
+  "Image size, cell size, clean threshold and masks",
+  "Velocity range/channel selection used for the CO moment 0 map and the fitted visibilities",
+  "Stellar and disk parameters (e.g. fixed outer radius, scale height) in the DiskJockey runs",
+  "MCMC priors on parameters other than gamma_e and q",
+  "RADMC-3D setup (grain properties, photon counts)",
+  "Gas/dust assumptions for the tidal truncation Monte Carlo"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell/image size, masks, thresholds)",
+  "Exact DiskJockey configuration and priors",
+  "Line-free channels"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and simple analysis, but imaging and modeling settings are incompletely given.",
+ "rediscovery_reason": "Public data, a numeric continuum flux and mass limits are reproducible; the CO model is partly specified.",
+ "source_card": "cards/2017AJ....154...24R/sonnet/card.md"
+}

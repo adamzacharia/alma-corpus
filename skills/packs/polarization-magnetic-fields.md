@@ -1,0 +1,3059 @@
+# Evidence pack: Dust polarization and magnetic field strength (`polarization-magnetic-fields`)
+
+Scope: polarization maps, B-field morphology, DCF strengths, scattering vs alignment
+
+Built from 311 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2013-2026.
+Matcher (regex over analysis steps): `polari[sz]|stokes|magnetic field|davis|chandrasekhar|\bdcf\b|grain alignment|self[- ]scattering`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 120
+- protoplanetary_disks: 89
+- agn_and_quasars: 67
+- milky_way_ism: 58
+- nearby_galaxies: 27
+- stellar_physics: 24
+- astrochemistry: 24
+- transients: 16
+- evolved_stars: 15
+- high_z_galaxies: 15
+- instrumentation: 13
+- exoplanets: 10
+- debris_disks: 7
+- sun: 5
+- galaxy_clusters_and_sz: 5
+
+### Software named in the matched steps
+- casa: 157
+- tclean: 32
+- radmc-3d: 22
+- python: 10
+- uvmultifit: 9
+- gildas: 8
+- polaris: 8
+- emcee: 7
+- miriad: 7
+- irdap: 7
+- alma pipeline: 5
+- gaincal: 5
+- mcfost: 4
+- casa imfit: 4
+- gofish: 4
+- astrodendro: 4
+- astropy: 3
+- polcal: 3
+- idl: 3
+- casa clean: 3
+- bhmie: 3
+- simobserve: 3
+- casa immath: 3
+- iraf: 3
+- xspec: 3
+- difx: 3
+- starlink: 3
+- eht-imaging: 3
+- scipy: 3
+- lime: 2
+- imfit: 2
+- phaseshift: 2
+- kharma: 2
+- ipole: 2
+- presto: 2
+- casa tclean: 2
+- casa imsmooth: 2
+- curve_fit: 2
+- dustpol: 2
+- simanalyze: 2
+
+### Fitting methods (most common phrasings)
+- Linewidth from Gaussian fits to DCN: 1
+- Reduced chi-squared grid; 1 sigma errors from the method of Lampton et al. 1976: 1
+- Gaussian fits to residual distribution, full and limited to +-45 deg: 1
+- Maximize PDF(P | Pm, σP) to estimate true polarized intensity: 1
+- 2D Gaussian with fitted center, deconvolved major and minor FWHM, and position angle: 1
+- emcee MCMC; 32 walkers, 2500 steps, first 500 discarded; marginalized medians and 16th/84th percentiles: 1
+- Same s, t azimuthal decomposition repeated radially: 1
+- Uncertainty of f from error propagation: 1
+- t uncertainties propagated using only uncertainty in p: 1
+- Match Stokes I and polarization fractions; Stokes I constrains ring locations/widths, T10 and optical depth; polarizati…: 1
+- Compact component fitted individually in each sub-band; sampler, priors and likelihood not stated: 1
+- Spectral-index fits; sampler, priors, likelihood and weighting not stated: 1
+- Plasma-density scaling selected to match 228 GHz compact flux; fitting algorithm not stated: 1
+- 2D grid search minimizing chi^2 = sum |T_ABCD^model - T_ABCD^data|^2 with probability density P proportional to exp(-ch…: 1
+- Affine-invariant MCMC sampler (emcee) minimizing closure-trace least-squares chi^2 across all spectral windows simultan…: 1
+- Bootstrapping with 1,000 random iterations to compute median and standard deviation: 1
+- log-normal with A=0.86, mu=2.05, sigma=0.97: 1
+- structure function fit; ratio 0.061 ± 0.001: 1
+- Gaussian profile with two free parameters: mean and standard deviation sigma fitted to Stokes Q and U distributions: 1
+- MCMC using No-U-Turn Sampler (NUTS) in PYMC3 with 5 chains, 10,000 steps and 2,000 burn-in per chain (50,000 steps tota…: 1
+- Reduced chi-squared comparison with dust models: chi_nu^2 = [(obs - model)^2 / model^2] / (N - 1): 1
+- Point source fit with position fixed to Stokes I: 1
+- Least-squares (bootstrap shown in figures); priors not stated: 1
+- Maximum likelihood factor minimizing XX-YY image difference: 1
+- Grid of chi_B values, no sampler: 1
+- Gaussian function fits to light curves; CASA uvmodelfit point source fits to sideband and XX/YY visibilities: 1
+- Linear slopes with Spearman correlation coefficients (0.45 inner, -0.47 outer): 1
+- Single free parameter phi per segment; goodness by chi2 = sum(Delta PA)^2 / n; no sampler or priors: 1
+- V proportional to dI/dν fit: 1
+- Parallel-tempered MCMC: three temperatures, 120 walkers each, 3500 iterations; discard 2900, retain final 600 zeroth-te…: 1
+- Fit Henyey-Greenstein functions after dividing polarized SPFs by a Rayleigh polarization curve.: 1
+- Soft broken power-law fit with uncertainties (95% confidence) determined from a Monte Carlo procedure: 1
+- least-squares minimization: 1
+- Multi-Gaussian chi^2 minimization, adding Gaussians as needed: 1
+- Fit pmax for both stars and shared λmax; additionally fit K for the Serkowski Law.: 1
+- CURVE_FIT minimisation over θi, pmax and θstar.: 1
+- Least-squares fit of each grain-size model spectrum to multi-wavelength polarimetry.: 1
+- Gradient-based chi-squared minimisation (ADAM) of network weights; chi-squared normalised by number of data points; no …: 1
+- Least squares; free parameters RM, p_dif and phase offset: 1
+- Not fitted; chi2_SED/N used for comparison only: 1
+
+### Validation checks used
+- Explore weighting from −2 to 2 in steps of 0.5 to assess recovered structure: 1
+- Check spatial coherence of polarized emission: 1
+- AM maps and histograms agree on preferred field–gradient alignment: 1
+- Repeat with 0.5 arcsec window; dispersion error rises from 6 to 10 degrees: 1
+- Self-calibration tested but not helpful; scattering ruled out by comparison with SMA 870 um pattern and polarization fr…: 1
+- lambda=8.38 discarded because G31 is optically thick; constant temperature 250 K tested; b0>0.1 discarded: 1
+- Compared with GIR09 B_pos corrected for distance (~20 mG for i=-45 deg): 1
+- Final signal-to-noise ratios ∼1200, 890, 1200, 1100, 1300 for Bands 3–7: 1
+- Reference-frame derivation explicitly follows IEEE convention and differs from Lin2022: 1
+- Changing walking parameters did not significantly change results; model describes both q′ and u′ across all five bands;…: 1
+- Compare shared thermal-profile features across Bands 4–7 with known gaps and ring: 1
+- Consistent offsets across wavelengths strengthen the asymmetry detection; compare with scattering models: 1
+- Normalized angle residuals 0.5, -0.4, 0.4, 0.08; random-angle probability ∼7 × 10^-5: 1
+- Detailed modeling of such grains against multiwavelength Stokes I and polarization deferred to future work: 1
+- Final rms 15.9 μJy beam^-1 and peak signal-to-noise 1073; Science Verification combination reduced signal-to-noise.: 1
+- Combination added just over 500 vectors, primarily at low Stokes I emission.: 1
+- Inner three gaps show local polarized-intensity and polarization-fraction peaks; Stokes I rings show troughs except at …: 1
+- Plane-parallel approximation motivated by the thin dust layer inferred from gap-width uniformity.: 1
+- Compare synthetic images and axis cuts with observations; inspect unconvolved cuts to quantify beam averaging.: 1
+- Use D14 minor-axis polarization direction and polarized intensity to discriminate models.: 1
+- Opposite signs between epochs and instrumental limitations lead to an artifact interpretation.: 1
+- Independent per-sub-band CLEAN and first-order multi-frequency synthesis produced very consistent compact-source light …: 1
+- Flagging low-elevation late data did not appreciably change results; historical LP measurements were consistent with 86…: 1
+- Band 3 CP upper limit based on time-resolved analysis: 1
+- Compare simulated and observed LP, CP, EVPA, RM amplitudes, sign stability and variability; selected model fails quanti…: 1
+- Recovery of all previously detected continuum sources: 1
+- Preliminary spectral index ~3 in the column-density region used to justify optical thinness: 1
+- Consistent field pattern between wavelengths; agreement with previous coarser observations: 1
+- Adopted NH3 resolution approximately matches the region's minor axis; field estimate treated as an upper limit: 1
+- Compared with Dent et al. 2019 images: 1
+- Compared radial Pfrac profiles along axes and Stokes Q/U maps: 1
+- Single-population model with variable f_set fails to reproduce Q: 1
+- Compared with molecular-line turbulence limits: 1
+- Assess structure factor contribution to spectral variation by comparing Stokes I model visibilities between spw 0 (213.…: 1
+- Compare fitted EVPA, polarized flux, and core RM against ground-truth simulated values: 1
+- Compare MCMC posterior RM against simulated ground-truth RM (~0.35 x 10^7 rad/m^2) and against the real ALMA image-anal…: 1
+- Dynamic range improvement from 360 to 2100 in continuum and from 90 to 360 in CO(3-2): 1
+- Split visibilities into two Hour Angle / parallactic angle ranges (0.0h-2.0h and 2.0h-3.4h) and verify consistency of S…: 1
+- Comparison with independent literature B-field estimates (Zeeman splitting in OH masers, SNR synchrotron, ISM volume av…: 1
+- Compared with Tucci2012 and D05-based predictions: 1
+
+### Key parameters and settings (bibcode: value)
+- 2025ApJ...992L..31C: Final phase self-calibration solution interval: 30 seconds
+- 2025ApJ...992L..31C: General spectral cubes: 1 km s−1 channel width
+- 2025ApJ...992L..31C: DCN follow-up spectral resolution ~0.1 km s−1
+- 2025ApJ...992L..31C: Bandpass: J0423-0120, J0510+1800, J0238+1636; gain: J0336+3218; instrumental polarization: J0522-3627
+- 2025ApJ...992L..31C: 3σ Stokes I cutoff
+- 2025ApJ...992L..31C: 10 equally weighted histogram bins
+- 2025ApJ...992L..31C: 8-pixel moving-average window
+- 2025ApJ...992L..31C: robust=0.5 polarized-emission and velocity-gradient maps
+- 2025ApJ...992L..31C: Northeast streamer above the field bifurcation
+- 2025ApJ...992L..31C: Mean FWHM ΔV=0.6 km s−1; circular standard deviation δφ=12 degrees
+- 2025ApJ...992L..31C: Density uncertainty factor 3; linewidth uncertainty 0.1 km s−1; polarization-angle error 2 degrees
+- 2025ApJ...992L..31C: 1 arcsec moving window; robust=1
+- 2025ApJ...992L..31C: Q=0.5
+- 2019A&A...630A..54B: effective sound speed 1.4 km/s
+- 2019A&A...630A..54B: sigma_los=2.1 km/s from DeltaV~5 km/s; n=1.4e7 cm-3; R=1.1''; sigma_psi=27.6 and 17.3 deg
+- 2024MNRAS.528..843L: CASA 6.2.1.7 for all ALMA line removal, self-calibration, and imaging
+- 2024MNRAS.528..843L: Three phase-only self-calibration rounds: infinity, 30.5 s, 10.4 s
+- 2024MNRAS.528..843L: Briggs robust = 0.5
+- 2024MNRAS.528..843L: σP = sqrt[(σQ² + σU²)/2]
+- 2024MNRAS.528..843L: For Pm ≥ 5σP, P = sqrt(Q² + U² − σP²); use PDF below 5σP
+- 2024MNRAS.528..843L: Integrate Stokes I above 3σI; polarization detections also require Stokes I above 3σI
+- 2024MNRAS.528..843L: ALMA polarization-fraction error floor 0.033%
+- 2024MNRAS.528..843L: Input noise: σI from Table 2
+- 2024MNRAS.528..843L: η = 48.02°
+- 2024MNRAS.528..843L: 100 au; azimuthal sampling steps equal to geometric average of beam size
+- 2024MNRAS.528..843L: ALMA bands only
+- 2024MNRAS.528..843L: Minimum radius allows at least eight points for sinusoidal fit; maximum radius set by insufficient 3σ detection around azimuth
+- 2024MNRAS.528..843L: f = (Inear − Ifar)/[(Inear + Ifar)/2]; q′ comparison uses a difference, not a fractional difference
+- 2024MNRAS.528..843L: Four detected polarization vectors
+- 2023Natur.623..705S: Remove 9 channels containing C17O, SO2 and CH3CO emission; ~3% of total bandwidth
+- 2023Natur.623..705S: robust = 0.5; beam 35.5 × 30.5 mas at PA 22°
+- 2023Natur.623..705S: Polarization beam 37.4 × 31.8 mas at PA 26°; rms 8.4 μJy beam^-1
+- 2023Natur.623..705S: Displayed vectors: 3σ detections and P < 10%
+- 2023Natur.623..705S: Include C-4 in Stokes I for polarization fractions and radial comparisons
+- 2023Natur.623..705S: m ≈ 2.30 + 0.0228 i at 870 μm; size distribution a^-3.5; amin = 0.1 μm; amax = 100 μm; no porosity
+- 2023Natur.623..705S: T = T10 (R / 10 au)^-0.5
+- 2023Natur.623..705S: T10 = 110 K; R0 = 10 au; τa = 2.3; p = 0.5
+- 2023Natur.623..705S: Ring centers C = [24, 39, 49, 59, 73, 88, 102, 116] au; τc = [8, 5, 5, 8, 3, 8, 8, 8]; W = [4, 3, 3, 2, 4, 3, 2, 2] au
+- 2023Natur.623..705S: s = 0.85 if perfectly aligned; amax = 100 μm
+- 2023Natur.623..705S: qp = Qp / Ip for minor-axis polarization orientation
+- 2023Natur.623..705S: Oblate aspect ratio s = 1.2; short axes radial
+- 2024A&A...682A..97W: Band 3: four 2 GHz sub-bands centered at 86.3, 88.3, 98.3, 100.3 GHz
+- 2024A&A...682A..97W: Full Stokes at 4 s cadence; data averaged within sub-bands
+- 2024A&A...682A..97W: 227.1 GHz scaled up by 4% for CN absorption
+- 2024A&A...682A..97W: Main comparison: 2017 April 3 Band 3 and April 6 Band 6
+- 2024A&A...682A..97W: Flag points where calibration did not converge; identical procedure for each data set
+- 2024A&A...682A..97W: EVPA statistics calculated using directional statistics
+- 2024A&A...682A..97W: MAD; inclination 30 deg; spin 0.5; R_high = 160
+- 2024A&A...682A..97W: 1000 snapshots, cadence 5 r_g/c ≈ 100 s; effectively five observing-window realizations
+- 2024A&A...682A..97W: Ray trace only innermost 300 r_g; density normalized to 2.4 Jy at 228 GHz
+- 2024A&A...682A..97W: For displayed RM comparison, flip model RM sign and shift by Galactic Center magnetar RM
+- 2021ApJ...907...94C: Rectangular mosaic; factor 2 over-sampling relative to Nyquist along both axes; factor 4 total beam overlap
+- 2021ApJ...907...94C: 3.1 mm: ~2.20 × 1.75 arcmin, 15 pointings; 1.3 mm: ~1.25 × 0.94 arcmin, 45 pointings
+- 2021ApJ...907...94C: Final phase-only self-calibration solution interval: 90 s
+- 2021ApJ...907...94C: Omega = pi/(4.0 log 2) b_maj b_min
+- 2021ApJ...907...94C: Column density evaluated only in the filament region used for field-strength estimation
+- 2021ApJ...907...94C: Stokes I cutoffs: 900 microJy beam^-1 at 3 mm; 7.3 mJy beam^-1 at 1 mm
+- 2021ApJ...907...94C: n = N/L; L = 2 arcsec
+- 2021ApJ...907...94C: Adopted NH3 line-width: 1.4 km s^-1
+- 2021ApJ...907...94C: delta phi calculated directly from polarization data
+- 2021ApJ...907...94C: Average of Column 10 estimates; reported 1.3 mm average 9.4 mG
+- 2019ApJ...886..103O: robust 0.5, 0.02" pixels
+- 2019ApJ...886..103O: inclination 47 deg, PA 133.3 deg
+- 2019ApJ...886..103O: 1 mm grains within +-5 au of ring centers; 5.5:4.5 mixture at r<=40 au
+- 2023A&A...672A..67A: Core position (l, m) = (0, 0), I = 1.2 Jy; Knot A position (l, m) = (-11.28, 4.35), I = 0.1 Jy; Knot B position (l, m) = (-13.92, 4.95), I = 0.05 Jy
+- 2023A&A...672A..67A: Simulated core RM ~ 0.35 x 10^7 rad/m^2; Gaussian visibility noise std = 0.5 mJy
+- 2023A&A...672A..67A: Free parameters per spw: core EVPA (p_0) and core polarized flux density (p_1 = m * I_core); fixed parameters: p_2 = 0, knot A and knot B Stokes parameters
+- 2023A&A...672A..67A: Reference wavelength lambda_0 = 0; 6 free parameters (q_0, q_1, q_2, q_3, and two component RMs)
+- 2026ApJ...996L..27L: robust = 0.5 for continuum; natural weighting and 4-channel averaging (13.5 km/s) for CO(3-2)
+- 2026ApJ...996L..27L: PI/sigma_PI >= 4; I_CO/sigma_I_CO >= 140; elliptical apertures 0.5'' x 0.6'' tilted at +25 deg (East) and -25 deg (West)
+- 2026ApJ...996L..27L: sigma_CO = 220+-20 km/s; M_CO = 10^7 M_sun (red) and 10^6 M_sun (blue); V = 121x50x50 pc^3 (red) and 90x50x50 pc^3 (blue); U_0 = 500+-50 km/s (red) and 460+-50…
+- 2024A&A...686A.274V: solint 'inf' then 'int'
+- 2024A&A...686A.274V: detection threshold >5 sigma_P
+- 2024A&A...686A.274V: V_lsr CW Leo = -26.5 km/s
+- 2024A&A...686A.274V: CW Leo dipole inclined 45 deg, PA 125 deg
+- 2024A&A...686A.274V: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU
+- 2024A&A...686A.274V: delta~300 au, Delta'~500 au, W1~40 au, N~1.2
+- 2020MNRAS.495.4297S: Flux and polarization calibrator J0750+1231; phase calibrator J0730-1141; bandpass calibrator J0522-3627
+- 2020MNRAS.495.4297S: robust = 0.5; beam 0.50 x 0.38 arcsec; Stokes I rms 0.260 mJy/beam; Q and U rms 0.021 mJy/beam
+- 2020MNRAS.495.4297S: Polarization angle uncertainty about 10% for a 3 sigma threshold
+- 2020MNRAS.495.4297S: Self-scattering model maximum about 2.5% at 345 GHz (a_max = 100 um); observed P% generally at least 2% in most of the nebula
+- 2023ApJ...953..113L: Quality cuts: PI/sigma_PI >= 2, P <= 20%, I/sigma_I >= 60
+- 2023ApJ...953..113L: Resampled pixel scales: 7.5'' (JCMT 850 um), 0.15'' (ALMA 890 um)
+- 2023ApJ...953..113L: Reference wavelength for separation: 89 um
+- 2023ApJ...953..113L: Galaxy tilt angles theta: 64 +/- 1 deg (M82), 52 +/- 1 deg (NGC 253), 140 +/- 2 deg (NGC 2146)
+- 2023ApJ...953..113L: Reference wavelength lambda_0 = 154 um for normalized polarization spectra
+- 2023ApJ...953..113L: Fitted wavelength range: 50-250 um
+- 2023ApJ...953..113L: Slot width: 2 pixels (1 beam FWHM)
+- 2023ApJ...953..113L: B_0 = 128 uG M_sun^-0.34 yr^-0.34, calibrated from B_M82 = 305 +/- 5 uG and SFR_M82 = 13 M_sun yr^-1
+- 2023ApJ...953..113L: Core depth h_c: 500 pc (M82), 50 pc (NGC 253), 2000 pc (NGC 2146)
+- 2020ApJ...895...64L: robust 0.0
+- 2020ApJ...895...64L: cross-hand delays from scan 61 on polarization calibrator
+- 2016A&A...593A..44L: constant polarization PA assumed; Q offset delta fitted
+- 2016A&A...593A..44L: 2.5 km/s velocity channels; CI 12m data tapered at 1.5"
+- 2023Natur.621..483G: clean threshold 10 uJy
+- 2023Natur.621..483G: 801x801 grid, 0.01'' pixel; pwv 0.6 mm; antenna configuration 2 (Cycle 8)
+- 2025A&A...701A.191V: S/N threshold = 6
+- 2025A&A...701A.191V: Fixed DM = 1770 pc cm^-3 (no DM trials)
+- 2022ApJ...939L...6B: upper (230 + 232 GHz) and lower (219 + 217 GHz) sidebands
+- 2022ApJ...939L...6B: ALMA XX and YY polarizations at flare peak
+- 2022ApJ...939L...6B: harmonic numbers s between 10 and 100
+- 2015A&A...584A..16P: 1 M_Jup planet at 20 AU, alpha_visc=1e-3
+- 2018MNRAS.477.4380S: b = 0.4, beta_mag -> infinity, eps_ff = 0.015
+- 2024PASJ...76..960S: flux conversion factor 2.19 +/- 0.13 Jy arcsec^-2 pW^-1
+- 2024PASJ...76..960S: attenuation factor 1.35 +/- 0.008 for the POL-2 insertion
+- 2024PASJ...76..960S: beam 12.6'' HPBW, 4.0'' pixels
+- 2024PASJ...76..960S: n = 51 segments inside the 20 sigma 37.1 um contour, excluding four segments affected by Sgr A*
+- 2024PASJ...76..960S: half-thickness z_half = 0.4 pc, z/r about 0.08
+- 2024PASJ...76..960S: rho = 1.0e-18 g cm^-3, sigma_nth = 21 km/s, sigma_phi = 0.105 rad (Tsuboi et al.); alternative rho = 8.9e-20 g cm^-3, sigma_nth = 35 km/s (Guerra et al.)
+- 2022FrASS...9.1118D: Longitudinal rotation: -0.01 deg (230 GHz), -2.85 deg (100 GHz), 7.31 deg (17 GHz)
+- 2022FrASS...9.1118D: Grid size: 256x256 pixels (~2" per pixel)
+- 2022FrASS...9.1118D: Force-free parameter alpha = -0.005
+- 2022FrASS...9.1118D: Minimum photospheric magnetic field |B|_min = 200 G
+- 2022FrASS...9.1118D: Vertical voxel height resolution h_z = 50 km
+- 2022FrASS...9.1118D: Umbra: |B| >= 1500 G (~200 pixels); Penumbra: 1000 <= |B_0| < 1500 G (~230 pixels); Plages: 200 <= |B_0| < 1000 G (~27200 pixels); Quiet Sun: |B| <= 200 G (~38…
+- 2022FrASS...9.1118D: 2D Gaussian beam FWHM: 25" (230 GHz), 58" (100 GHz), 10" (17 GHz)
+- 2017A&A...603A..92V: line robust 0.5; continuum robust -0.5
+- 2017A&A...603A..92V: maser linewidth ~1 km/s; z≈1500 s^-1 G^-1
+- 2017A&A...603A..92V: a=0.1 micron, s=0.5, Td=Tg=100 K, n_g≈9e9 cm^-3
+- 2024AJ....168..142L: Free: minimum grain size, porosity, dust mass, PA, inclination, inner radius, outer radius and critical radius.
+- 2024AJ....168..142L: 15–78 AU; surface-density proxy from average best-fit radial brightness profile, peak normalized to 1.
+- 2019ApJ...878L..26L: flux scale from power-law fit to calibrator catalog flux at 91.5 and 103.5 GHz
+- 2019ApJ...878L..26L: Gamma_ej ≈15, Pi_0 ~0.6 (beta~0), t_dec ≈ T90 = 116 s
+- 2026MNRAS.549ag678P: beta_1 = +1.17, beta_2 = -0.90, s = 1.5
+- 2026MNRAS.549ag678P: Factor of 1.37 correction applied to 27d X and Ku measurements in first epoch SED
+- 2018ApJ...865...13T: 1.5 sigma mask threshold
+- 2020PASP..132i4501H: Cross-hand delay solved on the scans where the XX/YY ratio changes fastest
+- 2020PASP..132i4501H: Three executions spaced ~1 hr give parallactic angle coverage for D-terms and XY-phase
+- 2020PASP..132i4501H: D-terms and XY-phase solved from on-axis data only, to mimic standard ALMA polarization calibration
+- 2020PASP..132i4501H: Briggs robust = 2.0 (natural weighting), CASA 5.6.1
+- 2020PASP..132i4501H: Bandpass scan taken only in the first execution of each session
+- 2020PASP..132i4501H: Briggs robust = 0.5
+- 2020PASP..132i4501H: 5 sigma_P cutoff in the chi maps
+- 2024A&A...692A..34C: Bandpass J0519-4546; phase J0253-5441; flux J0519-4546 (about 5 percent uncertainty)
+- 2024A&A...692A..34C: Parallactic angle coverage wider than 120 degrees in both sessions
+- 2024A&A...692A..34C: Stop at 1 sigma RMS of 12 uJy/beam; beam 0.38 x 0.3 arcsec; polarised-intensity RMS 8.5 uJy/beam
+- 2024A&A...692A..34C: Aperture = half the clean beam; P/sigma_P < 3 masked before position-angle calculation
+- 2024A&A...692A..34C: Mask r < 0.05 arcsec and r > 0.18 arcsec; best-fit lens parameters in a table
+- 2024A&A...692A..34C: Median velocity dispersion of 140 km/s in the region with polarisation
+- 2024A&A...692A..34C: [C II] line dispersion 140 km/s at the polarised region; density 50 cm^-3
+- 2026PASP..138h4104C: Bandwidth ΔB = 2 GHz; t = 20 s (ALMA-APEX) and 10 s (ALMA-JCMT); η_q = 0.88; η_c = 0.85 (ALMA-APEX) and 0.96 (ALMA-JCMT); η_p = 0.71; ALMA 3-bit quantization e…
+- 2020MNRAS.499.5915M: Adopt λmax = 472.6 nm and K = 0.79.
+- 2020MNRAS.499.5915M: Fixed λmax = 472.6 nm and K = 0.79.
+- 2020MNRAS.499.5915M: SPHERE anchor: 62 ± 8 ppm; include its uncertainty in q′ errors.
+- 2020MNRAS.499.5915M: R0 = 11.3 au; αin = -3.5; αout = 6.8; z0 = 0.6 au; β = 0.40.
+- 2020MNRAS.499.5915M: amin = 0.01 μm; amax = 1 mm; q = 3.95.
+- 2020MNRAS.499.5915M: Extrapolate optical constants to 0.1 μm–2 mm using the first or last two points.
+- 2020MNRAS.499.5915M: Reference mass for each material SED: 3.45×10^23 g.
+- 2020MNRAS.499.5915M: NEXTGEN: 7800 K; log(g) = 4.2 interpolated from 4.0 and 4.5; Solar metallicity; luminosity 8.093 L☉.
+- 2020MNRAS.499.5915M: 200 wavelengths over 0.3–0.9 μm; minimum sizes 0.01–6.5 μm.
+- 2020MNRAS.499.5915M: Maximum size 1 mm; size-distribution exponent -3.95.
+- 2020MNRAS.499.5915M: Compare the SED-derived mixture with astronomical silicate.
+- 2024NatAs...8..765L: Recovery domain 6M <= r <= 20M, |z| <= 4M
+- 2024NatAs...8..765L: 64x64 pixel grid, FOV 200 microarcsec
+- 2024NatAs...8..765L: Spectral index alpha_nu ~ 1
+- 2024NatAs...8..765L: MLP: 4 layers, 128 units, ReLU; positional encoding degree L = 3
+- 2024NatAs...8..765L: ADAM, polynomial learning rate 1e-4 to 1e-6 over 50K iterations, about 1 hour on two NVIDIA Titan RTX GPUs
+- 2024NatAs...8..765L: Five runs with random initialisation per inclination
+- 2024NatAs...8..765L: Angular velocity profile Omega = +/- f_K Omega_K tested; f_K = 0.9 shown
+- 2018ApJ...858...85P: 5 to 15 bins; Poisson errors at 68% confidence
+- 2018ApJ...858...85P: r=0.05, Planck best fit cosmology
+- 2015A&A...581A..97S: Belt at 40 au, width 5 au, e_max=0.03, SW50 reference, material M1
+- 2020NatAs...4.1064H: GMC filament spacing 0.32 pc; sound speed 0.27 km s−1; temperature 20 K.
+- 2021PSJ.....2..125S: CW radar echoes smoothed to effective resolution of 100 Hz; 37 minutes integration per run in 2017
+- 2024PSJ.....5..230D: snapshot duration <5.5 min; pixel 3 mas
+- 2024AN....34530149M: AR modified from 400 km to the model top; CH from 2 km to the model top; QS over the entire model height range
+- 2024A&A...686A.281B: robust = 0.5
+- 2024A&A...686A.281B: same uv-coverage at 1.3 mm and 3.1 mm
+- 2024A&A...686A.281B: Q and U > 3 sigma for angles
+- 2024A&A...686A.281B: lambda = 2.66, b0 = 0.1 fixed; i and phi scanned (i in 0-90 deg by symmetry)
+- 2024A&A...686A.281B: xi = 0.5; histogram bin 6 deg; sigma_QU = 15 uJy/beam; region inside the 5 sigma contour
+- 2024A&A...686A.281B: sigma_los = Delta V / sqrt(8 ln 2) from CH3CN, DeltaV ~5.6 +/- 0.15 km/s; density 1.4e7-5e8 cm^-3
+- 2024A&A...686A.281B: fewer than 3 pixels per beam; only polarization above 5 sigma; only Sigma_B < 2 used (threshold 5 raises B_pos by ~6%)
+- 2019ApJ...872...70T: Polarization calibrator J0522-3627 observed every 25 minutes
+- 2019ApJ...872...70T: Delta PI = sqrt(dQ^2+dU^2+(0.002 I)^2); lower limit of Delta EPA about 1 deg
+- 2019ApJ...872...70T: Mean dust temperatures 25, 27, 36 K; beta=0.93; kappa(1.1mm)=0.014 cm2/g
+- 2019ApJ...872...70T: Bonnor-Ebert core, n_c=2e5 cm-3, T=10 K, B0=26 uG, Omega0=1e-13 s-1, Mcore=8.7 Msun, finest cell 0.2 AU
+- 2025ApJ...989L..43Y: Disk PA = 138.02°; positive Q′ along minor axis; negative Q′ along major axis
+- 2025ApJ...989L..43Y: Minimum grain size 0.1 μm; maximum grain size 140 μm
+- 2025ApJ...989L..43Y: τ_ID(R) = τ_c,0 (R/R_c)^−0.5 exp[−(R/R_c)^−1.5]; τ_c,0 = 2.3
+- 2025ApJ...989L..43Y: Printed ring profile: τ_i(R) = τ_c,i exp[−0.5((R−C_i)/W_i)^−2]; parameters in Table 1
+- 2025ApJ...989L..43Y: H_i = H_c,i(R/C_i)^p; p = 1 in most cases
+- 2025ApJ...989L..43Y: H_gap(R) = H_1(R) + 0.5[H_2(R)−H_1(R)] × [tanh((R−C)/(W/2))+1]
+- 2025ApJ...989L..43Y: Spherical polar grid: 300 × 256 × 256 cells
+- 2025ApJ...989L..43Y: 1.6 × 10^9 photons per simulation
+- 2025ApJ...989L..43Y: Convolve with observational synthesized Gaussian beam
+- 2025ApJ...989L..43Y: H/R = 0.05, 0.1, 0.15, 0.2
+- 2025ApJ...989L..43Y: Gap Gaussian: peak −0.16 mJy/beam; center 14 au; width 5.1/(2 cos i) au
+- 2025ApJ...989L..43Y: H/R = 0.01, 0.05, 0.1; additional models 0.15 and 0.2
+- 2025ApJ...989L..43Y: St = ρ_s a/Σ_g; ρ_s = 3 g/cm^3; a = 140 μm
+- 2025ApJ...989L..43Y: H_d = H_g(1+St/α)^−1/2[(1+2St)/(1+St)]^−1/2
+- 2025ApJ...989L..43Y: Constant α = 10^−5 and 10^−3; varying α = 10^−5 × R_100^−3.5, R_100 = R/100 au
+- 2020ApJ...901...71S: Solution intervals: infinite, 25 s, 10 s
+- 2020ApJ...901...71S: HD 142527 regridded to 0.06'' pixels; IM Lup to 0.1'' pixels
+- 2020ApJ...901...71S: HD 142527: PA = 160 deg, i = 28 deg, Rc = 200 au; IM Lup: PA = 144 deg, i = 48 deg, Rc = 100 au; gamma = 1
+- 2020ApJ...901...71S: HD 142527: M* = 2.8 Msun, PA_red = 160 deg, i = 28 deg, d = 157 pc; IM Lup: M* = 1 Msun, PA_red = 144 deg, i = 48 deg, d = 158 pc; z0 = 0.1'' for both; IM Lup …
+- 2020ApJ...901...71S: rmax where Stokes I drops to 90% of peak moment 0 value, rounded to 3'' (HD 142527) and 4'' (IM Lup); rmin alternates 0 and 0.17'' (HD 142527) or 0 and 0.5'' (…
+- 2020ApJ...901...71S: Other GoFish inputs left at defaults
+- 2020ApJ...901...71S: Gaussian sigma of 15% for mass and 5 deg for inclination and PA
+- 2025A&A...699A.265G: Polarization calibrator model Stokes IQUV = [1.50, 0.033, -0.126, 0.0] Jy
+- 2025A&A...699A.265G: Briggs robust 0.5, gain 0.1
+- 2025A&A...699A.265G: 576 x 576 pixels of 0.06 arcsec
+- 2025A&A...699A.265G: All 240 channels averaged to eight-channel, four-SPW visibility files before fitting
+- 2025A&A...699A.265G: Leakage systematic 0.03% of Stokes I for Q,U (0.6% for V)
+- 2025A&A...699A.265G: Pixels kept above 3 sigma in Stokes I and 2 sigma in polarized flux density
+- 2021MNRAS.503.3414P: Briggs weighting with robust = 0.5, cell size = 0.060'', regridded to 0.25'' pixel grid
+- 2021MNRAS.503.3414P: PI threshold >= 6 mJy/beam; delta_Q = delta_U = 0.62 mJy/beam; delta_theta <= 3.0 deg
+- 2021MNRAS.503.3414P: sigma_theta in range 1 deg - 20 deg; 1000 Monte Carlo realisations per sigma_theta; consistency criterion p > 0.05
+- 2021MNRAS.503.3414P: B ~ 10 mG (hat{B} ~ 2000), hat{chi} ~ 0.4 - 40, L > 10^4 L_sun, R ~ 3.5'' (~ 2 x 10^16 cm at 388 pc), T_eff ~ 1500 K (bar{lambda} ~ 1.9 um), T_d ~ T_gas ~ 135 …
+- 2018ApJ...864...81O: robust = 0.5
+- 2018ApJ...864...81O: sigma_PI = 2.9e-5 Jy/beam
+- 2018ApJ...864...81O: Pixels above 10 sigma; gradients from the pixel with maximum F_nu r^-2
+- 2020ApJ...893...33L: minimum detectable polarization 0.1%, systematic 0.03%
+- 2020ApJ...893...33L: i=75 deg, theta=110 deg, p0=0.1, full resolution 1.2 mas, 14.4 Mpc
+- 2020ApJ...893...33L: sigma_v=10 km/s, alpha=5+-2 deg
+- 2025A&A...703A.110S: weighting = briggs (robust=0.5)
+- 2025A&A...703A.110S: channel width = 31.2 MHz for spectral cubes
+- 2025A&A...703A.110S: S/N < 5 mask on PD maps
+- 2025MNRAS.538.2421S: Phase calibrator J1935+2031; polarisation calibrator J1924-2914
+- 2025MNRAS.538.2421S: 0.86 mm continuum map
+- 2025MNRAS.538.2421S: Synthesised beam 0.37″×0.32″; PA=18.92°
+- 2025MNRAS.538.2421S: 3σ cut; rms = 19.7 μJy/beam
+- 2025MNRAS.538.2421S: Estimated instrumental polarisation uncertainty approximately 0.1%
+- 2025MNRAS.538.2421S: 2.5σ threshold
+- 2025MNRAS.538.2421S: Optical depth evaluated at 850 μm
+- 2020ApJ...899..152H: gpcal with options=qusolve
+- 2020MNRAS.493.5045M: Distance 20.7 Mpc
+- 2020MNRAS.493.5045M: R = (3.4/sqrt(pi)) sigma_r
+- 2020MNRAS.493.5045M: Uncertainties from bootstrapping with 50 realizations
+- 2021ApJ...910...21R: 5% systematic error added over 1e8 to 1e16 Hz
+- 2021ApJ...910...21R: Jet launch distance z_0 = 50 R_S, initial jet radius 0.1 z_0, q_jet = 0.2 for the phenomenological setup
+- 2016A&A...593A.107L: 1000 realizations, Gaussian noise sigma^Q from prior-fit residuals
+- 2023Natur.617..261K: frequency window sizes = 4 to 17 channels (≈ 66–282 km s^-1)
+- 2023Natur.617..261K: duplicate cropping offsets = 1" and 280 MHz (300 km s^-1)
+- 2023Natur.617..261K: S/N > 6.0 selection threshold
+- 2026MNRAS.548ag619G: Wavelength range 5-10 um; 1,470 integrations of 4.77 s each
+- 2023A&A...677A..30B: VLA 60 s image intervals with niters=10, cycleniter=10; 3sigma detection threshold
+- 2023A&A...677A..30B: VLT/FORS2 80 s combined bins, 2sigma detection threshold for LP
+- 2019MNRAS.487.4305S: KDM eps_ff=0.015; SFK eps_ff=0.0045, b=0.4, beta_mag to infinity
+- 2025NatAs...9..406L: Cosmic-ray ionization rate 1e-17 s^-1; ionization fraction ~1e-7; MHD cutoff wavelength <~0.01 pc
+- 2021ApJ...910...77M: Radius smoothing: 100 days; proxy running mean: 396 days (13 months); averages every 6 months
+- 2021ApJ...910...77M: Solar activity proxies: 10.7-centimeter solar flux F10.7 and mean photospheric magnetic field intensity |B|
+- 2018A&A...620A..75K: dust condensation radius 1.5 or 2.5 R*IR; Al abundance 2.8e-6 rel. to H; star blackbody 2500 K; free parameters f and grain size
+- 2024MNRAS.527.3559P: q=3.0, dust mass fixed to 1 Mearth in both scattered light and SED
+- 2019ApJ...884L..58U: P0 = 1%, 0.5%, 10%
+- 2025ApJ...993L...6N: Internal energy U computed from R, B, epsilon_B and filling factor
+- 2023PASP..135b5002C: eta_v averaged over polarizations and basebands
+- 2023PASP..135b5002C: quality metric runs from 0 (no solution) to 1 (excellent fit), built from the RMS of the phase residuals
+- 2023PASP..135b5002C: single correlation quadrant SPW=0 and XX polarization
+- 2023PASP..135b5002C: Oct 21 data used for bandpass and polarization calibration tables
+- 2026ApJ..1000L..10C: Initial mask from shallow clean with Briggs robust -0.3; final image Briggs robust 0
+- 2026ApJ..1000L..10C: Self-cal in eight spectral bins with 64 s time intervals
+- 2026AJ....172...75M: Threshold = 3 sigma_P
+- 2026AJ....172...75M: Pixel size = 0.15'', angle measurement uncertainty sigma_phi = 1.4 deg; structure function fit range 1.1'' < l < 2.2''
+- 2026AJ....172...75M: Detected magnetic field region = 2.5'' x 1.95''; 3 sigma flux threshold for CH3OH transitions
+- 2026AJ....172...75M: Q = 0.28, n(H2) = 1.0 x 10^6 cm^-3, delta_v_turb = 1.4 km s^-1, geometric correction factor f = 3/4
+- 2026AJ....172...75M: B_pos,u = 1.7 mG; M_out = 54 M_sun and 10 M_sun; v_rot = 2.4 km s^-1; V_A = 2.5 km s^-1; density power-law index n = 0 and 1.5; pseudo-disk radius R ~ 2500 AU;…
+- 2018A&A...616A..56A: vectors drawn at S/N=5 in polarized intensity
+- 2018A&A...616A..56A: field inclination 55 deg; k free
+- 2024ApJ...970..114T: Polarization degree uncertainty floored at 0.033%
+- 2024ApJ...970..114T: Oblate grains with aspect ratio s = 1/2 for ray tracing
+- 2024ApJ...970..114T: Paramagnetic iron fraction f_p = 0.1
+- 2024ApJ...970..114T: Superparamagnetic iron-cluster volume filling factor phi_sp = 0.1, N_cl varied
+- 2024ApJ...970..114T: Internal alignment efficiency Q_X,high-J = 0.4; Q_X,low-J = 0.4 (right IA) or -0.4 (wrong IA)
+- 2024ApJ...970..114T: T_star = 4000 K, R_star = 7 R_sun
+- 2024ApJ...970..114T: R_c = 78.9 AU, gamma = -0.2
+- 2024ApJ...970..114T: Scale height h0 = 10 AU at 100 AU, flaring beta = 1.15
+- 2024ApJ...970..114T: Gas mass normalized to M_g = 0.1 M_sun (gas-to-dust ratio ~10)
+- 2021ApJ...908..153M: (tau_0, r_c, gamma_1, gamma_2) = (1.0, 129.2, 6.6, 9.0)
+- 2021ApJ...908..153M: q = -3.5, a_min = 0.05 um, a_max varied
+- 2021ApJ...908..153M: inclinations 0, 45 and 60 deg
+- 2021ApJ...908..153M: a_max = 100, 130, 200 um; i = 45 deg
+- 2026A&A...712A.244H: Phase-only self-cal solint = int; phase and amplitude self-cal solint = 10 s (Bands 4 and 6) and 30 s (Band 7)
+- 2026A&A...712A.244H: 1000 Monte Carlo realizations; noise std devs: X-Y Phase = 2 deg, X-Y Bandpass amp = 0.1% (B4, B6) / 0.2% (B7), X-Y Bandpass phase = 0.5 deg, D-terms = 0.5% (B…
+- 2026A&A...712A.244H: Four models: S (3 params), T_inv (5 params), S2 (6 params), T2 (8 params)
+- 2026A&A...712A.244H: Polarization cutoff: I > 5*rms and polarized flux > 3*rms; Spectral index cutoff: I > 3*rms in each Spw, 10% calibration uncertainty added in quadrature, accep…
+- 2023PASJ...75..120F: Flux conversion factors 516 (850 um) and 531 (450 um) Jy/pW/beam
+- 2023PASJ...75..120F: Data kept only for satisfactory weather (tau225 between 0.03 and 0.07)
+- 2023PASJ...75..120F: PI/DPI > 3 and I/DI > 10
+- 2023PASJ...75..120F: Gas densities (1.14 +/- 0.08)e-18 and (4.5 +/- 0.8)e-18 g/cm^3
+- 2023PASJ...75..120F: Velocity dispersion (0.12 +/- 0.01)e5 cm/s from N2H+ J=1-0
+- 2023PASJ...75..120F: Polarization angle dispersion 20 +/- 1 deg (850 um) and 11 +/- 9 deg (450 um)
+- 2023PASJ...75..120F: Observer viewing angle theta = 80 deg, phi = 30 deg
+- 2017ApJ...844L...5K: robust 0.5; scales 0, 0.3, 0.9 arcsec
+- 2017ApJ...844L...5K: a_max = 50, 70, 100, 150 um; p = 0, 1.8, 3.6%
+- 2021ApJ...915...99I: Fringe detection threshold S/N > 7 over ~9 minute scans
+- 2021ApJ...915...99I: Projected baseline length 1.6 Glambda; 10% amplitude calibration uncertainty
+- 2021ApJ...915...99I: Baseline threshold > 1.8 Glambda
+- 2024ApJ...967...18Z: sub-block 20x20 pixels, pixel size 0.2'', B-field scale 191 pc (~4'')
+- 2024ApJ...967...18Z: OIII smoothed to 18'', intensity over 3e-16 erg cm^-2 s^-1 marks the shock front
+- 2024ApJ...967...18Z: JVLA B-field orientation theta_B = 0.5 arctan(U,Q) + 0.5 pi
+- 2026A&A...710A.390O: Conversion factors: 35, 36, and 46 Jy K^-1 at 230, 345, and 461 GHz; velocity resolution: 2 km s^-1
+- 2021A&A...651A..35O: thermal and turbulent widths added in quadrature; single micro-turbulent width for all species
+- 2021A&A...651A..35O: uniform magnetic field assumed for Zeeman models
+- 2021MNRAS.504.4511P: R = 1.91 sigma_r
+- 2021MNRAS.504.4511P: 50 bootstrap iterations
+- 2021MNRAS.508...44M: 5 arcsec aperture for RMS measurement; 3-sigma threshold
+- 2021MNRAS.508...44M: P_i = 1 ms and P_i = P_max
+- 2016ApJ...832..143F: B0 = 1000, 2000, 3000 microG; 256^3 grid; two seeds; solenoidal driving
+- 2023MNRAS.522.6123Z: Frequencies >= 147 MHz; proton-to-electron energy ratio k = 1; Doppler boosting factor delta = 2-4; B_CMB = 3.25(1+z)^2 uG
+- 2026MNRAS.546ag037E: 230 GHz (ACA, Cygnus X-1 archival, GX 339-4 archival); 104 GHz (GRS 1915+105 archival)
+- 2021A&A...647A.173K: Flagged first 10 channels in spw 2 (both epochs); flagged DA63 (Epoch 1) and DA41 (Epoch 2) all spws; flagged DA42 and DA48 spw 1 (Epoch 2)
+- 2021A&A...647A.173K: Scan length ~10 min for intra-epoch timing
+- 2026ApJ..1001..184M: IMF slope 1.7; cluster mass above 1 Msun 14,000-37,000 Msun; Z = 0.02; upper mass 120 Msun
+- 2018MNRAS.473..317H: 10 radial dust types, q=3.3, a_min=1 nm
+- 2026A&A...705A.203W: Synthetic ALMA: C-5, 345 min; C-3, 84 min; robust=0.5
+- 2025ApJ...988..109H: Distance 3.7-5.5 kpc
+- 2024ApJ...972..115C: Phase-only self-calibration final solution interval 90 s
+- 2024ApJ...972..115C: Spectral cubes with 2 km/s channel width
+- 2024ApJ...972..115C: Values extracted considering 1/3 FWHM for max and mean; rms from an emission-free region
+- 2024ApJ...972..115C: Window 1.5'' (about 16 beams, Nyquist sampling), 5 deg angle error, s ~ 10 deg from coherent regions
+- 2024ApJ...972..115C: Delta V from C33S moment-2 map (optically thin); n from the cylinder density map
+- 2018ApJ...859..165S: P/sigma>4; sigma_PI ~ sigma_Q ~ sigma_U; 0.1% fraction uncertainty
+- 2018ApJ...859..165S: A=10, theta=54 deg, nu0=60, r0=40 au, peak density ~6e10 cm-3
+- 2024ApJ...971L..23L: robust = 2, 0.5, 0
+- 2024ApJ...971L..23L: Bandpass J5010+1800, gain J0552+0313, polarization J0522-3627
+- 2024ApJ...971L..23L: alpha = 0.1 (maximum polarization fraction in an optically thin region)
+- 2024ApJ...971L..23L: DSHARP grains with a_max = 170 um
+- 2024ApJ...971L..23L: Absorption opacity ~1.4 scaled up to 3.2 cm^2 per g of dust
+- 2024ApJ...971L..23L: Scattering opacity ~10 cm^2 per g, albedo ~0.76
+- 2021AJ....161...33V: Intrinsic dust density 1 g cm^-3.
+- 2021AJ....161...33V: Factor-3 uncertainty on gas surface density.
+- 2021AJ....161...33V: Fiducial alpha = 10^-3; gas-to-dust ratio = 10; gas contrast = 1.2; a_max = 1 mm; azimuthal sigma_y = 10 degrees.
+- 2021AJ....161...33V: Compare truncated MRN and steady-state size distributions; vary fragmentation velocity, viscosity, gas-to-dust ratio, gas contrast and gas extent.
+- 2021AJ....161...33V: Nondetected spirals assigned pitch angle 1 degree; single/double spirals not distinguished.
+- 2021AJ....161...33V: Micron-sized grains evaluated over scattered-light feature radii using the gas profiles.
+- 2024A&A...682L...3P: Both bands combined, points averaged over 2 GHz in frequency and 120 s in time
+- 2024A&A...682L...3P: 3g model adds six degrees of freedom over the 2g compact model
+- 2024A&A...682L...3P: Fit data: 86 visibility amplitudes, 14 non-trivial closure phases, 80 absolute fractional polarisations
+- 2024A&A...682L...3P: Net polarisation: image-domain Stokes sum over the whole field of view
+- 2024A&A...682L...3P: k_u = 0 and f = 1 (electron-positron pair plasma, volume filling)
+- 2024A&A...682L...3P: nu_min = 1e7 Hz, nu_max = 3e14 Hz
+- 2024A&A...682L...3P: theta = 144 +/- 18 microarcsec; delta = 1.1 +/- 0.1; S_m = 9.0 +/- 0.5 Jy; b(alpha_thin) = 3.2
+- 2020ApJ...904..168B: robust = 0.5
+- 2020ApJ...904..168B: self-calibration lowered Stokes I rms by more than a factor 3
+- 2020ApJ...904..168B: P = sqrt(Q^2+U^2-sigma_P^2), rms of P 5 uJy/beam
+- 2020ApJ...904..168B: random-distribution expectation for V is +/- sqrt(2)
+- 2016ApJ...831L..12K: robust 0.5; scales 0, 0.3, 0.9 arcsec
+- 2016ApJ...831L..12K: Sigma0max 0.6, Sigma0min 0.008 g cm^-2; rc 170 au; rw 27 au; theta_d 30 deg; phi_d 60 deg; T 36 K; inclination 27 deg; PA 71 deg
+- 2023A&A...674A.101M: Two point-like components; free parameters: f_NE and R = f_NE/f_SW
+- 2023A&A...674A.101M: Plasmon injection time t_0, core flux I_c (< 0.18 Jy), plasmon flux I_p, decay power beta, plasmon spectral index alpha_p, time delay Delta t, differential mag…
+- 2024A&A...692A.146B: b = 0.4
+- 2024A&A...692A.146B: mu = 2.33
+- 2024A&A...692A.146B: alpha_PL = 3 (fiducial)
+- 2024A&A...692A.146B: epsilon_0 = 0.01
+- 2023Natur.617..696V: Flux correction of 7-10 % for flux calibrator polarisation
+- 2023Natur.617..696V: Hogbom and SDI clean; SDI only for lines
+- 2020A&A...638L..14C: 14.86 K/Jy conversion; 10 min chunks; baseline fitted 1372-1376 MHz
+- 2022MNRAS.512.2337D: UVOT extraction radius = 3'' aperture corrected to 5''; MASTER aperture size = 3.9''
+- 2021Galax...9..115D: IF1 centered at 1365 MHz (42 MHz bandwidth) with tau_1 = 8.4 deg; IF2 centered at 1435 MHz (42 MHz bandwidth) with tau_2 = 5.2 deg; mean polarized fraction F =…
+- 2021Galax...9..115D: Briggs robust = 0.5, uv-taper < 50 klambda (~2.5 arcsec beam), blanked at 3 sigma, B-field orientation = 0.5 arctan(U/Q) + pi/2 in steps of 3 pixels
+- 2024Ap&SS.369...18M: robust = 0.5, Stokes I
+- 2014A&A...568A..40G: Contrast drop factor >~6 between 0.65'' and 0.3''
+- 2024ApJ...963L..31H: Briggs robust = 0.5
+- 2024ApJ...963L..31H: Solution intervals 600, 30, 10 s
+- 2024ApJ...963L..31H: 3 sigma_QU cutoff for debiased P
+- 2024ApJ...963L..31H: Pixel size one-third to half of beam FWHM (e.g. 0.28-0.42 arcsec for HH212M)
+- 2024ApJ...963L..31H: Uncertainty-weighted B angles at 400-1000 au used for type analysis
+- 2018ApJ...869..115S: robust 0.5, taper 0.1'', multiscale 1, 2.5, 5 beams
+- 2018ApJ...869..115S: vectors shown for I>3σ and P>4σ; black for >5σ
+- 2018ApJ...869..115S: σv = 0.75 km/s; σθ = 5-17°; length 3'' (420 au); FWHM 0.96'' (134 au); median flux density 3.4 mJy/beam
+- 2026A&A...706A..16C: r0 = 115 au; rin = 1 au; rout = 120 au for V721 CrA and 190 au for BN CrA
+- 2026A&A...706A..16C: 200 logarithmic radial cells; 200 uniform zenith cells, 30°–150°; axisymmetric grid
+- 2026A&A...706A..16C: dust_2daniso_nphi=90; full anisotropic polarised scattering; 10^5 photon packages; sloppy flag
+- 2026A&A...706A..16C: Fixed preliminary PA; Gaussian convolution FWHM = 42.4 mas
+- 2026A&A...706A..16C: ~2000 steps, 32 walkers; discard first 500 steps; posterior medians
+- 2026A&A...706A..16C: Flat prior log10(Md/M_sun): [-8, -2]
+- 2026A&A...706A..16C: Flat prior hr0: [0.01, 1.0]
+- 2026A&A...706A..16C: Flat prior beta: [0.01, 0.5]
+- 2026A&A...706A..16C: Flat prior inclination: [20, 80]°
+- 2020MNRAS.496..169L: Size distribution a^-3.5, minimum size 0.01 micron, a_max free then fixed at 90 micron
+- 2020MNRAS.496..169L: Inclination 46.7 deg; tolerance 10% on Stokes I and 0.3 on spectral index
+- 2020MNRAS.496..169L: Temperature T = T_t (R/R_t)^-q with R_t = 100 au, T_t = 12.5 K, q = 0.65; dust scale height H_t = 3 au
+- 2020MNRAS.496..169L: T = 22.5 K at R_t = 124 au, q = 0.3
+- 2024A&A...685A.142Y: Cadence 4 s to 80 s; 70 fitted Q and U values
+- 2024A&A...685A.142Y: FOV=40 M ≈200 μas; 64×64 pixels per frame
+- 2024A&A...685A.142Y: Gaussian standard deviation fixed at 3 M; boundary n_e,s ≤0.01 n_0,s
+- 2024A&A...685A.142Y: Exponential temperature evolution; T_ini=2000 M; camera r=1000 M
+- 2020ApJ...893...54Y: robust = +0.5
+- 2020ApJ...893...54Y: pixel 0.1'', S/N>3, orientation uncertainty <~9 deg
+- 2020ApJ...893...54Y: misalignment 15 deg; cosmic-ray ionization 1e-16 s^-1 (misaligned) vs 5e-17 (aligned); stop at 0.1 Msun
+- 2017ApJ...851...55S: robust=1
+- 2017ApJ...851...55S: instrumental P error 0.1%
+- 2017ApJ...851...55S: intrinsic polarization 1%, grain size 30 um
+- 2023MNRAS.523.5703J: delta_LSS = 20.3 +/- 1.8, delta_HSS = 28.6 +/- 2.1
+- 2023MNRAS.523.5703J: b(alpha) can vary from 1.8 to 3.8
+- 2023MNRAS.523.5703J: Common circular beam 0.2 x 0.2 mas^2
+- 2024ApJ...962..196O: PA=57°; [N ii] 6583.45 Å center and width; instrumental σ=40 km s^-1
+- 2023A&A...669A..56Q: Outflow C total mass = 0.05 M_sun; cold spot area = 2.8 x 10^23 cm^2; formation time = 50 yr
+- 2014AJ....147..141H: sigma_v ~4 km/s (mean 2nd moment), M=2e5 Msun, R=2.8 pc, T=20 K
+- 2020MNRAS.498.1560J: baseline excludes ~500 km/s either side of the line (or the expected line position from the SDSS redshift when no line is seen)
+- 2023A&A...673A.116K: Single beam extraction; 3-sigma upper limits including 0.1% ALMA calibration uncertainty
+- 2025ApJ...985..222H: August 2019 instrumental polarization model
+- 2025ApJ...985..222H: Final conversion factor 668 Jy/beam/pW
+- 2025ApJ...985..222H: Maximum polarization fraction 20% justified by Planck
+- 2025ApJ...985..222H: Dendrogram: minimum level 27 mJy/beam (3 sigma_I), minimum structure size 14.1'' (JCMT beam)
+- 2025ApJ...985..222H: Q = 0.28 adopted for the analysis (Q = 0.5 gives about 2x higher)
+- 2019ApJS..245....2S: self-cal for S/N>20, solints scan length, 30.25 s, 15 s
+- 2019ApJS..245....2S: detection: I/σI>3, PI/σPI>3, σθ<10°
+- 2019ApJS..245....2S: optically thick if beta<0.5
+- 2024A&A...685A..52G: SED slopes: 2.2–5 μm and 5–22 μm
+- 2024A&A...685A..52G: IRDIS annulus 0.09–1.0 arcsec; ZIMPOL annulus 0.07–1.0 arcsec
+- 2024A&A...685A..52G: Maximum grain size free; minimum grain size 0.1 μm; size-distribution power-law index -3.5
+- 2021ApJ...910...75L: robust = 0.5, npixels=0, super-uniform weighting
+- 2021ApJ...910...75L: sigma_p ~19 uJy/beam used for bias correction
+- 2021ApJ...910...75L: polarization efficiency alpha ~0.075
+- 2021ApJ...910...75L: albedo 0.5 (also 0.25 tried); T_t ~95+-14 K required
+- 2025A&A...694A.291K: Lag-bin width between t_int and 2 t_int; t_int is the mean cadence of the less frequently sampled curve
+- 2025A&A...694A.291K: 10,000 simulated DCFs for significance; 10,000 FRRSS light curves for peak and lag uncertainties
+- 2025A&A...694A.291K: Entire period: MJD 56200–58400
+- 2020ApJ...896..157H: angle error Delta(PA)=DeltaP/2P; vectors plotted for S/N>=4 (errors <7 deg)
+- 2020ApJ...896..157H: delta phi = 4 deg; Delta V ~ 10 km/s; n(H2)=1e6 cm-3
+- 2020ApJ...896..157H: g Omega/2pi=230 Hz/G
+- 2018ApJ...860...82H: robust = 0.5; shortest solint 10 s
+- 2018ApJ...860...82H: a_max = 61 um best; 50 and 70 um tested
+- 2020A&A...638L..13M: self-cal solint 6 s, all spws combined
+- 2020A&A...638L..13M: feed rotation beta = 45 deg in Band 6
+- 2024ApJ...968...97L: JVLA velocity grid: 200-800 km s^-1; 5 km s^-1 channels
+- 2024ApJ...968...97L: GBT pixels: 1.47 arcmin spatial; 0.75 km/s velocity
+- 2024ApJ...968...97L: GBT relative flux scaling factors: 0.98-1.02, median unity
+- 2018ApJ...868..101B: baselines <50 kλ rejected
+- 2025A&A...704A..18O: Lines compared with 820 nm polarized intensity: HCN v2=1^1e, AlO, TiO, 30SiO v=1, Si17O v=0, stacked TiO2 (lines #51-#55), SO (#41), and SO2 (lines #9, #20)
+- 2024ApJ...974..257Z: self-cal solution intervals: inf., 60s, 15s
+- 2024ApJ...974..257Z: Continuum used line-free channels only
+- 2024ApJ...974..257Z: Continuum Stokes I RMS 0.2 mJy/beam; Q, U, V RMS 0.05 mJy/beam
+- 2024ApJ...974..257Z: xi = 1/2
+- 2024ApJ...974..257Z: sigma_los from HN13C after deconvolving the 0.28 km/s channel width and subtracting thermal broadening in quadrature
+- 2024ApJ...974..257Z: delta_psi from polarization-angle standard deviation after subtracting mean angle uncertainty in quadrature
+- 2024ApJ...974..257Z: density from dust continuum mass in an assumed cylindrical volume
+- 2018A&A...614A..64B: n=1e6 cm-3, mu=2.8 m_p, sigma_v=0.13 km/s from N2H+ width 0.3 km/s
+- 2018A&A...614A..64B: fit for l>0.5''
+- 2024A&A...685A..53G: Use PI instead of Q_phi when strong U_phi signal is recorded
+- 2024A&A...685A..53G: PI images for GG Tau, XZ Tau, T Tau, and UY Aur; Q_phi for other sources
+- 2024A&A...685A..53G: Some datasets use a customized stellar-polarization subtraction procedure
+- 2024A&A...685A..53G: Faint-disk threshold: α_pol < 3·10^-3
+- 2024A&A...685A..53G: Radial averaging between r_in and r_out
+- 2021ApJ...916...97Y: SNR > 3 for Stokes I and polarized intensity; 3x3 pixels (10'' pixel size, within 15''); >3 detections required for angular dispersion
+- 2021ApJ...916...97Y: DCF correction factor xi = 0.5
+- 2021ApJ...916...97Y: 5000 Monte Carlo iterations for 12 Class 0 protostars (60,000 simulated data points); T_bol < 70 K threshold for young/Class 0 subset
+- 2025A&A...703A..82S: weighting = briggs (robust=0.5)
+- 2025A&A...703A..82S: 14–150 keV bolometric correction of 8.48
+- 2025A&A...703A..82S: Angular resolution < 0.5''
+- 2020ApJ...904..181L: Initial core: 100 M☉, rigid rotation, 10 K, density ∝r^-3/2, kinetic-by-gravitational energy ratio β=4%
+- 2020ApJ...904..181L: Spherical midplane-symmetric domain; inner radius 20 au, outer radius 0.1 pc; grid as printed: Nr=512 × Nφ=81 × Nθ=512
+- 2020ApJ...904..181L: Inner sink cell r≤20 au; stated simulation duration 40.0 kyr
+- 2019MNRAS.482L..29D: natural weighting
+- 2019MNRAS.482L..29D: L*=28 Lsun, scale height 10 au at 100 au, DHS max void fraction 0.8, a_max ~100 um
+- 2023ApJ...948..134P: natural weighting, standard gridding, 300x300 pixels, pixel size ~1/8 nominal beam FWHM, loop gain = 0.1, stopping criterion peak residual ~5x expected RMS, no…
+- 2023ApJ...948..134P: Plot threshold: geometric mean positional uncertainty sqrt(sigma_x * sigma_y) < 20 mas; reference maser spot at v = 561.6 km s^-1
+- 2024ApJ...977..121N: p/sigma_p > 1; smoothed to FWHM ~40''
+- 2024ApJ...972L...6S: Self-cal: three phase iterations, final solint 10 s; Briggs robust = 1
+- 2024ApJ...972L...6S: Polarized emission used within the inner one-third of the primary beam (24 arcsec)
+- 2024ApJ...972L...6S: Four free parameters: lambda, b0, magnetic-axis position angle phi, inclination i
+- 2024ApJ...972L...6S: chi-squared uses pixels above 3 sigma (sigma = 29 uJy/beam) in Stokes Q and U
+- 2024ApJ...972L...6S: Q = 0.5; delta_psi_obs = 5.4 deg; delta_psi_int = 18.7 deg
+- 2019A&A...626A..36D: polarisation analysis above S/N of 4; analysis within inner third of primary beam
+- 2019A&A...626A..36D: sigma_psi from circular-mean variance over selected pixels in POLI images
+- 2026ApJ..1000L..16R: 10^6 samples drawn from each posterior
+- 2026ApJ..1000L..16R: Training range (uniform priors): 1e-4<=alpha<=1e-2, 0.03<=h<=0.1, 1e-3<=St<=1e-1, 1e-5<=Mp/Mstar<=1e-2
+- 2021ApJ...908..141H: robust = 0.5; 0.25 km/s channels
+- 2021ApJ...908..141H: Only low-frequency part of line 5 and high-frequency part of line 7 used because of blending
+- 2024ApJ...975..103P: nterms=2, cell 0.2", robust=1
+- 2024ApJ...975..103P: polarized threshold 6 mJy/beam (3 x rms); no systematics in RMFIT
+- 2020A&A...644A..11L: robust = 1, four phase-only selfcal rounds
+- 2020A&A...644A..11L: n = 8 neighbours, 4 pixels per beam, lag about half a beam
+- 2020A&A...644A..11L: grains 62.5% silicate/37.5% graphite, MRN, a_min 2 nm, a_max 10 um, aspect ratio 0.5, G0=1, 400 pc, 80 au beam
+- 2019A&A...624L...7V: robust 0.5
+- 2021ApJ...917...73W: 230 GHz structure function restricted to time lags < 50 minutes; VLT positive flux fraction target = 0.9; VLT skewness target = 3.44; M/K ratio R_obs = 12 +/- …
+- 2024MNRAS.527.1444A: 10-sigma S/N threshold in polarised intensity for RM; equipartition inputs: alpha = 0.61, theta = 0.36 arcmin, kappa = 0, S_5500MHz = 0.131 Jy, f = 0.84; RM eq…
+- 2026A&A...706A.292S: Briggs robust 0.5 (K04166 1mm-high also robust +2.0)
+- 2026A&A...706A.292S: Super-Nyquist pixel sampling at about one-third of the beam major axis; 3 sigma threshold on polarized intensity for vector maps
+- 2026A&A...706A.292S: 3% threshold
+- 2018NatCo...9.4636L: robust = 2; resolution ~0.2"
+- 2018NatCo...9.4636L: blue −22 to 8 km/s; red 11 to 42 km/s
+- 2018NatCo...9.4636L: Δv_los ~ 15 km/s; Δφ ~ 30° ± 20°; n_H2 ≳ 2.0e6 cm^-3
+- 2024A&A...687A.311A: Solint reduced to the integration time: 6.05 s (SB), 2.02 s (LB)
+- 2024A&A...687A.311A: First round uses combined SPWs, combined polarisations and infinite solint; later rounds decombine SPWs and polarisations
+- 2024A&A...687A.311A: Datasets centred on the cavity centre with phaseshift; second-round gaincal solint two times the integration time, combined SPWs, independent polarisations
+- 2020ApJ...900...81O: robust 0.5; Pfrac only where PI > 3 sigma_PI
+- 2020ApJ...900...81O: amax=140 um; Sigma0 0.26 (model1), 0.65 and 0.1 (model2), 8.2 g cm-2 (model3); T=60 K (thin), 35 K (thick) at 60 au
+- 2025A&A...701A..41D: Fixed per source: M_BH, and often tau_T, kT_c, p, alpha_sy, beta, nu_tau1 (e.g. beta = 1.78, nu_tau1 = 800 GHz for GRS 1734-292)
+- 2025A&A...701A..41D: Free parameters mainly r_c and log delta; parameter ranges listed in the Table of model parameters
+- 2020ApJ...895..142L: robust = 0.5
+- 2020ApJ...895..142L: fit over l<2.6 arcsec (MM1-Core1) and l<3.4 arcsec (MM4-Core4)
+- 2019ApJ...877L...2H: solints: scan length, 30.25 s, 15 s
+- 2020MNRAS.499.3909Y: J1 36 GHz integrated flux ~ 0.2 mJy; J1 dimensions 0.2'' x 0.02'' x 0.02''; jet diameter ~ 2'', 1.6 GHz surface brightness ~ 0.2 mJy beam^-1
+- 2024ApJ...976..198H: CO-to-H2 factor 2.0e20 cm^-2 (K km/s)^-1 with He factor 1.36 (alpha_CO 4.4 Msun/(K km/s pc2))
+- 2024ApJ...976..198H: Density profile index k = 1
+- 2024ApJ...976..198H: 225 clouds fail deconvolution and are flagged
+- 2025ApJ...993..200C: Band 3 self-cal solint 300 s; Band 6 solints 300, 100, 30 s
+- 2025ApJ...993..200C: Band 3 vectors: I > 3 sigma_I and PI > 1.5 sigma_PI; Band 6: I > 3 sigma_I and PI > 3 sigma_PI
+- 2025ApJ...993..200C: Vector sampling 0.24 arcsec (robust 0.5) and 0.32 arcsec (robust 2.0)
+- 2025ApJ...993..200C: Band 3 image at robust 2.0 and Band 6 image at robust 0.5 selected for the main B-field figure
+- 2025ApJ...993..200C: M*+Mdisk = 0.08 Msun, Rc = 42 au, i = 98 deg, PA = 64 deg
+- 2025ApJ...993..200C: Best trajectory theta0 = 90 deg, phi0 = 90 deg; others 80 < theta0 < 90 deg, 90 < phi0 < 95 deg
+- 2019ApJ...879...25K: robust = 0.5
+- 2019ApJ...879...25K: F = 91 mJy, D = 300 pc, kappa = 0.01 cm2/g, Td = 30 K
+- 2025ApJ...990..183U: Polarization degree approx C P90 omega with C ~ 0.02; applied to entire disk
+- 2025ApJ...990..183U: alpha_vert = 1e-4 (also 1e-3 and 1e-5 tested)
+- 2023A&A...677A..76P: 120 radial and 100 vertical grid points logarithmically spaced; two zones divided at 41 au, outer radius 130 au
+- 2023A&A...677A..76P: a_min = 0.001 um, a_max = 3000 um, power index p = 3.9, alpha = 5e-3, H_0 = 10.61 au at r_0 = 100 au, beta = 1.14
+- 2024A&A...690A.232S: R = 5.6 × 10^2 L100GHz^0.4 Lbol^0.1 ν^−1 ld.
+- 2024A&A...690A.232S: R ≃ 3.05 × 10^3 Fmm^0.5 ν^−1.25 B^0.25 z ld; Fmm in mJy; ν in GHz.
+- 2024A&A...690A.232S: B > 6.8 × 10^4 tvar^−2/3 ν^−1/3 G.
+- 2020ApJ...889..172K: uv range 22-865 klambda, natural weighting, smoothed to 0.72''
+- 2020ApJ...889..172K: Tdust = 20 K x tau^0.5; alpha = 5%; foreground ~20 K, tau~1; background >45 K
+- 2016A&A...595A.113S: HWP offset correction -1.188 deg (ZIMPOL), -1.7 deg (IRDIS)
+- 2020A&A...636A..62K: DCF time steps 12 d (weekly) and 33 d (monthly)
+- 2020A&A...636A..62K: 10% flux accuracy; position error ~1/10 beam; polarization threshold 9 sigma
+- 2025MNRAS.537.2232Z: Bubble effective radii larger than 55 pc
+- 2024ApJ...966..120L: Briggs robust = 0.5
+- 2024ApJ...966..120L: pixel size 0.1''
+- 2024ApJ...966..120L: sigma_PI ~ sqrt(2) sigma_QU, with sigma_QU the 1-sigma rms on the background region of the Q or U maps
+- 2024ApJ...966..120L: ADF lag binning interval l_bin = l_beam/2
+- 2024ApJ...966..120L: Environment: sigma_theta = 3.9 deg within r = 15 pc; sigma_c = 0.54 km/s
+- 2018ApJ...855...39K: polarization calibrator J1924-2914, p=2.56%, PA=45.6 deg
+- 2018ApJ...855...39K: r_disp = 0.2 arcsec
+- 2020MNRAS.499.2015T: 10^6 SPH particles; M_star = 0.8 Msun; R_out = 120 au; R_in = 5 au (Sim 1) or 2 au (Sim 2, 3); R_0 = 100 au; Sigma_0 = 1.07 g cm^-2; H/R = 0.05 at R_0; alpha_S…
+- 2020MNRAS.499.2015T: Initial planet masses and positions, and sink radii as fractions of the Hill radius, listed per simulation in Table 1
+- 2025ApJ...989...83B: Final solution intervals per integration (per scan); resulting dynamic ranges from several hundred to ~9000
+- 2025ApJ...989...83B: F475W from GO-14256 for dust; F660N polarized images from GO-12271 aligned and combined into a Stokes I image
+- 2023MNRAS.522...56V: deconvolver = Hogbom, weighting = Briggs, robust = 0.5
+- 2023MNRAS.522...56V: image size = 2048 x 2048 pixels, pixel size = 0.05 arcsec, pblim = 0.2
+- 2023MNRAS.522...56V: uvrange > 138 klambda (~414 km)
+- 2017AJ....153....7Y: Profile fit L=A exp(-r^B/C^2) over 15 to 140 pixels
+- 2023PASJ...75..874M: Brightness-temperature beam: 0.05''
+- 2026A&A...713A.149V: 3 sigma_P threshold for plotting and selecting polarization vectors; 5 sigma_P transition between low-SNR and high-SNR debiasing
+- 2026A&A...713A.149V: Three-beam diameter = 3.6 x beam major axis (~2.3'', ~12500 au); sampling = 4 semi-vectors per beam; minimum 20 semi-vectors above 3 sigma_P
+- 2026A&A...713A.149V: DCF correction factor Q = 0.5; density scaling exponent beta = 0.53 (+0.09/-0.07) (mean uncertainty 0.08 used for error propagation)
+- 2019ApJ...871..243Y: Detection criteria Ip/dIp > 3 and Stokes I S/N > 5
+- 2019ApJ...871..243Y: Detection: Stokes I S/N > 3 and Ip/dIp > 3
+- 2026ApJ..1003..215F: alpha=1e-4; Stokes 0.002-0.2; dust-to-gas 0.01; grid 504x1170; planets 0.5-2 M_iso; h/r 0.05, 0.06, 0.07
+- 2026ApJ..1003..215F: alpha=1e-4, Stokes 0.01, surface density slope 1, flaring index 0.25, stellar mass ±3%
+- 2020MNRAS.492.1531M: central r < 4 px masked
+- 2020MNRAS.492.1531M: a=0.34'', PA 18.1 deg, i 49.1 deg
+- 2026A&A...710A..63L: d_VLBA = 0.06 +/- 0.01 mas, k_r = 1, epsilon = 0.97, T_B,eq = 5 x 10^10 K, eta = 1
+- 2020A&A...640A.111A: robust 0.5, Hogbom
+- 2020A&A...640A.111A: within one-third of primary beam; 52 cores, 29 with polarization
+- 2023MNRAS.518.3222B: gamma_min = 10 for EED in equipartition calculation
+- 2025ApJ...985..148L: Band 4 phase-only intervals inf-EB, inf, 26.21s, 8.06s, 4.03s, int; amp+phase 300s
+- 2025ApJ...985..148L: Band 7 phase-only inf-EB, inf, 48.38s; amp+phase inf
+- 2025ApJ...985..148L: Low S/N threshold 3 sigma_P for PDF debiasing
+- 2025ApJ...985..148L: smoothing factor = 5
+- 2018MNRAS.477.2760M: sigma_theta ~0.38 rad; v_turb 0.1-1 km/s
+- 2024AJ....167..232T: Adopt conservative 100 K effective-temperature uncertainty
+- 2021ApJ...909..212K: Reference drift calculation: Σdust = 1 g/cm², ε = 100, ρd = 3 g/cm³, grain size = 1 mm, η = 10^-3, R = 50 au.
+- 2024A&A...689A.299M: 10 s averaging; spectral window 227.1 GHz
+- 2021ApJ...908...92H: delta_V(C18O) = 0.6 km s^-1; n(H2)(C18O) = 1.7 x 10^4 cm^-3; delta_phi = 36.6 deg; sigma_v(filament) = 0.23 km s^-1
+- 2018A&A...619A.161C: grain size ~3 x lambda
+- 2021ApJ...923..251H: Spectral resolution 31.25 kHz or 0.42 km s^-1
+- 2025A&A...701A.219N: Clump mass M = [500, 1000] M_sun, radius R = 0.383 pc (~0.4 pc), initial temperature = 10 K
+- 2025A&A...701A.219N: Mach number M = [7, 10], normalized mass-to-flux ratio mu = [3, 10, 100], turbulent seeds = [1, 2], 3 orthogonal projections (x, y, z)
+- 2025A&A...701A.219N: Sink formation threshold n_thre = 10^9 cm^-3, native resolution ~40 AU, accretion luminosity factor f_acc = 0.1, stopping SFE = ~15% (M500) and ~30% (M1000)
+- 2025A&A...701A.219N: Wavelength = 1.3 mm (231.1 GHz), reference distance = 5.2 kpc
+- 2024A&A...688A.149D: ADI with 4 principal components; optimization annuli 10-30, 30-100, 100-512 pixels
+- 2024A&A...688A.149D: ring inclination and PA fixed to the ALMA values
+- 2020A&A...634L..15G: log-normal sigma=0.1; MRN-like a^-3.5; b/a=1.1 or 0.9; G0=100
+- 2024ApJ...976..201F: N = 1000 realizations; R21 = 0.53, 0.90, 0.62 for the three quasars; pixels with SNR < 3 or dispersion below the channel-width sigma removed
+- 2021ApJ...907L..41L: Jet mass-flux ~10^-6 M_sun yr^-1; sideways speed ~10 km s^-1
+- 2021ApJ...907L..41L: Wind magnetic field required for Mdot_in~3×10^-6 M_sun yr^-1
+- 2019MNRAS.483.2371Y: p0 = 2%, i = 46.72 deg
+- 2020ApJ...901...67W: Multi-day data of one year fit simultaneously with a single source model
+- 2025A&A...695A.149K: robust 0.5, restoring beam 65x45 mas PA -50
+- 2018ApJ...855...92C: 5 sigma mask
+- 2025ApJ...984L..19Y: 8 free parameters; 5000 steps, 24 walkers; median from last 4200 steps
+- 2023ApJ...948L...2Y: Self-calibration solution intervals: infinite (1st iteration) and 25 seconds (2nd iteration)
+- 2023ApJ...948L...2Y: Briggs robust = 0.5, Hogbom algorithm
+- 2026ApJ..1002..170S: Flux-weighted centroids of 2σ isophotes.
+- 2026ApJ..1002..170S: For 4C 09.17 and 4C 57.29 He II/C IV, use the vector joining emission centroid and quasar.
+- 2026ApJ..1002..170S: Adopt approximately 5° angle uncertainty from pixel extent at approximately 30 kpc.
+- 2020ApJ...892..152H: robust = 2.0, 0.5, -0.5; 4 self-cal rounds
+- 2019ApJ...883...16M: sigma_PI = 2.7e-5 Jy/beam
+- 2024MNRAS.535.1364Z: A_ul = 10^-4.41416 s-1, f_beam = 1, E_u = 4.16 K, g_u = 3
+- 2024MNRAS.535.1364Z: chi_H13CO+ = 3.6e-11 uniform for all regions
+- 2024MNRAS.535.1364Z: Virial ratio R_vir = 5 sigma^2 r / (M G)
+- 2019ApJ...884...48C: robust 0.5; final self-cal solint 90 s
+- 2019ApJ...884...48C: n=0.36; at least 10 independent (Nyquist) points per region; delta phi as std of EVPA
+- 2024ApJ...963..134Y: spherical grid 300x128x128 in r, theta, phi; r 1-300 au log; 1.6e8 photons
+- 2024ApJ...963..134Y: a_max=140 um, a_min=0.1 um, Sigma_0=1 g/cm2, rc=61 au, rw=10 au, phic=109 deg, phiw=30 deg, T60=60 K
+- 2023MNRAS.526.2077A: irdap version 1.3.3
+- 2023MNRAS.526.2077A: Annulus radius 40 to 90 pixels for the unresolved polarisation
+- 2026A&A...706A..27S: GMVA jet flux density grid-searched between 0.0 Jy and 0.2 Jy; 1% intensity contour mask for localized ring test
+- 2021A&A...646A..25Z: cell = 0.3" (combined) and 1" (7 m); robust = 0.5; clean threshold = 0.4 mJy Beam^-1 (combined) and 4 mJy Beam^-1 (7 m); field down to 20% primary beam power p…
+- 2024ApJ...965...99T: Sigma0 ~5e24 cm^-2 at disk edge, r ~4 au, M* = 0.2 Msun
+- 2024ApJ...965...99T: Envelope density 1e-13 g cm^-3; free-fall velocity ~9 km/s at 4 au
+- 2019ApJ...885..106L: robust = 1
+- 2019ApJ...885..106L: gradient selection >1/100x(peak-rms) for moment 0 maps, >1/1000x(peak-rms) for continuum; Nyquist sampling 4 points per beam
+- 2025ApJ...995...98D: Large grains ~0.1 cm; reference SI threshold Z ~0.02 at alpha_v ~10−3
+- 2020ApJ...895L..46L: h/r = 0.07, alpha = 1e-3 and 1e-4
+- 2025A&A...695A.233R: acceptable reduced chi-square < 2
+- 2021PASJ...73..205T: velocity range = -2 to +14 km s^-1; lowest detection level = 5 sigma (3 Jy beam^-1 km s^-1)
+- 2024ApJ...968..101E: final beam 11.7 arcsec
+- 2024ApJ...968..101E: P'/sigma_p > 3, debiased polarization percentage < 50%, Stokes I at least 10x the Stokes I RMS
+- 2017ApJ...847...92H: sigma(v)~0.8 km/s from unpublished 13CS ALMA data
+- 2025A&A...699A.373F: For c_smm, images smoothed to B6 2021 LF resolution; Band 7 CLEANed with uv-taper first
+- 2020MNRAS.498.4256C: alpha = 0.06
+- 2024A&A...692A.205B: nu_m = 130 GHz, S_m = 1.75 Jy, size = 43 microarcseconds (distance d = 21.5 or 22 microarcseconds)
+- 2024ApJ...961L..35M: Total velocity dispersion sigma_v^2 = sigma_th^2 + sigma_nt^2, with sigma_th = sqrt(k_B T / mu m_H)
+- 2016ApJ...825L..15C: Briggs robust 0.5, Clark, self-cal solint 90 s
+- 2016ApJ...825L..15C: Delta V = 3.0 km/s; regions divided into four
+- 2026A&A...710A.238D: 5000 bootstrap samples per radius; turbulent viscosity alpha_t sampled uniformly in 10^-4 <= alpha_t <= 10^-2
+- 2025A&A...693A.265E: a_* = 0, +/-0.5, +/-0.94; t_final = 16000 to 105000 GM/c^3; Gamma_ad = 4/3, 13/9, 5/3
+- 2024MNRAS.532L..36R: Varied: abundance profile, line width, inclination angle, angle between rotation axis and global magnetic field
+- 2024MNRAS.532L..36R: Best fit: HCN abundance (1-2)e-8 relative to H2, misalignment 30 deg, inclination 60 deg
+- 2019ApJ...879..101L: robust = 0.5; C18O channels 0.2 km/s
+- 2024ApJ...971..129C: rho_m=1.675 g/cm3, Q>2 for stability
+- 2022A&A...668A..25V: Coronagraphic mask radius = 92.5 mas, 17 polarimetric cycles, 32 s individual exposure time, 36.3 min total integration time
+- 2025ApJ...986..150H: Grid N_r = 780, N_z = 7560, uniform cell width dr = 0.714 au in main domain (0 <= r <= 557 au, 0 <= z <= 5400 au)
+- 2025ApJ...986..150H: Nozzle radius R = 50 au, initial jet velocity v_jet = 0.845 km s^-1, initial jet density n_0 = 10^7 cm^-3, initial jet temperature T_0 = 2000 K
+- 2025ApJ...986..150H: Model A: P_0/P_inf = 40, n_0/n_inf = 2.0, T_inf = 100 K; Model B: P_0/P_inf = 62.5, n_0/n_inf = 3.125, T_inf = 100 K; Model C: P_0/P_inf = 40, n_0/n_inf = 0.4,…
+- 2018ApJ...856L..27G: robust 0.5, uv > 300 kλ
+- 2024NatAs...8.1148U: 1e7 photon packages (continuum), 1e9 (ALMA polarization), 1e11 (NIR)
+- 2025ApJ...985..166K: sigma_NT 0.18-0.20 km/s; sigma_theta 7-13 deg; xi = 0.5; mean density (6.1-7.1)e-20 g cm-3
+- 2018ApJ...861...91H: robust = -2 for high-resolution VLA 1623 image
+- 2024ApJ...970L..40S: p = 1.8; two-component spectra use the average of the two component line widths
+- 2024ApJ...976..241Y: Thermal m_crit ~41.5 Msun/pc at T = 25 K; turbulent m_crit from H13CO+ velocity dispersion
+- 2025ApJ...992..103Z: Briggs robust 0.5
+- 2025ApJ...992..103Z: 3 sigma cutoff
+- 2019ApJ...886L...4Z: c12=3.2e6, k=40
+- 2025A&A...701A.141L: j(theta0) = 1; v_phi ~ r^-1 and v_r constant in the inner envelope
+- 2018ApJ...854...56L: robust 0.5, beam ~0.12 arcsec
+- 2024ApJ...961....4B: Average dust temperature 50 K, gas-to-dust ratio 100, gas column ~3e24 cm^-2
+- 2025A&A...693A.199C: σ_tot includes thermal and non-thermal N2H+ broadening
+- 2017MNRAS.464L..31H: T=13 K, sigma_3D~0.7 km/s, L=0.35 pc
+- 2025ApJ...985..226W: r² scaling
+- 2026ApJ...997..155M: virial parameter < 2 for gravitationally bound cores; getsf maximum source size = 10 arcsec
+- 2024A&A...682A..56Z: Carbon sublimation at 300 K (also 500 K) with 50% and 80% organics tested
+- 2025ApJ...990...59Y: Grid: Mdot 1e-5 to 1e-3 (20 log steps), r_disk 150-200 au, v_frag 0.1-30 m/s (30 log steps)
+- 2026MNRAS.551g1639M: 1000 input conditions, +/- 3 sigma spread, 8 Myr integration time in 2 x 10^5 linearly spaced timesteps, e_A2 = 0, maximum eccentricity e = 0.75 for B and W, c…
+- 2025ApJ...990...80K: 3x3 pixel (36") smoothing kernel
+
+
+### Assumptions (bibcode: value)
+- 2025ApJ...992L..31C: Magnetically aligned dust grains
+- 2025ApJ...992L..31C: Compare overlapping emission within the circumbinary disk
+- 2025ApJ...992L..31C: Gas number density equals DCN critical density ~6×10^6 cm−3 at T~40 K
+- 2025ApJ...992L..31C: Gaussian polarization-angle distribution
+- 2025ApJ...992L..31C: Isotropic 3-dimensional turbulence for the 4/π statistical correction
+- 2025ApJ...992L..31C: Dispersion represents local deviations from the mean field; accuracy depends on DCF
+- 2019A&A...630A..54B: Polarization from magnetically aligned dust grains
+- 2019A&A...630A..54B: beta=1 and 2
+- 2019A&A...630A..54B: Isothermal model, axially symmetric singular toroid; temperature profile from BEL18
+- 2019A&A...630A..54B: Distance 3.7 kpc, spherical symmetry, xi=0.5
+- 2024MNRAS.528..843L: IAU Stokes-sign convention; E-vectors; polarization angle East-of-North
+- 2024MNRAS.528..843L: 10% absolute flux calibration uncertainty ignored thereafter
+- 2024MNRAS.528..843L: x along disk minor axis toward the far side; y along disk major axis, 90° East-of-North from x
+- 2024MNRAS.528..843L: Disk major-axis PA 138.02°; northeast is the far side
+- 2024MNRAS.528..843L: Axisymmetric inclined disk; prolate-grain alignment axes in the disk midplane and azimuthal direction
+- 2024MNRAS.528..843L: Geometrically thin dust layer approximated locally by plane-parallel slabs
+- 2024MNRAS.528..843L: Scattering contributes a constant s only to q′; thermal polarization supplies azimuthal variation; components add linearly
+- 2024MNRAS.528..843L: Prolate grain in dipole limit; p0 ≪ 1; tp(θg) = t sin² θg, with t attenuated by optical depth
+- 2024MNRAS.528..843L: Distance 147.3 pc
+- 2024MNRAS.528..843L: Inner thermal-polarization drop below 50 au likely affected by beam averaging
+- 2024MNRAS.528..843L: Along the minor axis U′ ∼0, so Q′ represents polarized intensity while retaining direction
+- 2024MNRAS.528..843L: s = 0 for predicted polarization angles
+- 2024MNRAS.528..843L: Likely optically thin disk permits comparing inferred t with intrinsic p0
+- 2024MNRAS.528..843L: For compact elongated grains, Rayleigh-regime thermal polarization follows the projected long axis when λ > 2πa; a flip can occur in the Mie regime
+- 2023Natur.623..705S: Distance 147.3 pc
+- 2023Natur.623..705S: Axisymmetric disk with radial temperature and surface-density profiles; toroidally aligned prolate grains independent of radius
+- 2023Natur.623..705S: Same effective aspect ratio s for all grain sizes
+- 2023Natur.623..705S: Extinction opacity averaged over all solid angle
+- 2023Natur.623..705S: Inclination 46.7°; major-axis PA 138.02°; far-side minor-axis PA 48.02°
+- 2023Natur.623..705S: Perfect alignment for the inferred aspect ratio; intrinsic polarization defined edge-on in the optically thin limit
+- 2024A&A...682A..97W: Negligible variation of surrounding arc-minute-scale emission
+- 2024A&A...682A..97W: Magnetar RM approximately represents Faraday rotation outside the simulation domain
+- 2021ApJ...907...94C: Optically thin dust emission
+- 2021ApJ...907...94C: kappa_nu = 0.01 cm^2 g^-1 at 1.3 mm; 2.6 × 10^-3 cm^2 g^-1 at 3 mm
+- 2021ApJ...907...94C: Gas-to-dust ratio 100; mean molecular weight mu = 2.33
+- 2021ApJ...907...94C: T_dust = 20–50 K for column densities; 25 K average for total masses
+- 2021ApJ...907...94C: Dust grains magnetically aligned by radiative torques
+- 2021ApJ...907...94C: Field-line perturbations caused by non-thermal turbulent motions; avoid the explosion-affected central region
+- 2021ApJ...907...94C: Thin slab with depth half the region's minor axis
+- 2019ApJ...886..103O: Stokes V ignored
+- 2019ApJ...886..103O: Gaussian vertical distribution with h_d=h_g/f_set; polarization only from self-scattering
+- 2019ApJ...886..103O: Dust material density 1.67 g cm^-3; CO abundance 5e-5 for gas surface density
+- 2023A&A...672A..67A: Source polarization structure represented by three compact (delta) components with Stokes V = 0
+- 2023A&A...672A..67A: Equal weights for all visibilities; chi^2 temperature T estimated from the standard deviation of closure trace residuals at the minimum
+- 2023A&A...672A..67A: One component is fixed with Stokes V = 0 to break the latitudinal degeneracy in the Poincare sphere and serve as differential polarization reference
+- 2026ApJ...996L..27L: 10% flux calibration uncertainty in Band 7
+- 2026ApJ...996L..27L: Both nuclei are nearly optically thin at 345.8 GHz (nu^2.4 flux dependence); both dust and CO(3-2) trace the same dominant B-field component in the outflow so …
+- 2026ApJ...996L..27L: Axisymmetric outflow volume; factor of 2 uncertainty in outflow molecular mass; dust and molecular gas are cospatially embedded in the same B-field of the outf…
+- 2019MNRAS.489..470G: Sources point-like; no Stokes V debiasing
+- 2019MNRAS.489..470G: Debiasing term lowers P by ~0.01%, negligible
+- 2019MNRAS.489..470G: Same distribution applied to all sub-populations
+- 2024A&A...686A.274V: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo)
+- 2024A&A...686A.274V: Field frozen into gas, isotropic incompressible turbulence from transverse Alfven waves; result a lower limit if not frozen
+- 2020MNRAS.495.4297S: Structures larger than the MRS of 3.9 arcsec are resolved out
+- 2020MNRAS.495.4297S: Polarization traces dust grains aligned with respect to the magnetic field, so B is perpendicular to E
+- 2020MNRAS.495.4297S: Self-scattering is important if a_max ~ lambda/2pi
+- 2015ApJ...812...27A: R_curv ~ scale height H; B ∝ rho^(2/3); steady state; gas pressure ignored
+- 2023ApJ...953..113L: Observed FIR/sub-mm polarization angle rotated by 90 deg traces the local B-field orientation
+- 2023ApJ...953..113L: Single-temperature modified blackbody with dust mass absorption coefficient k_lambda0 = 0.29 m^2 kg^-1 at lambda_0 = 250 um
+- 2023ApJ...953..113L: Galaxy disk lies on the x-y plane and is rotated by tilt angle theta along the z-axis
+- 2023ApJ...953..113L: Turbulent B-field scales as B propto SFR^(0.34+/-0.04) and starburst region depth h_c equals the length of the polarized region along the major axis of the gal…
+- 2020ApJ...895...64L: Stokes V of polarization calibrator negligible
+- 2020ApJ...895...64L: Gain calibrator intrinsic polarization constant over observations; systematic is Gaussian
+- 2020ApJ...895...64L: β≈-0.43 from Urata et al.
+- 2016A&A...593A..44L: Non-variable source; Stokes U not determined (no XY/YX)
+- 2016A&A...593A..44L: Foreground CI absorber has negligible Tex and identical tau for X and Y
+- 2023Natur.621..483G: Constant polarization fraction of unity/1% and constant B orientation in source plane; continuum matches CO morphology
+- 2025A&A...701A.191V: Dispersion delay across the 2 GHz band at 86 GHz is negligible (46 microseconds, 1 sample)
+- 2022ApJ...939L...6B: Gaussian temporal profile and power-law spectral dependence F_nu \propto \nu^\alpha
+- 2022ApJ...939L...6B: Gyrosynchrotron emission mechanism
+- 2015A&A...584A..16P: Grains of maximum size ≲3λ traced at each wavelength
+- 2018MNRAS.477.4380S: Magnetic fields neglected
+- 2019ApJ...885L..10L: Polarisation similar to that at 24 GHz
+- 2024PASJ...76..960S: distance 8.178 kpc
+- 2024PASJ...76..960S: i_disk = 67 deg; all other WK parameters at fiducial Table 1 values
+- 2024PASJ...76..960S: Equipartition between turbulent kinetic and magnetic energy
+- 2022FrASS...9.1118D: |B| is 7.5% greater than observed B_z due to heliographic position (17.40°N, 17.68°E)
+- 2022FrASS...9.1118D: Linear force-free field approximation (current density parallel to magnetic field at any point in space)
+- 2022FrASS...9.1118D: Pixels with |B| <= 200 G have quiet Sun brightness temperature T_B = T_qS
+- 2017A&A...603A..92V: Zeeman origin of circular polarization; field reversals at Vlsr~15 and 30 km/s
+- 2017A&A...603A..92V: gas-to-dust ratio 100
+- 2024AJ....168..142L: Spherical grains; Mie scattering; azimuthally symmetric, optically thin disk; 1.65 microns.
+- 2024AJ....168..142L: Scale height/radius = 0.055.
+- 2024AJ....168..142L: Azimuthal symmetry, optical thinness and MCFOST morphology; scattering independent of azimuthal angle.
+- 2019ApJ...878L..26L: Newtonian RS with g≈3, k=2
+- 2026MNRAS.549ag678P: Nonthermal power-law electron energy distribution with p = 3, volume filling factor f = 0.5, and equipartition epsilon_B = epsilon_e = 1/3
+- 2026MNRAS.549ag678P: 10% overall flux calibration uncertainty and interstellar scintillation modulations included
+- 2016A&A...593A..61M: Short baselines so parallactic angle is same for all antennas; for 3C 286, constant gain amplitude ratio and Ceres unpolarized
+- 2020PASP..132i4501H: Initial unpolarized source model for 3C 279, then polarization model from qufromgain and xyamb
+- 2020PASP..132i4501H: Calibrator Stokes V = 0
+- 2020PASP..132i4501H: Circular, azimuthally symmetric primary beam in Stokes I
+- 2020PASP..132i4501H: Primary beam of each pointing is a 2D Gaussian peaked at the pointing center
+- 2020PASP..132i4501H: Optically thin dust with grain alignment by radiative torques, so inferred field orientation is frequency independent
+- 2020PASP..132i4501H: sigma_Q approximately equals sigma_U equals sigma_P; no position-dependent error in Stokes I
+- 2024A&A...692A..34C: Projected B-field is perpendicular to the dust polarisation angle (pi/2 offset)
+- 2024A&A...692A..34C: Turbulence dominates the line width; equipartition between turbulent kinetic and magnetic energy
+- 2026PASP..138h4104C: Aperture efficiencies of 0.43 (ALMA) and 0.32 (JCMT); APEX conversion factor 62 Jy K^-1; J0423-0120 total flux density = 2.3 Jy; circular Gaussian brightness d…
+- 2020MNRAS.499.5915M: HD 162521 and HD 167425 are proxies for the target's interstellar polarisation.
+- 2020MNRAS.499.5915M: Serkowski-Wilking interstellar polarisation; interstellar and intrinsic orientations each constant with wavelength.
+- 2020MNRAS.499.5915M: 650LP and SPHERE VBB are equivalent because of similar effective wavelengths.
+- 2020MNRAS.499.5915M: The same dust grains produce continuum emission, scattering and polarisation.
+- 2020MNRAS.499.5915M: Hard compact spherical grains.
+- 2020MNRAS.499.5915M: Single scattering of unpolarised starlight in an optically thin disc.
+- 2020MNRAS.499.5915M: Orient the model so U is zero; retain grains between 0.1 and 1.0 μm.
+- 2024NatAs...8..765L: Homogeneous fixed vertical magnetic field
+- 2024NatAs...8..765L: Optically thin millimeter emission region
+- 2024NatAs...8..765L: Mass of about 4e6 Msun; data fit insensitive to spin so non-spinning black hole used
+- 2024NatAs...8..765L: Non-convex stochastic-gradient optimisation reaches a local minimum; solution depends on initialisation
+- 2015Sci...348..311M: RMs and fractional polarization wavelength dependence similar for both lensed images, so p_dif and alpha are constant
+- 2015Sci...348..311M: z = 2.5
+- 2018ApJ...858...85P: Polarization angle uniformly distributed; C_B ≈ C_E ≈ C_U ≈ C_Q
+- 2015A&A...581A..97S: Inclination 89.5 deg; Mie spheres; wind speed 400 km/s; stellar mass 0.5 Msun
+- 2020NatAs...4.1064H: Gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium; magnetic fields and shear omitted from the simple model.
+- 2021PSJ.....2..125S: OC radar cross-section uncertainty is +/-25% and shape model projected area uncertainty is +/-3%
+- 2017SoPh..292...87S: Linear polarization negligible; XX and YY should be equal
+- 2024AN....34530149M: Thermal bremsstrahlung is the dominant emission mechanism; Rayleigh-Jeans approximation; solar abundances; magnetic field neglected
+- 2024A&A...686A.281B: Absolute flux uncertainty 6% (3.1 mm) and 10% (1.3 mm)
+- 2024A&A...686A.281B: Polarization produced by magnetically aligned dust grains, so segments are rotated by 90 deg
+- 2024A&A...686A.281B: Dust emission in the Rayleigh-Jeans regime (T >~ 100 K)
+- 2024A&A...686A.281B: Axially symmetric singular toroid with poloidal field plus small force-free toroidal component
+- 2024A&A...686A.281B: Perturbations are Alfven waves; thermal velocity dispersion negligible at T >~ 100 K
+- 2024A&A...686A.281B: Inclination i = 50 deg from the model fit
+- 2024A&A...686A.281B: Pressure gradient negligible compared with gravity; uniform density over 1.4e7-5e8 cm^-3
+- 2019ApJ...872...70T: Gas-to-dust ratio 100, tau≈1, spherical geometry for densities, distance 414 pc
+- 2019ApJ...872...70T: Viewing angle chosen so outflow lobes do not overlap and best fits Figure 5(c)
+- 2025ApJ...989L..43Y: Inner disk and rings are dominated by dust self-scattering; model Q′
+- 2025ApJ...989L..43Y: DSHARP composition
+- 2025ApJ...989L..43Y: T = T_10(R/10 au)^−0.65; T_10 = 137.5 K
+- 2025ApJ...989L..43Y: Distance 147.3 pc; inclination 46.7°
+- 2025ApJ...989L..43Y: Southwest near side; northeast far side
+- 2025ApJ...989L..43Y: Non-negligible first-gap contamination near the inner-disk edge
+- 2025ApJ...989L..43Y: Interplay of inclination-induced polarization and radiation-anisotropy-induced polarization
+- 2025ApJ...989L..43Y: Σ(R) = Σ_0(R/R_c)^−γ exp[−(R/R_c)^(2−γ)]; R_c = 79 au; γ = 0.2; disk mass 0.13 M_⊙
+- 2025ApJ...989L..43Y: Stellar mass 1.3 M_⊙; mean molecular weight 2.33; model temperature profile
+- 2020ApJ...901...71S: Pfrac constant across the disk; surface density proportional to Stokes I
+- 2020ApJ...901...71S: Keplerian rotation with inputs from published disk models
+- 2025A&A...699A.265G: Stokes V assumed zero during polarization calibration, so no circular polarization claimed
+- 2025A&A...699A.265G: Emission dominated by a central point source at the phase center
+- 2025A&A...699A.265G: EVPAs shown are not corrected for Faraday rotation; magnetic field vectors are rotated by 90 degrees
+- 2021MNRAS.503.3414P: Spectral lines in spw0-2 contribute negligible polarised signal
+- 2021MNRAS.503.3414P: RMS uncertainties on Stokes Q and U emission are equal
+- 2021MNRAS.503.3414P: Large-scale magnetic field has orientation 116 deg E of N (polarisation angle 26 deg E of N); additional angular dispersion arises from Alfvenic distortion by …
+- 2021MNRAS.503.3414P: Paramagnetic grains with rho = 3 g cm^-3, axial ratio s = 0.5; unobscured radiation from Source I with anisotropy gamma ~ 1 and RAT efficiency |Q_Gamma| <= 0.4…
+- 2018ApJ...864...81O: Stokes V ignored
+- 2018ApJ...864...81O: 0.87 mm radiation field used as proxy for 140 um field; inclination 27 deg, PA 341 deg
+- 2020ApJ...893...33L: toroidal field with constant strength B0(r)=const; homogeneous grain alignment; optically thin; extinction curve R_V=5.5 (WD2001)
+- 2020ApJ...893...33L: median volume mass density 1.4e-22 g/cm3 of whole torus (from LR2018)
+- 2025A&A...703A.110S: 5% systematic flux error for Band 3
+- 2025A&A...703A.110S: Circular polarization component V = 0
+- 2016ApJ...824..132N: Absolute EVPA error 0.4 deg from 2 deg misalignment over 29 antennas
+- 2025MNRAS.538.2421S: Dust polarisation principally traces magnetic fields rather than self-scattering
+- 2025MNRAS.538.2421S: Magnetic segments perpendicular to electric segments
+- 2025MNRAS.538.2421S: RAdiative Torques (RAT) alignment theory: smaller grains align less efficiently
+- 2020ApJ...899..152H: Uniform magnetic field and velocity gradient in constant-density slab
+- 2015ApJ...812..129Y: Krasnopolsky & Königl 2002 formula; sound speed 0.23 km/s
+- 2020MNRAS.493.5045M: alpha_CO = 4.4 Msun (K km/s pc^2)^-1, including a factor 1.36 for helium
+- 2020MNRAS.493.5045M: Spherical cloud with rho proportional to r^-n, n = 1; magnetic fields and external pressure negligible
+- 2021ApJ...910...21R: Black hole mass 8 solar masses
+- 2021ApJ...910...21R: Ballistic jet with toroidal-dominated magnetic field and constant bulk Lorentz factor
+- 2021ApJ...910...21R: Only synchrotron cooling in the radio jet
+- 2016A&A...593A.107L: P and Psi constant during each track
+- 2023Natur.617..261K: Relevant velocity interval for absorber association is ±700 km s^-1 around each absorber (contiguous 2280 km s^-1 interval)
+- 2023A&A...677A..30B: FAST pulse duty cycle between 0.05–0.3, DM range 3–100 pc cm^-3
+- 2014ApJ...783L..13P: T=35 K, gas-to-dust 100, kappa=10 cm^2/g at 450 um for mass
+- 2014ApJ...783L..13P: a=1 mm, rho_s=1 g/cm3, Sigma=10 g/cm2, St~1e-2; gas T=50 K for sound speed
+- 2019MNRAS.487.4305S: Zero magnetic field in SFK
+- 2025NatAs...9..406L: External pressure neglected in the outer Galaxy; external magnetic field neglected (~10 uG vs ~100 uG required)
+- 2018A&A...620A..75K: Suh (2016) amorphous Al2O3 optical constants; gas density from CO model
+- 2024MNRAS.527.3559P: beta itself is unchanged by gas; only the grain orbits are
+- 2019ApJ...884L..58U: Tangled magnetic field in random cells
+- 2025ApJ...993L...6N: Equipartition (f_eB = 1); p = 3
+- 2025ApJ...993L...6N: Volume filling factor f = 0.5
+- 2019PASP..131g5003G: Stokes V = 0 and negligible second-order D-terms
+- 2023PASP..135b5002C: Sources stable over 2.5 days
+- 2023PASP..135b5002C: 3C454.3 at 343 GHz is 3.53 Jy with spectral index -0.69
+- 2026ApJ..1000L..10C: J 0408-6545 is a point source with Stokes I flux density 8.244 Jy/beam and alpha = -1.138 at 2406 MHz
+- 2026AJ....172...75M: sigma_P approx sigma_Q approx sigma_U
+- 2026AJ....172...75M: B0 = 1 in Ewertowski & Basu (2013) model; only first three terms in series considered; symmetry center and axis fixed to parabolic fit values
+- 2026AJ....172...75M: Optically thin dust emission, gas-to-dust ratio Lambda = 100, dust opacity kappa_nu = 2.9 cm^2 g^-1 with beta = 0.82, distance D = 6.3 kpc, LTE and optically t…
+- 2026AJ....172...75M: Equipartition of turbulent kinetic and magnetic energy for DCF (noted as likely violated, making B_pos an upper limit); oblately compressed spheroid core geome…
+- 2026AJ....172...75M: Solid-body rotation and spherical moment of inertia for energy ratios; transitions localized on a fixed-radius disk (R ~ 2500 AU) for centroid velocity slope; …
+- 2018A&A...616A..56A: optically thin, Rayleigh-Jeans
+- 2018A&A...616A..56A: Shu et al. 2007 viscously accreting disk with advected, twisted field
+- 2024ApJ...970..114T: Minimum detectable polarization degree of 0.1%, taken as three times the systematic calibration uncertainty
+- 2024ApJ...970..114T: Same grain population throughout the disk; Rayleigh regime for the polarization calculation
+- 2024ApJ...970..114T: Compact grains; grain alignment induced only by MRAT
+- 2024ApJ...970..114T: Gas temperature equals dust temperature
+- 2024ApJ...970..114T: Toroidal-dominated magnetic field
+- 2024ApJ...970..114T: Scattering with non-spherical grains neglected
+- 2021ApJ...908..153M: Stokes I optically thin at 3.1 mm; T(r) = 310 (r/1 AU)^-0.57 K
+- 2021ApJ...908..153M: Smooth radial distributions without rings and gaps, for simplicity
+- 2021ApJ...908..153M: Rayleigh regime (size parameter x = 0.42 for 200 um at 3.1 mm); same grain population throughout the disk; temperature effects ignored
+- 2021ApJ...908..153M: Spherical grains used for scattering; angle-averaged absorption opacity of oblate/prolate grains equal to spherical grains
+- 2026A&A...712A.244H: Stokes V vanishes at 232.86 GHz for Band 6 self-bandpass model (I = 4.35 Jy, alpha = -0.85, Q = 0.0238 Jy, U = -0.1212 Jy); similar D-terms between Nov 15 and …
+- 2026A&A...712A.244H: Single point source dominates emission at phase center
+- 2026A&A...712A.244H: External Faraday dispersion or thin screens parameterized by mean RM, dispersion sigma_RM, intrinsic fractional polarization p_0, and intrinsic angle psi_0
+- 2026A&A...712A.244H: Power-law spectrum I proportional to nu^+alpha across 138-350 GHz
+- 2017ApJ...844L...5K: Instrumental polarization 0.1% for on-axis point source
+- 2017ApJ...844L...5K: Disk geometrically and optically thin, uniform p, no wavelength dependence of alignment, spherical grains, a^-3.5 size distribution
+- 2021ApJ...915...99I: 10% uncertainty in ALMA amplitude calibration
+- 2021ApJ...915...99I: Single thin scattering screen with Psaltis et al. (2018) dipole magnetic field wander model and fixed asymptotic Gaussian scatter-broadening parameters and dis…
+- 2021ApJ...915...99I: Dipole model of magnetic field wander from Psaltis et al. (2018)
+- 2019A&A...623A.111H: Emission dominated by central point source at phase center
+- 2026A&A...710A.390O: CO lines are essentially unpolarised
+- 2021A&A...651A..35O: Mg isotopes in terrestrial relative amounts
+- 2015ApJ...804..141Z: Magnetic field 0.27 mG from G11.11 assumed
+- 2021MNRAS.504.4511P: Distance to M33 = 840 kpc
+- 2021MNRAS.504.4511P: 13CO(1-0)-to-H2 conversion factor X_13CO = 1.0 x 10^21 cm^-2 / (K km s^-1) (X_2 = 5), including 1.36 helium factor
+- 2021MNRAS.504.4511P: Truncated power-law density distribution rho propto R^-beta with beta = 1, and negligible magnetic fields and external pressure for virial mass
+- 2021MNRAS.508...44M: K = 0.1 cm^2 g^-1, M_Ni = 0.1 M_sun, E_ej = 10^51 erg, neutron star radius = 12 km
+- 2016ApJ...832..143F: relative uncertainty same as B_tot (40%); corrected n=1.3e4 cm^-3
+- 2023MNRAS.522.6123Z: Unresolved flux densities at <= 1.4 GHz emanate only from NW and SE hotspots with flux ratio S_SE : S_NW = 15 : 1; hotspot occupies an elliptical cylinder volu…
+- 2021A&A...647A.173K: Point source model (delta function in uv-plane)
+- 2014ApJ...788L..34P: rho_s = 1 g cm-3, a = 1 mm
+- 2026ApJ..1001..184M: Magnetic field 1-5 mG gives synchrotron lifetime 10,000-100,000 years
+- 2018MNRAS.473..317H: Dust and gas dynamically coupled; Draine silicates; grain density 3 g cm^-3 for Stokes number
+- 2019ApJ...878L..25H: Negligible depolarization between source and observer for point source at mm wavelengths
+- 2025ApJ...988..109H: Energy equipartition between particles and magnetic fields
+- 2024ApJ...972..115C: Grain alignment by magnetic fields; radiative alignment and self-scattering considered less favored
+- 2024ApJ...972..115C: Gaussian distribution of angles, justified through the central limit theorem
+- 2024ApJ...972..115C: Equipartition between turbulence and magnetic energy; no self-gravity or anisotropic turbulence; C33S outflow contamination assumed minimal
+- 2024ApJ...972..115C: Using B_pos alone as the field estimate makes V_A independent of density and M_A ~ dphi under DCF
+- 2018ApJ...859..165S: inclination from cos i = b/a
+- 2018ApJ...859..165S: T = 20 K, kappa = 0.024 cm2/g at 1.3 mm, d = Ophiuchus distance
+- 2024ApJ...971L..23L: Envelope brightness temperature ~1-6 K is far below the ~40 K gas temperature, so the continuum is optically thin
+- 2024ApJ...971L..23L: Grains aligned with long axis perpendicular to the field lines
+- 2024ApJ...971L..23L: Compact grains with MRN size distribution (DSHARP); porous grains could give the scaled opacity combination
+- 2021AJ....161...33V: Characteristic emitting grain size lambda_obs/2pi; similar grain-size distributions across the sample.
+- 2021AJ....161...33V: Constant gas density plus Gaussian overdensity; absorption opacity; face-on, vertically isothermal disk.
+- 2021AJ....161...33V: Ages, NIR excess and stellar masses from Garufi2018.
+- 2024A&A...682L...3P: Absolute EVPA not reliably constrained, so only absolute values of fractional polarisation are fitted
+- 2024A&A...682L...3P: Circular rather than elliptical Gaussians to reduce degrees of freedom; circular polarisation V neglected
+- 2024A&A...682L...3P: Equipartition between cosmic-ray and magnetic energy density; alpha_thin = 0.5 (exponent 2/7)
+- 2020ApJ...904..168B: Q and U continuum is not significantly line contaminated, so it represents the true polarized continuum
+- 2020ApJ...904..168B: Polarized emission comes from dust grains whose rotation axis is aligned with the local magnetic field, so B is perpendicular to the polarization angle
+- 2020ApJ...904..168B: Bulk of dust emission is optically thin, with little scattering contribution
+- 2016ApJ...831L..12K: compact spherical grains, size slope -3.5
+- 2023A&A...674A.101M: Third lensed image and small Einstein ring extensions are negligible and ignored
+- 2024A&A...692A.146B: magnetic fields neglected (beta to infinity)
+- 2024A&A...692A.146B: CO velocity dispersion tracks the turbulent velocity dispersion, typical uncertainty 50%
+- 2017MNRAS.469L.123O: turbulent field produces random polarization orientation; turbulent region size 4 kpc
+- 2024A&A...691L..14O: Optically thin dust so that polarized intensity traces dust distribution
+- 2024A&A...691L..14O: Gas and grains kinematically coupled when inferring dust infall from H2O kinematics
+- 2013ApJ...779...96T: 0.5<m_A<2 range, f_g=1, alpha_vir,cl=1, phi_geom=1
+- 2022MNRAS.512.2337D: Galactic N_H = 5.6 x 10^20 cm^-2; afterglow and supernova negligible after 58 days in UVOT
+- 2019ApJ...872..121U: X(H13CO+)=6e-11, X(C34S)=4.87e-10, distance 8.5 kpc, mu=2.35e-57 Msun, no external pressure or magnetic field
+- 2020ApJ...891...80M: Stokes U unconstrained so |Q/I| is a lower limit
+- 2024ApJ...963L..31H: Polarization angle rotated by 90 deg gives B-field direction if polarization arises from B-field aligned grains
+- 2024ApJ...963L..31H: Self-scattering polarization is parallel to the minor axis of an inclined disk, so aligned with outflow
+- 2024ApJ...963L..31H: Envelope-scale polarization (including HOPS-250) assumed to be magnetically aligned grains; self-scattering not significant in the envelope
+- 2018ApJ...869..115S: σ_PI ≈ σ_Q ≈ σ_U; 0.1% instrumental polarization uncertainty
+- 2018ApJ...869..115S: T = 30 K, kappa = 0.01112 cm2/g, gas-to-dust 100, mu = 2.8, cylinder geometry, Q=0.5
+- 2026A&A...706A..16C: Vertically Gaussian density; surface density proportional to r^-1; geometric scale-height power law
+- 2026A&A...706A..16C: Adopt RADMC-3D 0.1 um amorphous olivine silicates
+- 2026A&A...706A..16C: Neglect millimetric midplane grains and disk temperature profile
+- 2020MNRAS.496..169L: Compact spherical grains; same dust population throughout the whole disk; mass fractions of ice, silicates, troilite and organics ~0.2, 0.33, 0.07, 0.4
+- 2020MNRAS.496..169L: Isothermal plane-parallel slab with scattering
+- 2020MNRAS.496..169L: Dust and temperature distributions prescribed, not computed self-consistently
+- 2024A&A...685A.142Y: Subsampling has little impact because of temporal correlation timescales.
+- 2024A&A...685A.142Y: Relativistic thermal electrons; synchrotron emission, self-absorption, Faraday rotation and conversion
+- 2024A&A...685A.142Y: Finite light speed; emission cut below ISCO; Kerr metric
+- 2024A&A...685A.142Y: M=4.155×10^6 M_sun
+- 2024A&A...685A.142Y: I light-curve shifts accommodate expected background emission.
+- 2020ApJ...893...54Y: Polarization orientations rotated by 90 deg to infer B-field if emission from aligned grains and optically thin
+- 2020ApJ...893...54Y: Barotropic approximation
+- 2017ApJ...851...55S: Oblate grains with shortest axes aligned radially
+- 2023MNRAS.523.5703J: Uniform spherical emitting region; radio core and component C in a steady state
+- 2023MNRAS.523.5703J: Cosmology Omega_M=0.27, Omega_Lambda=0.73, H0=71; z=0.859
+- 2023MNRAS.523.5703J: Core-shift between 22 and 43 GHz cores (~0.05 mas) treated as negligible for alignment
+- 2024ApJ...962..196O: 12 Gyr-old exponentially decaying burst stellar template
+- 2024ApJ...962..196O: Shock-model solar abundance and magnetic field 30 μG
+- 2024ApJ...962..196O: Disk inclination 36° for deprojected rotation
+- 2019A&A...621A..18M: SW image unpolarized so p_d is NE polarization
+- 2025Galax..13...82Z: Most gas supporting H2O masers is concentrated in dense clumps.
+- 2023A&A...669A..56Q: Gas-to-dust ratio = 200; constant mass distribution along the ejecta; momentum transfer rate of 1 g cm s^-1 per cm^2 per s for B = 3 G proportional to B_perp
+- 2016Natur.537..207G: equipartition of thermal, turbulent and magnetic energies
+- 2025ApJ...985..222H: Field is uniform inside the box; radii of curvature all larger than 36''
+- 2025ApJ...985..222H: Critical value of a magnetized disk, 1/(2 pi G^1/2)
+- 2019ApJS..245....2S: geometrically thin disks; beta→0 when optically thick
+- 2024A&A...685A..52G: Major-axis measurements approximate 90° scattering to minimize phase-function dependence.
+- 2024A&A...685A..52G: Compact spherical pyroxene-silicate grains
+- 2024A&A...685A..52G: SPHERE inclination approximately 22°; flaring exponent 1.09; remaining parameters from Tazaki et al.
+- 2024A&A...685A..52G: Western side is the near side, based on stronger polarized intensity in H and K bands
+- 2021ApJ...910...75L: Constant polarization efficiency and thus constant grain alignment efficiency
+- 2021ApJ...910...75L: 100 um amorphous pyroxene grains, material density 1.675 g cm^-3, scattering opacity scaled to equal absorption opacity
+- 2025A&A...694A.291K: Positive lag: higher frequency leads; negative lag: higher frequency lags
+- 2025A&A...694A.291K: Power-law PSD; gamma PDFs for optical/gamma-rays and log-normal PDFs for radio/X-rays
+- 2025A&A...694A.291K: Simple leptonic scenario with constant magnetic field and viewing angle
+- 2025A&A...694A.291K: F_IC ∝ F_sync^m; EC predicts m = 1, SSC predicts m = 2
+- 2020ApJ...896..157H: density 1e6 cm-3 from maser pumping; correction factor 0.5; total field 4B/pi
+- 2020ApJ...896..157H: uniform field for all velocity components
+- 2018ApJ...860...82H: MRN n(a) ∝ a^-3.5, a_min = 0.25 um; spherical grains of ice 62%, organics 30%, silicates 8%; Sigma_c = 0.25 g cm^-2 at 100 au, H_c = 3 au, gamma = 1.0
+- 2020A&A...638L..13M: Both lensed images point-like within the beam
+- 2020A&A...642A..93H: Dust in flat cylindrical EDE, Rayleigh scattering
+- 2014ApJ...791..108F: isothermal cylinder; ignores magnetic fields and external pressure
+- 2024ApJ...974..257Z: Grains aligned by radiative torques
+- 2024ApJ...974..257Z: Dust temperature equals gas temperature, measured at the position of maximum brightness of the filaments; emission optically thin for density and mass
+- 2024ApJ...974..257Z: Uniform field orientation within each region
+- 2018A&A...614A..64B: Same sigma_v and n for all sub-regions; frozen-in field, Alfven waves
+- 2024A&A...685A..53G: Q_phi equals polarized intensity in the ideal case of single scattering from a face-on disk around a single star
+- 2024A&A...685A..53G: J-, H-, and K-band contrasts should be comparable unless disk grains have extremely blue or red colors
+- 2021ApJ...916...97Y: Mean polarization orientation of 3x3 pixels centered at each detection represents the large-scale magnetic field orientation
+- 2021ApJ...916...97Y: Dust temperature equals NH3 kinetic temperature; dust mass opacity = 0.012 cm^2 g^-1 (including gas-to-dust ratio of 100); line-of-sight cloud length = 0.06 pc…
+- 2021ApJ...916...97Y: Magnetic field and rotational axis are randomly oriented in 3D space, and measured disk radius is not affected by projection
+- 2025A&A...703A..82S: Systematic Band 3 flux error is 5%
+- 2025A&A...703A..82S: Circular polarization V is zero
+- 2025A&A...703A..82S: Homogeneous synchrotron source with uniform magnetic field in equipartition with photon energy density (B = B_eq)
+- 2025A&A...703A..82S: Calibration uncertainty of 0.1% for archival polarization limits
+- 2020ApJ...904..181L: Include gas inertia, stellar gravity and circumstellar gas self-gravity
+- 2020ApJ...904..181L: Gray approximation for direct stellar irradiation and radiative transport; no magnetic field
+- 2019MNRAS.482L..29D: spherical grains, scattering only source of polarisation, multiple scattering included
+- 2023ApJ...948..134P: Each maser spot in a spectral channel is a single point source; noise sigma is constant across visibilities within a single channel; brightest 183 GHz spot at …
+- 2024ApJ...977..121N: Turbulent eddies elongate along the magnetic field, so velocity gradients are perpendicular to the local field
+- 2019A&A...622A.196K: ALMA polarized flux originates from the VLBI core; no RM >~1e8 rad/m^2
+- 2024ApJ...972L...6S: Dust grains are aligned with respect to the magnetic field, so B_pos is inferred from the polarization direction
+- 2024ApJ...972L...6S: Constant temperature of 50 K in the model
+- 2024ApJ...972L...6S: Q = 0.5 from turbulent-cloud simulations; an alternative Q ~ 0.28 gives B_pos of 3.0-3.6 mG
+- 2024ApJ...972L...6S: Gravity removed by using the residuals relative to the model, so delta_psi reflects turbulence versus magnetic field
+- 2019A&A...626A..36D: polarisation dominated by magnetic alignment, not scattering
+- 2019A&A...626A..36D: MM3 velocity dispersion assumed equal to MM4
+- 2026ApJ..1000L..16R: Training model: 2D locally isothermal FARGO3D simulations, one non-accreting planet on a fixed orbit, constant alpha, dust as pressureless fluid with Sc=1 and …
+- 2026ApJ..1000L..16R: Training images use Birnstiel et al. 2018 opacity; Gaussian noise and varying Gaussian beams added during training
+- 2021ApJ...908..141H: Inclination, position angle, distance, stellar mass fixed (i=35.3 deg, 126 pc, 1.25 Msun)
+- 2021ApJ...908..141H: Fit uncertainties taken as 1 sigma; 3 sigma used for upper limits
+- 2024ApJ...975..103P: Single screen, chi = chi0 + RM lambda^2, same opacity at all wavelengths; linear fit due to limited frequency coverage
+- 2019A&A...624L...7V: Low inclination so sensitive mostly to vertical field B_z
+- 2021ApJ...917...73W: Single homogeneous spherical/slab synchrotron-SSC zone; R_S = 1.2e10 m; D_s = 2.523e20 m; A_K = 2.46 mag; A_M = 1.00 mag; X-ray extinction factor k_X = 3.39; s…
+- 2021ApJ...917...73W: Steady X-ray background equal for all three Chandra detector modes (chi_I = chi_G = chi_S)
+- 2024MNRAS.527.1444A: Faraday-thin intermixed synchrotron emitting and Faraday rotating plasma (factor of 2 in RM); intrinsic synchrotron polarisation of 71%; compression ratio of 3…
+- 2017ApJ...849...95B: Equipartition magnetic field for delta limit
+- 2026A&A...706A.292S: Distance 156 pc for au conversion
+- 2026A&A...706A.292S: Self-scattering gives vectors parallel to disk minor axis and low polarization fractions
+- 2018NatCo...9.4636L: ρ = 1.4 n_H2 m_H2
+- 2020ApJ...900...81O: Stokes V ignored
+- 2020ApJ...900...81O: Distance 120 pc; VLA emission dominated by dust
+- 2025A&A...701A..41D: eta = 1 (equipartition between non-thermal particles and magnetic field), xi_e,p = 40, so epsilon_B = 41 delta
+- 2025A&A...701A..41D: Corona treated as a spherical one-zone region, components independent and summed; f-f absorption, AME and dust absorption of the corona neglected
+- 2025A&A...701A..41D: Luminosity distance from Planck18 cosmology in astropy
+- 2025A&A...701A..41D: The total 100-GHz luminosity is used, not only the coronal part, to stay consistent with the Ricci et al. correlation
+- 2020ApJ...895..142L: constant turbulent-to-ordered field ratio for partially covered MM4-Core4; B=4Bpos/pi
+- 2019ApJ...877L...2H: Scattering fraction scales as sin^2(i); scattering angle parallel to minor axis; radiative angle is radial direction rotated 90 deg
+- 2020MNRAS.499.3909Y: Galactic center distance d = 8 kpc; nominal electron temperature Te = 10^4 K; optically-thin thermal bremsstrahlung for J1 at 36 GHz
+- 2020MNRAS.499.3909Y: Equipartition between electrons and protons with an E^-2 electron energy spectrum between 10 MeV and 100 GeV
+- 2020MNRAS.499.3909Y: Jet emerges perpendicular to the equatorial plane of the inner accretion flow
+- 2024ApJ...976..198H: Isolated clouds with simple geometry and density distribution; no support from external pressure and magnetic fields
+- 2025ApJ...993..200C: Polarization directions rotated by 90 deg trace the plane-of-sky magnetic field
+- 2025ApJ...993..200C: Initial solid-body rotation, central point mass, pressure forces and magnetic fields neglected
+- 2019ApJ...879...25K: Grains aligned with magnetic fields; optical depth tau~0.2 at peak for T=30 K
+- 2019ApJ...879...25K: Gas-to-dust ratio 100; trans-sonic non-thermal velocity ~0.3 km/s at 30 K; cylinder geometry
+- 2025ApJ...990..183U: Smooth gas disk from 13C17O-based profile; dust-to-gas 0.01; rho_m = 1.675 g cm^-3; Q=1.4; M*=2.1 Msun
+- 2023A&A...677A..76P: Dust grains made of 19.2% carbon, 60.8% silicates, and 20% vacuum by volume; Dubrulle et al. (1995) dust settling; Gaussian vertical gas profile
+- 2024A&A...690A.232S: Equipartition between magnetic and photon energy densities for the equipartition size.
+- 2024A&A...690A.232S: Optically thick/self-absorbed synchrotron; synchrotron cooling dominates for the lower B bound.
+- 2024A&A...690A.232S: Emission-region size does not exceed 1 ld.
+- 2020ApJ...889..172K: sigma_PI taken as average noise of Q and U maps
+- 2020ApJ...889..172K: Singular isothermal sphere, r^-1/2 temperature
+- 2016A&A...595A.113S: Degree of polarization approximately same in R, I, J
+- 2025MNRAS.537.2232Z: Bubbles triggering high-density contrast clouds should be larger than the clouds
+- 2025MNRAS.537.2232Z: Literature magnetic field estimate assumes cosmic-ray/magnetic-field energy equipartition
+- 2024ApJ...966..120L: observed linear polarization is due to dust grain alignment
+- 2024ApJ...966..120L: turbulent kinetic and magnetic energy equipartition; ADF implicitly assumes turbulent field smaller than ordered field
+- 2025NatAs...9..526O: inclination 27 deg, PA 161 deg; same p_max in both layers for dual model
+- 2020MNRAS.499.2015T: Locally isothermal equation of state
+- 2020MNRAS.499.2015T: Dust initially coupled to gas (Stokes number below unity), justifying the one-fluid mode
+- 2023MNRAS.522...56V: Extended structures larger than ~1.5 arcsec are thermal dust/nebular emission that do not vary on timescales of minutes to days.
+- 2023PASJ...75..874M: Non-thermal electron energy fraction 0.03; coronal temperature 10 keV; Thomson optical depth 1.1; black hole mass 5×10^7 M_sun
+- 2024ApJ...964...12F: only gravitational and kinetic energies considered; external pressure and magnetic fields neglected in the plot
+- 2026A&A...713A.149V: Radiative alignment torque (RAT) mechanism aligns oblate dust grains with short axis along B field so thermal dust polarization is perpendicular to B_POS
+- 2026A&A...713A.149V: Distance d = 5.5 kpc; dust+gas mass opacity kappa_1.3mm = 0.01 cm^2 g^-1 (Ossenkopf & Henning 1994) assuming gas-to-dust ratio of 100; 2.5'' dust temperatures …
+- 2026A&A...713A.149V: Isotropic turbulent motions; DCF reliability regime sigma_theta < 25 deg (cores #3, #4, #5, #9 with sigma_theta > 25 deg retained for statistics); spherical sy…
+- 2019ApJ...871..243Y: Constant polarization efficiency; no dust scattering; only orientations compared
+- 2026ApJ..1003..215F: Stellar mass 1 Msun; scale-free; fixed planet orbit
+- 2026A&A...710A..63L: Cosmology: H_0 = 67.8 km s^-1 Mpc^-1, Omega_m = 0.308, Omega_Lambda = 0.692
+- 2026A&A...710A..63L: Factor 1.6 converts Gaussian FWHM to uniform disk angular diameter; eta = 1 for ratio of proton+electron to electron energy densities
+- 2020A&A...640A.111A: Grain alignment by radiative alignment torques; polarization perpendicular to B
+- 2018ApJ...865L..12B: Polarization from self-scattering; maximum size ~ lambda/2pi
+- 2023MNRAS.518.3222B: LambdaCDM cosmology with H0 = 67.74 km s^-1 Mpc^-1, Omega_lambda = 0.69, Omega_m = 0.31; equipartition magnetic field; kpc-scale jet viewing angle theta < thet…
+- 2025ApJ...985..148L: Spiral arms create a drift velocity of dust relative to gas, traced by the continuum
+- 2018MNRAS.477.2760M: Polarization not from self-scattering
+- 2018MNRAS.477.2760M: Free-fall density profile; v_turb 0.1 to 1 km/s
+- 2024AJ....167..232T: NextGen atmospheres; Vienna Atomic Line Database transitions
+- 2021ApJ...909..212K: Stokes number much smaller than unity.
+- 2021ApJ...909..212K: Turbulent fragmentation determines the grain-size limit.
+- 2024A&A...689A.299M: Negligible circular polarization
+- 2021ApJ...908...92H: Q = 0.5; C18O/H2 = 1.7 x 10^-7; depth of C18O region = 0.1 pc; B proportional to rho^kappa with kappa in [0, 2/3], adopting B = 510 uG in the dense filament
+- 2018A&A...619A.161C: rho_pc = 1 g/cm3, St near unity
+- 2021ApJ...923..251H: Telescope sensitivity of 2.6 Jy K^-1 with 50% flux density uncertainty
+- 2025A&A...701A.219N: Ideal MHD, uniform initial cloud density, uniform initial magnetic field along z-axis, feedback only from accretion luminosity (no outflows or HII regions), no…
+- 2025A&A...701A.219N: Dust opacity k_1.3 = 0.005 g cm^-2 including a gas-to-dust mass ratio of 100; log(L/M) = 1.20 log(SFE) + 3.28
+- 2017ApJ...842L...9H: Isothermal, ideal MHD; scaled with cs = 0.2 km/s, nH = 1000 cm^-3
+- 2017ApJ...842L...9H: Field perpendicular to measured polarization; Stokes I traces column density structure
+- 2020A&A...634L..15G: Perfect alignment, homogeneous compact astrosilicate grains
+- 2024ApJ...976..201F: Magnetic field and cosmic-ray contribution alpha ~ 0.3
+- 2021ApJ...907L..41L: Wind magnetic pressure confines sideways jet and bow-shock expansion
+- 2019MNRAS.483.2371Y: Optically and geometrically thin disk; radiation flux radial; Stokes I from high-resolution Band 3 image
+- 2025A&A...695A.149K: 3C84 unpolarized for leakage; 3C286 PA 33 deg
+- 2025A&A...695A.149K: field perpendicular to linear polarization vector for sigma components
+- 2025ApJ...984L..19Y: T_mid = T100 (r/100 au)^-0.5; grain size index -3.5; amin 1e-5 cm; DSHARP opacities
+- 2024MNRAS.535.1364Z: Tex equals the clump-scale dust temperature
+- 2024MNRAS.535.1364Z: Constant density profile, no magnetic field, rotation or external pressure for the virial ratio
+- 2019ApJ...884...48C: Dust grains aligned with B; EVPA dispersion due to non-thermal motions; spherical geometry for density
+- 2024ApJ...963..134Y: Dust composition giving n=2.3, k=0.023; T=T60 (r/60 au)^-0.5; only self-scattering
+- 2026A&A...706A..27S: Ring features at 230 GHz and 86 GHz are aligned when stacking; intrinsic circular polarization approaches zero for the RR - LL leakage test.
+- 2021A&A...646A..25Z: Dust emissivity spectral index beta ~ 1.5 for extrapolating ATLASGAL 870 um flux to 1.3 mm
+- 2016ApJ...820...54K: model uncertainty ±50%
+- 2024ApJ...965...99T: Observed disk-edge densities not used for the infalling material because the disk is not smoothly connected to the envelope; envelope density adopted from nume…
+- 2019ApJ...885..106L: Stokes I gradient as proxy for radiation field
+- 2025ApJ...995...98D: Dust-derived turbulence is relevant to midplane dust clumping.
+- 2020ApJ...895L..46L: gas-to-dust ratio 100; gamma = 0.1; max particle size 0.1 mm
+- 2025A&A...695A.233R: gamma_j=10, phi=0.01 rad, viewing angle 0.1 rad, equipartition, m=1, n=2, alpha=-0.5
+- 2021PASJ...73..205T: LTE; T_ex = 30-50 K from 13CO_all brightness temperature; [16O]/[18O] = 550; [H2]/[12CO] = 10^4; uniform density sphere without magnetic field or external pres…
+- 2018ApJ...869L..47Z: GI limit with Toomre Q=1 caps gas surface density; preferred alpha=1e-3 and DSD1
+- 2024ApJ...968..101E: Polarization angles rotated by 90 deg to give the plane-of-sky magnetic field, assuming grains aligned by radiative torques
+- 2017ApJ...847...92H: B perpendicular to polarization orientation
+- 2025A&A...699A.373F: Thermal dust emission, self-scattering neglected; alpha=2 if optically thick, alpha=beta+2 if optically thin
+- 2020MNRAS.498.4256C: Grains grow at least to the fragmentation threshold
+- 2024A&A...692A.205B: Equipartition between magnetic field and non-thermal electrons; cosmological redshift and Doppler factor neglected; SMBH mass 10^8.2 M_sun and distance 19.23 M…
+- 2021A&A...650A.202R: Homogeneous spherical core with uniform magnetic field for Omega_B
+- 2024ApJ...961L..35M: Core-scale sigma_v applied to both condensations C1 and C2
+- 2024ApJ...961L..35M: Gas temperature 14.2 K fiducial (also 10 K and 6.5 K)
+- 2024ApJ...961L..35M: Magnetic field support ignored
+- 2016ApJ...825L..15C: Perfect grain alignment; B rotated 90 deg from EVPA
+- 2026A&A...710A.238D: Hydrostatic equilibrium and isothermal vertical structure for gas pressure; total g2d = 100 assumed for Elias 2-24; dynamical gas masses for IM Lup and DM Tau
+- 2021AJ....161..238W: mu = 2.3; material density 1.8 g/cm3
+- 2025A&A...693A.265E: Hydrodynamic torus initial condition (Fishbone & Moncrief 1976 or Penna et al. 2013) seeded with poloidal magnetic fields
+- 2020ApJ...891..113R: uniform density, no magnetic fields or external pressure
+- 2024MNRAS.532L..36R: MOLLIE accounts for HCN hyperfine splitting and relative optical depth effects
+- 2019ApJ...879..101L: B-field perpendicular to polarization when envelope optically thin
+- 2024ApJ...971..129C: Sigma_g/Sigma_d=100 for Q profile
+- 2026ApJ..1002L..28Y: SIS profiles, circular orbits, ln Lambda=0.93 (galaxies) and ~6 (BHs)
+- 2020ApJ...904L..24S: eta=1, Vs=3900 km/s
+- 2025ApJ...986..150H: Ideal gas with mean molecular weight mu = 2.3 and specific heat ratio gamma = 7/5; ignore gravity, magnetic field, and radiative cooling/heating
+- 2020ApJ...899...55A: sigma_phi ~ sigma_psi, M_A ~ sigma_psi
+- 2025A&A...699A..62J: outflow velocity taken as escape velocity
+- 2025ApJ...985..166K: Core depth equals its 850 um continuum diameter of 140''
+- 2025ApJ...985..166K: Surface density from core plus central protostellar mass within a 60'' box
+- 2025ApJ...993..166J: Constant fragmentation velocity between rings; vertical diffusion dominates the collision velocity so delta_frag = alpha_z
+- 2024ApJ...970L..40S: Cores with alpha_vir < 2 treated as supercritical and collapsing in the absence of other support such as magnetic fields
+- 2019MNRAS.486..283B: a = 2 ± 1; no magnetic fields, shear or external pressure
+- 2024ApJ...976..241Y: Isothermal infinite cylinders; gas temperature equal to dust temperature 25 K; magnetic fields ignored
+- 2024ApJ...976..241Y: At fiber scales sigma_tot ~ c_s via the sigma-L relation, so turbulent term negligible
+- 2016ApJ...833..209O: uniform density sphere; magnetic fields neglected
+- 2019ApJ...886L...4Z: All emission in these regions is synchrotron (upper limit)
+- 2025A&A...701A.141L: Gas pressure ignored in the free-fall envelope; envelope self-gravity ignored; spherically symmetric accretion at large distance; no magnetic fields
+- 2024ApJ...961....4B: Magnetic fields do not contribute to core collapse support
+- 2025A&A...693A.199C: a=2±1; magnetic fields omitted; infalling and outflowing material omitted
+- 2025ApJ...985..226W: Low polarization efficiency of the elongated feature is likely due to backward scattering, placing it behind V960 Mon.
+- 2026ApJ...997..155M: Ignore external pressure and magnetic field in virial analysis
+- 2026MNRAS.551g1639M: Components A1, A2, B, and W are initially gravitationally bound; cloud core is centered on VLA1623 B; circular orbit (e = 0) for A2 around A1; gas drag, magnet…
+
+
+### Limitations the authors admit
+- 2025ApJ...992L..31C: High polarization fractions outside the disk may reflect missing Stokes I flux
+- 2025ApJ...992L..31C: C18O may be contaminated by a wide-angle outflow
+- 2025ApJ...992L..31C: DCN critical-density uncertainty dominates because collisional rates are lacking
+- 2025ApJ...992L..31C: Energy ratio is an average near equipartition
+- 2025ApJ...992L..31C: Large-scale field morphology can inflate local dispersion
+- 2025ApJ...992L..31C: Multiple uncorrelated line-of-sight field components invalidate a global Mach interpretation
+- 2025ApJ...992L..31C: Connection to the larger-scale envelope is not directly traced
+- 2025ApJ...992L..31C: Gradient filtering partially smooths intensity and velocity maps but not polarization
+- 2019A&A...630A..54B: Stokes I flux is an upper limit because of line contamination; polarization fractions are lower limits
+- 2019A&A...630A..54B: Mass-to-flux ratio is a lower limit because the core mass and stellar content may be underestimated
+- 2024MNRAS.528..843L: Few marginal Q-band vectors prevent analysis of azimuthal variation
+- 2024MNRAS.528..843L: Q-band t uncertainties use only p uncertainty
+- 2024MNRAS.528..843L: Q-band central vector can be contaminated by scattering or diminished by beam averaging
+- 2024MNRAS.528..843L: True intrinsic grain polarization requires higher resolution or better long-wavelength data
+- 2024MNRAS.528..843L: Stokes I asymmetry depends on the adopted Gaussian-fit center; precise centering is beyond scope
+- 2024MNRAS.528..843L: Band 3's larger beam confounds interpretation of weaker Stokes I asymmetry as an optical-depth effect
+- 2024MNRAS.528..843L: 10% absolute calibration uncertainty excluded from subsequent analysis
+- 2024MNRAS.528..843L: ALMA Stokes V signals fall below the minimum detectable circular-polarization threshold
+- 2023Natur.623..705S: Single-wavelength polarization does not precisely determine grain properties.
+- 2023Natur.623..705S: Grain size, composition, albedo, porosity, alignment efficiency and shape are degenerate; ~100 μm grains are not unique and underpredict longer-wavelength intensity.
+- 2023Natur.623..705S: Plane-parallel model omits radiation anisotropy; its effect on inferred s is unclear.
+- 2023Natur.623..705S: Plane-parallel slabs cannot capture near–far asymmetry of the inner disk.
+- 2023Natur.623..705S: Higher resolution and multi-wavelength observations are needed to reduce beam averaging and constrain grain properties.
+- 2023Natur.623..705S: P > 10% outer-disk vectors may be interferometric artifacts or random noise.
+- 2024A&A...682A..97W: Table uncertainties are dominated by intrinsic variability rather than measurement noise
+- 2024A&A...682A..97W: Definitive wavelength-law violation requires simultaneous polarization measurements at distinct frequencies
+- 2024A&A...682A..97W: Band 3 observing duration likely prevents identifying the structure-function flattening
+- 2024A&A...682A..97W: Magnetar background RM is variable and may contain a contribution from the magnetar's vicinity
+- 2024A&A...682A..97W: Onion-model emission radii are only effective approximations, especially at low optical depth
+- 2024A&A...682A..97W: Simple RIAF model demonstrates feasibility; quantitative conclusions are limited
+- 2024A&A...682A..97W: Modeled lower-frequency photospheres are too small
+- 2024A&A...682A..97W: Only the innermost 300 r_g is ray-traced, excluding a large-scale Faraday screen
+- 2024A&A...682A..97W: Only one selected GRMHD model is quantitatively examined; broader library comparisons remain future work
+- 2021ApJ...907...94C: DCF variants omit finite-resolution and line-of-sight smoothing; reported field strength is an upper limit
+- 2021ApJ...907...94C: Shock type cannot be determined from these data alone
+- 2021ApJ...907...94C: Available one-dimensional shock models do not provide a suitable comparison
+- 2021ApJ...907...94C: Electron fraction is most likely a lower limit because radiation may have increased electron density
+- 2021ApJ...907...94C: Proposed shock need not be spherically symmetric because propagation speed depends on ambient density
+- 2019ApJ...886..103O: Polarization assumed to be only self-scattering; alignment contributions could change the interpretation.
+- 2019ApJ...886..103O: Grain size in rings is not constrained beyond being far from 140 um.
+- 2023A&A...672A..67A: Only a subset of 13 out of 33 ALMA antennas could be used due to computational cost, reducing the SNR and widening the RM posterior distribution compared to full-array imaging.
+- 2023A&A...672A..67A: The small fractional bandwidth of ALMA Band 6 produces only ~2 degrees of EVPA rotation at the M87 core, resulting in a very wide RM posterior (poor RM precision).
+- 2023A&A...672A..67A: Closure traces are only sensitive to differential polarization across the source, requiring at least one component's polarization (and Stokes V = 0) to be held fixed to break global Poincare-sphere r…
+- 2026ApJ...996L..27L: Higher spatial resolution observations are needed to separate the northern spiral arm and overlap region in Arp 220 E, and to resolve the central disk of Arp 220 W and the blueshifted polarized outfl…
+- 2026ApJ...996L..27L: A detailed radiative transfer analysis is required to break the 90 deg Goldreich-Kylafis ambiguity directly rather than relying on the assumption of cospatial dust polarization
+- 2026ApJ...996L..27L: Small number of independent Nyquist polarization measurements in the outflows means DCF B-field strength estimates should be considered upper limits and order-of-magnitude estimates
+- 2026ApJ...996L..27L: Linear polarization in the West core (~0.2%) is close to the 0.1% ALMA instrumental accuracy, so a slight instrumental influence cannot be definitively ruled out, and Stokes V (0.3%) is well below th…
+- 2019MNRAS.489..470G: ALMA and ATCA not simultaneous so no joint fit; small sample prevents firm conclusions
+- 2019MNRAS.489..470G: Stokes V unreliable in Cycle 3
+- 2024A&A...686A.274V: Spatial filtering resolves out much CO flux, overestimating polarisation fractions by factor 2-3.
+- 2024A&A...686A.274V: Circular polarisation of extended lines dominated by beam effects; no test of anisotropic resonant scattering.
+- 2020MNRAS.495.4297S: Stokes I dynamic range only about 300; flux not fully recovered and structure larger than the MRS of 3.9 arcsec is resolved out
+- 2020MNRAS.495.4297S: The reason for structures seen in the SMA map but absent in the ALMA map is unclear
+- 2020MNRAS.495.4297S: Polarization process in the inner region is unclear
+- 2020MNRAS.495.4297S: The magnetic field strength at the stellar surface is not measured; the only value is an extrapolation from a single maser
+- 2015ApJ...812...27A: Inclination poorly constrained by the disk model; mass estimates are uncertain by optical depth, temperature, abundance
+- 2015ApJ...812...27A: PV mean-position method underestimates break radius at limited resolution
+- 2023ApJ...953..113L: JCMT/POL-2 and ALMA observations suffer from missing large-scale extended emission due to spatial filtering/interferometric mode, and ALMA covers a much smaller region (~150 pc at 0.3'' resolution) t…
+- 2023ApJ...953..113L: Using the galaxy-integrated gas surface density concentrated within the outflow core overestimates the volume density and turbulent kinetic energy U_K.
+- 2023ApJ...953..113L: The energy budget and B-SFR scaling assume unscreened B-fields at large heights, apply a spiral-galaxy total-B vs SFR relation to turbulent B-fields in dense starbursts, and neglect that total B-fiel…
+- 2023ApJ...953..113L: The 53-154 um polarization spectrum of the disk may be biased by strong radiation fields from the nearby base of the outflow and sparse independent beams (e.g., only three measurements at 53 um in NG…
+- 2020ApJ...895...64L: Origin of time-varying systematics (e.g. XY phase) not investigated; second-order corrections beyond scope
+- 2016A&A...593A..44L: Absolute flux uncertain (~20%) because Titan scans were largely flagged; single epoch only.
+- 2023Natur.621..483G: Lack sensitivity and resolution to map B-field at ~100 pc scales; field strength cannot be reliably estimated from dust polarization
+- 2025A&A...701A.191V: Every 18.192 s there is a drop-off in the time series caused by the phasing cycle of the array, and 30 minutes of data were unusable.
+- 2025A&A...701A.191V: Pulses with small polarisation fractions or arriving outside the main integrated pulse profile phase window would not be detected by the selection criteria.
+- 2025A&A...701A.191V: The sample size is limited to eight pulses over a limited energy range.
+- 2025A&A...701A.191V: Phased ALMA surveys are unlikely to be sensitive to millisecond pulsars (MSPs).
+- 2022ApJ...939L...6B: Shorter integration times imply higher rms noise, so fainter flares will not be detected.
+- 2022ApJ...939L...6B: ACA has fewer and smaller (7-m) antennas, resulting in 3-5x higher rms noise per integration than the 12-m array, preventing detection of flares of this brightness in the ACA data.
+- 2022ApJ...939L...6B: Due to limited signal-to-noise, spectral index and fractional linear polarization lower limits can only be computed at the peak of the three flares, and lack of polarization calibration leads to larg…
+- 2022ApJ...939L...6B: The 12-m ALMA beam (~1.6'' or ~5 AU) cannot spatially resolve the proposed inner dust belts from the central star, so quiescent flux contains both chromospheric and dust contributions.
+- 2015A&A...584A..16P: Azimuthal alpha_mm variations uncertain, depend on image alignment
+- 2018MNRAS.477.4380S: Dust parameters cannot be simultaneously constrained; clump conditions assumed equal to galaxy-wide
+- 2018MNRAS.477.4380S: Magnetic fields unavailable and neglected
+- 2019ApJ...885L..10L: Systematics associated with phasing cycles in active-phasing scans
+- 2024PASJ...76..960S: CS spectra have multiple components and absorption, limiting physical quantities
+- 2024PASJ...76..960S: Applying DCF to the CND has significant limitations
+- 2024PASJ...76..960S: Gas properties at the Galactic Center are hard to estimate because of distance and line-of-sight contamination
+- 2024PASJ...76..960S: Effective sound speed assumes an isotropic velocity field
+- 2022FrASS...9.1118D: The genetic algorithm is purely a mathematical solution and does not verify whether the atmospheric plasma is in local thermodynamic equilibrium (LTE).
+- 2022FrASS...9.1118D: Low spatial resolution of ALMA single-dish observations (25" at 230 GHz, 58" at 100 GHz) smooths the dark umbra (25" diameter) with surrounding bright areas, masking the umbra at 100 GHz and reducing…
+- 2022FrASS...9.1118D: The modeled atmospheric profiles that fit 230 and 100 GHz well cannot reach the high brightness temperatures observed at 17 GHz in non-polarized regions (reaching at most 1.2 T_qS vs. 2.8 T_qS observ…
+- 2022FrASS...9.1118D: The modeled 17 GHz polarized gyroresonance source is smaller and rounder than the observed elliptical source.
+- 2017A&A...603A..92V: Higher resolution needed to map field structure
+- 2024AJ....168..142L: Image-derived inner radius limited by focal-plane mask.
+- 2024AJ....168..142L: SED inner radius and minimum grain size reach prior boundaries.
+- 2024AJ....168..142L: Dust mass functions mainly as a brightness scaling factor.
+- 2024AJ....168..142L: Radial surface-density profile may be biased by low back-scattering SNR or assumed scattering phase function.
+- 2024AJ....168..142L: Scattered-light geometry and grain properties are degenerate.
+- 2024AJ....168..142L: Surface-density assumptions can significantly change the inferred inner radius.
+- 2019ApJ...878L..26L: Systematic uncertainties from RS dynamics approximations and stochastic random walk; forward-shock parameters degenerate since nu_a not located
+- 2026MNRAS.549ag678P: Empirical constant magnitude offsets applied to align multi-facility optical light curves do not account for the time-evolving color of the transient and leave a systematic flux calibration uncertain…
+- 2026MNRAS.549ag678P: Early blackbody temperature and radius estimates are somewhat uncertain because at T > 30 kK the true blackbody peak lies in the unobserved extreme UV.
+- 2026MNRAS.549ag678P: Host ISM UV absorption lines in the COS spectrum are saturated, preventing abundance determinations.
+- 2026MNRAS.549ag678P: The simplified spherical forward-shock non-thermal SSA model cannot explain the rapid radio flux drop at constant peak frequency after 119 days and omits thermal electron or reverse-shock contributio…
+- 2016A&A...593A..61M: Differential RM imaging with polarized fiducial element can be biased by up to ~30%.
+- 2018ApJ...865...13T: X_CO uncertainty may overestimate mass by a factor of a few
+- 2018ApJ...865...13T: Projection effects: motions in plane of sky unknown
+- 2020PASP..132i4501H: 11x11 grid extent is too small to sample the full beam-squash pattern
+- 2020PASP..132i4501H: Orion-KL maps are dynamic-range limited, not thermal-noise limited
+- 2024A&A...692A..34C: Polarised structure only marginally recovered in the source plane because of faintness
+- 2024A&A...692A..34C: v_max/sigma estimate relies on biased assumptions given the complex velocity field
+- 2024A&A...692A..34C: Sample of two extreme starbursts biases results
+- 2024A&A...692A..34C: Field strength cannot be reliably estimated because resolution is coarser than the turbulence scale
+- 2026PASP..138h4104C: The present dataset does not allow a clean separation of the new delay-fix performance from other contributing factors.
+- 2026PASP..138h4104C: APS phasing efficiency at Band 9 degraded after ~1-2 minutes toward ~30%, limiting usable scan durations to ~60-90 s.
+- 2026PASP..138h4104C: Adverse weather at the Greenland Telescope (GLT) prevented usable data acquisition there, and a 40 s late recording start at APEX in Scan 1 plus missing polarization channels/data-quality issues in S…
+- 2020MNRAS.499.5915M: Patchy ISM prevents control-star polarisation versus distance alone from determining the target's interstellar component.
+- 2020MNRAS.499.5915M: A composite 425SP observation may have underestimated error.
+- 2020MNRAS.499.5915M: Unavailable optical constants prevent a direct composition comparison with the earlier spectral fit.
+- 2020MNRAS.499.5915M: Component weightings are degenerate and depend on spectral sampling.
+- 2020MNRAS.499.5915M: The model does not reproduce the steep short-wavelength polarisation rise.
+- 2020MNRAS.499.5915M: Optical-constant extrapolation and assumed grain shapes prevent tight constraints on exact polarising grain sizes.
+- 2020MNRAS.499.5915M: Non-spherical scattering and radiation-pressure-modified size distributions require further testing.
+- 2024NatAs...8..765L: Recovery is highly ill-posed and not unique; relies on the imposed gravitational and synchrotron models
+- 2024NatAs...8..765L: Error bars show stability of local optima, not posterior uncertainty
+- 2024NatAs...8..765L: Un-modelled accretion-disk variability affects recovery because the model attributes all dynamics to orbital motion
+- 2015Sci...348..311M: B, electron density and path length cannot be disentangled from the RM
+- 2018ApJ...858...85P: Planck detections may be biased upward toward high fractional polarization; forecasts limited to ≤150 GHz, excluding dusty galaxies
+
+### Settings cards flag as needed but not stated
+- casa version: 18
+- self-calibration solution intervals and number of iterations: 7
+- image size and cell size: 6
+- self-calibration solution intervals: 6
+- casa version and pipeline version: 4
+- source coordinates: 4
+- line-free channel ranges for continuum: 3
+- self-calibration solution intervals and reference antenna: 3
+- casa version used: 3
+- casa version and whether the pipeline or manual calibration was used: 3
+- line-free channels used for uvcontsub and fit order: 2
+- flagging details: 2
+- pipeline version: 2
+- flux scale uncertainty: 2
+- self-calibration solution intervals and number of rounds: 2
+- flux calibrator and flux-scale uncertainty: 2
+- primary-beam correction details: 2
+- casa version used for calibration and imaging: 2
+- polarization debiasing method: 2
+- whether self-calibration was applied: 2
+- casa version and calibration procedure: 2
+- polarization calibration details (leakage, angle): 2
+- continuum subtraction method and line-free channels: 2
+- flux calibration uncertainty: 2
+- line-free channels and continuum subtraction method: 2
+- exact continuum line-free channel selections and effective continuum bandwidth.: 1
+- flux calibrator, adopted flux models, flux-scale uncertainty, and calibration scripts for each proj…: 1
+- self-calibration iteration sequence, earlier solution intervals, reference antenna, and solution-co…: 1
+- tclean cell size, image dimensions, deconvolver, masks, stopping thresholds, and primary-beam treat…: 1
+- whether and how continuum subtraction was performed on the spectral-line visibilities.: 1
+- project-to-line assignment and full spectral setup for c18o.: 1
+- exact spectral regridding and smoothing settings resolving the different channel-width descriptions.: 1
+- moment-map integration ranges, masks, and treatment of contaminating emission.: 1
+- map registration, pixel-grid matching, and beam matching before gradient comparisons.: 1
+- dcn spectral extraction coordinates, apertures, fit ranges, noise weights, and fitting implementati…: 1
+- exact northeast-streamer mask and circular-dispersion error treatment.: 1
+- gaussian-filter boundary/nan handling, angle wrapping, and moving-window edge handling.: 1
+- radiation-model source coordinates, gaussian widths, and resolution of the stated flux-ratio incons…: 1
+- casa version and calibration procedure (pipeline vs manual), instrumental polarization calibration …: 1
+- clean masks, iterations, threshold, cell and image size: 1
+
+## Paper excerpts (40 of 311, chosen for detail and spread over fields/years)
+
+### 2025ApJ...992L..31C: First Results from ALPPS: A Sub-Alfvénic Streamer in SVS 13A (2025; star_formation; observational_alma_primary)
+- question: Are dust grains magnetically aligned, and does the magnetic field guide the infalling streamer onto the SVS13A circumbinary disk?
+- step 1: Produce continuum and spectral-line images
+  - method: Extract line-free continuum channels, phase self-calibrate, transfer solutions to lines, and image Stokes parameters and cubes [OBSERVATIONS: "To image the continuum, we manually extracted the line-free channels from each spectral window"] [OBSERVATIONS: "These solutions were then applied to all of the molecular line transitions presented here before imaging."]
+  - software: CASA, tclean
+  - parameter: Final phase self-calibration solution interval: 30 seconds [OBSERVATIONS: "we later iteratively self-calibrated the phase of these data using a final solution interval of 30 seconds"]
+  - parameter: General spectral cubes: 1 km s−1 channel width [OBSERVATIONS: "The spectral cubes were produced by using a 1 km s$^{-1}$ channel width."]
+  - parameter: DCN follow-up spectral resolution ~0.1 km s−1 [Molecular emission: "a much higher angular resolution ($\sim 0^{\prime\prime}.1$) and spectral resolution ($\sim 0.1$ km s$^{-1}$)."]
+  - parameter: Bandpass: J0423-0120, J0510+1800, J0238+1636; gain: J0336+3218; instrumental polarization: J0522-3627 [OBSERVATIONS: "The bandpass was calibrated using J0423-0120, J0510+1800, and J0238+1636."] [OBSERVATIONS: "The time-dependent gain and the instrumental polarization terms were calibrated using J0336+3218 and J0522-3627, respectively."]
+  - validation: Explore weighting from −2 to 2 in steps of 0.5 to assess recovered structure [OBSERVATIONS: "We covered the baseline weighting parameter space from -2 to 2 in steps of 0.5 to explore what structures are recovered in Stokes space for both line and continuum, except for DCN"]
+- step 2: Infer polarization and projected magnetic-field morphology
+  - method: Debias Q/U pixelwise, apply Stokes I cutoff, and rotate polarization angles by 90 degrees [The polarized dust emission: "we debiased the Stokes $Q$ and $U$ images pixel by pixel, enforcing a 3 $\sigma$ cutoff from Stokes $I$ (total intensity), by following (cite: Vaillancourt2006) and (cite: Hull2015)."] [The polarized dust emission: "under the assumption of magnetic alignment of dust grains (i.e., the polarization position angle is rotated by 90$^{\circ}$)."]
+  - parameter: 3σ Stokes I cutoff [The polarized dust emission: "enforcing a 3 $\sigma$ cutoff from Stokes $I$ (total intensity)"]
+  - assumption: Magnetically aligned dust grains [The polarized dust emission: "under the assumption of magnetic alignment of dust grains"]
+  - validation: Check spatial coherence of polarized emission [The polarized dust emission: "the polarized emission varies smoothly and consistently across the region, without abrupt changes or discontinuities"]
+- step 5: Quantify alignment
+  - method: Compute AM=<cos(2Δθ)>, maps and histograms for field versus intensity/velocity gradients [Interpreting the polarized dust emission: "\mathrm{AM} = \left<\cos{(2\Delta\theta_{\mathrm{1,2}}}) \right>~,"] [Alignment Measures: "we computed histograms of the absolute angle differences and of the alignment measure (AM) using 10 equally weighted bins for each distribution."]
+  - parameter: 10 equally weighted histogram bins [Alignment Measures: "using 10 equally weighted bins for each distribution."]
+  - parameter: 8-pixel moving-average window [Alignment Measures: "the moving average window is defined by taking the same window used to calculate the gradient using Gaussian derivatives (8 pixels across) to avoid introducing excessive averaging"]
+  - parameter: robust=0.5 polarized-emission and velocity-gradient maps [Alignment Measures: "The histograms were computed considering the total extent of the polarized emission and the velocity gradient maps produced using the *robust* = 0.5 maps."]
+  - assumption: Compare overlapping emission within the circumbinary disk [Interpreting the polarized dust emission: "We calculate the AM parameter pixel by pixel over the regions where there is emission overlap, but considering only the extension of the circumbinary disk."]
+  - validation: AM maps and histograms agree on preferred field–gradient alignment [Interpreting the polarized dust emission: "Although the histograms also show a population of intermediate values, the preferred orientation is alignment between the inferred magnetic field orientation and the intensity and velocity gradients."]
+- step 8: Estimate streamer magnetic-field strength
+  - method: DCF: Bpos=9.3√nH2 ΔV/δφ μG; propagate errors [A sub-Alfvénic Streamer: "$\mathrm{B}_{\mathrm{pos}} = 9.3 \sqrt{n_{\mathrm{H}_{2}}} \Delta V / \delta \phi$ $\mu$G"] [A sub-Alfvénic Streamer: "where the uncertainty is calculated using error propagation over equation"]
+  - parameter: Northeast streamer above the field bifurcation [A sub-Alfvénic Streamer: "The following analysis only refers to the north-east section of the streamer, over the bifurcation line, where we have established grain alignment by magnetic fields."]
+  - parameter: Mean FWHM ΔV=0.6 km s−1; circular standard deviation δφ=12 degrees [A sub-Alfvénic Streamer: "a mean velocity linewidth, $\langle \Delta V \rangle = 0.6 \,{\mbox{km\,s$^{-1}$}}$"] [A sub-Alfvénic Streamer: "a field dispersion over the streamer of $\delta_{\phi} = 12^{\circ}$ (calculated as the circular standard deviation)"]
+  - parameter: Density uncertainty factor 3; linewidth uncertainty 0.1 km s−1; polarization-angle error 2 degrees [A sub-Alfvénic Streamer: "This absence can have an effect on the uncertainty as large as a factor of 3 (cite: Shirley2015), which we use here."] [A sub-Alfvénic Streamer: "We used 0.1 km s$^{-1}$ in the linewidth (coming from the velocity resolution), and a polarization position angle error of $2^{\circ}$ for the ALMA observations"]
+  - assumption: Gas number density equals DCN critical density ~6×10^6 cm−3 at T~40 K [A sub-Alfvénic Streamer: "Assuming the critical density from DCN$(J=3 \rightarrow 2)$, or $n_{crit} \sim 6\times10^{6}$ cm$^{-3}$, as the gas number density when considering $T \sim 40$ K for the streamer (cite: Hsieh2023)"]
+  - fitting: Linewidth from Gaussian fits to DCN [Molecular emission: "For the ALMA data, we fitted a simple Gaussian model to selected positions in the DCN velocity cube"]
+- step 10: Map the local Alfvénic Mach number
+  - method: Convert moving-window polarization-angle dispersion to MA using the DCF relation [A sub-Alfvénic Streamer: "To obtain a map of $\delta_{\phi}$, we followed (cite: Cortes2024), who applied a moving window to the polarization position angle data."] [A sub-Alfvénic Streamer: "\frac{2\sqrt{2\log 2}\,\pi}{4\,Q}\,\delta\phi"]
+  - parameter: 1 arcsec moving window; robust=1 [A sub-Alfvénic Streamer: "using a moving window of $1^{\prime\prime}$ and a robust value of 1 to recover sufficient emission over the streamer."]
+  - parameter: Q=0.5 [A sub-Alfvénic Streamer: "$Q=0.5$ is a correction factor derived from simulations (cite: Crutcher2004; Liu2022)"]
+  - assumption: Gaussian polarization-angle distribution [A sub-Alfvénic Streamer: "Assuming that the distribution of the polarization position angle is Gaussian"]
+  - assumption: Isotropic 3-dimensional turbulence for the 4/π statistical correction [A sub-Alfvénic Streamer: "$\frac{4}{\pi}$ corresponds to the statistical average of the magnetic field when considering isotropic 3-dimensional turbulence (cite: Crutcher2004)"]
+  - assumption: Dispersion represents local deviations from the mean field; accuracy depends on DCF [A sub-Alfvénic Streamer: "estimating $\mathcal{M}_{\mathrm{A}}$ directly from the dispersion in the field lines requires that the dispersion represent local deviations from the mean field."] [A sub-Alfvénic Streamer: "the estimate of $\mathcal{M}_{\mathrm{A}}$ derived here is as good as DCF itself."]
+  - validation: Repeat with 0.5 arcsec window; dispersion error rises from 6 to 10 degrees [The effect of Using a Smaller Moving Wi…: "using a moving window of $0^{\prime\prime}.5$ in size"] [The effect of Using a Smaller Moving Wi…: "the associated error almost doubles from $6^{\circ}$ to $10^{\circ}$"]
+- result: Polarization fraction over the region = 0.15% to 30% ± not stated % [Polarization Fraction: "the fractional polarization ranges from 0.15% to 30%"]
+- result: Polarization fraction over the binary = 0.15% to ~1% ± not stated % [Polarization Fraction: "Over the binary system, the fractional polarization ranges between 0.15%, marginally close to the ALMA accuracy (cite: Cortes2023), and $\sim 1\%$."]
+- result: Alignment-measure distribution peak = 1 ± not stated dimensionless [abstract: "we find that the AM distribution peaks at a value of 1."]
+- result: Streamer field circular standard deviation = 12 ± not stated degrees [A sub-Alfvénic Streamer: "a field dispersion over the streamer of $\delta_{\phi} = 12^{\circ}$ (calculated as the circular standard deviation)"]
+- result: Plane-of-sky magnetic-field strength Bpos = 1.1 ± ± 0.6 mG [A sub-Alfvénic Streamer: "we obtain $\mathrm{B}_{\mathrm{pos}} = 1.1 \pm 0.6$ mG"]
+- result: Alfvénic Mach number along significant portions of the streamer = < 1 ± not stated dimensionless [A sub-Alfvénic Streamer: "The resulting map suggests that the gas motions along significant portions of the streamer are sub-Alfvénic ($< 1$)"]
+- result: Dispersion-estimate statistical error with 1 arcsec window = ~6 ± not stated degrees [A sub-Alfvénic Streamer: "Using a $1^{\prime\prime}$ moving window yields an error estimate of $\sim 6^{\circ}$"]
+- result: Dispersion-estimate statistical error with 0.5 arcsec window = about 10 ± not stated degrees [The effect of Using a Smaller Moving Wi…: "yielding an error of about $10^{\circ}$ when we use a population dispersion estimate of $12^{\circ}$ (cite: Cortes2024)."]
+- limitation (authors): High polarization fractions outside the disk may reflect missing Stokes I flux [Polarization Fraction: "The higher values $(> 10\%)$ are seen outside the circumbinary disk and might be the result of missing flux in the total intensity emission"]
+- limitation (authors): C18O may be contaminated by a wide-angle outflow [C18O (J=2→1): "The presence of a wide-angle outflow in this source may introduce some kinematic contamination in the C$^{18}$O emission, which is difficult to untangle."]
+- limitation (authors): DCN critical-density uncertainty dominates because collisional rates are lacking [A sub-Alfvénic Streamer: "The uncertainty in the critical number density is likely the largest factor because of the lack of collisional rates for DCN (cite: Hsieh2024)."]
+- not stated (card): Exact continuum line-free channel selections and effective continuum bandwidth.; Flux calibrator, adopted flux models, flux-scale uncertainty, and calibration scripts for each project.; Self-calibration iteration sequence, earlier solution intervals, reference antenna, and solution-combination settings.; tclean cell size, image dimensions, deconvolver, masks, stopping thresholds, and primary-beam…
+
+### 2019A&A...630A..54B: ALMA resolves the hourglass magnetic field in G31.41+0.31 (2019; star_formation; observational_alma_primary)
+- question: What is the magnetic field morphology and strength in the hot molecular core G31.41+0.31 at ~0.2'' resolution, and does the field prevent fragmentation and collapse?
+- step 1: Image Stokes I, Q, U and derive polarization quantities
+  - method: CLEAN imaging with natural weighting; P=sqrt(Q^2+U^2), p=P/I, psi=0.5 arctan(U/Q); segments rotated 90 deg for B field [2 Observations: "we derived the linear polarization intensity, $P=\sqrt{Q^2+U^2}$, the fractional linear polarization, $p=P/I$, and the polarization position angle"]
+  - software: CASA, GILDAS
+  - assumption: Polarization from magnetically aligned dust grains [2 Observations: "Assuming that the polarization is produced by magnetically aligned dust grains"]
+  - validation: Self-calibration tested but not helpful; scattering ruled out by comparison with SMA 870 um pattern and polarization fractions [Observations: "We performed self-calibration using the total intensity (Stokes $I$) image as a model but the images did not improve and we decided not to apply it."]
+- step 2: Estimate line contamination of Stokes I flux
+  - method: Scale 217 GHz continuum flux of BEL18 to 233 GHz with S~nu^(2+beta), beta=1 and 2, compare with measured flux [3.1 Continuum emission: "We used two different values of the dust emissivity index, $\beta=1$ and 2, and estimated a dust continuum emission flux of 4.64 and 4.98 Jy, respectively."]
+  - assumption: beta=1 and 2 [3.1 Continuum emission: "We used two different values of the dust emissivity index, $\beta=1$ and 2"]
+- step 3: Fit magnetostatic toroid model to polarization angles
+  - method: DustPol models for grid of lambda (1.63, 2.66, 8.38), b0, phi, i; synthetic maps via simobserve/simanalyze; chi-squared on polarization angles within 5 sigma contour [4.1 Modeling the magnetic field: "For each combination of $\lambda$, $b_0$, $\varphi$, and $i$, we performed a chi-squared test for the difference between the observed and the modeled polarization angles within the $5\sigma$ contour"]
+  - software: DustPol/ARTIST, LIME, CASA
+  - parameter: effective sound speed 1.4 km/s [4.1 Modeling the magnetic field: "we set the effective sound speed to 1.4 km s$^{-1}$"]
+  - assumption: Isothermal model, axially symmetric singular toroid; temperature profile from BEL18 [4.1 Modeling the magnetic field: "The model is isothermal, and the value of the sound speed provides the scaling for both the density and the magnetic field strength."]
+  - fitting: Reduced chi-squared grid; 1 sigma errors from the method of Lampton et al. 1976 [4.1 Modeling the magnetic field: "The $1\sigma$ errors have been estimated using the method of Lampton et al. ((cite: lampton76))."]
+  - validation: lambda=8.38 discarded because G31 is optically thick; constant temperature 250 K tested; b0>0.1 discarded [4.1 Modeling the magnetic field: "This allowed us to discard the case $\lambda=8.38$, since we know that G31 is optically thick toward the center (BEL18)."]
+- step 4: Estimate B strength with DCF method
+  - method: B_pos = xi*sigma_los/dpsi_int*sqrt(4 pi rho); dispersion from Gaussian fits to residual histogram (4 deg bins) in 15 sigma region; B=B_pos/cos i [4.2 Magnetic field strength estimate: "Our modeling provides the inclination with respect to the plane of the sky, $i$, which allows us to estimate the total magnetic field strength as $B=B_{\rm pos}/\cos i \simeq8$–13 mG"]
+  - parameter: sigma_los=2.1 km/s from DeltaV~5 km/s; n=1.4e7 cm-3; R=1.1''; sigma_psi=27.6 and 17.3 deg [4.2 Magnetic field strength estimate: "Using $\Delta V\simeq5$ km s$^{-1}$, the value of $\sigma_{\rm los}$ is 2.1 km s$^{-1}$."]
+  - assumption: Distance 3.7 kpc, spherical symmetry, xi=0.5 [4.2 Magnetic field strength estimate: "Assuming a distance of 3.7 kpc, the mass of the Main core is $\sim$26 $M_\ensuremath{\odot}$"]
+  - fitting: Gaussian fits to residual distribution, full and limited to +-45 deg [Magnetic field strength estimate: "A Gaussian fit over the whole distribution of residuals gives an average value of $0.6^\circ \pm 27.6^\circ$."]
+  - validation: Compared with GIR09 B_pos corrected for distance (~20 mG for i=-45 deg) [4.2 Magnetic field strength estimate: "GIR09 have estimated a value of $B_{\rm pos}$ of $\sim 14$ mG (corrected for a distance of 3.7 kpc)"]
+- result: Total flux inside 5 sigma contour (Stokes I) = 6.86 ± 0.06 Jy [3.1 Continuum emission: "is $6.86 \pm 0.06$ Jy, while the peak flux is $369 \pm 1$ mJy beam$^{-1}$"]
+- result: Peak Stokes I flux = 369 ± 1 mJy/beam [3.1 Continuum emission: "the peak flux is $369 \pm 1$ mJy beam$^{-1}$"]
+- result: Line contamination of Stokes I flux = 48% (beta=1), 38% (beta=2) ± not stated percent [3.1 Continuum emission: "the line contamination of the total flux at 233 GHz would be of 48% for $\beta=1$ and 38% for $\beta=2$"]
+- result: Polarization fraction range in HMC = 0.1 to 13 ± not stated percent [3.2 Polarized emission: "The polarization fraction in the HMC ranges from 0.1% to 13%."]
+- result: Maximum polarized flux = 2.4 ± not stated mJy/beam [3.2 Polarized emission: "with a maximum polarized flux of 2.4 mJy beam$^{-1}$"]
+- result: Best-fit inclination = -45 ± +3/-4 deg [4.1 Modeling the magnetic field: "the best model is given by $\lambda=2.66$, $i=-{45^\circ}_{-4^\circ}^{+3^\circ}$"]
+- result: Best-fit magnetic axis position angle = -44 ± +6/-4 deg [4.1 Modeling the magnetic field: "$\varphi=-{44^\circ}_{-4^\circ}^{+6^\circ}$"]
+- result: Residual dispersion sigma_psi = 27.6 (full) and 17.3 (limited to +-45 deg) ± not stated deg [4.2 Magnetic field strength estimate: "the standard deviations on the polarization angle dispersion from the two Gaussian fits, $\sigma_\psi$, are $27.6^\circ$ and $17.3^\circ$"]
+- result: Total magnetic field strength = 8-13 ± not stated mG [4.2 Magnetic field strength estimate: "$B=B_{\rm pos}/\cos i \simeq8$–13 mG, for an intrinsic dispersion of $27.6^\circ$ and $17.3^\circ$, respectively"]
+- result: Turbulent to uniform field ratio dB/B = ~0.7 and ~1 ± not stated dimensionless [5.1 A supercritical core: "we obtain $\delta B/B\sim0.7$ and $\sim1$, for $\delta\psi= 17.3^\circ$ and $27.6^\circ$, respectively"]
+- limitation (authors): Stokes I flux is an upper limit because of line contamination; polarization fractions are lower limits [3.2 Polarized emission: "the polarization fraction has to be taken as a lower limit"]
+- limitation (authors): Mass-to-flux ratio is a lower limit because the core mass and stellar content may be underestimated [4.2 Magnetic field strength estimate: "the observed value of the mass-to-flux ratio should be taken as a lower limit"]
+- not stated (card): CASA version and calibration procedure (pipeline vs manual), instrumental polarization calibration details; CLEAN masks, iterations, threshold, cell and image size; How the continuum was extracted from the TDM spectral windows (line-free channels); Polarization debiasing and Stokes thresholds used for the vector selection; Pixel sampling and number of angles in the chi-squared test; grid steps in…
+
+### 2024MNRAS.528..843L: Panchromatic (Sub)millimeter polarization observations of HL Tau unveil aligned scattering grains (2024; protoplanetary_disks; observational_alma_primary)
+- question: Does the polarization transition extend to other wavelengths and agree with optical depth effects of toroidally aligned prolate grains?
+- step 1: Make consistent continuum Stokes images
+  - method: Remove prominent molecular lines, self-calibrate each ALMA band, and deep-clean all four Stokes parameters [ALMA Observations: "However, we identified some prominent molecular lines that we removed when making the continuum images."] [ALMA Observations: "For all the ALMA data presented in this paper, including archival and new data, we self-calibrated and imaged the data for all 5 bands so that they would all be imaged in a consistent manner."]
+  - software: CASA, tclean
+  - parameter: CASA 6.2.1.7 for all ALMA line removal, self-calibration, and imaging [ALMA Observations: "Line removal, self-calibration, and imaging were performed using the CASA version 6.2.1.7 for all the bands."]
+  - parameter: Three phase-only self-calibration rounds: infinity, 30.5 s, 10.4 s [ALMA Observations: "The data from every band went through three rounds of phase-only self-calibration, with solution intervals *infinity*, 30.5 s, and 10.4 s."]
+  - parameter: Briggs robust = 0.5 [ALMA Observations: "We use *tclean* for imaging and use the Briggs robust parameter of 0.5 for each wavelength."]
+  - validation: Final signal-to-noise ratios ∼1200, 890, 1200, 1100, 1300 for Bands 3–7 [ALMA Observations: "led to signal-to-noise ratios of $\sim 1200$, 890, 1200, 1100, and 1300 from Bands 3 to 7, respectively."]
+- step 2: Construct polarization quantities
+  - method: Debias linear polarized intensity using its PDF; derive polarization angle, fraction, and normalized Stokes q and u [Construction of Polarization Images: "Following (cite: Vaillancourt2006PASP..118.1340V) and (cite: Hull2015JAI.....450005H), we debias the linear polarized intensity by considering the probability density function (PDF):"] [Construction of Polarization Images: "The polarization angle is defined by"]
+  - parameter: σP = sqrt[(σQ² + σU²)/2] [Construction of Polarization Images: "\sigma_{P} = \sqrt{(\sigma_{Q}^{2} + \sigma_{U}^{2}) / 2}"]
+  - parameter: For Pm ≥ 5σP, P = sqrt(Q² + U² − σP²); use PDF below 5σP [Construction of Polarization Images: "For high signal-to-noise detections ($P_{m} \geq 5\sigma_{P}$), a simple approximation exists:"] [Construction of Polarization Images: "P = \sqrt{ Q^{2} + U^{2} - \sigma_{P}^{2} },"]
+  - parameter: Integrate Stokes I above 3σI; polarization detections also require Stokes I above 3σI [Construction of Polarization Images: "$F_{\nu}$ is the flux density of Stokes $I$ where we use emission above 3 $\sigma_{I}$."] [Polarization Morphology: "we only consider polarization detections where Stokes $I$ is also detected above $3\sigma_{I}$."]
+  - parameter: ALMA polarization-fraction error floor 0.033% [Construction of Polarization Images: "Thus, we use the error of $0.033\%$ whenever the error"] [Construction of Polarization Images: "is less than this value for data from ALMA."]
+  - assumption: IAU Stokes-sign convention; E-vectors; polarization angle East-of-North [Construction of Polarization Images: "The sign of the Stokes parameters follows the IAU convention (cite: Contopoulos1974tiau.book.....C; Hamaker1996A&AS..117..137H; Hamaker1996A&AS..117..161H)."] [Construction of Polarization Images: "and goes East-of-North."]
+  - assumption: 10% absolute flux calibration uncertainty ignored thereafter [Construction of Polarization Images: "We assume a 10$\%$ absolute calibration uncertainty based on the VLA and the ALMA technical handbooks, but we ignore it for the rest of the paper."]
+  - fitting: Maximize PDF(P | Pm, σP) to estimate true polarized intensity [Construction of Polarization Images: "which describes the probability of the true linear polarized intensity $P$ given a measured $P_{m}$ and noise level $\sigma_{P}$."] [Construction of Polarization Images: "Thus, we obtain $P$ by finding the maximum"]
+- step 3: Register image centers
+  - method: Fit a 2D Gaussian to each band's Stokes I and use the fitted center as the image origin [Individual Polarization Quantities: "we fit a 2D Gaussian to the Stokes $I$ of each band and set the center of the fitted 2D Gaussian as the origin of the image."]
+  - software: CASA, imfit
+  - parameter: Input noise: σI from Table 2 [Individual Polarization Quantities: "We use the CASA task *imfit* for the fitting and we use $\sigma_{I}$"] [Individual Polarization Quantities: "as the input noise level."]
+  - fitting: 2D Gaussian with fitted center, deconvolved major and minor FWHM, and position angle [Individual Polarization Quantities: "lists the resulting best-fit value and uncertainty of the center, deconvolved major and minor FWHM, and the position angle."]
+- step 4: Rotate to the disk principal frame
+  - method: Rotate image coordinates by η and Stokes Q, U by 2η; normalize Q′ and U′ by I [Principal Frame View: "Stokes $Q'$ and $U'$ are related to the Stokes $Q$ and $U$ in the original sky frame with a simple rotation."] [Principal Frame View: "\cos 2 \eta & \sin 2 \eta \\"]
+  - parameter: η = 48.02° [Principal Frame View: "Thus, we have $\eta = 48.02^{\circ}$."]
+  - assumption: x along disk minor axis toward the far side; y along disk major axis, 90° East-of-North from x [Principal Frame View: "We define an image frame with coordinates $x$ and $y$, such that the $x$- and $y$-axes are along the disk minor and major axes, respectively."] [Principal Frame View: "we arbitrarily fix the positive $x$-direction to the far side of the disk."]
+  - assumption: Disk major-axis PA 138.02°; northeast is the far side [Principal Frame View: "The position angle of the disk major axis is $138.02^{\circ}$ based on high angular resolution images from (cite: ALMApartnership2015)."] [Principal Frame View: "The far side of the disk is to the northeast since the outflow direction is blueshifted to the northeast and redshifted to the southwest (cite: ALMApartnership2015; Yen2017A&A...608A.134Y)."]
+  - validation: Reference-frame derivation explicitly follows IEEE convention and differs from Lin2022 [Principal Frame View: "Note that the coordinate system is different from the definition adopted in (cite: Lin2022), and we provide the derivation of the principal frame that strictly follows the IEEE definition."]
+- step 5: Separate scattering and thermal polarization
+  - method: Fit q′ = s + t(cos² i sin² Φ − cos² Φ) and u′ = −t cos i sin 2Φ to azimuthal profiles at 100 au in each ALMA band [Methodology: "q' &= s + t (\cos^{2} i \sin^{2} \Phi - \cos^{2} \Phi)"] [Methodology: "u' &= - t \cos i \sin 2\Phi"]
+  - software: emcee
+  - parameter: 100 au; azimuthal sampling steps equal to geometric average of beam size [Methodology: "we fit the azimuthal profile of $q'$ and $u'$, respectively, at 100 au first for each band."] [Methodology: "Sampling the azimuthal profile uses steps equal to the geometric average of the beam size."]
+  - parameter: ALMA bands only [Methodology: "We limit the model to the ALMA Bands since the polarization is better detected around the full azimuth."]
+  - assumption: Axisymmetric inclined disk; prolate-grain alignment axes in the disk midplane and azimuthal direction [Methodology: "Next, we consider an inclined axisymmetric disk"] [Methodology: "The alignment axes of the prolate grains are in the disk midplane and in the azimuthal direction."]
+  - assumption: Geometrically thin dust layer approximated locally by plane-parallel slabs [Methodology: "Since the dust layer responsible for the HL Tau (sub)millimeter continuum is geometrically thin (cite: Pinte2016ApJ...816...25P), one can approximate each local patch of the dust disk as a plane-parallel slab."]
+  - assumption: Scattering contributes a constant s only to q′; thermal polarization supplies azimuthal variation; components add linearly [Polarization Analysis: "The technique relies on the approximation that scattering mainly produces a constant polarization due to inclination, thermal polarization produces the azimuthal variation, and both quantities add linearly based on polarized radiation transfer calculations in a simplified plane-parallel geometry."] [Methodology: "The polarization from the scattering component, which we denote as $s$, is largely constant of azimuth and only contributes to $q'$ since the inclination-induced polarization is always parallel to the disk minor axis."]
+  - assumption: Prolate grain in dipole limit; p0 ≪ 1; tp(θg) = t sin² θg, with t attenuated by optical depth [Methodology: "Assuming a prolate grain in the dipole limit, the polarization purely from thermal emission is"] [Methodology: "Since $p_{0} \ll 1$, the resulting polarization remains $\propto p_{0} \sin^{2} \theta_{g}$"]
+  - assumption: Distance 147.3 pc [Introduction: "We adopt a distance of 147.3 pc for HL Tau for consistency with the recent high angular resolution study (cite: CarrascoGonzalez2019ApJ...883...71C)."]
+  - fitting: emcee MCMC; 32 walkers, 2500 steps, first 500 discarded; marginalized medians and 16th/84th percentiles [Methodology: "We use 32 walkers and a total of 2500 steps. We ignore the first 500 steps to obtain the posterior probability distribution."] [Methodology: "The best-fit values are determined from the median of the marginalized distribution, and the $1\sigma$ uncertainties use the 16th and 84th percentile."]
+  - validation: Changing walking parameters did not significantly change results; model describes both q′ and u′ across all five bands; posterior distributions shown [Methodology: "Modifying the walking parameters does not significantly change the results."] [Results: "We find that the linear decomposition model describes all five bands, in both $q'$ and $u'$, remarkably well considering the simplicity of the model."]
+- step 8: Measure radial scattering and thermal profiles
+  - method: Repeat azimuthal-profile fitting at each radius using images at original resolution [Results: "We conduct the same process at each radius to obtain the radial dependence of $s$ and $t$ at each wavelength."] [Results: "To maximize the benefits of the high angular resolution, we fit the azimuthal profile at the images with their original resolution."]
+  - software: emcee
+  - parameter: Minimum radius allows at least eight points for sinusoidal fit; maximum radius set by insufficient 3σ detection around azimuth [Results: "The minimum radius is chosen such that we have at least eight points to fit the sinusoidal curve. The maximum radius cuts off where there is not enough $3\sigma$ detection around the azimuth."]
+  - assumption: Inner thermal-polarization drop below 50 au likely affected by beam averaging [Results: "The drop towards the inner radius ($< 50$ au) is likely due to beam averaging which artificially decreases the azimuthal variation from thermal polarization by aligned grains."]
+  - fitting: Same s, t azimuthal decomposition repeated radially [Results: "We conduct the same process at each radius to obtain the radial dependence of $s$ and $t$ at each wavelength."]
+  - validation: Compare shared thermal-profile features across Bands 4–7 with known gaps and ring [Results: "For Bands 4 to 7, $t$ appears to peak at $r\sim70$ au and drop to a minimum at $r\sim 90$ au."] [Results: "The peak at $r\sim 70$ au appears to coincide with the two close and deepest gaps at $68$ and $78$ au (cite: ALMApartnership2015)."]
+- step 9: Measure near-far side asymmetry
+  - method: Average principal-frame Stokes parameters across a beam-width minor-axis slit; compare near and far I, Q′, and q′ [Near-far Side Asymmetry: "The cut uses a slit along the minor axis with a finite width equal to the beam size and averages the Stokes parameters in the principal frame along the width."] [Near-far Side Asymmetry: "Likewise, we show $q'$ which fully represents the polarization fraction while retaining the direction of polarization."]
+  - parameter: f = (Inear − Ifar)/[(Inear + Ifar)/2]; q′ comparison uses a difference, not a fractional difference [Near-far Side Asymmetry: "f \equiv \frac{ I_{\text{near}} - I_{\text{far}} }{ (I_{\text{near}} + I_{\text{far}}) / 2 }"] [Near-far Side Asymmetry: "Note that this is not the *fractional* difference, like that used for Stokes $I$."]
+  - assumption: Along the minor axis U′ ∼0, so Q′ represents polarized intensity while retaining direction [Near-far Side Asymmetry: "In the principal frame, $P$ is well represented by Stokes $Q'$, since Stokes $U'$ is $\sim 0$ and using Stokes $Q'$ retains the sign to represent the direction of polarization."]
+  - fitting: Uncertainty of f from error propagation [Near-far Side Asymmetry: "The uncertainty of $f$ is estimated through error propagation."]
+  - validation: Consistent offsets across wavelengths strengthen the asymmetry detection; compare with scattering models [Near-far Side Asymmetry: "In addition, the consistent offset across wavelengths strengthens the case that the asymmetry is real."] [What can produce the near-far side asym…: "The polarization asymmetry from the data (except the inner regions of Band 4) appears to match the model expectation overall."]
+- step 10: Test Q-band aligned-grain predictions
+  - method: Deproject detected-vector locations, predict polarization angles with s = 0, rotate to sky frame, compare normalized angle residuals, and infer t from p [Q-Band consistency with toroidally alig…: "we can deproject the location of the detected vectors and derive the expected $\chi$ from toroidally aligned prolate grains."] [Q-Band consistency with toroidally alig…: "but assume $s=0$ to derive the $\chi$ in the principal frame and rotate it to the sky frame."]
+  - parameter: Four detected polarization vectors [Q-Band consistency with toroidally alig…: "the probability for random noise to have 4 points within $\pm 1\sigma_{\chi}$ of the expected polarization direction"]
+  - assumption: s = 0 for predicted polarization angles [Q-Band consistency with toroidally alig…: "but assume $s=0$ to derive the $\chi$ in the principal frame and rotate it to the sky frame."]
+  - assumption: Likely optically thin disk permits comparing inferred t with intrinsic p0 [Q-Band consistency with toroidally alig…: "Given that the disk is likely optically thin (cite: CarrascoGonzalez2016ApJ...821L..16C; CarrascoGonzalez2019ApJ...883...71C), we estimate that the intrinsic polarization of grains, $p_{0}$, should be comparable."]
+  - fitting: t uncertainties propagated using only uncertainty in p [Q-Band consistency with toroidally alig…: "where the uncertainty is from error propagation with only the uncertainty from $p$."]
+  - validation: Normalized angle residuals 0.5, -0.4, 0.4, 0.08; random-angle probability ∼7 × 10^-5 [Q-Band consistency with toroidally alig…: "The differences with the observed $\chi$ normalized by the $\sigma_{\chi}$ are 0.5, -0.4, 0.4, and 0.08 which means the observed $\chi$ are consistent with toroidally aligned prolate grains."] [Q-Band consistency with toroidally alig…: "$\Pi_{i=1}^{4} 2 \sigma_{\chi, i} / 180^{\circ} \sim 7 \times 10^{-5}$"]
+- step 11: Constrain grain structure
+  - method: Compare weak scattering-spectrum wavelength dependence and absence of a thermal-polarization flip with compact and porous-grain expectations [Grain structure: "Aside from the scattering behavior, the lack of any flip in the underlying thermal polarization direction from aligned grains from 870 $\mu$m to 7 mm also constrains the grain structure."] [Grain structure: "Based on the weak $\lambda$ dependence of scattering polarization and the lack of any flip in the underlying thermal polarization, we suspect that the grains in HL Tau are porous, and prolate with a maximum size of $\sim 1$ mm."]
+  - assumption: For compact elongated grains, Rayleigh-regime thermal polarization follows the projected long axis when λ > 2πa; a flip can occur in the Mie regime [Grain structure: "Compact elongated grains produce thermal polarization following the direction along the projected long axis when $\lambda$ is much larger than grain size $a$, or more specifically when $\lambda > 2 \pi a$ (Rayleigh regime)."] [Grain structure: "However, when $\lambda$ is comparable to $2 \pi a$ (Mie regime), the (thermal) polarization direction can flip, i.e., change by $90^{\circ}$, and become perpendicular to the projected long axis"]
+  - validation: Detailed modeling of such grains against multiwavelength Stokes I and polarization deferred to future work [Grain structure: "Future efforts to incorporate such grains into detailed modeling for comparison with the multi-wavelength Stokes $I$ and polarization data will be valuable."]
+- result: Thermal-component radial peak, Bands 4–7 = ∼70 ± not stated au [Results: "For Bands 4 to 7, $t$ appears to peak at $r\sim70$ au and drop to a minimum at $r\sim 90$ au."]
+- result: Thermal-component radial minimum, Bands 4–7 = ∼90 ± not stated au [Results: "For Bands 4 to 7, $t$ appears to peak at $r\sim70$ au and drop to a minimum at $r\sim 90$ au."]
+- result: Stokes I near-far fractional differences across bands = ∼5 ± not stated % [Near-far Side Asymmetry: "The fractional differences are $\sim 5\%$ across bands based on $f$"]
+- result: Near-side minus far-side q′ at r ∼70 au = ∼0.3 ± not stated % [Near-far Side Asymmetry: "At regions with more confident detection, $r \sim 70$ au, the near side $q'$ is larger than the far side $q'$ by $\sim 0.3\%$ across bands."]
+- result: Near-side minus far-side q′ at larger radii = ∼1 ± not stated % [Near-far Side Asymmetry: "At even larger radii, the difference increases to $\sim 1\%$, but with less certainty."]
+- result: Q-band thermal component t, vector 1 = 4.1 ± ±0.9 % [Q-Band consistency with toroidally alig…: "We find that the values are $4.1 \pm 0.9 \%$, $9\pm 3\%$, $15 \pm 5 \%$, and $10\pm 3 \%$"]
+- result: Q-band thermal component t, vector 2 = 9 ± ±3 % [Q-Band consistency with toroidally alig…: "We find that the values are $4.1 \pm 0.9 \%$, $9\pm 3\%$, $15 \pm 5 \%$, and $10\pm 3 \%$"]
+- result: Q-band thermal component t, vector 3 = 15 ± ±5 % [Q-Band consistency with toroidally alig…: "We find that the values are $4.1 \pm 0.9 \%$, $9\pm 3\%$, $15 \pm 5 \%$, and $10\pm 3 \%$"]
+- result: Q-band thermal component t, vector 4 = 10 ± ±3 % [Q-Band consistency with toroidally alig…: "We find that the values are $4.1 \pm 0.9 \%$, $9\pm 3\%$, $15 \pm 5 \%$, and $10\pm 3 \%$"]
+- result: Q-band angle residuals normalized by σχ, vectors 1–4 = 0.5, -0.4, 0.4, 0.08 ± not stated dimensionless [Q-Band consistency with toroidally alig…: "The differences with the observed $\chi$ normalized by the $\sigma_{\chi}$ are 0.5, -0.4, 0.4, and 0.08 which means the observed $\chi$ are consistent with toroidally aligned prolate grains."]
+- result: Probability of four random angles within ±1σχ of predictions = ∼7 × 10^-5 ± not stated dimensionless [Q-Band consistency with toroidally alig…: "$\Pi_{i=1}^{4} 2 \sigma_{\chi, i} / 180^{\circ} \sim 7 \times 10^{-5}$"]
+- result: Q-band median polarization fraction = 6.7 ± not stated % [Table 2: "| Q | 6.97 | 0.16 | 0.14 | 45 | 4.9 | 3.9 | 4.0 | 1.010 | 17 | 6.7 | 4.94 |"]
+- result: Band 3 median polarization fraction = 1.8 ± not stated % [Table 2: "| 3 | 3.08 | 0.43 | 0.29 | -13 | 21 | 7.0 | 7.0 | 25.45 | 144 | 1.8 | 75.0 |"]
+- result: Band 4 median polarization fraction = 1.6 ± not stated % [Table 2: "| 4 | 2.07 | 0.21 | 0.19 | -28 | 31 | 7.7 | 7.7 | 27.53 | 186 | 1.6 | 215 |"]
+- result: Band 5 median polarization fraction = 1.1 ± not stated % [Table 2: "| 5 | 1.48 | 0.19 | 0.16 | -76 | 40 | 12 | 12 | 47.16 | 360 | 1.1 | 525 |"]
+- result: Band 6 median polarization fraction = 0.88 ± not stated % [Table 2: "| 6 | 1.29 | 0.27 | 0.16 | -46 | 72 | 15 | 15 | 81.78 | 590 | 0.88 | 710 |"]
+- result: Band 7 median polarization fraction = 0.87 ± not stated % [Table 2: "| 7 | 0.872 | 0.20 | 0.13 | -81 | 92 | 25 | 24 | 121.16 | 740 | 0.87 | 1880 |"]
+- result: Q-band integrated Stokes I flux density = 4.94 ± not stated mJy [Table 2: "| Q | 6.97 | 0.16 | 0.14 | 45 | 4.9 | 3.9 | 4.0 | 1.010 | 17 | 6.7 | 4.94 |"]
+- result: Band 3 integrated Stokes I flux density = 75.0 ± not stated mJy [Table 2: "| 3 | 3.08 | 0.43 | 0.29 | -13 | 21 | 7.0 | 7.0 | 25.45 | 144 | 1.8 | 75.0 |"]
+- result: Band 4 integrated Stokes I flux density = 215 ± not stated mJy [Table 2: "| 4 | 2.07 | 0.21 | 0.19 | -28 | 31 | 7.7 | 7.7 | 27.53 | 186 | 1.6 | 215 |"]
+- result: Band 5 integrated Stokes I flux density = 525 ± not stated mJy [Table 2: "| 5 | 1.48 | 0.19 | 0.16 | -76 | 40 | 12 | 12 | 47.16 | 360 | 1.1 | 525 |"]
+- result: Band 6 integrated Stokes I flux density = 710 ± not stated mJy [Table 2: "| 6 | 1.29 | 0.27 | 0.16 | -46 | 72 | 15 | 15 | 81.78 | 590 | 0.88 | 710 |"]
+- result: Band 7 integrated Stokes I flux density = 1880 ± not stated mJy [Table 2: "| 7 | 0.872 | 0.20 | 0.13 | -81 | 92 | 25 | 24 | 121.16 | 740 | 0.87 | 1880 |"]
+- result: Conditional compact-grain size bound from lack of polarization flip = smaller than ∼140 ± not stated μm [Grain structure: "At face value, the lack of any flip even at our shortest wavelength band implies that the grain size should be smaller than $\sim 140$ $\mu$m."]
+- limitation (authors): Few marginal Q-band vectors prevent analysis of azimuthal variation [Grain structure: "Though the few marginally detected polarization vectors at Q-band prohibit an anlaysis of the azimuthal variation,"]
+- limitation (authors): Q-band t uncertainties use only p uncertainty [Q-Band consistency with toroidally alig…: "where the uncertainty is from error propagation with only the uncertainty from $p$."]
+- limitation (authors): Q-band central vector can be contaminated by scattering or diminished by beam averaging [Q-Band consistency with toroidally alig…: "However, that particular vector can be contaminated by scattering, which gives positive $Q'$, or artificially diminished due to beam averaging effects since the vector is located near the center."]
+- not stated (card): Numerical disk inclination used to deproject positions and evaluate the q′ and u′ models.; Exact flagged spectral channels and retained continuum bandwidth for each ALMA dataset.; tclean cell size, image size, deconvolver, stopping threshold, iteration limits, and exact disk masks.; Self-calibration reference antenna, gaincal combination and solution-selection settings, and application details.; …
+
+### 2023Natur.623..705S: Aligned grains and scattered light found in gaps of planet-forming disk (2023; protoplanetary_disks; observational_alma_primary)
+- question: Explain the resolved ring-and-gap polarization with scattering and emission from aligned grains.
+- step 1: Prepare and image total intensity
+  - method: Self-calibrate 2019.1.01051.S, remove line-contaminated channels, align and flux-rescale configurations, then image Stokes I. [Observations and Data Reduction: "The Stokes $I$ continuum emission was created using only the 2019.1.01051.S data."] [Observations and Data Reduction: "They were self-calibrated using three iterative phase-only calibration and cleaning stages, with progressively lower time intervals down to 10.4 seconds."]
+  - software: CASA, fixplanets, phaseshift, gencal
+  - parameter: Remove 9 channels containing C17O, SO2 and CH3CO emission; ~3% of total bandwidth [Observations and Data Reduction: "We then removed 9 channels contaminated by line emission from C$^{17}$O, SO$_2$, and CH$_3$CO in different spectral windows, which account for $\sim$3% of the total bandwidth."]
+  - parameter: robust = 0.5; beam 35.5 × 30.5 mas at PA 22° [Observations and Data Reduction: "It was constructed using a robust weighting of 0.5, and the synthesized beam was 35.5 mas $\times$ 30.5 mas at a position angle of 22$^\circ$ (measured counterclockwise from North)."]
+  - validation: Final rms 15.9 μJy beam^-1 and peak signal-to-noise 1073; Science Verification combination reduced signal-to-noise. [Observations and Data Reduction: "The final Stokes I image has an rms noise level of 15.9$\mu$Jy beam$^{-1}$, which gives a signal-to-noise ratio of 1073 at the peak."] [Observations and Data Reduction: "We also attempted to combine these Stokes $I$ data with HL Tau Science Verification data(cite: ALMA2015), but we found that these data reduced the signal to noise."]
+- step 2: Construct polarization maps
+  - method: Combine both projects after matching calibration, peak position and flux; interactive Högbom CLEAN; debias polarization. [Observations and Data Reduction: "but self-calibrating in the same manner as above, and aligning the peak position, and re-scaling the flux of the visibilities to match that of the 2019.1.01051.S combined data."] [Observations and Data Reduction: "After a Högbom CLEAN deconvolution interactive process in CASA using a robust parameter of 0.5"]
+  - software: CASA
+  - parameter: Polarization beam 37.4 × 31.8 mas at PA 26°; rms 8.4 μJy beam^-1 [Observations and Data Reduction: "the final beam size for the polarization data was 37.4 mas $\times$ 31.8 mas with a position angle of 26$^\circ$, reaching a rms noise level of 8.4$\mu$Jy beam$^{-1}$."]
+  - parameter: Displayed vectors: 3σ detections and P < 10% [Observations and Data Reduction: "As mentioned in the plots, the vectors are all detected at a 3$\sigma$ level and have $P < 10\%$."]
+  - parameter: Include C-4 in Stokes I for polarization fractions and radial comparisons [Observations and Data Reduction: "we include the C-4 in Stokes $I$, as a consistent beam and spatial sampling is needed for proper calculations (i.e., polarization fraction) and comparisons of radial cuts."]
+  - validation: Combination added just over 500 vectors, primarily at low Stokes I emission. [Observations and Data Reduction: "We found that combining these data (2016.1.00115.S and 2019.1.01051.S) added just over 500 vectors"] [Observations and Data Reduction: "with these vectors primarily corresponding to locations with low-level Stokes $I$ emission."]
+- step 3: Measure gaps and polarization structure
+  - method: Identify gaps in Stokes I and compare major-axis cuts of Stokes I, polarization fraction and polarized intensity. [Aligned Grains and Scattered Light Foun…: "our new observations clearly reveal an eighth gap toward the edge of the disk, which we measure to be at a radius of $\sim$0.73$\mbox{$^{\prime\prime}$}$ or 107.5 au."] [Aligned Grains and Scattered Light Foun…: "which shows cuts in Stokes $I$, polarization fraction, and polarized intensity along the major axis."]
+  - assumption: Distance 147.3 pc [Aligned Grains and Scattered Light Foun…: "the 147.3 pc distance has now been accurately determined by Gaia(cite: Galli2018)."]
+  - validation: Inner three gaps show local polarized-intensity and polarization-fraction peaks; Stokes I rings show troughs except at the central peak. [Aligned Grains and Scattered Light Foun…: "For the inner 3 gaps, there are obvious local peaks in both polarized intensity and fraction."] [Aligned Grains and Scattered Light Foun…: "On the other hand, for Stokes $I$ rings, there are local troughs, with the exception of the very central Stokes $I$ peak."]
+- step 4: Build a polarized disk model
+  - method: Piece together plane-parallel slabs; represent grains by effective spheroids with T-matrix scattering; sum Gaussian rings and an inner disk. [Linear Polarization Modeling: "creating the complete image of the disk involves piecing together each patch of the disk whose intensity is approximated by the emergent intensity of the plane-parallel slab."] [Linear Polarization Modeling: "we represent the grains with effective spheroids(cite: B83), whose scattering properties can be calculated using the T-matrix method(cite: M96a; M96b)."]
+  - parameter: m ≈ 2.30 + 0.0228 i at 870 μm; size distribution a^-3.5; amin = 0.1 μm; amax = 100 μm; no porosity [Linear Polarization Modeling: "Specifically, we adopt a complex refractive index of $m \approx 2.30 + 0.0228\ i$ at $\lambda=870$ $\mu$m and a power-law grain size distribution(cite: Mathis1977) of $a^{-3.5}$."] [Linear Polarization Modeling: "From here, we fix the minimum grain size $a_{\text{min}}$ to 0.1 $\mu$m and the maximum grain size $a_{\text{max}}$ to 100 $\mu$m, and we assume the grains have no porosity."]
+  - parameter: T = T10 (R / 10 au)^-0.5 [Linear Polarization Modeling: "T = T_{10} (R / 10\, \text{au} )^{-0.5}"]
+  - parameter: T10 = 110 K; R0 = 10 au; τa = 2.3; p = 0.5 [Table 1: "| $T_{10}$ \[K\] | 110"] [Table 1: "| $R_{0}$ \[au\] | 10"]
+  - parameter: Ring centers C = [24, 39, 49, 59, 73, 88, 102, 116] au; τc = [8, 5, 5, 8, 3, 8, 8, 8]; W = [4, 3, 3, 2, 4, 3, 2, 2] au [Table 1: "| $C$ \[au\] | 24 | 39 | 49 | 59 | 73 | 88 | 102 | 116"] [Table 1: "| $\tau_{c}$ | 8 | 5 | 5 | 8 | 3 | 8 | 8 | 8"]
+  - assumption: Axisymmetric disk with radial temperature and surface-density profiles; toroidally aligned prolate grains independent of radius [Linear Polarization Modeling: "For simplicity, we assume the disk is axisymmetric, and we prescribe $T$ and $\Sigma$ as a function of the cylindrical radius $R$."] [Linear Polarization Modeling: "As motivated above, we consider only toroidally aligned, prolate grains that do not depend on the radius."]
+  - assumption: Same effective aspect ratio s for all grain sizes [Linear Polarization Modeling: "For simplicity, we assume the same value of $s$ for grains of all sizes in the power-law size distribution"]
+  - assumption: Extinction opacity averaged over all solid angle [Linear Polarization Modeling: "here we take $\kappa_{\text{ext}}$ as the extinction opacity averaged over all solid angle."]
+  - assumption: Inclination 46.7°; major-axis PA 138.02°; far-side minor-axis PA 48.02° [Linear Polarization Modeling: "From previous observations(cite: ALMA2015), we adopt an inclination of $i=46.7^{\circ}$ and a position angle of the disk major axis of $138.02^{\circ}$."] [Linear Polarization Modeling: "Given that the blueshifted outflow is to the northeast(cite: ALMA2015), the position angle of the far side of the disk is at $\eta=48.02^{\circ}$."]
+  - validation: Plane-parallel approximation motivated by the thin dust layer inferred from gap-width uniformity. [Linear Polarization Modeling: "with a dust scale height of approximately 1 au at a radius of 100 au, based on the lack of an azimuthal variation of the gap width(cite: Pinte2016)."]
+- step 5: Match models to the resolved observations
+  - method: Rotate principal-frame Stokes Q/U into the sky frame, convolve with the observed beam, and match Stokes I and polarization-fraction cuts along both axes. [Linear Polarization Modeling: "we convert the Stokes parameters $Q$ and $U$ in the principal frame"] [Linear Polarization Modeling: "Lastly, when comparing the model to the observations of finite resolution, we convolve the model with the elliptical Gaussian beam of the observation."]
+  - parameter: s = 0.85 if perfectly aligned; amax = 100 μm [Linear Polarization Modeling: "We find that the aspect ratio of the prolate grain is $s=0.85$ if perfectly aligned."] [Linear Polarization Modeling: "We find that $a_{\text{max}}=100$ $\mu$m matches well with the observations"]
+  - parameter: qp = Qp / Ip for minor-axis polarization orientation [Linear Polarization Modeling: "we also plot $q_{p} \equiv Q_{p} / I_{p}$"] [Linear Polarization Modeling: "A positive $q_{p}$ means polarization parallel to the disk minor axis, while a negative $q_{p}$ means polarization parallel to the disk major axis."]
+  - assumption: Perfect alignment for the inferred aspect ratio; intrinsic polarization defined edge-on in the optically thin limit [Linear Polarization Modeling: "We find that the aspect ratio of the prolate grain is $s=0.85$ if perfectly aligned."] [Linear Polarization Modeling: "consider $p_{0}$ as the intrinsic level of polarization of the grain viewed edge-on (with the axis of symmetry perpendicular to the line-of-sight) in the optically thin limit"]
+  - fitting: Match Stokes I and polarization fractions; Stokes I constrains ring locations/widths, T10 and optical depth; polarization constrains amax, s and optical depth. [Linear Polarization Modeling: "The Stokes $I_{s}$ profile constrains the locations and widths of the rings, the temperature $T_{10}$, and in part, the optical depth."] [Linear Polarization Modeling: "The polarization fraction constrains $a_{\text{max}}$, $s$, and the optical depth(cite: Yang2017)."]
+  - validation: Compare synthetic images and axis cuts with observations; inspect unconvolved cuts to quantify beam averaging. [Linear Polarization Modeling: "The model is able to capture the distribution of the Stokes $I$ and its anti-correlation with the polarization fraction."] [Linear Polarization Modeling: "For quantitative comparisons, we also show the cuts of the model image before convolution."]
+- step 6: Test alternative polarization mechanisms
+  - method: Compare aligned-prolate models with radially aligned oblate grains and scattering-only spherical or randomly aligned grains. [Linear Polarization Modeling: "We also rerun this identical analysis, except we use oblate grains with an aspect ratio of $s = 1.2$ and their short axes aligned radially in the disk."] [Aligned Grains and Scattered Light Foun…: "Our first attempts of a model with polarization solely due to scattering of spherical grains, which is also applicable to randomly aligned grains, could mostly reproduce the three key features."]
+  - parameter: Oblate aspect ratio s = 1.2; short axes radial [Linear Polarization Modeling: "We also rerun this identical analysis, except we use oblate grains with an aspect ratio of $s = 1.2$ and their short axes aligned radially in the disk."]
+  - validation: Use D14 minor-axis polarization direction and polarized intensity to discriminate models. [Linear Polarization Modeling: "This model is inconsistent with the observations since the polarization direction is opposite to what is observed in D14 along the minor axis."] [Linear Polarization Modeling: "However, solely relying on radiation anisotropy will be difficult to reproduce both the polarization direction and the high level of polarized intensity along the minor axis for the first gap (D14)."]
+- step 7: Check apparent circular polarization
+  - method: Image Stokes V and compare the 2021 and 2017 observations. [Observations and Data Reduction: "ALMA also measures Stokes $V$, which we also imaged."] [Observations and Data Reduction: "the Stokes $V$ from the 2021 observational data is positive"]
+  - validation: Opposite signs between epochs and instrumental limitations lead to an artifact interpretation. [Observations and Data Reduction: "Since ALMA is not currently commissioned to measure significant (3$\sigma$) polarization at levels less than 1.8% due to instrumental effects (primarily beam squint)"] [Observations and Data Reduction: "we consider any observational indication of circular polarization as likely from instrumental artifacts."]
+- result: New eighth-gap radius = 107.5 ± not stated au [Aligned Grains and Scattered Light Foun…: "our new observations clearly reveal an eighth gap toward the edge of the disk, which we measure to be at a radius of $\sim$0.73$\mbox{$^{\prime\prime}$}$ or 107.5 au."]
+- result: New eighth-gap angular radius = ~0.73 ± not stated arcsec [Aligned Grains and Scattered Light Foun…: "our new observations clearly reveal an eighth gap toward the edge of the disk, which we measure to be at a radius of $\sim$0.73$\mbox{$^{\prime\prime}$}$ or 107.5 au."]
+- result: Maximum reported polarization fraction in gaps = 3.7 ± not stated % [Aligned Grains and Scattered Light Foun…: "Polarization fractions are typically much higher in the gaps (reaching up to 3.7%) than in the rings."]
+- result: D14 major-axis Stokes I flux difference = 6 ± not stated % [Aligned Grains and Scattered Light Foun…: "For example, the Stokes $I$ fluxes along the cut for the first gap (D14) differ by 6%, while the polarized intensity and fraction differ by $\sim$30%."]
+- result: D14 major-axis polarized-intensity and polarization-fraction difference = ~30 ± not stated % [Aligned Grains and Scattered Light Foun…: "For example, the Stokes $I$ fluxes along the cut for the first gap (D14) differ by 6%, while the polarized intensity and fraction differ by $\sim$30%."]
+- result: Required intrinsic grain polarization assuming perfect alignment = 10% and 15% ± not stated % [Aligned Grains and Scattered Light Foun…: "Assuming the grains are perfectly aligned, we find that an intrinsic polarization is between 10% and 15% (prolate grain short to long axis aspect ratio of $\sim$0.85) is needed to match observations."]
+- result: Effective prolate aspect ratio assuming perfect alignment = 0.85 ± not stated dimensionless [Linear Polarization Modeling: "We find that the aspect ratio of the prolate grain is $s=0.85$ if perfectly aligned."]
+- result: Intrinsic polarization p0 for s = 0.85 = ~12 ± not stated % [Linear Polarization Modeling: "The prolate grain with $s=0.85$ gives $p_{0} \sim 12\%$"]
+- result: Adopted maximum grain size matching polarization = 100 ± not stated μm [Linear Polarization Modeling: "We find that $a_{\text{max}}=100$ $\mu$m matches well with the observations"]
+- result: Extinction opacity for the adopted maximum grain size = ~3.12 ± not stated cm^2 g^-1 [Linear Polarization Modeling: "As a reference, the adopted $a_{\text{max}}$ gives $\kappa_{\text{ext}}\sim3.12$ cm$^{2}$ g$^{-1}$ which provides the conversion from the optical depth to the dust surface density."]
+- result: Adopted model temperature T10 = 110 ± not stated K [Table 1: "| $T_{10}$ \[K\] | 110"]
+- result: D14 modeled major-axis polarization before convolution = ~7 ± not stated % [Linear Polarization Modeling: "For example, at the first gap (D14), the polarization is $\sim 7\%$ before convolution, but appears as $\sim 4.5\%$ after convolution."]
+- result: D14 modeled major-axis polarization after convolution = ~4.5 ± not stated % [Linear Polarization Modeling: "For example, at the first gap (D14), the polarization is $\sim 7\%$ before convolution, but appears as $\sim 4.5\%$ after convolution."]
+- result: D14 modeled minor-axis polarization before convolution = ~5 ± not stated % [Linear Polarization Modeling: "Prior to convolution, the polarization fraction in D14 is $\sim 5\%$, but appears as $\sim 1.7\%$."]
+- result: D14 modeled minor-axis polarization after convolution = ~1.7 ± not stated % [Linear Polarization Modeling: "Prior to convolution, the polarization fraction in D14 is $\sim 5\%$, but appears as $\sim 1.7\%$."]
+- limitation (authors): Single-wavelength polarization does not precisely determine grain properties. [Linear Polarization Modeling: "Polarization data for a single wavelength do not allow a precise determination of these properties in general; our case is no exception."]
+- limitation (authors): Grain size, composition, albedo, porosity, alignment efficiency and shape are degenerate; ~100 μm grains are not unique and underpredict longer-wavelength intensity. [Aligned Grains and Scattered Light Foun…: "Grains of $\sim$100 $\mu$m size are likely not a unique solution and would underestimate the intensity of the image at longer wavelengths (e.g., 3 mm)."]
+- limitation (authors): Plane-parallel model omits radiation anisotropy; its effect on inferred s is unclear. [Linear Polarization Modeling: "Radiation anisotropy is not included given the plane-parallel nature of the model, and it is unclear how it will affect the inferred $s$ (also degenerate with the alignment efficiency)."]
+- not stated (card): CASA and ALMA pipeline versions, calibration scripts and polarization-calibration details.; The first two self-calibration solution intervals, reference antenna, solution-combination settings and application settings.; Exact spectral-window/channel identifiers for the nine excluded channels.; Per-dataset peak coordinates, phase-center shifts and multiplicative flux-rescaling factors.; Image cell …
+
+### 2024A&A...682A..97W: The internal Faraday screen of Sagittarius A* (2024; agn_and_quasars; observational_alma_primary)
+- question: Frequency-dependent polarization and RM: is the Faraday screen largely internal to the compact synchrotron emission region?
+- step 1: Extract compact-source full-Stokes light curves
+  - method: After QA2 calibration, self-calibrate to stable extended emission; model it with first-order CLEAN multi-frequency synthesis and fit the time-dependent compact component separately in each sub-band. [Data reduction and conventions: "allowing to self-calibrate to the extended source structure and extract the time-dependent point source component, reducing the impact of fluctuating amplitude gains."] [Data reduction and conventions: "using a CLEAN multi-frequency-synthesis first-order expansion (cite: Conway1990; Casa2007)."]
+  - parameter: Band 3: four 2 GHz sub-bands centered at 86.3, 88.3, 98.3, 100.3 GHz [Data reduction and conventions: "with 4 frequency sub-bands, each 2 GHz wide, centered at 86.3, 88.3, 98.3, and 100.3 GHz."]
+  - parameter: Full Stokes at 4 s cadence; data averaged within sub-bands [Data reduction and conventions: "The sub-band depolarization and decorrelation effects are negligible in all cases, hence we work with the data averaged in sub-bands."] [Data reduction and conventions: "The data set contains all Stokes parameters, that is, total intensity $\mathcal{I}$, linear polarization $\mathcal{P} = \mathcal{Q} + i\mathcal{U}$, and circular polarization $\mathcal{V}$, observed with a time cadence of 4 s."]
+  - parameter: 227.1 GHz scaled up by 4% for CN absorption [Observations and data analysis: "scaled up by 4% to account for the CN absorption line (cite: Goddi2021)"]
+  - assumption: Negligible variation of surrounding arc-minute-scale emission [Data reduction and conventions: "assumption of negligible variation of the arc-minute scale radio emission surrounding (cite: Lo1983; Mus2022)"]
+  - fitting: Compact component fitted individually in each sub-band; sampler, priors and likelihood not stated [Data reduction and conventions: "Both variants of the extended emission modeling resulted in very consistent light curves of the compact component, fitted individually in each sub-band."]
+  - validation: Independent per-sub-band CLEAN and first-order multi-frequency synthesis produced very consistent compact-source light curves. [Data reduction and conventions: "carrying out an independent CLEAN deconvolution of each sub-band and using a CLEAN multi-frequency-synthesis first-order expansion (cite: Conway1990; Casa2007)."] [Data reduction and conventions: "Both variants of the extended emission modeling resulted in very consistent light curves of the compact component, fitted individually in each sub-band."]
+- step 2: Measure polarization and light-curve statistics
+  - method: Compute fractional LP p = sqrt(Q^2 + U^2)/I, fractional CP v = V/I and EVPA chi = 0.5 Arg(Q + iU); summarize means and standard deviations. [Data reduction and conventions: "p = \frac{|\mathcal{P}|}{\mathcal{I}} = \frac{\sqrt{\mathcal{Q}^2 + \mathcal{U}^2}}{\mathcal{I}} \ \ ; \ \ v = \frac{\mathcal{V}}{{\mathcal{I}}}"] [Data reduction and conventions: "Furthermore, we define the electric vector position angle (EVPA) as $\chi = 0.5 {\rm Arg}(\mathcal{Q} + i\mathcal{U})$."]
+  - parameter: Main comparison: 2017 April 3 Band 3 and April 6 Band 6 [Intensity and polarization: "We focus on comparisons between band 3 observations on 2017 April 3 and band 6 observations on 2017 April 6, given that these light curves are closest in time and of similar total duration."]
+  - parameter: Flag points where calibration did not converge; identical procedure for each data set [Intensity and polarization: "in order to remove points for which the calibration procedures did not converge."] [Intensity and polarization: "We employed an identical flagging procedure for each data set"]
+  - parameter: EVPA statistics calculated using directional statistics [Observations and data analysis: "calculated using directional statistics"]
+  - validation: Flagging low-elevation late data did not appreciably change results; historical LP measurements were consistent with 86.3 and 100.3 GHz light curves. [Intensity and polarization: "We verified that flagging these data does not appreciably impact the reported results."] [Intensity and polarization: "We observe consistency between these historical measurements and our light curves at 86.3 and 100.3 GHz."]
+- step 3: Measure frequency-dependent depolarization
+  - method: Fit spectral indices of fractional LP and absolute fractional CP across ALMA sub-bands. [Depolarization at lower frequencies: "where we fitted spectral indices of $p$ and $|v|$"] [Depolarization at lower frequencies: "across ALMA sub-bands."]
+  - fitting: Spectral-index fits; sampler, priors, likelihood and weighting not stated [Depolarization at lower frequencies: "where we fitted spectral indices of $p$ and $|v|$"]
+  - validation: Band 3 CP upper limit based on time-resolved analysis [Depolarization at lower frequencies: "which we give as $|v| < 0.3\%$, based on the time-resolved analysis."]
+- step 9: Compare observed polarization with GRMHD predictions
+  - method: Ray-trace the KHARMA best-bet simulation with ipole; average images over the field of view per Stokes component; derive two-frequency RMs and compare full-Stokes variability and RM structure functions. [Comparisons to GRMHD: "The selected GRMHD simulation was performed using the KHARMA code (cite: Prather2021) and consecutively ray-traced in a curved Kerr spacetime using `ipole` (cite: Moscibrodzka2018)"] [Comparisons to GRMHD: "Ray-traced images were then averaged over the entire field of view for each Stokes component at every time step to obtain full-Stokes simulated light curves."]
+  - software: KHARMA, ipole
+  - parameter: MAD; inclination 30 deg; spin 0.5; R_high = 160 [Comparisons to GRMHD: "corresponding to a magnetically arrested disk (cite: Narayan2003) system, viewed at low inclination of 30 deg."] [Comparisons to GRMHD: "The model considered is also characterized by a moderate SMBH spin $a_* = 0.5$ and an ion-to-electron temperature ratio parametrized by $R_{\rm high} = 160$ (cite: Moscibrodzka2016; SgraP5)."]
+  - parameter: 1000 snapshots, cadence 5 r_g/c ≈ 100 s; effectively five observing-window realizations [Comparisons to GRMHD: "Each light curve corresponds to the same GRMHD output of 1000 snapshots with a cadence of 5 $r_{\rm g}/c \approx 100$ s."] [Comparisons to GRMHD: "we effectively analyze five different realizations of the theoretical GRMHD model."]
+  - parameter: Ray trace only innermost 300 r_g; density normalized to 2.4 Jy at 228 GHz [Comparisons to GRMHD: "We only ray-trace the innermost $300\,r_{\rm g}$ zone of the GRMHD simulation, hence there is no large scale Faraday screen present."] [Comparisons to GRMHD: "During ray-tracing a scaling of the plasma density was selected in order to match the 2.4 Jy total compact flux density observed at 228 GHz in April 2017 (cite: Wielgus2022_LC)."]
+  - parameter: For displayed RM comparison, flip model RM sign and shift by Galactic Center magnetar RM [Comparisons to GRMHD: "we flip the sign of the model RM and shift the RM values by the Galactic Center magnetar RM"]
+  - assumption: Magnetar RM approximately represents Faraday rotation outside the simulation domain [Comparisons to GRMHD: "to roughly represent the contribution from the Faraday rotation occurring outside of the GRMHD simulation domain."]
+  - fitting: Plasma-density scaling selected to match 228 GHz compact flux; fitting algorithm not stated [Comparisons to GRMHD: "During ray-tracing a scaling of the plasma density was selected in order to match the 2.4 Jy total compact flux density observed at 228 GHz in April 2017 (cite: Wielgus2022_LC)."]
+  - validation: Compare simulated and observed LP, CP, EVPA, RM amplitudes, sign stability and variability; selected model fails quantitative polarimetric comparison. [Summary and conclusions: "did not quantitatively reproduce the observed parameters of polarization, and indicated significantly more variability in polarization fractions and in rotation measure than what is observed in ."]
+- result: Fractional LP at 86.3 GHz, April 3 = 1.23 ± ± 0.51 % [Observations and data analysis: "| $p$ (%) | $1.23\pm 0.51$"]
+- result: Fractional LP at 100.3 GHz, April 3 = 1.89 ± ± 0.87 % [Observations and data analysis: "$1.79\pm 0.81$ | $1.89\pm 0.87$"]
+- result: Fractional LP at 213.1 GHz, April 6 = 7.45 ± ± 2.26 % [Observations and data analysis: "$7.45\pm 2.26$ | $7.50\pm 2.25$"]
+- result: Fractional LP at 229.1 GHz, April 6 = 8.03 ± ± 2.28 % [Observations and data analysis: "$7.93\pm 2.26$ | $8.03 \pm 2.28$"]
+- result: Band 3 absolute fractional CP upper limit = < 0.3 ± not stated % [Depolarization at lower frequencies: "which we give as $|v| < 0.3\%$, based on the time-resolved analysis."]
+- result: Fractional CP at 229.1 GHz, April 6 = -1.57 ± ± 0.38 % [Observations and data analysis: "$-1.52 \pm 0.42$ | $-1.57 \pm 0.38$"]
+- result: Band 3 total-intensity spectral index, April 3 = 0.10 ± ± 0.01 dimensionless [Observations and data analysis: "| $\alpha_{\mathcal{I}}$ | $0.10 \pm 0.01$"]
+- result: Band 6 total-intensity spectral index, April 6 = -0.01 ± ± 0.01 dimensionless [Observations and data analysis: "$-0.01 \pm 0.01$"]
+- result: Band 3 fractional-LP spectral index, April 3 = 2.97 ± ± 0.06 dimensionless [Observations and data analysis: "| $\alpha_{p}$ | $2.97 \pm 0.06$"]
+- result: Band 6 fractional-LP spectral index, April 6 = 0.91 ± ± 0.02 dimensionless [Observations and data analysis: "$0.91 \pm 0.02$"]
+- result: Band 6 fractional-CP spectral index, April 6 = 0.50 ± ± 0.02 dimensionless [Observations and data analysis: "$0.50 \pm 0.02$"]
+- result: Simulated fractional LP across frequencies = 4 ± ± 2 % [Comparisons to GRMHD: "The modeled fractional LP is $p = 4 \pm 2$% across frequencies, with no sign of depolarization in the lower band."]
+- result: Simulated CP variability relative to observed variability = about seven ± not stated dimensionless [Comparisons to GRMHD: "there is about seven times more variability in the simulation than is observed."]
+- result: Simulated RM sign-flip timescale = ~1 ± not stated h [Comparisons to GRMHD: "in the simulations the RM sign flips often, on a $\sim$1 h timescale."]
+- result: Simulated lower-frequency RM structure-function slope = 0.5 ± not stated dimensionless [Quantifying the RM variability: "with the lower frequency slope $\alpha = 0.5$ steeper than the higher frequency one $\alpha = 0.2$."]
+- result: Simulated higher-frequency RM structure-function slope = 0.2 ± not stated dimensionless [Quantifying the RM variability: "with the lower frequency slope $\alpha = 0.5$ steeper than the higher frequency one $\alpha = 0.2$."]
+- limitation (authors): Table uncertainties are dominated by intrinsic variability rather than measurement noise [Intensity and polarization: "The reported uncertainties are strongly dominated by the intrinsic source variability"]
+- limitation (authors): Definitive wavelength-law violation requires simultaneous polarization measurements at distinct frequencies [Faraday rotation: "Simultaneous measurements of LP at distinct frequencies are necessary in order to provide an ultimate and bulletproof argument for the $\lambda^2$ relation violation"]
+- limitation (authors): Band 3 observing duration likely prevents identifying the structure-function flattening [Quantifying the RM variability: "A similar flattening is not apparent at 93 GHz, but the reason is most likely related to the short total duration of the observed light curve."]
+- not stated (card): QA2 software versions, calibration scripts, calibrator identities and polarization-calibration settings.; Self-calibration solution intervals, gain modes, reference antenna, convergence criteria and iteration sequence.; Visibility selections, channel flags and exact flagging criteria for failed calibration.; CLEAN weighting, image geometry, masks, stopping thresholds and exact multi-frequency-syn…
+
+### 2021ApJ...907...94C: The Explosion in Orion-KL as Seen by Mosaicking the Magnetic Field with ALMA (2021; star_formation, milky_way_ism; observational_alma_primary)
+- question: The interplay between the explosion and the magnetic field in OMC1
+- step 1: Produce continuum and polarization mosaics
+  - method: Phase-only self-calibration; primary-beam correction; pixel-by-pixel polarized-intensity debiasing; plot final maps with APLpy [OBSERVATIONS: "We imaged both mosaics by performing phase-only self-calibration with a final solution interval of 90 s."] [OBSERVATIONS: "All images were primary-beam corrected, and the polarized intensity image was debiased pixel-by-pixel (cite: Wardle1974; Hull2015)."]
+  - software: CASA, APLpy
+  - parameter: Rectangular mosaic; factor 2 over-sampling relative to Nyquist along both axes; factor 4 total beam overlap [OBSERVATIONS: "The observations were configured as a rectangular, super-sampled mosaic with a factor of 2 over-sampling (with respect to Nyquist) along both axes, or a factor of 4 in total beam overlap."]
+  - parameter: 3.1 mm: ~2.20 × 1.75 arcmin, 15 pointings; 1.3 mm: ~1.25 × 0.94 arcmin, 45 pointings [The total intensity mosaic of Orion-KL: "The mosaics cover regions of $\sim$ $2.20^{\prime}\,\times\,1.75^{\prime}$ (15 pointings) at 3.1 mm and $\sim$ $1.25^{\prime}\,\times\,0.94^{\prime}$ (45 pointings) at 1.3 mm"]
+  - parameter: Final phase-only self-calibration solution interval: 90 s [OBSERVATIONS: "a final solution interval of 90 s."]
+  - validation: Recovery of all previously detected continuum sources [The total intensity mosaic of Orion-KL: "We recover all of the continuum sources previously detected by others (cite: Eisner2006; Friedel2011; Hirota2015)."]
+- step 2: Estimate column densities and total masses
+  - method: Estimate N_H2 independently from each continuum band using S_nu/[B_nu(T_dust) Omega kappa_nu mu m_H]; obtain total masses using map pixels [The total intensity mosaic of Orion-KL: "We estimate the column density independently from the 3.1 and 1.3 mm data by assuming optically thin dust emission:"] [The total intensity mosaic of Orion-KL: "N_{\mathrm{H}_{2}} = \frac{S_{\nu}}{B_{\nu}(T_\textrm{dust}) \Omega \kappa_{\nu} \mu m_{\mathrm{H}}}"]
+  - parameter: Omega = pi/(4.0 log 2) b_maj b_min [The total intensity mosaic of Orion-KL: "The area is given by the solid angle, calculated as $\Omega=\pi/(4.0\log{2})\,b_\textrm{maj}\,b_\textrm{min}$."]
+  - parameter: Column density evaluated only in the filament region used for field-strength estimation [The total intensity mosaic of Orion-KL: "we calculate the column density only in the region of the filament relevant to the estimation of the magnetic field strength"]
+  - parameter: Stokes I cutoffs: 900 microJy beam^-1 at 3 mm; 7.3 mJy beam^-1 at 1 mm [The total intensity mosaic of Orion-KL: "We obtained cutoffs for the 3 and 1 mm Stokes $I$ maps of 900 $\mu$Jy beam$^{-1}$ and 7.3 mJy beam$^{-1}$ respectively."]
+  - assumption: Optically thin dust emission [The total intensity mosaic of Orion-KL: "by assuming optically thin dust emission"]
+  - assumption: kappa_nu = 0.01 cm^2 g^-1 at 1.3 mm; 2.6 × 10^-3 cm^2 g^-1 at 3 mm [The total intensity mosaic of Orion-KL: "The dust opacity $\kappa_{\nu}$ is set as 0.01 cm$^{2}$ g$^{-1}$ at 1.3 mm and $2.6\times 10^{-3}$ cm$^{2}$ g$^{-1}$ at 3 mm (cite: Ossenkopf1994)."]
+  - assumption: Gas-to-dust ratio 100; mean molecular weight mu = 2.33 [The total intensity mosaic of Orion-KL: "These values assume a gas-to-dust ratio of 100."] [The total intensity mosaic of Orion-KL: "We use $\mu = 2.33$ as the mean molecular weight of hydrogen"]
+  - assumption: T_dust = 20–50 K for column densities; 25 K average for total masses [The total intensity mosaic of Orion-KL: "Based on that work, we use a range for $T_\textrm{dust}$ of between 20 and 50 K."] [The total intensity mosaic of Orion-KL: "by using $T_\textrm{dust} = 25$ K as an average dust temperature."]
+  - validation: Preliminary spectral index ~3 in the column-density region used to justify optical thinness [The total intensity mosaic of Orion-KL: "The optically thin assumption is justified, as preliminary spectral index estimations from these data suggest a spectral index of $\approx$ 3 in the region where we estimate the column density."]
+- step 3: Infer the magnetic field morphology
+  - method: Rotate polarization position angles by 90 degrees; map the plane-of-sky field and extrapolate central field lines [Grain alignment: "Here we refer to the polarization position angle pattern, not to the magnetic field pattern; we obtain the latter by rotating the former by 90$^{\circ}$."] [The polarized dust emission from Orion-…: "By extrapolating the field lines through the center of Orion-KL, we see that they intersect inside the $3^{\prime \prime}\,\times\,5^{\prime \prime}$ ellipse reported to be origin of the explosive CO outflow (cite: Bally2017)."]
+  - assumption: Dust grains magnetically aligned by radiative torques [The polarized dust emission from Orion-…: "under the assumption that dust grains are magnetically aligned by radiative torques (cite: Lazarian2007)."]
+  - validation: Consistent field pattern between wavelengths; agreement with previous coarser observations [The polarized dust emission from Orion-…: "The magnetic field pattern is consistent between both wavelengths."] [The polarized dust emission from Orion-…: "the derive magnetic field morphology is in agreement with previous observations done at coarser angular resolution and/or lower sensitivity (cite: Rao1998; Tang2010; Hull2014)."]
+- step 5: Estimate magnetic field strengths
+  - method: Apply three DCF variants in the NE filament; derive independent estimates for both bands; average field-strength estimates [Estimation of the magnetic field streng…: "we use three versions of the Davis-Chandrasekhar-Fermi method (DCF; (cite: Davis1951; Chandrasekhar1953)), as previously employed in (cite: Cortes2016; Cortes2019)."] [Estimation of the magnetic field streng…: "Instead, we use the NE region of the filament, where the field appears to be unperturbed by the explosion"]
+  - parameter: n = N/L; L = 2 arcsec [Estimation of the magnetic field streng…: "we assume a thin slab with a depth of half the region’s minor axis, or $n = N/L$ with $L = 2^{\prime \prime}$"]
+  - parameter: Adopted NH3 line-width: 1.4 km s^-1 [Estimation of the magnetic field streng…: "They obtained a value of 1.4 km s$^{-1}$ at the location of Orion-KL"] [Estimation of the magnetic field streng…: "we used that value for the line-width in our field-strength estimation."]
+  - parameter: delta phi calculated directly from polarization data [Estimation of the magnetic field streng…: "The value of $\delta \phi$ is calculated from our polarization data directly."]
+  - parameter: Average of Column 10 estimates; reported 1.3 mm average 9.4 mG [Estimation of the magnetic field streng…: "By averaging all of the estimates from Column 10 in Table [2](#table:B), we obtain an average strength at 1.3 mm value of $\left<B\right>=9.4$ mG."]
+  - assumption: Field-line perturbations caused by non-thermal turbulent motions; avoid the explosion-affected central region [Estimation of the magnetic field streng…: "The DCF technique assumes that the magnetic field lines are perturbed by non-thermal turbulent motions"] [Estimation of the magnetic field streng…: "we cannot directly estimate the field strength from the central region of Orion-KL that has been affected by the explosion."]
+  - assumption: Thin slab with depth half the region's minor axis [Estimation of the magnetic field streng…: "we assume a thin slab with a depth of half the region’s minor axis"]
+  - validation: Adopted NH3 resolution approximately matches the region's minor axis; field estimate treated as an upper limit [Estimation of the magnetic field streng…: "Given that their resolution approximately matches the minor axis of our region of interest, we used that value for the line-width in our field-strength estimation."] [Estimation of the magnetic field streng…: "we consider this estimate as an upper limit of the magnetic field strength."]
+- result: Total mass from 3 mm continuum, T_dust = 25 K = 35 ± not stated M_sun [The total intensity mosaic of Orion-KL: "we obtained total masses of 35 and 88.2 M$_{\odot}$ from the 3 and 1 mm data"]
+- result: Total mass from 1 mm continuum, T_dust = 25 K = 88.2 ± not stated M_sun [The total intensity mosaic of Orion-KL: "we obtained total masses of 35 and 88.2 M$_{\odot}$ from the 3 and 1 mm data"]
+- result: Preliminary spectral index in the column-density region = ≈3 ± not stated dimensionless [The total intensity mosaic of Orion-KL: "preliminary spectral index estimations from these data suggest a spectral index of $\approx$ 3 in the region where we estimate the column density."]
+- result: N_H2 at 3.1 mm, T_dust = 30 K = 1.8 ± not stated 10^24 cm^-2 [Table 2: "| 3.1 | 30 | 1.8 | 14.8 | 19.7 | 1.4 | 8.0 | 13.1 | 7.4 | 9.5 | 2.6 | 2.0 |"]
+- result: N_H2 at 1.3 mm, T_dust = 30 K = 3.5 ± not stated 10^24 cm^-2 [Table 2: "| 1.3 | 30 | 3.5 | 28.2 | 21.1 | 1.4 | 10.3 | 16.7 | 2.1 | 9.7 | 6.0 | 2.1 |"]
+- result: Radius of quasi-radial magnetic field morphology = ~12 ± not stated arcsec [The polarized dust emission from Orion-…: "the magnetic field morphology exhibits a pseudo-radial pattern emanating from the center of the nebula up to a distance of $\sim 12^{\prime \prime}$, or 5000 au"]
+- result: Physical radius of quasi-radial magnetic field morphology = 5000 ± not stated au [The polarized dust emission from Orion-…: "up to a distance of $\sim 12^{\prime \prime}$, or 5000 au"]
+- result: n_H2 at 3.1 mm, T_dust = 30 K = 14.8 ± not stated 10^7 cm^-3 [Table 2: "| 3.1 | 30 | 1.8 | 14.8 | 19.7 | 1.4 | 8.0 | 13.1 | 7.4 | 9.5 | 2.6 | 2.0 |"]
+- result: n_H2 at 1.3 mm, T_dust = 30 K = 28.2 ± not stated 10^7 cm^-3 [Table 2: "| 1.3 | 30 | 3.5 | 28.2 | 21.1 | 1.4 | 10.3 | 16.7 | 2.1 | 9.7 | 6.0 | 2.1 |"]
+- result: Magnetic angle dispersion at 3.1 mm = 19.7 ± not stated degrees [Table 2: "| 3.1 | 30 | 1.8 | 14.8 | 19.7 | 1.4 | 8.0 | 13.1 | 7.4 | 9.5 | 2.6 | 2.0 |"]
+- result: Magnetic angle dispersion at 1.3 mm = 21.1 ± not stated degrees [Table 2: "| 1.3 | 30 | 3.5 | 28.2 | 21.1 | 1.4 | 10.3 | 16.7 | 2.1 | 9.7 | 6.0 | 2.1 |"]
+- result: Mean plane-of-sky field at 3.1 mm, T_dust = 20 K = 12.2 ± sigma_B = 3.3 mG [Table 2: "| 3.1 | 20 | 3.0 | 24.5 | 19.7 | 1.4 | 10.3 | 16.8 | 9.5 | 12.2 | 3.3 | 3.3 |"]
+- result: Mean plane-of-sky field at 3.1 mm, T_dust = 30 K = 9.5 ± sigma_B = 2.6 mG [Table 2: "| 3.1 | 30 | 1.8 | 14.8 | 19.7 | 1.4 | 8.0 | 13.1 | 7.4 | 9.5 | 2.6 | 2.0 |"]
+- result: Mean plane-of-sky field at 3.1 mm, T_dust = 40 K = 8.0 ± sigma_B = 2.2 mG [Table 2: "| 3.1 | 40 | 1.3 | 10.6 | 19.7 | 1.4 | 6.8 | 11.1 | 6.2 | 8.0 | 2.2 | 1.4 |"]
+- result: Mean plane-of-sky field at 3.1 mm, T_dust = 50 K = 7.1 ± sigma_B = 1.9 mG [Table 2: "| | 50 | 1.0 | 8.3 | 19.7 | 1.4 | 6.0 | 9.8 | 5.5 | 7.1 | 1.9 | 1.1 |"]
+- result: Mean plane-of-sky field at 1.3 mm, T_dust = 20 K = 12.1 ± sigma_B = 7.5 mG [Table 2: "| 1.3 | 20 | 5.4 | 44.0 | 21.1 | 1.4 | 12.9 | 20.9 | 2.6 | 12.1 | 7.5 | 3.2 |"]
+- result: Mean plane-of-sky field at 1.3 mm, T_dust = 30 K = 9.7 ± sigma_B = 6.0 mG [Table 2: "| 1.3 | 30 | 3.5 | 28.2 | 21.1 | 1.4 | 10.3 | 16.7 | 2.1 | 9.7 | 6.0 | 2.1 |"]
+- result: Mean plane-of-sky field at 1.3 mm, T_dust = 40 K = 8.3 ± sigma_B = 5.1 mG [Table 2: "| 1.3 | 40 | 2.6 | 20.7 | 21.1 | 1.4 | 8.9 | 14.3 | 1.8 | 8.3 | 5.1 | 1.5 |"]
+- result: Mean plane-of-sky field at 1.3 mm, T_dust = 50 K = 7.4 ± sigma_B = 4.6 mG [Table 2: "| 1.3 | 50 | 2.0 | 16.4 | 21.1 | 1.4 | 7.9 | 12.8 | 1.6 | 7.4 | 4.6 | 1.2 |"]
+- result: Reported average magnetic field strength at 1.3 mm, treated as an upper limit = 9.4 ± not stated mG [Estimation of the magnetic field streng…: "By averaging all of the estimates from Column 10 in Table [2](#table:B), we obtain an average strength at 1.3 mm value of $\left<B\right>=9.4$ mG."]
+- limitation (authors): DCF variants omit finite-resolution and line-of-sight smoothing; reported field strength is an upper limit [Estimation of the magnetic field streng…: "these three flavors of the DCF method do not take into account the effect of finite angular resolution and integration along the line of sight"]
+- limitation (authors): Shock type cannot be determined from these data alone [A Shock in the Orion-KL Magnetic Field: "Unfortunately, from our data alone, we cannot conclude what type of shock is manifesting itself through the magnetic field morphology in Orion-KL."]
+- limitation (authors): Available one-dimensional shock models do not provide a suitable comparison [A Shock in the Orion-KL Magnetic Field: "current models are only one-dimensional, with the field orthogonal to the shock propagation direction (cite: Pilipp1994); therefore, we do not have a model to which we can refer for comparison."]
+- not stated (card): Exact mosaic pointing coordinates and per-execution antenna, baseline, and integration metadata.; Calibration scripts, calibrator identities, polarization calibration solutions, flagging, and flux-scale uncertainty.; Self-calibration iteration sequence, earlier solution intervals, solution grouping, reference antenna, and acceptance criteria.; Imaging task, weighting and robust value, deconvolver…
+
+### 2019ApJ...886..103O: Radial Variations in Grain Sizes and Dust Scale Heights in the Protoplanetary Disk around HD 163296 Revealed by ALMA Polarization Observations (2019; protoplanetary_disks; archival_reuse)
+- question: What grain sizes and dust scale heights, as a function of radius, reproduce the resolved 0.87 mm self-scattering polarization of the HD 163296 disk, and what do they imply for turbulence?
+- step 1: Image Stokes I, Q, U and build polarization fraction map
+  - method: tclean imaging of archival data, debiased PI, Pfrac=PI/I above 3 sigma_PI [2.1 Analysis of Archival Data: "We thus debiased the polarized intensity map as $PI=\sqrt{Q^2+U^2-\sigma_{\rm PI}^2}$."]
+  - software: CASA
+  - parameter: robust 0.5, 0.02" pixels [2.1 Analysis of Archival Data: "The pixel size was set to $0.02\ensuremath{''}$."]
+  - assumption: Stokes V ignored [2.1 Analysis of Archival Data: "Note that we ignore the Stokes *V* component in this study because it has not been well characterized for ALMA."]
+  - validation: Compared with Dent et al. 2019 images [2.2 Results: "These images are consistent with those obtained by (cite: den19)."]
+- step 3: Radiative transfer of self-scattering polarization
+  - method: RADMC-3D with multiple scattering; Stokes I,Q,U convolved with 0.2" Gaussian beam [3 Disk Model: "The Stokes *I*, *Q*, and *U* images were convolved with a Gaussian beam with a full width at half maximum (FWHM) of $0.2\ensuremath{''}$ to produce the final model images."]
+  - software: RADMC-3D
+  - parameter: inclination 47 deg, PA 133.3 deg [3 Disk Model: "The inclination and position angle were assumed to be $47^\circ$ and 133.3$^\circ$, respectively"]
+  - assumption: Gaussian vertical distribution with h_d=h_g/f_set; polarization only from self-scattering [3 Disk Model: "We set an additional dust settling parameter $f_{\rm set}$ such that $h_d=h_g/f_{\rm set}$"]
+  - validation: Compared radial Pfrac profiles along axes and Stokes Q/U maps [5.4 Radial variation of dust scale heig…: "We compare the images not only for the polarization fraction but also for the Stokes *Q* and *U* distributions."]
+- step 4: Constrain grain populations and dust scale height by radius
+  - method: Single population then two populations (140 um and 1 mm); Stokes Q upper limit sets H_dust; best: f_set=10 for r<=68 au, 1.5 beyond [5.4 Radial variation of dust scale heig…: "To reproduce the observations, we apply $f_{\rm set}=10$ within $r\leq68$ au and $f_{\rm set}=1.5$ for $r>68$ au."]
+  - software: RADMC-3D
+  - parameter: 1 mm grains within +-5 au of ring centers; 5.5:4.5 mixture at r<=40 au [5.2 Model with Two Dust Grain Populatio…: "We set a ratio of surface density (and density) of $5.5:4.5$ (corresponding to a ratio of $11/9$) between the 140 $\mu$m and 1 mm dust grain populations"]
+  - validation: Single-population model with variable f_set fails to reproduce Q [8 Additional Test of Model with Single …: "Therefore, a model with a single grain population is unlikely to explain the observations even if the dust scale height is changed."]
+- step 5: Derive turbulence alpha in gaps
+  - method: Settling-diffusion balance H_dust formula with Stokes number from gas surface density [6.2 Estimate of turbulence strength: "By assuming a balance between vertical settling and turbulent diffusion, the dust scale height is written as (cite: dub95; you07)"]
+  - assumption: Dust material density 1.67 g cm^-3; CO abundance 5e-5 for gas surface density [6.2 Estimate of turbulence strength: "assuming that the dust material density is $\rho\sim1.67$ g cm$^{-3}$"]
+  - validation: Compared with molecular-line turbulence limits [6.2 Estimate of turbulence strength: "The low value of $\alpha\lesssim1.5\times10^{-3}$ inside the 70 au ring is consistent with the upper limit derived from molecular line observations"]
+- result: Polarization fraction at center = ~0.8 ± 0.04 % [2.2 Results: "The polarization fraction is $\sim0.8\pm0.04$% in the center"]
+- result: Polarization fraction in 50 au gap = ~2.3 ± 0.5 % [2.2 Results: "increases to $\sim2.3\pm0.5$% in the first gap at 50 au"]
+- result: Polarization fraction in 90 au gap = ~3 ± 0.7 % [2.2 Results: "to $\sim3\pm0.7$% in the second gap at 90 au along the major axis"]
+- result: Maximum grain size in gaps = 140 ± not stated micron [abstract: "The maximum grain size was 140 microns in the gaps and significantly larger or smaller in the rings."]
+- result: H_dust/H_gas inside 70 au ring = <~1/3 ± 3 sigma upper limit dimensionless [5.4 Radial variation of dust scale heig…: "we can set the upper limit of the dust scale height as $H_{\rm dust}\lesssim (1/3)H_{\rm gas}$"]
+- result: H_dust/H_gas outside 70 au ring = ~2/3 ± not stated dimensionless [6.2 Estimate of turbulence strength: "$H_{\rm dust}/H_{\rm gas}\sim2/3$ for the $r\gtrsim 70$ au region"]
+- result: alpha in 50 au gap = <=1.5e-3 ± upper limit dimensionless [6.2 Estimate of turbulence strength: "$\alpha\lesssim 1.5\times10^{-3}$ in the 50 au gap"]
+- result: alpha in 90 au gap = 0.015-0.3 ± range dimensionless [6.2 Estimate of turbulence strength: "$\alpha\simeq0.015-0.3$ in the 90 au gap"]
+- result: St/alpha outside 70 au ring = 1.25 ± not stated dimensionless [6.2 Estimate of turbulence strength: "${\rm St}/\alpha \gtrsim 8$ inside the 70 au ring and ${\rm St}/\alpha \simeq 1.25$ outside the 70 au ring"]
+- limitation (authors): Polarization assumed to be only self-scattering; alignment contributions could change the interpretation. [6.4 Caveats of models: "Another caveat is that the polarization is assumed to be produced only by self-scattering."]
+- limitation (authors): Grain size in rings is not constrained beyond being far from 140 um. [6.4 Caveats of models: "it is possible that dust grains much larger or smaller than 140 $\mu$m are distributed in the rings rather than the 1 mm dust grain population."]
+- not stated (card): Observing dates, configurations, baselines, spectral setup and on-source time; Self-calibration solution intervals and reference images; Flagging details, calibrators and flux scale uncertainty; Deconvolution settings (masking, threshold, niter) and image size; RADMC-3D photon numbers, grid setup, stellar parameters and gas scale height/temperature setup; Method of extracting radial profiles alon…
+
+### 2023A&A...672A..67A: Robust analysis of differential Faraday rotation based on interferometric closure observables (2023; agn_and_quasars, instrumentation; technical_calibration_or_instrument)
+- question: Can newly-introduced complex interferometric closure observables (closure traces) be used to extract robust, calibration-independent information on source polarization structure and differential Faraday Rotation across frequency?
+- step 1: Simulate full-polarization visibilities for an M87-like three-component model
+  - method: Discrete Fourier transform of Stokes parameters (I, Q, U, V) for three point-source (delta) components (core, knot A, knot B) on the exact ALMA baseline coordinates across 4 spectral windows, adding 0.5 mJy uncorrelated Gaussian noise per … [Simulations and model parameters: "For the simulation of closure traces related to a simplified model of M87 at ALMA scales, we parameterize the polarization intensity as a set of compact (delta) components"] [Simulations and model parameters: "The simulated data are obtained by computing the discrete Fourier transform of the Stokes parameters ($(\tilde{I},\tilde{Q},\tilde{U},\tilde{V})$), for each $(u,v)$ coordinate and observed frequency $\nu$"]
+  - software: Python
+  - parameter: Core position (l, m) = (0, 0), I = 1.2 Jy; Knot A position (l, m) = (-11.28, 4.35), I = 0.1 Jy; Knot B position (l, m) = (-13.92, 4.95), I = 0.05 Jy [Simulations and model parameters: "The component positions and Stokes values are given in Table"]
+  - parameter: Simulated core RM ~ 0.35 x 10^7 rad/m^2; Gaussian visibility noise std = 0.5 mJy [Simulations and model parameters: "thus increasing the RM of our simulated source to $\sim 0.35 \times 10^7$ rad/m$^{2}$"] [Simulations and model parameters: "with zero average and a standard deviation of 0.5 mJy (similar to the average noise levels per integration time seen in the real data)."]
+  - assumption: Source polarization structure represented by three compact (delta) components with Stokes V = 0 [Simulations and model parameters: "Regarding the rest of Stokes parameters (i.e., $Q$, $U$ and $V$), the model consists of three point sources, located at the positions marked in Fig. 2 (which correspond to the jet core and the two knots, $A$ and $B$)."]
+  - validation: Assess structure factor contribution to spectral variation by comparing Stokes I model visibilities between spw 0 (213.1 GHz) and spw 3 (229.1 GHz) [Prior discussion on the behaviour of th…: "we compare the *model* visibilities, computed from the Stokes $I$ deconvolved model obtained from the real ALMA data,"]
+- step 3: Fit core-only polarization per spectral window via 2D grid search and linear RM fit
+  - method: Perform a 2D grid search minimizing the squared differences of closure traces for each spectral window independently (fixing RM parameter p_2 = 0 and jet knots A and B to image values), followed by a linear fit of core EVPA versus waveleng… [Modelling the core-only polarization.: "Since this core-only model only has two fitting parameters, we have opted to perform a grid search method (i.e. the 2-dimensional exploration of $\chi^2$) focusing on two parameters, the EVPA and the fractional polarization of the core."] [Modelling the core-only polarization.: "To retrieve the RM, we need to perform a linear fitting of the polarization angle $\phi = \phi_0 + RM \lambda^2$ as a function of the observation wavelength $\lambda$ (i.e. for each spw)."]
+  - software: Python
+  - parameter: Free parameters per spw: core EVPA (p_0) and core polarized flux density (p_1 = m * I_core); fixed parameters: p_2 = 0, knot A and knot B Stokes parameters [Modelling the core-only polarization: "where all the Stokes parameters of the jet components are fixed to the measured values in the ALMA image"] [Modelling the core-only polarization: "with the parameter $p_2$ fixed to 0 (i.e. there is no RM) as we analyse each spectral window separately."]
+  - assumption: Equal weights for all visibilities; chi^2 temperature T estimated from the standard deviation of closure trace residuals at the minimum [Modelling the core-only polarization.: "where $T$ is the standard deviation of the closure trace residuals (evaluated for each dataset and spectral window) at the $\chi^2$ minimum, and assuming the same weights for all visibilities."]
+  - fitting: 2D grid search minimizing chi^2 = sum |T_ABCD^model - T_ABCD^data|^2 with probability density P proportional to exp(-chi^2 / 2T), then linear regression of phi(lambda^2) [Methodology: "The error function used in the least-squares minimization is simply given by the squared differences between the data closure traces and those from the parameterized model"] [Modelling the core-only polarization.: "The probability density is then recovered as $\mathcal{P}_{\chi^2}(m,\phi) \propto \exp{\left( -\frac{\chi^2}{2T} \right)}$, where $T$ is the standard deviation of the closure trace residuals"]
+  - validation: Compare fitted EVPA, polarized flux, and core RM against ground-truth simulated values [Grid Search: "From these results, we retrieve the differential FR along the core-jet structure of the simulation by fitting the polarization angle as a function of the observation wavelength $\phi(\lambda)$."]
+- step 4: Simultaneously fit multi-component polarization and RM across all spectral windows using MCMC
+  - method: Combine all 4 spectral windows and fit the polarization (EVPA, polarized flux, and RM) of the core and one jet knot simultaneously while fixing the remaining knot (with V = 0), using circular statistics reparameterization and affine-invari… [Model-fitting two M87 components: the M…: "We use the Python tool `emcee` (cite: ForemanMackeyMCMC2013) for a affine-invariant MCMC approach to model-fitting, estimating the differential FR among the source components."] [Model-fitting two M87 components: the M…: "We can break this ambiguity using circular statistics (cite: Fisher1987Spherical; Jupp2009DirectionalStat), a simple, but effective, change of parameters of the fitting model"]
+  - software: Python, emcee
+  - parameter: Reference wavelength lambda_0 = 0; 6 free parameters (q_0, q_1, q_2, q_3, and two component RMs) [Model-fitting two M87 components: the M…: "In our model-fitting, we set $\lambda_0 = 0$, and therefore the $p_0$ value to which the MCMC method converges corresponds to the intrinsic polarization angle of the core, $\phi_{0}$, i.e, the EVPA at infinite frequency."] [Model-fitting two M87 components: the M…: "Finally, $p_2$ and $p_5$ are preserved in our parameterization as the RM of the core and the knot $A$."]
+  - assumption: One component is fixed with Stokes V = 0 to break the latitudinal degeneracy in the Poincare sphere and serve as differential polarization reference [Model-fitting two M87 components: the M…: "However, the closure traces are only sensitive to differential polarization (or polarization contrast) across the source structure, which means that we must leave one of the components fixed (and force its Stokes $V$ to zero, in order to break the latitudinal degeneracy in the Poincaré Sphere)"]
+  - fitting: Affine-invariant MCMC sampler (emcee) minimizing closure-trace least-squares chi^2 across all spectral windows simultaneously [Model-fitting two M87 components: the M…: "We use the Python tool `emcee` (cite: ForemanMackeyMCMC2013) for a affine-invariant MCMC approach to model-fitting, estimating the differential FR among the source components."]
+  - validation: Compare MCMC posterior RM against simulated ground-truth RM (~0.35 x 10^7 rad/m^2) and against the real ALMA image-analysis RM (~1.5 x 10^5 rad/m^2) [Markov chains: "We obtain a RM posterior distribution spread around $RM \sim (0.2-0.4) \times 10^7$ rad/m$^{-2}$, which is close to, albeit a bit lower than, the expected value of $(0.35 \pm 0.04) \times 10^7$ rad/m$^{2}$"] [Real ALMA Observations: "We now compare our results with the results obtained from the image analysis (cite: Goddi2021complete; TFM). We get a RM posterior distribution peaked around $RM \sim (0.8-1.6) \times 10^5$ rad/m$^{-2}$, being consistent with the values obtained from the image analysis."]
+- result: Average deviation of Stokes I model visibilities between spw 0 and spw 3 = 1.2 ± 0.7 % [Prior discussion on the behaviour of th…: "We retrieve an average deviation of the model visibilities at spws $0$ and $3$ of $(1.2\pm0.7)\%$, much lower than the average deviation computed directly from the visibilities, of $(10\pm20)\%$."]
+- result: Average deviation of observed visibilities between spw 0 and spw 3 = 10 ± 20 % [Prior discussion on the behaviour of th…: "We retrieve an average deviation of the model visibilities at spws $0$ and $3$ of $(1.2\pm0.7)\%$, much lower than the average deviation computed directly from the visibilities, of $(10\pm20)\%$."]
+- result: Simulated core polarization angle phi (grid-search, spw 0) = 30.11 ± 0.05 deg [Table 1: "0 | 30.11 $\pm$ 0.05 | 30 | 0.200 $\pm$ 0.001 | 0.200"]
+- result: Simulated core polarized flux m*I (grid-search, spw 0) = 0.200 ± 0.001 Jy [Table 1: "0 | 30.11 $\pm$ 0.05 | 30 | 0.200 $\pm$ 0.001 | 0.200"]
+- result: Simulated core polarization angle phi (grid-search, spw 1) = 14.37 ± 0.05 deg [Table 1: "1 | 14.37 $\pm$ 0.05 | 15 | 0.347 $\pm$ 0.001 | 0.346"]
+- result: Simulated core polarized flux m*I (grid-search, spw 1) = 0.347 ± 0.001 Jy [Table 1: "1 | 14.37 $\pm$ 0.05 | 15 | 0.347 $\pm$ 0.001 | 0.346"]
+- result: Simulated core polarization angle phi (grid-search, spw 2) = -13.66 ± 0.11 deg [Table 1: "2 | -13.66 $\pm$ 0.11 | -15 | 0.348 $\pm$ 0.002 | 0.346"]
+- result: Simulated core polarized flux m*I (grid-search, spw 2) = 0.348 ± 0.002 Jy [Table 1: "2 | -13.66 $\pm$ 0.11 | -15 | 0.348 $\pm$ 0.002 | 0.346"]
+- result: Simulated core polarization angle phi (grid-search, spw 3) = -25.2 ± 0.3 deg [Table 1: "3 | -25.2 $\pm$ 0.3 | -30 | 0.203 $\pm$ 0.005 | 0.200"]
+- result: Simulated core polarized flux m*I (grid-search, spw 3) = 0.203 ± 0.005 Jy [Table 1: "3 | -25.2 $\pm$ 0.3 | -30 | 0.203 $\pm$ 0.005 | 0.200"]
+- result: Simulated M87 core Rotation Measure (grid-search + linear fit) = 0.32e7 ± 0.04e7 rad/m^2 [Grid Search: "By doing so, we obtain a value of the RM of the core component, $RM = (0.32 \pm 0.04) \times 10^7$ rad/m$^{2}$, as shown in Fig. 6, which is compatible with the expected value of $(0.35 \pm 0.04) \times 10^7$ rad/m$^{2}$."]
+- result: Simulated M87 core Rotation Measure (MCMC) = (0.2-0.4)e7 ± not stated rad/m^2 [Markov chains: "We obtain a RM posterior distribution spread around $RM \sim (0.2-0.4) \times 10^7$ rad/m$^{-2}$, which is close to, albeit a bit lower than, the expected value of $(0.35 \pm 0.04) \times 10^7$ rad/m$^{2}$ (see Fig. 6)."]
+- result: Real ALMA M87 core Rotation Measure (MCMC) = (0.8-1.6)e5 ± not stated rad/m^2 [Real ALMA Observations: "We get a RM posterior distribution peaked around $RM \sim (0.8-1.6) \times 10^5$ rad/m$^{-2}$, being consistent with the values obtained from the image analysis."]
+- limitation (authors): Only a subset of 13 out of 33 ALMA antennas could be used due to computational cost, reducing the SNR and widening the RM posterior distribution compared to full-array imaging. [Real ALMA Observations: "In addition to the small EVPA rotation at the core, we are using only a subset of 13 antennas in our closure-based modelling (due to the computational limitations), which has a negative impact on the achievable signal-to-noise ratio (SNR)"]
+- limitation (authors): The small fractional bandwidth of ALMA Band 6 produces only ~2 degrees of EVPA rotation at the M87 core, resulting in a very wide RM posterior (poor RM precision). [Real ALMA Observations: "However, the width of the RM posterior distribution is very wide (i.e., the precision of the RM is poor), likely due to the small EVPA rotation (of the order of 2 deg.) of the core across the ALMA band."]
+- limitation (authors): Closure traces are only sensitive to differential polarization across the source, requiring at least one component's polarization (and Stokes V = 0) to be held fixed to break global Poincare-sphere rotation degeneracies. [Model-fitting two M87 components: the M…: "However, the closure traces are only sensitive to differential polarization (or polarization contrast) across the source structure, which means that we must leave one of the components fixed (and force its Stokes $V$ to zero, in order to break the latitudinal degeneracy in the Poincaré Sphere)"]
+- not stated (card): List of the exact 13 ALMA antenna names selected for the closure-trace subset analysis; MCMC setup details for emcee (number of walkers, number of steps, burn-in length, and parameter priors); Grid resolution and parameter range bounds used in the 2D grid-search exploration; Visibility time-averaging and frequency channel-averaging intervals used before computing closure traces
+
+### 2026ApJ...996L..27L: The Magnetic Fields of the Dusty Nuclei and Molecular Outflows of Arp 220 (2026; nearby_galaxies, star_formation; observational_alma_primary)
+- question: What are the magnetic field properties (configuration and strength) and their role in the dusty nuclei and molecular outflows of the Ultra-Luminous Infrared Galaxy Arp 220?
+- step 1: Self-calibrate and image full-Stokes dust continuum and CO(3-2) line cubes
+  - method: Independent self-calibration of CO(3-2) line data and continuum windows; imaging continuum with Briggs robust = 0.5 and CO(3-2) by averaging 4 channels with natural weighting [Observations and Data Reduction: "Self-calibration was performed independently for the CO(3–2) line data and the two continuum windows."] [Observations and Data Reduction: "The CO(3–2) channel maps were created by averaging four channels and using natural weighting, resulting in a synthesized Full-Width Half-Maximum (FWHM) size of $0.34\ensuremath{''}\times0.24\ensuremath{''}$ and a PA of $-35$$^\circ$."]
+  - parameter: robust = 0.5 for continuum; natural weighting and 4-channel averaging (13.5 km/s) for CO(3-2) [Observations and Data Reduction: "The CO(3–2) channel maps were created by averaging four channels and using natural weighting, resulting in a synthesized Full-Width Half-Maximum (FWHM) size of $0.34\ensuremath{''}\times0.24\ensuremath{''}$ and a PA of $-35$$^\circ$. The resulting spectral resolution of the channel maps is 13.5 km s$^{-1}$."] [Observations and Data Reduction: "The full polarization continuum images were obtained using a Briggs’s robust weight of 0.5 (cite: Briggs1995), which yielded a beam size of $0.24\ensuremath{''}\times0.16\ensuremath{''}$ at a PA of $-31$$^\circ$."]
+  - assumption: 10% flux calibration uncertainty in Band 7 [Observations and Data Reduction: "For the photometric analysis, we adopt the 10% flux calibration uncertainty in Band 7 as provided by ALMA[^1]."]
+  - validation: Dynamic range improvement from 360 to 2100 in continuum and from 90 to 360 in CO(3-2) [Observations and Data Reduction: "The self-calibration allowed to increase the dynamic range from 360 to 2100 in the continuum, and from 90 to 360 in the CO(3–2) images."]
+- step 2: Measure dust continuum and CO(3-2) line polarization and validate against instrumental polarization
+  - method: Select pixels with PI/sigma_PI >= 4 (and I_CO/sigma_I_CO >= 140 for CO(3-2)), rotate dust polarization angles by 90 deg to obtain plane-of-sky B-field orientation, rotate CO(3-2) polarization angles by 90 deg based on offset from dust, and… [Observations and Data Reduction: "For the polarimetric analysis, we only use polarization measurements with $PI/\sigma_{\rm PI} \ge 4$, where $PI$ is the polarized intensity and $\sigma_{\rm{PI}}$ is its uncertainty. For the CO(3-2) line emission polarization analysis, we apply the additional constraint $I_{\rm{CO}}/\sigma_{\rm{I}_{\rm{CO}}} \ge 140$."] [Results: "For dust polarization, the measured polarization angles were rotated by $90^{\circ}$ to show the plane-on-the-sky B-field orientation."]
+  - parameter: PI/sigma_PI >= 4; I_CO/sigma_I_CO >= 140; elliptical apertures 0.5'' x 0.6'' tilted at +25 deg (East) and -25 deg (West) [Observations and Data Reduction: "For the polarimetric analysis, we only use polarization measurements with $PI/\sigma_{\rm PI} \ge 4$, where $PI$ is the polarized intensity and $\sigma_{\rm{PI}}$ is its uncertainty. For the CO(3-2) line emission polarization analysis, we apply the additional constraint $I_{\rm{CO}}/\sigma_{\rm{I}_{\rm{CO}}} \ge 140$."] [Dust polarization of Arp 220: "Using an elliptical aperture of $200\times240$ pc$^{2}$ ($0.5\ensuremath{''} \times0.6\ensuremath{''}$) centered at the peak of each core and tilted at $+25^{\circ}$ and $-25^{\circ}$ for the East and West nuclei, we compute integrated polarization fractions of $0.4\pm0.1$% and $0.2\pm0.1$%, respectively."]
+  - assumption: Both nuclei are nearly optically thin at 345.8 GHz (nu^2.4 flux dependence); both dust and CO(3-2) trace the same dominant B-field component in the outflow so CO(3-2) polarization is perpendicular to B-field [Dust polarization of Arp 220: "We estimate that both nuclei are nearly optically thin at $345.8$ GHz after obtaining a flux dependence of $\sim\nu^{2.4}$ in the spectral range of $100-691$ GHz using fluxes within apertures of $0.1\ensuremath{''}-0.5\ensuremath{''}$ from (cite: Sakamoto2008; wilson2014; Scoville2016; Martin2016)."] [Summary and Discussion: "The main assumption is that both tracers are sensitive to the dominant B-field component in the outflow, i.e., parallel to the outflow as directly measured by dust polarization. Thus, a $90^{\circ}$ rotation has been applied to the CO(3–2) polarization angles displayed in Figs. 1 and 3."]
+  - validation: Split visibilities into two Hour Angle / parallactic angle ranges (0.0h-2.0h and 2.0h-3.4h) and verify consistency of Stokes Q, U, and V in apertures [On the residual instrumental polarizati…: "To investigate the possible contributions of the residual instrumental polarization, we split the visibilities into two different Hour Angle (HA), or parallactic angle, ranges: from $0.0\text{h}$ to $2.0\text{h}$ ($140\ensuremath{^\circ}-180\ensuremath{^\circ}$) and from $2.0\text{h}$ to $3.4\text{h}$ ($125\ensuremath…"]
+- step 3: Estimate magnetic field strengths in the molecular outflows of Arp 220 W
+  - method: Calculate B-field strengths using turbulent kinetic energy equipartition (B_eq), classical Davis-Chandrasekhar-Fermi (B_DCF), modified DCF for shear flows in outflows (B'_DCF), and SFR scaling (B_SFR), with uncertainties from bootstrapping… [Summary and Discussion: "We compute the median and standard deviation using bootstrapping with 1,000 random iterations for the blue and redshifted outflows."] [Summary and Discussion: "We estimate B-field strengths of $4.0\pm 1.7$ mG and $18.2\pm 6.8$ mG for the blue and redshifted outflows, respectively, using the Classical Davis-Chandrasekhar-Fermi (DCF) method (cite: Davis1951; CF1953)."]
+  - parameter: sigma_CO = 220+-20 km/s; M_CO = 10^7 M_sun (red) and 10^6 M_sun (blue); V = 121x50x50 pc^3 (red) and 90x50x50 pc^3 (blue); U_0 = 500+-50 km/s (red) and 460+-50 km/s (blue); sigma_theta = 12+-5 deg (red) and 20+-10 deg (blue) [Table 3: "| $\sigma_{\rm{CO}}$ | Velocity dispersion CO(3-2) | $220\pm20$ km s$^{-1}$ | $220\pm20$ km s$^{-1}$ |"] [Table 3: "| U$_{o}$ | Velocity molecular outflow CO(3-2) | $500\pm50$ km s$^{-1}$ | $460\pm50$ km s$^{-1}$ |"]
+  - assumption: Axisymmetric outflow volume; factor of 2 uncertainty in outflow molecular mass; dust and molecular gas are cospatially embedded in the same B-field of the outflow [Summary and Discussion: "The angular dispersion, $\sigma_{\theta}$, was estimated as the standard deviation of the polarization angles of the dust and molecular line polarization measurements, which intrinsically assume that both the dust and molecular gas are cospatially embedded in the same B-field of the outflow."] [Table 3: "Table notes: $^{a}$ Molecular mass in the outflows from (cite: Wheeler2020). We assume a factor 2 in uncertainty. $^{b}$ We assume an axysymmetric outflow."]
+  - fitting: Bootstrapping with 1,000 random iterations to compute median and standard deviation [Summary and Discussion: "We compute the median and standard deviation using bootstrapping with 1,000 random iterations for the blue and redshifted outflows."]
+  - validation: Comparison with independent literature B-field estimates (Zeeman splitting in OH masers, SNR synchrotron, ISM volume average, SFR scaling) [Summary and Discussion: "Our estimated magnetic-field strengths are comparable with previous measurements using independent techniques across the multi-phase medium of Arp 220 (Table 2)."]
+- result: Dust continuum total intensity (East Core) = 182.7 ± 18 mJy [Table 1: "| I$_{\rm{cont}}$ | \[mJy\] | $182.7\pm18$ | $376.8\pm38$ |"]
+- result: Dust continuum total intensity (West Core) = 376.8 ± 38 mJy [Table 1: "| I$_{\rm{cont}}$ | \[mJy\] | $182.7\pm18$ | $376.8\pm38$ |"]
+- result: Dust continuum polarized intensity (East Core) = 0.7 ± 0.1 mJy [Table 1: "| PI$_{\rm{cont}}$ | \[mJy\] | $0.7\pm0.1$ | $0.6\pm0.1$ |"]
+- result: Dust continuum polarized intensity (West Core) = 0.6 ± 0.1 mJy [Table 1: "| PI$_{\rm{cont}}$ | \[mJy\] | $0.7\pm0.1$ | $0.6\pm0.1$ |"]
+- result: Dust continuum linear polarization fraction (East Core) = 0.4 ± 0.1 % [Table 1: "| PF$_{\rm{cont}}$ | \[%\] | $0.4\pm0.1$ | $0.2\pm0.1$ |"]
+- result: Dust continuum linear polarization fraction (West Core) = 0.2 ± 0.1 % [Table 1: "| PF$_{\rm{cont}}$ | \[%\] | $0.4\pm0.1$ | $0.2\pm0.1$ |"]
+- result: Dust continuum B-field position angle (East Core) = 34 ± 7 deg [Table 1: "| PA$_{B,\rm{cont}}$ | \[$^{\circ}$\] | $34\pm7$ | $14\pm17$ |"]
+- result: Dust continuum B-field position angle (West Core) = 14 ± 17 deg [Table 1: "| PA$_{B,\rm{cont}}$ | \[$^{\circ}$\] | $34\pm7$ | $14\pm17$ |"]
+- result: Dust polarization fraction in overlap bridge region = 3-5 ± not stated % [Abstract: "A highly polarized ($3-5$%) dusty bridge has a B-field orientation of $\sim110^{\circ}$ connecting both nuclei."]
+- result: B-field orientation in overlap bridge region = 110 ± not stated deg [Abstract: "A highly polarized ($3-5$%) dusty bridge has a B-field orientation of $\sim110^{\circ}$ connecting both nuclei."]
+- result: CO(3-2) median polarization fraction in blueshifted outflow (West Core) = 1.7 ± 0.5 % [Table 1: "| PF$_{\rm{blue}}$$^{c}$ | \[%\] | $-$ | $1.7\pm0.5$ |"]
+- result: CO(3-2) median polarization fraction in redshifted outflow (West Core) = 1.2 ± 0.3 % [The polarized CO(3-2) molecular outflow…: "The median polarization fractions are $1.7\pm0.5$% and $1.2\pm0.3$% in the blue and redshifted outflows, respectively."]
+- result: CO(3-2) polarization fraction range in redshifted outflow (West Core) = [0.7, 2.4] ± not stated % [Table 1: "| PF$_{\rm{red}}$$^{f}$ | \[%\] | $-$ | $[0.7,2.4]$ |"]
+- result: CO(3-2) polarization angle (E-vector) in blueshifted outflow (West Core) = -1 ± 20 deg [Table 1: "| PA$_{E,\rm{blue}}$$^{d}$ | \[$^{\circ}$\] | $-$ | $-1\pm20$ |"]
+- result: CO(3-2) polarization angle (E-vector) in redshifted outflow (West Core) = 81 ± 12 deg [Table 1: "| PA$_{E,\rm{red}}$$^{g}$ | \[$^{\circ}$\] | $-$ | $81\pm12$ |"]
+- result: Circular polarization (Stokes V) fraction in Arp 220 E = 0.3 ± 0.1 % [Circular polarization in the core of Ar…: "We report the likely detection of circular polarization (Stokes V) of $0.3\pm0.1$%, in Arp 220 E within a $0.5\ensuremath{''}$ ($200$ pc) aperture."]
+- result: Stokes V peak intensity in East Core = 0.17 ± 0.02 mJy beam^-1 [On the residual instrumental polarizati…: "Additionally, we measure a significant Stokes $V$ signal, with a peak intensity of $0.17\pm0.02$ $\text{mJy} \text{beam}^{-1}$, or $0.28\%$, in the East core, while the West core does not show significant emission at the $3\text{-}\sigma$ level ($\lesssim0.01\%$, Fig. 4)."]
+- result: CO(3-2) velocity dispersion in polarized outflows = 220 ± 20 km s^-1 [Table 3: "| $\sigma_{\rm{CO}}$ | Velocity dispersion CO(3-2) | $220\pm20$ km s$^{-1}$ | $220\pm20$ km s$^{-1}$ |"]
+- result: Equipartition B-field strength (B_eq, redshifted outflow) = 6.4 ± 1.6 mG [Table 2: "| B$_{\rm{eq}}$ | Turbulent kinetic and B-field energies equipartition | $B_{\rm{eq}} = \sqrt{4\pi\rho_{\rm{CO}}}\sigma_{\rm{CO}}$ | $6.4\pm1.6$ mG | $2.3\pm0.6$ mG |"]
+- result: Equipartition B-field strength (B_eq, blueshifted outflow) = 2.3 ± 0.6 mG [Table 2: "| B$_{\rm{eq}}$ | Turbulent kinetic and B-field energies equipartition | $B_{\rm{eq}} = \sqrt{4\pi\rho_{\rm{CO}}}\sigma_{\rm{CO}}$ | $6.4\pm1.6$ mG | $2.3\pm0.6$ mG |"]
+- result: Classical DCF B-field strength (B_DCF, redshifted outflow) = 18.2 ± 6.8 mG [Table 2: "| B$_{DCF}$ | Classical DCF method | $B_{\rm{DCF}} = \sqrt{4\pi\rho_{\rm{CO}}}\frac{\sigma_{\rm{CO}}}{\sigma_{\rm{\theta}}}$ | $18.2\pm6.8$ mG | $4.0\pm1.7$ mG |"]
+- result: Classical DCF B-field strength (B_DCF, blueshifted outflow) = 4.0 ± 1.7 mG [Table 2: "| B$_{DCF}$ | Classical DCF method | $B_{\rm{DCF}} = \sqrt{4\pi\rho_{\rm{CO}}}\frac{\sigma_{\rm{CO}}}{\sigma_{\rm{\theta}}}$ | $18.2\pm6.8$ mG | $4.0\pm1.7$ mG |"]
+- result: Modified DCF B-field strength (B'_DCF, redshifted outflow) = 9.5 ± 5.6 mG [Table 2: "| B$^{\prime}_{DCF}$ | Modified DCF in outflows | $B^{\prime}_{\rm{DCF}} = B_{\rm{DCF}}|1- \sigma_{\theta}\frac{U_{0}}{\sigma_{v,\rm{CO}}}|$ | $9.5\pm5.6$ mG | $1.1\pm1.0$ mG |"]
+- result: Modified DCF B-field strength (B'_DCF, blueshifted outflow) = 1.1 ± 1.0 mG [Table 2: "| B$^{\prime}_{DCF}$ | Modified DCF in outflows | $B^{\prime}_{\rm{DCF}} = B_{\rm{DCF}}|1- \sigma_{\theta}\frac{U_{0}}{\sigma_{v,\rm{CO}}}|$ | $9.5\pm5.6$ mG | $1.1\pm1.0$ mG |"]
+- result: SFR-scaled B-field strength in Arp 220 W core = 0.66 ± not stated mG [Table 2: "| B$_{\rm{SFR}}$ | B-field enhanced by SFR (Arp 220 W) | $B\propto SFR^{0.34}$ | $0.66$ mG (core); $0.22$ mG (outflow) |"]
+- result: SFR-scaled B-field strength in Arp 220 W outflow = 0.22 ± not stated mG [Table 2: "| B$_{\rm{SFR}}$ | B-field enhanced by SFR (Arp 220 W) | $B\propto SFR^{0.34}$ | $0.66$ mG (core); $0.22$ mG (outflow) |"]
+- limitation (authors): Higher spatial resolution observations are needed to separate the northern spiral arm and overlap region in Arp 220 E, and to resolve the central disk of Arp 220 W and the blueshifted polarized outflow [Dust polarization of Arp 220: "Both the continuum and polarized dust emission are also elongated along this direction, though the central disk of the galaxy remains unresolved in our observations."]
+- limitation (authors): A detailed radiative transfer analysis is required to break the 90 deg Goldreich-Kylafis ambiguity directly rather than relying on the assumption of cospatial dust polarization [Summary and Discussion: "However, line emission polarization angle has a $90^{\circ}$ ambiguity, and a detailed radiative transfer analysis using the physical conditions of the outflow is required to estimate the exact orientation of the B-field in the molecular outflow (cite: Lankhaar2020; Lankhaar2022; Lankhaar2023)."]
+- limitation (authors): Small number of independent Nyquist polarization measurements in the outflows means DCF B-field strength estimates should be considered upper limits and order-of-magnitude estimates [Summary and Discussion: "Higher angular resolution observations are required to spatially resolve the outflows and enable the use of more sophisticated approaches (cite: Hildebrand2009), so our measurements should be considered upper limits and order-of-magnitude estimates."]
+- not stated (card): CASA version and ALMA pipeline version used for calibration and imaging; Self-calibration solution intervals, number of rounds, and whether phase-only or amplitude+phase self-calibration was applied; Continuum subtraction method and line-free channel ranges used before imaging the CO(3-2) cube; Imaging cell size, image dimensions, and clean thresholding/masking strategy; Whether polarized intensi…
+
+### 2019MNRAS.489..470G: ALMA Band 3 polarimetric follow-up of a complete sample of faint PACO sources (2019; agn_and_quasars; observational_alma_primary)
+- question: What are the total intensity and linear polarization properties at 97.5 GHz of a complete sample of 32 faint PACO radio sources, and how do they extend the spectra, polarization fractions, RMs and polarized source counts to mm wavelengths?
+- step 1: Extract Stokes I, Q, U flux densities
+  - method: 2D Gaussian fit of naturally weighted maps; central peak if Q/U fit fails [3 Data reduction: "Whenever the fit fails because the source is too faint to be detected in Stokes $Q$ and $U$, we consider the central peak in the image."]
+  - software: CASA
+  - assumption: Sources point-like; no Stokes V debiasing [3 Data reduction: "Since almost all the objects are point-like"]
+- step 2: Derive P, polarization angle and fraction
+  - method: P = sqrt(Q^2+U^2), Pi = 100 P/I, 3 sigma detection limit [3 Data reduction: "the linearly polarized emission, $P$, can be safely estimated from the Stokes parameters $Q$ and $U$ only"]
+  - assumption: Debiasing term lowers P by ~0.01%, negligible [3 Data reduction: "the debiasing term $\sigma_V$ lowers the estimated value of the polarized flux density by $\sim 0.01\%$"]
+- step 3: Polarization fraction distribution
+  - method: Bootstrap with 1000 resamplings, Gaussian per detection, uniform for upper limits, log-normal fit [4.2 Linear polarization fraction: "Then, we generated $1000$ simulated data sets by resampling with repetitions the distributions of percentage polarization fractions of each source."]
+  - fitting: log-normal with A=0.86, mu=2.05, sigma=0.97 [4.2 Linear polarization fraction: "with $A=0.86$, $\mu=2.05$ and $\sigma=0.97$."]
+- step 5: Polarized source counts at 95 GHz
+  - method: Convolve C2Ex total intensity counts with log-normal polarization fraction distribution [5 Source Counts: "We started from the C2Ex model for total intensity source counts, $n(S)$, by (cite: Tucci2011) and used the approach of (cite: Tucci2012)"]
+  - assumption: Same distribution applied to all sub-populations [5 Source Counts: "the distribution of eq. ([\[eq:lognorm\]](#eq:lognorm)) was applied to all sub-populations"]
+  - validation: Compared with Tucci2012 and D05-based predictions [5 Source Counts: "there is a very remarkable agreement between our current data and the model predictions by (cite: Tucci2012)"]
+- result: Polarization detection rate at 3 sigma = 97 ± not stated percent [2 ALMA Observations: "3\,\sigma$ detection rate of $97\%$ (only one non-detection)"]
+- result: Median polarization fraction at 97.5 GHz = 2.2 ± 0.6 percent [4.2 Linear polarization fraction: "The median polarization fraction measured by ALMA for the full sample is $2.2\pm 0.6\%$"]
+- result: Log-normal parameters of polarization fraction distribution = A=0.86, mu=2.05, sigma=0.97 ± not stated dimensionless [4.2 Linear polarization fraction: "with $A=0.86$, $\mu=2.05$ and $\sigma=0.97$."]
+- limitation (authors): ALMA and ATCA not simultaneous so no joint fit; small sample prevents firm conclusions [4.1 Spectral behaviour: "Therefore we have not attempted a joint fit of ALMA and ATCA data"]
+- limitation (authors): Stokes V unreliable in Cycle 3 [3 Data reduction: "Stokes V images obtained were not reliable"]
+- not stated (card): Number/size of Stokes images and cell size; Whether tclean/clean parameters, niter, thresholds, masks were used; Exact way polarization leakage and angle calibration were solved (CASA tasks); Spectral windows combined for the Gaussian fits and per-sub-band fitting procedure; How redshifts were assigned and the Galactic RM values used; Total intensity source count error computation details and C2E…
+
+### 2024A&A...686A.274V: Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars (2024; evolved_stars, stellar_physics; observational_alma_primary)
+- question: What is the large-scale magnetic field morphology and strength in AGB circumstellar envelopes, as traced by non-maser molecular line polarisation (GK effect and radiative alignment) in CW Leo and R Leo?
+- step 1: Calibrate and self-calibrate
+  - method: ALMA polarisation calibration scripts after re-normalisation correction; two rounds phase-only self-cal on continuum [2 Observations and data reduction: "Calibration was done using the ALMA polarisation calibration scripts (cite: Nagai16)."]
+  - software: CASA 5.7.2
+  - parameter: solint 'inf' then 'int' [2 Observations and data reduction: "Two rounds of phase-only self-calibration, (with solution intervals "inf" and "int") were done on the continuum."]
+  - validation: Compared before/after re-normalisation spectra; compared flux with ACA and JCMT [2 Observations and data reduction: "A comparison between the results before and after re-normalisation indeed revealed significant differences in the total intensity spectra."]
+- step 2: Make Stokes cubes and debiased polarisation maps
+  - method: uvcontsub, Briggs robust 0.5 imaging of I,Q,U,V; P_l = sqrt(Q^2+U^2-sigma_P^2) with sigma_P mean of sigma_Q and sigma_U [2 Observations and data reduction: "Finally we produce debiased linear polarisation maps from the Stokes Q and U imaged using $P_l=\sqrt{Q^2+U^2-\sigma^2_P}$."]
+  - software: CASA
+  - parameter: detection threshold >5 sigma_P [3.1 Polarisation result overview: "We detect significant ($>5\sigma_P$) polarised emission towards the 338 GHz continuum of both CW Leo and R Leo"]
+  - validation: Stokes V found dominated by beam effects for extended lines [2 Observations and data reduction: "find that these are, for the extended molecular lines, dominated by ALMA beam effects (cite: Hull20)."]
+- step 3: Characterise polarisation morphology and radial profiles
+  - method: Histograms of deviation from tangential direction; azimuthally averaged Stokes I, polarised flux and fraction in channel nearest stellar velocity [3.2 CW Leo: "we plot a histogram with the deviation from the tangential direction for all polarisation vectors in Fig. [6](#fig:angdist)(left)"]
+  - parameter: V_lsr CW Leo = -26.5 km/s [3.2 CW Leo: "($V_{\rm lsr, CW Leo}=-26.5$ km s$^{-1}$)"]
+  - validation: Consistency between neighbouring channels used to argue against missing-flux artefacts [3.2 CW Leo: "All lines show a good correspondence of polarisation structure between neighbouring channels"]
+- step 4: Polarised radiative transfer modelling
+  - method: PORTAL on converged LIME output with parameterised CSE (density, T, velocity, abundance profiles); compare radiative rates to magnetic precession rate; model radial alignment for CS/H13CN/SiS and dipole/toroidal B for CO of CW Leo, radial … [4 Polarised radiative transfer models: "The modelling of the line polarisation is performed with the PORTAL (POlarised Radiative Transfer Adapted to Lines) code (cite: Lankhaar20)."]
+  - software: PORTAL, LIME 1.9.5
+  - parameter: CW Leo dipole inclined 45 deg, PA 125 deg [4.2 CW Leo: "we assume it to be inclined at 45$^\circ$"]
+  - parameter: turbulent velocity 1 km/s; gas mean particle mass 2.35 AMU [4.1 Circumstellar envelope models: "contained a contribution from a constant turbulent velocity of 1 km s$^{-1}$"]
+  - assumption: Spherically symmetric envelope expanding at constant velocity; amorphous carbon opacities (CW Leo), silicate (R Leo); gas-to-dust 300 (CW Leo), 167 (R Leo) [4.1 Circumstellar envelope models: "In the case of C-rich CSEs, such as CW Leo, we adopted the opacities for amorphous carbon type of dust given by (cite: suh00)"]
+  - validation: Qualitative comparison of predicted and observed polarisation morphology and fractions [4.3 R Leo: "The predicted polarisation morphology appears to be consistent with the observations."]
+- step 5: Magnetic field strength via structure function analysis (CW Leo CO)
+  - method: Structure function of CO J=3-2 polarisation angles in central channel, fit with Koch et al. 2010 equation within <~2''; B0 from turbulent-to-ordered ratio and Alfven velocity; correction N from Houde16 [5.3 Structure function: "The structure function can be fit using the equation from (cite: Koch10) within $\lesssim2$$''$"]
+  - parameter: delta~300 au, Delta'~500 au, W1~40 au, N~1.2 [5.3 Structure function: "This yields $\delta\sim300$ au and $\Delta'\sim500$ au. The parameter $W_1\approx40$ au is the radius of the interferometric beam."]
+  - assumption: Field frozen into gas, isotropic incompressible turbulence from transverse Alfven waves; result a lower limit if not frozen [5.3 Structure function: "the derived field strength should be considered a lower limit."]
+  - fitting: structure function fit; ratio 0.061 ± 0.001 [5.3 Structure function: "$\frac{\langle B_t^2\rangle^{1/2}}{B_0} = 0.061\pm0.001$"]
+  - validation: Other velocity channels give field within 30% [5.3 Structure function: "yield similar field strengths to within $30\%$"]
+- result: Max continuum fractional polarisation CW Leo = 0.88 ± not stated % [3.1 Polarisation result overview: "The maximum fraction of continuum polarisation is $0.88\%$ for CW Leo and $0.17\%$ for R Leo."]
+- result: Max continuum fractional polarisation R Leo = 0.17 ± not stated % [3.1 Polarisation result overview: "The maximum fraction of continuum polarisation is $0.88\%$ for CW Leo and $0.17\%$ for R Leo."]
+- result: Peak fractional polarisation 12CO J=3-2 CW Leo = 1.18 ± not stated % [Table 1: "| $^{12}$CO $J=3-2$ | 17.89 | 1.18 |"]
+- result: Peak fractional polarisation 12CO J=3-2 R Leo = 3.90 ± not stated % [Table 1: "| $^{12}$CO $J=3-2$ | 4.66 | 3.90 |"]
+- result: Peak fractional polarisation SiO v=1 J=8-7 R Leo = 32.4 ± not stated % [Table 1: "| SiO $v=1,J=8-7$ | 12.68 | 32.4 |"]
+- result: SiO v=1 circular polarisation fraction R Leo = 1.3 ± not stated % [3.3 R Leo: "This corresponds to a circular polarisation percentage of $P_v=1.3\%$."]
+- result: Structure function ratio B_t/B0 CW Leo = 0.061 ± 0.001 dimensionless [5.3 Structure function: "$\frac{\langle B_t^2\rangle^{1/2}}{B_0} = 0.061\pm0.001$"]
+- result: Plane-of-sky field CW Leo at ~250 au = ~19 ± not stated mG [Conclusions: "reveal a plane-of-the-sky magnetic field of $\sim19$ mG at $R=250$ au"]
+- result: B(r) CW Leo, r=50-485 au = 107 x (50/r) ± not stated mG (r in au) [5.3 Structure function: "$B=107\times(50/r)$ mG between $r=50$ and $485$ au"]
+- result: Number of turbulent cells N = ~1.2 ± not stated dimensionless [5.3 Structure function: "Hence, we find $N\sim1.2$."]
+- result: SiO maser field strength R Leo from circular polarisation = 2-3 ± not stated G [3.3 R Leo: "this corresponds to a magnetic field of $B\sim2-3$ G in the SiO maser region"]
+- result: Dust fractional polarisation R Leo / CW Leo (if dust-only) = ~0.6 / 3 ± not stated % [3.1 Polarisation result overview: "this means the dust fractional polarisation is $\sim0.6\%$."]
+- limitation (authors): Spatial filtering resolves out much CO flux, overestimating polarisation fractions by factor 2-3. [2 Observations and data reduction: "this can lead to an overestimate of the polarisation fractions with a factor of $2-3$"]
+- limitation (authors): Circular polarisation of extended lines dominated by beam effects; no test of anisotropic resonant scattering. [5.2 Anisotropic Resonant Scattering: "we cannot directly investigate anisotropic resonance scattering through a study of the circular polarisation."]
+- not stated (card): Exact self-calibration solution interval values and spw/channel selection for continuum; Line-free channels used for uvcontsub and fit order; Image size, cell size, deconvolver, masking and clean threshold; Polarisation calibration script details and leakage solutions; Details of the amplitude re-normalisation correction; PORTAL/LIME setup: grid, number of photons, magnetic field strength used fo…
+
+### 2020MNRAS.495.4297S: ALMA reveals the coherence of the magnetic field geometry in OH 231.8+4.2 (2020; evolved_stars; observational_alma_primary)
+- question: Which mechanism aligns the dust grains producing the ALMA Band 7 polarization in OH 231.8+4.2, and what magnetic field geometry do the ALMA data reveal compared with earlier SMA and CARMA data?
+- step 1: Calibrate and combine the two executions
+  - method: uv data reduction with the ALMA pipeline; the two executions calibrated separately, then combined before imaging and polarization calibration [2 Observations and data reduction: "The two executions were calibrated separately, then combined before imaging and polarization calibration."]
+  - software: ALMA pipeline, CASA
+  - parameter: Flux and polarization calibrator J0750+1231; phase calibrator J0730-1141; bandpass calibrator J0522-3627 [2 Observations and data reduction: "J0750+1231 as the flux and polarization calibrator, J0730-1141 as the phase calibrator, and J0522-3627 as the bandpass calibrator"]
+  - validation: Polarization leakage expected below 2%; continuum instrumental error about 0.1% [2 Observations and data reduction: "the leakage is expected to be lower than 2% and the 1$\sigma$ continuum instrumental error is around 0.1%"]
+- step 3: Image continuum Stokes I, Q and U
+  - method: Briggs weighting continuum maps with line channels removed, primary-beam corrected, 3 sigma cut [2 Observations and data reduction: "A Briggs weighting with a robust factor of 0.5 was used to generate continuum maps"] [2 Observations and data reduction: "The images were also primary-beam corrected"]
+  - software: CASA
+  - parameter: robust = 0.5; beam 0.50 x 0.38 arcsec; Stokes I rms 0.260 mJy/beam; Q and U rms 0.021 mJy/beam [2 Observations and data reduction: "image has an rms noise level $\sigma_{I}\approx$ 0.260 mJy beam$^{-1}$"] [2 Observations and data reduction: "images have rms noise levels $\sigma_{Q}\approx\sigma_{U}\approx$ 0.021 mJy beam$^{-1}$"]
+  - assumption: Structures larger than the MRS of 3.9 arcsec are resolved out [2 Observations and data reduction: "we have resolved out all the smooth structures larger than this size"]
+- step 4: Map E-vectors and B-vectors and measure polarization
+  - method: Electric vector map shown where polarized intensity exceeds 3 sigma; B-vectors obtained by rotating EVPA by 90 deg; mean EVPA, peak polarized flux and fractional polarization measured in regions A, B and C [3 ALMA dust polarization analysis: "the dusty regions in the nebula where those vectors are not indicated have a polarized intensity below 3$\sigma$"] [abstract: "the inferred magnetic field vectors (rotated by 90 degrees) trace an hourglass morphology"]
+  - parameter: Polarization angle uncertainty about 10% for a 3 sigma threshold [4.1 Poloidal or hourglass magnetic dist…: "assuming a 3$\sigma$ threshold, was estimated to be around 10% using the relation derived by (cite: Serkowski74)"]
+  - assumption: Polarization traces dust grains aligned with respect to the magnetic field, so B is perpendicular to E [4 Multi-scale dust polarization analysis: "It is generally assumed that the polarization of ISM thermal dust emission observed at long (e.g. submillimeter and millimeter) wavelengths is due to spinning non-spherical dust grains aligned with respect to the magnetic field."]
+- step 5: Test non-magnetic polarization mechanisms
+  - method: Compare the vector pattern with the centro-symmetric pattern expected for radiative alignment; compare fractional polarization with the maximum expected from self-scattering; compare 230 GHz and 345 GHz vector patterns after convolving ALM… [4 Multi-scale dust polarization analysis: "In the case of grain alignment caused by a radiative flux the polarization distribution would more likely be centro-symmetric (or spherical symmetric)."] [4 Multi-scale dust polarization analysis: "to the CARMA resolution and confirmed this trend"]
+  - parameter: Self-scattering model maximum about 2.5% at 345 GHz (a_max = 100 um); observed P% generally at least 2% in most of the nebula [4 Multi-scale dust polarization analysis: "about 2.5% at 345 GHz"] [4 Multi-scale dust polarization analysis: "P% is generally always"]
+  - assumption: Self-scattering is important if a_max ~ lambda/2pi [4 Multi-scale dust polarization analysis: "This process becomes important if the dust grain size is comparable to the wavelength"]
+  - validation: Wavelength independence of the vector pattern between 230 and 345 GHz argues against self-scattering [4 Multi-scale dust polarization analysis: "As scattering polarization is frequency dependent, it is very unlikely that self-scattering is a main element in the polarization seen in the nebula."]
+- result: Synthesized beam = 0.50 x 0.38 arcsec, PA = 85.63 deg ± not stated arcsec; deg [2 Observations and data reduction: "continuum maps with a resulting synthesized beam of 0.50"]
+- result: Stokes I rms noise = 0.260 ± not stated mJy/beam [2 Observations and data reduction: "image has an rms noise level $\sigma_{I}\approx$ 0.260 mJy beam$^{-1}$"]
+- result: Stokes Q and U rms noise = 0.021 ± not stated mJy/beam [2 Observations and data reduction: "images have rms noise levels $\sigma_{Q}\approx\sigma_{U}\approx$ 0.021 mJy beam$^{-1}$"]
+- result: Region B mean flux (Stokes I) = 29 ± 3 mJy/beam [3 ALMA dust polarization analysis: "shows a mean flux of 29$\pm$3 mJy beam$^{-1}$"]
+- result: Region B peak intensity (Stokes I) = 74 ± 8 mJy/beam [3 ALMA dust polarization analysis: "74$\pm$8 mJy beam$^{-1}$"]
+- result: Region C mean flux and peak (Stokes I) = mean 23, peak 46 ± 3 and 5 mJy/beam [3 ALMA dust polarization analysis: "with a mean flux of 23$\pm$3 mJy beam$^{-1}$ and a peak of 46$\pm$5 mJy beam$^{-1}$"]
+- result: Peak polarized flux (in region B) = 1.13 ± 0.3 mJy/beam [3 ALMA dust polarization analysis: "has a measured flux of 1.13$\pm$0.3 mJy beam$^{-1}$"]
+- result: Mean EVPA in regions A and B = -19 (A), -42 (B) ± 2 and 3 deg [3 ALMA dust polarization analysis: "of about -19$^\circ$ $\pm$2$^\circ$ and -42$^\circ$$\pm$3$^\circ$ for the regions A and B respectively"]
+- result: Peak fractional polarization = 9.7 (region A), 16.4 (region C), 2.2 (region B) ± not stated percent [3 ALMA dust polarization analysis: "Its value ranges from 9.7% and 16.4% in the (outer) regions A and C respectively down to 2.2% in the (inner) region B."]
+- result: Polarization angle uncertainty (3 sigma threshold) = around 10% ± not stated percent [4.1 Poloidal or hourglass magnetic dist…: "was estimated to be around 10% using the relation derived by (cite: Serkowski74)"]
+- limitation (authors): Stokes I dynamic range only about 300; flux not fully recovered and structure larger than the MRS of 3.9 arcsec is resolved out [2 Observations and data reduction: "indicating that all the flux is not recovered"]
+- limitation (authors): The reason for structures seen in the SMA map but absent in the ALMA map is unclear [4.1 Poloidal or hourglass magnetic dist…: "The reason for the absence of structures seen with the SMA (at lower resolution) in the ALMA map (having a higher resolution) is not clear."]
+- limitation (authors): Polarization process in the inner region is unclear [4 Multi-scale dust polarization analysis: "The polarization process occurring in the inner region is less clear though."]
+- not stated (card): CASA version and ALMA pipeline version, and whether the pipeline calibration was the archive product or a re-run; Polarization calibration recipe (leakage calibration method, polarization angle calibrator reference angle, CASA tasks and parameters); Self-calibration details: reference data, solution intervals, which Stokes, and the amplitude/phase scheme for the two rounds; Channels flagged as li…
+
+### 2015ApJ...812...27A: ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A (2015; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: How does infall motion in the envelope of the Class I protostar TMC-1A transition to Keplerian rotation in the disk, and what does this imply for Keplerian disk formation?
+- step 5: Estimate magnetic field required for slow infall
+  - method: Order-of-magnitude radial equation of motion with magnetic pressure and tension at 200 AU [5.3 Magnetic Pressure and Tension: "The magnetic flux density required to make the infall velocity as small as $0.3 V_{\rm ff}$ is estimated from the equation of motion"]
+  - assumption: R_curv ~ scale height H; B ∝ rho^(2/3); steady state; gas pressure ignored [5.3 Magnetic Pressure and Tension: "We also assume $B\propto \rho ^{2/3}$"]
+  - validation: same estimate at 100 and 300 AU gives similar results [5.3 Magnetic Pressure and Tension: "The same estimations are also done at radii of 100 AU and 300 AU, providing results similar to that at 200 AU."]
+- result: Magnetic field for slow infall = ~2 ± not stated mG [5.3 Magnetic Pressure and Tension: "the magnetic flux density required for $V_{r}=0.3V_{\rm ff}$ is estimated to be $B\sim 2$ mG"]
+- limitation (authors): Inclination poorly constrained by the disk model; mass estimates are uncertain by optical depth, temperature, abundance [4.3 Rotating Disk Models: "it is difficult to give a constraint on the inclination angle in this model fitting"]
+- limitation (authors): PV mean-position method underestimates break radius at limited resolution [4.2 Rotation Profile: "may systematically underestimate $R_{b}$ when the spatial resolution is not high enough"]
+- not stated (card): MCMC details for disk model fit (sampler, priors, steps, convergence); CASA version and calibration pipeline/script version; CLEAN iterations/threshold, cell and image size; Line-free channel ranges for continuum; Exact flux-correction handling beyond the 0.85 factor; Mask definitions and uncertainty computation for mean positions; Disk code is from Ohashi et al. 2014, not available here; Continu…
+
+### 2023ApJ...953..113L: The Magnetic Fields of Starburst Galaxies. I. Identification and Characterization of the Thermal Polarization in the Galactic Disk and Outflow (2023; nearby_galaxies, star_formation; archival_reuse)
+- question: Systematic analysis and separation of the magnetic fields and thermal dust polarization properties in the galactic disk and outflow of nearby starburst galaxies using 53-890 um polarimetric observations.
+- step 1: Resample sub-mm maps and apply polarimetric quality cuts
+  - method: Resample JCMT/POL-2 (to 7.5'') and ALMA (to 0.15'') Stokes maps to Nyquist sampling, rotate polarization angles by 90 deg to obtain B-field orientation, and filter pixels by SNR and polarization fraction thresholds. [Galaxy sample and archival data: "We resampled the data at a pixel scale of $7.5\ensuremath{''}$ (i.e., Nyquist sampling)."] [Galaxy sample and archival data: "We resampled the data at a pixel scale of $0.15\ensuremath{''}$ (i.e., Nyquist sampling)."]
+  - software: astropy
+  - parameter: Quality cuts: PI/sigma_PI >= 2, P <= 20%, I/sigma_I >= 60 [3.2 Disentangle the disk and outflow co…: "1\. We select the polarization measurements using the following quality cuts: $PI/\sigma_{\rm{PI}} \ge 2$, $P\le 20$%, and $I/\sigma_{\rm{I}} \ge 60$."]
+  - parameter: Resampled pixel scales: 7.5'' (JCMT 850 um), 0.15'' (ALMA 890 um) [Galaxy sample and archival data: "We resampled the data at a pixel scale of $7.5\ensuremath{''}$ (i.e., Nyquist sampling)."] [Galaxy sample and archival data: "We resampled the data at a pixel scale of $0.15\ensuremath{''}$ (i.e., Nyquist sampling)."]
+  - assumption: Observed FIR/sub-mm polarization angle rotated by 90 deg traces the local B-field orientation [Introduction: "For polarized thermal emission observed at far-infrared (FIR) and sub-mm wavelengths, the observed position angle ($PA$) of polarization traces the orientation of the local B-field after a $90^{\circ}$ rotation"]
+- step 2: Disentangle disk and outflow components geometrically
+  - method: Fit Gaussian profiles to Stokes Q and U distributions at 89 um, compute the B-field orientation range PA_B,+/- from the fitted means and standard deviations, compare angular differences with the galaxy tilt angle theta, and assign the larg… [3.2 Disentangle the disk and outflow co…: "2\. We fit the distribution of measurements of the Stokes $Q$ and $U$ of each galaxy using a Gaussian profile with two free parameters: the mean and standard deviation, $\sigma$."] [3.2 Disentangle the disk and outflow co…: "5\. Finally, we select the larger angular difference, $\Delta B_{1}$ or $\Delta B_{2}$, as the outflow region and the smaller as the disk region."]
+  - parameter: Reference wavelength for separation: 89 um [Results: "Given the complexity of the B-field orientation at some wavelengths, we use the observations at the shorter wavelength common for all starbursts, i.e., $89$ $\mu$m."]
+  - parameter: Galaxy tilt angles theta: 64 +/- 1 deg (M82), 52 +/- 1 deg (NGC 253), 140 +/- 2 deg (NGC 2146) [Table 1: "| M 82 | $3.85$ | $18.49$ | $90$–$337$ | I0/Sbrst | $76\pm1$ | $64\pm1$ | $13$ | $^{1}$(cite: Vacca2015); $^{2}$(cite: Mayya2005); $^{3}$(cite: FS2003) |"] [Table 1: "| NGC 253 | $3.50$ | $16.81$ | $5$–$229$ | SAB(s)c/Sbrst | $78.3\pm1.0$ | $52\pm1$ | $3$ | $^{1}$(cite: RS2011); $^{2}$(cite: Lucero2015); $^{3}$(cite: Bolatto2013) |"]
+  - fitting: Gaussian profile with two free parameters: mean and standard deviation sigma fitted to Stokes Q and U distributions [3.2 Disentangle the disk and outflow co…: "2\. We fit the distribution of measurements of the Stokes $Q$ and $U$ of each galaxy using a Gaussian profile with two free parameters: the mean and standard deviation, $\sigma$."]
+- step 3: Compute resolved and integrated polarization fractions and polarization spectra
+  - method: Compute debiased mean polarization fraction <P^hist> (Eq. 1) and integrated polarization fraction P^int (Eq. 2) for full galaxy, disk, and outflow regions per band, and normalize polarization spectra to 154 um. [3.1 Polarization measurements: "$$\begin{equation} \label{eq:Phist} \langle P^{\rm{hist}} \rangle = \frac{\sqrt{\langle Q^2 + U^2 - \sigma_{Q}\sigma_{U}\rangle}}{\langle I \rangle} \end{equation}$$"] [3.1 Polarization measurements: "$$\begin{equation} \label{eq:Pint} P^{\rm{int}} = \frac{\sqrt{\langle Q \rangle^2 + \langle U \rangle^2 - \langle \sigma_{Q} \rangle \langle \sigma_{U} \rangle}}{\langle I \rangle} \end{equation}$$"]
+  - parameter: Reference wavelength lambda_0 = 154 um for normalized polarization spectra [4.3 The polarization spectra of the dis…: "This figure also shows the normalized spectrum, $P^{\rm{int}}/P^{\rm{int}}_{\lambda_{0}}$, to the reference wavelength of $\lambda_{0}= 154$ $\mu$m for each region (full galaxy, disk, and outflow) of the starburst galaxies."]
+  - validation: Confirmed that normalized polarization spectrum of <P^hist> is similar to that of P^int [4.3 The polarization spectra of the dis…: "We find that the normalized polarization spectrum of $\langle P^{\rm{hist}} \rangle$ is similar to that of the $P^{\rm{int}}$."]
+- step 4: Fit total and polarized flux SEDs
+  - method: Sum Stokes I and PI over full galaxy, disk, and outflow regions and fit single-temperature modified blackbody functions in the 50-250 um wavelength range for M82 and NGC 2146 using MCMC. [3.3 Total and Polarized SED Fitting: "The $50-250$ $\mu$m total and polarized SEDs are characterized using a single-temperature modified blackbody function expressed as"] [4.1 Total flux SEDs: "The sub-mm photometric measurements were not included in the fitting because the large-scale fluxes are missing in both JCMT and ALMA observations."]
+  - software: pymc3
+  - parameter: Fitted wavelength range: 50-250 um [3.3 Total and Polarized SED Fitting: "We have three free model parameters: $M_{\rm d}$, $\beta$, and $T_{\rm d}$ that we fit within the $50-250$ $\mu$m wavelength range."]
+  - assumption: Single-temperature modified blackbody with dust mass absorption coefficient k_lambda0 = 0.29 m^2 kg^-1 at lambda_0 = 250 um [3.3 Total and Polarized SED Fitting: "$k_{\lambda_{0}}$ is the dust mass absorption coefficient to be $0.29$ m$^{2}$ kg$^{-1}$ at a wavelength of $\lambda_{0} = 250$ $\mu$m (cite: Wiebe2009)"]
+  - fitting: MCMC using No-U-Turn Sampler (NUTS) in PYMC3 with 5 chains, 10,000 steps and 2,000 burn-in per chain (50,000 steps total); flat priors: log10(M_d [M_sun]) = [2, 9], beta = [1, 3], T_d = [10, 100] K [3.3 Total and Polarized SED Fitting: "We compute a Markov Chain Monte Carlo (MCMC) approach using the No-U-Turn Sampler (cite: NUTS) method in the PYTHON code PYMC3 (cite: pymc)."] [3.3 Total and Polarized SED Fitting: "The prior distributions are set to flat within the range of $\log_{10}(M_{\rm{d}} [M_{\odot}]) = [2,9]$, $\beta = [1,3]$, and $T_{\rm d} = [10,100]$ K."]
+  - validation: Checked extrapolation of 50-250 um M82 polarized SED fit against the un-fitted 850 um JCMT/POL-2 polarized flux measurement [4.2 Polarized flux SEDs: "Note that the best fit to the polarized SED of M 82 also reproduces the $850$ $\mu$m polarized measurement of the outflow, although the $850$ $\mu$m was not used for the fitting procedure."]
+- step 5: Analyze vertical height dependence across the outflow and separate inner/outer outflow spectra
+  - method: Construct 2D vertical height maps rotated by galaxy tilt angle theta centered on the emission peak at each wavelength, extract Stokes IQU in 2-pixel-wide slots (1 beam), compute vertical profiles and power-law slopes of I, PI, and P^int, a… [4.4 Outflow: vertical height dependence: "1\. We construct a two-dimensional map of vertical heights from the plane of the galaxy. We define the map to be centered at the peak emission at each wavelength and rotate the map on the plane of the sky using the tilt, $\theta$, of the galaxy (Table [1](#tab:table1))."] [4.4 Outflow: vertical height dependence: "2\. We select the Stokes $IQU$ as a function of the vertical height in slots of two pixels wide."]
+  - parameter: Slot width: 2 pixels (1 beam FWHM) [4.4 Outflow: vertical height dependence: "The width of two pixels corresponds to the beam size of the observations, which provides the minimum size at which each measurement is statistically independent as a function of the vertical height."]
+  - assumption: Galaxy disk lies on the x-y plane and is rotated by tilt angle theta along the z-axis [4.4 Outflow: vertical height dependence: "The map is rotated as $h^{\prime} = R_{z}[\theta]h$, where $h$ is the original vertical height map, $h^{\prime}$ is the new vertical height, and $R_{z}[\theta]$ is the rotation matrix for the tilt angle along the $z$-axis assuming that the galaxy’s disk is on the $x-y$ plane."]
+  - fitting: Reduced chi-squared comparison with dust models: chi_nu^2 = [(obs - model)^2 / model^2] / (N - 1) [5.1 Polarization spectrum of starburst …: "We estimate the reduced $\chi_{\nu}^{2}$ to compare the measured polarization spectra with the dust models, where $\chi_{\nu}^{2} = [(obs-model)^{2}/model^{2}]/(N-1)$ with $N$ the number of measurements."]
+- step 6: Estimate turbulent B-field strengths and energy budget in the outflow
+  - method: Scale turbulent B-field strength with SFR using B = B_0 * SFR^(0.34+/-0.04) calibrated on M82, then compute turbulent kinetic energy U_K = 0.5 * rho * sigma_v^2, turbulent magnetic energy U_B = B^2 / (8*pi), and plasma parameter beta' = U_… [5.2 Polarized outflow and star formatio…: "We estimate the expected turbulent B-field strength of the starburst galaxies in our sample using the $B\,=\,B_{\rm{0}}\,SFR^{0.34\pm0.04}$ relation."] [5.2 Polarized outflow and star formatio…: "$$\begin{eqnarray} U_{\rm{K}} &=& \frac{1}{2} \rho \sigma_{\rm{v}}^{2} \\ U_{\rm{B}} &=& \frac{B^{2}}{8\pi} \end{eqnarray}$$"]
+  - parameter: B_0 = 128 uG M_sun^-0.34 yr^-0.34, calibrated from B_M82 = 305 +/- 5 uG and SFR_M82 = 13 M_sun yr^-1 [5.2 Polarized outflow and star formatio…: "Using M82’s result and $SFR_{M82}\,=\,13$ M$_{\odot}$ yr$^{-1}$ (Table [1](#tab:table1)), the scaling factor is $B_{\rm{0}}\,=\,128\,\mu$G M$_{\odot}^{-0.34}$ yr$^{-0.34}$."]
+  - parameter: Core depth h_c: 500 pc (M82), 50 pc (NGC 253), 2000 pc (NGC 2146) [5.2 Polarized outflow and star formatio…: "| M82 | 305$^{\dagger\dagger}$ | 500 | 0.69 | 66.6 | 3.70 | 9.92 | 2.68 | $^{(1)}$(cite: Leroy2015) |"] [5.2 Polarized outflow and star formatio…: "| NGC 253 | 186 | 50 | 0.47 | 50 | 1.35 | 38.1 | 28.2 | $^{(1)}$(cite: Krieger2019) |"]
+  - assumption: Turbulent B-field scales as B propto SFR^(0.34+/-0.04) and starburst region depth h_c equals the length of the polarized region along the major axis of the galaxy [5.2 Polarized outflow and star formatio…: "We estimate the expected turbulent B-field strength of the starburst galaxies in our sample using the $B\,=\,B_{\rm{0}}\,SFR^{0.34\pm0.04}$ relation."] [5.2 Polarized outflow and star formatio…: "we assume that the depth of the starburst region of each galaxy is isotropically distributed in a disk with a depth equal to the length of the polarized region along the major axis of the galaxy from our observations (Figure [3](#fig:fig2))."]
+  - validation: Compared expected turbulent B-field strengths against revised cosmic-ray equipartition estimates from Lacki & Beck (2013) and resolved M82 analysis from Lopez-Rodriguez et al. (2021) [5.2 Polarized outflow and star formatio…: "These expected B-field strengths are in good agreement with the revised equipartition between B-fields and cosmic rays taking into account energy losses due to strong B-fields in a dense medium put forward by (cite: LB2013)."] [5.2 Polarized outflow and star formatio…: "This is evident in the estimated $\beta^{\prime} = 2.68$ in Table [\[tab:table3\]](#tab:table3) and the estimated $\beta^{\prime}=0.56\pm0.23$ using resolved observations and the more sophisticated approach to estimate the B-field strengths of M 82."]
+- result: Outflow polarized SED dust temperature (T_d,outflow^PI) = 45 ± not stated K [Abstract: "We find that the polarized spectral energy distributions (SEDs) of the full galaxies are dominated by the polarized SEDs of the outflows with dust temperatures of $T_{\rm{d,outflow}}^{\rm{PI}}\sim45$ K and emissive index of $\beta_{\rm{outflow}}^{\rm{PI}}\sim2.3$."]
+- result: Outflow polarized SED emissive index (beta_outflow^PI) = 2.3 ± not stated dimensionless [Abstract: "We find that the polarized spectral energy distributions (SEDs) of the full galaxies are dominated by the polarized SEDs of the outflows with dust temperatures of $T_{\rm{d,outflow}}^{\rm{PI}}\sim45$ K and emissive index of $\beta_{\rm{outflow}}^{\rm{PI}}\sim2.3$."]
+- result: Disk polarized SED dust temperature range (T_d,disk^PI) = [24, 31] ± not stated K [Abstract: "The disks are characterized by low $T_{\rm{d,disk}}^{\rm{PI}}=[24,31]$ K and $\beta_{\rm{disk}}^{\rm{PI}}\sim1$."]
+- result: Disk polarized SED emissive index (beta_disk^PI) = 1 ± not stated dimensionless [Abstract: "The disks are characterized by low $T_{\rm{d,disk}}^{\rm{PI}}=[24,31]$ K and $\beta_{\rm{disk}}^{\rm{PI}}\sim1$."]
+- result: Outflow total flux SED dust temperature range (T_d,outflow^I) = [31, 41] ± not stated K [4.1 Total flux SEDs: "The galactic outflow is characterized by having larger dust temperatures, T$_{\rm{d,outflow}}^{\rm{I}} = [31,41]$ K, and $\beta$, $\beta_{\rm{outflow}}^{\rm{I}} = [1.54,2.80]$, than those in the disk, T$_{\rm{d,disk}}^{\rm{I}} = [21,32]$ K and $\beta_{\rm{disk}}^{\rm{I}} = [1.10,1.35]$."]
+- result: Outflow total flux SED emissive index range (beta_outflow^I) = [1.54, 2.80] ± not stated dimensionless [4.1 Total flux SEDs: "The galactic outflow is characterized by having larger dust temperatures, T$_{\rm{d,outflow}}^{\rm{I}} = [31,41]$ K, and $\beta$, $\beta_{\rm{outflow}}^{\rm{I}} = [1.54,2.80]$, than those in the disk, T$_{\rm{d,disk}}^{\rm{I}} = [21,32]$ K and $\beta_{\rm{disk}}^{\rm{I}} = [1.10,1.35]$."]
+- result: Disk total flux SED dust temperature range (T_d,disk^I) = [21, 32] ± not stated K [4.1 Total flux SEDs: "The galactic outflow is characterized by having larger dust temperatures, T$_{\rm{d,outflow}}^{\rm{I}} = [31,41]$ K, and $\beta$, $\beta_{\rm{outflow}}^{\rm{I}} = [1.54,2.80]$, than those in the disk, T$_{\rm{d,disk}}^{\rm{I}} = [21,32]$ K and $\beta_{\rm{disk}}^{\rm{I}} = [1.10,1.35]$."]
+- result: Disk total flux SED emissive index range (beta_disk^I) = [1.10, 1.35] ± not stated dimensionless [4.1 Total flux SEDs: "The galactic outflow is characterized by having larger dust temperatures, T$_{\rm{d,outflow}}^{\rm{I}} = [31,41]$ K, and $\beta$, $\beta_{\rm{outflow}}^{\rm{I}} = [1.54,2.80]$, than those in the disk, T$_{\rm{d,disk}}^{\rm{I}} = [21,32]$ K and $\beta_{\rm{disk}}^{\rm{I}} = [1.10,1.35]$."]
+- result: Mean polarization fraction of the disk (<P_disk>, 53-850 um) = 1.2 ± +/-0.5 % [Abstract: "We compute the $53$–$850$ $\mu$m polarization spectrum of the disk and outflow and find that dust models of the diffuse ISM can reproduce the fairly constant polarization spectrum of the disk, $\langle\,P_{\rm{disk}}\rangle=1.2\pm0.5$%."]
+- result: Median integrated polarization fraction of the disk (<P_disk^int>, 50-890 um) = 0.9 ± +/-0.6 % [4.3 The polarization spectra of the dis…: "We estimate the median polarization fraction for the disk of starburst galaxies to be $\langle P^{\rm{int}}_{\rm{disk}}\rangle = 0.9\pm0.6$% in the $50$–$890$ $\mu$m wavelength range."]
+- result: NGC 253 ALMA 890 um mean polarization fraction of outflow (<P_outflow^hist>) = 0.4 ± +/-0.3 % [8 Tabulated polarization measurements: "| | 890 | $0.4\pm0.3$ | $0.5\pm0.4$ | $0.3\pm0.1$ | $0.2\pm0.1$ | $0.5\pm0.1$ | $12$ | $17$ | $0.4$ | $0.2$ | | | | |"]
+- result: NGC 253 ALMA 890 um mean polarization fraction of disk (<P_disk^hist>) = 0.5 ± +/-0.4 % [8 Tabulated polarization measurements: "| | 890 | $0.4\pm0.3$ | $0.5\pm0.4$ | $0.3\pm0.1$ | $0.2\pm0.1$ | $0.5\pm0.1$ | $12$ | $17$ | $0.4$ | $0.2$ | | | | |"]
+- result: NGC 253 ALMA 890 um integrated polarization fraction of full galaxy (P_galaxy^int) = 0.3 ± +/-0.1 % [8 Tabulated polarization measurements: "| | 890 | $0.4\pm0.3$ | $0.5\pm0.4$ | $0.3\pm0.1$ | $0.2\pm0.1$ | $0.5\pm0.1$ | $12$ | $17$ | $0.4$ | $0.2$ | | | | |"]
+- result: NGC 253 ALMA 890 um integrated polarization fraction of outflow (P_outflow^int) = 0.2 ± +/-0.1 % [8 Tabulated polarization measurements: "| | 890 | $0.4\pm0.3$ | $0.5\pm0.4$ | $0.3\pm0.1$ | $0.2\pm0.1$ | $0.5\pm0.1$ | $12$ | $17$ | $0.4$ | $0.2$ | | | | |"]
+- result: NGC 253 ALMA 890 um integrated polarization fraction of disk (P_disk^int) = 0.5 ± +/-0.1 % [8 Tabulated polarization measurements: "| | 890 | $0.4\pm0.3$ | $0.5\pm0.4$ | $0.3\pm0.1$ | $0.2\pm0.1$ | $0.5\pm0.1$ | $12$ | $17$ | $0.4$ | $0.2$ | | | | |"]
+- result: Maximum vertical height of polarized flux in M82 (h_max) = 1.9 ± not stated kpc [4.4 Outflow: vertical height dependence: "We estimate the maximum vertical height, $h_{\rm{max}}$, to be $1.9$ kpc, $0.9$ kpc, and $4.0$ kpc for M 82, NGC 253, and NGC 2146, respectively."]
+- result: Maximum vertical height of polarized flux in NGC 253 (h_max) = 0.9 ± not stated kpc [4.4 Outflow: vertical height dependence: "We estimate the maximum vertical height, $h_{\rm{max}}$, to be $1.9$ kpc, $0.9$ kpc, and $4.0$ kpc for M 82, NGC 253, and NGC 2146, respectively."]
+- result: Maximum vertical height of polarized flux in NGC 2146 (h_max) = 4.0 ± not stated kpc [4.4 Outflow: vertical height dependence: "We estimate the maximum vertical height, $h_{\rm{max}}$, to be $1.9$ kpc, $0.9$ kpc, and $4.0$ kpc for M 82, NGC 253, and NGC 2146, respectively."]
+- result: Vertical profile power-law slope of total flux (alpha_I) = [-4, -3] ± not stated dimensionless [4.4 Outflow: vertical height dependence: "We find a negative slope with a general trend of $\alpha_{\rm{I}} \sim [-4,-3]$ and $\alpha_{\rm{PI}} \sim [-3,-2]$ for the total and polarized flux, respectively."]
+- result: Vertical profile power-law slope of polarized flux (alpha_PI) = [-3, -2] ± not stated dimensionless [4.4 Outflow: vertical height dependence: "We find a negative slope with a general trend of $\alpha_{\rm{I}} \sim [-4,-3]$ and $\alpha_{\rm{PI}} \sim [-3,-2]$ for the total and polarized flux, respectively."]
+- result: Vertical profile power-law slope of integrated polarization fraction (alpha_P^int) = [1.5, 2.5] ± not stated dimensionless [4.4 Outflow: vertical height dependence: "We find a positive slope with a general trend of $\alpha_{\rm{P^{\rm{int}}}} \sim [1.5,2.5]$ for the integrated polarization."]
+- result: Expected turbulent B-field strength in NGC 253 (B_NGC253) = 186 ± not stated uG [5.2 Polarized outflow and star formatio…: "We compute the expected turbulent B-field strength of $B_{\rm{NGC253}} \sim 186~\mu$G and $B_{\rm{NGC2146}}\,\sim\,354\,\mu$G for NGC 253 and NGC 2146, respectively."]
+- result: Expected turbulent B-field strength in NGC 2146 (B_NGC2146) = 354 ± not stated uG [5.2 Polarized outflow and star formatio…: "We compute the expected turbulent B-field strength of $B_{\rm{NGC253}} \sim 186~\mu$G and $B_{\rm{NGC2146}}\,\sim\,354\,\mu$G for NGC 253 and NGC 2146, respectively."]
+- result: Plasma parameter beta' = U_K / U_B for M82 = 2.68 ± not stated dimensionless [5.2 Polarized outflow and star formatio…: "| M82 | 305$^{\dagger\dagger}$ | 500 | 0.69 | 66.6 | 3.70 | 9.92 | 2.68 | $^{(1)}$(cite: Leroy2015) |"]
+- result: Plasma parameter beta' = U_K / U_B for NGC 253 = 28.2 ± not stated dimensionless [5.2 Polarized outflow and star formatio…: "| NGC 253 | 186 | 50 | 0.47 | 50 | 1.35 | 38.1 | 28.2 | $^{(1)}$(cite: Krieger2019) |"]
+- result: Plasma parameter beta' = U_K / U_B for NGC 2146 = 1.43 ± not stated dimensionless [5.2 Polarized outflow and star formatio…: "| NGC 2146 | 354 | 2000 | 0.12 | 250 | 4.93 | 7.08 | 1.43 | $^{(1)}$(cite: Kreckel2014) |"]
+- limitation (authors): JCMT/POL-2 and ALMA observations suffer from missing large-scale extended emission due to spatial filtering/interferometric mode, and ALMA covers a much smaller region (~150 pc at 0.3'' resolution) than SOFIA/HAWC+. [4.1 Total flux SEDs: "The sub-mm photometric measurements were not included in the fitting because the large-scale fluxes are missing in both JCMT and ALMA observations."]
+- limitation (authors): Using the galaxy-integrated gas surface density concentrated within the outflow core overestimates the volume density and turbulent kinetic energy U_K. [5.2 Polarized outflow and star formatio…: "Note that here we use the integrated surface density of the galaxy and assume that it is concentrated within the outflow region, which overestimates the volume density and therefore the turbulent kinetic energy."]
+- limitation (authors): The energy budget and B-SFR scaling assume unscreened B-fields at large heights, apply a spiral-galaxy total-B vs SFR relation to turbulent B-fields in dense starbursts, and neglect that total B-field strength is 1.4-4.2 times larger than … [5.2 Polarized outflow and star formatio…: "The B-field strength at large vertical heights is currently assumed to be unscreened. It is unknown how the geometry and strength of the B-fields propagate across the heterogenous distribution of gas and dust in the outflow."]
+- not stated (card): ALMA calibration and imaging details for NGC 253 project 2018.1.01358.S (e.g., whether archive products were used as-is or reduced by Belfiori et al., CASA version, weighting/robust, self-calibration, primary beam correction); Exact interpolation/resampling algorithm used to resample JCMT/POL-2 and ALMA Stokes IQU maps to Nyquist pixel scales; Exact coordinates chosen as the emission peak center …
+
+### 2020ApJ...895...64L: Radio Linear Polarization of GRB Afterglows: Instrumental Systematics in ALMA Observations of GRB 171205A (2020; transients; archival_reuse)
+- question: Is the linear polarization of the GRB 171205A radio afterglow claimed by Urata et al. detected, or is it an ALMA instrumental systematic?
+- step 1: Regenerate QA2 data and test stability
+  - method: Run archive calibration scripts, image Stokes IQUV, fit point source with imfit, split by sideband and by SB execution [2.1 QA2 calibration: "we used the CASA (cite: mws+07) calibration scripts, associated with the data set and also available from the ALMA archive, to regenerate the calibrated Quality Assurance 2 (QA2) measurement set."]
+  - software: CASA, imfit
+  - parameter: robust 0.0 [2.1 QA2 calibration: "using a robust parameter of 0.0"]
+  - fitting: Point source fit with position fixed to Stokes I [2.1 QA2 calibration: "Fitting for the linearly polarized flux density with the position fixed to that derived from the Stokes $I$ image"]
+  - validation: Compared Q,U with Urata et al.; sidebands differ by 32 uJy in Q [2.1 QA2 calibration: "we find that the Stokes $Q$ measurements differ between the two sidebands by $32~\mu$Jy"]
+- step 2: Independent polarization calibration
+  - method: Tsys/wvr, bandpass, qufromgain, XYf+QU in gaincal, xyamb, polcal for D-terms, repeated with two reference antennas [2.2 Detailed data analysis: "We use DV06 as reference antenna, and validate our calibration by repeating the entire analysis separately using a nearby antenna with a different architecture, DA64."]
+  - software: CASA, qufromgain, xyamb, gaincal, polcal
+  - parameter: cross-hand delays from scan 61 on polarization calibrator [2.2 Detailed data analysis: "we use scan 61 on the polarization calibrator as the scan with the strongest polarization signal"]
+  - assumption: Stokes V of polarization calibrator negligible [2.4 Polarization measurements: "Standard polarization calibration assumes negligible $V$ in the polarization calibrator."]
+  - validation: Residual polarization of calibrator ≈0.1% [2.2 Detailed data analysis: "the final residual polarization, determined by running `qufromgain` on the calibrated calibrator data, is $\approx0.1\%$"]
+- step 4: Quantify systematic uncertainty and upper limit
+  - method: Use gain calibrator polarization variation across SB executions; range of three Gaussian draws gives 1σ systematic, combined with statistical error; Rician bias [2.5 Systematic calibration uncertainty: "Thus, we estimate an additional $1\sigma$ systematic calibration uncertainty of $\approx0.16\%/1.69\approx0.09\%$ for these observations."]
+  - assumption: Gain calibrator intrinsic polarization constant over observations; systematic is Gaussian [2.5 Systematic calibration uncertainty: "assume that the calibrator’s intrinsic polarization is constant with time over our observations"]
+- step 5: Interpret limit with jet magnetic field models
+  - method: Compare with Granot & Taylor 2005 toroidal models and patch-coherence estimate [4.2 Constraints on magnetic field geome…: "The low degree of polarization disfavors models of polarization produced by toroidal magnetic fields in GRB jets."]
+  - assumption: β≈-0.43 from Urata et al. [4.2 Constraints on magnetic field geome…: "for $\beta\approx-0.43$ (cite: uth+19)"]
+- result: 3σ upper limit on linearly polarized intensity = 97.2 ± not stated uJy [abstract: "We derive a 3$\sigma$ upper limit on the linearly polarized intensity of $P<97.2~\mu$Jy"]
+- result: 3σ upper limit on fractional linear polarization = <0.30 ± not stated % [abstract: "$\Pi_{\rm L}<0.30\%$"]
+- result: Additional 1σ systematic calibration uncertainty = 0.09 ± not stated % of Stokes I [2.5 Systematic calibration uncertainty: "$\approx0.16\%/1.69\approx0.09\%$"]
+- result: Combined-data linear polarized flux (undebiased) = 41.7 ± ±32.4 uJy [2.5 Systematic calibration uncertainty: "This yields a linear polarization measurement of $41.7\pm32.4~\mu$Jy (undebiased)"]
+- result: Magnetic patch scale limit = 4e-3 Gamma^-1 ± not stated rad [4.2 Constraints on magnetic field geome…: "$\theta_{\rm B}\lesssim \Pi_{\rm L,lim}\Gamma^{-1}\Pi_{\rm max}^{-1}\approx4\times10^{-3}\Gamma^{-1}$ rad"]
+- result: mm spectral index = -0.51 ± ±0.04 dimensionless [4.2 Constraints on magnetic field geome…: "for which we calculate $\beta_{\rm mm}=-0.51\pm0.04$"]
+- limitation (authors): Origin of time-varying systematics (e.g. XY phase) not investigated; second-order corrections beyond scope [2.4 Polarization measurements: "investigating this requires second-order calibration corrections, which are beyond the scope of this work."]
+- not stated (card): Number of clean iterations, threshold and masks for tclean; Exact flagging selections beyond DV22 and the specific spectral window; Targeted source coordinates; Spectral windows' channelization; Whether the reduction scripts and CASA version for the manual reduction match 5.6.1
+
+### 2016A&A...593A..44L: The 492 GHz emission of Sgr A* constrained by ALMA (2016; milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Characterize the polarized continuum emission of Sgr A* at ~492 GHz (intensity, polarization position angle, polarization percentage) and compare with lower-frequency observations.
+- step 3: Fit polarization percentage and position angle
+  - method: Least-squares fit of XX/YY ratio vs parallactic angle with Q/I - delta = P cos(2(Psi - eta - phi)); Evector 0 deg [3 Results: "Evector of ALMA is 0$^{\circ}$ for the frequency band we observed."]
+  - parameter: constant polarization PA assumed; Q offset delta fitted [3.1 Continuum data: "From a least square fit to constant polarization position angle"]
+  - assumption: Non-variable source; Stokes U not determined (no XY/YX) [4 Discussion: "we are not able to determine Stokes U."]
+  - fitting: Least-squares (bootstrap shown in figures); priors not stated [Results, Continuum data: "From a least square fit to constant polarization position angle, the measured XX to YY intensity ratios for Sgr A\* are consistent with the polarization percentage of $\sim$14%$\pm$1.2%"]
+  - validation: Checked DA-only, DV-only, DA-DV subsets and with/without PM antennas; consistent across spws [3.1 Continuum data: "We obtained identical measurements from these three subsets."]
+- step 4: Gauge spurious polarization using CI line and Titan
+  - method: Miriad imdiff to find XX/YY multiplicative factor in CI images over a box region, per scan and per 2.5 km/s channel; compare with continuum ratio and absorption [3.2 Spectral line data: "We used the Miriad task `imdiff` to systematically estimate the multiplicative factor that minimizes the difference between the XX and YY synthesized images of CI"]
+  - software: Miriad imdiff
+  - parameter: 2.5 km/s velocity channels; CI 12m data tapered at 1.5" [3.2 Spectral line data: "for every 2.5 km s$^{-1}$ wide velocity channels"]
+  - assumption: Foreground CI absorber has negligible Tex and identical tau for X and Y [3.2 Spectral line data: "it is safe to assume that $T_{ex}$ is negligible, and the gas optical depth $\tau$ is identical for the orthogonal linear polarizations X and Y."]
+  - fitting: Maximum likelihood factor minimizing XX-YY image difference [Results, Spectral line data: "estimate the multiplicative factor that minimizes the difference between the XX and YY synthesized images of CI in a maximum likelihood sense"]
+  - validation: Residuals consistent with thermal noise; CI emission XX/YY ~1 away from absorption [3.2 Spectral line data: "we found that $R(\nu, t)$, and its time integration, are consistent with thermal noise."]
+- result: Sgr A* polarization percentage (lower limit) = 14 ± 1.2 % [3.1 Continuum data: "consistent with the polarization percentage of $\sim$14%$\pm$1.2% and a position angle of $\sim$158$^{\circ}$$\pm$3$^{\circ}$"]
+- result: Sgr A* polarization position angle = 158 ± 3 deg [3.1 Continuum data: "a position angle of $\sim$158$^{\circ}$$\pm$3$^{\circ}$"]
+- result: J1744-3116 Stokes I = 252 ± not stated mJy [3.1 Continuum data: "can be fitted to Stokes I = 252 mJy"]
+- result: J1744-3116 polarization percentage = 7.9 ± 0.9 % [3.1 Continuum data: "with 7.9%$\pm$0.9% polarization in position angle P.A. = 14.1$^{\circ}$$\pm$4.2$^{\circ}$"]
+- result: J1744-3116 polarization PA = 14.1 ± 4.2 deg [3.1 Continuum data: "P.A. = 14.1$^{\circ}$$\pm$4.2$^{\circ}$"]
+- result: J1744-3116 normalized Q offset delta = -0.02 ± 0.02 dimensionless [3.1 Continuum data: "$\delta$=$-$0.02$\pm$0.02"]
+- result: Peak CI absorption XX/YY ratio near vlsr~20 km/s = ~1.3 ± not stated dimensionless [3.2 Spectral line data: "The local peak value of $F_{XX}^{CI}(\nu)$ / $F_{YY}^{CI}(\nu)$ is $\sim$1.3 (or 0.11 in logarithm)."]
+- result: Std of CI XX/YY away from 20 km/s = 0.043 ± not stated dimensionless [3.2 Spectral line data: "is 0.043."]
+- result: Titan XX/YY continuum difference = ~3 ± not stated % [3.2 Spectral line data: "The continuum emission from Titan shows a $\sim$3% intensity difference between the XX and the YY correlations."]
+- limitation (authors): Absolute flux uncertain (~20%) because Titan scans were largely flagged; single epoch only. [2 Observations and Data Reduction: "The scans on Titan were largely flagged due to interference from spectral lines."]
+- not stated (card): Line-free channel ranges used for uvcontsub; Polynomial order of uvcontsub fit; Flagging details; Model flux/shape used in demos for self-calibration; How the bootstrap errors in the XX/YY fits were computed; Image size and cell size; Titan flux model used for flux scaling
+
+### 2023Natur.621..483G: Polarized thermal emission from dust in a galaxy at redshift 2.6 (2023; high_z_galaxies; observational_alma_primary)
+- question: Is there a large-scale ordered magnetic field in a z=2.6 lensed starburst galaxy, as traced by polarized dust emission?
+- step 1: Calibrate and image Stokes IQU
+  - method: ALMA pipeline plus polarization calibration; tclean on all Stokes with common beam [Observations and data reduction: "The polarization calibration script derives and applies additional corrections for instrument-related polarization effects"]
+  - software: CASA
+  - parameter: clean threshold 10 uJy [Observations and data reduction: "Dirty images are cleaned to a stopping threshold of 10 $\mu$Jy"]
+- step 2: Measure polarization fraction and B-field angle
+  - method: Debiased P from mean Q,U,I for pixels with P/sigma_P>=3; chi_B = 0.5 arctan(U/Q)+pi/2; mean from independent beams [Measuring polarization: "for measurements with a polarized intensity signal to noise ratio $P/\sigma_{P} \ge 3$"]
+  - validation: MDP of 0.1 per cent added in quadrature to uncertainties [Observations and data reduction: "all quoted uncertainties in this work have the minimum detectable polarization of 0.1 per cent added in quadrature"]
+- step 3: Constrain source-plane B-field orientation via lens simulation
+  - method: Lens source-plane Gaussian disk with constant chi_B and P=1%, lensed with SIE+shear, simulated with simobserve, cleaned like data; compare Stokes U detection [Constraining the B-field orientation: "We can constrain the orientation by rotating the *B*-field until the corresponding Stokes $U$ image shows a $3\sigma$ detection in the synthetic polarimetric observations."]
+  - software: lenstronomy, CASA simobserve
+  - parameter: 801x801 grid, 0.01'' pixel; pwv 0.6 mm; antenna configuration 2 (Cycle 8) [Lens modelling: "Using a grid of $801\times801$ pixels$^{2}$ with a scale of $0.01\mbox{$^{\prime\prime}$}$ pixel$^{-1}$"]
+  - assumption: Constant polarization fraction of unity/1% and constant B orientation in source plane; continuum matches CO morphology [Lens modelling: "The *B*-field orientation in the source plane is assumed to be constant, $\chi_{B,{\rm sp}}$, with a constant polarization fraction of unity"]
+  - fitting: Grid of chi_B values, no sampler [Methods, Constraining the B-field orien…: "With a polarization fraction of 1% we set a range of constant $\chi_{B,{\rm sp}}$ orientations in the source plane."]
+  - validation: Lens and convolution do not rotate or change P; noise adds ~10 deg uncertainty [Constraining the B-field orientation: "We conclude that the lens model and convolution do not produce rotation or change in the polarization fraction from the source plane to the image plane."]
+- result: Integrated flux density = 62 ± not stated mJy [main text: "We measure an image plane integrated flux density of $I=62$ mJy"]
+- result: Integrated polarization fraction = 0.6 ± 0.1 % [main text: "integrated polarization fraction of $P=0.6\pm 0.1$%"]
+- result: Mean polarization fraction = 0.6 ± 0.3 % [main text: "$\langle P \rangle = 0.6\pm0.3$%"]
+- result: Source-plane B-field orientation = 5 ± +5/-10 deg east of north [main text: "orientated $\chi_{\rm B} =5^{+5}_{-10}$ degrees east of north"]
+- limitation (authors): Lack sensitivity and resolution to map B-field at ~100 pc scales; field strength cannot be reliably estimated from dust polarization [main text: "We currently lack the sensitivity and resolution to map the configuration of the *B*-field strength at scales $\sim$100 pc"]
+- not stated (card): Image size and cell size for tclean; Polarization calibration script details and polarization calibrator model; Self-calibration, if any; Pipeline version; Masking used in cleaning; Exact sensitivity-weighted selection of pixels for averages; Total on-source time
+
+### 2025A&A...701A.191V: Observing radio transients with Phased ALMA: Pulses from the Galactic Centre magnetar (2025; stellar_physics, transients; archival_reuse)
+- question: Can Phased ALMA at Band 3 detect and characterize single pulses and the cumulative energy distribution of the Galactic Centre magnetar PSR J1745-2900, and what are the prospects for observing radio transients (pulsars and FRBs) with Phased…
+- step 2: Search for and validate single pulses
+  - method: Summed all 32 frequency channels of PSRFITS files in Stokes I at fixed DM = 1770 pc cm^-3 using a PRESTO-based pipeline, applied S/N threshold of 6, and visually inspected candidates in intensity, linear and circular polarisation, and arri… [Methods and data processing: "We searched for single pulses using a PRESTO-based pipeline (cite: presto), detailed in (cite: Braga2024) with some modifications to account for PSRFITS containing Stokes."] [Methods and data processing: "We used a signal-to-noise ratio (S/N) threshold of 6, determined through analysis of the noise floor of the time series on pulse-free regions."]
+  - software: PRESTO
+  - parameter: S/N threshold = 6 [Methods and data processing: "We used a signal-to-noise ratio (S/N) threshold of 6, determined through analysis of the noise floor of the time series on pulse-free regions."]
+  - parameter: Fixed DM = 1770 pc cm^-3 (no DM trials) [Methods and data processing: "Therefore, DM trials were unnecessary, and we adopted the reported value of the source, 1770 $\rm{pc \hspace{0.1cm}cm^{-3}}$ (cite: Liu_2021)."]
+  - assumption: Dispersion delay across the 2 GHz band at 86 GHz is negligible (46 microseconds, 1 sample) [Methods and data processing: "Given the high DM of the source and the high observing frequency at Band 3, the dispersion delay between the highest and the lowest frequency channel is 46"]
+  - validation: Visual inspection of linear and circular polarisation and arrival phase alignment with the integrated pulse profile; recovered all 3 pulses previously reported by Liu et al. (2021) [Methods and data processing: "According to our criteria, if a pulse candidate has significant linear and circularly polarised flux and it arrives in phase with the integrated pulse profile of PSR J1745$-$2900, then it is considered a real pulse."] [Results: "In our search we found the three pulses reported by (cite: Liu_2021) plus five new pulses."]
+- result: Number of detected single pulses from PSR J1745-2900 = 8 ± not stated dimensionless [abstract: "We detected eight highly polarised pulses from the GC magnetar with energies in the range of $10^{29}$ erg."]
+- limitation (authors): Every 18.192 s there is a drop-off in the time series caused by the phasing cycle of the array, and 30 minutes of data were unusable. [Observations: "We used a total of $\sim$2 hr observing time, excluding 30 minutes of unusable data (see Table 2)."]
+- limitation (authors): Pulses with small polarisation fractions or arriving outside the main integrated pulse profile phase window would not be detected by the selection criteria. [Methods and data processing: "It is worth noting that pulses with small polarisation fractions would have not been detected by our pipelines."]
+- limitation (authors): The sample size is limited to eight pulses over a limited energy range. [Discussion: "Alternatively, a power-law relation for the cumulative energy distribution would be the result of the limited energy range of our pulses."]
+- not stated (card): How the 18.192 s periodic drop-off artefact from the ALMA phasing cycle was masked, excised, or mitigated during the single-pulse search; Quantitative thresholds for linear and circular polarisation fractions used to accept or reject single-pulse candidates during visual inspection; Exact boxcar widths or matched-filtering parameters used in the PRESTO single-pulse search; Specific details of the…
+
+### 2022ApJ...939L...6B: First Millimeter Flares Detected from ϵ Eridani with the Atacama Large Millimeter/submillimeter Array (2022; stellar_physics, debris_disks; archival_reuse)
+- question: Search archival ALMA 12-m and ACA observations of the Sun-like star epsilon Eridani for millimeter flaring emission and characterize its temporal, spectral, and polarization properties, as well as constraints on inner dust belt emission.
+- step 3: Characterize flare temporal structure, spectral index, and linear polarization
+  - method: Fit Gaussian functions to flare light curves to measure FWHM (t_1/2), fit point source models with uvmodelfit to upper and lower sidebands independently for spectral index, and fit XX and YY polarizations independently to compute Stokes Q … [Characterizing Millimeter Flaring Emiss…: "To determine the temporal structure of the flaring events, we fit Gaussian functions to the light curves shown in Figure 4."] [Characterizing Millimeter Flaring Emiss…: "To obtain the spectral index, we fit point source models using `uvmodelfit` in `CASA` to the millimeter visibilities of the upper and lower sidebands independently."]
+  - software: CASA, uvmodelfit
+  - parameter: upper (230 + 232 GHz) and lower (219 + 217 GHz) sidebands [Characterizing Millimeter Flaring Emiss…: "we examine the spectral index (dependence of the flux on the frequency, F$_\nu\propto\nu^\alpha$) of the upper (230 + 232 GHz) and lower (219 + 217 GHz) sidebands"]
+  - parameter: ALMA XX and YY polarizations at flare peak [Characterizing Millimeter Flaring Emiss…: "For the fractional linear polarization, we fit point sources models to ALMA’s XX and YY polarizations independently, and compute the Stokes parameters $Q = <{E_{x}}^2>-<{E_{y}}^2>$ and $I = <{E_{x}}^2>+<{E_{y}}^2>$."]
+  - assumption: Gaussian temporal profile and power-law spectral dependence F_nu \propto \nu^\alpha [Characterizing Millimeter Flaring Emiss…: "To determine the temporal structure of the flaring events, we fit Gaussian functions to the light curves shown in Figure 4."] [Characterizing Millimeter Flaring Emiss…: "we examine the spectral index (dependence of the flux on the frequency, F$_\nu\propto\nu^\alpha$) of the upper (230 + 232 GHz) and lower (219 + 217 GHz) sidebands"]
+  - fitting: Gaussian function fits to light curves; CASA uvmodelfit point source fits to sideband and XX/YY visibilities [Characterizing Millimeter Flaring Emiss…: "To determine the temporal structure of the flaring events, we fit Gaussian functions to the light curves shown in Figure 4."] [Characterizing Millimeter Flaring Emiss…: "To obtain the spectral index, we fit point source models using `uvmodelfit` in `CASA` to the millimeter visibilities of the upper and lower sidebands independently."]
+- step 4: Estimate magnetic field strength in the flare-emitting region
+  - method: Associate the observing frequency with harmonic numbers s (between 10 and 100) of the electron gyrofrequency \nu_B = 2.83 x 10^6 B(G). [Nature of the Detected Millimeter Flares: "Gyrosynchrotron emission is produced by a range of harmonic numbers $s$ of the electron gyrofrequency, $\nu_{B}=2.83\times10^{6} B (G)$, with $s$ between 10 and 100."] [Nature of the Detected Millimeter Flares: "The properties of the emitting region under consideration here can be determined generally by associating the observing frequency with a harmonic of the gyrofrequency. This leads to an unbiased but large range of magnetic field strengths in the mm-emitting region of 0.8–8 kG."]
+  - parameter: harmonic numbers s between 10 and 100 [Nature of the Detected Millimeter Flares: "Gyrosynchrotron emission is produced by a range of harmonic numbers $s$ of the electron gyrofrequency, $\nu_{B}=2.83\times10^{6} B (G)$, with $s$ between 10 and 100."]
+  - assumption: Gyrosynchrotron emission mechanism [Nature of the Detected Millimeter Flares: "Gyrosynchrotron emission is produced by a range of harmonic numbers $s$ of the electron gyrofrequency, $\nu_{B}=2.83\times10^{6} B (G)$, with $s$ between 10 and 100."]
+  - validation: Compare derived range with photospheric magnetic field strengths from literature [Nature of the Detected Millimeter Flares: "The lower range of magnetic field strengths derived above is compatible with the photospheric value, suggesting an origin for the flare in a region close to the surface of the star."]
+- result: Flare E1 duration (t_1/2) = 7.9 ± not stated sec [Characterizing Millimeter Flaring Emiss…: "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."]
+- result: Flare E2 duration (t_1/2) = 9.0 ± not stated sec [Characterizing Millimeter Flaring Emiss…: "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."]
+- result: Flare E3 duration (t_1/2) = 6.6 ± not stated sec [Characterizing Millimeter Flaring Emiss…: "Event E3 has the shortest duration of only 6.6 sec, while the E1 and E2 flares do not last much longer, at 7.9 and 9.0 sec, respectively."]
+- result: Flare E1 spectral index (\alpha) = 1.81 ± 1.94 dimensionless [Abstract: "We find changes in the spectral index (F$_\nu\propto\nu^\alpha$) at the flare peak, with $\alpha$ = 1.81 $\pm$ 1.94"]
+- result: Flare E2 spectral index (\alpha) = 7.29 ± 2.89 dimensionless [Table 1: "| | E2 | 14 | 17 | 9.0$^\text{a}$ | 7.29 $\pm$ 2.89 | $>$-0.48 $\pm$ 0.15 | |"]
+- result: Flare E3 spectral index (\alpha) = -2.83 ± 2.33 dimensionless [Table 1: "| | E3 | 9 | 11 | 6.6$^\text{a}$ | -2.83 $\pm$2.33 | $>$-0.11$\pm$0.19 | |"]
+- result: Flare E1 fractional linear polarization lower limit (|Q/I|) = >0.08 ± 0.12 dimensionless [Abstract: "and a lower limit on the fractional linear polarization $|Q/I| =$ 0.08 $\pm$ 0.12."]
+- result: Flare E2 fractional linear polarization lower limit (|Q/I|) = >-0.48 ± 0.15 dimensionless [Table 1: "| | E2 | 14 | 17 | 9.0$^\text{a}$ | 7.29 $\pm$ 2.89 | $>$-0.48 $\pm$ 0.15 | |"]
+- result: Flare E3 fractional linear polarization lower limit (|Q/I|) = >-0.11 ± 0.19 dimensionless [Table 1: "| | E3 | 9 | 11 | 6.6$^\text{a}$ | -2.83 $\pm$2.33 | $>$-0.11$\pm$0.19 | |"]
+- result: Magnetic field strength in mm-emitting region = 0.8-8 ± not stated kG [Nature of the Detected Millimeter Flares: "This leads to an unbiased but large range of magnetic field strengths in the mm-emitting region of 0.8–8 kG."]
+- limitation (authors): Shorter integration times imply higher rms noise, so fainter flares will not be detected. [Creating Light Curves and Identifying F…: "Shorter integration times imply higher rms noise and fainter flares will not be detected."]
+- limitation (authors): ACA has fewer and smaller (7-m) antennas, resulting in 3-5x higher rms noise per integration than the 12-m array, preventing detection of flares of this brightness in the ACA data. [Creating Light Curves and Identifying F…: "with fewer antennas in the array and smaller antenna diameters (7-m for the ACA), the total collecting area is reduced and as a result the rms noise in each integration was a factor of $3-5\times$ higher than for the ALMA 12-m observations."]
+- limitation (authors): Due to limited signal-to-noise, spectral index and fractional linear polarization lower limits can only be computed at the peak of the three flares, and lack of polarization calibration leads to large uncertainties. [Characterizing Millimeter Flaring Emiss…: "Due to limited signal-to-noise, we are only able to compute the spectral index and lower limit on the fractional linear polarization at the peak of the three detected flares."]
+- not stated (card): CASA version used for calibration, imaging, and uvmodelfit; Whether archival data were calibrated via pipeline or manual scripts; Image pixel cell size and image dimensions in tclean; Deconvolver algorithm and stopping threshold/masking in tclean; Exact coordinates or proper-motion-corrected position fixed or fitted in uvmodelfit; How the ten background regions for RMS calculation were defined
+
+### 2015A&A...584A..16P: Testing particle trapping in transition disks with ALMA (2015; protoplanetary_disks; observational_alma_primary)
+- question: Do ALMA Band 7 and Band 9 morphology and spectral index of SR 21 and HD 135344B support particle trapping (radial or vortex) as the origin of cavities and asymmetries?
+- step 5: Compare with particle-trapping model predictions
+  - method: Model intensity and alpha_mm profiles at 450 and 870 um at 1 and 5 Myr convolved with 35 AU Gaussian; Stokes numbers estimated [4 Theoretical predictions of particle t…: "convolved with a 2D Gaussian profile of 35 AU diameter"]
+  - parameter: 1 M_Jup planet at 20 AU, alpha_visc=1e-3 [4 Theoretical predictions of particle t…: "the disk viscosity is taken to be $\alpha_{\rm{visc}}=10^{-3}$"]
+  - assumption: Grains of maximum size ≲3λ traced at each wavelength [Discussion: "Assuming that at each wavelength, particles with a maximum size of $\lesssim3\lambda$ are traced (cite: draine2006)"]
+  - validation: Optically thick alternative tested via brightness temperature argument [Discussion: "the ring must be very narrow ($\lesssim$3 AU in width)"]
+- limitation (authors): Azimuthal alpha_mm variations uncertain, depend on image alignment [3.2 Spectral index: "any azimuthal variation within a range of $\alpha_{\rm{mm}}{\sim}eq 2.6-3.2$ remains uncertain"]
+- not stated (card): CASA version and calibration details (deferred to other papers); MCMC sampler, priors, walkers and chains; How the pixel-by-pixel spectral index maps were regridded/aligned; Band 7 and 9 flux calibrators; Dust opacity assumptions for Stokes number estimates and the model intensity computation; Model parameters beyond those in the text (temperature, stellar parameters)
+
+### 2018MNRAS.477.4380S: Testing star formation laws in a starburst galaxy at redshift 3 resolved with ALMA (2018; high_z_galaxies, star_formation; archival_reuse)
+- question: Do existing star formation laws (KS, KDM12, SFK15) reproduce the SFR surface density of the brightest clump in lensed starburst SDP 81, and what is the role of turbulence?
+- step 5: Compare observed SFR with KS, KDM12, SFK15 predictions
+  - method: Evaluate relations with MC (100,000 samples) and compare PDFs; reduced chi2 scatter vs local regions [6 Comparison of observed SFR surface de…: "These PDFs were calculated using Monte Carlo simulations with a sample size of 100,000"]
+  - parameter: b = 0.4, beta_mag -> infinity, eps_ff = 0.015 [6 Comparison of observed SFR surface de…: "We use a mixed driving mode with $b=0.4$"]
+  - assumption: Magnetic fields neglected [6 Comparison of observed SFR surface de…: "we neglect magnetic fields and set $\beta_{\mathrm{mag}}\to \infty$"]
+- result: Sigma_SFR KS = 52 ± 17 Msun/yr/kpc^2 [abstract: "$\Sigma_{\mathrm{SFR,KS}} = 52\pm17"]
+- result: Sigma_SFR KDM12 = 106 ± 37 Msun/yr/kpc^2 [abstract: "$\Sigma_{\mathrm{SFR,KDM}} = 106\pm37"]
+- result: Sigma_SFR SFK15 = 491 ± +139/-194 Msun/yr/kpc^2 [abstract: "$\Sigma_{\mathrm{SFR,SFK}} = 491^{+139"]
+- result: Reduced chi2 scatter (KS, KDM12, SFK15) = 50.1, 7.27, 1.25 ± not stated dimensionless [6 Comparison of observed SFR surface de…: "$\chi^2_{\mathrm{red}} = 50.1$ and $7.27$ for the KS and KDM12 relations, respectively"]
+- limitation (authors): Dust parameters cannot be simultaneously constrained; clump conditions assumed equal to galaxy-wide [3 Measurement of the Star Formation Rate: "the available ALMA observations are insufficient to simultaneously constrain the dust parameters"]
+- limitation (authors): Magnetic fields unavailable and neglected [6 Comparison of observed SFR surface de…: "We do not have any estimates of magnetic field strength in this galaxy"]
+- not stated (card): Source-plane reconstructed maps (S15) are not provided; need the lens model and the S15 reconstruction procedure; Clump A pixel mask and the kernel sizes used for background subtraction; Flux values for clump A in each band; Derivation of the Toomre freefall time inputs for KDM12/SFK15 (galaxy-scale parameters); Number of MC iterations for SED fit and the fitting code details; Data used for compa…
+
+### 2019ApJ...885L..10L: Detection of Pulses from the Vela Pulsar at Millimeter Wavelengths with Phased ALMA (2019; stellar_physics, instrumentation; observational_alma_primary)
+- question: Can phased ALMA detect, time and search for pulsars at 3 mm, and what are the flux density and polarization of the Vela pulsar at 85-101 GHz?
+- step 5: polarisation calibration
+  - method: Use 24 GHz profile as polarisation template; fit differential gain and phase [3.3.3 Polarization properties: "we can use the data by (cite: kjlb11) as a polarisation template and perform a system calibration"]
+  - assumption: Polarisation similar to that at 24 GHz [3.3.3 Polarization properties: "Assuming that the observed polarisation characteristics are similar to those observed at 24 GHz"]
+  - validation: PA consistent with 1.4 GHz after Faraday correction [3.3.3 Polarization properties: "the position angle is perfectly consistent with the 1.4 GHz data (after correcting for Faraday rotation)"]
+- result: Linear polarisation degree = ~20 ± not stated % [3.3.3 Polarization properties: "the degree of linear polarisation ($\sim 20\%$) is lower than at 24 GHz"]
+- limitation (authors): Systematics associated with phasing cycles in active-phasing scans [4 Discussion: "we noticed significant systematics in the time series which are associated with the phasing cycles."]
+- not stated (card): Vela ephemeris used for folding; Folding parameters and number of profile bins; Template profile used for TOA; PRESTO search parameters; Polarisation calibration fitting details; Interferometric imaging settings; Phasing solution details
+
+### 2024PASJ...76..960S: Spiral magnetic fields and their role on accretion dynamics in the circumnuclear disk of Sagittarius A*: Insight from λ = 850 μm polarization imaging (2024; milky_way_ism, agn_and_quasars; multi_facility_alma_minor)
+- question: Structure and strength of the magnetic field in the Circumnuclear Disk around Sgr A*, from JCMT 850 um polarization compared with the Wardle & Koenigl model, and its implication for accretion and the magnetorotational instability; ALMA CS …
+- step 1: Reduce the JCMT 850 um POL-2 data into Stokes I, Q, U and polarization maps
+  - method: pol2map reduction in Starlink SMURF, instrumental polarization subtracted with the 2019 model, flux conversion and attenuation correction, polarized intensity debiased [2.1 JCMT polarization data: "which is implemented in the SMURF package of the Starlink suite (cite: cha13)"] [2.1 JCMT polarization data: "Instrumental polarizations were subtracted using the 2019 model."]
+  - software: Starlink SMURF pol2map
+  - parameter: flux conversion factor 2.19 +/- 0.13 Jy arcsec^-2 pW^-1 [2.1 JCMT polarization data: "we applied the updated flux-conversion factor of $2.19\pm 0.13$ Jy arcsec$^{-2}$ pW$^{-1}$ (cite: mai21)"]
+  - parameter: attenuation factor 1.35 +/- 0.008 for the POL-2 insertion [2.1 JCMT polarization data: "we applied an attenuation factor of $1.35\pm0.008$ (P. Friberg, private comm.)"]
+  - parameter: beam 12.6'' HPBW, 4.0'' pixels [2.1 JCMT polarization data: "we adopt the updated beam size (cite: mai21) of 12$''$6 in HPBW"] [2.1 JCMT polarization data: "with a 4.0$''$-pixel size"]
+  - assumption: distance 8.178 kpc [2.1 JCMT polarization data: "which corresponds to 0.50 pc at a distance $d$ of 8.178 kpc"]
+- step 3: Measure the 850 um polarization fraction and its radial profile
+  - method: Polarization fraction plotted against projected radius from Sgr A*, with linear slopes on each side of the 2.0 pc break [3.1.3 Polarization fraction map: "which shows the radial dependence of the $P_{850}$ values"] [3.1.3 Polarization fraction map: "Note that the radius is the projected one to the plane of the sky"]
+  - fitting: Linear slopes with Spearman correlation coefficients (0.45 inner, -0.47 outer) [3.1.3 Polarization fraction map: "is characterized by a slope of ${\rm d}P_{850}/{\rm d}r_{\rm pos} = +0.56\pm0.26$ percent pc$^{-1}$"]
+- step 6: Compare the observed B-field position angles with the five WK models
+  - method: B-field vectors from polarization angles rotated by 90 deg; model Stokes q,u computed per segment as a function of azimuth phi; residuals Delta PA and chi-square compared across gc1-gc5; MAD_stat used for preference [3.3.1 B-field structure: "derived by rotating the polarization segments in Figure [2](#fig:PinCNDaround) by $90^\circ$"] [3.3.2 Analysis of Magnetic-field Struct…: "In practice, we measured the $\phi$ value at each position and calculated the Stokes $q$ and $u$ parameters to determine the $PA_{\mathrm{model}}$ for each position."]
+  - parameter: n = 51 segments inside the 20 sigma 37.1 um contour, excluding four segments affected by Sgr A* [3.3.2 Analysis of Magnetic-field Struct…: "resulting in a total of $n=51$ segments for analysis."]
+  - parameter: half-thickness z_half = 0.4 pc, z/r about 0.08 [3.3.2 Analysis of Magnetic-field Struct…: "We, therefore, arbitrarily adopted a geometrical mean of 0.4 pc as the half-thickness of the disk"]
+  - assumption: i_disk = 67 deg; all other WK parameters at fiducial Table 1 values [3.3.2 Analysis of Magnetic-field Struct…: "We adopted the disk inclination angle $i_{\mathrm{disk}} = 67^{\circ}$ from (cite: lau13)"]
+  - fitting: Single free parameter phi per segment; goodness by chi2 = sum(Delta PA)^2 / n; no sampler or priors [3.3.2 Analysis of Magnetic-field Struct…: "This approach consequently renders the Stokes $u$ and $q$ as functions of a single parameter, $\phi$."] [3.3.2 Analysis of Magnetic-field Struct…: "The quality of the fits was quantified with a Chi-square fit, given by"]
+  - validation: Compared with the earlier WK analysis of 100 um KAO polarization [3.3.2 Analysis of Magnetic-field Struct…: "Our results are essentially consistent with those reported by (cite: war90), who investigated the 100 $\mu$m polarization data from the KAO (cite: hil90)."]
+- step 9: Apply the DCF method to the model residuals
+  - method: Original DCF equipartition formula B = sqrt(4 pi rho) sigma_nth / sigma_phi with sigma_phi from the MAD_stat of the gc1 residuals; Q = 1 gives an upper limit [4.1.3 DCF: "The $\sigma_{\phi}$ value is derived from the MAD$_{\rm stat}$ of the residual for the gc1 model"] [4.1.3 DCF: "By selecting $Q = 1.0$"]
+  - parameter: rho = 1.0e-18 g cm^-3, sigma_nth = 21 km/s, sigma_phi = 0.105 rad (Tsuboi et al.); alternative rho = 8.9e-20 g cm^-3, sigma_nth = 35 km/s (Guerra et al.) [4.1.3 DCF: "we derive a tighter constraint for $B_{\rm CND}^{\rm pos} \lesssim 35\,\mathrm{mG}$"]
+  - assumption: Equipartition between turbulent kinetic and magnetic energy [4.1.3 DCF: "we advocate for the use of the original DCF formula"]
+  - validation: Authors conclude the method gives no meaningful constraint [4.1.3 DCF: "Consequently, we ascertain that the DCF method does not provide meaningful constraints on the plane-of-sky component of the"]
+- result: Stokes I noise level of the 850 um map = 15.8 ± not stated mJy arcsec^-2 [2.1 JCMT polarization data: "We estimate that the resultant Stokes $I$ map has achieved a noise level of 15.8 mJy arcsec$^{-2}$ with a 4.0$''$-pixel size"]
+- result: Inner slope of polarization fraction vs radius (0.5-2.0 pc) = +0.56 ± 0.26 percent pc^-1 [3.1.3 Polarization fraction map: "is characterized by a slope of ${\rm d}P_{850}/{\rm d}r_{\rm pos} = +0.56\pm0.26$ percent pc$^{-1}$"]
+- result: Outer slope of polarization fraction vs radius = -1.0 ± 0.42 percent pc^-1 [3.1.3 Polarization fraction map: "may have a steeper slope of ${\rm d}P_{850}/{\rm d}r_{\rm pos} = -1.0\pm 0.42$ percent pc$^{-1}$"]
+- result: Number of polarization segments used in the model comparison = 51 ± not stated dimensionless [3.3.2 Analysis of Magnetic-field Struct…: "resulting in a total of $n=51$ segments for analysis."]
+- result: chi-square of the gc1 model fit = 29.8 ± not stated deg^2 [Table 4: "29.8"]
+- result: MAD_stat of the gc1 residuals = 6.0 ± 3.2 deg [Table 4: "6.0$\pm$3.2"]
+- result: DCF plane-of-sky field upper limit (Tsuboi et al. rho and sigma_nth) = 72 ± not stated mG [4.1.3 DCF: "B_{\rm CND}^{\rm pos} \lesssim 72\,\mathrm{mG}"]
+- result: DCF plane-of-sky field upper limit (Guerra et al. rho and sigma_nth) = 35 ± not stated mG [4.1.3 DCF: "we derive a tighter constraint for $B_{\rm CND}^{\rm pos} \lesssim 35\,\mathrm{mG}$"]
+- limitation (authors): CS spectra have multiple components and absorption, limiting physical quantities [3.2.3 Spectra: "These spectra present non-negligible caveats for deriving meaningful physical quantities due to the presence of multiple components and absorption features."]
+- limitation (authors): Applying DCF to the CND has significant limitations [4.1.3 DCF: "We emphasize significant limitations in applying the DCF method to the CND."]
+- limitation (authors): Gas properties at the Galactic Center are hard to estimate because of distance and line-of-sight contamination [1.2 Galactic Center: "Estimating gas properties in the Galactic Center region is fundamentally challenging due to the 8 kpc distance and line-of-sight contamination."]
+- not stated (card): ALMA band and full spectral setup (spectral windows, channelization) for the CS J=2-1 data; Line-free channels used for the ALMA continuum subtraction; tclean parameters: cell size, image size, clean threshold, niter, automasking thresholds, and the per-array weighting used when combining 12 m and 7 m visibilities; feather settings (scaling of the single-dish data) and the final cube RMS; Which A…
+
+### 2022FrASS...9.1118D: A Genetic Algorithm to Model Solar Radio Active Regions From 3D Magnetic Field Extrapolations (2022; sun; archival_reuse)
+- question: Determine the plasma temperature and electron density height profiles in the solar atmosphere of active region NOAA 12470 to reproduce observed radio brightness temperature maps at 17, 100, and 230 GHz.
+- step 1: Prepare, deproject, and co-align magnetogram and radio maps
+  - method: Rotate AR in HMI LOS magnetogram to solar disk center, remove solar spherical curvature, correct magnetic field intensities for projection effects, longitudinally rotate radio maps to match magnetogram time, resize radio maps to match magn… [Magnetogram: "To correct for this, the AR has been rotated to solar disk center, solar spherical curvature has been removed, and the magnetic field intensities have been corrected for projection."] [Radio maps: "The nominal time of the 230 GHz map is 14:52 UT, i.e., only 1 minute difference from the nominal time of the HMI observation, requiring just $-0.01^\circ$ of longitudinal rotation. The nominal time of the 100 GHz map was 19:35 UT, requiring a longitudinal rotation of $-2.85^\circ$."]
+  - software: IDL
+  - parameter: Longitudinal rotation: -0.01 deg (230 GHz), -2.85 deg (100 GHz), 7.31 deg (17 GHz) [Radio maps: "The nominal time of the 230 GHz map is 14:52 UT, i.e., only 1 minute difference from the nominal time of the HMI observation, requiring just $-0.01^\circ$ of longitudinal rotation. The nominal time of the 100 GHz map was 19:35 UT, requiring a longitudinal rotation of $-2.85^\circ$."] [Radio maps: "We used a 17 GHz map observed at 02:44 UT and available in $512\times512$ pixels$^2$ format (4.91” resolution), rotated longitudinally by $7.31^\circ$ with respect to the HMI magnetogram."]
+  - parameter: Grid size: 256x256 pixels (~2" per pixel) [Results: "To speed up the computational process, the datacubes and images were resized from $1024\times1024$ pixels$^2$ to $256\times256$ pixels$^2$, corresponding to a spatial resolution $\sim2''$ per pixel."]
+  - assumption: |B| is 7.5% greater than observed B_z due to heliographic position (17.40°N, 17.68°E) [Gyroresonance contribution: "Due to the heliographic position of AR 12740 (17.40$^\circ$N, 17.68$^\circ$E), it is estimated that $|\vec{B}|$ is 7.5% greater than the observed $B_z$."]
+- step 2: Extrapolate 3D coronal and chromospheric magnetic field from photospheric magnetogram
+  - method: Perform linear force-free field (LFF) extrapolation above the photosphere starting from the line-of-sight magnetic field component to generate 3D cubes of Bx, By, Bz and field line positions, and interpolate voxel height resolution to 50 k… [Magnetic field extrapolation: "Photospheric magnetograms are used as the boundary condition for an extrapolation of the field above the photosphere using the linear force-free field approximation."] [Magnetic field extrapolation: "The result is three cubes of intensities, one for each component of the magnetic field vector ($B_x$, $B_y$, and $B_z$) and another data cube for the positions of the magnetic field lines."]
+  - software: IDL
+  - parameter: Force-free parameter alpha = -0.005 [Results: "A low value for the $\alpha$ parameter in (1) does not significantly affect the extrapolated magnetic field configuration at low heights in the atmosphere: here $\alpha=-0.005$ was chosen for the LFF extrapolation since it generated a greater number of closed magnetic field lines in the selected region than did the po…"]
+  - parameter: Minimum photospheric magnetic field |B|_min = 200 G [Magnetic field extrapolation: "In this work, the extrapolated field lines were calculated only above positions with $|\vec{B}|_{min}=200$ G at the photosphere."]
+  - parameter: Vertical voxel height resolution h_z = 50 km [Results: "However, the radiative transfer calculations require better resolution in the height of the voxels ($h_z$) due to the relatively narrow width of the chromosphere, and they were re-scaled via interpolation from the resolution of the magnetogram to 50 km, similar to the resolution of the SSC model."]
+  - assumption: Linear force-free field approximation (current density parallel to magnetic field at any point in space) [Magnetic field extrapolation: "The fundamental equation that describes a force-free field (assuming that the current density is parallel to the magnetic field at any point in space) is"]
+  - validation: Checked that |B|_min = 200 G avoided simulated ARs appearing much larger than observed ARs, and compared extrapolated field lines against SDO/AIA 193 Å image. [Magnetic field extrapolation: "A different minimum value could be chosen by the user, but we found that the inclusion of magnetic fields below this limit resulted in the simulated ARs appearing much larger than the observed ARs."] [Results: "Figure [3](#fig:AIA) shows some of the magnetic field lines obtained in the extrapolation with $\alpha=-0.005$ and $|\vec{B}|_{min}=200$ G."]
+- step 3: Classify pixels by photospheric magnetic field strength
+  - method: Classify each pixel in the magnetogram into four classes based on photospheric magnetic field intensity |B|_0: umbra, penumbra, plage, and quiet Sun. [Results: "The resulting atmospheric profiles were grouped into four different classes corresponding to different atmospheric features: umbrae, penumbrae, plage and quiet Sun."] [Results: "Each pixel in the magnetogram was classified as umbra, penumbra, or plage according to its intensity ($|\vec{B}|$), as follows: umbra, $|\vec{B}|\geq1500$ G ($\sim200$ pixels); penumbra, $1000\leq |\vec{B}_0|<1500$ G ($\sim$230 pixels); plages, $200\leq|\vec{B}_0|<1000$ G ($\sim$27200 pixels). All pixels with $|\vec{B…"]
+  - parameter: Umbra: |B| >= 1500 G (~200 pixels); Penumbra: 1000 <= |B_0| < 1500 G (~230 pixels); Plages: 200 <= |B_0| < 1000 G (~27200 pixels); Quiet Sun: |B| <= 200 G (~38000 pixels) [Results: "Each pixel in the magnetogram was classified as umbra, penumbra, or plage according to its intensity ($|\vec{B}|$), as follows: umbra, $|\vec{B}|\geq1500$ G ($\sim200$ pixels); penumbra, $1000\leq |\vec{B}_0|<1500$ G ($\sim$230 pixels); plages, $200\leq|\vec{B}_0|<1000$ G ($\sim$27200 pixels). All pixels with $|\vec{B…"]
+  - assumption: Pixels with |B| <= 200 G have quiet Sun brightness temperature T_B = T_qS [Results: "All pixels with $|\vec{B}|\leq200$ G were classified as quiet Sun ($\sim$38000 pixels) and were assumed to have $T_B=T_{qS}$."]
+- step 5: Convolve synthetic radio maps with instrumental beams and compare with observations
+  - method: Convolve the 2" resolution GA model brightness temperature maps with 2D Gaussian beams matching observational resolutions (25" at 230 GHz, 58" at 100 GHz, 10" at 17 GHz) and compare average brightness temperatures across umbra, penumbra, p… [Comparison of the synthetic and observe…: "To compare the simulations with the observations, the model results were convolved with a 2D Gaussian beam that matches the resolution of the ALMA single-dish observations, i.e., 25” and 58” at 230 and 100 GHz, respectively."] [Comparison of the synthetic and observe…: "As summarized in Table [1](#Table:TB17_pol), when gyroresonance is taken into account the $T_\mathrm{b}$ values obtained for the highly polarized region are in agreement with those observed."]
+  - parameter: 2D Gaussian beam FWHM: 25" (230 GHz), 58" (100 GHz), 10" (17 GHz) [Comparison of the synthetic and observe…: "To compare the simulations with the observations, the model results were convolved with a 2D Gaussian beam that matches the resolution of the ALMA single-dish observations, i.e., 25” and 58” at 230 and 100 GHz, respectively."] [Comparison of the synthetic and observe…: "If only free-free emission is considered, at 17 GHz the umbra appears darker in the model than the surrounding area, with a brightness temperature of $1.06\pm0.02\times T_{qS}$ at 10” resolution."]
+  - validation: Compared synthetic vs. observed average T_b values (normalized to T_qS) within uncertainties across AR regions in Tables. [Comparison of the synthetic and observe…: "All the simulated areas are consistent with the observations to within the uncertainties."]
+- result: Quiet Sun brightness temperature at 17 GHz = 10050 ± 120 K [Radio maps: "At 17 GHz, $T_{qS}=10050\pm 120$ K, and AR 12470 has brightness temperatures varying from $5.3\times10^4$ to $6.8\times10^4$ K in the areas with $|\vec{B}|>1500$ G."]
+- result: Observed AR 12470 brightness temperature range at 230 GHz (where |B| > 1500 G) = 5800 to 6600 ± not stated K [Radio maps: "While the quiet Sun brightness temperature ( $T_\mathrm{b,QS}$) at 230 GHz is $6210\pm110$ K (cite: Selhorst2019), the AR 12470 brightness temperature ($T_\mathrm{b}$) varies from 5800 to 6600 K across locations with magnetic field intensities greater than 1500 G"]
+- result: Observed AR 12470 brightness temperature range at 100 GHz (where |B| > 1500 G) = 7200 to 7650 ± not stated K [Radio maps: "At 100 GHz, $T_{qS}=7110\pm90$ K (cite: Selhorst2019) and AR 12470 showed $T_\mathrm{b}$ varying from 7200 to 7650 K where $|\vec{B}|>1500$ G."]
+- result: Observed AR 12470 brightness temperature range at 17 GHz (where |B| > 1500 G) = 5.3e4 to 6.8e4 ± not stated K [Radio maps: "At 17 GHz, $T_{qS}=10050\pm 120$ K, and AR 12470 has brightness temperatures varying from $5.3\times10^4$ to $6.8\times10^4$ K in the areas with $|\vec{B}|>1500$ G."]
+- result: Observed Umbra averaged brightness temperature at 230 GHz = 0.99 ± 0.04 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Modeled Umbra averaged brightness temperature at 230 GHz (2" resolution) = 0.98 ± 0.01 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Modeled Umbra averaged brightness temperature at 230 GHz (25" resolution) = 1.00 ± 0.01 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Observed Umbra averaged brightness temperature at 100 GHz = 1.03 ± 0.01 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Modeled Umbra averaged brightness temperature at 100 GHz (2" resolution) = 1.02 ± 0.01 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Modeled Umbra averaged brightness temperature at 100 GHz (58" resolution) = 1.06 ± 0.01 T_qS [Comparison of the synthetic and observe…: "| Umbra | $0.99\pm0.04$ | $0.98\pm0.01$ | $1.00 \pm0.01$ | $1.03\pm0.01$ | $1.02\pm0.01$ | $1.06\pm0.01$ |"]
+- result: Observed Penumbra averaged brightness temperature at 230 GHz = 1.05 ± 0.05 T_qS [Comparison of the synthetic and observe…: "| Penumbra | $1.05\pm0.05$ | $1.04\pm0.01$ | $1.02 \pm~0.02$ | $1.05\pm0.02$ | $1.07\pm0.01$ | $1.07\pm0.02$ |"]
+- result: Modeled Penumbra averaged brightness temperature at 230 GHz (25" resolution) = 1.02 ± 0.02 T_qS [Comparison of the synthetic and observe…: "| Penumbra | $1.05\pm0.05$ | $1.04\pm0.01$ | $1.02 \pm~0.02$ | $1.05\pm0.02$ | $1.07\pm0.01$ | $1.07\pm0.02$ |"]
+- result: Observed Penumbra averaged brightness temperature at 100 GHz = 1.05 ± 0.02 T_qS [Comparison of the synthetic and observe…: "| Penumbra | $1.05\pm0.05$ | $1.04\pm0.01$ | $1.02 \pm~0.02$ | $1.05\pm0.02$ | $1.07\pm0.01$ | $1.07\pm0.02$ |"]
+- result: Modeled Penumbra averaged brightness temperature at 100 GHz (58" resolution) = 1.07 ± 0.02 T_qS [Comparison of the synthetic and observe…: "| Penumbra | $1.05\pm0.05$ | $1.04\pm0.01$ | $1.02 \pm~0.02$ | $1.05\pm0.02$ | $1.07\pm0.01$ | $1.07\pm0.02$ |"]
+- result: Observed Plages averaged brightness temperature at 230 GHz = 1.07 ± 0.07 T_qS [Comparison of the synthetic and observe…: "| Plages | $1.07\pm0.07$ | $1.08\pm0.05$ | $1.04 \pm0.04$ | $1.06\pm0.04$ | $1.10\pm0.04$ | $1.06\pm0.03$ |"]
+- result: Modeled Plages averaged brightness temperature at 230 GHz (25" resolution) = 1.04 ± 0.04 T_qS [Comparison of the synthetic and observe…: "| Plages | $1.07\pm0.07$ | $1.08\pm0.05$ | $1.04 \pm0.04$ | $1.06\pm0.04$ | $1.10\pm0.04$ | $1.06\pm0.03$ |"]
+- result: Observed Plages averaged brightness temperature at 100 GHz = 1.06 ± 0.04 T_qS [Comparison of the synthetic and observe…: "| Plages | $1.07\pm0.07$ | $1.08\pm0.05$ | $1.04 \pm0.04$ | $1.06\pm0.04$ | $1.10\pm0.04$ | $1.06\pm0.03$ |"]
+- result: Modeled Plages averaged brightness temperature at 100 GHz (58" resolution) = 1.06 ± 0.03 T_qS [Comparison of the synthetic and observe…: "| Plages | $1.07\pm0.07$ | $1.08\pm0.05$ | $1.04 \pm0.04$ | $1.06\pm0.04$ | $1.10\pm0.04$ | $1.06\pm0.03$ |"]
+- result: Observed Polarized region averaged brightness temperature at 17 GHz = 3.69 ± 1.35 T_qS [Comparison of the synthetic and observe…: "| Polarized | $3.69\pm 1.35$ | $1.06\pm 0.03$ | $1.06\pm 0.02$ | $9.41\pm 3.51$ | $4.08\pm1.19$ |"]
+- result: Modeled Polarized region averaged brightness temperature at 17 GHz with free-free + gyroresonance (10" resolution) = 4.08 ± 1.19 T_qS [Comparison of the synthetic and observe…: "| Polarized | $3.69\pm 1.35$ | $1.06\pm 0.03$ | $1.06\pm 0.02$ | $9.41\pm 3.51$ | $4.08\pm1.19$ |"]
+- result: Observed Non-polarized region averaged brightness temperature at 17 GHz = 1.58 ± 0.32 T_qS [Comparison of the synthetic and observe…: "| Non-polarized | $1.58\pm 0.32$ | $1.04\pm 0.06$ | $1.04\pm 0.06$ | $1.04\pm 0.06$ | $1.04\pm 0.05$ |"]
+- result: Modeled Non-polarized region averaged brightness temperature at 17 GHz with free-free + gyroresonance (10" resolution) = 1.04 ± 0.05 T_qS [Comparison of the synthetic and observe…: "| Non-polarized | $1.58\pm 0.32$ | $1.04\pm 0.06$ | $1.04\pm 0.06$ | $1.04\pm 0.06$ | $1.04\pm 0.05$ |"]
+- limitation (authors): The genetic algorithm is purely a mathematical solution and does not verify whether the atmospheric plasma is in local thermodynamic equilibrium (LTE). [Genetic Algorithm Features: "Nevertheless, the GA used here is a mathematical solution and it does not verify if the atmospheric plasma is in local thermodynamic equilibrium (LTE) or not."]
+- limitation (authors): Low spatial resolution of ALMA single-dish observations (25" at 230 GHz, 58" at 100 GHz) smooths the dark umbra (25" diameter) with surrounding bright areas, masking the umbra at 100 GHz and reducing its contrast at 230 GHz. [Comparison of the synthetic and observe…: "The resulting low contrast of the dark umbra with respect to the quiet Sun in the model is due to the low resolution of the ALMA single-dish observations. Since the umbral size is almost equal to the ALMA 230 GHz beam, the umbral $T_\mathrm{b}$ is smoothed with the bright surrounding areas."]
+- limitation (authors): The modeled atmospheric profiles that fit 230 and 100 GHz well cannot reach the high brightness temperatures observed at 17 GHz in non-polarized regions (reaching at most 1.2 T_qS vs. 2.8 T_qS observed). [Comparison of the synthetic and observe…: "However, the modeled atmospheric profiles that achieved good agreement with the $T_\mathrm{b}$ observations at 230 and 100 GHz were not able to reach the high $T_\mathrm{b}$ values observed at 17 GHz. While these regions showed observational values as high as $2.8\times T_{qS}$, the model was only able to reach a maxi…"]
+- not stated (card): Prior bounds (minimum and maximum values) chosen for each of the five GA free parameters (chromospheric temperature gradient, chromospheric electron density gradient, coronal temperature factor, coronal electron density factor, and TR position shift); Exact functional mathematical equations for how the five GA free parameters modify the SSC temperature and density height profiles; Details of the …
+
+### 2017A&A...603A..92V: Magnetically aligned dust and SiO maser polarisation in the envelope of the red supergiant VY Canis Majoris (2017; evolved_stars, stellar_physics; archival_reuse)
+- question: What do the linear and circular polarization of SiO lines and of the dust continuum from VY CMa reveal about the magnetic field and dust alignment in its envelope?
+- step 1: Calibrate and image full-Stokes data
+  - method: Standard ALMA calibration plus polarization calibration, self-cal on SiO maser, imaging in Stokes I,Q,U,V [Observations and data reduction: "We then reimaged all the spws at full spectral resolution and both the continuum and lines at full polarization, producing data cubes in Stokes I, Q, U, and V."]
+  - software: CASA
+  - parameter: line robust 0.5; continuum robust -0.5 [Observations and data reduction: "The continuum was imaged using a robust gridding weighting parameter of $-0.5$"]
+  - validation: Monte Carlo test of D-term and X-Y phase errors on Stokes V [Appendix: "we have generated one thousand sets of random D-terms for all the ALMA antennas, together with random X-Y phases for the reference antenna."]
+- step 2: Measure continuum fluxes and polarization
+  - method: Deconvolve star and clump C; derive fractional polarization and EVPA [Dust continuum: "Deconvolving the two components, we measure a total flux of $36\pm3$ mJy for the star and $94\pm9$ mJy for clump C."]
+  - validation: Compared with Band 7/9 convolved to Band 5 beam and spectral index [Dust continuum: "the distribution appears identical when the ALMA Band 7 and Band 9 observations (OG+15) are convolved with the Band 5 beam."]
+- step 3: Extract SiO spectra and polarization
+  - method: Spectra of Stokes I, linear fraction, EVPA and V at the peak intensity [SiO emission: "Their spectra, in Stokes I, linear polarization fraction, EVPA, and Stokes V, are shown in Figs."]
+- step 4: Derive maser magnetic field from circular polarization
+  - method: Zeeman: B ≈1.3 Pc cosθ, and fit V = z B cosθ dI/dν [SiO maser polarization: "Our fit shown in Fig. [2](#line1)(right) then yields a magnetic field strength of $B\cos{\theta}\sim2.4$ G."]
+  - parameter: maser linewidth ~1 km/s; z≈1500 s^-1 G^-1 [SiO maser polarization: "Here, the proportionality term $z=g\Omega\approx1500$ s$^{-1}$ \[Gauss\]$^{-1}$."]
+  - assumption: Zeeman origin of circular polarization; field reversals at Vlsr~15 and 30 km/s [SiO maser polarization: "if one assumes a magnetic field reversal at $V_{\rm lsr}\sim15$ and $30$ km s$^{-1}$"]
+  - fitting: V proportional to dI/dν fit [Discussion, SiO maser polarization: "Assuming a general Zeeman splitting origin, the circular polarization spectrum $V$ is expected to be proportional to the derivative of the total intensity $I$, with a proportionality coefficient that depends on the magnetic field strength."]
+- step 5: Lower limit of field for grain alignment
+  - method: Compare Larmor timescale with gas-dust timescale (Hoang & Lazarian 2009) [Dust polarization of clump C: "For the dust alignment to be efficient, we find $B>13$ mG (or less if clump C is indeed severely depleted in gas)."]
+  - parameter: a=0.1 micron, s=0.5, Td=Tg=100 K, n_g≈9e9 cm^-3 [Dust polarization of clump C: "we find $n_g\approx 9\times10^9$ cm$^{-3}$."]
+  - assumption: gas-to-dust ratio 100 [Dust polarization of clump C: "assuming a gas-to-dust ratio of $100$"]
+- result: Clump C flux at 178 GHz = 94 ± 9 mJy [Dust continuum: "$94\pm9$ mJy for clump C"]
+- result: Star flux at 178 GHz = 36 ± 3 mJy [Dust continuum: "we measure a total flux of $36\pm3$ mJy for the star"]
+- result: Continuum EVPA = 8 ± 4 deg [Dust continuum: "The average (non-rotated) electric vector position angle (EVPA) is $8\pm4^\circ$ (East of North)"]
+- result: Maximum continuum fractional polarization = ~3 ± not stated % [Dust continuum: "The maximum fractional polarization is $\sim3\%$."]
+- result: Max linear polarization 29SiO v=1 = 28.6 ± not stated % [Table 2: "| 170.328$^{b}$ | $J=4-3, v=1$ | 1779 | $2.484\times | 7.4 | 28.6 | 0.9 |"]
+- result: Magnetic field from circular polarization, B/cosθ = 0.85 ± not stated G [SiO maser polarization: "We thus find $B/\cos{\theta} \approx 0.85$ G."]
+- result: B cosθ from dI/dν fit = ~2.4 ± not stated G [SiO maser polarization: "$B\cos{\theta}\sim2.4$ G"]
+- result: Minimum field for dust alignment in clump C = >13 ± not stated mG [Dust polarization of clump C: "we find $B>13$ mG"]
+- result: Clump C dust mass = >1.2e-3 ± not stated Msun [Conclusions: "the estimated clump C dust mass is $>1.2\times10^{-3}$ M$_\odot$"]
+- limitation (authors): Higher resolution needed to map field structure [Magnetic field morphology: "it is not possible to produce a more detailed map of the magnetic field with the current data."]
+- not stated (card): Exact CASA tasks and parameters for imaging (cell size, image size, masks, deconvolver, niter); Line-free channel ranges for continuum; Reference antenna and self-calibration solution intervals; Method of two-component deconvolution for clump C and star fluxes; Aperture used for the extended SiO v=0 spectra; Debiasing of polarized intensity and thresholds
+
+### 2024AJ....168..142L: Gemini Planet Imager Observations of a Resolved Low-inclination Debris Disk around HD 156623 (2024; debris_disks; multi_facility_alma_minor)
+- question: Constrain the presence and location of the hidden inner edge of HD 156623’s debris disk.
+- step 1: Fit disk geometry
+  - method: Fit MCFOST models simultaneously to Stokes Qphi, Q and U. [Disk Morphology: "Models were fit to Stokes $\mathcal{Q}_\phi$, $\mathcal{Q}$ and $\mathcal{U}$ data simultaneously, as $\mathcal{Q}_\phi$ is the only available data with the quadrupole noise signal removed."]
+  - software: MCFOST
+  - parameter: Free: minimum grain size, porosity, dust mass, PA, inclination, inner radius, outer radius and critical radius. [Disk Morphology: "the minimum grain size ($a_\text{min}$), grain porosity, dust mass (within the grain size distribution used) $M_\text{d}$, disk position angle (PA), inclination (*i*), dust inner radius $R_\text{in}$, dust outer radius $R_\text{out}$, and the critical radius $R_\text{c}$"]
+  - assumption: Spherical grains; Mie scattering; azimuthally symmetric, optically thin disk; 1.65 microns. [Disk Morphology: "Following the procedure in (cite: esposito2018), our models assume Mie scattering from spherical grains in an azimuthally-symmetric, optically-thin disk centered on the star, observed at 1.65 microns (the *H* band peak wavelength)."]
+  - assumption: Scale height/radius = 0.055. [Disk Morphology: "The disk has a vertical structure where the scale height is a constant fraction of the radius, set to 0.055,"]
+  - fitting: Parallel-tempered MCMC: three temperatures, 120 walkers each, 3500 iterations; discard 2900, retain final 600 zeroth-temperature iterations. [Disk Morphology: "We used a parallel-tempered MCMC with three temperatures, each with 120 walkers."] [Disk Morphology: "Walkers were initialized randomly from a uniform distribution and then simulated for 3500 iterations."]
+  - validation: Inspect posterior corner plot; use maximum likelihood or 99.7% bounds for strongly non-Gaussian posteriors. [Disk Morphology: "A corner plot of posteriors from the MCMC is shown in Figure [2](#mcfost-corner)."] [Disk Morphology: "parameters with strongly non-Gaussian posteriors are reported as either maximum likelihood values or 99.7% confidence upper/lower limits."]
+- step 3: Measure scattering phase functions
+  - method: Measure brightness at multiple radii, correct for surface density and r², average radii, and split East/West halves. [Observed Polarized Scattering Phase Fun…: "SPFs were instead determined by taking measurements of $B_\text{obs}(r,\theta)$ at multiple radii around the disk, then averaging over the varying radii."] [Observed Polarized Scattering Phase Fun…: "f(\theta) \sim \frac{B_\text{obs}(r,\theta)}{\rho(r)} \cdot r^2"]
+  - parameter: 15–78 AU; surface-density proxy from average best-fit radial brightness profile, peak normalized to 1. [Observed Polarized Scattering Phase Fun…: "this range is 15 AU (at the FPM limit) to 78 AU."] [Observed Polarized Scattering Phase Fun…: "The disk surface density, $\rho(r)$, was approximated using the average best fit radial brightness profile where the peak surface brightness was normalized to 1."]
+  - assumption: Azimuthal symmetry, optical thinness and MCFOST morphology; scattering independent of azimuthal angle. [Observed Polarized Scattering Phase Fun…: "we take the disk to be azimuthally symmetric (but radially varying, related to the observed surface brightness) and optically thin, with the previously-described morphological parameters inferred via `MCFOST`."] [Observed Polarized Scattering Phase Fun…: "We also assume that scattering is independent of azimuthal angle"]
+  - fitting: Fit Henyey-Greenstein functions after dividing polarized SPFs by a Rayleigh polarization curve. [Observed Polarized Scattering Phase Fun…: "We additionally fit a Henyey-Greenstein SPF (cite: henyey1941diffuse) to each of our observed scattering SPFs divided by a Rayleigh polarization curve (approximating the total intensity SPF),"]
+  - validation: Propagate annular pixel variance; assess East/West HG fits. [Observed Polarized Scattering Phase Fun…: "Errors were derived by the variance of pixels in each annulus, similar to the procedure for the radial brightness profiles, and propagated appropriately through the calculation."] [Observed Polarized Scattering Phase Fun…: "For the Eastern half of the disk, the HG function is a poor fit, even with the best fit value $g$ = 0.33;"]
+- result: Disk position angle = 100.9 ± +1.6/-2.2 deg [Disk Morphology: "| PA (deg) | 102.081 | $100.9^{+1.6}_{-2.2}$ | 100.9$^{+1.9}_{-2.2}$ |"]
+- result: Disk inclination = 36.6 ± +2.1/-9.9 deg [Disk Morphology: "| Inclination (deg) | 38.978 | $36.6^{+2.1}_{-9.9}$ | 34.9$^{+3.6}_{-9.5}$ |"]
+- result: Scattered-light inner-radius upper limit = <26.6 ± 99.7% confidence AU [Abstract: "We find that HD 156623’s debris disk inner radius is constrained to less than 26.6 AU from scattered light imagery and less than 13.4 AU from SED modeling at a 99.7% confidence interval,"]
+- result: Scattered-light outer-radius lower limit = >139.2 ± 99.7% confidence AU [Disk Morphology: "| $R_\text{out}$(AU) | 184.482 | $>$ 139.2 | $>$ 139.3 (99.7% confidence) |"]
+- result: Critical radius = 65.2 ± +1.3/-2.3 AU [Disk Morphology: "| $R_\text{c}$(AU) | 67.113 | $65.2^{+1.3}_{-2.3}$ | 64.4$\pm$1.8 |"]
+- result: Scattered-light maximum-likelihood minimum grain size = 1.13 ± not stated μm [Discussion: "`MCFOST` scattered-light image modeling reports the maximum likelihood value for $a_{min}$ as 1.13 $\mu$m,"]
+- result: Eastern HG asymmetry parameter = 0.33 ± not stated dimensionless [Observed Polarized Scattering Phase Fun…: "For the Eastern half of the disk, the HG function is a poor fit, even with the best fit value $g$ = 0.33;"]
+- result: Western HG asymmetry parameter = 0.45 ± not stated dimensionless [Observed Polarized Scattering Phase Fun…: "however, the HG function with $g$ = 0.45 is a reasonable approximation for the Western half."]
+- limitation (authors): Image-derived inner radius limited by focal-plane mask. [Thermal Emission: "Scattered-light image modeling is limited by the focal-plane mask in its determination of $r_\text{in}$,"]
+- limitation (authors): SED inner radius and minimum grain size reach prior boundaries. [Thermal Emission: "SED modeling, on the other hand, returns a maximum likelihood value of 2.37 AU and is limited by the prior bound at zero,"]
+- limitation (authors): Dust mass functions mainly as a brightness scaling factor. [Disk Morphology: "Additionally, we do not expect the dust mass $M_\text{d}$ to be physically meaningful; instead, it essentially functions as a scaling factor for the global surface brightness of the disk."]
+- not stated (card): ALMA calibration, imaging, aperture and flux-extraction settings to independently reproduce the imported continuum measurement.; Software versions actually used.; Image-fitting likelihood, pixel noise covariance, fit masks and numerical prior bounds.; Full MCFOST input files, grain size-distribution limits and exponent, optical constants, grid and photon settings.; SED dust-mass prior bounds and …
+
+### 2019ApJ...878L..26L: ALMA Detection of a Linearly Polarized Reverse Shock in GRB 190114C (2019; transients; observational_alma_primary)
+- question: Is the mm-band afterglow of GRB 190114C linearly polarized, and what does its polarization and temporal evolution imply about the reverse shock and jet magnetic field structure?
+- step 1: Polarization calibration of ALMA data
+  - method: Standard CASA full-polarization calibration using J0423-012 for leakage with ≈90° parallactic angle coverage [2.3.1 ALMA Data analysis: "We used these solutions to estimate the intrinsic Stokes parameters of the polarization calibrator, followed by the cross-hand delays, the XY-phase offset, and the calibrator’s intrinsic polarization."]
+  - software: CASA
+  - parameter: flux scale from power-law fit to calibrator catalog flux at 91.5 and 103.5 GHz [2.3.1 ALMA Data analysis: "to which we fit a power law model to fix the flux density scale for each channel"]
+  - validation: XX/YY gain ratio within ≈2% of unity; D-terms ≈1% [2.3.1 ALMA Data analysis: "The leakage (D-terms) were found to be at the $\approx1\%$ level for individual antennas, as expected for the ALMA 12m array (cite: nnp+16)."]
+- step 2: Measure Stokes I light curve and Q, U
+  - method: Split source data by scan, imfit in image plane for Stokes I; Q and U measured with position and beam fixed from Stokes I image, per run [2.3.2 Measurement of polarization: "measured by fixing the position and beam parameters using the Stokes $I$ image"]
+  - software: CASA imfit
+- step 3: Derive P, chi, Pi with debiasing
+  - method: Monte Carlo with 10^5 realizations from Q and U measurements, including Stokes I uncertainty for Pi [2.3.2 Measurement of polarization: "We generate $10^5$ random realizations from the individual $Q$ and $U$ measurements and calculate $P=\sqrt{Q^2+U^2}$"]
+  - validation: Checked via gain calibrator polarization stability, secondary peaks, separate base-bands, and independent ALMA reduction [2.3.2 Measurement of polarization: "All three sets of images yield results consistent within measurement uncertainty."]
+- step 5: Constrain magnetic field coherence angle
+  - method: Random-walk of N incoherent patches with N~(Gamma_ej theta_B)^-2; Pi ~ Pi_0 Gamma_ej theta_B [5 Discussion: "The observed polarization is a random walk of $N$ steps in the $QU$ plane, with $\Pi \sim \Pi_0/\sqrt{N} \sim \Pi_0\Gamma_{\rm ej}\theta_B$"]
+  - parameter: Gamma_ej ≈15, Pi_0 ~0.6 (beta~0), t_dec ≈ T90 = 116 s [5 Discussion: "Taking $\ensuremath{t_{\rm dec}}\approx T_{90}=116$ s from *Fermi*/GBM[^9]"]
+  - assumption: Newtonian RS with g≈3, k=2 [5 Discussion: "For $g\approx3$ and $k=2$, we have"]
+- result: Fractional linear polarization, first epoch = 0.87 ± 0.13 % [Table 3: "| 0.114 | 89.5 | 14.6 | 32.0 | 15.3 | 96.3 | 14.6 | 9.8 | 4.6 | 0.87 | 0.13 |"]
+- result: Fractional linear polarization, last epoch = 0.60 ± 0.19 % [Table 3: "| 0.202 | 1.84 | 14.5 | -41.1 | 14.6 | 43.7 | 14.0 | -43.7 | 11.7 | 0.60 | 0.19 |"]
+- result: Polarization position angle, first to last = 10 to -44 ± ±5 to ±12 deg [abstract: "evolving in polarization position angle from $(10\pm5)^\circ$ to $(-44\pm12)^\circ$"]
+- result: Circular polarization limit = <0.3 (statistical); systematic ≈0.6 ± 3 sigma % [2.3.2 Measurement of polarization: "corresponding to a formal $3\sigma$ limit on circular polarization of $\Pi_{\rm V} < 0.3\%$ (statistical only)"]
+- result: Magnetic coherence angle theta_B = ≈1e-3 ± ≈15% statistical radian [5 Discussion: "The uncertainty on this estimate from the signal-to-noise of the measurement of $\Pi$ is $\approx15\%$"]
+- limitation (authors): Systematic uncertainties from RS dynamics approximations and stochastic random walk; forward-shock parameters degenerate since nu_a not located [5 Discussion: "larger systematic uncertainties arise from the approximations used in the RS dynamics as well as the stochastic nature of the 2D random walk."]
+- not stated (card): tclean parameters (weighting, robust, cell, image size, masking) for the Stokes images; CASA version; Whether archive pipeline products or manual calibration were used as the base; Time-binning of scans for the Stokes I light curve; Forward-shock model fitting method and priors; how parameters were chosen; Flagging details; Polarization calibrator solution settings (solints)
+
+### 2026MNRAS.549ag678P: AT 2024wpp: an extremely luminous fast ultraviolet transient powered by accretion onto a black hole (2026; transients, stellar_physics; multi_facility_alma_minor)
+- question: What are the multi-wavelength observational properties, energy source, and progenitor system of the extremely luminous fast ultraviolet transient AT 2024wpp?
+- step 2: Model radio/millimeter SEDs and derive shock and CSM properties
+  - method: Fit a soft broken power-law to radio+ALMA SEDs at six epochs (30, 41, 66, 103, 119, 177 rest-frame days) to find peak flux and peak frequency, then infer shock radius, magnetic field, total energy, shock speed, and ambient electron density… [Radio evolution: "To infer the properties of the forward shock and CSM, we model the radio emission from AT 2024wpp using the traditional synchrotron self-absorption (SSA) framework (cite: Chevalier+1998; Soderberg+2005)."] [Radio evolution: "We first perform initial fits of a soft broken power-law ($F_\nu = F_{\nu,{\rm peak}}(({\nu/\nu_{\rm peak})^{-s\beta_1}+(\nu/\nu_{\rm peak})^{-s\beta_2}})^{-1/s}$) to the sub-band gridded radio data at 41 and 66 d (the only two epochs where the peak is continuously sampled) to estimate values of the spectral index bel…"]
+  - parameter: beta_1 = +1.17, beta_2 = -0.90, s = 1.5 [Radio evolution: "these are found to be $\beta_1 = +$1.17, $\beta_2 = -$0.90, and $s=$ 1.5, respectively."]
+  - parameter: Factor of 1.37 correction applied to 27d X and Ku measurements in first epoch SED [Radio evolution: "We apply a correction factor of 1.37 (consistent with a source rising as $F \sim t^{+2.5}$ between 27 and 31 days) to the X and Ku measurements, which removes the discontinuity"]
+  - assumption: Nonthermal power-law electron energy distribution with p = 3, volume filling factor f = 0.5, and equipartition epsilon_B = epsilon_e = 1/3 [Radio evolution: "We assume an electron energy power-law index of $p=3$, a volume filling factor of $f=0.5$, and equipartition such that the magnetic energy density ($\epsilon_B$) and energy density of electrons ($\epsilon_e$) contribute equally to the post shock energy ($\epsilon_B$=$\epsilon_e$=1/3)."]
+  - assumption: 10% overall flux calibration uncertainty and interstellar scintillation modulations included [Radio evolution: "Flux modulations induced by interstellar scintillation (see following text) were included in the uncertainty analysis, as was an overall 10% flux calibration uncertainty component applied uniformly to all bands."]
+  - fitting: Soft broken power-law fit with uncertainties (95% confidence) determined from a Monte Carlo procedure [Radio evolution: "Uncertainties (95% confidence) on each parameter are determined from a Monte Carlo procedure."]
+  - validation: Compared low-frequency SED deviations against interstellar scintillation predictions from Walker 1998 and Walker 2001 maps [Radio evolution: "From the equations in (cite: Walker+1998), and assuming a source expanding radially at 0.2$c$, large ($m>0.3$) scintillation effects are expected below 13 GHz at 30 d, below 11 GHz at 41d, and below 6 GHz at 119 d (the expected modulation range is shown as a light grey envelope in Figure 16), in agreement with the dev…"]
+- result: Radio SED peak frequency at 30.5 rest-frame days = 59.4 ± +4.2/-4.3 GHz [Radio evolution: "| 30.5$^{+0.8}_{-3.5}$ | 59.4$^{+4.2}_{-4.3}$ | 1837$^{+130}_{-130}$ | 11.58$^{ +0.75}_{ -0.71}$ | 3.35$^{+0.23}_{-0.24}$ | 2.9$^{+0.3}_{-0.2}$ | 0.14$^{+0.01}_{-0.01}$ | 98300$^{+27800}_{-21300}$ |"]
+- result: Forward shock velocity from 30.5 to 119.3 rest-frame days = 0.14 to 0.26 ± not stated c [Radio evolution: "| 30.5$^{+0.8}_{-3.5}$ | 59.4$^{+4.2}_{-4.3}$ | 1837$^{+130}_{-130}$ | 11.58$^{ +0.75}_{ -0.71}$ | 3.35$^{+0.23}_{-0.24}$ | 2.9$^{+0.3}_{-0.2}$ | 0.14$^{+0.01}_{-0.01}$ | 98300$^{+27800}_{-21300}$ |"]
+- limitation (authors): Empirical constant magnitude offsets applied to align multi-facility optical light curves do not account for the time-evolving color of the transient and leave a systematic flux calibration uncertainty. [Ground-based follow-up Imaging: "It should be cautioned that this technique does not account for the time-evolving colour of the object, and because the choice of which instrument to treat as the baseline is arbitrary a systematic uncertainty in the flux calibration comparable to the characteristic offsets will remain in any resulting SED analysis."]
+- limitation (authors): Early blackbody temperature and radius estimates are somewhat uncertain because at T > 30 kK the true blackbody peak lies in the unobserved extreme UV. [Blackbody Evolution: "While these measurements are somewhat uncertain due to the very high temperatures ($>30$kK, such that the true blackbody peak is in the extreme UV and thus poorly constrained), they are consistent with the notion that the photosphere is expanding at very high speeds of 0.1–0.2$c$ for a few days before rapidly transiti…"]
+- limitation (authors): Host ISM UV absorption lines in the COS spectrum are saturated, preventing abundance determinations. [Ultraviolet Spectroscopic Analysis: "We fit the high-S/N host lines in the COS spectrum (Si, O, C, S) with a Gaussian absorption model convolved with the COS line-spread function and find that the line is consistent with being saturated in all cases, so it is not possible to derive abundances from these observations."]
+- not stated (card): ALMA CASA and pipeline versions used for QA2 processing; ALMA array configurations, baselines, time on source, and synthesized beam sizes for each Band 3/5/7 epoch; Exact tclean imaging parameters (weighting/robust, cell size, image size) used by the ALMA pipeline
+
+### 2016A&A...593A..61M: Dual differential polarimetry. A technique to recover polarimetric information from dual-polarization observations (2016; instrumentation, agn_and_quasars; technical_calibration_or_instrument)
+- question: Can polarimetric information of resolved sources be recovered from dual-polarization (XX, YY only) interferometric data using Earth-rotation synthesis of the parallactic angle?
+- step 1: Deconvolve Stokes I
+  - method: CLEAN deconvolution of full dataset without polarization calibration [Implementation of differential polarime…: "we deconvolved the source structures (applying the CLEAN algorithm) using the complete set of observations"]
+  - software: CASA
+- step 3: Compute Rpol and fit sinusoid vs parallactic angle
+  - method: Compute Rpol per pixel relative to fiducial source element and fit Rpol = pdif cos(2(phi-alpha-psi)) [Extended polarized emission: "we computed $R^\psi_{pol}$ pixel by pixel for each parallactic angle and fit the results at each pixel to the model given in Eq."]
+  - assumption: Short baselines so parallactic angle is same for all antennas; for 3C 286, constant gain amplitude ratio and Ceres unpolarized [4 Test with ALMA Science Verification d…: "if we assume that the overall ratio of gain amplitudes in the array does not change significantly throughout the observations"]
+  - fitting: least-squares minimization [Case 1. Perfect amplitude calibration: "we can recover the $p$ and $\phi$ distribution by means of a least-squares minimization"]
+  - validation: Compared with true model in simulations and CASA Guide for 3C 286 [Extended polarized emission: "demonstrating the reliability of our differential polarization method"]
+- result: 3C 286 fractional polarization = 0.189 ± 0.001 dimensionless [4 Test with ALMA Science Verification d…: "Our best-fit fractional polarization is $p = 0.189 \pm 0.001$"]
+- result: 3C 286 polarization angle = 37.04 ± 0.12 deg [4 Test with ALMA Science Verification d…: "we obtain a source polarization angle of $\phi = 37.04 \pm 0.12$ deg."]
+- result: PKS 1830-211 RM, 10 April 2012 (reanalysis) = 2.0e6 ± 1.0e6 rad/m^2 [Reanalysis of Martí-Vidal et al. (2015): "$(2.0\pm1.0)\times10^6$ rad/m$^2$ and $(3.7\pm0.5)\times10^6$ rad/m$^2$ (observer’s frame)"]
+- result: PKS 1830-211 RM, 23 May 2012 (reanalysis) = 3.7e6 ± 0.5e6 rad/m^2 [Reanalysis of Martí-Vidal et al. (2015): "$(2.0\pm1.0)\times10^6$ rad/m$^2$ and $(3.7\pm0.5)\times10^6$ rad/m$^2$ (observer’s frame)"]
+- limitation (authors): Differential RM imaging with polarized fiducial element can be biased by up to ~30%. [Bias in the $RM$ differential imaging: "the bias can be as large as $\sim30$%, even with wide fractional bandwidths"]
+- not stated (card): CLEAN parameters (niter, threshold, masks) for simulations and 3C 286; Scan/time binning used to define constant parallactic angle; Noise levels in simulations; In-house modified simobserve not available; Details of the fit initial values and uncertainties for the PKS 1830-211 reanalysis; Corrected feed angles and spectral windows/epochs used in reanalysis
+
+### 2018ApJ...865...13T: A Galaxy-scale Fountain of Cold Molecular Gas Pumped by a Black Hole (2018; galaxy_clusters_and_sz, nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Are the warm ionized and cold molecular gas in the Abell 2597 BCG cospatial and comoving, and does their kinematics reflect inflow, jet-driven outflow and bubble uplift (a galaxy-scale fountain) as predicted by chaotic cold accretion/preci…
+- step 2: Make moment maps and two-Gaussian maps
+  - method: Masked moments: smooth cube spatially (beam FWHM) and spectrally, mask at 1.5 sigma, compute moments on unsmoothed cube; two-Gaussian fits along lines of sight [2.1 ALMA CO(2-1) Observations: "enabling creation of a three dimensional mask that selects all pixels above a 1.5$\sigma$ flux threshold."]
+  - software: makeplots (T. Davis), Python
+  - parameter: 1.5 sigma mask threshold [2.1 ALMA CO(2-1) Observations: "selects all pixels above a 1.5$\sigma$ flux threshold"]
+  - fitting: Multi-Gaussian chi^2 minimization, adding Gaussians as needed [3.4.2 Cold gas motions induced by the r…: "These fits iteratively fit (and, if necessary, add) Gaussians to the extracted spectra using a simple $\chi^2$ minimization technique."]
+- result: FWHM of broad southern-jet component = 342 ± 8 km/s [3.4.2: "FWHM of $342\pm8$ km s($\sigma=145\pm3$ km s)"]
+- result: Gas mass in southern-jet region = 6.4e8 ± 0.4e8 Msun [3.4.2: "molecular gas mass of $\left(6.4\pm 0.4\right) \times 10^8$"]
+- limitation (authors): X_CO uncertainty may overestimate mass by a factor of a few [3.3: "we may be overestimating the total mass by a factor of a few"]
+- limitation (authors): Projection effects: motions in plane of sky unknown [3.4: "unless most gas motions are contained in the plane of the sky"]
+- not stated (card): CLEAN cell size, image size, niter/threshold, and masking; Line-free channels used for UVCONTSUB and fit order; Self-calibration solution intervals and number of iterations; Spectral resampling/regridding details for velocity frame; Exact smoothing kernel widths in the masked-moment code beyond FWHM=beam; Polygon aperture definitions for spectra; Flux scale uncertainty; Pipeline vs manual calibra…
+
+### 2020PASP..132i4501H: Characterizing the Accuracy of ALMA Linear-polarization Mosaics (2020; instrumentation, star_formation; technical_calibration_or_instrument)
+- question: How accurate are ALMA linear-polarization observations away from the pointing center, and how much do mosaics of overlapping pointings reduce the residual off-axis errors
+- step 1: calibrate 3C 279 on-axis polarization
+  - method: Use the on-axis scans of 3C 279 to solve gains, cross-hand delay, XY-phase (ambiguity-resolved with xyamb) and D-terms with the standard ALMA polarization scheme [11x11 observations of 3C 279: "we use these on-axis data to derive the on-axis polarization calibration via the current ALMA polarization calibration scheme"]
+  - software: CASA, almapolhelpers.py (qufromgain, xyamb)
+  - parameter: Cross-hand delay solved on the scans where the XX/YY ratio changes fastest [11x11 observations of 3C 279: "Next, we solve for the cross-hand delay using the scans where the $XX$/$YY$ polarization ratio is changing the fastest"]
+  - parameter: Three executions spaced ~1 hr give parallactic angle coverage for D-terms and XY-phase [11x11 observations of 3C 279: "which yields sufficient parallactic angle coverage to allow us to solve for the leakage terms"]
+  - assumption: Initial unpolarized source model for 3C 279, then polarization model from qufromgain and xyamb [11x11 observations of 3C 279: "assuming an initial unpolarized source model for 3C 279"]
+  - assumption: Calibrator Stokes V = 0 [Footnote 5: "includes the assumption that the calibrator Stokes $V = 0$"]
+- step 2: apply on-axis calibration to all pointings and self-calibrate
+  - method: Apply on-axis tables to all on- and off-axis data, then one round of phase-only self-calibration per pointing [11x11 observations of 3C 279: "we perform one round of phase-only self-calibration (selfcal) to correct the residual phase errors as a function of time for both the on-axis data and each off-axis pointing"]
+  - software: CASA
+  - parameter: D-terms and XY-phase solved from on-axis data only, to mimic standard ALMA polarization calibration [11x11 observations of 3C 279: "this includes $D$-terms and $XY$-phase"] [11x11 observations of 3C 279: "We do this to mimic the standard calibration method of ALMA polarization data."]
+- step 3: image Stokes I,Q,U,V and measure peaks
+  - method: Make I,Q,U,V images with clean and extract peak values with imfit [11x11 observations of 3C 279: "we extract the $I$, $Q$, $U$, $V$ peak values using the CASA task `imfit`"]
+  - software: CASA clean, CASA imfit
+  - parameter: Briggs robust = 2.0 (natural weighting), CASA 5.6.1 [11x11 observations of 3C 279: "a Briggs visibility weighting of `robust` = 2.0 (i.e., natural weighting)"]
+  - validation: Stokes I dynamic range 10,000-100,000, P maps always >1000, so sensitivity does not explain the offset-pointing variations [11x11 observations of 3C 279: "are not caused by sensitivity limits, but rather by systematic polarization variations across the primary beam"]
+- step 4: derive off-axis error maps in Q, U, chi and Pfrac
+  - method: Divide off-axis Q and U by off-axis I, subtract the on-axis values to get dQ and dU, and take on- versus off-axis differences for chi and Pfrac [Results: 11x11 observations of 3C 279: "We then subtract the on-axis Stokes $Q_\textrm{on}$ or $U_\textrm{on}$ value from the normalized value in each pixel, leaving the residual errors $\delta Q$ and $\delta U$"] [Results: 11x11 observations of 3C 279: "In the error maps of $\chi$ and $P_\textrm{frac}$, we subtract the central value from each pixel."]
+  - assumption: Circular, azimuthally symmetric primary beam in Stokes I [Results: 11x11 observations of 3C 279: "Assuming a circular, azimuthally symmetric primary beam in Stokes $I$"]
+- step 5: calibrate the Orion-KL mosaic data
+  - method: Standard ALMA polarization calibration with J0522-3627 as polarization calibrator, J0423-0120 bandpass calibrator and J0529-0519 gain calibrator [Orion-KL mosaic observations: "We use J0522–3627 as the polarization calibrator, J0423–0120 as the bandpass calibrator, and J0529–0519 as the gain calibrator."]
+  - software: CASA
+  - parameter: Bandpass scan taken only in the first execution of each session [Orion-KL mosaic observations: "A bandpass scan was performed only in the first execution of the observing session."]
+- step 6: image each Orion-KL mosaic pattern separately
+  - method: Image Hyper-Nyquist, Super-Nyquist, Nyquist and single-field subsets independently with tclean, Stokes I, Q, U cleaned separately, then primary-beam correct and form P, Pfrac, chi [Orion-KL mosaic observations: "We independently image all four cases (i.e., Hyper-Nyquist, Super-Nyquist, Nyquist, and single field) in order to compare them with one another."] [Orion-KL mosaic observations: "For each of the four patterns, we clean the Stokes $I$, $Q$, and $U$ maps separately."]
+  - software: CASA tclean, CASA impbcor, CASA imregrid
+  - parameter: Briggs robust = 0.5 [Orion-KL mosaic observations: "a Briggs visibility weighting of `robust` = 0.5"]
+  - assumption: Primary beam of each pointing is a 2D Gaussian peaked at the pointing center [Orion-KL mosaic observations: "The primary beam of each mosaic pointing is assumed (in CASA) to be a 2D Gaussian peaked at the center of the pointing."]
+- step 8: compare polarization angle in mosaic versus single pointings
+  - method: Difference maps of chi (Hyper-Nyquist mosaic minus single pointing) for the Band 3 data, histogrammed in the inner 1/3 FWHM and the outer donut, plus median differences in high-SNR patches [Comparison of chi in the mosaics versus…: "We compute difference maps of the polarization position angle $\chi$ in the Hyper-Nyquist mosaic versus single-pointing images in the same manner as described above."]
+  - software: CASA
+  - parameter: 5 sigma_P cutoff in the chi maps [Comparison of chi in the mosaics versus…: "We use a conservative (5 $\sigma_P$) cutoff in the $\chi$ maps"]
+  - validation: High-SNR patches have P SNR > 15, corresponding to ~2 deg statistical uncertainty [Comparison of chi in the mosaics versus…: "corresponding to a statistical uncertainty of $\sim$ 2$\degree$"]
+- step 9: compare ALMA mosaics with archival CARMA mosaic
+  - method: Match uv-range and beam of ALMA Nyquist mosaics to CARMA, regrid to CARMA coordinates, then difference chi [Comparison with CARMA: "We also re-grid the ALMA images to match the coordinates of the CARMA maps."] [Comparison with CARMA: "We use the standard Nyquist mosaic pattern from our ALMA data for the comparison with the CARMA observations"]
+  - software: CASA clean (uvrange), CASA imsmooth
+  - assumption: Optically thin dust with grain alignment by radiative torques, so inferred field orientation is frequency independent [Comparison with CARMA: "under the standard assumption that dust-grain alignment via radiative alignment torques (cite: Lazarian2007) is the cause of the dust polarization"]
+  - validation: CARMA on-axis systematic angle error +-3 deg and ALMA < 1 deg quoted as reference [Comparison with CARMA: "which is the result of systematic errors in the $XY$-phase correction"]
+- step 10: estimate mosaic errors from the 11x11 data
+  - method: Standard error propagation from sigma_Q and sigma_U measured in the ring 1/3 FWHM < r < FWHM, versus direct standard deviation of the dPfrac and dchi maps [Appendix 6.2: "In order to estimate the error in the regions of a mosaic where multiple pointings overlap, we first use standard error propagation of the values in the maps of $\delta Q$ and $\delta U$."]
+  - assumption: sigma_Q approximately equals sigma_U equals sigma_P; no position-dependent error in Stokes I [Appendix 6.2: "this is justified since, almost always, $\sigma_Q \approx \sigma_U$"]
+  - validation: Two estimates agree within factors of <40% (Pfrac) and <30% (chi) [Appendix 6.2: "As mentioned above, the resulting errors are conservatively large, as they are derived from the entire region between the $\frac{1}{3}$ FWHM and the FWHM."]
+- result: Residual Pfrac and chi errors inside inner 1/3 FWHM (3C 279, all bands) = Pfrac <~ 0.001 (<~0.1% of I); chi <~ 1 deg ± not stated dimensionless; deg [Results: 11x11 observations of 3C 279: "the residual errors in $P_\textrm{frac}$ and $\chi$ are $\lesssim$ 0.001 ($\lesssim$ 0.1% of Stokes $I$) and $\lesssim$ 1$\degree$, respectively"]
+- result: Pfrac and chi errors near the FWHM of the primary beam (3C 279, all bands) = Pfrac ~0.003-0.005 (~0.3-0.5% of I); chi ~1-5 deg ± not stated dimensionless; deg [Results: 11x11 observations of 3C 279: "Near the FWHM, the errors increase to $\sim$ 0.003–0.005 ($\sim$ 0.3–0.5% of Stokes $I$) and $\sim$ 1–5$\degree$, respectively"]
+- result: Stokes V beam squint amplitude relative to on-axis Stokes I = 1-2% ± not stated percent of Stokes I [V beam shape (beam squint): "Each Stokes $V$ map exhibits a double-lobed “beam squint” pattern at the 1–2% level of the on-axis Stokes $I$ value"]
+- result: Stokes I dynamic range in 3C 279 maps = ~10,000-100,000 (lowest at Band 7, highest at Band 3) ± not stated dimensionless [11x11 observations of 3C 279: "in the Stokes $I$ continuum maps ranges from $\sim$ 10,000–100,000"]
+- result: 3C 279 polarization fraction at observation = ~12% ± not stated dimensionless (percent) [Results: 11x11 observations of 3C 279: "which had $P_\textrm{frac} \approx 12\%$ at the time of observation"]
+- result: Orion-KL median polarization fraction in mosaics (Bands 3 and 6) = ~6-7% ± not stated percent [Orion-KL mosaic observations: "The mosaicked images of Orion-KL at both Bands 3 and 6 have median levels of $P_\textrm{frac} \approx 6-7\%$ across the maps."]
+- result: Median SNR across the Orion-KL P maps (Bands 3 and 6) = 7-8 ± not stated dimensionless [Orion-KL mosaic observations: "the median SNR values across the $P$ maps at Bands 3 and 6 are between 7–8"]
+- result: Std of chi differences in outer donut, single pointings 6 and 10 vs Hyper-Nyquist mosaic (Band 3) = 3.6 deg (point 6), 2.7 deg (point 10) ± not stated deg [Comparison of chi in the mosaics versus…: "having standard deviations of 3.6$\degree$ (point 6) and 2.7$\degree$ (point 10)"]
+- result: Median chi difference when emission is viewed off-axis (near FWHM of point 8) versus Hyper-Nyquist mosaic = ~3 deg ± not stated deg [Comparison of chi in the mosaics versus…: "the median difference with respect to the Hyper-Nyquist mosaic is $\sim$ 3$\degree$"]
+- result: chi differences in inner 1/3 FWHM, Hyper-Nyquist mosaic vs single pointings (Band 3) = ~1 deg ± not stated deg [Conclusions: "show that the differences are $\sim$ 1$\degree$"]
+- result: Width of ALMA minus CARMA chi difference distribution (68% window) = +-12 deg ± not stated deg [Comparison with CARMA: "with a width (defined as the minimum window necessary to encompass 68% of the data) of $\pm$ 12$\degree$"]
+- limitation (authors): 11x11 grid extent is too small to sample the full beam-squash pattern [Q and U errors (beam squash): "and thus the extent of the 11$\times$11 observations is not sufficient to sample the entire pattern"]
+- limitation (authors): Orion-KL maps are dynamic-range limited, not thermal-noise limited [Results: Orion-KL mosaic observations: "Note also that the maps are dynamic range limited; in no case have we reached the thermal noise limit."]
+- not stated (card): Cell size, image size, masks, threshold, niter and deconvolver for clean/tclean in both datasets (only 'standard imaging parameters' given); Which fields and scans were treated as on-axis, and the self-calibration solution interval for the 3C 279 data; CASA version used for calibration (only imaging versions are given); Which pointings of each 11x11 grid and which Orion-KL pointings were combined…
+
+### 2024A&A...692A..34C: A kiloparsec-scale ordered magnetic field in a galaxy at z = 5.6 (2024; high_z_galaxies; observational_alma_primary)
+- question: Are kiloparsec-scale ordered magnetic fields already present in a strongly lensed dusty star-forming galaxy at z=5.6, as traced by polarised dust emission?
+- step 1: Calibrate the full-polarisation Band 7 data
+  - method: Standard pipeline calibration of XX and YY, split, then polarisation calibration with J0423-0120 as polarisation calibrator to correct leakage [Observation and data reduction: "Then, the calibrated data were split for polarisation calibration. We followed the official template to apply the polarisation calibration."] [Observation and data reduction: "the blazar J0423$-$0120 was used as the polarisation calibrator to correct the instrumental polarisation leakage."]
+  - software: CASA
+  - parameter: Bandpass J0519-4546; phase J0253-5441; flux J0519-4546 (about 5 percent uncertainty) [Observation and data reduction: "J0519$-$4546 and J0253$-$5441 were used to calibrate the bandpass and phase variation, respectively."] [Observation and data reduction: "with an uncertainty of about 5 percent."]
+  - parameter: Parallactic angle coverage wider than 120 degrees in both sessions [Observation and data reduction: "In both observations, the coverage of parallactic angles is wider than 120 degrees, which delivers independent full-polarisation calibration."]
+  - validation: Polarisation calibrator fraction 4.7 +/- 0.1 percent consistent with monitoring (3.2-5.1 percent); angle uncertainty 0.2 deg [Observation and data reduction: "The best-fit polarisation fraction of J0423$-$0120 is around 4.7$\pm$0.1 percent, consistent with the long-term monitoring of its polarisation status of 3.2-5.1 percent in the same period."] [Observation and data reduction: "The measured uncertainty in polarisation angle is 0.2 deg."]
+- step 2: Image Stokes I cubes (line search) and full Stokes continuum images
+  - method: tclean: hogbom natural-weighted Stokes I cubes to search lines; clarkstokes natural-weighted full Stokes images, cleaned to 12 uJy/beam [Observation and data reduction: "we used the task TCLEAN within CASA to make the images and cubes."] [Observation and data reduction: "The cubes were created with the ‘hogbom’ deconvolver and natural weighting."]
+  - software: CASA, tclean
+  - parameter: Stop at 1 sigma RMS of 12 uJy/beam; beam 0.38 x 0.3 arcsec; polarised-intensity RMS 8.5 uJy/beam [Observation and data reduction: "All the clean processes stop when the residuals reach the $1\sigma$ root mean square (RMS) level of 12 $\mu$Jy beam$^{-1}$"] [Observation and data reduction: "The RMS achieved for the polarised intensity is 8.5 $\mu$Jy beam$^{-1}$."]
+- step 4: Derive polarisation fraction and magnetic-field position angle on a Nyquist grid
+  - method: Resample Stokes maps with apertures of half the clean beam; per-sample median I, Q, U; P = sqrt(Q^2+U^2)/I; mask P/sigma_P < 3; chi_B = 0.5 arctan(U/Q) + pi/2 [Results and analysis: "Following the Nyquist theorem, we re-sampled the Stokes maps with an aperture that is half the size of the clean beam."] [Results and analysis: "Within each sample, we calculated the median values of $Q$ and $U$."]
+  - software: not named in the paper
+  - parameter: Aperture = half the clean beam; P/sigma_P < 3 masked before position-angle calculation [Results and analysis: "we re-sampled the Stokes maps with an aperture that is half the size of the clean beam."] [Results and analysis: "we masked the regions with $P/\sigma_{P}<3$."]
+  - assumption: Projected B-field is perpendicular to the dust polarisation angle (pi/2 offset) [Results and analysis: "the additional $\pi/2$ was added because the projected magnetic field orientation is perpendicular to the measured polarisation angle of dust emission."]
+  - validation: Using the mean instead of the median does not change the results [Results and analysis: "Changing the median to the mean values does not change our results."]
+- step 5: Reconstruct the source-plane dust and polarised emission with a pixellated lens model
+  - method: Pixellated lensing reconstruction (Warren & Dye) with publicly available software; central r < 0.05 arcsec and outer r > 0.18 arcsec masked [Results and analysis: "we used a pixellated lensing reconstruction technique developed by"] [Results and analysis: "we masked the central area with $r$$<$ 0.05 arcsec and the outer area with $r$ $>$ 0.18 arcsec."]
+  - software: publicly available lens-reconstruction software (cite: Nightingale2015; Nightingale2021; Dye2018; Dye2022), name not given
+  - parameter: Mask r < 0.05 arcsec and r > 0.18 arcsec; best-fit lens parameters in a table [Results and analysis: "we masked the central area with $r$$<$ 0.05 arcsec and the outer area with $r$ $>$ 0.18 arcsec."]
+  - validation: Stokes I source structure consistent with existing lens models; polarised structure only marginally recovered [Results and analysis: "which is consistent with existing lens models"] [Results and analysis: "we can only marginally recover its structure in the source plane by modelling the region with possible signals."]
+- step 6: Compare polarisation with [C II] kinematics
+  - method: Compare the spatial distribution of polarisation with [C II] kinematics and channel maps [Polarisation fraction and morphology of…: "we compare the spatial distribution of polarisation with the kinematics from \[C II\]."]
+  - parameter: Median velocity dispersion of 140 km/s in the region with polarisation [Disk-driven versus merger-driven: "We adopted the median velocity dispersion of 140 km s$^{-1}$ from the region with the lowest velocity gradient"]
+- step 7: Compare polarisation fraction with local starbursts and 9io9
+  - method: Compare measured fraction at 131 um (~700 pc) with SALSA HAWC+ 154 um results and 9io9 [Polarisation fraction and morphology of…: "we compare the measured dust polarisation fraction in SPT0346-52 with the measurements from the SALSA Legacy Program."]
+- step 9: Estimate an equipartition upper limit on the turbulent magnetic field
+  - method: B_eq = sqrt(4 pi rho) sigma_v with rho from 50 cm^-3 and [C II] dispersion 140 km/s [Formation timescales of galactic magnet…: "where $\rho$ is the volume density of the ISM and $\sigma_\varv$ is the velocity dispersion of the gas."] [Formation timescales of galactic magnet…: "We estimate the equipartition turbulent magnetic field strength to be $\leq450$ $\mu$G."]
+  - parameter: [C II] line dispersion 140 km/s at the polarised region; density 50 cm^-3 [Formation timescales of galactic magnet…: "the observed \[C II\] line dispersion at the region with polarisation detection is about 140 km s$^{-1}$"] [Formation timescales of galactic magnet…: "We assume a preferred gas density of 50 cm$^{-3}$ from photodissociation region modelling"]
+  - assumption: Turbulence dominates the line width; equipartition between turbulent kinetic and magnetic energy [Formation timescales of galactic magnet…: "with the assumption that the turbulence dominates the line width."]
+  - validation: Stated only as a theoretical upper limit [Formation timescales of galactic magnet…: "We emphasise that this is only a theoretical upper limit for the turbulent magnetic fields"]
+- result: Median polarisation fraction of SPT0346-52 (rest-frame 131 um) = 0.9 ± 0.2 percent [Results and analysis: "The median and mean values of polarisation fractions both show $0.9\pm0.2$ percent, with 0.4 percent variations across the individual polarisation measurements."]
+- result: Variation of polarisation fraction across individual measurements = 0.4 ± not stated percent [Results and analysis: "with 0.4 percent variations across the individual polarisation measurements."]
+- result: Magnetic field position angle range = 0 to 100 ± not stated degrees [Results and analysis: "ranging from 0 to 100 degrees, and show a bimodal distribution."]
+- result: Bimodal peaks of chi_B (chi_B,1 and chi_B,2) = ~28 and ~78 ± not stated degrees [Results and analysis: "at $\chi_\mathrm{B,1}\sim$28 degrees and $\chi_\mathrm{B,2}\sim$78 degrees"]
+- result: Median polarisation fractions of the two chi_B groups = 1.0 and 0.8 ± 0.4 and 0.4 percent [Results and analysis: "with median polarisation fractions of $1.0\pm0.4$ and $0.8\pm0.4$ percent, respectively."]
+- result: Polarised-intensity RMS = 8.5 ± not stated uJy/beam [Observation and data reduction: "The RMS achieved for the polarised intensity is 8.5 $\mu$Jy beam$^{-1}$."]
+- result: Polarisation calibrator J0423-0120 fraction = 4.7 ± 0.1 percent [Observation and data reduction: "The best-fit polarisation fraction of J0423$-$0120 is around 4.7$\pm$0.1 percent"]
+- result: Mean amplification factor at the polarised region = 10.1 ± 0.3 dimensionless [Results and analysis: "with a mean amplification factor of $\mu=10.1\pm0.3$"]
+- result: Physical resolution in the source plane at the polarised region = ~700 ± not stated pc [Results and analysis: "which corresponds to $\sim700$ pc in the source plane with our angular resolution."]
+- result: Source-plane extent of polarised dust = 3 ± not stated kpc [Results and analysis: "After correcting the lens amplification, the polarised dust extends over 3 kpc in the source plane."]
+- result: Offset of polarised emission from the Stokes I peak (source plane) = 300-600 ± not stated pc [Results and analysis: "is offset roughly 300-600 pc from the peak of Stokes $I$"]
+- result: Equipartition turbulent magnetic field upper limit = <=450 ± not stated uG [Formation timescales of galactic magnet…: "We estimate the equipartition turbulent magnetic field strength to be $\leq450$ $\mu$G."]
+- limitation (authors): Polarised structure only marginally recovered in the source plane because of faintness [Results and analysis: "due to the faintness of the polarised dust emission, we can only marginally recover its structure in the source plane"]
+- limitation (authors): v_max/sigma estimate relies on biased assumptions given the complex velocity field [Disk-driven versus merger-driven: "it is not straightforward to estimate the $v_\text{max}/\sigma$ without some biased assumptions."]
+- limitation (authors): Sample of two extreme starbursts biases results [Formation timescales of galactic magnet…: "which biases our results to the most extreme SFGs in the early Universe"]
+- not stated (card): Version of CASA used for the pipeline and polarisation calibration of 2021.1.00458.S; Spectral window setup, frequencies and continuum bandwidth of the Band 7 polarisation data; Which template/script was used for polarisation calibration, and the Stokes solve/fitting settings (e.g. polcal solution intervals, polarisation angle calibration reference); tclean parameters: cell size, image size, mask…
+
+### 2026PASP..138h4104C: First Very Long Baseline Interferometry Fringe Detection at 690 GHz (2026; instrumentation, agn_and_quasars; technical_calibration_or_instrument)
+- question: Evaluate the feasibility and practical requirements—including instrumental readiness, ALMA Band 9 phasing performance, calibration strategy, and atmospheric conditions—for ground-based very long baseline interferometry (VLBI) in the 690 GH…
+- step 5: Estimate baseline sensitivities, expected SNRs, and source size constraints
+  - method: Calculate station SEFDs from measured T_sys and aperture efficiencies using radiometer theory, account for ALMA phasing losses and VLBI efficiency factors (quantization, clock coherence, polarization), compute 1σ baseline sensitivities and… [6.2. Sensitivity Estimation: "The system temperatures of ALMA and JCMT were measured during the observation. Their SEFDs are derived using radiometer theory"] [6.2. Sensitivity Estimation: "We consider three primary efficiency factors: the quantization efficiency (η q ), the coherence efficiency (η c ), and the polarization efficiency (η p )"]
+  - parameter: Bandwidth ΔB = 2 GHz; t = 20 s (ALMA-APEX) and 10 s (ALMA-JCMT); η_q = 0.88; η_c = 0.85 (ALMA-APEX) and 0.96 (ALMA-JCMT); η_p = 0.71; ALMA 3-bit quantization efficiency = 0.96, phasing efficiency = 0.70, VLBI sum factor = 0.93 [6.2. Sensitivity Estimation: "The standard 2-bit quantization used in astronomical VLBI introduces a signal loss of approximately 12%, corresponding to a quantization efficiency of η q ≈ 0.88."] [6.2. Sensitivity Estimation: "Numerical evaluation of the coherence function at 685 GHz indicates rms coherence values of 0.96 for the ALMA–JCMT baseline and 0.85 for the ALMA–APEX baseline at an integration time of 10 s and 20 s, respectively"]
+  - assumption: Aperture efficiencies of 0.43 (ALMA) and 0.32 (JCMT); APEX conversion factor 62 Jy K^-1; J0423-0120 total flux density = 2.3 Jy; circular Gaussian brightness distribution and 7σ detection threshold for source size limit. [6.2. Sensitivity Estimation: "In this work, the aperture efficiencies for Band 9 are taken as 0.43 (Table 9.3, Cortés et al. 2024) and 0.32 37 for ALMA and JCMT, respectively."] [7. Discussion: "Adopting a conservative detection threshold of 7σ, with σ ≈ 0.25 Jy, on the 22 Gλ baseline, the correlated flux density of J0423–0120 (total flux density ≈ 2.3 Jy) must fall below ≈ 1.75 Jy."]
+  - validation: Compared predicted SNRs against measured fourfit SNRs on ALMA-APEX and ALMA-JCMT baselines. [Table 4 note: "For J0423–0120, a fringe was detected only on the ALMA–APEX baseline in Scan 2, with a measured SNR of 12. No fringes were detected on the ALMA–JCMT baseline."]
+- result: ALMA single-antenna system temperature (T_sys) at 680 GHz = 1250 ± not stated K [Table 3: "ALMA (12 m) Single antenna ∼45.0 1250 1800 70.9 102"]
+- result: ALMA single-antenna system temperature (T_sys) at 690 GHz = 1800 ± not stated K [Table 3: "ALMA (12 m) Single antenna ∼45.0 1250 1800 70.9 102"]
+- result: Phased ALMA (45 antennas) SEFD at 680 GHz = 2500 ± not stated Jy [Table 3: "Phased 45 antennas 0.46 (avg. ALMA antennas) 2.5 3.5"]
+- result: Phased ALMA (45 antennas) SEFD at 690 GHz = 3500 ± not stated Jy [Table 3: "Phased 45 antennas 0.46 (avg. ALMA antennas) 2.5 3.5"]
+- result: JCMT system temperature (T_sys) at 680 GHz = 3800 ± not stated K [Table 3: "JCMT (15 m) ∼39.3 1.3 3800 4666 185 228"]
+- result: JCMT SEFD at 680 GHz = 185000 ± not stated Jy [Table 3: "JCMT (15 m) ∼39.3 1.3 3800 4666 185 228"]
+- result: APEX SEFD at 680 and 690 GHz = 58900 ± not stated Jy [Table 3: "APEX (12 m) ∼45.8 0.46 (same as ALMA) 950 950 58.9 58.9"]
+- result: Estimated 1σ VLBI baseline sensitivity at 680 GHz on ALMA-APEX (20 s) = 0.11 ± not stated Jy [6.2. Sensitivity Estimation: "Using the efficiency factors discussed above, the resulting 1σ baseline sensitivities are 0.11 Jy for the ALMA–APEX baseline and 0.25 Jy for the ALMA–JCMT baseline."]
+- result: Estimated 1σ VLBI baseline sensitivity at 680 GHz on ALMA-JCMT (10 s) = 0.25 ± not stated Jy [6.2. Sensitivity Estimation: "Using the efficiency factors discussed above, the resulting 1σ baseline sensitivities are 0.11 Jy for the ALMA–APEX baseline and 0.25 Jy for the ALMA–JCMT baseline."]
+- result: Expected VLBI SNR at 680 GHz on ALMA-APEX (Scan 2, J0423-0120) = 20 ± not stated dimensionless [Table 4: "2 685 AX 6 0.11 20 12"]
+- result: Expected VLBI SNR at 680 GHz on ALMA-JCMT (Scan 2, J0423-0120) = 9 ± not stated dimensionless [Table 4: "AM 21,720 0.25 9 Non-detect"]
+- result: Lower limit on angular FWHM of J0423-0120 at 685 GHz (if resolved on ALMA-JCMT) = >= 2.6 (or >= 4) ± not stated μas [7. Discussion: "Under these assumptions, the inferred full width at half maximum (FWHM) of the source is required to be ≳ 2.6 μas."]
+- limitation (authors): The present dataset does not allow a clean separation of the new delay-fix performance from other contributing factors. [2. ALMA Phasing System (APS): "However, as will be shown in the next sections, the APS performance remained limited by signal-to-noise constraints at these frequencies, and the present dataset does not allow a clean separation of delay-fix performance from other contributing factors."]
+- limitation (authors): APS phasing efficiency at Band 9 degraded after ~1-2 minutes toward ~30%, limiting usable scan durations to ~60-90 s. [6. Results and Analysis: "The similar pattern in all the scans suggests that the APS could only sustain coherent phasing for about one minute before losing effective phase summation."]
+- limitation (authors): Adverse weather at the Greenland Telescope (GLT) prevented usable data acquisition there, and a 40 s late recording start at APEX in Scan 1 plus missing polarization channels/data-quality issues in Scan 3 left Scan 2 as the sole robust Ban… [5. 2024 November 21 Observation: "However, adverse weather conditions at the GLT site prevented usable data acquisition; no instrumental issues were identified."]
+- not stated (card): Exact DiFX (v2.7.1) correlation configuration files (.v2d, .vex) including spectral channelization, accumulation period, and earth orientation/station clock models; Exact time intervals (UTC start and stop times) selected for the usable fringe search intervals (FSI) in each scan; Complete raw VLBI voltage recordings from ALMA, APEX, and JCMT (the paper notes only a small sample is included in the…
+
+### 2020MNRAS.499.5915M: Polarimetric and radiative transfer modelling of HD 172555 (2020; debris_disks; multi_facility_alma_minor)
+- question: Constrain the disc dust grain size and composition using aperture polarimetry and continuum emission.
+- step 2: Determine interstellar wavelength dependence
+  - method: Joint full-bandpass fits of Serkowski-Wilking and Serkowski laws to HD 162521 and HD 167425. [Wavelength dependence: "Multi-band data was taken for HD 167425 and HD 162521."] [Wavelength dependence: "Using a full bandpass model we use PYTHON’S CURVE_FIT program to fit both the Serkowski-Wilking Law ($K$ not fit) and the Serkowski Law ($K$ fit)."]
+  - software: Python, CURVE_FIT
+  - parameter: Adopt λmax = 472.6 nm and K = 0.79. [Wavelength dependence: "values of $\lambda_{\rm max}$ equal to 472.6 nm and $K$ equal to 0.79 are adopted."]
+  - assumption: HD 162521 and HD 167425 are proxies for the target's interstellar polarisation. [Wavelength dependence: "As stars with similar $p/d$, $\theta$, $d$ and small separations from HD 172555, they were chosen as proxies to investigate its interstellar polarisation wavelength dependence."]
+  - fitting: Fit pmax for both stars and shared λmax; additionally fit K for the Serkowski Law. [Wavelength dependence: "The method fits $p_{\rm max}$ for both control stars, along with $\lambda_{\rm max}$, and in the latter case $K$ as well."]
+  - validation: Compare reduced χ² and parameter agreement; prefer the fit aligned with earlier nearby-ISM studies. [Wavelength dependence: "The Serkowski and Serkwoski-Wilking Law fits are similarly good, as judged by the reduced $\chi^2$ statistic, and the values of each fit parameter agree within the stated uncertainties."] [Wavelength dependence: "The past studies of the interstellar medium (cite: 2016Marshall; 2019bCotton; 2020bBailey) have found values of $\lambda_{\rm max}$ more closely aligned with the Serkowski-Wilking Law fit"]
+- step 3: Subtract interstellar polarisation
+  - method: Subtract model interstellar q and u, rotate the remaining polarisation, and constrain u′ to zero and 650LP q′ to the SPHERE measurement. [Interstellar subtraction: "Rotates the remaining (intrinsic) polarisation by $\theta_{\star}$ into a new frame ($q^{\prime}$, $u^{\prime}$)."] [Interstellar subtraction: "Returns $u^{\prime}$ for each observation, and for the 650LP observations also $62-q^{\prime}$, for comparison with model values of 0"]
+  - software: Python, CURVE_FIT
+  - parameter: Fixed λmax = 472.6 nm and K = 0.79. [Interstellar subtraction: "the Serkowski-Wilking Law described interstellar polarisation with $\lambda_{\rm max}$ of 472.6 nm, $K$ of 0.79"]
+  - parameter: SPHERE anchor: 62 ± 8 ppm; include its uncertainty in q′ errors. [Interstellar subtraction: "the measured integrated disc$+$star polarisation reported by (cite: 2018Engler) of 62 $\pm$ 8 ppm."] [Interstellar subtraction: "the $q^{\prime}$ errors are modified to incorporate the uncertainty in the (cite: 2018Engler) measurement"]
+  - assumption: Serkowski-Wilking interstellar polarisation; interstellar and intrinsic orientations each constant with wavelength. [Interstellar subtraction: "the interstellar polarisation is described by the Serkowski-Wilking Law, has a consistent orientation with wavelength, and that the intrinsic polarisation of the star-disc system has a consistent orientation with wavelength too."]
+  - assumption: 650LP and SPHERE VBB are equivalent because of similar effective wavelengths. [Interstellar subtraction: "We consider the 650LP observations to be equivalent to the SPHERE VBB band observations given their similar $\lambda_{\rm eff}$, 725 nm and 735 nm respectively"]
+  - fitting: CURVE_FIT minimisation over θi, pmax and θstar. [Interstellar subtraction: "To carry out the subtraction $\theta_i$, $p_{\rm max}$ and $\theta_{\star}$ – where the subscripts $i$ and $\star$ represent respectively interstellar and intrinsic – need to be determined."] [Interstellar subtraction: "This is done using a PYTHON CURVE_FIT-based program which tries to minimise the difference between a set of model values and the data as modified by a function."]
+  - validation: Check control-star p/d, agreement with the imaging orientation and near-zero u′ in each band; reject a free-λmax fit. [Interstellar subtraction: "a $p/d$ similar to that of HD 167425, a value of $\theta_{\star}$ consistent with that of (cite: 2018Engler), and values of $u^{\prime}$ consistent with zero to close to 1-$\sigma$ or better in each band"] [Interstellar subtraction: "Consequently, we favour the fit with fixed $\lambda_{\rm max}$."]
+- step 4: Construct reference dust emission models
+  - method: Generate individual material SEDs with Hyperion, fixed disc geometry and grain distribution; include a scaled NEXTGEN photosphere. [Spectral energy distribution: "We use the 3D Monte Carlo radiative transfer code Hyperion (cite: 2011Robitaille) to model the dust continuum emission."] [Spectral energy distribution: "Using these extrapolated optical constants we run individual disc models through Hyperion, assuming the previously determined disc spatial extent and dust size distribution for all materials"]
+  - software: Hyperion
+  - parameter: R0 = 11.3 au; αin = -3.5; αout = 6.8; z0 = 0.6 au; β = 0.40. [Spectral energy distribution: "$R_{\rm 0} = 11.3~$au, $\alpha_{\rm in} = -3.5$, $\alpha_{\rm out} = 6.8$, $z_{0} = 0.6$ au, and $\beta = 0.40$."]
+  - parameter: amin = 0.01 μm; amax = 1 mm; q = 3.95. [Spectral energy distribution: "We fix the minimum and maximum grain sizes for the dust as $a_{\rm min} = 0.01~\mu$m and $a_{\rm max} = 1~$mm."] [Spectral energy distribution: "The exponent of the size distribution $q$ was also fixed to be 3.95."]
+  - parameter: Extrapolate optical constants to 0.1 μm–2 mm using the first or last two points. [Spectral energy distribution: "extrapolation down to 0.1 $\mu$m and up to 2 mm, using the linear slope of the first (or last) two data points for the measured optical constants to extend the range."]
+  - parameter: Reference mass for each material SED: 3.45×10^23 g. [Spectral energy distribution: "each individual SED represented emission from the same mass of dust, in this case 3.45$\times10^{23}$ g."]
+  - parameter: NEXTGEN: 7800 K; log(g) = 4.2 interpolated from 4.0 and 4.5; Solar metallicity; luminosity 8.093 L☉. [Spectral energy distribution: "an effective temperature of 7800 K, surface gravity $\log (g)$ of 4.2 (interpolated from $\log (g)$ 4.0 and 4.5), and Solar metallicity"] [Spectral energy distribution: "The photosphere model was scaled to provide a total luminosity of 8.093 $L_{\odot}$."]
+  - assumption: The same dust grains produce continuum emission, scattering and polarisation. [Spectral energy distribution: "We have therefore tacitly assumed that the same dust grains that produce the dust continuum emission are responsible for the scattering and polarisation."]
+  - assumption: Hard compact spherical grains. [Spectral energy distribution: "an appropriate material density assuming the grains are hard compact spheres"]
+- step 6: Fit the polarising grain size
+  - method: Calculate Mie albedo and Müller matrices, generate 3D disc polarisation spectra and bandpass synthetic measurements, then fit minimum grain size. [Polarimetry: "The albedo and scattering Müller matrix for each composition was calculated using a parallelized Fortran95 implementation of BHMie"] [Polarimetry: "We calculate the disc polarisation using a 3D model of the disc density distribution combined with the dust optical constants, following the model presented in (cite: 2015Scicluna)."]
+  - software: BHMie
+  - parameter: 200 wavelengths over 0.3–0.9 μm; minimum sizes 0.01–6.5 μm. [Polarimetry: "We proceed by generating model polarisation spectra for each dust composition spanning 0.3 to 0.9 $\mu$m, sampling 200 wavelengths within this range, for minimum dust grains sizes between 0.01 and 6.5 $\mu$m."]
+  - parameter: Maximum size 1 mm; size-distribution exponent -3.95. [Polarimetry: "We fixed the maximum grain size as 1 mm, with a power law size distribution exponent of -3.95, as per the radiative transfer modelling."]
+  - parameter: Compare the SED-derived mixture with astronomical silicate. [Polarimetry: "We calculate a single model polarisation spectrum for each grain size using the weightings calculated in the dust grain radiative transfer modelling."] [Polarimetry: "We also calculate polarisation spectra for astronomical silicate dust grains (cite: 2003Draine) as a point of comparison to the dust composition determined from this work."]
+  - assumption: Single scattering of unpolarised starlight in an optically thin disc. [Polarimetry: "We assume the measured polarisation is produced in single scattering events for dust grains in the optically thin disc redirecting unpolarised starlight toward the observer."]
+  - assumption: Orient the model so U is zero; retain grains between 0.1 and 1.0 μm. [Polarimetry: "The orientation of the disc in the model is chosen such that the degree of polarisation in the U vector is zero by default."] [Polarimetry: "We did not omit grains with sizes 0.1 to 1.0 $\mu$m from the scattering polarisation calculation despite these grains being swiftly removed by radiation forces."]
+  - fitting: Least-squares fit of each grain-size model spectrum to multi-wavelength polarimetry. [Polarimetry: "The best-fit grain size was then determined using a least-squares fit of the model polarisation spectrum for each grain size to the multi-wavelength polarimetry."]
+  - validation: Assess agreement within uncertainties; the shortest-wavelength rise is not reproduced. [Polarimetry: "The model polarisation spectra do not replicate the steep rise in polarimetric signal toward shorter wavelengths"] [Polarimetry: "are consistent within the substantial uncertainties attached to the magnitude and shape of the model polarisation spectra at those shortest wavelengths."]
+- result: Combined control-star Serkowski-Wilking λmax = 472.6 ± ± 79.0 nm [Technique:: "we obtain $\lambda_{\rm max}=472.6 \pm 79.0$ nm for HD 162521 and HD 167425 combined"]
+- result: Interstellar subtraction pmax = 176.6 ± ± 12.1 ppm [Table 4: "| (ppm) | (nm) | | ($\ensuremath{^\circ}$) | ($\ensuremath{^\circ}$) |"]
+- result: Interstellar polarisation angle θi = 82.5 ± ± 1.5 degrees [Table 4: "| $p_{\rm max}$ | $\lambda_{\rm max}$\* | $K$\* | $\theta_i$ | $\theta_{\star}$ |"]
+- result: Intrinsic rotation parameter θstar = 21.5 ± ± 4.5 degrees [Table 4: "| $p_{\rm max}$ | $\lambda_{\rm max}$\* | $K$\* | $\theta_i$ | $\theta_{\star}$ |"]
+- result: Disc position angle implied by interstellar subtraction = 111.5 ± ± 4.5 degrees [Table 4: "This implies a disc position angle of 111.5$\ensuremath{^\circ}$ $\pm$ 4.5."]
+- result: Intrinsic fractional polarisation at 722.3 nm = 62.4 ± ± 5.2 ppm [Abstract: "a fractional polarisation $p = 62.4~\pm~5.2$ ppm at 722.3 nm"]
+- result: Polarisation position angle reported in the abstract = 67 ± ± 3 degrees [Abstract: "a position angle $\theta = 67~\pm~3\ensuremath{^\circ}$."]
+- result: Best-fit minimum polarising grain size, SED-derived composition = 3.89 ± not stated μm [Polarimetry: "The best-fit polarisation model using this dust composition has a minimum grain size $a_{\rm min} = 3.89~\mu$m"]
+- result: Best-fit minimum polarising grain size, astronomical silicate = 1.25 ± not stated μm [Polarimetry: "With the astronomical silicate models, we find a best-fit minimum grain size $a_{\rm min} = 1.25~\mu$m from a least squares fit between the grain size dependent polarisation spectra and the observations."]
+- limitation (authors): Patchy ISM prevents control-star polarisation versus distance alone from determining the target's interstellar component. [Polarisation vs. distance: "the ISM in this region is patchy which prevents firm conclusions being drawn on the interstellar polarisation of HD 172555 from this data alone."]
+- limitation (authors): A composite 425SP observation may have underestimated error. [Interstellar subtraction: "one of the 425SP observations is a composite of two measurements, and the associated error may be under-estimated."]
+- limitation (authors): Unavailable optical constants prevent a direct composition comparison with the earlier spectral fit. [Spectral energy distribution: "Not all the materials utilized in the spectrum fitting presented in table 2 of (cite: 2009Lisse) had ($n$,$k$) values available through accessible online databases."]
+- not stated (card): Exact JVO ALMA image product identifier and whether the image used was primary-beam corrected.; ALMA image beam, rms measurement region and statistical multiplier used to obtain the <0.240 mJy upper limit.; Treatment of the ALMA upper limit in the SED fitting objective.; Exact Jena optical-constant files, material densities and component optical-constant mixing procedure.; Hyperion grid, photon c…
+
+### 2024NatAs...8..765L: Orbital polarimetric tomography of a flare near the Sagittarius A<SUP>*</SUP> supermassive black hole (2024; other; archival_reuse)
+- question: Recover the evolving 3D structure of a flare orbiting Sgr A* from the single-pixel ALMA linear-polarization light curves of April 11, 2017 (orbital polarimetric tomography), and constrain the observer inclination
+- step 2: Build orbiting-emission forward model
+  - method: Emission e0(x) sheared by Keplerian orbit, polarized synchrotron radiative transfer along Kerr geodesics, summed over image plane to give I, Q, U light curves [Assumptions and systematic noise: "We consider orbits characterized by a Keplerian angular velocity profile (neglecting radial or vertical velocity components), accounting for shearing due to differential rotation"] [Methods, Forward model, 3. Light curves: "We compute light curves by numerically sampling a large field-of-view (FOV) and summing over image-plane coordinates"]
+  - software: kgeo
+  - parameter: Recovery domain 6M <= r <= 20M, |z| <= 4M [Data fitting: "constrained to a domain with a radius of $6{\rm M} \leq r \leq 20 {\rm M}$ and close to the equatorial disk $|z| \leq 4{\rm M}$"]
+  - parameter: 64x64 pixel grid, FOV 200 microarcsec [Methods, Model selection using Validati…: "In our recoveries, we use an evenly sampled $64\times64$ grid for a FOV of $200~\mu {\rm as}$."]
+  - parameter: Spectral index alpha_nu ~ 1 [Methods, Forward model, 2. Image format…: "the spectral index (reflecting the change in the local emission with frequency) is approximated as $\alpha_\nu\simeq1$ (cite: Narayan2021)"]
+  - assumption: Homogeneous fixed vertical magnetic field [Assumptions and systematic noise: "we assume a homogeneous vertical magnetic field that is externally fixed and is independent of the flare or accretion disk dynamics."]
+  - assumption: Optically thin millimeter emission region [Assumptions and systematic noise: "Another key assumption made by our work is that the millimeter emission region is optically thin."]
+  - assumption: Mass of about 4e6 Msun; data fit insensitive to spin so non-spinning black hole used [Data fitting: "Furthermore, Fig. [1](#fig:alma_rec) (blue curve) illustrates that the data-fit is not very sensitive to black hole spin: $a\in[0,1]$."]
+  - validation: Checked by varying magnetic field configuration, rotation direction and sub-Keplerian fraction [Assumptions and systematic noise: "we analyze some of the systematic model choices detailed above by exploring the effects of a) magnetic field configuration b) rotation direction and c) sub-Keplerian orbits on the data fit and 3D reconstruction."]
+- step 3: Fit 3D emission with a neural representation at fixed inclination
+  - method: Minimise chi-squared over Stokes I, Q, U between data and model light curves, with the 3D emission represented by an MLP with positional encoding [Data fitting: "Mathematically, the 3D emission volume is estimated by minimizing a $\chi^2$ loss between the observed LP and the model prediction."] [Methods, Neural representation: "we use a small MLP with 4 fully connected layers, where each layer is 128 units wide and uses ReLU activations."]
+  - software: JAX, ADAM, bhnerf
+  - parameter: MLP: 4 layers, 128 units, ReLU; positional encoding degree L = 3 [Methods, Neural representation: "We use a maximum positional encoding degree of $L=3$."]
+  - parameter: ADAM, polynomial learning rate 1e-4 to 1e-6 over 50K iterations, about 1 hour on two NVIDIA Titan RTX GPUs [Methods, Optimization procedure: "were optimized using an ADAM optimizer (cite: kingma2014adam) with a polynomial learning rate transitioning from $1{\rm e}^{-4} \rightarrow 1{\rm e}^{-6}$ over $50{\rm K}$ iterations."] [Methods, Optimization procedure: "Run times were ${\sim} 1$ hour on two NVIDIA Titan RTX GPUs."]
+  - parameter: Five runs with random initialisation per inclination [Data fitting: "For each inclination, the recovery is run five times with a random initialization for the 3D structure."]
+  - assumption: Non-convex stochastic-gradient optimisation reaches a local minimum; solution depends on initialisation [Data fitting: "solving a non-convex optimization problem with stochastic gradient descent methods leads to a local (and not global) minimum."]
+  - fitting: Gradient-based chi-squared minimisation (ADAM) of network weights; chi-squared normalised by number of data points; no sampler or priors [Data fitting: "Rather, it is normalized by the total number of data points, which is useful for comparing fit quality in our experiments where degrees of freedom remain fixed."]
+  - validation: Error bars from different random initialisations indicate stability of the local optimum, not posterior uncertainty [Data fitting: "Therefore, the error bars are not a measure of posterior uncertainty; rather, they indicate the stability of the locally optimal solution."]
+- step 5: Test systematic model choices and synthetic recoveries
+  - method: Compare validation-chi2 for vertical, radial and toroidal magnetic fields, CW vs CCW rotation, and sub-Keplerian fractions; recover synthetic hotspot, flux-tube and double-source datasets with accretion-disk noise [Assumptions and systematic noise: "three magnetic field configurations: vertical, radial, and toroidal"] [Synthetic data recovery: "we highlight the tomographic ability to recover different underlying emission structures and distinguish between different 3D flare morphologies."]
+  - parameter: Angular velocity profile Omega = +/- f_K Omega_K tested; f_K = 0.9 shown [Assumptions and systematic noise: "we set the angular velocity profile to $\Omega= \pm f_{\rm K}\Omega_{\rm K}$ where the $\pm$ sign dictates the direction (`CW/CCW`) and $f_{\rm K}$ the magnitude"]
+  - validation: Recovered inclination compared with known synthetic truth [Synthetic data recovery, Sensitivity to…: "For each level of noise, $\sigma_P$, we are able to estimate $\theta_{\rm o}^\star$ to within $\pm4^\circ$ of the true value."]
+- result: Radii of the two compact bright regions in the recovered 3D emission = r ~ 11M and 13M ± not stated M (GM/c^2) [Results: "The recovered 3D emission has two compact bright regions at $r \sim 11M, 13M$"]
+- result: Synthetic test: inclination recovery accuracy, Simple Hotspot at low and high inclination = within +/-10 ± not stated deg [Synthetic data recovery, Estimating inc…: "enable estimating $\theta_{\rm o}^\star$ (as the global minimum) to within $\pm10^\circ$ of the underlying true inclination"]
+- result: Synthetic test: low-inclination recovery accuracy across three accretion noise levels (Simple Hotspot) = within +/-4 ± not stated deg [Synthetic data recovery, Sensitivity to…: "For each level of noise, $\sigma_P$, we are able to estimate $\theta_{\rm o}^\star$ to within $\pm4^\circ$ of the true value."]
+- result: Synthetic test: low-inclination (12 deg) recovery accuracy, all three 3D structures = within +/-6 ± not stated deg [Synthetic data recovery, Recovering dif…: "Our approach is able to estimate $\theta_{\rm o}^{\rm lo}$ to within $\pm 6^\circ$ for all three levels of accretion noise and 3D fiducial datasets."]
+- result: Synthetic test: high-inclination (64 deg) recovery accuracy at low and moderate accretion noise = within +/-16 ± not stated deg [Synthetic data recovery, Recovering dif…: "While low and moderate accretion noise enable detection $\theta_{\rm o}^{\rm hi}$ to within $\pm 16^\circ$"]
+- limitation (authors): Recovery is highly ill-posed and not unique; relies on the imposed gravitational and synchrotron models [Data fitting: "The ill-posed inverse problem we solve does not have a unique solution."]
+- limitation (authors): Error bars show stability of local optima, not posterior uncertainty [Data fitting: "Therefore, the error bars are not a measure of posterior uncertainty; rather, they indicate the stability of the locally optimal solution."]
+- limitation (authors): Un-modelled accretion-disk variability affects recovery because the model attributes all dynamics to orbital motion [Synthetic data recovery, Sensitivity to…: "Any un-modeled accretion dynamics will impact recovery results as our model fully attributes dynamics to orbital motion."]
+- not stated (card): The calibrated, time-averaged Stokes I/Q/U light curves themselves (only available from the corresponding author on request); the ALMA calibration and polarization-calibration steps behind them are not described; Exact time-bin edges and scan gaps used when averaging to ~1 minute; Number and values of the random seeds ('several initial seeds') and which of them enter the error bars; Batch size, l…
+
+### 2015Sci...348..311M: A strong magnetic field in the jet base of a supermassive black hole (2015; agn_and_quasars; observational_alma_primary)
+- question: Can Faraday rotation be detected at the jet base of PKS 1830-211 with ALMA, and what does the rotation measure imply for the magnetic field strength?
+- step 2: Compute polarization ratio Rpol
+  - method: Rpol = 1/2 (R_XX/R_YY - 1) with errors by standard propagation from fit covariance matrix [main text: "The uncertainties have been obtained with the standard error propagation approach, using the uncertainties in $R_{XX}$ and $R_{YY}$"]
+  - validation: Simulations with 1% antenna leakage give Rpol errors below 5e-4 [Polarization leakage: "All errors are below 5$\times$10$^{-4}$."]
+- step 3: Fit rotation measure
+  - method: Least-squares fit of Rpol vs lambda^2 and parallactic angle with a cosine model, for three epochs with quasi-simultaneous 250 and 300 GHz data; 100 GHz data excluded [main text: "The parameter estimates in these three datasets have been performed by least-squares minimization, comparing the measured $R_{pol}$ to the model predictions."]
+  - assumption: RMs and fractional polarization wavelength dependence similar for both lensed images, so p_dif and alpha are constant [Special cases: "their rotation measures should be similar, as well as the wavelength dependence of their fractional polarizations."]
+  - fitting: Least squares; free parameters RM, p_dif and phase offset [Main text, Table 1 discussion: "The parameter estimates in these three datasets have been performed by least-squares minimization, comparing the measured $R_{pol}$ to the model predictions."]
+  - validation: Monte Carlo with 10^4 random datasets; chance probability of equally good fit below 1e-10 [Monte Carlo tests: "the probability that a random dataset allows us, just by pure chance, to get a fit as good as that from our observations is lower than $10^{-10}$."]
+- step 4: Convert to rest frame and infer magnetic field
+  - method: RM_true = (1+z)^2 RM_obs; compare with RM integral n B dl and parsec-scale AGN core RMs to bound B [Table 1: "$RM_{true}$ is $(1+z)^2$ times larger than $RM_{obs}$."]
+  - assumption: z = 2.5 [main text: "$z$ is the redshift ($z = 2.5$)"]
+- result: RM_obs 10 Apr 2012 = 9.0 ± 0.3 10^6 rad/m^2 [Table 1: "9.0$\pm$0.3"]
+- result: RM_obs 23 May 2012 = 9.4 ± 0.4 10^6 rad/m^2 [Table 1: "9.4$\pm$0.4"]
+- result: RM_obs 5 May 2014 = 25.3 ± 0.8 10^6 rad/m^2 [Table 1: "25.3$\pm$0.8"]
+- result: RM_true 10 Apr 2012 = 11 ± 0.4 10^7 rad/m^2 [Table 1: "11$\pm$0.4"]
+- result: RM_true 23 May 2012 = 11.5 ± 0.5 10^7 rad/m^2 [Table 1: "11.5$\pm$0.5"]
+- result: RM_true 5 May 2014 = 31.2 ± 1.0 10^7 rad/m^2 [Table 1: "31.2$\pm$1.0"]
+- result: p_dif 10 Apr 2012 = 12.6e-3 ± 0.4e-3 dimensionless [Table 1: "12.6$\pm$0.4"]
+- result: Max dRpol/dlambda^2 at lambda^2 = 0.8-1.6 mm^2 = 70e-3 ± not stated mm^-2 [main text: "whereas between 0.8 and 1.6 mm$^2$ it is $70\times 10^{-3}$ mm$^{-2}$"]
+- limitation (authors): B, electron density and path length cannot be disentangled from the RM [main text: "it is impossible to unambiguously disentangle the contributions of the magnetic field, electron density and path length"]
+- not stated (card): Calibration pipeline/CASA version and calibrators; Source models (number of components) used in UVMULTIFIT; Initial guesses and parameter bounds of the Rpol fit; How the data were split into parallactic angle segments; Antenna configurations and baselines; Which executions belong to which project code
+
+### 2018ApJ...858...85P: Forecasting the Contribution of Polarized Extragalactic Radio Sources in CMB Observations (2018; cosmology, agn_and_quasars; multi_facility_alma_minor)
+- question: How does the fractional polarization of extragalactic radio sources depend on frequency (1.4-217 GHz), and how much do polarized ERS contaminate CMB B-mode observations of current and forthcoming experiments?
+- step 1: derive polarization fraction distributions
+  - method: Bootstrap resampling of catalogue fluxes, binned fractions, log-normal fit [Statistical properties of ERS polarizat…: "Finally, a log-normal distribution function [\[eq:lognorm\]](#eq:lognorm) is fitted from each dataset"]
+  - parameter: 5 to 15 bins; Poisson errors at 68% confidence [Statistical properties of ERS polarizat…: "ranging from 5 to 15 bins depending on the number of data collected in each catalogue"]
+- step 3: forecast ERS contamination for CMB experiments
+  - method: Compute number counts and Poissonian power spectra with PS4C, compare with CAMB CMB and rescaled Galactic foregrounds [Forecasts for forthcoming CMB ground-ba…: "we assume their distribution in the sky to be Poissonian"]
+  - software: PS4C, CAMB
+  - parameter: r=0.05, Planck best fit cosmology [Forecasts for forthcoming CMB ground-ba…: "assuming the *Planck* best fit cosmological parameters (cite: 2016A&A...594A..13P) and a tensor to scalar ratio $r=0.05$"]
+  - assumption: Polarization angle uniformly distributed; C_B ≈ C_E ≈ C_U ≈ C_Q [Forecasts for forthcoming CMB ground-ba…: "we can approximate $C_{\ell} ^B\simeq C_{\ell} ^E\simeq C_{\ell} ^U\simeq C_{\ell} ^Q$"]
+  - validation: Compared PS4C counts with DZ16 estimates [PS4C with future space missions: "Comparison of surface densities of polarized ERSs brighter than $P_{4 \sigma}$ estimated by (cite: 2016arXiv160907263D)(DZ16) and by PS4C."]
+- result: <Pi^2>^1/2 at 95 GHz (PACO-ALMA, flat spectrum) = 4.94 ± 1.32 % [Table bestfitlognorm: "| 95 | 32 | $1.09 \pm 0.21$ | $2.13 \pm 0.23$ | $0.97 \pm 0.09$ | $3.20 \pm 0.60$ | $2.07 \pm 0.24$ | $4.94 \pm 1.32$ | This work |"]
+- result: Max polarized sources detected at 3 sigma by CMB-S3 LA (30 GHz) = 2329 ± not stated sources [PS4C with current and forthcoming CMB g…: "the maximum number of polarized sources detected above a $3\sigma$ level and using the large aperture telescope is $2329$"]
+- limitation (authors): Planck detections may be biased upward toward high fractional polarization; forecasts limited to ≤150 GHz, excluding dusty galaxies [The Second Planck Catalogue of Compact …: "the statistics of ERS polarization can be biased upward"]
+- not stated (card): ALMA 95 GHz data processing, calibration, project code and polarization measurements (deferred to Galluzzi et al. 2018); Number of bootstrap resamplings N_resamp and exact bin choices; Fit method for log-normal and linear fits
+
+### 2015A&A...581A..97S: Collisional modelling of the AU Microscopii debris disc (2015; debris_disks; theory_or_simulation_compared_to_alma)
+- question: What dust production, dust transport and planetesimal dynamics in the AU Mic debris disc are consistent with the SED, the ALMA 1.3 mm radial profile and scattered light data?
+- step 2: Collisional modelling of outer disc
+  - method: ACE simulations varying wind strength, material, e_max, belt width; fit SED vertical scaling by timestep; compare to scaled convolved 1.3 mm profile, scattered light and polarisation [4 Resolved outer disc: "we vary other initial disc parameters of this reference run in order to more tightly constrain the parameters and reveal degeneracies among them"]
+  - software: ACE
+  - parameter: Belt at 40 au, width 5 au, e_max=0.03, SW50 reference, material M1 [4.1 Stellar wind strength: "having the full width $\Delta r_\mathrm{PB}=5$ au. In all three runs, the maximum eccentricity of the planetesimals was set to $e_\text{max}=0.03$"]
+  - assumption: Inclination 89.5 deg; Mie spheres; wind speed 400 km/s; stellar mass 0.5 Msun [4.1 Stellar wind strength: "we assumed a disc inclination of 89.5$^\circ$ from face-on (cite: Krist2005)"]
+  - fitting: Not fitted; chi2_SED/N used for comparison only [4.1.1 Impact on thermal emission: "We stress that the models are not fitted to the data through variations of the initial disc parameters."]
+  - validation: Compare to SED, ALMA profile, scattered light and polarisation [Resolved outer disc: "First, we seek to explain the available observational data on the resolved outer AU Mic disc, including the SED, the ALMA radial brightness profile, and scattered light measurements."]
+- result: Max fraction of central emission from inner dust ring = 60 ± not stated % [7 Conclusions: "emits at most 60% of the observed central emission"]
+- limitation (authors): Axisymmetric discs only; models not unique [7 Conclusions: "All the models presented here are not unique as a full exploration of the parameter space by collisional modelling is impossible."]
+- not stated (card): CASA version, imaging task and weighting for the re-reduction; Calibration/flagging details and flux calibrator; Number of ACE grid points and size range of the grid; Fitting range and details of SAnD chi2 (error handling); Scaling factors applied to ALMA profile per model
+
+### 2020NatAs...4.1064H: Ubiquitous velocity fluctuations throughout the molecular interstellar medium (2020; milky_way_ism, nearby_galaxies, star_formation; archival_reuse)
+- question: Gas flows across spatial scale and galactic environment, and their coupling to density structure.
+- step 10: Compare periodic structure with gravitational fragmentation
+  - method: Compare characteristic spacings with deconvolved diameters; infer filament central density and instability growth timescale from observed spacing. [Analysis of filamentary structures: "The characteristic wavelengths derived above are therefore of the order $3$, $5$, and $3$ times the diameter of their parent structures, respectively."] [Origins of the periodic density fluctua…: "what would be the expected central density of a filament required to produce our observed periodic spacing of $0.32$ pc?"]
+  - parameter: GMC filament spacing 0.32 pc; sound speed 0.27 km s−1; temperature 20 K. [Origins of the periodic density fluctua…: "our observed periodic spacing of $0.32$ pc"] [Origins of the periodic density fluctua…: "If we assume a sound speed of $0.27$ ${\rm km}~{\rm s}^{-1}$ (relevant for cold molecular gas at a temperature of 20 K)"]
+  - assumption: Gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium; magnetic fields and shear omitted from the simple model. [Origins of the periodic density fluctua…: "The simplistic model outlined above, which describes the gravitational fragmentation of an isolated cylindrical filament in hydrostatic equilibrium, does not capture the important effects of shear and magnetic fields."]
+  - validation: Derived central density agrees with literature core and filament densities; replacing sound speed with measured dispersion changes density by <30%. [Origins of the periodic density fluctua…: "using our mean measured velocity dispersion of $\sim0.3$ ${\rm km}~{\rm s}^{-1}$ changes the central density by $<30\%$"] [Origins of the periodic density fluctua…: "This density is consistent with the estimated number density of star-forming cores within the cloud(cite: henshaw16b) and with the density of other high-mass filaments observed with similar spatial resolution(cite: peretto13; hacar17)."]
+- result: Density spacing / parent diameter, spiral arm, CMZ stream, GMC filament = 3, 5, 3 ± not stated dimensionless [Analysis of filamentary structures: "The characteristic wavelengths derived above are therefore of the order $3$, $5$, and $3$ times the diameter of their parent structures, respectively."]
+- result: GMC filament central density inferred from fragmentation model = 10^5 ± not stated cm−3 [Origins of the periodic density fluctua…: "we derive a central density and growth timescale of $10^{5}$ cm$^{-3}$ and 0.15 Myr, respectively"]
+- result: GMC filament instability growth timescale = 0.15 ± not stated Myr [Origins of the periodic density fluctua…: "we derive a central density and growth timescale of $10^{5}$ cm$^{-3}$ and 0.15 Myr, respectively"]
+- limitation (authors): Observational density and velocity estimators can alter inferred structure functions. [Structure functions and their applicati…: "since the velocity centroid is an emission weighted estimate of the velocity field, features in the structure function may be altered by the interaction between the velocity and the density fields."]
+- limitation (authors): Mock-field tests lack physical excitation and optical-depth treatment. [2-D models: "We note that these are simple mock data models without underlying physical basis and no treatment of excitation conditions or optical depth effects."]
+- limitation (authors): Randomly generated periodicity does not establish a physical origin. [1-D models: "If periodicity exists within data, even if it is generated randomly, it will be seen as an oscillation in the structure function."]
+- not stated (card): ALMA calibration software and pipeline versions, calibrators and flux-scale uncertainties.; Imaging weighting/robust, pixel scales, image dimensions, masks, stopping thresholds and multiscale scales for both ALMA data sets.; Detailed MALT90/ALMA combination procedure and relative flux scaling for G0.253+0.016.; Exact final cube versions and filenames, including the NGC 4321 mosaics.; ScousePy tol…
+
+### 2021PSJ.....2..125S: Asteroid 16 Psyche: Shape, Features, and Global Map (2021; solar_system; multi_facility_alma_minor)
+- question: What are the refined 3D shape, dimensions, spin state, topographic features, and surface radar/optical albedo correlations of asteroid 16 Psyche, and what do they imply for its formation and composition?
+- step 4: Compute disk-integrated radar albedos, polarization ratios, and map surface features
+  - method: Measure OC and SC echo power from 30 calibrated CW radar observations (2005, 2015, 2017), divide OC radar cross-section by the projected area of the shape model at each observation epoch to obtain OC radar albedo, and overlay onto the VLT … [4. RADAR PROPERTIES: "To calculate this, we divide the OC radar cross-section by the projected area of the asteroid at the time of its observation."] [4. RADAR PROPERTIES: "To calculate this, we divide the OC radar cross-section by the projected area of the asteroid at the time of its observation."]
+  - parameter: CW radar echoes smoothed to effective resolution of 100 Hz; 37 minutes integration per run in 2017 [Figure 2 caption: "The data have been smoothed to an effective resolution of 100 Hz. The solid line is the OC radar echo; the dashed line is the SC echo. Each run integrates 37 minutes of echo reception."]
+  - assumption: OC radar cross-section uncertainty is +/-25% and shape model projected area uncertainty is +/-3% [Table 2: "σOC is the OC radar cross-section; uncertainties are conservatively estimated to be ±25% based on historic calibration and pointing uncertainties."] [Table 2: "Area is the projected area of the shape model visible at the time of each run (±3%)."]
+  - validation: Reproducibility of high radar albedo and bifurcated echoes across multiple separate observation dates covering the same geographic regions. [4. RADAR PROPERTIES: "As with Golf and Hotel, all the echoes were seen on different dates but fall in the same geographic region, i.e., the behavior is reproducible and is evidence that there is something unusual here."]
+- result: Overall mean OC radar albedo = 0.34 ± 0.08 dimensionless [abstract: "Using 30 calibrated radar echoes, we find Psyche’s overall radar albedo to be 0.34 ± 0.08 suggesting that the upper meter of regolith has a significant metal (i.e., Fe-Ni) content."]
+- result: Background OC radar albedo = 0.27 ± 0.03 dimensionless [5.1 Psyche is Not Uniformly Radar Brigh…: "0.27 ± 0.03, similar"]
+- result: Mean circular polarization ratio (2017 observations) = 0.1 ± 0.1 dimensionless [4. RADAR PROPERTIES: "We estimate the mean circular polarization ratio for the 2017 observations to be µc = 0.1 ± 0.1."]
+- limitation (authors): Many subtle depressions in the shape model could be noise artifacts of data processing and inversion. [3. SHAPE AND TOPOGRAPHIC FEATURES: "While there are many subtle depressions evident in our model, it is plausible that some are real, and equally plausible that some are noise artifacts."]
+- limitation (authors): Cross-hatched pattern in the ALMA images is an imaging artifact. [Figure 3 caption: "The cross-hatched pattern visible in the data is an artifact of the imaging process."]
+- limitation (authors): Radar albedo is a whole-disk average (though weighted toward the sub-radar point within ~30-40 degrees), making the spatial map coarse and the correlation with optical albedo tentative. [4. RADAR PROPERTIES: "As a caveat, we note that radar albedo is a whole-disk average; however, the echo will usually be most heavily weighted by the radar properties of features nearest (within ~30°-40°) the sub-radar point."]
+- not stated (card): CASA version and ALMA pipeline version used for reducing the ALMA data; Details of the custom iterative imaging and self-calibration routine (e.g., solution intervals, tclean weighting/robust parameter, masking) which are deferred to de Kleer et al. (2021); Exact penalty function weights used in SHAPE during spherical harmonic and vertex model optimization; Specific functional forms and parameter…
+
+## All papers in this technique
+
+- 2013ApJ...779...96T (2013): The Dynamics of Massive Starless Cores with ALMA
+- 2014A&A...568A..40G (2014): Shadows and cavities in protoplanetary disks: HD 163296, HD 141569A, and HD 150193A in polarized light
+- 2014AJ....147..141H (2014): ALMA View of G0.253+0.016: Can Cloud-Cloud Collision form the Cloud?
+- 2014ApJ...783L..13P (2014): Large-scale Asymmetries in the Transitional Disks of SAO 206462 and SR 21
+- 2014ApJ...788L..34P (2014): Resolved Images of the Protoplanetary Disk around HD 100546 with ALMA
+- 2014ApJ...791..108F (2014): Distributed Low-mass Star Formation in the IRDC G34.43+00.24
+- 2015A&A...581A..97S (2015): Collisional modelling of the AU Microscopii debris disc
+- 2015A&A...584A..16P (2015): Testing particle trapping in transition disks with ALMA
+- 2015ApJ...804..141Z (2015): Fragmentation of Molecular Clumps and Formation of a Protocluster
+- 2015ApJ...812...27A (2015): ALMA Observations of the Transition from Infall Motion to Keplerian Rotation around the Late-phase Protostar TMC-1A
+- 2015ApJ...812..129Y (2015): No Keplerian Disk &gt;10 AU Around the Protostar B335: Magnetic Braking or Young Age?
+- 2015Sci...348..311M (2015): A strong magnetic field in the jet base of a supermassive black hole
+- 2016A&A...593A..44L (2016): The 492 GHz emission of Sgr A* constrained by ALMA
+- 2016A&A...593A..61M (2016): Dual differential polarimetry. A technique to recover polarimetric information from dual-polarization observations
+- 2016A&A...593A.107L (2016): Linearly polarized millimeter and submillimeter continuum emission of Sgr A* constrained by ALMA
+- 2016A&A...595A.113S (2016): Shadows cast on the transition disk of HD 135344B. Multiwavelength VLT/SPHERE polarimetric differential imaging
+- 2016ApJ...820...54K (2016): Grain Size Constraints on HL Tau with Polarization Signature
+- 2016ApJ...824..132N (2016): ALMA Science Verification Data: Millimeter Continuum Polarimetry of the Bright Radio Quasar 3C 286
+- 2016ApJ...825L..15C (2016): Interferometric Mapping of Magnetic Fields: The ALMA View of the Massive Star-forming Clump W43-MM1
+- 2016ApJ...827..142B (2016): ALMA Observations of Circumstellar Disks in the Upper Scorpius OB Association
+- 2016ApJ...829L..23B (2016): ALMA-SZ Detection of a Galaxy Cluster Merger Shock at Half the Age of the Universe
+- 2016ApJ...831L..12K (2016): Submillimeter Polarization Observation of the Protoplanetary Disk around HD 142527
+- 2016ApJ...832..143F (2016): The Link between Turbulence, Magnetic Fields, Filaments, and Star Formation in the Central Molecular Zone Cloud G0.253+0.016
+- 2016ApJ...833..209O (2016): Dense Core Properties in the Infrared Dark Cloud G14.225-0.506 Revealed by ALMA
+- 2016Natur.537..207G (2016): Compression and ablation of the photo-irradiated molecular cloud the Orion Bar
+- 2017A&A...599A.127F (2017): Radio emission and mass loss rate limits of four young solar-type stars
+- 2017A&A...603A..92V (2017): Magnetically aligned dust and SiO maser polarisation in the envelope of the red supergiant VY Canis Majoris
+- 2017AJ....153....7Y (2017): Near-infrared Imaging Polarimetry of Inner Region of GG Tau A Disk
+- 2017ApJ...842L...9H (2017): Unveiling the Role of the Magnetic Field at the Smallest Scales of Star Formation
+- 2017ApJ...844L...5K (2017): The Evidence of Radio Polarization Induced by the Radiative Grain Alignment and Self-scattering of Dust Grains in a Protoplanetary Disk
+- 2017ApJ...847...92H (2017): ALMA Observations of Dust Polarization and Molecular Line Emission from the Class 0 Protostellar Source Serpens SMM1
+- 2017ApJ...849...95B (2017): Fermi Non-detections of Four X-Ray Jet Sources and Implications for the IC/CMB Mechanism
+- 2017ApJ...851...55S (2017): ALMA Reveals Transition of Polarization Pattern with Wavelength in HL Tau’s Disk
+- 2017MNRAS.464L..31H (2017): Unveiling the early-stage anatomy of a protocluster hub with ALMA
+- 2017MNRAS.469L.123O (2017): ALMA polarization observations of the particle accelerators in the hotspot of the radio galaxy 3C 445
+- 2017SoPh..292...87S (2017): Observing the Sun with the Atacama Large Millimeter/submillimeter Array (ALMA): High-Resolution Interferometric Imaging
+- 2018A&A...614A..64B (2018): Magnetic fields at the onset of high-mass star formation
+- 2018A&A...616A..56A (2018): Magnetic field in a young circumbinary disk
+- 2018A&A...619A.161C (2018): Evidence for a massive dust-trapping vortex connected to spirals. Multi-wavelength analysis of the HD 135344B protoplanetary disk
+- 2018A&A...620A..75K (2018): High-resolution observations of gas and dust around Mira using ALMA and SPHERE/ZIMPOL
+- 2018ApJ...854...56L (2018): ALMA Dust Polarization Observations of Two Young Edge-on Protostellar Disks
+- 2018ApJ...854..170H (2018): The Extraordinary Outburst in the Massive Protostellar System NGC 6334I-MM1: Emergence of Strong 6.7 GHz Methanol Masers
+- 2018ApJ...855...39K (2018): Polarization Properties and Magnetic Field Structures in the High-mass Star-forming Region W51 Observed with ALMA
+- 2018ApJ...855...92C (2018): ALMA’s Polarized View of 10 Protostars in the Perseus Molecular Cloud
+- 2018ApJ...855L...2M (2018): Detection of a Millimeter Flare from Proxima Centauri
+- 2018ApJ...856L..27G (2018): Resolving the Polarized Dust Emission of the Disk around the Massive Star Powering the HH 80-81 Radio Jet
+- 2018ApJ...858...85P (2018): Forecasting the Contribution of Polarized Extragalactic Radio Sources in CMB Observations
+- 2018ApJ...859..165S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. I. VLA 1623
+- 2018ApJ...860...82H (2018): ALMA Observations of Polarization from Dust Scattering in the IM Lup Protoplanetary Disk
+- 2018ApJ...861...91H (2018): ALMA Observations of Polarized 872 μm Dust Emission from the Protostellar Systems VLA 1623 and L1527
+- 2018ApJ...864...81O (2018): Two Different Grain Size Distributions within the Protoplanetary Disk around HD 142527 Revealed by ALMA Polarization Observation
+- 2018ApJ...865...13T (2018): A Galaxy-scale Fountain of Cold Molecular Gas Pumped by a Black Hole
+- 2018ApJ...865L..12B (2018): ALMA Observations of Polarized Emission toward the CW Tau and DG Tau Protoplanetary Disks: Constraints on Dust Grain Growth and Settling
+- 2018ApJ...866...87B (2018): The Extraordinary Outburst in the Massive Protostellar System NGC 6334I-MM1: Flaring of the Water Masers in a North-South Bipolar Outflow D…
+- 2018ApJ...868..101B (2018): ALMA Polarimetry of Sgr A*: Probing the Accretion Flow from the Event Horizon to the Bondi Radius
+- 2018ApJ...869..115S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. II. IRAS 16293-2422
+- 2018ApJ...869L..47Z (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). VII. The Planet-Disk Interactions Interpretation
+- 2018MNRAS.473..317H (2018): Radiation-pressure-driven sub-Keplerian rotation of the disc around the AGB star L<SUB>2</SUB> Pup
+- 2018MNRAS.474.5105B (2018): HD 169142 in the eyes of ZIMPOL/SPHERE
+- 2018MNRAS.475.3004S (2018): ALMA observation of the disruption of molecular gas in M87
+- 2018MNRAS.476..562L (2018): A combined multiwavelength VLA/ALMA/Chandra study unveils the complex magnetosphere of the B-type star HR5907
+- 2018MNRAS.477.2760M (2018): Magnetically regulated collapse in the B335 protostar? I. ALMA observations of the polarized dust emission
+- 2018MNRAS.477.4380S (2018): Testing star formation laws in a starburst galaxy at redshift 3 resolved with ALMA
+- 2018NatCo...9.4636L (2018): Unveiling a magnetized jet from a low-mass protostar
+- 2019A&A...621A..18M (2019): Submillimeter polarization and variability of quasar PKS 1830-211
+- 2019A&A...622A..99L (2019): Lack of high-mass pre-stellar cores in the starless MDCs of NGC 6334
+- 2019A&A...622A.196K (2019): Spatially resolved origin of millimeter-wave linear polarization in the nuclear region of 3C 84
+- 2019A&A...623A.111H (2019): Magnetic field at a jet base: extreme Faraday rotation in 3C 273 revealed by ALMA
+- 2019A&A...624A...7V (2019): Spatial segregation of dust grains in transition disks. SPHERE observations of 2MASS J16083070-3828268 and RXJ1852.3-3700
+- 2019A&A...624L...7V (2019): Stringent limits on the magnetic field strength in the disc of TW Hya. ALMA observations of CN polarisation
+- 2019A&A...626A..36D (2019): ALMA reveals the magnetic field evolution in the high-mass star forming complex G9.62+0.19
+- 2019A&A...630A..54B (2019): ALMA resolves the hourglass magnetic field in G31.41+0.31
+- 2019ApJ...871..243Y (2019): JCMT POL-2 and ALMA Polarimetric Observations of 6000-100 au Scales in the Protostar B335: Linking Magnetic Field and Gas Kinematics in Obs…
+- 2019ApJ...872...70T (2019): ALMA High Angular Resolution Polarization Study: An Extremely Young Class 0 Source, OMC-3/MMS 6
+- 2019ApJ...872..121U (2019): Molecular Cloud Cores in the Galactic Center 50 km s<SUP>-1</SUP> Molecular Cloud
+- 2019ApJ...875L...3E (2019): First M87 Event Horizon Telescope Results. III. Data Processing and Calibration
+- 2019ApJ...877L...2H (2019): Dust Polarization in Four Protoplanetary Disks at 3 mm: Further Evidence of Multiple Origins
+- 2019ApJ...878...73Y (2019): ALMA 26 arcmin<SUP>2</SUP> Survey of GOODS-S at 1 mm (ASAGAO): Near-infrared-dark Faint ALMA Sources
+- 2019ApJ...878L..25H (2019): ALMA Polarimetry of AT2018cow
+- 2019ApJ...878L..26L (2019): ALMA Detection of a Linearly Polarized Reverse Shock in GRB 190114C
+- 2019ApJ...879...25K (2019): Highly Ordered and Pinched Magnetic Fields in the Class 0 Protobinary System L1448 IRS 2
+- 2019ApJ...879..101L (2019): A Pseudodisk Threaded with a Toroidal and Pinched Poloidal Magnetic Field Morphology in the HH 211 Protostellar System
+- 2019ApJ...882...23B (2019): EHT-HOPS Pipeline for Millimeter VLBI Data Reduction
+- 2019ApJ...883...16M (2019): An Observational Study for Grain Dynamics in the AS 209 Disk with Submillimeter Polarization
+- 2019ApJ...884...48C (2019): The Seven Most Massive Clumps in W43-Main as Seen by ALMA: Dynamical Equilibrium and Magnetic Fields
+- 2019ApJ...884L..58U (2019): First Detection of Radio Linear Polarization in a Gamma-Ray Burst Afterglow
+- 2019ApJ...885..106L (2019): Characterizing Magnetic Field Morphologies in Three Serpens Protostellar Cores with ALMA
+- 2019ApJ...885L..10L (2019): Detection of Pulses from the Vela Pulsar at Millimeter Wavelengths with Phased ALMA
+- 2019ApJ...886..103O (2019): Radial Variations in Grain Sizes and Dust Scale Heights in the Protoplanetary Disk around HD 163296 Revealed by ALMA Polarization Observati…
+- 2019ApJ...886L...4Z (2019): Discovery of a Photoionized Bipolar Outflow toward the Massive Protostar G45.47+0.05
+- 2019ApJS..245....2S (2019): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. III. Survey Overview
+- 2019MNRAS.482L..29D (2019): Submillimetre dust polarization and opacity in the HD163296 protoplanetary ring system
+- 2019MNRAS.483.2371Y (2019): Does HL Tau disc polarization in ALMA band 3 come from radiatively aligned grains?
+- 2019MNRAS.486..283B (2019): Young massive star cluster formation in the Galactic Centre is driven by global gravitational collapse of high-mass molecular clouds
+- 2019MNRAS.487.4305S (2019): Testing star formation laws on spatially resolved regions in a z ≈ 4.3 starburst galaxy
+- 2019MNRAS.489..470G (2019): ALMA Band 3 polarimetric follow-up of a complete sample of faint PACO sources
+- 2019MNRAS.490.5300D (2019): Investigating the multiwavelength behaviour of the flat spectrum radio quasar CTA 102 during 2013-2017
+- 2019NatAs...3.1109P (2019): Kinematic detection of a planet carving a gap in a protoplanetary disk
+- 2019PASJ...71L...3F (2019): First detection of PSR B1259-63/LS 2883 in the millimeter and submillimeter wavelengths with ALMA
+- 2019PASP..131g5003G (2019): Calibration of ALMA as a Phased Array. ALMA Observations During the 2017 VLBI Campaign
+- 2020A&A...634L..15G (2020): Polarized emission by aligned grains in the Mie regime: Application to protoplanetary disks observed by ALMA
+- 2020A&A...636A..62K (2020): Investigating the connection between γ-ray activity and the relativistic jet in 3C 273 during 2015-2019
+- 2020A&A...637A...7M (2020): Detection of deuterated molecules, but not of lithium hydride, in the z = 0.89 absorber toward PKS 1830-211
+- 2020A&A...638L..13M (2020): ALMA full polarization observations of PKS 1830-211 during its record-breaking flare of 2019
+- 2020A&A...638L..14C (2020): The atomic gas of star-forming galaxies at z ∼ 0.05 as revealed by the Five-hundred-meter Aperture Spherical Radio Telescope
+- 2020A&A...640A.111A (2020): Outflows, cores, and magnetic field orientations in W43-MM1 as seen by ALMA
+- 2020A&A...642A..93H (2020): A detailed view on the circumstellar environment of the M-type AGB star EP Aquarii. I. High-resolution ALMA and SPHERE observations
+- 2020A&A...644A..11L (2020): A statistical analysis of dust polarization properties in ALMA observations of Class 0 protostellar cores
+- 2020A&A...644A.152E (2020): The Sun at millimeter wavelengths. II. Small-scale dynamic events in ALMA Band 3
+- 2020ApJ...889..172K (2020): Resolving Linear Polarization due to Emission and Extinction of Aligned Dust Grains on NGC 1333 IRAS4A with JVLA and ALMA
+- 2020ApJ...890...44B (2020): ALMA Observations Reveal No Preferred Outflow-filament and Outflow-magnetic Field Orientations in Protoclusters
+- 2020ApJ...891...80M (2020): Properties of M Dwarf Flares at Millimeter Wavelengths
+- 2020ApJ...891..113R (2020): Effect of Feedback of Massive Stars in the Fragmentation, Distribution, and Kinematics of the Gas in Two Star-forming Regions in the Carina…
+- 2020ApJ...892..152H (2020): Understanding the Origin of the Magnetic Field Morphology in the Wide-binary Protostellar System BHR 71
+- 2020ApJ...893...33L (2020): ALMA Polarimetry Measures Magnetically Aligned Dust Grains in the Torus of NGC 1068
+- 2020ApJ...893...54Y (2020): Transition from Ordered Pinched to Warped Magnetic Field on a 100 au Scale in the Class 0 Protostar B335
+- 2020ApJ...895...64L (2020): Radio Linear Polarization of GRB Afterglows: Instrumental Systematics in ALMA Observations of GRB 171205A
+- 2020ApJ...895..142L (2020): Magnetic Fields in the Early Stages of Massive Star Formation as Revealed by ALMA
+- 2020ApJ...895L..46L (2020): Hints of a Population of Solar System Analog Planets from ALMA
+- 2020ApJ...896..157H (2020): Magnetic Field Structure of Orion Source I
+- 2020ApJ...899...55A (2020): Search for Alignment of Disk Orientations in Nearby Star-forming Regions: Lupus, Taurus, Upper Scorpius, ρ Ophiuchi, and Orion
+- 2020ApJ...899..152H (2020): Mapping Circumstellar Magnetic Fields of Late-type Evolved Stars with the Goldreich-Kylafis Effect: CARMA Observations at λ1.3 mm of R Crt …
+- 2020ApJ...900...81O (2020): Solving Grain Size Inconsistency between ALMA Polarization and VLA Continuum in the Ophiuchus IRS 48 Protoplanetary Disk
+- 2020ApJ...901...67W (2020): Monitoring the Morphology of M87* in 2009-2017 with the Event Horizon Telescope
+- 2020ApJ...901...71S (2020): Low-level Carbon Monoxide Line Polarization in Two Protoplanetary Disks: HD 142527 and IM Lup
+- 2020ApJ...904..168B (2020): Gravity and Rotation Drag the Magnetic Field in High-mass Star Formation
+- 2020ApJ...904..181L (2020): ALMA View of the Infalling Envelope around a Massive Protostar in S255IR SMA1
+- 2020ApJ...904L..24S (2020): ALMA CO Observations of the Gamma-Ray Supernova Remnant RX J1713.7-3946: Discovery of Shocked Molecular Cloudlets and Filaments at 0.01 pc …
+- 2020MNRAS.492.1531M (2020): NaCo polarimetric observations of Sz 91 transitional disc: a remarkable case of dust filtering
+- 2020MNRAS.493.5045M (2020): Properties of giant molecular clouds in the strongly barred galaxy NGC 1300
+- 2020MNRAS.495.4297S (2020): ALMA reveals the coherence of the magnetic field geometry in OH 231.8+4.2
+- 2020MNRAS.496..169L (2020): Validating scattering-induced (sub)millimetre disc polarization through the spectral index, wavelength-dependent polarization pattern, and …
+- 2020MNRAS.498.1560J (2020): High molecular gas content and star formation rates in local galaxies that host quasars, outflows, and jets
+- 2020MNRAS.498.4256C (2020): The observational impact of dust trapping in self-gravitating discs
+- 2020MNRAS.499.2015T (2020): Planet migration, resonant locking, and accretion streams in PDS 70: comparing models and data
+- 2020MNRAS.499.3909Y (2020): Evidence for a jet and outflow from Sgr A*: a continuum and spectral line study
+- 2020MNRAS.499.5915M (2020): Polarimetric and radiative transfer modelling of HD 172555
+- 2020NatAs...4.1064H (2020): Ubiquitous velocity fluctuations throughout the molecular interstellar medium
+- 2020PASP..132i4501H (2020): Characterizing the Accuracy of ALMA Linear-polarization Mosaics
+- 2021A&A...646A..25Z (2021): H II regions and high-mass starless clump candidates. II. Fragmentation and induced star formation at 0.025 pc scale: an ALMA continuum stu…
+- 2021A&A...647A.173K (2021): ALMA/NICER observations of GRS 1915+105 indicate a return to a hard state
+- 2021A&A...650A.202R (2021): Identification of pre-stellar cores in high-mass star forming clumps via H<SUB>2</SUB>D<SUP>+</SUP> observations with ALMA
+- 2021A&A...651A..35O (2021): Heavy-element Rydberg transition line emission from the post-giant-evolution star HD 101584
+- 2021AJ....161...33V (2021): On the Diversity of Asymmetries in Gapped Protoplanetary Disks
+- 2021AJ....161..238W (2021): The Anatomy of an Unusual Edge-on Protoplanetary Disk. I. Dust Settling in a Cold Disk
+- 2021AJ....162...99F (2021): The Chemical Inventory of the Planet-hosting Disk PDS 70
+- 2021ApJ...907...94C (2021): The Explosion in Orion-KL as Seen by Mosaicking the Magnetic Field with ALMA
+- 2021ApJ...907L..41L (2021): First Detection of Interaction between a Magnetic Disk Wind and an Episodic Jet in a Protostellar System
+- 2021ApJ...908...92H (2021): Rotating Filament in Orion B: Do Cores Inherit Their Angular Momentum from Their Parent Filament?
+- 2021ApJ...908..141H (2021): ALMA CN Zeeman Observations of AS 209: Limits on Magnetic Field Strength and Magnetically Driven Accretion Rate
+- 2021ApJ...908..153M (2021): Modeling of the ALMA HL Tau Polarization by Mixture of Grain Alignment and Self-scattering
+- 2021ApJ...909..212K (2021): ALMA Observation of the Protoplanetary Disk around WW Cha: Faint Double-peaked Ring and Asymmetric Structure
+- 2021ApJ...910...21R (2021): A Broadband View on Microquasar MAXI J1820+070 during the 2018 Outburst
+- 2021ApJ...910...75L (2021): What Produces Dust Polarization in the HH 212 Protostellar Disk at 878 μm: Dust Self-scattering or Dichroic Extinction?
+- 2021ApJ...910...77M (2021): The Subterahertz Solar Cycle: Polar and Equatorial Radii Derived from SST and ALMA
+- 2021ApJ...915...99I (2021): Persistent Non-Gaussian Structure in the Image of Sagittarius A* at 86 GHz
+- 2021ApJ...916...97Y (2021): No Impact of Core-scale Magnetic Field, Turbulence, or Velocity Gradient on Sizes of Protostellar Disks in Orion A
+- 2021ApJ...917...73W (2021): Rapid Variability of Sgr A* across the Electromagnetic Spectrum
+- 2021ApJ...923..251H (2021): Second-epoch ALMA Observations of 321 GHz Water Maser Emission in NGC 4945 and the Circinus Galaxy
+- 2021Galax...9..115D (2021): Multi-Wavelength Study of a Proto-BCG at z = 1.7
+- 2021MNRAS.503.3414P (2021): OMC-1 dust polarization in ALMA Band 7: diagnosing grain alignment mechanisms in the vicinity of Orion Source I
+- 2021MNRAS.504.4511P (2021): ALMA <SUP>13</SUP>CO(J = 1-0) observations of NGC 604 in M33: physical properties of molecular clouds
+- 2021MNRAS.508...44M (2021): ALMA and NOEMA constraints on synchrotron nebular emission from embryonic superluminous supernova remnants and radio-gamma-ray connection
+- 2021PASJ...73..205T (2021): ALMA view of the Galactic super star cluster RCW 38 at 270 au resolution
+- 2021PSJ.....2..125S (2021): Asteroid 16 Psyche: Shape, Features, and Global Map
+- 2022A&A...668A..25V (2022): Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): Scattered light detection of a possible disk wind in RY Tau
+- 2022ApJ...939L...6B (2022): First Millimeter Flares Detected from ϵ Eridani with the Atacama Large Millimeter/submillimeter Array
+- 2022FrASS...9.1118D (2022): A Genetic Algorithm to Model Solar Radio Active Regions From 3D Magnetic Field Extrapolations
+- 2022MNRAS.512.2337D (2022): The early afterglow of GRB 190829A
+- 2023A&A...669A..56Q (2023): History of two mass loss processes in VY CMa. Fast outflows carving older ejecta
+- 2023A&A...672A..67A (2023): Robust analysis of differential Faraday rotation based on interferometric closure observables
+- 2023A&A...673A.116K (2023): Exploring the environment, magnetic fields, and feedback effects of massive high-redshift galaxies with [C II]
+- 2023A&A...674A.101M (2023): Cosmo-tomography toward PKS 1830‒211: Variability of the quasar and of its foreground molecular absorption monitored with ALMA
+- 2023A&A...677A..30B (2023): Matter ejections behind the highs and lows of the transitional millisecond pulsar PSR J1023+0038
+- 2023A&A...677A..76P (2023): Constraining the gas distribution in the PDS 70 disc as a method to assess the effect of planet-disc interactions
+- 2023ApJ...948..134P (2023): 183 GHz Water Megamasers in Active Galactic Nuclei: A New Accretion Disk Tracer
+- 2023ApJ...948L...2Y (2023): Eccentric Dust Ring in the IRS 48 Transition Disk
+- 2023ApJ...953..113L (2023): The Magnetic Fields of Starburst Galaxies. I. Identification and Characterization of the Thermal Polarization in the Galactic Disk and Outf…
+- 2023MNRAS.518.3222B (2023): A multiwavelength study of multiple spectral component jets in AGN: testing the IC/CMB model for the large-scale-jet X-ray emission
+- 2023MNRAS.522...56V (2023): A systematic survey of millimetre-wavelength flaring variability of young stellar objects in the Orion Nebula Cluster
+- 2023MNRAS.522.6123Z (2023): Revisiting the Dragonfly galaxy - I. High-resolution ALMA and VLA observations of the radio hotspots in a hyper-luminous infrared galaxy at…
+- 2023MNRAS.523.5703J (2023): Double SSA spectrum and magnetic field strength of the FSRQ 3C 454.3
+- 2023MNRAS.526.2077A (2023): Radio-continuum decrements associated to shadowing from the central warp in transition disc DoAr 44
+- 2023NatAs...7...80U (2023): Simultaneous radio and optical polarimetry of GRB 191221B afterglow
+- 2023Natur.617..261K (2023): Compact [C II] emitters around a C IV absorption complex at redshift 5.7
+- 2023Natur.617..696V (2023): Atmospheric molecular blobs shape up circumstellar envelopes of AGB stars
+- 2023Natur.621..483G (2023): Polarized thermal emission from dust in a galaxy at redshift 2.6
+- 2023Natur.623..705S (2023): Aligned grains and scattered light found in gaps of planet-forming disk
+- 2023PASJ...75..120F (2023): Twisted magnetic field in star formation processes of L1521 F revealed by submillimeter dual-band polarimetry using the James Clerk Maxwell…
+- 2023PASJ...75..874M (2023): The centimeter-to-submillimeter broad-band radio spectrum of the central compact component in a nearby type-II Seyfert galaxy NGC 1068
+- 2023PASP..135b5002C (2023): A Characterization of the ALMA Phasing System at 345 GHz
+- 2024A&A...682A..56Z (2024): Exploring the dust grain size and polarization mechanism in the hot and massive Class 0 disk IRAS 16293-2422 B
+- 2024A&A...682A..97W (2024): The internal Faraday screen of Sagittarius A*
+- 2024A&A...682L...3P (2024): Ordered magnetic fields around the 3C 84 central black hole
+- 2024A&A...685A..52G (2024): The SPHERE view of the Chamaeleon I star-forming region. The full census of planet-forming disks with GTO and DESTINYS programs
+- 2024A&A...685A..53G (2024): The SPHERE view of the Taurus star-forming region. The full census of planet-forming disks with GTO and DESTINYS programs
+- 2024A&A...685A.142Y (2024): Fitting the light curves of Sagittarius A* with a hot-spot model. Bayesian modeling of QU loops in the millimeter band
+- 2024A&A...686A.274V (2024): Molecular line polarisation from the circumstellar envelopes of asymptotic giant branch stars
+- 2024A&A...686A.281B (2024): Self-similarity of the magnetic field at different scales: The case of G31.41+0.31
+- 2024A&A...687A.311A (2024): V892 Tau: A tidally perturbed circumbinary disc in a triple stellar system
+- 2024A&A...688A.149D (2024): Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): PDS 111, an old T Tauri star with a young-looking disk
+- 2024A&A...689A.299M (2024): Prospects of directly using closure traces for imaging in very long baseline interferometry
+- 2024A&A...690A.232S (2024): Joint ALMA/X-ray monitoring of the radio-quiet type 1 active galactic nucleus IC 4329A
+- 2024A&A...691L..14O (2024): Contemporaneous high-angular-resolution imaging of the AGB star W Hya in vibrationally excited H<SUB>2</SUB>O lines and visible polarized l…
+- 2024A&A...692A..34C (2024): A kiloparsec-scale ordered magnetic field in a galaxy at z = 5.6
+- 2024A&A...692A.146B (2024): Does the HCN/CO ratio trace the star-forming fraction of gas?: II. Variations in CO and HCN emissivity
+- 2024A&A...692A.205B (2024): The putative center in NGC 1052
+- 2024AJ....167..232T (2024): Sites of Planet Formation in Binary Systems. I. Evidence for Disk−Orbit Alignment in the Close Binary FO Tau
+- 2024AJ....168..130R (2024): First Very Long Baseline Interferometry Detections at 870 μm
+- 2024AJ....168..142L (2024): Gemini Planet Imager Observations of a Resolved Low-inclination Debris Disk around HD 156623
+- 2024AN....34530149M (2024): Calculated brightness temperatures of solar structures compared with ALMA and Metsähovi measurements
+- 2024Ap&SS.369...18M (2024): Multi-wavelength observation of MAXI J1348─630 during the outburst in 2019
+- 2024ApJ...960L..14R (2024): A Radio Counterpart to a Jupiter-mass Binary Object in Orion
+- 2024ApJ...961....4B (2024): Protostellar Cores in Sagittarius B2 N and M
+- 2024ApJ...961L..35M (2024): The ALMA-QUARKS Survey: Detection of Two Extremely Dense Substructures in a Massive Prestellar Core
+- 2024ApJ...962..196O (2024): Radio Jet Feedback on the Inner Disk of Virgo Spiral Galaxy Messier 58
+- 2024ApJ...963..134Y (2024): Turbulent Vortex with Moderate Dust Settling Probed by Scattering-induced Polarization in the IRS 48 System
+- 2024ApJ...963L..31H (2024): On the Magnetic Field Properties of Protostellar Envelopes in Orion
+- 2024ApJ...964...12F (2024): ALMA-LEGUS. I. The Influence of Galaxy Morphology on Molecular Cloud Properties
+- 2024ApJ...965...99T (2024): Discovery of Asymmetric Spike-like Structures of the 10 au Disk around the Very Low-luminosity Protostar Embedded in the Taurus Dense Core …
+- 2024ApJ...966..120L (2024): Dark Dragon Breaks Magnetic Chain: Dynamical Substructures of IRDC G28.34 Form in Supported Environments
+- 2024ApJ...967...18Z (2024): Magnetic Field of Molecular Gas Measured with the Velocity Gradient Technique. II. Curved Magnetic Field in kpc-scale Bubble of NGC 628
+- 2024ApJ...968...97L (2024): The CO-to-H<SUB>2</SUB> Conversion Factor in the Barred Spiral Galaxy M83
+- 2024ApJ...968..101E (2024): Magnetic Fields Observed along the East─West Outflow of IRAS 16293-2422
+- 2024ApJ...970...56P (2024): Radio Emission from the Magnetically Active M Dwarf UV Ceti from 1 to 105 GHz
+- 2024ApJ...970..114T (2024): Evidence of Grain Alignment by Magnetically Enhanced Radiative Torques from Multiwavelength Dust Polarization Modeling of HL Tau
+- 2024ApJ...970L..40S (2024): Direct Observational Evidence of Multi-epoch Massive Star Formation in G24.47+0.49
+- 2024ApJ...971..129C (2024): A Dust-trapping Ring in the Planet-hosting Disk of Elias 2-24
+- 2024ApJ...971L..23L (2024): Polarization Substructure in the Spiral-dominated HH 111 Disk: Evidence for Grain Growth
+- 2024ApJ...972...74M (2024): Observations of Low and Intermediate Spectral Peak Blazars with the Imaging X-Ray Polarimetry Explorer
+- 2024ApJ...972..115C (2024): MagMaR III—Resisting the Pressure, Is the Magnetic Field Overwhelmed in NGC6334I?
+- 2024ApJ...972L...6S (2024): Magnetic Fields in Massive Star-forming Regions (MagMaR): Unveiling an Hourglass Magnetic Field in G333.46─0.16 Using ALMA
+- 2024ApJ...974..257Z (2024): Magnetic Fields in Massive Star-forming Regions (MagMaR). IV. Tracing the Magnetic Fields in the O-type Protostellar System IRAS 16547─4247
+- 2024ApJ...975..103P (2024): The Faraday Rotation Measure of the M87 Jet at 3.5 mm with ALMA
+- 2024ApJ...976..198H (2024): Whole-disk Sampling of Molecular Clouds in M83
+- 2024ApJ...976..201F (2024): Constraining Quasar Feedback from Analysis of the Hydrostatic Equilibrium of the Molecular Gas in Their Host Galaxies
+- 2024ApJ...976..241Y (2024): The ALMA-QUARKS Survey: Fibers' Role in Star Formation Unveiled in an Intermediate-mass Protocluster Region of the Vela D Cloud
+- 2024ApJ...977..121N (2024): Exploring Magnetic Fields in a Merging Galaxy: Comparing Polarization and Velocity Gradient in the Centaurus Galaxy
+- 2024MNRAS.527.1444A (2024): ATCA study of Small Magellanic Cloud supernova remnant 1E 0102.2-7219
+- 2024MNRAS.527.3559P (2024): The debris disc of HD 131488: bringing together thermal emission and scattered light
+- 2024MNRAS.528..843L (2024): Panchromatic (Sub)millimeter polarization observations of HL Tau unveil aligned scattering grains
+- 2024MNRAS.532L..36R (2024): HCN as a probe of the inner disc in a candidate proto-brown dwarf
+- 2024MNRAS.535.1364Z (2024): ATOMS: ALMA three-millimeter observations of massive star-forming regions - XVIII. On the origin and evolution of dense gas fragments in mo…
+- 2024NatAs...8..765L (2024): Orbital polarimetric tomography of a flare near the Sagittarius A<SUP>*</SUP> supermassive black hole
+- 2024NatAs...8.1148U (2024): Support for fragile porous dust in a gravitationally self-regulated disk around IM Lup
+- 2024PASJ...76..960S (2024): Spiral magnetic fields and their role on accretion dynamics in the circumnuclear disk of Sagittarius A*: Insight from λ = 850 μm polarizati…
+- 2024PSJ.....5..230D (2024): Surface Properties of the Kalliope─Linus System from ALMA and VLA Data
+- 2024Univ...10..465X (2024): Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): Dynamical Evidence of a Spiral-Arm-Driving and Gap-Opening Protoplan…
+- 2025A&A...693A.199C (2025): Interaction between the supernova remnant W44 and the infrared dark cloud G034.77-00.55: Shock induced star formation
+- 2025A&A...693A.265E (2025): The persistent shadow of the supermassive black hole of M87: II. Model comparisons and theoretical interpretations
+- 2025A&A...694A.291K (2025): Gamma-ray flares from the jet of the blazar CTA 102 in 2016─2018
+- 2025A&A...695A.149K (2025): Physical conditions around high-mass young star-forming objects via simultaneous observations of excited OH and methanol masers
+- 2025A&A...695A.233R (2025): A multifrequency study of sub-parsec jets with the Event Horizon Telescope
+- 2025A&A...699A..62J (2025): ALMA observation of an evolving magnetized corona in the radio-quiet changing-state active galactic nucleus NGC 1566
+- 2025A&A...699A.265G (2025): First polarization study of the M87 jet and active galactic nuclei at submillimeter wavelengths with ALMA
+- 2025A&A...699A.373F (2025): Inner disc and circumplanetary material in the PDS 70 system: Insights from multi-epoch, multi-frequency ALMA observations
+- 2025A&A...701A..41D (2025): Millimeter emission from supermassive black hole coronae
+- 2025A&A...701A.141L (2025): Sulfur oxides tracing streamers and shocks at low-mass protostellar disk─envelope interfaces
+- 2025A&A...701A.191V (2025): Observing radio transients with Phased ALMA: Pulses from the Galactic Centre magnetar
+- 2025A&A...701A.219N (2025): The Rosetta Stone project: III. ALMA synthetic observations of fragmentation in high-mass star-forming clumps
+- 2025A&A...703A..82S (2025): ALMA 3 mm polarimetry of radio-quiet active galactic nuclei
+- 2025A&A...703A.110S (2025): ALMA discovery of Punctum, a highly polarized millimeter source in the nuclear starburst galaxy NGC 4945
+- 2025A&A...704A..18O (2025): High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB…
+- 2025ApJ...984L..19Y (2025): exoALMA. XIV. Gas Surface Densities in the RX J1604.3−2130 A Disk from Pressure-broadened CO Line Wings
+- 2025ApJ...985..148L (2025): L1448 IRS3B: Dust Polarization Aligned with Spiral Features, Tracing Gas Flows
+- 2025ApJ...985..166K (2025): Early Planet Formation in Embedded Disks (eDisk). XXI. Limited Role of Streamers in Mass Supply to the Disk in the Class 0 Protostar IRAS 1…
+- 2025ApJ...985..222H (2025): The JCMT BISTRO-3 Survey: Variation of Magnetic Field Orientations on Parsec and Subparsec Scales in the Massive Star-forming Region G28.34…
+- 2025ApJ...985..226W (2025): A Multiwavelength Study of the Dynamic Environment Surrounding the FUor V960 Mon
+- 2025ApJ...986..150H (2025): Origin of the Shell Structure in the Primary Outflow from IRAS 15398−3359
+- 2025ApJ...988..109H (2025): Comprehensive Radio Monitoring of the Black Hole X-Ray Binary Swift J1727.8−1613 during Its 2023─2024 Outburst
+- 2025ApJ...989...83B (2025): CO Emission and Absorption-line Survey of the M87 Nucleus Using Archival ALMA Imaging
+- 2025ApJ...989L..43Y (2025): Detailed Radial Scale Height Profile of Dust Grains as Probed by Dust Self-scattering in HL Tau
+- 2025ApJ...990...59Y (2025): The Impact of Silicate Grain Coagulation on Millimeter Emission from Massive Protostellar Disks
+- 2025ApJ...990...80K (2025): Key Physical Parameters Influencing Fragmentation and Multiplicity in Dense Cores of Orion A
+- 2025ApJ...990..183U (2025): Multiwavelength Dust Characterization of the HL Tau Disk and Implications for Planet Formation
+- 2025ApJ...992..103Z (2025): Impact of Gravity on Changing Magnetic Field Orientations in a Sample of Massive Protostellar Clusters Observed with ALMA
+- 2025ApJ...992L..31C (2025): First Results from ALPPS: A Sub-Alfvénic Streamer in SVS 13A
+- 2025ApJ...993..166J (2025): Puffed-up Inner Rings and Razor-thin Outer Rings in Structured Protoplanetary Disks
+- 2025ApJ...993..200C (2025): The Hourglass-shaped Magnetic Fields and Dust Filaments in the HH 211 Protostellar Envelope
+- 2025ApJ...993L...6N (2025): The Most Luminous Known Fast Blue Optical Transient AT 2024wpp: Unprecedented Evolution and Properties in the X-Rays and Radio
+- 2025ApJ...995...98D (2025): DiskMINT: Self-consistent Thermochemical Disk Models with Radially Varying Gas and Dust—Application to the Massive, CO-Rich Disk of IM Lup
+- 2025Galax..13...82Z (2025): Molecules and Chemistry in Red Supergiants
+- 2025MNRAS.537.2232Z (2025): An examination of large-scale galactic effects on molecular cloud properties in NGC 628: the significant impact of tidal effects from neigh…
+- 2025MNRAS.538.2421S (2025): An attempt to determine the magnetic field configuration in the planetary nebula K 3-35 with ALMA
+- 2025NatAs...9..406L (2025): Inadequate turbulent support in low-metallicity molecular clouds
+- 2025NatAs...9..526O (2025): Observationally derived magnetic field strength and 3D components in the HD 142527 disk
+- 2025Symm...17..344C (2025): Circumstellar and Circumbinary Discs in Multiple Stellar Systems
+- 2026A&A...705A.203W (2026): The ALMA survey to Resolve exoKuiper belt Substructures (ARKS): IX. Gas-driven origin for the continuum arc in the debris disc of HD121617
+- 2026A&A...706A..16C (2026): Disk Evolution Study Through Imaging of Nearby Young Stars (DESTINYS): V721 CrA and BN CrA have wide and structured disks in the polarised …
+- 2026A&A...706A..27S (2026): Probing jet base emission of M87* with the 2021 Event Horizon Telescope observations
+- 2026A&A...706A.292S (2026): Dissecting the dust distribution and polarization around two B213 young stellar objects with ALMA
+- 2026A&A...710A..63L (2026): Constraining the magnetic field strength of a flaring radio core in the compact steep spectrum source 3C 138
+- 2026A&A...710A.238D (2026): Dust characterization of halos: The extended emission in protoplanetary disks
+- 2026A&A...710A.390O (2026): OH/IR stars in the inner Galactic bulge: I. Colour, CO line, and stellar light curve characteristics
+- 2026A&A...712A.244H (2026): Multiband ALMA polarimetry of the jet base and kiloparsec-scale jet of 3C 273: A multicomponent Faraday structure in the nucleus
+- 2026A&A...713A.149V (2026): Challenges in probing turbulent and magnetic support in cores: The W43-MM1 protocluster case study
+- 2026AJ....172...75M (2026): ALMA Observations of Magnetic Fields in the Massive Star-forming Region IRAS 18360-0537
+- 2026ApJ...996L..27L (2026): The Magnetic Fields of the Dusty Nuclei and Molecular Outflows of Arp 220
+- 2026ApJ...997..155M (2026): The ALMA Survey of 70 µm Dark High-mass Clumps in Early Stages (ASHES). XIII. Core Mass Function, Lifetime, and Growth of Prestellar Cores
+- 2026ApJ..1000L..10C (2026): An Overabundance of Radio Active Galactic Nuclei in the SPT2349─56 Protocluster: Preheating the Intracluster Medium
+- 2026ApJ..1000L..16R (2026): exoALMA. XXIII. Estimating Disk and Planet Properties from Dust Morphologies with DBNets 2.0
+- 2026ApJ..1001..124M (2026): Multiwavelength ALMA Imaging of HD 34282: Dust-trapping Signatures of a Vortex Candidate
+- 2026ApJ..1001..184M (2026): Reconciling 3D Models for the Central 10 pc of the Milky Way
+- 2026ApJ..1002..170S (2026): The Two-component Circumgalactic Medium Emission around z ∼ 2 Radio-loud Quasars
+- 2026ApJ..1002L..28Y (2026): A Close Quasar Pair in a Massive Galaxy Merger at z = 5.7
+- 2026ApJ..1003..215F (2026): Reading between the Rings: Observed Dust Ring Properties as Probes of Planet Masses
+- 2026MNRAS.546ag037E (2026): Stellar-mass black holes on the millimetre Fundamental Plane of black hole accretion
+- 2026MNRAS.548ag619G (2026): Infrared synchrotron emission in the soft state of GX 339─4 and the mid-infrared/X-ray luminosity plane of black hole X-ray binaries
+- 2026MNRAS.549ag678P (2026): AT 2024wpp: an extremely luminous fast ultraviolet transient powered by accretion onto a black hole
+- 2026MNRAS.551g1639M (2026): Exploring the survivability of higher-order multiple protostellar systems - the case of VLA1623
+- 2026PASP..138h4104C (2026): First Very Long Baseline Interferometry Fringe Detection at 690 GHz

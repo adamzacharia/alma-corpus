@@ -1,0 +1,675 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2021MNRAS.504..172S",
+  "title": "An ALMA survey of the SCUBA-2 Cosmology Legacy Survey UKIDSS/UDS field: halo masses for submillimetre galaxies",
+  "year": 2021,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Stach, S. M.",
+  "n_authors": 17,
+  "arxiv_id": "2102.12510",
+  "doi": "10.1093/mnras/stab714",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.01528.S",
+   "2016.1.00434.S",
+   "2017.1.01492.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "all 716 single-dishes sources detected at $\\geq$ 4.0-$\\sigma$ significance were imaged at 870 $\\mu$m with ALMA as the ALMA SCUBA-2 UDS Survey (AS2UDS)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "AS2UDS SMGs in the UKIDSS UDS field",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z = 1.5–3.0 (median z=2.61±0.08)",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "we use as a basis the 707 SMGs in the catalogue from (cite: stach2019alma)’s AS2UDS ALMA survey"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "MAGPHYS photometric redshifts from Dudzeviciute et al. 2020",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "we use as a basis the 707 SMGs in the catalogue from (cite: stach2019alma)’s AS2UDS ALMA survey"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the clustering strength and dark matter halo masses of ALMA-identified SMGs at z=1.5-3, and do they evolve with redshift?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We measure the projected cross-correlation function of $\\sim$ 350 SMGs in the UKIDSS Ultra Deep-Survey Field across a redshift range of $z$ $=$ 1.5–3"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "Band 7 (870 um) continuum",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "The AS2UDS survey obtained ALMA Band 7 (870$\\mu$m) continuum observations of all $>$ 4-$\\sigma$ sources from the S2CLS SCUBA-2 850-$\\mu$m map"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.3 arcsec (maps uv-tapered to 0.5 arcsec for detection)",
+    "evidence": [
+     {
+      "loc": "2.1 Sample Selection",
+      "quote": "we now have robust ALMA interferometric identifications, at 870 $\\mu$m and $\\sim$ 0.3$''$ resolution"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "SCUBA-2 (S2CLS)",
+     "provided": {
+      "value": "850 um parent map",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "The S2CLS UDS map reached a median sensitivity of $\\sigma_{850}$ $=$ 0.9 mJy over an area of 0.96 deg$^2$"
+       }
+      ]
+     }
+    },
+    {
+     "name": "UKIDSS UDS DR11",
+     "provided": {
+      "value": "K-band galaxy catalogue for cross-correlation",
+      "evidence": [
+       {
+        "loc": "2.3 K-band Galaxies",
+        "quote": "The DR11 catalogue contains 296,007 sources extracted from the $K$-band image with a median 5-$\\sigma$ depth of $K$ $=$ 25.3 mag"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "AS2UDS SMG catalogue (707 SMGs)",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "we use as a basis the 707 SMGs in the catalogue from (cite: stach2019alma)’s AS2UDS ALMA survey"
+       }
+      ]
+     },
+     "citation": "(cite: stach2019alma)"
+    },
+    {
+     "what": {
+      "value": "MAGPHYS photometric redshift PDFs and stellar masses",
+      "evidence": [
+       {
+        "loc": "2.2 Photometric Redshifts",
+        "quote": "Photometric redshifts and other physical parameters (as well as their associated probability density functions) were estimated by (cite: dudzevivciute2020alma)"
+       }
+      ]
+     },
+     "citation": "(cite: dudzevivciute2020alma)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA data reduction, source catalogue and photometric redshifts taken from earlier AS2UDS papers",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "The properties of the ALMA source catalogue from the AS2UDS survey are described in (cite: stach2018alma; stach2019alma)."
+       }
+      ]
+     },
+     "from_reference": "(cite: stach2018alma; stach2019alma; dudzevivciute2020alma)"
+    },
+    {
+     "what": {
+      "value": "Cross-correlation method",
+      "evidence": [
+       {
+        "loc": "2.1 Sample Selection",
+        "quote": "Our clustering analysis employs a similar cross-correlation method as used by (cite: hickox2012laboca)."
+       }
+      ]
+     },
+     "from_reference": "(cite: hickox2012laboca)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact r_p bin number/edges and random-selection seeds",
+    "K-band catalogue (Almaini et al. in prep.) availability",
+    "HALOMOD code is unpublished (Murray et al. in prep.)",
+    "Redshift matching procedure details for galaxy subsampling"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build SMG, galaxy and random catalogues",
+    "method": {
+     "value": "Mask regions, mass-limit K-band galaxies (>10^9.1 Msun), match redshift distribution to SMGs, randoms at ~10x density with redshifts sampled from PDFs",
+     "evidence": [
+      {
+       "loc": "2.3 K-band Galaxies",
+       "quote": "We therefore apply a uniform 90 per cent mass completeness limit for our $z$ $=$ 1.5–3 comparison galaxies of $M_{\\rm lim}$\\>$10^{9.1}$ M$_{\\odot}$ to all redshift bins"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Projected SMG-galaxy cross-correlation",
+    "method": {
+     "value": "Landy-Szalay estimator with Monte Carlo sampling of redshift PDFs; power-law fit with gamma=1.8 above 0.5 h^-1 Mpc",
+     "evidence": [
+      {
+       "loc": "2.4 Projected Cross-Correlations",
+       "quote": "resulting 3,000 redshift-sampling iterations"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "pi_max = 100 h^-1 Mpc; r_p bins 0.05–14 h^-1 Mpc",
+      "evidence": [
+       {
+        "loc": "2.4 Projected Cross-Correlations",
+        "quote": "For this work we chose a value of $\\pi_{max}$ $=$ 100 $h^{-1}$ Mpc"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "gamma fixed to 1.8",
+      "evidence": [
+       {
+        "loc": "2.4 Projected Cross-Correlations",
+        "quote": "we choose to fix $\\gamma$ $=$ 1.8"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Maximum likelihood, single-parameter power law",
+     "evidence": [
+      {
+       "loc": "3 Results and Discussion",
+       "quote": "using a maximum likelihood estimator with a single parameter, power-law model"
+      }
+     ]
+    },
+    "validation": {
+     "value": "pi_max=400 test gave ~10% change in r0; Gaussian PDF width tests",
+     "evidence": [
+      {
+       "loc": "2.4 Projected Cross-Correlations",
+       "quote": "showing only an $\\sim$ 10 per cent increase in $r_0$ from $\\pi_{max}$ $=$ 100 Mpc h$^{-1}$"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Galaxy auto-correlation and bias",
+    "method": {
+     "value": "Angular auto-correlation with jackknife errors, Limber deprojection, HaloFit dark matter, Tinker bias function to halo mass",
+     "evidence": [
+      {
+       "loc": "2.6 Deriving dark matter halo masses",
+       "quote": "We convert the absolute bias into a dark matter halo mass by assuming a (cite: tinker2010large) bias function."
+      }
+     ]
+    },
+    "software": [
+     "HaloFit",
+     "HALOMOD"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Planck XIII cosmology, sigma8=0.816",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "we assume a *Planck* XIII cosmology with $\\Omega_{\\rm m}$ $=$ 0.307, H$_{0}$ $=$ 69.3 km s$^{-1}$ Mpc$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Integral constraint correction IC=2.0 h^-1 Mpc",
+     "evidence": [
+      {
+       "loc": "2.7 Integral Constraint",
+       "quote": "We find a final integral constraint correction for our field of $\\rm{IC}$ $=$ 2.0 $h^{-1}$ Mpc"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "HaloFit",
+    "version": "not stated",
+    "used_for": {
+     "value": "non-linear dark matter power spectrum",
+     "evidence": [
+      {
+       "loc": "2.6 Deriving dark matter halo masses",
+       "quote": "we use the HaloFit code (cite: smith2003stable), with the updated Halofit fitting parameters from (cite: takahashi2012revising)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "HALOMOD",
+    "version": "not stated",
+    "used_for": {
+     "value": "project power spectrum to angular dark matter correlation",
+     "evidence": [
+      {
+       "loc": "2.6 Deriving dark matter halo masses",
+       "quote": "We use the HALOMOD code (Murray et al. in prep.)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "SMG correlation length r0, z=1.5–3",
+    "value": "6.6",
+    "uncertainty": "+1.9/-1.9",
+    "units": "h^-1 Mpc",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "we find an SMG correlation length of $r_0$ $=$ 6.6$^{+1.9}_{-1.9}$ $h^{-1}$ Mpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Absolute SMG bias, full sample",
+    "value": "4.1",
+    "uncertainty": "±0.7",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3 Results and Discussion",
+      "quote": "we estimate the absolute bias for our ‘full’ sample finding $b_s$ $=$ 4.1$\\pm$0.7"
+     }
+    ]
+   },
+   {
+    "quantity": "log10 halo mass, z=1.5–3",
+    "value": "12.6",
+    "uncertainty": "+0.3/-0.4",
+    "units": "log10(h^-1 Msun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "$\\log_{10}(M_{\\rm halo}[{h^{-1}\\,\\rm M_{\\odot}}])$ $=$ 12.6$^{+0.3}_{-0.4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Present-day halo mass",
+    "value": "~13.2",
+    "uncertainty": "not stated",
+    "units": "log10(h^-1 Msun)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 Clustering evolution with redshift",
+      "quote": "$\\log_{10}(M_{\\rm halo}[{h^{-1}\\,\\rm M_{\\odot}}])$ $\\sim$ 13.2 at $z$ $\\sim$ 0"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No significant halo mass evolution across z=1.5–3",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "no significant evolution in the dark matter halo masses with redshift"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "SMG halo masses evolve with redshift",
+    "experiment": "Cross-correlation in three redshift bins",
+    "result": "r0 ~6–7 h^-1 Mpc, log Mhalo ~12.6–12.8 in all bins",
+    "finding": "No evolution; earlier claims likely due to misidentification",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 Clustering evolution with redshift",
+      "quote": "all three redshift ranges show very similar correlation lengths, $r_0$ $\\sim$ 6–7 $h^{-1}$ Mpc"
+     }
+    ]
+   },
+   {
+    "hypothesis": "SMGs are progenitors of local spheroids",
+    "experiment": "Evolve halo masses with median growth rates",
+    "result": "log Mhalo ~13.2 at z~0",
+    "finding": "Consistent with evolution into massive passive spheroids",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "consistent with the picture of SMGs evolving into local massive passive elliptical galaxies"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Large uncertainties due to sample size and PDF widths",
+     "evidence": [
+      {
+       "loc": "3.2 Clustering evolution with redshift",
+       "quote": "although they are consistent within the relatively large uncertainties"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Photometric redshift PDFs dominate the uncertainty",
+    "Blending bias only tested via a flux cut"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data in JCMT, ALMA and ESO archives",
+    "evidence": [
+     {
+      "loc": "Data Availability",
+      "quote": "The data underlying this article are available in the JCMT, ALMA and ESO archives."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Catalogues with photometric-redshift PDFs and K-band DR11 catalogue",
+    "HALOMOD code"
+   ],
+   "estimated_data_volume_inferred": "Catalogue-level analysis; ALMA raw data not reprocessed",
+   "score_inferred": 3,
+   "score_reason": "Catalogue-based method well described but depends on unreleased catalogues and code.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires unpublished K-band catalogue and PDFs; ALMA data themselves are not reanalysed."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: hickox2012laboca)",
+     "why": "cross-correlation method followed"
+    },
+    {
+     "citation": "(cite: stach2019alma)",
+     "why": "AS2UDS catalogue"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: dudzevivciute2020alma)",
+     "why": "photometric redshifts and stellar masses"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "AS2UDS",
+    "S2CLS",
+    "UKIDSS UDS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-29931d865cd8901c1cdfc5598bb350a9",
+  "batch_id": "msgbatch_0184TVS5zAE5RP75JHcHhf4m",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:28:57",
+  "usage": {
+   "input_tokens": 27455,
+   "output_tokens": 4964,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.052881,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 32,
+  "quotes_ok": 32,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2015.1.01528.S",
+   "2016.1.00434.S",
+   "2017.1.01492.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 4,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 65,
+   "stated": 25,
+   "rate": 0.385
+  },
+  "evidence_ok": true
+ }
+}

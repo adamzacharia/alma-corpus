@@ -1,0 +1,475 @@
+{
+ "bibcode": "2025PASJ...77..139I",
+ "title": "Detection of the [O I] 63 µm emission line from the z = 6.04 quasar J2054-0005",
+ "year": 2025,
+ "doi": "10.1093/pasj/psae105",
+ "arxiv_id": "2408.09944",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Detect [O I] 63 um in the z=6.04 quasar J2054-0005 and use [O I], [C II] and FIR luminosity ratios with PDR models to constrain gas density and FUV radiation field",
+ "alma_project_codes": [
+  "2016.1.01063.S"
+ ],
+ "data": {
+  "bands": "Band 9",
+  "arrays": "12 m array, 42 antennas",
+  "angular_resolution": "continuum beam 0.64 x 0.56 arcsec, PA 72 deg; line cube beam 0.65 x 0.56 arcsec, PA 83 deg",
+  "sensitivity": "continuum rms 0.55 mJy/beam; cube rms 3.68 mJy/beam per 50 km/s bin"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "[C II] 158 um and [O III] 88 um line luminosities and FWHM (and CO(2-1) limit) for J2054-0005, used for ratios",
+    "evidence": [
+     {
+      "loc": "Luminosity Ratios",
+      "quote": "summarizes the previous line observations for J2054-0005"
+     },
+     {
+      "loc": "Luminosity Ratios",
+      "quote": "are obtained in the same manner as in"
+     }
+    ]
+   },
+   "citation": "(cite: wang2013); (cite: hashimoto2019); (cite: decarli2020)"
+  },
+  {
+   "what": {
+    "value": "L_FIR from multi-wavelength SED fitting with CIGALE, and AGN fractional contribution to FIR luminosity of about 78%",
+    "evidence": [
+     {
+      "loc": "Luminosity Ratios",
+      "quote": "We also list $L_{\\rm FIR}$ obtained in (cite: salak2024) who have performed multi-wavelength spectral energy distribution (SED) fitting for J2054-0005 using `CIGALE`"
+     },
+     {
+      "loc": "Corrections to Input Luminosities",
+      "quote": "we find that the AGN activity contributes to $\\approx 78$% of the FIR luminosity on the galactic scale in J2054-0005"
+     }
+    ]
+   },
+   "citation": "(cite: salak2024)"
+  },
+  {
+   "what": {
+    "value": "Redshift 6.0391 +/- 0.0002 from earlier lines",
+    "evidence": [
+     {
+      "loc": "The target: J2054-0005",
+      "quote": "The redshift determined from these lines is $6.0391 \\pm 0.0002$."
+     }
+    ]
+   },
+   "citation": "(cite: wang2013; venemans2020); (cite: hashimoto2019); (cite: shao2019); (cite: decarli2020); (cite: salak2024)"
+  },
+  {
+   "what": {
+    "value": "17% of [C II] emission assumed to come from H II regions, taken from the quasar J2310+1855",
+    "evidence": [
+     {
+      "loc": "Corrections to Input Luminosities",
+      "quote": "based on a result of a similarly FIR-luminous quasar, J2310+1855 at $z=6.0$"
+     }
+    ]
+   },
+   "citation": "(cite: li2020)"
+  },
+  {
+   "what": {
+    "value": "Literature [O I]/[C II]/L_FIR measurements and PDR results of comparison samples (GOALS, Herschel Dwarf Galaxy Survey, z~1-3 SMGs, z>4 sources)",
+    "evidence": [
+     {
+      "loc": "L_FIR vs. L_[OI]63/L_FIR",
+      "quote": "These include nearby (U)LIRGs in the GOALS survey ((cite: diaz-santos2017); small grey circles)"
+     },
+     {
+      "loc": "L_FIR vs. L_[OI]63/L_FIR",
+      "quote": "We also include the data points of $z>4$ ALMA observations"
+     }
+    ]
+   },
+   "citation": "(cite: diaz-santos2017); (cite: cormier2015); (cite: coppin2012); (cite: brisbin2015); (cite: wardlow2017); (cite: fernandez_aranda2024); (cite: rybak2023); (cite: litke2022)"
+  },
+  {
+   "what": {
+    "value": "Empirical local relation between SFR and L_[OI]63 converted to L_FIR assuming Salpeter IMF",
+    "evidence": [
+     {
+      "loc": "L_FIR vs. L_[OI]63/L_FIR",
+      "quote": "have obtained an empirical relation between SFR and"
+     }
+    ]
+   },
+   "citation": "(cite: delooze2014); (cite: salpeter1955; kennicutt2012)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image the Band 9 dust continuum and measure its flux",
+   "method": "tclean continuum image (SPW1,3,4 plus line-free channels), imfit 2D Gaussian for flux density, position and size",
+   "software": [
+    "CASA tclean",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "natural weighting"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Make continuum-subtracted [O I] cube",
+   "method": "imcontsub on SPW2 then tclean cube, 50 km/s channels, no uv-taper, natural weighting",
+   "software": [
+    "CASA imcontsub",
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "velocity bin 50 km/s"
+   ],
+   "assumptions": [
+    "Phase-tracking center slightly offset from the quasar, so image-plane continuum subtraction is better than uvcontsub"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Make moment-0 map and extract and fit the spectrum",
+   "method": "Integrate 673.96-674.44 GHz (250 km/s), extract the continuum-subtracted spectrum from the 2-sigma aperture, fit a Gaussian for FWHM and z",
+   "software": [
+    "scipy curve_fit"
+   ],
+   "key_parameters": [
+    "Spectrum noise measured in 671.3-673.5 GHz and 674.6-676.8 GHz",
+    "SPWs 1, 2, 3 used in the fit"
+   ],
+   "assumptions": [
+    "Gaussian line profile"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure [O I] line flux and luminosity",
+   "method": "imfit 2D Gaussian on the 500 km/s integrated map, then L_line = 1.04e-3 S dv D_L^2 nu_obs",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "integration width 500 km/s (about 2.6 x FWHM)"
+   ],
+   "assumptions": [
+    "Line region unresolved; size upper limit taken as the continuum size",
+    "Standard cosmology (H0=70.4)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute luminosity ratios and compare with literature samples",
+   "method": "Form L_[OI]/L_FIR and L_[OI]/L_[CII] using literature [C II] and CIGALE-based L_FIR, plot against local, z=1-3 and z>4 samples",
+   "software": [],
+   "key_parameters": [
+    "Lensing magnification corrected for literature objects"
+   ],
+   "assumptions": [
+    "SFR converted to L_FIR assuming Salpeter IMF for the local relation"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Assess AGN/XDR contribution to the lines",
+   "method": "Compare observed [O I]/[C II] to AGN thresholds in the literature and use the [C II]/[C I](2-1) argument of Decarli et al. 2022",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Lines assumed to arise from PDRs, not XDRs, for the subsequent modeling"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Constrain gas density and FUV field with PDR models",
+   "method": "Compare the [O I]/[C II] and ([C II]+[O I])/L_FIR ratios with PDR Toolbox wk2020 model grid (Z=1.0) after three luminosity corrections",
+   "software": [
+    "PDR Toolbox (PDRT)"
+   ],
+   "key_parameters": [
+    "L_FIR(PDR) = 0.22 L_FIR; L_[CII](PDR) = 0.83 L_[CII]; L_[OI] multiplied by 2"
+   ],
+   "assumptions": [
+    "Plane-parallel PDR geometry; Z/Zsun = 1.0; [C II], [O I] and dust co-spatial; [C II] purely from PDR after removing 17% H II fraction"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Test for [O I] self-absorption with a two-component Gaussian",
+   "method": "Fit two Gaussians to the [O I] spectrum, one forced to [C II] center and width with free amplitude, the second unconstrained, compare with [C II]",
+   "software": [
+    "scipy ODR"
+   ],
+   "key_parameters": [
+    "Spectrum at 30 km/s resolution"
+   ],
+   "assumptions": [
+    "[O I] emission arises in the same regions as [C II]"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Dust continuum flux density at rest 63 um",
+   "value": "9.6",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "63-um continuum emission",
+     "quote": "With the CASA task `imfit`, we obtain the flux density of $S_{\\rm \\nu, 63 \\mu m} = 9.6 \\pm 1.0$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak significance",
+   "value": "13",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "63-um continuum emission",
+     "quote": "The dust continuum emission is detected at a peak significance of $13\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum beam-deconvolved size",
+   "value": "(0.42 +/- 0.13) x (0.23 +/- 0.09)",
+   "uncertainty": "0.13 and 0.09",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "63-um continuum emission",
+     "quote": "The beam-deconvolved size of the continuum-emitting region is $(0.42\\ensuremath{''} \\pm 0.13\\ensuremath{''}) \\times (0.23\\ensuremath{''} \\pm 0.09\\ensuremath{''})$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] 63 um peak significance in moment-0 map",
+   "value": "5.0",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "The line is detected at the peak significance level of $5.0\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Moment-0 noise level",
+   "value": "0.42",
+   "uncertainty": "not stated",
+   "units": "Jy beam^-1 km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "The noise level of the map is $\\sigma = 0.42$ Jy beam$^{-1}$ km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] line FWHM",
+   "value": "192",
+   "uncertainty": "49",
+   "units": "km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "We obtain the line FWHM of $192\\pm49$ km s$^{-1}$ and $z=6.0385\\pm0.0005$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] redshift",
+   "value": "6.0385",
+   "uncertainty": "0.0005",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "We obtain the line FWHM of $192\\pm49$ km s$^{-1}$ and $z=6.0385\\pm0.0005$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] 63 um line flux",
+   "value": "1.81",
+   "uncertainty": "0.61",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "resulting in $1.81 \\pm 0.61$ Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] 63 um line luminosity",
+   "value": "4.53e9",
+   "uncertainty": "1.52e9",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "[O I] 63 um",
+     "quote": "the luminosity is estimated to be $(4.53 \\pm 1.52) \\times 10^{9}L_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[OI]63 / L_FIR",
+   "value": "6.7e-4",
+   "uncertainty": "2.2e-4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "(6.7\\pm2.2)\\times10^{-4}"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[OI]63 / L_[CII]158",
+   "value": "1.3",
+   "uncertainty": "0.5",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "line luminosity ratio of $1.3\\pm0.5$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_FIR(PDR) after AGN correction",
+   "value": "1.5e12",
+   "uncertainty": "0.1e12",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Corrections to Input Luminosities",
+     "quote": "$= 0.22~L_{\\rm FIR} = (1.5\\pm0.1)\\times10^{12}~L_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII](PDR) after H II correction",
+   "value": "2.8e9",
+   "uncertainty": "0.4e9",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Corrections to Input Luminosities",
+     "quote": "= (2.8\\pm0.4)\\times10^{9}~L_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Corrected [O I] luminosity (x2)",
+   "value": "9.1e9",
+   "uncertainty": "3.0e9",
+   "units": "Lsun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Corrections to Input Luminosities",
+     "quote": "= (9.1\\pm3.0)\\times10^{9}~L_{\\rm \\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fiducial PDR gas density log(nH/cm^-3) and FUV field log(G/G0)",
+   "value": "log nH = 3.7; log G/G0 = 3.0",
+   "uncertainty": "0.3; 0.1",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results of PDR Modeling",
+     "quote": "We obtain a fiducial result, log($n_{\\rm H}$/cm$^{-3}$)$=3.7\\pm0.3$ and log($G/G_{\\rm 0}$) $= 3.0\\pm0.1$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDR result without L_FIR correction",
+   "value": "log nH = 3.4; log G/G0 = 3.7",
+   "uncertainty": "0.4; 0.3",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results of PDR Modeling",
+     "quote": "the result, log($n_{\\rm H}$/cm$^{-3}$)$=3.4\\pm0.4$ and log($G/G_{\\rm 0}$) $= 3.7\\pm0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "PDR result with extra x2 [O I] factor for self-absorption",
+   "value": "log nH = 4.3; log G/G0 = 3.0",
+   "uncertainty": "0.3; 0.4",
+   "units": "dex",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Results of PDR Modeling",
+     "quote": "the result, log($n_{\\rm H}$/cm$^{-3}$) $=4.3\\pm0.3$ and log($G/G_{\\rm 0}$) $= 3.0\\pm0.4$"
+    }
+   ]
+  },
+  {
+   "quantity": "[O I] emission-component flux from two-component fit",
+   "value": "2.9",
+   "uncertainty": "0.7",
+   "units": "Jy km s^-1",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Results of PDR Modeling",
+     "quote": "Integrating the emission component we get an estimated line-flux of $2.9 \\pm 0.7$ Jy km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Pipeline versus manual calibration and the exact CASA calibration scripts used (only CASA 4.7.0 stated)",
+  "tclean parameters: cell size, image size, clean threshold, niter, masks, interactive or automatic cleaning, primary-beam correction",
+  "Whether the continuum image was made from SPWs 1, 3, 4 only and the exact combined bandwidth and effective frequency",
+  "Aperture shape and radius used for the spectrum extraction and the exact peak-flux definition for the 5.0 sigma detection",
+  "imcontsub fit order and line-free channel ranges used in SPW2",
+  "Region and fit-box settings in imfit for line and continuum fluxes",
+  "Exact PDRT grid ranges, ratio uncertainty treatment and how the 1-sigma allowed regions were drawn",
+  "Starting guesses, bounds and noise weights for the two-component Gaussian ODR fit",
+  "Precise values of [C II] 158 um luminosity and L_FIR with their sources (partially given only in the table)",
+  "How L_FIR(PDR) = 0.22 L_FIR was converted from the CIGALE decomposition (integration range for the AGN fraction)"
+ ],
+ "missing_for_reproduction": [
+  "tclean cell size, image size, masks, thresholds and iterations",
+  "Aperture definition for spectrum and exact moment-0 construction",
+  "Exact [C II] luminosity and L_FIR(PDR) inputs and PDRT grid settings",
+  "Whether pipeline or manual calibration scripts were used (CASA 4.7.0 stated)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public archival data and a clearly sequenced recipe with numeric results, but imaging parameters, apertures and model-grid settings are missing and key inputs come from other papers",
+ "rediscovery_reason": "Data are public, the detection and its flux and luminosity are numeric and can be re-measured, and the PDR comparison uses a public model toolbox, although a few settings must be chosen by the reproducer",
+ "source_card": "cards/2025PASJ...77..139I/sonnet/card.md"
+}

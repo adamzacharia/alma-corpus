@@ -1,0 +1,471 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "of the early stage merger Arp 240 (NGC5257/8) obtained with the Atacama Large Millimeter/submillimeter Array (ALMA)."}
+],
+"fields": ["nearby_galaxies", "star_formation"],
+"question": {
+"value": "Is Arp 240 (NGC 5257/5258) really an early-stage merger? Measure its resolved CO gas properties, CO-to-H2 conversion factor and star formation efficiency to constrain the merger stage and the SFE per free-fall time.",
+"evidence": [
+{"loc": "abstract", "quote": "however, we find that this system has a lower global gas fraction but a higher star formation efficiency compared to typical close galaxy pairs, which suggests that this system may already be in an advanced merger stage."}
+]
+},
+"targets": [
+{
+"name": "NGC 5257",
+"details": [
+{"loc": "Table 1", "quote": "Coordinates (J2000) $^a$ | RA$=13^h39^m52.91^s$ | RA$=13^h39^m57.70^s$"},
+{"loc": "Table 1", "quote": "Redshift $^b$ | 0.022676 | 0.022539"},
+{"loc": "Table 1", "quote": "Luminosity Distance (Mpc) | 98.0 | 97.4 | 1"}
+],
+"coordinates": "RA = 13h39m52.91s, Dec = +00'24.5'' (as printed in Table 1; HyperLEDA)",
+"redshift_or_distance": "z = 0.022676; luminosity distance 98.0 Mpc",
+"distance_source": "Table 1 reference (1) = Mould_2000"
+},
+{
+"name": "NGC 5258",
+"details": [
+{"loc": "Table 1", "quote": "Coordinates (J2000) $^a$ | RA$=13^h39^m52.91^s$ | RA$=13^h39^m57.70^s$"},
+{"loc": "Table 1", "quote": "Redshift $^b$ | 0.022676 | 0.022539"},
+{"loc": "Table 1", "quote": "Luminosity Distance (Mpc) | 98.0 | 97.4 | 1"}
+],
+"coordinates": "RA = 13h39m57.70s, Dec = +00'51.1'' (as printed in Table 1; HyperLEDA)",
+"redshift_or_distance": "z = 0.022539; luminosity distance 97.4 Mpc",
+"distance_source": "Table 1 reference (1) = Mould_2000"
+}
+],
+"alma_project_codes": [
+{"code": "2015.1.00804.S", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The data for Arp 240 was acquired from project 2015.1.00804.S (PI: Kazimierz Sliwa)."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (12CO 1-0 at 112 GHz, 13CO 1-0 at 108 GHz) and Band 6 (12CO 2-1 at 223 GHz); single pointings in Band 3, Band 6 mosaics of 4 pointings (NGC 5257) and 9 pointings (NGC 5258)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "Band 3 covers $^{12}$CO $J$=1-0 (112 GHz) and $^{13}$CO $J$=1-0 (108 GHz) and Band 6 covers $^{12}$CO $J$=2-1 (223 GHz)."},
+{"loc": "2.1 ALMA Data", "quote": "Single pointings were used for the Band 3 data. For the Band 6 data, four pointings were used for NGC 5257 while 9 pointings were used for NGC 5258."}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Usable bandwidth per spectral window 1875 MHz (12m) and 2000 MHz (7m); channel width 1.953 MHz; CN 1-0 (111 GHz) and CS 2-1 (95.8 GHz) also detected in Band 3", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The total usable bandwidth for each of the spectral windows was 1875 MHz for the 12m array and 2000 MHz for the 7m array. The width of a single channel is 1.953 MHz."},
+{"loc": "2.1 ALMA Data", "quote": "We also detected CN $J$=1-0 (111 GHz) and CS $J$=2-1 (95.8 GHz) in Band 3."}
+]},
+{"field": "arrays", "value": "12m+7m for 12CO 1-0 and 12CO 2-1; 12m only for 13CO 1-0", "evidence": [
+{"loc": "Table 1", "quote": "$1.6$ | 2.0 $\\times$ 1.6 | 12m+7m array | 10 | 112.73"},
+{"loc": "Table 1", "quote": "$3.0$ | 1.0 $\\times$ 0.5 | 12m+7m array | 10 | 225.46"},
+{"loc": "Table 1", "quote": "$0.64$ | 2.1 $\\times$ 1.6 | 12m array | 20 | 107.78"}
+]},
+{"field": "angular_resolution", "value": "Band 3 about 2 arcsec (1 kpc); Band 6 about 1 arcsec (0.5 kpc); native beams 2.0x1.6 (12CO 1-0), 1.0x0.5 (12CO 2-1), 2.1x1.6 (13CO 1-0) arcsec", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The resolution of Band 3 is about 2 arcsec (1 kpc) while the resolution of Band 6 is about 1 arcsec (0.5 kpc)."}
+]},
+{"field": "max_recoverable_scale", "value": "largest angular scale about 32 arcsec after the 6 klambda inner uv cut", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "After cutting the uvrange, the largest angular scale (LAS) is about 32 arcsec."}
+]},
+{"field": "sensitivity", "value": "RMS noise 1.6 (12CO 1-0), 3.0 (12CO 2-1), 0.64 (13CO 1-0) mJy/beam at 10, 10, 20 km/s channels", "evidence": [
+{"loc": "Table 1", "quote": "$1.6$ | 2.0 $\\times$ 1.6 | 12m+7m array | 10 | 112.73"},
+{"loc": "Table 1", "quote": "$3.0$ | 1.0 $\\times$ 0.5 | 12m+7m array | 10 | 225.46"},
+{"loc": "Table 1", "quote": "$0.64$ | 2.1 $\\times$ 1.6 | 12m array | 20 | 107.78"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "project 2015.1.00804.S, PI Kazimierz Sliwa (data used as obtained by another PI)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The data for Arp 240 was acquired from project 2015.1.00804.S (PI: Kazimierz Sliwa)."}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=1-0", "rest_frequency": "112 GHz (as stated for the band; rest frequency not given)", "evidence": [{"loc": "2.1 ALMA Data", "quote": "Band 3 covers $^{12}$CO $J$=1-0 (112 GHz) and $^{13}$CO $J$=1-0 (108 GHz) and Band 6 covers $^{12}$CO $J$=2-1 (223 GHz)."}]},
+{"species": "13CO", "transition": "J=1-0", "rest_frequency": "108 GHz (as stated for the band; rest frequency not given)", "evidence": [{"loc": "2.1 ALMA Data", "quote": "Band 3 covers $^{12}$CO $J$=1-0 (112 GHz) and $^{13}$CO $J$=1-0 (108 GHz) and Band 6 covers $^{12}$CO $J$=2-1 (223 GHz)."}]},
+{"species": "12CO", "transition": "J=2-1", "rest_frequency": "223 GHz (as stated for the band; rest frequency not given)", "evidence": [{"loc": "2.1 ALMA Data", "quote": "Band 3 covers $^{12}$CO $J$=1-0 (112 GHz) and $^{13}$CO $J$=1-0 (108 GHz) and Band 6 covers $^{12}$CO $J$=2-1 (223 GHz)."}]},
+{"species": "CN", "transition": "J=1-0", "rest_frequency": "111 GHz", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We also detected CN $J$=1-0 (111 GHz) and CS $J$=2-1 (95.8 GHz) in Band 3."}]},
+{"species": "CS", "transition": "J=2-1", "rest_frequency": "95.8 GHz", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We also detected CN $J$=1-0 (111 GHz) and CS $J$=2-1 (95.8 GHz) in Band 3."}]},
+{"species": "12CO", "transition": "J=3-2 (SMA, not ALMA)", "rest_frequency": "not stated", "evidence": [{"loc": "2.2 SMA Data", "quote": "Arp 240 was observed with the SMA in $^{12}$CO $J$=2-1 and $^{12}$CO $J$=3-2 using the compact array configuration."}]}
+],
+"other_facilities": [
+{"name": "SMA", "provided": {"value": "12CO J=3-2 map (beam 3.79 x 2.8 arcsec), compact configuration, used with ALMA lines for RADEX", "evidence": [
+{"loc": "2.2 SMA Data", "quote": "The $^{12}$CO $J$=3-2 map has a beam size of 3.79$''$ $\\times$ 2.8$''$."},
+{"loc": "2.2 SMA Data", "quote": "The data processing is described in (cite: Wilson_2008)."}
+]}},
+{"name": "VLA", "provided": {"value": "33 GHz continuum (about 0.5 arcsec resolution) used as the SFR tracer", "evidence": [
+{"loc": "2.5 Radio Continuum", "quote": "Arp 240 was observed with the VLA in 33 GHz continuum."},
+{"loc": "2.5 Radio Continuum", "quote": "The resolution of the data is about 0.5 arcsec"}
+]}},
+{"name": "Spitzer", "provided": {"value": "3.6 and 4.5 micron images (project 70038, PI Sanders) for stellar mass; 24 micron map for SFR/L_TIR", "evidence": [
+{"loc": "2.3 Infrared Data", "quote": "3.6 μm and 4.5 μm data is from project 70038 (PI:Sanders) with a resolution of roughly 2 arcsec."},
+{"loc": "2 Observations and Data Reduction", "quote": "the 33 GHz continuum map from the Very Large Array (VLA) to trace the SFR."}
+]}},
+{"name": "Herschel", "provided": {"value": "70 micron map, used with Spitzer 24 micron for L_TIR / SFR tracing", "evidence": [
+{"loc": "2 Observations and Data Reduction", "quote": "Space Telescope, the 70 μm map from the"}
+]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "33 GHz VLA continuum data of Arp 240", "evidence": [{"loc": "2.5 Radio Continuum", "quote": "The detailed description of the data is in (cite: Linden_2019)."}]}, "citation": "(cite: Linden_2019)"},
+{"what": {"value": "SMA 12CO J=3-2 and 2-1 observations and their processing", "evidence": [{"loc": "2.2 SMA Data", "quote": "The data processing is described in (cite: Wilson_2008)."}]}, "citation": "(cite: Wilson_2008)"},
+{"what": {"value": "Young massive cluster catalogue (age < 10 Myr, mass > 1e6 Msun) used for YMC identification", "evidence": [{"loc": "3.3 Star Formation Rates", "quote": "We selected these young star clusters from (cite: Linden_2017) with age smaller than 10 Myr and mass greater than"}]}, "citation": "(cite: Linden_2017)"},
+{"what": {"value": "Petrosian radii 17.53 and 24.86 arcsec for NGC 5257 and NGC 5258", "evidence": [{"loc": "3.1 Gas Mass", "quote": "from the SDSS DR12 catalog[^4]"}]}, "citation": "SDSS DR12 catalog"},
+{"what": {"value": "Isophotal radius R25 = 53.3 arcsec for NGC 5257", "evidence": [{"loc": "3.1 Gas Mass", "quote": "which is 53.3 arcsec for NGC 5257 (cite: Fuentes-Carrera_2019)"}]}, "citation": "(cite: Fuentes-Carrera_2019)"},
+{"what": {"value": "Parametric rotation curve and stellar disk scale lengths 4.2 kpc (NGC 5257) and 5.8 kpc (NGC 5258)", "evidence": [
+{"loc": "5.2 Toomre Stability", "quote": "We use the parametric fitted rotation curve from (cite: Fuentes-Carrera_2019)."},
+{"loc": "5.1 SFE per free-fall time", "quote": "which is 4.2 kpc and 5.8 kpc for NGC 5257 and NGC 5258 respectively (cite: Fuentes-Carrera_2019)"}
+]}, "citation": "(cite: Fuentes-Carrera_2019)"},
+{"what": {"value": "Resolved ULIRG comparison points for the Kennicutt-Schmidt and eps_ff plots", "evidence": [{"loc": "5 Gas Properties and SFR", "quote": "We also add in resolved points from other ULIRGs (cite: Wilson_2019) for comparison."}]}, "citation": "(cite: Wilson_2019)"},
+{"what": {"value": "Main-sequence sSFR relation used to compute the starburst probability", "evidence": [{"loc": "3.1 Gas Mass", "quote": "we adopted the equation from (cite: Catinella_2018)"}]}, "citation": "(cite: Catinella_2018)"},
+{"what": {"value": "Stellar mass relation from 3.6 and 4.5 micron fluxes", "evidence": [{"loc": "2.3 Infrared Data", "quote": "The relevant equation is given in (cite: Eskew_2012)"}]}, "citation": "(cite: Eskew_2012)"},
+{"what": {"value": "12CO/13CO and 12CO/H2 abundance ratios used as model assumptions", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "For the Milky Way, this ratio varies from $\\sim$ 30 in the center to $\\sim$ 100 in the outermost disk (cite: Milam_2005)."}]}, "citation": "(cite: Milam_2005); (cite: Cormier_2018)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Merger simulation of Arp 240 (Privon et al.) used to set the merger stage (just past first passage)", "evidence": [{"loc": "1 Introduction", "quote": "Simulations (cite: Privon_2013) show the two galaxies are in the early stage of the merging process and have just been through first passage."}]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "original (archive) reduction scripts used to calibrate the raw data", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The original reduction scripts were used to calibrate the raw data using CASA version 4.5.0, which is the version of CASA when the data was taken."}]},
+{"field": "casa_version", "value": "CASA 4.5.0 (calibration); CASA 5.1.1 (line-free channel selection and uvcontsub); CASA 5.4.0 (all imaging)", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The original reduction scripts were used to calibrate the raw data using CASA version 4.5.0, which is the version of CASA when the data was taken."},
+{"loc": "2.1 ALMA Data", "quote": "We use CASA 5.1.1 to select line free channels and subtract the continuum from the line cubes using"},
+{"loc": "2.1 ALMA Data", "quote": "All imaging steps were carried out in CASA 5.4.0."}
+]}
+],
+"imaging": [
+{"field": "task", "value": "tclean (CASA 5.4.0); threshold 2 x RMS; channel width 10 km/s (12CO) and 20 km/s (13CO); total velocity range 500 km/s", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "All imaging steps were carried out in CASA 5.4.0."},
+{"loc": "2.1 ALMA Data", "quote": "The total velocity range is set to be 500 km s$^{-1}$. For cleaning, we set the threshold to be 2 times the RMS noise."}
+]},
+{"field": "masking", "value": "auto-multithresh in tclean; defaults except sidelobethreshold = 4.0 (default 3.0) for 12CO 2-1 of NGC 5257", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "to identify clean regions automatically."},
+{"loc": "2.1 ALMA Data", "quote": "We found strong sidelobes at the edges of the $^{12}$CO $J$=2-1 map for NGC 5257 and therefore we set the sidelobethreshold to be 4.0 instead of the default 3.0."}
+]},
+{"field": "continuum_subtraction", "value": "uvcontsub in CASA 5.1.1 after selecting line-free channels (channels not listed)", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We use CASA 5.1.1 to select line free channels and subtract the continuum from the line cubes using"}]},
+{"field": "uv_taper", "value": "12CO 2-1 uvtapered with a Gaussian of 1.65 x 1.44 arcsec in image space; 12CO 1-0 and 13CO 1-0 inner uvrange cut at 6 klambda", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "with a Gaussian beam with size of 1.65$''$ $\\times$ 1.44$''$ in image space to match the small scale."},
+{"loc": "2.1 ALMA Data", "quote": "We cut the inner uvrange of the $^{12}$CO $J$=1-0 and $^{13}$CO $J$=1-0 data at 6 k$\\lambda$ to match the large scale."}
+]},
+{"field": "smoothing", "value": "all cubes smoothed to 2.186 x 1.896 arcsec for the ratio maps; to 3.8 x 2.99 arcsec for RADEX", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "we smoothed all the image cubes to have a beam size of 2.186$''$ $\\times$ 1.896$''$."},
+{"loc": "4.1 RADEX Modeling", "quote": "Therefore we smooth all the line images to the largest beam size of 3.8$''$ $\\times$ 2.99$''$ and measure the average intensity."}
+]},
+{"field": "primary_beam_correction", "value": "applied to both moment 0 maps before the ratio map", "evidence": [{"loc": "3.2 Line Ratio", "quote": "The final step is to do primary beam correction for both moment 0 maps and calculate the ratio map."}]},
+{"field": "final_beam", "value": "native beams 2.0x1.6 (12CO 1-0), 1.0x0.5 (12CO 2-1), 2.1x1.6 (13CO 1-0) arcsec", "evidence": [
+{"loc": "Table 1", "quote": "$1.6$ | 2.0 $\\times$ 1.6 | 12m+7m array | 10 | 112.73"},
+{"loc": "Table 1", "quote": "$3.0$ | 1.0 $\\times$ 0.5 | 12m+7m array | 10 | 225.46"},
+{"loc": "Table 1", "quote": "$0.64$ | 2.1 $\\times$ 1.6 | 12m array | 20 | 107.78"}
+]}
+],
+"inherited": [
+{"what": {"value": "Moment 1 and 2 maps made with a consecutive-channel (>2 channels) masking algorithm", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "following the procedure used by (cite: Sun_2018)"},
+{"loc": "2.1 ALMA Data", "quote": "A more detailed description of their algorithm can be found in their Section 3.2."}
+]}, "from_reference": "(cite: Sun_2018)"},
+{"what": {"value": "SMA 12CO 3-2 data processing", "evidence": [{"loc": "2.2 SMA Data", "quote": "The data processing is described in (cite: Wilson_2008)."}]}, "from_reference": "(cite: Wilson_2008)"},
+{"what": {"value": "VLA 33 GHz data reduction", "evidence": [{"loc": "2.5 Radio Continuum", "quote": "The detailed description of the data is in (cite: Linden_2019)."}]}, "from_reference": "(cite: Linden_2019)"},
+{"what": {"value": "alpha_CO prescription (starburst probability f_SB mixing of main-sequence and starburst values)", "evidence": [{"loc": "3.1 Gas Mass", "quote": "we adopt the recipe in (cite: Violino_2018)."}]}, "from_reference": "(cite: Violino_2018)"},
+{"what": {"value": "Composite 33 GHz SFR calibration", "evidence": [{"loc": "2.5 Radio Continuum", "quote": "The relation between the radio continuum and the SFR has been calibrated (cite: Murphy_2011) as"}]}, "from_reference": "(cite: Murphy_2011)"},
+{"what": {"value": "Bayesian likelihood RADEX grid code with beam filling factor", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "we use a Baysian likelihood code (cite: Kamenetzky_2016) to create probability distributions for the various parameters above."}]}, "from_reference": "(cite: Kamenetzky_2016)"},
+{"what": {"value": "Gas scale height and epsilon_ff formalism", "evidence": [{"loc": "5.1 SFE per free-fall time", "quote": "Therefore the SFE per free-fall time can be calculated as (cite: Wilson_2019)"}]}, "from_reference": "(cite: Wilson_2019)"},
+{"what": {"value": "Stellar scale height and velocity dispersion estimates", "evidence": [
+{"loc": "5.1 SFE per free-fall time", "quote": "we use the empirical equation from (cite: Leroy_2008) to estimate the scale height for the stars"},
+{"loc": "5.2 Toomre Stability", "quote": "We use the theoretical equation (cite: Leroy_2008) based on the assumption of disk hydrostatic equilibrium to calculate the stellar velocity dispersion,"}
+]}, "from_reference": "(cite: Leroy_2008)"},
+{"what": {"value": "Original archive calibration scripts", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The original reduction scripts were used to calibrate the raw data using CASA version 4.5.0"}]}, "from_reference": "ALMA archive reduction scripts for 2015.1.00804.S"}
+],
+"unstated_but_needed": [
+"Which channels were treated as line-free for uvcontsub, and the continuum fit order",
+"tclean weighting scheme and robust value, cell size, image size and deconvolver for each cube",
+"Number of clean iterations and the exact auto-multithresh values other than sidelobethreshold (the 'defaults' depend on CASA 5.4.0)",
+"The calibration flux scale uncertainty and whether any extra flagging or self-calibration was done beyond the archive scripts",
+"Rest frequencies and velocity frame used for the cubes",
+"Exact moment-0 velocity ranges and the masks used for the Sun et al. moment 1/2 maps",
+"The aperture shapes (polygons drawn by eye) used for line ratios, RADEX regions and the depletion-time regions",
+"RADEX grid ranges, step sizes and priors for temperature, density, column density and beam filling factor (only the optical depth prior is given)",
+"The 33 GHz VLA image and the SMA 12CO 3-2 cube (not in the ALMA archive; from Linden et al. and Wilson et al.)",
+"How the 12CO 2-1 velocity dispersion map sigma_v was computed",
+"Beam-correction and flux-ratio treatment when matching SMA and ALMA beams"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate, continuum-subtract and image the CO cubes",
+"method": {"value": "Archive reduction scripts in CASA 4.5.0; line-free selection and uvcontsub in CASA 5.1.1; tclean in CASA 5.4.0 with auto-multithresh at 2 x RMS threshold", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "The original reduction scripts were used to calibrate the raw data using CASA version 4.5.0, which is the version of CASA when the data was taken."},
+{"loc": "2.1 ALMA Data", "quote": "All imaging steps were carried out in CASA 5.4.0."}
+]},
+"software": ["CASA", "tclean", "uvcontsub"],
+"key_parameters": [
+{"value": "Channel width 10 km/s for 12CO 1-0 and 2-1, 20 km/s for 13CO 1-0", "evidence": [{"loc": "2.1 ALMA Data", "quote": "set the channel width to be 10 km s$^{-1}$ for $^{12}$CO $J$=1-0 and $^{12}$CO $J$=2-1 and 20 km s$^{-1}$ for $^{13}$CO $J$=1-0 to achieve better sensitivity."}]},
+{"value": "Total velocity range 500 km/s; clean threshold 2 x RMS", "evidence": [{"loc": "2.1 ALMA Data", "quote": "The total velocity range is set to be 500 km s$^{-1}$. For cleaning, we set the threshold to be 2 times the RMS noise."}]},
+{"value": "sidelobethreshold = 4.0 for 12CO 2-1 NGC 5257, other parameters default", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We found strong sidelobes at the edges of the $^{12}$CO $J$=2-1 map for NGC 5257 and therefore we set the sidelobethreshold to be 4.0 instead of the default 3.0."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Make moment maps",
+"method": {"value": "Moment 0 with immoments at 2 RMS; moment 1 and 2 with the Sun et al. (2018) algorithm that keeps only signal spanning more than 2 consecutive channels", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "with threshold of 2 RMS for each image cube."},
+{"loc": "2.1 ALMA Data", "quote": "it will only pick out signals spanning more than 2 consecutive velocity channels, which excludes noisy pixels with inaccurate velocity measurements."}
+]},
+"software": ["CASA immoments", "Sun et al. 2018 Python script"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "Match resolution and uv coverage; build line-ratio maps",
+"method": {"value": "Cut inner uv at 6 klambda for 12CO 1-0 and 13CO 1-0, taper 12CO 2-1, re-image, smooth to a common beam; use matched-threshold moment 0 maps and primary-beam corrected ratios", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "We cut the inner uvrange of the $^{12}$CO $J$=1-0 and $^{13}$CO $J$=1-0 data at 6 k$\\lambda$ to match the large scale."},
+{"loc": "2.1 ALMA Data", "quote": "we smoothed all the image cubes to have a beam size of 2.186$''$ $\\times$ 1.896$''$."}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Ratio-map threshold: 2 x flux ratio x 13CO RMS cut on the 12CO cube; S/N cut of 5 on 12CO 1-0 for the 2-1/1-0 map", "evidence": [
+{"loc": "3.2 Line Ratio", "quote": "We then applied a 2 $\\times$ the flux ratio $\\times$ $^{13}$CO $J$=1-0 RMS cut to the $^{12}$CO $J$=1-0 cube to make the moment 0 map."},
+{"loc": "3.2 Line Ratio", "quote": "we adopt a S/N cut of 5 instead of 2 for the $^{12}$CO $J$=1-0 cube."}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Derive global gas masses, concentration and gas fractions",
+"method": {"value": "M_mol = alpha_CO x L_CO(1-0) within a Petrosian-radius aperture; alpha_CO chosen via the Violino et al. starburst probability, which gives f_SB about 1 so the ULIRG value is adopted; gas concentration from the central 500 pc vs the R25 surface density", "evidence": [
+{"loc": "3.1 Gas Mass", "quote": "We adopted a circular aperture with radius equal to the Petrosian radius $R_p$ to measure the global gas mass."},
+{"loc": "3.1 Gas Mass", "quote": "This analysis suggests that we should adopt the ULIRG conversion factor for both galaxies."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Blank pixels within R25 set to zero or to the noise to bracket the concentration degree", "evidence": [{"loc": "3.1 Gas Mass", "quote": "The first is to assume all the blank pixels have an intensity equal to zero. The second is to assume all the blank pixels have an intensity equal to the noise, which defines the lower limit of the ratio."}]}
+],
+"assumptions": [
+{"value": "ULIRG conversion factor 1.1 Msun (K km/s pc^2)^-1", "evidence": [{"loc": "Table 1", "quote": "From the $^{12}$CO $J$=1-0 ALMA observations assuming a ULIRG conversion factor of 1.1"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Compared the gas concentration with barred and unbarred galaxies of Sakamoto et al.", "evidence": [{"loc": "3.1 Gas Mass", "quote": "This clearly suggests that NGC 5257 is fairly gas concentrated in the center."}]}
+},
+{
+"order": 5,
+"goal": "Measure SFR surface density from 33 GHz continuum",
+"method": {"value": "Murphy et al. composite free-free plus synchrotron relation applied to the 33 GHz image; polygon apertures drawn by eye around star-forming regions", "evidence": [
+{"loc": "2.5 Radio Continuum", "quote": "The relation between the radio continuum and the SFR has been calibrated (cite: Murphy_2011) as"},
+{"loc": "3.3 Star Formation Rates", "quote": "These polygon regions drawn by eye roughly correspond to regions with signal-to-noise (S/N) value greater than 4.0."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "VLA resolution about 0.5 arcsec, sensitivity about 9.8e-6 Jy/beam", "evidence": [{"loc": "2.5 Radio Continuum", "quote": "the sensitivity is about $9.8 \\times 10^{-6}$ Jy beam$^{-1}$."}]}
+],
+"assumptions": [
+{"value": "alpha_NT = 0.85 and T_e = 1e4 K", "evidence": [{"loc": "2.5 Radio Continuum", "quote": "We assume $\\alpha^{NT}=0.85$ (cite: Murphy_2012) and $T_e=10^4\\ \\si{K}$."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Model CO line ratios with RADEX",
+"method": {"value": "Grid of one-component RADEX models fit to the 12CO 1-0, 2-1, 3-2 and 13CO 1-0 intensities in three regions, with a Bayesian likelihood code that adds a beam filling factor; 1D and 4D maximum-likelihood solutions", "evidence": [
+{"loc": "4.1 RADEX Modeling", "quote": "We use a grid of models across the parameter space to fit the observed line intensities."},
+{"loc": "4.1 RADEX Modeling", "quote": "This code gives two types of solutions, 1D Max and 4D max."}
+]},
+"software": ["RADEX", "Kamenetzky et al. 2016 Bayesian likelihood code"],
+"key_parameters": [
+{"value": "All lines smoothed to 3.8 x 2.99 arcsec and average intensity measured (peak intensity at the center of NGC 5257)", "evidence": [
+{"loc": "4.1 RADEX Modeling", "quote": "Therefore we smooth all the line images to the largest beam size of 3.8$''$ $\\times$ 2.99$''$ and measure the average intensity."},
+{"loc": "4.1 RADEX Modeling", "quote": "Therefore, we use the peak intensity instead of the average intensity for the center of NGC 5257."}
+]},
+{"value": "Median FWHM linewidths 135, 116 and 87 km/s for NGC 5257 center, NGC 5257 south-west and NGC 5258 south arm", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "which are 135, 116 and 87 km s$^{-1}$ for the center and south-west region of NGC 5257 and the south arm of NGC 5258 respectively."}]},
+{"value": "12CO/13CO abundance ratio fixed to 50 (fiducial), 30 and 100 (extremes)", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "and the lower and upper extreme values to be 30 and 100."}]}
+],
+"assumptions": [
+{"value": "12CO/H2 abundance 1e-4 with helium correction 1.4", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "We assume the \\[$^{12}$CO\\]/\\[H$_2$\\] abundance ratio to be $10^{-4}$ (cite: Cormier_2018) with a helium correction to be 1.4."}]},
+{"value": "Optical depth prior 0 to 100; one-component model", "evidence": [
+{"loc": "4.1 RADEX Modeling", "quote": "The lower limit is set due to the fact that CO should not be a maser. The upper limit is recommended by the RADEX documentation."},
+{"loc": "4.1 RADEX Modeling", "quote": "Because we only model the lower J CO lines, we use a one-component model."}
+]}
+],
+"fitting": {"value": "Grid plus Bayesian likelihood (Kamenetzky et al. code); 1D and 4D maximum-likelihood solutions; free parameters temperature, H2 density, column density, beam filling factor", "evidence": [
+{"loc": "4.1 RADEX Modeling", "quote": "we use a Baysian likelihood code (cite: Kamenetzky_2016) to create probability distributions for the various parameters above."}
+]},
+"validation": {"value": "Modeled CO SLEDs compared with measured ones; 1D and 4D solutions differ by at most 0.5 dex", "evidence": [
+{"loc": "4.1 RADEX Modeling", "quote": "From these figures, we can see the modeling generally reproduces the measured CO SLEDs."}
+]}
+},
+{
+"order": 7,
+"goal": "Derive alpha_CO from RADEX and from an LTE analysis",
+"method": {"value": "RADEX: N_H2 = N_12CO,beam-averaged / [12CO/H2], compared with the 12CO 1-0 intensity; LTE: optically thick 12CO plus optically thin 13CO gives tau_13 = 1/R, excitation temperature from 12CO peak T_B, per-pixel alpha_CO averaged weighted by N_12CO", "evidence": [
+{"loc": "4.2 CO-to-H2 Conversion Factor", "quote": "We can compare these results directly with the $^{12}$CO $J$=1-0 intensity to calculate the conversion factor."},
+{"loc": "4.3 Comparison with LTE Analysis", "quote": "We use a local thermal equilibrium (LTE) analysis for the $^{12}$CO/$^{13}$CO $J$=1-0 ratio to try to understand what causes the change in the ratio."}
+]},
+"software": ["RADEX"],
+"key_parameters": [
+{"value": "LTE: pixels binned to 1.5 x 1.5 arcsec; 12CO/13CO = 50; beam filling factor 0.1 and 1.0", "evidence": [
+{"loc": "4.3 Comparison with LTE Analysis", "quote": "We then binned the pixels to be 1.5$''$ $\\times$ 1.5$''$."},
+{"loc": "4.3 Comparison with LTE Analysis", "quote": "We assume the abundance ratio of \\[$^{12}$CO\\]/\\[$^{13}$CO\\] to be 50."}
+]}
+],
+"assumptions": [
+{"value": "12CO/H2 = 1e-4, same as the RADEX input", "evidence": [{"loc": "4.3 Comparison with LTE Analysis", "quote": "which is the same as our input into the RADEX model."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "LTE alpha_CO consistent with the RADEX results; alpha_CO acknowledged as strongly dependent on the assumed abundance ratios", "evidence": [
+{"loc": "4.3 Comparison with LTE Analysis", "quote": "which is consistent with our RADEX modeling results."}
+]}
+},
+{
+"order": 8,
+"goal": "Compute depletion times and SFE per free-fall time",
+"method": {"value": "t_dep = Sigma_mol/Sigma_SFR from 12CO 2-1 (ratio 0.8, ULIRG alpha_CO) and 33 GHz; eps_ff = t_ff/t_dep with scale height from gas self-gravity (Wilson et al.), then corrected for the stellar component using midplane gas fraction", "evidence": [
+{"loc": "5 Gas Properties and SFR", "quote": "The molecular mass is calculated based on the $^{12}$CO $J$=2-1 intensity. We assume the conversion factor to be a ULIRG conversion factor."},
+{"loc": "5.1 SFE per free-fall time", "quote": "Assuming the gas disk is in equilibrium and that vertical gravity is dominated by gas self-gravity, then we can calculate the scale height as (cite: Wilson_2019)"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Pixel analysis: S/N = 4 cut on the 33 GHz image; pixels binned to 1.0 x 1.0 arcsec", "evidence": [
+{"loc": "5 Gas Properties and SFR", "quote": "For pixel selection, we applied a S/N=4 cut to the 33 GHz image."},
+{"loc": "5 Gas Properties and SFR", "quote": "We then binned the pixels to 1.0$''$ $\\times$ 1.0$''$ to get independent measurements."}
+]}
+],
+"assumptions": [
+{"value": "12CO 2-1/1-0 ratio 0.8; ULIRG alpha_CO", "evidence": [{"loc": "5 Gas Properties and SFR", "quote": "We also assume the $^{12}$CO $J$=2-1/1-0 ratio is 0.8, which is the flux ratio measurement from section 3.2."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Tested the effect of the stellar potential, the 2-1/1-0 ratio and alpha_CO on eps_ff", "evidence": [{"loc": "5.1 SFE per free-fall time", "quote": "We can see that the efficiency per free-fall time including the stellar component is slightly smaller."}]}
+},
+{
+"order": 9,
+"goal": "Toomre stability analysis",
+"method": {"value": "Q for a gas disk and the composite Q_tot of Wang and Silk including stars; stellar surface density from Spitzer images; kappa from the parametric rotation curve", "evidence": [
+{"loc": "5.2 Toomre Stability", "quote": "Therefore, we can apply a Toomre stability analysis (cite: Toomre1977)"},
+{"loc": "5.2 Toomre Stability", "quote": "We use the parametric fitted rotation curve from (cite: Fuentes-Carrera_2019)."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Stellar velocity dispersion from the hydrostatic equilibrium relation (no measured sigma_star)", "evidence": [{"loc": "5.2 Toomre Stability", "quote": "We do not have data for"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Q_tot correlated against t_dep and eps_ff for star-forming pixels; found no clear trend", "evidence": [{"loc": "5.2 Toomre Stability", "quote": "We see there is no clear trend in both plots."}]}
+}
+],
+"software": [
+{"name": "CASA", "version": "4.5.0 (calibration); 5.1.1 (uvcontsub); 5.4.0 (imaging)", "used_for": {"value": "Calibration, continuum subtraction, imaging and moment maps", "evidence": [
+{"loc": "2.1 ALMA Data", "quote": "All imaging steps were carried out in CASA 5.4.0."},
+{"loc": "2.1 ALMA Data", "quote": "We use CASA 5.1.1 to select line free channels and subtract the continuum from the line cubes using"}
+]}},
+{"name": "tclean", "version": "CASA 5.4.0", "used_for": {"value": "Imaging with auto-multithresh masking and uv taper", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We found strong sidelobes at the edges of the $^{12}$CO $J$=2-1 map for NGC 5257 and therefore we set the sidelobethreshold to be 4.0 instead of the default 3.0."}]}},
+{"name": "uvcontsub", "version": "CASA 5.1.1", "used_for": {"value": "Continuum subtraction of line cubes", "evidence": [{"loc": "2.1 ALMA Data", "quote": "We use CASA 5.1.1 to select line free channels and subtract the continuum from the line cubes using"}]}},
+{"name": "immoments", "version": "not stated", "used_for": {"value": "Moment 0 maps of ALMA and SMA cubes", "evidence": [{"loc": "2.2 SMA Data", "quote": "we remake the moment 0 map (Fig. [3](#fig:SMA)) using the CASA"}]}},
+{"name": "RADEX", "version": "not stated", "used_for": {"value": "Radiative transfer modeling of the CO lines", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "we use the radiative transfer code RADEX (cite: vandertak_2007)."}]}},
+{"name": "Bayesian likelihood code (Kamenetzky et al. 2016)", "version": "not stated", "used_for": {"value": "Probability distributions of RADEX parameters including beam filling factor", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "we use a Baysian likelihood code (cite: Kamenetzky_2016) to create probability distributions for the various parameters above."}]}},
+{"name": "Sun et al. 2018 moment-map Python script", "version": "not stated", "used_for": {"value": "Moment 1 and moment 2 maps with consecutive-channel masking", "evidence": [{"loc": "2.1 ALMA Data", "quote": "This algorithm was implemented in a Python script"}]}}
+],
+"results_numeric": [
+{"quantity": "Global molecular gas mass NGC 5257 (ULIRG alpha_CO)", "value": "4.6e9", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [{"loc": "3.1 Gas Mass", "quote": "The gas mass is about $4.6 \\times 10^{9}"}]},
+{"quantity": "Global molecular gas mass NGC 5258 (ULIRG alpha_CO)", "value": "7.2e9", "uncertainty": "not stated", "units": "Msun", "from_step": 4, "evidence": [{"loc": "3.1 Gas Mass", "quote": "and $7.2 \\times 10^{9}"}]},
+{"quantity": "sSFR ratio to main sequence, NGC 5257 and NGC 5258", "value": "9.37 and 7.8", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.1 Gas Mass", "quote": "The ratio is 9.37 for NGC 5257 and 7.8 for NGC 5258."}]},
+{"quantity": "Gas concentration degree NGC 5257", "value": "72 to 95", "uncertainty": "range from the two blank-pixel treatments", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.1 Gas Mass", "quote": "We calculated the concentration degree of NGC 5257 to be $72 \\sim 95$."}]},
+{"quantity": "Gas concentration degree NGC 5258 (central 500 pc)", "value": "11 to 13", "uncertainty": "range from the two blank-pixel treatments", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "3.1 Gas Mass", "quote": "which is about $11 \\sim 13$."}]},
+{"quantity": "Global gas fraction NGC 5257 and NGC 5258", "value": "0.05 and 0.07", "uncertainty": "not stated", "units": "dimensionless", "from_step": 4, "evidence": [{"loc": "7 Conclusions", "quote": "The global gas fraction is 0.05 for NGC 5257 and 0.07 for NGC 5258."}]},
+{"quantity": "Global 12CO/13CO J=1-0 and 12CO 2-1/1-0 ratio, NGC 5257", "value": "13.1 and 0.80", "uncertainty": "0.06 on the 2-1/1-0 ratio; 1.0 on 12/13", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "Global | $13.1 \\pm 1.0$ | $0.80 \\pm 0.06$"}]},
+{"quantity": "Global 12CO/13CO J=1-0 and 12CO 2-1/1-0 ratio, NGC 5258", "value": "10.9 and 0.85", "uncertainty": "0.8 on 12/13; 0.06 on 2-1/1-0", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "Global | $10.9 \\pm 0.8$ | $0.85 \\pm 0.06$"}]},
+{"quantity": "Central 12CO/13CO J=1-0 ratio in NGC 5258", "value": "5.6", "uncertainty": "0.5", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table 3", "quote": "Center | $5.6 \\pm 0.5$ | $0.80 \\pm 0.07$"}]},
+{"quantity": "alpha_CO from RADEX, NGC 5257 center (12CO/13CO = 100, 50, 30)", "value": "1.9, 0.9, 0.5", "uncertainty": "+0.5/-0.4, +0.2/-0.2, +0.1/-0.1", "units": "Msun pc^-2 (K km/s)^-1", "from_step": 7, "evidence": [{"loc": "Table 4", "quote": "Center | $1.9_{-0.4}^{+0.5}$ | $0.9_{-0.2}^{+0.2}$ | $0.5_{-0.1}^{+0.1}$"}]},
+{"quantity": "alpha_CO from RADEX, NGC 5257 south-west (12CO/13CO = 100, 50, 30)", "value": "0.9, 0.4, 0.23", "uncertainty": "+0.4/-0.3, +0.1/-0.1, +0.04/-0.03", "units": "Msun pc^-2 (K km/s)^-1", "from_step": 7, "evidence": [{"loc": "Table 4", "quote": "South West | $0.9_{-0.3}^{+0.4}$ | $0.4_{-0.1}^{+0.1}$ | $0.23_{-0.03}^{+0.04}$"}]},
+{"quantity": "alpha_CO from RADEX, NGC 5258 south arm (12CO/13CO = 100, 50, 30)", "value": "3.4, 1.5, 0.5", "uncertainty": "+4.7/-2.0, +1.9/-0.8, +0.3/-0.2", "units": "Msun pc^-2 (K km/s)^-1", "from_step": 7, "evidence": [{"loc": "Table 4", "quote": "South Arm | $3.4_{-2.0}^{+4.7}$ | $1.5_{-0.8}^{+1.9}$ | $0.5_{-0.2}^{+0.3}$"}]},
+{"quantity": "LTE mean alpha_CO NGC 5257 (beam filling 1.0 and 0.1)", "value": "0.50 and 0.94", "uncertainty": "not stated", "units": "Msun pc^-2 (K km/s)^-1", "from_step": 7, "evidence": [{"loc": "Table 5", "quote": "NGC 5257 | 0.50 | 0.94"}]},
+{"quantity": "LTE mean alpha_CO NGC 5258 (beam filling 1.0 and 0.1)", "value": "0.59 and 1.27", "uncertainty": "not stated", "units": "Msun pc^-2 (K km/s)^-1", "from_step": 7, "evidence": [{"loc": "Table 5", "quote": "NGC 5258 | 0.59 | 1.27"}]},
+{"quantity": "Depletion time, NGC 5257 center (Sigma_SFR 2.5, Sigma_mol 550)", "value": "2.16e8", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "Table 2", "quote": "NGC5257 | center | 2.5 | 550 | 2.16"}]},
+{"quantity": "Depletion time, NGC 5257 arm (Sigma_SFR 1.1, Sigma_mol 86)", "value": "0.77e8", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "Table 2", "quote": "arm | 1.1 | 86 | 0.77"}]},
+{"quantity": "Depletion time, NGC 5257 west (Sigma_SFR 1.1, Sigma_mol 45)", "value": "0.42e8", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "Table 2", "quote": "west | 1.1 | 45 | 0.42"}]},
+{"quantity": "Depletion time, NGC 5257 south (Sigma_SFR 3.0, Sigma_mol 79)", "value": "0.27e8", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "Table 2", "quote": "south | 3.0 | 79 | 0.27"}]},
+{"quantity": "Depletion time, NGC 5258 south arm (Sigma_SFR 2.4, Sigma_mol 338)", "value": "1.5e8", "uncertainty": "not stated", "units": "yr", "from_step": 8, "evidence": [{"loc": "Table 2", "quote": "NGC5258 | south arm | 2.4 | 338 | 1.5"}]},
+{"quantity": "Fraction of NGC 5257 global SFR in its center", "value": "7%", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "3.3 Star Formation Rates", "quote": "The SFR enclosed in the center of NGC5257 makes up only 7% of the global SFR of NGC 5257"}]},
+{"quantity": "Fraction of NGC 5258 global SFR in its only radio-detected region", "value": "about 30%", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "3.3 Star Formation Rates", "quote": "For NGC 5258, the only radio detected SF region contains about 30% of the global SFR of this galaxy."}]},
+{"quantity": "Offset between YMC position and 33 GHz peak (south source, NGC 5257)", "value": "1.1", "uncertainty": "not stated", "units": "arcsec", "from_step": 5, "evidence": [{"loc": "3.3 Star Formation Rates", "quote": "The offset for that particular source is 1.1 arcsec."}]},
+{"quantity": "Q_tot in the center of NGC 5258", "value": "about 3", "uncertainty": "not stated", "units": "dimensionless", "from_step": 9, "evidence": [{"loc": "5.2 Toomre Stability", "quote": "In the center of NGC 5258, the Q value is about 3"}]}
+],
+"findings_qualitative": [
+{"value": "Molecular gas is concentrated in the center of NGC 5257 but in the south spiral arm of NGC 5258", "evidence": [
+{"loc": "3.1 Gas Mass", "quote": "For NGC 5257, the gas is clearly concentrated in the center."},
+{"loc": "3.1 Gas Mass", "quote": "For NGC 5258, the gas is concentrated in the south spiral arm instead of the center."}
+]},
+{"value": "The off-center NGC 5257 star-forming regions with short depletion times are associated with young massive clusters", "evidence": [{"loc": "3.3 Star Formation Rates", "quote": "We note that these regions with short depletion times are generally associated with the existence of young massive star clusters"}]},
+{"value": "Star-forming regions outside the NGC 5257 center have Toomre factor below 0.5 (highly unstable); gas Q exceeds Q_tot by a factor 2.5 to 10", "evidence": [
+{"loc": "5.2 Toomre Stability", "quote": "Except for that region, all the star forming regions have a Toomre factor below 0.5, which is highly unstable to gravitational collapse."}
+]}
+],
+"claims": [
+{"hypothesis": "Is Arp 240 in an early merger stage as simulations suggest?", "experiment": "Global gas fraction and SFE from ALMA 12CO 1-0 gas masses, Spitzer stellar masses and radio SFR, compared with other close pairs", "result": "Lower global gas fraction but higher SFE than typical close pairs; global depletion time about 1e8 yr", "finding": "Arp 240 may already be in an advanced merger stage despite having just passed first passage in simulations", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "which suggests that this system may already be in an advanced merger stage."},
+{"loc": "7 Conclusions", "quote": "So in its present state, Arp 240 might have properties closer to the late stage mergers identified in (cite: Pan_2018)."}
+]},
+{"hypothesis": "What is the CO-to-H2 conversion factor in Arp 240 regions?", "experiment": "RADEX modeling of 12CO 1-0, 2-1, 3-2 and 13CO 1-0 in three regions, plus a pixel-by-pixel LTE analysis", "result": "RADEX alpha_CO for 12CO/13CO = 50 is 0.9, 0.4 and 1.5; LTE mean values are 0.50 to 1.27", "finding": "alpha_CO is close to or smaller than the ULIRG value, though dependent on the assumed 12CO/13CO and 12CO/H2 abundances", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "Both the RADEX modeling and a local thermal equilibrium (LTE) analysis show that the regions are most likely to have a CO-to-H$_2$ conversion factor"},
+{"loc": "4.2 CO-to-H2 Conversion Factor", "quote": "However, the derived conversion factor is highly dependent on the assumed"}
+]},
+{"hypothesis": "Do star-forming regions in Arp 240 have short molecular gas depletion times?", "experiment": "33 GHz SFR and 12CO 2-1 gas surface density in apertures and in individual pixels", "result": "Aperture depletion times 0.27e8 to 2.16e8 yr, shortest in the off-center NGC 5257 sources", "finding": "Most star-forming regions have depletion times under 100 Myr, comparable to ULIRGs for off-center sources", "support": "supported", "evidence": [
+{"loc": "abstract", "quote": "we find that most star forming regions have molecular gas depletion times of less than 100 Myr."}
+]},
+{"hypothesis": "Why does the SFE per free-fall time exceed 100% in some regions?", "experiment": "Computed eps_ff with and without the stellar potential, tested Toomre Q, the 2-1/1-0 ratio and alpha_CO as alternative causes", "result": "eps_ff near or above 1 in off-center NGC 5257 regions with YMCs; stellar potential, Q and alpha_CO do not remove it", "finding": "The 33 GHz emission is likely dominated by YMCs, causing an overestimate of eps_ff; needs pc-resolution data to confirm", "support": "partially", "evidence": [
+{"loc": "abstract", "quote": "After exploring various factors, we argue that this is mainly due to the fact that radio continuum emission in those regions is dominated by that from YMCs"},
+{"loc": "5.3 Causes to the high eps_ff", "quote": "which can be tested using $\\sim$pc resolution radio continuum data"}
+]},
+{"hypothesis": "Does disk instability (Toomre Q) set depletion time or eps_ff?", "experiment": "Q_tot maps with stars and gas, compared with t_dep and eps_ff pixel by pixel", "result": "All major star-forming regions have Q_tot below 1 but no trend with t_dep or eps_ff", "finding": "Q_tot only sets the criterion for collapse, not its speed, as in Leroy et al.", "support": "supported", "evidence": [
+{"loc": "5.2 Toomre Stability", "quote": "We see there is no clear trend in both plots."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Few resolved CO studies of early-stage mergers exist; a still earlier merger than Arp 55 can test the alpha_CO transition", "evidence": [{"loc": "1 Introduction", "quote": "A study of an even earlier merger will help us to explore this problem."}]},
+{"field": "why_this_method", "value": "RADEX with multiple CO lines constrains gas properties and alpha_CO in resolved regions", "evidence": [{"loc": "1 Introduction", "quote": "One of the tools to constrain the molecular gas properties as well as the conversion factor is RADEX modeling (cite: vandertak_2007)."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Stellar potential, Toomre instability and the 2-1/1-0 ratio were examined as causes of high eps_ff and found insufficient (the ratio helps only for the south region)", "evidence": [
+{"loc": "5.3 Causes to the high eps_ff", "quote": "However, changing the $^{12}$CO $J$=2-1/1-0 ratio does not help for the other two off-center star forming regions in NGC 5257."},
+{"loc": "5.3 Causes to the high eps_ff", "quote": "We further excluded the factor of Toomre instability in Section 5.2"}
+]}
+],
+"limitations_admitted": [
+{"value": "SMA 12CO 3-2 missing flux at the NGC 5257 center", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "Possibly due to the missing flux problem of the SMA data (cite: Wilson_2008), the center of NGC 5257 has an extremely low"}]},
+{"value": "Only one 13CO line, so the 12CO/13CO abundance ratio must be fixed and alpha_CO depends on it", "evidence": [{"loc": "4.1 RADEX Modeling", "quote": "To constrain all the parameters, we would still need an additional"}]},
+{"value": "Limited ALMA sensitivity: no CO detection out to the isophotal radius", "evidence": [{"loc": "3.1 Gas Mass", "quote": "Due to the limited sensitivity, we do not detect molecular gas out to the isophotal radius"}]},
+{"value": "Toomre analysis assumes a thin disk with no external force, not ideal for mergers", "evidence": [{"loc": "5.2 Toomre Stability", "quote": "Finally, we note that the Toomre instability analysis assumes the galaxy disk to be infinitely thin without any external force."}]}
+],
+"referee_caveats_inferred": [
+"alpha_CO conclusions rest on a fixed 12CO/13CO ratio and a fixed 12CO/H2 abundance, so the 'close to ULIRG' result is largely an assumption-driven range",
+"RADEX results come from only three regions with beam-matched SMA data and a missing-flux problem; density is unconstrained by 2 dex",
+"The ULIRG alpha_CO is assumed in the gas masses used for the main depletion time and eps_ff results, so the SFE conclusions inherit that assumption",
+"The YMC-dominated radio emission explanation is not tested with data of pc resolution",
+"Regions are drawn by eye, so region-based numbers are hard to reproduce exactly"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Paper states the data are public in the references and available from the authors on request", "evidence": [{"loc": "Data Availability", "quote": "This research is based on public data available in the references. The whole dataset can be obtained from the authors by request."}]}
+],
+"code_released": [
+{"value": "Moment-map Python script of Sun et al. is public on GitHub; no code released by the authors themselves", "evidence": [{"loc": "footnote 2", "quote": "https://github.com/astrojysun/Sun_Astro_Tools/blob/master/sun_astro_tools/spectralcube.py"}]}
+],
+"missing_for_reproduction": [
+"Weighting, robust, cell and image sizes, and line-free channels for the CO cubes",
+"Aperture and region definitions (drawn by eye) for ratios, RADEX regions and depletion times",
+"RADEX grid ranges and priors beyond optical depth",
+"The 33 GHz VLA image (Linden et al.) and the SMA 12CO 3-2 data (Wilson et al.)",
+"The sigma_v map definition used in eps_ff and Toomre Q"
+],
+"estimated_data_volume_inferred": "Band 3 and Band 6 12m+7m mosaics with several spectral windows; likely tens to a few hundred GB of raw/calibrated data (estimate)",
+"score_inferred": 3,
+"score_reason": "ALMA data and archive scripts are public and the imaging/moment/ratio recipe is largely given with CASA versions, but imaging weights, masks, regions and RADEX priors are missing and the SMA and VLA inputs come from other papers.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Key results need the SMA 3-2 and VLA 33 GHz data and hand-drawn regions, and several imaging settings are not stated.",
+"methods_papers": [
+{"citation": "(cite: Sun_2018)", "why": "Moment 1 and 2 map algorithm"},
+{"citation": "(cite: vandertak_2007)", "why": "RADEX radiative transfer code"},
+{"citation": "(cite: Kamenetzky_2016)", "why": "Bayesian likelihood code for RADEX grids"},
+{"citation": "(cite: Violino_2018)", "why": "alpha_CO prescription from starburst probability"},
+{"citation": "(cite: Murphy_2011)", "why": "33 GHz SFR calibration"},
+{"citation": "(cite: Wilson_2019)", "why": "Gas scale height and eps_ff formalism"}
+],
+"companion_papers": [
+{"citation": "(cite: Sliwa_2017)", "why": "Arp 55 CO study used for comparison of alpha_CO and abundance ratios"},
+{"citation": "(cite: Wilson_2008)", "why": "SMA 12CO 3-2 data for Arp 240"},
+{"citation": "(cite: Linden_2019)", "why": "VLA 33 GHz data of Arp 240"},
+{"citation": "(cite: Linden_2017)", "why": "Young massive cluster catalogue for the system"},
+{"citation": "(cite: Privon_2013)", "why": "Merger simulation placing Arp 240 just past first passage"}
+],
+"related_projects_or_surveys": ["ALMA project 2015.1.00804.S (PI Sliwa)", "Spitzer project 70038 (PI Sanders)"]
+}

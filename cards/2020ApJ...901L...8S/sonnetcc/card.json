@@ -1,0 +1,1413 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...901L...8S",
+  "title": "Molecular Gas Properties on Cloud Scales across the Local Star-forming Galaxy Population",
+  "year": 2020,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "Sun, Jiayi",
+  "n_authors": 37,
+  "arxiv_id": "2009.01842",
+  "doi": "10.3847/2041-8213/abb3be",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2012.1.00650.S",
+   "2015.1.00925.S",
+   "2015.1.00956.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L",
+   "2018.1.01321.S",
+   "2018.1.01651.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "PHANGS-ALMA well samples the local star-forming main sequence across two decades in stellar mass"
+   },
+   {
+    "loc": "Data and Measurements",
+    "quote": "We include the 70 PHANGS-ALMA galaxies that had fully-processed ALMA data by December 2019"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "70 PHANGS-ALMA nearby star-forming galaxies (66 used for data presentation)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "per-galaxy distances given in the Galaxy Sample table (column d)",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "We include the 70 PHANGS-ALMA galaxies that had fully-processed ALMA data by December 2019"
+       },
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(4) Distance (cite: Tully_etal_2009)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Tully et al. 2009 (Extragalactic Distance Database)",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "We include the 70 PHANGS-ALMA galaxies that had fully-processed ALMA data by December 2019"
+       },
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(4) Distance (cite: Tully_etal_2009)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do cloud-scale (~100 pc) molecular gas surface density, velocity dispersion, turbulent pressure and virial parameter vary across the local star-forming galaxy population and with galactic environment (radius, bars, spiral arms, host galaxy properties)?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "In this Letter, we report measurements of the cloud-scale molecular gas surface density and velocity dispersion, as well as estimates of the turbulent pressure and the virial parameter."
+     },
+     {
+      "loc": "abstract",
+      "quote": "Our results provide key empirical constraints on the physical link between molecular cloud populations and their galactic environment."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00650.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2012.1.00650.S"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.01161.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2013.1.01161.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00925.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00925.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00956.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2015.1.00956.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00392.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00392.S"
+      }
+     ]
+    },
+    {
+     "code": "2017.1.00886.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2017.1.00886.L"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01321.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.1.01321.S"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01651.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA#2018.1.01651.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "The PHANGS-ALMA $\\mathrm{CO}\\,(2\\text{--}1)$ data have native spatial resolutions of"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA interferometric array combined with single dish; three nearest galaxies observed only with ACA 7-m and total power",
+    "evidence": [
+     {
+      "loc": "Data and Measurements",
+      "quote": "They combine ALMA interferometric array and single dish observations to recover emission across the full range of spatial scales"
+     },
+     {
+      "loc": "Galaxy Sample table notes",
+      "quote": "These three very nearby galaxies are only observed by the ACA 7-m and total power telescopes."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "native 50-150 pc; convolved to common 150 pc (70 galaxies) and 90 pc (35 galaxies)",
+    "evidence": [
+     {
+      "loc": "Data and Measurements",
+      "quote": "have native spatial resolutions of $50{-}150$ pc at the distances of the target galaxies"
+     },
+     {
+      "loc": "Data and Measurements",
+      "quote": "We convolve the data cubes to a common $150$ pc spatial resolution to allow direct comparison between all 70 galaxies."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "1 sigma noise 0.2-0.3 K per 2.5 km/s channel",
+    "evidence": [
+     {
+      "loc": "Data and Measurements",
+      "quote": "$1\\sigma$ noise levels of $0.2{-}0.3$ K per $2.5$ $\\rm km\\,s^{-1}$ channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Extragalactic Distance Database (EDD)",
+     "provided": {
+      "value": "galaxy distances",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "We acknowledge the usage of the Extragalactic Distance Database"
+       },
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(4) Distance (cite: Tully_etal_2009)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Galaxy distances",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(4) Distance (cite: Tully_etal_2009)"
+       }
+      ]
+     },
+     "citation": "(cite: Tully_etal_2009)"
+    },
+    {
+     "what": {
+      "value": "Galaxy inclinations and position angles",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(5–6) Galaxy inclination and position angle (cite: Lang_etal_2020)"
+       }
+      ]
+     },
+     "citation": "(cite: Lang_etal_2020)"
+    },
+    {
+     "what": {
+      "value": "Galaxy global stellar mass, SFR and effective radius",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(7–9) Galaxy global stellar mass, SFR, and the effective (half-mass) radius estimated from the measured stellar scale length (cite: Leroy_etal_2019)"
+       }
+      ]
+     },
+     "citation": "(cite: Leroy_etal_2019)"
+    },
+    {
+     "what": {
+      "value": "CO(2-1)-to-CO(1-0) line ratio R21 = 0.65",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "Here $R_{21}=0.65$ is the adopted $\\mathrm{CO}\\,(2\\text{--}1)$-to-$\\mathrm{CO}\\,(1\\text{--}0)$ line ratio (cite: Leroy_etal_2013b; denBrok_etal_2020b)"
+       }
+      ]
+     },
+     "citation": "(cite: Leroy_etal_2013b; denBrok_etal_2020b)"
+    },
+    {
+     "what": {
+      "value": "Metallicity-dependent alpha_CO prescription",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "We adopt a metallicity-dependent $\\alpha_\\mathrm{CO}$ (cite: Accurso_etal_2017):"
+       }
+      ]
+     },
+     "citation": "(cite: Accurso_etal_2017)"
+    },
+    {
+     "what": {
+      "value": "Galaxy global mass-metallicity relation and fixed radial metallicity gradient used to estimate Z'",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "assuming a galaxy global mass–metallicity relation (cite: Sanchez_etal_2019) and a fixed radial metallicity gradient within a galaxy (cite: Sanchez_etal_2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Sanchez_etal_2019; Sanchez_etal_2014)"
+    },
+    {
+     "what": {
+      "value": "Bar and spiral-arm classification of galaxies",
+      "evidence": [
+       {
+        "loc": "Galaxy Sample table notes",
+        "quote": "(2–3) If the galaxy has identifiable stellar bars and spiral arms (? – ambiguous; see M. Querejeta et al. 2020, in preparation)"
+       }
+      ]
+     },
+     "citation": "M. Querejeta et al. 2020, in preparation"
+    },
+    {
+     "what": {
+      "value": "CO rotation curves used to check unresolved rotation in line widths",
+      "evidence": [
+       {
+        "loc": "3.2 Correlation with Galactocentric Radius",
+        "quote": "Using the CO rotation curves from (cite: Lang_etal_2020), we verified that unresolved rotation often represents a minor contribution to our measured line width"
+       }
+      ]
+     },
+     "citation": "(cite: Lang_etal_2020)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "S/N>3.5 in three consecutive channels, expanded to adjacent S/N>2 in two successive channels",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "For the release that we use, the masks begin with all regions with $\\text{S/N}>3.5$ in three consecutive channels."
+      },
+      {
+       "loc": "Footnote 3",
+       "quote": "These masks are then expanded to include all adjacent regions with $\\text{S/N}>2$ in two successive channels."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "ALMA interferometric array plus single dish combined (details in A. K. Leroy et al. 2020b, in preparation)",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "They combine ALMA interferometric array and single dish observations to recover emission across the full range of spatial scales (see A. K. Leroy et al. 2020b, in preparation)."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "convolved to common 150 pc resolution (all 70 galaxies); 90 pc for a subset of 35",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We convolve the data cubes to a common $150$ pc spatial resolution to allow direct comparison between all 70 galaxies."
+      },
+      {
+       "loc": "Data and Measurements",
+       "quote": "For a subset of 35 galaxies, we are also able to convolve the cubes to $90$ pc resolution"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "fixed physical resolution of 150 pc (70 galaxies) and 90 pc (35 galaxies)",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We convolve the data cubes to a common $150$ pc spatial resolution to allow direct comparison between all 70 galaxies."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Product creation (masking, moment maps, uncertainty maps) follows companion PHANGS-ALMA data paper",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "This product creation scheme closely follows and is detailed in A. K. Leroy et al. (2020b, in preparation)."
+       }
+      ]
+     },
+     "from_reference": "A. K. Leroy et al. (2020b, in preparation)"
+    },
+    {
+     "what": {
+      "value": "Interferometer plus single dish combination and data processing",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "They combine ALMA interferometric array and single dish observations to recover emission across the full range of spatial scales (see A. K. Leroy et al. 2020b, in preparation)."
+       }
+      ]
+     },
+     "from_reference": "A. K. Leroy et al. 2020b, in preparation"
+    },
+    {
+     "what": {
+      "value": "Effective line width definition sigma_CO = I_CO / (sqrt(2 pi) T_peak)",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "$\\sigma_\\mathrm{CO}= I_\\mathrm{CO}/ (\\sqrt{2\\pi}\\, T_\\mathrm{peak})$ following (cite: Heyer_etal_2001)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Heyer_etal_2001)"
+    },
+    {
+     "what": {
+      "value": "Instrumental line broadening correction of sigma_CO (equation 5 of an earlier paper; the citation is missing from the text)",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "is subsequently corrected for the instrumental line broadening following (see equation 5 therein)"
+       }
+      ]
+     },
+     "from_reference": "reference not given in the text (equation 5 therein)"
+    },
+    {
+     "what": {
+      "value": "Estimating local metallicity Z' from global stellar mass and effective radius",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "Following (cite: Sun_etal_2020), we estimate $Z'$ based on galaxy global stellar mass and effective radius"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sun_etal_2020)"
+    },
+    {
+     "what": {
+      "value": "Fixed-scale (90 pc, 150 pc) measurement approach extended from the PHANGS-ALMA pilot sample",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Following our analysis of the PHANGS-ALMA pilot sample of $11$ galaxies (cite: Sun_etal_2018), we derive these measurements on fixed $90$ pc and $150$ pc scales"
+       }
+      ]
+     },
+     "from_reference": "(cite: Sun_etal_2018)"
+    },
+    {
+     "what": {
+      "value": "Density profile rho(r) proportional to r^-1 assumed for the virial parameter equation",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "The second equation assumes in addition that the gas structures have a density profile of $\\rho(r) \\propto r^{-1}$ (cite: Rosolowsky_Leroy_2006)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Rosolowsky_Leroy_2006)"
+    },
+    {
+     "what": {
+      "value": "Central/disk and arm/inter-arm region definitions",
+      "evidence": [
+       {
+        "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+        "quote": "The methodology closely follows (cite: Salo_etal_2015) and (cite: Herrera-Endoqui_etal_2015) and is detailed in M. Querejeta et al. (2020, in preparation)."
+       }
+      ]
+     },
+     "from_reference": "(cite: Salo_etal_2015); (cite: Herrera-Endoqui_etal_2015); M. Querejeta et al. (2020, in preparation)"
+    }
+   ],
+   "unstated_but_needed": [
+    "The calibrated, imaged and single-dish-combined CO(2-1) cubes themselves: imaging recipe, CASA version, weighting and deconvolution settings are only in the in-preparation Leroy et al. 2020b paper",
+    "Which data release the cubes come from beyond 'internal data release v3.4', and whether that release is public",
+    "How the noise in each cube (T_noise) was estimated and how uncertainty maps were propagated",
+    "How T_peak was defined and the exact instrumental line-broadening correction (the reference for 'equation 5 therein' is lost)",
+    "The convolution method and kernel used to reach the common 150 pc and 90 pc resolution",
+    "Details of the hexagonal resampling grid (offset, orientation, exact pixel size)",
+    "The Z' values per galaxy and the exact mass-metallicity relation parameters and gradient used for alpha_CO",
+    "How the mass-weighted percentiles and Spearman correlations were computed (tools, handling of uncertainties)",
+    "The exact masks of galaxy centers, disks, arm and inter-arm regions (defined in Querejeta et al. 2020, in preparation)",
+    "Rest frequency of CO(2-1) and the velocity or spectral windows used for masks"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Homogenize resolution",
+    "method": {
+     "value": "Convolve the data cubes to common 150 pc (70 galaxies) and 90 pc (35 galaxies) spatial resolution",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We convolve the data cubes to a common $150$ pc spatial resolution to allow direct comparison between all 70 galaxies."
+      },
+      {
+       "loc": "Data and Measurements",
+       "quote": "For a subset of 35 galaxies, we are also able to convolve the cubes to $90$ pc resolution"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Mask cubes to detected emission",
+    "method": {
+     "value": "Signal mask: S/N>3.5 in three consecutive channels, expanded to adjacent S/N>2 in two successive channels",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "For the release that we use, the masks begin with all regions with $\\text{S/N}>3.5$ in three consecutive channels."
+      },
+      {
+       "loc": "Footnote 3",
+       "quote": "These masks are then expanded to include all adjacent regions with $\\text{S/N}>2$ in two successive channels."
+      }
+     ]
+    },
+    "software": [
+     "SpectralCubeTools"
+    ],
+    "key_parameters": [
+     {
+      "value": "S/N>3.5 in 3 channels, then S/N>2 in 2 channels",
+      "evidence": [
+       {
+        "loc": "Footnote 3",
+        "quote": "These masks are then expanded to include all adjacent regions with $\\text{S/N}>2$ in two successive channels."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Censoring function of the mask derived analytically (Appendix) and CO flux completeness f_CO reported per galaxy",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We report in Table [2](#tab:sample) (column 12) the CO flux completeness for each galaxy (the flux within the mask divided by the total flux in the data cube, or $f_\\mathrm{CO}$)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Make integrated intensity and line width maps",
+    "method": {
+     "value": "Integrate masked cubes along the spectral axis to get I_CO and effective line width sigma_CO = I_CO/(sqrt(2 pi) T_peak), corrected for instrumental broadening; uncertainty maps by error propagation",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We integrate the masked cubes along the spectral axis to produce the integrated intensity ($I_\\mathrm{CO}$) and effective line width ($\\sigma_\\mathrm{CO}$) maps."
+      },
+      {
+       "loc": "Data and Measurements",
+       "quote": "We produce associated uncertainty maps via error propagation from the estimated noise in the cube."
+      }
+     ]
+    },
+    "software": [
+     "SpectralCubeTools",
+     "spectral-cube"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Gaussian line profile so that sigma_CO equals the dispersion",
+      "evidence": [
+       {
+        "loc": "Footnote 4",
+        "quote": "Note that for a Gaussian line profile, $\\sigma_\\mathrm{CO}$ equals its dispersion."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Resample to independent sightlines",
+    "method": {
+     "value": "Resample maps onto hexagonal pixels matching the beam size so measurements are nearly independent",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We resample the two-dimensional maps of $I_\\mathrm{CO}$, $\\sigma_\\mathrm{CO}$, and their uncertainties with hexagonal pixels matching the beam size."
+      },
+      {
+       "loc": "Data and Measurements",
+       "quote": "This ensures that the resampled measurements are nearly mutually independent."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Convert to surface density and velocity dispersion",
+    "method": {
+     "value": "sigma_mol = sigma_CO; Sigma_mol = alpha_CO R21^-1 I_CO with alpha_CO = 4.35 Z'^-1.6 Msun pc^-2 (K km/s)^-1 and R21 = 0.65",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "\\Sigma_\\mathrm{mol}= \\alpha_\\mathrm{CO}\\;R_{21}^{-1}\\;I_\\mathrm{CO}"
+      },
+      {
+       "loc": "Data and Measurements",
+       "quote": "\\alpha_\\mathrm{CO}= 4.35\\,Z'^{-1.6}"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "R21 = 0.65",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "Here $R_{21}=0.65$ is the adopted $\\mathrm{CO}\\,(2\\text{--}1)$-to-$\\mathrm{CO}\\,(1\\text{--}0)$ line ratio (cite: Leroy_etal_2013b; denBrok_etal_2020b)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Metallicity-dependent alpha_CO (Accurso et al. 2017) with Z' from the global mass-metallicity relation and a fixed radial gradient",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "assuming a galaxy global mass–metallicity relation (cite: Sanchez_etal_2019) and a fixed radial metallicity gradient within a galaxy (cite: Sanchez_etal_2014)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Derive turbulent pressure and virial parameter",
+    "method": {
+     "value": "P_turb ~ rho_mol sigma_mol^2 and alpha_vir computed from Sigma_mol, sigma_mol and beam FWHM D_beam via closed-form scalings (3.3e4 kB K cm^-3 and 3.1 prefactors at Sigma=100 Msun pc^-2, sigma=10 km/s, D=150 pc)",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "We use $\\Sigma_\\mathrm{mol}$ and $\\sigma_\\mathrm{mol}$ to estimate the mean turbulent pressure in the molecular gas, $P_\\mathrm{turb}\\approx\\rho_\\mathrm{mol}\\,\\sigma_\\mathrm{mol}^2$, and the virial parameter, $\\alpha_\\mathrm{vir}$, via"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "D_beam (beam FWHM) is the line-of-sight depth",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "Here $D_\\mathrm{beam}$ denotes the beam full-width-half-maximum and is assumed to be the depth along the line of sight"
+       }
+      ]
+     },
+     {
+      "value": "Single, spherical gas structure filling each beam; density profile proportional to r^-1 for alpha_vir",
+      "evidence": [
+       {
+        "loc": "Data and Measurements",
+        "quote": "Both equations assume a single, spherical gas structure filling each beam"
+       },
+       {
+        "loc": "Data and Measurements",
+        "quote": "The second equation assumes in addition that the gas structures have a density profile of $\\rho(r) \\propto r^{-1}$ (cite: Rosolowsky_Leroy_2006)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared 90 pc and 150 pc measurements for galaxies with both; also checked unresolved rotation using CO rotation curves",
+     "evidence": [
+      {
+       "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+       "quote": "However, we see little difference in the median values of $\\sigma_\\mathrm{mol}$ and $\\alpha_\\mathrm{vir}$ at the two resolutions"
+      },
+      {
+       "loc": "3.2 Correlation with Galactocentric Radius",
+       "quote": "Using the CO rotation curves from (cite: Lang_etal_2020), we verified that unresolved rotation often represents a minor contribution to our measured line width"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compute statistics and correlations by environment",
+    "method": {
+     "value": "Area-weighted and mass-weighted percentile statistics; Spearman rank correlations; compare galaxy centers vs disks (barred and unbarred), arm vs inter-arm at fixed r_gal/R_eff, and galaxy-wide mass-weighted medians vs M*, SFR and offset from main sequence, with and without central regions",
+     "evidence": [
+      {
+       "loc": "Table 1 notes",
+       "quote": "The area-weighted statistics are derived from percentiles weighted by sightline number counts, whereas the mass-weighted statistics from percentiles weighted by molecular gas mass"
+      },
+      {
+       "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+       "quote": "and divide the PHANGS-ALMA CO footprint into a central region and a disk region based on near infrared images."
+      },
+      {
+       "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+       "quote": "For galaxies with strong spiral arms, we further identify arm regions and the corresponding inter-arm regions covering the same $r_\\mathrm{gal}$ range."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Central regions excluded to test whether galaxy-to-galaxy trends persist",
+     "evidence": [
+      {
+       "loc": "3.4 Correlation with Integrated Galaxy Properties",
+       "quote": "Nevertheless, the overall trends persist, and the rank correlation remain significant."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "Astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "spectral-cube",
+    "version": "v0.4.5 (from citation key)",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "SpectralCubeTools",
+    "version": "not stated",
+    "used_for": {
+     "value": "Python realization of the signal identification (masking) scheme and of the censoring function calculation",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "The `Python` realization of this signal identification scheme is available at <https://github.com/astrojysun/SpectralCubeTools>."
+      },
+      {
+       "loc": "Footnote 10",
+       "quote": "The `Python` realization of this censoring function calculation is available at: <https://github.com/astrojysun/SpectralCubeTools>."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Independent sightlines at 150 pc",
+    "value": "102 778 (70 galaxies)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "This yields 102 778 independent measurements at $150$ pc resolution in 70 galaxies, and 79 840 measurements at $90$ pc resolution in 35 galaxies."
+     }
+    ]
+   },
+   {
+    "quantity": "Independent sightlines at 90 pc",
+    "value": "79 840 (35 galaxies)",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "This yields 102 778 independent measurements at $150$ pc resolution in 70 galaxies, and 79 840 measurements at $90$ pc resolution in 35 galaxies."
+     }
+    ]
+   },
+   {
+    "quantity": "Mass-weighted median Sigma_mol at 150 pc (full sample)",
+    "value": "110",
+    "uncertainty": "not stated",
+    "units": "Msun pc^-2",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "mass-weighted median $\\Sigma_\\mathrm{mol}=110\\;\\mbox{$\\rm M_{\\odot}\\,pc^{-2}$}$ and mass-weighted median $\\sigma_\\mathrm{mol}=9.1\\;\\mbox{$\\rm km\\,s^{-1}$}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass-weighted median sigma_mol at 150 pc (full sample)",
+    "value": "9.1",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "mass-weighted median $\\Sigma_\\mathrm{mol}=110\\;\\mbox{$\\rm M_{\\odot}\\,pc^{-2}$}$ and mass-weighted median $\\sigma_\\mathrm{mol}=9.1\\;\\mbox{$\\rm km\\,s^{-1}$}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Range (+-3 sigma, 99.7%) of mass-weighted Sigma_mol and sigma_mol",
+    "value": "3.4 dex and 1.7 dex",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "range of the mass-weighted $\\Sigma_\\mathrm{mol}$ and $\\sigma_\\mathrm{mol}$ distributions is large, $3.4$ and $1.7$ dex respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Range of turbulent pressure across the sample",
+    "value": "6.5 dex",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "and turbulent pressures (6.5 dex) across the galaxies in our sample"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman rank correlation between Sigma_mol and sigma_mol",
+    "value": "0.77",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "rank correlation coefficient $\\rho=0.77$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass-weighted median virial parameter alpha_vir at 150 pc",
+    "value": "2.7",
+    "uncertainty": "1 sigma scatter 0.7 dex",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "$\\alpha_\\mathrm{vir}$ has a mass-weighted median value of $2.7$ and a $1\\sigma$ scatter of $0.7$ dex"
+     }
+    ]
+   },
+   {
+    "quantity": "Factor by which kinetic energy exceeds gravitational binding energy (150 pc)",
+    "value": "1.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "This means that the kinetic energy in the molecular gas on average slightly exceeds its gravitational binding energy by a factor of $1.3$ on $150$ pc scales."
+     }
+    ]
+   },
+   {
+    "quantity": "90 pc vs 150 pc mass-weighted median ratios for I_CO, Sigma_mol, P_turb",
+    "value": "1.5, 1.5, 2.0",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "at $90$ pc scales to be moderately higher than the $150$ pc scale values by factors of $1.5$, $1.5$, and $2.0$, respectively."
+     }
+    ]
+   },
+   {
+    "quantity": "Barred-galaxy centers vs disks, mass-weighted median Sigma_mol and sigma_mol",
+    "value": "~20 times and ~5 times higher",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+      "quote": "The centers of barred galaxies show ${\\sim}20$ times higher mass-weighted median $\\Sigma_\\mathrm{mol}$ and ${\\sim}5$ times higher mass-weighted median $\\sigma_\\mathrm{mol}$ compared to the disk regions"
+     }
+    ]
+   },
+   {
+    "quantity": "Arm vs inter-arm Sigma_mol ratio at fixed r_gal/R_eff",
+    "value": "1.5-2",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+      "quote": "Molecular gas in the arm regions shows typically $1.5{-}2$ times higher $\\Sigma_\\mathrm{mol}$ relative to the gas in the inter-arm regions at fixed $r_\\mathrm{gal}/R_\\mathrm{eff}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Arm vs inter-arm sigma_mol, P_turb, alpha_vir at fixed r_gal/R_eff",
+    "value": "~20% higher sigma_mol, ~2-3 times higher P_turb, ~15% lower alpha_vir",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+      "quote": "the gas in spiral arms shows ${\\sim}20\\%$ higher $\\sigma_\\mathrm{mol}$, ${\\sim}2{-}3$ times higher $P_\\mathrm{turb}$, and ${\\sim}15$% lower $\\alpha_\\mathrm{vir}$ at fixed $r_\\mathrm{gal}/R_\\mathrm{eff}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Galaxy-to-galaxy variation of mass-weighted median Sigma_mol and sigma_mol",
+    "value": "2 dex and 1 dex",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.4 Correlation with Integrated Galaxy Properties",
+      "quote": "the mass-weighted median $\\Sigma_\\mathrm{mol}$ and $\\sigma_\\mathrm{mol}$ vary by $2$ dex and $1$ dex from galaxy to galaxy, respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman correlation of galaxy-wide Sigma_mol and sigma_mol with global SFR",
+    "value": "0.72 and 0.58",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.4 Correlation with Integrated Galaxy Properties",
+      "quote": "global SFR ($\\rho=0.72$ and $0.58$), and offset in SFR from the local star-forming main sequence ($\\Delta\\text{MS}$; $\\rho=0.45$ and $0.35$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Spearman correlation of galaxy-wide alpha_vir with SFR and offset from main sequence",
+    "value": "-0.44 and -0.41",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "3.4 Correlation with Integrated Galaxy Properties",
+      "quote": "($\\rho=-0.44$) and $\\Delta\\text{MS}$ ($\\rho=-0.41$)"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Surface density, velocity dispersion and turbulent pressure increase towards smaller galactocentric radii",
+    "evidence": [
+     {
+      "loc": "3.2 Correlation with Galactocentric Radius",
+      "quote": "Both $\\Sigma_\\mathrm{mol}$ and $\\sigma_\\mathrm{mol}$ tend to increase towards smaller $r_\\mathrm{gal}/R_\\mathrm{eff}$."
+     }
+    ]
+   },
+   {
+    "value": "Centers of barred galaxies have exceptionally high surface density and velocity dispersion, and less bound gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "are exceptionally high in the centers of barred galaxies (where the gas also appears less gravitationally bound)"
+     }
+    ]
+   },
+   {
+    "value": "Galaxy-wide gas properties correlate with stellar mass, SFR and offset from the main sequence, and the correlations persist when galaxy centers are excluded",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These correlations persist even when we exclude regions with extraordinary gas properties in galaxy centers, which contribute significantly to the inter-galaxy variations."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do cloud-scale molecular gas properties vary widely across the local star-forming galaxy population?",
+    "experiment": "Pixel-by-pixel analysis of PHANGS-ALMA CO(2-1) cubes of 70 galaxies at fixed 150 pc (and 90 pc) resolution",
+    "result": "Surface density, velocity dispersion and turbulent pressure span 3.4, 1.7 and 6.5 dex",
+    "finding": "Cloud-scale gas properties vary dramatically across the sample",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Consistent with previous studies, we observe a wide range of molecular gas surface densities (3.4 dex), velocity dispersions (1.7 dex), and turbulent pressures (6.5 dex) across the galaxies in our sample."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is molecular gas on ~100 pc scales gravitationally bound?",
+    "experiment": "Computed alpha_vir from Sigma_mol, sigma_mol and beam size assuming a beam-filling spherical structure",
+    "result": "Mass-weighted median alpha_vir = 2.7 at 150 pc",
+    "finding": "Kinetic energy exceeds self-gravitational binding energy by a modest factor (1.3), under simplifying assumptions",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the inferred virial parameters suggest that the kinetic energy of the molecular gas typically exceeds its self-gravitational binding energy at"
+     },
+     {
+      "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+      "quote": "The calculation of $P_\\mathrm{turb}$ and $\\alpha_\\mathrm{vir}$ assumes an idealized sub-beam gas distribution"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do galaxy bars and spiral arms affect cloud-scale gas properties?",
+    "experiment": "Compared central vs disk regions in barred and unbarred galaxies, and arm vs inter-arm regions at fixed r_gal/R_eff",
+    "result": "Barred-galaxy centers ~20x higher Sigma_mol and ~5x higher sigma_mol than disks; arms 1.5-2x higher Sigma_mol than inter-arm",
+    "finding": "Bar centers are extreme (less bound gas); spiral arms moderately enhance properties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "are exceptionally high in the centers of barred galaxies (where the gas also appears less gravitationally bound), and (3) are moderately higher in spiral arms than in inter-arm regions."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do galaxy-wide cloud-scale gas properties correlate with host galaxy properties?",
+    "experiment": "Spearman correlations of galaxy mass-weighted medians with M*, SFR and offset from the main sequence, with and without central regions",
+    "result": "Significant correlations (e.g. rho = 0.72 and 0.58 with SFR for Sigma_mol and sigma_mol); they persist without centers",
+    "finding": "Gas in more massive, more actively star-forming galaxies is denser and more turbulent on ~100 pc scales",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The galaxy-wide averages of these gas properties also correlate with the integrated stellar mass, star formation rate, and offset from the star-forming main sequence of the host galaxies."
+     },
+     {
+      "loc": "3.4 Correlation with Integrated Galaxy Properties",
+      "quote": "Nevertheless, the overall trends persist, and the rank correlation remain significant."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "PHANGS-ALMA covers essentially all ALMA-visible nearby massive star-forming galaxies at cloud-scale resolution",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "The high resolution and sensitivity of the PHANGS-ALMA data offer an unprecedented opportunity to characterize molecular gas properties on"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Fixed-scale pixel-by-pixel analysis gives a simple, reproducible characterization of all detected emission",
+    "evidence": [
+     {
+      "loc": "Data and Measurements",
+      "quote": "This method provides a simple, reproducible characterization of all detected emission"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Cloud-identification (decomposition into individual objects) analyses of the same CO data are done in companion papers and give qualitatively similar conclusions",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "Complementary analyses decomposing the same CO data into individual objects (E. Rosolowsky et al. 2020, in preparation; A. Hughes et al., in preparation) yield qualitatively similar conclusions."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Masking excludes faint CO emission (censoring toward low I_CO, high sigma_CO)",
+     "evidence": [
+      {
+       "loc": "Data and Measurements",
+       "quote": "Our masking scheme guarantees high S/N ratio CO line measurements at the expense of excluding faint CO emission"
+      }
+     ]
+    },
+    {
+     "value": "P_turb and alpha_vir assume an idealized sub-beam gas distribution",
+     "evidence": [
+      {
+       "loc": "3.1 Statistics of Cloud-scale Molecular Gas Properties",
+       "quote": "The calculation of $P_\\mathrm{turb}$ and $\\alpha_\\mathrm{vir}$ assumes an idealized sub-beam gas distribution"
+      }
+     ]
+    },
+    {
+     "value": "Galaxy-center measurements affected by alpha_CO and R21 uncertainty",
+     "evidence": [
+      {
+       "loc": "3.3 Correlation with Galaxy Bars and Spiral Arms",
+       "quote": "Our measurements in galaxy centers can be affected by uncertainty related to $\\alpha_\\mathrm{CO}$ and $R_\\mathrm{21}$."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Metallicity-dependent alpha_CO from global scaling relations, applied with no uncertainty propagation, directly sets Sigma_mol and alpha_vir",
+    "Fixed R21=0.65 for all galaxies and environments",
+    "Line widths may include unresolved bulk motions, so sigma_mol may not be purely turbulent",
+    "The masking-induced censoring biases medians and correlations toward bright, narrow-line gas",
+    "Upstream data processing is deferred to papers in preparation, so the full pipeline cannot be checked from this paper",
+    "Uncertainties on the reported correlations and medians are not given"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Per-sightline measurement table published at 150 pc and 90 pc",
+    "evidence": [
+     {
+      "loc": "Summary",
+      "quote": "We publish the resultant 102 778 independent measurements at $150$ pc scales and 79 840 measurements at $90$ pc scales in Table"
+     }
+    ]
+   },
+   "code_released": [
+    {
+     "value": "SpectralCubeTools (masking scheme and censoring function) on GitHub",
+     "evidence": [
+      {
+       "loc": "Footnote 3",
+       "quote": "The `Python` realization of this signal identification scheme is available at <https://github.com/astrojysun/SpectralCubeTools>."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Processed PHANGS-ALMA CO(2-1) cubes (internal data release v3.4) or the full imaging and single-dish combination recipe from Leroy et al. 2020b (in preparation)",
+    "Beam convolution and hexagonal resampling details",
+    "Region masks (centers, arms, inter-arm) and bar/arm classifications from Querejeta et al. (in preparation)",
+    "Per-galaxy Z' values and stellar mass, SFR and R_eff source tables"
+   ],
+   "estimated_data_volume_inferred": "Raw ALMA data for 8 projects covering 70 galaxies plus ACA and total power is likely several TB; the released cubes are likely hundreds of GB.",
+   "score_inferred": 3,
+   "score_reason": "The measurement equations, masking thresholds, conversion factors and released per-sightline table are given and code is public, but cube production and region definitions are deferred to papers in preparation.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The recipe from cubes to results is clear, but the processed cubes come from an internal release with the imaging recipe in a companion paper, so redoing from the paper alone is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "A. K. Leroy et al. 2020b, in preparation",
+     "why": "Details data combination, cube processing and product creation scheme"
+    },
+    {
+     "citation": "(cite: Sun_etal_2018)",
+     "why": "Pilot-sample cloud-scale analysis that this paper extends"
+    },
+    {
+     "citation": "(cite: Heyer_etal_2001)",
+     "why": "Effective line width definition"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "E. Rosolowsky et al. 2020, in preparation",
+     "why": "Cloud identification analysis of the same CO data"
+    },
+    {
+     "citation": "M. Querejeta et al. 2020, in preparation",
+     "why": "Bar, spiral arm and central region definitions"
+    },
+    {
+     "citation": "A. K. Leroy et al. 2020a, in preparation",
+     "why": "PHANGS-ALMA survey paper"
+    },
+    {
+     "citation": "(cite: Sun_etal_2020)",
+     "why": "Related study of molecular gas dynamical state and pressure"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "PHANGS-ALMA Large Program and pilot samples"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2020ApJ...901L...8S",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T03:13:38",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 106,
+  "quotes_ok": 106,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 8,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2013.1.01161.S"
+  ],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 16,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 99,
+   "stated": 55,
+   "rate": 0.556
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,181 @@
+{
+ "bibcode": "2016ApJ...824..132N",
+ "title": "ALMA Science Verification Data: Millimeter Continuum Polarimetry of the Bright Radio Quasar 3C 286",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/824/2/132",
+ "arxiv_id": "1605.00051",
+ "fields": [
+  "agn_and_quasars",
+  "instrumentation"
+ ],
+ "question": "What are the millimeter (1.3 mm) total intensity and linear polarization properties of the quasar 3C 286, and how do they relate to the centimeter EVPA trend and core shift?",
+ "alma_project_codes": [
+  "2011.0.00017.SV"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "thirty-one 12 m antennas",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "SW component flux 31.4 mJy at 8.4 GHz",
+    "evidence": [
+     {
+      "loc": "3 Results",
+      "quote": "The flux density of the SW component reported in (cite: Akujor1995) is 31.4 mJy at 8.4 GHz."
+     }
+    ]
+   },
+   "citation": "Akujor1995"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Polarization calibration",
+   "method": "Gain solution without polarization model, qufromgain for Q/U of calibrator, KCROSS and XYf+QU for cross-hand, then polcal for D-terms with J1337-1257",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Refine gain calibration and self-calibrate",
+   "method": "Model gain calibrator I,Q,U with CLEAN and redo gains; self-cal 3C 286 with phase then amp+phase",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "solint 30 s; Briggs robust 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure core and SW intensity and polarization",
+   "method": "Peak intensities from I, Q, U images; polarization bias correction for the SW component",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Absolute EVPA error 0.4 deg from 2 deg misalignment over 29 antennas"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Core-shift analysis from archival VLBA",
+   "method": "Gaussian fits of C1 and C2 with JMFIT; separation vs frequency; extrapolate with power law k=1 to 230 GHz; super-resolution at 13 cm",
+   "software": [
+    "AIPS JMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "C2 position independent of frequency and optically thin"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Core peak intensity I",
+   "value": "387.77",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "387.77$\\pm$0.05 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Core polarized intensity",
+   "value": "64.81",
+   "uncertainty": "0.07",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "64.81$\\pm$0.07 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Core fractional polarization",
+   "value": "16.7",
+   "uncertainty": "0.2",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The polarization percentage of the core is 16.7$\\pm$0.2%"
+    }
+   ]
+  },
+  {
+   "quantity": "Core EVPA",
+   "value": "38.6",
+   "uncertainty": "0.4",
+   "units": "degrees",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Results",
+     "quote": "The EVPA of the core is $38.6\\pm0.4$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "SW component peak intensity",
+   "value": "0.55",
+   "uncertainty": "0.05",
+   "units": "mJy/beam",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "0.55$\\pm$0.05 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted 1.3 mm core offset upstream of 2 cm core",
+   "value": "0.17 mas (~1.3 pc projected)",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Discussion",
+     "quote": "we expect the 1.3 mm radio core to be located $\\sim$ 0.17 mas upstream of the 2 cm core."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size, and CLEAN iterations/threshold/masks",
+  "Which data were excluded in the first half of the observation",
+  "Flagged channels and antennas list",
+  "Beam size of final images",
+  "Fitting regions/method for core and SW flux and polarization",
+  "Details of core-shift power-law extrapolation and error propagation",
+  "Image parameters for VLBA reduction and super-resolution beam"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, iterations)",
+  "Exact flagging/excluded time range",
+  "VLBA fit details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public SV data and CASA guide, but imaging and flagging details missing.",
+ "rediscovery_reason": "Public SV data, CASA guide recipe, numeric results (flux, polarization fraction, EVPA).",
+ "source_card": "cards/2016ApJ...824..132N/sonnet/card.md"
+}

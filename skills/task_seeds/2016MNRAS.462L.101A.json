@@ -1,0 +1,148 @@
+{
+ "bibcode": "2016MNRAS.462L.101A",
+ "title": "Dipper discs not inclined towards edge-on orbits",
+ "year": 2016,
+ "doi": "10.1093/mnrasl/slw140",
+ "arxiv_id": "1607.03115",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "Are dipper stars' disks all viewed nearly edge-on, as assumed by the proposed dip mechanisms?",
+ "alma_project_codes": [
+  "2011.0.00526.S",
+  "2012.1.00046.S"
+ ],
+ "data": {
+  "bands": "880 um continuum (Cycle 0), 870 um continuum (Cycle 1)",
+  "arrays": "not stated",
+  "angular_resolution": "0.67\"x0.42\" (EPIC 204638512), 0.64\"x0.45\" (EPIC 205151387), 0.28\"x0.19\" (EPIC 203850058)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Inclination of EPIC 204638512, 6±1.5 deg, from 12CO first-moment map",
+    "evidence": [
+     {
+      "loc": "3.1 Disk Inclinations",
+      "quote": "we adopt the disk inclination of $i=6$$^\\circ$$\\pm$1.5$^\\circ$ derived by (cite: 2012ApJ...753...59M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2012ApJ...753...59M)"
+  },
+  {
+   "what": {
+    "value": "Stellar properties (SpT, Teff, AV, disk type)",
+    "evidence": [
+     {
+      "loc": "Sample",
+      "quote": "Stellar properties are from the literature (cite: 2002A&A...393..597N; 2014ApJ...787...42C; 2016ApJ...816...69A)."
+     }
+    ]
+   },
+   "citation": "(cite: 2002A&A...393..597N; 2014ApJ...787...42C; 2016ApJ...816...69A)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit visibilities for EPIC 205151387 inclination",
+   "method": "uvmodelfit elliptical Gaussian to visibilities; inclination from aspect ratio assuming circular disk; checked against CO first-moment map",
+   "software": [
+    "CASA",
+    "uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "circular disk structure, Keplerian rotation for moment-map check"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit EPIC 203850058 inclination",
+   "method": "uvmodelfit elliptical Gaussian with initial PA≈20 deg, then imfit image-plane check",
+   "software": [
+    "CASA",
+    "uvmodelfit",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "circular disk, Gaussian representation"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "EPIC 205151387 inclination",
+   "value": "53",
+   "uncertainty": "2",
+   "units": "deg",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Disk Inclinations",
+     "quote": "finding $i=53$$^\\circ$$\\pm$2$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "EPIC 205151387 flux density",
+   "value": "49.5",
+   "uncertainty": "0.4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Disk Inclinations",
+     "quote": "We found $F=49.5\\pm0.4$ mJy and PA$=-22$$^\\circ$$\\pm$3$^\\circ$"
+    }
+   ]
+  },
+  {
+   "quantity": "EPIC 203850058 inclination (imfit)",
+   "value": "73",
+   "uncertainty": "23",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk Inclinations",
+     "quote": "we found a nearly edge-on disk with $i=73$$^\\circ$$\\pm$23$^\\circ$, $F=4.2\\pm0.1$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "EPIC 203850058 flux density (uvmodelfit)",
+   "value": "4.0",
+   "uncertainty": "0.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Disk Inclinations",
+     "quote": "We found $F=4.0\\pm0.1$ mJy and PA$=15$$^\\circ$$\\pm$1$^\\circ$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Which ALMA calibrated products/images were used for EPIC 204638512 and 205151387 and their processing",
+  "CASA version and pipeline version",
+  "Image size, cell size, clean threshold for the images",
+  "uvmodelfit initial guesses and region/fit settings for EPIC 205151387",
+  "How inclination and its error were derived from aspect ratio r",
+  "Distances adopted"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "fit starting values",
+  "exact data selections"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple CASA fits, but few settings are given.",
+ "rediscovery_reason": "Public data, simple fits, numeric results.",
+ "source_card": "cards/2016MNRAS.462L.101A/sonnet/card.md"
+}

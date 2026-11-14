@@ -1,0 +1,419 @@
+{
+ "bibcode": "2025A&A...698A.165A",
+ "title": "Confirmation of a ring structure in the disk around MP Mus (PDS 66) with ALMA Band 7 observations",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202554484",
+ "arxiv_id": "2504.17978",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the MP Mus disk show a ring in ALMA Band 7 (0.89 mm) dust continuum, and what do the spectral index and the gas versus dust extent imply about radial drift and grain growth?",
+ "alma_project_codes": [
+  "2017.1.01419.S",
+  "2017.1.01167.S",
+  "2021.1.01205.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm) from two Cycle 5 programs; Band 7 (0.89 mm) from one Cycle 8 program",
+  "arrays": "not stated",
+  "angular_resolution": "Beams 0.07\" x 0.05\" (Band 7) and 0.11\" x 0.09\" (Band 6) at robust = -0.5; 0.09\" x 0.07\" (Band 7) and 0.12\" x 0.10\" (Band 6) at robust = 0.5; about 5 au at 98 pc",
+  "sensitivity": "Continuum rms Band 7: 4.8e-5 Jy/beam (r=0.5), 5.8e-5 Jy/beam (r=-0.5); Band 6: 4.1e-5 (r=0.5), 3.9e-5 (r=-0.5)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Band 6 (1.3 mm) radial brightness profile (Frank) used for comparison with Band 7",
+    "evidence": [
+     {
+      "loc": "3.1.3 Frank radial profile",
+      "quote": "We then compare it with the one previously calculated in Band 6 by (cite: Ribas2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Ribas2023)"
+  },
+  {
+   "what": {
+    "value": "Stellar age 3.1 +/- 0.9 Myr (and mass 1.2 +/- 0.2 Msun)",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "an age of 3.1 $\\pm$ 0.9 Myr (cite: Asensio-Torres2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Asensio-Torres2021)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa ~ 3 cm^2 g^-1 at 0.89 mm and at 1.3 mm",
+    "evidence": [
+     {
+      "loc": "3.2.1 Disk masses",
+      "quote": "as the dust opacity at 0.89 mm (cite: Ricci2012A) and 1.3 mm (cite: Andrews2011)"
+     }
+    ]
+   },
+   "citation": "(cite: Ricci2012A); (cite: Andrews2011)"
+  },
+  {
+   "what": {
+    "value": "Linear flux-to-total-disk-mass relations at 1.3 mm and 0.85 mm",
+    "evidence": [
+     {
+      "loc": "3.2.1 Disk masses",
+      "quote": "we use the linear relations derived by (cite: Cieza2008) to estimate the total disk mass from the observed flux"
+     }
+    ]
+   },
+   "citation": "(cite: Cieza2008)"
+  },
+  {
+   "what": {
+    "value": "Near-IR scattered-light radial profile (1.65 micron) compared with the ALMA continuum",
+    "evidence": [
+     {
+      "loc": "4.3 Comparison with disk opacity theory",
+      "quote": "we compare the radial profiles of the near-IR scattered light (1.65 $\\mu$m)"
+     }
+    ]
+   },
+   "citation": "(cite: Avenhaus2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate the visibilities",
+   "method": "ALMA staff pipeline calibration, then phase-only self-calibration of the extended configurations (continuum, line channels excluded)",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Band 7: five phase-only steps, 60 s (x4) and 45 s (x1)",
+    "Band 6: four phase-only steps, 35 s (x2) and 25 s (x2)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Combine compact and extended data for line analysis",
+   "method": "Fit 2D Gaussian to find the continuum peak in each dataset, set a common phase center with fixvis/fixplanets, then concat",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Image the dust continuum at 0.89 mm and 1.3 mm",
+   "method": "tclean with mtmfs deconvolver, nterms=2, Briggs robust 0.5 and -0.5 on self-calibrated extended-configuration data",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust = 0.5 (S/N and resolution compromise) and -0.5 (finer structure)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Measure continuum fluxes",
+   "method": "Aperture photometry with a 5-sigma mask on the continuum images",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Derive disk geometry and deprojected radial profiles",
+   "method": "2D Gaussian fit to the Band 7 continuum for inclination, PA and center; deproject and take azimuthal average in concentric rings",
+   "software": [],
+   "key_parameters": [
+    "i = 32 deg, PA = 10 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Reconstruct a super-resolution 1D profile from visibilities",
+   "method": "Frank (frankenstein) nonparametric Gaussian-process fit of the Band 7 continuum visibilities",
+   "software": [
+    "frankenstein"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Azimuthal symmetry"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Measure gas disk radii from CO",
+   "method": "Deproject moment 0 images, extract azimuthally averaged radial profiles, take the radius enclosing 95% of the integrated flux",
+   "software": [],
+   "key_parameters": [
+    "Combined compact+extended line data used for line analysis"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "Estimate dust and total disk masses",
+   "method": "Optically thin, Rayleigh-Jeans dust mass M_dust = F d^2 / (kappa B(T)) at each band; total disk mass from Cieza et al. flux relations",
+   "software": [],
+   "key_parameters": [
+    "d = 98 pc (Gaia DR3)",
+    "T = 20 K, kappa ~ 3 cm^2 g^-1"
+   ],
+   "assumptions": [
+    "Optically thin emission at scales much larger than 10 au",
+    "Rayleigh-Jeans Planck function",
+    "Gas-to-dust mass ratio of 100 in the Cieza relations"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Derive the integrated and radially resolved spectral index",
+   "method": "Integrated alpha from the two band fluxes via F1/F2 = (nu1/nu2)^alpha; spectral index map from joint tclean mtmfs nterms=2 imaging of both bands after aligning phase centers, deprojected to radial profiles",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "robust 0.5, 0.0 and -0.5 tested for the alpha map"
+   ],
+   "assumptions": [
+    "Optically thin dust in the Rayleigh-Jeans limit, alpha = beta + 2"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Test whether the Band 7 ring is visible at Band 6 resolution",
+   "method": "Convolve the 0.89 mm image to the 1.3 mm beam after aligning phase centers, and inspect convolved and residual images; also make an r^2-weighted brightness profile",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 11,
+   "goal": "Interpret gas versus dust extent and compare with opacity theory",
+   "method": "Compare R_gas/R_dust to the criterion for dust evolution and compare scattered-light and mm profiles with Birnstiel et al. 2015 predictions",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Band 7 (0.89 mm) continuum flux",
+   "value": "388",
+   "uncertainty": "39",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 Continuum images",
+     "quote": "The measured continuum fluxes are 388 $\\pm$ 39 mJy at 0.89 mm and 168 $\\pm$ 17 mJy at 1.3 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Band 6 (1.3 mm) continuum flux",
+   "value": "168",
+   "uncertainty": "17",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.1 Continuum images",
+     "quote": "The measured continuum fluxes are 388 $\\pm$ 39 mJy at 0.89 mm and 168 $\\pm$ 17 mJy at 1.3 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "32",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.2 Continuum radial profiles",
+     "quote": "were measured as $32^\\circ$ and $10^\\circ$ based on a 2D Gaussian fit to the 0.89 mm dust continuum in Band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk position angle",
+   "value": "10",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.2 Continuum radial profiles",
+     "quote": "were measured as $32^\\circ$ and $10^\\circ$ based on a 2D Gaussian fit to the 0.89 mm dust continuum in Band 7"
+    }
+   ]
+  },
+  {
+   "quantity": "Radius of the Band 7 continuum ring",
+   "value": "0.45-0.50 arcsec (~45-50 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec / au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.1 Continuum images",
+     "quote": "A ring structure at 0.45-0.50\" or $\\sim$45-50 au (assuming d = 98 pc) is detected."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass at 0.89 mm",
+   "value": "28.4",
+   "uncertainty": "2.8",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We calculated the overall dust mass as $28.4\\pm2.8 M_{\\oplus}$ at 0.89 mm and $26.3\\pm2.6 M_{\\oplus}$ at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass at 1.3 mm",
+   "value": "26.3",
+   "uncertainty": "2.6",
+   "units": "Earth masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We calculated the overall dust mass as $28.4\\pm2.8 M_{\\oplus}$ at 0.89 mm and $26.3\\pm2.6 M_{\\oplus}$ at 1.3 mm"
+    }
+   ]
+  },
+  {
+   "quantity": "Total disk mass from Cieza relations (Band 7 / Band 6)",
+   "value": "15.43 (Band 7); 14.2 (Band 6)",
+   "uncertainty": "1.55; 1.44",
+   "units": "Jupiter masses",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "3.2.1 Disk masses",
+     "quote": "These results on total disk masses of 15.43 $\\pm$ 1.55 $M_{Jup}$ at Band 7 and of 14.2 $\\pm$ 1.44 $M_{Jup}$ at Band 6."
+    }
+   ]
+  },
+  {
+   "quantity": "Integrated spectral index alpha(0.89-1.3 mm)",
+   "value": "2.2",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.2.2 Spectral index",
+     "quote": "We calculated a spectral index between Band 6 and Band 7 as $\\alpha_{0.89-1.3 mm} = 2.2 \\pm 0.3$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust opacity index beta range",
+   "value": "0.0-0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2 Indicators of grain growth and radial drift on the disk",
+     "quote": "we found a range of $\\beta$ between: 0.0-0.5."
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index map, inner to outer radius",
+   "value": "~1.2 at the inner radius rising to ~4 (3.0-4.0 depending on robust)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.2.2 Spectral index",
+     "quote": "starting with a value of $\\sim$1.2 at the inner radius and finishing with a value of $\\sim$4 for r = 0.5"
+    },
+    {
+     "loc": "4.2 Indicators of grain growth and radial drift on the disk",
+     "quote": "where the blackbody limit is reached at $\\sim$30 au ($\\alpha = 2$)"
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(2-1) gas disk radius (95% flux)",
+   "value": "110.8",
+   "uncertainty": "8.9",
+   "units": "au",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas disk radii",
+     "quote": "We obtained an $R_{^{12}CO(2-1)}$ of 110.8 $\\pm$ 8.9 au and an $R_{^{12}CO(3-2)}$ of 121.7 $\\pm$ 9.7 au."
+    }
+   ]
+  },
+  {
+   "quantity": "12CO(3-2) gas disk radius (95% flux)",
+   "value": "121.7",
+   "uncertainty": "9.7",
+   "units": "au",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Gas disk radii",
+     "quote": "We obtained an $R_{^{12}CO(2-1)}$ of 110.8 $\\pm$ 8.9 au and an $R_{^{12}CO(3-2)}$ of 121.7 $\\pm$ 9.7 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust radius ratio",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "4.2 Indicators of grain growth and radial drift on the disk",
+     "quote": "we obtained an estimated ratio of $R_{gas}/R_{dust} \\sim 2$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image size, cell size and clean threshold/niter for the tclean continuum and line imaging",
+  "Clean masks used in tclean and the line-free channel ranges / spectral windows used for continuum and self-calibration",
+  "Number and values of self-calibration steps for the combined compact+extended line data, and solution intervals for them",
+  "Which execution blocks were included for each project and the uv-range used in the Band 6 vs Band 7 comparison",
+  "Aperture size used for the 5-sigma-mask photometry and the origin of the 10% flux uncertainty",
+  "Frank hyperparameters (alpha, w_smooth, outer radius) and fit settings",
+  "Moment-0 construction (velocity range, clipping) used for CO radial profiles",
+  "Absolute flux scale uncertainty and which flux model for J1427-4206 was applied",
+  "How the 0.3 uncertainty in alpha and the radial uncertainties on R_gas were propagated"
+ ],
+ "missing_for_reproduction": [
+  "Image/cell sizes, clean thresholds, masks and iteration counts",
+  "Line-free channel selection and spw choice for continuum and self-calibration",
+  "Self-calibration details for the combined line data",
+  "Aperture definition for photometry and flux uncertainty derivation",
+  "Frank hyperparameters",
+  "Moment-map construction for CO profiles"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Projects and key CASA settings (tclean mtmfs, robust, CASA 5.6.1, self-cal solints) are given, and the main results are numeric, but image/mask/threshold settings, line-free channels, aperture size and Frank hyperparameters are missing and public status is not stated by the paper.",
+ "rediscovery_reason": "Three ALMA projects are named and linked in the archive, the recipe covers calibration, self-cal and tclean choices, and results (fluxes, dust masses, alpha, gas radii) are numeric and recomputable, though some imaging details need to be inferred.",
+ "source_card": "cards/2025A%26A...698A.165A/sonnet/card.md"
+}

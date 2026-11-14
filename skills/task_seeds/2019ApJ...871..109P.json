@@ -1,0 +1,245 @@
+{
+ "bibcode": "2019ApJ...871..109P",
+ "title": "Multiband Optical and Near-Infrared Properties of Faint Submillimeter Galaxies with Serendipitous ALMA Detections",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaf7a4",
+ "arxiv_id": "1812.04108",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "What are the optical/NIR properties, photometric redshifts and colors of faint SMGs serendipitously detected in archival ALMA data in the XMM-LSS field?",
+ "alma_project_codes": [
+  "2011.0.00115.S",
+  "2011.0.00648.S",
+  "2012.1.00934.S",
+  "2011.0.00539.S",
+  "2012.1.00326.S",
+  "2012.1.00374.S",
+  "2013.1.00815.S",
+  "2013.A.00021.S",
+  "2015.1.01105.S"
+ ],
+ "data": {
+  "bands": "Band 6 (211-275 GHz) and Band 7 (275-370 GHz); all but one project in Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.53'' to 1.46''",
+  "sensitivity": "Band 6 15-140 uJy/beam; Band 7 200-300 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Quiescent galaxy UVJ color cuts",
+    "evidence": [
+     {
+      "loc": "4.4 The UVJ color-color plot",
+      "quote": "The quiescent galaxy color cuts are taken from Williams et al. (2009)."
+     }
+    ]
+   },
+   "citation": "Williams et al. 2009"
+  },
+  {
+   "what": {
+    "value": "OIRTC color cuts",
+    "evidence": [
+     {
+      "loc": "4.3 Optical-NIR Triple Color Selection",
+      "quote": "Chen et al. (2016b) have devised a selection technique to identify bright as well as faint SMGs"
+     }
+    ]
+   },
+   "citation": "Chen et al. 2016b"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image archival ALMA data",
+   "method": "Run archive scripts in CASA, CLEAN MFS imaging",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract sources and measure fluxes",
+   "method": "PyBDSF positions with threshpix 3.5 sigma; JMFIT Gaussian fit fluxes on PB-corrected maps",
+   "software": [
+    "PyBDSF",
+    "AIPS JMFIT"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Choose detection threshold",
+   "method": "Negative peak analysis on maps multiplied by -1",
+   "software": [
+    "PyBDSF"
+   ],
+   "key_parameters": [
+    "threshold 3.9 sigma; 176 sources"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "13-band forced photometry",
+   "method": "Cross-match ALMA with VIDEO within 1'', Tractor forced photometry on 10'' cutouts, fiducial VIDEO Ks band",
+   "software": [
+    "Tractor",
+    "Photutils"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Photometric redshifts and rest-frame colors",
+   "method": "EAZY with default templates, zpeak, 95% intervals, 0<z<6",
+   "software": [
+    "EAZY"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Stack undetected >5 sigma sources in IRAC",
+   "method": "Stack DeepDrill IRAC at positions of 60 undetected >5 sigma sources, split by 1 mJy",
+   "software": [
+    "Montage"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ALMA detection threshold",
+   "value": "3.9",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3 Detection Threshold",
+     "quote": "we selected a detection threshold of 3.9 σ for the archival ALMA data."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA sources above threshold",
+   "value": "176",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1.3 Detection Threshold",
+     "quote": "our ALMA catalog was reduced to 176 objects."
+    }
+   ]
+  },
+  {
+   "quantity": "Sources with optical-NIR counterparts",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "sources",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.1.3 Detection Threshold",
+     "quote": "found 26 faint SMGs with counterparts within a search radius of 1 ′′ ."
+    }
+   ]
+  },
+  {
+   "quantity": "Median photometric redshift Band 6",
+   "value": "2.72",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Flux and Redshift Distribution",
+     "quote": "The median redshifts for bands 6 and 7 are ⟨z⟩ = 2.72 and 2.57, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median photometric redshift Band 7",
+   "value": "2.57",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Flux and Redshift Distribution",
+     "quote": "The median redshifts for bands 6 and 7 are ⟨z⟩ = 2.72 and 2.57, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Galaxies in quiescent UVJ box",
+   "value": "5 of 26",
+   "uncertainty": "not stated",
+   "units": "galaxies",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4 The UVJ color-color plot",
+     "quote": "Five out of 26 galaxies are located within the quiescent box"
+    }
+   ]
+  },
+  {
+   "quantity": "Faint SMG median flux",
+   "value": "0.57",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5. SUMMARY AND CONCLUSIONS",
+     "quote": "16 faint SMGs ( S 1.1 mm < 1 mJy) with a median flux of 0.57 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "IRAC 4.5um stack of faint (<1 mJy) undetected sources",
+   "value": "0.34 uJy (AB=25.3)",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.5 Stacking of Undetected ALMA Sources",
+     "quote": "at the level of 0.34 µ Jy ( AB = 25.3 )"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Per-map choice of natural vs Briggs weighting",
+  "Image size, cell size, clean threshold and masks",
+  "CASA version",
+  "Tractor and EAZY version/configuration, priors, template set details",
+  "Which maps were self-calibrated",
+  "Number of negative-peak source counts per SNR bin beyond figure",
+  "Stacking method details"
+ ],
+ "missing_for_reproduction": [
+  "Exact imaging parameters per map",
+  "CASA version",
+  "Tractor/EAZY configuration",
+  "Per-source weighting choice"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and named tools, but imaging and photometry settings are partly unspecified.",
+ "rediscovery_reason": "Public data, clear recipe and numeric results (threshold, counts, median z), though some settings are missing.",
+ "source_card": "cards/2019ApJ...871..109P/sonnet/card.md"
+}

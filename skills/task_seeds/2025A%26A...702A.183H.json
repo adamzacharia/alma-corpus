@@ -1,0 +1,420 @@
+{
+ "bibcode": "2025A&A...702A.183H",
+ "title": "An ALMA Band 7 survey of SDSS/Herschel quasars in Stripe 82: I. The properties of the 870 micron counterparts",
+ "year": 2025,
+ "doi": "10.1051/0004-6361/202555105",
+ "arxiv_id": "2508.18823",
+ "fields": [
+  "agn_and_quasars",
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Unambiguously identify the submillimeter counterparts of a statistical sample of 152 FIR-bright SDSS quasars in Stripe 82, estimate their real multiplicity rates, and assess the role of mergers in triggering concomitant SMBH accretion and extreme star formation.",
+ "alma_project_codes": [
+  "2022.1.00029.S"
+ ],
+ "data": {
+  "bands": "Band 7 (870 um)",
+  "arrays": "12-m Array (42-43 usable antennas)",
+  "angular_resolution": "0.8''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Parent sample of FIR-bright SDSS quasars and FIR-derived star formation rates",
+    "evidence": [
+     {
+      "loc": "ALMA SDSS quasars sample",
+      "quote": "The quasar sample under study is drawn from the parent sample of FIR-bright SDSS quasars in the HerMES (cite: oliver12) fields analysed in (cite: pitchford16)."
+     },
+     {
+      "loc": "On the extreme star formation rates",
+      "quote": "More than half the $z>1$ quasars in the parent sample of (cite: pitchford16), and 56% of the quasars in our sample exhibit FIR-derived SFRs exceeding 1000 M$_{\\odot}$yr$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: pitchford16)"
+  },
+  {
+   "what": {
+    "value": "SDSS DR16 quasar catalogue redshifts and BAL probabilities (BAL_PROB, BI, AI)",
+    "evidence": [
+     {
+      "loc": "ALMA SDSS quasars sample",
+      "quote": "As the parent sample was drawn from more than a decade old SDSS data releases, the quasars in the sample were checked against the SDSS Data Release 16 (DR16) quasar catalogue, that encompasses all of the quasars from previous releases (cite: lyke20)."
+     },
+     {
+      "loc": "ALMA SDSS quasars sample",
+      "quote": "For the SDSS DR16 quasar catalogue, an automatic procedure was put in place to identify HiBAL quasars based on the values of the Balnicity and Intrinsic Absorption indices (BI and AI, respectively), derived mainly from the CIV emission line, as described in (cite: lyke20)."
+     }
+    ]
+   },
+   "citation": "(cite: lyke20)"
+  },
+  {
+   "what": {
+    "value": "1.1 mm submm number counts in deep ALMA fields SSA22 and GOODS-ALMA",
+    "evidence": [
+     {
+      "loc": "Multiplicities and associations",
+      "quote": "In order to assess the probability of the secondary submm counterparts found by the present analysis not being chance associations, but, instead physical pairs or triplets, we compared the number counts in the fields of the quasars with those derived from submm number counts at 1.1 mm in deep ALMA fields, namely SSA22 (cite: umehata17) and GOODS-ALMA (cite: franco18)."
+     }
+    ]
+   },
+   "citation": "(cite: umehata17) and (cite: franco18)"
+  },
+  {
+   "what": {
+    "value": "4XMM-DR14 X-ray source catalogue and Chandra Source Catalogue Release 2.1",
+    "evidence": [
+     {
+      "loc": "CO transitions in the low resolution spectra",
+      "quote": "We identified 27 matches in the 4XMM-DR14 catalogue (cite: webb2020) within 5$''$ of the SDSS quasar coordinates."
+     },
+     {
+      "loc": "CO transitions in the low resolution spectra",
+      "quote": "We also identified eight matches in the Chandra Source Catalogue Release 2.1 (cite: evans2024), but none were expected to show CO emission."
+     }
+    ]
+   },
+   "citation": "(cite: webb2020) and (cite: evans2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Source identification and continuum photometry on Band 7 maps",
+   "method": "Custom-made Python script computing MAD and RMS (within +/-5*MAD), identifying peaks >5 sigma, extracting flux in a box aperture of width 2x beam major axis, computing light-weighted centroid (>3 sigma), fitting with CASA imfit in an elliptical aperture of 2x beam size, and performing forced photometry at phase centre for non-detections",
+   "software": [
+    "Python",
+    "CASA (imfit)"
+   ],
+   "key_parameters": [
+    "Detection threshold: 5 sigma peak flux; forced photometry threshold: 3 sigma peak flux",
+    "Box aperture width = 2x beam major axis; elliptical imfit aperture = 2x beam size"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Multiplicity analysis as a function of 250 um flux, redshift, Eddington ratio, and BAL classification",
+   "method": "Count submm counterparts per quasar field, compute fractional contribution of primary, secondary, and tertiary sources to total 870 um flux above and below S_250 = 45 mJy, evaluate multiplicity rates across four redshift bins (1-1.5, 1.5-2, 2-2.5, >2.5) with Poissonian errors, and compare multiplicity incidence in visually confirmed HiBAL quasars vs the full sample",
+   "software": [],
+   "key_parameters": [
+    "Primary counterpart matching radius < 0.5'' from optical quasar coordinates",
+    "250 um flux division at S_250 = 45 mJy"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": " Targeted and blind search for serendipitous emission lines (CO, H2O, HCN)",
+   "method": "Extract 1D spectra for all 209 continuum detections within an aperture matching the synthesised beam size and PA, visually inspect spectra and ALMA pipeline findcont plots for peaks >3 sigma per channel near expected transitions, fit detected lines with a Gaussian, and perform an independent blind search on continuum-subtracted smoothed data cubes using SoFiA",
+   "software": [
+    "SoFiA",
+    "ALMA pipeline"
+   ],
+   "key_parameters": [
+    "Line reliability threshold: >3 sigma per channel in binned spectrum within SDSS redshift uncertainty of 0.002",
+    "SoFiA smoothing kernels: 3, 6, 9 pixels spatially (~0.14'' pixel scale) and 3, 6, 9, 12, 15, 18 channels in velocity (~28 km/s channel width)"
+   ],
+   "assumptions": [
+    "Typical quasar CO spectral line energy distribution (COSLED) from van der Werf et al. (2010) and Carilli & Walter (2013) to evaluate high-J sensitivity"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Comparison of secondary counterpart number counts with deep ALMA blank fields",
+   "method": "Compare the incidence and radial distribution of the 67 secondary counterparts across the total survey area (~9.8 arcmin^2) against scaled 1.1 mm field number counts from SSA22 and GOODS-ALMA",
+   "software": [],
+   "key_parameters": [
+    "Total survey area = ~9.8 arcmin^2 across 152 fields"
+   ],
+   "assumptions": [
+    "Modified black body model with dust emissivity beta = 1.5 and dust temperature T = 35 K, yielding S_1.1mm / S_870um = 0.56"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total Band 7 continuum sources extracted in 152 fields",
+   "value": "209",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "The above procedure resulted in the extraction of 209 Band 7 sources in the 152 quasar fields, described in the next section."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasars detected at >5 sigma centred on optical coordinates",
+   "value": "135",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "For 135 out of the 152 quasars (89%) the counterparts were centred on the optical coordinates with peak fluxes above 5$\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Primary quasar counterparts detected at >=3 sigma (within <0.5'' of optical coordinates)",
+   "value": "142",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "The shaded histogram includes the primary sources only, i.e. the 142 counterparts coinciding within $<0.5$$''$ from the optical coordinates of the quasars."
+    },
+    {
+     "loc": "Discussion",
+     "quote": "Of the 152 SDSS quasars followed up by ALMA in Band 7 on the framework of this project, 142 were detected at 870 ${\\mu}$m at or above 3$\\sigma$, with 135 detected at above 5$\\sigma$."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar fields with a single submm counterpart",
+   "value": "94 (62%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "Out of 152 quasar fields, 94 (62%) have a single submm counterpart, with two of these located more than 1$''$ away from the central quasar’s coordinates and are therefore not related to the primary source."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar fields with two submm counterparts",
+   "value": "42 (28%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "In 42 fields (28%), two submm counterparts are detected, while nine fields (6%) host three counterparts."
+    }
+   ]
+  },
+  {
+   "quantity": "Quasar fields with three submm counterparts",
+   "value": "9 (6%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Identification of submm sources",
+     "quote": "In 42 fields (28%), two submm counterparts are detected, while nine fields (6%) host three counterparts."
+    }
+   ]
+  },
+  {
+   "quantity": "Total secondary counterparts detected at 870 um",
+   "value": "67",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Multiplicities and associations",
+     "quote": "This is a factor of ten lower than the total of 67 secondary counterparts detected at 870 ${\\mu}$m."
+    }
+   ]
+  },
+  {
+   "quantity": "Single counterpart fraction for S_250 < 45 mJy",
+   "value": "64.9",
+   "uncertainty": "9.4",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Multiplicities as a function of FIR properties, redshift and “balnicity”",
+     "quote": "Looking into the contribution of the multiple submm counterparts to the total 870 flux on each of the maps, we find indeed that the majority of objects (48 of the 74 or 64.9% $\\pm$ 9.4%) with S$_{250}<45$ mJy have a single submm counterpart."
+    }
+   ]
+  },
+  {
+   "quantity": "Single counterpart fraction for S_250 > 45 mJy",
+   "value": "56.4",
+   "uncertainty": "8.5",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Multiplicities as a function of FIR properties, redshift and “balnicity”",
+     "quote": "We find that 44 out of the 78 (56.4% $\\pm$ 8.5%) have single submm counterparts."
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate in redshift bin 1 - 1.5",
+   "value": "21.4",
+   "uncertainty": "7.1",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1 - 1.5 | 42 | 5 | 9 (21.4% $\\pm$ 7.1%) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate in redshift bin 1.5 - 2",
+   "value": "26.1",
+   "uncertainty": "7.5",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 1.5 - 2 | 46 | 1 | 12 (26.1% $\\pm$ 7.5%) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate in redshift bin 2 - 2.5",
+   "value": "51.5",
+   "uncertainty": "12.5",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| 2 - 2.5 | 33 | 2 | 17 (51.5% $\\pm$ 12.5%) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate in redshift bin > 2.5",
+   "value": "51.6",
+   "uncertainty": "12.9",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $>$ 2.5 | 31 | 2 | 16 (51.6% $\\pm$ 12.9%) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate for HiBAL quasars with BAL_PROB=1.0",
+   "value": "41",
+   "uncertainty": "16",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Multiplicities as a function of FIR properties, redshift and “balnicity”",
+     "quote": "From the objects with BAL_PROB=1.0, seven (41% $\\pm$ 16%) have at least one secondary counterpart, among which the two with strong Ly${\\alpha}$ absorption."
+    }
+   ]
+  },
+  {
+   "quantity": "Multiplicity rate for HiBAL quasars with BAL_PROB=0.9",
+   "value": "38",
+   "uncertainty": "15",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Multiplicities as a function of FIR properties, redshift and “balnicity”",
+     "quote": "Among the 16 objects with BAL_PROB=0.9, six (38% $\\pm$ 15%) have at least one secondary counterpart."
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) integrated line flux in J010249.02-010544.8",
+   "value": "2.935",
+   "uncertainty": "0.150",
+   "units": "Jy.km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Serendipitous line detections",
+     "quote": "| J010249.02-010544.8 | 1.037 | 6-5 | 339.98 | 440 | 17.2 | 84.7 $\\pm$ 4.7 | 2.935 $\\pm$ 0.150 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(6-5) integrated line flux in J011922.85-004419.7",
+   "value": "1.934",
+   "uncertainty": "0.243",
+   "units": "Jy.km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Serendipitous line detections",
+     "quote": "| J011922.85-004419.7 | 1.057 | 6-5 | 336.43 | 270 | 4.9 | 166.8 $\\pm$ 23.2 | 1.934 $\\pm$ 0.243 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) integrated line flux in J011032.18-010320.4",
+   "value": "0.604",
+   "uncertainty": "0.156",
+   "units": "Jy.km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Serendipitous line detections",
+     "quote": "| J011032.18-010320.4 | 1.314 | 7-6 | 348.71 | 85 | 3.3 | 101.6 $\\pm$ 30.0 | 0.604 $\\pm$ 0.156 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) integrated line flux in J013523.49+001046.3",
+   "value": "1.115",
+   "uncertainty": "0.184",
+   "units": "Jy.km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Serendipitous line detections",
+     "quote": "| J013523.49+001046.3 | 1.381 | 7-6 | 339.18 | 350 | 5.5 | 165.6 $\\pm$ 31.1 | 1.115 $\\pm$ 0.184 |"
+    }
+   ]
+  },
+  {
+   "quantity": "CO(7-6) integrated line flux in J013150.85-002701.8",
+   "value": "1.034",
+   "uncertainty": "0.195",
+   "units": "Jy.km s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Serendipitous line detections",
+     "quote": "| J013150.85-002701.8 | 1.404 | 7-6 | 335.58 | -90 | 5.3 | 97.6 $\\pm$ 27.6 | 1.034 $\\pm$ 0.195 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether primary beam correction was applied to the continuum maps before measuring the fluxes of off-axis secondary counterparts (up to ~10 arcsec from phase centre in Band 7 where the primary beam FWHM is ~18 arcsec)",
+  "Exact image size and outer search radius used when extracting secondary counterparts in the custom Python script",
+  "Spectral binning factor used when visually inspecting the extracted 1D spectra for serendipitous line detections",
+  "SoFiA detection threshold (e.g. SNR cut or reliability threshold) used in the blind line search"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python script used for automated continuum source extraction and aperture/imfit photometry",
+  "Specification of how primary beam correction was handled during source detection versus flux measurement and number-count comparison",
+  "Exact SoFiA parameter file (reliability threshold, SNR threshold)"
+ ],
+ "reproducibility_score": 82,
+ "score_reason": "Standard ALMA pipeline calibration and imaging with exact CASA and pipeline versions stated (6.4.1.12 / 2022.2.0.64), clear step-by-step description of the continuum extraction algorithm, and full catalog published at CDS; minor deductions for unreleased custom Python script and unstated primary-beam handling for off-axis companions.",
+ "rediscovery_reason": "Public ALMA Cycle 9 dataset (2022.1.00029.S) reduced entirely with the standard ALMA pipeline; the primary numeric results (number of >5 sigma detections, multiplicity fractions vs redshift and 250 um flux, and 5 serendipitous CO line fluxes/FWHMs) can be directly reproduced from the pipeline products.",
+ "source_card": "cards/2025A%26A...702A.183H/sonnet/card.md"
+}

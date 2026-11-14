@@ -1,0 +1,223 @@
+{
+ "bibcode": "2019A&A...632A.101T",
+ "title": "Chemical and kinematic structure of extremely high-velocity molecular jets in the Serpens Main star-forming region",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935409",
+ "arxiv_id": "1910.07857",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "How do the EHV jet and slow outflow interact (outflow force content), and what is the chemical composition and spatial location of molecules in the slow wing, fast wing and EHV jet of Serpens Main outflows?",
+ "alma_project_codes": [
+  "2013.1.00726.S",
+  "2016.1.00710.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm) and Band 6 (1.3 mm)",
+  "arrays": "12-m array only",
+  "angular_resolution": "~0.3\" to ~0.6\" (130-260 au)",
+  "sensitivity": "RMS 2.3-4.8 mJy/beam per 0.5 km/s channel (SMM1); 2.5-3.5 (Emb8)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "HIFI CO and water spectra and Gaussian component fits for SMM1",
+    "evidence": [
+     {
+      "loc": "Appendix HIFI",
+      "quote": "The HIFI spectra are shown with the Gaussian offset component overlaid based on the fit from (cite: Kristensen2013)."
+     }
+    ]
+   },
+   "citation": "Kristensen2013; Mottram2014; Yildiz2013"
+  },
+  {
+   "what": {
+    "value": "H2/CO ratio 1.2e4",
+    "evidence": [
+     {
+      "loc": "3.4 Outflow force",
+      "quote": "the ratio of H$_{2}/{\\rm CO} = 1.2 \\times 10^4$ (cite: Frerking1982)"
+     }
+    ]
+   },
+   "citation": "Frerking1982"
+  },
+  {
+   "what": {
+    "value": "Inclination correction factors 1.2-7.1 (Table 6)",
+    "evidence": [
+     {
+      "loc": "3.4 Outflow force",
+      "quote": "(cite: Downes2007) provide a multiplication factor that should be used to account for inclination (Table 6 in their paper)"
+     }
+    ]
+   },
+   "citation": "Downes2007"
+  },
+  {
+   "what": {
+    "value": "Critical densities",
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "Critical densities from (cite: Jansen1995) calculated in the optically thin limit"
+     }
+    ]
+   },
+   "citation": "Jansen1995"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image lines and continuum",
+   "method": "Self-calibrate on continuum, apply to lines, continuum subtract, tclean multiscale with hand masks, Briggs 0.5, 0.5 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Briggs 0.5; 0.5 km/s channels"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Define velocity regimes",
+   "method": "Examine spectra of several molecules by eye; C18O off-outflow spectra set inner slow-wing limit; fast wing from H2CO decrease and SiO/HCN enhancement; EHV from rise of CO and SiO at high velocity",
+   "software": [],
+   "key_parameters": [
+    "systemic velocity 8.5 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Column densities and abundances relative to CO",
+   "method": "Optically thin LTE column density per pixel integrated over each velocity regime; average over pixels >3 sigma in hand-defined regions; abundance = N(X)/N(CO)",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "CO Tex = 75 K; SiO 9-47 K, H2CO 8-46 K, HCN 12-41 K from RADEX",
+    "RADEX grid: nH2 = 1e4-1e6 cm-3; Tkin = 75-700 K; dv = 10 km/s"
+   ],
+   "assumptions": [
+    "Optically thin emission; HCN abundances lower limits"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Mass, momentum and outflow force",
+   "method": "Mass from N_tot with H2/CO, mu=2.8; velocity-weighted method M7 for mass loss rate; F_out = Mdot/R_lobe * vmax; fractions per velocity regime",
+   "software": [],
+   "key_parameters": [
+    "H2/CO = 1.2e4; mu = 2.8"
+   ],
+   "assumptions": [
+    "No inclination correction applied (factors 1.2-7.1 would change absolute but not relative values)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Outflow sources with EHV component",
+   "value": "3 of 5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Velocity regimes",
+     "quote": "Out of the five outflow sources observed, the EHV component is detected toward three sources."
+    }
+   ]
+  },
+  {
+   "quantity": "EHV contribution to total outflow force",
+   "value": "5-40",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Outflow force",
+     "quote": "the contribution of the EHV jets to the total outflow force is between 5–40 % of the total outflow force."
+    }
+   ]
+  },
+  {
+   "quantity": "Ser-emb 8 (N) blueshifted EHV share of outflow force",
+   "value": "45",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Jet and wind kinematics",
+     "quote": "only for the blueshifted jet of Ser-emb 8 (N) the EHV contribution (45%) to the total outflow force is higher"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular jet mass-loss rates (Ser-emb 8 (N), SMM1-a, SMM1-b)",
+   "value": "7.0, 3.9, 15.0",
+   "uncertainty": "not stated",
+   "units": "1e-7 Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1 Jet and wind kinematics",
+     "quote": "7.0, 3.9, and 15.0  $\\times$ 10$^{-7 }$ M$_\\odot$ yr$^{-1}$ for Ser-emb 8 (N), SMM1-a, and SMM1-b"
+    }
+   ]
+  },
+  {
+   "quantity": "SMM1 CO outflow force (blue, red)",
+   "value": "1.4 and 11",
+   "uncertainty": "not stated",
+   "units": "1e-4 Msun/yr km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.4 Outflow force",
+     "quote": "From ALMA CO  $2-1$ (slow + fast wing) we obtain 1.4 and 11  $\\times$ 10$^{-4}$ M$_\\odot$ yr$^{-1}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Opening angles Ser-emb 8 (N), S68N",
+   "value": "25, 50",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.1 Images of outflows",
+     "quote": "It has a very small opening angle of 25$^\\circ$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals and reference antennas",
+  "Line-free channel ranges used for continuum",
+  "Multiscale scale values per line, image sizes, cell sizes, clean thresholds",
+  "Mask definitions and hand-drawn region boundaries for abundance measurement",
+  "Whether archival pipeline products or reprocessed data used; flux scale handling",
+  "Exact RADEX setup (collision files, column densities) giving Tex ranges",
+  "Velocity limits of C18O-based inner slow wing boundary",
+  "Primary beam correction details"
+ ],
+ "missing_for_reproduction": [
+  "Hand-drawn regions and masks",
+  "Velocity limits are given but C18O thresholds not",
+  "Self-cal parameters",
+  "RADEX inputs"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and analytic formulas with tabulated velocity limits, but hand-drawn regions, masks and calibration details missing.",
+ "rediscovery_reason": "Public data, numeric outflow force and column density tables, mostly specified recipe.",
+ "source_card": "cards/2019A%26A...632A.101T/sonnet/card.md"
+}

@@ -1,0 +1,1328 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2017ApJ...842....8M",
+  "title": "A Complete ALMA Map of the Fomalhaut Debris Disk",
+  "year": 2017,
+  "journal": "The Astrophysical Journal",
+  "first_author": "MacGregor, Meredith A.",
+  "n_authors": 17,
+  "arxiv_id": "1705.05867",
+  "doi": "10.3847/1538-4357/aa71ae",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00966.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present ALMA mosaic observations at 1.3 mm (223 GHz) of the Fomalhaut system with a sensitivity of 14 $\\mu$Jy/beam."
+   }
+  ],
+  "science": {
+   "fields": [
+    "debris_disks",
+    "stellar_physics"
+   ],
+   "targets": [
+    {
+     "name": "Fomalhaut",
+     "coordinates": {
+      "value": "RA 22h57m39.449, Dec -29d37m22.687s (J2000), phase center corrected for proper motion",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The phase center for the central pointing was $\\alpha=22^\\text{h}57^\\text{m}39.449$, $\\delta=-29\\ensuremath{^\\circ}37\\ensuremath{'}22.687\\ensuremath{''}$ (J2000)"
+       },
+       {
+        "loc": "3.3 Results of Model Fits",
+        "quote": "where $D=7.66$ pc is the distance"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "7.66 pc",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The phase center for the central pointing was $\\alpha=22^\\text{h}57^\\text{m}39.449$, $\\delta=-29\\ensuremath{^\\circ}37\\ensuremath{'}22.687\\ensuremath{''}$ (J2000)"
+       },
+       {
+        "loc": "3.3 Results of Model Fits",
+        "quote": "where $D=7.66$ pc is the distance"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated (the paper cites van Leeuwen 2007 for Fomalhaut's proximity but does not explicitly attribute the 7.66 pc distance)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The phase center for the central pointing was $\\alpha=22^\\text{h}57^\\text{m}39.449$, $\\delta=-29\\ensuremath{^\\circ}37\\ensuremath{'}22.687\\ensuremath{''}$ (J2000)"
+       },
+       {
+        "loc": "3.3 Results of Model Fits",
+        "quote": "where $D=7.66$ pc is the distance"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the complete millimeter structure of the Fomalhaut outer debris disk (geometry, eccentricity, width, azimuthal structure, apocenter glow), and what is the stellar flux at 1.3 mm?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "These observations provide the first millimeter map of the continuum dust emission from the complete outer debris disk with uniform sensitivity, enabling the first conclusive detection of apocenter glow."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00966.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2015.1.00966.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm, 223 GHz)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "We observed the Fomalhaut system with ALMA in Band 6 (1.3 mm, 223 GHz)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four basebands centered at 213.98, 215.98, 229.59, 231.48 GHz; the 12CO baseband has 3840 channels over 1.875 GHz (1.27 km/s); three continuum basebands have 128 channels and 2 GHz each",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "four basebands were centered at 213.98, 215.98, 229.59, and 231.48  GHz, in two polarizations."
+     },
+     {
+      "loc": "2 Observations",
+      "quote": "The remaining three continuum basebands included only 128 channels with a total bandwidth of 2 GHz each."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.538 GHz",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "while also covering the $^{12}$CO J $=2-1$ transition at 230.538 GHz"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m antennas; 38 antennas (Dec 2015), 44-46 antennas (Jan 2016); seven-pointing mosaic",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "we constructed a seven pointing mosaic covering the star and the disk circumference."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "15.1-331.0 m projected",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "$15.1-331.0$"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "1.56'' x 1.15'' (12x9 AU), PA -87 deg, natural weighting",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "the synthesized beam size is $1.56\\ensuremath{''}\\times1.15\\ensuremath{''}$ ($12\\times9$ AU at 7.7 pc) with a position angle of $-87\\ensuremath{^\\circ}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "14 uJy/beam rms",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "With natural weighting, the rms noise level is 14 $\\mu$Jy/beam"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "Seven executions of a 45 min SB (26.6-41.9 min on target each, per Table 1)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "All of these seven pointings were observed within a single 45 minute scheduling block (SB), which was executed four times on 2015 December 29-30"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2015 Dec 29-30 (4 executions) and 2016 Jan 14 (3 executions)",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "An additional three executions were carried out on 14 January 2016 with $44-46$ antennas in the array and pwv $\\sim2.4$ mm."
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "HST/STIS",
+     "provided": {
+      "value": "Optical scattered-light image for overlay; background source position (GO-13726)",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum Emission",
+        "quote": "This region has been imaged with HST/STIS in the optical (GO-13726; PI Kalas)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "ATCA 6.66 mm flux density used to derive mm spectral index",
+      "evidence": [
+       {
+        "loc": "4.1 Observational Evidence for Apocenter Glow",
+        "quote": "(cite: ric12) measured the flux density of Fomalhaut at 6.66 mm with ATCA."
+       }
+      ]
+     },
+     "citation": "(cite: ric12)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity 2.3 cm^2/g at 1.3 mm",
+      "evidence": [
+       {
+        "loc": "3.3 Results of Model Fits",
+        "quote": "We assume a dust opacity at 1.3 mm of $\\kappa_\\nu = 2.3$ cm$^{2}$ g$^{-1}$ (cite: beck90)"
+       }
+      ]
+     },
+     "citation": "(cite: beck90)"
+    },
+    {
+     "what": {
+      "value": "Stellar Teff 8459+-44 K from CHARA and PHOENIX model prediction ~1.3 mJy at 1.3 mm",
+      "evidence": [
+       {
+        "loc": "4.4 Stellar Emission at Millimeter Wavelengths",
+        "quote": "a PHOENIX stellar atmosphere model (cite: hus13) predicts a flux density of $\\sim1.3$ mJy at 1.3 mm"
+       }
+      ]
+     },
+     "citation": "(cite: boy13); (cite: hus13)"
+    },
+    {
+     "what": {
+      "value": "Apocenter/pericenter flux ratio simulation grid",
+      "evidence": [
+       {
+        "loc": "4.1 Observational Evidence for Apocenter Glow",
+        "quote": "A detailed description of the disk simulations is given by (cite: pan16)"
+       }
+      ]
+     },
+     "citation": "(cite: pan16)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Pan et al. grid of simulated Fomalhaut disks (3<=q<=4, 1<=beta<=3) for apocenter/pericenter flux ratios",
+     "evidence": [
+      {
+       "loc": "4.1 Observational Evidence for Apocenter Glow",
+       "quote": "We drew each model disk’s $q$ and $\\beta$ values from a grid covering the ranges $3\\leq q\\leq 4$, $1\\leq\\beta\\leq 3$."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Raw data processed by ALMA staff with CASA",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The raw datasets were processed by ALMA staff using the `CASA` software package (version 4.5.2)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.5.2",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The raw datasets were processed by ALMA staff using the `CASA` software package (version 4.5.2)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Pallas, J2357-5311, J2258-275; bandpass and gain from J2258-2758",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The absolute flux calibration was determined from observations of Pallas, J2357-5311, and J2258-275, with a systematic uncertainty of $<10\\%$."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "<10%",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "with a systematic uncertainty of $<10\\%$"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN, multi-frequency synthesis, continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "We generated continuum images using the multi-frequency synthesis `CLEAN` algorithm in `CASA`, and correct for the telescope primary beam."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "With natural weighting, the rms noise level is 14 $\\mu$Jy/beam"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Applied; FWHM ~26'' in Band 6",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "In Band 6, the primary beam of the ALMA 12-m antennas has FWHM$\\sim26\\ensuremath{''}$."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.56'' x 1.15'', PA -87 deg",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "the synthesized beam size is $1.56\\ensuremath{''}\\times1.15\\ensuremath{''}$"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "14 uJy/beam",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "the rms noise level is 14 $\\mu$Jy/beam"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Imaging of the 12CO data is described elsewhere",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The imaging of the $^{12}$CO data is described in Matrà et al. (2017)."
+       }
+      ]
+     },
+     "from_reference": "Matrà et al. (2017)"
+    },
+    {
+     "what": {
+      "value": "Chi^2 visibility likelihood with statistical weights, as in earlier MacGregor work",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling Approach",
+        "quote": "Following our previous approach (cite: mac13; mac16b), we evaluate these model visibilities using a $\\chi^2$ likelihood function"
+       }
+      ]
+     },
+     "from_reference": "(cite: mac13; mac16b)"
+    },
+    {
+     "what": {
+      "value": "Complex eccentricity plane populated following Wyatt et al.",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling Approach",
+        "quote": "We begin by populating the complex eccentricity plane defined by these four parameters following (cite: wya99)."
+       }
+      ]
+     },
+     "from_reference": "(cite: wya99)"
+    },
+    {
+     "what": {
+      "value": "Brightness temperature computed following Liseau et al.",
+      "evidence": [
+       {
+        "loc": "4.4 Stellar Emission at Millimeter Wavelengths",
+        "quote": "To calculate the brightness temperature, we follow (cite: lis16)"
+       }
+      ]
+     },
+     "from_reference": "(cite: lis16)"
+    }
+   ],
+   "unstated_but_needed": [
+    "CLEAN parameters (cell size, image size, masks, threshold, niter)",
+    "Mosaic pointing coordinates for the seven fields",
+    "Prior ranges and walker/step numbers and burn-in for emcee",
+    "Pixel scale, image size and the vertical/radial sampling of the model image and how the primary beam was handled in vissample",
+    "Which executions were combined and any relative flux scaling between them",
+    "Flux density used for the Pallas model/flux scale details",
+    "Method for the Fomalhaut b 3-sigma upper limit and the apocenter/pericenter regions used for flux ratio"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image the continuum and characterize components",
+    "method": {
+     "value": "Primary-beam-corrected multi-frequency synthesis CLEAN continuum image with natural weighting; identify ring, star and background source",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "Overall, the new ALMA image shows emission from three components: (1) a narrow, eccentric ring ($30\\sigma$), (2) an unresolved central point source at the stellar position ($54 \\sigma$)"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "natural weighting; rms 14 uJy/beam",
+      "evidence": [
+       {
+        "loc": "3.1 Continuum Emission",
+        "quote": "With natural weighting, the rms noise level is 14 $\\mu$Jy/beam"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit background point source flux",
+    "method": {
+     "value": "Point source model fit to visibilities",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "determined by fitting a point source model to the visibilities using the `uvmodelfit` task in `CASA`"
+      }
+     ]
+    },
+    "software": [
+     "CASA uvmodelfit"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared to source counts and to HST/STIS optical source position",
+     "evidence": [
+      {
+       "loc": "3.1 Continuum Emission",
+       "quote": "it is likely the ALMA source is the same background object as observed in optical data."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit eccentric-ring particle model to visibilities",
+    "method": {
+     "value": "2D model of 10^4 particles with forced/proper eccentricity, random mean anomalies, solved Kepler's equation; binned to image; point-source star added; synthetic visibilities via vissample; chi^2 likelihood; emcee MCMC",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "To create our two-dimensional model, we complete this calculation for $10^4$ individual disk particles."
+      }
+     ]
+    },
+    "software": [
+     "ast2body newtonm",
+     "vissample",
+     "emcee"
+    ],
+    "key_parameters": [
+     {
+      "value": "Free: R_belt, Δa, F_belt, F_star, i, PA, e_f, e_p, ω_f, Δα, Δδ",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling Approach",
+        "quote": "we fit for the geometry of the disk (inclination, $i$, and position angle, $PA$), as well as offsets of the stellar position from the pointing center"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Negligible vertical thickness (opening angle ~1 deg); temperature T ∝ r^-0.5; ω_p random 0 to 2π",
+      "evidence": [
+       {
+        "loc": "3.2 Modeling Approach",
+        "quote": "impose a radial temperature profile, $T\\propto r^{-0.5}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "emcee affine-invariant ensemble sampler, chi^2 likelihood with visibility weights; priors not stated",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "This iterative process makes use of the `emcee` Markov Chain Monte Charlo (MCMC) package (cite: for13)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Reduced chi^2 = 1.1; imaged residuals mostly noise",
+     "evidence": [
+      {
+       "loc": "3.3 Results of Model Fits",
+       "quote": "Table [2](#tab:diskpar) presents the best-fit model (reduced $\\chi^2 = 1.1$) parameters"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive dust mass",
+    "method": {
+     "value": "Optically thin M_dust = F D^2/(kappa B(T))",
+     "evidence": [
+      {
+       "loc": "3.3 Results of Model Fits",
+       "quote": "$M_\\text{dust} = F_\\nu D^2/(\\kappa_\\nu B_\\nu(T_\\text{dust}))$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa = 2.3 cm^2/g at 1.3 mm; T ~48 K radiative equilibrium; D = 7.66 pc",
+      "evidence": [
+       {
+        "loc": "3.3 Results of Model Fits",
+        "quote": "Given the best fit radial location of the disk, $136.3\\pm0.9$ AU, the radiative equilibrium temperature is $\\sim48$ K."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with previous flux measurements",
+     "evidence": [
+      {
+       "loc": "3.3 Results of Model Fits",
+       "quote": "consistent with previous flux measurements at slightly shorter wavelengths"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Constrain grain size distribution and beta from apocenter/pericenter flux ratio",
+    "method": {
+     "value": "alpha_mm from ALMA and ATCA fluxes gives q; compare observed flux ratios with Pan et al. simulation grid to bound beta",
+     "evidence": [
+      {
+       "loc": "4.1 Observational Evidence for Apocenter Glow",
+       "quote": "then $q = (\\alpha_\\text{mm} - \\alpha_\\text{Pl})/\\beta_s + 3$ (cite: ric12; mac16a)"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_Pl = 1.88+-0.02; beta_s = 1.8+-0.2; passively heated optically thin disks; T*=8590 K, R*=1.28e11 cm",
+      "evidence": [
+       {
+        "loc": "4.1 Observational Evidence for Apocenter Glow",
+        "quote": "Here, $\\alpha_\\text{Pl}=1.88\\pm0.02$ (cite: mac16a), and $\\beta_s = 1.8\\pm0.2$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent with White et al. 2016 q = 3.50+-0.14",
+     "evidence": [
+      {
+       "loc": "4.1 Observational Evidence for Apocenter Glow",
+       "quote": "This result is consistent with the determination of (cite: whi16) of $\\alpha_\\text{mm}=2.73\\pm0.13$ and $q=3.50\\pm0.14$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Search residuals and azimuthal profile for structure",
+    "method": {
+     "value": "Subtract best-fit model, inspect imaged residuals; azimuthal mean brightness in 10 deg sectors with rms/sqrt(N beams) uncertainties",
+     "evidence": [
+      {
+       "loc": "4.2.1 Constraints on Azimuthal Belt Structure",
+       "quote": "The mean brightness is calculated in small annular sections of $10\\ensuremath{^\\circ}$ around the ring"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Limit Fomalhaut b dust mass and stellar brightness temperature",
+    "method": {
+     "value": "3-sigma point-source upper limit converted to dust mass (optically thin) or clump size (optically thick); stellar flux converted to brightness temperature",
+     "evidence": [
+      {
+       "loc": "4.3 Implications for Fomalhaut b",
+       "quote": "We can place a robust $3\\sigma$ upper limit on the flux density of $0.042$ mJy, assuming a point source."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Fomalhaut b at ~125 AU, T_dust ~51 K; stellar photospheric radius 1.842 Rsun",
+      "evidence": [
+       {
+        "loc": "4.3 Implications for Fomalhaut b",
+        "quote": "this location implies a dust temperature of $\\sim51$ K"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.5.2",
+    "used_for": {
+     "value": "Calibration by ALMA staff, CLEAN imaging, uvmodelfit",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The raw datasets were processed by ALMA staff using the `CASA` software package (version 4.5.2)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "vissample",
+    "version": "not stated",
+    "used_for": {
+     "value": "Compute synthetic model visibilities (python implementation of Miriad uvmodel)",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "we compute synthetic model visibilities using `vissample` [^1], a python implementation of the Miriad `uvmodel` task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "MCMC parameter exploration",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "This iterative process makes use of the `emcee` Markov Chain Monte Charlo (MCMC) package (cite: for13)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ast2body (newtonm)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Solve for true anomaly",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "we iterate to find the true anomaly, $f$, using the `newtonm` code from `ast2body` (cite: val07)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "corner.py",
+    "version": "not stated",
+    "used_for": {
+     "value": "Corner plots of MCMC output",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "Figures [6](#fig:ep) and [8](#fig:appendix) were generated using the `corner.py` code (cite: for16)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Rms noise",
+    "value": "14",
+    "uncertainty": "not stated",
+    "units": "uJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "the rms noise level is 14 $\\mu$Jy/beam"
+     }
+    ]
+   },
+   {
+    "quantity": "Background source flux density",
+    "value": "0.150",
+    "uncertainty": "0.014",
+    "units": "mJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "The total flux density for this source is $0.150\\pm 0.014$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Belt total flux density",
+    "value": "24.7",
+    "uncertainty": "0.1 (plus 10% calibration)",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Results of Model Fits",
+      "quote": "The total belt flux density determined for the best-fit model is $24.7\\pm0.1$ mJy"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar flux density at 1.3 mm",
+    "value": "0.75",
+    "uncertainty": "0.02",
+    "units": "mJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.75\\pm0.02$"
+     }
+    ]
+   },
+   {
+    "quantity": "Belt semi-major axis (inner edge) R_belt",
+    "value": "136.3",
+    "uncertainty": "0.9",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$136.3\\pm0.9$"
+     }
+    ]
+   },
+   {
+    "quantity": "Belt FWHM width",
+    "value": "13.5",
+    "uncertainty": "1.8",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$13.5\\pm1.8$"
+     }
+    ]
+   },
+   {
+    "quantity": "Inclination",
+    "value": "65.6",
+    "uncertainty": "0.3",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$65.6\\pm0.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "Position angle",
+    "value": "337.9",
+    "uncertainty": "0.3",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$337.9\\pm0.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "Forced eccentricity",
+    "value": "0.12",
+    "uncertainty": "0.01",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$0.12\\pm0.01$"
+     }
+    ]
+   },
+   {
+    "quantity": "Proper eccentricity",
+    "value": "0.06",
+    "uncertainty": "0.04",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.2 Determining the Belt Width",
+      "quote": "$\\Delta a = 12.2\\pm1.6$ AU and $e_p = 0.06\\pm0.04$"
+     }
+    ]
+   },
+   {
+    "quantity": "Argument of periastron",
+    "value": "22.5",
+    "uncertainty": "4.3",
+    "units": "deg",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$22.5\\pm4.3$"
+     }
+    ]
+   },
+   {
+    "quantity": "Range of semi-major axes Δa",
+    "value": "12.2",
+    "uncertainty": "1.6",
+    "units": "AU",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$12.2\\pm1.6$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fractional width ΔR/R",
+    "value": "0.10",
+    "uncertainty": "0.01",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.2.2 Determining the Belt Width",
+      "quote": "$\\Delta R/R = 0.10\\pm0.01$"
+     }
+    ]
+   },
+   {
+    "quantity": "Total dust mass",
+    "value": "0.015",
+    "uncertainty": "0.010",
+    "units": "Earth masses",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.3 Results of Model Fits",
+      "quote": "Thus, the total mass of the dust belt is $0.015\\pm0.010$ $M_\\oplus$."
+     }
+    ]
+   },
+   {
+    "quantity": "Apocenter/pericenter flux ratio at 1.3 mm",
+    "value": "1.10",
+    "uncertainty": "0.02",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Observational Evidence for Apocenter Glow",
+      "quote": "including our new ALMA measurement at 1.3 mm of $1.10\\pm0.02$"
+     }
+    ]
+   },
+   {
+    "quantity": "Millimeter spectral index alpha_mm",
+    "value": "2.71",
+    "uncertainty": "0.11",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Observational Evidence for Apocenter Glow",
+      "quote": "we determine $\\alpha_\\text{mm} = 2.71\\pm0.11$ and thus $q = 3.46\\pm0.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "Size distribution index q",
+    "value": "3.46",
+    "uncertainty": "0.09",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Observational Evidence for Apocenter Glow",
+      "quote": "$\\alpha_\\text{mm} = 2.71\\pm0.11$ and thus $q = 3.46\\pm0.09$"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust absorptivity index beta",
+    "value": "0.9<beta<1.5",
+    "uncertainty": "1 sigma range",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.1 Observational Evidence for Apocenter Glow",
+      "quote": "The overlap between these indicates an allowed range of $0.9<\\beta<1.5$"
+     }
+    ]
+   },
+   {
+    "quantity": "Fomalhaut b 3-sigma flux upper limit",
+    "value": "0.042",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Implications for Fomalhaut b",
+      "quote": "We can place a robust $3\\sigma$ upper limit on the flux density of $0.042$ mJy, assuming a point source."
+     }
+    ]
+   },
+   {
+    "quantity": "Fomalhaut b dust mass upper limit",
+    "value": "<0.0019 M_Moon (<1.40e23 g)",
+    "uncertainty": "not stated",
+    "units": "Moon masses",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.3 Implications for Fomalhaut b",
+      "quote": "The resulting upper limit on the dust mass is $<0.0019$ $M_\\text{Moon}$ ($<1.40\\times10^{23}$ g)"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar brightness temperature at 1.3 mm",
+    "value": "<6200",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "4.4 Stellar Emission at Millimeter Wavelengths",
+      "quote": "the brightness temperature dips to $<6600$ K and $<6200$ K at 870 $\\mu$m and 1.3 mm, respectively."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No azimuthal structure is seen in the residuals, including the HST 331 deg gap; structures <=10 AU cannot be excluded",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "the resulting residuals do not show any evidence for significant azimuthal structure."
+     }
+    ]
+   },
+   {
+    "value": "An unresolved eastern source is attributed to a background galaxy",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "We attribute the unresolved point source in the southeast quadrant to a background galaxy."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Does the complete disk at 1.3 mm show apocenter glow?",
+    "experiment": "Uniform-sensitivity mosaic and eccentric ring model; compare NW and SE flux",
+    "result": "~65 uJy (>5 sigma) NW-SE difference; flux ratio 1.10+-0.02",
+    "finding": "First conclusive detection of apocenter glow",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.1 Continuum Emission",
+      "quote": "we note a significant flux difference between the apocenter (NW) and pericenter (SE) sides of the disk of $\\sim65$ $\\mu$Jy ($>5\\sigma$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "What are the belt geometry, width and eccentricity?",
+    "experiment": "MCMC fit of eccentric particle model to visibilities",
+    "result": "R_belt 136.3+-0.9 AU, width 13.5+-1.8 AU, e 0.12+-0.01, ω 22.5+-4.3 deg",
+    "finding": "Narrow, radially confined eccentric belt consistent with prior results",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The outer belt is radially confined with an inner edge of $136.3\\pm0.9$ AU and width of $13.5\\pm1.8$ AU."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are previously reported azimuthal features present?",
+    "experiment": "Residual imaging and azimuthal profile",
+    "result": "No significant peaks except the background galaxy",
+    "finding": "Previous HST, SCUBA, ALMA features not confirmed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our observations do not confirm any of the azimuthal features found in previous imaging studies of the disk with HST, SCUBA, and ALMA."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the stellar 1.3 mm flux consistent with photospheric models?",
+    "experiment": "Fit star as point source and compare with PHOENIX",
+    "result": "0.75+-0.02 mJy vs ~1.3 mJy predicted",
+    "finding": "Star is fainter than photospheric prediction",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The central star is clearly detected with a flux density of $0.75\\pm0.02$ mJy, significantly lower than predicted by current photospheric models."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Can grain properties be constrained?",
+    "experiment": "Combine alpha_mm with apocenter/pericenter ratios vs Pan et al. simulations",
+    "result": "q = 3.46+-0.09, 0.9<beta<1.5",
+    "finding": "beta constrained, consistent with Draine relation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "4.1 Observational Evidence for Apocenter Glow",
+      "quote": "consistent within $1\\sigma$ with the $\\beta\\simeq (q-3)\\beta_s$ quoted by (cite: dra06)"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Mosaic designed to cover the whole ring with equal sensitivity to examine azimuthal structure",
+    "evidence": [
+     {
+      "loc": "4.2.1 Constraints on Azimuthal Belt Structure",
+      "quote": "The ALMA 1.3 mm mosaic map of the outer Fomalhaut debris disk was designed to cover the complete ring with equal sensitivity, allowing us to examine azimuthal structure along the belt."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Mm observations trace large grains unperturbed by radiation forces; orbit-based model accounts for eccentric particle orbits",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "the large grains that emit predominantly at these wavelengths are not significantly perturbed by radiation forces and better trace the location of the larger planetesimals"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Resolution (~10 AU) prevents constraints on edge sharpness; Δa and e_p degenerate; large uncertainty on ω from inclination degeneracy",
+     "evidence": [
+      {
+       "loc": "4.2.2 Determining the Belt Width",
+       "quote": "we are unable to place any strong constraints on the sharpness of the disk edges."
+      }
+     ]
+    },
+    {
+     "value": "2D model ignores vertical structure, which could loosen width constraints",
+     "evidence": [
+      {
+       "loc": "3.2 Modeling Approach",
+       "quote": "Adding a vertical component to the model would likely loosen the constraints we are able to place on the width of the belt"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust mass depends on assumed opacity and temperature, giving a large systematic uncertainty",
+    "beta upper bound set by grid range and assumed beta_s and q",
+    "Quoted MCMC errors depend on unstated priors and the point-source/beam treatment of the star",
+    "Different observing executions with different weather combined without stated relative scaling"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project data acknowledged; vissample publicly available",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2015.1.00966.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "vissample is public on GitHub; the eccentric-ring model code is not stated as released",
+     "evidence": [
+      {
+       "loc": "footnote 1",
+       "quote": "`vissample` is publicly available at <https://github.com/AstroChem/vis_sample>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Eccentric-ring model code and priors",
+    "CLEAN parameters and mosaic field centers",
+    "emcee configuration"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB raw for 7 executions with a mosaic (rough estimate)",
+   "score_inferred": 3,
+   "score_reason": "Data are archival and results numeric, but the custom model code, priors and imaging parameters are not given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The custom ring model code and MCMC priors are not provided, so the recipe is not complete enough for redoing."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: wya99)",
+     "why": "Complex eccentricity formalism for the model"
+    },
+    {
+     "citation": "(cite: mac13; mac16b)",
+     "why": "Visibility-based MCMC fitting approach"
+    },
+    {
+     "citation": "(cite: pan16)",
+     "why": "Apocenter glow simulations"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Matrà et al. (2017)",
+     "why": "12CO imaging of the same dataset"
+    },
+    {
+     "citation": "(cite: whi16)",
+     "why": "Independent ALMA 233 GHz observation of Fomalhaut"
+    },
+    {
+     "citation": "(cite: su16)",
+     "why": "ALMA Cycle 1 870 um observation"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "HST GO-13726"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d723896825dc9a492551608215cece83",
+  "batch_id": "msgbatch_01DWk46Pjepg55MN2dxvkj2k",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:07:36",
+  "usage": {
+   "input_tokens": 21016,
+   "output_tokens": 12432,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.083782,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 95,
+  "quotes_ok": 95,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 21,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 90,
+   "stated": 62,
+   "rate": 0.689
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,486 @@
+{
+ "bibcode": "2022A&A...662A.121R",
+ "title": "Observational constraints on gas disc sizes in the protoplanetary discs of multiple systems in the Taurus region",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202141035",
+ "arxiv_id": "2201.03588",
+ "fields": [
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "To test tidal truncation models by measuring the gas size of protoplanetary discs in multiple stellar systems in the Taurus region and comparing them with dust disc sizes and analytical truncation models.",
+ "alma_project_codes": [
+  "2018.1.00771.S",
+  "2015.1.01506.S",
+  "2016.1.00877.S"
+ ],
+ "data": {
+  "bands": "Band 6 (new observations and RW Aur); Band 7 (RW Aur)",
+  "arrays": "12m array (2018.1.00771.S and RW Aur); 7m array (RW Aur)",
+  "angular_resolution": "0.15'' (~21 au at Taurus)",
+  "sensitivity": "Continuum rms ~0.027-0.043 mJy/beam; 12CO rms 4.2-41 mJy/beam per channel; RW Aur 12CO rms 1.5 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar masses, projected separations, distances, continuum data, and dust disc radii fitted in the uv-plane with Galario",
+    "evidence": [
+     {
+      "loc": "Sample properties",
+      "quote": "We assumed the stellar masses inferred by (cite: 2019Manara+)."
+     },
+     {
+      "loc": "Sample properties",
+      "quote": "The projected separations ($a_\\mathrm{p}$, assumed from (cite: 2019Manara+)) of the individual components in the systems range from $\\sim 49$ au to 461 au"
+     },
+     {
+      "loc": "Comparing dust and gas disc radii",
+      "quote": "For the following discussion, we use the values of $R_\\mathrm{dust}$ obtained by (cite: 2019Manara+) by modelling the continuum data in the visibility plane using the *Galario* library (cite: 2018Tazzari+)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019Manara+)"
+  },
+  {
+   "what": {
+    "value": "Position angle and inclination of HK Tau B disc: PA = (42 +/- 0) deg and i = (85 +/- 1) deg",
+    "evidence": [
+     {
+      "loc": "Geometrical properties of discs from Keplerian modeling",
+      "quote": "we assumed the position angle and the inclination estimated in a previous work by (cite: 2011McCabe+) (see also (cite: 2014Jensen_Akeson)): PA=$(42 \\pm 0)$$ ^\\circ$ and $i = (85 \\pm 1) \\si{\\ensuremath{^\\circ}}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2011McCabe+)"
+  },
+  {
+   "what": {
+    "value": "Reduced CO cubes and systemic velocities for RW Aur discs",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "The authors are thankful to Joey Rodriguez for sharing the reduced CO cubes for RW Aur"
+     },
+     {
+      "loc": "Table 5",
+      "quote": "while $v_\\mathrm{lsr}$ of RW Aur discs are assumed from (cite: 2018Rodriguez+)."
+     }
+    ]
+   },
+   "citation": "(cite: 2018Rodriguez+)"
+  },
+  {
+   "what": {
+    "value": "Gas-to-dust disc size ratios for 42 discs in the Lupus star-forming region",
+    "evidence": [
+     {
+      "loc": "Comparing dust and gas disc radii",
+      "quote": "and the one measured by (cite: 2021Sanchis+) for 42 discs in the Lupus star-forming regions"
+     }
+    ]
+   },
+   "citation": "(cite: 2021Sanchis+)"
+  },
+  {
+   "what": {
+    "value": "Dynamical stellar masses for UZ Tau E and HN Tau A",
+    "evidence": [
+     {
+      "loc": "Sample properties",
+      "quote": "Only in two cases the stellar masses are derived from orbital dynamics and not as just described: UZ Tau E (cite: 2000Simon+) and HN Tau A (cite: 2017Simon+)."
+     }
+    ]
+   },
+   "citation": "(cite: 2000Simon+); (cite: 2017Simon+)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Construct velocity maps and zeroth/first moment maps of CO emission",
+   "method": "Create zeroth and first moment maps of CO isotopologues, and compute velocity maps and relative uncertainties using the quadratic method with 4-sigma clipping",
+   "software": [
+    "bettermoments",
+    "CASA"
+   ],
+   "key_parameters": [
+    "4 sigma clipping for quadratic velocity maps"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive disc geometrical properties (centre, inclination, position angle, systemic velocity)",
+   "method": "Fit a geometrically thin Keplerian rotation pattern to the 12CO velocity map (13CO for DH Tau A) using eddy, excluding cloud-absorbed velocity channels; fit two elliptical Gaussians with CASA imfit for circumsecondary disc centres and RW Aur A; adopt literature PA and inclination for edge-on HK Tau B",
+   "software": [
+    "eddy",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "5 free parameters (ra, dec, PA, i, v_LSR) and 2 fixed parameters (M_star, d); three fits per target at M_star and +/-1 sigma M_star"
+   ],
+   "assumptions": [
+    "Geometrically thin disc in Keplerian rotation with fixed stellar mass and Gaia DR2 distance"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure total fluxes and gas and dust disc radii (R68 and R95)",
+   "method": "Apply the cumulative flux (curve of growth) aperture photometry technique on 12CO, 13CO, C18O zeroth moment maps and continuum images using concentric elliptical annuli (or rectangular apertures for HK Tau B, half-disc masks for DH Tau A and UZ Tau Wa/Wb, and imfit-constrained total flux for RW Aur A/B)",
+   "software": [
+    "CASA imstat",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "Radial step dr = 0.05'', 100 random background annuli for noise, 0.075'' added in quadrature to radius uncertainty; fixed height ~0.25'' for HK Tau B rectangular apertures"
+   ],
+   "assumptions": [
+    "Elliptical apertures projected according to PA and inclination from Table 5"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare gas-to-dust disc size ratios with isolated systems",
+   "method": "Compute R68,gas/R68,dust and R95,gas/R95,dust using Galario dust radii from Manara et al. (2019) (excluding edge-on HK Tau B), and perform two-sided Kolmogorov-Smirnov tests between primary and secondary discs and against Lupus single discs from Sanchis et al. (2021)",
+   "software": [],
+   "key_parameters": [
+    "HK Tau B excluded due to edge-on optical depth effects"
+   ],
+   "assumptions": [
+    "Gas-to-dust size ratios are uncorrelated with stellar mass, allowing unbiased comparison with Lupus"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare gas disc radii with tidal truncation models and constrain minimum orbital eccentricities and disc misalignment",
+   "method": "Compare observed R95,gas/a_p with analytical tidal truncation models of Artymowicz & Lubow (1994) to derive minimum orbital eccentricities e_min, and compute relative disc inclinations using the spherical law of cosines",
+   "software": [],
+   "key_parameters": [
+    "Reynolds numbers R = 10^4, 10^5, 10^6; orbital inclination i = 0 deg"
+   ],
+   "assumptions": [
+    "Co-planar discs and binary orbit, zero orbital inclination (i = 0 deg) with secondary at apoastron for minimum eccentricity; UZ Tau treated as two binaries (UZ Tau E - UZ Tau Wab with a_p = 3.52'', and UZ Tau Wa - UZ Tau Wb with a_p = 0.375'')"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CIDA 9 A 12CO R95",
+   "value": "1.70",
+   "uncertainty": "+0.13/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $1.70_{-0.09}^{+0.13}$ | $0.650^{+0.08}_{-0.08}$ | $0.50^{+0.08}_{-0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "CIDA 9 A 12CO R68",
+   "value": "1.10",
+   "uncertainty": "+0.08/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| CIDA 9 A | $R_{68}$ | $1.10^{+0.08}_{-0.09}$ | $0.40^{+0.08}_{-0.08}$ | $0.35^{+0.08}_{-0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DH Tau A 12CO R95",
+   "value": "0.55",
+   "uncertainty": "+0.08/-0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.55_{-0.08}^{+0.08}$ | $0.25_{-0.08}^{+0.08}$ | $0.20_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DK Tau A 12CO R95",
+   "value": "0.40",
+   "uncertainty": "+0.13/-0.13",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.40^{+0.13}_{-0.13}$ | $0.25^{+0.08}_{-0.08}$ | $0.20^{+0.08}_{-0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DK Tau B 12CO R95",
+   "value": "0.50",
+   "uncertainty": "+0.09/-0.13",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.50_{-0.13}^{+0.09}$ | $0.30_{-0.08}^{+0.09}$ | $0.20_{-0.08}^{+0.09}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HK Tau A 12CO R95",
+   "value": "0.80",
+   "uncertainty": "+0.09/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.80_{-0.09}^{+0.09}$ | $0.35_{-0.08}^{+0.08}$ | $0.30_{-0.09}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HK Tau B 12CO R95",
+   "value": "0.55",
+   "uncertainty": "+0.13/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.55_{-0.09}^{+0.13}$ | $0.40_{-0.08}^{+0.08}$ | $0.20_{-0.08}^{+0.09}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HN Tau A 12CO R95",
+   "value": "0.40",
+   "uncertainty": "+0.09/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.40_{-0.09}^{+0.09}$ | $0.25_{-0.08}^{+0.08}$ | $0.20_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "RW Aur A 12CO R95",
+   "value": "0.85",
+   "uncertainty": "+0.13/-0.09",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.85_{-0.09}^{+0.13}$ | \\- | $0.30_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "RW Aur B 12CO R95",
+   "value": "0.55",
+   "uncertainty": "+0.13/-0.13",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.55_{-0.13}^{+0.13}$ | \\- | $0.25_{-0.09}^{+0.09}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau E 12CO R95",
+   "value": "2.40",
+   "uncertainty": "+0.13/-0.13",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $2.40_{-0.13}^{+0.13}$ | $0.80_{-0.09}^{+0.09}$ | $0.70_{-0.08}^{+0.09}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau Wa 12CO R95",
+   "value": "0.50",
+   "uncertainty": "+0.09/-0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.50_{-0.08}^{+0.09}$ | $0.25_{-0.08}^{+0.08}$ | $0.20_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "UZ Tau Wb 12CO R95",
+   "value": "0.30",
+   "uncertainty": "+0.08/-0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.30_{-0.08}^{+0.08}$ | $0.20_{-0.08}^{+0.09}$ | $0.15_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "V710 Tau A 12CO R95",
+   "value": "0.70",
+   "uncertainty": "+0.09/-0.08",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| | $R_{95}$ | $0.70_{-0.08}^{+0.09}$ | $0.45_{-0.08}^{+0.08}$ | $0.35_{-0.08}^{+0.08}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average R68,gas/R68,dust ratio",
+   "value": "3.2",
+   "uncertainty": "1.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing dust and gas disc radii",
+     "quote": "The average value (and relative standard deviation) of $R_{68, \\mathrm{gas}}/R_{68, \\mathrm{dust}}$ is $3.2\\pm1.1$ ($3.1\\pm1.1$ and $3.4\\pm0.9$ for circumprimary and circumsecondary discs, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Average R95,gas/R95,dust ratio",
+   "value": "4.2",
+   "uncertainty": "1.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing dust and gas disc radii",
+     "quote": "and $R_{95, \\mathrm{gas}}/R_{95, \\mathrm{dust}}=4.2\\pm1.6$ (with average values of $3.9\\pm1.2$ for circumprimary discs and $5.0\\pm1.9$ for the circumsecondary)."
+    }
+   ]
+  },
+  {
+   "quantity": "DH Tau A minimum orbital eccentricity e_min",
+   "value": "0.31",
+   "uncertainty": "+0.15/-0.09",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| DH Tau A | $0.49$ | $0.24$ | $0.31^{+0.15}_{-0.09}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DK Tau A minimum orbital eccentricity e_min",
+   "value": "0.32",
+   "uncertainty": "+0.23/-0.16",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| DK Tau A | $0.35$ | $0.17$ | $0.32^{+0.23}_{-0.16}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "DK Tau B minimum orbital eccentricity e_min",
+   "value": "0.16",
+   "uncertainty": "+0.18/-0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| DK Tau B | $0.31$ | $0.21$ | $0.16^{+0.18}_{-0.10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HK Tau A minimum orbital eccentricity e_min",
+   "value": "0.00",
+   "uncertainty": "+0.06/-0.00",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| HK Tau A | $0.34$ | $0.34$ | $0.00^{+0.06}_{-0.00}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HK Tau B minimum orbital eccentricity e_min",
+   "value": "0.12",
+   "uncertainty": "+0.12/-0.10",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| HK Tau B | $0.32$ | $0.24$ | $0.12^{+0.12}_{-0.10}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "HN Tau A minimum orbital eccentricity e_min",
+   "value": "0.57",
+   "uncertainty": "+0.19/-0.13",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| HN Tau A | $0.49$ | $0.13$ | $0.57^{+0.19}_{-0.13}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "V710 Tau A minimum orbital eccentricity e_min",
+   "value": "0.22",
+   "uncertainty": "+0.11/-0.08",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 8",
+     "quote": "| V710 Tau A | $0.37$ | $0.22$ | $0.22^{+0.11}_{-0.08}$ |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration, imaging, imfit, and imstat",
+  "Solution intervals (solint) and gaintype settings for each round of phase and amplitude self-calibration",
+  "Exact frequency/channel ranges flagged before channel averaging and used for continuum subtraction (uvcontsub details)",
+  "Cell size, image size, deconvolver, and stopping thresholds used in tclean and auto-multithresh parameters",
+  "Velocity ranges and sigma-clipping thresholds used to construct the zeroth-moment CO maps on which the cumulative flux technique was applied",
+  "Outer radius or stopping criterion used to define the maximum/total flux in the cumulative flux curve"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals (solint) and number of rounds per specific target/EB",
+  "Exact velocity integration ranges and clipping thresholds used to generate the zeroth-moment CO maps",
+  "Criterion for selecting the radius of maximum total flux on the cumulative flux curves",
+  "CASA version and tclean/auto-multithresh imaging parameters (cell size, image size, stopping threshold)",
+  "Values of viscosity parameters b and c from Manara et al. (2019) used in Eq. 1 for each Reynolds number"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "The paper clearly describes the ALMA project codes, calibration strategy, imaging weights, kinematic fitting with eddy/bettermoments, and aperture photometry steps, and tabulates all intermediate and final quantities. Minor low-level imaging/self-calibration parameters and moment-0 integration ranges are not explicitly listed.",
+ "rediscovery_reason": "All ALMA datasets are public in the archive, the analysis uses standard open-source tools (CASA, bettermoments, eddy) and straightforward curve-of-growth aperture photometry, and the main deliverables are well-defined numeric tables of disc inclinations, position angles, fluxes, radii, and minimum eccentricities.",
+ "source_card": "cards/2022A%26A...662A.121R/sonnet/card.md"
+}

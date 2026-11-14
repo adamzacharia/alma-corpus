@@ -1,0 +1,883 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2015A&A...583A..66H",
+  "title": "Probing the final stages of protoplanetary disk evolution with ALMA",
+  "year": 2015,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Hardy, A.",
+  "n_authors": 9,
+  "arxiv_id": "1504.05562",
+  "doi": "10.1051/0004-6361/201526504",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00733.S",
+   "2012.1.00350.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We used ALMA Band 6 to obtain continuum and $^{12}$CO(2-1) line fluxes for a sample of 24 WTTS stars with known infrared excess."
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks",
+    "debris_disks"
+   ],
+   "targets": [
+    {
+     "name": "24 IR-excess WTTS in Taurus, eta Cha, Cha I, Lupus, Ophiuchus, Corona Australis",
+     "coordinates": {
+      "value": "2MASS IDs given in table (e.g. 04182147+1658470)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | 04182147+1658470 | Taurus | 135$\\pm$20 | K5 | Absorp. | 1,2,3 | ... | ... |  |"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "97-200 pc depending on cloud (e.g. Taurus 135±20 pc)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| 1 | 04182147+1658470 | Taurus | 135$\\pm$20 | K5 | Absorp. | 1,2,3 | ... | ... |  |"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Are weak-line T Tauri stars with IR excess photoevaporating transition disks or young debris disks, based on their dust masses and CO content?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to provide observational constraints on theories of disk-clearing by measuring the dust masses and CO content of a sample of young (1.8-26.3 Myr) WTTS."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2012.1.00350.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2012.1.00350.S, ADS/JAO.ALMA#2011.0.00733.S."
+      }
+     ]
+    },
+    {
+     "code": "2011.0.00733.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA#2012.1.00350.S, ADS/JAO.ALMA#2011.0.00733.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6; Cycle 0 (systems 14,17,19,23,24) and Cycle 1 (rest)",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "Observations of the above systems were performed in Band 6, with Systems 14, 17, 19, 23 and 24 being observed in Cycle 0 (2012), and the remaining in Cycle 1 (2013)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "one baseband at 230.52 GHz (12CO 2-1), continuum basebands at 228.52, 214.52, 212.52 GHz; 976.56 kHz in 3840 channels per 1.875 GHz baseband",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "one baseband centred on 230.52 GHz which was aimed at detecting the $^{12}$CO(2–1) spectral line, and three continuum basebands centred at 228.52, 214.52, and 212.52 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.52 GHz (baseband centre)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "one baseband centred on 230.52 GHz which was aimed at detecting the $^{12}$CO(2–1) spectral line"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "3.75 GHz (Cycle 0), 7.5 GHz (Cycle 1) total",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "The total bandwidth for the observations was 3.75 GHz for the Cycle 0 and 7.5 GHz for Cycle 1 observations"
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "min/max 15.1-21.2 m / 402-992 m",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 13/12/18 | Cha | 23 | 4.16 | DV19,08 | J1107-4449 | Ceres | J0635-7516 | 2.31 | 15.1/992 |  |"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "requested rms 0.16 mJy continuum, 30 mJy per channel",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "the requested rms was set at 0.16 mJy for the continuum, and 30 mJy for each individual velocity channel"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "2.07-4.54 min per execution",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 12/06/17 | Lup/Op/CrA | 20 | 4.54 | ... | J1733-1304 | Neptune | J1924-2914 | 1.41 | 21.2/402 |  |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2012-06-17, 2013-11-01, 2013-12-04, 2013-12-18",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| 13/12/04 | Taurus | 27 | 3.60 | DV08 | J0423-0120 | J0510+180 | J0510+180 | 5.11 | 15.8/463 |  |"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer, WISE, Herschel",
+     "provided": {
+      "value": "mid/far-IR photometry for SEDs and fractional disk luminosities",
+      "evidence": [
+       {
+        "loc": "2.1 Target selection",
+        "quote": "show weak yet robust (\\>5-10 $\\sigma$) excesses in the mid and/or far-IR from Spitzer, WISE, and/or Herschel."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Photometry, spectral types and Halpha widths of targets",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "The target’s photometry, spectral types and H$_{\\alpha}$ widths can be found in the following papers"
+       }
+      ]
+     },
+     "citation": "Nguyen2012; Howard2013; Luhman2010; Cieza2013a; Cieza2012; Wahhaj2010; Romero2012 etc."
+    },
+    {
+     "what": {
+      "value": "Dust-mass constant at 1.3 mm",
+      "evidence": [
+       {
+        "loc": "3.1 Disk dust masses",
+        "quote": "We adopt the constant derived for 1.3mm by (cite: Cieza2008a)"
+       }
+      ]
+     },
+     "citation": "(cite: Cieza2008a)"
+    },
+    {
+     "what": {
+      "value": "Spectral-type temperature scale and de-reddening values",
+      "evidence": [
+       {
+        "loc": "3.3 Stellar ages",
+        "quote": "using the scale provided by (cite: Kenyon1995)"
+       }
+      ]
+     },
+     "citation": "(cite: Kenyon1995)"
+    },
+    {
+     "what": {
+      "value": "PMS isochrones for ages and masses",
+      "evidence": [
+       {
+        "loc": "3.3 Stellar ages",
+        "quote": "compared to the PMS isochrones of (cite: Siess2000) to obtain the age"
+       }
+      ]
+     },
+     "citation": "(cite: Siess2000)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Williams & Best (2014) grid of CO models, stellar mass 0.5 Msun, other parameters free, used to interpret 12CO non-detections",
+     "evidence": [
+      {
+       "loc": "3.2 12CO(2-1) non-detections",
+       "quote": "(cite: Williams2014) created a grid of models with different density structures that include a simple prescription for the CO chemistry."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Standard calibration steps (no details)",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "Standard calibration steps were applied to the data"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Neptune, Ceres, J0510+180 (per execution)",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| 13/11/01 | Lup/Op | 29 | 2.07 | DV19,08,06 | J1924-2914 | Neptune | J1625-2527 | 1.60 | 17.3/992 |  |"
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "deconvolving the set of visibilities with the clean task implemented in CASA (cite: McMullin2007), using natural weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "deconvolving the set of visibilities with the clean task implemented in CASA (cite: McMullin2007), using natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Dust mass conversion with 0.566 Mearth per mJy at 140 pc",
+      "evidence": [
+       {
+        "loc": "3.1 Disk dust masses",
+        "quote": "We adopt the constant derived for 1.3mm by (cite: Cieza2008a)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Cieza2008a)"
+    },
+    {
+     "what": {
+      "value": "Gas-mass constraints from CO using model grid",
+      "evidence": [
+       {
+        "loc": "3.2 12CO(2-1) non-detections",
+        "quote": "(cite: Williams2014) created a grid of models with different density structures"
+       }
+      ]
+     },
+     "from_reference": "(cite: Williams2014)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Reduction software/CASA version and pipeline",
+    "Image size, cell size, clean masks and thresholds",
+    "Synthesized beams and per-source rms values",
+    "Channel width and velocity range for CO upper limit (90 mJy km/s)",
+    "Point-source fit details",
+    "Photometry values and fitted blackbody parameters used for SEDs",
+    "Flux calibrator model/uncertainty",
+    "Extinction values used for de-reddening"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Image and measure 1.3 mm continuum flux",
+    "method": {
+     "value": "clean with natural weighting; point-source fit to visibilities for detections; 3 sigma upper limits otherwise",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "A point-source, fitted to the measured visibilities, was used for those systems with a continuum detection to gain accurate estimation of this flux value."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Derive dust masses",
+    "method": {
+     "value": "M_dust = 0.566 [F(1300)/mJy (d/140 pc)^2] Mearth",
+     "evidence": [
+      {
+       "loc": "3.1 Disk dust masses",
+       "quote": "M_{\\mathrm{dust}}=0.566 \\times \\left[ \\dfrac{F_{\\nu}(1300)}{mJy} \\left( \\dfrac{d}{140 pc} \\right)^{2} \\right] M_{\\oplus}"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "optically thin continuum at mm wavelengths",
+      "evidence": [
+       {
+        "loc": "3.1 Disk dust masses",
+        "quote": "owing to continuum emission being optically thin at mm wavelengths, the dust mass can be estimated by a simple equation"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Upper limits uncertainty dominated by distance",
+     "evidence": [
+      {
+       "loc": "3.1 Disk dust masses",
+       "quote": "we quote the 3 sigma value as our upper limit, with this uncertainty being dominated by the uncertainty in the distance to the system."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Constrain gas-to-dust ratio from CO non-detection",
+    "method": {
+     "value": "compare 3 sigma limit of 90 mJy km/s to Williams & Best grid",
+     "evidence": [
+      {
+       "loc": "3.2 12CO(2-1) non-detections",
+       "quote": "would be readily detectable in $^{12}$CO(2-1) at our $3\\sigma$ detection limit of 90 mJy km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "stellar mass 0.5 Msun; other parameters free",
+      "evidence": [
+       {
+        "loc": "3.2 12CO(2-1) non-detections",
+        "quote": "We compare our results to this grid for a stellar mass of 0.5 M$_{\\odot}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "ISM gas-to-dust ratio 100 as reference",
+      "evidence": [
+       {
+        "loc": "3.2 12CO(2-1) non-detections",
+        "quote": "an ISM gas-to-dust ratio of 100 would imply a gas mass of $\\sim 1\\,M_{\\rm J}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CO would be detected in 90% of models for other disks",
+     "evidence": [
+      {
+       "loc": "3.2 12CO(2-1) non-detections",
+       "quote": "the CO emission would still be above our detection threshold for 90% of the models"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive stellar ages and masses",
+    "method": {
+     "value": "Teff from spectral type, J-band luminosity de-reddened, compared to Siess et al. PMS isochrones",
+     "evidence": [
+      {
+       "loc": "3.3 Stellar ages",
+       "quote": "The values of temperature and luminosity were then compared to the PMS isochrones of (cite: Siess2000) to obtain the age."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "distances from Table 1",
+      "evidence": [
+       {
+        "loc": "3.3 Stellar ages",
+        "quote": "The distances in Table [\\[sampleparams\\]](#sampleparams) were then used to calculate the stellar radius"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "distance uncertainty ~15% gives ~30% luminosity uncertainty",
+     "evidence": [
+      {
+       "loc": "3.3 Stellar ages",
+       "quote": "which can introduce a $\\sim$30$\\%$ uncertainty into the intrinsic luminosity of the object"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Compute fractional disk luminosity",
+    "method": {
+     "value": "fit one or two modified blackbodies to star-subtracted SED (lambda0 = 70 um, beta=2 for limits); integrate with Simpson's rule and divide by stellar blackbody normalised to J",
+     "evidence": [
+      {
+       "loc": "3.4 Fractional disk luminosities",
+       "quote": "Both flux densities were then integrated according to Simpson’s rule and divided to obtain the fractional disk luminosity."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "lambda0 fixed at 70 micron",
+      "evidence": [
+       {
+        "loc": "3.4 Fractional disk luminosities",
+        "quote": "It was therefore assigned a fixed value of 70$\\mu$m"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "all emission in star-subtracted SED attributed to disk",
+      "evidence": [
+       {
+        "loc": "3.4 Fractional disk luminosities",
+        "quote": "we attribute all emission from the star-subtracted SED to the disk ($L_{D}$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "blackbody fits; sampler not stated",
+     "evidence": [
+      {
+       "loc": "Fractional disk luminosities",
+       "quote": "we attribute all emission from the star-subtracted SED to the disk ($L_{D}$) and fit this emission to either one or two black bodies, as required."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "clean imaging of visibilities",
+     "evidence": [
+      {
+       "loc": "2.2 ALMA observations",
+       "quote": "clean task implemented in CASA (cite: McMullin2007)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Continuum detections",
+    "value": "4 of 24 (systems 2, 14, 17, 23)",
+    "uncertainty": "not stated",
+    "units": "count",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.1 Disk dust masses",
+      "quote": "Only four of our 24 systems have detectable continuum above the 3$\\sigma$ level"
+     }
+    ]
+   },
+   {
+    "quantity": "1.3 mm flux system 17",
+    "value": "1.813",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 17 | 1.813 | 2.09$\\pm$0.44 | 0.10 | $2.6_{-0.5}^{+1.2}$ | 140 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass system 17",
+    "value": "2.09",
+    "uncertainty": "0.44",
+    "units": "Mearth",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 17 | 1.813 | 2.09$\\pm$0.44 | 0.10 | $2.6_{-0.5}^{+1.2}$ | 140 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust mass system 14",
+    "value": "0.45",
+    "uncertainty": "0.13",
+    "units": "Mearth",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| 14 | 0.696 | 0.45$\\pm$0.13 | 0.17 | $6.9_{-1.7}^{+2.8}$ | 80 |"
+     }
+    ]
+   },
+   {
+    "quantity": "CO 3 sigma limit",
+    "value": "90",
+    "uncertainty": "not stated",
+    "units": "mJy km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.2 12CO(2-1) non-detections",
+      "quote": "our $3\\sigma$ detection limit of 90 mJy km s$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Age range of sample",
+    "value": "1.8-26.3",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "a sample of young (1.8-26.3 Myr) WTTS"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "No 12CO(2-1) emission detected in any system, implying severely reduced gas-to-dust ratios",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We detect continuum emission in only four of 24 WTTS, and no $^{12}$CO(2-1) emission in any of them."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are IR-WTTS mostly photoevaporating transition disks?",
+    "experiment": "ALMA Band 6 continuum and CO of 24 IR-WTTS",
+    "result": "Only 4/24 continuum detections; no CO",
+    "finding": "Most are young debris disks; clearing of dust is rapid",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Most WTTS with infrared excess are likely not in transition but are instead young debris disks"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do detected systems have normal gas content?",
+    "experiment": "Compare CO limit with model grid",
+    "result": "CO undetected though ISM ratio would give detectable gas",
+    "finding": "Gas-to-dust ratio well below 100",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.2 12CO(2-1) non-detections",
+      "quote": "We can therefore conclude that the gas-to-dust ratio is substantially lower than 100 in this disk."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "12CO(2-1) chosen as sensitive to gas at large radii",
+    "evidence": [
+     {
+      "loc": "2.2 ALMA observations",
+      "quote": "it is highly sensitive to the presence of circumstellar gas out to large radii"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Dust mass method has significant uncertainties; ages uncertain; binarity unconfirmed",
+     "evidence": [
+      {
+       "loc": "3.1 Disk dust masses",
+       "quote": "This approach has significant uncertainties but is quite standard in the field"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-band continuum with fixed opacity and temperature gives only rough masses",
+    "Distances uncertain up to 15%",
+    "CO limits rely on model grid; 12CO optically thick",
+    "Snapshot observations with short integration"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration/imaging details",
+    "SED photometry table and fits"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB",
+   "score_inferred": 3,
+   "score_reason": "Data projects identified and dust-mass formula explicit, but imaging and SED fitting details lacking.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Imaging details and SED photometry are incomplete, though the dust-mass results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Williams2014)",
+     "why": "CO model grid for gas masses"
+    },
+    {
+     "citation": "(cite: Cieza2008a)",
+     "why": "dust mass conversion"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Caceres2015)",
+     "why": "ALMA observation of FW Tau"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "Spitzer transition disk survey (Cieza et al. 2010, 2012)"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-cb2060bdd9b5afef54c927256dd9d9e8",
+  "batch_id": "msgbatch_01C3FWHzviwHGQGWfnMCTTho",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T13:52:19",
+  "usage": {
+   "input_tokens": 25714,
+   "output_tokens": 7128,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.061961,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 53,
+  "quotes_ok": 53,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 6,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 41,
+   "rate": 0.547
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:43",
+  "custom_id": "repair-sonnet-441a96929cde16aa6ef52d8a5fc1c729",
+  "fixed": [
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "we attribute all emission from the star-subtracted SED to the disk ($L_{D}$) and fit this emission to either one or two black bodies, as required."
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,230 @@
+{
+ "bibcode": "2019A&A...626A..81V",
+ "title": "Resolving the extended stellar atmospheres of asymptotic giant branch stars at (sub)millimetre wavelengths",
+ "year": 2019,
+ "doi": "10.1051/0004-6361/201935329",
+ "arxiv_id": "1904.06374",
+ "fields": [
+  "evolved_stars",
+  "stellar_physics"
+ ],
+ "question": "What are the brightness temperature structure, hotspots, variability and opacity structure of the extended atmospheres of four nearby AGB stars at (sub)mm wavelengths?",
+ "alma_project_codes": [
+  "2016.1.00004.S",
+  "2016.A.00029.S",
+  "2017.1.00075.S",
+  "2017.1.00191.S",
+  "2017.1.00862.S"
+ ],
+ "data": {
+  "bands": "Bands 4, 6 and 7",
+  "arrays": "not stated",
+  "angular_resolution": "beam sizes ~19 to 74 mas (Table 1)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar radii R_* adopted from near-IR measurements (Mira A, R Leo) and others",
+    "evidence": [
+     {
+      "loc": "2.1 Mira A",
+      "quote": "We used $R_*=15$ mas, which is the smallest measurement of (cite: Woodruff2009) in the analysis."
+     }
+    ]
+   },
+   "citation": "(cite: Woodruff2009)"
+  },
+  {
+   "what": {
+    "value": "Absorption coefficients for electron-neutral free-free opacity (third-order polynomial fits)",
+    "evidence": [
+     {
+      "loc": "5.1 Parameterised model atmospheres",
+      "quote": "To calculate the opacity, we use the RM97 third-order polynomial fits to the absorption coefficients calculated by (cite: DL66)."
+     }
+    ]
+   },
+   "citation": "(cite: RM97); (cite: DL66)"
+  },
+  {
+   "what": {
+    "value": "Mira B subtracted from Mira A data",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "For Mira A, we performed the fits after its companion Mira B was subtracted from the data."
+     }
+    ]
+   },
+   "citation": "not stated"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and self-calibrate",
+   "method": "Inspect calibration, extra flagging, recalibrate R Leo Band 4 fluxes, phase-only self-calibration",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit uniform elliptical disc in uv plane per spw",
+   "method": "Fit flux density, major axis, axis ratio and position angle per spw",
+   "software": [
+    "uvmultifit"
+   ],
+   "key_parameters": [
+    "uv range restricted to >2 Mlambda (Band 4) or >3 Mlambda (Bands 6,7) for spws with short-baseline excess"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive brightness temperature and spectral index",
+   "method": "T_b from flux, size, axis ratio, frequency; spectral index via Monte Carlo with flux uncertainties",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "10% absolute flux uncertainty per band (5% for R Leo Band 4)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Parameterised atmosphere radiative transfer models",
+   "method": "Power-law density and grey/power-law temperature, ionisation power law, electron-neutral free-free opacity, Rayleigh-Jeans radiative transfer; compare size-frequency and T_b-size relations; add layer with 10x tau_ff increase at R_s",
+   "software": [],
+   "key_parameters": [
+    "alpha=6 reference; X_i,3000=7e-6; gamma=8"
+   ],
+   "assumptions": [
+    "Only atomic hydrogen interacts with electrons (no molecular H2 equilibrium)"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure R Leo expansion",
+   "method": "Scale sizes to common frequencies and fit linear size growth over time",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "distance 71 pc"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "R Leo expansion velocity of mm surface",
+   "value": "10.6",
+   "uncertainty": "±1.4",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "for R Leo we directly measure an outward motion of the millimetre wavelength surface with a velocity of at least $10.6\\pm1.4$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R Leo linear size expansion (Band 4)",
+   "value": "0.17",
+   "uncertainty": "±0.02",
+   "units": "mas/day",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Expansion of R Leo",
+     "quote": "We can fit a linear expansion of $0.17\\pm0.02$ mas day$^{-1}$ to the Band 4 data"
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A size-frequency slope eta (Band 4-6)",
+   "value": "-0.087",
+   "uncertainty": "±0.006",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Mira A",
+     "quote": "$\\eta=-0.087\\pm0.006$ is determined from the Band 4 and 6 observations"
+    }
+   ]
+  },
+  {
+   "quantity": "W Hya eta (Band 4)",
+   "value": "-0.160",
+   "uncertainty": "±0.007",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.3 W Hya",
+     "quote": "$\\eta=-0.160\\pm0.007$ in Band 4"
+    }
+   ]
+  },
+  {
+   "quantity": "R Dor hotspot brightness above disc (Band 7)",
+   "value": ">3300",
+   "uncertainty": "lower limit",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3 Asymmetries and hotspots",
+     "quote": "we can determine a lower limit to $T_{\\rm b}$ for both brightest hotspot of $>3300$ K above the average stellar disc temperature"
+    }
+   ]
+  },
+  {
+   "quantity": "W Hya Band 7 hotspots T_b",
+   "value": ">10000",
+   "uncertainty": "lower limit",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "5.3 Asymmetries and hotspots",
+     "quote": "In Band 7, the two spots are very compact ($<2.6\\times2.6$ mas) with $T_{\\rm b}>10000$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Mira A opacity layer radius",
+   "value": "1.4",
+   "uncertainty": "not stated",
+   "units": "R_*",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5.1.1 Mira A",
+     "quote": "requires a sudden increase (moving inwards) in opacity by at least a factor of 10 at $R_s=1.4~R_*$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "uvmultifit settings (initial guesses, weights, per-spw handling)",
+  "CASA versions used",
+  "line-free channel selection and self-cal solution intervals",
+  "how Mira B was subtracted",
+  "image sizes, cell sizes and clean parameters",
+  "model fitting procedure for atmosphere parameters (done by eye or fit?)",
+  "uv-range cutoffs per spw for all sources"
+ ],
+ "missing_for_reproduction": [
+  "uvmultifit configuration",
+  "self-calibration parameters",
+  "model parameter-selection procedure"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Public data and clear uv-fit approach, but calibration details and model-tuning procedure are loosely specified.",
+ "rediscovery_reason": "Public data, uv-disc fits give numeric sizes, fluxes and T_b in Table 2 that can be re-derived, though the model step is less specified.",
+ "source_card": "cards/2019A%26A...626A..81V/sonnet/card.md"
+}

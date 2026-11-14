@@ -1,0 +1,574 @@
+{
+ "bibcode": "2022MNRAS.510.4976A",
+ "title": "The nature of sub-millimetre galaxies II: an ALMA comparison of SMG dust heating mechanisms",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac002",
+ "arxiv_id": "2107.00694",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Compare the contribution of Active Galactic Nuclei (AGN) and star-formation towards dust heating in sub-millimetre galaxies (SMGs) by comparing their sub-mm sizes, extents relative to host galaxies, FIR luminosities, and SFR surface densities to known quasars.",
+ "alma_project_codes": [
+  "2016.1.01523.S",
+  "2016.1.01510.S"
+ ],
+ "data": {
+  "bands": "Band 7 (275-373 GHz, 870 um) for WHDF; Band 6 (211-275 GHz, ~1150 um) for z>6 quasars",
+  "arrays": "12-m Array",
+  "angular_resolution": "0.095\" (0.09\"x0.11\" beam) for WHDF; ~0.35\"-0.4\" (0.34\"x0.31\" to 0.40\"x0.28\") for z>6 quasars",
+  "sensitivity": "60 uJy/beam (35.3-79.7 uJy/beam in Table 4) for WHDF; 0.020, 0.017, 0.020, 0.014 mJy/beam (24.7-31.4 uJy/beam in Table 4) for z>6 quasars"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "870 um LABOCA flux densities and spectroscopic redshifts for WHDF sources",
+    "evidence": [
+     {
+      "loc": "Initial FIR detection of WHDF SMGs and quasars",
+      "quote": "Initially, 11 sub-mm sources were detected in an APEX LABOCA (cite: Siringo2009) $S_{870\\textnormal{\\micro m}}>3.3$ mJy survey (cite: Bielby2012)."
+     }
+    ]
+   },
+   "citation": "Bielby et al. 2012 (cite: Bielby2012)"
+  },
+  {
+   "what": {
+    "value": "AGN template SED fits, photometric redshifts, dust temperatures, A_V, and 4.5 um magnitudes for WHDF SMGs",
+    "evidence": [
+     {
+      "loc": "Initial FIR detection of WHDF SMGs and quasars",
+      "quote": "The redshifts for LAB-05 and LAB-11 are spectroscopic, the other 5 are from the AGN SED fits of ; these have considerably larger errors, typically $\\approx12$%."
+     },
+     {
+      "loc": "SMG and quasar FIR luminosities and SFR densities",
+      "quote": "In this work, we set the dust temperature to the AGN dust temperature estimated in when available and otherwise $T_{\\textup{dust}}=35$K in the case of our WHDF sources (e.g. (cite: Cooke2018))."
+     }
+    ]
+   },
+   "citation": "Shanks et al. 2021 (cite: Shanks_SMGs)"
+  },
+  {
+   "what": {
+    "value": "High-resolution (0.07\") ALMA Band 7 observations and measurements of 6 luminous ALESS SMGs",
+    "evidence": [
+     {
+      "loc": "Comparison with ALESS SMG sizes and morphologies",
+      "quote": "For comparison, in Fig. 4 we plot high resolution ($\\approx0.''07$) ALMA observations of the six luminous SMGs from the ALESS sample (cite: Hodge2013; Hodge2016) studied by (cite: Hodge2019)."
+     }
+    ]
+   },
+   "citation": "Hodge et al. 2019 (cite: Hodge2019)"
+  },
+  {
+   "what": {
+    "value": "AS2UDS SMG catalog (707 sources) with multi-wavelength photometry (8, 24, 100, 4.5 um)",
+    "evidence": [
+     {
+      "loc": "Do MIR colours and luminosities distinguish QSOs and SMGs?",
+      "quote": "In Fig. 20(a) we therefore plot $S_{100\\rm  \\micro m}/S_{24\\rm  \\micro m}$ versus absolute $4.5\\rm  \\micro m$ magnitudes for the 48/707 AS2UDS SMGs that have detections in these 3 bands"
+     }
+    ]
+   },
+   "citation": "Dudzeviciute et al. 2020 (cite: Dudzeviciute2020)"
+  },
+  {
+   "what": {
+    "value": "X-UDS Chandra X-ray candidate QSOs in the UDS field",
+    "evidence": [
+     {
+      "loc": "Do MIR colours and luminosities distinguish QSOs and SMGs?",
+      "quote": "We also plot 22 candidate QSOs from the X-UDS Chandra X-ray 0.33 deg$^2$ survey of (cite: Kocevski2018) that are also listed in AS2UDS"
+     }
+    ]
+   },
+   "citation": "Kocevski et al. 2018 (cite: Kocevski2018)"
+  },
+  {
+   "what": {
+    "value": "K-excess selected QSOs in the UDS field",
+    "evidence": [
+     {
+      "loc": "Do MIR colours and luminosities distinguish QSOs and SMGs?",
+      "quote": "Also shown are 14 QSOs selected by K-excess in the UDS field by (cite: Smail2008), although only 3 are detected at $24 \\rm \\micro m$"
+     }
+    ]
+   },
+   "citation": "Smail et al. 2008 (cite: Smail2008)"
+  },
+  {
+   "what": {
+    "value": "Average ratio of FIR continuum to [C II] extents for 27 z~6 quasars",
+    "evidence": [
+     {
+      "loc": "Discussion: SMG and quasar FIR properties compared",
+      "quote": "The arrows show the average of the ratio of FIR continuum:$[\\textup{C}_{\\textup{II}}]$ extents as listed in Table 3 of (cite: Venemans2020) for the 27 $z\\approx6$ quasars of (cite: Decarli2018)."
+     }
+    ]
+   },
+   "citation": "Venemans et al. 2020 (cite: Venemans2020); Decarli et al. 2018 (cite: Decarli2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA continuum data and check flux recovery",
+   "method": "Run standard ALMA data reduction and calibration scripts in CASA v4.7.2 without additional tapering or cleaning, and compare integrated ALMA fluxes with APEX LABOCA flux densities.",
+   "software": [
+    "CASA v4.7.2"
+   ],
+   "key_parameters": [
+    "no additional tapering or cleaning"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure sub-mm continuum sizes and flux densities",
+   "method": "Fit 2D Gaussians to the ALMA continuum maps using the CASA imfit routine to measure apparent and beam-deconvolved major and minor axis FWHMs, integrated flux densities, and peak flux densities.",
+   "software": [
+    "CASA v4.7.2",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "H0 = 70 km s^-1 Mpc^-1, Omega_m = 0.3, Omega_Lambda = 0.7"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure optical/NIR host galaxy profiles and compare extents to ALMA",
+   "method": "Extract radial profiles from ALMA, HST ACS i-band, and Calar Alto H-band images using IRAF imexamine, fit 1D Gaussian functions using scipy.optimize.curve_fit, deconvolve PSF/beam, and compute optical/NIR to FIR size ratios.",
+   "software": [
+    "IRAF v2.16.1",
+    "imexamine",
+    "scipy v0.17.0",
+    "curve_fit"
+   ],
+   "key_parameters": [
+    "HST ACS i-band resolution 0.1\"; Calar Alto H-band seeing 0.9\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive dust masses, FIR luminosities, SFRs, and SFR surface densities",
+   "method": "Model dust continuum emission as a modified blackbody to compute M_dust and L_FIR/L_IR from observed S_870 or S_1200, convert L_IR to SFR_IR, and divide by effective area or beam area to obtain galaxy-averaged and peak SFR surface densities (including recalculating ALESS SMG values for consistency).",
+   "software": [],
+   "key_parameters": [
+    "R_e = mean of deconvolved major and minor axes FWHM / 2; galaxy-averaged Sigma_SFR = (0.5 * SFR_IR) / (pi * R_e^2); peak Sigma_SFR = SFR_IR(peak) / (pi * a * b / (4 ln 2))"
+   ],
+   "assumptions": [
+    "Opacity law kappa(nu) = 0.077 * (nu / 352 GHz)^beta m^2 kg^-2 with dust emissivity index beta = 1.6",
+    "T_dust = AGN dust temperature from Shanks et al. (2021) when available, otherwise 35 K for WHDF sources, and 47 K for z>6 quasars",
+    "Chabrier IMF and SFR_IR / (M_sun yr^-1) = 1.49e-10 * (L_IR / L_sun)",
+    "Eddington limit lower bound Sigma_SFR ~ 650 M_sun yr^-1 kpc^-2 assuming gas fraction f_gas = 1 and dust-to-gas ratio f_dg = 1/90"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Test correlation between MIR luminosity and MIR/FIR flux ratios in AS2UDS",
+   "method": "Plot S_100um/S_24um and S_24um/S_8um flux ratios against absolute 4.5 um magnitude M_4.5 for AS2UDS SMGs and X-ray/K-excess QSOs, and perform a maximum likelihood linear fit on a redshift-restricted (1 < z < 1.7) subsample.",
+   "software": [],
+   "key_parameters": [
+    "Redshift cut 1 < z < 1.7 for completeness test (68 SMGs, 43 with 24 um detections, 15 with 100 um detections)"
+   ],
+   "assumptions": [
+    "Zero K-correction for the [4.5] um band assuming spectral slope f_lambda proportional to lambda^-1 for lambda < 4.5 um"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "LAB-01 deconvolved major axis FWHM",
+   "value": "0.18",
+   "uncertainty": "±0.010",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-01 | $0.20\\pm0.008$ | $0.17\\pm0.006$ | $0.18\\pm0.010$ | $0.14\\pm0.009$ | $1.4\\pm0.08$ | $1.1\\pm0.07$ | $3.84\\pm0.18$ | $1.10\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-01 integrated 870 um flux density",
+   "value": "3.84",
+   "uncertainty": "±0.18",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-01 | $0.20\\pm0.008$ | $0.17\\pm0.006$ | $0.18\\pm0.010$ | $0.14\\pm0.009$ | $1.4\\pm0.08$ | $1.1\\pm0.07$ | $3.84\\pm0.18$ | $1.10\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-02 deconvolved major axis FWHM",
+   "value": "0.31",
+   "uncertainty": "±0.014",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-02 | $0.32\\pm0.013$ | $0.14\\pm0.004$ | $0.31\\pm0.014$ | $0.10\\pm0.006$ | $2.4\\pm0.11$ | $0.8\\pm0.05$ | $4.68\\pm0.19$ | $1.04\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-02 integrated 870 um flux density",
+   "value": "4.68",
+   "uncertainty": "±0.19",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-02 | $0.32\\pm0.013$ | $0.14\\pm0.004$ | $0.31\\pm0.014$ | $0.10\\pm0.006$ | $2.4\\pm0.11$ | $0.8\\pm0.05$ | $4.68\\pm0.19$ | $1.04\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-03 deconvolved major axis FWHM",
+   "value": "0.22",
+   "uncertainty": "±0.007",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-03 | $0.25\\pm0.006$ | $0.16\\pm0.004$ | $0.22\\pm0.007$ | $0.13\\pm0.004$ | $1.8\\pm0.06$ | $1.1\\pm0.03$ | $7.16\\pm0.21$ | $1.76\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-03 integrated 870 um flux density",
+   "value": "7.16",
+   "uncertainty": "±0.21",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-03 | $0.25\\pm0.006$ | $0.16\\pm0.004$ | $0.22\\pm0.007$ | $0.13\\pm0.004$ | $1.8\\pm0.06$ | $1.1\\pm0.03$ | $7.16\\pm0.21$ | $1.76\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-04 deconvolved major axis FWHM",
+   "value": "0.18",
+   "uncertainty": "±0.030",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-04 | $0.20\\pm0.024$ | $0.16\\pm0.017$ | $0.18\\pm0.030$ | $0.12\\pm0.026$ | $1.4\\pm0.23$ | $1.0\\pm0.20$ | $1.97\\pm0.3$ | $0.61\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-04 integrated 870 um flux density",
+   "value": "1.97",
+   "uncertainty": "±0.3",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-04 | $0.20\\pm0.024$ | $0.16\\pm0.017$ | $0.18\\pm0.030$ | $0.12\\pm0.026$ | $1.4\\pm0.23$ | $1.0\\pm0.20$ | $1.97\\pm0.3$ | $0.61\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-05 deconvolved major axis FWHM",
+   "value": "0.18",
+   "uncertainty": "±0.012",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-05 | $0.21\\pm0.008$ | $0.20\\pm0.008$ | $0.18\\pm0.012$ | $0.17\\pm0.012$ | $1.5\\pm0.10$ | $1.4\\pm0.10$ | $5.46\\pm0.26$ | $1.31\\pm0.05$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-05 integrated 870 um flux density",
+   "value": "5.46",
+   "uncertainty": "±0.26",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-05 | $0.21\\pm0.008$ | $0.20\\pm0.008$ | $0.18\\pm0.012$ | $0.17\\pm0.012$ | $1.5\\pm0.10$ | $1.4\\pm0.10$ | $5.46\\pm0.26$ | $1.31\\pm0.05$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-10 deconvolved major axis FWHM",
+   "value": "0.094",
+   "uncertainty": "±0.008",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-10 | $0.14\\pm0.004$ | $0.12\\pm0.004$ | $0.094\\pm0.008$ | $0.074\\pm0.009$ | $0.7\\pm0.06$ | $0.6\\pm0.07$ | $2.30\\pm0.10$ | $1.33\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-10 integrated 870 um flux density",
+   "value": "2.30",
+   "uncertainty": "±0.10",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-10 | $0.14\\pm0.004$ | $0.12\\pm0.004$ | $0.094\\pm0.008$ | $0.074\\pm0.009$ | $0.7\\pm0.06$ | $0.6\\pm0.07$ | $2.30\\pm0.10$ | $1.33\\pm0.04$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-11 deconvolved major axis FWHM",
+   "value": "0.14",
+   "uncertainty": "±0.018",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-11 | $0.17\\pm0.011$ | $0.16\\pm0.010$ | $0.14\\pm0.018$ | $0.13\\pm0.019$ | $1.1\\pm0.15$ | $1.1\\pm0.16$ | $1.51\\pm0.12$ | $0.55\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-11 integrated 870 um flux density",
+   "value": "1.51",
+   "uncertainty": "±0.12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-11 | $0.17\\pm0.011$ | $0.16\\pm0.010$ | $0.14\\pm0.018$ | $0.13\\pm0.019$ | $1.1\\pm0.15$ | $1.1\\pm0.16$ | $1.51\\pm0.12$ | $0.55\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-12 deconvolved major axis FWHM",
+   "value": "0.17",
+   "uncertainty": "±0.030",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-12 | $0.20\\pm0.024$ | $0.10\\pm0.008$ | $0.17\\pm0.030$ | $0.036\\pm0.021$ | $1.3\\pm0.23$ | $0.3\\pm0.16$ | $1.68\\pm0.24$ | $0.83\\pm0.08$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-12 integrated 870 um flux density",
+   "value": "1.68",
+   "uncertainty": "±0.24",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| LAB-12 | $0.20\\pm0.024$ | $0.10\\pm0.008$ | $0.17\\pm0.030$ | $0.036\\pm0.021$ | $1.3\\pm0.23$ | $0.3\\pm0.16$ | $1.68\\pm0.24$ | $0.83\\pm0.08$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Average deconvolved major axis FWHM of 8 WHDF SMGs",
+   "value": "1.44",
+   "uncertainty": "±0.17",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparison with z>6 quasar sizes and morphologies",
+     "quote": "This compares with $1.44\\pm0.17$kpc for the average of the major axes of the 8 WHDF SMGs"
+    }
+   ]
+  },
+  {
+   "quantity": "Average deconvolved major axis FWHM of 4 z>6 quasars",
+   "value": "1.25",
+   "uncertainty": "±0.22",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Comparison with $z>6$ quasar sizes and morphologies",
+     "quote": "Assuming the upper limit for the unresolved extent of the J025-33 host we find an average of $1.25\\pm0.22$ kpc for the average sub-mm size of the major axes of the quasar hosts in the sub-mm."
+    }
+   ]
+  },
+  {
+   "quantity": "J332-23 integrated 1202.27 um flux density",
+   "value": "0.47",
+   "uncertainty": "±0.03",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J332-23 | 1202.27 | $0.40\\times0.28$ | $0.16\\pm0.07$ | $0.09\\pm0.05$ | $0.3\\pm0.2$ | $0.47\\pm0.03$ | $0.41\\pm0.02$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "J158-14 integrated 1150.06 um flux density",
+   "value": "3.21",
+   "uncertainty": "±0.07",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J158-14 | 1150.06 | $0.36\\times0.29$ | $0.20\\pm0.02$ | $0.14\\pm0.02$ | $0.7\\pm0.1$ | $3.21\\pm0.07$ | $2.50\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "J025-33 integrated 1192.47 um flux density",
+   "value": "0.76",
+   "uncertainty": "±0.05",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J025-33 | 1192.47 | $0.38\\times0.34$ | $<0.2$ | $<0.2$ | $<1.0$ | $0.76\\pm0.05$ | $0.70\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "J029-36 integrated 1145.16 um flux density",
+   "value": "1.99",
+   "uncertainty": "±0.09",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| J029-36 | 1145.16 | $0.34\\times0.31$ | $0.33\\pm0.02$ | $0.22\\pm0.02$ | $1.8\\pm0.2$ | $1.99\\pm0.09$ | $1.17\\pm0.03$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean i-band to ALMA FIR FWHM ratio for WHDF sources",
+   "value": "1.6",
+   "uncertainty": "±0.36",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion: SMG and quasar FIR properties compared",
+     "quote": "reveals that the ALMA FIR FWHM of these objects are generally only marginally smaller in the $i$-band by a factor of $1.6\\pm0.36$ whereas they are consistently smaller than their $H$-band counterparts by a factor of $7.0\\pm2.4$, or $4.8\\pm0.36$ if LAB-04 is excluded on the grounds of its large error."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H-band to ALMA FIR FWHM ratio for WHDF sources (excluding LAB-04)",
+   "value": "4.8",
+   "uncertainty": "±0.36",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion: SMG and quasar FIR properties compared",
+     "quote": "whereas they are consistently smaller than their $H$-band counterparts by a factor of $7.0\\pm2.4$, or $4.8\\pm0.36$ if LAB-04 is excluded on the grounds of its large error."
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-01 galaxy-averaged SFR surface density",
+   "value": "257",
+   "uncertainty": "±146",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| LAB-01 | $5.0\\pm1.0$ | $3.4\\pm1.8$ | $663\\pm359$ | $257\\pm146$ | $265\\pm143$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-03 galaxy-averaged SFR surface density",
+   "value": "251",
+   "uncertainty": "±146",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| LAB-03 | $12.0\\pm3.6$ | $3.9\\pm2.2$ | $760\\pm437$ | $251\\pm146$ | $264\\pm152$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "LAB-05 galaxy-averaged SFR surface density",
+   "value": "198",
+   "uncertainty": "±104",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| LAB-05 | $8.9\\pm1.3$ | $3.4\\pm1.7$ | $659\\pm323$ | $198\\pm104$ | $204\\pm100$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "J158-14 galaxy-averaged SFR surface density",
+   "value": "943",
+   "uncertainty": "±472",
+   "units": "M_sun yr^-1 kpc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 6",
+     "quote": "| J158-14 | $4.1\\pm0.4$ | $6.5\\pm2.4$ | $1360\\pm506$ | $943\\pm472$ | $277\\pm103$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of log10(S_100um/S_24um) vs M_4.5 linear fit",
+   "value": "0.16",
+   "uncertainty": "±0.03",
+   "units": "mag^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Do MIR colours and luminosities distinguish QSOs and SMGs?",
+     "quote": "A maximum likelihood fit of the points shown give a linear fit of $\\textup{log}_{10}(S_{100\\rm \\micro m}/S_{24\\micro m})=0.16\\pm0.03\\times M_{4.5}+5.45\\pm0.3$ with the correlation significant at $\\approx3\\sigma$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact frequency integration limits used to compute the numbers in Table 6: the main text Eq. 3 states rest wavelengths between 3-1100 um (and uses the symbol L_IR in Eq. 4), whereas the Table 6 notes state rest wavelength limits between 42.5-122.5 um for L_FIR (and the ratio SFR_IR/L_FIR in Table 6 is ~1.94e-10 rather than 1.49e-10).",
+  "Individual dust temperatures (and uncertainties) from Paper I (Shanks et al. 2021) adopted for each of the WHDF sources in the M_dust and L_FIR calculations (only LAB-01, LAB-02, and LAB-11 temperatures are mentioned in the text).",
+  "Exact imaging parameters in the standard ALMA pipeline scripts (e.g. Briggs robust weighting parameter, cell size, image size, primary beam correction status) used to generate the continuum images."
+ ],
+ "missing_for_reproduction": [
+  "Resolution of the integration-limit discrepancy between Eq. 3 (3-1100 um) and Table 6 footnote (42.5-122.5 um) and the exact conversion factor used to produce the SFR_IR column in Table 6.",
+  "Exact dust temperatures adopted from Paper I (Shanks et al. 2021) for each individual WHDF target (specifically LAB-03, LAB-04, LAB-05, LAB-10, LAB-12).",
+  "The HST ACS i-band and Calar Alto H-band FITS images of the WHDF needed to re-run IRAF imexamine for the optical/NIR host galaxy sizes in Table 3."
+ ],
+ "reproducibility_score": 80,
+ "score_reason": "The ALMA project codes are explicitly stated, the data reduction uses the standard ALMA pipeline in CASA v4.7.2 without custom cleaning or tapering, and the core measurements use standard CASA imfit and analytic modified blackbody equations. Minor deductions are due to the ambiguity in the exact FIR integration limits/conversion factor in Table 6 and reliance on non-ALMA WHDF optical/NIR images for Table 3.",
+ "rediscovery_reason": "Both ALMA project codes (2016.1.01523.S and 2016.1.01510.S) are public, the authors used the standard archive pipeline scripts as-is in CASA, and the main ALMA deliverables (2D Gaussian sizes and flux densities in Tables 2 and 5 via CASA imfit, plus derived dust masses and luminosities in Table 6) are concrete numeric tables ideal for automated reproduction.",
+ "source_card": "cards/2022MNRAS.510.4976A/sonnet/card.md"
+}

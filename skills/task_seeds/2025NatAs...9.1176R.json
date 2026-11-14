@@ -1,0 +1,441 @@
+{
+ "bibcode": "2025NatAs...9.1176R",
+ "title": "A young gas giant and hidden substructures in a protoplanetary disk",
+ "year": 2025,
+ "doi": "10.1038/s41550-025-02576-w",
+ "arxiv_id": "2507.11612",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets"
+ ],
+ "question": "Does the apparently structureless disk of MP Mus hide substructures at 3 mm, and can a companion in the inner disk explain both the Gaia proper motion anomaly and the 3 mm cavity?",
+ "alma_project_codes": [
+  "2022.1.01758.S",
+  "2017.1.01167.S",
+  "2017.1.01419.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm) and Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "beam 0.06 x 0.04 arcsec at both wavelengths (robust = 0); PA = -13 deg at 1.3 mm and -27 deg at 3 mm; about 4 au",
+  "sensitivity": "image rms 37 uJy/beam (1.3 mm) and 7.7 uJy/beam (3 mm); peak S/N 105 (1.3 mm) and 90 (3 mm)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk inclination and position angle (and stellar mass) of MP Mus",
+    "evidence": [
+     {
+      "loc": "The Gaia proper motion anomaly of MP Mus",
+      "quote": "disk geometries from (cite: Ribas_2023)"
+     }
+    ]
+   },
+   "citation": "(cite: Ribas_2023)"
+  },
+  {
+   "what": {
+    "value": "1.3 mm continuum data and radial profile (R68, R90, flux and dust mass at 1.3 mm) from earlier paper",
+    "evidence": [
+     {
+      "loc": "ALMA data processing and imaging",
+      "quote": "The Band 6 data (1.3 mm) are part of ALMA project 2017.1.01167.S (P.I.: S. Pérez) and were already presented in (cite: Ribas_2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Ribas_2023)"
+  },
+  {
+   "what": {
+    "value": "Distance to MP Mus (97.9 +/- 0.1 pc)",
+    "evidence": [
+     {
+      "loc": "Main",
+      "quote": "This K1V star is located 97.9$\\pm$0.1 pc away from Earth (cite: Gaia_2021b)"
+     }
+    ]
+   },
+   "citation": "(cite: Gaia_2021b)"
+  },
+  {
+   "what": {
+    "value": "Gaia DR2 scanning law",
+    "evidence": [
+     {
+      "loc": "The Gaia proper motion anomaly of MP Mus",
+      "quote": "We used the scanning law of *Gaia* DR2"
+     }
+    ]
+   },
+   "citation": "(cite: Boubert_2021)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity law (kappa at 230 GHz = 2.3 cm2/g) and beta range 0 to 0.5 used for the dust mass",
+    "evidence": [
+     {
+      "loc": "Properties and additional analysis of the ALMA data at 3 mm",
+      "quote": "where $\\kappa_\\text{230 GHz}$=2.3 cm$^2$ g$^{-1}$ and $\\beta$ values between 0 and 0.5, as typically inferred in protoplanetary disks (cite: Tazzari_2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Andrews_2005); (cite: Tazzari_2021)"
+  },
+  {
+   "what": {
+    "value": "Disk aspect ratio H/R = 0.1 at 100 au for PHANTOM",
+    "evidence": [
+     {
+      "loc": "PHANTOM simulations",
+      "quote": "We adopted a typical disk aspect ratio $H/R$ to 0.1 at a reference radius of 100 au (cite: Law_2021; Paneque_2023)."
+     }
+    ]
+   },
+   "citation": "(cite: Law_2021; Paneque_2023)"
+  },
+  {
+   "what": {
+    "value": "DIANA standard dust composition for MCFOST",
+    "evidence": [
+     {
+      "loc": "PHANTOM simulations",
+      "quote": "We adopted a DIANA standard dust composition (cite: Woitke_2016; Min_2016)"
+     }
+    ]
+   },
+   "citation": "(cite: Woitke_2016; Min_2016)"
+  },
+  {
+   "what": {
+    "value": "Upper limits on companion mass beyond 40-50 au (more massive than 2-3 MJup ruled out)",
+    "evidence": [
+     {
+      "loc": "Hidden substructures at 3 mm",
+      "quote": "previous observing campaigns to detect planets and substellar objects in MP Mus have ruled-out sources more massive than $2-3~M_{\\rm Jup}$ at separations $>40-50$ au (cite: Wolff_2016; AsensioTorres_2021)"
+     }
+    ]
+   },
+   "citation": "(cite: Wolff_2016; AsensioTorres_2021)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and self-calibrate ALMA Band 3 and Band 6 data",
+   "method": "Pipeline calibration, then phase-only self-calibration per configuration, re-centring, flux rescaling between executions and a final combined self-cal round",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "CASA 6.4.1.12 pipeline then 6.5.6.22 (Band 3); CASA 5.1.1-5 pipeline then 6.5.6.22 (Band 6)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Image the continuum at 1.3 and 3 mm",
+   "method": "tclean with mtmfs, nterms=1, multiscale 0,1,3,5 beams, robust = 0 for both bands",
+   "software": [
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "rms 37 uJy/beam (1.3 mm) and 7.7 uJy/beam (3 mm); peak S/N 105 and 90"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive visibility-space radial intensity profiles",
+   "method": "FRANK fit of the axisymmetric profile from visibilities (Hankel transform), geometry fitted non-parametrically first",
+   "software": [
+    "FRANK"
+   ],
+   "key_parameters": [
+    "1.3 mm: alpha = 1.2, w_smooth = 5e-3",
+    "3 mm: alpha = 1.3, w_smooth = 1e-2 (lower values gave artificial ripples)"
+   ],
+   "assumptions": [
+    "Disk is axisymmetric"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Check substructures are not FRANK artefacts",
+   "method": "Radial profiles from robust=-0.5 tclean images with GOFISH, and a GPUVMEM image with no entropy term (positivity only)",
+   "software": [
+    "GOFISH",
+    "GPUVMEM",
+    "CASA tclean"
+   ],
+   "key_parameters": [
+    "robust = -0.5 for the 3 mm image"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Measure 3 mm flux, dust mass and disk radii",
+   "method": "Flux from robust=0.5 image; dust mass from optically thin emission with bootstrap over flux, temperature and beta; radii from the cumulative intensity profile of robust=0 images",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Dust temperature 20 K (Normal, sigma 2.5 K in bootstrap); beta uniform 0 to 0.5; 1000 bootstrap draws; median and 16/84 percentiles reported",
+    "kappa_230GHz = 2.3 cm2/g"
+   ],
+   "assumptions": [
+    "Optically thin emission, average dust temperature 20 K, power-law dust opacity; gas-to-dust ratio 100 used later for disk mass in simulations"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Constrain companion mass and separation from the Gaia proper motion anomaly",
+   "method": "Compare Gaia DR2 and DR3 proper motions, then simulate Gaia observations of a two-body system with 500 000 random draws and keep those matching the observed anomaly and RUWE",
+   "software": [
+    "ASTROMET"
+   ],
+   "key_parameters": [
+    "Mass ratio 0.0001 to 1 and period 0.016 to 1585 yr, log-uniform; selection UWE_DR3 < 1.1; stellar mass 1.30 +/- 0.08 Msun, inclination 32 +/- 1 deg, PA 10 +/- 1 deg"
+   ],
+   "assumptions": [
+    "No eccentricity; light ratio l = q^3.5; PMa dominated by a single companion"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Run SPH hydrodynamic models of a star plus planet in the disk",
+   "method": "Grid of 25 3D PHANTOM simulations, one-fluid dust with five grain sizes, evolved for 1000 planet orbits",
+   "software": [
+    "PHANTOM"
+   ],
+   "key_parameters": [
+    "N = 1e6 particles; R_out = 50 au; R_in = 1.5 a_p; alpha_AV = 0.2, beta_AV = 2 (alpha_ss = 5e-3); disk mass 0.01 Msun; star 1.3 Msun; H/R = 0.1 at 100 au; grains 1 um to 0.5 cm, n(s) proportional to s^-3.5, 3 g/cm3"
+   ],
+   "assumptions": [
+    "Gas-to-dust ratio 100, locally isothermal disk with T proportional to R^-0.5 and surface density proportional to R^-1"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Radiative transfer of the SPH models and comparison with ALMA profiles",
+   "method": "MCFOST Monte Carlo radiative transfer on the SPH Voronoi mesh, 1.3 and 3 mm images convolved with ALMA beams, radial profiles with GOFISH",
+   "software": [
+    "MCFOST",
+    "GOFISH"
+   ],
+   "key_parameters": [
+    "Star: 5000 K black body, R = 1.25 Rsun, M = 1.3 Msun; N_gamma = 1e8 photons for temperature and for ray-tracing images"
+   ],
+   "assumptions": [
+    "DIANA dust: 60% silicates, 15% amorphous carbon, 25% porosity; local thermal equilibrium; passive stellar heating"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Gaia proper motion anomaly significance",
+   "value": "4.5",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Gaia proper motion anomaly of MP Mus",
+     "quote": "The resulting PMa has a significance of 4.5 $\\sigma$"
+    }
+   ]
+  },
+  {
+   "quantity": "Proper motion change |delta mu|",
+   "value": "0.21",
+   "uncertainty": "0.05",
+   "units": "mas/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Gaia proper motion anomaly of MP Mus",
+     "quote": "implies a change in the proper motion of $|\\Delta \\mu|=0.21\\pm0.05$ mas yr$~^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "RUWE Gaia DR2 and DR3",
+   "value": "0.98 and 0.96",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Gaia proper motion anomaly of MP Mus",
+     "quote": "(of 0.98 and 0.96, respectively)"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion orbital separation implied by PMa",
+   "value": "<30 au (required mass increases with separation; a < 1 au excluded by RUWE)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Gaia proper motion anomaly of MP Mus",
+     "quote": "the PMa of MP Mus is most likely due to a companion at orbital separations $<$30 au"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm ring radius",
+   "value": "10.5",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Hidden substructures at 3 mm",
+     "quote": "the new 3 mm data reveal a ring at 10.5 au and two gaps at 7.5 and 15 au that are undetected at shorter wavelengths"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm gap radii",
+   "value": "7.5 and 15",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Hidden substructures at 3 mm",
+     "quote": "the new 3 mm data reveal a ring at 10.5 au and two gaps at 7.5 and 15 au that are undetected at shorter wavelengths"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm inner cavity radius",
+   "value": "~3",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Hidden substructures at 3 mm",
+     "quote": "an inner cavity with a radius of $\\sim$3 au, as well as a ring and two gaps"
+    }
+   ]
+  },
+  {
+   "quantity": "Image rms at 1.3 mm",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data processing and imaging",
+     "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Image rms at 3 mm",
+   "value": "7.7",
+   "uncertainty": "not stated",
+   "units": "uJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data processing and imaging",
+     "quote": "The corresponding image rms values are 37 $\\mu$Jy beam$^{-1}$ and 7.7 $\\mu$Jy beam$^{-1}$ at 1.3 and 3 mm, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak S/N at 1.3 and 3 mm",
+   "value": "105 and 90",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "ALMA data processing and imaging",
+     "quote": "The peak S/N of these images is 105 at 1.3 mm and 90 at 3 mm."
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm flux density",
+   "value": "22",
+   "uncertainty": "1 (dominated by 5% absolute calibration)",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Properties and additional analysis of the ALMA data at 3 mm",
+     "quote": "We measured a 3 mm flux of 22$\\pm$1 mJy from the image synthesised with `robust=0.5`."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust disk mass from 3 mm flux",
+   "value": "0.12",
+   "uncertainty": "+0.03/-0.02",
+   "units": "MJup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Properties and additional analysis of the ALMA data at 3 mm",
+     "quote": "We then calculated a dust disk mass of $0.12^{+0.03}_{-0.02}$ $M_{\\rm Jup}$ using standard assumptions"
+    }
+   ]
+  },
+  {
+   "quantity": "3 mm radii enclosing 68%, 90%, 95% of flux",
+   "value": "22, 35, 44",
+   "uncertainty": "5 each",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Properties and additional analysis of the ALMA data at 3 mm",
+     "quote": "The radii encompassing 68%, 90%, and 95% of the 3 mm continuum flux are 22$\\pm$5 au, 35$\\pm$5 au, and 44$\\pm$5 au respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Companion mass needed if located in the gaps (7.5 or 15 au)",
+   "value": ">10",
+   "uncertainty": "not stated",
+   "units": "MJup",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Hidden substructures at 3 mm",
+     "quote": "it would require masses above $10~M_{\\rm Jup}$ to account for the observed signal"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration solution intervals, number of rounds per configuration beyond the ones described, and the reference antenna/SNR thresholds",
+  "tclean image size, cell size, masks, threshold and iteration limits",
+  "Which flux scale reference or flux calibrator was used when rescaling executions, and the rescaling factors",
+  "Exact line-free/CO-flagged channel ranges in the Band 6 SPW",
+  "Primary-beam correction treatment for the images and profiles",
+  "FRANK settings other than alpha and w_smooth (number of bins, outer radius, uv-range cut, weight scale), and the fitted i and PA values",
+  "Gaia simulation details: number of epochs actually used, astrometric noise model, treatment of the companion light ratio beyond l = q^3.5",
+  "PHANTOM setup files: accretion and sink settings are partly given but the dust-gas coupling parameters, initial particle placement and snapshot used for imaging are not",
+  "MCFOST inputs: dust size distribution, inclination and position angle used for imaging, the mapping from SPH dust sizes to MCFOST grains, and the snapshot time",
+  "Number of bins and the uncertainty used in the GOFISH radial profile extraction; GPUVMEM parameters (pixel size, iterations, weighting)"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals and per-step parameters",
+  "tclean image size, cell size, masks and thresholds",
+  "Exact FRANK configuration beyond alpha and w_smooth, and fitted geometry",
+  "Full PHANTOM and MCFOST input files and snapshot selection",
+  "Gaia simulation configuration files and random seeds"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data are public and imaging settings (robust, scales, FRANK alpha and w_smooth) and many simulation parameters are given, but self-cal solints, image geometry, masks and simulation inputs are missing, so exact numbers need tuning.",
+ "rediscovery_reason": "Public ALMA Band 3 data, a reasonably specified tclean and FRANK recipe, and numeric results (ring/gap radii, flux 22 mJy, dust mass 0.12 MJup, R68/R90/R95) make the observational part redoable.",
+ "source_card": "cards/2025NatAs...9.1176R/sonnet/card.md"
+}

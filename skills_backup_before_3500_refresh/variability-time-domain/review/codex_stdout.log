@@ -1,0 +1,1439 @@
+OpenAI Codex v0.165.0-alpha.1.2
+--------
+workdir: C:\Users\adama\Desktop\Quasar-main
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: high
+reasoning summaries: none
+session id: 01a184c1-2d96-7552-aa7c-a430e1d71efa
+--------
+user
+# Review task: an ALMA agent skill against its evidence pack
+
+You are reviewing a skill file (SKILL.md, plus an optional parameters table) that another model wrote from the
+EVIDENCE PACK below. The pack is built from methods cards of published ALMA papers; every quote in it was
+mechanically verified against the paper text. The skill will be given to research agents that analyse ALMA data,
+so wrong defaults or misattributed practice cause real errors. You have no file access: everything you need is in
+this message.
+
+Check, in this order:
+
+1. **Attribution.** Every number, range, default, software attribution and "papers do X" claim that cites
+   bibcodes: does the pack support it for those bibcodes? Flag claims the pack contradicts, claims cited to a paper
+   whose pack entry says something else, and counts that do not match the pack aggregates.
+2. **Unsupported practice.** Statements presented as literature practice with no support in the pack. (General
+   background marked as general practice is fine if it is correct.)
+3. **Scientific correctness.** Wrong formulas, wrong units, wrong CASA task/parameter names or semantics, unsafe
+   advice, or a recommendation that contradicts the evidence.
+4. **Omissions.** Important pitfalls, assumptions or validation checks that are clearly present in the pack (for
+   example in "Limitations the authors admit" or "Settings cards flag as needed but not stated") but missing from
+   the skill.
+5. **Usability.** Anything an agent would misread or could not act on.
+
+Output format (Markdown, nothing else):
+
+```
+# Codex review: <slug>
+VERDICT: CLEAN | FIX
+## Findings
+- SR-01 | high|medium|low | <attribution|unsupported|science|omission|usability> | <the claim, quoted briefly> | <problem, citing the pack line or bibcode> | <concrete fix>
+- SR-02 | ...
+## Notes
+<at most 5 lines: overall quality, anything the writer should know>
+```
+
+Use `VERDICT: CLEAN` only when there are no high or medium findings. Be specific and terse; do not restate the
+skill. Do not invent pack content: when you say the pack contradicts a claim, cite the pack line.
+
+=== SKILL.md (variability-time-domain) ===
+---
+name: alma-variability-time-domain
+description: "Measure and interpret time variability and motion in ALMA data: light curves from seconds to years, stellar and AGN flares, periodicity and power spectra, cross-band time lags, multi-epoch flux comparisons, proper motions of knots, clumps, masers and stars, and proper-motion correction before combining epochs. Use when the user asks whether a source varied, wants a light curve, flare or periodicity analysis, a DCF lag, a proper motion or ejection age, or needs to merge ALMA data taken years apart. Built from 90 ALMA papers (2014-2026)."
+---
+
+# Time-domain and variability analysis
+
+This technique turns ALMA data into flux (or polarization, or position) as a function of time, then asks whether
+the change is real and what it means: flares, periodic signals, lags between bands, knot or clump motions.
+Two mistakes dominate. First, calling calibration drift or a beam change "variability": every paper that claims
+a change shows that a calibrator, check source or field source stayed constant on the same timescale. Second,
+quoting periodogram significance against white noise: for Sgr A* at 340 GHz the same peaks drop from ~25.4 and
+~12.7 sigma to ~2.9 and ~0.9 sigma once red noise is simulated (2026ApJ..1003L..17Y).
+
+Counts below are from the evidence pack (`skills/packs/variability-time-domain.md`, 90 papers). The pack's regex
+also catches "flared disk", "variable alpha_CO", "a_max variable" and similar, so I read every pack line and
+title. My count from the pack: 35 papers are off-topic (mostly protoplanetary disk and GMC papers, e.g.
+2014ApJ...791...20R, 2018ApJ...869L..42H, 2024ApJ...976...88L) and 3 only assume the source does not vary
+(2016A&A...593A..44L, 2016A&A...593L..19M, 2021A&A...656A..46M). The remaining 52 do time-domain work:
+31 measure flux or polarization variability, flares, periodicity or lags; 13 measure proper motions or
+multi-epoch positions; 5 correct for proper motion before combining epochs; 3 reconstruct episodic ejection
+histories. Software counts are the pack aggregates, which include the off-topic papers.
+
+## When to use
+
+- A compact source may vary within one execution: M dwarf flares (2018ApJ...855L...2M, 2020ApJ...891...80M),
+  brown dwarf pulses (2020A&A...642A..96P), ultracool dwarf flares (2019ApJ...881...33H), Sgr A* minute-scale
+  variability (2025ApJ...994..256Y, 2026ApJ..1003L..17Y, 2025ApJ...987..152R).
+- Flux comparison across epochs: blazars and AGN cores (2016A&A...586A..70L, 2020A&A...636A..62K,
+  2026ApJ..1004..126K), GRB afterglows (2023NatAs...7...80U, 2018ApJ...862...94L, 2019ApJ...878L..26L),
+  supernova remnants of decades (2019ApJ...870...59S), water lines against older single-dish data
+  (2017A&A...602A..42K).
+- Positions at two or more epochs: jet knots (2015ApJ...805..186L), evolved-star clumps (2024AJ....167...94H),
+  masers (2021ApJ...908..175C, 2018ApJ...866...87B, 2014PASJ...66..106H), runaway stars (2020ApJ...889..178B),
+  protostars (2018ApJ...859..165S), background-source tests (2024RMxAA..60..355R, 2019ApJ...878L...8T).
+- Combining ALMA data from different cycles on a nearby star with large proper motion (2019A&A...625A.118K,
+  2020ApJ...895L...2N, 2015ApJ...798..124R, 2017ApJ...840...32T, 2025ApJ...993..120H).
+- Linking outflow knots to accretion bursts seen in a light curve (2024ApJ...961..108K, 2024ApJ...964...48T,
+  2019ApJ...874...31W).
+
+## When not to use
+
+- Spectral index or SED work from data at different dates: treat variability as a caveat, not as the
+  measurement. Papers that build non-simultaneous spectra say so (2016A&A...593L..19M, 2024ApJ...970...56P).
+  Use `spectral-index` or `free-free-synchrotron`.
+- Flux-scale equalization between tunings of a steady source (2021A&A...656A..46M uses gencal on a
+  non-variable reference). That is calibration; see `self-calibration`.
+- Resolved kinematics of disks, envelopes or galaxies ("flared" surfaces, rotation). The regex catches them but
+  they are static problems: use `keplerian-disk-kinematics`, `envelope-kinematics-pv`, `galaxy-3d-kinematics`.
+- Absolute astrometry at the sub-arcsecond level from data not designed for it: ALMA images showed 1-2 arcsec
+  offsets from ICRS in one project (2016A&A...594A.107K). Use relative positions against a reference in the
+  same field.
+
+## Steps
+
+1. **Set the timescale and select data.**
+   - Goal: match bin size to the physics and to the sensitivity per bin.
+   - Method: seconds for stellar flares (2 s fits in the flare scan of 2018ApJ...855L...2M; 5 s bins in
+     2020ApJ...891...80M; 30 s images in 2020A&A...642A..96P); ~1 min for Sgr A* (2026ApJ..1003L..17Y,
+     2025ApJ...994..256Y); per scan (~4-8 min) for flare searches (2019ApJ...881...33H, 2020ApJ...894...76W,
+     2024ApJ...970...56P); per execution block for days to weeks (2026ApJ..1004..126K); years for proper
+     motions (2015 vs 2021 in 2024AJ....167...94H).
+   - Archival selection: 2025ApJ...994..256Y required the Sgr A* field, 230 GHz, resolution below 1 arcsec and
+     more than 1 h integration, and found 12 projects (card).
+2. **Calibrate every epoch the same way.**
+   - Method: scriptForPI or pipeline per execution, then phase self-calibration on bright targets. For Sgr A*
+     2025ApJ...994..256Y started with `solint='inf'` and shortened to `int` (card). 2018A&A...619A..40M reports
+     phase-and-amplitude self-calibration still "worked" despite the variability (card).
+   - General practice: amplitude self-calibration with a constant model over a long solution interval absorbs
+     intrinsic variability. Use phase-only, or amplitude with a solution interval much longer than the
+     variability you measure, and say which.
+   - Software: CASA (17 papers in the pack aggregate), AIPS (4).
+3. **Measure flux per time bin.**
+   - Point-source fit to visibilities with CASA `uvmodelfit` (2018ApJ...855L...2M, 2020ApJ...891...80M,
+     2020ApJ...894...76W).
+   - `tclean` snapshot images plus `imfit` (2025ApJ...994..256Y).
+   - Average visibilities per scan on long baselines (>150 klambda) with errors from the amplitude spread
+     (2015A&A...576A..41B).
+   - Flux in a beam-shaped region of each short-bin image (2020A&A...642A..96P).
+   - Remove other emission first: image only baselines >100 klambda to drop the disk (2020ApJ...891...80M);
+     `fixvis` to the target, subtract other sources' models, then average (2024ApJ...970...56P); subtract a
+     variable core with UVSUB (2018A&A...619A..40M).
+   - Polarization of flares: fit XX and YY separately, |Q/I| = (XX-YY)/2I, a lower limit without Stokes U
+     (2020ApJ...891...80M, 2018ApJ...855L...2M).
+4. **Check that the variation is not instrumental.**
+   - Calibrator or check source on the same timescale: gain calibrator flat (2020ApJ...891...80M,
+     2018ApJ...855L...2M), phase calibrator within a few percent (2024ApJ...970...56P), check-source
+     variability sets ~5% flux uncertainty (2015A&A...576A..41B), field background source as control
+     (2020ApJ...894...76W).
+   - Beam systematics: compare the light-curve power spectrum with that of the beam size and reject coincident
+     peaks (2026ApJ..1004..126K).
+5. **Quantify variability.**
+   - Excess variance of per-scan fluxes (2018ApJ...855L...2M, 0.017 +/- 0.030 for quiescent Proxima, card).
+   - Variability index VI = (Smax - Smin)/(Smax + Smin) per band (2016A&A...586A..70L).
+   - Null test: the distribution of short-bin fluxes is Gaussian with zero mean and RMS matching image noise
+     (82 vs 88 uJy, 2020A&A...642A..96P).
+   - Structure function for rotation-measure variability (2018ApJ...868..101B).
+   - Fourier power spectrum with bootstrap errors (2015ApJ...802...69B; 1000 bootstrap realizations against a
+     constant-flux simulation in 2026ApJ..1004..126K).
+   - Periodicity: generalized Lomb-Scargle with false-alarm probability from 10^5 simulated red-noise light
+     curves (2026ApJ..1003L..17Y; 2025ApJ...994..256Y after linear detrending).
+   - Smoothing splines through Q and U before differentiating (2025ApJ...987..152R, `scipy.interpolate`).
+   - Solar oscillations: per-pixel power spectra fit with a log-normal plus linear-in-ln(nu) model
+     (2021A&A...652A..92N).
+6. **Cross-band lags and event rates.**
+   - Discrete correlation function with a Gaussian fit to the peak (2020A&A...636A..62K, lag -105 +/- 4 d
+     between Fermi-LAT and ALMA 3 mm); ZDCF (2015A&A...576A..41B, where zero-lag spikes prevented a lag).
+   - Flare rates from small numbers with Gehrels 95% intervals (2020ApJ...891...80M).
+7. **Model the time behaviour.**
+   - Flares: spectral index across sidebands, then the optically thin gyrosynchrotron relation
+     alpha = 1.22 - 0.9 delta for the electron index (2018ApJ...855L...2M gives delta = 3.32 +/- 0.83, card).
+     Non-detections give 3 sigma limits on emitting-region size (2019ApJ...881...33H).
+   - GRB afterglows: broken power-law light curve (2023NatAs...7...80U), forward shock with jet-break factor
+     (2019ApJ...884L..58U), reverse-shock components (2018ApJ...862...94L, 2019ApJ...878L..26L), off-axis
+     templates (2017ApJ...850L..21K).
+   - Sgr A* periodicity: Doppler-boosted hotspot fit by least squares, then MCMC, with a GR ray-tracing check
+     (2025ApJ...994..256Y, card).
+   - Blazars: Doppler factor from a cubic spline through variable-binned light curves (2019MNRAS.490.5300D).
+8. **Proper motions.**
+   - Fit positions per epoch, simultaneously for all components: 2D Gaussians with CASA `imfit`
+     (2024AJ....167...94H); align maps on continuum peaks after convolving to a common resolution
+     (2015ApJ...805..186L); measure relative to a reference maser (2021ApJ...908..175C).
+   - Position error per epoch: about beam/(S/N) (2024AJ....167...94H, citing ALMA memo 620) or
+     FWHM/(I/sigma_I) (2018ApJ...859..165S).
+   - Convert with v_t = 4.74 mu[arcsec/yr] d[pc] km/s (general practice); 2015ApJ...805..186L takes the jet as
+     in the sky plane so v_t is the jet speed. Ages = distance/velocity with no acceleration
+     (2024AJ....167...94H, acceleration effect 5-10%).
+   - Association tests: compare the observed shift with the expected stellar proper motion (0.6 arcsec expected
+     vs <=0.03 arcsec observed in 2024RMxAA..60..355R; Band 7 two years earlier in 2019ApJ...878L...8T).
+9. **Correct proper motion before combining epochs.**
+   - CASA `fixplanet` to the expected coordinates at a reference date (2020ApJ...895L...2N); shift the phase
+     center of the older data (2019A&A...625A.118K); adjust visibility phases (2015ApJ...798..124R); shift to
+     a common epoch in GILDAS (2017ApJ...840...32T).
+10. **Episodic ejection histories.** Kinematic ages of knots compared with an infrared or submm light curve
+    (2024ApJ...961..108K with WISE/NEOWISE; 2024ApJ...964...48T with an 8 yr JCMT 850 um light curve;
+    2019ApJ...874...31W with a ~93 yr period).
+
+## Parameter defaults and ranges
+
+| Parameter | Common choice | Range seen | Papers (count) | Examples |
+|---|---|---|---|---|
+| Time bin, stellar flares | per scan to find, seconds to resolve | 2 s - 7 min | 5 | 2018ApJ...855L...2M (2 s), 2020ApJ...891...80M (5 s), 2020A&A...642A..96P (30 s), 2019ApJ...881...33H (~7 min) |
+| Time bin, Sgr A* | ~1 min | ~1 min | 2 | 2026ApJ..1003L..17Y, 2025ApJ...994..256Y |
+| Per-scan flux checks | scan between phase cals | 4-8 min | 3 | 2020ApJ...894...76W, 2019ApJ...881...33H, 2024ApJ...970...56P |
+| Long-baseline cut to isolate a point source | >100-150 klambda | 100-150 klambda | 2 | 2020ApJ...891...80M, 2015A&A...576A..41B |
+| Periodicity threshold | FAP from red-noise simulations | FAP < 1.35e-3 (3 sigma) to < 2.9e-7 (5 sigma) | 2 | 2026ApJ..1003L..17Y, 2025ApJ...994..256Y |
+| Red-noise PSD slope | f^-2 | f^-2 to f^-2.20 | 2 | 2026ApJ..1003L..17Y, 2025ApJ...994..256Y |
+| Number of simulated light curves | 10^5 | 10^3 - 10^5 | 3 | 2026ApJ..1004..126K (1000 bootstrap), 2026ApJ..1003L..17Y, 2025ApJ...994..256Y |
+| Power-spectrum frequency resolution | mean epoch spacing | ~3 d | 1 | 2026ApJ..1004..126K |
+| DCF bin | matched to light-curve binning | 12 d, 33 d | 1 | 2020A&A...636A..62K |
+| Flux-scale uncertainty adopted | ~5-10% | 2.5% (relative, gencal) - ~20% | 4 | 2015A&A...576A..41B (~5%), 2020ApJ...894...76W (~10%), 2021A&A...656A..46M (2.5%), 2016A&A...593A..44L (~20%) |
+| Upper limit on flux in a bin | 3 sigma | 3 sigma | 2 | 2020A&A...642A..96P (264 uJy per 30 s), 2019ApJ...881...33H (110 uJy per scan) |
+| Position error per epoch | beam/(S/N) | beam/(S/N); ~1/10 beam for VLBA | 3 | 2024AJ....167...94H, 2018ApJ...859..165S, 2020A&A...636A..62K |
+| Smoothing spline (Q, U) | order 3-5 | kappa 3-5, sigma 0.1-0.5 | 1 | 2025ApJ...987..152R |
+| Solar PSD fit range | min chi2 over a grid | 2-4 mHz to 30-50 mHz | 1 | 2021A&A...652A..92N |
+
+## Software
+
+Pack aggregates (all 90 papers, so they include off-topic ones):
+
+| Software | Count | Used for |
+|---|---|---|
+| CASA | 17 | calibration, per-bin imaging, `uvmodelfit` (2), `imfit` (2), `fixvis` (1), `fixplanet` (1), `gencal` (1) |
+| AIPS | 4 | named in matched steps; the pack excerpts do not show which papers or for what |
+| Fermi ScienceTools / gtlike | 2 / 1 | gamma-ray light curves for ALMA comparisons (2020A&A...636A..62K, 2019MNRAS.490.5300D) |
+| Difmap | 1 | VLBA Gaussian component fits for jet proper motions (2020A&A...636A..62K) |
+| ZDCF | 1 | cross-correlation of light curves (2015A&A...576A..41B) |
+| scipy | 1 | smoothing splines for polarized light curves (2025ApJ...987..152R) |
+| CIAO 4.9 | 1 | Chandra data alongside ALMA (2019PASJ...71...68K, off-topic for this skill) |
+| Swift burst analyser, pymultinest | 1 each | GRB multiwavelength modelling (pack aggregate) |
+
+RADMC-3D (5), emcee (4), eddy (3) and bettermoments (2) in the aggregate come mostly from off-topic disk papers.
+The cards rarely state which Lomb-Scargle or DCF implementation was used.
+
+## Pitfalls
+
+- **Calibration masquerading as variability.** Absolute flux was uncertain by ~20% when Titan scans were
+  flagged (2016A&A...593A..44L); ALMA lacked Tsys on Sgr A* and needed a correction (2015ApJ...802...69B); flux
+  calibration uncertainty is often left out of fit errors (2021A&A...656A..46M).
+- **White-noise significance.** Red noise cuts significance sharply (2026ApJ..1003L..17Y); always simulate the
+  red-noise PSD.
+- **Flux correlated with beam size** is a systematic (2026ApJ..1004..126K).
+- **Non-simultaneous data.** Spectra and multiwavelength polarimetry from different dates limit conclusions
+  (2016A&A...593L..19M, 2019ApJ...884L..58U, 2024ApJ...970...56P, 2025MNRAS.540..364A).
+- **Sampling.** Short observations can miss flares (2019ApJ...881...33H); a single few-hour epoch limits
+  conclusions (2020A&A...642A..96P, 2018A&A...619A..40M); a single track and coarse cadence
+  (2015A&A...576A..41B); irregular sparse sampling makes VI a lower limit (2016A&A...586A..70L); limited
+  duration makes decay timescales approximate (2026ApJ..1003L..17Y); the true flare timescale is unknown with
+  no simultaneous data (2019ApJ...871...72M); sensitivity only to timescales longer than ~5 yr
+  (2024ApJ...964...48T).
+- **Gaps.** Zero-filled gaps lower measured power; 2021A&A...652A..92N applied correction factors 0.6 (Band 6)
+  and 0.7 (Band 3).
+- **Zero-lag spikes** in correlation functions of simultaneous data can prevent lag estimates
+  (2015A&A...576A..41B).
+- **Astrometry.** Offsets smaller than the beam cannot separate proper motion from calibration
+  (2019ApJ...871..100H); complex maser distributions bias proper motions (2021ApJ...908..175C); one card flags
+  that two-epoch proper motions from different array configurations have unexplored systematics
+  (2018ApJ...866...87B).
+- **Polarization of flares.** With only XX and YY, |Q/I| is a lower limit (2020ApJ...891...80M); single-epoch
+  polarization assumes a non-variable source (2016A&A...593A..44L).
+- **Not stated.** Across the pack, cards most often flag missing CASA version (6), self-calibration solution
+  intervals (5), source coordinates (4), `uvmodelfit` starting parameters (3) and flux scale uncertainty (2+2).
+  The cards rarely state how flux was extracted per time bin (e.g. 2018ApJ...855L...2M, 2024RMxAA..60..355R).
+  Report all of these.
+
+## Verification checks
+
+What the papers did:
+- Calibrator or check-source constancy on the variability timescale (2018ApJ...855L...2M, 2020ApJ...891...80M,
+  2024ApJ...970...56P, 2015A&A...576A..41B).
+- Short-bin flux RMS equals the per-bin image noise (2020A&A...642A..96P).
+- Red-noise Monte Carlo for FAP (2026ApJ..1003L..17Y, 2025ApJ...994..256Y) and beam-size power spectrum
+  comparison (2026ApJ..1004..126K).
+- Vary DCF binning and repeat on a time subset (2020A&A...636A..62K).
+- Compare integrated flux with earlier publications (101 +/- 9 vs 106 +/- 12 uJy, 2018ApJ...855L...2M;
+  3.7 vs 3.5 mJy, 2020ApJ...895L...2N).
+- Repeat on antenna subsets (DA-only, DV-only, with and without PM antennas, 2016A&A...593A..44L).
+- Residual images after the position fits reach the noise (0.4 and 0.2 mJy, 2024AJ....167...94H); test the
+  no-acceleration assumption (5-10%, same paper).
+- Propagated ephemeris matches independent positions to 0.025-0.029 arcsec (2016A&A...594A.107K).
+- GR ray tracing differs from the simple Doppler model by <2% of the amplitude (2025ApJ...994..256Y, card).
+
+What a careful referee adds:
+- Show the calibrator and a field source on the same light-curve plot with identical binning.
+- Report the flux-scale uncertainty separately from the statistical error and state whether it cancels in
+  relative (within-execution) variability.
+- For periodicity, give the number of trial frequencies and the assumed PSD slope, and test a second slope.
+- For proper motions, show that the reference frame (continuum peak, maser, star) is itself stationary.
+
+## Source cards
+
+Full list: `references/sources.md` (90 papers, about 35 off-topic). Most informative for this technique:
+
+- 2018ApJ...855L...2M: Proxima flare, 2 s `uvmodelfit` bins, excess variance, |Q/I|
+- 2020ApJ...891...80M: AU Mic flares, 5 s bins, >100 klambda, Gehrels rates
+- 2020A&A...642A..96P: 30 s images, Gaussian null test, 3 sigma pulse limit
+- 2019ApJ...881...33H: per-scan flare search, gyrosynchrotron limits
+- 2020ApJ...894...76W: per-scan `uvmodelfit` with a background control source
+- 2024ApJ...970...56P: `fixvis`, per-scan images, phase-calibrator check
+- 2015A&A...576A..41B: long-baseline per-scan fluxes, check source, ZDCF
+- 2015ApJ...802...69B: Sgr A* monitoring, bootstrap power spectrum
+- 2026ApJ..1003L..17Y: GLS with red-noise FAP
+- 2025ApJ...994..256Y: archival Sgr A* periodicity, hotspot model
+- 2025ApJ...987..152R: Q-U spline analysis
+- 2026ApJ..1004..126K: per-EB power spectrum, beam systematics
+- 2016A&A...586A..70L: blazar variability index
+- 2020A&A...636A..62K: DCF lag ALMA vs Fermi, VLBA proper motions
+- 2023NatAs...7...80U: GRB light-curve break
+- 2021A&A...652A..92N: solar oscillation power spectra
+- 2024AJ....167...94H: clump proper motions, ages
+- 2015ApJ...805..186L: knot proper motion from SMA vs ALMA
+- 2021ApJ...908..175C: maser proper motions relative to a reference
+- 2024RMxAA..60..355R: proper-motion association test
+- 2020ApJ...895L...2N: `fixplanet` before combining epochs
+- 2024ApJ...961..108K: ejection dating against a light curve
+
+=== EVIDENCE PACK (variability-time-domain) ===
+# Evidence pack: Time-domain and variability analysis (`variability-time-domain`)
+
+Scope: multi-epoch fluxes and positions, flares, proper motions
+
+Built from 90 non-held-out ALMA papers whose methods cards passed mechanical evidence verification (every quote below is verbatim from the paper). Years 2014-2026.
+Matcher (regex over analysis steps): `variab|light curve|flare|monitoring|multi[- ]epoch|proper motion`
+Tagging is by regex, so a few papers may be off-topic: ignore those.
+
+## Aggregates over all papers
+
+### Science fields
+- star_formation: 34
+- protoplanetary_disks: 30
+- agn_and_quasars: 18
+- milky_way_ism: 17
+- nearby_galaxies: 13
+- stellar_physics: 8
+- exoplanets: 6
+- astrochemistry: 6
+- transients: 6
+- debris_disks: 5
+- high_z_galaxies: 3
+- evolved_stars: 2
+- other: 2
+- sun: 1
+
+### Software named in the matched steps
+- casa: 17
+- radmc-3d: 5
+- emcee: 4
+- aips: 4
+- eddy: 3
+- tclean: 2
+- bettermoments: 2
+- sciencetools: 2
+- casa imfit: 2
+- casa uvmodelfit: 2
+- gildas: 2
+- uvcontsub: 1
+- uvmodelfit: 1
+- vis_sample: 1
+- diana opacity tool: 1
+- lee et al. 2014 radiative transfer code: 1
+- fixplanet: 1
+- casa simobserve: 1
+- radex: 1
+- odr: 1
+- casa gencal: 1
+- scipy: 1
+- difmap: 1
+- mcmc (custom): 1
+- galmod: 1
+- 3dbarolo: 1
+- linmix_err: 1
+- minuit: 1
+- zdcf: 1
+- casa fixvis: 1
+- visread: 1
+- pytorch: 1
+- pyro: 1
+- mpol: 1
+- frank: 1
+- gtlike: 1
+- scipy.odr: 1
+- ciao 4.9: 1
+- swift burst analyser: 1
+- pymultinest: 1
+
+### Fitting methods (most common phrasings)
+- Posterior percentiles (16th-84th) reported; sampler not stated: 1
+- chi-squared grid fit; errors from chi2 distribution at 99.9% confidence: 1
+- chi-squared minimization; modeled images convolved with the beam: 1
+- Triple 2D Gaussians: 1
+- Grid comparison by eye/best-fit; no formal statistic stated: 1
+- Grid chi2; flat log priors on physical variables; flat linear or log prior on filling factor: 1
+- ODR with errors in both variables: 1
+- emcee via eddy; uniform priors (Table 5): 1
+- Gaussian consistency of flux distribution: 1
+- Least-squares (bootstrap shown in figures); priors not stated: 1
+- Gaussian fit to DCF: 1
+- chi2 minimization with MCMC; 1 sigma confidence intervals: 1
+- chi2 minimization; errors by re-running with one variable free: 1
+- Kelly (2007) Bayesian approach: 1
+- chi2 minimization with MINUIT; uncertainties from 10% increase of chi2: 1
+- chi^2 minimization of PSD model a0+a1 ln nu+a2 exp(...): 1
+- emcee, uniform priors, 128 CPUs, few days: 1
+- Visual matching of model PV boundaries to observed PV structures; no sampler or likelihood: 1
+- Q(Tex) third-order polynomial fit to JPL values for variable-Tex test: 1
+- Stochastic variational inference (pyro), Gaussian priors on log A, log sigma, r_i, i, z0, phi, PA, offsets; chi-square-…: 1
+- Fourier-Bessel nonparametric fit: 1
+- ODR weighting by uncertainties in both variables: 1
+- chi2 minimization with modified Levenberg-Marquardt; errors from covariance matrix: 1
+- parameters chosen by comparison to Figure 1d by eye; no formal fit stated: 1
+- two power laws, statistical uncertainties only; sampler/priors not stated: 1
+- Eye-fitting, 20% assumed uncertainties: 1
+- Gaussian Process via celerite; radial profile also modelled as GP: 1
+- Velocity histories designed by hand to fit: 1
+- chi^2 linear regression: 1
+- same MCMC: 1
+- 2D Gaussian: 1
+
+### Validation checks used
+- Self-calibration tested and found not to improve images: 1
+- Statistical uncertainties only; systematics may be larger: 1
+- Compare model peak offset with observed 46 mas: 1
+- Q-band flux 3.7 mJy compared with 3.5 mJy at 43 GHz from Li2017: 1
+- Smooth disk cannot reproduce both A and B config results: 1
+- Cavity size degenerate with other parameters, differs by a few au: 1
+- Marginalization methods (4D to 1D) give consistent TK; compared with simple and LTE conversions (~20% differences): 1
+- Compared reduced chi-square with Callingham2015: 1
+- peaks coincident with beam-size peaks rejected as systematics: 1
+- Monte Carlo of 10^4 random model clouds shows slope 0.27, r=0.37 for covariance test: 1
+- Computed X-ray light curve does not overwhelm the observed one: 1
+- Isovelocity contours compared with channels: 1
+- RMS 82 uJy consistent with image noise 88 uJy: 1
+- Checked DA-only, DV-only, DA-DV subsets and with/without PM antennas; consistent across spws: 1
+- Continuum-level alignment with third-order polynomial gave 2.5% scatter in residual factors: 1
+- ephemeris matches SOFI positions to 0.025 and 0.029 arcsec: 1
+- Model also explains X-ray and optical: 1
+- Splines visually characterize Q and U without obvious over-fitting: 1
+- Varied DCF binning; repeated for 2015-2017 subset: 1
+- Residual images after subtraction have rms 0.4 and 0.2 mJy (2015, 2021): 1
+- Acceleration effect 5-10%, less than age errors: 1
+- Best-fit model visibilities compared with binned data; T_ext variations give consistent results: 1
+- Compare model with PV diagrams, channel maps, moment map residuals: 1
+- Robustness checks excluding SMGs, outliers, high-z only; alternate metallicity assumptions: 1
+- Checked uncertainty choices negligible; position-velocity diagrams reproduced: 1
+- Residuals not exceeding ~20%; errors from difference between two blocks; gap correction factors 0.6 (Band 6), 0.7 (Band…: 1
+- Check-source variability sets ~5% uncertainty: 1
+- Compared parameters with C2006 CO(2-1) values and the model with the data (Figure 5): 1
+- Phase-calibrator flux constant; aperture flux checks of phase errors: 1
+- Convergence when walkers reached steady state; PV diagram compared with 10 Mjup and 0.1 Msun Keplerian curves: 1
+- Model broadly reproduces important PV features of envelope and disk: 1
+- compared with variable Tex from brightness temperature; ratio <~2: 1
+- BIC model selection; model images compared to data (residuals ~4 sigma); frank non-parametric comparison: 1
+- Bump positions match image-plane profile: 1
+- Repeated with residuals from best-fit relation (Appendix); tested opacity via mean tau13: 1
+- Offset vs maser position ≈0.1 arcsec: 1
+- Optical depth checked against expected thick/thin flux vs L*: 1
+- Absolute astrometry checked against radio peak (offset ≈0.15 arcsec; no correction): 1
+- MCMC in several cases; consistency between continuum and line inclinations, repeated observations and lines: 1
+- Two core-removal methods give similar results beyond ~40 d: 1
+
+### Key parameters and settings (bibcode: value)
+- 2019A&A...625A.118K: robust = 0.5
+- 2019A&A...625A.118K: i fixed at 51.7°
+- 2019ApJ...871..100H: Model A free parameters: Lstar, Mdisk, Rdisk, theta_flared, a_pow, a_max; r0 = 25 au
+- 2019ApJ...871..100H: Free: rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O; C18O fit at |V-Vlsr|<1.6 km/s, CO at >1.6 km/s
+- 2020ApJ...895L...2N: Sigma0 1e3–1e4 g/cm2, i=5 and 10 deg
+- 2024ApJ...966...59S: beta in [1.0,1.2], H100 in [5,15], Rin between sublimation radius and mm cavity; grains 0.01-1000 um
+- 2024ApJ...969..143I: filling factor restricted to <1
+- 2026ApJ..1004..126K: frequency resolution ~3 days
+- 2020ApJ...891...48H: Fit radii 0.2-2 arcsec; 48 walkers, 3500 steps, 500 burn-in
+- 2020A&A...642A..96P: 30 s bins
+- 2016A&A...593A..44L: constant polarization PA assumed; Q offset delta fitted
+- 2021A&A...656A..46M: Reference position TH2 alpha=00h47m33.182s, delta=-25d17m17.148s (J2000)
+- 2026ApJ..1003L..17Y: 3 sigma criterion, FAP < 1.35e-3
+- 2025ApJ...987..152R: kappa in {3,4,5}, sigma in {0.1,0.5}, n_T in {0,1,2,3}
+- 2020A&A...636A..62K: ROI 15x15 deg; zmax=90 deg; upper limits for TS<9 or dF/F>0.5
+- 2020A&A...636A..62K: DCF time steps 12 d (weekly) and 33 d (monthly)
+- 2020A&A...636A..62K: 10% flux accuracy; position error ~1/10 beam; polarization threshold 9 sigma
+- 2024AJ....167...94H: Position errors approx (synthesised beam)/(S/N)
+- 2014ApJ...791...20R: R_in = 0.05 AU; free parameters M_disk (Sigma_10AU), p, R_out
+- 2014ApJ...791...20R: Grain size distribution n(a) ∝ a^3, amin 0.1 micron; T_ext = 10 K (5, 15 K tested); T ∝ R^-3/4 beyond R_thin
+- 2018MNRAS.479.5440L: exponential vertical profile, h = 0.04'' ~ 300 pc
+- 2020A&A...641A.155V: includes sources with L_IR>=10^8.5 Lsun and Flag=0.5 upper limits; excludes AGN-dominated galaxies and QSOs
+- 2017MNRAS.469.4726N: Uncertainties: 0.22 km/s on mean velocity; 14.6 mJy/beam km/s plus 10% on intensity
+- 2019ApJ...881...33H: B = 600 G, delta = 2, d = 12.45 pc, nu = 97.5 GHz, S = 10.6 uJy
+- 2021A&A...652A..92N: Fit range lower 2-4 mHz, upper 30-50 mHz chosen by minimum chi^2
+- 2015ApJ...798..124R: cells with >=10 visibilities
+- 2017ApJ...846L..26W: Free: Mdisk, Rdisk, gamma, T0, q, xi, M*, vsys, inclination, PA, small centering offset
+- 2017ApJ...843...27L: l and M free; r_c = l^2/GM; r_0 = l^2/2GM
+- 2020MNRAS.496..394R: Tex = 20 K; median in 1.2"x0.9" ellipse, PA 60 deg
+- 2024ApJ...976..132H: Adam optimizer, learning rate 0.02, 15,000 iterations; 2000 posterior samples
+- 2024ApJ...966...51G: fiducial relation sigma_v = 0.72 (R/pc)^0.5 km/s
+- 2020ApJ...892..111F: flaring angle 0.02; R_sub=0.07 sqrt(L*) au; kappa 10 cm2/g at 1000 GHz, beta=1; assumed R_inner=5 au for unresolved
+- 2020ApJ...895..135K: CIAO 4.9, CALDB 4.7.6; sub-pixel 0.0615 arcsec
+- 2017ApJ...844..158S: R_in = 0.1 au; scale height fixed
+- 2018A&A...619A..40M: n=2, alpha=-0.74, sum to 500 d
+- 2020ApJ...889..178B: Mx 1-4, MBN 8-18, MI 5-25 Msun
+- 2024ApJ...971..129C: w_max = 17.1 au, w_min = h_p = 5.15 au
+- 2024ApJ...961..108K: 12 arcsec aperture for IRAC
+- 2016A&A...586A..70L: 1 arcsec circular aperture for A and B
+- 2024ApJ...976...88L: log Upsilon = 0.195 (F336W-F125W) - 1.187, floor -1
+- 2024ApJ...976...88L: SFR = 5.53e-42 L_Halpha
+- 2018ApJ...869...17L: N2 12-15 K, CO 23-28 K, clathrate CO+N2 41-46 K
+- 2017SciA....3E2935L: Ro=68±12 AU, Rt=36±8 AU, ht=12±4 AU, nt=2.2±0.6e10 cm-3, Tt=73±10 K
+- 2025ApJ...984L..15P: 12CO abundance 1e-4 relative to H in warm layer; depleted below 20 K by a variable factor
+- 2019ApJ...871....5T: r_pk=95 au, sigma_r=10 au, Sigma_d,0=1.84e-2 g cm^-2, h_d=9.8 au, a_max=1 mm, gas Sigma ~ r^-1 for 8-320 au, h_g=13.2 au (r/95 au)^1.25, gas-to-dust 100
+- 2018ApJ...854...56L: q=0.5, p=1, inclination 80 deg
+- 2018ApJ...868..113T: three cases: flared, thin, flared without continuum subtraction
+- 2019ApJ...874...31W: period ~93 yr; M_A=150; T=100 K; inclination 52 deg from line of sight; inner cone 3 deg
+- 2019ApJ...877L..22L: q=3.5, amin=1e-4 mm, amax variable
+- 2018ApJ...859..165S: position errors sigma = FWHM/(I/sigma_I)
+- 2018ApJ...869L..42H: phi = 0.02 (0.05 for RU Lup)
+
+
+### Assumptions (bibcode: value)
+- 2019ApJ...871..100H: Inclination 65 deg from Gaussian aspect ratio; center, PA fixed from 1.38 mm fit; grain size distribution n(a) ∝ a^-a_pow
+- 2019ApJ...871..100H: X_CO=5e-4, X_CO/X_C18O=560, T0=70 K, T ∝ r^-0.4
+- 2024ApJ...966...59S: Dust model of Birnstiel et al. 2018; well-mixed gas and dust
+- 2024ApJ...969..143I: Para-H2CO only, so no ortho-to-para ratio needed
+- 2026ApJ..1004..126K: normally distributed per-EB errors
+- 2019ApJ...884L..58U: ISM environment, slow cooling
+- 2020ApJ...891...48H: Keplerian rotation; PA, inclination, offsets fixed to continuum values
+- 2016A&A...593A..44L: Non-variable source; Stokes U not determined (no XY/YX)
+- 2021A&A...656A..46M: Reference emission compact and non-variable
+- 2016A&A...594A.107K: R_V = 3.1 Galactic extinction law; null proper motion for S1-S6; 10 mas/yr proper motion uncertainty for later stars
+- 2023NatAs...7...80U: Uniform density medium, energy injection E_iso propto t^0.25
+- 2015ApJ...805..186L: jet in plane of sky so velocity ~ tangential velocity
+- 2024AJ....167...94H: Distance 1.15 kpc
+- 2024AJ....167...94H: Reference ejection epoch 2015 for ages
+- 2014ApJ...791...20R: Distance 140 pc; gas-to-dust ratio 100; kappa 0.02 cm2/g_gas at 0.89 mm
+- 2018MNRAS.479.5440L: parameters constant with radius (single ring)
+- 2020A&A...641A.155V: Gas mass from M_dust with metallicity-dependent gas-to-dust ratio log(delta_GDR)=10.54-0.99x(12+log(O/H)); starbursts supersolar (delta_GDR~30); Sigma_SFR=SFR/…
+- 2019ApJ...881...33H: Electron-to-proton ratio ~10^3 as in solar flares; flux scaled by R/r^2 with pi sr
+- 2016RAA....16..111N: Effective density proportional to r^-n and constant radial wind velocity
+- 2017ApJ...846L..26W: Flared LTE vertically isothermal Keplerian disk; X_CO=1e-4; mu=2.37; inner radius 0.1 au; distance 140 pc with 20 pc uncertainty added in quadrature
+- 2017ApJ...843...27L: Flared envelope with parabolic boundaries; fit weighted to blueshifted side because of redshifted self-absorption
+- 2020MNRAS.496..394R: single Tex=20 K; higher or variable Tex changes results by factor <~2
+- 2024ApJ...976..132H: Geometrically thin disk (flared surface for SO 897); posterior approximated as multivariate normal
+- 2024A&A...690A..46S: Passively heated flared disk, flaring angle 0.02 rad, L=1.7 Lsun
+- 2019MNRAS.490.5300D: Gamma=20, theta_max=9 deg, alpha=1.7 in R band
+- 2020ApJ...892..111F: Scattering and free-free emission ignored
+- 2020ApJ...891...80M: Distance 9.725 pc
+- 2019ApJ...872....2R: Central mass 4e6 Msun, distance 8.5 kpc, flat mass profile
+- 2014PASJ...66..106H: annual parallax 2.39 mas
+- 2017ApJ...844..158S: Distances 131 pc (L1495), 119 pc (L1688), 140 pc Taurus average
+- 2018A&A...619A..40M: continuous jet flow
+- 2020ApJ...889..178B: OMC1 at rest in ONC frame; D = 400 pc
+- 2024ApJ...971..129C: Passive flared disk Td, phi=0.02, L*=6 Lsun, scaled by 0.5, mu=2.33, Sc=1, Gaussian rings
+- 2024ApJ...976...88L: Constant alpha_CO = 4.35 Msun (K km/s pc^2)^-1, or variable alpha_CO from Bolatto+13 eq. 31 iterated until change <0.1%
+- 2020A&A...635L...9P: Proper motion and distance of GG Tau A are those of GG Tau Ba
+- 2020ApJ...894...76W: Background source has constant flux
+- 2018ApJ...869...17L: flaring angle 0.05; photospheric luminosity only
+- 2017SciA....3E2935L: p=2, q=0.75, passive disk, Keplerian rotation, rho=1.4 n m_H2
+- 2021ApJ...908..175C: Reference maser motion contributes <10% uncertainty
+- 2025ApJ...984L..15P: Astrosilicate grains, dn ∝ a^-3.5 da, 0.03-1000 micron, gas-to-dust 100; zero turbulent velocity; 1 Myr isochrones
+- 2017ApJ...841...43E: X_CO = 1.8e20 H2 cm-2 (K km/s)-1; factor 1.36 for total gas
+- 2019ApJ...871....5T: Gas-to-dust mass ratio 100; CO abundance 1e-4; HCO+ 1e-9; turbulence 120 m/s; LTE
+- 2018ApJ...854...56L: kappa = 0.1 (nu/1e12 Hz)^beta cm2/g, beta~0.6; Keplerian rotation; vertical hydrostatic equilibrium
+- 2020ApJ...904L..24S: eta=1, Vs=3900 km/s
+- 2025ApJ...993...85Y: mu=2.3, M*=0.5 Msun, L*=0.43 Lsun, stellar heating dominant
+- 2019ApJ...874...31W: Level populations in statistical equilibrium, radiative effects ignored; line width 1 km/s
+- 2021ApJ...906...16S: B = 4.7 mG from minimum energy
+- 2019ApJ...877L..22L: Spherical compact grains; no ice-free opacity
+- 2018ApJ...869L..42H: Midplane T from stellar luminosity, flaring angle phi, radiative equilibrium; optical depths may be off by factor of two
+- 2018ApJ...866...87B: Systemic velocity -7 km/s; theta_inc = theta_H2O
+
+
+### Limitations the authors admit
+- 2019A&A...625A.118K: Hydro models assume vertically isothermal disk; delta v_rot may be underestimated
+- 2019A&A...625A.118K: Beam smearing and limited spectral resolution complicate rotation-curve interpretation
+- 2019ApJ...871..100H: Offset smaller than beam; calibration issue or proper motion not excluded
+- 2020ApJ...895L...2N: Masses highly uncertain due to cm dust opacity
+- 2024ApJ...966...59S: Short snapshot observations, lack of short spacings, gas radii as lower limits
+- 2024ApJ...966...59S: Dust masses are lower limits if optically thick
+- 2024ApJ...969..143I: Cosmic ray ionization estimate uncertain by order of magnitude; N(H2CO) poorly constrained
+- 2016A&A...593L..19M: Non-simultaneous spectrum assuming no variability; sparse sub-GHz coverage.
+- 2026ApJ..1004..126K: Spectral shape uncertain with narrow frequency range and large errors
+- 2018ApJ...857...19F: Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission
+- 2018ApJ...857...19F: Sampled range of environments limited to inner rising rotation curve
+- 2019ApJ...884L..58U: Non-simultaneous multi-wavelength polarimetry limits conclusions
+- 2020ApJ...891...48H: Temperature, flux calibration and degeneracies prevent precise grain size measurements
+- 2020A&A...642A..96P: Limits are less constraining than the 4-8 GHz limits given the expected spectral index; only a single few-hour epoch.
+- 2016A&A...593A..44L: Absolute flux uncertain (~20%) because Titan scans were largely flagged; single epoch only.
+- 2021A&A...656A..46M: Calibration uncertainty not included in fit uncertainties; line flux scaling anomalies in some tunings
+- 2021A&A...656A..46M: STATCONT continuum subtraction not optimal for lines near noise level
+- 2016A&A...594A.107K: ALMA observations have 1-2 arcsec offsets from ICRS and were not designed for astrometry
+- 2016A&A...594A.107K: S-star proper motions not statistically significant; nature of S stars poorly constrained by broadband photometry
+- 2023NatAs...7...80U: PA difference between radio and optical only ~90% significant
+- 2026ApJ..1003L..17Y: Fit decay timescales are approximate because of limited light-curve duration
+- 2025ApJ...987..152R: 86-100 GHz results inconclusive
+- 2015ApJ...805..186L: Southern jet not continuous beyond ~10 arcsec, so point symmetry unconfirmed
+- 2020A&A...636A..62K: Photon index uncertainties too large for quantitative analysis
+- 2024AJ....167...94H: Clump B Doppler velocity very uncertain
+- 2024AJ....167...94H: Mass lower bounds for C and D; clumps poorly resolved
+- 2014ApJ...791...20R: Sample biased toward brightest disks; dust opacity absolute values unconstrained
+- 2018MNRAS.479.5440L: Velocity map very uncertain due to beam smearing and low S/N; Sigma not robust
+- 2020A&A...641A.155V: LVG parameters highly degenerate; best-fit values reflect relative trends only
+- 2020A&A...641A.155V: Sample biased to upper main sequence and warm dust by PACS detection requirement
+- 2017MNRAS.469.4726N: Short-spacing correction crude and unreliable
+- 2019ApJ...881...33H: Short observations may miss flares; emission mechanism cannot be inferred from non-detections
+- 2021A&A...652A..92N: Observed p-mode rms is a lower limit since resolution is coarse and pixels are correlated
+- 2015A&A...576A..41B: Results from a single track; ALMA cadence coarse
+- 2016RAA....16..111N: Model is crude; uncertainties are not reliable quantitatively
+- 2016RAA....16..111N: Data cannot separate gas density and temperature
+- 2015ApJ...798..124R: Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density
+- 2024ApJ...970...56P: VLA bands observed sequentially, not simultaneously, so no instantaneous spectrum.
+- 2024RMxAA..60..355R: ALMA flux lower than Faramaz et al. because ACA data were not included
+- 2015ApJ...802...69B: ALMA lacked Tsys measurements on Sgr A* itself, requiring a correction
+- 2017ApJ...846L..26W: Single optically thick CO line likely underestimates gas mass
+- 2017ApJ...843...27L: Tex is poorly constrained because data points are scattered at low S/N; may be underestimated by factor ~2
+- 2017ApJ...843...27L: Disk is optically thick in dust so molecules near the midplane cannot be probed
+- 2020MNRAS.496..394R: Single excitation temperature is a large source of uncertainty.
+- 2020MNRAS.496..394R: Spectral index poorly constrained because bands 6 and 7 are adjacent; fluxes and globule mass are lower bounds.
+- 2024ApJ...976..132H: FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate
+- 2024A&A...690A..46S: Observations not designed for outflows; large-scale emission filtered, parameters are lower limits
+- 2024ApJ...966...51G: LTE assumptions, possibly optically thin 12CO; sensitivity limited to several Msun/pc^2
+- 2024ApJ...966...51G: 8um may trace gas column rather than star formation at these scales
+- 2019PASJ...71...68K: Nucleus distance is hard to determine due to line of sight
+- 2019PASJ...71...68K: CO(3-2) shows negative signals from sparse uv coverage
+- 2017ApJ...850L..21K: Degeneracy due to few detections and large Epeak uncertainty
+- 2020ApJ...892..111F: Sensitivity non-uniform so occurrence is likely underestimated; sample biased toward large bright disks
+- 2019ApJ...872....2R: Second epoch used only for detection check because of poor data quality; densities are lower limits
+- 2020ApJ...895..135K: Anti-correlation is tentative; H2 dissociation conflicts with Spitzer-based H2 surface density of Rosario+19; follow-up observations needed
+- 2025ApJ...994..256Y: Model neglects GR effects and finite hotspot size in the fit; uncertainties are statistical only; hotspot temporal changes not modelled; spin unconstrained
+- 2025MNRAS.540..364A: Sparse simultaneous multiwavelength data prevent detailed study of the double flare
+- 2014PASJ...66..106H: Model assumes a saturated maser and collisional pumping only, with superseded collision rates
+- 2017ApJ...844..158S: Cloud contamination limits CO and CN usability; Teff uncertainties limit comparison
+- 2018A&A...619A..40M: Only one epoch; limited frequency coverage; no nutation; simple model
+- 2020ApJ...889..178B: Largest uncertainty is the poorly constrained mass of Src x
+- 2024ApJ...971..129C: Only two bands constrain four parameters; priors needed; porosity unconstrained
+- 2024ApJ...961..108K: Inclination, Tex, stellar R, M, f_acc are uncertain; mass accretion rate varies by factor 45
+- 2016A&A...586A..70L: Irregular, sparse time sampling prevents robust variability analysis; VI are lower limits.
+- 2024ApJ...976...88L: Literature comparison sample is heterogeneous and of differing data quality
+- 2017A&A...602A..42K: 22 GHz line uncertain due to NH3 contamination; same dilution factor assumed for all lines
+- 2019ApJ...878L..26L: Systematic uncertainties from RS dynamics approximations and stochastic random walk; forward-shock parameters degenerate since nu_a not located
+- 2020A&A...635L...9P: SE arm only marginally reproduced by the model
+- 2020ApJ...894...76W: gamma Vir models lack constraints at other wavelengths; temperature minimum cannot be analyzed
+- 2020ApJ...894...76W: Variability at longer timescales cannot be ruled out for gamma Lep
+- 2018ApJ...869...17L: Formal errors on fit parameters likely underestimated
+- 2018ApJ...869...17L: Dust mass uncertainties ignore temperature and optical depth
+- 2018ApJ...869...17L: Model fails to reproduce amplitude of azimuthal asymmetries
+- 2017SciA....3E2935L: Mass estimate highly uncertain; model is illustrative and lacks self-consistent temperature and scattering
+- 2021ApJ...908..175C: Complex maser distributions in MM1-W1 and UCHII-W1 may affect proper motions
+- 2025ApJ...984L..15P: Classification is subjective and inclination-biased
+- 2025ApJ...984L..15P: Vertically isothermal assumption is a major limitation
+- 2025ApJ...993..120H: Dust mass may be a lower limit if emission is optically thick
+- 2025ApJ...993..120H: A closer unresolved binary cannot be ruled out
+- 2019ApJ...883L...2M: For PKS 1510-089 the minimum may be a low state of the core matching IC/CMB by chance.
+- 2017ApJ...841...43E: Mass ratios are not true efficiencies as the association of complex with cloud is unknown
+- 2018ApJ...862...94L: nu_a not constrained, causing parameter degeneracies; epsilon_e~0.9 problematic
+- 2019ApJ...871....5T: The ring width is comparable to the beam, so the estimates are tentative; the model is not a full fit and the HCO+ pattern is not reproduced.
+- 2018ApJ...854...56L: Disk model is illustrative only, from single frequency
+- 2025ApJ...993...85Y: Ring clumps only 3-5 sigma; higher SNR needed to confirm the SW clump
+- 2025ApJ...993...85Y: Low spectral index evidence tentative
+- 2024ApJ...964...48T: Simulation cannot be quantitatively compared; observations only sensitive to timescales longer than ~5 yr
+- 2018ApJ...868..101B: Largest fitted RMs are suspect due to phase wrap, poor fits and calibration errors at low polarization
+- 2018ApJ...868..113T: Resolution (~29 au) leaves velocity features unresolved, underestimating depth
+- 2018ApJ...868..113T: Cannot disentangle pressure gradient from stellar mass; pressure scaling depends on assumed density
+- 2019ApJ...874...31W: Axisymmetric model cannot represent asymmetric knot B6; knot B7 not reproduced
+- 2021ApJ...906...16S: Poor sampling of 10-100 GHz and limited variability data
+- 2019ApJ...877L..22L: Dominant errors are systematic from opacity uncertainties and not assessed; poor MCMC convergence outside ±10 AU and at center
+- 2018ApJ...859..165S: Model is simple, axisymmetric, excludes rotation, matched by eye; short spacings missing to trace hourglass
+- 2018ApJ...856..117F: Mock tests recover temperature poorly (20-50%) far from the tau=1 surface
+- 2018ApJ...856..117F: Source of discrepancy not conclusively identified
+- 2019ApJ...871...72M: True flare timescale unknown; no simultaneous data at other wavelengths; no polarimetry
+- 2018ApJ...869L..42H: Width and depth definitions ignore beam effects; narrow features are bounds
+- 2018ApJ...869L..42H: Selection bias toward bright, large disks
+- 2019ApJ...870...59S: Combining whole-band data is less robust owing to beam changes and interpolation
+- 2019ApJ...878L...8T: Millimeter data alone cannot determine whether a planet exists; CPD may not fully account for the flux
+- 2018ApJ...866...87B: CS line emission not modelled because Band 10 data scales do not match
+- 2017ApJ...843..150F: Parametric temperature/density structure, degeneracies with abundance, dust-to-gas ratio and 18O abundance; turbulence is a disk-averaged intensity-weighted value
+- 2018ApJ...869L..43H: Pitch angles uncertain because ring substructures or spurs complicate analysis
+- 2017ApJ...840...32T: Missing flux on scales >2.1" affects spiral morphology and contrast
+
+### Settings cards flag as needed but not stated
+- casa version: 6
+- self-calibration solution intervals: 5
+- source coordinates: 4
+- casa version and pipeline version: 4
+- uvmodelfit starting parameters: 3
+- line-free channels for continuum subtraction: 2
+- flux scale uncertainty: 2
+- flux calibrator and flux scale uncertainty: 2
+- self-calibration solution intervals and number of iterations: 2
+- flagging details: 2
+- image size and cell size: 2
+- casa version used: 2
+- line-free channels and continuum subtraction method: 2
+- pipeline version: 2
+- line-free channel ranges for uvcontsub: 2
+- self-calibration, if any: 2
+- clean threshold, masks, image size and cell size: 1
+- which cycle 3 execution blocks and any flux rescaling between epochs: 1
+- mcmc priors, walker number and step count for ring fit and rotation-surface fit: 1
+- annulus bin parameters and exact uv-weighting used for visibility fits: 1
+- primary beam correction details: 1
+- casa version and whether the pipeline or manual calibration was used: 1
+- imaging task, deconvolver, cleaning masks, cell/image size, continuum-subtraction channels: 1
+- model grid ranges and step sizes for continuum and pv fits: 1
+- dust composition/opacity inputs to the diana tool: 1
+- distance adopted: 1
+- details of the cycle 2 c18o data processing and project-code association (2013.1.00879.s): 1
+- priors and sampling or minimization method for the chi-squared fits: 1
+- pv cut widths and position angles: 1
+- tclean parameters for alma bands (deconvolver, cell, image size, masks, threshold): 1
+- self-calibration details for alma bands 3 and 7: 1
+- details of proper-motion shift (fixplanet target coordinates): 1
+- spw/continuum channel selection for alma: 1
+- procedure for 2d-gaussian fitting (software, initial guesses): 1
+- beam-integration details of mass and toomre q calculation: 1
+- uv-taper values for continuum images: 1
+- multiscale scales, cell size, image size, masks and clean thresholds: 1
+- per-source mcmc priors bounds for ring models: 1
+- flux/continuum visibility weighting treatment and reference for alma pipeline versions: 1
+- exact co velocity/channel settings for moment maps and extraction radii: 1
+
+## Paper excerpts (40 of 90, chosen for detail and spread over fields/years)
+
+### 2019A&A...625A.118K: Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA (2019; protoplanetary_disks, exoplanets; observational_alma_primary)
+- question: What direct and indirect imprints does the planet PDS 70 b leave on the gas and dust of its circumstellar disk, and what limits can be placed on circumplanetary material?
+- step 1: Combine Cycle 3 and 5 data and image
+  - method: Continuum subtract, correct proper motion, shift phase center, combine and tclean [2 Observations and data reduction: "We corrected the phase center of the Cycle 3 data for the shift due to the proper motion of the star"]
+  - software: CASA, tclean, uvcontsub, uvmodelfit
+  - parameter: robust = 0.5 [2 Observations and data reduction: "applying Briggs weighting with a robust parameter of 0.5"]
+  - validation: Self-calibration tested and found not to improve images [2 Observations and data reduction: "self-calibration of both continuum and CO data did not significantly improve the images"]
+- step 5: 12CO emission surface and Keplerian fit
+  - method: Rotation map with bettermoments, fit Keplerian with flared surface z0 (r/1'')^phi, inclination fixed [3.2.1 Deriving a 12CO emission surface: "We then fit a Keplerian rotation pattern to the data, including a flared emission surface parameterized as $z(r) = z_0 \times (r \,/ \, 1\ensuremath{''})^{\varphi}$"]
+  - software: bettermoments
+  - parameter: i fixed at 51.7° [3.2.1 Deriving a 12CO emission surface: "fixed the inclination at $i = 51.7\ensuremath{^\circ}$ to break the degeneracy with the stellar mass"]
+  - fitting: Posterior percentiles (16th-84th) reported; sampler not stated [3.2.1 Deriving a 12CO emission surface: "These uncertainties describe the 16th to 84th percentile range of the posterior distributions"]
+  - validation: Statistical uncertainties only; systematics may be larger [3.2.1 Deriving a 12CO emission surface: "do not take into account the systematic uncertainties that may be significantly larger"]
+- result: Continuum integrated flux density within 1.3'' = 230 ± ±23 mJy [3.1 855 um dust continuum: "is 230$\pm$23 mJy"]
+- result: Stellar mass from Keplerian fit = 0.875 ± ±0.03 Msun [3.2.1 Deriving a 12CO emission surface: "$M_{\rm star} = 0.875 \pm 0.03~M_{\rm sun}$"]
+- result: CO emission surface z0 and exponent = 0.33 and 0.76 ± ±0.01 each arcsec; dimensionless [3.2.1 Deriving a 12CO emission surface: "z(r) [\ensuremath{''}] = \left(0.33 \pm 0.01\right) \times \left( \frac{r}{1\ensuremath{''}} \right)^{0.76 \pm 0.01}"]
+- limitation (authors): Hydro models assume vertically isothermal disk; delta v_rot may be underestimated [4.1.2 Comparison with observations: "our hydrodynamic models consider a vertically isothermal temperature structure"]
+- limitation (authors): Beam smearing and limited spectral resolution complicate rotation-curve interpretation [3.2.2 12CO rotation curve: "this makes a direct analysis challenging"]
+- not stated (card): CLEAN threshold, masks, image size and cell size; Which Cycle 3 execution blocks and any flux rescaling between epochs; Line-free channels for continuum subtraction; MCMC priors, walker number and step count for ring fit and rotation-surface fit; Annulus bin parameters and exact uv-weighting used for visibility fits; Primary beam correction details
+
+### 2019ApJ...871..100H: ALMA Observations of the Protostellar Disk around the VeLLO IRAS 16253-2429 (2019; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Is there a disk around the VeLLO IRAS 16253, and what are its dust, kinematic and chemical (CO freeze-out) properties?
+- step 2: Model continuum offset with radiative transfer
+  - method: RADMC-3D flared disk (A) and torus-like thick disk (B1/B2) grids, chi2 fit to visibilities beyond 200 kλ using vis_sample [Models of the continuum images: "We construct model grids (Sections [4.1.1](#sec:modA) and [4.1.2](#sec:modB)) to perform a $\chi^2$ fitting to the visibilities at uv-distances beyond 200 k$\lambda$."]
+  - software: RADMC-3D, DIANA Opacity Tool, vis_sample
+  - parameter: Model A free parameters: Lstar, Mdisk, Rdisk, theta_flared, a_pow, a_max; r0 = 25 au [Model A - flared-disk model: "We take six free parameters including the protostellar luminosity ($L_{\rm star}$), $M_{\rm disk}$ (total mass of the disk scaled by $\Sigma_0$), $R_{\rm disk}$, $\theta_{\rm flared}$, $a_{\rm pow}$, and $a_{\rm max}$."]
+  - assumption: Inclination 65 deg from Gaussian aspect ratio; center, PA fixed from 1.38 mm fit; grain size distribution n(a) ∝ a^-a_pow [Model A - flared-disk model: "an inclination angle of $65\ensuremath{^\circ}$ is estimated from the Gaussian aspect ratio"]
+  - fitting: chi-squared grid fit; errors from chi2 distribution at 99.9% confidence [Table 2: "The error of the fitted parameters are calculated with the $\chi^2$ distribution in a confidence level of 99.9%."]
+  - validation: Compare model peak offset with observed 46 mas [Model A - flared-disk model: "the offset (7 mas) in this model is still much smaller than the observed one (46 mas)"]
+- step 3: Model CO/C18O PV diagrams
+  - method: Rotating infalling envelope model with conserved angular momentum and free-fall, LTE radiative transfer, chi2 over major and minor axis PV cuts [PV-diagram and dynamic model: "We model the PV diagrams assuming a rotating infalling envelope with conservation of angular momentum."]
+  - software: Lee et al. 2014 radiative transfer code
+  - parameter: Free: rho0, p, theta_flared, V_rot,0, V_infall,0, F_C18O; C18O fit at |V-Vlsr|<1.6 km/s, CO at >1.6 km/s [PV-diagram and dynamic model: "$\mid V-V_{\rm lsr} \mid<1.6$ km s$^{-1}$ for C$^{18}$O and $\mid V-V_{\rm lsr} \mid>1.6$ km s$^{-1}$ for CO"]
+  - assumption: X_CO=5e-4, X_CO/X_C18O=560, T0=70 K, T ∝ r^-0.4 [PV-diagram and dynamic model: "We take the CO abundance relative to H$_2$ as $X_{\rm CO}=5\times10^{-4}$ and the C$^{18}$O isotopic ratio of $X_{\rm CO}/X_{\rm C^{18}O}=560$ (cite: wi94)."]
+  - fitting: chi-squared minimization; modeled images convolved with the beam [PV-diagram and dynamic model: "we convolve the modeled images with the beam of the observations and make the PV diagrams with the same PV cuts"]
+- result: Central mass from free-fall = 0.028 ± not stated Msun [dynamics of the disk-envelope system: "we estimate a central mass of $\sim$$0.028~M_\odot$"]
+- result: Best-fit V_rot,0 and V_infall,0 = 1.6 and 1.4 ± not stated km/s [PV-diagram and dynamic model: "$V_{\rm rot,0}=1.6~\rm km~s^{-1}$, and $V_{\rm infall,0}=1.4~\rm km~s^{-1}$"]
+- result: Model A disk mass = 1.6e-3 ± 0.1e-3 Msun [Table 2: "1.6$\pm$0.1"]
+- limitation (authors): Offset smaller than beam; calibration issue or proper motion not excluded [grain growth at the Class 0 stage: "the offset of $0.046\ensuremath{''}$ is smaller than the beam sizes, $0.15\ensuremath{''}$ at 0.87 mm and $0.1\ensuremath{''}$ at 1.38 mm"]
+- not stated (card): CASA version and whether the pipeline or manual calibration was used; Imaging task, deconvolver, cleaning masks, cell/image size, continuum-subtraction channels; Flux scale uncertainty; Model grid ranges and step sizes for continuum and PV fits; Dust composition/opacity inputs to the DIANA tool; Distance adopted; Details of the Cycle 2 C18O data processing and project-code association (2013.1.008…
+
+### 2020ApJ...895L...2N: Substructure Formation in a Protostellar Disk of L1527 IRS (2020; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: Does substructure form in the dust distribution of the young Class 0/I disk of L1527 IRS?
+- step 1: Calibrate and image ALMA and JVLA continuum
+  - method: Standard CASA calibration; proper motion corrected with FIXPLANET; tclean imaging [2.1 ALMA Observations: "we used the CASA task FIXPLANET to shift the target source to the expected coordinates on 01, Aug. 2017."]
+  - software: CASA, tclean, fixplanet
+  - validation: Q-band flux 3.7 mJy compared with 3.5 mJy at 43 GHz from Li2017 [Observation Summaries: "We recovered a $\sim$3.7 mJy total flux density at the mean frequency of $\sim$45 GHz"]
+- step 2: Verify clumps are real
+  - method: Compare multi-epoch/config images, S/N, triple 2D-Gaussian fits, simobserve of smooth disk [3.1 Observed Images: "we find that all of the Q-band data can be well fit by triple 2D-Gaussians"]
+  - software: CASA simobserve
+  - parameter: Sigma0 1e3–1e4 g/cm2, i=5 and 10 deg [3.1 Observed Images: "The inclination is set to $i = 5\deg$."]
+  - fitting: Triple 2D Gaussians [Results: "we find that all of the Q-band data can be well fit by triple 2D-Gaussians"]
+  - validation: Smooth disk cannot reproduce both A and B config results [3.1 Observed Images: "A smooth disk model would not be capable of reproducing all of the observed features simultaneously."]
+- limitation (authors): Masses highly uncertain due to cm dust opacity [4.2 Clump Masses: "our estimated mass suffers from huge uncertainties mainly originating from poor understanding of dust opacity at cm-wavelengths."]
+- not stated (card): tclean parameters for ALMA bands (deconvolver, cell, image size, masks, threshold); Self-calibration details for ALMA Bands 3 and 7; Details of proper-motion shift (FIXPLANET target coordinates); Spw/continuum channel selection for ALMA; Procedure for 2D-Gaussian fitting (software, initial guesses); Beam-integration details of mass and Toomre Q calculation
+
+### 2024ApJ...966...59S: Small and Large Dust Cavities in Disks around Mid-M Stars in Taurus (2024; protoplanetary_disks; observational_alma_primary)
+- question: Do disks around mid-M stars in Taurus show dust substructures (rings and cavities) at ~50 mas resolution, and what could cause them?
+- step 6: SED radiative transfer for micron-grain cavity sizes
+  - method: RADMC-3D flared disk with BT-Settl star; grid over Rin, beta, H100; p=-1, Rout=R90 mm [10 SED Fitting: "We fix $p$ to -1 and $R_{\rm out}$ to the $R_{90\%}$ in millimeter images"]
+  - software: RADMC-3D
+  - parameter: beta in [1.0,1.2], H100 in [5,15], Rin between sublimation radius and mm cavity; grains 0.01-1000 um [10 SED Fitting: "$\beta$ in \[1.0, 1.2\] and $H_{100}$ in \[5,15\]"]
+  - assumption: Dust model of Birnstiel et al. 2018; well-mixed gas and dust [10 SED Fitting: "we adopt the model in (cite: birnstiel2018) with grain sizes ranging from 0.01 $\mu \rm m$ to 1000 $\mu \rm m$"]
+  - fitting: Grid comparison by eye/best-fit; no formal statistic stated [SED Fitting: "We test each combination of the other three parameters with $R_{\rm in}$ between dust sublimation radius and mm cavity size, $\beta$ in \[1.0, 1.2\] and $H_{100}$ in \[5,15\]."]
+  - validation: Cavity size degenerate with other parameters, differs by a few au [4.2 Substructures in disks around mid-t…: "the constrained cavity sizes of small dust grains can differ by a few au under different combinations of other parameters"]
+- result: Micron-dust cavity radius 2M0412 / 2M0434 / 2M0508 / CIDA 12 = 0.9 / 4 / 4 / 0.3 ± not stated au [Table 5: "| $R_{\rm in}$ | 0.90 | 4 | 0.03 | 0.02 | 0.3 | 4 | au |"]
+- limitation (authors): Short snapshot observations, lack of short spacings, gas radii as lower limits [3.5 CO emission: "the gas emission at large radii is likely resolved out"]
+- limitation (authors): Dust masses are lower limits if optically thick [3.4: "We note that these dust masses serve as lower limits, since part of the disk could be optically thick in reality"]
+- not stated (card): uv-taper values for continuum images; Multiscale scales, cell size, image size, masks and clean thresholds; Self-calibration solution intervals; Per-source MCMC priors bounds for ring models; Flux/continuum visibility weighting treatment and reference for ALMA pipeline versions; Exact CO velocity/channel settings for moment maps and extraction radii; SED fit: dust opacity composition details, inc…
+
+### 2024ApJ...969..143I: A Radial Decrease in Kinetic Temperature Measured with H<SUB>2</SUB>CO in 30 Doradus (2024; star_formation, nearby_galaxies, astrochemistry; observational_alma_primary)
+- question: Does H2CO-derived gas kinetic temperature in 30 Doradus vary with distance from R136, and which heating mechanisms (mechanical, cosmic ray, X-ray, radiative/photoelectric) explain it?
+- step 3: Fit non-LTE kinetic temperature per clump
+  - method: chi2 over RADEX grids in n, N, TK and filling factor; peak/expectation values of marginalized posteriors [3: "For each clump of emission, we calculated $\chi^2$ as a function of $H_2$ volume density $n$, H$_2$CO column density $N$, kinetic temperature $T_K$, and beam areal filling factor *ff*."]
+  - software: RADEX
+  - parameter: filling factor restricted to <1 [3: "If fitting a filling factor, it is important to restrict the filling factor to be less than 1."]
+  - assumption: Para-H2CO only, so no ortho-to-para ratio needed [3: "the three observed H$_2$CO lines are all para-H$_2$CO, so physical conditions can be constrained without assuming an ortho-to-para ratio."]
+  - fitting: Grid chi2; flat log priors on physical variables; flat linear or log prior on filling factor [3: "Flat priors in log space were used for the physical variables, and either a flat prior in linear or in log space for the filling factor."]
+  - validation: Marginalization methods (4D to 1D) give consistent TK; compared with simple and LTE conversions (~20% differences) [3: "All of those methods result in consistent $T_K$ within uncertainties"]
+- result: TK median of 30Dor clumps = 43 (range 20-100; mean 48) ± ±3 K (standard error of mean) K [4: "20-100K, median 43K, mean 48$\pm$3K (standard error of the mean)"]
+- result: TK at Tang 2017 pointing = 50 ± +17/-13 K [4: "we calculate $T_K$=50$^{+17}_{-13}$K"]
+- limitation (authors): Cosmic ray ionization estimate uncertain by order of magnitude; N(H2CO) poorly constrained [5: "the conversion of $\gamma$-ray flux to ionization rate is uncertain by an order of magnitude"]
+- not stated (card): RADEX grid ranges and spacing for n, N, TK, filling factor; RADEX background and line width settings; Which filling-factor prior was adopted for final TK values; Line-free channels and continuum subtraction method for cubes; Distance to LMC/30 Dor and R136 position used for projected distances; Fitting range used in the radial trend and the fitted slope and R values; Stated auto-multithresh param…
+
+### 2016A&A...593L..19M: The MHz-peaked radio spectrum of the unusual γ-ray source PMN J1603-4904 (2016; agn_and_quasars; multi_facility_alma_minor)
+- question: Does the radio spectrum of the gamma-ray source PMN J1603-4904 show a low-frequency (MHz) turnover, as expected for a young compact radio galaxy?
+- step 2: Fit SSA and FFA models to the broadband spectrum
+  - method: Fit SSA and FFA absorbed power-law models with alpha fixed at -0.35 to all unresolved-image data [3 The MHz to GHz spectrum of PMN J1603–…: "We use $\alpha=-0.35$ from a fit to the ATCA and ALMA data above $>$1 GHz."]
+  - validation: Compared reduced chi-square with Callingham2015 [3 The MHz to GHz spectrum of PMN J1603–…: "The $\chi^2_\mathrm{red}$ values are comparable to results by (cite: Callingham2015)"]
+- result: FFA turnover frequency (observed) = 0.40 ± 0.04 GHz [Table 2: "| FFA | 1.7$\pm$0.2 | 0.02$\pm$0.01 | 0.40$\pm$0.04 | 4.4 |"]
+- result: SSA turnover frequency (observed) = 0.39 ± 0.03 GHz [Table 2: "| SSA | 98$\pm$24 | 0.02$\pm$0.01 | 0.39$\pm$0.03 | 4.5 |"]
+- result: Rest-frame peak frequency = ~490 ± not stated MHz [4 Conclusions: "The radio spectrum clearly shows a rest-frame spectral turnover at $\sim 490$ MHz."]
+- result: ALMA-only spectral index = ~-0.8 ± not stated dimensionless [3 The MHz to GHz spectrum of PMN J1603–…: "A power-law fit to the ALMA data only yields $\alpha_\mathrm{ALMA}\sim -0.8$."]
+- result: Core spectral index (VLBI 8, 22 GHz + ALMA Band 7) = ~-0.16 ± not stated dimensionless [3 The MHz to GHz spectrum of PMN J1603–…: "yields a spectral index of $\alpha_\mathrm{core}\sim -0.16$."]
+- limitation (authors): Non-simultaneous spectrum assuming no variability; sparse sub-GHz coverage. [3 The MHz to GHz spectrum of PMN J1603–…: "With this assumption we construct a non-simultaneous MHz to GHz spectrum of PMN J1603–4904."]
+- not stated (card): Fit method/optimizer and weighting for SSA/FFA models; Which data points (ATCA, ALMA, VLBI) are in the fit and their values; Channel used for amplitude calibration and DIFMAP imaging parameters; How the sky-position scaling factors were computed; Source coordinates
+
+### 2026ApJ..1004..126K: An Active Galactic Nucleus in the Antennae Galaxies? (2026; nearby_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Does the Antennae merger host an AGN, as revealed by 100 GHz time variability of compact sources S3 and S4 in NGC 4039?
+- step 5: Power spectrum of light curves
+  - method: Fourier transform of normalized fluxes; bootstrap 1000 realizations; compared with constant-flux simulation and beam-size power spectrum [3.4: "Such realizations of the light curve and power spectrum were created 1000 times."]
+  - parameter: frequency resolution ~3 days [3.4: "The frequency resolution ($\sim 3$ days) was determined by the average of the time between epochs."]
+  - assumption: normally distributed per-EB errors [3.4: "assuming that the uncertainty at each EB is normally distributed"]
+  - validation: peaks coincident with beam-size peaks rejected as systematics [3.4: "we regard that flux correlated with the beam is a sign of systematics in the observation."]
+- result: S4 variability timescale = 13 ± ±3 days [3.4: "We find a notable peak at $0.074\ \mathrm{day^{-1}}$ ($13\pm 3$ days)"]
+- result: S4 peak significance = 5.6 ± not stated dimensionless [3.4: "The peak deviates from the source with constant flux by $\rm{SN}=5.6$"]
+- limitation (authors): Spectral shape uncertain with narrow frequency range and large errors [Conclusion: "the large flux uncertainties do not allow for any robust conclusions regarding the SED"]
+- not stated (card): Line-free channel/line mask definitions; tclean niter, image size, scales; Power-spectrum/Fourier algorithm and normalization details; Photometry code used; CO imaging parameters (Saito et al., in prep); Self-calibration not mentioned
+
+### 2018ApJ...857...19F: The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution (2018; nearby_galaxies, milky_way_ism, star_formation; observational_alma_primary)
+- question: Do GMCs in NGC 300, resolved at 10 pc and 1 km/s, follow the Milky Way scaling relations and mass spectrum, and what sets GMC properties (global vs local environment such as pressure)?
+- step 6: Fit Larson relations
+  - method: Orthogonal distance regression in log space for size-linewidth, virial, mass-size and C_RdV-Sigma; Pearson correlation [5.2.1 Size-linewidth relation: "We formally fit a linear function to the logarithms of these two quantities using orthogonal distance regression (ODR)"]
+  - software: ODR
+  - fitting: ODR with errors in both variables [5.2.1 Size-linewidth relation: "which finds the maximum likelihood power law slope while accounting for errors in both variables simultaneously"]
+  - validation: Monte Carlo of 10^4 random model clouds shows slope 0.27, r=0.37 for covariance test [5.3 The size-linewidth coefficient and …: "We fit this model population as described above, and now find a slope of 0.27 with a correlation coefficient of 0.37."]
+- result: Size-linewidth slope = 0.48 ± 0.05 dimensionless [Table 4: "| Size-linewidth | $0.48\pm0.05$ | 0.55 | $4\times10^{-11}$ | $0.5\ensuremath{^{a}}$ |"]
+- result: Virial relation slope (M_lum vs M_vir) = 1.00 ± 0.05 dimensionless [5.2.2 Virial equilibrium: "we find (again via ODR fitting) a slope of $1.00\pm0.05$"]
+- result: Mass-size slope = 2.00 ± 0.12 dimensionless [5.2.3 The mass-size relation: "we find a power law slope of $2.00\pm0.12$"]
+- result: C_RdV-Sigma slope = 0.43 ± 0.04 dimensionless [5.3 The size-linewidth coefficient and …: "we find a best-fit slope of $0.43\pm0.04$"]
+- limitation (authors): Missed flux relative to APEX (median 63% recovered), possibly low surface brightness emission [2.5 Comparison to APEX single dish obse…: "This means there may be low surface brightness CO emission we are unable to detect in the ALMA data."]
+- limitation (authors): Sampled range of environments limited to inner rising rotation curve [4.2 The GMC distribution across NGC 300: "so the range of environments sampled in this study is somewhat limited"]
+- not stated (card): Exact CASA version used for re-imaging (only calibration version 4.3.0 given); Hand-drawn CLEAN polygons per region are not provided; Line-free channel ranges for noise estimation; Exact CPROPS modifications (elliptical beam) code not public (private communication); Per-region alpha_CO values from F14 not tabulated here; uv-taper/robust not needed (natural) but tclean parameters like gridder/nite…
+
+### 2019ApJ...884L..58U: First Detection of Radio Linear Polarization in a Gamma-Ray Burst Afterglow (2019; transients; observational_alma_primary)
+- question: Is the millimeter-band linear polarization of the GRB 171205A afterglow detectable, and does its low degree imply Faraday depolarization by non-accelerated electrons?
+- step 3: Model afterglow SED and light curve
+  - method: Granot & Sari 2002 forward shock with jet-break factor [1+(t/t_j)]^-3/4 [Afterglow modeling: "we adopt the flux formula of (cite: 22) multiplied by the geometrical flux reduction factor $[1+(t/t_{j})]^{-3/4}$"]
+  - assumption: ISM environment, slow cooling [Afterglow modeling: "Alternatively, we find that the ISM environment case can well fit it."]
+  - validation: Computed X-ray light curve does not overwhelm the observed one [Afterglow modeling: "For these values we calculated X-ray light curve, which does not overwhelm the observed one."]
+- limitation (authors): Non-simultaneous multi-wavelength polarimetry limits conclusions [Faraday depolarization effect: "Although the (semi-) simulataneous measurments in multiple wavelengths are required"]
+- not stated (card): Weighting/robust, cell and image size; Mask used in CLEAN; Polarization calibration details and leakage handling; Target coordinates and ALMA array configuration; Fitting method for afterglow model and error treatment of P.A.; Time on source
+
+### 2020ApJ...891...48H: A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk (2020; protoplanetary_disks; observational_alma_primary)
+- question: What are the dust substructures, spectral index variations, optical depths and gas cavity of the GM Aur disk at high resolution in Bands 4 and 6?
+- step 6: HCO+ emission height and kinematics
+  - method: Quadratic-fit velocity map with bettermoments, fit Keplerian flared-surface model with eddy [5.1. The HCO + emitting height: "The lineof-sight velocity corresponding to the emission line peak at each pixel is computed using a quadratic fit"]
+  - software: bettermoments, eddy, emcee
+  - parameter: Fit radii 0.2-2 arcsec; 48 walkers, 3500 steps, 500 burn-in [5.1. The HCO + emitting height: "sampled with 48 walkers for 3500 steps, with the first 500 steps discarded as burnin."]
+  - assumption: Keplerian rotation; PA, inclination, offsets fixed to continuum values [5.1. The HCO + emitting height: "The P. A., inclination, and phase offsets are fixed to the values derived from the continuum visibility modeling"]
+  - fitting: emcee via eddy; uniform priors (Table 5) [5.1. The HCO + emitting height: "Broad uniform priors are adopted for the four free parameters"]
+  - validation: Isovelocity contours compared with channels [5.1. The HCO + emitting height: "The best-fit model adequately reproduces the geometry of the HCO + emission"]
+- result: HCO+ emission height z0 = 0.127 ± ±0.002 arcsec [Table 5: "0 . 127 ± 0 . 002"]
+- result: HCO+ flaring index psi = 0.81 ± ±0.03 dimensionless [Table 5: "0 . 81 ± 0 . 03"]
+- result: Stellar mass from HCO+ kinematics = 1.206 ± ±0.004 Msun [Table 5: "1 . 206 ± 0 . 004"]
+- limitation (authors): Temperature, flux calibration and degeneracies prevent precise grain size measurements [4.2.2. Constraints on dust grain sizes: "the aim of this section is to comment on which regions of parameter space are consistent with the observations rather than to provide precise measurements."]
+- not stated (card): Line-free channels flagged for Band 6 continuum; Self-calibration solution intervals and number of iterations; Gaussian taper parameters for the HCO+ cube; CLEAN thresholds and image size/cell size; Exact visibility binning and weight handling code for the MCMC fits; Which data reduction scripts were used (not released)
+
+### 2020A&A...642A..96P: A search for millimeter emission from the coldest and closest brown dwarf with ALMA (2020; stellar_physics, exoplanets; observational_alma_primary)
+- question: Does the coldest known brown dwarf W0855 emit steady or pulsed millimeter radio emission at ~93 GHz, and what does this imply for radio astrometry and its magnetic field?
+- step 4: Search for pulsed emission
+  - method: 188 images of 30 s bins; flux measured in a beam-shaped region at W0855 position; light curve; Gaussian distribution check [2.4 Search for pulsed emission: "Measuring the flux in a beam-shaped region around the W0855 position in each of the 188 images, we derived a light curve"]
+  - software: CASA
+  - parameter: 30 s bins [2.4 Search for pulsed emission: "we divided our dataset into 30 s time bins for which we obtained individual images"]
+  - fitting: Gaussian consistency of flux distribution [2.4 Search for pulsed emission: "The distribution of the 30 s fluxes is consistent with a Gaussian with zero average and RMS 82 $\mu$Jy"]
+  - validation: RMS 82 uJy consistent with image noise 88 uJy [2.4 Search for pulsed emission: "which in turn is consistent with the noise RMS of 88 $\mu$Jy that we measured on average in the individual 30 s images"]
+- result: 3-sigma upper limit on pulsed flux (30 s) = 264 ± not stated uJy [2.4 Search for pulsed emission: "can be placed at 264 $\mu$Jy"]
+- result: 30 s image noise RMS = 88 ± not stated uJy [2.4 Search for pulsed emission: "noise RMS of 88 $\mu$Jy that we measured on average in the individual 30 s images"]
+- limitation (authors): Limits are less constraining than the 4-8 GHz limits given the expected spectral index; only a single few-hour epoch. [Summary and conclusions: "they are less constraining because the power-law spectrum measured in similar objects such as TVLM 513"]
+- not stated (card): Masking/clean threshold and iteration count for tclean; Mosaic details (phase centres, weighting of the 3C 209 field, gridder); Method for measuring flux in the beam-shaped region of the 30 s images; Whether 3C 209 was imaged with same deconvolver (hogbom assumed not stated); Image size; Pipeline flagging beyond standard
+
+### 2016A&A...593A..44L: The 492 GHz emission of Sgr A* constrained by ALMA (2016; milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Characterize the polarized continuum emission of Sgr A* at ~492 GHz (intensity, polarization position angle, polarization percentage) and compare with lower-frequency observations.
+- step 3: Fit polarization percentage and position angle
+  - method: Least-squares fit of XX/YY ratio vs parallactic angle with Q/I - delta = P cos(2(Psi - eta - phi)); Evector 0 deg [3 Results: "Evector of ALMA is 0$^{\circ}$ for the frequency band we observed."]
+  - parameter: constant polarization PA assumed; Q offset delta fitted [3.1 Continuum data: "From a least square fit to constant polarization position angle"]
+  - assumption: Non-variable source; Stokes U not determined (no XY/YX) [4 Discussion: "we are not able to determine Stokes U."]
+  - fitting: Least-squares (bootstrap shown in figures); priors not stated [Results, Continuum data: "From a least square fit to constant polarization position angle, the measured XX to YY intensity ratios for Sgr A\* are consistent with the polarization percentage of $\sim$14%$\pm$1.2%"]
+  - validation: Checked DA-only, DV-only, DA-DV subsets and with/without PM antennas; consistent across spws [3.1 Continuum data: "We obtained identical measurements from these three subsets."]
+- result: Sgr A* polarization percentage (lower limit) = 14 ± 1.2 % [3.1 Continuum data: "consistent with the polarization percentage of $\sim$14%$\pm$1.2% and a position angle of $\sim$158$^{\circ}$$\pm$3$^{\circ}$"]
+- result: Sgr A* polarization position angle = 158 ± 3 deg [3.1 Continuum data: "a position angle of $\sim$158$^{\circ}$$\pm$3$^{\circ}$"]
+- result: J1744-3116 Stokes I = 252 ± not stated mJy [3.1 Continuum data: "can be fitted to Stokes I = 252 mJy"]
+- result: J1744-3116 polarization percentage = 7.9 ± 0.9 % [3.1 Continuum data: "with 7.9%$\pm$0.9% polarization in position angle P.A. = 14.1$^{\circ}$$\pm$4.2$^{\circ}$"]
+- result: J1744-3116 polarization PA = 14.1 ± 4.2 deg [3.1 Continuum data: "P.A. = 14.1$^{\circ}$$\pm$4.2$^{\circ}$"]
+- result: J1744-3116 normalized Q offset delta = -0.02 ± 0.02 dimensionless [3.1 Continuum data: "$\delta$=$-$0.02$\pm$0.02"]
+- limitation (authors): Absolute flux uncertain (~20%) because Titan scans were largely flagged; single epoch only. [2 Observations and Data Reduction: "The scans on Titan were largely flagged due to interference from spectral lines."]
+- not stated (card): Line-free channel ranges used for uvcontsub; Polynomial order of uvcontsub fit; Flagging details; Model flux/shape used in demos for self-calibration; How the bootstrap errors in the XX/YY fits were computed; Image size and cell size; Titan flux model used for flux scaling
+
+### 2021A&A...656A..46M: ALCHEMI, an ALMA Comprehensive High-resolution Extragalactic Molecular Inventory. Survey presentation and first results from the ACA array (2021; nearby_galaxies, astrochemistry; large_program_or_survey)
+- question: What is the molecular richness of the central molecular zone of NGC 253, probed by an unbiased ALMA spectral scan, and what do ACA 15'' spectra reveal about its chemistry, vibrational emission, organics and isotopic ratios?
+- step 1: Equalize relative flux scale across tunings
+  - method: Solve r_ij=a_i/a_j from overlapping channel amplitude ratios at TH2 position with least squares and mean(a_i)=1; apply via gencal [3.1.1 Overlapping channels alignment: "We used the constraint mean(a$_i$) = 1 to set the overall scale of the solutions, resulting in the flux self-calibration rescaling factors listed in Table [2](#tab.observingsetup)."]
+  - software: CASA gencal
+  - parameter: Reference position TH2 alpha=00h47m33.182s, delta=-25d17m17.148s (J2000) [3.1.1 Overlapping channels alignment: "The spectra extracted from the TH2 position ($\alpha_{J2000}=00^h47^m33.182^s$, $\delta_{J2000}=-25^\circ17'17.148''$; (cite: Lenc2006))"]
+  - assumption: Reference emission compact and non-variable [3.1.1 Overlapping channels alignment: "as long as it is reasonably spatially compact and presents no time variability over the observation period."]
+  - validation: Continuum-level alignment with third-order polynomial gave 2.5% scatter in residual factors [3.1.2 Continuum level alignment: "we find that the standard deviation of the new scaling factors is $2.5\%$ across all bands"]
+- limitation (authors): Calibration uncertainty not included in fit uncertainties; line flux scaling anomalies in some tunings [3.1 Flux calibration accuracy: "only the statistical uncertainty in the fits due the noise in the spectra are considered and not the absolute flux calibration uncertainty mentioned above"]
+- limitation (authors): STATCONT continuum subtraction not optimal for lines near noise level [3.3 Continuum subtraction: "continuum subtraction is seen not to be optimal for spectral lines close to the noise level."]
+- not stated (card): Explicit line-free channels or STATCONT settings per spectral window; Exact MADCUBA fit settings (algorithm options, mask choices per molecule); CASA version used for processing; tclean threshold values per spectral window; Distance to NGC 253 adopted; Observing dates and per-execution details; Pixel/spectral window data selection for line subsets used in each species fit
+
+### 2016A&A...594A.107K: Close stellar conjunctions of α Centauri A and B until 2050 . An m<SUB>K</SUB> = 7.8 star may enter the Einstein ring of α Cen A in 2028 (2016; stellar_physics, milky_way_ism; multi_facility_alma_minor)
+- question: Where and when will alpha Cen A and B closely approach background stars until 2050, and what is the potential of these conjunctions (lensing, planet searches, astrometry)?
+- step 3: Barycentric proper motion and trajectories
+  - method: Combine Hipparcos and SOFI barycentre positions corrected for parallax; propagate in 3D with orbital separation [Apparent trajectories of alpha Cen A & B: "The barycenter position is propagated in time using the 3-D velocity vector components to allow for the full 3-D rectilinear motion."]
+  - validation: ephemeris matches SOFI positions to 0.025 and 0.029 arcsec [Apparent trajectories of alpha Cen A & B: "match the observed positions with SOFI (Table [\[alfcen-positions\]](#alfcen-positions)) to $0.025\ensuremath{''}$ and $0.029\ensuremath{''}$, respectively."]
+- step 4: List conjunctions and characterise S stars
+  - method: Compute minimum approach distances for stars within 5 arcsec; fit SEDs of S1-S6 for Teff, angular diameter, E(B-V) [List of close approaches until 2050: "We limited our selection to impact parameters smaller than $5\ensuremath{''}$ (6.5 AU at the distance of $\alpha$ Cen)"]
+  - assumption: R_V = 3.1 Galactic extinction law; null proper motion for S1-S6; 10 mas/yr proper motion uncertainty for later stars [Approaches of S1 to S6 until 2031: "computed assuming a classical Galactic extinction law with $R_V = A_V / E(B-V)=3.1$"]
+- result: barycentric proper motion (RA, Dec) = -3619.9, +693.8 ± 3.9 each mas/yr [Apparent trajectories of alpha Cen A & B: "$\mu_\alpha = -3619.9\pm 3.9$ mas yr$^{-1}$ and $\mu_\delta = +693.8\pm 3.9$ mas yr$^{-1}$"]
+- result: minimum approach distance of S5 to alpha Cen A (2028-05-06) = 0.015 ± 0.135 arcsec [abstract: "$\rho_\mathrm{min} = 0.015\pm 0.135$ arcseconds"]
+- result: S5 angular diameter = 0.47 ± 0.05 mas [abstract: "$\theta_\mathrm{LD} = 0.47 \pm 0.05$ mas"]
+- limitation (authors): ALMA observations have 1-2 arcsec offsets from ICRS and were not designed for astrometry [ALMA millimeter interferometry: "variable offsets of 1 to $2\ensuremath{''}$ with respect to the ICRS are present in the images"]
+- limitation (authors): S-star proper motions not statistically significant; nature of S stars poorly constrained by broadband photometry [Approaches of S1 to S6 until 2031: "broadband photometry alone is insufficient to determine precisely the nature of the S stars"]
+- not stated (card): How the ALMA band 6-9 centroid positions were measured (imaging, fitting, beam, calibration from archive); Which ALMA data products or reduction used for the project 2013.1.00170.S; Orbit fitting algorithm and weighting details; Method for computing conjunction list and photometric extraction for NACO/SOFI; Fit procedure for the SED (optimiser, priors)
+
+### 2023NatAs...7...80U: Simultaneous radio and optical polarimetry of GRB 191221B afterglow (2023; transients; observational_alma_primary)
+- question: Is the radio (97.5 GHz) polarization of the GRB 191221B afterglow depolarized relative to the optical, and what does this say about magnetic field configuration and cool electrons / jet energy?
+- step 3: Model afterglow light curves and SED
+  - method: Numerical forward-shock synchrotron model with Blandford-McKee solution, equal arrival time surface, fixed theta_j; adjust parameters to fit radio-optical-X-ray data [Methods: "We performed numerical calculations of flux from the shock with a fixed $\theta_j$ which evolves as the Blandford-McKee (BM) self-similar solution"]
+  - assumption: Uniform density medium, energy injection E_iso propto t^0.25 [Methods: "the ambient density is uniform and the energy continues to be injected to the shock by long activity of the central engine"]
+  - validation: Model also explains X-ray and optical [Introduction: "The model also explains the X-ray and optical afterglows"]
+- result: 97.5 GHz light curve break time = 3.77 ± 0.35 days [Introduction: "a break-time at $3.77\pm 0.35$ days"]
+- result: Pre-break index alpha = 0.26 ± 0.02 dimensionless [Introduction: "$\alpha = 0.26\pm 0.02$ (before the break)"]
+- result: Post-break index alpha = -1.62 ± 0.13 dimensionless [Introduction: "$\alpha = -1.62\pm 0.13$ (after the break)"]
+- limitation (authors): PA difference between radio and optical only ~90% significant [Methods: "the PA between radio and optical is different at $\sim$90% confidence level."]
+- not stated (card): tclean parameters: weighting/robust, cell size, image size, masks; Self-calibration solution intervals; Beam sizes and image rms values; Fitting method/priors for the afterglow model and light curve broken power law; Numerical afterglow polarization code is not public; ALMA configurations and on-source times; Source coordinates
+
+### 2026ApJ..1003L..17Y: Evidence for Multiple Orbiting Hotspots in the 340 GHz Variability of Sgr A* (2026; milky_way_ism, agn_and_quasars; archival_reuse)
+- question: Does the 340 GHz light curve of Sgr A* show periodic variability from orbiting hotspots, and can multiple decaying hotspots explain it?
+- step 1: Build light curves
+  - method: Calibrate, self-calibrate and CLEAN archival Band 7 data; light curves binned to ~1 min for 11 epochs [Variability analysis: "All data were binned with a time resolution of $\sim$ 1 minute."]
+  - software: CASA
+- step 3: Periodicity search and significance
+  - method: Generalized Lomb-Scargle periodogram; FAP from 10^5 simulated light curves with red noise (PSD ∝ f^-2) plus white noise [Variability analysis: "estimated using $10^5$ simulated light curves that incorporate both red noise, assuming a power spectral density of PSD$\propto f^{-2}$"]
+  - parameter: 3 sigma criterion, FAP < 1.35e-3 [Variability analysis: "We adopt a false alarm probability (FAP) of $< 1.35 \times 10^{-3}$"]
+- result: GLS significance of ~52 and ~34 min peaks, white noise only = ~25.4 and ~12.7 ± not stated sigma [Variability analysis: "peaks at $\sim$52 min and $\sim$34 min are obtained with significances of $\sim25.4\,\sigma$ and $\sim12.7\,\sigma$"]
+- result: GLS significance with red+white noise = ~2.9 and ~0.9 ± not stated sigma [Variability analysis: "these are reduced to $\sim2.9\,\sigma$ and $\sim0.9\,\sigma$"]
+- limitation (authors): Fit decay timescales are approximate because of limited light-curve duration [Multiple Hotspot Model: "these values should be regarded as approximate constraints"]
+- not stated (card): Self-calibration solution intervals and number of iterations; Imaging parameters (weighting, cell, image size) and how the flux density is measured per time bin; Which SpWs and which of the 11 epochs belong to which project; MCMC sampler, priors and chain settings; GPR implementation and noise amplitude hyperparameters; Source of the spectral index variation (alpha decreases by ~0.4); method not …
+
+### 2025ApJ...987..152R: Dynamical Inference from Polarized Light Curves of Sagittarius A<SUP>*</SUP> (2025; agn_and_quasars, milky_way_ism; theory_or_simulation_compared_to_alma)
+- question: Can the average rotation rate and handedness of Q-U loops in Sgr A* polarized light curves be measured and used to constrain accretion flow dynamics via GRMHD models?
+- step 1: Pre-process light curves
+  - method: Split into segments at gaps >=1.8 min, fit smoothing splines to Q and U, trim edge points [3 Light Curve Analysis: "we fit a smoothing spline of polynomial order $\kappa \in \{3,4,5\}$ with smoothing factor $\sigma \in \{0.1,0.5\}$ using the Python function `scipy.interpolate.UnivariateSpline`."]
+  - software: scipy
+  - parameter: kappa in {3,4,5}, sigma in {0.1,0.5}, n_T in {0,1,2,3} [3 Light Curve Analysis: "$\kappa \in \{3,4,5\}$, $\sigma \in \{0.1,0.5\}$, and $n_T \in \{0,1,2,3\}$"]
+  - validation: Splines visually characterize Q and U without obvious over-fitting [3 Light Curve Analysis: "We find that these splines are generally able to characterize the $Q$ and $U$ behavior well, without obvious over-fitting."]
+- limitation (authors): 86-100 GHz results inconclusive [6 Discussion: "We therefore report inconclusive results at this band."]
+- not stated (card): Calibrated Stokes Q,U light curve files (taken from Wielgus et al. 2022); GRMHD library images (not public in paper); Exact numerical differentiation and segmentation details beyond three-point scheme; Smoothing spline handling of gaps/weights
+
+### 2015ApJ...805..186L: Jet Motion, Internal Working Surfaces, and Nested Shells in the Protostellar System HH 212 (2015; star_formation; observational_alma_primary)
+- question: What are the jet motion, shock structures (knots, internal working surfaces), nested CO shells and wiggle of the HH 212 protostellar jet, and is a wide-angle wind needed?
+- step 2: Proper motion of knots
+  - method: Compare SiO peak positions with convolved SMA map, aligned on continuum peaks [Proper Motion: "We first convolved our previous SMA SiO map to the resolution of our ALMA map and then aligned the two maps with the continuum peaks."]
+  - assumption: jet in plane of sky so velocity ~ tangential velocity [Proper Motion: "Since the jet is almost in the plane of the sky, the jet velocity can be approximated to this tangential velocity."]
+- result: Mean knot position shift = 0.36 ± 0.15 arcsec [Proper Motion: "the mean position shift is estimated to be $\sim$ $0^{\prime\prime}_{^\textrm{.}}36$$\pm$$0^{\prime\prime}_{^\textrm{.}}15$"]
+- result: Jet tangential velocity = 115 ± 50 km/s [Proper Motion: "giving rise to a tangential velocity of $\sim$ 115$\pm50$ km s$^{-1}$"]
+- limitation (authors): Southern jet not continuous beyond ~10 arcsec, so point symmetry unconfirmed [Jet Wiggle: "further observations are still needed to confirm that the wiggle of the jet is really point symmetric about the central source."]
+- not stated (card): Calibration details, CASA version and calibrators (deferred to Lee et al. 2014); Cleaning parameters, masking, continuum subtraction; Method for measuring knot peak positions and map alignment; Fitting method for the wiggle model; Velocity-integration choices beyond those listed
+
+### 2020A&A...636A..62K: Investigating the connection between γ-ray activity and the relativistic jet in 3C 273 during 2015-2019 (2020; agn_and_quasars; multi_facility_alma_minor)
+- question: What is the origin of the 2015-2019 gamma-ray outbursts of 3C 273 and how do they connect to the parsec-scale jet?
+- step 1: Build gamma-ray light curves
+  - method: Unbinned likelihood analysis with 30-day, 7-day and 1-day bins, power-law model [2.1 Fermi-LAT: "As binning intervals for the $\gamma$-ray light curves, we select 30 and 7 days for the full time range (i.e., 2015–2019), and one day for flaring periods"]
+  - software: ScienceTools
+  - parameter: ROI 15x15 deg; zmax=90 deg; upper limits for TS<9 or dF/F>0.5 [2.1 Fermi-LAT: "We defined a region of interest (ROI) of $15^{\circ} \times 15^{\circ}$ centered at 3C 273"]
+- step 2: Correlate ALMA 3 mm and gamma-ray light curves
+  - method: Discrete correlation function with Gaussian fit to the peak; Pearson significance following Rani et al. 2013a [3.3 Correlation: "We employ the discrete correlation function (DCF; (cite: edelson1988)) to investigate the relationship between $\gamma$-ray and radio emission."]
+  - parameter: DCF time steps 12 d (weekly) and 33 d (monthly) [3.3 Correlation: "We therefore use time steps of 12 and 33 days for the DCF analysis for the weekly and monthly binned $\gamma$-ray fluxes, respectively."]
+  - fitting: Gaussian fit to DCF [Correlation between the radio and $\gam…: "To determine height and location of a DCF peak, we fit a Gaussian function defined as $DCF(t) = a\,\times$ exp$\left[-(t-c)^{2}/2w^{2}\right]$ to the DCF durve"]
+  - validation: Varied DCF binning; repeated for 2015-2017 subset [3.3 Correlation: "However, the time delays found from Gaussian fits are only weakly affected by the binning of the DCF"]
+- step 3: Analyze 43 GHz VLBA jet structure
+  - method: Circular Gaussian components fitted in visibility domain; polarization maps; proper motions of the peak [3.4 Parsec-scale jet: "the structure of the jet was represented by a number of two-dimensional circular Gaussians fitted to the visibility domain."]
+  - software: Difmap
+  - parameter: 10% flux accuracy; position error ~1/10 beam; polarization threshold 9 sigma [2.3 VLBA 43 GHz: "We consider a conservative accuracy of flux densities of 10%."]
+- result: DCF time lag, LAT 7d vs ALMA = -105 ± 4 days [Table 1: "$c$ (days) | $-105\pm4$ | $-112\pm6$"]
+- result: DCF time lag, LAT 30d vs ALMA = -112 ± 6 days [Table 1: "$c$ (days) | $-105\pm4$ | $-112\pm6$"]
+- result: Flux-index transition flux (monthly) = 1.03e-7 ± not stated ph cm^-2 s^-1 [3.2 Photon indices: "different trends above and below a flux of about $1.03\times10^{-7}$ ph cm$^{-2}$ s$^{-1}$"]
+- result: Apparent speed after 2016 outburst = ~6.0 c ± not stated c [3.4 Parsec-scale jet: "The proper motion of this displacement is about 0.59 mas/year which corresponds to an apparent speed of $\sim$6.0 $c$"]
+- result: S1 brightness temperature peak = 2.3e12 ± not stated K [4.2: "$S1$ reaches $2.3\times10^{12}$ K"]
+- limitation (authors): Photon index uncertainties too large for quantitative analysis [3.2: "Overall, the uncertainties of the photon indices are too large for a meaningful quantitative analysis."]
+- not stated (card): ALMA flux calibration and which calibrators/frequencies per epoch; Exact ALMA light-curve data table; Fermi-LAT spectral-fit details beyond the standard recipe; Gaussian model-fit parameters (in an appendix not in the text)
+
+### 2024AJ....167...94H: The Hidden Clumps in VY CMa Uncovered by the Atacama Large Millimeter/submillimeter Array (2024; evolved_stars; observational_alma_primary)
+- question: What are the motions, orientations, masses and ejection times of the four ALMA clumps near VY CMa, and what do the CO maps reveal about the outer ejecta?
+- step 1: Measure clump proper motions
+  - method: Simultaneous 2D Gaussian fits to five continuum peaks in 2015 and 2021 images, compare offsets from VY CMa [The Fitting Method for the Proper Motio…: "2D Gaussian compoments were then fit to all five peaks simultaneously"]
+  - software: CASA imfit
+  - parameter: Position errors approx (synthesised beam)/(S/N) [The Fitting Method for the Proper Motio…: "approximately (synthesised beam)/(S/N), for moderately extended array configurations (ALMA memo 620)"]
+  - assumption: Distance 1.15 kpc [Proper Motions of the Clumps: "at a distance of 1.15 kpc"]
+  - validation: Residual images after subtraction have rms 0.4 and 0.2 mJy (2015, 2021) [The Fitting Method for the Proper Motio…: "the residual images have rms 0.4 and 0.2 mJy for the 2015 and 2021 data, respectively"]
+- step 3: Derive 3D motion, projected distance and ages
+  - method: Combine transverse and Doppler velocity for total velocity and orientation; age = distance/velocity from proper motion, no acceleration [Morphology and Ages of the ALMA Clumps: "The age estimates assume no acceleration or deceleration."]
+  - assumption: Reference ejection epoch 2015 for ages [Morphology and Ages of the ALMA Clumps: "The reference epoch for the proper motions, 2015, is the reference date for when the clumps were ejected."]
+  - validation: Acceleration effect 5-10%, less than age errors [Morphology and Ages of the ALMA Clumps: "showed that the effect was minimal, on the order of 5% to 10%"]
+- result: Clump C proper motion = 3.7 ± 0.4 mas/yr [Table 2: "| Clump C | 320 | 122 | 23$\pm$2.0 | 3.7$\pm$0.4 | 20$\pm$2 | 102.0 $\pm$ 5 |"]
+- result: Clump C transverse velocity = 20 ± 2 km/s [Table 2: "| Clump C | 320 | 122 | 23$\pm$2.0 | 3.7$\pm$0.4 | 20$\pm$2 | 102.0 $\pm$ 5 |"]
+- result: Clump A transverse velocity = 46 ± 11 km/s [Table 2: "| Clump A | 560 | 19 | 53$\pm$12 | 8.5$\pm$2.0 | 46$\pm$11 | 27.5 $\pm$ 13 |"]
+- result: Clump D transverse velocity = 52 ± 23 km/s [Table 2: "| Clump D | 716 | 120 | 59$\pm$25.3 | 9.5$\pm$4.1 | 52$\pm$23 | 138.3 $\pm$ 29 |"]
+- result: Clump C age = 86 ± -7,+8 yr [Table 4: "| Clump C | 20$\pm$2 | +4$\pm$3 | 21$\pm$3 | +11$\pm$8 | 375$\pm$30 | 86$\pm$-7,+8 |"]
+- result: Clump A age = 66 ± -12,+19 yr [Table 4: "| Clump A | 46$\pm$11 | -18$\pm$5 | 50$\pm$11 | -21$\pm$7 | 691$\pm$60 | 66$\pm$-12,+19 |"]
+- limitation (authors): Clump B Doppler velocity very uncertain [Outflow Velocities of the Clumps: "We consider this to be very uncertain."]
+- limitation (authors): Mass lower bounds for C and D; clumps poorly resolved [Mass Lost and the Mass Loss Mechanism: "The mass estimates, especially for Clumps C and D, are lower bounds"]
+- not stated (card): Imaging parameters (tclean weighting, robust, deconvolver, cell size) given only in Paper I; CASA version; Initial Gaussian estimates for imfit; Dust opacity law and input parameters of the O'Gorman dust mass calculation; Peak-location algorithm for Figure 6 centroids; Renormalization procedure for continuum subtraction image; Line-free channel ranges and self-cal solution intervals
+
+### 2014ApJ...791...20R: Brown Dwarf Disks with ALMA (2014; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: What are the sizes, dust structure and grain sizes of disks around three young brown dwarfs/very low mass stars in Taurus, and what do they imply for BD formation and planet formation?
+- step 3: Fit Band 7 visibilities with disk models
+  - method: Two-layer flared disk models; surface density power law; model visibilities via Fourier transform compared at observed (u,v); chi2 with MCMC [4 Analysis of the interferometric visib…: "We used a Markov Chain Monte Carlo (MCMC) to run large collections of disk models by varying the input parameters that our analysis aims to constrain."]
+  - software: MCMC (custom)
+  - parameter: R_in = 0.05 AU; free parameters M_disk (Sigma_10AU), p, R_out [4 Analysis of the interferometric visib…: "For the disk inner radius $R_{\rm{in}}$ we considered a value of 0.05 AU"]
+  - parameter: Grain size distribution n(a) ∝ a^3, amin 0.1 micron; T_ext = 10 K (5, 15 K tested); T ∝ R^-3/4 beyond R_thin [4 Analysis of the interferometric visib…: "We chose a fiducial value for $T_{\rm{ext}} = 10$ K"]
+  - assumption: Distance 140 pc; gas-to-dust ratio 100; kappa 0.02 cm2/g_gas at 0.89 mm [Table 5 notes: "The ISM-like value of 100 for the gas-to-dust mass ratio is also assumed."]
+  - fitting: chi2 minimization with MCMC; 1 sigma confidence intervals [Table 5 notes: "Intervals for each parameter are given at the $1\sigma$ confidence level."]
+  - validation: Best-fit model visibilities compared with binned data; T_ext variations give consistent results [4 Analysis of the interferometric visib…: "found best fit models with parameters which lie within the confidence intervals obtained in the 10 K case"]
+- result: R_out 2M0444 = 139 ± +20/-27 AU [Table 5: "2M0444 | 139 $^{+20}_{-27}$ | 1.65 $^{+0.07}_{-0.10}$"]
+- result: R_out CIDA 1 = 66 ± +14/-12 AU [Table 5: "CIDA 1 | 66 $^{+14}_{-12}$ | 1.46 $^{+0.13}_{-0.21}$"]
+- result: R_out CFHT Tau 4 = >80 ± lower limit AU [Table 5: "CFHT Tau 4 | $>$ 80 | 1.20 $^{+0.10}_{-0.45}$"]
+- result: Disk mass 2M0444 (x kappa/0.02) = 1.3 ± +0.2/-0.2 M_Jup [Table 5: "1.3 $^{+0.2}_{-0.2}$"]
+- limitation (authors): Sample biased toward brightest disks; dust opacity absolute values unconstrained [5.2: "is also strongly biased toward the brightest disks which can be spatially resolved more easily at sub-mm wavelengths"]
+- not stated (card): Flux-integration regions and CASA clean parameters (cell, image size, masks, line-free channels); MCMC details: priors, walkers, chain length, convergence, code; Ranges of free parameters and treatment of disk center/flux offsets; Moment-map velocity range and clipping thresholds; Which visibility data (Band 7 only) and binning used in fit; self-cal solint for CIDA 1; Disk scale height/flaring pa…
+
+### 2018MNRAS.479.5440L: Neutral versus ionized gas kinematics at z ≃ 2.6: the AGN-host starburst galaxy PKS 0529-549 (2018; high_z_galaxies, agn_and_quasars; observational_alma_primary)
+- question: Do neutral ([C I]) and ionized ([O III]) gas trace the same kinematics in PKS 0529-549 at z~2.6, and is the [C I] disc dynamically relaxed and baryon-dominated?
+- step 3: 3D disc model of [C I]
+  - method: GALMOD trial-and-error for initial estimates and geometry, then 3DBarolo chi2 fit of Vrot and sigma in a single ring [3.2 Disc modelling: "We use $V_{\rm rot}$ and $\sigma_{\rm V}$ as free parameters, but keep the others fixed to the values estimated with GALMOD."]
+  - software: GALMOD, 3DBarolo
+  - parameter: exponential vertical profile, h = 0.04'' ~ 300 pc [3.2 Disc modelling: "we assume an exponential vertical profile with fixed $h = 0.04'' \simeq 300$ pc"]
+  - assumption: parameters constant with radius (single ring) [3.2 Disc modelling: "we assume that the disc parameters are constant with radius ($R$)"]
+  - fitting: chi2 minimization; errors by re-running with one variable free [3.2 Disc modelling: "To estimate errors on each variable, we re-run $^{\rm 3D}$BAROLO leaving such variable free"]
+  - validation: Compare model with PV diagrams, channel maps, moment map residuals [3.2 Disc modelling: "we build model cubes and compare them with the observed one using Position-Velocity (PV) diagrams and channel maps"]
+- result: Vrot = 310 ± 50 km/s [Table 1: "$V_{\rm rot}$ ($\mathrm{km}\,\mathrm{s}^{-1}$) | $310\pm50$"]
+- result: sigma_V = <~30 ± upper limit km/s [Table 1: "$\sigma_{\rm V}$ ($\mathrm{km}\,\mathrm{s}^{-1}$) | $\lesssim$30"]
+- result: inclination = 50 ± 4 deg [Table 1: "$i$ ($^{\circ}$) | $50\pm4$"]
+- limitation (authors): Velocity map very uncertain due to beam smearing and low S/N; Sigma not robust [2.1 ALMA data: "We stress that the velocity map is very uncertain due to beam smearing effects and the low S/N ratio."]
+- not stated (card): Line-free channel ranges for continuum subtraction; Exact channel mask regions; 3DBarolo settings (initial estimates, ring geometry, normalization, fit options); GALMOD fixed centre, PA, Vsys values and iteration details; CASA version and clean parameters (cell, image size, threshold); Mol mass conversion details (Man et al. in prep.)
+
+### 2020A&A...641A.155V: CO emission in distant galaxies on and above the main sequence (2020; high_z_galaxies, star_formation; large_program_or_survey)
+- question: How do CO line emission and excitation (CO SLEDs) of IR-selected galaxies on and above the main sequence at z~1.1-1.7 depend on L_IR, SFE, <U>, Sigma_SFR and distance from the main sequence?
+- step 4: Fit scaling relations
+  - method: Bayesian linear regression in log space with errors on both variables and censored data (LINMIX_ERR) [4.1 How does the CO emission correlate …: "applying a Bayesian regression analysis (LINMIX ERR.PRO, (cite: kelly_2007))"]
+  - software: LINMIX_ERR
+  - parameter: includes sources with L_IR>=10^8.5 Lsun and Flag=0.5 upper limits; excludes AGN-dominated galaxies and QSOs [4.1 How does the CO emission correlate …: "The modeling includes our and literature sources with $L_{\rm IR}\geq10^{8.5}$ $L_{\odot}$, reliable upper limits on the line luminosities ($Flag=0.5$)"]
+  - assumption: Gas mass from M_dust with metallicity-dependent gas-to-dust ratio log(delta_GDR)=10.54-0.99x(12+log(O/H)); starbursts supersolar (delta_GDR~30); Sigma_SFR=SFR/(2 pi R^2), R=FWHM/2 [4.3.1 The star formation efficiency and…: "we then assumed that starburst galaxies have supersolar metallicities ($\delta_{\rm GDR}\sim30$"]
+  - fitting: Kelly (2007) Bayesian approach [Table 5 notes: "adopting the Bayesian approach described in (cite: kelly_2007)"]
+  - validation: Robustness checks excluding SMGs, outliers, high-z only; alternate metallicity assumptions [4.1 How does the CO emission correlate …: "fitting only the high-redshift samples changes the slopes of the two relations by $<15$% at $<3\sigma$ significance"]
+- result: Slope of L_IR vs L'_CO(5-4) = 0.92 ± 0.01 dimensionless [Table 5: "| $L_{\rm IR}$, $L'_{\rm CO(5-4)}$ | $0.92\pm0.01$ | $-1.55\pm0.08$ | $0.17\pm0.01$ | $0.99$ |"]
+- result: Slope of L_IR vs L'_CO(7-6) = 0.94 ± 0.01 dimensionless [Table 5: "| $L_{\rm IR}$, $L'_{\rm CO(7-6)}$ | $0.94\pm0.01$ | $-2.34\pm0.09$ | $0.16\pm0.01$ | $0.99$ |"]
+- result: Slope of <U> vs R_52 = 0.36 ± 0.05 dimensionless [Table 5: "| $\langle U \rangle$, $R_{52}$ | $0.36\pm0.05$ | $-0.95\pm0.07$ | $0.15\pm0.02$ | $0.75$ |"]
+- result: Slope of Sigma_SFR vs R_52 = 0.16 ± 0.02 dimensionless [Table 5: "| $\Sigma_{\rm SFR}$, $R_{52}$ | $0.16\pm0.02$ | $-0.60\pm0.03$ | $0.14\pm0.02$ | $0.82$ |"]
+- limitation (authors): LVG parameters highly degenerate; best-fit values reflect relative trends only [4.4.4 Large velocity gradient modeling: "due to the high degeneracy among the LVG parameters, even with a handful of CO lines one could not obtain results simultaneously constraining $n_{\rm H_2}$, $T_{\rm kin}$, and $N(\mathrm{H_2})$"]
+- limitation (authors): Sample biased to upper main sequence and warm dust by PACS detection requirement [2.1 The primary CO (5-4) sample: "We note that the initial requirement of a PACS detection steered the sample towards upper main-sequence objects and warm dust temperatures $T_{\rm dust}\gtrsim 30$ K."]
+- not stated (card): CASA version and pipeline version; Weighting, robust and cleaning parameters (cubes are fit in uv plane, so mainly channel widths); Exact GILDAS scripts for the uv-plane fitting (customized, not released); Channel width / velocity resolution of the extracted spectra; Line-free channel selections per source; Metallicity assignment details for individual galaxies; Details of the Kelly LINMIX censor…
+
+### 2017MNRAS.469.4726N: High-resolution ALMA observation of the <SUP>12</SUP>CO(3-2) and 350 GHz continuum emissions of the debris disc of 49 Ceti (2017; debris_disks; archival_reuse)
+- question: What are the morphology and kinematics of the CO(3-2) gas and 350 GHz dust emission of the 49 Ceti debris disc, and how do they compare with current models?
+- step 4: Fit phenomenological disc models to CO and continuum
+  - method: Model of flared disc with central attenuation (V_z or x dependent), convolved with beam, chi2 jointly on intensity map, mean-velocity map and spectrum [A simple model of CO(3-2) emission: "In practice we minimize $\chi^2 = \chi^2_1+\chi^2_2+\chi^2_3$"]
+  - software: MINUIT
+  - parameter: Uncertainties: 0.22 km/s on mean velocity; 14.6 mJy/beam km/s plus 10% on intensity [A simple model of CO(3-2) emission: "We use an uncertainty of 0.22 km s$^{-1}$ on the mean Doppler velocities"]
+  - fitting: chi2 minimization with MINUIT; uncertainties from 10% increase of chi2 [Flux density and morphology of the dust…: "uncertainties are defined by a 10% increase of $\chi^2$"]
+  - validation: Checked uncertainty choices negligible; position-velocity diagrams reproduced [A simple model of CO(3-2) emission: "We checked that these choices have negligible influence on the results."]
+- result: Gas disc inclination = 11.1 ± 0.9 deg [Table 1: "$11.1\pm0.9$"]
+- result: Dust disc inclination = 11.1 ± 1.4 deg [Flux density and morphology of the dust…: "$i$=11.1$^\circ\pm$1.4$^\circ$"]
+- result: Rotation velocity at 1 arcsec = 5.1 ± 0.1 km/s [Table 1: "$5.1\pm0.1$"]
+- result: Power index n = -0.46 ± +0.05/-0.02 dimensionless [Table 1: "$-0.46^{+0.05}_{-0.02}$"]
+- result: Stellar mass = 1.73 ± 0.10 solar masses [A simple model of CO(3-2) emission: "gives a star mass of 1.73$\pm$0.10 solar masses"]
+- result: Gas flaring parameter eta_h = 0.041 ± +0.028/-0.019 rad [Table 1: "$0.041^{+0.028}_{-0.019}$"]
+- result: Dust flaring parameter eta_h = 0.10 ± 0.06 dimensionless [Flux density and morphology of the dust…: "$\eta_h$=0.10$\pm$0.06"]
+- limitation (authors): Short-spacing correction crude and unreliable [Integrated intensity of the CO(3-2) emi…: "The correction for the loss of short spacing cannot be reliably evaluated"]
+- not stated (card): Exact CASA/pipeline version used by ALMA staff; Procedure and flux threshold for the clean map and mask; How the position angle of 17.5 deg was optimized; Coordinates of the target and phase centre; Details of the short-spacing correction estimate; Coefficients used for the CO mass relation
+
+### 2019ApJ...881...33H: Constraining the Radio Emission of TRAPPIST-1 (2019; exoplanets, stellar_physics; observational_alma_primary)
+- question: Does TRAPPIST-1 emit gyrosynchrotron radio emission at 44 and 97.5 GHz, and what do upper limits imply for magnetic properties and energetic proton flux at its planets?
+- step 2: Search for variability per scan
+  - method: Analysed individual scans (~7 min ALMA, ~4 min VLA) for flares [Null detections of TRAPPIST-1: "we analyzed each observation’s infividual scans, which are $\sim 4$ minutes for the VLA observations and $\sim 7$ minutes for the ALMA data"]
+- step 4: Constrain emitting region size and proton flux
+  - method: Gyrosynchrotron equations: region size x, electron density N, scaled to outgoing proton flux at TRAPPIST-1e [Discussion: "Following the gyrosynchrotron equations arranged by (cite: white) for an assumed electron energy index $\delta=2$, the number density of trapped electrons is given by"]
+  - parameter: B = 600 G, delta = 2, d = 12.45 pc, nu = 97.5 GHz, S = 10.6 uJy [Discussion: "the $3 \sigma$ flux $S = 10.6 ~\upmu \textrm{Jy}$, size of emitting region $R = 0.02 ~R_J$, magnetic field $B=600~ G$"]
+  - assumption: Electron-to-proton ratio ~10^3 as in solar flares; flux scaled by R/r^2 with pi sr [Discussion: "we scale the outgoing rate by $\frac{R}{r^2}$, where R is the size of the emitting region and r is the semi-major axis"]
+- result: ALMA per-scan 3 sigma limit = 110 ± not stated uJy [Null detections of TRAPPIST-1: "median $3 \sigma$ upper limits of 110 $\mu$Jy and 190$\mu$Jy per scan for ALMA and the VLA"]
+- result: Emitting region size upper limit = <= 0.02 ± not stated R_J [Discussion: "the emitting region is constrained by our ALMA upper limits to $\leq 0.02~ R_J$"]
+- result: Trapped electron density upper limit = <= 5e8 ± not stated cm^-3 [Discussion: "The resulting number density of electrons is $N \leq 5 \times 10^8~ cm^{-3}$."]
+- result: Proton flux at TRAPPIST-1e = 1e5 ± not stated pfu [Discussion: "We find a particle flux incident on the closest habitable planet, TRAPPIST-1e (0.02 au), to be $10^5 pfu$."]
+- limitation (authors): Short observations may miss flares; emission mechanism cannot be inferred from non-detections [Discussion: "While we cannot infer an emission mechanism from only non-detections"]
+- not stated (card): tclean parameters (weighting, robust, cell, image size, deconvolver, threshold); How the 3-sigma limit was derived (3 x RMS at target position assumed); Whether ALMA archive/pipeline products were used as delivered; flux calibrator flux density and scale uncertainty; Exact brightness temperature calculation and electron energy distribution details for Dulk equations; Details of per-scan imaging a…
+
+### 2021A&A...652A..92N: ALMA observations of the variability of the quiet Sun at millimeter wavelengths (2021; sun; observational_alma_primary)
+- question: Variability of the quiet solar chromosphere at 1.26 mm and 3 mm: spatially resolved p-mode oscillations and transient brightenings
+- step 2: Power spectra of oscillations
+  - method: Per-pixel light curves in blocks (scans 1-4, 5-8; 1-3, 4-6), zero-filled gaps, FT to PSD, averaged over 120x120 pixel FoV and blocks; fit log-normal plus linear in ln(nu) [3 Analysis of Oscillations: "zeroes were added to fill the blanks in the concatenated light curves."]
+  - parameter: Fit range lower 2-4 mHz, upper 30-50 mHz chosen by minimum chi^2 [3 Analysis of Oscillations: "The lower and upper frequency employed in our analysis was the one leading to the smallest ${\chi}^{2}$."]
+  - fitting: chi^2 minimization of PSD model a0+a1 ln nu+a2 exp(...) [3 Analysis of Oscillations: "for each combination of lower and upper frequency that could be drawn from these intervals, we performed the PSD fitting and calculated the corresponding ${\chi}^{2}$."]
+  - validation: Residuals not exceeding ~20%; errors from difference between two blocks; gap correction factors 0.6 (Band 6), 0.7 (Band 3) [3 Analysis of Oscillations: "relatively small absolute residuals (blue solid lines) not exceeding $\approx 20 \%$."]
+- result: p-mode rms, Band 6 original = 175 ± 1 K [Table 2: "1.26 mm Band 6 original | $175\pm~1$"]
+- result: p-mode rms, Band 3 original = 152 ± 1 K [Table 2: "3.00 mm Band 3 original | $152\pm1$"]
+- limitation (authors): Observed p-mode rms is a lower limit since resolution is coarse and pixels are correlated [5 Conclusions: "as a lower limit of the actual value"]
+- not stated (card): CASA version and imaging parameters (weighting, deconvolver, self-cal solints); Exact pointing offset values from the general-relativity correction; Method to remove oscillations from light curves in detail (in Paper II); Treatment of the 2.5 sigma threshold sigma definition and network/intra-network segmentation thresholds; Energy distribution binning and fit ranges; Whether calibrated visibilit…
+
+### 2015A&A...576A..41B: ALMA and VLA measurements of frequency-dependent time lags in Sagittarius A*: evidence for a relativistic outflow (2015; agn_and_quasars, milky_way_ism; observational_alma_primary)
+- question: Do Sgr A* light curves at 19-100 GHz show frequency-dependent time lags indicating an expanding, relativistic outflow/jet?
+- step 1: Build light curves
+  - method: Average unflagged visibilities per scan over baselines >150 klambda; errors from visibility amplitude spread [2 Observations and data reduction: "The errors on the flux density levels were estimated using the spread in amplitude of the calibrated visibilities over each scan."]
+  - software: CASA
+  - validation: Check-source variability sets ~5% uncertainty [2 Observations and data reduction: "The final uncertainties in flux density are dominated by the calibration uncertainty coming from the variability that was exhibited by the check-source"]
+- step 2: Cross-correlate light curves
+  - method: ZDCF; zero-lag spikes dominate so no lags derived [3 Analysis and results: "the zero-lag peaks preclude any meaningful time lag estimates to be made this way"]
+  - software: ZDCF
+- limitation (authors): Results from a single track; ALMA cadence coarse [Discussion and conclusion: "As these results are based upon measurements of a light-curve feature from a single track"]
+- not stated (card): ALMA CASA version and exact QA2 script; Flagging details for ALMA; FRED fit initial guesses and weighting; Exact ZDCF settings; Line-free/continuum channel selection for ALMA; Numerical time lag versus wavelength fit coefficients
+
+### 2016RAA....16..111N: Morphology and kinematics of the gas envelope of the variable AGB star π<SUP>1</SUP> Gruis (2016; evolved_stars; archival_reuse)
+- question: What are the morphology and kinematics of the CO(3-2) gas envelope of pi1 Gru, and does a continuous equator-to-pole expansion model fit better than the flared disk plus bipolar outflow model of Chiu et al. (2006)?
+- step 3: Reproduce C2006 flared disk model
+  - method: Flared disk with effective density r^-n and radial wind, integrated along the line of sight to r=41'' with 2'' pixels, no beam convolution [Flared disk model of the CSE: "We use a pixel size of $2''\times2''$ without convolving the model by the beam and integrate along the line of sight up to $r=41''$"]
+  - assumption: Effective density proportional to r^-n and constant radial wind velocity [Flared disk model of the CSE: "We take the effective density proportional to $r^{-n}$ and the wind velocity radial with constant intensity $v_{rad}$ ."]
+  - validation: Compared parameters with C2006 CO(2-1) values and the model with the data (Figure 5) [Flared disk model of the CSE: "The measured spectral map is compared with the model result in Figure 5."]
+- result: Disk model inclination theta (CO(3-2)) = 140 ± not stated deg [Table 1: "| $\theta$ | $145^\circ$ | $140^\circ$ |"]
+- result: Disk model radial velocity V_rad (CO(3-2)) = 12.5 ± not stated km/s [Table 1: "| $V_{rad}$ | 11 kms$^{-1}$ | 12.5 kms$^{-1}$ |"]
+- result: Disk model density index n = 2.03 ± not stated dimensionless [Table 1: "| $n$ | \- | 2.03 |"]
+- limitation (authors): Model is crude; uncertainties are not reliable quantitatively [A new model of the CSE: "The relative crudeness of the present model does not allow for a reliable quantitative evaluation of the uncertainties attached to the model parameters."]
+- limitation (authors): Data cannot separate gas density and temperature [Discussion and conclusion: "The present data do not allow for telling apart the respective roles of actual gas density and temperature in such a strong latitudinal dependence."]
+- not stated (card): CASA version and pipeline details of the ALMA staff reduction; Line rest frequency and spectral setup; Fit algorithm and minimizer used for chi2, and how chi2 weights are defined; Exact pixel/velocity range used for chi2; Treatment of the primary beam and flux scale uncertainty; Target coordinates and whether the data cube was the archive product
+
+### 2015ApJ...798..124R: ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146 (2015; debris_disks; observational_alma_primary)
+- question: What is the radial distribution of mm-sized dust in the HD 107146 debris disk, and is there a gap or dip in the dust surface density?
+- step 1: rescale visibility uncertainties and correct proper motion
+  - method: Rescaled weights by median ratio of observed dispersion in uv cells to reported uncertainties; adjusted visibility phases for proper motion [2 Observations and data reduction: "The median ratio between the observed dispersion within a cell and the uncertaintiues reported in the ALMA data was computed using cells containing $\ge$10 visibilities."]
+  - software: CASA
+  - parameter: cells with >=10 visibilities [2 Observations and data reduction: "using cells containing $\ge$10 visibilities"]
+- limitation (authors): Data cannot distinguish between gap and double power-law forms; dust opacity degenerate with surface density [5.3 Double power-law: "The ALMA data presented in this paper do not allow us to distinguish between these possible different functional forms"]
+- not stated (card): Number of emcee walkers and iterations (only 'several hundreds') and burn-in; Priors and bounds on model parameters; Clean threshold, mask, cell and image size of the CLEAN images; Whether CASA clean or other tools were used for the visibility extraction and weight rescaling in detail; Which spectral windows/channels were used for continuum (line-free channels excluded CO); Exact dust opacity tab…
+
+### 2024ApJ...970...56P: Radio Emission from the Magnetically Active M Dwarf UV Ceti from 1 to 105 GHz (2024; stellar_physics; archival_reuse)
+- question: What are the radio emission components (flares, auroral ECME, persistent) of UV Ceti across 1–105 GHz, and which emission mechanisms explain them given its strong large-scale field?
+- step 2: Build light curves
+  - method: Shift phase center with fixvis, subtract other sources' model, average visibilities over channels, spws and baselines; ALMA light curve from five per-scan images [2.4 Light Curves: "We used the CASA task fixvis to move the phase center to the position of UV Ceti"] [3.3 Temporal Variability: ALMA: "made by imaging each of the five correlator scans separately"]
+  - software: CASA fixvis
+  - validation: Phase-calibrator flux constant; aperture flux checks of phase errors [3.3 Temporal Variability: ALMA: "we confirmed that the flux density of the phase calibrator varies by only a few percent during this time"]
+- result: ALMA brightening during observation = 36% ± not stated percent [3.3 Temporal Variability: ALMA: "UV Ceti gradually brightened by 36% during the ALMA observation"]
+- limitation (authors): VLA bands observed sequentially, not simultaneously, so no instantaneous spectrum. [3.1 Spectrum: "it is important to emphasize that the VLA observations in each band were conducted sequentially, not simultaneously"]
+- not stated (card): CASA version used; tclean cell size, image size, niter, thresholds and masks; ALMA field and spectral-window selection and any channel averaging; Method for flux density at each ALMA scan, and Monte Carlo details for the spectral index; Stellar disk size and distance used for the brightness temperatures
+
+### 2024RMxAA..60..355R: The Radio Continuum Source Projected Near HR 8799 (2024; debris_disks, exoplanets; archival_reuse)
+- question: Is the radio continuum source seen near HR 8799 (VLA 3 GHz and ALMA 340 GHz) physically associated with the star/exoplanets, or is it a background galaxy?
+- step 3: Spectral index and variability
+  - method: Split the 2-4 GHz band into two 1 GHz halves; compare positions and fluxes in VLA and ALMA and per-epoch [3.1 VLA data: "Dividing the data in two windows of 1 GHz wide each centered at 2.5 and 3.5 GHz, we obtain flux densities of 16.5$\pm$4.1 and 25.3$\pm$2.9 $\mu$Jy"]
+- step 4: Proper motion test
+  - method: Compare VLA and ALMA positions 5.5 yr apart against expected stellar proper-motion displacement [3.3 Comparison between the VLA and the …: "In the time interval between the two data sets, we expect a total displacement of $\simeq 0\rlap.{''}6$, twenty times larger than our upper limit."]
+- result: VLA in-band spectral index = 1.3 ± 0.9 dimensionless [3.1 VLA data: "spectral index of $\alpha$ = 1.3$\pm$0.9"]
+- result: Spectral index 3 to 340 GHz = 0.69 ± 0.03 dimensionless [3.3 Comparison between the VLA and the …: "The spectral index between the 3.0 and 340.0 GHz flux densities is 0.69$\pm$0.03."]
+- result: Position difference VLA vs ALMA = <= 0.03 ± not stated arcsec [3.3 Comparison between the VLA and the …: "The two positions coincide within $\leq 0\rlap.{''}03$."]
+- limitation (authors): ALMA flux lower than Faramaz et al. because ACA data were not included [2.2 ALMA: "This difference is probably due to the fact that Faramaz et al. (2021) included in their analysis data from the Atacama Compact Array, recovering more extended flux."]
+- not stated (card): ALMA calibration procedure (pipeline vs manual) and flux scale; cell size, image size, masks, clean threshold and iterations; Spectral window/channel selection details for the CO exclusion; VLA image rms, cell and size, and clean parameters; How the 0.49 mJy at 338 GHz flux was derived; Method for per-epoch flux measurement
+
+### 2015ApJ...802...69B: Radio and Millimeter Monitoring of Sgr A*: Spectrum, Variability, and Constraints on the G2 Encounter (2015; milky_way_ism, agn_and_quasars; observational_alma_primary)
+- question: Did the G2 encounter change the radio-to-millimeter flux density or spectrum of Sgr A*, and what is the millimeter spectral index?
+- step 4: Spectral index and variability
+  - method: Power-law fits of VLA and ALMA spectra; Fourier power spectrum of 220 GHz light curve with bootstrap errors; KS tests vs historical data [4.2 Changes in the Mean Spectrum: "The error bar was determined by bootstrap resampling."]
+- result: VLA mean spectral index 1-40 GHz = 0.28 ± 0.03 dimensionless [3 Results: "the mean spectral index $\alpha$ is $0.28 \pm 0.03$"]
+- result: ALMA mean spectral index 217-355 GHz = -0.06 ± 0.26 dimensionless [3 Results: "$\alpha = -0.06 \pm 0.26$"]
+- result: 220 GHz light curve power-law index = -0.15 ± 0.08 dimensionless [4.2 Changes in the Mean Spectrum: "$\alpha$ was found to be $-0.15 \pm 0.08$."]
+- limitation (authors): ALMA lacked Tsys measurements on Sgr A* itself, requiring a correction [2.2 ALMA Observations: "ALMA observations did not include system temperature measurements on Sgr A\* itself."]
+- not stated (card): CASA version used for ALMA and VLA; ALMA flux models for Titan/Neptune and calibrator flux values adopted; Details of the fitted system-temperature opacity correction; The authors' custom code for VLA visibility subtraction and ALMA point-source fitting; Which spectral windows/channels were averaged for ALMA fluxes; Coordinates and distance of Sgr A*
+
+### 2017ApJ...846L..26W: An ALMA Dynamical Mass Estimate of the Proposed Planetary-mass Companion FW Tau C (2017; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Is FW Tau C a ~10 Mjup planetary-mass companion or a low-mass star? Measured via Keplerian rotation of its resolved CO (2-1) disk.
+- step 3: Fit Keplerian CO disk model for stellar mass
+  - method: RADMC-3D synthetic 12CO(2-1) channel maps, Fourier transformed and fit to visibilities with emcee [2.3 Disk Modeling: Keplerian Rotation: "Those synthetic channel maps are Fourier transformed and fit directly to the visibilities using the MCMC fitting package `emcee` (cite: FM13), with uniform priors for all parameters."]
+  - software: RADMC-3D, emcee
+  - parameter: Free: Mdisk, Rdisk, gamma, T0, q, xi, M*, vsys, inclination, PA, small centering offset [2.3 Disk Modeling: Keplerian Rotation: "the density, temperature, and velocity structure of the system are described by the following parameters: $M_{\rm disk}$, $R_{\rm disk}$, $\gamma$, $T_0$, $q$, $\xi$, $M_*$, and $v_{\rm sys}$."]
+  - assumption: Flared LTE vertically isothermal Keplerian disk; X_CO=1e-4; mu=2.37; inner radius 0.1 au; distance 140 pc with 20 pc uncertainty added in quadrature [2.3 Disk Modeling: Keplerian Rotation: "Here, $X_{\rm CO} = 1 \times 10^{-4}$ is the CO mass abundance fraction, and $\mu = 2.37$ is the mean molecular weight."]
+  - fitting: emcee, uniform priors, 128 CPUs, few days [2.3 Disk Modeling: Keplerian Rotation: "we run the fit over 128 CPUs on the University of Arizona El Gato supercomputer, and the modeling took a few days to converge."]
+  - validation: Convergence when walkers reached steady state; PV diagram compared with 10 Mjup and 0.1 Msun Keplerian curves [2.3 Disk Modeling: Keplerian Rotation: "The models were determined to be converged when the `emcee` walkers had reached a steady state with measured best-fit values changing minimally over a large number of steps."]
+- result: Stellar (dynamical) mass of FW Tau C = 0.098 ± 0.015 Msun [Table 2: "$M_*$ ($M_\odot$) | $0.098 \pm 0.015$"]
+- result: Gas disk radius = 141.9 ± 6.6 au [Table 2: "$141.9 \pm 6.6$"]
+- result: Inclination = 62.8 ± 2.4 deg [Table 2: "$62.8 \pm 2.4$"]
+- result: Position angle = 40.6 ± 1.5 deg [Table 2: "$40.6 \pm 1.5$"]
+- result: Systemic velocity = 6.10 ± 0.02 km/s [Table 2: "$6.10 \pm 0.02$"]
+- result: Gas mass = 0.58 ± 0.13 Mearth [Table 2: "$0.58\pm0.13$"]
+- limitation (authors): Single optically thick CO line likely underestimates gas mass [3. Results: "with a single optically thick CO line, we are very likely to underestimate the true gas mass by a factor of few or even orders of magnitude"]
+- not stated (card): CASA version and pipeline version; CLEAN threshold, cell and image size, masks; MCMC walker number, steps, burn-in, prior ranges; Self-calibration solution interval; Disk-mass uncertainty treatment; custom code not released; Moment-map clipping and PV extraction details; Continuum subtraction method for CO
+
+### 2017ApJ...843...27L: Formation and Atmosphere of Complex Organic Molecules of the HH 212 Protostellar Disk (2017; star_formation, astrochemistry; observational_alma_primary)
+- question: Where does a Keplerian disk form inside the infalling-rotating envelope of HH 212, and do the complex organic molecules trace the disk atmosphere (formed in the disk) or a rapidly infalling warm inner envelope?
+- step 4: Model envelope and disk kinematics
+  - method: Toy model with conserved specific angular momentum and energy; model PV outer boundaries matched to observed PV; Keplerian inside centrifugal barrier [3.3 Modeling the Kinematics: "the observed kinematics of the envelope and disk atmosphere can be fitted simultaneously with only two parameters, $l$ and $M$."]
+  - parameter: l and M free; r_c = l^2/GM; r_0 = l^2/2GM [3.3 Modeling the Kinematics: "$$\begin{equation} r_0=\frac{l^2}{2GM} \label{eq:CB} \end{equation}$$"]
+  - assumption: Flared envelope with parabolic boundaries; fit weighted to blueshifted side because of redshifted self-absorption [3.3 Modeling the Kinematics: "For the envelope, the fit is based more on the blueshifted side, because the redshifted side suffers from self-absorption."]
+  - fitting: Visual matching of model PV boundaries to observed PV structures; no sampler or likelihood [3.3 Modeling the Kinematics: "These model PV structures can then be used to fit the outer boundaries of the observed PV structures."]
+  - validation: Model broadly reproduces important PV features of envelope and disk [3.3 Modeling the Kinematics: "In summary, this simple toy model can broadly reproduce all the important features in the PV diagrams of the envelope and disk."]
+- result: Specific angular momentum l = 140 ± ±30 AU km/s [3.3 Modeling the Kinematics: "$l=140\pm30$ AU km s$^{-1}$ and $M=0.25\pm0.05$ $M_\odot$"]
+- result: Central mass (protostar+disk) = 0.25 ± ±0.05 Msun [3.3 Modeling the Kinematics: "$l=140\pm30$ AU km s$^{-1}$ and $M=0.25\pm0.05$ $M_\odot$"]
+- result: Centrifugal barrier radius = 44 ± ±9 AU [4.2 Formation of a Keplerian disk: "the centrifugal barrier (CB) is at $\sim$ 44$\pm$9 AU"]
+- result: Centrifugal radius = 88 ± ±18 AU [4.2 Formation of a Keplerian disk: "the centrifugal radius (CR) is $\sim$ 88$\pm18$ AU"]
+- limitation (authors): Tex is poorly constrained because data points are scattered at low S/N; may be underestimated by factor ~2 [3.4 Physical condition in the disk atmo…: "Since the data points are scattered due to the low S/N ratio, the fitting results have a big uncertainty in excitation temperature."]
+- limitation (authors): Disk is optically thick in dust so molecules near the midplane cannot be probed [Conclusions: "Whether such molecules exist closer to the disk midplane cannot be determined for the nearly edge-on disk of HH 212 that is optically thick in dust continuum."]
+- not stated (card): CASA version and whether archive or manual calibration scripts were used; Self-calibration details and how Cycle 1 and 3 data were aligned/combined; Line-free channels and continuum subtraction method; Cell size, image size, deconvolver, masks, cleaning thresholds; Beam sizes and position angles for each map; Details of the line stacking and integration velocity ranges; How the model PV boundarie…
+
+### 2020MNRAS.496..394R: Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA (2020; star_formation, milky_way_ism; observational_alma_primary)
+- question: What are the structure, kinematics, outflow, embedded protostar and mass (hence survival time) of the tadpole globule hosting the HH 900 jet+outflow, as seen by ALMA?
+- step 2: Molecular column densities
+  - method: LTE column density with optical-depth correction factor, using JPL/LAMDA molecular parameters [3.2 Molecular column density: "is a correction factor for non-zero optical depth (cite: goldsmith1999)"]
+  - parameter: Tex = 20 K; median in 1.2"x0.9" ellipse, PA 60 deg [3.2 Molecular column density: "To compute the column density, we assume an excitation temperature, $T_{ex}=20$ K."]
+  - assumption: single Tex=20 K; higher or variable Tex changes results by factor <~2 [3.2 Molecular column density: "changes our results by a factor of $\lesssim 2$"]
+  - fitting: Q(Tex) third-order polynomial fit to JPL values for variable-Tex test [Appendix: Column density maps: "we take the discrete values of $Q(T_{ex})$ for each isotopologue given in the JPL Spectral Line Catalog (cite: pickett1998) and fit a third-order polynomial."]
+  - validation: compared with variable Tex from brightness temperature; ratio <~2 [Appendix: Column density maps: "values typically vary by a factor of $\lesssim 2$."]
+- result: Visual extinction toward YSO = ~50 ± not stated mag [5 Cold molecular gas and dust: "we find $A_V \sim 50$ mag."]
+- limitation (authors): Single excitation temperature is a large source of uncertainty. [3.2 Molecular column density: "Assuming a single excitation temperature is a large source of uncertainty as this is often a poor assumption"]
+- limitation (authors): Spectral index poorly constrained because bands 6 and 7 are adjacent; fluxes and globule mass are lower bounds. [3.6 Dust continuum emission: "with adjacent bands (6 and 7) not being optimal to estimate accurate spectral indices."]
+- not stated (card): tclean parameters: robust/weighting, cell size, image size, deconvolver, masks, niter and threshold; Self-calibration solution intervals, reference antenna and which datasets/bands were self-calibrated; Line-free channels and method for continuum subtraction and continuum aggregation; How the Band 7 and Band 6 images were primary-beam corrected and the final per-line cube properties; Details of o…
+
+### 2024ApJ...976..132H: High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis (2024; protoplanetary_disks, star_formation; observational_alma_primary)
+- question: Do millimeter continuum substructures (gaps, rings) form and survive in disks exposed to intermediate external UV radiation in sigma Orionis, and how do disk sizes compare to nearby regions?
+- step 2: Fit parametric radial intensity profiles in uv plane
+  - method: Sum of central Gaussian plus N Gaussian rings, thin disk (flared surface for SO 897), model visibilities compared with weight-rescaled data [Analysis, Parametric intensity profile …: "We thus fit the observations with parametric intensity models in order to infer the radial intensity profiles of our targets."]
+  - software: mpol, eddy, visread, pyro, pytorch
+  - parameter: Adam optimizer, learning rate 0.02, 15,000 iterations; 2000 posterior samples [Parametric intensity profile modeling: "Using the Adam optimizer (cite: kingma2017) with a learning rate of 0.02, we found that 15,000 iterations were sufficient for the ELBO values to converge"]
+  - assumption: Geometrically thin disk (flared surface for SO 897); posterior approximated as multivariate normal [Parametric intensity profile modeling: "We assumed that the posterior can be approximated as a multivariate normal distribution (a “guide” in the parlance of `pyro`)."]
+  - fitting: Stochastic variational inference (pyro), Gaussian priors on log A, log sigma, r_i, i, z0, phi, PA, offsets; chi-square-like likelihood with rescaled weights [Parametric intensity profile modeling: "Gaussian priors were specified for $\log A_0$, $\log \sigma_0$, $\log A_i$, $\log \sigma_i$, $r_i$, $i$, $z_0$, $\phi$, P.A., $\Delta x$, $\Delta y$."]
+  - validation: BIC model selection; model images compared to data (residuals ~4 sigma); frank non-parametric comparison [Parametric intensity profile modeling: "The models reproduce the data well, with maximum residual levels at $\sim4\sigma$."]
+- result: Weight rescaling factor f = ~2 ± not stated dimensionless [Parametric intensity profile modeling: "The value of $f$ was typically $\sim2$."]
+- limitation (authors): FUV fields are upper bounds from projected separations; temperature uncertainty dominates dust-trap and planet-mass estimates; SVI is approximate [2 Sample overview: "The FUV field estimates from (cite: 2023AA...679A..82M) are based on projected separations, so they should be considered upper bounds."]
+- not stated (card): Exact line-free/flagged channel ranges in archival data; Self-calibration solution intervals and which EBs/ cleaning parameters (niter, thresholds, masks, scales, cell, image size) were used; Prior means and standard deviations for the parametric model; Initial guesses for N rings and hyperparameters of the pyro guide beyond learning rate; Zenodo products must be downloaded to reproduce; CLEAN mo…
+
+### 2024A&A...690A..46S: Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0 protostar GSS30 IRS3 (2024; star_formation, protoplanetary_disks; observational_alma_primary)
+- question: What are the dust disk structure, rotation/stellar mass, and outflow components of the Class 0 protostar GSS30 IRS3 at ~8 au resolution?
+- step 3: Check reality of bumps
+  - method: Frank visibility-space 1D radial profile fit, fixed i=64.3 deg, PA=109 deg, alpha=1.30, wsmooth=1e-4; Gaussians fit to bumps; compare Tb with midplane temperature [12 Radial brightness profile fitting: "We fixed the hyperparameters to $\alpha$= 1.30 and w$\mathrm{_{smooth}}$=10$^{-4}$ because they present the least noisy results."]
+  - software: Frank
+  - assumption: Passively heated flared disk, flaring angle 0.02 rad, L=1.7 Lsun [5.2 The origin of the bumps: "L$_{*}$ is the bolometric luminosity of the central protostar (1.7 L$_{\odot}$)"]
+  - fitting: Fourier-Bessel nonparametric fit [Discussion: The origin of the bumps alo…: "*Frank* (cite: Jennings2020) first deproject the visibilities to correct the disk inclination and uses the Fourier-Bessel series to reconstruct the radial brightness profile."]
+  - validation: Bump positions match image-plane profile [5.2 The origin of the bumps: "The positions of the identified bumps, closely coincide with those obtained from the radial intensity profile in the image plane."]
+- result: Bump radii = ~26 and ~50 ± not stated au [5.2 The origin of the bumps: "The bumps are located at a radius of $\sim$0$.\!\!^{\prime\prime}$19 ($\sim$26 au) and the other located at $\sim$0$.\!\!^{\prime\prime}$36 ($\sim$50 au)"]
+- result: Brightness temperature at bumps = 18.9 K and 9.6 K (vs 27.8 K and 20.2 K midplane) ± not stated K [5.2 The origin of the bumps: "the observed brightness temperature at 0$.\!\!^{\prime\prime}$19 and 0$.\!\!^{\prime\prime}$36 are 18.9 K and 9.6 K, respectively"]
+- limitation (authors): Observations not designed for outflows; large-scale emission filtered, parameters are lower limits [4.2 Characterization of the molecular o…: "we are likely filtering structures larger than $\sim$2$.\!\!^{\prime\prime}$0"]
+- not stated (card): Pipeline version; Line-free channels and continuum subtraction details; Clean masks, thresholds, cell/image size, deconvolver; Self-calibration solution intervals; Line-wing and SLAM S/N edge thresholds, MCMC settings and priors; Which 5-sigma contour definition is used for flux
+
+### 2019MNRAS.490.5300D: Investigating the multiwavelength behaviour of the flat spectrum radio quasar CTA 102 during 2013-2017 (2019; agn_and_quasars; multi_facility_alma_minor)
+- question: How do the flux and spectral variability and the cross-band correlations of CTA 102 from radio to gamma rays during 2013–2017 fit the geometrical (Doppler factor/viewing angle) model?
+- step 1: Fermi-LAT light curves
+  - method: Binned maximum-likelihood with gtlike, log-parabola spectrum, 30-d, 5-d, 1-d and 12-h bins [Fermi-LAT Data: "The spectral analysis was performed with the instrument response functions `P8R2_SOURCE_V6` using a binned maximum-likelihood method implemented in the Science tool `gtlike`."]
+  - software: ScienceTools, gtlike
+- step 3: Doppler factor and viewing angle from splines
+  - method: Cubic spline through variable-binned light curves, delta(t)=delta_min (F_spline/F_min)^(1/(2+alpha)) [7 Geometrical model: "we modelled the optical long-term trend with a cubic spline interpolation through the data binned with a variable time interval"]
+  - assumption: Gamma=20, theta_max=9 deg, alpha=1.7 in R band [7 Geometrical model: "$\alpha=1.7$ is the spectral index in the $R$ band"]
+- result: Peak gamma-ray daily flux on 2016 Dec 28 = 2158 ± 63 1e-8 ph cm^-2 s^-1 [abstract: "A peak flux of (2158 $\pm$ 63)$\times$10$^{-8}$ ph cm$^{-2}$ s$^{-1}$"]
+- result: Gamma-optical linear fit slope during outburst = 1.00 ± not stated dimensionless [7 Geometrical model: "we obtain a linear fit with slope equal to 1.00 and linear Pearson correlation coefficient equal to 0.90"]
+- not stated (card): ALMA project codes, calibrator flux scale and processing (data taken from the ALMA calibrator catalogue); Exact ALMA flux values or the catalogue query; Exact Fermi source model files and the FL8Y list used
+
+### 2024ApJ...966...51G: The Size─Linewidth Relation and Signatures of Feedback from Quiescent to Active Star Forming Regions in the LMC (2024; nearby_galaxies, star_formation, milky_way_ism; archival_reuse)
+- question: How does stellar feedback affect the size-linewidth relation and virial state of CO clumps in nine LMC GMCs, compared with gravity-driven explanations?
+- step 5: Fit size-linewidth relation and correlate nu0 and alpha_vir with tracers
+  - method: ODR fits of log sigma vs log R and of log nu0 = m(X-X0); report scatter and Pearson rho [3.2 Size-linewidth relation fits: "we perform orthogonal distance regression (ODR) using the $\textit{scipy.odr}$ package"]
+  - software: scipy.odr
+  - parameter: fiducial relation sigma_v = 0.72 (R/pc)^0.5 km/s [3.2 Size-linewidth relation fits: "$\sigma_v = 0.72 \left(R/\text{pc}\right)^{0.5} \text{ km s}^{-1}$, hereafter the “fiducial relation”"]
+  - fitting: ODR weighting by uncertainties in both variables [3.3 Fitting star-formation tracers and …: "the ODR fits weight data by the inverse square of the uncertainty for both the independent and dependent variables"]
+  - validation: Repeated with residuals from best-fit relation (Appendix); tested opacity via mean tau13 [Appendix A: "we investigate the robustness of this correlation analysis to the assumed size-linewidth relation by referencing the linewidth to the fitted rather than fiducial relation."]
+- result: 12CO size-linewidth slope = 0.35 ± 0.09 dimensionless [3.2 Size-linewidth relation fits: "\log \left(\frac{\sigma_v}{\text{km s}^{-1}}\right) = \left( 0.35\pm 0.09\right) \log \left(\frac{R}{\text{pc}}\right) - 0.04\pm 0.05,"]
+- result: 13CO size-linewidth slope = 2.29 ± 0.78 dimensionless [3.2 Size-linewidth relation fits: "\log \left(\frac{\sigma_v}{\text{km s}^{-1}}\right) = \left( 2.29\pm 0.78\right) \log \left(\frac{R}{\text{pc}}\right) - 0.95 \pm 0.35,"]
+- result: 12CO log nu0 vs log 8um: slope and rho = m=0.27, rho=0.74 ± 0.02 (slope) dimensionless [Table 3: "| 0.27 $\pm$ 0.02 | 1.57 $\pm$ 0.06 | 0.16 | 4.79 | 0.74 |"]
+- result: 12CO log nu0 vs log Sigma: slope and rho = m=0.66, rho=0.58 ± 0.06 (slope) dimensionless [Table 3: "| 0.66 $\pm$ 0.06 | 2.25 $\pm$ 0.04 | 0.24 | 7.18 | 0.58 |"]
+- result: Scatter of 12CO clumps from fiducial relation = 0.24 ± not stated dex [3.2 Size-linewidth relation fits: "($\varepsilon = 0.24$ dex)"]
+- limitation (authors): LTE assumptions, possibly optically thin 12CO; sensitivity limited to several Msun/pc^2 [4.3 Caveats and future directions: "the effects of optically thin $^{12}$CO on our mass estimates remains uncertain."]
+- limitation (authors): 8um may trace gas column rather than star formation at these scales [2.3 IR and Optical Star Formation Indic…: "These results indicate that $8\ensuremath{\mu}m$ could be preferentially tracing molecular gas column densities over star formation"]
+- not stated (card): Exact native data products and which project code maps to which cloud; How the original cubes were calibrated/imaged (taken from earlier papers); SCIMES parameters other than save_isol_leaves (e.g. criterion, similarity kernel); Exact LTE equations, excitation temperature handling and opacity solution; Fiducial relation citation (reference elided in text); ODR weighting details and the confidence…
+
+### 2019PASJ...71...68K: A Chandra and ALMA study of X-ray-irradiated gas in the central ∼100 pc of the Circinus galaxy (2019; nearby_galaxies, agn_and_quasars; archival_reuse)
+- question: Does AGN X-ray irradiation dissociate molecular gas in the central ~100 pc of Circinus, as seen by comparing the Chandra Fe Kα map with ALMA dense-gas lines?
+- step 1: Reduce Chandra data and align astrometry
+  - method: chandra_repro, deflare (3 sigma), offset correction using wavdetect point sources [4.1 Reduction and Reprocessing of Chand…: "Following standard procedures, we reprocessed all raw data using the `chandra_repro` script."]
+  - software: CIAO 4.9
+  - validation: Offset vs maser position ≈0.1 arcsec [4.1 Reduction and Reprocessing of Chand…: "The derived spatial offset was $\approx$0.1 arcsec"]
+- limitation (authors): Nucleus distance is hard to determine due to line of sight [6.3 XDR Model: "The distance appropriate for the Nucleus region is difficult to determine due to the sightline."]
+- limitation (authors): CO(3-2) shows negative signals from sparse uv coverage [5.1 Reduction and Reprocessing of ALMA …: "some negative signals were found around the line, likely due to the high brightness and sparse $uv$-coverage."]
+- not stated (card): CASA version used; Line-free channel ranges for uvcontsub; clean cell size, image size, masks, thresholds, deconvolver; Exact chi-square grid fit procedure and handling of uncertainties in RADEX fits; Which ObsID 62877 and other details of grating data selection are not tabulated; How 2016 and 2017 executions were combined; Chandra-to-ALMA image alignment and convolution details for Figure 8
+
+## All papers in this technique
+
+- 2014ApJ...791...20R (2014): Brown Dwarf Disks with ALMA
+- 2014PASJ...66..106H (2014): VERA and ALMA observations of the H<SUB>2</SUB>O supermaser burst in Orion KL
+- 2015A&A...576A..41B (2015): ALMA and VLA measurements of frequency-dependent time lags in Sagittarius A*: evidence for a relativistic outflow
+- 2015ApJ...798..124R (2015): ALMA Observations of the Debris Disk around the Young Solar Analog HD 107146
+- 2015ApJ...802...69B (2015): Radio and Millimeter Monitoring of Sgr A*: Spectrum, Variability, and Constraints on the G2 Encounter
+- 2015ApJ...805..186L (2015): Jet Motion, Internal Working Surfaces, and Nested Shells in the Protostellar System HH 212
+- 2016A&A...586A..70L (2016): Anatomy of a blazar in the (sub-)millimeter: ALMA observations of PKS 0521-365
+- 2016A&A...593A..44L (2016): The 492 GHz emission of Sgr A* constrained by ALMA
+- 2016A&A...593L..19M (2016): The MHz-peaked radio spectrum of the unusual γ-ray source PMN J1603-4904
+- 2016A&A...594A.107K (2016): Close stellar conjunctions of α Centauri A and B until 2050 . An m<SUB>K</SUB> = 7.8 star may enter the Einstein ring of α Cen A in 2028
+- 2016RAA....16..111N (2016): Morphology and kinematics of the gas envelope of the variable AGB star π<SUP>1</SUP> Gruis
+- 2017A&A...602A..42K (2017): Subarcsecond imaging of the water emission in Arp 220
+- 2017ApJ...840...32T (2017): Planet Formation in AB Aurigae: Imaging of the Inner Gaseous Spirals Observed inside the Dust Cavity
+- 2017ApJ...841...43E (2017): ALMA CO Clouds and Young Star Complexes in the Interacting Galaxies IC 2163 and NGC 2207
+- 2017ApJ...843...27L (2017): Formation and Atmosphere of Complex Organic Molecules of the HH 212 Protostellar Disk
+- 2017ApJ...843..150F (2017): A Three-dimensional View of Turbulence: Constraints on Turbulent Motions in the HD 163296 Protoplanetary Disk Using DCO<SUP>+</SUP>
+- 2017ApJ...844..158S (2017): Dynamical Masses of Low-mass Stars in the Taurus and Ophiuchus Star-forming Regions
+- 2017ApJ...846L..26W (2017): An ALMA Dynamical Mass Estimate of the Proposed Planetary-mass Companion FW Tau C
+- 2017ApJ...850L..21K (2017): ALMA and GMRT Constraints on the Off-axis Gamma-Ray Burst 170817A from the Binary Neutron Star Merger GW170817
+- 2017MNRAS.469.4726N (2017): High-resolution ALMA observation of the <SUP>12</SUP>CO(3-2) and 350 GHz continuum emissions of the debris disc of 49 Ceti
+- 2017SciA....3E2935L (2017): First detection of equatorial dark dust lane in a protostellar disk at submillimeter wavelength
+- 2018A&A...619A..40M (2018): The radio jets of SS 433 at millimetre wavelengths
+- 2018ApJ...854...56L (2018): ALMA Dust Polarization Observations of Two Young Edge-on Protostellar Disks
+- 2018ApJ...855L...2M (2018): Detection of a Millimeter Flare from Proxima Centauri
+- 2018ApJ...856..117F (2018): Turbulence in the TW Hya Disk
+- 2018ApJ...857...19F (2018): The ALMA View of GMCs in NGC 300: Physical Properties and Scaling Relations at 10 pc Resolution
+- 2018ApJ...859..165S (2018): Dust Polarization toward Embedded Protostars in Ophiuchus with ALMA. I. VLA 1623
+- 2018ApJ...862...94L (2018): First ALMA Light Curve Constrains Refreshed Reverse Shocks and Jet Magnetization in GRB 161219B
+- 2018ApJ...866...87B (2018): The Extraordinary Outburst in the Massive Protostellar System NGC 6334I-MM1: Flaring of the Water Masers in a North-South Bipolar Outflow D…
+- 2018ApJ...868..101B (2018): ALMA Polarimetry of Sgr A*: Probing the Accretion Flow from the Event Horizon to the Bondi Radius
+- 2018ApJ...868..113T (2018): Evidence for a Vertical Dependence on the Pressure Structure in AS 209
+- 2018ApJ...869...17L (2018): Gaps and Rings in an ALMA Survey of Disks in the Taurus Star-forming Region
+- 2018ApJ...869L..42H (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). II. Characteristics of Annular Substructures
+- 2018ApJ...869L..43H (2018): The Disk Substructures at High Angular Resolution Project (DSHARP). III. Spiral Structures in the Millimeter Continuum of the Elias 27, IM …
+- 2018MNRAS.479.5440L (2018): Neutral versus ionized gas kinematics at z ≃ 2.6: the AGN-host starburst galaxy PKS 0529-549
+- 2019A&A...625A.118K (2019): Highly structured disk around the planet host PDS 70 revealed by high-angular resolution observations with ALMA
+- 2019ApJ...870...59S (2019): ALMA, ATCA, and Spitzer Observations of the Luminous Extragalactic Supernova SN 1978K
+- 2019ApJ...871....5T (2019): The Flared Gas Structure of the Transitional Disk around Sz 91
+- 2019ApJ...871...72M (2019): The JCMT Transient Survey: An Extraordinary Submillimeter Flare in the T Tauri Binary System JW 566
+- 2019ApJ...871..100H (2019): ALMA Observations of the Protostellar Disk around the VeLLO IRAS 16253-2429
+- 2019ApJ...872....2R (2019): ALMA Detection of Extreme Blueshifted Ionized Gas within 0.2 pc of Sgr A* from -480 to -300 km s<SUP>-1</SUP>
+- 2019ApJ...874...31W (2019): Ejection History of the IRAS 04166+2706 Molecular Jet
+- 2019ApJ...877L..22L (2019): The Anomalously Low (Sub)Millimeter Spectral Indices of Some Protoplanetary Disks May Be Explained By Dust Self-scattering
+- 2019ApJ...878L...8T (2019): Discovery of An au-scale Excess in Millimeter Emission from the Protoplanetary Disk around TW Hya
+- 2019ApJ...878L..26L (2019): ALMA Detection of a Linearly Polarized Reverse Shock in GRB 190114C
+- 2019ApJ...881...33H (2019): Constraining the Radio Emission of TRAPPIST-1
+- 2019ApJ...883L...2M (2019): The Origin of the X-Ray Emission in Two Well-aligned Extragalactic Jets: The Case for IC/CMB
+- 2019ApJ...884L..58U (2019): First Detection of Radio Linear Polarization in a Gamma-Ray Burst Afterglow
+- 2019MNRAS.490.5300D (2019): Investigating the multiwavelength behaviour of the flat spectrum radio quasar CTA 102 during 2013-2017
+- 2019PASJ...71...68K (2019): A Chandra and ALMA study of X-ray-irradiated gas in the central ∼100 pc of the Circinus galaxy
+- 2020A&A...635L...9P (2020): Planet-induced spirals in the circumbinary disk of GG Tauri A
+- 2020A&A...636A..62K (2020): Investigating the connection between γ-ray activity and the relativistic jet in 3C 273 during 2015-2019
+- 2020A&A...641A.155V (2020): CO emission in distant galaxies on and above the main sequence
+- 2020A&A...642A..96P (2020): A search for millimeter emission from the coldest and closest brown dwarf with ALMA
+- 2020ApJ...889..178B (2020): The Orion Protostellar Explosion and Runaway Stars Revisited: Stellar Masses, Disk Retention, and an Outflow from the Becklin-Neugebauer Ob…
+- 2020ApJ...891...48H (2020): A Multifrequency ALMA Characterization of Substructures in the GM Aur Protoplanetary Disk
+- 2020ApJ...891...80M (2020): Properties of M Dwarf Flares at Millimeter Wavelengths
+- 2020ApJ...892..111F (2020): Dust-depleted Inner Disks in a Large Sample of Transition Disks through Long-baseline ALMA Observations
+- 2020ApJ...894...76W (2020): The MESAS Project: ALMA Observations of the F-type Stars γ Lep, γ Vir A, and γ Vir B
+- 2020ApJ...895..135K (2020): AGN X-Ray Irradiation of CO Gas in NGC 2110 Revealed by Chandra and ALMA
+- 2020ApJ...895L...2N (2020): Substructure Formation in a Protostellar Disk of L1527 IRS
+- 2020ApJ...904L..24S (2020): ALMA CO Observations of the Gamma-Ray Supernova Remnant RX J1713.7-3946: Discovery of Shocked Molecular Cloudlets and Filaments at 0.01 pc …
+- 2020MNRAS.496..394R (2020): Illuminating a tadpole's metamorphosis II: observing the ongoing transformation with ALMA
+- 2021A&A...652A..92N (2021): ALMA observations of the variability of the quiet Sun at millimeter wavelengths
+- 2021A&A...656A..46M (2021): ALCHEMI, an ALMA Comprehensive High-resolution Extragalactic Molecular Inventory. Survey presentation and first results from the ACA array
+- 2021ApJ...906...16S (2021): A New Feedback Cycle in the Archetypal Cooling Flow Group NGC 5044
+- 2021ApJ...908..175C (2021): The Extraordinary Outburst in the Massive Protostellar System NGC 6334 I-MM1: Spatiokinematics of Water Masers during a Contemporaneous Fla…
+- 2023NatAs...7...80U (2023): Simultaneous radio and optical polarimetry of GRB 191221B afterglow
+- 2023Natur.623..927H (2023): Minutes-duration optical flares with supernova luminosities
+- 2024A&A...690A..46S (2024): Early Planet Formation in Embedded Disks (eDisk): XVI. Asymmetric dust disk driving a multicomponent molecular outflow in the young Class 0…
+- 2024AJ....167...94H (2024): The Hidden Clumps in VY CMa Uncovered by the Atacama Large Millimeter/submillimeter Array
+- 2024ApJ...961..108K (2024): The CO Outflow Components Ejected by a Recent Accretion Event in B335
+- 2024ApJ...964...48T (2024): An Extremely Young Protostellar Core, MMS 1/OMC-3: Episodic Mass Ejection History Traced by the Micro SiO Jet
+- 2024ApJ...966...51G (2024): The Size─Linewidth Relation and Signatures of Feedback from Quiescent to Active Star Forming Regions in the LMC
+- 2024ApJ...966...59S (2024): Small and Large Dust Cavities in Disks around Mid-M Stars in Taurus
+- 2024ApJ...969..143I (2024): A Radial Decrease in Kinetic Temperature Measured with H<SUB>2</SUB>CO in 30 Doradus
+- 2024ApJ...970...56P (2024): Radio Emission from the Magnetically Active M Dwarf UV Ceti from 1 to 105 GHz
+- 2024ApJ...971..129C (2024): A Dust-trapping Ring in the Planet-hosting Disk of Elias 2-24
+- 2024ApJ...976...88L (2024): Disk Turbulence and Star Formation Regulation in High-z Main-sequence Analog Galaxies
+- 2024ApJ...976..132H (2024): High-resolution ALMA Observations of Richly Structured Protoplanetary Disks in σ Orionis
+- 2024RMxAA..60..355R (2024): The Radio Continuum Source Projected Near HR 8799
+- 2025ApJ...984L..15P (2025): exoALMA. X. Channel Maps Reveal Complex <SUP>12</SUP>CO Abundance Distributions and a Variety of Kinematic Structures with Evidence for Emb…
+- 2025ApJ...987..152R (2025): Dynamical Inference from Polarized Light Curves of Sagittarius A<SUP>*</SUP>
+- 2025ApJ...993...85Y (2025): Peculiar Disk Substructures Associated with the Young Eruptive Star EX Lupi
+- 2025ApJ...993..120H (2025): Early Planet Formation in Embedded Disks (eDisk). XVII. A Compact but Structured Keplerian Disk and Large-scale Streamers Revealed in the C…
+- 2025ApJ...994..256Y (2025): A Face-on Accretion Disk Geometry Revealed by Millimeter-wave Periodicity in Sgr A<SUP>∗</SUP>
+- 2025ApJS..277...62N (2025): Evidence of Galactic Interaction in the Small Magellanic Cloud Probed by Gaia-selected Massive Star Candidates
+- 2025MNRAS.540..364A (2025): Multiwavelength study of OT 081: broadband modelling of a transitional blazar
+- 2026ApJ..1003L..17Y (2026): Evidence for Multiple Orbiting Hotspots in the 340 GHz Variability of Sgr A*
+- 2026ApJ..1004..126K (2026): An Active Galactic Nucleus in the Antennae Galaxies?
+
+codex
+# Codex review: variability-time-domain
+VERDICT: FIX
+## Findings
+
+- SR-01 | high | attribution | “2025ApJ...994..256Y … 12 projects … `solint='inf'` … `int` … 10^5 … <2%” | Its supplied pack entries contain the title and model limitations, but none of these settings, selection criteria, imaging tasks, significance thresholds, PSD slope or ray-tracing validation. | Remove these specifics or supply the supporting card excerpts; do not label unavailable material “card.”
+- SR-02 | high | attribution | “2 s `uvmodelfit` … 5 s bins … >100 klambda … Gehrels 95% intervals” | For 2018ApJ...855L...2M and 2020ApJ...891...80M, the pack does not provide these methods or numbers. It likewise does not substantiate their calibrator checks, excess variance, polarization extraction, gyrosynchrotron relation or quoted comparison fluxes. | Remove or qualify these claims pending supporting excerpts; update dependent parameter ranges and paper counts.
+- SR-03 | medium | attribution | “per-scan `uvmodelfit` … ~10%” | 2020ApJ...894...76W supports the assumption that the background source has constant flux, but supplies no extraction task, scan duration, flux-scale percentage or demonstrated control-source constancy. | Retain the stated assumption; remove the unsupported implementation, numbers and validation claim.
+- SR-04 | medium | attribution | “phase-and-amplitude self-calibration still ‘worked’ … UVSUB” | The supplied 2018A&A...619A..40M entries state continuous jet flow, model parameters and single-epoch limitations; they do not describe either operation. | Delete these attributions or add the relevant evidence.
+- SR-05 | medium | attribution | “VI = …”; “Structure function for rotation-measure variability” | 2016A&A...586A..70L supports sparse-sampling limitations and VI lower limits, but not the formula. For 2018ApJ...868..101B, only RM reliability limitations are supplied. | Mark any retained formula as general practice with its definition; remove the unsupported paper-specific method claims.
+- SR-06 | medium | attribution | “shift to a common epoch in GILDAS”; “8 yr JCMT … WISE/NEOWISE” | The supplied entries for 2017ApJ...840...32T, 2024ApJ...961..108K and 2024ApJ...964...48T do not establish these software or light-curve details. The ~93 yr parameter in 2019ApJ...874...31W does not establish comparison with an observed light curve. | Restrict descriptions to supported ejection-history/proper-motion information or provide the missing methods excerpts.
+- SR-07 | medium | attribution | “two-epoch proper motions … unexplored systematics (2018ApJ...866...87B)” | That bibcode’s supplied limitation concerns unmatched Band 10 scales for CS modelling; it does not state this proper-motion limitation. | Present the configuration concern as a general check, without attributing it to this card.
+- SR-08 | medium | attribution | “Flux-scale uncertainty … 2.5% (relative, gencal)” | 2021A&A...656A..46M identifies 2.5% as scatter in residual scaling factors from a continuum-alignment validation, not a general relative flux uncertainty. The table also uses an unsupported ~10% for 2020ApJ...894...76W. | Separate residual alignment scatter from adopted calibration uncertainty; remove the unsupported value and revise the count.
+- SR-09 | medium | unsupported | “35 … off-topic … remaining 52 … 31 … 13 … 5 … 3” | The pack gives no such classification ledger, and detailed excerpts cover only part of the corpus. Titles alone do not establish all these mutually exclusive activity counts. | Label this as an unverified classification and provide a bibcode-level ledger, or omit the numerical breakdown.
+- SR-10 | medium | unsupported | “every paper that claims a change shows … stayed constant” | The pack establishes selected checks, not a universal practice. Moreover, 2015A&A...576A..41B explicitly uses check-source **variability** to estimate uncertainty. | Say that several papers check controls, whose residual variability can set a systematic uncertainty.
+- SR-11 | high | science | “Use phase-only, or amplitude with a solution interval much longer than the variability” | A long amplitude solution interval does not guarantee preservation of intrinsic variability or its normalization. The instruction also conflicts with the preceding claim that long-interval amplitude calibration absorbs variability. | Prefer phase-only for flux-variability extraction; require a justified variable-source model and a recovery test before using amplitude self-calibration.
+- SR-12 | high | science | “Calibrate every epoch … then phase self-calibration” | Applied to the proper-motion branch, target self-calibration can erase absolute positional information or introduce epoch-dependent registration. The pack’s motion examples explicitly use continuum alignment or reference-relative offsets. | Separate flux and astrometric workflows; preserve externally referenced positions or document and validate relative registration before comparing epochs.
+- SR-13 | high | science | “|Q/I| = (XX-YY)/2I” | The right side lacks an absolute value and represents a feed-frame Stokes projection, not generally sky-frame Q. Its normalization also requires an explicit correlation convention. | Define the convention; for \(I=(XX+YY)/2\), use \(|XX-YY|/(XX+YY)=|Q'|/I\), explain parallactic-angle dependence and identify it as a lower bound on total linear polarization.
+- SR-14 | medium | science | “Power-spectrum frequency resolution … ~3 d” | 2026ApJ..1004..126K itself uses this wording, but days are not frequency units. Mean epoch spacing describes cadence, while Fourier frequency resolution depends principally on the observing baseline. | Preserve the paper wording only with a caveat; distinguish cadence, frequency resolution and period uncertainty, with correct units.
+- SR-15 | high | science | “10^5 simulated light curves”; “FAP … <2.9e-7” | Direct empirical exceedance counting with 10^5 simulations cannot resolve a FAP of 2.9e-7. The supplied pack also does not substantiate that threshold for 2025ApJ...994..256Y. | State simulation-limited FAP resolution; require sufficiently many simulations or a justified, validated tail model for smaller probabilities.
+- SR-16 | medium | science | “always simulate the red-noise PSD”; “Red-noise PSD slope … f^-2” | The pack supports f^-2 for 2026ApJ..1003L..17Y, while 2026ApJ..1004..126K uses a constant-flux null with normally distributed per-EB errors. Neither establishes a universal noise model or default slope. | Select and justify the null for the source and sampling; test correlated noise where relevant and treat published slopes as examples.
+- SR-17 | medium | science | “Non-detections give 3 sigma limits on emitting-region size” | In 2019ApJ...881...33H, 3 sigma describes the flux limit. The size bound depends on assumed gyrosynchrotron physics, including B=600 G and electron index δ=2; its limitation explicitly says non-detections cannot identify the mechanism. | Describe a conditional model-derived size bound and list its assumptions separately from the flux confidence level.
+- SR-18 | medium | science | “Offsets smaller than the beam cannot separate proper motion from calibration” | 2019ApJ...871..100H reports ambiguity for one particular offset, not a universal beam-sized astrometric floor. The pack also gives beam/(S/N) positional errors. | State that sub-beam shifts can be measured, but require positional uncertainties and registration/calibration systematics to establish motion.
+- SR-19 | high | omission | “Flux comparison across epochs” | The workflow lacks a general check for matched spatial response. The pack explicitly attributes a flux discrepancy to missing ACA data in 2024RMxAA..60..355R and warns about beam changes/interpolation in 2019ApJ...870...59S. | Require compatible uv coverage, recoverable angular scales, frequency selection, beam and extraction aperture before interpreting flux differences.
+- SR-20 | medium | omission | “Smoothing splines through Q and U before differentiating” | 2025ApJ...987..152R explicitly splits at gaps ≥1.8 min and trims edge points; both safeguards are omitted. Its smoothing values are discrete tested choices, not established continuous ranges. | Include segmentation and edge trimming; report sensitivity to the stated discrete spline settings.
+- SR-21 | medium | omission | “Structure function for rotation-measure variability” | The supplied 2018ApJ...868..101B limitation says the largest RMs are suspect because of phase wrapping, poor fits and low-polarization calibration errors. | Add RM fit-quality, angle-wrap and polarization/calibration checks before calculating variability statistics.
+- SR-22 | medium | omission | “hotspot fit … GR ray-tracing check” | 2025ApJ...994..256Y explicitly lists statistical-only uncertainties, neglected finite hotspot size and temporal evolution, and unconstrained spin. These limitations are missing. | Include these interpretation limits and avoid implying that the unsupported <2% check validates the full physical model.
+- SR-23 | medium | omission | “Solar oscillations … per-pixel power spectra” | 2021A&A...652A..92N warns that coarse resolution and correlated pixels make observed p-mode RMS a lower limit. The skill mentions gap corrections but omits this separate limitation. | State the resolution-dependent lower bound and account for pixel correlation when interpreting spatial averages and uncertainties.
+- SR-24 | medium | usability | “lag -105 +/- 4 d”; “v_t = 4.74 mu …” | The lag lacks an explicit band-order/sign definition. The nearby-source velocity formula appears in a skill also covering cosmological jets, including the pack’s 3C 273 apparent-speed example. | Define lag ordering and which band leads; restrict the pc-based formula to nearby sources and specify the angular-diameter-distance/redshift treatment for cosmological apparent speeds.
+
+## Notes
+Most raw software aggregate counts are reproduced accurately.
+The principal issue is specificity attributed to cards absent from the supplied pack.
+Unsupported claims may be true in the papers; this pack does not verify them.
+Recast the parameter table as documented examples, with defaults justified separately.
+tokens used
+71,578
+# Codex review: variability-time-domain
+VERDICT: FIX
+## Findings
+
+- SR-01 | high | attribution | “2025ApJ...994..256Y … 12 projects … `solint='inf'` … `int` … 10^5 … <2%” | Its supplied pack entries contain the title and model limitations, but none of these settings, selection criteria, imaging tasks, significance thresholds, PSD slope or ray-tracing validation. | Remove these specifics or supply the supporting card excerpts; do not label unavailable material “card.”
+- SR-02 | high | attribution | “2 s `uvmodelfit` … 5 s bins … >100 klambda … Gehrels 95% intervals” | For 2018ApJ...855L...2M and 2020ApJ...891...80M, the pack does not provide these methods or numbers. It likewise does not substantiate their calibrator checks, excess variance, polarization extraction, gyrosynchrotron relation or quoted comparison fluxes. | Remove or qualify these claims pending supporting excerpts; update dependent parameter ranges and paper counts.
+- SR-03 | medium | attribution | “per-scan `uvmodelfit` … ~10%” | 2020ApJ...894...76W supports the assumption that the background source has constant flux, but supplies no extraction task, scan duration, flux-scale percentage or demonstrated control-source constancy. | Retain the stated assumption; remove the unsupported implementation, numbers and validation claim.
+- SR-04 | medium | attribution | “phase-and-amplitude self-calibration still ‘worked’ … UVSUB” | The supplied 2018A&A...619A..40M entries state continuous jet flow, model parameters and single-epoch limitations; they do not describe either operation. | Delete these attributions or add the relevant evidence.
+- SR-05 | medium | attribution | “VI = …”; “Structure function for rotation-measure variability” | 2016A&A...586A..70L supports sparse-sampling limitations and VI lower limits, but not the formula. For 2018ApJ...868..101B, only RM reliability limitations are supplied. | Mark any retained formula as general practice with its definition; remove the unsupported paper-specific method claims.
+- SR-06 | medium | attribution | “shift to a common epoch in GILDAS”; “8 yr JCMT … WISE/NEOWISE” | The supplied entries for 2017ApJ...840...32T, 2024ApJ...961..108K and 2024ApJ...964...48T do not establish these software or light-curve details. The ~93 yr parameter in 2019ApJ...874...31W does not establish comparison with an observed light curve. | Restrict descriptions to supported ejection-history/proper-motion information or provide the missing methods excerpts.
+- SR-07 | medium | attribution | “two-epoch proper motions … unexplored systematics (2018ApJ...866...87B)” | That bibcode’s supplied limitation concerns unmatched Band 10 scales for CS modelling; it does not state this proper-motion limitation. | Present the configuration concern as a general check, without attributing it to this card.
+- SR-08 | medium | attribution | “Flux-scale uncertainty … 2.5% (relative, gencal)” | 2021A&A...656A..46M identifies 2.5% as scatter in residual scaling factors from a continuum-alignment validation, not a general relative flux uncertainty. The table also uses an unsupported ~10% for 2020ApJ...894...76W. | Separate residual alignment scatter from adopted calibration uncertainty; remove the unsupported value and revise the count.
+- SR-09 | medium | unsupported | “35 … off-topic … remaining 52 … 31 … 13 … 5 … 3” | The pack gives no such classification ledger, and detailed excerpts cover only part of the corpus. Titles alone do not establish all these mutually exclusive activity counts. | Label this as an unverified classification and provide a bibcode-level ledger, or omit the numerical breakdown.
+- SR-10 | medium | unsupported | “every paper that claims a change shows … stayed constant” | The pack establishes selected checks, not a universal practice. Moreover, 2015A&A...576A..41B explicitly uses check-source **variability** to estimate uncertainty. | Say that several papers check controls, whose residual variability can set a systematic uncertainty.
+- SR-11 | high | science | “Use phase-only, or amplitude with a solution interval much longer than the variability” | A long amplitude solution interval does not guarantee preservation of intrinsic variability or its normalization. The instruction also conflicts with the preceding claim that long-interval amplitude calibration absorbs variability. | Prefer phase-only for flux-variability extraction; require a justified variable-source model and a recovery test before using amplitude self-calibration.
+- SR-12 | high | science | “Calibrate every epoch … then phase self-calibration” | Applied to the proper-motion branch, target self-calibration can erase absolute positional information or introduce epoch-dependent registration. The pack’s motion examples explicitly use continuum alignment or reference-relative offsets. | Separate flux and astrometric workflows; preserve externally referenced positions or document and validate relative registration before comparing epochs.
+- SR-13 | high | science | “|Q/I| = (XX-YY)/2I” | The right side lacks an absolute value and represents a feed-frame Stokes projection, not generally sky-frame Q. Its normalization also requires an explicit correlation convention. | Define the convention; for \(I=(XX+YY)/2\), use \(|XX-YY|/(XX+YY)=|Q'|/I\), explain parallactic-angle dependence and identify it as a lower bound on total linear polarization.
+- SR-14 | medium | science | “Power-spectrum frequency resolution … ~3 d” | 2026ApJ..1004..126K itself uses this wording, but days are not frequency units. Mean epoch spacing describes cadence, while Fourier frequency resolution depends principally on the observing baseline. | Preserve the paper wording only with a caveat; distinguish cadence, frequency resolution and period uncertainty, with correct units.
+- SR-15 | high | science | “10^5 simulated light curves”; “FAP … <2.9e-7” | Direct empirical exceedance counting with 10^5 simulations cannot resolve a FAP of 2.9e-7. The supplied pack also does not substantiate that threshold for 2025ApJ...994..256Y. | State simulation-limited FAP resolution; require sufficiently many simulations or a justified, validated tail model for smaller probabilities.
+- SR-16 | medium | science | “always simulate the red-noise PSD”; “Red-noise PSD slope … f^-2” | The pack supports f^-2 for 2026ApJ..1003L..17Y, while 2026ApJ..1004..126K uses a constant-flux null with normally distributed per-EB errors. Neither establishes a universal noise model or default slope. | Select and justify the null for the source and sampling; test correlated noise where relevant and treat published slopes as examples.
+- SR-17 | medium | science | “Non-detections give 3 sigma limits on emitting-region size” | In 2019ApJ...881...33H, 3 sigma describes the flux limit. The size bound depends on assumed gyrosynchrotron physics, including B=600 G and electron index δ=2; its limitation explicitly says non-detections cannot identify the mechanism. | Describe a conditional model-derived size bound and list its assumptions separately from the flux confidence level.
+- SR-18 | medium | science | “Offsets smaller than the beam cannot separate proper motion from calibration” | 2019ApJ...871..100H reports ambiguity for one particular offset, not a universal beam-sized astrometric floor. The pack also gives beam/(S/N) positional errors. | State that sub-beam shifts can be measured, but require positional uncertainties and registration/calibration systematics to establish motion.
+- SR-19 | high | omission | “Flux comparison across epochs” | The workflow lacks a general check for matched spatial response. The pack explicitly attributes a flux discrepancy to missing ACA data in 2024RMxAA..60..355R and warns about beam changes/interpolation in 2019ApJ...870...59S. | Require compatible uv coverage, recoverable angular scales, frequency selection, beam and extraction aperture before interpreting flux differences.
+- SR-20 | medium | omission | “Smoothing splines through Q and U before differentiating” | 2025ApJ...987..152R explicitly splits at gaps ≥1.8 min and trims edge points; both safeguards are omitted. Its smoothing values are discrete tested choices, not established continuous ranges. | Include segmentation and edge trimming; report sensitivity to the stated discrete spline settings.
+- SR-21 | medium | omission | “Structure function for rotation-measure variability” | The supplied 2018ApJ...868..101B limitation says the largest RMs are suspect because of phase wrapping, poor fits and low-polarization calibration errors. | Add RM fit-quality, angle-wrap and polarization/calibration checks before calculating variability statistics.
+- SR-22 | medium | omission | “hotspot fit … GR ray-tracing check” | 2025ApJ...994..256Y explicitly lists statistical-only uncertainties, neglected finite hotspot size and temporal evolution, and unconstrained spin. These limitations are missing. | Include these interpretation limits and avoid implying that the unsupported <2% check validates the full physical model.
+- SR-23 | medium | omission | “Solar oscillations … per-pixel power spectra” | 2021A&A...652A..92N warns that coarse resolution and correlated pixels make observed p-mode RMS a lower limit. The skill mentions gap corrections but omits this separate limitation. | State the resolution-dependent lower bound and account for pixel correlation when interpreting spatial averages and uncertainties.
+- SR-24 | medium | usability | “lag -105 +/- 4 d”; “v_t = 4.74 mu …” | The lag lacks an explicit band-order/sign definition. The nearby-source velocity formula appears in a skill also covering cosmological jets, including the pack’s 3C 273 apparent-speed example. | Define lag ordering and which band leads; restrict the pc-based formula to nearby sources and specify the angular-diameter-distance/redshift treatment for cosmological apparent speeds.
+
+## Notes
+Most raw software aggregate counts are reproduced accurately.
+The principal issue is specificity attributed to cards absent from the supplied pack.
+Unsupported claims may be true in the papers; this pack does not verify them.
+Recast the parameter table as documented examples, with defaults justified separately.

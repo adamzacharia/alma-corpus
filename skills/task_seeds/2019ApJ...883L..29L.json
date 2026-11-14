@@ -1,0 +1,233 @@
+{
+ "bibcode": "2019ApJ...883L..29L",
+ "title": "First [N II]122 μm Line Detection in a QSO-SMG Pair BRI 1202-0725 at z = 4.69",
+ "year": 2019,
+ "doi": "10.3847/2041-8213/ab412e",
+ "arxiv_id": "1909.02284",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the electron densities of the ionized gas in the QSO and SMG of BRI 1202-0725 at z=4.69, from the [NII] 122/205 μm line ratio?",
+ "alma_project_codes": [
+  "2013.1.00259.S"
+ ],
+ "data": {
+  "bands": "Band 6 (N II 205 um), Band 8 (N II 122 um, 700 um)",
+  "arrays": "12-m array configuration C34-2/1 (Band 6)",
+  "angular_resolution": "Natural weighting: 1.43x0.84 arcsec (205), 0.32x0.24 arcsec (122)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Archival Cycle 3 Band 6 [NII]205 data (Lu data) from Lu et al. 2017",
+    "evidence": [
+     {
+      "loc": "2.3 Archival data",
+      "quote": "We downloaded the archival data sets that were independently taken during ALMA Cycle 3"
+     }
+    ]
+   },
+   "citation": "Lu2017b"
+  },
+  {
+   "what": {
+    "value": "Local galaxy and Galactic Plane [NII] comparison data",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "we compiled the available data sets for various types of galaxies including our Galaxy (MW) and local galaxies"
+     }
+    ]
+   },
+   "citation": "Herrera-Camus2016; Goldsmith2015"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "ARC calibration scripts, tclean imaging with natural/Briggs weighting and uv-tapering",
+   "software": [
+    "CASA",
+    "tclean"
+   ],
+   "key_parameters": [
+    "uvtaper 330 klambda; Briggs robust 0.5 for [NII]205"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line fluxes",
+   "method": "Growth curves to choose apertures; Gaussian fit with imfit",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "apertures 1.2 arcsec ([NII]122), 3.0 arcsec ([NII]205)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Assess missing flux",
+   "method": "simobserve mock observations of Gaussian components",
+   "software": [
+    "CASA simobserve"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive electron density",
+   "method": "122/205 luminosity ratio converted with PyNeb",
+   "software": [
+    "PyNeb"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Te = 8000 K; both lines from same region"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[NII]122 flux SMG",
+   "value": "1.13",
+   "uncertainty": "0.27",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.13 \\pm 0.27$"
+    }
+   ]
+  },
+  {
+   "quantity": "[NII]122 flux QSO",
+   "value": "1.62",
+   "uncertainty": "0.27",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.62 \\pm 0.27$"
+    }
+   ]
+  },
+  {
+   "quantity": "[NII]205 flux SMG",
+   "value": "1.32",
+   "uncertainty": "0.11",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$1.32 \\pm 0.11$"
+    }
+   ]
+  },
+  {
+   "quantity": "[NII]205 flux QSO",
+   "value": "0.70",
+   "uncertainty": "0.05",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$0.70\\pm0.05$"
+    }
+   ]
+  },
+  {
+   "quantity": "122/205 luminosity ratio SMG",
+   "value": "1.44",
+   "uncertainty": "0.36",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$1.44\\pm0.36$ and $3.89\\pm0.71$ for the SMG and the QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "122/205 luminosity ratio QSO",
+   "value": "3.89",
+   "uncertainty": "0.71",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "$1.44\\pm0.36$ and $3.89\\pm0.71$ for the SMG and the QSO"
+    }
+   ]
+  },
+  {
+   "quantity": "electron density SMG",
+   "value": "26",
+   "uncertainty": "+12/-11",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$26^{+12}_{-11}$ and $134^{+50}_{-39}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "electron density QSO",
+   "value": "134",
+   "uncertainty": "+50/-39",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$26^{+12}_{-11}$ and $134^{+50}_{-39}$ cm$^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[NII]122 FWHM QSO",
+   "value": "613",
+   "uncertainty": "133",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "$613\\pm 133$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels / continuum fit ranges for imcontsub",
+  "Cell size, image size, masking, cleaning threshold",
+  "Spectral channelization of final cubes",
+  "Exact rest frequencies and velocity centers used",
+  "Aperture centers for flux extraction",
+  "Flux calibration uncertainty",
+  "Line fitting function details for FWHM"
+ ],
+ "missing_for_reproduction": [
+  "Cell/image size, masks, clean thresholds",
+  "Line-free channels",
+  "Exact fitting spectral model"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and main steps given, but several imaging and fitting details are missing.",
+ "rediscovery_reason": "Public data, numeric fluxes and densities, fairly clear recipe.",
+ "source_card": "cards/2019ApJ...883L..29L/sonnet/card.md"
+}

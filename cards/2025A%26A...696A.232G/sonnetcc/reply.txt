@@ -1,0 +1,293 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "Combining archival data and previously published work, we provide a near-complete high resolution image library of 73 protoplanetary (Class II) disks in the Lupus."},
+{"loc": "2 Observations", "quote": "Our data were obtained from Cycle 9 observations with the Atacama Large Millimeter/submillimeter Array (ALMA) at Band 6."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {"value": "How small are the dust disks of Class II Lupus protoplanetary disks, how common are substructures in compact disks, and what do sizes, fluxes, dust masses and implied planet masses say about drift-dominated evolution and super-Earth formation", "evidence": [
+{"loc": "abstract", "quote": "To better elucidate the link between planet formation and disk substructures, observational biases should be reduced through observations of these small, faint disks at the highest resolution using the Atacama Large Millimeter Array (ALMA)."}
+]},
+"targets": [
+{"name": "Lupus Class II protoplanetary disks (73 total; 33 newly observed in Band 6)", "details": [
+{"loc": "1 Introduction", "quote": "It is a young (1–2 Myr) and nearby (150–200 pc) region, comparable in proximity and age to Taurus"},
+{"loc": "3.3 Disk size and substructure distribution", "quote": "We plot the disk radii versus their total flux density (scaled to 160 pc)"},
+{"loc": "3.4 Radiative transfer modeling", "quote": "later updated using Gaia DR2 distance corrections as described in (cite: 2019A&A...629A.108A)"}
+], "coordinates": "not stated (sources identified by 2MASS identifiers in the image-properties table)", "redshift_or_distance": "150-200 pc region; per-source distances ~147-163 pc in the stellar-parameters table; 160 pc used to scale fluxes", "distance_source": "stellar-parameters table per source; Gaia DR2 distance corrections via (cite: 2019A&A...629A.108A)"}
+],
+"alma_project_codes": [
+{"code": "2022.1.00154.S", "evidence": [{"loc": "2 Observations", "quote": "with project code 2022.1.00154.S and PI Nienke van der Marel, were carried out in 10 execution blocks between August 16, 2023, and September 11, 2023"}]},
+{"code": "2018.1.01458.S", "evidence": [{"loc": "2 Observations", "quote": "(project code: 2018.1.01458.S, PI: Yen, Hsi-Wei)"}]},
+{"code": "2017.1.00388.S", "evidence": [{"loc": "2 Observations", "quote": "(project code: 2017.1.00388.S, PI: Liu, Hauyu Baobab)"}]},
+{"code": "2018.1.00689.S", "evidence": [{"loc": "2 Observations", "quote": "(project code 2018.1.00689.S, PI: Muto, Takayuki)"}]},
+{"code": "2022.1.01302.S", "evidence": [{"loc": "2 Observations", "quote": "(project code: 2022.1.01302.S, PI: Mulders, Gijs)"}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 6 (1.3 mm) for the 33 new sources and the archival Lupus sources; Band 4 for EX Lup (not used in the analysis)", "evidence": [
+{"loc": "2 Observations", "quote": "Our data were obtained from Cycle 9 observations with the Atacama Large Millimeter/submillimeter Array (ALMA) at Band 6."},
+{"loc": "2 Observations", "quote": "a Band 4 dataset was used for EX Lup, as no high-resolution observations were available at any other band"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "New data: 6 continuum SPWs at 219-234 GHz, 2 GHz total bandwidth each; 6 SPWs at 220-231 GHz, 1.875 GHz total bandwidth, for 12CO and 13CO. Archival 2018.1.01458.S: one continuum SPW of 2 GHz at 232-234 GHz plus 6 line SPWs of 58.6 MHz", "evidence": [
+{"loc": "2 Observations", "quote": "6 spectral windows with frequencies between 219–234 GHz and a total bandwidth of 2 GHz each for the continuum"},
+{"loc": "2 Observations", "quote": "6 spectral windows between 220–231 GHz with a total bandwidth of 1.875 GHz dedicated to $^{12}$CO and $^{13}$CO line emission"},
+{"loc": "2 Observations", "quote": "only one spectral window for the continuum with a total bandwidth of 2 GHz, between 232-234 GHz"}
+]},
+{"field": "max_recoverable_scale", "value": "0.37 to 0.715 arcsec (new data)", "evidence": [
+{"loc": "2 Observations", "quote": "all with a maximum recoverable scale between 0.37\" and 0.715\""}
+]},
+{"field": "angular_resolution", "value": "~0.03 arcsec (~4 au) limits detection of structures", "evidence": [
+{"loc": "3.1 Dust continuum images", "quote": "which limits detection to structures as small as approximately 4 au ($\\sim$ 0.03 arcseconds)"}
+]},
+{"field": "time_on_source", "value": "New data: 8.89 h total, ~7.25 min per source (33 sources); archival 2018.1.01458.S: 1.1 h for 8 sources; EX Lup Band 4: 5.1 min", "evidence": [
+{"loc": "2 Observations", "quote": "The total observing time was 8.89 hours, with $\\sim$ 7.25 minutes spent on each source."},
+{"loc": "2 Observations", "quote": "with a total integration time of 1.1 hours and a total of 8 sources"},
+{"loc": "2 Observations", "quote": "with a total integration time of 5.1 minutes"}
+]},
+{"field": "observing_dates", "value": "2023-08-16 to 2023-09-11 (10 execution blocks, 2022.1.00154.S); 2019-07-18 to 2019-07-19 (2018.1.01458.S); 2017-11-11 (2017.1.00388.S)", "evidence": [
+{"loc": "2 Observations", "quote": "were carried out in 10 execution blocks between August 16, 2023, and September 11, 2023"},
+{"loc": "2 Observations", "quote": "These observations were conducted between July 18, 2019, and July 19, 2019"},
+{"loc": "2 Observations", "quote": "These observations were conducted on November 11, 2017"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "New Cycle 9 program PI Nienke van der Marel; archival data from 2018.1.01458.S (PI Yen) and 2017.1.00388.S (PI Liu); 2018.1.00689.S (PI Muto) and 2022.1.01302.S (PI Mulders) for Sz111, RXJ1556.1-3655, Sz133", "evidence": [
+{"loc": "2 Observations", "quote": "Additionally, we incorporated archival ALMA data to complete the sample of Lupus disks at high resolution"},
+{"loc": "2 Observations", "quote": "Finally, RXJ1556.1-3655 and Sz133 data were sourced from Bosschaart et al. in prep (project code: 2022.1.01302.S, PI: Mulders, Gijs)."}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "not stated", "rest_frequency": "not stated", "evidence": [{"loc": "2 Observations", "quote": "6 spectral windows between 220–231 GHz with a total bandwidth of 1.875 GHz dedicated to $^{12}$CO and $^{13}$CO line emission"}]},
+{"species": "13CO", "transition": "not stated", "rest_frequency": "not stated", "evidence": [{"loc": "2 Observations", "quote": "6 spectral windows between 220–231 GHz with a total bandwidth of 1.875 GHz dedicated to $^{12}$CO and $^{13}$CO line emission"}]}
+],
+"other_facilities": [
+{"name": "NASA Exoplanet Archive", "provided": {"value": "Known exoplanet population around M and K stars (November 2024) for comparison with predicted planet masses and separations", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "we show the full population of known exoplanets around M and K stars (sourced from the NASA Exoplanet Archive in November 2024)"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "High-resolution images of Sz103, Sz76, Sz104, Sz112, J16011549, J16081497, J16000236, J16090141, J16070384", "evidence": [{"loc": "2 Observations", "quote": "These included Sz103, Sz76, Sz104, Sz112, J16011549-4152351, J16081497-3857145, J16000236-4222145, J16090141-3925119, and J16070384-3911113 from (cite: 2022arXiv220408225V)"}]}, "citation": "(cite: 2022arXiv220408225V)"},
+{"what": {"value": "DSHARP images of HT Lup A/B/C, GW Lup, IM Lup, RU Lup, Sz114, Sz129, MY Lup", "evidence": [{"loc": "2 Observations", "quote": "HT Lup A, B, and C, GW Lup, IM Lup, RU Lup, Sz114, Sz129, and MY Lup from the Disk Substructures at High Angular Resolution Project (DSHARP; (cite: 2018ApJ...869L..41A))"}]}, "citation": "DSHARP (cite: 2018ApJ...869L..41A)"},
+{"what": {"value": "Images of GQ Lup (Wu et al.) and Sz91 in Band 4 (Mauco et al.)", "evidence": [{"loc": "2 Observations", "quote": "GQ Lup from (cite: 2017ApJ...836..223W); and Sz91 in Band 4 from (cite: 2021ApJ...923..128M)"}]}, "citation": "(cite: 2017ApJ...836..223W); (cite: 2021ApJ...923..128M)"},
+{"what": {"value": "RY Lup data", "evidence": [{"loc": "2 Observations", "quote": "Additionally, we used RY Lup data from (cite: 2020ApJ...892..111F)."}]}, "citation": "(cite: 2020ApJ...892..111F)"},
+{"what": {"value": "Lower-resolution images for J16070854, Sz118, Sz84, J16102955 and J16000060", "evidence": [{"loc": "2 Observations", "quote": "we used images from (cite: 2018ApJ...859...21A)"}]}, "citation": "(cite: 2018ApJ...859...21A)"},
+{"what": {"value": "V1094 Sco image", "evidence": [{"loc": "2 Observations", "quote": "For V1094 Sco, we used the image presented in (cite: 2018A&A...616A..88V)"}]}, "citation": "(cite: 2018A&A...616A..88V)"},
+{"what": {"value": "Inclinations and position angles for Sz98, J16083070, Sz91, Sz76, J16090141, RY Lup, Sz111", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "Specifically, for Sz98, we adopted values from (cite: 2023A&A...679A.117G), for J16083070-3828268 from (cite: 2019A&A...624A...7V)"}]}, "citation": "(cite: 2023A&A...679A.117G); (cite: 2019A&A...624A...7V); (cite: 2021ApJ...923..128M); (cite: 2022arXiv220408225V); (cite: 2018ApJ...854..177V)"},
+{"what": {"value": "Planet masses for RU Lup, IM Lup, Sz129, Sz114, GW Lup", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "we used the planet masses already estimated in (cite: 2024A&A...685A..65R)"}]}, "citation": "(cite: 2024A&A...685A..65R)"},
+{"what": {"value": "Range limits of stellar luminosity, disk mass and radius for the model grid", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "The parameter limits were based on (cite: 2017A&A...600A..20A) for Lupus sources"}]}, "citation": "(cite: 2017A&A...600A..20A); (cite: 2019A&A...629A.108A)"},
+{"what": {"value": "Results for Sz65, Sz66, J16083070, Sz98 taken from earlier visibility analyses instead of re-fitting", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "We excluded Sz65, Sz66, J16083070, and Sz98, from the GALARIO analysis as these have been previously analyzed in (cite: 2024A&A...682A..55M), (cite: 2019A&A...624A...7V), and (cite: 2023A&A...679A.117G)."}]}, "citation": "(cite: 2024A&A...682A..55M); (cite: 2019A&A...624A...7V); (cite: 2023A&A...679A.117G)"},
+{"what": {"value": "DSHARP dust opacities used in optool", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "with DSHARP opacities (cite: 2018ApJ...869L..45B)"}]}, "citation": "(cite: 2018ApJ...869L..45B)"}
+],
+"simulations_or_models_as_data": [
+{"value": "Grid of 1728 RADMC-3D radiative transfer disk models (12 dust masses x 12 outer radii x 12 stellar luminosities), log-uniform spaced, at 1.3 mm", "evidence": [
+{"loc": "3.4 Radiative transfer modeling", "quote": "We produced a grid of 1728 models, varying three key parameters: 12 disk dust masses, 12 radius, 12 stellar luminosities"},
+{"loc": "3.4 Radiative transfer modeling", "quote": "with values spaced in a log-uniform manner, respectively"}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "ALMA staff pipeline and scripts", "evidence": [{"loc": "2 Observations", "quote": "All datasets were calibrated using the pipeline and scripts provided by the ALMA staff."}]},
+{"field": "casa_version", "value": "CASA 6.5.4.9", "evidence": [{"loc": "2 Observations", "quote": "Version 6.5.4.9 of the Common Astronomy Software Applications (CASA; (cite: 2007ASPC..376..127M)) was utilized to analyze and process the data"}]},
+{"field": "self_calibration", "value": "Attempted on the new datasets but unsuccessful (limited time per source, low SNR); not applied", "evidence": [{"loc": "2 Observations", "quote": "Self-calibration was attempted on the new datasets, but due to the limited observing time per source and the low signal-to-noise ratios (SNR), it was not possible to achieve satisfactory results."}]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean", "evidence": [{"loc": "2 Observations", "quote": "We used the TCLEAN task in CASA with the MTMFS deconvolver"}]},
+{"field": "deconvolver", "value": "MTMFS", "evidence": [{"loc": "2 Observations", "quote": "We used the TCLEAN task in CASA with the MTMFS deconvolver (cite: 2011A&A...532A..71R)"}]},
+{"field": "multiscale_scales", "value": "0, 1, 3 and 5 times the beam size", "evidence": [{"loc": "2 Observations", "quote": "employing scales of 0, 1, 3, and 5 times the beam size to create the final images of each disk"}]},
+{"field": "weighting_robust", "value": "Chosen per source (Natural, Uniform or Briggs with source-specific robust; values listed in the image-properties table), selecting the highest resolution with sufficient sensitivity", "evidence": [
+{"loc": "2 Observations", "quote": "Several weightings were tested depending on the source, and different weightings were selected from the datasets"},
+{"loc": "2 Observations", "quote": "For each source, we selected the weighting that offered the highest resolution while maintaining sufficient sensitivity to capture and distinguish the entire disk structure effectively."}
+]},
+{"field": "cell_size", "value": "0.001 to 0.003 arcsec, ~ten times smaller than the beam", "evidence": [{"loc": "2 Observations", "quote": "For all sources, pixel sizes between 0.001 and 0.003 arcseconds were used to ensure the pixel size was approximately ten times smaller than the beam size for all images."}]}
+],
+"inherited": [
+{"what": {"value": "Visibility fitting approach (GALARIO, likelihood on visibilities)", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "we fitted the visibilities, $V_{mod}$, following the approach outlined in (cite: 2018MNRAS.476.4527T)"}]}, "from_reference": "(cite: 2018MNRAS.476.4527T)"},
+{"what": {"value": "Binary modelling: sum of visibilities of two Gaussian disks", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "We adopted a method similar to that of (cite: 2019A&A...628A..95M)"}]}, "from_reference": "(cite: 2019A&A...628A..95M)"},
+{"what": {"value": "Disk size defined as radius enclosing 68% of the flux", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "We define disk sizes as the radius where the cumulative flux equals 68% of the total flux ((cite: 2018ApJ...865..157A); (cite: 2017ApJ...845...44T))"}]}, "from_reference": "(cite: 2018ApJ...865..157A); (cite: 2017ApJ...845...44T)"},
+{"what": {"value": "Optically thin dust mass relation used as the comparison estimate", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "we applied the optically thin approximation for dust mass at 1.3 mm simplified in (cite: 2018ApJ...859...21A)"}]}, "from_reference": "(cite: 2018ApJ...859...21A)"},
+{"what": {"value": "Planet-mass estimation tool and its inputs", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "as developed by (cite: 2024A&A...685A..65R)"}]}, "from_reference": "(cite: 2024A&A...685A..65R)"}
+],
+"unstated_but_needed": [
+"Pipeline version and the exact pipeline/CASA release used per dataset (only the CASA used for processing and imaging is given)",
+"Flux calibrator and flux-scale uncertainty for each project",
+"Which continuum channels/SPWs were kept, flagging of line channels, and any line-free channel selection for 12CO/13CO windows",
+"tclean masks, cleaning threshold, niter, image size and uv-taper per source (weighting is only listed in a table)",
+"Priors, parameter bounds and likelihood noise treatment for the GALARIO MCMC; the per-source walker and step counts (only the range 48-120 walkers, 2,000-30,000 steps)",
+"UVMODELFIT starting values and the criteria used to pick Gaussian vs ring vs two-component model per disk",
+"Aperture sizes used for photometry and how inclination correction was computed",
+"How R68 and R90 were measured from model images, and the interpolation method used to invert the model grid into dust mass and optical depth with uncertainties",
+"Fixed RADMC-3D settings (scale height, flaring, dust composition, grain size distribution, photon count, stellar temperature)",
+"DBNets configuration (alpha, aspect ratio, and the rejection threshold) per disk and how cavity/gap radii were chosen for each source"
+],
+"analysis_steps": [
+{"order": 1, "goal": "Calibrate and prepare continuum data", "method": {"value": "ALMA pipeline calibration, then separate line and continuum SPWs and average continuum channels", "evidence": [
+{"loc": "2 Observations", "quote": "All datasets were calibrated using the pipeline and scripts provided by the ALMA staff."},
+{"loc": "2 Observations", "quote": "We separated the line and continuum emission spectral windows for each source and averaged the channels in the continuum spectral windows."}
+]}, "software": ["CASA"], "key_parameters": [
+{"value": "CASA 6.5.4.9", "evidence": [{"loc": "2 Observations", "quote": "Version 6.5.4.9 of the Common Astronomy Software Applications (CASA; (cite: 2007ASPC..376..127M)) was utilized to analyze and process the data"}]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Self-calibration attempted but not achievable for the new data", "evidence": [{"loc": "2 Observations", "quote": "Self-calibration was attempted on the new datasets, but due to the limited observing time per source and the low signal-to-noise ratios (SNR), it was not possible to achieve satisfactory results."}]}},
+{"order": 2, "goal": "Create continuum images", "method": {"value": "tclean with MTMFS deconvolver and multiscale, weighting chosen per source", "evidence": [
+{"loc": "2 Observations", "quote": "We used the TCLEAN task in CASA with the MTMFS deconvolver (cite: 2011A&A...532A..71R), employing scales of 0, 1, 3, and 5 times the beam size to create the final images of each disk."}
+]}, "software": ["CASA tclean"], "key_parameters": [
+{"value": "Weighting selected per source for highest resolution with sufficient sensitivity", "evidence": [{"loc": "2 Observations", "quote": "For each source, we selected the weighting that offered the highest resolution while maintaining sufficient sensitivity to capture and distinguish the entire disk structure effectively."}]},
+{"value": "Pixel size 0.001-0.003 arcsec", "evidence": [{"loc": "2 Observations", "quote": "For all sources, pixel sizes between 0.001 and 0.003 arcseconds were used to ensure the pixel size was approximately ten times smaller than the beam size for all images."}]}
+], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 3, "goal": "Measure total continuum flux in the image plane", "method": {"value": "Aperture photometry with aperture extended until the flux flattens, inclination corrections applied; uncertainty from standard deviation inside each aperture", "evidence": [
+{"loc": "3.1 Dust continuum images", "quote": "The total flux for all targets is determined through aperture photometry, where the aperture is extended until the flux flattens, and inclination corrections are applied."},
+{"loc": "3.1 Dust continuum images", "quote": "The uncertainty is calculated as the standard deviation inside each aperture."}
+]}, "software": [], "key_parameters": [], "assumptions": [], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Fluxes compared with low-resolution values of Ansdell et al. 2018 and found within ~10% for most", "evidence": [{"loc": "3.1 Dust continuum images", "quote": "Most flux measurements fall within an 10$\\%$ uncertainty range compared to those reported at low resolution by (cite: 2018ApJ...859...21A)."}]}},
+{"order": 4, "goal": "Fit visibilities with axisymmetric brightness models", "method": {"value": "GALARIO visibility modelling with Gaussian, asymmetric-ring, Gaussian+ring or binary (summed two-Gaussian) brightness profiles, plus a delta-like Gaussian for V856ScoA, choosing the simplest structure seen in the image", "evidence": [
+{"loc": "3.2 Visibility modeling", "quote": "we used the GALARIO code (cite: 2018MNRAS.476.4527T) to model the visibilities of the observations with the best fit possible."},
+{"loc": "3.2 Visibility modeling", "quote": "we employ three different models for the isolated disks choosing the most simple structure we observed for each disk in the continuum images"}
+]}, "software": ["GALARIO", "emcee", "CASA UVMODELFIT"], "key_parameters": [
+{"value": "48 to 120 walkers, 2,000 to 30,000 steps; first 1,000 steps discarded as burn-in; binaries needed more walkers and iterations", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "we employed between 48 and 120 walkers, running the chains for 2,000 to 30,000 steps to ensure convergence"}]},
+{"value": "Initial parameters from UVMODELFIT for single disks", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "For all the single disks, we used UVMODELFIT within CASA to obtain the initial parameter estimates."}]},
+{"value": "Final values are posterior medians with 16th and 84th percentile uncertainties", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "The final model parameters are represented by the median of the posterior probability distributions for each parameter, while the uncertainties are given by the 16th and 84th percentiles."}]},
+{"value": "Inclination and PA fixed to face-on / P.A. fixed to 0 for unresolved or poorly constrained disks", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "the inclination and P.A. were fixed to face-on values"}]}
+], "assumptions": [
+{"value": "Axisymmetric brightness profile; features not visible in the continuum images were not fitted", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "We did not fit any features that were not already visible in the continuum images."}]}
+], "fitting": {"value": "Bayesian MCMC with emcee ensemble sampler; Gaussian likelihood; priors not stated", "evidence": [
+{"loc": "3.2 Visibility modeling", "quote": "employing the Markov chain Monte Carlo (MCMC) ensemble sampler provided by EMCEE (cite: 2013PASP..125..306F)"},
+{"loc": "3.2 Visibility modeling", "quote": "Posterior distributions are obtained by assuming a Gaussian likelihood."}
+]}, "validation": {"value": "Convergence checked after burn-in by examining corner plots; visibility plots in appendix", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "To verify convergence, we discarded the first 1,000 steps (burn-in phase) and examined the corner plots."}]}},
+{"order": 5, "goal": "Derive total flux, dust radii and the substructure census", "method": {"value": "Total flux and R68/R90 measured from the modelled images; census of cavities, gaps and rings combining image and visibility analysis", "evidence": [
+{"loc": "3.2 Visibility modeling", "quote": "Subsequently, we derived the total flux and dust disk radius from the modeled images."},
+{"loc": "3.3 Disk size and substructure distribution", "quote": "We define disk sizes as the radius where the cumulative flux equals 68% of the total flux"}
+]}, "software": ["GALARIO"], "key_parameters": [
+{"value": "R68 definition (68% of total flux)", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "We define disk sizes as the radius where the cumulative flux equals 68% of the total flux"}]}
+], "assumptions": [
+{"value": "Compact disks defined as dust radius < 30 au", "evidence": [{"loc": "1 Introduction", "quote": "defined as having dust disk radii smaller than 30 au for the purposes of this paper"}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Faint Sz73 ring recovered above 3-sigma; resolution limit of ~4 au acknowledged", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "Even the faint ring in Sz73, with surface brightness between 0.2 and 0.4 mJy, was detected above the 3-$\\sigma$ level."}]}},
+{"order": 6, "goal": "Fit the size-luminosity relation", "method": {"value": "Bayesian linear regression of log10 R68 against log10 F_mm with fluxes scaled to 160 pc", "evidence": [
+{"loc": "3.3 Disk size and substructure distribution", "quote": "We plot the disk radii versus their total flux density (scaled to 160 pc)"},
+{"loc": "3.3 Disk size and substructure distribution", "quote": "we apply a Bayesian linear regression method implemented in the LINMIX package"}
+]}, "software": ["LINMIX"], "key_parameters": [
+{"value": "log10(R68) = alpha + beta log10(F_mm)", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "\\log_{10}(R_{68}) =\\alpha+\\beta\\log_{10}(F_{\\rm mm})."}]}
+], "assumptions": [
+{"value": "Flux scaled to a common distance of 160 pc", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "We plot the disk radii versus their total flux density (scaled to 160 pc)"}]}
+], "fitting": {"value": "LINMIX Bayesian linear regression with intrinsic dispersion; priors not stated", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "with an intrinsic dispersion of $0.116 \\pm 0.02$"}]}, "validation": {"value": "Slope compared with drift-, fragmentation- and trap-dominated predictions and earlier work", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "The observed slope falls between the drift-dominated and the trap- and frag-dominated regimes"}]}},
+{"order": 7, "goal": "Build radiative transfer grid of model disks", "method": {"value": "RADMC-3D ray-traced images at 1.3 mm for 1728 models; total flux and R68 measured as for observations; optically thin mass compared with input mass; power-law fits outside the saturated region defined by mean optical depth", "evidence": [
+{"loc": "3.4 Radiative transfer modeling", "quote": "We performed radiative transfer at 1.3 mm for the generic protoplanetary disk model in the RADMC-3D software package (cite: 2012ascl.soft02015D)"},
+{"loc": "3.4 Radiative transfer modeling", "quote": "we create a ray-traced image assuming a distance of 160 pc and face-on disk inclination"}
+]}, "software": ["RADMC-3D", "optool"], "key_parameters": [
+{"value": "Grid: 12 dust masses 4e-6 to 5.1e-3 Msun, 12 radii 0.5 to 30 au, 12 stellar luminosities 0.0025 to 3 Lsun, log-uniform", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "These parameters ranged from 4e-6 to 5.1e-3 $M_{\\odot}$, 0.5 to 30 au, 0.0025 to 3 $L_{\\odot}$"}]},
+{"value": "Dust opacities from optool with DSHARP opacities, grain sizes 0.050 um to 3 mm, full scattering matrix", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "The dust opacity values were calculated using grain sizes from $a_{\\text{min}} = 0.050  \\mu$m to $a_{\\text{max}} = 3$ mm, incorporating the full scattering matrix."}]}
+], "assumptions": [
+{"value": "Dust surface density proportional to 1/r out to outer radius r_out, Gaussian vertical profile", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "\\Sigma(r)= \\Sigma_0\\left(\\frac{r}{r_{\\rm out}}\\right)^{-1}"}]},
+{"value": "Distance 160 pc, face-on inclination", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "we create a ray-traced image assuming a distance of 160 pc and face-on disk inclination"}]},
+{"value": "Stellar effective temperature omitted because it has minimal impact on flux-derived dust mass", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "the star’s effective temperature has minimal impact on the flux-derived dust mass of the models"}]},
+{"value": "Optically thin mass uses kappa = 2.3 cm2/g and uniform T_dust = 20 K", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "we assume a uniform dust temperature, $T_{\\rm dust} = 20$ K"}]}
+], "fitting": {"value": "Power-law fits to the model grid for M_flux versus M_dust away from the saturated regime (tau < 0.25 relation given)", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "we fit power laws to the model grid away from the saturated region, defined through the mean optical depth"}]}, "validation": {"value": "Flux-derived mass compared with model input mass, showing saturation with optical depth", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "Figure [6](#fig:mass_comparison) primarily highlights the saturation of the disk flux as the emission becomes optically thick"}]}},
+{"order": 8, "goal": "Infer dust mass and optical depth for compact disks", "method": {"value": "Invert the model grid on the flux-radius plane using each disk's stellar luminosity, propagating observational uncertainties", "evidence": [
+{"loc": "3.5 Dust mass estimates", "quote": "Using the stellar luminosities tabulated in Appendix [6](#appendix:a), we can create a bespoke radius-flux grid for each disk and thereby determine its dust mass."},
+{"loc": "3.5 Dust mass estimates", "quote": "The uncertainties in each observable are readily propagated through."}
+]}, "software": ["RADMC-3D"], "key_parameters": [
+{"value": "28 disks with radii < 30 au fit within the grid and have known luminosity", "evidence": [{"loc": "3.5 Dust mass estimates", "quote": "The distribution of dust masses for the 28 disks with well determined values and known luminosities"}]}
+], "assumptions": [
+{"value": "Stellar luminosities from the stellar-parameters table; disks at the grid edge (binaries, tau >> 5) excluded as indeterminate", "evidence": [{"loc": "3.5 Dust mass estimates", "quote": "resulting in inferred masses that were either indeterminate or exceptionally large with substantial uncertainties"}]}
+], "fitting": {"value": "not stated (grid interpolation/inversion details not given)", "evidence": []}, "validation": {"value": "not stated", "evidence": []}},
+{"order": 9, "goal": "Estimate planet masses for disk substructures", "method": {"value": "DBNets convolutional neural network applied to continuum FITS images with gap centre positions, inclination, PA and distance", "evidence": [
+{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "We employed DBNets, a deep-learning tool that utilizes convolutional neural networks (CNNs) to analyze observations of dust continuum emission and predict the mass of the gap-opening planets"},
+{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "In total, we analyzed 25 substructures within our sample."}
+]}, "software": ["DBNets"], "key_parameters": [
+{"value": "alpha-turbulence range 1e-2 to 1e-4", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "The results, obtained for a range of $\\alpha$-turbulence values between $10^{-2} - 10^{-4}$"}]}
+], "assumptions": [
+{"value": "Observed gaps and cavities are carved by planets", "evidence": [{"loc": "5 Discussion", "quote": "Under the assumption that the observed rings and gaps are produced by planets, we estimate their masses using DBNets."}]}
+], "fitting": {"value": "not stated", "evidence": []}, "validation": {"value": "Compared with planet masses in Taurus and sigma Orionis disks; results flagged where uncertainties exceed DBNets rejection threshold", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "is comparable to similarly derived estimates from observations of disks in Taurus (cite: 2023ApJ...952..108Z) and the $\\sigma$ Orionis cluster (cite: 2024arXiv241003823H)"}]}}
+],
+"software": [
+{"name": "CASA", "version": "6.5.4.9", "used_for": {"value": "Calibration/processing, tclean imaging, UVMODELFIT", "evidence": [{"loc": "2 Observations", "quote": "Version 6.5.4.9 of the Common Astronomy Software Applications (CASA; (cite: 2007ASPC..376..127M)) was utilized to analyze and process the data"}]}},
+{"name": "tclean (MTMFS)", "version": "not stated", "used_for": {"value": "Final continuum imaging with multiscale", "evidence": [{"loc": "2 Observations", "quote": "We used the TCLEAN task in CASA with the MTMFS deconvolver"}]}},
+{"name": "UVMODELFIT", "version": "not stated", "used_for": {"value": "Initial parameter estimates for single-disk visibility fits", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "For all the single disks, we used UVMODELFIT within CASA to obtain the initial parameter estimates."}]}},
+{"name": "GALARIO", "version": "not stated", "used_for": {"value": "Visibility modelling of continuum brightness profiles", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "we used the GALARIO code (cite: 2018MNRAS.476.4527T) to model the visibilities of the observations with the best fit possible."}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC ensemble sampler for model posteriors", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "employing the Markov chain Monte Carlo (MCMC) ensemble sampler provided by EMCEE (cite: 2013PASP..125..306F)"}]}},
+{"name": "LINMIX", "version": "not stated", "used_for": {"value": "Bayesian linear regression of size-luminosity relation", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "we apply a Bayesian linear regression method implemented in the LINMIX package"}]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Radiative transfer grid of disk models", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "We performed radiative transfer at 1.3 mm for the generic protoplanetary disk model in the RADMC-3D software package (cite: 2012ascl.soft02015D)"}]}},
+{"name": "optool", "version": "not stated", "used_for": {"value": "Dust opacities for RADMC-3D with DSHARP opacities", "evidence": [{"loc": "3.4 Radiative transfer modeling", "quote": "software (cite: 2021ascl.soft04010D) with DSHARP opacities (cite: 2018ApJ...869L..45B)"}]}},
+{"name": "DBNets", "version": "not stated", "used_for": {"value": "Predict masses of gap-opening planets from continuum images", "evidence": [{"loc": "3.6 The exoplanet population in the Lupus substructures", "quote": "We employed DBNets, a deep-learning tool that utilizes convolutional neural networks (CNNs) to analyze observations of dust continuum emission and predict the mass of the gap-opening planets"}]}}
+],
+"results_numeric": [
+{"quantity": "Fraction of Lupus disks with dust radius < 30 au", "value": "67", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "We show that 67% of Lupus protoplanetary dust disks have dust radii smaller than 30 au"}]},
+{"quantity": "Smallest measured dust disk radius", "value": "0.6", "uncertainty": "not stated", "units": "au", "from_step": 4, "evidence": [{"loc": "abstract", "quote": "This enable us to measure dust disk radii down to a limit of 0.6 au"}]},
+{"quantity": "Newly resolved disks with substructure", "value": "11 (10 cavities, 1 ring and gap in Sz73)", "uncertainty": "not stated", "units": "disks", "from_step": 5, "evidence": [{"loc": "3.1 Dust continuum images", "quote": "In total, we resolved 11 new disks with substructures: 10 cavities"}]},
+{"quantity": "Smallest cavity radius (Sz72)", "value": "4.1", "uncertainty": "not stated", "units": "au", "from_step": 2, "evidence": [{"loc": "3.1 Dust continuum images", "quote": "the smallest cavity detected in the image plane is in Sz72, with a radius of 4.1 au, right at the edge of our resolution limit"}]},
+{"quantity": "Resolved transition disk fraction", "value": "24.6 (18 out of 73)", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "5.1 Discussion", "quote": "Our high resolution survey increases the resolved transition disk fraction to 24.6% (18 out of 73)"}]},
+{"quantity": "Fraction of large disks (R > 30 au) with rings or gaps", "value": "79 (19 out of 24)", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "5.1 Discussion", "quote": "with 79% of them displaying rings or gaps (19 out of 24)"}]},
+{"quantity": "Fraction of compact disks with newly detected substructure", "value": "24", "uncertainty": "not stated", "units": "percent", "from_step": 5, "evidence": [{"loc": "5.1 Discussion", "quote": "but only in 24% of the compact disks"}]},
+{"quantity": "Size-luminosity relation intercept alpha", "value": "0.66", "uncertainty": "0.06", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "The fitted values are an intercept (normalization) $\\alpha = 0.66 \\pm 0.06$"}]},
+{"quantity": "Size-luminosity relation slope beta", "value": "0.61", "uncertainty": "0.06", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "slope (power law index) $\\beta = 0.61 \\pm 0.06$"}]},
+{"quantity": "Intrinsic dispersion of size-luminosity relation", "value": "0.116", "uncertainty": "0.02", "units": "dex", "from_step": 6, "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "with an intrinsic dispersion of $0.116 \\pm 0.02$"}]},
+{"quantity": "SLR slope beta for disks with substructures", "value": "0.47", "uncertainty": "0.09", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "5.2 Size-Luminosity Relation (SLR)", "quote": "we found that the slope of disks with substructures ($\\beta$ = 0.47+/-0.09)"}]},
+{"quantity": "SLR slope beta for disks without substructures", "value": "0.55", "uncertainty": "0.08", "units": "dimensionless", "from_step": 6, "evidence": [{"loc": "5.2 Size-Luminosity Relation (SLR)", "quote": "is the same as for disks without substructures ($\\beta$ = 0.55+/-0.08) within error bars"}]},
+{"quantity": "Range of millimeter-emitting dust masses of compact disks", "value": "0.3 to 26.3", "uncertainty": "not stated", "units": "Earth masses", "from_step": 8, "evidence": [{"loc": "abstract", "quote": "which ranged from 0.3 to 26.3 M$_{\\oplus}$"}]},
+{"quantity": "Median dust mass of compact disks", "value": "3.38", "uncertainty": "not stated", "units": "Earth masses", "from_step": 8, "evidence": [{"loc": "6 Summary and conclusions", "quote": "Both are generally low with median values $\\sim$ 3.38 M$_\\oplus$ and $\\sim 0.7$ respectively."}]},
+{"quantity": "Median average optical depth of compact disks", "value": "~0.7", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "5.3 Dust masses and optical depths", "quote": "The average optical depth for these disks shows a narrower variation and clusters around 0.7 for most disks."}]},
+{"quantity": "Range of inferred planet masses", "value": "20 to 2000", "uncertainty": "not stated", "units": "Earth masses", "from_step": 9, "evidence": [{"loc": "abstract", "quote": "found a range of $20-2000\\,$M$_\\oplus$ with separations between 2 to 74 au"}]},
+{"quantity": "Flux of faint Sz73 ring (surface brightness)", "value": "0.2 to 0.4", "uncertainty": "not stated", "units": "mJy", "from_step": 4, "evidence": [{"loc": "3.2 Visibility modeling", "quote": "Even the faint ring in Sz73, with surface brightness between 0.2 and 0.4 mJy, was detected above the 3-$\\sigma$ level."}]}
+],
+"findings_qualitative": [
+{"value": "The faint Sz73 ring was only found in the visibilities, not in the CASA images", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "The faint ring in Sz73 was not detected during the initial imaging process with CASA, but became apparent when analyzing the visibilities."}]},
+{"value": "V856ScoA shows an unresolved point source in addition to its disk", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "In the Herbig star V856ScoA disk, a point source of strong emission is observed."}]},
+{"value": "Lack of planets/gap centres between 5 and 15 au in Lupus", "evidence": [{"loc": "5.4 Impact of compact disks in the exoplanet population", "quote": "we observe an intriguing lack of planets/gap centers in Lupus disks between 5–15 au"}]},
+{"value": "Binary disks and RU Lup fall below the Lupus size-luminosity relation", "evidence": [{"loc": "3.3 Disk size and substructure distribution", "quote": "Most of these disks are in binary systems (star markers in Fig.  [5](#fig:SLR)), and the interaction between companions likely truncates their radius"}]}
+],
+"claims": [
+{"hypothesis": "Are most Lupus protoplanetary dust disks compact (radius < 30 au)?", "experiment": "Visibility modelling with GALARIO of new Band 6 data plus archival and published images of 73 Class II disks", "result": "67% of Lupus disks have dust radii smaller than 30 au, with sizes down to 0.6 au", "finding": "Most Lupus disks are compact", "support": "supported", "evidence": [{"loc": "abstract", "quote": "We show that 67% of Lupus protoplanetary dust disks have dust radii smaller than 30 au"}]},
+{"hypothesis": "Do compact disks host substructures, and how does resolution limit their detection?", "experiment": "Image-plane and visibility analysis of the full sample, with resolution limit about 4 au", "result": "11 new substructures (mainly cavities down to 4.1 au); only 24% of compact disks show substructure while 79% of large disks do", "finding": "Two-thirds of Lupus disks are smooth on scales above 4 au and compact; substructures are more prominent in the few larger disks", "support": "partially", "evidence": [{"loc": "abstract", "quote": "Our results indicate that two-thirds of the protoplanetary disks in Lupus are smooth, on scales larger than 4 au, and compact, with substructures being more prominent in the few larger disks."}]},
+{"hypothesis": "Does the size-luminosity relation extended to the smallest disks follow drift-dominated dust evolution?", "experiment": "LINMIX regression of R68 against flux scaled to 160 pc", "result": "beta = 0.61 +/- 0.06; slope for disks with and without substructures is consistent", "finding": "SLR aligns with a drift-dominated scenario, with the observed slope between drift and trap/fragmentation regimes", "support": "partially", "evidence": [{"loc": "abstract", "quote": "The size-luminosity relation, when accounting for the smallest disks, aligns well with a drift-dominated dust evolution scenario for the Class II Lupus disks."}, {"loc": "3.3 Disk size and substructure distribution", "quote": "The observed slope falls between the drift-dominated and the trap- and frag-dominated regimes"}]},
+{"hypothesis": "Are compact disks optically thick, and how much dust mass do they hold?", "experiment": "Radiative transfer grid of 1728 RADMC-3D models inverted per disk using flux, radius and luminosity", "result": "Dust masses 0.3-26.3 Earth masses (median 3.38) and mean optical depth ~0.7", "finding": "Dust masses and optical depths are low, suggesting much of the small solids already converted to planetesimals and planets", "support": "supported", "evidence": [{"loc": "abstract", "quote": "These compact disks are consistent with drift-dominated evolution, with their masses and optical depths suggesting that they may have already experienced some planet formation"}]},
+{"hypothesis": "If the substructures are planet-carved, what planet masses and separations do they imply?", "experiment": "DBNets applied to continuum images of 25 substructures", "result": "Planet masses 20-2000 Earth masses at gap centres from ~2 to 117 au in Table 2; small cavities overlap with the radial-velocity exoplanet population", "finding": "Smaller cavities align with RV exoplanets; larger ones occupy a region with few detected exoplanets; no clear link between planet mass and disk dust mass", "support": "partially", "evidence": [{"loc": "6 Summary and conclusions", "quote": "However, no clear correlation was observed between planet masses and disk dust masses in our sample."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Highest-resolution ALMA data of small, faint disks are needed to reduce observational biases in the link between planet formation and substructures", "evidence": [{"loc": "abstract", "quote": "observational biases should be reduced through observations of these small, faint disks at the highest resolution using the Atacama Large Millimeter Array (ALMA)"}]},
+{"field": "why_this_method", "value": "Visibility modelling reveals features not seen in images, such as the faint Sz73 ring", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "The faint ring in Sz73 was not detected during the initial imaging process with CASA, but became apparent when analyzing the visibilities."}]},
+{"field": "how_they_decided_enough", "value": "MCMC chains judged converged after discarding 1,000 burn-in steps and inspecting corner plots", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "To verify convergence, we discarded the first 1,000 steps (burn-in phase) and examined the corner plots."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Internal photoevaporation or dead zones as alternatives to planets for the smallest cavities (photoevaporation judged less likely)", "evidence": [{"loc": "5.4 Impact of compact disks in the exoplanet population", "quote": "Alternatively, though less likely, we could be observing a different regime where the smallest gaps in our sample are caused by internal photoevaporation rather than planet formation"}]},
+{"value": "Self-calibration was attempted and abandoned for the new datasets", "evidence": [{"loc": "2 Observations", "quote": "Self-calibration was attempted on the new datasets, but due to the limited observing time per source and the low signal-to-noise ratios (SNR), it was not possible to achieve satisfactory results."}]}
+],
+"limitations_admitted": [
+{"value": "Resolution limits substructure detection to about 4 au and small substructures may be missed", "evidence": [{"loc": "3.1 Dust continuum images", "quote": "Given our resolution, which limits detection to structures as small as approximately 4 au"}, {"loc": "3.3 Disk size and substructure distribution", "quote": "which points to a potential bias introduced by resolution where very small substructures may remain undetected in the smallest disks"}]},
+{"value": "Sz130 extended emission below 300 kilo-lambda could not be fit; flux 41% lower than literature", "evidence": [{"loc": "3.2 Visibility modeling", "quote": "In the case of Sz130, this resulted in a lower flux (41% lower) compared to the literature values."}]},
+{"value": "Flux discrepancies may result from missing short baselines", "evidence": [{"loc": "3.1 Dust continuum images", "quote": "Some discrepancies could arise from the absence of short baselines in our observations, potentially leading to the loss of extended emission flux."}]},
+{"value": "Planet masses for several disks exceed DBNets rejection threshold and should be interpreted with caution", "evidence": [{"loc": "Table 2", "quote": "the planet masses for these disks should be interpreted with caution"}]}
+],
+"referee_caveats_inferred": [
+"Most disks are fitted with a single Gaussian even when marginally resolved; radii of unresolved disks rely on fixed face-on geometry and are model dependent",
+"Dust masses depend on fixed assumptions in the RADMC-3D grid (Sigma proportional to 1/r, DSHARP opacities, face-on, no stellar temperature dependence), so the optical depth conclusion is model dependent",
+"Heterogeneous sample: images and parameters from many programmes with different resolution and processing; five disks lack very high resolution",
+"Abstract planet separations 2 to 74 au disagree with Table 2 (up to 117 au for IM Lup) and the Discussion (14-117 au)",
+"Planet masses from DBNets assume planet-carved gaps and cavity positions chosen from fitted ring parameters; many exceed the rejection threshold",
+"No self-calibration, and flux scale uncertainty is not propagated into radii or masses"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Project codes and PIs listed; archival projects 2018.1.01458.S and 2017.1.00388.S described as archival data; public status of the Cycle 9 program not stated", "evidence": [{"loc": "2 Observations", "quote": "Additionally, we incorporated archival ALMA data to complete the sample of Lupus disks at high resolution (project code: 2018.1.01458.S, PI: Yen, Hsi-Wei)."}]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Cleaning masks, thresholds, image sizes and uv-tapers for each image",
+"MCMC priors, bounds and per-source walker/step counts for all 38 modelled sources",
+"RADMC-3D setup details (scale height, flaring, photon counts) and the inversion procedure for the model grid",
+"DBNets settings and the per-source gap or cavity radii used",
+"Data for several comparison disks come from in-prep papers (Rota et al.; Bosschaart et al.)"
+],
+"estimated_data_volume_inferred": "About 40 pointed observations across 5 projects (10 EBs for the main Band 6 program); likely a few hundred GB of raw data, with continuum-only products much smaller",
+"score_inferred": 3,
+"score_reason": "Project codes, CASA version, tclean scales, weighting per source and model tables are given and results are numeric, but masks, priors, per-source MCMC settings, RT-grid details and DBNets configuration are missing, and no code is released",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Observations are ALMA archive projects with stated codes, imaging and visibility-fit recipes are largely specified, and main results (radii, SLR slope, dust masses) are numeric, though fine settings must be inferred",
+"methods_papers": [
+{"citation": "(cite: 2018MNRAS.476.4527T)", "why": "GALARIO visibility modelling code and fitting approach"},
+{"citation": "(cite: 2024A&A...685A..65R)", "why": "DBNets planet mass prediction tool"},
+{"citation": "(cite: 2018ApJ...859...21A)", "why": "Optically thin dust mass relation and low-resolution Lupus survey fluxes"},
+{"citation": "(cite: 2013PASP..125..306F)", "why": "emcee MCMC sampler"},
+{"citation": "(cite: 2007ApJ...665.1489K)", "why": "LINMIX Bayesian linear regression"},
+{"citation": "(cite: 2011A&A...532A..71R)", "why": "Multi-term multi-frequency synthesis deconvolver"}
+],
+"companion_papers": [
+{"citation": "(cite: 2022arXiv220408225V)", "why": "High-resolution Lupus images used in the sample"},
+{"citation": "(cite: 2024A&A...689A.236S)", "why": "Super-Earth formation in drift-dominated disks that the results are compared against"},
+{"citation": "(cite: 2021AJ....162...28V)", "why": "Link between compact smooth disks and close-in rocky exoplanets around M stars"},
+{"citation": "(cite: 2024A&A...682A..55M)", "why": "Prior analysis of Sz65 and Sz66 excluded from refitting"},
+{"citation": "(cite: 2019MNRAS.486L..63R)", "why": "Size-luminosity relation theory for drift and fragmentation"}
+],
+"related_projects_or_surveys": ["DSHARP", "ALMA Lupus survey (Ansdell et al. 2018)"]
+}

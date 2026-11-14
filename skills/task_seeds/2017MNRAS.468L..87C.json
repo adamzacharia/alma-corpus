@@ -1,0 +1,290 @@
+{
+ "bibcode": "2017MNRAS.468L..87C",
+ "title": "New ALMA constraints on the star-forming interstellar medium at low metallicity: a 50 pc view of the blue compact dwarf galaxy SBS 0335-052",
+ "year": 2017,
+ "doi": "10.1093/mnrasl/slx034",
+ "arxiv_id": "1702.08467",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How much cold molecular gas (CO) and cold dust is present in the very low-metallicity blue compact dwarf SBS 0335-052 at 50 pc resolution?",
+ "alma_project_codes": [
+  "2013.1.00916.S"
+ ],
+ "data": {
+  "bands": "Band 6 (230 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "0.23 x 0.17 arcsec, PA 65 deg",
+  "sensitivity": "continuum rms 0.011 mJy/beam; CO rms 0.41 mJy/beam at 5 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel photometry",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data and star-formation rates",
+      "quote": "We use *Herschel* photometry at a resolution $>$5 arcsec from (cite: remy-2015)."
+     }
+    ]
+   },
+   "citation": "(cite: remy-2015)"
+  },
+  {
+   "what": {
+    "value": "ALMA band 7 data",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data and star-formation rates",
+      "quote": "ALMA band 7 (346 GHz) data from (cite: hunt-2014) at $\\sim$0.6 arcsec resolution"
+     }
+    ]
+   },
+   "citation": "(cite: hunt-2014)"
+  },
+  {
+   "what": {
+    "value": "VLA SSC fluxes and free-free models",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data and star-formation rates",
+      "quote": "radio continuum data from the VLA (1.3 to 6 cm) at $\\sim$0.5 arcsec resolution and SSC-extracted fluxes from (cite: johnson-2009)"
+     }
+    ]
+   },
+   "citation": "(cite: johnson-2009)"
+  },
+  {
+   "what": {
+    "value": "VLA 1.3-21 cm data",
+    "evidence": [
+     {
+      "loc": "2.2 Ancillary data and star-formation rates",
+      "quote": "SBS 0335$-$052 was observed at 1.5–22 arcsec resolution with the VLA (1.3 to 21 cm) by (cite: hunt-2004)."
+     }
+    ]
+   },
+   "citation": "(cite: hunt-2004)"
+  },
+  {
+   "what": {
+    "value": "HI line width 50 km/s and HI mass",
+    "evidence": [
+     {
+      "loc": "3 Star formation and molecular reservoir",
+      "quote": "Assuming a broad line width of 50 km s$^{-1}$, as measured from H i(cite: ekta-2009)"
+     }
+    ]
+   },
+   "citation": "(cite: ekta-2009)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and image ALMA data",
+   "method": "Standard CASA calibration, flagging, clean with natural weighting",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum fluxes of S1, S2, region S",
+   "method": "Fit 2D ellipses constrained by beam shape for each SSC, masking the other; circular aperture of 0.5 arcsec radius for region S",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "CO(2-1) luminosity upper limit and alpha_CO lower limits",
+   "method": "3-sigma L_CO limit assuming 50 km/s line width; convert to CO(1-0); assume depletion times of 2 Gyr, 0.2 Gyr, 20 Myr with SSC-derived SFRs to bound alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "line width 50 km/s; solid angle 0.044 arcsec^2"
+   ],
+   "assumptions": [
+    "CO(2-1)/CO(1-0) = 0.8; tau_dep = 2 Gyr, 0.2 Gyr, 20 Myr"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SED analysis and cold dust mass",
+   "method": "Subtract free-free from Johnson 2009 S1/S2 models; fit modified black-body to ALMA excess in addition to PACS MBB (59 K, beta=2); F-test for dust excess in S1",
+   "software": [],
+   "key_parameters": [
+    "T_dust <= 14 K upper limit from PACS 160 um"
+   ],
+   "assumptions": [
+    "kappa160 = 1.6 m2/kg, beta = 1.7"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_CO(2-1) 3-sigma upper limit",
+   "value": "3.6e4",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Star formation and molecular reservoir",
+     "quote": "we derive a conservative 3-$\\sigma$ $L_{\\rm CO(2-1)}$ limit of $3.6\\times10^4$ K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_CO(1-0) upper limit",
+   "value": "4.5e4",
+   "uncertainty": "not stated",
+   "units": "K km/s pc^2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Star formation and molecular reservoir",
+     "quote": "this corresponds to a $L_{\\rm CO(1-0)}$ limit of $4.5\\times10^4$ K km s$^{-1}$ pc$^2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux S1 at 230 GHz",
+   "value": "0.207",
+   "uncertainty": "0.013",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Continuum (S1) | 0.207$\\pm$0.013 (mJy)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux S2 at 230 GHz",
+   "value": "0.088",
+   "uncertainty": "0.011",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Continuum (S2) | 0.088$\\pm$0.011 (mJy)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux region S",
+   "value": "0.317",
+   "uncertainty": "0.048",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "Continuum (region S) | 0.317$\\pm$0.048 (mJy)"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO lower limit, cloud depletion time (20 Myr)",
+   "value": "~1e2",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2 (K km/s)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Star formation and molecular reservoir",
+     "quote": "are around $10^2$ M$_{\\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$ for cloud depletion times (20 Myr)"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha_CO lower limit, whole-galaxy depletion times (0.2-2 Gyr)",
+   "value": "1e3 - 1e4",
+   "uncertainty": "not stated",
+   "units": "Msun pc^-2 (K km/s)^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Star formation and molecular reservoir",
+     "quote": "$10^3 - 10^4$ M$_{\\odot}$ pc$^{-2}$ (K km s$^{-1}$)$^{-1}$, amongst the highest, for whole-galaxy depletion times"
+    }
+   ]
+  },
+  {
+   "quantity": "Cold dust mass (T<=14 K)",
+   "value": "1.5e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Spectral energy distribution",
+     "quote": "which gives a mass $M_{\\rm dust}\\simeq1.5\\times10^5$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Cold dust mass (T=10 K)",
+   "value": "~3e5",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4 Spectral energy distribution",
+     "quote": "With a temperature of 10 K, the required mass is $\\sim3\\times10^5$ M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas mass range from depletion times",
+   "value": "5e6 - 8e8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5 Discussion",
+     "quote": "we find molecular gas masses of $5\\times10^6-8\\times10^8$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO clump beam filling factor upper limit",
+   "value": "<33",
+   "uncertainty": "not stated",
+   "units": "per cent",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3 Star formation and molecular reservoir",
+     "quote": "we estimate a beam filling factor for the CO-emitting clumps of less than 33 per cent"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Reference calibrator names and pipeline/script details",
+  "Cell size, image size, clean threshold and masks",
+  "Continuum SPW channel selection and CO line-free channels",
+  "Details of the beam-constrained 2D ellipse fit",
+  "SED fitting method (sampler, priors) and F-test details",
+  "Exact conversion of luminosity limit and SFR to alpha_CO limits"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, threshold, masks)",
+  "SED fit implementation details",
+  "Ancillary photometry values from literature"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a short recipe, but imaging parameters and SED fitting details are missing.",
+ "rediscovery_reason": "Public archive data with numeric results (fluxes, upper limit), though some imaging settings are unstated.",
+ "source_card": "cards/2017MNRAS.468L..87C/sonnet/card.md"
+}

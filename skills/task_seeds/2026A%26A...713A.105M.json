@@ -1,0 +1,402 @@
+{
+ "bibcode": "2026A&A...713A.105M",
+ "title": "ALMA-IMF: XXII. Role of core subfragmentation in the IMF origin: Hierarchical mass cascade in W43-MM1",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202660192",
+ "arxiv_id": "2604.14875",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "How does the currently observed top-heavy core mass function (CMF) in the massive protocluster W43-MM1 evolve due to core subfragmentation?",
+ "alma_project_codes": [
+  "2017.1.01355.L",
+  "2018.1.01787.S",
+  "2019.1.00502.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm)",
+  "arrays": "ALMA 12 m",
+  "angular_resolution": "2.6'', 1.45'', 0.43'', 0.12'', and 0.050'' (14 kau to 270 au)",
+  "sensitivity": "Noise: <1.1, 2.5, 8, 35, and 450 MJy sr^-1 for 2.6'', 1.45'', 0.43'', 0.12'', and 0.050'' images; line noise 50 mK (Cycle 6) and 4-5 K (Cycle 7)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "3 mm continuum image of W43-MM1 from the ALMA-IMF Large Program",
+    "evidence": [
+     {
+      "loc": "Data reduction of the ALMA images targeting W43-MM1",
+      "quote": "We used the 3 mm continuum image of ALMA-IMF, which was reduced using CASA as described in companion paper, Paper II (cite: ginsburg2022)."
+     }
+    ]
+   },
+   "citation": "Paper II (cite: ginsburg2022)"
+  },
+  {
+   "what": {
+    "value": "Synthetic compact source catalogs and 250 um synthetic observations of Orion-like MHD and HD RAMSES simulations",
+    "evidence": [
+     {
+      "loc": "Synthetic compact source catalogs",
+      "quote": "For test and initial comparison purposes, we used source catalogs derived from synthetic images of numerical simulations designed to represent the Orion protocluster (cite: louvet2021simu)."
+     }
+    ]
+   },
+   "citation": "(cite: louvet2021simu); (cite: ntormousi2019)"
+  },
+  {
+   "what": {
+    "value": "Hierarchical cascade and fractality measurements of the NGC 2264 protocluster",
+    "evidence": [
+     {
+      "loc": "Characterization of the hierarchical mass cascade",
+      "quote": "along with those estimated by (cite: thomasson2022; thomasson2024) for the NGC 2264 protocluster."
+     }
+    ]
+   },
+   "citation": "(cite: thomasson2022; thomasson2024)"
+  },
+  {
+   "what": {
+    "value": "127 W43-MM1 core catalog from 1.3 mm ALMA-IMF denoised image with updated dust temperatures and masses",
+    "evidence": [
+     {
+      "loc": "Predicted emerging IMF",
+      "quote": "The 127 W43-MM1 cores were extracted from the best-sensitivity denoised image of the ALMA-IMF Large Program at 1.3 mm (cite: nony2023)."
+     },
+     {
+      "loc": "Predicted emerging IMF",
+      "quote": "Their masses and uncertainties were updated by (cite: motte2025) using carefully determined dust temperatures."
+     }
+    ]
+   },
+   "citation": "(cite: nony2023); (cite: motte2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Reduce and image multi-resolution 3 mm ALMA continuum datasets of W43-MM1",
+   "method": "Use the Cycle 5 ALMA-IMF 3 mm mosaic reduced in CASA (robust 0), and process Cycle 6 and Cycle 7 single-pointing datasets in IMAGER with line filtering above 1 sigma, phase and amplitude self-calibration, and Clark deconvolution using natural (robust 2 at ~85 GHz) and uniform (robust -2 at ~99 GHz) weighting",
+   "software": [
+    "CASA",
+    "IMAGER",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "robust = 0 (Cycle 5); robust = 2 at ~85 GHz and robust = -2 at ~99 GHz (Cycle 6 and 7)",
+    "Continuum bandwidth = 1.875 GHz per band, line filter threshold = 1 sigma (50 mK for Cycle 6, 4-5 K for Cycle 7)"
+   ],
+   "assumptions": [
+    "Distance to W43-MM1 = 5.5 +/- 0.4 kpc; 3 mm emission is dominated by optically thin thermal dust emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract compact source catalogs across five spatial resolutions and rescale synthetic catalogs",
+   "method": "Extract compact sources in the five W43-MM1 3 mm images using spatial decomposition and background subtraction in getsf; rescale synthetic 250 um RAMSES catalogs from 1.75 kpc to 550 pc and divide fluxes by 1.2e3 to represent 3 mm emission",
+   "software": [
+    "getsf (v240325)",
+    "RAMSES"
+   ],
+   "key_parameters": [
+    "Maximum source size = 3 times the beam of each image"
+   ],
+   "assumptions": [
+    "20 K modified blackbody with dust emissivity law kappa(nu) proportional to nu^1.5 for synthetic flux rescaling; interferometric filtering does not significantly affect compact source fluxes"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct multiscale networks of nested sources and compute cascade parameters (fractality index, mass transfer efficiency, mass partition)",
+   "method": "Apply graph-theory tool FAMILY to link parent and child sources across resolutions, classify structures as hierarchical, linear, or isolated, compute median 2D fractality index F_2D, correct for 3D projection effects to obtain F_3D, and measure median flux/mass transfer efficiency and sibling mass ratio/partition",
+   "software": [
+    "FAMILY"
+   ],
+   "key_parameters": [
+    "Minimum overlap coefficient = 75% of the child area, with sources modeled as ellipses of outer diameter 2*FWHM / sqrt(2 ln 2)",
+    "Scale reduction factor = 2"
+   ],
+   "assumptions": [
+    "Self-similar and homogeneous cascade at first order; protostellar fragments remain dynamically coupled to parental cloud hierarchy; constant temperature between sibling children for mass partition"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Fit the CMF and simulate the subfragmentation cascade to predict the seed mass function and emerging IMF",
+   "method": "Fit the high-mass end of the 127 W43-MM1 core mass function above 1.6 M_sun with a power law; generate 100,000 realizations of 2400 au cores and apply the Thomasson et al. (2026) stochastic gravo-turbulent cascade model down to 200 au seeds using the measured W43-MM1 cascade parameters, plus an optional mass-growth prescription, then fit the high-mass power-law slope",
+   "software": [
+    "powerlaw"
+   ],
+   "key_parameters": [
+    "s_core = 2400 au, s_seed = 200 au, F_3D = 1.19 +/- 0.10, epsilon_jump2 = 60% +/- 25%, MP = [2/3 ; 1/3], 100,000 datasets, 10% core discount, completeness = 1.6 M_sun (cores), 0.17 M_sun (seeds), 0.18 M_sun (grown reservoirs)"
+   ],
+   "assumptions": [
+    "Core masses dominate protostellar embryo masses; cascade parameters remain constant down to disk scale (~200 au, with R_disk proportional to M_star^(1/3) and 50 au for solar-type stars); mass growth rate mu = M_seed / 5 M_sun"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of extracted compact sources in W43-MM1 (at 14, 8, 2.4, 0.65, and 0.27 kau resolution)",
+   "value": "3, 13, 48, 71, 57",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| W43-MM1/ | Cycle 6, natural weighting, $\\sim$85 GHz | $2.3\\times3.0$ | 2.6 | 14 | $<$1.1 | 3 |"
+    },
+    {
+     "loc": "Table 1",
+     "quote": "| | Cycle 7, uniform weighting, $\\sim$99 GHz | $0.039\\times0.064$ | 0.050 | 0.27 | 450 | 57 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of multiscale structures in W43-MM1 (total: hierarchical, linear, isolated)",
+   "value": "34 (9 hierarchical, 18 linear, 7 isolated)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Networks of nested sources",
+     "quote": "In W43-MM1, we defined 34 structures, including nine hierarchical, 18 linear, and seven isolated (see \\[tab:fragm-casc_measured\\])."
+    }
+   ]
+  },
+  {
+   "quantity": "2D fractality index of W43-MM1 (F_2D)",
+   "value": "1.17",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| W43-MM1 | $0.27-14$ | 9 (72%) | 18 (24%) | 7 (4%) | $1.17\\pm0.02$ | $1.19\\pm0.10$ | $\\gtrsim$60 | $\\sim$1.95 | \\[66%; 34%\\] |"
+    },
+    {
+     "loc": "Fractality index of the hierarchical cascade",
+     "quote": "We therefore set this uncertainty to $0.02$ and estimate the fractality index of W43-MM1 to be $\\mathcal{F}_{\\rm 2D}\\simeq 1.17\\pm 0.02$."
+    }
+   ]
+  },
+  {
+   "quantity": "3D fractality index of W43-MM1 across 0.27-14 kau (F_3D)",
+   "value": "1.19",
+   "uncertainty": "0.10",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "ALMA-IMF",
+     "quote": "Assuming self-similarity, we measure a small fractality index of $\\mathcal{F}_{3\\rm D}=1.19\\pm 0.10$ in W43-MM1"
+    },
+    {
+     "loc": "Fractality index of the hierarchical cascade",
+     "quote": "Therefore, the average fractality index of W43-MM1 is robustly measured to be $\\mathcal{F}_{\\rm 3D}\\simeq1.19\\pm 0.10$."
+    }
+   ]
+  },
+  {
+   "quantity": "3D fractality index of W43-MM1 below core scale (0.27-2.4 kau)",
+   "value": "1.17",
+   "uncertainty": "0.35",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass cascade variations in space and across scales",
+     "quote": "We measured a fractality index of $\\mathcal{F}_{\\rm 3D}\\simeq1.17\\pm 0.35$ at scales smaller than $\\sim$2.4 kau, which is very close to the average fractality index of W43-MM1 given in \\[tab:fragm-casc_measured\\]."
+    }
+   ]
+  },
+  {
+   "quantity": "3D fractality index of W43-MM1 above core scale (2.4-14 kau)",
+   "value": "1.53",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass cascade variations in space and across scales",
+     "quote": "In contrast, at scales larger than 2.4 kau, the fractality index increases up to $\\mathcal{F}_{\\rm 3D}\\simeq1.53\\pm 0.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "3D fractality index of synthetic Orion-like MHD protocluster (F_3D)",
+   "value": "1.47",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Orion-like MHD | $5-40$ | 5 (53%) | 24 (39%) | 12 (8%) | $1.39\\pm0.09$ | $1.47\\pm0.15$ | $60\\pm25$ | $\\sim$1.56 | \\[61%; 39%\\] |"
+    }
+   ]
+  },
+  {
+   "quantity": "3D fractality index of synthetic Orion-like HD protocluster (F_3D)",
+   "value": "1.43",
+   "uncertainty": "0.15",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| Orion-like HD | $5-40$ | 92 (64%) | 120 (28%) | 87 (8%) | $1.35\\pm 0.06$ | $1.43\\pm0.15$ | $65\\pm25$ | $\\sim$1.42 | \\[59%; 41%\\] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median mass transfer efficiency per factor-of-two scale jump in W43-MM1 (epsilon_jump2)",
+   "value": ">= 60",
+   "uncertainty": "25",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass transfer through the structure cascade",
+     "quote": "Therefore, we hereafter assumed that the mass transfer efficiency is $\\overline{\\epsilon_{\\rm jump2}} \\ge 60\\%\\pm25\\%$ in W43-MM1."
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| W43-MM1 | $0.27-14$ | 9 (72%) | 18 (24%) | 7 (4%) | $1.17\\pm0.02$ | $1.19\\pm0.10$ | $\\gtrsim$60 | $\\sim$1.95 | \\[66%; 34%\\] |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median sibling mass ratio in W43-MM1 (gamma)",
+   "value": "1.95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Mass transfer through the structure cascade",
+     "quote": "If we ignore temperature variations between children of the same parental structure, the median mass ratio would then be $\\overline{\\gamma}\\simeq1.95$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mass partition between primary and secondary siblings in W43-MM1",
+   "value": "[66%; 34%] (or [2/3; 1/3])",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| W43-MM1 | $0.27-14$ | 9 (72%) | 18 (24%) | 7 (4%) | $1.17\\pm0.02$ | $1.19\\pm0.10$ | $\\gtrsim$60 | $\\sim$1.95 | \\[66%; 34%\\] |"
+    },
+    {
+     "loc": "Mass transfer through the structure cascade",
+     "quote": "The mass partition of fragments in W43-MM1 could therefore be imbalanced, MP(Primary; Secondary) $\\simeq [\\frac{2}{3} \\,;\\, \\frac{1}{3}]$"
+    }
+   ]
+  },
+  {
+   "quantity": "Core formation efficiency (CFE) from 2400 au cores to 200 au seeds in W43-MM1",
+   "value": "16",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "ALMA-IMF",
+     "quote": "The mass transfer efficiency, computed from one physical scale to another, is high and corresponds to a core formation efficiency (CFE) from 2400 au cores to 200 au seeds of $\\sim$16%."
+    },
+    {
+     "loc": "Predicted emerging IMF",
+     "quote": "According to \\[eq:eff\\] and with $\\overline{\\epsilon_{\\rm jump2}} = 60\\%$ (see Sect. 4.3), the efficiency of the formation of seeds is $\\epsilon^{\\rm2400~au}_{\\rm 200~au}\\simeq$16%."
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted CFE from 30 kau clumps to 2 kau cores in W43-MM1",
+   "value": "14",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Fragmentation levels, CFE, and fragmentation regime",
+     "quote": "According to \\[eq:eff\\] and $\\overline{\\epsilon_{\\rm jump2}} \\simeq 60\\%$, the CFE of 2 kau cores within 30 kau clumps is predicted to be $\\rm \\epsilon^{clump}_{cores} \\simeq 14\\%$."
+    }
+   ]
+  },
+  {
+   "quantity": "Average number of 200 au seeds per 2400 au core in W43-MM1 (n_seed)",
+   "value": "1.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Predicted emerging IMF",
+     "quote": "a W43-MM1 core detected at a scale of $s_{\\rm core}=2400$ au will fragment into $n_{\\rm seed}\\simeq1.9$ seeds of scale $s_{\\rm seed}=200$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "High-mass end power-law slope of the W43-MM1 CMF (alpha)",
+   "value": "-1.03",
+   "uncertainty": "+0.09/-0.16",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Predicted emerging IMF",
+     "quote": "Doing so, we measured a CMF high-mass end slope of $\\alpha=-1.03^{+0.09}_{-0.16}$ (see 7a), which is consistent with the values reported in (cite: motte2018b) and (cite: nony2023), and which confirms its top-heavy nature."
+    }
+   ]
+  },
+  {
+   "quantity": "High-mass end power-law slope of the predicted W43-MM1 seed mass function (alpha)",
+   "value": "-0.92",
+   "uncertainty": "+0.06/-0.09",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Predicted emerging IMF",
+     "quote": "Above the completeness level of $\\sim$$0.17~\\mbox{$M_\\odot$}$, their high-mass end is fitted with the same procedure as for the CMF by a power-law of the form $\\frac{dN}{d\\log M} \\propto M^\\alpha$ with $\\alpha=-0.92^{+0.06}_{-0.09}$."
+    }
+   ]
+  },
+  {
+   "quantity": "High-mass end power-law slope of the W43-MM1 gas reservoir mass function including mass growth (alpha)",
+   "value": "-0.83",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Predicted emerging IMF",
+     "quote": "The power-law fitted above the new completeness limit of $0.18~\\mbox{$M_\\odot$}$ becomes even flatter: $\\frac{dN}{d\\log M} \\propto M^{-0.83}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact array configurations, baseline lengths, observing dates, and on-source integration times for the Cycle 6 (#2018.1.01787.S) and Cycle 7 (#2019.1.00502.S) ALMA datasets",
+  "Self-calibration solution intervals, number of iterations, and stopping criteria in IMAGER for Cycle 6 and Cycle 7 reductions",
+  "Image cell sizes, image dimensions, and cleaning thresholds/masks used in IMAGER",
+  "Software versions for CASA, GILDAS/IMAGER, FAMILY, and powerlaw"
+ ],
+ "missing_for_reproduction": [
+  "FITS images for the four Cycle 6 and Cycle 7 continuum maps (only the Cycle 5 ALMA-IMF Zenodo archive and CDS source catalog are explicitly linked)",
+  "Exact self-calibration parameters and cleaning stopping criteria in IMAGER for Cycle 6 and Cycle 7 data",
+  "Exact implementation scripts for the Thomasson et al. (2026) 100,000-realization Monte Carlo cascade simulation"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "The complete extracted multi-scale source catalog with FAMILY node links is published in the appendix and at CDS, the FAMILY and getsf tools are public with their single free parameters explicitly stated (max size = 3x beam; overlap = 75%), and the mathematical equations for fractality, CFE, and mass partition are fully specified. Only low-level IMAGER self-calibration/imaging parameters for the Cycle 6/7 visibilities and the Monte Carlo script for the Thomasson (2026) IMF forward model are unstated.",
+ "rediscovery_reason": "All three ALMA project codes are public in the archive, the complete multi-resolution source catalog is provided in the paper/CDS, the getsf and FAMILY parameters are fully specified, and the main results (F_2D, F_3D, epsilon_jump2, gamma, CFE, and CMF/IMF power-law slopes) are concrete numeric values.",
+ "source_card": "cards/2026A%26A...713A.105M/sonnet/card.md"
+}

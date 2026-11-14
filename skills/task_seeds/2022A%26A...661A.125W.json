@@ -1,0 +1,378 @@
+{
+ "bibcode": "2022A&A...661A.125W",
+ "title": "Radio properties of the OH megamaser galaxy IIZw 096",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202142854",
+ "arxiv_id": "2203.00276",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation",
+  "agn_and_quasars"
+ ],
+ "question": "To study the properties of the high-resolution structure of the OH megamaser emission in IIZw 096 and its connections with environmental conditions (dense gas, compact radio continuum, merging status), and determine whether the OHMs originate from a starburst or an AGN.",
+ "alma_project_codes": [
+  "2012.1.01022.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "ALMA",
+  "angular_resolution": "0.20\" x 0.17\" (PA -54 deg) for CO (3-2); 0.19\" x 0.16\" (PA -55 deg) for HCO+ (4-3)",
+  "sensitivity": "1.91 mJy/beam (CO 3-2) and 1.92 mJy/beam (HCO+ 4-3) per 5.4 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(3-2)/CO(1-0) line ratio of 0.51",
+    "evidence": [
+     {
+      "loc": "The total mass of D1 estimated from CO and HI observations",
+      "quote": "The CO(3–2)/CO(1–0) line ratio is about 0.51 for this galaxy (cite: 2010MNRAS.406.1364L)"
+     }
+    ]
+   },
+   "citation": "(cite: 2010MNRAS.406.1364L)"
+  },
+  {
+   "what": {
+    "value": "Optical redshift / systemic velocity of 10770 km s^-1",
+    "evidence": [
+     {
+      "loc": "The merging and inflow of gas to the central region",
+      "quote": "The optical redshift of this source shows a system velocity of about 10770 km s$^{-1}$(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)"
+     }
+    ]
+   },
+   "citation": "(cite: 2019MNRAS.489.1099D; 1995ApJS...98..129K)"
+  },
+  {
+   "what": {
+    "value": "Mass estimate of D1 from H-band optical image (1-4 x 10^9 M_sun)",
+    "evidence": [
+     {
+      "loc": "The total mass of D1 estimated from CO and HI observations",
+      "quote": "Based on H-band optical image and solar metallicity, (cite: 2010AJ....140...63I) estimated that the mass of D1 is approximately 1–4 $\\times$ $\\rm 10^{9}$$\\rm M_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2010AJ....140...63I)"
+  },
+  {
+   "what": {
+    "value": "Lower limit for enclosed mass of D1 from MERLIN OH observations (~3 x 10^9 M_sun)",
+    "evidence": [
+     {
+      "loc": "The total mass of D1 estimated from CO and HI observations",
+      "quote": "Based on the OH line velocities and emission region from MERLIN observations, (cite: 2011MNRAS.416.1267M) obtained a lower limit for the enclosed mass of about 3 $\\rm \\times10^{9}M_{\\odot}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2011MNRAS.416.1267M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image EVN OH spectral-line data and combine two epochs",
+   "method": "Calibrate VLBI data in AIPS, perform phase-only self-calibration on the 2005Jun08 peak channel (V ~ 10886 km s^-1), image channels in DIFMAP, average 3-sigma signals over elliptical regions for OH1 and OH2, and combine the two EVN epochs with AIPS DBCON to detect OH 1665 MHz.",
+   "software": [
+    "AIPS",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "OH 1667 MHz averaged over 10750 to 10950 km s^-1; OH 1665 MHz averaged over 11080 to 11320 km s^-1"
+   ],
+   "assumptions": [
+    "VLBI calibration error is ~10% of the measured flux"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract and fit ALMA CO (3-2) and HCO+ (4-3) spectra and map velocity structures",
+   "method": "Extract CO (3-2) and HCO+ (4-3) spectra from archival primary-beam corrected ALMA image cubes at selected optical spots, six regions around D1, and double-peak regions, fit Gaussian profiles, and construct velocity maps.",
+   "software": [],
+   "key_parameters": [
+    "Central region around D1 size ~ 400 mas"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Extract and fit VLA HI emission and absorption spectra",
+   "method": "Image VLA-C HI data in DIFMAP, extract integrated HI spectra over a 70\" x 70\" region and individual spots, and fit Gaussian components.",
+   "software": [
+    "AIPS",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "70\" x 70\" region for total HI spectrum"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Derive H2 and HI gas masses, gas surface density, and volume density",
+   "method": "Calculate H2 mass from integrated CO(3-2) line flux converted to CO(1-0), calculate HI mass from integrated HI flux assuming optically thin emission, and compute gas surface density and H2 number density in the central beam.",
+   "software": [],
+   "key_parameters": [
+    "Beam size 0.2\" x 0.16\" (~134 pc x 107 pc, ~130 pc diameter) for CO; 19.7\" x 17.9\" (~13.2 kpc x 12.0 kpc) for HI"
+   ],
+   "assumptions": [
+    "CO(3-2)/CO(1-0) line ratio = 0.51; X_CO = 0.4 x 10^20 cm^-2 (K km s^-1)^-1; distance d_Mpc = 148 Mpc; optically thin HI emission"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Measure multi-band radio continuum fluxes, fit radio SEDs, estimate brightness temperature, and construct spectral index maps",
+   "method": "Restore multi-band VLA images to 2\" x 2\" beam, measure total and peak flux densities of comp D and A with CASA imfit, fit radio SEDs with single power-law and mixed thermal+non-thermal models, model-fit 33 GHz VLA-A visibility data and VLBA upper limits to derive brightness temperature T_b, and construct spectral index (alpha) maps at 2\" and 1\" resolution.",
+   "software": [
+    "CASA",
+    "DIFMAP"
+   ],
+   "key_parameters": [
+    "Restored beam 2\" x 2\" for SED flux measurements and 1.4/3/9 GHz alpha-map; 1\" beam for 3/9 GHz alpha-map; spectral index threshold alpha = 1.1"
+   ],
+   "assumptions": [
+    "For 33 GHz T_b calculation, assumed the flux density of the fitted component can also be obtained at 1.4 GHz with the same component size"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "OH 1665 MHz peak flux density at OH1",
+   "value": "0.42",
+   "uncertainty": "not stated (6 sigma detection)",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Two epoch EVN results of OH megamaser emission",
+     "quote": "As a result, the OH 1665 MHz line emission is detected at 6 $\\sigma$ level with a peak of about 0.42 mJy/beam distributed at the OH1 region"
+    }
+   ]
+  },
+  {
+   "quantity": "OH 1667 MHz Gaussian amplitude (2005-OH1)",
+   "value": "21",
+   "uncertainty": "3",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "OH1667 | 2005-OH1 | 205724.375+170739.144 | 21 $\\pm$ 3 | 10887 $\\pm$ 1 | 67 $\\pm$ 2 | 1429 $\\pm$ 220"
+    }
+   ]
+  },
+  {
+   "quantity": "OH 1667 MHz Gaussian amplitude (2010-OH1)",
+   "value": "25",
+   "uncertainty": "4",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "2010-OH1 | 205724.375+170739.145 | 25 $\\pm$ 4 | 10884 $\\pm$ 1 | 53 $\\pm$ 1 | 1359 $\\pm$ 198"
+    }
+   ]
+  },
+  {
+   "quantity": "CO (3-2) peak amplitude at D1",
+   "value": "153",
+   "uncertainty": "1",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO | D1: | 205724.372+170739.221 | 153 $\\pm$ 1$^{b}$ | 10888 $\\pm$ 1 | 179 $\\pm$ 1 | 29176 $\\pm$ 155$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO (3-2) integrated Gaussian area at D1",
+   "value": "29176",
+   "uncertainty": "155",
+   "units": "mJy/beam*km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO | D1: | 205724.372+170739.221 | 153 $\\pm$ 1$^{b}$ | 10888 $\\pm$ 1 | 179 $\\pm$ 1 | 29176 $\\pm$ 155$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CO (3-2) Gaussian FWHM at D1",
+   "value": "179",
+   "uncertainty": "1",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "CO | D1: | 205724.372+170739.221 | 153 $\\pm$ 1$^{b}$ | 10888 $\\pm$ 1 | 179 $\\pm$ 1 | 29176 $\\pm$ 155$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ (4-3) peak amplitude at D1",
+   "value": "27",
+   "uncertainty": "1",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "D1 | 205724.372+170739.221 | 27 $\\pm$ 1$^{b}$ | 10880 $\\pm$ 2 | 196 $\\pm$ 4 | 5509 $\\pm$ 102$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCO+ (4-3) integrated Gaussian area at D1",
+   "value": "5509",
+   "uncertainty": "102",
+   "units": "mJy/beam*km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "D1 | 205724.372+170739.221 | 27 $\\pm$ 1$^{b}$ | 10880 $\\pm$ 2 | 196 $\\pm$ 4 | 5509 $\\pm$ 102$^{b}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass of D1 in one beam",
+   "value": "2.5e9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The total mass of D1 estimated from CO and HI observations",
+     "quote": "the derived $\\rm M(H_{2})$ is about 2.5$\\times$ $10^{9}$ $\\rm M_{\\odot}$ in one beam with size of 0.2\" $\\times$ 0.16\" ($\\sim$ 134 pc $\\times$ 107 pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass of B0 in one beam",
+   "value": "1.6e8",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The total mass of D1 estimated from CO and HI observations",
+     "quote": "the central mass in one beam for B0 and A0 are about 1.6$\\times$ $10^{8}$ and 2.0$\\times$ $10^{7}$ $\\rm M_{\\odot}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "H2 mass of A0 in one beam",
+   "value": "2.0e7",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The total mass of D1 estimated from CO and HI observations",
+     "quote": "the central mass in one beam for B0 and A0 are about 1.6$\\times$ $10^{8}$ and 2.0$\\times$ $10^{7}$ $\\rm M_{\\odot}$, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "HI mass of D1 in one beam",
+   "value": "1.6e9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The total mass of D1 estimated from CO and HI observations",
+     "quote": "whereby the H I mass are about 1.6$\\times$ $10^{9}$ $\\rm M_{\\odot}$ in one beam with a size of 19.7\" $\\times$ 17.9\" ($\\sim$ 13.2 kpc $\\times$ 12.0 kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total HI mass of IIZw 096",
+   "value": "1.2e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Discussion, The total mass of D1 estimated from CO and HI observations",
+     "quote": "is about 1.2$\\times$ $10^{10}$ $\\rm M_{\\odot}$ for the total H I mass in IIZw 096."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas surface density of D1",
+   "value": "2e5",
+   "uncertainty": "not stated",
+   "units": "M_sun pc^-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "The total mass of D1 estimated from CO and HI observations",
+     "quote": "Based on the derived $\\rm M(H_{2})$ and the physical size of one beam from CO (3-2) line observation (see the third estimation), the surface density is estimated to be about 2 $\\times$ $10^{5}$ $\\rm M_{\\odot}$ $\\rm pc^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas number density n(H2) in D1 central region",
+   "value": "4e4",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparison with a general picture of OH megamaser emission",
+     "quote": "We have calculated the n($\\rm H_{2}$) using the following assumptions, n($\\rm H_{2}$) = $\\rm \\frac{M(H_{2})}{m(H_{2}) \\times V}$ is about 4$\\times$ $10^{4}$$\\rm cm^{-3}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial offset between OH emission regions (OH1, OH2) and 33 GHz continuum center",
+   "value": "50-76",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Comparison with a general picture of OH megamaser emission",
+     "quote": "while the two OH emission regions (OH1 and OH2) arise from a location about 50-76 mas to the center of the 33 GHz emission (see Fig. [9](#cohcooh33))."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio continuum brightness temperature T_b of comp D",
+   "value": "1.21e5 to 1e6",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The radio continuum",
+     "quote": "the estimated temperature $T_{b}$ of the radio continuum emission is  1.21$\\times$$10^{5}$ K. The estimated upper limit $T_{b}$ from the peak flux densities of VLBA images (as shown in Fig. [20](#vlbacontinuum)) is about $10^{6}$ K."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact aperture sizes and shapes used to extract CO(3-2) and HCO+(4-3) spectra for the regions DP1-DP6 and Reg. 1-6 (whether single-beam or integrated over a specific aperture)",
+  "CASA version and pipeline version used for EVLA data reduction and imfit analysis",
+  "Cell sizes and weighting schemes used in DIFMAP when imaging EVN, VLBA, and VLA datasets",
+  "Coordinates of the double-peak regions DP1-DP6 in Table 2 and Table 4"
+ ],
+ "missing_for_reproduction": [
+  "Exact J2000 coordinates and aperture sizes for CO double-peak regions DP1-DP6",
+  "Exact elliptical region parameters used to integrate EVN OH1 and OH2 spectra",
+  "Software Versions for CASA, AIPS, and DIFMAP",
+  "Best-fit parameter values (S_th, S_nth, alpha) for the multi-band radio continuum SED fits of components D and A"
+ ],
+ "reproducibility_score": 70,
+ "score_reason": "All data are public archival products and the ALMA analysis directly uses online primary-beam corrected archive cubes with standard Gaussian fitting and analytic mass formulas, with target coordinates tabulated for most spots (except DP1-DP6).",
+ "rediscovery_reason": "The ALMA portion uses standard archival PB-corrected FITS cubes for project 2012.1.01022.S, gives exact J2000 coordinates for D1, A0, B0, C0, and Reg. 1-6, and reports concrete Gaussian line fits and analytic H2 mass/density values that can be directly reproduced.",
+ "source_card": "cards/2022A%26A...661A.125W/sonnet/card.md"
+}

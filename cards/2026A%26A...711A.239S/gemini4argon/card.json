@@ -1,0 +1,2075 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2026A&A...711A.239S",
+  "title": "ALMA-IMF: XXI. N<SUB>2</SUB>H<SUP>+</SUP> kinematics in the G012.80 protocluster: Evidence of filament rotation and evolution",
+  "year": 2026,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Salinas, J.",
+  "n_authors": 23,
+  "arxiv_id": "2510.03447",
+  "doi": "10.1051/0004-6361/202557551",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2017.1.01355.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "To study these processes in a massive cluster-forming environment, we focus on the G012.80 protocluster (hereafter G012), one of the 15 nearby massive protoclusters observed by the ALMA-IMF Large Program[^2] (cite: motte)."
+   },
+   {
+    "loc": "Data",
+    "quote": "We use observations from the Atacama Large Millimeter Array (ALMA) telescope provided by the ALMA-IMF LP."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "milky_way_ism"
+   ],
+   "targets": [
+    {
+     "name": "G012.80",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "2.4 kpc (VLSR = 37 km s^-1)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Specifically, G012 is an active and massive (cite: motte) star-forming region centered on the W33 main clump, with a trigonometric parallax distance of 2.4 kpc (cite: distance) and a local standard of rest velocity of $V_{\\mathrm{LSR}}$ = 37 $\\rm km\\,s^{-1}$ estimated from maser velocities (cite: immer2014)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "(cite: distance); (cite: immer2014)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "Specifically, G012 is an active and massive (cite: motte) star-forming region centered on the W33 main clump, with a trigonometric parallax distance of 2.4 kpc (cite: distance) and a local standard of rest velocity of $V_{\\mathrm{LSR}}$ = 37 $\\rm km\\,s^{-1}$ estimated from maser velocities (cite: immer2014)."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Characterize dense gas kinematic processes, line-mass profiles, and evolutionary stages of the two main filaments (R1 and R2) in the G012.80 massive protocluster using N2H+(1-0) and complementary lines.",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We aim to characterize kinematic processes in the G012.80 protocluster. We primarily focus on the N$_2$H$^+$(1$-$0) emission to trace the dense and cold gas."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "We aim to characterize the dense gas kinematics and key physical parameters in the protocluster, with particular emphasis on these two main filaments."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2017.1.01355.L",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "ADS/JAO.ALMA$\\#$2017.1.01355.L."
+      },
+      {
+       "loc": "Footnote 2",
+       "quote": "Proposal ID 2017.1.01355.L."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "1.3 mm and 3 mm",
+    "evidence": [
+     {
+      "loc": "ALMA-IMF dense core catalogs",
+      "quote": "(cite: fabien2024) constructed the first core catalog of the full ALMA-IMF sample based on the 1.3 mm and 3 mm continuum emission."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "N2H+(1-0) at 93.1734 GHz (217 channels, 12 to 61 km s^-1, 0.23 km s^-1 resolution); DCN(3-2) at 217.15 GHz (0.39 km s^-1); H41alpha at 92.200 GHz (1.80 km s^-1); C18O(2-1) at 219.56 GHz (0.33 km s^-1); SiO(5-4) at 217.15 GHz (0.39 km s^-1)",
+    "evidence": [
+     {
+      "loc": "ALMA-IMF datacubes",
+      "quote": "We employ $\\mathrm{N_2H^+}$($J$=1$-$0) observations at a frequency of 93.1734 GHz."
+     },
+     {
+      "loc": "ALMA-IMF datacubes",
+      "quote": "The resulting N$_2$H$^+$ data cube contains a total of 217 velocity channels over a range from 12 $\\rm km\\,s^{-1}$ to 61 $\\rm km\\,s^{-1}$, with a spectral resolution of 0.23 $\\rm km\\,s^{-1}$ and a final beam size of $\\sim$ 2.3$^{\\ensuremath{''}}$ (see Table [\\[tab:SPECTRALINES\\]](#tab:SPECTRALINES)), corresponding to $\\sim$5.5 kau at the source distance."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| N$_2$H$^+$(1-0) $^{(*)}$ | 93.173 | 0.23 | 2.59 | 2.10 | 89.3 | 12 | 6.1$\\times$10$^{4}$ | 4.47 | This paper |"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "N2H+",
+     "transition": "1-0",
+     "rest_frequency": "93.1734 GHz",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "We employ $\\mathrm{N_2H^+}$($J$=1$-$0) observations at a frequency of 93.1734 GHz."
+      },
+      {
+       "loc": "Table 1",
+       "quote": "| N$_2$H$^+$(1-0) $^{(*)}$ | 93.173 | 0.23 | 2.59 | 2.10 | 89.3 | 12 | 6.1$\\times$10$^{4}$ | 4.47 | This paper |"
+      }
+     ]
+    },
+    {
+     "species": "DCN",
+     "transition": "3-2",
+     "rest_frequency": "217.15 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| DCN(3-2) | 217.15 | 0.39 | 1.29 | 0.88 | 76.0 | 5 | 1.8$\\times$10$^{7}$ | 20.85 | (cite: DCN) |"
+      }
+     ]
+    },
+    {
+     "species": "H41alpha",
+     "transition": "H41alpha",
+     "rest_frequency": "92.200 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| H41$\\alpha$ | 92.200 | 1.80 | 2.28 | 1.93 | 84.9 | 7 | \\- | \\- | (cite: roberto2024) |"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "2-1",
+     "rest_frequency": "219.56 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| C$^{18}$O(2-1) | 219.56 | 0.33 | 1.33 | 0.90 | 77.4 | 5 | 9.9$\\times$10$^{3}$ | 5.26 | (cite: atanu2024) |"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "5-4",
+     "rest_frequency": "217.15 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| SiO(5-4) | 217.15 | 0.39 | 1.29 | 0.88 | 77.0 | 5 | 10$^{5}$-10$^{6}$ | 31.25 | (cite: towner2024) |"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "7m, 12m, and Total Power (TP) for N2H+(1-0)",
+    "evidence": [
+     {
+      "loc": "ALMA-IMF datacubes",
+      "quote": "To recover the cloud emission at all available scales, we combine observations of the 7m and 12m arrays with total power data (TP)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "(*) The only tracer that includes total power data."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "N2H+(1-0): 2.59'' x 2.10'' (~2.3'', ~5.5 kau); DCN(3-2): 1.29'' x 0.88''; H41alpha: 2.28'' x 1.93''; C18O(2-1): 1.33'' x 0.90''; SiO(5-4): 1.29'' x 0.88''",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| N$_2$H$^+$(1-0) $^{(*)}$ | 93.173 | 0.23 | 2.59 | 2.10 | 89.3 | 12 | 6.1$\\times$10$^{4}$ | 4.47 | This paper |"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "| DCN(3-2) | 217.15 | 0.39 | 1.29 | 0.88 | 76.0 | 5 | 1.8$\\times$10$^{7}$ | 20.85 | (cite: DCN) |"
+     },
+     {
+      "loc": "ALMA-IMF datacubes",
+      "quote": "The resulting N$_2$H$^+$ data cube contains a total of 217 velocity channels over a range from 12 $\\rm km\\,s^{-1}$ to 61 $\\rm km\\,s^{-1}$, with a spectral resolution of 0.23 $\\rm km\\,s^{-1}$ and a final beam size of $\\sim$ 2.3$^{\\ensuremath{''}}$ (see Table [\\[tab:SPECTRALINES\\]](#tab:SPECTRALINES)), corresponding to $\\sim$5.5 kau at the source distance."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer",
+     "provided": {
+      "value": "Observations at 8 um, 4.5 um, and 3.6 um",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF datacubes",
+        "quote": "In Fig. [1](#fig:SPITZER_N2H+filaments) we display Spitzer observations at 8 $\\mu$m (red), 4.5 $\\mu$m (green) and 3.6 $\\mu$m (blue) along with an N$_2$H$^+$ integrated intensity contours at 25 and 100 K $\\rm km\\,s^{-1}$ (left panel) and N$_2$H$^+$ integrated intensity map at signal-to-noise ratio ($\\mathrm{S/N}$) \\> 12 (right panel, see Appendix [8](#sec:ap_linefitting) for the $\\mathrm{S/N}$ selection criteria)."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "First core catalog of the full ALMA-IMF sample (57 dense cores in G012 with masses 0.6-6.2 M_sun and temperatures 25-100 K)",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF dense core catalogs",
+        "quote": "(cite: fabien2024) constructed the first core catalog of the full ALMA-IMF sample based on the 1.3 mm and 3 mm continuum emission."
+       },
+       {
+        "loc": "ALMA-IMF dense core catalogs",
+        "quote": "In G012, they detected 57 dense cores with estimated masses of 0.6-6.2 M$_{\\odot}$ and temperatures of 25-100 K."
+       }
+      ]
+     },
+     "citation": "(cite: fabien2024)"
+    },
+    {
+     "what": {
+      "value": "DCN(3-2) molecular line data and spectral parameters (including line-of-sight velocities) for 38 cores in G012",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF dense core catalogs",
+        "quote": "As follow-up, (cite: DCN) used the DCN molecular line emission to study the core population from (cite: fabien2024). For G012, they were able to estimate spectral parameters of 38 cores, including their line-of-sight velocities."
+       }
+      ]
+     },
+     "citation": "(cite: DCN)"
+    },
+    {
+     "what": {
+      "value": "Catalog of 94 prestellar and protostellar cores in G012",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF dense core catalogs",
+        "quote": "Deeper, (cite: armante2024) constructed a catalog of G012 cores complementing dust continuum emission (at both 1.3 mm and 3 mm) with molecular emission from $^{12}$CO (2-1), SiO (5-4), CH$_3$OCHO, and CH$_3$CN spectral lines. They classified the cores as prestellar or protostellar, finding a total of 94 detections."
+       }
+      ]
+     },
+     "citation": "(cite: armante2024)"
+    },
+    {
+     "what": {
+      "value": "Core mass, temperature, and luminosity estimates in G012 (masses 0.3-9.5 M_sun)",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF dense core catalogs",
+        "quote": "Additionally, (cite: motte2024) provided new mass, temperature, and luminosity estimates for cores in the remaining ALMA-IMF protoclusters using radiative transfer modeling. For G012, they found protostellar and prestellar cores distributed over mass ranges of 0.3-9.5 M$_{\\odot}$."
+       }
+      ]
+     },
+     "citation": "(cite: motte2024)"
+    },
+    {
+     "what": {
+      "value": "H2 column density and dust temperature maps of G012",
+      "evidence": [
+       {
+        "loc": "Relative abundance",
+        "quote": "Here, N(N$_2$H$^+$) is the N$_2$H$^+$ column density map described above, and N(H$_2$) is the H$_2$ column density map from (cite: pierre2024)."
+       },
+       {
+        "loc": "DCN accretion evidence in the R2 filament and towards the central OB star cluster",
+        "quote": "Recently, (cite: pierre2024) derived a dust temperature map of the G012 protocluster, finding values of $\\sim$ 35 K at the top of R2."
+       }
+      ]
+     },
+     "citation": "(cite: pierre2024)"
+    },
+    {
+     "what": {
+      "value": "H41alpha recombination line data, SiO(5-4) data, C18O(2-1) data, and 1.3 mm and 3 mm continuum data from ALMA-IMF",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF datacubes",
+        "quote": "These include the H41$\\alpha$ recombination line (cite: roberto2024), which traces H ii regions associated with ionizing sources in the protocluster center; DCN ($J$=2$-$1; (cite: DCN)), which traces more compact and warmer emission compared to N$_2$H^+$; SiO ($J$=5$-$4; (cite: towner2024)), used to analyze potential outflow features; and C$^{18}$O ($J$=2$-$1; (cite: atanu2024)), which traces compact emission in the central region of the protocluster as well as more extended and fainter emission in the surroundings."
+       },
+       {
+        "loc": "N2H+ destruction",
+        "quote": "Moreover, the 3 mm continuum exhibits high-flux intensity distributions appearing as bubbles in the protocluster center (cite: continuum), similar to the H41$\\alpha$ distribution (bottom-left panel of Fig. [12](#fig:TRACERS))."
+       }
+      ]
+     },
+     "citation": "(cite: roberto2024); (cite: towner2024); (cite: atanu2024); (cite: continuum)"
+    },
+    {
+     "what": {
+      "value": "Line-mass profile parameters for comparison regions (L1482-S, ONC, Orion ISF, G351.77)",
+      "evidence": [
+       {
+        "loc": "Line-mass profiles and associated 3D model quantities",
+        "quote": "Relative to other star forming regions (see Fig. [6](#fig:enclosedmass)), the filaments in G012 exhibit significantly higher line-mass profiles, up to three times more dense than extended regions such as the G351.77 protocluster (cite: reyes2024)."
+       },
+       {
+        "loc": "DCN accretion evidence in the R2 filament and towards the central OB star cluster",
+        "quote": "From previous catalogs (cite: tom2012; tom2016; furlan2016; kainulainen2017; stutz2018; gonzalez2019) we derive a SFR of 95 M$_{\\odot}$ Myr$^{-1}$ and a SFE of 0.008 for protostellar cores in OMC-2."
+       }
+      ]
+     },
+     "citation": "(cite: gutierrez2021); (cite: stutz2018); (cite: reyes2024)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA-IMF imaging pipeline",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "5.6.0",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "imcontsub with linear fit using fitorder = 0",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "We use the `imcontsub` task to subtract the continuum emission from the N$_2$H$^+$ line emission. To estimate the continuum emission we consider only emission-free channels, in the range of 12 to 20 $\\rm km\\,s^{-1}$, where we apply a linear fit using `fitorder` = 0."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "12 to 20 km s^-1 (for continuum subtraction); 12-20 km s^-1 and 49-61 km s^-1 (for RMS noise estimation)",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "To estimate the continuum emission we consider only emission-free channels, in the range of 12 to 20 $\\rm km\\,s^{-1}$, where we apply a linear fit using `fitorder` = 0."
+      },
+      {
+       "loc": "Data preparation",
+       "quote": "To identify reliable spectra, we construct an $\\mathrm{S/N}$ map, where the noise is estimated pixel-by-pixel from the RMS in emission-free channels between 12-20 km s$^{-1}$ and 49-61 km s$^{-1}$."
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "feather task combining 7m, 12m, and Total Power (TP) data",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "To recover the cloud emission at all available scales, we combine observations of the 7m and 12m arrays with total power data (TP). For this, we use the `feather` task."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "N2H+(1-0): 2.59'' x 2.10'', BPA 89.3 deg (~2.3''); DCN(3-2): 1.29'' x 0.88'', BPA 76.0 deg; H41alpha: 2.28'' x 1.93'', BPA 84.9 deg; C18O(2-1): 1.33'' x 0.90'', BPA 77.4 deg; SiO(5-4): 1.29'' x 0.88'', BPA 77.0 deg",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| N$_2$H$^+$(1-0) $^{(*)}$ | 93.173 | 0.23 | 2.59 | 2.10 | 89.3 | 12 | 6.1$\\times$10$^{4}$ | 4.47 | This paper |"
+      },
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "The resulting N$_2$H$^+$ data cube contains a total of 217 velocity channels over a range from 12 $\\rm km\\,s^{-1}$ to 61 $\\rm km\\,s^{-1}$, with a spectral resolution of 0.23 $\\rm km\\,s^{-1}$ and a final beam size of $\\sim$ 2.3$^{\\ensuremath{''}}$ (see Table [\\[tab:SPECTRALINES\\]](#tab:SPECTRALINES)), corresponding to $\\sim$5.5 kau at the source distance."
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "N2H+ data reduction and imaging pipeline procedure",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF datacubes",
+        "quote": "We follow a similar data reduction procedure as (cite: yiyo2024) and (cite: nico2024). N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+       }
+      ]
+     },
+     "from_reference": "(cite: yiyo2024); (cite: nico2024); (cite: DCN)"
+    },
+    {
+     "what": {
+      "value": "N2H+ hyperfine spectral line fitting and model cube merging procedure",
+      "evidence": [
+       {
+        "loc": "Analysis of the N2H+ data cube",
+        "quote": "We adopt a similar fitting procedure as (cite: nico2024) to model the N$_2$H$^+$ emission."
+       },
+       {
+        "loc": "Model cube merging",
+        "quote": "We obtain the final modeled cube by merging the fits with single and double velocity component. To carry out this step we follow a similar method than the one performed by (cite: nico2024)."
+       }
+      ]
+     },
+     "from_reference": "(cite: nico2024)"
+    },
+    {
+     "what": {
+      "value": "Intensity-weighted position-velocity (PV) diagram construction technique",
+      "evidence": [
+       {
+        "loc": "N2H+ PV diagrams",
+        "quote": "We use the technique developed in (cite: gonzalez2019) to construct the N$_2$H$^+$ intensity-weighted position velocity diagrams (cite: gutierrez2021; yiyo2024; nico2024)."
+       }
+      ]
+     },
+     "from_reference": "(cite: gonzalez2019); (cite: gutierrez2021); (cite: yiyo2024); (cite: nico2024)"
+    },
+    {
+     "what": {
+      "value": "N2H+ column density approximation formula",
+      "evidence": [
+       {
+        "loc": "N2H+ column density",
+        "quote": "We apply the column density approximation outlined in (cite: caselli2002a) and (cite: readelli2019), which is described as follows:"
+       }
+      ]
+     },
+     "from_reference": "(cite: caselli2002a); (cite: readelli2019)"
+    },
+    {
+     "what": {
+      "value": "Reprojection artifact mitigation and relative abundance histogram binning (Freedman-Diaconis method)",
+      "evidence": [
+       {
+        "loc": "Technical considerations to estimate relative abundance",
+        "quote": "To mitigate this effect, we follow the methodology of (cite: nico2024) to identify affected pixels:"
+       },
+       {
+        "loc": "Technical considerations to estimate relative abundance",
+        "quote": "To analyze the relative abundance distribution, we construct a histogram using the Freedman-Diaconis method (cite: nico2024), obtaining an optimal bin width of 0.377 $\\times$ 10$^{-10}$ and 40 bins."
+       }
+      ]
+     },
+     "from_reference": "(cite: nico2024)"
+    },
+    {
+     "what": {
+      "value": "Average filament velocity gradient and filament rotation force-ratio formalism",
+      "evidence": [
+       {
+        "loc": "Average filament velocity gradients",
+        "quote": "We adapt of the method described in (cite: gutierrez2021) for filament rotation analysis and divide the procedure into the following steps:"
+       },
+       {
+        "loc": "A filament rotation toy model applied to R1",
+        "quote": "We apply the formalism from (cite: gutierrez2021) to estimate the centrifugal force associated with rotation of the R1 filament."
+       }
+      ]
+     },
+     "from_reference": "(cite: gutierrez2021)"
+    },
+    {
+     "what": {
+      "value": "Line-mass profile, apparent volume density, gravitational potential, and gravitational acceleration formalism",
+      "evidence": [
+       {
+        "loc": "Line-mass profiles and associated 3D model quantities",
+        "quote": "We follow the formalism outlined in (cite: stutz2016) to estimate these line-mass profiles in the main filaments of the G012 protocluster."
+       },
+       {
+        "loc": "Line-mass profiles and associated 3D model quantities",
+        "quote": "We follow (cite: stutz2016; stutz2018); and (cite: gutierrez2021) to estimate the density, gravitational potential, and acceleration assuming cylindrical 3D geometry."
+       }
+      ]
+     },
+     "from_reference": "(cite: stutz2016); (cite: stutz2018); (cite: gutierrez2021)"
+    },
+    {
+     "what": {
+      "value": "Star formation rate (SFR) and efficiency (SFE) formalism",
+      "evidence": [
+       {
+        "loc": "Star formation rate and efficiency",
+        "quote": "For the SFR and SFE estimates, we use the formalism outlined in (cite: tom2022) and consider the G012 core masses provided in (cite: motte2024)."
+       }
+      ]
+     },
+     "from_reference": "(cite: tom2022)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact imaging parameters in the ALMA-IMF imaging pipeline for N2H+(1-0) (e.g., tclean deconvolver, robust weighting parameter, cell size, image dimensions, masking thresholds, multiscale scales)",
+    "Self-calibration parameters (whether self-calibration was applied to the N2H+ cube and with what solution intervals)",
+    "Exact pixel coordinates of the boxes enclosing the baseline R1 and R2 filaments",
+    "Exact pixel coordinates of start_from_point used in PySpecKit specfit"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Data preparation, continuum subtraction, feathering, and S/N masking",
+    "method": {
+     "value": "Clean N2H+(1-0) observations with the ALMA-IMF pipeline, subtract continuum using imcontsub in emission-free channels, combine 7m, 12m, and TP data using feather, and construct pixel-by-pixel S/N maps from emission-free RMS noise.",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "We use the `imcontsub` task to subtract the continuum emission from the N$_2$H$^+$ line emission. To estimate the continuum emission we consider only emission-free channels, in the range of 12 to 20 $\\rm km\\,s^{-1}$, where we apply a linear fit using `fitorder` = 0."
+      },
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "To recover the cloud emission at all available scales, we combine observations of the 7m and 12m arrays with total power data (TP). For this, we use the `feather` task."
+      },
+      {
+       "loc": "Data preparation",
+       "quote": "To identify reliable spectra, we construct an $\\mathrm{S/N}$ map, where the noise is estimated pixel-by-pixel from the RMS in emission-free channels between 12-20 km s$^{-1}$ and 49-61 km s$^{-1}$."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "imcontsub",
+     "feather",
+     "ALMA-IMF imaging pipeline"
+    ],
+    "key_parameters": [
+     {
+      "value": "fitorder = 0 in channels 12 to 20 km s^-1 for imcontsub",
+      "evidence": [
+       {
+        "loc": "ALMA-IMF datacubes",
+        "quote": "To estimate the continuum emission we consider only emission-free channels, in the range of 12 to 20 $\\rm km\\,s^{-1}$, where we apply a linear fit using `fitorder` = 0."
+       }
+      ]
+     },
+     {
+      "value": "S/N threshold = 12 for N2H+(1-0); 5 for DCN(3-2), C18O(2-1), SiO(5-4); 7 for H41alpha",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "| N$_2$H$^+$(1-0) $^{(*)}$ | 93.173 | 0.23 | 2.59 | 2.10 | 89.3 | 12 | 6.1$\\times$10$^{4}$ | 4.47 | This paper |"
+       },
+       {
+        "loc": "Data preparation",
+        "quote": "We adopt an $\\mathrm{S/N}$ threshold of 12, preserving most of the N$_2$H$^+$ structure while excluding noisy or unresolved spectra unsuitable for fitting."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "Linear continuum fit with fitorder = 0",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "To estimate the continuum emission we consider only emission-free channels, in the range of 12 to 20 $\\rm km\\,s^{-1}$, where we apply a linear fit using `fitorder` = 0."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Evaluated robustness of N2H+ data cube by inspecting negative bowls and noise levels, and tested various signal_cut values.",
+     "evidence": [
+      {
+       "loc": "Data preparation",
+       "quote": "Before fitting, we evaluate the robustness of the N$_2$H$^+$ data cube by inspecting negative bowls and noise levels."
+      },
+      {
+       "loc": "Choosing input parameters",
+       "quote": "Testing various *signal_cut* values confirms that pixels below an $\\mathrm{S/N}$ of 12 yield poor fits or large uncertainties in critical parameters like radial velocities errors."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Spectral line fitting of N2H+(1-0) hyperfine structure and complementary lines, and velocity component separation",
+    "method": {
+     "value": "Fit N2H+(1-0) hyperfine structure with 1 and 2 velocity components using PySpecKit specfit (n2hp_vtau), clean bad fits based on uncertainty thresholds, merge 1- and 2-component models into First (FVC) and Second (SVC) Velocity Components separated at 35.6 km s^-1, and fit single-Gaussian models to DCN, H41alpha, and SiO.",
+     "evidence": [
+      {
+       "loc": "Analysis of the N2H+ data cube",
+       "quote": "We use the hyperfine line structure model provided by version V.1.0.1 of `PySpecKit` spectroscopic analysis toolkit (cite: pyspec)."
+      },
+      {
+       "loc": "Model cube merging",
+       "quote": "Components below 35.6 $\\rm km\\,s^{-1}$ ($\\sim$3,535 pixels) are assigned to the first velocity component (FVC), while those above ($\\sim$2,984 pixels) are assigned to the second velocity component (SVC)."
+      },
+      {
+       "loc": "Complementary tracers line fitting",
+       "quote": "For tracers not previously modeled (DCN, H41$\\alpha$, and SiO), we apply a single-Gaussian fit using `PySpecKit`."
+      }
+     ]
+    },
+    "software": [
+     "PySpecKit"
+    ],
+    "key_parameters": [
+     {
+      "value": "1-component guesses: Tex=31.3 K, tau=3.8, Vc=37 km s^-1, sigma=0.78 km s^-1; 2-component guesses: Tex=(15, 20) K, tau=(1, 3), Vc=(33, 37) km s^-1, sigma=(1.4, 0.47) km s^-1; limits: Tex (2.8, 150) K, tau (0.001, 10), Vc (25, 45) km s^-1, sigma (0.23, 5) km s^-1",
+      "evidence": [
+       {
+        "loc": "Table 4",
+        "quote": "| Guesses | 31.3 | 3.8 | 37 | 0.78 | — | — | — | — |"
+       },
+       {
+        "loc": "Table 4",
+        "quote": "| Limits | (2.8, 150) | (0.001, 10) | (25, 45) | (0.23, 5) | (2.8, 150) | (0.001, 10) | (25, 45) | (0.23, 5) |"
+       }
+      ]
+     },
+     {
+      "value": "Cleaning cuts: Vc and sigma errors < 0.3 km s^-1, sigma error != 0, tau/e(tau) > 1, tau <= 100; FVC/SVC velocity boundary = 35.6 km s^-1",
+      "evidence": [
+       {
+        "loc": "Output cleaning",
+        "quote": "Errors in centroid velocity and velocity dispersion are mostly below 0.3 km s$^{-1}$, with only 5 and 26 pixels exceeding this value, respectively. Since this threshold is conservative relative to the N$_2$H$^+$ velocity resolution, we adopt it as the maximum allowed uncertainty for $\\mathrm{V_c}$ and $\\sigma$."
+       },
+       {
+        "loc": "Output cleaning",
+        "quote": "We therefore apply a mask requiring $\\tau/e(\\tau) > 1$, where $e(\\tau)$ is the uncertainty in $\\tau$."
+       },
+       {
+        "loc": "Output cleaning",
+        "quote": "We additionally impose an upper limit of $\\tau = 100$ for each velocity component, removing 52 pixels above this threshold."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Up to two velocity components adequately characterize the N2H+ spectra",
+      "evidence": [
+       {
+        "loc": "Analysis of the N2H+ data cube",
+        "quote": "The vast majority of spectra that we inspected are well characterized by either one or two velocity components (see Appendix [8](#sec:ap_linefitting))."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Levenberg-Marquardt algorithm optimizing the chi^2 function via PySpecKit specfit (n2hp_vtau and single-Gaussian)",
+     "evidence": [
+      {
+       "loc": "Choosing input parameters",
+       "quote": "To model the N$_2$H$^+$ data, we used the *specfit* fitting tool based on the built-in *n2hp_vtau* fitter."
+      },
+      {
+       "loc": "Choosing input parameters",
+       "quote": "*limits* are lower and upper parameter bounds used across all pixels via the Levenberg-Marquardt algorithm optimizing the $\\chi^2$ function;"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested sensitivity to start_pixel by performing 716 fits for R1 and 576 fits for R2 with different initial pixels, and tested different parameter limits.",
+     "evidence": [
+      {
+       "loc": "Output parameters and dependencies",
+       "quote": "We test the $start\\_pixel$ parameter while keeping all other inputs fixed, performing 716 fits for R1 and 576 for R2, each using a different initial pixel. We find that the derived parameters and uncertainties are largely independent of the initial pixel."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Moment maps and position-velocity (PV) diagram construction",
+    "method": {
+     "value": "Construct moment 0, 1, and 2 maps for FVC and SVC, identify main filaments R1 and R2, rotate N2H+ data cubes by 45 deg with respect to the protocluster center to vertically align filaments, and generate intensity-weighted PV diagrams parallel and perpendicular to the region.",
+     "evidence": [
+      {
+       "loc": "Moment maps",
+       "quote": "In Fig. [2](#fig:structures), we display the N$_2$H$^+$ integrated intensity (moment zero map, upper panels), velocity center (moment one map, middle panels), and velocity dispersion (moment two map, bottom panels) maps of the FVC and SVC."
+      },
+      {
+       "loc": "N2H+ PV diagrams",
+       "quote": "We use the technique developed in (cite: gonzalez2019) to construct the N$_2$H$^+$ intensity-weighted position velocity diagrams (cite: gutierrez2021; yiyo2024; nico2024). To obtain better defined structures in PV space, we spatially rotate the N$_2$H$^+$ data cubes (45$^{\\circ}$ respect to the protocluster center) by vertically aligning the most predominant filaments."
+      }
+     ]
+    },
+    "software": [
+     "FilFinder"
+    ],
+    "key_parameters": [
+     {
+      "value": "Spatial rotation angle = 45 deg; R1 and R2 box dimensions = 0.56 pc length x 0.22 pc width",
+      "evidence": [
+       {
+        "loc": "N2H+ PV diagrams",
+        "quote": "To obtain better defined structures in PV space, we spatially rotate the N$_2$H$^+$ data cubes (45$^{\\circ}$ respect to the protocluster center) by vertically aligning the most predominant filaments."
+       },
+       {
+        "loc": "Table 2",
+        "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+       }
+      ]
+     },
+     {
+      "value": "FilFinder parameters: smooth size = 5 pix (0.05 pc), size thresh = 550 pix^2 (0.05 pc^2), adapt thresh = 50 pix (0.49 pc), fill hole size = 20 pix^2 (0.002 pc^2), skel thresh = 80 pix (0.78 pc), branch thresh = 20 pix (0.20 pc)",
+      "evidence": [
+       {
+        "loc": "Table 5",
+        "quote": "| smooth size$^{\\mathrm{a}}$ | 5 pix | 0.05 pc |"
+       },
+       {
+        "loc": "Table 5",
+        "quote": "| skel thresh$^{\\mathrm{e}}$ | 80 pix | 0.78 pc |"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Applied FilFinder automated filament detection algorithm on FVC and SVC moment 0 maps to validate visual filament selection and test extended filament boundaries (R1-EXT, R2-EXT).",
+     "evidence": [
+      {
+       "loc": "Alternative filament detection using FilFinder",
+       "quote": "To addres this, and in order to validate the robustness of our filament selection, we use the FilFinder algortihm to independently identify filamentary structures, which we then compare to our original selection."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "N2H+ column density, relative abundance X(N2H+), and total H2 mass estimation",
+    "method": {
+     "value": "Calculate N(N2H+) from fitted Tex, tau, and sigma for FVC and SVC after removing biased pixels, reproject N(N2H+) to the 0.83'' pixel scale of the Dell'Ova et al. (2024) N(H2) map, compute pixel-to-pixel ratio X(N2H+) = N(N2H+)/N(H2), find the mode of X(N2H+) via Freedman-Diaconis histogram binning, and convert N(N2H+) to total H2 mass.",
+     "evidence": [
+      {
+       "loc": "N2H+ column density",
+       "quote": "In order to estimate the N$_2$H$^+$ column density, we use the T$_{\\mathrm{ex}}$, $\\tau$, and $\\sigma$ `PySpecKit` output parameters (see Appendix [8](#sec:ap_linefitting)). We apply the column density approximation outlined in (cite: caselli2002a) and (cite: readelli2019), which is described as follows:"
+      },
+      {
+       "loc": "Relative abundance",
+       "quote": "To estimate this ratio, we reproject the N$_2$H$^+$ image to match the pixel scale of the H$_2$ data, which is slightly larger (with a pixel scale of 0.83$^{\\ensuremath{''}}$). Subsequently we calculate the relative abundance map by taking the pixel-to-pixel ratio of the two maps:"
+      },
+      {
+       "loc": "Relative abundance",
+       "quote": "We obtain a relative abundance of X(N$_2$H$^+$) = (0.93 $\\pm$ 0.10) $\\times$ 10$^{-10}$ (see Figure [4](#fig:ap_xfactmap), right panel), consistent with previous determinations (cite: caselli2002c; nico2024). This representative value is then applied to derive total H$_2$ mass."
+      }
+     ]
+    },
+    "software": [
+     "PySpecKit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Constants: g = 3, A = 3.6e-5 s^-1, Eu = 4.47 K; pixel exclusion cuts: Tex = 150 K and tau < 0.2 (30% of pixels discarded), tau/e(tau) > 2; N(H2) S/N > 3; reprojected pixel scale = 0.83''; Freedman-Diaconis bin width = 0.377 x 10^-10 (40 bins)",
+      "evidence": [
+       {
+        "loc": "N2H+ column density",
+        "quote": "Here, $\\nu$ represents frequency of the N$_2$H$^+$(1$-$0) emission, g = 3 is the statistical weight (degeneracy) of the upper energy level of the transition level, c is the light speed, A = 3.6e$^{-5}$ s$^{-1}$ is the Einstein coefficient, $\\text{E}_\\text{u}$ = 4.47 K corresponds to the upper energy level of the transition, Q is the rotational partition function of N$_2$H$^+$, $\\text{k}_\\text{B}$ is the Boltzmann constant, and $h$ is the Planck constant (cite: shirley2015; readelli2019)."
+       },
+       {
+        "loc": "N2H+ column density",
+        "quote": "Specifically, we removed pixels where T$_{\\mathrm{ex}}$ = 150 K (the fitting upper limit) and $\\tau$ \\< 0.2, which resulted in discarding 30$\\%$ of the affected pixels (see Appendix [11](#sec:ap_relative))."
+       },
+       {
+        "loc": "Technical considerations to estimate relative abundance",
+        "quote": "To minimize the impact of large $\\tau$ uncertainties while preserving most of the filamentary structure, we adopt the $\\tau/e(\\tau) > 2$ mask, which removes only $\\sim$7$\\%$ of the pixels."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Representative constant relative abundance X(N2H+) = (0.93 +/- 0.10) x 10^-10 across the region",
+      "evidence": [
+       {
+        "loc": "Relative abundance",
+        "quote": "We obtain a relative abundance of X(N$_2$H$^+$) = (0.93 $\\pm$ 0.10) $\\times$ 10$^{-10}$ (see Figure [4](#fig:ap_xfactmap), right panel), consistent with previous determinations (cite: caselli2002c; nico2024). This representative value is then applied to derive total H$_2$ mass."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Mode of histogram constructed with Freedman-Diaconis method",
+     "evidence": [
+      {
+       "loc": "Technical considerations to estimate relative abundance",
+       "quote": "To analyze the relative abundance distribution, we construct a histogram using the Freedman-Diaconis method (cite: nico2024), obtaining an optimal bin width of 0.377 $\\times$ 10$^{-10}$ and 40 bins. We adopt the mode as the representative abundance value, since previous studies showed it is robust against changes in binning (cite: nico2024)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Tested stability of X(N2H+) mode under tau/e(tau) > 1.5, > 2, and > 3 masks, and validated N2H+-derived H2 mass by comparing line-mass profiles in a 0.4 pc x 0.03 pc section of R2 against the Dell'Ova et al. (2024) H2 map (variations < 28%).",
+     "evidence": [
+      {
+       "loc": "Relative abundance",
+       "quote": "Since these estimates will underpin the line-mass profiles presented in Sec. [4.2](#sec:linemass), we first validate our choice of mass map by calculating the line-mass profile in a section of the R2 filament covered by both the N$_2$H$^+$ and (cite: pierre2024) column density maps (see Appendix [12](#sec:ap_massval)). We find variations of less than 28$\\%$ between the two methods, indicating that the use of N$_2$H$^+$ to re-estimate the total H$_2$ mass, and consequently the line-mass profiles discussed in Sec. [4.2](#sec:linemass), is robust."
+      },
+      {
+       "loc": "Technical considerations to estimate relative abundance",
+       "quote": "The mode remains stable between 0.84 $\\times$ 10$^{-10}$ and 1.07 $\\times$ 10$^{-10}$."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Filament alignment, ridgeline-averaged velocity gradients, line-mass profiles, and rotation toy model",
+    "method": {
+     "value": "Trace peak intensity/column density along the filament y-axis to define ridgelines, smooth ridgelines with a 1D uniform filter, straighten filaments to projected radius, measure the transverse velocity gradient in R1 via weighted linear fit, fit power-law line-mass profiles lambda(omega), derive 3D cylindrical density, potential, and acceleration profiles, and compute the centrifugal-to-gravitational force ratio Fc/Fg in R1.",
+     "evidence": [
+      {
+       "loc": "Average filament velocity gradients",
+       "quote": "We apply a linear fit to the velocity gradient in the R1 filament, using the integrated intensity as a statistical weight."
+      },
+      {
+       "loc": "Line-mass profiles and associated 3D model quantities",
+       "quote": "Following the formalism in (cite: stutz2016), we find that the line-mass profiles are well-described by power laws of the form:"
+      },
+      {
+       "loc": "A filament rotation toy model applied to R1",
+       "quote": "We apply the formalism from (cite: gutierrez2021) to estimate the centrifugal force associated with rotation of the R1 filament. We then calculate the ratio between the centrifugal and gravitational forces as follows:"
+      }
+     ]
+    },
+    "software": [
+     "scipy.ndimage"
+    ],
+    "key_parameters": [
+     {
+      "value": "1D uniform filter window size = 1 pixel for ridgeline smoothing",
+      "evidence": [
+       {
+        "loc": "Data alignment",
+        "quote": "Ridgeline smoothing: We smooth the ridgeline using a one-dimensional uniform filter from `scipy.ndimage` with a window size of 1 pixel."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Cylindrical 3D geometry and inclination angle theta = 0 deg (cos(theta) = 1, filament in plane of the sky)",
+      "evidence": [
+       {
+        "loc": "Line-mass profiles and associated 3D model quantities",
+        "quote": "We follow (cite: stutz2016; stutz2018); and (cite: gutierrez2021) to estimate the density, gravitational potential, and acceleration assuming cylindrical 3D geometry. All quantities are estimated in the POS since we do not have access to inclination information."
+       },
+       {
+        "loc": "A filament rotation toy model applied to R1",
+        "quote": "For this comparison, we assume $\\cos(\\theta)$=1, i.e., the filament is not inclined with respect to the POS."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Integrated-intensity-weighted linear fit for transverse velocity gradient; power-law fit for enclosed mass over length lambda(omega) = zeta (omega/pc)^gamma",
+     "evidence": [
+      {
+       "loc": "Average filament velocity gradients",
+       "quote": "We apply a linear fit to the velocity gradient in the R1 filament, using the integrated intensity as a statistical weight."
+      },
+      {
+       "loc": "Line-mass profiles and associated 3D model quantities",
+       "quote": "Following the formalism in (cite: stutz2016), we find that the line-mass profiles are well-described by power laws of the form:"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Checked cumulative mass distributions along R1 and R2 for linearity, and compared baseline box line-mass metrics against FilFinder extended filament regions.",
+     "evidence": [
+      {
+       "loc": "Line-mass profiles and associated 3D model quantities",
+       "quote": "As expected for elongated and dense structures, we find that the cumulative mass distribution profiles in both R1 and R2 are nearly linear (see Fig.[16](#fig:R1cumulativemass)), indicating that the mass distribution along the filament is approximately uniform."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Star formation rate (SFR), star formation efficiency (SFE), and core velocity estimation",
+    "method": {
+     "value": "Calculate SFR = M_cores / t_cores and SFE for prestellar and protostellar cores in R1 and R2 using core masses and classifications from Armante et al. (2024) and Motte et al. (2025), and derive new core line-of-sight velocities by fitting single-Gaussian models to average DCN and N2H+ spectra extracted within core ellipses.",
+     "evidence": [
+      {
+       "loc": "Star formation rate and efficiency",
+       "quote": "For the SFR and SFE estimates, we use the formalism outlined in (cite: tom2022) and consider the G012 core masses provided in (cite: motte2024). In R1 and R2, (cite: armante2024) and (cite: motte2024) identified a total of 16 cores."
+      },
+      {
+       "loc": "Core velocities",
+       "quote": "To derive velocities, we fit the DCN and N$_2$H$^+$ emission with a single-Gaussian model (see Appendix [8](#sec:ap_linefitting)). The major and minor axes of each core (Tables [\\[tab:ap_ourcores\\]](#tab:ap_ourcores) and [\\[tab:ap_dcncores\\]](#tab:ap_dcncores)) define the region used to extract average spectra and estimate velocity centroids and mean fitted parameters."
+      }
+     ]
+    },
+    "software": [
+     "PySpecKit"
+    ],
+    "key_parameters": [
+     {
+      "value": "Prestellar core lifetime t_cores = 1.2 Myr; protostellar core lifetime t_cores = 0.5 Myr (also tested 0.3 Myr); cloud mass uncertainty = 11%",
+      "evidence": [
+       {
+        "loc": "Star formation rate and efficiency",
+        "quote": "For our analysis, we adopt a prestellar timescale of 1.2 Myr, the expected value for prestellar cores in the mass range of 0.003 - 10 M$_{\\odot}$ (cite: konyves2015). We also used protostellar lifetime of 0.5 Myr, assuming a low-mass protostellar regime around 0.5 M$_{\\odot}$ (cite: tom2022)."
+       },
+       {
+        "loc": "Star formation rate and efficiency",
+        "quote": "For the cloud (filament) mass, we assumed an 11$\\%$ error, corresponding to the uncertainty associated with the relative abundance values in the region."
+       }
+      ]
+     },
+     {
+      "value": "Mean velocity offset V_DCN - V_N2H+ ~ 0.16 km s^-1 used to correct N2H+-only core velocities",
+      "evidence": [
+       {
+        "loc": "Core velocities",
+        "quote": "We find that N$_2$H$^+$ velocities are blueshifted by $\\sim$0.16 $\\rm km\\,s^{-1}$ relative to DCN, smaller than the spectral resolutions of both tracers (N$_2$H$^+$: 0.23 $\\rm km\\,s^{-1}$; DCN: 0.34 $\\rm km\\,s^{-1}$). Using this correction, we increase the sample of cores with velocity estimates by 48 objects: 24 from the DCN $\\cap$ N$_2$H$^+$ sample, 20 from the N$_2$H$^+$ sample, and 2 from the DCN “new” sample."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Prestellar lifetime = 1.2 Myr and protostellar lifetime = 0.5 Myr",
+      "evidence": [
+       {
+        "loc": "Star formation rate and efficiency",
+        "quote": "For our analysis, we adopt a prestellar timescale of 1.2 Myr, the expected value for prestellar cores in the mass range of 0.003 - 10 M$_{\\odot}$ (cite: konyves2015). We also used protostellar lifetime of 0.5 Myr, assuming a low-mass protostellar regime around 0.5 M$_{\\odot}$ (cite: tom2022)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Single-Gaussian fit to average core spectra in DCN and N2H+",
+     "evidence": [
+      {
+       "loc": "Core velocities",
+       "quote": "To derive velocities, we fit the DCN and N$_2$H$^+$ emission with a single-Gaussian model (see Appendix [8](#sec:ap_linefitting))."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared SFR and SFE between baseline R1/R2 boxes and FilFinder extended filament masks, and calibrated N2H+ core velocities against 60 cores detected in both DCN and N2H+.",
+     "evidence": [
+      {
+       "loc": "Variations in physical parameters",
+       "quote": "In addition, we quantify the number of cores, their classification (prestellar or protostellar), and their masses to estimate the SFR and SFE within the extended areas."
+      },
+      {
+       "loc": "Core velocities",
+       "quote": "To estimate velocities for the N$_2$H$^+$-only sample, we compute the offset V$_{\\mathrm{DCN}}-$V$_{\\mathrm{N_2H^+}}$ using 60 cores detected in both tracers: 36 from the previous DCN catalog and 24 from the DCN $\\cap$ N$_2$H$^+$ sample (cite: yiyo2024)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "ALMA-IMF imaging pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Cleaning N2H+(1-0) observations",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "5.6.0",
+    "used_for": {
+     "value": "Cleaning N2H+ observations, continuum subtraction (imcontsub), and combining 7m, 12m, and TP arrays (feather)",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+      },
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "We use the `imcontsub` task to subtract the continuum emission from the N$_2$H$^+$ line emission."
+      },
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "For this, we use the `feather` task."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PySpecKit",
+    "version": "V.1.0.1",
+    "used_for": {
+     "value": "Hyperfine spectral line fitting of N2H+(1-0) using specfit and n2hp_vtau, and single-Gaussian fitting of DCN, H41alpha, SiO, and core spectra",
+     "evidence": [
+      {
+       "loc": "Analysis of the N2H+ data cube",
+       "quote": "We use the hyperfine line structure model provided by version V.1.0.1 of `PySpecKit` spectroscopic analysis toolkit (cite: pyspec)."
+      },
+      {
+       "loc": "Choosing input parameters",
+       "quote": "To model the N$_2$H$^+$ data, we used the *specfit* fitting tool based on the built-in *n2hp_vtau* fitter."
+      },
+      {
+       "loc": "Complementary tracers line fitting",
+       "quote": "For tracers not previously modeled (DCN, H41$\\alpha$, and SiO), we apply a single-Gaussian fit using `PySpecKit`."
+      }
+     ]
+    }
+   },
+   {
+    "name": "FilFinder",
+    "version": "not stated",
+    "used_for": {
+     "value": "Automated identification and characterization of filamentary structures and medial skeletons in 2D integrated intensity maps",
+     "evidence": [
+      {
+       "loc": "Method",
+       "quote": "We use the `FilFinder` python package (cite: filfinder) to identify and characterize filamentary structures in 2D emission maps."
+      }
+     ]
+    }
+   },
+   {
+    "name": "scipy.ndimage",
+    "version": "not stated",
+    "used_for": {
+     "value": "Smoothing filament ridgelines using a 1D uniform filter",
+     "evidence": [
+      {
+       "loc": "Data alignment",
+       "quote": "Ridgeline smoothing: We smooth the ridgeline using a one-dimensional uniform filter from `scipy.ndimage` with a window size of 1 pixel."
+      }
+     ]
+    }
+   },
+   {
+    "name": "Getsf",
+    "version": "not stated",
+    "used_for": {
+     "value": "Used by Louvet et al. (2024) to identify compact continuum sources for the ALMA-IMF core catalog",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF dense core catalogs",
+       "quote": "They used the *Getsf* toolkit (cite: getsf) to identify compact continuum sources."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "R1 line-mass profile normalization (zeta)",
+    "value": "5660",
+    "uncertainty": "not stated",
+    "units": "M_sun pc^-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Line-mass profiles follow $\\lambda$($\\omega$) = 5660 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.30}$ for R1 and $\\lambda$($\\omega$) = 6943 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.20}$ for R2, which are much larger than those of typical low-mass filaments."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 line-mass profile power-law index (gamma)",
+    "value": "0.30",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Line-mass profiles follow $\\lambda$($\\omega$) = 5660 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.30}$ for R1 and $\\lambda$($\\omega$) = 6943 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.20}$ for R2, which are much larger than those of typical low-mass filaments."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 line-mass profile normalization (zeta)",
+    "value": "6943",
+    "uncertainty": "not stated",
+    "units": "M_sun pc^-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Line-mass profiles follow $\\lambda$($\\omega$) = 5660 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.30}$ for R1 and $\\lambda$($\\omega$) = 6943 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.20}$ for R2, which are much larger than those of typical low-mass filaments."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 line-mass profile power-law index (gamma)",
+    "value": "0.20",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Line-mass profiles follow $\\lambda$($\\omega$) = 5660 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.30}$ for R1 and $\\lambda$($\\omega$) = 6943 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.20}$ for R2, which are much larger than those of typical low-mass filaments."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 transverse velocity gradient (VG)",
+    "value": "10.4",
+    "uncertainty": "+/- 0.29",
+    "units": "km s^-1 pc^-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "R1 exhibits a transverse velocity gradient of 10.4 km s$^{-1}$ pc$^{-1}$ and few dense cores."
+     },
+     {
+      "loc": "Average filament velocity gradients",
+      "quote": "The global R1 velocity gradient (VG) has a magnitude of VG $\\sim$ 10.4 km s$^{-1}$ pc$^{-1}$ (with an associated statistical fitting error of $\\pm$ 0.29 km s$^{-1}$ pc$^{-1}$)."
+     }
+    ]
+   },
+   {
+    "quantity": "R1 rotational timescale",
+    "value": "0.1",
+    "uncertainty": "not stated",
+    "units": "Myr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "This velocity gradient is interpreted with a simple rotation toy model when combined with line-mass profile, and corresponds to a rotational timescale of $\\sim\\,0.1$ Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "R1 mean centroid velocity (<V>)",
+    "value": "34.4",
+    "uncertainty": "+/- 0.05",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 mean velocity dispersion (<sigma>)",
+    "value": "0.81",
+    "uncertainty": "+/- 0.05",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 mean optical depth (<tau>)",
+    "value": "1.96",
+    "uncertainty": "+/- 1.4",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 mean excitation temperature (<Tex>)",
+    "value": "41.2",
+    "uncertainty": "+/- 7.6",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 total H2 filament mass (M_f)",
+    "value": "1780",
+    "uncertainty": "11%",
+    "units": "M_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R1 | 0.56 | 0.22 | 34.4 $\\pm$ 0.05 | 0.81 $\\pm$ 0.05 | 1.96 $\\pm$ 1.4 | 41.2 $\\pm$ 7.6 | 1.78 | 0.12 | 0.56 | 6.75 |"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 mean centroid velocity (<V>)",
+    "value": "36.8",
+    "uncertainty": "+/- 0.07",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R2 | 0.56 | 0.22 | 36.8 $\\pm$ 0.07 | 0.75 $\\pm$ 0.06 | 2.49 $\\pm$ 1.8 | 31.5 $\\pm$ 4.7 | 2.53 | 0.17 | 1.27 | 8.26 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 mean velocity dispersion (<sigma>)",
+    "value": "0.75",
+    "uncertainty": "+/- 0.06",
+    "units": "km s^-1",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R2 | 0.56 | 0.22 | 36.8 $\\pm$ 0.07 | 0.75 $\\pm$ 0.06 | 2.49 $\\pm$ 1.8 | 31.5 $\\pm$ 4.7 | 2.53 | 0.17 | 1.27 | 8.26 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 mean optical depth (<tau>)",
+    "value": "2.49",
+    "uncertainty": "+/- 1.8",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R2 | 0.56 | 0.22 | 36.8 $\\pm$ 0.07 | 0.75 $\\pm$ 0.06 | 2.49 $\\pm$ 1.8 | 31.5 $\\pm$ 4.7 | 2.53 | 0.17 | 1.27 | 8.26 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 mean excitation temperature (<Tex>)",
+    "value": "31.5",
+    "uncertainty": "+/- 4.7",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R2 | 0.56 | 0.22 | 36.8 $\\pm$ 0.07 | 0.75 $\\pm$ 0.06 | 2.49 $\\pm$ 1.8 | 31.5 $\\pm$ 4.7 | 2.53 | 0.17 | 1.27 | 8.26 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 total H2 filament mass (M_f)",
+    "value": "2532",
+    "uncertainty": "11%",
+    "units": "M_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| R2 | 0.56 | 0.22 | 36.8 $\\pm$ 0.07 | 0.75 $\\pm$ 0.06 | 2.49 $\\pm$ 1.8 | 31.5 $\\pm$ 4.7 | 2.53 | 0.17 | 1.27 | 8.26 |"
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "G012 total H2 protocluster mass (M_tot)",
+    "value": "14.8 x 10^3",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "(d) Fraction of the filament mass respect to the total protocluster mass, where for the G012 protocluster M$_{tot}$ = 14.8 $\\times$ 10$^3$ M$_{\\odot}$ (see Sec. [3.3](#sec:dens))."
+     }
+    ]
+   },
+   {
+    "quantity": "G012 total N2H+ mass",
+    "value": "1.72 x 10^-5",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "N2H+ column density",
+      "quote": "We convert N$_2$H$^+$ column density to mass, obtaining a respective N$_2$H$^+$ mass of 1.72 $\\times$ 10$^{-5}$ M$_{\\odot}$ in the entire protocluster."
+     }
+    ]
+   },
+   {
+    "quantity": "N2H+ relative abundance X(N2H+)",
+    "value": "0.93 x 10^-10",
+    "uncertainty": "+/- 0.10 x 10^-10",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Relative abundance",
+      "quote": "We obtain a relative abundance of X(N$_2$H$^+$) = (0.93 $\\pm$ 0.10) $\\times$ 10$^{-10}$ (see Figure [4](#fig:ap_xfactmap), right panel), consistent with previous determinations (cite: caselli2002c; nico2024)."
+     }
+    ]
+   },
+   {
+    "quantity": "R1 volume density normalization (beta)",
+    "value": "211.3",
+    "uncertainty": "not stated",
+    "units": "M_sun pc^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "where for the R1 and R2 filaments, we obtain $\\beta_{\\mathrm{R1}}$ = 211.3 M$_{\\odot}$ pc$^{-3}$ and $\\beta_{\\mathrm{R2}}$ = 181.3 M$_{\\odot}$ pc$^{-3}$."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 volume density normalization (beta)",
+    "value": "181.3",
+    "uncertainty": "not stated",
+    "units": "M_sun pc^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "where for the R1 and R2 filaments, we obtain $\\beta_{\\mathrm{R1}}$ = 211.3 M$_{\\odot}$ pc$^{-3}$ and $\\beta_{\\mathrm{R2}}$ = 181.3 M$_{\\odot}$ pc$^{-3}$."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 gravitational potential normalization (psi)",
+    "value": "123.1",
+    "uncertainty": "not stated",
+    "units": "km^2 s^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "where, considering the R1 and R2 parameters described above, we estimate $\\psi_{\\mathrm{R1}}$ = 123.1 km$^2$ s$^{-2}$ and $\\psi_{\\mathrm{R2}}$ = 269.3 km$^2$ s$^{-2}$."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 gravitational potential normalization (psi)",
+    "value": "269.3",
+    "uncertainty": "not stated",
+    "units": "km^2 s^-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "where, considering the R1 and R2 parameters described above, we estimate $\\psi_{\\mathrm{R1}}$ = 123.1 km$^2$ s$^{-2}$ and $\\psi_{\\mathrm{R2}}$ = 269.3 km$^2$ s$^{-2}$."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 gravitational acceleration normalization (xi)",
+    "value": "37.4",
+    "uncertainty": "not stated",
+    "units": "km^2 s^-2 pc^-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "For R1 and R2 we obtain $\\xi_{\\mathrm{R1}}$ = 37.4 km$^2$ s$^{-2}$ pc$^{-1}$ and $\\xi_{\\mathrm{R2}}$ = 51.3 km$^2$ s$^{-2}$ pc$^{-1}$, respectively."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R1 | 5660 | 211.3 | 123.1 | 37.4 | 0.30 | 0.56 | 1780 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 gravitational acceleration normalization (xi)",
+    "value": "51.3",
+    "uncertainty": "not stated",
+    "units": "km^2 s^-2 pc^-1",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Line-mass profiles and associated 3D model quantities",
+      "quote": "For R1 and R2 we obtain $\\xi_{\\mathrm{R1}}$ = 37.4 km$^2$ s$^{-2}$ pc$^{-1}$ and $\\xi_{\\mathrm{R2}}$ = 51.3 km$^2$ s$^{-2}$ pc$^{-1}$, respectively."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "| G012.80-R2 | 6943 | 181.3 | 269.3 | 51.3 | 0.20 | 0.56 | 2532 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 prestellar star formation rate (SFR_R1-prestellar)",
+    "value": "4.24",
+    "uncertainty": "+/- 0.29",
+    "units": "M_sun Myr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\mathrm{SFR}_{\\mathrm{R1 - prestellar}} = (4.24 \\pm 0.29) \\hspace{1mm} \\mathrm{ M}_{\\odot}\\mathrm{Myr}^{-1},\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 prestellar star formation rate (SFR_R2-prestellar)",
+    "value": "12.1",
+    "uncertainty": "+/- 1.90",
+    "units": "M_sun Myr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\mathrm{SFR}_{\\mathrm{R2 - prestellar}} = (12.1 \\pm 1.90) \\hspace{1mm} \\mathrm{M}_{\\odot}\\mathrm{Myr}^{-1},\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 protostellar star formation rate (SFR_R2-protostellar)",
+    "value": "43.2",
+    "uncertainty": "+/- 6.67",
+    "units": "M_sun Myr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\mathrm{SFR}_{\\mathrm{R2 - protostellar}} = (43.2 \\pm 6.67) \\hspace{1mm} \\mathrm{M}_{\\odot}\\mathrm{Myr}^{-1},\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 total star formation rate (SFR_R2-total)",
+    "value": "55.3",
+    "uncertainty": "+/- 6.93",
+    "units": "M_sun Myr^-1",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\mathrm{SFR}_{\\mathrm{R2 - total}} = \\mathrm{SFR}_\\mathrm{prestellar} + \\mathrm{SFR}_\\mathrm{protostellar} = (55.3 \\pm 6.93) \\hspace{1mm} \\mathrm{M}_{\\odot}\\mathrm{Myr}^{-1}.\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R1 prestellar star formation efficiency (SFE_R1-prestellar)",
+    "value": "1.6 x 10^-3",
+    "uncertainty": "+/- 0.1 x 10^-3",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\text{SFE}_{\\text{R1 - prestellar}} = (1.6 \\pm 0.1) \\times 10^{-3},\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R2 total star formation efficiency (SFE_R2-total)",
+    "value": "8.1 x 10^-3",
+    "uncertainty": "+/- 0.5 x 10^-3",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Star formation rate and efficiency",
+      "quote": "&\\text{SFE}_{\\text{R2 - total}} = \\text{SFE}_\\text{prestellar} + \\text{SFE}_\\text{protostellar} = (8.1 \\pm 0.5) \\times 10^{-3}.\\\\"
+     }
+    ]
+   },
+   {
+    "quantity": "R1-EXT total gas mass",
+    "value": "2450",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| R1-EXT$^{i}$ | 5764 | 256.6 | 81.6 | 33.6 | 0.41 | 0.93 | 2450 |"
+     }
+    ]
+   },
+   {
+    "quantity": "R2-EXT total gas mass",
+    "value": "5000",
+    "uncertainty": "not stated",
+    "units": "M_sun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 3",
+      "quote": "| R2-EXT$^{i}$ | 8000 | 384.6 | 83.6 | 41.6 | 0.49 | 1.0 | 5000 |"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Around 55% of the N2H+ spectra in G012 are well fitted by two velocity components and ~45% by a single velocity component, defining two main velocity structures (FVC and SVC) separated by ~2.5 km s^-1 at 35.6 km s^-1.",
+    "evidence": [
+     {
+      "loc": "Analysis of the N2H+ data cube",
+      "quote": "The model fitting results show that G012 is characterized by two main velocity structures separated by $\\sim$2.5 $\\rm km\\,s^{-1}$, which we define as the first velocity component (FVC) and the second velocity component (SVC)."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "Around 55$\\%$ of the N$_2$H$^+$ spectra are well fitted by two velocity components, while the remainder are well described by a single velocity component."
+     }
+    ]
+   },
+   {
+    "value": "N2H+ emission and relative abundance decrease at the center of G012 where H41alpha bubbles and C18O emission peak, consistent with N2H+ destruction by heating, free electrons, and CO from the central OB star cluster and H II regions.",
+    "evidence": [
+     {
+      "loc": "N2H+ destruction",
+      "quote": "Given the high concentrations of H41$\\alpha$ and C$^{18}$O in the center of G012, it is likely that the central H ii regions are heating the gas in the protocluster and destroying the N$_2$H$^+$ molecule through interactions with free electrons (cite: vigren2012) and with the CO molecule (cite: bergin1997; caselli2002b; caselli2012)."
+     }
+    ]
+   },
+   {
+    "value": "DCN(3-2) emission reveals V-shaped velocity structures at the top of R2 (coincident with a hot core and perpendicular SiO outflow) and toward the southern extended part of R1 and the central OB cluster, tracing potential localized gas inflows/accretion.",
+    "evidence": [
+     {
+      "loc": "DCN accretion evidence in the R2 filament and towards the central OB star cluster",
+      "quote": "DCN emission in this region reveals a clear “V-shape” structure, features seen in other filaments undergoing accretion (cite: liu2019; bonne2020; bonne2023; yiyo2024; nico2024), coincident with the hot core location (see Fig. [8](#fig:dcn_pv), right panel), along with an SiO elongated feature perpendicular to the filament related with an outflow component (cite: armante2024)."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "We identify filamentary structures traced by DCN exhibiting signatures of potential accretion toward the center of the protocluster, where the OB stellar cluster is located and N$_2$H$^+$ is largely destroyed, suggesting that these structures may represent the remnants of a former hub-filament system."
+     }
+    ]
+   },
+   {
+    "value": "Cores in G012 are kinematically coupled to the dense gas traced by N2H+ and DCN from which they are forming.",
+    "evidence": [
+     {
+      "loc": "Conclusions",
+      "quote": "Using N$_2$H$^+$ (1-0) and DCN (3-2) spectral lines, we estimate updated velocities for 48 previously identified cores. In general, the cores appear kinematically coupled to the dense gas traced by N$_2$H$^+$ and DCN from which they are forming."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The R1 filament in the G012.80 protocluster is undergoing coherent rotation around its spine while gravity dominates over centrifugal forces.",
+    "experiment": "Constructed N2H+(1-0) PV diagrams, aligned the R1 filament along its ridgeline to measure the ridgeline-averaged transverse velocity gradient, derived the 3D gravitational acceleration from the line-mass profile, and applied a cylindrical rotation toy model to compute the centrifugal-to-gravitational force ratio Fc/Fg.",
+    "result": "R1 exhibits a helical PV pattern and a smooth transverse velocity gradient of 10.4 +/- 0.29 km s^-1 pc^-1 (rotational timescale ~0.1 Myr), with Fc/Fg < 1 across the filament radius (assuming cos(theta) = 1) but increasing with radius similarly to L1482-S.",
+    "finding": "R1 is undergoing coherent rotation that is subdominant compared to gravity, implying its most likely fate is to collapse into a state similar to R2.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "R1 exhibits a transverse velocity gradient of 10.4 km s$^{-1}$ pc$^{-1}$ and few dense cores. This velocity gradient is interpreted with a simple rotation toy model when combined with line-mass profile, and corresponds to a rotational timescale of $\\sim\\,0.1$ Myr."
+     },
+     {
+      "loc": "A filament rotation toy model applied to R1",
+      "quote": "Assuming cos$(\\theta)$ = 1, the R1 profile indicates that the filament is predominantly influenced by gravity rather than rotation, similar to the internal rotation pattern observed in the California L1482-S cloud."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "We find that rotation in the R1 filament is subdominant compared to gravity, but as the radius increases the role of rotation increases, very similar to the behavior reported in the California L1482 filament (cite: gutierrez2021)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The two main filaments in G012.80 (R1 and R2) represent different evolutionary stages of star formation within the same protocluster.",
+    "experiment": "Compared the N2H+ and DCN kinematics, PV diagrams, line-mass profiles, core populations (prestellar vs. protostellar), star formation rates (SFR), and star formation efficiencies (SFE) between R1 and R2 (both baseline boxes and FilFinder extended definitions).",
+    "result": "R1 has a transverse rotational velocity gradient, only 2 prestellar cores (0 protostellar), SFR = 4.24 +/- 0.29 M_sun Myr^-1, and SFE = (1.6 +/- 0.1) x 10^-3, whereas R2 has compact velocity structures (Delta V < 2 km s^-1), 5 prestellar and 9 protostellar cores, an SiO outflow, SFR = 55.3 +/- 6.93 M_sun Myr^-1, and SFE = (8.1 +/- 0.5) x 10^-3.",
+    "finding": "R1 is younger and still rotating with low star formation activity, while R2 has evolved to gravitational collapse with an order-of-magnitude higher SFR and SFE, showing that G012 hosts filaments at distinct evolutionary stages.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Combining gas kinematics, core incidence, and the line-mass profiles, we suggest that R1 is younger and still rotating, while R2 has evolved to collapse with a higher SFR. G012 thus hosts filaments at different evolutionary stages."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "Considering the R1 versus R2 differences in gas kinematics, core incidence, and estimated SFRs, we propose that R1 is still rotating and younger than the R2 filament, which has collapsed to a more efficient mode of star formation, likely by shedding its angular momentum."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The filaments R1 and R2 in G012.80 have much higher line-mass profiles and densities than typical low-mass and intermediate-mass star-forming filaments, yet share universal rotational kinematic signatures across mass scales.",
+    "experiment": "Derived cumulative mass and power-law line-mass profiles lambda(omega) for R1 and R2 using N2H+ column density and relative abundance X(N2H+) = (0.93 +/- 0.10) x 10^-10, and compared them to L1482-S, ONC, Orion ISF, and G351.77.",
+    "result": "Line-mass profiles follow lambda(omega) = 5660 M_sun pc^-1 (omega/pc)^0.30 for R1 and lambda(omega) = 6943 M_sun pc^-1 (omega/pc)^0.20 for R2, up to 3 times denser than G351.77 and almost 30 times higher normalization at 1 pc than L1482-S.",
+    "finding": "R1 and R2 are highly dense dominant mass reservoirs (~60% of the protocluster mass in their extended structures), and the similarity in force-ratio profiles between R1 and L1482-S indicates common angular momentum evolution across almost 30x in line-mass scale.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Line-mass profiles follow $\\lambda$($\\omega$) = 5660 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.30}$ for R1 and $\\lambda$($\\omega$) = 6943 M$_{\\odot}$ pc$^{-1}$($\\omega$/pc)$^{0.20}$ for R2, which are much larger than those of typical low-mass filaments."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "While the kinematic features appear similar between L1482 and R1, the line-mass profile normalization at 1 pc of R1 is almost 30 times higher than that of L1482. Hence, the similarities in the kinematics and the force-ratio profiles may indicate common angular momentum evolution of filaments across large ranges in mass and line-mass scales."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Feedback from the central OB star cluster and H II regions destroys N2H+ in the center of G012.80, while DCN traces warmer gas inflows toward the cores and central cluster.",
+    "experiment": "Compared spatial distributions of N2H+(1-0), X(N2H+), C18O(2-1), DCN(3-2), H41alpha, and 1.3 mm/3 mm continuum, and constructed parallel DCN PV diagrams in the southern extension of R1 and central OB cluster region.",
+    "result": "N2H+ emission is absent and X(N2H+) drops near the central H41alpha bubbles and C18O peaks, while DCN shows coherent elongated structures with V-shaped PV patterns (velocity variations ~4 km s^-1) converging toward a massive core and the central H II bubble.",
+    "finding": "Central H II regions heat the gas and destroy N2H+ via free electrons and CO, whereas DCN survives and traces gas inflows feeding massive cores and the central cluster, possibly remnants of a former hub-filament system.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "N2H+ destruction",
+      "quote": "Given the high concentrations of H41$\\alpha$ and C$^{18}$O in the center of G012, it is likely that the central H ii regions are heating the gas in the protocluster and destroying the N$_2$H$^+$ molecule through interactions with free electrons (cite: vigren2012) and with the CO molecule (cite: bergin1997; caselli2002b; caselli2012)."
+     },
+     {
+      "loc": "Conclusions",
+      "quote": "We identify filamentary structures traced by DCN exhibiting signatures of potential accretion toward the center of the protocluster, where the OB stellar cluster is located and N$_2$H$^+$ is largely destroyed, suggesting that these structures may represent the remnants of a former hub-filament system."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "G012 is an active, massive, evolved protocluster with H II regions, OB star clusters, and a high abundance of cores, making it an optimal testbed for studying high-mass star formation in a feedback-rich environment; N2H+(1-0) has lower depletion onto dust grains and a critical density (2.0-6.1 x 10^4 cm^-3) suited to probe cold dense gas.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Detections of HC$_3$N, CO outflows, class I methanol masers, H ii regions, OB star clusters, and a high abundance of cores indicate that G012 is an optimal testbed for studying HMSF in an evolved protocluster, particularly the mechanisms regulating the distribution and kinematics of dense gas in a feedback-rich environment (cite: haschick1983; yu2019; xie2023; armante2024)."
+     },
+     {
+      "loc": "Introduction",
+      "quote": "This nitrogen-bearing molecule is characterized by lower depletion levels onto dust grains and was first detected in the interstellar medium by (cite: thaddeus1975). For the N$_2$H$^+$(1-0) transition, the critical density ranges from 2.0 $\\times$ 10$^4$ cm$^{-3}$ at 100 K to 6.1 $\\times$ 10$^4$ cm$^{-3}$ at 10 K (cite: shirley2015), indicating the conditions under which this line becomes an effective tracer."
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Combining 7m, 12m, and TP data via feather recovers missing large-scale flux and negative bowls; N2H+ column density is used to derive total H2 mass because the previous H2 dust column density map (Dell'Ova et al. 2024) lacks full spatial coverage over the main filaments; mode of X(N2H+) is used because it is stable under different binning and masking conditions.",
+    "evidence": [
+     {
+      "loc": "ALMA-IMF datacubes",
+      "quote": "To recover the cloud emission at all available scales, we combine observations of the 7m and 12m arrays with total power data (TP). For this, we use the `feather` task. This combination also allows us to recover the missing flux, visible as negative bowls in the interferometric spectral data produced by the lack of zero-spacing."
+     },
+     {
+      "loc": "Relative abundance",
+      "quote": "In G012, previous estimates of the H$_2$ column density map (cite: pierre2024) do not provide the full spatial coverage achieved by the N$_2$H$^+$ map."
+     },
+     {
+      "loc": "Relative abundance",
+      "quote": "We determine representative N$_2$H$^+$ relative abundance values using the mode of its distribution, a choice motivated by its stability under different binning and masking conditions (see Appendix [11](#sec:ap_relative))."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Single-component vs. two-component hyperfine N2H+ spectral fits: tested both across the cube and retained single-component fits where two-component fits produced poor fits for one component and single-component uncertainties were low.",
+     "evidence": [
+      {
+       "loc": "Output cleaning",
+       "quote": "To address this, we refit the entire cube using two velocity components and evaluate whether the fits improve both inside and outside the previous selection criteria. For spectra containing a single velocity component, the two-component model often produces poor fits for either the bluest or reddest component. In these cases, we retain the single-component fit when its uncertainties are low and the fit quality is satisfactory."
+      }
+     ]
+    },
+    {
+     "value": "Using FilFinder automated skeletons vs. baseline visual box selections for the main kinematic analysis: rejected using full FilFinder skeletons for the baseline analysis because R2 splits into four branches at its lower end that cannot be reliably distinguished at current resolution.",
+     "evidence": [
+      {
+       "loc": "Variations in physical parameters",
+       "quote": "In some cases, FilFinder identifies more complex morphologies, particularly in the R2 filament, where most of the elongated structure follows a single main skeleton, but the lower part splits into approximately four possible branches (see right panel in Fig. [13](#fig:filfinder_detection)). Although one could select only the longest path as the main spine of the filament, we consider that it would not be fully reliable to claim that this represents the principal structure."
+      }
+     ]
+    },
+    {
+     "value": "Alternative explanations for the R1 transverse velocity gradient (unresolved fibers/streamers, organized inflows along sub-filaments, or external H II region feedback): evaluated and rejected as primary explanations in favor of coherent large-scale filament rotation due to the smoothness and continuity of the transverse gradient and lack of V-shaped parallel PV structures in the upper R1 region.",
+     "evidence": [
+      {
+       "loc": "Potential star-forming scenarios in G012",
+       "quote": "Among the possible explanations, a coherent rotation of the filament provides the most straightforward interpretation of the observed transverse velocity gradient. While localized inflows or feedback related perturbations may contribute to the kinematics in specific regions, particularly in the bottom and extended portion of R1 near to the H ii region, the overall smoothness and continuity of the transverse gradient along the filament are most consistent with a large scale rotational motion."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "S/N threshold of 12 for N2H+ selected by testing various signal_cut values to exclude noisy/unresolved spectra; velocity uncertainty cut of 0.3 km s^-1 chosen because it is conservative relative to the 0.23 km s^-1 velocity resolution; tau/e(tau) > 2 mask chosen for relative abundance to balance uncertainty against pixel retention (removing ~7% of pixels).",
+    "evidence": [
+     {
+      "loc": "Choosing input parameters",
+      "quote": "Testing various *signal_cut* values confirms that pixels below an $\\mathrm{S/N}$ of 12 yield poor fits or large uncertainties in critical parameters like radial velocities errors."
+     },
+     {
+      "loc": "Output cleaning",
+      "quote": "Errors in centroid velocity and velocity dispersion are mostly below 0.3 km s$^{-1}$, with only 5 and 26 pixels exceeding this value, respectively. Since this threshold is conservative relative to the N$_2$H$^+$ velocity resolution, we adopt it as the maximum allowed uncertainty for $\\mathrm{V_c}$ and $\\sigma$."
+     },
+     {
+      "loc": "Technical considerations to estimate relative abundance",
+      "quote": "To minimize the impact of large $\\tau$ uncertainties while preserving most of the filamentary structure, we adopt the $\\tau/e(\\tau) > 2$ mask, which removes only $\\sim$7$\\%$ of the pixels."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Previous H2 column density map from Dell'Ova et al. (2024) has incomplete spatial coverage over the main filaments in G012.",
+     "evidence": [
+      {
+       "loc": "Relative abundance",
+       "quote": "In G012, previous estimates of the H$_2$ column density map (cite: pierre2024) do not provide the full spatial coverage achieved by the N$_2$H$^+$ map."
+      }
+     ]
+    },
+    {
+     "value": "Filament inclination angle relative to the plane of the sky is unknown, so 3D density, potential, acceleration, and rotational force ratios are 'apparent' POS quantities.",
+     "evidence": [
+      {
+       "loc": "Line-mass profiles and associated 3D model quantities",
+       "quote": "All quantities are estimated in the POS since we do not have access to inclination information. We refer to these as “apparent” profiles following (cite: gutierrez2021)."
+      }
+     ]
+    },
+    {
+     "value": "SFR and SFE uncertainties only include core mass uncertainties from Motte et al. (2025) and do not include uncertainties in the adopted core lifetimes; furthermore, SFR and SFE estimates are lower limits due to core census incompleteness at the 2.4 kpc distance of G012.",
+     "evidence": [
+      {
+       "loc": "Star formation rate and efficiency",
+       "quote": "Errors were estimated solely from the mass uncertainties reported in the (cite: motte2024) catalog, without including possible uncertainties in the adopted timescales."
+      },
+      {
+       "loc": "Star formation rate and efficiency",
+       "quote": "Our estimates of SFR and SFE should be regarded as lower limits, since they are based exclusively on the population of pre- and protostellar cores traced by some specific tracers. Unlike nearby star-forming regions, more distant regions such as G012 require more complete core censuses to provide accurate determinations."
+      }
+     ]
+    },
+    {
+     "value": "V-shaped PV structures can arise from different kinematic configurations (e.g., rotation, outflows, or feedback perturbations) and do not uniquely trace accretion.",
+     "evidence": [
+      {
+       "loc": "DCN accretion evidence in the R2 filament and towards the central OB star cluster",
+       "quote": "While such V-shaped structures are often interpreted as signatures of gas inflow, we note that similar PV morphologies can arise from different kinematic configurations (e.g., rotation or outflows), and therefore do not uniquely trace accretion."
+      }
+     ]
+    },
+    {
+     "value": "Current angular resolution (~2.3'' / ~5.5-6 kau) cannot resolve sub-pc substructures such as fibers, forming cores, or accretion streamers, nor confirm whether the four branches at the bottom of R2 are independent substructures.",
+     "evidence": [
+      {
+       "loc": "Potential star-forming scenarios in G012",
+       "quote": "Disentangling these other alternative scenarios will require higher resolution observations capable of resolving sub-pc structures such as fibers, forming cores, and accretion streamers, as well as detailed comparisons with simulations of feedback influenced filaments."
+      },
+      {
+       "loc": "Variations in physical parameters",
+       "quote": "Higher-resolution data will be required to confirm whether these features correspond to dependent or independent substructures near the filament end."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Applying a single constant N2H+ relative abundance X(N2H+) = 0.93 x 10^-10 across the entire protocluster to derive H2 filament masses may introduce systematic errors in line-mass profiles, since the paper itself shows X(N2H+) varies spatially due to feedback and heating near H II regions and hot cores.",
+    "Separating overlapping velocity components using a hard velocity boundary at 35.6 km s^-1 can artificially truncate wings or misassign components in regions with large velocity gradients or velocity dispersions.",
+    "The baseline R1 and R2 boxes (0.56 pc x 0.22 pc) isolate only sub-regions of the filaments; when extended FilFinder masks are used, R1 contains protostellar cores and the SFE ratio between R2 and R1 drops from ~5 to ~1.5."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "ALMA-IMF reduction pipeline at https://github.com/ALMA-IMF/reduction",
+     "evidence": [
+      {
+       "loc": "ALMA-IMF datacubes",
+       "quote": "N$_2$H$^+$ observations were cleaned using the ALMA-IMF imaging pipeline[^3] (cite: DCN) and the version 5.6.0 of The Common Astronomy Software Applications package (cite: casateam)."
+      },
+      {
+       "loc": "Footnote 3",
+       "quote": "<https://github.com/ALMA-IMF/reduction>"
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Exact sky/pixel coordinates of the R1 and R2 rectangular boxes (0.56 pc x 0.22 pc) and the rotation center used for the 45 deg spatial rotation",
+    "Custom analysis scripts for ridgeline tracing, filament straightening, intensity-weighted PV diagram generation, and 1-/2-component PySpecKit cube merging",
+    "Exact tclean parameters used in the ALMA-IMF pipeline for the N2H+(1-0) cube",
+    "External ALMA-IMF FITS maps not hosted in the raw ALMA archive (Specifically the Dell'Ova et al. 2024 H2 column density map and Motte et al. 2025 core mass table)"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB for the G012.80 spectral line visibilities and cubes; a few GB for the post-processed FITS cubes and continuum maps",
+   "score_inferred": 7,
+   "score_reason": "The post-imaging analysis recipe is exceptionally well documented in the text and appendices (explicit CASA version, tasks, line-free channels, PySpecKit version, guesses, limits, S/N thresholds, error cuts, FilFinder parameters, and analytic equations), and the ALMA-IMF reduction repository is linked. However, exact box coordinates, tclean imaging parameters, and custom post-processing scripts are not directly provided.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "The ALMA-IMF Large Program data (2017.1.01355.L) are public in the ALMA archive, the spectral fitting and kinematic analysis steps are thoroughly parameterized with open-source Python tools (PySpecKit, FilFinder, scipy), and the main results (velocity gradients, line-mass power laws, SFR/SFE, core velocities) are quantitative."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: DCN)",
+     "why": "ALMA-IMF spectral line imaging pipeline and DCN core catalog methodology"
+    },
+    {
+     "citation": "(cite: nico2024)",
+     "why": "N2H+ data reduction, PySpecKit two-component fitting and merging, reprojection artifact masking, and Freedman-Diaconis abundance histogram method"
+    },
+    {
+     "citation": "(cite: yiyo2024)",
+     "why": "N2H+ data reduction, isolated component moment 1 map, intensity-weighted PV diagrams, and core velocity offset method"
+    },
+    {
+     "citation": "(cite: gutierrez2021)",
+     "why": "Ridgeline-averaged filament velocity gradient and cylindrical filament rotation force-ratio formalism"
+    },
+    {
+     "citation": "(cite: stutz2016)",
+     "why": "Line-mass profile, apparent volume density, gravitational potential, and gravitational acceleration formalism"
+    },
+    {
+     "citation": "(cite: stutz2018)",
+     "why": "Line-mass profile and 3D cylindrical gravitational potential/acceleration formalism"
+    },
+    {
+     "citation": "(cite: gonzalez2019)",
+     "why": "Technique for constructing intensity-weighted position-velocity (PV) diagrams"
+    },
+    {
+     "citation": "(cite: caselli2002a)",
+     "why": "N2H+ column density approximation formula"
+    },
+    {
+     "citation": "(cite: readelli2019)",
+     "why": "N2H+ column density approximation formula"
+    },
+    {
+     "citation": "(cite: tom2022)",
+     "why": "Formalism and protostellar lifetime for estimating star formation rate (SFR) and efficiency (SFE)"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: motte)",
+     "why": "ALMA-IMF Paper I overviewing the Large Program"
+    },
+    {
+     "citation": "(cite: continuum)",
+     "why": "ALMA-IMF 1.3 mm and 3 mm continuum data release"
+    },
+    {
+     "citation": "(cite: DCN)",
+     "why": "ALMA-IMF DCN(3-2) data and core velocity catalog"
+    },
+    {
+     "citation": "(cite: fabien2024)",
+     "why": "ALMA-IMF 1.3 mm and 3 mm continuum dense core catalog"
+    },
+    {
+     "citation": "(cite: armante2024)",
+     "why": "G012 prestellar and protostellar core catalog and outflow study"
+    },
+    {
+     "citation": "(cite: motte2024)",
+     "why": "ALMA-IMF core mass, temperature, and luminosity catalog"
+    },
+    {
+     "citation": "(cite: pierre2024)",
+     "why": "ALMA-IMF H2 column density and dust temperature maps"
+    },
+    {
+     "citation": "(cite: roberto2024)",
+     "why": "ALMA-IMF H41alpha recombination line and 3 mm free-free emission study"
+    },
+    {
+     "citation": "(cite: towner2024)",
+     "why": "ALMA-IMF SiO(5-4) outflow catalog and data"
+    },
+    {
+     "citation": "(cite: atanu2024)",
+     "why": "ALMA-IMF C18O(2-1) study"
+    },
+    {
+     "citation": "(cite: yiyo2024)",
+     "why": "ALMA-IMF N2H+ filament kinematics study in G353.41"
+    },
+    {
+     "citation": "(cite: nico2024)",
+     "why": "ALMA-IMF N2H+ filament kinematics study in G351.77"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA-IMF Large Program"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gemini-4-argon",
+  "custom_id": "gemini4argon-2026A%26A...711A.239S",
+  "batch_id": null,
+  "run": "argon_run2",
+  "collected_at": "2026-10-29T23:34:55",
+  "usage": {
+   "input": 49190,
+   "output": 25199,
+   "thoughts": 0
+  },
+  "usd": 0.35037,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "thinking": "low",
+  "seconds": 307.0,
+  "finish": "STOP"
+ },
+ "checks": {
+  "quotes": 202,
+  "quotes_ok": 202,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 36,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 33,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 110,
+   "stated": 82,
+   "rate": 0.745
+  },
+  "evidence_ok": true
+ }
+}

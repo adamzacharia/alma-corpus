@@ -1,0 +1,703 @@
+{
+ "bibcode": "2023MNRAS.525.6146W",
+ "title": "ALMA observations of the Extended Green Object G19.01-0.03 - II. A massive protostar with typical chemical abundances surrounded by four low-mass pre-stellar core candidates",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad2677",
+ "arxiv_id": "2309.01743",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical and chemical properties of the massive protostar G19.01-0.03 MM1 (hot core chemistry, CH3OH temperature structure) and its protocluster environment (four neighbouring millimetre sources), given ALMA 1.05 mm and VLA 1.21 cm data?",
+ "alma_project_codes": [
+  "2013.1.00812.S"
+ ],
+ "data": {
+  "bands": "Band 7 (1.05 mm)",
+  "arrays": "ALMA 12 m array only",
+  "angular_resolution": "continuum beam 0.52'' x 0.35'' (2080 x 1400 AU at 4 kpc)",
+  "sensitivity": "continuum rms 0.25 mJy/beam; wide-spw line cubes ~3 mJy/beam in emission-free channels; narrow-spw cubes ~6 mJy/beam per 0.5 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Near kinematic distance 4.0 +/- 0.3 kpc (Galactic rotation curve + NH3 LSRK velocity)",
+    "evidence": [
+     {
+      "loc": "1.1 Target",
+      "quote": "the near kinematic distance estimated using the Galactic rotation curve parameters of (cite: reid14)"
+     }
+    ]
+   },
+   "citation": "Reid et al. 2014 (cite: reid14); NH3 velocity from (cite: cyganowski13); as in (cite: williams22)"
+  },
+  {
+   "what": {
+    "value": "Hi-GAL clump mass, radius and temperature (974 Msun, 0.16 pc, 17.9 K for D=3.658 kpc)",
+    "evidence": [
+     {
+      "loc": "1.1 Target",
+      "quote": "reports a clump mass, radius and temperature of 974 M$_{\\odot}$, 0.16 pc and 17.9 K respectively for D=3.658 kpc"
+     }
+    ]
+   },
+   "citation": "(cite: elia17)"
+  },
+  {
+   "what": {
+    "value": "ATLASGAL clump mass 1070 Msun for D=4.3 kpc; NH3 T_gas = 19.5 K",
+    "evidence": [
+     {
+      "loc": "1.1 Target",
+      "quote": "report a clump mass of 1070 M$_{\\odot}$ for D=4.3 kpc"
+     },
+     {
+      "loc": "4.2.2 Low mass protocluster members",
+      "quote": "derive $T_{\\mathrm{gas}}=19.5$ K from NH$_{3}$ hyperfine structure fitting"
+     }
+    ]
+   },
+   "citation": "(cite: schuller09); (cite: wienen12)"
+  },
+  {
+   "what": {
+    "value": "Clump NH3 kinetic temperatures (23.8 K single fit; 14.7 K cool and 50.2 K warm two-component fit)",
+    "evidence": [
+     {
+      "loc": "4.2.2 Low mass protocluster members",
+      "quote": "yielded a kinetic temperature of $23.8\\pm0.4$ K"
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski13)"
+  },
+  {
+   "what": {
+    "value": "MM1 systemic velocity 59.9 +/- 1.1 km/s and SMA CH3CN temperature fit (100-130 K)",
+    "evidence": [
+     {
+      "loc": "4.1.3 Pixel-by-pixel analysis of CH3OH synthetic spectra",
+      "quote": "the known systemic velocity of $59.9\\pm1.1$ km s$^{-1}$ (cite: cyganowski11a)"
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski11a)"
+  },
+  {
+   "what": {
+    "value": "Dust opacity kappa(1.05 mm) = 1.45 cm2/g (thick ice mantles, high density gas)",
+    "evidence": [
+     {
+      "loc": "4.2 Physical properties of MM1...MM5 from dust emission",
+      "quote": "we set $\\kappa_{1.05\\,\\mathrm{mm}}=1.45$ cm$^{2}$g$^{-1}$ for dust grains with thick ice mantles in high density gas"
+     }
+    ]
+   },
+   "citation": "(cite: ossenkopf94)"
+  },
+  {
+   "what": {
+    "value": "44 GHz Class I CH3OH maser positions used for comparison with NH3(3,3) masers",
+    "evidence": [
+     {
+      "loc": "3.2.2 Extended emission with ALMA",
+      "quote": "the positions of 44 GHz Class I CH$_{3}$OH masers from (cite: cyganowski09)"
+     }
+    ]
+   },
+   "citation": "(cite: cyganowski09)"
+  },
+  {
+   "what": {
+    "value": "ALMA 1.05 mm sources MM1-MM5 and VLA 5.01 cm / 1.21 cm continuum results (SED, 66 au HC HII region, enclosed mass 40-70 Msun, source extraction)",
+    "evidence": [
+     {
+      "loc": "1.1 Target",
+      "quote": "with an enclosed mass of $40-70$ M$_{\\odot}$ within a 2000 AU radius"
+     }
+    ]
+   },
+   "citation": "Paper I (cite: williams22)"
+  },
+  {
+   "what": {
+    "value": "Literature CH3OH column densities, temperatures and COM abundances of low- and high-mass YSOs (comparison sample, Figure 1)",
+    "evidence": [
+     {
+      "loc": "4.3.2 Comparison to other YSOs observed at high resolution",
+      "quote": "Collated in Figure [1](#fig:abundance_plot) are ALMA observations for both low-mass YSOs and high-mass hot cores"
+     }
+    ]
+   },
+   "citation": "e.g. (cite: law21), (cite: manigand20), (cite: bianchi22), (cite: csengeri19)"
+  },
+  {
+   "what": {
+    "value": "Core formation efficiency of 13% for Jeans comparison",
+    "evidence": [
+     {
+      "loc": "4.2.2 Low mass protocluster members",
+      "quote": "For the 13% core formation efficiency (CFE) found by (cite: palau15)"
+     }
+    ]
+   },
+   "citation": "(cite: palau15)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum sources and measure their properties",
+   "method": "astrodendro dendrogram on the self-calibrated 1.05 mm continuum image",
+   "software": [
+    "astrodendro"
+   ],
+   "key_parameters": [
+    "minimum isocontour value 5 sigma_rms (sigma_rms = 0.25 mJy/beam)",
+    "minimum isocontour spacing 1 sigma_rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify molecular lines in the wide spws",
+   "method": "Match emission peaks to JPL/CDMS rest frequencies at the systemic velocity and confirm with LTE synthetic spectra",
+   "software": [
+    "CLASS/WEEDS",
+    "Splatalogue"
+   ],
+   "key_parameters": [
+    "typical hot core model parameters, T > 100 K, used for the identification spectra"
+   ],
+   "assumptions": [
+    "Lines at the source systemic velocity of MM1"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Rotation diagram of CH3OH at the MM1 continuum peak",
+   "method": "LTE rotation diagram, with and without opacity correction, of eleven CH3OH transitions",
+   "software": [
+    "CASA",
+    "Python"
+   ],
+   "key_parameters": [
+    "eleven CH3OH transitions (blended 15(1,0)-14(2,0) and 6(1,2)-5(1,2) excluded)",
+    "A and E transitions fit together"
+   ],
+   "assumptions": [
+    "LTE and optically thin emission, single temperature"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Bayesian LTE fit of CH3OH at the continuum peak and pixel by pixel across MM1",
+   "method": "emcee MCMC over WEEDS/CLASS LTE synthetic spectra of six CH3OH lines in the ~278 GHz band, repeated per pixel within the MM1 continuum source size",
+   "software": [
+    "emcee",
+    "CLASS/WEEDS",
+    "WeedsPy_MCMC",
+    "toddTools",
+    "analysisUtils"
+   ],
+   "key_parameters": [
+    "60 walkers, n_burn = 200, n_prod = 500",
+    "Uniform priors: N 0.05-3.0e18 cm-2, T 80-300 K, v_cen 56.0-64.0 km/s, dV 2.0-8.0 km/s",
+    "source size fixed to the geometric mean of the ~278 GHz synthesised beam (~0.5''); ALMA projected diameter 558 m"
+   ],
+   "assumptions": [
+    "LTE with background continuum included; all modelled transitions arise in the same emitting region (outflow-tracing 9(-1,9)-8(0,8) and 6(1,5)-5(1,4), blended lines and the vt=1 line excluded)",
+    "Background continuum from the ALMA 1.05 mm continuum converted to brightness temperature"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Column densities and fractional abundances of other species",
+   "method": "Order-of-magnitude LTE fits with only column density free, per species, then ratios to CH3OH and H2 column densities",
+   "software": [
+    "emcee",
+    "WeedsPy_MCMC",
+    "CLASS/WEEDS"
+   ],
+   "key_parameters": [
+    "T = 162.7 K, v = 59.7 km/s, dV = 6.4 km/s fixed from the CH3OH fit; source size ~0.5''"
+   ],
+   "assumptions": [
+    "Line emission of MM1 species has the same extent as the continuum"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive the 12C/13C ratio from CH3OH isotopologues",
+   "method": "Ratio of 12CH3OH to 13CH3OH column densities at the MM1 peak",
+   "software": [
+    "emcee",
+    "WeedsPy_MCMC"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Optically thin lines, same rotational temperature, similar spatial extent"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Gas masses and densities of MM1...MM5 from dust emission",
+   "method": "Isothermal optically-thin-corrected dust mass from integrated 1.05 mm flux density",
+   "software": [],
+   "key_parameters": [
+    "kappa(1.05 mm) = 1.45 cm2/g",
+    "MM1 T_dust = 163 K; MM2-MM5 T_dust = 15 and 24 K"
+   ],
+   "assumptions": [
+    "gas-to-dust mass ratio 100",
+    "dust temperature equals gas temperature",
+    "spherical geometry, mu_H2 = 2.8, radius = half the geometric mean of source sizes; D = 4 kpc"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Compare source number and masses with thermal Jeans fragmentation",
+   "method": "Thermal Jeans mass and radius from clump properties, N_Jeans = M_clump x CFE / M_J",
+   "software": [],
+   "key_parameters": [
+    "Hi-GAL and ATLASGAL clump properties; CFE 13%"
+   ],
+   "assumptions": [
+    "uniform density sphere"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Virial analysis of MM4 using DCN",
+   "method": "Virial parameter from DCN(4-3) hyperfine-fitted velocity dispersion and dust mass",
+   "software": [
+    "CLASS"
+   ],
+   "key_parameters": [
+    "sigma_obs = 0.58 +/- 0.03 km/s (mean across FWHM size of MM4); radius ~2000 AU"
+   ],
+   "assumptions": [
+    "flat density profile (n = 0), T_dust equal to gas temperature, DCN mu = 28"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "Characterise NH3(3,3) and 25 GHz CH3OH maser candidates in the VLA data",
+   "method": "2D Gaussian (point-source, beam-sized) fits to >=5 sigma emission spots; compare angular separations of NH3(3,3) and 44 GHz CH3OH masers with K-S and A-D tests",
+   "software": [
+    "CASA",
+    "CLASS/WEEDS"
+   ],
+   "key_parameters": [
+    ">=5 sigma emission in >=2 consecutive channels, spatially contiguous within a beam; sigma measured per channel",
+    "25 GHz CH3OH: 4 sigma criterion; thermal if >=5 channels, maser candidate if <=4 channels"
+   ],
+   "assumptions": [
+    "Emission expected to be unresolved, fitted size fixed to the synthesised beam"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3OH column density at MM1 continuum peak (MCMC LTE)",
+   "value": "(2.22 +/- 0.01)e18",
+   "uncertainty": "0.01e18",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions (ii)",
+     "quote": "returns highest likelihood column density and temperature of $(2.22\\pm0.01)\\times10^{18}$ cm$^{-2}$ and $162.7\\substack{+0.3 \\\\ -0.5}$ K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH excitation temperature at MM1 continuum peak (MCMC LTE)",
+   "value": "162.7",
+   "uncertainty": "+0.3/-0.5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions (ii)",
+     "quote": "returns highest likelihood column density and temperature of $(2.22\\pm0.01)\\times10^{18}$ cm$^{-2}$ and $162.7\\substack{+0.3 \\\\ -0.5}$ K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH centroid velocity and FWHM width at MM1 peak",
+   "value": "V_cen = 59.73; dV = 6.38",
+   "uncertainty": "V_cen +/- 0.01; dV +0.01/-0.03",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.3 Pixel-by-pixel analysis of CH3OH synthetic spectra",
+     "quote": "V$_{\\mathrm{cen}}=59.73\\pm0.01$ km s$^{-1}$ and $\\Delta V = 6.38\\substack{+0.01 \\\\ -0.03}$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Opacity-corrected rotation diagram CH3OH column density and T_rot",
+   "value": "N = (2.0 +/- 0.4)e18 cm-2; T_rot = 166 +/- 9 K",
+   "uncertainty": "0.4e18 cm-2; 9 K",
+   "units": "cm-2; K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusions (ii)",
+     "quote": "our opacity-corrected rotation diagram analysis of $(2.0\\pm0.4)\\times10^{18}$ cm$^{-2}$ and $166\\pm9$ K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational temperature without opacity correction",
+   "value": "186",
+   "uncertainty": "8",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Rotation diagram analysis of CH3OH",
+     "quote": "The derived rotational temperature is $186\\pm8$ K."
+    }
+   ]
+  },
+  {
+   "quantity": "Range of line optical depths in the opacity-corrected rotation diagram",
+   "value": "~0.4-11.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1.1 Rotation diagram analysis of CH3OH",
+     "quote": "The $\\tau_{i}$ values for this best fit range between $\\sim0.4-11.7$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak CH3OH temperature, offset from the continuum peak by 0.22'' (~880 au)",
+   "value": "165.5",
+   "uncertainty": "0.6",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Conclusions (iii)",
+     "quote": "The peak CH$_{3}$OH temperature ($165.5\\pm0.6$ K) is offset from the MM1 dust peak by 0.22$\\ensuremath{''}\\sim880$ au."
+    }
+   ]
+  },
+  {
+   "quantity": "Temperature difference between offset peak and the column-density peak",
+   "value": "2.8",
+   "uncertainty": "0.7",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.1.4 Images of CH3OH physical parameters",
+     "quote": "is significantly greater than its propagated statistical error (i.e. $2.8\\pm0.7$ K)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of line transitions and species identified in the wide ALMA spws",
+   "value": "43 transitions from 11 species",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 COMs towards MM1 with ALMA",
+     "quote": "we identify 43 line transitions from 11 different species in the wide ALMA spws"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCH3 column density at MM1 peak",
+   "value": "4.3e17",
+   "uncertainty": "order of magnitude estimate",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$4.3\\times10^{17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "13CH3OH column density at MM1 peak",
+   "value": "3.9e17",
+   "uncertainty": "order of magnitude estimate",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$3.9\\times10^{17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO column density at MM1 peak",
+   "value": "1.3e17",
+   "uncertainty": "order of magnitude estimate",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1.3\\times10^{17}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CH2OH column density at MM1 peak",
+   "value": "6.0e16",
+   "uncertainty": "order of magnitude estimate",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$6.0\\times10^{16}$"
+    }
+   ]
+  },
+  {
+   "quantity": "NH2CHO column density at MM1 peak",
+   "value": "5.0e15",
+   "uncertainty": "order of magnitude estimate",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$5.0\\times10^{15}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Fractional abundance ranges of identified species",
+   "value": "1e-1 to 1e-4 relative to CH3OH; 1e-6 to 1e-9 relative to H2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1 Estimation of likely column densities and abundances",
+     "quote": "we report fractional abundances of the identified species ranging from $10^{-1}-10^{-4}$ with respect to CH$_{3}$OH, and $10^{-6}-10^{-9}$ with respect to H$_{2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "H2 column density at MM1 peak used for abundances",
+   "value": "6.6e23",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Table 2 caption",
+     "quote": "As for column 3, but for H$_{2}$ ($6.6\\times10^{23}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C ratio from CH3OH isotopologues at MM1 peak",
+   "value": "~6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3 12C/13C isotope ratio",
+     "quote": "we estimate that $^{12}\\mathrm{C}/^{13}\\mathrm{C}\\simeq6$"
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C ratio with unresolved 0.2'' source size",
+   "value": "~7.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.3 12C/13C isotope ratio",
+     "quote": "we derive a $^{12}\\mathrm{C}/^{13}\\mathrm{C}$ ratio of $\\sim$7.5"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass of MM1 at 163 K",
+   "value": "4.3",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.1 Temperature, mass and stability of MM1",
+     "quote": "to M$_{\\mathrm{gas}}=4.3$ M$_{\\odot}$ at 163 K"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc-to-star mass ratio of MM1 (revised)",
+   "value": "0.07-0.12",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.1 Temperature, mass and stability of MM1",
+     "quote": "Our revised $M_{\\mathrm{gas}}/M_{\\ast}$ is 0.07–0.12"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas masses of MM2...MM5",
+   "value": "0.1-1.3 Msun at 24 K; 0.2-2.7 Msun at 15 K",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "4.2.2 Low mass protocluster members",
+     "quote": "The gas masses of MM2...MM5 range between $0.1-1.3$ M$_{\\odot}$ and $0.2-2.7$ M$_{\\odot}$ at 24 and 15 K respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Median mass of MM2..MM5",
+   "value": "1.0-2.0 Msun for 24-15 K",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Conclusions (vii)",
+     "quote": "The median mass of MM2..MM5 (assuming isothermal dust emission) is 1.0$-$2.0 M$_{\\odot}$ for a temperature range of $24-15$ K"
+    }
+   ]
+  },
+  {
+   "quantity": "Thermal Jeans radius and mass (Hi-GAL clump)",
+   "value": "R_J ~ 0.012 pc; M_J ~ 0.36 Msun",
+   "uncertainty": "not stated",
+   "units": "pc; Msun",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "4.2.2 Low mass protocluster members",
+     "quote": "$R_{J}\\approx0.012$ pc and $M_{J}\\approx0.36$ M$_{\\odot}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial mass of MM4",
+   "value": "3.8",
+   "uncertainty": "0.4",
+   "units": "Msun",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2.3 Virial analysis of MM4",
+     "quote": "the virial mass of MM4 is calculated to be $3.8\\pm0.4$ M$_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Virial parameter of MM4",
+   "value": "2.0-4.1",
+   "uncertainty": "+/-0.4",
+   "units": "dimensionless",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "4.2.3 Virial analysis of MM4",
+     "quote": "this yields $\\alpha_{vir}=2.0-4.1(\\pm 0.4)$"
+    }
+   ]
+  },
+  {
+   "quantity": "DCN systemic velocities of MM2 and MM4",
+   "value": "59.88 (MM2); 59.72 (MM4)",
+   "uncertainty": "0.06; 0.05",
+   "units": "km/s",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "3.2.5 MM2...MM5 with ALMA and the VLA",
+     "quote": "$59.88\\pm0.06$ km s$^{-1}$ and $59.72\\pm0.05$ km s$^{-1}$ respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Number of NH3(3,3) emission spots and groups above 5 sigma",
+   "value": "50 spots in 8 groups (mean sigma 1.14 mJy/beam)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "3.2.3 Ammonia emission with the VLA",
+     "quote": "we identify 50 emission spots at the $\\geq5\\sigma$ level (where the mean $\\sigma$ across all channels with emission is $\\sigma=1.14$ mJy beam$^{-1}$) that reside in 8 emission groups"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of brightest NH3(3,3) group (ID 4)",
+   "value": "216.0 (T_B ~1550 K)",
+   "uncertainty": "1.3",
+   "units": "mJy/beam",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "3.2.3 Ammonia emission with the VLA",
+     "quote": "has a fitted peak intensity ($216.0\\pm1.3$ mJy beam$^{-1}$) corresponding to a brightness temperature $\\sim$1550 K"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH 9(-1,9)-8(0,8) FWHM in the outflow versus at the MM1 peak",
+   "value": "2.01 (outflow); 6.95 (MM1 peak)",
+   "uncertainty": "0.01; 0.08",
+   "units": "km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2.2 Extended emission with ALMA",
+     "quote": "($\\Delta$V$_{\\rm FWHM}=2.01\\pm0.01$ km s$^{-1}$ and $6.95\\pm0.08$ km s$^{-1}$, respectively)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Self-calibration details (number of iterations, solution intervals, solution types, reference antenna) for the ALMA continuum are not given",
+  "Explicit line-free channel ranges used for the pseudo-continuum and continuum subtraction are not listed",
+  "tclean-level parameters (cell size, image size, niter, threshold, masks, deconvolver, gridder for the mosaic) are not given",
+  "Flagging choices, weights and the ALMA absolute flux-scale uncertainty are not stated or propagated",
+  "Fitting windows and Gaussian-fit procedure used to get integrated intensities for the rotation diagram are not specified",
+  "Initial walker positions, random seeds and exact line-by-line fit ranges for the WEEDSPY_MCMC runs are only in the public scripts",
+  "Priors and starting values for the column-density-only fits of the other species are not given",
+  "How the ALMA continuum was converted to brightness temperature for background continuum (beam, frequency) and the exact H2 column used for abundances (text 6.6e23 vs Table 6.7e23) is ambiguous",
+  "Dust temperatures for MM2-MM5 are assumed (15 and 24 K), not measured; MM4 hyperfine fit settings are not given"
+ ],
+ "missing_for_reproduction": [
+  "Self-calibration solution intervals and iterations, flagging and exact tclean imaging parameters",
+  "Line-free channel ranges for continuum subtraction",
+  "Exact dendrogram source table inputs come from Paper I (MM1-MM5 fluxes and sizes are in a table here, but extraction details are inherited)",
+  "Priors and settings for the column-density-only fits of the other species",
+  "Fit windows used for integrated intensities in the rotation diagram",
+  "Hyperfine fit settings for DCN in MM4",
+  "Compiled literature comparison sample (Figure 1) values"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "ALMA data and processed images are public and the CH3OH LTE/MCMC recipe, priors and code are released with numeric results; imaging and self-calibration parameters and some inherited choices from Paper I are missing",
+ "rediscovery_reason": "Processed continuum and line cubes are on Zenodo, the MCMC recipe with priors and public code is given, and main results (N, T_ex, masses, 12C/13C) are numeric",
+ "source_card": "cards/2023MNRAS.525.6146W/sonnet/card.md"
+}

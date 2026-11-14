@@ -1,0 +1,536 @@
+{
+ "bibcode": "2022MNRAS.510.1148S",
+ "title": "Lack of other molecules in CO-rich debris discs: is it primordial or secondary gas?",
+ "year": 2022,
+ "doi": "10.1093/mnras/stab3146",
+ "arxiv_id": "2111.07655",
+ "fields": [
+  "debris_disks",
+  "protoplanetary_disks",
+  "astrochemistry"
+ ],
+ "question": "Whether the gas in CO-rich debris discs is a remnant from the earlier Class II phase (hybrid scenario) or of secondary origin driven by icy planetesimal destruction, tested via millimeter observations of simple molecules.",
+ "alma_project_codes": [
+  "2017.1.01545.S",
+  "2018.1.01429.S"
+ ],
+ "data": {
+  "bands": "Bands 5 and 6",
+  "arrays": "12m Array (42–45 antennas)",
+  "angular_resolution": "1–2''",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rest frequencies of molecular transitions from the Splatalogue database",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Rest frequencies are taken from the Splatalogue database (<https://www.cv.nrao.edu/php/splat/>)."
+     }
+    ]
+   },
+   "citation": "Splatalogue database (https://www.cv.nrao.edu/php/splat/)"
+  },
+  {
+   "what": {
+    "value": "Unattenuated photodissociation rates and shielding functions",
+    "evidence": [
+     {
+      "loc": "Photodissociation of molecules",
+      "quote": "The unattenuated photodissociation rates, as well as the corresponding shielding functions, were taken from (cite: heays2017)."
+     }
+    ]
+   },
+   "citation": "(cite: heays2017)"
+  },
+  {
+   "what": {
+    "value": "Basic properties of the CO gas component (R_in, R_out, M_CO) in the debris disc subsample",
+    "evidence": [
+     {
+      "loc": "Photodissociation of molecules",
+      "quote": "Basic properties of CO gas component in the debris disc subsample. The listed CO mass estimates are based on analysis of optically thin C$^{18}$O line observations. References in the last column: (1): (cite: kospal2013); (2): (cite: kral2019); (3): (cite: moor2017); (4): Pawellek et al. (in prep.)."
+     }
+    ]
+   },
+   "citation": "(cite: kospal2013); (cite: kral2019); (cite: moor2017); Pawellek et al. (in prep.)"
+  },
+  {
+   "what": {
+    "value": "Gas-grain chemical network from the KIDA'17 database with recent updates",
+    "evidence": [
+     {
+      "loc": "Chemical and line flux modelling",
+      "quote": "These physical conditions have been used to calculate time-dependent chemical evolution using the single-point ALCHEMIC chemical kinetics code and an up-to-date gas-grain chemical network (based on the KIDA’17 database with recent updates; (cite: KIDA; kida15))."
+     }
+    ]
+   },
+   "citation": "(cite: KIDA; kida15)"
+  },
+  {
+   "what": {
+    "value": "Initial 'low metals' ISM-like atomic abundances",
+    "evidence": [
+     {
+      "loc": "Chemical and line flux modelling",
+      "quote": "The first so-called “low metals” set of mainly atomic abundances from (cite: Lee_ea98) describes the elemental content of the ISM that is available for gas or icy chemistry."
+     }
+    ]
+   },
+   "citation": "(cite: Lee_ea98)"
+  },
+  {
+   "what": {
+    "value": "Collisional cross-section and spectroscopic data from LAMDA",
+    "evidence": [
+     {
+      "loc": "Chemical and line flux modelling",
+      "quote": "The collisional cross-section and other spectroscopic data from the Leiden Atomic and Molecular Database (LAMDA) have been utilised (cite: lamda)."
+     }
+    ]
+   },
+   "citation": "(cite: lamda)"
+  },
+  {
+   "what": {
+    "value": "Fixed isotopic ratios 12C/13C = 77 and 16O/18O = 560",
+    "evidence": [
+     {
+      "loc": "Chemical and line flux modelling",
+      "quote": "Since $^{13}$C and $^{18}$O are not included in the chemical network, we have used fixed isotopic ratios C$^{12}$/C$^{13} = 77$ and O$^{16}$/O$^{18} = 560$ to scale down the resulting molecular abundances (cite: wilson_rood_1994_isotope_ratio)."
+     }
+    ]
+   },
+   "citation": "(cite: wilson_rood_1994_isotope_ratio)"
+  },
+  {
+   "what": {
+    "value": "CN hyperfine components for brightness temperature calculation",
+    "evidence": [
+     {
+      "loc": "Chemical and line flux modelling",
+      "quote": "We have calculated the CN brightness temperature using hyperfine components from (cite: 2015MNRAS.446.1750F)."
+     }
+    ]
+   },
+   "citation": "(cite: 2015MNRAS.446.1750F)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, subtract continuum, and image molecular line cubes",
+   "method": "Calibrate and flag raw datasets with standard ALMA scripts in CASA, subtract continuum in uv-space with first-order polynomials using UVCONTSUB, and image spectral cubes with TCLEAN using natural weighting.",
+   "software": [
+    "CASA",
+    "UVCONTSUB",
+    "TCLEAN"
+   ],
+   "key_parameters": [
+    "Natural weighting; channel widths rebinned to 0.9 km s^-1 (C2H, HCO+, HCN), 0.75 km s^-1 (CN), and 1.25 km s^-1 (coarse Band 6)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure integrated line fluxes and 3-sigma upper limits from moment-0 maps",
+   "method": "Construct zeroth-moment maps over line velocity ranges, measure fluxes using fitted elliptical apertures, estimate uncertainties from 16 random background apertures, and derive 3-sigma upper limits for non-detections using HCN or IMSMOOTH-smoothed archival 12CO cubes as templates.",
+   "software": [
+    "CASA",
+    "IMSMOOTH"
+   ],
+   "key_parameters": [
+    "16 random background apertures for uncertainty; 3-sigma upper limits"
+   ],
+   "assumptions": [
+    "Expected velocity ranges and spatial extents of non-detected lines match those of HCN (for protoplanetary discs) or 12CO (for debris discs and HD 141569)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate molecular photodissociation lifetimes under H2 and C shielding",
+   "method": "Compute photodissociation rates k = k0 * theta and lifetimes tau = 1/k as a function of H2 or neutral atomic carbon column density using literature unattenuated rates and shielding functions.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Only the interstellar UV radiation field is taken into account; dust attenuation is negligible in debris discs"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Simulate time-dependent chemical evolution and non-LTE line radiative transfer",
+   "method": "Run the single-point ALCHEMIC chemical kinetics code over a 2D temperature-density grid for 1 Myr across five sets of initial abundances (varying H2/He depletion), then compute non-LTE line brightness temperatures and flux ratios with RADEX.",
+   "software": [
+    "ALCHEMIC",
+    "RADEX"
+   ],
+   "key_parameters": [
+    "Temperature grid: 10 to 300 K; density grid: 10^3 to 10^7 cm^-3; evolution time: 1 Myr; radial UV optical depth tau = 0 to 1; cosmic ray ionisation rate: 1.3e-17 s^-1; H2 depletion factors: 1, 2, 5, 10, 100",
+    "Emitting gas column length = 15 au; line FWHM = 1 km s^-1"
+   ],
+   "assumptions": [
+    "Dust-to-gas mass ratio set to 10^-10 for 0.1 um grains; unattenuated UV field equal to vertical ISRF; stellar X-rays and high-energy particles neglected; fixed isotopic ratios 12C/13C = 77 and 16O/18O = 560"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Calculate the effect of hydrogen depletion on gas molar mass and disc vertical scale height",
+   "method": "Scale elemental abundances of species heavier than H2 and He by factors of 1 to 10^6, reshuffle into CO, H2O, and H2, and compute gas molar mass and hydrostatic vertical scale height for an isothermal 30 K disc.",
+   "software": [],
+   "key_parameters": [
+    "Heavy element scaling factor: 1 to 10^6; disc temperature: 30 K"
+   ],
+   "assumptions": [
+    "Hydrostatic equilibrium; isothermal 30 K geometrically thin disc; all carbon locked in CO, remaining O and H in water (with and without water formation cases), remaining H in H2"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "HD 100453 integrated CN flux (S_CN)",
+   "value": "153",
+   "uncertainty": "6 (16)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 100453 | 153$\\pm$6 (16) | 185$\\pm$12 (22) | 208$\\pm$19 (28) | $<$29.1 | 69.5$\\pm$16.3 (17.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 100453 integrated HCN flux (S_HCN)",
+   "value": "185",
+   "uncertainty": "12 (22)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 100453 | 153$\\pm$6 (16) | 185$\\pm$12 (22) | 208$\\pm$19 (28) | $<$29.1 | 69.5$\\pm$16.3 (17.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 100453 integrated HCO+ flux (S_HCO+)",
+   "value": "208",
+   "uncertainty": "19 (28)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 100453 | 153$\\pm$6 (16) | 185$\\pm$12 (22) | 208$\\pm$19 (28) | $<$29.1 | 69.5$\\pm$16.3 (17.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 100453 integrated C2H flux (S_CCH)",
+   "value": "<29.1",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 100453 | 153$\\pm$6 (16) | 185$\\pm$12 (22) | 208$\\pm$19 (28) | $<$29.1 | 69.5$\\pm$16.3 (17.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 100453 integrated CS flux (S_CS)",
+   "value": "69.5",
+   "uncertainty": "16.3 (17.7)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 100453 | 153$\\pm$6 (16) | 185$\\pm$12 (22) | 208$\\pm$19 (28) | $<$29.1 | 69.5$\\pm$16.3 (17.7) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 139614 integrated CN flux (S_CN)",
+   "value": "2790",
+   "uncertainty": "47 (283)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 139614 | 2790$\\pm$47 (283) | 2433$\\pm$32 (245) | 1338$\\pm$23 (136) | 484$\\pm$16 (51) | 1369$\\pm$19 (138) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 139614 integrated HCN flux (S_HCN)",
+   "value": "2433",
+   "uncertainty": "32 (245)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 139614 | 2790$\\pm$47 (283) | 2433$\\pm$32 (245) | 1338$\\pm$23 (136) | 484$\\pm$16 (51) | 1369$\\pm$19 (138) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 139614 integrated HCO+ flux (S_HCO+)",
+   "value": "1338",
+   "uncertainty": "23 (136)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 139614 | 2790$\\pm$47 (283) | 2433$\\pm$32 (245) | 1338$\\pm$23 (136) | 484$\\pm$16 (51) | 1369$\\pm$19 (138) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 139614 integrated C2H flux (S_CCH)",
+   "value": "484",
+   "uncertainty": "16 (51)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 139614 | 2790$\\pm$47 (283) | 2433$\\pm$32 (245) | 1338$\\pm$23 (136) | 484$\\pm$16 (51) | 1369$\\pm$19 (138) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 139614 integrated CS flux (S_CS)",
+   "value": "1369",
+   "uncertainty": "19 (138)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 139614 | 2790$\\pm$47 (283) | 2433$\\pm$32 (245) | 1338$\\pm$23 (136) | 484$\\pm$16 (51) | 1369$\\pm$19 (138) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142666 integrated CN flux (S_CN)",
+   "value": "1296",
+   "uncertainty": "15 (130)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 142666 | 1296$\\pm$15 (130) | 836$\\pm$15 (85) | 439$\\pm$12 (46) | 115$\\pm$10 (15) | 237$\\pm$7 (25) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142666 integrated HCN flux (S_HCN)",
+   "value": "836",
+   "uncertainty": "15 (85)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 142666 | 1296$\\pm$15 (130) | 836$\\pm$15 (85) | 439$\\pm$12 (46) | 115$\\pm$10 (15) | 237$\\pm$7 (25) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142666 integrated HCO+ flux (S_HCO+)",
+   "value": "439",
+   "uncertainty": "12 (46)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 142666 | 1296$\\pm$15 (130) | 836$\\pm$15 (85) | 439$\\pm$12 (46) | 115$\\pm$10 (15) | 237$\\pm$7 (25) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142666 integrated C2H flux (S_CCH)",
+   "value": "115",
+   "uncertainty": "10 (15)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 142666 | 1296$\\pm$15 (130) | 836$\\pm$15 (85) | 439$\\pm$12 (46) | 115$\\pm$10 (15) | 237$\\pm$7 (25) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 142666 integrated CS flux (S_CS)",
+   "value": "237",
+   "uncertainty": "7 (25)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 142666 | 1296$\\pm$15 (130) | 836$\\pm$15 (85) | 439$\\pm$12 (46) | 115$\\pm$10 (15) | 237$\\pm$7 (25) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145718 integrated CN flux (S_CN)",
+   "value": "721",
+   "uncertainty": "19 (75)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 145718 | 721$\\pm$19 (75) | 811$\\pm$14 (82) | 419$\\pm$16 (45) | $<$63.4 | 141$\\pm$11 (18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145718 integrated HCN flux (S_HCN)",
+   "value": "811",
+   "uncertainty": "14 (82)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 145718 | 721$\\pm$19 (75) | 811$\\pm$14 (82) | 419$\\pm$16 (45) | $<$63.4 | 141$\\pm$11 (18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145718 integrated HCO+ flux (S_HCO+)",
+   "value": "419",
+   "uncertainty": "16 (45)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 145718 | 721$\\pm$19 (75) | 811$\\pm$14 (82) | 419$\\pm$16 (45) | $<$63.4 | 141$\\pm$11 (18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145718 integrated C2H flux (S_CCH)",
+   "value": "<63.4",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 145718 | 721$\\pm$19 (75) | 811$\\pm$14 (82) | 419$\\pm$16 (45) | $<$63.4 | 141$\\pm$11 (18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 145718 integrated CS flux (S_CS)",
+   "value": "141",
+   "uncertainty": "11 (18)",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 145718 | 721$\\pm$19 (75) | 811$\\pm$14 (82) | 419$\\pm$16 (45) | $<$63.4 | 141$\\pm$11 (18) |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 141569 integrated line flux upper limits (CN, HCN, HCO+, C2H, CS)",
+   "value": "<31.4, <51.5, <50.1, <55.6, <35.0",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 141569 | $<$31.4 | $<$51.5 | $<$50.1 | $<$55.6 | $<$35.0 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 21997 integrated line flux upper limits (CN, HCN, HCO+, C2H, CS)",
+   "value": "<37.6, <30.8, <31.6, <37.3, <38.8",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 21997 | $<$37.6 | $<$30.8 | $<$31.6 | $<$37.3 | $<$38.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 121617 integrated line flux upper limits (CN, HCN, HCO+, C2H, CS)",
+   "value": "<8.7, <21.5, <23.5, <32.0, <10.7",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 121617 | $<$8.7 | $<$21.5 | $<$23.5 | $<$32.0 | $<$10.7 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 131488 integrated line flux upper limits (CN, HCN, HCO+, C2H, CS)",
+   "value": "<16.4, <13.2, <22.0, <18.3, <16.9",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 131488 | $<$16.4 | $<$13.2 | $<$22.0 | $<$18.3 | $<$16.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "HD 131835 integrated line flux upper limits (CN, HCN, HCO+, C2H, CS)",
+   "value": "<12.7, <20.2, <20.1, <24.0, <13.5",
+   "uncertainty": "3sigma upper limit",
+   "units": "mJy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Photodissociation of molecules",
+     "quote": "| HD 131835 | $<$12.7 | $<$20.2 | $<$20.1 | $<$24.0 | $<$13.5 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version used for calibration and imaging",
+  "TCLEAN stopping threshold, deconvolver, cell size, image size, and masking strategy",
+  "Specific line-free channel ranges used in UVCONTSUB",
+  "Exact velocity integration ranges and elliptical aperture parameters used to extract integrated fluxes and upper limits for each target",
+  "ALMA project codes for the archival 12CO, 13CO, and C18O observations (manifest links 2015.1.01600.S, which is not printed in the main text)",
+  "Contents of the referenced Appendix (continuum data processing and analysis, moment zero maps) which are omitted from the provided text"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and pipeline version used for data reduction",
+  "TCLEAN imaging parameters (cell size, image dimensions, stopping criteria, masking)",
+  "Exact velocity intervals and elliptical aperture geometries (semi-major axis, aspect ratio, position angle) used to extract integrated line fluxes and upper limits",
+  "Project codes and reduction details for the archival 12CO, 13CO, and C18O datasets used as templates and flux ratio denominators",
+  "The Appendix text and tables (continuum analysis and moment-0 maps) which are referenced in the main text but omitted from the source document"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "ALMA project codes, calibrators, spectral setups, and basic CASA tasks (UVCONTSUB, TCLEAN with natural weighting, channel rebinning) are clearly documented, and the chemical/radiative transfer modelling parameters (ALCHEMIC + RADEX) are well specified. However, exact aperture geometries, velocity integration windows, CASA version, and archival CO dataset identifiers are not explicitly stated.",
+ "rediscovery_reason": "The raw ALMA data from projects 2017.1.01545.S and 2018.1.01429.S are public in the ALMA archive, the data reduction and aperture-flux extraction recipe is straightforward, and the main observational results are concrete numeric integrated line fluxes and 3-sigma upper limits (Table 3).",
+ "source_card": "cards/2022MNRAS.510.1148S/sonnet/card.md"
+}

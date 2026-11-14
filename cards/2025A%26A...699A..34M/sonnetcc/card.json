@@ -1,0 +1,1619 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2025A&A...699A..34M",
+  "title": "ALMAGAL: IV. Morphological comparison of molecular and thermal dust emission using the histogram of oriented gradients method",
+  "year": 2025,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Mininni, C.",
+  "n_authors": 50,
+  "arxiv_id": "2504.12963",
+  "doi": "10.1051/0004-6361/202452700",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2019.1.00195.L"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "the largest sample of star-forming regions ever observed at high spatial resolution with the Atacama Large Millimeter/Submillimeter Array (ALMA)"
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "ALMAGAL sample of high-mass clumps (1013 analysed)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "heliocentric distances up to 7.5 kpc",
+      "evidence": [
+       {
+        "loc": "2.1 The sample",
+        "quote": "Due to the close proximity (below the FOV size) of 3 pairs of sources and the exclusion of Eta Carinae, the sample analyzed is of 1013 sources"
+       },
+       {
+        "loc": "2.1 The sample",
+        "quote": "located at heliocentric distances up to 7.5 kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "How well do individual molecular transitions (H2CO, CH3OH, DCN, HC3N, CH3CN, CH3OCHO, SO, SiO) morphologically trace the 1.38 mm dust continuum in 1013 ALMAGAL high-mass clumps, on extended and compact scales, measured with the HOG method",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "looking at morphological correlations in their overall integrated molecular line emission with the cold dust"
+     },
+     {
+      "loc": "abstract",
+      "quote": "A total of 1013 targets have been analyzed in the present paper"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2019.1.00195.L",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "The ALMAGAL program (project code: 2019.1.00195.L in Cycle 7) was observed between October 2019 and July 2022."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.38 mm)",
+    "evidence": [
+     {
+      "loc": "2.2 Molecular transitions analyzed",
+      "quote": "in the 1.38 mm band (ALMA Band 6)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows: two 1.9 GHz wide (0.98 MHz, ~1.3 km/s resolution) at 217.8 and 220.0 GHz; two 0.47 GHz wide (0.24 MHz, ~0.3 km/s) at 218.3 and 220.6 GHz",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "The spectral setup of the observations covers four spectral windows in total"
+     },
+     {
+      "loc": "Observations and data reduction",
+      "quote": "centered at 217.8 GHz and 220.0 GHz, and two higher resolution spectral windows with 0.47 GHz bandwidth and spectral resolution of 0.24 MHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SiO",
+     "transition": "5-4",
+     "rest_frequency": "217.104980 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "217.104980"
+      }
+     ]
+    },
+    {
+     "species": "DCN",
+     "transition": "3-2",
+     "rest_frequency": "217.238538 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "217.238538"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "3(0,3)-2(0,2)",
+     "rest_frequency": "218.222192 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "218.222192"
+      }
+     ]
+    },
+    {
+     "species": "CH3OCHO",
+     "transition": "17(3,14)-16(3,13) E",
+     "rest_frequency": "218.280900 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "218.280900"
+      }
+     ]
+    },
+    {
+     "species": "HCCCN",
+     "transition": "24-23",
+     "rest_frequency": "218.324723 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "218.324723"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "4(2,3)-3(1,2)",
+     "rest_frequency": "218.440063 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "218.440063"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "3(2,1)-2(2,0)",
+     "rest_frequency": "218.760066 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "218.760066"
+      }
+     ]
+    },
+    {
+     "species": "SO",
+     "transition": "6(5)-5(4)",
+     "rest_frequency": "219.949442 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "219.949442"
+      }
+     ]
+    },
+    {
+     "species": "CH3CN",
+     "transition": "12(1)-11(1)",
+     "rest_frequency": "220.743011 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "220.743011"
+      }
+     ]
+    },
+    {
+     "species": "CH3CN",
+     "transition": "12(0)-11(0)",
+     "rest_frequency": "220.747261 GHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "220.747261"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "7-m array (7M) plus two configurations of the main 12-m array per target",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "each target was observed with the 7-m array (hereafter 7M) and with two configurations of the main ALMA array."
+     }
+    ]
+   },
+   "configurations": {
+    "value": "near sources (d < 4.7 kpc): C-2 and C-5; far sources (d > 4.7 kpc): C-3 and C-6",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "were observed in configurations C-2 and C-5 of the main array"
+     },
+     {
+      "loc": "Observations and data reduction",
+      "quote": "were observed in configurations C-3 and C-6"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "7m+tm2 data used here: linear resolution ~5000 au; full 7m+tm2+tm1 reaches ~1000 au",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "that reach a linear resolution of $\\sim 5000\\,$au"
+     },
+     {
+      "loc": "abstract",
+      "quote": "at a spatial resolution down to 1000 au"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "October 2019 to July 2022 (Cycle 7)",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "was observed between October 2019 and July 2022"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "ALMA large program ALMAGAL, PIs Molinari, Schilke, Battersby, Ho",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "ALMAGAL is an ALMA large project (2019.1.00195.L, PIs: Molinari, Schilke, Battersby, Ho"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "CORNISH 5 GHz survey",
+     "provided": {
+      "value": "Radio counterparts used to flag 112 clumps with possible free-free contamination of the 1.38 mm continuum",
+      "evidence": [
+       {
+        "loc": "4.4 Details of the application of astroHOG",
+        "quote": "We identified 112 matched clumps, mostly evolved clumps"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Hi-GAL (Herschel)",
+     "provided": {
+      "value": "Parent sample selection and physical parameters (L/M) of the clumps",
+      "evidence": [
+       {
+        "loc": "Table 3 notes",
+        "quote": "the majority of the sample that was selected from the Hi-GAL survey"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Sample definition and properties of the 1017 ALMAGAL clumps (1013 analysed)",
+      "evidence": [
+       {
+        "loc": "2.1 The sample",
+        "quote": "the sample analyzed is of 1013 sources (see (cite: ALMAGAL1) for further details)"
+       }
+      ]
+     },
+     "citation": "(cite: ALMAGAL1)"
+    },
+    {
+     "what": {
+      "value": "Clump mean temperatures from SED fitting of Herschel continuum (and L/M values)",
+      "evidence": [
+       {
+        "loc": "5.1 Statistics of detections on moment-0 maps",
+        "quote": "as derived by (cite: elia2017; elia2021) from the SED fitting of the"
+       }
+      ]
+     },
+     "citation": "(cite: elia2017; elia2021)"
+    },
+    {
+     "what": {
+      "value": "Critical densities of the analysed transitions (Eq. 4 of Shirley 2015) with LAMDA collisional coefficients",
+      "evidence": [
+       {
+        "loc": "Table 1 notes",
+        "quote": "The critical densities have been calculated from Eq. (4) of (cite: Shirley2015)"
+       },
+       {
+        "loc": "Table 1 notes",
+        "quote": "from LAMDA (Leiden Atomic and Molecular Database)"
+       }
+      ]
+     },
+     "citation": "(cite: Shirley2015)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "standard ALMA pipeline for single-array calibration, then ALMAGAL dedicated pipeline for joint deconvolution",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "Using the standard pipeline, we calibrated the data of the single arrays"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "included in the ALMAGAL pipeline for the most intense sources",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "joint deconvolution of the various configurations observed that includes self-calibration for the most intense sources"
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "iterative procedure starting from the ALMA-pipeline findcont to define continuum channels and line-only cubes",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "to refine the determination of the continuum channels used to create the continuum images and the line-only cubes"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "joint deconvolution of 7m and tm2 (7m+tm2) cubes and continuum maps from the ALMAGAL pipeline",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "we decided to analyze the cubes and continuum maps obtained by the joint deconvolution of"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Joint-deconvolution pipeline, findcont-based continuum channel selection and quality assessment of final cubes/continuum maps",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "A detailed description of this routine, together with a quality assessment of the final products, is presented in (cite: ALMAGAL2)."
+       }
+      ]
+     },
+     "from_reference": "(cite: ALMAGAL2)"
+    },
+    {
+     "what": {
+      "value": "CuTEx source extraction on the continuum maps follows the ALMAGAL fragmentation paper methodology",
+      "evidence": [
+       {
+        "loc": "Appendix A Continuum masks",
+        "quote": "using the same methodology of (cite: ALMAGAL3)"
+       }
+      ]
+     },
+     "from_reference": "(cite: ALMAGAL3)"
+    },
+    {
+     "what": {
+      "value": "HOG method and astroHOG implementation",
+      "evidence": [
+       {
+        "loc": "4.3 Morphological analysis with astroHOG",
+        "quote": "using the HOG method presented in (cite: soler_astroHOG)"
+       }
+      ]
+     },
+     "from_reference": "(cite: soler_astroHOG)"
+    },
+    {
+     "what": {
+      "value": "Mask dilation by one beam",
+      "evidence": [
+       {
+        "loc": "Appendix A Continuum masks",
+        "quote": "we dilated the mask by one beam (cite: dame2011)"
+       }
+      ]
+     },
+     "from_reference": "(cite: dame2011)"
+    },
+    {
+     "what": {
+      "value": "Projected Rayleigh statistic as the test of uniformity of relative gradient orientations",
+      "evidence": [
+       {
+        "loc": "4.3 Morphological analysis with astroHOG",
+        "quote": "using the projected Rayleigh statistic (cite: durand1958; Jow2018)"
+       }
+      ]
+     },
+     "from_reference": "(cite: durand1958; Jow2018)"
+    }
+   ],
+   "unstated_but_needed": [
+    "tclean/imaging parameters of the ALMAGAL 7m+tm2 cubes (weighting, robust, cell size, image size, deconvolver, masks, beam, rms): only in the ALMAGAL pipeline paper",
+    "CASA / pipeline version used for the cubes and continuum maps",
+    "Which archive or ALMAGAL release provides the 7m+tm2 cubes and continuum maps used (the joint-deconvolved products are team-made)",
+    "Gaussian-derivative FWHM (Omega) used by astroHOG for the gradients",
+    "Sigma-clipping parameters used to build the noise maps and the number of Monte Carlo iterations beyond the stated 100",
+    "Systemic velocity of each clump and the exact 4 sigma / 5 sigma noise definition (cube-wide standard deviation) used in the automated moment-0 routine",
+    "Beam size and pixel scale per source (needed for N_beam and the weight delta/Delta)",
+    "CuTEx run parameters and the 7m+tm2 core catalogue (announced as Coletta et al. in prep.)",
+    "Per-source distances needed to convert mask areas to pc^2"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Adopt ALMAGAL 7m+tm2 cubes and continuum maps",
+    "method": {
+     "value": "Use the jointly deconvolved 7m+tm2 line cubes and 1.38 mm continuum maps from the ALMAGAL pipeline",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "we decided to analyze the cubes and continuum maps obtained by the joint deconvolution of"
+      }
+     ]
+    },
+    "software": [
+     "ALMA pipeline",
+     "findcont"
+    ],
+    "key_parameters": [
+     {
+      "value": "Chosen over 7m+tm2+tm1 for better signal-to-noise on diffuse large-scale emission",
+      "evidence": [
+       {
+        "loc": "Observations and data reduction",
+        "quote": "because they recover with a better signal-to-noise ratio the diffuse emission on large scales compared to the"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Build moment-0 maps with automated velocity limits",
+    "method": {
+     "value": "Per source and line: spatially resample cube, Gaussian-fit average and brightest-pixel spectra, set limits at +/-2 FWHM_max around fitted centre, extended where wing SNR falls below 0.5; CH3CN K=0,1 lines integrated into one map; 97 sources use a fixed +/-5 km/s range",
+     "evidence": [
+      {
+       "loc": "Appendix B",
+       "quote": "we resampled spatially the cube on the two positions axis by a factor 6, the average number of pixels in a beam size"
+      },
+      {
+       "loc": "Appendix B",
+       "quote": "where the signal-to-noise ratio (SNR), starting from the center of the line, goes below 0.5"
+      },
+      {
+       "loc": "4.1 Moment maps creation and detection",
+       "quote": "The number of sources for which the automated routine gave integration extremes that encompass all the line, without line blending problems, is 916, while for the remaining 97 sources we created the maps using a fixed velocity range."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Fixed-range fallback centred on clump systemic velocity",
+      "evidence": [
+       {
+        "loc": "4.1 Moment maps creation and detection",
+        "quote": "around the systemic velocity of the clump for all the pixels"
+       }
+      ]
+     },
+     {
+      "value": "Blended CH3CN 12(0)-11(0) and 12(1)-11(1) lines combined in one moment-0 map",
+      "evidence": [
+       {
+        "loc": "4.1 Moment maps creation and detection",
+        "quote": "we created a single moment-0 map that includes the emission of both transitions"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Line profile approximated by a Gaussian to set the integration limits",
+      "evidence": [
+       {
+        "loc": "Appendix B",
+        "quote": "and we fit it with a Gaussian profile"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Gaussian fits (single, or two Gaussians with equal FWHM for CH3CN) to spectra",
+     "evidence": [
+      {
+       "loc": "Appendix B",
+       "quote": "we fitted two Gaussian assuming they have the same FWHM"
+      }
+     ]
+    },
+    "validation": {
+     "value": "All maps visually inspected against spectra averaged over each CuTEx compact source",
+     "evidence": [
+      {
+       "loc": "4.1 Moment maps creation and detection",
+       "quote": "All the maps for each field and transition were then visually inspected to validate them."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Create moment-0 masks and decide line detection",
+    "method": {
+     "value": "Mask pixels with SNR > 3 in the moment-0 map, drop regions with no pixel above SNR 5 or fewer than 0.8 N_beam pixels, declare detection if a region exceeds N_beam pixels; then tabulate detection rates by L/M bin",
+     "evidence": [
+      {
+       "loc": "Appendix A Moment-0 masks",
+       "quote": "In the first step of the mask creation we select all of the pixels above a SNR of 3."
+      },
+      {
+       "loc": "Appendix A Moment-0 masks",
+       "quote": "excluded the regions that do not have any pixel with SNR above 5"
+      },
+      {
+       "loc": "4.2 Detection and mask on moment-0 maps",
+       "quote": "We required that at least one of the regions remaining inside the mask has a number of pixels"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "L/M divided into 5 ranges for detection statistics",
+      "evidence": [
+       {
+        "loc": "5.1 Statistics of detections on moment-0 maps",
+        "quote": "we divided them into 5 ranges, to explore also very young sources"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "CH3OCHO detections checked by eye in core spectra; 29 false detections removed, leaving 110",
+     "evidence": [
+      {
+       "loc": "4.2 Detection and mask on moment-0 maps",
+       "quote": "leaving 110 sources with a real detection"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Define extended and compact continuum masks",
+    "method": {
+     "value": "mask_com from CuTEx compact sources (ellipses of 2 sigma semi-axes, peak > 5 x rms); mask_ext from continuum SNR > 3 with isolated regions < 0.8 N_beam removed, dilated by one beam, and mask_com added",
+     "evidence": [
+      {
+       "loc": "Appendix A Continuum masks",
+       "quote": "individuates compact sources inside continuum maps building a curvature image by double-differentiation of the initial map in four different directions"
+      },
+      {
+       "loc": "Appendix A Continuum masks",
+       "quote": "we required that the background-subtracted peak flux from photometry is higher than 5 times the map rms to confirm the compact source"
+      },
+      {
+       "loc": "Appendix A Continuum masks",
+       "quote": "is defined as the continuum emission with a SNR higher than 3"
+      }
+     ]
+    },
+    "software": [
+     "CuTEx"
+    ],
+    "key_parameters": [
+     {
+      "value": "Noise map built from the continuum image not corrected for the primary beam",
+      "evidence": [
+       {
+        "loc": "Appendix A Continuum masks",
+        "quote": "we build a map of noise by estimating the noise level of the continuum image not corrected for the primary beam"
+       }
+      ]
+     },
+     {
+      "value": "Ellipses recover 86% of source integral",
+      "evidence": [
+       {
+        "loc": "Appendix A Continuum masks",
+        "quote": "to recover the 86% of the integral of the source"
+       }
+      ]
+     },
+     {
+      "value": "Dilation of mask_ext by one beam",
+      "evidence": [
+       {
+        "loc": "Appendix A Continuum masks",
+        "quote": "As third step we dilated the mask by one beam (cite: dame2011)"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "2D elliptical Gaussians plus constant or inclined-plane background fitted by CuTEx",
+     "evidence": [
+      {
+       "loc": "Appendix A Continuum masks",
+       "quote": "Identified peaks in curvature maps are then fitted (on the original map) with 2D elliptical Gaussians plus a background"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Build intersection masks and quantify area coverage",
+    "method": {
+     "value": "Restrict comparison to intersection of moment-0 mask with mask_ext, and to compact sources at least 60% covered by line emission; require minimum areas in beams",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "we took all the compact sources that have at least 60% of their area covered also by line emission, and checked that the pixels in the masks cover at least three times the area of the beam"
+      },
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "we performed the analysis only if the intersection with the mask of moment-0 covers at least 5 times the area of the beam"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "For 6 sources with mask_ext < 2 x mask_com, only mask_com was used",
+      "evidence": [
+       {
+        "loc": "4.4 Details of the application of astroHOG",
+        "quote": "For these 6 sources we considered only the mask"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Compute HOG normalized projected Rayleigh statistic V_N",
+    "method": {
+     "value": "astroHOG computes gradient orientation angles between continuum and moment-0 maps inside the masks, then the projected Rayleigh statistic V normalised by V_max to V_N in [-1,1]; V_N read as the fraction of the area with parallel gradients; errors from Monte Carlo noise realisations",
+     "evidence": [
+      {
+       "loc": "4.3 Morphological analysis with astroHOG",
+       "quote": "uses tools from circular statistics to quantify the significance of the accordance of the orientation between the intensity gradients"
+      },
+      {
+       "loc": "4.3 Morphological analysis with astroHOG",
+       "quote": "we introduced a normalized projected Rayleigh statistic"
+      },
+      {
+       "loc": "4.3 Morphological analysis with astroHOG",
+       "quote": "thus the percentage of the maps that is morphologically similar"
+      }
+     ]
+    },
+    "software": [
+     "astroHOG"
+    ],
+    "key_parameters": [
+     {
+      "value": "Constant statistical weight w = delta/Delta (pixel size over beam size) because angles within a beam are not independent",
+      "evidence": [
+       {
+        "loc": "4.3 Morphological analysis with astroHOG",
+        "quote": "we use the statistical weights to account for the fact that different values of"
+       }
+      ]
+     },
+     {
+      "value": "100 Monte Carlo realisations to derive the error on V_N",
+      "evidence": [
+       {
+        "loc": "4.4 Details of the application of astroHOG",
+        "quote": "we used the MC method calculating 100 times"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Monte Carlo noise images are uncorrelated below the beam, unlike real interferometric noise (real noise correlation below 3%)",
+      "evidence": [
+       {
+        "loc": "4.4 Details of the application of astroHOG",
+        "quote": "The noise maps considered in the MC method are not correlated below the beam size, unlike the noise of interferometric maps."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "V_N on 50 pairs of noise-only moment-0 maps gives MAD 0.6% and all values below 3%; V_N above 0.02 treated as significant",
+     "evidence": [
+      {
+       "loc": "Appendix C",
+       "quote": "The median absolute deviation of the correlation of noise-only maps is 0.6%, with all the values being below 3%."
+      },
+      {
+       "loc": "5.3 astroHOG results",
+       "quote": "deviate from the statistical correlation that can be found running astroHOG on noise maps (see Appendix C), and are considered significant"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Compare HOG with Spearman and Pearson coefficients",
+    "method": {
+     "value": "Compute Spearman (and Pearson) correlation between moment-0 and continuum pixel intensities on the same masks and compare with V_N",
+     "evidence": [
+      {
+       "loc": "5.4 Comparison with Spearman correlation coefficient",
+       "quote": "using the same masks used for the HOG method"
+      },
+      {
+       "loc": "5.4 Comparison with Spearman correlation coefficient",
+       "quote": "no underlying linear relation is assumed, and it is defined as"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Worked examples of discordant sources (AG019.8843-0.5337, AG332.7016-0.5870)",
+     "evidence": [
+      {
+       "loc": "5.4 Comparison with Spearman correlation coefficient",
+       "quote": "which means that even if there is a good level of correlation in the intensity of the continuum and the molecular species, the two emissions do not have a similar morphology"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Robustness tests on subsets",
+    "method": {
+     "value": "Repeat the HOG analysis excluding sources with CORNISH counterparts, and using only the 97 sources with fixed-range moment-0 maps",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "we present in Appendix E the same results from the HOG analysis excluding the sources associated with a CORNISH counterparts"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Medians show no significant variation from the main results",
+     "evidence": [
+      {
+       "loc": "5.3 astroHOG results",
+       "quote": "shows no significant variation from the main results of Fig."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "astroHOG",
+    "version": "not stated",
+    "used_for": {
+     "value": "Histogram of oriented gradients comparison of continuum and moment-0 maps, V and V_N with Monte Carlo errors",
+     "evidence": [
+      {
+       "loc": "4.3 Morphological analysis with astroHOG",
+       "quote": "uses tools from circular statistics to quantify the significance of the accordance of the orientation between the intensity gradients"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CuTEx",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extraction of compact continuum sources used to build mask_com",
+     "evidence": [
+      {
+       "loc": "Appendix A Continuum masks",
+       "quote": "individuates compact sources inside continuum maps building a curvature image by double-differentiation of the initial map in four different directions"
+      }
+     ]
+    }
+   },
+   {
+    "name": "findcont",
+    "version": "not stated",
+    "used_for": {
+     "value": "Starting point of an iterative continuum-channel determination in the ALMAGAL pipeline",
+     "evidence": [
+      {
+       "loc": "Observations and data reduction",
+       "quote": "to refine the determination of the continuum channels used to create the continuum images and the line-only cubes"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Sources analysed",
+    "value": "1013",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A total of 1013 targets have been analyzed in the present paper"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections H2CO 3(0,3)-2(0,2)",
+    "value": "772 (76.2%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "772 (76.2%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections SiO 5-4",
+    "value": "582 (57.5%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "582 (57.5%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections DCN 3-2",
+    "value": "423 (41.8%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "423 (41.8%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections CH3OCHO 17(3,14)-16(3,13) E",
+    "value": "110 (10.9%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "110 (10.9%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections HCCCN 24-23",
+    "value": "371 (36.6%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "371 (36.6%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections CH3OH 4(2,3)-3(1,2)",
+    "value": "607 (59.9%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "607 (59.9%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections H2CO 3(2,1)-2(2,0)",
+    "value": "569 (56.2%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "569 (56.2%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections SO 6(5)-5(4)",
+    "value": "650 (64.2%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "650 (64.2%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Detections CH3CN 12-11 K=0,1",
+    "value": "353 (34.9%)",
+    "uncertainty": "not stated",
+    "units": "sources (percent of 1013)",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table (detection statistics)",
+      "quote": "353 (34.9%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Sources where automated moment-0 routine succeeded / failed (fixed range used)",
+    "value": "916 / 97",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 Moment maps creation and detection",
+      "quote": "is 916, while for the remaining 97 sources we created the maps using a fixed velocity range"
+     }
+    ]
+   },
+   {
+    "quantity": "Sources with fraction of mask_ext covered by line emission above 25% (H2CO 3(0,3), SO, CH3OH, H2CO 3(2,1))",
+    "value": "66%, 40%, 38%, 27%",
+    "uncertainty": "not stated",
+    "units": "percent of detected sources",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.2 Area of line emission vs area of continuum emission",
+      "quote": "In particular the percentage is of 66%, 40%, 38%, and 27% for"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_ext, H2CO (both) and CH3OH",
+    "value": "0.27-0.29",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "have similar median values, 0.27-0.29 (27-29%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_ext, SO",
+    "value": "0.24",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "while the median morphological correlation of SO with the continuum at the diffuse scale is 0.24 (24%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_ext, SiO",
+    "value": "0.15",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "with a median value of 0.15 (15%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_ext, CH3OCHO (17 sources)",
+    "value": "0.84",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "we found a value of 0.84 (84%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_com, SiO",
+    "value": "0.35",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "with a median correlation of 0.35 (35%)"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_com, H2CO, CH3OH, SO",
+    "value": "around 40%",
+    "uncertainty": "not stated",
+    "units": "dimensionless (percent)",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "we found median correlation values of around 40%"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_com, HCCCN, CH3CN, DCN",
+    "value": "62%-65%",
+    "uncertainty": "not stated",
+    "units": "dimensionless (percent)",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "the value of the normalized projected Rayleigh statistic is in the range 62%-65%"
+     }
+    ]
+   },
+   {
+    "quantity": "Median V_N on mask_com, CH3OCHO",
+    "value": "87%",
+    "uncertainty": "not stated",
+    "units": "dimensionless (percent)",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "has a median value of 87%"
+     }
+    ]
+   },
+   {
+    "quantity": "H2CO V_N on mask_com rising from the 3(0,3)-2(0,2) to the 3(2,1)-2(2,0) transition",
+    "value": "31% to 45%",
+    "uncertainty": "not stated",
+    "units": "dimensionless (percent)",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "(from 31% to 45%) is seen at the scale of the compact sources"
+     }
+    ]
+   },
+   {
+    "quantity": "V_N on noise-only map pairs: median absolute deviation",
+    "value": "0.6%, all values below 3%",
+    "uncertainty": "not stated",
+    "units": "dimensionless (percent)",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Appendix C",
+      "quote": "The median absolute deviation of the correlation of noise-only maps is 0.6%, with all the values being below 3%."
+     }
+    ]
+   },
+   {
+    "quantity": "CORNISH-matched clumps",
+    "value": "112",
+    "uncertainty": "not stated",
+    "units": "clumps",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "4.4 Details of the application of astroHOG",
+      "quote": "We identified 112 matched clumps, mostly evolved clumps"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "SiO emission, unlike other outflow tracers, often does not cover the extended continuum area; SiO and SO do not trace the same gas",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "unlike other outflow tracers, SiO in a large fraction of the sources does not cover well the area of the extended continuum emission"
+     }
+    ]
+   },
+   {
+    "value": "Intensity-based Spearman coefficient can give a moderate/high correlation where gradients show little morphological similarity",
+    "evidence": [
+     {
+      "loc": "5.4 Comparison with Spearman correlation coefficient",
+      "quote": "which means that even if there is a good level of correlation in the intensity of the continuum and the molecular species, the two emissions do not have a similar morphology"
+     }
+    ]
+   },
+   {
+    "value": "Difference between the two molecule groups is attributed to molecular species, with some transition dependence especially on the compact mask",
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "This leads us to conclude that the difference between the two groups of molecular transitions is related to the molecular species."
+     },
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "We can see that a dependence on the selected transition is present."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do H2CO, CH3OH and SO, which cover the extended continuum, trace its morphology?",
+    "experiment": "astroHOG V_N between moment-0 maps and the 1.38 mm continuum on mask_ext",
+    "result": "Median V_N about 0.24-0.29",
+    "finding": "These transitions correlate only weakly with the diffuse dust emission and probably trace clump medium, outer layers or outflows",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "However, from the HOG method, the median correlation of the emission of each of these species with the continuum is only"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Which species trace the dense fragments?",
+    "experiment": "astroHOG V_N on mask_com (compact CuTEx sources)",
+    "result": "DCN, HC3N, CH3CN and CH3OCHO give V_N of about 62-65% (87% for CH3OCHO); H2CO, CH3OH, SO about 40%; SiO 35%",
+    "finding": "DCN, HC3N, CH3CN and CH3OCHO follow the dense fragments; SiO correlates worst",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "show a good correlation with the dense dust fragments, above 60%"
+     },
+     {
+      "loc": "abstract",
+      "quote": "The worst correlation is seen with SiO, both with the extended continuum emission and with compact sources."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do SiO and SO trace the same gas?",
+    "experiment": "Compare area coverage of mask_ext and V_N for the two outflow tracers",
+    "result": "SiO covers less of the extended continuum and has lower V_N than SO",
+    "finding": "SiO and SO do not trace the same gas",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "reveal that SiO and SO do not trace the same gas, contrary to what was previously thought"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does a gradient-based HOG measure compare morphology better than an intensity-based coefficient?",
+    "experiment": "Compare V_N with Spearman and Pearson coefficients on the same masks",
+    "result": "Positive trend with large scatter and some clearly contradictory sources",
+    "finding": "HOG is to be preferred for morphology; intensity coefficients answer whether tracers peak together",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.4 Comparison with Spearman correlation coefficient",
+      "quote": "If the main goal is to compare the morphology of two tracers, the HOG method is to be preferred to intensity-based correlator."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the morphological correlation depend on the evolutionary stage (L/M) of the clump?",
+    "experiment": "V_N medians in three L/M bins",
+    "result": "Distributions are consistent within errors except HCCCN and CH3CN at L/M < 1 in mask_ext, based on 10 or fewer sources",
+    "finding": "No clear dependence on clump L/M, possibly because clumps mix cores of different stages",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "In general, the distributions of the morphological correlation of almost all the molecular lines with the continuum for the three evolutionary stages, are consistent within the errors."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "7m+tm2 products chosen over 7m+tm2+tm1 for better S/N on diffuse emission; 13CO and C18O excluded because emission fills the FOV",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "because they recover with a better signal-to-noise ratio the diffuse emission on large scales compared to the"
+     },
+     {
+      "loc": "2.2 Molecular transitions analyzed",
+      "quote": "we excluded from the analysis these two tracers since in most cases their emission covers the entire FOV of the observations"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "HOG compares total morphology rather than pixel-by-pixel intensity",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "a more sophisticated approach that compares the total morphology of the emission and not only the intensity pixel by pixel, as usually done so far"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "13CO and C18O excluded because of FOV-filling emission and cleaning artefacts",
+     "evidence": [
+      {
+       "loc": "2.2 Molecular transitions analyzed",
+       "quote": "we excluded from the analysis these two tracers since in most cases their emission covers the entire FOV of the observations"
+      }
+     ]
+    },
+    {
+     "value": "CORNISH-matched clumps (possible free-free) not excluded from the main analysis, only tested separately",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "We do not exclude those clumps from the main analysis presented in the paper"
+      }
+     ]
+    },
+    {
+     "value": "Sources with possibly optically thick lines not excluded",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "therefore we do not exclude sources due to optical depth consideration"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Significance threshold for V_N set from noise-only pairs",
+    "evidence": [
+     {
+      "loc": "5.3 astroHOG results",
+      "quote": "deviate from the statistical correlation that can be found running astroHOG on noise maps (see Appendix C), and are considered significant"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Outflow emission is not disentangled from the masks",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "would require a prior dedicated study on outflows to obtain the region covered by it, which is beyond the scope of this paper"
+      }
+     ]
+    },
+    {
+     "value": "HOG is blind to peak position and size",
+     "evidence": [
+      {
+       "loc": "4.3 Morphological analysis with astroHOG",
+       "quote": "since this method relies only on the relative orientation of the gradients, it is not sensitive to investigate if two tracers peak in the same position"
+      }
+     ]
+    },
+    {
+     "value": "Continuum may contain free-free emission",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "is not only due to thermal dust emission, but may have a contribution from free-free emission"
+      }
+     ]
+    },
+    {
+     "value": "Extended emission may be missed in faint sources",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "In some cases, especially for fainter sources, part of the extended emission might not be recovered due to the sensitivity limitation."
+      }
+     ]
+    },
+    {
+     "value": "Monte Carlo noise is uncorrelated below the beam unlike real interferometric noise",
+     "evidence": [
+      {
+       "loc": "4.4 Details of the application of astroHOG",
+       "quote": "The noise maps considered in the MC method are not correlated below the beam size, unlike the noise of interferometric maps."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Main inputs are team-processed ALMAGAL 7m+tm2 products, not archive products, so exact reproduction needs the ALMAGAL release",
+    "Linear resolution ~5000 au for 7m+tm2 means 'compact sources' are clump fragments, not cores, and beam size in pc differs among sources",
+    "Selection thresholds appear inconsistent: text gives 5 beams for the mask_ext intersection while the Table D.1 note says 10 beams for the largest region, and the 'first 40' versus 'first 37' sources",
+    "V_N values depend on mask choice, the gradient smoothing scale Omega (not given) and noise-level handling",
+    "Line optical depth and outflow contamination are not controlled, and fixed-range moment maps for 97 sources truncate wings",
+    "Differing sensitivities per line shape which sources enter each statistic, so medians are over varying sub-samples"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "astroHOG code on GitHub (solerjuan/astroHOG)",
+     "evidence": [
+      {
+       "loc": "Footnote 1",
+       "quote": "code available through GitHub at"
+      }
+     ]
+    },
+    {
+     "value": "Full V_N, Pearson and Spearman tables for all transitions on Zenodo (doi 10.5281/zenodo.15236491)",
+     "evidence": [
+      {
+       "loc": "Appendix D",
+       "quote": "The full version of this table is available through Zenodo (https://doi.org/10.5281/zenodo.15236491)."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "Public location and version of the ALMAGAL 7m+tm2 jointly deconvolved cubes and continuum maps",
+    "ALMAGAL pipeline imaging parameters and CASA version",
+    "astroHOG run parameters (gradient FWHM Omega, MC settings)",
+    "7m+tm2 CuTEx core catalogue (in prep.)",
+    "Per-source velocity ranges used in the automated moment-0 routine and per-source distances"
+   ],
+   "estimated_data_volume_inferred": "Inferred, uncertain: 1013 fields x 4 spectral windows of 7m+tm2 cubes plus continuum maps, probably hundreds of GB to a few TB",
+   "score_inferred": 3,
+   "score_reason": "astroHOG is public and the masks and moment-0 recipe are described in detail with Zenodo tables, but the input cubes come from an unpublished-in-this-paper team pipeline and several parameters (gradient scale, imaging settings, data release) are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The paper does not state that the 7m+tm2 team-processed products used are public, and key imaging and astroHOG parameters are missing, although results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: ALMAGAL2)",
+     "why": "ALMAGAL data reduction pipeline, joint deconvolution and continuum channel determination"
+    },
+    {
+     "citation": "(cite: soler_astroHOG)",
+     "why": "Histogram of oriented gradients method and astroHOG implementation"
+    },
+    {
+     "citation": "(cite: cutexMolinari+11)",
+     "why": "CuTEx compact source extraction algorithm"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ALMAGAL1)",
+     "why": "ALMAGAL survey and sample description"
+    },
+    {
+     "citation": "(cite: ALMAGAL3)",
+     "why": "Fragmentation properties and CuTEx methodology"
+    },
+    {
+     "citation": "(cite: molly2024)",
+     "why": "Accretion flows traced by H2CO in a subsample of ALMAGAL sources"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMAGAL (2019.1.00195.L)",
+    "Hi-GAL",
+    "CORNISH"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5-claude-code",
+  "custom_id": "sonnetcc-2025A%26A...699A..34M",
+  "batch_id": null,
+  "run": "cc_run1",
+  "collected_at": "2026-10-30T07:41:47",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "channel": "claude-code"
+ },
+ "checks": {
+  "quotes": 129,
+  "quotes_ok": 129,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 23,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 105,
+   "stated": 69,
+   "rate": 0.657
+  },
+  "evidence_ok": true
+ }
+}

@@ -1,0 +1,360 @@
+{
+ "bibcode": "2020ApJ...901..151S",
+ "title": "Molecular Gas Outflow in the Starburst Galaxy NGC 1482",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/abb134",
+ "arxiv_id": "2008.08723",
+ "fields": [
+  "nearby_galaxies"
+ ],
+ "question": "What are the distribution, dynamics and energetics of molecular gas in the starburst-driven superwind of NGC 1482, and is the wind starburst driven?",
+ "alma_project_codes": [
+  "2019.1.01132.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "12-m array (TM, 43 antennas) and 7-m ACA (10 antennas), Cycle 7",
+  "angular_resolution": "1.559\" x 1.083\" (CO cube); 1.379\" x 0.949\" (continuum)",
+  "sensitivity": "CO 2.1 mJy/beam per 10.16 km/s; continuum 31 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk position angle -77 deg for mosaic setup",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "at a position angle of $-77\\ensuremath{^\\circ}$ adopted from (cite: Sor19)"
+     }
+    ]
+   },
+   "citation": "(cite: Sor19)"
+  },
+  {
+   "what": {
+    "value": "Outflow velocity of Halpha gas, mass and energy of ionized outflow",
+    "evidence": [
+     {
+      "loc": "5.3 Dynamics",
+      "quote": "are $M_\\mathrm{w,H\\alpha}\\gtrsim3.6\\times10^5~n^{-1}_\\mathrm{e,2}~M_\\ensuremath{\\odot}$"
+     }
+    ]
+   },
+   "citation": "(cite: VR02)"
+  },
+  {
+   "what": {
+    "value": "Supernova rates 0.10, 0.14, 0.03 per yr",
+    "evidence": [
+     {
+      "loc": "6.1 Starburst-Driven Outflow",
+      "quote": "(cite: Kew00) derived a lower value of 0.03 yr$^{-1}$."
+     }
+    ]
+   },
+   "citation": "(cite: Str04b), (cite: HS05), (cite: Kew00)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image CO cube and continuum",
+   "method": "CASA pipeline calibration, uvcontsub, joint TM+ACA tclean mosaic",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "natural weighting, 10.16 km/s channels (CO); Briggs robust 0.5, mfs (continuum)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and molecular gas mass",
+   "method": "Smooth cube to twice beam, clip at 3 sigma as mask, integrate with immoments; mass from CO flux and X_CO",
+   "software": [
+    "CASA imsmooth",
+    "immoments",
+    "imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO=2.0e20 (standard) or 0.5e20 cm-2 (K km/s)-1; D=19.6 Mpc"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Continuum sources and star formation rate",
+   "method": "imfit of sources; free-free SFR from 100 GHz flux",
+   "software": [
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Te=5000 K; 80% free-free"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Tilted-ring disk model",
+   "method": "3DBarolo, 20 rings of 1.56\"; PA and center fixed from K_S/CO; phase 1 for i and vsys, phase 2 for vrot and surface brightness",
+   "software": [
+    "3DBarolo",
+    "CASA imfit"
+   ],
+   "key_parameters": [
+    "PA=-74.35 deg from 2MASS K_S imfit"
+   ],
+   "assumptions": [
+    "Coplanar rings with uniform circular motion"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Outflow velocity from residuals and pv diagrams",
+   "method": "Residual velocity = moment 1 minus model; v_w=|dv_p|/(2cos i) from pv cut dC",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Outflow perpendicular to disk (theta ~ 0)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Outflow mass, energy, mass outflow rate",
+   "method": "M_w from outflow CO flux with low X_CO; E=Mv^2/2; Mdot=v M/h_z with h_z=1 kpc",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO=0.5e20, alpha_CO=1; cylindrical outflow, constant velocity, uniform density"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Energetics, escape velocity and inflow",
+   "method": "Compare E_w with supernova energy (xi~0.1), momentum; singular isothermal sphere escape velocity; inflow rate from halo clouds",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Singular isothermal sphere truncated at r_max"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(1-0) flux",
+   "value": "677",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Molecular Gas Distribution",
+     "quote": "$\\int S_\\mathrm{CO}\\mathrm{d}v=677~\\mathrm{Jy~km~s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular gas mass (X_MW)",
+   "value": "2.7e9",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Molecular Gas Distribution",
+     "quote": "$M_\\mathrm{mol}=2.7\\times10^9~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "100 GHz flux density within r<=10\"",
+   "value": "11.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Continuum Emission and Star Formation Rate",
+     "quote": "$S_\\mathrm{100GHz}=11.3~\\mathrm{mJy}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (free-free), central 1 kpc",
+   "value": "~4",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3 Continuum Emission and Star Formation Rate",
+     "quote": "$\\mathrm{SFR_{ff}}\\approx4~M_\\ensuremath{\\odot}~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "76.1",
+   "uncertainty": "2.4 (dispersion)",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Two-Phase Computation and Results",
+     "quote": "the mean value was $i=76.1\\ensuremath{^\\circ}$ with a dispersion of $\\sigma=2.4\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity (LSR)",
+   "value": "1831",
+   "uncertainty": "5",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Two-Phase Computation and Results",
+     "quote": "$v_\\mathrm{sys}(\\mathrm{LSR})=1831\\pm5$ km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical mass within 2.9 kpc",
+   "value": "2.21e10",
+   "uncertainty": "0.32e10",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.3 Rotation Curve and Dynamical Mass",
+     "quote": "$M_\\mathrm{dyn}=Rv_\\mathrm{rot}^2/G=(2.21\\pm0.32)\\times10^{10}~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow velocity",
+   "value": "~100",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "5.2 Kinematics",
+     "quote": "we obtain $v_\\mathrm{w}\\approx100~\\mathrm{km~s^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow CO flux",
+   "value": "~70",
+   "uncertainty": "~30%",
+   "units": "Jy km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Dynamics",
+     "quote": "$\\int S_\\mathrm{CO}\\mathrm{d}v\\approx70~\\mathrm{Jy~km~s^{-1}}$ with an uncertainty of $\\approx30\\%$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow mass",
+   "value": "~7e7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Dynamics",
+     "quote": "$M_\\mathrm{w}\\sim7\\times10^7~M_\\ensuremath{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow kinetic energy",
+   "value": "~7e54",
+   "uncertainty": "not stated",
+   "units": "erg",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Dynamics",
+     "quote": "$E_\\mathrm{w}=M_\\mathrm{w}v_\\mathrm{w}^2/2\\sim7\\times10^{54}~\\mathrm{erg}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass outflow rate",
+   "value": "~7",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Dynamics",
+     "quote": "$\\dot{M}_\\mathrm{w}\\sim7~M_\\ensuremath{\\odot}~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loading factor",
+   "value": "~2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "5.3 Dynamics",
+     "quote": "$\\dot{M}_\\mathrm{w}/\\mathrm{SFR}\\sim2$"
+    }
+   ]
+  },
+  {
+   "quantity": "Escape velocity at 2.9 kpc",
+   "value": "250-390",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Is NGC 1482 Losing Mass?",
+     "quote": "we get $v_\\mathrm{esc}(r)\\approx250\\mathrm{-}390$ km s$^{-1}$ at $r=30.4\\ensuremath{''}$ (2.9 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass inflow rate",
+   "value": "~0.2",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "6.2 Is NGC 1482 Losing Mass?",
+     "quote": "the mass inflow rate becomes $\\dot{M}_\\mathrm{in}\\sim0.2~M_\\ensuremath{\\odot}~\\mathrm{yr}^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CO and continuum image sizes and cell sizes",
+  "Deconvolution thresholds, masks and clean parameters",
+  "Line-free channels for uvcontsub and fit order",
+  "Moment-map clipping rms and 3DBarolo input parameters (fit mode, weighting, normalization)",
+  "Exact velocity range and channel setup for cube",
+  "How the outflow CO flux (~70 Jy km/s) was separated from the disk",
+  "Self-calibration status",
+  "Details of K_S image fit region and H-alpha/X-ray image processing"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters, image/cell sizes",
+  "3DBarolo settings",
+  "Outflow flux extraction regions",
+  "pv cut definitions"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data and main steps stated, but many imaging and modelling parameters and outflow extraction regions unspecified.",
+ "rediscovery_reason": "Public Cycle 7 data, tclean plus 3DBarolo recipe, numeric results (inclination, Mdyn, outflow mass/rate).",
+ "source_card": "cards/2020ApJ...901..151S/sonnet/card.md"
+}

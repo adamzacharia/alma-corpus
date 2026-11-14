@@ -1,0 +1,690 @@
+{
+ "bibcode": "2021NatAs...5..319P",
+ "title": "A titanic interstellar medium ejection from a massive starburst galaxy at redshift 1.4",
+ "year": 2021,
+ "doi": "10.1038/s41550-020-01268-x",
+ "arxiv_id": "2101.04021",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation",
+  "agn_and_quasars"
+ ],
+ "question": "What is the physical mechanism driving a massive molecular gas ejection event in the starburst galaxy ID2299 at z = 1.4, and what is its impact on star formation quenching?",
+ "alma_project_codes": [
+  "2015.1.00260.S",
+  "2016.1.00171.S",
+  "2019.1.01702.S"
+ ],
+ "data": {
+  "bands": "Band 3, Band 6, Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~1.5'' (Band 3), ~0.7'' (Band 6), ~0.9'' (Band 7)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rest-frame 2-10 keV absorption-corrected X-ray luminosity L_X-ray ~ 1.6 x 10^43 erg s^-1",
+    "evidence": [
+     {
+      "loc": "A disruptive event in a massive galaxy at z=1.4",
+      "quote": "The object is detected in the X-rays and has a weak rest-frame 2-10 keV absorption-corrected luminosity(cite: Civano16) L$_{\\rm X-ray} \\sim 1.6 \\times 10^{43} \\ {\\rm erg s^{-1}}$"
+     }
+    ]
+   },
+   "citation": "(cite: Civano16)"
+  },
+  {
+   "what": {
+    "value": "SuperDeblended far-IR/(sub)-millimetre catalog and UV-to-far-IR broad-band photometry in COSMOS",
+    "evidence": [
+     {
+      "loc": "Target information",
+      "quote": "We measure L$_{\\rm FIR}$ by fitting the SuperDeblended far-IR/(sub)-millimetre catalog in COSMOS(cite: Jin18) using the procedure described in a previous paper(cite: Jin18)."
+     },
+     {
+      "loc": "Target information",
+      "quote": "We derive these quantities through multi-wavelength spectral energy distribution (SED) fitting to the COSMOS broad-band photometry from the UV to the far-IR (cite: Laigle16; Jin18)"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle16; Jin18)"
+  },
+  {
+   "what": {
+    "value": "1.4-3 GHz radio luminosity and VLBA 1.4 GHz 3sigma upper limit log(L_radio / W Hz^-1) <= 23.55",
+    "evidence": [
+     {
+      "loc": "Rejecting the “fossil outflow” interpretation",
+      "quote": "However, the 1.4-3 GHz radio luminosity of ID2299 is fully accounted by star formation (cite: Delvecchio17). Deep VLBA 1.4 GHz observations(cite: HerreraRuiz17) at $0.01''$ resolution sampling circumnuclear scales (85 pc at z=1.4) where the core AGN jet is supposed to be launched, give a 3$\\sigma$ upper limit log(L$_{\\rm radio}/{\\rm W\\ Hz^{-1}}) \\leq 23.55$."
+     }
+    ]
+   },
+   "citation": "(cite: Delvecchio17), (cite: HerreraRuiz17)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure stellar mass, SFR, and AGN bolometric luminosity via SED fitting",
+   "method": "Fit multi-wavelength UV to far-IR photometry from COSMOS and the SuperDeblended catalog using CIGALE and far-IR SED fitting, cleaning L_FIR from AGN contribution",
+   "software": [
+    "CIGALE"
+   ],
+   "key_parameters": [
+    "FIR integration range lambda in [8 - 1000] um"
+   ],
+   "assumptions": [
+    "Chabrier (2003) IMF, dividing Kennicutt (1998) conversion by a factor 1.7"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Classify morphology and measure optical/NIR size",
+   "method": "Visual and quantitative morphological analysis (Shape asymmetry, Gini, M20) on HST F814W image, and 2D profile fitting on Ks-band image using GALFIT",
+   "software": [
+    "GALFIT"
+   ],
+   "key_parameters": [
+    "Shape asymmetry minimum threshold for merger = 0.2"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Measure sub-millimetre source size in the uv plane",
+   "method": "Extract signal amplitude vs uv distance from each ALMA tracer using GILDAS scripts, scale uv-distances to a common frequency, marginalize over normalization, and fit circular Gaussian models",
+   "software": [
+    "GILDAS",
+    "Crab.Toolkit.PdBI"
+   ],
+   "key_parameters": [
+    "R_eff = FWHM / 2; resolved threshold P_unres <= 10%"
+   ],
+   "assumptions": [
+    "Circular Gaussian source morphology"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract 1D spectra, subtract continuum, and fit narrow and broad emission lines",
+   "method": "Extract ALMA spectra in uv space using a Gaussian model of radius R_eff,ALMA = 1.54 kpc, subtract a power-law continuum, and fit narrow + broad Gaussian components with MPFIT in ALMA and DEIMOS [OII] spectra",
+   "software": [
+    "GILDAS",
+    "MPFIT",
+    "IDL",
+    "Crab.Toolkit.PdBI"
+   ],
+   "key_parameters": [
+    "Continuum power-law slope = 3.7 with nu_0 = 101.25, 248.40, 342.55 GHz; CO(5-4), [CI](2-1), CO(7-6) broad centroid and width tied to CO(2-1); [OII] flux ratio I_3729/I_3726 = 1.5"
+   ],
+   "assumptions": [
+    "Source extension modeled as a Gaussian of radius R_eff,ALMA = 1.54 kpc; low-density limit for [OII] doublet ratio"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Image the broad component in the ALMA cubes",
+   "method": "Subtract best-fit 1D continuum and narrow-line model at each frequency in the uv plane using GILDAS UVFIT within R_eff,ALMA, and recombine residuals into a cube",
+   "software": [
+    "GILDAS",
+    "UVFIT",
+    "Crab.Toolkit.PdBI"
+   ],
+   "key_parameters": [
+    "Subtraction performed within R_eff,ALMA = 1.54 kpc over full frequency range of the spectral window"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "Compute molecular and ionized gas masses, mass outflow rates, and broad-component SFR",
+   "method": "Convert CO(2-1) luminosities to molecular gas masses, [OII] luminosity to ionized gas mass using IRAF TEMDEN emissivity, CO(5-4) broad luminosity to SFR_broad, and calculate outflow rates under spherical/conical geometry",
+   "software": [
+    "IRAF",
+    "TEMDEN"
+   ],
+   "key_parameters": [
+    "R_OF = R_eff,ALMA = 1.54 kpc; v_max = (v_broad - v_narrow) + 2*sigma_broad = 634 km s^-1 (or v_mol,b = 179 km s^-1 for conservative tidal scenario)",
+    "j_[OII] = 1.641 x 10^-21 erg s^-1 cm^-3"
+   ],
+   "assumptions": [
+    "L'_CO(2-1)/L'_CO(1-0) = 0.85 and alpha_CO = 0.8 M_sun (K km s^-1 pc^2)^-1",
+    "Ionized gas T_e = 10^4 K, n_e = 300 cm^-3, solar metallicity, no dust attenuation correction"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Test two-galaxy merger hypothesis via dynamical mass",
+   "method": "Compute dynamical mass of the broad component using a merger-calibrated thin-disk rotator formula and compare with rescaled stellar + molecular mass within the ALMA area",
+   "software": [],
+   "key_parameters": [
+    "f_c = 10^0.45 = 2.81; inclination i = 57 deg; R_eff,ALMA = 1.54 kpc; v_FWHM,mol,b = 535 km s^-1"
+   ],
+   "assumptions": [
+    "Thin-disk rotator with merger correction factor f_c = 2.81, average random inclination i = 57 deg, negligible dark matter within 1.54 kpc, and 50% stellar mass split between the two putative galaxies"
+   ]
+  },
+  {
+   "order": 8,
+   "goal": "Model molecular gas excitation (CO + [CI] SLED) with LVG models",
+   "method": "Normalize narrow and broad line flux densities to CO(2-1) = 1 and fit two-component Large Velocity Gradient (LVG) models using MICHI2",
+   "software": [
+    "MICHI2"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "([CO]/[H2])/(dv/dr) = 10^-5 and ([CI]/[H2])/(dv/dr) = 6 x 10^-6"
+   ]
+  },
+  {
+   "order": 9,
+   "goal": "Compute cosmic rate of disruptive events",
+   "method": "Divide the completeness-corrected number of detected disruptive events in the survey comoving volume by the typical event duration and compare with starburst merger density",
+   "software": [],
+   "key_parameters": [
+    "1 event out of 35 starbursts (123 galaxies total); completeness correction = 7% of starbursts at 1.1 <= z <= 1.7; t_disr = 5 +/- 1 Myr; survey volume = 10^7 Mpc^3; 25% fraction of starbursts ejecting large tails; t_dyn,merger = 100 Myr"
+   ],
+   "assumptions": [
+    "Starbursts defined as SFR >= 4 x SFR_MS; 20-30% of starbursts eject large gas tails with visibility window 50-200 Myr"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stellar mass (M_*)",
+   "value": "9.4e10",
+   "uncertainty": "1.3e10",
+   "units": "M_odot",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| M$_{\\star}$ | 9.4 $\\pm$ 1.3 $\\times 10^{10}$ M$_{\\odot}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate (SFR)",
+   "value": "550",
+   "uncertainty": "10",
+   "units": "M_odot yr^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| SFR | 550 $\\pm$ 10 M$_{\\odot}$yr$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN bolometric luminosity (L_AGN)",
+   "value": "1.1e45",
+   "uncertainty": "0.3e45",
+   "units": "erg s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| L$_{\\rm AGN}$ | 1.1 $\\pm$ 0.3 $\\times 10^{45}$ erg s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA effective radius (R_eff,ALMA)",
+   "value": "1.54",
+   "uncertainty": "0.04",
+   "units": "kpc",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| R$_{\\rm eff, ALMA}$ | 1.54 $\\pm$ 0.04 kpc |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ks-band effective radius (R_eff,Ks)",
+   "value": "3.3",
+   "uncertainty": "0.7",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| R$_{\\rm eff, K_{\\rm s}}$ | 3.3 $\\pm$ 0.7 kpc |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow molecular component FWHM (v_FWHM,mol,n)",
+   "value": "120",
+   "uncertainty": "13",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm FWHM, mol, n}$ | 120 $\\pm$ 13 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow CO(2-1) integrated flux (I_CO(2-1),n)",
+   "value": "0.97",
+   "uncertainty": "0.06",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(2-1), n}$ | 0.97 $\\pm$ 0.06 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow CO(5-4) integrated flux (I_CO(5-4),n)",
+   "value": "2.97",
+   "uncertainty": "0.13",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(5-4), n}$ | 2.97 $\\pm$ 0.13 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow [CI](2-1) integrated flux (I_[CI](2-1),n)",
+   "value": "1.94",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm [CI](2-1), n}$ | 1.94 $\\pm$ 0.08 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow CO(7-6) integrated flux (I_CO(7-6),n)",
+   "value": "2.15",
+   "uncertainty": "0.08",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(7-6), n}$ | 2.15 $\\pm$ 0.08 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow component molecular gas mass (M_mol,n)",
+   "value": "2.3e10",
+   "uncertainty": "0.2e10",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| M$_{\\rm mol, n}$ | 2.3 $\\pm$ 0.2 $\\times 10^{10}$ M$_{\\odot}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad molecular component velocity shift (v_mol,b)",
+   "value": "179",
+   "uncertainty": "78",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm mol, b}$ | 179 $\\pm$ 78 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad molecular component FWHM (v_FWHM,mol,b)",
+   "value": "535",
+   "uncertainty": "135",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm FWHM, mol, b}$ | 535 $\\pm$ 135 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad CO(2-1) integrated flux (I_CO(2-1),b)",
+   "value": "0.82",
+   "uncertainty": "0.13",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(2-1), b}$ | 0.82 $\\pm$ 0.13 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad CO(5-4) integrated flux (I_CO(5-4),b)",
+   "value": "1.31",
+   "uncertainty": "0.37",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(5-4), b}$ | 1.31 $\\pm$ 0.37 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad [CI](2-1) integrated flux (I_[CI](2-1),b)",
+   "value": "0.46",
+   "uncertainty": "0.17",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm [CI](2-1), b}$ | 0.46 $\\pm$ 0.17 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad CO(7-6) integrated flux upper limit (I_CO(7-6),b)",
+   "value": "<= 0.33",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| I$_{\\rm CO(7-6), b}$ | $\\leqslant$ 0.33 Jy km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad component molecular gas mass (M_mol,b)",
+   "value": "2.0e10",
+   "uncertainty": "0.5e10",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| M$_{\\rm mol, b}$ | 2.0 $\\pm$ 0.5 $\\times 10^{10}$ M$_{\\odot}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Ejected molecular gas mass fraction",
+   "value": "46",
+   "uncertainty": "13",
+   "units": "%",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Here we present a massive starburst galaxy at $z=1.4$ which is ejecting $46 \\pm 13$% of its molecular gas mass at a startling rate of $\\gtrsim 10,000$ M$_{\\odot}{\\rm yr}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Narrow ionized component FWHM (v_FWHM,ion,n)",
+   "value": "144",
+   "uncertainty": "28",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm FWHM, ion, n}$ | 144 $\\pm$ 28 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad ionized component velocity shift (v_ion,b)",
+   "value": "92",
+   "uncertainty": "47",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm ion, b}$ | 92 $\\pm$ 47 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad ionized component FWHM (v_FWHM,ion,b)",
+   "value": "537",
+   "uncertainty": "106",
+   "units": "km s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| v$_{\\rm FWHM, ion, b}$ | 537 $\\pm$ 106 km s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad [OII] luminosity (L_[OII],b)",
+   "value": "4.9e42",
+   "uncertainty": "1.5e42",
+   "units": "erg s^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| L$_{\\rm [OII], b}$ | 4.9 $\\pm$ 1.5 $\\times 10^{42}$ erg s$^{-1}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Broad ionized gas mass (M_ion,b)",
+   "value": "1.4e7",
+   "uncertainty": "0.4e7",
+   "units": "M_odot",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| M$_{\\rm ion, b}$ | 1.4 $\\pm$ 0.4 $\\times 10^{7}$ M$_{\\odot}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass outflow rate (feedback-wind assumption)",
+   "value": "25000",
+   "uncertainty": "8000",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Impact on the host galaxy",
+     "quote": "Assuming that the gas in the broad component is associated to a feedback-driven wind (e.g., from AGN or star-formation), would translate its gas mass into an exceptional mass outflow rate $\\dot{\\rm M}_{\\rm mol, OF} = 25000 \\ \\pm \\ 8000$ M$_{\\odot}{\\rm yr}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular mass outflow rate (tidal ejection / average velocity shift)",
+   "value": "7100",
+   "uncertainty": "3600",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Impact on the host galaxy",
+     "quote": "(t$_{\\rm OF} \\sim 10$ Myr and $\\dot{\\rm M}_{\\rm mol, OF} = 7100 \\ \\pm \\ 3600$ M$_{\\odot}{\\rm yr}^{-1}$, if one were instead to use the most conservative average velocity shift v$_{\\rm mol, b} = 179 \\ {\\rm km s^{-1}}$ )."
+    }
+   ]
+  },
+  {
+   "quantity": "Ionized mass outflow rate",
+   "value": "20",
+   "uncertainty": "7",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Mass outflow rate computation",
+     "quote": "This corresponds to a mass outflow rate $\\dot{\\rm M}_{\\rm OF, ion} = \\ 20 \\pm$ 7 M$_{\\odot}$yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum outflow velocity (v_max,OF)",
+   "value": "634",
+   "uncertainty": "139",
+   "units": "km s^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Impact on the host galaxy",
+     "quote": "this computation assumes that the outflow has a velocity v$_{\\rm max, OF} = 634 \\pm 139 \\ {\\rm km s^{-1}}$ and extends over R$_{\\rm OF} = 1.54 \\pm 0.04$ kpc"
+    }
+   ]
+  },
+  {
+   "quantity": "Star formation rate in broad component (SFR_broad)",
+   "value": "180",
+   "uncertainty": "60",
+   "units": "M_odot yr^-1",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Triggering mechanism of the disruptive event",
+     "quote": "From the luminosity of the broad CO(5-4) component, we estimate that the ejected material is forming stars at a rate of SFR$_{\\rm broad} = 180 \\pm 60$ M$_{\\odot} {\\rm yr}^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Cosmic rate of disruptive events",
+   "value": "(1 - 2)e4",
+   "uncertainty": "0.6 dex",
+   "units": "Mpc^-3 Gyr^-1",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "Frequency of disruptive events and connection with the quenched galaxy population",
+     "quote": "This single event was extracted from a survey of 123 objects and thus implies $\\sim (1 - 2) \\times 10^4 {\\rm /Mpc^3/Gyr}$ disruptive events per cosmic volume and unit time (Figure 3, see Methods). The error associated to this measurement is $\\sim 0.6 \\ {\\rm dex}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 101.25 GHz",
+   "value": "0.05",
+   "uncertainty": "0.02",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral analysis",
+     "quote": "The continuum underlying the CO(2-1) emission is almost undetected (SNR $\\sim$ 2, S$_{0} = 0.05 \\pm 0.02 \\ {\\rm mJy}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 248.40 GHz",
+   "value": "1.80",
+   "uncertainty": "0.12",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral analysis",
+     "quote": "Instead, we detect a strong continuum under the CO(5-4) emission (SNR $\\sim$ 14, S$_0 = 1.80 \\pm 0.12  \\ {\\rm mJy}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum flux density at 342.55 GHz",
+   "value": "5.04",
+   "uncertainty": "0.15",
+   "units": "mJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Spectral analysis",
+     "quote": "and below the \\[CI\\](2-1)+CO(7-6) emission (SNR $\\gtrsim 100$, S$_{0} = 5.04 \\pm 0.15 \\ {\\rm mJy}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Low-excitation H2 density in narrow component (log n_H2)",
+   "value": "2.9",
+   "uncertainty": "0.8",
+   "units": "dex (cm^-3)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Molecular gas conditions of the galaxy and of the ejected material",
+     "quote": "The low-excitation component of this gas has a density log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 2.9 \\pm 0.8$ whereas the high-excitation component has log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 5.2 \\pm 1.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "High-excitation H2 density in narrow component (log n_H2)",
+   "value": "5.2",
+   "uncertainty": "1.2",
+   "units": "dex (cm^-3)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Molecular gas conditions of the galaxy and of the ejected material",
+     "quote": "The low-excitation component of this gas has a density log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 2.9 \\pm 0.8$ whereas the high-excitation component has log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 5.2 \\pm 1.2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Low-density H2 in broad component (log n_H2)",
+   "value": "2.7",
+   "uncertainty": "0.7",
+   "units": "dex (cm^-3)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Molecular gas conditions of the galaxy and of the ejected material",
+     "quote": "We find evidence of the presence of ISM-like low- and high-density gas having log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 2.7 \\pm 0.7$ and log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 4.55 \\pm 1.85$ respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "High-density H2 in broad component (log n_H2)",
+   "value": "4.55",
+   "uncertainty": "1.85",
+   "units": "dex (cm^-3)",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Molecular gas conditions of the galaxy and of the ejected material",
+     "quote": "We find evidence of the presence of ISM-like low- and high-density gas having log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 2.7 \\pm 0.7$ and log(n$_{\\rm H2}/{\\rm cm}^{-3}) = 4.55 \\pm 1.85$ respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA/GILDAS calibration and imaging parameters (weighting, robust parameter, cell size, cleaning thresholds) which are deferred to Puglisi et al. (2019) and Valentino et al. (2020)",
+  "Exact cosmological parameters (H0, Omega_m, Omega_Lambda) used to convert angular sizes and fluxes into physical sizes (kpc) and luminosities",
+  "Channel width / spectral binning used for the extracted ALMA 1D spectra and line-scan significance tests"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral channel width/binning used for the 1D uv-fitted spectra",
+  "Specific calibration and uv-table export parameters from CASA to GILDAS (deferred to Puglisi et al. 2019 and Valentino et al. 2020)",
+  "Exact CIGALE parameter configuration file (deferred to Circosta et al. 2018)"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "All three ALMA project codes and external archives are explicitly linked as public, the GILDAS uv-plane toolkit and MICHI2 LVG fitting codes are publicly released with URLs, and all equations, conversion factors, and intermediate fitted numbers are tabulated in detail; only low-level calibration details and spectral binning widths require consulting companion survey papers.",
+ "rediscovery_reason": "All ALMA data are public with explicit project codes, the uv-plane extraction and fitting scripts are publicly hosted on GitHub, and the core findings rely on well-defined numeric measurements (line fluxes, FWHMs, velocity shifts, gas masses, and outflow rates) tabulated in Table 1.",
+ "source_card": "cards/2021NatAs...5..319P/sonnet/card.md"
+}

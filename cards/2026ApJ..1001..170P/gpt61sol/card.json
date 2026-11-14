@@ -1,0 +1,2067 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2026ApJ..1001..170P",
+  "title": "Introducing PxP: A Population Synthesis Framework for Predicting Young Stellar Object Properties",
+  "year": 2026,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Peltonen, J.",
+  "n_authors": 6,
+  "arxiv_id": "2603.29012",
+  "doi": "10.3847/1538-4357/ae58a7",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2022.1.00276.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "YSOC Selection",
+    "quote": "An additional 26 sources were removed that had no ALMA $^{12}$CO J=1-0 detection"
+   },
+   {
+    "loc": "Conclusion",
+    "quote": "112 YSO candidates were found from these point sources through color cuts and visual inspection."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "N44",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "NGC 604",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Infer the short timescale (<3 Myr) star formation history from unresolved sources in multiband JWST imaging.",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Our goal is to infer the short timescale ($<3~\\mathrm{Myr}$) star formation history from the distribution of fluxes of unresolved sources in multiband JWST imaging data."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2022.1.00276.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2022.1.00276.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "An additional 26 sources were removed that had no ALMA $^{12}$CO J=1-0 detection"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI: Rosolowsky",
+    "evidence": [
+     {
+      "loc": "YSOC Selection",
+      "quote": "We use data from ALMA project 2022.1.00276.S (PI: Rosolowsky) reduced with the PHANGS-ALMA pipeline (cite: 2021Leroy)."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "JWST",
+     "provided": {
+      "value": "Public DDT 6555 (PI:M.G.Marin); NIRCam F090W, F200W, F444W and MIRI F770W, F1130W, F1500W imaging of NGC 604.",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "We retrieved data from the public JWST program DDT 6555 (PI:M.G.Marin)."
+       },
+       {
+        "loc": "Data",
+        "quote": "We make use of six imaging filters, three from NIRCam (F090W, F200W, and F444W) and three from MIRI (F770W, F1130W, and F1500W)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Spitzer",
+     "provided": {
+      "value": "Photometry underlying the 49-source N44 YSO catalog used for PxP.",
+      "evidence": [
+       {
+        "loc": "N44",
+        "quote": "we use the older YSO catalog of (cite: 2009Gruendl) identified through *Spitzer* photometry, which contains flux measurements for 49 YSOs in the N44 region."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Mikulski Archive for Space Telescopes (MAST)",
+     "provided": {
+      "value": "All JWST data presented in the paper.",
+      "evidence": [
+       {
+        "loc": "Acknowledgments",
+        "quote": "All of the JWST data presented in this paper were obtained from the Mikulski Archive for Space Telescopes (MAST) at the Space Telescope Science Institute."
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Kroupa IMF for individual stellar masses.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "We use the IMF from (cite: 2001Kroupa) that gives the probability distribution of individual star masses."
+       }
+      ]
+     },
+     "citation": "(cite: 2001Kroupa)"
+    },
+    {
+     "what": {
+      "value": "Cluster mass function shape.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "which is adopted from (cite: slug4)."
+       }
+      ]
+     },
+     "citation": "(cite: slug4)"
+    },
+    {
+     "what": {
+      "value": "Binary population distributions used to assign secondary companions.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "Using the binary population distributions from (cite: 2017Moe), some individual stars were given a secondary companion."
+       }
+      ]
+     },
+     "citation": "(cite: 2017Moe)"
+    },
+    {
+     "what": {
+      "value": "Modified stellar evolution code assigning primary-star temperature and total luminosity.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "we use a modified version of the (cite: 2012Klassen) stellar evolution code, where all primary stars were assigned a temperature and total luminosity depending on the stellar mass, age, and an adopted accretion prescription."
+       }
+      ]
+     },
+     "citation": "(cite: 2012Klassen)"
+    },
+    {
+     "what": {
+      "value": "Modified turbulent-core accretion history adopted for the main analysis.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "our initial testing showed that the (cite: 2025Richardson) modified turbulent-core accretion was the most effective at replicating observed sources."
+       }
+      ]
+     },
+     "citation": "(cite: 2025Richardson)"
+    },
+    {
+     "what": {
+      "value": "Accretion-history parameterization.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "using the parameterization of (cite: 2011Offner)."
+       }
+      ]
+     },
+     "citation": "(cite: 2011Offner)"
+    },
+    {
+     "what": {
+      "value": "Radiative transfer model geometries spubsmi, s-pbsmi and sp--smi; 60000 models viewed from nine angles.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "Specifically, we chose the “`spubsmi`”, “`s-pbsmi`”, and “`sp--smi`” geometries originally described in (cite: rob17), which contains the simulated flux of 60000 models, each viewed from nine different angles."
+       },
+       {
+        "loc": "Model SEDs",
+        "quote": "However, the (cite: 2024Richardson) radiative transfer models have no prescribed evolution or timescale"
+       }
+      ]
+     },
+     "citation": "(cite: rob17); (cite: 2024Richardson)"
+    },
+    {
+     "what": {
+      "value": "Average Milky Way extinction parameterization converting A_V to filter extinction.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "We use the extinction parameterization of (cite: 2023Gordon) based on average Milky Way measurements to convert a single value of visual extinction ($A_V$) to the extinction appropriate for each filter."
+       }
+      ]
+     },
+     "citation": "(cite: 2023Gordon)"
+    },
+    {
+     "what": {
+      "value": "M33 YSO Candidate catalog minimum fluxes: 10 μJy at 21 μm and 1 μJy at 1.6 μm.",
+      "evidence": [
+       {
+        "loc": "Example Results",
+        "quote": "Specifically, SEDs were excluded for sources lower than the minimum fluxes in the (cite: 2024Peltonen) M33 YSO Candidate catalog (10 $\\mu$Jy at 21 $\\mu$m and 1 $\\mu$Jy at 1.6 $\\mu$m)."
+       }
+      ]
+     },
+     "citation": "(cite: 2024Peltonen)"
+    },
+    {
+     "what": {
+      "value": "N44 catalog containing Spitzer flux measurements for 49 YSOs.",
+      "evidence": [
+       {
+        "loc": "N44",
+        "quote": "we use the older YSO catalog of (cite: 2009Gruendl) identified through *Spitzer* photometry, which contains flux measurements for 49 YSOs in the N44 region."
+       }
+      ]
+     },
+     "citation": "(cite: 2009Gruendl)"
+    },
+    {
+     "what": {
+      "value": "N44 total YSO population mass estimate of ~3537 M_sun used for comparison.",
+      "evidence": [
+       {
+        "loc": "N44",
+        "quote": "Next, (cite: 2012Carlson) determined the total YSO population mass by fitting the high-mass end of a (cite: 2001Kroupa) IMF to the YSO masses."
+       },
+       {
+        "loc": "N44",
+        "quote": "This method yielded an estimated total mass of the N44 YSOs to be $\\sim$3537 M$_\\odot$."
+       }
+      ]
+     },
+     "citation": "(cite: 2012Carlson)"
+    },
+    {
+     "what": {
+      "value": "N44 individual YSO ages from Spitzer photometry and Robitaille model fits.",
+      "evidence": [
+       {
+        "loc": "N44",
+        "quote": "(cite: 2009Chen) fit each YSO that they identified with *Spitzer* photmetry with a (cite: 2006Robitaille) model."
+       },
+       {
+        "loc": "N44",
+        "quote": "The YSOs had a large spread in best-fit ages from 10$^3$-$2\\times10^6$ yr."
+       }
+      ]
+     },
+     "citation": "(cite: 2009Chen)"
+    },
+    {
+     "what": {
+      "value": "Previously reduced NGC 604 JWST imaging.",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "These reduced data are described in more detail and first appear in (cite: 2025Sarbadhicary)."
+       }
+      ]
+     },
+     "citation": "(cite: 2025Sarbadhicary)"
+    },
+    {
+     "what": {
+      "value": "Approximately 8 percent M33 YSOC contamination estimate.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "(cite: 2024Peltonen) estimated the $\\approx$8 percent of their YSOCs in M33 were contaminants."
+       }
+      ]
+     },
+     "citation": "(cite: 2024Peltonen)"
+    },
+    {
+     "what": {
+      "value": "NGC 604 embedded stellar mass and older stellar population inferred from Spitzer observations.",
+      "evidence": [
+       {
+        "loc": "Model Fit",
+        "quote": "(cite: 2012Martinez) found a mass of $(1.2^{+1.3}_{-0.1})\\times10^4$ M$_\\odot$ contained in embedded star formation from model fits to unresolved *Spitzer* photometry and spectroscopy."
+       },
+       {
+        "loc": "Model Fit",
+        "quote": "They also found that this embedded population is a second generation of star formation, along with an existing older population ($\\sim$4 Myr)."
+       }
+      ]
+     },
+     "citation": "(cite: 2012Martinez)"
+    },
+    {
+     "what": {
+      "value": "M33 star formation maps and NGC 604 Hα star formation rate of 0.016±0.002 M_sun/yr.",
+      "evidence": [
+       {
+        "loc": "Model Fit",
+        "quote": "The star formation maps of (cite: 2015Boquien) predict the star formation rate across M33 in a variety of tracers."
+       },
+       {
+        "loc": "Model Fit",
+        "quote": "The predicted star formation rate in NGC 604 using H$\\alpha$ is 0.016$\\pm0.002$ $M_\\odot$/yr (cite: 2015Boquien)."
+       }
+      ]
+     },
+     "citation": "(cite: 2015Boquien)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "550000 populations: 11 masses from 10^3–10^5 M_sun, 50 ages from 0.3–3 Myr, 1000 realizations per mass and age.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We began by generating model populations with 11 masses logarithmically spaced from 10$^3$-10$^5$ M$_\\odot$ and 50 ages linearly spaced from 0.3-3 Myr."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "For each of these masses and ages, we generated 1000 populations for a total of 550000 populations."
+      }
+     ]
+    },
+    {
+     "value": "A_V=0–20 magnitudes; 11,550,000 unique sets of SEDs after applying constant extinction screens.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We then applied a constant extinction screen to each of these SEDs with $A_V$ from 0-20 magnitudes for a total of 11,550,000 unique sets of SEDs."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "PHANGS-ALMA pipeline",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "We use data from ALMA project 2022.1.00276.S (PI: Rosolowsky) reduced with the PHANGS-ALMA pipeline (cite: 2021Leroy)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA reduction with the PHANGS-ALMA pipeline.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "We use data from ALMA project 2022.1.00276.S (PI: Rosolowsky) reduced with the PHANGS-ALMA pipeline (cite: 2021Leroy)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2021Leroy)"
+    },
+    {
+     "what": {
+      "value": "Kroupa IMF.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "We use the IMF from (cite: 2001Kroupa) that gives the probability distribution of individual star masses."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2001Kroupa)"
+    },
+    {
+     "what": {
+      "value": "Cluster mass function shape.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "which is adopted from (cite: slug4)."
+       }
+      ]
+     },
+     "from_reference": "(cite: slug4)"
+    },
+    {
+     "what": {
+      "value": "Binary population distributions.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "Using the binary population distributions from (cite: 2017Moe), some individual stars were given a secondary companion."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2017Moe)"
+    },
+    {
+     "what": {
+      "value": "Modified stellar evolution code.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "we use a modified version of the (cite: 2012Klassen) stellar evolution code"
+       }
+      ]
+     },
+     "from_reference": "(cite: 2012Klassen)"
+    },
+    {
+     "what": {
+      "value": "Use total luminosity, including accretion luminosity.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "Following (cite: 2025Richardson) we utilize the total luminosity to fully capture the state of YSO."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2025Richardson)"
+    },
+    {
+     "what": {
+      "value": "Modified turbulent-core accretion and accretion-history parameterization.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "our initial testing showed that the (cite: 2025Richardson) modified turbulent-core accretion was the most effective at replicating observed sources."
+       },
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "using the parameterization of (cite: 2011Offner)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2025Richardson); (cite: 2011Offner)"
+    },
+    {
+     "what": {
+      "value": "Radiative transfer geometries spubsmi, s-pbsmi and sp--smi.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "Specifically, we chose the “`spubsmi`”, “`s-pbsmi`”, and “`sp--smi`” geometries originally described in (cite: rob17), which contains the simulated flux of 60000 models, each viewed from nine different angles."
+       }
+      ]
+     },
+     "from_reference": "(cite: rob17); (cite: 2024Richardson)"
+    },
+    {
+     "what": {
+      "value": "Foreground extinction law based on average Milky Way measurements.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "We use the extinction parameterization of (cite: 2023Gordon) based on average Milky Way measurements to convert a single value of visual extinction ($A_V$) to the extinction appropriate for each filter."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2023Gordon)"
+    },
+    {
+     "what": {
+      "value": "Detectability cuts from the M33 YSO Candidate catalog.",
+      "evidence": [
+       {
+        "loc": "Example Results",
+        "quote": "Specifically, SEDs were excluded for sources lower than the minimum fluxes in the (cite: 2024Peltonen) M33 YSO Candidate catalog (10 $\\mu$Jy at 21 $\\mu$m and 1 $\\mu$Jy at 1.6 $\\mu$m)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024Peltonen)"
+    },
+    {
+     "what": {
+      "value": "JWST reduction details in the earlier presentation of the reduced data.",
+      "evidence": [
+       {
+        "loc": "Data",
+        "quote": "The raw data were reduced using PJPIPE developed for PHANGS-JWST (cite: 2024Williams)."
+       },
+       {
+        "loc": "Data",
+        "quote": "These reduced data are described in more detail and first appear in (cite: 2025Sarbadhicary)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024Williams); (cite: 2025Sarbadhicary)"
+    },
+    {
+     "what": {
+      "value": "YSOC selection procedure.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "The YSOC selection was performed according to the procedure outlined in (cite: 2024Peltonen)."
+       }
+      ]
+     },
+     "from_reference": "(cite: 2024Peltonen)"
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA CO detection threshold, velocity integration interval, spatial matching radius and treatment of map edges or nondetections.",
+    "ALMA product identity, beam, sensitivity, spectral resolution and PHANGS-ALMA pipeline version.",
+    "Exact cluster fraction f_clust, CMF cutoff M_0 and stellar or cluster mass limits used in the generated populations.",
+    "Exact modified stellar evolution and accretion implementation and radiative transfer grid release.",
+    "PCA input scaling, missing-band treatment, numerical basis and histogram bin edges.",
+    "MCMC walker count, initialization, chain length, burn-in, convergence tests and uncertainty-summary convention.",
+    "Adopted target distances and the transformation between Spitzer observations and model filter coverage.",
+    "DOLPHOT configuration, photometric corrections and the resolution of the inconsistent MIRI filter lists."
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Generate stellar populations",
+    "method": {
+     "value": "Draw individual YSOs and clusters from the IMF and CMF until the total population mass is reached; assign binary companions.",
+     "evidence": [
+      {
+       "loc": "Stellar Mass Distributions",
+       "quote": "individual YSOs and clusters are assigned to the population with masses drawn from the Initial mass function (IMF) and cluster mass function (CMF) until the total population mass is reached."
+      },
+      {
+       "loc": "Stellar Mass Distributions",
+       "quote": "Using the binary population distributions from (cite: 2017Moe), some individual stars were given a secondary companion."
+      }
+     ]
+    },
+    "software": [
+     "PxP"
+    ],
+    "key_parameters": [
+     {
+      "value": "Total mass M_star, age t_0 and foreground extinction A_V.",
+      "evidence": [
+       {
+        "loc": "Example Results",
+        "quote": "Under these assumptions, we can generate model populations with only three free parameters: total mass ($M_\\star$), age ($t_0$, defined as time since the start of protostar formation), and foreground extinction ($A_V$)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Kroupa IMF and modified turbulent-core accretion.",
+      "evidence": [
+       {
+        "loc": "Stellar Mass Distributions",
+        "quote": "We use the IMF from (cite: 2001Kroupa) that gives the probability distribution of individual star masses."
+       },
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "We thus focus on populations using turbulent-core accretion for the remainder of this work."
+       }
+      ]
+     },
+     {
+      "value": "Burst and continuous star formation histories.",
+      "evidence": [
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "The first case is the burst model where all members of a population begin accreting at the same moment in time."
+       },
+       {
+        "loc": "Star Formation and Accretion Histories",
+        "quote": "The other case is the continuous star formation history, where the ages of the individual sources is evenly distributed from the beginning of accretion to the current age of the population."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Initial comparison of accretion histories against observed sources.",
+     "evidence": [
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "our initial testing showed that the (cite: 2025Richardson) modified turbulent-core accretion was the most effective at replicating observed sources."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Construct observable source SEDs",
+    "method": {
+     "value": "Match isolated YSOs to radiative transfer models in temperature-luminosity quantile space; combine cluster-member and intracluster-medium fluxes.",
+     "evidence": [
+      {
+       "loc": "Model SEDs",
+       "quote": "For each isolated YSO, a model was randomly selected from the 10 nearest neighbors in temperature-luminosity quantile space (quantile transform fit to the temperature and luminosity of all models)."
+      },
+      {
+       "loc": "Model SEDs",
+       "quote": "The final cluster flux in each filter is found by adding the flux contributions of all of the members and the intra-cluster medium."
+      }
+     ]
+    },
+    "software": [
+     "PxP"
+    ],
+    "key_parameters": [
+     {
+      "value": "Random inclination; largest aperture 10^6 AU for isolated YSOs.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "A random inclination is chosen, then the flux of that star was taken to be the flux in the largest aperture ($10^6$ AU) in each filter, given by the chosen model."
+       }
+      ]
+     },
+     {
+      "value": "Reject model SEDs below 10 μJy at 21 μm and 1 μJy at 1.6 μm.",
+      "evidence": [
+       {
+        "loc": "Example Results",
+        "quote": "Specifically, SEDs were excluded for sources lower than the minimum fluxes in the (cite: 2024Peltonen) M33 YSO Candidate catalog (10 $\\mu$Jy at 21 $\\mu$m and 1 $\\mu$Jy at 1.6 $\\mu$m)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Cluster diameter equals the smallest MIRI resolution element, 0.207 arcsec.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "we used the number of cluster members to determine the average member separation, assuming the cluster diameter is the size of the smallest MIRI resolution element (0.207$''$)."
+       }
+      ]
+     },
+     {
+      "value": "Constant foreground extinction screen across each population.",
+      "evidence": [
+       {
+        "loc": "Model SEDs",
+        "quote": "In this initial implementation, we adopt a simple screen along the line of sight with a constant extinction across the entire population."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Build the PCA population likelihood",
+    "method": {
+     "value": "Transform source SEDs into the first two principal components; construct 10×10 histograms and fit folded normal count distributions at each grid point.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We determined the principal component basis using all of our source fluxes (the SED of all of the individual YSOs and unresolved clusters)."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "We then created 10$\\times$10 two-dimensional (2D) histograms for each cloud-scale population."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "Therefore, for each grid point, we fit a folded normal distribution"
+      }
+     ]
+    },
+    "software": [
+     "PxP",
+     "EMCEE"
+    ],
+    "key_parameters": [
+     {
+      "value": "11 logarithmically spaced masses, 10^3–10^5 M_sun; 50 linearly spaced ages, 0.3–3 Myr; 1000 realizations per combination.",
+      "evidence": [
+       {
+        "loc": "Fitting",
+        "quote": "We began by generating model populations with 11 masses logarithmically spaced from 10$^3$-10$^5$ M$_\\odot$ and 50 ages linearly spaced from 0.3-3 Myr."
+       },
+       {
+        "loc": "Fitting",
+        "quote": "For each of these masses and ages, we generated 1000 populations for a total of 550000 populations."
+       }
+      ]
+     },
+     {
+      "value": "A_V=0–20 magnitudes.",
+      "evidence": [
+       {
+        "loc": "Fitting",
+        "quote": "We then applied a constant extinction screen to each of these SEDs with $A_V$ from 0-20 magnitudes for a total of 11,550,000 unique sets of SEDs."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Flat priors over the sampled model parameter ranges.",
+      "evidence": [
+       {
+        "loc": "Fitting",
+        "quote": "We adopt flat priors over the range of parameters sampled in our models (see above)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Sum log-probabilities of observed source counts across histogram grid points and sample the posterior with EMCEE.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "can be found by summing the log-probabilities at each grid point using the actual number of sources and the model PDFs."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "This sampling is done using the Markov chain Monte Carlo package EMCEE (cite: 2013emcee)."
+      }
+     ]
+    },
+    "validation": {
+     "value": "First two components contain approximately 97% of variance; folded normal distributions empirically outperform Poisson and normal distributions.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "these first two components contained $\\approx97\\%$ of the variance in the full sample."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "We adopt the folded normal functional form based on a better empirical match to the population distributions than simpler forms like Poisson or normal distributions."
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Test parameter recovery",
+    "method": {
+     "value": "Generate new model populations, impose the catalog flux cuts, fit with PxP and compare recovered properties against inputs.",
+     "evidence": [
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "Using the same population synthesis methodology described in Section [2](#sec:popsyn), we created new populations with a range of properties."
+      },
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "We made the same flux cuts only including sources that would be detectable in the (cite: 2024Peltonen) YSOC catalog."
+      },
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "We then fit these new populations with PxP and compared the estimated properties to those that were used to generate the model population."
+      }
+     ]
+    },
+    "software": [
+     "PxP"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "PxP self-retrieval.",
+     "evidence": [
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "We then fit these new populations with PxP and compared the estimated properties to those that were used to generate the model population."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Assess age and mass recovery, including interquartile ranges and source-count limits.",
+     "evidence": [
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "The age predictions of PxP should not be used unless there are at least 15-40 sources, which translates to 4000 M$_\\odot$ population at 1 Mpc."
+      },
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "The total mass of the population is predicted more consistently than age."
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Fit the N44 comparison population",
+    "method": {
+     "value": "Apply PxP to the 49-source Spitzer YSO catalog; compare burst and continuous star formation histories.",
+     "evidence": [
+      {
+       "loc": "N44",
+       "quote": "we use the older YSO catalog of (cite: 2009Gruendl) identified through *Spitzer* photometry, which contains flux measurements for 49 YSOs in the N44 region."
+      },
+      {
+       "loc": "N44",
+       "quote": "Using the continuous star formation history instead of the burst model leads to different estimated properties."
+      }
+     ]
+    },
+    "software": [
+     "PxP"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Sources can represent unresolved clusters and binaries.",
+      "evidence": [
+       {
+        "loc": "N44",
+        "quote": "our model assumption that many of the sources are associated with unresolved clusters and binaries and not just individual YSOs"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "PxP population fitting.",
+     "evidence": [
+      {
+       "loc": "N44",
+       "quote": "Thus, for the PxP analysis, we use the older YSO catalog of (cite: 2009Gruendl)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compare against previous N44 masses and ages and inspect observed versus best-fit PCA grids.",
+     "evidence": [
+      {
+       "loc": "N44",
+       "quote": "The mass is in the same order of magnitude but higher than the prediction of (cite: 2012Carlson)."
+      },
+      {
+       "loc": "N44",
+       "quote": "PxP’s estimate is in the range spanned by the (cite: 2009Chen) sources."
+      },
+      {
+       "loc": "N44",
+       "quote": "there is a clear distinction between the real grid and the best-fit median grid."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Measure NGC 604 point-source photometry",
+    "method": {
+     "value": "Use DOLPHOT simultaneously in three NIRCam bands; use the resulting catalog as a warmstart file for the JWST/MIRI module.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "We use the DOLPHOT software (cite: 2000Dolphin; 2016Dolphin) with the JWST/NIRCam module (cite: 2023Weisz) in all three NIRCam bands (F090W, F200W, and F444W) simultaneously."
+      },
+      {
+       "loc": "YSOC Selection",
+       "quote": "This catalog of NIRCam identified sources is used as a warmstart file for the DOLPHOT JWST/MIRI module (cite: 2024Peltonen) to obtain photometry in the three JWST bands (F444W, F770W, F1500W)."
+      }
+     ]
+    },
+    "software": [
+     "DOLPHOT"
+    ],
+    "key_parameters": [
+     {
+      "value": "Local SNR >25; sharpness squared <0.09; object type 1; no quality flags.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "We retain sources if they have a local signal-to-noise ratio (SNR) $>$25, (sharpness)$^2<$0.09, object type 1, and no quality flags."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual check of MIRI images found every discernible point source associated with a DOLPHOT source.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "However, we examined the long wavelength images from MIRI by eye and found that all discernible point sources were associated with a DOLPHOT source."
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Select NGC 604 YSO candidates",
+    "method": {
+     "value": "Apply color-color and color-magnitude cuts, reject sources without ALMA CO detections, then visually remove background galaxies and ISM sources.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "The YSOC selection was performed according to the procedure outlined in (cite: 2024Peltonen)."
+      },
+      {
+       "loc": "YSOC Selection",
+       "quote": "An additional 26 sources were removed that had no ALMA $^{12}$CO J=1-0 detection"
+      },
+      {
+       "loc": "YSOC Selection",
+       "quote": "Finally, we perform a visual inspection on the remaining sources to remove background galaxies and ISM sources."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "log10(F4.4/F2)>−0.25; log10(F4.4/F15)<−0.25.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "\\log_{10}(F_{4.4}/F_{2})>-0.25"
+       },
+       {
+        "loc": "YSOC Selection",
+        "quote": "\\log_{10}(F_{4.4}/F_{15})<-0.25."
+       }
+      ]
+     },
+     {
+      "value": "log(F4.4/μJy)>−0.5; log(F4.4/μJy)>2.5 log(F4.4/F2)−1.2.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "\\log(F_{4.4}/\\mathrm{\\mu Jy})>-0.5"
+       },
+       {
+        "loc": "YSOC Selection",
+        "quote": "\\log(F_{4.4}/\\mathrm{\\mu Jy})>2.5 \\log(F_{4.4}/F_{2}) -1.2."
+       }
+      ]
+     },
+     {
+      "value": "Keep sources appearing point-like in at least three filters.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "Sources that appeared point-like in at least three filters were kept, leaving 112 YSO candidates (YSOCs)."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Expect approximately 9 contaminants among 112 YSOCs by transferring the earlier M33 contamination estimate.",
+      "evidence": [
+       {
+        "loc": "YSOC Selection",
+        "quote": "Therefore, we expect that $\\approx$9 of our 112 YSOCs are contaminants since we followed the YSOC identification strategy of (cite: 2024Peltonen) closely."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection for point-like appearance and rejection of galaxies and ISM sources.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "Finally, we perform a visual inspection on the remaining sources to remove background galaxies and ISM sources."
+      },
+      {
+       "loc": "YSOC Selection",
+       "quote": "Sources that appeared point-like in at least three filters were kept, leaving 112 YSO candidates (YSOCs)."
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Fit the NGC 604 population",
+    "method": {
+     "value": "Apply PxP to the selected YSOC catalog and compare burst and continuous models.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "Now equipped with a catalog of YSOCs in NGC 604, we can apply PxP."
+      },
+      {
+       "loc": "Model Fit",
+       "quote": "The continuous model predictions again differ from the burst model."
+      }
+     ]
+    },
+    "software": [
+     "PxP"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "PxP fitting with posterior parameters displayed in a corner plot.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "Figure [12](#fig:corner604) shows the resulting corner plot produced by PxP."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Inspect PCA grids and compare the inferred embedded mass with Spitzer estimates.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "The PCA grids show that PxP was able to find a reasonable fit."
+      },
+      {
+       "loc": "Model Fit",
+       "quote": "The mass estimate of embedded star formation from *Spitzer* is consistent with the PxP mass estimate."
+      }
+     ]
+    }
+   },
+   {
+    "order": 9,
+    "goal": "Calculate the recent star formation rate",
+    "method": {
+     "value": "Divide total population mass by population age; compare burst and continuous estimates with the Hα rate.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "Simply dividing the total mass of the population by the age of the population gives a star formation rate of 0.035$\\pm0.003$ $M_\\odot$/yr."
+      },
+      {
+       "loc": "Model Fit",
+       "quote": "If we consider the continuous model the greater age gives a star formation rate of 0.019$\\pm0.002$ $M_\\odot$/yr closer but still larger than the (cite: 2015Boquien) estimate."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Hα traces a later stage, likely the first generation of star formation.",
+      "evidence": [
+       {
+        "loc": "Model Fit",
+        "quote": "H$\\alpha$ should be tracing a later stage of star formation likely corresponding to the first generation of star formation seen by (cite: 2012Martinez)."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compare with the literature Hα star formation rate.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "The predicted star formation rate in NGC 604 using H$\\alpha$ is 0.016$\\pm0.002$ $M_\\odot$/yr (cite: 2015Boquien)."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "PxP",
+    "version": "not stated",
+    "used_for": {
+     "value": "Combine population synthesis and PCA to determine YSO population properties.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We will refer to the entirety of this approach as PxP since it combines **P**opulation synthesis with **P**CA to determine YSO population properties."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PHANGS-ALMA pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reduce the ALMA data used for CO detection screening.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "We use data from ALMA project 2022.1.00276.S (PI: Rosolowsky) reduced with the PHANGS-ALMA pipeline (cite: 2021Leroy)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "PJPIPE",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reduce raw JWST data.",
+     "evidence": [
+      {
+       "loc": "Data",
+       "quote": "The raw data were reduced using PJPIPE developed for PHANGS-JWST (cite: 2024Williams)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "DOLPHOT",
+    "version": "not stated",
+    "used_for": {
+     "value": "NIRCam and MIRI point-source photometry using JWST modules.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "We use the DOLPHOT software (cite: 2000Dolphin; 2016Dolphin) with the JWST/NIRCam module (cite: 2023Weisz) in all three NIRCam bands (F090W, F200W, and F444W) simultaneously."
+      },
+      {
+       "loc": "YSOC Selection",
+       "quote": "This catalog of NIRCam identified sources is used as a warmstart file for the DOLPHOT JWST/MIRI module (cite: 2024Peltonen) to obtain photometry in the three JWST bands (F444W, F770W, F1500W)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "emcee",
+    "version": "not stated",
+    "used_for": {
+     "value": "Markov chain Monte Carlo sampling of the population-property posterior.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We then estimate the posterior distribution of YSO population properties by sampling the total log-probability of the model parameters."
+      },
+      {
+       "loc": "Fitting",
+       "quote": "This sampling is done using the Markov chain Monte Carlo package EMCEE (cite: 2013emcee)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astropy",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "JWST pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "corner",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "matplotlib",
+    "version": "not stated",
+    "used_for": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "name": "MATCH",
+    "version": "not stated",
+    "used_for": {
+     "value": "Main-sequence population synthesis cited as background.",
+     "evidence": [
+      {
+       "loc": "Introduction",
+       "quote": "This approach is known as population synthesis and has been used to great effect in main-sequence populations with codes like `MATCH` (cite: 2002Dolphin)."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Sources rejected for lacking an ALMA CO detection",
+    "value": "26",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "YSOC Selection",
+      "quote": "An additional 26 sources were removed that had no ALMA $^{12}$CO J=1-0 detection"
+     }
+    ]
+   },
+   {
+    "quantity": "Final NGC 604 YSO candidate count",
+    "value": "112",
+    "uncertainty": "not stated",
+    "units": "YSOCs",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "YSOC Selection",
+      "quote": "Sources that appeared point-like in at least three filters were kept, leaving 112 YSO candidates (YSOCs)."
+     }
+    ]
+   },
+   {
+    "quantity": "N44 burst-model population mass",
+    "value": "1.1×10^4",
+    "uncertainty": "±0.1×10^4",
+    "units": "M_sun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "After fitting these YSOs, PxP recovers a mass of (1.1$\\pm0.1$)$\\times10^4$ M$_\\odot$, an extinction of $A_V =3.2\\pm0.4$, and an age of $t_0 = 0.74^{+0.06}_{-0.03}$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "N44 burst-model foreground extinction A_V",
+    "value": "3.2",
+    "uncertainty": "±0.4",
+    "units": "magnitudes",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "After fitting these YSOs, PxP recovers a mass of (1.1$\\pm0.1$)$\\times10^4$ M$_\\odot$, an extinction of $A_V =3.2\\pm0.4$, and an age of $t_0 = 0.74^{+0.06}_{-0.03}$ Myr"
+     },
+     {
+      "loc": "Fitting",
+      "quote": "with $A_V$ from 0-20 magnitudes"
+     }
+    ]
+   },
+   {
+    "quantity": "N44 burst-model age t_0",
+    "value": "0.74",
+    "uncertainty": "+0.06/-0.03",
+    "units": "Myr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "After fitting these YSOs, PxP recovers a mass of (1.1$\\pm0.1$)$\\times10^4$ M$_\\odot$, an extinction of $A_V =3.2\\pm0.4$, and an age of $t_0 = 0.74^{+0.06}_{-0.03}$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "N44 continuous-model age",
+    "value": "2.2",
+    "uncertainty": "±0.2",
+    "units": "Myr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "The age estimate is 2.2$\\pm0.2$ Myr, approximately $3\\times$ older than the age predicted by the burst model."
+     }
+    ]
+   },
+   {
+    "quantity": "N44 continuous-model population mass",
+    "value": "1.7×10^4",
+    "uncertainty": "±0.2×10^4",
+    "units": "M_sun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "The mass estimate is $M_\\star=(1.7\\pm0.2)\\times10^4$ M$_\\odot$ and the derived extinction is $A_V=3.2\\pm0.4$, which are comparable to the estimates from the burst model."
+     }
+    ]
+   },
+   {
+    "quantity": "N44 continuous-model foreground extinction A_V",
+    "value": "3.2",
+    "uncertainty": "±0.4",
+    "units": "magnitudes",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "The mass estimate is $M_\\star=(1.7\\pm0.2)\\times10^4$ M$_\\odot$ and the derived extinction is $A_V=3.2\\pm0.4$, which are comparable to the estimates from the burst model."
+     },
+     {
+      "loc": "Fitting",
+      "quote": "with $A_V$ from 0-20 magnitudes"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 burst-model population mass",
+    "value": "2.2×10^4",
+    "uncertainty": "±0.2×10^4",
+    "units": "M_sun",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "the best-fitting parameters for the YSOC population in NGC 604 are a mass of $M_\\star = (2.2\\pm0.2)\\times10^4$ $M_\\odot$, $A_V=10.5\\pm0.3$, and $t_0 = 0.62\\pm0.01$ Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 burst-model foreground extinction A_V",
+    "value": "10.5",
+    "uncertainty": "±0.3",
+    "units": "magnitudes",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "the best-fitting parameters for the YSOC population in NGC 604 are a mass of $M_\\star = (2.2\\pm0.2)\\times10^4$ $M_\\odot$, $A_V=10.5\\pm0.3$, and $t_0 = 0.62\\pm0.01$ Myr."
+     },
+     {
+      "loc": "Fitting",
+      "quote": "with $A_V$ from 0-20 magnitudes"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 burst-model age t_0",
+    "value": "0.62",
+    "uncertainty": "±0.01",
+    "units": "Myr",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "the best-fitting parameters for the YSOC population in NGC 604 are a mass of $M_\\star = (2.2\\pm0.2)\\times10^4$ $M_\\odot$, $A_V=10.5\\pm0.3$, and $t_0 = 0.62\\pm0.01$ Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 continuous-model population mass",
+    "value": "3.6×10^4",
+    "uncertainty": "±0.3×10^4",
+    "units": "M_sun",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "The continuous model predicts a mass of $M_\\star = (3.6\\pm0.3)\\times10^4$ $M_\\odot$, $A_V=8.8\\pm0.4$, and $t_0 = 1.9\\pm0.4$ Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 continuous-model foreground extinction A_V",
+    "value": "8.8",
+    "uncertainty": "±0.4",
+    "units": "magnitudes",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "The continuous model predicts a mass of $M_\\star = (3.6\\pm0.3)\\times10^4$ $M_\\odot$, $A_V=8.8\\pm0.4$, and $t_0 = 1.9\\pm0.4$ Myr."
+     },
+     {
+      "loc": "Fitting",
+      "quote": "with $A_V$ from 0-20 magnitudes"
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 continuous-model age t_0",
+    "value": "1.9",
+    "uncertainty": "±0.4",
+    "units": "Myr",
+    "from_step": 8,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "The continuous model predicts a mass of $M_\\star = (3.6\\pm0.3)\\times10^4$ $M_\\odot$, $A_V=8.8\\pm0.4$, and $t_0 = 1.9\\pm0.4$ Myr."
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 burst-model star formation rate",
+    "value": "0.035",
+    "uncertainty": "±0.003",
+    "units": "M_sun/yr",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "Simply dividing the total mass of the population by the age of the population gives a star formation rate of 0.035$\\pm0.003$ $M_\\odot$/yr."
+     }
+    ]
+   },
+   {
+    "quantity": "NGC 604 continuous-model star formation rate",
+    "value": "0.019",
+    "uncertainty": "±0.002",
+    "units": "M_sun/yr",
+    "from_step": 9,
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "If we consider the continuous model the greater age gives a star formation rate of 0.019$\\pm0.002$ $M_\\odot$/yr closer but still larger than the (cite: 2015Boquien) estimate."
+     }
+    ]
+   },
+   {
+    "quantity": "Self-fit minimum source count for age predictions",
+    "value": "15-40",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The age predictions of PxP should not be used unless there are at least 15-40 sources, which translates to 4000 M$_\\odot$ population at 1 Mpc."
+     }
+    ]
+   },
+   {
+    "quantity": "Self-fit age IQR at 4000 M_sun",
+    "value": "≈0.2",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The interquartile range (IQR) of the predicted ages is $\\approx0.2$ dex at 4000 M$_\\odot$ and $<0.1$ dex for populations $\\geq10000$ M$_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Self-fit age IQR for populations ≥10000 M_sun",
+    "value": "<0.1",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The interquartile range (IQR) of the predicted ages is $\\approx0.2$ dex at 4000 M$_\\odot$ and $<0.1$ dex for populations $\\geq10000$ M$_\\odot$."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Mass is recovered more consistently than age in self-fitting tests.",
+    "evidence": [
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The total mass of the population is predicted more consistently than age."
+     }
+    ]
+   },
+   {
+    "value": "The burst model fits both observed populations better than the continuous model.",
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "We find that the probability of the continuous model generating the observed data is eight orders of magnitude worse than the burst model."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "Again the continuous model is a worse fit with the total probability being 10 orders of magnitude worse than the burst model."
+     }
+    ]
+   },
+   {
+    "value": "NGC 604 star formation activity has not decreased and may have increased in the second generation.",
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "Therefore, our estimate implies that star formation activity has not decreased with the second generation and has possibly even increased."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "PxP can recover YSO population mass and age from source SED distributions.",
+    "experiment": "Fit newly generated model populations and compare recovered parameters with their inputs.",
+    "result": "Mass is recovered more consistently; age predictions require at least 15-40 sources.",
+    "finding": "Self-retrieval supports the framework within source-count and age-dependent limits.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "We then fit these new populations with PxP and compared the estimated properties to those that were used to generate the model population."
+     },
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The age predictions of PxP should not be used unless there are at least 15-40 sources, which translates to 4000 M$_\\odot$ population at 1 Mpc."
+     },
+     {
+      "loc": "Self-Fit Testing",
+      "quote": "The total mass of the population is predicted more consistently than age."
+     }
+    ]
+   },
+   {
+    "hypothesis": "PxP can describe the observed NGC 604 YSO population.",
+    "experiment": "Fit the selected NGC 604 YSOC catalog with PxP and inspect the PCA grids.",
+    "result": "M_star=(2.2±0.2)×10^4 M_sun, A_V=10.5±0.3 and t_0=0.62±0.01 Myr.",
+    "finding": "A reasonable population fit is obtained and the mass agrees with the earlier Spitzer estimate.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "the best-fitting parameters for the YSOC population in NGC 604 are a mass of $M_\\star = (2.2\\pm0.2)\\times10^4$ $M_\\odot$, $A_V=10.5\\pm0.3$, and $t_0 = 0.62\\pm0.01$ Myr."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "The PCA grids show that PxP was able to find a reasonable fit."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "The mass estimate of embedded star formation from *Spitzer* is consistent with the PxP mass estimate."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Burst and continuous star formation histories can be distinguished for the two observed populations.",
+    "experiment": "Fit N44 and NGC 604 using both histories and compare their probabilities.",
+    "result": "Continuous-model probabilities are eight orders of magnitude worse for N44 and 10 orders worse for NGC 604.",
+    "finding": "The burst model is preferred within the tested model family.",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "N44",
+      "quote": "We find that the probability of the continuous model generating the observed data is eight orders of magnitude worse than the burst model."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "Again the continuous model is a worse fit with the total probability being 10 orders of magnitude worse than the burst model."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The second generation of star formation in NGC 604 has maintained or increased its activity.",
+    "experiment": "Divide the fitted population mass by its age and compare with the literature Hα rate.",
+    "result": "The burst-model rate is 0.035±0.003 M_sun/yr, compared with 0.016±0.002 M_sun/yr from Hα.",
+    "finding": "Activity has not decreased and may have increased, but the comparison traces different stages.",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Model Fit",
+      "quote": "Simply dividing the total mass of the population by the age of the population gives a star formation rate of 0.035$\\pm0.003$ $M_\\odot$/yr."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "The predicted star formation rate in NGC 604 using H$\\alpha$ is 0.016$\\pm0.002$ $M_\\odot$/yr (cite: 2015Boquien)."
+     },
+     {
+      "loc": "Model Fit",
+      "quote": "Therefore, our estimate implies that star formation activity has not decreased with the second generation and has possibly even increased."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Use PCA because no single infrared color-magnitude or color-color diagram captures SED complexity.",
+    "evidence": [
+     {
+      "loc": "Fitting",
+      "quote": "However, there is no single color-magnitude or color-color diagram in the infrared that can represent the complexity of the SEDs (cite: 2017Jones)."
+     },
+     {
+      "loc": "Fitting",
+      "quote": "To discriminate between different YSO populations, we perform dimensionality reduction through PCA"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Other accretion histories were generated; modified turbulent-core accretion best replicated observed sources in initial testing.",
+     "evidence": [
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "We generated populations using all of the accretion histories"
+      },
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "our initial testing showed that the (cite: 2025Richardson) modified turbulent-core accretion was the most effective at replicating observed sources."
+      }
+     ]
+    },
+    {
+     "value": "Folded normal distributions were preferred to Poisson and normal distributions.",
+     "evidence": [
+      {
+       "loc": "Fitting",
+       "quote": "We adopt the folded normal functional form based on a better empirical match to the population distributions than simpler forms like Poisson or normal distributions."
+      }
+     ]
+    },
+    {
+     "value": "Continuous histories fit worse than burst histories for both N44 and NGC 604.",
+     "evidence": [
+      {
+       "loc": "N44",
+       "quote": "We find that the probability of the continuous model generating the observed data is eight orders of magnitude worse than the burst model."
+      },
+      {
+       "loc": "Model Fit",
+       "quote": "Again the continuous model is a worse fit with the total probability being 10 orders of magnitude worse than the burst model."
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Use two components containing approximately 97% of variance and 10 histogram bins to balance resolution against small-number statistics.",
+    "evidence": [
+     {
+      "loc": "Fitting",
+      "quote": "these first two components contained $\\approx97\\%$ of the variance in the full sample."
+     },
+     {
+      "loc": "Fitting",
+      "quote": "We adopted 10 bins to have sufficient resolution while avoiding small-number statistics."
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Simplified star formation histories introduce systematic age uncertainty.",
+     "evidence": [
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "In the absence of these more sophisticated star formation histories, the simple model will introduce systematic uncertainty into the age estimations."
+      }
+     ]
+    },
+    {
+     "value": "Accretion varies smoothly in the implementation; stochastic accretion is not explored.",
+     "evidence": [
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "Another important caveat is that the current implementation prescribes smooth variations in accretion, which differs from observed stochastic accretion (cite: 2023Fischer)."
+      },
+      {
+       "loc": "Star Formation and Accretion Histories",
+       "quote": "Our framework is capable of handling other varieties of accretion history, such as stochastic, but we do not explore those here."
+      }
+     ]
+    },
+    {
+     "value": "F335M, F770W and F1130W may be poorly represented because PAH emission is not well simulated.",
+     "evidence": [
+      {
+       "loc": "Example Results",
+       "quote": "specifically F335M, F770W, and F1130W, which are often dominated by polycyclic aromatic hydrocarbons that are not well simulated in the models."
+      }
+     ]
+    },
+    {
+     "value": "Low source counts and older ages limit age recovery; the lower mass prior boundary biases 1000 M_sun populations upward.",
+     "evidence": [
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "However, lower mass populations with fewer sources do not give an accurate age prediction."
+      },
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "populations older than $\\sim2$ Myr are indistinguishable from one another for $M_\\star < 10^4~M_\\odot$."
+      },
+      {
+       "loc": "Self-Fit Testing",
+       "quote": "populations of $1000$ M$_\\odot$ are predicted to have a systematically higher mass, which is due to $1000$ M$_\\odot$ being the minimum allowed value in our flat mass prior."
+      }
+     ]
+    },
+    {
+     "value": "N44 fits are affected by inconsistent SED coverage, catalog completeness and limited high-luminosity models.",
+     "evidence": [
+      {
+       "loc": "N44",
+       "quote": "These inconsistent SEDs could be leading to inconsistent PCA fits shifting the number of sources contained at each grid point."
+      },
+      {
+       "loc": "N44",
+       "quote": "Second, the completeness of the YSO catalogs could be resulting in fewer than expected faint sources being included in the population fits."
+      },
+      {
+       "loc": "N44",
+       "quote": "Third, the models have limited models at very high luminosities, which could lead to our model populations not accurately representing the brightest observed sources."
+      }
+     ]
+    },
+    {
+     "value": "The NIRCam-first catalog may omit deeply embedded sources.",
+     "evidence": [
+      {
+       "loc": "YSOC Selection",
+       "quote": "This catalog may be missing some deeply embedded sources that are mid-infrared bright and near-infrared dim."
+      }
+     ]
+    },
+    {
+     "value": "Two regions are insufficient for rigorous conclusions about changing star formation histories.",
+     "evidence": [
+      {
+       "loc": "Model Fit",
+       "quote": "While no conclusions can be rigorously drawn from a sample of two regions"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "The ALMA rejection cannot be audited without a detection threshold, velocity window and spatial association rule.",
+    "Self-fitting tests assess recovery within the generating model family, rather than robustness to incorrect physical assumptions.",
+    "The six-filter data description and the MIRI photometry filter list disagree: the latter includes F444W and omits F1130W.",
+    "Quoted posterior uncertainties should be distinguished from uncertainty in accretion history, cluster fraction, completeness and contamination.",
+    "The description does not explain how likelihoods are evaluated between sampled model grid points."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "JWST program DDT 6555 is public.",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "We retrieved data from the public JWST program DDT 6555 (PI:M.G.Marin)."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "A full public PxP release is planned to accompany the future Milky Way analysis.",
+     "evidence": [
+      {
+       "loc": "Conclusion",
+       "quote": "A full public release of PxP is planned to accompany this Milky Way analysis."
+      }
+     ]
+    }
+   ],
+   "missing_for_reproduction": [
+    "A released PxP implementation and the exact modified stellar evolution code.",
+    "Numerical population-model settings, PCA transformations, histogram edges and fitted count-distribution grids.",
+    "MCMC configuration and definitions of reported central values and uncertainties.",
+    "Exact ALMA products and the CO-based rejection rule, including the identities of rejected candidates.",
+    "JWST reduction and photometry configuration, adopted distances and treatment of missing or mismatched filters.",
+    "The full machine-readable YSOC table, which is referenced but only partly supplied in this text."
+   ],
+   "estimated_data_volume_inferred": "Cannot estimate ALMA data volume from the stated project code and transition alone.",
+   "score_inferred": 40,
+   "score_reason": "The paper provides numeric results, selection cuts and a substantial conceptual recipe, but exact ALMA screening, model settings and sampling details are missing; the full PxP release is deferred.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Main results are numeric and JWST data are stated to be public, but ALMA public availability is not stated and the end-to-end recipe lacks essential code and settings."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: 2021Leroy)",
+     "why": "PHANGS-ALMA reduction pipeline."
+    },
+    {
+     "citation": "(cite: 2024Williams)",
+     "why": "PJPIPE JWST reduction."
+    },
+    {
+     "citation": "(cite: 2000Dolphin; 2016Dolphin)",
+     "why": "DOLPHOT photometry."
+    },
+    {
+     "citation": "(cite: 2023Weisz)",
+     "why": "DOLPHOT JWST/NIRCam module."
+    },
+    {
+     "citation": "(cite: 2024Peltonen)",
+     "why": "DOLPHOT JWST/MIRI module, YSOC selection and model detectability cuts."
+    },
+    {
+     "citation": "(cite: 2013emcee)",
+     "why": "MCMC posterior sampling."
+    },
+    {
+     "citation": "(cite: 1987Murtagh)",
+     "why": "Principal component analysis."
+    },
+    {
+     "citation": "(cite: 2012Klassen)",
+     "why": "Underlying stellar evolution code."
+    },
+    {
+     "citation": "(cite: 2011Offner)",
+     "why": "Accretion-history parameterization."
+    },
+    {
+     "citation": "(cite: 2025Richardson)",
+     "why": "Modified accretion implementation and use of total luminosity."
+    },
+    {
+     "citation": "(cite: rob17); (cite: 2024Richardson)",
+     "why": "Radiative transfer models and selected geometries."
+    },
+    {
+     "citation": "(cite: 2023Gordon)",
+     "why": "Foreground extinction parameterization."
+    },
+    {
+     "citation": "(cite: 2001Kroupa)",
+     "why": "Adopted IMF."
+    },
+    {
+     "citation": "(cite: slug4)",
+     "why": "Adopted CMF shape."
+    },
+    {
+     "citation": "(cite: 2017Moe)",
+     "why": "Binary population distributions."
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: 2025Sarbadhicary)",
+     "why": "First presentation and fuller description of the reduced NGC 604 JWST data."
+    },
+    {
+     "citation": "Richardson (in prep.)",
+     "why": "Planned investigation of differences between accretion histories."
+    }
+   ],
+   "related_projects_or_surveys": [
+    "JWST DDT 6555",
+    "PHANGS-JWST",
+    "PHANGS-ALMA"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "gpt-6.1-sol",
+  "custom_id": "gpt61sol-2026ApJ..1001..170P",
+  "batch_id": null,
+  "run": "codex_run4",
+  "collected_at": "2026-10-29T18:12:54",
+  "usage": {},
+  "usd": 0.0,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0,
+  "effort": "high",
+  "seconds": 265.8
+ },
+ "checks": {
+  "quotes": 180,
+  "quotes_ok": 180,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 19,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 147,
+   "stated": 97,
+   "rate": 0.66
+  },
+  "evidence_ok": true
+ }
+}

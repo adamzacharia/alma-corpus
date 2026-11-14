@@ -1,0 +1,401 @@
+{
+ "bibcode": "2023MNRAS.518..691J",
+ "title": "Evidence for extended gaseous reservoirs around AGN at cosmic noon from ALMA CO(3-2) observations",
+ "year": 2023,
+ "doi": "10.1093/mnras/stac3088",
+ "arxiv_id": "2210.13370",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "Whether energetic, outflowing z ~ 2.0-2.5 AGN host galaxies exhibit extended reservoirs of molecular gas in the circumgalactic medium traced by ALMA CO(3-2) emission.",
+ "alma_project_codes": [
+  "2016.1.00798.S",
+  "2017.1.00893.S",
+  "2021.1.00327.S"
+ ],
+ "data": {
+  "bands": "Band 3 (rest-frame ~870 um)",
+  "arrays": "not stated",
+  "angular_resolution": "~1'' for main sample (0.88'' to 1.61''); ~2'' for new X_N_6_27 observations",
+  "sensitivity": "~0.3-0.7 mJy beam^-1 per ~25 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Source positions, spectroscopic and CO redshifts (z_spec, z_CO), integrated CO flux densities (I_CO), CO FWHMs, line rest frequencies, SFRs, and stellar masses",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "To take this idea into account, we first assumed the CO(3-2) redshift reported by (cite: circ21) ($z_{CO}$ in Table [\\[basictab\\]](#basictab)) and took a range of $\\pm800$ km s$^{-1}$."
+     },
+     {
+      "loc": "Stacking Method",
+      "quote": "The integrated CO flux density of each source ($I_{CO}\\equiv S\\Delta v$) is taken from (cite: circ21), and each weight is set to the inverse of this value: $w_n=1/I_{CO,n}$."
+     }
+    ]
+   },
+   "citation": "(cite: circ21)"
+  },
+  {
+   "what": {
+    "value": "HST/ACS F814W circular PSF FWHM of 0.095''",
+    "evidence": [
+     {
+      "loc": "HST stacking",
+      "quote": "These images have cell sizes of $0.03''$, and we assume a circular PSF of FWHM $0.095''$ (cite: koek07)."
+     }
+    ]
+   },
+   "citation": "(cite: koek07)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Create homogeneous continuum-free CO(3-2) data cubes and MFS continuum maps",
+   "method": "Extract calibrated target visibilities with CASA SPLIT and combine multi-execution MSs with CONCAT. Subtract a 1st-order continuum model fitted to line-free channels (outside +/- 800 km/s of z_CO) using UVCONTSUB. Image line cubes in tclean ('cube' mode, natural weighting, 0.2'' cell size, ~7.812 MHz channels) to make dirty cubes, trim to the CO sideband excluding SPW edge channels with IMSUBIMAGE, compute channel RMS via sigma-clipping, and re-run tclean cleaning down to 3x dirty RMS. Image continuum for 24 non-companion sources using tclean in 'MFS' mode on line-free channels down to 3x RMS.",
+   "software": [
+    "CASA",
+    "SPLIT",
+    "CONCAT",
+    "UVCONTSUB",
+    "tclean",
+    "IMSUBIMAGE",
+    "astropy",
+    "SIGMA_CLIPPED_STATS"
+   ],
+   "key_parameters": [
+    "Line-free range: outside +/- 800 km s^-1 of z_CO; cell size = 0.2''; channel width ~7.812 MHz (~25 km s^-1); natural weighting; sigma clipping S/N_upper = 3; clean threshold = 3x dirty RMS"
+   ],
+   "assumptions": [
+    "Any broad CO(3-2) outflow emission is contained within +/- 800 km s^-1 of z_CO"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "3-D stacking of CO(3-2) cubes, PSF stacking, and moment 0 map creation",
+   "method": "Cut out central 100x100 pixels (20''x20'') of the 7 CO-detected cubes and rebin spectrally onto a -3000 to +3000 km s^-1 grid (240 channels of 25 km s^-1) by fractional velocity bin overlap (Eqs. 1-2) using four weighting schemes (InvV, Norm, InNo, None). Stack median channel synthesized beams in 2-D with identical weights (Eq. 3) and fit a 2-D Gaussian to define the effective PSF. Collapse the 4 stacked cubes over 5 velocity ranges (+/-100 x [1,2,3,4,5] km s^-1) using CASA immoments to create 20 moment 0 maps.",
+   "software": [
+    "CASA",
+    "immoments"
+   ],
+   "key_parameters": [
+    "Grid: 100x100 pixels (20''x20'', 0.2''/pixel), 240 channels (-3000 to 3000 km s^-1, width 25 km s^-1); z_stack = 2.337; collapse velocity ranges: +/-100, +/-200, +/-300, +/-400, +/-500 km s^-1"
+   ],
+   "assumptions": [
+    "Each galaxy is centered at the phase center (offsets between rest-frame UV and CO(3-2) centroids are < 1 pixel)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "2-D stacking of HST/ACS F814W images, individual CO(3-2) moment 0 maps, and FIR continuum maps",
+   "method": "Stack 21 HST/ACS F814W cutouts (after fitting 2-D Gaussians to align on central emission centroids, and excluding 3 companion sources; also split into 11 NL and 10 BL AGN, and convolve with ALMA beam), 7 individual CO(3-2) moment 0 maps, and 24 FIR MFS continuum maps in 2-D using Eq. 3.",
+   "software": [
+    "scipy",
+    "CURVE_FIT"
+   ],
+   "key_parameters": [
+    "HST cutout size = 15''x15'', cell size = 0.03'', circular PSF FWHM = 0.095'', radial bin width = 2 pixels; InvV weighting"
+   ],
+   "assumptions": [
+    "Circular PSF of FWHM 0.095'' for HST/ACS F814W"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Extract radial surface brightness profiles and evaluate deviation from PSF",
+   "method": "Fit a 2-D Gaussian to find the brightness-weighted center of each moment 0 / stacked map, then compute mean surface brightness in circular annuli of width 1 pixel out to r_max (the bin before the first negative-intensity bin). Assign uncertainty in each bin as the maximum of the bin standard deviation and a simulated beam-dependent RMS level. Normalize profile and uncertainty by peak mean value and calculate chi^2 against the normalized PSF radial profile (Eq. 4).",
+   "software": [],
+   "key_parameters": [
+    "Annulus width = 1 pixel (0.2'' for ALMA); r_max = radius prior to first negative bin; 100 Monte Carlo noise realizations for beam-dependent RMS"
+   ],
+   "assumptions": [
+    "Noise is spatially correlated on the scale of the synthesized beam"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Bayesian radial profile fitting with 1-component and 2-component 2-D circular Gaussian models",
+   "method": "Generate 1-component and 2-component 2-D circular Gaussian models, convolve with the representative PSF of the map, extract and normalize the model radial profile to unity at the center, and fit to the observed radial profile using MultiNest / PyMultiNest. Compare models using chi^2, reduced chi^2, and Bayes factor K = Z_1 / Z_2.",
+   "software": [
+    "MultiNest",
+    "PyMultiNest"
+   ],
+   "key_parameters": [
+    "1-Gaussian prior: log10(HWHM_G1/['']) uniform in [-2, 0.5]; 2-Gaussian priors: log10(HWHM_G1/['']) uniform in [-2, 0], log10(HWHM_G2/['']) uniform in [0, 0.5], log10(f_12) uniform in [-3.5, 0)"
+   ],
+   "assumptions": [
+    "Circular 2-D Gaussian intrinsic source morphology; neither model preferred a priori in Bayes factor"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Order-of-magnitude molecular gas mass estimation for host and extended CGM reservoir",
+   "method": "Estimate host molecular gas mass from representative L'_CO(3-2), r_31, and alpha_CO, and estimate extended CGM molecular gas mass from the ratio of integrated flux densities derived from the 2-Gaussian fit parameters and Milky Way-like r_31 and alpha_CO.",
+   "software": [],
+   "key_parameters": [
+    "L'_CO(3-2) ~ 10^10 K km s^-1 pc^2; Host: r_31 ~ 0.97, alpha_CO ~ 0.8 M_sun K^-1 km^-1 s pc^-2; Extended CGM: r_31 = 0.27, alpha_CO ~ 4.3 M_sun K^-1 km^-1 s pc^-2"
+   ],
+   "assumptions": [
+    "QSO-like conversion factors (r_31 ~ 0.97, alpha_CO ~ 0.8) for the host galaxy and Milky Way-like values (r_31 = 0.27, alpha_CO ~ 4.3) for the extended component"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Cube Stack (Two Gaussian) central component HWHM_G1 (angular)",
+   "value": "0.09",
+   "uncertainty": "+0.15/-0.06",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}\"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}\"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) central component HWHM_G1 (physical)",
+   "value": "0.76",
+   "uncertainty": "+1.19/-0.46",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) extended component HWHM_G2 (angular)",
+   "value": "1.66",
+   "uncertainty": "+0.58/-0.43",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) extended component HWHM_G2 (physical)",
+   "value": "13.49",
+   "uncertainty": "+4.71/-3.49",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) relative amplitude f_12",
+   "value": "0.005",
+   "uncertainty": "+0.004/-0.002",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "This best fit model includes a compact, barely resolved source with an amplitude of unity and HWHM=$0.09^{+0.15}_{-0.06}=0.76^{+1.19}_{-0.46}$ kpc, and a more diffuse component with an amplitude of $0.005^{+0.004}_{-0.002}$ and HWHM=$1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (One Gaussian) HWHM_G1 (angular)",
+   "value": "0.47",
+   "uncertainty": "+0.07/-0.06",
+   "units": "arcsec",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}\"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}\"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (One Gaussian) HWHM_G1 (physical)",
+   "value": "3.89",
+   "uncertainty": "+0.58/-0.50",
+   "units": "kpc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "The single-Gaussian model returns an intrinsic (i.e., deconvolved) source radius of HWHM$=0.47^{+0.07}_{-0.06}\"=3.89^{+0.58}_{-0.50}$ kpc, while the two-Gaussian model returns a bright central source (HWHM$=0.09^{+0.15}_{-0.06}\"=0.76^{+1.19}_{-0.46}$ kpc) and a weaker extended component (HWHM$=1.66^{+0.58}_{-0.43}\"=13.49^{+4.71}_{-3.49}$ kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) log10(HWHM_G1/[''])",
+   "value": "-1.03",
+   "uncertainty": "0.41",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-1.03\\pm0.41, -0.12\\pm0.41$ | $0.22\\pm0.13, 1.13\\pm0.13$ | $-2.27\\pm0.23$ | 0.58 | 0.05 | $42.47\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) log10(HWHM_G2/[''])",
+   "value": "0.22",
+   "uncertainty": "0.13",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-1.03\\pm0.41, -0.12\\pm0.41$ | $0.22\\pm0.13, 1.13\\pm0.13$ | $-2.27\\pm0.23$ | 0.58 | 0.05 | $42.47\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Cube Stack (Two Gaussian) log10(f_12)",
+   "value": "-2.27",
+   "uncertainty": "0.23",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-1.03\\pm0.41, -0.12\\pm0.41$ | $0.22\\pm0.13, 1.13\\pm0.13$ | $-2.27\\pm0.23$ | 0.58 | 0.05 | $42.47\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Bayes factor K favoring Two Gaussian over One Gaussian for Cube Stack",
+   "value": "27",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Goodness of Fit",
+     "quote": "We find that the Two Gaussian model is strongly favored ($K\\sim27$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Moment 0 Stack (Two Gaussian) log10(HWHM_G1/[''])",
+   "value": "-0.95",
+   "uncertainty": "0.25",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-0.95\\pm0.25, -0.04\\pm0.25$ | $0.28\\pm0.14, 1.19\\pm0.14$ | $-2.88\\pm0.36$ | 3.16 | 0.26 | $50.83\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Moment 0 Stack (Two Gaussian) log10(HWHM_G2/[''])",
+   "value": "0.28",
+   "uncertainty": "0.14",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-0.95\\pm0.25, -0.04\\pm0.25$ | $0.28\\pm0.14, 1.19\\pm0.14$ | $-2.88\\pm0.36$ | 3.16 | 0.26 | $50.83\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Moment 0 Stack (Two Gaussian) log10(f_12)",
+   "value": "-2.88",
+   "uncertainty": "0.36",
+   "units": "dex",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  | Two Gaussian | $-0.95\\pm0.25, -0.04\\pm0.25$ | $0.28\\pm0.14, 1.19\\pm0.14$ | $-2.88\\pm0.36$ | 3.16 | 0.26 | $50.83\\pm0.07$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "FIR Continuum Stack size upper limit",
+   "value": "<= 0.6'' (~5 kpc)",
+   "uncertainty": "not stated",
+   "units": "arcsec (kpc)",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "FIR Continuum stacking",
+     "quote": "Using the average redshift of this sample ($z\\sim2.3$), this implies an upper limit on the continuum size of $\\lesssim0.6''\\sim5$ kpc."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated host galaxy molecular gas mass log10(M_H2,Host / M_sun)",
+   "value": "9.89",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas Mass",
+     "quote": "This results in log$_{10}(M_{H_2,Host}$/M$_{\\odot})\\sim9.89$."
+    }
+   ]
+  },
+  {
+   "quantity": "Estimated extended CGM molecular gas mass log10(M_H2,CGM / M_sun)",
+   "value": "10.4",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Gas Mass",
+     "quote": "Using the Milky Way-like values of $r_{31}=0.27$ ((cite: cariw13)) and $\\alpha_{CO}\\sim4.3$ ((cite: bola13)), we find log$_{10}(M_{H_2,CGM}$/M$_{\\odot})\\sim10.4$."
+    }
+   ]
+  },
+  {
+   "quantity": "X_N_6_27 revised CO(3-2) observed frequency and redshift",
+   "value": "105.405 GHz (z = 2.2806)",
+   "uncertainty": "not stated",
+   "units": "GHz",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "X_N_6_27 Re-Analysis",
+     "quote": "However, we do detect emission at $105.405$ GHz ($z=2.2806$), or $\\sim1500$ km s$^{-1}$ from the redshift expected from previous spectroscopic redshifts."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA software version and ALMA pipeline version used for calibration and imaging",
+  "tclean deconvolver algorithm (e.g. hogbom, clark) and whether any clean mask was used during cleaning down to 3x RMS",
+  "Exact number of edge channels excluded per spectral window when trimming with IMSUBIMAGE",
+  "Exact velocity ranges used per source when creating individual moment 0 maps for the 2-D Moment 0 stack"
+ ],
+ "missing_for_reproduction": [
+  "Custom Python scripts used for 3-D velocity-bin-overlap cube stacking, 2-D PSF stacking, Monte Carlo noise simulation, radial profile extraction, and PyMultiNest model fitting",
+  "CASA and pipeline versions",
+  "Exact channel ranges trimmed by IMSUBIMAGE for each of the 7 cubes",
+  "Exact velocity integration windows used for each of the 7 individual sources in the 2-D Moment 0 stack"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "All raw ALMA and HST data are public, the target sample and exclusions are explicitly tabulated, imaging parameters (cell size, weighting, channel width, continuum subtraction, clean threshold) are clearly specified, and the mathematical equations for 3-D stacking, PSF stacking, likelihood, and priors are given in full. Minor deductions for unreleased custom stacking/fitting scripts and unstated CASA version / per-source moment-0 velocity windows.",
+ "rediscovery_reason": "Public archival ALMA and COSMOS HST datasets with a clear, self-contained mathematical recipe from visibility continuum subtraction and cube imaging to 3-D stacking and PyMultiNest 1G/2G radial profile fitting, yielding specific numeric HWHM and Bayes factor answer keys.",
+ "source_card": "cards/2023MNRAS.518..691J/sonnet/card.md"
+}

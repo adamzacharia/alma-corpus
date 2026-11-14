@@ -1,0 +1,294 @@
+{
+ "bibcode": "2025MNRAS.543.2723P",
+ "title": "Observational constraints on evolution of dust disc properties in Upper Scorpius",
+ "year": 2025,
+ "doi": "10.1093/mnras/staf1624",
+ "arxiv_id": "2509.19442",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "How do dust disc sizes, fluxes and structures of Upper Scorpius discs evolve compared with younger regions, and do dust evolution models with mild external photoevaporation reproduce them?",
+ "alma_project_codes": [
+  "2011.0.00526.S",
+  "2018.1.00564.S"
+ ],
+ "data": {
+  "bands": "Band 7 (0.88 mm), continuum and CO J=3-2",
+  "arrays": "not stated",
+  "angular_resolution": "0.1-0.3 arcsec",
+  "sensitivity": "0.15 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Band 7 UpperSco survey data, fluxes and sizes (used for unresolved disc fluxes and comparison)",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "for the unresolved discs we use the values from (cite: carpenter2025), as their typical uncertainties are lower."
+     }
+    ]
+   },
+   "citation": "(cite: carpenter2025)"
+  },
+  {
+   "what": {
+    "value": "Gas disc sizes R_CO for 67 discs plus upper limits",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "Zagaria et al. (in prep)  measured gas disc sizes for the 78 discs in the sample of UpperSco where emission from $^{12}$CO $J=3-2$ was detected at $>5\\sigma$ level."
+     }
+    ]
+   },
+   "citation": "Zagaria et al. (in prep)"
+  },
+  {
+   "what": {
+    "value": "Lupus dust disc radii R90 for comparison",
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "The Lupus values are calculated from (cite: guerra2025)."
+     }
+    ]
+   },
+   "citation": "(cite: guerra2025)"
+  },
+  {
+   "what": {
+    "value": "Effective temperatures from spectral types",
+    "evidence": [
+     {
+      "loc": "4.4",
+      "quote": "the effective temperatures are obtained from spectral types from (cite: manara2020) if available, otherwise from (cite: luhman2022)"
+     }
+    ]
+   },
+   "citation": "(cite: manara2020); (cite: luhman2022)"
+  },
+  {
+   "what": {
+    "value": "FUV fluxes F_UV per disc",
+    "evidence": [
+     {
+      "loc": "4.3",
+      "quote": "We sampled from this probability to compute the distribution of the FUV flux (cite: anania2025b)."
+     }
+    ]
+   },
+   "citation": "(cite: anania2025b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Visibility modelling of dust continuum",
+   "method": "Fit axisymmetric Gaussian ring/disc intensity model to visibilities with Galario; point source for unresolved discs",
+   "software": [
+    "Galario",
+    "emcee"
+   ],
+   "key_parameters": [
+    "7 free parameters (f0, sigma_r, R_peak, inc, PA, dRA, dDec); 8 walkers per parameter; 30,000 steps then final 10,000; uniform priors; 256x256 pixels of 0.02 arcsec"
+   ],
+   "assumptions": [
+    "Structured if R_peak > 0.05 arcsec, smooth otherwise; unresolved size upper limit 0.1 arcsec (14.5 au)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Disc size distributions and Lupus comparison",
+   "method": "Kaplan-Meier CDFs including upper limits, logrank test vs Lupus; K-S test for smooth vs structured",
+   "software": [
+    "lifelines"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Size-luminosity and stellar-mass scaling relations",
+   "method": "Bayesian linear regression in log space with upper limits",
+   "software": [
+    "linmix"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Dust mass: optically thin, kappa=2.3 cm2/g (nu/230GHz)^0.4, T=20 K"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Stellar masses",
+   "method": "Teff and L compared with Baraffe 2015 tracks; 10% error on L and Teff",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Gas and dust evolution models with synthetic observables",
+   "method": "DustPy simulations with pressure bumps and external photoevaporation; compute 340 GHz flux, R90, R_CO",
+   "software": [
+    "DustPy"
+   ],
+   "key_parameters": [
+    "rc=80 au, gamma=1, Mdisc=0.05 Mstar, alpha0=1e-3, vfrag=10 m/s, 150 radial cells 1-300 au, F_UV 1,10,20,40 G0 switched on at 1 Myr"
+   ],
+   "assumptions": [
+    "inclination 45 deg, background temperature 20 K, beam 0.1 arcsec, distance 145 pc, detection threshold 3x0.15 mJy/beam"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Structured resolved discs",
+   "value": "24 (~20%)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "we find that 24 discs ($\\sim$20%) are resolved and structured"
+    }
+   ]
+  },
+  {
+   "quantity": "Smooth resolved discs",
+   "value": "28 (~23%)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "28 ($\\sim23$%) are resolved and remain smooth"
+    }
+   ]
+  },
+  {
+   "quantity": "Unresolved discs",
+   "value": "69 (~57%)",
+   "uncertainty": "not stated",
+   "units": "discs",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "69 ($\\sim$57%) are unresolved"
+    }
+   ]
+  },
+  {
+   "quantity": "Median R90 total",
+   "value": "25.4",
+   "uncertainty": "+10.2/-7.7 (95%)",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Total      | $25.4^{+10.2}_{-7.7}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median R90 smooth",
+   "value": "17.4",
+   "uncertainty": "+5.2/-4.1",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Smooth     | $17.4^{+5.2}_{-4.1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median R90 structured",
+   "value": "46.3",
+   "uncertainty": "+16.9/-15.9",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "Structured | $46.3^{+16.9}_{-15.9}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R90-F340 slope beta",
+   "value": "0.72",
+   "uncertainty": "+0.08/-0.07",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table summary_fits",
+     "quote": "$0.44^{+0.09}_{-0.10}$ | $0.72^{+0.08}_{-0.07}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Mdust-Mstar slope",
+   "value": "1.83",
+   "uncertainty": "+0.22/-0.22",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table summary_fits",
+     "quote": "$1.14^{+0.15}_{-0.15}$ | $1.83^{+0.22}_{-0.22}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R90-Mstar slope",
+   "value": "1.69",
+   "uncertainty": "+0.28/-0.24",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table summary_fits",
+     "quote": "$1.91^{+0.14}_{-0.13}$ | $1.69^{+0.28}_{-0.24}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Median R_CO/R90 all resolved",
+   "value": "2.7",
+   "uncertainty": "+0.3/-0.4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "The median value of the $R_{\\rm{CO}}$/$R_{90}$ ratio for all the resolved discs is $2.7^{+0.3}_{-0.4}$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibration and imaging details of the visibility data (taken from Carpenter et al. 2025)",
+  "Which measurement sets and whether continuum-only averaged visibilities were used",
+  "uv binning and Galario setup (priors ranges, initial positions, weighting)",
+  "Criterion for choosing point source vs Gaussian fit",
+  "linmix settings and handling of upper limits",
+  "Exact F_UV values per disc and the disc-star separation procedure",
+  "Gas disc sizes from Zagaria et al. (in prep) not available"
+ ],
+ "missing_for_reproduction": [
+  "Calibration/imaging from Carpenter et al. 2025",
+  "Zagaria et al. gas sizes",
+  "Galario fit configuration details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear fitting recipe, but calibration inherited and some inputs unpublished.",
+ "rediscovery_reason": "Public archival data, stated visibility fitting recipe and numeric results (R90 medians, slopes).",
+ "source_card": "cards/2025MNRAS.543.2723P/sonnet/card.md"
+}

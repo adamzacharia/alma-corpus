@@ -1,0 +1,399 @@
+{
+ "bibcode": "2022MNRAS.512..686E",
+ "title": "AGN impact on the molecular gas in galactic centres as probed by CO lines",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac313",
+ "arxiv_id": "2202.00697",
+ "fields": [
+  "agn_and_quasars",
+  "nearby_galaxies"
+ ],
+ "question": "What is the relative contribution of far-ultraviolet radiation from star formation (PDRs) and X-ray radiation from active galactic nuclei (XDRs) to the molecular gas heating and CO line excitation in local active galaxies?",
+ "alma_project_codes": [
+  "2011.0.00182.S",
+  "2016.1.01223.S"
+ ],
+ "data": {
+  "bands": "Band 9",
+  "arrays": "not stated",
+  "angular_resolution": "200 mas (2011.0.00182.S) and 35 mas (2016.1.01223.S) for NGC 34",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel SPIRE-FTS CO line fluxes (J=4-3 to 13-12)",
+    "evidence": [
+     {
+      "loc": "Herschel CO data",
+      "quote": "We collect SPIRE data from (cite: rosenberg15; mashian15; pearson16; kame16; lu17), which altogether account for CO fluxes from 226 galaxies."
+     }
+    ]
+   },
+   "citation": "(cite: rosenberg15; mashian15; pearson16; kame16; lu17)"
+  },
+  {
+   "what": {
+    "value": "X-ray luminosities, column densities N_H, and photon indices",
+    "evidence": [
+     {
+      "loc": "X-ray data",
+      "quote": "The data are taken from (cite: ricci17), (cite: marchesi19; lacaria19) and Salvestrini et al. (2022, in prep.). When not available in these works, we take the $L_{\\text{X}}$ and $N_{\\text{H}}$ derived from *XMM-Newton* in the 0.5–10 keV band by (cite: brightman11)."
+     }
+    ]
+   },
+   "citation": "(cite: ricci17), (cite: marchesi19; lacaria19), Salvestrini et al. (2022, in prep.), (cite: brightman11)"
+  },
+  {
+   "what": {
+    "value": "Low-J CO fluxes from single-dish observations in the literature",
+    "evidence": [
+     {
+      "loc": "Data collection",
+      "quote": "All the CO line luminosities are taken from (cite: rosenberg15; mashian15; pearson16; kame16; lu17) unless otherwise specified."
+     }
+    ]
+   },
+   "citation": "(cite: papadopoulos12; curran01; evans05; salome11; mao10; xia12; maiolino97; israel20; dumas10; rigopoulou97; pereira13; espada19; israel92; gao99; alloin92; albrecht07; gao04; ueda14; imanishi17; rosario18; monje11; young95)"
+  },
+  {
+   "what": {
+    "value": "8-1000 um infrared luminosities L_IR",
+    "evidence": [
+     {
+      "loc": "Sample selection",
+      "quote": "L$_{\\text{IR}}$ is the 8–1000 $\\mu$m luminosity, from (cite: sanders03) unless otherwise specified."
+     }
+    ]
+   },
+   "citation": "(cite: sanders03; moshir90; pearson16; golombek88)"
+  },
+  {
+   "what": {
+    "value": "Comparison galaxy samples for the Schmidt-Kennicutt relation (starbursts, BASS AGN, xCOLD GASS, SLUGS)",
+    "evidence": [
+     {
+      "loc": "CO emission on global galactic scales",
+      "quote": "comparing them with starburst (SB) galaxies from (cite: k21) (K21, hereafter), AGN observed with Swift/BAT from the BASS sample (cite: ricci17), star-forming galaxies (SFG) from the xCOLD GASS survey (cite: saintonge17), and IR luminous galaxies from SLUGS (cite: dunne00). The latter three samples were gathered by (cite: lamperti20) (L20, hereafter)."
+     }
+    ]
+   },
+   "citation": "(cite: k21; ricci17; saintonge17; dunne00; lamperti20)"
+  },
+  {
+   "what": {
+    "value": "ALMA CO(6-5) flux of NGC 34 at 200 mas resolution (707 +/- 106 Jy km s^-1)",
+    "evidence": [
+     {
+      "loc": "ALMA ancillary data",
+      "quote": "The total flux of the CO(6–5) detection with a resolution of 200 mas is $S_{\\text{CO(6--5)}} = 707 \\pm 106$ Jy km s$^{-1}$, obtained by (cite: mingozzi18), using CASA 4.5.2 (cite: mcmullin07) and a natural weighting scheme."
+     }
+    ]
+   },
+   "citation": "(cite: mingozzi18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure the size and flux of nuclear CO(6-5) emission from ALMA archival cubes",
+   "method": "Retrieve calibrated and cleaned CO(6-5) data cubes from the ALMA Archive for 7 sample galaxies, generate moment 0 maps using CASA task immoments, fit a 2D Gaussian with task imfit (for NGC 34 high-res data), and measure the radial extent of the CO(6-5) emitting region.",
+   "software": [
+    "CASA",
+    "immoments",
+    "imfit"
+   ],
+   "key_parameters": [
+    "median nuclear radius r = 250 pc adopted as upper limit for J >= 6 emitting region"
+   ],
+   "assumptions": [
+    "Higher-J CO lines (J >= 6) originate from a region at most as extended as CO(6-5) (r = 250 pc)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive galactic-scale CO(1-0) fluxes, molecular gas masses, SFRs, and Schmidt-Kennicutt relation",
+   "method": "Extrapolate single-dish CO(1-0) beam fluxes to the CO scale radius r_CO using a 3D exponential disk profile, compute molecular gas mass M_mol, integrate Herschel/PACS 70 um radial profiles up to r_CO to obtain SFR, and compare Sigma_mol and Sigma_SFR on the Schmidt-Kennicutt plane.",
+   "software": [],
+   "key_parameters": [
+    "r_CO = 0.17 r_25, z_CO = 0.01 r_25",
+    "X_CO = 2 x 10^20 cm^-2 (K km s^-1)^-1 (alpha_CO = 4.3 M_sun (K km s^-1 pc^-2)^-1)"
+   ],
+   "assumptions": [
+    "CO(1-0) emission follows a 3D exponential profile in r and z",
+    "Milky Way CO-to-H2 conversion factor applies, and 70 um emission traces star formation with negligible AGN contamination"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate nuclear (r <= 250 pc) CO line ratios, FUV radiation field G_0, and X-ray flux F_X, and fit correlations",
+   "method": "Scale CO(1-0) flux down to r <= 250 pc using the 3D exponential profile while keeping J >= 6 fluxes unaltered; fit Sersic profiles to Herschel/PACS 70 um maps to evaluate G_0 at r = 250 pc; compute F_X = L_X / (4 pi r^2), H_X, and xi_eff at r = 250 pc; perform Bayesian linear regression of CO line ratios against G_0 and F_X using Linmix.",
+   "software": [
+    "Linmix"
+   ],
+   "key_parameters": [
+    "r = 250 pc",
+    "2 hierarchical Gaussian distributions in Linmix"
+   ],
+   "assumptions": [
+    "All FUV photons are absorbed by dust and re-emitted at 70 um",
+    "CO(6-5) and higher-J lines are fully confined within r = 250 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare observed nuclear CO line ratios with CLOUDY PDR and XDR model grids",
+   "method": "Overlay observed CO line ratios (relative to CO(1-0) and CO(6-5)) as a function of G_0 and F_X onto 1-D slab CLOUDY PDR and XDR model grids computed across gas densities log(n/cm^-3) = [2, 3, 4, 5] to constrain gas density and heating mechanism.",
+   "software": [
+    "CLOUDY"
+   ],
+   "key_parameters": [
+    "log G_0 = [2, 3, 4, 5], log(F_X / erg s^-1 cm^-2) = [-0.5, 0, 0.5, 1, 1.5, 2, 2.5], log(n / cm^-3) = [2, 3, 4, 5]"
+   ],
+   "assumptions": [
+    "Both numerator and denominator CO lines in each ratio originate from the same area so single-cloud slab ratios can be compared to galaxy nuclear ratios"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "NGC 34 CO(6-5) flux (35 mas resolution, 2016.1.01223.S)",
+   "value": "62",
+   "uncertainty": "+-3",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA ancillary data",
+     "quote": "To estimate the flux, we performed a 2D Gaussian fit with the task `imfit`, which returned $62 \\pm 3$ Jy km s$^{-1}$, less than $10 \\%$ of the total flux measured by SPIRE-FTS ($920 \\pm 56$ Jy km s$^{-1}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 34 high-resolution CO(6-5) clump radius",
+   "value": "<= 50",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA ancillary data",
+     "quote": "The emission consists of a single clump of $r \\lesssim 50$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median radius of CO(6-5) emitting region across ALMA subsample",
+   "value": "250",
+   "uncertainty": "range 150-1000",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMA ancillary data",
+     "quote": "All these sources are characterized by spatially resolved CO(6–5) emission arising from the galaxy center and extending up to $150-1000$ pc, with median $r=250$ pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median CO(1-0) scale length r_CO",
+   "value": "3.07",
+   "uncertainty": "+2.06/-1.48",
+   "units": "kpc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Low-J CO data",
+     "quote": "The adopted approach provides a median $r_{\\text{CO}} = 3.07^{+2.06}_{-1.48}$ kpc for our sample."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio of CO(1-0) flux within r_CO to observed beam flux S_CO(r_CO)/S_CO(r_theta)",
+   "value": "0.70",
+   "uncertainty": "+0.30/-0.06",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO emission on global galactic scales",
+     "quote": "We find a median ratio $S_{\\text{CO}}(r_{\\text{CO}}) / S_{\\text{CO}}(r_{\\theta}) = 0.70^{+0.30}_{-0.06}$, with only one galaxy (NGC 5128) having $S_{\\text{CO}}(r_{\\text{CO}}) / S_{\\text{CO}}(r_{\\theta}) > 2$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median molecular gas mass log(M_mol / M_sun)",
+   "value": "10.1",
+   "uncertainty": "+0.3/-0.7",
+   "units": "dex (M_sun)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO emission on global galactic scales",
+     "quote": "We find $M_{\\text{mol}}$ between $10^{7.4}$ and $10^{10.6}$ M$_{\\odot}$, with median $\\log (M_{\\text{mol}} / M_{\\odot}) = 10.1^{+0.3}_{-0.7}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median star formation rate (SFR)",
+   "value": "12.5",
+   "uncertainty": "+34.9/-9.8",
+   "units": "M_sun yr^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO emission on global galactic scales",
+     "quote": "Using this SFR calibration, we find a median SFR $= 12.5^{+34.9}_{-9.8}$ M$_{\\odot}$ yr$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median molecular gas depletion time log(tau_depl / yr)",
+   "value": "8.9",
+   "uncertainty": "+0.4/-0.6",
+   "units": "dex (yr)",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "CO emission on global galactic scales",
+     "quote": "For the galaxies in our sample, we find a median $\\log (\\tau_{\\text{depl}} / \\text{yr}) = 8.9^{+0.4}_{-0.6}$, similar to other studies of Seyferts (cite: salvestrini20)"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median Habing FUV field at effective radius log G_0(R_e)",
+   "value": "2.6",
+   "uncertainty": "+0.5/-0.8",
+   "units": "dex (Habing units)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "PDR",
+     "quote": "In this way we find values corresponding to the radius $R_e$, with median $\\log G_0 (R_e) = 2.6^{+0.5}_{-0.8}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median Habing FUV field at r = 250 pc log G_0(250 pc)",
+   "value": "3.1",
+   "uncertainty": "+0.7/-0.8",
+   "units": "dex (Habing units)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "PDR",
+     "quote": "At $r=250$ pc, we find a median $\\log G_0 (250 \\text{pc}) = 3.1^{+0.7}_{-0.8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median unobscured X-ray flux at r = 250 pc log(F_X / erg s^-1 cm^-2)",
+   "value": "-0.1",
+   "uncertainty": "+0.8/-0.5",
+   "units": "dex (erg s^-1 cm^-2)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "XDR",
+     "quote": "We find a median $\\log (F_{\\text{X}} / \\text{erg s}^{-1} \\text{cm}^{-2})) = -0.1_{-0.5}^{+0.8}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median X-ray energy deposition rate per particle at r = 250 pc log(H_X / erg s^-1)",
+   "value": "-25.3",
+   "uncertainty": "+1.1/-0.9",
+   "units": "dex (erg s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "XDR",
+     "quote": "We find a median $\\log (H_{\\text{X}} / (\\text{erg s}^{-1}) = -25.3^{+1.1}_{-0.9}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Sample median effective ionization parameter at r = 250 pc log(xi_eff / erg cm^3 s^-1)",
+   "value": "-4.2",
+   "uncertainty": "+1.9/-1.0",
+   "units": "dex (erg cm^3 s^-1)",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "XDR",
+     "quote": "For a representative fixed value of $n_5 = 0.1$ we find a median $\\log \\xi_{\\text{eff}} / (\\text{erg cm}^3 \\text{s}^{-1}) = -4.2^{+1.9}_{-1.0}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Linmix regression slopes of CO(J->J-1)/CO(1-0) vs G_0",
+   "value": "0.3 - 1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "PDR",
+     "quote": "However, almost all the regression slopes return a sub-linear relation between the CO line ratios and $G_0$, with slopes $0.3 - 1.1$ for the CO(1–0) ratios, and $0.1 - 0.4$ for the CO(6–5) ratios."
+    }
+   ]
+  },
+  {
+   "quantity": "Linmix regression slopes of CO(J->J-1)/CO(6-5) vs G_0",
+   "value": "0.1 - 0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "PDR",
+     "quote": "However, almost all the regression slopes return a sub-linear relation between the CO line ratios and $G_0$, with slopes $0.3 - 1.1$ for the CO(1–0) ratios, and $0.1 - 0.4$ for the CO(6–5) ratios."
+    }
+   ]
+  },
+  {
+   "quantity": "Linmix regression slopes of CO(J->J-1)/CO(1-0) vs F_X",
+   "value": "0.1 - 0.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "XDR",
+     "quote": "Compared to the PDR results shown in Figure [3](#fig:G0COratios), for the XDR we find lower regression slopes: $0.1 - 0.5$ for the CO(1–0) ratios, $0 - 0.2$ for the CO(6–5) ratios."
+    }
+   ]
+  },
+  {
+   "quantity": "Linmix regression slopes of CO(J->J-1)/CO(6-5) vs F_X",
+   "value": "0 - 0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "XDR",
+     "quote": "Compared to the PDR results shown in Figure [3](#fig:G0COratios), for the XDR we find lower regression slopes: $0.1 - 0.5$ for the CO(1–0) ratios, $0 - 0.2$ for the CO(6–5) ratios."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ALMA project codes for the other 6 galaxies in the CO(6-5) atlas (NGC 1068, IRAS F05189-2524, NGC 5128, NGC 5135, NGC 6240, NGC 7130)",
+  "Velocity ranges and channel thresholds used in CASA immoments to generate the CO(6-5) moment 0 maps",
+  "Specific column densities and metallicity assumed in the CLOUDY 1-D slab PDR/XDR models from Vallini et al. (2019)",
+  "Exact method used to measure the physical size (radius) of the CO(6-5) emitting regions from the moment 0 maps"
+ ],
+ "missing_for_reproduction": [
+  "Exact ALMA project codes and observation IDs for 6 of the 7 galaxies in the CO(6-5) atlas",
+  "Channel ranges and sigma clipping thresholds passed to CASA immoments for the CO(6-5) moment 0 maps",
+  "Tabulated galaxy inclinations (i) and beam FWHMs (2*theta) used for each galaxy in the 3D CO(1-0) aperture correction formula",
+  "Fitted Sersic parameters (F_e, R_e, n) for the Herschel/PACS 70 um radial profiles and the resulting per-galaxy G_0(250 pc) values",
+  "Tabulated Linmix regression slopes, intercepts, and uncertainties for each CO transition",
+  "Exact CLOUDY model input scripts or tabulated grid outputs from Vallini et al. (2019)"
+ ],
+ "reproducibility_score": 60,
+ "score_reason": "All sample properties, distances, X-ray data, and CO(1-0) to CO(13-12) line luminosities are fully tabulated in Tables 1 and 2, and archival QA2 ALMA cubes are used as-is. However, per-galaxy inclinations, Sersic fit parameters for G_0, and CASA immoments channel ranges are not tabulated, requiring re-fitting of Herschel 70 um images and manual inspection of ALMA cubes.",
+ "rediscovery_reason": "The ALMA data are public QA2 archival cubes used as-is without custom re-imaging, the multi-wavelength CO and X-ray catalog is fully tabulated in the paper, and the main numerical results (NGC 34 CO(6-5) flux, sample median masses, depletion times, G_0, F_X, and Linmix regression slopes) are clearly defined answer keys.",
+ "source_card": "cards/2022MNRAS.512..686E/sonnet/card.md"
+}

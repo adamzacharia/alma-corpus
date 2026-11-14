@@ -1,0 +1,1273 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018MNRAS.475..448T",
+  "title": "Mapping jet-ISM interactions in X-ray binaries with ALMA: a GRS 1915+105 case study",
+  "year": 2018,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Tetarenko, A. J.",
+  "n_authors": 5,
+  "arxiv_id": "1712.00432",
+  "doi": "10.1093/mnras/stx3151",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00976.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present Atacama Large Millimetre/Sub-Millimetre Array (ALMA) observations of IRAS 19132+1035, a candidate jet-ISM interaction zone near the black hole X-ray binary (BHXB) GRS 1915+105."
+   }
+  ],
+  "science": {
+   "fields": [
+    "milky_way_ism",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 19132+1035 (near GRS 1915+105)",
+     "coordinates": {
+      "value": "RA 19:15:39.1300, Dec 10:41:17.100 (J2000) mosaic centre",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA sub-mm observations",
+        "quote": "centred on the coordinates (J2000) RA 19:15:39.1300, Dec 10:41:17.100"
+       },
+       {
+        "loc": "2.2 Candidate interaction zones near GRS 1915+105",
+        "quote": "the inferred distance of IRAS 19132+1035 ($6.0\\pm1.4$ kpc"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "GRS 1915+105: 8.6 (+2.0/-1.6) kpc; IRAS 19132+1035: 6.0±1.4 kpc (kinematic)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA sub-mm observations",
+        "quote": "centred on the coordinates (J2000) RA 19:15:39.1300, Dec 10:41:17.100"
+       },
+       {
+        "loc": "2.2 Candidate interaction zones near GRS 1915+105",
+        "quote": "the inferred distance of IRAS 19132+1035 ($6.0\\pm1.4$ kpc"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "VLBA parallax (Reid et al. 2014) for GRS 1915+105; kinematic distance (Rodriguez & Mirabel 1998) for IRAS source",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA sub-mm observations",
+        "quote": "centred on the coordinates (J2000) RA 19:15:39.1300, Dec 10:41:17.100"
+       },
+       {
+        "loc": "2.2 Candidate interaction zones near GRS 1915+105",
+        "quote": "the inferred distance of IRAS 19132+1035 ($6.0\\pm1.4$ kpc"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Is IRAS 19132+1035 a site of interaction between the GRS 1915+105 jet and the ISM, and what do the molecular lines say about ISM conditions and jet power?",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "determine if there is sufficient evidence to call IRAS 19132+1035 the third conclusive site of a BHXB jet-ISM interaction in our Galaxy"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00976.S",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA sub-mm observations",
+       "quote": "We observed IRAS 19132$+$1035 (Project Code: 2015.1.00976.S, PI: A. Tetarenko)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (211–275 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "with the Band 6 receiver (211–275 GHz)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "4x2 GHz base-bands with 9 spectral windows on target lines",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "The correlator was set up to yield $4\\times2$ GHz wide base-bands, within which we defined 9 individual spectral windows centred on our target molecular lines"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "230.48671 GHz (central freq of SPW)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 1 | $^{12}$CO ($J=2-1$) | 230.48671 | 152 / 117.188 | 0.315 / 242.310 | 480 |"
+      }
+     ]
+    },
+    {
+     "species": "13CO",
+     "transition": "v=0 J=2-1",
+     "rest_frequency": "220.34965 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 4 | $^{13}$CO ($\\nu=0$, $J=2-1$) | 220.34965 | 159 / 117.188 | 0.330 / 242.310 | 480 |"
+      }
+     ]
+    },
+    {
+     "species": "C18O",
+     "transition": "J=2-1",
+     "rest_frequency": "219.51151 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 4 | C$^{18}$O ($J=2-1$) | 219.51151 | 160 / 117.188 | 0.331 / 242.310 | 480 |"
+      }
+     ]
+    },
+    {
+     "species": "SiO",
+     "transition": "v=0 J=5-4",
+     "rest_frequency": "217.05668 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 3 | SiO ($\\nu=0$, $J=5-4$) | 217.05668 | 324 / 234.375 | 0.674 / 488.281 | 960 |"
+      }
+     ]
+    },
+    {
+     "species": "CS",
+     "transition": "v=0 J=5-4",
+     "rest_frequency": "231.84934 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 2 | continuum / CS ($\\nu=0$, $J=5-4$) | 231.84934 | 2424 / 1875 | 2.507 / 1938 | 960 |"
+      }
+     ]
+    },
+    {
+     "species": "H2CO",
+     "transition": "3(0,3)-2(0,2)",
+     "rest_frequency": "218.17365 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 3 | ${\\rm H}_{2}{\\rm CO}$ ($J=3_{0,3}-2_{0,2}$) | 218.17365 | 322 / 234.375 | 0.671 / 488.281 | 960 |"
+      }
+     ]
+    },
+    {
+     "species": "CH3OH",
+     "transition": "4(2,2)-3(1,2)",
+     "rest_frequency": "218.42703 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "${\\rm H}_{2}{\\rm CO}$ ($J=3_{2,2}-2_{2,1}$) / CH$_3$OH ($J=4_{2,2}-3_{1,2}$) | 218.42703"
+      }
+     ]
+    },
+    {
+     "species": "N2D+",
+     "transition": "J=3-2",
+     "rest_frequency": "231.27037 GHz (SPW centre)",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "| 1 | N$_2$D$+$ ($J=3-2$) | 231.27037"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12 m array, ACA 7 m, total power",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "using the ALMA 12 m array (2016 Jan 14), as well as the Atacama Compact Array (ACA) 7 m (2016 May 13, 22, and 23) and total power arrays"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "12 m in C36-1 with 43 antennas",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "the 12 m array was in the most compact C36-1 configuration (with 43 antennas)"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "34.2 min with 12 m array",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "and spent 34.2 min on source"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "12 m 2016 Jan 14; 7 m 2016 May 13, 22, 23; TP 2016 Mar 21–Apr 16",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "executions between 2016 Mar 21–2016 April 16"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PI observations (PI A. Tetarenko)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA sub-mm observations",
+      "quote": "We observed IRAS 19132$+$1035 (Project Code: 2015.1.00976.S, PI: A. Tetarenko)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLA (14B-482)",
+     "provided": {
+      "value": "6 GHz radio continuum and spectral index",
+      "evidence": [
+       {
+        "loc": "2.2 VLA radio continuum observations",
+        "quote": "We downloaded and reduced public archival VLA observations of IRAS 19132$+$1035 (Project Code: 14B-482, PI: F. Mirabel)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "CSO BOLOCAM, Herschel SPIRE/PACS, WISE, Spitzer GLIMPSE, UKIRT UKIDSS",
+     "provided": {
+      "value": "Multiwavelength flux densities 1.11 mm–2.73 um",
+      "evidence": [
+       {
+        "loc": "2.3 Other multi-wavelength observations",
+        "quote": "We compiled observations of the IRAS 19132$+$1035 region at other wavelengths (spanning $1.11$mm – $2.73\\mu$m)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "GRS 1915+105 parallax distance 8.6 kpc, proper motions, peculiar velocity, inclination 60±5 deg",
+      "evidence": [
+       {
+        "loc": "1.1 GRS 1915+105",
+        "quote": "measuring a model-independent parallax distance of $8.6^{+2.0}_{-1.6}$ kpc"
+       }
+      ]
+     },
+     "citation": "(cite: reid2014)"
+    },
+    {
+     "what": {
+      "value": "Peak of radio continuum used as mosaic centre (VLA)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA sub-mm observations",
+        "quote": "peak of the radio continuum measured from previous VLA observations; Table 1 in (cite: chat01)"
+       }
+      ]
+     },
+     "citation": "(cite: chat01)"
+    },
+    {
+     "what": {
+      "value": "Dust opacity law kappa=0.1 cm2/g (nu/1THz)^beta incl. gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "where we use the opacity law (cite: beck90)"
+       }
+      ]
+     },
+     "citation": "(cite: beck90)"
+    },
+    {
+     "what": {
+      "value": "CO/H2 abundance 2e-4 and 16O/18O=300 at Rgal=6 kpc",
+      "evidence": [
+       {
+        "loc": "4.5 Column densities",
+        "quote": "Assuming a fractional abundance of $\\mathrm{{}^{12}CO/H_2} = 2\\times 10^{-4}$ and $\\mathrm{^{16}O/{}^{18}O}=300$ for $R_{\\mathrm{gal}}=6~\\mathrm{kpc}$ (cite: wilsonrood)"
+       }
+      ]
+     },
+     "citation": "(cite: wilsonrood)"
+    },
+    {
+     "what": {
+      "value": "Jet opening angle upper limit <4 deg",
+      "evidence": [
+       {
+        "loc": "5.4 Constraints on jet properties",
+        "quote": "as (cite: millerj06) report opening angle constraints of $\\theta<4^\\circ$"
+       }
+      ]
+     },
+     "citation": "(cite: millerj06)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Pre-computed RADEX model grids (5<T<205 K, 1e2<n<1e7 cm-3, 1e10<N<1e17 cm-2) used via PYSPECKIT for H2CO",
+     "evidence": [
+      {
+       "loc": "footnote 9",
+       "quote": "we implement pre-computed RADEX model grids over the following ranges for temperature, density, and column density, $5<T<205$ K, $10^{2}<n<10^{7}{\\rm cm}^{-3}$, and $10^{10}<N<10^{17}\\, {\\rm cm}^{-2}$."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "12 m and total power: ALMA pipelines; 7 m: manual standard procedures",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA sub-mm observations",
+       "quote": "Flagging and calibration of the 12 m and total power data were performed with the ALMA pipelines, while flagging and calibration of the 7 m data were performed manually using standard procedures."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 4.7.2",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA sub-mm observations",
+       "quote": "Common Astronomy Software Application package (CASA, version 4.7.2; (cite: mc07))"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "12 m: Pallas; 7 m: J1751+0939",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA sub-mm observations",
+       "quote": "we used J1751+0939 as a bandpass calibrator, Pallas as a flux calibrator, and J1922+1530 as a phase calibrator."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean (with split, mstransform, imregrid, imtrans, imsmooth, feather)",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "We then run the `clean` task with both of the 12 m and 7 m split measurement sets as input, and the re-gridded single dish image as a model image."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "multi-scale clean, scales [0,1,5,10,15] x pixel size",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "the multi-scale algorithm (scales of $[0,1,5,10,15]\\times$ the pixel size)"
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "All imaging is done with natural weighting to maximize sensitivity, a pixel size of 0.2 arcsec"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.2 arcsec",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "a pixel size of 0.2 arcsec"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "Continuum: channels with clear line emission flagged by inspection in plotms; MFS with two Taylor terms",
+     "evidence": [
+      {
+       "loc": "3.2 Continuum imaging",
+       "quote": "We then flag the channels with clear line emission in this spectral window (determined by examining the data in `plotms`)"
+      }
+     ]
+    },
+    "primary_beam_correction": {
+     "value": "TP image multiplied by primary beam template (.flux) to match 12m+7m response",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "by multiplying the re-gridded image by the primary beam template image (i.e. \\*.flux image in CASA)"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "12 m + 7 m cleaned jointly with TP image as model, feathering of positive clean components with TP, then clean again",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "we take the positive-only interferometer components from the CLEAN model, smooth them to the synthesized beam using the `imsmooth` task, and combine the smoothed interferometer component image with the re-gridded single dish image, using the `feather` task."
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Mosaic centre from earlier VLA radio peak",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA sub-mm observations",
+        "quote": "peak of the radio continuum measured from previous VLA observations; Table 1 in (cite: chat01)"
+       }
+      ]
+     },
+     "from_reference": "(cite: chat01)"
+    },
+    {
+     "what": {
+      "value": "Jet-cavity calorimetry follows self-similar fluid model",
+      "evidence": [
+       {
+        "loc": "5.4 Constraints on jet properties",
+        "quote": "We follow the self-similar fluid model of (cite: kai97)"
+       }
+      ]
+     },
+     "from_reference": "(cite: kai97)"
+    },
+    {
+     "what": {
+      "value": "Column density procedure follows radio astro tools",
+      "evidence": [
+       {
+        "loc": "8 Column density calculation",
+        "quote": "We follow the procedure of (cite: toolsra), assuming that the ${\\rm C}^{18}{\\rm O}$ emission is optically thin"
+       }
+      ]
+     },
+     "from_reference": "(cite: toolsra)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and continuum velocity ranges for each line",
+    "Channel width/velocity resolution and cube spectral regridding used in final imaging",
+    "Clean thresholds, mask, and number of iterations",
+    "Final synthesized beams and rms noise per cube",
+    "Gaussian fit and MCMC setup (priors, sampler, walkers) for SED and line fits",
+    "Regions A-D coordinates and extraction apertures",
+    "Manual calibration details for 7 m data and flux-scale uncertainties",
+    "PV slice position and width",
+    "Prior distributions/sample size for jet-power Monte Carlo"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Combine 12 m, 7 m and TP data into line cubes",
+    "method": {
+     "value": "Custom CASA procedure: clean 12m+7m, regrid TP, primary-beam weight, feather clean components with TP, final clean with feathered model",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "We use a custom procedure, which combines the 12 m, 7 m, and total power array data, to image all of our spectral lines."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "natural weighting, 0.2 arcsec pixel, multiscale [0,1,5,10,15]",
+      "evidence": [
+       {
+        "loc": "3.1 Spectral line imaging",
+        "quote": "All imaging is done with natural weighting to maximize sensitivity, a pixel size of 0.2 arcsec"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested direct Fourier-plane feather combination; no clear improvement",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "did not find any clear improvements in image quality"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit modified blackbody to SED for dust properties",
+    "method": {
+     "value": "MCMC fit of 22–1110 um spectrum with modified blackbody; ALMA flux excluded",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "we fit (using a Markov Chain Monte Carlo (MCMC) algorithm) the broad-band sub-mm through IR (22–1110 $\\mu$m; see Table [1](#table:mwemiss)) spectrum"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "kappa=0.1 cm2/g (nu/THz)^beta, includes gas-to-dust 100",
+      "evidence": [
+       {
+        "loc": "4.1 Continuum Emission",
+        "quote": "Note that this value of the dust opacity includes a gas-to-dust ratio of 100 by mass."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC; priors not stated",
+     "evidence": [
+      {
+       "loc": "Results, Continuum Emission from IRAS 19132+1035",
+       "quote": "we fit (using a Markov Chain Monte Carlo (MCMC) algorithm) the broad-band sub-mm through IR (22–1110 $\\mu$m; see Table [1](#table:mwemiss)) spectrum, with the modified black-body function"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit Gaussian line profiles and compute line ratios/PV diagrams",
+    "method": {
+     "value": "Gaussian components fit to spectra in regions A-D; uncertainties from median absolute deviation of line-free points; 12CO/13CO ratio map; PV slices through jet feature",
+     "evidence": [
+      {
+       "loc": "4.2 CO line emission",
+       "quote": "we have estimated the uncertainties on the spectral data points for each line by taking the median absolute deviation of spectral data points well away from the line emission"
+      }
+     ]
+    },
+    "software": [
+     "spectral-cube",
+     "pvextractor"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Gaussian fits",
+     "evidence": [
+      {
+       "loc": "Results, CO line emission from IRAS 19132+1035",
+       "quote": "we fit each detected line with one or more Gaussian components"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with IRAM 30m results of Chaty et al.",
+     "evidence": [
+      {
+       "loc": "4.2 CO line emission",
+       "quote": "Our new spectral measurements of the CO emission in the IRAS 19132+1035 region are consistent with those reported in this previous study"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive H2CO temperature map",
+    "method": {
+     "value": "Simultaneous RADEX grid fit of three H2CO lines where 303-202 >0.25 K; density fixed at 1e4 cm-3",
+     "evidence": [
+      {
+       "loc": "4.4 H2CO line emission",
+       "quote": "we choose to fix the density at the central value of $n=10^{4}\\,{\\rm cm}^{-3}$, and refit the spectrum"
+      }
+     ]
+    },
+    "software": [
+     "PYSPECKIT",
+     "RADEX"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Density fixed due to T-n degeneracy",
+      "evidence": [
+       {
+        "loc": "4.4 H2CO line emission",
+        "quote": "This result is likely due to the degeneracies between the temperature and density parameters in the model."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "five-parameter model fit",
+     "evidence": [
+      {
+       "loc": "Results, H2CO line emission from IRAS 19132+1035",
+       "quote": "to fit a five parameter model to the ${\\rm H}_{2}{\\rm CO}$ spectrum: line intensity, line width, temperature, density, and column density."
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "C18O column density and H2 mass",
+    "method": {
+     "value": "LTE optically thin C18O with Tex from optically thick 12CO; H2/C18O=1.5e6",
+     "evidence": [
+      {
+       "loc": "4.5 Column densities",
+       "quote": "yields a ratio of $\\mathrm{H_2/C^{18}O} = 1.5\\times 10^{6}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "12CO/H2=2e-4, 16O/18O=300",
+      "evidence": [
+       {
+        "loc": "4.5 Column densities",
+        "quote": "Assuming a fractional abundance of $\\mathrm{{}^{12}CO/H_2} = 2\\times 10^{-4}$ and $\\mathrm{^{16}O/{}^{18}O}=300$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Jet power from cavity calorimetry",
+    "method": {
+     "value": "Kaiser & Alexander self-similar model with Monte Carlo over D, i, opening angle, and v",
+     "evidence": [
+      {
+       "loc": "5.4 Constraints on jet properties",
+       "quote": "We performed Monte Carlo simulations, sampling from the known distributions of distance"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "f=0.1, Gamma=5/3, theta uniform 0-4 deg, v=1.01 km/s",
+      "evidence": [
+       {
+        "loc": "5.4 Constraints on jet properties",
+        "quote": "and setting $f=0.1$ (a reasonable assumption given that the jet is displacing molecular gas), and $\\Gamma_j=\\Gamma_x=\\Gamma_c=5/3$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Constant jet direction, power and external density; sphere of diameter 36.5 arcsec with gas mass 226 Msun",
+      "evidence": [
+       {
+        "loc": "5.4 Constraints on jet properties",
+        "quote": "we estimate the gas mass[^11] in this spherical region to be $226~M_{\\rm \\odot}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Monte Carlo sampling",
+     "evidence": [
+      {
+       "loc": "Discussion, Constraints on jet properties",
+       "quote": "We performed Monte Carlo simulations, sampling from the known distributions of distance ($D=8.6^{+2.0}_{-1.6}$ kpc), inclination ($i=60\\pm5^\\circ$)"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Cross-check with elastic slice model giving ~4e32 erg/s",
+     "evidence": [
+      {
+       "loc": "5.4 Constraints on jet properties",
+       "quote": "This jet power estimate is on par with that estimated from the calorimetric method above."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "4.7.2",
+    "used_for": {
+     "value": "Reduction and imaging (split, mstransform, clean, imregrid, imtrans, imsmooth, feather)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA sub-mm observations",
+       "quote": "All of the data were reduced and imaged"
+      }
+     ]
+    }
+   },
+   {
+    "name": "PYSPECKIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "RADEX grid fitting of H2CO",
+     "evidence": [
+      {
+       "loc": "4.4 H2CO line emission",
+       "quote": "using the PYSPECKIT python package"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer model grids",
+     "evidence": [
+      {
+       "loc": "4.4 H2CO line emission",
+       "quote": "we model the ${\\rm H}_{2}{\\rm CO}$ lines with RADEX radiative transfer models"
+      }
+     ]
+    }
+   },
+   {
+    "name": "SPECTRALCUBE, PVEXTRACTOR, RADIO_BEAM",
+    "version": "not stated",
+    "used_for": {
+     "value": "Cube analysis and PV diagrams (radio astro tools)",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "including SPECTRALCUBE, PVEXTRACTOR, and RADIO_BEAM"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Dust temperature",
+    "value": "29.01",
+    "uncertainty": "+0.14/-0.13",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $T_{\\rm dust}$       |   | $29.01^{+0.14}_{-0.13}$ | K                        |"
+     }
+    ]
+   },
+   {
+    "quantity": "Dust emissivity index beta",
+    "value": "1.44",
+    "uncertainty": "+0.03/-0.03",
+    "units": "dimensionless",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $\\beta$              |   | $1.44^{+0.03}_{-0.03}$  |                          |"
+     }
+    ]
+   },
+   {
+    "quantity": "Molecular mass from dust",
+    "value": "1200",
+    "uncertainty": "+690/-450",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| $M_{\\mathrm{mol}}^a$ |   | $1200^{+690}_{-450}$    | $M_\\odot$                |"
+     }
+    ]
+   },
+   {
+    "quantity": "Time-averaged jet power",
+    "value": "8.4e32",
+    "uncertainty": "+7.7/-8.1 e32",
+    "units": "erg/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "time-averaged power carried in the GRS 1915+105 jets of $(8.4^{+7.7}_{-8.1})\\times10^{32}\\,{\\rm erg\\,s}^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet energy",
+    "value": "6.7e47",
+    "uncertainty": "+6.4/-6.6 e47",
+    "units": "erg",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "$(6.7^{+6.4}_{-6.6})\\times10^{47}\\,{\\rm erg}$, over a lifetime of $29.5_{-8.7}^{+8.6}$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet lifetime",
+    "value": "29.5",
+    "uncertainty": "+8.6/-8.7",
+    "units": "Myr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "over a lifetime of $29.5_{-8.7}^{+8.6}$ Myr"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas mass in sphere around cavity",
+    "value": "226",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "we estimate the gas mass[^11] in this spherical region to be $226~M_{\\rm \\odot}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Jet opening angle from cavity",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "deg",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "$$\\phi=\\arctan(0.3\\, {\\rm pc}/42.5\\, {\\rm pc})=0.4^\\circ.$$"
+     }
+    ]
+   },
+   {
+    "quantity": "Northern SiO FWHM",
+    "value": "1.01",
+    "uncertainty": "+0.24/-0.18",
+    "units": "km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 4",
+      "quote": "SiO North | 1 | $0.11^{+0.02}_{-0.02}$ | $1.01^{+0.24}_{-0.18}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N2D+ 3sigma integrated intensity upper limit",
+    "value": "0.69",
+    "uncertainty": "not stated",
+    "units": "K km/s",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.3 Shock-tracing line emission",
+      "quote": "we place an estimated $3\\sigma$ upper limit on the integrated intensity across the IRAS 19132+1035 region of $0.69\\, {\\rm K\\,km\\,s}^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar cluster mass",
+    "value": "~200",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.2 Star formation feedback",
+      "quote": "this implies the region hosts a small cluster with a total mass of $M_{\\star} \\sim 200~M_{\\odot}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO PV diagrams show a hole in 13CO and C18O at the non-thermal jet feature, consistent with a jet-blown cavity",
+    "evidence": [
+     {
+      "loc": "4.2 CO line emission",
+      "quote": "we observe a distinct hole in the $^{13}$CO and C$^{18}$O molecular emission, spatially coincident with the location of the non-thermal jet feature"
+     }
+    ]
+   },
+   {
+    "value": "Jet does not dominantly power the whole IRAS region; star formation does",
+    "evidence": [
+     {
+      "loc": "5.1 Evidence for a jet-ISM interaction",
+      "quote": "does not dominantly power or shape the whole IRAS 19132+1035 region"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "IRAS 19132+1035 is a jet-ISM interaction site",
+    "experiment": "Mapped CO, H2CO, shock tracers and column density with ALMA",
+    "result": "Cavity in 13CO/C18O PV, 12CO/13CO~1 at jet base, lack of H2CO, compact narrow SiO",
+    "finding": "Conclusive jet-ISM interaction, third in Galactic BHXBs",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we present several lines of evidence that support the presence of a jet-ISM interaction at this site, including a jet-blown cavity in the molecular gas"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Jet powers the whole IRAS region",
+    "experiment": "Compared jet energy with star formation feedback",
+    "result": "Jet ~1e47 erg vs ~1e50 erg from star formation",
+    "finding": "Jet interaction is small-scale",
+    "support": "refuted",
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "it is clear that the jet is depositing relatively very little energy into the molecular cloud ($\\sim10^{47}\\,{\\rm erg}$)"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Cavity can serve as a calorimeter for jet power",
+    "experiment": "Kaiser-Alexander model with Monte Carlo",
+    "result": "8.4e32 erg/s time-averaged",
+    "finding": "Low average jet power compared to flare-based estimates",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "5.4 Constraints on jet properties",
+      "quote": "resulting in a total time-averaged jet power of $(8.4^{+7.7}_{-8.1})\\times10^{32}\\,{\\rm erg\\,s}^{-1}$"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Molecular lines diagnose density, temperature and shocks; prior IRAM data lower sensitivity/resolution",
+    "evidence": [
+     {
+      "loc": "1 Introduction",
+      "quote": "molecular lines provide for excellent diagnostics of shock energetics and ISM excitation"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Direct Fourier-plane feather of single-dish and interferometer data tested; no improvement",
+     "evidence": [
+      {
+       "loc": "3.1 Spectral line imaging",
+       "quote": "did not find any clear improvements in image quality"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Distance mismatch between GRS 1915+105 and IRAS source; jet power assumes constant power and density",
+     "evidence": [
+      {
+       "loc": "5.4 Constraints on jet properties",
+       "quote": "We have also assumed a constant external density."
+      }
+     ]
+    },
+    {
+     "value": "ALMA continuum lacks single-dish data so flux is underestimated",
+     "evidence": [
+      {
+       "loc": "4.1 Continuum Emission",
+       "quote": "we do not recover all the flux from the region in these ALMA continuum observations"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Jet power uncertainties as quoted are asymmetric and implausibly large relative to value",
+    "Shock velocity from SiO FWHM is a weak proxy",
+    "Single SiO detection underpins shock evidence",
+    "Cavity interpretation could be non-unique"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project code given; VLA data described as public archival",
+    "evidence": [
+     {
+      "loc": "2.2 VLA radio continuum observations",
+      "quote": "We downloaded and reduced public archival VLA observations"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Final beams, rms, and clean parameters",
+    "Region definitions and MCMC settings",
+    "Manual 7 m calibration scripts"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB (12m+7m+TP, 4 basebands, mosaic)",
+   "score_inferred": 3,
+   "score_reason": "Data public and imaging procedure described, but many parameters (masks, thresholds, regions, fit setups) missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe incomplete for several parameters, though data are public and several results are numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: kai97)",
+     "why": "Self-similar jet cavity model used for calorimetry"
+    },
+    {
+     "citation": "(cite: toolsra)",
+     "why": "Column density procedure"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: chat01)",
+     "why": "Earlier IRAM molecular line study of the region"
+    },
+    {
+     "citation": "(cite: rodmir98)",
+     "why": "Identified candidate interaction zones"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "VLA 14B-482",
+    "Herschel SPIRE/PACS",
+    "Spitzer GLIMPSE",
+    "WISE",
+    "UKIDSS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-50a82eb9a682e3df3888c6fe6e6c77d7",
+  "batch_id": "msgbatch_01Gt8Z3QSRRdFqu438iGV4XV",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T14:37:57",
+  "usage": {
+   "input_tokens": 43896,
+   "output_tokens": 11527,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.102138,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 89,
+  "quotes_ok": 89,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 87,
+   "stated": 62,
+   "rate": 0.713
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:51",
+  "custom_id": "repair-sonnet-5be87bbba95ff9d9601a04e0b026e1f7",
+  "fixed": [
+   {
+    "path": "results_numeric[0].evidence[0]",
+    "old": "$T_{\\rm dust}$ | $29.01^{+0.14}_{-0.13}$",
+    "new": "| $T_{\\rm dust}$       |   | $29.01^{+0.14}_{-0.13}$ | K                        |"
+   },
+   {
+    "path": "results_numeric[1].evidence[0]",
+    "old": "$\\beta$ | $1.44^{+0.03}_{-0.03}$",
+    "new": "| $\\beta$              |   | $1.44^{+0.03}_{-0.03}$  |                          |"
+   },
+   {
+    "path": "results_numeric[2].evidence[0]",
+    "old": "$M_{\\mathrm{mol}}^a$ | $1200^{+690}_{-450}$",
+    "new": "| $M_{\\mathrm{mol}}^a$ |   | $1200^{+690}_{-450}$    | $M_\\odot$                |"
+   },
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "we fit (using a Markov Chain Monte Carlo (MCMC) algorithm) the broad-band sub-mm through IR (22–1110 $\\mu$m; see Table [1](#table:mwemiss)) spectrum, with the modified black-body function"
+   },
+   {
+    "path": "analysis_steps[2].fitting.evidence[0]",
+    "old": null,
+    "new": "we fit each detected line with one or more Gaussian components"
+   },
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "to fit a five parameter model to the ${\\rm H}_{2}{\\rm CO}$ spectrum: line intensity, line width, temperature, density, and column density."
+   },
+   {
+    "path": "analysis_steps[5].fitting.evidence[0]",
+    "old": null,
+    "new": "We performed Monte Carlo simulations, sampling from the known distributions of distance ($D=8.6^{+2.0}_{-1.6}$ kpc), inclination ($i=60\\pm5^\\circ$)"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[4].fitting",
+    "old_value": "not applicable"
+   }
+  ],
+  "dropped_items": []
+ }
+}

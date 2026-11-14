@@ -1,0 +1,941 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020ApJ...901..141K",
+  "title": "An Intensity Mapping Detection of Aggregate CO Line Emission at 3 mm",
+  "year": 2020,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Keating, Garrett K.",
+  "n_authors": 4,
+  "arxiv_id": "2008.08087",
+  "doi": "10.3847/1538-4357/abb08e",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2013.1.00146.S",
+   "2016.1.00324.L",
+   "2016.1.01149.S",
+   "2018.1.01594.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We make use of a pair of 3 mm interferometric data sets, the first from the ALMA Spectroscopic Survey in the Hubble Ultra Deep Field (ASPECS), and the second from a series of Atacama Compact Array (ACA) observations"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "cosmology"
+   ],
+   "targets": [
+    {
+     "name": "ASPECS field in Hubble Ultra Deep Field",
+     "coordinates": {
+      "value": "03h32m38.5s, -27d47m00s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.1 ASPECS Data",
+        "quote": "centered on the position $\\alpha=03^{\\rm h}32^{\\rm m}38.5^{\\rm s}$, $\\delta=-27^{\\circ}47^{\\prime}00^{\\prime\\prime}$ (J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    },
+    {
+     "name": "COSMOS field ACA mosaic (AzTEC-3 centered)",
+     "coordinates": {
+      "value": "10h00m20.7s, +02d35m17s (J2000)",
+      "evidence": [
+       {
+        "loc": "2.2 ACA Data",
+        "quote": "centered on the position of a source known as AzTEC-3 ($\\alpha=10^{\\rm h}00^{\\rm m}20.7^{\\rm s}$, $\\delta=+02^{\\circ}35'17''$, J2000)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "AzTEC-3 at z=5.3",
+      "evidence": [
+       {
+        "loc": "2.2 ACA Data",
+        "quote": "centered on the position of a source known as AzTEC-3 ($\\alpha=10^{\\rm h}00^{\\rm m}20.7^{\\rm s}$, $\\delta=+02^{\\circ}35'17''$, J2000)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Scott2008; Dwek2011",
+      "evidence": [
+       {
+        "loc": "2.2 ACA Data",
+        "quote": "centered on the position of a source known as AzTEC-3 ($\\alpha=10^{\\rm h}00^{\\rm m}20.7^{\\rm s}$, $\\delta=+02^{\\circ}35'17''$, J2000)"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can line intensity mapping of 3 mm ALMA and ACA visibility data detect aggregate CO line emission at z~1-5, and what does it imply for shot power and cosmic molecular gas density?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We present a detection of molecular gas emission at $z\\sim1-5$ using the technique of line intensity mapping."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.01149.S",
+     "evidence": [
+      {
+       "loc": "2.2 ACA Data",
+       "quote": "The first tuning was observed during Cycle 4 (Project ID 2016.1.01149.S)"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.01594.S",
+     "evidence": [
+      {
+       "loc": "2.2 ACA Data",
+       "quote": "The latter two tunings were observed during Cycle 6 (Project ID 2018.1.01594.S)"
+      }
+     ]
+    },
+    {
+     "code": "2016.1.00324.L",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "2016.1.00324.L | 12-m | $84-115$ | 2.9 | 38.1"
+      }
+     ]
+    },
+    {
+     "code": "2013.1.00146.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2013.1.00146.S, ADS/JAO.ALMA #2016.1.00324.L"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 (84-115 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 ASPECS Data",
+      "quote": "Five separate tunings were used to cover the entirety of Band 3, which spans from 84-115 GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "ASPECS 3.906 MHz resolution, 2x1.875 GHz SPWs per sideband; ACA 7.813 MHz resolution, three tunings; averaged to 15.625 MHz",
+    "evidence": [
+     {
+      "loc": "2.1 ASPECS Data",
+      "quote": "All data were recorded at 3.906 MHz spectral resolution, with two spectral windows of 1.875 GHz apiece per sideband."
+     },
+     {
+      "loc": "3.1 Data Reduction Pipeline",
+      "quote": "we average down the data to 15.625 MHz resolution for both ACA and ASPECS data"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "J=2-1, 3-2, 4-3, 5-4 (aggregate, unresolved)",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "5.1 Modeling the multiple transitions of CO",
+       "quote": "assume that only CO(2-1), CO(3-2), CO(4-3), and CO(5-4) emission are present in our measurement"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12-m (ASPECS) and ACA 7-m",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2016.1.01149.S | 7-m | $94-98$, $106-110$ | 9.7 | 40.2"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "ASPECS: C40-3 and C40-4; ACA fixed",
+    "evidence": [
+     {
+      "loc": "2.1 ASPECS Data",
+      "quote": "Data were collected in the configurations C40-3 and C40-4, with baselines of between 15-460 m and 15-704 m respectively."
+     }
+    ]
+   },
+   "baselines": {
+    "value": "ACA 7-45 m",
+    "evidence": [
+     {
+      "loc": "2.2 ACA Data",
+      "quote": "with baselines between 7 and 45 m in length"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "ASPECS 38.1 h; ACA 40.2 h + 80.6 h",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "2018.1.01594.S | 7-m | $86-94$, $98-106$ | 9.8 | 80.6"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "ASPECS Dec 2016; ACA Oct-Nov 2016 and Oct-Dec 2018",
+    "evidence": [
+     {
+      "loc": "2.2 ACA Data",
+      "quote": "between October 3 and December 11, 2018"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "CO line ratios r_J1 = 0.76, 0.42, 0.31, 0.23 for J=2-5",
+      "evidence": [
+       {
+        "loc": "5.2 Power Spectrum Estimates of Individual Lines",
+        "quote": "The derived line ratios for $J=2,3,4,5$ are $r_{J,1}=0.76{\\pm}0.09,\\,0.42{\\pm}0.07,\\,0.31{\\pm}0.06,\\,0.23{\\pm}0.04$"
+       }
+      ]
+     },
+     "citation": "Daddi2015"
+    },
+    {
+     "what": {
+      "value": "L_IR-L'_CO 'full sample' relations",
+      "evidence": [
+       {
+        "loc": "5.1 Modeling the multiple transitions of CO",
+        "quote": "we instead adopt the “full sample” correlations from (cite: Kamenetzky2016)"
+       }
+      ]
+     },
+     "citation": "Kamenetzky2016"
+    },
+    {
+     "what": {
+      "value": "3-mm source count model for continuum",
+      "evidence": [
+       {
+        "loc": "3.2.1 The Impact of Continuum Foregrounds",
+        "quote": "Adopting the 3-mm source count model of (cite: Zavala2018)"
+       }
+      ]
+     },
+     "citation": "Zavala2018"
+    },
+    {
+     "what": {
+      "value": "Sample variance simulations from TNG300",
+      "evidence": [
+       {
+        "loc": "4.2 The Impact of Sample Variance",
+        "quote": "we use simulation results of Keenan et al. (2020; submitted), which utilizes the TNG300 simulations"
+       }
+      ]
+     },
+     "citation": "Keenan et al. 2020 (submitted); Nelson2019"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Li2016 CO model with Behroozi2013 SFR, 0.3 dex scatter",
+     "evidence": [
+      {
+       "loc": "5.1 Modeling the multiple transitions of CO",
+       "quote": "We adopt the fiducial model of (cite: Li2016), hereafter referred to as , with one significant modification"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline in CASA, then custom MATLAB re-derivation of bandpass, SEFD and gains",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "we utilize the existing ALMA pipeline software (cite: Shinnaga2015) within the *Common Astronomy Software Applications* package"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "~5%",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "The absolute flux uncertainty is estimated to be of order $\\sim$5%"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting for gridding",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "the data are naturally weighted and gridded using a simple, rectangular (i.e., Shah) gridding function"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "uv cells 10% of antenna diameter",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "into cells of size $10\\%$ of the antenna diameter"
+      }
+     ]
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Analysis pipeline follows COPSS II",
+      "evidence": [
+       {
+        "loc": "3 Analysis",
+        "quote": "Analysis of the data closely follows the prescription used for ."
+       }
+      ]
+     },
+     "from_reference": "Keating2016; Keating2015"
+    },
+    {
+     "what": {
+      "value": "ASPECS description and imaging",
+      "evidence": [
+       {
+        "loc": "2.1 ASPECS Data",
+        "quote": "A more through description of the ASPECS can be found in (cite: GonzalezLopez2019) and (cite: Decarli2019)"
+       }
+      ]
+     },
+     "from_reference": "GonzalezLopez2019; Decarli2019"
+    }
+   ],
+   "unstated_but_needed": [
+    "CASA and pipeline version",
+    "MATLAB reduction code not released",
+    "Exact flagging thresholds and SEFD fitting details",
+    "Weights C_ij for the estimator",
+    "Cosmology-based mapping details of k bins",
+    "Keenan et al. simulation light cones for sample variance PDFs"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and clean visibilities",
+    "method": {
+     "value": "ALMA pipeline in CASA, export to MATLAB, flag, refit bandpass, SEFD corrections from time-differenced noise, average to 15.625 MHz",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "we difference visibilities that are adjacent in time"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "MATLAB"
+    ],
+    "key_parameters": [
+     {
+      "value": "Discard two tracks with 20-30% flagged (2% of data)",
+      "evidence": [
+       {
+        "loc": "3.1 Data Reduction Pipeline",
+        "quote": "We discard all data from these two tracks, amounting to a loss of $2\\%$ of the total data volume."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Noise agreement in image domain",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "The net impact of these corrections can be seen in the agreement between the estimated and measured noise in the image domain"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Grid delay-visibilities",
+    "method": {
+     "value": "Fourier transform along frequency, grid in (u,v,eta,nu_c)",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "Each spectral window in each baseline is separately Fourier transformed along the frequency axis"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Estimate spectral shot power",
+    "method": {
+     "value": "Cross-multiplied delay-visibility estimator, inverse-variance averaged; exclude baselines >100 klambda, eta>=500 and eta=0",
+     "evidence": [
+      {
+       "loc": "3.2 Power Spectrum Analysis",
+       "quote": "We exclude baselines of length $\\gtrsim {\\rm 100\\ k\\lambda}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "10^4 simulated trials agree to ~1%; six jackknife tests plus phase randomization",
+     "evidence": [
+      {
+       "loc": "3.2 Power Spectrum Analysis",
+       "quote": "we find good agreement for both to within $\\sim1\\%$ percent of expectations"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Correct for sample variance",
+    "method": {
+     "value": "TNG300 light-cone PDFs, maximum likelihood estimate of true shot power",
+     "evidence": [
+      {
+       "loc": "4.2 The Impact of Sample Variance",
+       "quote": "We then run a maximum likelihood estimation (MLE) analysis to calculate the true spectral shot power"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "MLE on log intervals of shot power",
+     "evidence": [
+      {
+       "loc": "Results, The Impact of Sample Variance",
+       "quote": "we have evaluated the likelihoods in Figure [6](#fig:linepow_cv) on logarithmic intervals of $\\tilde{I}^{2}_{s}(\\nu)$"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Model line contributions and derive rho_H2",
+    "method": {
+     "value": "Li2016-based model gives f_total per line; Daddi2015 line ratios to CO(1-0); halo-mass luminosity relation, Tinker mass functions, alpha_CO",
+     "evidence": [
+      {
+       "loc": "5.5 Constraints on Cosmic Molecular Gas Abundance",
+       "quote": "Assuming a value $\\alpha_{\\rm CO}=3.6\\ M_{\\ensuremath{\\odot}}\\ (\\textrm{K}\\ \\textrm{km}\\ \\textrm{s}^{-1}\\ \\textrm{pc}^{2})^{-1}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "alpha_CO=3.6; M0=1e12 Msun/h; h=0.7, Om=0.27",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "$h=0.7$, $\\Omega_{\\textrm{m}}=0.27$, $\\Omega_{\\Lambda}=0.73$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "fit A_CO to CO(1-0) estimates",
+     "evidence": [
+      {
+       "loc": "Discussion, Constraints on Cosmic Molecular Gas Abundance",
+       "quote": "we are able to fit for the value of $A_{\\textrm{CO}}$ using the CO(1-0) estimates using the (cite: Daddi2015) estimates for the CO line ratios"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "ALMA pipeline calibration and export",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "within the *Common Astronomy Software Applications* package (CASA; (cite: Jaeger2008))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MATLAB",
+    "version": "2019a",
+    "used_for": {
+     "value": "custom reduction and power spectrum software",
+     "evidence": [
+      {
+       "loc": "3.1 Data Reduction Pipeline",
+       "quote": "exported from CASA into our MATLAB[^1]-based reduction software package"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Spectral shot power, ASPECS",
+    "value": "730",
+    "uncertainty": "240",
+    "units": "uK^2 Hz sr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "We measure $\\tilde{I}^{2}_{s}(\\nu)=730\\pm240\\ \\mu\\textrm{K}^2\\ \\textrm{Hz}\\ \\textrm{sr}$ for the ASPECS data."
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral shot power, ACA",
+    "value": "890",
+    "uncertainty": "440",
+    "units": "uK^2 Hz sr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "For the ACA data, we measure $\\tilde{I}^{2}_{s}(\\nu)=890\\pm440\\ \\mu\\textrm{K}^2\\ \\textrm{Hz}\\ \\textrm{sr}$."
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral shot power, joint",
+    "value": "770",
+    "uncertainty": "210",
+    "units": "uK^2 Hz sr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding $\\tilde{I}^{2}_{s}(\\nu)=770\\pm210\\ \\mu\\textrm{K}^2\\ \\textrm{Hz}\\ \\textrm{sr}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Spectral shot power after sample variance (MLE)",
+    "value": "1010",
+    "uncertainty": "+550/-390",
+    "units": "uK^2 Hz sr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the estimated spectral shot power is $\\tilde{I}^{2}_{s}(\\nu)=1010_{-390}^{+550}\\ \\mu\\textrm{K}^2\\ \\textrm{Hz}\\ \\textrm{sr}$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(3-2) shot power at z=2.5",
+    "value": "200",
+    "uncertainty": "+120/-70",
+    "units": "uK^2 h^-3 Mpc^3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "$200^{+120}_{-70}\\ \\mu\\textrm{K}^2\\ h^{-3}\\,\\textrm{Mpc}^{3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "rho_H2 at z=2.5",
+    "value": "9.7e7",
+    "uncertainty": "+3.2/-2.5 e7",
+    "units": "Msun Mpc^-3",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table 6",
+      "quote": "2.5 | $2.0{-}3.1$ | $\\phn9.7_{-2.5}^{+3.2}$"
+     }
+    ]
+   },
+   {
+    "quantity": "COPSS CO(1-0) shot power z=2.6",
+    "value": "2000",
+    "uncertainty": "+1100/-1200",
+    "units": "uK^2 h^-3 Mpc^3",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "5.3 Comparison to COPSS II",
+      "quote": "$P_{\\rm shot}(z)=2000_{-1200}^{+1100}\\ \\mu\\textrm{K}^2\\ h^{-3}\\,\\textrm{Mpc}^{3}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Intensity mapping estimates lie above direct-detection ones at z~2-3, possibly capturing sub-threshold galaxies",
+    "evidence": [
+     {
+      "loc": "5.5 Constraints on Cosmic Molecular Gas Abundance",
+      "quote": "suggest that such measurements may be capturing emission from galaxies below direct detection threshold"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Is there non-zero aggregate line power at 100 GHz?",
+    "experiment": "Visibility-domain power spectrum of ASPECS and ACA data",
+    "result": "770±210 uK^2 Hz sr joint",
+    "finding": "Zero power rejected at 99.99%",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4 Results",
+      "quote": "we are able to reject the zero-power hypothesis ($\\tilde{I}^{2}_{s}(\\nu)=0$) to 99.99% confidence"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Is the signal free of systematics?",
+    "experiment": "Six jackknife tests",
+    "result": "Consistent with null, band-averaged <2 sigma",
+    "finding": "Data sufficiently free of systematics",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Jackknife Analysis",
+      "quote": "we conclude that the data are sufficiently free of systematics for power spectrum analysis"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Does the result agree with models and COPSS?",
+    "experiment": "Modified Li2016 model and line ratios",
+    "result": "Model within 20% (0.4 sigma); COPSS consistent",
+    "finding": "Good agreement",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5.1 Modeling the multiple transitions of CO",
+      "quote": "Our model agrees with the measurement presented here to within 20% ($\\approx0.4\\sigma$)"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Spectral shot power avoids assuming a single line/redshift or cosmology",
+    "evidence": [
+     {
+      "loc": "3.2 Power Spectrum Analysis",
+      "quote": "it requires no assumptions about the underlying cosmology, nor division of the signal into separate redshift bins"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Subtracting continuum sources rejected in favor of excluding eta=0 modes",
+     "evidence": [
+      {
+       "loc": "3.2.1 The Impact of Continuum Foregrounds",
+       "quote": "Rather than attempting to subtract out individual sources, which may introduce its own set of artifacts and systematics"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Uncertainties significant; sample variance dominates; follow-up needed",
+     "evidence": [
+      {
+       "loc": "6 Conclusion",
+       "quote": "the results presented here will likely require further observational follow-up, particularly as the uncertainties on our measurement are significant"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Line attribution depends on a model",
+    "Tension with Uzgil2019 on same ASPECS data",
+    "No linewidth correction applied",
+    "Sample variance relies on unpublished simulations"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA project codes listed; archive data",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA #2013.1.00146.S"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Custom MATLAB pipeline not released",
+    "Sample-variance simulations from unpublished paper"
+   ],
+   "estimated_data_volume_inferred": "Several hundred GB to ~1 TB raw visibilities (~120 tracks)",
+   "score_inferred": 3,
+   "score_reason": "Data public and method described in detail, but custom code and unpublished simulations are required.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Requires unreleased custom visibility power spectrum code and external simulations."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Keating2015",
+     "why": "Original visibility-domain power spectrum pipeline (COPSS I)"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Keating2016",
+     "why": "COPSS II, CO(1-0) power spectrum"
+    },
+    {
+     "citation": "Uzgil2019",
+     "why": "Image-domain power spectrum of ASPECS"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ASPECS",
+    "COPSS",
+    "COLDz",
+    "PHIBSS2",
+    "mmIME"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-4e362c89e3b2cd5d0e3611622532a919",
+  "batch_id": "msgbatch_01AGJmWoowxdzxrBuhezyUD3",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T15:18:46",
+  "usage": {
+   "input_tokens": 47614,
+   "output_tokens": 7733,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.086886,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 58,
+  "quotes_ok": 58,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 4,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 75,
+   "stated": 41,
+   "rate": 0.547
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:52",
+  "custom_id": "repair-sonnet-4f5197dab310bbc7956b178ae3142579",
+  "fixed": [
+   {
+    "path": "analysis_steps[3].fitting.evidence[0]",
+    "old": null,
+    "new": "we have evaluated the likelihoods in Figure [6](#fig:linepow_cv) on logarithmic intervals of $\\tilde{I}^{2}_{s}(\\nu)$"
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "we are able to fit for the value of $A_{\\textrm{CO}}$ using the CO(1-0) estimates using the (cite: Daddi2015) estimates for the CO line ratios"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

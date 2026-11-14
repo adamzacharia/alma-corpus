@@ -1,0 +1,534 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "We present ALMA Band 3 and 6 polarized continuum observations at"},
+{"loc": "Observations: ALMA Band 3", "quote": "HH 211 was observed by ALMA in Band 3 from December 14 to 26, 2017 (2017.1.01310.S, PI: Woojin Kwon)."}
+],
+"fields": ["star_formation"],
+"question": {
+"value": "How are magnetic fields, dust filaments, temperature and column density organised in the Class 0 HH 211 protostellar envelope, and does the southern dense region trace outflow cavity walls or infalling streams?",
+"evidence": [
+{"loc": "Introduction", "quote": "In this paper, we study the magnetic fields and physical properties within the HH 211 protostellar envelope."},
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "To investigate possible infall motions along the southern filament, we adopt the CMU (Cassen–Moosman–Ulrich) model"}
+]
+},
+"targets": [
+{
+"name": "HH 211 (Class 0 protostellar system, IC 348 region, Perseus)",
+"details": [
+{"loc": "Introduction", "quote": "HH 211 is a Class 0 protostellar system located in the IC 348 star-forming region of the Perseus molecular cloud complex."},
+{"loc": "Introduction", "quote": "The distance to HH 211 is about 300 pc (cite: Ortiz_Le_n_2018; Zucker_2018)"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "about 300 pc",
+"distance_source": "(cite: Ortiz_Le_n_2018; Zucker_2018)"
+}
+],
+"alma_project_codes": [
+{"code": "2017.1.01310.S", "evidence": [{"loc": "Observations: ALMA Band 3", "quote": "HH 211 was observed by ALMA in Band 3 from December 14 to 26, 2017 (2017.1.01310.S, PI: Woojin Kwon)."}]},
+{"code": "2016.1.00604.S", "evidence": [{"loc": "Observations: ALMA Band 6", "quote": "HH 211 was observed by ALMA in Band 6 from November 12 to 14, 2016 (2016.1.00604.S, PI: Woojin Kwon)."}]}
+],
+"data_settings": [
+{"field": "bands", "value": "Band 3 (97.5 GHz) and Band 6 (233 GHz), polarization continuum", "evidence": [
+{"loc": "Spectral Index", "quote": "where $\\nu_{1}$ and $\\nu_{2}$ are 233 and 97.5 GHz, respectively."},
+{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "dust continuum toward the HH 211 envelope in Band 3 (97.5 GHz) and Band 6 (233 GHz) with a robust parameter of 0.5"}
+]},
+{"field": "baselines", "value": "Band 3: about 4 to 1100 klambda; Band 6: about 9 to 825 klambda", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "The minimum and maximum baseline lengths are about 4 $k\\lambda$ and 1100 $k\\lambda$, respectively."},
+{"loc": "Observations: ALMA Band 6", "quote": "The minimum and maximum baseline lengths are about 9 $k\\lambda$ and 825 $k\\lambda$, respectively."}
+]},
+{"field": "max_recoverable_scale", "value": "Band 3: about 31 arcsec; Band 6: about 14 arcsec", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "The maximum recoverable scale ($\\theta_{\\mathrm{MRS}}$) is about 31$^{\\prime \\prime}$."},
+{"loc": "Observations: ALMA Band 6", "quote": "The maximum recoverable scale ($\\theta_{\\mathrm{MRS}}$) is about 14$^{\\prime \\prime}$."}
+]},
+{"field": "angular_resolution", "value": "about 0.5 arcsec (beams listed under imaging)", "evidence": [
+{"loc": "abstract", "quote": "polarized continuum observations at $\\sim$0.5$^{\\prime \\prime}$ resolution toward the Class 0 protostellar system HH 211."}
+]},
+{"field": "observing_dates", "value": "Band 3: 14-26 December 2017; Band 6: 12-14 November 2016", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "HH 211 was observed by ALMA in Band 3 from December 14 to 26, 2017"},
+{"loc": "Observations: ALMA Band 6", "quote": "HH 211 was observed by ALMA in Band 6 from November 12 to 14, 2016"}
+]},
+{"field": "pi_or_archival_as_stated", "value": "PI: Woojin Kwon for both projects (archival status not stated)", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "(2017.1.01310.S, PI: Woojin Kwon)"},
+{"loc": "Observations: ALMA Band 6", "quote": "(2016.1.00604.S, PI: Woojin Kwon)"}
+]}
+],
+"lines_targeted": [],
+"other_facilities": [
+{
+"name": "JCMT SCUBA-2/POL-2 850 um",
+"provided": {
+"value": "850 um polarization continuum used to infer core-scale (~10,000 au) magnetic fields; beam 14.6 arcsec; Stokes I/Q/U rms 3.3/2.5/2.5 mJy/beam",
+"evidence": [
+{"loc": "Observations: JCMT 850 um", "quote": "We used 850 $\\mu$m polarization continuum data to infer core-scale ($\\sim$10,000 au) magnetic fields around HH 211."},
+{"loc": "Observations: JCMT 850 um", "quote": "The beam size of the JCMT observations is 14.6$^{\\prime \\prime}$"}
+]
+}
+}
+],
+"external_data_from_literature": [
+{"what": {"value": "CO (2-1) red- and blue-shifted integrated intensity contours of the outflow", "evidence": [{"loc": "Magnetic Field Morphology", "quote": "Red and blue contours in the right panels indicate red-shifted and blue-shifted CO (2-1) integrated intensities, respectively (cite: Jhan_2021)."}]}, "citation": "(cite: Jhan_2021)"},
+{"what": {"value": "Central mass M* + Mdisk = 0.08 Msun", "evidence": [{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "we adopt a central mass of $M_* + M_{\\text{disk}} = 0.08$ $M_\\odot$ (cite: Lee_2018b; Lee_2019)"}]}, "citation": "(cite: Lee_2018b; Lee_2019)"},
+{"what": {"value": "Centrifugal radius Rc = 42 au", "evidence": [{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "a centrifugal radius of $R_c = 42$ au (cite: Lee_2019)"}]}, "citation": "(cite: Lee_2019)"},
+{"what": {"value": "Disk inclination i = 98 deg and position angle PA = 64 deg", "evidence": [{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "and disk inclination and position angle of $i = 98^\\circ$ and PA = $64^\\circ$, respectively (cite: Lee_2023)"}]}, "citation": "(cite: Lee_2023)"},
+{"what": {"value": "Embedded disk size about 20 au", "evidence": [{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "Since the size of the embedded disk is about 20 au (cite: Lee_2018b; Lee_2023)"}]}, "citation": "(cite: Lee_2018b; Lee_2023)"},
+{"what": {"value": "Distance about 300 pc", "evidence": [{"loc": "Introduction", "quote": "The distance to HH 211 is about 300 pc (cite: Ortiz_Le_n_2018; Zucker_2018)"}]}, "citation": "(cite: Ortiz_Le_n_2018; Zucker_2018)"},
+{"what": {"value": "Dust opacity kappa = 0.01 at 233 GHz (gas-to-dust ratio 100), beta = 1.5, mu = 2.86 for temperature/column density solution", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "we take $\\mu = 2.86$, $\\beta=1.5$, $\\kappa_{\\nu}=0.01$ at 233 GHz assuming the gas-to-dust ratio of 100 (cite: Ossenkopf_1994)"}]}, "citation": "(cite: Ossenkopf_1994)"},
+{"what": {"value": "Bolometric luminosity Lbol ~ 3.6 Lsun", "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "The bolometric luminosity of the HH 211 system is estimated to be $L_{\\text{bol}}\\sim$3.6 $L_{\\odot}$ (cite: Froebrich_2005)."}]}, "citation": "(cite: Froebrich_2005)"},
+{"what": {"value": "Stellar radius 1-3 Rsun and accretion luminosity 0.5-1 Lbol assumed", "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Assuming an accretion luminosity of $0.5–1$ $L_{\\text{bol}}$ and a stellar radius of $1–3$ $R_{\\odot}$ (cite: Stahler_1988)"}]}, "citation": "(cite: Stahler_1988)"},
+{"what": {"value": "Core-scale mass-to-flux ratio 1.2-3.7 (Yen_2023) and 0.45-2.20 (Choi_2024)", "evidence": [{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "the mass-to-flux ratio of the HH 211 core is estimated to be 1.2–3.7 (cite: Yen_2023) and 0.45–2.20 (cite: Choi_2024)"}]}, "citation": "(cite: Yen_2023); (cite: Choi_2024)"},
+{"what": {"value": "Inner-envelope mass-to-flux ratio 9.1-32.3", "evidence": [{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "the mass-to-flux ratio of the HH 211 envelope region is estimated to be 9.1–32.3 (cite: Yen_2023)"}]}, "citation": "(cite: Yen_2023)"},
+{"what": {"value": "Model envelope parameters (r0 = 100 au, rho0 = 3.0e-17 g cm-3, p = -1.5, T0 = 20 K, q = -0.65)", "evidence": [{"loc": "Modeling the HH 211 envelope", "quote": "Following the results of (cite: Yen_2023), we define $r_0 = 100$ au and set $\\rho_0$ = $3.0\\times 10^{-17}$ g cm$^{-3}$, $p=-1.5$, $T_{0}$ = 20 K, $q=-0.65$."}]}, "citation": "(cite: Yen_2023)"},
+{"what": {"value": "Model disk density 3.0e-14 g cm-3 and temperature 100 K", "evidence": [{"loc": "Modeling the HH 211 envelope", "quote": "We take $\\rho_{\\text{disk}}=3.0 \\times 10^{-14}$ g cm$^{-3}$ , and $T_{\\text{disk}} =100$ K (cite: Yen_2023)."}]}, "citation": "(cite: Yen_2023)"},
+{"what": {"value": "JCMT 850 um data reduction", "evidence": [{"loc": "Observations: JCMT 850 um", "quote": "Detailed data reduction process is described in (cite: Choi_2024)."}]}, "citation": "(cite: Choi_2024)"}
+],
+"simulations_or_models_as_data": [
+{"value": "RADMC-3D synthetic Band 3 and Band 6 images of a flattened power-law envelope with a 20 au embedded disk and two filaments: Model 1 density-enhanced, Model 2 temperature-enhanced", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "We run RADMC-3D to generate synthetic images in Band 3 (97.5 GHz) and Band 6 (233 GHz) frequencies (cite: Dullemond_2012)."},
+{"loc": "Modeling the HH 211 envelope", "quote": "We construct two models with filament structures."}
+]}
+],
+"calibration": [
+{"field": "pipeline_or_manual", "value": "CASA calibration; whether pipeline or manual is not specified", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "We used CASA to calibrate the raw data."}
+]},
+{"field": "flux_calibrator", "value": "Band 3: flux J0237+2848 (bandpass and polarization J0522+3627, J0510+1800; phase J0341+3352). Band 6: flux and polarization J0238+1636 (bandpass J0237+2848; phase J0336+3218)", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "J0522+3627 and J0510+1800 were used for bandpass and polarization calibrations during individual executions, while J0237+2848 and J0341+3352 were used to calibrate flux and phase, respectively."},
+{"loc": "Observations: ALMA Band 6", "quote": "J0238+1636 was used for flux and polarization calibration, while J0237+2848 and J0336+3218 were used to calibrate bandpass and phase, respectively."}
+]},
+{"field": "self_calibration", "value": "Phase-only on Stokes I; Band 3 solint 300 s; Band 6 solints 300 s, 100 s, 30 s", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "phase-only self-calibration using the Stokes $I$ map with solution intervals of 300 s to reduce the noise"},
+{"loc": "Observations: ALMA Band 6", "quote": "phase-only self-calibration using the Stokes $I$ map with solution intervals of 300 s, 100 s, and 30 s"}
+]}
+],
+"imaging": [
+{"field": "task", "value": "CASA tclean", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "We made images with the CASA $tclean$ task using a Briggs weighting with robust parameters of 0.5 and 2.0."}
+]},
+{"field": "weighting_robust", "value": "Briggs, robust = 0.5 and 2.0 (both bands)", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "using a Briggs weighting with robust parameters of 0.5 and 2.0."},
+{"loc": "Observations: ALMA Band 6", "quote": "We made images with the CASA $tclean$ task using a Briggs weighting with robust parameters of 0.5 and 2.0."}
+]},
+{"field": "uv_taper", "value": "uvtaper and uvrange adjusted to match Band 3 and Band 6 uv-coverage for the spectral index; minimum uv-distance 9 klambda (taper values not stated)", "evidence": [
+{"loc": "Spectral Index", "quote": "we matched the $uv$-coverage of the Band 3 and Band 6 observations by adjusting `uvtaper` and `uvrange` parameters during the CASA `tclean` task."},
+{"loc": "Spectral Index", "quote": "In this process, the minimum $uv$-distance is set to 9 $k\\lambda$."}
+]},
+{"field": "final_beam", "value": "Band 3: 0.514 x 0.337 arcsec, PA -28.9 deg (robust 0.5); 0.754 x 0.536 arcsec, PA -31.1 deg (robust 2.0). Band 6: 0.587 x 0.355 arcsec, PA 15.1 deg (robust 0.5)", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "the resulting beam size is $0.514^{\\prime \\prime} \\times 0.337^{\\prime \\prime}$ (PA =$-28.9^{\\circ}$)"},
+{"loc": "Observations: ALMA Band 3", "quote": "the resulting beam size is $0.754^{\\prime \\prime} \\times 0.536^{\\prime \\prime}$ (PA =$-31.1^{\\circ}$)"},
+{"loc": "Observations: ALMA Band 6", "quote": "the resulting beam size is $0.587^{\\prime \\prime} \\times 0.355^{\\prime \\prime}$ (PA = $15.1^{\\circ}$)"}
+]},
+{"field": "final_rms", "value": "Stokes I rms: Band 3 9.0e-3 mJy/beam (robust 0.5), 1.0e-2 mJy/beam (robust 2.0); Band 6 4.5e-2 mJy/beam (robust 0.5)", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "the rms noises of final Stokes $I$, $Q$, and $U$ maps are $9.0 \\times 10^{-3}$ mJy beam$^{-1}$, $5.8 \\times 10^{-3}$ mJy beam$^{-1}$, and $5.8 \\times 10^{-3}$ mJy beam$^{-1}$, respectively."},
+{"loc": "Observations: ALMA Band 3", "quote": "the rms noises of final Stokes $I$, $Q$, and $U$ maps are $1.0 \\times 10^{-2}$ mJy beam$^{-1}$, $6.0 \\times 10^{-3}$ mJy beam$^{-1}$, and $6.0 \\times 10^{-3}$ mJy beam$^{-1}$, respectively."},
+{"loc": "Observations: ALMA Band 6", "quote": "the rms noises of Stokes $I$, $Q$, and $U$ maps are $4.5 \\times 10^{-2}$ mJy beam$^{-1}$, $1.3 \\times 10^{-2}$ mJy beam$^{-1}$, and $1.3 \\times 10^{-2}$ mJy beam$^{-1}$, respectively."}
+]}
+],
+"inherited": [
+{"what": {"value": "JCMT 850 um polarization data reduction", "evidence": [{"loc": "Observations: JCMT 850 um", "quote": "Detailed data reduction process is described in (cite: Choi_2024)."}]}, "from_reference": "(cite: Choi_2024)"},
+{"what": {"value": "Spectral index written as sum of Planck-function and optical-depth terms", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "the spectral index of the dust continuum emission can be calculated as the sum of two components (cite: Silsbee_2022)"}]}, "from_reference": "(cite: Silsbee_2022)"},
+{"what": {"value": "Dust opacity and gas-to-dust ratio adopted for temperature, column density and mass", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "assuming the gas-to-dust ratio of 100 (cite: Ossenkopf_1994)"}]}, "from_reference": "(cite: Ossenkopf_1994)"},
+{"what": {"value": "CMU model trajectory equations (Equations 5-10)", "evidence": [{"loc": "Inferring the CMU Model Trajectory", "quote": "using Equations (5)–(10) from (cite: Ulrich_1976)"}]}, "from_reference": "(cite: Ulrich_1976); (cite: Cassen_1981)"},
+{"what": {"value": "Optically thin dust mass relation", "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "using the following relation (cite: Hildebrand_1983):"}]}, "from_reference": "(cite: Hildebrand_1983)"},
+{"what": {"value": "Envelope model density and temperature power laws and disk parameters", "evidence": [{"loc": "Modeling the HH 211 envelope", "quote": "Following the results of (cite: Yen_2023), we define $r_0 = 100$ au"}]}, "from_reference": "(cite: Yen_2023)"}
+],
+"unstated_but_needed": [
+"CASA version and whether the pipeline or manual scripts were used for calibration",
+"Number and configuration of execution blocks, array configurations, spectral windows used for continuum, total bandwidth and time on source",
+"Flux scale uncertainty and calibrator flux values; polarization calibration steps (leakage, angle calibration)",
+"tclean settings: deconvolver, niter, threshold, masks, cell and image size, spw/channel selection, Stokes IQUV imaging setup, primary-beam correction",
+"Self-calibration details beyond solution intervals (reference antenna, SNR threshold, number of iterations, solution combine)",
+"uvtaper values and uvrange used to match Band 3 and Band 6 uv-coverage, and whether images were convolved to a common beam before the spectral index and temperature fit",
+"Per-pixel solver for T_los and N(H2) (method, bounds, uncertainties) and treatment of pixels near the center",
+"Definition of the southern stream region (pixel polygon) and how CMU theta0, phi0 were searched (grid or manual)",
+"How the RADMC-3D synthetic images were turned into synthetic observations (uv sampling, beam convolution, noise) and dust composition/mixing details for Optool",
+"Uncertainties on polarization angles and on the derived temperature, column density, mass and infall rate"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Calibrate and image Stokes I, Q, U, V continuum in Band 3 and Band 6",
+"method": {"value": "CASA calibration, phase-only self-calibration on Stokes I, then tclean with Briggs weighting at robust 0.5 and 2.0", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "We used CASA to calibrate the raw data."},
+{"loc": "Observations: ALMA Band 3", "quote": "We made images with the CASA $tclean$ task using a Briggs weighting with robust parameters of 0.5 and 2.0."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "Band 3 self-cal solint 300 s; Band 6 solints 300, 100, 30 s", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "phase-only self-calibration using the Stokes $I$ map with solution intervals of 300 s to reduce the noise"},
+{"loc": "Observations: ALMA Band 6", "quote": "phase-only self-calibration using the Stokes $I$ map with solution intervals of 300 s, 100 s, and 30 s"}
+]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Derive polarized intensity, polarization fraction and magnetic field orientations",
+"method": {"value": "Debiased polarized intensity; B-field orientation from 90 deg rotation of polarization angle; half-vectors above S/N cuts sampled at about half the beam; polarization fraction PI/I", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "Polarized intensity is debiased with $PI = \\sqrt{Q^2 + U^2 - \\sigma_{QU}^2}$, where $\\sigma_{QU}$ is the rms noise of Stokes $Q$ and $U$."},
+{"loc": "Magnetic Field Morphology", "quote": "The plane-of-sky magnetic field orientations are inferred from $90^{\\circ}$ rotation of polarization directions."},
+{"loc": "Polarized Intensity and Polarization Fraction", "quote": "The polarization fraction is calculated with $PI/I$"}
+]},
+"software": ["CASA"],
+"key_parameters": [
+{"value": "Band 3 vectors: I > 3 sigma_I and PI > 1.5 sigma_PI; Band 6: I > 3 sigma_I and PI > 3 sigma_PI", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "For Band 3 observations, we represent half-vectors satisfying $I > 3\\sigma_{I}$ and $PI > 1.5\\sigma_{PI}$, while for Band 6, the criteria are $I > 3\\sigma_{I}$ and $PI > 3\\sigma_{PI}$."}
+]},
+{"value": "Vector sampling 0.24 arcsec (robust 0.5) and 0.32 arcsec (robust 2.0)", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "Magnetic field vectors are sampled at intervals of 0.24$^{\\prime\\prime}$ and 0.32$^{\\prime\\prime}$ for robust parameters of 0.5 and 2.0, respectively"}
+]},
+{"value": "Band 3 image at robust 2.0 and Band 6 image at robust 0.5 selected for the main B-field figure", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "We selected the Band 3 image with a robust parameter of 2.0 and the Band 6 image with a robust parameter of 0.5"}
+]}
+],
+"assumptions": [
+{"value": "Polarization directions rotated by 90 deg trace the plane-of-sky magnetic field", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "The plane-of-sky magnetic field orientations are inferred from $90^{\\circ}$ rotation of polarization directions."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Comparison with previous Band 7 (358 GHz) field orientations at the center and with JCMT core-scale fields", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "consistent with previous Band 7 (358 GHz) observations (cite: Lee_2019; Yen_2023)"}
+]}
+},
+{
+"order": 3,
+"goal": "Make the Band 3 to Band 6 spectral index map",
+"method": {"value": "Match uv-coverage with uvtaper and uvrange in tclean, then alpha = log(I1/I2)/log(nu1/nu2) with 233 and 97.5 GHz, shown where both bands exceed 3 sigma", "evidence": [
+{"loc": "Spectral Index", "quote": "we matched the $uv$-coverage of the Band 3 and Band 6 observations by adjusting `uvtaper` and `uvrange` parameters during the CASA `tclean` task."},
+{"loc": "Spectral Index", "quote": "The spectral index map is shown where both Band 3 and Band 6 intensities are larger than 3 times their rms noise levels."}
+]},
+"software": ["CASA", "tclean"],
+"key_parameters": [
+{"value": "minimum uv-distance 9 klambda", "evidence": [{"loc": "Spectral Index", "quote": "In this process, the minimum $uv$-distance is set to 9 $k\\lambda$."}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Solve for line-of-sight averaged temperature and H2 column density",
+"method": {"value": "Solve the simplified radiative transfer I_nu = B_nu(T_los)(1 - exp(-tau)) using the uv-matched Band 3 and Band 6 images for T_los and column density simultaneously", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "and calculate the line-of-sight averaged temperature and the column density simultaneously."},
+{"loc": "Temperature and Density Distributions", "quote": "where $\\overline{T}_{\\mathrm{los}}$ is the line-of-sight averaged temperature, assuming uniform temperature along the line-of-sight."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "mu = 2.86, beta = 1.5, kappa = 0.01 at 233 GHz", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "we take $\\mu = 2.86$, $\\beta=1.5$, $\\kappa_{\\nu}=0.01$ at 233 GHz assuming the gas-to-dust ratio of 100 (cite: Ossenkopf_1994)"}
+]}
+],
+"assumptions": [
+{"value": "Gas-to-dust ratio 100; beta constant across the region; dust opacity from Ossenkopf_1994", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "We assume that $\\beta$ is constant across the region."},
+{"loc": "Temperature and Density Distributions", "quote": "assuming the gas-to-dust ratio of 100 (cite: Ossenkopf_1994)"}
+]}
+],
+"fitting": {"value": "Pixel-wise two-parameter solution of the intensity equation for two bands; solver, priors and likelihood not stated", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "and calculate the line-of-sight averaged temperature and the column density simultaneously."}
+]},
+"validation": {"value": "Beta lowered to 1.2 changes boundary temperature; patterns independent of assumed opacity and beta; synthetic models in the appendix", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "If $\\beta$ is as low as 1.2, the estimated line-of-sight temperature at the boundary would increase to about 6 K."},
+{"loc": "Temperature and Density Distributions", "quote": "Although different dust opacity values will affect the resulting line-of-sight temperature and column density values, their overall patterns do not change."}
+]}
+},
+{
+"order": 5,
+"goal": "Test with synthetic RADMC-3D models whether filaments are dense or hot",
+"method": {"value": "Build a flattened power-law envelope with a 20 au disk and two cylindrical filaments (density-enhanced Model 1, temperature-enhanced Model 2), synthesize Band 3 and Band 6 images with RADMC-3D, and repeat the spectral index, temperature and column density analysis", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "We run RADMC-3D to generate synthetic images in Band 3 (97.5 GHz) and Band 6 (233 GHz) frequencies (cite: Dullemond_2012)."},
+{"loc": "Modeling the HH 211 envelope", "quote": "we calculate the spectral index, the line-of-sight averaged temperature, and the column density using the same methods described in Sections"}
+]},
+"software": ["RADMC-3D", "Optool"],
+"key_parameters": [
+{"value": "Maximum dust grain size 200 um in disk and 10 um in envelope and filaments; thin icy mantles with MRN distributions", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "The maximum sizes of dust particles are assumed to be 200 $\\mu$m in the disk and 10 $\\mu$m in the envelope and the filaments."},
+{"loc": "Modeling the HH 211 envelope", "quote": "Dust particles have thin icy mantles with MRN distributions in our models."}
+]},
+{"value": "Filament width 200 au; density enhancement 6.0e-18 g cm-3 (Model 1) or temperature enhancement 6 K (Model 2); envelope flattening f = 0.7", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "We set $r_{\\mathrm{fil}}$ to 200 au."},
+{"loc": "Modeling the HH 211 envelope", "quote": "We insert the parameter $f = 0.7$ in the $z$ direction to make a flattened envelope."}
+]}
+],
+"assumptions": [
+{"value": "Disk radius 20 au, height 10 au, PA 54 deg, inclination 81 deg, uniform density and temperature; envelope PA 10 deg", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "The radius of the disk in our model is 20 au and the height is 10 au with a position angle of $54^{\\circ}$ and an inclination of $81^{\\circ}$"},
+{"loc": "Modeling the HH 211 envelope", "quote": "The position angle of the envelope is assumed to be $10^{\\circ}$."}
+]}
+],
+"fitting": {"value": "No fit: models compared qualitatively with observations; envelope slope q set to -0.65 instead of -0.4 to match observed features", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "The goal of our modeling is not to derive the best model parameters for the HH 211 envelope."},
+{"loc": "Modeling the HH 211 envelope", "quote": "but we set $q$ to be -0.65 to match the observational features."}
+]},
+"validation": {"value": "Density-enhanced model resembles the observations more than the temperature-enhanced model", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "Overall, the general observed features are more similar to those predicted by the density-enhanced model than by the temperature-enhanced model."}
+]}
+},
+{
+"order": 6,
+"goal": "Find CMU infall trajectories matching the southern filament and B-field lines",
+"method": {"value": "Ballistic CMU (Cassen-Moosman-Ulrich) trajectories with M*, Rc, i, PA fixed from literature; search initial angles theta0 and phi0 for trajectories matching the dust filament and the field curvature", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "With these four parameters fixed, we search for CMU model trajectories that reproduce the southern filamentary structures traced by the dust continuum emission and aligned magnetic field lines."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "M*+Mdisk = 0.08 Msun, Rc = 42 au, i = 98 deg, PA = 64 deg", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "a centrifugal radius of $R_c = 42$ au (cite: Lee_2019), and disk inclination and position angle of $i = 98^\\circ$ and PA = $64^\\circ$, respectively (cite: Lee_2023)"}
+]},
+{"value": "Best trajectory theta0 = 90 deg, phi0 = 90 deg; others 80 < theta0 < 90 deg, 90 < phi0 < 95 deg", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "The red curve corresponds to the trajectory with initial angles $\\theta_{0}=90^\\circ$ and $\\phi_{0}=90^\\circ$"}
+]}
+],
+"assumptions": [
+{"value": "Initial solid-body rotation, central point mass, pressure forces and magnetic fields neglected", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "The model assumes an initial solid-body rotation and a central point mass, and it neglects pressure forces and magnetic fields."}
+]}
+],
+"fitting": {"value": "Manual search over initial angles; no sampler or likelihood stated", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "Upon careful inspection, we find no other sets of initial angles"}
+]},
+"validation": {"value": "Argues trajectories cannot be tuned to match arbitrary curved field lines given fixed M*, Rc, i, PA", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "We note that one cannot arbitrarily obtain infalling trajectories that reproduce any curved field lines simply by varying the initial angles"}
+]}
+},
+{
+"order": 7,
+"goal": "Estimate mass, length, velocity and mass infall rate of the southern stream",
+"method": {"value": "Stream mass from the column-density map and independently from Band 6 flux (optically thin M = F D^2/(kappa B(T))); length and velocity from the CMU trajectory; Mdot = M/(L/vbar)", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Using the column density map shown in the right panel of Figure"},
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "The mass infall rate along the stream is calculated using $\\dot{M} = M / (L/\\bar{v})$, where $M$ is the mass of the stream."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Central region with I > 50 sigma_I excluded; Band 6 integrated flux 10 mJy; T = 5-10 K; kappa = 0.01 cm2 g-1 at 233 GHz", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "We exclude the central part of the envelope ($I > 50\\sigma_I$), where the mass is uncertain"},
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "The integrated flux density within the defined region in Band 6 is 10 mJy."},
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Assuming a dust opacity of $\\kappa_{\\nu} = 0.01$ cm$^2$ g$^{-1}$ at 233 GHz with a gas-to-dust mass ratio of 100 (cite: Ossenkopf_1994) and a dust temperature in the range $T = 5$–10 K"}
+]}
+],
+"assumptions": [
+{"value": "Optically thin thermal dust emission; stream mass is an upper limit because of foreground and background contribution", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Therefore, the derived mass should be considered an upper limit for the mass of the stream."}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Two mass estimates (column density map and flux-based) compared", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Alternatively, the mass can be derived directly from the dust continuum emission under the assumption of optically thin thermal emission"}
+]}
+},
+{
+"order": 8,
+"goal": "Compare stream infall rate with protostellar accretion rate",
+"method": {"value": "Mdot_acc = L_acc R*/(G M*) with L_acc = 0.5-1 Lbol, R* = 1-3 Rsun, Lbol ~ 3.6 Lsun", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Assuming an accretion luminosity of $0.5–1$ $L_{\\text{bol}}$ and a stellar radius of $1–3$ $R_{\\odot}$ (cite: Stahler_1988)"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Accretion luminosity 0.5-1 Lbol; stellar radius 1-3 Rsun", "evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Assuming an accretion luminosity of $0.5–1$ $L_{\\text{bol}}$ and a stellar radius of $1–3$ $R_{\\odot}$ (cite: Stahler_1988)"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "CASA", "version": "not stated", "used_for": {"value": "Calibration of the raw data and tclean imaging, including uv-matching for the spectral index", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "We used CASA to calibrate the raw data."},
+{"loc": "Spectral Index", "quote": "adjusting `uvtaper` and `uvrange` parameters during the CASA `tclean` task."}
+]}},
+{"name": "tclean", "version": "not stated", "used_for": {"value": "Imaging with Briggs weighting at robust 0.5 and 2.0", "evidence": [
+{"loc": "Observations: ALMA Band 3", "quote": "We made images with the CASA $tclean$ task using a Briggs weighting with robust parameters of 0.5 and 2.0."}
+]}},
+{"name": "RADMC-3D", "version": "not stated", "used_for": {"value": "Synthetic Band 3 and Band 6 images of envelope models", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "We run RADMC-3D to generate synthetic images in Band 3 (97.5 GHz) and Band 6 (233 GHz) frequencies (cite: Dullemond_2012)."}
+]}},
+{"name": "Optool", "version": "not stated", "used_for": {"value": "Dust opacity tables for the models", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "We use Optool to make dust opacity tables (cite: Dominik_2021)."}
+]}},
+{"name": "NumPy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "NumPy (cite: Harris_2020)"}]}},
+{"name": "Matplotlib", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "Matplotlib (cite: Hunter_2007)"}]}},
+{"name": "Astropy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "Astropy (cite: Astropy_2013; Astropy_2018; Astropy_2022)"}]}},
+{"name": "SciPy", "version": "not stated", "used_for": {"value": "Listed in the Software section; specific use not stated", "evidence": [{"loc": "Software", "quote": "SciPy (cite: Virtanen_2020)"}]}}
+],
+"results_numeric": [
+{"quantity": "Peak SNR of Stokes I, Band 3", "value": "753", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "Observations: ALMA Band 3", "quote": "The resulting peak SNR for Stokes $I$ is 753."}]},
+{"quantity": "Peak SNR of Stokes I, Band 6", "value": "1166", "uncertainty": "not stated", "units": "dimensionless", "from_step": 1, "evidence": [{"loc": "Observations: ALMA Band 6", "quote": "The resulting peak SNR for Stokes $I$ is 1166."}]},
+{"quantity": "Band 6 beam, robust 2.0", "value": "0.742 x 0.471 arcsec, PA 9.9 deg", "uncertainty": "not stated", "units": "arcsec, deg", "from_step": 1, "evidence": [{"loc": "Observations: ALMA Band 6", "quote": "the resulting beam size is $0.742^{\\prime \\prime} \\times 0.471^{\\prime \\prime}$ (PA = $9.9^{\\circ}$)"}]},
+{"quantity": "Band 6 Stokes I rms, robust 2.0", "value": "3.5e-2", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 1, "evidence": [{"loc": "Observations: ALMA Band 6", "quote": "the rms noises of final Stokes $I$, $Q$, and $U$ maps are $3.5 \\times 10^{-2}$ mJy beam$^{-1}$, $1.3 \\times 10^{-2}$ mJy beam$^{-1}$, and $1.3 \\times 10^{-2}$ mJy beam$^{-1}$, respectively."}]},
+{"quantity": "Polarized intensity rms, Band 3 robust 0.5 and 2.0", "value": "8.2e-3 and 7.5e-3", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [{"loc": "Observations: ALMA Band 3", "quote": "The rms noises of the polarized intensity are $8.2 \\times 10^{-3}$ mJy beam$^{-1}$ and $7.5 \\times 10^{-3}$ mJy beam$^{-1}$ for robust parameters of 0.5 and 2.0, respectively."}]},
+{"quantity": "Polarized intensity rms, Band 6 robust 0.5 and 2.0", "value": "1.9e-2 and 1.2e-2", "uncertainty": "not stated", "units": "mJy/beam", "from_step": 2, "evidence": [{"loc": "Observations: ALMA Band 6", "quote": "The rms noises of the polarized intensity are $1.9 \\times 10^{-2}$ mJy beam$^{-1}$ and $1.2 \\times 10^{-2}$ mJy beam$^{-1}$ for robust parameter of 0.5 and 2.0, respectively."}]},
+{"quantity": "Number and length of dust filaments in the envelope", "value": "three filaments, each about 4000 au", "uncertainty": "not stated", "units": "au", "from_step": 1, "evidence": [{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "We detect three dust filaments, each about 4000 au in scale, in the HH 211 envelope."}]},
+{"quantity": "Position angle of the minor axis of the flattened envelope", "value": "about 165", "uncertainty": "not stated", "units": "deg", "from_step": 1, "evidence": [{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "The position angle of the minor axis of the flattened envelope is about 165$^{\\circ}$."}]},
+{"quantity": "Position angle of the outflow", "value": "about 116", "uncertainty": "not stated", "units": "deg", "from_step": 1, "evidence": [{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "The position angle of the outflow direction is about 116$^{\\circ}$"}]},
+{"quantity": "Core-scale magnetic field position angle at the protostar", "value": "about 155", "uncertainty": "not stated", "units": "deg", "from_step": 0, "evidence": [{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "has a position angle of about 155$^{\\circ}$"}]},
+{"quantity": "Spectral index in the central hole", "value": "2.5", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Spectral Index", "quote": "where the spectral index becomes 2.5."}]},
+{"quantity": "Line-of-sight temperature at envelope boundary (beta = 1.5)", "value": "~4", "uncertainty": "not stated", "units": "K", "from_step": 4, "evidence": [{"loc": "Temperature and Density Distributions", "quote": "reaching $\\sim$4 K at the boundary."}]},
+{"quantity": "Line-of-sight temperature at boundary if beta = 1.2", "value": "about 6", "uncertainty": "not stated", "units": "K", "from_step": 4, "evidence": [{"loc": "Temperature and Density Distributions", "quote": "If $\\beta$ is as low as 1.2, the estimated line-of-sight temperature at the boundary would increase to about 6 K."}]},
+{"quantity": "Southern stream mass from column density map", "value": "~0.15", "uncertainty": "not stated", "units": "Msun", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "the mass of the defined southern stream region is estimated to be $\\sim$0.15 $M_\\odot$."}]},
+{"quantity": "Southern stream integrated Band 6 flux density", "value": "10", "uncertainty": "not stated", "units": "mJy", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "The integrated flux density within the defined region in Band 6 is 10 mJy."}]},
+{"quantity": "Southern stream mass from flux (T = 5-10 K)", "value": "0.05-0.19", "uncertainty": "range from temperature 5-10 K", "units": "Msun", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "the inferred total mass is $0.05$–$0.19$ $M_\\odot$."}]},
+{"quantity": "Stream length and velocity range", "value": "6160 au; 0.136 to 0.306 km/s", "uncertainty": "not stated", "units": "au; km/s", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "The total length of the stream is approximately 6160 au, and the velocity increases along the path from 0.136 km s$^{-1}$ to 0.306 km s$^{-1}$."}]},
+{"quantity": "Average infall velocity along the stream", "value": "0.188", "uncertainty": "not stated", "units": "km/s", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "the average velocity is found to be $\\bar{v} = 0.188$ km s$^{-1}$."}]},
+{"quantity": "Mass infall rate along the southern stream (upper limit)", "value": "(0.32-1.22)e-6", "uncertainty": "range", "units": "Msun/yr", "from_step": 7, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "the estimated mass infall rate along the defined stream region is $(0.32$–$1.22) \\times 10^{-6}$ $M_{\\odot}$ yr$^{-1}$."}]},
+{"quantity": "Mass accretion rate onto the protostar", "value": "(0.72-4.30)e-6", "uncertainty": "range", "units": "Msun/yr", "from_step": 8, "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "the resulting mass accretion rate is calculated to be $(0.72–4.30) \\times 10^{-6}$ $M_{\\odot}$ yr$^{-1}$."}]}
+],
+"findings_qualitative": [
+{"value": "Southern and northwestern filaments are aligned with the core-scale JCMT magnetic field; the western filament is nearly perpendicular to it", "evidence": [
+{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "Notably, the southern and northwestern filaments are well aligned with the core-scale magnetic fields."},
+{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "In contrast, the western filament is almost perpendicular to the core-scale magnetic fields."}
+]},
+{"value": "Clear U-shaped pinched (hourglass) fields near the protostar and toroidal fields perpendicular to the outflow", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "Near the central protostar, we detect clear U-shaped pinched magnetic fields around the blue-shifted outflow axis"},
+{"loc": "Magnetic Field Morphology", "quote": "The magnetic field is perpendicular to the outflow directions in the outflow regions."}
+]},
+{"value": "X-shaped depolarization pattern in Band 6", "evidence": [{"loc": "Polarized Intensity and Polarization Fraction", "quote": "An X-shaped depolarization pattern appears in the Band 6 observations"}]},
+{"value": "Dust filaments are high-density rather than high-temperature regions; temperature higher in the east, column density enhanced in the south and west", "evidence": [
+{"loc": "Temperature and Density Distributions", "quote": "This suggests that the dust filaments observed in the dust continuum are likely regions of high density rather than high temperature."},
+{"loc": "Conclusions", "quote": "The temperature is higher in the eastern part of the envelope, while the column density is enhanced in the southern and western regions."}
+]},
+{"value": "Magnetic flux must drop between core scale and inner envelope scale, via ambipolar diffusion or mass accumulation along field lines", "evidence": [
+{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "Between the core scale ($\\sim$10,000 au) and the inner envelope scale ($\\sim$1000 au), magnetic flux must be significantly reduced."}
+]}
+],
+"claims": [
+{
+"hypothesis": "Are the dust filaments in the HH 211 envelope shaped by the core-scale magnetic field?",
+"experiment": "Compare Band 3 dust filaments with JCMT POL-2 850 um core-scale field orientations",
+"result": "Southern and northwestern filaments are aligned with the core-scale field; the western filament is nearly perpendicular and points toward an asymmetric extension of the core",
+"finding": "Formation of the southern and northwestern filaments is likely influenced by the magnetic field",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "This result suggests that the formation of the dust filaments may be influenced by magnetic fields."},
+{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "This alignment suggests that the formation of southern and northwestern filaments is likely influenced by the magnetic fields."}
+]
+},
+{
+"hypothesis": "Do the inner-envelope magnetic fields show an hourglass morphology and toroidal components?",
+"experiment": "Map plane-of-sky B-field from Band 3 and Band 6 polarization and compare with the CO outflow",
+"result": "U-shaped pinched fields near the protostar and fields perpendicular to the outflow in both lobes",
+"finding": "Hourglass-shaped fields near the protostar and toroidal fields along the outflow, shaped by infall and rotation",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "In the inner envelope ($\\sim$1000 au), we detect a clear hourglass-shaped magnetic field morphology near the protostar and toroidal fields along the outflow directions."},
+{"loc": "Conclusions", "quote": "These features suggest that the magnetic fields in the inner envelope are being dragged and shaped by infalling and rotational motions."}
+]
+},
+{
+"hypothesis": "Are the filaments dense features or hot features of the envelope?",
+"experiment": "Derive line-of-sight temperature and column density from the Band 3/6 spectral index and test the method on RADMC-3D density- and temperature-enhanced models",
+"result": "Column density is enhanced in southern and western channels matching the filaments; the density-enhanced model resembles the observations more than the temperature-enhanced model",
+"finding": "Filaments are high-density regions; temperature is higher in the east",
+"support": "supported",
+"evidence": [
+{"loc": "abstract", "quote": "while the column density is enhanced in the southern and western regions."},
+{"loc": "Modeling the HH 211 envelope", "quote": "Therefore, we suggest that the HH 211 envelope contains dense filaments in the south and the west."}
+]
+},
+{
+"hypothesis": "Does the southern dense region trace outflow cavity walls or an infalling midplane stream?",
+"experiment": "Compare observed field lines and dust filament with ballistic CMU infall trajectories with fixed M*, Rc, i, PA",
+"result": "CMU trajectories with theta0 near 90 deg align with the observed field lines; the structure also coincides with the outflow on the sky",
+"finding": "Both interpretations remain possible; infall along the midplane is consistent with the field morphology",
+"support": "partially",
+"evidence": [
+{"loc": "abstract", "quote": "The southern dense regions of the inner envelope may trace either outflow cavity walls, due to their alignment with the outflow, or possible infalling channels in the midplane"},
+{"loc": "Polarized Filaments in Protostellar Envelopes", "quote": "the southern polarized filament in HH 211 could therefore correspond either to outflow cavity walls or to dense infalling streams within the midplane."}
+]
+},
+{
+"hypothesis": "Can the southern stream, if infalling, supply a significant part of the protostellar accretion?",
+"experiment": "Estimate stream mass, length and mean velocity from the CMU trajectory and compare Mdot with the accretion rate from Lbol",
+"result": "Infall rate (0.32-1.22)e-6 Msun/yr versus accretion rate (0.72-4.30)e-6 Msun/yr",
+"finding": "Southern stream could account for a significant fraction of the accretion, as an upper limit",
+"support": "partially",
+"evidence": [
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "can account for a significant fraction of this accretion rate."},
+{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Note that the estimated mass infall rate should be considered an upper limit, as the stream mass represents an upper limit."}
+]
+},
+{
+"hypothesis": "What is the dynamical role of magnetic fields at core and inner-envelope scales?",
+"experiment": "Combine published mass-to-flux ratios with the B-field morphologies",
+"result": "Core scale subcritical or near critical; inner envelope mass-to-flux ratio 9.1-32.3 (gravity dominated) with fields following gas motions",
+"finding": "Fields regulate dynamics at core scale but follow the gas kinematics in the inner envelope",
+"support": "supported",
+"evidence": [
+{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "Thus, magnetic fields likely play a significant role in regulating the dynamics of the system on the core scale."},
+{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "These results suggest that magnetic fields at this scale are not dynamically dominant and instead follow the kinematic motions of the gas."}
+]
+}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Band 3 recovers larger-scale fields while Band 6 reveals smaller-scale fields", "evidence": [
+{"loc": "Magnetic Field Morphology", "quote": "as larger-scale magnetic fields are more effectively detected in Band 3, whereas smaller-scale fields are more clearly revealed in Band 6."}
+]},
+{"field": "why_this_method", "value": "CMU model has been used to identify streamer trajectories in earlier studies", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "Infalling streamer trajectories in protostellar envelopes have been successfully identified using the CMU model in several previous studies"}
+]},
+{"field": "how_they_decided_enough", "value": "Synthetic-model comparison judged by similarity of the general observed features to the density-enhanced or temperature-enhanced model", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "Overall, the general observed features are more similar to those predicted by the density-enhanced model than by the temperature-enhanced model."}
+]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Southern filament as outflow cavity wall versus dense infalling stream", "evidence": [
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "One interpretation is that the southern filament traces the outflow cavity walls."},
+{"loc": "Outflow Cavity Walls or Infalling Streams?", "quote": "Alternatively, the southern filament might not be physically related to the outflow."}
+]},
+{"value": "Temperature-enhanced filament model (Model 2) disfavored versus density-enhanced model", "evidence": [
+{"loc": "Modeling the HH 211 envelope", "quote": "Overall, the general observed features are more similar to those predicted by the density-enhanced model than by the temperature-enhanced model."}
+]},
+{"value": "Binary companion at 0.3 arcsec southwest suggested by SMA not seen in ALMA data", "evidence": [
+{"loc": "Dust Continuum and Core-scale Magnetic Field", "quote": "However, high-resolution ALMA observations did not show any secondary source at the predicted position"}
+]}
+],
+"limitations_admitted": [
+{"value": "Temperature and column density in the central region are uncertain because of embedded disk contamination and assumed beta", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "Estimates in the central region are uncertain due to contamination from the embedded disk emission, which increases the optical depth and affects the assumed $\\beta$ value."}]},
+{"value": "Very low boundary temperature (~4 K) may be due to resolved-out large-scale emission or assumed beta", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "This unexpectedly low temperature may be due to the fact that the continuum emission is resolved out on large scales"}]},
+{"value": "Stream mass and infall rate are upper limits", "evidence": [{"loc": "Mass Infalling Rate along the Southern Filament", "quote": "Therefore, the derived mass should be considered an upper limit for the mass of the stream."}]},
+{"value": "Mass-to-flux ratios use plane-of-sky fields only and are upper limits", "evidence": [{"loc": "Dynamical Role of Magnetic Fields in the HH 211 System", "quote": "Since these estimates are based on plane-of-sky magnetic field measurements and do not account for the line-of-sight component, they should be considered upper limits."}]},
+{"value": "Infall in the filaments needs confirmation with high-resolution spectral line observations", "evidence": [{"loc": "Temperature and Density Distributions", "quote": "though this should be confirmed with high-resolution spectral line observations."}]},
+{"value": "Models were not aimed at best-fit parameters", "evidence": [{"loc": "Modeling the HH 211 envelope", "quote": "The goal of our modeling is not to derive the best model parameters for the HH 211 envelope."}]}
+],
+"referee_caveats_inferred": [
+"No uncertainties are given on the temperature, column density, stream mass or infall rate, and the beta, kappa and gas-to-dust assumptions dominate them",
+"Single constant beta = 1.5 and optically thin plus line-of-sight averaging may bias the T and N maps, notably near the disk",
+"The CMU model neglects magnetic fields yet is used to argue the fields are dragged by infall; trajectory selection is a visual match to a 2D projection",
+"Whether the Band 3 and Band 6 maps share the same resolved-out scales after uv matching is not demonstrated numerically; Band 3 field vectors use a lax PI > 1.5 sigma cut",
+"The 90 deg rotation assumes B-aligned grains; Band 6 polarization may include self-scattering or radiative alignment effects not tested",
+"Stream region boundary is hand-defined, so mass and infall rate depend on that choice"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"Calibrated measurement sets or the scripts and CASA version; polarization calibration recipe",
+"tclean parameters (niter, threshold, masks, cell and image size) and self-calibration details",
+"uvtaper values used for the uv-matched images",
+"Per-pixel temperature and column density solver and the stream region definition",
+"RADMC-3D setup details (dust composition, synthetic observation step)"
+],
+"estimated_data_volume_inferred": "Two ALMA projects (Band 3 and Band 6 polarization continuum); raw data likely tens of GB to about 100 GB; imaging products a few GB",
+"score_inferred": 3,
+"score_reason": "ALMA project codes are given and the imaging, spectral index, T/N and infall-rate recipes are described with many numeric results, but CASA version, tclean settings, polarization calibration details and solver and region definitions are missing and no code is released.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are archival ALMA projects but the paper does not state public availability, key imaging and polarization settings are unstated, and the main results are maps and partly qualitative.",
+"methods_papers": [
+{"citation": "(cite: Choi_2024)", "why": "JCMT POL-2 data reduction and core-scale magnetic field and mass-to-flux ratio"},
+{"citation": "(cite: Silsbee_2022)", "why": "Decomposition of the spectral index into Planck and optical-depth terms"},
+{"citation": "(cite: Ulrich_1976); (cite: Cassen_1981)", "why": "CMU infall trajectory model and equations"}
+],
+"companion_papers": [
+{"citation": "(cite: Yen_2023)", "why": "Band 7 polarization, envelope density and temperature model, mass-to-flux ratios"},
+{"citation": "(cite: Lee_2018b); (cite: Lee_2019); (cite: Lee_2023)", "why": "Disk size, inclination, position angle, central mass and centrifugal radius"},
+{"citation": "(cite: Jhan_2021)", "why": "CO (2-1) outflow maps used as contours"}
+],
+"related_projects_or_surveys": [
+"BISTRO survey (JCMT project M17BL011)",
+"JCMT projects M17AP073 and M17BP058"
+]
+}

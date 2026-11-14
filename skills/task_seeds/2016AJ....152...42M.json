@@ -1,0 +1,199 @@
+{
+ "bibcode": "2016AJ....152...42M",
+ "title": "ALMA Observations of HCN and Its Isotopologues on Titan",
+ "year": 2016,
+ "doi": "10.3847/0004-6256/152/2/42",
+ "arxiv_id": "1606.00348",
+ "fields": [
+  "solar_system"
+ ],
+ "question": "What are the abundances and isotopic ratios (12C/13C, 14N/15N, D/H) of HCN isotopologues in Titan's atmosphere, and can new isotopologues be detected, using archival ALMA calibration data?",
+ "alma_project_codes": [
+  "2012.1.00261.S",
+  "2012.1.00453.S",
+  "2012.1.00566.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "beams from 0.44x0.41 to 2.48x1.89 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disk-averaged atmospheric temperature profile from CO (2-1) retrieval",
+    "evidence": [
+     {
+      "loc": "Spectral Line Modeling and Results",
+      "quote": "We assume the disk-averaged atmospheric temperature profile derived by (cite: serigano16) using an April 2014 observation of the CO (2-1) line"
+     }
+    ]
+   },
+   "citation": "(cite: serigano16)"
+  },
+  {
+   "what": {
+    "value": "Reference atmosphere and collision-induced absorption parameters",
+    "evidence": [
+     {
+      "loc": "Spectral Line Modeling and Results",
+      "quote": "The reference atmosphere and collision-induced absorption parameters used in this paper are the same as in (cite: teanby13)"
+     }
+    ]
+   },
+   "citation": "(cite: teanby13)"
+  },
+  {
+   "what": {
+    "value": "Line wavenumbers and intensities from CDMS-recommended laboratory data",
+    "evidence": [
+     {
+      "loc": "Spectral Line Modeling and Results",
+      "quote": "Spectral line wavenumbers and intensities were taken from (cite: ahrens02), (cite: brunken04), and (cite: fuchs04)"
+     }
+    ]
+   },
+   "citation": "(cite: ahrens02), (cite: brunken04), (cite: fuchs04)"
+  },
+  {
+   "what": {
+    "value": "Lorentz half-width 0.13 at 296 K and temperature exponent 0.75",
+    "evidence": [
+     {
+      "loc": "Spectral Line Modeling and Results",
+      "quote": "The Lorentzian broadening half-width at 296 K ($\\gamma$) was assumed to be 0.13 (cite: yang08)"
+     }
+    ]
+   },
+   "citation": "(cite: yang08), (cite: devi04)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract disk-averaged spectra",
+   "method": "Integrate each channel within a circular region covering pixels above 3 sigma; Doppler correct to Titan rest frame; convert to radiance using Horizons distance and velocity",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Seasonal changes negligible over the period"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Retrieve HCN vertical abundance profile",
+   "method": "NEMESIS iterative chi-square minimization on the HCN (1-0) line with limb-brightening weighted sum, fixed temperature profile",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "A priori error 200%, smoothing three scale heights; 72 averaging points"
+   ],
+   "assumptions": [
+    "Isothermal 160 K above 500 km; relax to Huygens below 80 km; HCN saturation below ~80 km"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive isotopic ratios",
+   "method": "Retrieve scaling factor of the HCN profile shape for each isotopologue line; ratio equals the scale factor",
+   "software": [
+    "NEMESIS"
+   ],
+   "key_parameters": [
+    "Line strength uncertainty 2%; gamma and tau errors <10%"
+   ],
+   "assumptions": [
+    "Constant isotopic ratio with altitude; same gamma and tau for all isotopologues"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "12C/13C in HCN",
+   "value": "89.8",
+   "uncertainty": "2.8",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$^{12}$C/$^{13}$C = 89.8 $\\pm$ 2.8"
+    }
+   ]
+  },
+  {
+   "quantity": "14N/15N in HCN",
+   "value": "72.3",
+   "uncertainty": "2.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "$^{14}$N/$^{15}$N = 72.3 $\\pm$ 2.2"
+    }
+   ]
+  },
+  {
+   "quantity": "D/H in HCN",
+   "value": "2.5e-4",
+   "uncertainty": "0.2e-4",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "D/H = (2.5 $\\pm$ 0.2)$\\times$10$^{-4}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN/H13C15N",
+   "value": "5800",
+   "uncertainty": "270",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "HCN/H$^{13}$C$^{15}$N = 5800 $\\pm$ 270"
+    }
+   ]
+  },
+  {
+   "quantity": "NEMESIS continuum offset",
+   "value": "~3%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "Spectral Line Modeling and Results",
+     "quote": "The continuum emission from Titan modeled by NEMESIS is $\\sim$3% less than the continuum level of the data"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact ALMA execution blocks/scheduling blocks per line",
+  "Extraction region radius per dataset",
+  "Line-free window used for continuum rescaling",
+  "A priori HCN profile",
+  "Mask and clean threshold/iterations, cell and image size",
+  "Whether the continuum was subtracted",
+  "NEMESIS version and configuration files"
+ ],
+ "missing_for_reproduction": [
+  "NEMESIS configuration and a priori profile",
+  "Extraction aperture sizes",
+  "Line-free window for continuum scaling"
+ ],
+ "reproducibility_score": 6,
+ "score_reason": "Public data and a clear recipe, but NEMESIS setup details and several choices are missing.",
+ "rediscovery_reason": "Data are public, the recipe is mostly described and the results are numeric.",
+ "source_card": "cards/2016AJ....152...42M/sonnet/card.md"
+}

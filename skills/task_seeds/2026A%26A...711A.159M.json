@@ -1,0 +1,432 @@
+{
+ "bibcode": "2026A&A...711A.159M",
+ "title": "The formation radius of HCN in O-rich asymptotic giant branch stars",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202660604",
+ "arxiv_id": "2606.19128",
+ "fields": [
+  "evolved_stars",
+  "astrochemistry"
+ ],
+ "question": "What is the formation radius of HCN in the inner circumstellar envelopes of the O-rich AGB stars R Crt and IK Tau, to shed light on nonequilibrium chemical processes?",
+ "alma_project_codes": [
+  "2019.1.00801.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~0.86 mm)",
+  "arrays": "12m array (39 to 45 antennas)",
+  "angular_resolution": "~0.03 arcsec max (0.070'' x 0.029'' for R Crt, 0.047'' x 0.031'' for IK Tau with uniform weighting; restored HPBW 0.05'')",
+  "sensitivity": "Continuum rms: 0.31 and 0.21 mJy beam^-1 (uniform weighting), 0.08 and 0.17 mJy beam^-1 (natural weighting) for R Crt and IK Tau"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar and circumstellar envelope parameters for IK Tau (V_sys, P, D, T_*, L_*, r_c, tau_10, T_d(r_c), M_dot, delta, v_inf, Psi)",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "In the case of IK Tau, the parameters were taken from (cite: Massalkhi2024), while for R Crt we performed an analysis similar to that by these authors."
+     }
+    ]
+   },
+   "citation": "(cite: Massalkhi2024)"
+  },
+  {
+   "what": {
+    "value": "Near-infrared interferometric stellar radii for R Crt (9.0 mas) and IK Tau (10.35 mas)",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "We favor the stellar radii derived from near-infrared interferometric observations (cite: Khouri2020; Adam2019) over the values inferred from $T_\\star$ and $L_\\star$ using the Stefan-Boltzmann law."
+     }
+    ]
+   },
+   "citation": "(cite: Khouri2020; Adam2019)"
+  },
+  {
+   "what": {
+    "value": "Distance, stellar effective temperature, systemic velocity, and terminal expansion velocity for R Crt",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "Briefly, for R Crt we adopted the distance (cite: gaiadr3), stellar effective temperature (cite: Schoier2013), and terminal expansion velocity (cite: Massalkhi2020) from the literature"
+     }
+    ]
+   },
+   "citation": "(cite: gaiadr3), (cite: Schoier2013), (cite: Massalkhi2020)"
+  },
+  {
+   "what": {
+    "value": "Observed velocity-integrated intensities of CO transitions (J=1-0, 2-1, 3-2, 4-3, 5-4, 9-8) in R Crt from SEST, APEX, and Herschel/HIFI",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "by comparing the calculated velocity-integrated intensities with the observed intensities of multiple CO lines (see Table 3)."
+     },
+     {
+      "loc": "Table 3",
+      "quote": "Table notes: (1) (cite: Kerschbaum1999). (2) (cite: Bergman2020), from APEX Pointing Catalogue. (3) (cite: Danilovich2015)."
+     }
+    ]
+   },
+   "citation": "(cite: Kerschbaum1999), (cite: Bergman2020), (cite: Danilovich2015)"
+  },
+  {
+   "what": {
+    "value": "Initial HCN abundance f_0 (3.5e-7 for R Crt, 4.3e-7 for IK Tau) and empirical e-folding radius expression",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "Following (cite: Schoier2013), the abundance distribution at the initial radius for R Crt and IK Tau are 3.5 $\\times$ 10$^{-7}$ and 4.3 $\\times$ 10$^{-7}$."
+     },
+     {
+      "loc": "Model",
+      "quote": "The $r_e$ value is evaluated through the empirical expression in Eq. (3) of (cite: Schoier2013) and are 1.0 $\\times$ 10$^{16}$ cm and 2.0 $\\times$ 10$^{16}$ cm for R Crt and IK Tau, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: Schoier2013)"
+  },
+  {
+   "what": {
+    "value": "HCN spectroscopic parameters (HITRAN2020) and collisional rate coefficients with H2 and He",
+    "evidence": [
+     {
+      "loc": "Model",
+      "quote": "The energy levels and radiative transition Einstein coefficients were taken from the HITRAN2020 database (cite: hitran)."
+     },
+     {
+      "loc": "Model",
+      "quote": "The collisional downward rate coefficients for pure rotational transitions were taken from (cite: Hernandez-Vera2017) for collisions with a para/ortho H$_2$ (adopting an ortho-to-para ratio of 3) and from (cite: Dumouchel2010) for collisions with He"
+     }
+    ]
+   },
+   "citation": "(cite: hitran), (cite: Hernandez-Vera2017), (cite: Dumouchel2010)"
+  },
+  {
+   "what": {
+    "value": "Line rest frequencies from the CDMS database",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "Frequencies from the CDMS database <https://cdms.astro.uni-koeln.de>"
+     }
+    ]
+   },
+   "citation": "CDMS database"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Measure continuum positions and radio photosphere sizes (R_mm)",
+   "method": "Fit 2D Gaussian to non-self-calibrated natural-weighted 354 GHz continuum emission above 3 sigma using SciPy; take R_mm as half the FWHM",
+   "software": [
+    "GILDAS",
+    "SciPy"
+   ],
+   "key_parameters": [
+    "Frequency = 354 GHz; threshold > 3 sigma; natural weighting"
+   ],
+   "assumptions": [
+    "Radio photosphere is originated by free-free radiation that becomes optically thick at R_mm = FWHM / 2"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model dusty circumstellar envelope of R Crt via SED fitting",
+   "method": "Run a grid of 1D spherical continuum radiative transfer models with DUSTY V2 varying tau_10 and T_c, and find the best fit to VizieR photometric SED via reduced chi-squared",
+   "software": [
+    "DUSTY V2"
+   ],
+   "key_parameters": [
+    "Spherical grains of radius 0.1 um; warm silicate optical properties from Suh (1999)"
+   ],
+   "assumptions": [
+    "Spherical dusty envelope; dust present only beyond condensation radius r_c with uniform gas-to-dust ratio; 20% uniform flux uncertainties"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Model gaseous envelope (mass loss rate and temperature profile) of R Crt via CO lines",
+   "method": "Run a grid of non-LTE radiative transfer models for CO (v=0 and v=1) using modified RATRAN, varying mass loss rate and gas temperature exponent delta, and fit to archival single-dish/space CO line integrated intensities",
+   "software": [
+    "RATRAN"
+   ],
+   "key_parameters": [
+    "CO fractional abundance = 2.0e-4 relative to H2; v_0 = v_inf / 4; beta = 1; photospheric pressure = 5e-5 bar; density exponent b = 2"
+   ],
+   "assumptions": [
+    "Spherical symmetry; power-law gas temperature T_g(r) = T_* (r/R_*)^-delta; 20% uniform uncertainties on CO intensities"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Constrain HCN formation radius (r_h) via non-LTE LVG radiative transfer modeling",
+   "method": "Compute non-LTE LVG radiative transfer models of HCN (J=4-3 in v=0 and v2=1) with an inner abundance hole of radius r_h = 1 to 10 R_*, integrate over +/- 5 km s^-1 around V_sys, and compare with observed azimuthally averaged radial brightness profiles",
+   "software": [],
+   "key_parameters": [
+    "r_h = 1 to 10 R_*; velocity integration range = V_sys +/- 5 km s^-1; f_0 = 3.5e-7 (R Crt) and 4.3e-7 (IK Tau); r_e = 1.0e16 cm (R Crt) and 2.0e16 cm (IK Tau); 41 rotational levels in v=0, v2=1, v2=2, v3=1, v1=1"
+   ],
+   "assumptions": [
+    "Gaussian HCN abundance fall-off beyond r_h; optically thick free-free radio photosphere between R_* and R_mm with ionization degree 1e-5; H2 ortho-to-para ratio of 3; He/H2 = 0.17; ro-vibrational collision rates scaled down by 10,000"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Continuum peak intensity (R Crt, uniform weighting)",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "where rms noises are 0.31 and 0.21 mJy beam$^{-1}$ and intensity maxima are 30 and 80 mJy beam$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum peak intensity (IK Tau, uniform weighting)",
+   "value": "80",
+   "uncertainty": "not stated",
+   "units": "mJy beam^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Observations",
+     "quote": "where rms noises are 0.31 and 0.21 mJy beam$^{-1}$ and intensity maxima are 30 and 80 mJy beam$^{-1}$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Radio photosphere radius R_mm at 354 GHz (R Crt)",
+   "value": "30",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $R_{\\mathrm{mm}}$ [mas] | 30 $^{(e)}$ | 26 $^{(e)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio photosphere radius R_mm at 354 GHz in stellar radii (R Crt)",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "R_*",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $R_{\\mathrm{mm}}$ [$R_\\star]$ | 3.2 | 2.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio photosphere radius R_mm at 354 GHz (IK Tau)",
+   "value": "26",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $R_{\\mathrm{mm}}$ [mas] | 30 $^{(e)}$ | 26 $^{(e)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Radio photosphere radius R_mm at 354 GHz in stellar radii (IK Tau)",
+   "value": "2.5",
+   "uncertainty": "not stated",
+   "units": "R_*",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $R_{\\mathrm{mm}}$ [$R_\\star]$ | 3.2 | 2.5 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Stellar luminosity L_* (R Crt)",
+   "value": "7000",
+   "uncertainty": "not stated",
+   "units": "L_sun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $L_\\star$ [$L_\\odot$] | 7000 $^{(e)}$ | 7900 $^{(g)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust condensation radius r_c (R Crt)",
+   "value": "1.8e14",
+   "uncertainty": "not stated",
+   "units": "cm",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $r_c$ [cm] | 1.8 $\\times$ 10$^{14}$ $^{(e)}$ | 2.0 $\\times$ 10$^{14}$ $^{(g)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "10 um dust optical depth tau_10 (R Crt)",
+   "value": "0.05",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\tau_{10}$ | 0.05 $^{(e)}$ | 1.0 $^{(g)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Dust condensation temperature T_d(r_c) (R Crt)",
+   "value": "1000",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $T_d(r_c)$ [K] | 1000 $^{(e)}$ | 1000 $^{(g)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust mass ratio Psi (R Crt)",
+   "value": "890",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\Psi$ | 890 $^{(e)}$ | 130 $^{(g)}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass loss rate M_dot (R Crt)",
+   "value": "8.7e-7",
+   "uncertainty": "not stated",
+   "units": "M_sun yr^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\dot{M}$ [$M_\\odot$ yr$^{-1}$] | 8.7 $\\times$ 10$^{-7}$ $^{(e)}$ | 4.8 $\\times$ 10$^{-6}$ $^{(g)}$ |"
+    },
+    {
+     "loc": "Model",
+     "quote": "The derived mass loss rate and exponent of the gas temperature for R Crt are 8.7 $\\times$ 10$^{-7}$ and 0.65, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas temperature radial profile exponent delta (R Crt)",
+   "value": "0.65",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $\\delta$ | 0.65 $^{(e)}$ | 0.65 $^{(g)}$ |"
+    },
+    {
+     "loc": "Model",
+     "quote": "The derived mass loss rate and exponent of the gas temperature for R Crt are 8.7 $\\times$ 10$^{-7}$ and 0.65, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=4-3 v=0 radial intensity maximum position (R Crt)",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "If we examine the radius at its intensity maximum, the best match is achieved at 66 mas in agreement with observations, while the models with the closest intensity maxima are those with $r_h$ = 5 $R_\\star$."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN J=4-3 v=0 radial intensity maximum position (IK Tau)",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "mas",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The model with $r_h$ = 5 $R_\\star$ produces an intensity maximum closest to the observed value (55 mas)"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN formation radius r_h (R Crt)",
+   "value": "4-6",
+   "uncertainty": "not stated",
+   "units": "R_*",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The best models locate the formation radius of HCN at 4-6 $R_\\star$ in R Crt and 3-5 $R_\\star$ in IK Tau."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "We constrain the formation radius of HCN to 4-6 $R_\\star$ for R Crt and 3-5 $R_\\star$ for IK Tau."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN formation radius r_h (IK Tau)",
+   "value": "3-5",
+   "uncertainty": "not stated",
+   "units": "R_*",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "The best models locate the formation radius of HCN at 4-6 $R_\\star$ in R Crt and 3-5 $R_\\star$ in IK Tau."
+    },
+    {
+     "loc": "Conclusions",
+     "quote": "We constrain the formation radius of HCN to 4-6 $R_\\star$ for R Crt and 3-5 $R_\\star$ for IK Tau."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel/cell size and image dimensions used in GILDAS mapping",
+  "Line-free channel selection and continuum subtraction procedure for the HCN line cubes",
+  "Solution intervals and SNR thresholds used in the two phase self-calibration loops",
+  "RMS noise levels achieved in the HCN J=4-3 v=0 and v2=1 channel maps or integrated intensity maps",
+  "Exact grid step sizes and ranges for DUSTY (T_c, tau_10) and RATRAN (M_dot, delta) parameter grids",
+  "Uncertainties assumed on the azimuthal radial profile data points when computing the reduced chi-squared values for HCN"
+ ],
+ "missing_for_reproduction": [
+  "The in-house non-LTE LVG radiative transfer code and the modified RATRAN code are not publicly released",
+  "Exact GILDAS imaging and self-calibration scripts/parameters (cell size, cleaning thresholds, self-calibration solution intervals)",
+  "Definition of the error bars used when calculating reduced chi-squared for the radial profile comparisons"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The observational setup, physical equations, input parameters (Table 1), photometric/CO data (Tables 2 and 3), and spectroscopic/collisional inputs are thoroughly documented, but the custom LVG and modified RATRAN codes are not publicly available and some GILDAS imaging/self-calibration parameters are omitted.",
+ "rediscovery_reason": "The ALMA data (2019.1.00801.S) are public in the archive, the continuum photosphere sizes (R_mm) and HCN radial brightness peak positions (66 mas and 55 mas) can be directly re-measured from the ALMA visibilities/images, and the 1D radiative transfer hole-radius modeling is well-specified enough to be re-implemented with standard radiative transfer tools.",
+ "source_card": "cards/2026A%26A...711A.159M/sonnet/card.md"
+}

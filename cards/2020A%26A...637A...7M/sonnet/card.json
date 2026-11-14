@@ -1,0 +1,1115 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2020A&A...637A...7M",
+  "title": "Detection of deuterated molecules, but not of lithium hydride, in the z = 0.89 absorber toward PKS 1830-211",
+  "year": 2020,
+  "journal": "Astronomy and Astrophysics",
+  "first_author": "Muller, S.",
+  "n_authors": 11,
+  "arxiv_id": "2003.13436",
+  "doi": "10.1051/0004-6361/202037628",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2018.1.00051.S",
+   "2018.1.00187.S",
+   "2018.1.00692.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "we report the first detection of three deuterated species, ND, NH$_2$D, and HDO, and an upper limit to $^7$LiH, in the z=0.89 absorber against the quasar PKS 1830$-$211."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "PKS 1830-211 (z=0.89 absorber, SW image)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=0.88582",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "All velocities in this paper are referred to the heliocentric frame, taking a redshift of z=0.88582 (cite: wik96)."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Wiklind & Combes 1996 (cite: wik96)",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "All velocities in this paper are referred to the heliocentric frame, taking a redshift of z=0.88582 (cite: wik96)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "B 0218+357 (archival, LiH)",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "z=0.68",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "ALMA archival observations of the same $^7$LiH (1–0) line toward B 0218+357, taken in October 2018 (project code 2018.1.00187.S)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Are deuterated molecules (ND, NH2D, HDO) and lithium hydride detectable in the z=0.89 absorber toward PKS 1830-211, and what are their abundance ratios?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "we report the first detection of three deuterated species, ND, NH$_2$D, and HDO, and an upper limit to $^7$LiH, in the z=0.89 absorber against the quasar PKS 1830$-$211."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2018.1.00692.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "in the frame of two different science projects (2018.1.00692.S and 2018.1.00051.S)"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00051.S",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "in the frame of two different science projects (2018.1.00692.S and 2018.1.00051.S)"
+      }
+     ]
+    },
+    {
+     "code": "2018.1.00187.S",
+     "evidence": [
+      {
+       "loc": "3.3 Non-detection of 7LiH",
+       "quote": "taken in October 2018 (project code 2018.1.00187.S)"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (2019 Apr 11) and Band 7 (2019 Jul 28)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2019 Apr 11 | B6 | 43 | 1.0 | 66 | 4.7 | 0.6 | NH$_2$D, HDO, p-NH$_2$, ($^7$LiH) |"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "four spectral windows, each 1.875 GHz wide; velocity resolution 1–5 km/s after Hanning smoothing",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "The correlator was configured to cover four spectral windows, each 1.875 GHz wide, with a resulting velocity resolution of 1–5 km s$^{-1}$ (after Hanning smoothing), depending on the project."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HDO",
+     "transition": "1_0,1–0_0,0",
+     "rest_frequency": "464.924520 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "| HDO ($J_{Ka},_{Kc}$=$1_{0,1}$–$0_{0,0}$)                    | 464.924520           | 246.537"
+      }
+     ]
+    },
+    {
+     "species": "o-NH2D",
+     "transition": "1_1,0–0_0,0, F=2–1",
+     "rest_frequency": "470.271911 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "o-NH$_2$D ($J_{Ka},_{Kc}$=$1_{1,0}$–$0_{0,0}$, $F$=2–1)     | 470.271911$^\\dagger$"
+      }
+     ]
+    },
+    {
+     "species": "ND",
+     "transition": "N=1–0, J=2–1",
+     "rest_frequency": "522.077372 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "ND ($N$=1–0, $J$=2–1)                                       | 522.077372$^\\dagger$"
+      }
+     ]
+    },
+    {
+     "species": "ND",
+     "transition": "N=1–0, J=1–1",
+     "rest_frequency": "546.127619 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "ND ($N$=1–0, $J$=1–1)                                       | 546.127619$^\\dagger$"
+      }
+     ]
+    },
+    {
+     "species": "o-H2(18)O",
+     "transition": "1_1,0–1_0,1",
+     "rest_frequency": "547.676440 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "o-H$_2^{18}$O ($J_{Ka},_{Kc}$=$1_{1,0}$–$1_{0,1}$)          | 547.676440"
+      }
+     ]
+    },
+    {
+     "species": "7LiH",
+     "transition": "J=1–0",
+     "rest_frequency": "443.952930 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "$^7$LiH ($J$=1–0)                                           | 443.952930"
+      }
+     ]
+    },
+    {
+     "species": "p-NH2",
+     "transition": "1_1,0–1_0,1",
+     "rest_frequency": "469.440621 and 470.409052 GHz",
+     "evidence": [
+      {
+       "loc": "Table 2",
+       "quote": "p-NH$_2$ ($N_{Ka},_{Kc}$=$1_{1,0}$–$1_{0,1}$, $J$=–, $F$=–) | 469.440621$^\\dagger$"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "0.6 arcsec (Apr, B6); 0.03 arcsec (Jul, B7)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2019 Jul 28 | B7 | 42 | 0.6 | 19 | 1.1 | 0.03 | ND, o-H$^2_{18}$O |"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "66 min (Apr 11), 19 min (Jul 28)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| 2019 Jul 28 | B7 | 42 | 0.6 | 19 | 1.1 | 0.03 | ND, o-H$^2_{18}$O |"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "2019 April 11 and 2019 July 28",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "observed with the Atacama Large Millimeter/submillimeter Array (ALMA) on 2019 April 11 and 2019 July 28"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "16O/18O = 69 ± 11 from HCO+ isotopologues",
+      "evidence": [
+       {
+        "loc": "3.1.2 HDO",
+        "quote": "we adopt the ratio $^{16}$O/$^{18}$O $= 69 \\pm 11$ derived from observations of HCO$^+$ isotopologues by (cite: mul06; mul11)"
+       }
+      ]
+     },
+     "citation": "(cite: mul06; mul11)"
+    },
+    {
+     "what": {
+      "value": "N(H2) = 2e22 cm-2 along SW line of sight",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "Taking the column density of H$_2$ estimated along the SW line of sight [^6], $2 \\times 10^{22}$ cm$^{-2}$ (cite: mul14)"
+       }
+      ]
+     },
+     "citation": "(cite: mul14)"
+    },
+    {
+     "what": {
+      "value": "2012 p-NH2 and o-NH3 spectra; 2014 o-H2O/H2(18)O spectra for comparison",
+      "evidence": [
+       {
+        "loc": "3.1.1 NH2",
+        "quote": "two others were observed together with ortho-NH$_3$ back in 2012 (cite: mul14)"
+       }
+      ]
+     },
+     "citation": "(cite: mul14; mul16b)"
+    },
+    {
+     "what": {
+      "value": "NH/NH2/NH3 abundance ratios in diffuse gas (3–2:1:1) and dark clouds (3:1:19)",
+      "evidence": [
+       {
+        "loc": "3.1.1 NH2",
+        "quote": "NH:NH$_2$:NH$_3$= 3–2:1:1 observed in the Galactic diffuse gas (cite: per10; per12)"
+       }
+      ]
+     },
+     "citation": "(cite: per10; per12; legal14)"
+    },
+    {
+     "what": {
+      "value": "Spectroscopy parameters from CDMS and JPL",
+      "evidence": [
+       {
+        "loc": "Table 2 notes",
+        "quote": "Spectroscopy parameters are taken from the Cologne Database for Molecular Spectroscopy (cite: CDMS01; CDMS05; CDMS16)"
+       }
+      ]
+     },
+     "citation": "(cite: CDMS01; CDMS05; CDMS16; pic98)"
+    },
+    {
+     "what": {
+      "value": "Collisional rates for NH2D and HDO",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "The rates are taken from (cite: dan14) for NH$_2$D and from (cite: fau12) for HDO."
+       }
+      ]
+     },
+     "citation": "(cite: dan14; fau12)"
+    },
+    {
+     "what": {
+      "value": "H2 column density 8e21 cm-2 toward B0218+357",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "we estimate an H$_2$ column density of $8 \\times 10^{21}$ cm$^{-2}$ (cite: wal16)"
+       }
+      ]
+     },
+     "citation": "(cite: wal16)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "CASA, standard procedure; self-calibration on continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data calibration was carried out within the Common Astronomy Software Applications package (CASA[^2]), following a standard procedure."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "one iteration of phase-only solutions per 6 sec integration on PKS 1830-211 continuum",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the visibilities were further self-calibrated on the continuum of PKS 1830$-$211, by one iteration of phase-only solutions per 6 sec integration."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "No imaging; spectra extracted by fitting two point sources to visibilities with UVMULTIFIT",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The final spectra were extracted using the CASA Python task UVMULTIFIT ((cite: mar14)) by fitting a model of two point sources to the interferometric visibilities."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Opacity-to-column conversion assuming excitation locked to CMB (Tex=TCMB=5.14 K)",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "Since all species have large electric dipole moments, $> 1$ D, we expect that their excitation is locked to the temperature of the CMB (see (cite: mul13))."
+       }
+      ]
+     },
+     "from_reference": "(cite: mul13)"
+    },
+    {
+     "what": {
+      "value": "LiH archival data reduced similarly as Section 2",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "reduced with a similar process as described in Section [2](#sec:obs)"
+       }
+      ]
+     },
+     "from_reference": "Section 2 of this paper"
+    },
+    {
+     "what": {
+      "value": "Full polarization observations of Apr 11",
+      "evidence": [
+       {
+        "loc": "2 Observations",
+        "quote": "The observations on 2019 April 11 were done in full polarization mode (Marti-Vidal et al., in prep.)"
+       }
+      ]
+     },
+     "from_reference": "Marti-Vidal et al., in prep."
+    }
+   ],
+   "unstated_but_needed": [
+    "Line-free channels and continuum normalization procedure",
+    "Gaussian fitting code and fitting/error method",
+    "Exact CASA version and bandpass/flux calibrator flux scale",
+    "Velocity-resolution/Hanning details per project",
+    "Details of the time-variation correction applied to final ratios",
+    "Phase center/coordinates of target",
+    "Exact RADEX input parameters beyond range"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract normalized spectra",
+    "method": {
+     "value": "Fit two point sources to visibilities with UVMULTIFIT; normalize Stokes I spectra to continuum and average the two executions",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The spectra, extracted from Stokes I data, were then normalized to the continuum level and averaged."
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "UVMULTIFIT"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "NE image spectra used as monitor to discard Galactic, atmospheric lines or bandpass ripples",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "the spectra extracted from the NE image serve as a monitor to control the quality of the spectral bandpass"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Convert opacity to column density",
+    "method": {
+     "value": "N = alpha * integral tau dv with alpha computed for Tex=TCMB; RADEX check of collisional effects",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we ran the radiative transfer code RADEX (cite: vdtak07) for NH$_2$D and HDO"
+      }
+     ]
+    },
+    "software": [
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "TCMB=5.14 K at z=0.89",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "the $\\alpha$ factors can be calculated with $\\hbox{$T_\\mathrm{CMB}$}=5.14$ K at z=0.89"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "covering factor fc=1; only H2 collision partner; OPR=3",
+      "evidence": [
+       {
+        "loc": "3.1",
+        "quote": "We further assume that the absorbing gas completely and uniformly covers the background continuum emission from the quasar, that is, a covering factor $\\hbox{$f_c$}=1$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "alpha constant within 10% for n up to 1e4 cm-3 and Tkin 10–100 K",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "the corresponding $\\alpha$ conversion factors remain constant within 10% for volume density up to $10^4$ cm$^{-3}$ and kinetic temperature in the range 10–100 K."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit Gaussian velocity components",
+    "method": {
+     "value": "One or two Gaussian components per spectrum; joint tight 2-Gaussian fit of p-NH2, NH2D, HDO; ND forced with p-NH2 components",
+     "evidence": [
+      {
+       "loc": "Table 3 notes",
+       "quote": "2Gt: all species fitted simultaneously with the same tight 2-Gaussian velocity profile"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Derive deuterium fractionation ratios",
+    "method": {
+     "value": "Ratios of integrated opacities with pivot species (NH2 for NH/NH3, H2-18O for H2O), OPR and time-variation corrections",
+     "evidence": [
+      {
+       "loc": "Table 4",
+       "quote": "| ND/NH | ND/p-NH$_2$ | NH/NH$_2$=1–5 $^{\\circ}$ | OPR(NH$_2$)=3 | $\\times 2$ | (0.7–7)$\\times 10^{-3}$ |"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "NH2/NH3=1, NH/NH2=3, 16O/18O=69±11, factor 2 variation Apr–Jul 2019",
+      "evidence": [
+       {
+        "loc": "3.1.1 NH2",
+        "quote": "Further assuming NH$_2$/NH$_3$=1, as we have discussed above, we end up with the ratio NH$_2$D/NH$_3$ $\\sim 3 \\times 10^{-3}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "7LiH upper limit",
+    "method": {
+     "value": "3 sigma_tau sqrt(dv*Dv) with Dv=20 km/s, times alpha; divide by N(H2)",
+     "evidence": [
+      {
+       "loc": "3.3 Non-detection of 7LiH",
+       "quote": "An upper limit on the integrated opacity of $^7$LiH can be calculated as $3\\sigma_{\\tau} \\sqrt{\\delta v \\Delta v}$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "sigma_tau=1e-3 per 4.7 km/s channel; line width 20 km/s; alpha=2.5e11",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "$\\sigma_{\\tau} = 1 \\times 10^{-3}$ is the root-mean-square (rms) noise level normalized to the continuum level per velocity channel $\\delta v = 4.7$ km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "N(H2)=2e22 cm-2",
+      "evidence": [
+       {
+        "loc": "3.3 Non-detection of 7LiH",
+        "quote": "$2 \\times 10^{22}$ cm$^{-2}$ (cite: mul14)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Archival B0218+357 LiH spectrum checked for comparison",
+     "evidence": [
+      {
+       "loc": "3.3 Non-detection of 7LiH",
+       "quote": "show no line absorption feature down to a rms noise level of 1% of the continuum level, with 1.1 km s$^{-1}$ velocity resolution"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "calibration",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The data calibration was carried out within the Common Astronomy Software Applications package (CASA[^2])"
+      }
+     ]
+    }
+   },
+   {
+    "name": "UVMULTIFIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "spectra extraction by visibility fitting of two point sources",
+     "evidence": [
+      {
+       "loc": "2 Observations",
+       "quote": "The final spectra were extracted using the CASA Python task UVMULTIFIT ((cite: mar14))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "check of collisional excitation effects on alpha for NH2D and HDO",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "we ran the radiative transfer code RADEX (cite: vdtak07) for NH$_2$D and HDO"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "NH2D/NH2 (v~-4 km/s)",
+    "value": "2.7e-3",
+    "uncertainty": "0.3e-3",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "NH$_2$D/NH$_2$ = $(2.7 \\pm 0.3)\\times 10^{-3}$ for the $v\\sim-4$ km s$^{-1}$ velocity component"
+     }
+    ]
+   },
+   {
+    "quantity": "ND/NH2D (v~-4 km/s)",
+    "value": "2.7",
+    "uncertainty": "0.2",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "we derive ND/NH$_2$D = $2.7 \\pm 0.2$"
+     }
+    ]
+   },
+   {
+    "quantity": "ND/NH (v~-4 km/s)",
+    "value": "2.44e-3",
+    "uncertainty": "0.07e-3 (fit only)",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "we further derive ND/NH $= (2.44 \\pm 0.07) \\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "ND/NH (v=+5 km/s)",
+    "value": "1.3e-4",
+    "uncertainty": "0.8e-4",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "we obtain a ratio ND/NH = $(1.3 \\pm 0.8) \\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "NH2D/NH3 (v~-4 km/s)",
+    "value": "~3e-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "NH$_2$D/NH$_3$ $\\sim 3 \\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO/H2O (v=-4 km/s)",
+    "value": "~1e-3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.2 HDO",
+      "quote": "we end up with a ratio HDO/H$_2$O $\\sim 1 \\times 10^{-3}$"
+     }
+    ]
+   },
+   {
+    "quantity": "HDO/H2O (v~+5 km/s)",
+    "value": "~6e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.2 HDO",
+      "quote": "we estimate a ratio HDO/H$_2$O $\\sim 6 \\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "N(7LiH) upper limit (3σ)",
+    "value": "7e9",
+    "uncertainty": "not stated",
+    "units": "cm-2",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of 7LiH",
+      "quote": "we then obtain an upper limit of $7 \\times 10^9$ cm$^{-2}$ for the column density of $^7$LiH"
+     }
+    ]
+   },
+   {
+    "quantity": "7LiH/H2 upper limit (PKS 1830-211)",
+    "value": "<4e-13",
+    "uncertainty": "3σ",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of 7LiH",
+      "quote": "we derive a stringent upper limit $^7$LiH/H$_2$ $< 4 \\times 10^{-13}$ (3$\\sigma$)"
+     }
+    ]
+   },
+   {
+    "quantity": "7LiH/H2 upper limit (B0218+357)",
+    "value": "<5e-11",
+    "uncertainty": "3σ",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "3.3 Non-detection of 7LiH",
+      "quote": "corresponding to an abundance ratio $^7$LiH/H$_2$ $< 5 \\times 10^{-11}$"
+     }
+    ]
+   },
+   {
+    "quantity": "NH2/NH3 (2012)",
+    "value": "~1",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "3.1.1 NH2",
+      "quote": "yield a total column density $\\sim 3 \\times 10^{14}$ cm$^{-2}$ for both, that is, NH$_2$/NH$_3$ $\\sim 1$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "v~-4 km/s component is chemically peculiar (enhanced CH3OH, N2H+, SO2), variable on months timescales, possibly a cold dark cloud analog",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "Overall, these properties suggest that the $v = -4$  km s$^{-1}$ component could be associated with a cold dark cloud similar to those in the Milky Way."
+     }
+    ]
+   },
+   {
+    "value": "First detection of SO2 toward PKS 1830-211",
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "which represents the first detection of SO$_2$ toward PKS 1830$-$211"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Deuterated molecules are detectable in the z=0.89 absorber",
+    "experiment": "ALMA band 6/7 absorption spectra toward the SW image",
+    "result": "ND, NH2D and HDO detected; fractionation up to ~1e-3",
+    "finding": "First detection of deuterated species other than HD in this absorber, ~100x primordial D/H in a narrow component",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "with a deuterium fractionation $\\sim 100$ times over the primordial D/H."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Deuterium fractionation differs between velocity components",
+    "experiment": "Gaussian decomposition and ratios per component",
+    "result": "v=+5 component lower by about one order of magnitude",
+    "finding": "Two components have different fractionation",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "Another weaker velocity component shows deuterium fractionation that is lower by an order of magnitude."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The -4 km/s component is a cold dense cloud",
+    "experiment": "Compare profiles of many species and time variability",
+    "result": "Enhanced CH3OH, N2H+, SO2; factor 2 variability in months",
+    "finding": "Speculated to be analog of Galactic dark cloud",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "we speculate that this velocity component could be associated with the analog of a Galactic dark cloud."
+     }
+    ]
+   },
+   {
+    "hypothesis": "LiH is detectable in molecular absorbers",
+    "experiment": "7LiH (1-0) spectrum toward PKS 1830-211 and archival B0218+357",
+    "result": "No detection; LiH/H2 < 4e-13",
+    "finding": "Earlier tentative detections toward B0218+357 likely spurious; <1e-4 of Li in LiH",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Summary and conclusions",
+      "quote": "the non-detection of $^7$LiH yields a stringent upper limit LiH/H$_2$ $< 4 \\times 10^{-13}$ (3$\\sigma$)"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Data were secondary products of two projects not targeting the main isotopologues",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "all the D-species were discovered as secondary products of two projects with different science goals"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Past 2012/2014 NH3 and H2O spectra not used directly because of time variations",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "preclude us from using these past observations directly without careful comparison of reference spectra"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Non-simultaneous XD and XH observations and time variability; high uncertainties",
+     "evidence": [
+      {
+       "loc": "Summary and conclusions",
+       "quote": "Measurements of deuterium fractionation toward PKS 1830$-$211 could be improved by simultaneous observations of the XD and XH isotopologues"
+      }
+     ]
+    },
+    {
+     "value": "Assumed covering factor of 1",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "We further assume that the absorbing gas completely and uniformly covers the background continuum emission from the quasar"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Fractionation ratios depend on assumed NH/NH2/NH3 ratios borrowed from Galactic sources",
+    "Time-variation correction of factor 2 is inferred from CH3OH, not measured for the species",
+    "Tex=TCMB assumption may fail given claimed cold dense component",
+    "Absorption-line covering factor uncertainty for weak lines"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Spectra available at CDS; ALMA data cited with project codes",
+    "evidence": [
+     {
+      "loc": "Footnote 1",
+      "quote": "Spectra are available in electronic form at the CDS via anonymous ftp to cdsarc.u-strasbg.fr"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "CASA version, calibrators' flux scale",
+    "Line-free channel ranges and normalization",
+    "Fitting code/procedure for Gaussians",
+    "Exact time-variation correction"
+   ],
+   "estimated_data_volume_inferred": "~100 GB–1 TB raw for three projects",
+   "score_inferred": 3,
+   "score_reason": "Data are public and the recipe is simple, but processing details (versions, fitting, line-free channels) and assumed corrections are loosely specified.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Archival data, simple spectra extraction and ratios, numeric results, though corrections are partly judgemental."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Martí-Vidal et al. 2014 (cite: mar14)",
+     "why": "UVMULTIFIT visibility fitting"
+    },
+    {
+     "citation": "Muller et al. 2013 (cite: mul13)",
+     "why": "Excitation locked to CMB and alpha factors"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Muller et al. 2014 (cite: mul14)",
+     "why": "2012 ALMA spectra of NH2/NH3 and H2 column"
+    },
+    {
+     "citation": "Muller et al. 2016b (cite: mul16b)",
+     "why": "2014 H2O spectra"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d1bf97f01a04c76edb0b72b864c33684",
+  "batch_id": "msgbatch_016UJ21GsfAPnRKEWwunhnkY",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:55:17",
+  "usage": {
+   "input_tokens": 23832,
+   "output_tokens": 10083,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.074854,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 71,
+  "quotes_ok": 71,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 3,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 11,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 84,
+   "stated": 45,
+   "rate": 0.536
+  },
+  "evidence_ok": true
+ }
+}

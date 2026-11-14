@@ -1,0 +1,974 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019ApJ...885...82L",
+  "title": "Sulfur-bearing Molecules in Orion KL",
+  "year": 2019,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Luo, Gan",
+  "n_authors": 8,
+  "arxiv_id": "1910.01779",
+  "doi": "10.3847/1538-4357/ab45ef",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00009.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "archival_reuse",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 ALMA observations",
+    "quote": "The ALMA archive data were obtained from ALMA science verification[^1] (SV) data in band 6 (project ID 2011.0.00009.SV)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "star_formation",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "Orion KL",
+     "coordinates": {
+      "value": "RA 05h35m14.35s, Dec -05d22m35.0s (phase center)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "It is the closest high-mass star-forming region (437 $\\pm$ 19 pc; (cite: Hirota2007))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase-tracking center was at R. A. = $05^h 35^m 14^s.35$ and Dec. = $-05^\\circ 22'35''.0$."
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "437 ± 19 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "It is the closest high-mass star-forming region (437 $\\pm$ 19 pc; (cite: Hirota2007))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase-tracking center was at R. A. = $05^h 35^m 14^s.35$ and Dec. = $-05^\\circ 22'35''.0$."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Hirota et al. 2007",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "It is the closest high-mass star-forming region (437 $\\pm$ 19 pc; (cite: Hirota2007))"
+       },
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "The phase-tracking center was at R. A. = $05^h 35^m 14^s.35$ and Dec. = $-05^\\circ 22'35''.0$."
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "How do S-bearing species (carbon-sulfur compounds vs carbon-free species) differ in line profiles, spatial distribution, abundances and temperature dependence in Orion KL, and what does this imply for sulfur chemistry?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we found a clear dichotomy between carbon-sulfur compounds and carbon-free S-bearing species in various characteristics, e.g., line profiles, spatial morphology, and molecular abundances with respect to $\\rm H_2$."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00009.SV",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The ALMA archive data were obtained from ALMA science verification[^1] (SV) data in band 6 (project ID 2011.0.00009.SV)."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 6 (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The ALMA archive data were obtained from ALMA science verification[^1] (SV) data in band 6 (project ID 2011.0.00009.SV)."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "213.719-246.619 GHz; 0.488 MHz resolution (~0.7 km/s at 230 GHz)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The ALMA spectral coverage is from 213.719 GHz to 246.619 GHz, with a spectral resolution of 0.488 MHz (corresponding to $\\sim$ 0.7 $\\mathrm{km\\, s^{-1}\\, }$at 230 GHz)."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "SO2 (and isotopologues)",
+     "transition": "many, e.g. 4(2,2)-3(1,3)",
+     "rest_frequency": "235151.7 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$4_{2,2}-3_{1,3}$ | 235151.7 | 19.03"
+      }
+     ]
+    },
+    {
+     "species": "13CS",
+     "transition": "5-4",
+     "rest_frequency": "231220.7 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "2-9 $\\mathrm{^{13}CS}$ | $5-4$ | 231220.7"
+      }
+     ]
+    },
+    {
+     "species": "H2CS",
+     "transition": "7(1,7)-6(1,6)",
+     "rest_frequency": "236727.0 MHz",
+     "evidence": [
+      {
+       "loc": "Table 1",
+       "quote": "$7_{1,7}-6_{1,6}$ | 236727.0 | 58.62"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "17 to 265 m",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "with baselines ranging from 17 to 265 m."
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "ALMA-only 1.64'' x 1.20''; combined 1.86'' x 1.53'' (USB), 2.03'' x 1.76'' (LSB)",
+    "evidence": [
+     {
+      "loc": "2.2 Single-dish observation with IRAM",
+      "quote": "The combined datacube has a synthesized beam of $1.86'' \\times 1.53''$ (P.A.= $-19^\\circ$) in the upper sideband and $2.03'' \\times 1.76''$ (P.A.= $-12.6^\\circ$) in the lower sideband."
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "ALMA-only: continuum ~10 mJy/beam, lines 30 mJy/beam per channel; combined ~60 mJy/beam per km/s",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The 1$\\sigma$ root mean square (RMS) noise level of the continuum and lines are $\\sim$10 m$\\mathrm{Jy\\, beam^{-1}\\, }$and 30 m$\\mathrm{Jy\\, beam^{-1}\\, }$per channel, respectively."
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "Jan. 20, 2012",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The observations were performed on Jan. 20, 2012"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Archival ALMA science verification data",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The ALMA archive data were obtained from ALMA science verification[^1] (SV) data"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM-30 m",
+     "provided": {
+      "value": "Single-dish 1.3 mm line data used to recover extended emission lost by ALMA",
+      "evidence": [
+       {
+        "loc": "2.2 Single-dish observation with IRAM",
+        "quote": "The ALMA-only observations filtered out $\\sim$30-50% of the extended emission in general compared to the 1.3 mm line emission detected with the IRAM-30 m single-dish observations"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "IRAM-30 m 1.3 mm Orion KL data (observational details)",
+      "evidence": [
+       {
+        "loc": "2.2 Single-dish observation with IRAM",
+        "quote": "(see the observational details in (cite: Feng2015))"
+       }
+      ]
+     },
+     "citation": "(cite: Feng2015)"
+    },
+    {
+     "what": {
+      "value": "[C18O/H2] ~ 2e-7 towards Orion KL used to derive H2 column density",
+      "evidence": [
+       {
+        "loc": "4.2 Chemical segregation",
+        "quote": "\\[C$^{18}$O/H$_2$\\] $\\sim 2 \\times 10^{-7}$ towards Orion KL (cite: Frerking1982; Plume2012; Crockett2014; Giannetti2014)"
+       }
+      ]
+     },
+     "citation": "(cite: Frerking1982; Plume2012; Crockett2014; Giannetti2014)"
+    },
+    {
+     "what": {
+      "value": "Molecular line catalogs CDMS and JPL",
+      "evidence": [
+       {
+        "loc": "3.1 Line identification",
+        "quote": "based on molecular databases such as the Cologne Database for Molecular Spectroscopy (CDMS, (cite: Muller2005)) or the database from from the Jet Propulsion Laboratory (JPL, (cite: Pickett1998))"
+       }
+      ]
+     },
+     "citation": "(cite: Muller2005); (cite: Pickett1998)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Callisto (bandpass and flux); J0607-085 phase",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Bandpass and flux calibration were performed with Callisto. Quasar J0607-085 was observed for phase calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "MIRIAD reduction; UVMODEL used to generate model visibilities from IRAM data",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "First, with the task UVMODEL, model visibility data from the single-dish spectral line are generated in the UV plane."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "Clean, natural weighting",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "The images were deconvolved with natural weighting using the Clean algorithm."
+      }
+     ]
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "performed (method not given)",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "Continuum subtraction was performed, and the images were reduced with the MIRIAD (cite: miriad) software."
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "ALMA and IRAM-30m visibilities combined and jointly cleaned, natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "Then, using the Clean algorithm with natural weighting, the ALMA and IRAM-30 m visibilities are combined into deconvolved images containing large-scale emission"
+      }
+     ]
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "1.86''x1.53'' (USB), 2.03''x1.76'' (LSB)",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "The combined datacube has a synthesized beam of $1.86'' \\times 1.53''$ (P.A.= $-19^\\circ$) in the upper sideband"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "~60 mJy/beam per km/s",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "The RMS noise level of spectral lines is $\\sim$60 m$\\mathrm{Jy\\, beam^{-1}\\, }$per $\\mathrm{km\\, s^{-1}\\, }$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Source nomenclature (hot core, mm2-mm7)",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA observations",
+        "quote": "Adopting the same nomenclature as that given by (cite: Wu2012), we label the brightest condensation as the hot core and the resolved condensations as mm2-mm7."
+       }
+      ]
+     },
+     "from_reference": "(cite: Wu2012)"
+    },
+    {
+     "what": {
+      "value": "IRAM-30m observation details",
+      "evidence": [
+       {
+        "loc": "2.2 Single-dish observation with IRAM",
+        "quote": "(see the observational details in (cite: Feng2015))"
+       }
+      ]
+     },
+     "from_reference": "(cite: Feng2015)"
+    }
+   ],
+   "unstated_but_needed": [
+    "IRAM-30m data details (receiver, calibration, how obtained) only by reference to Feng2015",
+    "Continuum-subtraction method and line-free channels",
+    "Clean parameters (cell size, image size, masks, threshold, iterations)",
+    "Flux scaling between IRAM and ALMA and uv range overlap treatment",
+    "MAGIX/XCLASS initial guesses, parameter bounds, source sizes",
+    "How species other than SO2 are fitted with fixed Trot and which lines used",
+    "Regions/apertures defining mm2-mm7 positions for spectral extraction",
+    "Pixel selection and S/N cutoffs for XCLASSMapfit maps"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Combine ALMA and IRAM-30m data",
+    "method": {
+     "value": "Convert IRAM data to MIRIAD format, create model visibilities with UVMODEL, jointly clean with natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "Then, using the Clean algorithm with natural weighting, the ALMA and IRAM-30 m visibilities are combined into deconvolved images containing large-scale emission"
+      }
+     ]
+    },
+    "software": [
+     "MIRIAD"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared amplitude vs uv-distance and recovered missing flux",
+     "evidence": [
+      {
+       "loc": "2.2 Single-dish observation with IRAM",
+       "quote": "see Figure [3](#fig:alma_com) for an example of the complementation of missing flux"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Identify S-bearing lines",
+    "method": {
+     "value": "XCLASS line identification against CDMS and JPL towards each substructure",
+     "evidence": [
+      {
+       "loc": "3.1 Line identification",
+       "quote": "using XCLASS, we identified 74 lines from 20 S-bearing isotopologues towards the hot core"
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Fit synthetic LTE spectra for Trot, N, linewidth, vlsr",
+    "method": {
+     "value": "Isothermal 1D LTE model with optical depth, blending, source size; chi2 minimisation; low-J optically thick SO2 lines excluded",
+     "evidence": [
+      {
+       "loc": "3.2 Synthetic spectrum fitting",
+       "quote": "a synthetic spectrum is modeled from an isothermal object in one dimension by taking the optical depth, line blending, source size, velocity, and linewidth into account."
+      }
+     ]
+    },
+    "software": [
+     "MAGIX",
+     "XCLASS"
+    ],
+    "key_parameters": [
+     {
+      "value": "Algorithms: genetic, Levenberg-Marquardt, errorestim-ins",
+      "evidence": [
+       {
+        "loc": "3.2 Synthetic spectrum fitting",
+        "quote": "An optimal fit is obtained by using three fitting algorithms, genetic, Levenberg-Marquardt, and errorestim-ins."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "LTE; other species' Trot fixed to that of SO2; same centroid velocity for isotopologues",
+      "evidence": [
+       {
+        "loc": "3.2 Synthetic spectrum fitting",
+        "quote": "we assume that their excitation temperatures towards individual substructures are the same as those of $\\mathrm{SO_2}$."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "chi2 minimisation in MAGIX",
+     "evidence": [
+      {
+       "loc": "3.2 Synthetic spectrum fitting",
+       "quote": "By minimizing ${\\chi}^2$ in the given parameter space, MAGIX yields optimized the results as output."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Isotopologue ratios compared with canonical values",
+     "evidence": [
+      {
+       "loc": "4.1 Error budget",
+       "quote": "to test if these assumptions are reasonable, we derive the relative abundance ratios between the $\\rm{^{32}S}$-/$\\rm {^{34}S}$-/$\\rm {^{33}S}$- isotopologues as well as the $\\rm{^{12}C}$-/$\\rm{ ^{13}C}$- isotopologues"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Pixel-by-pixel Trot and column density maps",
+    "method": {
+     "value": "XCLASSMapfit with same assumptions/algorithms as MAGIX",
+     "evidence": [
+      {
+       "loc": "3.3 Line spatial distribution",
+       "quote": "Using XCLASSMapfit (with the same assumptions and algorithms as MAGIX), we fit the $\\mathrm{T_{rot}}$ and column density maps by modeling the synthetic spectra towards all pixels."
+      }
+     ]
+    },
+    "software": [
+     "XCLASS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Derive H2 column and relative abundances",
+    "method": {
+     "value": "H2 column from C18O column using [C18O/H2] ~2e-7; abundances = N(species)/N(H2); correlate with Trot pixel by pixel",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical segregation",
+       "quote": "we use $\\mathrm{C^{18}O}$ to estimate the $\\mathrm{H_2}$ column density"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "[C18O/H2] ~ 2e-7; C18O optically thin (tau<=0.2); distance ~400 pc",
+      "evidence": [
+       {
+        "loc": "4.2 Chemical segregation",
+        "quote": "our MAGIX fitting results indicate that this line is optically thin ($\\tau \\leq 0.2$)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MIRIAD",
+    "version": "not stated",
+    "used_for": {
+     "value": "Data reduction, imaging, ALMA+IRAM combination",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA observations",
+       "quote": "the images were reduced with the MIRIAD (cite: miriad) software"
+      }
+     ]
+    }
+   },
+   {
+    "name": "XCLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification and Mapfit",
+     "evidence": [
+      {
+       "loc": "3.1 Line identification",
+       "quote": "Adopting the eXtended CASA Line Analysis Software Suite (XCLASS, (cite: xclass))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "MAGIX",
+    "version": "not stated",
+    "used_for": {
+     "value": "LTE synthetic spectrum fitting",
+     "evidence": [
+      {
+       "loc": "3.2 Synthetic spectrum fitting",
+       "quote": "we can use the Modeling and Analysis Generic Interface for eXternal numerical codes (MAGIX; (cite: magix)) package to perform the fitting process"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS/CLASS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Listed in software section; use not described",
+     "evidence": [
+      {
+       "loc": "Software",
+       "quote": "MIRIAD (cite: miriad), GILDAS/CLASS (cite: Pety2005; Gildas2013), XCLASS (cite: xclass), MAGIX (cite: magix)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of S-bearing lines identified",
+    "value": "79",
+    "uncertainty": "not stated",
+    "units": "lines",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we have identified 79 molecular lines from 6 S-bearing species"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2 Trot hot core",
+    "value": "176",
+    "uncertainty": "9",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\mathrm{SO_2}$       | $176 \\pm 9$"
+     }
+    ]
+   },
+   {
+    "quantity": "SO2 Trot mm7",
+    "value": "68",
+    "uncertainty": "11",
+    "units": "K",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "OCS                   | $68 \\pm 11$"
+     }
+    ]
+   },
+   {
+    "quantity": "32SO2/34SO2 average",
+    "value": "20",
+    "uncertainty": "4",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Error budget",
+      "quote": "the average relative abundance ratio of $\\mathrm{^{32}SO_2/^{34}SO_2}$ towards Orion KL is $20 \\pm 4$"
+     }
+    ]
+   },
+   {
+    "quantity": "34S/33S from SO average",
+    "value": "6",
+    "uncertainty": "1",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Error budget",
+      "quote": "The average abundance ratio of $\\mathrm{^{34}S/^{33}S}$ derived from $\\mathrm{^{32}SO/^{34}SO}$ is 6 $\\pm$ 1"
+     }
+    ]
+   },
+   {
+    "quantity": "12C/13C from OCS",
+    "value": "38",
+    "uncertainty": "9",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.1 Error budget",
+      "quote": "the derived average $\\mathrm{^{12}C/^{13}C}$ ratio (38 $\\pm$ 9 from $\\mathrm{O^{12}CS/O^{13}CS}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "34SO/34SO2 decrease with Trot 60-180 K",
+    "value": "1.5 to 0.7",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Possible chemical relation",
+      "quote": "The $\\mathrm{^{34}SO/^{34}SO_2}$ ratio decreases from 1.5 to 0.7 as the temperature increases from 60$\\sim$180 K"
+     }
+    ]
+   },
+   {
+    "quantity": "OCS/SO2 ratio 40-100 K",
+    "value": "1.0 to 0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Possible chemical relation",
+      "quote": "The $\\mathrm{OCS/SO_2}$ ratio decreases from 1.0 to 0.3 when the temperature increases from 40 K to 100 K"
+     }
+    ]
+   },
+   {
+    "quantity": "H2S/SO2 ratio",
+    "value": "~0.3",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "4.3 Possible chemical relation",
+      "quote": "The $\\mathrm{H_2S/SO_2}$ ratio is $\\rm\\sim$0.3"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Ring-like structure (radius ~5'') in carbon-free S species channel maps at 10-15 km/s, possibly shock-related",
+    "evidence": [
+     {
+      "loc": "3.3 Line spatial distribution",
+      "quote": "This ring, centered at R. A. = $05^h 35^m 14^s.235$ and Dec. = $-05^\\circ 22'32''.7$, has a radius of $\\sim$5$''$ in the plane of the sky."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Carbon-sulfur compounds and carbon-free S-bearing species trace different chemistry/gas",
+    "experiment": "Compared line profiles, maps and linewidths across substructures",
+    "result": "Carbon-free species broader (12-26 km/s) and extended NE of mm4; C-S compounds narrower (2-11 km/s), concentrated on continuum peaks and south",
+    "finding": "Clear dichotomy between the two groups",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we found a clear dichotomy between carbon-sulfur compounds and carbon-free S-bearing species"
+     }
+    ]
+   },
+   {
+    "hypothesis": "S-species abundances depend on gas temperature",
+    "experiment": "Pixel-by-pixel abundance vs Trot",
+    "result": "Carbon-free species abundances rise by ~an order of magnitude from 40-90 K; OCS and 13CS decrease from 40 to 180 K",
+    "finding": "Temperature-dependent chemistry differs between groups",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2 Chemical segregation",
+      "quote": "their abundances exhibit a drastic increase as the gas temperature changes from 40 K to 90 K, increasing by an order of magnitude."
+     }
+    ]
+   },
+   {
+    "hypothesis": "LTE and SO2 Trot assumptions are reasonable",
+    "experiment": "Compared derived isotopic ratios with literature",
+    "result": "Ratios consistent with canonical values",
+    "finding": "Assumptions reasonable",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1 Error budget",
+      "quote": "we believe that the assumptions of LTE in XCLASS and gas temperature in this work are reasonable."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "C18O used for H2 because continuum is hard to define and missing flux uncertain",
+    "evidence": [
+     {
+      "loc": "4.2 Chemical segregation",
+      "quote": "it is difficult to define the “line-free\" part for the continuum."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Using dust continuum with gas-to-dust ratio for H2 rejected",
+     "evidence": [
+      {
+       "loc": "4.2 Chemical segregation",
+       "quote": "Instead of using continuum emission and the gas-to-dust ratio, we use $\\mathrm{C^{18}O}$ to estimate the $\\mathrm{H_2}$ column density"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "H2C34S column density may be underestimated due to narrow linewidth (2 channels)",
+     "evidence": [
+      {
+       "loc": "4.1 Error budget",
+       "quote": "which means that the column density of $\\mathrm{H_2C^{34}S}$ may be underestimated."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Single-Trot LTE assumption from SO2 applied to all species despite multiple temperature components",
+    "C18O-based H2 with fixed abundance and ~1.6-2'' beam may be uncertain",
+    "Mixed beam/source-size dilution and non-uniform line uncertainties; some fitted values lack errors",
+    "Combination procedure of ALMA+IRAM not quantitatively validated"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA science verification archive data; IRAM data from Feng2015",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA observations",
+      "quote": "The ALMA archive data were obtained from ALMA science verification[^1] (SV) data"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "IRAM-30m dataset",
+    "Clean parameters",
+    "MAGIX/XCLASS setups and priors",
+    "Region definitions"
+   ],
+   "estimated_data_volume_inferred": "~10-50 GB (SV band 6 spectral scan, plus IRAM cubes)",
+   "score_inferred": 3,
+   "score_reason": "ALMA SV data are public and the method is outlined, but IRAM data and fitting configurations are not fully specified.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "IRAM data and detailed fit setups are unavailable in the text, so the recipe is incomplete."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: xclass)",
+     "why": "XCLASS software"
+    },
+    {
+     "citation": "(cite: magix)",
+     "why": "MAGIX fitting package"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: Feng2015)",
+     "why": "IRAM-30m observations and previous Orion KL line analysis"
+    },
+    {
+     "citation": "(cite: Wu2012)",
+     "why": "continuum source nomenclature"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Science Verification Orion KL"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-9680423e320393fe9682c73182174eaf",
+  "batch_id": "msgbatch_01BHdptM4weMjopGZ4871tPE",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:04:16",
+  "usage": {
+   "input_tokens": 42122,
+   "output_tokens": 8985,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.087653,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 9,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 74,
+   "stated": 44,
+   "rate": 0.595
+  },
+  "evidence_ok": true
+ }
+}

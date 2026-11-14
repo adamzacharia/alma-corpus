@@ -1,0 +1,291 @@
+{
+ "bibcode": "2018ApJ...862..102S",
+ "title": "A Multiline Study of a High-mass Young Stellar Object in the Small Magellanic Cloud with ALMA: The Detection of Methanol Gas at 0.2 Solar Metallicity",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aacd0c",
+ "arxiv_id": "1806.07120",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "What are the physical and chemical properties of dense cores around a high-mass YSO in the SMC, and is CH3OH gas present at 0.2 solar metallicity?",
+ "alma_project_codes": [
+  "2016.1.00394.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "0.35–0.37″ × 0.22–0.23″, PA -25 deg",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dust mass absorption coefficient for grains with thin ice mantles",
+    "evidence": [
+     {
+      "loc": "3.3.2",
+      "quote": "is the mass absorption coefficient of dust grains coated by thin ice mantles as taken from (cite: Oss94)"
+     }
+    ]
+   },
+   "citation": "(cite: Oss94)"
+  },
+  {
+   "what": {
+    "value": "32S/33S = 40 from 33SO2 in an LMC hot core",
+    "evidence": [
+     {
+      "loc": "3.3.3",
+      "quote": "We here assume $^{32}$S/$^{33}$S = 40, based on the $^{33}$SO$_2$ observations towards a hot core in the LMC (cite: ST16b)."
+     }
+    ]
+   },
+   "citation": "(cite: ST16b)"
+  },
+  {
+   "what": {
+    "value": "12C/13C = 50 from SMC N27",
+    "evidence": [
+     {
+      "loc": "3.3.3",
+      "quote": "We here assume $^{12}$C/$^{13}$C = 50 according to HCO$^+$/H$^{13}$CO$^+$ observations of the N27 region in the SMC (cite: Hei99)."
+     }
+    ]
+   },
+   "citation": "(cite: Hei99)"
+  },
+  {
+   "what": {
+    "value": "NH/E(B-V) = 4.6e22 cm-2 mag-1 for SMC",
+    "evidence": [
+     {
+      "loc": "3.3.2",
+      "quote": "(cite: Mar89) reported $N_{\\mathrm{H}}$/$E(B-V)$ = 4.6 $\\times$ 10$^{22}$ cm$^{-2}$ mag$^{-1}$ for the SMC."
+     }
+    ]
+   },
+   "citation": "(cite: Mar89)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract spectra and continuum at three positions",
+   "method": "Spectra and continuum flux extracted from 0.34″ diameter regions at P1, P2, P3 after uvcontsub",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "velocity resolution 1.5 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line parameters",
+   "method": "Single Gaussian fits with optional polynomial local baseline; direct integration for two narrow CH3OH lines; 3 sigma detection criterion",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "CH3OH rotation diagram",
+   "method": "Rotation diagram under optically thin LTE, straight-line fit, spectroscopy from CDMS",
+   "software": [],
+   "key_parameters": [
+    "Blended 241.90416 GHz line intensity divided by two"
+   ],
+   "assumptions": [
+    "Optically thin, LTE"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "H2 column density and mass from dust continuum",
+   "method": "Optically thin dust emission with Ossenkopf & Henning opacity, dust-to-gas ratio 1/5 of 0.008",
+   "software": [],
+   "key_parameters": [
+    "Td 12 K (P2), 13 K (P3), 10–20 K (P1)"
+   ],
+   "assumptions": [
+    "Dust temperature equals CH3OH rotation temperature at P2/P3"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Column densities and abundances of other molecules",
+   "method": "Solve rotation-diagram equation for N at assumed T; isotopologues for optically thick lines",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "32S/33S = 40; 12C/13C = 50"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "CH3OH N at P2",
+   "value": "3.0e14",
+   "uncertainty": "+5.1/-1.9 e14 (2σ)",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "$N$ = (3.0 $^{+5.1}_{-1.9}$) $\\times$ 10$^{14}$ cm$^{-2}$ and $T_{\\mathrm{rot}}$ = 12.3 $^{+5.3}_{-2.9}$ K for Position 2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH Trot at P2",
+   "value": "12.3",
+   "uncertainty": "+5.3/-2.9 (2σ)",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "$T_{\\mathrm{rot}}$ = 12.3 $^{+5.3}_{-2.9}$ K for Position 2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH N at P3",
+   "value": "3.2e14",
+   "uncertainty": "+4.5/-1.9 e14 (2σ)",
+   "units": "cm-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "$N$ = (3.2 $^{+4.5}_{-1.9}$) $\\times$ 10$^{14}$ cm$^{-2}$ and $T_{\\mathrm{rot}}$ = 13.1 $^{+4.9}_{-2.8}$ K for Position 3"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH Trot at P3",
+   "value": "13.1",
+   "uncertainty": "+4.9/-2.8 (2σ)",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.3.1",
+     "quote": "$T_{\\mathrm{rot}}$ = 13.1 $^{+4.9}_{-2.8}$ K for Position 3"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH fractional abundance P2",
+   "value": "4.7e-9",
+   "uncertainty": "+8.0/-3.0 e-9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "(4.7 $^{+8.0}_{-3.0}$) $\\times$ 10$^{-9}$ at P2"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OH fractional abundance P3",
+   "value": "1.5e-8",
+   "uncertainty": "+2.2/-0.9 e-8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3.1",
+     "quote": "1.5$^{+2.2}_{-0.9}$ $\\times$ 10$^{-8}$ at P3"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2) at P2",
+   "value": "6.3e22",
+   "uncertainty": "not stated",
+   "units": "cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "6.3 $\\times$ 10$^{22}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum brightness P1, P2, P3",
+   "value": "0.30, 0.16, 0.06",
+   "uncertainty": "not stated",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "The measured continuum brightnesses are 0.30 mJy/beam for P1, 0.16 mJy/beam for P2, and 0.06 mJy/beam for P3."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass YSO core / East core",
+   "value": "~80 / ~50",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.2",
+     "quote": "about 80 M$_{\\ensuremath{\\odot}}$ for the YSO core and about 50 M$_{\\ensuremath{\\odot}}$ for the East core"
+    }
+   ]
+  },
+  {
+   "quantity": "YSO bolometric luminosity",
+   "value": "2e4",
+   "uncertainty": "not stated",
+   "units": "Lsun",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "4.1.1",
+     "quote": "The bolometric luminosity of the YSO is estimated to be 2 $\\times$ 10$^4$ L$_{\\ensuremath{\\odot}}$ by integrating the SED from 1 $\\mu$m to 1200 $\\mu$m."
+    }
+   ]
+  },
+  {
+   "quantity": "N(HDS) at P2 (tentative)",
+   "value": "5e13",
+   "uncertainty": "1.3e13",
+   "units": "cm-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.4",
+     "quote": "$N$(HDS) = (5 $\\pm$ 1.3) $\\times$ 10$^{13}$ cm$^{-2}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CLEAN/tclean parameters: weighting, robust, deconvolver, threshold, masks, cell and image size",
+  "Line-free channels used for uvcontsub and the continuum bandwidth",
+  "Whether the CASA pipeline or manual scripts were used, and flux calibrator flux values",
+  "Velocity ranges for moment maps and polynomial order of baseline fits",
+  "Rest frequency/velocity reference for channel maps and how rotation diagram uncertainties were derived (fitting method)",
+  "Method and parameters used for the ice column density and SED integration",
+  "Continuum frequency/bandwidth used for the 1200 micron photometry"
+ ],
+ "missing_for_reproduction": [
+  "tclean parameters and masks",
+  "line-free channels for continuum subtraction",
+  "fitting method for rotation diagram uncertainties",
+  "ice column density method details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear analysis equations, but imaging parameters and fitting details are missing.",
+ "rediscovery_reason": "Public archive data, simple analysis (Gaussian fits, rotation diagram) with numeric results.",
+ "source_card": "cards/2018ApJ...862..102S/sonnet/card.md"
+}

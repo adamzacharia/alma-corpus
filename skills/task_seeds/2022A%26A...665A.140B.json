@@ -1,0 +1,593 @@
+{
+ "bibcode": "2022A&A...665A.140B",
+ "title": "ALMA-IMF. IV. A comparative study of the main hot cores in W43-MM1: Detection, temperature, and molecular composition",
+ "year": 2022,
+ "doi": "10.1051/0004-6361/202243669",
+ "arxiv_id": "2207.03537",
+ "fields": [
+  "star_formation",
+  "astrochemistry",
+  "milky_way_ism"
+ ],
+ "question": "Systematically identify the massive cores in W43-MM1 which contain a hot core and compare their temperature and molecular composition.",
+ "alma_project_codes": [
+  "2013.1.01365.S",
+  "2015.1.01273.S",
+  "2017.1.01355.L"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm), Band 6 (1.3 mm)",
+  "arrays": "ALMA 12 m and ACA 7 m arrays",
+  "angular_resolution": "Band 6: ~0.45'' (and 0.3'' or 0.24'' with uniform weighting); Band 3: ~0.46'' (2500 au)",
+  "sensitivity": "Band 6: 0.12 to 0.49 K (1.7 to 4.0 mJy beam^-1); Band 3: 0.60 to 1.00 K (1.0 to 1.6 mJy beam^-1)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Continuum core catalog (131 cores), coordinates, sizes, core masses, dust temperatures, and average H2 densities (3 - 76 x 10^8 cm^-3)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Among the 131 cores with 2000 au typical sizes, identified by (cite: motte18) (hereafter mentioned as ) using ALMA data, 18 cores have masses $>$10 M$_\\odot$."
+     },
+     {
+      "loc": "CH$_3$CN",
+      "quote": "Due to the high average H$_2$ density of these cores (3 –76 $\\times$ 10$^8$ cm$^{-3}$, see ), we consider that all lines are thermalised."
+     },
+     {
+      "loc": "Similarity of the normalised spectra",
+      "quote": "Table notes: The coordinates, masses and temperatures are from ."
+     }
+    ]
+   },
+   "citation": "(cite: motte18)"
+  },
+  {
+   "what": {
+    "value": "CO(2-1) and SiO(5-4) molecular outflow catalog and contours",
+    "evidence": [
+     {
+      "loc": "Similarity of the normalised spectra",
+      "quote": "A detailed study of the CO(2-1) and SiO(5-4) outflows in W43-MM1 can be found in (cite: nony20)."
+     },
+     {
+      "loc": "Methyl formate as a tracer of hot cores",
+      "quote": "These components do not peak at the continuum center and their positions coincide with the blue and red parts of the outflows as traced by the CO and SiO emission (cite: nony20)."
+     }
+    ]
+   },
+   "citation": "(cite: nony20)"
+  },
+  {
+   "what": {
+    "value": "Spectroscopic parameters from CDMS and JPL databases",
+    "evidence": [
+     {
+      "loc": "Acknowledgements",
+      "quote": "This work is based on an analysis carried out with the CASSIS software and the CDMS and JPL spectroscopic databases."
+     }
+    ]
+   },
+   "citation": "CDMS and JPL spectroscopic databases"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Convert flux density cubes to brightness temperature and separate continuum and line emission per pixel",
+   "method": "Convert intensity in mJy beam^-1 to brightness temperature in K using standard Planck/Rayleigh-Jeans conversion, then estimate continuum level per pixel by fitting the channel intensity histogram with an exponentially modified Gaussian and subtract it from the total brightness temperature.",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Band 6 spw7 bandwidth = 1.9 GHz (232.492 - 234.360 GHz)"
+   ],
+   "assumptions": [
+    "Continuum intensity is constant across the spectral window (expected variation ~2% over 1.9 GHz)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Identify hot cores using pixel-by-pixel integrated COM line emission, core-averaged line density/contribution, and CH3OCHO/CH3CN moment maps",
+   "method": "Compute mean line brightness temperature map in Band 6 spw7 and find peaks > 3 sigma; compute line contribution C_Lines^core and fraction of line channels F_Lines^core (> 2 sigma) integrated over Motte et al. (2018) core sizes across all 9 Band 6 windows; integrate CH3OCHO (216.21 GHz) and CH3CN (91.958-91.987 GHz) emission maps.",
+   "software": [],
+   "key_parameters": [
+    "3 sigma threshold for pixel map; 1 sigma and 2 sigma channel thresholds for C_Lines^core and F_Lines^core"
+   ],
+   "assumptions": [
+    "Core sizes and positions from Motte et al. (2018)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive excitation temperatures, column densities, linewidths, and source sizes from CH3CN and CH3CCH lines",
+   "method": "Extract beam-averaged spectra of CH3CN (J=5-4), CH3(13)CN (J=5-4), CH3CN v8=1 (J=5-4), and CH3CCH (J=6-5) for the 8 hot cores (and core #6) and fit synthetic LTE spectra using MCMC in CASSIS.",
+   "software": [
+    "CASSIS"
+   ],
+   "key_parameters": [
+    "Initial assumed source size = 0.49'' (for CH3CN) and 0.45'' (for CH3CCH); 12C/13C isotopic ratio ~ 42"
+   ],
+   "assumptions": [
+    "All lines are thermalised (LTE) due to high average H2 density (3 - 76 x 10^8 cm^-3); uniform source with CH3CN, CH3(13)CN, and CH3CN v8=1 arising from the same region"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare molecular composition across hot cores via methyl formate scaling and channel-by-channel spectral correlation",
+   "method": "Align core spectra in velocity, scale intensities to match three CH3OCHO doublets (six lines) relative to reference core #4, and superpose spectra across all bands. Perform channel-by-channel linear correlation fits of Band 6 spw7 spectra against reference core #3 and compute logarithmic intensity ratios R_i = T_i^S / (a_1 * T_i^S_ref).",
+   "software": [],
+   "key_parameters": [
+    "Reference core #4 for CH3OCHO scaling; reference core #3 for channel correlation; threshold > 2 K in core #3 for ratio evaluation"
+   ],
+   "assumptions": [
+    "The three CH3OCHO doublets (E_u = 99 to 109 K) trace the same volume of gas"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of massive hot cores identified in W43-MM1",
+   "value": "7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "It contains at least 1 less massive (core #11, 2 M$_\\odot$) and 7 massive (16 to 100 M$_\\odot$) hot cores."
+    },
+    {
+     "loc": "Conclusion",
+     "quote": "Seven hot cores with 16 to 100 M$_\\odot$ in mass and one less massive 2 M$_\\odot$ core were identified."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN excitation temperature range of hot cores",
+   "value": "120 - 160",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CH$_3$CN",
+     "quote": "The temperatures are similar for all the cores, ranging from 120 K to 160 K with uncertainties of $\\pm$ 20 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CCH excitation temperature range of hot cores",
+   "value": "50 - 90",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In contrast, CH$_3$CCH emission is found to preferentially trace more the envelope, with a temperature ranging from 50 K to 90 K."
+    },
+    {
+     "loc": "CH$_3$CCH",
+     "quote": "The difference of temperatures between CH$_3$CN (120-160 K) and CH$_3$CCH (50-90 K) suggests that CH$_3$CCH traces the outer envelope whereas CH$_3$CN traces the inner part."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #1 CH3CN T_ex",
+   "value": "150",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 150 | 80.0 | 6.0 | 0.42 | 90 | 7.0 | 5.0 | 0.45 |"
+    },
+    {
+     "loc": "CH$_3$CN",
+     "quote": "The temperatures are similar for all the cores, ranging from 120 K to 160 K with uncertainties of $\\pm$ 20 K."
+    }
+   ]
+  },
+  {
+   "quantity": "Core #1 CH3CN column density",
+   "value": "80.0",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 150 | 80.0 | 6.0 | 0.42 | 90 | 7.0 | 5.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #1 CH3CCH T_ex",
+   "value": "90",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 150 | 80.0 | 6.0 | 0.42 | 90 | 7.0 | 5.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #1 CH3CCH column density",
+   "value": "7.0",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #1 | 150 | 80.0 | 6.0 | 0.42 | 90 | 7.0 | 5.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 CH3CN T_ex",
+   "value": "140",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #2 | 140 | 100.0 | 6.45 | 0.19 | 70 | 2.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 CH3CN column density",
+   "value": "100.0",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #2 | 140 | 100.0 | 6.45 | 0.19 | 70 | 2.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #2 CH3CCH T_ex",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #2 | 140 | 100.0 | 6.45 | 0.19 | 70 | 2.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #3 CH3CN T_ex",
+   "value": "140",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #3 | 140 | 40.0 | 5.0 | 0.13 | 60 | 1.2 | 4.6 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #3 CH3CN column density",
+   "value": "40.0",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #3 | 140 | 40.0 | 5.0 | 0.13 | 60 | 1.2 | 4.6 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #3 CH3CCH T_ex",
+   "value": "60",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #3 | 140 | 40.0 | 5.0 | 0.13 | 60 | 1.2 | 4.6 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 CH3CN T_ex",
+   "value": "135",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #4 | 135 | 46.0 | 4.5 | 0.44 | 70 | 4.0 | 3.8 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 CH3CN column density",
+   "value": "46.0",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #4 | 135 | 46.0 | 4.5 | 0.44 | 70 | 4.0 | 3.8 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #4 CH3CCH T_ex",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #4 | 135 | 46.0 | 4.5 | 0.44 | 70 | 4.0 | 3.8 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 CH3CN T_ex",
+   "value": "160",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #5 | 160 | 0.5 | 9.0 | 0.49 | 50 | 0.35 | 4.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 CH3CN column density",
+   "value": "0.5",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #5 | 160 | 0.5 | 9.0 | 0.49 | 50 | 0.35 | 4.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #5 CH3CCH T_ex",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #5 | 160 | 0.5 | 9.0 | 0.49 | 50 | 0.35 | 4.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #9 CH3CN T_ex",
+   "value": "120",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #9 | 120 | 0.2 | 5.0 | 0.49 | 55 | 0.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #9 CH3CN column density",
+   "value": "0.2",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #9 | 120 | 0.2 | 5.0 | 0.49 | 55 | 0.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #9 CH3CCH T_ex",
+   "value": "55",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #9 | 120 | 0.2 | 5.0 | 0.49 | 55 | 0.5 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #10 CH3CN T_ex",
+   "value": "120",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #10 | 120 | 0.25 | 5.0 | 0.49 | 70 | 1.2 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #10 CH3CN column density",
+   "value": "0.25",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #10 | 120 | 0.25 | 5.0 | 0.49 | 70 | 1.2 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #10 CH3CCH T_ex",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #10 | 120 | 0.25 | 5.0 | 0.49 | 70 | 1.2 | 4.0 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #11 CH3CN T_ex",
+   "value": "150",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #11 | 150 | 8.4 | 5.0 | 0.14 | 50 | 0.35 | 3.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #11 CH3CN column density",
+   "value": "8.4",
+   "uncertainty": "not stated",
+   "units": "10^16 cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #11 | 150 | 8.4 | 5.0 | 0.14 | 50 | 0.35 | 3.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #11 CH3CCH T_ex",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| #11 | 150 | 8.4 | 5.0 | 0.14 | 50 | 0.35 | 3.5 | 0.45 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Core #6 CH3CN T_ex",
+   "value": "60",
+   "uncertainty": "20",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CH$_3$CN",
+     "quote": "The CH$_3$CN transitions are also detected towards the possibly younger core #6 studied by (cite: molet19) and the derived temperature is 60 $\\pm$ 20 K in agreement with the determinations in that paper."
+    }
+   ]
+  },
+  {
+   "quantity": "12C/13C isotopic ratio from CH3CN/CH3(13)CN",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "CH$_3$CN",
+     "quote": "We find an isotopic ratio of about 42, consistent with the 40–50 value at 5.5 kpc (cite: milam05)."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3OCHO intensity scaling factors (cores #4, #1, #2, #3, #5, #11, #10, #9)",
+   "value": "1, 1.2, 3.1, 6.6, 15.4, 15.5, 22.8, 29.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| CH$_3$OCHO intensity factor | 1 | 1.2 | 3.1 | 6.6 | 15.4 | 15.5 | 22.8 | 29.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Renormalised correlation slopes (cores #4, #1, #2, #3, #5, #11, #10, #9)",
+   "value": "1, 0.9, 2.7, 7.2, 16.5, 11.3, 28.0, 32.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Slope | 1 | 0.9 | 2.7 | 7.2 | 16.5 | 11.3 | 28.0 | 32.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Agreement factor of rescaled COM spectra across hot cores",
+   "value": "2 - 3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "However the molecular emission of the hot cores appears to be the same within a factor 2–3."
+    },
+    {
+     "loc": "Similarity from ratio plots",
+     "quote": "For all sources $R_i$ remains close to 1 within a factor 3, and in many cases within a factor 2, for most channels $i$ where the core #3 spectrum is above 2 K (core #3 maximum intensity being about 12.9 K); these limits are indicated respectively by the green and red horizontal lines."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "Self-calibration parameters (if any) applied to the Band 3 and Band 6 data",
+  "Exact multiscale scales, cell size, image size, and stopping threshold in CASA cleaning",
+  "How 12 m and ACA 7 m array data were combined (e.g., feather vs joint deconvolution in tclean, relative weights)",
+  "MCMC priors, parameter bounds, number of walkers, and iterations in CASSIS LTE fitting",
+  "Exact aperture/beam sizes used when extracting spectra for the temperature and spectral correlation analyses"
+ ],
+ "missing_for_reproduction": [
+  "Exact CASA version and tclean parameters (scales, threshold, cell size, image size, array combination method)",
+  "Exact pixel/aperture extraction definitions for the core spectra in Sections 4, 5, and 6",
+  "CASSIS MCMC configuration files, parameter priors, and uncertainty estimates for Table 2 parameters",
+  "Exact velocity integration windows used for the moment maps in Figures 5 and 12"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "The ALMA project codes, spectral windows, beam sizes, noise levels, target coordinates, spectroscopic constants, and mathematical formulas for the line-richness and correlation metrics are clearly documented, and the main results are numeric. However, low-level imaging/calibration parameters and exact CASSIS MCMC priors are omitted or deferred to companion papers.",
+ "rediscovery_reason": "All three ALMA project codes are public in the archive, the core coordinates and rest frequencies are tabulated in full, the equations for line-richness metrics and spectral correlation are explicit, and the derived temperatures, column densities, scaling factors, and correlation slopes provide clear numeric answer keys.",
+ "source_card": "cards/2022A%26A...665A.140B/sonnet/card.md"
+}

@@ -1,0 +1,463 @@
+ic accuracy when recovering the circularity parameter for galaxies observed with ALMA and as part of LVHIS respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "LVHIS galaxies classified as low κ",
+      "value": "8",
+      "uncertainty": "not stated",
+      "units": "galaxies",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Test case IV: LVHIS data",
+          "quote": "Of the $61$ galaxies, $8$ ($13\\%$) are classified as low $\\kappa$."
+        }
+      ]
+    },
+    {
+      "quantity": "LVHIS fraction classified as low κ",
+      "value": "13",
+      "uncertainty": "not stated",
+      "units": "%",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Test case IV: LVHIS data",
+          "quote": "Of the $61$ galaxies, $8$ ($13\\%$) are classified as low $\\kappa$."
+        }
+      ]
+    },
+    {
+      "quantity": "Observational CO and HI heuristic accuracy reported in abstract",
+      "value": "95",
+      "uncertainty": "not stated",
+      "units": "%",
+      "from_step": 0,
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "performs as expected on observational CO and HI velocity maps, with a heuristic accuracy of $95\\%$."
+        }
+      ]
+    },
+    {
+      "quantity": "Median latent position-angle offset",
+      "value": "∼36.6",
+      "uncertainty": "not stated",
+      "units": "degrees",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "by rotating the latent positions by the median offset, found to be $\\delta\\theta\\sim36.6^{\\circ}$, and subtracting an additional $180^{\\circ}$."
+        }
+      ]
+    },
+    {
+      "quantity": "1σ position-angle uncertainty at inclination 82.5°",
+      "value": "±17",
+      "uncertainty": "not stated",
+      "units": "degrees",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "with a $1\\sigma$ uncertainty range of $\\pm17^{\\circ}$ to $\\pm23^{\\circ}$ (for galaxies with inclinations of $82.5^{\\circ}$ to $32.5^{\\circ}$, respectively)"
+        }
+      ]
+    },
+    {
+      "quantity": "1σ position-angle uncertainty at inclination 32.5°",
+      "value": "±23",
+      "uncertainty": "not stated",
+      "units": "degrees",
+      "from_step": 8,
+      "evidence": [
+        {
+          "loc": "Abstract",
+          "quote": "with a $1\\sigma$ uncertainty range of $\\pm17^{\\circ}$ to $\\pm23^{\\circ}$ (for galaxies with inclinations of $82.5^{\\circ}$ to $32.5^{\\circ}$, respectively)"
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "Noise and global clipping shift test galaxies toward the low-κ latent region.",
+      "evidence": [
+        {
+          "loc": "Test case II: Noisy EAGLE data",
+          "quote": "The combination of adding noise followed by using an arbitrary clipping level causes test objects to gravitate towards the low $\\kappa$ region in latent space."
+        }
+      ]
+    },
+    {
+      "value": "Position-angle recovery is better constrained at higher inclinations.",
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "We see that at higher inclinations the error in predicted $\\theta_{\\text{pos}}$ is better constrained than for lower inclinations."
+        }
+      ]
+    },
+    {
+      "value": "Inclinations could not be recovered because of overlapping latent-z positions.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Recovering inclinations, $\\phi_{\\text{inc}}$, of galaxies was not possible using our CAE due to the high overlap in latent $z$ positions for the entire range of $\\phi_{\\text{inc}}$."
+        }
+      ]
+    },
+    {
+      "value": "Patchy high-κ ALMA galaxies appear closer to the classification boundary.",
+      "evidence": [
+        {
+          "loc": "Test case III: ALMA data",
+          "quote": "We see evidence of patchy high $\\kappa$ galaxies residing closer to the classification boundary than non-patchy examples."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Velocity-map compression can retain information about ordered gas rotation.",
+      "experiment": "Train a three-dimensional convolutional autoencoder and binary κ classifier on simulated velocity maps.",
+      "result": "Mean simulated-data recall of 85%.",
+      "finding": "A compact latent representation retains useful kinematic information.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "We have shown that it is possible to use ML to encode high dimensional ($64\\times64$ pixels) velocity maps into 3 dimensions, while retaining information on galaxy kinematics, using convolutional autoencoders."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "Our tests on simulated data show a mean recall of $85\\%$ when attempting to recover the circularity parameter"
+        }
+      ]
+    },
+    {
+      "hypothesis": "The simulation-trained classifier can identify disturbed cold gas in ALMA observations.",
+      "experiment": "Classify 30 ALMA velocity maps and compare with labels assigned by eye.",
+      "result": "90% heuristic accuracy; 6 of 30 maps classified as low κ.",
+      "finding": "The classifier transfers successfully to the tested ALMA maps under visual evaluation.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Test case III: ALMA data",
+          "quote": "We tested 30 velocity maps of galaxies observed with ALMA to evaluate the performance of the classifier on real observations."
+        },
+        {
+          "loc": "Test case III: ALMA data",
+          "quote": "The classifier performs with an accuracy of $90\\%$ when compared to the predictions by human eye."
+        },
+        {
+          "loc": "Test case III: ALMA data",
+          "quote": "Of the $30$ galaxies observed with ALMA, $6$ ($20\\%$) are classified as low $\\kappa$"
+        }
+      ]
+    },
+    {
+      "hypothesis": "A model tailored to ALMA-like simulations can generalise to HI observations.",
+      "experiment": "Classify LVHIS velocity maps and compare with visual classifications.",
+      "result": "97% heuristic accuracy.",
+      "finding": "Transfer to HI supports potential applicability to SKA science.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Test case IV: LVHIS data",
+          "quote": "the EAGLE training set was designed to reflect observations with ALMA, making this transfer learning test a good opportunity to evaluate the model’s ability to generalise to unseen data containing different systematic characteristics."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "as well as $90\\%$ and $97\\%$ heuristic accuracy when recovering the circularity parameter for galaxies observed with ALMA and as part of LVHIS respectively."
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "it shows that using machine learning to study the kinematics of HI sources is likely possible and therefore applicable to SKA science."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Latent xy coordinates can provide initial position-angle estimates.",
+      "experiment": "Calculate latent angles, remove the systematic offset and measure residual scatter against true position angles.",
+      "result": "1σ uncertainty from ±17° to ±23° for inclinations 82.5° to 32.5°.",
+      "finding": "Position-angle estimates may initialize kinematic modelling.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "We calculated errors on the resulting predictions of $\\theta_{\\text{latent}}$ by taking the standard deviation of residuals between $\\theta_{\\text{latent}}$ and $\\theta_{\\text{pos}}$."
+        },
+        {
+          "loc": "Abstract",
+          "quote": "with a $1\\sigma$ uncertainty range of $\\pm17^{\\circ}$ to $\\pm23^{\\circ}$ (for galaxies with inclinations of $82.5^{\\circ}$ to $32.5^{\\circ}$, respectively)"
+        },
+        {
+          "loc": "Conclusions",
+          "quote": "These will be useful for initial guesses at $\\theta_{\\text{pos}}$ for kinematic modelling routines in related work."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Inclination can be recovered simply from the learned latent coordinates.",
+      "experiment": "Inspect inclination distributions against latent-z position.",
+      "result": "Substantial overlap across inclinations.",
+      "finding": "The CAE does not recover inclination by this approach.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "Given that there is such a strong overlap in $z$-positions occupied by different galaxy inclinations, we were unable to recover the inclinations of galaxies in the simple manner as for $\\theta_{\\text{pos}}$."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Simulations provide accessible large samples and empirical kinematic truths; spatial selection was designed for ALMA transfer tests.",
+      "evidence": [
+        {
+          "loc": "EAGLE",
+          "quote": "Using simulations has certain advantages over collecting real data including accessibility, larger sample sizes, and the ability to calculate empirical truths from the data."
+        },
+        {
+          "loc": "EAGLE",
+          "quote": "However, as we are particularly interested in the performance of our models with ALMA observations, we instead impose a radial limit for this work."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "Three latent dimensions preserve performance while allowing interpretation; a simple boundary separates broad κ classes better than continuous regression.",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "compression to higher dimensions impaired our ability to directly observe correlations between features and latent positions with no improvement to the model’s performance."
+        },
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "the spread on latent positions taken up by different $\\kappa$ galaxies makes a regression to recover $\\kappa$ too difficult."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Training converged before epoch 300 without a turnover in test MSE.",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "we see that the model has converged well before the $300^{\\text{th}}$ epoch and observe no turn-over of the test MSE loss, which would indicate overfitting."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Higher-order polynomial and regional boundary classifiers were tested; a vertical line was preferred.",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "Having tested multiple classifiers on the 2D latent space (such as high order polynomial and regional boundary approaches), we find that a simple vertical boundary line is best"
+        }
+      ]
+    },
+    {
+      "value": "Lower-dimensional compression performed poorly; higher-dimensional compression did not improve performance and reduced interpretability.",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "Further testing showed that any higher compression, to lower dimensions, resulted in poor performance"
+        },
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "compression to higher dimensions impaired our ability to directly observe correlations between features and latent positions with no improvement to the model’s performance."
+        }
+      ]
+    },
+    {
+      "value": "Alternative cold-gas selections were acknowledged; SFR >0 was chosen for simplicity.",
+      "evidence": [
+        {
+          "loc": "EAGLE",
+          "quote": "There are many ways to select cold gas in the EAGLE simulations ((cite: 2015MNRAS.452.3815L)) but we use this method for its simplicity"
+        }
+      ]
+    },
+    {
+      "value": "fit_kinematic_pa and radon-transform position-angle methods were mentioned but not benchmarked here.",
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "Other kinematic fitting routines exist for this purpose including `fit_kinematic_pa` ((cite: Krajnovi_kinemetry)) and the radon transform method ((cite: Stark_radon))."
+        },
+        {
+          "loc": "Recovering position angle",
+          "quote": "Bench marking an ML model against existing ones, as a dedicated standalone mechanism for recovering $\\theta_{\\text{pos}}$, is an avenue for future research."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Simulated training data have unproven assumptions, imperfect physics and a resolution/sample-size trade-off.",
+      "evidence": [
+        {
+          "loc": "EAGLE",
+          "quote": "However, there are drawbacks, including: unproven model assumptions, imperfect physics, and trade-off between resolution and sample size due to computational constraints."
+        }
+      ]
+    },
+    {
+      "value": "The CAE architecture was not optimized.",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "This means our CAE is unlikely to have the most optimised architecture"
+        }
+      ]
+    },
+    {
+      "value": "The 96th-percentile clipping level was arbitrary and not optimized.",
+      "evidence": [
+        {
+          "loc": "Simulating noise",
+          "quote": "Note that this choice of clipping at the $96$th percentile level is arbitrarily based on a handful of test cases and represents no specific parameter optimisation."
+        }
+      ]
+    },
+    {
+      "value": "The minimum usable S/N was not tested.",
+      "evidence": [
+        {
+          "loc": "Test case II: Noisy EAGLE data",
+          "quote": "we have not tested the lower limit of S/N for which it is appropriate to use our classifier"
+        }
+      ]
+    },
+    {
+      "value": "Low-κ selections can contain contaminants in heavily imbalanced samples.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "one should take care when testing heavily imbalanced datasets where, although the dataset has been drastically thinned of high $\\kappa$ galaxies, it is likely that the user will still need to examine the low $\\kappa$ classification set for contaminants."
+        }
+      ]
+    },
+    {
+      "value": "Classification is sensitive to the proxy used for the centre of potential.",
+      "evidence": [
+        {
+          "loc": "Conclusions",
+          "quote": "Our models rely on using maps of galaxies which are centred on their centres of potential (i.e. the position of the most bound particle); therefore, our classifier is sensitive to the choice of centre of potential proxy."
+        }
+      ]
+    },
+    {
+      "value": "Position-angle accuracy was not benchmarked against existing dedicated methods.",
+      "evidence": [
+        {
+          "loc": "Recovering position angle",
+          "quote": "These methods likely have higher accuracy than seen here, as our network was not optimised for the recovery of $\\theta_{pos}$."
+        },
+        {
+          "loc": "Recovering position angle",
+          "quote": "Bench marking an ML model against existing ones, as a dedicated standalone mechanism for recovering $\\theta_{\\text{pos}}$, is an avenue for future research."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "Observational accuracy measures agreement with subjective visual labels, not independently measured six-dimensional circularity.",
+    "The supplied ALMA table labels NGC1351A as TN despite author/model predictions 1/0; the narrative also contains inconsistent false-positive/false-negative wording.",
+    "The split procedure is insufficiently described to exclude shared galaxies, augmented views or related snapshots across training and test sets.",
+    "No confidence intervals are supplied for observational accuracies from the small test samples.",
+    "The abstract's 95% observational accuracy is not explicitly reconciled with the separate 90% ALMA and 97% LVHIS values.",
+    "The 3″ beam and 64″ field describe mock observations and must not be treated as measured settings of the real ALMA data."
+  ],
+  "reproducibility": [],
+  "code_released": [
+    {
+      "value": "Paper code and ongoing development version available on GitHub",
+      "evidence": [
+        {
+          "loc": "Model training: Rotationally invariant case",
+          "quote": "The code developed for this paper is available on GitHub[^6] as well as an ongoing development version[^7]."
+        }
+      ]
+    },
+    {
+      "value": "https://github.com/SpaceMeerkat/CAE/releases/tag/v1.0.0",
+      "evidence": [
+        {
+          "loc": "Information on test galaxies",
+          "quote": "https://github.com/SpaceMeerkat/CAE/releases/tag/v1.0.0"
+        }
+      ]
+    },
+    {
+      "value": "https://github.com/SpaceMeerkat/CAE",
+      "evidence": [
+        {
+          "loc": "Information on test galaxies",
+          "quote": "[^7]: <https://github.com/SpaceMeerkat/CAE>"
+        }
+      ]
+    }
+  ],
+  "missing_for_reproduction": [
+    "Exact ALMA velocity-map files and their association with the ten project codes.",
+    "ALMA calibration, imaging and moment-map preparation settings.",
+    "Per-galaxy ALMA preprocessing and centring instructions.",
+    "Exact simulated training/test split and random seeds.",
+    "Availability of trained weights, fitted PCA parameters and the preprocessing implementation.",
+    "Exact smooth-mask settings and LVHIS clipping fractions.",
+    "Explicit statement of public availability for the observational input products."
+  ],
+  "estimated_data_volume_inferred": "The velocity-map inference stage is compact; full ALMA visibility and EAGLE particle-data volumes cannot be estimated from the supplied text.",
+  "score_inferred": 3,
+  "score_reason": "3/5: code release, simulation selection and core learning settings are given, but observational product provenance, preprocessing and exact training state are incomplete.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but public availability of the exact input data is not stated and the observational preprocessing recipe is incomplete.",
+  "methods_papers": [
+    {
+      "citation": "(cite: sales_origin_2012)",
+      "why": "Circularity measure based on rotational and total kinetic energy."
+    },
+    {
+      "citation": "(cite: davis_black-hole_2013)",
+      "why": "KinMS mock interferometric observations."
+    },
+    {
+      "citation": "(cite: Dame2011)",
+      "why": "Smooth masking of noisy cubes."
+    },
+    {
+      "citation": "(cite: kingma_adam:\\_2014)",
+      "why": "Adam optimizer."
+    },
+    {
+      "citation": "(cite: paszke_automatic_2017)",
+      "why": "PyTorch automatic differentiation and tensor computation."
+    },
+    {
+      "citation": "(cite: schaye_eagle_2015; crain_eagle_2015; the_eagle_team_eagle_2017)",
+      "why": "EAGLE simulations, subgrid models and database definitions."
+    },
+    {
+      "citation": "(cite: diaz_classifying_2019)",
+      "why": "Precedent for zero-valued backgrounds and motivation for combining morphology and kinematics."
+    }
+  ],
+  "companion_papers": [],
+  "related_projects_or_surveys": [
+    "EAGLE",
+    "WISDOM",
+    "AlFoCS",
+    "LVHIS"
+  ]
+}
+tokens used
+61,761

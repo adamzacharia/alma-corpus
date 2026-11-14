@@ -1,0 +1,279 @@
+{
+"depth": "full",
+"paper_type": "archival_reuse",
+"paper_type_evidence": [
+{"loc": "Sample", "quote": "To compute the torques on the molecular gas, we used ALMA data mainly from the Phangs survey (cite: PHANGS) and from the ALMA archive."}
+],
+"fields": ["nearby_galaxies", "agn_and_quasars"],
+"question": {
+"value": "How fast is molecular gas driven inward by gravity torques from bars and spirals in ten Milky Way (Sbc) morphological twins, barred and non-barred, at 100 pc to 1 kpc scales",
+"evidence": [
+{"loc": "Method", "quote": "The goal of this work is to quantify the rate of gas inflow due to gravity torques exerted by a bar (or spirals) on the molecular gas."},
+{"loc": "Introduction", "quote": "We study the molecular gas torques in order to understand the feeding processes in the MW analogues"}
+]
+},
+"targets": [
+{
+"name": "Ten Sbc galaxies: NGC 1300, NGC 1792, NGC 2903, NGC 3059, NGC 4303, NGC 4321, NGC 4536, NGC 4689, NGC 5248, NGC 5921",
+"details": [
+{"loc": "Sample", "quote": "We also only selected nearby galaxies (D$<$ 18 Mpc) to have enough spatial resolution"},
+{"loc": "Sample", "quote": "The availability of the data limited the sample to ten galaxies"}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "D < 18 Mpc selection cut; individual distances are tabulated (Table of galaxy properties) but their source is not given in the text",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2015.1.00925.S", "evidence": [{"loc": "Method", "quote": "two data sets were from the program 2015.1.00925.S and were combined in order to form a larger FOV"}]},
+{"code": "2015.1.00956.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2015.1.00956.S, ADS/JAO.ALMA#2017.1.00886.L"}]},
+{"code": "2017.1.00886.L", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2015.1.00956.S, ADS/JAO.ALMA#2017.1.00886.L"}]},
+{"code": "2018.1.00517.S", "evidence": [{"loc": "Method", "quote": "We also used high spatial resolution ALMA data (program 2018.1.00517.S) together with HST data"}]},
+{"code": "2018.1.01651.S", "evidence": [{"loc": "Acknowledgements", "quote": "ADS/JAO.ALMA#2018.1.00517.S, ADS/JAO.ALMA#2018.1.01651.S"}]},
+{"code": "2019.1.00876.S", "evidence": [{"loc": "Method", "quote": "ALMA data were also used from the program 2019.1.00876.S (with higher spatial resolution)"}]},
+{"code": "2019.1.01718.S", "evidence": [{"loc": "Method", "quote": "the ALMA data from the program 2019.1.01718.S, which has a better spatial resolution"}]},
+{"code": "2019.1.01730.S", "evidence": [{"loc": "Method", "quote": "two data sets from the program 2019.1.01730.S, which had the same goal as NGC 1300"}]},
+{"code": "2019.1.01742.S", "evidence": [{"loc": "Method", "quote": "for NGC 5921, we used ALMA data from 2019.1.01742.S program with a high spatial resolution"}]}
+],
+"data_settings": [
+{"field": "pi_or_archival_as_stated", "value": "PHANGS survey data plus other ALMA archive programs", "evidence": [{"loc": "Sample", "quote": "we used ALMA data mainly from the Phangs survey (cite: PHANGS) and from the ALMA archive"}]},
+{"field": "angular_resolution", "value": "moderate; results below 1 arcsec (66 pc at 13.7 Mpc) disregarded; per-dataset beam major axes are in the observation table", "evidence": [
+{"loc": "Discussion", "quote": "we disregarded results below 1 arcsec (corresponding to 66 pc at an average distance of 13.7 Mpc) in general"},
+{"loc": "Discussion", "quote": "The spatial resolution we used is considered moderate, and can only provide a general idea of what occurs in these galaxies at scales of 100 pc – 1 kpc."}
+]}
+],
+"lines_targeted": [
+{"species": "CO", "transition": "not stated", "rest_frequency": "230.538 and 345.796/345.800 as printed in the observation table (column 'Rest Frequency (MHz)')", "evidence": [
+{"loc": "Gas torque analysis", "quote": "The main factor is the patchiness of the CO emission"},
+{"loc": "Table obsinfo", "quote": "230.538"},
+{"loc": "Table obsinfo", "quote": "345.796"}
+]}
+],
+"other_facilities": [
+{"name": "HST (F814W)", "provided": {"value": "red stellar images used to compute the gravitational potential", "evidence": [{"loc": "Sample", "quote": "We used HST images in the F814W filter"}]}},
+{"name": "Legacy Surveys DR9 (R and Z bands)", "provided": {"value": "wider-FOV red stellar images used to compute the gravitational potential", "evidence": [{"loc": "Sample", "quote": "Legacy survey DR9 images in the R (for NGC 4303 and NGC 4536 because their Z-band images are saturated at the nucleus) and Z bands"}]}},
+{"name": "VLT/MUSE (ESO archive)", "provided": {"value": "H-alpha images for four galaxies, used for comparison torques", "evidence": [
+{"loc": "H$\\alpha$ gas torques with MUSE data", "quote": "only four galaxies (NGC 1300, NGC 4303, NGC 4321 and NGC 5248) had Multi Unit Spectroscopic Explorer (MUSE) data cubes available."},
+{"loc": "H$\\alpha$ gas torques with MUSE data", "quote": "The data were taken from the ESO public archive."}
+]}},
+{"name": "NASA/IPAC Extragalactic Database (NED)", "provided": {"value": "morphological classification used to select the sample", "evidence": [{"loc": "Sample", "quote": "Based on the classification in the NASA/IPAC Extragalactic Database"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "PHANGS-ALMA CO data used for most galaxies", "evidence": [{"loc": "Sample", "quote": "we used ALMA data mainly from the Phangs survey (cite: PHANGS)"}]}, "citation": "Leroy et al. 2021 (cite: PHANGS)"},
+{"what": {"value": "Observed rotation curves of NGC 1300 used to check the model rotation curve", "evidence": [{"loc": "Gas torque analysis", "quote": "the rotation curve from the potential model is compared to the observed curves from (cite: Lang20), (cite: england89), and (cite: Lindblad97)"}]}, "citation": "(cite: Lang20); (cite: england89); (cite: Lindblad97)"},
+{"what": {"value": "Galaxy position angles, bar PAs, inclinations, distances, masses taken from the literature (tabulated with reference superscripts)", "evidence": [{"loc": "Method", "quote": "The images were rotated and deprojected according to the PAs and inclination angles given in Table"}]}, "citation": "references numbered in the galaxy-properties table; not resolvable from the text"},
+{"what": {"value": "Dark matter neglected in central parts of MW-like galaxies", "evidence": [{"loc": "Method", "quote": "while the dark matter can be neglected in the central parts of MW-like galaxies (cite: Persic1996)"}]}, "citation": "(cite: Persic1996)"}
+],
+"simulations_or_models_as_data": [],
+"calibration": [],
+"imaging": [
+{"field": "image_size", "value": "all maps resampled to the same number of pixels and pixel size (values not given)", "evidence": [{"loc": "Method", "quote": "All maps were resampled to the same number of pixels and pixel sizes."}]}
+],
+"inherited": [
+{"what": {"value": "Stellar exponential disk thickness ~1/12 of radial scale length", "evidence": [{"loc": "Method", "quote": "we assumed a stellar exponential disk thickness of $\\sim$1/12th of the radial scale length of the galaxies (cite: Garcia-Burillo2005; audibert19)"}]}, "from_reference": "(cite: Garcia-Burillo2005; audibert19)"},
+{"what": {"value": "Interpretation of t(R) as time derivative of specific angular momentum of azimuthally averaged gas (torque method)", "evidence": [{"loc": "Gas torque analysis", "quote": "of the gas averaged azimuthally (cite: Garcia-Burillo2005)"}]}, "from_reference": "(cite: Garcia-Burillo2005)"},
+{"what": {"value": "Definition of the strength Q_m(R) as ratio of tangential to radial forces", "evidence": [{"loc": "Gas torque analysis", "quote": "that is, by the ratio between tangential and radial forces (cite: Combes1981)"}]}, "from_reference": "(cite: Combes1981)"},
+{"what": {"value": "Processing and maps of the PHANGS ALMA data", "evidence": [{"loc": "Sample", "quote": "we used ALMA data mainly from the Phangs survey (cite: PHANGS)"}]}, "from_reference": "(cite: PHANGS)"}
+],
+"unstated_but_needed": [
+"Which PHANGS data release / product (resolution, moment-0 or cube) was used for each galaxy, and how the other archive projects were calibrated and imaged (CASA version, weighting, beam, rms, line-free channels)",
+"How the CO emission maps were made (moment definitions, clipping, masking) before being used as the gas density Sigma, and whether a CO-to-H2 factor was applied",
+"Final common pixel size and field of view for each (ALMA, HST/Legacy) pair",
+"Exact centre chosen per galaxy and the bulge/disk decomposition used before deprojection",
+"Which bright-star masking procedure and sky subtraction were applied to the HST and Legacy images",
+"Numerical method for the Fourier potential and force computation (radial grid, softening, boundary handling) and the torque code itself",
+"Uncertainties on Qmax, dL/L and on radii in the torque table",
+"Which Legacy band (R or Z) was used per galaxy beyond the NGC 4303 and NGC 4536 cases",
+"Details of the MUSE Halpha image construction (spectral interval, continuum interval)"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "assemble matched stellar and CO data per field of view",
+"method": {"value": "Pair each ALMA CO data set with an HST or Legacy red image of matching FOV; combine two ALMA data sets for larger FOV in NGC 1300 and NGC 2903", "evidence": [
+{"loc": "Method", "quote": "two data sets were from the program 2015.1.00925.S and were combined in order to form a larger FOV"},
+{"loc": "Method", "quote": "For better results, we used HST data."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Sample selection: inclination below 65 deg, D < 18 Mpc, B magnitude below 12, giving 43 galaxies, then ten with data", "evidence": [{"loc": "Sample", "quote": "these criteria led to 43 galaxies"}, {"loc": "Sample", "quote": "The availability of the data limited the sample to ten galaxies"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "clean, centre, rotate and deproject images and cube",
+"method": {"value": "Remove Milky Way stars, rotate by galaxy PA so major axis is horizontal, align centres of stellar and ALMA data, deproject by stretching the vertical axis; apply same rotation and deprojection to the ALMA cube converted to velocities relative to the centre", "evidence": [
+{"loc": "Method", "quote": "We then rotated the images using the PA of the galaxy"},
+{"loc": "Method", "quote": "The images were then deprojected by stretching the vertical axis."},
+{"loc": "Method", "quote": "For the ALMA data, the same rotation and deprojection were applied to the data cube converted into velocities relative to the centre."}
+]},
+"software": ["Python", "Gildas"],
+"key_parameters": [
+{"value": "Centre from emission peak of the nuclear source in the infrared image; ALMA centre from the emission peak or the ring centre, using the velocity field", "evidence": [{"loc": "Method", "quote": "We also centred the ALMA data cube according either to the emission peak or to the centre of the ring, and we used the velocity field."}]}
+],
+"assumptions": [
+{"value": "Bulge treated as spherical and separated for deprojection", "evidence": [{"loc": "Method", "quote": "The bulge component was separated for the deprojection, because it was assumed to be spherical"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 3,
+"goal": "compute gravitational potential, forces and bar/spiral strength",
+"method": {"value": "Fourier transform the deprojected red image to get potential and forces; decompose potential in Fourier components and derive Q_m(R) and Q_T(R)", "evidence": [
+{"loc": "Method", "quote": "After rotation and deprojection, the images were Fourier transformed to compute the gravitational potential and forces."},
+{"loc": "Gas torque analysis", "quote": "The strength of the total non-axisymmetric perturbation $Q_T(R)$ is defined similarly, with the maximum amplitude of the tangential force $F_T^{max}(R)$."}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Disk thickness ~1/12 of radial scale length", "evidence": [{"loc": "Method", "quote": "we assumed a stellar exponential disk thickness of $\\sim$1/12th of the radial scale length of the galaxies (cite: Garcia-Burillo2005; audibert19)"}]}
+],
+"assumptions": [
+{"value": "Constant M/L throughout disk and bulge", "evidence": [{"loc": "Method", "quote": "The M/L was assumed to be constant throughout the disk and bulge."}]},
+{"value": "Dark matter negligible in central parts", "evidence": [{"loc": "Method", "quote": "while the dark matter can be neglected in the central parts of MW-like galaxies (cite: Persic1996)"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "compute gas-weighted torques and normalised angular momentum loss",
+"method": {"value": "Torque per unit mass from forces at each pixel, weighted by the CO gas density, averaged over azimuth, and normalised by L divided by the rotation period to give dL/L per rotation", "evidence": [
+{"loc": "Gas torque analysis", "quote": "The net effect on the gas at each radius is then the product of the torque by the gas density $\\Sigma$."},
+{"loc": "Gas torque analysis", "quote": "The efficiency of the gas flow was then estimated through normalising $t(R)$ at each radius by the angular momentum $L$, divided by the rotation period $T= 2\\pi/\\Omega$"}
+]},
+"software": [],
+"key_parameters": [
+{"value": "Sign of torque defined relative to sense of rotation in the galaxy plane", "evidence": [{"loc": "Gas torque analysis", "quote": "The sign of the torque was determined relative to the sense of rotation in the plane of the galaxy."}]}
+],
+"assumptions": [
+{"value": "Gas stays in its radial range during one rotation (needed for the azimuthal average); orbits taken as circular", "evidence": [
+{"loc": "Gas torque analysis", "quote": "that the gas has time to remain in its radial range during one rotation"},
+{"loc": "Discussion", "quote": "although the orbits of the gas, when deprojected, are not circular"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Results independent of M/L because torques are normalised; results below 1 arcsec disregarded", "evidence": [{"loc": "Gas torque analysis", "quote": "With this normalisation, the computations are independent of the constant M/L ratios used."}]}
+},
+{
+"order": 5,
+"goal": "normalise NGC 1300 torques with a rotation curve",
+"method": {"value": "Where relative loss of angular momentum exceeds one, plot only the torque map normalised with physical quantities from a rotation curve derived from the potential, compared with observed curves", "evidence": [
+{"loc": "Gas torque analysis", "quote": "The latter was derived from the potential itself, assuming a constant mass-to-light ratio, and normalised to the CO, HI, and optical observations"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [{"value": "Constant mass-to-light ratio", "evidence": [{"loc": "Gas torque analysis", "quote": "assuming a constant mass-to-light ratio"}]}],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Model rotation curve compared with observed curves from the literature", "evidence": [{"loc": "Gas torque analysis", "quote": "the rotation curve from the potential model is compared to the observed curves from (cite: Lang20), (cite: england89), and (cite: Lindblad97)"}]}
+},
+{
+"order": 6,
+"goal": "compare with torques on H-alpha gas from MUSE",
+"method": {"value": "Build H-alpha images from MUSE cubes by summing the line interval and subtracting nearby continuum, cut to the matching FOV, and compute torques as for ALMA", "evidence": [
+{"loc": "H$\\alpha$ gas torques with MUSE data", "quote": "by summing the spectral interval of the emission line and by subtracting the nearby continuum equivalent to the same interval"},
+{"loc": "H$\\alpha$ gas torques with MUSE data", "quote": "We then computed the torques analogously to what was done with the ALMA data."}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+}
+],
+"software": [
+{"name": "Python", "version": "not stated", "used_for": {"value": "scripts for rotation, deprojection of images and ALMA cube", "evidence": [{"loc": "Method", "quote": "These processes were performed with scripts in Python and Gildas environments."}]}},
+{"name": "Gildas", "version": "not stated", "used_for": {"value": "scripts for rotation, deprojection of images and ALMA cube", "evidence": [{"loc": "Method", "quote": "These processes were performed with scripts in Python and Gildas environments."}]}}
+],
+"results_numeric": [
+{"quantity": "NGC 1300 nuclear ring radius", "value": "about 300 pc", "uncertainty": "not stated", "units": "pc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "The morphology is that of a ring with a radius of about 300 pc"}]},
+{"quantity": "NGC 4303 nuclear ring radius", "value": "about 310 pc", "uncertainty": "not stated", "units": "pc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "The ring radius is about 310 pc."}]},
+{"quantity": "NGC 4321 nuclear ring radius", "value": "~500 pc", "uncertainty": "not stated", "units": "pc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "The nuclear ring radius is $\\sim$ 500 pc."}]},
+{"quantity": "NGC 5248 nuclear ring radius", "value": "about 88 pc", "uncertainty": "not stated", "units": "pc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "a nuclear ring at the centre, with a radius of about 88 pc"}]},
+{"quantity": "NGC 5921 nuclear ring radius", "value": "about 230 pc", "uncertainty": "not stated", "units": "pc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "a nuclear ring with a radius of about 230 pc is visible"}]},
+{"quantity": "NGC 4536 nuclear bar diameter", "value": "about 2.1 kpc (PA ~136 deg)", "uncertainty": "not stated", "units": "kpc", "from_step": 0, "evidence": [{"loc": "Gas morphology and kinematics", "quote": "molecular gas images show a clear nuclear bar with a PA $\\sim$ 136$^{\\circ}$ and a diameter of about 2.1 kpc"}]},
+{"quantity": "NGC 3059 total-perturbation strength Qmax (bar), at 0.24 kpc", "value": "0.928", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "Table qplot", "quote": "0.928 B"}, {"loc": "Gas morphology and kinematics", "quote": "but we found that this galaxy has the strongest bar in the sample."}]},
+{"quantity": "NGC 3059 torque sign ranges", "value": "positive from 0.3 to 0.6 kpc, negative from 0.6 to 1 kpc, negative below 0.3 kpc", "uncertainty": "not stated", "units": "kpc", "from_step": 4, "evidence": [{"loc": "Gas torque analysis", "quote": "The torque is positive from 0.3 to 0.6 kpc, and then negative from 0.6 to 1 kpc"}, {"loc": "Gas torque analysis", "quote": "The torques are negative at radii lower than 0.3 kpc"}]},
+{"quantity": "Resolution cut applied to torque results", "value": "1 arcsec = 66 pc at 13.7 Mpc", "uncertainty": "not stated", "units": "pc", "from_step": 4, "evidence": [{"loc": "Discussion", "quote": "we disregarded results below 1 arcsec (corresponding to 66 pc at an average distance of 13.7 Mpc) in general"}]},
+{"quantity": "Maximum relative loss of angular momentum per rotation (extreme cases)", "value": "nearly 100%", "uncertainty": "not stated", "units": "percent", "from_step": 4, "evidence": [{"loc": "Conclusions", "quote": "The relative loss of angular momentum can be quite high and may reach nearly 100% in one rotation for extreme cases."}]}
+],
+"findings_qualitative": [
+{"value": "Six galaxies show nuclear rings and two show nuclear bars; NGC 4689 shows no clear nuclear structure", "evidence": [{"loc": "Gas morphology and kinematics", "quote": "Six galaxies present clear evidence of nuclear rings (N1300, N2903, N4303, N4321, N5248, and N5921). Two objects have a nuclear bar (N4536 and N5921)."}]},
+{"value": "Torques are not significant in non-barred flocculent galaxies", "evidence": [{"loc": "Gas torque analysis", "quote": "The torques are not significant in non-barred flocculent galaxies, as for NGC 1792 in Fig."}]},
+{"value": "NGC 2903 torques are chaotic mainly because of patchy CO emission", "evidence": [{"loc": "Gas torque analysis", "quote": "The main factor is the patchiness of the CO emission, which prevents a spatial continuity in the torque computation."}]}
+],
+"claims": [
+{"hypothesis": "Do bars drive gas inward between corotation and the inner Lindblad resonance in MW twins?", "experiment": "Gas-density-weighted gravity torques from HST/Legacy potentials and ALMA CO maps in ten galaxies", "result": "Negative torques are seen in several barred galaxies when the FOV includes enough of the bar", "finding": "For barred galaxies, torques are negative between corotation and the ILR, as expected", "support": "supported", "evidence": [
+{"loc": "Gas torque analysis", "quote": "Negative torques, implying gas infall between corotation and ILR, as expected, are indeed observed in several barred galaxies when the FOV is sufficient and includes enough of the bar region."},
+{"loc": "Conclusions", "quote": "For barred galaxies, torques are negative between the corotation and the inner Lindblad resonance, as expected."}
+]},
+{"hypothesis": "Are torques significant in inner resonant rings and non-barred flocculent galaxies?", "experiment": "Torque maps and azimuthal averages for ring-only FOVs and non-barred galaxies (NGC 1792, NGC 4689)", "result": "No single coherent behaviour in ring-only FOVs; torques not significant in flocculent galaxies", "finding": "Torques are not significant in inner resonant rings or flocculent galaxies", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "Our multi-scale study showed that torques are not significant in the inner resonant rings, even when they are not circular. They are not significant for flocculent galaxies either."}
+]},
+{"hypothesis": "How strong can the angular momentum loss be, and what happens for very strong thin bars?", "experiment": "Normalised torques dL/L per rotation across fields of view", "result": "Relative loss exceeds one in absolute value only for NGC 1300", "finding": "Loss can reach nearly 100% per rotation; very strong thin bars give elongated orbits and gas driven to the nucleus", "support": "partially", "evidence": [
+{"loc": "Gas torque analysis", "quote": "The relative loss and gain of angular momentum per rotation is higher than one in absolute value only for NGC 1300"},
+{"loc": "Conclusions", "quote": "When the bar is very strong and thin, the gas orbits are very elongated, which prevents the formation of a ring."}
+]},
+{"hypothesis": "Does AGN feedback leave a dynamical imprint on the gas in these nuclei?", "experiment": "Gas morphology and torques at moderate resolution", "result": "No dynamical influence of AGN feedback or radio jets detected", "finding": "Not detected, but resolution and AGN activity are low, so no firm conclusion", "support": "partially", "evidence": [
+{"loc": "Discussion", "quote": "We did not detect any dynamical influence of AGN feedback in these galaxies."},
+{"loc": "Discussion", "quote": "One of the reasons, as mentioned, is the low spatial resolution and low AGN activity."}
+]},
+{"hypothesis": "Do torques on H-alpha gas agree with torques on molecular gas?", "experiment": "H-alpha images from MUSE for four galaxies, same torque method", "result": "Compatible but noisier and patchier", "finding": "H-alpha torques are compatible with molecular gas torques", "support": "supported", "evidence": [
+{"loc": "Conclusions", "quote": "The torques computed on the H$\\alpha$ emitting gas are compatible with those on the molecular gas, but they are noisier and more patchy."}
+]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "Red images chosen to trace stellar mass and avoid dust extinction and young-star bias", "evidence": [{"loc": "Sample", "quote": "we needed red images of the galaxies to avoid dust extinction and to avoid biasing by the light of a small number of OB stars with low mass-to-light ratios (M/L)"}]},
+{"field": "why_this_method", "value": "Normalised torques make the result independent of the M/L value", "evidence": [{"loc": "Method", "quote": "Its precise value was considered not to be important because we computed normalised torques, corresponding to the relative loss of angular momentum per rotation."}]},
+{"field": "how_they_decided_enough", "value": "Sample size set by data availability", "evidence": [{"loc": "Sample", "quote": "The availability of the data limited the sample to ten galaxies"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Legacy image not used for NGC 5921 because small ALMA FOV would give the same result as HST", "evidence": [{"loc": "Method", "quote": "This galaxy has Legacy images; because the ALMA data have a small FOV, it would provide the same results as were obtained with HST images with a lower spatial resolution, however."}]},
+{"value": "NGC 1255 and NGC 4030 excluded because the ALMA FOV was too small", "evidence": [{"loc": "Sample", "quote": "Another two galaxies have ALMA data, but the FOV was too small for this work : NGC 1255 and NGC 4030"}]}
+],
+"limitations_admitted": [
+{"value": "Spatial resolution is insufficient for gas dynamics at 10-100 pc scales", "evidence": [{"loc": "Discussion", "quote": "The spatial resolution of the data we analysed here is insufficient to compute the gas dynamics at these scales in detail."}]},
+{"value": "Results depend strongly on PA and inclination, which can be biased in barred galaxies", "evidence": [{"loc": "Discussion", "quote": "The results strongly depend on these values because the deprojection is important for the computation of the torques."}]},
+{"value": "Authors call the study preliminary", "evidence": [{"loc": "Discussion", "quote": "We consider this study as preliminary results that are to be pursued in the future with data that have a better spatial resolution"}]}
+],
+"referee_caveats_inferred": [
+"Constant M/L and a thin-disk, no-dark-matter potential are assumed; no uncertainty propagation on Qmax or dL/L is given",
+"Azimuthal average assumes circular orbits and gas staying in radial range for one rotation, which fails for NGC 1300",
+"CO surface density is used directly as gas density with no stated treatment of CO-to-H2 conversion or noise clipping",
+"Several galaxies sit at inclinations near or above the stated 65 deg limit",
+"Sample of ten is small and not independent of data availability"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "ALMA archive and PHANGS data, HST, Legacy Surveys and ESO MUSE public archive data", "evidence": [
+{"loc": "Sample", "quote": "we used ALMA data mainly from the Phangs survey (cite: PHANGS) and from the ALMA archive"},
+{"loc": "H$\\alpha$ gas torques with MUSE data", "quote": "The data were taken from the ESO public archive."}
+]}
+],
+"code_released": [
+{"value": "not stated", "evidence": []}
+],
+"missing_for_reproduction": [
+"Torque and potential code (only described by equations and prose)",
+"Which PHANGS or archive product and resolution per galaxy; CO map construction",
+"Pixel sizes, FOVs, centres and PA/inclination sources per galaxy",
+"Uncertainties on all tabulated torque quantities"
+],
+"estimated_data_volume_inferred": "Large: nine ALMA projects including the PHANGS-ALMA large program; CO cubes for ten galaxies, likely tens of GB to a few hundred GB if raw, far less if PHANGS products are used",
+"score_inferred": 3,
+"score_reason": "Data are public and the torque method is described with equations, but ALMA product choices, map construction, pixel grids, code and uncertainties are not given.",
+"rediscovery_candidate": false,
+"rediscovery_reason": "Data are public, but the recipe lacks code and gas-map construction details, and the main results are a mix of tabulated values and qualitative torque-map descriptions.",
+"methods_papers": [
+{"citation": "Garcia-Burillo et al. 2005 (cite: Garcia-Burillo2005)", "why": "Torque method and disk-thickness assumption inherited"},
+{"citation": "Combes & Sanders 1981 (cite: Combes1981)", "why": "Definition of bar strength Q_m"},
+{"citation": "Audibert et al. 2019 (cite: audibert19)", "why": "Same torque approach and disk thickness assumption"}
+],
+"companion_papers": [
+{"citation": "Leroy et al. 2021 (cite: PHANGS)", "why": "Source of most ALMA CO data"},
+{"citation": "Combes et al. 2014 (cite: combes14)", "why": "Earlier torque study of NGC 1566, excluded from this sample"}
+],
+"related_projects_or_surveys": ["PHANGS-ALMA", "Legacy Surveys DR9", "HST F814W imaging", "MUSE (ESO archive)"]
+}

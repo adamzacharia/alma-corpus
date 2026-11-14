@@ -1,0 +1,374 @@
+# High-angular-resolution ALMA imaging of the inhomogeneous dynamical atmosphere of the asymptotic giant branch star W Hya: SiO, H<SUB>2</SUB>O, SO<SUB>2</SUB>, SO, HCN, AlO, AlOH, TiO, TiO<SUB>2</SUB>, and OH lines
+
+`2025A&A...704A..18O` | Astronomy and Astrophysics 2025 | first author: Ohnaka, K. | arXiv: 2512.03156 | DOI: 10.1051/0004-6361/202554900
+
+Card schema 1.0 | model gemini-4-argon | depth full | type observational_alma_primary
+
+## Science
+
+- Fields: evolved_stars, astrochemistry
+- Question: What are the dynamics and chemistry in the atmosphere and inner wind (within a few stellar radii) of the asymptotic giant branch star W Hya, and how do molecular species relate to dust formation and shocks?  
+  > "We present high-angular-resolution imaging of the asymptotic giant branch star W Hya with the Atacama Large Millimeter/submillimeter Array (ALMA) to probe the dynamics and chemistry in the atmosphere and inner wind." (abstract); "To clarify the long-standing problem of the mass loss from AGB stars, it is indispensable to probe the region within a few $R_{\star}$, where the dust forms and the wind accelerates." (Introduction)
+- Target **W Hya**: coordinates 13:49:01.92528, -28:22:04.69895 (ICRS)  
+  > "In the present work, we adopted the 98 pc from Vlemmings et al. ((cite: vlemmings03))" (Basic properties of W Hya); "The continuum disk center averaged over the different spectral windows is ($\alpha$, $\delta$) = (13:49:01.92528, $-28$:22:04.69895) in the International Celestial Reference System (ICRS)." (Observations and data reduction); z/distance 98 pc  
+  > "In the present work, we adopted the 98 pc from Vlemmings et al. ((cite: vlemmings03))" (Basic properties of W Hya); "The continuum disk center averaged over the different spectral windows is ($\alpha$, $\delta$) = (13:49:01.92528, $-28$:22:04.69895) in the International Celestial Reference System (ICRS)." (Observations and data reduction); distance from Vlemmings et al. ((cite: vlemmings03))  
+  > "In the present work, we adopted the 98 pc from Vlemmings et al. ((cite: vlemmings03))" (Basic properties of W Hya); "The continuum disk center averaged over the different spectral windows is ($\alpha$, $\delta$) = (13:49:01.92528, $-28$:22:04.69895) in the International Celestial Reference System (ICRS)." (Observations and data reduction)
+
+## Data provenance
+
+- ALMA projects: 2018.1.01239.S
+- bands: _not stated_
+- frequencies and spectral setup: 9 spws centered at 250.7, 251.8, 252.5, 253.7, 265.9, 266.9, 267.2, 267.7, and 268.2 GHz; bandwidths 468.75 MHz (spws 1-7) and 937.50 MHz (spws 8-9); channel width 488.3 kHz; velocity resolution 1.1-1.2 km s^-1  
+  > "As listed in Table [\[spwlist\]](#spwlist), the spectral setups consist of nine spectral windows (spws) centered at 250.7, 251.8, 252.5, 253.7, 265.9, 266.9, 267.2, 267.7, and 268.2 GHz." (Observations and data reduction); "The bandwidth of the first seven windows is 468.75 MHz, while that of the windows at 267.7 and 268.2 GHz is 937.50 MHz." (Observations and data reduction); "The channel width in each spectral window is 488.3 kHz. The velocity resolution of 1.1–1.2 km s$^{-1}$ corresponds to twice the spectral channel width with the Hanning smoothing at the correlator." (Observations and data reduction)
+- continuum bandwidth: _not stated_
+- arrays: 12-m array  
+  > "Our ALMA observations took place between June 7, 2019, and June 8, 2019, from 22:52 to 04:42 (UTC) in four consecutive execution blocks (EBs) in Cycle 6 with the C43-10 configuration of the 12-m array" (Observations and data reduction)
+- configurations: C43-10  
+  > "Our ALMA observations took place between June 7, 2019, and June 8, 2019, from 22:52 to 04:42 (UTC) in four consecutive execution blocks (EBs) in Cycle 6 with the C43-10 configuration of the 12-m array" (Observations and data reduction)
+- baselines: 83.1 m to 16.2 km  
+  > "The shortest and longest baselines are 83.1 m and 16.2 km, respectively, which results in an angular resolution of 16–20 mas and a largest recoverable scale of 190 mas at the observed frequencies." (Observations and data reduction)
+- angular resolution: 16–20 mas  
+  > "The shortest and longest baselines are 83.1 m and 16.2 km, respectively, which results in an angular resolution of 16–20 mas and a largest recoverable scale of 190 mas at the observed frequencies." (Observations and data reduction); "The restoring beams for the continuum images are about 19$\times$17 mas in the lower sideband (spws 1–4) and 18$\times$16 mas in the upper sideband (spws 5–9) as listed in Table [\[spwlist\]](#spwlist)." (Observations and data reduction)
+- max recoverable scale: 190 mas  
+  > "The shortest and longest baselines are 83.1 m and 16.2 km, respectively, which results in an angular resolution of 16–20 mas and a largest recoverable scale of 190 mas at the observed frequencies." (Observations and data reduction)
+- sensitivity: ~40 uJy/beam (continuum MFS); ~0.5-0.6 mJy/beam per 488 kHz channel (spectral line cubes), up to 2.7 mJy/beam in maser channels  
+  > "The typical RMS noise in the continuum MFS images is ${\sim}40$ $\mu$Jy/beam." (Observations and data reduction); "The RMS noise in the spectral line cubes is typically ${\sim}0.5$–$0.6$ mJy/beam over the channel width of 488 kHz (Table [\[spwlist\]](#spwlist))." (Observations and data reduction); "Due to the dynamic range limit, the RMS noise is much higher in the channels containing the strongest emission, up to 2.7 mJy/beam." (Observations and data reduction)
+- time on source: ~3 hours total (~45 min per EB across 4 EBs)  
+  > "The on-source time of each EB is about 45 min, and the total on-source time of the project is about 3 hours." (Observations and data reduction)
+- observing dates: June 7–8, 2019  
+  > "Our ALMA observations took place between June 7, 2019, and June 8, 2019, from 22:52 to 04:42 (UTC) in four consecutive execution blocks (EBs) in Cycle 6" (Observations and data reduction)
+- pi or archival as stated: P.I.: K. Ohnaka  
+  > "(Program ID: 2018.1.01239.S, P.I.: K. Ohnaka)." (Observations and data reduction)
+- Line: 29SiO v=3, J = 6 – 5 (251.930123 GHz)
+- Line: 30SiO v=2, J = 6 – 5 (250.727751 GHz)
+- Line: 29SiO v=2, J = 6 – 5 (253.703469 GHz)
+- Line: 30SiO v=1, J = 6 – 5 (252.471372 GHz)
+- Line: Si17O v=0, J = 6 – 5 (250.744695 GHz)
+- Line: H2O v2=2, 6_{5,2} – 7_{4,3} (268.149117 GHz)
+- Line: H2O v2=2, 9_{2,8} – 8_{3,5} (250.751793 GHz)
+- Line: SO2 v=0, 36_{10,26} – 37_{9,29} (250.816786 GHz)
+- Line: SO2 v=0, 32_{4,28} – 31_{5,27} (252.563893 GHz)
+- Line: SO2 v=0, 30_{9,21} – 31_{8,24} (266.943325 GHz)
+- Line: SO2 v=0, 47_{5,43} – 46_{6,40} (267.428332 GHz)
+- Line: SO2 v=0, 13_{3,11} – 13_{2,12} (267.537451 GHz)
+- Line: SO2 v=0, 28_{4,24} – 28_{3,25} (267.719840 GHz)
+- Line: SO2 v=0, 63_{6,58} – 62_{7,55} (267.192971 GHz)
+- Line: SO2 v=0, 38_{5,33} – 37_{6,32} (253.935883 GHz)
+- Line: SO2 v=0, 21_{3,19} – 22_{0,22} (253.753448 GHz)
+- Line: SO2 v2=2, 13_{1,13} – 12_{0,12} (251.738875 GHz)
+- Line: SO2 v2=1, 30_{4,26} – 30_{3,27} (266.030566 GHz)
+- Line: SO2 v2=1, 30_{3,27} – 30_{2,28} (266.815526 GHz)
+- Line: SO2 v2=1, 11_{3,9} – 11_{2,10} (268.169791 GHz)
+- Line: SO2 v1=1, 28_{4,24} – 28_{3,25} (268.617160 GHz)
+- Line: SO2 v=0, 67_{10,58} – 66_{11,55} (267.334780 GHz)
+- Line: SO2 v=0, 66_{16,50} – 67_{15,53} (267.356251 GHz)
+- Line: SO2 v1=1, 10_{5,5} – 11_{4,8} (250.545521 GHz)
+- Line: SO2 v1=1, 8_{3,5} – 8_{2,6} (251.650159 GHz)
+- Line: SO2 v1=1, 13_{3,11} – 13_{2,12} (267.803703 GHz)
+- Line: SO2 v2=1, 45_{5,41} – 44_{6,38} (252.408567 GHz)
+- Line: SO2 v2=1, 15_{6,10} – 16_{5,11} (267.006774 GHz)
+- Line: SO2 v2=1, 31_{9,23} – 32_{8,24} (267.091925 GHz)
+- Line: SO2 v3=1, 14_{3,12} – 14_{2,13} (268.242240 GHz)
+- Line: SO2 v2=2, 3_{3,1} – 3_{2,2} (268.024200 GHz)
+- Line: SO2 v2=2, 4_{3,1} – 4_{2,2} (267.619458 GHz)
+- Line: SO2 v3=1, 46_{6,41} – 45_{7,38} (251.851027 GHz)
+- Line: SO2 v3=1, 6_{3,4} – 6_{2,5} (253.654459 GHz)
+- Line: SO2 v3=1, 14_{6,9}–15_{5,10} (268.035143 GHz)
+- Line: 34SO2 v=0, 32_{4,28} – 32_{3,29} (251.758329 GHz)
+- Line: 34SO2 v=0, 15_{3,13} – 15_{2,14} (267.871060 GHz)
+- Line: 34SO2 v=0, 9_{5,5} – 10_{4,6} (252.615371 GHz)
+- Line: 34SO2 v=0, 11_{3,9} – 11_{2,10} (253.936316 GHz)
+- Line: 33SO2 v=0, 5_{3,3} – 5_{2,4} (251.702816 GHz)
+- Line: SO v=0, N_J = 6_5 – 5_4 (251.825770 GHz)
+- Line: SO v=0, N_J = 4_3 – 3_4 (267.197746 GHz)
+- Line: AlO N = 7 – 6 (267.938239 GHz)
+- Line: AlOH J = 8 – 7 (251.794759 GHz)
+- Line: HCN v=0, J = 3 – 2 (265.886434 GHz)
+- Line: HCN v2=1^{1e}, J = 3 – 2 (265.852709 GHz)
+- Line: HCN v2=1^{1f}, J = 3 – 2 (267.199283 GHz)
+- Line: TiO v=1, ^3Delta_1, J = 8 – 7 (251.802917 GHz)
+- Line: 50TiO v=0, ^3Delta_2, J = 8 – 7 (253.591920 GHz)
+- Line: 49TiO v=0, ^3Delta_1, J = 8 – 7 (251.957928 GHz)
+- Line: TiO2 8_{6,2}–8_{5,3} (251.866957 GHz)
+- Line: TiO2 7_{6,2}–7_{5,3} (251.977193 GHz)
+- Line: TiO2 26_{3,23}–26_{2,24} (250.939052 GHz)
+- Line: TiO2 9_{6,4}–9_{5,5} (251.708056 GHz)
+- Line: TiO2 24_{2,22}–24_{1,23} (265.770503 GHz)
+- Line: OH v=0, N_J = 18_{35/2}, F = 18^+–18^- (265.734659 GHz)
+- Line: OH v=0, N_J = 18_{35/2}, F = 17^+–17^- (265.765323 GHz)
+- Other facility **VLT/SPHERE-ZIMPOL**: Contemporaneous 820 nm visible polarized intensity map showing clumpy dust clouds (reported in Paper I)  
+  > "The contours in Fig. [16](#integmap_hcn_v2_1_265) show the polarized intensity map obtained at 820 nm contemporaneously with our ALMA data using VLT/SPHERE-ZIMPOL, as reported in Paper I." (HCN lines)
+- External data: Distance of W Hya of 98 pc  
+  > "In the present work, we adopted the 98 pc from Vlemmings et al. ((cite: vlemmings03))" (Basic properties of W Hya) [from Vlemmings et al. ((cite: vlemmings03))]
+- External data: Wind terminal velocity of 5 km s^-1 and turbulent velocity FWHM of 2 km s^-1  
+  > "while Hoai et al. ((cite: hoai22)) obtained, based on the analysis of ALMA data, a lower value of 5 km s$^{-1}$" (Basic properties of W Hya); "In the present work, we adopted the wind terminal velocity of 5 km s$^{-1}$." (Basic properties of W Hya); "We assumed a Gaussian line profile with a FWHM of a turbulent velocity of 2 km s$^{-1}$ (Hoai et al. (cite: hoai22))" (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines) [from Hoai et al. ((cite: hoai22))]
+- External data: Systemic velocity of 40.4 km s^-1 LSR and circumstellar envelope gas temperature profile T_gas(r) = 2500 (2.7x10^13 / r(cm))^0.65 K  
+  > "As for the systemic velocity, Khouri et al. ((cite: khouri14b)) derived 40.4 km s$^{-1}$ in the local standard of rest (LSR)" (Basic properties of W Hya); "The systemic velocity of 40.4 km s$^{-1}$ was adopted in our analysis" (Basic properties of W Hya); "On the other hand, Khouri et al. ((cite: khouri14b)) obtained $T_{\rm gas} (r) \, ({\rm K})= 2500 \, (2.7\times10^{13}/r({\rm cm}))^{0.65}$" (HCN lines) [from Khouri et al. ((cite: khouri14b))]
+- External data: Star's angular diameter of 41.4 mas (R_* = 20.7 mas), 268.2 GHz continuum angular diameter of 59.3 mas (R_cont = 29.6 mas), and 820 nm VLT/SPHERE-ZIMPOL polarized intensity map  
+  > "We adopted 41.4 mas as the star’s angular diameter (i.e., 20.7 mas as the star’s angular radius $R_{\star}$), as described in Paper I." (Basic properties of W Hya); "In the present work, we use the geometrical mean of the major and minor axis of 59.3 mas derived in Paper I as the millimeter continuum angular diameter (i.e., 29.6 mas as the continuum angular radius $R_{\rm cont}$)." (Continuum); "The contours in Fig. [16](#integmap_hcn_v2_1_265) show the polarized intensity map obtained at 820 nm contemporaneously with our ALMA data using VLT/SPHERE-ZIMPOL, as reported in Paper I." (HCN lines) [from Ohnaka et al. ((cite: ohnaka24); hereafter Paper I)]
+- External data: Bolometric flux of 1.69 x 10^-8 W m^-2 at phase 0.54 and dust optical depth of 0.8 at 0.55 um  
+  > "Ohnaka et al. ((cite: ohnaka17)) derived the bolometric flux of $1.69 \times 10^{-8}$ W m$^{-2}$ at approximately the same phase of 0.54" (Basic properties of W Hya); "Ohnaka et al. ((cite: ohnaka17)) derived a dust optical depth of 0.8 at 0.55 $\mu$m from the visible polarimetric imaging of W Hya at minimum light." (Continuum) [from Ohnaka et al. ((cite: ohnaka17))]
+- External data: Silicon isotope ratio 29Si/30Si = 1 (based on observed 0.99 +/- 0.05)  
+  > "adopting an isotope ratio of $^{29}$Si/$^{30}$Si = 1 based on the observed value of $0.99 \pm 0.05$ (Peng et al. (cite: peng13))." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines) [from Peng et al. ((cite: peng13))]
+- External data: Optical constants of forsterite (Mg2SiO4)  
+  > "if we adopt the optical constants of forsterite (Mg$_2$SiO$_4$) from Jäger et al. ((cite: jaeger03))" (Continuum) [from Jäger et al. ((cite: jaeger03))]
+- External data: Empirical energy levels and rest frequencies for H2O v2=2, 9_{2,8}-8_{3,5} from W2020 database  
+  > "Recently, Furtenbacher et al. ((cite: furtenbacher20a), b) produced the W2020 database of validated experimental transitions and empirical energy levels of H$_2$O." (Tentative identification of the vibrationally excited H$_2$O line ($\varv_2 = 2$, $9_{2,8}$ – $8_{3,5}$)) [from Furtenbacher et al. ((cite: furtenbacher20a), (cite: furtenbacher20b))]
+- Simulation/model as data: 3D convective/dynamical atmosphere models of AGB stars used to adopt local enhanced mass density of ~10^-10 g cm^-3 at ~1.5 R_* for SiO fractional abundance estimation  
+  > "The 3D dynamical models (Höfner & Freytag (cite: hoefner19); Freytag & Höfner (cite: freytag23)) show densities of $10^{-12}$–$10^{-11}$ g cm$^{-3}$ at $\sim$1 $R_{\rm cont}$ $\approx$1.5 $R_{\star}$ when spherically (i.e., directionally) averaged." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "Therefore, if we adopt the locally enhanced density of $\sim \!\! 10^{-10}$ g cm$^{-3}$ from the 3D models, the H$_2$ number density is estimated to be $2.3\times 10^{13}$ cm$^{-3}$." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+- Simulation/model as data: 1D pulsation+dust-driven wind models (Bladh et al. 2019) used to adopt mass densities of 10^-12 to 10^-11 g cm^-3 at ~1.5 R_* for estimating H2 column densities in SO2 and SO abundance calculations  
+  > "The pulsation+dust-driven wind models of Bladh et al. ((cite: bladh19)) show mass densities of $10^{-12}$–$10^{-11}$ g cm$^{-3}$ at $\sim$1 $R_{\rm cont}$ $\approx$1.5 $R_{\star}$, which translate into H$_2$ number densities of $3\times 10^{11}$–$3\times 10^{12}$ cm$^{-3}$." (SO$_{2}$ lines)
+- Simulation/model as data: Chemical equilibrium models (Agúndez et al. 2020) and nonequilibrium shock-induced chemistry models (Gobrecht et al. 2016) compared against derived SO2, SO, and HCN distributions and abundances  
+  > "The chemical equilibrium model of Agúndez et al. ((cite: agundez20)) predicts a fractional SO$_{2}$ abundance lower than a few $\times 10^{-10}$ at 2–5 $R_{\star}$ in an O-rich case" (SO$_{2}$ lines); "The nonequilibrium chemistry model of Gobrecht et al. ((cite: gobrecht16)) predicts the formation of SO in weak shocks at low post-shock temperatures at $\ensuremath{\gtrsim}$3 $R_{\star}$" (SO$_{2}$ lines)
+
+## Processing
+
+### Calibration
+
+- pipeline or manual: ALMA pipeline calibration followed by manual self-calibration  
+  > "The visibility data were calibrated with the Common Astronomy Software Applications CASA (Casa Team (cite: casa22)), version 5.6.1-8, following the standard steps of the ALMA Cycle 7 pipeline." (Observations and data reduction); "After the pipeline calibration, we self-calibrated the data and manually reconstructed the images." (Observations and data reduction)
+- casa version: 5.6.1-8  
+  > "The visibility data were calibrated with the Common Astronomy Software Applications CASA (Casa Team (cite: casa22)), version 5.6.1-8, following the standard steps of the ALMA Cycle 7 pipeline." (Observations and data reduction)
+- pipeline version: ALMA Cycle 7 pipeline  
+  > "The visibility data were calibrated with the Common Astronomy Software Applications CASA (Casa Team (cite: casa22)), version 5.6.1-8, following the standard steps of the ALMA Cycle 7 pipeline." (Observations and data reduction)
+- archive products used as is: no (re-calibrated with pipeline, self-calibrated, and manually imaged)  
+  > "After the pipeline calibration, we self-calibrated the data and manually reconstructed the images." (Observations and data reduction)
+- flux calibrator: J1337-1257  
+  > "The quasar J1337$-$1257 was observed as the bandpass and absolute flux calibrator, J1342$-$2900 as the phase-referencing calibrator, and J1351$-$2912 as the check source." (Observations and data reduction)
+- flux scale uncertainty: 10%  
+  > "The error in the absolute flux calibration was assumed to be 10% (ALMA Technical Handbook, Cortes et al. (cite: cortes25))." (SO$_{2}$ lines)
+- self calibration: 2 iterations on line-free continuum: 1st phase-only with solint = scan length (<=54 s), 2nd amplitude and phase with solint = entire EB (~45 min)  
+  > "The continuum images of W Hya were reconstructed, which provided initial models for self-calibration, which was done in two iterations." (Observations and data reduction); "The first iteration was for phase alone with the solution interval being the scan length (${\lesssim}54$ s)." (Observations and data reduction); "The second iteration was for both the amplitude and phase using the entire EB (${\sim}45$ min) as the solution interval." (Observations and data reduction)
+
+### Imaging
+
+- task: CASA tclean  
+  > "We adopted a pixel scale of 3 mas and the robust weighting with a robustness parameter of 0.5 in the CASA task `tclean`." (Observations and data reduction)
+- deconvolver: multi-scale (with MFS for continuum)  
+  > "We also imaged the continuum data in each spectral window using the multifrequency synthesis (MFS) method." (Observations and data reduction); "Because the millimeter continuum of W Hya is spatially resolved, we deconvolved the images with the multi-scale algorithm (Cornwell (cite: cornwell08)) for size scales of 1 (point sources), 5, and 15 pixels and with a small-scale bias parameter of 0.7." (Observations and data reduction)
+- weighting robust: robust = 0.5 (default for continuum and lines); natural weighting for HCN v2=1^1e J=3-2 at 265.853 GHz and AlOH J=8-7 at 251.795 GHz  
+  > "We adopted a pixel scale of 3 mas and the robust weighting with a robustness parameter of 0.5 in the CASA task `tclean`." (Observations and data reduction); "For the vibrationally excited HCN line ($\varv_2=1^{1e}$, $J$ = 3 – 2) at 265.853 GHz (Sect. [4.12](#subsect_res_hcn_265)) and AlOH ($J$ = 8 – 7) line at 251.795 GHz (Sect. [4.13](#subsect_res_alo_aloh)), we reconstructed the images with the natural weighting to enhance the weak extended emission." (Observations and data reduction)
+- uv taper: _not stated_
+- cell size: 3 mas  
+  > "We adopted a pixel scale of 3 mas and the robust weighting with a robustness parameter of 0.5 in the CASA task `tclean`." (Observations and data reduction)
+- image size: _not stated_
+- masking: _not stated_
+- multiscale scales: 1, 5, and 15 pixels (with small-scale bias = 0.7)  
+  > "Because the millimeter continuum of W Hya is spatially resolved, we deconvolved the images with the multi-scale algorithm (Cornwell (cite: cornwell08)) for size scales of 1 (point sources), 5, and 15 pixels and with a small-scale bias parameter of 0.7." (Observations and data reduction)
+- continuum subtraction: performed for spectral line channel maps and integrated intensity maps; non-continuum-subtracted cubes also used for extracting spectra over the stellar disk  
+  > "We first identified spectral channels containing line emission or absorption from an initial set of image cubes and produced the continuum visibility data from the line-free channels." (Observations and data reduction); "Figure [1](#centralmap_all) gives an overview of the continuum-subtracted images of the different molecular lines at the systemic velocity" (Observations and data reduction); "To see the variation of the absorption over the stellar disk, we extracted spatially resolved spectra from the data cube without the continuum subtraction at five different positions over the stellar disk" ($^{29}$SiO $\varv=3$, $J$ = 6 – 5 at 251.930 GHz)
+- line free channels: _not stated_
+- primary beam correction: _not stated_
+- array combination: _not stated_
+- smoothing: _not stated_
+- final beam: ~19x17 mas in LSB (spws 1-4) and ~18x16 mas in USB (spws 5-9) for continuum; ~21x18 mas for 29SiO v=3  
+  > "The restoring beams for the continuum images are about 19$\times$17 mas in the lower sideband (spws 1–4) and 18$\times$16 mas in the upper sideband (spws 5–9) as listed in Table [\[spwlist\]](#spwlist)." (Observations and data reduction); "Figure [3](#channelmap_29sio_251) shows the continuum-subtracted channel maps obtained for the $^{29}$SiO line ($\varv=3$, $J$ = 6 – 5) at 251.930 GHz with a restoring beam size of $21 \times 18$ mas." ($^{29}$SiO $\varv=3$, $J$ = 6 – 5 at 251.930 GHz)
+- final rms: ~40 uJy/beam (continuum MFS); 0.47–0.65 mJy/beam per channel (line cubes, Table 1), up to 2.7 mJy/beam in dynamic-range-limited 29SiO v=2 maser channels  
+  > "The typical RMS noise in the continuum MFS images is ${\sim}40$ $\mu$Jy/beam." (Observations and data reduction); "The RMS noise in the spectral line cubes is typically ${\sim}0.5$–$0.6$ mJy/beam over the channel width of 488 kHz (Table [\[spwlist\]](#spwlist))." (Observations and data reduction); "Due to the dynamic range limit, the RMS noise is much higher in the channels containing the strongest emission, up to 2.7 mJy/beam." (Observations and data reduction)
+
+### Inherited from earlier work
+
+- Star's angular diameter of 41.4 mas (R_* = 20.7 mas), 268.2 GHz continuum diameter of 59.3 mas (R_cont = 29.6 mas), H2O maser T_gas < 900 K constraint, and contemporaneous 820 nm VLT/SPHERE-ZIMPOL polarized intensity map  
+  > "We adopted 41.4 mas as the star’s angular diameter (i.e., 20.7 mas as the star’s angular radius $R_{\star}$), as described in Paper I." (Basic properties of W Hya); "In the present work, we use the geometrical mean of the major and minor axis of 59.3 mas derived in Paper I as the millimeter continuum angular diameter (i.e., 29.6 mas as the continuum angular radius $R_{\rm cont}$)." (Continuum); "The contours in Fig. [16](#integmap_hcn_v2_1_265) show the polarized intensity map obtained at 820 nm contemporaneously with our ALMA data using VLT/SPHERE-ZIMPOL, as reported in Paper I." (HCN lines) [from Ohnaka et al. ((cite: ohnaka24); hereafter Paper I)]
+
+### Not stated but needed to reproduce (our reading)
+
+- Exact frequency ranges or channel indices selected as line-free channels in each of the 9 spectral windows for continuum visibility extraction and uvcontsub
+- tclean image size (number of pixels), stopping threshold, niter, and masking strategy during self-calibration and final cube imaging
+- Exact beam/aperture size used when extracting spatially resolved single-position spectra (whether single pixel or integrated over a restoring beam)
+- Exact broken power-law normalization constants, radial grid resolution, and fitting algorithm/objective function used in the 1D spherical LTE radiative transfer model for 29SiO v=3 and 30SiO v=1
+- Velocity integration ranges used for each of the 6 SO2 lines in the population diagram analysis and for the stacked TiO2 image
+
+## Analysis recipe
+
+1. **Determine stellar continuum disk center, angular size, flux density spectrum, and brightness temperature**: Fit visibility data at line-free channels before self-calibration with a uniform elliptical disk using uvmultifit; measure integrated continuum flux densities across the 9 spectral windows and fit a frequency power law.  
+  > "In order to determine the position of the stellar disk center, we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit` (Martí-Vidal et al. (cite: marti-vidal14))." (Observations and data reduction); "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$." (Continuum); "The uniform elliptical disk fitting in nine spectral windows results in brightness temperatures of 2130–2170 K over the millimeter continuum stellar disk." (Continuum)
+   - software: uvmultifit
+   - parameter: Uniform elliptical disk model  
+  > "we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit`" (Observations and data reduction)
+   - assumption: Continuum is formed by optically thick free-free emission  
+  > "Assuming that the continuum is formed by the optically thick free-free emission, the derived brightness temperatures correspond to the gas temperature in the millimeter-continuum-forming layers." (Continuum)
+   - fitting: Visibility-plane uniform ellipse fit with uvmultifit; power-law fit to continuum flux densities vs frequency  
+  > "we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit` (Martí-Vidal et al. (cite: marti-vidal14))." (Observations and data reduction); "As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$." (Continuum)
+   - validation: Compared continuum flux density with literature 250 GHz measurement by Dehaes et al. (2007) and spectral index with radio-photosphere model (1.86)  
+  > "The flux densities are in broad agreement with the measurement by Dehaes et al. ((cite: dehaes07)), who obtained $280.0 \pm 17.2$ mJy at 250 GHz" (Continuum); "This is close to the power-law index of 1.86 expected from the radio-photosphere model" (Continuum)
+2. **Identify spectral lines and characterize line emission/absorption morphology and kinematics**: Cross-match detected spectral features against Splatalogue, CDMS, JPL, and HITRAN spectroscopic databases; extract spatially resolved spectra on and off the stellar disk, difference maps, and position-velocity (p-V) diagrams.  
+  > "We identified the spectral line detections mainly using the Splatalogue service, the Cologne Database for Molecular Spectroscopy (CDMS, Endres et al. (cite: endres16); Müller et al. (cite: mueller01); (cite: mueller05)), the Jet Propulsion Laboratory (JPL) catalog (Pickett et al. (cite: pickett98)), and the HITRAN database (Gordon et al. (cite: gordon22))." (Observations and data reduction); "we extracted spatially resolved spectra from the data cube without the continuum subtraction at five different positions over the stellar disk" ($^{29}$SiO $\varv=3$, $J$ = 6 – 5 at 251.930 GHz); "In order to estimate where the redshifted deep absorption originates, we examined the $p$-$V$ diagram extracted in the direction at PA = 45$^\circ$ –225$^\circ$ with a slit width of 5 mas from the $^{30}$SiO $\varv=1$ data." ($^{30}$SiO $\varv = 1$, $J$ = 6 – 5 at 252.471 GHz)
+   - software: Splatalogue, CDMS, JPL catalog, HITRAN
+   - parameter: Five disk positions: center (pos 0) and radial offset 15 mas (0.5 R_cont) at PA = -15, 75, 165, 255 deg; off-limb positions at radii 50 mas and 90 mas; p-V slit width 5 mas at PA = 45-225 deg  
+  > "at the center of the fitted elliptical disk and four positions with a radial offset of 15 mas (0.5 $R_{\rm cont}$) at position angles of $-15$$^\circ$, 75$^\circ$, 165$^\circ$, and 255$^\circ$" ($^{29}$SiO $\varv=3$, $J$ = 6 – 5 at 251.930 GHz); "Spectra were also extracted off the limb of the star, at angular radii of 50 mas (1.7 $R_{\rm cont}$ = 2.4 $R_{\star}$) and 90 mas (3 $R_{\rm cont}$ = 4.3 $R_{\star}$)" ($^{30}$SiO $\varv = 1$, $J$ = 6 – 5 at 252.471 GHz); "we examined the $p$-$V$ diagram extracted in the direction at PA = 45$^\circ$ –225$^\circ$ with a slit width of 5 mas from the $^{30}$SiO $\varv=1$ data." ($^{30}$SiO $\varv = 1$, $J$ = 6 – 5 at 252.471 GHz)
+   - assumption: Systemic velocity V_sys = 40.4 km s^-1 LSR; partial spherical shells for p-V kinematic curves  
+  > "The systemic velocity of 40.4 km s$^{-1}$ was adopted in our analysis" (Basic properties of W Hya); "Assuming that the most prominent emission and the deepest absorption on the NE side trace a coherent kinematic structure in the form of a partial spherical shell, we may derive the extent of different shells by tracing various patterns in the $p$-$V$ diagram." ($^{30}$SiO $\varv = 1$, $J$ = 6 – 5 at 252.471 GHz)
+   - fitting: _not stated_
+   - validation: Checked transition probabilities and presence of other transitions of candidate species (e.g., 17OH, AlS, SO18O) to rule out misidentifications  
+  > "However, the observed spectra show no absorption at $3.1$ km s$^{-1}$, which makes it very unlikely that the absorption centered at $V_{\rm rel}$ = $-16$ km s$^{-1}$ is due to $^{17}$OH." (Tentative identification of the vibrationally excited H$_2$O line ($\varv_2 = 2$, $9_{2,8}$ – $8_{3,5}$))
+3. **Model 30SiO v=1 and 29SiO v=3 line profiles to derive radial temperature, density, and velocity profiles**: Construct a 1D spherical LTE radiative transfer model solving the formal integral of monochromatic intensity along lines of sight on and off the stellar continuum disk to reproduce spatially resolved spectra at positions 2 and 6.  
+  > "We constructed a spherical model in LTE to examine whether the above picture can account for the observed spectra of the $^{30}$SiO $\varv=1$ line as well as the $^{29}$SiO $\varv=3$ line." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "We focused on reproducing the spatially resolved spectra of the $^{29}$SiO $\varv=3$ and $^{30}$SiO $\varv=1$ lines extracted at position 2 over the disk and position 6 off the stellar limb used in the above $p$-$V$ diagram analysis." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+   - parameter: Broken power-law T_gas profile (r^-3 for r <= 1.2 R_cont, r^-1 for r > 1.2 R_cont); power-law density profile r^-5 with a factor of 10 step-like drop at 1.6 R_cont; piecewise linear velocity profile from 1.0 to 2.5 R_cont  
+  > "The model is characterized with a gas temperature profile $T_{\rm gas} \propto r^{-3}$ at $r \le 1.2$ $R_{\rm cont}$ and $T_{\rm gas} \propto r^{-1}$ at $r > 1.2$ $R_{\rm cont}$." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "The density profile is steep, $n(^{29}{\rm SiO}) = n(^{30}{\rm SiO}) \propto r^{-5}$. We found it necessary to introduce a step-like decrease in the SiO number density by a factor of 10 at 1.6 $R_{\rm cont}$" (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+   - assumption: Spherical symmetry and LTE; isotope ratio 29Si/30Si = 1; Gaussian microturbulent line profile with FWHM = 2 km s^-1; H2 density of 2.3x10^13 cm^-3 (from 3D model local density 10^-10 g cm^-3) for fractional abundance  
+  > "We constructed a spherical model in LTE to examine whether the above picture can account for the observed spectra of the $^{30}$SiO $\varv=1$ line as well as the $^{29}$SiO $\varv=3$ line." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "adopting an isotope ratio of $^{29}$Si/$^{30}$Si = 1 based on the observed value of $0.99 \pm 0.05$ (Peng et al. (cite: peng13))." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "We assumed a Gaussian line profile with a FWHM of a turbulent velocity of 2 km s$^{-1}$ (Hoai et al. (cite: hoai22))" (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+   - fitting: Model fitting to observed spectra at position 2 (on disk) and position 6 (off limb)  
+  > "We focused on reproducing the spatially resolved spectra of the $^{29}$SiO $\varv=3$ and $^{30}$SiO $\varv=1$ lines extracted at position 2 over the disk and position 6 off the stellar limb" (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+   - validation: Compared derivedSiO fractional abundance (>= 2.2x10^-6) with maximum solar Si abundance (7.4x10^-5) and compared infall velocity with 268 GHz H2O maser infall from Paper I  
+  > "Our model is also in reasonable agreement with the infall at up to $\sim$15 km s$^{-1}$ within 2–3 $R_{\star}$ inferred from the nonthermal H$_2$O emission at 268 GHz in Paper I." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "Therefore, the SiO abundance estimated from our modeling does not contradict the Si abundance." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+4. **Estimate SO2 and SO excitation temperatures, column densities, and fractional abundances**: Perform an LTE population diagram analysis on 6 thermal SO2 lines integrated in two annular regions (30–60 mas and 60–100 mas); derive SO column density from the 251.826 GHz SO line adopting the SO2 excitation temperatures.  
+  > "We carried out a population diagram analysis to estimate the excitation temperature and column density of SO$_{2}$, assuming LTE and that the lines are optically thin." (SO$_{2}$ lines); "We measured the line flux of the emission off the stellar disk by integrating across the line profile in two annular regions between a radius of 30 and 60 mas (i.e., between 1 and 2 $R_{\rm cont}$ or $\sim$1.5 and 3.0 $R_{\star}$) and between 60 and 100 mas" (SO$_{2}$ lines); "We estimated the SO column density in the same annular regions as used for the SO$_{2}$ lines (Sect. [4.9](#subsect_res_so2)) from the $N_J$ = $6_5$–$5_4$ line (#41) alone by assuming the excitation temperatures derived from the SO$_{2}$ lines." (SO lines)
+   - parameter: SO2 lines #8, #12, #13, #19, #22, #26; inner annulus 30–60 mas, intermediate annulus 60–100 mas; SO line #41  
+  > "Therefore, we selected only the SO$_{2}$ lines that show no emission on top of the continuum over the stellar disk at any frequencies across the lines, which are the lines #8, #12, #13, #19, #22, and #26" (SO$_{2}$ lines); "in two annular regions between a radius of 30 and 60 mas (i.e., between 1 and 2 $R_{\rm cont}$ or $\sim$1.5 and 3.0 $R_{\star}$) and between 60 and 100 mas" (SO$_{2}$ lines)
+   - assumption: LTE and optically thin emission; 10% absolute flux calibration uncertainty; H2 column densities of 2.8x10^25–2.8x10^26 cm^-2 (inner) and 1.6x10^25–1.6x10^26 cm^-2 (intermediate) from r^-2 density profile based on Bladh et al. (2019)  
+  > "We carried out a population diagram analysis to estimate the excitation temperature and column density of SO$_{2}$, assuming LTE and that the lines are optically thin." (SO$_{2}$ lines); "The error in the absolute flux calibration was assumed to be 10% (ALMA Technical Handbook, Cortes et al. (cite: cortes25))." (SO$_{2}$ lines); "The averaged H$_2$ column density is $2.8\times10^{25}$–$2.8\times10^{26}$ cm$^{-2}$ and $1.6\times10^{25}$–$1.6\times10^{26}$ cm$^{-2}$ in the innermost and intermediate regions, respectively." (SO$_{2}$ lines)
+   - fitting: Linear fit in population diagram (ln(N_u/g_u) vs E_u/k)  
+  > "Figure [13](#pop_diagram_so2) shows that the measurements are reasonably fit with an excitation temperature ($T_{\rm ex}$) of 750 K and a column density ($N_{\rm so_2}$) of $4.6 \times 10^{18}$ cm$^{-2}$ in the innermost region" (SO$_{2}$ lines)
+   - validation: Calculated optical depth of the selected SO2 lines using Eq. (27) of Goldsmith & Langer (1999) and confirmed tau <= 0.7  
+  > "We also calculated the optical depth of the lines using Eq. (27) of Goldsmith & Langer ((cite: goldsmith99)) and confirmed that the optical depth is $\ensuremath{\lesssim}$0.7 for the selected lines, lending support to the population diagram analysis." (SO$_{2}$ lines)
+5. **Compare spatial distributions of molecular line emission with contemporaneous visible dust-scattered polarized light**: Create integrated intensity maps (and stacked TiO2 map) of molecular lines and overlay with the 820 nm VLT/SPHERE-ZIMPOL polarized intensity map from Paper I.  
+  > "The contours in Fig. [16](#integmap_hcn_v2_1_265) show the polarized intensity map obtained at 820 nm contemporaneously with our ALMA data using VLT/SPHERE-ZIMPOL, as reported in Paper I." (HCN lines); "In Fig. [17](#zimpol_alo_267), we compare our AlO integrated intensity map with the 820 nm polarized intensity map taken contemporaneously with the ALMA data reported in Paper I." (AlO and AlOH); "We stacked the images of five detected TiO$_{2}$ lines to better visualize the spatial distribution of TiO$_{2}$." (TiO and TiO$_{2}$)
+   - parameter: Lines compared with 820 nm polarized intensity: HCN v2=1^1e, AlO, TiO, 30SiO v=1, Si17O v=0, stacked TiO2 (lines #51-#55), SO (#41), and SO2 (lines #9, #20)  
+  > "Figure I.1 shows that the emission of more molecular lines coincides with the dust clouds: $^{30}$SiO ($\varv=1$, line #4), Si$^{17}$O ($\varv=0$, line #5), TiO$_{2}$ (stacked image of lines #51–#55, Sect. [4.14](#subsect_res_tio_tio2)), SO ($\varv=0$, $N_J$ = $6_5$–$5_4$, line #41), and two SO$_{2}$ lines (lines #9 and #20)." (Discussion)
+   - fitting: _not stated_
+   - validation: _not stated_
+
+## Software
+
+- **CASA** 5.6.1-8: Visibility calibration (Cycle 7 pipeline), self-calibration, and image reconstruction with tclean  
+  > "The visibility data were calibrated with the Common Astronomy Software Applications CASA (Casa Team (cite: casa22)), version 5.6.1-8, following the standard steps of the ALMA Cycle 7 pipeline." (Observations and data reduction); "We adopted a pixel scale of 3 mas and the robust weighting with a robustness parameter of 0.5 in the CASA task `tclean`." (Observations and data reduction)
+- **uvmultifit** : Fitting line-free continuum visibility data with a uniform elliptical disk to determine the stellar disk center, angular size, and brightness temperature  
+  > "In order to determine the position of the stellar disk center, we fit the visibility data at the line-free spectral channels in each spectral window before self-calibration with a uniform ellipse using `uvmultifit` (Martí-Vidal et al. (cite: marti-vidal14))." (Observations and data reduction)
+- **Splatalogue** : Spectral line identification  
+  > "We identified the spectral line detections mainly using the Splatalogue service, the Cologne Database for Molecular Spectroscopy (CDMS, Endres et al. (cite: endres16); Müller et al. (cite: mueller01); (cite: mueller05)), the Jet Propulsion Laboratory (JPL) catalog (Pickett et al. (cite: pickett98)), and the HITRAN database (Gordon et al. (cite: gordon22))." (Observations and data reduction)
+- **CDMS** : Spectral line identification  
+  > "We identified the spectral line detections mainly using the Splatalogue service, the Cologne Database for Molecular Spectroscopy (CDMS, Endres et al. (cite: endres16); Müller et al. (cite: mueller01); (cite: mueller05)), the Jet Propulsion Laboratory (JPL) catalog (Pickett et al. (cite: pickett98)), and the HITRAN database (Gordon et al. (cite: gordon22))." (Observations and data reduction)
+- **JPL catalog** : Spectral line identification  
+  > "We identified the spectral line detections mainly using the Splatalogue service, the Cologne Database for Molecular Spectroscopy (CDMS, Endres et al. (cite: endres16); Müller et al. (cite: mueller01); (cite: mueller05)), the Jet Propulsion Laboratory (JPL) catalog (Pickett et al. (cite: pickett98)), and the HITRAN database (Gordon et al. (cite: gordon22))." (Observations and data reduction)
+- **HITRAN** : Spectral line identification  
+  > "We identified the spectral line detections mainly using the Splatalogue service, the Cologne Database for Molecular Spectroscopy (CDMS, Endres et al. (cite: endres16); Müller et al. (cite: mueller01); (cite: mueller05)), the Jet Propulsion Laboratory (JPL) catalog (Pickett et al. (cite: pickett98)), and the HITRAN database (Gordon et al. (cite: gordon22))." (Observations and data reduction)
+- **SIMBAD** : Astronomical database lookup  
+  > "This research made use of the SIMBAD database, operated at the CDS, Strasbourg, France." (Conclusions)
+
+## Numeric results
+
+| quantity | value | uncertainty | units | step | quote |
+|---|---|---|---|---|---|
+| Continuum flux density at 250.727 GHz (spw 1) | 267.7 | 1.3 | mJy | 1 | / 1 / 250.727 / 468.75 / 1.17 / $19.7\times16.5$ / 0.57 / $267.7 \pm 1.3$ / |
+| Continuum flux density at 251.826 GHz (spw 2) | 270.0 | 1.4 | mJy | 1 | / 2 / 251.826 / 468.75 / 1.16 / $19.3\times16.7$ / 0.52 / $270.0 \pm 1.4$ / |
+| Continuum flux density at 252.471 GHz (spw 3) | 271.8 | 1.0 | mJy | 1 | / 3 / 252.471 / 468.75 / 1.16 / $19.3\times16.7$ / 0.47 / $271.8 \pm 1.0$ / |
+| Continuum flux density at 253.703 GHz (spw 4) | 273.7 | 1.4 | mJy | 1 | / 4 / 253.703 / 468.75 / 1.15 / $19.1\times16.5$ / 0.52 / $273.7 \pm 1.4$ / |
+| Continuum flux density at 265.886 GHz (spw 5) | 301.5 | 1.6 | mJy | 1 | / 5 / 265.886 / 468.75 / 1.10 / $18.4\times15.8$ / 0.59 / $301.5 \pm 1.6$ / |
+| Continuum flux density at 266.943 GHz (spw 6) | 305.6 | 1.5 | mJy | 1 | / 6 / 266.943 / 468.75 / 1.10 / $18.4\times15.8$ / 0.55 / $305.6 \pm 1.5$ / |
+| Continuum flux density at 267.198 GHz (spw 7) | 306.0 | 1.5 | mJy | 1 | / 7 / 267.198 / 468.75 / 1.10 / $18.3\times15.8$ / 0.60 / $306.0 \pm 1.5$ / |
+| Continuum flux density at 267.720 GHz (spw 8) | 306.2 | 1.3 | mJy | 1 | / 8 / 267.720 / 937.50 / 1.09 / $18.2\times15.8$ / 0.63 / $306.2 \pm 1.3$ / |
+| Continuum flux density at 268.168 GHz (spw 9) | 307.8 | 1.3 | mJy | 1 | / 9 / 268.168 / 937.50 / 1.09 / $18.1\times15.7$ / 0.65 / $307.8 \pm 1.3$ / |
+| Continuum flux frequency power-law spectral index | 2.08 | 0.03 | dimensionless | 1 | As Fig. [2](#cont_flux_spec) shows, the continuum flux measurements can be well fit with a power law, $F_{\nu} \propto \nu^{2.08 \pm 0.03}$. |
+| Millimeter continuum brightness temperature across 9 spws | 2130–2170 | not stated | K | 1 | The uniform elliptical disk fitting in nine spectral windows results in brightness temperatures of 2130–2170 K over the millimeter continuum stellar disk. |
+| Number of identified molecular spectral lines | 57 | not stated | dimensionless | 2 | We identified 57 lines, which include SiO, H$_2$O, SO$_{2}$, SO, HCN, AlO, AlOH, TiO, TiO$_{2}$, OH, and some of their isotopologues; Table [\[linelist\]](#linelist) lists the 57 molecular lines identified in the present work |
+| Number of detected lines showing nonthermal emission over the stellar disk | 19 | not stated | dimensionless | 2 | While 38 of the detected lines appear in absorption against the continuum stellar disk as expected, we detect nonthermal emission on top of the continuum over the stellar disk in 19 lines, including SiO, H$_2$O, SO$_{2}$, and AlO. |
+| Peak intensity of 29SiO v=2 J=6-5 maser | 18 | not stated | Jy/beam | 2 | The channel maps of the continuum-subtracted images, shown in Fig. [10](#channelmap_29sio_253), reveal three major maser clouds in the east, NNW, and WSW, where the peak intensity reaches $\sim$18 Jy/beam at $V_{\rm rel}$ = $-1.5$ to 0 km s$^{-1}$. |
+| Peak brightness temperature of 29SiO v=2 J=6-5 maser | 10^6 | not stated | K | 2 | The peak intensity of 18 Jy/beam corresponds to a brightness temperature of $10^6$ K. |
+| Model maximum infall velocity (at 1.7 R_cont = 2.5 R_*) | 11 | not stated | km s^-1 | 3 | The derived velocity profile (Fig. [8](#linemodelplot)e) shows an accelerating infall toward the star, starting from 0 km s$^{-1}$ at 2.5 $R_{\rm cont}$ (3.6 $R_{\star}$) and reaching $\sim$11 km s$^{-1}$ at 1.7 $R_{\rm cont}$ (2.5 $R_{\star}$). |
+| Model maximum outflow velocity at deepest layer (1 R_cont) | 10 | not stated | km s^-1 | 3 | The outflow motion becomes stronger at smaller radii and reaches $V = -10$ km s$^{-1}$ at the deepest layer. |
+| Model 29SiO and 30SiO number density at 1 R_cont | 5e6 | not stated | cm^-3 | 3 | A $^{29}$SiO (and $^{30}$SiO) number density of $\sim 5\times10^6$ cm$^{-3}$ at 1 $R_{\rm cont}$ is needed so that the blue part of the lines becomes optically thick as explained above. |
+| Step-like decrease factor in SiO number density at 1.6 R_cont | 10 | 5 | dimensionless | 3 | We found it necessary to introduce a step-like decrease in the SiO number density by a factor of 10 at 1.6 $R_{\rm cont}$ to reproduce the observed $^{30}$SiO $\varv=1$ line; Our modeling suggests the change in the SiO number density by a factor of $10 \pm 5$. |
+| Estimated total fractional SiO abundance at 1 R_cont | >=2.2e-6 | not stated | dimensionless | 3 | the (total) SiO abundance is expected to be $\ensuremath{\gtrsim} 2.2 \times 10^{-6}$. |
+| SO2 excitation temperature in innermost region (30–60 mas) | 750 | 100 | K | 4 | Figure [13](#pop_diagram_so2) shows that the measurements are reasonably fit with an excitation temperature ($T_{\rm ex}$) of 750 K and a column density ($N_{\rm so_2}$) of $4.6 \times 10^{18}$ cm$^{-2}$ in the innermost region; The uncertainties in the $T_{\rm ex}$ and $N_{\rm so_2}$ are $\pm$100 K and 46% in the inner region and $\pm$90 K and 42% in the intermediate region, respectively. |
+| SO2 column density in innermost region (30–60 mas) | 4.6e18 | 46% | cm^-2 | 4 | Figure [13](#pop_diagram_so2) shows that the measurements are reasonably fit with an excitation temperature ($T_{\rm ex}$) of 750 K and a column density ($N_{\rm so_2}$) of $4.6 \times 10^{18}$ cm$^{-2}$ in the innermost region; The uncertainties in the $T_{\rm ex}$ and $N_{\rm so_2}$ are $\pm$100 K and 46% in the inner region and $\pm$90 K and 42% in the intermediate region, respectively. |
+| SO2 excitation temperature in intermediate region (60–100 mas) | 720 | 90 | K | 4 | while the data in the intermediate region result in $T_{\rm ex}$ = 720 K and $N_{\rm so_2}$ = $1.9 \times 10^{18}$ cm$^{-2}$.; The uncertainties in the $T_{\rm ex}$ and $N_{\rm so_2}$ are $\pm$100 K and 46% in the inner region and $\pm$90 K and 42% in the intermediate region, respectively. |
+| SO2 column density in intermediate region (60–100 mas) | 1.9e18 | 42% | cm^-2 | 4 | while the data in the intermediate region result in $T_{\rm ex}$ = 720 K and $N_{\rm so_2}$ = $1.9 \times 10^{18}$ cm$^{-2}$.; The uncertainties in the $T_{\rm ex}$ and $N_{\rm so_2}$ are $\pm$100 K and 46% in the inner region and $\pm$90 K and 42% in the intermediate region, respectively. |
+| Fractional SO2 abundance lower limit (innermost region, 30–60 mas) | >=2e-8 | not stated | dimensionless | 4 | This sets lower limits of $\sim \! 2\times10^{-8}$ (innermost region) and $\sim \! 1\times10^{-8}$ (intermediate region) on the fractional SO$_{2}$ abundance with respect to H$_2$. |
+| Fractional SO2 abundance lower limit (intermediate region, 60–100 mas) | >=1e-8 | not stated | dimensionless | 4 | This sets lower limits of $\sim \! 2\times10^{-8}$ (innermost region) and $\sim \! 1\times10^{-8}$ (intermediate region) on the fractional SO$_{2}$ abundance with respect to H$_2$. |
+| SO column density in innermost region (30–60 mas) | 7.0e17 | factor of ~2 | cm^-2 | 4 | The resulting area-averaged SO column densities are $7.0 \times 10^{17}$ cm$^{-2}$ in the innermost region between 30 and 60 mas (between 1 and 2 $R_{\rm cont}$ $\approx$ 1.5–3 $R_{\star}$) and $3.0 \times 10^{17}$ cm$^{-2}$ in the intermediate region between 60 and 100 mas; Adopting higher or lower excitation temperatures of 1000 K and 500 K leads to an uncertainty in the SO column density by a factor of $\sim$2. |
+| SO column density in intermediate region (60–100 mas) | 3.0e17 | factor of ~2 | cm^-2 | 4 | and $3.0 \times 10^{17}$ cm$^{-2}$ in the intermediate region between 60 and 100 mas (between 2 and 3.3 $R_{\rm cont}$ $\approx$ 3–5 $R_{\star}$).; Adopting higher or lower excitation temperatures of 1000 K and 500 K leads to an uncertainty in the SO column density by a factor of $\sim$2. |
+| Fractional SO abundance lower limit (innermost region, 30–60 mas) | >=3e-9 | not stated | dimensionless | 4 | These column densities translate into fractional SO abundances of $\ensuremath{\gtrsim} 3 \times 10^{-9}$ and $\ensuremath{\gtrsim} \! 2 \times 10^{-9}$ in the innermost and intermediate regions, respectively |
+
+## Qualitative findings
+
+- The stellar disk of W Hya and clumpy, inhomogeneous extended emission out to ~100 mas are spatially resolved, revealing an NNW plume, an SSW/SSE tail, and an atmosphere elongated in the ENE-WSW direction (~70 x 40 mas).  
+  > "ALMA’s high angular resolution allowed us to resolve the stellar disk of W Hya along with clumpy, irregularly shaped emission extending to $\sim$100 mas." (abstract); "This emission includes a plume in the north-northwest, a tail in the south-southwest, and the extended atmosphere elongated in the east-northeast–west-southwest direction, with semimajor and semiminor axes of $\sim$70 and 40 mas ($\sim$3.4 and 1.9 $R_{\star}$), respectively." (abstract)
+- While 38 of the 57 identified lines appear in absorption over the stellar disk, 19 lines (including SiO, H2O, SO2, and AlO) exhibit nonthermal (suprathermal or maser) emission on top of the continuum over the stellar disk.  
+  > "While 38 of the detected lines appear in absorption against the continuum stellar disk as expected, we detect nonthermal emission on top of the continuum over the stellar disk in 19 lines, including SiO, H$_2$O, SO$_{2}$, and AlO." (abstract)
+- The millimeter continuum images at 250.7–268.2 GHz are smooth with at most 1% asymmetry and do not show a hot spot, contrasting with an earlier 338 GHz report from 2015.  
+  > "All continuum images obtained at 250.7–268.2 GHz show a slight offset of the intensity peak to the northwest (NW) by 5–7 mas (0.2–0.3 $R_{\star}$) from the center of the stellar disk obtained by the aforementioned uniform elliptical disk fitting, but the asymmetry in the intensity is 1% at most" (Continuum); "The observed smooth continuum images is in marked contrast to the detection of a hot spot over the stellar disk of W Hya in the 338 GHz continuum reported by Vlemmings et al. ((cite: vlemmings17))" (Continuum)
+- Spatial distributions of SiO, H2O, AlO, TiO, TiO2, SO, and SO2 line emission coincide well with clumpy dust clouds seen in contemporaneous 820 nm visible polarimetric imaging.  
+  > "The emission of the SiO, AlO, TiO, TiO$_{2}$, SO, and SO$_{2}$ lines coincides well with the clumpy dust cloud distribution obtained from contemporaneous visible polarimetric imaging in addition to H$_2$O reported in our previous work." (abstract)
+
+## Claim tuples
+
+- H: The dynamics of the extended atmosphere of W Hya within ~3.6 R_* at minimum light (phase 0.53) are governed by pulsation and/or convection rather than a stationary outflowing wind. | E: Analyzed p-V diagrams and constructed a 1D spherical LTE radiative transfer model to fit spatially resolved spectra of 30SiO v=1 and 29SiO v=3 on and off the stellar disk. | R: Found global accelerating infall from ~0 km s^-1 at ~75 mas (3.6 R_*) to ~11 km s^-1 at ~50 mas (2.4 R_*), decelerating and turning into an outflow up to 10 km s^-1 in deeper layers (<1.3 R_cont), with velocities remaining below the local escape velocity (21 km s^-1). | F: The inner atmosphere within ~3.6 R_* is gravitationally bound and dominated by pulsation and/or convective motions where colliding infall and outflow create density enhancements and shocks. | **supported**
+- H: Emission on top of the continuum over the stellar disk in 19 transitions of SiO, H2O, SO2, and AlO is caused by nonthermal excitation (suprathermal or maser action) rather than hot thermal gas. | E: Compared spatially resolved spectra and channel maps over the stellar disk across multiple transitions of different upper level energies (including 29SiO v=3 and 30SiO v=1 vs 30SiO v=2, Si17O v=0, 29SiO v=2, and SO2 lines). | R: 19 lines show emission above the 2130–2170 K stellar continuum disk (reaching T_b ~ 10^6 K in 29SiO v=2 off the limb and 2588 K in SO2 #9 on the disk), while 29SiO v=3 and 30SiO v=1 remain purely in absorption over the disk. | F: If the emission were thermal from gas hotter than the continuum layer in LTE, it would also appear in 29SiO v=3 and 30SiO v=1; its absence there confirms a nonthermal (suprathermal or maser) origin. | **supported**
+- H: SiO, H2O, and AlO are directly involved in dust grain nucleation, while SO, SO2, TiO, and TiO2 form via shock-induced chemistry in the same post-shock regions as dust clouds. | E: Compared integrated intensity maps of SiO, AlO, TiO, TiO2, SO, and SO2 lines with the contemporaneous 820 nm VLT/SPHERE-ZIMPOL polarized intensity map of clumpy dust clouds, and derived SO2/SO abundances via population diagram analysis. | R: Emission of SiO, AlO, TiO, TiO2, SO, and SO2 spatially coincides with the clumpy dust clouds in the SW, east, and NNW; derived SO2 fractional abundance (>= 1-2 x 10^-8) exceeds chemical equilibrium predictions (< few x 10^-10) by 50–100x but matches nonequilibrium shock models. | F: The spatial overlap of SiO, H2O, and AlO with dust clouds supports their direct role in grain nucleation, whereas the overlap and high abundance of SO2/SO (and TiO/TiO2) indicate co-spatial formation with dust behind pulsation/convection-induced shocks. | **supported**
+- H: HCN in the inner wind of the oxygen-rich AGB star W Hya is formed by shock-induced chemistry in the dynamical atmosphere rather than UV photochemistry. | E: Imaged the vibrationally excited HCN v2=1^1e J=3-2 line (E_u = 1050 K) and compared its radial extent with shock-chemistry and photochemical models and with the 820 nm dust polarized intensity map. | R: HCN v2=1^1e emission is detected close to the star down to ~30 mas (~1.4 R_*), overlapping with the dust formation region and extending to ~100 mas without a hollow-shell morphology or inner destruction. | F: The presence of HCN down to ~1.4 R_* agrees with shock-induced chemistry models (predicting formation at 1–2 R_*) and rules out UV photochemistry models as the origin of inner HCN, though HCN extends beyond the dust clouds and is not depleted by dust formation. | **supported**
+
+## Reasoning
+
+- Why this data: ALMA longest baselines (C43-10) at 250–268 GHz provide ~17–20 mas resolution needed to spatially resolve the ~60 mas stellar continuum disk and probe the region within a few stellar radii where dust forms and the wind accelerates.  
+  > "To clarify the long-standing problem of the mass loss from AGB stars, it is indispensable to probe the region within a few $R_{\star}$, where the dust forms and the wind accelerates." (Introduction); "The angular resolution of $\sim$20 mas of our ALMA data and the large angular size of W Hya of $\sim$60 mas in the millimeter continuum have enabled us to spatially resolve the stellar disk and atmosphere within several stellar radii." (Conclusions)
+- Why this method: Multi-scale deconvolution was chosen because the millimeter continuum is spatially resolved; natural weighting was used for weak HCN v2=1^1e and AlOH lines to enhance extended emission; 1D LTE modeling of 29SiO v=3 and 30SiO v=1 was used because neither line shows nonthermal emission over the disk.  
+  > "Because the millimeter continuum of W Hya is spatially resolved, we deconvolved the images with the multi-scale algorithm (Cornwell (cite: cornwell08))" (Observations and data reduction); "For the vibrationally excited HCN line ($\varv_2=1^{1e}$, $J$ = 3 – 2) at 265.853 GHz (Sect. [4.12](#subsect_res_hcn_265)) and AlOH ($J$ = 8 – 7) line at 251.795 GHz (Sect. [4.13](#subsect_res_alo_aloh)), we reconstructed the images with the natural weighting to enhance the weak extended emission." (Observations and data reduction); "We assumed LTE primarily for simplicity, because full non-LTE radiative transfer modeling is beyond the scope of this paper. Neither of the two lines shows nonthermal (suprathermal or maser) emission over the stellar disk, which would be evidence of non-LTE." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+- Alternative: Millimeter continuum 1% NW asymmetry caused by a dust clump: rejected because the optical depth of forsterite grains at 268 GHz is ~10^-7, producing an intensity contrast of ~10^-7, far below 1%.  
+  > "Although the contemporaneous visible polarimetric imaging reveals clumpy dust cloud formation within $\sim$2 $R_{\star}$ (Paper I), the asymmetry in the millimeter continuum images cannot be attributed to a dust clump for the following reason." (Continuum); "Assuming a condensation temperature of 1500 K for $T_{\rm dust}$, the difference between the stellar continuum intensity and dust emission intensity is $\sim \!\! 10^{-7}$ of the stellar continuum intensity, too small to account for the observed contrast of 1% of the asymmetry." (Continuum)
+- Alternative: Beam dilution ('leak' of limb emission) or hot LTE gas causing redshifted emission over the stellar disk in 30SiO v=2: rejected because channels with strong limb emission at other velocities show no disk leak, and hot LTE gas would produce emission in 29SiO v=3 and 30SiO v=1, which is not observed.  
+  > "Therefore, the emission detected over the stellar disk at the redshifted velocities cannot be attributed to such a leak due to the finite beam size." ($^{30}$SiO $\varv=2$, J = 6 – 5 at 250.728 GHz); "However, if we assume that different molecular species have the same kinetic temperature and they are in local thermodynamical equilibrium (LTE), such hot gas would give rise to emission over the stellar disk in the $^{29}$SiO $\varv=3$ line as well as the $^{30}$SiO $\varv=1$ line (Sect. [4.2](#subsect_res_29sio_251)), which is not observed." ($^{30}$SiO $\varv=2$, J = 6 – 5 at 250.728 GHz)
+- Alternative: Attribution of the -16 to -18 km s^-1 absorption near Si17O to outflowing Si17O or to 17OH (at 250.757411 GHz): rejected because other SiO lines lack such blueshifted absorption and a 48x stronger 17OH transition at +3.1 km s^-1 is absent.  
+  > "We also considered the possibility that the absorption blueshifted by 16 km s$^{-1}$ with respect to the Si$^{17}$O line rest frequency originates from Si$^{17}$O itself in an outflow, instead of the H$_2$O line. However, we deem it to be unlikely, because the other SiO lines do not show such salient absorption blueshifted by 16–18 km s$^{-1}$." (Tentative identification of the vibrationally excited H$_2$O line ($\varv_2 = 2$, $9_{2,8}$ – $8_{3,5}$)); "However, the observed spectra show no absorption at $3.1$ km s$^{-1}$, which makes it very unlikely that the absorption centered at $V_{\rm rel}$ = $-16$ km s$^{-1}$ is due to $^{17}$OH." (Tentative identification of the vibrationally excited H$_2$O line ($\varv_2 = 2$, $9_{2,8}$ – $8_{3,5}$))
+- Alternative: UV photochemistry (interstellar, stellar, or companion UV) as the origin of inner HCN: rejected because photochemical models predict a hollow shell or inner destruction of HCN/SO, conflicting with HCN v2=1^1e detected down to ~1.4 R_*.  
+  > "In this model, HCN is not expected to form in high abundance at the innermost radii, and the emission would be seen as a hollow shell." (HCN lines); "Therefore, the presence of HCN in the inner wind of W Hya is better explained by the shock-induced chemistry model rather than the photochemistry model." (HCN lines)
+- Alternative: Candidate identifications for unidentified lines (SO2 v2=2 v3=1 for U253913; H13CN for U266902; AlS and 17OH for U250797; SO18O for U268099 and U253724): rejected due to high excitation energies, small Einstein coefficients, or non-detection of stronger transitions of the same species.  
+  > "Therefore, it is unlikely that U266902 is due to H$^{13}$CN." (Unidentified lines); "Therefore, we deem the identification as AlS to be unlikely. The $^{17}$OH line has a very small Einstein coefficient of $\log A_{ul} = -7.981$, which also makes it unlikely to be the identification of U250797." (Unidentified lines); "However, while there are a number of ground-state SO$^{18}$O lines in the observed spectral windows, none of them is detected. Therefore, the identification of U268099 and U253724 as SO$^{18}$O is unlikely." (Unidentified lines)
+- How they decided it was enough: _not stated_
+- Limitation (authors): Missing short spacings (largest recoverable scale of 190 mas) cause smooth, extended emission on scales larger than ~190 mas (radius >95 mas) to be resolved out, preventing conclusions on large-scale kinematics and global symmetry of Si17O, SO, and HCN.  
+  > "However, diffuse, smooth emission on scales larger than $\sim$190 mas is missing due to the lack of short baselines, which prevented us from drawing a conclusion on the large-scale kinematics." (Conclusions)
+- Limitation (authors): The 1D spherical LTE model of the SiO lines is simplified; full non-LTE radiative transfer modeling is beyond the scope of the paper, and the model cannot distinguish between a shock-induced density jump and Si depletion onto dust grains at 1.6 R_cont, nor tightly constrain the fraction of Si locked in SiO or dust.  
+  > "We assumed LTE primarily for simplicity, because full non-LTE radiative transfer modeling is beyond the scope of this paper." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "Our current data and model do not allow us to distinguish between two cases, density enhancement or Si depletion." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines); "However, given the simplifications in the model and the uncertainties in the silicon isotope ratios and the estimate of the H$_2$ number density, we cannot draw a definitive conclusion about the fraction of Si locked up in SiO or in dust grains." (Modeling of the $^{30}$SiO $\varv = 1$ and $^{29}$SiO $\varv = 3$ lines)
+- Limitation (authors): Dynamic range limitations in channels containing strong 29SiO v=2 J=6-5 maser emission (~18 Jy/beam) increase the RMS noise up to 2.7 mJy/beam.  
+  > "Due to the dynamic range limit, the RMS noise is much higher in the channels containing the strongest emission, up to 2.7 mJy/beam." (Observations and data reduction)
+- Limitation (authors): Single-epoch observations at phase 0.53 cannot constrain variability-phase dependence of molecular abundances and line excitation.  
+  > "Still, given the phase dependence of the abundance, multi-epoch observations and full non-LTE radiative transfer modeling are necessary to test the nonequilibrium chemistry models." (SO$_{2}$ lines)
+- Caveat (inferred, ours): Assuming LTE for the 29SiO v=3 (E_u = 5266 K) and 30SiO v=1 (E_u = 1790 K) radiative transfer model and for the SO2 population diagram is a strong approximation in a low-density, radiatively pumped extended atmosphere where 19 other transitions show clear non-LTE/suprathermal emission.
+- Caveat (inferred, ours): Fractional abundances of SiO, SO2, and SO rely on H2 densities adopted from 1D/3D hydrodynamical models of generic AGB stars rather than direct H2/CO measurements in the same volume, introducing at least an order-of-magnitude systematic uncertainty.
+- Caveat (inferred, ours): Applying a 1D spherically symmetric model to an atmosphere that the ALMA images explicitly show is highly clumpy and asymmetric (with a plume, tail, and elongated atmosphere) can only yield indicative local physical parameters along the selected sightline.
+
+## Reproducibility
+
+- Data public (paper): ALMA data ADS/JAO.ALMA#2018.1.01239.S acknowledged; appendix figures available on Zenodo (https://doi.org/10.5281/zenodo.17118092)  
+  > "The figures in Appendices are available on Zenodo <https://doi.org/10.5281/zenodo.17118092>" (Conclusions); "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2018.1.01239.S." (Conclusions)
+- Products in archive: _not stated_
+- Missing: Exact channel/frequency masks used to define line-free continuum across the 9 spectral windows (given the high line density of 57+7 lines)
+- Missing: tclean stopping criteria (niter, threshold) and masking parameters for continuum and line cubes
+- Missing: Custom code and exact parameter values (reference density normalization, exact piecewise velocity knot radii/values) for the 1D spherical LTE radiative transfer model of 29SiO and 30SiO
+- Missing: Velocity integration windows used for measuring integrated fluxes of the 6 SO2 lines in the population diagram
+- Data volume (inferred): ~50–150 GB (4 execution blocks in Cycle 6 C43-10 configuration with 44 antennas, 3 hours on-source, 9 spectral windows with 960–1920 channels each, imaged at 3 mas pixel scale)
+- Score (inferred): 78/5, Calibration, self-calibration intervals, CASA version, imaging parameters (pixel size, robust, multiscale scales, small-scale bias), and spectral line lists are very thoroughly documented. Minor deductions for unstated line-free channel ranges, tclean thresholds, and custom 1D LTE radiative transfer code.
+- Rediscovery candidate: yes, Public Cycle 6 ALMA dataset (2018.1.01239.S) with a well-specified self-calibration and imaging recipe and clear quantitative targets (continuum flux densities and spectral index across 9 spws, 57 line identifications, 29SiO maser peak flux, and SO2 rotational diagram parameters).
+
+## Links
+
+- Method: Cornwell (cite: cornwell08) (Multi-scale deconvolution algorithm used in tclean for spatially resolved continuum and line imaging)
+- Method: Martí-Vidal et al. (cite: marti-vidal14) (uvmultifit tool used to fit visibility data with a uniform elliptical disk)
+- Method: Goldsmith & Langer (cite: goldsmith99) (Population diagram formalism and optical depth equation used for SO2 analysis)
+- Companion: Ohnaka et al. ((cite: ohnaka24); hereafter Paper I) (Reported initial results on the 268 GHz continuum, two vibrationally excited H2O lines from the same ALMA dataset, and contemporaneous VLT/SPHERE-ZIMPOL 820 nm polarimetric imaging)
+- Related: ATOMIUM
+
+## Checks
+
+```json
+{
+ "quotes": 258,
+ "quotes_ok": 258,
+ "quote_pass_rate": 1.0,
+ "quotes_too_long": 21,
+ "unsupported_facts": 0,
+ "project_codes": 1,
+ "codes_not_in_text": [],
+ "codes_not_in_obscore": [],
+ "obscore_codes_not_in_card": [],
+ "codes_printed_but_missing": [],
+ "numeric_results": 29,
+ "numeric_problems": 0,
+ "fill": {
+  "facts": 100,
+  "stated": 86,
+  "rate": 0.86
+ },
+ "evidence_ok": true
+}
+```

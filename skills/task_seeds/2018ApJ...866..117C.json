@@ -1,0 +1,334 @@
+{
+ "bibcode": "2018ApJ...866..117C",
+ "title": "ALMA Observation of NGC 5135: The Circumnuclear CO (6-5) and Dust Continuum Emission at 45 pc Resolution",
+ "year": 2018,
+ "doi": "10.3847/1538-4357/aae1f4",
+ "arxiv_id": "1809.06283",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars",
+  "star_formation"
+ ],
+ "question": "What are the properties of the circumnuclear CO (6-5) and 435 um dust emission in NGC 5135, what is the AGN contribution, and what heats the CO (6-5) gas?",
+ "alma_project_codes": [
+  "2013.1.00524.S",
+  "2013.1.00243.S"
+ ],
+ "data": {
+  "bands": "Band 9",
+  "arrays": "not stated",
+  "angular_resolution": "0.17\" x 0.14\" (48 x 40 pc), PA 111 deg",
+  "sensitivity": "channel rms ~18 mJy/beam (13.5 km/s); moment-0 rms 1.2 Jy/beam km/s; continuum 2.2 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel FTS CO(6-5) flux of whole galaxy, 1,617 Jy km/s",
+    "evidence": [
+     {
+      "loc": "3.1 CO (6-5) Line Emission",
+      "quote": "the *Herschel*/FTS observation gives a ${\\mathrm{CO}}\\,(6\\text{--}5)$ flux of 1,617 Jy km s$^{-1}$"
+     }
+    ]
+   },
+   "citation": "(cite: 2017ApJS..230....1L)"
+  },
+  {
+   "what": {
+    "value": "[Fe II]/Br-gamma line ratios from IFU observations",
+    "evidence": [
+     {
+      "loc": "4.3.1 SN-powered Shock Heating Scenario",
+      "quote": "(cite: 2012ApJ...749..116C) measured the intensity and velocity fields of both the Br-$\\gamma$ and the \\[Fe ii\\] 1.64$\\,\\mu{\\rm m}$ emission lines in the nuclear region of NGC 5135."
+     }
+    ]
+   },
+   "citation": "(cite: 2012ApJ...749..116C)"
+  },
+  {
+   "what": {
+    "value": "VLA 6 cm radio image used to locate AGN",
+    "evidence": [
+     {
+      "loc": "4.1 The Central AGN",
+      "quote": "The VLA 6 cm radio continuum image of (cite: 1989ApJ...343..659U) has a modest resolution of 0.91$''$ $\\times$ 0.60$''$"
+     }
+    ]
+   },
+   "citation": "(cite: 1989ApJ...343..659U)"
+  },
+  {
+   "what": {
+    "value": "Intrinsic 2-10 keV X-ray luminosity ~1.8e43 erg/s",
+    "evidence": [
+     {
+      "loc": "4.1 The Central AGN",
+      "quote": "The intrinsic 2.0-10 keV X-ray luminosity of NGC 5135 is $\\sim$1.8 $\\times$ 10$^{43}$ erg s$^{-1}$ (cite: 2012MNRAS.419.2089S)."
+     }
+    ]
+   },
+   "citation": "(cite: 2012MNRAS.419.2089S)"
+  },
+  {
+   "what": {
+    "value": "AGN IR SED template",
+    "evidence": [
+     {
+      "loc": "4.1 The Central AGN",
+      "quote": "We therefore used the infrared AGN SED for $L_{2.0-10\\,\\,\\rm keV} \n> 10^{42.9}$ erg s$^{-1}$ in (cite: 2011MNRAS.414.1082M)"
+     }
+    ]
+   },
+   "citation": "(cite: 2011MNRAS.414.1082M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image line cube and continuum",
+   "method": "Clean with Briggs weighting; line from one SPW, continuum from the other three; uv-taper version also made",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; outertaper = 0.4\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Moment maps and total fluxes",
+   "method": "Moment 0 integrated 3971-4157 km/s; moments 1 and 2 with 4 sigma_ch threshold on uv-tapered image",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Radio velocity convention nu_obs = nu_rest(1 - V/c)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "AGN upper limits",
+   "method": "3-sigma upper limits at AGN position (radio peak) for CO and continuum; SED comparison",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "AGN emission confined to area smaller than beam"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Clump parameters",
+   "method": "2D Gaussian fit to clump maps; CLUMPFIND variant for blends; deconvolve beam; extract spectra in elliptical apertures",
+   "software": [
+    "CASA",
+    "CLUMPFIND"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Virial and molecular gas masses",
+   "method": "M_vir = 5 dV^2 R / G; M_mol from 435 um flux via Scoville et al. 2016 and from CO flux with alpha_CO",
+   "software": [],
+   "key_parameters": [
+    "dV deconvolved with 13.5 km/s channel; 10 km/s rotation removed; flux x1.731 for total"
+   ],
+   "assumptions": [
+    "T_d = 25 K",
+    "alpha_CO = 0.8; CO(6-5)/CO(1-0) ~ 2"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare CO/continuum ratio with [FeII]/Br-gamma and other-wavelength images",
+   "method": "Plot R_CO/cont vs [FeII]/Br-gamma for clumps; overlay on PAH, Pa-alpha, HST images",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "HST images aligned by matching adopted AGN position with brightest point"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total CO(6-5) flux of four regions",
+   "value": "512",
+   "uncertainty": "24",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO (6-5) Line Emission",
+     "quote": "The total CO (6-5) flux from the combined four regions in Fig. 1a is 512 $\\pm$ 24 Jy km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Total CO(6-5) flux in 0.4\" tapered image",
+   "value": "841",
+   "uncertainty": "45",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO (6-5) Line Emission",
+     "quote": "is 841 $\\pm$ 45 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "435 um continuum flux of four regions",
+   "value": "181",
+   "uncertainty": "25",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2 Dust Continuum Emission",
+     "quote": "we derived a total flux of 181 $\\pm$ 25 mJy for the 435$\\,\\mu{\\rm m}$ continuum emission"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of Herschel CO(6-5) flux in ALMA regions",
+   "value": "~32",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO (6-5) Line Emission",
+     "quote": "account for $\\sim$32% of the total CO (6-5) flux of the galaxy"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN CO(6-5) 3-sigma upper limit",
+   "value": "3.6",
+   "uncertainty": "not stated",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 The Central AGN",
+     "quote": "3 $\\times$ (1.2 Jy  km s$^{-1}$) = 3.6 Jy  km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "AGN 435 um continuum 3-sigma upper limit",
+   "value": "5.4",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1 The Central AGN",
+     "quote": "with the 3-$\\sigma$ flux upper limit equal to 5.4 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump radii range",
+   "value": "45-180",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Molecular Gas Clumps",
+     "quote": "the radii range from 45 to 180 pc for the clumps"
+    }
+   ]
+  },
+  {
+   "quantity": "Clump line widths",
+   "value": "60-88",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Molecular Gas Clumps",
+     "quote": "The resulting $\\Delta V_{\\rm FWHM}$ ranges from 60 to 88  km s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Virial masses",
+   "value": "~7 to 60 x 10^7",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Molecular Gas Clumps",
+     "quote": "rage from $\\sim$7 to 60 $\\times 10^7\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular gas masses (dust)",
+   "value": "~1 to 10 x 10^8",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2 Properties of Molecular Gas Clumps",
+     "quote": "ranges from $\\sim$1 to 10 $\\times 10^8\\,M_{\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CO/cont Category (i)",
+   "value": "600-1800",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 CO (6-5) Emission to Continuum Ratio",
+     "quote": "$600 \\lesssim R_{\\rm CO/cont}\n\\lesssim 1800$  km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "R_CO/cont Category (ii)",
+   "value": ">4000",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.3.1 CO (6-5) Emission to Continuum Ratio",
+     "quote": "the two Category (ii) clumps have $R_{\\rm CO/cont} > 4,000$  km s$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Calibrator names other than the phase calibrator (bandpass, flux) and flux scale",
+  "Whether the pipeline or manual calibration was used",
+  "Self-calibration, if any",
+  "Line-free channel selection and continuum subtraction method",
+  "Clean threshold, mask, niter, image size, cell size, deconvolver",
+  "Exact aperture definitions for clump spectra and total flux regions",
+  "CO(6-5)/CO(1-0) ratio basis and derivation of 58% flux correction factor",
+  "Kernel for the Gaussian fits and error estimation method",
+  "Used CO(6-5) clump sizes and the deconvolvefrombeam inputs"
+ ],
+ "missing_for_reproduction": [
+  "Flux/bandpass calibrators and calibration scripts",
+  "Clean parameters (mask, threshold, cell, image size)",
+  "Clump aperture definitions",
+  "Table of [FeII]/Br-gamma ratios per clump"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Single public dataset and simple analysis, but imaging parameters, apertures and external line ratios are missing.",
+ "rediscovery_reason": "Public data, a mostly numeric result set (fluxes, clump parameters) and a simple recipe; some imaging details are missing.",
+ "source_card": "cards/2018ApJ...866..117C/sonnet/card.md"
+}

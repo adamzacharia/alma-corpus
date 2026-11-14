@@ -1,0 +1,548 @@
+{
+ "bibcode": "2026A&A...707A.221S",
+ "title": "ALMAGAL: VI. The spatial distribution of dense cores during the evolution of cluster-forming massive clumps",
+ "year": 2026,
+ "doi": "10.1051/0004-6361/202555619",
+ "arxiv_id": "2512.05914",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "Characterize where and how dense cores are distributed in massive potentially cluster-forming clumps to trace how fragmentation is initially set and proceeds across early evolutionary stages before gas dispersal.",
+ "alma_project_codes": [
+  "2019.1.00195.L"
+ ],
+ "data": {
+  "bands": "Band 6 (~220 GHz, ~1.4 mm)",
+  "arrays": "ACA 7m and main 12m antenna arrays",
+  "angular_resolution": "~0.3'' (C2+C5) and ~0.15'' (C3+C6), corresponding to ~1000 au",
+  "sensitivity": "~0.05 mJy/beam in the central region of the FoV"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMAGAL compact source/core catalog (positions, sizes, densities, and masses of 6348 objects in 844 clumps)",
+    "evidence": [
+     {
+      "loc": "ALMAGAL core catalog",
+      "quote": "(cite: Coletta2025) extracted compact sources in ALMAGAL continuum images using a modified version of the CuTEx photometric package (cite: Molinari2011). The entire catalog of identified compact sources is composed of 6348 objects detected at 5$\\sigma$ in 844 clumps."
+     },
+     {
+      "loc": "ALMAGAL core catalog",
+      "quote": "We adopted the positions provided by (cite: Coletta2025) to analyze how the cores are distributed in the fields and to measure their relative separations"
+     },
+     {
+      "loc": "Mass segregation in the ALMAGAL fields",
+      "quote": "We adopted the core masses estimated from (cite: Coletta2025) and computed $\\Lambda_{MSR}(N_{MST})$ in the 296 ALMAGAL fields hosting at least eight cores"
+     }
+    ]
+   },
+   "citation": "(cite: Coletta2025)"
+  },
+  {
+   "what": {
+    "value": "Updated ALMAGAL clump physical properties (heliocentric distances, masses, luminosities, surface densities, dust temperatures)",
+    "evidence": [
+     {
+      "loc": "The ALMAGAL clump sample",
+      "quote": "The ALMAGAL clumps, with physical properties updated thanks to these new measurements, have masses $M$ between $\\sim100$ and 12000 M$_{\\odot}$, bolometric luminosity, $L$, between $\\sim50$ and $\\sim5\\times10^{5}$ L$_{\\odot}$, and are located in the Galaxy at heliocentric distances, $d_{cl}$, from $\\sim1$ up to 14 kpc"
+     },
+     {
+      "loc": "The Jeans length and mass for ALMAGAL clumps",
+      "quote": "adopting as temperature the one of the dust, $T_{d}$, derived from Herschel/Hi-GAL data and reported in Table A.1 in (cite: Molinari2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Molinari2025; Elia2025arXiv); Benedettini et al. in prep."
+  },
+  {
+   "what": {
+    "value": "Herschel Hi-GAL clump sizes (R_cl) and 250 um photometric centers",
+    "evidence": [
+     {
+      "loc": "Center and size of the clusters of ALMAGAL cores",
+      "quote": "For this reason, we adopted the clump sizes, $R_{cl}$, determined from Herschel 250 $\\mu$m data and defined as the circularized half-width at half-maximum of the elliptical Gaussian fit with CuTEx (cite: Molinari2016; Elia2021)."
+     }
+    ]
+   },
+   "citation": "(cite: Molinari2016; Elia2017; Elia2021)"
+  },
+  {
+   "what": {
+    "value": "Core separations, Q parameters, and mass segregation measurements from the ASHES, CORE, ASSEMBLE, DIHCA, and SQUALO surveys for comparison",
+    "evidence": [
+     {
+      "loc": "Correlation with the clump evolution",
+      "quote": "allow us to also compare our results with those of the surveys ASHES (cite: Sanhueza2019), CORE (cite: Beuther2018), and ASSEMBLE (cite: Xu2024), each of which observed systems in a specific evolutionary phase."
+     },
+     {
+      "loc": "Correlation with the clump evolution",
+      "quote": "Only a few clumps with $1\\,<\\,L/M\\,<\\,10$ L$_{\\odot}/$M$_{\\odot}$ were observed before ALMAGAL, a large fraction of them were obtained by the SQUALO (cite: Traficante2023) and the DIHCA survey (cite: Ishihara2024)."
+     }
+    ]
+   },
+   "citation": "(cite: Sanhueza2019; Morii2024; Beuther2018; Xu2024; Traficante2023; Ishihara2024)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Select clump and core subsamples from the ALMAGAL catalog",
+   "method": "Select ALMAGAL clumps hosting at least N_core >= 4 (514 clumps, 5728 cores) from the Coletta et al. (2025) catalog, further dividing into near (C2+C5) and far (C3+C6) groups and applying higher cuts (N_core >= 8 for mass segregation, N_core >= 10 for Q parameter).",
+   "software": [],
+   "key_parameters": [
+    "N_cores >= 4 (514 clumps), N_cores >= 8 (296 clumps), N_cores >= 10 (226 clumps)"
+   ],
+   "assumptions": [
+    "All compact sources in the ALMAGAL catalog represent star-forming cores"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Determine cluster centers, sizes, convex hulls, and morphological elongations",
+   "method": "Compute cluster center via geometrical and mass-weighted average of core positions; define cluster radius R_cluster as distance of farthest core from center; construct convex hull (CH) polygon of core positions; classify systems by comparing number of hull vertices N_v^hull to interior cores N_in^hull; measure elongation via ellipse fit to CH (e_CH, PA_CH) and ratio xi = R_cluster / R^CH.",
+   "software": [],
+   "key_parameters": [
+    "Distance cut d_cl >= 3.7 kpc (347 clumps) and 3.7 <= d_cl <= 6.5 kpc (302 clumps) to test FoV bias on R_cluster^ph"
+   ],
+   "assumptions": [
+    "Compute R^CH without the 1/(1 - N_v^hull / N_cores) normalization factor due to small N_cores"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Compute minimum spanning tree (MST) core separations and deproject to 3D",
+   "method": "Compute pairwise angular distance matrix delta(i,j) and extract the (N-1) MST edges l_i using an IDL implementation of Prim's algorithm; convert to linear projected separations using updated heliocentric distances; statistically deproject to 3D separations l_i^depr by multiplying by 4/pi; compute clump-averaged estimators (min, max, mean, median, 25th/75th percentiles, and Gaussian KDE mode and 68% peak width for 437 clumps with >5 cores).",
+   "software": [
+    "IDL",
+    "scipy"
+   ],
+   "key_parameters": [
+    "Deprojection scaling factor = 4/pi",
+    "Clump-averaged KDE mode computed for 437 clumps hosting > 5 cores"
+   ],
+   "assumptions": [
+    "Random 3D orientation of core pairs along the line of sight yielding an expected projection factor of pi/4"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Evaluate evolutionary and density trends of core separations",
+   "method": "Compare stacked ensemble and clump-averaged deprojected separations across clump L/M evolutionary classes (L/M <= 1, 1 <= L/M <= 10, L/M >= 10 L_sun/M_sun) and as continuous functions of L/M, clump surface density Sigma_cl, and volume density n_cl; apply KS, Mann-Whitney U, Spearman, Pearson, and Silverman multimodality tests; fit power-law relations against Sigma_cl and n_cl.",
+   "software": [],
+   "key_parameters": [
+    "L/M classes: L/M <= 1 (129 clumps), 1 <= L/M <= 10 (176 clumps), L/M >= 10 L_sun/M_sun (209 clumps)"
+   ],
+   "assumptions": [
+    "Spherical clump geometry and mean molecular weight per free particle mu = 2.37 (solar composition) to compute Sigma_cl and n_cl",
+    "Clump bolometric luminosity-to-mass ratio L/M is an indicator of evolutionary stage"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compare observed core separations and masses with thermal Jeans fragmentation predictions",
+   "method": "Compute clump-averaged thermal Jeans length lambda_J^th and thermal Jeans mass M_J^th from clump volume density n_cl and Herschel dust temperature T_d; compare clump-averaged (l^median, l^mode) and ensemble deprojected separations l^depr to lambda_J^th, and core masses M_core to M_J^th, across L/M and Sigma_cl.",
+   "software": [],
+   "key_parameters": [
+    "mu = 2.37; lambda_J^th approx 4300 au * (T/10 K)^(1/2) * (n/10^6 cm^-3)^(-1/2); M_J^th approx 0.28 M_sun * (T/10 K)^(3/2) * (n/10^6 cm^-3)^(-1/2)"
+   ],
+   "assumptions": [
+    "Non-magnetized, homogeneous, isothermal, and self-gravitating clump with gas and dust thermally coupled (T_g = T_d)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Quantify spatial clustering structure using the Q parameter and calibrate with synthetic clusters",
+   "method": "Compute the Cartwright & Whitworth (2004) Q = m_bar / s_bar parameter for ALMAGAL clumps; run 1.1 million 3D synthetic cluster realizations (radial power-law p = 0, 1, 2, 2.9 and fractal box-method D = 1.5, 2.0, 2.5 for N_cores = 4 to 30, projected to 2D) to calibrate Q thresholds for small N_cores; evaluate Q vs L/M for the 226 clumps with N_cores >= 10.",
+   "software": [],
+   "key_parameters": [
+    "N_cores >= 10 (226 clumps); calibrated thresholds: Q < 0.65 (robustly subclustered), Q > 0.8 (robustly centrally concentrated), Q = 0.75 (approximate boundary for uniform distribution)"
+   ],
+   "assumptions": [
+    "3D spherical radial power-law or 3D fractal box-method spatial distributions projected onto 2D plane"
+   ]
+  },
+  {
+   "order": 7,
+   "goal": "Measure mass segregation using the Mass Segregation Ratio (Lambda_MSR) and Monte Carlo mass uncertainties",
+   "method": "For the 296 clumps with N_cores >= 8, compute Lambda_MSR(N_MST) = <l_random> / l_M using 1000 random draws for <l_random>; propagate 20% Gaussian core mass uncertainties via 500 Monte Carlo realizations per clump; classify a clump as robustly mass segregated if Lambda_MSR exceeds unity by more than sigma_l,random in >70% of MC realizations; compute Mass Segregation Integral (MSI), Lambda_MSR^max, and N_MST^crit across L/M classes.",
+   "software": [],
+   "key_parameters": [
+    "N_cores >= 8 (296 clumps); 1000 random draws for <l_random>; 500 Monte Carlo realizations with 20% Gaussian core mass uncertainty; >70% probability threshold for robust MS"
+   ],
+   "assumptions": [
+    "20% Gaussian uncertainty on core masses"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of analyzed ALMAGAL clumps with N_cores >= 4",
+   "value": "514",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core catalog",
+     "quote": "In summary, the analyzed dataset comprises 514 clumps ($N_{core}\\,\\geq\\,4$), containing a total of 5728 cores, greatly increasing the statistics available in the literature."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of cores in analyzed clumps (N_cores >= 4)",
+   "value": "5728",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core catalog",
+     "quote": "In summary, the analyzed dataset comprises 514 clumps ($N_{core}\\,\\geq\\,4$), containing a total of 5728 cores, greatly increasing the statistics available in the literature."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of clumps with more cores inside convex hull than on vertices (N_in^hull > N_v^hull)",
+   "value": "37",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "The spatial distribution of ALMAGAL cores",
+     "quote": "About $\\sim37$% of the ALMAGAL clumps studied in this work (190 out of 514) have more cores within the CH boundaries than at the edges ($N_{in}^{hull}\\,>\\,N_{v}^{hull}$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Physical upper cut-off of cluster radius R_cluster^ph",
+   "value": "0.32",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Center and size of the clusters of ALMAGAL cores",
+     "quote": "However, the cut-off at 0.32 pc remains even in this selected sample, suggesting that it is a true physical upper limit to the cluster size."
+    }
+   ]
+  },
+  {
+   "quantity": "Typical ratio of cluster radius to clump radius (R_cluster^ph / R_cl)",
+   "value": "0.3 to 1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Center and size of the clusters of ALMAGAL cores",
+     "quote": "The distribution of the ratio of $R^{ph}_{cluster}$ to $R_{cl}$ reported in Fig. 5 indicates that the cores are typically located between $\\sim0.3$ and $\\sim1.2\\times R_{cl}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median cluster elongation e_CH (and xi) for all 514 systems",
+   "value": "2.2 (xi ~ 2.3)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Morphology of the clusters of cores",
+     "quote": "The most common shape of the cluster is a slightly elongated ellipse, with a median $e_{CH}\\sim2.2$ [$\\xi\\sim2.3$]."
+    }
+   ]
+  },
+  {
+   "quantity": "Median cluster elongation e_CH for clustered systems",
+   "value": "1.9",
+   "uncertainty": "+0.6/-0.4",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Morphology of the clusters of cores",
+     "quote": "Clustered systems typically have smaller elongation, with a median and interquartile range equal to $\\xi\\,=\\,1.9^{+0.4}_{-0.3}$ ($e_{CH}\\,=\\,1.9^{+0.6}_{-0.4}$)."
+    }
+   ]
+  },
+  {
+   "quantity": "Total number of measured MST edges (separations)",
+   "value": "5214",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Methods",
+     "quote": "We identified a total of 5214 edges, $l_{i}$, measured in all 514 ALMAGAL fields analyzed in this study."
+    }
+   ]
+  },
+  {
+   "quantity": "Median projected linear separation of cores (near sample)",
+   "value": "6600",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The distribution of core separations",
+     "quote": "with the median of the two distributions equal to $\\sim6600$ and $\\sim7400$ au for near and far sample, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median projected linear separation of cores (far sample)",
+   "value": "7400",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "The distribution of core separations",
+     "quote": "with the median of the two distributions equal to $\\sim6600$ and $\\sim7400$ au for near and far sample, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of clumps where median and mode separation agree within 25%",
+   "value": "72",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Characteristic separations between cores",
+     "quote": "These two quantities agree within 25% for 316 systems ($\\sim72\\%$), and represent cases where $P^{k}(l^{k})$ is rather symmetric around a central value equal to the measurements provided."
+    }
+   ]
+  },
+  {
+   "quantity": "Median deprojected core separation in young clumps (L/M < 1 L_sun/M_sun)",
+   "value": "12000 (near) and 18000 (far)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Correlation with the clump evolution",
+     "quote": "Specifically, in young systems with $L/M\\,<\\,1$ L$_{\\odot}/$M$_{\\odot}$, the near and far distributions have median values equal to $\\sim12000$ and $\\sim18000$ au ($\\sim0.06-0.085$ pc), respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median deprojected core separation in evolved clumps (L/M > 10 L_sun/M_sun)",
+   "value": "7300-7700",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Correlation with the clump evolution",
+     "quote": "In the evolved clumps with $L/M\\,>\\,10$ L$_{\\odot}/$M$_{\\odot}$, the separations decrease to median values of $\\sim7300-7700$ au ($\\sim0.035-0.038$ pc)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between clump-averaged median [mode] separation and L/M",
+   "value": "-0.37 [-0.38]",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Correlation with the clump evolution",
+     "quote": "as we determined a Spearman correlation coefficient equal to $\\rho_{s} = -0.37\\,[-0.38]$ for the median [mode] with a $p$-value $\\ll10^{-9}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law exponent B of l^depr vs Sigma_cl (near sample, all data)",
+   "value": "-0.28",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Relation with clump surface and volume density",
+     "quote": "near | 4.02$\\pm$0.02 | 4.00$\\pm$0.01 | -0.34$\\pm$0.04 | -0.28$\\pm$0.02 | 5.54$\\pm$0.02 | 6.05$\\pm$0.10 | -0.29$\\pm$0.06 | -0.38$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Power-law exponent D of l^depr vs n_cl (near sample, all data)",
+   "value": "-0.38",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Relation with clump surface and volume density",
+     "quote": "near | 4.02$\\pm$0.02 | 4.00$\\pm$0.01 | -0.34$\\pm$0.04 | -0.28$\\pm$0.02 | 5.54$\\pm$0.02 | 6.05$\\pm$0.10 | -0.29$\\pm$0.06 | -0.38$\\pm$0.02"
+    }
+   ]
+  },
+  {
+   "quantity": "Median thermal Jeans length of ALMAGAL clumps",
+   "value": "14500",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Jeans length and mass for ALMAGAL clumps",
+     "quote": "The thermal Jeans length ranges from $\\sim3500$ to $\\sim60000$ au ($\\sim0.017-0.3$ pc), with a median value of $\\sim14500$ au ($\\sim0.07$ pc), and Jean masses from $\\sim0.2$ to 14 M$_{\\odot}$, with a median equal to 0.89 M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median thermal Jeans mass of ALMAGAL clumps",
+   "value": "0.89",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "The Jeans length and mass for ALMAGAL clumps",
+     "quote": "and Jean masses from $\\sim0.2$ to 14 M$_{\\odot}$, with a median equal to 0.89 M$_{\\odot}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio of clump-averaged median separation to thermal Jeans length (l^median / lambda_J^th)",
+   "value": "0.91",
+   "uncertainty": "interquartile range 0.56 to 1.60",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core separations compared to Jeans length",
+     "quote": "Quantitatively, the median and the mode are centered around 0.91$\\times$ and 0.76$\\times$ $\\lambda_{J}^{th}$, respectively. The first and third quartiles are equal to $0.56\\times-1.60\\times$ and $0.5\\times-1.26\\times$ $\\lambda_{J}^{th}$ for the median and the mode, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median ratio of clump-averaged mode separation to thermal Jeans length (l^mode / lambda_J^th)",
+   "value": "0.76",
+   "uncertainty": "interquartile range 0.5 to 1.26",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core separations compared to Jeans length",
+     "quote": "Quantitatively, the median and the mode are centered around 0.91$\\times$ and 0.76$\\times$ $\\lambda_{J}^{th}$, respectively. The first and third quartiles are equal to $0.56\\times-1.60\\times$ and $0.5\\times-1.26\\times$ $\\lambda_{J}^{th}$ for the median and the mode, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Secondary separation peak ratio l^depr / lambda_J^th in young, poorly fragmented clumps",
+   "value": "3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core separations compared to Jeans length",
+     "quote": "One of the two peaks of the distributions is centered at $R\\sim1$, indicating a population of cores which are separated by a thermal Jeans length, while the second peak is shifted at higher values, which are centered at about $R\\sim3$."
+    }
+   ]
+  },
+  {
+   "quantity": "Median core-to-thermal-Jeans mass ratio (M_core / M_J^th) across entire sample",
+   "value": "0.3",
+   "uncertainty": "interquartile range 0.1 to 0.75",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core masses versus thermal Jeans mass",
+     "quote": "The median value is $M_{core}/M_{J}^{th}\\sim0.3$ and the first and third quartiles are equal to 0.1 and 0.75, respectively, indicating that most of the ALMAGAL cores have masses considerably lower than $M_{J}^{th}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak of M_core / M_J^th distribution in young clumps (L/M <= 1 L_sun/M_sun)",
+   "value": "0.6",
+   "uncertainty": "interquartile range 0.3 to 1.33",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "ALMAGAL core masses versus thermal Jeans mass",
+     "quote": "In fact, the distribution of M$_{core}$/M$_{J}^{th}$ for cores in clumps with $L/M\\lesssim1$ L$_{\\odot}/$M$_{\\odot}$ peaks at $\\sim0.6$, and shows a relatively narrow distribution with the first and third quartiles equal to 0.3 and 1.33."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of clumps (out of 226 with N_cores >= 10) robustly subclustered (Q < 0.65) and centrally concentrated (Q > 0.8)",
+   "value": "60 (Q < 0.65) and 38 (Q > 0.8)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Q Parameter",
+     "quote": "This led us to assess the classification with sufficient reliability only for the 60 fields where $Q\\,<\\,0.65$ and for the 38 where $Q\\,>\\,0.8$."
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman correlation coefficient between Q parameter and L/M (for N_cores >= 10)",
+   "value": "0.185",
+   "uncertainty": "p = 0.0053",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "The Q Parameter",
+     "quote": "A weak dependence of $Q$ with the $L/M$ ratio may be identified, but the Pearson and Spearman correlation coefficients equal to $\\rho_{p}$ = 0.18 and $\\rho_{s}$ = 0.185 with $p$-values of 0.0067 and 0.0053 are significantly lower than the values reported by (cite: Xu2024)"
+    }
+   ]
+  },
+  {
+   "quantity": "Number (and fraction) of clumps with N_cores >= 8 showing robust mass segregation",
+   "value": "110 (37%)",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Mass segregation in the ALMAGAL fields",
+     "quote": "We classified a system as if this fraction is higher than $70\\%$, a condition found in 110 fields ($\\sim37$% of the total)."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of clumps with mass segregation across L/M evolutionary bins (L/M < 2, 2 < L/M <= 10, L/M > 10 L_sun/M_sun)",
+   "value": "17%, 30%, 49%",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Mass segregation in the ALMAGAL fields",
+     "quote": "The occurrence of MS in the young clumps of the ALMAGAL sample ($\\sim17\\%$ with 10 out of 59) is similar (and compatible within the uncertainty of the counting statistic) to the one measured in the ASHES sample"
+    },
+    {
+     "loc": "Mass segregation in the ALMAGAL fields",
+     "quote": "It first rises to 30% (25 out of 83) and then reaches $\\sim49$% (75 out of 154) for $2\\,<\\,L/M\\,<\\,10$ L$_{\\odot}$/M$_{\\odot}$ and $L/M\\,>\\,10$ L$_{\\odot}$/M$_{\\odot}$, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact kernel bandwidth selection rule used in the scipy Gaussian KDE for computing the mode and 68% peak width of core separations",
+  "Exact definition of how an ellipse is fitted to the convex hull polygon to derive e_CH and PA_CH (e.g., fitting to vertices vs area moments)",
+  "Complete core catalog table from Coletta et al. (2025) and clump physical parameter table from Molinari et al. (2025) / Benedettini et al. (in prep.)"
+ ],
+ "missing_for_reproduction": [
+  "The custom IDL MST analysis scripts, scipy KDE bandwidth settings, and synthetic cluster simulation scripts are not released.",
+  "Direct access to the electronic catalog tables from companion papers Coletta et al. (2025) and Molinari et al. (2025) is required as input."
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "The paper operates entirely on well-defined catalog positions and masses from Coletta et al. (2025) and clump parameters from Molinari et al. (2025), provides explicit mathematical formulas for all spatial metrics (MST, deprojection, Jeans length/mass, Q, Lambda_MSR, MSI) and synthetic cluster generation, and releases the full output tables at CDS. Minor deductions for unstated KDE bandwidths and ellipse-fitting details.",
+ "rediscovery_reason": "Given the published ALMAGAL core catalog (Coletta et al. 2025) and clump catalog (Molinari et al. 2025), all spatial metrics (MST separations, convex hull elongations, Q parameters, Lambda_MSR mass segregation ratios, and Jeans comparisons) can be directly and quantitatively reproduced from catalog tables alone.",
+ "source_card": "cards/2026A%26A...707A.221S/sonnet/card.md"
+}

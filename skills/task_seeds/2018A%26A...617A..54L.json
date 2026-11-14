@@ -1,0 +1,185 @@
+{
+ "bibcode": "2018A&A...617A..54L",
+ "title": "Molecular gas and dark neutral medium in the outskirts of Chamaeleon",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201833167",
+ "arxiv_id": "1807.02210",
+ "fields": [
+  "milky_way_ism"
+ ],
+ "question": "Can molecular gas, traced by HCO+ absorption, be detected in the outskirts of Chamaeleon where DNM was inferred but CO emission was not detected, and does it account for the DNM?",
+ "alma_project_codes": [
+  "2016.1.00714.S"
+ ],
+ "data": {
+  "bands": "lambda 3 mm (about 89 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "approximately 1 arcsec instrumental",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "N(DNM) values along sightlines",
+    "evidence": [
+     {
+      "loc": "2.3 DNM",
+      "quote": "Specific values of N(DNM) along the present sightlines were extracted from that work for the present use"
+     }
+    ]
+   },
+   "citation": "Planck Collaboration et al. (2015)"
+  },
+  {
+   "what": {
+    "value": "Reddening E(B-V) from dust maps",
+    "evidence": [
+     {
+      "loc": "2.5 Reddening and dust optical depth",
+      "quote": "The 6 ′ resolution dust-emission maps scaled to optical reddening E B−V by Schlegel et al. (1998) are cited in Tables 1 and 2."
+     }
+    ]
+   },
+   "citation": "Schlegel et al. (1998)"
+  },
+  {
+   "what": {
+    "value": "N(HI) associated with Chamaeleon from pseudo-Voigt decomposition of GASS III",
+    "evidence": [
+     {
+      "loc": "2.2 H I column densities",
+      "quote": "These were derived following the methodology described by Planck Collaboration et al. (2015) and Remy et al. (2018)."
+     }
+    ]
+   },
+   "citation": "Planck Collaboration et al. (2015); Remy et al. (2018)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract absorption spectra",
+   "method": "Extract spectra at the peak continuum pixel from continuum-subtracted pipeline cubes and divide by continuum flux in that spectral window",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive N(HCO+) and N(H2)",
+   "method": "Integrate optical depth; N(HCO+)=1.10e12 W; N(H2)=N(HCO+)/3e-9",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Excitation temperature equals CMB; N(HCO+)/N(H2)=3e-9"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "HI column densities",
+   "method": "Optically thin N(HI)=1.823e18 ∫T_B dv from GASS III; Chamaeleon part from pseudo-Voigt decomposition within the Chamaeleon velocity range",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "optically thin limit"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compare H2, DNM, HI and CO; group sightlines",
+   "method": "Group sightlines by N(DNM) (8 vs 5), compute group means, compare N(H) from CO vs HCO+, predict W_CO with X_CO=2e20",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO = 2e20 H2 cm-2 (K km/s)-1; W_CO=0 except J1723"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "mean 2N(H2), high-DNM group",
+   "value": "5.6",
+   "uncertainty": "std 3.6",
+   "units": "1e20 cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "high DNM 3.3(1.3) 5.6(3.6) 6.6(2.0) 0.46"
+    }
+   ]
+  },
+  {
+   "quantity": "mean 2N(H2), low-DNM group",
+   "value": "0.8",
+   "uncertainty": "std 0.6",
+   "units": "1e20 cm-2",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "low DNM 0.14(0.21) 0.8(0.6) 5.6(1.5)) 0.13"
+    }
+   ]
+  },
+  {
+   "quantity": "molecular fraction of H nuclei, high/low/all",
+   "value": "0.46 / 0.13 / 0.38",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "all 2.1(1.9) 3.8(3.7) 6.2(1.8) 0.38"
+    }
+   ]
+  },
+  {
+   "quantity": "N(H2)/W_CO toward J1723",
+   "value": "2.3e20",
+   "uncertainty": "not stated",
+   "units": "H2 cm-2 (K km/s)-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.5 The CO-H 2 conversion factor",
+     "quote": "gives N(H 2 )/W CO = 2.3 × 10 20 H 2 cm −2 (Kkm s −1 ) −1"
+    }
+   ]
+  },
+  {
+   "quantity": "mean E(B-V), high vs low DNM",
+   "value": "0.33 vs 0.18",
+   "uncertainty": "std 0.11, 0.10",
+   "units": "mag",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "mean(σ) 0.33(0.11) 12.7(6.3) 6.6(2.0) 3.3(1.3) 5.6(3.6) 5.4(1.4) 1.4(0.9)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Imaging parameters (weighting, cell, deconvolver) of the pipeline products",
+  "Pipeline/CASA version",
+  "Spectral window setup and line-free channels used for continuum",
+  "Integration velocity ranges for tau integrals",
+  "How optical depth was computed (saturation, noise handling)",
+  "Observing times, configurations, calibrators",
+  "HCN hyperfine treatment for N(HCN)",
+  "Details of pseudo-Voigt HI fits"
+ ],
+ "missing_for_reproduction": [
+  "Spectral integration ranges",
+  "Optical depth derivation details",
+  "Pseudo-Voigt HI fit results",
+  "Imaging script details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and simple formulae with numeric tables, but processing and integration details are sparse.",
+ "rediscovery_reason": "Public data, simple recipe from pipeline cubes, and numeric table results.",
+ "source_card": "cards/2018A%26A...617A..54L/sonnet/card.md"
+}

@@ -1,0 +1,276 @@
+{
+"depth": "light",
+"paper_type": "theory_or_simulation_compared_to_alma",
+"paper_type_evidence": [
+{"loc": "abstract", "quote": "These models were derived using galaxy bulk property data from the ALPINE-ALMA survey"},
+{"loc": "abstract", "quote": "We applied \\[CII\\]158$\\mu$m luminosity models to COSMOS 2020 to create LIM cubes"}
+],
+"fields": ["cosmology", "high_z_galaxies"],
+"question": {
+"value": "Build mock [CII] line intensity mapping cubes from the COSMOS 2020 catalogue with literature and ALPINE-derived [CII] luminosity models, to give lower limits on power spectra and S/N forecasts for FYST EoR-Spec",
+"evidence": [
+{"loc": "abstract", "quote": "We have implemented a novel method to create simulated \\[CII\\] emission line intensity mapping (LIM) data cubes using COSMOS 2020 galaxy catalogue data."}
+]
+},
+"targets": [
+{
+"name": "COSMOS field (COSMOS 2020 FARMER LP sub-sample, E-COSMOS)",
+"details": [
+{"loc": "Map creation", "quote": "we covered a $1.2\\times1.2\\deg^2$ area corresponding to 149.6–150.8 $\\deg$ RA and 1.6–2.8 $\\deg$ Dec"},
+{"loc": "Data: COSMOS 2020", "quote": "We took LP_zPDF as photometric redshift, MASS_MED for stellar mass, SFR_MED for SFR"},
+{"loc": "Introduction", "quote": "We use a flat $\\Lambda$CDM dark matter universe, taking $H_0=70 \\textrm{kms}^{-1}\\textrm{Mpc}^{-1}$, $\\Omega_\\textrm{M}=0.3$, and $\\Omega_\\Lambda=0.7$."}
+],
+"coordinates": "149.6-150.8 deg RA, 1.6-2.8 deg Dec (1.2x1.2 deg^2)",
+"redshift_or_distance": "photometric redshifts 3.42<z<3.87, 4.14<z<4.76, 5.34<z<6.31, 6.75<z<8.27",
+"distance_source": "COSMOS 2020 FARMER LP photometric redshift (LP_zPDF); flat LCDM H0=70, Omega_M=0.3"
+},
+{
+"name": "ALPINE galaxies in COSMOS (65 with [CII] detections, used to fit models)",
+"details": [
+{"loc": "Data: ALPINE", "quote": "We therefore took the 65 galaxies that have successful \\[CII\\] detection above 3.5 $\\sigma$, lie within the COSMOS field, and have the empirical bulk property data (stellar masses and SFRs) required to create \\[CII\\] models."},
+{"loc": "Data: ALPINE", "quote": "Of these galaxies, 45 lie within $4.4<z<4.65$ and 20 lie within $5.05<z<5.9$."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "4.4<z<4.65 (45 galaxies) and 5.05<z<5.9 (20 galaxies)",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [],
+"data_settings": [
+{"field": "bands", "value": "Band 7 (275-373 GHz) for ALPINE", "evidence": [{"loc": "Data: ALPINE", "quote": "falling within ALMA band 7 (275–373 GHz)"}]},
+{"field": "observing_dates", "value": "mid-2018 to early 2019", "evidence": [{"loc": "Data: ALPINE", "quote": "The ALPINE survey was undertaken between mid-2018 and early 2019 as an Atacama Large Millimeter/submillimeter Array (ALMA) Large Program"}]},
+{"field": "pi_or_archival_as_stated", "value": "ALMA Large Program (ALPINE); published ALPINE results used, not reduced here", "evidence": [{"loc": "Data: ALPINE", "quote": "The ALPINE survey was undertaken between mid-2018 and early 2019 as an Atacama Large Millimeter/submillimeter Array (ALMA) Large Program"}]}
+],
+"lines_targeted": [
+{"species": "[CII]", "transition": "2P3/2-2P1/2 (158 um)", "rest_frequency": "1900.537 GHz", "evidence": [{"loc": "Introduction", "quote": "fine structure emission line ($^2P_{3/2}$–$^2P_{1/2}$ at rest frequency 1900.537 GHz"}]}
+],
+"other_facilities": [
+{"name": "COSMOS 2020 catalogue (FARMER LP)", "provided": {"value": "Galaxy positions, photometric redshifts, stellar masses and SFRs used to populate the mock cubes", "evidence": [{"loc": "Data: COSMOS 2020", "quote": "We created our intensity cubes using data from the COSMOS 2020 galaxy catalogue, release version 4.1.1"}]}},
+{"name": "FYST EoR-Spec DSS (assumed survey)", "provided": {"value": "Assumed bands, resolutions and noise levels for the mock observations", "evidence": [{"loc": "EoR-Spec DSS", "quote": "The frequency range of EoR-Spec DSS, 420–210 GHz, is to be split into four frequency bands."}]}},
+{"name": "CANDELS (HST)", "provided": {"value": "Deeper galaxy counts used to estimate incompleteness of FARMER LP", "evidence": [{"loc": "Using CANDELS data", "quote": "We primarily used the Cosmic Assembly Near-infrared Deep Extragalactic Legacy Survey"}]}},
+{"name": "REBELS (ALMA)", "provided": {"value": "IR luminosity function comparison for the 6.75<z<8.27 band", "evidence": [{"loc": "Assumptions made for constructing intensity cubes and power spectra", "quote": "a survey targeting 42 galaxies at $6.4<z<7.7$ including 15 spectroscopically confirmed \\[CII\\] sources"}]}}
+],
+"external_data_from_literature": [
+{"what": {"value": "ALPINE stellar masses and SFRs (LePhare SED fits)", "evidence": [{"loc": "Data: ALPINE", "quote": "The bulk properties were determined using the LePhare code, as done in COSMOS 2015"}]}, "citation": "(cite: Arnouts_2002); (cite: Davidzon_2017)"},
+{"what": {"value": "Literature [CII]-SFR linear log-log relations (DL14 Entire/Starburst, Si15, Sc20, Ro22; Table 1)", "evidence": [{"loc": "[CII] modelling", "quote": "The authors derived empirical linear log-log \\[CII\\]-SFR relations based on the ALPINE sample."}]}, "citation": "(cite: DeLooze_2014), (cite: Silva_2015), (cite: Schaerer_2020), (cite: Romano_2022)"},
+{"what": {"value": "Metallicity relation used to compute metallicity for ALPINE galaxies", "evidence": [{"loc": "[CII] modelling", "quote": "Metallicity is not included in the ALPINE sample data, but we calculated it for each galaxy using"}]}, "citation": "(cite: Mannucci_2010)"},
+{"what": {"value": "COSMOS 2020 mass Schechter fit parameters (Table 6)", "evidence": [{"loc": "Table 6 notes", "quote": "fit parameters were taken from"}]}, "citation": "(cite: Weaver_2022b)"},
+{"what": {"value": "EoR-Spec survey sensitivity per pixel (2.2e4, 1.2e4, 6.2e3, 3.9e3 Jy/sr)", "evidence": [{"loc": "Power spectra error", "quote": "the survey sensitivity per pixel in units of Jy sr$^{-1}$, is described for EoR-Spec in Table 1 of"}]}, "citation": "(cite: Chung_2020)"}
+],
+"simulations_or_models_as_data": [
+{"value": "[CII] luminosity models (literature and ALPINE-derived m1-m4) applied to COSMOS 2020 galaxies to make mock LIM cubes", "evidence": [{"loc": "abstract", "quote": "We applied \\[CII\\]158$\\mu$m luminosity models to COSMOS 2020 to create LIM cubes"}]}
+],
+"calibration": [],
+"imaging": [],
+"inherited": [
+{"what": {"value": "ALPINE [CII] model fitting approach", "evidence": [{"loc": "[CII] modelling", "quote": "In order to create models from ALPINE data, we fitted \\[CII\\] results to bulk property data in a similar manner to"}]}, "from_reference": "(cite: Schaerer_2020) and (cite: Romano_2022)"},
+{"what": {"value": "Power spectrum error formulation", "evidence": [{"loc": "Power spectra", "quote": "we followed the adapted version of their process as used by"}]}, "from_reference": "formulated by (cite: Li_2016), adapted by (cite: Chung_2020) and (cite: Karoumpis_2022)"},
+{"what": {"value": "EoR-Spec frequency bands", "evidence": [{"loc": "EoR-Spec DSS", "quote": "We took the specific bands used in past work"}]}, "from_reference": "(cite: Chung_2020); (cite: Karoumpis_2022); (cite: Roy_2023)"},
+{"what": {"value": "Mass completeness limit procedure", "evidence": [{"loc": "Using CANDELS data", "quote": "In addition to these methods we also manually calculated the $M_{\\textrm{lim}}$ value by following the same procedure as"}]}, "from_reference": "(cite: Weaver_2022b)"}
+],
+"unstated_but_needed": [
+"Identifiers and values of the 65 ALPINE galaxies (stellar mass, SFR, L[CII] with errors) are not tabulated; they must be taken from the public ALPINE catalogues",
+"Number of Monte Carlo draws and error model used for the fit-parameter uncertainties",
+"Which least-squares routine and weights were used for the model fits and the 5-bin fits",
+"Random seeds and sampling used for the ten random stellar-mask realisations and for placing extrapolated galaxies",
+"Exact Schechter fit ranges and the specific fits chosen for each model and band; several valid fits exist",
+"The stellar mask definition and the numerical handling of galaxies near cube edges",
+"No analysis code is released, so the voxel assignment, binning and S/N code must be rewritten",
+"How the model-dependent luminosity function binning was set up beyond dex=0.1"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Select the COSMOS 2020 FARMER LP sub-sample per redshift band",
+"method": {"value": "Adopt the FARMER LP sub-sample of COSMOS 2020 and select galaxies by photometric redshift within the square area for each band, removing galaxies with IRAC Ch1 AB mag above 26", "evidence": [{"loc": "Data: COSMOS 2020", "quote": "we adopted that sub-sample and refer to it as FARMER LP"}, {"loc": "Data: COSMOS 2020", "quote": "removed galaxies with IRAC Channel 1 AB magnitudes above 26 as these galaxies are likely to be artefacts"}]},
+"software": [],
+"key_parameters": [
+{"value": "Columns LP_zPDF (redshift), MASS_MED (stellar mass), SFR_MED (SFR)", "evidence": [{"loc": "Data: COSMOS 2020", "quote": "We took LP_zPDF as photometric redshift, MASS_MED for stellar mass, SFR_MED for SFR"}]}
+],
+"assumptions": [
+{"value": "Quiescent-galaxy incompleteness is not a significant source of uncertainty", "evidence": [{"loc": "Data: COSMOS 2020", "quote": "this quiescent galaxy incompleteness and subsequent missing \\[CII\\] signal is unlikely to be a significant source of uncertainty for our study."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 2,
+"goal": "Derive ALPINE-based [CII] luminosity models m1-m4",
+"method": {"value": "Least-squares fits of L[CII] to combinations of bulk properties (SFR, stellar mass, sSFR, metallicity), on individual galaxies and on 5-bin averages, then selection of acceptable models", "evidence": [{"loc": "[CII] modelling", "quote": "These fits were applied to all 65 data points using standard least-squares fitting procedures, as well as to these data points sorted into 5 bins."}]},
+"software": [],
+"key_parameters": [
+{"value": "chi2_nu acceptance limit of 4 sigma around 1", "evidence": [{"loc": "ALPINE model checks", "quote": "A model was viewed as acceptable when its $\\chi^2_\\nu$ is within $4\\,\\sigma$ of the expected value for a good model, 1."}]},
+{"value": "No second-order or higher models converged", "evidence": [{"loc": "[CII] modelling", "quote": "We did attempt to fit to second-order terms, but no higher order models successfully converged."}]}
+],
+"assumptions": [
+{"value": "Only physical bulk properties used; no fits with spectral lines, IR emission or redshift", "evidence": [{"loc": "[CII] modelling", "quote": "We did not attempt to fit models with spectral lines (such as \\[OIII\\]), IR emission, or redshift"}]}
+],
+"fitting": {"value": "Least-squares fits; parameter errors from Monte Carlo methods", "evidence": [{"loc": "[CII] modelling", "quote": "We calculated the errors in the fit parameters using Monte Carlo methods."}]},
+"validation": {"value": "Outlier-input test, comparison of resulting L[CII] distributions with ALPINE (<20% difference in mean and standard deviation) and a physical-sense check", "evidence": [{"loc": "ALPINE model checks", "quote": "If these distributions had similar means and standard deviations ($<20$% difference), we accepted the model."}, {"loc": "ALPINE model checks", "quote": "Finally, we checked that each model made basic physical sense."}]}
+},
+{
+"order": 3,
+"goal": "Apply [CII] models to FARMER LP galaxies",
+"method": {"value": "Apply the literature and ALPINE [CII] models to the bulk properties of each galaxy to get L[CII]", "evidence": [{"loc": "Method", "quote": "We applied the \\[CII\\] models to the bulk property data (i.e. stellar masses, SFRs) of the sub-sample to estimate \\[CII\\] luminosity data"}]},
+"software": [],
+"key_parameters": [],
+"assumptions": [
+{"value": "Models taken from empirical literature rather than PDR or simulation-based models, to reduce assumptions", "evidence": [{"loc": "[CII] modelling", "quote": "We took models from previous literature that used empirical data instead of those that used PDR modelling and other simulations, in order to reduce the number of assumptions made when creating our intensity cubes and power spectra."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 4,
+"goal": "Build mock LIM intensity cubes with stellar-mask extrapolation",
+"method": {"value": "Insert each galaxy luminosity in a voxel by RA, Dec and luminosity distance, convert to intensity in Jy/sr, and fill stellar-masked regions with randomly drawn galaxies", "evidence": [{"loc": "Map creation", "quote": "depending on its RA, Dec, and luminosity distance which we calculated using its redshift"}, {"loc": "Map creation", "quote": "we added a number of galaxies to the sample in the masked regions to ensure the galaxy density of masked and unmasked regions was made equal"}]},
+"software": [],
+"key_parameters": [
+{"value": "Cube dimensions 117x117x10, 112x112x11, 94x94x14, 82x82x18 voxels", "evidence": [{"loc": "Map creation", "quote": "this results in cube dimensions of $117\\times117\\times10$, $112\\times112\\times11$, $94\\times94\\times14$, and $82\\times82\\times18$ voxels, respectively"}]},
+{"value": "Ten random masks averaged", "evidence": [{"loc": "Map creation", "quote": "we created ten random masks to use in intensity cube creation, and averaged the resulting power spectra of these cubes"}]}
+],
+"assumptions": [
+{"value": "Photometric redshift scatter does not meaningfully change the power spectrum (<0.1 dex)", "evidence": [{"loc": "Map creation", "quote": "Upon investigation we found that the difference in power spectra magnitude from this scatter is less than 0.1 dex"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Power spectra with and without mask extrapolation compared for Si15", "evidence": [{"loc": "Assumptions made for constructing intensity cubes and power spectra", "quote": "We verified this by comparing the power spectra of intensity cubes with and without mask extrapolation over all redshift bands using Si15"}]}
+},
+{
+"order": 5,
+"goal": "Compute spherically averaged 3D power spectra and lower limits",
+"method": {"value": "FFT of the intensity cube, normalised by voxel volume per voxel, spherically averaged in k shells", "evidence": [{"loc": "Power spectra", "quote": "We then took the 3D intensity cubes and performed a Fast Fourier Transform (FFT) over all elements in the cube"}]},
+"software": [],
+"key_parameters": [
+{"value": "Wide k bins of Delta k = 0.3 Mpc^-1 as the alternative to narrowest bins", "evidence": [{"loc": "Power spectra", "quote": "The second method used far broader $k$ bins with $\\Delta k=0.3$ Mpc$^{-1}$"}]},
+{"value": "Output as k^3 P(k)/2pi^2 in (Jy/sr)^2", "evidence": [{"loc": "Power spectra", "quote": "By convention we multiplied $P(k)$ through to find $k^3P(k)/2\\pi^2$ in units of $(\\textrm{Jy\\,sr}^{-1})^2$"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 6,
+"goal": "Estimate noise and S/N for FYST EoR-Spec",
+"method": {"value": "Analytic error sigma(k) from instrumental thermal noise, sample variance of k modes and beam smoothing", "evidence": [{"loc": "Power spectra", "quote": "This error, $\\sigma$, depends on instrumental thermal noise, the sample variance from binning $k$ modes, and instrumental beam smoothing."}]},
+"software": [],
+"key_parameters": [
+{"value": "Assumed 2000 h observation; also tested tripled time", "evidence": [{"loc": "Error analysis", "quote": "We recalculated these for greater observation time than our assumed 2000 hours"}]}
+],
+"assumptions": [
+{"value": "Fixed observing conditions, 45 degree elevation angle and 0.4 mm PWV; 100% signal extraction efficiency", "evidence": [{"loc": "Power spectra error", "quote": "This assumes fixed observing conditions, notably a 45 degree observing angle with 0.4mm precipitable water vapour."}, {"loc": "Error analysis", "quote": "These calculations also assume that signal extraction is 100% efficient"}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "not stated", "evidence": []}
+},
+{
+"order": 7,
+"goal": "Extrapolate missing galaxies using CANDELS ratios and Schechter fits",
+"method": {"value": "Add galaxies above the mass threshold following FARMER LP/CANDELS ratios, then add galaxies equal to the difference between a Schechter fit and the FARMER LP mass or luminosity function per dex interval", "evidence": [{"loc": "Using CANDELS data", "quote": "We always extrapolated additional galaxies above the mass thresholds in the FARMER LP sample following these ratios before applying the other extrapolation methods."}, {"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "we generated a number of galaxies equivalent to the difference between the Schechter fit and the actual FARMER LP function for each dex interval"}]},
+"software": [],
+"key_parameters": [
+{"value": "FARMER LP/CANDELS number ratios 78%, 78%, 51%, 58%", "evidence": [{"loc": "Using CANDELS data", "quote": "which were 78%, 78%, 51%, and 58% respectively"}]},
+{"value": "Extrapolation floor 1e5 Lsun or 1e7 Msun; dex interval 0.1", "evidence": [{"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "we only extrapolated down to $10^5L_\\odot$ or $10^7M_\\odot$"}, {"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "As before, we always used dex=mass or luminosity interval=0.1"}]}
+],
+"assumptions": [
+{"value": "Mass and luminosity functions follow a Schechter function", "evidence": [{"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "we assumed that the mass and luminosity functions of galaxy populations are likely to follow a Schechter function"}]},
+{"value": "SFR for added galaxies from the redshift-band main sequence", "evidence": [{"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "then used the galaxy main sequence of the given redshift band to calculate SFR"}]}
+],
+"fitting": {"value": "Schechter fits chosen to minimise least-squares errors with gradients consistent with Weaver et al.", "evidence": [{"loc": "Discussion", "quote": "Our approach was to select fits that minimised errors according to least-squares fitting procedures and with gradients that were in alignment with previous studies"}]},
+"validation": {"value": "Compared fits that over- and under-estimate and different end points; negligible changes except the overestimate fit", "evidence": [{"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "While we found negligible differences between the power spectra for the other fits, the shot-noise for the overestimate fit was inflated by at least 0.2 dex."}]}
+},
+{
+"order": 8,
+"goal": "Place extrapolated galaxies with a weighting cube and recompute power spectra and S/N",
+"method": {"value": "Weighting cube based on FARMER LP stellar mass, similar to Voronoi tessellation, used to draw x, y, z positions of added galaxies; then repeat power spectrum and S/N analysis and compare with literature", "evidence": [{"loc": "Voronoi tessellation for galaxy distribution", "quote": "we implemented a weighting cube. This is an array that has the same dimensions of the intensity cube and stores relative weights in each voxel"}]},
+"software": [],
+"key_parameters": [
+{"value": "Baseline weight equal to one average galaxy per voxel", "evidence": [{"loc": "Voronoi tessellation for galaxy distribution", "quote": "Furthermore, we added a baseline weight equivalent to adding an average galaxy to each voxel."}]}
+],
+"assumptions": [
+{"value": "Extrapolated dim galaxies lie within clusters traced by the most massive galaxies; filaments not modelled", "evidence": [{"loc": "Voronoi tessellation for galaxy distribution", "quote": "This process assumes the majority of extrapolated dim galaxies lie within these clusters, however does not meaningfully account for other structures such as cosmological filaments."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Voronoi-tessellation placement compared with random placement and with no extrapolation", "evidence": [{"loc": "Assumptions made for constructing intensity cubes and power spectra", "quote": "However the structure component is very different, with the clustering in the random location case regressing to the no extrapolation case"}]}
+}
+],
+"software": [
+{"name": "astropy", "version": "not stated", "used_for": {"value": "Python package used extensively (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "We made extensive use of the Python packages astroPy"}]}},
+{"name": "numpy", "version": "not stated", "used_for": {"value": "Python package used extensively (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "We made extensive use of the Python packages astroPy"}]}},
+{"name": "scipy", "version": "not stated", "used_for": {"value": "Python package used extensively (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "We made extensive use of the Python packages astroPy"}]}},
+{"name": "matplotlib", "version": "not stated", "used_for": {"value": "Python package used extensively (specific use not stated)", "evidence": [{"loc": "Acknowledgements", "quote": "We made extensive use of the Python packages astroPy"}]}},
+{"name": "LePhare", "version": "not stated", "used_for": {"value": "Derivation of ALPINE bulk properties (stellar mass, SFR) in the cited work", "evidence": [{"loc": "Data: ALPINE", "quote": "The bulk properties were determined using the LePhare code"}]}}
+],
+"results_numeric": [
+{"quantity": "k^3P(k)/2pi^2 at k=1 Mpc^-1, 3.42<z<3.87 (lower limit)", "value": "3.06e7", "uncertainty": "not stated", "units": "(Jy sr^-1)^2", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "the amplitudes at $k=1\\,\\textrm{Mpc}^{-1}$ are $3.06\\times10^7, 1.43\\times10^7, 9.80\\times10^5, 2.77\\times10^5\\,(\\textrm{Jy\\,sr}^{-1})^2$"}]},
+{"quantity": "k^3P(k)/2pi^2 at k=1 Mpc^-1, 4.14<z<4.76 (lower limit)", "value": "1.43e7", "uncertainty": "not stated", "units": "(Jy sr^-1)^2", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "the amplitudes at $k=1\\,\\textrm{Mpc}^{-1}$ are $3.06\\times10^7, 1.43\\times10^7, 9.80\\times10^5, 2.77\\times10^5\\,(\\textrm{Jy\\,sr}^{-1})^2$"}]},
+{"quantity": "k^3P(k)/2pi^2 at k=1 Mpc^-1, 5.34<z<6.31 (lower limit)", "value": "9.80e5", "uncertainty": "not stated", "units": "(Jy sr^-1)^2", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "the amplitudes at $k=1\\,\\textrm{Mpc}^{-1}$ are $3.06\\times10^7, 1.43\\times10^7, 9.80\\times10^5, 2.77\\times10^5\\,(\\textrm{Jy\\,sr}^{-1})^2$"}]},
+{"quantity": "k^3P(k)/2pi^2 at k=1 Mpc^-1, 6.75<z<8.27 (lower limit)", "value": "2.77e5", "uncertainty": "not stated", "units": "(Jy sr^-1)^2", "from_step": 5, "evidence": [{"loc": "abstract", "quote": "the amplitudes at $k=1\\,\\textrm{Mpc}^{-1}$ are $3.06\\times10^7, 1.43\\times10^7, 9.80\\times10^5, 2.77\\times10^5\\,(\\textrm{Jy\\,sr}^{-1})^2$"}]},
+{"quantity": "FARMER LP galaxy counts per band after IRAC cut", "value": "14611, 9322, 1732, 510", "uncertainty": "not stated", "units": "galaxies", "from_step": 1, "evidence": [{"loc": "Data: COSMOS 2020", "quote": "we obtained 14 611, 9322, 1732, 510 galaxies respectively"}]},
+{"quantity": "Model m2 coefficients (log L[CII] = a + b log Mstar)", "value": "a=4.02, b=0.476", "uncertainty": "a +/-0.35, b +/-0.035", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "[CII] modelling", "quote": "4.02(\\pm0.35)+0.476(\\pm0.035)"}]},
+{"quantity": "Model m3 coefficients (a, SFR term, Mstar term)", "value": "a=3.31, SFR coeff=-0.33, Mstar coeff=0.601", "uncertainty": "+/-0.38, +/-0.16, +/-0.057", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "[CII] modelling", "quote": "3.31(\\pm0.38)-0.33(\\pm0.16)"}, {"loc": "[CII] modelling", "quote": "0.601(\\pm0.057)"}]},
+{"quantity": "Model m1 leading coefficients (a, Mstar term)", "value": "a=48.22, Mstar coeff=-3.49", "uncertainty": "+/-12.07, +/-2.24", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "[CII] modelling", "quote": "48.22(\\pm12.07)-3.49(\\pm2.24)"}]},
+{"quantity": "Model m4 leading coefficients (a, sSFR term)", "value": "a=6.14, sSFR coeff=-0.31", "uncertainty": "+/-1.29, +/-0.15", "units": "dimensionless", "from_step": 2, "evidence": [{"loc": "[CII] modelling", "quote": "6.14(\\pm1.29)-0.31(\\pm0.15)"}]},
+{"quantity": "Stellar-masked area", "value": "0.12 deg^2 (~10% of FARMER LP area)", "uncertainty": "not stated", "units": "deg^2", "from_step": 4, "evidence": [{"loc": "Map creation", "quote": "regions span over a total area of $0.12\\deg^2$, approximately 10% of the area of FARMER LP"}]},
+{"quantity": "Narrow k-bin width per band", "value": "0.043, 0.040, 0.037, 0.035", "uncertainty": "not stated", "units": "Mpc^-1", "from_step": 5, "evidence": [{"loc": "Power spectra", "quote": "$\\Delta k=0.043,0.040,0.037,0.035$ Mpc$^{-1}$ respectively"}]},
+{"quantity": "Stellar mass thresholds for CANDELS correction", "value": "10^9.2, 10^9.3, 10^9.5, 10^9.7", "uncertainty": "within 0.05 dex across three methods", "units": "Msun", "from_step": 7, "evidence": [{"loc": "Using CANDELS data", "quote": "$10^{9.2}$, $10^{9.3}$, $10^{9.5}$, $10^{9.7}M_\\odot$ for"}]},
+{"quantity": "FARMER LP to CANDELS number ratio above mass threshold", "value": "78%, 78%, 51%, 58%", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "Using CANDELS data", "quote": "which were 78%, 78%, 51%, and 58% respectively"}]},
+{"quantity": "Power spectrum increase from extrapolation", "value": "0.2-0.4 dex (3.42<z<3.87); 0.5-0.8 dex (5.34<z<6.31)", "uncertainty": "not stated", "units": "dex", "from_step": 8, "evidence": [{"loc": "Power spectra and error analysis for extrapolated sample", "quote": "The power spectra magnitude increase is relatively small at low redshift ($0.2-0.4$ dex at $3.42<z<3.87$) but is more significant at high redshift ($0.5-0.8$ dex at $5.34<z<6.31$)."}]}
+],
+"findings_qualitative": [
+{"value": "Lower-limit power spectra from COSMOS 2020 are almost always below previous simulation predictions and below the expected instrument sensitivity", "evidence": [{"loc": "Power spectra, comparison to previous work, and lower limits", "quote": "Our power spectra are almost always lower in magnitude when compared to the previous literature, including lying below the expected sensitivity of the instrument."}]},
+{"value": "With extrapolation the power spectra are consistent with prior predictions", "evidence": [{"loc": "abstract", "quote": "For the extrapolated sample, the power spectra are consistent with prior predictions, indicating that extrapolation is a viable method for creating mock LIM cubes."}]},
+{"value": "High-redshift results are inconclusive because of COSMOS 2020 incompleteness", "evidence": [{"loc": "abstract", "quote": "However, our high-redshift results remain inconclusive because of the poor completeness of COSMOS 2020 at $z>6.3$."}]},
+{"value": "Only the ALPINE models reach the uppermost predicted limits, suggesting those predictions may be optimistic", "evidence": [{"loc": "Discussion", "quote": "only the ALPINE models m1-m4 reach the uppermost predicted limits"}]}
+],
+"claims": [
+{"hypothesis": "Empirical catalogue data plus [CII] models give robust lower limits to the [CII] LIM power spectrum", "experiment": "Mock LIM cubes from FARMER LP with literature and ALPINE [CII] models, power spectra in four EoR-Spec bands", "result": "Amplitudes at k=1 Mpc^-1 of 3.06e7, 1.43e7, 9.80e5, 2.77e5 (Jy/sr)^2", "finding": "These are lower limits that cannot exclude the lower ends of previous simulated spectra", "support": "supported", "evidence": [{"loc": "Introduction", "quote": "so consequently the constructed maps produce power spectra of the minimum possible magnitude"}, {"loc": "Power spectra, comparison to previous work, and lower limits", "quote": "Our lower limits for power spectra based on existing data cannot definitively exclude the lower ends of previous simulated power spectra from the literature"}]},
+{"hypothesis": "Extrapolating from the COSMOS 2020 faint end reproduces earlier simulation-based predictions", "experiment": "CANDELS-ratio correction, Schechter extrapolation and weighting-cube placement, then power spectra", "result": "Extrapolated spectra overlap literature predictions; increase of about 0.5 dex over the original sample", "finding": "Extrapolation is a viable way to build mock LIM cubes", "support": "supported", "evidence": [{"loc": "abstract", "quote": "For the extrapolated sample, the power spectra are consistent with prior predictions, indicating that extrapolation is a viable method for creating mock LIM cubes."}]},
+{"hypothesis": "FYST EoR-Spec can detect the predicted power spectra", "experiment": "Analytic S/N from instrument noise for original and extrapolated samples", "result": "S/N>1 only with wide k bins in extrapolated samples (100% extraction efficiency assumed)", "finding": "Detection is plausible only for the more complete samples with wide bins", "support": "partially", "evidence": [{"loc": "Conclusion", "quote": "we predicted a result of S/N$>$1 only when using wide spatial frequency bins"}]},
+{"hypothesis": "ALPINE galaxy bulk properties yield useful [CII] models beyond the [CII]-SFR relation", "experiment": "Fits of L[CII] to SFR, stellar mass, sSFR, metallicity combinations, four models retained", "result": "Four models m1-m4 within the 4 sigma chi2 limit, spanning about 1 dex in power spectra", "finding": "Models diverge from linear log-log [CII]-SFR and are less constrained outside ALPINE redshifts", "support": "supported", "evidence": [{"loc": "Conclusion", "quote": "We created four \\[CII\\] models solely using ALPINE galaxy bulk property data, which diverged from the conventional linear log-log \\[CII\\]-SFR relationship."}]},
+{"hypothesis": "The method works at 6.75<z<8.27", "experiment": "Mask extrapolation and comparison with REBELS luminosity functions", "result": "Large mask extrapolation roughly doubles the sample and results eclipse simulations", "finding": "Results in the highest redshift band are not reliable", "support": "refuted", "evidence": [{"loc": "Sample analysis", "quote": "we believe that results at $6.75<z<8.27$ should be viewed with caution."}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "ALPINE galaxies lie in the COSMOS field and are in COSMOS 2020, so models from them suit the wider COSMOS field", "evidence": [{"loc": "Data: ALPINE", "quote": "This sample is ideal for creating models of \\[CII\\] emission for the wider COSMOS field, as ALPINE galaxies are also present in the COSMOS 2020 galaxy catalogue"}]},
+{"field": "why_this_method", "value": "Empirical literature models chosen to minimise assumptions", "evidence": [{"loc": "[CII] modelling", "quote": "in order to reduce the number of assumptions made when creating our intensity cubes and power spectra."}]},
+{"field": "how_they_decided_enough", "value": "Fits stopped at first-order combinations because higher order did not converge", "evidence": [{"loc": "[CII] modelling", "quote": "We did attempt to fit to second-order terms, but no higher order models successfully converged."}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Vallini 2015, Lagache 2018 and Padmanabhan 2019 [CII] models rejected for the cubes (simulation based or needing halo mass)", "evidence": [{"loc": "[CII] modelling", "quote": "but they were inappropriate for our purposes, either being based on simulated galaxies or requiring bulk properties, such as halo mass, which were not recorded in FARMER LP."}]},
+{"value": "Random placement of extrapolated galaxies rejected because it removes clustering", "evidence": [{"loc": "Assumptions made for constructing intensity cubes and power spectra", "quote": "However the structure component is very different, with the clustering in the random location case regressing to the no extrapolation case"}]}
+],
+"limitations_admitted": [
+{"value": "ALPINE sample biased toward star-forming galaxies", "evidence": [{"loc": "Data: ALPINE", "quote": "this sample is biased towards SFGs over quiescent galaxies"}]},
+{"value": "Error budget excludes foregrounds and sky noise", "evidence": [{"loc": "Error analysis", "quote": "While we cannot presently include all possible error contributions, such as errors from foreground contamination removal and sky noise"}]},
+{"value": "Multiple Schechter fits are valid and change the extrapolated counts", "evidence": [{"loc": "Extrapolating from mass and luminosity functions using Schechter curves", "quote": "In many cases we could produce multiple valid Schechter fits for a given function"}]}
+],
+"referee_caveats_inferred": [
+"The ALMA data enter only as published ALPINE bulk properties; no ALMA data processing is done",
+"m1-m4 are fit to 65 galaxies with 4 sigma chi2 leniency and 1-5 data points in binned fits, so they are weakly constrained",
+"Lower limits depend on photometric redshifts with scatter wider than the frequency channels",
+"Extrapolated clustering relies on an ad hoc weighting cube",
+"S/N assumes 100% signal extraction and no foregrounds"
+],
+"reproducibility": [],
+"code_released": [],
+"missing_for_reproduction": [
+"No code released",
+"ALPINE galaxy table not given in the paper",
+"Random seeds and exact Schechter fits for each model not stated",
+"Stellar mask definition not given in the paper"
+],
+"estimated_data_volume_inferred": "Small: COSMOS 2020 FARMER LP catalogue (about 1.7 million rows, a table of order a GB) plus published ALPINE catalogue values; no ALMA visibilities needed",
+"score_inferred": 3,
+"score_reason": "Public catalogues and equations are given with numeric tables, but no code, random draws and Schechter fit choices are not fully specified",
+"rediscovery_candidate": true,
+"rediscovery_reason": "COSMOS 2020 and ALPINE catalogues are public and the lower-limit power spectra (Table 2) follow from a simple published recipe with numeric results, though extrapolated results depend on unstated fit choices",
+"methods_papers": [
+{"citation": "(cite: Weaver_2022a); (cite: Weaver_2022b)", "why": "COSMOS 2020 catalogue and its mass completeness and mass function fits"},
+{"citation": "(cite: Li_2016); (cite: Chung_2020)", "why": "Power spectrum error and S/N formulation"},
+{"citation": "(cite: Schaerer_2020); (cite: Romano_2022)", "why": "ALPINE-based [CII]-SFR fitting approach"}
+],
+"companion_papers": [
+{"citation": "(cite: Bethermin_2020); (cite: Faisst_2020); (cite: Le_F_vre_2020)", "why": "ALPINE survey papers providing the [CII] and bulk property data"},
+{"citation": "(cite: Karoumpis_2022)", "why": "Previous EoR-Spec mock power spectra used for comparison"}
+],
+"related_projects_or_surveys": ["ALPINE", "COSMOS 2020", "EoR-Spec DSS (FYST)", "REBELS", "CANDELS", "CONCERTO", "TIME"]
+}

@@ -1,0 +1,204 @@
+{
+ "bibcode": "2019ApJ...875...55W",
+ "title": "The MESAS Project: Long-wavelength Follow-up Observations of Sirius A",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/ab0e7f",
+ "arxiv_id": "1903.03481",
+ "fields": [
+  "stellar_physics",
+  "debris_disks"
+ ],
+ "question": "What is the long-wavelength (1.4-9 mm) emission of Sirius A, and is it consistent with PHOENIX stellar atmosphere models and stable over time?",
+ "alma_project_codes": [
+  "2017.1.00698.S"
+ ],
+ "data": {
+  "bands": "ALMA Bands 3, 4, 5",
+  "arrays": "not stated",
+  "angular_resolution": "Band 5 1.46x0.85\"; Band 4 1.43x1.17\"; Band 3 1.02x0.69\"",
+  "sensitivity": "RMS 0.040 (B5), 0.029 (B4), 0.032 (B3) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Previous JCMT, SMA, VLA long-wavelength data and PHOENIX LTE model of Sirius A",
+    "evidence": [
+     {
+      "loc": "2 Observations",
+      "quote": "Previous long wavelength observations of Sirius A are summarized in (cite: white18) and are shown in Fig. [1](#tb_plot) (black circles)."
+     }
+    ]
+   },
+   "citation": "(cite: white18)"
+  },
+  {
+   "what": {
+    "value": "Sirius B Teff 25369 K and radius 0.008098 Rsun",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "effective temperature of T$_{eff}=25369~\\rm K$ and radius of $\\rm 0.008098~R_{\\odot}$ (cite: bond17)"
+     }
+    ]
+   },
+   "citation": "(cite: bond17)"
+  },
+  {
+   "what": {
+    "value": "Fomalhaut ALMA fluxes 1.79 mJy (0.87 mm) and 0.88 mJy (1.3 mm)",
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "observed a flux of 1.79 mJy and 0.88 mJy, respectively (cite: su16; white_fom)"
+     }
+    ]
+   },
+   "citation": "(cite: su16; white_fom)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Fit point-source fluxes to ALMA and VLA visibilities",
+   "method": "Point-source fit to visibilities per SPW with minimum chi-squared iteration",
+   "software": [
+    "CASA uvmodelfit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Sirius A is a point source (0.00602\")"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Measure GBT flux",
+   "method": "Map of all GBT data, Gaussian fit at Sirius A position",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Fit power-law brightness temperature template",
+   "method": "Non-linear least squares fit of T_obs = C0 T_phot (lambda/0.45mm)^alpha over 0.45-9.0 mm",
+   "software": [
+    "SciPy curve_fit"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Rayleigh-Jeans limit, T_obs substituted for T_B"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "GBT 3.33 mm flux",
+   "value": "0.90",
+   "uncertainty": "0.11",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 Visibility Model Fitting",
+     "quote": "This yields a total flux of $0.90\\pm0.11$ mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 1.43 mm flux",
+   "value": "5.60",
+   "uncertainty": "0.60",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "1.43 | ALMA | 2018 AUG 22 | J0750+1231 | 5.60 | 0.60 | 1.34"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 3.22 mm flux",
+   "value": "1.35",
+   "uncertainty": "0.14",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "3.22 | ALMA | 2018 JAN 25 | J0522-3627 | 1.35 | 0.14 | 3.73"
+    }
+   ]
+  },
+  {
+   "quantity": "VLA 9.0 mm flux (2018 Sep 07)",
+   "value": "0.125",
+   "uncertainty": "0.029",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "9.0 | VLA | 2018 SEP 07 | 3C48$^{b}$ | 0.125 | 0.029 | 4.46"
+    }
+   ]
+  },
+  {
+   "quantity": "C0",
+   "value": "0.67",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "C$_{0} = 0.67\\pm 0.03$ and $\\alpha = 0.05\\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "alpha (temperature spectral index)",
+   "value": "0.05",
+   "uncertainty": "0.02",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "C$_{0} = 0.67\\pm 0.03$ and $\\alpha = 0.05\\pm 0.02$"
+    }
+   ]
+  },
+  {
+   "quantity": "Predicted Fomalhaut flux at 0.87 and 1.3 mm",
+   "value": "1.88 and 0.84",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Discussion",
+     "quote": "yields a predicted flux of 1.88 mJy and 0.84 mJy for the 2 ALMA wavelengths, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "uvmodelfit starting parameters and fit options",
+  "Which ALMA channels/SPWs were averaged and any flagging",
+  "ALMA imaging details (weighting, cell size, deconvolver, masks)",
+  "MUSTANG2 data pipeline details",
+  "Data points and weights used in the power-law fit",
+  "Fitting range handling for Sirius B"
+ ],
+ "missing_for_reproduction": [
+  "uvmodelfit settings",
+  "ALMA imaging parameters",
+  "GBT reduction pipeline details",
+  "Model spectrum values from White et al. 2018"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Simple point-source fits with public ALMA pipeline data, but several settings are unstated.",
+ "rediscovery_reason": "Data are likely public, recipe is simple, and results are numeric fluxes.",
+ "source_card": "cards/2019ApJ...875...55W/sonnet/card.md"
+}

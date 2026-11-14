@@ -1,0 +1,206 @@
+{
+ "bibcode": "2016Natur.540..406B",
+ "title": "Resolved images of a protostellar outflow driven by an extended disk wind",
+ "year": 2016,
+ "doi": "10.1038/nature20600",
+ "arxiv_id": "1612.05148",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Where in the protostellar disk is the TMC1A CO outflow launched, and is it an extended disk wind or an X-wind/stellar wind?",
+ "alma_project_codes": [
+  "2015.1.01415.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m array",
+  "angular_resolution": "6 au spatial resolution",
+  "sensitivity": "sigma = 0.8 mJy/beam (12CO channel maps)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Protostar mass ~0.5 Msun, disk mass 0.05 Msun, inclination 55°, disk radius 200 au",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "a disk-like structure of radius 200 au which is inclined 55° with respect to the plane of the sky [14]"
+     }
+    ]
+   },
+   "citation": "Harsono et al. 2014 (ref 14)"
+  },
+  {
+   "what": {
+    "value": "Systemic velocity 6.4 km/s and outflow position angle ~165°",
+    "evidence": [
+     {
+      "loc": "main text",
+      "quote": "with position angle ~165° east of north."
+     }
+    ]
+   },
+   "citation": "ref 14, 16"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image",
+   "method": "CASA calibration, uv continuum subtraction, CLEAN with tapers",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust 0.5 continuum; natural for lines; taper 0.04''/0.10''"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Identify origin of 12CO emission and disk Keplerian rotation",
+   "method": "Compare isotopologues, estimate optical depths, simulate Keplerian disk, fit 2D Gaussians to 13CO/C18O channels for peak positions to derive central mass",
+   "software": [
+    "MATLAB",
+    "RADMC-3D",
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Kinetic temperature 100 K; isotopic ratios 60 (13CO) and 550 (C18O); i=55±10°"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Direct footpoint radius",
+   "method": "Flux-weighted first-order polynomial z=A(r−r0) fit to 12CO pixels above midplane per channel, eastern side only",
+   "software": [
+    "MATLAB"
+   ],
+   "key_parameters": [
+    "S/N>3; velocities 2 to 5.5 km/s from systemic"
+   ],
+   "assumptions": [
+    "Gas travels along straight lines"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "MHD-theory footpoint radius",
+   "method": "Eq. 4 of Anderson et al. 2003 applied per pixel using velocity field decomposed into rotation and outflow components, masking where escape velocity exceeds outflow velocity",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "vφ = vlos/sin(i)/2, vout = vlos/cos(i)/2; outflow perpendicular to disk, symmetric"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Continuum ring and angular momentum",
+   "method": "Gaussian fit of deprojected radial continuum profile, excluding 12–33 au; specific angular momentum = rotational velocity × distance to axis",
+   "software": [
+    "MATLAB"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Footpoint radii (polynomial fit)",
+   "value": "~6 to ~22",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "reveal a range of footpoint radii between ~6 and ~22 au"
+    }
+   ]
+  },
+  {
+   "quantity": "Footpoint radii (MHD theory)",
+   "value": "~2 to ~19",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "revealing footpoint radii between ~2 and ~19 au (Fig. 3)"
+    }
+   ]
+  },
+  {
+   "quantity": "Central mass",
+   "value": "0.4",
+   "uncertainty": "±0.1",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Origin of the emission",
+     "quote": "The central mass is estimated at 0.4±0.1 _M_ sun"
+    }
+   ]
+  },
+  {
+   "quantity": "Optical depths C18O, 13CO, 12CO",
+   "value": "0.04, 0.2, 25",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Origin of the emission",
+     "quote": "we calculate the optical depths (𝜏) to be 0.04, 0.2 and 25 for C [18] O, [13] CO and [12] CO"
+    }
+   ]
+  },
+  {
+   "quantity": "Specific angular momentum of outflow",
+   "value": "<200",
+   "uncertainty": "not stated",
+   "units": "au km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "to be less than 200 au km s [−1] in the outflow"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum excess radius",
+   "value": "~20",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "is located at a relatively constant radius of ~20 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel ranges",
+  "Clean threshold, niter, masks, cell and image size",
+  "Synthesized beam sizes",
+  "Details of the non-LTE model and disk model parameters",
+  "Choice of fitted pixel sets and weights in the footpoint fit",
+  "Calibrator flux values and CASA calibration script",
+  "Mean/definition of velocity-field (moment 1) clipping"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters (cell, size, masks, thresholds)",
+  "Analysis MATLAB code",
+  "Disk model parameters"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Data public and method clear, but imaging details and analysis code missing.",
+ "rediscovery_reason": "Public data, numeric footpoint radii, simple fitting recipe.",
+ "source_card": "cards/2016Natur.540..406B/sonnet/card.md"
+}

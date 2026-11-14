@@ -1,0 +1,473 @@
+{
+ "bibcode": "2022MNRAS.513.5790C",
+ "title": "Variable structure in the PDS 70 disc and uncertainties in radio-interferometric image restoration",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac1285",
+ "arxiv_id": "2204.08589",
+ "fields": [
+  "protoplanetary_disks",
+  "exoplanets",
+  "instrumentation"
+ ],
+ "question": "What is the impact of the JvM correction on restored radio-interferometric image uncertainties, and what do alternative non-parametric imaging and multi-epoch visibility alignment reveal about the circum-planetary disc PDS 70c and the inner disc of PDS 70?",
+ "alma_project_codes": [
+  "2015.1.00888.S",
+  "2017.A.00006.S",
+  "2018.A.00030.S"
+ ],
+ "data": {
+  "bands": "Band 7 (351 GHz)",
+  "arrays": "not stated",
+  "angular_resolution": "LB19 (r=2.0): 0''.048 x 0''.039; LB19+SB16 (r=1): 0''.048 x 0''.039; LB19+SB16+IB17 (r=1): 0''.058 x 0''.047; IB17 (r=1): 0''.078 x 0''.064; SB16+IB17 (r=0.3): 0''.067 x 0''.049; SB16+IB17 uvmem model: ~0''.033 x 0''.029",
+  "sensitivity": "LB19 (r=2.0): 16.4 uJy beam^-1; LB19+SB16 (r=1): 15.7 uJy beam^-1; LB19+SB16+IB17 (r=1): 15.8 uJy beam^-1; IB17 (r=1): 29.6 uJy beam^-1; SB16+IB17 (r=0.3): 31.9 uJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass of ~0.9 M_sun and distance of 113.4 pc for PDS 70",
+    "evidence": [
+     {
+      "loc": "3.2.3 The inner disc",
+      "quote": "For a ∼ 0.9 M_⊙ star (Keppler et al. 2019), and at a distance of 113.4 pc, material at a radius of 0''.04 (4.5 au) would rotate by 62 deg, or 95 deg at 0''.03 (3.4 au)."
+     }
+    ]
+   },
+   "citation": "Keppler et al. 2019"
+  },
+  {
+   "what": {
+    "value": "Dust mass estimates for the CPD",
+    "evidence": [
+     {
+      "loc": "3.2.2 PDS 70c",
+      "quote": "Using the dust mass estimates from Benisty et al. (2021) and Portilla-Revelo et al. (2022), the Rosseland opacities from Casassus et al. (2019b), and for a flat surface density out to 1 au in radius"
+     }
+    ]
+   },
+   "citation": "Benisty et al. (2021); Portilla-Revelo et al. (2022)"
+  },
+  {
+   "what": {
+    "value": "Rosseland opacities",
+    "evidence": [
+     {
+      "loc": "3.2.2 PDS 70c",
+      "quote": "Using the dust mass estimates from Benisty et al. (2021) and Portilla-Revelo et al. (2022), the Rosseland opacities from Casassus et al. (2019b), and for a flat surface density out to 1 au in radius"
+     }
+    ]
+   },
+   "citation": "Casassus et al. (2019b)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Extract continuum visibility data and perform independent self-calibration and non-parametric imaging",
+   "method": "Extract continuum visibilities and combine all spectral windows as in Benisty et al. (2021). Perform iterative self-calibration using OOselfcal (wrapping CASA gaincal and applycal with uvmem image models), starting with phase-only loops halving the solution interval from scan length (~50s) until PSNR decreases, followed by one amplitude+phase loop.",
+   "software": [
+    "CASA",
+    "gaincal",
+    "applycal",
+    "tclean",
+    "uvmem",
+    "OOselfcal"
+   ],
+   "key_parameters": [
+    "Initial solution interval = scan length (about 50s), halved each iteration",
+    "Briggs weighting r = 2 for PSNR checks; elliptical mask enclosing the source"
+   ],
+   "assumptions": [
+    "Image positivity (no entropy term)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Align multi-epoch visibility datasets in the uv-plane",
+   "method": "Extract subsets with identical spectral domains in LSRK, grid each dataset to a common uv-grid in natural weights using pyralysis, and minimize chi^2_align over overlapping uv-radii (where azimuthally averaged weights are >1/10 peak) to fit for a spatial shift (delta x) and flux scale factor (alpha_R) relative to LB19 using VisAlign.",
+   "software": [
+    "pyralysis",
+    "VisAlign",
+    "MPolarMaps"
+   ],
+   "key_parameters": [
+    "2048 x 2048 grid with pixel sizes of 3 mas (SB16/LB19) and 4 mas (IB17/LB19); uv-range 0.17 to 0.47 Mlambda (SB16/LB19) and 0.17 to 0.71 Mlambda (IB17/LB19)"
+   ],
+   "assumptions": [
+    "The bulk of PDS 70 is not time-variable between epochs"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Perform joint multi-epoch imaging and image restoration",
+   "method": "Concatenate aligned visibility datasets directly, apply CASA statwt to recompute visibility weights from dispersion, run OOselfcal for joint self-calibration and uvmem modeling, and restore images with various Briggs robustness parameters without applying the JvM correction.",
+   "software": [
+    "CASA",
+    "statwt",
+    "OOselfcal",
+    "uvmem"
+   ],
+   "key_parameters": [
+    "Briggs robustness r = 2.0 (LB19), r = 1 (LB19+SB16, LB19+SB16+IB17, IB17), r = 0.3 (SB16+IB17)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Analyze variability and Keplerian rotation of PDS 70c and the inner disc",
+   "method": "Measure flux density and upper limits for PDS 70c across epochs. Test orbital smearing by de-projecting LB19+SB16, rotating by Keplerian motion over 1.75 yr, re-projecting and averaging. Test point-source sensitivity in SB16+IB17 by injecting four 126 uJy fake point sources into residual visibilities. Compare face-on deprojected views of the inner disc across epochs.",
+   "software": [
+    "uvmem"
+   ],
+   "key_parameters": [
+    "Time interval = 1.75 yr; fake point source flux = 126 uJy; disc inclination i = 130 deg, PA = 160.4 deg"
+   ],
+   "assumptions": [
+    "Stellar mass = 0.9 M_sun, distance = 113.4 pc; flat surface density out to 1 au radius for CPD optical depth estimate"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Peak signal-to-noise ratio (PSNR) in LB19 with standard tclean self-calibration (r=2)",
+   "value": "36.3",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "We combined all spectral windows (spws), proceeding as in Benisty et al. (2021), and reached a peak signal to noise ratio (PSNR) in the final restored images of 36.3 using Briggs weighting with r = 2."
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in LB19 with OOselfcal/uvmem (r=2)",
+   "value": "56",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For LB19 the phase-calibration progressed until the first iteration, which was enough to reach a PSNR of 56 with r = 2."
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in SB16 with OOselfcal/uvmem (r=2)",
+   "value": "266",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For SB16, a PSNR of 266 (r = 2)was reached after two phase calibration loops."
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in IB17 with OOselfcal/uvmem (r=2)",
+   "value": "75",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For IB17, a single iteration in phase yielded a PSNR of 75 (r = 2)."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial shift delta x for SB16 relative to LB19",
+   "value": "(-0.012, -0.019)",
+   "uncertainty": "(+-0.001, +-0.001)",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "The fit yielded δ⃗x = (−0''.012 ± 0''.001, −0''.019 ± 0''.001)."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scale factor alpha_R for SB16 relative to LB19",
+   "value": "0.788",
+   "uncertainty": "+-0.004",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "The flux scale factor was α_R = 0.788 ± 0.004, which is somewhat smaller than the ratio of flux densities extracted within the mask, of 0.861 ± 0.004."
+    }
+   ]
+  },
+  {
+   "quantity": "Spatial shift delta x for IB17 relative to LB19",
+   "value": "(-0.01401, -0.0203)",
+   "uncertainty": "(+-0.0003, +-0.0004)",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For the IB17 and LB19 alignment, uv-range extended from 0.17 Mλ to 0.71 Mλ, α_R = 1.001 ± 0.002 and δ⃗x = (−0''.01401 ± 0''.0003, −0''.0203 ± 0''.0004)."
+    }
+   ]
+  },
+  {
+   "quantity": "Flux scale factor alpha_R for IB17 relative to LB19",
+   "value": "1.001",
+   "uncertainty": "+-0.002",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For the IB17 and LB19 alignment, uv-range extended from 0.17 Mλ to 0.71 Mλ, α_R = 1.001 ± 0.002 and δ⃗x = (−0''.01401 ± 0''.0003, −0''.0203 ± 0''.0004)."
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 disc Position Angle (PA) in LB19",
+   "value": "160.4",
+   "uncertainty": "+-0.08",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For LB19, the best fit orientation corresponds to PA= 160 _._ 4 _±_ 0 _._ 08 deg, _i_ = 130 _._ 0 _±_ 0 _._ 06 deg, and a ring center"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 disc inclination (i) in LB19",
+   "value": "130.0",
+   "uncertainty": "+-0.06",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For LB19, the best fit orientation corresponds to PA= 160 _._ 4 _±_ 0 _._ 08 deg, _i_ = 130 _._ 0 _±_ 0 _._ 06 deg, and a ring center"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 disc Position Angle (PA) in IB17",
+   "value": "160.5",
+   "uncertainty": "+-0.18",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For IB17, we obtained PA= 160 _._ 5 _±_ 0 _._ 18 deg, _i_ = 129 _._ 9"
+    }
+   ]
+  },
+  {
+   "quantity": "PDS 70 disc inclination (i) in IB17",
+   "value": "129.9",
+   "uncertainty": "+0.16/-0.14",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "For IB17, we obtained PA= 160 _._ 5 _±_ 0 _._ 18 deg, _i_ = 129 _._ 9"
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in concatenated SB16+IB17+LB19",
+   "value": "95",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "We applied the OOselfcal framework, which yielded improvements for SB16+IB17+LB19 (PSNR=95) and also for SB16+IB17 (PSNR=94), both after a single round of phase calibration."
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in concatenated SB16+IB17",
+   "value": "94",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "We applied the OOselfcal framework, which yielded improvements for SB16+IB17+LB19 (PSNR=95) and also for SB16+IB17 (PSNR=94), both after a single round of phase calibration."
+    }
+   ]
+  },
+  {
+   "quantity": "PSNR in concatenated SB16+LB19",
+   "value": "84",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Imaging",
+     "quote": "The amplitude and phase self-calibration resulted in an improvement only for SB16+LB19 (PSNR=84)."
+    }
+   ]
+  },
+  {
+   "quantity": "Noise level in LB19 restored image (r=2.0)",
+   "value": "16.4",
+   "uncertainty": "not stated",
+   "units": "uJy beam^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.1 Noise level in the LB19 image",
+     "quote": "The noise level reported in Fig. 4a, of 16.4 µJy beam^-1, appears to match the expected instrumental sensitivity."
+    }
+   ]
+  },
+  {
+   "quantity": "Peak intensity of PDS 70c in LB19 (r=2.0)",
+   "value": "126",
+   "uncertainty": "+-16.4",
+   "units": "uJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "This is best seen in Fig. 4a, with point-like signal reaching 126 µJy beam^-1, or 8σ."
+    },
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "Since its flux in LB19 is (126 ± 16.4) µJy beam^-1, if we assign the upper limit flux density to PDS 70c in IB17, then it brightened by 42% ± 13% in the interval of ∼ 1.75 yr between IB17 and LB19."
+    }
+   ]
+  },
+  {
+   "quantity": "Detection significance of PDS 70c in LB19",
+   "value": "8",
+   "uncertainty": "not stated",
+   "units": "sigma",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In the case of PDS 70, we recover the detection of PDS 70c from the July 2019 data, but only at 8σ."
+    },
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "This is best seen in Fig. 4a, with point-like signal reaching 126 µJy beam^-1, or 8σ."
+    }
+   ]
+  },
+  {
+   "quantity": "Specific intensity at PDS 70c position in SB16+IB17 (r=0.3)",
+   "value": "-51",
+   "uncertainty": "+-31.9",
+   "units": "uJy beam^-1",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "The noise level in Fig. 4e being 31.9 µJy beam^-1, and since the data are aligned in position and flux, a 126 µJy point source should have been picked up at 4σ. Instead, the intensity at the location of PDS 70c is −51 µJy beam^-1."
+    }
+   ]
+  },
+  {
+   "quantity": "3-sigma upper limit on PDS 70c flux density in IB17",
+   "value": "89",
+   "uncertainty": "not stated",
+   "units": "uJy",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "The non-detection of PDS 70c in IB17 (Fig. 4d) places a 3σ upper limit on its flux density of 89 µJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Variability (brightening) of PDS 70c between IB17 and LB19 (1.75 yr)",
+   "value": "42",
+   "uncertainty": "+-13",
+   "units": "%",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "However, its non-detection in Dec. 2017 suggests that PDS 70c is variable by at least 42% ± 13% over a 1.75 yr time-span, so similar to models of the Hα variability."
+    },
+    {
+     "loc": "3.2.2 PDS 70c",
+     "quote": "Since its flux in LB19 is (126 ± 16.4) µJy beam^-1, if we assign the upper limit flux density to PDS 70c in IB17, then it brightened by 42% ± 13% in the interval of ∼ 1.75 yr between IB17 and LB19."
+    }
+   ]
+  },
+  {
+   "quantity": "Inner disc peak (Clump 1) offset from ring center",
+   "value": "0.04",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "We also pick up fine structure in the inner disc, such that its peak is offset by ∼ 0''.04 from the disc centre."
+    },
+    {
+     "loc": "3.2.3 The inner disc",
+     "quote": "Intriguingly, Clump 1 is offset from the ring center by ∼ 0''.03 to 0''.04, which is comparable to the natural-weights beam."
+    }
+   ]
+  },
+  {
+   "quantity": "Azimuthal rotation of Clump 1 between SB16+IB17 and SB16+LB19",
+   "value": "70",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 The inner disc",
+     "quote": "We find Clump 1 offset by ∼ 70 deg in azimuth relative to SB16+LB19, as expected for Keplerian rotation if the centre of mass coincides with the ring center."
+    }
+   ]
+  },
+  {
+   "quantity": "Clump 2 offset from ring center in IB17",
+   "value": "0.08",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 The inner disc",
+     "quote": "labeled Clump 2 in Fig. 7, more compact and that reaches the same peak intensity as Clump 1, is found offset by _∼_ 0 _[′′]_ _._ 08."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "ExactCASA version and pipeline version used for initial calibration and continuum extraction",
+  "Exact spectral windows, channel ranges flagged for spectral lines, and frequency averaging width used during continuum extraction (inherited from Benisty et al. 2021)",
+  "Exact dimensions and orientation of the elliptical mask used in uvmem"
+ ],
+ "missing_for_reproduction": [
+  "Exact channel flagging and spectral averaging parameters used to extract the continuum visibilities (deferred to Benisty et al. 2021)",
+  "Exact CASA version used",
+  "Exact parameters (semi-major axis, semi-minor axis, position angle) of the elliptical mask applied in uvmem"
+ ],
+ "reproducibility_score": 88,
+ "score_reason": "All three ALMA project codes are stated and public, all five custom analysis/imaging codes (uvmem, OOselfcal, VisAlign, pyralysis, MPolarMaps) are open-source with URLs provided, and key quantitative parameters (grid sizes, uv-ranges, Briggs robust values, alignment shifts, scale factors, and noise levels) are thoroughly documented. Minor deductions for deferring initial continuum extraction details to Benisty et al. (2021) and not stating the CASA version.",
+ "rediscovery_reason": "Public archival ALMA data, complete open-source software stack provided via GitHub/GitLab links, well-specified algorithmic steps, and clear numeric answer keys (alignment shifts, scale factors, PSNR values, and PDS 70c flux density and SNR).",
+ "source_card": "cards/2022MNRAS.513.5790C/sonnet/card.md"
+}

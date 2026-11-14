@@ -1,0 +1,984 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2016ApJ...816...25P",
+  "title": "Dust and Gas in the Disk of HL Tauri: Surface Density, Dust Settling, and Dust-to-gas Ratio",
+  "year": 2016,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Pinte, C.",
+  "n_authors": 7,
+  "arxiv_id": "1508.00584",
+  "doi": "10.3847/0004-637X/816/1/25",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2011.0.00015.SV"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present a radiative transfer model accounting for the observed gaps and bright rings as well as radial changes of the emissivity index."
+   },
+   {
+    "loc": "Observations",
+    "quote": "The band 3, 6, and 7 calibrated continuum data sets and CLEANed images were downloaded from the ALMA Science portal"
+   }
+  ],
+  "science": {
+   "fields": [
+    "protoplanetary_disks"
+   ],
+   "targets": [
+    {
+     "name": "HL Tau",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "140 pc",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HL Tau is a T Tauri star of spectral energy distribution (SED) Class I–II in the Taurus molecular cloud, at a distance of 140 pc."
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the dust surface density, ring/gap masses, grain-size variation, dust settling (alpha) and gas-to-dust ratio in the HL Tau disk, from radiative transfer modelling of the ALMA Band 3, 6 and 7 continuum data?",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We investigate whether a single unified dust model can reproduce both the ALMA images and SED, and compare the dust and gas disk also observed by ALMA."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.0.00015.SV",
+     "evidence": [
+      {
+       "loc": "Acknowledgements",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2011.0.00015.SV."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Bands 3, 6, 7 continuum (0.8-3 mm); Band 3 12CO J=1-0 and HCO+ J=1-0",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The calibrated spectral line data sets in band 3 for $^{12}$CO $J$=1-0 and HCO$^+$ $J$=1-0 were also downloaded and CLEANed."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The calibrated spectral line data sets in band 3 for $^{12}$CO $J$=1-0 and HCO$^+$ $J$=1-0 were also downloaded and CLEANed."
+      }
+     ]
+    },
+    {
+     "species": "HCO+",
+     "transition": "J=1-0",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The calibrated spectral line data sets in band 3 for $^{12}$CO $J$=1-0 and HCO$^+$ $J$=1-0 were also downloaded and CLEANed."
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "up to ~15 km",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "HL Tau was recently observed with ALMA using baselines up to $\\sim$ 15 km at wavelengths from 0.8-3 mm"
+     }
+    ]
+   },
+   "angular_resolution": {
+    "value": "down to 3.5 AU; HCO+ 0.25 arcsec, CO 0.2 arcsec (tapered)",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "which resulted in spatial resolutions down to 3.5 AU"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Science verification data from the ALMA Long Baseline Campaign",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "HL Tau was observed as a science verification target within the ALMA Long Baseline Campaign"
+     }
+    ]
+   },
+   "other_facilities": [],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Stellar Teff = 4000 K and L* = 11 Lsun",
+      "evidence": [
+       {
+        "loc": "Radiative transfer model",
+        "quote": "We assume passive heating and fix the properties of the central star to $T_\\mathrm{eff} = 4\\,000\\,$K and $L_* = 11\\,L_\\odot$ (cite: Menshchikov99)."
+       }
+      ]
+     },
+     "citation": "(cite: Menshchikov99)"
+    },
+    {
+     "what": {
+      "value": "Accretion rate 8.7e-8 Msun/yr from Brgamma luminosity",
+      "evidence": [
+       {
+        "loc": "Discussion - a coherent model for the HL Tau disk?",
+        "quote": "The accretion rate of the disk surrounding HL Tau was estimated to $8.7\\,10^{-8}\\,$M$_\\odot$.yr$^{-1}$ from the Br$\\gamma$ line luminosity (cite: Beck10)."
+       }
+      ]
+     },
+     "citation": "(cite: Beck10)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "Calibrated continuum data and CLEANed images downloaded from the ALMA Science portal, with self-calibration tables applied",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "together with the tables for self-calibration, which we applied to the data."
+      }
+     ]
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "10% calibration uncertainty added in quadrature in chi2",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "to which we added quadratically a 10 % calibration uncertainty"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA CLEAN; model visibilities from the CASA simulator using ft",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "This computes the model visibilities at the exact same ($u$,$v$) coordinates as the observations using the *ft* task."
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "HCO+: default CLEAN parameters and uv taper from ALMA LBC paper (0.25 arcsec); CO: taper giving 0.2 arcsec",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "CLEANing with a $u$$v$ taper giving a spatial resolution of 0.2 arcsec was found to be a good compromise"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Default CLEAN parameters and uv taper for HCO+ taken from the ALMA LBC paper",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The default CLEAN parameters and $u$$v$ taper from were used for HCO$^+$ giving a resolution of 0.25 arcsec."
+       }
+      ]
+     },
+     "from_reference": "(cite: ALMA_LBC)"
+    },
+    {
+     "what": {
+      "value": "Standard disk parameters",
+      "evidence": [
+       {
+        "loc": "Continuum modeling approach",
+        "quote": "We use standard disk parameters to describe the disk structure (cite: Pinte08; Andrews09)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pinte08; Andrews09)"
+    },
+    {
+     "what": {
+      "value": "Procedure for combining band surface densities into one model",
+      "evidence": [
+       {
+        "loc": "Surface density profile and radial concentration of large grains",
+        "quote": "we adopt a procedure similar to the one used in (cite: Pinte07) and (cite: Gonzalez12)"
+       }
+      ]
+     },
+     "from_reference": "(cite: Pinte07; Gonzalez12)"
+    },
+    {
+     "what": {
+      "value": "Ring/gap nomenclature",
+      "evidence": [
+       {
+        "loc": "Surface density profile and radial concentration of large grains",
+        "quote": "We use the same nomenclature as in to name the gaps and rings."
+       }
+      ]
+     },
+     "from_reference": "(cite: ALMA_HLTau)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact CLEAN parameters (robust, cell, image size, masks, niter) for continuum",
+    "CASA version",
+    "Ring/gap positions and inclination/PA used",
+    "Line-free channels and continuum subtraction for CO/HCO+",
+    "Exact modified CASA simulator code",
+    "Stopping criteria for the settling alpha search and the grid of alpha values",
+    "Opacity calculation and dust optical constants details beyond those cited",
+    "Central source position/offset conventions"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Extract and invert major-axis brightness profile to surface density",
+    "method": {
+     "value": "Average both sides of the major-axis profile, deconvolve with a Gaussian beam, convert to surface density with a power-law T (exponent -0.5), then iterate MCFOST models convolved with the beam, correcting surface density by the observed/model ratio",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "The surface density at any point in the disk is then corrected by the ratio of the observed profile divided by the model profile."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "Ratio limited to 0.8-1.2; converged when profile changes <1%; ~30 iterations",
+      "evidence": [
+       {
+        "loc": "Building a model of the HL Tau disk",
+        "quote": "this ratio is limited between 0.8 and 1.2. The procedure is iterated until the model brightness profile does not change by more than 1 % at any radius."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "2D axisymmetric disk; h0=10 AU at 100 AU, beta=1.15, outer radius 150 AU, a_min=0.03 um, a_max=3 mm, p=-3.5",
+      "evidence": [
+       {
+        "loc": "Radiative transfer model",
+        "quote": "$a_\\mathrm{min}$ and $a_\\mathrm{max}$ are set to $0.03\\,\\mu$m and 3 mm and we initially use $p=-3.5$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Iterative image-plane inversion, not a sampler",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "The procedure is iterated until the model brightness profile does not change by more than 1 % at any radius."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Comparison of CLEANed model and observed images",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "the observed and modeled images were compared for consistency"
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Combine bands into a single multi-grain-size model",
+    "method": {
+     "value": "Assign band 3, 6, 7 surface densities to grains of 0.4, 0.18, 0.11 mm; interpolate in log grain size; no extrapolation outside",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "the surface densities from bands 3, 6, and 7 were used to define the distribution of the grains of size 0.4, 0.18, and 0.11 mm respectively."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Local grain-size slope compared to -3.5 and -4.5 models",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "The grain distribution has a local slope close to -3.5 up to 75 AU, while it approaches -4.5 between 75 and 120 AU"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Simulate visibilities and evaluate chi2",
+    "method": {
+     "value": "Average data in 300 s bins, compute model visibilities with the CASA simulator at observed uv points, add noise from median PWV, CLEAN as observations, compute chi2",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "we first average the observed data in time (using 300s bins) and in frequency to obtain one single continuum channel per available spectral window."
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [
+     {
+      "value": "229910, 420668, 571960 visibilities in bands 3, 6, 7",
+      "evidence": [
+       {
+        "loc": "Building a model of the HL Tau disk",
+        "quote": "After binning, we have 229 910, 420 668 and 571 960 visibilities in bands 3, 6, and 7 respectively."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "chi2 with formal weights plus 10% calibration uncertainty; no full Bayesian analysis",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "a full Bayesian analysis taking into account the potential correlations between the densities in the various gaps and rings is out of reach with current computing facilities."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Unbinned visibilities change chi2 by <2%",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "the $\\chi^2$ were not affected by more than 2 %"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Ring and gap masses with uncertainties",
+    "method": {
+     "value": "Integrate surface density between gaps; vary each gap depth by a constant factor and report range where chi2 <= 1.5 x min chi2",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "we report the interval range where the $\\chi^2$ remains smaller than 1.5 the minimum $\\chi^2$ value."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST",
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Threshold corresponds to visible visibility differences and >3 sigma residuals",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "this threshold corresponds to visible differences in the binned visibility curves as well as residuals above 3 $\\sigma$ in the CLEAN maps"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Constrain dust settling (alpha)",
+    "method": {
+     "value": "Compare 2D models with different alpha (diffusive settling, Fromang & Nelson eq. 19) to the ALMA image gap contrast over azimuth",
+     "evidence": [
+      {
+       "loc": "Degree of dust settling",
+       "quote": "produces the best agreement with most of the observed features in the ALMA image, with rings that are well separated at all azimuthal angles."
+      }
+     ]
+    },
+    "software": [
+     "MCFOST"
+    ],
+    "key_parameters": [
+     {
+      "value": "Schmidt number 1.5",
+      "evidence": [
+       {
+        "loc": "Radiative transfer model",
+        "quote": "$S_c$ is the Schmidt number, which we fix to 1.5."
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Inclination ~47 deg",
+      "evidence": [
+       {
+        "loc": "Degree of dust settling",
+        "quote": "Because the disk is inclined by $\\sim$ 47$^\\circ$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Visual comparison of few alpha values",
+     "evidence": [
+      {
+       "loc": "Degree of dust settling",
+       "quote": "A small value of the millimeter dust scale height, $h_{1\\,\\!\\mathrm{mm}}$ = 0.70 AU, equivalent to $\\alpha = 3\\times 10^{-4}$ produces the best agreement with most of the observed features in the ALMA image"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared models with h1mm=0.70 and 2.15 AU and no settling",
+     "evidence": [
+      {
+       "loc": "Degree of dust settling",
+       "quote": "The model with $h_{1\\,\\!\\mathrm{mm}}=2.15$ AU reproduces this behavior but does not provide a strong enough contrast in the other rings."
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Gas kinematics from CO and HCO+",
+    "method": {
+     "value": "Compare major-axis PV diagrams with Keplerian curves for 1.7 and 1.0 Msun at i=47 deg (not formal fits)",
+     "evidence": [
+      {
+       "loc": "The gas disk: 12CO and HCO+.",
+       "quote": "Although not formal fits, the high gas velocities and shape of these PV diagrams suggest that the stellar mass is closer to $\\sim$ 1.7 M$_{\\odot}$"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "MCFOST",
+    "version": "not stated",
+    "used_for": {
+     "value": "Radiative transfer modelling of continuum",
+     "evidence": [
+      {
+       "loc": "Continuum modeling approach",
+       "quote": "we use the radiative transfer code MCFOST (cite: Pinte06; Pinte09)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "CASA",
+    "version": "not stated",
+    "used_for": {
+     "value": "CLEAN imaging, modified simulator and ft for model visibilities",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "The final simulated visibilities and images were produced by applying a modified version of the CASA simulator to the model."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Total dust mass of best model",
+    "value": "5e-4",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Surface density profile and radial concentration of large grains",
+      "quote": "The total dust mass of the best model is 5 10$^{-4}$ M$_\\odot$."
+     }
+    ]
+   },
+   {
+    "quantity": "Total chi2 of final model",
+    "value": "1282",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Building a model of the HL Tau disk",
+      "quote": "Our final model has a total $\\chi^2$ of 1282."
+     }
+    ]
+   },
+   {
+    "quantity": "Unresolved central source flux (band 3, 6, 7)",
+    "value": "1.57, 1.90, 2.59",
+    "uncertainty": "not stated",
+    "units": "mJy",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Building a model of the HL Tau disk",
+      "quote": "1.57, 1.90, and 2.59 mJy at band 3, 6 and 7 respectively"
+     }
+    ]
+   },
+   {
+    "quantity": "Mass of ring B7",
+    "value": "123",
+    "uncertainty": "+34/-24",
+    "units": "Mearth",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "| B7 | $123_{-24}^{+34}$ | 16 | ... | 4.9 | 1.3 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Missing dust mass in gap D7",
+    "value": "36",
+    "uncertainty": "+11/-20",
+    "units": "Mearth",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "| D7 | 91.0 | 21 | $36_{-20}^{+11}$ | 11 | 9.9 |"
+     }
+    ]
+   },
+   {
+    "quantity": "Alpha from settling",
+    "value": "3e-4",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Degree of dust settling",
+      "quote": "$h_{1\\,\\!\\mathrm{mm}}$ = 0.70 AU, equivalent to $\\alpha = 3\\times 10^{-4}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Gas-to-dust ratio in midplane at 100 AU (dust to 3 mm)",
+    "value": "~6",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Discussion - a coherent model for the HL Tau disk?",
+      "quote": "the gas-to-dust mass ratio in the disk midplane is $\\approx 6$ at a radius of 100 AU"
+     }
+    ]
+   },
+   {
+    "quantity": "Stellar mass from gas kinematics",
+    "value": "1.7",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "The gas disk: 12CO and HCO+.",
+      "quote": "suggest that the stellar mass is closer to $\\sim$ 1.7 M$_{\\odot}$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Outer ring is depleted in mm-sized grains relative to central rings",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Our model indicates that the outermost ring is depleted in millimeter grains compared to the central rings."
+     }
+    ]
+   },
+   {
+    "value": "Mm dust disk is geometrically thin and strongly settled",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "indicates that the millimeter dust disk is geometrically thin (scale height $\\approx$ 1 AU at 100 AU)"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Are gaps strongly depleted in mm dust?",
+    "experiment": "Radiative transfer inversion of three bands with visibility check",
+    "result": "Density depleted by >10 in main gaps; missing masses up to ~40 Mearth",
+    "finding": "Gaps consistent with removal of dust possibly into rocky cores",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the dust density is depleted by at least a factor of 10 in the main gaps compared to the surrounding rings."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Do dust properties vary radially?",
+    "experiment": "Compare surface densities from three bands with p=-3.5 and -4.5",
+    "result": "Local slope -3.5 to 75 AU, ~-4.5 at 75-120 AU",
+    "finding": "Large grains depleted in outer ring",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "Surface density profile and radial concentration of large grains",
+      "quote": "This suggests that grains larger than a fraction of a millimeter are depleted in the outer ring compared with the rest of the disk"
+     }
+    ]
+   },
+   {
+    "hypothesis": "How settled is the mm dust?",
+    "experiment": "Compare 2D models with various alpha to image gap contrast",
+    "result": "alpha ~3e-4, h1mm = 0.70 AU",
+    "finding": "Highly settled; gas/dust ratio ~5 in thin layer",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Degree of dust settling",
+      "quote": "this ring seems to disappear along the minor axis"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "Full Bayesian analysis not feasible due to computing cost, so gaps explored independently",
+    "evidence": [
+     {
+      "loc": "Surface density profile and radial concentration of large grains",
+      "quote": "Due to the computing cost of the procedure (dominated by the calculations of the visibilities in CASA)"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Steeper p=-4.5 gives matching outer ring but mismatching central regions",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "A model with a steeper slope, $p=-4.5$, results in similar surface density profiles at all bands in the outer ring"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Central peak could not be reproduced; unresolved source added ad hoc",
+     "evidence": [
+      {
+       "loc": "Building a model of the HL Tau disk",
+       "quote": "we could not reproduce the compact and peaked emission at the position of the star"
+      }
+     ]
+    },
+    {
+     "value": "Opacity values uncertain to a factor of a few",
+     "evidence": [
+      {
+       "loc": "Surface density profile and radial concentration of large grains",
+       "quote": "should be considered with an uncertainty of a factor a few"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Dust composition, opacity and fixed gas scale height drive masses and gas/dust ratio",
+    "Settling constraint is from visual comparison of few models",
+    "Axisymmetry assumed despite ring offsets",
+    "Uncertainties from one-at-a-time chi2 ranges, no correlations"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Data downloaded from the ALMA Science portal (science verification)",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The band 3, 6, and 7 calibrated continuum data sets and CLEANed images were downloaded from the ALMA Science portal"
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Modified CASA simulator code",
+    "Final surface density profiles in numeric form",
+    "Exact imaging parameters"
+   ],
+   "estimated_data_volume_inferred": "~tens of GB",
+   "score_inferred": 5,
+   "score_reason": "Public data and a clear iterative recipe, but MCFOST setup, imaging parameters and simulator modifications are incompletely given.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Recipe depends on a custom pipeline and a modified simulator; not fully specified."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "(cite: Pinte06; Pinte09)",
+     "why": "MCFOST radiative transfer code"
+    },
+    {
+     "citation": "(cite: Fromang09)",
+     "why": "Dust settling vertical profile"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "(cite: ALMA_HLTau)",
+     "why": "ALMA HL Tau Long Baseline Campaign results"
+    },
+    {
+     "citation": "(cite: ALMA_LBC)",
+     "why": "Observation details"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "ALMA Long Baseline Campaign"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-d34104ed0053da582020bb27dc80f2b9",
+  "batch_id": "msgbatch_01G9VSfZn2cGEFQ6JBaQo4Li",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:36:44",
+  "usage": {
+   "input_tokens": 23484,
+   "output_tokens": 8195,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.065065,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 60,
+  "quotes_ok": 60,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 79,
+   "stated": 44,
+   "rate": 0.557
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T01:08:21",
+  "custom_id": "repair-sonnet-a557acd60f7bc34397436b1498e83b58",
+  "fixed": [
+   {
+    "path": "analysis_steps[0].fitting.evidence[0]",
+    "old": null,
+    "new": "The procedure is iterated until the model brightness profile does not change by more than 1 % at any radius."
+   },
+   {
+    "path": "analysis_steps[4].fitting.evidence[0]",
+    "old": null,
+    "new": "A small value of the millimeter dust scale height, $h_{1\\,\\!\\mathrm{mm}}$ = 0.70 AU, equivalent to $\\alpha = 3\\times 10^{-4}$ produces the best agreement with most of the observed features in the ALMA image"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

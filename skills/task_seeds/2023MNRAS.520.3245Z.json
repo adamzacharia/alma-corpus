@@ -1,0 +1,371 @@
+{
+ "bibcode": "2023MNRAS.520.3245Z",
+ "title": "ATOMS: ALMA three-millimetre observations of massive star-forming regions - XIV. Properties of resolved ultra-compact H II regions",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad190",
+ "arxiv_id": "2301.01876",
+ "fields": [
+  "star_formation",
+  "milky_way_ism"
+ ],
+ "question": "What are the physical properties (electron density, emission measure, electron temperature, ionic abundance ratio n_He+/n_H+, and line widths) and internal spatial variations of resolved ultra-compact H II regions in the ATOMS survey?",
+ "alma_project_codes": [
+  "2019.1.00685.S"
+ ],
+ "data": {
+  "bands": "3 mm (centered at ~99.4 GHz)",
+  "arrays": "ALMA 12m and ACA-7m arrays",
+  "angular_resolution": "~2 arcsec (continuum), ~2.5 arcsec (RRLs)",
+  "sensitivity": "~0.2 mJy (1 sigma continuum rms), 0.02 Jy beam^-1 per 1.5 km s^-1 channel (RRLs)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CS J = 2-1 survey used for target selection",
+    "evidence": [
+     {
+      "loc": "2.1 The sample",
+      "quote": "These 146 sources were selected from the CS J = 2-1 survey of Bronfman et al. (1996), a complete and homogeneous molecular line survey of UC Hii region candidates in the Galactic plane."
+     }
+    ]
+   },
+   "citation": "Bronfman et al. (1996)"
+  },
+  {
+   "what": {
+    "value": "Overall properties, distances, and dust temperatures of the 146 ATOMS targets",
+    "evidence": [
+     {
+      "loc": "2.1 The sample",
+      "quote": "The overall properties of these 146 targets are shown in Table A of Liu et al. (2020a)."
+     },
+     {
+      "loc": "3.2.3 Electron temperature",
+      "quote": "For the exemplar source, I09002-4732, its observed flux densities (S a ) is 13.3 Jy and the T 3 and d kpc are 39 K and 1.2 kpc (Liu et al. 2020a), respectively."
+     }
+    ]
+   },
+   "citation": "Liu et al. (2020a)"
+  },
+  {
+   "what": {
+    "value": "Electron density and HII region diameter measurements for comparison",
+    "evidence": [
+     {
+      "loc": "3.2.4 Electron density derived from 3 mm radio continuum",
+      "quote": "The gray markers are the data from Garay & Lizano (1999), which show similar trends as our data."
+     }
+    ]
+   },
+   "citation": "Garay & Lizano (1999)"
+  },
+  {
+   "what": {
+    "value": "Electron temperatures and galactocentric distances of HII regions for comparison",
+    "evidence": [
+     {
+      "loc": "4.3 Variance of electron temperature in the Galactic Plane",
+      "quote": "The grey dots in left panel of Figure 11 shows the data from Paladini et al. (2004)."
+     },
+     {
+      "loc": "4.3 Variance of electron temperature in the Galactic Plane",
+      "quote": "The grey cross dots and dashed line show the data and linear fit from Balser et al. (2011)."
+     },
+     {
+      "loc": "4.3 Variance of electron temperature in the Galactic Plane",
+      "quote": "The data from Afflerbach et al. (1996) are shown as blue triangles in the right panel of Figure 11."
+     }
+    ]
+   },
+   "citation": "Shaver et al. (1983), Afflerbach et al. (1996), Paladini et al. (2004), Balser et al. (2011)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Identify UC HII regions and measure effective radii and spectral parameters",
+   "method": "Integrate H40alpha and He40alpha cubes along the velocity axis to produce intensity maps, visually identify compact UC HII regions, compute effective radius R_eff = sqrt(S/pi) from the area S within 5-sigma contours, and fit Gaussians to source-averaged spectra to obtain peak intensity, v_lsr, and line width Delta_V.",
+   "software": [],
+   "key_parameters": [
+    "5-sigma contour threshold for area S; neglect unresolved regions smaller than one beam"
+   ],
+   "assumptions": [
+    "3 mm continuum emission is dominated by free-free emission"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive emission measure and electron density from H40alpha emission",
+   "method": "Compute H40alpha line luminosity from integrated line flux and distance, then calculate electron density n_e (Eq. 2) and emission measure EM (Eq. 4) using R_eff.",
+   "software": [],
+   "key_parameters": [
+    "Recombination efficiency eta = 1.99e-32 at T_e = 10^4 K and n_e = 10^4 cm^-3"
+   ],
+   "assumptions": [
+    "Case B recombination; helium ionization and stimulated emission negligible; homogeneous medium of thickness 2 R_eff"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure ionic abundance ratio Y+ = n_He+/n_H+ and its spatial variation",
+   "method": "Calculate Y+ as the ratio of integrated intensities of He40alpha to H40alpha (Eq. 5) both source-averaged and pixel-by-pixel, and compare Y+ across contour intervals (80%, 60%, 40%, 30%, 20% of peak H40alpha emission).",
+   "software": [],
+   "key_parameters": [
+    "Contour levels at 80%, 60%, 40%, 30%, 20% of peak H40alpha emission"
+   ],
+   "assumptions": [
+    "Both helium and hydrogen RRLs are in LTE"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive non-LTE electron temperature and 3 mm continuum electron density",
+   "method": "Model continuum and H40alpha line intensities using non-LTE departure coefficients and radiative transfer (Appendix A), fit T_e and n_e to random realizations drawn from measured intensities via least-squares, and compute 3 mm continuum EM and n_e (Appendix B).",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "3 mm continuum is purely free-free emission; Rayleigh-Jeans approximation; homogeneous medium of thickness D = 2R; no strong RRL maser"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Decompose H40alpha line broadening and test Galactic T_e gradient",
+   "method": "Calculate thermal and pressure broadening following Peters et al. (2012), derive microturbulent broadening Delta_V_tur = sqrt(Delta_V^2 - Delta_V_th^2), and perform linear regression of T_e against galactocentric distance R_GC.",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Pressure broadening is negligible for n_e between 10^3 and 10^5 cm^-3 at H40alpha"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Number of UC HII regions detected in H40alpha",
+   "value": "94",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "In total, we identify 94 UC Hii regions from H40 U emission."
+    },
+    {
+     "loc": "3.1 Resolved UC Hii regions identified with RRL H40U",
+     "quote": "In total, we detected 94 and 44 compact sources (UC Hii regions) in emission from H40 U and He40 U, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Number of UC HII regions detected in He40alpha",
+   "value": "44",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Resolved UC Hii regions identified with RRL H40U",
+     "quote": "In total, we detected 94 and 44 compact sources (UC Hii regions) in emission from H40 U and He40 U, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median effective radius R_eff",
+   "value": "0.1",
+   "uncertainty": "not stated",
+   "units": "pc",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.1 Resolved UC Hii regions identified with RRL H40U",
+     "quote": "The median ' eff is ⇠0.1 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Median emission measure (from H40alpha)",
+   "value": "1.5e7",
+   "uncertainty": "not stated",
+   "units": "cm^-6 pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Emission measure and electron density derived from H40U emission",
+     "quote": "The median, mean and standard deviation of EM are 1.5⇥10 7, 5.7⇥10 7 and 1.1⇥10 8 cm −6 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean emission measure (from H40alpha)",
+   "value": "5.7e7",
+   "uncertainty": "1.1e8",
+   "units": "cm^-6 pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Emission measure and electron density derived from H40U emission",
+     "quote": "The median, mean and standard deviation of EM are 1.5⇥10 7, 5.7⇥10 7 and 1.1⇥10 8 cm −6 pc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median electron density n_e (from H40alpha)",
+   "value": "9.2e3",
+   "uncertainty": "not stated",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Emission measure and electron density derived from H40U emission",
+     "quote": "The median, mean and standard deviation of n 4 are 9.2⇥10 3, 1.4⇥10 4 and 1.5⇥10 4 cm −3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean electron density n_e (from H40alpha)",
+   "value": "1.4e4",
+   "uncertainty": "1.5e4",
+   "units": "cm^-3",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.2.1 Emission measure and electron density derived from H40U emission",
+     "quote": "The median, mean and standard deviation of n 4 are 9.2⇥10 3, 1.4⇥10 4 and 1.5⇥10 4 cm −3, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median source-averaged ionic abundance ratio Y+",
+   "value": "0.11",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 Ionic Abundance Ratio",
+     "quote": "The median, mean and standard deviation of source-averaged Y + are 0.11, 0.11 and 0.03, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean source-averaged ionic abundance ratio Y+",
+   "value": "0.11",
+   "uncertainty": "0.03",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.2.2 Ionic Abundance Ratio",
+     "quote": "The median, mean and standard deviation of source-averaged Y + are 0.11, 0.11 and 0.03, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median electron temperature T_e",
+   "value": "6662",
+   "uncertainty": "not stated",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 Electron temperature",
+     "quote": "The median, mean and standard deviation of electron temperature are 6662, 7026 and 1348 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean electron temperature T_e",
+   "value": "7026",
+   "uncertainty": "1348",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.3 Electron temperature",
+     "quote": "The median, mean and standard deviation of electron temperature are 6662, 7026 and 1348 K, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Slope of xy-bisector fit between n_e(3mm) and n_e(H40alpha)",
+   "value": "0.95",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.4 Electron density derived from 3 mm radio continuum",
+     "quote": "The xy-bisector fit to these data gives a slope of 0.95 ± 0.01, indicating that millimeter RRLs are good probes of electron densities."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean H40alpha line width Delta_V",
+   "value": "28.06",
+   "uncertainty": "8.90",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2.5 Line widths of RRL H40U",
+     "quote": "The mean, median and standard deviation of Δ + are 28.06, 30.41 and 8.90 km/s, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Median H40alpha line width Delta_V",
+   "value": "30.41",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3.2.5 Line widths of RRL H40U",
+     "quote": "The mean, median and standard deviation of Δ + are 28.06, 30.41 and 8.90 km/s, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Linear fit intercept of T_e vs R_GC",
+   "value": "6271",
+   "uncertainty": "481",
+   "units": "K",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Variance of electron temperature in the Galactic Plane",
+     "quote": "The linear fitting of the data in our sample is: ) 4 = (6271 ± 481) + (135 ± 83) ' GC . (8)"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear fit slope of T_e vs R_GC",
+   "value": "135",
+   "uncertainty": "83",
+   "units": "K kpc^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3 Variance of electron temperature in the Galactic Plane",
+     "quote": "The linear fitting of the data in our sample is: ) 4 = (6271 ± 481) + (135 ± 83) ' GC . (8)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and pipeline version used for calibration and imaging",
+  "Imaging algorithm parameters (task, deconvolver, Briggs robust weighting, cell size, image size, masking, continuum subtraction method)",
+  "Specific velocity integration ranges used for H40alpha and He40alpha integrated intensity maps for each source",
+  "Exact number of Monte Carlo realizations used when fitting electron temperature and density in Appendix A"
+ ],
+ "missing_for_reproduction": [
+  "12m + ACA combination and imaging script parameters (deferred to Liu et al. 2020a, 2022; Zhou et al. 2021)",
+  "Exact velocity integration windows for moment-0 maps of H40alpha and He40alpha for each of the 94 sources",
+  "Code or lookup tables for the non-LTE departure coefficients b_k from Zhu et al. (2019, 2022) used in Appendix A",
+  "Exact spatial masks/polygons used when dividing closely spaced multiple UC HII regions in the 10 multi-component sources"
+ ],
+ "reproducibility_score": 65,
+ "score_reason": "Public ALMA dataset (2019.1.00685.S), explicit analytical equations in the text and appendices, and full measurement tables (Tables 1 and C1) for all 94 regions, but imaging details and source distances are deferred to companion papers and the non-LTE departure coefficient code is not released.",
+ "rediscovery_reason": "The ALMA data are public, all 94 UC HII regions have tabulated observables and derived physical parameters (R_eff, EM, n_e, Y+, T_e, Delta_V), and the analytical/non-LTE formulas linking the observables to the physical quantities are explicitly provided.",
+ "source_card": "cards/2023MNRAS.520.3245Z/sonnet/card.md"
+}

@@ -1,0 +1,688 @@
+{
+ "bibcode": "2021MNRAS.501.4317P",
+ "title": "Planet formation in intermediate-separation binary systems",
+ "year": 2021,
+ "doi": "10.1093/mnras/staa3834",
+ "arxiv_id": "2012.07901",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "Characterise the individual circum-primary and circum-secondary discs in the intermediate-separation binary systems KK Oph and HD 144668 to understand how binarity impacts disc evolution and planet-forming potential.",
+ "alma_project_codes": [
+  "2015.1.01600.S",
+  "2013.0.01600.S",
+  "2013.1.00220.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm); archival Band 7 (0.87 mm)",
+  "arrays": "12 m array (41 antennas for KK Oph, 38 antennas for HD 144668)",
+  "angular_resolution": "Band 6: 0.53'' x 0.52'' (HD 144668), 0.58'' x 0.51'' (KK Oph); Band 7: 0.31'' x 0.28'' (HD 144668)",
+  "sensitivity": "Band 6 continuum rms: 0.18 mJy/beam (HD 144668), 0.16 mJy/beam (KK Oph); Band 7 continuum rms: 0.53 mJy/beam (HD 144668)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Rest frequencies of 13CO and C18O J=2-1 from the LAMDA database",
+    "evidence": [
+     {
+      "loc": "ALMA observations",
+      "quote": "The spectral setup included $^{13}$CO and C$^{18}$O J$=$2–1 lines with rest frequencies of 220.3986841281 and 219.5603541 respectively (LAMDA database, https://home.strw.leidenuniv.nl/ moldata/CO.html)"
+     }
+    ]
+   },
+   "citation": "LAMDA database, https://home.strw.leidenuniv.nl/ moldata/CO.html"
+  },
+  {
+   "what": {
+    "value": "Gaia DR2 distance to KK Oph of 221.1 +12.4/-10.4 pc",
+    "evidence": [
+     {
+      "loc": "KK Oph system",
+      "quote": "It is not present in the Hipparcos catalogue and Gaia DR2 assigns to it a distance of 221.1$^{+12.4}_{-10.4}$ pc (cite: 2018A&A...620A.128V), though it includes the warning label that it might be unreliable."
+     }
+    ]
+   },
+   "citation": "(cite: 2018A&A...620A.128V)"
+  },
+  {
+   "what": {
+    "value": "Molecular data for CO isotopologues",
+    "evidence": [
+     {
+      "loc": "Upper limits on gas mass",
+      "quote": "Molecular data from (cite: 1998JQSRT..60..883P; 2001A&A...370L..49M; 2005A&A...432..369S)"
+     }
+    ]
+   },
+   "citation": "(cite: 1998JQSRT..60..883P; 2001A&A...370L..49M; 2005A&A...432..369S)"
+  },
+  {
+   "what": {
+    "value": "Dust map used to derive E(B-V) extinction values towards KK Oph and HD 144668",
+    "evidence": [
+     {
+      "loc": "Upper limits on gas mass",
+      "quote": "Using the dust map of (cite: 2019A&A...625A.135L) and the Gaia DR2 distances and coordinates to the primary stars, we obtain an E(B-V)=0.046${\\pm}$0.039 for KK Oph and E(B-V)=0.015$^{+0.022}_{-0.015}$ for HD 144668 system."
+     }
+    ]
+   },
+   "citation": "(cite: 2019A&A...625A.135L)"
+  },
+  {
+   "what": {
+    "value": "Millimetre fluxes at 0.88, 0.856, and 6.9 mm for the 253-1536 binary in Orion used to compute its differential opacity spectral index",
+    "evidence": [
+     {
+      "loc": "mm spectral index from B6/B7 for HD144668",
+      "quote": "Using the same approach as for the calculation of $\\Delta\\beta$ for HD 144688 in Sect. [4](#results), and fluxes of the 253-1536 A and B from (cite: 2011ApJ...739L...8R) at 0.88 and 6.9 mm we obtain $\\Delta\\beta_{253-1536}$=0.04$^{+0.10}_{-0.05}$."
+     },
+     {
+      "loc": "mm spectral index from B6/B7 for HD144668",
+      "quote": "Using the same 6.9 mm fluxes combined with newer 0.856 mm observations of (cite: 2009ApJ...699L..55M) we obtain $\\Delta\\beta_{253-1536}$=-0.09$^{+0.11}_{-0.09}$."
+     }
+    ]
+   },
+   "citation": "(cite: 2011ApJ...739L...8R); (cite: 2009ApJ...699L..55M)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Determine optical/NIR stellar positions and binary separations",
+   "method": "Extract primary star coordinates and parallaxes from Gaia DR2 (verifying reliability via RUWE), and fit stellar profiles (or saturated PSF wings) on pipeline-reduced VLT/NACO 2 um adaptive optics images to measure binary separations and position angles.",
+   "software": [
+    "not stated"
+   ],
+   "key_parameters": [
+    "NACO image resolution 75 mas, position precision 0.2 pixels (2.7 mas) for KK Oph"
+   ],
+   "assumptions": [
+    "Distances of 221 pc for KK Oph and 161.1 pc for HD 144668"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Fit 2D Gaussians to continuum sources and subtract point-source models to identify outer disc asymmetries",
+   "method": "Fit 2D Gaussians to isolated primary and secondary continuum emission in Band 6 and Band 7 images using CASA imfit, place point sources of the fitted flux and position in blank images, convolve with the synthesized beam, and subtract from the ALMA images.",
+   "software": [
+    "CASA",
+    "imfit"
+   ],
+   "key_parameters": [
+    "Synthesized beams: 0.53'' x 0.52'' (HD 144668 B6), 0.31'' x 0.28'' (HD 144668 B7), 0.58'' x 0.51'' (KK Oph B6)"
+   ],
+   "assumptions": [
+    "Unresolved inner disc emission can be modelled as a point source convolved with the synthesized beam"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Calculate disc dust masses from 1.2 mm continuum fluxes",
+   "method": "Compute dust masses from the 1.2 mm integrated continuum fluxes using the optically thin thermal dust emission equation M_dust = S_nu * D^2 / (kappa_nu * B_nu(T)).",
+   "software": [
+    "not stated"
+   ],
+   "key_parameters": [
+    "T = 20 K; kappa_nu = 1.15 cm^2/g_dust (also stated as 2 cm^2/g in Sect. 4.2.3); D = 161.1 pc (HD 144668) and 221 pc (KK Oph)"
+   ],
+   "assumptions": [
+    "Optically thin millimetre dust emission, isothermal dust temperature of 20 K, maximum grain size around 1 mm"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute individual and differential millimetre spectral indices and grain size power-law slopes for HD 144668 A and B",
+   "method": "Calculate flux spectral index alpha, opacity spectral index beta = alpha - 2, and grain size power-law index p = 3 + beta/beta_ISM from Band 6 (230 GHz) and Band 7 (345 GHz) fluxes; then compute the calibration-independent differential opacity index beta^A - beta^B = log(R) / log(nu_1/nu_2) from the flux ratios R = (S_nu1^A * S_nu2^B) / (S_nu2^A * S_nu1^B).",
+   "software": [
+    "TORUS"
+   ],
+   "key_parameters": [
+    "beta_ISM = 1.7; nu_1 = 230 GHz (1.3 mm), nu_2 = 345 GHz (0.87 mm); TORUS minimum grain size = 3.5 Angstrom, a_max = 1 mm and 1 cm, p = 3.2 and 3.5"
+   ],
+   "assumptions": [
+    "Rayleigh-Jeans regime (hv/k_B T << 1), optically thin emission arising from the same temperature layer (20 K) at both wavelengths, constant beta between nu_1 and nu_2"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive upper limits on disc gas masses and gas-to-dust ratios from 13CO non-detections",
+   "method": "Integrate 13CO J=2-1 emission over 0 to 8 km/s to obtain flux upper limits, solve analytically for fractional upper-state population x_u using a Boltzmann distribution in LTE (partition function summed to J=40), compute 13CO molecular mass in the optically thin limit, and convert to total gas mass using the 13CO fractional abundance.",
+   "software": [
+    "not stated"
+   ],
+   "key_parameters": [
+    "Velocity integration range: 0 to 8 km/s; T = 20 K; partition function maximum level J = 40; 13CO relative abundance = 1.3e-6"
+   ],
+   "assumptions": [
+    "Local thermodynamic equilibrium (LTE), optically thin 13CO J=2-1 emission, gas temperature of 20 K, standard 13CO abundance of 1.3e-6"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compute probability distributions of tidal truncation radii for the primary and secondary discs",
+   "method": "Sample unknown binary orbital parameters (omega, e, i, M) using a Monte Carlo approach (10 million realizations into 1000 radial bins from 0 to 400 au), solve Kepler's equation by bisection for eccentric anomaly E to obtain deprojection factor F = a/a_p, and compute tidal truncation radius R_t for primary and secondary discs across the range of stellar mass ratios.",
+   "software": [
+    "not stated"
+   ],
+   "key_parameters": [
+    "1000 bins from 0 to 400 au; 10 million random orbital parameter sets; e in [0, 0.7]; omega in [0, 2pi]; M in [0, 2pi]; a_p = 1.6088'' (KK Oph, d=221 pc) and 1.46'' (HD 144668, d=161 pc); stellar mass ratios psi = 1.5-1.67 (KK Oph) and 2.2-4.285 (HD 144668)"
+   ],
+   "assumptions": [
+    "Elliptic Keplerian orbit with eccentricity uniformly distributed between 0 and 0.7, random orientation, and observational size limits set by the ALMA beam (primaries > 72 au for KK Oph and > 43 au for HD 144668; secondaries < 72 au and < 43 au)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "1.2 mm integrated continuum flux of HD 144668",
+   "value": "26.25",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668 | 16:08:34.274 | $-$39.06.18.68 | 1.2 | 26.25 | 25.61$\\pm$0.18 | 0.532 x 0.525 | 0.53 x 0.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm peak continuum flux of HD 144668",
+   "value": "25.61",
+   "uncertainty": "0.18",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668 | 16:08:34.274 | $-$39.06.18.68 | 1.2 | 26.25 | 25.61$\\pm$0.18 | 0.532 x 0.525 | 0.53 x 0.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm integrated continuum flux of HD 144668",
+   "value": "56.0",
+   "uncertainty": "1.1",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668$^{*}$ | 16:08:34.275 | $-$39:06:18.68 | 0.87 | 56.0$\\pm$1.1 | 54.02$\\pm$0.53 | 0.32 x 0.28 | 0.31 x 0.28 |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm peak continuum flux of HD 144668",
+   "value": "54.02",
+   "uncertainty": "0.53",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668$^{*}$ | 16:08:34.275 | $-$39:06:18.68 | 0.87 | 56.0$\\pm$1.1 | 54.02$\\pm$0.53 | 0.32 x 0.28 | 0.31 x 0.28 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm integrated continuum flux of HD 144668B",
+   "value": "9.27",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668B | 16:08:34.390 | $-$39.06.19.22 | 1.2 | 9.27 | 8.74$\\pm$0.18 | 0.545 x 0.530 | 0.53 x 0.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm peak continuum flux of HD 144668B",
+   "value": "8.74",
+   "uncertainty": "0.18",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668B | 16:08:34.390 | $-$39.06.19.22 | 1.2 | 9.27 | 8.74$\\pm$0.18 | 0.545 x 0.530 | 0.53 x 0.52 |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm integrated continuum flux of HD 144668B",
+   "value": "16.1",
+   "uncertainty": "1.0",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668B$^{*}$ | 16:08:34.391 | $-$39:06:19.23 | 0.87 | 16.1$\\pm$1.0 | 16.35$\\pm$0.53 | 0.31 x 0.28 | 0.31 x 0.28 |"
+    }
+   ]
+  },
+  {
+   "quantity": "0.87 mm peak continuum flux of HD 144668B",
+   "value": "16.35",
+   "uncertainty": "0.53",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| HD 144668B$^{*}$ | 16:08:34.391 | $-$39:06:19.23 | 0.87 | 16.1$\\pm$1.0 | 16.35$\\pm$0.53 | 0.31 x 0.28 | 0.31 x 0.28 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm integrated continuum flux of KK Oph",
+   "value": "28.90",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| KK Oph | 17:10:08.124 | $-$27.15.19.12 | 1.2 | 28.90 | 27.03$\\pm$0.16 | 0.606 x 0.598 | 0.58 x 0.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm peak continuum flux of KK Oph",
+   "value": "27.03",
+   "uncertainty": "0.16",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| KK Oph | 17:10:08.124 | $-$27.15.19.12 | 1.2 | 28.90 | 27.03$\\pm$0.16 | 0.606 x 0.598 | 0.58 x 0.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm integrated continuum flux of KK Oph B",
+   "value": "8.3",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| KK Oph B | 17:10:08.014 | $-$27.15.19.80 | 1.2 | 8.3 | 8.1$\\pm$0.16 | 0.602 x 0.499 | 0.58 x 0.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "1.2 mm peak continuum flux of KK Oph B",
+   "value": "8.1",
+   "uncertainty": "0.16",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| KK Oph B | 17:10:08.014 | $-$27.15.19.80 | 1.2 | 8.3 | 8.1$\\pm$0.16 | 0.602 x 0.499 | 0.58 x 0.51 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NACO angular separation of KK Oph binary",
+   "value": "1.6088",
+   "uncertainty": "0.0075",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "KK Oph system",
+     "quote": "We obtain a separation of 1.6088$''$$\\pm$0.0075$''$, i.e., 356$\\pm$2 au projected separation at the adopted distance of 221 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical separation of KK Oph binary",
+   "value": "356",
+   "uncertainty": "2",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "KK Oph system",
+     "quote": "We obtain a separation of 1.6088$''$$\\pm$0.0075$''$, i.e., 356$\\pm$2 au projected separation at the adopted distance of 221 pc."
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA mm peak separation of KK Oph binary",
+   "value": "1.62",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Geometry of the two binary systems",
+     "quote": "From the Gaia and NACO data we obtain a binary separation measurement of 1.6088$''$$\\pm$0.0075$''$. This measurement is consistent with the 1.62$''$ separation between the millimetre peaks."
+    }
+   ]
+  },
+  {
+   "quantity": "NACO angular separation of HD 144668 binary",
+   "value": "1.46",
+   "uncertainty": "0.02",
+   "units": "arcsec",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "HD 144668 system",
+     "quote": "Based on the profile fitting to the saturated PSF wings we obtain a separation of 1.46$''$$\\pm$0.02$''$. Assuming the distance of 161.1 au the projected separation is 235$\\pm$3 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected physical separation of HD 144668 binary",
+   "value": "235",
+   "uncertainty": "3",
+   "units": "au",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "HD 144668 system",
+     "quote": "Based on the profile fitting to the saturated PSF wings we obtain a separation of 1.46$''$$\\pm$0.02$''$. Assuming the distance of 161.1 au the projected separation is 235$\\pm$3 au."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of HD 144668 disc",
+   "value": "32.6",
+   "uncertainty": "10%",
+   "units": "M_Earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668 | 32.6 | $\\le$0.087 | $\\le$0.9 |"
+    },
+    {
+     "loc": "Table 2 caption",
+     "quote": "Dust masses carry a 10$\\%$ error due to flux calibration uncertainty and present a firm lower limit to the total amount of solids in the disc."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of HD 144668B disc",
+   "value": "11.4",
+   "uncertainty": "10%",
+   "units": "M_Earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668B | 11.4 | $\\le$0.087 | $\\le$2.4 |"
+    },
+    {
+     "loc": "Table 2 caption",
+     "quote": "Dust masses carry a 10$\\%$ error due to flux calibration uncertainty and present a firm lower limit to the total amount of solids in the disc."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of KK Oph disc",
+   "value": "66.6",
+   "uncertainty": "10%",
+   "units": "M_Earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| KK Oph | 66.6 | $\\le$0.045 | $\\le$0.2 |"
+    },
+    {
+     "loc": "Table 2 caption",
+     "quote": "Dust masses carry a 10$\\%$ error due to flux calibration uncertainty and present a firm lower limit to the total amount of solids in the disc."
+    }
+   ]
+  },
+  {
+   "quantity": "Dust mass of KK Oph B disc",
+   "value": "19.2",
+   "uncertainty": "10%",
+   "units": "M_Earth",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| KK OphB | 19.2 | $\\le$0.045 | $\\le$0.8 |"
+    },
+    {
+     "loc": "Table 2 caption",
+     "quote": "Dust masses carry a 10$\\%$ error due to flux calibration uncertainty and present a firm lower limit to the total amount of solids in the disc."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass upper limit for HD 144668 and HD 144668B discs",
+   "value": "<=0.087",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668 | 32.6 | $\\le$0.087 | $\\le$0.9 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668B | 11.4 | $\\le$0.087 | $\\le$2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass upper limit for KK Oph and KK Oph B discs",
+   "value": "<=0.045",
+   "uncertainty": "not stated",
+   "units": "M_Jup",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| KK Oph | 66.6 | $\\le$0.045 | $\\le$0.2 |"
+    },
+    {
+     "loc": "Table 2",
+     "quote": "| KK OphB | 19.2 | $\\le$0.045 | $\\le$0.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio upper limit for HD 144668 disc",
+   "value": "<=0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668 | 32.6 | $\\le$0.087 | $\\le$0.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio upper limit for HD 144668B disc",
+   "value": "<=2.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| HD 144668B | 11.4 | $\\le$0.087 | $\\le$2.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio upper limit for KK Oph disc",
+   "value": "<=0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| KK Oph | 66.6 | $\\le$0.045 | $\\le$0.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas-to-dust ratio upper limit for KK Oph B disc",
+   "value": "<=0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| KK OphB | 19.2 | $\\le$0.045 | $\\le$0.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre flux spectral index alpha of HD 144668 primary",
+   "value": "2.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing millimetre spectral indices of the HD 144668 circum-primary and circum-secondary discs",
+     "quote": "For the the HD 144668 primary $\\alpha=2.35$, $\\beta=0.35$ and $p=3.2$, values which are fairly typical of protoplanetary discs"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre opacity spectral index beta of HD 144668 primary",
+   "value": "0.35",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing millimetre spectral indices of the HD 144668 circum-primary and circum-secondary discs",
+     "quote": "For the the HD 144668 primary $\\alpha=2.35$, $\\beta=0.35$ and $p=3.2$, values which are fairly typical of protoplanetary discs"
+    }
+   ]
+  },
+  {
+   "quantity": "Grain size distribution power-law index p of HD 144668 primary",
+   "value": "3.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing millimetre spectral indices of the HD 144668 circum-primary and circum-secondary discs",
+     "quote": "For the the HD 144668 primary $\\alpha=2.35$, $\\beta=0.35$ and $p=3.2$, values which are fairly typical of protoplanetary discs"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre flux spectral index alpha of HD 144668B secondary",
+   "value": "1.71",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing millimetre spectral indices of the HD 144668 circum-primary and circum-secondary discs",
+     "quote": "For the the secondary (HD 144668B) with our assumption of the disc being the same temperature (20 K) we find $\\alpha=1.71$, $\\beta=-0.29$ and $p=2.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Millimetre opacity spectral index beta of HD 144668B secondary",
+   "value": "-0.29",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Comparing millimetre spectral indices of the HD 144668 circum-primary and circum-secondary discs",
+     "quote": "For the the secondary (HD 144668B) with our assumption of the disc being the same temperature (20 K) we find $\\alpha=1.71$, $\\beta=-0.29$ and $p=2.8$"
+    }
+   ]
+  },
+  {
+   "quantity": "Differential opacity spectral index (beta^A - beta^B) for HD 144668",
+   "value": "0.69",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Differential measurement of \\beta between the circum-primary and circum-secondary discs",
+     "quote": "Applying the above reasoning to the HD 144668 binary system, for which we have measurements at two wavelengths, we obtain a very precise $\\beta^A-\\beta^B$=0.69$\\pm$0.13."
+    }
+   ]
+  },
+  {
+   "quantity": "Most probable tidal truncation radius of KK Oph primary disc",
+   "value": "95",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Tidal truncation of the primary disc",
+     "quote": "The most probable truncation radii (and hence actual disc radius) of the primaries are 95 and 66 au respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Most probable tidal truncation radius of HD 144668 primary disc",
+   "value": "66",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Tidal truncation of the primary disc",
+     "quote": "The most probable truncation radii (and hence actual disc radius) of the primaries are 95 and 66 au respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radius of HD 144668 primary from resolved asymmetry",
+   "value": "42",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Resolved asymmetries in the outer regions of the discs",
+     "quote": "This indicates a large-scale asymmetry in the outermost regions of the circum-primary disc, and a disc size that is very close to the spatial resolution of our observations, corresponding to the disc radius of 42 au at the distance of 161 pc."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image cell size and image dimensions (in pixels) used during CASA clean",
+  "Clean stopping threshold and number of iterations",
+  "Continuum subtraction procedure (e.g. uvcontsub parameters and line-free channel ranges) prior to imaging the 13CO and C18O spectral cubes",
+  "Whether the 14 mJy km/s and 51 mJy km/s 13CO integrated line limits represent 1-sigma or 3-sigma values, and the exact spatial aperture (e.g. single beam vs. custom mask) used to extract them",
+  "Exact box/region dimensions used in CASA imfit to isolate the primary and secondary discs",
+  "Reconciliation between the two stated dust opacity values in the text (1.15 cm^2/g in Section 4.2.1 vs. 2 cm^2/g stated in Section 4.2.3 as used in Section 4.2.1)"
+ ],
+ "missing_for_reproduction": [
+  "Resolution of the discrepancy between kappa_nu = 1.15 cm^2/g (Section 4.2.1) and 2 cm^2/g (Section 4.2.3) and exact frequency (230 GHz vs 250 GHz / 1.3 mm vs 1.2 mm) used in Equation 1",
+  "Exact aperture/region and sigma-level definition used to measure the 14 and 51 mJy km/s 13CO integrated line flux upper limits",
+  "Clean imaging parameters (cell size, image size, stopping threshold, continuum subtraction details)",
+  "Custom script used for the Monte Carlo tidal truncation simulation"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "Raw data are public in ALMA/ESO/Gaia archives, calibration and imaging steps use standard CASA tasks with stated versions and robust weighting, and analytical equations for dust/gas masses, differential beta, and tidal truncation are explicitly written out. However, minor internal inconsistencies in the stated dust opacity value (1.15 vs 2 cm^2/g) and unstated spectral-cube extraction apertures slightly hinder exact numerical reproduction.",
+ "rediscovery_reason": "Public ALMA data, straightforward continuum imaging and CASA imfit Gaussian fitting, and explicit analytical equations for dust masses, differential spectral index, gas mass upper limits, and Monte Carlo truncation radii.",
+ "source_card": "cards/2021MNRAS.501.4317P/sonnet/card.md"
+}

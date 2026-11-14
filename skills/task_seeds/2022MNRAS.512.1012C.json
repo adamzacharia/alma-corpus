@@ -1,0 +1,479 @@
+{
+ "bibcode": "2022MNRAS.512.1012C",
+ "title": "Cuspy dark matter density profiles in massive dwarf galaxies",
+ "year": 2022,
+ "doi": "10.1093/mnras/stac588",
+ "arxiv_id": "2203.00694",
+ "fields": [
+  "nearby_galaxies",
+  "cosmology"
+ ],
+ "question": "What is the inner slope of the dark matter density profile (β*) in six nearby spiral dwarf galaxies, and how does it compare with lower-mass dwarfs and cosmological hydrodynamical simulations?",
+ "alma_project_codes": [
+  "2015.1.00820.S"
+ ],
+ "data": {
+  "bands": "Band 3",
+  "arrays": "not stated",
+  "angular_resolution": "~2 arcsec (2.40 to 2.90 arcsec circular beam)",
+  "sensitivity": "3.4-4.7 mJy beam^-1 (46-65 mK) per 2 km s^-1 channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Tully-Fisher distances for three galaxies (NGC 1035, NGC 4451, NGC 6106)",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "Three of our galaxies have Tully-Fisher distances reported by (cite: tully13)."
+     }
+    ]
+   },
+   "citation": "(cite: tully13)"
+  },
+  {
+   "what": {
+    "value": "Distances (`modbest` column) and morphological information from the HyperLEDA catalogue",
+    "evidence": [
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "For the other three, we use the distances from the `modbest` column in the HyperLEDA catalogue (cite: makarov14)"
+     },
+     {
+      "loc": "Notes on individual galaxies",
+      "quote": "All morphological information is taken from the HyperLEDA catalogue."
+     }
+    ]
+   },
+   "citation": "(cite: makarov14)"
+  },
+  {
+   "what": {
+    "value": "Initial kinematic parameters (centre, position angle, inclination, systemic velocity) and CARMA CO data",
+    "evidence": [
+     {
+      "loc": "Derivation of CO Rotation Curves",
+      "quote": "The initial values for the kinematic parameters (centre, position angle, inclination, systemic velocity) were taken from (cite: truong17), but were adjusted by hand as needed."
+     },
+     {
+      "loc": "Observations and Data Reduction",
+      "quote": "Lower-sensitivity CARMA data of these galaxies taken in the C, D, and E configurations (antenna spacings from $7.5-373$ m) recover scales up to $\\sim$ 40$\\ensuremath{''}$ (cite: truong17)."
+     }
+    ]
+   },
+   "citation": "(cite: truong17)"
+  },
+  {
+   "what": {
+    "value": "Mass-to-light ratios (Υ*), atomic and molecular gas mass components, Hα rotation curves, stellar velocity curves, and literature β* values for overlapping galaxies",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "This work closely follows that of (cite: relatores19a; relatores19b), who measured $\\beta^*$ from another DGDM survey sub-sample using H $\\alpha$ observations to trace the total potential."
+     },
+     {
+      "loc": "Stellar mass and velocity profiles",
+      "quote": "To convert to mass, we assume a constant mass-to-light ratio ($\\Upsilon_\\star$) from stellar population synthesis models reported by (see their Table 1)."
+     },
+     {
+      "loc": "Atomic and molecular gas components",
+      "quote": "For the four galaxies that overlap with , we also include contributions from the atomic and molecular gas in the decomposition."
+     }
+    ]
+   },
+   "citation": "(cite: relatores19a; relatores19b)"
+  },
+  {
+   "what": {
+    "value": "IRAC Channel 2 zero-point and absolute magnitude of the Sun at 4.5 μm",
+    "evidence": [
+     {
+      "loc": "Stellar mass and velocity profiles",
+      "quote": "To convert to solar luminosities, we find the luminosity of the Sun at 4.5 $\\mu$m using the IRAC Channel 2 zero-point (cite: reach05) and the absolute magnitude of the Sun at 4.5 $\\mu$m (cite: oh08)."
+     }
+    ]
+   },
+   "citation": "(cite: reach05), (cite: oh08)"
+  },
+  {
+   "what": {
+    "value": "Absolute magnitude of the Sun in SDSS r-band and effective central wavelength of the PS1 r-band filter",
+    "evidence": [
+     {
+      "loc": "Stellar mass and velocity profiles",
+      "quote": "The absolute magnitude of the Sun is 4.65 AB magnitudes in the SDSS $r$-band (cite: willmer18), and the effective central wavelength of the PS1 $r$-band filter is 617 nm (cite: tonry12)."
+     }
+    ]
+   },
+   "citation": "(cite: willmer18), (cite: tonry12)"
+  },
+  {
+   "what": {
+    "value": "Local Universe value of H0 = 73.2 km s^-1 Mpc^-1",
+    "evidence": [
+     {
+      "loc": "Measuring the inner slope of the dark matter density profile",
+      "quote": "Assuming a local Universe value of $H_0 = 73.2 {\\rm\\ km\\ s^{-1}\\ Mpc^{-1}}$ (cite: riess21; divalentino21) yields $\\rho_{\\rm crit}=148.7{\\rm\\ M_\\odot~kpc^{-3}}$."
+     }
+    ]
+   },
+   "citation": "(cite: riess21; divalentino21)"
+  },
+  {
+   "what": {
+    "value": "Literature inner dark matter density slopes and mass models for comparison",
+    "evidence": [
+     {
+      "loc": "Comparison to previous observational studies",
+      "quote": "There is no overlap between our sample of galaxies and those from (cite: simon05), (cite: oh11; oh15), (cite: adams14), (cite: li19), or (cite: leung21)."
+     }
+    ]
+   },
+   "citation": "(cite: simon05), (cite: oh11; oh15), (cite: adams14), (cite: li19), (cite: leung21), (cite: lelli16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image ALMA CO(1-0) data cubes and generate moment and error maps",
+   "method": "Clean 3D RA-Dec-velocity cubes to the rms noise level, convolve to a circular beam, and fit each pixel spectrum with a Gaussian to produce peak intensity, velocity, and linewidth maps plus error maps; blank non-converging fits, interpolate isolated blanked pixels with neighbour median, and mask pixels with SNR < 3.",
+   "software": [
+    "CASA",
+    "tclean",
+    "Miriad"
+   ],
+   "key_parameters": [
+    "velocity resolution = 2 km s^-1, SNR >= 3 mask, minimum velocity uncertainty = 6 km s^-1"
+   ],
+   "assumptions": [
+    "Minimum velocity uncertainty of 6 km s^-1 accounts for random ISM motions (~1/3 of typical CO linewidth)"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive CO rotation curves and geometric parameters",
+   "method": "First-order harmonic decomposition in concentric rings fitting for Vrot, Vrad, and ΔVsys; adjust centre, Vsys, PA, and inclination by hand to minimize ΔVsys and Vrad and match harmonic shapes.",
+   "software": [
+    "RotationCurveTiltedRings"
+   ],
+   "key_parameters": [
+    "Ring spacing: half-beam-width increments or at least 30 pixels per ring; fixed PA and inclination across all radii; 50 Monte Carlo trials varying centre by ±0.4'', PA by ±5 deg, inclination by ±4 deg"
+   ],
+   "assumptions": [
+    "Inclination and PA are fixed to a single value at all radii; no beam smearing correction applied; CO is dynamically cold (Vrot/σV > 4) and traces the total galaxy potential"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive stellar mass and stellar circular velocity profiles",
+   "method": "Sum surface brightness in concentric annuli on Spitzer 4.5 μm (or PS1 r-band for NGC 5692) maps, convert to luminosity and mass using constant Υ*, and compute the stellar velocity curve using NEMO.",
+   "software": [
+    "nemo"
+   ],
+   "key_parameters": [
+    "Annuli match CO radial binning inside CO extent and are 5 pixels wide beyond CO out to Rmax,*; Υ* = 0.21 ± 0.04 (4.5 μm) and 0.83 ± 0.15 (r-band)"
+   ],
+   "assumptions": [
+    "Stars are in a thin disk; constant mass-to-light ratio Υ*; maximal disk enforced where V* > VCO (first five bins in NGC 4701 and first bin in NGC 5692)"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Decompose dark matter density profile and measure inner slope (β* and β_1-2%Rvir)",
+   "method": "Forward-modelling affine-invariant MCMC fitting a generalised NFW (gNFW) dark matter profile (plus stellar and gas components) to the CO rotation curve, computing β* (between 0.3 and 0.8 kpc) and β_1-2%Rvir at each MCMC step, and extrapolating total potential to estimate Rvir, M200, and c200.",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "300 walkers, 300 steps, 100 burn-in steps discarded; initial values: ρo = 0.5 Msun pc^-3, rs = Rmax, β = 0.5; lookup table grid for PA (±5 deg) and inclination (±4 deg) in 1 deg steps"
+   ],
+   "assumptions": [
+    "gNFW dark matter density profile; independent Gaussian uncertainties on rotation curve points; H0 = 73.2 km s^-1 Mpc^-1 (ρcrit = 148.7 Msun kpc^-3, Rvir = R200); atomic/molecular gas negligible where unavailable"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Mean inner dark matter density slope <β*>",
+   "value": "0.6",
+   "uncertainty": "±0.1",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We find $\\langle\\beta^*\\rangle = 0.6$ with a standard deviation of $\\pm0.1$ among the galaxies in this sample, in agreement with previous measurements in this mass range."
+    }
+   ]
+  },
+  {
+   "quantity": "Median of summed posterior distribution of β*",
+   "value": "0.5",
+   "uncertainty": "+0.4/-0.6",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Results",
+     "quote": "The median of this distribution is $\\tilde{\\beta}^* = 0.5^{+0.4}_{-0.6}$, where the lower and upper uncertainties correspond to the 16$^{\\rm th}$ and 84$^{\\rm th}$ percentiles of the distribution (1-$\\sigma$ for a Gaussian distribution)."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1035 inner dark matter slope β*",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 1035 | 0.21$\\pm$0.04 | 6.0 | 9.5 | 79 | 0.8$-$1.6 | 11.4 | 27 | 0.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4310 inner dark matter slope β*",
+   "value": "0.4",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4310 | 0.21$\\pm$0.04 | 6.2 | 9.3 | 64 | 0.6$-$1.3 | 11.2 | 36 | 0.4 | 0.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4451 inner dark matter slope β*",
+   "value": "0.6",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4451 | 0.21$\\pm$0.04 | 9.7 | 9.7 | 90 | 0.9$-$1.8 | 11.5 | 40 | 0.6 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4701 inner dark matter slope β*",
+   "value": "0.4",
+   "uncertainty": "+0.8/-0.8",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4701 | 0.21$\\pm$0.04 | 6.5 | 9.4 | 65 | 0.7$-$1.3 | 11.1 | 45 | 0.4 | 0.9 |"
+    },
+    {
+     "loc": "Measuring the inner slope of the dark matter density profile",
+     "quote": "Though we find a slightly shallower slope ($\\beta^*$ $=~0.1^{+0.6}_{-0.5}$), it is consistent with the slope measured for a maximal disk ($\\beta^*$ $=~0.4^{+0.8}_{-0.8}$) well within the uncertainties."
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5692 inner dark matter slope β*",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 5692 | 0.83$\\pm$0.15 | 4.8 | 9.3 | 75 | 0.8$-$1.5 | 11.3 | 46 | 0.7 | 1.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 6106 inner dark matter slope β*",
+   "value": "0.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 6106 | 0.21$\\pm$0.04 | 8.9 | 9.7 | 68 | 0.7$-$1.4 | 11.2 | 47 | 0.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1035 dark matter slope β_1-2%Rvir",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 1035 | 0.21$\\pm$0.04 | 6.0 | 9.5 | 79 | 0.8$-$1.6 | 11.4 | 27 | 0.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4310 dark matter slope β_1-2%Rvir",
+   "value": "0.8",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4310 | 0.21$\\pm$0.04 | 6.2 | 9.3 | 64 | 0.6$-$1.3 | 11.2 | 36 | 0.4 | 0.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4451 dark matter slope β_1-2%Rvir",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4451 | 0.21$\\pm$0.04 | 9.7 | 9.7 | 90 | 0.9$-$1.8 | 11.5 | 40 | 0.6 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4701 dark matter slope β_1-2%Rvir",
+   "value": "0.9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 4701 | 0.21$\\pm$0.04 | 6.5 | 9.4 | 65 | 0.7$-$1.3 | 11.1 | 45 | 0.4 | 0.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5692 dark matter slope β_1-2%Rvir",
+   "value": "1.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 5692 | 0.83$\\pm$0.15 | 4.8 | 9.3 | 75 | 0.8$-$1.5 | 11.3 | 46 | 0.7 | 1.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 6106 dark matter slope β_1-2%Rvir",
+   "value": "1.1",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 6106 | 0.21$\\pm$0.04 | 8.9 | 9.7 | 68 | 0.7$-$1.4 | 11.2 | 47 | 0.7 | 1.1 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 1035 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "10.0, 20.6",
+   "uncertainty": "±0.1, ±7.8",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC1035 | $2^\\mathrm{h}39^\\mathrm{m}29.1^\\mathrm{s}$ | $-8^\\circ07{}^\\prime58.2{}^{\\prime\\prime}$ | 15.9 $\\pm$ 3.2 (a) | 1224 | 144 | 79 | 2.9 | 10.0 $\\pm$ 0.1 | 20.6 $\\pm$ 7.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4310 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "9.5, 19.0",
+   "uncertainty": "±0.1, ±5.8",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC4310 | $12^\\mathrm{h}22^\\mathrm{m}26.3^\\mathrm{s}$ | $+29^\\circ12{}^\\prime31.1{}^{\\prime\\prime}$ | 16.1 $\\pm$ 7.4 (b) | 927 | 335 | 71 | 1.6 | 9.5 $\\pm$ 0.1 | 19.0 $\\pm$ 5.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4451 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "10.0, 25.3",
+   "uncertainty": "±0.1, ±7.8",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC4451 | $12^\\mathrm{h}28^\\mathrm{m}40.5^\\mathrm{s}$ | $+9^\\circ15{}^\\prime32.5{}^{\\prime\\prime}$ | 25.9 $\\pm$ 5.2 (a) | 849 | 178 | 49 | 2.2 | 10.0 $\\pm$ 0.1 | 25.3 $\\pm$ 7.8 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 4701 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "9.4, 17.1",
+   "uncertainty": "±0.1, ±6.4",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC4701 | $12^\\mathrm{h}49^\\mathrm{m}11.6^\\mathrm{s}$ | $+3^\\circ23{}^\\prime19.0{}^{\\prime\\prime}$ | 16.7 $\\pm$ 2.7 (b) | 725 | 230 | 49 | 1.5 | 9.4 $\\pm$ 0.1 | 17.1 $\\pm$ 6.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 5692 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "9.5, 21.6",
+   "uncertainty": "±0.1, ±8.4",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC5692 | $14^\\mathrm{h}38^\\mathrm{m}18.1^\\mathrm{s}$ | $+3^\\circ24{}^\\prime37.1{}^{\\prime\\prime}$ | 25.4 $\\pm$ 7.4 (b) | 1605 | 36 | 53 | 1.7 | 9.5 $\\pm$ 0.1 | 21.6 $\\pm$ 8.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "NGC 6106 dynamical mass log Mdyn(Rmax) and median velocity dispersion σV",
+   "value": "10.0, 18.1",
+   "uncertainty": "±0.1, ±8.7",
+   "units": "log Msun, km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "| NGC6106 | $16^\\mathrm{h}18^\\mathrm{m}47.2^\\mathrm{s}$ | $+7^\\circ24{}^\\prime39.3{}^{\\prime\\prime}$ | 24.3 $\\pm$ 4.9 (a) | 1465 | 143 | 59 | 3.3 | 10.0 $\\pm$ 0.1 | 18.1 $\\pm$ 8.7 |"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact pixel (cell) sizes in arcsec for the ALMA images (the text states they are listed in Table 1 and oversample the beam by ~6, but the column is missing from Table 1).",
+  "Image dimensions (imsize) and masking strategy used during tclean.",
+  "Whether primary beam correction was applied to the ALMA cubes or mosaics.",
+  "Missing citation strings in several sentences where the LaTeX macro for Relatores et al. (2019a, 2019b) rendered as blank space, and missing Appendix tables (e.g., Table of best-fitting MCMC parameters).",
+  "Exact software or routine used to perform the pixel-by-pixel Gaussian spectral line fitting to create the moment maps."
+ ],
+ "missing_for_reproduction": [
+  "Exact pixel (cell) sizes in arcsec for the ALMA cubes (omitted from Table 1 despite text stating they are there) and image dimensions.",
+  "Exact hand-adjusted kinematic centre coordinates used for each galaxy if different from the Table 2 nominal coordinates.",
+  "Atomic and molecular gas radial velocity profiles taken from Relatores et al. (2019b) for the four overlapping galaxies.",
+  "MCMC fitting script and NEMO execution parameters/scripts (only the tilted-ring rotation curve code and data products are explicitly linked in the GitHub repository).",
+  "Individual galaxy uncertainties on β*, β_1-2%Rvir, Rvir, M200, c200, and fitted gNFW parameters (ρo, rs, β), which were in Appendix tables omitted or truncated from the main text."
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "Raw ALMA data, ancillary optical/IR images, derived data products, and the custom Python tilted-ring rotation curve fitting code are all publicly available, and the imaging, harmonic decomposition, and MCMC priors/likelihood are thoroughly specified; minor deductions for manual hand-tuning of geometric parameters and a missing cell-size column / appendix tables in the text.",
+ "rediscovery_reason": "All raw data and derived data products are public, the rotation curve code is on GitHub, the MCMC model and priors are explicitly written out, and the main results (β* and β_1-2%Rvir for six galaxies) are clear numeric benchmarks.",
+ "source_card": "cards/2022MNRAS.512.1012C/sonnet/card.md"
+}

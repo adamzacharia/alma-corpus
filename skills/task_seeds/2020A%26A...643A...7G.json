@@ -1,0 +1,229 @@
+{
+ "bibcode": "2020A&A...643A...7G",
+ "title": "The ALPINE-ALMA [CII] survey. Circumgalactic medium pollution and gas mixing by tidal stripping in a merging system at z ∼ 4.57",
+ "year": 2020,
+ "doi": "10.1051/0004-6361/202038284",
+ "arxiv_id": "2004.13737",
+ "fields": [
+  "high_z_galaxies",
+  "star_formation"
+ ],
+ "question": "Does a merging galaxy system at z~4.57 host extended [CII] emission on circumgalactic scales, and does it arise from tidal stripping, outflows or faint satellites?",
+ "alma_project_codes": [
+  "2017.1.00428.L"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "1.21'' x 0.77'', PA -61 deg",
+  "sensitivity": "14 mJy/beam per 25 km/s channel; 60 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "M* and SFR of VC_9780",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "(see (cite: Faisst2019))"
+     }
+    ]
+   },
+   "citation": "(cite: Faisst2019)"
+  },
+  {
+   "what": {
+    "value": "M* and SFR of C15_705574 from COSMOS2015",
+    "evidence": [
+     {
+      "loc": "3.1",
+      "quote": "(from the COSMOS2015 catalogue [^2] ; (cite: Laigle2016))"
+     }
+    ]
+   },
+   "citation": "(cite: Laigle2016)"
+  },
+  {
+   "what": {
+    "value": "L_[CII]-M_gas relation",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "Using the $L_{\\rm [CII]}-M_{\\rm gas}$ relation calibrated by (cite: Zanella2018)"
+     }
+    ]
+   },
+   "citation": "(cite: Zanella2018)"
+  },
+  {
+   "what": {
+    "value": "typical mass outflow rate ~30 Msun/yr",
+    "evidence": [
+     {
+      "loc": "4.2",
+      "quote": "typical mass outflow rates of $\\dot{M}_{\\rm out} \\sim 30 ~ {\\rm M_\\odot ~ yr^{-1}}$ (as measured by (cite: Ginolfi2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Ginolfi2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and [CII] cube",
+   "method": "tclean MFS continuum; uvcontsub then cube with natural weighting, 25 km/s channels",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "0.15'' pixels, 500 iterations, 3 sigma threshold"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Extract spectra and moment maps of #A and #B",
+   "method": "1'' diameter aperture spectra, Gaussian model, collapse cube over f_cen±sigma_G, fit 2D Gaussian to maps, re-extract with FWHM ellipses",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Map total [CII] structure and PV diagrams",
+   "method": "velocity-integrated map over [-500,+500] km/s about z_ref=4.570; PV diagrams along A-B axis and orthogonal",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Partition galaxy vs CGM [CII] luminosity",
+   "method": "compare spectrum within 1-sigma contour of total map with sum of the four galaxy spectra",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test origin of CGM [CII]",
+   "method": "outflow timescale from Zanella2018 gas mass and Mdot_out~30; UV diffuse SFR vs L_[CII]-SFR relations",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "no re-accretion; both #A and #B drive outflows"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "L_[CII] of #A",
+   "value": "3.5e8",
+   "uncertainty": "±0.3e8",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$L_{\\rm [CII]}^{\\#A} = 3.5 ~(\\pm 0.3) \\times 10^8 ~ {\\rm L_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] of #B",
+   "value": "6.6e8",
+   "uncertainty": "±0.4e8",
+   "units": "Lsun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$L_{\\rm [CII]}^{\\#B} = 6.6 ~(\\pm 0.4) \\times 10^8 ~ {\\rm L_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "total L_[CII]",
+   "value": "2.3e9",
+   "uncertainty": "±0.2e9",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$L_{\\rm [CII]}^{tot} = 2.3~(\\pm 0.2) \\times 10^9 ~ {\\rm L_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "L_[CII] of CGM",
+   "value": "1.1e9",
+   "uncertainty": "±0.2e9",
+   "units": "Lsun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3",
+     "quote": "$L_{\\rm [CII]}^{CGM} = 1.1 ~(\\pm 0.2) \\times 10^9 ~ {\\rm L_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CGM gas mass",
+   "value": "~3e10",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "$M_{\\rm gas}^{\\rm CGM} \\sim  3\\times 10^{10} ~{\\rm M_\\odot}$"
+    }
+   ]
+  },
+  {
+   "quantity": "UV-based diffuse SFR in CGM",
+   "value": "13",
+   "uncertainty": "±5",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "${\\rm SFR}_{\\tiny{CGM}}^{\\tiny{UV}}= 13 \\pm 5 ~{\\rm M_\\odot ~ yr^{-1}}$"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII]-predicted CGM SFR",
+   "value": "~125",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.3",
+     "quote": "${\\rm SFR}_{\\tiny{CGM}}^{\\tiny{[CII]}} \\sim 125~ {\\rm M_\\odot ~ yr^{-1}}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels used for continuum and uvcontsub",
+  "Image size and clean mask",
+  "Gaussian fit and aperture details for spectra and uncertainty estimation",
+  "Conversion from flux to L_[CII] and L_[CII]-SFR relation parameters",
+  "Aperture/contour used for the total spectrum (1-sigma contour definition and noise)",
+  "PV diagram slit widths and angles"
+ ],
+ "missing_for_reproduction": [
+  "Exact apertures and contour for total spectrum",
+  "Line-free channel selection",
+  "DEIMOS and HST F160W data unpublished (in prep.)"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public ALMA data and clear imaging settings, but spectral extraction details and some ancillary data are not provided.",
+ "rediscovery_reason": "Public ALPINE data, numeric luminosities, and a moderately complete recipe.",
+ "source_card": "cards/2020A%26A...643A...7G/sonnet/card.md"
+}

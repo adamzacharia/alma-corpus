@@ -1,0 +1,937 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2013ApJ...768...91H",
+  "title": "An ALMA Survey of Submillimeter Galaxies in the Extended Chandra Deep Field South: Source Catalog and Multiplicity",
+  "year": 2013,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Hodge, J. A.",
+  "n_authors": 27,
+  "arxiv_id": "1304.4266",
+  "doi": "10.1088/0004-637X/768/1/91",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2011.0.00294.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "large_program_or_survey",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "We present an Atacama Large Millimeter/submillimeter Array (ALMA) Cycle 0 survey of 126 submillimeter sources from the LABOCA ECDFS Submillimeter Survey (LESS)."
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies"
+   ],
+   "targets": [
+    {
+     "name": "126 LESS submillimeter sources in the ECDFS (ALESS)",
+     "coordinates": {
+      "value": "Table 2 lists positions per LESS ID (e.g. LESS 1: 03:33:14.26 -27:56:11.2)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The 126 submillimeter sources we target were previously detected in the LABOCA ECDFS Submillimeter Survey"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "not stated (z=2.5 assumed for kpc scales; ALESS 007.1 z_phot=2.81)",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The 126 submillimeter sources we target were previously detected in the LABOCA ECDFS Submillimeter Survey"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Wardlow et al. 2011 photometric redshift for ALESS 007.1",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "The 126 submillimeter sources we target were previously detected in the LABOCA ECDFS Submillimeter Survey"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What are the interferometric 870um positions, fluxes and multiplicity of the LESS submillimeter sources, and how reliable are earlier single-dish positions and radio/mid-IR counterpart identifications?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The high resolution of these maps allows us to resolve sources that were previously blended and accurately identify the origin of the submillimeter emission."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2011.1.00294.S",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "as part of Cycle 0 Project #2011.1.00294.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 7, centered at 344 GHz (870 um)",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "We observed the LESS sources with ALMA’s Band 7 centered at 344 GHz (870$\\mu$m)"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "single continuum mode, 4 x 128 dual-polarization channels over 8 GHz, 7.5 GHz usable",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "utilized the “single continuum” spectral mode, with 4 $\\times$ 128 dual polarization channels over the full 8 GHz bandwidth, 7.5 GHz of which was usable after flagging edge channels."
+     }
+    ]
+   },
+   "lines_targeted": [],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "12-m antennas, 12-15 per SB",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Number of antennas in that SB; 12–m only"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "Cycle 0 compact configuration, max baseline 125 m",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The observations were taken in ALMA’s Cycle 0 compact configuration, which had a maximum baseline of 125m"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "median 1.6\" x 1.15\"",
+    "evidence": [
+     {
+      "loc": "2.3 Final Maps",
+      "quote": "corresponding to a median angular resolution of 1.6$^{\\prime\\prime}$$\\times$1.15$^{\\prime\\prime}$"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "median rms 0.4 mJy/beam (requested 0.4)",
+    "evidence": [
+     {
+      "loc": "2.3 Final Maps",
+      "quote": "The median rms noise (at field center) of the maps is $\\sigma = 0.4$ mJy beam$^{-1}$"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "120 s per field",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "each field was observed for 120 seconds"
+     }
+    ]
+   },
+   "observing_dates": {
+    "value": "18 Oct 2011 - 03 Nov 2011, 8 scheduling blocks",
+    "evidence": [
+     {
+      "loc": "2.1 Observations",
+      "quote": "The ALMA observations were taken between 18 Oct 2011–03 Nov 2011"
+     }
+    ]
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "APEX/LABOCA (LESS)",
+     "provided": {
+      "value": "Original 870um single-dish source catalog and flux densities",
+      "evidence": [
+       {
+        "loc": "1 Introduction",
+        "quote": "previously detected in the LABOCA ECDFS Submillimeter Survey"
+       }
+      ]
+     }
+    },
+    {
+     "name": "VLA 1.4 GHz",
+     "provided": {
+      "value": "Radio maps for astrometry and counterpart tests",
+      "evidence": [
+       {
+        "loc": "3.4 Astrometry",
+        "quote": "ALESS SMGs in good quality maps with VLA 1.4 GHz counterparts"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "LESS source positions and deboosted LABOCA flux densities",
+      "evidence": [
+       {
+        "loc": "2.1 Observations",
+        "quote": "The beam was centered on the catalogued positions of the LESS sources"
+       }
+      ]
+     },
+     "citation": "Weiß et al. 2009 (cite: 2009ApJ...707.1201W)"
+    },
+    {
+     "what": {
+      "value": "Radio/MIR counterpart catalog (robust/tentative)",
+      "evidence": [
+       {
+        "loc": "5.5 Radio/MIR IDs",
+        "quote": "used radio and mid–infrared data from the Very Large Array and *Spitzer* to identify potential counterparts to the LESS sources"
+       }
+      ]
+     },
+     "citation": "Biggs et al. 2011 (cite: 2011MNRAS.413.2314B)"
+    },
+    {
+     "what": {
+      "value": "Photometric redshift and SFR for ALESS 007.1",
+      "evidence": [
+       {
+        "loc": "5.1 Source sizes",
+        "quote": "photometric redshift estimate of $z_{\\rm phot}=2.81\\pm^{0.18}_{0.07}$"
+       }
+      ]
+     },
+     "citation": "Wardlow et al. 2011 (cite: 2011MNRAS.415.1479W)"
+    },
+    {
+     "what": {
+      "value": "VLA 1.4 GHz ECDFS maps (DR1 and DR2)",
+      "evidence": [
+       {
+        "loc": "3.4 Astrometry",
+        "quote": "Recently, (cite: 2013arXiv1301.7004M) also released another re–reduction of the (cite: 2008ApJS..179..114M) data"
+       }
+      ]
+     },
+     "citation": "Miller et al. 2008, 2013"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "Manual CASA calibration per SB",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "The data were reduced and imaged using the Common Astronomy Software Application (casa) version 3.4.0"
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA 3.4.0",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "Common Astronomy Software Application (casa) version 3.4.0"
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "Mars or Uranus; B0537-441 bandpass; B0402-362 phase",
+     "evidence": [
+      {
+       "loc": "2.1 Observations",
+       "quote": "Depending on the SB, either Mars or Uranus served to set the absolute flux density scale. The quasar B0537-441 was used for bandpass calibration."
+      }
+     ]
+    },
+    "flux_scale_uncertainty": {
+     "value": "~15%, not included in SMG error bars",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "The absolute flux calibration has an uncertainty of $\\sim$15%, and this uncertainty is not included in the error bars for individual SMG flux densities."
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "None; no source bright enough",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "No sources were deemed bright enough to reliably self–calibrate."
+      }
+     ]
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "CASA clean",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "using the clean algorithm and natural weighting"
+      }
+     ]
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "using the clean algorithm and natural weighting"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "0.2\"",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "The images are 25.6$^{\\prime\\prime}$ (128 pixels) per side and have a pixel scale of 0.2$^{\\prime\\prime}$."
+      }
+     ]
+    },
+    "image_size": {
+     "value": "128 pixels (25.6\") per side",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "The images are 25.6$^{\\prime\\prime}$ (128 pixels) per side"
+      }
+     ]
+    },
+    "masking": {
+     "value": "BOXIT finds >5 sigma sources; tight clean boxes; clean to 1.5 sigma; otherwise clean to 3 sigma",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "We then used the task BOXIT to automatically identify significant ($>$5$\\sigma$) sources."
+      }
+     ]
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "Maps not pb-corrected; catalog gives pb-corrected fluxes",
+     "evidence": [
+      {
+       "loc": "2.3 Final Maps",
+       "quote": "These maps have not been corrected for the response of the primary beam"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "median 0.4 mJy/beam; 85% < 0.6",
+     "evidence": [
+      {
+       "loc": "2.3 Final Maps",
+       "quote": "We find that 85% of the maps achieve an rms noise of $\\sigma < 0.6$ mJy beam$^{-1}$."
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Completeness, spurious fraction and reliability of source extraction",
+      "evidence": [
+       {
+        "loc": "3.2 Completeness and Reliability",
+        "quote": "The result, presented in a companion paper (Karim et al. 2012), is that the source extraction recovers $\\sim$99% of all sources above 3.5$\\sigma$"
+       }
+      ]
+     },
+     "from_reference": "Karim et al. 2012 (cite: Karim_aless)"
+    },
+    {
+     "what": {
+      "value": "Error estimation for elliptical Gaussian fits in correlated noise",
+      "evidence": [
+       {
+        "loc": "Error determination",
+        "quote": "We adopt those findings for error estimates for our measured source parameters"
+       }
+      ]
+     },
+     "from_reference": "Condon 1997 (cite: 1997PASP..109..166C)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Source extraction code is custom IDL and not released; MCMC step sizes, chain length and box-size choices not given",
+    "Which SBs used Mars vs Uranus and flux values adopted",
+    "Exact clean iteration counts and masks",
+    "Rule for primary-beam correction of fluxes",
+    "Simulation details of fake-source flux distribution",
+    "Details of the random separation simulation"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Calibrate and image",
+    "method": {
+     "value": "Manual CASA calibration (Tsys, WVR, bandpass, phase, flux) then clean with natural weighting, boxes around >5 sigma sources",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "The $uv$–data were Fourier–transformed and the resulting “dirty\" image was deconvolved from the point spread function"
+      }
+     ]
+    },
+    "software": [
+     "CASA"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Calibrated calibrators inspected; process repeated if inadequate",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "If the calibration was deemed inadequate (based on inspection of the calibrated calibrators) then more data was flagged and the process was repeated."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Extract sources",
+    "method": {
+     "value": "Iterative pixel-peak (>2.5 sigma) fitting of elliptical Gaussians with MH-MCMC in 2\"x2\" boxes; 3-parameter point-source and 6-parameter fits; subtract model and repeat",
+     "evidence": [
+      {
+       "loc": "3.1 Source Extraction",
+       "quote": "we determined the elliptical Gaussian that best described the underlying signal distribution using an idl-implemented Metropolis-Hastings Markov chain Monte Carlo (MH-MCMC) algorithm"
+      }
+     ]
+    },
+    "software": [
+     "IDL custom code"
+    ],
+    "key_parameters": [
+     {
+      "value": "detection threshold 3.5 sigma in good maps",
+      "evidence": [
+       {
+        "loc": "3.2 Completeness and Reliability",
+        "quote": "We will therefore take 3.5$\\sigma$ as our source detection threshold in the good quality maps"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "MH-MCMC, posterior mean as best fit, ~30% acceptance",
+     "evidence": [
+      {
+       "loc": "Details of the source extraction",
+       "quote": "On average, we reached an acceptance probability of 30% after an initial and sufficiently long thermalization phase."
+      }
+     ]
+    },
+    "validation": {
+     "value": "Compared with CASA imfit for >4 sigma sources: (S_IMFIT - S_SOURCE)/S_SOURCE = 0.001 +/- 0.09",
+     "evidence": [
+      {
+       "loc": "3.1 Source Extraction",
+       "quote": "(S$_{\\rm IMFIT}$ $-$ S$_{\\rm SOURCE}$)/S$_{\\rm SOURCE}$ $=$ 0.001 $\\pm$ 0.09"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Completeness, reliability, flux scale and astrometry checks",
+    "method": {
+     "value": "Fake-source insertion; extraction on inverted maps; ALMA maps convolved to 19\" compared with LABOCA; comparison with VLA, MIPS and IRAC positions",
+     "evidence": [
+      {
+       "loc": "3.3 Absolute Flux Scale",
+       "quote": "We then determined what flux would be measured by a telescope with a 19$^{\\prime\\prime}$ beam, the FWHM of LABOCA, by convolving the maps to the LABOCA resolution."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Flux ratio consistent with unity at 3 sigma threshold",
+     "evidence": [
+      {
+       "loc": "3.3 Absolute Flux Scale",
+       "quote": "deriving a median flux density ratio of"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Define samples and multiplicity",
+    "method": {
+     "value": "MAIN: rms<0.6, axis ratio<2, inside primary beam FWHM, S/N>3.5; supplementary samples with S/N>4; count SMGs per LESS source; compare separations to random simulation",
+     "evidence": [
+      {
+       "loc": "4.1 Sample Definitions",
+       "quote": "These 99 SMGs are the most reliable SMGs, coming from within the primary beam FWHM of the good–quality maps"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "z = 2.5 for projected separations",
+      "evidence": [
+       {
+        "loc": "5.2 Multiplicity",
+        "quote": "assuming a typical SMG redshift of $z=2.5$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "100 random simulations of separations",
+     "evidence": [
+      {
+       "loc": "5.2 Multiplicity",
+       "quote": "We repeated this simulation 100 times to increase statistics"
+      }
+     ]
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Test LABOCA position uncertainty and radio/MIR counterparts",
+    "method": {
+     "value": "Fit offset vs S/N relation (Ivison 2007) for k; compare ALESS SMGs to Biggs et al. counterparts; stack VLA DR2 cutouts",
+     "evidence": [
+      {
+       "loc": "5.4 LABOCA Positional Offsets",
+       "quote": "we find $k = 0.66\\pm0.03$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "Function fit to median offsets in S/N bins with sqrt(2) radial correction",
+     "evidence": [
+      {
+       "loc": "5.4 LABOCA Positional Offsets",
+       "quote": "Fitting a function to the median data points of the form given in Equation"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "3.4.0",
+    "used_for": {
+     "value": "Data reduction, imaging, imfit checks",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "Common Astronomy Software Application (casa) version 3.4.0"
+      }
+     ]
+    }
+   },
+   {
+    "name": "BOXIT",
+    "version": "not stated",
+    "used_for": {
+     "value": "Identify >5 sigma sources for clean boxes",
+     "evidence": [
+      {
+       "loc": "2.2 Data Reduction",
+       "quote": "We then used the task BOXIT to automatically identify significant ($>$5$\\sigma$) sources."
+      }
+     ]
+    }
+   },
+   {
+    "name": "IDL custom source extraction (MH-MCMC)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Source detection and fitting",
+     "evidence": [
+      {
+       "loc": "3.1 Source Extraction",
+       "quote": "We used custom–written idl–based source extraction software to identify and extract sources from the final, cleaned ALMA maps."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Median rms noise",
+    "value": "0.4",
+    "uncertainty": "not stated",
+    "units": "mJy/beam",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "2.3 Final Maps",
+      "quote": "The median rms noise (at field center) of the maps is $\\sigma = 0.4$ mJy beam$^{-1}$"
+     }
+    ]
+   },
+   {
+    "quantity": "MAIN sample size",
+    "value": "99",
+    "uncertainty": "not stated",
+    "units": "SMGs",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.1 Sample Definitions",
+      "quote": "These 99 SMGs are the most reliable SMGs"
+     }
+    ]
+   },
+   {
+    "quantity": "Median S_ALMA/S_LABOCA (3 sigma threshold)",
+    "value": "0.97",
+    "uncertainty": "+0.07/-0.04",
+    "units": "dimensionless",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "3.3 Absolute Flux Scale",
+      "quote": "S$_{\\rm ALMA}$/S$_{\\rm LABOCA}$ $=$ 0.97$\\pm^{0.07}_{0.04}$"
+     }
+    ]
+   },
+   {
+    "quantity": "LESS sources split into multiple MAIN SMGs",
+    "value": "24 of 69",
+    "uncertainty": "not stated",
+    "units": "sources",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.2 Multiplicity",
+      "quote": "we find that 24 of 69 LESS sources split into two or more MAIN ALESS SMGs"
+     }
+    ]
+   },
+   {
+    "quantity": "Non-detections in good quality maps",
+    "value": "17/88 (~19%)",
+    "uncertainty": "4%",
+    "units": "fraction",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "5.3 Non–detections",
+      "quote": "We therefore find that 17/88 ($\\sim$19%$\\pm$4%) of the LESS sources with high–quality ALMA coverage are non–detections."
+     }
+    ]
+   },
+   {
+    "quantity": "Positional offset normalization k (all)",
+    "value": "0.66",
+    "uncertainty": "0.03",
+    "units": "dimensionless",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.4 LABOCA Positional Offsets",
+      "quote": "we find $k = 0.66\\pm0.03$"
+     }
+    ]
+   },
+   {
+    "quantity": "ALESS 007.1 intrinsic size",
+    "value": "(1.1\")x(0.7\")",
+    "uncertainty": "0.3\" / 0.2\"",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "5.1 Source sizes",
+      "quote": "(1.1$^{\\prime\\prime}$$\\pm$0.3$^{\\prime\\prime}$)$\\times$(0.7$^{\\prime\\prime}$$\\pm$0.2$^{\\prime\\prime}$)"
+     }
+    ]
+   },
+   {
+    "quantity": "Radio/MIR robust counterpart completeness",
+    "value": "~45% (55% incl. tentative)",
+    "uncertainty": "not stated",
+    "units": "fraction",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "5.5 Radio/MIR IDs",
+      "quote": "completeness of only $\\sim$45%, but a reliability of $\\sim$80%"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Most SMGs are unresolved point sources; no excess of SMG pairs at small separations.",
+    "evidence": [
+     {
+      "loc": "5.2 Multiplicity",
+      "quote": "Therefore, the ALESS SMGs show no evidence for an excess of sources at small separations."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Do single-dish LESS sources break into multiple SMGs?",
+    "experiment": "Count MAIN/supplementary SMGs per LESS field in good maps",
+    "result": "24/69 (MAIN) and 32/71 split into multiples",
+    "finding": "At least 35% (up to 50%) of LESS sources are multiples; brighter ones preferentially",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that at least 35% (possibly up to 50%) of the detected LABOCA sources have been resolved into multiple SMGs"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are previously predicted radio/MIR counterparts complete and reliable?",
+    "experiment": "Match ALESS SMGs to Biggs et al. counterparts",
+    "result": "45 of 99 robust, 9 more tentative; reliability ~80%",
+    "finding": "45% of SMGs were missed",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "finding that 45% of the ALESS SMGs were missed by this method"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Are the ALMA and LABOCA flux scales consistent?",
+    "experiment": "Convolve ALMA model maps to LABOCA resolution",
+    "result": "ratio 0.97",
+    "finding": "No overall systematic bias",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "3.3 Absolute Flux Scale",
+      "quote": "Nevertheless, Figure [2](#fig:fluxcomp) demonstrates that there is no overall systematic bias between the ALMA and LABOCA flux density scales."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Some reliability estimates are lower limits; several maps are poor quality due to low elevation observations.",
+     "evidence": [
+      {
+       "loc": "3.2 Completeness and Reliability",
+       "quote": "these reliability estimates are likely lower limits."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Multiplicity fraction depends on 3.5 sigma threshold and nonuniform map quality",
+    "Radio astrometric offsets vary between reductions",
+    "Non-detection explanation as faint multiples is speculative"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "Project 2011.1.00294.S data in ALMA archive; catalog released with paper and on ALESS website",
+    "evidence": [
+     {
+      "loc": "4.2 Using the Catalog",
+      "quote": "The ALESS catalog can be found accompanying this paper or from the ALESS website"
+     }
+    ]
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Custom IDL extraction code",
+    "Fake source simulation specifics",
+    "Per-SB flux calibrator values"
+   ],
+   "estimated_data_volume_inferred": "~10-30 GB raw (8 SBs, Cycle 0 continuum)",
+   "score_inferred": 3,
+   "score_reason": "Data public and calibration/imaging well described, but custom unreleased source extraction code and companion-paper completeness inputs.",
+   "rediscovery_candidate": true,
+   "rediscovery_reason": "Public data, simple imaging recipe, numeric results (rms, source counts, fluxes)."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Condon 1997 (cite: 1997PASP..109..166C)",
+     "why": "Error estimates for Gaussian fits"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Karim et al. 2012 (cite: Karim_aless)",
+     "why": "Completeness, number counts"
+    },
+    {
+     "citation": "Swinbank et al. 2012 (cite: 2012MNRAS.427.1066S)",
+     "why": "z~4 SMG number density"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "LESS",
+    "ECDFS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-c36128691ed2515fb38d49489dd5e6a8",
+  "batch_id": "msgbatch_01PAxxrgz15a3fgaxpmRec93",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T18:26:24",
+  "usage": {
+   "input_tokens": 63375,
+   "output_tokens": 8343,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.105696,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 64,
+  "quotes_ok": 64,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [
+   "2011.1.00294.S"
+  ],
+  "obscore_codes_not_in_card": [
+   "2011.0.00294.S"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 73,
+   "stated": 51,
+   "rate": 0.699
+  },
+  "evidence_ok": true
+ }
+}

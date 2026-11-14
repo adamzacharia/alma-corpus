@@ -1,0 +1,419 @@
+{
+ "bibcode": "2022Icar..37214722L",
+ "title": "Pluto's atmosphere observations with ALMA: Spatially-resolved maps of CO and HCN emission and first detection of HNC",
+ "year": 2022,
+ "doi": "10.1016/j.icarus.2021.114722",
+ "arxiv_id": "2109.12866",
+ "fields": [
+  "solar_system",
+  "astrochemistry"
+ ],
+ "question": "Obtain spatially-resolved measurements of CO(3-2) and HCN(4-3) in Pluto's atmosphere to investigate vertical and horizontal variations in temperature and composition, and search for new atmospheric compounds, primarily hydrogen isocyanide (HNC).",
+ "alma_project_codes": [
+  "2016.1.00426.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m array",
+  "angular_resolution": "~0.58\" (HNC setup), ~0.06\" (CO/HCN setup)",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "2015 disk-averaged ALMA observations of CO(3-2) and HCN(4-3) and 33 K Pluto brightness temperature",
+    "evidence": [
+     {
+      "loc": "Observations and data reduction",
+      "quote": "Because of this, we fixed the flux density scale such that the brightness temperature of Pluto was 33 K, as was found in our 2015 observations (Paper I; Butler et al. 2020)."
+     },
+     {
+      "loc": "Temperature / CO retrievals",
+      "quote": "We also remodelled, in the same manner, the CO line from 2015 (central beam position), yielding CO = 571$\\pm$23 ppm."
+     }
+    ]
+   },
+   "citation": "Paper I (cite: lellouch17); Butler et al. 2020"
+  },
+  {
+   "what": {
+    "value": "New Horizons derived thermal profile (combining REX radio-occultation and Alice UV spectrometer solar occultation data)",
+    "evidence": [
+     {
+      "loc": "Temperature / CO retrievals",
+      "quote": "For the a priori temperatures, we initially used the New Horizons derived thermal profile (cite: young18), that combines temperature information from REX below 100 km and line-of-sight abundances from the Alice UV spectrometer above 900 km for N$_2$ and 80 km for CH$_4$."
+     }
+    ]
+   },
+   "citation": "(cite: young18)"
+  },
+  {
+   "what": {
+    "value": "Photochemical-microphysical model abundance profiles of HCN, HNC, CH3CCH, CH3CN, and HC3N",
+    "evidence": [
+     {
+      "loc": "Initial fitting attempts of the emission radial profiles",
+      "quote": "In this exercise, we used temperature and HCN profiles inferred from New Horizons and/or our previous disk-averaged ALMA data (cite: lellouch17; lavvas21)"
+     },
+     {
+      "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+      "quote": "For CH$_3$CCH, CH$_3$CN, HC$_3$N, we used the photochemical profiles of (cite: lavvas21) as templates and rescaled them by appropriate factors to estimate upper limits on their column densities."
+     }
+    ]
+   },
+   "citation": "(cite: lavvas21)"
+  },
+  {
+   "what": {
+    "value": "Three-unit physical surface temperature model of Pluto (N2 ice, CH4 ice, H2O-tholin)",
+    "evidence": [
+     {
+      "loc": "Temperature / CO retrievals",
+      "quote": "We used an alternate surface temperature description, based on the physical (but still pre- New Horizons) model of (cite: lellouch16)."
+     }
+    ]
+   },
+   "citation": "(cite: lellouch16)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate visibilities, perform phase self-calibration, and fix the absolute flux scale",
+   "method": "Calibrate visibilities and apply velocity corrections using the CASA pipeline. Image continuum spectral windows, perform phase self-calibration in AIPS, apply solutions to line spectral windows, fit continuum visibilities, and rescale flux density scale so Pluto's brightness temperature is 33 K.",
+   "software": [
+    "CASA",
+    "AIPS"
+   ],
+   "key_parameters": [
+    "Continuum flux density set to 17.5 mJy at CO(3-2), 18.3 mJy at HCN(4-3), and 11.1 mJy at HNC(3-2)"
+   ],
+   "assumptions": [
+    "Pluto continuum brightness temperature is constant at 33 K"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Extract zero-spacing (total flux density) CO and HCN spectra via visibility fitting and generate image cubes",
+   "method": "Fit spectral line visibilities per channel over u-v range <= 1000 klambda (excluding Charon, forcing Pluto at phase center) to derive zero-spacing spectra for individual dates and combined data. Produce image cubes for combined CO/HCN data and HNC setup.",
+   "software": [
+    "AIPS",
+    "GILDAS"
+   ],
+   "key_parameters": [
+    "Maximum u-v range = 1000 klambda; Pluto continuum disk = 0.1009\" with limb darkening exponent 0.1",
+    "Prescribed CO emission size = 1.01, 1.05, 1.40 x Pluto diameter at 5, 1, 0 MHz from line center; HCN emission size = 1.00, 1.40, 1.78 x Pluto diameter at 0.6, 0.5, 0.0 MHz",
+    "Pixel size = 0.01\" (CO/HCN cube), 0.1\" (HNC cube); spectral binning factor = 4 (HNC setup)"
+   ],
+   "assumptions": [
+    "Channel-dependent emission sizes prescribed from image cube modeling"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Construct integrated emission maps and radial/quadrant emission profiles for continuum, CO, and HCN",
+   "method": "Integrate CO over +/-5 MHz and HCN over +/-1 MHz from line center, and take continuum over +/-10-40 MHz. Average spectra in oversampled radial bins of 0.007\" globally and split into four azimuthal quadrants (low vs high latitudes, morning vs evening). Estimate uncertainties via Monte Carlo noise clones.",
+   "software": [],
+   "key_parameters": [
+    "Integration ranges: +/-5 MHz (CO), +/-1 MHz (HCN), +/-10-40 MHz (continuum); radial bin width = 0.007\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Retrieve disk-averaged and spatially-resolved temperature profiles and CO mixing ratios",
+   "method": "Use a 200-layer (0-1450 km) spherical non-scattering radiative transfer code convolved with the synthesized beam, coupled with a constrained and regularized Conrath/Rodgers inversion algorithm over +/-30 MHz from CO line core. First invert 2017 zero-spacing and 2015 disk-center CO spectra, then invert 2017 spatially-resolved spectra on a 21x21 grid (0.1\" x 0.1\" with 0.01\" sampling) under 4 CO/temperature scenarios, and construct zonal mean temperature fields.",
+   "software": [],
+   "key_parameters": [
+    "200 atmospheric layers from 0 to 1450 km; fitting interval = +/-30 MHz (345.766-345.826 GHz); maximum 2 iterations (1 iteration if rms decreases by < 2%)",
+    "A priori for disk-averaged retrieval: CO = 515 ppm, temperature = New Horizons profile (Young et al., 2018); A priori for spatially-resolved retrieval: CO = 600 ppm, temperature = 2017 disk-integrated retrieved profile"
+   ],
+   "assumptions": [
+    "CO mixing ratio is vertically uniform; surface brightness temperature is 33.0 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Determine the mean vertical profile of HCN and search for spatial variations in HCN",
+   "method": "Run a parametric forward-model grid varying lower-atmosphere scaling f_low, top altitude z_top, top mixing ratio q_top, and shape exponent alpha. Fit to 2017 radial HCN line areas (9 bins of 0.014\"), 2017 zero-spacing line, and 2015 disk-center line. Then invert spatially-resolved HCN spectra at each beam position (0.01\" grid) by fitting a constant scaling factor to the nominal 2017 HCN profile (and alternatively test upper-atmosphere temperature inversions).",
+   "software": [],
+   "key_parameters": [
+    "z_min = 230 km; f_low = [0.01, 0.1, 0.5, 1, 1.5, 2]; alpha = [1.4, 2, 3, 4.5, 6]; z_top = 400 to 1300 km (step 50 km)"
+   ],
+   "assumptions": [
+    "Single 2017 disk-averaged retrieved thermal profile holds at all beam positions (relaxing to New Horizons profile above 400 km)"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Derive HNC column density and upper limits on H13CN, HC15N, HC3N, CH3CN, and CH3CCH",
+   "method": "Fit the disk-averaged HNC(3-2) spectrum (smoothed to 0.488 MHz) using step-wise uniform mixing ratio models above cutoff altitudes z_0 (0 to 1000 km in 200 km steps) and by rescaling three template vertical profiles. Derive upper limits on other species (smoothed to 0.976 MHz) by rescaling the 2017 HCN profile (for H13CN, HC15N) or Lavvas et al. (2021) photochemical profiles (for HC3N, CH3CN, CH3CCH).",
+   "software": [],
+   "key_parameters": [
+    "z_0 = 0 to 1000 km in 200 km steps; spectral resolution = 0.488 MHz (HNC), 0.976 MHz (other species)"
+   ],
+   "assumptions": [
+    "Template profile shapes from Lavvas et al. (2021) or the 2017 best-fit HCN profile (with f_low = 0.01)"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Summer pole to low-latitude temperature contrast near 30 km",
+   "value": "7",
+   "uncertainty": "+/- 3.5",
+   "units": "K",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Analysis of the CO line map provides tentative evidence for a non-uniform temperature field in the lower atmosphere (near 30 km), with summer pole latitudes being 7$\\pm$3.5 K warmer than low latitudes."
+    },
+    {
+     "loc": "Temperature / CO retrievals",
+     "quote": "In summary our preferred interpretation of the larger CO line areas at high vs low latitudes is that they result from enhanced near-stratopause temperatures, by 7$\\pm$3.5 K."
+    }
+   ]
+  },
+  {
+   "quantity": "CO mixing ratio (2017 zero-spacing retrieval)",
+   "value": "597",
+   "uncertainty": "+/- 32",
+   "units": "ppm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Temperature / CO retrievals",
+     "quote": "This returned a CO mixing ratio of 597$\\pm$32 ppm."
+    }
+   ]
+  },
+  {
+   "quantity": "CO mixing ratio (2015 remodelled retrieval)",
+   "value": "571",
+   "uncertainty": "+/- 23",
+   "units": "ppm",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Temperature / CO retrievals",
+     "quote": "We also remodelled, in the same manner, the CO line from 2015 (central beam position), yielding CO = 571$\\pm$23 ppm."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean (column-density weighted) altitude of HCN (2017 data)",
+   "value": "690",
+   "uncertainty": "+/- 75",
+   "units": "km",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The mean (column-averaged) location of HCN is at 690$\\pm$75 km altitude"
+    },
+    {
+     "loc": "Disk-averaged HCN profile",
+     "quote": "Restricting ourselves to the f$_{low}$ $<$ 0.7 cases, we find that the 2017 (resp. 2015) data indicate z(HCN) = 690$\\pm$75 km (resp. 550$\\pm$50 km), while the combined solutions have z(HCN) = 640$\\pm$50 km."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean (column-density weighted) altitude of HCN (combined 2015 and 2017 solutions)",
+   "value": "640",
+   "uncertainty": "+/- 50",
+   "units": "km",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Disk-averaged HCN profile",
+     "quote": "Restricting ourselves to the f$_{low}$ $<$ 0.7 cases, we find that the 2017 (resp. 2015) data indicate z(HCN) = 690$\\pm$75 km (resp. 550$\\pm$50 km), while the combined solutions have z(HCN) = 640$\\pm$50 km."
+    }
+   ]
+  },
+  {
+   "quantity": "Upper atmosphere (>800 km) HCN mixing ratio (2017 data)",
+   "value": "1.8e-4",
+   "uncertainty": "+1.8e-4/-0.8e-4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "with an upper atmosphere ($>$800 km) mixing ratio of $\\sim$1.8$\\times$10$^{-4}$."
+    },
+    {
+     "loc": "Mean HCN profile",
+     "quote": "In the upper atmosphere, we find an HCN abundance above 800 km altitude of (1.8$^{+1.8}_{-0.8}$)$\\times$10$^{-4}$ for 2017 and (0.55$^{+0.40}_{-0.25}$)$\\times$10$^{-4}$ for 2015 (16-84 % percentiles)"
+    }
+   ]
+  },
+  {
+   "quantity": "Lower atmosphere (65 km) HCN mixing ratio upper limit",
+   "value": "< 5e-9",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "Little or no HCN ($<$5$\\times$10$^{-9}$ at 65 km) is present in the lower atmosphere, implying undersaturation of HCN there."
+    },
+    {
+     "loc": "Disk-averaged HCN profile",
+     "quote": "we conclude that the maximum rescaling factor of the lower atmosphere HCN component is f$_{low}$ $<$ 0.7, corresponding to a maximum HCN mixing ratio of 5$\\times$10$^{-9}$ in the lower atmosphere (near 65 km)."
+    }
+   ]
+  },
+  {
+   "quantity": "HCN column density (2017 disk-resolved data, f_low < 0.7)",
+   "value": "0.75e14",
+   "uncertainty": "+/- 0.25e14",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Disk-averaged HCN profile",
+     "quote": "the range of HCN column densities allowed by the 2017 disk-resolved data and 2015 disk-averaged data are respectively (0.75$\\pm$0.25)$\\times$10$^{14}$ cm$^{-2}$ and (1.25$\\pm$0.45)$\\times$10$^{14}$ cm$^{-2}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HCN column density (combined 2015 and 2017 solutions)",
+   "value": "0.90e14",
+   "uncertainty": "+/- 0.10e14",
+   "units": "cm^-2",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Disk-averaged HCN profile",
+     "quote": "and the profiles fitting both datasets with the above criteria have HCN column densities in the range (0.90$\\pm$0.10)$\\times$10$^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "HNC(3-2) integrated line area",
+   "value": "6.75",
+   "uncertainty": "+/- 1.70",
+   "units": "mJy MHz",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "the line is clearly detected, with an area of 6.75$\\pm$1.70 mJy$\\cdot$MHz."
+    }
+   ]
+  },
+  {
+   "quantity": "HNC column density",
+   "value": "7.0e12 (also reported as 7.1e12 for nominal rescaled model c)",
+   "uncertainty": "+/- 2.1e12 (+/- 2.0e12 for model c)",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The first detection of HNC is reported, with a (7.0$\\pm$2.1)$\\times$10$^{12}$ cm$^{-2}$ column density, referred to Pluto surface"
+    },
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "Rescaled (c) | N/A | This work, HCN | N/A | 0.095$\\pm$0.026 | (7.1$\\pm$2.0)$\\times$10$^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "HNC / HCN ratio",
+   "value": "0.095",
+   "uncertainty": "+/- 0.026",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "and a HNC / HCN ratio of 0.095$\\pm$0.026, very similar to their values in Titan’s atmosphere."
+    },
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "Rescaled (c) | N/A | This work, HCN | N/A | 0.095$\\pm$0.026 | (7.1$\\pm$2.0)$\\times$10$^{12}$"
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CN column density upper limit",
+   "value": "< 2.6e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We also obtain upper limits on CH$_3$CN ($<$2.6$\\times$10$^{13}$ cm$^{-2}$) and CH$_3$CCH ($<$8.5$\\times$10$^{14}$ cm$^{-2}$)"
+    },
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "The corresponding upper limits on the column densities are 8.5$\\times$10$^{14}$ cm$^{-2}$ for CH$_3$CCH and 2.6$\\times$10$^{13}$ cm$^{-2}$ for CH$_3$CN."
+    }
+   ]
+  },
+  {
+   "quantity": "CH3CCH column density upper limit",
+   "value": "< 8.5e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "We also obtain upper limits on CH$_3$CN ($<$2.6$\\times$10$^{13}$ cm$^{-2}$) and CH$_3$CCH ($<$8.5$\\times$10$^{14}$ cm$^{-2}$)"
+    },
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "The corresponding upper limits on the column densities are 8.5$\\times$10$^{14}$ cm$^{-2}$ for CH$_3$CCH and 2.6$\\times$10$^{13}$ cm$^{-2}$ for CH$_3$CN."
+    }
+   ]
+  },
+  {
+   "quantity": "HC3N column density upper limit",
+   "value": "< 3.0e13",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "For HC$_3$N, the (cite: lavvas21) profile is consistent with the lack of detection, and we determine an upper limit equal to twice this profile, corresponding to a maximum column density of 3.0$\\times$10$^{13}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "H13CN / HCN and HC15N / HCN upper limits",
+   "value": "< 1/20",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Detection of hydrogen isocyanide (HNC) and upper limits on other species",
+     "quote": "As shown in Fig. 14, we can only determine upper limits of 1/20 for both H$^{13}$CN / HCN and HC$^{15}$N / HCN."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA and pipeline versions used for initial visibility calibration",
+  "AIPS and GILDAS software versions and specific tasks used for self-calibration, visibility fitting, deconvolution, and imaging",
+  "Self-calibration solution interval (solint) and S/N threshold",
+  "Deconvolution algorithm, visibility weighting scheme (e.g., Briggs robust parameter), and cleaning stopping criteria",
+  "Specific spectroscopic database and collisional broadening parameters used in the radiative transfer code (inherited from Paper I)",
+  "Exact regularization correlation length / vertical smoothing scale height parameter used in the Conrath/Rodgers inversion"
+ ],
+ "missing_for_reproduction": [
+  "Proprietary/in-house spherical radiative transfer and Conrath/Rodgers inversion code is not publicly released",
+  "Exact numerical tables of the Lavvas et al. (2021) and Young et al. (2018) input vertical profiles used as templates and a priori",
+  "Specific AIPS and GILDAS scripts and imaging/self-calibration parameters (robust weighting, clean thresholds, self-cal solint)"
+ ],
+ "reproducibility_score": 55,
+ "score_reason": "Observational setups, flux-scale anchoring (33 K), visibility fitting parameters, and retrieval equations/grids are thoroughly documented, and the ALMA data (2016.1.00426.S) are public in the archive. However, the custom radiative transfer and inversion code is not publicly available, and low-level AIPS/GILDAS imaging parameters are omitted.",
+ "rediscovery_reason": "The raw ALMA data for 2016.1.00426.S are public, the flux calibration anchoring to Pluto's 33 K continuum is explicitly given, and the main observational results (first detection and integrated line flux/column density of HNC, radial extension of HCN vs CO, absorption cores in resolved CO spectra, and upper limits on CH3CN/CH3CCH) are numeric and can be independently reproduced from the visibility data.",
+ "source_card": "cards/2022Icar..37214722L/sonnet/card.md"
+}

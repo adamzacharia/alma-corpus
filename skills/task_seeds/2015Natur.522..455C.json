@@ -1,0 +1,211 @@
+{
+ "bibcode": "2015Natur.522..455C",
+ "title": "Galaxies at redshifts 5 to 6 with systematically low dust content and high [C II] emission",
+ "year": 2015,
+ "doi": "10.1038/nature14500",
+ "arxiv_id": "1503.07596",
+ "fields": [
+  "high_z_galaxies"
+ ],
+ "question": "Do typical z~5-6 star-forming galaxies show lower dust content and enhanced [CII] relative to FIR compared with z<3 systems?",
+ "alma_project_codes": [
+  "2012.1.00523.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "early 20-antenna ALMA, compact configuration",
+  "angular_resolution": "~0.6 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "COSMOS photometric redshift catalog optical/NIR photometry",
+    "evidence": [
+     {
+      "loc": "Method 3",
+      "quote": "Optical and near infrared data were obtained from the COSMOS photometric redshift catalog"
+     }
+    ]
+   },
+   "citation": "Ilbert et al. (cite: 32)"
+  },
+  {
+   "what": {
+    "value": "HST-ACS weak lensing catalog sizes",
+    "evidence": [
+     {
+      "loc": "Method 3",
+      "quote": "Sizes were taken from the COSMOS Hubble Space Telescope Advanced Camera for Surveys (HST-ACS) weak lensing catalog"
+     }
+    ]
+   },
+   "citation": "Leauthaud et al. (cite: 15)"
+  },
+  {
+   "what": {
+    "value": "Grey body FIR SED parameter ranges from z~2-5 objects",
+    "evidence": [
+     {
+      "loc": "Method 4",
+      "quote": "total infrared (3-1100μm) luminosity was derived using the range of grey body models covering the full range of objects observed at z~2-5"
+     }
+    ]
+   },
+   "citation": "Casey 2012 (cite: 18)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Re-reduce and image ALMA data",
+   "method": "Additional flagging, re-imaging with Briggs weighting to make continuum, moment zero and channel maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "Robust = 1"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit [CII] lines and continuum, derive redshift, FWHM, flux, sizes",
+   "method": "Gaussian fitting of spectra and image components; centroid compared to [CII] rest frequency",
+   "software": [
+    "CASA viewer",
+    "CASA imfit"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive infrared luminosity from the single 158um point",
+   "method": "Scale grey body models to observed rest-frame 158 um flux",
+   "software": [],
+   "key_parameters": [
+    "alpha=1.5-2.5, beta=1.2-2.0, T=25-45 K"
+   ],
+   "assumptions": [
+    "FIR SEDs follow z~2-5 grey body range"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Measure UV slope beta and UV luminosity",
+   "method": "Power-law fit to rest-frame 0.13-0.3 um photometry; alternate fit 0.15-0.3 um to estimate systematic",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Compare to IRX-beta relations and test robustness; stack non-detections",
+   "method": "Compare IRX vs beta with Meurer and SMC relations; predicted vs measured mean flux of undetected sources",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Meurer relation typical of z<3; SMC-like dust model"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Estimate dynamical masses",
+   "method": "Mdyn = 1.16e5 Vcir^2 D with Vcir = 1.763 sigma/sin(i), i from axis ratio",
+   "software": [],
+   "key_parameters": [
+    "sin(i)=0.45-1 assumed for errors"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Stacked mean continuum of 6 non-detections",
+   "value": "35",
+   "uncertainty": "13",
+   "units": "uJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "yields a continuum detection of 35±13μJy"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] velocity dispersions",
+   "value": "63-163",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "main text",
+     "quote": "[CII] velocity dispersions of σ=63-163 km/s"
+    }
+   ]
+  },
+  {
+   "quantity": "Systematic uncertainty in LIR",
+   "value": "0.3",
+   "uncertainty": "not stated",
+   "units": "dex",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Method 4",
+     "quote": "This range of parameters resulted in a systematic uncertainty of 0.3 dex in the derived luminosity."
+    }
+   ]
+  },
+  {
+   "quantity": "HZ10 continuum flux",
+   "value": "1261",
+   "uncertainty": "44",
+   "units": "uJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Extended Data Table 1",
+     "quote": "HZ10 150.247098 1.555426 5.659 LAE/I-LBG 5.6566±2e-4 1261±44 1.57±0.09 127±8"
+    }
+   ]
+  },
+  {
+   "quantity": "Effect on z~6 star formation density",
+   "value": "30-40% less",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Method 8",
+     "quote": "result in ~30-40% less StarFormation at z~6 than previously thought"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum imaging bandwidth used",
+  "Image size, cell size, cleaning threshold, masks",
+  "Flagging details and which channels/times were flagged",
+  "Flux calibrator and ALMA flux scale uncertainty",
+  "Channel width of cubes and moment-0 velocity range",
+  "Fit box sizes for CASA Gaussian fits",
+  "CASA version",
+  "Stacking procedure details",
+  "Details of the SED fitting (templates, extinction laws)"
+ ],
+ "missing_for_reproduction": [
+  "Imaging parameters beyond robust=1",
+  "CASA version",
+  "Fit box sizes",
+  "Stacking details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and numeric tables, but imaging and fit details are sparse.",
+ "rediscovery_reason": "Public data with numeric tables of fluxes, though processing details are incomplete.",
+ "source_card": "cards/2015Natur.522..455C/sonnet/card.md"
+}

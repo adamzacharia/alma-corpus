@@ -1,0 +1,1858 @@
+{
+  "depth": "light",
+  "paper_type": "theory_or_simulation_compared_to_alma",
+  "paper_type_evidence": [
+    {
+      "loc": "abstract",
+      "quote": "We compare the observed distribution of brightness asymmetry amplitudes to the simulated distribution in GRMHD models, across varying black hole spin $a_{*}$."
+    },
+    {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00841.V and ADS/JAO.ALMA#2019.1.01797.V."
+    }
+  ],
+  "fields": [
+    "agn_and_quasars"
+  ],
+  "question": {
+    "value": "How ring brightness asymmetry constrains dimensionless black hole spin in M87*.",
+    "evidence": [
+      {
+        "loc": "Introduction",
+        "quote": "In this paper, we study how ring brightness asymmetry constrains dimensionless black hole spin:"
+      }
+    ]
+  },
+  "targets": [
+    {
+      "name": "M87*",
+      "details": [
+        {
+          "loc": "Introduction",
+          "quote": "The ring diameter is consistent with a black hole of mass $M = 6.5 \\times 10^9 M_\\odot$ located at a distance $D = 16.8$ Mpc from Earth (cite: EHTC_2019_6)"
+        }
+      ],
+      "coordinates": "not stated",
+      "redshift_or_distance": "16.8 Mpc",
+      "distance_source": "(cite: EHTC_2019_6)"
+    }
+  ],
+  "alma_project_codes": [
+    {
+      "code": "2017.1.00841.V",
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00841.V and ADS/JAO.ALMA#2019.1.01797.V."
+        }
+      ]
+    },
+    {
+      "code": "2019.1.01797.V",
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2017.1.00841.V and ADS/JAO.ALMA#2019.1.01797.V."
+        }
+      ]
+    }
+  ],
+  "data_settings": [
+    {
+      "field": "arrays",
+      "value": "Event Horizon Telescope (EHT); VLBI",
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "Very-long-baseline interferometry (VLBI) arrays such as the EHT sample the $(u,v)$, or Fourier, domain."
+        }
+      ]
+    },
+    {
+      "field": "observing_dates",
+      "value": "2017, 2018, and 2021 observing campaigns",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "The observational data were obtained by the EHT Collaboration during the 2017, 2018, and 2021 observing campaigns"
+        }
+      ]
+    }
+  ],
+  "lines_targeted": [],
+  "other_facilities": [
+    {
+      "name": "Event Horizon Telescope (EHT)",
+      "provided": {
+        "value": "2017, 2018, and 2021 observational data",
+        "evidence": [
+          {
+            "loc": "Introduction",
+            "quote": "The observational data were obtained by the EHT Collaboration during the 2017, 2018, and 2021 observing campaigns"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Argonne Leadership Computing Facility",
+      "provided": {
+        "value": "Storage space on the Eagle system",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "We are particularly grateful to the Argonne Leadership Computing Facility for providing storage space on the Eagle system that was critical for enabling this work."
+          }
+        ]
+      }
+    }
+  ],
+  "external_data_from_literature": [
+    {
+      "what": {
+        "value": "EHT observations from the 2017, 2018, and 2021 campaigns",
+        "evidence": [
+          {
+            "loc": "Introduction",
+            "quote": "The observational data were obtained by the EHT Collaboration during the 2017, 2018, and 2021 observing campaigns"
+          },
+          {
+            "loc": "Introduction",
+            "quote": "hereafter EHTC M87 I–VI for (cite: EHTC_2019_1; EHTC_2019_2; EHTC_2019_3; EHTC_2019_4; EHTC_2019_5; EHTC_2019_6); EHTC M87 2018 I–II for (cite: EHTC_2024_1; EHTC_2025_1); and EHTC M87 2021 for (cite: EHTC_2025_1_M87_21)"
+          }
+        ]
+      },
+      "citation": "EHTC M87 I–VI (cite: EHTC_2019_1; EHTC_2019_2; EHTC_2019_3; EHTC_2019_4; EHTC_2019_5; EHTC_2019_6); EHTC M87 2018 I–II (cite: EHTC_2024_1; EHTC_2025_1); EHTC M87 2021 (cite: EHTC_2025_1_M87_21)"
+    },
+    {
+      "what": {
+        "value": "M87* mass 6.5 × 10^9 M_sun and distance 16.8 Mpc",
+        "evidence": [
+          {
+            "loc": "Introduction",
+            "quote": "The ring diameter is consistent with a black hole of mass $M = 6.5 \\times 10^9 M_\\odot$ located at a distance $D = 16.8$ Mpc from Earth (cite: EHTC_2019_6)"
+          }
+        ]
+      },
+      "citation": "(cite: EHTC_2019_6)"
+    },
+    {
+      "what": {
+        "value": "Approaching jet inclination 17°",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "We assume that the black hole spin vector, the accretion flow orbital angular momentum vector, and the large scale jet are coaxial, and that the approaching jet inclination is $17^\\circ$ (cite: walker_jet_2018)."
+          }
+        ]
+      },
+      "citation": "(cite: walker_jet_2018)"
+    },
+    {
+      "what": {
+        "value": "v5 Illinois GRMHD library",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "For this study, we use the “v5” version of the Illinois GRMHD library (Bowden et al., in preparation)."
+          }
+        ]
+      },
+      "citation": "Bowden et al., in preparation"
+    },
+    {
+      "what": {
+        "value": "v3 library for comparison",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "Results from the v3 library (cite: Dhruv_grmhd_survey_2024), which were produced with an outdated adiabatic index among other differences, used the `iharm `code (cite: prather_iharm_2021)"
+          }
+        ]
+      },
+      "citation": "(cite: Dhruv_grmhd_survey_2024)"
+    },
+    {
+      "what": {
+        "value": "Earlier 2017 April 11 asymmetry A ∼ 0.22",
+        "evidence": [
+          {
+            "loc": "Comparison to Earlier Work",
+            "quote": "The analysis of 2017 data reported an asymmetry $A\\sim 0.22$ on April 11, which is smaller than reported here ($a_{1}=0.41$) due to a difference in definition."
+          }
+        ]
+      },
+      "citation": "not stated"
+    },
+    {
+      "what": {
+        "value": "Earlier 2018 April 21 asymmetry A ≈ 0.31",
+        "evidence": [
+          {
+            "loc": "Comparison to Earlier Work",
+            "quote": "The EHT analysis of 2018 April 21 data used Comrade and VIDA to measure an asymmetry and found $A\\approx 0.31$"
+          }
+        ]
+      },
+      "citation": "not stated"
+    },
+    {
+      "what": {
+        "value": "Earlier 2021 April 18 asymmetry A ≈ 0.22 to 0.25",
+        "evidence": [
+          {
+            "loc": "Comparison to Earlier Work",
+            "quote": "The EHT analysis of 2021 April 18 used Comrade to measure an asymmetry of $A\\approx 0.22$ to $0.25$, again following the convention where values of $A$ are a factor of 2 smaller than $a_{1}$."
+          }
+        ]
+      },
+      "citation": "not stated"
+    },
+    {
+      "what": {
+        "value": "2017 M87* FA = 0.20–0.24, compared with the present a1 measurement",
+        "evidence": [
+          {
+            "loc": "Comparison to Earlier Work",
+            "quote": "For 2017 M87\\* data they find $FA = 0.20-0.24$, implying $a_{1}\\approx 0.38 - 0.46$, consistent with the $a_{1}=0.41$ value we find by fitting all visibility amplitudes and closure phases using Comrade."
+          }
+        ]
+      },
+      "citation": "(cite: faggert_asym_2024)"
+    }
+  ],
+  "simulations_or_models_as_data": [
+    {
+      "value": "Illinois v5: 13 MAD GRMHD fluid simulations spanning spin −0.97 to 0.97",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "For v5, we densely sample the dimensionless spin $a_{*}$ in 13 steps, ranging from $-0.97$ to $0.97$ (Bowden et al., in preparation)."
+        },
+        {
+          "loc": "Models",
+          "quote": "Our analysis therefore uses 13 MAD GRMHD fluid simulations."
+        }
+      ]
+    },
+    {
+      "value": "104 PATOKA models; 6000 images each; 5 t_g cadence from 20,000 to 50,000 t_g",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "Each of 104 `PATOKA `models contains 6000 images, produced at $5 \\, t_g$ cadence (for gravitational time $t_g\\equiv GMc^{-3}$) in the interval from time $20,000 \\, t_g$ to $50,000 \\, t_g$ after the start of the simulation."
+        }
+      ]
+    },
+    {
+      "value": "v3 and v5 MAD and SANE models used for comparison",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "A comparison of MAD and SANE models in our main v5 library and in the v3 library, which is run with different physical assumptions and a different GRMHD code, are discussed in Appendix"
+        }
+      ]
+    }
+  ],
+  "calibration": [],
+  "imaging": [
+    {
+      "field": "task",
+      "value": "CLEAN imaging with Difmap",
+      "evidence": [
+        {
+          "loc": "Acknowledgments",
+          "quote": "We thank Martin Shepherd for the addition of extra features in the Difmap software that were used for the CLEAN imaging results presented in this paper."
+        }
+      ]
+    }
+  ],
+  "inherited": [
+    {
+      "what": {
+        "value": "PATOKA pipeline for GRMHD simulations and ray-traced synthetic images",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "The library was produced using the `PATOKA `pipeline (cite: wong_patoka_2022), which models the accretion flow using ideal general relativistic magnetohydrodynamics (GRMHD) simulations and then ray-traces GRMHD snapshots to produce synthetic images."
+          }
+        ]
+      },
+      "from_reference": "(cite: wong_patoka_2022)"
+    },
+    {
+      "what": {
+        "value": "v5 Illinois GRMHD library and dense spin sampling",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "For this study, we use the “v5” version of the Illinois GRMHD library (Bowden et al., in preparation)."
+          },
+          {
+            "loc": "Models",
+            "quote": "For v5, we densely sample the dimensionless spin $a_{*}$ in 13 steps, ranging from $-0.97$ to $0.97$ (Bowden et al., in preparation)."
+          }
+        ]
+      },
+      "from_reference": "Bowden et al., in preparation"
+    },
+    {
+      "what": {
+        "value": "Approaching jet inclination 17°, with coaxial spin, accretion flow, and jet",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "We assume that the black hole spin vector, the accretion flow orbital angular momentum vector, and the large scale jet are coaxial, and that the approaching jet inclination is $17^\\circ$ (cite: walker_jet_2018)."
+          }
+        ]
+      },
+      "from_reference": "(cite: walker_jet_2018)"
+    },
+    {
+      "what": {
+        "value": "R_high–R_low prescription for Ti/Te as a function of plasma beta",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "We use a model with parameters $R_{\\text{high}}$ and $R_{\\text{low}}$ to assign a distribution function to the electrons."
+          },
+          {
+            "loc": "Models",
+            "quote": "Then, following (cite: moscibrodzca16)"
+          }
+        ]
+      },
+      "from_reference": "(cite: moscibrodzca16)"
+    },
+    {
+      "what": {
+        "value": "Detailed validation of the parameter optimization method",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "Detailed validation of the parameter optimization method is described in (cite: tiede_vida_2022)."
+          }
+        ]
+      },
+      "from_reference": "(cite: tiede_vida_2022)"
+    },
+    {
+      "what": {
+        "value": "Synthetic visibility amplitudes and closure phases with realistic observational noise",
+        "evidence": [
+          {
+            "loc": "Simulated images",
+            "quote": "We generate $(u,v)$ data by Fourier transforming our synthetic images, then sampling the resulting visibility amplitudes and closure phases using EHT $(u,v)$ coverage, with realistic observational noise (cite: Chael_2018)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Chael_2018)"
+    },
+    {
+      "what": {
+        "value": "Magnetized torus initial conditions of limited radial extent",
+        "evidence": [
+          {
+            "loc": "Model Uncertainty",
+            "quote": "The models are initialized with a magnetized torus of limited radial extent (cite: Fishbone_moncrief_torus; wong_patoka_2022)."
+          }
+        ]
+      },
+      "from_reference": "(cite: Fishbone_moncrief_torus; wong_patoka_2022)"
+    }
+  ],
+  "unstated_but_needed": [
+    "Exact EHT data products, observing scans, frequency selections, and flags used for each annual fit.",
+    "ALMA station calibration and phasing products, flux scale, and their propagation into the EHT observables.",
+    "Comrade version, optimizer or sampler, initialization, priors, complete parameter bounds, likelihood, and treatment of correlated closure phases.",
+    "Procedure used to obtain the quoted observational a1 uncertainties.",
+    "Actual jet position angle used to rotate synthetic images.",
+    "Noise model parameters and implementation used to generate synthetic EHT data.",
+    "v5 snapshot and image access, simulation grid and boundary settings, ray-tracing resolution, field of view, and emission normalization.",
+    "Weights used when marginalizing over R_high and R_low.",
+    "Truncated-Gaussian fitting implementation and KS-test implementation.",
+    "Monte Carlo repetition counts and random seeds for the forecasts.",
+    "Identification and parameters of the fast-light versus slow-light test model."
+  ],
+  "analysis_steps": [
+    {
+      "order": 1,
+      "goal": "Measure observed ring asymmetry",
+      "method": {
+        "value": "Fit EHT visibility amplitudes and closure phases with a Gaussian background plus an m=4 m-ring; use normalized m=1 amplitude a1.",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "Our parameterized Comrade model has two components: a ring with intensity $I_{ring}$ and a Gaussian background component with intensity $I_{bg}$."
+          },
+          {
+            "loc": "EHT observations",
+            "quote": "The model parameters are adjusted by the Comrade optimizers to fit EHT visibility amplitude and closure phase data."
+          },
+          {
+            "loc": "EHT observations",
+            "quote": "We use $a_{1}$, the normalized amplitude of the $m = 1$ Fourier component, as our measure of ring brightness asymmetry."
+          }
+        ]
+      },
+      "software": [
+        "Comrade"
+      ],
+      "key_parameters": [
+        {
+          "value": "m=4; a_m ∈ [0,1); zero ring ellipticity; single nuisance Gaussian",
+          "evidence": [
+            {
+              "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+              "quote": "For the bulk of this analysis, we used an $m$-ring model that was truncated at $m=4$, bound by asymmetry $a_m\\in[0,1)$, and fit in the $(u,v)$ domain assuming 2018 $(u,v)$ coverage."
+            },
+            {
+              "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+              "quote": "Our $m=4$ $m$-ring had zero ellipticity and was allowed a single nuisance Gaussian, which models diffuse off-ring emission."
+            }
+          ]
+        },
+        {
+          "value": "Ring: radius r0, thickness sigma, amplitudes and position angles for m=1 through 4",
+          "evidence": [
+            {
+              "loc": "EHT observations",
+              "quote": "Our $m=4$ $m$-ring has 10 parameters: ring radius $r_0$, ring thickness $\\sigma$, amplitudes $a_m$, and position angles $\\textrm{PA}_m$ for $m=1$ through $4$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "a1=0 denotes symmetry; a1=1 denotes amplitude as large as the ring mean",
+          "evidence": [
+            {
+              "loc": "EHT observations",
+              "quote": "In our convention, notice that a ring with $a_{1}=0$ is symmetric, while a ring with $a_{1}=1$ has an amplitude as large as its mean."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Comrade optimizers fit visibility amplitudes and closure phases.",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "The model parameters are adjusted by the Comrade optimizers to fit EHT visibility amplitude and closure phase data."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Mean squared standardized residual chi2, normalized by number of data points; 1.9, 0.9, and 2.6 for 2017, 2018, and 2021.",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "The quality of fit can be assessed using the mean squared standardized residual $\\chi^2$, normalized by the number of data points."
+          },
+          {
+            "loc": "EHT observations",
+            "quote": "The normalized $\\chi^2$ is $1.9$, $0.9$, and $2.6$ in 2017, 2018, and 2021 respectively (note these are not reduced $\\chi^2$ values)."
+          }
+        ]
+      }
+    },
+    {
+      "order": 2,
+      "goal": "Construct the synthetic image library",
+      "method": {
+        "value": "Evolve ideal GRMHD with KHARMA and ray-trace snapshots with ipole using PATOKA; use Illinois v5.",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "The library was produced using the `PATOKA `pipeline (cite: wong_patoka_2022), which models the accretion flow using ideal general relativistic magnetohydrodynamics (GRMHD) simulations and then ray-traces GRMHD snapshots to produce synthetic images."
+          },
+          {
+            "loc": "Models",
+            "quote": "The GRMHD simulations are integrated with the KHARMA code (cite: Prather_kharma_2024), and the synthetic images are produced using `ipole `(cite: ipole18)."
+          },
+          {
+            "loc": "Models",
+            "quote": "For this study, we use the “v5” version of the Illinois GRMHD library (Bowden et al., in preparation)."
+          }
+        ]
+      },
+      "software": [
+        "PATOKA",
+        "KHARMA",
+        "ipole"
+      ],
+      "key_parameters": [
+        {
+          "value": "MAD; spins 0, ±0.25, ±0.5, ±0.75, ±0.85, ±0.9375, ±0.97",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "Our analysis therefore uses 13 MAD GRMHD fluid simulations."
+            },
+            {
+              "loc": "Table 1",
+              "quote": "$0$, $\\pm 0.25$, $\\pm 0.5$, $\\pm 0.75$, $\\pm 0.85$, $\\pm 0.9375$, $\\pm 0.97$"
+            }
+          ]
+        },
+        {
+          "value": "R_high = 10, 40, 80, 160; R_low = 1, 10",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "We consider models with $R_{\\text{high}} = 10, 40, 80, 160$ and $R_{\\text{low}}= 1, 10$"
+            }
+          ]
+        },
+        {
+          "value": "104 models; 6000 images per model; 5 t_g cadence; t=20,000–50,000 t_g",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "Each of 104 `PATOKA `models contains 6000 images, produced at $5 \\, t_g$ cadence (for gravitational time $t_g\\equiv GMc^{-3}$) in the interval from time $20,000 \\, t_g$ to $50,000 \\, t_g$ after the start of the simulation."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Coaxial spin, flow angular momentum, and jet; approaching jet inclination 17°",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "We assume that the black hole spin vector, the accretion flow orbital angular momentum vector, and the large scale jet are coaxial, and that the approaching jet inclination is $17^\\circ$ (cite: walker_jet_2018)."
+            }
+          ]
+        },
+        {
+          "value": "i=17° for a*<0; i=163° for a*≥0",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "Adopting this constraint, we set $i = 17^\\circ$ for $a_{*}< 0$ and $i = 163^\\circ$ for $a_{*}\\ge 0$."
+            }
+          ]
+        },
+        {
+          "value": "Thermal electrons and ions; Ti from the simulation; Ti/Te depends only on local instantaneous plasma beta",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "The model assumes that (1) the electrons are thermal at temperature $T_e$; (2) the ions are thermal at temperature $T_i$; (3) $T_i$ can be deduced directly from the simulation;"
+            },
+            {
+              "loc": "Models",
+              "quote": "and (4) $T_i/T_e$ depends only on the local, instantaneous value of the plasma $\\beta \\equiv P_{gas}/P_{mag}$ for gas pressure $P_{gas}$ and magnetic pressure $P_{mag}$."
+            }
+          ]
+        },
+        {
+          "value": "beta_crit=1",
+          "evidence": [
+            {
+              "loc": "Models",
+              "quote": "for $\\tilde{\\beta}=\\beta/\\beta_{\\text{crit}}$ and $\\beta_{\\text{crit}}=1$."
+            }
+          ]
+        },
+        {
+          "value": "v5 adiabatic index gamma=5/3",
+          "evidence": [
+            {
+              "loc": "v3 Illinois GRMHD Library",
+              "quote": "The most notable physical difference is that in v5, the plasma adiabatic index is $\\gamma = \\frac{5}{3}$, compared to $\\gamma = \\frac{4}{3}$ in v3."
+            }
+          ]
+        },
+        {
+          "value": "Fast-light radiative transfer on a single time slice",
+          "evidence": [
+            {
+              "loc": "Model Uncertainty",
+              "quote": "The fast light approximation used here performs the radiative transfer calculation for a snapshot on a single time slice."
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "Compare v3 and v5, MAD and SANE models; compare fast-light and slow-light asymmetry in a test model.",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "A comparison of MAD and SANE models in our main v5 library and in the v3 library, which is run with different physical assumptions and a different GRMHD code, are discussed in Appendix"
+          },
+          {
+            "loc": "Model Uncertainty",
+            "quote": "We have compared the asymmetry distribution in fast light and slow light versions of a test model and find that they are nearly identical."
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "goal": "Measure asymmetry in synthetic EHT observations",
+      "method": {
+        "value": "Rotate images to the jet axis; Fourier transform, sample EHT coverage with noise, and fit the same m-ring with Comrade.",
+        "evidence": [
+          {
+            "loc": "Simulated images",
+            "quote": "We first rotate the ground truth images to match the large-scale jet axis expected from observations"
+          },
+          {
+            "loc": "Simulated images",
+            "quote": "We generate $(u,v)$ data by Fourier transforming our synthetic images, then sampling the resulting visibility amplitudes and closure phases using EHT $(u,v)$ coverage, with realistic observational noise (cite: Chael_2018)."
+          },
+          {
+            "loc": "Simulated images",
+            "quote": "Finally, we fit the $m$-ring model parameters to the resulting synthetic data using Comrade,"
+          }
+        ]
+      },
+      "software": [
+        "Comrade",
+        "VIDA"
+      ],
+      "key_parameters": [
+        {
+          "value": "Downsample to 125 t_g; 240 images per spin/R_high/R_low combination and 1920 per spin",
+          "evidence": [
+            {
+              "loc": "Simulated images",
+              "quote": "so we downsample to a cadence of $125 \\, t_g$"
+            },
+            {
+              "loc": "Simulated images",
+              "quote": "This leaves $240$ images per unique combination of spin, $R_{\\text{high}}$, and $R_{\\text{low}}$, and $1920$ unique images per unique spin."
+            }
+          ]
+        },
+        {
+          "value": "2018 EHT (u,v) coverage and conditions",
+          "evidence": [
+            {
+              "loc": "Simulated images",
+              "quote": "For simplicity, we assume 2018 EHT $(u,v)$ coverage and conditions."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "125 t_g cadence provides independent synthetic observations",
+          "evidence": [
+            {
+              "loc": "Simulated images",
+              "quote": "to obtain independent synthetic observations."
+            },
+            {
+              "loc": "Simulated images",
+              "quote": "The images are correlated on timescales $\\sim 100 \\, t_g$, so we downsample to a cadence of $125 \\, t_g$"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Fit the m-ring parameters to synthetic data using Comrade, as for the observations.",
+        "evidence": [
+          {
+            "loc": "Simulated images",
+            "quote": "Finally, we fit the $m$-ring model parameters to the resulting synthetic data using Comrade,"
+          },
+          {
+            "loc": "Simulated images",
+            "quote": "We apply the same analysis technique to our synthetic data as we did to the real data."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare (u,v)-domain and image-domain asymmetries; 68% differ by less than 0.13 and 90% by less than 0.22; check other annual coverage.",
+        "evidence": [
+          {
+            "loc": "Simulated images",
+            "quote": "About $68\\%$ of snapshots have $|a_{1, UV} - a_{1,I}|$ less than $0.13$, and $90\\%$ have difference less than $0.22$."
+          },
+          {
+            "loc": "Simulated images",
+            "quote": "The results are consistent if we use 2017 or 2021 $(u,v)$ coverage and observational noise instead"
+          },
+          {
+            "loc": "EHT observations",
+            "quote": "We demonstrate consistency with asymmetry fits in the image domain using variational image domain analysis (cite: tiede_vida_2022)"
+          }
+        ]
+      }
+    },
+    {
+      "order": 4,
+      "goal": "Build spin-dependent asymmetry distributions",
+      "method": {
+        "value": "Marginalize MAD asymmetries over all parameters except spin and fit truncated Gaussian distributions.",
+        "evidence": [
+          {
+            "loc": "Results",
+            "quote": "Figure [5](#fig:spin_distr) shows the asymmetry distributions for MAD models, marginalizing over all parameters except spin."
+          },
+          {
+            "loc": "Table 2",
+            "quote": "Mode ($\\mu$) and standard deviation ($\\sigma$) for truncated Gaussian fits to asymmetry distributions for MAD models."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Filter a1>0.99 before fitting; truncated-Gaussian bounds a1 ∈ [0,1)",
+          "evidence": [
+            {
+              "loc": "Results",
+              "quote": "We filter out all images with $a_{1}> 0.99$ before fitting to improve accuracy."
+            },
+            {
+              "loc": "Table 2",
+              "quote": "The fits are bounded by $a_{1}\\in [0, 1)$; we exclude $a_{1}= 1$ cases prior to fitting."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Truncated Gaussian fits summarized by mode mu and standard deviation sigma.",
+        "evidence": [
+          {
+            "loc": "Table 2",
+            "quote": "Mode ($\\mu$) and standard deviation ($\\sigma$) for truncated Gaussian fits to asymmetry distributions for MAD models."
+          }
+        ]
+      },
+      "validation": {
+        "value": "Compare with a clipped Gaussian fit; recovered mu changes little.",
+        "evidence": [
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "We tried fitting a clipped Gaussian and found this had little effect on the recovered $\\mu$ for each model."
+          }
+        ]
+      }
+    },
+    {
+      "order": 5,
+      "goal": "Test spins against observed asymmetries",
+      "method": {
+        "value": "Use one-sample KS tests against truncated Gaussian distributions and two-sample KS tests against individual synthetic-image asymmetries.",
+        "evidence": [
+          {
+            "loc": "Results",
+            "quote": "To assess the significance of the inconsistency between the data and the models, we use the Kolmogorov–Smirnov (KS) test."
+          },
+          {
+            "loc": "Results",
+            "quote": "one for the truncated Gaussian fit to the GRMHD asymmetry distribution (the “one-sample” KS test), and one using measured asymmetries of individual images drawn from each model (the “two-sample” KS test)."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "Marginalize over R_high and R_low at each spin; also inspect zero-spin models separately by these parameters.",
+          "evidence": [
+            {
+              "loc": "Results",
+              "quote": "In the discussion above, we marginalize over all radiative transfer parameters $R_{\\text{high}}$ and $R_{\\text{low}}$ at each spin."
+            },
+            {
+              "loc": "Results",
+              "quote": "Figure [7](#fig:p_value_spin_0) shows KS test probabilities for $a_{*}= 0$ models broken out for different $R_{\\text{high}}$ and $R_{\\text{low}}$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "MAD model library represents M87*; only three independent observations",
+          "evidence": [
+            {
+              "loc": "Conclusion",
+              "quote": "a restriction of the model library to magnetically arrested disk (MAD) models, which are nevertheless preferred by EHT data; and (3) only three independent observations."
+            },
+            {
+              "loc": "Conclusion",
+              "quote": "the relevance of the model library itself, which is known to have missing physical ingredients and internal inconsistencies"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "not stated",
+        "evidence": []
+      },
+      "validation": {
+        "value": "One-sample and two-sample KS results are very close.",
+        "evidence": [
+          {
+            "loc": "Results",
+            "quote": "Evidently the two are very close."
+          }
+        ]
+      }
+    },
+    {
+      "order": 6,
+      "goal": "Forecast constraints from additional epochs",
+      "method": {
+        "value": "Repeatedly draw N mock observations, perform KS comparisons, and report median p; test a present-data distribution and distributions at fixed true spin.",
+        "evidence": [
+          {
+            "loc": "Future EHT Observations",
+            "quote": "We draw $N$ random samples (mock observations) from the truncated normal distribution, and perform a KS test comparing the mock observations to all spin zero models."
+          },
+          {
+            "loc": "Future EHT Observations",
+            "quote": "We fix the “true” spin of M87\\*, draw samples from the distribution for that spin"
+          },
+          {
+            "loc": "Future EHT Observations",
+            "quote": "We again repeat this procedure many times and take the median $p$."
+          }
+        ]
+      },
+      "software": [],
+      "key_parameters": [
+        {
+          "value": "First forecast: truncated normal with mu ∼0.55 and standard deviation ≃0.2",
+          "evidence": [
+            {
+              "loc": "Future EHT Observations",
+              "quote": "For the first case, we assume the asymmetry is a (truncated) normal distribution with $\\mu$ equal to the average of the three existing measurements, $\\sim 0.55$, and the standard deviation $\\simeq 0.2$"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "value": "Second forecast assumes the correct model is in the library.",
+          "evidence": [
+            {
+              "loc": "Future EHT Observations",
+              "quote": "For the second case, we assume the correct model is in our library and ask how well future observations can measure the spin."
+            }
+          ]
+        },
+        {
+          "value": "Mean-asymmetry uncertainty scales as sigma/sqrt(N) for independent samples.",
+          "evidence": [
+            {
+              "loc": "Future EHT Observations",
+              "quote": "The uncertainty in the measurement of the average asymmetry scales with the number of independent samples $N$ as $\\sim \\sigma/\\sqrt{N}$"
+            }
+          ]
+        }
+      ],
+      "fitting": {
+        "value": "Median zero-spin p scales as e^(−N/1.6).",
+        "evidence": [
+          {
+            "loc": "Future EHT Observations",
+            "quote": "We find the median $p$ for spin zero drops off as $p \\sim e^{-N/1.6}$: the constraint improves exponentially as new observations are added."
+          }
+        ]
+      },
+      "validation": {
+        "value": "not stated",
+        "evidence": []
+      }
+    },
+    {
+      "order": 7,
+      "goal": "Check geometric and inclination sensitivity",
+      "method": {
+        "value": "Repeat KS tests with different annual coverage, asymmetry bounds, and m-ring order; perturb inclination in a small MAD model sample.",
+        "evidence": [
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "while varying assumed $(u,v)$ coverage from 2017 to 2021, the assumed parameter bounds from $a_{1 \\,\\textrm{max}}=1$ to $1.5$, and the geometric model template from an $m=4$ $m$-ring to an $m=3$ one."
+          },
+          {
+            "loc": "Degeneracy with Inclination",
+            "quote": "We assess the uncertainty introduced by inclination error in a small sample of models, changing the inclination by $\\pm 5^\\circ$ from the inclination used in our standard model series."
+          }
+        ]
+      },
+      "software": [
+        "Comrade"
+      ],
+      "key_parameters": [
+        {
+          "value": "Geometric checks: 500 t_g cadence; 60 samples per model and 480 per spin",
+          "evidence": [
+            {
+              "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+              "quote": "This analysis was performed at a reduced cadence of one frame every $500 \\, t_g$, leaving 60 samples for each unique model, and 480 for each unique spin."
+            }
+          ]
+        },
+        {
+          "value": "Inclination checks: R_high=40, R_low=1, a*=±0.5; 30 images per model separated by >50 t_g",
+          "evidence": [
+            {
+              "loc": "Degeneracy with Inclination",
+              "quote": "We consider four MAD models, with $R_{\\text{high}}=40$, $R_{\\textrm{low}}=1$, and $a_{*}=\\pm 0.5$."
+            },
+            {
+              "loc": "Degeneracy with Inclination",
+              "quote": "We sample 30 images from each model separated by $> 50\\, t_g$."
+            }
+          ]
+        }
+      ],
+      "assumptions": [],
+      "fitting": {
+        "value": "Repeat m-ring fitting and two-sample KS tests.",
+        "evidence": [
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "Finally, we tried fitting an $m=3$ ring to observations and compared to the distribution found in models at each spin and again found largely consistent results."
+          },
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "Figure [10](#fig:other_modeling) shows two-sample KS test as done in Figure [6](#fig:p_values)"
+          }
+        ]
+      },
+      "validation": {
+        "value": "Coverage and bounds have negligible effect on p-values; geometric-template results largely agree.",
+        "evidence": [
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "The changes in asymmetry bounds or assumed $(u,v)$ coverage have a negligible effect on $p$-values."
+          },
+          {
+            "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+            "quote": "We conclude that our spin constraints are relatively insensitive to details of the geometric model."
+          }
+        ]
+      }
+    }
+  ],
+  "software": [
+    {
+      "name": "PATOKA",
+      "version": "not stated",
+      "used_for": {
+        "value": "GRMHD simulation and ray-traced synthetic-image pipeline",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "The library was produced using the `PATOKA `pipeline (cite: wong_patoka_2022), which models the accretion flow using ideal general relativistic magnetohydrodynamics (GRMHD) simulations and then ray-traces GRMHD snapshots to produce synthetic images."
+          }
+        ]
+      }
+    },
+    {
+      "name": "KHARMA",
+      "version": "not stated",
+      "used_for": {
+        "value": "Integrate the v5 GRMHD simulations",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "The GRMHD simulations are integrated with the KHARMA code (cite: Prather_kharma_2024), and the synthetic images are produced using `ipole `(cite: ipole18)."
+          },
+          {
+            "loc": "v3 Illinois GRMHD Library",
+            "quote": "compared to the newer KHARMA code used in v5."
+          }
+        ]
+      }
+    },
+    {
+      "name": "ipole",
+      "version": "not stated",
+      "used_for": {
+        "value": "Produce synthetic images",
+        "evidence": [
+          {
+            "loc": "Models",
+            "quote": "The GRMHD simulations are integrated with the KHARMA code (cite: Prather_kharma_2024), and the synthetic images are produced using `ipole `(cite: ipole18)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "iharm",
+      "version": "not stated",
+      "used_for": {
+        "value": "Evolve the fluid in the comparison v3 library",
+        "evidence": [
+          {
+            "loc": "v3 Illinois GRMHD Library",
+            "quote": "In addition, v3 utilized an older `iharm `code (cite: prather_iharm_2021) to evolve the fluid,"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Comrade",
+      "version": "not stated",
+      "used_for": {
+        "value": "Bayesian VLBI modeling; fit m-ring parameters to observed and synthetic data",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "we fit a parameterized $m$-ring model using the Comrade package for Bayesian modeling of VLBI observations (cite: tiede_comrade_2022)."
+          },
+          {
+            "loc": "Simulated images",
+            "quote": "Finally, we fit the $m$-ring model parameters to the resulting synthetic data using Comrade,"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VIDA",
+      "version": "not stated",
+      "used_for": {
+        "value": "Image-domain asymmetry fitting and comparison",
+        "evidence": [
+          {
+            "loc": "EHT observations",
+            "quote": "We demonstrate consistency with asymmetry fits in the image domain using variational image domain analysis (cite: tiede_vida_2022)"
+          },
+          {
+            "loc": "Comparison to Earlier Work",
+            "quote": "The EHT analysis of 2018 April 21 data used Comrade and VIDA to measure an asymmetry"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DiFX",
+      "version": "not stated",
+      "used_for": {
+        "value": "EHT-specific use acknowledged",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "We would like to thank A. Deller and W. Brisken for EHT-specific support with the use of DiFX."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Difmap",
+      "version": "not stated",
+      "used_for": {
+        "value": "CLEAN imaging results",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "We thank Martin Shepherd for the addition of extra features in the Difmap software that were used for the CLEAN imaging results presented in this paper."
+          }
+        ]
+      }
+    },
+    {
+      "name": "Extreme Science and Engineering Discovery Environment (XSEDE)",
+      "version": "not stated",
+      "used_for": {
+        "value": "Computing resources used by the work",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "This work used the Extreme Science and Engineering Discovery Environment (XSEDE), supported by NSF grant ACI-1548562, and CyVerse, supported by NSF grants DBI-0735191, DBI-1265383, and DBI-1743442."
+          },
+          {
+            "loc": "Acknowledgments",
+            "quote": "XSEDE Stampede2 resource at TACC was allocated through TG-AST170024 and TG-AST080026N."
+          }
+        ]
+      }
+    },
+    {
+      "name": "CyVerse",
+      "version": "not stated",
+      "used_for": {
+        "value": "Used by the work",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "This work used the Extreme Science and Engineering Discovery Environment (XSEDE), supported by NSF grant ACI-1548562, and CyVerse, supported by NSF grants DBI-0735191, DBI-1265383, and DBI-1743442."
+          }
+        ]
+      }
+    },
+    {
+      "name": "OSG Consortium",
+      "version": "not stated",
+      "used_for": {
+        "value": "Services used by the research",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "This research was done using services provided by the OSG Consortium,"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NASA’s Astrophysics Data System",
+      "version": "not stated",
+      "used_for": {
+        "value": "Used by the research",
+        "evidence": [
+          {
+            "loc": "Acknowledgments",
+            "quote": "This research has made use of NASA’s Astrophysics Data System."
+          }
+        ]
+      }
+    }
+  ],
+  "results_numeric": [
+    {
+      "quantity": "2017 observed a1",
+      "value": "0.41",
+      "uncertainty": "± 0.04",
+      "units": "dimensionless",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "Using this procedure to model EHT 2017, 2018, and 2021 observations yields $a_{1}= 0.41 \\pm 0.04$, $a_{1}= 0.69 \\pm 0.10$, and $a_{1}= 0.53 \\pm 0.04$ respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "2018 observed a1",
+      "value": "0.69",
+      "uncertainty": "± 0.10",
+      "units": "dimensionless",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "Using this procedure to model EHT 2017, 2018, and 2021 observations yields $a_{1}= 0.41 \\pm 0.04$, $a_{1}= 0.69 \\pm 0.10$, and $a_{1}= 0.53 \\pm 0.04$ respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "2021 observed a1",
+      "value": "0.53",
+      "uncertainty": "± 0.04",
+      "units": "dimensionless",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "Using this procedure to model EHT 2017, 2018, and 2021 observations yields $a_{1}= 0.41 \\pm 0.04$, $a_{1}= 0.69 \\pm 0.10$, and $a_{1}= 0.53 \\pm 0.04$ respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "Normalized chi2 for 2017, 2018, 2021, respectively; not reduced chi2",
+      "value": "1.9, 0.9, 2.6",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 1,
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "The normalized $\\chi^2$ is $1.9$, $0.9$, and $2.6$ in 2017, 2018, and 2021 respectively (note these are not reduced $\\chi^2$ values)."
+        }
+      ]
+    },
+    {
+      "quantity": "68th-percentile bound on |a1,UV − a1,I|",
+      "value": "less than 0.13",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "About $68\\%$ of snapshots have $|a_{1, UV} - a_{1,I}|$ less than $0.13$, and $90\\%$ have difference less than $0.22$."
+        }
+      ]
+    },
+    {
+      "quantity": "90th-percentile bound on |a1,UV − a1,I|",
+      "value": "less than 0.22",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "About $68\\%$ of snapshots have $|a_{1, UV} - a_{1,I}|$ less than $0.13$, and $90\\%$ have difference less than $0.22$."
+        }
+      ]
+    },
+    {
+      "quantity": "Mean a1 correlation timescale in SANE models",
+      "value": "≈ 70",
+      "uncertainty": "not stated",
+      "units": "t_g",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "Across the v5 model library, we find a mean correlation timescale for $a_{1}$ of $\\tau_{corr}\\approx 70\\,t_g$ for SANEs and $\\tau_{corr}\\approx 115\\,t_g$ for MADs."
+        }
+      ]
+    },
+    {
+      "quantity": "Mean a1 correlation timescale in MAD models",
+      "value": "≈ 115",
+      "uncertainty": "not stated",
+      "units": "t_g",
+      "from_step": 3,
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "Across the v5 model library, we find a mean correlation timescale for $a_{1}$ of $\\tau_{corr}\\approx 70\\,t_g$ for SANEs and $\\tau_{corr}\\approx 115\\,t_g$ for MADs."
+        }
+      ]
+    },
+    {
+      "quantity": "MAD truncated-Gaussian mu at spins −0.97, −0.9375, −0.85, −0.75, −0.5, −0.25, 0.0, 0.25, 0.5, 0.75, 0.85, 0.9375, 0.97",
+      "value": "0.653, 0.609, 0.567, 0.485, 0.382, 0.324, 0.278, 0.378, 0.525, 0.573, 0.630, 0.645, 0.675",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| Spin | $-0.97$ | $-0.9375$ | $-0.85$ | $-0.75$ | $-0.5$ | $-0.25$ | $0.0$ | $0.25$ | $0.5$ | $0.75$ | $0.85$ | $0.9375$ | $0.97$ |"
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| $\\mu$ | $0.653$ | $0.609$ | $0.567$ | $0.485$ | $0.382$ | $0.324$ | $0.278$ | $0.378$ | $0.525$ | $0.573$ | $0.630$ | $0.645$ | $0.675$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "MAD truncated-Gaussian sigma at spins −0.97, −0.9375, −0.85, −0.75, −0.5, −0.25, 0.0, 0.25, 0.5, 0.75, 0.85, 0.9375, 0.97",
+      "value": "0.203, 0.178, 0.193, 0.210, 0.188, 0.168, 0.181, 0.172, 0.201, 0.209, 0.213, 0.220, 0.198",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 4,
+      "evidence": [
+        {
+          "loc": "Table 2",
+          "quote": "| Spin | $-0.97$ | $-0.9375$ | $-0.85$ | $-0.75$ | $-0.5$ | $-0.25$ | $0.0$ | $0.25$ | $0.5$ | $0.75$ | $0.85$ | $0.9375$ | $0.97$ |"
+        },
+        {
+          "loc": "Table 2",
+          "quote": "| $\\sigma$ | $0.203$ | $0.178$ | $0.193$ | $0.210$ | $0.188$ | $0.168$ | $0.181$ | $0.172$ | $0.201$ | $0.209$ | $0.213$ | $0.220$ | $0.198$ |"
+        }
+      ]
+    },
+    {
+      "quantity": "Two-sample KS p for a*=0",
+      "value": "0.026",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "$a_{*}=0$ models have $p=0.026$ and $a_{*}=-0.25$ models have $p=0.049$ in the two-sample KS test."
+        }
+      ]
+    },
+    {
+      "quantity": "Two-sample KS p for a*=−0.25",
+      "value": "0.049",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "$a_{*}=0$ models have $p=0.026$ and $a_{*}=-0.25$ models have $p=0.049$ in the two-sample KS test."
+        }
+      ]
+    },
+    {
+      "quantity": "KS p for a*=0.25",
+      "value": "≈ 0.14",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Conclusion",
+          "quote": "Models with $a_{*}= 0.25$ are currently still plausible at $p \\approx 0.14$."
+        }
+      ]
+    },
+    {
+      "quantity": "Tentative spin-magnitude constraint",
+      "value": "|a*| ≳ 0.2",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 5,
+      "evidence": [
+        {
+          "loc": "Conclusion",
+          "quote": "Our analysis, based on image asymmetry alone, suggests that M87\\* may have $|a_{*}| \\gtrsim 0.2$"
+        }
+      ]
+    },
+    {
+      "quantity": "Forecast median zero-spin KS p as a function of N",
+      "value": "p ∼ e^(−N/1.6)",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 6,
+      "evidence": [
+        {
+          "loc": "Future EHT Observations",
+          "quote": "We find the median $p$ for spin zero drops off as $p \\sim e^{-N/1.6}$: the constraint improves exponentially as new observations are added."
+        }
+      ]
+    },
+    {
+      "quantity": "Prograde asymmetry shift for inclination shift ±5°",
+      "value": "± 0.1",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Degeneracy with Inclination",
+          "quote": "In the prograde model, we find a shift of $i\\pm5^\\circ$ corresponds to a shift in asymmetry of $a_{1}\\pm 0.1$."
+        }
+      ]
+    },
+    {
+      "quantity": "Retrograde asymmetry shift for inclination shift ±5°",
+      "value": "± 0.04",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Degeneracy with Inclination",
+          "quote": "In the retrograde model, we find a shift of $i\\pm5^\\circ$ corresponds to a shift in asymmetry of $a_{1}\\pm 0.04$."
+        }
+      ]
+    },
+    {
+      "quantity": "Reported N threshold for inclination uncertainty to dominate in retrograde models",
+      "value": "≳ 4",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Degeneracy with Inclination",
+          "quote": "This occurs when $N \\gtrsim 4$ for the retrograde models, and $N \\gtrsim 25$ for the prograde models."
+        }
+      ]
+    },
+    {
+      "quantity": "Reported N threshold for inclination uncertainty to dominate in prograde models",
+      "value": "≳ 25",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 7,
+      "evidence": [
+        {
+          "loc": "Degeneracy with Inclination",
+          "quote": "This occurs when $N \\gtrsim 4$ for the retrograde models, and $N \\gtrsim 25$ for the prograde models."
+        }
+      ]
+    },
+    {
+      "quantity": "Fast-light test-model asymmetry mean",
+      "value": "0.70",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The asymmetry had a mean and standard deviation of $0.70\\pm0.18$ in the fast light model, while it was $0.70\\pm0.19$ in the slow light model."
+        }
+      ]
+    },
+    {
+      "quantity": "Fast-light test-model asymmetry standard deviation",
+      "value": "0.18",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The asymmetry had a mean and standard deviation of $0.70\\pm0.18$ in the fast light model, while it was $0.70\\pm0.19$ in the slow light model."
+        }
+      ]
+    },
+    {
+      "quantity": "Slow-light test-model asymmetry mean",
+      "value": "0.70",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The asymmetry had a mean and standard deviation of $0.70\\pm0.18$ in the fast light model, while it was $0.70\\pm0.19$ in the slow light model."
+        }
+      ]
+    },
+    {
+      "quantity": "Slow-light test-model asymmetry standard deviation",
+      "value": "0.19",
+      "uncertainty": "not stated",
+      "units": "dimensionless",
+      "from_step": 2,
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The asymmetry had a mean and standard deviation of $0.70\\pm0.18$ in the fast light model, while it was $0.70\\pm0.19$ in the slow light model."
+        }
+      ]
+    }
+  ],
+  "findings_qualitative": [
+    {
+      "value": "MAD asymmetry is minimized at zero spin and grows with spin magnitude.",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Models with zero spin show minimum asymmetry, while models with maximum spin magnitude have mean asymmetry that is over twice as large."
+        }
+      ]
+    },
+    {
+      "value": "Current data do not significantly distinguish the higher-spin models.",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "However, the relative difference in $p$ between these highly spinning models is insignificant; all are consistent with the data at present."
+        }
+      ]
+    },
+    {
+      "value": "MAD asymmetry depends weakly on R_high and R_low; R_low=10 is mildly favored.",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "The asymmetry is only weakly dependent on $R_{\\text{high}}$ and $R_{\\text{low}}$ in MAD models."
+        },
+        {
+          "loc": "Results",
+          "quote": "While our asymmetry does not exclude $R_{\\text{high}}=10$, it does mildly favor $R_{\\text{low}}=10$."
+        }
+      ]
+    },
+    {
+      "value": "Spin–asymmetry correlation is clearer for MAD than SANE models.",
+      "evidence": [
+        {
+          "loc": "Conclusion",
+          "quote": "The spin-ring asymmetry correlation is clearer for MAD models than for SANE models"
+        }
+      ]
+    },
+    {
+      "value": "The asymmetry argument is independent of jet-power estimates.",
+      "evidence": [
+        {
+          "loc": "Conclusion",
+          "quote": "Our argument here is independent of the jet power argument, and does not rely on highly uncertain jet power estimates."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "hypothesis": "Ring brightness asymmetry depends on black hole spin.",
+      "experiment": "Measure synthetic asymmetry distributions across the MAD spin library.",
+      "result": "Zero-spin models have minimum asymmetry; maximum-spin mean asymmetry is over twice as large.",
+      "finding": "MAD ring asymmetry correlates with spin magnitude.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "Models with zero spin show minimum asymmetry, while models with maximum spin magnitude have mean asymmetry that is over twice as large."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The three observed M87* asymmetries are consistent with zero spin.",
+      "experiment": "Compare observed and MAD synthetic asymmetry distributions with KS tests.",
+      "result": "Two-sample p=0.026 for a*=0 and p=0.049 for a*=−0.25.",
+      "finding": "Low-spin models are marginally disfavored; evidence for spinning M87* is tentative.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Results",
+          "quote": "$a_{*}=0$ models have $p=0.026$ and $a_{*}=-0.25$ models have $p=0.049$ in the two-sample KS test."
+        },
+        {
+          "loc": "Conclusion",
+          "quote": "In this paper, we have presented tentative evidence for a spinning M87\\* black hole based on the asymmetry of 2017, 2018, and 2021 EHT images."
+        },
+        {
+          "loc": "Conclusion",
+          "quote": "In particular, $a_{*}= 0$ and $-0.25$ models are marginally disfavored at $p\\approx0.026$ and $0.049$ respectively."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Limited EHT Fourier coverage permits accurate ring-asymmetry measurement.",
+      "experiment": "Compare fits to synthetic EHT data with image-domain asymmetry fits.",
+      "result": "68% of differences are below 0.13; 90% are below 0.22.",
+      "finding": "Fourier-domain asymmetry provides a nearly unbiased estimate of image-domain asymmetry.",
+      "support": "supported",
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "About $68\\%$ of snapshots have $|a_{1, UV} - a_{1,I}|$ less than $0.13$, and $90\\%$ have difference less than $0.22$."
+        },
+        {
+          "loc": "Simulated images",
+          "quote": "Evidently $a_{1, UV}$ and $a_{1,I}$ are highly correlated and $a_{1, UV}$ provides a nearly unbiased estimate of $a_{1,I}$"
+        }
+      ]
+    },
+    {
+      "hypothesis": "The spin constraint depends strongly on geometric-template choices or annual coverage.",
+      "experiment": "Vary m=4 to m=3, the upper asymmetry bound from 1 to 1.5, and coverage from 2017 to 2021.",
+      "result": "Coverage and bounds have negligible effects on p-values; m=3 results largely agree.",
+      "finding": "The tested methodological changes do not materially alter the spin constraint.",
+      "support": "refuted",
+      "evidence": [
+        {
+          "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+          "quote": "while varying assumed $(u,v)$ coverage from 2017 to 2021, the assumed parameter bounds from $a_{1 \\,\\textrm{max}}=1$ to $1.5$, and the geometric model template from an $m=4$ $m$-ring to an $m=3$ one."
+        },
+        {
+          "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+          "quote": "The changes in asymmetry bounds or assumed $(u,v)$ coverage have a negligible effect on $p$-values."
+        },
+        {
+          "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+          "quote": "Finally, we tried fitting an $m=3$ ring to observations and compared to the distribution found in models at each spin and again found largely consistent results."
+        }
+      ]
+    },
+    {
+      "hypothesis": "Additional independent observations can substantially improve spin constraints.",
+      "experiment": "Repeated mock-observation sampling and KS comparisons under assumed asymmetry distributions.",
+      "result": "Median zero-spin p scales approximately as e^(−N/1.6).",
+      "finding": "Spin constraints can improve rapidly if the assumed distributions describe M87*.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Future EHT Observations",
+          "quote": "We find the median $p$ for spin zero drops off as $p \\sim e^{-N/1.6}$: the constraint improves exponentially as new observations are added."
+        },
+        {
+          "loc": "Future EHT Observations",
+          "quote": "For the second case, we assume the correct model is in our library and ask how well future observations can measure the spin."
+        }
+      ]
+    },
+    {
+      "hypothesis": "The M87* spin inference is consistent with Blandford–Znajek jet launching.",
+      "experiment": "Compare the asymmetry-based spin inference with the mechanism's spinning-black-hole requirement.",
+      "result": "Asymmetry suggests a spinning black hole.",
+      "finding": "The result is consistent with BZ; future observations could test continued spin–jet-power consistency.",
+      "support": "partially",
+      "evidence": [
+        {
+          "loc": "Testing the Blandford–Znajek Jet-Launching Mechanism",
+          "quote": "Our analysis suggests that the black hole is spinning—consistent with BZ."
+        },
+        {
+          "loc": "Testing the Blandford–Znajek Jet-Launching Mechanism",
+          "quote": "Future EHT or space-VLBI observations could test BZ by checking for continued consistency between estimates of spin and jet power."
+        }
+      ]
+    }
+  ],
+  "reasoning": [
+    {
+      "field": "why_this_data",
+      "value": "Use near-horizon total intensity as a complementary spin constraint given polarization-interpretation uncertainties.",
+      "evidence": [
+        {
+          "loc": "Introduction",
+          "quote": "However, uncertainties in interpreting polarization data (due to, e.g., Faraday rotation and year-to-year variability) motivate complementary constraints using near-horizon total intensity data."
+        }
+      ]
+    },
+    {
+      "field": "why_this_method",
+      "value": "a1 captures large-scale brightness asymmetry; a simpler template permits straightforward interpretation at reduced computational cost.",
+      "evidence": [
+        {
+          "loc": "EHT observations",
+          "quote": "Here, $a_{1}$ captures the large-scale brightness asymmetry, while $a_2$ through $a_4$ capture smaller scale turbulent structure."
+        },
+        {
+          "loc": "Comparison to Earlier Work",
+          "quote": "The more complex template from 2018 analysis allows for better fits to the 2018 data, while ours allows for more straightforward interpretation at reduced computational cost."
+        }
+      ]
+    },
+    {
+      "field": "how_they_decided_enough",
+      "value": "Downsample synthetic images beyond their approximate correlation timescale to obtain independent observations.",
+      "evidence": [
+        {
+          "loc": "Simulated images",
+          "quote": "The images are correlated on timescales $\\sim 100 \\, t_g$, so we downsample to a cadence of $125 \\, t_g$"
+        },
+        {
+          "loc": "Simulated images",
+          "quote": "to obtain independent synthetic observations."
+        }
+      ]
+    }
+  ],
+  "alternatives_considered_or_rejected": [
+    {
+      "value": "Focus on MAD models because they are more likely to pass jet-power and polarization constraints.",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "In the main text, we focus on MAD models."
+        },
+        {
+          "loc": "Models",
+          "quote": "This is motivated by evidence that MAD models are favored by M87\\* data, as they are more likely to pass jet power and polarization constraints"
+        }
+      ]
+    },
+    {
+      "value": "Reject R_high=1 as disfavored by the data.",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "We do not consider $R_{\\text{high}}=1$ because it is disfavored by the data"
+        }
+      ]
+    },
+    {
+      "value": "Prefer v5 over v3 for higher resolution, longer runs, denser spin sampling, and gamma=5/3.",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "We prefer v5 models because (1) they are run at higher resolution; (2) they are run longer and therefore provide better sampling of the asymmetry distribution;"
+        },
+        {
+          "loc": "Models",
+          "quote": "(3) they sample spin more densely (13 spins in v5 vs 5 spins in v3); and (4) v5 uses adiabatic index $\\gamma = 5/3$, while v3 uses $\\gamma = 4/3$."
+        }
+      ]
+    },
+    {
+      "value": "Clipped Gaussian fits have little effect on recovered mu.",
+      "evidence": [
+        {
+          "loc": "$m$-ring Truncation, Asymmetry Bounds, and $(u,v)$ Coverage",
+          "quote": "We tried fitting a clipped Gaussian and found this had little effect on the recovered $\\mu$ for each model."
+        }
+      ]
+    },
+    {
+      "value": "Fast-light and slow-light test-model asymmetry distributions are nearly identical.",
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "We have compared the asymmetry distribution in fast light and slow light versions of a test model and find that they are nearly identical."
+        }
+      ]
+    }
+  ],
+  "limitations_admitted": [
+    {
+      "value": "Evidence is tentative because the model library has missing physics and internal inconsistencies, the main analysis is restricted to MAD, and only three observations are independent.",
+      "evidence": [
+        {
+          "loc": "Conclusion",
+          "quote": "the relevance of the model library itself, which is known to have missing physical ingredients and internal inconsistencies"
+        },
+        {
+          "loc": "Conclusion",
+          "quote": "a restriction of the model library to magnetically arrested disk (MAD) models, which are nevertheless preferred by EHT data; and (3) only three independent observations."
+        }
+      ]
+    },
+    {
+      "value": "Tilted disks are not considered.",
+      "evidence": [
+        {
+          "loc": "Models",
+          "quote": "The spin and accretion disk angular momentum vector are assumed to be coaxial: we do not consider tilted disks."
+        }
+      ]
+    },
+    {
+      "value": "Asymmetry distributions depend on the model.",
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "Our asymmetry distributions are model-dependent."
+        }
+      ]
+    },
+    {
+      "value": "Electron distribution is assumed thermal and isotropic, with Te much less than Ti.",
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "Our models assume the electron distribution function is thermal with $T_e(\\beta, T_i; R_{\\text{high}}, R_{\\text{low}})$, $T_e \\ll T_i$, and with an isotropic $T_e$ relative to the local magnetic field."
+        }
+      ]
+    },
+    {
+      "value": "Accuracy of the ideal-fluid approximation for a Coulomb-collisionless plasma is not understood.",
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "Our models treat the accreting plasma as an ideal fluid, but the plasma is known to be Coulomb-collisionless."
+        },
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The accuracy of this approximation is not yet understood."
+        }
+      ]
+    },
+    {
+      "value": "Sensitivity to initial and boundary conditions has not been fully assessed.",
+      "evidence": [
+        {
+          "loc": "Model Uncertainty",
+          "quote": "The variation of model outcomes with respect to changes in this initial condition and boundary conditions have not yet been fully assessed."
+        }
+      ]
+    },
+    {
+      "value": "Some high-spin SANE distributions are poorly fit because the asymmetry boundary truncates much of the distribution.",
+      "evidence": [
+        {
+          "loc": "Asymmetry Fits from GRMHD Library",
+          "quote": "A small fraction of high-spin SANEs are poorly fit, as the asymmetry boundary truncates a significant portion of the asymmetry distribution."
+        }
+      ]
+    },
+    {
+      "value": "High-spin v5 SANE comparisons use shorter duration, higher cadence, and reduced image resolution.",
+      "evidence": [
+        {
+          "loc": "Other Model Sets",
+          "quote": "asymmetry measurements for v5 SANEs at $a_{*}=0.85$ and $0.97$ were calculated over a shorter duration ($t=20,000$ to $30,000 \\, t_g$ rather than $20,000$ to $50,000 \\, t_g$)"
+        },
+        {
+          "loc": "Other Model Sets",
+          "quote": "with a slightly higher cadence (every $100\\,t_g$ rather than every $125\\,t_g$), using a reduced image resolution."
+        }
+      ]
+    }
+  ],
+  "referee_caveats_inferred": [
+    "KS p-values are not posterior probabilities for spin; the tentative spin threshold depends on the selected model family.",
+    "The reported inclination-dominance thresholds appear reversed relative to the reported prograde and retrograde asymmetry shifts; verify before reusing them.",
+    "The 125 t_g synthetic cadence is only slightly longer than the reported 115 t_g MAD correlation timescale; residual dependence merits checking.",
+    "Marginalization weights and propagation of observational asymmetry uncertainties into the KS tests are unspecified.",
+    "The ALMA contribution is acknowledged through project codes, but its station-level processing cannot be reconstructed from this text."
+  ],
+  "reproducibility": [],
+  "code_released": [],
+  "missing_for_reproduction": [
+    "Public-access statements and exact locations for the EHT fit inputs and v5 synthetic images or snapshots.",
+    "Analysis scripts, package versions, and complete Comrade fitting configuration.",
+    "Synthetic-observation noise configuration and jet-axis rotation angle.",
+    "Radiative-parameter marginalization weights and observational-error treatment.",
+    "Simulation and ray-tracing configuration sufficient to regenerate the library.",
+    "Forecast repetition counts and random seeds.",
+    "Complete machine-readable per-model fit table, which is referenced but only partially supplied here."
+  ],
+  "estimated_data_volume_inferred": "Bytes cannot be estimated: image dimensions and visibility counts are absent. The main library contains 104 × 6000 images before downsampling.",
+  "score_inferred": 4,
+  "score_reason": "The statistical recipe, parameter grid, observed asymmetries, and aggregate fit table are explicit. Exact inputs, public availability, software configuration, and simulation-generation settings are insufficient for an independent end-to-end reproduction.",
+  "rediscovery_candidate": false,
+  "rediscovery_reason": "Main results are numeric, but public data availability is not stated and the EHT fitting inputs and v5 library are not sufficiently specified or located.",
+  "methods_papers": [
+    {
+      "citation": "(cite: wong_patoka_2022)",
+      "why": "PATOKA simulation and ray-tracing pipeline; additional model details."
+    },
+    {
+      "citation": "(cite: Prather_kharma_2024)",
+      "why": "KHARMA GRMHD integration code."
+    },
+    {
+      "citation": "(cite: ipole18)",
+      "why": "ipole synthetic-image generation."
+    },
+    {
+      "citation": "(cite: prather_iharm_2021)",
+      "why": "iharm code used in the v3 comparison library."
+    },
+    {
+      "citation": "(cite: moscibrodzca16)",
+      "why": "Electron-to-ion temperature prescription."
+    },
+    {
+      "citation": "(cite: tiede_comrade_2022)",
+      "why": "Comrade Bayesian modeling of VLBI observations."
+    },
+    {
+      "citation": "(cite: tiede_vida_2022)",
+      "why": "Image-domain analysis, m-ring modeling, and detailed optimization validation."
+    },
+    {
+      "citation": "(cite: johnson_photon_2020)",
+      "why": "m-ring Fourier representation and near-horizon lensing discussion."
+    },
+    {
+      "citation": "(cite: Chael_2018)",
+      "why": "Synthetic EHT sampling and realistic observational noise."
+    },
+    {
+      "citation": "(cite: Fishbone_moncrief_torus; wong_patoka_2022)",
+      "why": "Magnetized torus initial conditions."
+    },
+    {
+      "citation": "(cite: grete_2023)",
+      "why": "Implicit Large Eddy Simulation and numerical dissipation discussion."
+    }
+  ],
+  "companion_papers": [
+    {
+      "citation": "Bowden et al., in preparation",
+      "why": "v5 Illinois GRMHD library used for the main analysis."
+    },
+    {
+      "citation": "(cite: Dhruv_grmhd_survey_2024)",
+      "why": "v3 GRMHD library used for model comparisons."
+    },
+    {
+      "citation": "EHTC M87 I–VI (cite: EHTC_2019_1; EHTC_2019_2; EHTC_2019_3; EHTC_2019_4; EHTC_2019_5; EHTC_2019_6)",
+      "why": "2017 EHT observational campaign papers."
+    },
+    {
+      "citation": "EHTC M87 2018 I–II (cite: EHTC_2024_1; EHTC_2025_1)",
+      "why": "2018 EHT observational campaign papers."
+    },
+    {
+      "citation": "EHTC M87 2021 (cite: EHTC_2025_1_M87_21)",
+      "why": "2021 EHT observational campaign paper."
+    }
+  ],
+  "related_projects_or_surveys": [
+    "Event Horizon Telescope (EHT)",
+    "Illinois v5 KHARMA library",
+    "v3 Illinois GRMHD Library"
+  ]
+}

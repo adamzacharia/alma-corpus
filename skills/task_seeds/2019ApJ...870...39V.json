@@ -1,0 +1,297 @@
+{
+ "bibcode": "2019ApJ...870...39V",
+ "title": "ALMA Observations of the Molecular Gas in the Elliptical Galaxy NGC 3557",
+ "year": 2019,
+ "doi": "10.3847/1538-4357/aaef7f",
+ "arxiv_id": "1812.05385",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the distribution, kinematics, mass, stability and CO(2-1)/CO(1-0) excitation of the molecular gas in the elliptical galaxy NGC 3557, and how do they relate to the radio jet and dust?",
+ "alma_project_codes": [
+  "2015.1.00591.S",
+  "2015.1.01572.S"
+ ],
+ "data": {
+  "bands": "Band 3 (CO(1-0)); Band 6 archival CO(2-1)",
+  "arrays": "not stated",
+  "angular_resolution": "0.79\"x0.74\" PA 75 deg (CO(1-0))",
+  "sensitivity": "3mm continuum 26 uJy/beam; CO(1-0) 0.8 mJy/beam at 20 km/s"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Effective ellipticity 0.251 and effective radius 14\" from K-band photometry",
+    "evidence": [
+     {
+      "loc": "4 Fast or Slow Rotator",
+      "quote": "The K-band photometry published in (cite: pah99) gives an effective ellipticity of $\\epsilon_{e}$ = 0.251 for this object."
+     }
+    ]
+   },
+   "citation": "(cite: pah99)"
+  },
+  {
+   "what": {
+    "value": "Stellar spectroscopy used to derive lambda_Re = 0.7",
+    "evidence": [
+     {
+      "loc": "4 Fast or Slow Rotator",
+      "quote": "could be derived from the long-slit stellar spectroscopy along the major axis of this galaxy in (cite: bro07), obtaining $\\lambda_{Re}$ $=$ 0.7"
+     }
+    ]
+   },
+   "citation": "(cite: bro07)"
+  },
+  {
+   "what": {
+    "value": "Single-dish CO(2-1) mass of NGC 3557, log(MH2)=9.02",
+    "evidence": [
+     {
+      "loc": "6 Molecular Gas Properties",
+      "quote": "These numbers differ quite significantly from those reported in (cite: pra10), i.e. log(M$_{H_2}$\\[M$_\\odot$\\]) = 9.02."
+     }
+    ]
+   },
+   "citation": "(cite: pra10)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Recalibrate and combine two configurations, image",
+   "method": "Recalibrate in CASA 4.5.1, uvcontsub on lines before concat, clean with Briggs weighting; cubes at 5,10,20,40 km/s",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum fluxes and spectral index",
+   "method": "Compare 3 mm with 1 mm archival continuum on images smoothed to CO(1-0) resolution; same regions",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Molecular gas mass",
+   "method": "Integrated CO(1-0) flux converted with standard X_CO; times 1.36 for helium",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "X_CO≈2.8e20 cm^-2 (K km/s)^-1; distance 40 Mpc; helium factor 1.36"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Rotation curve fit and non-circular motions",
+   "method": "3DBAROLO tilted-ring fits to CO(1-0) and CO(2-1); model first-moment subtracted from observed in CASA",
+   "software": [
+    "3DBarolo",
+    "CASA"
+   ],
+   "key_parameters": [
+    "Data binned to 40 km/s; initial dispersion tested 10-40 km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Disk stability and SFE",
+   "method": "Ring-averaged MOM0 converted to surface density, compared to critical density from kappa and sigma",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Gas in an inclined disk with inclination from 3DBAROLO"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "CO(2-1)/CO(1-0) ratio map and excitation modeling",
+   "method": "Beam-matched moment-0 ratio with immath divided by 4; compared to LVG and PDR models",
+   "software": [
+    "CASA",
+    "LVG code (own)"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Galactic CO abundances"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Integrated CO(1-0) flux",
+   "value": "4.5",
+   "uncertainty": "0.9",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Molecular Gas Properties",
+     "quote": "The total integrated CO(1-0) flux is 4.5$\\pm$0.9 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular hydrogen mass",
+   "value": "9.0e7",
+   "uncertainty": "2.0e7",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Molecular Gas Properties",
+     "quote": "M$_{H_2}$=(9.0$\\pm$2.0)x10$^7$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total molecular mass incl. He",
+   "value": "12.2e7",
+   "uncertainty": "2.4e7",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Molecular Gas Properties",
+     "quote": "M$_{mol}$=(12.2$\\pm$2.4)x10$^7$ M$_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Central continuum flux 3mm / 1mm / spectral index",
+   "value": "23.7 mJy / 24.1 mJy / 0.02",
+   "uncertainty": "not stated",
+   "units": "mJy; dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "|  Center   |         0./0.         |    23.7    |    24.1    |      0.02      |"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA CO(2-1) integrated flux",
+   "value": "7.5",
+   "uncertainty": "0.3",
+   "units": "Jy km/s",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "6 Molecular Gas Properties",
+     "quote": "the ALMA CO(2-1) data gives an integrated flux of 7.5$\\pm$0.3 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity, inclination, PA receding side",
+   "value": "3019 km/s, 51 deg, 232 deg",
+   "uncertainty": "not stated",
+   "units": "km/s; deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Molecular Gas Kinematics",
+     "quote": "systematic velocity v$_{sys}$ of 3019 km s$^{-1}$, an inclination of 51$\\ensuremath{^\\circ}$, a PA of the major axis on the receding side of 232$\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Average CO(2-1)/CO(1-0) ratio inner 1.5 arcsec",
+   "value": "0.71",
+   "uncertainty": "0.13",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "9 Molecular Gas Excitation",
+     "quote": "The average value of the ratio in the inner 1.5 arcsec is in fact 0.71$\\pm$0.13[^12]"
+    }
+   ]
+  },
+  {
+   "quantity": "Ratio at NE peak",
+   "value": "1.15",
+   "uncertainty": "0.35",
+   "units": "dimensionless",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "9 Molecular Gas Excitation",
+     "quote": "(i.e.,$\\approx$1.15$\\pm$0.35) located 0$\\ensuremath{''}$65"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR upper limit",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "8 Disk Stability",
+     "quote": "SFR $\\leq$0.16 M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFE upper limit",
+   "value": "1.7e-9",
+   "uncertainty": "not stated",
+   "units": "1/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "8 Disk Stability",
+     "quote": "SFE $\\leq$ 1.7 10$^{-9}$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak departures from rotation (NE, SW)",
+   "value": "+61 and +28",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "7 Molecular Gas Kinematics",
+     "quote": "The peak departures from pure rotation are of +61 km s$^{-1}$ (NE Peak) and +28 km s$^{-1}$ (SW Peak)"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Whether the clean masks, cleaning thresholds and number of iterations were used",
+  "Self-calibration solution intervals and number of rounds",
+  "Line-free channels used for uvcontsub",
+  "Image size and exact velocity range/channel definitions for moment maps",
+  "3DBAROLO input parameters (rings, radial separation, masks, free/fixed parameters, initial guesses)",
+  "Moment-map masking thresholds",
+  "Exact LVG/PDR model grids and parameters",
+  "Reduction and calibration of the CO(2-1) archival data",
+  "IRAS 24 um flux value used for SFR"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters and masks",
+  "Self-cal settings",
+  "3DBAROLO parameter files",
+  "Moment masking details",
+  "LVG code"
+ ],
+ "reproducibility_score": 5,
+ "score_reason": "Data are public and the pipeline is outlined, but imaging and fitting details are incomplete.",
+ "rediscovery_reason": "Public data, numeric results (flux, mass, ratios, rotation parameters), and an outlined recipe.",
+ "source_card": "cards/2019ApJ...870...39V/sonnet/card.md"
+}

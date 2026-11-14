@@ -1,0 +1,242 @@
+{
+ "bibcode": "2018MNRAS.475.5296D",
+ "title": "Rings and gaps in the disc around Elias 24 revealed by ALMA",
+ "year": 2018,
+ "doi": "10.1093/mnras/sty181",
+ "arxiv_id": "1801.05812",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "What are the gap and ring structures in the Elias 24 1.3 mm continuum, and can an embedded migrating, accreting planet in SPH gas/dust simulations reproduce them?",
+ "alma_project_codes": [
+  "2013.1.00498.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "not stated",
+  "angular_resolution": "0.2'' x 0.17'' (P.A. 62 deg), 28 x 24 au",
+  "sensitivity": "rms 81.7 uJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Disc dust model, stellar properties, dust mass 0.0017 Msun, rc=127 au, p=0.9, flaring index 1.03, geometry i=24, PA=50",
+    "evidence": [
+     {
+      "loc": "3.2.1 Models for the disc surface density structure",
+      "quote": "where $M_{\\mathrm{d}}=0.0017 M_{\\odot}$ is the dust disc mass, $r_{\\mathrm{c}}=127$ au is a characteristic scaling radius and $p=0.9$ is the gradient parameter."
+     }
+    ]
+   },
+   "citation": "(cite: andrews10a)"
+  },
+  {
+   "what": {
+    "value": "Stellar properties: K5, 1 Msun, 4250 K",
+    "evidence": [
+     {
+      "loc": "3.1.2 Radiative transfer and synthetic ALMA observations",
+      "quote": "an effective fixed temperature of 4250 K (cite: wilking05a)"
+     }
+    ]
+   },
+   "citation": "(cite: wilking05a)"
+  },
+  {
+   "what": {
+    "value": "SMA 880 um flux used for spectral index",
+    "evidence": [
+     {
+      "loc": "2.1 Continuum emission",
+      "quote": "Comparing the measured total flux with $880\\, \\mu m$ SMA emission maps, we obtain a spectral index of $\\sim 2.27\\pm 0.01$"
+     }
+    ]
+   },
+   "citation": "(cite: andrews07b; andrews10a)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and measure flux",
+   "method": "CASA clean after self-calibration; total flux summed over emission above 2 rms",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Derive disc geometry",
+   "method": "Elliptical apertures; minimise intensity dispersion",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Radial profile and ring locations",
+   "method": "Azimuthal elliptical annulus photometry; fit sum of three Gaussians",
+   "software": [],
+   "key_parameters": [
+    "annuli width a quarter of linear resolution"
+   ],
+   "assumptions": [
+    "distance 139 pc"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "SPH gas/dust simulations with embedded planet",
+   "method": "PHANTOM one-fluid dust, 1 mm grains, sink-particle planet free to migrate and accrete; 10^6 particles; snapshot chosen by eye",
+   "software": [
+    "PHANTOM"
+   ],
+   "key_parameters": [
+    "alpha_AV=0.1 (alpha_SS~0.003); dust-to-gas 0.1; H_in=0.075 au; r 1-180 au"
+   ],
+   "assumptions": [
+    "vertically isothermal; initial dust-to-gas ratio 0.1 for mm grains"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Radiative transfer and synthetic observations",
+   "method": "RADMC-3D dust temperature then ray tracing with 10^8 photons; Fourier transform, sample at ALMA uv, image like data with CASA simulator",
+   "software": [
+    "RADMC-3D",
+    "CASA"
+   ],
+   "key_parameters": [
+    "grain size 0.005 um-1 mm, m=3.5; star R=4.2 Rsun, T=4250 K"
+   ],
+   "assumptions": [
+    "star only heating source; inclination/PA from observations"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total 1.3 mm flux",
+   "value": "368.1",
+   "uncertainty": "0.9",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Continuum emission",
+     "quote": "The measured total flux is $368.1 \\pm0.9$ mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectral index 0.88-1.3 mm",
+   "value": "2.27",
+   "uncertainty": "0.01",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Continuum emission",
+     "quote": "we obtain a spectral index of $\\sim 2.27\\pm 0.01$"
+    }
+   ]
+  },
+  {
+   "quantity": "Inclination",
+   "value": "28.5",
+   "uncertainty": "3.8",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 Continuum emission",
+     "quote": "$i=28.5^{\\circ} \\pm 3.8^{\\circ}$ and $\\mathrm{P.A.}=46.7^{\\circ}\\pm 6.5^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle",
+   "value": "46.7",
+   "uncertainty": "6.5",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.1 Continuum emission",
+     "quote": "$i=28.5^{\\circ} \\pm 3.8^{\\circ}$ and $\\mathrm{P.A.}=46.7^{\\circ}\\pm 6.5^{\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dark ring radii",
+   "value": "0.47 and 0.71 (65.3 and 98.7 au)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.1 Continuum emission",
+     "quote": "the dark rings are located at $0.47''$ and $0.71''$ while the bright rings have a semi-major axis of $0.58''$ and $0.87''$"
+    }
+   ]
+  },
+  {
+   "quantity": "Planet mass and location in best model",
+   "value": "0.7 MJ at 61.7 au",
+   "uncertainty": "not stated",
+   "units": "MJ, au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.3.1 Disc structure",
+     "quote": "At this stage of the simulation, the planet is at 61.7 au from the central star and its mass is $0.7\\, \\mathrm{M_{\\mathrm{J}}}$."
+    }
+   ]
+  },
+  {
+   "quantity": "Mean residual in gap/outer edge (0.4-1'')",
+   "value": "5.1",
+   "uncertainty": "0.4",
+   "units": "% of observed flux",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Comparison with ALMA observations",
+     "quote": "the mean value of the absolute values of the residuals is $\\left(5.1\\pm 0.4\\right)$% of the observed fluxes"
+    }
+   ]
+  },
+  {
+   "quantity": "Model total flux",
+   "value": "309.2",
+   "uncertainty": "1.1",
+   "units": "mJy",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.4 Comparison with ALMA observations",
+     "quote": "The measured total flux of the disc from the simulated model map is $309.2 \\pm1.1$ mJy"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum spectral window selection for imaging",
+  "Self-calibration solution intervals and number of iterations",
+  "clean threshold, masks, image size",
+  "Dust opacity table details beyond reference to Andrews et al. 2010",
+  "SPH initial planet/disc parameter grid explored and selection of best snapshot (fit by eye)",
+  "Number of azimuthal/vertical RADMC-3D grid cells and CASA simulator noise settings"
+ ],
+ "missing_for_reproduction": [
+  "Simulation input files and parameter grid",
+  "Self-calibration details",
+  "Selected snapshot and RT setup details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Imaging and profile measurement reproducible from archival data; the hydrodynamic modelling is hard to reproduce exactly.",
+ "rediscovery_reason": "Public data, stated imaging recipe, numeric ring locations and fluxes.",
+ "source_card": "cards/2018MNRAS.475.5296D/sonnet/card.md"
+}

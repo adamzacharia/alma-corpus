@@ -1,0 +1,432 @@
+{
+ "bibcode": "2024A&A...688A..30B",
+ "title": "Emergence of high-mass stars in complex fiber networks (EMERGE). II. The need for data combination in ALMA observations",
+ "year": 2024,
+ "doi": "10.1051/0004-6361/202348920",
+ "arxiv_id": "2405.09290",
+ "fields": [
+  "star_formation",
+  "milky_way_ism",
+  "instrumentation"
+ ],
+ "question": "How strongly do interferometric filtering and the missing short-spacing information bias the recovered flux, peak, FWHM and radial profile of simulated cores and filaments in ALMA continuum data, and how much do 12m+7m, Feather, MACF and 12m+IRAM-30m combinations fix it?",
+ "alma_project_codes": [
+  "2019.1.00641.S"
+ ],
+ "data": {
+  "bands": "Band 3 (3 mm); simulations at 100 GHz",
+  "arrays": "ALMA 12m, ACA-7m and Total Power simulated separately",
+  "angular_resolution": "12m C43-1: 3.38 arcsec; ACA-7m: 12.5 arcsec; TP: 62.9 arcsec (at 100 GHz, from the Technical Handbook)",
+  "sensitivity": "noisy runs use tsys-atm thermal noise with PWV = 1.8 mm (Band 3); most runs noise-free"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "ALMA Cycle 10 Technical Handbook values for resolution and MRS of 12m, 7m and TP",
+    "evidence": [
+     {
+      "loc": "ALMA simulations (footnote)",
+      "quote": "All the values listed here are taken from the"
+     }
+    ]
+   },
+   "citation": "ALMA Cycle 10 Technical Handbook (cite: 2023Cortes)"
+  },
+  {
+   "what": {
+    "value": "dust emissivity frequency dependence beta=1.6 typical for Orion filaments and cores",
+    "evidence": [
+     {
+      "loc": "Source brightness",
+      "quote": "typical for filaments and cores in Orion (cite: Sadavoy2016; Mason2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Sadavoy2016; Mason2020)"
+  },
+  {
+   "what": {
+    "value": "OMC-3 data reduction, imaging and combination products (12m + IRAM-30m Feather and MACF)",
+    "evidence": [
+     {
+      "loc": "Comparisons with real ALMA observations",
+      "quote": "The observations, the data reduction and imaging procedures, and the data combination technique used are presented in (cite: 2024Hacar)."
+     }
+    ]
+   },
+   "citation": "(cite: 2024Hacar)"
+  },
+  {
+   "what": {
+    "value": "identification of the 23 small-scale filaments (fibers) in OMC-3",
+    "evidence": [
+     {
+      "loc": "Comparisons with real ALMA observations",
+      "quote": "(see Paper III for additional details)"
+     }
+    ]
+   },
+   "citation": "Paper III (cite: 2024Socci)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "quantify use of data combination in ALMA archive",
+   "method": "Query ALMA Science Archive with ALminer for ISM mosaic GOUS in Cycles 6-9 and count 12m, 7m and TP requests per year",
+   "software": [
+    "ALminer"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "selecting mosaics implies extended emission larger than the primary beam and so beyond the MRS"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "build idealized sky models",
+   "method": "Generate noise-free model images of Gaussian cores, infinite Gaussian filaments, finite elongated Gaussians and Plummer-like filaments, scaled to a fixed peak intensity",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "FWHM = 5, 10, 15, 20, 30, 40, 50, 70 arcsec for Gaussian cores and filaments",
+    "finite filaments: FWHM fixed at 15 arcsec, length varied to give aspect ratios from 1 to infinity"
+   ],
+   "assumptions": [
+    "dust emissivity k_nu = 0.01 cm2/g at 300 GHz, i.e. 0.002 cm2/g at 100 GHz, with beta = 1.6",
+    "mean molecular weight mu_H2 = 2.8 and constant Tdust = 15 K (T = 10 K for the CMF test)"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "simulate ALMA 12m and ACA-7m visibilities",
+   "method": "Run simobserve on the model image with hexagonal Nyquist mosaics: 12m 67 pointings over 3.5 arcmin, 2 x 30 s per pointing; 7m 33 pointings over 4.5 arcmin, 30 s x 14 repetitions over 3 days",
+   "software": [
+    "CASA",
+    "simobserve"
+   ],
+   "key_parameters": [
+    "CASA v.6.5.2",
+    "thermalnoise = tsys-atm for the noisy runs, PWV = 1.8 mm"
+   ],
+   "assumptions": [
+    "integration time ratio C43-1 : ACA-7m = 1 : 7 to match sensitivities"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "image the simulated visibilities",
+   "method": "tclean in mfs mode with Briggs robust 0.5, cleaning threshold from a dirty image, impbcor at cutoff 0.85, then imsmooth to a symmetric beam",
+   "software": [
+    "CASA",
+    "tclean",
+    "impbcor",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "cleaning threshold = 10% of the dirty-image emission peak, niter = 1e8",
+    "pixel 0.5 arcsec (12m), 2 arcsec (7m); final beams 4.5 and 16 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "simulate single-dish images",
+   "method": "Convolve the model image with imsmooth to 62.9 arcsec (ALMA TP) or 25 arcsec (IRAM-30m at 100 GHz); add radiometer-equation noise for noisy SD runs",
+   "software": [
+    "CASA",
+    "imsmooth"
+   ],
+   "key_parameters": [
+    "TP resolution 62.9 arcsec; IRAM-30m resolution 25 arcsec"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 6,
+   "goal": "combine interferometric and SD data",
+   "method": "12m+7m via concat then joint tclean; add TP with CASA feather (sdfactor 1.0) or MACF; replace 7m+TP by an IRAM-30m image with MACF for the large-SD test",
+   "software": [
+    "CASA",
+    "concat",
+    "feather",
+    "tclean"
+   ],
+   "key_parameters": [
+    "concat weights 1 (12m) and 0.116 (7m)",
+    "feather sdfactor = 1.0"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 7,
+   "goal": "measure recovered flux, peak and FWHM",
+   "method": "Extract a radial profile from a cut along the x axis of each image, integrate it for total flux, fit a Gaussian for peak and FWHM, and compare with the input model and the beam-convolved expected FWHM",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "expected observed FWHM = input FWHM convolved with the beam in quadrature"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 8,
+   "goal": "analyse the interferometric PSF",
+   "method": "Compare u-v coverage and PSF images and radial cuts of 12m, 7m and 12m+7m simulations against an ideal Gaussian PSF",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 9,
+   "goal": "test sensitivity requirement of SD data",
+   "method": "Compute the SD to interferometer integration time ratio from the Mason and Brogan formula, simulate IRAM-30m noise at 1, 5 and 10 times the prediction for a FWHM = 30 arcsec core and combine with MACF",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "tau_SD about 4 tau_int for 12m C43-1 in Cycle 9 and IRAM-30m"
+   ],
+   "assumptions": [
+    "same spectral setup, antenna efficiencies and system temperature"
+   ]
+  },
+  {
+   "order": 10,
+   "goal": "compare with real OMC-3 ALMA data",
+   "method": "Extract radial cuts perpendicular to each of 23 fibers in 12m-alone, 12m+IRAM-30m Feather and MACF images and compare flux, peak and FWHM normalised to the 12m+IRAM-30m MACF reference with the simulation trends",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "23 small-scale filaments (fibers) in OMC-3"
+   ],
+   "assumptions": [
+    "12m + IRAM-30m MACF map taken as the true emission distribution"
+   ]
+  },
+  {
+   "order": 11,
+   "goal": "test bias on the core mass function",
+   "method": "Draw 500 core masses with Salpeter-like slope 1.35 in 0.5-10 Msun, assign FWHM uniformly in 5-30 arcsec, convert to column density and flux, simulate ALMA 12m, 7m and TP, then extract peak, FWHM and mass for the recovered CMF",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "homogeneous dust temperature T = 10 K; D = 414 pc"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "fraction of GOUS requesting only 12m among ISM mosaic GOUS, Cycles 6-9",
+   "value": ">40%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data combination with ALMA",
+     "quote": "of GOUS requesting only 12m observations (blue squares)"
+    }
+   ]
+  },
+  {
+   "quantity": "fraction of GOUS requesting 12m+7m+TP",
+   "value": "consistently below ~50%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Data combination with ALMA",
+     "quote": "the number of GOUS requesting 12m+7m+TP (red circles) in the last years has been consistently below"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12m alone flux recovery for Gaussian cores near MRS (12m)",
+   "value": "up to 20%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Quantifying the effects of the short-spacing information in simple geometries",
+     "quote": "the ALMA 12m alone is only able to recover only up to 20"
+    }
+   ]
+  },
+  {
+   "quantity": "ALMA 12m + 7m flux recovery for FWHM = 30 arcsec core (profile peak)",
+   "value": "~80%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Observing isolated cores",
+     "quote": "On the other hand, the ALMA 12m + 7m array (orange line) recovers higher flux values"
+    }
+   ]
+  },
+  {
+   "quantity": "flux recovery of Feather and MACF for Gaussian cores",
+   "value": ">=80% independent of core size",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Quantifying the effects of the short-spacing information in simple geometries",
+     "quote": "independent of the core size."
+    }
+   ]
+  },
+  {
+   "quantity": "recovered FWHM of cores with size about MRS(12m) in 12m alone",
+   "value": "~15 arcsec (almost a factor of 2 below input)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Quantifying the effects of the short-spacing information in simple geometries",
+     "quote": "the estimated FWHM is around 15 arcsec, almost a factor of 2 lower than"
+    }
+   ]
+  },
+  {
+   "quantity": "flux loss of 12m alone for Gaussian filaments near MRS(12m)",
+   "value": "almost 95%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Effects on elongated geometries",
+     "quote": "the ALMA 12m alone is losing almost 95"
+    }
+   ]
+  },
+  {
+   "quantity": "recovered FWHM of Gaussian filaments near MRS(12m) in 12m alone",
+   "value": "~10 arcsec (almost a factor of 3 below reference)",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 7,
+   "evidence": [
+    {
+     "loc": "Effects on elongated geometries",
+     "quote": "the estimated FWHM is around 10 arcsec, almost a factor of 3 lower than the reference value."
+    }
+   ]
+  },
+  {
+   "quantity": "12m + 7m combined PSF sidelobe near 6 arcsec",
+   "value": "~7% of peak",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 8,
+   "evidence": [
+    {
+     "loc": "Point-Spread-Function (PSF) analysis",
+     "quote": "with an estimated peak intensity around 7"
+    }
+   ]
+  },
+  {
+   "quantity": "tolerance of combined image to SD noise",
+   "value": "stable within 10-20% up to 5x (and 10x) the theoretical SD noise",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 9,
+   "evidence": [
+    {
+     "loc": "On the SD sensitivity for data combination",
+     "quote": "remain stable (within 10-20%)."
+    }
+   ]
+  },
+  {
+   "quantity": "accuracy of ALMA 12m + IRAM-30m MACF versus model values",
+   "value": "within less than ~10%",
+   "uncertainty": "not stated",
+   "units": "percent",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "Data combination with a large SD",
+     "quote": "with respect to the actual model values"
+    }
+   ]
+  },
+  {
+   "quantity": "scatter of real OMC-3 12m-alone results about the filament prediction",
+   "value": "factor of ~2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 10,
+   "evidence": [
+    {
+     "loc": "Comparisons with real ALMA observations",
+     "quote": "show a significant scatter of a factor of"
+    }
+   ]
+  },
+  {
+   "quantity": "CMF slope recovered with ALMA 12m alone (input alpha = 1.35)",
+   "value": "alpha = -1.18",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Observing the core mass function",
+     "quote": "The CMF observed using only the ALMA 12m alone (blue histogram) shows a shallower distribution"
+    }
+   ]
+  },
+  {
+   "quantity": "truncation of 12m-alone FWHM distribution in the CMF test",
+   "value": "~18 arcsec",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 11,
+   "evidence": [
+    {
+     "loc": "Observing the core mass function",
+     "quote": "The distribution recovered by the ALMA 12m alone (blue histogram) is truncated at"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "simobserve antenna configuration list names for C43-1 and the ACA, mapsize/pointing spacing values, and spectral/continuum bandwidth of the simulated channel",
+  "tclean gridder (mosaic), imsize per array, deconvolver and whether multiscale or any mask was used",
+  "how the model image units (mJy/pix, 0.25 arcsec pixel) were converted to Jy/pixel at the clean pixel scales",
+  "how the 12m (3.5 arcmin) and 7m (4.5 arcmin) mosaics map onto the 6.25 arcmin field, and the primary-beam cutoff handling at mosaic edges for the profile cuts",
+  "how the flux fraction was integrated (aperture, cut length, treatment of negative sidelobes) and the Gaussian-fit routine, initial guesses and fit window",
+  "where along the image the radial cut was taken for filaments and elongated cores, and whether cuts were averaged",
+  "random seed and number of noise realisations for the noisy runs",
+  "how the Feather and MACF products were scaled for SD flux calibration beyond sdfactor = 1.0, and the startmodel scaling in MACF",
+  "the TP simulation beyond imsmooth to 62.9 arcsec (no TP-specific simobserve setup is given)",
+  "CMF sample: core positions in the field, the mass estimator used on recovered cores and the core-finding method",
+  "OMC-3 real data: fiber identification list, radial-cut spacing and length, fitting procedure and the exact IRAM-30m/ALMA reduction parameters (all deferred to Paper I and Paper III)"
+ ],
+ "missing_for_reproduction": [
+  "Antenna configuration files, imsize, gridder and deconvolver settings for tclean",
+  "Profile cut definition, flux integration and fitting details",
+  "Random seeds for noisy runs",
+  "OMC-3 reduction, fiber catalogue and IRAM-30m data (deferred to Paper I and Paper III)"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "On a 1-5 scale: the simulation chain (CASA 6.5.2, array setups, imaging and combination parameters) is given in good detail, but several tclean and measurement settings are missing and the real-data part depends on other papers.",
+ "rediscovery_reason": "The core results come from synthetic observations that need no archive data and have numeric answers; the real OMC-3 part depends on Paper I processing.",
+ "source_card": "cards/2024A%26A...688A..30B/sonnet/card.md"
+}

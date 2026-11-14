@@ -1,0 +1,845 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.483.2014H",
+  "title": "Modelling the abundance structure of isocyanic acid (HNCO) towards the low-mass solar type protostar IRAS 16293-2422",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Hernández-Gómez, Antonio",
+  "n_authors": 8,
+  "arxiv_id": "1811.00766",
+  "doi": "10.1093/mnras/sty2971",
+  "heldout": false,
+  "archival_class_ours": "archival only",
+  "alma_projects_obscore": [
+   "2013.1.00278.S"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2.4 ALMA observations",
+    "quote": "These interferometric\nobservations, not sensible to the extended emission, were\nonly used to determine some physical parameters of the\nhot corino component."
+   }
+  ],
+  "science": {
+   "fields": [
+    "astrochemistry",
+    "star_formation"
+   ],
+   "targets": [
+    {
+     "name": "IRAS 16293-2422",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "141 pc",
+      "evidence": [
+       {
+        "loc": "1 INTRODUCTION",
+        "quote": "IRAS 16293-2422 (I16293 hereafter), a Class 0 protostar\nlocated at 141 [+] − [30] 21 [pc] [(][Dzib] [et] [al.] [2018][)]"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Dzib et al. 2018",
+      "evidence": [
+       {
+        "loc": "1 INTRODUCTION",
+        "quote": "IRAS 16293-2422 (I16293 hereafter), a Class 0 protostar\nlocated at 141 [+] − [30] 21 [pc] [(][Dzib] [et] [al.] [2018][)]"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "What is the HNCO abundance structure toward IRAS 16293-2422, modelled with non-LTE radiative transfer using new HNCO-H2 collisional rate coefficients, and how does it compare with a chemical model?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "In this work, we model HNCO spectral line profiles toward the low-mass solar"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2013.1.00278.S",
+     "evidence": [
+      {
+       "loc": "ACKNOWLEDGEMENTS",
+       "quote": "This paper makes use of the following ALMA data:\nADS/JAO.ALMA#2013.1.00278.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "329.15-362.90 GHz, ~0.2 km/s channel spacing",
+    "evidence": [
+     {
+      "loc": "2.4 ALMA observations",
+      "quote": "reported ALMA observations in\nthe frequency range [329.15, 362.90] GHz with a ∼0.2 km\ns [−][1] channel spacing"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "HNCO",
+     "transition": "15(0,15)-14(0,14)",
+     "rest_frequency": "329664.367 MHz",
+     "evidence": [
+      {
+       "loc": "Table A1",
+       "quote": "329664.367 15 0 15 − 14 0 14 126.58"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "~0.5 arcsec",
+    "evidence": [
+     {
+      "loc": "2.4 ALMA observations",
+      "quote": "a ∼0.5 [′′] spatial resolution"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PILS survey (Jørgensen et al. 2016)",
+    "evidence": [
+     {
+      "loc": "2.4 ALMA observations",
+      "quote": "PILS, the ALMA Protostellar Interferometric Line Survey\n(Jørgensen et al. 2016)"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "IRAM-30m / JCMT (TIMASSS)",
+     "provided": {
+      "value": "Single-dish spectra 80-280 GHz and 328-366 GHz; new IRAM 2017 high-resolution HNCO 5-4 data",
+      "evidence": [
+       {
+        "loc": "2.1 IRAM-30m and JCMT-15m observations",
+        "quote": "conducted with the IRAM-30m\ntelescope (Granada, Spain) between 80 and 280 GHz and\nthe JCMT-15m telescope (Mauna Kea, Hawaii) between\n328 and 366 GHz"
+       }
+      ]
+     }
+    },
+    {
+     "name": "APEX",
+     "provided": {
+      "value": "Spectra 265-323.5 GHz and 372-462 GHz",
+      "evidence": [
+       {
+        "loc": "2.2 APEX observations",
+        "quote": "The observations of I16293 in the frequency range 265–\n323.5 GHz were performed with the APEX telescope"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Herschel-HIFI (CHESS)",
+     "provided": {
+      "value": "Spectral scans in bands 3b and 4a (860-1060 GHz)",
+      "evidence": [
+       {
+        "loc": "2.3 Herschel-HIFI observations",
+        "quote": "The data used in this article are part of a full\nspectral coverage of bands 3b (860-960 GHz ; Obs. Id\n1342192330) and 4a (950-1060 GHz ; Obs. Id 1342191619)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "HNCO-H2 collisional rate coefficients (ortho and para)",
+      "evidence": [
+       {
+        "loc": "3 RESULTS",
+        "quote": "The HNCO collisional coefficients are taken from Sahnoun\net al. (2018)"
+       }
+      ]
+     },
+     "citation": "Sahnoun et al. (2018)"
+    },
+    {
+     "what": {
+      "value": "1D temperature and density structure of the envelope",
+      "evidence": [
+       {
+        "loc": "3.2 The physical model",
+        "quote": "we have used the 1D physical structure\nderived by Crimier et al. (2010), fixing thereby the main H 2\ndensity for all components"
+       }
+      ]
+     },
+     "citation": "Crimier et al. (2010)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA observations and reduction come from the PILS survey",
+      "evidence": [
+       {
+        "loc": "2.4 ALMA observations",
+        "quote": "PILS, the ALMA Protostellar Interferometric Line Survey\n(Jørgensen et al. 2016), reported ALMA observations"
+       }
+      ]
+     },
+     "from_reference": "Jørgensen et al. (2016)"
+    },
+    {
+     "what": {
+      "value": "TIMASSS observation details",
+      "evidence": [
+       {
+        "loc": "2.1 IRAM-30m and JCMT-15m observations",
+        "quote": "For more details\non these observations, see Caux et al. (2011)."
+       }
+      ]
+     },
+     "from_reference": "Caux et al. (2011)"
+    },
+    {
+     "what": {
+      "value": "Continuum SED model, to be published",
+      "evidence": [
+       {
+        "loc": "3.2 The physical model",
+        "quote": "derived the expected\ncontinuum from ∼1 mm to ∼70 µm (∼150 GHz to ∼5 THz)\n(Bottinelli et al., in prep.)."
+       }
+      ]
+     },
+     "from_reference": "Bottinelli et al., in prep."
+    }
+   ],
+   "unstated_but_needed": [
+    "ALMA calibration and imaging details, and how spectra were extracted from the PILS cubes (aperture, position)",
+    "MCMC priors, ranges and convergence criteria in CASSIS",
+    "Predicted continuum SED values used for the lines",
+    "Nautilus input files and the exact protostellar-phase set-up",
+    "Which lines were fitted jointly and how upper limits were weighted"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Identify HNCO lines",
+    "method": {
+     "value": "Identify HNCO transitions in all datasets using CASSIS and CDMS",
+     "evidence": [
+      {
+       "loc": "3 RESULTS",
+       "quote": "a software developed at IRAP-UPS/CNRS which makes use of the CDMS database"
+      }
+     ]
+    },
+    "software": [
+     "CASSIS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Fit non-LTE three-component model",
+    "method": {
+     "value": "RADEX in CASSIS with three components, fitted with MCMC chi2 minimisation",
+     "evidence": [
+      {
+       "loc": "3.3 Model fitting",
+       "quote": "We used the Monte Carlo Markov Chain (MCMC)\nmethod inside CASSIS (Hastings 1970; Guan et al. 2006)\nwhich explores the space of parameters to find the best\nsolution by means of χ [2] minimisation"
+      }
+     ]
+    },
+    "software": [
+     "CASSIS",
+     "RADEX"
+    ],
+    "key_parameters": [
+     {
+      "value": "10 free parameters out of 18; 1,000 models run",
+      "evidence": [
+       {
+        "loc": "3.3 Model fitting",
+        "quote": "running 1,000 models\nwith these 10 free parameters randomly chosen"
+       }
+      ]
+     },
+     {
+      "value": "VLSR fixed 4.1 km/s for envelopes; cold FWHM fixed 0.4 km/s; sizes fixed 0.5 and 100 arcsec for hot corino and cold envelope",
+      "evidence": [
+       {
+        "loc": "3.3 Model fitting",
+        "quote": "we\nfixed V LSR of the lines for the warm and cold envelopes\nto 4.1 km s [−][1]"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Source A alone is responsible for the hot corino emission; ortho-to-para H2 = 3 for hot corino; para-H2 dominant in envelope",
+      "evidence": [
+       {
+        "loc": "3.3 Model fitting",
+        "quote": "For the hot corino, we adopted an ortho-to-para\nH 2 ratio of 3"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "MCMC chi2 minimisation; priors not stated",
+     "evidence": [
+      {
+       "loc": "3.3 Model fitting",
+       "quote": "which explores the space of parameters to find the best solution by means of"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Predicted continuum checked against observations to about 15%; comparison with Green coefficients",
+     "evidence": [
+      {
+       "loc": "3.2 The physical model",
+       "quote": "We have checked that the predicted continuum level is consistent with the observations\n\nwithin an error of about 15%."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Compare with chemical model",
+    "method": {
+     "value": "Nautilus gas-grain model for parental cloud then protostellar envelope",
+     "evidence": [
+      {
+       "loc": "4.4 Chemical modelling with Nautilus",
+       "quote": "we computed the\nabundance profiles using the Nautilus chemical code."
+      }
+     ]
+    },
+    "software": [
+     "Nautilus"
+    ],
+    "key_parameters": [
+     {
+      "value": "Best: Av = 4, zeta = 8.0e-17 s-1",
+      "evidence": [
+       {
+        "loc": "4.4 Chemical modelling with Nautilus",
+        "quote": "The abundance\nprofiles that best reproduces the observations are obtained\nwith A v = 4 and ζ = 8.0 × 10 [−][17] s [−][1] ."
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared with abundances from the radiative transfer model",
+     "evidence": [
+      {
+       "loc": "4.5 Results of the Nautilus chemical model for HNCO",
+       "quote": "we observe that the abundance profile, although not\nconstant, is in good agreement with the abundances derived\ndirectly from the observations with our radiative transfer\nmodel."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASSIS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Line identification and RADEX MCMC modelling",
+     "evidence": [
+      {
+       "loc": "3.3 Model fitting",
+       "quote": "We used the Monte Carlo Markov Chain (MCMC) method inside CASSIS (Hastings 1970; Guan et al. 2006)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "RADEX",
+    "version": "not stated",
+    "used_for": {
+     "value": "Non-LTE radiative transfer",
+     "evidence": [
+      {
+       "loc": "3 RESULTS",
+       "quote": "we used the statistical equilibrium non-LTE radiative transfer\ncode RADEX (van der Tak et al. 2007)"
+      }
+     ]
+    }
+   },
+   {
+    "name": "Nautilus",
+    "version": "not stated",
+    "used_for": {
+     "value": "Chemical modelling of HNCO abundance profile",
+     "evidence": [
+      {
+       "loc": "4.4 Chemical modelling with Nautilus",
+       "quote": "Nautilus is a three phase gas-grain chemical code"
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS/CLASS90",
+    "version": "not stated",
+    "used_for": {
+     "value": "IRAM and APEX data reduction",
+     "evidence": [
+      {
+       "loc": "2.2 APEX observations",
+       "quote": "the data reduction was performed using the\nGILDAS/CLASS90 [2] package."
+      }
+     ]
+    }
+   },
+   {
+    "name": "HIPE",
+    "version": "not stated",
+    "used_for": {
+     "value": "HIFI data processing",
+     "evidence": [
+      {
+       "loc": "2.3 Herschel-HIFI observations",
+       "quote": "Using the HIPE\n(Ott 2010) “flagTool” task, we removed the spurs"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Hot corino N(HNCO)",
+    "value": "1.9e16",
+    "uncertainty": "0.4e16",
+    "units": "cm-2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Hot corino (1.9 ± 0.4) × 10 [16] 190 ± 50 6.2 ± 0.7 2.9 ± 0.1 0.5 [∗] 3×10 [8] (7.1 ± 0.6) × 10 [−][8]"
+     }
+    ]
+   },
+   {
+    "quantity": "Hot corino Tkin",
+    "value": "190",
+    "uncertainty": "50",
+    "units": "K",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Hot corino (1.9 ± 0.4) × 10 [16] 190 ± 50 6.2 ± 0.7 2.9 ± 0.1 0.5 [∗] 3×10 [8] (7.1 ± 0.6) × 10 [−][8]"
+     }
+    ]
+   },
+   {
+    "quantity": "Hot corino abundance X(HNCO)",
+    "value": "7.1e-8",
+    "uncertainty": "0.6e-8",
+    "units": "relative to H2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "4.1 HNCO physical parameters",
+      "quote": "abundance relative to H 2 of\n(7.1 ± 0.6) × 10 [−][8] for a fixed size of 0.5 [′′]"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm envelope abundance",
+    "value": "1.8e-11",
+    "uncertainty": "0.4e-11",
+    "units": "relative to H2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Warm envelope (2.5 ± 0.5) × 10 [13] 31 ± 5 4.9 ± 0.8 4.1 [∗] 15.6 ± 2.4 5×10 [7] (1.8 ± 0.4) × 10 [−][11]"
+     }
+    ]
+   },
+   {
+    "quantity": "Warm envelope size",
+    "value": "15.6",
+    "uncertainty": "2.4",
+    "units": "arcsec",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Warm envelope (2.5 ± 0.5) × 10 [13] 31 ± 5 4.9 ± 0.8 4.1 [∗] 15.6 ± 2.4 5×10 [7] (1.8 ± 0.4) × 10 [−][11]"
+     }
+    ]
+   },
+   {
+    "quantity": "Cold envelope abundance",
+    "value": "9.8e-12",
+    "uncertainty": "0.3e-12",
+    "units": "relative to H2",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Cold envelope (5.3 ± 0.6) × 10 [12] 8.7 ± 0.8 0.4 [∗] 4.1 [∗] 100.0 [∗] 3×10 [6] (9.8 ± 0.3) × 10 [−][12]"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-matching protostar age in Nautilus",
+    "value": "5.8e4",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "4.5 Results of the Nautilus chemical model for HNCO",
+      "quote": "If we take an age of about 5.8×10 [4]\n\nyears"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Ka=0,1 lines are well reproduced; Ka=2 lines are not",
+    "evidence": [
+     {
+      "loc": "5 CONCLUSIONS",
+      "quote": "While the transitions on the _K_ a = 0, 1 bands are\nwell reproduced, the transitions belonging to the upper\nrotational band _K_ a = 2 levels are not."
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "HNCO line profiles are explained by three physical components",
+    "experiment": "Non-LTE RADEX modelling with MCMC of single-dish and ALMA lines",
+    "result": "Hot corino 190 K, warm envelope 31 K, cold envelope 8.7 K with the abundances in Table 1",
+    "finding": "Emission arises from hot corino, warm envelope and cold outer envelope",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We find that the lines profiles toward IRAS\n16293−2422 are very well reproduced if we assume that the HNCO emission arises\nfrom a compact, dense and hot physical component"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Radiative-transfer abundances agree with chemical model predictions",
+    "experiment": "Nautilus two-step models of cloud and envelope",
+    "result": "Younger ages agree better; the age depends strongly on initial parameters",
+    "finding": "HNCO cannot serve as a reliable chemical clock",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "5 CONCLUSIONS",
+      "quote": "However, HNCO cannot be used as a reliable chemical clock\ndue to the high dependence on the initial parameters in our\nsimulations."
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "HNCO is not always in LTE, and H2 collision rates are needed rather than He rates",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "A non-LTE radiative transfer\napproach is necessary to properly interpret the line profiles, and accurate collisional\nrate coefficients are needed."
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Observations cannot constrain sizes of the hot corino and extended envelope",
+     "evidence": [
+      {
+       "loc": "3.3 Model fitting",
+       "quote": "study cannot constrain the size of the hot corino, nor that\nof the extended envelope"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "ALMA data play a minor role, and the hot corino size is fixed, so its abundance is degenerate with that size",
+    "Uncertainties from MCMC with 1,000 models may be underestimated",
+    "Ka=2 lines are poorly fit"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "ALMA PILS data are cited with project 2013.1.00278.S; the other data are described as survey or telescope data",
+    "evidence": [
+     {
+      "loc": "ACKNOWLEDGEMENTS",
+      "quote": "This paper makes use of the following ALMA data:\nADS/JAO.ALMA#2013.1.00278.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Continuum SED model (in prep.)",
+    "MCMC priors and settings",
+    "ALMA spectrum extraction details"
+   ],
+   "estimated_data_volume_inferred": "~100 GB (PILS ALMA data plus small single-dish spectra)",
+   "score_inferred": 3,
+   "score_reason": "The model set-up is mostly described, but several inputs and the fit settings are missing.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "The ALMA part is minor and the work depends on multi-facility data and unpublished inputs."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Sahnoun et al. (2018)",
+     "why": "HNCO-H2 collisional rate coefficients"
+    },
+    {
+     "citation": "Jørgensen et al. (2016)",
+     "why": "PILS ALMA survey"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Crimier et al. (2010)",
+     "why": "1D physical structure of I16293"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PILS",
+    "TIMASSS",
+    "CHESS"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-8637eb26495f2988c37ad2e15e77ca1f",
+  "batch_id": "msgbatch_01LHB5XbVgqRG7wRXLZoxNAj",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T20:24:41",
+  "usage": {
+   "input_tokens": 35430,
+   "output_tokens": 6532,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.068696,
+  "text_source": "pdf",
+  "extractor": "1",
+  "text_quality": "fair",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 45,
+  "quotes_ok": 45,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 7,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 71,
+   "stated": 33,
+   "rate": 0.465
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T16:55:26",
+  "custom_id": "sonnet-repair-claude-code",
+  "fixed": [
+   {
+    "path": "analysis_steps[0].method.evidence[0]",
+    "old": "To identify and model the relevant HNCO spectral lines, we\nused CASSIS (Caux et al. 2011)",
+    "new": "a software developed at IRAP-UPS/CNRS which makes use of the CDMS database"
+   },
+   {
+    "path": "software[0].used_for.evidence[0]",
+    "old": "we\nused CASSIS (Caux et al. 2011), a software developed at\nIRAP-UPS/CNRS",
+    "new": "We used the Monte Carlo Markov Chain (MCMC) method inside CASSIS (Hastings 1970; Guan et al. 2006)"
+   },
+   {
+    "path": "analysis_steps[1].fitting.evidence[0]",
+    "old": null,
+    "new": "which explores the space of parameters to find the best solution by means of"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,238 @@
+{
+ "bibcode": "2017ApJ...845..170B",
+ "title": "ALMA Observations of Circumnuclear Disks in Early-type Galaxies: <SUP>12</SUP>CO(2-1) and Continuum Properties",
+ "year": 2017,
+ "doi": "10.3847/1538-4357/aa8266",
+ "arxiv_id": "1707.08229",
+ "fields": [
+  "nearby_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the molecular gas (CO(2-1)) and continuum properties of circumnuclear dust disks in nearby early-type galaxies, and which are good candidates for ALMA black hole mass measurements?",
+ "alma_project_codes": [
+  "2013.1.00229.S",
+  "2013.1.00828.S"
+ ],
+ "data": {
+  "bands": "Band 6",
+  "arrays": "not stated",
+  "angular_resolution": "~0.2'' to 0.5''; average ~50 pc",
+  "sensitivity": "~400 uJy/beam per 20 km/s channel; ~40 uJy/beam continuum"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Luminosity distances from surface brightness fluctuations",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Luminosity distance and uncertainties as measured from surface brightness fluctuations by (cite: mei00) and (cite: ton01)"
+     }
+    ]
+   },
+   "citation": "(cite: mei00); (cite: ton01); (cite: mei05)"
+  },
+  {
+   "what": {
+    "value": "Central stellar velocity dispersions",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Central stellar velocity dispersion from the HyperLeda database (cite: mak14)"
+     }
+    ]
+   },
+   "citation": "(cite: mak14)"
+  },
+  {
+   "what": {
+    "value": "R21 ~0.7 and alpha_CO = 3.1 from nearby late-type galaxies",
+    "evidence": [
+     {
+      "loc": "3.1.2 Surface Brightness and Mass Profiles",
+      "quote": "We convert our integrated CO(2$-$1) flux measurements into H$_2$ masses using average $R_{21}$ and $\\alpha_{\\rm CO}$ values from a sample of nearby, late-type galaxies (cite: san13)"
+     }
+    ]
+   },
+   "citation": "(cite: san13)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and separate nuclear/extended components",
+   "method": "Image continuum with natural and Briggs weighting, model and subtract point source in uv plane, re-image residual; reduce point-source flux until extended profile is monotonic",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Continuum spectral indices",
+   "method": "Image each continuum spw separately, subtract nucleus in uv plane, fit power law S_nu ~ nu^alpha at ~236 GHz",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Line profile fitting and kinematic maps",
+   "method": "Gauss-Hermite fits per Voronoi-binned spectrum; uncertainties via 500 Monte Carlo resamplings",
+   "software": [
+    "Voronoi binning"
+   ],
+   "key_parameters": [
+    "|h3,h4|<0.35; |h5,h6|<0.25 for NGC 1332 and NGC 3258"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Gas masses and column densities",
+   "method": "M_H2 = alpha_CO L'_CO with L'_CO from integrated flux; R21 ~0.7, alpha_CO = 3.1, helium factor 0.36",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "R21 ~0.7; alpha_CO = 3.1; f_He = 0.36; disk thickness h ~0.1 R_d"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Kinemetry, inclination and enclosed mass",
+   "method": "Kinemetry on v_LOS maps; i = arccos(q_min); v_c ~ k1/sin i; enclosed mass within 2b or 5b",
+   "software": [
+    "kinemetry"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "thin disks"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Toomre Q stability",
+   "method": "Q = c_s kappa/(pi G Sigma) with c_s replaced by minimum observed sigma_LOS and v_c from k1/sin i",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total gas mass NGC 1332",
+   "value": "7.3",
+   "uncertainty": "1.4",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 1332 | 0.40              | 256         | 39.94 (3.99)      | 1000                     | 880           | 12.1 (2.3)                       | 7.3 (1.4)                       | 71                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Total gas mass NGC 6861",
+   "value": "25.6",
+   "uncertainty": "8.9",
+   "units": "1e7 Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| NGC 6861 | 0.62              | 784         | 93.93 (9.39)      | 1040                     | 980           | 42.6 (14.8)                      | 25.6 (8.9)                      | 19                    |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear continuum flux NGC 4374",
+   "value": "126.0",
+   "uncertainty": "+13.1/-16.1",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| NGC 4374 | 12:25:03.745 | 12:53:13.11    | 53.8                  | 126.0 $\\left(^{+13.1}_{-16.1}\\right)$ | $-$0.21 (0.02)     |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear continuum flux IC 4296",
+   "value": "212.1",
+   "uncertainty": "+21.4/-22.0",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Table 5",
+     "quote": "| IC 4296  | 13:36:39.040 | $-$33:57:57.18 | 164.4                 | 212.1 $\\left(^{+21.4}_{-22.0}\\right)$ | 0.10 (0.02)        |"
+    }
+   ]
+  },
+  {
+   "quantity": "Nuclear spectral index range",
+   "value": "-0.44 to 1.62",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2 Continuum Spectral Fitting",
+     "quote": "The unresolved 1.3 mm continuum spectral indices $\\alpha_{\\rm nuc}$ of our Cycle 2 sample range from $-0.44$ to 1.62"
+    }
+   ]
+  },
+  {
+   "quantity": "CO absorption integrated intensity NGC 4374",
+   "value": "19.4",
+   "uncertainty": "2.5",
+   "units": "K km/s",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.2 CO-Faint Galaxies",
+     "quote": "integrated absorption intensities $W_{\\rm CO(2-1)}$ of $(19.4\\pm2.5)$ and $(44.3\\pm1.4)$ K km s$^{-1}$ for NGC 4374 and IC 4296"
+    }
+   ]
+  },
+  {
+   "quantity": "Enclosed mass range",
+   "value": "1.5-8.8",
+   "uncertainty": "not stated",
+   "units": "1e9 Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1.3 Kinematic Properties",
+     "quote": "which span a relatively broad range of $\\sim(1.5-8.8)\\times10^9$ $M_\\ensuremath{\\odot}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Image sizes, cell sizes and clean masks/thresholds per target",
+  "Line-free channels used for uv continuum subtraction",
+  "Self-calibration solution intervals and reference models",
+  "Exact CASA version assigned to each dataset",
+  "Voronoi target S/N for binning",
+  "Kinemetry fitting settings (radial grid, harmonic orders)",
+  "Initial guesses for uv-plane point-source modeling",
+  "Which CASA task options were used (e.g. uvcontsub order, tclean parameters)"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (masks, thresholds, image sizes)",
+  "Line-free channel selection",
+  "Self-calibration solints",
+  "Voronoi binning S/N target",
+  "Kinemetry settings"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and clear recipe, but many imaging and fitting parameters are unstated.",
+ "rediscovery_reason": "Public data, numeric tables of masses, fluxes and spectral indices; recipe largely described though some parameters missing.",
+ "source_card": "cards/2017ApJ...845..170B/sonnet/card.md"
+}

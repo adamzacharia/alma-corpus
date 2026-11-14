@@ -1,0 +1,973 @@
+{
+ "bibcode": "2023MNRAS.521.1045R",
+ "title": "Regular rotation and low turbulence in a diverse sample of z ∼ 4.5 galaxies observed with ALMA",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad530",
+ "arxiv_id": "2302.03049",
+ "fields": [
+  "high_z_galaxies",
+  "agn_and_quasars"
+ ],
+ "question": "What are the gas kinematics, rotation velocities, velocity dispersions, V/sigma ratios, and disc geometries of a diverse sample of highly resolved z ~ 4.5 galaxies observed in [CII] 158 um with ALMA?",
+ "alma_project_codes": [
+  "2017.1.00127.S",
+  "2017.1.00394.S",
+  "2017.1.01052.S",
+  "2015.1.00330.S",
+  "2018.1.00001.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "0.15\" x 0.13\" (AzTEC1), 0.20\" x 0.17\" (BRI1335-0417), 0.24\" x 0.16\" (J081740), 0.18\" x 0.16\" (SGP38326-1, SGP38326-2)",
+  "sensitivity": "[CII] RMS: 0.41 mJy/beam (AzTEC1), 0.43 mJy/beam (BRI1335-0417), 0.35 mJy/beam (J081740), 0.19 mJy/beam (SGP38326)"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "CO(J=4-3), CO(J=2-1), and CO(J=5-4) luminosities and SFRs for AzTEC1, BRI1335-0417, J081740, and SGP38326",
+    "evidence": [
+     {
+      "loc": "Data",
+      "quote": "For AzTEC 1, BRI1335-0417, SGP38326 (both galaxies), we use the J $= 4-3$, $2-1$ and $5-4$ transitions from (cite: yun15; jones16; oteo16), respectively."
+     },
+     {
+      "loc": "Data",
+      "quote": "For AzTEC 1, BRI1335-0417, SGP38326 (both galaxies), we use the J $= 4-3$, $2-1$ and $5-4$ transitions from (cite: yun15; jones16; oteo16), respectively."
+     }
+    ]
+   },
+   "citation": "(cite: yun15; lu18; jones16; neeleman20; oteo16)"
+  },
+  {
+   "what": {
+    "value": "Simulated mergers and discs from ALMA mock observations of SERRA simulation for PVsplit comparison",
+    "evidence": [
+     {
+      "loc": "Mergers or rotating discs?",
+      "quote": "We compare our galaxies with simulated galaxies known to be mergers or discs taken from (cite: rizzo22)."
+     },
+     {
+      "loc": "Mergers or rotating discs?",
+      "quote": "These are ALMA mock observations of galaxies from the `SERRA` simulation (cite: pallottini22)."
+     }
+    ]
+   },
+   "citation": "(cite: rizzo22; pallottini22)"
+  },
+  {
+   "what": {
+    "value": "Nine local disc galaxies and nine mergers from the WHISP survey for PVsplit comparison",
+    "evidence": [
+     {
+      "loc": "Mergers or rotating discs?",
+      "quote": "We also show nine randomly selected local disc galaxies from the WHISP survey (cite: vanderhulst01)."
+     },
+     {
+      "loc": "Mergers or rotating discs?",
+      "quote": "From the same survey we show nine mergers, minor and major, that have been classified as mergers by both the presence of companions in the datacubes (cite: swaters02; noordermeer05) and HI morphology (cite: holwerda11)."
+     }
+    ]
+   },
+   "citation": "(cite: vanderhulst01; swaters02; noordermeer05; holwerda11)"
+  },
+  {
+   "what": {
+    "value": "Literature compilation of velocity dispersions and V/sigma at z ~ 4-5 and in the Local Universe",
+    "evidence": [
+     {
+      "loc": "Rotation velocities and velocity dispersions",
+      "quote": "We see that our sample is similar to other galaxies with dynamically cold discs at similar redshift (cite: hodge12; rizzo20; rizzo21; lelli21)."
+     },
+     {
+      "loc": "Rotation velocities and velocity dispersions",
+      "quote": "Additionally, we can see a significant evolution in velocity dispersions when compared to HI and CO measurements of Local Universe spiral galaxies (cite: bacchini19; bacchini20)."
+     }
+    ]
+   },
+   "citation": "(cite: hodge12; rizzo20; rizzo21; lelli21; bacchini19; bacchini20)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Search archive, calibrate visibilities, and image [CII] cubes and dust continuum",
+   "method": "Query ALMA archive with astroquery and cross-reference with NED; calibrate raw visibilities with original archival scripts in CASA; concatenate two SGP38326 datasets with split and concat; subtract continuum with uvcontsub (linear) or imcontsub; image continuum (MFS) and line cubes with tclean down to 3x RMS (or 1.5x RMS for SGP38326)",
+   "software": [
+    "astroquery",
+    "CASA",
+    "tclean",
+    "uvcontsub",
+    "imcontsub",
+    "split",
+    "concat"
+   ],
+   "key_parameters": [
+    "Cleaning threshold: 3x RMS (AzTEC1, BRI1335-0417, J081740), 1.5x RMS (SGP38326)",
+    "Briggs robust = 2 (cubes: AzTEC1, J081740, SGP38326; continuum: J081740, SGP38326) and robust = 0.5 (cube: BRI1335-0417; continuum: AzTEC1, BRI1335-0417)",
+    "Cell size: 0.02\"/px (AzTEC1, SGP38326), 0.03\"/px (BRI1335-0417, J081740); uvtaper: 0.1\" for SGP38326"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Create 3D source masks, integrated [CII] intensity maps, and pseudo 4-sigma contours",
+   "method": "Run 3D source finder SEARCH in 3DBAROLO using SNRCUT and GROWTHCUT to mask cubes and collapse velocity channels into total intensity maps; use CANNUBI to compute pixel-by-pixel SNR maps and define pseudo 4-sigma contours (NT = 4); search SGP38326 cube to confirm companion emitters SGP38326-3 and SGP38326-4",
+   "software": [
+    "3DBAROLO",
+    "CANNUBI"
+   ],
+   "key_parameters": [
+    "SNRCUT = 3.5, 3.0, 3.5, 3.0, 3.5 and GROWTHCUT = 2.5, 2.5, 2.5, 2.0, 3.0 for AzTEC1, BRI1335-0417, J081740, SGP38326-1, SGP38326-2",
+    "NT = 4 for pseudo 4-sigma contour"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Generate mock galaxy cubes and validate CANNUBI disc geometry recovery",
+   "method": "Create 48 mock galaxy cubes using GALMOD in 3DBAROLO with exponential radial surface density, Gaussian vertical profile, empirical rotation curve, constant dispersion, synthetic beam convolution, and convolved random noise; fit total flux maps with CANNUBI MCMC to test recovery of centre, radial extent, inclination, and thickness",
+   "software": [
+    "3DBAROLO",
+    "CANNUBI",
+    "emcee"
+   ],
+   "key_parameters": [
+    "Mock grid: R = 3 kpc, V_t = 250 km s^-1, R_t = 1 kpc, beta = 0.4, xi = 2.5, sigma = 50 km s^-1, 3 or 5 resolution elements per side, SNR = 3 or 5, i = 30, 50, 70 deg, Z0 = 0, 0.2, 0.8, 1.6 kpc"
+   ],
+   "assumptions": [
+    "Circular orbits in tilted-ring model, radial exponential surface density profile, Gaussian vertical density profile, constant velocity dispersion of 50 km s^-1"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Estimate disc geometry (centre, radial extent, inclination, morphological PA, and thickness) of the observed galaxies",
+   "method": "Run CANNUBI on the [CII] total flux maps assuming a razor-thin disc (Z0 = 0) for the fiducial models; also run CANNUBI in full 3D cube mode with PA fixed to morphological PA and inclination and thickness (Z0) free to test thick-disc effects",
+   "software": [
+    "CANNUBI",
+    "emcee",
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "Fiducial run: Z0 = 0 (razor-thin disc), minimising on total flux map; Thick-disc run: full 3D cube mode, PA fixed to morphological PA, inclination and Z0 free"
+   ],
+   "assumptions": [
+    "Razor-thin disc (Z0 = 0) for fiducial models; constant disc thickness with radius for thick-disc test"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Fit 3D tilted-ring kinematic models to derive rotation curves and velocity dispersion profiles",
+   "method": "Fit 3D tilted-ring models to the masked [CII] datacubes using 3DBAROLO with azimuthal surface density normalisation; derive kinematic PA using 2-stage regularisation (0th-order polynomial), then fix geometry (X0, Y0, INC, Z0=0, PA=PA_kin, except free PA for SGP38326-1) and fit VROT and VDISP in independent radial rings; repeat fit with thick-disc INC and Z0 values to assess systematic uncertainty",
+   "software": [
+    "3DBAROLO"
+   ],
+   "key_parameters": [
+    "NRADII = 4, 5, 4, 5, 3 and RADSEP = 0.11\", 0.15\", 0.13\", 0.13\", 0.12\" for AzTEC1, BRI1335-0417, J081740, SGP38326-1, SGP38326-2",
+    "LINEAR = 0.43 (AzTEC1, BRI1335-0417), 0.51 (J081740, SGP38326-1, SGP38326-2); SIDE = approaching (BRI1335-0417), both (all others)"
+   ],
+   "assumptions": [
+    "Circular orbits with no large-scale radial or vertical motions; razor-thin disc (Z0 = 0) for fiducial fit; azimuthal surface density normalisation"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Classify galaxies as rotating discs vs mergers using the PVsplit diagram",
+   "method": "Measure asymmetry parameters Pmajor, PV, and PR from major-axis p-v diagrams; compare in 3D PVsplit space against SERRA mock galaxies and WHISP local discs/mergers; compute linear SVM dividing plane with sklearn",
+   "software": [
+    "sklearn"
+   ],
+   "key_parameters": [
+    "SVM dividing plane: -0.63 P_major - 0.27 P_V + 2.78 P_R - 2.72 = 0"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "[CII] integrated flux (AzTEC1)",
+   "value": "25.5",
+   "uncertainty": "+1.0/-1.2",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "| AzTEC 1 $^{\\mathrm{a}}$ | 09:59:42.86 | +02:29:38.18 | 4.3419 | 6.86 | 30 | 0.15 $\\times$ 0.13 | 0.41 | 25.5 $^{+1.0}_{-1.2}$ | 1935 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (BRI1335-0417)",
+   "value": "38.8",
+   "uncertainty": "+1.2/-0.9",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "| BRI1335-0417 $^{\\mathrm{b}}$ | 13:38:03.42 | -04:32:34.98 | 4.4071 | 6.82 | 15 | 0.20 $\\times$ 0.17 | 0.43 | 38.8 $^{+1.2}_{-0.9}$ | 3629 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (J081740)",
+   "value": "6.5",
+   "uncertainty": "+0.4/-0.6",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "| J081740 $^{\\mathrm{c}}$ | 08:17:40.87 | +13:51:38.23 | 4.2603 | 6.92 | 26 | 0.24 $\\times$ 0.16 | 0.35 | 6.5 $^{+0.4}_{-0.6}$ | 5988 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (SGP38326-1)",
+   "value": "7.9",
+   "uncertainty": "+0.4/-0.5",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "| SGP38326-1 $^{\\mathrm{d}}$ | 00:03:07.23 | -33:02:50.61 | 4.4238 | 6.80 | 26 | 0.18 $\\times$ 0.16\\* | 0.19 | 7.9 $^{+0.4}_{-0.5}$ | 16844 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (SGP38326-2)",
+   "value": "1.9",
+   "uncertainty": "+0.1/-0.1",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Data",
+     "quote": "| SGP38326-2 $^{\\mathrm{d}}$ | 00:03:07.12 | -33:02:51.15 | 4.4274 | 6.80 | 26 | 0.18 $\\times$ 0.16\\* | 0.19 | 1.9 $^{+0.1}_{-0.1}$ | 16844 |"
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (SGP38326-3)",
+   "value": "0.35",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Presentation of the data",
+     "quote": "We estimated the [CII] flux of SGP38326-3 and SGP38326-4 to be 0.35 and 0.16 Jy km s$^{-1}$, respectively, and we did not detect dust continuum in SGP38326-4 down to 0.06 mJy/beam, which is the value of the average noise in the image."
+    }
+   ]
+  },
+  {
+   "quantity": "[CII] integrated flux (SGP38326-4)",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "Jy km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Presentation of the data",
+     "quote": "We estimated the [CII] flux of SGP38326-3 and SGP38326-4 to be 0.35 and 0.16 Jy km s$^{-1}$, respectively, and we did not detect dust continuum in SGP38326-4 down to 0.06 mJy/beam, which is the value of the average noise in the image."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radial extent (AzTEC1)",
+   "value": "4.4",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AzTEC1 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $251 \\hspace{1mm} ^{+8}_{-8}$ | $289 \\hspace{1mm} ^{+2}_{-2}$ | $39 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, thin-disc model (AzTEC1)",
+   "value": "39",
+   "uncertainty": "+5/-6",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AzTEC1 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $251 \\hspace{1mm} ^{+8}_{-8}$ | $289 \\hspace{1mm} ^{+2}_{-2}$ | $39 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological PA (AzTEC1)",
+   "value": "251",
+   "uncertainty": "+8/-8",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AzTEC1 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $251 \\hspace{1mm} ^{+8}_{-8}$ | $289 \\hspace{1mm} ^{+2}_{-2}$ | $39 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic PA (AzTEC1)",
+   "value": "289",
+   "uncertainty": "+2/-2",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| AzTEC1 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $251 \\hspace{1mm} ^{+8}_{-8}$ | $289 \\hspace{1mm} ^{+2}_{-2}$ | $39 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radial extent (BRI1335-0417)",
+   "value": "5.8",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BRI1335-0417 | $5.8 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $8 \\hspace{1mm} ^{+7}_{-7}$ | $10 \\hspace{1mm} ^{+9}_{-9}$ | $42 \\hspace{1mm} ^{+3}_{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, thin-disc model (BRI1335-0417)",
+   "value": "42",
+   "uncertainty": "+3/-4",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BRI1335-0417 | $5.8 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $8 \\hspace{1mm} ^{+7}_{-7}$ | $10 \\hspace{1mm} ^{+9}_{-9}$ | $42 \\hspace{1mm} ^{+3}_{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological PA (BRI1335-0417)",
+   "value": "8",
+   "uncertainty": "+7/-7",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BRI1335-0417 | $5.8 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $8 \\hspace{1mm} ^{+7}_{-7}$ | $10 \\hspace{1mm} ^{+9}_{-9}$ | $42 \\hspace{1mm} ^{+3}_{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic PA (BRI1335-0417)",
+   "value": "10",
+   "uncertainty": "+9/-9",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BRI1335-0417 | $5.8 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $8 \\hspace{1mm} ^{+7}_{-7}$ | $10 \\hspace{1mm} ^{+9}_{-9}$ | $42 \\hspace{1mm} ^{+3}_{-4}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radial extent (J081740)",
+   "value": "4.4",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| J081740 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $86 \\hspace{1mm} ^{+6}_{-6}$ | $99 \\hspace{1mm} ^{+1}_{-1}$ | $43 \\hspace{1mm} ^{+3}_{-5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, thin-disc model (J081740)",
+   "value": "43",
+   "uncertainty": "+3/-5",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| J081740 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $86 \\hspace{1mm} ^{+6}_{-6}$ | $99 \\hspace{1mm} ^{+1}_{-1}$ | $43 \\hspace{1mm} ^{+3}_{-5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological PA (J081740)",
+   "value": "86",
+   "uncertainty": "+6/-6",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| J081740 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $86 \\hspace{1mm} ^{+6}_{-6}$ | $99 \\hspace{1mm} ^{+1}_{-1}$ | $43 \\hspace{1mm} ^{+3}_{-5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic PA (J081740)",
+   "value": "99",
+   "uncertainty": "+1/-1",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| J081740 | $4.4 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $86 \\hspace{1mm} ^{+6}_{-6}$ | $99 \\hspace{1mm} ^{+1}_{-1}$ | $43 \\hspace{1mm} ^{+3}_{-5}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radial extent (SGP38326-1)",
+   "value": "4.1",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-1 | $4.1 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $71 \\hspace{1mm} ^{+9}_{-9}$ | \\*$86 \\hspace{1mm} ^{+5}_{-5}$ | $42 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, thin-disc model (SGP38326-1)",
+   "value": "42",
+   "uncertainty": "+5/-6",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-1 | $4.1 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $71 \\hspace{1mm} ^{+9}_{-9}$ | \\*$86 \\hspace{1mm} ^{+5}_{-5}$ | $42 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological PA (SGP38326-1)",
+   "value": "71",
+   "uncertainty": "+9/-9",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-1 | $4.1 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $71 \\hspace{1mm} ^{+9}_{-9}$ | \\*$86 \\hspace{1mm} ^{+5}_{-5}$ | $42 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic PA (SGP38326-1)",
+   "value": "86",
+   "uncertainty": "+5/-5",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-1 | $4.1 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $71 \\hspace{1mm} ^{+9}_{-9}$ | \\*$86 \\hspace{1mm} ^{+5}_{-5}$ | $42 \\hspace{1mm} ^{+5}_{-6}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc radial extent (SGP38326-2)",
+   "value": "2.5",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-2 | $2.5 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $83 \\hspace{1mm} ^{+18}_{-18}$ | $119 \\hspace{1mm} ^{+8}_{-8}$ | $41 \\hspace{1mm} ^{+10}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, thin-disc model (SGP38326-2)",
+   "value": "41",
+   "uncertainty": "+10/-14",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-2 | $2.5 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $83 \\hspace{1mm} ^{+18}_{-18}$ | $119 \\hspace{1mm} ^{+8}_{-8}$ | $41 \\hspace{1mm} ^{+10}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Morphological PA (SGP38326-2)",
+   "value": "83",
+   "uncertainty": "+18/-18",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-2 | $2.5 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $83 \\hspace{1mm} ^{+18}_{-18}$ | $119 \\hspace{1mm} ^{+8}_{-8}$ | $41 \\hspace{1mm} ^{+10}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Kinematic PA (SGP38326-2)",
+   "value": "119",
+   "uncertainty": "+8/-8",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| SGP38326-2 | $2.5 \\hspace{0.5mm} \\pm \\hspace{0.5mm} 0.1$ | $83 \\hspace{1mm} ^{+18}_{-18}$ | $119 \\hspace{1mm} ^{+8}_{-8}$ | $41 \\hspace{1mm} ^{+10}_{-14}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotation velocity V_rot,max (BRI1335-0417)",
+   "value": "198",
+   "uncertainty": "+17/-16",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External rotation velocity V_rot,ext (BRI1335-0417)",
+   "value": "125",
+   "uncertainty": "+27/-26",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity dispersion sigma_bar (BRI1335-0417)",
+   "value": "75",
+   "uncertainty": "+10/-10",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External velocity dispersion sigma_ext (BRI1335-0417)",
+   "value": "57",
+   "uncertainty": "+11/-11",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_max / sigma_bar (BRI1335-0417)",
+   "value": "2.7",
+   "uncertainty": "0.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_rot,ext / sigma_ext (BRI1335-0417)",
+   "value": "2.2",
+   "uncertainty": "0.6",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| BRI1335-0417 | 198$^{+17}_{-16}$ | 125$^{+27}_{-26}$ | 75$^{+10}_{-10}$ | 57$^{+11}_{-11}$ | 2.7 $\\pm$ 0.4 | 2.2 $\\pm$ 0.6 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotation velocity V_rot,max (J081740)",
+   "value": "277",
+   "uncertainty": "+40/-38",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External rotation velocity V_rot,ext (J081740)",
+   "value": "249",
+   "uncertainty": "+50/-53",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity dispersion sigma_bar (J081740)",
+   "value": "50",
+   "uncertainty": "+13/-13",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External velocity dispersion sigma_ext (J081740)",
+   "value": "33",
+   "uncertainty": "+13/-13",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_max / sigma_bar (J081740)",
+   "value": "5.5",
+   "uncertainty": "1.7",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_rot,ext / sigma_ext (J081740)",
+   "value": "7.6",
+   "uncertainty": "3.4",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| J081740 | 277$^{+40}_{-38}$ | 249$^{+50}_{-53}$ | 50$^{+13}_{-13}$ | 33$^{+13}_{-13}$ | 5.5 $\\pm$ 1.7 | 7.6 $\\pm$ 3.4 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotation velocity V_rot,max (SGP38326-1)",
+   "value": "562",
+   "uncertainty": "+24/-26",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External rotation velocity V_rot,ext (SGP38326-1)",
+   "value": "548",
+   "uncertainty": "+61/-71",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity dispersion sigma_bar (SGP38326-1)",
+   "value": "58",
+   "uncertainty": "+12/-12",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External velocity dispersion sigma_ext (SGP38326-1)",
+   "value": "46",
+   "uncertainty": "+11/-9",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_max / sigma_bar (SGP38326-1)",
+   "value": "9.8",
+   "uncertainty": "2.0",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_rot,ext / sigma_ext (SGP38326-1)",
+   "value": "11.8",
+   "uncertainty": "2.9",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-1 | 562$^{+24}_{-26}$ | 548$^{+61}_{-71}$ | 58$^{+12}_{-12}$ | 46$^{+11}_{-9}$ | 9.8 $\\pm$ 2.0 | 11.8 $\\pm$ 2.9 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum rotation velocity V_rot,max (SGP38326-2)",
+   "value": "417",
+   "uncertainty": "+51/-66",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External rotation velocity V_rot,ext (SGP38326-2)",
+   "value": "409",
+   "uncertainty": "+39/-48",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Mean velocity dispersion sigma_bar (SGP38326-2)",
+   "value": "49",
+   "uncertainty": "+16/-14",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "External velocity dispersion sigma_ext (SGP38326-2)",
+   "value": "40",
+   "uncertainty": "+13/-11",
+   "units": "km s^-1",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_max / sigma_bar (SGP38326-2)",
+   "value": "8.3",
+   "uncertainty": "2.8",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "V_rot,ext / sigma_ext (SGP38326-2)",
+   "value": "10.2",
+   "uncertainty": "3.2",
+   "units": "dimensionless",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Rotation velocities and velocity dispersions",
+     "quote": "| SGP38326-2 | 417$^{+51}_{-66}$ | 409$^{+39}_{-48}$ | 49$^{+16}_{-14}$ | 40$^{+13}_{-11}$ | 8.3 $\\pm$ 2.8 | 10.2 $\\pm$ 3.2 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Disc thickness Z0, 3D cube fit (BRI1335-0417)",
+   "value": "1.6",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, 3D thick-disc fit (BRI1335-0417)",
+   "value": "58",
+   "uncertainty": "+8/-5",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc thickness Z0, 3D cube fit (J081740)",
+   "value": "1.3",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, 3D thick-disc fit (J081740)",
+   "value": "69",
+   "uncertainty": "+11/-7",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc thickness Z0, 3D cube fit (SGP38326-1)",
+   "value": "1.2",
+   "uncertainty": "0.2",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, 3D thick-disc fit (SGP38326-1)",
+   "value": "56",
+   "uncertainty": "+13/-9",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc thickness Z0, 3D cube fit (SGP38326-2)",
+   "value": "0.5",
+   "uncertainty": "0.1",
+   "units": "kpc",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  },
+  {
+   "quantity": "Disc inclination, 3D thick-disc fit (SGP38326-2)",
+   "value": "44",
+   "uncertainty": "+3/-4",
+   "units": "deg",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Disc thickness",
+     "quote": "Our results are the following: for BRI1335-0417 we obtain a disc thickness of 1.6 $\\pm$ 0.1 kpc with a disc inclination of $58^{+8}_{-5}$ degrees; for J081740 we obtain a disc thickness of 1.3 $\\pm$ 0.1 kpc with a disc inclination of $69^{+11}_{-7}$ degrees; for SGP38326-1 we obtain a disc thickness of 1.2 $\\pm$ 0.2 kpc with a disc inclination of $56^{+13}_{-9}$ degrees; for SGP38326-2 we obtain a disc thickness of 0.5 $\\pm$ 0.1 kpc with a disc inclination of $44^{+3}_{-4}$ degrees."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact CASA versions originally used to run the archival calibration scripts for each of the five ALMA project codes",
+  "Exact frequency/channel ranges selected as line-free for uvcontsub, imcontsub, and MFS continuum imaging",
+  "Polynomial order used in imcontsub for SGP38326",
+  "Image dimensions (imsize) and deconvolver algorithm used in tclean",
+  "Whether primary beam correction was applied to the cubes and continuum maps before flux measurements",
+  "Smoothing kernel parameters used by CANNUBI/3DBAROLO when generating the 3D mask for the pseudo 4-sigma contours"
+ ],
+ "missing_for_reproduction": [
+  "Exact line-free frequency/channel selections used in uvcontsub, imcontsub, and MFS continuum imaging",
+  "Polynomial order used in imcontsub for SGP38326",
+  "Exact pixel-level manual adjustments applied to X0, Y0, and RADSEP after the initial CANNUBI fit (though final values are tabulated in Table B1 and Zenodo)",
+  "Scripts or exact pixel masks used to compute the PVsplit parameters Pmajor, PV, and PR"
+ ],
+ "reproducibility_score": 9,
+ "score_reason": "All raw ALMA datasets are public, the authors released the cleaned cubes, 3DBAROLO parameter files, and outputs on Zenodo as well as the CANNUBI code, and the paper provides a complete table of 3DBAROLO input parameters (Table B1) and imaging settings.",
+ "rediscovery_reason": "All five ALMA datasets are public, the imaging and 3DBAROLO kinematic modelling steps are explicitly parameterized in the text and Appendix tables, and the main results are quantitative kinematic and geometric measurements.",
+ "source_card": "cards/2023MNRAS.521.1045R/sonnet/card.md"
+}

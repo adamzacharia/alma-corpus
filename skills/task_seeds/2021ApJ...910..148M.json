@@ -1,0 +1,590 @@
+{
+ "bibcode": "2021ApJ...910..148M",
+ "title": "Revealing a Centrally Condensed Structure in OMC-3/MMS 3 with ALMA High-resolution Observations",
+ "year": 2021,
+ "doi": "10.3847/1538-4357/abe61c",
+ "arxiv_id": "2102.07793",
+ "fields": [
+  "star_formation"
+ ],
+ "question": "Is the peculiar millimeter source MMS 3 in OMC-3 a prestellar core or a protostar, and what are its envelope, outflow and evolutionary stage?",
+ "alma_project_codes": [
+  "2015.1.00341.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm)",
+  "arrays": "ACA (7m array) plus 12 m array",
+  "angular_resolution": "sub-arcsecond (~0.2 arcsec in high resolution; beam 0.22 x 0.18 arcsec)",
+  "sensitivity": "continuum 1 sigma = 4.4 (ACA), 0.46 (ACA + low res), 0.093 (high res) mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Distance to OMC-3 of 392 pc",
+    "evidence": [
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "are the distance to the source (392\\,pc, (cite: Tobin2020))"
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2020)"
+  },
+  {
+   "what": {
+    "value": "Dust mass opacity kappa(1.3 mm) = 0.9 cm2/g from MRN grains with thin ice mantles",
+    "evidence": [
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "We adopt$\\_1.3mm = 0.9$\\,cm$\\^2$\\,g$\\^-1$from the dust coagulation model of the MRN (cite: Mathis77)"
+     },
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "distribution with thin ice mantles computed by (cite: OssenkopfHenning1994)."
+     }
+    ]
+   },
+   "citation": "(cite: Mathis77); (cite: OssenkopfHenning1994)"
+  },
+  {
+   "what": {
+    "value": "Spectral index beta = 1.6 used to compare ACA and SMA sensitivities",
+    "evidence": [
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "($\\beta$=1.6 from (cite: Johnstone_1999))"
+     }
+    ]
+   },
+   "citation": "(cite: Johnstone_1999)"
+  },
+  {
+   "what": {
+    "value": "C18O to H2 abundance ratio of 1.7e-7 (printed as '1.7 ^-7')",
+    "evidence": [
+     {
+      "loc": "3.2 Dense Gas Tracers",
+      "quote": "Here, we adopted$X\\_C\\^18O$of$1.7 \\^-7$(cite: Frerking82)"
+     }
+    ]
+   },
+   "citation": "(cite: Frerking82)"
+  },
+  {
+   "what": {
+    "value": "CO to H2 abundance ratio of 1e-4 (printed as '10 ^-4')",
+    "evidence": [
+     {
+      "loc": "Outflow Parameters",
+      "quote": "abundance ratio$X\\_CO$of$10\\^-4$(cite: Frerking82)"
+     }
+    ]
+   },
+   "citation": "(cite: Frerking82)"
+  },
+  {
+   "what": {
+    "value": "CO excitation temperature of 20 K",
+    "evidence": [
+     {
+      "loc": "Outflow Parameters",
+      "quote": "We also assumed that the excitation temperature is$T\\_ex$=20 K (cite: Aso00)."
+     }
+    ]
+   },
+   "citation": "(cite: Aso00)"
+  },
+  {
+   "what": {
+    "value": "Mean molecular weight 2.8",
+    "evidence": [
+     {
+      "loc": "3.2 Dense Gas Tracers",
+      "quote": "is a mean molecular weight (cite: Kauffmann08)"
+     }
+    ]
+   },
+   "citation": "(cite: Kauffmann08)"
+  },
+  {
+   "what": {
+    "value": "MMS 3 bolometric luminosity 4.2 or 3.6 Lsun",
+    "evidence": [
+     {
+      "loc": "4.2 Possible Evolutionary Scenarios",
+      "quote": "$L_{\\rm{bol}}$=4.2 or 3.6 L$_{\\odot}$, which is four to ten times lower than that of other protostellar sources in the OMC-3 region (cite: Furlan2016; Tobin2020)"
+     }
+    ]
+   },
+   "citation": "(cite: Furlan2016; Tobin2020)"
+  },
+  {
+   "what": {
+    "value": "Outflow sizes, masses and forces of OMC-2/3 and Taurus sources used for comparison (Figure 6)",
+    "evidence": [
+     {
+      "loc": "Figure 6 caption",
+      "quote": "The squares and circles represent the outflows observed in the OMC-2/3 (cite: Feddersen20) and the Taurus (cite: Hogerheijde98) star-forming regions, respectively."
+     }
+    ]
+   },
+   "citation": "(cite: Feddersen20); (cite: Hogerheijde98)"
+  },
+  {
+   "what": {
+    "value": "Deconvolved size and inclination of MMS 3 from Tobin et al. (2020) for comparison",
+    "evidence": [
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "The deconvolved size of MMS 3 reported by (cite: Tobin2020)"
+     },
+     {
+      "loc": "3.1 Dust Continuum Emission",
+      "quote": "On the other hand, the inclination angle derived from (cite: Tobin2020) is$i=40\\^$."
+     }
+    ]
+   },
+   "citation": "(cite: Tobin2020)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image continuum and line cubes and combine arrays",
+   "method": "CASA clean with natural weighting; image-plane feather for continuum, C18O, N2D+, DCN; uv-plane concat for CO",
+   "software": [
+    "CASA",
+    "clean",
+    "feather",
+    "concat"
+   ],
+   "key_parameters": [
+    "Cube velocity widths 0.1 (C18O, N2D+), 0.5 (DCN), 1.0 (CO, SiO) km/s"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure continuum flux, size and inclination",
+   "method": "2D Gaussian fitting of each continuum image for total flux, peak flux and deconvolved size; inclination from the major to minor axis ratio",
+   "software": [
+    "2D Gaussian fitting (tool not named)"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Derive dust and gas mass, column density and number density from the continuum",
+   "method": "Optically thin, isothermal dust emission, M_dust = F d^2 / (kappa B(T_dust)); gas mass with gas-to-dust ratio 100",
+   "software": [],
+   "key_parameters": [
+    "T_dust = 20 and 40 K",
+    "kappa_1.3mm = 0.9 cm2/g; d = 392 pc"
+   ],
+   "assumptions": [
+    "Gas-to-dust mass ratio of 100",
+    "Optically thin emission and isothermal dust"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Derive envelope column density and mass from C18O",
+   "method": "Optically thin LTE C18O column density formula, then mass from solid angle, distance and mean molecular weight",
+   "software": [],
+   "key_parameters": [
+    "X(C18O) = 1.7e-7; S mu^2 = 0.02 Debye^2; Eu/k = 15.8 K; Tex = 20 K; mean molecular weight 2.8; flux above 7 sigma"
+   ],
+   "assumptions": [
+    "Optically thin C18O, LTE, Tex = 20 K"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Derive outflow mass, momentum, energy, timescale, mass-loss rate, force and kinetic luminosity from CO",
+   "method": "Same LTE optically thin formulas with X(CO) = 1e-4 and Eu/k = 16.59 K; blue and red lobes integrated separately; pixels above 3 sigma per channel; inclination 45 deg corrections; t_dyn = l_flow / v_max",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "X(CO) = 1e-4, Eu/k = 16.59 K, Tex = 20 K, pixels above 3 sigma"
+   ],
+   "assumptions": [
+    "Disk inclination i = 45 deg; LTE; optically thin; Tex = 20 K"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare MMS 3 outflow with other regions to infer evolutionary stage",
+   "method": "Compared outflow size, mass, force and bolometric luminosity with Class 0/I outflows in OMC-2/3 and Taurus",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total flux, ACA 1.3 mm continuum",
+   "value": "310",
+   "uncertainty": "12",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ACA & 310$$12 & 64$$2.1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux, ACA + ALMA low resolution continuum",
+   "value": "31",
+   "uncertainty": "2.6",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ACA + ALMA low resolution & 31$$2.6 &15$$0.87&"
+    }
+   ]
+  },
+  {
+   "quantity": "Total flux, ALMA high resolution continuum",
+   "value": "4.6",
+   "uncertainty": "0.28",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ALMA high resolution & 4.6$$0.28 & 1.0$$0.050 &"
+    }
+   ]
+  },
+  {
+   "quantity": "Peak flux, ALMA high resolution continuum",
+   "value": "1.0",
+   "uncertainty": "0.050",
+   "units": "mJy/beam",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "ALMA high resolution & 4.6$$0.28 & 1.0$$0.050 &"
+    }
+   ]
+  },
+  {
+   "quantity": "Deconvolved size, ALMA high resolution continuum (major x minor; P.A. 0.22)",
+   "value": "0.45 x 0.32",
+   "uncertainty": "0.031, 0.023",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.45$$0.031$$0.32$$0.023, 0.22$$"
+    }
+   ]
+  },
+  {
+   "quantity": "Linear size of compact continuum source",
+   "value": "~180 x 130",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dust Continuum Emission",
+     "quote": "This corresponds to a linear size of$\\~$180$$130\\,au."
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination from high resolution continuum",
+   "value": "44",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 Dust Continuum Emission",
+     "quote": "The angle calculated from the ALMA high resolution image (Figure~\\ref{fig:continuum}c) is$i=44\\^$."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass of compact source, ALMA high resolution, T_dust = 20 K (printed '(1.6 0.1)^-2', likely x10^-2)",
+   "value": "1.6e-2",
+   "uncertainty": "0.1e-2",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "ALMA high resolution & 20 & (1.6$$0.1)$\\^-2$&"
+    }
+   ]
+  },
+  {
+   "quantity": "Gas mass of compact source, ALMA high resolution, T_dust = 40 K",
+   "value": "7.0e-3",
+   "uncertainty": "0.4e-3",
+   "units": "Msun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "3.1 Dust Continuum Emission",
+     "quote": "(7.0$$0.4)$\\^-3$M$\\_$for$T\\_dust=$40\\,K"
+    }
+   ]
+  },
+  {
+   "quantity": "C18O envelope long-axis length",
+   "value": "~6800",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Dense Gas Tracers",
+     "quote": "estimated by 2D Gaussian fitting is$\\~$6800\\,au"
+    }
+   ]
+  },
+  {
+   "quantity": "DCN emission long-axis length",
+   "value": "~2000",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Dense Gas Tracers",
+     "quote": "The long-axis length of the DCN emission estimated by 2D Gaussian fitting is$\\~$2000\\,au"
+    }
+   ]
+  },
+  {
+   "quantity": "Systemic velocity of MMS 3",
+   "value": "11.2",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Dense Gas Tracers",
+     "quote": "In this study, we adopted a systemic velocity for MMS 3 of 11.2\\,km\\,s$\\^-1$,"
+    }
+   ]
+  },
+  {
+   "quantity": "N2D+ line FWHM",
+   "value": "~0.89",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Dense Gas Tracers",
+     "quote": "narrow ($v\\_FWHM \\~$0.89 km s$\\^-1$)"
+    }
+   ]
+  },
+  {
+   "quantity": "Envelope H2 column density and mass from C18O (flux above 7 sigma); printed 'N = 1.3 ^22', 'M = 0.89'",
+   "value": "N_H2 = 1.3e22 cm^-2; M = 0.89 Msun",
+   "uncertainty": "not stated",
+   "units": "cm^-2; Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2 Dense Gas Tracers",
+     "quote": "The estimated envelope column density and mass using the flux more than 7$$are$N\\_ = 1.3 \\^22$cm$\\^-2$and$M\\_ = 0.89$\\,M$\\_$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Projected size of blue and red CO outflow lobes",
+   "value": "5800 (blue), 4600 (red)",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1 Morphology",
+     "quote": "The projected size of the blue- and red-shifted component is 5800 au and 4600 au, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Position angle of CO outflow cavity",
+   "value": "~130",
+   "uncertainty": "not stated",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.1 Morphology",
+     "quote": "The position angle of the CO outflow cavity is$\\~$130\\,$\\^$"
+    }
+   ]
+  },
+  {
+   "quantity": "Blue and red outflow mass (printed '9.5 ^-4', '1.4 ^-3')",
+   "value": "9.5e-4 (blue), 1.4e-3 (red)",
+   "uncertainty": "not stated",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "The blue-shifted$M\\_flow, b$and red-shifted$M\\_flow, r$outflow mass are estimated to be$M\\_flow, b = 9.5 \\^-4 M\\_$and$M\\_flow, r= 1.4 \\^-3 M\\_$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Maximum outflow velocities (inclination-corrected)",
+   "value": "25 (blue), 35 (red)",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "the blue-shifted and red-shifted maximum outflow velocities ($v\\_max, b$and$v\\_max, r$) are estimated to be$v\\_max, b =25 km s\\^-1$and$v\\_max, r=35 km s\\^-1$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical timescales",
+   "value": "1800 (blue), 1000 (red)",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "The dynamical timescales for the blue-shifted and red-shifted outflow are estimated to be$t\\_dyn,b= 1800$\\,yr and$t\\_dyn,r= 1000$\\,yr, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Blue outflow momentum and energy (printed '8.2 ^-3', '1.2 ^42')",
+   "value": "P = 8.2e-3; E = 1.2e42",
+   "uncertainty": "not stated",
+   "units": "Msun km/s; erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "The momentum and energy of the blue-shifted outflow are$P\\_flow, b = 8.2 \\^-3$M$\\_$km s$\\^-1$and$E\\_flow, b =1.2 \\^42$erg, respectively"
+    }
+   ]
+  },
+  {
+   "quantity": "Red outflow momentum and energy (printed '1.0 ^-2', '3.1 ^42')",
+   "value": "P = 1.0e-2; E = 3.1e42",
+   "uncertainty": "not stated",
+   "units": "Msun km/s; erg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "while those of the red-shifted outflow are$P\\_flow, r = 1.0 \\^-2$M$\\_$km s$\\^-1$and$E\\_flow, r = 3.1 \\^42$erg, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Blue outflow mass-loss rate, momentum flux, kinetic luminosity (printed '5.3 ^-7', '4.5 ^-6', '6.3 ^-3')",
+   "value": "Mdot = 5.3e-7 Msun/yr; F = 4.5e-6 Msun km/s/yr; L_kin = 6.3e-3 Lsun",
+   "uncertainty": "not stated",
+   "units": "Msun/yr; Msun km/s/yr; Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "can be estimated to be$\\_flow, b = 5.3 \\^-7 M\\_$\\,yr$\\^-1$,$F\\_flow, b=4.5 \\^-6 M\\_$\\,km\\,yr$\\^-1$, and$L\\_kin, b=6.3 \\^-3 L\\_$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Red outflow mass-loss rate, momentum flux, kinetic luminosity (printed '1.3 ^-6', '9.9 ^-6', '2.7 ^-2')",
+   "value": "Mdot = 1.3e-6 Msun/yr; F = 9.9e-6 Msun km/s/yr; L_kin = 2.7e-2 Lsun",
+   "uncertainty": "not stated",
+   "units": "Msun/yr; Msun km/s/yr; Lsun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.3.2 Outflow Parameters",
+     "quote": "Those derived for the red-shifted component are$\\_flow, r = 1.3 \\^-6 M\\_$\\,yr$\\^-1$,$F\\_flow, r=9.9 \\^-6 M\\_$\\,km\\,yr$\\^-1$and$L\\_kin, r=2.7 \\^-2 L\\_$, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "SiO emission offset from continuum peak",
+   "value": "1800",
+   "uncertainty": "not stated",
+   "units": "au",
+   "from_step": 0,
+   "evidence": [
+    {
+     "loc": "3.3.1 Morphology",
+     "quote": "The compact SiO emission was located 1800 au east from the 1.3 mm continuum emission peak position"
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow dynamical timescale range quoted for MMS 3",
+   "value": "1000-1800",
+   "uncertainty": "not stated",
+   "units": "yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Observational Characteristics of MMS 3",
+     "quote": "The outflow dynamical timescale, which is an indicator for identifying the protostellar age, estimated for MMS 3 is~1000-1800\\,yr."
+    }
+   ]
+  },
+  {
+   "quantity": "Outflow maximum gas velocity quoted in Summary (differs from the 35 km/s in Section 3.3.2)",
+   "value": "~42",
+   "uncertainty": "not stated",
+   "units": "km/s",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Summary",
+     "quote": "The outflow maximum gas velocity is $\\sim$42 km s$^{-1}$, assuming a disk inclination angle of $i$ = 45$^\\circ$."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact spectral windows, rest frequencies and channel ranges for each line",
+  "Which channels were used for the continuum (line-free channel ranges)",
+  "Image size and cell size for continuum and cubes",
+  "clean niter, threshold, masks, and any multiscale settings",
+  "feather parameters (single-dish factor, uv range, how the ACA image was scaled and regridded)",
+  "Whether CASA was re-run on the delivered calibrated data or the archive products were used unchanged",
+  "How the 2D Gaussian fits were done (task, regions, fit boxes) and how deconvolved sizes and uncertainties were derived",
+  "Velocity ranges used for column density integrals and the area used for the envelope mass (7 sigma contour definition)",
+  "Moment-map and noise estimation procedure for integrated intensity maps",
+  "Self-calibration status",
+  "Origin of the 20 K Tex for C18O (assumed) and how the continuum beam was handled in dust mass for each dataset",
+  "Source of distances to the outflow lobes used for l_flow"
+ ],
+ "missing_for_reproduction": [
+  "Exact spectral windows, rest frequencies and continuum channel selection",
+  "clean parameters (image size, cell, niter, threshold, masks) and feather settings",
+  "Details of the Gaussian fitting procedure and uncertainty derivation",
+  "Velocity ranges and regions used to integrate the C18O and CO column densities",
+  "Several powers of ten are missing in the converted paper text (e.g. '1.7 ^-7'), so numeric values must be checked against the published version"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Project code and instrument setup are given and the imaging recipe (clean natural weighting, feather/concat) and formulas are simple, but many imaging parameters and fit details are missing and several numbers lost their powers of ten in the text",
+ "rediscovery_reason": "The project code is printed (Cycle 3, so data are expected to be in the public ALMA archive), formulas are explicit, and the main results (fluxes, sizes, masses, outflow parameters) are numeric; exact values would depend on unstated imaging choices",
+ "source_card": "cards/2021ApJ...910..148M/sonnet/card.md"
+}

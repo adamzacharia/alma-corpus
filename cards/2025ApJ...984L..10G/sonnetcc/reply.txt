@@ -1,0 +1,335 @@
+{
+"depth": "full",
+"paper_type": "observational_alma_primary",
+"paper_type_evidence": [
+{"loc": "2 Data", "quote": "an ALMA Large Program (2021.1.01123.L;"},
+{"loc": "1 Introduction", "quote": "In this paper, we present the emission surfaces, intensity radial profiles, and two-dimensional temperature profiles of the fifteen sources."}
+],
+"fields": ["protoplanetary_disks"],
+"question": {
+"value": "Where do 12CO J=3-2, 13CO J=3-2 and CS J=7-6 emit vertically in the 15 exoALMA disks, what 2-D (r-z) temperature structure and substructure do the surfaces and radial intensity profiles show, and how does emission height relate to disk properties such as disk mass",
+"evidence": [
+{"loc": "1 Introduction", "quote": "In this paper, we present the emission surfaces, intensity radial profiles, and two-dimensional temperature profiles of the fifteen sources."},
+{"loc": "abstract", "quote": "this relationship offers a straightforward way to infer the disk mass."}
+]
+},
+"targets": [
+{
+"name": "exoALMA sample of 15 protoplanetary disks",
+"details": [
+{"loc": "2 Data", "quote": "This program observed 15 protoplanetary disks, most with previously observed continuum substructures indicative of ongoing planet formation processes."}
+],
+"coordinates": "not stated",
+"redshift_or_distance": "not stated",
+"distance_source": "not stated"
+}
+],
+"alma_project_codes": [
+{"code": "2021.1.01123.L", "evidence": [{"loc": "2 Data", "quote": "an ALMA Large Program (2021.1.01123.L;"}]}
+],
+"data_settings": [
+{"field": "angular_resolution", "value": "0.1'' requested; images used 0.15'' (fiducial) and 0.30'' (high surface brightness sensitivity, used for DM Tau)", "evidence": [
+{"loc": "2 Data", "quote": "Observations of $^{12}$CO $J=3-2$, $^{13}$CO $J=3-2$, and CS $J=7-6$, at 0.1$''$ angular resolution"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "the non-continuum subtracted cubes with 100 m/s resolution and 0.15$''$ beamsize for $^{12}$CO and $^{13}$CO"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "where we use the 0.30$''$ beamsize cubes for both $^{12}$CO and $^{13}$CO surface extraction"}
+]},
+{"field": "frequencies_and_spectral_setup", "value": "Requested spectral resolution 35.5 kHz (26 m/s); surfaces extracted from 100 m/s cubes (12CO, 13CO) and 200 m/s cubes (CS)", "evidence": [
+{"loc": "2 Data", "quote": "a 35.5 kHz (26 m s$^{-1}$) spectral resolution"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "the continuum-subtracted cubes with 200 m s$^{-1}$ resolution and 0.15$''$ beamsize for CS"}
+]},
+{"field": "sensitivity", "value": "3 K over 150 m/s requested", "evidence": [
+{"loc": "2 Data", "quote": "with a sensitivity of 3 K over 150 m s$^{-1}$ were requested to ensure a detection of line emission in the outer disk"}
+]}
+],
+"lines_targeted": [
+{"species": "12CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "1 Introduction", "quote": "to target the molecular line emission of $^{12}$CO $J=3-2$, $^{13}$CO $J=3-2$, and CS $J=7-6$."}]},
+{"species": "13CO", "transition": "J=3-2", "rest_frequency": "not stated", "evidence": [{"loc": "1 Introduction", "quote": "to target the molecular line emission of $^{12}$CO $J=3-2$, $^{13}$CO $J=3-2$, and CS $J=7-6$."}]},
+{"species": "CS", "transition": "J=7-6", "rest_frequency": "not stated", "evidence": [{"loc": "1 Introduction", "quote": "to target the molecular line emission of $^{12}$CO $J=3-2$, $^{13}$CO $J=3-2$, and CS $J=7-6$."}]}
+],
+"other_facilities": [],
+"external_data_from_literature": [
+{"what": {"value": "Geometric parameters (M*, i, PA, vLSR, x0, y0) derived with DISCMINER", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "We use geometric parameters (M$_{*}$, $i$, ${\\rm PA}$, $v_{\\rm LSR}$, x$_0$, y$_0$) derived from DISCMINER (see (cite: exoALMA_main; exoALMA_line_profiles))."}]}, "citation": "(cite: exoALMA_main; exoALMA_line_profiles)"},
+{"what": {"value": "Continuum temperatures T_cont used as lower bound on T_mid", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "The lower bounds of $T_{\\rm mid}$ are set by the continuum temperatures $T_{\\rm cont}$ derived in (cite: exoALMA_cont)."}]}, "citation": "(cite: exoALMA_cont)"},
+{"what": {"value": "Continuum rings and gaps used for comparison with surface substructure", "evidence": [{"loc": "5.3 Comparison with Dust Continuum", "quote": "We compare the emission surface substructure radial locations with the rings and gaps in the continuum reported by (cite: exoALMA_cont)."}]}, "citation": "(cite: exoALMA_cont)"},
+{"what": {"value": "Proposed planet locations (velocity kinks)", "evidence": [{"loc": "5.4 Comparison with Velocity Signatures", "quote": "within a beamsize of the proposed planet locations listed in Table 2 of (cite: exoALMA_channel_maps)"}]}, "citation": "(cite: exoALMA_channel_maps)"},
+{"what": {"value": "Disk masses from rotation curves and from dust mass", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "disk mass derived from the rotation curves in (cite: exoALMA_disk_mass) (left panel), disk mass derived from dust mass measurements from (cite: exoALMA_cont) (middle panel)"}]}, "citation": "(cite: exoALMA_disk_mass); (cite: exoALMA_cont)"},
+{"what": {"value": "Disk mass derived using N2H+", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "and disk mass derived using N$_2$H$^+$ from (cite: exoALMA_trapman) (rightmost panel)"}]}, "citation": "(cite: exoALMA_trapman)"},
+{"what": {"value": "Literature compilation of emission heights, stellar masses, disk sizes used as background sample", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "Here, we build off of the data compiled in (cite: law_2022ApJ...932..114L; law_2023ApJ...948...60L; paneque_2025arXiv250108294P), adding the exoALMA sources"}]}, "citation": "(cite: law_2022ApJ...932..114L; law_2023ApJ...948...60L; paneque_2025arXiv250108294P)"}
+],
+"simulations_or_models_as_data": [
+{"value": "MCFOST simulated cubes (30 and 60 degree inclination, 12CO and 13CO J=3-2) used to compare disksurf and DISCMINER surfaces", "evidence": [{"loc": "11 Comparing Disksurf to DISCMINER", "quote": "The simulated cubes were made with MCFOST"}]}
+],
+"calibration": [],
+"imaging": [
+{"field": "continuum_subtraction", "value": "12CO and 13CO surfaces and peak intensities from non-continuum-subtracted cubes; CS surfaces and all integrated intensities from continuum-subtracted cubes", "evidence": [
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "We opt for the non-continuum subtracted cubes for $^{12}$CO and $^{13}$CO to ensure we retrieve accurate temperature measurements"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "therefore, we opt to use the continuum subtracted cubes for the CS surfaces."}
+]},
+{"field": "final_beam", "value": "0.15'' (fiducial, 100 m/s); 0.30'' high surface brightness sensitivity images used for DM Tau", "evidence": [
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "the non-continuum subtracted cubes with 100 m/s resolution and 0.15$''$ beamsize for $^{12}$CO and $^{13}$CO"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "where we use the 0.30$''$ beamsize cubes for both $^{12}$CO and $^{13}$CO surface extraction"}
+]}
+],
+"inherited": [
+{"what": {"value": "Observations, source selection and imaging (calibration, cube production) described in the exoALMA overview and imaging papers", "evidence": [{"loc": "2 Data", "quote": "A complete description of observations, source selection, and imaging techniques used are described in (cite: exoALMA_main) and (cite: exoALMA_imaging)."}]}, "from_reference": "(cite: exoALMA_main) and (cite: exoALMA_imaging)"},
+{"what": {"value": "Geometric parameters taken from the DISCMINER modelling of the exoALMA line profiles", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "We use geometric parameters (M$_{*}$, $i$, ${\\rm PA}$, $v_{\\rm LSR}$, x$_0$, y$_0$) derived from DISCMINER (see (cite: exoALMA_main; exoALMA_line_profiles))."}]}, "from_reference": "(cite: exoALMA_main; exoALMA_line_profiles)"},
+{"what": {"value": "Non-parametric surface method (isovelocity-contour peak finding)", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "which utilizes the method outlined in (cite: pinte_2018A&A...609A..47P)"}]}, "from_reference": "(cite: pinte_2018A&A...609A..47P)"},
+{"what": {"value": "Two-layer sinusoidal 2-D temperature model", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "we adopt the two-layer model connecting the atmosphere temperature to the midplane temperature with a sinusoidal equation originally used in (cite: dartois_2003A&A...399..773D)"}]}, "from_reference": "(cite: dartois_2003A&A...399..773D)"},
+{"what": {"value": "Cumulative flux definition for the gas disk radius", "evidence": [{"loc": "4.1 Gas Disk Size", "quote": "(see Equation A.1 in (cite: sanchis_2020A&A...633A.114S))"}]}, "from_reference": "(cite: sanchis_2020A&A...633A.114S)"},
+{"what": {"value": "Radial profile uncertainties from per-channel noise", "evidence": [{"loc": "4.2 Brightness Temperatures", "quote": "We report uncertainties of the radial profiles which account for the noise in each channel as described in (cite: yen_2016ApJ...832..204Y)."}]}, "from_reference": "(cite: yen_2016ApJ...832..204Y)"},
+{"what": {"value": "Prior ranges for the temperature fit informed by earlier modelling", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "These priors were informed by previous observations of similar disks and modeling efforts"}]}, "from_reference": "(cite: dartois_2003A&A...399..773D; zhang_2021ApJS..257....5Z; calahan_2021ApJS..257...17C; MAPS_emission_surfaces_2021ApJS..257....4L)"},
+{"what": {"value": "Surface density profile used to convert rotational disk mass to Sigma(100 au)", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "inferred based on the rotational disk masses assuming the surface density profile used in (cite: exoALMA_disk_mass)"}]}, "from_reference": "(cite: exoALMA_disk_mass)"},
+{"what": {"value": "<z/r> and linear fits made consistent with earlier compilations", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "we use methods consistent with those used for the compiled background points."}]}, "from_reference": "(cite: law_2022ApJ...932..114L; law_2023ApJ...948...60L)"}
+],
+"unstated_but_needed": [
+"Calibration pipeline/CASA versions, flux calibrator and self-calibration details (all deferred to exoALMA overview and imaging papers)",
+"Exact exoALMA cube versions and file names (Fiducial vs High Surface Brightness Sensitivity) and where to obtain them in the VADP/archive",
+"DISCMINER geometric parameters per disk (M*, i, PA, vLSR, x0, y0) from the companion line-profile paper",
+"disksurf settings beyond those listed (smoothing, per-disk visual masks for noise and diffuse emission, front/back selection)",
+"Priors used for the tapered power-law surface fit with emcee",
+"Stellar luminosities used for T_irr",
+"CS and 13CO outer-disk masking choices and which disks use which iteration settings",
+"GoFish inputs: exact bin settings, velocity resolution used when shifting and stacking, and radial range",
+"Per-disk field-of-view used when computing cumulative flux and R_edge"
+],
+"analysis_steps": [
+{
+"order": 1,
+"goal": "Extract non-parametric emission surfaces",
+"method": {"value": "disksurf isovelocity-contour peak finding with iterative surface refinement; front surfaces only; J1604 and HD 135344B excluded", "evidence": [
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "This method relies on the asymmetry of the line emission above the disk midplane to infer an emission height"},
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "We have excluded J1604 and HD 135344B from this analysis, as they are too face-on to reliably separate the front and back surfaces"}
+]},
+"software": ["disksurf", "DISCMINER"],
+"key_parameters": [
+{"value": "5 iterations; maximum beamsize decreased from 2 beams to 1 beam; minimum SNR increased linearly from 1.0", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "We repeat the iteration five times for each surface, allowing us to decrease the maximum beamsize from 2 beams for the first iteration to 1 beam on the subsequent iterations"}]},
+{"value": "Final SNR clips 5.0 (12CO), 3.5 (13CO), 3.0 (CS)", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "Therefore, the final SNR clips for the surfaces are 5.0 for $^{12}$CO, 3.5 for $^{13}$CO, and 3.0 for CS."}]},
+{"value": "Points binned by a quarter of a beamsize", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "The points are binned by a quarter of a beamsize."}]}
+],
+"assumptions": [
+{"value": "SNR per point is intensity divided by cube RMS; Keplerian rotation assumed by disksurf", "evidence": [
+{"loc": "3.1 Non-Parametric Surfaces", "quote": "The SNR for each point is measured as the intensity divided by the cube RMS."},
+{"loc": "11 Comparing Disksurf to DISCMINER", "quote": "assumes purely Keplerian rotation, whereas DISCMINER takes into account any velocity deviations during modeling"}
+]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Per-disk visual checks against channel maps; iterative vs non-iterative surfaces compared", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "These steps were done on a per-disk basis, and were visually justified by looking at the channel maps with the detected points overlaid."}]}
+},
+{
+"order": 2,
+"goal": "Fit tapered power-law parametric surfaces",
+"method": {"value": "Tapered power law z(r) fitted to the non-parametric points with disksurf MCMC, and independently via DISCMINER line-profile modelling", "evidence": [
+{"loc": "3.2 Parametric Fitting", "quote": "We assume a tapered power law analytic prescription as the surface model"},
+{"loc": "3.2 Parametric Fitting", "quote": "DISCMINER fits a Keplerian model to each channel"}
+]},
+"software": ["disksurf", "emcee", "DISCMINER"],
+"key_parameters": [
+{"value": "Free parameters z0, psi, r_taper, q_taper; best fit = 50th percentile, errors 16th/84th percentiles", "evidence": [{"loc": "3.2 Parametric Fitting", "quote": "The best-fit surfaces represent the 50th percentile parameters from the posterior distributions, and the errors are obtained from the 16th and 84th percentiles."}]}
+],
+"assumptions": [],
+"fitting": {"value": "emcee affine-invariant sampler, 256 walkers, 100 burn-in steps, 1000 steps; priors not stated", "evidence": [{"loc": "3.2 Parametric Fitting", "quote": "We employ 256 walkers, 100 burn-in steps, and 1000 steps to obtain a fit to the non-parametric surface data points."}]},
+"validation": {"value": "disksurf and DISCMINER parametric surfaces compared; broadly consistent", "evidence": [{"loc": "3.2 Parametric Fitting", "quote": "Despite the slight parametric differences, both surfaces are broadly consistent."}]}
+},
+{
+"order": 3,
+"goal": "Compute mean <z/r> per surface",
+"method": {"value": "Average of binned surface points, cutting points past the surface peak and interior to one beamsize", "evidence": [
+{"loc": "3.3 Emission Surface Results", "quote": "by taking an average of the binned surface points"},
+{"loc": "3.3 Emission Surface Results", "quote": "We cut points past the peak of the emission surface, thus excluding those that belong to the tapered portion of the surfaces."},
+{"loc": "3.3 Emission Surface Results", "quote": "We additionally exclude any data interior to one beamsize"}
+]},
+"software": [],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Value checked at a common radius of 125 au across disks", "evidence": [{"loc": "3.3 Emission Surface Results", "quote": "We have verified that the $\\langle z / r \\rangle$ value is consistent when measured at the same radial location in each disk (125 au)"}]}
+},
+{
+"order": 4,
+"goal": "Measure gas disk size R_edge and R_90",
+"method": {"value": "Cumulative integrated-intensity profile of 12CO normalised by its maximum; R_edge is the first peak; R95, R90, R68 from flux percentiles", "evidence": [
+{"loc": "4.1 Gas Disk Size", "quote": "We then take a cumulative sum of the intensity"},
+{"loc": "4.1 Gas Disk Size", "quote": "by taking the 95th, 90th, and 68th percentiles of the total flux"}
+]},
+"software": ["scipy"],
+"key_parameters": [
+{"value": "No outer cutoff radius; hand-selected field of view covering all emission plus a few arcsec of noise", "evidence": [{"loc": "4.1 Gas Disk Size", "quote": "we do not define an outer cutoff radius and instead rely on a hand-selected field-of-view that encompasses all the emission"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Flux compared with exoALMA overview paper; broadly consistent", "evidence": [{"loc": "4.1 Gas Disk Size", "quote": "but our results are broadly consistent"}]}
+},
+{
+"order": 5,
+"goal": "Derive brightness-temperature radial profiles",
+"method": {"value": "GoFish shifted-and-stacked radial profiles of integrated and peak intensity (full Planck function), plus brightness temperatures at each disksurf r-z point", "evidence": [
+{"loc": "4.2 Brightness Temperatures", "quote": "to obtain the integrated and peak intensity radial profiles from the 3-D data cubes in Jy beam$^{-1}$ km s$^{-1}$ and K respectively, assuming the full Planck function"},
+{"loc": "4.2 Brightness Temperatures", "quote": "we opt to use the non-continuum subtracted cubes as to not underestimate the temperatures"}
+]},
+"software": ["GoFish", "disksurf"],
+"key_parameters": [
+{"value": "Azimuthal bins of one quarter of the beam FWHM", "evidence": [{"loc": "4.2 Brightness Temperatures", "quote": "azimuthally averaging radial bins that are binned by one-quarter of the FWHM of the synthesized beam"}]}
+],
+"assumptions": [
+{"value": "CO optically thick and in LTE so T_B equals gas temperature", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "If we assume that the CO lines are optically thick and in local thermodynamic equilibrium (LTE), we can assume that the measured brightness temperature $T_B$ is equal to the gas temperature."}]}
+],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "GoFish and disksurf temperatures agree; differences generally under 5 K; DISCMINER profiles also compared", "evidence": [{"loc": "4.2 Brightness Temperatures", "quote": "Even so, these differences are slight and generally under 5 K."}]}
+},
+{
+"order": 6,
+"goal": "Fit 2-D (r-z) temperature structure",
+"method": {"value": "Two-layer model with power-law atmosphere and midplane temperatures joined by a cos^2 profile up to height z_q; six free parameters fitted to the non-parametric surface temperatures", "evidence": [
+{"loc": "4.3 2-D Temperature Structure", "quote": "we adopt the two-layer model connecting the atmosphere temperature to the midplane temperature with a sinusoidal equation originally used in (cite: dartois_2003A&A...399..773D)"}
+]},
+"software": ["emcee"],
+"key_parameters": [
+{"value": "Points below 20 K discarded; all CS points excluded", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "we discard the data points with brightness temperatures below 20 K because those likely probe optically thin emission"}]},
+{"value": "Bounded priors on T_atm,0, T_mid,0, q_atm, q_mid, z0, beta (given in paper); T_mid bounded by continuum/CMB temperature below and irradiation temperature above", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "We have constrained the parameter space with priors as follows:"}]}
+],
+"assumptions": [
+{"value": "Broad priors; fit convergence depended on them", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "but the convergence of the fits was contingent on these priors being in place"}]}
+],
+"fitting": {"value": "emcee, 256 walkers, 1000 steps, 100 burn-in; two rounds, second initialised from the first; 50th percentile with 16th/84th percentile errors", "evidence": [
+{"loc": "4.3 2-D Temperature Structure", "quote": "adopting 256 walkers, 1000 steps, and 100 burn-in steps"},
+{"loc": "4.3 2-D Temperature Structure", "quote": "We then use the results of this first fit to inform the initial guess of a second round with the same number of walkers, steps, and burn-in steps."}
+]},
+"validation": {"value": "Sinusoidal form chosen over hyperbolic tangent form as it better reproduced the data; statistical errors only", "evidence": [
+{"loc": "4.3 2-D Temperature Structure", "quote": "We find that the sinusoidal function described below best reproduces the observations and gives more reasonable estimates of the midplane temperatures"},
+{"loc": "4.3 2-D Temperature Structure", "quote": "These represent only the statistical errors and do not include systematic errors which can be larger than the statistical errors."}
+]}
+},
+{
+"order": 7,
+"goal": "Identify substructure in surfaces and peak-intensity profiles",
+"method": {"value": "Savitzky-Golay smoothing and scipy find_peaks, with visual confirmation; compare locations with continuum rings/gaps and velocity-kink planet locations", "evidence": [
+{"loc": "5.1 Emission Surface Substructures", "quote": "smoothed with a Savitzky-Golay filter for visual clarity, with a window length of one arcsecond and a polynomial order of 2"},
+{"loc": "5.2 Radial Peak Intensity Substructures", "quote": "smoothed using a Savitzky-Golay filter with a window length of five and a polynomial order of 3"}
+]},
+"software": ["scipy"],
+"key_parameters": [
+{"value": "Minimum width and separation at least the beamsize (0.15''), up to two beamsizes (0.3''); prominence scaled to the beamsize or larger (surfaces), 7 to 15 K (peak intensity)", "evidence": [{"loc": "5.1 Emission Surface Substructures", "quote": "we set the minimum width of each substructure and the minimum distance between substructures to be at least the beamsize"}]}
+],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Visual confirmation; consistency between iterative and non-iterative surfaces", "evidence": [{"loc": "5.1 Emission Surface Substructures", "quote": "we visually confirm by eye the validity of the substructures"}]}
+},
+{
+"order": 8,
+"goal": "Correlate <z/r> with stellar and disk properties",
+"method": {"value": "Spearman and Pearson coefficients; linmix linear fit to R_edge; emcee linear fits to disk mass and surface density", "evidence": [
+{"loc": "6.1 Comparison with Source Properties", "quote": "to fit a line to the data"},
+{"loc": "6.1 Comparison with Source Properties", "quote": "We use the Pearson correlation coefficient (PCC, or r$_p$) to quantify the linear correlation"}
+]},
+"software": ["linmix", "emcee"],
+"key_parameters": [
+{"value": "emcee linear fits with 100 walkers and 5000 iterations", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "to obtain these linear fits with 100 walkers and 5000 iterations"}]}
+],
+"assumptions": [
+{"value": "Priors keep the model above zero; errors propagated from <z/r> and M_disk", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "This allows us to place priors such that the model cannot be below zero."}]}
+],
+"fitting": {"value": "linmix (R_edge relation) and emcee (disk mass and surface density relations)", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "to obtain these linear fits with 100 walkers and 5000 iterations"}]},
+"validation": {"value": "Repeated at fixed 125 au radius; outlier HD 143006 removed to test sensitivity", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "With this point removed, the PCC becomes r$_p$ = 0.76."}]}
+},
+{
+"order": 9,
+"goal": "Benchmark disksurf against DISCMINER on MCFOST cubes",
+"method": {"value": "Both codes applied to simulated 30 and 60 degree inclined disks in 12CO and 13CO and compared with the tau = 2/3 surface", "evidence": [{"loc": "11 Comparing Disksurf to DISCMINER", "quote": "The simulated cubes were made with MCFOST"}]},
+"software": ["MCFOST", "disksurf", "DISCMINER"],
+"key_parameters": [],
+"assumptions": [],
+"fitting": {"value": "not stated", "evidence": []},
+"validation": {"value": "Root cause of differences between the codes left unresolved", "evidence": [{"loc": "11 Comparing Disksurf to DISCMINER", "quote": "The root cause of the underlying differences between the surfaces, both for the real data and simulated cubes, is still unknown."}]}
+}
+],
+"software": [
+{"name": "bettermoments", "version": "not stated", "used_for": {"value": "Moment-eight peak intensity maps (quadratic method)", "evidence": [{"loc": "2 Data", "quote": "with the quadratic method and assuming the full Planck function."}]}},
+{"name": "disksurf", "version": "not stated", "used_for": {"value": "Non-parametric emission surfaces and parametric surface MCMC fit", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "This method relies on the asymmetry of the line emission above the disk midplane to infer an emission height"}]}},
+{"name": "DISCMINER", "version": "not stated", "used_for": {"value": "Geometric parameters and parametric emission surfaces via line-profile modelling", "evidence": [{"loc": "3.2 Parametric Fitting", "quote": "has been used to derive the geometric parameters for each exoALMA source"}]}},
+{"name": "emcee", "version": "not stated", "used_for": {"value": "MCMC fits of tapered power-law surfaces, 2-D temperature structure and linear relations", "evidence": [{"loc": "3.2 Parametric Fitting", "quote": "We employ 256 walkers, 100 burn-in steps, and 1000 steps to obtain a fit to the non-parametric surface data points."}]}},
+{"name": "GoFish", "version": "not stated", "used_for": {"value": "Shifted-and-stacked integrated and peak intensity radial profiles", "evidence": [{"loc": "4.2 Brightness Temperatures", "quote": "This method shifts and stacks the spectra, utilizing the known rotation of the disk, to better resolve the line profile"}]}},
+{"name": "scipy", "version": "not stated", "used_for": {"value": "Peak finding for R_edge and for substructure identification (find_peaks)", "evidence": [{"loc": "5.1 Emission Surface Substructures", "quote": "This function finds maxima or minima in 1-D data sets by comparison of neighboring values."}]}},
+{"name": "linmix", "version": "not stated", "used_for": {"value": "Linear fit of <z/r> versus R_edge", "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "to fit a line to the data"}]}},
+{"name": "MCFOST", "version": "not stated", "used_for": {"value": "Simulated cubes for the disksurf versus DISCMINER test", "evidence": [{"loc": "11 Comparing Disksurf to DISCMINER", "quote": "The simulated cubes were made with MCFOST"}]}}
+],
+"results_numeric": [
+{"quantity": "Overall average <z/r> of 12CO emission surfaces", "value": "0.28", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.3 Emission Surface Results", "quote": "We find $\\langle z / r \\rangle$ values for $^{12}$CO emission ranging from $\\sim$0.13 to $\\sim$0.4, with an overall average $\\langle z / r \\rangle$ of 0.28."}]},
+{"quantity": "Average <z/r> of 13CO emission surfaces", "value": "0.16", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.3 Emission Surface Results", "quote": "to 0.32, with an average of 0.16."}]},
+{"quantity": "Average <z/r> of CS emission surfaces", "value": "0.18", "uncertainty": "not stated", "units": "dimensionless", "from_step": 3, "evidence": [{"loc": "3.3 Emission Surface Results", "quote": "The average $\\langle z / r \\rangle$ for CS is 0.18"}]},
+{"quantity": "Mean 12CO brightness temperature at 100 au", "value": "~40", "uncertainty": "7 K", "units": "K", "from_step": 5, "evidence": [{"loc": "4.2 Brightness Temperatures", "quote": "The mean $^{12}$CO brightness temperature at 100 au across all disks is $\\sim$40 K $\\pm$ 7 K."}]},
+{"quantity": "Mean atmospheric temperature at 100 au across all disks", "value": "43.4", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "with a mean atmospheric temperature (T$_{\\rm atm}$) at 100 au across all disks of 43.4 K"}]},
+{"quantity": "Average midplane temperature at 100 au", "value": "24", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "The average midplane temperature at 100 au across the disk sample is 24 K."}]},
+{"quantity": "Range of midplane temperatures", "value": "13 (AA Tau) to 32 (HD 34282)", "uncertainty": "not stated", "units": "K", "from_step": 6, "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "We find midplane temperatures ranging from 13 K (AA Tau) up to 32 K (HD 34282)."}]},
+{"quantity": "Fraction of disks with viable surfaces showing localized surface substructure", "value": "76%", "uncertainty": "not stated", "units": "percent", "from_step": 7, "evidence": [{"loc": "5.1 Emission Surface Substructures", "quote": "We find evidence of localized substructures in 76% of disks with viable emission surfaces."}]},
+{"quantity": "Spacing of LkCa 15 12CO peak-intensity wave pattern", "value": "~175", "uncertainty": "not stated", "units": "au", "from_step": 7, "evidence": [{"loc": "5.2 Radial Peak Intensity Substructures", "quote": "The wave patterns are spaced roughly 175 au apart."}]},
+{"quantity": "Spearman coefficient, <z/r> versus stellar mass", "value": "-0.16", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "we find r$_s$ = -0.16"}]},
+{"quantity": "Pearson coefficient, <z/r> versus R_edge", "value": "0.67", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "We find a PCC of r$_p$ = 0.67, indicating a strong positive correlation."}]},
+{"quantity": "Slope of <z/r> versus R_edge linear relation", "value": "0.00033", "uncertainty": "+0.000053/-0.000052", "units": "per au", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "0.00033$^{+0.000053}_{-0.000052}$"}]},
+{"quantity": "Pearson coefficient, <z/r> versus rotation-curve disk mass", "value": "0.64", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "with a PCC of r$_p$ = 0.64"}]},
+{"quantity": "Pearson coefficient, <z/r> versus gas surface density at 100 au", "value": "0.75", "uncertainty": "not stated", "units": "dimensionless", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "with a PCC of r$_p$ = 0.75, in agreement with the prediction"}]},
+{"quantity": "Disk mass versus <z/r> fit coefficients (intercept, slope)", "value": "M_disk/Msun = 0.020 + 0.26 <z/r>", "uncertainty": "intercept +0.047/-0.0056; slope +0.23/-0.089", "units": "Msun", "from_step": 8, "evidence": [{"loc": "6.1 Comparison with Source Properties", "quote": "0.020_{-0.0056}^{+0.047} + 0.26_{-0.089}^{+0.23}"}]}
+],
+"findings_qualitative": [
+{"value": "12CO surface generally lies above 13CO, which lies above CS, but 13CO and CS surfaces overlap in AA Tau, J1615, LkCa 15, SY Cha and V4046 Sgr in the inner disk", "evidence": [{"loc": "3.3 Emission Surface Results", "quote": "We find that in most disks, the $^{12}$CO surface lies above that of the $^{13}$CO surface"}]},
+{"value": "V4046 Sgr surface gap at 174 au is attributed to projection effects rather than a physical gap", "evidence": [{"loc": "6.4.1 Projection Effects", "quote": "Therefore, we conclude that this gap is likely not physically real, but rather an effect caused by the projection of the disk"}]},
+{"value": "Diffuse outer emission in AA Tau, DM Tau, LkCa 15 and SY Cha may indicate photo-desorption even in low-FUV Taurus, but projection effects are not excluded", "evidence": [{"loc": "6.3 Diffuse Emission", "quote": "However, more work is needed to model these disks to determine if they are truly experiencing photo-desorption"}]}
+],
+"claims": [
+{"hypothesis": "Do 12CO, 13CO and CS J=3-2 / J=7-6 trace different vertical layers in the exoALMA disks?", "experiment": "Non-parametric surfaces with disksurf, binned and averaged to <z/r> per line", "result": "Mean <z/r> about 0.28 (12CO), 0.16 (13CO), 0.18 (CS)", "finding": "12CO traces the upper atmosphere, 13CO and CS lower layers", "support": "supported", "evidence": [{"loc": "abstract", "quote": "We find that $^{12}$CO traces the upper disk atmosphere"}]},
+{"hypothesis": "Is emission height related to disk mass and disk size?", "experiment": "Correlate <z/r> of 12CO with R_edge and with disk masses from rotation curves, dust and N2H+", "result": "PCC 0.67 with R_edge; 0.64, 0.38 and 0.20 with the three disk mass estimates", "finding": "<z/r> is positively correlated with disk mass and could be used to infer it", "support": "supported", "evidence": [{"loc": "abstract", "quote": "this relationship offers a straightforward way to infer the disk mass."}]},
+{"hypothesis": "Can the 2-D temperature structure be derived from multiple tracers?", "experiment": "Fit a two-layer sinusoidal model to surface brightness temperatures with emcee", "result": "Mean T_atm about 43 K and mean T_mid about 24 K at 100 au", "finding": "Midplane temperature is likely an upper bound and analytic models do not fully account for the structure", "support": "partially", "evidence": [{"loc": "abstract", "quote": "For most disks, we find that the physical and thermal structure is more complex than analytical models can account for"}]},
+{"hypothesis": "Do emission surfaces and intensity profiles show substructure coincident with continuum or kinematic features?", "experiment": "Peak finding on rolling surfaces and radial peak intensity profiles; comparison with continuum gaps and velocity kinks", "result": "Localized substructure in 76% of disks; continuum correlation only in AA Tau, J1615 and MWC 758", "finding": "Substructure is common and often co-located between tracers, but a link to continuum rings and gaps is not significant overall", "support": "partially", "evidence": [{"loc": "5.3 Comparison with Dust Continuum", "quote": "we do not find significant correlation between the molecular emission surfaces and the dust millimeter continuum rings and gaps"}]}
+],
+"reasoning": [
+{"field": "why_this_data", "value": "exoALMA targets kinematic planet detection in 15 disks at high angular and spectral resolution", "evidence": [{"loc": "1 Introduction", "quote": "The ALMA Large Program exoALMA aims to detect plants forming in-situ at sub-millimeter wavelengths, utilizing kinematic planet-detection techniques."}]},
+{"field": "why_this_method", "value": "Non-continuum-subtracted cubes used for 12CO and 13CO to retain accurate temperatures", "evidence": [{"loc": "3.1 Non-Parametric Surfaces", "quote": "We opt for the non-continuum subtracted cubes for $^{12}$CO and $^{13}$CO to ensure we retrieve accurate temperature measurements"}]}
+],
+"alternatives_considered_or_rejected": [
+{"value": "Hyperbolic tangent temperature form tested and rejected in favour of the sinusoidal form", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "We tested other functional forms, including the hyperbolic tangent function used in (cite: dullemond_2020A&A...633A.137D)"}]}
+],
+"limitations_admitted": [
+{"value": "Temperature uncertainties are statistical only", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "These represent only the statistical errors and do not include systematic errors which can be larger than the statistical errors."}]},
+{"value": "Midplane temperature is an extrapolation informed by priors", "evidence": [{"loc": "4.3 2-D Temperature Structure", "quote": "Because there is no optically thick data at the midplane, this value is an extrapolation informed by the priors."}]}
+],
+"referee_caveats_inferred": [
+"Per-disk visual masking and manual removal of diffuse points make surfaces hard to reproduce exactly",
+"Sample is only 13 disks for surfaces and 6 for CS, so correlations (r about 0.2-0.7) have limited significance and no p-values are given",
+"Disk mass correlation partly relies on rotation-curve masses that use the emission surface as a prior",
+"Temperature fit depends strongly on priors and on excluding points below 20 K"
+],
+"reproducibility": [
+{"field": "data_public_as_stated", "value": "Value-Added-Data-Product (VADP) publicly available", "evidence": [{"loc": "7 Conclusions", "quote": "The data discussed in this paper is provided as a publicly available Value-Added-Data-Product (VADP)."}]},
+{"field": "products_in_archive", "value": "Surfaces, temperatures, radial profiles and substructure locations are in the VADP release", "evidence": [{"loc": "7 Conclusions", "quote": "parametric surfaces, peak intensity radial profiles, integrated intensity radial profiles, and the radial locations of the surface and intensity modulations are all included in the VADP release."}]}
+],
+"code_released": [
+{"value": "disksurf and DISCMINER are open-source python codes; this paper's own scripts are not stated as released", "evidence": [{"loc": "10 Comparing Disksurf to DISCMINER", "quote": "utilized two open-source python codes for the analysis of the emission surfaces"}]}
+],
+"missing_for_reproduction": [
+"Calibration and imaging recipe (deferred to exoALMA overview and imaging papers)",
+"DISCMINER geometry per disk from a companion paper",
+"Priors for the parametric surface fit and per-disk masks",
+"Stellar luminosities and exact data-product file versions"
+],
+"estimated_data_volume_inferred": "Roughly 100-500 GB for 15 disks x 3 lines of imaged cubes (fiducial and high-sensitivity versions); VADP products are small",
+"score_inferred": 3,
+"score_reason": "Data and derived products are public and most fitting settings (emcee walkers, SNR clips, smoothing, peak-finding) are given with numeric results, but calibration/imaging, DISCMINER geometry, per-disk masks and some priors are deferred or unstated.",
+"rediscovery_candidate": true,
+"rediscovery_reason": "Public exoALMA data and VADP, an explicit surface and temperature recipe, and numeric results (mean <z/r>, T_atm, T_mid, correlations) allow an approximate redo, though per-disk visual masking limits exactness.",
+"methods_papers": [
+{"citation": "Teague, Benisty, Facchini, Fukagawa & Pinte 2025 (cite: exoALMA_main)", "why": "Observations, source selection and imaging"},
+{"citation": "Loomis & exoALMA 2025 (cite: exoALMA_imaging)", "why": "Imaging procedure and fiducial cubes"},
+{"citation": "Teague, Law, Huang & Meng 2021 (cite: disksurf_2021JOSS....6.3827T)", "why": "disksurf code"},
+{"citation": "Pinte et al. 2018 (cite: pinte_2018A&A...609A..47P)", "why": "Emission-surface method from isovelocity contours"},
+{"citation": "Izquierdo et al. 2021, 2023 (cite: discminer1_2021A&A...650A.179I; discminer2_2023A&A...674A.113I)", "why": "DISCMINER line-profile modelling"},
+{"citation": "Dartois, Dutrey & Guilloteau 2003 (cite: dartois_2003A&A...399..773D)", "why": "Two-layer temperature model"}
+],
+"companion_papers": [
+{"citation": "Izquierdo et al. 2025 (cite: exoALMA_line_profiles)", "why": "Geometric parameters and line-profile fits"},
+{"citation": "Curone et al. 2025 (cite: exoALMA_cont)", "why": "Continuum rings, gaps and temperatures"},
+{"citation": "Pinte, Ilee & Huang 2025 (cite: exoALMA_channel_maps)", "why": "Kinematic perturbations and proposed planet locations"},
+{"citation": "Longarini et al. 2025 (cite: exoALMA_disk_mass)", "why": "Rotation-curve disk masses"},
+{"citation": "Trapman, Longarini & Rosotti 2025 (cite: exoALMA_trapman)", "why": "N2H+ disk masses"},
+{"citation": "Rosotti, Longarini & Paneque-Carreno 2025 (cite: exoALMA_interpret_height)", "why": "Predicted relation between emission height and disk mass"}
+],
+"related_projects_or_surveys": ["exoALMA", "MAPS (Law et al. 2021)"]
+}

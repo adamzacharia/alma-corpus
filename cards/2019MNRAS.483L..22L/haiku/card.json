@@ -1,0 +1,1735 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2019MNRAS.483L..22L",
+  "title": "Direct detection of quasar feedback via the Sunyaev-Zeldovich effect",
+  "year": 2019,
+  "journal": "Monthly Notices of the Royal Astronomical Society",
+  "first_author": "Lacy, Mark",
+  "n_authors": 9,
+  "arxiv_id": "1811.05023",
+  "doi": "10.1093/mnrasl/sly215",
+  "heldout": true,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2016.1.00309.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "abstract",
+    "quote": "we present evidence that we have made the first detection of such a bubble, associated with the hyperluminous quasar HE 0515-4414"
+   },
+   {
+    "loc": "ALMA",
+    "quote": "Our observations were of a single pointing centered on the quasar using four 2 GHz basebands centered at 133, 135, 145, and 147 GHz."
+   }
+  ],
+  "science": {
+   "fields": [
+    "agn_and_quasars",
+    "galaxy_clusters_and_sz"
+   ],
+   "targets": [
+    {
+     "name": "HE 0515-4414 (quasar)",
+     "coordinates": {
+      "value": "05:17:07.614 -44:10:55.64 (QSO position in point-source table)",
+      "evidence": [
+       {
+        "loc": "Table: Point source emission model subtracted from the ALMA data",
+        "quote": "05:17:07.614 | -44:10:55.64"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "We assume a $\\Lambda$ CDM cosmology with"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=1.71",
+      "evidence": [
+       {
+        "loc": "Table: Point source emission model subtracted from the ALMA data",
+        "quote": "05:17:07.614 | -44:10:55.64"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "We assume a $\\Lambda$ CDM cosmology with"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Reimers et al. 1998 (redshift); cosmology H0=70 km/s/Mpc, Omega_M=0.3, Omega_Lambda=0.7 as stated",
+      "evidence": [
+       {
+        "loc": "Table: Point source emission model subtracted from the ALMA data",
+        "quote": "05:17:07.614 | -44:10:55.64"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)"
+       },
+       {
+        "loc": "Introduction",
+        "quote": "We assume a $\\Lambda$ CDM cosmology with"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can the Sunyaev-Zeldovich effect from the thermal wind bubble of the hyperluminous quasar HE 0515-4414 be directly detected with ALMA, and what does it imply for the wind energetics and lifetime?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we present evidence that we have made the first detection of such a bubble, associated with the hyperluminous quasar HE 0515-4414"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2016.1.00309.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00309.S."
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "ALMA Band 4 (SZE peak near 130 GHz)",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "which lies in ALMA band-4."
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Four 2 GHz basebands centered at 133, 135, 145 and 147 GHz; single pointing centered on the quasar",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "four 2 GHz basebands centered at 133, 135, 145, and 147 GHz."
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "Continuum (thermal SZE)",
+     "transition": "not stated",
+     "rest_frequency": "not stated",
+     "evidence": []
+    },
+    {
+     "species": "H-beta (optical, HST grism; used for black hole mass)",
+     "transition": "H-beta",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Optical and Infrared",
+       "quote": "(9440 km s$^{-1}$)"
+      }
+     ]
+    },
+    {
+     "species": "O III (optical, HST grism; C1 component)",
+     "transition": "[OIII]",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Results and Discussion",
+       "quote": "the C1 component, which appears to be both extended and characterized by a significant velocity gradient"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "4 x 2 GHz basebands",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "four 2 GHz basebands centered at 133, 135, 145, and 147 GHz."
+     }
+    ]
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "Two scheduling blocks: one execution in a relatively large configuration (point-source contribution), and 14 executions in a compact configuration (SZE sensitivity)",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "one executed once in a relatively large configuration"
+     },
+     {
+      "loc": "ALMA",
+      "quote": "one executed 14 times in a compact configuration"
+     }
+    ]
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Approximately 0.7 arcsec FWHM (large configuration) and 2.7 arcsec FWHM (compact configuration)",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "one executed once in a relatively large configuration"
+     },
+     {
+      "loc": "ALMA",
+      "quote": "one executed 14 times in a compact configuration"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "Authors' own observations ('Our observations'); PI/program ownership not stated",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "Our observations were of a single pointing centered on the quasar"
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "Spitzer Space Telescope",
+     "provided": {
+      "value": "3.6 and 4.5 micron imaging (DDT program PID 13221)",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "Spitzer observations were obtained in a DDT program (PID 13221)."
+       },
+       {
+        "loc": "Optical and Infrared",
+        "quote": "The standard pipeline products were used."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Gemini Observatory",
+     "provided": {
+      "value": "GMOS Z-band and FLAMINGOS-2 J and Ks imaging (program GS-2017B-FT-12)",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "Gemini fast turnaround observations were obtained in program GS-2017B-FT-12 using the GMOS and FLAMINGOS-2 instruments."
+       }
+      ]
+     }
+    },
+    {
+     "name": "Hubble Space Telescope",
+     "provided": {
+      "value": "WFC3 F140W, F160W imaging and G141 grism spectra (program 14594, P.I. R. Bielby)",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "HST observations of the field of HE 0515-4414 from program 14594 (P.I. R. Bielby) using the WFC3 instrument were recently made available in the HST archive."
+       }
+      ]
+     }
+    },
+    {
+     "name": "2MASS",
+     "provided": {
+      "value": "J-band photometry used for the continuum flux in the black hole mass estimate",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "2MASS J-band data (Skrutskie et al. 2006)"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Redshift of HE 0515-4414 (z=1.71)",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "HE 0515-4414 ($z=1.71$; Reimers et al. 1998)"
+       }
+      ]
+     },
+     "citation": "Reimers et al. 1998 (ref: 1998A&A...334...96R)"
+    },
+    {
+     "what": {
+      "value": "Black hole mass formulation (M_BH approx 4.3e10 Msun from Hbeta width and J-band continuum)",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "using the formulation of Bennert et al. (2015)"
+       }
+      ]
+     },
+     "citation": "Bennert et al. 2015 (ref: 2015ApJ...809...20B)"
+    },
+    {
+     "what": {
+      "value": "SUMSS 843 MHz non-detection (<6 mJy) used to derive L_1.4 < 6e25 W/Hz",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "undetected in the cm radio"
+       }
+      ]
+     },
+     "citation": "Mauch et al. 2003 (ref: 2003MNRAS.342.1117M)"
+    },
+    {
+     "what": {
+      "value": "Poor cluster at z=0.28 in the field, estimated mass 6e12 Msun, judged too small to contribute to the SZE",
+      "evidence": [
+       {
+        "loc": "Results and Discussion",
+        "quote": "Bielby et al. (2017) find a poor cluster at"
+       },
+       {
+        "loc": "Results and Discussion",
+        "quote": "The estimated mass of this cluster"
+       }
+      ]
+     },
+     "citation": "Bielby et al. 2017 (ref: 2017MNRAS.468.1373B)"
+    },
+    {
+     "what": {
+      "value": "2MASS J-band continuum flux used for black hole mass",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "2MASS J-band data (Skrutskie et al. 2006)"
+       }
+      ]
+     },
+     "citation": "Skrutskie et al. 2006 (ref: 2006AJ....131.1163S)"
+    },
+    {
+     "what": {
+      "value": "Strong-shock and bubble-expansion model for the bubble (RS11 model), y profile correction of 8%",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "Comparison to the $y$ profile in Figure 1 in RS11 shows that the gentle pressure increase in the outer regions of the bubble leads to a correction of 8%."
+       }
+      ]
+     },
+     "citation": "Rowe & Silk 2011 (RS11) (ref: 2011MNRAS.412..905R)"
+    },
+    {
+     "what": {
+      "value": "Enthalpy content of largest ICM cavities from radio jets, used for comparison",
+      "evidence": [
+       {
+        "loc": "Thermal SZE Model",
+        "quote": "This is similar to the enthalpy content of the largest cavities in the ICM produced by radio jets"
+       }
+      ]
+     },
+     "citation": "Birzan et al. 2008 (ref: 2008ApJ...686..859B)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Self-similar wind bubble model (RS11) used as the expansion model for the conical SZE bubble; tSZE and tSZE+kSZE solutions compared",
+     "evidence": [
+      {
+       "loc": "Interpretation of the SZE Signal",
+       "quote": "We base our treatment of the expansion of the wind bubble on the model in RS11"
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "ALMA pipeline",
+     "evidence": [
+      {
+       "loc": "Footnote 1 (ALMA section)",
+       "quote": "Calibration of the data was performed with the ALMA pipeline."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "Amplitude calibration accuracy of approximately 5% (standard calibration strategy)",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "A standard calibration strategy was used resulting in an amplitude calibration accuracy of"
+      }
+     ]
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "Natural weighting for the detection map; separate tapered image for the SZE signal (robust value not stated)",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "No clear signal was readily apparent in the naturally-weighted map"
+      },
+      {
+       "loc": "ALMA",
+       "quote": "so tapering was applied to improve the surface brightness sensitivity of the image"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "Taper with beam matched to the size of the signal; taper parameters not stated",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "The taper with a beam best matched to the size of the signal"
+      }
+     ]
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "Point-source models for the QSO and sources A1, A3, A5 subtracted in the uv-plane; no line-free channel selection stated (continuum-only data)",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "subtract the emission from the quasar itself, and also the three other bright"
+      },
+      {
+       "loc": "ALMA",
+       "quote": "the subtraction of point source models in the"
+      }
+     ]
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "12% correction for the primary beam response",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "After a 12% correction for the response of the primary beam, this peak value of the decrement becomes"
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "Natural: 3.2 x 2.3 arcsec at PA 106 deg; tapered: 6.7 x 6.4 arcsec at PA 110 deg",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "produced an image with"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "Natural: 3.5 uJy/beam; tapered: 6.6 uJy/beam",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "No clear signal was readily apparent in the naturally-weighted map"
+      },
+      {
+       "loc": "ALMA",
+       "quote": "produced an image with"
+      }
+     ]
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "Bubble expansion treated with the RS11 conical/self-similar model, which uses the self-similar stellar wind bubble solution of Weaver et al. (1977)",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "We base our treatment of the expansion of the wind bubble on the model in RS11, which uses the self-similar stellar wind bubble solution of Weaver et al. (1977)."
+       }
+      ]
+     },
+     "from_reference": "Rowe & Silk 2011 (RS11) (cite: 2011MNRAS.412..905R); Weaver et al. 1977 (ref: 1977ApJ...218..377W)"
+    },
+    {
+     "what": {
+      "value": "Calibration strategy and 5% amplitude accuracy taken from the ALMA technical handbook",
+      "evidence": [
+       {
+        "loc": "ALMA",
+        "quote": "A standard calibration strategy was used resulting in an amplitude calibration accuracy of"
+       }
+      ]
+     },
+     "from_reference": "ALMA Technical Handbook (Cycle 4) cited in footnote 1"
+    },
+    {
+     "what": {
+      "value": "Thermal SZE intensity change equation",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "The change in the intensity of the CMB due to the SZE is given by (e.g. Sazonov & Sunyaev 1998)"
+       }
+      ]
+     },
+     "from_reference": "Sazonov & Sunyaev 1998 (ref: 1998AstL...24..553S)"
+    },
+    {
+     "what": {
+      "value": "Equipartition time between protons and electrons used to justify T = T_e",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "The equipartition time between protons and electrons is short"
+       }
+      ]
+     },
+     "from_reference": "Wong & Sarazin 2009 (ref: WS09)"
+    },
+    {
+     "what": {
+      "value": "Black hole mass estimate formulation",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "using the formulation of Bennert et al. (2015)"
+       }
+      ]
+     },
+     "from_reference": "Bennert et al. 2015 (cite: 2015ApJ...809...20B)"
+    },
+    {
+     "what": {
+      "value": "Grism spectra extracted with aXe; broad-band images combined with astrodrizzle",
+      "evidence": [
+       {
+        "loc": "Optical and Infrared",
+        "quote": "The broad-band images were combined using astrodrizzle, and the aXe software (Kümmel et al. 2009) was used to extract the grism spectra."
+       }
+      ]
+     },
+     "from_reference": "Kummel et al. 2009 (ref: 2009PASP..121...59K)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Imaging software, task and version used to form the natural and tapered ALMA images (not named)",
+    "Robust weighting value and exact uv-taper parameters (taper beam size) used for the tapered image",
+    "Cell size, image size and deconvolution/cleaning setup for the ALMA maps",
+    "Method and data used to fit or derive the point-source model fluxes subtracted from the uv data",
+    "Whether the ALMA pipeline version and CASA version used for calibration are stated",
+    "Flux calibrator, bandpass and phase calibration choices and any self-calibration",
+    "Exact primary beam model and how the 12% correction was applied",
+    "Definition of the aperture and noise estimate behind the 3.5 sigma significance of the dip",
+    "Adopted electron temperature T_e and gas density assumptions used to convert pressure to y",
+    "Values of y_peak and the RS11 wind parameters used in the conical model, and the f_Omega normalisation details",
+    "Extraction method for the peak decrement and the kSZE/tSZE split (fitting or analytic)",
+    "Whether the ALMA data are public or proprietary and the archive product level used"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Remove point sources from the ALMA data",
+    "method": {
+     "value": "Point-source models for the QSO and three bright sources (A1, A3, A5) subtracted in the uv-plane; sources unresolved in the compact configuration data",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "Fortunately, all sources were unresolved in the smaller configuration data"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Point-source fluxes: QSO 66.2 uJy, A1 41.7 uJy, A3 21.8 uJy, A5 188.2 uJy",
+      "evidence": [
+       {
+        "loc": "Table: Point source emission model subtracted from the ALMA data",
+        "quote": "Point source emission model subtracted from the ALMA data"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Residual diffuse emission around A5 possibly remains",
+      "evidence": [
+       {
+        "loc": "ALMA",
+        "quote": "with the possible exception of a small amount of diffuse extended emission associated with the brightest source, A5."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Residual diffuse emission from A5 flagged as possible contamination",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "with the possible exception of a small amount of diffuse extended emission associated with the brightest source, A5."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Image the SZE signal with natural and tapered weighting",
+    "method": {
+     "value": "Natural-weighted map for point-source sensitivity; tapered map matched to the signal size to improve surface-brightness sensitivity; dip measured SW of the quasar",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "so tapering was applied to improve the surface brightness sensitivity of the image"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Taper matched to signal size; taper parameters not stated",
+      "evidence": [
+       {
+        "loc": "ALMA",
+        "quote": "The taper with a beam best matched to the size of the signal"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Decrement significant at the 3.5 sigma level",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "recovers an apparent dip of flux density of"
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Measure the peak SZE decrement",
+    "method": {
+     "value": "Peak of the tapered-image dip, corrected for primary beam response",
+     "evidence": [
+      {
+       "loc": "ALMA",
+       "quote": "to the SW of the quasar position."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "12% primary beam correction",
+      "evidence": [
+       {
+        "loc": "ALMA",
+        "quote": "After a 12% correction for the response of the primary beam, this peak value of the decrement becomes"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Decrement is on one side only (SW of quasar)",
+      "evidence": [
+       {
+        "loc": "Abstract",
+        "quote": "Our detection appears on only one side of the quasar"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Convert the decrement to Compton y, pressure and bubble enthalpy (thermal model)",
+    "method": {
+     "value": "Brightness temperature change from the peak decrement, Compton parameter from the thermal SZE spectrum, electron pressure from y and bubble radius, enthalpy energy of the bubble",
+     "evidence": [
+      {
+       "loc": "Interpretation of the SZE Signal",
+       "quote": "For the observed peak decrement, this gives a Compton parameter"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Average projected bubble radius r = 3.9 arcsec = 33 kpc; peak at 10.1 arcsec = 85 kpc; outer edge 12.8 arcsec = 108 kpc (beam-corrected)",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "The average projected radius of the bubble is"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Equipartition of ions and electrons so T = T_e; total number density n = 1.92 n_e; enthalpy (5/2) n k T V as minimum energy",
+      "evidence": [
+       {
+        "loc": "Thermal SZE Model",
+        "quote": "we assume equipartition of ions and electrons, so that"
+       }
+      ]
+     },
+     {
+      "value": "Pure thermal SZE (v_r/c negligible compared to thermal term)",
+      "evidence": [
+       {
+        "loc": "Thermal SZE Model",
+        "quote": "We first consider a pure thermal SZE model"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 5,
+    "goal": "Constrain wind luminosity and lifetime with tSZE-only conical RS11 model",
+    "method": {
+     "value": "Solve the RS11 radius relation and the y_max relation simultaneously for L_W and t using observed R and y_max; derive E_W, shock speed and post-shock temperature",
+     "evidence": [
+      {
+       "loc": "Interpretation of the SZE Signal",
+       "quote": "we can estimate both"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Cone half angle 30 deg; axis at 45 deg to line of sight; f_Omega = (1 - cos theta)/2 approx 0.067",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "We estimate the half angle of the cone in our system to be"
+       }
+      ]
+     },
+     {
+      "value": "Observed R approx 112 kpc (deprojected) and y_max approx 2.08e-5",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "Since we have observed values for both"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Wind kinetic luminosity L_W of the observed SZE bubble is one-sided; energy doubles for two-sided outflow",
+      "evidence": [
+       {
+        "loc": "Table: model parameters (tab:models)",
+        "quote": "Assumes an intrinsically one-sided outflow and should be doubled for a two-sided outflow."
+       }
+      ]
+     },
+     {
+      "value": "Cooling negligible in the RS11 model; IGM density from cosmological bias and halo overdensity",
+      "evidence": [
+       {
+        "loc": "Interpretation of the SZE Signal",
+        "quote": "The first is that cooling of the hot phase gas is negligible."
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Analytic solution of two equations with two unknowns (no sampler stated)",
+     "evidence": [
+      {
+       "loc": "Interpretation of the SZE Signal",
+       "quote": "Equations (6) & (7) in RS11 imply that the outer radius of the SZE bubble is"
+      }
+     ]
+    },
+    "validation": {
+     "value": "Total energy agrees fairly well across enthalpy, tSZE-only and kSZE+tSZE methods",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "the fair agreement in the total energy estimate between the three different methods"
+      }
+     ]
+    }
+   },
+   {
+    "order": 6,
+    "goal": "Model the one-sided decrement as tSZE plus kSZE",
+    "method": {
+     "value": "Add kinematic SZE term to y_max relation; solve with the same conical RS11 geometry; kSZE and tSZE contributions compared",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "Adding this kSZE term to the right side of Equation"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "Kinetic term adds to tSZE; lifetime almost twice the tSZE-only value; L_W factor 3-4 smaller",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "The wind luminosity is roughly a factor of 3-4 smaller"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Approaching and receding halves of the outflow have tSZE and kSZE of same or opposite sign",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "In the receding half of the outflow (relative to the observer) the kZSE and tSZE contributions to the SZE are both of the same sign"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Strong-shock assumption checked against halo sound speed; no SZE from quasar after 20 arcsec taper",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "we detect no SZE from the quasar"
+      }
+     ]
+    }
+   },
+   {
+    "order": 7,
+    "goal": "Check cooling and equipartition timescales",
+    "method": {
+     "value": "Cooling time from average pressure (n_e) using RS11 cooling prescription, bremsstrahlung dominated; equipartition time compared to bubble age",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "The average pressure in the bubble implies"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "n_e approx 0.16 cm^-3",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "The average pressure in the bubble implies"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "Bremsstrahlung-dominated cooling",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "(dominated by bremsstrahlung)"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Cooling time approx 0.6 Gyr so cooling can be ignored; equipartition time approx 4000 yr",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "suggesting that cooling effects can be ignored"
+      }
+     ]
+    }
+   },
+   {
+    "order": 8,
+    "goal": "Test whether a starburst could power the wind",
+    "method": {
+     "value": "Star formation rate needed to supply the observed wind with mass loading factor unity and wind velocity 1000 km/s",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "assuming a mass loading factor of unity and a wind velocity of 1000 km s"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [
+     {
+      "value": "SFR approx 500 Msun/yr sustained for 1.3e8 yr; stellar mass approx 7e10 Msun",
+      "evidence": [
+       {
+        "loc": "Thermal Plus Kinetic SZE Model",
+        "quote": "a star formation rate of approximately"
+       }
+      ]
+     }
+    ],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Starburst origin cannot be ruled out without SFR constraints",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "we cannot currently rule out a starburst origin"
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "ALMA pipeline",
+    "version": "not stated",
+    "used_for": {
+     "value": "Calibration of the ALMA data",
+     "evidence": [
+      {
+       "loc": "Footnote 1 (ALMA section)",
+       "quote": "Calibration of the data was performed with the ALMA pipeline."
+      }
+     ]
+    }
+   },
+   {
+    "name": "IRAF (Gemini IRAF package, GMOS data reduction package)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Bias subtraction, flat fielding and coaddition of GMOS images; dark subtraction, flat fielding and combination of FLAMINGOS-2 images",
+     "evidence": [
+      {
+       "loc": "Optical and Infrared",
+       "quote": "We used the standard GMOS data reduction package in IRAF to subtract the bias, apply the flat field, and coadd the final images."
+      }
+     ]
+    }
+   },
+   {
+    "name": "astrodrizzle",
+    "version": "not stated",
+    "used_for": {
+     "value": "Combining HST WFC3 broad-band images",
+     "evidence": [
+      {
+       "loc": "Optical and Infrared",
+       "quote": "The broad-band images were combined using astrodrizzle"
+      }
+     ]
+    }
+   },
+   {
+    "name": "aXe",
+    "version": "not stated",
+    "used_for": {
+     "value": "Extraction of HST G141 grism spectra",
+     "evidence": [
+      {
+       "loc": "Optical and Infrared",
+       "quote": "the aXe software (Kümmel et al. 2009) was used to extract the grism spectra."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Peak SZE decrement, tapered image, before primary beam correction",
+    "value": "-23.1",
+    "uncertainty": "not stated (significant at 3.5 sigma)",
+    "units": "uJy",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "recovers an apparent dip of flux density of"
+     }
+    ]
+   },
+   {
+    "quantity": "Peak SZE decrement after primary beam correction",
+    "value": "-25.9",
+    "uncertainty": "not stated",
+    "units": "uJy",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "After a 12% correction for the response of the primary beam, this peak value of the decrement becomes"
+     }
+    ]
+   },
+   {
+    "quantity": "Brightness temperature change at peak",
+    "value": "-37.7",
+    "uncertainty": "not stated",
+    "units": "microKelvin",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Interpretation of the SZE Signal",
+      "quote": "corresponds to a brightness temperature change of"
+     }
+    ]
+   },
+   {
+    "quantity": "Average projected bubble radius",
+    "value": "3.9 arcsec = 33",
+    "uncertainty": "not stated",
+    "units": "kpc",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Interpretation of the SZE Signal",
+      "quote": "The average projected radius of the bubble is"
+     }
+    ]
+   },
+   {
+    "quantity": "Actual (deprojected) outer radius of bubble",
+    "value": "112",
+    "uncertainty": "not stated",
+    "units": "kpc",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Interpretation of the SZE Signal",
+      "quote": "so that the actual radius is about 112 kpc"
+     }
+    ]
+   },
+   {
+    "quantity": "Compton parameter y at peak",
+    "value": "2.08e-5",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Thermal SZE Model",
+      "quote": "For the observed peak decrement, this gives a Compton parameter"
+     }
+    ]
+   },
+   {
+    "quantity": "Electron pressure in bubble",
+    "value": "1.26e-11",
+    "uncertainty": "not stated",
+    "units": "Pa",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Thermal SZE Model",
+      "quote": "The electron pressure in the bubble is then"
+     }
+    ]
+   },
+   {
+    "quantity": "Total energy injected into bubble (enthalpy, thermal model; value as printed)",
+    "value": "2.67e53 (r/33 kpc)^2 (y/2.08e-5)",
+    "uncertainty": "not stated",
+    "units": "W (as printed)",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Thermal SZE Model",
+      "quote": "the total energy injected into the bubble by the outflow is"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind kinetic luminosity, tSZE only",
+    "value": "1.70e11",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE only | 1.70 | 8.13 | 1.68 | 807 | 0.91 | 0.95"
+     }
+    ]
+   },
+   {
+    "quantity": "Bubble age, tSZE only",
+    "value": "8.13e7",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE only | 1.70 | 8.13 | 1.68 | 807 | 0.91 | 0.95"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind energy, tSZE only",
+    "value": "1.68e53",
+    "uncertainty": "not stated",
+    "units": "J",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE only | 1.70 | 8.13 | 1.68 | 807 | 0.91 | 0.95"
+     }
+    ]
+   },
+   {
+    "quantity": "Shock speed, tSZE only",
+    "value": "807",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE only | 1.70 | 8.13 | 1.68 | 807 | 0.91 | 0.95"
+     }
+    ]
+   },
+   {
+    "quantity": "Shock temperature, tSZE only",
+    "value": "0.91e7",
+    "uncertainty": "not stated",
+    "units": "K",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE only | 1.70 | 8.13 | 1.68 | 807 | 0.91 | 0.95"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind kinetic luminosity, tSZE plus kSZE",
+    "value": "0.429e11",
+    "uncertainty": "not stated",
+    "units": "Lsun",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+     }
+    ]
+   },
+   {
+    "quantity": "Bubble age, tSZE plus kSZE",
+    "value": "12.87e7",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind energy, tSZE plus kSZE",
+    "value": "0.67e53",
+    "uncertainty": "not stated",
+    "units": "J",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+     }
+    ]
+   },
+   {
+    "quantity": "Shock speed, tSZE plus kSZE",
+    "value": "510",
+    "uncertainty": "not stated",
+    "units": "km/s",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+     }
+    ]
+   },
+   {
+    "quantity": "kSZE to tSZE ratio, tSZE plus kSZE model",
+    "value": "1.50",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Table: model parameters (tab:models)",
+      "quote": "tSZE plus kSZE | 0.429 | 12.87 | 0.67 | 510 | 0.36 | 1.50"
+     }
+    ]
+   },
+   {
+    "quantity": "Fraction of decrement due to kSZE in tSZE plus kSZE model",
+    "value": "60",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "In this model, about 60% (40%) of the SZE decrement is due to the kSZE (tSZE)."
+     }
+    ]
+   },
+   {
+    "quantity": "Wind luminosity as fraction of bolometric luminosity (abstract)",
+    "value": "0.01",
+    "uncertainty": "not stated",
+    "units": "% of bolometric luminosity",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "constrain the wind luminosity to the lower end of theoretical predictions"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind luminosity as fraction of bolometric luminosity (Discussion, current power)",
+    "value": "0.003",
+    "uncertainty": "not stated",
+    "units": "% of bolometric luminosity",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "it is only a small fraction"
+     }
+    ]
+   },
+   {
+    "quantity": "Wind energy as fraction of radiative energy of black hole, eta=0.1",
+    "value": "0.01 (0.02 if two-sided)",
+    "uncertainty": "not stated",
+    "units": "%",
+    "from_step": 5,
+    "evidence": [
+     {
+      "loc": "Discussion",
+      "quote": "(0.02% if the wind is two-sided), is still low compared to the models."
+     }
+    ]
+   },
+   {
+    "quantity": "Cooling time of bubble",
+    "value": "0.6",
+    "uncertainty": "not stated",
+    "units": "Gyr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "This corresponds to a cooling time of"
+     }
+    ]
+   },
+   {
+    "quantity": "Bubble age (abstract estimate)",
+    "value": "0.1",
+    "uncertainty": "not stated",
+    "units": "Gyr",
+    "from_step": 6,
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the age we estimate for the bubble"
+     }
+    ]
+   },
+   {
+    "quantity": "Black hole mass of HE 0515-4414",
+    "value": "4.3e10",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Optical and Infrared",
+      "quote": "to estimate the mass of the black hole"
+     }
+    ]
+   },
+   {
+    "quantity": "Equipartition time between protons and electrons",
+    "value": "4000",
+    "uncertainty": "not stated",
+    "units": "yr",
+    "from_step": 7,
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "The equipartition time between protons and electrons is short"
+     }
+    ]
+   },
+   {
+    "quantity": "Radio luminosity upper limit at 1.4 GHz",
+    "value": "6e25",
+    "uncertainty": "not stated (upper limit)",
+    "units": "W/Hz",
+    "from_step": 0,
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "undetected in the cm radio"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Thermal wind bubble detected via SZE on one side of the quasar, with extended emission-line gas at the same position angle",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "The SZE detection is corroborated by the presence of extended emission line gas at the same position angle as the wind."
+     }
+    ]
+   },
+   {
+    "value": "Wind luminosity is low relative to theoretical predictions, but bubble cooling time is long so bubbles may provide feedback between quasar bursts",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "means that such bubbles may be effective at providing feedback between bursts of quasar activity."
+     }
+    ]
+   },
+   {
+    "value": "One-sided appearance is naturally explained by a combined tSZE and kSZE model",
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "a combined tSZE and kSZE model provides a natural explanation for the one-sided appearance"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "A thermal wind from a luminous quasar inflates a hot bubble detectable via the SZE",
+    "experiment": "ALMA Band 4 observations of HE 0515-4414 in a compact configuration with tapering, point-source subtraction of bright sources",
+    "result": "Apparent SZE decrement of -23.1 uJy/beam (-25.9 after primary beam correction) at 3.5 sigma, SW of the quasar",
+    "finding": "First detection of a quasar wind bubble via SZE (single object)",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "we present evidence that we have made the first detection of such a bubble"
+     },
+     {
+      "loc": "ALMA",
+      "quote": "significant at the 3.5$\\sigma$ level"
+     }
+    ]
+   },
+   {
+    "hypothesis": "The one-sided SZE decrement is explained by a combined thermal and kinetic SZE",
+    "experiment": "Compare tSZE-only and tSZE plus kSZE conical RS11 bubble models",
+    "result": "kSZE contributes about 60% of the decrement; tSZE+kSZE gives L_W 0.429e11 Lsun and t 12.87e7 yr versus 1.70e11 Lsun and 8.13e7 yr for tSZE only",
+    "finding": "Combined tSZE+kSZE model gives a natural explanation for the one-sided appearance",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "a combined tSZE and kSZE model provides a natural explanation for the one-sided appearance"
+     },
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "In this model, about 60% (40%) of the SZE decrement is due to the kSZE (tSZE)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Quasar wind luminosity is at the low end of theoretical predictions",
+    "experiment": "Compare inferred wind luminosity and wind energy with bolometric and Eddington-based estimates",
+    "result": "Wind luminosity about 0.01% of the bolometric luminosity; theory predicts about 1-10%",
+    "finding": "Wind is weak relative to model predictions, but this is a single object",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "constrain the wind luminosity to the lower end of theoretical predictions"
+     },
+     {
+      "loc": "Discussion",
+      "quote": "Most theoretical models predict wind kinetic luminosities"
+     }
+    ]
+   },
+   {
+    "hypothesis": "Bubbles persist long enough to provide feedback between quasar bursts",
+    "experiment": "Estimate bubble age and cooling time with bremsstrahlung cooling from average pressure",
+    "result": "Bubble age about 0.1 Gyr; cooling time about 0.6 Gyr",
+    "finding": "Cooling time is long so bubbles may provide feedback between bursts",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "the age we estimate for the bubble"
+     },
+     {
+      "loc": "Thermal Plus Kinetic SZE Model",
+      "quote": "suggesting that cooling effects can be ignored"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "Selected the most luminous radio-quiet quasar in the literature with good ALMA visibility",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "We selected the most luminous radio-quiet quasar we could find in the literature that had good visibility to ALMA"
+     }
+    ]
+   },
+   "why_this_method": {
+    "value": "Interferometers in compact configurations match the predicted SZE size scale of 10-100 kpc",
+    "evidence": [
+     {
+      "loc": "Introduction",
+      "quote": "Attempts to directly detect the SZE from thermal winds can be made with interferometers such as the Atacama Large Millimeter Array"
+     }
+    ]
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Intrinsically one-sided outflow or counter-flow blocked by higher ISM density",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "There are a number of possible explanations, including an intrinsically one-sided outflow, or the counter-flow being blocked by a higher ISM density in its path."
+      }
+     ]
+    },
+    {
+     "value": "Contamination from intracluster or intragroup medium rejected",
+     "evidence": [
+      {
+       "loc": "Results and Discussion",
+       "quote": "The lack of any other obvious group or cluster in the field argues against significant contamination"
+      }
+     ]
+    },
+    {
+     "value": "Starburst origin of the wind, not ruled out",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "we cannot currently rule out a starburst origin"
+      }
+     ]
+    },
+    {
+     "value": "Massive virialized halo with sound speed comparable to shock speed, rejected by absence of SZE from the quasar",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "we detect no SZE from the quasar"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "Detection judged at 3.5 sigma significance in tapered image",
+    "evidence": [
+     {
+      "loc": "ALMA",
+      "quote": "recovers an apparent dip of flux density of"
+     }
+    ]
+   },
+   "limitations_admitted": [
+    {
+     "value": "Single object; population-level conclusions require more objects",
+     "evidence": [
+      {
+       "loc": "Discussion",
+       "quote": "We emphasize though that this is only a single object"
+      }
+     ]
+    },
+    {
+     "value": "Strong-shock assumption may not hold for high halo mass",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "the assumption of a strong shock may not be valid"
+      }
+     ]
+    },
+    {
+     "value": "Radio AGN contribution not constrained; further radio observations needed",
+     "evidence": [
+      {
+       "loc": "Thermal Plus Kinetic SZE Model",
+       "quote": "Further radio continuum observations are therefore needed"
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Detection is only 3.5 sigma in a single tapered map with a 6.7 x 6.4 arcsec beam; sensitivity to the imaging and taper choice is not shown.",
+    "Imaging software, robust value and taper parameters are not stated, so the -23.1 uJy value cannot be reproduced exactly from the text.",
+    "Spherical RS11 model is adapted to a cone by assumption; the 30 deg cone, 45 deg axis angle and 8% correction are judgement calls.",
+    "Wind-luminosity fraction is quoted as 0.01% in the abstract and 0.003% in the Discussion; the paper does not reconcile these.",
+    "The enthalpy energy formula carries units of W, which looks like a units slip for an energy.",
+    "Name given as HE 0515-4415 in one place versus HE 0515-4414 elsewhere.",
+    "A diffuse component near the bright source A5 may remain after point-source subtraction.",
+    "Tapered-beam check at 20 arcsec is claimed but not shown.",
+    "Starburst scenario and radio AGN contribution are not constrained."
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "Paper states it uses ALMA data 2016.1.00309.S; public or proprietary status not stated",
+    "evidence": [
+     {
+      "loc": "Acknowledgments",
+      "quote": "This paper makes use of the following ALMA data: ADS/JAO.ALMA#2016.1.00309.S."
+     }
+    ]
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [
+    {
+     "value": "not stated",
+     "evidence": []
+    }
+   ],
+   "missing_for_reproduction": [
+    "Imaging software, task, cell size, image size, deconvolver and robust weighting",
+    "Taper parameters and the uv range used for the tapered image",
+    "Point-source model fluxes: how they were derived and from which data",
+    "ALMA pipeline and CASA versions",
+    "Primary beam model and exact application of the 12% correction",
+    "RS11 model parameters (y_peak, cooling prescription details) and the fitting or solving code",
+    "Dip extraction aperture and noise estimate for the 3.5 sigma significance",
+    "Adopted T_e, n and gas parameters used in the thermal calculation"
+   ],
+   "estimated_data_volume_inferred": "Small: one pointing, four 2 GHz basebands, and 15 scheduling block executions (1 large plus 14 compact); likely a few gigabytes (inferred).",
+   "score_inferred": 2,
+   "score_reason": "Scale 0-5. Data identified and the analytic model is clear, but imaging software, weighting, taper, cell size and point-source handling are unstated, so a reproducer would not get the same map.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Data public status is not stated, and the imaging recipe is too incomplete to redo the 3.5 sigma detection reliably."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Rowe & Silk 2011 (RS11) (ref: 2011MNRAS.412..905R)",
+     "why": "Wind bubble expansion and y profile model used for the conical SZE interpretation"
+    },
+    {
+     "citation": "Weaver et al. 1977 (ref: 1977ApJ...218..377W)",
+     "why": "Self-similar stellar wind bubble solution underlying RS11"
+    },
+    {
+     "citation": "Sazonov & Sunyaev 1998 (ref: 1998AstL...24..553S)",
+     "why": "Frequency-dependent SZE intensity expression"
+    },
+    {
+     "citation": "Bennert et al. 2015 (ref: 2015ApJ...809...20B)",
+     "why": "Black hole mass estimate formulation"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Bielby et al. 2017 (ref: 2017MNRAS.468.1373B)",
+     "why": "Source of HST program data and the z=0.28 cluster in the field"
+    },
+    {
+     "citation": "Alatalo et al. 2015 (ref: 2015ApJ...798...31A)",
+     "why": "Related Lacy-group outflow work cited for molecular gas and feedback context"
+    }
+   ],
+   "related_projects_or_surveys": []
+  }
+ },
+ "provenance": {
+  "model": "claude-haiku-5-5",
+  "custom_id": "card-haiku-2c1428673bbdaf4d48db9f620a8e4678",
+  "batch_id": "msgbatch_019HY5YCVqUVvFaVgQx8QfjR",
+  "run": "pilot",
+  "collected_at": "2026-10-27T23:21:22",
+  "usage": {
+   "input_tokens": 13694,
+   "output_tokens": 34255,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.009279,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 139,
+  "quotes_ok": 139,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 1,
+  "project_codes": 1,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 27,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 117,
+   "stated": 86,
+   "rate": 0.735
+  },
+  "evidence_ok": false
+ }
+}

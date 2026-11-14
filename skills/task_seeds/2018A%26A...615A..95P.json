@@ -1,0 +1,183 @@
+{
+ "bibcode": "2018A&A...615A..95P",
+ "title": "Resolved millimeter-dust continuum cavity around the very low mass young star CIDA 1",
+ "year": 2018,
+ "doi": "10.1051/0004-6361/201832690",
+ "arxiv_id": "1805.00960",
+ "fields": [
+  "protoplanetary_disks"
+ ],
+ "question": "Does the disk around the very low mass star CIDA 1 have a resolved mm-dust cavity, and what could cause it?",
+ "alma_project_codes": [
+  "2015.1.00934.S"
+ ],
+ "data": {
+  "bands": "Band 7 (~338 GHz, 887 µm)",
+  "arrays": "38 antennas",
+  "angular_resolution": "0.21\" x 0.12\"",
+  "sensitivity": "rms 0.15 mJy/beam"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Line fluxes (Hα etc.) used for extinction and accretion luminosity",
+    "evidence": [
+     {
+      "loc": "2. CIDA 1",
+      "quote": "measured by Herczeg & Hillenbrand (2008)"
+     }
+    ]
+   },
+   "citation": "Herczeg & Hillenbrand (2008)"
+  },
+  {
+   "what": {
+    "value": "Taurus Class II dust masses and mm fluxes for comparison",
+    "evidence": [
+     {
+      "loc": "6. Discussion",
+      "quote": "the millimeter fluxes and dust masses obtained in Andrews et al. (2013)"
+     }
+    ]
+   },
+   "citation": "Andrews et al. (2013)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Phase-center, PA and inclination",
+   "method": "fixvis offset from uvmodelfit with Gaussian or disk model",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "PA=12.0±0.9 deg, i=37.3±0.6 deg"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Dust mass from total flux",
+   "method": "optically thin Hildebrand formula",
+   "software": [],
+   "key_parameters": [
+    "d=140 pc; T_dust 20 K, or 25(L/Lsun)^0.25 K"
+   ],
+   "assumptions": [
+    "kappa = 2.3 cm2/g (nu/230 GHz)^0.4"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit ring model to visibilities",
+   "method": "Deprojected real visibilities fit with Gaussian ring (symmetric and asymmetric) via Bessel transform",
+   "software": [
+    "emcee"
+   ],
+   "key_parameters": [
+    "200 walkers, 1000 steps; r_peak in [1,150] au, sigma in [1,50] au, F in [0,0.1] Jy; radial grid 0-500 au step 0.25 au"
+   ],
+   "assumptions": [
+    "axisymmetric disk"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "ring peak radius (symmetric)",
+   "value": "20.7",
+   "uncertainty": "+0.1/-0.1",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Data Analysis",
+     "quote": "rpeak = 20.7 −+00..11 au"
+    }
+   ]
+  },
+  {
+   "quantity": "ring width sigma (symmetric)",
+   "value": "5.8",
+   "uncertainty": "+0.2/-0.2",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Data Analysis",
+     "quote": "σwidth = 5.8 −+00..22 au"
+    }
+   ]
+  },
+  {
+   "quantity": "total flux from fit",
+   "value": "35.4",
+   "uncertainty": "+0.2/-0.2",
+   "units": "mJy",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Data Analysis",
+     "quote": "Ftotal = 35.4 −+00..22 mJy"
+    }
+   ]
+  },
+  {
+   "quantity": "dust mass (adopted)",
+   "value": "5.2e-5",
+   "uncertainty": "1.7e-5",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4. Results",
+     "quote": "we will adopt the value of 5.2 ×10−5 ±1.7 ×10−5 M⊙"
+    }
+   ]
+  },
+  {
+   "quantity": "BIC difference",
+   "value": "11.7",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Data Analysis",
+     "quote": "the difference between the two BICs is 11.7"
+    }
+   ]
+  },
+  {
+   "quantity": "asymmetric ring r_peak",
+   "value": "28.8",
+   "uncertainty": "+0.5/-0.9",
+   "units": "au",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "5. Data Analysis",
+     "quote": "rpeak = 28.8 −+00..59 au"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "clean threshold, niter, mask, cell and image size",
+  "how channels were averaged and uv-weights",
+  "MCMC priors form, likelihood and binning of visibilities",
+  "likelihood details for BIC",
+  "reference image phase-center handling",
+  "exact uvmodelfit settings"
+ ],
+ "missing_for_reproduction": [
+  "clean parameters",
+  "visibility binning",
+  "MCMC likelihood details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Public data and a clear model fit, but imaging and fit details are sparse.",
+ "rediscovery_reason": "Data are public, the fit is simple and results are numeric.",
+ "source_card": "cards/2018A%26A...615A..95P/sonnet/card.md"
+}

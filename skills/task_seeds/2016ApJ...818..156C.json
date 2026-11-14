@@ -1,0 +1,322 @@
+{
+ "bibcode": "2016ApJ...818..156C",
+ "title": "A Disk-based Dynamical Constraint on the Mass of the Young Binary DQ Tau",
+ "year": 2016,
+ "doi": "10.3847/0004-637X/818/2/156",
+ "arxiv_id": "1601.03806",
+ "fields": [
+  "protoplanetary_disks",
+  "stellar_physics"
+ ],
+ "question": "What is the dynamical mass of the DQ Tau binary from its circumbinary CO disk, and does it agree with the spectroscopic orbit mass and pre-MS models?",
+ "alma_project_codes": [
+  "2012.1.00496.S"
+ ],
+ "data": {
+  "bands": "Band 6 (1.3 mm, 232 GHz continuum)",
+  "arrays": "34 12 m antennas, separations 21 to 540 m",
+  "angular_resolution": "0.8\" x 0.6\" at P.A. 145 deg",
+  "sensitivity": "continuum 70 uJy/beam; CO and 13CO 8 mJy/beam per 0.1 km/s channel; C18O ~4 mJy/beam per 0.2 km/s channel"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "BVRIJ photometry used for the HR-diagram fit",
+    "evidence": [
+     {
+      "loc": "4.2 Comparison to Pre-MS Evolution Models",
+      "quote": "we explored a two-component fit to the $BVRIJ$ photometry compiled by (cite: rydgren84), (cite: kolotilov89), and (cite: skrutskie06) (cite: andrews13)."
+     }
+    ]
+   },
+   "citation": "Rydgren 1984; Kolotilov 1989; Skrutskie 2006; Andrews 2013"
+  },
+  {
+   "what": {
+    "value": "LKM RV differences reconstructed from Table 1 of Mathieu et al. 1997",
+    "evidence": [
+     {
+      "loc": "3.2 An Updated Spectroscopic Orbital Solution",
+      "quote": "We therefore reconstructed the original velocity differences trivially from the primary and secondary “measurements” reported by (cite: mathieu97) in their Table 1."
+     }
+    ]
+   },
+   "citation": "(cite: mathieu97)"
+  },
+  {
+   "what": {
+    "value": "Infrared interferometry astrometric constraint used to enforce i > 90 deg",
+    "evidence": [
+     {
+      "loc": "Footnote 3",
+      "quote": "we employ the astrometric constraint made by (cite: boden09) from infrared interferometry measurements to enforce $i > 90\\ensuremath{^\\circ}$ in our analysis."
+     }
+    ]
+   },
+   "citation": "(cite: boden09)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image ALMA data",
+   "method": "CASA calibration, self-calibration on continuum, time-averaging to 30 s, continuum subtraction, CLEAN imaging with robust 0.5",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; 0.1 km/s channels for CO"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Forward-model CO visibilities of Keplerian disk",
+   "method": "Parametric disk model, LTE excitation, RADMC-3D ray tracing, Fourier transform to data uv points, chi2 likelihood, 23 contaminated channels excluded",
+   "software": [
+    "RADMC-3D",
+    "emcee"
+   ],
+   "key_parameters": [
+    "p fixed to 1; 12-dimensional posterior"
+   ],
+   "assumptions": [
+    "Vertically isothermal, radial power-law temperature, hydrostatic equilibrium, Keplerian rotation, LTE"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Measure RVs from CfA spectra",
+   "method": "TODCOR two-dimensional cross-correlation with PHOENIX synthetic templates, equal temperatures assumed",
+   "software": [
+    "TODCOR"
+   ],
+   "key_parameters": [
+    "Teff ~4000 K, vsini 14 and 11 km/s, solar metallicity, logg 3.5-4.5"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Fit updated spectroscopic orbit",
+   "method": "Weighted least-squares joint fit of 33 CfA RV pairs and 22 LKM RV differences; uncertainties iteratively adjusted to reduced chi2 near unity",
+   "software": [],
+   "key_parameters": [
+    "common gamma adopted"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Combine disk and RV constraints",
+   "method": "Joint posterior of M and i assuming coplanarity; dynamical distance; mutual inclination",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": [
+    "Disk and binary planes coplanar for combined mass"
+   ]
+  },
+  {
+   "order": 6,
+   "goal": "Compare with pre-MS models",
+   "method": "Two-component BVRIJ photometric fit with BT-Settl, then masses and ages from pre-MS tracks assuming coevality",
+   "software": [],
+   "key_parameters": [
+    "logg = 4.0 fixed; RV mass ratio prior 0.93+/-0.05; Teff prior 3900+/-250 K; R_V = 3.1"
+   ],
+   "assumptions": [
+    "Coeval stars, normal pre-MS evolution"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Disk-based binary mass",
+   "value": "1.27",
+   "uncertainty": "+0.46/-0.27",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$1.27_{-0.27}^{+0.46}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Disk inclination",
+   "value": "160",
+   "uncertainty": "3",
+   "units": "deg",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 2",
+     "quote": "$i_d$ (${}^\\circ$)                   | 160      | 3"
+    }
+   ]
+  },
+  {
+   "quantity": "M/d",
+   "value": "0.0086",
+   "uncertainty": "+0.0021/-0.0018",
+   "units": "Msun/pc",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3.1 CO Disk Modeling",
+     "quote": "$M_{\\ast}/d = 0.0086_{-0.0018}^{+0.0021}\\,M_{\\odot}$ pc$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "M sin^2 i_d",
+   "value": "0.164",
+   "uncertainty": "0.016",
+   "units": "Msun",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+     "quote": "$M_\\ast\\, \\sin^2 i_d = 0.164\\pm0.016\\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Spectroscopic (M1+M2) sin^3 i",
+   "value": "0.0674",
+   "uncertainty": "0.0033",
+   "units": "Msun",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "$(M_1+M_2) \\sin^3 i$ ($M_{\\ensuremath{\\odot}}$) |  0.0674 $\\pm$ 0.0033"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital period",
+   "value": "15.80158",
+   "uncertainty": "0.00066",
+   "units": "days",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "15.80158 $\\pm$ 0.00066"
+    }
+   ]
+  },
+  {
+   "quantity": "Eccentricity",
+   "value": "0.568",
+   "uncertainty": "0.013",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.568 $\\pm$ 0.013"
+    }
+   ]
+  },
+  {
+   "quantity": "Mass ratio",
+   "value": "0.936",
+   "uncertainty": "0.051",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "0.936 $\\pm$ 0.051"
+    }
+   ]
+  },
+  {
+   "quantity": "Combined system mass",
+   "value": "1.21",
+   "uncertainty": "0.26",
+   "units": "Msun",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+     "quote": "$M_\\ast = 1.21\\pm0.26\\,M_\\odot$ and $i = 158\\pm2\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Dynamical distance",
+   "value": "184",
+   "uncertainty": "26",
+   "units": "pc",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+     "quote": "we estimate $d_{\\rm dyn}= 184\\pm26$ pc"
+    }
+   ]
+  },
+  {
+   "quantity": "Mutual inclination psi",
+   "value": "-1.3",
+   "uncertainty": "1.1",
+   "units": "deg",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "4.1 Comparison of Disk- and Binary-based Constraints",
+     "quote": "$\\psi \\equiv i - i_d = -1.3 \\pm 1.1\\ensuremath{^\\circ}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Pre-MS model total mass",
+   "value": "1.20",
+   "uncertainty": "0.16",
+   "units": "Msun",
+   "from_step": 6,
+   "evidence": [
+    {
+     "loc": "4.2 Comparison to Pre-MS Evolution Models",
+     "quote": "indicating a total binary mass of $1.20\\pm0.16\\,M_\\odot$"
+    }
+   ]
+  },
+  {
+   "quantity": "Continuum integrated flux density",
+   "value": "79",
+   "uncertainty": "not stated",
+   "units": "mJy",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "2.1 Millimeter Interferometry",
+     "quote": "peak intensity of $\\sim$68 mJy beam$^{-1}$ and integrated flux density of 79 mJy"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channels and continuum subtraction method details",
+  "Which 23 CO channels were excluded (only marked in a figure)",
+  "MCMC settings: walkers, steps, burn-in, convergence",
+  "Image size and cell size, CLEAN masks and threshold",
+  "Rest frequencies, grid and model setup for RADMC-3D (e.g. outer radius, resolution)",
+  "Prior bounds on uniform parameters",
+  "Source coordinates"
+ ],
+ "missing_for_reproduction": [
+  "Excluded channel list",
+  "MCMC configuration",
+  "CLEAN parameters",
+  "Optical spectra not available except RV table"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Code and posteriors public and a clear recipe, but some imaging and MCMC details are missing.",
+ "rediscovery_reason": "Data are public in the ALMA archive, code is released and the results are numeric.",
+ "source_card": "cards/2016ApJ...818..156C/sonnet/card.md"
+}

@@ -1,0 +1,810 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2024ApJ...968...24B",
+  "title": "PHANGS-ML: Dissecting Multiphase Gas and Dust in Nearby Galaxies Using Machine Learning",
+  "year": 2024,
+  "journal": "The Astrophysical Journal",
+  "first_author": "Baron, Dalya",
+  "n_authors": 28,
+  "arxiv_id": "2402.04330",
+  "doi": "10.3847/1538-4357/ad39e5",
+  "heldout": false,
+  "archival_class_ours": "archival + PI",
+  "alma_projects_obscore": [
+   "2012.1.00650.S",
+   "2013.1.01161.S",
+   "2015.1.00925.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L"
+  ]
+ },
+ "body": {
+  "depth": "light",
+  "paper_type": "multi_facility_alma_minor",
+  "paper_type_evidence": [
+   {
+    "loc": "2.1 ALMA",
+    "quote": "To trace the cold molecular gas properties, we use the PHANGS-ALMA survey (cite: leroy21a; leroy21b)."
+   },
+   {
+    "loc": "2 Data",
+    "quote": "We therefore use PHANGS data products that are based on maps convolved to a resolution of 150 pc"
+   }
+  ],
+  "science": {
+   "fields": [
+    "nearby_galaxies",
+    "milky_way_ism",
+    "astrochemistry"
+   ],
+   "targets": [
+    {
+     "name": "NGC 0628",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "9.84 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 0628 & 9.84 & 9 & 1.75 & 10.2 & no & 3.14$''$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lee et al. 2023 (cite: lee23)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 0628 & 9.84 & 9 & 1.75 & 10.2 & no & 3.14$''$"
+       }
+      ]
+     }
+    },
+    {
+     "name": "NGC 1365",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "19.57 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 1365 & 19.57 & 55 & 16.90 & 10.8 & yes & 1.58$''$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lee et al. 2023 (cite: lee23)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 1365 & 19.57 & 55 & 16.90 & 10.8 & yes & 1.58$''$"
+       }
+      ]
+     }
+    },
+    {
+     "name": "NGC 7496",
+     "coordinates": {
+      "value": "not stated",
+      "evidence": []
+     },
+     "redshift_or_distance": {
+      "value": "18.72 Mpc",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 7496 & 18.72 & 36 & 2.26 & 9.8 & yes & 1.65$''$"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "Lee et al. 2023 (cite: lee23)",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "NGC 7496 & 18.72 & 36 & 2.26 & 9.8 & yes & 1.65$''$"
+       }
+      ]
+     }
+    }
+   ],
+   "question": {
+    "value": "Can unsupervised machine learning on multi-wavelength (ALMA, MUSE, JWST) 150 pc-scale maps of three PHANGS galaxies identify groups and new correlations between PAH band ratios and optical line ratios?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "Here we use unsupervised machine learning algorithms to mine this information-rich dataset to identify novel patterns."
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [],
+   "bands": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "lines_targeted": [
+    {
+     "species": "12CO",
+     "transition": "J=2-1",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "2.1 ALMA",
+       "quote": "The survey mapped the $\\mathrm{^{12}CO(2-1)}\\,$(CO hereafter) line emission"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "150 pc convolved maps; effective 3.14\", 1.58\", 1.65\" for NGC 0628, 1365, 7496",
+    "evidence": [
+     {
+      "loc": "2 Data",
+      "quote": "We list the effective angular resolution ($''$) of the convolved maps for each of the galaxies in table"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "PHANGS-ALMA survey data products used (CO(2-1) moment maps)",
+    "evidence": [
+     {
+      "loc": "2.1 ALMA",
+      "quote": "We use the PHANGS-ALMA data products obtained after convolving the cubes to a spatial resolution of 150 pc."
+     }
+    ]
+   },
+   "other_facilities": [
+    {
+     "name": "VLT-MUSE",
+     "provided": {
+      "value": "Ionized gas line maps and stellar population properties (PHANGS DR2.2, convolved to 150 pc)",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE",
+        "quote": "we use various properties (see below) derived from the MUSE cubes after they have been convolved to a resolution of 150 pc (PHANGS DR2.2 release)."
+       }
+      ]
+     }
+    },
+    {
+     "name": "JWST NIRCam/MIRI",
+     "provided": {
+      "value": "PAH and dust surface brightness maps (F335M, F770W, F1000W, F1130W, F2100W), version 0.8",
+      "evidence": [
+       {
+        "loc": "2.3 JWST",
+        "quote": "We use the same version of the surface brightness maps presented and described in the PHANGS-JWST Cycle 1 Focus Issue"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "PAH emission models (band ratios vs SED, size, charge distribution)",
+      "evidence": [
+       {
+        "loc": "4.2.1",
+        "quote": "We use the infrared spectra predicted by (cite: draine21)."
+       }
+      ]
+     },
+     "citation": "Draine et al. 2021 (cite: draine21)"
+    },
+    {
+     "what": {
+      "value": "Galaxy distances, inclinations, SFR, stellar mass",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "(1)-(5) Galaxy properties from (cite: lee23): name, distance, inclination, star formation rate, and stellar mass."
+       }
+      ]
+     },
+     "citation": "Lee et al. 2023 (cite: lee23)"
+    }
+   ],
+   "simulations_or_models_as_data": []
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "casa_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "Cubes convolved to 150 pc resolution; maps reprojected and downsampled to 2 pixels per 150 pc",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "We then downsample the RA-DEC coordinate grid to have two pixels per resolution element of 150 pc in each of the galaxies"
+      }
+     ]
+    },
+    "final_beam": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "ALMA CO maps, strict/broad masks and 150 pc convolution",
+      "evidence": [
+       {
+        "loc": "2.1 ALMA",
+        "quote": "we use the PHANGS-ALMA survey (cite: leroy21a; leroy21b)."
+       }
+      ]
+     },
+     "from_reference": "(cite: leroy21a; leroy21b)"
+    },
+    {
+     "what": {
+      "value": "3.3 micron PAH flux estimation by subtracting starlight using F300M and F360M",
+      "evidence": [
+       {
+        "loc": "2.3 JWST",
+        "quote": "follow the procedure outlined by (cite: sandstrom23a) to estimate the 3.3 $\\mathrm{\\mu m}$  PAH flux"
+       }
+      ]
+     },
+     "from_reference": "(cite: sandstrom23a)"
+    },
+    {
+     "what": {
+      "value": "MUSE line fitting and stellar population analysis",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE",
+        "quote": "These are estimated by fitting the spectra in the convolved cubes with a set of Gaussians (see details in (cite: emsellem22))."
+       }
+      ]
+     },
+     "from_reference": "(cite: emsellem22)"
+    }
+   ],
+   "unstated_but_needed": [
+    "Exact PHANGS-ALMA product file names/versions and CO noise thresholds used",
+    "Hierarchical clustering linkage cluster-count and random seeds for UMAP",
+    "ALMA project codes and observation details",
+    "Details of polynomial fit procedure for 11.3/7.7 vs optical line ratios"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Build feature maps",
+    "method": {
+     "value": "Reproject convolved ALMA/MUSE/JWST maps to ALMA grid, downsample, mask pixels below 3 sigma, compute log ratios, clip to 0.5-99.5 percentile, normalize, KNN-impute missing values",
+     "evidence": [
+      {
+       "loc": "3.1 Feature Extraction",
+       "quote": "For each feature, we clip its values to be between the 0.5th and 99.5th percentiles of the distribution."
+      }
+     ]
+    },
+    "software": [
+     "astropy",
+     "reproject",
+     "scikit-learn"
+    ],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "Case-B recombination, T=10^4 K, dusty screen, Cardelli et al. extinction law",
+      "evidence": [
+       {
+        "loc": "2.2 MUSE",
+        "quote": "we assume case-B recombination ($T=10^{4}$ K), a dusty-screen, and the (cite: cardelli89) extinction law"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Compared KNN and Random Forest imputation; comparable results",
+     "evidence": [
+      {
+       "loc": "3.1 Feature Extraction",
+       "quote": "The two methods gave comparable results, and neither had a significant impact on the resulting two-dimensional embedding."
+      }
+     ]
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Dimensionality reduction",
+    "method": {
+     "value": "UMAP to 2D with metric=correlation, n_neighbors=10, min_dist=0",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we adopt the two-dimensional umap embedding obtained using `metric=correlation`, `n_neighbors=10`, and `min_dist=0`."
+      }
+     ]
+    },
+    "software": [
+     "UMAP"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Tested 11 metrics and n_neighbors 10-500; global structure stable",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "We find that the global structure of the data in the two-dimensional space remains stable when changing the metric and/or `n_neighbors`."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Cluster the embedding",
+    "method": {
+     "value": "Hierarchical clustering with average linkage, 6 clusters, chosen after comparing K-means, Birch, OPTICS, DBSCAN and other linkages",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "The results reported in section [4](#sec:results) are therefore based on the clusters identified with Hierarchical clustering with the average linkage method."
+      }
+     ]
+    },
+    "software": [
+     "scikit-learn"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Visual inspection of cluster separation",
+     "evidence": [
+      {
+       "loc": "Methods, Dimensionality Reduction with UMAP",
+       "quote": "To select an embedding where identifying clusters is expected to be less challenging, we favor embeddings where clusters that we identify by eye are more separated from each other"
+      }
+     ]
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Interpret PAH vs optical line correlations with PAH and SED models",
+    "method": {
+     "value": "Compare observed trends with Draine et al. 2021 PAH models and SED sequences (FSPS, BC03, BPASS, HOLMES, AGN+SF); polynomial fits of 11.3/7.7 vs line ratios propagated to 3.3/11.3",
+     "evidence": [
+      {
+       "loc": "4.2.2",
+       "quote": "we show two polynomial fits to the observed relation between 11.3/7.7 and the optical lines."
+      }
+     ]
+    },
+    "software": [
+     "FSPS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "UMAP",
+    "version": "not stated",
+    "used_for": {
+     "value": "2D embedding",
+     "evidence": [
+      {
+       "loc": "3.2",
+       "quote": "we use the dimensionality reduction algorithm umap (Uniform Manifold Approximation and Projection; (cite: mcinnes18))"
+      }
+     ]
+    }
+   },
+   {
+    "name": "scikit-learn",
+    "version": "not stated",
+    "used_for": {
+     "value": "Clustering and KNN imputation",
+     "evidence": [
+      {
+       "loc": "3.3",
+       "quote": "We used the python sklearn library to apply these different clustering algorithms (cite: pedregosa11)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "reproject",
+    "version": "not stated",
+    "used_for": {
+     "value": "Reprojecting maps to ALMA WCS",
+     "evidence": [
+      {
+       "loc": "2 Data",
+       "quote": "We project all the convolved maps into the world coordinate system (WCS) defined by the ALMA observations using reproject.exact by astropy"
+      }
+     ]
+    }
+   },
+   {
+    "name": "FSPS",
+    "version": "not stated",
+    "used_for": {
+     "value": "Simulating stellar population SEDs",
+     "evidence": [
+      {
+       "loc": "9.2",
+       "quote": "We used the flexible stellar population synthesis (FSPS) code by (cite: conroy09) to simulate single stellar populations."
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "Number of pixels in analysis",
+    "value": "24007",
+    "uncertainty": "not stated",
+    "units": "pixels",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "3.2",
+      "quote": "the input dataset has 24 007 objects with 13 features each."
+     }
+    ]
+   },
+   {
+    "quantity": "Scatter in 11.3/7.7 vs optical line ratio relation",
+    "value": "~0.03",
+    "uncertainty": "not stated",
+    "units": "dex",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "The very small scatter ($\\sim 0.03$ dex) in the relation between 11.3/7.7 and $\\text{[O\\,{\\sc iii}]}$/H$\\beta$"
+     }
+    ]
+   },
+   {
+    "quantity": "Best-fit slope 11.3/7.7 vs [SII]/Ha, all pixels",
+    "value": "0.22",
+    "uncertainty": "not stated",
+    "units": "dimensionless",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "4.2.3",
+      "quote": "to the best-fitting slope found for all PHANGS pixels in figure [13](#f:PAH_optical_interpretation_sii_halpha) (0.22)."
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "Pixels divide into six groups: AGN-photoionized gas, two diffuse ionized gas groups, CMZ, and two star-forming/ISM groups",
+    "evidence": [
+     {
+      "loc": "4",
+      "quote": "divide the pixels into six groups"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "Unsupervised ML can identify groups with distinct gas and PAH properties",
+    "experiment": "UMAP plus hierarchical clustering on 13 features",
+    "result": "Six groups mapping to coherent galactic structures",
+    "finding": "Groups have distinct ionization and PAH properties",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.1",
+      "quote": "the groups map onto large-scale coherent structures within the galaxies."
+     }
+    ]
+   },
+   {
+    "hypothesis": "PAH band ratios correlate with optical line ratios due to a common varying radiation field",
+    "experiment": "Compare observed correlations with Draine et al. models and SED sequences",
+    "result": "Expected slope roughly consistent with observed",
+    "finding": "PAHs and ionized gas see different parts of the same varying radiation field",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "4.2.1",
+      "quote": "can be naturally explained in a scenario where the PAHs and ionized gas are exposed to different parts of the same spatially varying radiation field"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Varying ionization parameter disfavored in SF+ISM groups in favor of stellar age sequence",
+     "evidence": [
+      {
+       "loc": "4.2.3",
+       "quote": "We disfavor the interpretation that the optical line ratios are driven by a varying ionization parameter"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Analysis incomplete in diffuse ISM because CO and 3.3 micron detections are required",
+     "evidence": [
+      {
+       "loc": "3.1",
+       "quote": "Therefore, our results may not be applicable to the most diffuse parts of local galaxies."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Clusters are admitted to be somewhat arbitrary; hyperparameters chosen visually",
+    "Only three galaxies; galaxy dominates regions of embedding",
+    "Broad-mask CO adds noise and low-SNR pixels"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Code and exact random seeds not stated",
+    "Exact data product versions for ALMA maps"
+   ],
+   "estimated_data_volume_inferred": "small (<10 GB of derived maps)",
+   "score_inferred": 3,
+   "score_reason": "Uses public PHANGS data products and named software with key hyperparameters, but clustering is subjective and code release and some choices are not stated.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "ALMA role is minor and clustering results are not primarily numeric."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Leroy et al. 2021a (cite: leroy21a)",
+     "why": "PHANGS-ALMA data products"
+    },
+    {
+     "citation": "Emsellem et al. 2022 (cite: emsellem22)",
+     "why": "PHANGS-MUSE pipeline"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Lee et al. 2023 (cite: lee23)",
+     "why": "PHANGS-JWST overview"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "PHANGS-ALMA",
+    "PHANGS-MUSE",
+    "PHANGS-JWST",
+    "PHANGS-HST"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-a71ef92dab0ed063a013ed23b3fdaade",
+  "batch_id": "msgbatch_015xvy2vr7Jjr74fC6RAsmHN",
+  "run": "sonnet_run1",
+  "collected_at": "2026-10-28T16:10:04",
+  "usage": {
+   "input_tokens": 61284,
+   "output_tokens": 5461,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.089195,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 40,
+  "quotes_ok": 40,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 0,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [
+   "2012.1.00650.S",
+   "2013.1.01161.S",
+   "2015.1.00925.S",
+   "2017.1.00392.S",
+   "2017.1.00886.L"
+  ],
+  "codes_printed_but_missing": [],
+  "numeric_results": 3,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 76,
+   "stated": 32,
+   "rate": 0.421
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-28T18:09:54",
+  "custom_id": "repair-sonnet-2447c1a433f2c59f6457c3cb8af5cfcc",
+  "fixed": [
+   {
+    "path": "analysis_steps[2].validation.evidence[0]",
+    "old": null,
+    "new": "To select an embedding where identifying clusters is expected to be less challenging, we favor embeddings where clusters that we identify by eye are more separated from each other"
+   }
+  ],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [],
+  "dropped_items": []
+ }
+}

@@ -1,0 +1,269 @@
+{
+ "bibcode": "2023JMoSp.39411777M",
+ "title": "Rotational spectroscopy of oxirane-2,2-d<SUB>2</SUB>, c-CD<SUB>2</SUB>CH<SUB>2</SUB>O, and its tentative detection toward IRAS 16293-2422 B",
+ "year": 2023,
+ "doi": "10.1016/j.jms.2023.111777",
+ "arxiv_id": "2304.12045",
+ "fields": [
+  "astrochemistry",
+  "star_formation"
+ ],
+ "question": "Determine the laboratory rotational spectrum and spectroscopic parameters of oxirane-2,2-d2 ($c$-CD$_2$CH$_2$O) and search for this doubly deuterated isotopolog in the ALMA PILS data toward IRAS 16293-2422 B.",
+ "alma_project_codes": [
+  "2013.1.00278.S"
+ ],
+ "data": {
+  "bands": "Band 7",
+  "arrays": "not stated",
+  "angular_resolution": "~0.5 arcsec",
+  "sensitivity": "1 sigma = 4-5 mJy beam^-1 km s^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Column density of c-C2H3DO of 8.9 x 10^14 cm^-2 at T_rot = 125 K and experimental spectroscopic parameters of c-C2H3DO",
+    "evidence": [
+     {
+      "loc": "Astronomical search toward IRAS 16293-2422 B",
+      "quote": "This value can be compared to the column density of the mono-deuterated variant for the same $T_{\\rm rot}$ of $8.9\\times 10^{14}$ cm$^{-2}$ (cite: c-C2H3DO_rot_2023)"
+     },
+     {
+      "loc": "Analysis of the c-CD2CH2O rotational spectrum and determination of spectroscopic parameters",
+      "quote": "the corresponding experimental values of $c$-C$_2$H$_3$DO (cite: c-C2H3DO_rot_2023) and $c$-C$_2$H$_4$O (cite: c-C2H4O_rot_2022) were taken to estimate correction factors"
+     }
+    ]
+   },
+   "citation": "(cite: c-C2H3DO_rot_2023)"
+  },
+  {
+   "what": {
+    "value": "Column density of c-C2H4O of 6.1 x 10^15 cm^-2 and rotational temperature T_rot = 125 K",
+    "evidence": [
+     {
+      "loc": "Astronomical search toward IRAS 16293-2422 B",
+      "quote": "We assumed $T_{\\rm rot} = 125$ K in our initial calculations as was determined for $c$-C$_2$H$_4$O (cite: PILS_COMs_2017)"
+     },
+     {
+      "loc": "Astronomical search toward IRAS 16293-2422 B",
+      "quote": "Taking $6.1\\times 10^{15}$ cm$^{-2}$ for $c$-C$_2$H$_4$O (cite: PILS_COMs_2017), we obtain a respective ratio of 0.054."
+     }
+    ]
+   },
+   "citation": "(cite: PILS_COMs_2017)"
+  },
+  {
+   "what": {
+    "value": "Experimental spectroscopic parameters and b-dipole moment of c-C2H4O",
+    "evidence": [
+     {
+      "loc": "Spectroscopic properties of oxirane",
+      "quote": "The molecule possesses a sizable $b$-dipole moment of 1.90 D (cite: c-C2H4O_rot_2022)"
+     },
+     {
+      "loc": "Analysis of the c-CD2CH2O rotational spectrum and determination of spectroscopic parameters",
+      "quote": "the corresponding experimental values of $c$-C$_2$H$_3$DO (cite: c-C2H3DO_rot_2023) and $c$-C$_2$H$_4$O (cite: c-C2H4O_rot_2022) were taken to estimate correction factors"
+     }
+    ]
+   },
+   "citation": "(cite: c-C2H4O_rot_2022)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calculate initial scaled quantum-chemical spectroscopic parameters",
+   "method": "Perform B3LYP/aug-cc-pVTZ density functional calculations for c-CD2CH2O, c-C2H3DO, and c-C2H4O, and scale the c-CD2CH2O parameters using experimental-to-calculated ratios of the other two isotopologs.",
+   "software": [
+    "Gaussian 09"
+   ],
+   "key_parameters": [
+    "B3LYP/aug-cc-pVTZ basis set, S reduction, III^l representation"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Fit laboratory rotational spectrum and predict rest frequencies",
+   "method": "Iteratively assign and fit 1289 laboratory transition frequencies (1734 transitions) across 120-181 GHz and 490-1094 GHz to Watson's S and A reduction Hamiltonians in III^l and I^r representations, then calculate catalog rest frequencies.",
+   "software": [
+    "SPFIT",
+    "SPCAT"
+   ],
+   "key_parameters": [
+    "Spectroscopic parameters up to eighth order; dipole moment components mu_a = 0.50 D, mu_b = 1.81 D"
+   ],
+   "assumptions": [
+    "Line uncertainties from 2 kHz to 50 kHz based on line shape and S/N"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Fit LTE synthetic spectra to ALMA PILS data and derive column density and deuteration ratios",
+   "method": "Calculate optically thin LTE synthetic spectra of c-CD2CH2O using CDMS catalog predictions and fit to the ALMA PILS spectrum at a position offset by one beam from IRAS 16293-2422 B to constrain column density and compare with c-C2H3DO and c-C2H4O.",
+   "software": [],
+   "key_parameters": [
+    "T_rot = 125 K, FWHM linewidth = 1 km s^-1, v_LSR = 2.6 km s^-1"
+   ],
+   "assumptions": [
+    "Optically thin emission and local thermodynamical equilibrium (LTE)",
+    "Statistical factor of 2 ways to form c-CD2CH2O compared to 1 way for c-C2H4O"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Rotational constant A (S reduction, III^l)",
+   "value": "23062.786666",
+   "uncertainty": "0.000035",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $A$ | 23062 | .786666 (35) | 23018 | .956 | 23066 | .253 | | 23062 | .777841 (35) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant B (S reduction, III^l)",
+   "value": "18013.451323",
+   "uncertainty": "0.000029",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $B$ | 18013 | .451323 (29) | 17925 | .922 | 18013 | .056 | | 18013 | .452264 (29) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Rotational constant C (S reduction, III^l)",
+   "value": "12727.735907",
+   "uncertainty": "0.000032",
+   "units": "MHz",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Table 1",
+     "quote": "| $C$ | 12727 | .735907 (32) | 12663 | .953 | 12727 | .519 | | 12727 | .743322 (32) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Calculated a-dipole moment component of c-CD2CH2O",
+   "value": "0.50",
+   "uncertainty": "not stated",
+   "units": "D",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopic properties of oxirane",
+     "quote": "The molecular symmetry is $C_{\\rm s}$, and it has a calculated $a$-dipole moment component of 0.50 D and a $b$-component of 1.81 D."
+    }
+   ]
+  },
+  {
+   "quantity": "Calculated b-dipole moment component of c-CD2CH2O",
+   "value": "1.81",
+   "uncertainty": "not stated",
+   "units": "D",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Spectroscopic properties of oxirane",
+     "quote": "The molecular symmetry is $C_{\\rm s}$, and it has a calculated $a$-dipole moment component of 0.50 D and a $b$-component of 1.81 D."
+    }
+   ]
+  },
+  {
+   "quantity": "Column density of c-CD2CH2O toward IRAS 16293-2422 B",
+   "value": "3.3e14",
+   "uncertainty": "not stated",
+   "units": "cm^-2",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Astronomical search toward IRAS 16293-2422 B",
+     "quote": "Another test of the possible assignment can be taken from the derived column density from the tentative lines: the line strengths of those imply a column density of $3.3\\times 10^{14}$ cm$^{-2}$."
+    }
+   ]
+  },
+  {
+   "quantity": "c-CD2CH2O to c-C2H3DO abundance ratio",
+   "value": "0.37",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Astronomical search toward IRAS 16293-2422 B",
+     "quote": "This value can be compared to the column density of the mono-deuterated variant for the same $T_{\\rm rot}$ of $8.9\\times 10^{14}$ cm$^{-2}$ (cite: c-C2H3DO_rot_2023), corresponding to a ratio of the doubly to mono-deuterated variants of 0.37."
+    }
+   ]
+  },
+  {
+   "quantity": "c-CD2CH2O to c-C2H4O abundance ratio",
+   "value": "0.054",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "The $c$-CD$_2$CH$_2$O to $c$-C$_2$H$_4$O ratio was estimated to be $\\sim$0.054 with $T_{\\rm rot} = 125$ K."
+    },
+    {
+     "loc": "Astronomical search toward IRAS 16293-2422 B",
+     "quote": "Taking $6.1\\times 10^{15}$ cm$^{-2}$ for $c$-C$_2$H$_4$O (cite: PILS_COMs_2017), we obtain a respective ratio of 0.054."
+    }
+   ]
+  },
+  {
+   "quantity": "D-to-H ratio per H atom for c-CD2CH2O",
+   "value": "0.16",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "This value translates to a D-to-H ratio of $\\sim$0.16 per H atom which is higher by a factor of 4.5 than the $\\sim$0.036 per H atom obtained for $c$-C$_2$H$_3$DO."
+    },
+    {
+     "loc": "Astronomical search toward IRAS 16293-2422 B",
+     "quote": "Considering that there are statistically two ways to form $c$-CD$_2$CH$_2$O, but only one for $c$-C$_2$H$_4$O, this gives a D/H ratio of $\\sim$16% per H atom."
+    }
+   ]
+  },
+  {
+   "quantity": "Deuteration enhancement factor of c-CD2CH2O relative to c-C2H3DO per H atom",
+   "value": "4.5",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Abstract",
+     "quote": "This value translates to a D-to-H ratio of $\\sim$0.16 per H atom which is higher by a factor of 4.5 than the $\\sim$0.036 per H atom obtained for $c$-C$_2$H$_3$DO."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact celestial coordinates (RA, Dec) of the extracted spectrum offset by one beam from IRAS 16293-2422 B",
+  "Software or code used to compute and fit the LTE synthetic spectra to the ALMA PILS data",
+  "Assumed source size / beam filling factor in the LTE synthetic spectrum calculation",
+  "Partition function values used at T_rot = 125 K (available in CDMS, not printed in text)",
+  "Details of ALMA data calibration, continuum subtraction, and imaging (deferred to PILS overview paper)"
+ ],
+ "missing_for_reproduction": [
+  "Exact sky coordinates of the one-beam offset position from IRAS 16293-2422 B",
+  "Assumed source size (in arcsec) used in the LTE synthetic spectrum calculation",
+  "Specific software tool or script used to generate and fit the LTE synthetic spectrum to the PILS data"
+ ],
+ "reproducibility_score": 8,
+ "score_reason": "Complete laboratory line lists, SPFIT/SPCAT parameter files, and CDMS catalog entries are publicly provided, and the PILS ALMA dataset is public; only minor parameters of the 1D LTE synthetic spectrum calculation (exact offset coordinates and source size, which are standard in PILS papers) are omitted from the text.",
+ "rediscovery_reason": "Both the CDMS catalog entry/SPFIT files and the ALMA PILS data (2013.1.00278.S) are publicly available, and the main results (spectroscopic constants, column density, and deuteration ratios) are concrete numeric targets.",
+ "source_card": "cards/2023JMoSp.39411777M/sonnet/card.md"
+}

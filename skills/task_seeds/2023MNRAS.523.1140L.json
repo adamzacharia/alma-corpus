@@ -1,0 +1,309 @@
+{
+ "bibcode": "2023MNRAS.523.1140L",
+ "title": "NGC 1436: the making of a lenticular galaxy in the Fornax Cluster",
+ "year": 2023,
+ "doi": "10.1093/mnras/stad1422",
+ "arxiv_id": "2305.05709",
+ "fields": [
+  "nearby_galaxies",
+  "galaxy_clusters_and_sz"
+ ],
+ "question": "How and on what timescales is the Fornax cluster galaxy NGC 1436 transitioning from a spiral into a lenticular morphology through environmental interactions?",
+ "alma_project_codes": [
+  "2015.1.00497.S",
+  "2017.1.00129.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "12-m configuration array and Atacama Compact Array (Morita array)",
+  "angular_resolution": "2.68'' x 2.06''",
+  "sensitivity": "~2.0 mJy beam^-1"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Stellar mass M_star of NGC 1436",
+    "evidence": [
+     {
+      "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+      "quote": "These results do not change if we use the MeerKAT M H I value, which is 4σ larger than the ATCA one, the same M ⋆ value calculated in Loni et al. (2021), and the M H 2 value by Zabel et al. (2021)"
+     }
+    ]
+   },
+   "citation": "Loni et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "Molecular gas mass M_H2 and CO contours of NGC 1436",
+    "evidence": [
+     {
+      "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+      "quote": "the same M ⋆ value calculated in Loni et al. (2021), and the M H 2 value by Zabel et al. (2021)"
+     },
+     {
+      "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+      "quote": "and the CO contours (white color) from Zabel et al. (2021)."
+     }
+    ]
+   },
+   "citation": "Zabel et al. (2021)"
+  },
+  {
+   "what": {
+    "value": "GBT single-dish HI spectrum and total flux (1.70 +/- 0.20 Jy km s^-1)",
+    "evidence": [
+     {
+      "loc": "Figure 2 caption",
+      "quote": "The bottom right panel shows spectra extracted from the 11 [′′] (red) and 66 [′′] (green) cubes, and from single-dish data (GBT, Courtois et al. 2009 - black), respectively."
+     }
+    ]
+   },
+   "citation": "Courtois et al. (2009)"
+  },
+  {
+   "what": {
+    "value": "MUSE Halpha maps",
+    "evidence": [
+     {
+      "loc": "4 STAR FORMATION HISTORY",
+      "quote": "Using the MUSE Hα maps of Iodice et al. (2019a) and restricting our analysis to emission-line regions firmly classified as H ii regions"
+     }
+    ]
+   },
+   "citation": "Iodice et al. (2019a, 2019b)"
+  },
+  {
+   "what": {
+    "value": "Foreground Galactic extinction A_V = 0.029 in the direction of Fornax",
+    "evidence": [
+     {
+      "loc": "4 STAR FORMATION HISTORY",
+      "quote": "a AV 0.029 value in the direction of Fornax from Schlafly & Finkbeiner (2011)."
+     }
+    ]
+   },
+   "citation": "Schlafly & Finkbeiner (2011)"
+  },
+  {
+   "what": {
+    "value": "MILES stellar-population model library",
+    "evidence": [
+     {
+      "loc": "4 STAR FORMATION HISTORY",
+      "quote": "we fit them with pPXF and GandALF using SSP models from the MILES library of Vazdekis et al. (2015)"
+     }
+    ]
+   },
+   "citation": "Vazdekis et al. (2015)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Compare HI and CO morphology, spectra, and gas mass ratios",
+   "method": "Overlay 11'' and 66'' MeerKAT HI contours and ALMA CO contours on FDS optical image, extract HI spectra using detection masks, compute M_HI using Eq. 50 in Meyer et al. (2017), and compute M_H2/M_HI using M_H2 from Zabel et al. (2021)",
+   "software": [],
+   "key_parameters": [
+    "PA = 330 deg (major axis), PA = 240 deg (minor axis) for PVDs"
+   ],
+   "assumptions": [
+    "Distance ~ 20 Mpc"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Model HI kinematics and surface brightness profile",
+   "method": "Fit the 11'' MeerKAT HI cube using a tilted-ring model in TiRiFiC with a flat disc (single PA and inclination across all rings) and parameter interpolation in groups of rings",
+   "software": [
+    "TiRiFiC"
+   ],
+   "key_parameters": [
+    "Single value for PA and inclination across all rings"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Reconstruct star formation history of inner and outer discs from MUSE spectra",
+   "method": "Extract MUSE spectra in 18 inner and 8 outer elliptical annular sectors, fit stellar kinematics with pPXF (4800-5850 A), fit SSP templates and emission lines with GandALF (up to 6850 A) across 20 runs, and bin stellar mass weights into age bins",
+   "software": [
+    "pPXF",
+    "GandALF"
+   ],
+   "key_parameters": [
+    "pPXF wavelength range: 4800 - 5850 A; GandALF extended to 6850 A (masking NaD 5896, 5890 A)",
+    "MILES SSP models: age 30 Myr to 14 Gyr, -2.27 <= [M/H] <= 0.4 dex, [alpha/Fe] between 0 and 0.4 dex",
+    "Multiplicative polynomial order varied between 6 and 15; age bins: 1-Gyr wide (0-6 Gyr) and 2-Gyr wide (>6 Gyr)"
+   ],
+   "assumptions": [
+    "Kroupa (2001) IMF",
+    "Calzetti dust extinction law with Galactic foreground A_V = 0.029",
+    "Distance = 20 Mpc and Calzetti et al. (2012) Halpha-to-SFR conversion"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Total HI flux (MeerKAT 66'')",
+   "value": "2.01",
+   "uncertainty": "0.20",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Figure 2",
+     "quote": "= 201 ± 020 J km s"
+    },
+    {
+     "loc": "Figure 2",
+     "quote": "ot = 2.03 ± 0.21 Jy km s 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total HI flux (MeerKAT 11'')",
+   "value": "2.03",
+   "uncertainty": "0.21",
+   "units": "Jy km s^-1",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "Figure 2",
+     "quote": "ot = 2.03 ± 0.21 Jy km s 1"
+    }
+   ]
+  },
+  {
+   "quantity": "Total HI mass (M_HI)",
+   "value": "1.9e8",
+   "uncertainty": "0.2e8",
+   "units": "M_sun",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+     "quote": "1.9 ± 0.2"
+    }
+   ]
+  },
+  {
+   "quantity": "Molecular-to-atomic gas mass ratio (M_H2 / M_HI)",
+   "value": "1.0",
+   "uncertainty": "0.1",
+   "units": "dimensionless",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+     "quote": "the M H 2 / M H I ratio of NGC 1436 is 1.0±0.1, resulting ∼ 12 σ above the xGASS weighted average of log 10 ( M H 2 / M H I )."
+    }
+   ]
+  },
+  {
+   "quantity": "HI disc diameter at 1 M_sun pc^-2",
+   "value": "110",
+   "uncertainty": "not stated",
+   "units": "arcsec",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+     "quote": "The H I disc diameter of NGC 1436, measured where the surface brightness is 1 M ⊙ pc [−][2], is ∼110 [′′] (∼ 11 kpc)."
+    }
+   ]
+  },
+  {
+   "quantity": "De-projected rotational velocity at disc edge (r ~ 6.7 kpc)",
+   "value": "130",
+   "uncertainty": "not stated",
+   "units": "km s^-1",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+     "quote": "Given that the orbital time at the disc's edge is of ∼300 Myr (as derived from the de-projected rotational velocity of ∼130 km s [−][1] at a radius of ∼ 6.7 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Orbital time at HI disc edge",
+   "value": "300",
+   "uncertainty": "not stated",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "3 MORPHOLOGY AND KINEMATICS OF THE COLD GAS DISC",
+     "quote": "Given that the orbital time at the disc's edge is of ∼300 Myr (as derived from the de-projected rotational velocity of ∼130 km s [−][1] at a radius of ∼ 6.7 kpc)"
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of stars formed during burst 3-4 Gyr ago (inner disc)",
+   "value": "50",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 STAR FORMATION HISTORY",
+     "quote": "NGC 1436 experienced a burst of star formation between 3 to 4 Gyr ago that saw the birth of ∼50% and ∼20% of all the stars that ever formed in the inner and outer disc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Fraction of stars formed during burst 3-4 Gyr ago (outer disc)",
+   "value": "20",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4 STAR FORMATION HISTORY",
+     "quote": "NGC 1436 experienced a burst of star formation between 3 to 4 Gyr ago that saw the birth of ∼50% and ∼20% of all the stars that ever formed in the inner and outer disc, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar mass in 8 outer disc sectors",
+   "value": "1.6e9",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 8",
+     "quote": "Mtot = 1.6× 109M"
+    }
+   ]
+  },
+  {
+   "quantity": "Total stellar mass in 18 inner disc sectors",
+   "value": "1.1e10",
+   "uncertainty": "not stated",
+   "units": "M_sun",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Figure 8",
+     "quote": "Mtot = 1.1× 1010M"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Exact geometric coordinates and dimensions of the 18 inner and 8 outer elliptical annular sectors used for MUSE spectral extraction",
+  "Specific ring widths and group boundaries used in the TiRiFiC tilted-ring fitting of the MeerKAT HI cube",
+  "Details of the ALMA 12-m + ACA combination and imaging parameters (inherited from Zabel et al. 2021)"
+ ],
+ "missing_for_reproduction": [
+  "Exact coordinates/masks of the 18 inner and 8 outer elliptical sectors used to extract MUSE spectra",
+  "Foreground/background source masks applied to the MUSE cube",
+  "Specific ring radii and grouping parameters used in the TiRiFiC model",
+  "Combined ALMA 12-m + ACA FITS cube from Zabel et al. (2021)"
+ ],
+ "reproducibility_score": 75,
+ "score_reason": "All underlying raw and reduced survey datasets (MeerKAT, MUSE, ALMA) and analysis codes (TiRiFiC, pPXF, GandALF, MILES) are publicly available, and the spectral fitting choices are thoroughly documented, though exact sector aperture definitions and TiRiFiC ring groupings are not tabulated.",
+ "rediscovery_reason": "Publicly available reduced cubes and standard public fitting tools allow straightforward reproduction of the HI mass, rotation curve, and two-zone star formation history.",
+ "source_card": "cards/2023MNRAS.523.1140L/sonnet/card.md"
+}

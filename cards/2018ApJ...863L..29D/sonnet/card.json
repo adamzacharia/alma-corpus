@@ -1,0 +1,947 @@
+{
+ "schema_version": "1.0",
+ "identity": {
+  "bibcode": "2018ApJ...863L..29D",
+  "title": "Witnessing Galaxy Assembly at the Edge of the Reionization Epoch",
+  "year": 2018,
+  "journal": "The Astrophysical Journal Letters",
+  "first_author": "D'Odorico, V.",
+  "n_authors": 11,
+  "arxiv_id": "1808.01146",
+  "doi": "10.3847/2041-8213/aad7b7",
+  "heldout": false,
+  "archival_class_ours": "PI data",
+  "alma_projects_obscore": [
+   "2015.1.00584.S",
+   "2015.1.00997.S"
+  ]
+ },
+ "body": {
+  "depth": "full",
+  "paper_type": "observational_alma_primary",
+  "paper_type_evidence": [
+   {
+    "loc": "Introduction",
+    "quote": "we report the serendipitous discovery of a typical main sequence galaxy at $z\\simeq 5.939$ (that we dubbed Serenity-18) detected in CO, associated with a metal poor DLA"
+   }
+  ],
+  "science": {
+   "fields": [
+    "high_z_galaxies",
+    "agn_and_quasars"
+   ],
+   "targets": [
+    {
+     "name": "Serenity-18 / DLA toward SDSS J2310+1855",
+     "coordinates": {
+      "value": "23:10:38.44 +18:55:21.95 (J2000)",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Redshift of CO(6-5) emission | 5.93957"
+       },
+       {
+        "loc": "Emission line and sub-mm continuum",
+        "quote": "R.A., decl. ($23:10:38.437, 18:55:22.00$), or about ($-6.3,+2.2$) arcsec offset from the quasar position"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z=5.93957 (CO); DLA z=5.938646",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Redshift of CO(6-5) emission | 5.93957"
+       },
+       {
+        "loc": "Emission line and sub-mm continuum",
+        "quote": "R.A., decl. ($23:10:38.437, 18:55:22.00$), or about ($-6.3,+2.2$) arcsec offset from the quasar position"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "CO emission line redshift; DLA from XSHOOTER Voigt fits",
+      "evidence": [
+       {
+        "loc": "Table 2",
+        "quote": "Redshift of CO(6-5) emission | 5.93957"
+       },
+       {
+        "loc": "Emission line and sub-mm continuum",
+        "quote": "R.A., decl. ($23:10:38.437, 18:55:22.00$), or about ($-6.3,+2.2$) arcsec offset from the quasar position"
+       }
+      ]
+     }
+    },
+    {
+     "name": "Quasar J231038.88+185519.7 (J2310)",
+     "coordinates": {
+      "value": "J231038.88+185519.7",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "the quasar J231038.88+185519.7 ($z_{\\rm em}=6.0025$, J2310 hereafter)"
+       }
+      ]
+     },
+     "redshift_or_distance": {
+      "value": "z_em=6.0025",
+      "evidence": [
+       {
+        "loc": "Introduction",
+        "quote": "the quasar J231038.88+185519.7 ($z_{\\rm em}=6.0025$, J2310 hereafter)"
+       }
+      ]
+     },
+     "distance_source": {
+      "value": "not stated",
+      "evidence": []
+     }
+    }
+   ],
+   "question": {
+    "value": "Is there a CO(6-5)-emitting galaxy associated with a metal-poor proximate DLA at z~5.939 along the sightline to quasar J2310, and what are its molecular gas content and the DLA abundances?",
+    "evidence": [
+     {
+      "loc": "abstract",
+      "quote": "We report the discovery of Serenity-18, a galaxy at $z\\simeq5.939$ for which we could measure the content of molecular gas"
+     }
+    ]
+   }
+  },
+  "data": {
+   "alma_project_codes": [
+    {
+     "code": "2015.1.00584.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2015.1.00584.S and 2015.1.00997.S"
+      }
+     ]
+    },
+    {
+     "code": "2015.1.00997.S",
+     "evidence": [
+      {
+       "loc": "Acknowledgments",
+       "quote": "ADS/JAO.ALMA #2015.1.00584.S and 2015.1.00997.S"
+      }
+     ]
+    }
+   ],
+   "bands": {
+    "value": "Band 3 and a Cycle 3 higher-frequency (band 6) dataset",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "ALMA band 3 receivers tuned to cover the frequency ranges $[84.56-87.94]$, and $[96.56-99.69]$ GHz"
+     }
+    ]
+   },
+   "frequencies_and_spectral_setup": {
+    "value": "Band 3: 84.56-87.94 and 96.56-99.69 GHz; second dataset 254-257.65 and 269.65-273.15 GHz; SPW1 at 98.75 GHz",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "covering the frequency ranges \\[254–257.65\\] GHz and \\[269.65–273.15\\] GHz"
+     }
+    ]
+   },
+   "lines_targeted": [
+    {
+     "species": "CO",
+     "transition": "6-5",
+     "rest_frequency": "not stated",
+     "evidence": [
+      {
+       "loc": "Emission line and sub-mm continuum",
+       "quote": "The sky frequency corresponds to the expected frequency of the CO(6-5) emitted at the redshift of the DLA absorption system"
+      }
+     ]
+    }
+   ],
+   "continuum_bandwidth": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "arrays": {
+    "value": "ALMA 12 m array (Cycle 3) for the second dataset",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "observations obtained with the ALMA 12 m array in Cycle 3"
+     }
+    ]
+   },
+   "configurations": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "baselines": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "angular_resolution": {
+    "value": "Band 3: 0.6x0.4 arcsec PA -6 deg; second dataset: 0.9x0.6 arcsec PA 49 deg",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "we obtain a synthesized beam of $0.6 \\times 0.4$ arcsec$^2$ at a PA $=-6$ deg"
+     }
+    ]
+   },
+   "max_recoverable_scale": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "sensitivity": {
+    "value": "Band 3: 5.4 uJy/beam continuum, 0.13 mJy/beam per 23.7 km/s channel; second: 50 uJy/beam continuum, 0.20 mJy/beam per 100 km/s",
+    "evidence": [
+     {
+      "loc": "Observations",
+      "quote": "The noise levels are 5.4 $\\mu$Jy/beam in the continuum in the aggregated bandwidth, and 0.13 mJy/beam in 23.7 ${\\rm km~s}^{-1}$ wide channels"
+     }
+    ]
+   },
+   "time_on_source": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "observing_dates": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "pi_or_archival_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "other_facilities": [
+    {
+     "name": "VLT/XSHOOTER",
+     "provided": {
+      "value": "Optical/NIR spectrum of J2310 for DLA identification and abundances",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "Quasar J2310 was also observed with XSHOOTER with a nominal resolving power of $R\\simeq 8800$ and $8100$"
+       }
+      ]
+     }
+    }
+   ],
+   "external_data_from_literature": [
+    {
+     "what": {
+      "value": "Solar abundances",
+      "evidence": [
+       {
+        "loc": "Table 1",
+        "quote": "Solar abundances and corresponding uncertainties from Asplund et al. (2009)."
+       }
+      ]
+     },
+     "citation": "Asplund et al. (2009)"
+    },
+    {
+     "what": {
+      "value": "XQ-100 PCA quasar continua",
+      "evidence": [
+       {
+        "loc": "A proximate DLA at z≈5.939",
+        "quote": "We considered all of the Principal Component Analysis continua computed for the quasars in the XQ-100 sample (López et al. 2016)."
+       }
+      ]
+     },
+     "citation": "López et al. 2016"
+    },
+    {
+     "what": {
+      "value": "CO excitation ratio r61=20",
+      "evidence": [
+       {
+        "loc": "Serenity-18 properties",
+        "quote": "We adopt in the following, $S_{\\rm CO}(6-5)/(1-0)=r_{61}=20$"
+       }
+      ]
+     },
+     "citation": "Carilli & Walter 2013"
+    },
+    {
+     "what": {
+      "value": "alpha_CO=1.5",
+      "evidence": [
+       {
+        "loc": "Serenity-18 properties",
+        "quote": "We therefore adopt a lower value based on Vallini et al. (2018), $\\alpha_{\\rm CO}=1.5$"
+       }
+      ]
+     },
+     "citation": "Vallini et al. (2018)"
+    }
+   ],
+   "simulations_or_models_as_data": [
+    {
+     "value": "Althaea simulated z~6 galaxy HI column density and metallicity maps (Pallottini et al. 2017; Vallini et al. 2018)",
+     "evidence": [
+      {
+       "loc": "The system Serenity-18 + DLA",
+       "quote": "In Fig. [3](#Fig:sim), we show the H I column density and metallicity maps for the filament embedding Althæa."
+      }
+     ]
+    }
+   ]
+  },
+  "processing": {
+   "calibration": {
+    "pipeline_or_manual": {
+     "value": "calibration in CASA",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We performed calibration in the CASA environment (McMullin et al. 2007)."
+      }
+     ]
+    },
+    "casa_version": {
+     "value": "CASA v4.7 (second dataset)",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "The data were calibrated and imaged in CASA v4.7 by applying a natural weighting."
+      }
+     ]
+    },
+    "pipeline_version": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "archive_products_used_as_is": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_calibrator": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "flux_scale_uncertainty": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "self_calibration": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "imaging": {
+    "task": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "deconvolver": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "weighting_robust": {
+     "value": "natural weighting",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "By adopting a natural weighting scheme with detection threshold 0.5 times the noise per channel"
+      }
+     ]
+    },
+    "uv_taper": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "cell_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "image_size": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "masking": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "multiscale_scales": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "continuum_subtraction": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "line_free_channels": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "primary_beam_correction": {
+     "value": "corrected for primary beam efficiency",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "All data were corrected for the primary beam efficiency."
+      }
+     ]
+    },
+    "array_combination": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "smoothing": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "final_beam": {
+     "value": "0.6x0.4 arcsec PA -6 deg",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "synthesized beam of $0.6 \\times 0.4$ arcsec$^2$ at a PA $=-6$ deg"
+      }
+     ]
+    },
+    "final_rms": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   "inherited": [
+    {
+     "what": {
+      "value": "XSHOOTER spectrum characteristics and reduction",
+      "evidence": [
+       {
+        "loc": "Observations",
+        "quote": "The characteristics of the spectrum and the reduction process were described in Feruglio et al. (2018)."
+       }
+      ]
+     },
+     "from_reference": "Feruglio et al. (2018)"
+    },
+    {
+     "what": {
+      "value": "Dynamical mass relation",
+      "evidence": [
+       {
+        "loc": "Serenity-18 properties",
+        "quote": "(Wang et al. 2013, Feruglio et al. 2018)"
+       }
+      ]
+     },
+     "from_reference": "Wang et al. 2013, Feruglio et al. 2018"
+    }
+   ],
+   "unstated_but_needed": [
+    "Continuum-subtraction method and line-free channels",
+    "CASA version and calibrators for the band 3 data",
+    "Exact line integration window and spectral baseline for the Gaussian fit",
+    "Band 6 observation dates/configurations",
+    "Which PCA continua were selected",
+    "Details of the conversion from L_FIR to SFR"
+   ]
+  },
+  "analysis_steps": [
+   {
+    "order": 1,
+    "goal": "Fit DLA absorption lines",
+    "method": {
+     "value": "Voigt profile fits to XSHOOTER absorption lines; HI from damping wing using PCA continua",
+     "evidence": [
+      {
+       "loc": "A proximate DLA at z≈5.939",
+       "quote": "Absorption lines were identified and then fit with Voigt profiles using the context LYMAN of the ESO MIDAS software package"
+      }
+     ]
+    },
+    "software": [
+     "ESO MIDAS LYMAN"
+    ],
+    "key_parameters": [
+     {
+      "value": "b=8.0±0.4 km/s for O I, C II, Si II; b=10.5±1.5 km/s for Fe II",
+      "evidence": [
+       {
+        "loc": "A proximate DLA at z≈5.939",
+        "quote": "adopting the same Doppler parameter, $b=8.0\\pm0.4$ km s$^{-1}$"
+       }
+      ]
+     }
+    ],
+    "assumptions": [
+     {
+      "value": "No ionization corrections, dust-free gas",
+      "evidence": [
+       {
+        "loc": "DLA properties",
+        "quote": "we are computing abundances assuming a dust-free gas"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "Two continua fit separately; adopted average and half-width of range",
+     "evidence": [
+      {
+       "loc": "A proximate DLA at z≈5.939",
+       "quote": "We fit the DLA H I Ly$\\alpha$ and Ly$\\beta$ absorption lines using the two continua separately"
+      }
+     ]
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 2,
+    "goal": "Detect and measure CO(6-5) emission",
+    "method": {
+     "value": "Gaussian fit to spectrum; point-source fit to visibilities averaged over line width",
+     "evidence": [
+      {
+       "loc": "Emission line and sub-mm continuum",
+       "quote": "A fit with a point source gives a zero spacing flux density of $251\\pm51\\rm ~\\mu Jy$"
+      }
+     ]
+    },
+    "software": [
+     "CASA",
+     "GILDAS"
+    ],
+    "key_parameters": [],
+    "assumptions": [],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Chance coincidence probability ~1-2% using Walter et al. 2016 line counts",
+     "evidence": [
+      {
+       "loc": "Emission line and sub-mm continuum",
+       "quote": "we obtain a probability of chance alignment of $\\sim1$  % $-2$ %."
+      }
+     ]
+    }
+   },
+   {
+    "order": 3,
+    "goal": "Derive dynamical and molecular gas mass",
+    "method": {
+     "value": "Mdyn sin^2 i relation with D<=beam; M(H2) from L'CO(6-5) with r61 and alpha_CO",
+     "evidence": [
+      {
+       "loc": "Serenity-18 properties",
+       "quote": "$M_{\\rm dyn} \\sin^2(i) = 1.16~ 10^5 \\times (0.75\\times$FWHM$_{\\rm CO})^2 \\times D$"
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "r61=20; alpha_CO=1.5",
+      "evidence": [
+       {
+        "loc": "Serenity-18 properties",
+        "quote": "$\\alpha_{\\rm CO}=1.5$ K ${\\rm km~s}^{-1}$ pc$^{-2}$ M$_{\\ensuremath{\\odot}}^{-1}$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "not stated",
+     "evidence": []
+    }
+   },
+   {
+    "order": 4,
+    "goal": "Estimate FIR luminosity and SFR",
+    "method": {
+     "value": "L_FIR from L'CO(6-5) (Greve et al. 2014), SFR via Kennicutt 1998 with Kroupa IMF; compared with band 6 upper limit",
+     "evidence": [
+      {
+       "loc": "Serenity-18 properties",
+       "quote": "From the calibration of Greve et al. (2014) between $L_{\\rm FIR}$ and $L^{\\prime}$ CO(6-5), we derive a far-infrared luminosity of $L_{\\rm FIR} \\approx 10^{12}~L_{\\ensuremath{\\odot}}$."
+      }
+     ]
+    },
+    "software": [],
+    "key_parameters": [],
+    "assumptions": [
+     {
+      "value": "T_dust=30-50 K",
+      "evidence": [
+       {
+        "loc": "Emission line and sub-mm continuum",
+        "quote": "dust temperature in the range $T_{dust}=30-50~ K$"
+       }
+      ]
+     }
+    ],
+    "fitting": {
+     "value": "not stated",
+     "evidence": []
+    },
+    "validation": {
+     "value": "Consistent with band 6 3-sigma upper limit",
+     "evidence": [
+      {
+       "loc": "Serenity-18 properties",
+       "quote": "This value is consistent with the upper limit on the 150 $\\mu$m continuum estimated from band 6 data."
+      }
+     ]
+    }
+   }
+  ],
+  "software": [
+   {
+    "name": "CASA",
+    "version": "v4.7 (second dataset)",
+    "used_for": {
+     "value": "calibration, imaging",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "We performed calibration in the CASA environment (McMullin et al. 2007)."
+      }
+     ]
+    }
+   },
+   {
+    "name": "GILDAS",
+    "version": "not stated",
+    "used_for": {
+     "value": "mapping and data analysis",
+     "evidence": [
+      {
+       "loc": "Observations",
+       "quote": "Mapping and data analysis were performed both in the CASA and in the GILDAS (Guilloteau et al. 2000) environments."
+      }
+     ]
+    }
+   },
+   {
+    "name": "ESO MIDAS (LYMAN)",
+    "version": "not stated",
+    "used_for": {
+     "value": "Voigt profile fitting",
+     "evidence": [
+      {
+       "loc": "A proximate DLA at z≈5.939",
+       "quote": "using the context LYMAN of the ESO MIDAS software package (Fontana & Ballester 1995)"
+      }
+     ]
+    }
+   }
+  ],
+  "results_numeric": [
+   {
+    "quantity": "CO(6-5) FWHM",
+    "value": "155",
+    "uncertainty": "30",
+    "units": "km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\rm FWHM_{CO(6-5)}$ \\[km s$^{-1}$\\] | $155 \\pm  30$"
+     }
+    ]
+   },
+   {
+    "quantity": "CO(6-5) integrated flux",
+    "value": "0.06",
+    "uncertainty": "0.012",
+    "units": "Jy km/s",
+    "from_step": 2,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$\\int S_{{\\rm CO}(6-5)}dv$ \\[Jy  km s$^{-1}$\\] | $0.06\\pm0.012$"
+     }
+    ]
+   },
+   {
+    "quantity": "M(H2)",
+    "value": "5.4e9",
+    "uncertainty": "0.5e9",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$M({\\rm H}_2)~[M_\\odot]$ | $(5.4\\pm0.5) \\times 10^{9}$"
+     }
+    ]
+   },
+   {
+    "quantity": "Mdyn sin^2 i",
+    "value": "<=5.6e9",
+    "uncertainty": "not stated",
+    "units": "Msun",
+    "from_step": 3,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "$M_{\\rm dyn}sin^2(i)~[M_\\odot]$ | $\\leq 5.6\\times 10^9$"
+     }
+    ]
+   },
+   {
+    "quantity": "log N(HI)",
+    "value": "21.05",
+    "uncertainty": "0.10",
+    "units": "log cm^-2",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "H I | $21.05\\pm0.10$"
+     }
+    ]
+   },
+   {
+    "quantity": "[Fe/H]",
+    "value": "-3.08",
+    "uncertainty": "0.12",
+    "units": "dex",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "DLA properties",
+      "quote": "\\[Fe/H\\] $=-3.08 \\pm 0.12$"
+     }
+    ]
+   },
+   {
+    "quantity": "[Si/H]",
+    "value": "-2.86",
+    "uncertainty": "0.14",
+    "units": "dex",
+    "from_step": 1,
+    "evidence": [
+     {
+      "loc": "DLA properties",
+      "quote": "\\[Si/H\\] $=-2.86\\pm0.14$"
+     }
+    ]
+   },
+   {
+    "quantity": "SFR",
+    "value": "~115",
+    "uncertainty": "~1 dex in L_FIR",
+    "units": "Msun/yr",
+    "from_step": 4,
+    "evidence": [
+     {
+      "loc": "Table 2",
+      "quote": "SFR \\[$M_\\odot {\\rm yr}^{-1}$\\] | $\\approx 115$"
+     }
+    ]
+   }
+  ],
+  "findings_qualitative": [
+   {
+    "value": "CO-emitting galaxy lies at 6.7 arcsec (~40 kpc) from the quasar sightline, ~50 km/s from the DLA redshift, unresolved",
+    "evidence": [
+     {
+      "loc": "The system Serenity-18 + DLA",
+      "quote": "Their angular separation is of $6.7$ arcsec, corresponding to an impact parameter of $\\approx 40$ kpc at the DLA redshift"
+     }
+    ]
+   }
+  ],
+  "claims": [
+   {
+    "hypothesis": "The proximate DLA is associated with a CO-emitting galaxy",
+    "experiment": "Searched ALMA band 3 data at DLA redshift",
+    "result": "5 sigma CO(6-5) line at DLA redshift, 6.7 arcsec from quasar, chance alignment ~1-2%",
+    "finding": "Serenity-18 is associated with the metal-poor DLA",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "The system Serenity-18 + DLA",
+      "quote": "This confirms the association between the CO-emitting galaxy and the metal poor absorber."
+     }
+    ]
+   },
+   {
+    "hypothesis": "The DLA is very metal poor",
+    "experiment": "Voigt fits to XSHOOTER",
+    "result": "[Fe/H]=-3.08, [Si/H]=-2.86",
+    "finding": "Consistent with other z~6 DLAs and PopII enrichment",
+    "support": "supported",
+    "evidence": [
+     {
+      "loc": "DLA properties",
+      "quote": "The studied absorber has abundances in very good agreement with those measured for the sample of $z\\approx6$ DLAs by Becker et al. (2012)."
+     }
+    ]
+   },
+   {
+    "hypothesis": "Serenity-18 is a typical main sequence galaxy with substantial molecular gas",
+    "experiment": "CO luminosity to gas mass and SFR",
+    "result": "M(H2)~5e9 Msun, SFR~100",
+    "finding": "First molecular gas detection in typical main sequence galaxy at end of reionization",
+    "support": "partially",
+    "evidence": [
+     {
+      "loc": "Serenity-18 properties",
+      "quote": "this is the first detection of molecular gas emission from a typical main sequence galaxy at the end of the reionization epoch"
+     }
+    ]
+   }
+  ],
+  "reasoning": {
+   "why_this_data": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "why_this_method": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "alternatives_considered_or_rejected": [
+    {
+     "value": "Foreground CO(3-2) at z~2.47 or CO(4-3) at z~3.63 as chance alignment, rejected at ~1-2% probability",
+     "evidence": [
+      {
+       "loc": "Emission line and sub-mm continuum",
+       "quote": "a foreground CO emitter (CO(3-2) at $z\\simeq2.47$ or CO(4-3) at $z\\simeq3.63$)"
+      }
+     ]
+    }
+   ],
+   "how_they_decided_enough": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "limitations_admitted": [
+    {
+     "value": "Line at band edge so flux and derived masses may be lower limits",
+     "evidence": [
+      {
+       "loc": "Emission line and sub-mm continuum",
+       "quote": "the integrated flux of the emission line and its derived quantities might be lower limits"
+      }
+     ]
+    },
+    {
+     "value": "L_FIR uncertain by ~1 dex",
+     "evidence": [
+      {
+       "loc": "Serenity-18 properties",
+       "quote": "This is a very rough estimate with an uncertainty of $\\sim1$ dex due to the scatter of the correlation."
+      }
+     ]
+    }
+   ],
+   "referee_caveats_inferred": [
+    "Gas mass depends strongly on assumed r61 and alpha_CO",
+    "Single 5 sigma line truncated at band edge",
+    "SFR derived indirectly from CO, not independently measured",
+    "Unresolved source so Mdyn is only an upper limit"
+   ]
+  },
+  "reproducibility": {
+   "data_public_as_stated": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "products_in_archive": {
+    "value": "not stated",
+    "evidence": []
+   },
+   "code_released": [],
+   "missing_for_reproduction": [
+    "Calibration details and scripts",
+    "Line-fit and integration window",
+    "Chosen PCA continua"
+   ],
+   "estimated_data_volume_inferred": "~50-100 GB raw for two ALMA projects",
+   "score_inferred": 4,
+   "score_reason": "Short letter; few processing details, but data codes given and results are numeric.",
+   "rediscovery_candidate": false,
+   "rediscovery_reason": "Processing details (calibration, line window) are insufficient and the XSHOOTER analysis requires non-ALMA data."
+  },
+  "links": {
+   "methods_papers": [
+    {
+     "citation": "Feruglio et al. 2018",
+     "why": "Describes XSHOOTER spectrum and reduction and the ALMA quasar observations"
+    }
+   ],
+   "companion_papers": [
+    {
+     "citation": "Feruglio et al. 2018",
+     "why": "Quasar host galaxy results from the same ALMA data"
+    }
+   ],
+   "related_projects_or_surveys": [
+    "XQ-100"
+   ]
+  }
+ },
+ "provenance": {
+  "model": "claude-sonnet-5-5",
+  "custom_id": "card-sonnet-f51850d9685c5f1844aa31a7922e2747",
+  "batch_id": "msgbatch_018jvBDVwWXUvqur77ijYDZx",
+  "run": "sonnet_run2",
+  "collected_at": "2026-10-28T19:23:09",
+  "usage": {
+   "input_tokens": 12878,
+   "output_tokens": 7409,
+   "cache_read_input_tokens": 6065,
+   "cache_creation_input_tokens": 0
+  },
+  "usd": 0.050529,
+  "text_source": "latex",
+  "extractor": "1",
+  "text_quality": "good",
+  "json_brace_fixes": 0
+ },
+ "checks": {
+  "quotes": 60,
+  "quotes_ok": 60,
+  "quote_pass_rate": 1.0,
+  "quotes_too_long": 0,
+  "unsupported_facts": 0,
+  "project_codes": 2,
+  "codes_not_in_text": [],
+  "codes_not_in_obscore": [],
+  "obscore_codes_not_in_card": [],
+  "codes_printed_but_missing": [],
+  "numeric_results": 8,
+  "numeric_problems": 0,
+  "fill": {
+   "facts": 77,
+   "stated": 42,
+   "rate": 0.545
+  },
+  "evidence_ok": true
+ },
+ "repair_log": {
+  "at": "2026-10-29T12:34:52",
+  "custom_id": null,
+  "fixed": [],
+  "removed_quotes": [],
+  "rejected_quotes": [],
+  "now_not_stated": [
+   {
+    "path": "analysis_steps[1].fitting",
+    "old_value": "1D Gaussian to line; point source in uv plane"
+   }
+  ],
+  "dropped_items": []
+ }
+}

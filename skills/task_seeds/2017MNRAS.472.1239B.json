@@ -1,0 +1,278 @@
+{
+ "bibcode": "2017MNRAS.472.1239B",
+ "title": "Tests of star formation metrics in the low-metallicity galaxy NGC 5253 using ALMA observations of H30α line emission",
+ "year": 2017,
+ "doi": "10.1093/mnras/stx1837",
+ "arxiv_id": "1707.06184",
+ "fields": [
+  "nearby_galaxies",
+  "star_formation"
+ ],
+ "question": "What is the SFR of NGC 5253 from H30alpha recombination line emission, and how reliable are SFRs from other commonly used metrics in this low-metallicity dwarf galaxy?",
+ "alma_project_codes": [
+  "2013.1.00210.S"
+ ],
+ "data": {
+  "bands": "Band 6 (231.6 GHz continuum, H30alpha at 231.90 GHz rest)",
+  "arrays": "12 m main array and Morita (7 m) Array",
+  "angular_resolution": "H30alpha cube beam 0.21x0.19 arcsec; continuum beam 0.28x0.25 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Herschel 70-500 micron globally-integrated flux densities",
+    "evidence": [
+     {
+      "loc": "3.2.1 SFR calculations",
+      "quote": "we used the globally-integrated flux densities measured from *Herschel* data by (cite: remyruyer13)"
+     }
+    ]
+   },
+   "citation": "Rémy-Ruyer et al. 2013 (cite: remyruyer13)"
+  },
+  {
+   "what": {
+    "value": "Halpha, Paalpha, Pabeta fluxes and extinction corrections for clusters 5 and 11",
+    "evidence": [
+     {
+      "loc": "3.3.1 SFR calculations",
+      "quote": "(cite: calzetti15) published H$\\alpha$, Pa$\\alpha$, and Pa$\\beta$ fluxes that have been corrected for foreground dust extinction"
+     }
+    ]
+   },
+   "citation": "Calzetti et al. 2015 (cite: calzetti15)"
+  },
+  {
+   "what": {
+    "value": "Globally integrated 1.4 GHz flux density 84.7±3.4 mJy",
+    "evidence": [
+     {
+      "loc": "3.1 Comparisons to millimetre and radio",
+      "quote": "the globally-integrated measurement of $84.7 \\pm 3.4$ mJy from the 1.4 GHz NRAO VLA Sky Survey (cite: condon98)"
+     }
+    ]
+   },
+   "citation": "Condon et al. 1998 (cite: condon98)"
+  },
+  {
+   "what": {
+    "value": "Electron temperature 11500 K from [OIII] and density 600 cm^-3 from [OII]/[SII]",
+    "evidence": [
+     {
+      "loc": "2.3 SFR from the H30alpha data",
+      "quote": "we use 11500 K for the electron temperature, which is based on \\[OIII\\] measurements"
+     }
+    ]
+   },
+   "citation": "Kobulnicky 1997; López-Sánchez 2007; Guseva 2011; Monreal-Ibero 2012"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Calibrate and image H30alpha cube and continuum",
+   "method": "CASA calibration per execution block, uv continuum subtraction, clean with Briggs robust 0.5, primary beam correction; natural-weighted continuum image",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "10 MHz channels (12.9 km/s), 231.40-231.80 GHz"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "Measure line and continuum fluxes",
+   "method": "Curve-of-growth aperture photometry; line flux within 0.3 arcsec radius; continuum within 8.5 arcsec radius; Gaussian fit to image",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Convert H30alpha flux to Q and SFR",
+   "method": "Scoville & Murchikova equation with alpha_B and emissivity interpolated from Storey & Hummer; then Starburst99-based Q-to-SFR conversion for Z=0.0056 with/without rotation",
+   "software": [
+    "Starburst99"
+   ],
+   "key_parameters": [
+    "Te = 11500 K, ne = 600 cm^-3, D = 3.15 Mpc"
+   ],
+   "assumptions": [
+    "Nuclear starburst contains most photoionizing stars; Kroupa IMF; continuous star formation >10 Myr; log Q scales linearly with Z; Z≅0.0056"
+   ]
+  },
+  {
+   "order": 4,
+   "goal": "Compute SFRs from infrared data and total infrared flux",
+   "method": "WISE 12/22 micron aperture photometry; Herschel fluxes colour-corrected; TIR from log-log interpolation integrated 12-500 micron, Monte Carlo uncertainties; conversions of Rieke09, Calzetti10, Kennicutt&Evans12 scaled by 0.90/0.72",
+   "software": [],
+   "key_parameters": [
+    "150 arcsec source radius, background annulus 450-500 arcsec"
+   ],
+   "assumptions": [
+    "WISE 22 micron conversion same as Spitzer 24 micron"
+   ]
+  },
+  {
+   "order": 5,
+   "goal": "Compute SFRs from Halpha with extinction corrections and compare",
+   "method": "Halpha fluxes of clusters 5 and 11 from Calzetti15, corrected via Pa lines, 22 micron or TIR; converted with Murphy11 factor 6.43e8; compare all SFRs to H30alpha",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "H30alpha line integral",
+   "value": "0.86",
+   "uncertainty": "0.04 (measurement) ; 0.13 (calibration)",
+   "units": "Jy km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 images",
+     "quote": "The integral of the line is 0.86 Jy km s$^{-1}$ with a measurement uncertainty of 0.04 Jy km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha line velocity (barycentric)",
+   "value": "391",
+   "uncertainty": "2",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 images",
+     "quote": "391$\\pm$2 km s$^{-1}$ and a FWHM of 68$\\pm$3 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "H30alpha FWHM",
+   "value": "68",
+   "uncertainty": "3",
+   "units": "km/s",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 images",
+     "quote": "391$\\pm$2 km s$^{-1}$ and a FWHM of 68$\\pm$3 km s$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "231.6 GHz continuum flux density (r<8.5 arcsec)",
+   "value": "104",
+   "uncertainty": "16",
+   "units": "mJy",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "2.2 images",
+     "quote": "The 231.6 GHz continuum flux density within a radius of 8.5 arcsec is 104$\\pm$16 mJy."
+    }
+   ]
+  },
+  {
+   "quantity": "Photoionizing photon rate Q",
+   "value": "1.9e52",
+   "uncertainty": "0.3e52",
+   "units": "s^-1",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "2.3",
+     "quote": "we calculated $Q$ to be (1.9$\\pm$0.3)$\\times$$10^{52}$ s$^{-1}$."
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (Z=0.0056, with rotation)",
+   "value": "0.087",
+   "uncertainty": "0.013",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "abstract",
+     "quote": "an SFR of 0.087$\\pm$0.013 M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR (Z=0.0056, no rotation)",
+   "value": "0.102",
+   "uncertainty": "0.015",
+   "units": "Msun/yr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Conclusions",
+     "quote": "with only the correction for metallicity, we obtain 0.102$\\pm$0.015 M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "Total infrared flux (12-500 micron)",
+   "value": "3.2e14",
+   "uncertainty": "0.2e14",
+   "units": "Jy Hz",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "3.2.1",
+     "quote": "This gave a total infrared flux of (3.2$\\pm$0.2)$\\times$$10^{14}$ Jy Hz"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR from total infrared (Z=0.0056, with rotation)",
+   "value": "0.107",
+   "uncertainty": "0.008",
+   "units": "Msun/yr",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table of SFRs",
+     "quote": "| Total infrared                                             | $0.148 \\pm 0.009$   | $0.133 \\pm 0.009$   | $0.107 \\pm 0.008$     |"
+    }
+   ]
+  },
+  {
+   "quantity": "SFR 1.4 GHz",
+   "value": "0.064",
+   "uncertainty": "0.003",
+   "units": "Msun/yr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "3.1",
+     "quote": "we obtain a SFR of $0.064 \\pm 0.003$ M$_\\odot$ yr$^{-1}$"
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "Line-free channel selection for the continuum image beyond frequency ranges, and clean threshold, niter, and masking",
+  "Flux of J1427-4206 values from getALMAFlux used",
+  "How the 100x100 arcsec mosaic of two pointings was handled in cleaning",
+  "Exact aperture centre and background treatment for curve-of-growth photometry",
+  "Method used to fit line centre, FWHM and integrated flux",
+  "Calibration scripts/CASA task parameters"
+ ],
+ "missing_for_reproduction": [
+  "Clean parameters (threshold, masks, niter)",
+  "Exact flux values adopted for calibrators",
+  "Line fitting details"
+ ],
+ "reproducibility_score": 4,
+ "score_reason": "Public data, clear calibration/imaging parameters and explicit formulas; some clean details missing.",
+ "rediscovery_reason": "Data public via project code, recipe largely complete, results numeric (line flux, Q, SFR).",
+ "source_card": "cards/2017MNRAS.472.1239B/sonnet/card.md"
+}

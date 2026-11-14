@@ -1,0 +1,545 @@
+{
+ "bibcode": "2026ApJ...999..145T",
+ "title": "Older Ages for 23 Pre-main Sequence Stars in Upper Scorpius Using Dynamical-mass-constrained Stellar Evolutionary Models",
+ "year": 2026,
+ "doi": "10.3847/1538-4357/ae4224",
+ "arxiv_id": "2601.22423",
+ "fields": [
+  "stellar_physics",
+  "protoplanetary_disks",
+  "star_formation"
+ ],
+ "question": "Derive revised stellar ages for 23 pre-main sequence K- and M-type stars in Upper Scorpius by using CO-derived stellar dynamical masses to constrain isochronal ages from five pre-main sequence stellar evolutionary models.",
+ "alma_project_codes": [
+  "2019.1.00493.S"
+ ],
+ "data": {
+  "bands": "not stated",
+  "arrays": "not stated",
+  "angular_resolution": "not stated",
+  "sensitivity": "not stated"
+ },
+ "external_data": [
+  {
+   "what": {
+    "value": "Dynamical masses, isochronal masses, and bolometric luminosities for 23 Upper Sco sources",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "Dynamical masses for all sources come from (cite: Towner2025), and are derived via modeling of the Keplerian disk rotation in CO."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "Luminosities come from (cite: Towner2025), and are derived using OIR photometry and BT Settl models for all sources except J16113134-1838259 B;"
+     },
+     {
+      "loc": "Linear Correlations with Mass and Age",
+      "quote": "This analysis makes use of the ages presented in Table [\\[ages_table\\]](#ages_table), the dynamical masses listed in Table [\\[source_properties\\]](#source_properties), and the isochronal masses found in (cite: Towner2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Towner2025)"
+  },
+  {
+   "what": {
+    "value": "Bolometric luminosity, effective temperature, and spectral type for J16113134-1838259 B",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "that source comes from (cite: Eisner2005), who use OIR spectroscopy and SED modeling to derive $L_{\\rm bol}$ and $T_{\\rm eff}$."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "The spectral type and effective temperature for J16113134-1838259 B come from the spectroscopic analysis of (cite: Eisner2005)."
+     }
+    ]
+   },
+   "citation": "(cite: Eisner2005)"
+  },
+  {
+   "what": {
+    "value": "Spectral types for 22 sources (excluding J16113134-1838259 B)",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "For all other sources, spectral types are taken from (cite: Luhman2012), which collates spectral types from spectroscopic studies in the literature."
+     }
+    ]
+   },
+   "citation": "(cite: Luhman2012)"
+  },
+  {
+   "what": {
+    "value": "Original target sample selection, effective temperatures, and binary/companion flags",
+    "evidence": [
+     {
+      "loc": "Sample & Dynamical Masses",
+      "quote": "Our sample consists of 23 K- and M-type pre-main sequence stars in Upper Sco with CO-detected disks, originally drawn from (cite: Barenfeld2016)."
+     },
+     {
+      "loc": "Table 1",
+      "quote": "For these sources, effective temperatures are taken from (cite: Barenfeld2016), who derive $T_{\\rm eff}$ using the (cite: Luhman2012) spectral types"
+     },
+     {
+      "loc": "Table 1",
+      "quote": "These sources are either known binaries or have a candidate companion within the 1.3 mm continuum disk emission, as reported in (cite: Barenfeld2016) and (cite: Barenfeld2017_disksize)."
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2016)"
+  },
+  {
+   "what": {
+    "value": "Binary/candidate companion flags within 1.3 mm continuum disk emission",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "These sources are either known binaries or have a candidate companion within the 1.3 mm continuum disk emission, as reported in (cite: Barenfeld2016) and (cite: Barenfeld2017_disksize)."
+     }
+    ]
+   },
+   "citation": "(cite: Barenfeld2017_disksize)"
+  },
+  {
+   "what": {
+    "value": "Sco-Cen spatio-kinematic subgroup membership classifications",
+    "evidence": [
+     {
+      "loc": "Table 1",
+      "quote": "These are subgroup(s) within the larger Sco-Cen complex with which each source is most consistent, using the system of (cite: Ratzenbock2023a)."
+     },
+     {
+      "loc": "Testing for Age Bias in Our Sample",
+      "quote": "We combine these data with the Sco-Cen kinematic subgroup classifications of both (cite: Luhman2022) and (cite: Ratzenbock2023a) to identify the K- and M-type members of the Upper Sco spatio-kinematic subgroup(s) specifically."
+     }
+    ]
+   },
+   "citation": "(cite: Ratzenbock2023a)"
+  },
+  {
+   "what": {
+    "value": "Upper Sco kinematic group classifications for age bias comparison",
+    "evidence": [
+     {
+      "loc": "Testing for Age Bias in Our Sample",
+      "quote": "We combine these data with the Sco-Cen kinematic subgroup classifications of both (cite: Luhman2022) and (cite: Ratzenbock2023a) to identify the K- and M-type members of the Upper Sco spatio-kinematic subgroup(s) specifically."
+     }
+    ]
+   },
+   "citation": "(cite: Luhman2022)"
+  },
+  {
+   "what": {
+    "value": "Stellar luminosities, spectral types, and temperatures for 8,846 Sco-Cen sources",
+    "evidence": [
+     {
+      "loc": "Testing for Age Bias in Our Sample",
+      "quote": "We compare our results to the much larger Sco-Cen sample of (cite: Fang2025)."
+     },
+     {
+      "loc": "Testing for Age Bias in Our Sample",
+      "quote": "We retrieve stellar luminosities and temperatures for all K- and M-type stars from (cite: Fang2025)."
+     }
+    ]
+   },
+   "citation": "(cite: Fang2025)"
+  }
+ ],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Obtain stellar dynamical masses from ALMA CO J=3-2 disk kinematics",
+   "method": "Model Keplerian disk rotation in ALMA CO J=3-2 line data combined with Gaia distances using MCMC fitting (performed in Towner et al. 2025).",
+   "software": [
+    "pdspy"
+   ],
+   "key_parameters": [],
+   "assumptions": [
+    "Keplerian motion of protoplanetary disk"
+   ]
+  },
+  {
+   "order": 2,
+   "goal": "Derive unconstrained isochronal masses and ages",
+   "method": "Generate 10,000-point Gaussian distributions in T_eff and L_bol for each source, linearly interpolate onto five PMS evolutionary track grids (BHAC15, PARSEC v1.1, PARSEC v1.2S, Feiden 2016 non-magnetic and magnetic), and compute median and 1.4826*MAD of the resulting mass and age distributions.",
+   "software": [
+    "numpy.random.normal"
+   ],
+   "key_parameters": [
+    "10,000 points per Gaussian distribution in T_eff and L_bol",
+    "Track points restricted to within 3 sigma"
+   ],
+   "assumptions": [
+    "Gaussian error distributions for T_eff and L_bol",
+    "For a normal distribution, 1.4826 x MAD is equivalent to 1 sigma"
+   ]
+  },
+  {
+   "order": 3,
+   "goal": "Derive dynamical-mass-constrained isochronal ages and summary statistics",
+   "method": "Filter the (M_*, tau) pairs from each PMS track to retain only those where isochronal M_* agrees with dynamical mass within uncertainties, then compute median tau, scaled MAD, age ratios (tau_all/tau_dyn), absolute age changes (Delta tau), and intra-source age spreads (sigma_tau).",
+   "software": [],
+   "key_parameters": [
+    "Sample restricted to sources with both unconstrained and mass-constrained ages (automatically M_dyn <= 1 M_sun)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "Test for linear and non-linear correlations between stellar mass, age, and model accuracy",
+   "method": "Calculate Spearman's rho correlation coefficients and p-values between dynamical mass, mass-constrained age, isochronal-to-dynamical mass ratio, and unconstrained-to-constrained age ratio across all five model sets, and visually inspect scatterplots for non-linear trends.",
+   "software": [],
+   "key_parameters": [
+    "Statistical significance threshold of >= 4 sigma (p <= 6.3e-5)"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 5,
+   "goal": "Test for age bias in the 23-star sample against the broader Upper Sco K- and M-type population",
+   "method": "Select Upper Sco K- and M-type stars from Fang & Herczeg (2025) using Luhman (2022) and Ratzenböck et al. (2023a) kinematic group criteria, compute their Feiden (2016) magnetic isochronal ages and masses, and perform 2-sample Kolmogorov-Smirnov and Anderson-Darling tests against the 23-star sample.",
+   "software": [],
+   "key_parameters": [
+    "Luhman (2022) kinematic groups u, ul, ulc, uc (2059 K- and M-type sources)",
+    "Ratzenböck et al. (2023a) SigMA groups 1 through 9 inclusive (2469 K- and M-type sources)"
+   ],
+   "assumptions": []
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "Median unconstrained isochronal age (BHAC15)",
+   "value": "5",
+   "uncertainty": "1",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median unconstrained ages for the BHAC15, PARSEC v1.1, and non-magnetic (cite: Feiden2016) models are 5$\\pm$1, 3$\\pm$1, and 5$\\pm$1 Myr, respectively."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| BHAC15 | 3 | 50 | 5 (1) | 8 (11) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median unconstrained isochronal age (PARSEC v1.1)",
+   "value": "3",
+   "uncertainty": "1",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median unconstrained ages for the BHAC15, PARSEC v1.1, and non-magnetic (cite: Feiden2016) models are 5$\\pm$1, 3$\\pm$1, and 5$\\pm$1 Myr, respectively."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.1 | 2 | 18 | 3 (1) | 4 (4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median unconstrained isochronal age (PARSEC v1.2S)",
+   "value": "14",
+   "uncertainty": "7",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "In contrast, the PARSEC v1.2S and magnetic (cite: Feiden2016) models have median unconstrained ages of 14$\\pm$7 and 10$\\pm$5 Myr, respectively,"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.2S | 5 | 49.3 | 14 (7) | 19 (13) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median unconstrained isochronal age (Feiden 2016 non-magnetic)",
+   "value": "5",
+   "uncertainty": "1",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median unconstrained ages for the BHAC15, PARSEC v1.1, and non-magnetic (cite: Feiden2016) models are 5$\\pm$1, 3$\\pm$1, and 5$\\pm$1 Myr, respectively."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), non-mag | 3 | 45 | 5 (1) | 8 (9) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median unconstrained isochronal age (Feiden 2016 magnetic)",
+   "value": "10",
+   "uncertainty": "5",
+   "units": "Myr",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "In contrast, the PARSEC v1.2S and magnetic (cite: Feiden2016) models have median unconstrained ages of 14$\\pm$7 and 10$\\pm$5 Myr, respectively,"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), magnetic | 6 | 81 | 10 (5) | 15 (17) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dynamical-mass-constrained age (BHAC15)",
+   "value": "9",
+   "uncertainty": "4",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median BHAC15 and non-magnetic (cite: Feiden2016) ages rise to 9$\\pm$4 and 9$\\pm$5 Myr, respectively (a $+$4 Myr increase in both cases),"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| BHAC15 | 3 | 37 | 9 (4) | 12 (9) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dynamical-mass-constrained age (PARSEC v1.1)",
+   "value": "6",
+   "uncertainty": "3",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The PARSEC v1.1 ages remain comparatively young: their median mass-constrained age is 6$\\pm$3 Myr"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.1 | 3 | 27 | 6 (3) | 8 (6) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dynamical-mass-constrained age (PARSEC v1.2S)",
+   "value": "12",
+   "uncertainty": "9",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median mass-constrained ages for the PARSEC v1.2S and magnetic (cite: Feiden2016) models are 12$\\pm$9 and 9$\\pm$5 Myr, respectively,"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.2S | 2 | 49 | 12 (9) | 17 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dynamical-mass-constrained age (Feiden 2016 non-magnetic)",
+   "value": "9",
+   "uncertainty": "4",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), non-mag | 4 | 44 | 9 (4) | 12 (9) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median dynamical-mass-constrained age (Feiden 2016 magnetic)",
+   "value": "9",
+   "uncertainty": "5",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Stellar Ages",
+     "quote": "The median mass-constrained ages for the PARSEC v1.2S and magnetic (cite: Feiden2016) models are 12$\\pm$9 and 9$\\pm$5 Myr, respectively,"
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), magnetic | 5 | 42 | 9 (5) | 15 (10) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median age ratio tau_all/tau_dyn (BHAC15)",
+   "value": "0.7",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| BHAC15 | 0.21 | 1.67 | 0.7 (0.3) | 0.7 (0.4) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median age ratio tau_all/tau_dyn (PARSEC v1.1)",
+   "value": "0.6",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.1 | 0.33 | 1.0 | 0.6 (0.2) | 0.6 (0.2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median age ratio tau_all/tau_dyn (PARSEC v1.2S)",
+   "value": "1.0",
+   "uncertainty": "0.2",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| PARSEC v1.2S | 0.76 | 7.0 | 1.0 (0.2) | 2 (2) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median age ratio tau_all/tau_dyn (Feiden 2016 non-magnetic)",
+   "value": "0.6",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), non-mag | 0.25 | 1.29 | 0.6 (0.3) | 0.7 (0.3) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median age ratio tau_all/tau_dyn (Feiden 2016 magnetic)",
+   "value": "1.0",
+   "uncertainty": "0.3",
+   "units": "dimensionless",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Table 3",
+     "quote": "| Feiden (2016), magnetic | 0.32 | 2.0 | 1.0 (0.3) | 1.1 (0.5) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median intra-source age spread (unconstrained)",
+   "value": "11",
+   "uncertainty": "6",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Agreement Among Model Sets",
+     "quote": "The median age spread decreases from 11$\\pm$6 Myr to 8$\\pm$7 Myr."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Unconstrained ages$^b$ | 5 | 63 | 11 (6) | 17 (15) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median intra-source age spread (mass-constrained)",
+   "value": "8",
+   "uncertainty": "7",
+   "units": "Myr",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "Increasing Agreement Among Model Sets",
+     "quote": "The median age spread decreases from 11$\\pm$6 Myr to 8$\\pm$7 Myr."
+    },
+    {
+     "loc": "Table 3",
+     "quote": "| Mass-constrained ages | 2 | 44 | 8 (7) | 13 (12) |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho between M_iso/M_dyn and tau_all/tau_dyn (Feiden 2016 non-magnetic, all M_dyn <= 1 M_sun)",
+   "value": "0.85",
+   "uncertainty": "p = 1e-5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $M_{\\rm iso}$/$M_{\\rm dyn}$ | $\\tau_{\\rm all}$/$\\tau_{\\rm dyn}$ | 0.80 | 1$\\times$10$^{-4}$ | 0.56 | 0.03 | 0.47 | 0.06 | 0.85 | 1$\\times$10$^{-5}$ | 0.61 | 7$\\times$10$^{-3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho between M_iso/M_dyn and tau_all/tau_dyn (BHAC15, all M_dyn <= 1 M_sun)",
+   "value": "0.80",
+   "uncertainty": "p = 1e-4",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $M_{\\rm iso}$/$M_{\\rm dyn}$ | $\\tau_{\\rm all}$/$\\tau_{\\rm dyn}$ | 0.80 | 1$\\times$10$^{-4}$ | 0.56 | 0.03 | 0.47 | 0.06 | 0.85 | 1$\\times$10$^{-5}$ | 0.61 | 7$\\times$10$^{-3}$ |"
+    }
+   ]
+  },
+  {
+   "quantity": "Spearman rho between M_dyn and M_iso/M_dyn (PARSEC v1.2S, all M_dyn <= 1 M_sun)",
+   "value": "-0.84",
+   "uncertainty": "p = 1e-5",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "Table 4",
+     "quote": "| $M_{\\rm dyn}$ | $M_{\\rm iso}$/$M_{\\rm dyn}$ | $-$0.51 | 0.03 | $-$0.31 | 0.2 | $-$0.84 | 1$\\times$10$^{-5}$ | $-$0.44 | 0.07 | $-$0.49 | 0.04 |"
+    }
+   ]
+  },
+  {
+   "quantity": "Median Feiden (2016) magnetic age of Upper Sco K- and M-type population (Luhman 2022 selection)",
+   "value": "8",
+   "uncertainty": "4",
+   "units": "Myr",
+   "from_step": 5,
+   "evidence": [
+    {
+     "loc": "Testing for Age Bias in Our Sample",
+     "quote": "The median age of Luhman-selected sample of K- and M-stars is 8$\\pm$4 Myr both with and without the “pile-up” sources."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "All ALMA calibration, imaging, and Keplerian disk MCMC fitting parameters (inherited from Towner et al. 2025)",
+  "How asymmetric uncertainties on L_bol and M_dyn in Table 1 were handled when generating symmetric numpy.random.normal Gaussian distributions and when applying the dynamical mass overlap criterion",
+  "Exact interpolation scheme in 2D (log T_eff, log L_bol vs linear T_eff, L_bol) and exact grid resolution/metallicity of the five PMS evolutionary track tables",
+  "Values of isochronal masses M_iso for each source and model set (taken from Towner et al. 2025, not reprinted in this paper)",
+  "How effective temperature was assigned from SpT2/SpT1 for the Fang & Herczeg (2025) comparison sample if only spectral type was retrieved"
+ ],
+ "missing_for_reproduction": [
+  "Exact implementation of how asymmetric uncertainties on L_bol and M_dyn in Table 1 were symmetrized or sampled in numpy.random.normal and in the mass-overlap filter",
+  "Exact 2D interpolation routine and coordinate space (linear vs logarithmic T_eff and L_bol) used to map (T_eff, L_bol) draws onto the five PMS evolutionary track grids",
+  "Table of isochronal masses M_iso for each source and model set (published in Towner et al. 2025, needed to reproduce Table 4 and Figure 3)",
+  "ALMA imaging and pdspy MCMC configuration files if reproducing from raw ALMA data (deferred to Towner et al. 2025)"
+ ],
+ "reproducibility_score": 78,
+ "score_reason": "The core analysis in this paper (Monte Carlo interpolation of T_eff, L_bol, and M_dyn onto five public PMS evolutionary tracks) is fully tabular, with all input stellar properties provided in Table 1 and output ages in Table 2. Minor ambiguities remain regarding the exact treatment of asymmetric error bars in Table 1 and 2D track interpolation details, while the upstream ALMA CO dynamical mass fitting is entirely deferred to Towner et al. (2025).",
+ "rediscovery_reason": "All input parameters (M_dyn, L_bol, T_eff, distances) for the 23 stars are explicitly tabulated in Table 1, the five PMS evolutionary track grids are standard public datasets, the Monte Carlo filtering recipe is simple and self-contained, and the main results (Tables 2, 3, 4) are cleanly numeric.",
+ "source_card": "cards/2026ApJ...999..145T/sonnet/card.md"
+}

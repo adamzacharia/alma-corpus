@@ -1,0 +1,172 @@
+{
+ "bibcode": "2020ApJ...900...40O",
+ "title": "Molecular Distributions of the Protostellar Envelope and the Outflow of IRAS 15398-3359: Principal Component Analysis",
+ "year": 2020,
+ "doi": "10.3847/1538-4357/aba51e",
+ "arxiv_id": "2007.11106",
+ "fields": [
+  "star_formation",
+  "astrochemistry"
+ ],
+ "question": "Can PCA characterize, without preconception, the distributions of 15 molecular lines and the continuum around the Class 0 protostar IRAS 15398-3359 on outflow and disk/envelope scales?",
+ "alma_project_codes": [
+  "2013.1.01157.S",
+  "2015.1.01380.S"
+ ],
+ "data": {
+  "bands": "Band 6 (Cycle 2) and Band 7 (Cycle 3)",
+  "arrays": "not stated",
+  "angular_resolution": "Cycle 3 continuum 0.48x0.45 arcsec; Cycle 2 continuum 0.21x0.15 arcsec",
+  "sensitivity": "not stated"
+ },
+ "external_data": [],
+ "recipe": [
+  {
+   "order": 1,
+   "goal": "Image lines and continuum",
+   "method": "CLEAN with Briggs weighting, continuum subtraction in uv, smooth to 0.5\" beam, make moment 0 maps",
+   "software": [
+    "CASA"
+   ],
+   "key_parameters": [
+    "robust = 0.5; beam 0.5\"x0.5\""
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 2,
+   "goal": "PCA of distributions",
+   "method": "Diagonalize correlation matrix of 16 (whole) or 15 (disk/envelope) images using pixels above 3 sigma in both distributions",
+   "software": [
+    "numpy",
+    "matplotlib",
+    "pandas",
+    "astropy"
+   ],
+   "key_parameters": [
+    "threshold = 3 x rms"
+   ],
+   "assumptions": []
+  },
+  {
+   "order": 3,
+   "goal": "Gas temperature of outflow blobs",
+   "method": "Non-LTE LVG analysis of H2CO lines at blobs A-D and center",
+   "software": [],
+   "key_parameters": [],
+   "assumptions": []
+  },
+  {
+   "order": 4,
+   "goal": "c-C3H2/H2CO column density ratio",
+   "method": "RADEX at c-C3H2 peaks using H2CO Ka=0 only",
+   "software": [
+    "RADEX"
+   ],
+   "key_parameters": [
+    "H2 density 1e6 cm^-3; Tkin 20-40 K"
+   ],
+   "assumptions": [
+    "H2CO ortho/para ratio = 3"
+   ]
+  }
+ ],
+ "answer_key": [
+  {
+   "quantity": "0.8 mm continuum peak intensity (Cycle 3)",
+   "value": "23.95",
+   "uncertainty": "0.48",
+   "units": "mJy/beam",
+   "from_step": 1,
+   "evidence": [
+    {
+     "loc": "3 Molecular Distributions",
+     "quote": "whose peak intensity is 23.95$\\pm$0.48mJy beam$^{-1}$"
+    }
+   ]
+  },
+  {
+   "quantity": "PC1 contribution ratio (whole structure)",
+   "value": "42.1",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "PC1 and PC2 have the two largest contribution ratios, 42.1 % and 20.3 %, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "PC2 contribution ratio (whole structure)",
+   "value": "20.3",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "PC1 and PC2 have the two largest contribution ratios, 42.1 % and 20.3 %, respectively."
+    }
+   ]
+  },
+  {
+   "quantity": "PC1+PC2 contribution (disk/envelope)",
+   "value": "76.7",
+   "uncertainty": "not stated",
+   "units": "%",
+   "from_step": 2,
+   "evidence": [
+    {
+     "loc": "4.2",
+     "quote": "On the disk/envelope scale, PC1 and PC2 stand for 76.7 % of the contribution ratio."
+    }
+   ]
+  },
+  {
+   "quantity": "Gas kinematic temperature of blobs",
+   "value": "43 to 63",
+   "uncertainty": "2-4",
+   "units": "K",
+   "from_step": 3,
+   "evidence": [
+    {
+     "loc": "4.1",
+     "quote": "The derived gas kinematic temperature ranges from 43 K to 63 K (Table [8](#tempvalue))."
+    }
+   ]
+  },
+  {
+   "quantity": "c-C3H2/H2CO ratio NW / SE",
+   "value": "0.2-0.3 / 0.1-0.2",
+   "uncertainty": "not stated",
+   "units": "dimensionless",
+   "from_step": 4,
+   "evidence": [
+    {
+     "loc": "5 Comparison",
+     "quote": "The ratios for the northwestern and southeastern sides are from 0.2 to 0.3 and from 0.1 to 0.2, respectively."
+    }
+   ]
+  }
+ ],
+ "not_stated_but_needed": [
+  "CASA version and calibration procedure/calibrators",
+  "line-free channels and velocity ranges for moment 0 maps",
+  "clean masks, thresholds, and cell size",
+  "spectral setup of Cycle 2 in detail",
+  "LVG/RADEX collision data, density and line-width assumptions for the blob temperature fits",
+  "image regions/pixel selection for the two PCA scales"
+ ],
+ "missing_for_reproduction": [
+  "CASA version",
+  "line-free channels and moment integration ranges",
+  "PCA code not released",
+  "LVG setup details"
+ ],
+ "reproducibility_score": 3,
+ "score_reason": "Imaging recipe partly given and PCA well described, but calibration, moment ranges and LVG setup missing.",
+ "rediscovery_reason": "Archival data, PCA fully described, numeric tables of correlation matrices and eigenvalues available for checking.",
+ "source_card": "cards/2020ApJ...900...40O/sonnet/card.md"
+}
